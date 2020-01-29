@@ -1,0 +1,18 @@
+% layout 'mingw-w64-qt5-module';
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
+depends=('mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for build_config_before_make => begin
+
+      # Search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
+      # hence we need insert those paths manually
+      make qmake_all
+      find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib -L/usr/$_arch/lib -lQt5Bootstrap|g" {} \;
+
+% end

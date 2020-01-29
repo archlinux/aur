@@ -1,34 +1,37 @@
 # Maintainer: Martchus <martchus@gmx.net>
-# Contributor: ant32 <antreimer@gmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
+
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
 
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 _qt_module=qtscxml
-pkgname="mingw-w64-qt5-scxml"
-pkgver=5.14.0
+pkgname=mingw-w64-qt5-scxml
+pkgver=5.14.1
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
 depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7ed1497dc35f9b5d16a1ad529c3c181973ecae71b31db04aaeb5743f15b4feab')
+sha256sums=('6dbcf012cc11931050c8d9422cbf478ee173dfb0c5b8aebf0f829b6f74d741aa')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
-  _configurations+=('CONFIG+=static')
+  _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
 
@@ -39,9 +42,13 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
+
+      # Search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
+      # hence we need insert those paths manually
       make qmake_all
       find . -type f -iname 'Makefile' -exec sed -i "s|-L/usr/$_arch/lib -lQt5Bootstrap|-L/usr/lib -L/usr/$_arch/lib -lQt5Bootstrap|g" {} \;
+
       make
       popd
     done
