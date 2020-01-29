@@ -1,13 +1,14 @@
-# Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Protesilaos Stavrou <info at protesilaos dot com>
 pkgname=tempus-themes-konsole-git
-pkgver=r13.0667e36
+pkgver=r15.7f154ba
 pkgrel=1
 pkgdesc="Tempus themes for Konsole"
 arch=('any')
 url="https://protesilaos.com/tempus-themes"
 license=('GPL3')
 depends=('konsole')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://gitlab.com/protesilaos/${pkgname%-git}.git")
