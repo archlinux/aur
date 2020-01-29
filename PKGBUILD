@@ -11,7 +11,7 @@ _pkgname=scidavis
 pkgname=scidavis-qt5
 pkgver=1.26
 _commit=1.26
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -22,11 +22,14 @@ depends=('gsl' 'glu' 'mesa' 'muparser' 'shared-mime-info'
          'qwt5-qt5' 'qwtplot3d-qt5'
          'python-pyqt5')
 conflicts=('scidavis')
-source=("${_pkgname}-${pkgver}.zip::https://github.com/highperformancecoder/scidavis/archive/${_commit}.zip")
-sha512sums=('c4ccd9ace46eeef5a184ea93bb48b338d6ae50cb06db33a95420370da3e5b9ff3b268e4f9da6d60c9b0c64dcc300cb46b4b9275736869cad039f74f4eee68211')
+source=("${_pkgname}-${pkgver}.zip::https://github.com/highperformancecoder/scidavis/archive/${_commit}.zip"
+'sip_error.patch')
+sha512sums=('c4ccd9ace46eeef5a184ea93bb48b338d6ae50cb06db33a95420370da3e5b9ff3b268e4f9da6d60c9b0c64dcc300cb46b4b9275736869cad039f74f4eee68211'
+            '8a57006842e416751d5f6ca6128ecdbba632e88c57f4b2dcb1558626f815c0682eff771697a068f5cbc583f588c6a41eab7bdc3c82f294cbafed1ce1cb04368e')
 
 prepare() {
   cd "${_pkgname}-${_commit}"
+  patch --forward --strip=1 --input="${srcdir}/sip_error.patch"
 }
 
 build() {

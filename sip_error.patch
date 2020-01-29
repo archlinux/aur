@@ -1,0 +1,83 @@
+diff -u10 -r scidavis-1.26.old/libscidavis/python-sipcmd.py scidavis-1.26.new/libscidavis/python-sipcmd.py
+--- scidavis-1.26.old/libscidavis/python-sipcmd.py	2019-12-06 07:14:18.000000000 +0100
++++ scidavis-1.26.new/libscidavis/python-sipcmd.py	2020-01-29 14:00:22.190518028 +0100
+@@ -19,37 +19,48 @@
+ #  GNU General Public License for more details.                            #
+ #                                                                          #
+ #   You should have received a copy of the GNU General Public License      #
+ #   along with this program; if not, write to the Free Software            #
+ #   Foundation, Inc., 51 Franklin Street, Fifth Floor,                     #
+ #   Boston, MA  02110-1301  USA                                            #
+ #                                                                          #
+ ############################################################################
+ 
+ 
++import os
++import warnings
+ import sys, sipconfig
+ config = sipconfig.Configuration()
+ 
+ try:
+     pyqt = sys.argv[1]
+ except IndexError:
+     pyqt = 'PyQt4'
+ 
+ if (pyqt not in ['PyQt4','PyQt5']):
+     pyqt = 'PyQt4'
+ 
+ try:
+     exec("from "+pyqt+".QtCore import PYQT_CONFIGURATION")
+ except ImportError:
+     pass
+ 
+ sipBin = config.sip_bin
+ sipDir = config.default_sip_dir+'/'+pyqt
++if sys.version_info[0] >= 3 and sys.version_info[1] >= 7 and pyqt == 'PyQt5':
++    from importlib.metadata import distribution
++    dist = distribution(pyqt)
++    sip = [p for p in dist.files if p.name == 'QtCoremod.sip']
++    assert len(sip) == 1
++    sipDir = str(dist.locate_file(sip[0]).parent.parent)
++else:
++    if not os.path.exists(sipDir):
++        warnings.warn('sipDir does not exists, %s' % sipDir)
+ 
+ sipFlags =  PYQT_CONFIGURATION['sip_flags']
+ 
+ flags = ["-I ../scidavis"]
+ if config.sip_version >= 0x040a00:
+ 	# make use of docstring generation feature in SIP >= 4.10
+ 	flags.append("-o")
+ 
+ sys.stdout.write(" ".join([sipBin, '-I', sipDir, sipFlags]+flags))
+diff -u10 -r scidavis-1.26.old/libscidavis/python.pri scidavis-1.26.new/libscidavis/python.pri
+--- scidavis-1.26.old/libscidavis/python.pri	2019-12-06 07:14:18.000000000 +0100
++++ scidavis-1.26.new/libscidavis/python.pri	2020-01-29 13:13:02.288687994 +0100
+@@ -19,22 +19,26 @@
+   PYTHONBIN = $$(PYTHON)
+   isEmpty( PYTHONBIN ) {
+     PYTHONBIN = python
+   }
+ 
+   unix {
+     INCLUDEPATH += $$system($$PYTHONBIN-config --includes|sed -e 's/-I//g')
+     osx_dist {
+       DEFINES += PYTHONHOME=/Applications/scidavis.app/Contents/Resources
+     } 
++    SIP_FAILURE = TRUE
+     system(mkdir -p $${SIP_DIR})
+-    system($$system($$PYTHONBIN python-sipcmd.py PyQt$$QT_MAJOR_VERSION) $$system($$PYTHONBIN-config --includes) -c $${SIP_DIR}  src/scidavis.sip)
++    system($$system($$PYTHONBIN python-sipcmd.py PyQt$$QT_MAJOR_VERSION) $$system($$PYTHONBIN-config --includes) -c $${SIP_DIR}  src/scidavis.sip): SIP_FAILURE = FALSE
++    equals(SIP_FAILURE, "TRUE") {
++        error(`$$PYTHONBIN python-sipcmd.py PyQt$$QT_MAJOR_VERSION` `$$PYTHONBIN-config --includes` -c $${SIP_DIR}  src/scidavis.sip FAILED in $$PWD)
++    }
+   }
+ 
+   win32 {
+   mxe {
+      DEFINES += SIP_STATIC_MODULE
+     system($$system($$PYTHONBIN python-sipcmd.py PyQt$$QT_MAJOR_VERSION) -c $${SIP_DIR} src/scidavis.sip)
+   } else {
+     INCLUDEPATH += $$system(call ../python-includepath.py)
+     # TODO: fix the command below (only really necessary if SIP_DIR != MOC/OBJECTS_DIR)
+     system($$system(call python-sipcmd.py) -c $${SIP_DIR} src/scidavis.sip)
