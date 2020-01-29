@@ -1,0 +1,1 @@
+mingw-w64-qt5-graphicaleffects; d931637d97cbb0e57bf2d78bf0eb06494f21a05d2e6a17e7c4f4f2a2fabc23cd
