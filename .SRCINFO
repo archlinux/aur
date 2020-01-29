@@ -14,7 +14,7 @@ pkgbase = lxqt_wallet-git
 	depends = libgcrypt
 	optdepends = kwallet: store passwords in kwallet
 	optdepends = libsecret: store passwords in GNOME's secret service
-	provides = lxqt_wallet=3.1.0.r17.g33e1610
+	provides = lxqt_wallet
 	conflicts = lxqt_wallet
 	source = git+https://github.com/lxqt/lxqt_wallet.git
 	sha256sums = SKIP

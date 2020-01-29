@@ -12,7 +12,7 @@ depends=("libgcrypt")
 optdepends=("kwallet: store passwords in kwallet"
             "libsecret: store passwords in GNOME's secret service")
 makedepends=("cmake" "qt5-base" "kwallet" "libsecret" "qt5-tools")
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+https://github.com/lxqt/$_pkgname.git")
 sha256sums=('SKIP')
