@@ -1,9 +1,9 @@
 pkgbase = eddie-ui-git
-	pkgdesc = Eddie - OpenVPN UI - beta version
-	pkgver = 2.17.2
+	pkgdesc = Eddie - VPN tunnel - beta version
+	pkgver = 2.18.7
 	pkgrel = 1
 	url = https://eddie.website
-	install = eddie-ui-git.install
+	install = eddie-ui.install
 	arch = i686
 	arch = x86_64
 	license = GPLv3
