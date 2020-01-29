@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
-icense=('MIT' 'CC0 1.0 Universal')
+license=('MIT' 'CC0 1.0 Universal')
 makedepends=('go-pie' 'git')
 optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions'
