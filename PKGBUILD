@@ -1,5 +1,5 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
-# Co-Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=shortwave-git
 pkgver=0.0.1.r6.g5edb0bc
