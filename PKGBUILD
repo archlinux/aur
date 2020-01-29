@@ -4,7 +4,7 @@
 
 pkgname=duplicati-latest
 pkgver=2.0.5.101
-pkgrel=1
+pkgrel=2
 _date=2020-01-23
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'

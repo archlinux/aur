@@ -1,8 +1,11 @@
 post_install() {
+  systemd-sysuers duplicati.conf
+  mkdir -p /var/lib/duplicati
+  chown -R duplicati:duplicati /var/lib/duplicati
+  
 cat << EOF
   * UI can be accessed via following URL: http://localhost:8200
   * Running duplicati user instance (using current user account)
-    - to reload user systemd modules:        systemctl --user daemon-reload
     - to start duplicati manually:           systemctl --user start duplicati
     - to autostart duplicati on user login:  systemctl --user enable duplicati
 EOF
