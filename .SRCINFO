@@ -1,0 +1,22 @@
+pkgbase = radium_compressor-git
+	pkgdesc = A standalone JACK audio compressor
+	pkgver = 0.5.1.r10.gc19c3e3
+	pkgrel = 1
+	url = http://users.notam02.no/~kjetism/radium/compressor_plugin.php
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = faust
+	depends = jack
+	depends = qt5-base
+	provides = radium_compressor
+	conflicts = radium_compressor
+	source = git+https://github.com/kmatheussen/radium_compressor
+	source = radium_compressor.desktop
+	source = radium_compressor.png
+	md5sums = SKIP
+	md5sums = 19b176fb5434ebd1ef2e4fcd21081e6b
+	md5sums = c535752663bd92f3467e9aef7a5316fe
+
+pkgname = radium_compressor-git
+
