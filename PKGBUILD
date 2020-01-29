@@ -1,31 +1,37 @@
 # Maintainer: Martchus <martchus@gmx.net>
-# Contributor: ant32 <antreimer@gmail.com>
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
+
+# This file is created from PKGBUILD.sh.in contained by the mentioned repository.
+# Do not edit it manually! See README.md in the repository's root directory
+# for more information.
+
+# All patches are managed at https://github.com/Martchus/qtwebglplugin
 
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 _qt_module=qtwebglplugin
-pkgname="mingw-w64-qt5-webglplugin"
-pkgver=5.14.0
+pkgname=mingw-w64-qt5-webglplugin
+pkgver=5.14.1
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('any')
 pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
 depends=('mingw-w64-qt5-declarative' 'mingw-w64-qt5-websockets')
 makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
 options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Hardcode-linker-flags-for-platform-plugin.patch')
-sha256sums=('9707f7b860d798d478c0237c49ab43d4b99e1ad5b297555a4df6ffac4c5a1a76'
-            '8804dc7a55f74c738dc0f64eefb75f912647bceaf4a3f3e783a141507c92162a')
+sha256sums=('de7768ab6a8de06e09467b6dc8714fa71ed5781e2654aa3498a7105328f565a6'
+            '018bb036b93ff1235918fa1e96800f2ffb158dec93079819e817780ab3309e4e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+
 [[ $NO_STATIC_LIBS ]] || \
   makedepends+=('mingw-w64-qt5-base-static') \
   optdepends+=('mingw-w64-qt5-base-static: use of static libraries') \
@@ -38,7 +44,6 @@ prepare() {
 
   # apply patches; further descriptions can be found in patch files itself
   for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
     patch -p1 -i "$patch"
   done
 }
@@ -50,7 +55,8 @@ build() {
     for _config in "${_configurations[@]}"; do
       msg2 "Building ${_config##*=} version for ${_arch}"
       mkdir -p build-${_arch}-${_config##*=} && pushd build-${_arch}-${_config##*=}
-      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} QT_INSTALL_PREFIX="/usr/${_arch}"
+      _additional_qmake_args=QT_INSTALL_PREFIX=/usr/${_arch}
+      ${_arch}-qmake-qt5 ../${_qt_module}.pro ${_config} ${_additional_qmake_args}
       make
       popd
     done

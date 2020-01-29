@@ -1,0 +1,13 @@
+% layout 'mingw-w64-qt5-module';
+\
+pkgver=5.14.1
+pkgrel=1
+arch=('any')
+pkgdesc="QPA plugin for running an application via a browser using streamed WebGL commands (mingw-w64)"
+depends=('mingw-w64-qt5-declarative' 'mingw-w64-qt5-websockets')
+makedepends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+license=('GPL3' 'LGPL3' 'FDL' 'custom')
+\
+% content_for build_config => begin
+      _additional_qmake_args=QT_INSTALL_PREFIX=/usr/${_arch}
+% end
