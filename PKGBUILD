@@ -6,8 +6,8 @@
 # Contributor: Dmitry Shilov <stormblast@land.ru>
 
 pkgname=doomsday
-pkgver=2.2.1
-pkgrel=2
+pkgver=2.2.2
+pkgrel=1
 pkgdesc="An advanced Doom engine that supports DOOM, Heretic and Hexen."
 url="http://dengine.net/"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('doom1-wad: Doom shareware',
             'hexen1-wad: Hexen shareware'
 		    'soundfont-fluid')
 source=("http://files.dengine.net/archive/doomsday-$pkgver.tar.gz")
-sha256sums=('116dad77943658097183a0b7ddb92a3354fb3c6996cddfc0517da1b15ce0e806')
+sha256sums=('b42fbcd2a917765a6823a81497037a8f85915a998736131ea5f0401543962ecf')
 
 build() {
         
