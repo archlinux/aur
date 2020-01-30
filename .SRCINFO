@@ -1,14 +1,13 @@
 pkgbase = shellspec
 	pkgdesc = BDD style unit testing framework for POSIX compliant shell script
-	pkgver = 0.20.2
-	pkgrel = 2
+	pkgver = 0.21.0
+	pkgrel = 1
 	url = https://github.com/shellspec/shellspec
 	arch = any
 	license = MIT
-	makedepends = coreutils
 	depends = bash
-	source = shellspec-0.20.2.tar.gz::https://github.com/shellspec/shellspec/archive/0.20.2.tar.gz
-	md5sums = 7f3b3ed8fe2c688a5b3b1c5542aff08c
+	source = shellspec-0.21.0.tar.gz::https://github.com/shellspec/shellspec/archive/0.21.0.tar.gz
+	md5sums = e59281b85e32f0c64a2c736491712341
 
 pkgname = shellspec
 
