@@ -10,7 +10,7 @@ pkgbase = ripasso-git
 	makedepends = gettext
 	makedepends = cargo
 	conflicts = ripasso
-	source = git+https://github.com/cortex/ripasso.git
+	source = git://github.com/cortex/ripasso.git
 	md5sums = SKIP
 
 pkgname = ripasso-git
