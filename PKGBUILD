@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.7.0.r1050.cfd6c57
+pkgver=0.7.0.r1380.7350863
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl" "cmark")
+depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "boost" "libsodium" "openssl" "cmark" )
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 
 provides=("nheko")
@@ -35,14 +35,9 @@ build() {
 
     # build with more cores than the default
     export CMAKE_BUILD_PARALLEL_LEVEL=$(cat /proc/cpuinfo | awk '/^processor/{print $3}' | wc -l)
-    cmake -Hdeps -B.deps -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=ON -DMTX_STATIC=ON
-    cmake --build .deps
-
-    cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release \
-        -DLMDBXX_INCLUDE_DIR=.deps/usr/include \
-        -DTWEENY_INCLUDE_DIR=.deps/usr/include \
-        -DCMAKE_INSTALL_PREFIX=.deps/usr
-    cmake --build build
+    cmake -H. -Bbuild -DHUNTER_ENABLED=ON -DBUILD_SHARED_LIBS=OFF -DUSE_BUNDLED_OPENSSL=OFF -DUSE_BUNDLED_BOOST=OFF -DUSE_BUNDLED_CMARK=OFF -DUSE_BUNDLED_JSON=ON \
+    -DCMAKE_INSTALL_PREFIX=.deps/usr
+    cmake --build build --config Release
 }
 
 package() {
