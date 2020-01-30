@@ -5,15 +5,13 @@
 
 pkgname=basilisk
 pkgver=2020.01.12
-pkgrel=2
+pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org"
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
-provides=('basilisk-bin' 'basilisk-git')
-conflicts=('basilisk-bin' 'basilisk-git')
 options=('!emptydirs')
 source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz")
 sha256sums=('6133ea81ee929202b793b11d70403a2e3e5c25c8908915f6d689ce9467f9659d')
