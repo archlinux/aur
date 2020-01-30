@@ -1,12 +1,14 @@
 pkgbase = zeek
 	pkgdesc = A network analysis framework
-	pkgver = 3.1.0.dev172.g916205e25
-	pkgrel = 1
+	pkgver = 3.1.0.dev465.gf3e5728bc
+	pkgrel = 2
 	url = https://zeek.org
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
-	makedepends = git
+	makedepends = swig
+	makedepends = bison
+	makedepends = flex
 	depends = zlib
 	depends = libpcap
 	depends = bash
