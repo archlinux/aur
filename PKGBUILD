@@ -22,6 +22,11 @@ build() {
 	make
 }
 
+check() {
+	cd "$pkgname"
+	make check
+}
+
 package() {
 	cd "$pkgname"
 	make DESTDIR="$pkgdir" PREFIX="/usr" install
