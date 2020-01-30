@@ -1,0 +1,16 @@
+pkgbase = libphash-git
+	pkgdesc = Perceptual hashing library
+	pkgver = r540.887d07b
+	pkgrel = 1
+	url = http://phash.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mpg123
+	depends = cimg
+	depends = ffmpeg
+	source = pHash::git+https://github.com/aetilius/pHash#branch=master
+	sha256sums = SKIP
+
+pkgname = libphash-git
+
