@@ -1,5 +1,5 @@
 pkgbase = ttf-ferrite-core
-	pkgdesc = Ferrite Core display typeface by Froyo Tam
+	pkgdesc = Ferrite Core DX font family by Froyo Tam
 	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/froyotam/ferrite-core/
