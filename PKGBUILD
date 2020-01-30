@@ -1,12 +1,13 @@
 # Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
+# Maintainer: Ziusudra <ziusudra.zoon@gmail.com>
 # shellcheck disable=2034
 # shellcheck disable=2148
 
 pkgname=dfhack-bin
 _pkgname=dfhack
 pkgver=0.44.12
-_pkgver=$pkgver-r2
-pkgrel=2
+_pkgver=$pkgver-r3
+pkgrel=3
 pkgdesc="memory hacking library for Dwarf Fortress and a set of tools that use it"
 arch=('x86_64' 'i686')
 url="https://dfhack.readthedocs.io/en/stable/"
@@ -21,10 +22,10 @@ source_x86_64=("https://github.com/DFHack/dfhack/releases/download/$_pkgver/dfha
 source=(dfhack.sh
         dfhack-run.sh)
 
+md5sums_i686=('7f8d67d97bff2424fc85538832b3b60f')
+md5sums_x86_64=('72fb2e8f3e342d47e4f323c2b344568f')
 md5sums=('81f5909c1a32391679f968e40f24d5ca'
          '3853c6f890d3541f710f2c4833a9e696')
-md5sums_x86_64=('bdbe256099ec9ffd90f391f0d069742f')
-md5sums_i686=('e9e5b8f4978e5e0a61080d4fbdea8abf')
 
 prepare() {
   # shellcheck disable=2154
