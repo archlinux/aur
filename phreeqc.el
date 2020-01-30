@@ -1,6 +1,6 @@
 ;;; phreeqc.el --- Phreeqe code editing commands for Emacs
 
-;; Copyright (C) 2000,2017 dr. thomas baumann
+;; Copyright (C) 2000,2015 dr. thomas baumann
 ;; Author: Dr. Thomas Baumann
 ;; Keywords: languages
 
@@ -67,10 +67,10 @@
   :type 'integer
   :group 'phreeqc)
 
-(defcustom phreeqc-output-folding nil
-  "Visit phreeqc-output in folding-mode if non-nil."
-  :type 'boolean
-  :group 'phreeqc)
+;; (defcustom phreeqc-output-folding nil
+;;   "Visit phreeqc-output in folding-mode if non-nil."
+;;   :type 'boolean
+;;   :group 'phreeqc)
 
 (defvar phreeqc-mode-abbrev-table nil
   "Abbrev table in use in Phreeqc-mode buffers.")
@@ -82,17 +82,17 @@
 		nil
 	(let ((map (make-sparse-keymap))
 				(menu-map (make-sparse-keymap "Phreeqc")))
-		(define-key map [C-tab] 'folding-shift-in)
-		(define-key map [backtab] 'folding-shift-out)
+		;; (define-key map [C-tab] 'folding-shift-in)
+		;; (define-key map [backtab] 'folding-shift-out)
 		(define-key map "\C-c\C-c" 'phreeqc-compile)
 		(define-key map "\C-c\C-v" 'phreeqc-visit-output)
-;		(define-key map "\M-j" 'electric-phreeqc-terminate-line)
-		(define-key map "\r" 'phreeqc-electric-terminate-line)
-		(define-key map [M-up] 'phreeqc-previous-fold)
-		(define-key map [M-down] 'phreeqc-next-fold)
+		;; (define-key map "\M-j" 'electric-phreeqc-terminate-line)
+		;; (define-key map "\r" 'phreeqc-electric-terminate-line)
+		;; (define-key map [M-up] 'phreeqc-previous-fold)
+		;; (define-key map [M-down] 'phreeqc-next-fold)
 		(define-key map [menu-bar phreeqc] (cons "Phreeqc" menu-map))
-		(define-key menu-map [folding-mode]
-          '("Toggle folding" . folding-mode))
+		;; (define-key menu-map [folding-mode]
+        ;;   '("Toggle folding" . folding-mode))
         (define-key menu-map [phreeqc-renumber-basic]
           '("Renumber basic statements" . phreeqc-renumber-basic))
 		(define-key menu-map [phreeqc-visit-output]
@@ -109,18 +109,18 @@
 		nil
 	(let ((map (make-sparse-keymap))
 				(menu-map (make-sparse-keymap "Phreeqc-Output")))
-		(define-key map [tab] 'folding-shift-in)
-		(define-key map [C-tab] 'folding-shift-in)
-		(define-key map [backtab] 'folding-shift-out)
-		(define-key map [M-up] 'phreeqc-previous-fold)
-		(define-key map [M-down] 'phreeqc-next-fold)
+		;; (define-key map [tab] 'folding-shift-in)
+		;; (define-key map [C-tab] 'folding-shift-in)
+		;; (define-key map [backtab] 'folding-shift-out)
+		;; (define-key map [M-up] 'phreeqc-previous-fold)
+		;; (define-key map [M-down] 'phreeqc-next-fold)
 		(define-key map [menu-bar phreeqc] (cons "Phreeqc-Out" menu-map))
-		(define-key menu-map [folding-mode]
-          '("Toggle folding" . folding-mode))
-		(define-key menu-map [phreeqc-previous-fold]
-          '("Jump to previous simulation" . phreeqc-previous-fold))
-		(define-key menu-map [phreeqc-next-fold]
-          '("Jump to next simulation" . phreeqc-next-fold))
+		;; (define-key menu-map [folding-mode]
+        ;;   '("Toggle folding" . folding-mode))
+		;; (define-key menu-map [phreeqc-previous-fold]
+        ;;   '("Jump to previous simulation" . phreeqc-previous-fold))
+		;; (define-key menu-map [phreeqc-next-fold]
+        ;;   '("Jump to next simulation" . phreeqc-next-fold))
 		;; (define-key menu-map [phreeqc-compile]
 		;; 	'("Run Phreeqc" . phreeqc-compile))
 		;; (define-key menu-map [phreeqc-visit-output]
@@ -319,13 +319,13 @@ with no args, if that value is non-nil."
   (interactive)
   (require 'compile)
   (require 'autorevert)
-  (require 'folding)
+  ;; (require 'folding)
 
   (kill-all-local-variables)
   (use-local-map phreeqc-mode-map)
   (make-local-variable 'comment-column)
   (make-local-variable 'comment-end)
-  (make-local-variable 'comment-indent-function)
+  ;; (make-local-variable 'comment-indent-function)
   (make-local-variable 'comment-start)
   (make-local-variable 'comment-start-skip)
   (make-local-variable 'comment-line-function)
@@ -347,12 +347,12 @@ with no args, if that value is non-nil."
 
   (setq comment-column 32)
   (setq comment-end "")
-  (setq comment-indent-function 'c-comment-indent)
+  ;; (setq comment-indent-function 'c-comment-indent)
   (setq comment-start "# ")
   (setq comment-start-skip "#+ *")
   (setq font-lock-defaults '(phreeqc-font-lock-keywords))
   (setq font-lock-keywords phreeqc-font-lock-keywords)
-  (setq indent-line-function 'tab-to-tab-stop)
+  ;; (setq indent-line-function 'tab-to-tab-stop)
   (setq local-abbrev-table phreeqc-mode-abbrev-table)
   (setq major-mode 'phreeqc-mode)
   (setq mode-name "Phreeqc")
@@ -366,7 +366,7 @@ with no args, if that value is non-nil."
 ;  (setq font-lock-defaults '(phreeqc-font-lock-keywords))
 ;  (setq font-lock-keywords phreeqc-font-lock-keywords)
 ;  (folding-add-to-marks-list 'phreeqc-output-mode "Reading input"  "End of")
-  (folding-add-to-marks-list 'phreeqc-mode "TITLE" "END" nil t)
+  ;; (folding-add-to-marks-list 'phreeqc-mode "TITLE" "END" nil t)
   (run-hooks 'phreeqc-mode-hook))
 
 (defun phreeqc-output-mode ()
@@ -377,7 +377,8 @@ with no args, if that value is non-nil."
 ;  (setq font-lock-defaults '(phreeqc-font-lock-keywords))
 ;  (setq font-lock-keywords phreeqc-font-lock-keywords)
 ;  (folding-add-to-marks-list 'phreeqc-output-mode "Reading input"  "End of")
-  (folding-add-to-marks-list 'phreeqc-output-mode "Reading input data for simulation" "End of" nil t)
+  ;; (folding-add-to-marks-list 'phreeqc-output-mode "Reading input data for simulation" "End of" nil t)
+
   (setq major-mode 'phreeqc-output-mode)
   (setq mode-name "Phreeqc-Output")
   (make-local-variable 'phreeqc-output-font-lock-keywords)
@@ -387,9 +388,9 @@ with no args, if that value is non-nil."
   (make-local-variable 'font-lock-defaults)
   (setq font-lock-defaults '(phreeqc-output-font-lock-keywords))
   (setq font-lock-keywords phreeqc-output-font-lock-keywords)
-  (add-hook 'before-revert-hook (lambda nil
-                                  (unless (phreeqc-run-fail-p)
-                                    (folding-mode nil))) t)
+  ;; (add-hook 'before-revert-hook (lambda nil
+  ;;                                 (unless (phreeqc-run-fail-p)
+  ;;                                   (folding-mode nil))) t)
   (add-hook 'after-revert-hook (lambda nil
                                  (if (phreeqc-run-fail-p)
                                      (phreeqc-goto-error)
@@ -400,7 +401,7 @@ with no args, if that value is non-nil."
                                  (font-lock-fontify-buffer)) t)
 
   (read-only-mode t)
-;;  (auto-revert-mode t)
+  (auto-revert-mode t)
   (if (phreeqc-run-fail-p)
       (phreeqc-goto-error)
     ;;    (folding-mode t)
@@ -439,22 +440,22 @@ with no args, if that value is non-nil."
   (interactive)
   (indent-to (* (1+ (/ (current-indentation) phreeqc-indent)) phreeqc-indent)))
 
-(defun phreeqc-next-fold ()
-  "Move to next simulation in folded output mode."
-  (interactive)
-  (if folding-stack
-      (folding-shift-out t))
-  (next-line)
-  (folding-next-visible-heading)
-  (folding-shift-in))
+;; (defun phreeqc-next-fold ()
+;;   "Move to next simulation in folded output mode."
+;;   (interactive)
+;;   (if folding-stack
+;;       (folding-shift-out))
+;;   (next-line)
+;;   (folding-next-visible-heading)
+;;   (folding-shift-in))
 
-(defun phreeqc-previous-fold ()
-  "Move to previous simulation in folded output mode."
-  (interactive)
-  (if folding-stack
-      (folding-shift-out t))
-  (folding-next-visible-heading 1)
-  (folding-shift-in t))
+;; (defun phreeqc-previous-fold ()
+;;   "Move to previous simulation in folded output mode."
+;;   (interactive)
+;;   (if folding-stack
+;;       (folding-shift-out))
+;;   (folding-next-visible-heading 1)
+;;   (folding-shift-in))
   
 
 (defun phreeqc-compile ()
@@ -506,12 +507,12 @@ with no args, if that value is non-nil."
   (find-file-other-frame phreeqc-manual-fn))
 
 
-(defun phreeqc-next-output-fold ()
-  "Visit output from Phreeqc-Simulation and move cursor to next fold."
-  (interactive)
-  (save-excursion
-    (phreeqc-visit-output)
-    (phreeqc-next-fold)))
+;; (defun phreeqc-next-output-fold ()
+;;   "Visit output from Phreeqc-Simulation and move cursor to next fold."
+;;   (interactive)
+;;   (save-excursion
+;;     (phreeqc-visit-output)
+;;     (phreeqc-next-fold)))
     
 
 (defun phreeqc-user-plot ()
