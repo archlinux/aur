@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=mate-power-manager
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -14,14 +14,14 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libcanberra'
-             'libgnome-keyring' 'libnotify' 'libunique3' 'mate-desktop>=1.19' 'upower')
-makedepends=('docbook2x' 'docbook-xml' 'mate-common>=1.19' 'mate-panel>=1.19' 'xmlto' 'yelp-tools'
-             'gtk3' 'libunique3' 'mate-desktop>=1.19')
+             'libgnome-keyring' 'libnotify' 'libunique3' 'mate-desktop-dev' 'upower')
+makedepends=('docbook2x' 'docbook-xml' 'mate-common-dev' 'mate-panel-dev' 'xmlto' 'yelp-tools'
+             'gtk3' 'libunique3' 'mate-desktop-dev')
 optdepends=('mate-panel: Set brightness and inhibit power management from the panel'
             'yelp: for reading MATE help documents')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra')
-sha1sums=('54f196523980196d06316babbdf1993a1dec90d6')
+sha1sums=('6317d202ced93a68e457a37097819ee9867c9ce3')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
