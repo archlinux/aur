@@ -1,12 +1,13 @@
 pkgbase = fakeroot-tcp
 	pkgdesc = Tool for simulating superuser privileges,with tcp ipc
-	pkgver = 1.23
-	pkgrel = 1
+	pkgver = 1.24
+	pkgrel = 2
 	url = http://packages.debian.org/fakeroot
 	install = fakeroot.install
 	arch = i686
 	arch = x86_64
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = po4a
 	depends = glibc
@@ -14,11 +15,11 @@ pkgbase = fakeroot-tcp
 	depends = sed
 	depends = util-linux
 	depends = sh
-	provides = fakeroot=1.23-1
+	provides = fakeroot=1.24-2
 	conflicts = fakeroot
-	source = http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.23.orig.tar.xz
+	source = http://ftp.debian.org/debian/pool/main/f/fakeroot/fakeroot_1.24.orig.tar.gz
 	source = silence-dlerror.patch
-	md5sums = b82c5e99b6365a838e73d05718083f6a
+	md5sums = 964e5f438f1951e5a515dd54edd50fa6
 	md5sums = 5fba0b541b5af39d804265223fda525c
 
 pkgname = fakeroot-tcp
