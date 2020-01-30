@@ -1,17 +1,38 @@
 pkgbase = r-biocparallel
 	pkgdesc = Bioconductor facilities for parallel evaluation
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/BiocParallel.html
+	arch = i686
 	arch = x86_64
-	license = Artistic-2.0
+	license = GPL2
+	license = GPL3
+	makedepends = gcc>=4.3
 	depends = r
+	depends = r-futile.logger
 	depends = r-snow
 	depends = r-bh
-	depends = r-futilelogger
-	depends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocParallel_1.20.0.tar.gz
-	sha1sums = ab035aff4cb307d0f13639d5e50818499556b737
+	optdepends = r-biocgenerics
+	optdepends = r-foreach
+	optdepends = r-batchjobs
+	optdepends = r-bbmisc
+	optdepends = r-doparallel
+	optdepends = r-rmpi
+	optdepends = r-genomicranges
+	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
+	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	optdepends = r-variantannotation
+	optdepends = r-rsamtools
+	optdepends = r-genomicalignments
+	optdepends = r-shortread
+	optdepends = r-codetools
+	optdepends = r-runit
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-batchtools
+	optdepends = r-data.table
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocParallel_1.20.1.tar.gz
+	sha1sums = 99be1cf32bb153b958c6af5834e89f541b23876d
 
 pkgname = r-biocparallel
 
