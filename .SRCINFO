@@ -1,13 +1,13 @@
 pkgbase = neon-wallet-bin
 	pkgdesc = Lightweight Wallet for the NEO CryptoCurrency
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/CityOfZion/neon-wallet
 	install = neon-wallet-bin.install
 	arch = x86_64
 	license = MIT
-	source_x86_64 = https://github.com/CityOfZion/neon-wallet/releases/download/2.3.0/Neon-2.3.0_amd64.Linux.deb
-	sha256sums_x86_64 = a65f2ac41313b567b60a6e69af118e9b291cacb390ca787699396b769beb9f48
+	source_x86_64 = https://github.com/CityOfZion/neon-wallet/releases/download/2.4.0/Neon-2.4.0_amd64.Linux.deb
+	sha256sums_x86_64 = c4ce999595515b61a45203c8ef89fa2e893e46996b0a6190f118d6ab02ef8cc9
 
 pkgname = neon-wallet-bin
 
