@@ -1,21 +1,22 @@
 pkgbase = mindustry
-	pkgver = 5.0_102
+	pkgver = 5.0_103
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Anuken/Mindustry
 	arch = any
 	license = GPL3
 	makedepends = java-environment>=8
+	makedepends = java-environment<13
 	makedepends = libicns
 	depends = java-runtime>=8
 	depends = sh
 	depends = hicolor-icon-theme
-	source = mindustry-102.tar.gz::https://github.com/Anuken/Mindustry/archive/v102.tar.gz
+	source = mindustry-103.tar.gz::https://github.com/Anuken/Mindustry/archive/v103.tar.gz
 	source = mindustry.desktop
 	source = mindustry.sh
 	source = mindustry-server.desktop
 	source = mindustry-server.sh
-	sha256sums = 7e9b2ade8976fb4b3318376d0f21a76aa67ccaa10bc5d1df758170b0c91d59bc
+	sha256sums = b77f1e8332f6b5d186be077e8a61509be159fa817fb4da81852fef85bfab3e16
 	sha256sums = e5fd49ed3456c53e91b834cb388956e3f9ded4e2c880352d36cf9c2246ca0f0b
 	sha256sums = 938f5f9f636379402ba0bb9a53345de499f4f3fd50f232b31605129dcf4ea6c9
 	sha256sums = 053030932334f40145e927f6c7e9ebf01bd28ddd1e7b9fba6234b51cc83ad241
