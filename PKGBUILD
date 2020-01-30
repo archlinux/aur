@@ -1,6 +1,6 @@
 # Maintainer: Matthieu Froment <thieume2 {at} hotmail {dot} com>
 pkgname=keepass-fr
-pkgver=2.43
+pkgver=2.44
 pkgrel=1
 pkgdesc="French locale for keepass"
 license=('GPL2')
