@@ -3,7 +3,7 @@
 pkgname=ripasso-git
 pkgrelname=ripasso
 pkgver=294.a6e83b9
-pkgrel=1
+pkgrel=2
 pkgdesc="A password manager that uses the file format of the standard unix password manager 'pass', implemented in rust."
 url="https://github.com/cortex/ripasso/"
 arch=('x86_64')
