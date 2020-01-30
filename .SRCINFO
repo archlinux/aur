@@ -1,18 +1,16 @@
 pkgbase = chromium-extension-adnauseam
 	pkgdesc = An ad-blocker which silently simulates clicks on each blocked ad, confusing trackers
-	pkgver = 3.9.102
+	pkgver = 3.9.103
 	pkgrel = 1
 	url = https://adnauseam.io
 	install = chromium-extension-adnauseam.install
 	arch = any
 	license = GPL3
 	makedepends = zip
-	makedepends = grep
-	makedepends = curl
 	optdepends = chromium: open-source web browser from Google
 	optdepends = google-chrome: Google's freeware web browser
-	source = https://github.com/dhowe/AdNauseam/releases/download/v3.9.102/adnauseam-3.9.102.chromium.zip
-	sha256sums = SKIP
+	source = https://github.com/dhowe/AdNauseam/releases/download/v3.9.103/adnauseam-3.9.103.chromium.zip
+	b2sums = 117d9a9ce57e0684bf5c8f01babec9c70c8fb0ebce3426d61c2374a30a1cf5bd31bd053b223df0df46f1077478ae3371219195899477947ac08fbceba0948a0c
 
 pkgname = chromium-extension-adnauseam
 

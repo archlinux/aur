@@ -1,26 +1,20 @@
-# Maintainer: Yurii <yu hrysh at proton mail dot com>
+# Maintainer: Yurii <yu hrysh at posteo dot net>
 
 pkgname=chromium-extension-adnauseam
-pkgver=3.9.102
+pkgver=3.9.103
 pkgrel=1
 pkgdesc='An ad-blocker which silently simulates clicks on each blocked ad, confusing trackers'
 arch=('any')
 url='https://adnauseam.io'
 license=('GPL3')
-makedepends=('zip' 'grep' 'curl')
+makedepends=('zip')
 optdepends=("chromium: open-source web browser from Google"
             "google-chrome: Google's freeware web browser")
 install=${pkgname}.install
 source=("https://github.com/dhowe/AdNauseam/releases/download/v${pkgver}/adnauseam-${pkgver}.chromium.zip")
 
-pkgver() {
-   # Automatically get latest release version because I'm too lazy to properly maintain this
-   # This URL redirects you to https://github.com/dhowe/AdNauseam/releases/tag/v%LATEST_VERSION
-   curl https://github.com/dhowe/AdNauseam/releases/latest --silent --location --head --output /dev/null --write-out '%{url_effective}' | grep '\d+(\.\d+)*' --perl-regexp --only-matching
-}
-
 package() {
    mkdir -p "${pkgdir}/usr/share/${pkgname}"
    cp -dr --no-preserve=ownership "${srcdir}/adnauseam.chromium"/* "${pkgdir}/usr/share/${pkgname}/"
 }
-sha256sums=('SKIP')
+b2sums=('117d9a9ce57e0684bf5c8f01babec9c70c8fb0ebce3426d61c2374a30a1cf5bd31bd053b223df0df46f1077478ae3371219195899477947ac08fbceba0948a0c')
