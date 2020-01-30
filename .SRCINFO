@@ -1,0 +1,15 @@
+pkgbase = unflac
+	pkgdesc = A command line tool for fast frame accurate audio image + cue sheet splitting.
+	pkgver = r55.0ed8af0
+	pkgrel = 1
+	url = https://github.com/ftrvxmtrx/unflac
+	arch = x86_64
+	license = unknown
+	makedepends = go-pie
+	makedepends = git
+	depends = ffmpeg
+	source = git+https://github.com/ftrvxmtrx/unflac
+	sha256sums = SKIP
+
+pkgname = unflac
+
