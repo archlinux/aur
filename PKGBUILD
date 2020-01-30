@@ -2,7 +2,7 @@
 
 pkgname=minipro-git
 pkgver=0.4.r15.gdd76628
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source programming utility for autoelectric.cn Minipro TL866"
 url="https://gitlab.com/DavidGriffith/minipro"
 arch=("i686" "x86_64")
@@ -32,7 +32,7 @@ build()
 package()
 {
   cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}" PREFIX="/usr" COMPLETIONS_DIR="${pkgdir}/usr/share/bash-completion/completions" install
+  make DESTDIR="${pkgdir}" PREFIX="/usr" COMPLETIONS_DIR="/usr/share/bash-completion/completions" install
 }
 
 # vim: ts=2 sw=2 et:
