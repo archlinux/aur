@@ -1,20 +1,30 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-# Based on r-colorspace PKGBUILD
+
+_cranname=snow
+_cranver=0.4-3
 pkgname=r-snow
-_cran_name=snow
-pkgver=0.4_3
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Support for simple parallel computing in R."
-arch=('x86_64')
-url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
-license=('GPL3')
-depends=('r' 'r-utils')
-source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver//_/-}.tar.gz")
+pkgdesc="Simple Network of Workstations"
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=('GPL2' 'GPL3')
+depends=('r>=2.13.1')
+optdepends=('r-rmpi' 'r-rlecuyer' 'r-nws')
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('8ea060a12258480ee5ccb33bb522894c')
 
-package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+build(){
+    cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+    R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
+package() {
+    cd "${srcdir}"
+
+    install -dm0755 "${pkgdir}/usr/lib/R/library"
+    cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
+
