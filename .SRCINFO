@@ -3,13 +3,28 @@ pkgbase = r-biostrings
 	pkgver = 2.54.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Biostrings.html
+	arch = i686
 	arch = x86_64
 	license = Artistic-2.0
-	depends = r
-	depends = r-biocgenerics
-	depends = r-s4vectors
+	makedepends = gcc
+	depends = r>=3.5.0
+	depends = r-biocgenerics>=0.31.5
+	depends = r-s4vectors>=0.21.13
 	depends = r-iranges
-	depends = r-xvector
+	depends = r-xvector>=0.23.2
+	optdepends = r-rmpi
+	optdepends = r-bsgenome
+	optdepends = r-bsgenome.celegans.ucsc.ce2
+	optdepends = r-bsgenome.dmelanogaster.ucsc.dm3
+	optdepends = r-bsgenome.hsapiens.ucsc.hg18
+	optdepends = r-drosophila2probe
+	optdepends = r-hgu95av2probe
+	optdepends = r-hgu133aprobe
+	optdepends = r-genomicfeatures
+	optdepends = r-hgu95av2cdf
+	optdepends = r-affy
+	optdepends = r-affydata
+	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biostrings_2.54.0.tar.gz
 	sha1sums = 77a36598418bcd15a97a789f0fd62d63a00687da
 
