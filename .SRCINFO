@@ -1,5 +1,5 @@
 pkgbase = ruby-rr-bootstrap
-	pkgdesc = RR is a test double framework that features a rich selection of double techniques and a terse syntax
+	pkgdesc = RR is a test double framework that features a rich selection of double techniques and a terse syntax (bootstrap version)
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://rr.github.io/rr
