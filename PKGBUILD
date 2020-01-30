@@ -22,8 +22,8 @@ prepare()
     cd "${srcdir}/${pkgname//-rc}-${pkgver}"
     
     # Update version in patchfile, then apply it
-    sed -i "s/^version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
-    patch -Np1 -i "${srcdir}/platform.patch"
+    #sed -i "s/^version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
+    #patch -Np1 -i "${srcdir}/platform.patch"
 
     echo "tools.ctags.path=/usr/bin" >> platform.txt
     echo "tools.ctags.cmd.path={path}/arduino-ctags" >> platform.txt
