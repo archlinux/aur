@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=marco
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.2
@@ -14,12 +14,12 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('glib2' 'libcanberra' 'libgtop' 'libice' 'libsm' 'libxt'
-         'mate-desktop>=1.19' 'startup-notification' 'zenity')
-makedepends=('mate-common>=1.19' 'yelp-tools')
+         'mate-desktop-dev' 'startup-notification' 'zenity')
+makedepends=('mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('d14909587eaae9c8f5abf54f5e6069cdc482b9f8')
+sha1sums=('ab7ef082ac014f4dbd9316481fc417d6dd08ccca')
 
 prepare() {
     cd "${srcdir}"
