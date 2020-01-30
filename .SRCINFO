@@ -1,0 +1,13 @@
+pkgbase = magicwand
+	pkgdesc = MagicWand makes your input devices context sensitive
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/muesli/magicwand
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/muesli/magicwand/archive/v0.1.0.tar.gz
+	sha256sums = 381e5eccfa512f484e1b0536a76d72e53c9bc46da99fafeb398c61ca1adff983
+
+pkgname = magicwand
+
