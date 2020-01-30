@@ -7,9 +7,9 @@ license=('GPL2')
 depends=("keepass")
 #makedepends=('unzip')
 url="http://keepass.info/translations.html"
-source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-French-c.zip)
+source=(http://downloads.sourceforge.net/keepass/KeePass-${pkgver}-French.zip)
 arch=(any)
-md5sums=('70cac85929a80517915178f61ef4fde1')
+md5sums=('2ef5e0961cfa47a8879b0f8d84207aae')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass/Languages

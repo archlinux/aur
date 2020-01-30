@@ -6,8 +6,8 @@ pkgbase = keepass-fr
 	arch = any
 	license = GPL2
 	depends = keepass
-	source = http://downloads.sourceforge.net/keepass/KeePass-2.44-French-c.zip
-	md5sums = 70cac85929a80517915178f61ef4fde1
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.44-French.zip
+	md5sums = 2ef5e0961cfa47a8879b0f8d84207aae
 
 pkgname = keepass-fr
 
