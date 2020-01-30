@@ -1,0 +1,17 @@
+pkgbase = ghidra-extension-ghidra-firmware-utils-git
+	pkgdesc = Ghidra utilities for analyzing PC firmware
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/al3xtjames/ghidra-firmware-utils
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gradle
+	makedepends = unzip
+	makedepends = ghidra
+	depends = ghidra
+	source = ghidra-extension-ghidra-firmware-utils-git::git+https://github.com/al3xtjames/ghidra-firmware-utils
+	sha512sums = SKIP
+
+pkgname = ghidra-extension-ghidra-firmware-utils-git
+
