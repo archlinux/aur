@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=mate-system-monitor
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.1
+pkgver=${_ver}.0
 pkgrel=5
 pkgdesc="A system monitor for MATE (GTK3 version)"
 url="http://mate-desktop.org"
@@ -14,11 +14,11 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dconf' 'dbus-glib' 'glibmm' 'gtkmm3' 'libgtop' 'libwnck3' 'librsvg')
-makedepends=('docbook2x' 'mate-common>=1.19' 'yelp-tools')
+makedepends=('docbook2x' 'mate-common-dev' 'yelp-tools')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('d92a6a28e5499c5cc0ddd0f95b0caf59ffc2e2c0')
+sha1sums=('7e17f08e537e76db5f9fb0234cd002d0b6747979')
 
 prepare() {
     cd "${srcdir}"
