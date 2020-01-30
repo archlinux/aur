@@ -1,0 +1,11 @@
+--- src/guiscrcpy/setup.py	2020-01-30 15:53:31.736909981 -0700
++++ src.new/guiscrcpy/setup.py	2020-01-30 15:54:29.497443062 -0700
+@@ -16,7 +16,7 @@
+ 
+ setup(
+     name='guiscrcpy',
+-    version=repo.git.describe("--tags")[:-9],
++    version=3.0,
+     description='An Open Source - Fast -  Android Screen Mirroring system.',
+     long_description=long_description,
+     long_description_content_type='text/markdown',
