@@ -1,7 +1,7 @@
 #Maintainer: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=brogue-ce-git
-pkgver=1.8.1.r0.g9f9254d
+pkgver=1.8.1.r8.g2a3e917
 pkgrel=1
 pkgdesc="Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ build() {
   
   cd linux
   ./make-link-for-desktop.sh > /dev/null 
-  sed -i -e "s|$(pwd)|/opt/${pkgname}|" -e 's/brogue$/brogue.sh/' -e 's/bin\///' "brogue.desktop"
+  sed -i -e "s|$(pwd)|/opt/${pkgname}|" -e 's/brogue$/brogue-multiuser.sh/' -e 's/bin\///' "brogue.desktop"
   sed -i -e "s|/opt/brogue|/opt/${pkgname}|" -e "s|local/share/Brogue|local/share/${pkgname}|" brogue-multiuser.sh
 }
 
