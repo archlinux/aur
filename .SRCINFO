@@ -1,7 +1,7 @@
 pkgbase = edx-dl
 	pkgdesc = Tool to download videos and lecture materials from Open edX-based sites
-	pkgver = 0.1.10
-	pkgrel = 2
+	pkgver = 0.1.11
+	pkgrel = 1
 	url = https://github.com/coursera-dl/edx-dl
 	arch = any
 	license = LGPL3
@@ -11,8 +11,8 @@ pkgbase = edx-dl
 	depends = youtube-dl
 	depends = python-requests
 	conflicts = edx-downloader-git
-	source = edx-dl-0.1.10.tar.gz::https://github.com/coursera-dl/edx-dl/archive/0.1.10.tar.gz
-	sha512sums = 3de368688c8cd7f283dbdb675c5ad75e654d67d26f9a8b6e0724007ff5551fbdbbffd4059af371c1b9b09d1d22d0525466d3fdfb6f16bd7778b9f940a06f7e6d
+	source = edx-dl-0.1.11.tar.gz::https://github.com/coursera-dl/edx-dl/archive/0.1.11.tar.gz
+	sha512sums = 50b6902f131a99dfba2b41a140989d2d519cd02d25b9184e320454be282912638833c04fb36962c17fc7633c6c48331c00e524cc1908c4c0bc857e00f0200672
 
 pkgname = edx-dl
 
