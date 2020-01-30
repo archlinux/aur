@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -66,7 +66,7 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
-_bfq_rel="r2K191206"
+_bfq_rel="r2K200130"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
@@ -351,7 +351,7 @@ sha512sums=('e7aaa541ccf66ca8373fe53794786c8b819da824b17acc497d5080f4fff5bef90ba
             'SKIP'
             'c8f339d0ec0be917cf12699d3700998acf7fbb2c420d8fcb758e20fd35b0766ce267af74e259b7dcdb624b3a878dca70fee39d98eb35813bdfc62a7b2a781fa5'
             'SKIP'
-            '10c9bbb02c6a0afe869efae97fe6133062110f46c973fd7b60cdd8a88f14de7646d206d5c2bbbf1170ca0aa9cf7c2d0daab477d12c074dc18e9b98075cd2b57c'
+            'd3fd1b94ada70725d912be311eceb8529740e2a32aebd0f199e1249c75d104c2f1f67acc6363cdea787a7795879d049e38fc8fd08b6009bdbd7af6dd6606d866'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             'a1303a9bb5a0ca81df8d6f991cf8c8d6854ac045b839e1d2d71ff4acff92a59eb102b6647d500c5cb3cee1639176018f6b6ed68cbe8502d71e0d24478a4ba22c'
             'f8ee99e10a7ba396101a952a895bb665375b3da705ee3da05678023b2a57b9ac9690ffc4b2af16e8fa3af94d291cb8958f0477a1531ec23e5455d752a199c46a'
