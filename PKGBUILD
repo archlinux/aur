@@ -1,19 +1,31 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
+
+_bcname=S4Vectors
+_bcver=0.24.3
 pkgname=r-s4vectors
-_bc_name=S4Vectors
-pkgver=0.24.0
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
-pkgdesc="S4 implementation of vector-like and list-like objects"
-url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
-arch=("x86_64")
+pkgdesc="Foundation of vector-like and list-like containers in Bioconductor"
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+arch=(i686 x86_64)
 license=('Artistic-2.0')
-depends=('r' 'r-biocgenerics')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('9e96c9ff857ae4243d346b66e9281404dc3292c1')
+depends=('r>=3.3.0' 'r-biocgenerics>=0.31.1')
+makedepends=('gcc')
+optdepends=('r-iranges' 'r-genomicranges' 'r-summarizedexperiment' 'r-delayedarray' 'r-shortread' 'r-data.table' 'r-runit' 'r-biocstyle')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+sha1sums=('f8122844ef2569a1dad3ad10af59638d987b3b2a')
+
+build(){
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l $srcdir
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "$_bcname" "$pkgdir/usr/lib/R/library"
 }
+
