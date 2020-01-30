@@ -4,7 +4,7 @@
 
 pkgname=xscreensaver-hacks
 _srcname=xscreensaver
-pkgver=5.40
+pkgver=5.43
 pkgrel=1
 pkgdesc="Standalone apps from xscreensaver, including phosphor and apple2 terminals."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ depends=('libxxf86vm' 'libglade' 'mesa' 'pam' 'libxmu')
 makedepends=('bc')
 source=(http://www.jwz.org/xscreensaver/$_srcname-$pkgver.tar.gz \
         LICENSE)
-sha1sums=('82c7433fe008e6ea9ab8683cf3325a673b8a8233'
+sha1sums=('7a0e24b224e1316f0a211446db301de1c22daaa0'
           '4209ea586b204fd1d81c382a0522c654f9fd9134')
 
 build() {
