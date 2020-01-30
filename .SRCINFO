@@ -1,0 +1,16 @@
+pkgbase = ruby-rr-bootstrap
+	pkgdesc = RR is a test double framework that features a rich selection of double techniques and a terse syntax
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://rr.github.io/rr
+	arch = any
+	license = MIT
+	depends = ruby
+	provides = ruby-rr
+	conflicts = ruby-rr
+	options = !emptydirs
+	source = https://rubygems.org/downloads/rr-1.2.1.gem
+	md5sums = 4fa05d50fc8bee7538da49f17baedb2f
+
+pkgname = ruby-rr-bootstrap
+
