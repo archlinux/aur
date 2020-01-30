@@ -46,7 +46,7 @@ package() {
     cd $srcdir/sole-survivor
     mkdir -p $pkgdir/usr/{lib/openra-ss/mods,bin,share/pixmaps,share/doc/packages/openra-ss,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-ss
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ss
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ss
     cp -r mods/ss $pkgdir/usr/lib/openra-ss/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-ss/mods
     install -Dm775 $srcdir/openra-ss $pkgdir/usr/bin/openra-ss
