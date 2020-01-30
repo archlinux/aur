@@ -1,20 +1,15 @@
 pkgbase = gnu-efi-libs-fedora-git
-	pkgdesc = Library for building UEFI Applications using GNU toolchain - Fedora GIT Version
-	pkgver = 0.53.430c83a
+	pkgdesc = Library for building UEFI Applications using GNU toolchain (Fedora development version)
+	pkgver = r237.4eaf7e1
 	pkgrel = 1
-	url = http://sourceforge.net/projects/gnu-efi/
+	url = https://sourceforge.net/projects/gnu-efi/
 	arch = x86_64
-	arch = i686
-	license = GPL
+	license = BSD
 	makedepends = git
-	makedepends = pciutils
 	provides = gnu-efi-libs
 	conflicts = gnu-efi-libs
-	options = staticlibs
-	options = !strip
-	options = !makeflags
-	source = gnu-efi-fedora::git+https://github.com/vathpela/gnu-efi.git#branch=fedora
-	sha1sums = SKIP
+	source = git+https://github.com/vathpela/gnu-efi.git#branch=fedora-32
+	sha512sums = SKIP
 
 pkgname = gnu-efi-libs-fedora-git
 
