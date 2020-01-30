@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.23
+_ver=1.19
 _pkgbase=mate-screensaver
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc='Screensaver for MATE'
 url="http://mate-desktop.org"
@@ -13,15 +13,15 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('dbus-glib' 'glib2' 'libmatekbd-dev' 'libnotify' 'libxss'
-         'mate-desktop-dev' 'mate-menus-dev' 'mate-session-manager-dev')
+depends=('dbus-glib' 'glib2' 'libmatekbd>=1.19' 'libnotify' 'libxss'
+         'mate-desktop>=1.19' 'mate-menus>=1.19' 'mate-session-manager>=1.19')
 makedepends=('intltool>=0.50.1')
 optdepends=('mate-power-manager: Add power management support.'
             'mate-screensaver-hacks: Additional screensavers.'
             'rss-glx: Really slick screensavers.')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('1b68cb58426a8d591a44cf2cf1e4265f24285c6f')
+sha1sums=('6fa1fe3f9c30749073d2d900a32d6d5ada6be668')
 
 prepare() {
     cd "${srcdir}"
