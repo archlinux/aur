@@ -1,6 +1,6 @@
 pkgbase = photoflare-git
 	pkgdesc = Quick, simple but powerful Cross Platform image editor.
-	pkgver = 1.6.0.r7.g9aa0ceb
+	pkgver = 1.6.2.r0.gb30cb87
 	pkgrel = 1
 	url = http://photoflare.io/
 	arch = x86_64

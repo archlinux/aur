@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=photoflare-git
-pkgver=1.6.0.r7.g9aa0ceb
+pkgver=1.6.2.r0.gb30cb87
 pkgrel=1
 pkgdesc="Quick, simple but powerful Cross Platform image editor."
 arch=('x86_64')
@@ -31,5 +31,7 @@ build() {
 }
 
 package() {
-  make -C "${pkgname%-*}" INSTALL_ROOT="$pkgdir/" install
+  cd "${pkgname%-*}"
+  make INSTALL_ROOT="$pkgdir" install
+  rm -r "$pkgdir/usr/share/pixmaps"
 }
