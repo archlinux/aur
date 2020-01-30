@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=mozo
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -13,11 +13,11 @@ arch=('any')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('gtk-update-icon-cache' 'mate-menus>=1.19' 'python2-gobject')
-makedepends=('mate-common>=1.19')
+depends=('gtk-update-icon-cache' 'mate-menus-dev' 'python2-gobject')
+makedepends=('mate-common-dev')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('be5d7546f49a512117040d0da70c82bfce0e994a')
+sha1sums=('7c7c2aff98fa08bc19682b4b1f131f6108355a83')
 
 prepare() {
     cd "${srcdir}/${_pkgbase}-${pkgver}"
