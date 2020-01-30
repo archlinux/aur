@@ -4,7 +4,7 @@
 # Based on [extra]'s thunderbird
 
 pkgname=thunderbird-nightly
-pkgver=74.0a1.20191231
+pkgver=74.0a1.20200130
 _version=74.0a1
 pkgrel=1
 pkgdesc='Standalone Mail/News reader - Nightly build'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://www.mozilla.org/thunderbird"
 license=('MPL' 'GPL' 'LGPL')
 depends=('alsa-lib' 'cairo' 'dbus-glib' 'desktop-file-utils' 'fontconfig'
-         'freetype2' 'gtk2' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
+         'freetype2' 'gtk3' 'hicolor-icon-theme' 'hunspell' 'libevent' 'libjpeg'
          'libmng' 'libpng' 'libvpx' 'libxt' 'mozilla-common' 'nspr' 'nss'
          'shared-mime-info' 'sqlite' 'startup-notification')
 optdepends=('libcanberra: for sound support')

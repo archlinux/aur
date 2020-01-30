@@ -1,6 +1,6 @@
 pkgbase = thunderbird-nightly
 	pkgdesc = Standalone Mail/News reader - Nightly build
-	pkgver = 74.0a1.20191231
+	pkgver = 74.0a1.20200130
 	pkgrel = 1
 	url = http://www.mozilla.org/thunderbird
 	install = thunderbird-nightly.install
@@ -15,7 +15,7 @@ pkgbase = thunderbird-nightly
 	depends = desktop-file-utils
 	depends = fontconfig
 	depends = freetype2
-	depends = gtk2
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = hunspell
 	depends = libevent
