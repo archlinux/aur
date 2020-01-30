@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.4.983.r1143.ga6c79a5
+pkgver=1.4.1006.r1148.gbbaafae
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
@@ -24,16 +24,15 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
-
 pkgver() {
   cd psi-plus
   _ver="$(cat "${srcdir}/psi/version" | cut -d ' ' -f 1)"
   echo "${_ver}.r$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
 }
-            
+
 prepare() {
   cd psi
-  
+
   # makepkg doesn't support --recursive
   # so setup git modules manually
   git submodule init
@@ -48,9 +47,6 @@ prepare() {
     patch -p1 -i "$patch"
   done
 
-  # additional icon themes
-  cp -a "$srcdir"/psi-plus/iconsets .
-  
   # set version 
   cd $srcdir/psi-plus/admin 
   sh psi-plus-nightly-version $srcdir/psi  > $srcdir/psi/version
@@ -60,7 +56,7 @@ build() {
   cd psi
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release  -DCHAT_TYPE=WEBENGINE ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DPSI_PLUS=ON -DCHAT_TYPE=WEBENGINE ..
   make
 }
 
