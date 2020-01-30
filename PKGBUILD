@@ -2,7 +2,7 @@
 
 _pkgname=ghidra-firmware-utils
 pkgname=ghidra-extension-$(echo $_pkgname | tr '[:upper:]' '[:lower:]')-git
-pkgver=0.1
+pkgver=r49.gba9b7cc
 pkgrel=1
 pkgdesc="Ghidra utilities for analyzing PC firmware"
 arch=('x86_64')
@@ -22,7 +22,9 @@ prepare() {
 
 pkgver() {
   cd $srcdir/${_pkgname}
-  echo $(git describe --tags 2>/dev/null || echo '0.1') | sed 's#-#+#g;s#+#+r#'
+  count_commits=$(git rev-list --count HEAD)
+  commit=$(git rev-parse --short HEAD)
+  echo "r${count_commits}.g${commit}"
 }
 
 build() {
