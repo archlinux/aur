@@ -1,0 +1,22 @@
+pkgbase = monopticon-magnum-integration
+	pkgdesc = Monopticon version of Integration libraries for the Magnum C++11/C++14 graphics engine (Git version)
+	pkgver = 2019.10.r32.gb3e2f7f
+	pkgrel = 1
+	url = https://magnum.graphics
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = magnum-git
+	depends = bullet
+	depends = eigen
+	depends = glm
+	depends = imgui-src
+	provides = monopticon-magnum-integration
+	conflicts = monopticon-magnum-integration
+	source = git+git://github.com/mosra/magnum-integration.git
+	sha1sums = SKIP
+
+pkgname = monopticon-magnum-integration
+
