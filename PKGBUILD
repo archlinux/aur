@@ -1,7 +1,7 @@
 # Maintainer: uffe _.at._ uffe _.dot._ org
 
 pkgname=minipro-git
-pkgver=0.1.r159.g57b293d
+pkgver=0.4.r15.gdd76628
 pkgrel=1
 pkgdesc="Open source programming utility for autoelectric.cn Minipro TL866"
 url="https://gitlab.com/DavidGriffith/minipro"
