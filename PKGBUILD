@@ -1,3 +1,8 @@
+# Maintainer: neeshy <neeshy@tfwno.gf>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Link Dupont <link@subpop.net>
+
 pkgname=libdbus-minimal
 pkgver=1.12.16
 pkgrel=1
