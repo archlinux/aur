@@ -2,7 +2,7 @@
 # Maintainer: Joseph R Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon-git
 _pkgname=cphalcon
-pkgver=4.0.0
+pkgver=4.0.3
 pkgrel=1
 pkgdesc="High performance, full-stack PHP framework delivered as a C extension. Git package."
 arch=('i686' 'x86_64')
@@ -38,6 +38,7 @@ _PHP_VERSION=`php-config --version`
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
+        git fetch
 	printf "%s" "$(git describe --abbrev=0 --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//g')"
 }
 
