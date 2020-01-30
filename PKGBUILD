@@ -1,7 +1,7 @@
 # Maintainer: Nicolas KAROLAK <nicolas at karolak dot fr>
 pkgname=devc
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool to manage your devcontainers using docker-compose"
 arch=('x86_64')
 url="https://git.karolak.fr/nicolas/devc"
@@ -13,9 +13,9 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://git.karolak.fr/nicolas/$pkgname/archive/v$pkgver.tar.gz")
 #validpgpkeys=('722F069CE8337170B4A2B30370D56B0C9C0FCF6B')
-md5sums=('21cf060b8994498a7126057feda0cc02')
-sha256sums=('764c22e6a01d586f25fabd1806f06d7c48f97f5c6ea6ad8b9e8389f8f46a3854')
-sha512sums=('404f30b2b3a337f944f36d3b289cb89c6fbe15bbb157fc8bceb83aad5f067a78d443d08145c27354143fed026d7b70e6cbb7ef2f90ec614a1de1b2ddb3adfc90')
+md5sums=('e50a360f6bd820300baf184ef66b5c07')
+sha256sums=('ae78ee92ef4bdac31c309ad8af995ac386490df6c8ba0b1f4ea9d1993548bb2b')
+sha512sums=('df1edb7e69564c04796e8a064eab892f02af346d796a6bb263cb2191d523879165957c1768c839c9dbfdf758cef5e8638228ef11403a9a4d62b0f71f20f0dd55')
 
 build() {
 	cd "$pkgname"

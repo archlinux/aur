@@ -5,7 +5,7 @@ all:
 ## build: Build package
 build:
 	@echo "Building..."
-	@makepkg
+	@makepkg --syncdeps --rmdeps
 
 .PHONY: install
 ## install: Install package
@@ -23,6 +23,12 @@ sum:
 srcinfo:
 	@echo "Updating srcinfo..."
 	@makepkg --printsrcinfo >| .SRCINFO
+
+.PHONY: clean
+## clean: Clean up build artifacts
+clean:
+	@echo "Cleaning..."
+	@rm -rf devc-* pkg/ src/
 
 .PHONY: help
 ## help: Prints this help message
