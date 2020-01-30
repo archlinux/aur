@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.23
+_ver=1.19
 _pkgbase=mate-applets
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.4
 pkgrel=5
 pkgdesc="Applets for MATE panel"
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 url="http://mate-desktop.org"
 license=('GPL')
 depends=('glib2' 'gtksourceview2' 'gtk-update-icon-cache' 'libgtop' 'libnotify'
-         'mate-panel-dev' 'polkit' 'python2-dbus' 'python2-gobject' 'upower')
-makedepends=('docbook2x' 'docbook-xsl' 'mate-common-dev' 'yelp-tools' 'gtksourceview3' 'mate-panel-dev')
+         'mate-panel>=1.19' 'polkit' 'python2-dbus' 'python2-gobject' 'upower')
+makedepends=('docbook2x' 'docbook-xsl' 'mate-common>=1.19' 'yelp-tools' 'gtksourceview3' 'mate-panel>=1.19')
 optdepends=('fortune-mod: for displaying fortune cookies in the Wanda the Fish applet'
             'yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('ff9b0a464c61aa5e5819a865f9a4b0c7f33ceda2')
+sha1sums=('e09d4249f0af2833e6a8edc91b15617ab70d270f')
 
 prepare() {
     cd "${srcdir}"
