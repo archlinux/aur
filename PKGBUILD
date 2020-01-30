@@ -2,7 +2,7 @@
 # AUR Category: devel
 
 pkgname=ptxdist
-pkgver=2019.12.0
+pkgver=2020.01.0
 pkgrel=1
 pkgdesc="Embedded Linux build system"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="http://www.ptxdist.org"
 license=('GPL')
 depends=('dialog' 'flex' 'bison' 'patch' 'python2' 'wget')
 source=("http://www.pengutronix.de/software/ptxdist/download/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('eb0c32013dff482195deabb0ce9d0c6d')
-sha512sums=('ea59e48d0fb399c5870babc0cc25c53be964f04514c5605ebc281a0b132cbcad19bc6ad924ab244b183e07a550d424d4b8c27a4f92e065b61da6a1a3321d8ff8')
+md5sums=('283b40a1af19100ca94fbe065fd5a3aa')
+sha512sums=('2b117cb9d2d60c81689fa8ff26f9f549a414dc31fc2208695bd118473c465e15739a43ad84bc4fabe80ee601da30b899f63a827edd9ccb8159604f1aadda7b9f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
