@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -58,7 +58,7 @@ depends=("$_pkgbasename"
 #      'lib32-vid.stab'
       'lib32-libvorbis'
       'lib32-libvpx'
-      'lib32-x264>=157'
+      'lib32-x264>=159'
       'lib32-x265'
       'lib32-xvidcore'
       )
