@@ -2,7 +2,7 @@
 
 pkgname=tl866-updater-git
 _pkgname=TL866
-pkgver=r119.191da21
+pkgver=r196.daf9346
 pkgrel=1
 pkgdesc="Open source software for TL866 eprom programmer"
 arch=('i686' 'x86_64')
