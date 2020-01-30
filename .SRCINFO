@@ -1,6 +1,6 @@
 pkgbase = wraith-master
 	pkgdesc = A Wraith Prism RGB control application built with Kotlin/Native
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://gitlab.com/serebit/wraith-master
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wraith-master
 	depends = libusb
 	depends = gcc
 	depends = glibc
-	source = wraith-master-0.3.1::git+https://gitlab.com/serebit/wraith-master#tag=0.3.1
+	source = wraith-master-0.4.0::git+https://gitlab.com/serebit/wraith-master#tag=0.4.0
 	sha256sums = SKIP
 
 pkgname = wraith-master-cli
