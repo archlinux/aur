@@ -1,0 +1,17 @@
+pkgbase = ruby-test-unit-rr-bootstrap
+	pkgdesc = RR adapter for test-unit (bootstrap version)
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/test-unit/test-unit-rr
+	arch = any
+	license = LGPL2.1
+	depends = ruby
+	depends = ruby-rr
+	provides = ruby-test-unit-rr
+	conflicts = ruby-test-unit-rr
+	options = !emptydirs
+	source = https://rubygems.org/downloads/test-unit-rr-1.0.5.gem
+	md5sums = d2919c305ae5355080afc39904d30a62
+
+pkgname = ruby-test-unit-rr-bootstrap
+
