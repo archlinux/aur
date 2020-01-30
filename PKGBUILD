@@ -3,22 +3,21 @@
 # Contributor: Abhishek Dasgupta <abhidg@gmail.com>
 
 pkgname=weather
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="CLI tool which shows weather forecasts from METAR data"
 arch=('any')
 url="http://fungi.yuggoth.org/weather/"
-depends=('python2')
+depends=('python')
 license=("custom:BSD2")
-source=(http://fungi.yuggoth.org/weather/src/$pkgname-$pkgver.tar.gz)
-md5sums=('51ddb7bc5e9e36d01e615834cc0442dd')
+source=("http://fungi.yuggoth.org/weather/src/$pkgname-$pkgver.tar.gz")
+md5sums=('1356e37f74097007b20987742927921b')
 
-build() {
+prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's|env python|env python2|' *
-
   # set up correlation sets
   sed -i 's| else: default_setpath = ".:~/.weather|&:/usr/share/weather-util|' weather.py
+  sed -i 's|elif searchtype is |elif searchtype == |' weather.py
 }
 
 package() {
@@ -29,7 +28,7 @@ package() {
   install -Dm644 zctas    "$pkgdir/usr/share/weather-util/zctas"
   install -Dm644 zones    "$pkgdir/usr/share/weather-util/zones"
 
-  _python_path=$(python2 -c "import sys ; print [p for p in sys.path if p.startswith('/usr/lib/python2.')][0]")
+  _python_path=$(python3 -c "import sys ; print([p for p in sys.path if p.startswith('/usr/lib/python3.')][0])")
   install -Dm755 weather    "$pkgdir/usr/bin/weather-report"
   install -Dm644 weather.py "$pkgdir/$_python_path/weather.py"
 
