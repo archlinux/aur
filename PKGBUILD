@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=mate-polkit
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.0
@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('LGPL')
 depends=('gtk3' 'polkit' 'accountsservice')
-makedepends=('gobject-introspection' 'mate-common>=1.19')
+makedepends=('gobject-introspection' 'mate-common-dev')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('2e2a3ae287564944f14ca1e0728454550adffae8')
+sha1sums=('d077b7c0dae91a634043e7f3d5e597f1f39f2256')
 
 prepare() {
     cd "${srcdir}"
