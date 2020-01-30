@@ -2,7 +2,7 @@
 # Contributor: Damien Flament <damien.flament@gmx.com>
 
 pkgname=voxelshop
-pkgver=1.8.19
+pkgver=1.8.26
 pkgrel=1
 pkgdesc='An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.'
 
@@ -25,22 +25,21 @@ options=()
 install=
 changelog=
 source=("${pkgname}"
-        "${pkgname}.desktop"
-        "${_icon_filename}::https://raw.githubusercontent.com/simlu/${pkgname}/${pkgver}/resource/img/icons/application/logo.png"
-        "${_source_filename}::https://github.com/simlu/${pkgname}/releases/download/${pkgver}/${pkgname}-bin.zip")
+  "${pkgname}.desktop"
+  "${_icon_filename}::https://raw.githubusercontent.com/simlu/${pkgname}/${pkgver}/resource/img/icons/application/logo.png"
+  "${_source_filename}::https://github.com/simlu/${pkgname}/releases/download/${pkgver}/${pkgname}-bin.zip")
 noextract=("${_source_filename}")
 sha256sums=('1f1535bd452294f1f8261bdd0432e0100e43f41650ff25aa67d92cf786be7df8'
-            '510d8a61c162af0cfed35548fbd5c5a7351ac9735ab27ff7da7a7dbb44346a15'
-            '9117799a571cd29a0402bc43a58c2d3b7caf590a2bcf530347ab3f709e1ee25b'
-            '884b15f5dd222c3dc0a2f09ad29f3e4856878897731bd7c09387b098bc53368a')
+  '510d8a61c162af0cfed35548fbd5c5a7351ac9735ab27ff7da7a7dbb44346a15'
+  '9117799a571cd29a0402bc43a58c2d3b7caf590a2bcf530347ab3f709e1ee25b'
+  '7cba6a2bce6c3ba3d93f1505bc5af00150f00869ea8f97c9a4929d63bd06d11a')
 arch=('any')
 
-
 prepare() {
-  msg2 "Generating startup script..."
+  # Generates the startup script and the Desktop file from the templates and
+  # extract sources manually.
   sed -i "s/{{pkgname}}/${pkgname}/g" "${pkgname}"
 
-  msg2 "Generating Desktop file..."
   sed -i -e "s/{{pkgname}}/${pkgname}/g" \
     -e "s/{{pkgdesc}}/${pkgdesc}/g" \
     -e "s/{{_application_name}}/${_application_name}/g" \
@@ -49,9 +48,7 @@ prepare() {
 
   # Unzip the sources. This is usually done automatically by makepkg. But the
   # extracted directory name conflicts with the startup script name.
-  msg2 "Extracting sources manually..."
-  if [[ ! -d "${pkgname}-${pkgver}" ]]
-  then
+  if [[ ! -d "${pkgname}-${pkgver}" ]]; then
     mkdir "${pkgname}-${pkgver}"
     cd "${pkgname}-${pkgver}"
     bsdtar -xkf "${srcdir}/${_source_filename}"
@@ -61,19 +58,18 @@ prepare() {
 }
 
 package() {
-  msg2 "Installing startup script..."
+  # Installs:
+  #  - the custom startup script
+  #  - the desktop file
+  #  - the application icon
+  #  - the jars.
+  #
   install -D -t "${pkgdir}/usr/bin" "${pkgname}"
-
-  msg2 "Installing Desktop file..."
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
-  
-  msg2 "Installing the icon..."
   install -Dm644 -t "${pkgdir}/usr/share/pixmaps" "${_icon_filename}"
 
-  msg2 "Installing the jars..." 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 -t "${pkgdir}/usr/share/java/${pkgname}" "${pkgname}-start.jar"
   install -Dm644 -t "${pkgdir}/usr/share/java/${pkgname}/lib" lib/*
 }
-
