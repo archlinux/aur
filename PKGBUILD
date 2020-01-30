@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -68,7 +68,10 @@ makedepends=(
       'lib32-ladspa'
       'yasm'
       )
-optdepends=('lib32-ladspa: LADSPA filters')
+optdepends=(
+#      'intel-media-sdk: Intel QuickSync support'
+      'lib32-ladspa: LADSPA filters'
+      )
 provides=(
       'libavcodec.so'
       'libavdevice.so'
