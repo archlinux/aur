@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.23
+_ver=1.19
 _pkgbase=mate-session-manager
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="The MATE Session Handler (GTK3 version)"
 url="http://mate-desktop.org"
@@ -14,16 +14,16 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('dbus-glib' 'glib2' 'gtk3' 'gtk-update-icon-cache' 'libsm' 'libxtst'
-         'mate-desktop-dev' 'mate-polkit-dev' 'mate-settings-daemon-dev'
+         'mate-desktop>=1.19' 'mate-polkit>=1.19' 'mate-settings-daemon>=1.19'
          'ttf-dejavu' 'xdg-user-dirs')
-makedepends=('mate-common-dev' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop-dev' 'mate-polkit-dev' 'mate-settings-daemon-dev')
+makedepends=('mate-common>=1.19' 'xmlto' 'xtrans' 'gtk3' 'mate-desktop>=1.19' 'mate-polkit>=1.19' 'mate-settings-daemon>=1.19')
 optdepends=('lightdm-gtk-greeter: A lightweight display manager'
             'onboard: On-screen keyboard useful for mobility impaired users'
             'orca: Screen reader for blind or visually impaired individuals'
             'xdg-user-dirs-gtk: Add autostart that prompts to rename user directories when switching locales')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('489123bb20479f84e6f1a6ca56feff6154c11db3')
+sha1sums=('6714a5d7a03b5f3ce0c104742ca406cedee3586e')
 
 prepare() {
     cd "${srcdir}"
