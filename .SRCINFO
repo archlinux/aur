@@ -1,7 +1,7 @@
 pkgbase = monopticon
 	pkgdesc = Ethernet traffic visualizer for zeek
 	pkgver = 0.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nskelsey/monopticon
 	arch = x86_64
 	license = GPL

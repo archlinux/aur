@@ -1,7 +1,7 @@
 # Maintainer: Nick Skelsey <nskelsey@gmail.com>
 pkgname=monopticon
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Ethernet traffic visualizer for zeek"
 arch=('x86_64')
 url="https://github.com/nskelsey/monopticon"
@@ -15,11 +15,9 @@ build() {
     mkdir -p build
     cd build
     cmake \
-      -DBROKER_ROOT_DIR=/opt/zeek \
-      -DMAGNUMINTEGRATION_INCLUDE_DIR=/usr/include/lib/ \
-      -DIMGUI_DIR=/opt/imgui/ \
       -DCMAKE_BUILD_TYPE=Release \
-      -DImGui_INCLUDE_DIR=/opt/imgui ..
+      -DBROKER_ROOT_DIR=/opt/zeek \
+      -DIMGUI_DIR=/opt/imgui/ ..
     cmake --build .
 }
 
