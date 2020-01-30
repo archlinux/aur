@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=eom
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -15,13 +15,13 @@ conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'desktop-file-utils' 'glib2' 'gobject-introspection-runtime'
          'gtk3' 'gtk-update-icon-cache' 'exempi' 'lcms2' 'libexif' 'libjpeg-turbo'
-         'librsvg' 'mate-desktop>=1.19' 'pygtk' 'python2-gobject2'
+         'librsvg' 'mate-desktop-dev' 'pygtk' 'python2-gobject2'
          'startup-notification' 'zlib' 'libpeas')
-makedepends=('gobject-introspection' 'mate-common>=1.19' 'yelp-tools' 'gtk3' 'mate-desktop>=1.19')
+makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools' 'gtk3' 'mate-desktop-dev')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('d58819482f184bc3029e0262ff76d7151a2e83fd')
+sha1sums=('7f52f1ddffcbfe808fc6a85c957d9fb34fe88406')
 
 prepare() {
     cd "${srcdir}"
