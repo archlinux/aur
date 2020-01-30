@@ -1,0 +1,18 @@
+pkgbase = verona
+	pkgdesc = Microsoft's Verona programming language interpreter and compiler
+	pkgver = 5ad39dbb9f53bbd08c1e6f7c87bbad9f0a439d71
+	pkgrel = 1
+	url = https://github.com/microsoft/verona
+	arch = x86_64
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = clang
+	makedepends = llvm
+	depends = python
+	provides = veronac
+	provides = verona-interpreter
+	source = git+https://github.com/microsoft/verona#commit=5ad39dbb9f53bbd08c1e6f7c87bbad9f0a439d71
+	md5sums = SKIP
+
+pkgname = verona
+
