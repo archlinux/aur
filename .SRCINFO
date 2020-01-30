@@ -1,15 +1,19 @@
 pkgbase = dracut-hook
 	pkgdesc = dracut hook for archlinux
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://tackitt.net
 	arch = any
 	license = BSD
 	depends = dracut
 	source = dracut-install
+	source = dracut-remove
 	source = 90-dracut-install.hook
+	source = 90-dracut-remove.hook
 	md5sums = aa3097b708237e0a3b3a357dab6fd4e6
+	md5sums = d47474311fe65faf9358727f75526389
 	md5sums = 8fa0ed0a9aa50f2ac6525d3264f04d76
+	md5sums = 05d76d41eb51cf7f747a2d639e435e27
 
 pkgname = dracut-hook
 
