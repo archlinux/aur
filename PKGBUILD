@@ -3,9 +3,9 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: mosra <mosra@centrum.cz>
 
-_basever=1.3.0.alpha
+_basever=2.0.alpha
 pkgname=mypaint-brushes-git
-pkgver=1.3.0.alpha.r178.769ec94
+pkgver=2.0.alpha.r189.3bf7d72
 pkgrel=1
 pkgdesc="Brushes used by MyPaint and other software using libmypaint"
 arch=('any')
