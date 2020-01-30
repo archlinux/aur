@@ -1,11 +1,12 @@
 pkgbase = qcheckers
 	pkgdesc = Qt version of the classic boardgame checkers (draughts)
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/portnov/qcheckers
 	arch = x86_64
 	license = GPL
 	depends = qt5-base
+	depends = qt5-svg
 	source = https://github.com/portnov/qcheckers/archive/0.9.0.tar.gz
 	sha256sums = 95faed6be55db1c0dfbe683bc59aab8c7ad1cb24f8ecc6ba8e0baff1a7c61c65
 
