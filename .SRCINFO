@@ -1,7 +1,7 @@
 pkgbase = verona
 	pkgdesc = Microsoft's Verona programming language interpreter and compiler
 	pkgver = 5ad39dbb9f53bbd08c1e6f7c87bbad9f0a439d71
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/microsoft/verona
 	arch = x86_64
 	makedepends = python-pip

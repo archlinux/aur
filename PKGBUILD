@@ -3,7 +3,7 @@
 
 pkgname=verona
 pkgver=5ad39dbb9f53bbd08c1e6f7c87bbad9f0a439d71
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
 arch=('x86_64')
 url='https://github.com/microsoft/verona'
@@ -35,6 +35,13 @@ check() {
 
 package() {
     cd verona/build_ninja
-    install -Dm755 dist/veronac "${pkgdir}"/usr/bin/veronac
-    install -Dm755 dist/interpreter "${pkgdir}"/usr/bin/verona-interpreter
+    mkdir -p "${pkgdir}"/opt/verona
+    install -Dm755 dist/veronac "${pkgdir}"/opt/verona/veronac
+    install -Dm755 dist/interpreter "${pkgdir}"/opt/verona/verona-interpreter
+
+    mkdir -p "${pkgdir}"/usr/bin
+    ln -s /opt/verona/veronac "${pkgdir}"/usr/bin/veronac
+    ln -s /opt/verona/verona-interpreter "${pkgdir}"/usr/bin/verona-interpreter
+
+    cp -r ../src/stdlib "${pkgdir}"/opt/verona/stdlib
 }
