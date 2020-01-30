@@ -1,6 +1,6 @@
 pkgbase = firefox-ubuntu-bin
 	pkgdesc = Standalone web browser from mozilla.org with Ubuntu patches (binary)
-	pkgver = 72.0.1
+	pkgver = 72.0.2
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = x86_64
@@ -32,12 +32,14 @@ pkgbase = firefox-ubuntu-bin
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = pulseaudio: Audio support
+	optdepends = appmenu-gtk-module: for KDE global menu
+	optdepends = libdbusmenu-gtk3: for KDE global menu
 	provides = firefox
 	provides = firefox-ubuntu
 	conflicts = firefox
 	conflicts = firefox-ubuntu
-	source = http://security.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_72.0.1+build1-0ubuntu0.19.10.1_amd64.deb
-	sha256sums = 9b965a938d7b02a6b6afdbea43a430f200d1e60fc05f4bb7580d2f337e4be87f
+	source = http://security.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_72.0.2+build1-0ubuntu0.19.10.1_amd64.deb
+	md5sums = 0a9de60011deb649ad0b61a05f26e1b6
 
 pkgname = firefox-ubuntu-bin
 
