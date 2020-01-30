@@ -1,15 +1,16 @@
-# Maintainer: Ke Liu <spcter119@gmail.com>
+# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Contributor: Ke Liu <spcter119@gmail.com>
 
 pkgname=python-asciimatics
 _name=${pkgname//python-}
 pkgver=1.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross platform package to do curses-like operations, plus higher level APIs and widgets to create text UIs and ASCII art animations.'
 arch=('any')
 url='https://pypi.org/project/asciimatics'
 license=('Apache2')
-depends=('python' 'python-wcwidth' 'python-mock' 'python-pyfiglet' 'python-future' 'python-setuptools-scm' 'python-pillow')
-makedepends=('python-setuptools')
+depends=('python' 'python-wcwidth' 'python-pyfiglet' 'python-future' 'python-pillow')
+makedepends=('python-setuptools-scm')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 md5sums=('9abc134166e6a83671b379dc03830a3f')
 
