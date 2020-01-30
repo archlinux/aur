@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.23
+_ver=1.19
 _pkgbase=mate-terminal
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.0
+pkgver=${_ver}.1
 pkgrel=5
 pkgdesc="The MATE Terminal Emulator"
 url="http://mate-desktop.org"
@@ -13,12 +13,12 @@ arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('dbus' 'dconf' 'glib2' 'libsm' 'mate-desktop-dev' 'vte3')
-makedepends=('docbook2x' 'intltool>=0.50.1' 'yelp-tools' 'vte3' 'mate-desktop-dev')
+depends=('dbus' 'dconf' 'glib2' 'libsm' 'mate-desktop>=1.19' 'vte3')
+makedepends=('docbook2x' 'intltool>=0.50.1' 'yelp-tools' 'vte3' 'mate-desktop>=1.19')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('8ebf70a601624906b52e9958a4420621458fd420')
+sha1sums=('252f2da1aa5ae2bfc424ab6fee9885c1381c5109')
 
 prepare() {
     cd "${srcdir}"
