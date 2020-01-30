@@ -1,7 +1,7 @@
 pkgbase = peertube-viewer
 	pkgdesc = Peertube command line viewer inspired by youtube-viewer
 	pkgver = 0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/SostheneGuedon/peertube-viewer
 	arch = x86_64
 	license = GPL
