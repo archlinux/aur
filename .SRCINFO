@@ -1,5 +1,5 @@
 pkgbase = motionbox
-	pkgdesc = Video browser and player created by bunjee for the Omega Movement
+	pkgdesc = MotionBox is a Video Browser for Motion Freedom
 	pkgver = 1.6.0
 	pkgrel = 1
 	url = http://omega.gg/MotionBox/
