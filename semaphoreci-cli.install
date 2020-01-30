@@ -1,0 +1,8 @@
+post_install() {
+    echo '>>> The semaphore-cli binary is installed as /bin/semaphoreci,'
+    echo '>>> not /bin/sem, which would conflict with parallel.'
+}
+
+post_upgrade() {
+    post_install $1
+}

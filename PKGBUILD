@@ -1,37 +1,39 @@
-# Maintainer: Adrian Perez de Castro <aperez@igalia.com>
+# Maintainer: Andy Kluger <https://t.me/andykluger>
+# Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Command line tool for the Semaphore CI service'
 pkgname=semaphoreci-cli
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 url=https://github.com/semaphoreci/cli
-license=(custom:Apache)
+license=(Apache)
 arch=(x86_64)
-depends=(glibc)
+depends=()
 makedepends=(go-pie git)
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha512sums=(SKIP)
+sha512sums=()
+install=semaphoreci-cli.install
 
 build () {
-	cd "${pkgname}"
+    cd "${pkgname}"
 
-	local target_arch
-	case ${CARCH} in
-		x86_64) target_arch=amd64 ;;
-		*)
-			msg2 "Package not supported on ${CARCH}"
-			exit 111
-			;;
-	esac
+    local target_arch
+    case ${CARCH} in
+        x86_64) target_arch=amd64 ;;
+        *)
+            msg2 "Package not supported on ${CARCH}"
+            exit 111
+            ;;
+    esac
 
-	GOPATH="${srcdir}/_go" GOOS=linux GOARCH=${target_arch} \
-		go build -ldflags "-s -w -X cmd.version=${pkgver}-arch" \
-		-o semaphoreci
+    GOPATH="${srcdir}/_go" GOOS=linux GOARCH=${target_arch} \
+        go build -ldflags "-s -w -X cmd.version=${pkgver}-arch" \
+        -o semaphoreci
 
-	chmod -R +w "${srcdir}/_go"  # Ugh.
+    chmod -R +w "${srcdir}/_go"  # Ugh.
 }
 
 package () {
-	cd "${pkgname}"
-	install -Dm755 -t "${pkgdir}/usr/bin" semaphoreci
-	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+    cd "${pkgname}"
+    install -Dm755 -t "${pkgdir}/usr/bin" semaphoreci
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
