@@ -1,0 +1,18 @@
+pkgbase = perl-file-scan-clamav
+	pkgdesc = File::Scan::ClamAV - Connect to a local Clam Anti-Virus clamd service
+	pkgver = 1.95
+	pkgrel = 2
+	url = https://metacpan.org/release/File-Scan-ClamAV
+	arch = any
+	license = PerlArtistic
+	makedepends = gzip
+	makedepends = zip
+	depends = clamav
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/E/ES/ESAYM/File-Scan-ClamAV-1.95.tar.gz
+	sha256sums = d2418fcc8022fb541da609df47393219514b02c4968bd92d6372d2f836639f85
+
+pkgname = perl-file-scan-clamav
+
