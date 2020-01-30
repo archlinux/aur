@@ -1,15 +1,15 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 pkgname=r-cli
 _cran_name=cli
-pkgver=1.1.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Create Compact Hash Digests of R Objects"
 arch=('x86_64')
 url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
 license=('GPL3')
-depends=('r' 'r-crayon' 'r-assertthat')
+depends=('r' 'r-crayon' 'r-assertthat' 'r-glue' 'r-fansi')
 source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
-md5sums=('cc16412dbe255fdd7beae222d2753132')
+md5sums=('6f0ec39ebd7fd4898d58f6519bfbabd9')
 
 package() {
  mkdir -p $pkgdir/usr/lib/R/library
