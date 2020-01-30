@@ -13,9 +13,9 @@ pkgbase = arduino-avr-core-rc
 	conflicts = arduino-avr-core
 	options = !strip
 	options = !emptydirs
-	source = arduino-avr-core-1.8.2.tar.gz::https://github.com/arduino/ArduinoCore-avr/archive/1.8.1.tar.gz
+	source = https://github.com/arduino/ArduinoCore-avr/archive/1.8.2.tar.gz
 	source = platform.patch
-	sha512sums = 47743c97eda889294a0abe0839989800e8ba64be4278a14acf9fc76afc142f0c46ef8c13350dae552ad4ad042576ede209ef3f413f8e6c50c8565ec8b4152e27
+	sha512sums = 8b2b7780d222b584b12376c2db92539d3b194057a8b7d7de1c0a0e350f82ef5898b7c4db32032ab73391746e3e644e96909dd08887a5085426cb8c28da590c5f
 	sha512sums = 34bdd71d8796682ddd1a57e4ef38b2dc4557656f32528af3caa96e6d6f803b6982b9edf044294c2af9478c5ca3dbb6567faa6d24aa97228173e38f7a139b3b68
 
 pkgname = arduino-avr-core-rc

@@ -10,9 +10,9 @@ provides=('arduino-avr-core')
 conflicts=('arduino-avr-core')
 depends=('avrdude' 'avr-gcc' 'avr-libc' 'arduino-ctags')
 options=(!strip !emptydirs)
-source=("${pkgname//-rc}-${pkgver}.tar.gz::https://github.com/arduino/ArduinoCore-avr/archive/1.8.1.tar.gz"
+source=("https://github.com/arduino/ArduinoCore-avr/archive/${pkgver}.tar.gz"
         "platform.patch")
-sha512sums=('47743c97eda889294a0abe0839989800e8ba64be4278a14acf9fc76afc142f0c46ef8c13350dae552ad4ad042576ede209ef3f413f8e6c50c8565ec8b4152e27'
+sha512sums=('8b2b7780d222b584b12376c2db92539d3b194057a8b7d7de1c0a0e350f82ef5898b7c4db32032ab73391746e3e644e96909dd08887a5085426cb8c28da590c5f'
             '34bdd71d8796682ddd1a57e4ef38b2dc4557656f32528af3caa96e6d6f803b6982b9edf044294c2af9478c5ca3dbb6567faa6d24aa97228173e38f7a139b3b68')
 
 prepare()
@@ -23,8 +23,8 @@ prepare()
     
 
     # Update version in patchfile, then apply it
-    sed -i "s/^version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
-    patch -Np1 -i "${srcdir}/platform.patch"
+    #sed -i "s/^version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
+    #patch -Np1 -i "${srcdir}/platform.patch"
 
     echo "tools.ctags.path=/usr/bin" >> platform.txt
     echo "tools.ctags.cmd.path={path}/arduino-ctags" >> platform.txt
