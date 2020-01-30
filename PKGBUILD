@@ -1,36 +1,48 @@
-# Maintainer: Daniel Sandman <revoltism@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Daniel Sandman <revoltism at gmail dot com>
 pkgname=systemd-manager-git
-pkgver=0.4.5.r18.g5bf1bdc
+pkgver=1.0.0.r5.g946de58
 pkgrel=1
-pkgdesc="A program written with Rust that allows the user to manage their systemd services via a GTK3 GUI."
+pkgdesc="A systemd service manager written in Rust with the GTK-rs wrapper and direct integration with dbus"
 arch=('i686' 'x86_64')
-url="https://github.com/mmstick/systemd-manager/"
+url="https://gitlab.com/mmstick/systemd-manager"
 license=('MIT')
 depends=('gtk3')
-makedepends=('cargo' 'git')
-provides=('systemd-manager')
-conflicts=('systemd-manager')
-source=("$pkgname::git+https://github.com/mmstick/systemd-manager/#branch=master")
-md5sums=('SKIP')
+makedepends=('git' 'cargo')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://gitlab.com/mmstick/systemd-manager.git')
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "$srcdir/${pkgname%-git}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	#echo $(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2) # 1.0.2
 }
 
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	sed -i 's/gtk = { version = "0.1"/gtk = { version = "0.2.0"/g' Cargo.toml
+	sed -i 's/gdk = { version = "0.5"/gdk = { version = "0.6"/g' Cargo.toml
+}
 
 build() {
-	cd "$pkgname"
-	cargo build --release
+	cd "$srcdir/${pkgname%-git}"
+	cargo build --release --all-features
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}"
+	cargo test --release
 }
 
 package() {
-	cd "$pkgname"
-	install -D -m755 target/release/systemd-manager "$pkgdir/usr/bin/systemd-manager"
-	install -D -m755 assets/systemd-manager-pkexec "$pkgdir/usr/bin/systemd-manager-pkexec"
-	install -D -m644 assets/systemd-manager.desktop "$pkgdir/usr/share/applications/systemd-manager.desktop"
-	install -D -m644 assets/org.freedesktop.policykit.systemd-manager.policy "$pkgdir/usr/share/polkit-1/actions/org.freedesktop.policykit.systemd-manager.policy"
-	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	cd "$srcdir/${pkgname%-git}"
+	install -Dm755 "target/release/${pkgname%-git}" "assets/${pkgname%-git}-pkexec" -t \
+		"$pkgdir/usr/bin"
+	install -Dm644 "assets/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "assets/org.freedesktop.policykit.${pkgname%-git}.policy" -t \
+		"$pkgdir/usr/share/polkit-1/actions"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
