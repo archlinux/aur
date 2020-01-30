@@ -2,35 +2,38 @@
 
 pkgname=brogue-ce
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Brogue Community Edition: A 26-level dungeon crawl to the Amulet of Yendor."
 arch=('i686' 'x86_64')
 url="https://github.com/tmewett/BrogueCE"
 license=('AGPL3')
 depends=('sdl2_image')
 makedepends=('git')
-source=("https://github.com/tmewett/BrogueCE/releases/download/v${pkgver}/BrogueCE-${pkgver}-linux-x86_64.tar.gz"
-        'brogue.sh')
-md5sums=('d01c1e0ed41fc63f963343a17f80d0c1'
-         '76eb49cd487ebbbf0b96e76661e66839')
+source=(${pkgname}::"git+https://github.com/tmewett/BrogueCE.git#tag=v${pkgver}")
+md5sums=('SKIP')
 
 build() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
   
+  make clean
+  make DATADIR="/opt/$pkgname"
+
+  cd linux
   ./make-link-for-desktop.sh > /dev/null
-  sed -i -e "s|$(pwd)|/opt/${pkgname}|" -e 's/brogue$/brogue.sh/' -e 's/bin\///' "brogue.desktop"
+  sed -i -e "s|$(pwd)|/opt/${pkgname}|" -e 's/brogue$/brogue-multiuser.sh/' -e 's/bin\///' "brogue.desktop"
+  sed -i -e "s|/opt/brogue|/opt/${pkgname}|" brogue-multiuser.sh
 }
 
 package() {
 
-  cd "$srcdir"
+  cd "$srcdir/$pkgname"
 
-  install -Dm644 brogue.desktop "$pkgdir/usr/share/applications/brogue.desktop"
+  install -Dm644 "linux/brogue.desktop" "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
   _dest_dir="$pkgdir/opt/$pkgname"
   mkdir -p "$_dest_dir/assets"
 
-  install -Dm755 "$srcdir/brogue.sh" "$_dest_dir"
+  install -Dm755 "linux/brogue-multiuser.sh" "$_dest_dir"
 
   cd bin/
 
@@ -39,5 +42,5 @@ package() {
   install -Dm644 assets/* "$_dest_dir/assets" 
 
   mkdir -p $pkgdir/usr/bin
-  ln -s "/opt/${pkgname}/brogue.sh" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/${pkgname}/brogue-multiuser.sh" "$pkgdir/usr/bin/$pkgname"
 }
