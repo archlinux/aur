@@ -33,7 +33,6 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   cd VTK
-  curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
   sed -i "s| AND NOT CMAKE_CROSSCOMPILING||g" IO/OggTheora/vtk.module
 }
 
