@@ -1,0 +1,14 @@
+pkgbase = r-r.utils
+	pkgdesc = Various Programming Utilities
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = http://cran.r-project.org/web/packages/R.utils/index.html
+	arch = x86_64
+	license = LGPL3
+	depends = r
+	depends = r-oo
+	source = http://cran.r-project.org/src/contrib/R.utils_2.9.2.tar.gz
+	md5sums = 8629f732956b4f040429f2dccc533168
+
+pkgname = r-r.utils
+
