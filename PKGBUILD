@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.23
+_ver=1.19
 _pkgbase=mate-control-center
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.2
+pkgver=${_ver}.3
 pkgrel=5
 pkgdesc="The Control Center for MATE"
 url="http://mate-desktop.org"
@@ -14,16 +14,16 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('dbus-glib' 'dconf' 'desktop-file-utils' 'glib2' 'gsettings-desktop-schemas'
-         'gtk3' 'gtk-update-icon-cache' 'mate-desktop-dev' 'mate-menus-dev'
-         'mate-settings-daemon-dev' 'marco-dev' 'libgtop' 
-         'libmatekbd-dev' 'libunique3' 'librsvg' 'libxss' 'libxt'
+         'gtk3' 'gtk-update-icon-cache' 'mate-desktop>=1.19' 'mate-menus>=1.19'
+         'mate-settings-daemon>=1.19' 'marco>=1.19' 'libgtop' 
+         'libmatekbd>=1.19' 'libunique3' 'librsvg' 'libxss' 'libxt'
          'shared-mime-info' 'startup-notification')
-makedepends=('docbook2x' 'mate-common-dev' 'yelp-tools' 'libmatekbd' 'libunique3'
-             'marco' 'mate-desktop-dev' 'mate-settings-daemon')
+makedepends=('docbook2x' 'mate-common>=1.19' 'yelp-tools' 'libmatekbd' 'libunique3'
+             'marco' 'mate-desktop>=1.19' 'mate-settings-daemon')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('ebc68f434b564c8dd1d37a1eeb4cf2d5b684b30f')
+sha1sums=('d767dfcc96aedbce7fa2dae6ec50c1ec60e8e71b')
 
 prepare() {
     cd "${srcdir}"
