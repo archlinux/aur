@@ -28,7 +28,7 @@ build(){
     make config-gcc
     echo "ENABLE_LIBYOSYS=1" >> Makefile.conf
     echo "ENABLE_PYOSYS=1" >> Makefile.conf
-    make
+    make PREFIX="/usr"
 }
 
 pkgver() {
@@ -38,7 +38,7 @@ pkgver() {
 
 package() {
     cd ${srcdir}/yosys
-    make PREFIX=$pkgdir/usr/ PYTHON_PREFIX=$pkgdir/usr/ install
+    make PREFIX="/usr" PYTHON_PREFIX="$pkgdir/usr" DESTDIR="$pkgdir" install
 
     install -D -m 644 \
     "${srcdir}/LICENSE" \
