@@ -1,5 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Contributor: Daniel Sandman <revoltism at gmail dot com>
+# Contributor: shellkr <shellkr at protonmail dot com>
 pkgname=systemd-manager-git
 pkgver=1.0.0.r5.g946de58
 pkgrel=1
