@@ -1,6 +1,6 @@
 pkgbase = s1kls
 	pkgdesc = Simple X11 1-key Keyboard layout switcher
-	pkgver = 1.01
+	pkgver = 1.03
 	pkgrel = 1
 	url = http://sourceforge.net/projects/s1kls
 	install = s1kls.install
@@ -8,8 +8,8 @@ pkgbase = s1kls
 	arch = x86_64
 	license = GPL
 	depends = libx11
-	source = http://sourceforge.net/projects/s1kls/files/s1kls-1.01.tgz
-	md5sums = 4e3bc4eb4bdf1406352eb64b191435e5
+	source = http://sourceforge.net/projects/s1kls/files/s1kls-1.03.tgz
+	md5sums = 040558e8ff4007bc9ffee4d34fe87e3d
 
 pkgname = s1kls
 
