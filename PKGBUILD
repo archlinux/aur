@@ -1,30 +1,29 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
-# Contributor: bastelfreak
+# Contributor: tim@bastelfreak.de
 
 _gemname='gettext'
 pkgname="ruby-${_gemname}"
-pkgver=3.2.9
-pkgrel=2
+pkgver=3.3.2
+pkgrel=1
 pkgdesc='Gettext gem is a pure Ruby Localization(L10n) library and tool which is modeled after the GNU gettext package.'
 arch=(any)
 url="https://github.com/ruby-gettext/gettext"
 license=('RUBY' 'LGPL3')
-makedepends=('ruby-rdoc' 'ruby-test-unit' 'ruby-rake' 'ruby-yard' 'ruby-irb' 'ruby-bundler')
+makedepends=('ruby-rdoc' 'ruby-yard' 'ruby-bundler')
 depends=('ruby' 'ruby-locale' 'ruby-text')
+checkdepends=('ruby-test-unit' 'ruby-rake' 'ruby-test-unit-rr')
 source=("https://github.com/ruby-gettext/gettext/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=("!emptydirs")
-sha512sums=('e7352a343485c25077cdf08f2f92d7ae7ba798cb662ad090ce9e367576ee585753588dca2b7c8247ad007a816b87e57027ce70160b8f1bee83e3276e3725f314')
+sha512sums=('7d2818af2d622a46609103493cb5e82856e1a9f3ae67fad824bcbc2e11fca65040021554515a476e3a079a02d0636e9fe3afa706242795d0fb1037e8f7b374a6')
 
 # update the gemspec to allow newer versions of rake
 # remove deprecated options from the gemspec
 prepare() {
   cd "${_gemname}-${pkgver}"
 
-  sed --in-place '/s.rubyforge_project/d' "${_gemname}.gemspec"
+  sed --in-place 's/s.license.*/s.licenses = ["Ruby", "LGPL-3.0+"]/' "${_gemname}.gemspec"
   sed --in-place '/test\/unit\/notify/d' test/run-test.rb
-  sed --in-place '/test\/unit\/rr/d' test/run-test.rb
   sed --in-place '/s.add_development_dependency("test-unit-notify")/d' "${_gemname}.gemspec"
-  sed --in-place '/s.add_development_dependency("test-unit-rr")/d' "${_gemname}.gemspec"
 }
 
 
@@ -35,16 +34,16 @@ build() {
 }
 
 # tests are currently broken upstream
-#check() {
-  #cd "${_gemname}-${pkgver}"
-  #rake test
-#}
+check() {
+  cd "${_gemname}-${pkgver}"
+  rake test
+}
 
 package() {
   cd "${_gemname}-${pkgver}"
 
   local _gemdir="$(gem env gemdir)"
-  gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
+  gem install --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
   rm -rf "${pkgdir}/${_gemdir}/cache"
 }
