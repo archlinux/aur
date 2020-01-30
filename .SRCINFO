@@ -1,0 +1,19 @@
+pkgbase = php-wasm
+	pkgdesc = PHP extension to run WebAssembly binaries
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/wasmerio/php-ext-wasm
+	install = php-wasm.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = git
+	makedepends = make
+	makedepends = bash
+	makedepends = gcc
+	depends = php
+	source = php-wasm-0.5.0::git+https://github.com/wasmerio/php-ext-wasm.git#tag=0.5.0
+	sha512sums = SKIP
+
+pkgname = php-wasm
+

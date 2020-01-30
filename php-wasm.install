@@ -1,0 +1,3 @@
+post_install() {
+  echo "To enable uncomment ';extension=wasm.so' in /etc/php/conf.d/wasm.ini and restart the service"
+}
