@@ -1,0 +1,17 @@
+pkgbase = devc
+	pkgdesc = A CLI tool to manage your devcontainers using docker-compose
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://git.karolak.fr/nicolas/devc
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = go
+	depends = docker-compose
+	source = devc-0.4.1.tar.gz::https://git.karolak.fr/nicolas/devc/archive/v0.4.1.tar.gz
+	md5sums = 21cf060b8994498a7126057feda0cc02
+	sha256sums = 764c22e6a01d586f25fabd1806f06d7c48f97f5c6ea6ad8b9e8389f8f46a3854
+	sha512sums = 404f30b2b3a337f944f36d3b289cb89c6fbe15bbb157fc8bceb83aad5f067a78d443d08145c27354143fed026d7b70e6cbb7ef2f90ec614a1de1b2ddb3adfc90
+
+pkgname = devc
+
