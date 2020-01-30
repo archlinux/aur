@@ -7,7 +7,7 @@
 pkgname=libfprint-git
 _pkgname=libfprint
 epoch=1
-pkgver=1.90.0.r217.g3b47113
+pkgver=1.90.0.r222.g2c9e252
 pkgrel=1
 pkgdesc="Library for fingerprint readers"
 arch=(x86_64)
@@ -20,7 +20,7 @@ groups=(fprint-git)
 provides=(libfprint)
 conflicts=(libfprint)
 source=("git+https://gitlab.freedesktop.org/libfprint/libfprint.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
