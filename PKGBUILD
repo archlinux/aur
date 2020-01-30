@@ -2,17 +2,19 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Pablo Lezaeta <(prflr 88) (arro'a) (gmail) (puntocom)>
 pkgname=shim-efi-git
-pkgver=15.r55.a4a1fbe
+pkgver=15.r112.dada069
 pkgrel=1
 pkgdesc='UEFI shim loader'
 arch=('x86_64')
 url='https://github.com/rhboot/shim'
 license=('BSD')
-makedepends=('git' 'gnu-efi-libs')
+makedepends=('git' 'dos2unix' 'gnu-efi-libs-fedora-git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url.git")
-sha512sums=('SKIP')
+source=("git+$url.git"
+        'git+https://github.com/rhboot/edk2.git')
+sha512sums=('SKIP'
+            'SKIP')
 
 pkgver() {
 	cd shim
@@ -21,10 +23,9 @@ pkgver() {
 
 prepare() {
 	cd shim
-	# Fix "address of packed member" compilation error with GGC 9 (GitHub PR #183)
-	git cherry-pick --no-commit 81c5570b429d69ac314e9b40186e65030055a23e
-	# Fix typo in lib/console.c EFI_WARN_UNKNOWN_GLYPH definition (GitHub PR #188)
-	git cherry-pick --no-commit 6b29eb80512fabb1396ce8b96bddbee0fb8ea70d
+	git submodule init
+	git config submodule.edk2.url "$srcdir/edk2"
+	git submodule update
 }
 
 build() {
