@@ -1,0 +1,41 @@
+# Example configuration file for the server.
+# Save it to `config.yml` when edited
+
+server:
+  listenaddr: "" # the address to bind on, leave empty to bind on all addresses
+  port: 8080 # the port the HTTP server will listen on
+
+  ssl:
+    enabled: false # if https should be enabled
+    redirecttohttps: true # redirect to https if site is accessed by http
+    listenaddr: "" # the address to bind on, leave empty to bind on all addresses
+    port: 443 # the https port
+    certfile: # the cert file (leave empty when using letsencrypt)
+    certkey: # the cert key (leave empty when using letsencrypt)
+    letsencrypt:
+      enabled: false # if the certificate should be requested from letsencrypt
+      accepttos: false # if you accept the tos from letsencrypt
+      cache: /var/lib/gotify-server/certs # the directory of the cache from letsencrypt
+      hosts: # the hosts for which letsencrypt should request certificates
+#      - mydomain.tld
+#      - myotherdomain.tld
+
+  responseheaders: # response headers are added to every response (default: none)
+#    Access-Control-Allow-Origin: "*"
+#    Access-Control-Allow-Methods: "GET,POST"
+
+  stream:
+    allowedorigins: # allowed origins for websocket connections (same origin is always allowed)
+#      - ".+.example.com"
+#      - "otherdomain.com"
+
+database: # for database see (configure database section)
+  dialect: sqlite3
+  connection: /var/lib/gotify-server/gotify.db
+
+defaultuser: # on database creation, gotify creates an admin user
+  name: admin # the username of the default user
+  pass: admin # the password of the default user
+passstrength: 10 # the bcrypt password strength (higher = better but also slower)
+uploadedimagesdir: /var/lib/gotify-server/images # the directory for storing uploaded images
+pluginsdir: /var/lib/gotify-server/plugins # the directory where plugin resides

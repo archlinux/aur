@@ -1,14 +1,22 @@
 pkgbase = gotify-server
 	pkgdesc = A simple server for sending and receiving messages in real-time per WebSocket.
 	pkgver = 2.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gotify.net/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	source = gotify-server-2.0.13.tar.gz::https://github.com/gotify/server/archive/v2.0.13.tar.gz
+	source = sysusers.d
+	source = tmpfiles.d
+	source = config.yml
+	source = gotify-server.service
 	sha256sums = a18177dce403df17e21d8b15551d0525d7c0140a5f8a06148df1db1bc2749639
+	sha256sums = 2052ac82ceb607701bd505c9df4170bb65c14601a4c8dda3c4ee36fd399c3dfa
+	sha256sums = 6d90cb466122331b983fac2d20a53f82c96db3e340297ec218cf296d0083dbc5
+	sha256sums = 4023cd8e241accc8e650dd5a93fbad0c3f9c3ca87b1a83d1fd39c83178216dfa
+	sha256sums = 9c187715b12269ff4bf6768b1e7813daafb5812df1f3bc010c894c7b736743fa
 
 pkgname = gotify-server
 
