@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=pluma
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.3
+pkgver=${_ver}.2
 pkgrel=5
 pkgdesc="A powerful text editor for MATE (GTK3 version)"
 url="http://mate-desktop.org"
@@ -14,12 +14,12 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
 depends=('desktop-file-utils' 'enchant' 'glib2' 'gtk3' 'gtksourceview2' 'iso-codes'
-         'libsm' 'mate-desktop>=1.19' 'gtksourceview3' 'python2-gobject' 'zenity' 'libpeas')
-makedepends=('mate-common>=1.19' 'yelp-tools' 'gtksourceview3' 'mate-desktop>=1.19')
+         'libsm' 'mate-desktop-dev' 'gtksourceview3' 'python2-gobject' 'zenity' 'libpeas')
+makedepends=('mate-common-dev' 'yelp-tools' 'gtksourceview3' 'mate-desktop-dev')
 optdepends=('yelp: for reading MATE help documents')
 groups=('mate-extra')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('f638b1bf559bd17133add9afaccb42597d7bf2fe')
+sha1sums=('9b070e225f1d938ff1f0e3974b09038293c29668')
 
 prepare() {
     cd "${srcdir}"
