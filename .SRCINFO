@@ -1,16 +1,16 @@
 pkgbase = pluma-dev
 	pkgdesc = A powerful text editor for MATE (GTK3 version)
-	pkgver = 1.23.2
+	pkgver = 1.19.3
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
 	arch = x86_64
 	groups = mate-extra
 	license = GPL
-	makedepends = mate-common-dev
+	makedepends = mate-common>=1.19
 	makedepends = yelp-tools
 	makedepends = gtksourceview3
-	makedepends = mate-desktop-dev
+	makedepends = mate-desktop>=1.19
 	depends = desktop-file-utils
 	depends = enchant
 	depends = glib2
@@ -18,7 +18,7 @@ pkgbase = pluma-dev
 	depends = gtksourceview2
 	depends = iso-codes
 	depends = libsm
-	depends = mate-desktop-dev
+	depends = mate-desktop>=1.19
 	depends = gtksourceview3
 	depends = python2-gobject
 	depends = zenity
@@ -28,8 +28,8 @@ pkgbase = pluma-dev
 	provides = pluma-gtk3
 	conflicts = pluma
 	conflicts = pluma-gtk3
-	source = http://pub.mate-desktop.org/releases/1.23/pluma-1.23.2.tar.xz
-	sha1sums = 9b070e225f1d938ff1f0e3974b09038293c29668
+	source = http://pub.mate-desktop.org/releases/1.19/pluma-1.19.3.tar.xz
+	sha1sums = f638b1bf559bd17133add9afaccb42597d7bf2fe
 
 pkgname = pluma-dev
 
