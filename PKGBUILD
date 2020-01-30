@@ -1,15 +1,15 @@
 # Maintainer: Abdalaziz Rashid <abdalaziz.rashid@edu.misis.ru> & Maxim Kochurov <maxim.v.kochurov@gmail.com>
 
-author=abdalaziz_rashid
+author=abdalazizrashid
 pkgname=dwm-hidpi-git
 _gitname=dwm-HiDPI
-pkgver=0
+pkgver=0.r1685.4e4080c
 pkgrel=1
 pkgdesc='dwm fork intended for 4K displays'
 url='https://github.com/abdalazizrashid/dwm-HiDPI'
 arch=('any')
 license=('MIT')
-depends=('libx11' 'libxinerama' 'libxft' 'demenu' 'nerd-fonts-dejavu-complete')
+depends=('libx11' 'libxinerama' 'libxft' 'dmenu' 'freetype2' )
 makedepends=('git')
 conflicts=('dwm')
 provides=('dwm')
