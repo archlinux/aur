@@ -2,9 +2,11 @@
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: frownlee <florez.brownlee@gmail.com>
+# Contributor: philm <philipp.mildenberger <- AT -> student.uibk.ac.at>
 
-pkgname=android-ndk
-pkgver=r19.c
+_pkg=android-ndk
+pkgname=android-ndk-19
+pkgver=r19
 pkgrel=1
 pkgdesc='Android C/C++ developer kit'
 arch=('x86_64')
@@ -12,17 +14,19 @@ url='https://developer.android.com/ndk/'
 license=('GPL' 'LGPL' 'custom')
 options=('!strip' 'staticlibs')
 backup=('etc/profile.d/android-ndk.sh')
-install="$pkgname.install"
+install="android-ndk.install"
+provides=('android-ndk')
+conflicts=('android-ndk')
 replaces=('android-ndk64')
 depends=('glibc')
 source=('android-ndk.sh')
-source_x86_64=("https://dl.google.com/android/repository/$pkgname-${pkgver/./}-linux-x86_64.zip")
+source_x86_64=("https://dl.google.com/android/repository/$_pkg-$pkgver-linux-x86_64.zip")
 sha1sums=('2479a8d74428eb651ad2b9772ad655d7a90af410')
-sha1sums_x86_64=('fd94d0be6017c6acbd193eb95e09cf4b6f61b834')
+sha1sums_x86_64=('f02ad84cb5b6e1ff3eea9e6168037c823408c8ac')
 
 package() {
   install -Ddm755 "$pkgdir/opt"
-  mv "$pkgname-${pkgver/./}" "$pkgdir/opt/$pkgname"
+  mv "$_pkg-$pkgver" "$pkgdir/opt/$_pkg"
 
   install -Dm755 android-ndk.sh "$pkgdir/etc/profile.d/android-ndk.sh"
 }
