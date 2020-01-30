@@ -1,0 +1,38 @@
+#!/bin/bash -e
+
+kernels=()
+all=0
+
+
+while read -r line; do
+	if [[ $line != */vmlinuz ]]; then
+		all=1
+		continue
+	fi
+
+	if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz}/pkgbase"; then
+		continue
+	fi
+				
+	install -Dm644 "${line}" "/boot/vmlinuz-${pkgbase}"
+	kernels+=("${pkgbase}")
+done
+
+if (( all )); then
+	kernels=()
+	for file in /lib/modules/*/pkgbase; do
+		if read -r pkgbase > /dev/null 2>&1 < "$file"; then
+			kernels+=("${pkgbase}")
+		fi
+	done
+fi
+
+for kernel in "${kernels[@]}"; do
+	pkgbase="$(grep -lE "^${kernel}\$" /lib/modules/*/pkgbase)"
+	modules=$(basename "${pkgbase%/pkgbase}")
+
+	echo "Building dracut for $kernel - $modules"
+
+	dracut -f -H --no-hostonly-cmdline "/boot/initramfs-${kernel}.img" "${modules}"
+	dracut -f	-N "/boot/initramfs-${kernel}-fallback.img" "${modules}"
+done
