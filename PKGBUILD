@@ -10,7 +10,7 @@ license=('MIT')
 depends=('java-runtime-openjdk=8' 'bash')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
-_build="201911"
+_build="78f12b4a3e195fe0b"
 source=("https://www.archimatetool.com/downloads/$_build/Archi-Linux64-$pkgver.tgz"
         "$pkgname.desktop"
         "$pkgname-launcher.sh"
