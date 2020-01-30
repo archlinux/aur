@@ -1,19 +1,31 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
+
+_bcname=IRanges
+_bcver=2.20.2
 pkgname=r-iranges
-_bc_name=IRanges
-pkgver=2.20.1
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
-pkgdesc="Infrastructure for manipulating intervals on sequences"
-url="https://bioconductor.org/packages/release/bioc/html/IRanges.html"
-arch=("x86_64")
+pkgdesc="Foundation of integer range manipulation in Bioconductor"
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+arch=(i686 x86_64)
 license=('Artistic-2.0')
-depends=('r' 'r-utils' 'r-biocgenerics' 'r-s4vectors')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('6cd7971d8e408836c090d87b1ddd94e0aca6a685')
+depends=('r>=3.1.0' 'r-biocgenerics>=0.25.3' 'r-s4vectors>=0.23.22')
+makedepends=('gcc')
+optdepends=('r-xvector' 'r-genomicranges' 'r-rsamtools' 'r-genomicalignments' 'r-genomicfeatures' 'r-bsgenome.celegans.ucsc.ce2' 'r-pasillabamsubset' 'r-runit' 'r-biocstyle')
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+sha1sums=('43b6501d37212513cbc2bacc2ad348d3baa07ede')
+
+build(){
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l $srcdir
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "$pkgdir/usr/lib/R/library"
+  cp -a --no-preserve=ownership "$_bcname" "$pkgdir/usr/lib/R/library"
 }
+
