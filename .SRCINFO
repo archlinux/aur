@@ -9,7 +9,7 @@ pkgbase = libphash-git
 	depends = mpg123
 	depends = cimg
 	depends = ffmpeg
-	source = pHash::git+https://github.com/aetilius/pHash#branch=master
+	source = pHash::https://github.com/aetilius/pHash#branch=master
 	sha256sums = SKIP
 
 pkgname = libphash-git
