@@ -1,0 +1,12 @@
+pkgbase = imgui-src
+	pkgdesc = Bloat-free Immediate Mode Graphical User interface for C++ (sources)
+	pkgver = 1.72
+	pkgrel = 2
+	url = https://github.com/ocornut/imgui
+	arch = any
+	license = MIT
+	source = https://github.com/ocornut/imgui/archive/v1.72.tar.gz
+	md5sums = 884fec871560139612cfa62ef6b28efc
+
+pkgname = imgui-src
+
