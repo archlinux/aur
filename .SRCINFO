@@ -1,13 +1,13 @@
 pkgbase = ttf-ferrite-core
 	pkgdesc = Ferrite Core display typeface by Froyo Tam
-	pkgver = 1.5
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/froyotam/ferrite-core/
 	arch = any
 	license = Custom
 	conflicts = ttf-ferrite-core-git
-	source = ttf-ferrite-core-1.5.tar.gz::https://github.com/froyotam/ferrite-core/archive/1.5.tar.gz
-	sha256sums = 8557f45034c0178d01fad3d87630a7200fd45e4f133108788c1125f4cd120698
+	source = ttf-ferrite-core-2.0.tar.gz::https://github.com/froyotam/ferrite-core/archive/2.0.tar.gz
+	sha256sums = 3ecd9c181e746bd2b92c5fc429cfb0a3a61456637ab5a5d6d4d46dd0ca96c7ba
 
 pkgname = ttf-ferrite-core
 
