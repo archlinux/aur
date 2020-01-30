@@ -1,7 +1,7 @@
 # Author: mosra <mosra@centrum.cz, modified for the monopticon project by CarloMara>
 pkgname=monopticon-magnum-integration
 pkgver=2019.10.r32.gb3e2f7f
-pkgrel=1.1
+pkgrel=1.2
 pkgdesc="Monopticon version of Integration libraries for the Magnum C++11/C++14 graphics engine (Git version) "
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
@@ -24,13 +24,13 @@ build() {
 
     cmake "$srcdir/magnum-integration" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_PREFIX=/usr/include \
         -DWITH_BULLET=ON \
         -DWITH_EIGEN=ON \
         -DWITH_GLM=ON \
         -DWITH_DART=OFF \
         -DMAGNUMINTEGRATION_INCLUDE_DIR=/usr/include \
-        -DWITH_IMGUI=OFF \
+        -DWITH_IMGUI=ON \
         ..
     make
 }
