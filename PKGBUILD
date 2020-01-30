@@ -2,7 +2,7 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=mate-media
 pkgname="${_pkgbase}-dev"
 pkgver=${_ver}.1
@@ -12,13 +12,13 @@ pkgdesc="MATE Media Tools (GTK3 version)"
 arch=('i686' 'x86_64')
 provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL')
-depends=('gtk3' 'libcanberra' 'libmatemixer>=1.19' 'libunique3' 'mate-desktop>=1.19')
-makedepends=('mate-common>=1.19' 'gtk3' 'libunique3')
+depends=('gtk3' 'libcanberra' 'libmatemixer-dev' 'libunique3' 'mate-desktop-dev')
+makedepends=('mate-common-dev' 'gtk3' 'libunique3')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
 groups=('mate-extra')
 replaces=("${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3" "${_pkgbase}-gstreamer" "${_pkgbase}-pulseaudio")
-sha1sums=('ed429471906ef22a9b94d6c03e066ab9e21b4832')
+sha1sums=('06bae55f24cf5af3824f8ec579b39b1678e77bf4')
 
 prepare() {
     cd "${srcdir}"
