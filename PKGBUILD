@@ -4,14 +4,14 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=mingw-w64-openssl-1.0
-_ver=1.0.2s
+_ver=1.0.2u
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
 pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
 arch=('any')
 depends=('mingw-w64-zlib')
-makedepends=('mingw-w64-gcc' 'perl')
+makedepends=('mingw-w64-gcc' 'mingw-w64-environment' 'perl')
 options=(!strip !buildflags staticlibs !emptydirs)
 license=('custom:BSD')
 url='https://www.openssl.org'
@@ -21,7 +21,7 @@ source=("http://www.openssl.org/source/openssl-$_ver.tar.gz"{,.asc}
         'openssl-1.0.1-x32.patch'
         'openssl-1.0.2a-parallel-build.patch'
         'openssl-1.0-versioned-symbols.patch')
-sha256sums=('cabd5c9492825ce5bd23f3c3aeed6a97f8142f606d893df216411f07d1abab96'
+sha256sums=('ecd0c6ffb493dd06707d38b14bb4d8c2288bb7033735606569d8f90f89669d16'
             'SKIP'
             'd38dfc58fe2c3723f2dfa10408394a6e796bd1e7273804cb19c41baf3dcee534'
             '164aa4928b022cc716fac545b4fd69899cb274682aa487100e595abb652adbae'
@@ -39,8 +39,9 @@ prepare() {
   patch -p1 -i ${srcdir}/openssl-1.0.2a-parallel-build.patch
   patch -p1 -i ${srcdir}/openssl-1.0.1-x32.patch
   patch -p1 -i ${srcdir}/openssl-1.0.2a-x509.patch
-  sed -i -e '/^"mingw"/ s/-fomit-frame-pointer -O3 -march=i486 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
-  sed -i -e '/^"mingw64"/ s/-O3 -Wall/-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4/' Configure
+  #source mingw-env ${_arch}
+  #sed -i -e '/^"mingw"/ s/-fomit-frame-pointer -O3 -march=i486 -Wall/'$CFLAGS'/' Configure
+  #sed -i -e '/^"mingw64"/ s/-O3 -Wall/'$CFLAGS'/' Configure
   # add symbol versioning to prevent conflicts with openssl 1.1 symbols (Debian)
   patch -p1 -i "$srcdir"/openssl-1.0-versioned-symbols.patch
 }
@@ -48,6 +49,7 @@ prepare() {
 build() {
   cd "${srcdir}/openssl-$_ver"
   for _arch in ${_architectures}; do
+    source mingw-env ${_arch}
     mkdir -p "${srcdir}/build-${_arch}" && cp -a "${srcdir}/openssl-$_ver/"* "${srcdir}/build-${_arch}" && cd "${srcdir}/build-${_arch}"
     _mingw=mingw
     [ "${_arch}" = 'x86_64-w64-mingw32' ] && _mingw=mingw64
@@ -60,7 +62,9 @@ build() {
       threads \
       shared \
       no-ssl3-method \
-      zlib-dynamic
+      zlib-dynamic \
+      "$LDFLAGS" \
+      "$CFLAGS"
     make
   done
 }
