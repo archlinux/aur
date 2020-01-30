@@ -1,7 +1,7 @@
 # Maintainer: Stefan Biereigel <stefan@biereigel.de>
 
 pkgname=openems-git
-pkgver=v0.0.35.r28.g6133dea
+pkgver=v0.0.35.r62.gbb235b2
 pkgrel=1
 pkgdesc="a free and open source EC-FDTD solver"
 url="https://github.com/thliebig/openEMS"
@@ -11,8 +11,8 @@ depends=('cmake' 'qt5-base' 'tinyxml' 'hdf5' 'boost' 'vtk' 'unixodbc' 'cgal' 'op
 provides=('openems')
 conflicts=('openems')
 
-source=(git+https://github.com/thliebig/openEMS 'fix-libdir.patch')
-md5sums=('SKIP' 'SKIP')
+source=(git+https://github.com/thliebig/openEMS)
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/openEMS"
@@ -21,14 +21,13 @@ pkgver() {
 
 prepare() {
   cd openEMS
-  patch -Np1 -i ../fix-libdir.patch
 }
 
 build() {
   cd "$srcdir/openEMS"
   mkdir -p build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir} ../
+  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DCSXCAD_ROOT_DIR=/usr ../
   make
 }
 
