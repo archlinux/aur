@@ -1,6 +1,6 @@
 pkgbase = mate-session-manager-dev
 	pkgdesc = The MATE Session Handler (GTK3 version)
-	pkgver = 1.19.1
+	pkgver = 1.23.0
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -8,22 +8,22 @@ pkgbase = mate-session-manager-dev
 	groups = mate
 	license = GPL
 	license = LGPL
-	makedepends = mate-common>=1.19
+	makedepends = mate-common-dev
 	makedepends = xmlto
 	makedepends = xtrans
 	makedepends = gtk3
-	makedepends = mate-desktop>=1.19
-	makedepends = mate-polkit>=1.19
-	makedepends = mate-settings-daemon>=1.19
+	makedepends = mate-desktop-dev
+	makedepends = mate-polkit-dev
+	makedepends = mate-settings-daemon-dev
 	depends = dbus-glib
 	depends = glib2
 	depends = gtk3
 	depends = gtk-update-icon-cache
 	depends = libsm
 	depends = libxtst
-	depends = mate-desktop>=1.19
-	depends = mate-polkit>=1.19
-	depends = mate-settings-daemon>=1.19
+	depends = mate-desktop-dev
+	depends = mate-polkit-dev
+	depends = mate-settings-daemon-dev
 	depends = ttf-dejavu
 	depends = xdg-user-dirs
 	optdepends = lightdm-gtk-greeter: A lightweight display manager
@@ -34,8 +34,8 @@ pkgbase = mate-session-manager-dev
 	provides = mate-session-manager-gtk3
 	conflicts = mate-session-manager
 	conflicts = mate-session-manager-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-session-manager-1.19.1.tar.xz
-	sha1sums = 6714a5d7a03b5f3ce0c104742ca406cedee3586e
+	source = http://pub.mate-desktop.org/releases/1.23/mate-session-manager-1.23.0.tar.xz
+	sha1sums = 489123bb20479f84e6f1a6ca56feff6154c11db3
 
 pkgname = mate-session-manager-dev
 
