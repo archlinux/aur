@@ -1,5 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a2b04482..a0779283 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -136,6 +136,6 @@ message(STATUS "vtk libraries " ${vtk_LIBS})
+ # depend on fparser.hh
+ ADD_SUBDIRECTORY( src )
+ 
+-INSTALL(DIRECTORY matlab DESTINATION share/CSXCAD)
++INSTALL(DIRECTORY matlab DESTINATION usr/share/CSXCAD)
+ 
+ #TODO tarball, debug, release, doxygen
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 8903a60..e13f098 100644
+index 8903a60f..e13f098f 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -98,8 +98,9 @@ TARGET_LINK_LIBRARIES( CSXCAD
