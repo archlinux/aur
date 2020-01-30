@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.4.15
+	pkgver = 5.5
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,16 +15,16 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-v5.4.15-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-v5.4.15-arch1.tar.gz
+	source = linux-v5.5-arch1.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-v5.5-arch1.tar.gz
 	source = config
-	source = 0001_bmq_v5.4-r2.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.4/bmq_v5.4-r2.patch
+	source = 0001_bmq_v5.5-r0.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.5/bmq_v5.5-r0.patch
 	source = 0002_enable_additional_cpu_optimizations-20190822.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190822.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = 0603a30a97480dea83edea04059b3a49b05cdfe767d95f3c3a90c65f237ff35e
-	sha256sums = 548d4588a491ba2bb7d53b6e3c59aa3fcf68a6d3465079607e4f1bee5add7016
-	sha256sums = 6a6a736cf1b3513d108bfd36f60baf50bb36b33aec21ab0d0ffad13602b7ff75
+	sha256sums = 25209f1e4fcb95311d1cb7cdfbdba9804dea73b73777873328fd3d2908fc9c5d
+	sha256sums = 4058ecf0c5a8b28ec25f530c0b21c218e7e085ea38f4e69dd8ee91f915aeb58f
+	sha256sums = 20fb5844b6d836eeb5cb5a66e58b4fa581d4edbaec3337f61a50992714c3b0b5
 	sha256sums = 8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5
 
 pkgname = linux-gc
@@ -34,11 +34,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.4.15
+	provides = linux-gc=5.5
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.4.15
-	provides = linux-headers=5.4.15
+	provides = linux-gc-headers=5.5
+	provides = linux-headers=5.5
 
