@@ -3,9 +3,9 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 # Contributor: mosra <mosra@centrum.cz>
 
-_basever=1.3.0.alpha
+_basever=2.0.alpha
 pkgname=mypaint-git
-pkgver=1.3.0.alpha.r5618.d903b250
+pkgver=2.0.alpha.r5619.ce9b05a1
 pkgrel=1
 pkgdesc="Simple drawing & painting program that works well with graphics tablets (git)."
 arch=('i686' 'x86_64')
