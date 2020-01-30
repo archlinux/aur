@@ -1,0 +1,6 @@
+pkg
+src
+*.tar
+*.tar.xz
+*.tar.zst
+update-efi-entry

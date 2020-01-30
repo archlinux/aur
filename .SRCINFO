@@ -1,0 +1,18 @@
+pkgbase = update-efi-entry
+	pkgdesc = Script for easy EFISTUB entry setup and management.
+	pkgver = r13.23a6ce3
+	pkgrel = 1
+	url = https://github.com/alex4401/update-efi-entry
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = sed
+	depends = bash
+	depends = efibootmgr
+	depends = ncurses
+	depends = util-linux
+	source = git+https://github.com/alex4401/update-efi-entry.git
+	sha256sums = SKIP
+
+pkgname = update-efi-entry
+
