@@ -3,7 +3,7 @@
 # Contributor: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=dxvk-winelib
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, Winelib version'
 arch=('x86_64')
