@@ -4,7 +4,7 @@
 pkgname=sway
 pkgver=1.4
 epoch=1
-pkgrel=4
+pkgrel=5
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -50,6 +50,11 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+
+  for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
+    install -Dm755 "$pkgname-$pkgver/contrib/$util" -t \
+                   "$pkgdir/usr/share/$pkgname/scripts"
+  done
 }
 
 # vim: ts=2 sw=2 et
