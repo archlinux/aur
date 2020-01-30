@@ -1,5 +1,5 @@
 pkgname=helmsman-bin
-pkgver=1.9.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Helmsman binary distribution"
 arch=('x86_64')
@@ -9,7 +9,7 @@ provides=('helmsman')
 conflicts=('helmsman')
 source=("https://github.com/Praqma/helmsman/releases/download/v${pkgver//_/-}/Helmsman_${pkgver//_/-}_linux_amd64.tar.gz"
         )
-sha256sums=('d6717dfc002953209ffc86d666387f1473c46b60387685dbf5ec8e9a0bf5503b')
+sha256sums=('206641e94741fc373f81bc38ebd6d196e6a4fca4c2aca6f0f2c5548da3ab08da')
 
 package() {
 	install -d "$pkgdir/usr/bin/"
