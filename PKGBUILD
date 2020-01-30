@@ -1,3 +1,5 @@
+# Maintainer: neeshy <neeshy@tfwno.gf>
+
 pkgname=dbus-dummy
 pkgver=1
 pkgrel=1
