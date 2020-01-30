@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop9
-pkgver=1.9.8
-pkgrel=5
+pkgver=1.9.9
+pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
@@ -29,7 +29,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch")
-sha512sums=('5562eb99812a8faec74fe073323d6e04e36311c1e4ce984035212ecfed8bd5d12df92cd0f0022401201136315fb5556971b267b4bf47edf4eeddc9926c7969dc'
+sha512sums=('ba6400e6f5eec5bda6e8a54b43846e695b2cce731cb6b39f17407cc39e3e9b8078d977253d29962671f30e33dbe012f8e40f340f781fd8ca73487e5f2d42e3de'
             '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
@@ -52,14 +52,14 @@ prepare() {
 }
 
 build() {
-    cd "$srcdir/tdesktop-$pkgver-full"
-    mkdir build
+    cd tdesktop-$pkgver-full
+
     export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
     # For some reason, this is needed when building without spellchecking
     export LDFLAGS="$LDFLAGS,--copy-dt-needed-entries"
     cmake -B build -G Ninja . \
         -Ddisable_autoupdate=1 \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_ID=2040 \
         -DTDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 \
@@ -78,26 +78,10 @@ build() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 telegram-desktop.sh "$pkgdir/usr/bin/telegram-desktop"
-
     cd tdesktop-$pkgver-full
-    install -m755 build/bin/telegram-desktop "$pkgdir/usr/bin/telegram-desktop-bin"
+    ninja -C build install
 
-    install -d "$pkgdir/usr/share/applications"
-    install -m644 lib/xdg/telegramdesktop.desktop "$pkgdir/usr/share/applications/telegramdesktop.desktop"
-
-    install -d "$pkgdir/usr/share/kservices5"
-    install -m644 lib/xdg/tg.protocol "$pkgdir/usr/share/kservices5/tg.protocol"
-
-    install -d "$pkgdir/usr/share/metainfo/"
-    install -m644 lib/xdg/telegramdesktop.appdata.xml "$pkgdir/usr/share/metainfo/telegramdesktop.appdata.xml"
-
-    local icon_size icon_dir
-    for icon_size in 16 32 48 64 128 256 512; do
-        icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
-
-        install -d "$icon_dir"
-        install -m644 "Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram.png"
-    done
+    mv "$pkgdir/usr/bin/telegram-desktop"{,-bin}
+    install -dm755 "$pkgdir/usr/bin"
+    install -m755 "$srcdir/telegram-desktop.sh" "$pkgdir/usr/bin/telegram-desktop"
 }
