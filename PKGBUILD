@@ -2,7 +2,7 @@
 
 _pkgname=Ghidra-Cpp-Class-Analyzer
 pkgname=ghidra-extension-$(echo $_pkgname | tr '[:upper:]' '[:lower:]')-git
-pkgver=1.3+r28+ga87bf8a
+pkgver=1.3.r28.ga87bf8a
 pkgrel=1
 pkgdesc="Ghidra C++ Class and Run Time Type Information Analyzer"
 arch=('x86_64')
@@ -22,7 +22,7 @@ prepare() {
 
 pkgver() {
   cd $srcdir/${_pkgname}
-  git describe --tags | sed 's#-#+#g;s#+#+r#'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
