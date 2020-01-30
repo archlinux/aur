@@ -1,5 +1,5 @@
 pkgbase = r-biobase
-	pkgdesc = Biobase: Base functions for Bioconductor
+	pkgdesc = Base functions for Bioconductor
 	pkgver = 2.46.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Biobase.html
