@@ -1,15 +1,15 @@
 pkgbase = lib32-mtdev
 	pkgdesc = A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol (32-bit)
-	pkgver = 1.1.5
-	pkgrel = 2
-	url = http://bitmath.org/code/mtdev/
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://bitmath.org/code/mtdev/
 	arch = x86_64
 	license = custom:MIT
-	makedepends = lib32-gcc-libs
+	makedepends = gcc-multilib
 	depends = lib32-glibc
 	depends = mtdev
-	source = http://bitmath.org/code/mtdev/mtdev-1.1.5.tar.bz2
-	sha512sums = 78477a4af784e3f846df867f1428ffdc458e3ff33d465d45a84247a7e52f0e215cace397d72be64f6e641f07e0b97a930eff0e07fe9507e0138fb028a4037d6d
+	source = https://bitmath.org/code/mtdev/mtdev-1.1.6.tar.bz2
+	sha512sums = 859fb0803f330ecaae69f80713ff5a5235c0cb00de6d5ac2717ad82cea856a92b866f0c272ecfe743186abcf925f95585149ba4828b4c91555cfeb2f2a1c98f1
 
 pkgname = lib32-mtdev
 
