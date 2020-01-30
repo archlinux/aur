@@ -4,7 +4,7 @@
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r7861.0466c485
+pkgver=r8603.2ce7a0d3
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -27,7 +27,6 @@ build(){
     make config-gcc
     echo "ENABLE_LIBYOSYS=1" >> Makefile.conf
     echo "ENABLE_PYOSYS=1" >> Makefile.conf
-    echo "BOOST_PYTHON_LIB=-lboost_python38 -lpython3.8" >>Makefile.conf
     make
 }
 
