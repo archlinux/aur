@@ -19,7 +19,7 @@ options=('!emptydirs')
 source=("http://www.texmacs.org/Download/ftp/tmftp/source/TeXmacs-$pkgver-src.tar.gz"
         'http://www.texmacs.org/Images/tm_gnu1b.png'
         'texmacs.desktop')
-md5sums=('9c8169ff79afefc606564e530ec12ec9'
+md5sums=('98e2395f18d196935bd04a1761e7244f'
          '48c15c09000cc38728d847c3a8ffabc0'
          'a1856736b4defd6f3a46cf608b108ef1')
 
