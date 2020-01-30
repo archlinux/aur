@@ -1,0 +1,17 @@
+pkgbase = ghidra-extension-ghidra-cpp-class-analyzer-git
+	pkgdesc = Ghidra C++ Class and Run Time Type Information Analyzer
+	pkgver = 1.3+r28+ga87bf8a
+	pkgrel = 1
+	url = https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gradle
+	makedepends = unzip
+	makedepends = ghidra
+	depends = ghidra
+	source = ghidra-extension-ghidra-cpp-class-analyzer-git::git+https://github.com/astrelsky/Ghidra-Cpp-Class-Analyzer
+	sha512sums = SKIP
+
+pkgname = ghidra-extension-ghidra-cpp-class-analyzer-git
+
