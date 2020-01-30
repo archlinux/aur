@@ -3,14 +3,14 @@
 
 pkgname=ghq
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
-url="https://github.com/motemen/ghq"
+url="https://github.com/x-motemen/ghq"
 license=('MIT')
 makedepends=('go' 'git')
 optdepends=('zsh: ghq function for zsh')
-source=("git+https://github.com/motemen/${pkgname}.git")
+source=("git+https://github.com/x-motemen/${pkgname}.git")
 
 prepare() {
   cd "${srcdir}/${pkgname}"
