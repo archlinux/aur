@@ -9,7 +9,7 @@ arch=('x86_64')
 url='https://github.com/microsoft/verona'
 licence=('MIT')
 depends=('python')
-makedepends=('cmake' 'ninja' 'clang' 'llvm')
+makedepends=('python-pip' 'cmake' 'ninja' 'clang' 'llvm')
 provides=('veronac' 'verona-interpreter')
 source=("git+https://github.com/microsoft/verona#commit=$pkgver")
 md5sums=('SKIP')
@@ -17,6 +17,7 @@ md5sums=('SKIP')
 prepare() {
     cd verona
     git submodule update --init --recursive
+    python3 -m pip install OutputCheck --user
 }
 
 build() {

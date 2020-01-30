@@ -4,6 +4,7 @@ pkgbase = verona
 	pkgrel = 1
 	url = https://github.com/microsoft/verona
 	arch = x86_64
+	makedepends = python-pip
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = clang
