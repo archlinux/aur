@@ -1,0 +1,19 @@
+pkgbase = blktests-git
+	pkgdesc = Linux kernel block layer testing framework
+	pkgver = r384.9e02419
+	pkgrel = 1
+	url = https://github.com/osandov/blktests
+	arch = any
+	license = GPL2
+	license = GPL3
+	makedepends = git
+	depends = fio
+	optdepends = e2fsprogs: required for some tests
+	optdepends = xfsprogs: required for some tests
+	optdepends = multipath-tools: required for some tests
+	optdepends = device-mapper: required for some tests
+	source = git://github.com/osandov/blktests.git
+	md5sums = SKIP
+
+pkgname = blktests-git
+
