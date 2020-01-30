@@ -9,7 +9,7 @@ sha256sums=('4d4dfdcb7e5aa9b65489a28dd80e1a146fbc5d52034a938ccd0ee46ad744815c')
 
 build() {
   cd "$srcdir"
-  gcc mem-suspend.c -o mem-suspend 
+  gcc mem-suspend.c -o mem-suspend
 }
 
 package() {
