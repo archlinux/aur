@@ -1,0 +1,20 @@
+pkgbase = iasimage-git
+	pkgdesc = iasimage is a utility program for creating Intel Automotive Service (IAS) images, a binary file format understood by bootloaders to load and initialize Operating Systems or Hypervisors.
+	pkgver = 20190410.7799ac7
+	pkgrel = 1
+	url = https://github.com/intel/iasimage
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = custom:MIT
+	makedepends = git
+	depends = python-idna
+	depends = python-wheel
+	depends = python-cryptography
+	provides = iasimage
+	conflicts = iasimage
+	source = iasimage::git+https://github.com/intel/iasimage.git
+	sha1sums = SKIP
+
+pkgname = iasimage-git
+
