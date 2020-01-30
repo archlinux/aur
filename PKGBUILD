@@ -3,7 +3,7 @@
 # Contributor: spookykidmm <https://github.com/spookykidmm>
 
 pkgname=bumblebee-status
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Modular, theme-able status line generator for the i3 window manager'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=('xorg-xbacklight: to display a displays brightness'
             'tzlocal: retrieve system timezone for datetimetz module'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c2c48f5bbf7cd209eb64ef64d746da6eefa98cf7cadf1a512355deddeb68ddf43ab1e59da64776b30c3edfa1932bee8a4b7c083a3f2ad03d8e3a77b1e354836b')
+sha512sums=('f61d1d6d5c4082eb24b21f7fe647b5ce85d6f8aa421da171a00c2206d2450241f0242edfc4d9332944e395bb4fec6743851da7345b8960ec458ae9d71c03b57f')
 
 package() {
   install -d "$pkgdir"/usr/bin \
