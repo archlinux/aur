@@ -1,6 +1,6 @@
 pkgbase = fscrypt-git
 	pkgdesc = A tool for managing Linux filesystem encryption
-	pkgver = 0.2.5.43.g0594821
+	pkgver = 0.2.5.57.gc4fa1f4
 	pkgrel = 1
 	url = https://github.com/google/fscrypt
 	arch = x86_64
