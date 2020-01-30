@@ -36,7 +36,7 @@ options=('!strip')
 _srcname=linux-$_srctag
 _bmqversion=5.5-r0
 _bmq_patch="bmq_v${_bmqversion}.patch"
-_gcc_more_v='20190822'
+_gcc_more_v='20191217'
 source=(
   "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srctag.tar.gz"
   config         # the main kernel config file
@@ -51,7 +51,7 @@ validpgpkeys=(
 sha256sums=('25209f1e4fcb95311d1cb7cdfbdba9804dea73b73777873328fd3d2908fc9c5d'
             '4058ecf0c5a8b28ec25f530c0b21c218e7e085ea38f4e69dd8ee91f915aeb58f'
             '20fb5844b6d836eeb5cb5a66e58b4fa581d4edbaec3337f61a50992714c3b0b5'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
+            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -80,8 +80,8 @@ prepare() {
   cp ../config .config
 
   # https://github.com/graysky2/kernel_gcc_patch
-  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch ..."
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
   make prepare
 
