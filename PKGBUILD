@@ -2,12 +2,12 @@
 pkgname=python-pytesseract
 _pkgname=pytesseract
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for Google Tesseract"
 arch=('any')
 url="https://github.com/madmaze/pytesseract"
 license=("Apache License 2.0")
-depends=('python' 'tesseract')
+depends=('python' 'tesseract' 'python-pillow')
 makedepends=('python-setuptools')
 conflicts=("${pkgname}" "${pkgname}-git")
 #source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
