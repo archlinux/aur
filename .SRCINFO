@@ -1,6 +1,6 @@
 pkgbase = rumur
 	pkgdesc = Yet another Murphi model checker
-	pkgver = 2020.01.11
+	pkgver = 2020.01.27
 	pkgrel = 1
 	url = https://github.com/Smattr/rumur
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = rumur
 	depends = python
 	optdepends = z3: Preferred SMT solver
 	optdepends = cvc4: Alternative SMT solver
-	source = https://github.com/Smattr/rumur/archive/v2020.01.11.tar.gz
-	sha256sums = 1b71feb320b8b0ec5caa8d68395cbaf5d4538c333e5ed1c2cb7f4a903c0f0cd4
+	source = https://github.com/Smattr/rumur/archive/v2020.01.27.tar.gz
+	sha256sums = 1aeb0abc9dd032af3e36703df529fb15a2fe6093ceb3479fa2db13f0d1e8ea7e
 
 pkgname = rumur
 

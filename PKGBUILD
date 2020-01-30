@@ -1,7 +1,7 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=rumur
-pkgver=2020.01.11
+pkgver=2020.01.27
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
@@ -13,7 +13,7 @@ checkdepends=('valgrind' 'z3')
 optdepends=('z3: Preferred SMT solver'
             'cvc4: Alternative SMT solver')
 source=("https://github.com/Smattr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('1b71feb320b8b0ec5caa8d68395cbaf5d4538c333e5ed1c2cb7f4a903c0f0cd4')
+sha256sums=('1aeb0abc9dd032af3e36703df529fb15a2fe6093ceb3479fa2db13f0d1e8ea7e')
 
 prepare() {
   rm -rf build/CMakeCache.txt
