@@ -2,7 +2,7 @@
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
 
 pkgname=yubikey-manager-qt
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='Cross-platform application for configuring any YubiKey over all USB transports'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('yubikey-manager' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphic
 replaces=('yubikey-neo-manager')
 validpgpkeys=('8D0B4EBA9345254BCEC0E843514F078FF4AB24C3') # Dag Heyman <dag@yubico.com>
 source=("https://developers.yubico.com/${pkgname}/Releases/${pkgname}-${pkgver}.tar.gz"{,.sig})
-sha256sums=('6759436b3ce39929d74315fc57b3a9cbb93c66138ab00d8142350f0b62d2f520'
+sha256sums=('6e28cd89a6115bbd042e23d175be57220513ab906f579cf2c4eee0408e387965'
             'SKIP')
 
 build() {
