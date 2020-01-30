@@ -1,7 +1,7 @@
 pkgbase = voxelshop
 	pkgdesc = An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.
 	pkgver = 1.8.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blackflux.com/node/11
 	arch = any
 	license = Apache

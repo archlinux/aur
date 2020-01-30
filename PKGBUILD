@@ -1,9 +1,10 @@
+# shellcheck shell=bash disable=SC2034
 # Maintainer: Andrew Dunai <andrew@dun.ai>
 # Contributor: Damien Flament <damien.flament@gmx.com>
 
 pkgname=voxelshop
 pkgver=1.8.26
-pkgrel=1
+pkgrel=2
 pkgdesc='An extremely intuitive and powerful cross-platform software to modify and create voxel objects which was designed from the ground up in close collaboration with artists.'
 
 _application_name="VoxelShop"
@@ -50,7 +51,7 @@ prepare() {
   # extracted directory name conflicts with the startup script name.
   if [[ ! -d "${pkgname}-${pkgver}" ]]; then
     mkdir "${pkgname}-${pkgver}"
-    cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}" || return
     bsdtar -xkf "${srcdir}/${_source_filename}"
     mv "${pkgname}"/* .
     rmdir "${pkgname}"
@@ -68,7 +69,7 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${pkgname}.desktop"
   install -Dm644 -t "${pkgdir}/usr/share/pixmaps" "${_icon_filename}"
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}" || return
 
   install -Dm644 -t "${pkgdir}/usr/share/java/${pkgname}" "${pkgname}-start.jar"
   install -Dm644 -t "${pkgdir}/usr/share/java/${pkgname}/lib" lib/*
