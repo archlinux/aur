@@ -1,0 +1,16 @@
+pkgbase = webm
+	pkgdesc = Cross-platform command-line WebM converter
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/Kagami/webm.py
+	arch = any
+	license = custom:CC0
+	makedepends = python-setuptools
+	depends = python
+	depends = ffmpeg
+	optdepends = mpv: for interactive mode
+	source = https://github.com/Kagami/webm.py/archive/v0.12.1.tar.gz
+	sha256sums = 786244edc928583a49e210cbb5533d192bf9ad31bc82eb0a66d393964db119c8
+
+pkgname = webm
+
