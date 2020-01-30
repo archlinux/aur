@@ -1,7 +1,7 @@
 # Maintainer: Fredy García <frealgagu at gmail dot com>
 
 pkgname=whatsapp-nativefier
-pkgver=0.3.9309
+pkgver=0.4.607
 pkgrel=1
 pkgdesc="WhatsApp desktop built with nativefier (electron)"
 arch=("armv7l" "i686" "x86_64")
@@ -38,7 +38,7 @@ build() {
 package() {
   install -dm755 "${pkgdir}/"{opt,usr/{bin,share/{applications,licenses/${pkgname}}}}
 
-  cp -rL "${srcdir}/whats-app-linux-"* "${pkgdir}/opt/${pkgname}"
+  cp -rL "${srcdir}/WhatsApp-linux-"* "${pkgdir}/opt/${pkgname}"
   ln -s "/opt/${pkgname}/whats-app" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
