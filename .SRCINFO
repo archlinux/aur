@@ -1,6 +1,6 @@
 pkgbase = mate-desktop-dev
 	pkgdesc = Library with common API for various MATE modules
-	pkgver = 1.19.3
+	pkgver = 1.23.2
 	pkgrel = 5
 	url = http://mate-desktop.org
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = mate-desktop-dev
 	license = GPL
 	license = LGPL
 	makedepends = gobject-introspection
-	makedepends = mate-common>=1.19
+	makedepends = mate-common-dev
 	makedepends = yelp-tools
 	depends = dconf
 	depends = gtk3
@@ -17,8 +17,8 @@ pkgbase = mate-desktop-dev
 	provides = mate-desktop-gtk3
 	conflicts = mate-desktop
 	conflicts = mate-desktop-gtk3
-	source = http://pub.mate-desktop.org/releases/1.19/mate-desktop-1.19.3.tar.xz
-	sha1sums = c5a951180bd42821858e1b2962dfe3de6ebe9531
+	source = http://pub.mate-desktop.org/releases/1.23/mate-desktop-1.23.2.tar.xz
+	sha1sums = f948b6758762eb5038f50f370b2c9483b6b7cf58
 
 pkgname = mate-desktop-dev
 	pkgdesc = Library with common API for various MATE modules (GTK3 version)

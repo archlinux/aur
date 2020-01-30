@@ -2,10 +2,10 @@
 # Contributor:  eadrom <eadrom@archlinux.info>
 # Contributor:  Martin Wimpress <code@flexion.org>
 
-_ver=1.19
+_ver=1.23
 _pkgbase=mate-desktop
 pkgname="${_pkgbase}-dev"
-pkgver=${_ver}.3
+pkgver=${_ver}.2
 pkgrel=5
 pkgdesc="Library with common API for various MATE modules"
 url="http://mate-desktop.org"
@@ -14,9 +14,9 @@ provides=("${_pkgbase}" "${_pkgbase}-gtk3")
 conflicts=("${_pkgbase}" "${_pkgbase}-gtk3")
 license=('GPL' 'LGPL')
 depends=('dconf' 'gtk3' 'startup-notification')
-makedepends=('gobject-introspection' 'mate-common>=1.19' 'yelp-tools')
+makedepends=('gobject-introspection' 'mate-common-dev' 'yelp-tools')
 source=("http://pub.mate-desktop.org/releases/${_ver}/${_pkgbase}-${pkgver}.tar.xz")
-sha1sums=('c5a951180bd42821858e1b2962dfe3de6ebe9531')
+sha1sums=('f948b6758762eb5038f50f370b2c9483b6b7cf58')
 
 prepare() {
     cd "${srcdir}"
