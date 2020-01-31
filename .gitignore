@@ -1,0 +1,4 @@
+babl-*.tar.gz
+lib32-babl-*.pkg.tar.xz
+src/
+pkg/
