@@ -1,21 +1,28 @@
 pkgbase = r-tidyselect
-	pkgdesc = A backend for the selecting functions of the 'tidyverse'.
-	pkgver = 0.2.5
+	pkgdesc = Select from a set of strings.
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/tidyselect/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL-3
-	depends = r>=3.1
+	depends = r>=3.2
+	depends = r-ellipsis
 	depends = r-glue>=1.3.0
-	depends = r-purrr
-	depends = r-rlang>=0.2.2
-	depends = r-rcpp>=0.12.0
+	depends = r-purrr>=0.3.2
+	depends = r-rlang>=0.4.3
+	depends = r-vctrs>=0.2.2
 	optdepends = r-covr
+	optdepends = r-crayon
 	optdepends = r-dplyr
+	optdepends = r-knitr
+	optdepends = r-magrittr
+	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = http://cran.r-project.org/src/contrib/tidyselect_0.2.5.tar.gz
-	md5sums = 8a7d4060a5ed016cf4adeaf6014ca89c
+	optdepends = r-tibble
+	optdepends = r-withr
+	source = http://cran.r-project.org/src/contrib/tidyselect_1.0.0.tar.gz
+	md5sums = dfb73f5fc014d8ea96a66d4c3776ae0b
 
 pkgname = r-tidyselect
 
