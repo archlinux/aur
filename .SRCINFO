@@ -14,7 +14,7 @@ pkgbase = r-biobase
 	optdepends = r-runit
 	optdepends = r-golubesets
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.46.0.tar.gz
-	sha1sums = 4dcd9a29ce30fb8ca2d3d62f721e9c88853245ae
+	sha256sums = f4e1ad15ffc281c7f4b049b58a880ca987e12d61bb37cc772a95e2361008a4bf
 
 pkgname = r-biobase
 
