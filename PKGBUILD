@@ -141,6 +141,7 @@ _package-headers() {
 
   cd "${_srcname}"
 
+  # Fix for DKMS because clang doesn't like this
   for f in Makefile kernel/Makefile; do
     sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern)$/d' $f
   done
