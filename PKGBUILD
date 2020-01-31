@@ -4,23 +4,30 @@
 # you also find the URL of a binary repository.
 
 pkgname=cmake-format
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.6.8
+pkgrel=1
 pkgdesc='Source code formatter for CMake listfiles'
 arch=('any')
 url='https://github.com/cheshirekow/cmake_format'
 license=('GPL3')
-depends=('python-setuptools' 'python-yaml>=5.3' 'python-jinja>=2.10.3' 'python-six>=1.14.0')
-checkdepends=('cmake' 'python-pgpy')
+depends=('python-setuptools' 'python-six>=1.13.0')
+optdepends=('python-yaml>=5.3' 'python-jinja>=2.10.3')
+checkdepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheshirekow/cmake_format/archive/v${pkgver}.tar.gz")
-sha512sums=('1d1a637ea5e91540030c3b28606bc211d8d6951d96d84b0318c5a9261be06dd81c929827eae3090aa75004be70d059fe6f5b580854ea093c1aebe19b087bb734')
+sha512sums=('34c27dddef07704347943cb455462d2ea6d848acfc1c34e9cb16ce272e1fa0246414a864cd5d3f289158a20e277748b4f03d56961e9175948c954623d5750e41')
 
 check() {
   mkdir "$srcdir/check"
   cd "$srcdir/check"
   export CTEST_OUTPUT_ON_FAILURE=1
   cmake "$srcdir/cmake_format-$pkgver"
-  ctest --exclude-regex cmake_format-command-db-test
+  ctest --exclude-regex 'verify-export|cmake_format-command-db-test|cmake_format-validate-database|cmake_format-doc-verify-README\.rst'
+
+  # note: Excluding the tests cmake_format-validate-database (would require gpg2 and
+  # python-pgpy and currently fails because an internet connection is required) and
+  # cmake_format-command-db-test (fails if CMake version doesn't match the version
+  # in upstream's CI). Also exluding verify-export and cmake_format-doc-verify-README.rst
+  # which seem specific to how upstream manages their Git repo.
 }
 
 package() {
