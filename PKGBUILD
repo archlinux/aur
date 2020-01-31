@@ -12,7 +12,7 @@ _tinydir_commit=3aae922
 
 pkgname=natron
 _pkgname=Natron
-pkgver=2.3.15_rc13
+pkgver=2.3.15_rc15
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="Open source compositing software. Node-graph based. Similar in functionalities to Adobe After Effects and Nuke by The Foundry."
@@ -31,7 +31,7 @@ source=("$_pkgname-$_pkgver.tar.gz::https://github.com/NatronGitHub/Natron/archi
         "tinydir-$_tinydir_commit.tar.gz::https://github.com/NatronGitHub/tinydir/tarball/$_tinydir_commit"
         "OpenColorIO-Configs-$_pkgname-v${pkgver%.??_*}.tar.gz::https://github.com/NatronGitHub/OpenColorIO-Configs/archive/$_pkgname-v${pkgver%.??_*}.tar.gz"
         "config.pri")
-sha512sums=('c26777802b561c8a070d7cc7b190ca8039378922c4a0f9f47c8ff94364127e2c73815bc3095bb318160fe973a5dd8d325d28436544f4447b184a145ce97f6e07'
+sha512sums=('4e4b10129cf3834df61f1d2b4040cee356bbabf50085afbc554454ba245c17cca50dc3e995ef756da14c3d241b866d4abbb5a799db53d1c863839b1ec5b64291'
             'SKIP'
             'SKIP'
             'SKIP'
