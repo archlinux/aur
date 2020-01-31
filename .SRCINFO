@@ -13,7 +13,7 @@ pkgbase = r-formatr
 	optdepends = r-rmarkdown
 	optdepends = r-knitr
 	source = https://cran.r-project.org/src/contrib/formatR_1.7.tar.gz
-	md5sums = 1b223bdb396ef14597e8a449c53af2fb
+	sha256sums = a366621b3ff5f8e86a499b6f87858ad47eefdace138341b1377ecc307a5e5ddb
 
 pkgname = r-formatr
 
