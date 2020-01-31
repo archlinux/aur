@@ -1,7 +1,7 @@
 pkgbase = basilisk
 	pkgdesc = Standalone web browser forked from mozilla.org, UXP version
 	pkgver = 2020.01.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.basilisk-browser.org
 	arch = x86_64
 	license = MPL
