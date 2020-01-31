@@ -1,0 +1,25 @@
+pkgbase = python-flask-reverse-proxy-fix
+	pkgdesc = Python Flask middleware for applications running under a reverse proxy.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/antarctica/flask-reverse-proxy-fix
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-flask
+	depends = bandit
+	depends = flake8
+	depends = twine
+	depends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/f/flask-reverse-proxy-fix/flask-reverse-proxy-fix-0.2.1.tar.gz
+	sha256sums = 03ce3312d92f2b0073205e74bee1e6213640b44b1de730375d8cf478447e208c
+
+pkgname = python-flask-reverse-proxy-fix
+	depends = python
+	depends = python-flask
+	depends = bandit
+	depends = flake8
+	depends = twine
+	depends = python-wheel
+
