@@ -2,13 +2,13 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=liblocked-sstream
 pkgver=0.0.5
-pkgrel=1
+pkgrel=3
 pkgdesc="library for dcpomatic sstream locking"
 arch=('i686' 'x86_64')
 url="https://carlh.net/locked_sstream"
 license=('GPL')
-depends=('boost-libs>=1.45')
-makedepends=('python2' 'boost>=1.45')
+depends=('boost-libs>=1.72.0')
+makedepends=('python2' 'boost>=1.72.0')
 provides=('liblocked-sstream')
 conflicts=('liblocked-sstream-git')
 source=("https://carlh.net/downloads/locked_sstream/locked_sstream-${pkgver}.tar.bz2")
