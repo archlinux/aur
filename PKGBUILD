@@ -1,19 +1,30 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-rsamtools
-_bc_name=Rsamtools
-pkgver=2.2.1
+
+_bcname=Rsamtools
+_bcver=2.2.1
+pkgname=r-${_bcname,,}
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import"
-url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
-arch=("x86_64")
-license=('Artistic-2.0')
-depends=('r' 'r-genomeinfodb' 'r-genomicranges' 'r-biocgenerics' 'r-s4vectors' 'r-biostrings' 'r-iranges' 'r-xvector' 'r-zlibbioc' 'r-bitops' 'r-biocparallel' 'r-rhtslib')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('dc30829d270ca77fa29aaffa37b88060c1223320')
+arch=(i686 x86_64)
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+license=(Artistic-2.0)
+depends=(r 'r-genomeinfodb>=1.1.3' 'r-genomicranges>=1.31.8' 'r-biostrings>=2.47.6' 'r-biocgenerics>=0.25.1' 'r-s4vectors>=0.17.25' 'r-iranges>=2.13.12' 'r-xvector>=0.19.7' r-zlibbioc r-bitops r-biocparallel 'r-rhtslib>=1.17.7')
+makedepends=(gcc make)
+optdepends=(r-genomicalignments r-shortread r-genomicfeatures r-txdb.dmelanogaster.ucsc.dm3.ensgene r-kegg.db r-txdb.hsapiens.ucsc.hg18.knowngene r-rnaseqdata.hnrnpc.bam.chr14 r-bsgenome.hsapiens.ucsc.hg19 r-runit r-biocstyle)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+md5sums=('0b39cde4200ca37acddcd1bf4ee96fd8')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
