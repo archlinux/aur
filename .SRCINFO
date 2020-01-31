@@ -21,7 +21,7 @@ pkgbase = r-cli
 	optdepends = r-testthat
 	optdepends = r-withr
 	source = https://cran.r-project.org/src/contrib/cli_2.0.1.tar.gz
-	md5sums = 6f0ec39ebd7fd4898d58f6519bfbabd9
+	sha256sums = bedc6a61c1dd3a789105565ba919da8d3a2b78b238256bab99cd6222e7894874
 
 pkgname = r-cli
 

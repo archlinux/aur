@@ -13,9 +13,9 @@ license=(MIT)
 depends=('r>=2.10' r-assertthat 'r-crayon>=1.3.4' r-glue r-fansi)
 optdepends=(r-callr r-covr r-htmlwidgets r-knitr r-mockery r-rmarkdown r-rstudioapi r-prettycode r-testthat r-withr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('6f0ec39ebd7fd4898d58f6519bfbabd9')
+sha256sums=('bedc6a61c1dd3a789105565ba919da8d3a2b78b238256bab99cd6222e7894874')
 
-build(){
+build() {
   cd "${srcdir}"
 
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
