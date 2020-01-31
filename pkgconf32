@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig:/usr/share/pkgconfig:.' /usr/bin/pkgconf $@

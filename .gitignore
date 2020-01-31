@@ -1,0 +1,5 @@
+poppler-*.tar.*
+lib32-poppler-*.pkg.tar.xz
+src/
+pkg/
+test/
