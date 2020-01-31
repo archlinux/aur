@@ -1,0 +1,4 @@
+exiv2-*.tar.gz
+lib32-exiv2-*.pkg.tar.xz
+src/
+pkg/
