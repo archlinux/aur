@@ -10,9 +10,10 @@ arch=('i686' 'x86_64')
 url="http://lv2plug.in/"
 license=('custom:ISC')
 makedepends=('asciidoc' 'doxygen' 'git' 'gtk2' 'libsndfile' 'pygmentize'
-             'python-pygments' 'python-rdflib')
+             'python-lxml' 'python-pygments' 'python-rdflib')
 optdepends=('libsndfile: example sampler plugin'
             'gtk2: example scope plugin'
+            'python-lxml: for lv2specgen.py'
             'python-pygments: for lv2specgen.py'
             'python-rdflib: for lv2specgen.py')
 provides=("${_pkgname}" "${_pkgname}=${pkgver//.r*/}" 'lv2core' "${_pkgname}-svn")
