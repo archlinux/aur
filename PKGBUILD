@@ -2,7 +2,7 @@
 
 pkgname=python-kornia-git
 _name=kornia
-pkgver=v0.1.3.r110.ga48164b
+pkgver=v0.2.0.r8.ge110f3b
 pkgrel=1
 arch=(any)
 url='https://github.com/kornia/kornia'
@@ -12,7 +12,7 @@ makedepends=(
   'git'
   'python-setuptools'
 )
-depends=('python-pytorch')
+depends=('python-pytorch' 'python-pillow' 'python-torchvision' 'opencv' 'python-matplotlib' 'ipython' 'jupyter')
 provides=('python-kornia')
 conflicts=('python-kornia')
 options=(!emptydirs)
