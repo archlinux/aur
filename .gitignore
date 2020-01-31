@@ -1,4 +1,5 @@
 src/
 pkg/
 LazyMan/
+go-mlbam-proxy/
 *.pkg.tar
