@@ -1,19 +1,30 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-dada2
-_bc_name=dada2
-pkgver=1.14.0
+
+_bcname=dada2
+_bcver=1.14.0
+pkgname=r-${_bcname,,}
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="Accurate, high-resolution sample inference from amplicon sequencing data"
-url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
-arch=("x86_64")
-license=('Artistic-2.0')
-depends=('r' 'r-rcpp' 'r-biostrings' 'r-ggplot2' 'r-datatable' 'r-reshape2' 'r-shortread' 'r-rcppparallel' 'r-iranges' 'r-xvector' 'r-biocgenerics')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('a9a5e7b9ea1fa19a0570e30ef073da21a81a06ec')
+arch=(i686 x86_64)
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+license=(LGPL3)
+depends=('r>=3.4.0' 'r-rcpp>=0.12.0' 'r-biostrings>=2.42.1' 'r-ggplot2>=2.1.0' 'r-reshape2>=1.4.1' 'r-shortread>=1.32.0' 'r-rcppparallel>=4.3.0' 'r-iranges>=2.6.0' 'r-xvector>=0.16.0' 'r-biocgenerics>=0.22.0')
+makedepends=(gcc make)
+optdepends=(r-biocstyle r-knitr r-rmarkdown)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+md5sums=('a6c97f79f04d7e02db8f663a9688b2ed')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
