@@ -2,11 +2,15 @@ pkgbase = r-viridislite
 	pkgdesc = Default Color Maps from 'matplotlib' (Lite Version)
 	pkgver = 0.3.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/viridisLite/index.html
-	arch = x86_64
-	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/viridisLite_0.3.0.tar.gz
+	url = https://cran.r-project.org/package=viridisLite
+	arch = any
+	license = MIT
+	depends = r>=2.10
+	optdepends = r-hexbin
+	optdepends = r-ggplot2
+	optdepends = r-testthat
+	optdepends = r-covr
+	source = https://cran.r-project.org/src/contrib/viridisLite_0.3.0.tar.gz
 	md5sums = 3a3fbfd0267589d9b5c12fd9d2eebfc2
 
 pkgname = r-viridislite
