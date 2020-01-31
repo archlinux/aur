@@ -1,20 +1,35 @@
 pkgbase = r-summarizedexperiment
 	pkgdesc = SummarizedExperiment container
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/SummarizedExperiment.html
-	arch = x86_64
+	arch = any
 	license = Artistic-2.0
-	depends = r
-	depends = r-genomeinfodb
-	depends = r-iranges
-	depends = r-biocgenerics
-	depends = r-s4vectors
-	depends = r-genomicranges
+	depends = r>=3.2
+	depends = r-genomicranges>=1.33.6
 	depends = r-biobase
-	depends = r-delayedarray
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedExperiment_1.16.0.tar.gz
-	sha1sums = a56b0817ad6a3c182c0da68a5b6f5433907a24a3
+	depends = r-delayedarray>=0.3.20
+	depends = r-biocgenerics>=0.15.3
+	depends = r-s4vectors>=0.23.20
+	depends = r-iranges>=2.13.16
+	depends = r-genomeinfodb>=1.13.1
+	optdepends = r-annotate
+	optdepends = r-annotationdbi
+	optdepends = r-hgu95av2.db
+	optdepends = r-genomicfeatures
+	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	optdepends = r-biocstyle
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-digest
+	optdepends = r-jsonlite
+	optdepends = r-rhdf5
+	optdepends = r-hdf5array
+	optdepends = r-airway
+	optdepends = r-runit
+	optdepends = r-testthat
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SummarizedExperiment_1.16.1.tar.gz
+	md5sums = 33fbb7b4c9bad189ecfa7b0e3830d0d9
 
 pkgname = r-summarizedexperiment
 
