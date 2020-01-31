@@ -1,12 +1,14 @@
 pkgbase = python-togglpy
-	pkgdesc = A hosts file manager library written in python
+	pkgdesc = TogglPy is a non-cluttered, easily understood and implemented python library for interacting with the Toggl API.
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/matthewdowney/TogglPy
 	arch = any
 	license = MIT
-	source = git+https://github.com/matthewdowney/TogglPy.git
-	sha512sums = SKIP
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/T/TogglPy/TogglPy-0.1.1.tar.gz
+	md5sums = 716bcb71cced0172285dae226f91c6e0
+	sha256sums = fda2b4d2508a95f5ec3e86128af8ba0006686b69423824bc4967445776f69811
 
 pkgname = python-togglpy
 
