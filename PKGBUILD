@@ -48,8 +48,8 @@ build() {
   fi
 
   # Detect global environment file and move it out of the way.
-  ENV_FILE=$(echo 'main = return ()' | runghc 2>&1 | grep 'Loaded package environment from .*' | grep -o '/.*')
-  if [ -f $ENV_FILE ]; then
+  ENV_FILE=$(echo 'main = return ()' | runghc 2>&1 | grep 'Loaded package environment from .*' | grep -o '/.*' || true)
+  if [ -f "$ENV_FILE" ]; then
 	echo "Warning: Environment file detected at ${ENV_FILE}."
 	echo "This is likely to break the build."
 	echo -n "Would you like it to be temporarily renamed for the duration? [y/n] "
