@@ -1,19 +1,29 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-r.utils
-_cran_name=R.utils
-pkgver=2.9.2
+
+_cranname=R.utils
+_cranver=2.9.2
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Various Programming Utilities"
-arch=('x86_64')
-url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
-license=('LGPL3')
-depends=('r' 'r-oo')
-source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(LGPL2.1 LGPL3)
+depends=('r>=2.14.0' 'r-r.oo>=1.23.0')
+optdepends=(r-digest)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('8629f732956b4f040429f2dccc533168')
 
-package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+build() {
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
