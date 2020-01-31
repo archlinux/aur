@@ -1,6 +1,6 @@
 pkgbase = v8-r
-	pkgdesc = Fast and modern Javascript engine used in Google Chrome.
-	pkgver = 8.1.277
+	pkgdesc = Google's open source JavaScript and WebAssembly engine
+	pkgver = 8.1.310
 	pkgrel = 1
 	url = https://v8.dev
 	arch = x86_64

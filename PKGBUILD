@@ -7,9 +7,9 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.1.277
+pkgver=8.1.310
 pkgrel=1
-pkgdesc="Fast and modern Javascript engine used in Google Chrome."
+pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
 url="https://v8.dev"
 license=('BSD')
@@ -117,20 +117,18 @@ package() {
   cd $srcdir/v8
 
   install -d ${pkgdir}/usr/lib/v8
-
-  install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
-  install -Dm755 $OUTFLD/d8 ${pkgdir}/usr/lib/v8/d8
-
-  # install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
-  install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
-  install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
-  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
-  install -Dm755 $OUTFLD/libchrome_zlib.so ${pkgdir}/usr/lib/libchrome_zlib.so
-
   install -Dm755 ${srcdir}/d8 ${pkgdir}/usr/bin/d8
 
-  # V8 has several header files and ideally if it had its own folder in /usr/include
-  # But doing it here will break all users. Ideally if they use provided pkgconfig file.
+  install -Dm755 $OUTFLD/d8 ${pkgdir}/usr/lib/v8/d8
+  install -Dm755 $OUTFLD/libv8.so ${pkgdir}/usr/lib/libv8.so
+  install -Dm755 $OUTFLD/libv8_libbase.so ${pkgdir}/usr/lib/libv8_libbase.so
+  install -Dm755 $OUTFLD/libv8_libplatform.so ${pkgdir}/usr/lib/libv8_libplatform.so
+  install -Dm755 $OUTFLD/libchrome_zlib.so ${pkgdir}/usr/lib/libchrome_zlib.so
+
+  # install -Dm755 $OUTFLD/cctest ${pkgdir}/usr/lib/v8/cctest
+  # install -Dm755 $OUTFLD/libv8_for_testing.so ${pkgdir}/usr/lib/libv8_for_testing.so
+  # install -Dm755 $OUTFLD/libv8_debug_helper.so ${pkgdir}/usr/lib/libv8_debug_helper.so
+
   install -d ${pkgdir}/usr/include
   install -Dm644 include/*.h ${pkgdir}/usr/include
 
