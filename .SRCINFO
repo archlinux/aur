@@ -1,7 +1,7 @@
 pkgbase = godot-bin
 	pkgdesc = Godot is an advanced, feature packed, multi-platform 2D and 3D game engine
-	pkgver = 3.1.2
-	pkgrel = 2
+	pkgver = 3.2
+	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = godot-bin
 	source = icons.tar.gz
 	md5sums = fa7422332b97ab8430ea7628ec8b0880
 	md5sums = 48ee5f4295a45bb61c6223ba83fd1436
-	source_i686 = godot-bin-3.1.2::https://downloads.tuxfamily.org/godotengine/3.1.2/Godot_v3.1.2-stable_x11.32.zip
-	md5sums_i686 = dc818e73e9eff677b6dd31f559c93a01
-	source_x86_64 = godot-bin-3.1.2::https://downloads.tuxfamily.org/godotengine/3.1.2/Godot_v3.1.2-stable_x11.64.zip
-	md5sums_x86_64 = 4c97944657528bbf842ac35d6aedfbac
+	source_i686 = godot-bin-3.2::https://downloads.tuxfamily.org/godotengine/3.2/Godot_v3.2-stable_x11.32.zip
+	md5sums_i686 = cdae4414e373a50d6c49d9fdda5fa7a9
+	source_x86_64 = godot-bin-3.2::https://downloads.tuxfamily.org/godotengine/3.2/Godot_v3.2-stable_x11.64.zip
+	md5sums_x86_64 = 88491455b92453ff264daa03408acf80
 
 pkgname = godot-bin
 
