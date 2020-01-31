@@ -2,11 +2,14 @@ pkgbase = r-stringi
 	pkgdesc = Character String Processing Facilities
 	pkgver = 1.4.5
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/stringi/index.html
+	url = https://cran.r-project.org/package=stringi
+	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/stringi_1.4.5.tar.gz
+	license = custom
+	makedepends = gcc
+	depends = r>=2.14
+	depends = icu>=55
+	source = https://cran.r-project.org/src/contrib/stringi_1.4.5.tar.gz
 	md5sums = 83434d4f28361417b653fae33ba721e5
 
 pkgname = r-stringi
