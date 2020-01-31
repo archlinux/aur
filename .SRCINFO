@@ -18,7 +18,7 @@ pkgbase = r-s4vectors
 	optdepends = r-runit
 	optdepends = r-biocstyle
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.24.3.tar.gz
-	sha1sums = f8122844ef2569a1dad3ad10af59638d987b3b2a
+	sha256sums = 9e10d69623764be8d700ca06a273ee889c1df321bac04d31972af149746dc705
 
 pkgname = r-s4vectors
 
