@@ -11,7 +11,7 @@ pkgbase = r-snow
 	optdepends = r-rlecuyer
 	optdepends = r-nws
 	source = https://cran.r-project.org/src/contrib/snow_0.4-3.tar.gz
-	md5sums = 8ea060a12258480ee5ccb33bb522894c
+	sha256sums = 8512537daf334ea2b8074dbb80cf5e959a403a78d68bc1e97664e8a4f64576d8
 
 pkgname = r-snow
 
