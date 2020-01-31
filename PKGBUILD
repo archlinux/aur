@@ -1,19 +1,30 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-shortread
-_bc_name=ShortRead
-pkgver=1.44.0
+
+_bcname=ShortRead
+_bcver=1.44.1
+pkgname=r-${_bcname,,}
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="FASTQ input and manipulation"
-url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
-arch=("x86_64")
-license=('Artistic-2.0')
-depends=('r' 'r-biocgenerics' 'r-biocparallel' 'r-biostrings' 'r-rsamtools' 'r-genomicalignments' 'r-biobase' 'r-s4vectors' 'r-iranges' 'r-genomeinfodb' 'r-genomicranges' 'r-hwriter' 'r-zlibbioc' 'r-latticeextra')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('5a60229c2eb98dcbdc13cc4c99cd693887d171fd')
+arch=(i686 x86_64)
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+license=(Artistic-2.0)
+depends=(r 'r-biocgenerics>=0.23.3' r-biocparallel 'r-biostrings>=2.47.6' 'r-rsamtools>=1.31.2' 'r-genomicalignments>=1.15.6' r-biobase 'r-s4vectors>=0.17.25' 'r-iranges>=2.13.12' 'r-genomeinfodb>=1.15.2' 'r-genomicranges>=1.31.8' r-hwriter r-zlibbioc r-latticeextra)
+makedepends=(gcc)
+optdepends=(r-biocstyle r-runit r-biomart r-genomicfeatures r-yeastnagalakshmi)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+md5sums=('6db17bc451e51ef0e0bc6e6d5089e401')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
