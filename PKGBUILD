@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
+# Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
@@ -17,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git'
         'https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt')
-sha256sums=('0208ac135df7e04c66d20b8c9ce395439c7567ce8074e463bf6ce8f41ebf1912'
-            '7e660c1896e2021a21acb561292f41d2fc0cded4e5c706a0efa7aada7b85767b'
+sha256sums=('d47d85fdab14ef14db806940a91a2d0cbd58b5574b53c3efebdc183b372a50ac'
+            'd2f0e84c1fccb5916ee42d1696f04aa998aee30fb0173dbbe40926e770fe5bfd'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
@@ -26,7 +27,7 @@ prepare() {
 
 	# Add /etc/cheat/ to config file path
 	cd "$pkgname-$pkgver"
-	sed -i '33 i\
+	sed -i '39 i\
 			path.Join("/etc/cheat/conf.yml"),' internal/config/paths.go
 
 	# create gopath

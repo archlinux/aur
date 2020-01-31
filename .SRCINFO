@@ -1,6 +1,6 @@
 pkgbase = cheat
 	pkgdesc = Allows you to create and view interactive cheatsheets on the command-line
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://github.com/cheat/cheat
 	arch = arm
@@ -18,12 +18,12 @@ pkgbase = cheat
 	conflicts = cheat-bash-git
 	conflicts = cheat-git
 	replaces = python-cheat
-	source = cheat-3.4.0.tar.gz::https://github.com/cheat/cheat/archive/3.4.0.tar.gz
+	source = cheat-3.4.1.tar.gz::https://github.com/cheat/cheat/archive/3.4.1.tar.gz
 	source = conf.yml
 	source = git+https://github.com/cheat/cheatsheets.git
 	source = https://raw.githubusercontent.com/cheat/cheatsheets/master/.github/LICENSE.txt
-	sha256sums = 0208ac135df7e04c66d20b8c9ce395439c7567ce8074e463bf6ce8f41ebf1912
-	sha256sums = 7e660c1896e2021a21acb561292f41d2fc0cded4e5c706a0efa7aada7b85767b
+	sha256sums = d47d85fdab14ef14db806940a91a2d0cbd58b5574b53c3efebdc183b372a50ac
+	sha256sums = d2f0e84c1fccb5916ee42d1696f04aa998aee30fb0173dbbe40926e770fe5bfd
 	sha256sums = SKIP
 	sha256sums = a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499
 
