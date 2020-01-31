@@ -1,0 +1,4 @@
+gegl-*.tar.gz
+lib32-gegl-*.pkg.tar.xz
+src/
+pkg/
