@@ -47,7 +47,7 @@ build() {
 	  exit 1
   fi
 
-  ./bootstrap.sh --sandbox
+  EXTRA_CONFIGURE_OPTS="" ./bootstrap.sh --sandbox
 }
 
 package() {
