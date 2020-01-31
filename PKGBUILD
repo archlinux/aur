@@ -1,19 +1,30 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-delayedarray
-_bc_name=DelayedArray
-pkgver=0.12.0
+
+_bcname=DelayedArray
+_bcver=0.12.2
+pkgname=r-${_bcname,,}
+pkgver=${_bcver//[:-]/.}
 pkgrel=1
-pkgdesc="Delayed operations on array-like objects"
-url="https://bioconductor.org/packages/release/bioc/html/${_bc_name}.html"
-arch=("x86_64")
-license=('Artistic-2.0')
-depends=('r' 'r-iranges' 'r-biocgenerics' 'r-s4vectors' 'r-biocparallel' 'r-matrixstats')
-source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bc_name}_${pkgver}.tar.gz")
-sha1sums=('53a087be70db65f2775f319b8d71e4489e0a52cf')
+pkgdesc="A unified framework for working transparently with on-disk and in-memory array-like datasets"
+arch=(i686 x86_64)
+url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
+license=(Artistic-2.0)
+depends=('r>=3.4' r-matrixstats 'r-biocgenerics>=0.31.5' 'r-s4vectors>=0.21.7' 'r-iranges>=2.17.3' r-biocparallel)
+makedepends=(gcc)
+optdepends=(r-hdf5array r-genefilter r-summarizedexperiment r-airway r-pryr r-delayedmatrixstats r-knitr r-biocstyle r-runit)
+source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+md5sums=('6b6e04ad5b10d6319767d5841e1bcb47')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_bc_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
 }
