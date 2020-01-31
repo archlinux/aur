@@ -1,6 +1,6 @@
 pkgbase = rcfvt-git
 	pkgdesc = my own crappy terminal emulator
-	pkgver = r10.4062d5d
+	pkgver = r40.0a8072f
 	pkgrel = 1
 	url = https://github.com/r-c-f/rcfvt
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = rcfvt-git
 	makedepends = meson
 	makedepends = ninja
 	depends = vte3
+	depends = libcanberra
 	provides = rcfvt
 	conflicts = rcfvt
 	source = git+https://github.com/r-c-f/rcfvt.git

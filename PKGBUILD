@@ -1,13 +1,13 @@
 # Maintainer: Ryan Farley <ryan.farley@gmx.com>
 
 pkgname=rcfvt-git
-pkgver=r10.4062d5d
+pkgver=r40.0a8072f
 pkgrel=1
 pkgdesc="my own crappy terminal emulator"
 arch=(x86_64)
 url="https://github.com/r-c-f/rcfvt"
 license=('MIT')
-depends=(vte3)
+depends=(vte3 libcanberra)
 makedepends=(git meson ninja)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
