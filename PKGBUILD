@@ -3,7 +3,7 @@
 
 _cranname=bitops
 _cranver=1.0-6
-pkgname=r-bitops
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Bitwise Operations"
@@ -13,7 +13,7 @@ license=(GPL2 GPL3)
 depends=(r)
 makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('fba16485a51b1ccd354abde5816b6bdd')
+sha256sums=('9b731397b7166dd54941fb0d2eac6df60c7a483b2e790f7eb15b4d7b79c9d69c')
 
 build(){
   cd "${srcdir}"
