@@ -1,15 +1,27 @@
 pkgbase = r-cli
-	pkgdesc = Create Compact Hash Digests of R Objects
-	pkgver = 1.1.0
+	pkgdesc = Helpers for Developing Command Line Interfaces
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/cli/index.html
-	arch = x86_64
-	license = GPL3
-	depends = r
-	depends = r-crayon
+	url = https://cran.r-project.org/package=cli
+	arch = any
+	license = MIT
+	depends = r>=2.10
 	depends = r-assertthat
-	source = http://cran.r-project.org/src/contrib/cli_1.1.0.tar.gz
-	md5sums = cc16412dbe255fdd7beae222d2753132
+	depends = r-crayon>=1.3.4
+	depends = r-glue
+	depends = r-fansi
+	optdepends = r-callr
+	optdepends = r-covr
+	optdepends = r-htmlwidgets
+	optdepends = r-knitr
+	optdepends = r-mockery
+	optdepends = r-rmarkdown
+	optdepends = r-rstudioapi
+	optdepends = r-prettycode
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/cli_2.0.1.tar.gz
+	md5sums = 6f0ec39ebd7fd4898d58f6519bfbabd9
 
 pkgname = r-cli
 
