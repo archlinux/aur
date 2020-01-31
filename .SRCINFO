@@ -1,6 +1,6 @@
 pkgbase = openfx-gmic
 	pkgdesc = OpenFX wrapper for the G'MIC framework
-	pkgver = 2.3.15_rc13
+	pkgver = 2.3.15_rc15
 	pkgrel = 1
 	url = https://github.com/NatronGitHub/openfx-gmic
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = openfx-gmic
 	depends = fftw
 	depends = libgl
 	depends = libpng
-	source = openfx-gmic_0210274.tar.gz::https://github.com/NatronGitHub/openfx-gmic/tarball/0210274
-	source = openfx_2d7b968.tar.gz::https://github.com/NatronGitHub/openfx/tarball/2d7b968
+	source = openfx-gmic_7a047f0.tar.gz::https://github.com/NatronGitHub/openfx-gmic/tarball/7a047f0
+	source = openfx_1645fd7.tar.gz::https://github.com/NatronGitHub/openfx/tarball/1645fd7
 	sha512sums = SKIP
 	sha512sums = SKIP
 

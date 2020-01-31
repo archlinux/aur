@@ -1,10 +1,10 @@
 # Maintainer: Tércio Martins <echo dGVyY2lvd2VuZGVsQGdtYWlsLmNvbQo= | base64 -d>
 
-_openfx_gmic_commit=0210274
-_openfx_commit=2d7b968
+_openfx_gmic_commit=7a047f0
+_openfx_commit=1645fd7
 
 pkgname=openfx-gmic
-pkgver=2.3.15_rc13
+pkgver=2.3.15_rc15
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="OpenFX wrapper for the G'MIC framework"
