@@ -26,7 +26,7 @@ pkgbase = r-biostrings
 	optdepends = r-affydata
 	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biostrings_2.54.0.tar.gz
-	sha1sums = 77a36598418bcd15a97a789f0fd62d63a00687da
+	sha256sums = d7d799f0c8c9e5451171bd81e28ba3bb5b9838d3d5c8c62f954c74eaa078075f
 
 pkgname = r-biostrings
 
