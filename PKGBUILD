@@ -21,6 +21,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm644 -t "$pkgdir"/usr/lib spotify-adblock.so
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 -t "$pkgdir"/usr/share/applications ../spotify-adblock.desktop
 }
