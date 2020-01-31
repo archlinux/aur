@@ -2,14 +2,14 @@
 
 _pkgname="sfizz"
 pkgname="${_pkgname}-git"
-pkgver=r801.8ab993b
+pkgver=r802.4b116e8
 pkgrel=1
 pkgdesc="SFZ library and LV2 plugin"
 url="https://sfz.tools/sfizz"
 arch=('x86_64')
 license=('custom:BSD-2-Clause' 'custom:ISC')
 makedepends=('git' 'cmake')
-depends=('libsndfile')
+depends=('libsndfile' 'jack')
 provides=('sfizz')
 conflicts=('sfizz')
 source=("$pkgname"::"git+https://github.com/sfztools/sfizz#branch=develop")
