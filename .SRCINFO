@@ -1,0 +1,22 @@
+pkgbase = dmenufm-git
+	pkgdesc = A simple file manager using dmenu
+	pkgver = r189.a132436
+	pkgrel = 1
+	url = https://github.com/huijunchen9260/dmenufm
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	depends = dmenu
+	depends = xclip
+	depends = wmctrl
+	depends = unrar
+	depends = cabextract
+	depends = unzip
+	depends = p7zip
+	provides = dmenufm
+	conflicts = dmenufm
+	source = git+https://github.com/huijunchen9260/dmenufm.git
+	sha256sums = SKIP
+
+pkgname = dmenufm-git
+
