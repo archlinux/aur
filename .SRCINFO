@@ -24,7 +24,7 @@ pkgbase = r-biocgenerics
 	optdepends = r-annotate
 	optdepends = r-runit
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.32.0.tar.gz
-	sha1sums = 66b520133bf7d072d3039fec85183bb3f0cae68b
+	sha256sums = 360399fc2431328a185c395a2dff68dcb0a771e0cbc6db15a953f92f08f1e8da
 
 pkgname = r-biocgenerics
 
