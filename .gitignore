@@ -1,4 +1,4 @@
 gimp-*.tar.bz2
-lib32-gimp-*.pkg.tar.xz
+lib32-gimp-*.pkg.tar.*
 src/
 pkg/
