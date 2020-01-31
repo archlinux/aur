@@ -2,11 +2,11 @@ pkgbase = r-rcolorbrewer
 	pkgdesc = ColorBrewer Palettes
 	pkgver = 1.1.2
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/RColorBrewer/index.html
-	arch = x86_64
-	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz
+	url = https://cran.r-project.org/package=RColorBrewer
+	arch = any
+	license = Apache2.0
+	depends = r>=2.0.0
+	source = https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz
 	md5sums = 66054d83eade4dff8a43ad4732691182
 
 pkgname = r-rcolorbrewer
