@@ -1,12 +1,9 @@
 [Desktop Entry]
 Name=Pomotroid
 Comment=A simple and visually-pleasing Pomodoro timer
-Exec="/usr/bin/pomotroid" %U
+Exec=/usr/bin/pomotroid
 Terminal=false
 Type=Application
-Icon=appimagekit-pomotroid
+Icon=pomotroid
 StartupWMClass=Pomotroid
-X-AppImage-Version=0.6.2.113
 Categories=Utility;
-X-AppImage-BuildId=1QFUqtnmokAPXofbfVBtiqg5gLz
-TryExec=/usr/bin/pomotroid

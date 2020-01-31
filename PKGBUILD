@@ -2,8 +2,7 @@
 
 _pkgname=pomotroid
 pkgname="${_pkgname}-bin"
-pkgver=0.6.2
-_appimage="${pkgname}-${pkgver}.AppImage"
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Simple and visually-pleasing Pomodoro timer"
 arch=('x86_64')
@@ -12,44 +11,37 @@ license=('MIT')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 source_x86_64=(
-  "${_appimage}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch}.AppImage"
+  "${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux.tar.gz"
   "https://raw.githubusercontent.com/Splode/pomotroid/master/LICENSE"
+  "${_pkgname}.desktop"
+  "${_pkgname}.png"
 )
-noextract=("${_appimage}")
-md5sums_x86_64=(
-  'eb5320db172dcc6f8fd4038fbf0089b7'
-  '98368ac76439a0812a58d0a586b28ed1'
-)
-
-prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
-}
-
-build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|"\
-        "squashfs-root/${_pkgname}.desktop"
-    # Fix permissions; .AppImage permissions are 700 for all directories
-    chmod -R a-x+rX squashfs-root/usr
-}
+md5sums_x86_64=('689144cd8f749ea072483dc3a28236a6'
+                '98368ac76439a0812a58d0a586b28ed1'
+                '4276e15ba2505a034a80a272e9c9f0ed'
+                '81ad82d2a70c058cb80a6ee7679c5f66')
 
 package() {
-    # AppImage
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+    # Copy everything from tar
+    pwd
+    install -dm755 "${pkgdir}/opt"
+    cp -a "${srcdir}/${_pkgname}-${pkgver}-linux/" "${pkgdir}/opt/${_pkgname}"
+    chmod 755 "${pkgdir}/opt/${_pkgname}"
+
+    # Copy license
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${_pkgname}/LICENSE"
 
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    # Copy desktop file
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" \
+      "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon images
-    install -dm755 "${pkgdir}/usr/share"
-    cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
+    install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    cp -a "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+    ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${_pkgname}"
