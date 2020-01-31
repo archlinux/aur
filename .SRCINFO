@@ -1,10 +1,11 @@
 pkgbase = btrustbiss
 	pkgdesc = B-Trust browser independent signing service.
 	pkgver = 2.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.b-trust.org
 	arch = any
 	license = GPL
+	depends = pcsclite
 	options = !strip
 	options = !emptydirs
 	options = !makeflags
