@@ -32,7 +32,7 @@ pkgbase = r-biocparallel
 	optdepends = r-batchtools
 	optdepends = r-data.table
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/BiocParallel_1.20.1.tar.gz
-	sha1sums = 99be1cf32bb153b958c6af5834e89f541b23876d
+	sha256sums = 41c0a0690ea9cadcf2c3be5d8638969bd8129b56aaa7ce2f4c6b6bc8c9b21f3c
 
 pkgname = r-biocparallel
 
