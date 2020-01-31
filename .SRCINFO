@@ -1,6 +1,6 @@
 pkgbase = geary-git
 	pkgdesc = An email application built around conversations, for the GNOME 3 desktop.
-	pkgver = r5394.b08cee78
+	pkgver = r5442.c4d0b714
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/geary
 	arch = i686
@@ -32,9 +32,7 @@ pkgbase = geary-git
 	provides = geary
 	conflicts = geary
 	source = git+https://gitlab.gnome.org/GNOME/geary.git
-	source = force-system-libhandy.patch
 	sha256sums = SKIP
-	sha256sums = e55e842557f68c3630a2ad1fa19b09bbaf0d1bdeb556650dd9065794cdc80de9
 
 pkgname = geary-git
 
