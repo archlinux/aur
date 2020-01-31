@@ -20,7 +20,7 @@ pkgbase = r-iranges
 	optdepends = r-runit
 	optdepends = r-biocstyle
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.20.2.tar.gz
-	sha1sums = 43b6501d37212513cbc2bacc2ad348d3baa07ede
+	sha256sums = 6f0eb12d760374ef9f8a7271691f50416e09e313299925d017b232e5d3ea16ca
 
 pkgname = r-iranges
 
