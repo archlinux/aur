@@ -1,8 +1,8 @@
 # Maintainer: Michael Serajnik <ms dot mserajnik dot at>
 pkgname=traffictoll-git
 _pkgname=TrafficToll
-pkgver=r35.0add8b6
-pkgrel=2
+pkgver=1.0.2.r0.g0add8b6
+pkgrel=1
 pkgdesc="NetLimiter-like traffic shaping for Linux"
 arch=('any')
 url="https://github.com/cryzed/${_pkgname}"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 prepare() {
