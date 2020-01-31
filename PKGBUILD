@@ -1,19 +1,29 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-pillar
-_cran_name=pillar
-pkgver=1.4.2
+
+_cranname=pillar
+_cranver=1.4.3
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Coloured Formatting for Columns"
-arch=('x86_64')
-url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
-license=('GPL3')
-depends=('r' 'r-cli' 'r-crayon' 'r-fansi' 'r-rlang' 'r-utf8' 'r-vctrs')
-source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
-md5sums=('0685272b193615c8fcd56cd53cda3898')
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL3)
+depends=(r r-cli 'r-crayon>=1.3.4' r-fansi 'r-rlang>=0.3.0' 'r-utf8>=1.1.0' 'r-vctrs>=0.2.0')
+optdepends=(r-knitr r-lubridate r-testthat r-withr)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('30f6de36b4ca7f3482aee7db456d7cdf')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
