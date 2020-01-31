@@ -7,7 +7,7 @@ _srcname=linux-5.4
 _major=5.4
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=15
+_minor=16
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -47,9 +47,9 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('aeb314153c13f4b2b4a00a43ac1c511ef7b9af2ec0010eedbe28e69d26c9e5af'
+sha256sums=('d16a84a747aa77c4174e86f88a169ef9573b55f1aa70d1caec0585724939a0eb'
             'SKIP'
-            '6407222f850f685b346011bd696a3216d5df0f37e0184099100d2724396d94b1'
+            '911541df2974782062f551ba0a818d7822ec69db4c41e590bcc7422398bada7a'
             'SKIP'
             'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
