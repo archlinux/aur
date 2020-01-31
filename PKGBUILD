@@ -2,7 +2,7 @@
 pkgbase=python-sherpa
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=4.11.1
+pkgver=4.12.0
 pkgrel=1
 pkgdesc="Modeling and fitting package for scientific data analysis"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('python>=3.5' 'python-numpy' 'fftw' 'python-setuptools' 'python-sph
 #'gcc-fortran')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         'sherpa_local_fftw.patch')
-md5sums=('e34ff698a5863ea80cf5553d8b8198bd'
+md5sums=('53ff4f88c63cf7da5cf7dd44315aa627'
          'd1823cc7683442d92450fadff7aed362')
 _pyver=$(python -V | cut -c 8-10)
 

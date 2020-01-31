@@ -1,6 +1,6 @@
 pkgbase = python-sherpa
 	pkgdesc = Modeling and fitting package for scientific data analysis
-	pkgver = 4.11.1
+	pkgver = 4.12.0
 	pkgrel = 1
 	url = http://cxc.cfa.harvard.edu/contrib/sherpa/
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = python-sherpa
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.11.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/sherpa/sherpa-4.12.0.tar.gz
 	source = sherpa_local_fftw.patch
-	md5sums = e34ff698a5863ea80cf5553d8b8198bd
+	md5sums = 53ff4f88c63cf7da5cf7dd44315aa627
 	md5sums = d1823cc7683442d92450fadff7aed362
 
 pkgname = python-sherpa
