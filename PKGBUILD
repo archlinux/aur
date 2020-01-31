@@ -42,6 +42,7 @@ build() {
 
   # Compile C sources
   chmod +x src/eddie.linux.postbuild.sh
+  chmod +x src/Lib.Platform.Linux.Native/build.sh
   src/eddie.linux.postbuild.sh "src/App.Forms.Linux/bin/$_pkgarch/Release/" ui $_pkgarch Release
 }
 
