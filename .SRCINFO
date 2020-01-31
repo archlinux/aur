@@ -1,6 +1,6 @@
 pkgbase = numix-circle-arc-icons-git
 	pkgdesc = Install Numix and Numix Circle. Numix icons combined with the Arc folders
-	pkgver = 19.10
+	pkgver = 20.1
 	pkgrel = 1
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License

@@ -4,7 +4,7 @@ _pkgname=numix-circle-arc-icons
 _destname="/usr/share/icons/"
 _pkggithub="https://github.com/erikdubois/Numix-Circle-Arc"
 pkgdesc="Install Numix and Numix Circle. Numix icons combined with the Arc folders"
-pkgver=19.10
+pkgver=20.1
 pkgrel=1
 arch=('any')
 url="${pkggithub}"
@@ -23,5 +23,3 @@ package() {
   install -dm 755 "${pkgdir}"/"${_destname}"
   cp -dr --no-preserve='ownership' ${_pkgname}/* "${pkgdir}"/usr/share/icons/
 }
-
-
