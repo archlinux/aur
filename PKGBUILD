@@ -3,7 +3,7 @@
 _pkgname=pomotroid
 pkgname="${_pkgname}-bin"
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and visually-pleasing Pomodoro timer"
 arch=('x86_64')
 url="https://github.com/Splode/pomotroid"
@@ -36,7 +36,8 @@ package() {
 
     # Icon images
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    cp -a "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/"
+    install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
+      "${srcdir}/${_pkgname}.png"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
