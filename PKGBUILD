@@ -3,8 +3,8 @@
 
 pkgname="lsd-git"
 _pkgname="lsd"
-pkgver=0.16.0.381.gaa40bd2
-pkgrel=1
+pkgver=0.16.0.471.gad25edc
+pkgrel=2
 pkgdesc="The next gen ls command"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url="https://github.com/Peltoche/lsd"

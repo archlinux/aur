@@ -1,7 +1,7 @@
 pkgbase = lsd-git
 	pkgdesc = The next gen ls command
-	pkgver = 0.16.0.381.gaa40bd2
-	pkgrel = 1
+	pkgver = 0.16.0.471.gad25edc
+	pkgrel = 2
 	url = https://github.com/Peltoche/lsd
 	arch = i686
 	arch = x86_64
