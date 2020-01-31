@@ -1,7 +1,7 @@
 # Maintainer: Zion Nimchuk <zionnimchuk@gmail.com>
 pkgname=jgrasp
-_version=2.0.5
-_version_postfix=03
+_version=2.0.6
+_version_postfix=02
 pkgver=${_version}"_"${_version_postfix}
 pkgrel=1
 pkgdesc="Lightweight development environment written in Java."
@@ -17,8 +17,8 @@ source=(
     "jGRASP.desktop"
     "LICENSE"
 )
-sha512sums=('7af5609edd483c4baed5bd3ac2884db74e5e89da9e12f1e62ef7d65c626d08d18e29a2cd0c6d97211ce28f70305ec8a73d6d6b642fbf9c68e09d3787b7b5b8db'
-                        '5127e410f5123802310c6ea216b8bb82b8d650bd0540188b6d84a9c42d9f3882ce111f3eebdd73340a2c84d6d50c1ce62f947fcb21bd2154c2ddeecf91779918'
+sha512sums=('a0c6a62e50d692b6420b1f79be243ee52df8686979ab4f929fbc024da80ca44a08bad21f206c886451d063e80d57286f4820db779d9d7a9dbc2434041476f047'
+                        '5a5be3fb9a2905a8139531b3d5ea21eb11a7f70ad86581515e39da3f936d9d62158ecdba3203c95a5d115e01fa7d00e04244dcdaa56b289e532bcdefa02fd4a1'
                         'c081c3418f476bec578bb01b95ebbf0b06b3c9290b9d60efc5f4b504fc9e5eba8749724ab5bd4ad5f2a4b417b7adcf6feb92ee938aa50c464c3fdcee7d2159d8'
                         'd7cb5729610ae80879d34c1869b6fff7be9e0742165cdf80c44d8e279e4f9676d423104a666625dd43d31263d359c59005d66522916a982156d81537f03e654f'
                         )
@@ -42,10 +42,10 @@ package() {
     cd bin
     rm ./*.exe
     rm ./*.bat
-    rm -r ./osx104
+    rm -r ./osx
     cd ..
-    rm ./jbin/*.exe
-    rm ./jbin/*.dll
+    rm ./internal_bin/*.exe
+    rm ./internal_bin/*.dll
     
     #Copy to proper install directory
     cp -R "${srcdir}/${pkgname}/" "${pkgdir}/usr/share/${pkgname}/"

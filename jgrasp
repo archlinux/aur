@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec /usr/share/jgrasp/bin/jgrasp $@
+exec env _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true ${_JAVA_OPTIONS}" /usr/share/jgrasp/bin/jgrasp $@
