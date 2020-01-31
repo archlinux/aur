@@ -47,7 +47,31 @@ build() {
 	  exit 1
   fi
 
-  EXTRA_CONFIGURE_OPTS="" ./bootstrap.sh --sandbox
+  # Detect global environment file and move it out of the way.
+  ENV_FILE=$(echo 'main = return ()' | runghc 2>&1 | grep 'Loaded package environment from .*' | grep -o '/.*')
+  if [ -f $ENV_FILE ]; then
+	echo "Warning: Environment file detected at ${ENV_FILE}."
+	echo "This is likely to break the build."
+	echo -n "Would you like it to be temporarily renamed for the duration? [y/n] "
+	read MOVE_ENV_FILE
+	if [ "${MOVE_ENV_FILE}" != "y" ]; then
+	  echo "Cancelled."
+	  exit 1
+	fi
+	mv -vb "${ENV_FILE}" "${ENV_FILE}.bak"
+  fi
+
+  EXTRA_CONFIGURE_OPTS="" ./bootstrap.sh --sandbox || FAIL=true
+
+  # Restore default environment if we moved it.
+  if [ "${MOVE_ENV_FILE}" == "y" ]; then
+	mv -vb "${ENV_FILE}.bak" "${ENV_FILE}"
+  fi
+
+  # Exit with failure status if the build failed.
+  if [ "$FAIL" == "true" ]; then
+	exit 1
+  fi
 }
 
 package() {
