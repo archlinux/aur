@@ -1,20 +1,30 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-rcurl
-_cran_name=RCurl
-_pkgver=1.95-4.12
-pkgver=${_pkgver//-/.}
+
+_cranname=RCurl
+_cranver=1.98-1.1
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="General Network (HTTP/FTP/...) Client Interface for R"
-arch=('x86_64')
-url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
-license=('GPL3')
-depends=('r' 'r-bitops')
-source=("http://cran.r-project.org/src/contrib/${_cran_name}_${_pkgver}.tar.gz")
-sha512sums=('8c0aeda47c1d6210c5c431e1209e192f2b48653850aa2f6f8b5bf099196cf6a89a61e8638d3b21e3a84312f427a9419d607f4198500aa2b7fd8238e24e6e599c')
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(BSD3)
+depends=('r>=3.4.0' r-bitops curl)
+makedepends=(gcc make)
+optdepends=(r-xml)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('f009eae167bf115209bb531a72aeea24')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
 
 package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
