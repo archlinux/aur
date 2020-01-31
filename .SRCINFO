@@ -1,0 +1,15 @@
+pkgbase = distro
+	pkgdesc = Drop-in replacment for the python-distro utility, written in Go
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/xyproto/distrodetector
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	conflicts = python-distro
+	source = git+https://github.com/xyproto/distrodetector#tag=1.2.0
+	sha256sums = SKIP
+
+pkgname = distro
+
