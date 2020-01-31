@@ -1,0 +1,17 @@
+pkgbase = r-jpeg
+	pkgdesc = Read and write JPEG images
+	pkgver = 0.1.8.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=jpeg
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = gcc
+	depends = r>=2.9.0
+	depends = libjpeg
+	source = https://cran.r-project.org/src/contrib/jpeg_0.1-8.1.tar.gz
+	md5sums = d721caf72c11eea43553d6030ae39cbc
+
+pkgname = r-jpeg
+
