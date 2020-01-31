@@ -1,28 +1,14 @@
 pkgbase = asciidoctor-pdf
 	pkgdesc = translate asciidoctor directly to pdf
-	pkgver = 1.5.0.beta.4
+	pkgver = 1.5.0.rc.2
 	pkgrel = 1
 	url = https://asciidoctor.org/
 	arch = any
 	depends = asciidoctor
-	noextract = asciidoctor-pdf-1.5.0.beta.4.gem
+	noextract = asciidoctor-pdf-1.5.0.rc.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/asciidoctor-pdf-1.5.0.beta.4.gem
-	sha256sums = 859d6fea6e9b6fa62bfb43d75ece2ab7373d7e69401aab5e831668cc7f1c7549
-
-pkgname = asciidoctor-pdf
-
-pkgbase = asciidoctor-pdf
-	pkgdesc = translate asciidoctor directly to pdf
-	pkgver = 1.5.0.beta.5
-	pkgrel = 1
-	url = https://asciidoctor.org/
-	arch = any
-	depends = asciidoctor
-	noextract = asciidoctor-pdf-1.5.0.beta.5.gem
-	options = !emptydirs
-	source = https://rubygems.org/downloads/asciidoctor-pdf-1.5.0.beta.5.gem
-	sha256sums = d37c1d06ba047f17724d2b969c7441ca87180e3e496d8f006ab9d4bc1f11d37d
+	source = https://rubygems.org/downloads/asciidoctor-pdf-1.5.0.rc.2.gem
+	sha256sums = 97717d81d884aaf45f48c79045b6a9581af655452132830f3495c46d179b6fbc
 
 pkgname = asciidoctor-pdf
 
