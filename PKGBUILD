@@ -23,7 +23,6 @@ md5sums_x86_64=('689144cd8f749ea072483dc3a28236a6'
 
 package() {
     # Copy everything from tar
-    pwd
     install -dm755 "${pkgdir}/opt"
     cp -a "${srcdir}/${_pkgname}-${pkgver}-linux/" "${pkgdir}/opt/${_pkgname}"
     chmod 755 "${pkgdir}/opt/${_pkgname}"
