@@ -4,18 +4,36 @@ DESTDIR="/usr";
 SPOOL_DIR="/var/spool/cado";
 
 post_install() {
-	(useradd -r -s /bin/nologin -g `getent passwd | grep cado | cut -f 3 -d ':'` cado 2>/dev/null ||\
-	 useradd -r -s /bin/nologin -U cado) || true
-	(mkdir -p ${SPOOL_DIR} ; chown root:cado ${SPOOL_DIR} && chmod 4770 ${SPOOL_DIR}) 
-	chown :cado ${DESTDIR}${bindir}/scado
-	chmod g+s ${DESTDIR}${bindir}/scado
-	chown cado ${DESTDIR}${bindir}/cado
-	chmod u+s ${DESTDIR}${bindir}/cado
+	# Create user and groups if they don't exist
+	if ! getent group _cado > /dev/null 2>&1 ; then
+		groupadd --system _cado
+	fi
+	if ! getent passwd _cado > /dev/null 2>&1 ; then
+		useradd --system \
+			--home /nonexistent \
+			--no-create-home \
+			--shell /bin/false \
+			-g _cado _cado
+	fi
+
+	mkdir -p /var/spool/cado
+	chown root:_cado /var/spool/cado
+	chmod 4770 /var/spool/cado
+	chown :_cado ${bindir}/scado
+	chmod g+s ${bindir}/scado
+	chown _cado: ${bindir}/cado
+	chmod u+s ${bindir}/cado
+
+	# Copy default pam authentication for cado
+	cp /etc/pam.d/system-auth /etc/pam.d/cado
+
 	ldconfig ${DESTDIR}${libdir}
-	${DESTDIR}${bindir}/cado -s
+	# configure the minimal set of capabilities for cado itself to run
+	${bindir}/cado --setcap >/dev/null 2>&1
 }
 
 pre_remove() {
 	userdel cado || true
 	rm -rf ${SPOOL_DIR}
+	unlink /etc/pam.d/cado
 }

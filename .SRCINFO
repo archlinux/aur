@@ -1,14 +1,15 @@
 pkgbase = cado-git
 	pkgdesc = Capability DO (like a sudo providing users with just the capabilities they need))
 	pkgver = 0.9.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/rd235/cado
 	install = cado-git.install
 	arch = i686
 	arch = x86_64
 	arch = arm
 	license = GPL
-	makedepends = autoconf
+	makedepends = make
+	makedepends = cmake
 	makedepends = git
 	depends = libcap
 	depends = pam
@@ -21,7 +22,7 @@ pkgbase = cado-git
 	source = git://github.com/rd235/cado.git
 	source = cado-0.9.2-arch.patch
 	md5sums = SKIP
-	md5sums = 06423c9fd7f06ca3bcbba07cd879aff2
+	md5sums = 387d5a7653e8b9fb08823f56b8e04b13
 
 pkgname = cado-git
 
