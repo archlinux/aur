@@ -18,9 +18,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  export HOME=$(mktemp -d) # Don't create a virtual environment inside the user's home dir
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
-
   poetry build
 }
 
