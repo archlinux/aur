@@ -5,13 +5,13 @@
 
 pkgname=solfege
 pkgver=3.23.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Music education and ear training software"
 arch=('x86_64')
 url="https://www.gnu.org/software/solfege/"
 license=('GPL3')
 groups=('pro-audio')
-depends=('gtk3' 'python-gobject')
+depends=('gtk3' 'python-cairo' 'python-gobject')
 makedepends=('ghostscript' 'gnome-doc-utils' 'libxslt' 'lilypond' 'swig'
 'texinfo' 'txt2man')
 optdepends=('csound: Generate example sounds'
