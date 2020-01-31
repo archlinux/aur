@@ -14,8 +14,10 @@ pkgbase = melonds-git
 	makedepends = cmake
 	depends = gtk3
 	depends = pkg-config
+	depends = sdl2
+	provides = melonds
 	conflicts = melonds
-	source = melonds::git://github.com/StapleButter/melonds.git
+	source = melonDS::git+https://github.com/Arisotura/melonDS.git
 	md5sums = SKIP
 
 pkgname = melonds-git
