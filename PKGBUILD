@@ -6,6 +6,7 @@ pkgdesc="A pretty system information tool written in POSIX sh."
 arch=('any')
 url="https://github.com/dylanaraps/$pkgname"
 license=('MIT')
+provides=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dylanaraps/$pkgname/archive/$pkgver.tar.gz")
 md5sums=('SKIP')
 
