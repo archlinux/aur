@@ -1,6 +1,6 @@
 pkgbase = dwm-hidpi-git
-	pkgdesc = dwm fork intended for 4K displays
-	pkgver = 0.r1685.4e4080c
+	pkgdesc = A dwm fork intended for 4K displays
+	pkgver = 0.r1689.cd157f6
 	pkgrel = 1
 	url = https://github.com/abdalazizrashid/dwm-HiDPI
 	arch = any
@@ -14,9 +14,13 @@ pkgbase = dwm-hidpi-git
 	provides = dwm
 	conflicts = dwm
 	source = git://github.com/abdalazizrashid/dwm-HiDPI.git
+	source = https://dwm.suckless.org/patches/ewmhtags/dwm-ewmhtags-6.2.diff
 	md5sums = SKIP
+	md5sums = 59670344f7cfc9b0de7853a88c3403af
 	sha1sums = SKIP
+	sha1sums = 68099d62819db00be5178031fcc7303356469958
 	sha256sums = SKIP
+	sha256sums = e027e683c074f4cd00c52f07c81be9d64d4085ef5b0a570b1fb80b8f4668c100
 
 pkgname = dwm-hidpi-git
 
