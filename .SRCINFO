@@ -2,17 +2,29 @@ pkgbase = r-vctrs
 	pkgdesc = Vector Helpers
 	pkgver = 0.2.2
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/vctrs/index.html
+	url = https://cran.r-project.org/package=vctrs
+	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = r
-	depends = r-backports
+	makedepends = gcc
+	depends = r>=3.2
+	depends = r-ellipsis>=0.2.0
 	depends = r-digest
 	depends = r-glue
-	depends = r-rlang
-	depends = r-zeallot
-	depends = r-ellipsis
-	source = http://cran.r-project.org/src/contrib/vctrs_0.2.2.tar.gz
+	depends = r-rlang>=0.4.2
+	optdepends = r-bit64
+	optdepends = r-covr
+	optdepends = r-crayon
+	optdepends = r-generics
+	optdepends = r-knitr
+	optdepends = r-pillar
+	optdepends = r-pkgdown
+	optdepends = r-rmarkdown
+	optdepends = r-testthat
+	optdepends = r-tibble
+	optdepends = r-xml2
+	optdepends = r-zeallot
+	source = https://cran.r-project.org/src/contrib/vctrs_0.2.2.tar.gz
 	md5sums = cc0e82d6af5756f7d22f5421420f5472
 
 pkgname = r-vctrs
