@@ -1,15 +1,15 @@
 pkgbase = python-naima-doc
 	pkgdesc = Documentation for Python Naima module
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = http://naima.readthedocs.io
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = python-naima=0.9.0
+	makedepends = python-naima=0.9.1
 	makedepends = python-sphinx-astropy
-	source = https://files.pythonhosted.org/packages/source/n/naima/naima-0.9.0.tar.gz
-	md5sums = 7c50e8576273a3004de45961b70e9e51
+	source = https://files.pythonhosted.org/packages/source/n/naima/naima-0.9.1.tar.gz
+	md5sums = f37556c140f1cfa38bc8aa2077728229
 
 pkgname = python-naima-doc
 
