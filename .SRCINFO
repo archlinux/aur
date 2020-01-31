@@ -1,6 +1,6 @@
 pkgbase = libdesq-git
 	pkgdesc = The DesQ library to handle X11 protocols, system calls, classes and functions to be used across the DesQ project.
-	pkgver = r14.57b16cc
+	pkgver = r22.f1374c8
 	pkgrel = 1
 	url = https://gitlab.com/DesQ
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = libdesq-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-x11extras
+	depends = libxcomposite
 	provides = libdesq
 	conflicts = libdesq
 	source = git+https://gitlab.com/Desq/libdesq.git
