@@ -1,7 +1,7 @@
 # Maintainer: Neil Shepperd <nshepperd at gmail dot com>
 pkgname=cabal-static
 pkgver=2.4.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The command-line interface for Cabal and Hackage. Statically linked."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://hackage.haskell.org/package/cabal-install"
