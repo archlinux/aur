@@ -5,23 +5,23 @@ pkgbase = r-checkmate
 	url = https://cran.r-project.org/package=checkmate
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r
+	license = BSD3
+	makedepends = gcc
+	depends = r>=3.0.0
 	depends = r-backports>=1.1.0
-	depends = r-utils
 	optdepends = r-r6
 	optdepends = r-bit
 	optdepends = r-fastmatch
-	optdepends = r-data.table>=1.9.8
+	optdepends = r-data.table
 	optdepends = r-devtools
 	optdepends = r-ggplot2
 	optdepends = r-knitr
 	optdepends = r-magrittr
 	optdepends = r-microbenchmark
 	optdepends = r-rmarkdown
-	optdepends = r-testthat>=0.11.0
+	optdepends = r-testthat
 	optdepends = r-tibble
-	source = http://cran.r-project.org/src/contrib/checkmate_1.9.4.tar.gz
+	source = https://cran.r-project.org/src/contrib/checkmate_1.9.4.tar.gz
 	md5sums = cf2ea3fc2426cf6f7fd402322bf82b4b
 
 pkgname = r-checkmate
