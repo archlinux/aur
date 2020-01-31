@@ -2,11 +2,11 @@
 # Contributor: Carlos Mogas da Silva <r3pek@r3pek.org>
 
 pkgname=ma1sd
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Federated Matrix Identity Server Daemon'
 arch=('any')
-url='https://github.com/kamax-io/ma1sd'
+url='https://github.com/ma1uta/ma1sd'
 license=('AGPL3')
 depends=('java-runtime>=8')
 makedepends=('gradle' 'java-environment>=8')
@@ -19,7 +19,7 @@ source=(
 )
 
 sha512sums=(
-  '142a4df892a43d4471e4860cf533ecb0809eeb32863e7ae80432bebb9de49ce13d610f8dafcd31b4af396cafbc6789a71608ad201c1700e52aae8f85c49ffb7d'
+  '4aedefc7d91aabe4cc406f16036d86ace49673c11873a7c70f7b8d51b9eafb8a6eedd64c07626ac1b08e7d60d9f1c2a9415dccac7e501b9e55542535aeb3e3f7'
   '750584c682fea1a4d96950eba1528abdd564ff12b73fc12e0f4755049c5b1b9b29c9efb52ded207cdd992b2804a6559a444b83b0fa92cbf5c7870734b2862704'
   '201df7ac9573191b032788d39131638913c69db3523cdf5ed11aa982518602a82b72d8e0c252e0b84c3bbb81371c279cf0515107c0ae4ab60456a2ddb312b96c'
 )
