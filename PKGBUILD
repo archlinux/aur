@@ -1,13 +1,13 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue
-pkgver='0.1.3'
+pkgver='0.1.4'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
 depends=()
-makedepends=('git' 'cargo')
+makedepends=()
 conflicts=('pueue-git')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
