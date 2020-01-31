@@ -37,20 +37,19 @@ package() {
 	mkdir -p $pkgdir/opt/$pkgname
 	cp -dr --no-preserve=ownership,mode $srcdir/data/opt/$pkgname/{lib,resource} $pkgdir/opt/$pkgname
 	install -Dm 755 $srcdir/data/opt/$pkgname/bin/$pkgname $pkgdir/opt/$pkgname/bin/$pkgname
-	
+
 	#mkdir -p $pkgdir/usr/lib/
 	#cp -dr --no-preserve=ownership,mode $srcdir/data/usr/lib/cups $pkgdir/usr/lib/
-	
+
 	install -Dm 755 $srcdir/data/usr/lib/epson-backend/ecbd $pkgdir/opt/$pkgname/lib/epson-backend/ecbd
-	
+
 	mkdir -p $pkgdir/usr/bin
 	ln -s /opt/$pkgname/bin/$pkgname $pkgdir/usr/bin/$pkgname
-	
+
 	install -Dm644 $srcdir/ecbd.service $pkgdir/usr/lib/systemd/system/ecbd.service
 	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	
+
 	for f in LICENSE AVASYSPL.en.txt; do
-	  install -Dm644 $srcdir/$f $pkgdir/usr/share/licenses/$pkgname/$f
+		install -Dm644 $srcdir/$f $pkgdir/usr/share/licenses/$pkgname/$f
 	done
 }
-
