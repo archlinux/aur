@@ -10,6 +10,7 @@ pkgbase = fakeroot-tcp
 	arch = aarch64
 	license = GPL
 	makedepends = po4a
+	makedepends = automake
 	depends = glibc
 	depends = filesystem
 	depends = sed

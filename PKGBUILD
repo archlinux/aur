@@ -13,7 +13,7 @@ license=('GPL')
 url="http://packages.debian.org/fakeroot"
 install=fakeroot.install
 depends=('glibc' 'filesystem' 'sed' 'util-linux' 'sh')
-makedepends=('po4a')
+makedepends=('po4a' 'automake')
 provides=("${_pkgname}=${pkgver}-${pkgrel}")
 conflicts=("${_pkgname}")
 source=(http://ftp.debian.org/debian/pool/main/f/$_pkgname/${_pkgname}_${pkgver}.orig.tar.gz
