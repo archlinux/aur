@@ -1,0 +1,16 @@
+pkgbase = r-filehash
+	pkgdesc = Simple Key-Value Database
+	pkgver = 2.4.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=filehash
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = gcc
+	depends = r>=3.0.0
+	source = https://cran.r-project.org/src/contrib/filehash_2.4-2.tar.gz
+	md5sums = bb3e4827574764679be6085fb80d8c4d
+
+pkgname = r-filehash
+
