@@ -14,7 +14,8 @@ depends=(r r-zlibbioc bzip2 xz curl)
 makedepends=(gcc make)
 optdepends=(r-biocstyle r-knitr)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-md5sums=('3dd8796283f9fc9503a8172acfca22b6')
+sha256sums=('5478c84ceb2209461c27d73719c9ce456cd0a9a42e1a138a4eac94c772cd6b3e')
+options=(staticlibs)
 
 build() {
   cd "${srcdir}"
