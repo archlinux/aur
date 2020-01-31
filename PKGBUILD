@@ -32,7 +32,7 @@ makedepends=('autoconf>=2.59' 'automake>=1.10' 'tar' 'make' 'sane')
 source=("http://files.canon-europe.com/files/soft37281/Software/Linux_Scangear_Source_Files.tar"
         "mychanges.patch")
 sha512sums=('257f6ffece2e43c5db7b4d73ac962ddce9256b652e980b64dead2d38fe15d1b101a4f91c87b7fce1e0154fcb7fd6fc59962d4ca9abd4a20f765845aa938d8b8a'
-            'dd5bc73edff4f8a3452058e6f635815e6697a996cf0f3bf8a6515594af22ad730333f80a4f1b8113d36549ce8a627b92eb5e36778fc72def6852d01ef5e0930b')
+            '2f065e5558aa7fc831e5e0bff7b6b140a134d61e9efcaf3ca7fe4596cdd5dc2bea860ccf043fa8045b8a5462763275575af6dce3799cd4b2bd15ec4bdf23ae3e')
 
 prepare() {
   cd "${srcdir}"

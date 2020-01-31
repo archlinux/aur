@@ -1,6 +1,6 @@
 diff -aur scangearmp-source-1.40-1/scangearmp/backend/Makefile.am scangearmp-source-1.40-1.new/scangearmp/backend/Makefile.am
 --- scangearmp-source-1.40-1/scangearmp/backend/Makefile.am	2009-04-28 11:08:03.000000000 +0430
-+++ scangearmp-source-1.40-1.new/scangearmp/backend/Makefile.am	2013-07-26 23:58:57.413152731 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/backend/Makefile.am	2020-01-31 17:10:52.469454249 +0330
 @@ -17,7 +17,7 @@
  	libcnnet.h canon_mfp_debug.h
  
@@ -12,7 +12,7 @@ diff -aur scangearmp-source-1.40-1/scangearmp/backend/Makefile.am scangearmp-sou
  EXTRA_DIST = \
 diff -aur scangearmp-source-1.40-1/scangearmp/etc/80-canon_mfp.rules scangearmp-source-1.40-1.new/scangearmp/etc/80-canon_mfp.rules
 --- scangearmp-source-1.40-1/scangearmp/etc/80-canon_mfp.rules	2009-04-28 11:08:03.000000000 +0430
-+++ scangearmp-source-1.40-1.new/scangearmp/etc/80-canon_mfp.rules	2013-07-27 00:00:25.729820028 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/etc/80-canon_mfp.rules	2020-01-31 17:10:52.469454249 +0330
 @@ -7,48 +7,48 @@
  
  LABEL="canon_mfp_start"
@@ -84,7 +84,7 @@ diff -aur scangearmp-source-1.40-1/scangearmp/etc/80-canon_mfp.rules scangearmp-
  LABEL="canon_mfp_end"
 diff -aur scangearmp-source-1.40-1/scangearmp/src/file_control.c scangearmp-source-1.40-1.new/scangearmp/src/file_control.c
 --- scangearmp-source-1.40-1/scangearmp/src/file_control.c	2009-04-28 11:08:03.000000000 +0430
-+++ scangearmp-source-1.40-1.new/scangearmp/src/file_control.c	2013-07-26 23:58:57.413152731 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/file_control.c	2020-01-31 17:10:52.469454249 +0330
 @@ -32,6 +32,7 @@
  #endif
  
@@ -95,7 +95,7 @@ diff -aur scangearmp-source-1.40-1/scangearmp/src/file_control.c scangearmp-sour
  #include <sys/stat.h>
 diff -aur scangearmp-source-1.40-1/scangearmp/src/scanfile.c scangearmp-source-1.40-1.new/scangearmp/src/scanfile.c
 --- scangearmp-source-1.40-1/scangearmp/src/scanfile.c	2009-04-28 11:08:03.000000000 +0430
-+++ scangearmp-source-1.40-1.new/scangearmp/src/scanfile.c	2013-07-26 23:58:57.413152731 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/scanfile.c	2020-01-31 17:10:52.469454249 +0330
 @@ -34,9 +34,11 @@
  //#include <sys/types.h>
  //#include <unistd.h>
@@ -120,7 +120,7 @@ diff -aur scangearmp-source-1.40-1/scangearmp/src/scanfile.c scangearmp-source-1
  }
 diff -aur scangearmp-source-1.40-1/scangearmp/src/scanflow.c scangearmp-source-1.40-1.new/scangearmp/src/scanflow.c
 --- scangearmp-source-1.40-1/scangearmp/src/scanflow.c	2009-09-18 08:40:52.000000000 +0430
-+++ scangearmp-source-1.40-1.new/scangearmp/src/scanflow.c	2013-07-26 23:58:57.416486068 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/scanflow.c	2020-01-31 17:10:52.469454249 +0330
 @@ -38,6 +38,7 @@
  #endif
  
@@ -129,3 +129,14 @@ diff -aur scangearmp-source-1.40-1/scangearmp/src/scanflow.c scangearmp-source-1
  #include <string.h>
  #include <gtk/gtk.h>
  #include <sane/sane.h>
+diff -aur scangearmp-source-1.40-1/scangearmp/src/scangimp.c scangearmp-source-1.40-1.new/scangearmp/src/scangimp.c
+--- scangearmp-source-1.40-1/scangearmp/src/scangimp.c	2009-04-28 11:08:03.000000000 +0430
++++ scangearmp-source-1.40-1.new/scangearmp/src/scangimp.c	2020-01-31 17:11:20.629604555 +0330
+@@ -38,7 +38,6 @@
+ //#include <string.h>
+ //#include <gtk/gtk.h>
+ #include <libgimp/gimp.h>
+-#include <libgimp/gimpcompat.h>
+ 
+ #include "cnmstype.h"
+ #include "cnmsfunc.h"
