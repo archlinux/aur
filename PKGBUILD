@@ -1,17 +1,17 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=tidyr
-_cranver=1.0.0
+_cranver=1.0.2
 pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=1
-pkgdesc="An evolution of 'reshape2'. It's designed specifically for data tidying (not general reshaping or aggregating) and works well with 'dplyr' data pipelines."
+pkgdesc="Tidy messy data."
 url="https://cran.r-project.org/package=tidyr"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('MIT')
 depends=('r>=3.1.0' 'r-dplyr>=0.8.2' 'r-ellipsis>=0.1.0' 'r-glue' 'r-magrittr' 'r-purrr' 'r-rcpp' 'r-rlang' 'r-stringi' 'r-tibble>=2.1.1' 'r-tidyselect>=0.2.5' 'r-vctrs>=0.2.0' 'r-lifecycle')
-optdepends=('r-covr' 'r-jsonlite' 'r-knitr' 'r-repurrrsive' 'r-readr' 'r-testthat')
+optdepends=('r-covr' 'r-jsonlite' 'r-knitr' 'r-repurrrsive' 'r-markdown' 'r-readr' 'r-testthat')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('aa176afd716bc7c3243d4988f0fc8c03') 
+md5sums=('9118722418f48877650f6dcf9e160606')
 
 build() {
     cd ${srcdir}
