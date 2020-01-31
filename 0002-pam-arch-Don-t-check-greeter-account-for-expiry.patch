@@ -19,11 +19,12 @@ index 618a7d3a..89521472 100644
 @@ -1,7 +1,7 @@
  auth     required  pam_env.so
  auth     optional  pam_permit.so
-
+ 
 -account  include   system-local-login
 +account  optional  pam_permit.so
-
+ 
  password required  pam_deny.so
-
---
+ 
+-- 
 2.23.0
+

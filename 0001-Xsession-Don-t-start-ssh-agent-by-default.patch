@@ -14,7 +14,7 @@ index 9d79558c..ff6d9de0 100755
 @@ -175,14 +175,6 @@ if [ "x$command" = "xdefault" ] ; then
    fi
  fi
-
+ 
 -# add ssh-agent if found
 -sshagent="`gdmwhich ssh-agent`"
 -if [ -n "$sshagent" ] && [ -x "$sshagent" ] && [ -z "$SSH_AUTH_SOCK" ]; then
@@ -24,7 +24,8 @@ index 9d79558c..ff6d9de0 100755
 -fi
 -
  echo "$0: Setup done, will execute: $command"
-
+ 
  eval exec $command
---
+-- 
 2.23.0
+
