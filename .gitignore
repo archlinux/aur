@@ -1,0 +1,4 @@
+LuaJIT-*.tar.gz
+lib32-luajit-*.pkg.tar.xz
+src/
+pkg/
