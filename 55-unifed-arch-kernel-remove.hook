@@ -1,0 +1,12 @@
+[Trigger]
+Type = File
+Operation = Remove
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Removing unifed ArchLinux EFI image...
+Depends = unifed-arch-kernel
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/uak-script remove
+NeedsTargets
+

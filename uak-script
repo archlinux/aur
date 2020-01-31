@@ -1,0 +1,137 @@
+#!/bin/bash -e
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+source /usr/share/makepkg/util/message.sh
+
+# grabbed from mkinitcpio
+kver() {
+    # this is intentionally very loose. only ensure that we're
+    # dealing with some sort of string that starts with something
+    # resembling dotted decimal notation. remember that there's no
+    # requirement for CONFIG_LOCALVERSION to be set.
+    local kver re='^[[:digit:]]+(\.[[:digit:]]+)+'
+
+    # scrape the version out of the kernel image. locate the offset
+    # to the version string by reading 2 bytes out of image at at
+    # address 0x20E. this leads us to a string of, at most, 128 bytes.
+    # read the first word from this string as the kernel version.
+    local offset=$(hexdump -s 526 -n 2 -e '"%0d"' "$1")
+    [[ $offset = +([0-9]) ]] || return 1
+
+    read kver _ < \
+        <(dd if="$1" bs=1 count=127 skip=$(( offset + 0x200 )) 2>/dev/null)
+
+    [[ $kver =~ $re ]] || return 1
+
+    printf '%s' "$kver"
+}
+
+function do_uak() {
+    msg "uak $*"
+    /usr/bin/uak "$@" || return $?
+}
+
+ACTION="$1"
+
+if [[ $ACTION == "install-preset" ]]; then
+    kernel="$2"
+    pkgbase="$3"
+    kernel_version="$4"
+    
+    source "/etc/mkinitcpio.d/${pkgbase}.preset"
+        
+    for preset in "${PRESETS[@]}"; do
+        preset_kernel_version=${kernel_version}-${preset}
+        if [[ "$preset" == "default" ]]; then
+            preset_kernel_version=${kernel_version}
+        fi
+        
+        preset_initrd=${preset}_image
+        
+        if ! [[ -f ${!preset_initrd} ]]; then
+            warning "No image file specified for preset $preset"
+            continue
+        fi
+
+        do_uak add "$preset_kernel_version" "$kernel" $(echo /boot/*-ucode.img) "${!preset_initrd}" 
+    done
+
+    exit 0
+elif [[ $ACTION == "remove-preset" ]]; then
+    pkgbase="$2"
+    kernel_version="$3"
+    
+    source "/etc/mkinitcpio.d/${pkgbase}.preset"
+        
+    for preset in "${PRESETS[@]}"; do
+        preset_kernel_version=${kernel_version}-${preset}
+        if [[ "$preset" == "default" ]]; then
+            preset_kernel_version=${kernel_version}
+        fi
+
+        do_uak remove "$preset_kernel_version" || exit 1
+    done
+
+    exit 0
+fi
+
+ALL=0
+KERNELS=()
+
+if [[ $ACTION == "install-all" ]]; then
+    ALL=1
+    ACTION="install"
+elif [[ $ACTION == "remove-all" ]]; then
+    ALL=1
+    ACTION="remove"
+elif [[ $ACTION != "install" ]] && [[ $ACTION != "remove" ]]; then
+    error "Unknown action: $ACTION"
+    exit 1
+else
+    while read -r line; do
+        if [[ $line != */vmlinuz ]]; then
+            # triggers when it's a change to usr/lib/initcpio/*, usr/lib/systemd/boot/efi/linuxx64.efi.stub or boot/*-ucode.img
+            if [[ $ACTION == "install" ]]; then
+                ALL=1
+            fi
+            continue
+        fi
+
+        if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz}/pkgbase"; then
+            # if the kernel has no pkgbase, we skip it
+            continue
+        fi
+
+        KERNELS+=("$line")
+    done
+fi
+
+if (( ALL )); then
+    KERNELS=()
+
+    for kernel in /usr/lib/modules/*/vmlinuz; do
+        if ! read -r pkgbase > /dev/null 2>&1 < "${kernel%/vmlinuz}/pkgbase"; then
+            # if the kernel has no pkgbase, we skip it
+            continue
+        fi
+        KERNELS+=("$kernel")
+    done
+fi
+
+for kernel in "${KERNELS[@]}"; do
+    read -r pkgbase < "${kernel%/vmlinuz}/pkgbase";
+        
+    if ! [[ -f "/etc/mkinitcpio.d/${pkgbase}.preset" ]]; then
+        error "Not found mkinitcpio preset for kernel $pkgbase (with image $kernel"
+        exit 1
+    fi
+    
+    kernel_version=$(kver "$kernel")
+    
+    if [[ $ACTION == "install" ]]; then
+        "$0" install-preset "$kernel" "$pkgbase" "$kernel_version"
+    else
+        "$0" remove-preset "$pkgbase" "$kernel_version"
+    fi
+done

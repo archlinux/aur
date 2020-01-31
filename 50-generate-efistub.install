@@ -1,0 +1,54 @@
+#!/bin/bash -e
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+function osrel() {
+    /usr/bin/cat "$OS_RELEASE_DEST"
+    if [ $# -gt 1 ]; then
+        for key in $(seq 1 2 $#); do
+            value=$((key + 1))
+            printf '%s=%s\n' "${!key}" "${!value}"
+        done
+    fi
+}
+
+if [[ "$COMMAND" == "add" ]]; then
+    declare -a BOOT_OPTIONS
+
+    if [[ -f /etc/uak/cmdline ]]; then
+        read -r -d '' -a BOOT_OPTIONS < /etc/uak/cmdline || true
+    elif [[ -f /usr/lib/uak/cmdline ]]; then
+        read -r -d '' -a BOOT_OPTIONS < /usr/lib/uak/cmdline  || true
+    elif [[ -f /boot/cmdline ]]; then
+        read -r -d '' -a BOOT_OPTIONS < /boot/cmdline || true
+    elif [[ -f /etc/kernel/cmdline ]]; then
+        read -r -d '' -a BOOT_OPTIONS < /etc/kernel/cmdline || true
+    elif [[ -f /usr/lib/kernel/cmdline ]]; then
+        read -r -d '' -a BOOT_OPTIONS < /usr/lib/kernel/cmdline || true
+    else
+        read -r -d '' -a boot_option_line < /proc/cmdline || true
+        for boot_option in "${boot_option_line[@]}"; do
+            [[ "${boot_option#initrd=*}" != "$boot_option" ]] && continue
+            BOOT_OPTIONS+=("$boot_option")
+        done
+    fi
+    
+    if ! (( ${#BOOT_OPTIONS[@]} )) && [[ "$UAK_WARN_EMPTY_BOOT_OPTIONS" != "false" ]]; then
+        warning "Creating image with empty boot options, most highly it's not what do you want to do"
+        warning "Please put boot options to the /etc/uak/cmdline and run 'uak regenerate' to regenerate all boot images" 
+    fi
+
+    objcopy_args=()
+        
+    if [[ -f "$UAK_SPLASH" ]]; then
+        objcopy_args+=(--add-section ".splash=$UAK_SPLASH" --change-section-vma '.splash=0x40000')
+    fi
+        
+    /usr/bin/objcopy \
+        --add-section .osrel=<(osrel VERSION_ID "$KERNEL_VERSION")   --change-section-vma '.osrel=0x20000' \
+        --add-section .cmdline=<(echo "${BOOT_OPTIONS[@]}") --change-section-vma '.cmdline=0x30000' \
+        --add-section .linux="$KERNEL_IMAGE"                         --change-section-vma '.linux=0x2000000' \
+        --add-section .initrd=<(/usr/bin/cat "${INITRDS[@]}")        --change-section-vma '.initrd=0x3000000' \
+        "${objcopy_args[@]}" \
+        /usr/lib/systemd/boot/efi/linuxx64.efi.stub "$EFISTUB_IMAGE"
+fi

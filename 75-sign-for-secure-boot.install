@@ -1,0 +1,26 @@
+#!/bin/bash -e
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+if [[ ! "$UAK_EFI_KEYS_PATH" ]]; then
+    UAK_EFI_KEYS_PATH=/etc/efi-keys
+fi
+
+if [[ "$COMMAND" == "add" ]]; then
+    sign=1
+
+    if [[ ! -f "$UAK_EFI_KEYS_PATH/db.crt" ]]; then
+        warning "Missing db.crt in $UAK_EFI_KEYS_PATH. Skip signing"
+        sign=0
+    fi
+    
+    if [[ ! -f "$UAK_EFI_KEYS_PATH/db.key" ]]; then
+        warning "Missing db.key in $UAK_EFI_KEYS_PATH. Skip signing"
+        sign=0
+    fi
+    
+    if (( sign )) && [[ -f "$EFISTUB_IMAGE" ]]; then
+        /usr/bin/sbsign --key "$UAK_EFI_KEYS_PATH/db.key" --cert "$UAK_EFI_KEYS_PATH/db.crt" --output "${EFISTUB_IMAGE}" "$EFISTUB_IMAGE" 2> /dev/null
+    fi
+fi
+

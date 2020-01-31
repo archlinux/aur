@@ -1,0 +1,164 @@
+#!/bin/bash -e
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# ex: ts=8 sw=4 sts=4 et filetype=sh
+
+export LC_COLLATE=C
+
+source /usr/share/makepkg/util/message.sh
+
+function check_root() {
+    if [[ "$EUID" != 0 ]]; then
+        error "Must be runned with superuser privilegies"
+        exit 2
+    fi
+}
+
+function dropindirs_sort() {
+    local suffix=$1; shift
+    local -a files
+    local f d i
+
+    readarray -t files <<<"$(
+        for d in "$@"; do
+            for i in "$d/"*"$suffix"; do
+                if [[ -e "$i" ]]; then
+                    echo "${i##*/}"
+                fi
+            done
+        done | sort -Vu
+    )"
+
+    for f in "${files[@]}"; do
+        for d in "$@"; do
+            if [[ -e "$d/$f" ]]; then
+                echo "$d/$f"
+                continue 2
+            fi
+        done
+    done
+}
+
+function die() {
+    code="$1"
+    shift
+    echo "$*" >&2
+    exit "$code"
+}
+
+function usage() {
+    echo "Usage:"
+    echo "        $0 add KERNEL-VERSION KERNEL-IMAGE [INITRD-FILE ...]"
+    echo "        $0 remove KERNEL-VERSION"
+    echo "        $0 regenerate"
+}
+
+for i in "$@"; do
+    if [ "$i" == "--help" ] || [ "$i" == "-h" ]; then
+        usage
+        exit 0
+    fi
+done
+
+if [[ -f /etc/os-release ]]; then
+    OS_RELEASE_DEST=/etc/os-release
+    source "$OS_RELEASE_DEST"
+elif [[ -f /usr/lib/os-release ]]; then
+    OS_RELEASE_DEST=/usr/lib/os-release
+    source "$OS_RELEASE_DEST"
+else
+    warning "Missing os-release, things can go wrong AND THEY WILL GO WRONG"
+fi
+
+if [[ -f /etc/uak/config ]]; then
+    source /etc/uak/config
+fi
+
+if [[ ! "$UAK_ESP_PATH" ]]; then
+    UAK_ESP_PATH=$(bootctl --print-esp-path)
+fi
+
+if [[ ! -d "$UAK_ESP_PATH" ]]; then
+    die 1 "Invalid ESP path: $UAK_ESP_PATH"
+fi
+
+if [[ ! "$UAK_SPLASH" ]]; then
+    UAK_SPLASH=/usr/share/systemd/bootctl/splash-arch.bmp
+fi
+
+export UAK_ESP_PATH UAK_SPLASH
+
+export UAK_ESP_TARGET="$UAK_ESP_PATH/EFI/Linux"
+
+COMMAND="$1"
+
+case "$COMMAND" in
+    add)
+        check_root
+
+        KERNEL_VERSION="$2"
+        KERNEL_IMAGE="$3"
+        INITRDS=( "${@:4}" )
+
+        if [[ ! $KERNEL_VERSION ]] || [[ ! "$KERNEL_IMAGE" ]]; then
+            die 1 "Not enough arguments"
+        fi
+        
+        if [[ ! -f "$KERNEL_IMAGE" ]]; then
+            die 2 "Kernel image '${KERNEL_IMAGE}' not a file"
+        fi
+        
+        shift 3
+        
+        EFISTUB_IMAGE=$(mktemp)
+        EFISTUB_INSTALL_PATH="$UAK_ESP_TARGET/$ID-$KERNEL_VERSION.efi"
+    ;;
+    remove)
+        check_root
+
+        KERNEL_VERSION="$2"
+        
+        if [[ ! $KERNEL_VERSION ]]; then
+            die 1 "Not enough arguments"
+        fi
+
+        shift 2
+        
+        EFISTUB_INSTALL_PATH="$UAK_ESP_TARGET/$ID-$KERNEL_VERSION.efi"
+    ;;
+    regenerate)
+        check_root
+
+        exec /usr/share/libalpm/scripts/uak-script install-all
+    ;;
+    '')
+        usage
+    ;;
+    *)
+        die 1 "Unknown command '$COMMAND'"
+    ;;
+esac
+
+readarray -t PLUGINS <<<"$(
+    dropindirs_sort ".install" \
+        "/etc/uak/install.d" \
+        "/usr/lib/uak/install.d"
+)"
+
+for plugin in "${PLUGINS[@]}"; do
+    if [[ -x "$plugin" ]]; then
+        source "$plugin"
+    fi
+done
+
+
+if [[ "$COMMAND" == "add" ]]; then
+    if [[ -f "$EFISTUB_IMAGE" ]]; then
+        install -DT "$EFISTUB_IMAGE" "$EFISTUB_INSTALL_PATH" || warning "Unable to install image at $EFISTUB_INSTALL_PATH"
+    else
+        warning "No image was generated, skip install"
+    fi
+elif [[ "$COMMAND" == "remove" ]]; then
+    if [[ -f "$EFISTUB_INSTALL_PATH" ]]; then
+        unlink "$EFISTUB_INSTALL_PATH" || warning "Unable to remove image at '$EFISTUB_INSTALL_PATH'"
+    fi
+fi

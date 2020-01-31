@@ -1,0 +1,12 @@
+# Path to the EFI System Partition
+#UAK_ESP_PATH=/efi
+
+# Path to BMP image
+#UAK_SPLASH=/usr/share/systemd/bootctl/splash-arch.bmp
+
+# Path to directory with efi keys (db.key & db.crt)
+# Requires unifed-arch-kernel-secure-boot to be installed
+#UAK_EFI_KEYS_PATH=/etc/efi-keys
+
+# Warn when attempt to create image without are boot options
+#UAK_WARN_EMPTY_BOOT_OPTIONS=true

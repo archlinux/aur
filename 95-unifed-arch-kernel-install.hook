@@ -1,0 +1,31 @@
+[Trigger]
+Type = File
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/initcpio/*
+Target = usr/lib/systemd/boot/efi/linuxx64.efi.stub
+Target = usr/lib/os-release
+Target = boot/*-ucode.img
+Target = usr/bin/uak
+Target = usr/share/libalpm/scripts/uak-script
+Target = usr/lib/uak/install.d/*.install
+
+[Trigger]
+Type = File
+Operation = Remove
+Target = usr/lib/initcpio/*
+Target = boot/*-ucode.img
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = unifed-arch-kernel
+
+[Action]
+Description = Creating unifed ArchLinux EFI image...
+Depends = unifed-arch-kernel
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/uak-script install
+NeedsTargets
