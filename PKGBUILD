@@ -3,17 +3,17 @@ pkgbase=python-naima
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Derivation of non-thermal particle distributions through MCMC spectral fitting"
 arch=('i686' 'x86_64')
 url="https://naima.readthedocs.io/"
 license=('BSD')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools-scm')
 #'python-astropy' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-emcee')
 checkdepends=('python-pytest' 'python-astropy' 'python-corner' 'python-emcee<3.0' 'python-sherpa')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('7c50e8576273a3004de45961b70e9e51')
+md5sums=('f37556c140f1cfa38bc8aa2077728229')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}

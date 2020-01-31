@@ -1,6 +1,6 @@
 pkgbase = python-naima
 	pkgdesc = Derivation of non-thermal particle distributions through MCMC spectral fitting
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://naima.readthedocs.io/
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = python-naima
 	checkdepends = python-corner
 	checkdepends = python-emcee<3.0
 	checkdepends = python-sherpa
-	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/n/naima/naima-0.9.0.tar.gz
-	md5sums = 7c50e8576273a3004de45961b70e9e51
+	makedepends = python-setuptools-scm
+	source = https://files.pythonhosted.org/packages/source/n/naima/naima-0.9.1.tar.gz
+	md5sums = f37556c140f1cfa38bc8aa2077728229
 
 pkgname = python-naima
 	depends = python>=3.5
