@@ -3,21 +3,36 @@ pkgbase = r-genomicalignments
 	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/GenomicAlignments.html
+	arch = i686
 	arch = x86_64
 	license = Artistic-2.0
-	depends = r
-	depends = r-genomeinfodb
-	depends = r-iranges
-	depends = r-biocgenerics
-	depends = r-s4vectors
-	depends = r-rcurl
-	depends = r-genomicranges
-	depends = r-summarizedexperiment
-	depends = r-biostrings
-	depends = r-rsamtools
+	makedepends = gcc
+	depends = r>=3.5.0
+	depends = r-biocgenerics>=0.15.3
+	depends = r-s4vectors>=0.23.19
+	depends = r-iranges>=2.15.22
+	depends = r-genomeinfodb>=1.13.1
+	depends = r-genomicranges>=1.37.2
+	depends = r-summarizedexperiment>=1.9.13
+	depends = r-biostrings>=2.47.6
+	depends = r-rsamtools>=1.31.2
 	depends = r-biocparallel
+	optdepends = r-shortread
+	optdepends = r-rtracklayer
+	optdepends = r-bsgenome
+	optdepends = r-genomicfeatures
+	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
+	optdepends = r-pasillabamsubset
+	optdepends = r-txdb.hsapiens.ucsc.hg19.knowngene
+	optdepends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
+	optdepends = r-bsgenome.dmelanogaster.ucsc.dm3
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-deseq2
+	optdepends = r-edger
+	optdepends = r-runit
+	optdepends = r-biocstyle
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/GenomicAlignments_1.22.1.tar.gz
-	sha1sums = 03ae50b0e10b737f41f80cec5727aafdb6bcad1b
+	md5sums = 6fb92061c3ffbeb89423f731f662f9d1
 
 pkgname = r-genomicalignments
 
