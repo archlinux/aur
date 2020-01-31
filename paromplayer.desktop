@@ -1,0 +1,16 @@
+[Desktop Entry]
+Version=1.1.3
+Name=Parom.TV Player
+GenericName=ParomTV
+Comment=Watch TV channels
+Name[ru]=Parom.TV плеер
+GenericName[ru]=Parom.TV
+Comment[ru]=Плеер для просмотра телеканалов
+Name[uk]=Parom.TV плеєр
+GenericName[uk]=Parom.TV
+Comment[uk]=Плеєр для перегляду телеканалів
+Terminal=false
+Type=Application
+Exec=paromplayer
+Icon=paromplayer
+Categories=AudioVideo;Player;Network;
