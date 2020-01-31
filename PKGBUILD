@@ -5,15 +5,15 @@
 
 pkgname=lib32-twolame
 _pkgbasename=twolame
-pkgver=0.3.13
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="An optimized MPEG Audio Layer 2 (MP2) encoder (32-bit)"
 arch=('x86_64')
 url="http://www.twolame.org/"
 license=('LGPL')
 depends=('lib32-libsndfile' 'twolame')
-source=("https://downloads.sourceforge.net/${_pkgbasename}/${_pkgbasename}-${pkgver}.tar.gz")
-sha512sums=('241ae5faebf05cb919959bb0545cb89e9b71cfb07f92a7118d864499ea4f0065ddaa646ab1482ffbcbca427d52c2436764074bd67fd19a1eb9979987f23163f7')
+source=("https://github.com/njh/${_pkgbasename}/releases/download/${pkgver}/${_pkgbasename}-${pkgver}.tar.gz")
+sha512sums=('cc594bc8d2322922280f915a3c0aa52540cca0350d6498bc96f3f60fd6e53f951e775ea015a44bdb29ec883b46b31a0e5483f6a5c188b02e30008289273c7d03')
 
 build() {
   export CC="gcc -m32"
