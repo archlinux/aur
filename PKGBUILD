@@ -2,7 +2,7 @@
 
 pkgname=spotify-adblock-git
 _pkgname=${pkgname%-*}
-pkgver=r26.12beaa7
+pkgver=r43.b8b199b
 pkgrel=1
 license=("GPL3")
 pkgdesc="Adblocker for Spotify"
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	cd ${srcdir}
-	install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-	install -Dm644 "${_pkgname}/${_pkgname}.so" "${pkgdir}/usr/lib/${_pkgname}.so"
+	cd "${srcdir}/${_pkgname}"
+	make DESTDIR="${pkgdir}" PREFIX=/usr install
+	install -Dm644 "../${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
