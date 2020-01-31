@@ -2,11 +2,14 @@ pkgbase = r-bitops
 	pkgdesc = Bitwise Operations
 	pkgver = 1.0.6
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/bitops/index.html
+	url = https://cran.r-project.org/package=bitops
+	arch = i686
 	arch = x86_64
+	license = GPL2
 	license = GPL3
+	makedepends = gcc
 	depends = r
-	source = http://cran.r-project.org/src/contrib/bitops_1.0-6.tar.gz
+	source = https://cran.r-project.org/src/contrib/bitops_1.0-6.tar.gz
 	md5sums = fba16485a51b1ccd354abde5816b6bdd
 
 pkgname = r-bitops

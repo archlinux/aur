@@ -1,20 +1,29 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
+
+_cranname=bitops
+_cranver=1.0-6
 pkgname=r-bitops
-_cran_name=bitops
-_pkgver=1.0-6
-pkgver=${_pkgver//-/.}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Bitwise Operations"
-arch=('x86_64')
-url="http://cran.r-project.org/web/packages/${_cran_name}/index.html"
-license=('GPL3')
-depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cran_name}_${_pkgver}.tar.gz")
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL2 GPL3)
+depends=(r)
+makedepends=(gcc)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('fba16485a51b1ccd354abde5816b6bdd')
 
-package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+build(){
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
