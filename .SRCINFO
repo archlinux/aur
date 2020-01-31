@@ -1,0 +1,36 @@
+pkgbase = gr-framework
+	pkgdesc = A universal framework for cross-platform visualization applications.
+	pkgver = 0.46.0
+	pkgrel = 1
+	url = https://gr-framework.org
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = bzip2
+	depends = cairo
+	depends = fontconfig
+	depends = freetype2
+	depends = ghostscript
+	depends = glfw-x11
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libtiff
+	depends = libx11
+	depends = libxft
+	depends = libxt
+	depends = pixman
+	depends = qhull
+	depends = qt5-base
+	depends = zlib
+	optdepends = ffmpeg: video support
+	source = https://github.com/sciapp/gr/archive/v0.46.0.tar.gz
+	source = gr-framework-0.46.0.patch
+	sha256sums = c466ae98fd26ac8a30d1b35a899201eaf0ede593b0a3f61f806c49261acb6982
+	sha256sums = 91475fcd6bb066206a39d0991a70c7176912b01d8c166f5a607b83045d530195
+
+pkgname = gr-framework
+

@@ -1,0 +1,79 @@
+diff --git a/.gitlab-ci.yml b/.gitlab-ci.yml
+index 64718ef9..911dd62d 100644
+--- a/.gitlab-ci.yml
++++ b/.gitlab-ci.yml
+@@ -443,10 +443,11 @@ arch-cmake-system-dependencies:
+   stage: build
+   image: iffregistry.fz-juelich.de/docker-images/gr-build-images/arch-system-dependencies
+   script:
+-    - make -C 3rdparty default TARGETS="qhull"
++    - pacman -Sy
++    - pacman -S --noconfirm --needed qhull
+     - mkdir build
+     - cd build
+-    - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${CI_PROJECT_DIR}/install -DGR_USE_BUNDLED_LIBRARIES=ON
++    - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${CI_PROJECT_DIR}/install -DGR_USE_BUNDLED_LIBRARIES=OFF
+     - make
+ 
+ windows-32bit-cross:
+diff --git a/cmake/FindQhull.cmake b/cmake/FindQhull.cmake
+index ec771f97..19a54e45 100644
+--- a/cmake/FindQhull.cmake
++++ b/cmake/FindQhull.cmake
+@@ -25,7 +25,7 @@
+ #   If false, do not try to use Qhull.
+ 
+ if(NOT QHULL_INCLUDE_DIR)
+-  find_path(QHULL_INCLUDE_DIR qhull/qhull_a.h)
++  find_path(QHULL_INCLUDE_DIR qhull_a.h PATH_SUFFIXES qhull libqhull)
+ endif()
+ 
+ if(NOT QHULL_LIBRARY)
+@@ -43,7 +43,7 @@ if(NOT QHULL_VERSION_STRING
+     file(
+       WRITE "${CMAKE_CURRENT_BINARY_DIR}/qhull_get_version.c"
+       "
+-        #include \"qhull/libqhull.h\"
++        #include \"libqhull.h\"
+ 
+         int main(void)
+         {
+diff --git a/lib/gr/Makefile b/lib/gr/Makefile
+index ff2e9957..6db9b86b 100644
+--- a/lib/gr/Makefile
++++ b/lib/gr/Makefile
+@@ -14,7 +14,7 @@ UNAME := $(shell uname)
+                contourf.o boundary.o
+       GSDEFS =
+      DEFINES = $(GSDEFS)
+-    INCLUDES = -I../gks -I$(THIRDPARTYDIR)/include
++    INCLUDES = -I../gks -I$(THIRDPARTYDIR)/include -I$(THIRDPARTYDIR)/include/qhull
+           CC = cc
+       CFLAGS = $(DEFINES) -O3 -Wall -fPIC $(EXTRA_CFLAGS)
+           AR = ar
+diff --git a/lib/gr/delaunay.c b/lib/gr/delaunay.c
+index 9039f3f8..90ee44de 100644
+--- a/lib/gr/delaunay.c
++++ b/lib/gr/delaunay.c
+@@ -1,7 +1,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ 
+-#include "qhull/qhull_a.h"
++#include "qhull_a.h"
+ 
+ #include "gr.h"
+ 
+diff --git a/lib/gr/makefile.mingw b/lib/gr/makefile.mingw
+index accd1dd5..6dffd64e 100644
+--- a/lib/gr/makefile.mingw
++++ b/lib/gr/makefile.mingw
+@@ -2,7 +2,7 @@ ifeq ($(strip $(THIRDPARTYDIR)),)
+ override THIRDPARTYDIR = $(abspath $(CURDIR)/../../3rdparty/build)
+ endif
+ 
+- INCLUDES = -I$(THIRDPARTYDIR)/include -I../gks -I.
++ INCLUDES = -I$(THIRDPARTYDIR)/include -I$(THIRDPARTYDIR)/include/qhull -I../gks -I.
+    CFLAGS = -DXMD_H -D_POSIX -D_WIN32_WINNT=0x0600 $(INCLUDES)
+   DEFINES = -DGRDIR=\"$(GRDIR)\" -DNO_GS -DNO_X11
+  JPEGLIBS = $(THIRDPARTYDIR)/lib/libjpeg.a
