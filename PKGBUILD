@@ -2,13 +2,14 @@
 
 _pkgbase='peeweeplus'
 pkgname="python-${_pkgbase}-git"
-pkgver=r364.7c06464
-pkgrel=2
+pkgver=r425.3133374
+pkgrel=1
 pkgdesc='Practical extension of a small, expressive ORM'
 arch=('any')
 url="https://gitlab.com/HOMEINFO/${_pkgbase}"
 license=('GPLv3')
-depends=('python' 'python-peewee' 'python-argon2_cffi' 'python-timelib-git' 'python-strflib' 'python-configlib' 'python-functoolsplus')
+depends=('python' 'python-peewee' 'python-timelib' 'python-strflib')
+optdepends=('python-argon2_cffi: for Argon2Field' 'python-authlib: for authlib integration')
 makedepends=('git' 'python')
 provides=("python-${_pkgbase}")
 conflicts=("python-${_pkgbase}")
