@@ -30,8 +30,7 @@ build() {
   export TERM=xterm # Fix Mono bug "Magic number is wrong".
 
   # Compile C# sources
-  #cd "Eddie" # pazzo, revert
-  cd "eddie-air"
+  cd * # First folder
   xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.sln
 
   # Compile C sources (Tray)
