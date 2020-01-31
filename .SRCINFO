@@ -1,6 +1,6 @@
 pkgbase = ttf-jetbrains-mono-powerline-git
 	pkgdesc = JetBrains Mono for Powerline
-	pkgver = r3.526af06
+	pkgver = 1.0.r0.g526af06
 	pkgrel = 1
 	url = https://github.com/seanghay/JetBrainsMono-Powerline
 	arch = any

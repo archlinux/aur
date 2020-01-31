@@ -1,7 +1,7 @@
 # Maintainer: Michael Serajnik <ms dot mserajnik dot at>
 pkgname=ttf-jetbrains-mono-powerline-git
 _pkgname=JetBrainsMono-Powerline
-pkgver=r3.526af06
+pkgver=1.0.r0.g526af06
 pkgrel=1
 pkgdesc="JetBrains Mono for Powerline"
 arch=('any')
@@ -11,8 +11,8 @@ source=("git+https://github.com/seanghay/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${_pkgname}"
+  git describe --long --tags | sed "s/^v//;s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package() {
