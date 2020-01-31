@@ -1,7 +1,7 @@
 pkgbase = python-togglpy
 	pkgdesc = TogglPy is a non-cluttered, easily understood and implemented python library for interacting with the Toggl API.
 	pkgver = 0.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/matthewdowney/TogglPy
 	arch = any
 	license = MIT

@@ -3,7 +3,7 @@
 pkgname=python-togglpy
 _pypiname=TogglPy
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc='TogglPy is a non-cluttered, easily understood and implemented python library for interacting with the Toggl API.'
 arch=('any')
 url='https://github.com/matthewdowney/TogglPy'
@@ -27,5 +27,5 @@ package() {
 		--root=${pkgdir} \
 		--skip-build
 
-	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${_pypiname}/"
+	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
