@@ -1,3 +1,5 @@
+# Maintainer: 2xsaiko <aur@dblsaiko.net>
+
 pkgname=kde-rounded-corners-git
 _pkgname=${pkgname%-git}
 pkgver=r15.b1f65f2
