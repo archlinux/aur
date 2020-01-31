@@ -12,7 +12,7 @@ pkgname=('scangearmp-mpseries-common'
 _pkgname=scangearmp
 
 pkgver=1.40
-pkgrel=9
+pkgrel=10
 _pkgreview=1
 
 pkgdesc="Canon IJ Scanner Driver for MP250, MP270, MP490, MP550, MP560, and MP640 series"
