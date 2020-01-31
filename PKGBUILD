@@ -1,19 +1,29 @@
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
-pkgname=r-r6
-_cran_name=R6
-pkgver=2.4.1
+
+_cranname=R6
+_cranver=2.4.1
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Create Compact Hash Digests of R Objects"
-arch=('x86_64')
-url="https://CRAN.R-project.org/package=${_cran_name}"
-license=('GPL3')
-depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cran_name}_${pkgver}.tar.gz")
+pkgdesc="Encapsulated Classes with Reference Semantics"
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(MIT)
+depends=('r>=3.0')
+optdepends=(r-knitr r-microbenchmark r-pryr r-testthat r-ggplot2 r-scales)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('78cabfb5a4e18fab29659752271ab4af')
 
-package() {
- mkdir -p $pkgdir/usr/lib/R/library
- cd $srcdir
+build() {
+  cd "${srcdir}"
 
- R CMD INSTALL -l $pkgdir/usr/lib/R/library ./${_cran_name}
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }

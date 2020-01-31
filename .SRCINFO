@@ -1,12 +1,18 @@
 pkgbase = r-r6
-	pkgdesc = Create Compact Hash Digests of R Objects
+	pkgdesc = Encapsulated Classes with Reference Semantics
 	pkgver = 2.4.1
 	pkgrel = 1
-	url = https://CRAN.R-project.org/package=R6
-	arch = x86_64
-	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/R6_2.4.1.tar.gz
+	url = https://cran.r-project.org/package=R6
+	arch = any
+	license = MIT
+	depends = r>=3.0
+	optdepends = r-knitr
+	optdepends = r-microbenchmark
+	optdepends = r-pryr
+	optdepends = r-testthat
+	optdepends = r-ggplot2
+	optdepends = r-scales
+	source = https://cran.r-project.org/src/contrib/R6_2.4.1.tar.gz
 	md5sums = 78cabfb5a4e18fab29659752271ab4af
 
 pkgname = r-r6
