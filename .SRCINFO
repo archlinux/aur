@@ -1,0 +1,12 @@
+pkgbase = saleae-logic-alpha
+	pkgdesc = Debug hardware like a pro
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://discuss.saleae.com/c/logic-2-0-alpha-software/7
+	arch = x86_64
+	license = unknown
+	source = https://downloads.saleae.com/logic2/Logic-2.2.1-master.AppImage
+	sha512sums = a60c37146aaaaf8a60e72702759e28260431331a706109ae8756c4a36940066d06c334e70292f38231e6a4fcde3f55464b2833d3a78cf0064705ccdcb8d4c49a
+
+pkgname = saleae-logic-alpha
+
