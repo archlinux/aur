@@ -6,7 +6,7 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
@@ -124,7 +124,7 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
 
-    export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
+    export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
 
     # Before were used:
     # -DTDESKTOP_API_ID=17349
@@ -132,7 +132,7 @@ build() {
 
     cmake -B build -G "Unix Makefiles" . \
         -Ddisable_autoupdate=1 \
-        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_TEST=ON \
         -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
@@ -148,25 +148,7 @@ build() {
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/tdesktop/build/bin/telegram-desktop" "$pkgdir/usr/bin/telegram-desktop"
+    cd "$srcdir/tdesktop"
 
-    install -d "$pkgdir/usr/share/applications"
-    install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.desktop" "$pkgdir/usr/share/applications/telegram-desktop.desktop"
-
-    install -d "$pkgdir/usr/share/kservices5"
-    install -m644 "$srcdir/tdesktop/lib/xdg/tg.protocol" "$pkgdir/usr/share/kservices5/tg.protocol"
-    install -d "$pkgdir/usr/share/kde4/services"
-    ln -s "/usr/share/kservices5/tg.protocol" "$pkgdir/usr/share/kde4/services"
-
-    install -d "$pkgdir/usr/share/metainfo/"
-    install -m644 "$srcdir/tdesktop/lib/xdg/telegramdesktop.appdata.xml" "$pkgdir/usr/share/metainfo/telegram-desktop.appdata.xml"
-
-    local icon_size icon_dir
-    for icon_size in 16 32 48 64 128 256 512; do
-        icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
-
-        install -d "$icon_dir"
-        install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
-    done
+    make -C build install
 }
