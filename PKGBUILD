@@ -2,7 +2,7 @@
 pkgname=traffictoll-git
 _pkgname=TrafficToll
 pkgver=r35.0add8b6
-pkgrel=1
+pkgrel=2
 pkgdesc="NetLimiter-like traffic shaping for Linux"
 arch=('any')
 url="https://github.com/cryzed/${_pkgname}"

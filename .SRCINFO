@@ -1,7 +1,7 @@
 pkgbase = traffictoll-git
 	pkgdesc = NetLimiter-like traffic shaping for Linux
 	pkgver = r35.0add8b6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cryzed/TrafficToll
 	arch = any
 	license = GPL3
