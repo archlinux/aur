@@ -4,8 +4,8 @@ url="https://clearlinux.org/node/15538"
 pkgname=linux-clear-headers-bin
 # check org.clearlinux.native.X.Y.Z in Manifest
 _major=5.4
-_minor=15
-_clr=899
+_minor=16
+_clr=900
 pkgver=${_major}.${_minor}.${_clr}
 pkgrel=1
 # use in case we need to update the Arch package without incrementing pkgrel
@@ -16,18 +16,18 @@ conflicts=("linux-clear-headers")
 options=('!strip')
 
 # see: https://cdn.download.clearlinux.org/current/latest
-_clear_version=32190
+_clear_version=32220
 _kernel_version="${_major}.${_minor}-${_clr}.native"
 # hash of kernel config from Manifest.linux-dev, ie /usr/lib/kernel/config-5.3.1-843.native
 # there's no way to do this automatically in the PKGBUILD
-_config_hash=8a18912c24a659e4109d6d2e701b579bce713adb979e580a1b20fb8851030e7d
+_config_hash=fcdffd237b09a798b392bc37f9f9e774ac3b52185ab714872150dd9b6e3d9ffc
 
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/files/${_config_hash}.tar")
-sha256sums=('6ca9e28b568821cce9999f5f937ffedbffe092dd3764a562b114909850a66190'
-            'a0980cd07809c6b5fab53ef8a1fb4234d88ea6ebdc2486a8dcb27249db7423f6'
-            'b26fdc5566bc66c7b34504b96b8f7281d43d55920efbd4729f42fa55324ddb4a')
+sha256sums=('6839db68d8c249aa192526c70df2a3e271a9c83a47945b67725f12b43b107726'
+            '18271011ce4ced81ee6805c7d4b4597ac18e8d79515f4876fd4f9b160e108b31'
+            'af77df2c861ec07260fcdf2b396c9e43c44adb717d4a9a9024992e6784e31927')
 build() {
     local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev)
     local config=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p" Manifest.linux-dev)
