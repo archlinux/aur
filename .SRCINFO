@@ -1,13 +1,13 @@
 pkgbase = libdcp
 	pkgdesc = A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files
 	pkgver = 1.6.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://carlh.net/libdcp
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = python2
-	makedepends = boost>=1.66.0
+	makedepends = boost>=1.72.0
 	makedepends = python2
 	makedepends = gcc
 	makedepends = pkg-config
