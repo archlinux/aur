@@ -1,6 +1,6 @@
 pkgbase = protonmail-web-git
 	pkgdesc = Official AngularJS web client for the ProtonMail secure email service
-	pkgver = r4782.81406ede
+	pkgver = r6108.8c0ee480c83d
 	pkgrel = 1
 	url = https://github.com/ProtonMail/WebClient
 	arch = any

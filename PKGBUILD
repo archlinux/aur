@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=protonmail-web-git
 _pkgname=protonmail-web
-pkgver=r4782.81406ede
+pkgver=r6108.8c0ee480c83d
 pkgrel=1
 license=('MIT')
 pkgdesc='Official AngularJS web client for the ProtonMail secure email service'
@@ -15,13 +15,13 @@ conflicts=('protonmail-web')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=12 HEAD)"
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
 	export NODE_ENV=dist
-	npm install
+	npm install --cache "${srcdir}/npm-cache"
 	npm run build --api=prod
 }
 
