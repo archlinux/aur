@@ -8,8 +8,8 @@ pkgbase = r-assertthat
 	depends = r
 	optdepends = r-testthat
 	optdepends = r-covr
-	source = http://cran.r-project.org/src/contrib/assertthat_0.2.1.tar.gz
-	md5sums = 9f2eae3d20a9d6b40856a6fed013cb05
+	source = https://cran.r-project.org/src/contrib/assertthat_0.2.1.tar.gz
+	sha256sums = 85cf7fcc4753a8c86da9a6f454e46c2a58ffc70c4f47cac4d3e3bcefda2a9e9f
 
 pkgname = r-assertthat
 
