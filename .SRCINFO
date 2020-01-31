@@ -1,6 +1,6 @@
 pkgbase = johnnydep
 	pkgdesc = Display dependency tree of Python distribution
-	pkgver = 0.9
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/wimglenn/johnnydep
 	arch = any
@@ -16,10 +16,10 @@ pkgbase = johnnydep
 	depends = python-pip
 	depends = python-structlog
 	options = !emptydirs
-	source = https://github.com/wimglenn/johnnydep/archive/v0.9.tar.gz
+	source = https://github.com/wimglenn/johnnydep/archive/v1.4.tar.gz
 	source = oyaml.tar.gz::https://github.com/wimglenn/oyaml/archive/v0.9.tar.gz
 	source = wimpy.tar.gz::https://github.com/wimglenn/wimpy/archive/v0.6.tar.gz
-	sha256sums = a982fe49037286efe11dccb8342021a55d949f323f45003694e9fd5917f0553b
+	sha256sums = a415f873d378452275ea2c9c325c3576a16adfee357ff875e55329702a3ecf75
 	sha256sums = 3f972fee4a6fc130d98c75c9ea44c14b11b29ea1777a994d0ad6e30b169278f8
 	sha256sums = 014d21a31980eab48b92c4210e9fdba643b79f7081c64ea9bc97f2be9db9bd58
 
