@@ -17,7 +17,6 @@ sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af')
 
 build() {
   cd "$_pkgname-$pkgver"
-
   local _font
   for _font in {{12..24..2},28,32}{n,b}; do
     python bin/ucstoany.py -f "ter-u$_font.bdf" ISO10646 1 uni/{x11gr,10646-1}.uni |
@@ -27,7 +26,6 @@ build() {
 
 package() {
   cd "$_pkgname-$pkgver"
-
   local _font
   for _font in *.pcf.gz; do
     install -Dm644 "$_font" "$pkgdir/usr/share/fonts/misc/$_font"
