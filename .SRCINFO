@@ -1,11 +1,18 @@
 pkgbase = azeroth-core
 	pkgdesc = AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore
 	pkgver = 3.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = http://www.azerothcore.org
 	arch = i686
 	arch = x86_64
+	depends = cmake
+	depends = clang
+	depends = readline
+	depends = lib32-readline
+	optdepends = ace: you need install this library from AUR
+	optdepends = libmysqlclient57: you need install this library from AUR
 	license = AGPL3
 	source = git+https://github.com/azerothcore/azerothcore-wotlk.git
+	sha512sums = SKIP
 
 pkgname = azeroth-core
