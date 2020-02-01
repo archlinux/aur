@@ -3,7 +3,7 @@
 _pkgname='bat'
 pkgname="bat-cat-git"
 pkgver=r868.e5c4155
-pkgrel=3
+pkgrel=4
 pkgdesc="A cat(1) clone with wings."
 arch=('x86_64')
 url='https://github.com/sharkdp/bat'
@@ -22,7 +22,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   cargo build --release
   sed -i -e "s/^bat/.\/target\/release\/${_pkgname}/g" assets/create.sh
-  cat assets/create.sh
+  sed -i -e "s/submodule_prompt=unspecified/submodule_prompt=yes/g" assets/create.sh
   bash assets/create.sh
 }
 
