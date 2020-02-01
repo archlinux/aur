@@ -32,5 +32,4 @@ package() {
     for f in .BUILDINFO .MTREE .INSTALL .PKGINFO; do
       rm -f "$pkgdir/$f"
     done
-    find "$pkgdir" -maxdepth 3 -name "linux*.pkg.tar*" | xargs rm -f
 }
