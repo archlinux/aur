@@ -1,0 +1,5 @@
+pkg/
+src/
+tflint-*.pkg.tar.zst
+tflint-*-source.tar.gz
+tflint_linux_*.zip
