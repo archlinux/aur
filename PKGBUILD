@@ -1,12 +1,13 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=photofilmstrip-git
-pkgver=r641.e7fbf5d
+pkgver=r651.4bf7890
 pkgrel=1
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/en/"
 license=('GPL2')
-depends=('python' 'python-wxpython' 'python-pillow' 'gst-python')
+depends=('python' 'python-wxpython' 'python-pillow' 'gst-python'
+         'gst-editing-services')
 makedepends=('python' 'python-setuptools')
 optdepends=('gst-plugins-bad: additional rendering formats'
 	        'gst-plugins-good: additional rendering formats'

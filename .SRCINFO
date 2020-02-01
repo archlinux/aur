@@ -1,6 +1,6 @@
 pkgbase = photofilmstrip-git
 	pkgdesc = Create video clips from photos
-	pkgver = r641.e7fbf5d
+	pkgver = r651.4bf7890
 	pkgrel = 1
 	url = http://www.photofilmstrip.org/en/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = photofilmstrip-git
 	depends = python-wxpython
 	depends = python-pillow
 	depends = gst-python
+	depends = gst-editing-services
 	optdepends = gst-plugins-bad: additional rendering formats
 	optdepends = gst-plugins-good: additional rendering formats
 	optdepends = gst-plugins-ugly: additional rendering formats
