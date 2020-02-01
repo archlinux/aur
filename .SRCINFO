@@ -1,0 +1,17 @@
+pkgbase = heifthumbnailer
+	pkgdesc = KIO HEIF thumbnailer
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/zzag/heifthumbnailer
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = qt5-base
+	depends = kio
+	depends = libheif
+	source = heifthumbnailer-1.0.tar.gz::https://github.com/zzag/heifthumbnailer/archive/1.0.tar.gz
+	sha256sums = e129a169f618def9ae185aa88d73126c4b50960694e47c073b5b38100ae0004c
+
+pkgname = heifthumbnailer
+
