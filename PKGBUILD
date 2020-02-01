@@ -6,8 +6,8 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-_pkgver=4.19.98
-_rtpatchver=40
+_pkgver=4.19.100
+_rtpatchver=41
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -34,11 +34,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('91feb13bc22d60d69596ab1d01dfecbec13ef70f00c89a483e0733af94dd2937'
+sha256sums=('58138bb6a6930ba46d6d45be0422c53ccebb2b5513440a398465a233cd60e713'
             'SKIP'
-            '0534ce0c2dd3813d88a54648a54eaf370906b378baf89369e17eb8fa66338ced'
+            '310dbe3ebbae886cb61be245e28c4af8af30ec905df967a27aefe0741d3cc72a'
             'SKIP'
-            'fa279b1467180278e134e3be79f81a1b7b8932b1fd4b39436f4fe9ea1503979d'
+            '910998e7f633ee71349fba8e6c0475ec1bdda91e57b54db4db36a6f788643377'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
