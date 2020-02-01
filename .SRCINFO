@@ -1,12 +1,13 @@
 pkgbase = sharexin-git
 	pkgdesc = ShareX for Linux and BSD
 	pkgver = 0.7.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/ShareXin/ShareXin
 	arch = any
 	license = GPL3
 	makedepends = cargo
 	makedepends = clang
+	makedepends = git
 	depends = cairo
 	depends = curl
 	depends = gtk3

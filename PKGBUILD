@@ -1,8 +1,9 @@
 # Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+
 pkgname=sharexin-git
 _pkgname=ShareXin
 pkgver=0.7.2
-pkgrel=4
+pkgrel=5
 pkgdesc="ShareX for Linux and BSD"
 arch=('any')
 url="https://github.com/ShareXin/ShareXin"
@@ -20,6 +21,7 @@ depends=(
 makedepends=(
     'cargo'
     'clang'
+    'git'
 )
 optdepends=(
     'gnome-screenshot: Screenshot support with Gnome'
