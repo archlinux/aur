@@ -29,8 +29,7 @@ build() {
 }
 
 package() {
-  mkdir -p ${pkgdir}/usr/lib/hexchat/plugins
-  install -m644 ${srcdir}/build/plugins/python/python.so  ${pkgdir}/usr/lib/hexchat/plugins/python2.so
+  DESTDIR="${pkgdir}" ninja -C build install
 }
 
 # vim: ts=2 sw=2 et
