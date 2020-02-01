@@ -1,6 +1,6 @@
 pkgbase = python-partd
 	pkgdesc = Appendable key-value storage
-	pkgver = 0.3.10
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://github.com/dask/partd/
 	arch = any
@@ -10,12 +10,13 @@ pkgbase = python-partd
 	depends = python
 	depends = python-locket
 	depends = python-toolz
-	optdepends = python-pyzmq
+	optdepends = python-blosc
 	optdepends = python-numpy
 	optdepends = python-pandas
-	optdepends = python-blosc
-	source = https://pypi.python.org/packages/source/p/partd/partd-0.3.10.tar.gz
-	sha256sums = 33722a228ebcd1fa6f44b1631bdd4cff056376f89eb826d7d880b35b637bcfba
+	optdepends = python-pyzmq
+	optdepends = python-snappy
+	source = https://pypi.python.org/packages/source/p/partd/partd-1.1.0.tar.gz
+	sha256sums = 6e258bf0810701407ad1410d63d1a15cfd7b773fd9efe555dac6bb82cc8832b0
 
 pkgname = python-partd
 
