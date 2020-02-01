@@ -1,0 +1,53 @@
+From b877169c008cee342558035b16cebae4145b8cf2 Mon Sep 17 00:00:00 2001
+From: Grzegorz Uriasz <gorbak25@gmail.com>
+Date: Sat, 1 Feb 2020 22:41:33 +0100
+Subject: [PATCH] BBSwitch fix
+
+---
+ drivers/pci/quirks.c    | 17 +++++++++++++++++
+ include/linux/pci_ids.h |  1 +
+ 2 files changed, 18 insertions(+)
+
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index fbeb9f73ef28..dc4e6bc462c6 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -616,6 +616,23 @@ static void quirk_amd_nl_class(struct pci_dev *pdev)
+ DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_AMD, PCI_DEVICE_ID_AMD_NL_USB,
+ 		quirk_amd_nl_class);
+ 
++/*
++ * On recent nvidia based laptops for bbswitch to work we need to make sure that the
++ * xhci driver doesn't bind to the nvidia usb controller. Otherwise the system will
++ * hang when disabling the gpu.
++ */
++static void quirk_nvidia_bbswitch_fix(struct pci_dev *pdev)
++{
++    u32 class = pdev->class;
++
++    /* Use "USB Device (not host controller)" class */
++    pdev->class = PCI_CLASS_SERIAL_USB_DEVICE;
++    pci_info(pdev, "[gorbak25] PCI class overridden (%#08x -> %#08x) so xhci cannot claim this device. UwU\n",
++             class, pdev->class);
++}
++DECLARE_PCI_FIXUP_HEADER(PCI_VENDOR_ID_NVIDIA, PCI_DEVICE_ID_NVIDIA_BBSWITCH_BLACKLIST,
++        quirk_nvidia_bbswitch_fix);
++
+ /*
+  * Synopsys USB 3.x host HAPS platform has a class code of
+  * PCI_CLASS_SERIAL_USB_XHCI, and xhci driver can claim it.  However, these
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index 2302d133af6f..45737f2b12f7 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -1143,6 +1143,7 @@
+ #define PCI_VENDOR_ID_ROHM		0x10db
+ 
+ #define PCI_VENDOR_ID_NVIDIA			0x10de
++#define PCI_DEVICE_ID_NVIDIA_BBSWITCH_BLACKLIST 0x1ada
+ #define PCI_DEVICE_ID_NVIDIA_TNT		0x0020
+ #define PCI_DEVICE_ID_NVIDIA_TNT2		0x0028
+ #define PCI_DEVICE_ID_NVIDIA_UTNT2		0x0029
+-- 
+2.25.0
+

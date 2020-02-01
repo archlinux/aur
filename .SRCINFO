@@ -1,0 +1,41 @@
+pkgbase = linux-nvidia-uwu-patch
+	pkgdesc = Linux
+	pkgver = 5.5.1.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.1-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.1-arch1
+	source = config
+	source = 0001-BBSwitch-fix.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = 63141b88e5ffb583617d51364ebc1378fd3a73b8352e13450e982851d40fbaf2
+	sha256sums = 1c79be04d1c9e26f7acff793629e90fbe189112985e464916ade4c0b7b063906
+
+pkgname = linux-nvidia-uwu-patch
+	pkgdesc = The Linux kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-nvidia-uwu-patch-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel
+
+pkgname = linux-nvidia-uwu-patch-docs
+	pkgdesc = Documentation for the Linux kernel
+
