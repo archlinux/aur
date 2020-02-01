@@ -1,0 +1,14 @@
+pkgbase = brother-mfc-j995dw-print-driver
+	pkgdesc = Print driver for Brother MFC-J995DW printer
+	pkgver = 1.0.5
+	pkgrel = 0
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj995dw_us
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103811/mfcj995dwpdrv-1.0.5-0.i386.deb
+	md5sums = 80dd1db70a3086e9003d578f23ac7f3a
+
+pkgname = brother-mfc-j995dw-print-driver
+
