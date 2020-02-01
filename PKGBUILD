@@ -4,7 +4,7 @@
 
 pkgname=python-biopython
 _pkgname=biopython
-pkgver=1.74
+pkgver=1.76
 pkgrel=1
 pkgdesc="Freely available Python tools for computational molecular biology"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('python-numpy')
 optdepends=('python-mysql-connector: for BioSQL module')
 source=(http://www.biopython.org/DIST/${_pkgname}-${pkgver}.tar.gz)
 changelog=ChangeLog
-sha512sums=('a5611b993e383d76d2fdc9be22481624180748f06f107e603a062c51b7ca7cf8603d6d97e11d64cd011ae7bd2696c8bf3659b9c625c84c479164a6171d5e8415')
+sha512sums=('cd98e5cff151f8f286e9bf9763cf4b61bceb80b2696c5ac98aae6ee180f2ab2493bd1e1852a0fd5f27c71550f8a609e5163b1c1900ae32314dd76e36b6f06de0')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
