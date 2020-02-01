@@ -1,5 +1,5 @@
 pkgname=coin-or-bonmin
-pkgver=1.8.7
+pkgver=1.8.8
 pkgrel=1
 pkgdesc="Experimental open-source C++ code for solving general MINLP problems"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ groups=('coin-or')
 depends=('coin-or-cbc' 'coin-or-ipopt' 'coin-or-bcp')
 makedepends=()
 source=("https://www.coin-or.org/download/source/Bonmin/Bonmin-$pkgver.tgz")
-sha256sums=('3e5bcb57f2a7995ce4fd9c76c033050e487ea375ecf0e277dabc22159c8cfb31')
+sha256sums=('1a47cf5a4c115974f09d765408ab2116efd4dc1ec13faccd078f2870404316d2')
 
 build() {
   cd "$srcdir/Bonmin-$pkgver"
