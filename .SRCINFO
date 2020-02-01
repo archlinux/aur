@@ -2,6 +2,7 @@ pkgbase = spice-html5
 	pkgdesc = a html5 client for the spice protocol
 	pkgver = 0.2.2
 	pkgrel = 2
+	url = https://gitlab.freedesktop.org/spice/spice-html5/
 	arch = any
 	license = GPL
 	source = https://gitlab.freedesktop.org/spice/spice-html5/-/archive/spice-html5-0.2.2/spice-html5-spice-html5-0.2.2.tar.gz
