@@ -8,16 +8,12 @@ url='http://www.sleuthkit.org/sleuthkit'
 license=('CPL', 'custom:"IBM Public Licence"', 'GPL2')
 depends=(java-environment=8 java8-openjfx sleuthkit)
 makedepends=(ant)
-source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz" "build-tmp-dir.patch" "download-deps-https.patch" "download-ivy-https.patch")
-md5sums=('b5c081eb2cc92d2e56b8c470de37f890'
-         '8a39286ec6585c5298073043af3b4dcf'
-         'f951e410ecef03c978d9d2034871fb35'
-         '13c842d0bcc03867548d10e7808e3aa6')
+source=("https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-${pkgver}/sleuthkit-${pkgver}.tar.gz" "build-tmp-dir.patch")
+md5sums=('c7f9431bceae9b421b337d3c44af4ea9'
+         '8a39286ec6585c5298073043af3b4dcf')
 
 prepare() {
 	patch "sleuthkit-${pkgver}/bindings/java/build.xml" build-tmp-dir.patch
-	patch "sleuthkit-${pkgver}/bindings/java/build.xml" download-ivy-https.patch
-	patch "sleuthkit-${pkgver}/bindings/java/ivysettings.xml" download-deps-https.patch
 }
 
 build() {
