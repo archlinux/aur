@@ -1,6 +1,6 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=kodi-addon-inputstream-rtmp-git
-pkgver=2.0.6.Leia.r0.g04bfcf8
+pkgver=2.0.8.Leia.r0.gb45f675
 pkgrel=1
 pkgdesc="librtmp support for Kodi 18+"
 arch=('x86_64' 'i686' 'armv7h')
@@ -15,7 +15,7 @@ conflicts=("${pkgname%-git}")
 # kodi 18
 source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Leia')
 # kodi 19
-# source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git')
+# source=('kodi-addon-inputstream-rtmp-git::git+https://github.com/xbmc/inputstream.rtmp.git#branch=Matrix')
 md5sums=('SKIP')
 
 pkgver() {
