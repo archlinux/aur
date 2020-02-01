@@ -1,14 +1,14 @@
 pkgbase = python-hstspreload
 	pkgdesc = Chromium HSTS Preload list as a Python package and updated daily
-	pkgver = 2020.1.30
+	pkgver = 2020.2.1
 	pkgrel = 1
 	url = https://github.com/sethmlarson/hstspreload
 	arch = any
 	license = BSD-3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/h/hstspreload/hstspreload-2020.1.30.tar.gz
-	sha256sums = 702c7350a2a84f5baf4ab4a2b2fdd4c931f51143d73515e132b0131f6fe0d264
+	source = https://files.pythonhosted.org/packages/source/h/hstspreload/hstspreload-2020.2.1.tar.gz
+	sha256sums = 93c360debe16a74821ebd04eb9844597da904b99db1b7e6280c778f4df422eb1
 
 pkgname = python-hstspreload
 
