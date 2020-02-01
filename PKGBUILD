@@ -14,12 +14,12 @@
 
 pkgname=cassandra
 pkgver=3.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
 url='http://cassandra.apache.org/'
 license=('APACHE')
-depends=('java-runtime')
+depends=('java-runtime=8')
 makedepends=('gnupg')
 checkdepends=('wget')
 optdepends=('python: to use Python CLI administration scripts')
