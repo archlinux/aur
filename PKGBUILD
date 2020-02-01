@@ -1,28 +1,21 @@
 # Maintainer: cyrant <cyrant at tuta dot io>
 
 pkgname=opentoonz
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc='This is software for producing a 2D animation.'
 url='https://opentoonz.github.io'
 license=('BSD')
 arch=('x86_64')
 conflicts=('opentoonz-git')
-depends=('cblas' 'freeglut' 'glew' 'hicolor-icon-theme' 'libmypaint' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'sdl2' 'superlu')
+depends=('cblas' 'freeglut' 'glew' 'hicolor-icon-theme' 'libmypaint' 'qt5-multimedia' 'qt5-script' 'qt5-svg' 'superlu')
 makedepends=('boost' 'boost-libs' 'cmake' 'qt5-tools')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/opentoonz/opentoonz/archive/v${pkgver}.tar.gz"
-  "${pkgname}-build.patch::https://github.com/opentoonz/opentoonz/commit/adae1528d6f580d56b5499c97b30acfb84af4390.patch"
 )
 sha256sums=(
-  'a5dd0286a58017a086a3533016b9b4f54ada25a230c62de63b995bc04d0cd5a8'
-  '9b8b4a68d3af0941ed83e655b68cf25037fedff24a53e3ae224b7f56337ab6f2'
+  '176caca191bf2747964ecaf8cbb6be6a738fd04b464a2ba182b5aaf96ccaefa9'
 )
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch --forward --strip=1 --input="${srcdir}/${pkgname}-build.patch"
-}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/thirdparty/tiff-4.0.3/"
