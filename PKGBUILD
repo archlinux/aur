@@ -3,7 +3,7 @@
 
 pkgname=btrustbiss
 pkgver=2.18
-pkgrel=3
+pkgrel=4
 pkgdesc="B-Trust browser independent signing service."
 arch=('any')
 url="https://www.b-trust.org"
@@ -35,7 +35,7 @@ package(){
     install -dm644 "$pkgdir" "$pkgdir"/$pkgname
 
     # edit btrust_biss file
-    sed -i 's|/x86_64-linux-gnu||g' '/usr/bin/btrust_biss'
+    sed -i 's|/x86_64-linux-gnu||g' '"$pkgdir"/usr/bin/btrust_biss'
 
     # starting and enable services
     systemctl enable pcscd
