@@ -1,0 +1,18 @@
+pkgbase = manjaro_japanese_input
+	pkgdesc = Manjaro日本語入力/Manjaro Japanese Input
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/amigojapan/Manjaro_Japanese_Input
+	install = manjaro_japanese_input.install
+	arch = any
+	license = GPL
+	depends = fcitx-mozc
+	depends = fcitx-gtk2
+	depends = fcitx-gtk3
+	source = manjaro_japanese_input-1.tar.gz
+	source = manjaro_japanese_input-1.patch
+	md5sums = 54e8f8c7a99853b3427ae136036316f7
+	md5sums = d41d8cd98f00b204e9800998ecf8427e
+
+pkgname = manjaro_japanese_input
+

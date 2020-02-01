@@ -1,0 +1,22 @@
+post_install() {
+	echo "Post install setup..."
+	for homedir in /home/*
+	do
+		printf "#appended by Manjaro Japanese input\n" >>"$homedir"/.xprofile;
+		printf "export LANG=\"ja_JP.UTF-8\"\n" >>"$homedir"/.xprofile;
+		printf "export XMODIFIERS=\"@im=fcitx\"\n" >>"$homedir"/.xprofile;
+		printf "export XMODIFIER=\"@im=fcitx\"\n" >>"$homedir"/.xprofile;
+		printf "export GTK_IM_MODULE=fcitx\n" >>"$homedir"/.xprofile;
+		printf "export QT_IM_MODULE=fcitx\n" >>"$homedir"/.xprofile;
+		printf "export DefaultIMModule=fcitx\n" >>"$homedir"/.xprofile;
+		printf "# appended by Manjaro Japanese input\n" >>"$homedir"/.bashrc;
+		printf "export GTK_IM_MODULE=fcitx\n" >>"$homedir"/.bashrc;
+		printf "export XMODIFIERS=@im=fcitx\n" >>"$homedir"/.bashrc;
+		printf "export QT_IM_MODULE=fcitx\n" >>"$homedir"/.bashrc;
+	done
+	echo "Finished, please log out and log back in..."
+	echo "インストール完了一旦ログアウトして下さい..."
+}
+post_upgrade() {
+    post_install $1
+}
