@@ -3,11 +3,12 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
 
-pkgname=buildbot
+pkgbase=buildbot
+pkgname=(buildbot buildbot-docs)
 pkgdesc='The Continuous Integration Framework'
 pkgver=2.6.0
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -18,30 +19,32 @@ checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
               python-mock python-moto python-parameterized
               python-buildbot-pkg=$pkgver buildbot-worker=$pkgver python-buildbot-www=$pkgver
               openssh git)
-makedepends=(python-setuptools git)
-optdepends=(
-  'python-boto3: for AWS EC2 latent worker'
-  'python-lz4: to compress logs using lz4'
-  'python-treq: for using HTTP requests as steps'
-  'python-txrequests: for using HTTP requests as steps'
-  'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
-  'python-docker: for Docker latent worker'
-  'pass: to use SecretInPass provider'
-  'vault: to use HashiCorpVaultSecretProvider provider'
-)
+makedepends=(python-setuptools git python-sphinx-jinja python-sphinxcontrib-blockdiag)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
-        "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit")
+        "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
+        "pygments-2.5.diff")
 sha256sums=('0ac835b58db309bebcf00fa77687385551833b3dac1c66aa671d271776050c19'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '01cb9351a05cf2523e9c6c14561b2024508798902258d3b3f5caa9a6486bfc82')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
 )
 
+prepare() {
+  cd buildbot-$pkgver
+  patch -Np1 -i ../pygments-2.5.diff
+}
+
 build() {
-  cd buildbot-$pkgver/master
+  cd buildbot-$pkgver
+
+  pushd master
   python setup.py build
+  popd
+
+  make docs
 }
 
 check() {
@@ -58,9 +61,30 @@ check() {
   TZ=UTC trial3 --rterrors buildbot
 }
 
-package() {
+package_buildbot() {
+  optdepends=(
+    'python-boto3: for AWS EC2 latent worker'
+    'python-lz4: to compress logs using lz4'
+    'python-treq: for using HTTP requests as steps'
+    'python-txrequests: for using HTTP requests as steps'
+    'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
+    'python-docker: for Docker latent worker'
+    'pass: to use SecretInPass provider'
+    'vault: to use HashiCorpVaultSecretProvider provider'
+  )
+
   cd buildbot-$pkgver/master
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 "$srcdir"/buildbot-contrib/master/contrib/systemd/buildbot@.service \
     -t "$pkgdir"/usr/lib/systemd/system/
+}
+
+package_buildbot-docs() {
+  depends=()
+
+  cd buildbot-$pkgver/master/docs
+  install -Ddm755 "$pkgdir"/usr/share/doc/buildbot
+  for kind in html singlehtml ; do
+    cp -dr --no-preserve=ownership _build/$kind "$pkgdir"/usr/share/doc/buildbot/$kind
+  done
 }

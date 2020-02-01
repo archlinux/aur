@@ -1,0 +1,39 @@
+diff --git a/master/docs/manual/configuration/schedulers.rst b/master/docs/manual/configuration/schedulers.rst
+index d4b667afe..51bd25321 100644
+--- a/master/docs/manual/configuration/schedulers.rst
++++ b/master/docs/manual/configuration/schedulers.rst
+@@ -678,7 +678,7 @@ This scheduler will perform a build each Monday morning at 6:23am and again at 8
+ 
+     c['schedulers'].append(
+         schedulers.Nightly(name='BeforeWork',
+-                           branch=`default`,
++                           branch='default',
+                            builderNames=['builder1'],
+                            dayOfWeek=0, hour=[6,8], minute=23,
+                            onlyIfChanged=True))
+diff --git a/master/docs/manual/customization.rst b/master/docs/manual/customization.rst
+index df0b14554..0ac854733 100644
+--- a/master/docs/manual/customization.rst
++++ b/master/docs/manual/customization.rst
+@@ -1252,7 +1252,7 @@ Then you need a ``templates/mydashboard.html`` file near your ``master.cfg``.
+ This template is a standard Jinja_ template which is the default templating engine of Flask_.
+ 
+ .. literalinclude:: mydashboard.html
+-   :language: guess
++   :language: html+jinja
+ 
+ 
+ .. _Flask: http://flask.pocoo.org/
+diff --git a/smokes/templates/mydashboard.html b/smokes/templates/mydashboard.html
+index 75a1c02a1..ec568a314 100644
+--- a/smokes/templates/mydashboard.html
++++ b/smokes/templates/mydashboard.html
+@@ -2,7 +2,7 @@
+     <style>
+     /* only modify th from this dashboard! */
+     .mydashboard table th {
+-        font-size 24pt;
++        font-size: 24pt;
+     }
+     </style>
+     <!-- Create a table of builds organised by builders in columns -->
