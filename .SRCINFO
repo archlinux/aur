@@ -1,22 +1,21 @@
 pkgbase = hexchat-python2
-	pkgdesc = A popular and easy to use graphical IRC (chat) client, with python2 support
-	pkgver = 2.12.4
+	pkgdesc = A popular and easy to use graphical IRC (chat) client, with python2 support.
+	pkgver = 2.14.3
 	pkgrel = 1
 	url = https://hexchat.github.io/
-	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	makedepends = intltool
 	makedepends = iso-codes
 	makedepends = lua
+	makedepends = meson
 	makedepends = perl
 	makedepends = python2
-	makedepends = autoconf-archive
 	depends = dbus-glib
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
 	depends = glib2
-	depends = glibc
 	depends = gtk2
 	depends = libcanberra
 	depends = libnotify
@@ -28,13 +27,12 @@ pkgbase = hexchat-python2
 	optdepends = iso-codes: Display language names instead of codes
 	optdepends = lua: Lua plugin
 	optdepends = perl: Perl plugin
-	optdepends = python: Python plugin
-	provides = hexchat
+	optdepends = python2: Python plugin
 	conflicts = hexchat
 	conflicts = hexchat-git
 	conflicts = hexchat-lua-git
-	source = https://dl.hexchat.net/hexchat/hexchat-2.12.4.tar.xz
-	sha256sums = fa35913158bbc7d0d99de79371b6df3e8d21802f1d2c7c92f0e5db694acf2c3a
+	source = git+https://github.com/hexchat/hexchat.git#tag=v2.14.3
+	sha256sums = SKIP
 
 pkgname = hexchat-python2
 

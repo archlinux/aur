@@ -1,42 +1,36 @@
 # Maintainer: Emanuel Serpa <emanuelserpa@alu.ufc.br>
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: TingPing <tingping@tingping.se>
-
 pkgname=hexchat-python2
-pkgver=2.12.4
+pkgver=2.14.3
 pkgrel=1
-pkgdesc='A popular and easy to use graphical IRC (chat) client, with python2 support'
-arch=('i686' 'x86_64')
+pkgdesc='A popular and easy to use graphical IRC (chat) client, with python2 support.'
+arch=('x86_64')
 url='https://hexchat.github.io/'
 license=('GPL')
-provides=('hexchat')
 conflicts=('hexchat' 'hexchat-git' 'hexchat-lua-git')
-depends=('dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk2'
+depends=('dbus-glib' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk2'
          'libcanberra' 'libnotify' 'libproxy' 'openssl' 'pango' 'pciutils')
-makedepends=('intltool' 'iso-codes' 'lua' 'perl' 'python2' 'autoconf-archive')
+makedepends=('git' 'intltool' 'iso-codes' 'lua' 'meson' 'perl' 'python2')
 optdepends=('enchant: Spell check'
             'iso-codes: Display language names instead of codes'
             'lua: Lua plugin'
             'perl: Perl plugin'
-            'python: Python plugin')
-source=("https://dl.hexchat.net/hexchat/hexchat-${pkgver}.tar.xz")
-sha256sums=('fa35913158bbc7d0d99de79371b6df3e8d21802f1d2c7c92f0e5db694acf2c3a')
-
+            'python2: Python plugin')
+source=("git+https://github.com/hexchat/hexchat.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd hexchat-${pkgver}
-
-  ./configure \
-    --prefix='/usr' \
-    --enable-python='python2' \
-    --enable-textfe
-  make
+  arch-meson hexchat build \
+    -Dwith-lua='lua' \
+    -Dwith-text='true' \
+    -Dwith-python='python2'
+  ninja -C build
 }
 
 package() {
-  cd hexchat-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
+  mkdir -p ${pkgdir}/usr/lib/hexchat/plugins
+  install -m644 ${srcdir}/build/plugins/python/python.so  ${pkgdir}/usr/lib/hexchat/plugins/python2.so
 }
 
-# vim: ts=2 sw=2 et:
+# vim: ts=2 sw=2 et
