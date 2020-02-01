@@ -1,0 +1,17 @@
+post_install() {
+  cat << EOF
+
+Installing the games
+--------------------
+	1. Install the game(s) (eg using wine or Unshield)
+	2. Copy /etc/gemrb/GemRB.cfg.sample to ~/.gemrb/gemrb.cfg or to /etc/gemrb/gemrb.cfg
+	3. Edit gemrb.cfg, mainly to set up the path to the game's data files. It is crucial to get this right.
+	4. Now You can start the game by executing "gemrb" at the command line prompt
+
+EOF
+}
+
+post_remove() {
+  echo "Don't forget to remove game data files."
+}
+
