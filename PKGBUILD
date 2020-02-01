@@ -5,7 +5,7 @@ provides=('mfcoin' 'mfcoin-daemon')
 conflicts=('mfcoin-git' 'mfcoin')
 pkgdesc="MFCoin is a digital currency and blockchain service platform."
 arch=('x86_64')
-depends=("libevent>=2.1.8" "qt5-base" "dbus>=1.10.14" "miniupnpc>=2.0.20170509" "expat>=2.2.0" "freetype2>=2.7.1" "protobuf" "libdb-4.8")
+depends=("qt5-base")
 url="https://mfcoin.net/"
 license=('GPL3')
 

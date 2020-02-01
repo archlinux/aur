@@ -5,14 +5,7 @@ pkgbase = mfcoin-bin
 	url = https://mfcoin.net/
 	arch = x86_64
 	license = GPL3
-	depends = libevent>=2.1.8
 	depends = qt5-base
-	depends = dbus>=1.10.14
-	depends = miniupnpc>=2.0.20170509
-	depends = expat>=2.2.0
-	depends = freetype2>=2.7.1
-	depends = protobuf
-	depends = libdb-4.8
 	provides = mfcoin
 	provides = mfcoin-daemon
 	conflicts = mfcoin-git
