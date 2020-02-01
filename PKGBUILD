@@ -7,16 +7,16 @@
 
 pkgname=lib32-libxp
 pkgver=1.0.3
-pkgrel=1
+pkgrel=1.30
 pkgdesc="X11 X Print Library (32-bit)"
 arch=(x86_64)
 url=https://xorg.freedesktop.org/
 license=(GPL)
 depends=(lib32-libxext)
 
-_pkgrel32=2.2
+_pkgrel32=3.0
 source=(http://pool.mirror.archlinux32.org/i686/extra/${pkgname/lib32-/}-$pkgver-$_pkgrel32-i686.pkg.tar.xz{,.sig})
-sha256sums=('dd1656f29e0ace91dc1846d51d3f47b83aeeb08ba94335929a14e3e71fdb8b37'
+sha256sums=('06a7d4a125d98334258e7be4d79544f1b24276d2e1cdbf3caddf76a42f0cdd59'
             'SKIP')
 validpgpkeys=(16194A82231E9EF823562181C8E8F5A0AF9BA7E7) # 'Andreas Bauman'
 
