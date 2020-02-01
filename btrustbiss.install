@@ -11,6 +11,8 @@ pre_install() {
 post_install() {
     #!/bin/sh
     #set -e
+    systemctl enable pcscd
+    systemctl start pcscd 
     btrust_biss
     return 0
 }

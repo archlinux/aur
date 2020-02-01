@@ -35,9 +35,6 @@ package(){
     install -dm644 "$pkgdir" "$pkgdir"/$pkgname
 
     # edit btrust_biss file
-    sed -i 's|/x86_64-linux-gnu||g' '"$pkgdir"/usr/bin/btrust_biss'
-
-    # starting and enable services
-    systemctl enable pcscd
-    systemctl start pcscd   	
+    sed -i "s|/x86_64-linux-gnu||g" ""$pkgdir"/usr/bin/btrust_biss"
+	
 }
