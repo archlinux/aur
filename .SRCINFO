@@ -1,0 +1,22 @@
+pkgbase = ecodms-client
+	pkgdesc = Document Management Software
+	pkgver = 18.09.2
+	pkgrel = 1
+	url = http://www.ecodms.de/index.php/de/
+	install = ecodms-client.install
+	arch = x86_64
+	license = custom
+	depends = bash
+	depends = libappindicator-gtk2
+	depends = qt5-webengine
+	depends = qt5-svg
+	depends = qt5-x11extras
+	depends = libpng12
+	depends = pcre
+	depends = freeimage
+	options = !strip
+	source_x86_64 = ecodmsclient-18.09.2_amd64.deb::https://www.ecodms.de/ecodms_180964/buster/ecodmsclient-18.09-2_amd64.deb
+	md5sums_x86_64 = 624773b00587c5519fdcfcb87c1c6b33
+
+pkgname = ecodms-client
+
