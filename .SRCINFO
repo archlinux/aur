@@ -1,10 +1,10 @@
 pkgbase = azeroth-core
 	pkgdesc = AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore
 	pkgver = 3.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.azerothcore.org
 	arch = any
 	license = AGPL3
-	source = https://github.com/azerothcore/azerothcore-wotlk/archive/master.zip
+	source = git+https://github.com/azerothcore/azerothcore-wotlk.git
 
 pkgname = azeroth-core
