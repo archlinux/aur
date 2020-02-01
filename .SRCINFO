@@ -1,15 +1,15 @@
 pkgbase = sage-data-odlyzko_zeta
 	pkgdesc = Table of zeros of the Riemann zeta function for SageMath
 	pkgver = 20061209
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sagemath.org
 	arch = any
 	license = GPL
 	makedepends = sagemath
 	source = http://mirrors.mit.edu/sage/spkg/upstream/database_odlyzko_zeta/database_odlyzko_zeta-20061209.tar.bz2
 	source = spkg-install
-	md5sums = c93f63760540d5a787728a7a89ca2d9c
-	md5sums = c1c5c4b15ea6a727aeeed9e389ae3311
+	sha256sums = 8919f01992718b9bf5c0602dbf16dd9d6f58b141b25f67f5cfd59f6cd0f9a0d4
+	sha256sums = dc9046854aaed9458d370bd675821ea9871e6b55f5542470be3d1b4c763f3c53
 
 pkgname = sage-data-odlyzko_zeta
 
