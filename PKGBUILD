@@ -1,5 +1,5 @@
 pkgname=linvst-stable
-pkgver=2.5
+pkgver=2.8
 pkgrel=1
 provides=('linvst')
 conflicts=('linvst')
@@ -14,8 +14,7 @@ install="linvst-stable.install"
 _pkgname=LinVst
 
 source=("https://github.com/osxmidi/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e4c55be6239c55be864b8a88ffb6307588c05d9e0d477694227d521f0fb69816')
-
+sha256sums=('fc60414454ba2af7aafeece1639fb35fce6bf27a4df7a432b2912ecfbc9405b5')
 
 build() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -27,8 +26,11 @@ build() {
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/share/linvst"  install
+	make -f Makefile-embed-6432 DESTDIR="${pkgdir}" VST_DIR="${pkgdir}/usr/share/linvst" install
 	install -m 755 "convert/linvstconvert" "${pkgdir}/usr/bin/"
 	install -m 755 "convert/linvstconverttree" "${pkgdir}/usr/bin/"
-	install -m 755 "convert/pylinvstconvert" "${pkgdir}/usr/bin/"
+	install -m 755 "convert/convert-cli" "${pkgdir}/usr/bin/linvstconvert-cli"
+	install -m 755 "convert/Python-script/linvstconvert-py" "${pkgdir}/usr/bin/"
+	cd "${pkgdir}/usr/bin/"
+	ln -s "../share/linvst/linvst.so"
 }
