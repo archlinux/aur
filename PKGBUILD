@@ -17,6 +17,7 @@ depends=(
   gtk3
   libcanberra
   libgee
+  libgit2-glib
   granite-git
   desktop-file-utils
   libnotify
