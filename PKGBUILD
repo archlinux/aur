@@ -29,7 +29,7 @@ depends=('nginx'
          'python-psutil'
          'python-ldap'
          'python-lxml'
-         'python-orderedmultidict'
+         'python-ordered-set'
          'python-numpy'
          'ttf-font-awesome-4'
          'websockify')
