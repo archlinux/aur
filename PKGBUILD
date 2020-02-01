@@ -11,9 +11,9 @@ source_i686=("https://github.com/hybridgroup/gort/releases/download/v${pkgver}/g
 source_x86_64=("https://github.com/hybridgroup/gort/releases/download/v${pkgver}/gort_${pkgver}_linux_amd64.tar.gz")
 source_arm=("https://github.com/hybridgroup/gort/releases/download/v${pkgver}/gort_${pkgver}_linux_arm.tar.gz")
 # update with updpkgsums
-md5sums_i686=('3f2b94f7fac1ad611ac492956bf49cea')
-md5sums_x86_64=('8d462a5b6c425064320223a88bc47812')
-md5sums_arm=('d8b791b0717fbb18ef618ceed9f90ba7')
+md5sums_i686=('d3a22208c7bc1fea8ff12f66e4e8935e')
+md5sums_x86_64=('f79015e1577abbb45feb36f53be9268e')
+md5sums_arm=('26fb4e0126763784bafa708c2c77c641')
 
 package() {
 	cd $(find . -type d -name "gort*")
