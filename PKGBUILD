@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgbase=python2-easyprocess
 pkgname=('python2-easyprocess' 'python-easyprocess-doc')
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="EasyProcess - an easy to use python subprocess interface."
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 makedepends=('python2-setuptools' 'python2-sphinx')
 #checkdepends=('python2-pytest' 'python2-nose' 'python2-pyvirtualdisplay')
 source=("https://files.pythonhosted.org/packages/source/E/EasyProcess/EasyProcess-${pkgver}.tar.gz")
-md5sums=('a1008fc7b2cb69ff2f48a5fae201c24d')
+md5sums=('1bc3b3ee232df8302e43f400c4d6d505')
 
 build() {
     cd ${srcdir}/EasyProcess-${pkgver}
