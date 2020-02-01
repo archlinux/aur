@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenOSRS Launcher
+GenericName=RuneLite OpenOSRS
+Comment=Open source Old School RuneScape client.
+Exec=openosrs-launcher
+Icon=openosrs-launcher
+Terminal=false
+Type=Application
+Categories=Game;
