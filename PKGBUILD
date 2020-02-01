@@ -18,7 +18,7 @@ build() {
 
   mkdir -p build
   cd build
-  qmake-qt5 -r ..
+  qmake-qt5 ..
   make
 }
 
