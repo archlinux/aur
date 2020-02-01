@@ -15,6 +15,7 @@ build() {
 }
 
 package() {
-  install -Dm750 -gpower "$srcdir/mem-suspend" "$pkgdir/usr/bin/mem-suspend"
+  cd "$srcdir"
+  install -Dm750 -gpower mem-suspend "$pkgdir/usr/bin/mem-suspend"
   chmod u+s "$pkgdir/usr/bin/mem-suspend"
 }
