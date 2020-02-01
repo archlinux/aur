@@ -20,7 +20,7 @@ from the begin of the file until you see the line with comment
 - Bump `pkgver` and `pkgrel` at [PKGBUILD](PKGBUILD#L4) accordingly
 (see https://wiki.archlinux.org/index.php/PKGBUILD#Version).
 
-- Run `makepkg --install --force` to check whether the installation works
+- Run `rm -rf pkg/ src/ && makepkg --install --force` to check whether the installation works
 successfully.
 
 - Run `makepkg --printsrcinfo > .SRCINFO` to update [.SRCINFO](.SRCINFO).
