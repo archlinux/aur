@@ -2,8 +2,8 @@
 
 pkgname=otf-lotion-git
 _pkgname=lotion-dist
-pkgver=r4.0e5443d
-pkgrel=1
+pkgver=r10.0af988d
+pkgrel=2
 pkgdesc="A free monospace font for programming!"
 arch=('any')
 url="https://font.nina.coffee/"
@@ -11,6 +11,7 @@ license=('custom')
 provides=('otf-lotion')
 source=(git+https://gitlab.com/nefertiti/$_pkgname.git)
 md5sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
