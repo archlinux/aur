@@ -3,8 +3,8 @@
 pkgbase=linux-nitrous-headers
 pkgname=linux-nitrous-headers
 pkgver=5.5.1
-pkgrel=2
-_tar_pkgrel=2
+pkgrel=3
+_tar_pkgrel=3
 pkgdesc="Headers for linux-nitrous"
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
@@ -16,7 +16,7 @@ conflicts=('linux-nitrous-git-headers')
 makedepends=('tar')
 options=('!strip')
 source=("https://github.com/xdevs23/linux-nitrous/releases/download/v$pkgver-$_tar_pkgrel/linux-nitrous-git-headers-$pkgver-$_tar_pkgrel-x86_64.pkg.tar.xz")
-sha256sums=('957f99ec0b9ffad4dd3fe6f206d5c5b76c945ec6fd4576468af71742cbb16ebe')
+sha256sums=('46d140705f26d3b85c9ed2e431d2fdc37189994e07dedf88f16b9f32eedca2e0')
 
 build() {
     echo "No need to build anything"
