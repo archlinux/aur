@@ -2,7 +2,7 @@
 
 pkgname=openosrs-launcher-appimage
 pkgver=2.1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source client for Old School RuneScape with more functionality and less restrictions. (AppImage Launcher)'
 arch=('x86_64')
 license=('BSD')

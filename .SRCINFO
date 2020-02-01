@@ -1,7 +1,7 @@
 pkgbase = openosrs-launcher-appimage
 	pkgdesc = Open-source client for Old School RuneScape with more functionality and less restrictions. (AppImage Launcher)
 	pkgver = 2.1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/open-osrs/launcher
 	arch = x86_64
 	license = BSD
