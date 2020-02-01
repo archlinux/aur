@@ -1,0 +1,24 @@
+pkgbase = pygobject37
+	pkgdesc = Python Bindings for GLib/GObject/GIO/GTK+
+	pkgver = 3.34.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/PyGObject
+	arch = x86_64
+	license = LGPL
+	makedepends = python-cairo
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	depends = python37
+	depends = gobject-introspection-runtime
+	optdepends = cairo: Cairo bindings
+	source = git+https://gitlab.gnome.org/GNOME/pygobject.git#commit=fae47858d24e9fbd6745c094db0064c5506de5cb
+	sha256sums = SKIP
+
+pkgname = python37-gobject
+	depends = pygobject37-devel=3.34.0
+
+pkgname = pygobject37-devel
+	pkgdesc = Common development files for pygobject
+	optdepends = 
+
