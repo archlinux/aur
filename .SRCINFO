@@ -1,7 +1,7 @@
 pkgbase = ruby-hocon
 	pkgdesc = A collection of text algorithms: Levenshtein, Soundex, Metaphone, Double Metaphone, Porter Stemming
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/puppetlabs/ruby-hocon
 	arch = any
 	license = Apache
