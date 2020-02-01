@@ -22,7 +22,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
-
   local _pkg _rc _conf
   for _pkg in */*; do
     pushd "$_pkg"
