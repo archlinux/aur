@@ -2,8 +2,8 @@
 # Contributor: Black_Codec <orso.f.regna@gmail.com>
 
 pkgname=guacamole-client
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Java and Maven components of Guacamole"
 arch=('any')
 url="http://guacamole.sourceforge.net/"
@@ -15,7 +15,7 @@ source=("http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/${p
         "guacamole.properties")
 install=guacamole-client.install
 
-md5sums=('76970caf9b88882d44e298698cbb72fe'
+md5sums=('58194da022f49a5033c3f8f118d1d2e5'
          '1f3ec0a32cc3c6b4f7aeb8a3b2e7531b')
 
 backup=('usr/share/tomcat8/.guacamole/guacamole.properties' 'usr/share/tomcat8/.guacamole/user-mapping.xml')
