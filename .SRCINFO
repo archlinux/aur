@@ -1,7 +1,7 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
 	pkgver = 0.82.26
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dosbox-x.com
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = dosbox-x
 	depends = mesa
 	depends = ffmpeg
 	conflicts = dosbox-x-git
-	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.86.tar.gz
+	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v0.82.26.tar.gz
 	source = dosbox-x.png
 	source = dosbox-x.desktop
 	sha256sums = cf6f6054f191d275d72a67fc664226b56444777bf6df464e2a9977339ebcf6f0
