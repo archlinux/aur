@@ -1,12 +1,11 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=libde265-git
-_srcname=libde265
-pkgver=1.0.3.r31.g4488ae0c
+pkgver=1.0.5.r0.g19db0e8f
 pkgrel=1
 pkgdesc='Open H.265 video codec implementation (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/strukturag/libde265/'
 license=('LGPL3')
 depends=('gcc-libs')
@@ -20,31 +19,25 @@ source=('git+https://github.com/strukturag/libde265.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$_srcname"
-    
+    cd libde265
     ./autogen.sh
 }
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
+    cd libde265
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
-    
+    cd libde265
     ./configure \
         --prefix='/usr' \
-        --enable-static=no \
+        --enable-static='no' \
         --enable-sse
-        
     make
 }
 
 package() {
-    cd "$_srcname"
-    
-    make DESTDIR="$pkgdir" install
+    make -C libde265 DESTDIR="$pkgdir" install
+    mv "${pkgdir}/usr/bin/"{tests,de265-tests}
 }

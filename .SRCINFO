@@ -1,9 +1,8 @@
 pkgbase = libde265-git
 	pkgdesc = Open H.265 video codec implementation (git version)
-	pkgver = 1.0.3.r31.g4488ae0c
+	pkgver = 1.0.5.r0.g19db0e8f
 	pkgrel = 1
 	url = https://github.com/strukturag/libde265/
-	arch = i686
 	arch = x86_64
 	license = LGPL3
 	makedepends = git
