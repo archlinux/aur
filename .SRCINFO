@@ -1,6 +1,6 @@
 pkgbase = airvpn-beta-bin
 	pkgdesc = AirVPN client "Eddie" based on OpenVPN, beta version.
-	pkgver = 2.18.5
+	pkgver = 2.18.7
 	pkgrel = 1
 	url = https://eddie.website
 	install = airvpn.install
@@ -23,9 +23,9 @@ pkgbase = airvpn-beta-bin
 	conflicts = airvpn-bin
 	conflicts = airvpn-git
 	conflicts = eddie-ui-git
-	source_x86_64 = eddie-ui_2.18.5_linux_x64_arch.tar.xz::https://airvpn.org/mirrors/eddie.website/download/?platform=linux&arch=x64&ui=ui&format=arch.tar.xz&version=experimental
-	sha256sums_x86_64 = 2ed0b4fdda930de0f39fada76230eeff1bc6e305ef349ff095ea32f8e7de42dc
-	sha512sums_x86_64 = 445b112f414084cea386827d8e1b7f3b72a92e811cb947c760c8035d5c6cb6a291c5462bf325000f8f23b28992b51db7a7119dfaac326943fe40dcc2108401a5
+	source_x86_64 = eddie-ui_2.18.7_linux_x64_arch.tar.xz::https://airvpn.org/mirrors/eddie.website/download/?platform=linux&arch=x64&ui=ui&format=arch.tar.xz&version=experimental
+	sha256sums_x86_64 = 8b307691e5b3d6f11f0f44b30c07c66cef2ff7ef691ebb4adcc159b2620b12bf
+	sha512sums_x86_64 = 8f7be8a843451e024704fcd43bbc14f94516bdcc2be453d91b94174c10c2af7296af4131d5081371c61969655d1cd9eb802a69c1b280f0ca028a421ca965323c
 
 pkgname = airvpn-beta-bin
 
