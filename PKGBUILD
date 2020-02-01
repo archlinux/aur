@@ -1,15 +1,14 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 
-_srcname=libheif
 pkgname=libheif-git
-pkgver=1.3.2.r142.g791fa2d
+pkgver=1.6.2.r0.g3824054
 pkgrel=1
 pkgdesc='HEIF file format decoder and encoder (git version)'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/strukturag/libheif/'
 license=('GPL3')
-depends=('libde265' 'x265')
-makedepends=('git' 'x265' 'libjpeg' 'libpng' 'libde265')
+depends=('libde265' 'x265' 'gdk-pixbuf2' 'shared-mime-info')
+makedepends=('git' 'libjpeg' 'libpng')
 optdepends=('libjpeg: for heif-convert and heif-enc'
             'libpng: for heif-convert and heif-enc')
 provides=('libheif')
@@ -18,31 +17,23 @@ source=('git+https://github.com/strukturag/libheif.git')
 sha256sums=('SKIP')
 
 prepare() {
-    cd "$_srcname"
-    
+    cd libheif
     ./autogen.sh
 }
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
+    cd libheif
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-    cd "$_srcname"
-    
+    cd libheif
     ./configure \
         --prefix='/usr' \
-        --enable-shared='yes' \
         --enable-static='no'
-        
     make
 }
 
 package() {
-    cd "$_srcname"
-    
-    make DESTDIR="$pkgdir" install
+    make -C libheif DESTDIR="$pkgdir" install
 }
