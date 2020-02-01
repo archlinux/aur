@@ -25,8 +25,8 @@ pkgbase = lazyman-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 96d5ba5fd23360767fb365b46c0bfc3e
-	md5sums = 16522ba6bdc10dfa827e0d8afbfd3c2e
-	md5sums = b76d76bc5941418f8f3048b941fa8228
+	md5sums = cae201808fa8b54bfb89333b5f05e3af
+	md5sums = b387dc6c2bdf54718d6d2e48f9f37e3d
 	md5sums = 41aebb968e8b6856d1b73cabd6a8c5d2
 	md5sums = 1b259947cc8e14cd1b0bcad4d05094d9
 

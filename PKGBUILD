@@ -24,8 +24,8 @@ source=('git+https://github.com/StevensNJD4/LazyMan.git'
 md5sums=('SKIP'
          'SKIP'
          '96d5ba5fd23360767fb365b46c0bfc3e'
-         '16522ba6bdc10dfa827e0d8afbfd3c2e'
-         'b76d76bc5941418f8f3048b941fa8228'
+         'cae201808fa8b54bfb89333b5f05e3af'
+         'b387dc6c2bdf54718d6d2e48f9f37e3d'
          '41aebb968e8b6856d1b73cabd6a8c5d2'
          '1b259947cc8e14cd1b0bcad4d05094d9')
 
@@ -38,8 +38,13 @@ prepare() {
     cd LazyMan
     patch -Np1 -i ../update-to-java-13.patch
 
+    # shorten path to the proxy
     sed -i src/Objects/Proxy.java \
         -e 's|mitm = "linux".*|mitm = "mlbamproxy";|'
+
+    # ant wont do this itself without netbeans
+    printf "Manifest-Version: 1.0\nClass-Path: lib/gson-2.7.jar lib/jcalendar-1.4.jar lib/AppleJavaExtens
+ ions-1.4.jar" >manifest.mf
 }
 
 build() {
@@ -61,7 +66,6 @@ package() {
     install -Dm644 dist/LazyMan.jar     "$pkgdir"/usr/share/java/lazyman/LazyMan.jar
     install -Dm644 src/lazyman/*.jar    "$pkgdir"/usr/share/java/lazyman/lib/
     install -Dm755 mlbamproxy           "$pkgdir"/usr/share/java/lazyman/mlbamproxy/mlbamproxy
-
     install -Dm755 ../lazyman.sh        "$pkgdir"/usr/bin/lazyman
     install -Dm644 ../lazyman.desktop   "$pkgdir"/usr/share/applications/lazyman.desktop
     install -Dm644 ../lazyman.png       "$pkgdir"/usr/share/icons/lazyman.png
