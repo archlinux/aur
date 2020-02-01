@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-coinmetis
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="COIN-OR autotools harness to build Metis (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-configure' 'wget')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/coin-or-tools/ThirdParty-Metis/archive/releases/$pkgver.tar.gz")
-sha256sums=('97bf0f8787c1a6491fd2de2a8053872d7786d00b29cb574c851c32cd9aae3673')
+sha256sums=('c75e66ec76b423e4c8c1ead3579fb2aa5fb7844f4efffdeae5b185df80420e3a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
