@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -14,6 +14,7 @@ optdepends=('fzf: for Fuzzy Finder integration'
             'fish: for fish completions')
 conflicts=('python-cheat' 'cheat-bash-git' 'cheat-git')
 replaces=('python-cheat')
+backup=('etc/cheat/conf.yml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cheat/cheat/archive/$pkgver.tar.gz"
         'conf.yml'
         'git+https://github.com/cheat/cheatsheets.git'
