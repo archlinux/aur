@@ -17,4 +17,4 @@ updpkgsums
 makepkg -si --noconfirm
 makepkg --printsrcinfo > .SRCINFO
 git add . || true
-git commit -m "Update to ${VERSION}" || true
+git commit --no-gpg-sign -m "Update to ${VERSION}" || true
