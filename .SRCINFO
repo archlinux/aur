@@ -1,7 +1,7 @@
 pkgbase = guacamole-server
 	pkgdesc = Guacamole proxy daemon
-	pkgver = 1.0.0
-	pkgrel = 3
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = http://guacamole.sourceforge.net/
 	install = guacamole-server.install
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = guacamole-server
 	license = GPL3
 	makedepends = libpulse
 	makedepends = libvorbis
-	makedepends = openssl-1.0
+	makedepends = openssl
 	makedepends = libssh
 	makedepends = libvncserver
 	makedepends = pango
@@ -22,19 +22,18 @@ pkgbase = guacamole-server
 	depends = libwebp
 	optdepends = libssh: for ssh protocol support
 	optdepends = libvncserver: for vnc protocol support
-	optdepends = freerdp-1.1.0: for rdp protocol support
+	optdepends = freerdp: for rdp protocol support
 	optdepends = libpulse: for pulseaudio support
 	optdepends = libtelnet: for telnet protocol support
 	optdepends = monospace: any monospace font such as terminus-font, ttf-inconsolata or ttf-fira-mono. Without it, SSH will not work
+	optdepends = libwebsocket: Support for Kubernetes
 	replaces = guacd
 	replaces = libguac
 	replaces = libguac-client-ssh
 	replaces = libguac-client-vnc
 	replaces = libguac-client-rdp
-	source = http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.0.0/source/guacamole-server-1.0.0.tar.gz
-	source = libavcodec.patch
-	md5sums = dc4a7775d8b676fa23c06e811d7a536d
-	md5sums = 6cf58f3148d0ea3f24b4fa362ca79807
+	source = http://apache.org/dyn/closer.cgi?action=download&filename=guacamole/1.1.0/source/guacamole-server-1.1.0.tar.gz
+	md5sums = ce4e8926f3c2e7d75c0d767a7cdce7f9
 
 pkgname = guacamole-server
 
