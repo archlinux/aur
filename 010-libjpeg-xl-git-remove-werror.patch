@@ -1,0 +1,14 @@
+diff -Naurp a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2020-01-31 23:36:37.000000000 +0000
++++ b/CMakeLists.txt	2020-02-01 00:08:32.046032049 +0000
+@@ -167,10 +167,6 @@ add_compile_options(
+   -Wall
+ )
+ 
+-if (NOT WIN32)
+-add_compile_options(-Werror)
+-endif ()
+-
+ include(GNUInstallDirs)
+ 
+ set(CMAKE_CXX_STANDARD 11)
