@@ -170,7 +170,7 @@ build() {
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches"
-  depends=(coreutils linux-firmware kmod mkinitcpio)
+  depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=('linux' 'linux-xanmod-git')
