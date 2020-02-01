@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=2.0.post27.r56.5e691bd
+pkgver=3.0.r14.g216940e
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
@@ -13,9 +13,11 @@ optdepends=('python-pystray: for Notification Auditor'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/srevinsaju/guiscrcpy.git'
-        "${pkgname%-git}.desktop")
+        "${pkgname%-git}.desktop"
+        "${pkgname%-git}.png")
 sha256sums=('SKIP'
-            'a97ede5e1f363df0b3960c7cfbfdff69e8c2b2c39ef0abc522d5ff5ecb04061b')
+            'a97ede5e1f363df0b3960c7cfbfdff69e8c2b2c39ef0abc522d5ff5ecb04061b'
+            '10c9a87f2d583f35b8a8b50f94ec30872fa99ba606e3fa8b063e72317953b8d4')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -32,6 +34,5 @@ package() {
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
 	install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
-	install -Dm644 "installers/linux/icons/${pkgname%-git}_logo.png" \
-		"$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -Dm644 "$srcdir/${pkgname%-git}.png" -t "$pkgdir/usr/share/pixmaps"
 }
