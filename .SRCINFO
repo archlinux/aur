@@ -18,6 +18,7 @@ pkgbase = pantheon-files-git
 	depends = gtk3
 	depends = libcanberra
 	depends = libgee
+	depends = libgit2-glib
 	depends = granite-git
 	depends = desktop-file-utils
 	depends = libnotify
