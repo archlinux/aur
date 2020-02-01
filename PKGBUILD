@@ -1,0 +1,17 @@
+# Maintainer: Evan LeClercq <eleclercq@tuta.io>
+
+pkgname=brother-mfc-j995dw-scan-driver
+pkgver=0.4.8
+pkgrel=1
+pkgdesc="Scan driver for Brother MFC-J995DW printer"
+arch=("i686" "x86_64")
+url="https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcj995dw_us"
+license=("EULA")
+groups=("base-devel")
+source=("https://download.brother.com/welcome/dlf006646/brscan4-0.4.8-1.i386.deb")
+md5sums=("0872dfbf75f9d2aab4f79c4731be1597")
+
+package() {
+	tar -xf data.tar.gz -C "${pkgdir}"
+}
+
