@@ -1,7 +1,7 @@
 pkgbase = php-sqlsrv
-	pkgdesc = Microsoft PDO Drivers for PHP for SQL Server
+	pkgdesc = Microsoft SQL Server Drivers for PHP.
 	pkgver = 5.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pecl.php.net/package/sqlsrv
 	arch = i686
 	arch = x86_64
