@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-mainline-bcachefs
-pkgver=v5.4.1_307_g00408c31cf7f
-pkgrel=2
+pkgver=v5.4.9_355_g4dce98c24758
+pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.4
 url="https://github.com/koverstreet/bcachefs"
@@ -95,7 +95,6 @@ source=(
     "git+$_repo_upstream"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    'https://raw.githubusercontent.com/Tk-Glitch/PKGBUILDS/master/linux53-tkg/linux53-tkg-patches/0007-v5.3-fsync.patch'
 )
 validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
@@ -104,7 +103,6 @@ validpgpkeys=(
 sha512sums=('SKIP'
             'SKIP'
             '4832046cb1b17c39ff00f8c5f95994ef1691c27e019c4d3e77f397df7e8e1ef3e124fc333217e1d40ad9200536b793836e8cdff78275b72d727816bb5e3703f3'
-            'cf692f6cb5a750dceaae83e6976363dd8611557868769e851da48cb572ae0ec6497e222f2fa8828126e2febf025fc8b64f5bccccbe25f7ac868e86c52d031a08'
 )
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -121,9 +119,6 @@ prepare() {
     export EDITOR=true
 
     git rebase $(git tag | grep -v rc | tail -n1)
-
-    patch -p1 -i ../0007-v5.3-fsync.patch
-
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
@@ -187,7 +182,7 @@ _package() {
     )
     provides=("$pkgbase=$pkgver")
 
-    cd linux 
+    cd linux
     local kernver="$(<version)"
     local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -338,4 +333,3 @@ for _p in "${pkgname[@]}"; do
         _package${_p#$pkgbase}
     }"
 done
-
