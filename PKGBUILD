@@ -57,7 +57,10 @@ pkgrel=1
 arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
-makedepends=(xmlto kmod inetutils bc libelf python-sphinx graphviz)
+makedepends=(
+  xmlto kmod inetutils bc libelf cpio
+  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+)
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
@@ -148,8 +151,9 @@ build() {
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches"
-  depends=(coreutils linux-firmware kmod mkinitcpio)
-  optdepends=('crda: to set the correct wireless channels of your country')
+  depends=(coreutils kmod initramfs)
+  optdepends=('crda: to set the correct wireless channels of your country'
+              'linux-firmware: firmware images needed for some devices')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
