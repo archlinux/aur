@@ -1,0 +1,29 @@
+pkgbase = python-pymantic
+	pkgdesc = Semantic Web and RDF library for Python
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/norcalrdf/pymantic/
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	depends = python-lxml
+	depends = python-pytz
+	depends = python-rdflib
+	depends = python-lark-parser
+	depends = python-pyld
+	depends = python-lepl
+	source = https://files.pythonhosted.org/packages/source/p/pymantic/pymantic-0.2.5.tar.gz
+	sha256sums = 119361a60d811aea6f57faf05f9aebc787e37244e3c8e9c922e9621b2a425dcf
+
+pkgname = python-pymantic
+	depends = python
+	depends = python-requests
+	depends = python-lxml
+	depends = python-pytz
+	depends = python-rdflib
+	depends = python-lark-parser
+	depends = python-pyld
+	depends = python-lepl
+
