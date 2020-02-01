@@ -4,28 +4,34 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgbase=buildbot
-pkgname=(buildbot buildbot-docs)
-pkgdesc='The Continuous Integration Framework'
+pkgname=(buildbot buildbot-docs
+         python-buildbot-www python-buildbot-waterfall-view
+         python-buildbot-console-view python-buildbot-grid-view
+         python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=2.6.0
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
-depends=(python-twisted python-jinja python-zope-interface
-         python-sqlalchemy-migrate python-dateutil python-txaio
-         python-autobahn python-pyjwt python-yaml)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
-              python-mock python-moto python-parameterized
-              python-buildbot-pkg=$pkgver buildbot-worker=$pkgver python-buildbot-www=$pkgver
-              openssh git)
-makedepends=(python-setuptools git python-sphinx-jinja python-sphinxcontrib-blockdiag)
+              python-moto python-parameterized
+              buildbot-worker=$pkgver
+              openssh chromium)
+makedepends=(python-twisted python-jinja python-zope-interface
+             python-sqlalchemy-migrate python-dateutil python-txaio
+             python-autobahn python-pyjwt python-yaml
+             python-setuptools python-mock
+             python-sphinx-jinja python-sphinxcontrib-blockdiag
+             git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
+        "https://github.com/yan12125/buildbot/commit/26af545b3f8cbf97f2335e61b08dcf30f447c17b.patch"
         "pygments-2.5.diff")
 sha256sums=('0ac835b58db309bebcf00fa77687385551833b3dac1c66aa671d271776050c19'
             'SKIP'
             'SKIP'
+            '4bf518b614aa208152fb88e39325a8f5b5a681ee91e9033728f2bb20a7704611'
             '01cb9351a05cf2523e9c6c14561b2024508798902258d3b3f5caa9a6486bfc82')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
@@ -35,42 +41,104 @@ validpgpkeys=(
 prepare() {
   cd buildbot-$pkgver
   patch -Np1 -i ../pygments-2.5.diff
+  patch -Np1 -i ../26af545b3f8cbf97f2335e61b08dcf30f447c17b.patch
+
+  # HACK: do not use virtualenv
+  sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
+
+  # HACK: Do not build JS again during install
+  # We take care about the command order manually
+  sed -i '/egg_info=EggInfoCommand/d' pkg/buildbot_pkg.py
+
+  sed -i '/buildbot_windows_service/d' master/setup.py
+  rm -v master/buildbot/scripts/windows_service.py
 }
 
 build() {
-  cd buildbot-$pkgver
+  export NODE_OPTIONS="--max-old-space-size=2048"
 
-  pushd master
+  site_packages_path=$(python -c 'import site; print(site.getsitepackages()[0])')
+
+  cd "$srcdir"/buildbot-$pkgver/pkg
+  python setup.py install --root="$srcdir"/tmp_install
+
+  #################### buildbot ####################
+  cd "$srcdir"/buildbot-$pkgver/master
   python setup.py build
-  popd
 
+  #################### buildbot-www ####################
+  cd "$srcdir"/buildbot-$pkgver
+
+  # HACK: use system packages instead of ones via pip
+  make PIP=/usr/bin/true frontend_deps
+
+  export PYTHONPATH="$srcdir"/tmp_install$site_packages_path
+  for module in base waterfall_view console_view grid_view wsgi_dashboards badges
+  do
+    cd "$srcdir"/buildbot-$pkgver/www/$module
+    python setup.py build
+  done
+
+  #################### buildbot-docs ####################
+  cd "$srcdir/buildbot-$pkgver"
   make docs
 }
 
 check() {
-  cd buildbot-$pkgver/master
+  # Install packages to a temp folder for tests
+  cd "$srcdir"/buildbot-$pkgver/master
 
   site_packages_path=$(python -c 'import site; print(site.getsitepackages()[0])')
 
-  python setup.py install --root="$srcdir"/tmp_install
+  python setup.py install --root="$srcdir"/tmp_install --skip-build
   # Copy files over for integration tests
   cp -v buildbot/test/integration/*.tgz "$srcdir"/tmp_install$site_packages_path/buildbot/test/integration/
 
+  cd "$srcdir"/buildbot-$pkgver/www/base
+  python setup.py install --root="$srcdir"/tmp_install --skip-build
+
+  # Run tests
   export PYTHONPATH="$srcdir"/tmp_install$site_packages_path
   export PATH="$PATH:$srcdir/tmp_install/usr/bin"
+
+  cd "$srcdir"/buildbot-$pkgver/master
   TZ=UTC trial3 --rterrors buildbot
+
+  for module in base waterfall_view console_view grid_view wsgi_dashboards
+  do
+    cd "$srcdir"/buildbot-$pkgver/www/$module
+    CHROME_BIN=/usr/bin/chromium yarn run test --browsers BBChromeHeadless
+  done
 }
 
 package_buildbot() {
+  pkgdesc='The Continuous Integration Framework'
+  depends=(python-twisted python-jinja python-zope-interface
+           python-sqlalchemy-migrate python-dateutil python-txaio
+           python-autobahn python-pyjwt python-yaml)
   optdepends=(
-    'python-boto3: for AWS EC2 latent worker'
-    'python-lz4: to compress logs using lz4'
-    'python-treq: for using HTTP requests as steps'
-    'python-txrequests: for using HTTP requests as steps'
+    # reporters
     'python-pyopenssl: to use SSL/TLS in mail or IRC notifiers'
-    'python-docker: for Docker latent worker'
+    # secrets
     'pass: to use SecretInPass provider'
     'vault: to use HashiCorpVaultSecretProvider provider'
+    # statistics
+    'python-influxdb: for using InfluxDB to store statistics'
+    # steps
+    'python-subunit: for SubunitShellCommand'
+    'python-treq: for using HTTP requests as steps'
+    'python-txrequests: for using HTTP requests as steps'
+    # workers
+    'buildbot-worker: for local worker'
+    'libvirt-python: for libvirt worker'
+    'python-boto3: for AWS EC2 latent worker'
+    'python-docker: for Docker latent worker'
+    'python-novaclient: for OpenStack latent worker'
+    # www
+    'python-ldap3: to authenticate users via LDAP'
+
+    # misc
+    'python-lz4: to compress logs using lz4'
   )
 
   cd buildbot-$pkgver/master
@@ -80,11 +148,69 @@ package_buildbot() {
 }
 
 package_buildbot-docs() {
-  depends=()
+  pkgdesc='Buildbot docs'
 
   cd buildbot-$pkgver/master/docs
   install -Ddm755 "$pkgdir"/usr/share/doc/buildbot
   for kind in html singlehtml ; do
     cp -dr --no-preserve=ownership _build/$kind "$pkgdir"/usr/share/doc/buildbot/$kind
   done
+}
+
+package_python-buildbot-www() {
+  pkgdesc='Buildbot UI'
+  depends=(python buildbot)
+  optdepends=(
+    'python-buildbot-waterfall-view'
+    'python-buildbot-console-view'
+    'python-buildbot-grid-view'
+    'python-buildbot-badges'
+  )
+
+  cd buildbot-$pkgver/www/base
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-waterfall-view() {
+  pkgdesc='Buildbot Waterfall View plugin'
+  depends=(python-buildbot-www)
+
+  cd buildbot-$pkgver/www/waterfall_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-console-view() {
+  pkgdesc='Buildbot Console View plugin'
+  depends=(python-buildbot-www)
+
+  cd buildbot-$pkgver/www/console_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-grid-view() {
+  pkgdesc='Buildbot Grid View plugin'
+  depends=(python-buildbot-www)
+
+  cd buildbot-$pkgver/www/grid_view
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-wsgi-dashboards() {
+  pkgdesc='Buildbot plugin to integrate flask or bottle dashboards to buildbot UI'
+  depends=(python-buildbot-www)
+
+  cd buildbot-$pkgver/www/wsgi_dashboards
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
+
+package_python-buildbot-badges() {
+  pkgdesc='Buildbot badges'
+  depends=(python-buildbot-www python-klein python-cairosvg python-cairocffi python-jinja)
+  # https://github.com/buildbot/buildbot/blob/v1.6.0/www/badges/buildbot_badges/__init__.py#L40
+  optdepends=(
+    'ttf-dejavu: the default font for rendering badges as PNGs'
+  )
+
+  cd buildbot-$pkgver/www/badges
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
