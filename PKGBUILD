@@ -3,7 +3,7 @@
 _gemname='puppet-resource_api'
 pkgname="ruby-${_gemname}"
 pkgver=1.8.11
-pkgrel=1
+pkgrel=2
 pkgdesc='This library provides a simple way to write new native resources for puppet.'
 arch=('any')
 url='https://github.com/puppetlabs/puppet-resource_api'
@@ -23,7 +23,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_gemname}-${pkgver}"
-  # tests currently don't work because of outdated dependencies
+  # tests currently don't work because of outdated and partially dependencies
   #rake test
 }
 
@@ -32,7 +32,8 @@ package() {
   local _gemdir="$(gem env gemdir)"
   gem install --verbose --ignore-dependencies --no-user-install --install-dir "${pkgdir}/${_gemdir}" --bindir "${pkgdir}/usr/bin" "${_gemname}-${pkgver}.gem"
 
-  install -Dm 644 NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 NOTICE LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm 644 CHANGELOG.md CONTRIBUTING.md HISTORY.md README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 
   rm -r "${pkgdir}/${_gemdir}/cache"
 }

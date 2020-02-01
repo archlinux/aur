@@ -1,7 +1,7 @@
 pkgbase = ruby-puppet-resource_api
 	pkgdesc = This library provides a simple way to write new native resources for puppet.
 	pkgver = 1.8.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/puppetlabs/puppet-resource_api
 	arch = any
 	license = Apache
