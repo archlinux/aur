@@ -1,0 +1,15 @@
+pkgbase = git-merge-changelog-git
+	pkgdesc = git merge driver for GNU style ChangeLog files.
+	pkgver = 0.1.r3232.gffcdc4580
+	pkgrel = 1
+	url = http://savannah.gnu.org/projects/gnulib
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = git
+	provides = git-merge-changelog=0.1.r3232.gffcdc4580
+	source = git://git.savannah.gnu.org/gnulib.git
+	sha256sums = SKIP
+
+pkgname = git-merge-changelog-git
+
