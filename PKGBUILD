@@ -3,7 +3,7 @@
 pkgname=t50
 _major=5
 _minor=8
-_build=5
+_build=7
 pkgver="v${_major}.${_minor}.${_build}"
 pkgrel=1
 pkgdesc="T50 (f.k.a. F22 Raptor) is a tool designed to perform 'Stress Testing'"
@@ -13,7 +13,7 @@ license=('GPLv2')
 provides=("t50")
 
 source=("${pkgname}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.zip")
-md5sums=('b06b07f04504a0c96b77362c9d33777a')
+md5sums=('b26531c3cdaaea484931d12f7e07aea7')
 
 build() {
   cd "${pkgname}-${pkgver}"
