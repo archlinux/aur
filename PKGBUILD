@@ -3,7 +3,7 @@
 pkgbase=layan-kde-git
 pkgname=(layan-kde-git kvantum-theme-layan-git)
 _pkgname=layan-kde
-pkgver=r14.dac89ef
+pkgver=r18.4dcc7e5
 pkgrel=1
 pkgdesc="A flat Design theme for KDE Plasma desktop"
 arch=(any)
@@ -12,6 +12,7 @@ license=(GPL3)
 options=(!strip)
 source=("git+${url}.git")
 sha256sums=('SKIP')
+makedepends=('git')
 
 pkgver() {
   cd "$srcdir/$_pkgname"

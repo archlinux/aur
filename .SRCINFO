@@ -1,10 +1,11 @@
 pkgbase = layan-kde-git
 	pkgdesc = A flat Design theme for KDE Plasma desktop
-	pkgver = r14.dac89ef
+	pkgver = r18.4dcc7e5
 	pkgrel = 1
 	url = https://github.com/vinceliuice/layan-kde
 	arch = any
 	license = GPL3
+	makedepends = git
 	options = !strip
 	source = git+https://github.com/vinceliuice/layan-kde.git
 	sha256sums = SKIP
