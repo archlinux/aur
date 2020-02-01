@@ -3,21 +3,20 @@
 
 pkgname=suitesparse-mkl
 pkgver=5.6.0
-pkgrel=3
-pkgdesc="A collection of sparse matrix libraries (compiled with the Intel MKL and Intel TBB)"
+pkgrel=4
+pkgdesc="A collection of sparse matrix libraries (compiled with the Intel MKL and Intel TBB) used in julia"
 url="http://faculty.cse.tamu.edu/davis/suitesparse.html"
 arch=('i686' 'x86_64')
-gblasver=3.1.1
-conflicts=('umfpack' 'graphblas' 'suitesparse')
-provides=('umfpack' "graphblas=${gblasver}" "suitesparse=${pkgver}")
-replaces=('umfpack' 'graphblas' 'suitesparse')
-depends=('metis' 'intel-mkl' 'intel-tbb_psxe')
-makedepends=('intel-compiler-base' 'intel-fortran-compiler' 'cmake')
+conflicts=('umfpack' 'suitesparse')
+provides=('umfpack' "suitesparse=${pkgver}")
+replaces=('umfpack' 'suitesparse')
+depends=('intel-mkl' 'intel-tbb_psxe')
+makedepends=('intel-compiler-base' 'intel-fortran-compiler')
 license=('GPL')
 options=()
 source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-mkl_tbb.patch)
 sha1sums=('3de08b5ab02610ed0446225aad2445696616fae5'
-          '82a0f7a84af1ee1df52416cd436d9a5e915b1e67')
+          '06e012e3042660f9eb00a3d4acfe52b19e26a24b')
 
 prepare() {
 # Fix linking with intel-tbb
@@ -27,7 +26,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/SuiteSparse-${pkgver}
-    JOBS=8 make
+    JOBS=8 make library
 }
 
 

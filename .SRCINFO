@@ -1,30 +1,25 @@
 pkgbase = suitesparse-mkl
-	pkgdesc = A collection of sparse matrix libraries (compiled with the Intel MKL and Intel TBB)
+	pkgdesc = A collection of sparse matrix libraries (compiled with the Intel MKL and Intel TBB) used in julia
 	pkgver = 5.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://faculty.cse.tamu.edu/davis/suitesparse.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intel-compiler-base
 	makedepends = intel-fortran-compiler
-	makedepends = cmake
-	depends = metis
 	depends = intel-mkl
 	depends = intel-tbb_psxe
 	provides = umfpack
-	provides = graphblas=3.1.1
 	provides = suitesparse=5.6.0
 	conflicts = umfpack
-	conflicts = graphblas
 	conflicts = suitesparse
 	replaces = umfpack
-	replaces = graphblas
 	replaces = suitesparse
 	source = https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v5.6.0.tar.gz
 	source = suitesparse-mkl_tbb.patch
 	sha1sums = 3de08b5ab02610ed0446225aad2445696616fae5
-	sha1sums = 82a0f7a84af1ee1df52416cd436d9a5e915b1e67
+	sha1sums = 06e012e3042660f9eb00a3d4acfe52b19e26a24b
 
 pkgname = suitesparse-mkl
 
