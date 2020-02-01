@@ -90,7 +90,9 @@ elif [[ $ACTION != "install" ]] && [[ $ACTION != "remove" ]]; then
     exit 1
 else
     while read -r line; do
-        if [[ $line != */vmlinuz ]]; then
+        kernel="/$line"
+
+        if [[ $kernel != */vmlinuz ]]; then
             # triggers when it's a change to usr/lib/initcpio/*, usr/lib/systemd/boot/efi/linuxx64.efi.stub or boot/*-ucode.img
             if [[ $ACTION == "install" ]]; then
                 ALL=1
@@ -98,12 +100,12 @@ else
             continue
         fi
 
-        if ! read -r pkgbase > /dev/null 2>&1 < "${line%/vmlinuz}/pkgbase"; then
+        if ! read -r pkgbase > /dev/null 2>&1 < "${kernel%/vmlinuz}/pkgbase"; then
             # if the kernel has no pkgbase, we skip it
             continue
         fi
 
-        KERNELS+=("$line")
+        KERNELS+=("$kernel")
     done
 fi
 

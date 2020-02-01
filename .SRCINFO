@@ -1,6 +1,6 @@
 pkgbase = unifed-arch-kernel
 	pkgdesc = Generates unifed archlinux images using pacman power
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://aur.archlinux.org/packages/unifed-arch-kernel/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = unifed-arch-kernel
 	source = 55-unifed-arch-kernel-remove.hook
 	source = 75-sign-for-secure-boot.install
 	source = 95-unifed-arch-kernel-install.hook
-	md5sums = 2ffcf000edef6ab1e85f62c3e5f910c4
+	md5sums = 3c73ba36f7238f359d5dc43fc6d95623
 	md5sums = 15d02966c33006a8f9dc6456953e3a47
 	md5sums = cf19112a5294756657e8e2e3ebf6226d
 	md5sums = 5b263fc13f06b08b3714337e28f44424
