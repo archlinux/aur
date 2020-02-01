@@ -4,24 +4,23 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgbase=buildbot
-pkgname=(buildbot buildbot-docs
+pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
 pkgver=2.6.0
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
               python-moto python-parameterized
-              buildbot-worker=$pkgver
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface
              python-sqlalchemy-migrate python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
-             python-setuptools python-mock
+             python-setuptools python-mock python-future
              python-sphinx-jinja python-sphinxcontrib-blockdiag
              git yarn)
 source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
@@ -52,18 +51,22 @@ prepare() {
 
   sed -i '/buildbot_windows_service/d' master/setup.py
   rm -v master/buildbot/scripts/windows_service.py
+  sed -i '/buildbot_worker_windows_service/d' worker/setup.py
+  rm -v worker/buildbot_worker/scripts/windows_service.py
 }
 
 build() {
   export NODE_OPTIONS="--max-old-space-size=2048"
 
-  site_packages_path=$(python -c 'import site; print(site.getsitepackages()[0])')
-
   cd "$srcdir"/buildbot-$pkgver/pkg
-  python setup.py install --root="$srcdir"/tmp_install
+  python setup.py egg_info
 
   #################### buildbot ####################
   cd "$srcdir"/buildbot-$pkgver/master
+  python setup.py build
+
+  #################### buildbot-worker ####################
+  cd "$srcdir"/buildbot-$pkgver/worker
   python setup.py build
 
   #################### buildbot-www ####################
@@ -72,7 +75,7 @@ build() {
   # HACK: use system packages instead of ones via pip
   make PIP=/usr/bin/true frontend_deps
 
-  export PYTHONPATH="$srcdir"/tmp_install$site_packages_path
+  export PYTHONPATH="$srcdir"/buildbot-$pkgver/pkg
   for module in base waterfall_view console_view grid_view wsgi_dashboards badges
   do
     cd "$srcdir"/buildbot-$pkgver/www/$module
@@ -87,22 +90,25 @@ build() {
 check() {
   # Install packages to a temp folder for tests
   cd "$srcdir"/buildbot-$pkgver/master
+  python setup.py egg_info
+  python setup.py install_scripts --install-dir="$srcdir/tmp_install"
 
-  site_packages_path=$(python -c 'import site; print(site.getsitepackages()[0])')
-
-  python setup.py install --root="$srcdir"/tmp_install --skip-build
-  # Copy files over for integration tests
-  cp -v buildbot/test/integration/*.tgz "$srcdir"/tmp_install$site_packages_path/buildbot/test/integration/
+  cd "$srcdir"/buildbot-$pkgver/worker
+  python setup.py egg_info
 
   cd "$srcdir"/buildbot-$pkgver/www/base
-  python setup.py install --root="$srcdir"/tmp_install --skip-build
+  python setup.py egg_info
 
   # Run tests
-  export PYTHONPATH="$srcdir"/tmp_install$site_packages_path
-  export PATH="$PATH:$srcdir/tmp_install/usr/bin"
+  _basedir="$srcdir/buildbot-$pkgver"
+  export PYTHONPATH="$_basedir/master:$_basedir/worker:$_basedir/www/base:$_basedir/pkg"
+  export PATH="$PATH:$srcdir/tmp_install"
 
   cd "$srcdir"/buildbot-$pkgver/master
   TZ=UTC trial3 --rterrors buildbot
+
+  cd "$srcdir"/buildbot-$pkgver/worker
+  PYTHONPATH=. trial3 buildbot_worker
 
   for module in base waterfall_view console_view grid_view wsgi_dashboards
   do
@@ -144,6 +150,16 @@ package_buildbot() {
   cd buildbot-$pkgver/master
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 "$srcdir"/buildbot-contrib/master/contrib/systemd/buildbot@.service \
+    -t "$pkgdir"/usr/lib/systemd/system/
+}
+
+package_buildbot-worker() {
+  pkgdesc='Buildbot worker daemon'
+  depends=(python-setuptools python-twisted python-future)
+
+  cd buildbot-$pkgver/worker
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 "$srcdir"/buildbot-contrib/worker/contrib/systemd/buildbot-worker@.service \
     -t "$pkgdir"/usr/lib/systemd/system/
 }
 
