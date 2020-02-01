@@ -1,6 +1,6 @@
 pkgbase = raul-git
 	pkgdesc = Realtime Audio Utility Library for audio and musical applications (git version)
-	pkgver = 1.0.0.r604.cdf6256
+	pkgver = 1.0.0.r605.e87bb39
 	pkgrel = 1
 	epoch = 1
 	url = http://drobilla.net/software/raul/
@@ -9,6 +9,7 @@ pkgbase = raul-git
 	license = GPL3
 	makedepends = doxygen
 	makedepends = git
+	makedepends = graphviz
 	makedepends = python
 	provides = raul
 	provides = raul=1.0.0
