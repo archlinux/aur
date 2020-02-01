@@ -2,7 +2,7 @@
 
 pkgname=gdb-multiarch
 pkgver=8.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Debugger for all gdb supported architectures (i386/arm/mips...)'
 arch=(i686 x86_64)
 url='http://www.gnu.org/software/gdb/'
@@ -27,6 +27,7 @@ build() {
 
   ./configure \
     --enable-targets=all \
+    --prefix=/build \
     --enable-languages=all \
     --enable-multilib \
     --enable-interwork \
