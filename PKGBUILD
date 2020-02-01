@@ -3,7 +3,7 @@
 _pkgname='azeroth-core'
 __pkgname='azerothcore-wotlk'
 pkgname="${_pkgname}-git"
-pkgver=3.0.0.4da4ad4
+pkgver=3.0.0
 pkgrel=3
 pkgdesc="AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore"
 url="http://www.azerothcore.org"
