@@ -1,14 +1,14 @@
 pkgbase = keepass-ja
 	pkgdesc = Japanese locale for keepass
-	pkgver = 2.41
+	pkgver = 2.44
 	pkgrel = 1
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
 	makedepends = unzip
 	depends = keepass
-	source = http://downloads.sourceforge.net/keepass/KeePass-2.41-Japanese.zip
-	md5sums = bb2bac725de991d35aec26ff28d2562d
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.44-Japanese.zip
+	md5sums = 292ad3739fb9988abf3dcb29eff2bd1a
 
 pkgname = keepass-ja
 
