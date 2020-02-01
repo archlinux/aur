@@ -2,34 +2,43 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-neutrinoepg
-pkgver=0.3.6
+pkgver=0.3.6.r7.gc3615ff
+_gitver=c3615ffcb0f5e5c2d380052fffd4a5d53293cde3
 _vdrapi=2.4.1
-pkgrel=17
+pkgrel=1
 pkgdesc="Neat EPG-Viewer for VDR"
 url="http://projects.vdr-developer.org/projects/plg-neutrinoepg"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 depends=('gcc-libs' "vdr-api=$_vdrapi")
-makedepends=('patchutils')
+makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("http://projects.vdr-developer.org/attachments/download/1475/$_plugname-$pkgver.tar.gz"
-        "vdr-2.4-neutrinoepg.diff::https://projects.vdr-developer.org/git/vdr-plugin-neutrinoepg.git/patch/?id=f7488c0eac22cd9fdec402c519de775ab330acaf&id2=4fec4bcb560d4bd1e81585a0a4dfc7c4f31f6863")
+source=("git+https://projects.vdr-developer.org/git/vdr-plugin-neutrinoepg.git#commit=$_gitver")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('881426478efc94111c3f11c6b68f25c4'
-         'c608dbdb7805330e06c0cdfe7283e854')
+md5sums=('SKIP')
 
-prepare() {
-  cd "$srcdir/$_plugname-$pkgver"
-  filterdiff -x '*/HISTORY' "$srcdir/vdr-2.4-neutrinoepg.diff" | patch -p1
+pkgver() {
+  cd "${srcdir}/vdr-plugin-$_plugname"
+  _last_release=0.3.6
+  _last_release_commit=812eaeb5033c3cd349d043d4360c1867b161c263
+
+  _count=$((`git rev-list --count HEAD` - `git rev-list --count $_last_release_commit`))
+  if [ $_count -gt 0 ]; then
+    printf "%s.r%s.g%s" $_last_release \
+      $_count \
+      `git rev-parse --short HEAD`
+  else
+    printf "%s" $_last_release
+  fi
 }
 
 build() {
-  cd "$srcdir/$_plugname-$pkgver"
+  cd "$srcdir/vdr-plugin-$_plugname"
   make
 }
 
 package() {
-  cd "$srcdir/$_plugname-$pkgver"
+  cd "$srcdir/vdr-plugin-$_plugname"
   make DESTDIR="$pkgdir" install
 
   mkdir -p "$pkgdir/etc/vdr/conf.avail"
