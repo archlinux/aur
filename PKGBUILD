@@ -6,7 +6,7 @@ pkgname=lirc-devinput
 _pkgname=lirc
 _pkgver=0.10.1
 [[ $_pkgver =~ [a-z]$ ]] && pkgver="${_pkgver:0:-1}.${_pkgver: -1}" || pkgver="$_pkgver"
-pkgrel=4
+pkgrel=1
 epoch=1
 pkgdesc="Linux Infrared Remote Control utilities with devinput enabled"
 arch=('x86_64')

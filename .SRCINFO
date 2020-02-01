@@ -1,7 +1,7 @@
 pkgbase = lirc-devinput
-	pkgdesc = Linux Infrared Remote Control utilities
+	pkgdesc = Linux Infrared Remote Control utilities with devinput enabled
 	pkgver = 0.10.1
-	pkgrel = 4
+	pkgrel = 1
 	epoch = 1
 	url = https://www.lirc.org/
 	arch = x86_64
