@@ -3,7 +3,7 @@
 _pkgname='azerothcore-wotlk'
 pkgname='azeroth-core'
 pkgver=3.0.0
-pkgrel=6
+pkgrel=7
 arch=('i686' 'x86_64')
 pkgdesc="AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore"
 url="http://www.azerothcore.org"
@@ -22,5 +22,5 @@ build() {
 
 package() {
   cd $srcdir/${_pkgname}/build
-  make DESTDIR="$HOME/azeroth-server/" install
+  make DESTDIR install
 }
