@@ -1500,6 +1500,8 @@ const regexes = [
 	/whatsapp works with.*to use whatsapp.*update/i,
 	// pt
 	/o whatsapp funciona com.*para utilizar o whatsapp.*atualize/i
+	// ge
+	/whatsapp funktioniert mit.*um whatsapp zu benutzen.*aktualisiere/i,
 ]
 
 for (const regex of regexes) {
