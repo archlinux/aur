@@ -2,13 +2,13 @@
 
 pkgname=notcurses
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
 arch=('x86_64')
 depends=('ncurses' 'ffmpeg')
-makedepends=('cmake' 'pandoc' 'python-cffi' 'python-setuptools')
+makedepends=('cmake' 'pandoc' 'python-cffi' 'python-setuptools' 'doctest')
 source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 build() {
