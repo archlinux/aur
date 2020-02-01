@@ -1,5 +1,5 @@
 pkgname=mfcoin-bin
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=0
 provides=('mfcoin' 'mfcoin-daemon')
 conflicts=('mfcoin-git' 'mfcoin')
@@ -15,7 +15,7 @@ source_x86_64=(
     'mfcoin.svg'
 )
 sha256sums_x86_64=(
-    'bc71c94d74465569ce387401240944165704733ce7a0b66bf2349b6e3d9db0f9'
+    '0d60a09b71c285b14b517a45872a9ded3180390612883385d1a6c6d65079ff49'
     '6e66f05d3c794cacbb1858b0578737572fa5ce8bae4a73e1b6d71adfc0f8765c'
     '0f1076e814656a476de97cf7c3773be8f3788a4ca3c13e64d800ad829571edd6'
 )
