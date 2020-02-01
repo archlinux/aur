@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=nodejs6-bin
-pkgver=6.14.3
+pkgver=6.17.1
 pkgrel=1
 pkgdesc='v6 of nodejs evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -31,5 +31,5 @@ package() {
     "$pkgdir"/usr/share/licenses/nodejs/LICENSE
 }
 
-md5sums_i686=('eadd77995fec9e47c0d3dec8b1a2d62f')
-md5sums_x86_64=('d70486160f458162588f6af470157e9a')
+md5sums_i686=('10720728219dab5d1a61e7b1eaa38c9f')
+md5sums_x86_64=('af5da3a51cbd37c1411e760e4910435e')
