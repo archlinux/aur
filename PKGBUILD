@@ -1,6 +1,6 @@
 # Maintainer: Per Osbeck <per@osbeck.com>
 pkgname=perfops-cli
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A simple command line tool to interact with hundreds of servers around the world. Run benchmarks and debug your infrastructure without leaving your console."
 arch=(x86_64)

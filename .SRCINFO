@@ -1,13 +1,13 @@
 pkgbase = perfops-cli
 	pkgdesc = A simple command line tool to interact with hundreds of servers around the world. Run benchmarks and debug your infrastructure without leaving your console.
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://perfops.net
 	arch = x86_64
 	license = APACHE
 	makedepends = git
 	makedepends = go
-	source = perfops-cli::git+https://github.com/ProspectOne/perfops-cli.git#tag=v0.8.0
+	source = perfops-cli::git+https://github.com/ProspectOne/perfops-cli.git#tag=v0.8.1
 	sha256sums = SKIP
 
 pkgname = perfops-cli
