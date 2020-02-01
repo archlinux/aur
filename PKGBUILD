@@ -1,8 +1,8 @@
 # Maintainer: Jake <aur@ja-ke.tech>
 
 pkgname=searx
-pkgver=0.15.0
-pkgrel=3
+pkgver=0.16.0
+pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine (python(3) based)"
 arch=('any')
 url="https://asciimoo.github.io/searx/"
@@ -27,19 +27,11 @@ replaces=('searx-py3')
 backup=('etc/searx/settings.yml' 'etc/uwsgi/searx.ini')
 source=("https://github.com/asciimoo/searx/archive/v$pkgver.zip"
         'searx.ini'
-        'searx.sysusers'
-        '3.8_escape.patch')
-sha512sums=('29b233897b4938b3262b01f7f32a0ff69481ed8934f9e0391571d7da261e4494a5e77f64b683292b5150cc50bb8ba74355c2edc526dd348b2fbd11600cb0592e'
+        'searx.sysusers')
+sha512sums=('3ae4e4c295830e65eefbd39ed9885b60a42a4d4db4d87c179ace76cf43f8c75d49f1363f019bedd135c0597191612e16592cacd159ae97a42a25dcc2fee9d00b'
             '6e1e7771e747e2bcb9cbc3e5ec9735461b6d791c0c0412e06e7dd802c18625edd0916de32164bf780c18ef7b6a87f55ed1e917377b3adb2bf53c0344f34b49e8'
-            '6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e'
-            'b0d67d7f4af44c492eec48f4068c653c6c087fc4a3cfc7dc9e77a08445494e6c98b610a77a75fec07f7f32f549747061dd12ae4420445ab0755dfe78742a4e72')
+            '6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e')
 
-prepare() {
-  cd $srcdir/$pkgname-$pkgver
-  patch -Np1 -i "../3.8_escape.patch"
-}
-            
-            
 package() {
   cd $srcdir/$pkgname-$pkgver
 
@@ -51,7 +43,7 @@ package() {
 
   python3.8 setup.py install --root=$pkgdir --optimize=1
   
-  mv $pkgdir/usr/lib/python3.8/site-packages/{README.rst,requirements*,tests,searx}
+  mv $pkgdir/usr/lib/python3.8/site-packages/{README.rst,requirements*,searx}
   
   mkdir -p $pkgdir/etc/$pkgname
   mv $pkgdir/usr/lib/python3.8/site-packages/$pkgname/settings.yml $pkgdir/etc/$pkgname/
