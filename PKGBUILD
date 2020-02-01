@@ -2,7 +2,7 @@
 
 pkgname=qtmidi-qt5
 pkgver=git
-pkgrel=1
+pkgrel=2
 pkgdesc="A midi plugin for Qt."
 arch=('i686' 'x86_64')
 url="https://gitlab.com/tp3/qtmidi"

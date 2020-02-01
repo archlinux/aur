@@ -1,7 +1,7 @@
 pkgbase = qtmidi-qt5
 	pkgdesc = A midi plugin for Qt.
 	pkgver = git
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/tp3/qtmidi
 	arch = x86
 	arch = x86_64
