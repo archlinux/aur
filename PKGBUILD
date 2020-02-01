@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.4.15.arch1
+pkgver=5.5.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -84,7 +84,7 @@ _repo_url="https://git.archlinux.org/$_reponame"
 
 _reponame_gcc_patch="kernel_gcc_patch"
 _repo_url_gcc_patch="https://github.com/graysky2/$_reponame_gcc_patch"
-_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+_gcc_patch_name="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
@@ -92,7 +92,7 @@ source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    0005-v5.4_undead-pds099o.patch
+    0005-v5.5_undead-pds099o.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -102,9 +102,9 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '80b3456f7a6c95aeae25a41095ce984d964ce57d88058f08a40baac8415d9d31bb8159318d270a44d25dade05732a75cfd19a5ce9636ffa389ce130506b7219a'
-            'd44f20eabaadf8160adfcb67bc84bdf195d6475f0f6daebd0140749eb57cf7aa0619360bc37668c8df940f18ca5489730638d3e2db749a4c6e349819a64ed377'
-            'af8e0a8f1e9ad587c01a945d50d03ed3fc593036ca20c641353a6496317716120bd5015aea25a9f1aad936b95f69a39e3d60db5b66499790d1dc9358ce81da28')
+            '33a58e79b6e837bb18d1d561d7b0d5778228676197e61f5d1fe9db6380c0ea1df5f6bf5e1e9bd556bbdd71cc1c0aa27c7215756c4b1ef3c8f115179b74cdb4ad'
+            'ae4bfb0ffa5ffaac000800eaaf67433700f826e3b63773ed980841f7377e6853687091b5ba0036a1d0badeb604ea0816280e22a2a67dbe2a370814091069562f'
+            '42bcaf0d212fcdd88ee85569e17095dd4b96584af1884232b6c635fa095d0c6ffb7ac17130dba9f85f4e59b4d84a3d0af8aad640264ed2060d651ba4c665d2cc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -115,17 +115,18 @@ prepare() {
 
     msg2 "Setting version..."
     scripts/setlocalversion --save-scmversion
-    msg2 "-$pkgrel" > localversion.10-pkgrel
-    msg2 "${pkgbase#linux}" > localversion.20-pkgname
+    echo "-$pkgrel" > localversion.10-pkgrel
+    echo "${pkgbase#linux}" > localversion.20-pkgname
 
     # https://github.com/graysky2/kernel_gcc_patch
     msg2 "Patching with Graysky's additional gcc CPU optimizatons..."
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.4 by TkG"
-    for MyPatch in 0005-v5.4_undead-pds099o.patch \
-                   0005-glitched-pds.patch
+    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.5 by TkG"
+    for MyPatch in \
+        0005-v5.5_undead-pds099o.patch \
+        0005-glitched-pds.patch
     do
         msg2 "Patching with $MyPatch..."
         patch -Np1 -i "$srcdir/$MyPatch"
@@ -195,7 +196,7 @@ _package() {
     install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
     # Used by mkinitcpio to name the kernel
-    msg2 "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+    echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
     make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
@@ -254,7 +255,7 @@ _package-headers() {
     local arch
     for arch in "$builddir"/arch/*/; do
         [[ $arch = */x86/ ]] && continue
-        msg2 "Removing $(basename "$arch")"
+        echo "Removing $(basename "$arch")"
         rm -r "$arch"
     done
 

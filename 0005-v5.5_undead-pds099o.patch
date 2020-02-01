@@ -1,7 +1,7 @@
 From 89067d28ca90681fc6cf108de79b9aedb93dfa9d Mon Sep 17 00:00:00 2001
 From: Tk-Glitch <ti3nou@gmail.com>
-Date: Mon, 25 Nov 2019 21:46:23 +0100
-Subject: PDS 099o, 5.4 rebase
+Date: Mon, 9 Dec 2019 7:11:23 +0100
+Subject: PDS 099o, 5.5rc1 rebase
 
 
 diff --git a/Documentation/admin-guide/sysctl/kernel.rst b/Documentation/admin-guide/sysctl/kernel.rst
@@ -1070,7 +1070,7 @@ new file mode 100644
 index 000000000000..aefbd9cebcfb
 --- /dev/null
 +++ b/kernel/sched/pds.c
-@@ -0,0 +1,6566 @@
+@@ -0,0 +1,6541 @@
 +/*
 + *  kernel/sched/pds.c, was kernel/sched.c
 + *
@@ -1107,6 +1107,7 @@ index 000000000000..aefbd9cebcfb
 +#include <asm/switch_to.h>
 +
 +#include "../workqueue_internal.h"
++#include "../../fs/io-wq.h"
 +#include "../smpboot.h"
 +
 +#include "pelt.h"
@@ -1670,7 +1671,7 @@ index 000000000000..aefbd9cebcfb
 +			smp_send_reschedule(cpu);
 +		/* Else CPU is not idle, do nothing here */
 +
-+		spin_release(&rq->lock.dep_map, 1, _RET_IP_);
++		spin_release(&rq->lock.dep_map, _RET_IP_);
 +		do_raw_spin_unlock(&rq->lock);
 +	}
 +
@@ -2332,37 +2333,6 @@ index 000000000000..aefbd9cebcfb
 + */
 +
 +/*
-+ * detach_task() -- detach the task for the migration specified in @target_cpu
-+ */
-+static void detach_task(struct rq *rq, struct task_struct *p, int target_cpu)
-+{
-+	lockdep_assert_held(&rq->lock);
-+
-+	WRITE_ONCE(p->on_rq ,TASK_ON_RQ_MIGRATING);
-+	if (task_contributes_to_load(p))
-+		rq->nr_uninterruptible++;
-+	dequeue_task(p, rq, 0);
-+
-+	set_task_cpu(p, target_cpu);
-+}
-+
-+/*
-+ * attach_task() -- attach the task detached by detach_task() to its new rq.
-+ */
-+static void attach_task(struct rq *rq, struct task_struct *p)
-+{
-+	lockdep_assert_held(&rq->lock);
-+
-+	BUG_ON(task_rq(p) != rq);
-+
-+	if (task_contributes_to_load(p))
-+		rq->nr_uninterruptible--;
-+	enqueue_task(p, rq, 0);
-+	p->on_rq = TASK_ON_RQ_QUEUED;
-+	cpufreq_update_this_cpu(rq, 0);
-+}
-+
-+/*
 + * move_queued_task - move a queued task to new rq.
 + *
 + * Returns (locked) new rq. Old rq's lock is released.
@@ -2370,16 +2340,19 @@ index 000000000000..aefbd9cebcfb
 +static struct rq *move_queued_task(struct rq *rq, struct task_struct *p, int
 +				   new_cpu)
 +{
-+	detach_task(rq, p, new_cpu);
++	lockdep_assert_held(&rq->lock);
++
++	p->on_rq = TASK_ON_RQ_MIGRATING;
++	dequeue_task(p, rq, 0);
++	set_task_cpu(p, new_cpu);
 +	raw_spin_unlock(&rq->lock);
 +
 +	rq = cpu_rq(new_cpu);
 +
 +	raw_spin_lock(&rq->lock);
-+	update_rq_clock(rq);
-+
-+	attach_task(rq, p);
-+
++	BUG_ON(task_cpu(p) != new_cpu);
++	enqueue_task(p, rq, 0);
++	p->on_rq = TASK_ON_RQ_QUEUED;
 +	check_preempt_curr(rq, p);
 +
 +	return rq;
@@ -2780,13 +2753,6 @@ index 000000000000..aefbd9cebcfb
 +
 +	return best_mask_cpu(task_cpu(p), chk_mask);
 +}
-+
-+/*
-+ * wake flags
-+ */
-+#define WF_SYNC		0x01		/* waker goes to sleep after wakeup */
-+#define WF_FORK		0x02		/* child wakeup after fork */
-+#define WF_MIGRATED	0x04		/* internal use, task got migrated */
 +
 +static inline int select_task_rq(struct task_struct *p)
 +{
@@ -3475,7 +3441,7 @@ index 000000000000..aefbd9cebcfb
 +	 * of the scheduler it's an obvious special-case), so we
 +	 * do an early lockdep release here:
 +	 */
-+	spin_release(&rq->lock.dep_map, 1, _THIS_IP_);
++	spin_release(&rq->lock.dep_map, _THIS_IP_);
 +#ifdef CONFIG_DEBUG_SPINLOCK
 +	/* this is a valid case when another task releases the spinlock */
 +	rq->lock.owner = next;
@@ -4273,8 +4239,9 @@ index 000000000000..aefbd9cebcfb
 +		if (p->prio >= filter_prio)
 +			break;
 +		if (cpumask_test_cpu(dest_cpu, &p->cpus_mask)) {
-+			detach_task(rq, p, dest_cpu);
-+			attach_task(dest_rq, p);
++			dequeue_task(p, rq, 0);
++			set_task_cpu(p, dest_cpu);
++			enqueue_task(p, dest_rq, 0);
 +			nr_migrated++;
 +		}
 +		nr_tries--;
@@ -4304,9 +4271,10 @@ index 000000000000..aefbd9cebcfb
 +		spin_acquire(&src_rq->lock.dep_map, SINGLE_DEPTH_NESTING, 1, _RET_IP_);
 +
 +		update_rq_clock(src_rq);
-+		nr_migrated = migrate_pending_tasks(src_rq, rq, filter_prio);
++		if ((nr_migrated = migrate_pending_tasks(src_rq, rq, filter_prio)))
++			cpufreq_update_this_cpu(rq, 0);
 +
-+		spin_release(&src_rq->lock.dep_map, 1, _RET_IP_);
++		spin_release(&src_rq->lock.dep_map, _RET_IP_);
 +		do_raw_spin_unlock(&src_rq->lock);
 +
 +		if (nr_migrated || PRIO_LIMIT != filter_prio)
@@ -4626,9 +4594,12 @@ index 000000000000..aefbd9cebcfb
 +	 * we disable preemption to avoid it calling schedule() again
 +	 * in the possible wakeup of a kworker.
 +	 */
-+	if (tsk->flags & PF_WQ_WORKER) {
++	if (tsk->flags & (PF_WQ_WORKER | PF_IO_WORKER)) {
 +		preempt_disable();
-+		wq_worker_sleeping(tsk);
++		if (tsk->flags & PF_WQ_WORKER)
++			wq_worker_sleeping(tsk);
++		else
++			io_wq_worker_sleeping(tsk);
 +		preempt_enable_no_resched();
 +	}
 +
@@ -4642,8 +4613,12 @@ index 000000000000..aefbd9cebcfb
 +
 +static void sched_update_worker(struct task_struct *tsk)
 +{
-+	if (tsk->flags & PF_WQ_WORKER)
-+		wq_worker_running(tsk);
++	if (tsk->flags & (PF_WQ_WORKER | PF_IO_WORKER)) {
++		if (tsk->flags & PF_WQ_WORKER)
++			wq_worker_running(tsk);
++		else
++			io_wq_worker_running(tsk);
++	}
 +}
 +
 +asmlinkage __visible void __sched schedule(void)
@@ -7642,7 +7617,7 @@ new file mode 100644
 index 000000000000..b3926a8425b2
 --- /dev/null
 +++ b/kernel/sched/pds_sched.h
-@@ -0,0 +1,474 @@
+@@ -0,0 +1,481 @@
 +#ifndef PDS_SCHED_H
 +#define PDS_SCHED_H
 +
@@ -7704,6 +7679,13 @@ index 000000000000..b3926a8425b2
 +{
 +	return READ_ONCE(p->on_rq) == TASK_ON_RQ_MIGRATING;
 +}
++
++/*
++ * wake flags
++ */
++#define WF_SYNC		0x01		/* waker goes to sleep after wakeup */
++#define WF_FORK		0x02		/* child wakeup after fork */
++#define WF_MIGRATED	0x04		/* internal use, task got migrated */
 +
 +/*
 + * This is the main, per-CPU runqueue data structure.
