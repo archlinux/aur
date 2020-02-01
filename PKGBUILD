@@ -1,5 +1,5 @@
 pkgname=google-calendar-nativefier
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Electron wrapper for the Google Calendar web application"
 arch=(x86_64)
@@ -18,7 +18,7 @@ build() {
       --icon $pkgname.png \
       --maximize \
       --internal-urls "(accounts|calendar)\.google" \
-      --name "Google Calendar"
+      --name $_instname
 }
 
 package() {
