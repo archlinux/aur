@@ -1,0 +1,21 @@
+pkgbase = brunsli
+	pkgdesc = Lossless JPEG repacker
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/google/brunsli/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = git+https://github.com/google/brunsli.git#tag=v0.1
+	source = git+https://github.com/google/brotli.git
+	source = git+https://github.com/google/googletest
+	source = git+https://github.com/google/highwayhash.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = brunsli
+
