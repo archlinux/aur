@@ -1,5 +1,5 @@
 pkgname=google-calendar-nativefier
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 pkgdesc="Electron wrapper for the Google Calendar web application"
 arch=(x86_64)
@@ -17,8 +17,10 @@ build() {
     nativefier "https://calendar.google.com/" \
       --icon $pkgname.png \
       --maximize \
-      --internal-urls "(accounts|calendar)\.google" \
-      --name $_instname
+      --name $_instname \
+      --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
+      --internal-urls "(.*?calendar\.google\.com.*?|.*?accounts\.google\.com.*?)"
+      
 }
 
 package() {
