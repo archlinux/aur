@@ -2,30 +2,23 @@
 
 pkgname=blugon
 pkgdesc="simple and configurable Blue Light Filter for X"
-pkgver=1.11.4
+pkgver=1.12.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/jumper149/blugon"
 license=('Apache')
 depends=('libx11' 'libxrandr' 'python')
 optdepends=('xorg-xgamma: backend')
-makedepends=('git')
-source=('git+https://github.com/jumper149/blugon.git')
-_gitname="blugon"
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${_gitname}"
-  grep "VERSION =" "blugon.py" | cut --delimiter="'" --fields=2
-}
+source=("https://github.com/jumper149/blugon/archive/${pkgver}.tar.gz")
+sha256sums=('b22a0d432d68a38131b6dd673c6a6358ae43ea7a2757432afafc5285a5865acf')
 
 build() {
-  cd "${_gitname}"
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${_gitname}"
+  cd "${pkgname}-${pkgver}"
   make install DESTDIR="${pkgdir}"
   make clean
 }

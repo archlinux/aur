@@ -1,17 +1,16 @@
 pkgbase = blugon
 	pkgdesc = simple and configurable Blue Light Filter for X
-	pkgver = 1.11.4
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/jumper149/blugon
 	arch = x86_64
 	license = Apache
-	makedepends = git
 	depends = libx11
 	depends = libxrandr
 	depends = python
 	optdepends = xorg-xgamma: backend
-	source = git+https://github.com/jumper149/blugon.git
-	sha256sums = SKIP
+	source = https://github.com/jumper149/blugon/archive/1.12.0.tar.gz
+	sha256sums = b22a0d432d68a38131b6dd673c6a6358ae43ea7a2757432afafc5285a5865acf
 
 pkgname = blugon
 
