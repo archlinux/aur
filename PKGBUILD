@@ -3,13 +3,17 @@
 _pkgname='azerothcore-wotlk'
 pkgname='azeroth-core'
 pkgver=3.0.0
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 pkgdesc="AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore"
 url="http://www.azerothcore.org"
 license=('AGPL3')
-groups=('base-devel')
-depends=('cmake' 'libmysqlclient57' 'clang' 'readline' 'lib32-readline' 'ace')
+depends=('cmake' 'clang' 'readline' 'lib32-readline')
+optdepends=(
+  'libmysqlclient57: you need install this library from AUR'
+  'ace: you need install this library from AUR'
+)
+
 source=("git+https://github.com/azerothcore/${_pkgname}.git")
 sha512sums=('SKIP')
 
