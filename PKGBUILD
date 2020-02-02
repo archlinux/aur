@@ -9,13 +9,9 @@ url="https://github.com/coin3d/pivy"
 depends=('python' 'coin' 'qt5-base' 'glu' 'soqt')
 makedepends=('python-setuptools' 'cmake' 'swig')
 license=('BSD')
-arch=('any')
+arch=('x86_64')
 source=("https://github.com/FreeCAD/pivy/archive/${pkgver}.tar.gz")
 md5sums=('73b6083aa1c055c83294d0fa1fee037b')
-
-prepare() {
-    cd "$srcdir/${_module}-${pkgver}/fake_headers"
-}
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
