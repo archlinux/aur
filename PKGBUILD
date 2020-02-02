@@ -4,8 +4,8 @@
 
 pkgname=xf86-video-intel-git
 _pkgname=xf86-video-intel
-pkgver=2.99.917+892+gc6cb1b19
-pkgrel=2
+pkgver=2.99.917+899+gf66d3954
+pkgrel=1
 epoch=1
 arch=(x86_64)
 url="https://01.org/linuxgraphics"
@@ -13,7 +13,7 @@ license=('custom')
 install="${_pkgname}.install"
 pkgdesc="X.org Intel i810/i830/i915/945G/G965+ video drivers"
 depends=('mesa' 'libxvmc' 'pixman' 'xcb-util>=0.3.9' 'systemd-libs')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'libx11' 'libxrender'
+makedepends=('xorg-server-devel' 'libx11' 'libxrender' 'libxv'
              # additional deps for intel-virtual-output
              'libxrandr' 'libxinerama' 'libxcursor' 'libxtst' 'libxss'
              # additional for git snapshot
