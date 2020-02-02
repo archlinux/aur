@@ -1,15 +1,15 @@
 pkgbase = python-timeago
 	pkgdesc = Very simple python library, used to format datetime with `***time ago` statement.
-	pkgver = 1.0.10
+	pkgver = 1.0.13
 	pkgrel = 1
 	url = https://github.com/hustcc/timeago
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/timeago/timeago-1.0.10.tar.gz
-	source = https://raw.githubusercontent.com/hustcc/timeago/1.0.10/LICENSE
-	sha256sums = 1e26ed34cc1fdcdbb949a0d9603a78d9b794ec1ec2a6179a13466596cbdc2320
+	source = https://files.pythonhosted.org/packages/source/t/timeago/timeago-1.0.13.tar.gz
+	source = https://raw.githubusercontent.com/hustcc/timeago/1.0.13/LICENSE
+	sha256sums = 3180c3b386c3f2b60f80cdc377522e6833c934109b7cbbad4250e5e02419a225
 	sha256sums = e2a15cd0b56cfffbb99e27caeb87afe58ff78097d9c3bd3aea2a251145479912
 
 pkgname = python-timeago
