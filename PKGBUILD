@@ -1,5 +1,5 @@
 pkgname=wofi-hg
-pkgver=r167.83ab46c8985d
+pkgver=r192.8286545250b8
 pkgrel=1
 pkgdesc="Rofi-like wlroots launcher"
 arch=('x86_64')
@@ -23,10 +23,12 @@ build() {
 package() {
         mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/man/man1"
+	mkdir -p "$pkgdir/usr/share/man/man3"
 	mkdir -p "$pkgdir/usr/share/man/man5"
 	mkdir -p "$pkgdir/usr/share/man/man7"
         cp ${pkgname}/build/wofi "$pkgdir/usr/bin/"
 	cp ${pkgname}/man/wofi.1 "$pkgdir/usr/share/man/man1/"
+	cp ${pkgname}/man/*.3 "$pkgdir/usr/share/man/man3/"
 	cp ${pkgname}/man/wofi.5 "$pkgdir/usr/share/man/man5/"
 	cp ${pkgname}/man/wofi.7 "$pkgdir/usr/share/man/man7/"
 }
