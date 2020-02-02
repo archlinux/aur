@@ -1,0 +1,18 @@
+pkgbase = kmon-git
+	pkgdesc = Linux kernel manager and activity monitor
+	pkgver = v0.1.0.r0.gc188c22
+	pkgrel = 1
+	url = https://github.com/orhun/kmon
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = libxcb
+	provides = kmon
+	conflicts = kmon
+	source = git://github.com/orhun/kmon.git
+	sha256sums = SKIP
+
+pkgname = kmon-git
+

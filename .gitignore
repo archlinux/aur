@@ -1,0 +1,4 @@
+/pkg/
+/src/
+/kmon/
+*.tar.xz
