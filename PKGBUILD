@@ -1,4 +1,5 @@
 # Maintainer: Jeremy Kescher <jeremy@kescher.at>
+# Contributor: Benjamin Maisonnas <ben@wainei.net>
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-vkd3d-valve-git
@@ -26,7 +27,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd vkd3d
-  git describe --always
+  git describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
