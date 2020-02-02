@@ -1,6 +1,6 @@
 pkgbase = parsec-bin
 	pkgdesc = Remotely connect to a gaming pc for a low latency remote computing experience
-	pkgver = 150_11
+	pkgver = 150_22
 	pkgrel = 3
 	url = http://parsec.tv
 	arch = x86_64
@@ -16,15 +16,15 @@ pkgbase = parsec-bin
 	provides = parsec
 	options = !strip
 	source_x86_64 = https://builds.parsecgaming.com/package/parsec-linux.deb
-	sha256sums_x86_64 = 0741a0b535e676853a50d3ff1a6f6b2355fff127b6a0c0e503ad83818ef7bc74
+	sha256sums_x86_64 = aec4949a64b8ac6fffac54d86b932f596228d4bfecb262a88e8d22f4f5417875
 	source_arm = https://builds.parsecgaming.com/package/parsec-rpi.deb
-	sha256sums_arm = 3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f
+	sha256sums_arm = a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802
 	source_armv6h = https://builds.parsecgaming.com/package/parsec-rpi.deb
-	sha256sums_armv6h = 3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f
+	sha256sums_armv6h = a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802
 	source_armv7h = https://builds.parsecgaming.com/package/parsec-rpi.deb
-	sha256sums_armv7h = 3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f
+	sha256sums_armv7h = a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802
 	source_aarch64 = https://builds.parsecgaming.com/package/parsec-rpi.deb
-	sha256sums_aarch64 = 3b72d1d761f53977fd4be07c7ba049838f3b24f63009b3ed196ca997fa7ea06f
+	sha256sums_aarch64 = a98e840dc44f4762018895bd0da704c88887815de0e74e0f39aa7737f5b0e802
 
 pkgname = parsec-bin
 
