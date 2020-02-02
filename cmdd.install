@@ -1,0 +1,8 @@
+post_install() {
+  cat <<MSG
+>>> Now you need enable cmdd.service like that:
+
+      # systemctl enable --now cmdd.service
+
+MSG
+}
