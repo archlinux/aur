@@ -1,8 +1,8 @@
 # Maintainer: Yesterday17 <t@yesterday17.cn>
 pkgname=jlu-http-proxy-git
 _pkgname=jlu-http-proxy
-pkgver=1.0.0
-pkgrel=1
+pkgver=1.0.1
+pkgrel=2
 pkgdesc="HTTP Forward proxy for vpns.jlu.edu.cn"
 arch=('i686' 'x86_64')
 url="https://github.com/Yesterday17/jlu-http-proxy"
@@ -11,7 +11,7 @@ makedepends=(
 	'go'
 	'git'
 )
-backup=('etc/jlu-http-proxy/config.json')
+backup=('etc/jlu-http-config/config.json')
 
 source=(
 	"$_pkgname::git+https://github.com/Yesterday17/jlu-http-proxy.git"

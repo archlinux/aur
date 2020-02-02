@@ -1,14 +1,14 @@
 pkgbase = jlu-http-proxy-git
 	pkgdesc = HTTP Forward proxy for vpns.jlu.edu.cn
-	pkgver = 1.0.0
-	pkgrel = 1
+	pkgver = 1.0.1
+	pkgrel = 2
 	url = https://github.com/Yesterday17/jlu-http-proxy
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	backup = etc/jlu-http-proxy/config.json
+	backup = etc/jlu-http-config/config.json
 	source = jlu-http-proxy::git+https://github.com/Yesterday17/jlu-http-proxy.git
 	md5sums = SKIP
 
