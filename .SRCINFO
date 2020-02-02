@@ -1,5 +1,5 @@
 pkgbase = kdrive-bin
-	pkgdesc = Infomaniak Drive desktop synchronization client
+	pkgdesc = Infomaniak Drive desktop synchronization client (pre-compiled version)
 	pkgver = 2.6.0.20191219
 	pkgrel = 1
 	url = https://drive.infomaniak.com

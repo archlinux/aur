@@ -3,7 +3,7 @@
 pkgname=kdrive-bin
 pkgver=2.6.0.20191219
 pkgrel=1
-pkgdesc='Infomaniak Drive desktop synchronization client'
+pkgdesc='Infomaniak Drive desktop synchronization client (pre-compiled version)'
 url='https://drive.infomaniak.com'
 arch=(x86_64)
 license=(GPL2)
