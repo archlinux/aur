@@ -1,21 +1,19 @@
-# Maintainer: Colin Woodbury <colingw@gmail.com>
+# Maintainer: Colin Woodbury <colin@fosskers.ca>
 _hkgname=aura
 pkgname=aura-bin
-pkgver=1.4.0
+pkgver=2.0.3
 pkgrel=1
-pkgdesc="A secure package manager for Arch Linux and the AUR written in Haskell - Prebuilt binary"
+pkgdesc="A secure package manager for Arch Linux and the AUR - Prebuilt binary"
 url="https://github.com/fosskers/aura"
 license=('GPL-3')
 arch=('x86_64')
-depends=('gmp' 'pacman' 'pcre')
-optdepends=('powerpill:    For faster repository downloads.'
-            'customizepkg: For auto-editing of PKGBUILDs.'
-            'aur-git:      AUR package completions for zsh.')
+depends=('gmp' 'pacman')
+optdepends=()
 provides=('aura')
 conflicts=('aura' 'aura-git')
 options=('strip')
 source=(https://github.com/aurapm/aura/releases/download/v${pkgver}/aura-${pkgver}-x86_64.tar.gz)
-md5sums=('aa26c5ef0f1cf71ed1c809ef8bef1c65')
+md5sums=('aff2b499150e6d8da170fb6d4f9b5e49')
 
 package() {
     # Install aura binary
