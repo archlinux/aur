@@ -2,7 +2,7 @@
 # Contributor: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
@@ -58,9 +58,7 @@ source=(
 	"lib_tl::git+https://github.com/desktop-app/lib_tl.git"
 	"lib_ui::git+https://github.com/kotatogram/lib_ui.git"
 
-	"Use-system-font.patch"
 	"system-tray-icon.patch"
-	"linux-autostart.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -80,9 +78,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c8a8227f62e5c3927d330c225a915247e0eb1c9f4ce0d1747cbfe7e2e3ab645c30b3931ec898cc4525c73542ec70f4e3f0fe1d4a9a1be639354c3a709fc94f87'
-            '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a'
-            'e31829d114e20870493292d8add8094f1f3709e8dabc4f7e657bba6dc00933ebeb61c5755d3e770ea2922f9e2321d96f6982f6dcea500c98f1daa4c52e951d95')
+            '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a')
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -110,9 +106,7 @@ prepare() {
 
 	git submodule update
 
-	patch -Np1 -i "$srcdir/Use-system-font.patch"
 	patch -Np1 -i "$srcdir/system-tray-icon.patch"
-	patch -Np1 -i "$srcdir/linux-autostart.patch"
 }
 
 build() {

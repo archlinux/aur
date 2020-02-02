@@ -1,6 +1,6 @@
 pkgbase = kotatogram-desktop
 	pkgdesc = Kotatogram – experimental Telegram Desktop fork
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://kotatogram.github.io
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = kotatogram-desktop
 	optdepends = ttf-opensans: default Open Sans font family
 	conflicts = kotatogram-desktop-bin
 	conflicts = kotatogram-desktop-dynamic-bin
-	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.1.5
+	source = kotatogram-desktop::git+https://github.com/kotatogram/kotatogram-desktop.git#tag=k1.1.6
 	source = Catch2::git+https://github.com/catchorg/Catch2.git
 	source = crl::git+https://github.com/telegramdesktop/crl.git
 	source = GSL::git+https://github.com/Microsoft/GSL.git
@@ -47,9 +47,7 @@ pkgbase = kotatogram-desktop
 	source = lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck.git
 	source = lib_tl::git+https://github.com/desktop-app/lib_tl.git
 	source = lib_ui::git+https://github.com/kotatogram/lib_ui.git
-	source = Use-system-font.patch
 	source = system-tray-icon.patch
-	source = linux-autostart.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -68,9 +66,7 @@ pkgbase = kotatogram-desktop
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = c8a8227f62e5c3927d330c225a915247e0eb1c9f4ce0d1747cbfe7e2e3ab645c30b3931ec898cc4525c73542ec70f4e3f0fe1d4a9a1be639354c3a709fc94f87
 	sha512sums = 6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a
-	sha512sums = e31829d114e20870493292d8add8094f1f3709e8dabc4f7e657bba6dc00933ebeb61c5755d3e770ea2922f9e2321d96f6982f6dcea500c98f1daa4c52e951d95
 
 pkgname = kotatogram-desktop
 
