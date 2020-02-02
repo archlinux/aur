@@ -4,13 +4,13 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2
-pkgver=7.0.1
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="GTK2 archiver utility"
 arch=(i686 x86_64)
 url=http://www.peazip.org/peazip-linux.html
 license=(LGPL3)
-depends=(arc balz desktop-file-utils lib32-curl lib32-gmp4 lib32-gtk2 lib32-ncurses lpaq paq8o p7zip upx zpaq)
+depends=(arc balz desktop-file-utils lib32-curl lib32-gmp4 lib32-gtk2 lib32-ncurses paq8o p7zip upx zpaq)
 [[ $CARCH == "i686" ]] && depends=(${depends[@]/lib32-/})
 optdepends=(quad unace)
 provides=("peazip" "peazip-gtk2")
@@ -19,8 +19,8 @@ options=('!strip')
 install=peazip.install
 source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/download/$pkgver/peazip-$pkgver.LINUX.GTK2.tgz"
         "peazip.desktop")
-sha256sums=('cc03201fd044e7af1beab74cc1e527416c6a395612a96e1d9e2bfabd799218f5'
-            '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
+sha512sums=('432f63ecc004214b1d2ed329a6ebaca3bac4c63c987dcb402f66fea4f65ffee4fe68e5a6265d4b5884ba59c56f6e45a6cf7eba5fefe4398003b50166257460e5'
+            'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
 
 package() {
   _pkgres="$pkgdir/usr/lib/peazip/res"
