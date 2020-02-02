@@ -1,8 +1,8 @@
 # Maintainer: Tajidin Abd <tajidinabd at archlinux dot us>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=konsole-git
-pkgver=r6607.473461f0
+pkgname=konsole-scrollbar-fix-git
+pkgver=r7049.9babfb2e
 pkgrel=1
 pkgdesc="KDE's terminal emulator"
 arch=('i686' 'x86_64')
@@ -11,9 +11,9 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('kbookmarks' 'kcompletion' 'kconfig' 'kconfigwidgets' 'kcoreaddons' 'kcrash' 'kguiaddons' 'kdbusaddons' 'ki18n' 'kiconthemes' 'kinit' 'kio' 'knewstuff' 'knotifications' 'knotifyconfig' 'kparts' 'kpty' 'kservice' 'ktextwidgets' 'kwidgetsaddons' 'kwindowsystem' 'kxmlgui' 'kglobalaccel')
 makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 provides=('konsole')
-conflicts=('konsole' 'kdebase-konsole')
-source=('git://anongit.kde.org/konsole.git')
-md5sums=('SKIP')
+conflicts=('konsole' 'kdebase-konsole' 'konsole-git')
+source=('git://anongit.kde.org/konsole.git' '0001-fix-scrollbar-sometimes-reappearing-when-scrolling.patch')
+md5sums=('SKIP' '028ba655f3a0ce5b42654fc0ee5fd742')
 
 pkgver() {
   cd konsole
@@ -22,6 +22,11 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+  cd konsole
+
+  for patch in "$srcdir"/*.patch; do
+    patch -p1 < "$patch"
+  done
 }
 
 build() {

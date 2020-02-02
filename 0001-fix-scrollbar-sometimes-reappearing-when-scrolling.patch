@@ -1,0 +1,57 @@
+From 52267ddc68081699362f9c3dccfcf9c0e68ee662 Mon Sep 17 00:00:00 2001
+From: Ferdinand Bachmann <theferdi265@gmail.com>
+Date: Sun, 2 Feb 2020 20:09:59 +0100
+Subject: [PATCH] fix scrollbar sometimes reappearing when scrolling
+
+This change works around new behaviour in Qt 5.14 that results in QScrollBars
+not staying hidden when events are propagated to them by setting them to hidden
+again after each event propagated to them.
+---
+ src/TerminalDisplay.cpp | 7 ++++++-
+ src/TerminalDisplay.h   | 4 ++++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/TerminalDisplay.cpp b/src/TerminalDisplay.cpp
+index b107c8c4..87de1445 100644
+--- a/src/TerminalDisplay.cpp
++++ b/src/TerminalDisplay.cpp
+@@ -2072,8 +2072,12 @@ void TerminalDisplay::setScrollBarPosition(Enum::ScrollBarPositionEnum position)
+         return;
+     }
+ 
+-    _scrollBar->setHidden(position == Enum::ScrollBarHidden);
+     _scrollbarLocation = position;
++    applyScrollBarPosition();
++}
++
++void TerminalDisplay::applyScrollBarPosition() {
++    _scrollBar->setHidden(_scrollbarLocation == Enum::ScrollBarHidden);
+ 
+     propagateSize();
+     update();
+@@ -2715,6 +2719,7 @@ void TerminalDisplay::wheelEvent(QWheelEvent* ev)
+         _scrollWheelState.addWheelEvent(ev);
+ 
+         _scrollBar->event(ev);
++        applyScrollBarPosition();
+ 
+         Q_ASSERT(_sessionController != nullptr);
+ 
+diff --git a/src/TerminalDisplay.h b/src/TerminalDisplay.h
+index d99a1b40..5ac8e659 100644
+--- a/src/TerminalDisplay.h
++++ b/src/TerminalDisplay.h
+@@ -659,6 +659,10 @@ private:
+     // current size in columns and lines
+     void showResizeNotification();
+ 
++    // applies changes to scrollbarLocation to the scroll bar and propagates size
++    // information
++    void applyScrollBarPosition();
++
+     // scrolls the image by a number of lines.
+     // 'lines' may be positive ( to scroll the image down )
+     // or negative ( to scroll the image up )
+-- 
+2.25.0
+
