@@ -7,8 +7,6 @@ import sys, re, fontforge
 
 font = fontforge.open(sys.argv[1])
 
-print(font.fontname)
-
 if re.match(r"^MonacoB(?:-Bold)?$", font.fontname):
     font.fontname = font.fontname.replace("MonacoB", "MonacoB2")
     font.generate(sys.argv[1])

@@ -3,4 +3,6 @@ nerd-fonts-glyphs/
 pkg/
 src/
 font-patcher
+*.tar
 *.tar.xz
+*.tar.zst
