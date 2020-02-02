@@ -2,7 +2,7 @@
 
 pkgname=vkbasalt
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
@@ -49,7 +49,7 @@ prepare() {
 build() {
   cd ${srcdir}/vkBasalt
 
-  make
+  CXXFLAGS="$CXXFLAGS -fPIC" make
 }
 
 package() {
