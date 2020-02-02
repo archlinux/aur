@@ -1,0 +1,13 @@
+pkgbase = run
+	pkgdesc = start programs from shell in a configurable environment
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/LinusDierheimer/run.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = sudo
+
+pkgname = run
+
