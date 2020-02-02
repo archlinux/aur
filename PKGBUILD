@@ -1,13 +1,15 @@
 # Maintainer: Michael Serajnik <ms dot mserajnik dot at>
 pkgname=traffictoll-git
 _pkgname=TrafficToll
-pkgver=1.0.2.r0.g0add8b6
+pkgver=1.4.0.r2.gf246e76
 pkgrel=1
 pkgdesc="NetLimiter-like traffic shaping for Linux"
 arch=('any')
 url="https://github.com/cryzed/${_pkgname}"
 license=('GPL3')
 depends=('python' 'python-loguru' 'python-psutil' 'python-ruamel-yaml')
+optdepends=('speedtest-cli: determine the download and upload speed automatically for traffic prioritization'
+            'ookla-speedtest-bin: determine the download and upload speed automatically for traffic prioritization')
 makedepends=('python-pip' 'python-poetry')
 conflicts=('traffictoll')
 source=("git+https://github.com/cryzed/${_pkgname}.git")
