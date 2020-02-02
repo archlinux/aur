@@ -2,7 +2,7 @@
 pkgname=kmon-git
 pkgver=v0.1.0.r0.gc188c22
 pkgrel=1
-pkgdesc="Linux kernel manager and activity monitor"
+pkgdesc="Linux kernel manager and activity monitor (git)"
 arch=('i686' 'x86_64')
 url="https://github.com/orhun/kmon"
 license=('GPL3')
