@@ -1,20 +1,14 @@
-# Maintainer: pat-s <patrick.schratz@gmail.com>
+# Submitter: chendaniely
+#
 # Maintainer: chendaniely <chendaniely@gmail.com>
 # code adapted from: Meow < a.li.devtty at gmail dot com >
-
-# Get download links and md5sums for latest version of RStudio desktop
-## R code #############
 #
-#  require(XML)
-#  page = htmlTreeParse("http://www.rstudio.com/products/rstudio/download/",useInternalNodes = T)
-#  links = sapply(getNodeSet(page,'//table[@class="downloads"]/thead/tr/th[text()="Installers"]/../../..//a[contains(@href,".deb")]'),xmlGetAttr,'href')
-#  md5sums = sapply(getNodeSet(page,'//table[@class="downloads"]/thead/tr/th[text()="Installers"]/../../..//a[contains(@href,".deb")]/../..//code'),xmlValue)
-#  print(cbind(links,md5sums))
-#
+# Previous maintainer(s)
+# Maintainer: pat-s <patrick.schratz@gmail.com>
 #######################
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=1.2.5036
+pkgver=1.3.776
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -28,8 +22,8 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('78974c8e43bc68c20a9cebfba51434d45600925ffedb21a646e1769bf1588c63')
-source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/trusty/amd64/rstudio-${pkgver}-amd64.deb")
+sha256sums_x86_64=('66c75ad7de84a797b520049f1eb0e3a4cdac02c92bd668d3bb32785983206513')
+source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver}-amd64.deb")
 
 package() {
 
