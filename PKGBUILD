@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett (blair dot bonnett at gmail dot com)
 
 pkgname=nerd-fonts-noto-sans-mono
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Standard variants of Noto Sans Mono patched with Nerd Fonts."
 arch=('any')
@@ -19,13 +19,13 @@ source=(
   "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/${pkgver}/LICENSE"
 )
 sha256sums=(
-  "91c4f3bc13baed5759e7e937f2b0482fab199fcc25620b16202dd060a9d1e6c1"
-  "3651c79217c7f99c8ae787dc4750abf4f31b391ba30631b4d1a97a5f93a4ee7c"
-  "d7fcfe8defe56fc5b121f432386704545a12fa89a364bb3cc94dc943078d8178"
-  "0d93469c1ab805a254198981d37ad08ce9a3404378fccfd23817e47f186b586f"
-  "58fc56cf7c1ee12b831670901620cc8591f8e2a3fa74d3c03257cd99dbe6563c"
-  "f310f1774d3530fc497de334d7050b24751f4e114c4dad9772c98c9290a23951"
-  "d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5"
+  '127cb2808406be0b79cc5f9401741f6e87d38088f409dfa605451f3f6e950d37'
+  'df9e648e03094ba6d6e044a846f760130eea28c37d6280835a29d28fb939d23d'
+  'b270b5cc71cca25e17b6b3635caa4c5db5dec59a9bc4b72f1ac61cd1a54069f7'
+  '545806cf022c0708725f3c9493796bbfe8bcbdd98259ce0f1ecc35fd466a6823'
+  '25d52eaee055be6df2836097b8230f989d82260fe9e6cdd21daa12c5e26211e6'
+  'dc7bb09cabc260bb4740831aa6f75a373a114be7a164f9d1e96b0f493e930a79'
+  'd2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5'
 )
 
 package (){

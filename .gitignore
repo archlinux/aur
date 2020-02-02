@@ -1,0 +1,7 @@
+LICENSE
+NotoSansMono-*.ttf
+*.log
+*.tar.xz
+*.tar.zst
+pkg/
+src/
