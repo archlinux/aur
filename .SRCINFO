@@ -2,7 +2,7 @@ pkgbase = python-pivy
 	pkgdesc = A Python binding for Coin
 	pkgver = 0.6.5
 	pkgrel = 1
-	url = http://pivy.coin3d.org/
+	url = https://github.com/coin3d/pivy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
@@ -12,12 +12,9 @@ pkgbase = python-pivy
 	depends = coin
 	depends = qt5-base
 	depends = glu
+	depends = soqt
 	source = https://github.com/FreeCAD/pivy/archive/0.6.5.tar.gz
 	md5sums = 73b6083aa1c055c83294d0fa1fee037b
 
 pkgname = python-pivy
-	depends = python
-	depends = coin
-	depends = qt5-base
-	depends = glu
 
