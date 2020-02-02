@@ -1,6 +1,7 @@
+#Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=sdformat
-pkgver=8.2.0
-pkgrel=0
+pkgver=9.1.0
+pkgrel=1
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
 url="http://sdformat.org/"
@@ -9,11 +10,12 @@ depends=('boost' 'tinyxml' 'ignition-math>=6' 'python-psutil')
 optdepends=('urdfdom')
 makedepends=('cmake' 'doxygen' 'ignition-cmake' 'ignition-tools' 'ruby>=1.9.1')
 
-source=("http://osrf-distributions.s3.amazonaws.com/${pkgname}/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('8622b851e79fe807af358bdef2b2349705e3199a153e7d0151fc895fd18237f9')
+source=("https://bitbucket.org/osrf/${pkgname}/get/${pkgname}9_${pkgver}.tar.bz2")
+sha256sums=('d3981edbfd92f0ad3193cfc08d667af6a425fbb607a186befa68a132a32a7795')
 
+_dir="osrf-sdformat-632993e4b142"
 prepare(){
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_dir}"
   mkdir -p build && cd build
 
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
@@ -22,7 +24,7 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${_dir}/build"
   make
 }
 
@@ -32,6 +34,6 @@ build() {
 # }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${_dir}/build"
   make DESTDIR="$pkgdir/" install
 }
