@@ -1,0 +1,12 @@
+pkgbase = xfwm4-z4-dark-theme
+	pkgdesc = xfwm4 dark theme
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/logrusorgru/z4
+	arch = any
+	license = GPL2
+	source = https://github.com/logrusorgru/z4/archive/v1.2.tar.gz
+	sha256sums = 079fea7f5a05714e393f04d6c0a68018c35dbd160f7c5c340b5eeeff31bc8e22
+
+pkgname = xfwm4-z4-dark-theme
+
