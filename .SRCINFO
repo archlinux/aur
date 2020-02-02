@@ -1,6 +1,6 @@
 pkgbase = toggldesktop-git
 	pkgdesc = Toggl time tracking software
-	pkgver = v7.5.33.r0.g206717021
+	pkgver = 7.5.33.r0.g206717021
 	pkgrel = 1
 	url = https://github.com/toggl-open-source/toggldesktop
 	arch = x86_64

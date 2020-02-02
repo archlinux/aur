@@ -6,7 +6,7 @@
 
 pkgname=toggldesktop-git
 _pkgname=toggldesktop
-pkgver=v7.5.33.r0.g206717021
+pkgver=7.5.33.r0.g206717021
 pkgrel=1
 pkgdesc="Toggl time tracking software"
 arch=('x86_64')
@@ -37,7 +37,7 @@ sha512sums=(
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
