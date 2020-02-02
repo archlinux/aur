@@ -2,8 +2,8 @@
 
 _pkgname=espanso
 pkgname=${_pkgname}
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
