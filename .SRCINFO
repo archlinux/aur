@@ -1,7 +1,7 @@
 pkgbase = spotify
 	pkgdesc = A proprietary music streaming service
 	pkgver = 1.1.10.546
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.spotify.com
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = spotify
 	depends = libpng
 	depends = libsystemd
 	depends = libx11
+	depends = libxss
 	depends = desktop-file-utils
 	depends = nettle
 	depends = openssl

@@ -9,14 +9,14 @@ epoch=1
 _commit=ge08ef575
 _ver_x86_64=19
 #_ver_i686=10
-pkgrel=2
+pkgrel=3
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
 license=('custom')
 url='https://www.spotify.com'
 depends=('alsa-lib>=1.0.14' 'bzip2' 'cairo' 'expat' 'fontconfig' 'freetype2'
          'fribidi' 'graphite' 'gtk2' 'glib2' 'libpng' 'libsystemd'
-         'libx11' 'desktop-file-utils' 'nettle' 'openssl'
+         'libx11' 'libxss' 'desktop-file-utils' 'nettle' 'openssl'
          'p11-kit' 'pango' 'pcre' 'pixman')
 depends_x86_64=('libcurl-gnutls')
 depends_i686=('libcurl-compat')
