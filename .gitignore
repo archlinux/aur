@@ -13,3 +13,5 @@ pkg/
 src/
 
 *.crt
+
+zbctl-*
