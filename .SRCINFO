@@ -1,6 +1,6 @@
 pkgbase = zenpower-dkms-git
 	pkgdesc = Linux kernel driver for reading sensors for AMD Zen family CPUs
-	pkgver = 24.3406cda
+	pkgver = 35.7eadfa9
 	pkgrel = 1
 	url = https://github.com/ocerman/zenpower
 	arch = x86_64
