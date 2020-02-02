@@ -1,6 +1,6 @@
 pkgbase = sia-ui
 	pkgdesc = Blockchain-based marketplace for file storage
-	pkgver = 1.4.2
+	pkgver = 1.4.2.1
 	pkgrel = 2
 	url = https://sia.tech
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = sia-ui
 	depends = gtk2
 	depends = nss
 	depends = libxss
-	source = https://sia.tech/releases/Sia-UI-v1.4.2.AppImage
-	sha256sums = 5727b01e0576201c17156078c99d8f8c810d5b73a682c99a4f64f3ec2212bec5
+	source = https://sia.tech/releases/Sia-UI-v1.4.2.1.AppImage
+	sha512sums = 6f77c538e0129a4d7aa3ae5d120e6848b88c6637efdd4287a2c10bbcc1f94b35c551b1c31265a143acf799ffd82df1b892a9c78e6d91106892da43d5eb2042c1
 
 pkgname = sia-ui
 
