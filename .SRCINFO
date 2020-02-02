@@ -5,14 +5,9 @@ pkgbase = pueue
 	url = https://github.com/nukesor/pueue
 	arch = any
 	license = MIT
-	provides = pueue
-	conflicts = pueue-git
+	makedepends = cargo
 	source = https://github.com/Nukesor/pueue/archive/v0.1.4.tar.gz
-	source = https://github.com/Nukesor/pueue/releases/download/v0.1.4/pueue-linux-amd64
-	source = https://github.com/Nukesor/pueue/releases/download/v0.1.4/pueued-linux-amd64
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 8e156d1037a88448219d9c5bdbc844799e616604985c86a83541f0a23481f302
 
 pkgname = pueue
 

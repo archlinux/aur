@@ -6,29 +6,30 @@ pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
-depends=()
-makedepends=()
-conflicts=('pueue-git')
-provides=('pueue')
+makedepends=('cargo')
 url='https://github.com/nukesor/pueue'
 source=(
     "https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
-    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-amd64"
-    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-amd64"
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
+    '8e156d1037a88448219d9c5bdbc844799e616604985c86a83541f0a23481f302'
 )
+
+build() {
+    tar xf "v${pkgver}.tar.gz"
+    cd "pueue-${pkgver}"
+
+    # Build the daemon and client
+    cargo build --release --locked
+}
 
 
 package() {
-    install -Dm755 "pueue-linux-amd64" "${pkgdir}/usr/bin/pueue"
-    install -Dm755 "pueued-linux-amd64" "${pkgdir}/usr/bin/pueued"
-
-    tar xf "v${pkgver}.tar.gz"
     cd "pueue-${pkgver}"
+
+    # Install binaries
+    install -Dm755 "target/release/pueue" "${pkgdir}/usr/bin/pueue"
+    install -Dm755 "target/release/pueued" "${pkgdir}/usr/bin/pueued"
 
     # Place systemd user service
     install -Dm644 "utils/pueued.service" "${pkgdir}/usr/lib/systemd/user/pueued.service"
