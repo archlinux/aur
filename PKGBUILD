@@ -1,8 +1,8 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 
 pkgname=otf-nerd-fonts-fira-code
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Monospaced font with programming ligatures. Patched with Nerd Fonts icons."
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -11,7 +11,7 @@ depends=('fontconfig')
 conflicts=('nerd-fonts-fira-code' 'nerd-fonts-complete' 'nerd-fonts-git')
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FiraCode.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-md5sums=('e5bff5da34eb6d16fb20226047c5755c'
+md5sums=('0b410b02ffb07a36a10459ff44f93438'
          '1b95f7668f3a4440b0d404e8dc3ccd9c')
 
 package() {
