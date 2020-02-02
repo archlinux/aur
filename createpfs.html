@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Creating a new PhotoFilmStrip &#8212; PhotoFilmStrip 3.7.2 documentation</title>
+    <link rel="stylesheet" href="_static/agogo.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Render a slideshow" href="renderpfs.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head><body>
+    <div class="header-wrapper" role="banner">
+      <div class="header">
+          <p class="logo"><a href="index.html">
+            <img class="logo" src="_static/logo.png" alt="Logo"/>
+          </a></p>
+        <div class="headertitle"><a
+          href="index.html">PhotoFilmStrip 3.7.2 documentation</a></div>
+        <div class="rel" role="navigation" aria-label="related navigation">
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |
+          <a href="renderpfs.html" title="Render a slideshow"
+             accesskey="N">next</a> |
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a>
+        </div>
+       </div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="content">
+        <div class="document">
+            
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="creating-a-new-photofilmstrip">
+<h1>Creating a new PhotoFilmStrip<a class="headerlink" href="#creating-a-new-photofilmstrip" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="project-properties">
+<h2>Project properties<a class="headerlink" href="#project-properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="total-length">
+<h3>Total length<a class="headerlink" href="#total-length" title="Permalink to this headline">¶</a></h3>
+<p>If this option is activated you can override the duration of the single pictures and setup the total movie length..
+This is useful if you want to integrate the PhotoFilmStrip in another video project.</p>
+<p>Notice, the duration of the single pictures is multiplied with a factor, a ratio to the desired total length..
+A PhotoFilmStrip containing two pictures with the durations of 2 and 4 seconds results to durations of.
+3.3 and 6.7 seconds in a PhotoFilmStrip with a total length of 10 seconds. The ratio is 1.67 (10.0 / 6.0).</p>
+<p>You have two options to specify the total length.</p>
+<ul class="simple">
+<li><p>Manual, to set the total length for yourself.</p></li>
+<li><p>Audio file, to set the total length to the length of an audio file.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="add-pictures">
+<span id="add-pics"></span><h2>Add pictures<a class="headerlink" href="#add-pictures" title="Permalink to this headline">¶</a></h2>
+<p>To add pictures to your PhotoFilmStrip you can use the entry in the main menu (Tools -&gt; Import pictures),
+the toolbutton in the toolbar or by dropping some file in the imagelist at the bottom of the main window.</p>
+</div>
+<div class="section" id="motion-control">
+<span id="id1"></span><h2>Motion control<a class="headerlink" href="#motion-control" title="Permalink to this headline">¶</a></h2>
+<p>After selecting a picture you see it once on the left hand side and once on the right hand side.
+Now you can move a rectange on both pictures. To zoom the rectangle simply use the mousewheel.
+Move it by dragging it with the mouse.
+The rectangle on the left picture defines where the animated path of the picture starts.
+The ending point is defined with the rectangle on the right picture.</p>
+</div>
+<div class="section" id="settings">
+<span id="id2"></span><h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>Below the two images you can see a panel to adjust some settings for the selected picture.
+It is possible to rotate it clockwise and counter clockwise.
+You have the choice between some nice effects like black and white etc.
+Furthermore you can type in a comment to the picture. These comments will be generated into a subtitle file.
+This allows you to easily turn on/off the comments while playing your PhotoFilmStrip on a DVD-Player or with your favorite software player.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="sidebar">
+          <h3>Table of Contents</h3>
+          <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating a new PhotoFilmStrip</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#project-properties">Project properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-pictures">Add pictures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motion-control">Motion control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="renderpfs.html">Render a slideshow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="more.html">More functions</a></li>
+</ul>
+
+          <div role="search">
+            <h3 style="margin-top: 1.5em;">Search</h3>
+            <form class="search" action="search.html" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="Go" />
+            </form>
+          </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+    <div class="footer-wrapper">
+      <div class="footer">
+        <div class="left">
+          <div role="navigation" aria-label="related navigaton">
+            <a href="introduction.html" title="Introduction"
+              >previous</a> |
+            <a href="renderpfs.html" title="Render a slideshow"
+              >next</a> |
+            <a href="genindex.html" title="General Index"
+              >index</a>
+          </div>
+          <div role="note" aria-label="source link">
+          </div>
+        </div>
+
+        <div class="right">
+          
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2020, Jens Göpfert.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+    </div>
+
+  </body>
+</html>

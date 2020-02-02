@@ -1,31 +1,32 @@
 # Maintainer: Joseph Carta <cartakid@gmail.com>
 # Contributor: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
-pkgver=3.7.0
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/en/"
 license=('GPL2')
-depends=('python-wxpython' 'python-pillow' 'gst-python')
+depends=('python37' 'python37-pillow' 'python37-wxpython' 'gst-python')
 optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-plugins-good: additional rendering formats'
 	    'gst-plugins-ugly: additional rendering formats'
 	    'gst-libav: additional rendering formats')
-source=("https://sourceforge.net/projects/photostoryx/files/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('afc495ec3f67b024d3dd5c55063d2a78')
+source=("https://github.com/PhotoFilmStrip/PFS/archive/v$pkgver.tar.gz")
+md5sums=('a7b4362b9eb8ede7a4ee99f0165f383a')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py build
+	cd "$srcdir/PFS-$pkgver"
+	python3.7 setup.py build
 }
 
 package () {
-	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1
+	cd "$srcdir/PFS-$pkgver"
+	python3.7 setup.py install --root="$pkgdir" --optimize=1
 
 	chmod 644 "$pkgdir/usr/share/applications/photofilmstrip.desktop"
-
+	mkdir "$pkgdir"/usr/share/doc/photofilmstrip/html
+	cp -r ../../*.html "$pkgdir"/usr/share/doc/photofilmstrip/html
 	find "$pkgdir/usr/share/doc/photofilmstrip/" -type f -exec chmod 644 {} \;
 	
 	for size in 32x32 48x48 64x64 192x192
