@@ -1,6 +1,6 @@
 pkgbase = jetbrains-jre
 	pkgdesc = OpenJDK Java 11 runtime with some fixes and enhancements by JetBrains
-	pkgver = 11.0.4b462.3
+	pkgver = 11.0.6b702.1
 	pkgrel = 2
 	url = https://bintray.com/jetbrains/intellij-jdk
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = jetbrains-jre
 	provides = java-runtime-openjdk=11
 	provides = java-runtime-headless-jre=11
 	provides = java-environment-openjdk=11
-	source = https://dl.bintray.com/jetbrains/intellij-jbr/jbr-11_0_4-linux-x64-b462.3.tar.gz
-	sha256sums = 80fdb30d27f4ab42a86ebbf41881cb5ae3436b74e1efada3dc21d0a12030a818
+	source = https://dl.bintray.com/jetbrains/intellij-jbr/jbr-11_0_6-linux-x64-b702.1.tar.gz
+	sha256sums = 4eab7bdd141f1532f1db87155a7e2973c2743f631db9215f63c73a71ebce42b7
 
 pkgname = jetbrains-jre
 
