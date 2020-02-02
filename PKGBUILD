@@ -3,13 +3,12 @@
 pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
-pkgver='0.8.10'
-pkgrel=2
+pkgver='0.8.11'
+pkgrel=1
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://gitlab.com/sumner/sublime-music'
 depends=(
     'python'
-    'pygobject-devel'
     'python-bottle'
     'python-dateutil'
     'python-deepdiff'
@@ -22,6 +21,8 @@ depends=(
     'python-pychromecast'
     'python-requests'
     'python-yaml'
+    'libnm-glib'
+    'libnotify'
 )
 makedepends=(
     'python-setuptools'
@@ -31,25 +32,16 @@ makedepends=(
 license=('GPL3')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.8.10.tar.gz'
-    'https://gitlab.com/sumner/sublime-music/-/archive/master/sublime-music-master.tar.gz'
+    'https://files.pythonhosted.org/packages/source/s/sublime-music/sublime-music-0.8.11.tar.gz'
+    'https://gitlab.com/sumner/sublime-music/-/jobs/artifacts/v0.8.11/download?job=build_logo'
 )
-md5sums=('0de18ff308d578d9b2b9baf61c86ce72'
-         '4efb20f1a0c95a6c33d17767a9859623')
+md5sums=('480c6ad8306534e94442fb6d37dcfc9d'
+         '5202c452ef665c3d17c9c15787aa3276')
 
 
 build() {
-    pushd ${srcdir}
-
-    pushd "${_module}-${pkgver}"
+    cd "${srcdir}/${_module}-${pkgver}"
     python setup.py build
-    popd
-
-    pushd sublime-music-master/docs/logo
-    make
-    popd
-
-    popd
 }
 
 package() {
@@ -58,10 +50,6 @@ package() {
     pushd "${_module}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
     popd
-
-    pushd sublime-music-master
-
-    ls -lah
 
     desktop-file-install --dir=${pkgdir}/usr/share/applications sublime-music.desktop
 
@@ -78,7 +66,6 @@ package() {
     install -Dm644 192x192.png ${pkgdir}/usr/share/icons/hicolor/192x192/apps/sublime-music.png
     install -Dm644 512x512.png ${pkgdir}/usr/share/icons/hicolor/512x512/apps/sublime-music.png
     install -Dm644 1024x1024.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/sublime-music.png
-    popd
     popd
 
     popd

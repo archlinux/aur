@@ -5,7 +5,6 @@ PROJ_NAME=sublime-music
 DESCRIPTION="A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+."
 URL=https://gitlab.com/sumner/sublime-music
 DEPENDS=(
-    pygobject-devel
     python-bottle
     python-dateutil
     python-deepdiff
@@ -18,6 +17,8 @@ DEPENDS=(
     python-pychromecast
     python-requests
     python-yaml
+    libnm-glib
+    libnotify
 )
 LICENSE='GPL3'
 ADDITIONAL=
@@ -33,7 +34,7 @@ fi
 
 SRCS=(
     https://files.pythonhosted.org/packages/source/${PROJ_NAME:0:1}/${PROJ_NAME}/${PROJ_NAME}-$1.tar.gz
-    https://gitlab.com/sumner/sublime-music/-/archive/master/sublime-music-master.tar.gz
+    https://gitlab.com/sumner/sublime-music/-/jobs/artifacts/v$1/download?job=build_logo
 )
 
 printf '' > PKGBUILD
@@ -74,17 +75,8 @@ md5sums=()
 ${ADDITIONAL}
 
 build() {
-    pushd \${srcdir}
-
-    pushd \"\${_module}-\${pkgver}\"
+    cd \"\${srcdir}/\${_module}-\${pkgver}\"
     python setup.py build
-    popd
-
-    pushd sublime-music-master/docs/logo
-    make
-    popd
-
-    popd
 }
 
 package() {
@@ -93,10 +85,6 @@ package() {
     pushd \"\${_module}-\${pkgver}\"
     python setup.py install --root=\"\${pkgdir}\" --optimize=1 --skip-build
     popd
-
-    pushd sublime-music-master
-
-    ls -lah
 
     desktop-file-install --dir=\${pkgdir}/usr/share/applications sublime-music.desktop
 
@@ -113,7 +101,6 @@ package() {
     install -Dm644 192x192.png \${pkgdir}/usr/share/icons/hicolor/192x192/apps/sublime-music.png
     install -Dm644 512x512.png \${pkgdir}/usr/share/icons/hicolor/512x512/apps/sublime-music.png
     install -Dm644 1024x1024.png \${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/sublime-music.png
-    popd
     popd
 
     popd
