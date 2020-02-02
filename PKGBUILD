@@ -2,7 +2,7 @@
 # Contributor: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
 pkgver=3.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/en/"
@@ -12,8 +12,10 @@ optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-plugins-good: additional rendering formats'
 	    'gst-plugins-ugly: additional rendering formats'
 	    'gst-libav: additional rendering formats')
-source=("https://github.com/PhotoFilmStrip/PFS/archive/v$pkgver.tar.gz")
-md5sums=('a7b4362b9eb8ede7a4ee99f0165f383a')
+source=("https://github.com/PhotoFilmStrip/PFS/archive/v$pkgver.tar.gz"
+		'ActionI18N.patch')
+md5sums=('a7b4362b9eb8ede7a4ee99f0165f383a'
+         'c772c566c51a1176031142849a286635')
 
 build() {
 	cd "$srcdir/PFS-$pkgver"
@@ -22,7 +24,7 @@ build() {
 
 package () {
 	cd "$srcdir/PFS-$pkgver"
-	patch photofilmstrip/action/ActionI18N.py ../../ActionI18N.patch
+	patch photofilmstrip/action/ActionI18N.py ../ActionI18N.patch
 	python setup.py install --root="$pkgdir" --optimize=1
 
 	chmod 644 "$pkgdir/usr/share/applications/photofilmstrip.desktop"
