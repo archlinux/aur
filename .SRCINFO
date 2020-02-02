@@ -1,7 +1,7 @@
 pkgbase = ckan
 	pkgdesc = All you need to find, install, and manage mods for Kerbal Space Program (ksp)
 	pkgver = 1.26.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KSP-CKAN/CKAN/
 	arch = any
 	license = MIT
