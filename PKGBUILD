@@ -1,6 +1,6 @@
 _pkgname=nuvolasdk
 pkgname=python-${_pkgname}
-pkgver=4.9.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="SDK for building Nuvola Player's web app scripts"
 url="https://github.com/tiliado/nuvolasdk"
@@ -9,7 +9,7 @@ optdepends=()
 license=(BSD)
 arch=(any)
 source=(https://github.com/tiliado/nuvolasdk/archive/$pkgver.tar.gz)
-md5sums=('d02fdc87809f2f452bab771ac900b820')
+md5sums=('5ff50597edd69c6f21c1eb561002fff5')
 
 
 build() {
