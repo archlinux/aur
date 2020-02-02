@@ -1,0 +1,14 @@
+pkgbase = ftcfrcsimulator
+	pkgdesc = FIRST Tech Challenge and FIRST Robotics Competition Simulator
+	pkgver = 4.2
+	pkgrel = 1
+	url = http://ftcsimulator.org
+	arch = x86_64
+	license = unknown
+	depends = gtk2
+	optdepends = openvr: For VR support
+	source = ftcfrcsimulator-4.2.zip::http://ftcsimulator.org/?smd_process_download=1&download_id=794
+	sha1sums = f6b3ccfe3d958ebc4033eb68c3571e24bab36037
+
+pkgname = ftcfrcsimulator
+
