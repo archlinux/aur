@@ -1,12 +1,13 @@
 pkgbase = yuview
 	pkgdesc = The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/IENT/YUView
 	install = yuview.install
 	arch = x86_64
 	license = GPL3
 	depends = qt5-base
+	depends = qt5-charts
 	depends = desktop-file-utils
 	depends = libde265
 	provides = yuview
