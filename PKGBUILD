@@ -1,6 +1,6 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
-pkgname='suda-vim-git'
-pkgver=r58.c91b897
+pkgname=suda-vim-git
+pkgver=r60.a0c7068
 pkgrel=1
 pkgdesc="An alternative sudo.vim for Vim and Neovim ."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-# Git, no tags available
+	# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
