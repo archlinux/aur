@@ -1,7 +1,7 @@
 # Maintainer: Oscar Shrimpton <oscar.shrimpton.personal@gmail.com>,
 pkgname=sleuthkit-java
 pkgver=4.8.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Java bindings for The Sleuth Kit.'
 arch=(x86_64)
 url='http://www.sleuthkit.org/sleuthkit'
