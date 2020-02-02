@@ -3,13 +3,13 @@
 
 pkgname=ckan
 pkgver=1.26.8
-pkgrel=1
+pkgrel=2
 pkgdesc='All you need to find, install, and manage mods for Kerbal Space Program (ksp)'
 arch=('any')
 url="https://github.com/KSP-CKAN/CKAN/"
 license=('MIT')
 depends=('mono')
-makedepends=('msbuild-16-bin')
+makedepends=('msbuild')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KSP-CKAN/CKAN/archive/v${pkgver}.tar.gz")
 sha256sums=('951de9cf6e1ecc673b86e507c82d0e86c1c7512e0b947593f252256cf7cd0a39')
 
