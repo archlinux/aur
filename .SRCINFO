@@ -1,0 +1,14 @@
+pkgbase = python2-yapps2
+	pkgdesc = Yet Another Python Parser System
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/mk-fg/yapps
+	arch = any
+	license = MIT
+	makedepends = python2-distribute
+	depends = python2
+	source = https://files.pythonhosted.org/packages/7f/5d/f8b7dec89104f27d14b11711baf057194670ab220ebb8262f9bc1a450380/Yapps2-2.2.0.tar.gz
+	md5sums = 900c08edf5f794e259f7469f493bc065
+
+pkgname = python2-yapps2
+
