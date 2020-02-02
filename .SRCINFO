@@ -1,27 +1,24 @@
 pkgbase = reminiscence
 	pkgdesc = A rewrite of the flashback engine
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = http://cyxdown.free.fr/reminiscence/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = p7zip
-	makedepends = patch
 	depends = sdl2
 	depends = libmodplug
 	depends = zlib
 	depends = bash
 	depends = libtremor-svn
 	noextract = flashback_data_files.7z
-	source = http://cyxdown.free.fr/reminiscence/REminiscence-0.4.5.tar.bz2
+	source = http://cyxdown.free.fr/reminiscence/REminiscence-0.4.6.tar.bz2
 	source = http://gtamp.com/PSP/flashback_data_files.7z
 	source = reminiscence.sh
-	source = fix-makefile.patch
-	md5sums = ebdb0027c77fceae39b4edfb1b231adc
+	md5sums = 959af798014751c86c69a85f28d54c15
 	md5sums = f994412ad4246c587896dab7d2eb9627
 	md5sums = 4ed0350e4b81e9ba305f90e157c75371
-	md5sums = 4e0815ccd056c38ab694ca77c03fac51
 
 pkgname = reminiscence
 
