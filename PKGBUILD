@@ -3,7 +3,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vkd3d-valve-git
-pkgver=40e4a74
+pkgver=1.1.r695.g40e4a74
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library (Valve version)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd vkd3d
-  git describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/vkd3d.//'
 }
 
 prepare() {
