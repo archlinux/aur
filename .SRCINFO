@@ -1,7 +1,7 @@
 pkgbase = vkbasalt
 	pkgdesc = A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DadSchoorse/vkBasalt
 	install = vkbasalt.install
 	arch = x86_64
@@ -14,20 +14,6 @@ pkgbase = vkbasalt
 	depends = lib32-gcc-libs
 	source = git+https://github.com/DadSchoorse/vkBasalt.git#tag=v0.3.0
 	source = git+https://github.com/DadSchoorse/reshade.git#commit=8d0a5db
-	source = git+https://github.com/skaslev/gl3w.git#commit=7729692
-	source = git+https://github.com/ocornut/imgui.git#commit=927580d
-	source = git+https://github.com/TsudaKageyu/minhook.git#commit=8fda4f5
-	source = git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=af64a9e
-	source = git+https://github.com/nothings/stb.git#commit=f67165c
-	source = git+https://github.com/nemtrif/utfcpp.git#commit=c3f9261
-	source = git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=5bc459e
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
