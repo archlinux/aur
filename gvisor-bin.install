@@ -1,0 +1,15 @@
+post_install() {
+	runsc install
+}
+
+pre_upgrade() {
+	runsc uninstall
+}
+
+post_upgrade() {
+	runsc install
+}
+
+pre_remove() {
+	runsc uninstall
+}
