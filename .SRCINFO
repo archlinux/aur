@@ -1,6 +1,6 @@
 pkgbase = lib32-vkd3d-valve-git
 	pkgdesc = D3D12 to Vulkan translation library. 32-bit (Valve version)
-	pkgver = 40e4a74
+	pkgver = 1.1.r695.g40e4a74
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/vkd3d
 	arch = x86_64
