@@ -1,0 +1,19 @@
+pkgbase = pueue-bin
+	pkgdesc = A command scheduler for shells
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/nukesor/pueue
+	arch = any
+	license = MIT
+	provides = pueue
+	conflicts = pueue-git
+	conflicts = pueue
+	source = https://github.com/Nukesor/pueue/archive/v0.1.4.tar.gz
+	source = https://github.com/Nukesor/pueue/releases/download/v0.1.4/pueue-linux-amd64
+	source = https://github.com/Nukesor/pueue/releases/download/v0.1.4/pueued-linux-amd64
+	sha256sums = 8e156d1037a88448219d9c5bdbc844799e616604985c86a83541f0a23481f302
+	sha256sums = 039d11971a190562210fc9ee2a1504256fd1440b9471e1bbbc9bbb86eca3ce49
+	sha256sums = 5933369d330b45e98adf2b7847b6d63314d590c7c78f4bf243a7189cc4b6fd4a
+
+pkgname = pueue-bin
+
