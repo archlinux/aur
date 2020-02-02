@@ -1,0 +1,7 @@
+LICENSE
+*.zip
+*.log
+*.tar.xz
+*.tar.zst
+pkg/
+src/
