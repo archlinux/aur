@@ -1,14 +1,30 @@
 pkgbase = ftcfrcsimulator
 	pkgdesc = FIRST Tech Challenge and FIRST Robotics Competition Simulator
 	pkgver = 4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ftcsimulator.org
 	arch = x86_64
 	license = unknown
 	depends = gtk2
 	optdepends = openvr: For VR support
 	source = ftcfrcsimulator-4.2.zip::http://ftcsimulator.org/?smd_process_download=1&download_id=794
+	source = ftcfrcsimulator.desktop
+	source = 16x16.png
+	source = 24x24.png
+	source = 32x32.png
+	source = 48x48.png
+	source = 64x64.png
+	source = 128x128.png
+	source = 256x256.png
 	sha1sums = f6b3ccfe3d958ebc4033eb68c3571e24bab36037
+	sha1sums = 53940cf0b7bf2acb748949b8c572a89b5711ba4e
+	sha1sums = 5b3f36d076bd653468b14f1f2afd8dd74e84ca27
+	sha1sums = 385243f17f54ebd8dae00292fa228c8e3cf980d8
+	sha1sums = 583c25b180d5f186fc797fb6ff5975483e79496b
+	sha1sums = ca5d0e8da475c3755eb4ecd8f48b455cec3a482c
+	sha1sums = 16c8e3fa3ab27d148f2c86a3cd18fad73b5e7016
+	sha1sums = 3fe9749c44c1e7d7060ec5c1ff8903ff37f1c488
+	sha1sums = 0906ac5d429d0370779e77f3fd194848e9c8b70c
 
 pkgname = ftcfrcsimulator
 
