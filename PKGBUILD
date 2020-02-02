@@ -2,12 +2,15 @@
 pkgname=yuview
 _pkgname=YUView
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Free and Open Source Cross Platform YUV Viewer with an advanced analytics toolset"
 arch=('x86_64')
 url="https://github.com/IENT/YUView"
 license=('GPL3')
-depends=('qt5-base' 'desktop-file-utils' 'libde265')
+depends=('qt5-base'
+         'qt5-charts'
+         'desktop-file-utils'
+         'libde265')
 provides=("$pkgname")
 conflicts=("$pkgname" "$_pkgname")
 source=("${url}/archive/${pkgver}.zip"
