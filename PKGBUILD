@@ -1,17 +1,17 @@
 # Maintainer: Thomas Andres <thomas at andres dot in>
 pkgname=openhantek6022-git
 _gitname=OpenHantek6022
-pkgver=v2.15
-pkgrel=2
-pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE / BL."
+pkgver=3.0.2.rc1
+pkgrel=1
+pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
 arch=('i686' 'x86_64')
-url=https://github.com/OpenHantek/OpenHantek6022
+url="https://github.com/OpenHantek/OpenHantek6022"
 license=('GPL3')
-depends=('fftw' 'qt5-base')
-makedepends=('git' 'cmake' 'make' 'sed' 'binutils' 'gcc' 'gendesk' 'qt5-tools')
+depends=('fftw>=3' 'qt5-base>=5.4' 'qt5-svg>=5.4' 'libusb>=1.0.16')
+makedepends=('git' 'cmake>=3.5' 'make' 'sed' 'gcc>=4.3' 'gendesk' 'qt5-tools>=5.4')
 conflicts=(openhantek6022 openhantek openhantek-git)
 provides=(openhantek6022)
-source=('git+https://github.com/OpenHantek/OpenHantek6022.git')
+source=("$_gitname::git+https://github.com/OpenHantek/OpenHantek6022.git")
 md5sums=('SKIP')
 
 prepare() {
@@ -30,12 +30,12 @@ prepare() {
 
 pkgver() {
     cd $_gitname
-    git describe --tags $(git rev-list --tags --max-count=1)
+    git describe --tags $(git rev-list --tags --max-count=1) | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd $_gitname
-    git checkout $pkgver -q
+    git checkout $(git describe --tags $(git rev-list --tags --max-count=1)) -q
     [[ ! -d build ]] && mkdir -p build
     cd build
     cmake \
@@ -52,5 +52,5 @@ package() {
     install -Dm644 "$_gitname.desktop" "$pkgdir/usr/share/applications/$_gitname.desktop"
     
     cd $_gitname/openhantek/res/images
-    install -Dm644 OpenHantek6022.svg "$pkgdir/usr/share/pixmaps/$_gitname.svg"
+    install -Dm644 OpenHantek.svg "$pkgdir/usr/share/pixmaps/$_gitname.svg"
 }
