@@ -4,11 +4,6 @@ post_install() {
   mkfontscale /usr/share/fonts/OTF
   mkfontdir /usr/share/fonts/OTF
   echo "done"
-  echo ""
-  echo ":: Font name changed. Now 'FuraMono', for example"
-  echo "   'was' FiraMonoFor Nerd Font Medium 10"
-  echo "   'now' FuraMono Nerd Font Medium 10"
-  echo "   edit your configs accordingly"
 }
 
 post_upgrade() {
