@@ -1,6 +1,6 @@
 pkgbase = python-gammapy
 	pkgdesc = A Python package for gamma-ray astronomy
-	pkgver = 0.15
+	pkgver = 0.16
 	pkgrel = 1
 	url = https://gammapy.org/
 	arch = i686
@@ -19,8 +19,8 @@ pkgbase = python-gammapy
 	checkdepends = python-pydantic
 	makedepends = cython
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.15.tar.gz
-	md5sums = 49b0ef74115dc9e345b1f95e96b390d9
+	source = https://files.pythonhosted.org/packages/source/g/gammapy/gammapy-0.16.tar.gz
+	md5sums = d2838c432053c772095ae9a71bce65f2
 
 pkgname = python-gammapy
 	depends = python>=3.6
@@ -29,10 +29,8 @@ pkgname = python-gammapy
 	depends = python-regions>=0.4
 	depends = python-click>=7.0
 	depends = python-pydantic>=1.0
-	optdepends = python-reproject: For image reprojection
 	optdepends = python-iminuit: For fitting by optimization
 	optdepends = python-pandas: For working with tables
-	optdepends = python-uncertainties: For linear error propagation
 	optdepends = python-matplotlib: For plotting
 	optdepends = python-emcee: For fitting by MCMC sampling
 	optdepends = python-corner: For MCMC corner plots

@@ -3,7 +3,7 @@ pkgbase=python-gammapy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc="A Python package for gamma-ray astronomy"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ checkdepends=('python-pytest'
               'python-click'
               'python-pydantic')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('49b0ef74115dc9e345b1f95e96b390d9')
+md5sums=('d2838c432053c772095ae9a71bce65f2')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -42,10 +42,8 @@ check() {
 
 package_python-gammapy() {
     depends=('python>=3.6' 'python-yaml>=5.1' 'python-astropy>=3.2' 'python-regions>=0.4' 'python-click>=7.0' 'python-pydantic>=1.0')
-    optdepends=('python-reproject: For image reprojection'
-                'python-iminuit: For fitting by optimization'
+    optdepends=('python-iminuit: For fitting by optimization'
                 'python-pandas: For working with tables'
-                'python-uncertainties: For linear error propagation'
                 'python-matplotlib: For plotting'
                 'python-emcee: For fitting by MCMC sampling'
                 'python-corner: For MCMC corner plots'
