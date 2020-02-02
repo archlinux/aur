@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b52dbb3..f278060 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,10 +37,9 @@
+     include_directories(${LUA_INCLUDE_DIRS})
+     
+     # Look for JSON
+-    find_package(jsoncpp CONFIG)
+-    if(jsoncpp_FOUND)
+-        set(JSONCPP_LIBRARIES jsoncpp_lib)
+-    endif()
++    pkg_search_module(jsoncpp jsoncpp)
++    include_directories(${jsoncpp_INCLUDE_DIRS})
++    set(JSONCPP_LIBRARIES ${jsoncpp_LIBRARIES})
+ 
+     # Look for Qxt
+     pkg_search_module(QXT_CORE QxtCore-qt5)
