@@ -1,13 +1,13 @@
 pkgbase = vim-lastplace
 	pkgdesc = Intelligently reopen files at your last edit position in Vim.
-	pkgver = 3.1.1
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/farmergreg/vim-lastplace
 	arch = any
 	license = MIT
 	depends = vim
-	source = vim-lastplace-3.1.1.tar.gz::https://github.com/farmergreg/vim-lastplace/archive/v3.1.1.tar.gz
-	md5sums = 7a688354f5e3d69f9a898f9a4f471fbf
+	source = vim-lastplace-3.2.1.tar.gz::https://github.com/farmergreg/vim-lastplace/archive/v3.2.1.tar.gz
+	md5sums = 24f767ea68db55e0ae52b72695fe3958
 
 pkgname = vim-lastplace
 
