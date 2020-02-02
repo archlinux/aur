@@ -1,0 +1,2 @@
+d /opt/freenet-fms 0770 fms fms
+d /opt/freenet-fms/translations 0770 fms fms

@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Type=forking
 User=fms
-ExecStart=/opt/fms/fms --daemon
-WorkingDirectory=/opt/fms
+ExecStart=/opt/freenet-fms/fms --daemon
+WorkingDirectory=/opt/freenet-fms
 
 [Install]
 WantedBy=multi-user.target
