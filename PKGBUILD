@@ -2,29 +2,15 @@
 
 pkgname=vkbasalt
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('zlib')
 depends=('glslang' 'vulkan-headers' 'vulkan-tools' 'vulkan-validation-layers' 'lib32-glibc' 'lib32-gcc-libs')
 source=("git+https://github.com/DadSchoorse/vkBasalt.git#tag=v${pkgver}"
-        "git+https://github.com/DadSchoorse/reshade.git#commit=8d0a5db"
-        "git+https://github.com/skaslev/gl3w.git#commit=7729692"
-        "git+https://github.com/ocornut/imgui.git#commit=927580d"
-        "git+https://github.com/TsudaKageyu/minhook.git#commit=8fda4f5"
-        "git+https://github.com/KhronosGroup/SPIRV-Headers.git#commit=af64a9e"
-        "git+https://github.com/nothings/stb.git#commit=f67165c"
-        "git+https://github.com/nemtrif/utfcpp.git#commit=c3f9261"
-        "git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=5bc459e")
+        "git+https://github.com/DadSchoorse/reshade.git#commit=8d0a5db")
 sha256sums=(SKIP
-            SKIP
-            SKIP
-            SKIP
-            SKIP
-            SKIP
-            SKIP
-            SKIP
             SKIP)
 install=vkbasalt.install
 
@@ -33,17 +19,8 @@ prepare() {
   git submodule init
   git config submodule.reshade.url ../reshade
   git submodule update
-  
-  cd reshade/deps
-  git submodule init
-  git config submodule.gl3w.url ../../../gl3w
-  git config submodule.imgui.url ../../../imgui
-  git config submodule.minhook.url ../../../minhook
-  git config submodule.spirv.url  ../../../SPIRV-Headers
-  git config submodule.stb.url ../../../stb
-  git config submodule.utfcpp.url ../../../utfcpp
-  git config submodule.vulkan.url ../../../Vulkan-Headers
-  git submodule update
+
+  sed -i 's|../reshade/deps/spirv/include/spirv/unified1|/usr/include/SPIRV/|g' src/makefile
 }
 
 build() {
