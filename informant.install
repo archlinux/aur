@@ -1,11 +1,15 @@
+CLEAR="$(tput sgr0)"
+YELLOW="${bold}$(tput setaf 3)"
+
 post_install() {
-    groupadd informant
+    groupadd informant 2>/dev/null
     touch /var/cache/informant.dat
     chgrp informant /var/cache/informant.dat
     chmod 664 /var/cache/informant.dat
-    printf 'NOTE: Add yourself to group "informant" to avoid the need for sudo'
+    printf "%sNOTE%s: Add yourself to group \"informant\" to avoid the need for sudo\n" "$YELLOW" "$CLEAR"
 }
 
 post_upgrade() {
     post_install
+    printf "%sWARNING%s: This update changes the format of the /var/cache/informant.dat file, you will need to re-read all news items.\n" "$YELLOW" "$CLEAR"
 }

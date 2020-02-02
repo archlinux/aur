@@ -1,7 +1,7 @@
 pkgbase = informant
 	pkgdesc = An Arch Linux News reader and pacman hook
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/bradford-smith94/informant
 	install = informant.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = informant
 	depends = python-dateutil
 	depends = python-feedparser
 	depends = python-html2text
-	source = https://github.com/bradford-smith94/informant/archive/v0.1.0.tar.gz
+	source = https://github.com/bradford-smith94/informant/archive/v0.2.0.tar.gz
 	sha256sums = b0181dbb940a27328524f0ee0c3aede9eef26c77d25d92868cbde4b6db071fea
 
 pkgname = informant
