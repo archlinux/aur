@@ -12,7 +12,7 @@ _srcname=${pkgbase}
 _kernel_rel=5.6
 _branch=drm-next-${_kernel_rel}
 _kernelname=${pkgbase#linux}
-pkgver=5.5.874199.ad808910be68
+pkgver=5.6.888851.7b19914383fc
 pkgrel=1
 arch=(x86_64)
 url='https://cgit.freedesktop.org/~agd5f/linux/'
@@ -27,7 +27,7 @@ source=("${pkgbase}::git://people.freedesktop.org/~agd5f/linux#branch=${_branch}
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '181a57b05b84814c48c724c135f8b644306db55d1cf983622e5040e03694fff1')
+            'a8e4a57ca3ed7c525f79f350cb6f862a1a3f6047af92432885bdc8155736e5ab')
 pkgver() {
   cd "${_srcname}"
   local version="$(grep \^VERSION Makefile|cut -d"=" -f2|cut -d" " -f2)"
