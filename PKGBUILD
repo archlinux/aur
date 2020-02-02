@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.5
+pkgver=5.5.1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver}-arch1
@@ -42,16 +42,18 @@ source=(
   config         # the main kernel config file
   "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
+  "0003-hid-logitech-hidpp-read-battery-voltage-from-newer-d.patch::https://github.com/torvalds/linux/commit/be281368f29797cf4b318ad890673ce96bb9251e.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('25209f1e4fcb95311d1cb7cdfbdba9804dea73b73777873328fd3d2908fc9c5d'
+sha256sums=('d386c134ad9964d09a1fe1d88b3112e933ef5f9ebd75b3ee50074ac9d6f669f4'
             '4058ecf0c5a8b28ec25f530c0b21c218e7e085ea38f4e69dd8ee91f915aeb58f'
             '20fb5844b6d836eeb5cb5a66e58b4fa581d4edbaec3337f61a50992714c3b0b5'
-            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
+            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
+            'a22b4a11daf86edaf4b6c9d5ccc09d7adf8c552c2f52965bf273d8edbea1fbbd')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -101,7 +103,7 @@ prepare() {
   yes "" | make config >/dev/null
 
   make -s kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared ${pkgbase} version $(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
