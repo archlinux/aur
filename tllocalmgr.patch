@@ -1,0 +1,58 @@
+diff --git a/tllocalmgr b/tllocalmgr
+index b947ed2..e238263 100755
+--- a/tllocalmgr
++++ b/tllocalmgr
+@@ -227,6 +227,7 @@ my @updatedpkgs; # pkgs for which updates are available
+ foreach my $col (sort keys %installedcol_versions) {
+ 	#my $installedver = `pacman -Q texlive-$col`;
+ 	#$installedver =~ s/texlive-$col $YEAR\.([0-9]+)-.+/$1/;
++	next if ( $col eq "tlpdb" ) ;
+ 	next unless ( $installedcol_versions{$col} < $versions{$col} ) ;
+ 	foreach my $pkg (sort @{$tlpackages{$col}}) {
+         my $tlpkg = $tlpdb->get_package($pkg);
+@@ -636,6 +637,7 @@ pkgrel=1
+ pkgdesc="TeX Live - local installation of CTAN package $pkg"
+ license=('GPL')
+ arch=('any')
++groups=('texlive-local')
+ depends=('texlive-core')
+ conflicts=('texlive-$col>=$YEAR.$newver')
+ url='http://tug.org/texlive/'
+@@ -670,11 +672,12 @@ EOF
+ 	#	open INSTALL, "> $ROOT/builds/$pkg/texlive.install";
+ 	#	print INSTALL $TLINSTALL;
+ 	#	close INSTALL;
+-		print LOG "* Running makepkg -ci on $ROOT/builds/$pkg/PKGBUILD\n";
++		system( "makepkg --printsrcinfo > .SRCINFO" );
++		print LOG "* Running makepkg -i on $ROOT/builds/$pkg/PKGBUILD\n";
+ 		chdir "$ROOT/builds/$pkg";
+ 		system( "test -f $pkg.tar.xz && rm $pkg.tar.xz" );
+ 		# TODO : catch error if makepkg fails
+-		system( "makepkg -ci" );
++		system( "makepkg -i" );
+ 	}
+ 
+ 	print "\n>>> Finished. Don't forget to run 'texhash' to update your file database.\n";
+@@ -729,6 +732,7 @@ pkgrel=1
+ pkgdesc="TeX Live - local installation of CTAN package $pkg (documentation and sources)"
+ license=('GPL')
+ arch=('any')
++groups=('texlive-local')
+ depends=('texlive-core')
+ url='http://tug.org/texlive/'
+ EOF
+@@ -773,11 +777,12 @@ EOF
+ 	#	open INSTALL, "> $ROOT/builds/$pkg/texlive.install";
+ 	#	print INSTALL $TLINSTALL;
+ 	#	close INSTALL;
+-		print LOG "* Running makepkg -ci on $ROOT/builds/$pkg-doc/PKGBUILD\n";
++		system( "makepkg --printsrcinfo > .SRCINFO" );
++		print LOG "* Running makepkg -i on $ROOT/builds/$pkg-doc/PKGBUILD\n";
+ 		chdir "$ROOT/builds/$pkg-doc";
+ 		system( "test -f $pkg-*.tar.xz && rm $pkg-*.tar.xz" );
+ 		# TODO : catch error if makepkg fails
+-		system( "makepkg -ci" );
++		system( "makepkg -i" );
+ 		}
+ 	
+ 

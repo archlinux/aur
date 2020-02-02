@@ -1,42 +1,47 @@
-# Maintainer: XZS <d dot f dot fischer at web dot de>
+# Maintainer: Hans-Nikolai Viessmann <hans at viess dot mn>
+# Contributor: XZS <d dot f dot fischer at web dot de>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 # Contributor: Firmicus <francois . archlinux . org>
 
 pkgname=texlive-localmanager-git
-pkgver=0.7
-pkgrel=2
-pkgdesc="A shell and command-line utility to manage TeXLive on Arch Linux"
+_pkgname="${pkgname%-git}"
+pkgver=v0.7.r3.gbbd8488
+pkgrel=1
+pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
-url="http://wiki.archlinux.org/index.php?title=TeXLive#TeXLive_Local_Manager"
+url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
 license=('GPL')
+provides=("texlive-localmanager=$pkgver")
+conflicts=('texlive-localmanager')
 depends=('texlive-core>=2011'
          'perl-libwww'
          'perl-term-shellui'
          'perl-term-readline-gnu'
          'perl-list-moreutils'
          'perl-lwp-protocol-https')
-install='tllocalmgr.install'
+makedepends=('git')
 
-_giturl="git://projects.archlinux.org/users/remy/${pkgname%-git}.git"
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
-for integ in $(get_integlist)
-do
-  typeset -n array="${integ}sums"
-  array+=('SKIP')
-done
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
+source=("${_pkgname}::git://git.archlinux.org/users/remy/texlive-localmanager.git"
+        'tllocalmgr.patch')
+sha256sums=('SKIP'
+            '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236')
+
 pkgver() {
-  cd ${_gitname:-$pkgname}
-  git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
-  [ ${PIPESTATUS[0]} -eq 0 ] || \
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $_pkgname
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $_pkgname
+
+  # enhances the tllocalmgr script a bit
+  # thanks: @sharethewisdom and @cobaltspace
+  patch -p1 < "$srcdir/tllocalmgr.patch"
 }
 
 package() {
-  cd "$_gitname"
+  cd $_pkgname
   install -d $pkgdir/usr/{bin,share/texmf/arch/tlpkg/TeXLive}
   install -m755 tllocalmgr $pkgdir/usr/bin/
   cd tlpkg/TeXLive
