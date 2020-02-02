@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=kDrive
+Comment=Infomaniak Drive desktop synchronization client
+Exec=kDrive
+Icon=kDrive
+Type=Application
+Categories=Network;FileTransfer;
+Keywords=Infomaniak Drive;syncing;file;sharing;
+MimeType=application/vnd.kDrive;
