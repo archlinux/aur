@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
     cd $pkgname
-    git pull
 
     # Build the daemon and client
     cargo build --release
