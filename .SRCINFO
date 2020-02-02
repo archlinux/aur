@@ -1,0 +1,22 @@
+pkgbase = nerd-fonts-jetbrains-mono
+	pkgdesc = A Nerd Font patched version of JetBrains Mono
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://www.nerdfonts.com
+	install = nerd-fonts-jetbrains-mono.install
+	arch = any
+	license = MIT
+	makedepends = fontconfig
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-mkfontdir
+	depends = fontconfig
+	depends = xorg-font-utils
+	conflicts = nerd-fonts
+	conflicts = nerd-fonts-complete
+	source = JetBrainsMono-2.1.0.zip::https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/JetBrainsMono.zip
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/2.1.0/LICENSE
+	sha256sums = 842013fa44b6896d4eb91635a81ef75244d78d7f61ff866c9dfd3315a67788cd
+	sha256sums = d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5
+
+pkgname = nerd-fonts-jetbrains-mono
+
