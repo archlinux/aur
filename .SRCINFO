@@ -1,7 +1,7 @@
 pkgbase = zorba
 	pkgdesc = NoSQL(XQuery/JSONiq) Query Processor written in C++.
-	pkgver = 3.0
-	pkgrel = 2
+	pkgver = 4.0
+	pkgrel = 1
 	url = http://www.zorba.io/
 	arch = i686
 	arch = x86_64
@@ -23,16 +23,12 @@ pkgbase = zorba
 	optdepends = python2: python 2 bindings
 	optdepends = java-runtime: java bindings
 	optdepends = ruby: ruby bindings
-	source = http://launchpad.net/zorba/trunk/3.0/+download/zorba-3.0.tar.gz
-	source = item_handle.patch
+	source = https://github.com/zorba-processor/zorba/archive/4.0.tar.gz
 	source = bindings_dirs.patch
 	source = swig_xqj.patch
-	source = parser_bison_3_0_compatibility.patch
-	md5sums = 652e67103597e36126586ed1432e23bd
-	md5sums = 1ec5d529746472147af9c325b0f49a62
-	md5sums = 465cb60352b3a564da363b3e1cc80dcf
-	md5sums = 93227da5598469f57eb1ff44e225c8d6
-	md5sums = a578bf5966ab6dca4bdecfda5dff13c7
+	sha512sums = 8173de6058c72b2a804a91f8f888c27f3d2af2e288512ce4908cc3582858ad9f708ce434e1069ef9e4c8fe5a61b076829b3f8aed266d45548a3f1eda387f1100
+	sha512sums = 0a25606f608d42bfb47415a5908413581d2bc94b37527cde74b12c5b70c949a61904784ee4ddd0df65f24cb61c9f8bb2a08d6d847789511bc4a41ee0b53fb260
+	sha512sums = 8f3fb456daf70fdafbf2cabcabd3632f9d30371aec7ae3da58fc8dd2e5ddba66f5905fb461ef511afa93c6d47cf569ea9d3df632229c512f64a4c2d93708d66e
 
 pkgname = zorba
 

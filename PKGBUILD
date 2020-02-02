@@ -3,8 +3,8 @@
 # Contributor: Nikolay Amiantov <nikoamia@gmail.com> (added bindings packaging)
 # Contributor: Ivan Kanakarakis <ivan.kanak@gmail.com> (fixed bison failures)
 pkgname=zorba
-pkgver=3.0
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="NoSQL(XQuery/JSONiq) Query Processor written in C++."
 url="http://www.zorba.io/"
 arch=('i686' 'x86_64')
@@ -29,24 +29,18 @@ makedepends=('cmake>=2.8.0'
              'java-environment'
              'ruby'
 )
-source=(http://launchpad.net/${pkgname}/trunk/3.0/+download/${pkgname}-${pkgver}.tar.gz
-        item_handle.patch
+source=(https://github.com/zorba-processor/zorba/archive/${pkgver}.tar.gz
         bindings_dirs.patch
 	swig_xqj.patch
-        parser_bison_3_0_compatibility.patch
 )
-md5sums=('652e67103597e36126586ed1432e23bd'
-         '1ec5d529746472147af9c325b0f49a62'
-         '465cb60352b3a564da363b3e1cc80dcf'
-         '93227da5598469f57eb1ff44e225c8d6'
-	 'a578bf5966ab6dca4bdecfda5dff13c7')
+sha512sums=('8173de6058c72b2a804a91f8f888c27f3d2af2e288512ce4908cc3582858ad9f708ce434e1069ef9e4c8fe5a61b076829b3f8aed266d45548a3f1eda387f1100'
+            '0a25606f608d42bfb47415a5908413581d2bc94b37527cde74b12c5b70c949a61904784ee4ddd0df65f24cb61c9f8bb2a08d6d847789511bc4a41ee0b53fb260'
+            '8f3fb456daf70fdafbf2cabcabd3632f9d30371aec7ae3da58fc8dd2e5ddba66f5905fb461ef511afa93c6d47cf569ea9d3df632229c512f64a4c2d93708d66e')
 
 prepare() {
   cd "$srcdir/${pkgname}-${pkgver}"
-  patch -p1 -i ../item_handle.patch
   patch -p1 -i ../bindings_dirs.patch
   patch -p1 -i ../swig_xqj.patch
-  patch -p1 -i ../parser_bison_3_0_compatibility.patch
 }
 
 build() {
