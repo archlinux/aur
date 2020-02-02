@@ -1,6 +1,6 @@
 pkgbase = nodejs-cross-env
 	pkgdesc = Node cross platform setting of environment scripts.
-	pkgver = 5.2.0
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/kentcdodds/cross-env
 	arch = i686
@@ -8,9 +8,9 @@ pkgbase = nodejs-cross-env
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = cross-env-5.2.0.tgz
-	source = http://registry.npmjs.org/cross-env/-/cross-env-5.2.0.tgz
-	sha256sums = 0d6248a06117ecb7e1ab3e60d723a45afd769c7bfd639301817ee8e4558aa63f
+	noextract = cross-env-7.0.0.tgz
+	source = http://registry.npmjs.org/cross-env/-/cross-env-7.0.0.tgz
+	sha256sums = 4df786cc186198073a21810c43c82ce029329afa5e751f402ca9b0967aec1bc5
 
 pkgname = nodejs-cross-env
 
