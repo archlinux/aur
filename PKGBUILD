@@ -3,13 +3,13 @@
 
 pkgname=xf86-video-amdgpu-git
 _pkgname=xf86-video-amdgpu
-pkgver=19.0.1.12
+pkgver=19.1.0.1
 pkgrel=1
 pkgdesc="X.org amdgpu video driver (git version)"
 arch=('x86_64')
 url="https://xorg.freedesktop.org/"
 license=('custom')
-depends=(''systemd-libs'' 'mesa')
+depends=('systemd-libs' 'mesa')
 makedepends=('xorg-server-devel' 'systemd' 'git' 'pixman')
 conflicts=('xf86-video-amdgpu' 'xorg-server<1.20.0')
 provides=('xf86-video-amdgpu')
