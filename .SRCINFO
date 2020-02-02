@@ -1,0 +1,14 @@
+pkgbase = brother-hl6180dw-lpr-bin
+	pkgdesc = LPR driver for Brother HL-6180DW printer
+	pkgver = 3.0.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=hl6180dw_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = http://www.brother.com/pub/bsc/linux/dlf/hl6180dwlpr-3.0.0-1.i386.deb
+	md5sums = 99af1581fcbd4fcf20b01646e65215d3
+
+pkgname = brother-hl6180dw-lpr-bin
+
