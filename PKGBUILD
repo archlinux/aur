@@ -23,7 +23,7 @@ build() {
     cd $pkgname
 
     # Build the daemon and client
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
