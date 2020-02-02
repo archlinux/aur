@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=python-setuptools-docs
-pkgver=42.0.2
-pkgrel=3
+pkgver=45.1.0
+pkgrel=1
 pkgdesc="Documentation for Python Setuptools module."
 arch=('any')
 url='https://github.com/pypa/setuptools'
