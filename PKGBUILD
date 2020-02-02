@@ -1,4 +1,4 @@
-# Maintainer: Caio Novais <caionov08 at protonmail dot com>
+# Maintainer: Caio Novais <caionov08 at gmail dot com>
 pkgname=pfetch
 pkgver=0.4.0
 pkgrel=1
