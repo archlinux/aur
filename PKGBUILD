@@ -2,14 +2,14 @@
 
 pkgname=olive-git
 _pkgname=olive
-pkgver=continuous.r33.g5e0e0334
-_commit=5e0e0334
+pkgver=continuous.r970.g9b7cbb3f
+_commit=9b7cbb3f
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Free non-linear video editor"
 url="https://www.olivevideoeditor.org/"
 license=('GPL3')
-depends=('ffmpeg' 'opencolorio' 'qt5-multimedia' 'qt5-svg')
+depends=('ffmpeg' 'openimageio' 'qt5-multimedia')
 makedepends=('cmake' 'git' 'qt5-tools')
 
 # Temporarily, the "olive-git" package is incompatible
@@ -20,7 +20,7 @@ makedepends=('cmake' 'git' 'qt5-tools')
 
 provides=('olive')
 conflicts=('olive')
-source=("git+https://github.com/olive-editor/olive#commit=$_commit")
+source=("git+https://github.com/olive-editor/olive.git")
 sha512sums=('SKIP')
 
 pkgver() {
