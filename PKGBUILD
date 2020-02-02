@@ -2,7 +2,7 @@
 
 _name="pydantic"
 pkgname="python-${_name}"
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Data validation using Python type hinting"
 arch=("x86_64")
@@ -14,7 +14,7 @@ optdepends=("python-ujson: faster JSON parsing in pure Python"
             "python-email-validation: enable email validation")
 checkdepends=("python-pytest-cov" "mypy")
 source=("https://github.com/samuelcolvin/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('9297ac8e7398d2d0d0f5114d68698e1bc713495199f19458ec137a6be74342cf')
+sha256sums=('49d8502e5c55d3bb14afa81931bb877baeb40c142e90f663b4c85383b7155be5')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
