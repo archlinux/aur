@@ -1,7 +1,7 @@
 pkgbase = photofilmstrip
 	pkgdesc = Create video clips from photos
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.photofilmstrip.org/en/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = photofilmstrip
 	depends = python37
 	depends = python37-pillow
 	depends = python37-wxpython
+	depends = python37-gobject
+	depends = python37-six
 	depends = gst-python
 	optdepends = gst-plugins-bad: additional rendering formats
 	optdepends = gst-plugins-good: additional rendering formats

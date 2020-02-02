@@ -2,12 +2,12 @@
 # Contributor: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/en/"
 license=('GPL2')
-depends=('python37' 'python37-pillow' 'python37-wxpython' 'gst-python')
+depends=('python37' 'python37-pillow' 'python37-wxpython' 'python37-gobject' 'python37-six' 'gst-python')
 optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-plugins-good: additional rendering formats'
 	    'gst-plugins-ugly: additional rendering formats'
