@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.0.1.3510+grpcfree
+pkgver=2.0.1.3574+proto
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
 depends=(
     'hicolor-icon-theme' 'qt5-base>5.11.0' 'qt5-charts>5.11.0'
-    'v2ray' 'v2ray-domain-list-community' 'v2ray-geoip'
+    'v2ray' 'v2ray-domain-list-community' 'v2ray-geoip' 'protobuf'
 )
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'go')
 provides=('qv2ray')
@@ -31,7 +31,7 @@ sha512sums=(
 )
 
 pkgver() {
-    printf "%s.%s+grpcfree" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
+    printf "%s.%s+proto" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
 }
 
 prepare() {
@@ -45,6 +45,8 @@ prepare() {
     git config submodule."libs/libqvb".url "${srcdir}/QvRPCBridge"
     git config submodule."libs/gRPC-win32".active false
     git submodule update
+    
+    bash -c "${srcdir}/Qv2ray/tools/unix-generate-geosite.sh"
 }
 
 build() {
