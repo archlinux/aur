@@ -3,22 +3,23 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[dot]com>
 #
 pkgname="imagination"
-pkgver="3.4"
+pkgver="3.5"
 pkgrel="1"
 pkgdesc="Imagination is a lightweight and simple DVD slideshow maker in GTK+2."
 arch=('i686' 'x86_64')
 url="http://imagination.sourceforge.net/"
 license=('GPL')
-depends=('gtk2' 'ffmpeg' 'sox')
-makedepends=('intltool' 'docbook-xsl')
-provides=('imagination')
-source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2)
-sha256sums=('1c7cceb54a2316586c39149364110fb1a15f0a580be130847e78a256529d55e4')
+depends=('gtk3' 'ffmpeg' 'sox')
+makedepends=('intltool' 'docbook-xsl' 'libxslt')
+source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
+sha256sums=('6cf1621b7bbb1a21b8a845a7250dcaf3281734c3ce0e0ff146cf5f323d00f100')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i 's/PLUGINS_INSTALLED 0/PLUGINS_INSTALLED 1/g' src/support.h
-    LDFLAGS="-lm -lgmodule-2.0" ./configure --prefix=/usr
+    #sed -i 's/PLUGINS_INSTALLED 0/PLUGINS_INSTALLED 1/g' src/support.h
+    ./autogen.sh
+    #LDFLAGS="-lm -lgmodule-2.0" 
+    ./configure --prefix=/usr
     make
 }
 
@@ -27,4 +28,4 @@ package() {
     make DESTDIR="${pkgdir}" install
 }
 
-# vim:set ts=4 sw=4 ft=sh et:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
