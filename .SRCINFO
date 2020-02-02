@@ -1,6 +1,6 @@
 pkgbase = asbru-cm-loki-git
-	pkgdesc = A free and open-source connection manager. loki depelopment branch. GIT version
-	pkgver = 6.1.0
+	pkgdesc = A free and open-source connection manager. -loki depelopment branch. GIT version
+	pkgver = 6.0.3.r58.ge288016
 	pkgrel = 1
 	url = https://github.com/asbru-cm/asbru-cm
 	arch = any
@@ -36,9 +36,7 @@ pkgbase = asbru-cm-loki-git
 	optdepends = tigervnc: for VNC connections
 	optdepends = perl-x11-guitest: To fit perfectly RDP tabs
 	source = git+https://github.com/asbru-cm/asbru-cm.git#branch=loki
-	source = asbru-cm-loki.desktop
 	sha256sums = SKIP
-	sha256sums = 6c22432e241f0743f8ac294b7623cbce5a41b0a8c859677853450e5451dc3d99
 
 pkgname = asbru-cm-loki-git
 
