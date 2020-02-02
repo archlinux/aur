@@ -6,7 +6,7 @@
 # Contributor: Laszlo Papp <djszapi @ gmail at com>
 
 pkgname=neovim-nerdtree
-pkgver=6.1.1
+pkgver=6.5.0
 _scriptid=17123
 pkgrel=1
 pkgdesc='Tree explorer plugin for navigating the filesystem'
@@ -15,7 +15,7 @@ url='http://www.vim.org/scripts/script.php?script_id=1658'
 license=('custom:WTFPL')
 depends=('neovim')
 groups=('neovim-plugins')
-install='nvim-doc.install'
+install=nvim-doc.install
 source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
         'COPYING')
 sha256sums=('16e8e0684d5964ececa47cbd4ac714d3ccf34247559af534f4b512baf5e0bf56'
