@@ -1,6 +1,6 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon@gmail.com>
 pkgname=firefly-iii
-pkgver=4.8.2
+pkgver=5.0.4
 pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
@@ -9,11 +9,10 @@ license=('custom')
 depends=('php-intl')
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('e48b00f7885db0836d270e855ef6a4945a262e893465588fadff90e21c38fee1')
+sha256sums=('b3293d85b72c3ea90076323a14afefacf3a2d8f6190209bcfdf2d914c376cf42')
 
 backup=(
     "etc/webapps/$pkgname/config.env"
-    "etc/webapps/$pkgname/config.env.sandstorm"
     "etc/webapps/$pkgname/config.env.heroku")
 
 package() {
@@ -27,7 +26,7 @@ package() {
     cp -v .env.example "$pkgdir/etc/webapps/$pkgname/.env"
     cp -v .deploy/*/.env* "$pkgdir/etc/webapps/$pkgname"
 
-    for i in '' '.sandstorm' '.heroku' ; do
+    for i in '' '.heroku' ; do
         mv -v "$pkgdir/etc/webapps/$pkgname/.env$i" "$pkgdir/etc/webapps/$pkgname/config.env$i"
     done
 
