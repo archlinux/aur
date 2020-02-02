@@ -1,13 +1,11 @@
 pkgbase = airshipper
 	pkgdesc = The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.songtronix.com/
 	arch = x86_64
 	arch = i686
 	license = GPL3
-	makedepends = git
-	makedepends = rustup
 	depends = openssl
 	depends = libxcb
 	depends = fontconfig
