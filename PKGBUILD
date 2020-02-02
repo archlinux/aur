@@ -5,7 +5,7 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=tao
-pkgver=6.4.6
+pkgver=6.5.7
 pkgrel=1
 pkgdesc="Standards-based, CORBA middleware framework"
 url="http://www.dre.vanderbilt.edu/~schmidt/TAO.html"
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 depends=()
 options=(!libtool)
 conflicts=('ace')
-source=(http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-${pkgver}.tar.bz2
+source=(https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_7/ACE+TAO-${pkgver}.tar.bz2
         license.txt)
 
 build() {
@@ -38,5 +38,5 @@ package() {
   cd $srcdir/ACE_wrappers/TAO
   make DESTDIR="$pkgdir/" install
 }
-sha1sums=('e903c6efe144c9a79daf33328732714b5966a96b'
+sha1sums=('04abba9e58ddc266ab9dae8bfff0881184745a55'
           'b21054d0aa546fabe4bb0c2769401314d4a5bfe3')
