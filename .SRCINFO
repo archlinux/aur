@@ -1,24 +1,29 @@
 pkgbase = pyfunceble
-	pkgdesc = The tool to check the availability or syntax of domains, IPv4 or URL.
-	pkgver = 2.2.0
-	pkgrel = 3
+	pkgdesc = The tool to check the availability or syntax of domains, IPv4, IPv6 or URL.
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://funilrys.github.io/PyFunceble/
 	arch = any
 	license = MIT
-	depends = python3
-	depends = python-distribute
-	depends = python-setuptools
-	depends = python-colorama
-	depends = python-pyaml
-	depends = python-urllib3
-	depends = python-requests
 	depends = domain2idna
-	provides = pyfunceble=2.2.0
+	depends = python-box
+	depends = python-colorama
+	depends = python-cryptography
+	depends = python-distribute
+	depends = python-dnspython
+	depends = python-dotenv
+	depends = python-pyaml
+	depends = python-pymysql
+	depends = python-requests
+	depends = python-setuptools
+	depends = python-urllib3
+	depends = python3
+	provides = pyfunceble=3.0.0
 	conflicts = pyfunceble-dev
-	source = https://files.pythonhosted.org/packages/source/p/pyfunceble/PyFunceble-2.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pyfunceble/PyFunceble-3.0.0.tar.gz
 	source = https://raw.githubusercontent.com/funilrys/PyFunceble/master/LICENSE
-	sha256sums = 0723af172bb6ec6a6e7197b5dc1285360e5edeef93f1d621078e62058501200b
-	sha256sums = f03d3823524595a13999f7f0805b4189805e60a620175dc71e89ead03495c49f
+	sha256sums = 69a78960edb9dafb10ad74eb63aba821dd6468cdf4777ccb7849633f2642984a
+	sha256sums = a11e4be5b3b09e157217214008e7f0e23092d26adb03ad593e51cffe18361508
 
 pkgname = pyfunceble
 
