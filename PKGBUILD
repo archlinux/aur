@@ -1,26 +1,25 @@
 # Maintainer: Tommi Helineva <tommi.helineva+aur@gmail.com>
 pkgname=t-lasku
-pkgver=1.25.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="A Finnish invoicing software"
 arch=('i686' 'x86_64')
 url="http://helineva.net/t-lasku/"
 license=('BSD')
-depends=('qt5-base' 'qt5-script')
+depends=('qt5-base' 'qt5-xmlpatterns')
 optdepends=('postgresql-libs')
-install='t-lasku.install'
-sha256sums_x86_64=('92cd3859fb1c6b029dc4b41a7f9ef4b4eefa848e114b480ba23ca275792f3f77')
-sha256sums_i686=('93df8ff4806531192c0fe4c0fd5c9652e3c066c8f5d1ed700a269066ce09acf9')
+sha256sums_x86_64=('44de52b5bd5d4331f844470c0e543f1bd89e321e4ca3d7c4acea600c84deb946')
+sha256sums_i686=('9a273e899a2a53956ca316ec66468e3b34fcde6cb22f03418114fa0ac4d28756')
 source_x86_64=("http://helineva.net/t-lasku/t-lasku-$pkgver-amd64.tar.gz")
 source_i686=("http://helineva.net/t-lasku/t-lasku-$pkgver-i386.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  gcc -lQt5Script -lQt5Sql -lQt5Xml -lQt5XmlPatterns -lQt5Gui -lQt5Widgets \
-    -lQt5PrintSupport -lQt5Core -lpthread -lstdc++ \
+  gcc -lQt5Sql -lQt5Xml -lQt5XmlPatterns -lQt5Gui -lQt5Widgets \
+    -lQt5PrintSupport -lQt5Core -lpthread -lstdc++ -lm \
     -o t-lasku t-lasku-relocatable
-  gcc -lQt5Script -lQt5Sql -lQt5Xml -lQt5XmlPatterns -lQt5Gui -lQt5Widgets \
-    -lQt5PrintSupport -lQt5Core -lpthread -lstdc++ \
+  gcc -lQt5Sql -lQt5Xml -lQt5XmlPatterns -lQt5Gui -lQt5Widgets \
+    -lQt5PrintSupport -lQt5Core -lpthread -lstdc++ -lm \
     -o t-lasku-cli t-lasku-cli-relocatable
 }
 
