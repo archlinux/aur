@@ -10,7 +10,7 @@ url="http://gazebosim.org/"
 license=('Apache')
 # See: http://www.gazebosim.org/tutorials?tut=install_from_source&cat=install
 depends=('boost' 'curl' 'freeglut' 'freeimage' 'intel-tbb' 'libccd' 'libltdl'
-         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat=8' 'ignition-math>=6'
+         'libtar' 'libxml2' 'ogre=1.9' 'protobuf' 'sdformat>=9' 'ignition-math>=6'
          'ignition-transport>=8' 'ignition-common>=3' 'ignition-fuel_tools>=4'
          'ignition-msgs>=5' 'tinyxml2' 'qwt')
 optdepends=('bullet: Bullet support'

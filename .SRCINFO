@@ -22,7 +22,7 @@ pkgbase = gazebo-hg
 	depends = libxml2
 	depends = ogre=1.9
 	depends = protobuf
-	depends = sdformat=8
+	depends = sdformat>=9
 	depends = ignition-math>=6
 	depends = ignition-transport>=8
 	depends = ignition-common>=3
