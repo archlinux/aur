@@ -5,7 +5,6 @@ pkgbase = unciv
 	url = https://github.com/yairm210/Unciv
 	arch = any
 	license = MPL-2.0
-	makedepends = gradle
 	makedepends = jdk8-openjdk
 	depends = jre8-openjdk
 	depends = bash

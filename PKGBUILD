@@ -10,7 +10,7 @@ pkgdesc="Open-source remake of Civilization V"
 url="https://github.com/yairm210/Unciv"
 license=('MPL-2.0')
 depends=('jre8-openjdk' 'bash' 'xorg-xrandr')
-makedepends=('gradle' 'jdk8-openjdk')
+makedepends=('jdk8-openjdk')
 arch=('any')
 source=(
   "https://github.com/yairm210/Unciv/archive/$pkgver.zip"
