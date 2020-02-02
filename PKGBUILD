@@ -3,16 +3,16 @@
 
 pkgname=mesen
 _pkgname=Mesen
-pkgver=0.9.8
-pkgrel=2
+pkgver=0.9.9
+pkgrel=1
 pkgdesc='A cross-platform NES/Famicom emulator'
 arch=('x86_64')
-makedepends=('clang' 'gendesk' 'zip' 'msbuild')
+makedepends=('clang' 'gendesk' 'zip' 'msbuild-stable')
 depends=('mono' 'sdl2')
 url='https://github.com/SourMesen/Mesen'
 license=('GPL3')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('1c84810f79c85cf15d505164875777e6576a35a5beea0587cdb430d96aaeea2e')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('8c638a9910b8de6cf628ceefb226c2f636e4397b0629f58a8ffb304984d68ea9')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
