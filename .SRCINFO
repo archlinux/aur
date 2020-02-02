@@ -1,0 +1,16 @@
+pkgbase = rargs
+	pkgdesc = A kind of xargs + awk with pattern-matching support
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/lotabout/rargs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = rargs-0.2.3.tar.gz::https://github.com/lotabout/rargs/archive/v0.2.3.tar.gz
+	sha256sums = b33205cab0d410cd7f25e3bcb4efbfec48de76a8ad9c01ee4c286e407552f982
+
+pkgname = rargs
+
