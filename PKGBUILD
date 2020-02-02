@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Semyonoff <vsemyonoff@gmail.com>
 
 pkgname=cmdd
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='ConnMan D-bus network state Dispatcher'
 url='https://github.com/vsemyonoff/cmdd'
@@ -12,7 +12,8 @@ depends=('sdbus-cpp')
 makedepends=('cmake')
 validpgpkeys=('F22C0C7E78F39CD3724529D7DAB2782BD0363778')
 source=("${url}/archive/v${pkgver}.tar.gz")
-md5sums=('17f07dfcc599f0e97acab72b147d9ec1')
+md5sums=('4576edf8eb112926797c14ccf4a1d2fe')
+
 
 build() {
     mkdir -p "${srcdir}/build"

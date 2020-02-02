@@ -1,6 +1,6 @@
 pkgbase = cmdd
 	pkgdesc = ConnMan D-bus network state Dispatcher
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/vsemyonoff/cmdd
 	install = cmdd.install
@@ -8,9 +8,9 @@ pkgbase = cmdd
 	license = GPL
 	makedepends = cmake
 	depends = sdbus-cpp
-	source = https://github.com/vsemyonoff/cmdd/archive/v1.0.0.tar.gz
+	source = https://github.com/vsemyonoff/cmdd/archive/v1.0.1.tar.gz
 	validpgpkeys = F22C0C7E78F39CD3724529D7DAB2782BD0363778
-	md5sums = 17f07dfcc599f0e97acab72b147d9ec1
+	md5sums = 4576edf8eb112926797c14ccf4a1d2fe
 
 pkgname = cmdd
 
