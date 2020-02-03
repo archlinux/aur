@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 
 pkgname=allsorts-tools
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Font debugging tools based on the allsorts font shaping engine'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 conflicts=('allsorts-tools-git')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a1feabf37fc55bd1358eb3f86c71f80e3c09936f0e6c93fff2f95f707a81e3f4')
+sha256sums=('c24f6367956f1e47cbe2575425b412c444ce4fb45c48e9ab454751d39a3ed567')
 
 build() {
   cd "$pkgname-$pkgver"
