@@ -1,6 +1,6 @@
 pkgbase = linux-drm-fixes-git
 	pkgdesc = DRM kernel graphics driver development tree
-	pkgver = 5.6.887876.a6204fc7b83c
+	pkgver = 5.6.888899.d5226fa6dbae
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm
 	arch = x86_64
@@ -18,21 +18,19 @@ pkgbase = linux-drm-fixes-git
 	source = linux-drm-fixes-git::git://anongit.freedesktop.org/drm/drm#branch=drm-fixes
 	source = config
 	sha256sums = SKIP
-	sha256sums = 9d69c4d4e26fb93fcb24a4547ce6c82088b53c9a66eadde30b30d4450a0caddf
+	sha256sums = f100439200ef5c386cc3b9347f4d48fe701debc9351c9613ec66f0c4ca3ca9be
 
 pkgname = linux-drm-fixes-git
-	pkgdesc = The Linux-drm-fixes-git kernel and modules
-	install = linux.install
+	pkgdesc = The DRM kernel graphics driver development tree kernel and modules
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-drm-fixes-git.preset
+	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-drm-fixes-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-drm-fixes-git kernel
+	pkgdesc = Headers and scripts for building modules for the DRM kernel graphics driver development tree kernel
 
 pkgname = linux-drm-fixes-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-drm-fixes-git kernel
+	pkgdesc = Documentation for the DRM kernel graphics driver development tree kernel
 
