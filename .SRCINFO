@@ -1,0 +1,13 @@
+pkgbase = plasma5-applets-latte-spacer
+	pkgdesc = Plasma applet that acts as a spacer between applets
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/psifidotos/applet-latte-spacer
+	arch = any
+	license = GPL
+	depends = plasma-workspace
+	source = plasma5-applets-latte-spacer-0.3.0.tar.gz::https://github.com/psifidotos/applet-latte-spacer/archive/v0.3.0.tar.gz
+	sha256sums = 01629af849700dfd2f31f5896049bf5149465a70b45259050f91b7f2139ecf9a
+
+pkgname = plasma5-applets-latte-spacer
+
