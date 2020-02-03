@@ -1,6 +1,6 @@
 pkgbase = pistol-git
 	pkgdesc = General purpose file previewer
-	pkgver = 0.0.2.r15.gbd918ca
+	pkgver = 0.0.3.r1.gb645d21
 	pkgrel = 1
 	url = https://github.com/doronbehar/pistol
 	arch = x86_64

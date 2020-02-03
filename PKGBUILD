@@ -1,6 +1,6 @@
 # Maintainer: Bart De Roy <de dot roy dot bart at gmail dot com>
 pkgname=pistol-git
-pkgver=0.0.2.r15.gbd918ca
+pkgver=0.0.3.r1.gb645d21
 pkgrel=1
 pkgdesc='General purpose file previewer'
 arch=('x86_64')
