@@ -13,7 +13,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'otf-nerd-fonts-fira-code')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FiraCode.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('b29926000cf0e0b6d01c255dade18b909e9832ba'
+sha1sums=('041583e5c0572642abe1b2a892e8422dcde7922b'
           '92fdad3c8babc0473da5f03e41fb1151417ab386')
 
 package() {
