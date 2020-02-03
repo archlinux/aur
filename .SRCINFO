@@ -4,7 +4,7 @@ pkgbase = yt-bin
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
-	depends = ncurses>=6.1
+	depends = ncurses5-compat-libs>=6.1
 	depends = mpv>=1:0.32.0
 	provides = yt
 	source = https://ahbnr.de/jenkins/job/yt/13/artifact/yt
