@@ -1,21 +1,20 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname='arrow'
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('boost-libs' 'brotli' 'double-conversion' 'c-ares-cmake' 'gflags' 'grpc' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
+depends=('boost-libs' 'brotli' 'double-conversion' 'c-ares-cmake' 'gflags' 'grpc=1.25.0' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
 checkdepends=('git')
 optdepends=()
 provides=('parquet-cpp')
 conflicts=('parquet-cpp')
 makedepends=('apache-orc' 'boost' 'cmake' 'flatbuffers' 'python-numpy')
 source=("https://github.com/apache/arrow/archive/apache-arrow-$pkgver.tar.gz")
-sha256sums=('ab1c0d371a10b615eccfcead71bb79832245d788f4834cc6b278c03c3872d593')
-
+sha256sums=('d7b3838758a365c8c47d55ab0df1006a70db951c6964440ba354f81f518b8d8d')
 
 build(){
   cd "$srcdir"
@@ -42,6 +41,8 @@ build(){
                                       -DARROW_PROTOBUF_USE_SHARED=ON \
                                       -DARROW_GFLAGS_USE_SHARED=ON \
                                       -DARROW_USE_GLOG=ON \
+                                      -DARROW_WITH_ZSTD=ON \
+                                      -DARROW_WITH_BROTLI=ON \
                                       -DGTest_SOURCE=BUNDLED
   make
 }
@@ -59,6 +60,8 @@ check(){
    rm -rf arrow-testing
    git clone https://github.com/apache/arrow-testing.git
    cd build
-   PARQUET_TEST_DATA="$srcdir/parquet-testing/data" ARROW_TEST_DATA="$srcdir/arrow-testing/data" make test
+   # disable arrow-flight-test which is broken with grpc-1.26
+   # should be fixed with commit 72351f6 in grpc
+   PARQUET_TEST_DATA="$srcdir/parquet-testing/data" ARROW_TEST_DATA="$srcdir/arrow-testing/data" ctest -E arrow-flight-test
 }
 # vim:ts=2:sw=2:et:
