@@ -2,7 +2,7 @@
 pkgname=openhantek6022-git
 _gitname=OpenHantek6022
 pkgver=3.0.2.rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A DSO software for Hantek USB digital signal oscilloscopes 6022BE/BL."
 arch=('i686' 'x86_64')
 url="https://github.com/OpenHantek/OpenHantek6022"
@@ -41,7 +41,7 @@ build() {
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         ../
-    make -j$(nproc)
+    make
 }
 
 package() {
