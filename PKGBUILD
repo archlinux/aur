@@ -2,7 +2,7 @@
 
 pkgname=nerd-fonts-noto-sans-regular-complete
 pkgver=2.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Noto Sans Regular Nerd Font complete"
 arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
