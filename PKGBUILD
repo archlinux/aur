@@ -10,7 +10,7 @@
 _projectname='ounit'
 pkgname="ocaml-$_projectname"
 pkgver='2.2.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686')
 url="https://github.com/gildor478/$_projectname"
@@ -25,12 +25,12 @@ _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build
+	dune build -p "${_projectname},${_projectname}-lwt,${_projectname}2,${_projectname}2-lwt" --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest
+	dune runtest -p "${_projectname},${_projectname}-lwt,${_projectname}2,${_projectname}2-lwt" --verbose
 }
 
 package() {
