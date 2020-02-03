@@ -1,0 +1,15 @@
+pkgbase = routahe
+	pkgdesc = A command line client for finding public transporation routes in Helsinki, Finland
+	pkgver = 0.2.18
+	pkgrel = 1
+	url = https://www.npmjs.com/package/routahe
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = routahe-0.2.18.tgz
+	source = http://registry.npmjs.org/routahe/-/routahe-0.2.18.tgz
+	sha256sums = 1a5fc95cbdf9598ad6b016714f9fe049fb080c1f243ee5715b04d58808039c7e
+
+pkgname = routahe
+
