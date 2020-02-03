@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
-_major=5.4
-_minor=17
+_major=5.5
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -66,24 +66,15 @@ _bfq_ver="v11"
 _bfq_rel="r2K200203"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v23-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0011-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch"
-        "${_lucjanpath}/arch-patches-v23-sep/0012-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0003-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch"
          # the main kernel config files
         'config')
 
@@ -336,23 +327,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('b909cc5fa383ca25496851cd8d0af0efbe1613ee6c3579abb122285fcdcd28f4736fbb26675d741474388a63d1a312cc70a6b0aa8f25c1cd62b9f95b99462628'
+sha512sums=('2bcd7d50c75bd16bc794346f3dc921e481ce2663ad0a3445124b9a32e013e60be3b7c183cc4e6b128cf17b4781035fd055ff84afbcb7221bfc89a2a9bcf28460'
             'SKIP'
-            '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
-            '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            '85af8f664fffc74fa1f5483dd73e8721987d7d98a0acf931240abbb35d6a2c7a1bf43065aa5a26252acba8f91c1a44843b921cd7fffcdfb573a7433552c8f278'
-            'c363f233e9ed9b16fca4c5f4da2813c99d4ef0b6833622417ef3c66803c3840e7223b92964d2f589a2725adbddf9ebba531e749893eb923b3a4b44531bb277cc'
-            '495dd774d87949120853aa3c1f1f0962bd62088c164fe6c206cd77a563e34cb8ef58f09fb60c171ca0cbdc6ff063d1cb258fe775fecb7e8bc9f8bdff6943bc15'
-            'bb6d714fa797c91a04dc16c7b4c349883c43ca7793fafa2a1c115847e97859290427aa3b6d6c22b0dc965820a9c4e47ffbd179022c3dbc99451a110cae8120c8'
-            '10998bd2a69983906a3c95464ded50875f91b39dfd46250be21a649a2fe0678ff39121667920ae78df707cf26287ae97dad4b3f000d7740345376c24371bea65'
-            '3096708a9bf3659c22799ad41b48ce1f2aa11d1d452900ade91554b5ff6e355bf5414ca889b6a1fd89e580658d65858cd2de10cc24c37ddafa6fdb3c0aec92c2'
-            '6d3818b5cbb24d72a2bec2ecfb0906737656f9019abf3ead129b6e0327891ed2e506964762e0b2c2d2e7dc9e30271441a046338dfee91c394719b661ee818e02'
-            'b8d5d318c1b61b9c679286a02ada39eb615d77701d8fff67716a73873e76f74f3b7d8962ce882b657077af5815876a82e111ad38355dd57d4bbcd564eee6d8d6'
-            '9234b551064b4044bf81bc10d378a5b043353c9df6155015ef6ebf3bbd838e47b9715e35f0850667e8ed7b2e788171d2a59fc92b4ac17398ef648ba826bcf9f4'
-            '684aa5859705eae56b7ca328a8dcec712ba7092c1271017ef208a2b3c090840a29383d79f07618263b76b417176619b2ff0e7465caaf0bc4697578ab95b4ae89'
-            '12ab4a40784786e1784cd24bd0a3a128bb89f6f11626f1544365d476132ab9b62f5da04e37ee9155564838adfb237888aa552ec086af0cfa85bcab54f3505b5d'
-            '1cad3b4cf1c95ee1cb8ea0e54771246d5de4af925d13ddcd92814c4a5f139f84fabefa51b73d5d0204395cfcbb71a1db11e436b26fddc1a9c7c09788e22d2855'
-            'f321ed3099941d6a59bb48c3574fad62c6c0b0bb98b3c503b9ee503733dc4982ecc87307963ac7cc3b0214a70f0ba7d472304b2a1318fa4b099a3478fa44b7f5')
+            '375bbe85a513a9009d8bb87a63e64d0953ed3aea4f28289dda49cda003174320b347123364ec18133792c98541aaf7b8607fe4e56a0615f0cdabac42f12d3af8'
+            '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
+            '940b9ceb5f53f05e0e516882215b9929126284c1c1fbf72dce17e23b630342fc9459b6f510d272e7a1336fa7ec5d9059e3bcb5a42c091c43065beca8d538f9c9'
+            '79315ac7002e3a955910b289b572f4cd2285e4218ef9564cd4333f8c6d029f5d79c9c9ee9b745e33b88c01d52e122b399c3142911d1781b55616703442fb99fd'
+            '98d8b4dfe41831c6bc82698e8ded74a91d54b5bdb4dcad56efb39eddeb3e3ce8975f00d414f574dce1706cf83d8bccf77791264272e05f725c44e783ecbe4ea2'
+            'cdea18a098baf0015c2eb2097225dce182a57a430b3b9282b2c33f1bf54979803aa84353153f7cdd5a289c819859939cf98e1b11fb7ef636cce51cd97e542a92')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
