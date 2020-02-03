@@ -2,7 +2,7 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=ntpsec-git
-pkgver=1.1.8.r127.d6b7641f5
+pkgver=1.1.8.r137.a266f40f9
 pkgrel=1
 pkgdesc="Security-hardened Network Time Protocol implementation (Git HEAD)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -42,7 +42,7 @@ build() {
   cd "${pkgname%%-git}"
   ./waf configure --prefix=/usr --sbindir=/usr/bin --mandir=/usr/share/man \
         --enable-debug-gdb --enable-seccomp --refclock=all \
-        --enable-doc --htmldir=/usr/share/doc/${pkgname}
+        --htmldir=/usr/share/doc/${pkgname}
   ./waf build
   a2x -f text docs/copyright.adoc
 }
