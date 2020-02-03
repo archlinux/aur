@@ -16,7 +16,7 @@ md5sums=('a326cde1f4511143ec4fdb0ebfc3aa8c')
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
-    sudo pip install Pyside2
+    pip install Pyside2 --user
     cp -n default_config.toml $HOME/.config/music-overlay-config
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
