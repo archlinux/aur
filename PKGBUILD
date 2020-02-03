@@ -13,7 +13,7 @@ else
 	depends=('alsa-plugins' 'mesa' 'glu' 'libxrandr' 'libpulse')
 fi
 conflicts=("paxbritannica-git")
-source=("http://paxbritannica.henk.ca/pax-britannica.tar.gz" 
+source=("https://web.archive.org/web/20160307100356if_/http://paxbritannica.henk.ca/pax-britannica.tar.gz" 
 	"https://github.com/henkboom/pax-britannica/raw/master/license.txt")
 md5sums=('b2df1a3d1266ec3cf0722fc9807b28b0'
 	'd8f449b1dec151e9a49c96034cb8015a')
