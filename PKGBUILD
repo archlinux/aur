@@ -1,19 +1,27 @@
 _cranname=chron
-_cranver=2.3-54
-pkgname=r-$_cranname
-pkgver=2.3.54
+_cranver=2.3-55
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Chronological objects which can handle dates and times."
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('x86_64')
-depends=('r')
-license=('GPL2')
-depends=('r')
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
- 
-package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+pkgdesc="Chronological Objects which can Handle Dates and Times"
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL2)
+depends=('r>=2.12.0')
+makedepends=(gcc)
+optdepends=(r-scales r-ggplot2)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('178a656be9dc8fa94c1283e06d70dcf5')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
-md5sums=('896064867fcf32f40f21f7317217f420')
+
+package() {
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
