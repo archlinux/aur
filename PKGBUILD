@@ -1,5 +1,4 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: agilob <archlinux@agilob.net>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.67.2
