@@ -1,7 +1,7 @@
 # Maintainer: gee
 
 pkgname=reshade-shaders-git
-pkgver=1
+pkgver=r829.aff8ef2
 pkgrel=1
 pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
@@ -9,6 +9,11 @@ url='https://github.com/crosire/reshade-shaders'
 license=('custom')
 source=("git+https://github.com/crosire/reshade-shaders.git")
 sha256sums=(SKIP)
+
+pkgver() {
+  cd "reshade-shaders"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd ${srcdir}/reshade-shaders
