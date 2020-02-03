@@ -3,7 +3,7 @@
 
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org/'
@@ -30,7 +30,7 @@ depends=('fontconfig'
          "${_lua_deps[@]/#/lua-}"
          'ttf-gentium-plus')
 checkdepends=('lua-busted')
-sha256sums=('a5ec924bfe8a629ec4b4d09754d822cab1cf48d28bc6ce649faa5c597a108666')
+sha256sums=('1cf647424df06c4a8c468532c22a84a4b42c5c912766d128787b7cc5d86e0b73')
 
 prepare () {
 	cd "$pkgname-$pkgver"
