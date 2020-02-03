@@ -2,9 +2,9 @@
 
 pkgname=kosmorro
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A program that computes the ephemerides'
-depends=('python>=3.5.0' 'python<4.0.0' 'python-skyfield>=1.14' 'python-skyfield<2.0.0' 'python-numpy>=1.17.0' 'python-numpy<2.0.0' 'python-tabulate')
+depends=('python>=3.5.0' 'python<4.0.0' 'python-skyfield>=1.14' 'python-skyfield<1.17.0' 'python-numpy>=1.17.0' 'python-numpy<2.0.0' 'python-tabulate')
 makedepends=('python-setuptools')
 arch=('any')
 url='http://kosmorro.space'
