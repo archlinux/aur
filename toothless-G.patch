@@ -1,0 +1,32 @@
+diff --git a/glyphs/letters-unified-basic.ptl b/glyphs/letters-unified-basic.ptl
+index 40fb8784..5cd2ffae 100644
+--- a/glyphs/letters-unified-basic.ptl
++++ b/glyphs/letters-unified-basic.ptl
+@@ -2753,8 +2753,6 @@ export : define [apply] : begin
+ 	do "G and related ============================================================================="
+ 		define [GShape top sma smb] : glyph-construction
+ 			local yBar : top * 0.52 + STROKE * 0.25
+-			local fine SHOULDERFINE
+-			local sb : shoulderMidSlope fine nothing (-1)
+ 			include : dispiro
+ 				widths.lhs
+ 				g4   RIGHTSB (top - HOOK)
+@@ -2762,12 +2760,13 @@ export : define [apply] : begin
+ 				flat (SB + OX) (top - sma)
+ 				curl (SB + OX) smb
+ 				arcvh
+-				g4.right.mid (MIDDLE + (CORRECTION_OMIDX - sb) * STROKE) O [widths.heading STROKE 0 {.y (1) .x (sb)}]
++				g4   (MIDDLE + CORRECTION_OMIDS) O
+ 				archv
+-				straight.up.end (RIGHTSB - (STROKE - fine) * HVCONTRAST) sma [widths.heading fine 0 UPWARD]
+-			include : HBarTop MIDDLE RIGHTSB yBar
+-			include : VBarRight RIGHTSB sma yBar
+-			include : VBarRight RIGHTSB sma 0 (STROKE - fine / 2)
++				flat RIGHTSB sma
++				curl RIGHTSB yBar [heading UPWARD]
++			include : dispiro
++				flat MIDDLE yBar [widths 0 STROKE]
++				curl RIGHTSB yBar [heading RIGHTWARD]
+ 
+ 		sketch # G
+ 			set-width WIDTH
