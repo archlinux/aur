@@ -8,8 +8,8 @@ pkgname=('nvidia-full-beta'
          'nvidia-settings-full-beta'
          'lib32-nvidia-utils-full-beta'
          'lib32-opencl-nvidia-full-beta')
-pkgver=440.44
-pkgrel=2
+pkgver=440.59
+pkgrel=1
 pkgdesc="Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)"
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -20,14 +20,10 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta.sysusers'
-        '010-nvidia-prime-kernel-5.4.patch::https://gitlab.com/snippets/1929174/raw'
-        '020-nvidia-kernel-5.5.patch::https://gitlab.com/snippets/1923197/raw'
         '110-nvidia-settings-full-beta-change-desktop-paths.patch')
-sha256sums=('ad427df2b619e6150291f9e03938dc8253769a59e900178c7f07d12d6ec2fc14'
+sha256sums=('61cb1a6c1017087d431c8cec4fc0450030d469cb825a4cac7d1a5142b8c14f98'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            'bedd55074771222bad8391c66b7022a266c135ff51d478710f7dda8708c3e9aa'
-            '7dcd609e85720cb812d7b41320d845931d8ea3e8529c700231372e0da66e5804'
             '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
 
 # create soname links
@@ -51,8 +47,6 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     bsdtar -C "$_pkg" -xf "${_pkg}/nvidia-persistenced-init.tar.bz2"
     
-    patch -d "$_pkg" -Np1 -i "${srcdir}/010-nvidia-prime-kernel-5.4.patch"
-    patch -d "$_pkg" -Np1 -i "${srcdir}/020-nvidia-kernel-5.5.patch"
     patch -d "$_pkg" -Np1 -i "${srcdir}/110-nvidia-settings-full-beta-change-desktop-paths.patch"
 }
 
