@@ -3,7 +3,7 @@
 pkgname=mssql-server
 pkgver=15.0.4003.23
 _prodver=${pkgver}-3
-pkgrel=1
+pkgrel=2
 pkgdesc="Microsoft SQL Server for Linux"
 arch=('x86_64')
 url="https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux"
@@ -19,8 +19,4 @@ package() {
   cd $pkgdir
   mv $srcdir/opt .
   mv $srcdir/usr .
-
-  for i in $(ls opt/mssql/lib/mssql-conf/*.py); do
-      sed 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/' $i -i
-  done
 }

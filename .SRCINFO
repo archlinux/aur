@@ -1,7 +1,7 @@
 pkgbase = mssql-server
 	pkgdesc = Microsoft SQL Server for Linux
 	pkgver = 15.0.4003.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.microsoft.com/en-us/sql-server/sql-server-vnext-including-Linux
 	install = mssql-server.install
 	arch = x86_64
