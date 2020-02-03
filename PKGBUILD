@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="python-gr-framework-git"
-pkgver="1.12.0.r63.gfd5850f"
+pkgver="1.12.0.r71.g9ccb892"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications (Python bindings)."
 arch=("any")
