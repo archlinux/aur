@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=openvr
-pkgver=1.8.19
+pkgver=1.9.15
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ValveSoftware/openvr/archiv
         "0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch?h=openvr-git"
         "0002-samples-cmake-Remove-OpenVR-paths-check.patch::https://aur.archlinux.org/cgit/aur.git/plain/0002-samples-cmake-Remove-OpenVR-paths-check.patch?h=openvr-git"
         "0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch::https://aur.archlinux.org/cgit/aur.git/plain/0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch?h=openvr-git")
-sha256sums=('619a1d258cea39bc7edc9a2aa544c477692e38679540e6671d50768ed3145984'
+sha256sums=('de4945aa18fee18818830782c5af97dc297ae4e6045565a1a3fd00b13afd1b75'
             'SKIP'
             'SKIP'
             'SKIP')
