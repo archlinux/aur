@@ -2,7 +2,7 @@
 _projectname='stdlib-shims'
 pkgname="ocaml-$_projectname"
 pkgver='0.2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Shim to substitute `Pervasives` with `Stdlib` before 4.08'
 arch=('x86_64' 'i686')
 url="https://github.com/ocaml/$_projectname"
@@ -17,12 +17,12 @@ _sourcedirectory="$_projectname-$pkgver"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build
+	dune build -p "$_projectname" --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest
+	dune runtest -p "$_projectname" --verbose
 }
 
 package() {
