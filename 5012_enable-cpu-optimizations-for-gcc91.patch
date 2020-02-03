@@ -1,5 +1,5 @@
 WARNING
-This patch works with gcc versions 9.1+ and with kernel version 4.13+ and should
+This patch works with gcc versions 9.1+ and with kernel version 5.5+ and should
 NOT be applied when compiling on older versions of gcc due to key name changes
 of the march flags introduced with the version 4.9 release of gcc.[1]
 
@@ -60,7 +60,7 @@ See the following experimental evidence supporting this statement:
 https://github.com/graysky2/kernel_gcc_patch
 
 REQUIREMENTS
-linux version >=4.13
+linux version >=5.5
 gcc version >=9.1
 
 ACKNOWLEDGMENTS
@@ -73,9 +73,9 @@ REFERENCES
 4. https://github.com/graysky2/kernel_gcc_patch/issues/15
 5. http://www.linuxforge.net/docs/linux/linux-gcc.php
 
---- a/arch/x86/include/asm/module.h	2019-08-16 04:11:12.000000000 -0400
-+++ b/arch/x86/include/asm/module.h	2019-08-22 15:56:23.988050322 -0400
-@@ -25,6 +25,36 @@ struct mod_arch_specific {
+--- a/arch/x86/include/asm/module.h	2019-12-15 18:16:08.000000000 -0500
++++ b/arch/x86/include/asm/module.h	2019-12-17 14:03:55.968871551 -0500
+@@ -27,6 +27,36 @@ struct mod_arch_specific {
  #define MODULE_PROC_FAMILY "586MMX "
  #elif defined CONFIG_MCORE2
  #define MODULE_PROC_FAMILY "CORE2 "
@@ -112,7 +112,7 @@ REFERENCES
  #elif defined CONFIG_MATOM
  #define MODULE_PROC_FAMILY "ATOM "
  #elif defined CONFIG_M686
-@@ -43,6 +73,28 @@ struct mod_arch_specific {
+@@ -45,6 +75,28 @@ struct mod_arch_specific {
  #define MODULE_PROC_FAMILY "K7 "
  #elif defined CONFIG_MK8
  #define MODULE_PROC_FAMILY "K8 "
@@ -141,9 +141,9 @@ REFERENCES
  #elif defined CONFIG_MELAN
  #define MODULE_PROC_FAMILY "ELAN "
  #elif defined CONFIG_MCRUSOE
---- a/arch/x86/Kconfig.cpu	2019-08-16 04:11:12.000000000 -0400
-+++ b/arch/x86/Kconfig.cpu	2019-08-22 15:59:31.596946943 -0400
-@@ -116,6 +116,7 @@ config MPENTIUMM
+--- a/arch/x86/Kconfig.cpu	2019-12-15 18:16:08.000000000 -0500
++++ b/arch/x86/Kconfig.cpu	2019-12-17 14:09:03.805642284 -0500
+@@ -123,6 +123,7 @@ config MPENTIUMM
  config MPENTIUM4
  	bool "Pentium-4/Celeron(P4-based)/Pentium-4 M/older Xeon"
  	depends on X86_32
@@ -151,7 +151,7 @@ REFERENCES
  	---help---
  	  Select this for Intel Pentium 4 chips.  This includes the
  	  Pentium 4, Pentium D, P4-based Celeron and Xeon, and
-@@ -148,9 +149,8 @@ config MPENTIUM4
+@@ -155,9 +156,8 @@ config MPENTIUM4
  		-Paxville
  		-Dempsey
  
@@ -162,7 +162,7 @@ REFERENCES
  	depends on X86_32
  	---help---
  	  Select this for an AMD K6-family processor.  Enables use of
-@@ -158,7 +158,7 @@ config MK6
+@@ -165,7 +165,7 @@ config MK6
  	  flags to GCC.
  
  config MK7
@@ -171,7 +171,7 @@ REFERENCES
  	depends on X86_32
  	---help---
  	  Select this for an AMD Athlon K7-family processor.  Enables use of
-@@ -166,12 +166,90 @@ config MK7
+@@ -173,12 +173,90 @@ config MK7
  	  flags to GCC.
  
  config MK8
@@ -263,7 +263,7 @@ REFERENCES
  config MCRUSOE
  	bool "Crusoe"
  	depends on X86_32
-@@ -253,6 +331,7 @@ config MVIAC7
+@@ -260,6 +338,7 @@ config MVIAC7
  
  config MPSC
  	bool "Intel P4 / older Netburst based Xeon"
@@ -271,7 +271,7 @@ REFERENCES
  	depends on X86_64
  	---help---
  	  Optimize for Intel Pentium 4, Pentium D and older Nocona/Dempsey
-@@ -262,8 +341,19 @@ config MPSC
+@@ -269,8 +348,19 @@ config MPSC
  	  using the cpu family field
  	  in /proc/cpuinfo. Family 15 is an older Xeon, Family 6 a newer one.
  
@@ -292,7 +292,7 @@ REFERENCES
  	---help---
  
  	  Select this for Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and
-@@ -271,14 +361,133 @@ config MCORE2
+@@ -278,14 +368,133 @@ config MCORE2
  	  family in /proc/cpuinfo. Newer ones have 6 and older ones 15
  	  (not a typo)
  
@@ -432,7 +432,7 @@ REFERENCES
  
  config GENERIC_CPU
  	bool "Generic-x86-64"
-@@ -287,6 +496,19 @@ config GENERIC_CPU
+@@ -294,6 +503,19 @@ config GENERIC_CPU
  	  Generic x86-64 CPU.
  	  Run equally well on all x86-64 CPUs.
  
@@ -452,16 +452,16 @@ REFERENCES
  endchoice
  
  config X86_GENERIC
-@@ -311,7 +533,7 @@ config X86_INTERNODE_CACHE_SHIFT
+@@ -318,7 +540,7 @@ config X86_INTERNODE_CACHE_SHIFT
  config X86_L1_CACHE_SHIFT
  	int
  	default "7" if MPENTIUM4 || MPSC
 -	default "6" if MK7 || MK8 || MPENTIUMM || MCORE2 || MATOM || MVIAC7 || X86_GENERIC || GENERIC_CPU
 +	default "6" if MK7 || MK8 || MK8SSE3 || MK10 || MBARCELONA || MBOBCAT || MBULLDOZER || MPILEDRIVER || MSTEAMROLLER || MEXCAVATOR || MZEN || MZEN2 || MJAGUAR || MPENTIUMM || MCORE2 || MNEHALEM || MWESTMERE || MSILVERMONT || MGOLDMONT || MGOLDMONTPLUS || MSANDYBRIDGE || MIVYBRIDGE || MHASWELL || MBROADWELL || MSKYLAKE || MSKYLAKEX || MCANNONLAKE || MICELAKE || MCASCADELAKE || MNATIVE || MATOM || MVIAC7 || X86_GENERIC || GENERIC_CPU
- 	default "4" if MELAN || M486 || MGEODEGX1
+ 	default "4" if MELAN || M486SX || M486 || MGEODEGX1
  	default "5" if MWINCHIP3D || MWINCHIPC6 || MCRUSOE || MEFFICEON || MCYRIXIII || MK6 || MPENTIUMIII || MPENTIUMII || M686 || M586MMX || M586TSC || M586 || MVIAC3_2 || MGEODE_LX
  
-@@ -329,35 +551,36 @@ config X86_ALIGNMENT_16
+@@ -336,35 +558,36 @@ config X86_ALIGNMENT_16
  
  config X86_INTEL_USERCOPY
  	def_bool y
@@ -515,7 +515,7 @@ REFERENCES
  
  config X86_CMPXCHG64
  	def_bool y
-@@ -367,7 +590,7 @@ config X86_CMPXCHG64
+@@ -374,7 +597,7 @@ config X86_CMPXCHG64
  # generates cmov.
  config X86_CMOV
  	def_bool y
@@ -524,9 +524,9 @@ REFERENCES
  
  config X86_MINIMUM_CPU_FAMILY
  	int
---- a/arch/x86/Makefile	2019-08-16 04:11:12.000000000 -0400
-+++ b/arch/x86/Makefile	2019-08-22 16:01:22.559789904 -0400
-@@ -118,13 +118,53 @@ else
+--- a/arch/x86/Makefile	2019-12-15 18:16:08.000000000 -0500
++++ b/arch/x86/Makefile	2019-12-17 14:03:55.972204960 -0500
+@@ -119,13 +119,53 @@ else
  	KBUILD_CFLAGS += $(call cc-option,-mskip-rax-setup)
  
          # FIXME - should be integrated in Makefile.cpu (Makefile_32.cpu)
@@ -576,16 +576,16 @@ REFERENCES
 +                $(call cc-option,-march=cannonlake,$(call cc-option,-mtune=cannonlake))
 +        cflags-$(CONFIG_MICELAKE) += \
 +                $(call cc-option,-march=icelake-client,$(call cc-option,-mtune=icelake-client))
-+        cflags-$(CONFIG_MCASCADE) += \
++        cflags-$(CONFIG_MCASCADELAKE) += \
 +                $(call cc-option,-march=cascadelake,$(call cc-option,-mtune=cascadelake))
 +        cflags-$(CONFIG_MATOM) += $(call cc-option,-march=bonnell) \
 +                $(call cc-option,-mtune=bonnell,$(call cc-option,-mtune=generic))
          cflags-$(CONFIG_GENERIC_CPU) += $(call cc-option,-mtune=generic)
          KBUILD_CFLAGS += $(cflags-y)
  
---- a/arch/x86/Makefile_32.cpu	2019-08-16 04:11:12.000000000 -0400
-+++ b/arch/x86/Makefile_32.cpu	2019-08-22 16:02:14.687701216 -0400
-@@ -23,7 +23,19 @@ cflags-$(CONFIG_MK6)		+= -march=k6
+--- a/arch/x86/Makefile_32.cpu	2019-12-15 18:16:08.000000000 -0500
++++ b/arch/x86/Makefile_32.cpu	2019-12-17 14:03:55.972204960 -0500
+@@ -24,7 +24,19 @@ cflags-$(CONFIG_MK6)		+= -march=k6
  # Please note, that patches that add -march=athlon-xp and friends are pointless.
  # They make zero difference whatsosever to performance at this time.
  cflags-$(CONFIG_MK7)		+= -march=athlon
@@ -605,7 +605,7 @@ REFERENCES
  cflags-$(CONFIG_MCRUSOE)	+= -march=i686 -falign-functions=0 -falign-jumps=0 -falign-loops=0
  cflags-$(CONFIG_MEFFICEON)	+= -march=i686 $(call tune,pentium3) -falign-functions=0 -falign-jumps=0 -falign-loops=0
  cflags-$(CONFIG_MWINCHIPC6)	+= $(call cc-option,-march=winchip-c6,-march=i586)
-@@ -32,8 +44,22 @@ cflags-$(CONFIG_MCYRIXIII)	+= $(call cc-
+@@ -33,8 +45,22 @@ cflags-$(CONFIG_MCYRIXIII)	+= $(call cc-
  cflags-$(CONFIG_MVIAC3_2)	+= $(call cc-option,-march=c3-2,-march=i686)
  cflags-$(CONFIG_MVIAC7)		+= -march=i686
  cflags-$(CONFIG_MCORE2)		+= -march=i686 $(call tune,core2)

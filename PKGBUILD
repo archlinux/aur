@@ -27,7 +27,7 @@ sha256sums=('SKIP'
              #.preset file
              '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
              #patch file
-            '5af59a8d58d3bf1ff822a5e325879e9bd6195386a87ed9c5fa0d90986cf0ada9'
+            'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
            )
 
 _kernelname=${pkgbase#linux}
