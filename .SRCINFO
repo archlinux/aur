@@ -1,0 +1,14 @@
+pkgbase = opentaxsolver
+	pkgdesc = OpenTaxSolver (OTS) is a free, safe + secure program for calculating Tax Form entries for Federal and State personal income taxes. It automatically fills-out and prints your forms.
+	pkgver = 17.01
+	pkgrel = 1
+	url = http://opentaxsolver.sourceforge.net/
+	arch = x86_64
+	license = GPLv2
+	source = https://sourceforge.net/projects/opentaxsolver/files/OTS_2019/v17.01_linux/OpenTaxSolver2019_17.01_linux64.tgz/download
+	source = opentaxsolver.desktop
+	sha256sums = fd9edc79d9a7b5917a7654ee22c3415897667cd2b06e4b319fdb554fd9a0fbd5
+	sha256sums = 3e5f8be1464c6e5c1ff6aa8dc7c0d89b009763a4e20c2975b36c8129b72a81ab
+
+pkgname = opentaxsolver
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/opt/opentaxsolver/Run_taxsolve_GUI %f
+Type=Application
+Terminal=false
+Name=OpenTaxSolver
+Comment=A set of programs and templates for helping you fill out your income tax forms
+Categories=Office
+StartupNotify=true
