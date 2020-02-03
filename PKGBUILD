@@ -1,18 +1,18 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy.nl>
 pkgname=toad
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Toad: Trainer Of All Data, the Frog training collection"
 arch=('i686' 'x86_64')
 url="http://github.com/LanguageMachines/toad/"
 license=('GPL3')
-depends=('ticcutils' 'ucto' 'libfolia' 'icu' 'libxml2' 'timbl' 'mbt' 'frog' 'frogdata')
+depends=('ticcutils' 'ucto' 'libfolia' 'icu' 'libxml2' 'timbl' 'mbt' 'mbtserver' 'frog' 'frogdata')
 makedepends=('libtool' 'autoconf')
 options=(!libtool)
-source=(https://github.com/LanguageMachines/toad/archive/v0.5.tar.gz)
+source=(https://github.com/LanguageMachines/toad/archive/v0.6.tar.gz)
 _gituser="LanguageMachines"
 _gitname="toad"
-md5sums=(0fc0fc517205d34e27f2c7255fa09d65)
+md5sums=(b97ed68da5c868e3b75fe137d03ea431)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
