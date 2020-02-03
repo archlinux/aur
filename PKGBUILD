@@ -2,7 +2,7 @@
 
 pkgname=git-lfs-git
 pkgver=2.10.0.r6.gc3b776db
-pkgrel=1
+pkgrel=2
 pkgdesc="Git extension for versioning large files"
 arch=('i686' 'x86_64')
 url="https://git-lfs.github.com/"
@@ -37,7 +37,7 @@ package() {
 
   install -Dm755 "git-lfs" -t "$pkgdir/usr/bin"
 
-  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -d "$pkgdir/usr/share/man/man1"
-  install -Dm644 "man"/*.1 "$pkgdir/usr/share/man/man1"
+  install -Dm644 "LICENSE.md" -t "$pkgdir/usr/share/licenses/git-lfs"
+  install -Dm644 "man"/*.1 -t "$pkgdir/usr/share/man/man1"
+  install -Dm644 "man"/*.5 -t "$pkgdir/usr/share/man/man5"
 }
