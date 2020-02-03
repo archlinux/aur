@@ -1,0 +1,18 @@
+diff --unified --recursive --text fvwm-2.6.9/fvwm/ewmh_icons.c fvwm-2.6.9.new/fvwm/ewmh_icons.c
+--- fvwm-2.6.9/fvwm/ewmh_icons.c	2018-05-26 05:35:26.000000000 -0600
++++ fvwm-2.6.9.new/fvwm/ewmh_icons.c	2020-01-31 18:45:31.860931662 -0700
+@@ -714,10 +714,10 @@
+ 
+ 	if (is_mini_icon)
+ 	{
+-		wanted_w = MINI_ICON_WANTED_WIDTH;
+-		wanted_h = MINI_ICON_WANTED_HEIGHT;
+-		max_w = MINI_ICON_MAX_WIDTH;
+-		max_h = ICON_MAX_HEIGHT;
++		wanted_w = fw->min_icon_width;
++		wanted_h = fw->min_icon_height;
++		max_w = fw->max_icon_width;
++		max_h = fw->max_icon_height;
+ 		fpa.mask = 0;
+ 	}
+ 	else
