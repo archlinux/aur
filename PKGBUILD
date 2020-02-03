@@ -2,14 +2,14 @@
 
 pkgname=basemark
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Basemark GPU - Graphics performance evaluation tool"
 arch=('x86_64')
 url="https://www.basemark.com/products/basemark-gpu/"
 license=('custom')
-depends=("libxinerama" "libxi" "xdg-utils" "hicolor-icon-theme" "freetype2" "libgl" "libxrandr" "libxcursor" "libcurl-compat")
+depends=("libxinerama" "libxi" "xdg-utils" "hicolor-icon-theme" "freetype2" "libgl" "libxrandr" "libxcursor" "libcurl-compat" "openssl-1.0")
 optdepends=("vulkan-icd-loader")
-source=(http://downloads.basemark.com/BasemarkGPU-linux-${pkgver}.tar.gz
+source=(https://cdn.downloads.basemark.com/BasemarkGPU-linux-${pkgver}.tar.gz
         ${pkgname} ${pkgname}.desktop ${pkgname}.png license.txt)
 sha256sums=('4c6267b53a30845ec89b8d658c55a7f9b2238486b96197f66eaed4b73ee3bd33'
             'e45b53aec5d376cc2b26af49f640242251300a3b354661851c49094c520b3265'
