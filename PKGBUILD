@@ -3,12 +3,12 @@
 pkgname=chestnut-git
 _pkgname=chestnut
 pkgver=0.2.0.r7.gcf9dcfe2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="An open-source NLE video editor"
 url="https://github.com/jonno85uk/chestnut"
 license=('GPL3')
-depends=('fmt' 'mediahandling-git' 'qt5-multimedia' 'qt5-svg')
+depends=('ffmpeg' 'fmt' 'mediahandling-git' 'qt5-multimedia' 'qt5-svg')
 makedepends=('git')
 optdepends=('olive-community-effects-git')
 conflicts=('chestnut')
