@@ -1,21 +1,21 @@
 pkgbase = kosmorro
 	pkgdesc = A program that computes the ephemerides
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = http://kosmorro.space
 	arch = any
 	license = AGPL3
 	makedepends = python-setuptools
 	depends = python>=3.5.0
 	depends = python<4.0.0
-	depends = python-skyfield>=1.14
-	depends = python-skyfield<1.17.0
+	depends = python-skyfield>=1.17
+	depends = python-skyfield<2.0.0
 	depends = python-numpy>=1.17.0
 	depends = python-numpy<2.0.0
 	depends = python-tabulate
-	source = kosmorro-v0.5.0.tar.gz::https://github.com/Deuchnord/kosmorro/archive/v0.5.0.tar.gz
+	source = kosmorro-v0.5.1.tar.gz::https://github.com/Deuchnord/kosmorro/archive/v0.5.1.tar.gz
 	source = locales.tar
-	sha256sums = 65bbf55a3772a3609a642975b9f8a4f75aac70f3c6f13f9f68077f3a5c127ce6
+	sha256sums = bc52709aa9b58098d767bd535262d9c2258a259253e6e4598b83deb062ca4a34
 	sha256sums = f64f5322ef7a14d9e54677ce04cb43ae53f53a4d56bfd15bbc666a84dc523b69
 
 pkgname = kosmorro
