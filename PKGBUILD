@@ -3,7 +3,7 @@
 
 _basename=libinput
 pkgname="lib32-$_basename"
-pkgver=1.15.0
+pkgver=1.15.1
 pkgrel=1
 pkgdesc="Input device management and event handling library (32-bit)"
 url="https://www.freedesktop.org/wiki/Software/libinput/"
@@ -13,7 +13,7 @@ depends=('lib32-mtdev' 'lib32-systemd' 'lib32-libevdev' 'lib32-libwacom' "$_base
 # upstream doesn't recommend building docs
 makedepends=('gcc-multilib' 'lib32-gtk3' 'meson') # 'doxygen' 'graphviz' 'python-sphinx' 'python-recommonmark'
 source=(https://freedesktop.org/software/$_basename/$_basename-$pkgver.tar.xz{,.sig})
-sha512sums=('5dab48e1b4c9c0deb5b01ebc3ccb4cc28d614be25d87daaf42f51fbd2d955266f3fdba73029bc0094caa55060dad8967751b72d8f45f19a40b542f0c9118c1b6'
+sha512sums=('634810359bc4d86f2c4c75f472bee5eaed04ed93af3c91c4bc46a596402323941f9cc90173e278bfa7e5cbda6b7a20adc59bd09520dd4152fc961302b7e57904'
             'SKIP')
 validpgpkeys=('3C2C43D9447D5938EF4551EBE23B7E70B467F0BF') # Peter Hutterer (Who-T) <office@who-t.net>
 
