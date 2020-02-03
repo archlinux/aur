@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 
 
 set -ue
@@ -19,4 +19,4 @@ if [ ! -d "${pd_dir}" ] ; then
   wine regedit /S /opt/pandownload/wine/override-dll.reg
 fi
 
-wine "${pd_dir}"/pandownload.exe "$@"
+exec wine "${pd_dir}"/pandownload.exe "$@"

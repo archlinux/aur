@@ -5,10 +5,11 @@ post_upgrade() {
   if [ $(vercmp $2 2.1.2-2) -le 0 ]; then
     cat << EOF
 Please update the symbolic link.
-ln -sf /opt/pandownload/PanDownload.exe "${pd_dir}"/pandownload.exe
-ln -sf /opt/pandownload/libcurl.dll "${pd_dir}"/libcurl.dll
-ln -sf /opt/pandownload/lua53.dll "${pd_dir}"/lua53.dll
-ln -sf /opt/pandownload/wine/msscript.ocx "${pd_dir}"/wine/drive_c/windows/system32/msscript.ocx
+
+  ln -sf /opt/pandownload/PanDownload.exe "${pd_dir}"/pandownload.exe
+  ln -sf /opt/pandownload/libcurl.dll "${pd_dir}"/libcurl.dll
+  ln -sf /opt/pandownload/lua53.dll "${pd_dir}"/lua53.dll
+  ln -sf /opt/pandownload/wine/msscript.ocx "${pd_dir}"/wine/drive_c/windows/system32/msscript.ocx
 EOF
   fi
 }
