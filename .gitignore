@@ -1,0 +1,6 @@
+src/
+pkg/
+iso6346/
+*.tar
+*.tar.gz
+*.tar.xz

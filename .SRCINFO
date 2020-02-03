@@ -1,0 +1,18 @@
+pkgbase = iso6346-git
+	pkgdesc = Validate a ISO6346 compliant container number against the supplied check digit
+	pkgver = r7.3c4dc27
+	pkgrel = 1
+	url = https://muszr.me/iso6346
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	provides = iso6346
+	conflicts = iso6346
+	source = iso6346::git+https://github.com/meMuszr/iso6346
+	sha512sums = SKIP
+
+pkgname = iso6346-git
+
