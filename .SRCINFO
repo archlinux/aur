@@ -1,6 +1,6 @@
 pkgbase = loccount
 	pkgdesc = Count source lines of code in a project.
-	pkgver = 2.8
+	pkgver = 2.9
 	pkgrel = 1
 	url = http://www.catb.org/esr/loccount/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = loccount
 	makedepends = asciidoc
 	makedepends = go
 	makedepends = xmlto
-	source = https://gitlab.com/esr/loccount/-/archive/2.8/loccount-2.8.tar.gz
-	sha512sums = ef2be5f98ae154f0b42b427d003ee42119d8d621ade25bdfa574fc7dcc6ba8b7e10036b35ae27a91e1e747b4d91d8eca9d09e6c36cb1559f11d67d34377e9fdd
+	source = https://gitlab.com/esr/loccount/-/archive/2.9/loccount-2.9.tar.gz
+	sha512sums = abaa3156eebacd1d04d56e2e93b167086b3066482f0605e0ab58de1bcffaac87703cde959f8caabde33f0cd4995bd76895b7e11f3a801b1bc6dc07ecabb833cb
 
 pkgname = loccount
 
