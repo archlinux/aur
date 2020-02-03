@@ -14,12 +14,15 @@ makedepends=(boost qt5-tools)
 conflicts=(litecoin)
 install=litecoin-qt.install
 source=("https://download.litecoin.org/litecoin-${pkgver}/src/litecoin-${pkgver}.tar.gz"
+        "deque.patch"
         "$pkgname.desktop")
 sha256sums=('6db52aa5a67387aff937afbfb3da8321ada653c9c8f01b0e0d4dd617939639c4'
+            '595b465639a0ac22c262da404b942d682b8bda5f010db9b13d07b671b3877af1'
             'cfc53dc9028745358235698ddd562d3e6b4a3ea9f896f5efc1aa8cd81f595559')
 
 build() {
   cd "$srcdir/litecoin-$pkgver"
+  patch -p2 <$srcdir/deque.patch
   ./autogen.sh
   ./configure --with-incompatible-bdb --with-gui=qt5
   make

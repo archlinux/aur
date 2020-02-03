@@ -1,0 +1,11 @@
+diff -ur src2/litecoin-0.17.1/src/httpserver.cpp src/litecoin-0.17.1/src/httpserver.cpp
+--- src2/litecoin-0.17.1/src/httpserver.cpp	2019-04-08 14:28:20.000000000 +0700
++++ src/litecoin-0.17.1/src/httpserver.cpp	2020-02-03 18:31:55.196768990 +0700
+@@ -30,6 +30,7 @@
+ #include <event2/keyvalq_struct.h>
+ 
+ #include <support/events.h>
++#include <deque>
+ 
+ #ifdef EVENT__HAVE_NETINET_IN_H
+ #include <netinet/in.h>
