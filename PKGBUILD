@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-noto
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Noto from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -14,7 +14,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete' 'nerd-fonts-noto-sans-mono'
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Noto.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('8401369532dfcad5c32d182336d3d4f6afcb3a50'
+sha1sums=('4f3fa97c7a21e70ebce05810555b40c36940fbb9'
           '92fdad3c8babc0473da5f03e41fb1151417ab386')
 
 package() {
