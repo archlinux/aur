@@ -1,0 +1,15 @@
+pkgbase = otr-verwaltung3p-vdub
+	pkgdesc = Preconfigured wine prefix with ffdshow for otr-verwaltung3p
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gCurse/otr-verwaltung3p-vdub
+	arch = any
+	license = GPL3
+	depends = otr-verwaltung3p
+	depends = wine
+	options = !strip
+	source = https://github.com/gCurse/otr-verwaltung3p-vdub/archive/v1.0.0.tar.gz
+	md5sums = 8c9f8e4a9cae26bf5641b43d293cbff7
+
+pkgname = otr-verwaltung3p-vdub
+
