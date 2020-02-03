@@ -1,6 +1,6 @@
 pkgbase = nerd-fonts-droid-sans-mono
 	pkgdesc = Patched font Droid Sans Mono from the nerd-fonts library
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = nerd-fonts-droid-sans-mono
 	provides = nerd-fonts-droid-sans-mono
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complete
-	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/DroidSansMono.zip
-	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.0.0/LICENSE
-	sha1sums = e5235aa39d2beae38c22d8e2381475f18b97b445
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DroidSansMono.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
+	sha1sums = 22534e0d28f1ac98141c4021c0cc8afee9f1cc8a
 	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
 
 pkgname = nerd-fonts-droid-sans-mono
