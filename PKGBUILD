@@ -1,9 +1,9 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='mongodb-compass-readonly'
 pkgname="$_pkgname-bin"
-_pkgver='1.20.4'
+_pkgver='1.20.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm"
 	'launch.sh'
 )
-sha256sums=('0ea1c300bbc2a97813cf6082cbc1404cb415d43995063c61c687f7ac22801c07'
+sha256sums=('13c1d31650093c0edec814b97343bd91bf98524b4a97bf2feaec074b342cf66d'
             '1bf3dd5e9363e750f4099acab9c8e22af7dc8645215d3fc4ed13abb0d38c5137')
 
 package() {
