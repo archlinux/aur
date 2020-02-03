@@ -3,14 +3,13 @@
 
 pkgname=rapidminer-studio
 pkgver=9.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment"
 arch=('any')
 url="https://rapidminer.com/products/studio/"
 license=('AGPL3')
-depends=('java-environment')
+depends=('java-runtime=8')
 makedepends=('unzip' 'gendesk')
-#source=(https://s3.amazonaws.com/rapidminer.releases/rapidminer-studio/$pkgver/rapidminer-studio-$pkgver.zip \
 source=(https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip \
         rapidminer-studio.sh)
 sha256sums=('bbfec048671656e6c8cac90d54a7fd956af5786075f0675d505658bcb106122c'

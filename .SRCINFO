@@ -1,13 +1,13 @@
 pkgbase = rapidminer-studio
 	pkgdesc = Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment
 	pkgver = 9.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rapidminer.com/products/studio/
 	arch = any
 	license = AGPL3
 	makedepends = unzip
 	makedepends = gendesk
-	depends = java-environment
+	depends = java-runtime=8
 	source = https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip
 	source = rapidminer-studio.sh
 	sha256sums = bbfec048671656e6c8cac90d54a7fd956af5786075f0675d505658bcb106122c
