@@ -11,7 +11,9 @@ pkgbase = kdocker
 	depends = libxpm
 	depends = libxmu
 	source = https://github.com/user-none/KDocker/archive/5.2.tar.gz
+	source = qt_514_build_fix.patch
 	sha256sums = ffcb11ac0cf50ae80a35e000b7a7470259e624511d1281579386a9cb68935cba
+	sha256sums = f05d163f67dd81aa6be97e8904258c108a0dd3451b667949c9c7657f6a965f0e
 
 pkgname = kdocker
 

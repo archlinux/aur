@@ -6,13 +6,15 @@ arch=('i686' 'x86_64')
 url="https://github.com/user-none/KDocker"
 license=('GPL2')
 depends=('qt5-base' 'qt5-x11extras' 'libxpm' 'libxmu')
-source=(https://github.com/user-none/KDocker/archive/${pkgver}.tar.gz)
-sha256sums=('ffcb11ac0cf50ae80a35e000b7a7470259e624511d1281579386a9cb68935cba')
+source=(https://github.com/user-none/KDocker/archive/${pkgver}.tar.gz
+        qt_514_build_fix.patch)
+sha256sums=('ffcb11ac0cf50ae80a35e000b7a7470259e624511d1281579386a9cb68935cba'
+            'f05d163f67dd81aa6be97e8904258c108a0dd3451b667949c9c7657f6a965f0e')
 
 build() {
     cd "$srcdir/KDocker-$pkgver"
 
-    patch --forward --strip=1 --input="../../qt_514_build_fix.patch" src/trayitem.h
+    patch --forward --strip=1 --input="$srcdir/qt_514_build_fix.patch" src/trayitem.h
 
     qmake-qt5
     make
