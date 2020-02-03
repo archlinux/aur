@@ -2,12 +2,13 @@
 
 pkgname=vkbasalt
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
 license=('zlib')
 depends=('glslang' 'vulkan-headers' 'vulkan-tools' 'vulkan-validation-layers' 'lib32-glibc' 'lib32-gcc-libs')
+optdepends=('reshade-shaders-git')
 source=("git+https://github.com/DadSchoorse/vkBasalt.git#tag=v${pkgver}"
         "git+https://github.com/DadSchoorse/reshade.git#commit=8d0a5db")
 sha256sums=(SKIP
@@ -37,6 +38,8 @@ package() {
   install -dm 755 "${pkgdir}/usr/share/vkBasalt/shader"
   install -Dm 644 build/shader/*.spv  "${pkgdir}/usr/share/vkBasalt/shader"
   install -Dm 644 config/vkBasalt.conf "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
+  sed -i 's|*path/to/reshade-shaders/Textures\*|/usr/share/reshade/textures|g' "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
+  sed -i 's|*path/to/reshade-shaders/Shaders\*|/usr/share/reshade/shaders|g' "${pkgdir}/usr/share/vkBasalt/vkBasalt.conf.example"
   install -dm 755 "${pkgdir}/usr/share/vulkan/implicit_layer.d"
   sed 's+@lib+/usr/lib/libvkbasalt.so+g' config/vkBasalt64.json > "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt64.json"
   sed 's+@lib+/usr/lib32/libvkbasalt.so+g' config/vkBasalt32.json > "${pkgdir}/usr/share/vulkan/implicit_layer.d/vkBasalt32.json"
