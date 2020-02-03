@@ -1,0 +1,14 @@
+pkgbase = ffox-remote
+	pkgdesc = Lightweight remote control for Unix Firefox
+	pkgver = 20141024.b936fe94248eb084883211289020e1c1d43f6a71
+	pkgrel = 1
+	url = https://github.com/siebenmann/ffox-remote
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	depends = glibc
+	source = https://github.com/siebenmann/ffox-remote/archive/b936fe94248eb084883211289020e1c1d43f6a71.zip
+	sha512sums = 043c5983b21ea59b341a0acfc55e44a6ca9f8c62ec677eca255421cc4891c0385fe75acaa7a53cdc8a559734cd7779fade931cc96fc632c3ece49b43117f7d67
+
+pkgname = ffox-remote
+
