@@ -3,8 +3,8 @@
 
 pkgname=openboard-git
 _fragment="#branch=master"
-pkgver=v1.5.3.r0.g426b1f7a
-pkgrel=2
+pkgver=v1.5.4.r0.g85eb094e
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64')
 url="http://openboard.ch/index.en.html"
@@ -16,24 +16,20 @@ makedepends=(git)
 source=("git://github.com/OpenBoard-org/OpenBoard.git${_fragment}"
         qchar.patch
         qwebkit.patch
-        https://github.com/OpenBoard-org/OpenBoard/pull/218.diff
-        https://github.com/OpenBoard-org/OpenBoard/pull/223.diff
         openboard.desktop
 )
 source+=(quazip.diff)
 source+=(poppler.patch)
 source+=(drop_ThirdParty_repo.patch)
 source+=(30fps.patch)
-md5sums=('SKIP'
-         'bf2c524f3897cfcfb4315bcd92d4206e'
-         '60f64db6bf627015f4747879c4b30fd3'
-         'f484614cc48181287607afb5a45ef644'
-         '04c421c140e983d41975943ede5fe61a'
-         '21d1749400802f8fc0669feaf77de683'
-         '30a7928f696f958d5e8f06e02c49639f'
-         'ebddda8793f57b7b7e1402c5d271ed86'
-         '879116c683374b2dde291014e44a29fe'
-         '79afac7031634bf9e46ba67cbf2a2d0c')
+sha256sums=('SKIP'
+            'b40fdab85f5921d0404c07db64628a2428a87d39193d2797bbef2e69b1d51549'
+            '8e276fe7da7a47d5520ce50b5bd761f4e983230629e48dea6d5cfa86b49ca889'
+            '00688af02006bddeab797f624e5cbae66a5c02f4e14315d87d3f198f74797c17'
+            'db007a755533baa245dfb481393b2897ddd6a219a28399d4a7bebd1ff855b6d2'
+            'af3fd5ad142216242ec30e2ba8f19cc0afb9325fe6ddfae735f53fffdc03137f'
+            '71a41ecbecb952b402d554aa7c5659650765b692662a28f9db904c7390f8f080'
+            '205062adbbd48d6622341e316e14a5496f73696385a3ed5cda7a89d3e7d2861d')
 
 pkgver() {
   cd "$srcdir/OpenBoard"
