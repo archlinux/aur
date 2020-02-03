@@ -1,14 +1,15 @@
 # Maintainer: Andre Kugland <kugland@gmail.com>
 pkgname=notable-bin
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
 arch=('x86_64')
 url="https://github.com/notable/notable"
 license=('Freeware')
 groups=()
-depends=('libxss')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip'
+         'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -19,14 +20,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/notable/notable/releases/download/v${pkgver}/notable_${pkgver}_amd64.deb")
+source=("https://github.com/notable/notable/releases/download/v${pkgver}/notable-${pkgver}.pacman")
 noextract=()
-sha512sums=('ae6e6692fdf7f29baf67548851b166a873c478d8a96ca1b6b74e502513a976bb1758945ada63191ba9942469a385ff630b9b3f058038fc0e1c497f8d413b9c68')
+sha512sums=('a05a79d180f29562eefc7717ff5c3d52a1465c8a18be3766f138a2aeec0d268ed72d0de4ee9cd7747b19e30a3ef344e4f8bdeb755118a39a22193d5d6e213dd2')
 validpgpkeys=()
 
 package() {
-  tar xf data.tar.xz
-
   # Work around for https://github.com/electron/electron/issues/17972
   chmod 4755 opt/Notable/chrome-sandbox
 
