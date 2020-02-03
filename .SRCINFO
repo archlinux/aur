@@ -1,6 +1,6 @@
 pkgbase = r-fields
 	pkgdesc = Tools for Spatial Data
-	pkgver = 10.0
+	pkgver = 10.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fields
 	arch = i686
@@ -8,12 +8,12 @@ pkgbase = r-fields
 	license = GPL2
 	license = GPL3
 	makedepends = gcc
-	makedepends = gcc-fortran
 	depends = r>=3.0
 	depends = r-spam
 	depends = r-maps
-	source = http://cran.r-project.org/src/contrib/fields_10.0.tar.gz
-	md5sums = b400c26703f41ce33a65cbbd22147410
+	depends = gcc-fortran
+	source = https://cran.r-project.org/src/contrib/fields_10.2.tar.gz
+	md5sums = 7c2b39b70a6722a5b44e5388344ff8e5
 
 pkgname = r-fields
 
