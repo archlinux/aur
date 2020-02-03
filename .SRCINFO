@@ -1,0 +1,13 @@
+pkgbase = gradle-zsh-completion
+	pkgdesc = zsh completion for Gradle
+	pkgver = master_fa72b79
+	pkgrel = 1
+	url = https://github.com/gradle/gradle-completion
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/gradle/gradle-completion.git
+	md5sums = SKIP
+
+pkgname = gradle-zsh-completion
+
