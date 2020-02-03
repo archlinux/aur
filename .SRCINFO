@@ -1,6 +1,6 @@
 pkgbase = verona
 	pkgdesc = Microsoft's Verona programming language interpreter and compiler
-	pkgver = f3e809e98065201ae343935d18d17b060b862386
+	pkgver = 2
 	pkgrel = 1
 	url = https://github.com/microsoft/verona
 	arch = x86_64

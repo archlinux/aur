@@ -2,8 +2,9 @@
 # Maintainer: Hans Goor <me at eyedevelop dot org>
 
 pkgname=verona
-pkgver=f3e809e98065201ae343935d18d17b060b862386
+pkgver=2
 pkgrel=1
+commit_hash=f3e809e98065201ae343935d18d17b060b862386
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
 arch=('x86_64')
 url='https://github.com/microsoft/verona'
@@ -11,7 +12,7 @@ licence=('MIT')
 depends=('python')
 makedepends=('python-pip' 'cmake' 'ninja' 'clang' 'llvm')
 provides=('veronac' 'verona-interpreter')
-source=("git+https://github.com/microsoft/verona#commit=$pkgver")
+source=("git+https://github.com/microsoft/verona#commit=$commit_hash")
 md5sums=('SKIP')
 
 prepare() {
