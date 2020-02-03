@@ -3,16 +3,16 @@
 #Maintainer: Dominik Heidler <dominik@heidler.eu>
 
 pkgname=openecardapp
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
-pkgdesc="Open eCard-App (opencard) is an open source alternative of the AusweisApp"
+pkgdesc="An open source alternative of the AusweisApp"
 arch=('any')
 url="https://www.openecard.org"
 license=("GPL3")
 depends=('java-runtime' 'pcsclite')
-source=("https://github.com/ecsec/open-ecard/releases/download/1.3.0/Open-eCard-App-${pkgver}.deb")
+source=("https://github.com/ecsec/open-ecard/releases/download/${pkgver}/open-ecard-app_${pkgver}_amd64.deb")
 install="openecardapp.install"
-md5sums=('268075f1b3a9f2ae1b8166f6942d418a')
+sha256sums=('f83833a1242bb1b46e433aacbf3124da4019be74a781cb9c12187dfe77697664')
 
 prepare() {
 	cd "$srcdir"
