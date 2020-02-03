@@ -1,0 +1,13 @@
+pkgbase = sddm-theme-redrock
+	pkgdesc = Redrock, a MacOS inspired SDDM theme
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://www.archlinux.org/
+	arch = any
+	license = CCPL:by-sa
+	depends = sddm
+	source = https://github.com/astize/redrock/archive/v0.2.tar.gz
+	md5sums = 4af2a10b1a131e8f0fdbf20d00d62524
+
+pkgname = sddm-theme-redrock
+
