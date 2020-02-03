@@ -1,11 +1,11 @@
 pkgbase = notable-bin
 	pkgdesc = The markdown-based note-taking app that doesnt suck
 	pkgver = 1.8.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/notable/notable
 	arch = x86_64
 	license = Freeware
-	depends = c-ares ffmpeg gtk3 http-parser libevent libvpx libxslt libxss minizip nss re2 snappy libnotify libappindicator-gtk3
+	depends = libxss nss libnotify libappindicator-gtk3
 	provides = notable
 	source = https://github.com/notable/notable/releases/download/v1.8.4/notable_1.8.4_amd64.deb
 	sha512sums = a05a79d180f29562eefc7717ff5c3d52a1465c8a18be3766f138a2aeec0d268ed72d0de4ee9cd7747b19e30a3ef344e4f8bdeb755118a39a22193d5d6e213dd2
