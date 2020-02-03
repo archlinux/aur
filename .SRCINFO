@@ -1,16 +1,16 @@
 pkgbase = neovim-nerdtree
 	pkgdesc = Tree explorer plugin for navigating the filesystem
 	pkgver = 6.5.0
-	pkgrel = 1
-	url = http://www.vim.org/scripts/script.php?script_id=1658
+	pkgrel = 2
+	url = https://github.com/preservim/nerdtree
 	install = nvim-doc.install
 	arch = any
 	groups = neovim-plugins
 	license = custom:WTFPL
 	depends = neovim
-	source = neovim-nerdtree-6.5.0.zip::http://www.vim.org/scripts/download_script.php?src_id=17123
+	source = neovim-nerdtree-6.5.0.zip::https://github.com/preservim/nerdtree/archive/6.5.0.zip
 	source = COPYING
-	sha256sums = 16e8e0684d5964ececa47cbd4ac714d3ccf34247559af534f4b512baf5e0bf56
+	sha256sums = f6a4e1481a97b1a8b71531950c99d843d55af2b80ec01a72fa7da6de906446c3
 	sha256sums = 7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40
 
 pkgname = neovim-nerdtree

@@ -7,30 +7,43 @@
 
 pkgname=neovim-nerdtree
 pkgver=6.5.0
-_scriptid=17123
-pkgrel=1
+pkgrel=2
 pkgdesc='Tree explorer plugin for navigating the filesystem'
 arch=('any')
-url='http://www.vim.org/scripts/script.php?script_id=1658'
+url='https://github.com/preservim/nerdtree'
 license=('custom:WTFPL')
 depends=('neovim')
 groups=('neovim-plugins')
 install=nvim-doc.install
-source=("$pkgname-$pkgver.zip::http://www.vim.org/scripts/download_script.php?src_id=$_scriptid"
+source=("$pkgname-$pkgver.zip::https://github.com/preservim/nerdtree/archive/${pkgver}.zip"
         'COPYING')
-sha256sums=('16e8e0684d5964ececa47cbd4ac714d3ccf34247559af534f4b512baf5e0bf56'
+sha256sums=('f6a4e1481a97b1a8b71531950c99d843d55af2b80ec01a72fa7da6de906446c3'
             '7637386b5f81e8a719ca336233149005e5fa28b5e6054ea7b67de49355b0ad40')
 
+
 package() {
+  local RUNTIME="${pkgdir}/usr/share/nvim/runtime"
+
+
+  cd "${srcdir}/${pkgname#neovim-}-${pkgver}"
+
   install -d \
-    "$pkgdir/usr/share/nvim/runtime/"{doc,nerdtree_plugin,plugin,syntax}
-  install -m644 doc/NERD_tree.txt "$pkgdir/usr/share/nvim/runtime/doc/"
-  install -m644 nerdtree_plugin/{exec_menuitem,fs_menu}.vim \
-    "$pkgdir/usr/share/nvim/runtime/nerdtree_plugin/"
-  install -m644 plugin/NERD_tree.vim "$pkgdir/usr/share/nvim/runtime/plugin/"
-  install -m644 syntax/nerdtree.vim "$pkgdir/usr/share/nvim/runtime/syntax/"
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    "$RUNTIME/"{"autoload/nerdtree","doc","lib/nerdtree","nerdtree_plugin","plugin","syntax"}
+
+  find "autoload" -type f -iname "*.vim" -exec install -Dvm644 "{}" \
+    "$RUNTIME/{}" \;
+
+  install -Dvm644 "doc/NERDTree.txt" "${RUNTIME}/doc/"
+
+  install -Dvm644 nerdtree_plugin/{exec_menuitem,fs_menu}.vim \
+    "${RUNTIME}/nerdtree_plugin/"
+
+  find "lib/nerdtree" -type f -iname "*.vim" -exec install -vm644 "{}" \
+    "${RUNTIME}/{}" \;
+
+  install -Dvm644 plugin/NERD_tree.vim "${RUNTIME}/plugin/"
+  install -Dvm644 syntax/nerdtree.vim "${RUNTIME}/syntax/"
+  install -Dvm644 "LICENCE" "${pkgdir}/usr/share/licenses/$pkgname/LICENCE"
 }
 
-# getver: github.com/scrooloose/nerdtree
 # vim:set ts=2 sw=2 et:
