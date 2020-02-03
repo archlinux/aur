@@ -1,0 +1,39 @@
+pkgbase = otr-verwaltung3p-dev-git
+	pkgdesc = Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/EinApfelBaum/otr-verwaltung3p
+	arch = any
+	license = GPL3
+	makedepends = python-distutils-extra
+	depends = gtk3
+	depends = python
+	depends = python-gobject
+	depends = gst-python
+	depends = python-xdg
+	depends = python-dbus
+	depends = python-cairo
+	depends = python-requests
+	depends = python-keyring
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = mpv
+	depends = ffmpeg
+	depends = ffms2
+	depends = mediainfo
+	depends = mkvtoolnix-cli
+	optdepends = gnome-keyring: For password storing in keyring
+	optdepends = kwallet: For password storing in wallet
+	optdepends = mediainfo-gui: For plugin Mediainfo
+	optdepends = otr-verwaltung3p-vdub: For cutting old OTR files
+	provides = otr-verwaltung3p
+	conflicts = otr-verwaltung3p
+	options = !strip
+	source = git+https://github.com/EinApfelBaum/otr-verwaltung3p.git#branch=development
+	sha256sums = SKIP
+
+pkgname = otr-verwaltung3p-dev-git
+
