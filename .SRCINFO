@@ -1,0 +1,14 @@
+pkgbase = vls
+	pkgdesc = slow list subdirectories and files and check file expire
+	pkgver = 0.1
+	pkgrel = 1
+	url = github.com/keminar/vls
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/keminar/vls.git#tag=v0.1
+	md5sums = SKIP
+
+pkgname = vls
+
