@@ -4,7 +4,7 @@
 
 pkgname=litecoin-qt
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.litecoin.org/"
 license=('MIT')
