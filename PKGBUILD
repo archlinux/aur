@@ -7,7 +7,7 @@ pkgdesc="Patched font Fira Mono from nerd-fonts library"
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
 license=('MIT')
-depends=('fontconfig' 'xorg-font-utils' 'wget')
+depends=('fontconfig' 'xorg-font-utils')
 install=$pkgname.install
 source=(
     "https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/FiraMono.zip"
