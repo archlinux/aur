@@ -1,9 +1,9 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='mongodb-compass-community'
 pkgname="$_pkgname-bin"
-_pkgver='1.20.4'
+_pkgver='1.20.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm"
 	'launch.sh'
 )
-sha256sums=('f7069c0553a392001e5b4d07d209172a038ee6472563083d6e3346e2b8b14a9e'
+sha256sums=('03e5b05159a53576f100be48e371f27b5952b34e3eb4584548efb9516b61af7f'
             '1bf3dd5e9363e750f4099acab9c8e22af7dc8645215d3fc4ed13abb0d38c5137')
 
 package() {
