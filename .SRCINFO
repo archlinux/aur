@@ -1,21 +1,20 @@
 pkgbase = pax-britannica
 	pkgdesc = A one-button real-time strategy game for up to 4 players
 	pkgver = 20110514
-	pkgrel = 1
+	pkgrel = 2
 	url = http://paxbritannica.henk.ca/
 	arch = x86_64
 	arch = i686
 	license = MIT
-	depends = lib32-alsa-plugins
-	depends = lib32-mesa
+	depends = hicolor-icon-theme
+	depends = lib32-alsa-lib
 	depends = lib32-glu
 	depends = lib32-libxrandr
-	depends = lib32-libpulse
 	conflicts = paxbritannica-git
-	source = http://paxbritannica.henk.ca/pax-britannica.tar.gz
+	source = https://web.archive.org/web/20160307100356if_/http://paxbritannica.henk.ca/pax-britannica.tar.gz
 	source = https://github.com/henkboom/pax-britannica/raw/master/license.txt
-	md5sums = b2df1a3d1266ec3cf0722fc9807b28b0
-	md5sums = d8f449b1dec151e9a49c96034cb8015a
+	sha256sums = 24d69328f5e0e97cd40fb8dcbf5996a073a77d40b64b37671973503a2d05fded
+	sha256sums = ba24a6f776b81571112c77ac37944c7c96e44648bf6ce03d84d8bf085e11af57
 
 pkgname = pax-britannica
 
