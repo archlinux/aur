@@ -1,8 +1,8 @@
-# Maintainer: Nick Fod <nickfode@posteo.de>
+# Maintainer: Nick Fode <nickfode@posteo.de>
 
 pkgname=nerd-fonts-noto-sans-regular-complete
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=0
 pkgdesc="Noto Sans Regular Nerd Font complete"
 arch=('any')
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -10,7 +10,7 @@ _raw_url="https://raw.githubusercontent.com/ryanoasis/nerd-fonts/v${pkgver}/patc
 license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 install="${pkgname}.install"
-md5sums=('341ee7b3c67f4b873be5157cc4627b93')
+md5sums=('d7b8d43f18624e390e648e24e3aea3b7')
 source=(
   "Noto-Sans-Regular-Nerd-Font-Complete.ttf::${_raw_url}/Noto/Sans/complete/Noto%20Sans%20Regular%20Nerd%20Font%20Complete.ttf"
 )
