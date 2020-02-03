@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdlsynth-beta-git
-pkgver=r103.910073d
+pkgver=r105.fe9f2c4
 pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl)'
@@ -15,6 +15,8 @@ depends=('ghdl>0.36' 'yosys' 'gcc-libs')
 
 source=("ghdlsynth::git://github.com/tgingold/ghdlsynth-beta.git")
 sha256sums=('SKIP')
+# clang-9: error: unknown argument: '-fvar-tracking-assignments'
+options=(!debug)
 
 pkgver() {
 	cd "${srcdir}/ghdlsynth"
@@ -31,7 +33,11 @@ build() {
 package() {
 	cd "${srcdir}/ghdlsynth"
 
-	install -Dm755 -t "$pkgdir/$(yosys-config --datdir)/plugins/" ghdl.so
+	install -Dm755 ghdl.so "$pkgdir/usr/lib/ghdl/ghdl_yosys.so"
+
+	install -dm755 "$pkgdir/$(yosys-config --datdir)/plugins/"
+	ln -s /usr/lib/ghdl/ghdl_yosys.so "$pkgdir/$(yosys-config --datdir)/plugins/ghdl.so"
+
 	install -dm755 "$pkgdir/usr/share/ghdlsynth/examples/"
 	cp -r examples/* "$pkgdir/usr/share/ghdlsynth/examples/"
 }

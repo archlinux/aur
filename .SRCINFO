@@ -1,6 +1,6 @@
 pkgbase = ghdlsynth-beta-git
 	pkgdesc = VHDL synthesis (based on ghdl)
-	pkgver = r103.910073d
+	pkgver = r105.fe9f2c4
 	pkgrel = 1
 	url = https://github.com/tgingold/ghdlsynth-beta
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = ghdlsynth-beta-git
 	provides = ghdlsynth
 	conflicts = ghdlsynth-beta
 	conflicts = ghdlsynth
+	options = !debug
 	source = ghdlsynth::git://github.com/tgingold/ghdlsynth-beta.git
 	sha256sums = SKIP
 
