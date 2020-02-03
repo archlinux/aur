@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Youtube Terminal UI for music streaming. WIP."
 arch=('x86_64')
 license=('GPL3')
-depends=('ncurses>=6.1' 'mpv>=1:0.32.0')
+depends=('ncurses5-compat-libs>=6.1' 'mpv>=1:0.32.0')
 makedepends=()
 replaces=()
 conflicts=()
