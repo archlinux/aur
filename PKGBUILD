@@ -1,4 +1,3 @@
-
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
@@ -6,22 +5,21 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 
 pkgname=python-pychroot
-pkgver=0.9.16
-pkgrel=5
+pkgver=0.10.1
+pkgrel=1
 pkgdesc="A python library and CLI tool that simplifies chroot handling"
-arch=( 'i686' 'x86_64' )
+arch=('any')
 url="https://pypi.python.org/pypi/pychroot/"
 license=('BSD')
 depends=('python' 'python-snakeoil')
 makedepends=('python' 'python-snakeoil' 'python-setuptools')
 _pkgname=pychroot
-
 install=
 changelog=
 noextract=()
-source=("https://pypi.python.org/packages/71/f0/c21a8e3f0b573424daa61700b08e76867742e43105631a996a22b99b1099/pychroot-0.9.16.tar.gz"
-        "pychroot-0.9.16.tar.gz.sig")
-sha512sums=('6e35c7b40ad27d234c855abf1857aa6579583d848b111559de21edfa0bc6987e08d1d122924101e2e9bdf37886591b7291a607ed22cf2c50aa11b32f7ea65495'
+source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "${_pkgname}-${pkgver}.tar.gz.sig")
+sha512sums=('4df7f405872b693bf9ecac331927f749653b7251a49eaa10c423357f3150bbcbea73052ec4363a0f510aaeecd6b467d985402a8f764e99e67f5882e6b2ea4f97'
             'SKIP')
 
 build() {
