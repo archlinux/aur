@@ -1,7 +1,7 @@
 # Maintainer: Josh Holbrook <josh.holbrook@gmail.com>
 
 pkgname=python-pyee
-pkgver=6.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A port of node.js's EventEmitter to python."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/p/pyee/pyee-$pkgver.tar.gz")
-sha256sums=('a9c9b60e8693a260dd942ef5a71358cfcbba15792d5e72caf0e3c891c4e91c3b')
+sha256sums=('b0e5b89b17c8bd52a3c6517a545187907a8c69ce90169d29ebd8d2d5d7e4bc7d')
 
 build() {
     cd "$srcdir/pyee-$pkgver"
