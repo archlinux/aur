@@ -19,7 +19,7 @@ pkgbase = linux-amd
 	sha256sums = SKIP
 	sha256sums = bde450010a0cc9f3c7da121debecc57591469974a283e01f5332f3deb8ad8d2a
 	sha256sums = 71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08
-	sha256sums = 5af59a8d58d3bf1ff822a5e325879e9bd6195386a87ed9c5fa0d90986cf0ada9
+	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
 
 pkgname = linux-amd
 	pkgdesc = Linux kernel for AMD CPU based hardware
