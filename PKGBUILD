@@ -1,4 +1,4 @@
-# Maintainer: Gyorgy Abraham <gyorgy.abr@gmail.com>
+# Maintainer: Gyorgy Abraham <gyorgy.abraham@protonmail.com>
 pkgname=awstail
 pkgver=1.5
 pkgrel=1
