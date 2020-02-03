@@ -1,12 +1,12 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=jdk-openj9-bin
 _jdkver=13
-_openj9ver=0.17.0
-_majorver=${_jdkver}.0.1
-_buildvershort=9
+_openj9ver=0.18.0
+_majorver=${_jdkver}.0.2
+_buildvershort=8
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Eclipse (former IBM) OpenJ9 with latest GA release of openjdk (jdk${_jdkver})"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
@@ -23,7 +23,7 @@ provides=(
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
 source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_majorver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_majorver}_${_buildver}.tar.gz")
-sha256sums=('13f0d693d9888dc7893a34996a9f64aef6d6c0a2b8442f9aa17973f2c1d1bf8b')
+sha256sums=('aeecf6d30d0c847db81d07793cf97e5dc44890c29366d7d9f8f9f397f6c52590')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
