@@ -1,4 +1,4 @@
-# Maintainer: Tom Hiller <thrilleratplay@gmail.com>
+# Maintainer: Andre Kugland <kugland@gmail.com>
 pkgname=notable-bin
 pkgver=1.8.4
 pkgrel=1
