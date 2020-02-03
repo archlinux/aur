@@ -3,12 +3,12 @@
 _pkgname=toad
 pkgname=toad-git
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Toad: Trainer Of All Data, the Frog training collection"
 arch=('i686' 'x86_64')
 url="http://languagemachines.github.io/frog"
 license=('GPL3')
-depends=('ticcutils' 'ucto' 'libfolia' 'icu' 'libxml2' 'timbl' 'mbt' 'frog' 'frogdata')
+depends=('ticcutils' 'ucto' 'libfolia' 'icu' 'libxml2' 'timbl' 'mbt' 'mbtserver' 'frog' 'frogdata')
 provides=('toad')
 conflicts=('toad')
 makedepends=('libtool' 'autoconf')
