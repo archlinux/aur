@@ -3,7 +3,7 @@
 
 pkgname=verona
 pkgver=3
-pkgrel=1
+pkgrel=2
 commit_hash=f3e809e98065201ae343935d18d17b060b862386
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
     cd verona
     mkdir build_ninja
     cd build_ninja
-    cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=/usr/bin/clang++
+    cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -- -j $(nproc)
     ninja install
 }
 
