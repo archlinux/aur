@@ -3,7 +3,7 @@
 
 pkgname=vna_j
 _realname=vnaJ
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="GUI for various vector network analyzers"
 arch=('any')
@@ -15,10 +15,10 @@ makedepends=('imagemagick')
 source=(http://download.dl2sba.com/vnaj/$pkgver/${_realname}.${pkgver}.jar
         vnaJ.sh vnaJ.desktop http://download.dl2sba.com/vnaj/$pkgver/logo.ico)
 noextract=(${_realname}.${pkgver}.jar)
-md5sums=('8bd2e83738a18d8b991b9d1bba8c21b4'
-         '4d4958ceef2ddf13c26633e586b15417'
-         'e1f40625326a65e5df479f4eae742041'
-         '9f3eed2cc9491779155f111d9e3d6bfd')
+sha256sums=('adb2e8714835d603c9545d594b8849096efe570bea42dfd63cb1b0ba52fe632c'
+            'cf188ba0153e9227a8db441c03f8566dee523c65e42097ea1f7d8041f1b68e43'
+            'a1a4b6cc03a832d0d0d564a8e4ce07c58532ff5e7d9a1bdeaf7e5acbfb8907a6'
+            'e4868277a6f4f1da10cfeaba58086d6f76b79a057be4ba7a72aab9d9f686f7fb')
 
 package() {
     mkdir -p "$pkgdir"{/usr/bin,/usr/share/java/$pkgname}
