@@ -1,7 +1,7 @@
 # Maintainer: Bleuzen <supgesu at gmail dot com>
 
 pkgname=proaudio-meta
-pkgver=2020.01.20
+pkgver=2020.02.03
 pkgrel=1
 pkgdesc="Metapackage for most useful audio production software"
 arch=("x86_64")
@@ -21,6 +21,7 @@ depends=("jack2"
          "helm"
          "zynaddsubfx"
          "drumkv1" "padthv1" "samplv1" "synthv1"
+         "ninjas2"
          "avldrums.lv2"
          "geonkick"
          "swh-plugins"

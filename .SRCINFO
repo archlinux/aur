@@ -1,6 +1,6 @@
 pkgbase = proaudio-meta
 	pkgdesc = Metapackage for most useful audio production software
-	pkgver = 2020.01.20
+	pkgver = 2020.02.03
 	pkgrel = 1
 	url = https://github.com/Bleuzen/archlinux-packages
 	install = proaudio-meta.install
@@ -22,6 +22,7 @@ pkgbase = proaudio-meta
 	depends = padthv1
 	depends = samplv1
 	depends = synthv1
+	depends = ninjas2
 	depends = avldrums.lv2
 	depends = geonkick
 	depends = swh-plugins
