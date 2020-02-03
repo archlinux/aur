@@ -1,3 +1,41 @@
+4.2
+---
+
+ - Changes in XML XPath implementation.
+   For standard XML parser classes, this only means a minor change in performance
+   (should be a slight improvement, most noticeable for :py:class:`TandemXML`).
+
+   - For custom classes: the implementation of xpath evaluation in :py:meth:`pyteomics.xml.XML.iterfind` has changed.
+     Pseudo-conditions are now not supported. Instead, an attempt is made to support full XPath.
+     The main difference is that the XPath is evaluated on XML elements,
+     whereas pseudo-conditions used to be evaluated for complete Python dictionaries.
+     To reproduce old behavior, you can just write an explicit `if` statement at an appropriate place.
+     New implementation allows actually skipping the elements that do not satisfy the XPath predicate.
+     When writing classes which by default iterate over elements based on a complex XPath, set
+     :py:attr:`_default_iter_path` instead of :py:attr:`_default_iter_tag`.
+
+     .. warning ::
+       Beware that if :py:attr:`_default_iter_path` differs from :py:attr:`_default_iter_tag` and you use indexing,
+       all elements corresponding to :py:attr:`_default_iter_tag` will be indexed.
+       This is a limitation of the index building procedure.
+       This discrepancy will lead to confusing behavior
+       (length checks, membership tests and other things based on index
+       will not correspond to items returned by iteration).
+       :py:meth:`map` calls will also operate on the full index.
+
+
+ - New keyword arguments `queue_size`, `queue_timeout` and `processes` for indexed parsers with support for :py:meth:`map`.
+
+ - New method :py:meth:`mass.Unimod.by_id`.
+   Also, :py:class:`mass.Unimod` now supports dict-like queries with record IDs.
+
+ - Reduce memory footprint for unit primitives (PR #35 by Joshua Klein).
+
+ - New functions :py:func:`pyteomics.auxiliary.sigma_T` and :py:func:`pyteomics.auxiliary.sigma_fdr`.
+
+ - Fix issues #44, #46, #47, #48.
+
+
 4.1.2
 -----
 
@@ -9,11 +47,6 @@ Bugfix: fix the standard mass value for pyrrolysine (issue #42).
  - Add `numpress <https://dx.doi.org/10.1074%2Fmcp.O114.037879>`_ support for mzML and mzXML files.
    To read files compressed with Numpress, install `pynumpress`
    (`PyPI <https://pypi.org/project/pynumpress/>`_, `GitHub <https://github.com/mobiusklein/pynumpress>`_).
-
-   .. note:: There is a `known issue
-      <https://bitbucket.org/levitsky/pyteomics/issues/37/add-numpress-support-in-mzml#comment-51540079>`_
-      with `pynumpress` on Linux and Python 2.7. Please install the fresh `pynumpress` from GitHub if this
-      affects you.
 
  - Bugfixes.
 
