@@ -2,14 +2,14 @@
 
 pkgname=lefthook
 pkgdesc="git hooks manager"
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/Arkweid/lefthook"
 license=('MIT')
 makedepends=('go' 'rsync')
 source=("https://github.com/Arkweid/lefthook/archive/v${pkgver}.tar.gz")
-sha256sums=('d47be98a7e5e6a7941f2c8337e6734b1570fd4d6eb6f99c6b971f37ee7e897f6')
+sha256sums=('821d2771c632e101cb385fc4690f3fbb2190cf282bf80152b47f7f39b2a6beda')
 
 build() {
   cd "$pkgname-$pkgver"
