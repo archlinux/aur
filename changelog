@@ -1,3 +1,11 @@
+2020-02-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.1.2.0-1:
+    Added MiniProfileBackground item type, which can be used for lootable, transferable and matchable types in the config (#1624).
+    Fixed a rare bug which could result in ASF wrongly interpreting marketable/tradable items (#1622).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    pkg: revert to generic dotnet dependencies (FS#65128 closed)
 2020-01-16 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.1.7-2:
     pkg: explicitly depend on AUR dotnet binaries (FS#65128)
