@@ -1,6 +1,6 @@
 pkgbase = ttf-jetbrains-mono-git
 	pkgdesc = A typeface for developers_
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://www.jetbrains.com/lp/mono/
 	arch = any

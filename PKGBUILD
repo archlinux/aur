@@ -1,6 +1,6 @@
 # Maintainer: Tom Carrio <tom@carrio.dev>
 pkgname=ttf-jetbrains-mono-git
-pkgver=1.0.0
+pkgver=1.0.2
 _projectname=JetBrainsMono
 pkgrel=1
 epoch=
