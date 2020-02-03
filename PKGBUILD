@@ -2,7 +2,7 @@
 # Maintainer: Hans Goor <me at eyedevelop dot org>
 
 pkgname=verona
-pkgver=2
+pkgver=3
 pkgrel=1
 commit_hash=f3e809e98065201ae343935d18d17b060b862386
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
