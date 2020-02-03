@@ -2,7 +2,7 @@
 
 pkgname=pax-britannica
 pkgver=20110514
-pkgrel=1
+pkgrel=2
 pkgdesc="A one-button real-time strategy game for up to 4 players"
 arch=('x86_64' 'i686')
 url="http://paxbritannica.henk.ca/"
@@ -15,8 +15,9 @@ fi
 conflicts=("paxbritannica-git")
 source=("https://web.archive.org/web/20160307100356if_/http://paxbritannica.henk.ca/pax-britannica.tar.gz" 
 	"https://github.com/henkboom/pax-britannica/raw/master/license.txt")
-md5sums=('b2df1a3d1266ec3cf0722fc9807b28b0'
-	'd8f449b1dec151e9a49c96034cb8015a')
+
+sha256sums=('24d69328f5e0e97cd40fb8dcbf5996a073a77d40b64b37671973503a2d05fded'
+           'ba24a6f776b81571112c77ac37944c7c96e44648bf6ce03d84d8bf085e11af57')
 
 build() {
 	cd $srcdir/$pkgname
