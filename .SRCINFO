@@ -1,0 +1,20 @@
+pkgbase = targetd
+	pkgdesc = Remote configuration of a LIO-based storage appliance
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/open-iscsi/targetd
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = targetcli-fb
+	depends = python-rtslib-fb
+	depends = python-configshell-fb
+	depends = libblockdev
+	depends = python-setproctitle
+	depends = python-yaml
+	provides = targetd
+	source = targetd-0.8.9.tar.gz::https://github.com/open-iscsi/targetd/archive/v0.8.9.tar.gz
+	sha256sums = 16aec1cd70ab515eed08b801f434a3f1aa810675f305df61b368772c30af7976
+
+pkgname = targetd
+
