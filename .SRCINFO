@@ -1,6 +1,6 @@
 pkgbase = linux-amd-wip-git
 	pkgdesc = Linux kernel with AMDGPU DC patches
-	pkgver = 5.6.874199.ad808910be68
+	pkgver = 5.6.888851.7b19914383fc
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/~agd5f/linux/
 	arch = x86_64
@@ -18,21 +18,19 @@ pkgbase = linux-amd-wip-git
 	source = linux-amd-wip-git::git://people.freedesktop.org/~agd5f/linux#branch=drm-next-5.6
 	source = config
 	sha256sums = SKIP
-	sha256sums = 181a57b05b84814c48c724c135f8b644306db55d1cf983622e5040e03694fff1
+	sha256sums = a8e4a57ca3ed7c525f79f350cb6f862a1a3f6047af92432885bdc8155736e5ab
 
 pkgname = linux-amd-wip-git
-	pkgdesc = The Linux-amd-wip-git kernel and modules
-	install = linux.install
+	pkgdesc = The Linux kernel with AMDGPU DC patches kernel and modules
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-amd-wip-git.preset
+	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-amd-wip-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-amd-wip-git kernel
+	pkgdesc = Headers and scripts for building modules for the Linux kernel with AMDGPU DC patches kernel
 
 pkgname = linux-amd-wip-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-amd-wip-git kernel
+	pkgdesc = Documentation for the Linux kernel with AMDGPU DC patches kernel
 
