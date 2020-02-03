@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=24
+pkgrel=25
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
@@ -12,7 +12,7 @@ arch=('any')
 url="https://fedorahosted.org/bluecurve/"
 license=('GPL')
 groups=('redhat-artwork')
-makedepends=('python')
+makedepends=('python' 'perl-xml-simple')
 optdepends=('gnome-icon-theme: for inheriting missing icons')
 options=(!emptydirs)
 
