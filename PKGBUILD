@@ -1,8 +1,8 @@
 # Maintainer:  mrxx <mrxx at cyberhome dot at>
 
 pkgname=endlessh
-pkgver=r91.2602caa
-pkgrel=2
+pkgver=1.1.r0.g8daa599
+pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://nullprogram.com/blog/2019/03/22/"
@@ -15,7 +15,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
