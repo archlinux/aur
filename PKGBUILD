@@ -1,12 +1,12 @@
 pkgname=woof-git
-pkgver=0.9.0.r11.27f21ed
+pkgver=0.9.0.r32.b1016a0
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
 depends=('hicolor-icon-theme' 'sdl2' 'sdl2_net' 'sdl2_mixer')
-makedepends=('git')
+makedepends=('cmake' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(woof::git+"${url}".git)
@@ -19,20 +19,20 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+	mkdir "$srcdir/${pkgname%-git}-build"
+	cd "$srcdir/${pkgname%-git}-build"
 
-	autoreconf -fi
+	cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/${pkgname%-git}"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}-build"
 
-	./configure --prefix=/usr
-	make V=0
+	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}-build"
 
 	make DESTDIR="$pkgdir/" install
 }
