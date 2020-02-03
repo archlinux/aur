@@ -1,15 +1,17 @@
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Patrick Leslie Polzer <leslie.polzer@gmx.net>
 
 pkgname=xkeycaps-debian
 pkgver=2.47
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='A graphical front-end to xmodmap, version from debian'
 url="https://www.jwz.org/xkeycaps/"
 license=('custom')
 depends=('libxaw')
+conflicts=('xkeycaps')
+provides=('xkeycaps')
 makedepends=('imake' 'xbitmaps')
 source=(http://deb.debian.org/debian/pool/main/x/xkeycaps/xkeycaps_${pkgver}.orig.tar.gz
 	license.txt)
