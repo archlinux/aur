@@ -1,0 +1,17 @@
+pkgbase = cppyy-cling
+	pkgdesc = Cling-based Python-C++ bindings (cling backend)
+	pkgver = 6.18.2.6
+	pkgrel = 1
+	url = https://cppyy.readthedocs.io/en/latest/index.html
+	arch = x86_64
+	license = LGPLv2+
+	license = LGPL2.1
+	license = UoI-NCSA
+	depends = python
+	depends = python-wheel
+	depends = python-pip
+	source = https://files.pythonhosted.org/packages/35/9a/b016bf900a196f3ac71608e6629c68a95e92a32de242e8a7acd6590cbf17/cppyy_cling-6.18.2.6-py2.py3-none-manylinux1_x86_64.whl
+	sha256sums = fd6b5f946d96b35aec8f0579f9f66d3edcf3efe601a4489fdeb4ab3e8693f9ca
+
+pkgname = cppyy-cling
+
