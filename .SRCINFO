@@ -1,0 +1,23 @@
+pkgbase = r-metadynminer3d-git
+	pkgdesc = Tools to Read, Analyze and Visualize Metadynamics 3D HILLS Files from 'Plumed' (git version)
+	pkgver = r427.e223edf
+	pkgrel = 1
+	url = https://cran.r-project.org/package=metadynminer3d
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc>=4.3
+	makedepends = git
+	depends = r>=3.3.0
+	depends = r-rcpp
+	depends = r-metadynminer
+	depends = r-rgl
+	depends = r-misc3d
+	optdepends = r-testthat
+	provides = r-metadynminer3d
+	conflicts = r-metadynminer3d
+	source = metadynminer3d_src::git+https://github.com/spiwokv/metadynminer3d.git
+	md5sums = SKIP
+
+pkgname = r-metadynminer3d-git
+
