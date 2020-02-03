@@ -1,6 +1,6 @@
 pkgbase = ugdb
 	pkgdesc = An alternative TUI for gdb
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/ftilde/ugdb
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = ugdb
 	makedepends = cmake
 	depends = gdb
 	options = !strip
-	source = ugdb-0.1.5.tar.gz::https://github.com/ftilde/ugdb/archive/0.1.5.tar.gz
-	sha512sums = 72c62ea95aff8a7d880a024ce69b18446d425e542a394fad66cb5ec055f963b438a18b1fd4ac4dbeac6918b46105e00b4c115897926451dd2ececc03e6d59606
+	source = ugdb-0.1.6.tar.gz::https://github.com/ftilde/ugdb/archive/0.1.6.tar.gz
+	sha512sums = 69394e3588316dcaf5697c08d9ea5bff938f7b684fa486c78bf6e5ae5109ba08de4a85f7eb6c612d4cefb54bb8db23c1a52c8ab97ec773404945fa85f5cef303
 
 pkgname = ugdb
 
