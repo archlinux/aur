@@ -1,0 +1,17 @@
+pkgbase = libkdumpfile-git
+	pkgdesc = Library for kernel core dump file access (git version)
+	pkgver = 0.3.0.r271.gb11f14f
+	pkgrel = 1
+	url = https://github.com/ptesarik/libkdumpfile
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = lzo
+	depends = snappy
+	depends = zlib
+	provides = libkdumpfile
+	source = libkdumpfile-git::git+https://github.com/ptesarik/libkdumpfile
+	sha256sums = SKIP
+
+pkgname = libkdumpfile-git
+
