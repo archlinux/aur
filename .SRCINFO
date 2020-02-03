@@ -1,7 +1,7 @@
 pkgbase = irtt
 	pkgdesc = Isochronous round-trip tester
 	pkgver = 0.9.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/heistp/irtt
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=irtt
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
 url="https://github.com/heistp/irtt"
@@ -16,36 +16,27 @@ sha256sums=('f9767fa9259db1932d011ed0a9f9528c70411878668ba0db6451264557ddd800'
 validpgpkeys=('35C296FC733AA777B03DB9A8CAEC8F418885D165')  # Pete Heist <pete@eventide.io>
 
 
-prepare() {
-  mkdir -p "$srcdir/gopath"
-
-  cd "$pkgname-$pkgver"
-  GOPATH="$srcdir/gopath" go get -d .
-
-  cd "$srcdir"
-  ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/gopath/src/$pkgname-$pkgver"
-}
-
 build() {
-  cd "$srcdir/gopath/src/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  GOPATH="$srcdir/gopath" \
-    go get \
+  GO111MODULE=on \
+    go build \
       -trimpath \
       -ldflags "-extldflags $LDFLAGS" \
-      ./...
+      "github.com/heistp/irtt/cmd/irtt"
 }
 
 check() {
-  cd "$srcdir/gopath/src/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
-  GOPATH="$srcdir/gopath" go test
+  GO111MODULE=on \
+    go test "github.com/heistp/irtt/cmd/irtt"
 }
 
 package() {
-  install -Dm755 "gopath/bin/irtt" "$pkgdir/usr/bin/irtt"
+  cd "$pkgname-$pkgver"
 
-  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm755 "irtt" -t "$pkgdir/usr/bin"
   install -Dm644 "doc"/irtt.{html,md} -t "$pkgdir/usr/share/doc/irtt"
-  install -Dm644 "doc/irtt.1" "$pkgdir/usr/share/man/man1/irtt.1"
+  install -Dm644 "doc/irtt.1" -t "$pkgdir/usr/share/man/man1"
 }
