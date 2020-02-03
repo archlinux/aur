@@ -6,7 +6,7 @@ pkgdesc="Storage Explorer allows you to view and interact with your Azure Storag
 arch=('x86_64')
 url="https://github.com/microsoft/AzureStorageExplorer"
 license=('CCPL' 'MIT')
-depends=('gconf' 'libgnome-keyring' 'nodejs' 'gtk3' 'nss' 'libxss' 'libsecret')
+depends=('gconf' 'libgnome-keyring' 'nodejs' 'gtk3' 'nss' 'libxss' 'libsecret' 'dotnet-runtime-2.2')
 provides=('StorageExplorer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/AzureStorageExplorer/releases/download/v${pkgver}/Linux_StorageExplorer-linux-x64.tar.gz"
         "https://raw.githubusercontent.com/microsoft/AzureStorageExplorer/master/LICENSE")
