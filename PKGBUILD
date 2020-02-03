@@ -3,7 +3,7 @@
 pkgname=gradle-zsh-completion
 pkgdesc="ZSH completion for Gradle"
 pkgver=master_fa72b79
-pkgrel=1
+pkgrel=2
 arch=("any")
 url="https://github.com/gradle/gradle-completion"
 license=("MIT")
