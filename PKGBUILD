@@ -1,14 +1,14 @@
 # Maintainer: Andre Kugland <kugland@gmail.com>
 pkgname=notable-bin
 pkgver=1.8.4
-pkgrel=4
+pkgrel=5
 epoch=
 pkgdesc="The markdown-based note-taking app that doesn't suck"
 arch=('x86_64')
 url="https://github.com/notable/notable"
 license=('Freeware')
 groups=()
-depends=('libxss' 'nss-mdns' 'libnotify' 'libappindicator-gtk3')
+depends=('libxss')
 makedepends=()
 checkdepends=()
 optdepends=()
