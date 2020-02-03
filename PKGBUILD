@@ -2,7 +2,7 @@
 pkgname=stopwatchcpp
 _gitname=stopwatch
 _binaryname=sw
-pkgver=v1
+pkgver=c7
 pkgrel=1
 pkgdesc="A command line stopwatch"
 arch=('any')
@@ -11,6 +11,11 @@ license=('MIT')
 makedepends=('git')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd ${srcdir}/${_gitname}
+	printf "c%s" "$(git rev-list --count HEAD)"
+}
 
 build() {
 	cd ${srcdir}/${_gitname}

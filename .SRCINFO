@@ -1,6 +1,6 @@
 pkgbase = stopwatchcpp
 	pkgdesc = A command line stopwatch
-	pkgver = v1
+	pkgver = c7
 	pkgrel = 1
 	url = https://github.com/thibsc/stopwatch
 	arch = any
