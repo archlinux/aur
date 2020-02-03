@@ -11,7 +11,7 @@ license=('Apache 2.0')
 depends=('python' 'python-numpy' 'python-scipy' 'python-statsmodels' 'python-networkx'
   'python-joblib' 'python-matplotlib' 'python-pydot' 'python-lark-parser' 'python-tqdm'
   'python-sympy' 'python-pyqt5' 'python-pytest' 'python-ete' 'python-arff' 'python-torchvision'
-  'python-tensorflow114-cuda' 'python-pytorch-cuda' 'cppyy')
+  'python-tensorflow-cuda' 'python-pytorch-cuda' 'cppyy')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/76/49/6b37eaa9bf8c758b99c3f297b39d81bdc5b07329ac674659d67f56493ead/${_pypiname}-${pkgver}.tar.gz")
 sha256sums=('a32a237c4ca01742a5dc4cf5ef895423d8275df8d9fac43f3e44e19ee1931a6e')
