@@ -1,6 +1,6 @@
 pkgbase = sisiya-client-checks
 	pkgdesc = The SisIYA client programs and checks.
-	pkgver = 0.6.31
+	pkgver = 0.6.76
 	pkgrel = 1
 	url = http://www.sisiya.org
 	arch = any
@@ -39,8 +39,8 @@ pkgbase = sisiya-client-checks
 	backup = etc/sisiya/sisiya-client-checks/conf.d/sisiya_system.conf
 	backup = etc/sisiya/sisiya-client-checks/conf.d/sisiya_temperature.conf
 	backup = etc/sisiya/sisiya-client-checks/conf.d/sisiya_users.conf
-	source = http://sourceforge.net/projects/sisiya/files/sisiya/0.6.31/pacman/sisiya-client-checks-0.6.31.tar.gz
-	md5sums = 3a1da6799c7932b7b0a6537bf8f2e252
+	source = http://sourceforge.net/projects/sisiya/files/sisiya/0.6.76/pacman/sisiya-client-checks-0.6.76.tar.gz
+	md5sums = d7e43da405d9a994b222f56918c6c16a
 
 pkgname = sisiya-client-checks
 
