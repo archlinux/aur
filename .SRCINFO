@@ -1,6 +1,6 @@
 pkgbase = wofi-hg
 	pkgdesc = Rofi-like wlroots launcher
-	pkgver = r167.83ab46c8985d
+	pkgver = r197.8498c7d48271
 	pkgrel = 1
 	url = https://hg.sr.ht/~scoopta/wofi
 	arch = x86_64
