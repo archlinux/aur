@@ -8,10 +8,10 @@ pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
 pkgver=3.20
-pkgrel=1
-pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
+pkgrel=3
+pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
-url="https://github.com/lxc/lxd"
+url="https://linuxcontainers.org/lxd"
 license=('APACHE')
 depends=('lxc' 'lxcfs' 'squashfs-tools' 'dnsmasq' 'dqlite' 'libuv' 'sqlite-replication' 'ebtables')
 makedepends=('go-pie' 'git' 'tcl' 'apparmor' 'libseccomp')
@@ -23,6 +23,7 @@ optdepends=(
     'cdrtools: VM support'
     'qemu: VM support'
     'ovmf: VM support'
+    'systemd-libs: unix device hotplug support'
 )
 source=("${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "lxd.socket"
@@ -69,6 +70,9 @@ package() {
   # systemd files
   install -Dm644 "${srcdir}/lxd.service" "${pkgdir}/usr/lib/systemd/system/lxd.service"
   install -Dm644 "${srcdir}/lxd.socket" "${pkgdir}/usr/lib/systemd/system/lxd.socket"
+
+  # logs
+  install -dm755 "${pkgdir}/var/log/lxd"
 
   # documentation
   mkdir -p "${pkgdir}/usr/share/doc/lxd"
