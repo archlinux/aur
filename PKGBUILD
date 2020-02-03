@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=irtt-git
-pkgver=0.9.0.r47.g1420a22
+pkgver=0.9.0.r56.g440389f
 pkgrel=1
 pkgdesc="Isochronous round-trip tester"
 arch=('i686' 'x86_64')
@@ -11,34 +11,35 @@ depends=('glibc')
 makedepends=('git' 'go-pie')
 provides=('irtt')
 conflicts=('irtt')
-_gourl=github.com/heistp/irtt
+source=("git+https://github.com/heistp/irtt.git")
+sha256sums=('SKIP')
 
-
-prepare() {
-  GOPATH="$srcdir" go get -d "$_gourl"
-}
 
 pkgver() {
-  cd "src/$_gourl"
+  cd "irtt"
 
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  GOPATH="$srcdir" \
-    go get \
-      -ldflags "-extldflags $LDFLAGS" \
-      "$_gourl"/...
+  cd "irtt"
+
+  go build \
+    -trimpath \
+    -ldflags "-extldflags $LDFLAGS" \
+    "github.com/heistp/irtt/cmd/irtt"
 }
 
 check() {
-  GOPATH="$srcdir" go test "$_gourl"
+  cd "irtt"
+
+  go test ./...
 }
 
 package() {
-  install -Dm755 "bin/irtt" "$pkgdir/usr/bin/irtt"
+  cd "irtt"
 
-  cd "$srcdir/src/$_gourl"
+  install -Dm755 "irtt" -t "$pkgdir/usr/bin"
   install -Dm644 "doc"/irtt.{html,md} -t "$pkgdir/usr/share/doc/irtt"
-  install -Dm644 "doc/irtt.1" "$pkgdir/usr/share/man/man1/irtt.1"
+  install -Dm644 "doc/irtt.1" -t "$pkgdir/usr/share/man/man1"
 }
