@@ -1,7 +1,7 @@
 # Maintainer: loredan13
 # Contributor: lf <packages at lfcode dot ca>
 pkgname=klipper-git
-pkgver=r2761.b3c3b613
+pkgver=r2786.c36fe76d
 pkgrel=1
 pkgdesc="3D printer firmware with motion planning on the host"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -37,7 +37,7 @@ noextract=()
 md5sums=('SKIP'
          'f2f72237af98e80fe8fdb6332f089261'
          '61912d101dc7c68c7314882b80621454'
-         '28328bfd930a928c0fb8602d0e02a704')
+         'dd799b9d55045d950d407740d4a9a5c5')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
