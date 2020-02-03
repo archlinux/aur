@@ -1,7 +1,7 @@
 # Maintainer: Nikita Bobko <echo bmlraXRhYm9ia29AZ21haWwuY29tCg== | base64 -d>
 
 pkgname=gradle-zsh-completion
-pkgdesc="zsh completion for Gradle"
+pkgdesc="ZSH completion for Gradle"
 pkgver=master_fa72b79
 pkgrel=1
 arch=("any")
