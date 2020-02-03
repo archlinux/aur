@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.15
+pkgver=2.1.19
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -32,8 +32,8 @@ source=(
 )
 noextract=()
 md5sums=(
-    '257498db511b0caff35e64290b422176'
-    '81e1cb8bfb5122319b141ea25e536ef6'
+    '4a6f18ff83eef746be9588b2734c7af6'
+    '0eb542757f6b15d9904a53496627c76b'
     '82a5d4f63bbc29e6a80043dd95973b4f'
 )
 validpgpkeys=()
@@ -41,7 +41,7 @@ validpgpkeys=()
 prepare() {
 	cd "$srcdir"
   ln -s "$topdirname" anki
-  patch -p0 -i remove_xdg_cmds_from_makefile.patch
+  patch -p1 -i remove_xdg_cmds_from_makefile.patch
   patch -p0 -i prefix-fix.patch
   rm anki
 }
