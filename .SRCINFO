@@ -1,6 +1,6 @@
 pkgbase = git-lfs-git
 	pkgdesc = Git extension for versioning large files
-	pkgver = 2.4.0.r52.gbe5da9fa
+	pkgver = 2.10.0.r6.gc3b776db
 	pkgrel = 1
 	url = https://git-lfs.github.com/
 	arch = i686
