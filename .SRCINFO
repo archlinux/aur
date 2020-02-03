@@ -1,7 +1,7 @@
 pkgbase = mediahandling-git
 	pkgdesc = A library that decodes, encodes and reads properties of media-files
 	pkgver = 0.0.7.r58.g64b48a7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jonno85uk/mediahandling
 	arch = i686
 	arch = pentium4
@@ -11,7 +11,7 @@ pkgbase = mediahandling-git
 	makedepends = ffmpeg
 	makedepends = fmt
 	makedepends = git
-	depends = ffmpeg
+	depends = gcc-libs
 	conflicts = mediahandling
 	source = mediahandling::git+https://github.com/jonno85uk/mediahandling.git
 	sha512sums = SKIP
