@@ -3,7 +3,7 @@
 pkgname=reshade-shaders-git
 pkgver=1
 pkgrel=1
-pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language'
+pkgdesc='A collection of post-processing shaders written in the ReShade FX shader language, to be used by vkBasalt'
 arch=('any')
 url='https://github.com/crosire/reshade-shaders'
 license=('custom')
