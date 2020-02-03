@@ -1,7 +1,7 @@
 # Maintainer: Fraser P. Newton <fpnewton90@gmail.com>
 pkgname=azure-storage-explorer
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Storage Explorer allows you to view and interact with your Azure Storage resources."
 arch=('x86_64')
 url="https://github.com/microsoft/AzureStorageExplorer"
