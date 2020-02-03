@@ -1,23 +1,34 @@
-# Maintainer: Sid Karunaratne <sid at karunaratne dot net>
+# Maintainer: Olivier Le Moal <mail at olivierlemoal dot fr>
+# Contributor: Sid Karunaratne <sid at karunaratne dot net>
 pkgname=weevely
 _pkgname=weevely3
-pkgver=3.5
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 pkgdesc="a stealth PHP web shell that provides a telnet-like console"
 arch=('any')
 url="https://github.com/epinna/weevely3"
 license=('GPL3')
-depends=(python2-prettytable python2-mako python2-dateutil python2-utils python2-yaml)
+depends=(python python-dateutil python-mako python-prettytable python-pyopenssl python-yaml python-pysocks)
 source=("https://github.com/epinna/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('edb285469b2c8504797c1a35e30d728ddd88b56de37376c4464081c4d1cdbe9e')
+sha256sums=('79d09044960a461e9ff3d92a0517904af61ef50cc8018127aa4de60016af114a')
 
 build() {
-    sed -i 's#/usr/bin/env python#/usr/bin/env python2#' ${srcdir}/${_pkgname}-${pkgver}/weevely.py
-    sed -i 's#/usr/env python#/usr/bin/env python2#' ${srcdir}/${_pkgname}-${pkgver}/modules/audit/_linuxprivchecker/linuxprivchecker.py
+  cd ${_pkgname}-${pkgver}
+  python -m compileall .
+  python -O -m compileall .
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/"{bin,lib}
-    cp -r "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/lib/${pkgname}"
-    ln -sf "/usr/lib/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
+    cd ${_pkgname}-${pkgver}
+    install -d "${pkgdir}/usr/bin"
+    install -d "${pkgdir}/opt/${pkgname}"
+    install -D -m644 weevely.1 -t "${pkgdir}/usr/share/man/man1/"
+    cp -a --no-preserve=ownership "bd/" "core/" "modules/" "utils/" "weevely.py" "${pkgdir}/opt/${pkgname}"
+    cat > "${pkgdir}/usr/bin/weevely" << EOF
+#!/bin/sh
+cd /opt/${pkgname}
+python weevely.py "\$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/weevely"
+
 }
