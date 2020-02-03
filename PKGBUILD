@@ -2,7 +2,7 @@
 _projectname='dtoa'
 pkgname="ocaml-$_projectname"
 pkgver='0.3.2'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='double-to-ascii ocaml implementation'
 arch=('x86_64' 'i686')
 url="https://github.com/flowtype/$pkgname"
@@ -30,12 +30,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune build
+	dune build -p "$_projectname" --verbose
 }
 
 check() {
 	cd "$srcdir/$_sourcedirectory/"
-	dune runtest
+	dune runtest -p "$_projectname" --verbose
 }
 
 package() {
