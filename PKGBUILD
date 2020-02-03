@@ -1,4 +1,5 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Sosthène Guédon <sosthene.gued@gmail.com>
+# contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem
 pkgver=4.4.3
