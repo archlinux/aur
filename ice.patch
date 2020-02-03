@@ -1,0 +1,14 @@
+diff --color -ru old/usr/bin/ice new/usr/bin/ice
+--- old/usr/bin/ice	2020-02-03 02:51:36.368382791 +0100
++++ new/usr/bin/ice	2020-02-03 02:52:06.268382110 +0100
+@@ -39,8 +39,8 @@
+ _FF_PROFILES_DIR = "{0}/firefox".format(_ICE_DIR)
+ _ICE_ICON = "/usr/share/pixmaps/ice.png"
+ _BRAVE_BIN = "/usr/bin/brave"
+-_CHROME_BIN = "/usr/bin/google-chrome"
+-_CHROMIUM_BIN = "/usr/bin/chromium-browser"
++_CHROME_BIN = "/usr/bin/google-chrome-stable"
++_CHROMIUM_BIN = "/usr/bin/chromium"
+ _VIVALDI_BIN = "/usr/bin/vivaldi-stable"
+ _FIREFOX_BIN = "/usr/bin/firefox"
+ 

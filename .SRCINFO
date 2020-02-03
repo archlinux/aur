@@ -1,0 +1,26 @@
+pkgbase = ice-ssb-git
+	pkgdesc = Desktop integration for webapps
+	pkgver = 6.0.8.r3.961cd57
+	pkgrel = 1
+	url = https://github.com/peppermintos/ice
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = python-requests
+	depends = python-beautifulsoup4
+	depends = python-gobject
+	depends = python-lxml
+	optdepends = brave
+	optdepends = firefox
+	optdepends = chromium
+	optdepends = google-chrome
+	optdepends = vivaldi
+	provides = ice-ssb
+	conflicts = ice-ssb
+	source = git+https://github.com/peppermintos/ice.git
+	source = ice.patch
+	sha256sums = SKIP
+	sha256sums = 8aaff26c46a803ea6fb3a9e442a6fed830ff5c70228939783ceaa33578af5732
+
+pkgname = ice-ssb-git
+
