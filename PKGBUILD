@@ -5,7 +5,7 @@ branch=-loki # development branch
 pkgname=asbru-cm${branch}-git
 _pkgname=asbru
 _fpkgname=asbru-cm
-pkgver=6.0.3.r58.ge288016
+pkgver=6.0.3.r60.ge79d1ed
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
         cd "${_fpkgname}"
-        sed -e "s/${_fpkgname}/${_fpkgname}-$branch/g" -e "s/Name=Ásbrú.*/& ($branch)/g" -i res/${_fpkgname}.desktop
+        sed -e "s/${_fpkgname}/${_pkgname}$branch/g" -e "s/Name=Ásbrú.*/& ($branch)/g" -i res/${_fpkgname}.desktop
 }
 
 package() {
