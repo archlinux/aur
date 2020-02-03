@@ -1,0 +1,20 @@
+pkgbase = jool
+	pkgdesc = Open Source SIIT and NAT64 for Linux.
+	pkgver = 4.0.7
+	pkgrel = 2
+	url = https://www.jool.mx
+	arch = x86_64
+	license = GPL2
+	source = https://github.com/NICMx/Jool/releases/download/v4.0.7/jool-4.0.7.tar.gz
+	sha512sums = adc269c75b7195fbb6de04ecc50824b464644bcaf1ba00634912cbdc21308b872273f4dc5b866f2af9dfd58fedf624e77e0ddaf68403447e6749f7fd0e50146f
+
+pkgname = jool-tools
+	pkgdesc = Open Source SIIT and NAT64 for Linux. - Userspace tools and libraries
+	depends = libnl
+
+pkgname = jool-dkms
+	pkgdesc = Open Source SIIT and NAT64 for Linux. - Kernel modules
+	depends = dkms
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+
