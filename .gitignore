@@ -1,2 +1,5 @@
 clean.sh
 instructions.txt
+/pkg/
+/src/
+*.tar.*
