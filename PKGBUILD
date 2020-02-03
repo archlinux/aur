@@ -2,7 +2,7 @@
 pkgname=gedit-markdownpreview-git
 _pkgname=markdownpreview
 pkgver=r25.d30ccef
-pkgrel=3
+pkgrel=4
 pkgdesc="Show side by side preview of markdown files"
 arch=('any')
 url="https://github.com/aliva/gedit-markdownpreview"
@@ -17,15 +17,11 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -d "$pkgdir/usr/share/gedit/plugins/$_pkgname"
-	cp "$_pkgname.plugin" "$_pkgname.py" style.css template.html \
-		"$pkgdir/usr/share/gedit/plugins/$_pkgname"
+	install -Dm644 "$_pkgname.plugin" "$_pkgname.py" style.css template.html -t \
+		"$pkgdir/usr/lib/gedit/plugins/$_pkgname"
 }
