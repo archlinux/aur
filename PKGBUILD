@@ -1,30 +1,38 @@
-# Maintainer: robertfoster
-
 pkgname=ibm-tss
-pkgver=1331
-pkgrel=2
+epoch=1
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A user space TSS for TPM 2.0 by IBM"
 arch=(i686 x86_64)
 url="https://sourceforge.net/projects/ibmtpm20tss/"
 license=('BSD')
 depends=('openssl')
-source=("https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss$pkgver.tar.gz")
+# tarbomb
+#source=("https://downloads.sourceforge.net/project/ibmtpm20tss/ibmtss$pkgver.tar.gz")
+#sha256sums=('5242ce5ca8f9aff8d7a5c71dc41dbdac472b0827dafc3a1cdb6e32c16cbb95e3')
+_commit=0646214dd54e6a25984024697201f2b6006f7f17
+source=("$pkgname::git+https://git.code.sf.net/p/ibmtpm20tss/tss#commit=$_commit")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe | sed "s/^v//; s/-/.r/; s/-/./"
+}
+
+prepare() {
+  cd $pkgname
+  autoreconf -fi
+}
 
 build() {
-	cd $srcdir/utils
-	make all
+  cd $pkgname
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  make
 }
 
 package() {
-	cd $srcdir/utils
-	msg2 "Managing binaries and libs"
-	mkdir -p $pkgdir/usr/bin
-	mkdir -p $pkgdir/usr/lib
-	mv $srcdir/utils/*.so* $pkgdir/usr/lib/
-        find . -perm /a+x -type f -exec cp {} $pkgdir/usr/bin \;
-
-	msg2 "Cleaning up"
-	rm $pkgdir/usr/bin/{clear,import,shutdown,*.sh}
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
 }
 
-md5sums=('95068099d4a3aebd22632a0e8878b1d7')
+# vim: ts=2:sw=2:et
