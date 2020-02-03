@@ -2,7 +2,7 @@
 
 pkgname=analyzemft-git
 _pkgname=analyzeMFT
-pkgver=20180318.64c71d7
+pkgver=20200202.79a33ce
 pkgrel=1
 pkgdesc='Fully parse the MFT file from an NTFS filesystem'
 arch=('any')
