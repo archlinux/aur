@@ -2,7 +2,7 @@
 
 pkgname='gfeeds'
 pkgver='0.12'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='An RSS/Atom feed reader for GNOME'
 changelog='CHANGELOG'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://gabmus.gitlab.io/gnome-feeds'
 license=('GPL3')
 depends=('python-html5lib' 'webkit2gtk' 'python-gobject' 'python-pillow' 'python-feedparser'
          'python-listparser' 'python-readability-lxml' 'libhandy' 'python-dateutil')
-makedepends=('meson' 'git')
+makedepends=('meson' 'git' 'gobject-introspection')
 provides=('gnome-feeds')
 conflicts=('gnome-feeds' 'gnome-feeds-git' 'gfeeds-git')
 source=("git+https://gitlab.gnome.org/World/gfeeds.git#tag=${pkgver}")
