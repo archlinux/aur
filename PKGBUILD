@@ -8,14 +8,14 @@ arch=('x86_64' 'i686')
 url="http://paxbritannica.henk.ca/"
 license=("MIT")
 if [ `uname -m` == "x86_64" ]; then
-	depends=('lib32-alsa-plugins' 'lib32-mesa' 'lib32-glu' 'lib32-libxrandr' 'lib32-libpulse')
+	depends=('hicolor-icon-theme' 'lib32-alsa-lib' 'lib32-glu' 
+                 'lib32-libxrandr')
 else
-	depends=('alsa-plugins' 'mesa' 'glu' 'libxrandr' 'libpulse')
+	depends=('hicolor-icon-theme' 'alsa-lib' 'glu' 'libxrandr')
 fi
 conflicts=("paxbritannica-git")
 source=("https://web.archive.org/web/20160307100356if_/http://paxbritannica.henk.ca/pax-britannica.tar.gz" 
 	"https://github.com/henkboom/pax-britannica/raw/master/license.txt")
-
 sha256sums=('24d69328f5e0e97cd40fb8dcbf5996a073a77d40b64b37671973503a2d05fded'
            'ba24a6f776b81571112c77ac37944c7c96e44648bf6ce03d84d8bf085e11af57')
 
