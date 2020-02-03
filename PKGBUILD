@@ -8,7 +8,7 @@ pkgdesc="Open source cross-platform Java Visual Traceroute"
 arch=('i686' 'x86_64')
 license=('LGPLv3')
 url="http://sourceforge.net/projects/openvisualtrace"
-depends=('java-runtime' 'traceroute')
+depends=('java-runtime<11' 'traceroute')
 source=("http://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip"
         "ovtr"
         "ovtr.desktop")
