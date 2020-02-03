@@ -1,11 +1,10 @@
 pkgbase = python-scipy-mkl
 	pkgdesc = SciPy is open-source software for mathematics, science, and engineering.
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.scipy.org/
 	arch = x86_64
 	license = BSD
-	makedepends = gcc8
 	makedepends = pybind11
 	makedepends = python-setuptools
 	depends = intel-compiler-base
