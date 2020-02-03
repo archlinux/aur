@@ -3,11 +3,11 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.4
-_major=5.4
+_srcname=linux-5.5
+_major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=16
+_minor=1
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -30,40 +30,22 @@ source=(
   # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
-0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
-0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
-0013-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
-0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0003-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('d16a84a747aa77c4174e86f88a169ef9573b55f1aa70d1caec0585724939a0eb'
+sha256sums=('3937a004c915b7bfadd2afe4b6cf6593e867435630501ca203cd90b0e8db2ba4'
             'SKIP'
-            '911541df2974782062f551ba0a818d7822ec69db4c41e590bcc7422398bada7a'
+            '0323916148e3bccf478a43bc650d0c3a2debbc5a152c5f37256a900bd7e730d9'
             'SKIP'
-            'eeb60c19586bf5855eeaeac8323b0012107bfa74f9efa0c8e129d979d38f1f31'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
-            'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
-            '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
-            '9940f9ebf8af70f2c1684276d86a46d3b0c07fd61ff23f66235b4a1e879b2180'
-            'f48c9a8a286901ce12eefe11fbd830fdede08afac8911ab887f7d89c687421f0'
-            '194b893c18118be08c5d42762f5f1926953fc7a5903f06f1d39f893542d377a9'
-            '2234444ae52bf3810e13bdb4c0ab6d808eb9fe6cb003c2b78be04a987ef12388'
-            '5a1584d26c7d046fa0398b56980f628b4194dff95d0916e9527dbea7299e7765'
-            'de34a0a82ce40de4394ad9d02421a53ac04c5e0b36a79b5f937fdebc93ac7bfb'
-            '1a3073cbbc5d4e3a7970fc92706a5ec5729ea4a5cffb94af8343e046881cabf1'
-            'bb376024ac7a13108064af60150af8746b57ebb72df2f464fddc037a14c9faff'
-            '7e6b2c7f919dc28d1144fe8d5cc08f9455ba65a32577944cf86d9c278fff6d20')
+            'e967ac8bd663509cc0ca6451a95a9965eb59832e316eec77484960dcedec8c1c'
+            '7091cec8958db80362ed3c6bcc3c32014256bcefee4f7893689872f235fe81f3'
+            '3052bf384a53467dacf5044b935e058334c2a2ef1ee4aae3b7227940645b6d5b'
+            '18a1511840e1149a88c8925a14104cddcabbf9787c8908ddea4d26cdaa1c0c34')
 
 _kernelname=${pkgbase#linux}
 
