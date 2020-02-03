@@ -2,7 +2,7 @@
 
 options=(!strip)
 pkgname=restic-rest-server-git
-pkgver=v0.9.7.r28.ga87d968
+pkgver=v0.9.8.r9.gd9757b2
 pkgrel=1
 pkgdesc="Rest Server is a high performance HTTP server that implements restic's REST backend API."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ url="https://github.com/restic/rest-server"
 license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go>=1.3')
-provides=('restic')
-conflicts=('restic')
+provides=('restic-rest-server')
+conflicts=('restic-rest-server')
 source=("${pkgname}::git+https://github.com/restic/rest-server")
 sha256sums=('SKIP')
 
