@@ -2,13 +2,13 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-go-mono
 pkgver=2.1.0
-pkgrel=1
-pkgdesc="Patched font Fira (Fura) Code from the nerd-fonts library"
+pkgrel=2
+pkgdesc="Patched font Go Mono from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
 license=('MIT')
 depends=('fontconfig')
-provides=('nerd-fonts-fira-code')
+provides=('nerd-fonts-go-mono')
 conflicts=('nerd-fonts-git' 'nerd-fonts-complet')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Go-Mono.zip"

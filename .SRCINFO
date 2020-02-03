@@ -1,13 +1,13 @@
 pkgbase = nerd-fonts-go-mono
-	pkgdesc = Patched font Fira (Fura) Code from the nerd-fonts library
+	pkgdesc = Patched font Go Mono from the nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
 	license = MIT
 	depends = fontconfig
-	provides = nerd-fonts-fira-code
+	provides = nerd-fonts-go-mono
 	conflicts = nerd-fonts-git
 	conflicts = nerd-fonts-complet
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Go-Mono.zip
