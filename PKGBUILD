@@ -13,8 +13,9 @@ md5sums=('SKIP')
 
 package() {
     cd gradle-completion || return 1
-    # It must be git checkout "v$pkgver". But they not released yet commit 
-    # which includes zsh support. So using version from particular commit
+    # It must be git checkout "v$pkgver".
+    # But package creators have not released commit which includes zsh support yet.
+    # So use fa72b79 commit here.
     git checkout fa72b79 >/dev/null 2>&1 || return 1
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
