@@ -1,0 +1,15 @@
+pkgbase = python-pep562
+	pkgdesc = Backport of PEP 562
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/facelessuser/pep562
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-cov
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.org/packages/source/p/pep562/pep562-1.0.tar.gz
+	sha256sums = 58cb1cc9ee63d93e62b4905a50357618d526d289919814bea1f0da8f53b79395
+
+pkgname = python-pep562
+
