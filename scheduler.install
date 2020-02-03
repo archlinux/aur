@@ -1,0 +1,14 @@
+post_install() {
+    echo "";
+    echo "NOTE: If you want the current day highlighted in the calendar to be updated on resume, enable the service scheduler@USERNAME with 'sudo systemctl enable scheduler@\$USER'";
+    echo "";
+}
+
+
+post_upgrade() {
+    if [ $2 /< "1.1.1-1" ]; then
+        echo "";
+        echo "NOTE: If you want the current day highlighted in the calendar to be updated on resume, enable the service scheduler@USERNAME with 'sudo systemctl enable scheduler@\$USER'";
+        echo "";
+    fi;
+}

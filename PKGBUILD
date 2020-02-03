@@ -1,6 +1,6 @@
 # Maintainer: Juliette Monsel <j_4321 at protonmail dot com>
 pkgname=scheduler
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Alarms and reminders: tasks, events, calendar, pomodoro and timer widgets"
 arch=('any')
@@ -21,7 +21,8 @@ optdepends=('tktray: GUI toolkit for the system tray icon (at least one must be 
             'python-tkcolorpicker: nicer color chooser'
             'python-tkfilebrowser: nicer file browser')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/j4321/Scheduler/archive/v${pkgver}.tar.gz")
-sha512sums=('ab7d37c0b60f5577f6308938ed733edcab765eef671a96fd1a6eff9556159c5b32815b649558af9cb80da60be10a6ebdecbb52f6e11999a4bab6ac1ce235d8b2')
+sha512sums=('c762811b18bbdd503213c9a1e252c63bf0c46c0938c8f83d4b2d0d574b654e70a97b0faa040487c05366a9367b2a8e495bd2dfa54908da652d3e8996c955206c')
+install="$pkgname".install
 
 build() {
 	cd "$srcdir/Scheduler-${pkgver}"
@@ -31,4 +32,6 @@ build() {
 package() {
 	cd "$srcdir/Scheduler-${pkgver}"
 	python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
+	install -d -m755 "$pkgdir/usr/lib/systemd/system"
+	install -m644 scheduler@.service "$pkgdir/usr/lib/systemd/system/"
 }
