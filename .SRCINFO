@@ -1,6 +1,6 @@
 pkgbase = r-metadynminer3d-git
 	pkgdesc = Tools to Read, Analyze and Visualize Metadynamics 3D HILLS Files from 'Plumed' (git version)
-	pkgver = r427.e223edf
+	pkgver = r110.b35cdea
 	pkgrel = 1
 	url = https://cran.r-project.org/package=metadynminer3d
 	arch = i686
