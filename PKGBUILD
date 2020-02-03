@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-term-custom-git
-pkgver=r1379.610abf2f
+pkgver=r1397.d5dd611b
 pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
@@ -13,11 +13,11 @@ conflicts=()
 provides=()
 source=(
   "git+https://github.com/be5invis/Iosevka"
-  "private-build-plans.toml"
+  "private-build-plans.toml.example"
 )
 sha256sums=(
   'SKIP'
-  '15a1d88a9b0841df42fac637048f1623154c11c9ae37a64d7320d1c9019668aa'
+  '930cc4b63f9076e6cb40599ef7d51fc7fdab2eaac6a76bf344eb2d79ee4a950e'
 )
 
 pkgver() {
@@ -27,8 +27,12 @@ pkgver() {
 
 prepare() {
   buildplans="$HOME/.config/iosevka/private-build-plans.toml"
-  [[ -f "$buildplans" ]] && cp "$buildplans" ../ || echo "$buildplans not found, using pkgbuild creator's"
-  cp ../private-build-plans.toml Iosevka/
+  if [[ -f "$buildplans" ]]; then
+    cp "$buildplans" Iosevka/
+  else
+    echo ">>> $buildplans not found, using private-build-plans.toml.example"
+    cp ../private-build-plans.toml.example Iosevka/
+  fi
 }
 
 build() {
