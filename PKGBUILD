@@ -13,7 +13,7 @@ makedepends=()
 provides=("$pkgname" 'veloren')
 conflicts=("$pkgname" 'veloren')
 source=(
-    "$pkgname"::"https://veloren.sfo2.cdn.digitaloceanspaces.com/releases/0.5.0-linux.tar.gz"
+    "$pkgname"::"https://veloren.sfo2.cdn.digitaloceanspaces.com/releases/$pkgver-linux.tar.gz"
     "veloren-voxygen.desktop"
     "voxygen.png"
 )
