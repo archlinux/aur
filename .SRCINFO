@@ -1,6 +1,6 @@
 pkgbase = linux-drm-misc-next-git
 	pkgdesc = Kernel DRM miscellaneous fixes and cross-tree changes
-	pkgver = 5.1.873335.80805774fc35
+	pkgver = 5.1.888630.9781bd1dda2a
 	pkgrel = 1
 	url = https://cgit.freedesktop.org/drm/drm-misc
 	arch = x86_64
@@ -18,21 +18,19 @@ pkgbase = linux-drm-misc-next-git
 	source = linux-drm-misc-next-git::git://anongit.freedesktop.org/drm/drm-misc#branch=drm-misc-next
 	source = config
 	sha256sums = SKIP
-	sha256sums = 06049aa39dafddd79768733877aad880e50935708e208b15c90520dc95f76b42
+	sha256sums = c5abb048e4b5c9988dcbe064594788fe8d08cb792a240861a2c1b1225e3501db
 
 pkgname = linux-drm-misc-next-git
-	pkgdesc = The Linux-drm-misc-next-git kernel and modules
-	install = linux.install
+	pkgdesc = The Kernel DRM miscellaneous fixes and cross-tree changes kernel and modules
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
-	backup = etc/mkinitcpio.d/linux-drm-misc-next-git.preset
+	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-drm-misc-next-git-headers
-	pkgdesc = Header files and scripts for building modules for Linux-drm-misc-next-git kernel
+	pkgdesc = Headers and scripts for building modules for the Kernel DRM miscellaneous fixes and cross-tree changes kernel
 
 pkgname = linux-drm-misc-next-git-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-drm-misc-next-git kernel
+	pkgdesc = Documentation for the Kernel DRM miscellaneous fixes and cross-tree changes kernel
 
