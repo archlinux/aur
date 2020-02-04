@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Albion
+Comment=Role-playing game
+Exec=/opt/ALBION/Albion.sh
+Icon=albion
+Terminal=false
+Type=Application
+Categories=Game;
+NoDisplay=false
+StartupNotify=true

@@ -1,0 +1,29 @@
+pkgbase = albion-sr-gog
+	pkgdesc = Linux port of the role-playing game albion using the GOG version
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/M-HT/SR
+	install = albion-sr-gog.install
+	arch = x86_64
+	license = GPL
+	license = custom
+	makedepends = innoextract
+	makedepends = bchunk
+	makedepends = p7zip
+	makedepends = icoutils
+	depends = lib32-glibc
+	depends = lib32-sdl_mixer
+	depends = lib32-sdl
+	depends = lib32-libglvnd
+	noextract = albion-sr-gog-1.6.1.tar.gz
+	noextract = setup_albion.exe
+	backup = opt/ALBION/Albion.cfg
+	source = setup_albion.exe::gog://setup_albion.exe
+	source = albion-sr-gog-1.6.1.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v1.6.1/Albion-Linux-x86-v1.6.1.tar.gz
+	source = albion.desktop
+	sha1sums = SKIP
+	sha1sums = 0156acf6313c84c6e842af7e31ac7fbb732576d0
+	sha1sums = b307af4b606f2510e1664ce96765cdc7f652bb06
+
+pkgname = albion-sr-gog
+

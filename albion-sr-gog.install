@@ -1,0 +1,3 @@
+post_install() {
+    echo "Have a look at readme-Linux.txt as well as Albion.cfg in /opt/ALBION."
+}
