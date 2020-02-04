@@ -6,7 +6,7 @@ pkgver='20200121'
 _commit='0646c28e8eb84a463af2bcfe424122b28dd5e565'
 pkgrel='1'
 pkgdesc='Go binding for wlroots'
-arch=('any')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/$_author/$_projectname"
 license=('BSD')
 depends=('go-pie>=1.8' 'wayland' 'wlroots>=0.9.0')

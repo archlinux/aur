@@ -3,7 +3,12 @@ pkgbase = golang-github-swaywm-go-wlroots
 	pkgver = 20200121
 	pkgrel = 1
 	url = https://github.com/swaywm/go-wlroots
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = BSD
 	depends = go-pie>=1.8
 	depends = wayland
