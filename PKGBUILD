@@ -2,7 +2,7 @@
 _pkgname=golangci-lint
 pkgname=${_pkgname}-bin
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter. (Binary)"
-pkgver=1.23.2
+pkgver=1.23.3
 pkgrel=1
 arch=(x86_64 i686 aarch64 arm6h arm7h)
 url=https://github.com/golangci/golangci-lint
@@ -16,11 +16,11 @@ source_i686=(${_source}-386.tar.gz)
 source_aarch64=(${_source}-arm64.tar.gz)
 source_arm6h=(${_source}-armv6.tar.gz)
 source_arm7h=(${_source}-armv7.tar.gz)
-sha512sums_x86_64=('fe525bc03edfa6a8961b644a64f1019462a7df1d64b7e780bdafcceca4276445bd27a5de015ea085dbde7d4688207dfdf3f3ec92ae0fcf7a17dd873df9ec8170')
-sha512sums_i686=('b65427ad2400c6fc18293ea42b359b129a9f0f04210aa7a366a3d64eb742d241165226ed1ca0041b734feff25a178825cd95270cb070051b781ebb08192cbd22')
-sha512sums_aarch64=('2874c7135333e4060743bfed8bf21851a17440cd61f9790f2ac85515446e137a3ad9a2e99b29457409d1c88b00fd26fabec42aab76eb70d196f1be5ad46f7069')
-sha512sums_arm6h=('45a9adc04cf4128efa01bb13d4ca2f0d09c4bec8cfac9f91a16db9db938023c5aa8bb522b19ce9cfcfcb9a1e8a2cb27fddf8725b9ec11a8f0c4ca7e7622e4f98')
-sha512sums_arm7h=('ba5aa7635d48a7f51cad1c4b8dbdae1fbcaa4acbebe11dbe795a0e5b72e575754650935afc6646b74633e91b96c990f196af78dd74ea71a1c7fb570df6dd019d')
+sha512sums_x86_64=('69c9cbfca5ec950a1472026f368dc78f51510abfb52afb3e968d400b7e324c124c4b81a573215fc89d9e723525cd17a63511f64bf7a2df328d06345c88023ce8')
+sha512sums_i686=('4092d80e181c70ae1b4416894fb4a08b6ddee4fcc05b4c980a7a6ecde35088eb5dd789b0c4034596361f9544af7331a23a03beed9abf5fee766b9f073e7fc142')
+sha512sums_aarch64=('aabc49df8235aa31fd06b0b5a59a977ea100dbc8e6b8d803ae0db71b8513c987a5de8deb5553792ac1d2f2f6232d23b5398caf06eed28be353c0cf88f169e22f')
+sha512sums_arm6h=('95ba003c168564e8166795637b60d2f86b32c8dbcef37de78a06290e836e06195a7c218124eed943a166c3190edd376e7883216c23718f5b11703a4adb420530')
+sha512sums_arm7h=('8d6d4f033f1fe8d7b78f6bb3b9f6ca2701601ddf5a319cd58d15e1ac76adebfa7e94e13675822c0f30dfcea1cb264d6bf4f3213c0c11041ec3d26fa64bdd03d2')
 
 
 case $CARCH in
