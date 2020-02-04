@@ -52,7 +52,6 @@ package()
 
   # Install the utilities
   install -D -m755 prompt_powerlevel10k_setup "${pkgdir}/usr/share/zsh-theme-${_pkgname}/prompt_powerlevel10k_setup"
-  install -D -m644 p9k-vs-p10k.cast "${pkgdir}/usr/share/zsh-theme-${_pkgname}/p9k-vs-p10k.cast"
   install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/config"
   cp -R config "$pkgdir"/usr/share/zsh-theme-${_pkgname}/
   install -d "${pkgdir}/usr/share/zsh-theme-${_pkgname}/gitstatus/bin"
