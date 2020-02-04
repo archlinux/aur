@@ -2,7 +2,7 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.0.0.r811.g5be9d6b
+pkgver=0.1.0.r22.g70faf09
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -40,6 +40,7 @@ depends=('bc'
          'python-pandocfilters'
          'python-pantable'
          'python-ruamel-yaml'
+         'python-setuptools' # Make up for yq missing this dep in [community]
          'python-usfm2osis-cw-git'
          'rsync'
          'sile'

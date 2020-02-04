@@ -1,6 +1,6 @@
 pkgbase = casile-git
 	pkgdesc = Caleb's SILE publishing toolkit
-	pkgver = 0.0.0.r811.g5be9d6b
+	pkgver = 0.1.0.r22.g70faf09
 	pkgrel = 1
 	url = https://github.com/sile-typesetter/casile/
 	arch = any
@@ -33,6 +33,7 @@ pkgbase = casile-git
 	depends = python-pandocfilters
 	depends = python-pantable
 	depends = python-ruamel-yaml
+	depends = python-setuptools
 	depends = python-usfm2osis-cw-git
 	depends = rsync
 	depends = sile
