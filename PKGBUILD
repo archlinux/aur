@@ -13,7 +13,7 @@ license=('LGPL')
 source=('https://framagit.org/simgrid/simgrid/-/archive/v3.25/simgrid-v3.25.tar.gz')
 depends=('boost')
 makedepends=('cmake')
-md5sums=('01eda7dda7488e6bf1acb7a335037857')
+md5sums=('b1e32d5511604fb17cc919fd1de379ea')
 
 pkgver() {
   echo 3.25
