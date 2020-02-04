@@ -3,8 +3,6 @@
 pkgname=chef-workstation
 pkgver=0.14.16
 pkgrel=1
-_ubunturel=18
-_ubuntuver=04
 pkgdesc="Chef Workstation gives you everything you need to get started with Chef. Start scanning and configuring your environments today with InSpec and chef-run."
 arch=('x86_64')
 url="https://downloads.chef.io/chef-workstation/"
@@ -19,10 +17,7 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
   mkdir -p "$pkgdir/usr/bin"
-
-  chefdk_binaries="berks chef chef-apply chef-client chef-shell chef-solo chef-vault cookstyle dco delivery foodcritic inspec kitchen knife ohai push-apply pushy-client pushy-service-manager"
-  binaries="chef-run chefx $chefdk_binaries"
-
+  binaries="chef-run berks chef chef-apply chef-client chef-shell chef-solo chef-vault cookstyle dco delivery foodcritic inspec kitchen knife ohai push-apply pushy-client pushy-service-manager"
   for binary in $binaries; do
     ln -s "/opt/$pkgname/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
   done
