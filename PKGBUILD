@@ -4,7 +4,7 @@ pkgname="$_pkgname-git"
 pkgver='0.9.r17.ge74cb79'
 pkgrel='3'
 pkgdesc='Certificate Transparency Log Monitor - git version'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/SSLMate/$_pkgname"
 license=('MPL2')
 makedepends=('git' 'go-pie>=1.5' 'golang-github-mreiferson-go-httpclient' 'golang-golang-x-net')

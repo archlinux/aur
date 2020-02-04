@@ -4,6 +4,11 @@ pkgbase = certspotter-git
 	pkgrel = 3
 	url = https://github.com/SSLMate/certspotter
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MPL2
 	makedepends = git
 	makedepends = go-pie>=1.5
