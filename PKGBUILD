@@ -1,9 +1,9 @@
-# Maintainer: Ivy Foster <code@escondida.tk>
+# Maintainer: Ivy Foster <iff@archlinux.org>
 # Reference: PKGBUILD(5)
 
 pkgname=physlock
 pkgver=13
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Linux console locking tool'
 url='https://github.com/muennich/physlock'
 license=(GPL2)
@@ -17,6 +17,7 @@ source=(
 	"physlock-$pkgver.tar.gz::https://github.com/muennich/physlock/archive/v$pkgver.tar.gz"
 	physlock.pam
 )
+backup=(etc/pam.d/physlock)
 # sha256sums provided by packager; grains of salt advised
 sha256sums=(
 	9ae4716a1e916f141e47a01b439133ca382281ebdcbec1e53f85da6771774bd6
