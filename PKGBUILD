@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.19.0.1
-pkgrel=1
+pkgrel=2
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1578071012
+epoch=1580809427
 
 
 # Release commit for 0.19.0.1
