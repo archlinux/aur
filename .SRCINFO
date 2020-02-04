@@ -1,7 +1,7 @@
 pkgbase = slowmovideo-git
 	pkgdesc = Video slow motion effect via interpolation
-	pkgver = 20190211
-	pkgrel = 2
+	pkgver = 0.5.r136.g6ed913b
+	pkgrel = 1
 	url = http://slowmovideo.granjow.net/index.html
 	install = slowmovideo-git.install
 	arch = i686

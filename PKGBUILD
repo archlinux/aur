@@ -7,8 +7,8 @@
 
 
 pkgname=slowmovideo-git
-pkgver=20190211
-pkgrel=2
+pkgver=0.5.r136.g6ed913b
+pkgrel=1
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
 url="http://slowmovideo.granjow.net/index.html"
@@ -30,7 +30,7 @@ patch -Np1 -i ${srcdir}/OpenCV4_compile.patch
 
 pkgver() {
   cd "${srcdir}"/slowmoVideo
-  git log -1 --format='%cd' --date=short | tr -d -- '-'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
