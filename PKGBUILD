@@ -2,7 +2,7 @@
 pkgbase=python-sunpy-sphinx-theme
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=1.2.11
+pkgver=1.2.13
 pkgrel=1
 pkgdesc="The sphinx theme for the SunPy website and documentation"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools-scm' 'python2-setuptools-scm')
 checkdepends=('python-sphinx' 'python2-sphinx' 'python-sphinx-bootstrap-theme' 'python2-sphinx-bootstrap-theme')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ceda0ae29e61365d7efc06eaa8f1f856')
+md5sums=('c2cb539698438ffdcee7d2193e6c037b')
 
 prepare() {
     cp -a ${srcdir}/${_pyname}-${pkgver}{,-py2}
@@ -31,10 +31,12 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
     msg "Checking Python3"
     python setup.py test
+#   pytest
 
     msg "Checking Python2"
     cd ${srcdir}/${_pyname}-${pkgver}-py2
     python2 setup.py test
+#   pytest2
 }
 
 package_python2-sunpy-sphinx-theme() {
