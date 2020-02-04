@@ -4,7 +4,7 @@
 
 pkgname=openecardapp
 pkgver=1.4.1
-pkgrel=1
+pkgrel=4
 pkgdesc="An open source alternative of the AusweisApp"
 arch=('any')
 url="https://www.openecard.org"
@@ -18,8 +18,8 @@ prepare() {
 	cd "$srcdir"
 	echo "#!/bin/sh" > openecardapp
 	echo "" >> openecardapp
-	echo "cd /usr/share/java/openecardapp/" >> openecardapp
-	echo "exec /opt/Open-eCard-App/Open-eCard-App \$@" >> openecardapp
+	echo "cd /opt/open-ecard-app/" >> openecardapp
+	echo "/opt/open-ecard-app/bin/open-ecard-app \$@" >> openecardapp
 }
 
 package() {

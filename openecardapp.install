@@ -1,21 +1,22 @@
 ## arg 1:  the new package version
 post_install() {
-	xdg-desktop-menu install --novendor /opt/Open-eCard-App/Open-eCard-App.desktop
+	xdg-desktop-menu install --novendor /opt/open-ecard-app/lib/open-ecard-app-open-ecard-app.desktop
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-	xdg-desktop-menu uninstall --novendor --noupdate /opt/Open-eCard-App/Open-eCard-App.desktop
+	test -f /opt/Open-eCard-App/Open-eCard-App.desktop && xdg-desktop-menu uninstall --novendor --noupdate /opt/Open-eCard-App/Open-eCard-App.desktop || true
+	test -f /opt/Open-eCard-App/Open-eCard-App.desktop && xdg-desktop-menu uninstall --novendor --noupdate /opt/Open-eCard-App/Open-eCard-App.desktop || true
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-	xdg-desktop-menu install --novendor /opt/Open-eCard-App/Open-eCard-App.desktop
+	xdg-desktop-menu install --novendor /opt/open-ecard-app/lib/open-ecard-app-open-ecard-app.desktop
 }
 
 ## arg 1:  the old package version
 pre_remove() {
-	xdg-desktop-menu uninstall --novendor /opt/Open-eCard-App/Open-eCard-App.desktop
+	xdg-desktop-menu uninstall --novendor /opt/open-ecard-app/lib/open-ecard-app-open-ecard-app.desktop
 }
