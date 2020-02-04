@@ -3,7 +3,7 @@
 pkgname=rocketchat-desktop
 pkgver=2.17.5
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=1
+pkgrel=2
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -21,7 +21,7 @@ sha512sums=('9f081256ab86830dd34623744d209229454c8fcd1bab7bda62b68c874a3a1d957ea
             '1f0f7197012421ff42d2936f73e697e35eef8c57fb9fed59ee022f9d170d6496407f89e426526fba8451fe304b3a8de1724d1cd14bd85d781bbf6aa9ca078d7d'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26'
             'f614b29f3fb330e870edd51a3f1b9ca05c72c2c937a5a4d23797947751d55f8ac8db217f8edbe277e721c1a07f5bc84fd0be7a4903a7d991f7a9eb9625f34ce9'
-            '514209aed08ac089b864baea02f3447d707cb2848cd39a86aad2e197dfe38016887d956babb02938a6d7908c6cdca52ac17641e61b130f59358b7d60b3610a1f')
+            'bf4edfa22a6819c2437f60f201c52195cf1fd1e5e7c82e02ef78d3beb37becf28d321b1ef1980d2084fe439b8004e5f44acf09cef79d42fb35c6363463435357')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
     _distname="linux-ia32-unpacked"

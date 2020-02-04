@@ -1,6 +1,15 @@
 diff -ura package.orig/src/scripts/spellChecking.js package.new/src/scripts/spellChecking.js
 --- package.orig/src/scripts/spellChecking.js	2020-02-04 20:01:17.366294000 +0100
-+++ package.new/src/scripts/spellChecking.js	2020-02-04 20:02:48.469827846 +0100
++++ package.new/src/scripts/spellChecking.js	2020-02-04 20:26:35.530104166 +0100
+@@ -74,7 +74,7 @@
+ const registerSpellCheckingDictionary = async (dictionary) => {
+ 	let args;
+ 	try {
+-		const dictionaryPath = path.join(dictionariesPath, `${ dictionary.replace(/_/g, '-') }.bdic`);
++		const dictionaryPath = path.join(dictionariesPath, `${dictionary}.bdic`);
+ 		args = [dictionary, await fs.promises.readFile(dictionaryPath)];
+ 	} catch (error) {
+ 		args = [dictionary];
 @@ -117,11 +117,7 @@
  export const setupSpellChecking = async () => {
  	const embeddedDictionaries = getAvailableDictionaries();
