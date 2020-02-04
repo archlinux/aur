@@ -1,0 +1,30 @@
+pkgbase = simutrans-extended
+	pkgdesc = Transportation simulation game - Extended Version
+	pkgver = 20200204
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = x86_64
+	license = custom:Artistic
+	makedepends = dos2unix
+	depends = gcc-libs
+	depends = zlib
+	depends = sdl_mixer
+	depends = bzip2
+	depends = hicolor-icon-theme
+	depends = simutrans-extended-pak128.britain
+	optdepends = timidity++: play MIDI music
+	source = git+https://github.com/jamespetts/simutrans-extended/
+	source = https://raw.githubusercontent.com/aburch/simutrans/8593f5b1248d03f907a149f7abc41ae6512009e1/simutrans.svg
+	source = settings-folder.patch
+	source = path-for-game-data.patch
+	source = config.patch
+	source = simutrans-extended.desktop
+	sha256sums = SKIP
+	sha256sums = c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81
+	sha256sums = f7b04cb5da7887c084497cb0c364faf8a1ff3c677fee4ef6647fc45172f79d98
+	sha256sums = 800a09ad8e8acd78dd1e5614e53bd9b84009941cfce70482477ec6ebf147f363
+	sha256sums = d38e01738dbdd02ab52b600cec5019d9465b4f177b0f61b249e01de5e85631f4
+	sha256sums = 0efcf72d3670c53de99c44cb0d8f43f7e7663fda5df0f631ba6c687cc85967d3
+
+pkgname = simutrans-extended
+

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Simutrans Extended
+Comment=Transportation simulator
+Exec=simutrans-extended
+Icon=simutrans-extended
+Terminal=false
+Type=Application
+Categories=Game;Simulation;
+

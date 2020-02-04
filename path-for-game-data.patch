@@ -1,0 +1,14 @@
+--- simmain.cc.orig	2020-01-29 20:46:22.995538482 +0100
++++ simmain.cc	2020-01-29 20:50:24.586768985 +0100
+@@ -495,8 +495,9 @@
+ 		strcat( env_t::program_dir, path_sep );
+ 	}
+ 	else {
+-		strcpy( env_t::program_dir, argv[0] );
+-		*(strrchr( env_t::program_dir, path_sep[0] )+1) = 0;
++		//strcpy( env_t::program_dir, argv[0] );
++		//*(strrchr( env_t::program_dir, path_sep[0] )+1) = 0;
++        strcpy(env_t::program_dir, "/usr/share/games/simutrans-extended/");
+ 
+ #ifdef __APPLE__
+ 		// change working directory from binary dir to bundle dir

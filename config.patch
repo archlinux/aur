@@ -1,0 +1,25 @@
+--- config.default.orig	2020-01-29 20:59:57.269776455 +0100
++++ config.default	2020-01-29 21:03:04.844815338 +0100
+@@ -7,19 +7,19 @@
+ #BACKEND = gdi
+ #BACKEND = opengl
+ #BACKEND = sdl
+-#BACKEND = sdl2
++BACKEND = sdl2
+ #BACKEND = mixer_sdl
+ #BACKEND = posix
+ 
+ #COLOUR_DEPTH = 0
+-#COLOUR_DEPTH = 16
++COLOUR_DEPTH = 16
+ 
+ #OSTYPE = amiga
+ #OSTYPE = beos
+ #OSTYPE = cygwin
+ #OSTYPE = freebsd
+ #OSTYPE = haiku
+-#OSTYPE = linux
++OSTYPE = linux
+ #OSTYPE = mingw32
+ #OSTYPE = mingw64
+ #OSTYPE = mac
