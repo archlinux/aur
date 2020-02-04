@@ -11,7 +11,7 @@ makedepends=('cargo' 'git')
 provides=("$pkgname")
 conflicts=("$pkgname" "${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/orhun/kmon/archive/${pkgver}.tar.gz")
-sha512sums=('0137ac2e2c1a50da04776c14c8c247c6d5c7685a2e89fa6a46663df6132f94ca4e4aa768c33ad029e9b28095e9016795cf9c97ad7c6aa9993d0366130c9501b9')
+sha512sums=('fc1e8093b60916965543e77302c859d28eee54ed9c8ddee7bd74dcf87817510b09e2eb312effa2a946fa7cdc1b223e606d6114bac0ef35d89dc9ed7586cef838')
 
 build() {
   cd "$pkgname-${pkgver#v}"
