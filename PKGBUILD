@@ -25,12 +25,12 @@ sha256sums=('c0808e626f89a6f9e0b4df6112cb8042d3cb2d06742fedafb463a599f4e86e18')
 validpgpkeys=()
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+    cd "${srcdir}"/$pkgname-$pkgver
+    make PREFIX=/usr
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "${srcdir}"/$pkgname-$pkgver
+    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
