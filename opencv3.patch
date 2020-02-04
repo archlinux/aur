@@ -62,3 +62,12 @@ index 12c7642..91c97ab 100644
      toc.toc( );
  
      FlannBasedMatcher matcher;
+@@ -226,7 +230,7 @@
+
+     vector<uchar> inliners(matches_sym.size(), 0);
+     //        affine = findHomography( pp1, pp2, inliners, CV_RANSAC, 1. );
+-    homography = findHomography( pp2, pp1, CV_RANSAC, 1., inliners );
++    homography = findHomography( pp2, pp1, RANSAC, 1., inliners );
+
+     //    solve( pp1, pp2, affine, DECOMP_SVD );
+     //    Mat affine = (Mat_<float>(2,3) << 1, 0, 0, 0, 1, 10);
