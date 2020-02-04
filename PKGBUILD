@@ -1,15 +1,15 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=kmon-git
-pkgver=v0.1.0.r0.gc188c22
+pkgver=v0.1.0.r17.g52104ad
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor (git)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/orhun/kmon"
 license=('GPL3')
 depends=('libxcb')
 makedepends=('cargo' 'git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("$pkgname" "${pkgname}-git" "${pkgname}-bin")
 source=('git://github.com/orhun/kmon.git')
 sha256sums=('SKIP')
 
@@ -21,6 +21,11 @@ pkgver() {
 build() {
   cd "${pkgname%-git}"
   cargo build --release --locked --all-features
+}
+
+check() {
+  cd "${pkgname%-git}"
+  cargo test --release --locked
 }
 
 package() {
