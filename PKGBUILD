@@ -3,7 +3,7 @@
 
 pkgname=aocc
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing C/C++ Compiler"
 arch=('x86_64')
 license=('custom')
@@ -15,6 +15,12 @@ install=aocc.install
 md5sums=("8f0349c1138949c511a15bfa5850af10" "SKIP")
 
 aocc_prefix=/opt/aocc
+
+if [ -z ${MODULESHOME} ]; then
+	echo "Environment variable MODULESHOME from env-modules is unset."
+	echo "Restart your shell or source the env-modules scripts for your shell."
+	exit 1
+fi
 
 package() {
 	prefix=${pkgdir}${aocc_prefix}
