@@ -1,7 +1,7 @@
 # Maintainer: Nick Skelsey <nskelsey@gmail.com>
 pkgname=monopticon
-pkgver=0.3.3
-pkgrel=3
+pkgver=0.3.4
+pkgrel=4
 pkgdesc="Ethernet traffic visualizer for zeek"
 arch=('x86_64')
 url="https://github.com/nskelsey/monopticon"
@@ -24,4 +24,8 @@ build() {
 package() {
     cd "$srcdir/monopticon/build"
     make DESTDIR="$pkgdir/" install
+}
+
+post_install() {
+    setcap cap_net_raw=eip /opt/zeek/bin/zeek
 }
