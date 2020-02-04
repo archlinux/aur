@@ -1,11 +1,12 @@
 pkgbase = nodejs-jsondiffpatch
 	pkgdesc = diff and patch JavaScript objects (JSON)
 	pkgver = 0.3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benjamine/jsondiffpatch
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	noextract = jsondiffpatch-0.3.11.tgz
 	source = http://registry.npmjs.org/jsondiffpatch/-/jsondiffpatch-0.3.11.tgz

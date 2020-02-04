@@ -2,13 +2,13 @@
 _npmname=jsondiffpatch
 pkgname=nodejs-jsondiffpatch
 pkgver=0.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="diff and patch JavaScript objects (JSON)"
 arch=(any)
 url="https://github.com/benjamine/jsondiffpatch"
 license=(MIT)
 depends=('nodejs')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
 sha512sums=('5e2dc8ca076dfc11a19a5e9b754161803922d5380eb29de11b78a21f72adccff826a1b4671d3df2912e59d96d2c3eddbd6e99992198aaea5d481470a7a7ca1b4')
