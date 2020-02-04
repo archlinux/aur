@@ -1,15 +1,12 @@
-diff -Naur a/SConstruct b/SConstruct
---- a/SConstruct	2015-10-15 08:58:20.294122327 +0800
-+++ b/SConstruct	2015-10-15 09:27:37.987236466 +0800
-@@ -272,8 +272,10 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -279,8 +279,8 @@
    CheckForSystemLibrary(config, library_dict, subcomponents)
  
  if not config.CheckGuichan():
--  print "(Using included copy of guichan)"
+-  print ("(Using included copy of guichan)")
 -  subcomponents.append("guichan")
-+  #print "(Using included copy of guichan)"
-+  print "(Somehow guichan is not detected, include anyway.)"
-+  #subcomponents.append("guichan")
++  print ("(Somehow guichan is not detected, include anyway.)")
 +  env.Append(LIBS = ['guichan', 'guichan_opengl', 'guichan_sdl'])
  
  # Get the configuration from sdl and freetype

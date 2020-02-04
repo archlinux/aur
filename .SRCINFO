@@ -23,7 +23,7 @@ pkgbase = rlvm-git
 	source = detect_guichan.patch
 	source = freetype.patch
 	md5sums = SKIP
-	md5sums = caf806e9f037ba95a747a0aefde7fd9d
+	md5sums = 2e2602bca4bc2dd576834f406f5c3af5
 	md5sums = 60d11c6a9b259eda3ee69c6a6ddaffac
 
 pkgname = rlvm-git

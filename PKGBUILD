@@ -14,7 +14,7 @@ source=('git+https://github.com/eglaysher/rlvm.git'
         'detect_guichan.patch'
         'freetype.patch')
 md5sums=('SKIP'
-         'caf806e9f037ba95a747a0aefde7fd9d'
+         '2e2602bca4bc2dd576834f406f5c3af5'
          '60d11c6a9b259eda3ee69c6a6ddaffac')
 
 pkgver() {
