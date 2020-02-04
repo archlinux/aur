@@ -27,7 +27,7 @@ build() {
     sh ./bootstrap
     ./configure --prefix=/usr
     # When necessary, fixup deprecated form in src/parser.yy and rebuild.
-    make -j || (bison --update src/parser.yy && make)
+    make -j $(nproc) || (bison --update src/parser.yy && make)
 }
 
 package() {
