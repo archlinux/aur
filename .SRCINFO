@@ -1,0 +1,16 @@
+pkgbase = domake
+	pkgdesc = Docker make
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/gportay/domake
+	arch = any
+	license = MIT
+	checkdepends = shellcheck
+	makedepends = asciidoctor
+	depends = docker
+	depends = dosh
+	source = https://github.com/gportay/domake/archive/1.tar.gz
+	md5sums = f5cec4cbe3c0823a82fa19bf3ec07b16
+
+pkgname = domake
+
