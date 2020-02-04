@@ -2,7 +2,7 @@
 # Contributor: Ted Alff <twa022 at gmail dot com>
 pkgname=touchpad-indicator-git
 pkgver=2.2.2.0extras19.04.1.r108.8fc5078
-pkgrel=2
+pkgrel=3
 pkgdesc="An indicator for the touchpad"
 arch=('any')
 url="https://github.com/atareao/Touchpad-Indicator"
@@ -42,5 +42,6 @@ package() {
 		install -m644 ${_in} "$pkgdir/$_out/"
 	done < debian/install
 	chmod 755 "$pkgdir/usr/bin/${pkgname%-git}"
+	chmod -R 755 "$pkgdir"/{usr/lib/systemd/system-sleep,usr/share/"${pkgname%-git}",etc/pm/sleep.d}
 	./make_translations.sh
 }
