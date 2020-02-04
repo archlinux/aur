@@ -9,23 +9,33 @@ pkgver=$(wget -o /dev/null https://github.com/Manager-io/Manager.zip/releases -O
 )
 pkgrel=1
 pkgdesc='Manager is free accounting software for small business'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('custom')
 url="http://www.manager.io/"
-depends=('mono' 'gtk-sharp-3')
-makedepends=('wget')
+depends=('mono' 'gtk-sharp-3' 'webkit2gtk')
+makedepends=('wget' 'gcc')
 install=manager-accounting.install
 options=('!makeflags')
 source=(
   "LICENSE"
   "manager-accounting.png"
   "https://github.com/Manager-io/Manager.zip/releases/download/${pkgver}/Manager.zip"
+  "https://raw.githubusercontent.com/ericsink/SQLitePCL.raw/02ae6a75ba254fe1f6bf27495545b5eac79456ac/sqlite3/sqlite3.c"
 )
 sha256sums=(
   'bd144763506372341487683b0f28ad627e7e8923ea8ef8569541b55f4b987061'
   '1045ea9400e92c484cf751ac906d1589f8e2758b430b0861df09c161fe5cd044'
   'SKIP'
+  'SKIP'
 )
+
+build() {
+  gcc -shared -fPIC -O3 -DNDEBUG -DSQLITE_DEFAULT_FOREIGN_KEYS=1 \
+      -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS4 \
+      -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_JSON1 \
+      -DSQLITE_ENABLE_RTREE \
+      -o libe_sqlite3.so sqlite3.c
+}
 
 package() {
   install -d $pkgdir/usr/{bin,lib,lib/manager-accounting,share/{applications,icons}}
@@ -50,10 +60,12 @@ package() {
   chmod 0755 $pkgdir/usr/bin/manager-accounting
 
   cp -r $srcdir/* $pkgdir/usr/lib/manager-accounting
+  cp libe_sqlite3.so $pkgdir/usr/lib/manager-accounting
 
   rm $pkgdir/usr/lib/manager-accounting/LICENSE
   rm $pkgdir/usr/lib/manager-accounting/Manager.zip
   rm $pkgdir/usr/lib/manager-accounting/manager-accounting.png
+  rm $pkgdir/usr/lib/manager-accounting/sqlite3.c
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 manager-accounting.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/manager-accounting.png"
