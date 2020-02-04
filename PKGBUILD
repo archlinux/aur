@@ -1,8 +1,8 @@
 # Maintainer: dekart811
 
 pkgname=bsnes-hd
-_gitver=beta10
-pkgver=beta10.r0.g917673f
+_gitver=beta_10_2
+pkgver=beta_10_2.r0.g3a74cbe
 pkgrel=1
 pkgdesc='Nintendo SNES emulator, featuring HD Mode 7 and Widescreen.'
 arch=('x86_64')
