@@ -2,3 +2,4 @@
 /src/
 /*.deb
 /*.tar.xz
+Gemfile.lock

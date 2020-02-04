@@ -1,6 +1,9 @@
 default: clean build
 
 build: namcap
+	rm Gemfile.lock
+	bundle install
+	bundle exec ruby update.rb
 	makepkg
 	makepkg --printsrcinfo > .SRCINFO
 
