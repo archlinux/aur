@@ -1,0 +1,23 @@
+pkgbase = melonds-git-jit
+	pkgdesc = DS emulator, sorta. also 1st quality melon - JIT recompiler branch.
+	pkgver = 0.8.3.r1070.49be24d
+	pkgrel = 1
+	url = http://melonds.kuribo64.net/
+	arch = x86_64
+	arch = aarch64
+	license = GPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = pkg-config
+	depends = gtk3
+	depends = sdl2
+	optdepends = libpcap: for direct-mode wireless emulation
+	provides = melonds
+	conflicts = melonds
+	conflicts = melonds-git
+	source = git+https://github.com/Arisotura/melonDS.git#branch=jit_master_merge
+	sha256sums = SKIP
+
+pkgname = melonds-git-jit
+
