@@ -1,26 +1,27 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-devel-git
-pkgver=0.9.1.r255.ga094c65a
+_pkgname=xrdp
+pkgver=0.9.12.r25.g6d7cce3d
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
-url="https://github.com/neutrinolabs/xrdp"
+url="https://github.com/neutrinolabs/$_pkgname"
 arch=('i686' 'x86_64' 'armv6h')
 license=('Apache')
 makedepends=('git' 'nasm')
 depends=('tigervnc' 'libxrandr' 'lame' 'opus' 'fuse')
-conflicts=('xrdp')
-provides=('xrdp=0.9.1')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 backup=('etc/xrdp/sesman.ini' 'etc/xrdp/xrdp.ini')
 install="${pkgname}.install"
 source=("$pkgname::git+https://github.com/neutrinolabs/xrdp.git#branch=devel"
         "arch-config.diff")
 md5sums=('SKIP'
-         'b41c3d596a582d00e83cd55c756e9ee4')
+         '5b0c7390d6380cc05cb76980426af9fc')
 
 pkgver() {
   cd $pkgname
-  printf "0.9.1.r%s.g%s" "$(git rev-list --count v0.9.1..HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.9.12.r%s.g%s" "$(git rev-list --count v0.9.12..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -43,6 +44,8 @@ build() {
 	      --enable-rfxcodec \
 	      --enable-mp3lame \
 	      --enable-pixman
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
@@ -52,5 +55,3 @@ package() {
   rm -f "$pkgdir"/etc/xrdp/rsakeys.ini
   install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$pkgname/COPYING
 }
-md5sums=('SKIP'
-         'd43731272860b236d49dd643312ee03e')

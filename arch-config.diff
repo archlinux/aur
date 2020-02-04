@@ -30,18 +30,6 @@ diff -up src/xrdp-devel-git/instfiles/xrdp-sesman.service.in.orig src/xrdp-devel
  
  [Install]
  WantedBy=multi-user.target
-diff -up src/xrdp-devel-git/instfiles/xrdp.sh.orig src/xrdp-devel-git/instfiles/xrdp.sh
---- src/xrdp-devel-git/instfiles/xrdp.sh.orig	2017-08-30 00:27:28.000000000 -0600
-+++ src/xrdp-devel-git/instfiles/xrdp.sh	2017-08-30 00:28:00.000000000 -0600
-@@ -17,7 +17,7 @@
- # Description: starts xrdp
- ### END INIT INFO
- 
--SBINDIR=/usr/local/sbin
-+SBINDIR=/usr/bin
- LOG=/dev/null
- CFGDIR=/etc/xrdp
- 
 diff -up src/xrdp-devel-git/sesman/startwm.sh.orig src/xrdp-devel-git/sesman/startwm.sh
 --- src/xrdp-devel-git/sesman/startwm.sh.orig	2017-08-30 00:27:30.000000000 -0600
 +++ src/xrdp-devel-git/sesman/startwm.sh	2017-08-30 00:28:00.000000000 -0600
