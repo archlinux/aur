@@ -1,6 +1,6 @@
 pkgbase = pioneer
 	pkgdesc = A game of lonely space adventure
-	pkgver = 20190203
+	pkgver = 20200203
 	pkgrel = 1
 	url = https://github.com/pioneerspacesim/pioneer
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = pioneer
 	provides = pioneer
 	conflicts = pioneer-bin
 	conflicts = pioneer-git
-	source = pioneer-20190203.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/20190203.tar.gz
-	sha256sums = e526f1659ae321f45b997c0245acecbf9c4cf2122b025ab8db1090f1b9804f5e
+	source = pioneer-20200203.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/20200203.tar.gz
+	sha256sums = 3055d63c1bd3377c3794eee830a8adbd650b178bad9e927531e38cb5d5838694
 
 pkgname = pioneer
 

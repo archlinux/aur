@@ -2,8 +2,8 @@
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 
-pkgname='pioneer'
-pkgver=20190203
+pkgname=pioneer
+pkgver=20200203
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64') # 'i686' untested
@@ -32,7 +32,7 @@ makedepends=(
   'cmake'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz")
-sha256sums=('e526f1659ae321f45b997c0245acecbf9c4cf2122b025ab8db1090f1b9804f5e')
+sha256sums=('3055d63c1bd3377c3794eee830a8adbd650b178bad9e927531e38cb5d5838694')
 
 build()
 {
