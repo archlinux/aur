@@ -42,6 +42,7 @@ package() {
 		install -m644 ${_in} "$pkgdir/$_out/"
 	done < debian/install
 	chmod 755 "$pkgdir/usr/bin/${pkgname%-git}"
-	chmod -R 755 "$pkgdir"/{usr/lib/systemd/system-sleep,usr/share/"${pkgname%-git}",etc/pm/sleep.d}
+	chmod -R 755 \
+		"$pkgdir"/{usr/lib/systemd/system-sleep,usr/share/"${pkgname%-git}",etc/pm/sleep.d}
 	./make_translations.sh
 }
