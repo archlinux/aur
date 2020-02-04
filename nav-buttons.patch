@@ -1,44 +1,44 @@
-diff --git a/build/assets/cache/js/route-naboo-ads.daea3ad048505be80ea6.js b/build/assets/cache/js/route-naboo-ads.daea3ad048505be80ea6.js
-index f3c374a..89e753c 100644
---- a/build/assets/cache/js/route-naboo-ads.daea3ad048505be80ea6.js
-+++ b/build/assets/cache/js/route-naboo-ads.daea3ad048505be80ea6.js
-@@ -9151,7 +9151,7 @@
+diff --git a/build/assets/cache/js/route-naboo-ads.9f8803eb954a5749514e.js b/build/assets/cache/js/route-naboo-ads.9f8803eb954a5749514e.js
+index 6e1fae3..1a27471 100644
+--- a/build/assets/cache/js/route-naboo-ads.9f8803eb954a5749514e.js
++++ b/build/assets/cache/js/route-naboo-ads.9f8803eb954a5749514e.js
+@@ -9231,7 +9231,7 @@
                    "button",
                    {
                      className: "sidebar-navbar-arrow",
 -                    disabled: !this.state.canGoBack,
 +                    disabled: false,
-                     onClick: () => Nt.b.goBack(),
+                     onClick: () => At.b.goBack(),
                      type: "button"
                    },
-@@ -9161,7 +9161,7 @@
+@@ -9241,7 +9241,7 @@
                    "button",
                    {
                      className: "sidebar-navbar-arrow",
 -                    disabled: !this.state.canGoForward,
 +                    disabled: false,
-                     onClick: () => Nt.b.goForward(),
+                     onClick: () => At.b.goForward(),
                      type: "button"
                    },
-diff --git a/build/assets/cache/js/route-naboo-no-ads.34384bddec0795e9d82d.js b/build/assets/cache/js/route-naboo-no-ads.34384bddec0795e9d82d.js
-index 5a8f6bf..4aeff4e 100644
---- a/build/assets/cache/js/route-naboo-no-ads.34384bddec0795e9d82d.js
-+++ b/build/assets/cache/js/route-naboo-no-ads.34384bddec0795e9d82d.js
-@@ -7959,7 +7959,7 @@
+diff --git a/build/assets/cache/js/route-naboo-no-ads.0ea42d2de9e2c5dd132a.js b/build/assets/cache/js/route-naboo-no-ads.0ea42d2de9e2c5dd132a.js
+index 792616a..2071ef2 100644
+--- a/build/assets/cache/js/route-naboo-no-ads.0ea42d2de9e2c5dd132a.js
++++ b/build/assets/cache/js/route-naboo-no-ads.0ea42d2de9e2c5dd132a.js
+@@ -7991,7 +7991,7 @@
                    "button",
                    {
                      className: "sidebar-navbar-arrow",
 -                    disabled: !this.state.canGoBack,
 +                    disabled: false,
-                     onClick: () => Nt.b.goBack(),
+                     onClick: () => xt.b.goBack(),
                      type: "button"
                    },
-@@ -7969,7 +7969,7 @@
+@@ -8001,7 +8001,7 @@
                    "button",
                    {
                      className: "sidebar-navbar-arrow",
 -                    disabled: !this.state.canGoForward,
 +                    disabled: false,
-                     onClick: () => Nt.b.goForward(),
+                     onClick: () => xt.b.goForward(),
                      type: "button"
                    },
