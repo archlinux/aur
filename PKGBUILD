@@ -59,11 +59,12 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=13
-_srcname=linux-${_major}.${_minor}
+_minor=17
+_rtpatchver=9
 _clr=${_major}.13-51
+_srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
-pkgver=${_major}.${_minor}
+pkgver=${_major}.${_minor}.${_rtpatchver}
 pkgrel=1
 pkgdesc='Clear Linux Preempt-RT'
 arch=('x86_64')
@@ -75,7 +76,7 @@ _gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.${_minor}.tar.sign"
-  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-${_major}.${_minor}-rt7.patch.xz"
+  "https://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/patch-${_major}.${_minor}-rt${_rtpatchver}.patch.xz"
   "clearlinux-preempt-rt::git+https://github.com/clearlinux-pkgs/linux-preempt-rt.git#tag=${_clr}"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
@@ -89,7 +90,7 @@ prepare() {
 
     ### Add upstream patches
         echo "Add upstream patches"
-        patch -Np1 -i ../patch-${pkgver}-rt7.patch
+        patch -Np1 -i ../patch-${_major}.${_minor}-rt${_rtpatchver}.patch
 
     ### Setting version
         echo "Setting version..."
@@ -99,7 +100,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec |\
-          grep -Ev '^Patch0000|^Patch0123|^Patch0130' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0000|^Patch0123|^Patch0130|^Patch0002|^Patch0003' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-preempt-rt/${i}"
         done
@@ -317,9 +318,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('49fb29d96d7e7c1d7e6082701bd26bfddd0fbc87a796fb6ba6258bc5fd386ad7'
+sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
             'SKIP'
-            '435449401c9c5fce7c456b274ca6084b6ffd54319dbef8d4f13d23a8f1303b40'
+            'f836174fc06ca8c9edb69d7d7ea480a6f6957caf00dfc08b042dbdd85a5cf265'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
