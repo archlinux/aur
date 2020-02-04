@@ -8,7 +8,7 @@
 
 pkgname=slowmovideo-git
 pkgver=20190211
-pkgrel=1
+pkgrel=2
 pkgdesc="Video slow motion effect via interpolation"
 arch=('i686' 'x86_64')
 url="http://slowmovideo.granjow.net/index.html"
@@ -17,13 +17,15 @@ depends=('glew' 'opencv' 'qt5-script' 'xdg-utils' 'desktop-file-utils')
 makedepends=('cmake' 'git')
 provides=('slowmovideo')
 conflicts=('slowmovideo')
-source=('git+https://github.com/slowmoVideo/slowmoVideo.git')
-md5sums=('SKIP')
+source=('git+https://github.com/slowmoVideo/slowmoVideo.git'
+	'OpenCV4_compile.patch')
+md5sums=('SKIP'
+         '13b3623678018758691f69520cf361af')
 install=$pkgname.install
 
 prepare(){
 cd ${srcdir}/slowmoVideo
-patch -Np1 -i ../../OpenCV4_compile.patch
+patch -Np1 -i ${srcdir}/OpenCV4_compile.patch
 }
 
 pkgver() {
