@@ -30,6 +30,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/syspref.js"
         "waterfox-current-kde-2020.01.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/waterfox-current-kde-2020.01.1.patch"
         "mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch"
+        "icon_mish_mash.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/icon_mish_mash.patch"
         )
 sha256sums=('SKIP'
             '346b791515d05645be86e0f3404187e6397a22460ad54eb27aaf3054d81c2cd8'
@@ -39,6 +40,7 @@ sha256sums=('SKIP'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             'b473c4f2ed189d9fe3accb35bb1fff9b45b5d6ecd8c5612f9cc783a91e10b257'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
+            'ffb7e8a1191276f95faa321672b45f5b5b79c5452d2a8c8f921a30ac8843096a'
             )
 
 prepare() {
@@ -47,6 +49,7 @@ prepare() {
 
   patch -Np1 -i ../waterfox-current-kde-2020.01.1.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
+  patch -Np1 -i ../icon_mish_mash.patch
 
   cat >.mozconfig <<END
 export CC=clang
