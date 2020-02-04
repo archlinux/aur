@@ -23,7 +23,7 @@ package() {
 
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    install -Dm755 "${srcdir}/opt/utopia/messenger/Utopia" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/opt/utopia/messenger/utopia" "${pkgdir}/usr/bin/${pkgname}"
 
     install -Dm644 "${srcdir}/usr/share/pixmaps/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
