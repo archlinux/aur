@@ -1,0 +1,15 @@
+pkgbase = hpmor-man-pages-git
+	pkgdesc = Harry Potter and the Methods of Rationality, Unix Man Page Edition
+	pkgver = r21.33a25ea
+	pkgrel = 1
+	url = https://github.com/io12/hpmor-man-pages
+	arch = any
+	license = unknown
+	makedepends = go-md2man
+	makedepends = pandoc
+	makedepends = python
+	provides = hpmor-man-pages
+	source = git+https://github.com/io12/hpmor-man-pages
+	md5sums = SKIP
+
+pkgname = hpmor-man-pages-git

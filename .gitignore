@@ -1,0 +1,4 @@
+/hpmor-man-pages/
+*.pkg.tar.xz
+/pkg/
+/src/
