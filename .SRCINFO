@@ -3,7 +3,12 @@ pkgbase = golang-github-rogpeppe-go-internal
 	pkgver = 1.5.2
 	pkgrel = 2
 	url = https://github.com/rogpeppe/go-internal
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = BSD
 	depends = go-pie>=1.11
 	depends = golang-gopkg-errgo.v2>=2.1.0

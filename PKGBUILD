@@ -5,7 +5,7 @@ pkgname="golang-github-$_author-$_projectname"
 pkgver='1.5.2'
 pkgrel='2'
 pkgdesc='Selected Go-internal packages factored out from the standard library'
-arch=('any')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/$_author/$_projectname"
 license=('BSD')
 depends=('go-pie>=1.11' 'golang-gopkg-errgo.v2>=2.1.0')
