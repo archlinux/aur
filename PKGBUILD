@@ -10,7 +10,7 @@ license=('MIT')
 groups=()
 depends=('python' 'python-polib' 'python-rply-git')
 makedepends=('python-docutils')
-checkdepends=()
+checkdepends=(python-nose)
 optdepends=()
 provides=()
 conflicts=()
@@ -29,6 +29,11 @@ build() {
     cd "${srcdir}"/$pkgname-$pkgver
     make PREFIX=/usr
     make -C doc
+}
+
+check() {
+    cd "${srcdir}"/$pkgname-$pkgver
+    make test
 }
 
 package() {
