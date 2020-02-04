@@ -249,6 +249,9 @@ DataDirectory /var/lib/tor
 ## only a limited number of writes.
 AvoidDiskWrites 1
 
+## Try to use built-in (static) crypto hardware acceleration when available.
+HardwareAccel 1
+
 ## Configuration options can be imported from files or folders using the %include
 ## option with the value being a path. If the path is a file, the options from the
 ## file will be parsed as if they were written where the %include option is. If

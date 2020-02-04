@@ -6,7 +6,7 @@ _with_rust=1
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.3.1.alpha.r7.gf10b7
+pkgver=0.4.3.1.alpha.r42.g1bf377f
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,6 +21,7 @@ backup=('etc/tor/torrc'
         'etc/tor/torrc.d/transparent_proxy')
 
 depends=('openssl' 'libevent' 'libseccomp' 'zstd' 'xz')
+#https://github.com/skydrome/PKGBUILDs/tree/master/asciidoc-py3
 makedepends=('asciidoc')
 checkdepends=('python')
 optdepends=('torsocks: allow transparent SOCKS proxying'
@@ -39,13 +40,13 @@ source=("git+https://git.torproject.org/tor.git#branch=${_branch:-master}"
         'tor.logrotate' 'tor.service' 'tor.tmpfiles' 'tor.sysusers')
 
 sha256sums=('SKIP'
-            '3826ae9596371e5fc38829dfadb0064fdd7ac5218d81abb0b3bf6f1b6f72d6a9'
+            '4fe3fd1042b369ed5d45e95a214dfef315bf756dc44f51d8fdb775aab1dcffd9'
             '72ed5d90c54d9d5354af0d9fc7eb1412c548cc308868b85a99278abe8ccbf145'
             '90a588c3c2dc7826172341453f76739e8f48df7b0c858adebd12e97f047bde26'
             '7fbb63e9411eee2176964449a3d6809d16e1120152c6ff201ecea1d1f97f102b'
             '748b7264b49b12d5252d688b8859820046413938c5fde91578da0d5b95594c2e'
             'd447227fcc2756778a1be143b8975d67b25ea15688cde2291185b3c71d0f6e34'
-            '96ed5b040c944fd99b15e8bdd25a7682a4e6d19c11f42c669c80aade088ec9dc'
+            '5306e144bb79a89bdc19a79987d690a7ab34eb1564125723b90de96f53365a4e'
             '06c00318d84ead3f939b267c7ae9e4cc1cd90c534d0b57ddd2595fee9065ee7f'
             '231405d1fbbcc68168248f93edd19ae14b60f66bb4d1c8e46ead1d4cd8e0ae7c')
 
