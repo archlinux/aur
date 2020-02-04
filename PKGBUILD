@@ -1,9 +1,10 @@
-# Maintainer: Justin Settle <jus10 [at] partlycloudy.org>
+# Maintainer: Jeff Henson <jeff@henson.io>
+# Contributor: Justin Settle <jus10 [at] partlycloudy.org>
 # Contributor: Kyle Keen <keenerd [at] gmail.com>, das-ich <das-ich [at] yandex.ru>
+
 pkgname=powerpanel
-pkgver=1.3.2
-_pkgverdl=132
-pkgrel=8
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="CyberPower UPS daemon"
 arch=("x86_64" "i686")
 url="https://www.cyberpowersystems.com/product/software/powerpanel-for-linux/"
@@ -21,13 +22,13 @@ sha256sums=('255e5958346daa9d7c0e96ae3d86095afd3b3ec99880205d15d51b8f20a602df'
             '10badc96b0ac990959ddc53d1d1cbba6b904e648b54d0eea085194e48d6a0998')
 
 if [[ $CARCH = 'x86_64' ]]; then
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$_pkgverdl-x86_64.tar.gz")
-  sha256sums+=('265099590e82303fa1082a84dda02488d41762ca5b94f2bb7fd395c9b4ac1c36')
+  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL-${pkgver}-64bit.tar.gz")
+  sha256sums+=('ddaa0e3b15f294b97bc152a992a22853dc9fc0f814ca88ae29dd904b8b0a5947')
 fi
 
 if [[ $CARCH = 'i686' ]]; then
-  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/powerpanel-$_pkgverdl-i386.tar.gz")
-  sha256sums+=('a0931fe71b7def7b72a1a80b9fc9a6419032eb98f78ad9da2971c904f88dc8f3')
+  source+=("https://dl4jz3rbrsfum.cloudfront.net/software/PPL-${pkgver}-32bit.tar.gz")
+  sha256sums+=('5c6d86a407ea9988ff7965bd1bfc5d9662e79b668df3dc5f8742ebedda774435')
 fi
 
 package() {
