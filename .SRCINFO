@@ -1,0 +1,16 @@
+pkgbase = zsh-fast-syntax-highlighting
+	pkgdesc = Optimized and extended zsh-syntax-highlighting
+	pkgver = 1.55
+	pkgrel = 1
+	url = https://github.com/zdharma/fast-syntax-highlighting
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = zsh
+	provides = zsh-fast-syntax-highlighting
+	conflicts = zsh-fast-syntax-highlighting-git
+	source = git+https://github.com/zdharma/fast-syntax-highlighting.git#tag=v1.55
+	sha512sums = SKIP
+
+pkgname = zsh-fast-syntax-highlighting
+
