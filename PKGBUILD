@@ -2,7 +2,7 @@
 pkgname=stopwatchcpp
 _gitname=stopwatch
 _binaryname=sw
-pkgver=c7
+pkgver=c8
 pkgrel=1
 pkgdesc="A command line stopwatch"
 arch=('any')
