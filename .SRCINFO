@@ -13,6 +13,7 @@ pkgbase = orthcal-darkthemed
 	depends = perl-dbi
 	depends = perl-dbd-sqlite
 	depends = perl-date-calc
+	depends = perl-gettext
 	depends = libappindicator-gtk3
 	provides = orthcal-darkthemed
 	source = https://gitlab.com/psposito/otrhcal/uploads/0b52dfd5af969a9c2032841df2b1dc1f/orthcal-darkthemed-3.0.1.tar.bz2
