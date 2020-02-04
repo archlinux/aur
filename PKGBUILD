@@ -3,7 +3,7 @@
 
 _gitname=doctrina
 pkgname=${_gitname}-git
-pkgver=0.1.11.r0.gf2b4ec1
+pkgver=0.1.12.r1.g69588c4
 pkgrel=1
 pkgdesc='The library of Software Peronista'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('doctrina')
 provides=('doctrina')
 depends=('gtk3')
 makedepends=('meson' 'vala' 'git')
-source=("${pkgname}::git+https://git.softwareperonista.com.ar/cdp/${_gitname}.git")
+source=("${pkgname}::git+https://gitlab.com/softwareperonista/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
