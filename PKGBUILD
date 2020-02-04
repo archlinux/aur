@@ -27,6 +27,7 @@ validpgpkeys=()
 build() {
     cd "${srcdir}"/$pkgname-$pkgver
     make PREFIX=/usr
+    make -C doc
 }
 
 package() {
