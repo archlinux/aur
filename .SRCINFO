@@ -13,6 +13,7 @@ pkgbase = orthcal-lightthemed
 	depends = perl-dbi
 	depends = perl-dbd-sqlite
 	depends = perl-date-calc
+	depends = perl-gettext
 	depends = libappindicator-gtk3
 	provides = orthcal-lightthemed
 	conflicts = orthcal-darkthemed
