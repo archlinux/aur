@@ -1,0 +1,11 @@
+--- postgresql.sql	2020-02-04 19:37:31.648130957 +0100
++++ postgresql.sql	2020-01-23 11:02:49.180571251 +0100
+@@ -918,7 +918,7 @@
+  return description;
+ 
+ END;
+-$$ LANGUAGE plpgsql with (iscachable);
++$$ LANGUAGE plpgsql IMMUTABLE;
+ 
+ 
+ -- added

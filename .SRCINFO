@@ -17,9 +17,11 @@ pkgbase = openacs
 	source = http://openacs.org/projects/openacs/download/download/openacs-5.9.1.tar.gz?revision_id=5373772
 	source = openacs.service
 	source = config-oacs-5.9.1.tcl
+	source = postgresql.patch
 	md5sums = bfbb9928c3bbcd0ac44e33faf4521942
 	md5sums = 9b5c6c84b19a4b1cc0ef39e86a6df2e9
 	md5sums = b7d70f60b1b92b5d6714d4d8ccb39e3d
+	md5sums = 178e32238a3511c6efe60dbc59a42581
 
 pkgname = openacs
 	install = openacs.install
