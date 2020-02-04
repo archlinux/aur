@@ -10,6 +10,7 @@ url="https://gitlab.com/news-flash/news_flash_gtk"
 license=(GPL3)
 depends=()
 makedepends=(rust cargo meson)
+conflicts=(newsflash)
 source=("git+https://gitlab.com/news-flash/news_flash_gtk.git")
 sha512sums=("SKIP")
 

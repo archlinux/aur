@@ -8,6 +8,7 @@ pkgbase = newsflash-git
 	makedepends = rust
 	makedepends = cargo
 	makedepends = meson
+	conflicts = newsflash
 	source = git+https://gitlab.com/news-flash/news_flash_gtk.git
 	sha512sums = SKIP
 
