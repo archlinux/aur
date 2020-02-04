@@ -7,7 +7,6 @@ pkgdesc="Bettercap Official Web UI"
 arch=(any)
 url=https://github.com/bettercap/ui
 license=("GPL3")
-makedepends=("")
 source=("https://github.com/bettercap/ui/releases/download/v$pkgver/ui.zip")
 sha256sums=("2d3d7e1d7ca920e79107faf512c2f3f5700e0a2becf79eb03f1a629d5efc4a60")
 
