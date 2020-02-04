@@ -1,0 +1,26 @@
+pkgbase = godot-pulse-vulkan-git
+	pkgdesc = An advanced, feature packed, multi-platform 2D and 3D game engine, vulkan dev branch
+	pkgver = latest
+	pkgrel = 1
+	url = http://www.godotengine.org
+	arch = x86_64
+	license = MIT
+	makedepends = scons
+	makedepends = gcc
+	makedepends = yasm
+	depends = libxcursor
+	depends = libxinerama
+	depends = freetype2
+	depends = pulseaudio
+	depends = libxrandr
+	depends = libxi
+	depends = libglvnd
+	provides = godot
+	conflicts = godot-git
+	conflicts = godot
+	conflicts = godot-pulse
+	source = git://github.com/godotengine/godot.git#branch=vulkan
+	sha256sums = SKIP
+
+pkgname = godot-pulse-vulkan-git
+
