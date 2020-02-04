@@ -4,7 +4,7 @@ pkgname="ocaml-$_projectname"
 pkgver='1.1.0'
 pkgrel='2'
 pkgdesc='A ppx rewriter that transforms a recursive module expression into a `struct`'
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flowtype/$pkgname"
 license=('MIT')
 depends=('ocaml' 'ocaml-migrate-parsetree>=1.1.0')
