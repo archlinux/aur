@@ -5,31 +5,39 @@
 
 set MODULE    "aocl"
 set BASE_DIR  "/opt"
-set VERSION   "2.0"
-set AOCL_ROOT "$BASE_DIR/$MODULE"
+set VERSION   "2.1"
+set AOCL_ROOT "${BASE_DIR}/${MODULE}"
 set AOCL_TEXT "AMD Optimizing CPU Libraries (AOCL)"
 
+prepend-path CPATH           ${AOCL_ROOT}/amd-securerng/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-scalapack/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-rng/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-libm/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-libflame/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-fftw/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-blis/include
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-securerng/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-scalapack/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-rng/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-libm/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-libflame/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-fftw/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-blis/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-securerng/lib
+prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-scalapack/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-rng/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-libm/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-libflame/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-fftw/lib
-prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-blis-mt/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-blis/lib
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-securerng/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-rng/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-libm/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-libflame/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-fftw/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-blis-mt/lib/pkgconfig
-prepend-path PKG_CONFIG_PATH ${AOCL_ROOT}/amd-blis/lib/pkgconfig
 
-module-whatis "$AOCL_TEXT version $VERSION"
+module-whatis "${AOCL_TEXT} version ${VERSION}"
 
 proc ModulesHelp {} {
 	global AOCL_TEXT
-	puts stderr "This module sets up the environment for $AOCL_TEXT"
+	puts stderr "This module sets up the environment for ${AOCL_TEXT}"
 	puts stderr "by adapting the following environment variables:"
+	puts stderr "CPATH"
+	puts stderr "LIBRARY_PATH"
 	puts stderr "LD_LIBRARY_PATH"
-	puts stderr "PKG_CONFIG_PATH"
 }
