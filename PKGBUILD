@@ -3,7 +3,7 @@
 # Contributor: Daichi Shinozaki <dsdseg at gmail dot com>
 
 pkgname=wangle
-pkgver=2020.01.06.00
+pkgver=2020.02.03.00
 pkgrel=1
 pkgdesc="C++ networking library providing client/server abstractions for building services"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('boost' 'boost-libs' 'google-glog' 'fizz' 'folly' 'libevent' 'openssl' 'fmt')
 makedepends=('cmake' 'double-conversion' 'gflags' 'gtest' 'gmock')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6edcf6a29b80696ae8c47e89769e8d895e1e5854c151e554b3e454e1d949bfa3')
+sha256sums=('9ecf65f46345ad60af644eb6efbdfc90db719c8afa962e6676724a2fed89ad6f')
 
 build() {
     cd "$pkgname-$pkgver/$pkgname"
