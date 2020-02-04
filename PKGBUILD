@@ -2,7 +2,7 @@
 pkgname=python-questionary
 _name=${pkgname#python-}
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to build pretty command line user prompts"
 license=("MIT")
 url="https://pypi.python.org/pypi/$_name"
@@ -13,9 +13,11 @@ sha256sums=('f199d4a780183679725f10a209b68be27f07cfd2852d6d7ea9e4a31fb45fb0c0')
 arch=('any')
 
 build() {
+    cd $srcdir/${_name}-$pkgver
     python setup.py build
 }
 
 package() {
+    cd $srcdir/${_name}-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
