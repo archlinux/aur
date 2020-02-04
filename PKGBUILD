@@ -3,13 +3,13 @@
 _npmname=cz-emoji
 pkgname=nodejs-cz-emoji
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Commitizen plugin to use gitmojis in your commits"
 arch=(any)
 url="https://github.com/ngryman/cz-emoji"
 license=(MIT)
 depends=('nodejs' 'nodejs-commitizen')
-makedepends=('npm')
+makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
 sha512sums=('81b528805034d00bcf4feb2a7233e7a4b67cb7947949e4451f0cdb6f2be6269c7ce7d54c2c916ad10b5417c0f604fc5c8e5d394d4319a6e25f83bc04125151f4')

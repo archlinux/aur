@@ -1,11 +1,12 @@
 pkgbase = nodejs-cz-emoji
 	pkgdesc = Commitizen plugin to use gitmojis in your commits
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ngryman/cz-emoji
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
 	depends = nodejs
 	depends = nodejs-commitizen
 	noextract = cz-emoji-1.1.2.tgz
