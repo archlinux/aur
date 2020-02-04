@@ -8,9 +8,9 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!429' '!493' '!575' '!579' !719 '!724' '!762' '!983')
-# _merge_requests_to_use=('!493' '!575' '!579' !719 '!724' '!762' '!983')
-_merge_requests_to_use=('!575' '!983' '!1000')
+# available MR: ('!493' '!575' '!579' '!719' '!724' '!762' '!983' '!1000')
+_merge_requests_to_use=('!493' '!575' '!579' '!719' '!762' '!983' '!1000') # Saren's pick
+# _merge_requests_to_use=('!575' '!983' '!1000')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -167,14 +167,14 @@ prepare() {
   # Type: 1
   # Status: 2
   # Comment:
-  pick_mr '!983' 59f4e36f 'merge'
+  pick_mr '!983' 'clutter/text: Check if attributes are equal before applying'
 
   # Title: clutter-actor: Add detail to captured-event
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/1000
   # Type: 1
   # Status: 2
   # Comment:
-  pick_mr '!1000' '177dbd65' 'merge'
+  pick_mr '!1000' 'clutter-actor: Add detail to captured-event'
 
   # fix build with libglvnd's EGL headers
   git apply -3 ../0001-EGL-Include-EGL-eglmesaext.h.patch
