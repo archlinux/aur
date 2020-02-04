@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "-- Badwolf 0.4.0 changelog: F7 toggles caret browsing, F12 opens Web Inspector. Sandboxing is enabled by default."
+  echo "-- Badwolf 0.5.0-rc.1 changelog: Dark theme disabled by default due to a bug in WebKitGTK (can be reenabled in config.h). TLS Error message dialog allowing exceptions. Brazilian Portugese translation available."
   /bin/true
 }

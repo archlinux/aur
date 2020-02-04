@@ -3,8 +3,8 @@
 @@ -1,6 +1,6 @@
  .POSIX:
  
--PREFIX  = /usr/local
-+PREFIX  = /usr
- BINDIR  = $(PREFIX)/bin
- MANDIR  = $(PREFIX)/share/man
- DATADIR = $(PREFIX)/share/badwolf
+-PREFIX  ?= /usr/local
++PREFIX  ?= /usr
+ BINDIR  ?= $(PREFIX)/bin
+ MANDIR  ?= $(PREFIX)/share/man
+ DATADIR ?= $(PREFIX)/share/badwolf
