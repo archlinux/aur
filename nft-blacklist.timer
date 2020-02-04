@@ -1,0 +1,10 @@
+[Unit]
+Description=Run nft-blacklist daily and on boot
+
+[Timer]
+OnBootSec=15s
+OnCalendar=daily
+RandomizedDelaySec=15m
+
+[Install]
+WantedBy=timers.target

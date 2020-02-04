@@ -1,0 +1,24 @@
+pkgbase = nft-blacklist-git
+	pkgdesc = Blacklist country specific IP blocks using nftables
+	pkgver = v2.0.r3.9dcd5c7
+	pkgrel = 1
+	url = https://github.com/rpthms/nft-blacklist
+	arch = any
+	license = custom
+	makedepends = git
+	depends = nftables
+	depends = python
+	provides = nft-blacklist
+	conflicts = nft-blacklist
+	backup = etc/conf.d/nft-blacklist
+	source = git+https://github.com/rpthms/nft-blacklist.git
+	source = nft-blacklist.conf
+	source = nft-blacklist.service
+	source = nft-blacklist.timer
+	md5sums = SKIP
+	md5sums = ec4f4ff03f01671e52edd98ca6fbae9f
+	md5sums = 80203a4db69a57c36cf42ae9478ccce9
+	md5sums = 34be430faae329975393a9dcd34dea6c
+
+pkgname = nft-blacklist-git
+

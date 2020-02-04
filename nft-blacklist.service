@@ -1,0 +1,9 @@
+[Unit]
+Description=Blacklist country specific IP blocks using nftables
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=-/etc/conf.d/nft-blacklist
+ExecStart=/usr/local/sbin/nft-blacklist $NFT_BLACKLIST_ARGS
