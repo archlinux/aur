@@ -3,7 +3,7 @@
 
 pkgname=aocl
 pkgver=2.1
-pkgrel=0
+pkgrel=1
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -29,7 +29,7 @@ if [ -z ${MODULESHOME} ]; then
 	exit 1
 fi
 
-aocl_prefix=/opt/aocl
+aocl_prefix=/opt/${pkgname}
 
 package() {
 	prefix=${pkgdir}/${aocl_prefix}

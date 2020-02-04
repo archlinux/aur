@@ -1,7 +1,7 @@
 pkgbase = aocl
 	pkgdesc = AMD Optimizing CPU Libraries
 	pkgver = 2.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://developer.amd.com/amd-aocl/
 	install = aocl.install
 	arch = x86_64
