@@ -1,0 +1,36 @@
+pkgbase = forge-server-1.14.4
+	pkgdesc = Minecraft Forge server unit files, script and jar
+	pkgver = 1.14.4_28.2.0
+	pkgrel = 1
+	url = https://minecraftforge.net
+	install = forge-server.install
+	arch = any
+	license = custom
+	depends = java-runtime-headless=8
+	depends = screen
+	depends = sudo
+	depends = bash
+	depends = awk
+	depends = sed
+	optdepends = tar: needed in order to create world backups
+	optdepends = netcat: required in order to suspend an idle server
+	provides = forge-server=1.14.4_28.2.0
+	noextract = forge-1.14.4-28.2.0.jar
+	backup = etc/conf.d/forge-1.14.4
+	source = forged-backup.service
+	source = forged-backup.timer
+	source = forged.service
+	source = forged.conf
+	source = forged.sh
+	source = forge-1.14.4-28.2.0-installer.jar::https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.14.4-28.2.0/forge-1.14.4-28.2.0-installer.jar
+	source = LICENSE-forge-server-1.14.4-1.14.4-28.2.0.txt::https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/1.14.x/LICENSE.txt
+	sha512sums = 6aeccb9c87675cf1099e7c21ec58c0c2cd8331aed1146f5a845e4e489556ef0e96b15cc1ea00d216bad616167ed1707fec40c41c53d94ea3627cfdf8f8f9be33
+	sha512sums = 1e0223cb0ea2fb810bdc94517a4f111df2da528cb04dcf94b8e3d22fc6aa244c55c9039ed97cd7abcccea889015d6016e284cd1b74de3c7dc4bd136bd20a2d4d
+	sha512sums = eb1727f9ad39dd45049c025ee4ee598783ffc544f996a71dc620ffeffdad5ae86871d8d93236ef47802c5b5f7842f38febab3438a88cfd52b60bf62172e79b6f
+	sha512sums = 92bc57b28228d237326d891868dd85e394376330c10f5389015c4de17a11c7b916e42ab9fb9d2c52684a829036f705f2c0fae97259658f3c9667cc8fa951cce9
+	sha512sums = c874e0cd74fa432c4be170eb2cecca23a88062eef2ea38904fba6e6a8f9e97bf3b6775d28faa36b90ffd12e7fae1cbf24aee27d37451ae152e20bf179d06e6c4
+	sha512sums = 2a2a0acf737bd918ff1cd86d9239c5d6b0cba9c2906044121cb8b15212c9f73d11740e0588161363b15ed1a662210922bb6ae7256aaadf9376fab6a649aa1cf6
+	sha512sums = 3da10d63a5edee4bc8bcd3d5c2730771062f7fa58626a8c51635fbe96bfbceca3ff6937cfaad3e17f16a94ef95137f7c78cc6dac1c846a6b9a8f18d3c6355973
+
+pkgname = forge-server-1.14.4
+

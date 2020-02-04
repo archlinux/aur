@@ -1,0 +1,13 @@
+[Unit]
+Description=Minecraft Forge 1.14.4 Server
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/forge-1.14.4d start
+ExecStop=/usr/bin/forge-1.14.4d stop
+User=forge-1-14-4
+Group=forge-1-14-4
+
+[Install]
+WantedBy=multi-user.target

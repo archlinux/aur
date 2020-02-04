@@ -1,0 +1,12 @@
+[Unit]
+Description=Minecraft Forge 1.14.4 Server World Backup
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/forge-1.14.4d backup
+User=forge-1-14-4
+Group=forge-1-14-4
+
+[Install]
+WantedBy=multi-user.target
