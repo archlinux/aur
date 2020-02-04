@@ -1,0 +1,1434 @@
+diff -x '*.pyc' -x __pycache__ -Naur spn/algorithms/sklearn.py /usr/lib/python3.8/site-packages/spn/algorithms/sklearn.py
+--- spn/algorithms/sklearn.py	2019-03-06 08:26:14.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/algorithms/sklearn.py	2020-02-04 15:22:34.000000000 -0300
+@@ -30,7 +30,7 @@
+         tf_optimize_weights=False,
+         tf_n_epochs=100,
+         tf_batch_size: int = None,
+-        tf_optimizer=tf.train.AdamOptimizer(learning_rate=0.001),
++        tf_optimizer=tf.compat.v1.train.AdamOptimizer(learning_rate=0.001),
+         tf_pre_optimization_hook=None,
+         tf_post_optimization_hook=None,
+     ):
+@@ -190,7 +190,7 @@
+     Therefore, this custom method adds a small epsilon, such that the zero probability value in the one-hot vector will
+     not degrade to negative infinity.
+     """
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         p = np.array(node.p, dtype=dtype)
+ 
+         # Epsilon to make sure there are no zero values
+@@ -206,6 +206,6 @@
+         probs = tf.nn.softmax(tf.constant(softmaxInverse))
+         variable_dict[node] = probs
+         if log_space:
+-            return tf.distributions.Categorical(probs=probs).log_prob(data_placeholder[:, node.scope[0]])
++            return tf.compat.v1.distributions.Categorical(probs=probs).log_prob(data_placeholder[:, node.scope[0]])
+ 
+-        return tf.distributions.Categorical(probs=probs).prob(data_placeholder[:, node.scope[0]])
++        return tf.compat.v1.distributions.Categorical(probs=probs).prob(data_placeholder[:, node.scope[0]])
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/AQP/Ranges.py /usr/lib/python3.8/site-packages/spn/experiments/AQP/Ranges.py
+--- spn/experiments/AQP/Ranges.py	2018-12-21 16:34:25.000000000 -0200
++++ /usr/lib/python3.8/site-packages/spn/experiments/AQP/Ranges.py	2020-02-04 15:22:34.000000000 -0300
+@@ -1,62 +1,62 @@
+-"""
+-Created on May 22, 2018
+-
+-@author: Moritz
+-"""
+-
+-
+-from abc import ABC, abstractmethod
+-
+-import numpy as np
+-
+-
+-class Range(ABC):
+-    @abstractmethod
+-    def is_impossible(self):
+-        """
+-        Returns true if the range cannot be fulfilled.
+-        """
+-        pass
+-
+-    @abstractmethod
+-    def get_ranges(self):
+-        """
+-        Returns the values for the ranges.
+-        """
+-        pass
+-
+-
+-class NominalRange(Range):
+-    """
+-    This class specifies the range for a nominal attribute. It contains a list of integers which
+-    represent the values which are in the range.
+-    
+-    e.g. possible_values = [5,2] 
+-    """
+-
+-    def __init__(self, possible_values):
+-        self.possible_values = np.array(possible_values, dtype=np.int64)
+-
+-    def is_impossible(self):
+-        return len(self.possible_values) == 0
+-
+-    def get_ranges(self):
+-        return self.possible_values
+-
+-
+-class NumericRange(Range):
+-    """
+-    This class specifies the range for a numeric attribute. It contains a list of (closed) intervals which
+-    represents the values which are valid.
+-    
+-    e.g. ranges = [[10,15],[22,23]] if valid values are between 10 and 15 plus 22 and 23 (bounds inclusive)
+-    """
+-
+-    def __init__(self, ranges):
+-        self.ranges = ranges
+-
+-    def is_impossible(self):
+-        return len(self.ranges) == 0
+-
+-    def get_ranges(self):
+-        return self.ranges
++"""
++Created on May 22, 2018
++
++@author: Moritz
++"""
++
++
++from abc import ABC, abstractmethod
++
++import numpy as np
++
++
++class Range(ABC):
++    @abstractmethod
++    def is_impossible(self):
++        """
++        Returns true if the range cannot be fulfilled.
++        """
++        pass
++
++    @abstractmethod
++    def get_ranges(self):
++        """
++        Returns the values for the ranges.
++        """
++        pass
++
++
++class NominalRange(Range):
++    """
++    This class specifies the range for a nominal attribute. It contains a list of integers which
++    represent the values which are in the range.
++    
++    e.g. possible_values = [5,2] 
++    """
++
++    def __init__(self, possible_values):
++        self.possible_values = np.array(possible_values, dtype=np.int64)
++
++    def is_impossible(self):
++        return len(self.possible_values) == 0
++
++    def get_ranges(self):
++        return self.possible_values
++
++
++class NumericRange(Range):
++    """
++    This class specifies the range for a numeric attribute. It contains a list of (closed) intervals which
++    represents the values which are valid.
++    
++    e.g. ranges = [[10,15],[22,23]] if valid values are between 10 and 15 plus 22 and 23 (bounds inclusive)
++    """
++
++    def __init__(self, ranges):
++        self.ranges = ranges
++
++    def is_impossible(self):
++        return len(self.ranges) == 0
++
++    def get_ranges(self):
++        return self.ranges
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/AQP/tests/cumulative_distribution.py /usr/lib/python3.8/site-packages/spn/experiments/AQP/tests/cumulative_distribution.py
+--- spn/experiments/AQP/tests/cumulative_distribution.py	2018-12-21 16:34:25.000000000 -0200
++++ /usr/lib/python3.8/site-packages/spn/experiments/AQP/tests/cumulative_distribution.py	2020-02-04 15:22:34.000000000 -0300
+@@ -1,294 +1,294 @@
+-"""
+-Created on Jun 21, 2018
+-
+-@author: Moritz
+-"""
+-
+-import time
+-import numpy as np
+-import matplotlib.pyplot as plt
+-
+-
+-from spn.experiments.AQP.Ranges import NumericRange
+-
+-EPS = 0.00000001
+-
+-
+-def integral(m, b, x):
+-    return 0.5 * m * (x ** 2) + b * x
+-
+-
+-def inverse_integral(m, b, y):
+-    p = b / (0.5 * m)
+-    q = y / (0.5 * m)
+-
+-    # Our scenario is easy we exactly know what value we want
+-    if m >= 0:
+-        # Left value is important
+-        return -(p / 2) + np.sqrt((p / 2) ** 2 + q)
+-    else:
+-        # Right value is important
+-        return -(p / 2) - np.sqrt((p / 2) ** 2 + q)
+-
+-
+-def cumulative(cumulative_stats, x):
+-
+-    possible_bin_ids = np.where((cumulative_stats[:, 2] <= x) & (x <= cumulative_stats[:, 3]))
+-    bin_id = possible_bin_ids[0][0]
+-    stats = cumulative_stats[bin_id]
+-
+-    return integral(stats[0], stats[1], x) - stats[4] + np.sum(cumulative_stats[:bin_id, 6])
+-
+-
+-def inverse_cumulative(cumulative_stats, y):
+-
+-    bin_probs = cumulative_stats[:, 6]
+-    cumulative_probs = np.cumsum(bin_probs)
+-
+-    # +EPS to avoid incorrect behavior caused by floating point errors
+-    cumulative_probs[-1] += EPS
+-
+-    bin_id = np.where((y <= cumulative_probs))[0][0]
+-    stats = cumulative_stats[bin_id]
+-
+-    lower_cumulative_prob = 0 if bin_id == 0 else cumulative_probs[bin_id - 1]
+-    y_perc = (y - lower_cumulative_prob) / bin_probs[bin_id]
+-    y_val = (stats[5] - stats[4]) * y_perc + stats[4]
+-
+-    return inverse_integral(stats[0], stats[1], y_val)
+-
+-
+-def compute_cumulative_stats(x_range, y_range):
+-
+-    # Compute representation of linear functions and cumulative probability
+-    cumulative_stats = []
+-    for i in range(len(x_range) - 1):
+-        y0 = y_range[i]
+-        y1 = y_range[i + 1]
+-        x0 = x_range[i]
+-        x1 = x_range[i + 1]
+-
+-        m = (y0 - y1) / (x0 - x1)
+-        b = (x0 * y1 - x1 * y0) / (x0 - x1)
+-
+-        lowest_y = integral(m, b, x0)
+-        highest_y = integral(m, b, x1)
+-        prob = highest_y - lowest_y
+-
+-        cumulative_stats.append([m, b, x0, x1, lowest_y, highest_y, prob])
+-
+-    return np.array(cumulative_stats, dtype=np.float64)
+-
+-
+-def random_sample(x_range, y_range, n_samples, rand_gen):
+-
+-    # Modify x_range and y_range for specific ranges!!!
+-
+-    cumulative_stats = compute_cumulative_stats(x_range, y_range)
+-
+-    rand_probs = rand_gen.rand(n_samples)
+-
+-    vals = [inverse_cumulative(cumulative_stats, prob) for prob in rand_probs]
+-
+-    return vals
+-
+-    # bin_probs = cumulative_stats[:,6]
+-    # rand_gen.choice(p=bin_probs)
+-
+-
+-def sample(x_range, y_range, ranges, n_samples, rand_gen):
+-
+-    if ranges is None or ranges[0] is None:
+-        # Generate bins for random sampling because no range is specified
+-        bins_x = list(zip(x_range[:-1], x_range[1:]))
+-        bins_y = list(zip(y_range[:-1], y_range[1:]))
+-    else:
+-        # Generate bins for the specified range
+-        rang = ranges[0]
+-        assert isinstance(rang, NumericRange)
+-
+-        bins_x = []
+-        bins_y = []
+-
+-        # Iterate over the specified ranges
+-        intervals = rang.get_ranges()
+-        for interval in intervals:
+-
+-            lower = interval[0]
+-            higher = interval[0] if len(interval) == 1 else interval[1]
+-
+-            lower_prob = np.interp(lower, xp=x_range, fp=y_range)
+-            higher_prob = np.interp(higher, xp=x_range, fp=y_range)
+-            indicies = np.where((lower < x_range) & (x_range < higher))
+-
+-            x_interval = [lower] + list(x_range[indicies]) + [higher]
+-            y_interval = [lower_prob] + list(y_range[indicies]) + [higher_prob]
+-
+-            bins_x += list(zip(x_interval[:-1], x_interval[1:]))
+-            bins_y += list(zip(y_interval[:-1], y_interval[1:]))
+-
+-    cumulative_stats = []
+-    for i in range(len(bins_x)):
+-        y0 = bins_y[i][0]
+-        y1 = bins_y[i][1]
+-        x0 = bins_x[i][0]
+-        x1 = bins_x[i][1]
+-
+-        m = (y0 - y1) / (x0 - x1)
+-        b = (x0 * y1 - x1 * y0) / (x0 - x1)
+-
+-        lowest_y = integral(m, b, x0)
+-        highest_y = integral(m, b, x1)
+-        prob = highest_y - lowest_y
+-
+-        cumulative_stats.append([m, b, x0, x1, lowest_y, highest_y, prob])
+-
+-    cumulative_stats = np.array(cumulative_stats, dtype=np.float64)
+-
+-    cumulative_stats[:, 6] = cumulative_stats[:, 6] / np.sum(cumulative_stats[:, 6])
+-
+-    rand_probs = rand_gen.rand(n_samples)
+-
+-    vals = [inverse_cumulative(cumulative_stats, prob) for prob in rand_probs]
+-
+-    return cumulative_stats, vals
+-
+-
+-def _rejection_sampling(x_range, y_range, n_samples, rand_gen):
+-
+-    bins_x = list(zip(x_range[:-1], x_range[1:]))
+-    bins_y = list(zip(y_range[:-1], y_range[1:]))
+-
+-    masses = []
+-    for i in range(len(bins_x)):
+-        if bins_x[i][0] == bins_x[i][1]:
+-            # Case that the range only contains one value .. Is that correct?
+-            assert bins_y[i][0] == bins_y[i][1]
+-            masses.append(bins_y[i][0])
+-        else:
+-            masses.append(np.trapz(bins_y[i], bins_x[i]))
+-
+-    samples = []
+-    while len(samples) < n_samples:
+-
+-        rand_bin = rand_gen.choice(len(masses), p=masses)
+-        #
+-        # generate random point uniformly in the box
+-        r_x = rand_gen.uniform(bins_x[rand_bin][0], bins_x[rand_bin][1])
+-        r_y = rand_gen.uniform(0, bins_y[rand_bin][1])
+-        #
+-        # is it in the trapezoid?
+-        trap_y = np.interp(r_x, xp=bins_x[rand_bin], fp=bins_y[rand_bin])
+-        if r_y < trap_y:
+-            samples.append(r_x)
+-
+-    return np.array(samples)
+-
+-
+-def test_sample():
+-    # Create distribution
+-    y_range = [0.0, 10, 100, 30, 10, 200, 0.0]
+-    x_range = [0.0, 2, 4.0, 6, 8, 10, 12]
+-    x_range, y_range = np.array(x_range), np.array(y_range)
+-    x_range *= 1000
+-    auc = np.trapz(y_range, x_range)
+-    y_range = y_range / auc
+-
+-    rand_gen = np.random.RandomState(10)
+-
+-    t0 = time.time()
+-    samples = random_sample(x_range, y_range, 100000, rand_gen)
+-    exc_time = time.time() - t0
+-
+-    print("cum_sampling: " + str(exc_time))
+-
+-    t0 = time.time()
+-    samples = _rejection_sampling(x_range, y_range, 100000, rand_gen)
+-    exc_time = time.time() - t0
+-
+-    print("rej_sampling: " + str(exc_time))
+-
+-    # Plot distribution
+-    plt.title("Actual distribution")
+-    plt.plot(x_range, y_range)
+-    plt.show()
+-
+-    plt.hist(samples, bins=50)
+-    plt.show()
+-
+-
+-def test_sample2():
+-    # Create distribution
+-    y_range = [0.0, 10, 100, 30, 10, 200, 0.0]
+-    x_range = [0.0, 2, 4.0, 6, 8, 10, 12]
+-    x_range, y_range = np.array(x_range), np.array(y_range)
+-    auc = np.trapz(y_range, x_range)
+-    y_range = y_range / auc
+-
+-    rand_gen = np.random.RandomState(10)
+-
+-    ranges = [NumericRange([[0.0, 4.0], [9.0, 12.0]])]
+-
+-    t0 = time.time()
+-    cumulative_stats, samples = sample(x_range, y_range, ranges, 100000, rand_gen)
+-    exc_time = time.time() - t0
+-
+-    print("cum_sampling: " + str(exc_time))
+-
+-    # Plot distribution
+-    plt.title("Actual distribution")
+-    plt.plot(x_range, y_range)
+-    plt.show()
+-
+-    plt.hist(samples, bins=50)
+-    plt.show()
+-
+-    # Plot inverse cumulative distribution
+-    x_domain = np.linspace(0, 1, 100)
+-    y_domain = np.zeros(len(x_domain))
+-    for i, x_val in enumerate(x_domain):
+-        y_domain[i] = inverse_cumulative(cumulative_stats, x_val)
+-
+-    plt.title("Inverse cumulative distribution")
+-    plt.plot(x_domain, y_domain)
+-    plt.show()
+-
+-
+-if __name__ == "__main__":
+-
+-    test_sample2()
+-    exit()
+-
+-    # Create distribution
+-    y_range = [0.0, 10, 100, 30, 10, 200, 0.0]
+-    x_range = [0.0, 2, 4.0, 6, 8, 10, 12]
+-    x_range, y_range = np.array(x_range), np.array(y_range)
+-    auc = np.trapz(y_range, x_range)
+-    y_range = y_range / auc
+-
+-    cumulative_stats = compute_cumulative_stats(x_range, y_range)
+-
+-    # Plot distribution
+-    plt.title("Actual distribution")
+-    plt.plot(x_range, y_range)
+-    plt.show()
+-
+-    # Plot cumulative distribution
+-    x_domain = np.linspace(np.min(x_range), np.max(x_range), 100)
+-    y_domain = np.zeros(len(x_domain))
+-    for i, x_val in enumerate(x_domain):
+-        y_domain[i] = cumulative(cumulative_stats, x_val)
+-
+-    plt.title("Cumulative distribution")
+-    plt.plot(x_domain, y_domain)
+-    plt.show()
+-
+-    # Plot inverse cumulative distribution
+-    x_domain = np.linspace(0, 1, 100)
+-    y_domain = np.zeros(len(x_domain))
+-    for i, x_val in enumerate(x_domain):
+-        y_domain[i] = inverse_cumulative(cumulative_stats, x_val)
+-
+-    plt.title("Inverse cumulative distribution")
+-    plt.plot(x_domain, y_domain)
+-    plt.show()
++"""
++Created on Jun 21, 2018
++
++@author: Moritz
++"""
++
++import time
++import numpy as np
++import matplotlib.pyplot as plt
++
++
++from spn.experiments.AQP.Ranges import NumericRange
++
++EPS = 0.00000001
++
++
++def integral(m, b, x):
++    return 0.5 * m * (x ** 2) + b * x
++
++
++def inverse_integral(m, b, y):
++    p = b / (0.5 * m)
++    q = y / (0.5 * m)
++
++    # Our scenario is easy we exactly know what value we want
++    if m >= 0:
++        # Left value is important
++        return -(p / 2) + np.sqrt((p / 2) ** 2 + q)
++    else:
++        # Right value is important
++        return -(p / 2) - np.sqrt((p / 2) ** 2 + q)
++
++
++def cumulative(cumulative_stats, x):
++
++    possible_bin_ids = np.where((cumulative_stats[:, 2] <= x) & (x <= cumulative_stats[:, 3]))
++    bin_id = possible_bin_ids[0][0]
++    stats = cumulative_stats[bin_id]
++
++    return integral(stats[0], stats[1], x) - stats[4] + np.sum(cumulative_stats[:bin_id, 6])
++
++
++def inverse_cumulative(cumulative_stats, y):
++
++    bin_probs = cumulative_stats[:, 6]
++    cumulative_probs = np.cumsum(bin_probs)
++
++    # +EPS to avoid incorrect behavior caused by floating point errors
++    cumulative_probs[-1] += EPS
++
++    bin_id = np.where((y <= cumulative_probs))[0][0]
++    stats = cumulative_stats[bin_id]
++
++    lower_cumulative_prob = 0 if bin_id == 0 else cumulative_probs[bin_id - 1]
++    y_perc = (y - lower_cumulative_prob) / bin_probs[bin_id]
++    y_val = (stats[5] - stats[4]) * y_perc + stats[4]
++
++    return inverse_integral(stats[0], stats[1], y_val)
++
++
++def compute_cumulative_stats(x_range, y_range):
++
++    # Compute representation of linear functions and cumulative probability
++    cumulative_stats = []
++    for i in range(len(x_range) - 1):
++        y0 = y_range[i]
++        y1 = y_range[i + 1]
++        x0 = x_range[i]
++        x1 = x_range[i + 1]
++
++        m = (y0 - y1) / (x0 - x1)
++        b = (x0 * y1 - x1 * y0) / (x0 - x1)
++
++        lowest_y = integral(m, b, x0)
++        highest_y = integral(m, b, x1)
++        prob = highest_y - lowest_y
++
++        cumulative_stats.append([m, b, x0, x1, lowest_y, highest_y, prob])
++
++    return np.array(cumulative_stats, dtype=np.float64)
++
++
++def random_sample(x_range, y_range, n_samples, rand_gen):
++
++    # Modify x_range and y_range for specific ranges!!!
++
++    cumulative_stats = compute_cumulative_stats(x_range, y_range)
++
++    rand_probs = rand_gen.rand(n_samples)
++
++    vals = [inverse_cumulative(cumulative_stats, prob) for prob in rand_probs]
++
++    return vals
++
++    # bin_probs = cumulative_stats[:,6]
++    # rand_gen.choice(p=bin_probs)
++
++
++def sample(x_range, y_range, ranges, n_samples, rand_gen):
++
++    if ranges is None or ranges[0] is None:
++        # Generate bins for random sampling because no range is specified
++        bins_x = list(zip(x_range[:-1], x_range[1:]))
++        bins_y = list(zip(y_range[:-1], y_range[1:]))
++    else:
++        # Generate bins for the specified range
++        rang = ranges[0]
++        assert isinstance(rang, NumericRange)
++
++        bins_x = []
++        bins_y = []
++
++        # Iterate over the specified ranges
++        intervals = rang.get_ranges()
++        for interval in intervals:
++
++            lower = interval[0]
++            higher = interval[0] if len(interval) == 1 else interval[1]
++
++            lower_prob = np.interp(lower, xp=x_range, fp=y_range)
++            higher_prob = np.interp(higher, xp=x_range, fp=y_range)
++            indicies = np.where((lower < x_range) & (x_range < higher))
++
++            x_interval = [lower] + list(x_range[indicies]) + [higher]
++            y_interval = [lower_prob] + list(y_range[indicies]) + [higher_prob]
++
++            bins_x += list(zip(x_interval[:-1], x_interval[1:]))
++            bins_y += list(zip(y_interval[:-1], y_interval[1:]))
++
++    cumulative_stats = []
++    for i in range(len(bins_x)):
++        y0 = bins_y[i][0]
++        y1 = bins_y[i][1]
++        x0 = bins_x[i][0]
++        x1 = bins_x[i][1]
++
++        m = (y0 - y1) / (x0 - x1)
++        b = (x0 * y1 - x1 * y0) / (x0 - x1)
++
++        lowest_y = integral(m, b, x0)
++        highest_y = integral(m, b, x1)
++        prob = highest_y - lowest_y
++
++        cumulative_stats.append([m, b, x0, x1, lowest_y, highest_y, prob])
++
++    cumulative_stats = np.array(cumulative_stats, dtype=np.float64)
++
++    cumulative_stats[:, 6] = cumulative_stats[:, 6] / np.sum(cumulative_stats[:, 6])
++
++    rand_probs = rand_gen.rand(n_samples)
++
++    vals = [inverse_cumulative(cumulative_stats, prob) for prob in rand_probs]
++
++    return cumulative_stats, vals
++
++
++def _rejection_sampling(x_range, y_range, n_samples, rand_gen):
++
++    bins_x = list(zip(x_range[:-1], x_range[1:]))
++    bins_y = list(zip(y_range[:-1], y_range[1:]))
++
++    masses = []
++    for i in range(len(bins_x)):
++        if bins_x[i][0] == bins_x[i][1]:
++            # Case that the range only contains one value .. Is that correct?
++            assert bins_y[i][0] == bins_y[i][1]
++            masses.append(bins_y[i][0])
++        else:
++            masses.append(np.trapz(bins_y[i], bins_x[i]))
++
++    samples = []
++    while len(samples) < n_samples:
++
++        rand_bin = rand_gen.choice(len(masses), p=masses)
++        #
++        # generate random point uniformly in the box
++        r_x = rand_gen.uniform(bins_x[rand_bin][0], bins_x[rand_bin][1])
++        r_y = rand_gen.uniform(0, bins_y[rand_bin][1])
++        #
++        # is it in the trapezoid?
++        trap_y = np.interp(r_x, xp=bins_x[rand_bin], fp=bins_y[rand_bin])
++        if r_y < trap_y:
++            samples.append(r_x)
++
++    return np.array(samples)
++
++
++def test_sample():
++    # Create distribution
++    y_range = [0.0, 10, 100, 30, 10, 200, 0.0]
++    x_range = [0.0, 2, 4.0, 6, 8, 10, 12]
++    x_range, y_range = np.array(x_range), np.array(y_range)
++    x_range *= 1000
++    auc = np.trapz(y_range, x_range)
++    y_range = y_range / auc
++
++    rand_gen = np.random.RandomState(10)
++
++    t0 = time.time()
++    samples = random_sample(x_range, y_range, 100000, rand_gen)
++    exc_time = time.time() - t0
++
++    print("cum_sampling: " + str(exc_time))
++
++    t0 = time.time()
++    samples = _rejection_sampling(x_range, y_range, 100000, rand_gen)
++    exc_time = time.time() - t0
++
++    print("rej_sampling: " + str(exc_time))
++
++    # Plot distribution
++    plt.title("Actual distribution")
++    plt.plot(x_range, y_range)
++    plt.show()
++
++    plt.hist(samples, bins=50)
++    plt.show()
++
++
++def test_sample2():
++    # Create distribution
++    y_range = [0.0, 10, 100, 30, 10, 200, 0.0]
++    x_range = [0.0, 2, 4.0, 6, 8, 10, 12]
++    x_range, y_range = np.array(x_range), np.array(y_range)
++    auc = np.trapz(y_range, x_range)
++    y_range = y_range / auc
++
++    rand_gen = np.random.RandomState(10)
++
++    ranges = [NumericRange([[0.0, 4.0], [9.0, 12.0]])]
++
++    t0 = time.time()
++    cumulative_stats, samples = sample(x_range, y_range, ranges, 100000, rand_gen)
++    exc_time = time.time() - t0
++
++    print("cum_sampling: " + str(exc_time))
++
++    # Plot distribution
++    plt.title("Actual distribution")
++    plt.plot(x_range, y_range)
++    plt.show()
++
++    plt.hist(samples, bins=50)
++    plt.show()
++
++    # Plot inverse cumulative distribution
++    x_domain = np.linspace(0, 1, 100)
++    y_domain = np.zeros(len(x_domain))
++    for i, x_val in enumerate(x_domain):
++        y_domain[i] = inverse_cumulative(cumulative_stats, x_val)
++
++    plt.title("Inverse cumulative distribution")
++    plt.plot(x_domain, y_domain)
++    plt.show()
++
++
++if __name__ == "__main__":
++
++    test_sample2()
++    exit()
++
++    # Create distribution
++    y_range = [0.0, 10, 100, 30, 10, 200, 0.0]
++    x_range = [0.0, 2, 4.0, 6, 8, 10, 12]
++    x_range, y_range = np.array(x_range), np.array(y_range)
++    auc = np.trapz(y_range, x_range)
++    y_range = y_range / auc
++
++    cumulative_stats = compute_cumulative_stats(x_range, y_range)
++
++    # Plot distribution
++    plt.title("Actual distribution")
++    plt.plot(x_range, y_range)
++    plt.show()
++
++    # Plot cumulative distribution
++    x_domain = np.linspace(np.min(x_range), np.max(x_range), 100)
++    y_domain = np.zeros(len(x_domain))
++    for i, x_val in enumerate(x_domain):
++        y_domain[i] = cumulative(cumulative_stats, x_val)
++
++    plt.title("Cumulative distribution")
++    plt.plot(x_domain, y_domain)
++    plt.show()
++
++    # Plot inverse cumulative distribution
++    x_domain = np.linspace(0, 1, 100)
++    y_domain = np.zeros(len(x_domain))
++    for i, x_val in enumerate(x_domain):
++        y_domain[i] = inverse_cumulative(cumulative_stats, x_val)
++
++    plt.title("Inverse cumulative distribution")
++    plt.plot(x_domain, y_domain)
++    plt.show()
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/FPGA/RunNative.py /usr/lib/python3.8/site-packages/spn/experiments/FPGA/RunNative.py
+--- spn/experiments/FPGA/RunNative.py	2018-12-21 16:34:25.000000000 -0200
++++ /usr/lib/python3.8/site-packages/spn/experiments/FPGA/RunNative.py	2020-02-04 15:22:34.000000000 -0300
+@@ -23,12 +23,12 @@
+ 
+ 
+ def sum_to_tf_graph(node, children, data_placeholder, **args):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         return tf.add_n([node.weights[i] * ctf for i, ctf in enumerate(children)])
+ 
+ 
+ def prod_to_tf_graph(node, children, data_placeholder, **args):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         prod_res = None
+         for c in children:
+             if prod_res is None:
+@@ -127,21 +127,21 @@
+             from tensorflow.python.client import timeline
+             import json
+ 
+-            tf.reset_default_graph()
++            tf.compat.v1.reset_default_graph()
+ 
+             elapsed = 0
+-            data_placeholder = tf.placeholder(tf.int32, test_data.shape)
++            data_placeholder = tf.compat.v1.placeholder(tf.int32, test_data.shape)
+             tf_graph = spn_to_tf_graph(spn, data_placeholder, log_space=False)
+             tfstart = time.perf_counter()
+             n_repeats = 1000
+-            with tf.Session() as sess:
++            with tf.compat.v1.Session() as sess:
+ 
+                 for i in range(n_repeats):
+ 
+-                    run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+-                    run_metadata = tf.RunMetadata()
++                    run_options = tf.compat.v1.RunOptions(trace_level=tf.compat.v1.RunOptions.FULL_TRACE)
++                    run_metadata = tf.compat.v1.RunMetadata()
+ 
+-                    sess.run(tf.global_variables_initializer())
++                    sess.run(tf.compat.v1.global_variables_initializer())
+                     # start = time.perf_counter()
+                     tf_ll = sess.run(
+                         tf_graph,
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/layers/spflow_vs_pytorch.py /usr/lib/python3.8/site-packages/spn/experiments/layers/spflow_vs_pytorch.py
+--- spn/experiments/layers/spflow_vs_pytorch.py	2019-10-24 08:51:04.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/experiments/layers/spflow_vs_pytorch.py	2020-02-04 15:22:34.000000000 -0300
+@@ -161,8 +161,8 @@
+     x = np.random.rand(batch_size, n_feats).astype(np.float32)
+     tf_graph, placeholder, _ = spn_to_tf_graph(spflow_spn, x, dtype=np.float32)
+ 
+-    with tf.Session() as sess:
+-        sess.run(tf.global_variables_initializer())
++    with tf.compat.v1.Session() as sess:
++        sess.run(tf.compat.v1.global_variables_initializer())
+         # warmup:
+         for i in range(10):
+             result = sess.run(tf_graph, feed_dict={placeholder: x})
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/LearnRGSPN.py /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/LearnRGSPN.py
+--- spn/experiments/RandomSPNs/LearnRGSPN.py	2019-09-12 05:46:48.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/LearnRGSPN.py	2020-02-04 15:22:34.000000000 -0300
+@@ -126,7 +126,7 @@
+ 
+     spns = vector_list[-1][0]
+     tensor_spn = RatSpn(10, vector_list=vector_list, args=args, name="tensor-spn-from-vectorlist")
+-    input_ph = tf.placeholder(tf.float32, (1000, 28 * 28))
++    input_ph = tf.compat.v1.placeholder(tf.float32, (1000, 28 * 28))
+     output = tensor_spn.forward(input_ph)
+ 
+     (train_im, train_lab), (test_im, test_lab) = mnist("data/mnist")
+@@ -147,8 +147,8 @@
+         end = time.perf_counter()
+         print("finished: ", (end - tfstart))
+ 
+-        sess = tf.Session()
+-        sess.run(tf.global_variables_initializer())
++        sess = tf.compat.v1.Session()
++        sess.run(tf.compat.v1.global_variables_initializer())
+         print("starting")
+         tfstart = time.perf_counter()
+         sess.run(output, feed_dict={input_ph: train_im[0:1000]})
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/RAT_SPN.py
+--- spn/experiments/RandomSPNs/RAT_SPN.py	2019-09-12 05:46:48.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/RAT_SPN.py	2020-02-04 15:54:17.607091839 -0300
+@@ -3,9 +3,14 @@
+ import spn.structure.Base as base
+ import spn.structure.leaves.parametric.Parametric as para
+ 
++from spn.gpu.TensorFlow import tf_major_version
+ from tensorflow.python.ops import math_ops
+ from tensorflow.python.ops import random_ops
+-import tensorflow.contrib.distributions as dists
++
++if tf_major_version == 1:
++    import tensorflow.contrib.distributions as dists
++else:
++    from tensorflow_probability import distributions as dists
+ 
+ import time
+ 
+@@ -17,37 +22,37 @@
+ 
+ def variable_with_weight_decay(name, shape, stddev, wd, mean=0.0, values=None):
+     if values is None:
+-        initializer = tf.truncated_normal_initializer(mean=mean, stddev=stddev, dtype=tf.float32)
++        initializer = tf.compat.v1.truncated_normal_initializer(mean=mean, stddev=stddev, dtype=tf.float32)
+     else:
+-        initializer = tf.constant_initializer(values)
++        initializer = tf.compat.v1.constant_initializer(values)
+     """Get a TF variable with optional l2-loss attached."""
+-    var = tf.get_variable(name, shape, initializer=initializer, dtype=tf.float32)
++    var = tf.compat.v1.get_variable(name, shape, initializer=initializer, dtype=tf.float32)
+     if wd is not None:
+         weight_decay = tf.multiply(tf.nn.l2_loss(var), wd, name="weight_loss")
+-        tf.add_to_collection("losses", weight_decay)
+-        tf.add_to_collection("weight_losses", weight_decay)
++        tf.compat.v1.add_to_collection("losses", weight_decay)
++        tf.compat.v1.add_to_collection("weight_losses", weight_decay)
+ 
+     return var
+ 
+ 
+ def bernoulli_variable_with_weight_decay(name, shape, wd, p=-0.7, values=None):
+     if values is None:
+-        initializer = tf.constant_initializer([p])
++        initializer = tf.compat.v1.constant_initializer([p])
+     else:
+-        initializer = tf.constant_initializer(values)
++        initializer = tf.compat.v1.constant_initializer(values)
+     """Get a TF variable with optional l2-loss attached."""
+-    var = tf.get_variable(name, shape, initializer=initializer, dtype=tf.float32)
++    var = tf.compat.v1.get_variable(name, shape, initializer=initializer, dtype=tf.float32)
+     if wd is not None:
+         weight_decay = tf.multiply(tf.nn.l2_loss(var), wd, name="weight_loss")
+-        tf.add_to_collection("losses", weight_decay)
+-        tf.add_to_collection("weight_losses", weight_decay)
++        tf.compat.v1.add_to_collection("losses", weight_decay)
++        tf.compat.v1.add_to_collection("weight_losses", weight_decay)
+ 
+     return var
+ 
+ 
+ def print_if_nan(tensor, msg):
+-    is_nan = tf.reduce_any(tf.is_nan(tensor))
+-    return tf.cond(is_nan, lambda: tf.Print(tensor, [is_nan], message=msg), lambda: tf.identity(tensor))
++    is_nan = tf.reduce_any(input_tensor=tf.math.is_nan(tensor))
++    return tf.cond(pred=is_nan, true_fn=lambda: tf.compat.v1.Print(tensor, [is_nan], message=msg), false_fn=lambda: tf.identity(tensor))
+ 
+ 
+ class NodeVector(object):
+@@ -135,7 +140,7 @@
+             # gauss_log_pdf_single = tf.log(weighted_gauss_pdf + local_marginalized_broadcast)
+             gauss_log_pdf_single = gauss_log_pdf_single * (1 - local_marginalized)
+ 
+-        gauss_log_pdf = tf.reduce_sum(gauss_log_pdf_single, 1)
++        gauss_log_pdf = tf.reduce_sum(input_tensor=gauss_log_pdf_single, axis=1)
+         return gauss_log_pdf
+ 
+     def sample(self, num_samples, num_dims, seed=None):
+@@ -144,7 +149,7 @@
+         sample_shape = [num_samples, num_dims, self.size]
+         indices = tf.meshgrid(tf.range(num_samples), self.scope, tf.range(self.size))
+         indices = tf.stack(indices, axis=-1)
+-        indices = tf.transpose(indices, [1, 0, 2, 3])
++        indices = tf.transpose(a=indices, perm=[1, 0, 2, 3])
+         samples = tf.scatter_nd(indices, sample_values, sample_shape)
+         return samples
+ 
+@@ -187,7 +192,7 @@
+         if classes:
+             return bernoulli_log_pdf_single
+         else:
+-            bernoulli_log_pdf = tf.reduce_sum(bernoulli_log_pdf_single, 1)
++            bernoulli_log_pdf = tf.reduce_sum(input_tensor=bernoulli_log_pdf_single, axis=1)
+         return bernoulli_log_pdf
+ 
+     def sample(self, num_samples, num_dims, seed=None):
+@@ -195,7 +200,7 @@
+         sample_shape = [num_samples, num_dims, self.size]
+         indices = tf.meshgrid(tf.range(num_samples), self.scope, tf.range(self.size))
+         indices = tf.stack(indices, axis=-1)
+-        indices = tf.transpose(indices, [1, 0, 2, 3])
++        indices = tf.transpose(a=indices, perm=[1, 0, 2, 3])
+         samples = tf.scatter_nd(indices, sample_values, sample_shape)
+         return samples
+ 
+@@ -223,7 +228,7 @@
+     def forward(self, inputs):
+         dists1 = inputs[0]
+         dists2 = inputs[1]
+-        with tf.variable_scope("products") as scope:
++        with tf.compat.v1.variable_scope("products") as scope:
+             num_dist1 = int(dists1.shape[1])
+             num_dist2 = int(dists2.shape[1])
+ 
+@@ -234,7 +239,7 @@
+             # product == sum in log-domain
+             prod = dists1_expand + dists2_expand
+             # flatten out the outer product
+-            prod = tf.reshape(prod, [tf.shape(dists1)[0], num_dist1 * num_dist2])
++            prod = tf.reshape(prod, [tf.shape(input=dists1)[0], num_dist1 * num_dist2])
+ 
+         return prod
+ 
+@@ -279,8 +284,8 @@
+                 if args.sum_weight_l2:
+                     exp_weights = tf.exp(self.weights)
+                     weight_decay = tf.multiply(tf.nn.l2_loss(exp_weights), args.sum_weight_l2)
+-                    tf.add_to_collection("losses", weight_decay)
+-                    tf.add_to_collection("weight_losses", weight_decay)
++                    tf.compat.v1.add_to_collection("losses", weight_decay)
++                    tf.compat.v1.add_to_collection("weight_losses", weight_decay)
+             else:
+                 self.weights = self.params
+ 
+@@ -289,7 +294,7 @@
+         weights = self.weights
+ 
+         if self.args.linear_sum_weights:
+-            sums = tf.log(tf.matmul(tf.exp(prods), tf.squeeze(self.weights)))
++            sums = tf.math.log(tf.matmul(tf.exp(prods), tf.squeeze(self.weights)))
+         else:
+             prods = tf.expand_dims(prods, axis=-1)
+             if self.dropout_op is not None:
+@@ -299,26 +304,26 @@
+                     dropout_shape = [batch_size, prod_num, self.size]
+ 
+                     random_tensor = random_ops.random_uniform(dropout_shape, dtype=self.weights.dtype)
+-                    dropout_mask = tf.log(math_ops.floor(self.dropout_op + random_tensor))
++                    dropout_mask = tf.math.log(math_ops.floor(self.dropout_op + random_tensor))
+                     weights = weights + dropout_mask
+ 
+                 else:
+                     random_tensor = random_ops.random_uniform(prods.shape, dtype=prods.dtype)
+-                    dropout_mask = tf.log(math_ops.floor(self.dropout_op + random_tensor))
++                    dropout_mask = tf.math.log(math_ops.floor(self.dropout_op + random_tensor))
+                     prods = prods + dropout_mask
+ 
+-            sums = tf.reduce_logsumexp(prods + weights, axis=1)
++            sums = tf.reduce_logsumexp(input_tensor=prods + weights, axis=1)
+ 
+         return sums
+ 
+     def sample(self, inputs, seed=None):
+         inputs = tf.concat(inputs, 2)
+-        logits = tf.transpose(self.weights[0])
++        logits = tf.transpose(a=self.weights[0])
+         dist = dists.Categorical(logits=logits)
+ 
+         indices = dist.sample([inputs.shape[0]], seed=seed)
+         indices = tf.reshape(tf.tile(indices, [1, inputs.shape[1]]), [inputs.shape[0], self.size, inputs.shape[1]])
+-        indices = tf.transpose(indices, [0, 2, 1])
++        indices = tf.transpose(a=indices, perm=[0, 2, 1])
+ 
+         others = tf.meshgrid(tf.range(inputs.shape[1]), tf.range(inputs.shape[0]), tf.range(self.size))
+ 
+@@ -355,7 +360,7 @@
+         self.output_vector = None
+ 
+         # make the SPN...
+-        with tf.variable_scope(self.name) as scope:
++        with tf.compat.v1.variable_scope(self.name) as scope:
+             if region_graph is not None:
+                 self._make_spn_from_region_graph()
+             elif vector_list is not None:
+@@ -363,7 +368,7 @@
+             else:
+                 raise ValueError("Either vector_list or region_graph must not be None")
+ 
+-        self.variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=self.name)
++        self.variables = tf.compat.v1.get_collection(tf.compat.v1.GraphKeys.TRAINABLE_VARIABLES, scope=self.name)
+         self.num_dims = len(self.output_vector.scope)
+ 
+     def _make_spn_from_vector_list(self, vector_list, sess):
+@@ -380,7 +385,7 @@
+                         bernoulli_vector = BernoulliVector(
+                             scope, self.args, name, given_params=a_node.probs.eval(session=sess)
+                         )
+-                        init_new_vars_op = tf.initializers.variables([bernoulli_vector.probs], name="init")
++                        init_new_vars_op = tf.compat.v1.initializers.variables([bernoulli_vector.probs], name="init")
+                         sess.run(init_new_vars_op)
+                         self.vector_list[0].append(bernoulli_vector)
+                         node_to_vec[id(a_node)] = bernoulli_vector
+@@ -393,7 +398,7 @@
+                             given_means=a_node.means.eval(session=sess),
+                             given_stddevs=a_node.sigma_params.eval(session=sess),
+                         )
+-                        init_new_vars_op = tf.initializers.variables(
++                        init_new_vars_op = tf.compat.v1.initializers.variables(
+                             [gauss_vector.means, gauss_vector.sigma_params], name="init"
+                         )
+                         sess.run(init_new_vars_op)
+diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/train_mnist.py /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/train_mnist.py
+--- spn/experiments/RandomSPNs/train_mnist.py	2019-10-25 11:20:57.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/train_mnist.py	2020-02-04 15:22:34.000000000 -0300
+@@ -27,24 +27,24 @@
+     return (train_im, train_lab), (test_im, test_lab)
+ 
+ 
+-def train_spn(spn, train_im, train_lab=None, num_epochs=50, batch_size=100, sess=tf.Session()):
++def train_spn(spn, train_im, train_lab=None, num_epochs=50, batch_size=100, sess=tf.compat.v1.Session()):
+ 
+-    input_ph = tf.placeholder(tf.float32, [batch_size, train_im.shape[1]])
+-    label_ph = tf.placeholder(tf.int32, [batch_size])
++    input_ph = tf.compat.v1.placeholder(tf.float32, [batch_size, train_im.shape[1]])
++    label_ph = tf.compat.v1.placeholder(tf.int32, [batch_size])
+     marginalized = tf.zeros_like(input_ph)
+     spn_output = spn.forward(input_ph, marginalized)
+     if train_lab is not None:
+-        disc_loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_ph, logits=spn_output))
++        disc_loss = tf.reduce_mean(input_tensor=tf.nn.sparse_softmax_cross_entropy_with_logits(labels=label_ph, logits=spn_output))
+         label_idx = tf.stack([tf.range(batch_size), label_ph], axis=1)
+-        gen_loss = tf.reduce_mean(-1 * tf.gather_nd(spn_output, label_idx))
+-    very_gen_loss = -1 * tf.reduce_mean(tf.reduce_logsumexp(spn_output, axis=1))
++        gen_loss = tf.reduce_mean(input_tensor=-1 * tf.gather_nd(spn_output, label_idx))
++    very_gen_loss = -1 * tf.reduce_mean(input_tensor=tf.reduce_logsumexp(input_tensor=spn_output, axis=1))
+     loss = disc_loss
+-    optimizer = tf.train.AdamOptimizer()
++    optimizer = tf.compat.v1.train.AdamOptimizer()
+     train_op = optimizer.minimize(loss)
+     batches_per_epoch = train_im.shape[0] // batch_size
+ 
+     # sess.run(tf.variables_initializer(optimizer.variables()))
+-    sess.run(tf.global_variables_initializer())
++    sess.run(tf.compat.v1.global_variables_initializer())
+ 
+     for i in range(num_epochs):
+         num_correct = 0
+@@ -84,15 +84,15 @@
+     spn = RAT_SPN.RatSpn(10, region_graph=rg, name="obj-spn", args=args)
+     print("num_params", spn.num_params())
+ 
+-    sess = tf.Session()
+-    sess.run(tf.global_variables_initializer())
++    sess = tf.compat.v1.Session()
++    sess.run(tf.compat.v1.global_variables_initializer())
+ 
+     (train_im, train_labels), _ = load_mnist()
+     train_spn(spn, train_im, train_labels, num_epochs=3, sess=sess)
+ 
+     # dummy_input = np.random.normal(0.0, 1.2, [10, 9])
+     dummy_input = train_im[:5]
+-    input_ph = tf.placeholder(tf.float32, [None] + list(dummy_input.shape[1:]))
++    input_ph = tf.compat.v1.placeholder(tf.float32, [None] + list(dummy_input.shape[1:]))
+     output_tensor = spn.forward(input_ph)
+     tf_output = sess.run(output_tensor, feed_dict={input_ph: dummy_input})
+ 
+diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/site-packages/spn/gpu/TensorFlow.py
+--- spn/gpu/TensorFlow.py	2019-11-01 10:10:05.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/gpu/TensorFlow.py	2020-02-04 16:33:40.567003875 -0300
+@@ -19,15 +19,17 @@
+ 
+ logger = logging.getLogger(__name__)
+ 
++tf_major_version = int(tf.version.VERSION[0])
++tf.compat.v1.disable_eager_execution()
+ 
+ def log_sum_to_tf_graph(node, children, data_placeholder=None, variable_dict=None, log_space=True, dtype=np.float32):
+     assert log_space
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         softmaxInverse = np.log(node.weights / np.max(node.weights)).astype(dtype)
+-        tfweights = tf.nn.softmax(tf.get_variable("weights", initializer=tf.constant(softmaxInverse)))
++        tfweights = tf.nn.softmax(tf.compat.v1.get_variable("weights", initializer=tf.constant(softmaxInverse)))
+         variable_dict[node] = tfweights
+         childrenprob = tf.stack(children, axis=1)
+-        return tf.reduce_logsumexp(childrenprob + tf.log(tfweights), axis=1)
++        return tf.reduce_logsumexp(input_tensor=childrenprob + tf.math.log(tfweights), axis=1)
+ 
+ 
+ def tf_graph_to_sum(node, tfvar):
+@@ -36,12 +38,12 @@
+ 
+ def log_prod_to_tf_graph(node, children, data_placeholder=None, variable_dict=None, log_space=True, dtype=np.float32):
+     assert log_space
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         return tf.add_n(children)
+ 
+ 
+ def histogram_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         inps = np.arange(int(max(node.breaks))).reshape((-1, 1))
+         tmpscope = node.scope[0]
+         node.scope[0] = 0
+@@ -72,11 +74,11 @@
+ 
+ 
+ def spn_to_tf_graph(node, data, batch_size=None, node_tf_graph=_node_log_tf_graph, log_space=True, dtype=None):
+-    tf.reset_default_graph()
++    tf.compat.v1.reset_default_graph()
+     if not dtype:
+         dtype = data.dtype
+     # data is a placeholder, with shape same as numpy data
+-    data_placeholder = tf.placeholder(data.dtype, (batch_size, data.shape[1]))
++    data_placeholder = tf.compat.v1.placeholder(data.dtype, (batch_size, data.shape[1]))
+     variable_dict = {}
+     tf_graph = eval_spn_bottom_up(
+         node,
+@@ -95,7 +97,7 @@
+     for n, tfvars in variable_dict.items():
+         tensors.append(tfvars)
+ 
+-    variable_list = tf.get_default_session().run(tensors)
++    variable_list = tf.compat.v1.get_default_session().run(tensors)
+ 
+     for i, (n, tfvars) in enumerate(variable_dict.items()):
+         tf_graph_to_node[type(n)](n, variable_list[i])
+@@ -103,7 +105,7 @@
+ 
+ def likelihood_loss(tf_graph):
+     # minimize negative log likelihood
+-    return -tf.reduce_sum(tf_graph)
++    return -tf.reduce_sum(input_tensor=tf_graph)
+ 
+ 
+ def optimize_tf(
+@@ -111,7 +113,7 @@
+     data: np.ndarray,
+     epochs=1000,
+     batch_size: int = None,
+-    optimizer: tf.train.Optimizer = None,
++    optimizer: tf.compat.v1.train.Optimizer = None,
+     return_loss=False,
+ ) -> Union[Tuple[Node, List[float]], Node]:
+     """
+@@ -148,14 +150,14 @@
+     tf_graph, variable_dict, data_placeholder, data, epochs=1000, batch_size=None, optimizer=None
+ ) -> List[float]:
+     if optimizer is None:
+-        optimizer = tf.train.GradientDescentOptimizer(0.001)
+-    loss = -tf.reduce_sum(tf_graph)
++        optimizer = tf.compat.v1.train.GradientDescentOptimizer(0.001)
++    loss = -tf.reduce_sum(input_tensor=tf_graph)
+     opt_op = optimizer.minimize(loss)
+ 
+     # Collect loss
+     loss_list = []
+-    with tf.Session() as sess:
+-        sess.run(tf.global_variables_initializer())
++    with tf.compat.v1.Session() as sess:
++        sess.run(tf.compat.v1.global_variables_initializer())
+         if not batch_size:
+             batch_size = data.shape[0]
+         batches_per_epoch = data.shape[0] // batch_size
+@@ -189,26 +191,26 @@
+ 
+ 
+ def eval_tf_graph(tf_graph, data_placeholder, data, save_graph_path=None):
+-    with tf.Session() as sess:
+-        sess.run(tf.global_variables_initializer())
++    with tf.compat.v1.Session() as sess:
++        sess.run(tf.compat.v1.global_variables_initializer())
+         result = sess.run(tf_graph, feed_dict={data_placeholder: data})
+ 
+         if save_graph_path is not None:
+-            tf.summary.FileWriter(save_graph_path, sess.graph)
++            tf.compat.v1.summary.FileWriter(save_graph_path, sess.graph)
+ 
+         return result.reshape(-1, 1)
+ 
+ 
+ def eval_tf_trace(spn, data, log_space=True, save_graph_path=None):
+-    data_placeholder = tf.placeholder(data.dtype, data.shape)
++    data_placeholder = tf.compat.v1.placeholder(data.dtype, data.shape)
+     import time
+ 
+     tf_graph = spn_to_tf_graph(spn, data_placeholder, log_space)
+     run_metadata = None
+-    with tf.Session() as sess:
+-        run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
+-        run_metadata = tf.RunMetadata()
+-        sess.run(tf.global_variables_initializer())
++    with tf.compat.v1.Session() as sess:
++        run_options = tf.compat.v1.RunOptions(trace_level=tf.compat.v1.RunOptions.FULL_TRACE)
++        run_metadata = tf.compat.v1.RunMetadata()
++        sess.run(tf.compat.v1.global_variables_initializer())
+ 
+         start = time.perf_counter()
+         result = sess.run(tf_graph, feed_dict={data_placeholder: data}, options=run_options, run_metadata=run_metadata)
+@@ -230,7 +232,7 @@
+         return result, elapsed
+ 
+         if save_graph_path is not None:
+-            summary_fw = tf.summary.FileWriter(save_graph_path, sess.graph)
++            summary_fw = tf.compat.v1.summary.FileWriter(save_graph_path, sess.graph)
+             if trace:
+                 summary_fw.add_run_metadata(run_metadata, "run")
+ 
+diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.py /usr/lib/python3.8/site-packages/spn/structure/leaves/parametric/Tensorflow.py
+--- spn/structure/leaves/parametric/Tensorflow.py	2019-03-22 07:35:30.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/structure/leaves/parametric/Tensorflow.py	2020-02-04 15:51:06.150432240 -0300
+@@ -6,7 +6,7 @@
+ 
+ import tensorflow as tf
+ 
+-from spn.gpu.TensorFlow import add_node_to_tf_graph, add_tf_graph_to_node
++from spn.gpu.TensorFlow import add_node_to_tf_graph, add_tf_graph_to_node, tf_major_version
+ from spn.structure.leaves.parametric.Parametric import (
+     Gaussian,
+     Categorical,
+@@ -23,12 +23,12 @@
+ 
+ 
+ def gaussian_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+-        mean = tf.get_variable("mean", initializer=node.mean, dtype=dtype)
+-        stdev = tf.get_variable("stdev", initializer=node.stdev, dtype=dtype)
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++        mean = tf.compat.v1.get_variable("mean", initializer=node.mean, dtype=dtype)
++        stdev = tf.compat.v1.get_variable("stdev", initializer=node.stdev, dtype=dtype)
+         variable_dict[node] = (mean, stdev)
+         stdev = tf.maximum(stdev, 0.001)
+-        dist = tf.distributions.Normal(loc=mean, scale=stdev)
++        dist = tf.compat.v1.distributions.Normal(loc=mean, scale=stdev)
+         if log_space:
+             return dist.log_prob(data_placeholder[:, node.scope[0]])
+ 
+@@ -36,11 +36,11 @@
+ 
+ 
+ def exponential_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+-        l = tf.get_variable("rate", initializer=node.l, dtype=dtype)
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++        l = tf.compat.v1.get_variable("rate", initializer=node.l, dtype=dtype)
+         variable_dict[node] = l
+         l = tf.maximum(l, 0.001)
+-        dist = tf.distributions.Exponential(rate=l)
++        dist = tf.compat.v1.distributions.Exponential(rate=l)
+         if log_space:
+             return dist.log_prob(data_placeholder[:, node.scope[0]])
+ 
+@@ -48,10 +48,14 @@
+ 
+ 
+ def poisson_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+-        mean = tf.maximum(tf.get_variable("lambda", initializer=node.mean, dtype=dtype), 0.001)
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++        mean = tf.maximum(tf.compat.v1.get_variable("lambda", initializer=node.mean, dtype=dtype), 0.001)
+         variable_dict[node] = mean
+-        dist = tf.contrib.distributions.Poisson(rate=mean)
++        if tf_major_version == 1:
++            dist = tf.contrib.distributions.Poisson(rate=mean)
++        else:
++            import tensorflow_probability as tfp
++            dist = tfp.distributions.Poisson(rate=mean)
+         if log_space:
+             return dist.log_prob(data_placeholder[:, node.scope[0]])
+ 
+@@ -59,10 +63,10 @@
+ 
+ 
+ def bernoulli_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+-        p = tf.minimum(tf.maximum(tf.get_variable("p", initializer=node.p, dtype=dtype), 0.00000001), 0.9999999)
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++        p = tf.minimum(tf.maximum(tf.compat.v1.get_variable("p", initializer=node.p, dtype=dtype), 0.00000001), 0.9999999)
+         variable_dict[node] = p
+-        dist = tf.distributions.Bernoulli(probs=p)
++        dist = tf.compat.v1.distributions.Bernoulli(probs=p)
+         if log_space:
+             return dist.log_prob(data_placeholder[:, node.scope[0]])
+ 
+@@ -70,11 +74,11 @@
+ 
+ 
+ def gamma_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+-        alpha = tf.maximum(tf.get_variable("alpha", initializer=node.alpha, dtype=dtype), 0.001)
+-        beta = tf.maximum(tf.get_variable("beta", initializer=node.beta, dtype=dtype), 0.001)
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++        alpha = tf.maximum(tf.compat.v1.get_variable("alpha", initializer=node.alpha, dtype=dtype), 0.001)
++        beta = tf.maximum(tf.compat.v1.get_variable("beta", initializer=node.beta, dtype=dtype), 0.001)
+         variable_dict[node] = (alpha, beta)
+-        dist = tf.distributions.Gamma(concentration=alpha, rate=beta)
++        dist = tf.compat.v1.distributions.Gamma(concentration=alpha, rate=beta)
+         if log_space:
+             return dist.log_prob(data_placeholder[:, node.scope[0]])
+ 
+@@ -82,14 +86,19 @@
+ 
+ 
+ def lognormal_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+-        mean = tf.get_variable("mean", initializer=node.mean, dtype=dtype)
+-        stdev = tf.get_variable("stdev", initializer=node.stdev, dtype=dtype)
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++        mean = tf.compat.v1.get_variable("mean", initializer=node.mean, dtype=dtype)
++        stdev = tf.compat.v1.get_variable("stdev", initializer=node.stdev, dtype=dtype)
+         variable_dict[node] = (mean, stdev)
+         stdev = tf.maximum(stdev, 0.001)
+-        dist = tf.contrib.distributions.TransformedDistribution(
+-            distribution=tf.distributions.Normal(loc=mean, scale=stdev),
+-            bijector=tf.contrib.distributions.bijectors.Exp(),
++        if tf_major_version == 1:
++          import tf.contrib.distributions as dists
++        else:
++          import tensorflow_probability as tfp
++          from tensorflow_probability import distributions as dists
++        dist = dists.TransformedDistribution(
++            distribution=tf.compat.v1.distributions.Normal(loc=mean, scale=stdev),
++            bijector=tfp.bijectors.Exp(),
+             name="LogNormalDistribution",
+         )
+         if log_space:
+@@ -99,15 +108,15 @@
+ 
+ 
+ def categorical_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
+-    with tf.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
++    with tf.compat.v1.variable_scope("%s_%s" % (node.__class__.__name__, node.id)):
+         p = np.array(node.p, dtype=dtype)
+         softmaxInverse = np.log(p / np.max(p)).astype(dtype)
+-        probs = tf.nn.softmax(tf.get_variable("p", initializer=tf.constant(softmaxInverse)))
++        probs = tf.nn.softmax(tf.compat.v1.get_variable("p", initializer=tf.constant(softmaxInverse)))
+         variable_dict[node] = probs
+         if log_space:
+-            return tf.distributions.Categorical(probs=probs).log_prob(data_placeholder[:, node.scope[0]])
++            return tf.compat.v1.distributions.Categorical(probs=probs).log_prob(data_placeholder[:, node.scope[0]])
+ 
+-        return tf.distributions.Categorical(probs=probs).prob(data_placeholder[:, node.scope[0]])
++        return tf.compat.v1.distributions.Categorical(probs=probs).prob(data_placeholder[:, node.scope[0]])
+ 
+ 
+ def tf_graph_to_gaussian(node, tfvar):
+diff -x '*.pyc' -x __pycache__ -Naur spn/tests/test_rat_spn.py /usr/lib/python3.8/site-packages/spn/tests/test_rat_spn.py
+--- spn/tests/test_rat_spn.py	2018-12-21 16:34:26.000000000 -0200
++++ /usr/lib/python3.8/site-packages/spn/tests/test_rat_spn.py	2020-02-04 15:22:34.000000000 -0300
+@@ -10,7 +10,7 @@
+ class TestRatSpn(unittest.TestCase):
+     def test_inference_results(self):
+         np.random.seed(123)
+-        tf.set_random_seed(123)
++        tf.compat.v1.set_random_seed(123)
+ 
+         num_dims = 20
+ 
+@@ -22,10 +22,10 @@
+         args.normalized_sums = True
+         spn = RAT_SPN.RatSpn(10, region_graph=rg, name="obj-spn", args=args)
+ 
+-        sess = tf.Session()
+-        sess.run(tf.global_variables_initializer())
++        sess = tf.compat.v1.Session()
++        sess.run(tf.compat.v1.global_variables_initializer())
+         dummy_input = np.random.normal(0.0, 1.2, [10, num_dims])
+-        input_ph = tf.placeholder(tf.float32, [10, num_dims])
++        input_ph = tf.compat.v1.placeholder(tf.float32, [10, num_dims])
+         output_tensor = spn.forward(input_ph)
+         tf_output = sess.run(output_tensor, feed_dict={input_ph: dummy_input})
+ 
+diff -x '*.pyc' -x __pycache__ -Naur spn/tests/test_tensorflow.py /usr/lib/python3.8/site-packages/spn/tests/test_tensorflow.py
+--- spn/tests/test_tensorflow.py	2019-03-22 07:35:30.000000000 -0300
++++ /usr/lib/python3.8/site-packages/spn/tests/test_tensorflow.py	2020-02-04 15:22:34.000000000 -0300
+@@ -47,8 +47,8 @@
+ 
+         tf_graph, data_placeholder, variable_dict = spn_to_tf_graph(spn_copy, data, 1)
+ 
+-        with tf.Session() as sess:
+-            sess.run(tf.global_variables_initializer())
++        with tf.compat.v1.Session() as sess:
++            sess.run(tf.compat.v1.global_variables_initializer())
+             tf_graph_to_spn(variable_dict)
+ 
+         str_val = spn_to_str_equation(spn)
+@@ -109,10 +109,10 @@
+ 
+         loss = likelihood_loss(tf_graph)
+ 
+-        output = tf.train.AdamOptimizer(0.001).minimize(loss)
++        output = tf.compat.v1.train.AdamOptimizer(0.001).minimize(loss)
+ 
+-        with tf.Session() as session:
+-            session.run(tf.global_variables_initializer())
++        with tf.compat.v1.Session() as session:
++            session.run(tf.compat.v1.global_variables_initializer())
+             for step in range(50):
+                 session.run(output, feed_dict={data_placeholder: data})
+                 # print("loss:", step, session.run(-loss, feed_dict={data_placeholder: data}))

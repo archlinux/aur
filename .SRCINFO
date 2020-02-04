@@ -1,7 +1,7 @@
 pkgbase = python-spflow
 	pkgdesc = Sum-Product Flow: An Easy and Extensible Library for Sum-Product Networks
 	pkgver = 0.0.39
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/SPFlow/SPFlow
 	arch = any
 	license = Apache 2.0
