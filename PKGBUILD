@@ -9,8 +9,8 @@ _pkgbase=gdal
 provides=('gdal')
 conflicts=('gdal')
 pkgname=('gdal-hdf4' 'python-gdal-hdf4')
-pkgver=3.0.2
-pkgrel=1.0
+pkgver=3.0.4
+pkgrel=2.0
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('x86_64')
 url="http://www.gdal.org/"
@@ -25,7 +25,7 @@ options=('!emptydirs')
 changelog=$pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         gdal-perl-vendor.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/gdal-perl-vendor.patch?h=packages/gdal)
-sha256sums=('c3765371ce391715c8f28bd6defbc70b57aa43341f6e94605f04fe3c92468983'
+sha256sums=('5569a4daa1abcbba47a9d535172fc335194d9214fdb96cd0f139bb57329ae277'
             '2103b98f2f15954f042d5620658b30d703125927bde2e5eb671c5facb6c2f5ed')
 
 prepare() {
