@@ -1,4 +1,4 @@
-# Maintainer: Poscat <poscat At mail Dot poscat Dot moe>
+# Maintainer: Sylwek  <skmtrn At gmail dot com> 
 
 pkgname=caddy2
 pkgver=beta.13
