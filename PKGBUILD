@@ -5,8 +5,8 @@
 
 pkgname=anarchism
 pkgver=15.3
-pkgrel=1
-_debpkgrel=1
+pkgrel=2
+_debpkgrel=2
 pkgdesc='Source of information regarding Anarchist (libertarian socialist) theory and practice.'
 arch=(any)
 license=(FDL)
@@ -15,7 +15,7 @@ options=(docs)
 depends=(xdg-utils)
 makedepends=(librsvg)
 source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/$pkgname\_$pkgver-$_debpkgrel\_all.deb)
-sha256sums=('a6b7299c14b0fa4e88918172987a0516cbaeb13f0a02a2a494b156892337a9b4')
+sha256sums=('0c4a9c593c81c936ff92d271ee7805adcdbea3dadd8616d14a5aab233137098d')
 
 build() {
   cd $srcdir
