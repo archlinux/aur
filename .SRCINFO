@@ -1,0 +1,47 @@
+pkgbase = nautilus-pdf-tools-git
+	pkgver = 1.2.9.0extras19.06.7.r95.2c2eb1f
+	pkgrel = 1
+	url = https://github.com/atareao/nautilus-pdf-tools
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/atareao/nautilus-pdf-tools.git
+	sha256sums = SKIP
+
+pkgname = nautilus-pdf-tools-git
+	pkgdesc = Tools to work with PDF files from Nautilus
+	depends = python-nautilus
+	depends = python-cairo
+	depends = python-pillow
+	depends = gtk3
+	depends = poppler
+	depends = python-pypdf2
+	depends = python-sh
+	provides = nautilus-pdf-tools
+	conflicts = nautilus-pdf-tools
+
+pkgname = nemo-pdf-tools-git
+	pkgdesc = Tools to work with PDF files from Nemo
+	depends = nemo-python
+	depends = python-cairo
+	depends = python-pillow
+	depends = gtk3
+	depends = poppler
+	depends = python-pypdf2
+	depends = python-sh
+	provides = nemo-pdf-tools
+	conflicts = nemo-pdf-tools
+
+pkgname = caja-pdf-tools-git
+	pkgdesc = Tools to work with PDF files from Caja
+	depends = python-caja
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-pillow
+	depends = gtk3
+	depends = poppler
+	depends = python-pypdf2
+	depends = python-sh
+	provides = caja-pdf-tools
+	conflicts = caja-pdf-tools
+
