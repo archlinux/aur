@@ -43,7 +43,7 @@
 
 
 pkgname=zoneminder
-pkgver=1.34.1
+pkgver=1.34.2
 pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
@@ -174,7 +174,7 @@ package() {
     # fcgiwrap-multiwatch service
     install -Dm644 $srcdir/fcgiwrap-multiwatch.service      $pkgdir/usr/lib/systemd/system/fcgiwrap-multiwatch.service
     
-    # zoneminder-setup.sh
+    # optional install script
     install -Dm755 $srcdir/zmsetup.sh                       $pkgdir/usr/bin/zmsetup.sh
     
     # logrotate conf file
