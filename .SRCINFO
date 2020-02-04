@@ -1,0 +1,18 @@
+pkgbase = ruby-mercenary-0.3
+	pkgdesc = Easier way to build your command-line scripts
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/jekyll/mercenary
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	provides = ruby-mercenary=0.3.6
+	conflicts = ruby-mercenary=0.3.6
+	options = !emptydirs
+	source = ruby-mercenary-0.3-0.3.6.tar.gz::https://github.com/jekyll/mercenary/archive/v0.3.6.tar.gz
+	sha256sums = 61c10e3a54c526b9a6f41af27ec6ca540d37d34a5ad413d615d3342dcaaa518c
+	sha512sums = d8759a8f27611b6bc54202e51f06a557fe7b289a262bf692076a3b3d347d45cd65e2a6a9d080e331714ef8df50b200f56b3caab5d4bc32804e8cb5bbe43ebc2e
+
+pkgname = ruby-mercenary-0.3
+
