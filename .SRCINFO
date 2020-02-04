@@ -1,6 +1,6 @@
 pkgbase = mame-git
 	pkgdesc = A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)
-	pkgver = 0.210.r80.g0660656754b
+	pkgver = 0.218.r0.g0e2a252d309
 	pkgrel = 1
 	url = https://www.mamedev.org/
 	arch = x86_64
@@ -19,12 +19,17 @@ pkgbase = mame-git
 	depends = pugixml
 	depends = portmidi
 	depends = portaudio
+	depends = flac
 	provides = mame
 	conflicts = mame
 	source = git+https://github.com/mamedev/mame.git
 	source = mame.sh
+	source = mame.desktop
+	source = mame.svg
 	sha256sums = SKIP
 	sha256sums = ee1c59bafc5e5441e99fa4c58108a3e18048e60672f34de865c8a5a976094dba
+	sha256sums = 6beb883c8efed5b7466d43d0658b47c3e4a9928b5d0245ed56446b230e28306b
+	sha256sums = 17c442c933d764175e4ce1de50a80c0c2ddd5d733caf09c3cd5e6ba697ac43f4
 
 pkgname = mame-git
 

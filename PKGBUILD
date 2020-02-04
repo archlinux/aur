@@ -1,21 +1,25 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mame-git
 _srcname=mame
-pkgver=0.210.r80.g0660656754b
+pkgver=0.218.r0.g0e2a252d309
 pkgrel=1
 pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
 url='https://www.mamedev.org/'
 license=('GPL')
 arch=('x86_64')
-depends=('sdl2_ttf' 'qt5-base' 'lua' 'libutf8proc' 'pugixml' 'portmidi' 'portaudio')
+depends=('sdl2_ttf' 'qt5-base' 'lua' 'libutf8proc' 'pugixml' 'portmidi' 'portaudio' 'flac')
 makedepends=('git' 'nasm' 'python' 'asio' 'rapidjson' 'glm' 'libxinerama')
 provides=('mame')
 conflicts=('mame')
 source=('git+https://github.com/mamedev/mame.git'
-        'mame.sh')
+        'mame.sh'
+        'mame.desktop'
+        'mame.svg')
 sha256sums=('SKIP'
-            'ee1c59bafc5e5441e99fa4c58108a3e18048e60672f34de865c8a5a976094dba')
+            'ee1c59bafc5e5441e99fa4c58108a3e18048e60672f34de865c8a5a976094dba'
+            '6beb883c8efed5b7466d43d0658b47c3e4a9928b5d0245ed56446b230e28306b'
+            '17c442c933d764175e4ce1de50a80c0c2ddd5d733caf09c3cd5e6ba697ac43f4')
 
 prepare() {
     cd "$_srcname"
@@ -60,6 +64,10 @@ package() {
     # extra bits
     install -D -m644 src/osd/modules/opengl/shader/glsl*.*h -t "${pkgdir}/usr/lib/mame/shader/"
     cp -a {artwork,bgfx,plugins,language,ctrlr,keymaps,hash}   "${pkgdir}/usr/lib/mame/"
+    
+    # desktop file and icon
+    install -D -m644 "${srcdir}/mame.desktop" -t "${pkgdir}/usr/share/applications"
+    install -D -m644 "${srcdir}/mame.svg"     -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     
     # documentation
     install -d -m0755 "${pkgdir}/usr/share/doc"
