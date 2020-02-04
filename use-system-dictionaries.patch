@@ -1,7 +1,7 @@
 diff -ura package.orig/src/scripts/spellChecking.js package.new/src/scripts/spellChecking.js
---- package.orig/src/scripts/spellChecking.js	2020-01-31 14:06:58.340723019 +0100
-+++ package.new/src/scripts/spellChecking.js	2020-01-31 14:08:23.626144739 +0100
-@@ -113,12 +113,7 @@
+--- package.orig/src/scripts/spellChecking.js	2020-02-04 20:01:17.366294000 +0100
++++ package.new/src/scripts/spellChecking.js	2020-02-04 20:02:48.469827846 +0100
+@@ -117,11 +117,7 @@
  export const setupSpellChecking = async () => {
  	const embeddedDictionaries = getAvailableDictionaries();
  
@@ -10,8 +10,7 @@ diff -ura package.orig/src/scripts/spellChecking.js package.new/src/scripts/spel
 -		remote.app.getAppPath().endsWith('app.asar') ? '..' : '.',
 -		'dictionaries',
 -	);
--
-+	dictionariesPath = '/usr/share/qt/qtwebengine_dictionaries'
- 	const installedDictionaries = (await fs.promises.readdir(dictionariesPath, { encoding: 'utf8' }))
- 		.filter((filename) => ['.bdic'].includes(path.extname(filename).toLowerCase()))
- 		.map((filename) => path.basename(filename, path.extname(filename)).replace(/-/, '_'))
++	dictionariesPath = '/usr/share/qt/qtwebengine_dictionaries';
+ 
+ 	let installedDictionaries = [];
+ 	if (process.platform !== 'darwin') {
