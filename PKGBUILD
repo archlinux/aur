@@ -1,6 +1,6 @@
 # Maintainer: Spider.007 <aur@spider007.net>
 pkgname=graylog
-pkgver=3.1.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Graylog is an open source syslog implementation that stores your logs in ElasticSearch and MongoDB"
 arch=('any')
@@ -9,6 +9,7 @@ license=(GPL)
 depends=('java-runtime-headless=8')
 optdepends=('elasticsearch' mongodb)
 install=graylog.install
+changelog=UPGRADING.rst
 backup=(
 	etc/graylog/server/server.conf
 )
@@ -17,9 +18,14 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('dc49be8d915a4b0542743719d9dd3183864b3497c09fc56af78296d904f2f2fc'
+
+sha256sums=('3f65c219a510d4ee61ddf6cf999d44e3f46b455c5fcdd9b754c1b753c5a41089'
             'SKIP'
             'SKIP')
+
+prepare() {
+	curl -O https://raw.githubusercontent.com/Graylog2/graylog2-server/3.2/UPGRADING.rst
+}
 
 package() {
 	cd "$pkgdir"
