@@ -1,9 +1,8 @@
 # Contributer: Sebastian Wilzbach <seb [at] wilzbach [dot] me>
 # Maintainer: Bug <bug2000@gmail.com>
 pkgname=tsv-utils
-_pkgname=tsv-utils-dlang
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line tools for large, tabular data files. Filtering, statistics, sampling, joins and more."
 arch=('i686' 'x86_64')
 groups=('dlang')
@@ -23,13 +22,13 @@ _bin_files=(
 
 build ()
 {
-    cd $srcdir/$_pkgname
+    cd $srcdir/$pkgname
     make DCOMPILER=ldc2
 }
 
 package ()
 {
-    cd $srcdir/$_pkgname
+    cd $srcdir/$pkgname
     mkdir -p $pkgdir/usr/bin
     for file in "${_bin_files[@]}"; do
         install -m755 bin/$file $pkgdir/usr/bin/$file
