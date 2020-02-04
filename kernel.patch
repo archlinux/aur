@@ -3,7 +3,7 @@ diff -ur old/drivers/input/mouse/Kconfig new/drivers/input/mouse/Kconfig
 +++ new/drivers/input/mouse/Kconfig
 @@ -101,6 +101,15 @@
  
-          If unsure, say Y.
+ 	  If unsure, say Y.
  
 +config MOUSE_PS2_SYNAPTICS_LED
 +	bool "Support embedded LED on Synaptics devices"
