@@ -9,14 +9,14 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('!493' '!575' '!579' '!719' '!724' '!762' '!983' '!1000')
-_merge_requests_to_use=('!493' '!575' '!579' '!719' '!762' '!983' '!1000') # Saren's pick
-# _merge_requests_to_use=('!575' '!983' '!1000')
+# _merge_requests_to_use=('!493' '!575' '!579' '!719' '!762' '!983' '!1000') # Saren's pick
+_merge_requests_to_use=('!575' '!983' '!1000')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
 pkgver=3.34.3+1+g78a45e181
-pkgrel=2
+pkgrel=3
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
