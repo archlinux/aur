@@ -18,7 +18,7 @@ source=("git+$url.git"
         "nft-blacklist.timer")
 md5sums=('SKIP'
          'ec4f4ff03f01671e52edd98ca6fbae9f'
-         '80203a4db69a57c36cf42ae9478ccce9'
+         '3d02eed6f5453e6c5693f7f9a4f503da'
          '34be430faae329975393a9dcd34dea6c')
 
 pkgver() {

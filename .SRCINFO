@@ -17,7 +17,7 @@ pkgbase = nft-blacklist-git
 	source = nft-blacklist.timer
 	md5sums = SKIP
 	md5sums = ec4f4ff03f01671e52edd98ca6fbae9f
-	md5sums = 80203a4db69a57c36cf42ae9478ccce9
+	md5sums = 3d02eed6f5453e6c5693f7f9a4f503da
 	md5sums = 34be430faae329975393a9dcd34dea6c
 
 pkgname = nft-blacklist-git
