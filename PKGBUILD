@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.4.17
+pkgver=5.5.2
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -69,47 +69,31 @@ url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
 makedepends=(bc kmod libelf)
 options=('!strip')
-_ckpatch="patch-5.4-ck${_ckpatchversion}"
-_gcc_more_v='20190822'
+_ckpatch="patch-5.5-ck${_ckpatchversion}"
+_gcc_more_v='20191217'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  "http://ck.kolivas.org/patches/5.0/5.4/5.4-ck${_ckpatchversion}/$_ckpatch.xz"
-0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
-0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
-0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
-0011-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
-0012-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
+  "http://ck.kolivas.org/patches/5.0/5.5/5.5-ck${_ckpatchversion}/$_ckpatch.xz"
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0003-ALSA-hda-Fix-DP-MST-support-for-NVIDIA-codecs.patch
+  0004-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
+sha256sums=('24f5f383b0337374f160723bcf3bf679c75cb5bd3fd0824a56998e47c04ef99e'
             'SKIP'
             'eb95e2f45dc868b097136d75077b8861b85fea109de78bff253fbf98162e5cb6'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
-            'f445eea4d0ec2015a25f1ad625c848f4f2252099795966fa4105e0aa29674c5c'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
-            'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
-            '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
-            '9940f9ebf8af70f2c1684276d86a46d3b0c07fd61ff23f66235b4a1e879b2180'
-            'f48c9a8a286901ce12eefe11fbd830fdede08afac8911ab887f7d89c687421f0'
-            '194b893c18118be08c5d42762f5f1926953fc7a5903f06f1d39f893542d377a9'
-            '2234444ae52bf3810e13bdb4c0ab6d808eb9fe6cb003c2b78be04a987ef12388'
-            '5a1584d26c7d046fa0398b56980f628b4194dff95d0916e9527dbea7299e7765'
-            'de34a0a82ce40de4394ad9d02421a53ac04c5e0b36a79b5f937fdebc93ac7bfb'
-            '1a3073cbbc5d4e3a7970fc92706a5ec5729ea4a5cffb94af8343e046881cabf1'
-            'bb376024ac7a13108064af60150af8746b57ebb72df2f464fddc037a14c9faff'
-            '7e6b2c7f919dc28d1144fe8d5cc08f9455ba65a32577944cf86d9c278fff6d20')
+            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
+            '37a9d61e8a0b5a73992e1397c3a9cc947d39e715f205f3c665eb157b96d58f98'
+            '7c66fd00db7147d62274edc0cf0276fcca1036892a354b31deb20c424462cf2c'
+            'db6aa91dd446a021945f8671c70cafbfc743a3cba7f0d0f4b02bde6cf98c376e'
+            '3299c34452dbaa480e253e03d3f4bd44805ac732fd4c3e7ebbd228bf51229419'
+            '84d3ab282a371f616fc7be5089ec71ece1e193700afe4e77c86ce50ce579e253')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -155,8 +139,8 @@ prepare() {
   make olddefconfig
 
   # https://github.com/graysky2/kernel_gcc_patch
-  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
+  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
