@@ -1,7 +1,7 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
 	pkgver = 8.3.1
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
