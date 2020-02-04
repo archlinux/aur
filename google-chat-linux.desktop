@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Google Chat Linux
+Exec=env ELECTRON_DISABLE_SANDBOX=true NODE_OPTIONS="--no-force-async-hooks-checks" /opt/google-chat-linux/google-chat-linux %U
+Terminal=false
+Type=Application
+Icon=google-chat-linux
+StartupWMClass=google-chat-linux
+Comment=Google Hangouts Chat unofficial linux app
+Categories=Network;InstantMessaging;
