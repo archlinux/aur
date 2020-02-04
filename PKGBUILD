@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju at juju2143 dot ca>
 pkgname=cemu-git
-pkgver=0.9dev
+pkgver=2.0dev.r2072.0b6f6b06
 pkgrel=1
 pkgdesc="An open-source third-party TI-84 Plus CE / TI-83 Premium CE calculator emulator"
 arch=("i686" "x86_64")
@@ -22,10 +22,13 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}/gui/qt"
-	printf "%s.r%s.%s" "$(cat CEmu.pro | grep CEMU_VERSION | grep -o '[^=]*$' | tail -n1 |sed 's#\\\\\\"##g'|sed 's#_$$GIT_VERSION##g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(cat CEmu.pro | grep 'CEMU_VERSION =' | grep -o '[^=]*$' | tail -n1 |sed 's# ##g'|sed 's#^v##g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
+	cd "$srcdir/${pkgname%-git}"
+	git submodule init
+	git submodule update
 	cd "$srcdir/${pkgname%-git}/gui/qt"
 	qmake-qt5 -r CEmu.pro
 	make
