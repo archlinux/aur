@@ -1,7 +1,7 @@
 # Maintainer: Akaash Suresh <https://github.com/Curry>
 pkgname=qmk-git
-pkgver=0.0.26
-pkgrel=3
+pkgver=0.0.27.r0.g1a723e4
+pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
 url="https://github.com/qmk/qmk_cli"
@@ -36,8 +36,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_branch"
-  echo $(git describe --tags)
-  
+  echo $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 build() {
