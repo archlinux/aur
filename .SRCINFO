@@ -1,7 +1,7 @@
 pkgbase = rust-analyzer-vscode-git
 	pkgdesc = An experimental Rust compiler front-end for IDEs (VSCode installation).
 	pkgver = r7300.c9e1aab88
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rust-analyzer/rust-analyzer/
 	arch = any
 	license = MIT
