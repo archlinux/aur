@@ -5,6 +5,7 @@ pkgbase = touchpad-indicator-git
 	url = https://github.com/atareao/Touchpad-Indicator
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = gdk-pixbuf2
 	depends = libappindicator-gtk3
 	depends = libnotify

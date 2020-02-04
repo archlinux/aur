@@ -8,6 +8,7 @@ url="https://github.com/atareao/Touchpad-Indicator"
 license=('GPL3')
 depends=('gdk-pixbuf2' 'libappindicator-gtk3' 'libnotify' 'lsb-release' 'librsvg'
          'python-xlib' 'python-pyudev' 'python-dbus' 'python-evdev' 'xorg-xinput')
+makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/atareao/Touchpad-Indicator.git")
