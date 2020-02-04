@@ -1,13 +1,13 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=rust-analyzer-vscode-git
-pkgver=r5799.0e61ba37
+pkgver=r7300.c9e1aab88
 pkgrel=1
 pkgdesc='An experimental Rust compiler front-end for IDEs (VSCode installation).'
 arch=('any')
 url='https://github.com/rust-analyzer/rust-analyzer/'
 license=('MIT')
 depends=('rustup' 'code')
-makedepends=('git' 'npm')
+makedepends=('git' 'npm>=6.10.0')
 provides=("${pkgname}")
 conflicts=("${pkgname}" 'rust-analyzer-git')
 source=("${pkgname}::git+${url}")
@@ -19,19 +19,13 @@ pkgver() {
 
 build() {
     cd $pkgname
+    rustup update
     rustup install stable
     cargo +stable build --release
-
-    cd ./editors/code
-    npm install
+    rustup component add rust-src
 }
 
 package() {
     cd $pkgname
-    install -D -m755 "$srcdir/$pkgname/target/release/ra_lsp_server" "$pkgdir/usr/bin/ra_lsp_server"
-    install -D -m755 "$srcdir/$pkgname/target/release/ra_cli" "$pkgdir/usr/bin/ra_cli"
-
-    cd ./editors/code
-    ./node_modules/vsce/out/vsce package
-    code --install-extension ./ra-lsp-0.0.1.vsix
+    cargo xtask install
 }
