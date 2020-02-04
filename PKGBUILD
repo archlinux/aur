@@ -19,10 +19,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jwilk/$pkgname/archive/$pkgver.tar.gz")
+source=(https://github.com/jwilk/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz{,.asc})
 noextract=()
-sha256sums=('c0808e626f89a6f9e0b4df6112cb8042d3cb2d06742fedafb463a599f4e86e18')
-validpgpkeys=()
+sha256sums=('4323571bc8ba144ad754762b127ea42846529624cc94d7e9644881f1bb512578'
+            'SKIP')
+validpgpkeys=(CDB5A1243ACDB63009AD07212D4EB3A6015475F5) # Jakub Wilk
 
 build() {
     cd "${srcdir}"/$pkgname-$pkgver
@@ -33,5 +34,5 @@ build() {
 package() {
     cd "${srcdir}"/$pkgname-$pkgver
     make PREFIX=/usr DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+    install -Dm644 doc/LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
