@@ -4,7 +4,7 @@ Description=Run nft-blacklist daily and on boot
 [Timer]
 OnBootSec=15s
 OnCalendar=daily
-RandomizedDelaySec=15m
+RandomizedDelaySec=30s
 
 [Install]
 WantedBy=timers.target

@@ -2,7 +2,7 @@
 
 pkgname=nft-blacklist-git
 pkgver=v2.0.r3.9dcd5c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Blacklist country specific IP blocks using nftables"
 arch=("any")
 url="https://github.com/rpthms/nft-blacklist"
@@ -19,7 +19,7 @@ source=("git+$url.git"
 md5sums=('SKIP'
          'ec4f4ff03f01671e52edd98ca6fbae9f'
          '3d02eed6f5453e6c5693f7f9a4f503da'
-         '34be430faae329975393a9dcd34dea6c')
+         'cec1bb3e399ccd6ab8734114af821b73')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
