@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.34.3
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -112,9 +112,10 @@ prepare() {
   # Title: js/ui: Subscribe touchpad gesture handlers to only touchpad events [performance]
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/925
   # Type: 1
-  # Status: 2
+  # Status: 1
   # Comment:
-  git cherry-pick -n 30a25112
+  # git_cp_by_msg '!925' 'js/ui: Subscribe touchpad gesture handlers to only touchpad events'
+  # git cherry-pick -n 30a25112
 
   # Title: iconGrid.js: Animate icon spring using translation [performance]
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/926
@@ -122,6 +123,27 @@ prepare() {
   # Status: 3
   # Comment:
   git_cp_by_msg '!926' 'iconGrid.js: Animate icon spring using translation'
+
+  # Title: workspace: Animate window clones using translation properties
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/936
+  # Type: 1
+  # Status: 2
+  # Comment:
+  git_cp_by_msg '!936' 'dnd: Make DND translation-property-aware' 'workspace: Animate window clones using translation properties'
+
+  # Title: workspace: Animate window clones using translation properties
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/936
+  # Type: 1
+  # Status: 2
+  # Comment:
+  git_cp_by_msg '!936' 'dnd: Make DND translation-property-aware' 'workspace: Animate window clones using translation properties'
+
+  # Title: overviewControls: Use ClutterActor's translation-x
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/948
+  # Type: 1
+  # Status: 4
+  # Comment:
+  git_cp_by_msg '!948' "overviewControls: Use ClutterActor's translation-x"
 
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
