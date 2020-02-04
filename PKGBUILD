@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-kpe
-pkgver=2020.01
+pkgver=2020.01.1
 pkgrel=0
 pkgdesc="Free, open and private browser with patches for better integration with KDE"
 arch=('x86_64')
@@ -21,23 +21,23 @@ provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
-_commit=d8326e125b8fde7e73d44891df935504b12362b3
+_commit=2f580adcfbedbd9e29ef96c50d8aafcdb8f02900
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.desktop"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/distribution.ini"
         "vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/vendor.js"
         "waterfox-current.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.1"
         "syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/syspref.js"
-        "waterfox-current-kde-2020.01.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/waterfox-current-kde-2020.01.patch"
+        "waterfox-current-kde-2020.01.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/waterfox-current-kde-2020.01.1.patch"
         "mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch"
         )
 sha256sums=('SKIP'
             '346b791515d05645be86e0f3404187e6397a22460ad54eb27aaf3054d81c2cd8'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
-            '43718dfaf40156f1248f2bbee72a3a6586d93209a9168f61245aa944e4e2e08d'
+            'ff84e0de0332974b536ba42d4e16d911e489f6d7cbc2e51c57680c3d94ca5f7a'
             'a49c774f3077b0882d0a9672fadf1637894014ec916ead700375163f33672f9c'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
-            '436c332eb0b9c0f683cce3e5bd58371768be30c20fab31b5ef8de6cb66150fdf'
+            'b473c4f2ed189d9fe3accb35bb1fff9b45b5d6ecd8c5612f9cc783a91e10b257'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             )
 
@@ -45,7 +45,7 @@ prepare() {
 
   cd Waterfox
 
-  patch -Np1 -i ../waterfox-current-kde-2020.01.patch
+  patch -Np1 -i ../waterfox-current-kde-2020.01.1.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
 
   cat >.mozconfig <<END
