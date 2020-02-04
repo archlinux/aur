@@ -1,8 +1,10 @@
-# Maintainer: Gautham Velchuru <gvelchuru@gmail.com>
+# Maintainer: Marco Pompili <marco@mg.odd.red>
+# Contributor: Gautham Velchuru <gvelchuru@gmail.com>
+
 pkgname=kiibohd-configurator-git
 _pkgname=kiibohd-configurator
 pkgver=r271.18ac1cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Side Configuration & Flashing Software for Kiibohd compatible keyboards"
 arch=('x86_64')
 url="https://github.com/kiibohd/configurator"
@@ -31,7 +33,7 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}/opt"
-  mv * "${pkgdir}/opt"
+  mv "${pkgname}/output/linux-unpacked" "${pkgdir}/opt/${pkgname}/"
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/output/linux-unpacked/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/opt/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
