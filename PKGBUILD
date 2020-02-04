@@ -1,8 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touchpad-indicator-git
-pkgver=r104.871c375
-pkgrel=2
-epoch=1
+pkgver=2.2.2.0extras19.04.1.r108.8fc5078
+pkgrel=1
 pkgdesc="An indicator for the touchpad"
 arch=('any')
 url="https://github.com/atareao/Touchpad-Indicator"
@@ -16,7 +15,8 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
+		sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
@@ -44,7 +44,7 @@ package() {
 
 	# Create language directories
 
-	_localedir=$pkgdir/usr/share/locale
+	_localedir="$pkgdir"/usr/share/locale
 
 	install -dm755 "$_localedir"/ar/LC_MESSAGES
 	install -dm755 "$_localedir"/ast/LC_MESSAGES
