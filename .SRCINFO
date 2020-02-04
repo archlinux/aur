@@ -35,6 +35,7 @@ pkgbase = casile-git
 	depends = python-ruamel-yaml
 	depends = python-setuptools
 	depends = python-usfm2osis-cw-git
+	depends = remake
 	depends = rsync
 	depends = sile
 	depends = sqlite

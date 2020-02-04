@@ -42,6 +42,7 @@ depends=('bc'
          'python-ruamel-yaml'
          'python-setuptools' # Make up for yq missing this dep in [community]
          'python-usfm2osis-cw-git'
+         'remake'
          'rsync'
          'sile'
          'sqlite'
