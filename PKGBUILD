@@ -2,7 +2,7 @@
 pkgname=python-questionary
 _name=${pkgname#python-}
 pkgver=1.5.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Python library to build pretty command line user prompts"
 license=("MIT")
 url="https://pypi.python.org/pypi/$_name"
