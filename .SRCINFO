@@ -1,6 +1,6 @@
 pkgbase = krunner-mpd-git
 	pkgdesc = KRunner plugin to control an MPD server
-	pkgver = r47.662f1f9
+	pkgver = r47.540151e
 	pkgrel = 1
 	url = https://github.com/XanClic/krunner-mpd
 	install = krunner-mpd-git.install
