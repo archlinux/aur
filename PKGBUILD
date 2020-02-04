@@ -8,12 +8,12 @@
 
 pkgname=slepc
 pkgver=3.12.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://slepc.upv.es"
 license=('BSD')
-depends=('petsc=3.12')
+depends=('petsc>=3.12' 'petsc<3.13')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
 sha256sums=('a586ce572a928ed87f04961850992a9b8e741677397cbaa3fb028323eddf4598')
