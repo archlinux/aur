@@ -1,6 +1,6 @@
 pkgbase = android-sdk-build-tools
 	pkgdesc = Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc)
-	pkgver = r29.0.2
+	pkgver = r29.0.3
 	pkgrel = 1
 	url = https://developer.android.com/studio/releases/build-tools
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = android-sdk-build-tools
 	optdepends = lib32-gcc-libs
 	optdepends = lib32-zlib
 	options = !strip
-	source = https://dl-ssl.google.com/android/repository/build-tools_r29.0.2-linux.zip
-	sha256sums = 1e9393cbfd4a4b82e30e7f55ab38db4a5a3259db93d5821c63597bc74522fa08
+	source = https://dl-ssl.google.com/android/repository/build-tools_r29.0.3-linux.zip
+	sha512sums = 845e527b3ef809d5e32bdce0023401ae80c545504f152d7c05ccef64e4006def6cbda07a295a66518356e992abbbe8f30522c5e63d6eb12a1651c614643602d8
 
 pkgname = android-sdk-build-tools
 
