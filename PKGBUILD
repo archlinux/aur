@@ -5,14 +5,15 @@
 
 pkgname=simutrans-extended
 pkgver=20200204
-pkgrel=1
+pkgrel=2
 pkgdesc="Transportation simulation game - Extended Version"
 arch=('x86_64')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-depends=('gcc-libs' 'zlib' 'sdl_mixer' 'bzip2' 'hicolor-icon-theme' 'simutrans-extended-pak128.britain')
+depends=('gcc-libs' 'zlib' 'sdl_mixer' 'bzip2' 'hicolor-icon-theme')
 makedepends=('dos2unix')
-optdepends=('timidity++: play MIDI music')
+optdepends=('timidity++: play MIDI music'
+            'simutrans-extended-pak128.britain: britain graphic set')
 source=(git+https://github.com/jamespetts/simutrans-extended/
         https://raw.githubusercontent.com/aburch/simutrans/8593f5b1248d03f907a149f7abc41ae6512009e1/simutrans.svg
         settings-folder.patch
