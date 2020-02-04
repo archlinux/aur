@@ -48,13 +48,13 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.4
-_minor=13
-_rtver=7
+_minor=17
+_rtver=8
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -77,21 +77,18 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v21-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0011-pinctrl-sunrisepoint-Add-missing-Interrupt-Status-re.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0012-Revert-iwlwifi-mvm-fix-scan-config-command-size.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0013-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch"
-        "${_lucjanpath}/arch-patches-v21-sep/0015-ptp-free-ptp-device-pin-descriptors-properly.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0011-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch"
+        "${_lucjanpath}/arch-patches-v23-sep/0012-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch"
          # the main kernel config files
         'config')
 
@@ -347,27 +344,24 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('e7aaa541ccf66ca8373fe53794786c8b819da824b17acc497d5080f4fff5bef90bab1da531fa8f62a013f40472f5c1dfafb4bd4f42ecc1bf851042d22e72c4a7'
+sha512sums=('b909cc5fa383ca25496851cd8d0af0efbe1613ee6c3579abb122285fcdcd28f4736fbb26675d741474388a63d1a312cc70a6b0aa8f25c1cd62b9f95b99462628'
             'SKIP'
-            'c8f339d0ec0be917cf12699d3700998acf7fbb2c420d8fcb758e20fd35b0766ce267af74e259b7dcdb624b3a878dca70fee39d98eb35813bdfc62a7b2a781fa5'
+            '7b0dafa478030d0e31836d9c361c4c3a54cbfa3e6f238e51043fd43cf897f056deab0bccf08e1232a1ea95ede391b4652a250b1833f28ac8beaef5ad78fa01a2'
             'SKIP'
             '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            'a1303a9bb5a0ca81df8d6f991cf8c8d6854ac045b839e1d2d71ff4acff92a59eb102b6647d500c5cb3cee1639176018f6b6ed68cbe8502d71e0d24478a4ba22c'
-            'f8ee99e10a7ba396101a952a895bb665375b3da705ee3da05678023b2a57b9ac9690ffc4b2af16e8fa3af94d291cb8958f0477a1531ec23e5455d752a199c46a'
-            '60a975640e53692b017b88a581c7f645266fef9806c96197c45271e53400d44c1eb52a3a5aef952129e91f6ae79eee82ffbfa5683638d5296f15d5ef7c789d4f'
-            'fecc638528d30a40c8791d2cd850a127a880ddca0286d5c3bed68352e4c0d00afa50821795ede380cc8958e9ebcc51cebf2fcf5897c8b374174f8d901d5aa774'
-            'afe4e63760936835f07182eb6a115e4aa3319e8972ea135101f00cb6c591db12648ffd44d636948db3d9600b1cfd566b1a7f8c4b4a7b330593f7b8cfce7a0942'
-            '2fcfffcd43c2942d26b49ec5fe541169369dca231ceebff57b05d78e178507c70c58e35627cf8d93fd6423bc4baee50f7014ea10948a8bff13dc01323a6ef9fd'
-            'c604009bec6c130d0c74bb3d8be83ebe2f96fcd07f50b9bfc9d4a12681c89a9f175d91245fbe4eb2c2e85c12e258db611dfe06552ea09ac898cfa320d288302f'
-            'ecc40e933327b83f67587872f282baeb2497d29152b596fc7530ebc718d7d66a880d5063a87cafa066330df46ab5de41c4ecb3587451fe6b2d83e059a7bbaa7a'
-            '1250d75e41e97ff6fae07f523d85691cb1b05e1a63b969dfc17fb3d83c9abef9d52ee8dce0940a32b3ef2f967f0124f8081728dd4ff7a1993be95db85bb824e3'
-            'b4232315acfbdcc8f2adda0b51b353c81c53639aa2d97020818377a458b281a1b2c22c672a14abf8f6b3328fc15843bb720a25d5a004be846f263a5689ccc85c'
-            '04e5175c451250027c834367459f1d97dc3b092e9880a2b8d1b1e218163156b6373e7e639fe62b79283fdfec82c19c14224b069e5d9e0669a01c2b7fbb12a8a5'
-            'cf17844acfd86bab0dce098e9b1d0a45149f7618fe35d58ae23a606aad052e4e846ebc09a4d1a521e4a32313a2e114d33620a2fba32cc118df5278d358e0e30e'
-            'd11ea21f8950113fae6f90b88c7892f289c19f2325b1d742c2ce417b8426af5ddb916931f0b25749de0fe5287d9c96061307c487f5c6dfa19a9f160c5bbc2c80'
-            '4a6487d5595aefb74569872d0ba4610df6aa6148426e29cfc1497694f35fd5ba7c1c46575919c2af83db88776a6728fee6e8cc91620b65752495fffba7aa0aff'
-            'cfd6f76d12cad3aa9b12e73cfbe937e953cb73b59909906343b5ab5b441cffaf4bac9ba951040c12d0ab52e862be430b8deda6462afa6b53f8224c8a5a002008'
+            '85af8f664fffc74fa1f5483dd73e8721987d7d98a0acf931240abbb35d6a2c7a1bf43065aa5a26252acba8f91c1a44843b921cd7fffcdfb573a7433552c8f278'
+            'c363f233e9ed9b16fca4c5f4da2813c99d4ef0b6833622417ef3c66803c3840e7223b92964d2f589a2725adbddf9ebba531e749893eb923b3a4b44531bb277cc'
+            '495dd774d87949120853aa3c1f1f0962bd62088c164fe6c206cd77a563e34cb8ef58f09fb60c171ca0cbdc6ff063d1cb258fe775fecb7e8bc9f8bdff6943bc15'
+            'bb6d714fa797c91a04dc16c7b4c349883c43ca7793fafa2a1c115847e97859290427aa3b6d6c22b0dc965820a9c4e47ffbd179022c3dbc99451a110cae8120c8'
+            '10998bd2a69983906a3c95464ded50875f91b39dfd46250be21a649a2fe0678ff39121667920ae78df707cf26287ae97dad4b3f000d7740345376c24371bea65'
+            '3096708a9bf3659c22799ad41b48ce1f2aa11d1d452900ade91554b5ff6e355bf5414ca889b6a1fd89e580658d65858cd2de10cc24c37ddafa6fdb3c0aec92c2'
+            '6d3818b5cbb24d72a2bec2ecfb0906737656f9019abf3ead129b6e0327891ed2e506964762e0b2c2d2e7dc9e30271441a046338dfee91c394719b661ee818e02'
+            'b8d5d318c1b61b9c679286a02ada39eb615d77701d8fff67716a73873e76f74f3b7d8962ce882b657077af5815876a82e111ad38355dd57d4bbcd564eee6d8d6'
+            '9234b551064b4044bf81bc10d378a5b043353c9df6155015ef6ebf3bbd838e47b9715e35f0850667e8ed7b2e788171d2a59fc92b4ac17398ef648ba826bcf9f4'
+            '684aa5859705eae56b7ca328a8dcec712ba7092c1271017ef208a2b3c090840a29383d79f07618263b76b417176619b2ff0e7465caaf0bc4697578ab95b4ae89'
+            '12ab4a40784786e1784cd24bd0a3a128bb89f6f11626f1544365d476132ab9b62f5da04e37ee9155564838adfb237888aa552ec086af0cfa85bcab54f3505b5d'
+            '1cad3b4cf1c95ee1cb8ea0e54771246d5de4af925d13ddcd92814c4a5f139f84fabefa51b73d5d0204395cfcbb71a1db11e436b26fddc1a9c7c09788e22d2855'
             '0c0988d868c6c037d6b95adf5db3b60413530b10cd25df899f5794f6d66bbadba60a13477e53802564c634c0bc2109afd3dc01114473c28dbd3f54e216aa62e3')
 
 validpgpkeys=(
