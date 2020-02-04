@@ -1,0 +1,13 @@
+From: Osvaldo Costa <osvaldogcosta90@gmail.com>
+--
+diff --git a/uvm/Makefile b/uvm/Makefile
+index 0cad8ff..043a08d 100644
+--- a/uvm/Makefile
++++ b/uvm/Makefile
+@@ -207,6 +207,7 @@ ccflags-y += $(EXTRA_CFLAGS)
+ 
+ RM_MODULE_SYMVERS:= $(RM_OUT_DIR)/Module.symvers
+ UVM_MODULE_SYMVERS:= $(obj)/Module.symvers
++KBUILD_EXTRA_SYMBOLS:= $(UVM_MODULE_SYMVERS)
+ 
+ module $(MODULE_NAME).ko: $(UVM_MODULE_SYMVERS) debug_diagnostics_printing
