@@ -1,23 +1,25 @@
-# Maintainer: Charlie Wolf <charlie@wolf.is>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Charlie Wolf <charlie at wolf dot is>
+
 pkgname=zurl
-pkgver=1.10.1
+pkgver=1.11.0
 pkgrel=1
-pkgdesc="Zurl is an HTTP and WebSocket client daemon with a ZeroMQ interface"
+pkgdesc="HTTP and WebSocket client worker with ZeroMQ interface"
 arch=('x86_64' 'i686')
 url="https://github.com/fanout/zurl"
-license=('MIT')
-depends=("qt5-base" "zeromq")
+license=('GPL3')
+depends=("curl" "qt5-base" "zeromq")
 makedepends=("qt5-base" "zeromq")
 source=("https://dl.bintray.com/fanout/source/$pkgname-$pkgver.tar.bz2")
-sha512sums=('201de7854bf2ea0c0340a491676b3c650dcdbe3da08344d654941e1c293e06ad8b1eee2292eae8617b284782441873b6db2ca5353f5c71f449c0965d3143fe9e')
+sha512sums=('099c6056d24c7b72722f0ca281c2308ea52caddc8a7ea1357290ba450a6fed338ac8ca16d4c38775064a1fe4861a7b3cad9a09c38abe1e20674fc4fad960e77b')
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr --qtselect=5
-	make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --qtselect=5
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make INSTALL_ROOT="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make INSTALL_ROOT="${pkgdir}" install
 }
