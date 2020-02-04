@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.19.0.1
-pkgrel=2
+pkgrel=3
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1580809427
+epoch=1580810855
 
 
 # Release commit for 0.19.0.1
@@ -31,11 +31,13 @@ provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
 conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
            'namecoin-qt' 'namecoin-tx')
 source=('git://github.com/namecoin/namecoin-core'
+        "$pkgname-boost-1.72.patch::https://github.com/bitcoin/bitcoin/commit/a64e97dd476b.patch"
         'namecoin.desktop'
         'namecoin1500x1500.png'
         'namecoind.service'
         'namecoind@.service')
 sha256sums=('SKIP'
+            '7881fce02696f64f03796ce3d09433e4dd029b32204d7f6c290a62fcce6b018d'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
             '0a8cb03f33a895ccaed63fb9d946db69bee7188b7a9f41bc92879167c2718dcf'
@@ -46,6 +48,7 @@ prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
+    patch -Np1 -i ../$pkgname-boost-1.72.patch
 }
 
 
