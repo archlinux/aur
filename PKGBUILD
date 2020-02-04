@@ -3,7 +3,7 @@
 
 pkgname=amduprof
 pkgver=3.2.228
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD uProf performance analysis tool."
 arch=('x86_64')
 license=('custom')
@@ -15,6 +15,12 @@ depends=('env-modules')
 install=amduprof.install
 md5sums=("5b7927f1b583fc56f9d021d8116496af"
 		"SKIP")
+
+if [ -z ${MODULESHOME} ]; then
+	echo "Environment variable MODULESHOME from env-modules is unset."
+	echo "Restart your shell or source the env-modules scripts for your shell."
+	exit 1
+fi
 
 amduprof_prefix=/opt/${pkgname}
 
