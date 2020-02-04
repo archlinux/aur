@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=blockdiag
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="blockdiag generates block-diagram image from text"
 url="http://blockdiag.com"
@@ -11,7 +11,7 @@ depends=('python-setuptools' 'python-funcparserlib' 'python-pillow' 'python-webc
 checkdepends=('python-nose' 'python-mock' 'python-pycodestyle' 'python-reportlab' 'python-docutils'
               'python-wand' 'ghostscript' 'librsvg')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/blockdiag/blockdiag/archive/$pkgver.tar.gz")
-sha512sums=('fe2d3b79358c8f85b7e3c737090a35d7f99f3f2a0bec01923d57eccd23ea0205ec624e0325dc08e26cc27dfb9f526a0438077b719180f6346334c4b64f0a672e')
+sha512sums=('509535312bd46022203d279604507e09106680722d98516dabd7187bc48d9a195709f2534f2f7757058c06b914b517ec2f6d899cec12e7df24ba4ab28ec76bcd')
 
 build() {
   cd blockdiag-$pkgver
