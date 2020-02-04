@@ -16,7 +16,7 @@ pkgbase = kmon
 	conflicts = kmon-git
 	conflicts = kmon-bin
 	source = https://github.com/orhun/kmon/archive/v0.1.1.tar.gz
-	sha512sums = 11e6b305ef71067e85d2b7f75efabe3af825044e163544dced0d44bc691b0d67f0295d44595b955f00c2775064ce1e4fbe76dcee7b920290d44cc6445e3353f6
+	sha512sums = 9ddd9c747000c018496e7756f46ee1a4dd35624cd66ff53a2038563e7b1e43b43474e66bec4b48fc7cb1f45562f41c075cbb417b1a14b659c88317d234035f05
 
 pkgname = kmon
 
