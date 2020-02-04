@@ -1,9 +1,8 @@
 pkgbase = packettracer
 	pkgdesc = Cisco PacketTracer 7.3.0 installation package
 	pkgver = 7.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.netacad.com/courses/packet-tracer
-	install = packettracer.install
 	arch = x86_64
 	license = custom
 	options = !strip
@@ -13,8 +12,13 @@ pkgbase = packettracer
 	sha512sums = b06275775703791d56618d99fa7daf29a8a5c82dc17b66d12a9b29927f0a97deb082a757c0cdf72c2345ac32449d0506dad35237ac9935db2e86982e115f1ae1
 	sha512sums = 156579687c5eb63ef2065b28625d9faeee96d2224248c6883a92264f5c0e800c5ab9206ad4c6afebb9dcdbe6b880a9a24caf96044a7c97df743473933fcd2c4d
 	depends = openssl-1.0
-	depends = libpng12
+	depends = dbus
 	depends = icu
+	depends = glib2
+	depends = libxml2
+	depends = java-runtime
+	depends = libjpeg-turbo
+	depends = nss
 
 pkgname = packettracer
 
