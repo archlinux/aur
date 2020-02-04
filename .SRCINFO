@@ -1,6 +1,6 @@
 pkgbase = python-pyarrow
 	pkgdesc = A columnar in-memory analytics layer for big data.
-	pkgver = 0.15.1
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://arrow.apache.org
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = python-pyarrow
 	makedepends = cmake
 	makedepends = cython
 	depends = arrow
-	source = https://github.com/apache/arrow/archive/apache-arrow-0.15.1.tar.gz
+	source = https://github.com/apache/arrow/archive/apache-arrow-0.16.0.tar.gz
 	source = tensorflow-abi.patch
-	sha256sums = ab1c0d371a10b615eccfcead71bb79832245d788f4834cc6b278c03c3872d593
-	sha256sums = 813d8c7c55597229c330de388fdc8fa47973c5ed961ce2cad086c816ff7d4b02
+	sha256sums = d7b3838758a365c8c47d55ab0df1006a70db951c6964440ba354f81f518b8d8d
+	sha256sums = 86bb0784fbb2cae2e64ec59ac5ffefeeb9e95ba5ea656c4795621f73a704dd49
 
 pkgname = python-pyarrow
 
