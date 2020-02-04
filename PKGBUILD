@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.5
-_minor=1
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -72,9 +72,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0003-ALSA-hda-Fix-DP-MST-support-for-NVIDIA-codecs.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0004-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch"
          # the main kernel config files
         'config')
 
@@ -327,14 +328,15 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2bcd7d50c75bd16bc794346f3dc921e481ce2663ad0a3445124b9a32e013e60be3b7c183cc4e6b128cf17b4781035fd055ff84afbcb7221bfc89a2a9bcf28460'
+sha512sums=('f1241b5c53f96cdf0bfb48fbd1891f47f903e824041d4f6d3b9c26c8628b057dda0bd6685c85a174f443be00642006f669e78d8c8cdd31bcd61d83998f7a3b08'
             'SKIP'
             '375bbe85a513a9009d8bb87a63e64d0953ed3aea4f28289dda49cda003174320b347123364ec18133792c98541aaf7b8607fe4e56a0615f0cdabac42f12d3af8'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '940b9ceb5f53f05e0e516882215b9929126284c1c1fbf72dce17e23b630342fc9459b6f510d272e7a1336fa7ec5d9059e3bcb5a42c091c43065beca8d538f9c9'
-            '79315ac7002e3a955910b289b572f4cd2285e4218ef9564cd4333f8c6d029f5d79c9c9ee9b745e33b88c01d52e122b399c3142911d1781b55616703442fb99fd'
-            '98d8b4dfe41831c6bc82698e8ded74a91d54b5bdb4dcad56efb39eddeb3e3ce8975f00d414f574dce1706cf83d8bccf77791264272e05f725c44e783ecbe4ea2'
-            'cdea18a098baf0015c2eb2097225dce182a57a430b3b9282b2c33f1bf54979803aa84353153f7cdd5a289c819859939cf98e1b11fb7ef636cce51cd97e542a92')
+            '8b19138d1e1e5394c468bba29af1efd1b3bee9b45d73dfb390e66fd64ffdf23893fd03893256edf521cd4d29b4e78ff33d6cf26393948149feb812c00d54d8f0'
+            '09d794cf2e20e8237b8dc6e31387e6b7ed1bd9dfc000ef02e6f59389bf4c783369b2628eb3719e33534ad041051b2a1f1a08d8c6175b279e94d49d6a6db76225'
+            '59eddca085f8ad2d3759dd7870cd2317206fdb9e089695808f44349f628a640aca3990bf17670c5a8b3a25d73d5b2b138c2cad0aaa5617dac9deea3b6c7f0f73'
+            '4e812ee9b624405991a3b636b00c9a2a832984c24764e9824857543bf4a3857e62810c5d5467f2cf43666f162c4c8290553e4dac5a25ae1593892e6dd8d89a5b'
+            'c2ccaf95a6de80893745ebc5b765e20afbc319e075bd1eda0c2d87845c5dd69b2a38d2207ffde1b323c0d5577cf9d18daa190559d2c603b3b2f46237851a1b65')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
