@@ -1,0 +1,23 @@
+pkgbase = brother-mfc-9342cdw
+	pkgdesc = LPR and CUPS driver for the Brother MFC-9342CDW
+	pkgver = 1.1.3_0
+	pkgrel = 0
+	url = http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html
+	install = brother-mfc-9342cdw.install
+	arch = i686
+	arch = x86_64
+	license = custom:Brother commercial license
+	license = GPL2
+	depends = cups
+	depends = ghostscript
+	depends = a2ps
+	source = https://download.brother.com/welcome/dlf101626/mfc9342cdwlpr-1.1.3-0.i386.rpm
+	source = https://download.brother.com/welcome/dlf101627/mfc9342cdwcupswrapper-1.1.4-0.i386.rpm
+	source = lpr-license.txt
+	sha256sums = 66e0896c58bb073ccae6cffbbb0ef3cd21b9fdc20145e991f10b7809c003bde0
+	sha256sums = 67d8ba9fbb22c21b093951872f81fc3697023953f6c9f9e1ab9dcdd757df5239
+	sha256sums = 9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-9342cdw
+
