@@ -2,29 +2,33 @@
 # Original PKGBUILD by: berkus [berkus_at_madfire_dot_net]
 
 pkgname=ocp
-pkgver=0.1.21
-pkgrel=7
+pkgver=0.2.1
+pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
-url="http://stian.cubic.org/project-ocp.php"
+url="https://github.com/mywave82/opencubicplayer"
 depends=('libsidplay' 'libxxf86vm' 'libvorbis' 'libxpm' 'alsa-lib' 'libmad' 'flac' 'sdl' 'adplug')
-makedepends=('texinfo' 'desktop-file-utils')
+makedepends=('desktop-file-utils')
 license=('GPL')
-source=(http://sourceforge.net/projects/opencubicplayer/files/ocp-$pkgver/ocp-$pkgver.tar.bz2)
-md5sums=('558a6eacfadfd9c60c97a6e9c7f83f47')
-install=ocp.install
+source=(git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver}
+        git+https://github.com/mywave82/timidity.git)
+md5sums=('SKIP'
+         'SKIP')
+
+prepare() {
+	cd opencubicplayer
+	git submodule init
+	git config submodule.playgmi/timidity-git.url $srcdir/timidity
+	git submodule update
+}
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-  sed -i "4592c2.95.[2-9]|2.95.[2-9][-.]*|3.[0-9]|3.[0-9].[0-9]|3.[0-9]|3.[0-9].[0-9]-*|4.*|5.*|6.*|7.*|8.*)" configure
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make -j1 DESTDIR=$pkgdir
+	cd opencubicplayer
+	./configure --prefix=/usr --sysconfdir=/etc
+	make DESTDIR=$pkgdir
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-  make -j1 DESTDIR=$pkgdir install
-  install -m755 playopl/playopl.so $pkgdir/usr/lib/ocp-0.1.21/playopl.so
-  install -m755 playopl/opltype.so $pkgdir/usr/lib/ocp-0.1.21/autoload/30-opltype.so
-  rm $pkgdir/usr/share/info/dir
+	cd opencubicplayer
+	make DESTDIR=$pkgdir install
 }
