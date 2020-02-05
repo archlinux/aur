@@ -1,36 +1,24 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
-pkgname=sfizz
-pkgver=r51.14bace7
+pkgname="sfizz"
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Juce based SFZ format sampler"
-url="https://github.com/sfztools/sfizz"
+pkgdesc="SFZ library and LV2 plugin"
+url="https://sfz.tools/sfizz"
 arch=('x86_64')
-license=('GPL3')
-makedepends=('git' 'juce')
-source=(
-    "$pkgname"::"git+https://github.com/sfztools/sfizz#commit=14bace7"
-)
-md5sums=(
-    'SKIP'
-)
-pkgver() {
-  cd "$pkgname"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+license=('custom:BSD-2-Clause' 'custom:ISC')
+makedepends=('git' 'cmake')
+depends=('libsndfile' 'jack')
+conflicts=('sfizz-git')
+source=("https://github.com/sfztools/sfizz/releases/download/v${pkgver}/sfizz-v${pkgver}-src.tar.gz")
+sha256sums=('82ec049cc90abd8e1850992a831e1ce7369210548e60a020511c98eb13ef76f4')
 build() {
-    cd "$srcdir/${pkgname}/Builds/LinuxMakefile"
-    sed -i -e 's/$(HOME)/\/opt/' "./Makefile"
-    make INSTALL_DIR=$pkgdir
+    cd "${srcdir}/${pkgname}-v${pkgver}"
+    mkdir -p build && cd build
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" "${srcdir}/${pkgname}-v${pkgver}"
+    cmake --build . --target all
 }
 package() {
-    cd "$srcdir/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}/resources/linux/sfizz.desktop" "${pkgdir}/usr/share/applications/sfizz.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/resources/linux/sfizz.appdata.xml" "${pkgdir}/usr/share/metainfo/sfizz.appdata.xml"
-    install -Dm644 "${srcdir}/${pkgname}/resources/icons/icon_256px.png" "${pkgdir}/usr/share/pixmaps/sfizz.png"
-    install -Dm755 "${srcdir}/${pkgname}/Builds/LinuxMakefile/build/sfizz" "${pkgdir}/usr/bin/sfizz"
-    install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/sfizz/LICENSE"
+    DESTDIR="${pkgdir}" cmake --build "${srcdir}/${pkgname}-v${pkgver}/build" --target install
+    install -Dm644 "${srcdir}/${pkgname}-v${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
