@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://exodus.io"
 license=('custom')
 depends=('gtk2' 'nss' 'libxss' 'glibc>=2.28-4')
-source=("https://exodusbin.azureedge.net/releases/exodus-linux-x64-${pkgver}.zip"
+source=("https://downloads.exodus.io/releases/exodus-linux-x64-${pkgver}.zip"
 	"${pkgname}.svg"
 	"${pkgname}.desktop"
         "LICENSE")

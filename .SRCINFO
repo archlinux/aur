@@ -9,7 +9,7 @@ pkgbase = exodus
 	depends = nss
 	depends = libxss
 	depends = glibc>=2.28-4
-	source = https://exodusbin.azureedge.net/releases/exodus-linux-x64-20.1.30.zip
+	source = https://downloads.exodus.io/releases/exodus-linux-x64-20.1.30.zip
 	source = exodus.svg
 	source = exodus.desktop
 	source = LICENSE
