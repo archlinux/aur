@@ -27,7 +27,7 @@ depends=(
     'python-lockfile'
     'python-pyro5'
     'python-requests'
-    'python-rubicon-objc>=0.3.1'
+    'python-rubicon-objc'
     'python-u-msgpack'
     'python-watchdog'
     'python-systemd')
