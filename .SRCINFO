@@ -6,9 +6,7 @@ pkgbase = python-pyfftw
 	arch = i686
 	arch = x86_64
 	license = BSD
-	makedepends = pyrex
 	makedepends = cython
-	makedepends = cython2
 	depends = fftw
 	depends = python-numpy
 	depends = python-scipy
@@ -16,6 +14,4 @@ pkgbase = python-pyfftw
 	md5sums = 68eb892a9de886a17fd6d25f73f13bb8
 
 pkgname = python-pyfftw
-
-pkgname = python2-pyfftw
 
