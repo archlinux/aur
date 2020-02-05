@@ -29,7 +29,7 @@ pkgbase = syncthingtray-git
 	optdepends = kio: KIO plugin for Syncthing actions in Dolphin
 	optdepends = plasma-workspace: Plasmoid for Plasma 5 desktop
 	conflicts = syncthingtray
-	source = syncthingtray::git://github.com/Martchus/syncthingtray.git
+	source = syncthingtray::git+https://github.com/Martchus/syncthingtray.git
 	sha256sums = SKIP
 
 pkgname = syncthingtray-git
