@@ -1,7 +1,7 @@
 # Maintainer: Simon Vikstrom <simon@devsn.se>
 
 pkgname=gr-soapy-git
-pkgver=r26.946f950
+pkgver=r168.42f68ca
 pkgrel=1
 pkgdesc="gr-soapy from librespacefoundation"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,6 @@ pkgver() {
 }
 
 build() {
-  sed -i 's/env python$/env python2/g' gr-soapy/python/*
-
   mkdir -p gr-soapy/build
   cd gr-soapy/build
 

@@ -1,6 +1,6 @@
 pkgbase = gr-soapy-git
 	pkgdesc = gr-soapy from librespacefoundation
-	pkgver = r26.946f950
+	pkgver = r168.42f68ca
 	pkgrel = 1
 	url = https://gitlab.com/librespacefoundation/gr-soapy.git
 	arch = x86_64
