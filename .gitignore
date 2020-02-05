@@ -1,6 +1,5 @@
-*.pkg.tar.xz
-*.src.tar.gz
-*.src.tar.xz
+*.pkg.tar*
+*.src.tar*
 kakoune-git
 pkg
 src
