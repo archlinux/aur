@@ -1,16 +1,24 @@
 pkgbase = lua-cassowary
 	pkgdesc = The cassowary constraint solver.
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/simoncozens/cassowary.lua
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	depends = lua-penlight
 	source = https://github.com/simoncozens/cassowary.lua/archive/v2.2.tar.gz
 	sha256sums = e2f7774b6883581491b8f2c9d1655b2136bc24d837a9e43f515590a766ec4afd
 
 pkgname = lua-cassowary
+	depends = lua
+	depends = lua-penlight
+
+pkgname = lua52-cassowary
+	depends = lua52
+	depends = lua52-penlight
+
+pkgname = lua51-cassowary
+	depends = lua51
+	depends = lua51-penlight
 
