@@ -8,18 +8,21 @@ pkgbase = maestral-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = gendesk
+	depends = python-blinker
+	depends = python-bugsnag
 	depends = python-click>=7.0
 	depends = python-dropbox>=9.4.0
-	depends = python-watchdog
-	depends = python-blinker
-	depends = python-requests
-	depends = python-u-msgpack
 	depends = python-keyring>=19.0.0
 	depends = python-keyrings-alt>=3.0.0
+	depends = python-lockfile
 	depends = python-pyro5
+	depends = python-requests
+	depends = python-rubicon-objc>=0.3.1
+	depends = python-u-msgpack
+	depends = python-watchdog
 	depends = python-systemd
-	depends = python-sdnotify
-	optdepends = python-pyqt5: GUI support for runtime
+	optdepends = python-pyqt5: GUI
+	optdepends = gnome-shell-extension-appindicator: Gnome integration
 	provides = maestral
 	conflicts = maestral
 	source = git+https://github.com/SamSchott/maestral-dropbox

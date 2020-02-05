@@ -18,18 +18,22 @@ source=(
     "maestral-config@.service")
 makedepends=('git' 'python-setuptools' 'gendesk')
 depends=(
+    'python-blinker'
+    'python-bugsnag'
     'python-click>=7.0'
     'python-dropbox>=9.4.0'
-    'python-watchdog'
-    'python-blinker'
-    'python-requests'
-    'python-u-msgpack'
     'python-keyring>=19.0.0'
     'python-keyrings-alt>=3.0.0'
+    'python-lockfile'
     'python-pyro5'
-    'python-systemd'
-    'python-sdnotify')
-optdepends=('python-pyqt5: GUI support for runtime')
+    'python-requests'
+    'python-rubicon-objc>=0.3.1'
+    'python-u-msgpack'
+    'python-watchdog'
+    'python-systemd')
+optdepends=(
+    'python-pyqt5: GUI'
+    'gnome-shell-extension-appindicator: Gnome integration')
 md5sums=('SKIP'
          '3ba26948bcf8652de28d95e3fd787fdb'
          'c4fb651691cde2218426ca32c69cf859')
@@ -61,11 +65,14 @@ package() {
     install -Dm644 "${srcdir}/${_srcname}/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
     # Install the icon
-    install -Dm644 "${srcdir}/${_srcname}/${_name}/gui/resources/maestral.png" \
+    install -Dm644 "${srcdir}/${_srcname}/${_name}/gui/resources/${_name}.png" \
         "${pkgdir}/usr/share/pixmaps/${_name}.png"
     # Install the generated desktop file
-    install -Dm644 "${srcdir}/${_name}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${_name}.desktop" -t \
+        "${pkgdir}/usr/share/applications"
     # Install the systemd units provided
-    install -Dm644 "${srcdir}/maestral.service" "${pkgdir}/usr/lib/systemd/user/maestral.service"
-    install -Dm644 "${srcdir}/maestral-config@.service" "${pkgdir}/usr/lib/systemd/user/maestral-config@.service"
+    install -Dm644 "${srcdir}/maestral.service" \
+        "${pkgdir}/usr/lib/systemd/user/maestral.service"
+    install -Dm644 "${srcdir}/maestral-config@.service" \
+        "${pkgdir}/usr/lib/systemd/user/maestral-config@.service"
 }
