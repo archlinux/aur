@@ -5,7 +5,7 @@
 
 pkgname="lightzone"
 pkgver=4.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
@@ -46,6 +46,7 @@ build() {
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
   fi
 
+  sed -i 's|http://repo2|https://repo1|' lightcrafts/build.xml
   ant -f linux/build.xml jar
 }
 
