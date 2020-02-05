@@ -2,7 +2,7 @@
 
 pkgname=otf-nerd-fonts-fira-code
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Monospaced font with programming ligatures. Patched with Nerd Fonts icons."
 arch=('any')
 url='https://github.com/ryanoasis/nerd-fonts'
@@ -19,5 +19,5 @@ package() {
         install -d "$pkgdir/usr/share/licenses/$pkgname"
         find "$srcdir" -not -name "*Windows Compatible*" -a -name "*.otf" \
             -exec install -Dm644 {} "$pkgdir/usr/share/fonts/OTF" \;
-        install -Dm644 "$srcdir/$pkgname-LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+        install -Dm644 "$srcdir/$pkgname-LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
