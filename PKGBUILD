@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=python2-evdev
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Python2 bindings for the Linux input subsystem"
 arch=(x86_64)
