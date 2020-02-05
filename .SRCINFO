@@ -1,6 +1,6 @@
 pkgbase = omphalos
 	pkgdesc = Network enumeration and domination
-	pkgver = 0.99.9
+	pkgver = 0.99.10
 	pkgrel = 1
 	url = https://nick-black.com/dankwiki/index.php/Omphalos
 	arch = x86_64
@@ -12,12 +12,11 @@ pkgbase = omphalos
 	depends = libpciaccess
 	depends = libpcap
 	depends = zlib
-	depends = libx11
 	depends = wireless_tools
 	depends = sysfsutils
-	depends = outcurses>=0.0.8
-	source = https://github.com/dankamongmen/omphalos/archive/v0.99.9.tar.gz
-	sha256sums = e4f0e952c2c1b68389a53d69efa6e90031a8de4a4afd762a00bfcbfac243b5db
+	depends = notcurses>=1.1.5
+	source = https://github.com/dankamongmen/omphalos/archive/v0.99.10.tar.gz
+	sha256sums = 64c508c581364ca14cc43dcba791db82ce14632adf839a595b2efba88bc91d76
 
 pkgname = omphalos
 

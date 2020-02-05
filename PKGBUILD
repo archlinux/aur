@@ -1,17 +1,14 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=omphalos
-pkgver=0.99.9
+pkgver=0.99.10
 pkgrel=1
 pkgdesc="Network enumeration and domination"
 url="https://nick-black.com/dankwiki/index.php/Omphalos"
 license=('GPL3')
 arch=('x86_64')
-# ncurses and readline are found without our help. Don't explicitly list them.
-# Need to add support for explicitly dropping the omphalos-x target. Until then,
-# dep on libx11 to eliminate namcap error FIXME.
-depends=('libpciaccess' 'libpcap' 'zlib' 'libx11' 'wireless_tools' 'sysfsutils'
-         'outcurses>=0.0.8')
+depends=('libpciaccess' 'libpcap' 'zlib' 'wireless_tools' 'sysfsutils'
+         'notcurses>=1.1.5')
 makedepends=('docbook-xsl' 'autoconf-archive' 'libxslt' 'autoconf')
 source=("https://github.com/dankamongmen/omphalos/archive/v${pkgver}.tar.gz")
 
@@ -33,4 +30,4 @@ package() {
   install -m 0644 -D -t "$pkgdir/usr/share/omphalos" usb.ids ieee-oui.txt
 }
 
-sha256sums=('e4f0e952c2c1b68389a53d69efa6e90031a8de4a4afd762a00bfcbfac243b5db')
+sha256sums=('64c508c581364ca14cc43dcba791db82ce14632adf839a595b2efba88bc91d76')
