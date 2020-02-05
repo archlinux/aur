@@ -1,14 +1,9 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
-_docs_commit='fbe9fa0'
-_loader_commit='44ac9b2'
-_imgui_commit='6c1a737'
-_headers_commit='7264358'
-
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud')
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 url='https://github.com/flightlessmango/MangoHud'
 # LICENSE is missing on 0.1.0, was added on master
 license=('unknown')
@@ -17,10 +12,10 @@ arch=('x86_64')
 depends=('gcc-libs' 'libx11')
 makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd')
 source=("$pkgbase::git+$url.git#tag=v$pkgver"
-        "Vulkan-Docs::git+https://github.com/KhronosGroup/Vulkan-Docs.git#commit=$_docs_commit"
-        "Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git#commit=$_loader_commit"
-        "ImGui::git+https://github.com/flightlessmango/ImGui.git#commit=$_imgui_commit"
-        "Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git#commit=$_headers_commit")
+        'Vulkan-Docs::git+https://github.com/KhronosGroup/Vulkan-Docs.git'
+        'Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git'
+        'ImGui::git+https://github.com/flightlessmango/ImGui.git'
+        'Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git')
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
