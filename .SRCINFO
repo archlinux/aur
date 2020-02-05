@@ -13,7 +13,7 @@ pkgbase = c++utilities-git
 	makedepends = cmake
 	makedepends = git
 	optdepends = c++utilities-doc: API documentation
-	source = cpp-utilities::git://github.com/Martchus/cpp-utilities.git
+	source = cpp-utilities::git+https://github.com/Martchus/cpp-utilities.git
 	sha256sums = SKIP
 
 pkgname = c++utilities-git
