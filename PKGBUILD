@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('boost' 'cmake' 'git')
 provides=('lllc')
-conflicts=() # 'solidity-git' claims to provide this but doesn't
+conflicts=()
 source=("git+https://github.com/ethereum/solidity.git#commit=${_commit}")
 sha256sums=('SKIP')
 
