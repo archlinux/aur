@@ -1,6 +1,6 @@
 pkgname='enroot'
-pkgver=2.2.0
-pkgrel=3
+pkgver='3.0.0'
+pkgrel='1'
 pkgdesc='A simple yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.'
 url='https://github.com/NVIDIA/enroot'
 arch=(x86_64)
@@ -14,14 +14,14 @@ sha256sums=(SKIP)
 
 build() {
   cd 'enroot'
-  CPPFLAGS="-DALLOW_SPECULATION -DINHERIT_FDS" make prefix='' exec_prefix=/usr datarootdir=/usr/share
+  CPPFLAGS="-DALLOW_SPECULATION -DINHERIT_FDS" make -j "$(nproc)" prefix='' exec_prefix=/usr datarootdir=/usr/share
 }
 
 package() {
   cd 'enroot'
   DESTDIR="$pkgdir/" make install prefix='' exec_prefix=/usr datarootdir=/usr/share
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
-  mv "${pkgdir}/usr/share/enroot/enroot.bash_completion" "${pkgdir}/usr/share/bash-completion/completions/enroot"
+  mv "${pkgdir}/usr/share/enroot/bash_completion" "${pkgdir}/usr/share/bash-completion/completions/enroot"
 }
 
 backup=(etc/enroot/enroot.conf)
