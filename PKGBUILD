@@ -2,7 +2,7 @@
 
 pkgname=rclone-bin
 _srcname=rclone
-pkgver=1.50.2
+pkgver=1.51.0
 pkgrel=1
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage."
 provides=('rclone')
@@ -24,11 +24,11 @@ source_armv7h=("https://github.com/ncw/rclone/releases/download/v$pkgver/rclone-
 source_aarch64=("https://github.com/ncw/rclone/releases/download/v$pkgver/rclone-v$pkgver-linux-arm64.zip")
 source=("https://raw.githubusercontent.com/ncw/rclone/v$pkgver/COPYING")
 sha256sums=('8cd2e9e750b90a04b7d82dbbca3930c696ae0309d7c10464f90a44f45754cd04')
-sha256sums_i686=('5f1c2d1b9b09e9e92b1778c3dd6564461cc811a499f5cd0e02b509b3d60c26a5')
-sha256sums_x86_64=('2112883164f1f341b246a275936e7c3019d68135002098d84637839dec9526c8')
-sha256sums_armv6h=('9d24fd374e1f2b586f4660796180ad882e8b390dcfb7274f22595b3bd3a448e6')
-sha256sums_armv7h=('9d24fd374e1f2b586f4660796180ad882e8b390dcfb7274f22595b3bd3a448e6')
-sha256sums_aarch64=('2e46b367e6c7302de1259db0c9ae6d782d08566557d58479e378029e12037427')
+sha256sums_i686=('eee5e7f95be54926d5062dd3f87affdb7d35bd50a09fc06b671e9d02b3982db7')
+sha256sums_x86_64=('436421ebbdc7feb4c59371bb9f3864a0326b83481b182a8f7ab9cf22cadc0172')
+sha256sums_armv6h=('6380ea0f17e005071d5a9994a24c36ab7356d57ff32302454a32e83414a705f6')
+sha256sums_armv7h=('6380ea0f17e005071d5a9994a24c36ab7356d57ff32302454a32e83414a705f6')
+sha256sums_aarch64=('4d8fa91ca40bb9f58c37ba73790130f3e10e20f2d7d7513521c5c749adaf2fab')
 
 package() {
   cd $srcdir/$_srcname-v$pkgver-$_arch
