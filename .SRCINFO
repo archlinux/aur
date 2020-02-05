@@ -1,16 +1,16 @@
 pkgbase = gudhi
-	pkgdesc = Generic open source C++ library, with a Python interface, for Topological Data Analysis (TDA) and Higher Dimensional Geometry Understanding.
+	pkgdesc = Geometry understanding in higher dimensions
 	pkgver = 3.0.0
-	pkgrel = 3
-	url = https://github.com/GUDHI/gudhi-devel
+	pkgrel = 2
+	url = https://gudhi.inria.fr/
 	arch = any
 	license = GPLv3
 	depends = eigen
 	depends = cgal
 	depends = boost
 	options = !emptydirs
-	source = https://github.com/GUDHI/gudhi-devel/archive/tags/gudhi-release-3.0.0.tar.gz
-	sha256sums = 2ca0df8622583e280ee23227bfe7ad7afd58c568b8171c145ccccc8a1a694445
+	source = https://gforge.inria.fr/frs/download.php/file/38130/gudhi.3.0.0.tar.gz
+	sha256sums = 5bc0fabf0ddf3b3bb79a63b030f667f30e74ce7fafae2b85ad73f1a25447d0ac
 
 pkgname = gudhi
 
