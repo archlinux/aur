@@ -16,7 +16,7 @@ pkgbase = qtutilities-git
 	depends = qt5-base
 	depends = mesa
 	optdepends = qtutilities-doc: API documentation
-	source = qtutilities::git://github.com/Martchus/qtutilities.git
+	source = qtutilities::git+https://github.com/Martchus/qtutilities.git
 	sha256sums = SKIP
 
 pkgname = qtutilities-git
