@@ -1,7 +1,7 @@
 # Maintainer: Donald Thackeray <donaldthackeray at gmail dot com>
 
 pkgname=cfm
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="TUI file manager with the goal of being simple, easy, and bloat-free, utilizing Vi-inspired keybinds."
 arch=('any')
