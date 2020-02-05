@@ -1,0 +1,19 @@
+pkgbase = mullpy
+	pkgdesc = Unofficial Mullvad CLI tool to check if you're secured
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/franccesco/mullpy
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python-requests
+	depends = python-colorama
+	depends = python-click
+	noextract = mullvad_python-0.3.1-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/m/mullvad_python/mullvad_python-0.3.1-py3-none-any.whl
+	source = https://raw.githubusercontent.com/franccesco/mullpy/master/LICENSE.md
+	sha256sums = cd3a939d4f70e5f5c362fdff3a2e8704e3e0c67f7d0cc695436f77d31293266c
+	sha256sums = 9766ae1f6b83bdd3aedb76980ce0644c674fd3f52eaaa06612d589731549fe43
+
+pkgname = mullpy
+
