@@ -2,7 +2,7 @@
 
 pkgname=runrestic
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A wrapper script for Restic backup software that inits, creates, prunes and checks backups'
 arch=(any)
 url='https://github.com/andreasnuesslein/runrestic'
@@ -11,15 +11,11 @@ depends=('python'
          'python-toml'
          'python-jsonschema')
 
-source=("runrestic-${pkgver}.tar.gz::https://github.com/andreasnuesslein/runrestic/archive/${pkgver}.tar.gz"
-        'runrestic.patch')
+source=("runrestic-${pkgver}.tar.gz::https://github.com/andreasnuesslein/runrestic/archive/${pkgver}.tar.gz")
 
-sha256sums=('654dbbedd073e00cde4961ebc1fbc4a380c6a7014778fa5920628f72b3e8d5a0'
-            'a0fddfa2891606da42b93da1bca5fbbbf51947bdfd6ffe573b4efeef3f8a0d03')
-
+sha256sums=('654dbbedd073e00cde4961ebc1fbc4a380c6a7014778fa5920628f72b3e8d5a0')
 package() {
   cd "${pkgname}-${pkgver}"
-  patch "${srcdir}/${pkgname}-${pkgver}/setup.py" "${srcdir}/runrestic.patch"
   python setup.py install --root="${pkgdir}/" --optimize=1
 
   sed -i 's%/usr/local%/usr%' sample/systemd/runrestic.service
