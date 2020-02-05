@@ -2,7 +2,7 @@
 
 pkgname=jesc-configurator-bin
 _pkgname=jesc-configurator
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="Flashing and configuring of JESC on BLHeli_S ESCs (see https://jflight.net)."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 "jesc-configurator.desktop"
 )
 
-sha256sums=('1620f6d932570f7ac333a8478501cf8af4204e0674c906110bec1be73f8cfc49'
+sha256sums=('9120f4e152ba8646ebd7bb0b36b37cd29c51fa64a223dd224ab52f2494397688'
             '0356279bd144225c42ad1605b02913ea013762d3de19e78e27281f966e4da947'
             '589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2'
             '507f26e8e54f6097e43a9b9cb6de6d231393a4ce18308745a29e1a605ac77ec7')
