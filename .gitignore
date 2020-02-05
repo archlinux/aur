@@ -1,0 +1,6 @@
+A  .SRCINFO
+A  PKGBUILD
+*.tar.xz
+*.tar.gz
+src/
+pkg/
