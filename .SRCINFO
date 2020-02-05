@@ -1,14 +1,14 @@
 pkgbase = emacs-projectile
 	pkgdesc = Project Interaction Library for Emacs
-	pkgver = 2.0.0
-	pkgrel = 11
+	pkgver = 2.1.0
+	pkgrel = 1
 	url = https://github.com/bbatsov/projectile
 	arch = any
 	license = GPL3
 	depends = emacs
 	depends = emacs-pkg-info
-	source = https://github.com/bbatsov/projectile/archive/v2.0.0.tar.gz
-	sha256sums = 4996f72ee8520983bee9b79c9a69ccca9bdd989fce07d66b854eb1bedc86fa3a
+	source = https://github.com/bbatsov/projectile/archive/v2.1.0.tar.gz
+	sha256sums = c74fc6f062ea16af9ffcec67f8ce379e56819f1a359ac86b670cf7cfe2415f7a
 
 pkgname = emacs-projectile
 
