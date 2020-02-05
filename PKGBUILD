@@ -1,13 +1,13 @@
-# Author: RedTide <redtid3@gmail.com>
+# Maintainer: RedTide <redtid3@gmail.com>
 
 srcname="archlinux-realtime-generic-setup"
 pkgname="realtime-generic-setup"
 pkgdesc="Generic realtime setup configuration"
 pkgver=r4.a423690
-pkgrel=1
+pkgrel=2
 arch=('any')
 install="${pkgname}.install"
-depends=('realtime-privileges')
+depends=('realtime-privileges' 'fakeroot')
 optdepends=('linux-rt: The Linux-rt kernel and modules'
             'htop: Interactive process viewer'
             'iotop: View I/O usage of processes'
@@ -18,7 +18,7 @@ optdepends=('linux-rt: The Linux-rt kernel and modules'
             'schedtool: Query or alter a process scheduling policy')
 url="https://github.com/redtide/${srcname}"
 source=("git://github.com/redtide/${srcname}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 pkgver() {
   cd "$srcname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"

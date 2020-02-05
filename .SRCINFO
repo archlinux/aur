@@ -1,11 +1,12 @@
 pkgbase = realtime-generic-setup
 	pkgdesc = Generic realtime setup configuration
 	pkgver = r4.a423690
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/redtide/archlinux-realtime-generic-setup
 	install = realtime-generic-setup.install
 	arch = any
 	depends = realtime-privileges
+	depends = fakeroot
 	optdepends = linux-rt: The Linux-rt kernel and modules
 	optdepends = htop: Interactive process viewer
 	optdepends = iotop: View I/O usage of processes
