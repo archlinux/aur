@@ -1,6 +1,6 @@
 pkgname=softu2f
 pkgver=0.4.0.r3.g14a6ed0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software U2F HID token daemon (rust-u2f)"
 arch=(x86_64)
 depends=(libdbus libsystemd openssl)
@@ -17,16 +17,17 @@ pkgver() {
 build() {
   cd rust-u2f/linux
   cargo build --release
+  sed -i 's,/libexec/,/lib/,' *-daemon/softu2f.service
 }
 
 package() {
   cd rust-u2f/linux
 
   install -Dm 755 target/release/softu2f-user-daemon \
-                  "$pkgdir"/usr/libexec/softu2f/user-daemon
+                  "$pkgdir"/usr/lib/softu2f/user-daemon
 
   install -Dm 755 target/release/softu2f-system-daemon \
-                  "$pkgdir"/usr/libexec/softu2f/system-daemon
+                  "$pkgdir"/usr/lib/softu2f/system-daemon
 
   install -Dm 644 user-daemon/softu2f.service \
                   "$pkgdir"/usr/lib/systemd/user/softu2f.service
