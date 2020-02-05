@@ -4,11 +4,11 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bigloo-devel
-_pkgver=4.3g-alpha18Jan20
+_pkgver=4.3g-alpha04Feb20
 pkgver=${_pkgver/-/_}
 majorver=4.3g
 pkgrel=1
-epoch=3
+epoch=4
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
 url="https://www-sop.inria.fr/mimosa/fp/Bigloo/"
@@ -20,7 +20,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=('bigloo')
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}${_pkgver}.tar.gz bigloo-emacs.patch)
-sha256sums=('4ae2fe475b430a66fd4e41caacfa3469e9a8deac26f15d56a78b0fcd827aa852'
+sha256sums=('698666811da4b3c246eba12b218a96c9a1691a59d3e1b8fc3fa33a35d9e1b7b2'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
