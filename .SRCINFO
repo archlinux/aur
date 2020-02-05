@@ -1,13 +1,16 @@
 pkgbase = runrestic
 	pkgdesc = A wrapper script for Restic backup software that inits, creates, prunes and checks backups
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andreasnuesslein/runrestic
 	arch = any
 	license = GPL3
+	checkdepends = python-pytest
+	depends = restic
 	depends = python
 	depends = python-toml
 	depends = python-jsonschema
+	depends = python-requests
 	source = runrestic-0.5.0.tar.gz::https://github.com/andreasnuesslein/runrestic/archive/0.5.0.tar.gz
 	sha256sums = 654dbbedd073e00cde4961ebc1fbc4a380c6a7014778fa5920628f72b3e8d5a0
 
