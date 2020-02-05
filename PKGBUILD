@@ -1,6 +1,6 @@
 pkgname=mtg
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='Bullshit-free MTProto proxy for Telegram'
 arch=('x86_64' 'armv7h' 'aarch64') # possibly others?
 url='https://github.com/9seconds/mtg'
