@@ -1,21 +1,22 @@
 # Maintainer: ValHue <vhuelamo at gmail dot com>
-# https://github.com/ValHue/AUR-PKGBUILDs
-
+#
+# Contributor: ValHue <vhuelamo at gmail dot com>
+#
 pkgname="apertium-viewer"
-pkgver=2.5.3
-pkgrel=1
+pkgver="2.5.5"
+pkgrel="1"
 pkgdesc="A tool to view and edit the output of the various stages of an apertium translation."
 url="http://wiki.apertium.org/wiki/Apertium-view"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('java-environment')
 conflicts=("${pkgname}")
-provides=("${pkgname}")
-source=("https://svn.code.sf.net/p/apertium/svn/builds/apertium-viewer/apertium-viewer.jar")
-sha256sums=('a445759095abb7c98b976032a07aa729740883eb52a3edb752eb33952033dc10')
-options=()
 
-_apertium_viewer_desktop="[Desktop Entry]
+source=("https://github.com/apertium/${pkgname}/releases/download/${pkgver}/${pkgname}.jar")
+sha256sums=('0bff75df8b36204869ef30bae60671d7226e42d9168dc35442aae88577058d03')
+
+_apertium_viewer_desktop="#!/usr/bin/env xdg-open
+[Desktop Entry]
 Encoding=UTF-8
 Version=1.0
 Type=Application
@@ -39,4 +40,4 @@ package() {
 	install -m 755 apertium-viewer "${pkgdir}/usr/bin/"
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim:set ts=4 sw=2 et syn=sh ft=sh:

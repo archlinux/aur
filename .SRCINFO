@@ -1,16 +1,15 @@
 pkgbase = apertium-viewer
 	pkgdesc = A tool to view and edit the output of the various stages of an apertium translation.
-	pkgver = 2.5.3
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = http://wiki.apertium.org/wiki/Apertium-view
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = java-environment
-	provides = apertium-viewer
 	conflicts = apertium-viewer
-	source = https://svn.code.sf.net/p/apertium/svn/builds/apertium-viewer/apertium-viewer.jar
-	sha256sums = a445759095abb7c98b976032a07aa729740883eb52a3edb752eb33952033dc10
+	source = https://github.com/apertium/apertium-viewer/releases/download/2.5.5/apertium-viewer.jar
+	sha256sums = 0bff75df8b36204869ef30bae60671d7226e42d9168dc35442aae88577058d03
 
 pkgname = apertium-viewer
 
