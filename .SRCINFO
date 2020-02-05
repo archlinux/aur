@@ -1,14 +1,13 @@
 pkgbase = google-webdesigner
 	pkgdesc = Create engaging, interactive HTML5-based designs and motion graphics that can run on any device.
 	pkgver = 7.1.1.1210
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.google.com/webdesigner
 	install = google-webdesigner.install
 	arch = x86_64
 	license = custom:webdesigner
 	depends = gtk2
 	depends = libudev0-shim
-	depends = gconf
 	depends = gcc-libs
 	depends = gdk-pixbuf2
 	depends = glibc
@@ -18,6 +17,7 @@ pkgbase = google-webdesigner
 	depends = libappindicator-gtk2
 	depends = nss
 	depends = libstdc++5
+	depends = wget
 	depends = xdg-utils
 	provides = google-webdesigner=7.1.1.1210
 	options = !emptydirs
