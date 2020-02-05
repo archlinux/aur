@@ -5,18 +5,21 @@ After=syslog.target network.target nss-lookup.target
 [Service]
 Type=notify
 NotifyAccess=all
-ExecStartPre=/usr/bin/tor -f /etc/tor/torrc --verify-config
-ExecStart=/usr/bin/tor -f /etc/tor/torrc
+ExecStartPre=/usr/bin/tor --runasdaemon 0 -f /etc/tor/torrc --verify-config
+ExecStart=/usr/bin/tor --runasdaemon 0 -f /etc/tor/torrc
 ExecReload=/bin/kill -HUP ${MAINPID}
 KillSignal=SIGINT
-TimeoutSec=60
+TimeoutSec=30
 Restart=on-failure
+RestartSec=1
 WatchdogSec=1m
 LimitNOFILE=32768
 
 # Hardening
 PrivateTmp=yes
 PrivateDevices=yes
+DeviceAllow=/dev/null rw
+DeviceAllow=/dev/urandom r
 ProtectHome=yes
 ProtectSystem=full
 ProtectKernelTunables=yes
