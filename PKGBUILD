@@ -8,7 +8,7 @@ pkgdesc="Finite Element Embedded Language and Library in C++"
 arch=('i686' 'x86_64')
 url="https://github.com/feelpp"
 license=('LGPL')
-depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'libbson' 'glpk' 'gsl' 'python' 'ginac')
+depends=('cln' 'mumps' 'slepc' 'gmsh' 'fftw' 'ann' 'glpk' 'gsl' 'python')
 makedepends=('cmake' 'clang')
 source=("${pkgname}-${pkgver}::git+https://github.com/feelpp/feelpp.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -17,6 +17,7 @@ prepare() {
   cd ${pkgname}-${pkgver}
   git submodule init
   git submodule update -f --init
+  curl -L https://github.com/feelpp/feelpp/pull/1415/commits/8b29331f5b2a4c6f47631b788829d5529eaf2d17.patch | patch -p1
 }
 
 build() {
@@ -34,7 +35,7 @@ build() {
     -DFEELPP_ENABLE_QUICKSTART=OFF \
     -DFEELPP_ENABLE_PYFEELPP_LIBFEELPP=OFF \
     -DFEELPP_ENABLE_DOCUMENTATION=OFF \
-    -DBUILD_GUILE=OFF -DBUILD_PYTHON=OFF \
+    -DFEELPP_ENABLE_GMSH=ON \
     ..
   # templates take a lot of ram
   make -j1

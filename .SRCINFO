@@ -14,11 +14,9 @@ pkgbase = feelpp
 	depends = gmsh
 	depends = fftw
 	depends = ann
-	depends = libbson
 	depends = glpk
 	depends = gsl
 	depends = python
-	depends = ginac
 	source = feelpp-0.107.0::git+https://github.com/feelpp/feelpp.git#tag=v0.107.0
 	sha256sums = SKIP
 
