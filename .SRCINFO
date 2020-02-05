@@ -8,6 +8,7 @@ pkgbase = python-pyarrow
 	checkdepends = git
 	checkdepends = python-hypothesis
 	checkdepends = python-pytest
+	checkdepends = python-pytest-lazy-fixture
 	makedepends = cmake
 	makedepends = cython
 	depends = arrow
