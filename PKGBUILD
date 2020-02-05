@@ -15,8 +15,8 @@ _json_export=${TAGEDITOR_JSON_EXPORT:-ON}
 _reponame=tageditor
 pkgname=tageditor-git
 _name=${pkgname%-git}
-pkgver=374.6b342ea
-pkgrel=1
+pkgver=529.f6852b2
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska'
 license=('GPL')
@@ -45,11 +45,13 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCONFIGURATION_NAME:STRING='git' \
+    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DWEBVIEW_PROVIDER="${_webview_provider}" \
     -DJS_PROVIDER="${_js_provider}" \
     -DENABLE_JSON_EXPORT="${_json_export}" \
-    -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator' \
+    -DREFLECTION_GENERATOR_EXECUTABLE:FILEPATH='/usr/bin/reflective_rapidjson_generator-git' \
     .
   make
 }
