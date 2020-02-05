@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/B-Lang-org/bsc'
 license=('custom')
 depends=()
-makedepends=('ghc' 'haskell-regex-compat' 'haskell-syb' 'haskell-old-time' 'fontconfig' 'libxft')
+makedepends=('git' 'gperf' 'ghc' 'haskell-regex-compat' 'haskell-syb' 'haskell-old-time' 'fontconfig' 'libxft')
 source=("git+https://github.com/B-Lang-org/bsc.git")
 md5sums=('SKIP')
 
