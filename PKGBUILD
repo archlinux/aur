@@ -51,7 +51,7 @@ _major=5.5
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -72,10 +72,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0003-ALSA-hda-Fix-DP-MST-support-for-NVIDIA-codecs.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0004-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0003-ALSA-hda-Fix-DP-MST-support-for-NVIDIA-codecs.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0004-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch"
+        "${_lucjanpath}/arch-patches-v6-sep/0005-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch"
          # the main kernel config files
         'config')
 
@@ -332,10 +333,11 @@ sha512sums=('f1241b5c53f96cdf0bfb48fbd1891f47f903e824041d4f6d3b9c26c8628b057dda0
             'SKIP'
             '375bbe85a513a9009d8bb87a63e64d0953ed3aea4f28289dda49cda003174320b347123364ec18133792c98541aaf7b8607fe4e56a0615f0cdabac42f12d3af8'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '8b19138d1e1e5394c468bba29af1efd1b3bee9b45d73dfb390e66fd64ffdf23893fd03893256edf521cd4d29b4e78ff33d6cf26393948149feb812c00d54d8f0'
-            '09d794cf2e20e8237b8dc6e31387e6b7ed1bd9dfc000ef02e6f59389bf4c783369b2628eb3719e33534ad041051b2a1f1a08d8c6175b279e94d49d6a6db76225'
-            '59eddca085f8ad2d3759dd7870cd2317206fdb9e089695808f44349f628a640aca3990bf17670c5a8b3a25d73d5b2b138c2cad0aaa5617dac9deea3b6c7f0f73'
-            '4e812ee9b624405991a3b636b00c9a2a832984c24764e9824857543bf4a3857e62810c5d5467f2cf43666f162c4c8290553e4dac5a25ae1593892e6dd8d89a5b'
+            '880998f75fde2d17799b4ae3477e4397f3c3ba2ac1feb5a87011c06683f207a506c61e77207ae663b21f78ec73cd81a53e1513f5a78cb4502d8ae95d50decab6'
+            'd0298b9b5d9506ad72ee8ce4268f3083523d5a6928fd83c1ee3d571cee3c1ddcaf50af72efaee481ba4f00079df4dccb9a2c67a60b94d2f87a01d943561a42da'
+            '21ed7bc278e2d1fc80f11d8a24501a80e6bc3a8f3ddbc1c8363100ee2576fc86f9fc1148a83eb71a906be4c3fd8291fa57f75d7fc3bb07e686d9bddf879e6964'
+            'b104d2d6c8ce922c079e5f019267bcd0507d5b0d6347b98659e06538e183e5359cf85184464dbe7bea8e1ac2144bb60f0e08e524cd73af9b9e5aa0c3eae7b9ed'
+            '92065c8ba270a62a8b97f021e5aee898faebd13e07bc49f0ab308421aa656fca9ef019f3a2bed00e0af0d15f28ffad2969b46bf36980b86a983000b962687662'
             'c2ccaf95a6de80893745ebc5b765e20afbc319e075bd1eda0c2d87845c5dd69b2a38d2207ffde1b323c0d5577cf9d18daa190559d2c603b3b2f46237851a1b65')
 
 validpgpkeys=(
