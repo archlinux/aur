@@ -1,3 +1,7 @@
 post_install() {
     echo 'Warning: ponyup requires being added to the PATH, please log out and back in, or "source /etc/profile.d/ponyup.sh" manually'
 }
+
+post_remove() {
+    echo 'Warning: ponyup was removed but applications installed through ponyup remains in "~/.local/share/ponyup/", which is no longer in PATH, consider removing it manually'
+}

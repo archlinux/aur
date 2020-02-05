@@ -1,7 +1,7 @@
 # Maintainer: Sérgio Gomes <superherointj at gmail dot com>
 
 pkgname=ponyup
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="The Pony language toolchain multiplexer"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "ponyup.sh"
 )
 sha256sums=(
-  'f50f68b869fc6fe5faed0cb005aa5526df82145d90099eeae26142391529a646'
+  'eaf46b5a181e69f86a2dd80829efb9aa3bf5e2b3cbe6933b4bab451aa4c21462'
   'e3685b937791d8fbd1a7d5181163395805d9454611ae384633603973f4b2fd6a'
 )
 install=ponyup.install
