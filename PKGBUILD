@@ -2,7 +2,7 @@
 
 _name=scvelo
 pkgname=python-$_name
-pkgver=0.1.21
+pkgver=0.1.25
 pkgrel=1
 pkgdesc='Stochastic Single Cell RNA Velocity'
 arch=(any)
@@ -24,7 +24,7 @@ depends=(
 _pyarch=py3
 _wheel="${_name/-/_}-$pkgver-$_pyarch-none-any.whl"
 source=("https://files.pythonhosted.org/packages/$_pyarch/${_name::1}/$_name/$_wheel")
-sha256sums=('0eaf59b5d4ca52415c2af380f3c1c1764236efb955022aa4d76c4197856e056d')
+sha256sums=('300b9eb8dcfc123960954659f8c0221b55772bc9c5e103411397217e5d2e3b6c')
 noextract=("$_wheel")
 
 package() {
