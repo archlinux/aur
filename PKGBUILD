@@ -2,17 +2,19 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.0.1.3574+proto
+pkgver=2.0.1.3648+grpc
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
 depends=(
-    'hicolor-icon-theme' 'qt5-base>5.11.0' 'qt5-charts>5.11.0'
-    'v2ray' 'v2ray-domain-list-community' 'v2ray-geoip' 'protobuf'
+    'hicolor-icon-theme' 'qt5-charts>5.11.0' 'grpc>=1.27.0'
 )
-makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'go')
+optdepends=(
+    'v2ray: use system v2ray'
+)
+makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'grpc-cli>=1.27.0')
 provides=('qv2ray')
 conflicts=('qv2ray')
 
@@ -23,15 +25,14 @@ source=(
     'x2struct::git+https://github.com/xyz347/x2struct'
     'qzxing::git+https://github.com/ftylitak/qzxing'
     'qhttpserver::git+https://github.com/nikhilm/qhttpserver'
-    'QvRPCBridge::git+https://github.com/Qv2ray/QvRPCBridge'
 )
 
 sha512sums=(
-    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
 pkgver() {
-    printf "%s.%s+proto" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
+    printf "%s.%s+grpc" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
 }
 
 prepare() {
@@ -42,21 +43,15 @@ prepare() {
         git config submodule."3rdparty/$module".url "${srcdir}/$module"
     done
     
-    git config submodule."libs/libqvb".url "${srcdir}/QvRPCBridge"
+    git config submodule."libs/libqvb".active false
     git config submodule."libs/gRPC-win32".active false
     git submodule update
-    
-    bash -c "${srcdir}/Qv2ray/tools/unix-generate-geosite.sh"
 }
 
 build() {
-    cd "${srcdir}/QvRPCBridge"
-    chmod +x ./build.sh && ./build.sh
-    ln -sf "${srcdir}/QvRPCBridge/build/libqvb.a" "${srcdir}/Qv2ray/libs/libqvb-linux64.a"
-
     cd "${srcdir}/Qv2ray"
     mkdir -p build && cd build
-    qmake 'CONFIG += with_new_backend' 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\\\"/usr/bin/v2ray\\\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\\\"/usr/lib/v2ray\\\"' PREFIX=/usr ../
+    qmake 'CONFIG += use_grpc' 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\\\"/usr/bin/v2ray\\\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\\\"/usr/lib/v2ray\\\"' PREFIX=/usr ../
     make
 }
 
