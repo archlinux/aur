@@ -16,7 +16,7 @@ pkgbase = tagparser-git
 	depends = c++utilities-git
 	depends = zlib
 	optdepends = tagparser-doc: API documentation
-	source = tagparser::git://github.com/Martchus/tagparser.git
+	source = tagparser::git+https://github.com/Martchus/tagparser.git
 	sha256sums = SKIP
 
 pkgname = tagparser-git
