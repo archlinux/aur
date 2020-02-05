@@ -6,8 +6,8 @@
 _reponame=qtutilities
 pkgname=qtutilities-git
 _name=${pkgname%-git}
-pkgver=163.6078f1221a
-pkgrel=1
+pkgver=325.6874917
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models'
 license=('GPL')
@@ -15,7 +15,7 @@ depends=('c++utilities-git' 'qt5-base' 'mesa')
 optdepends=("$_name-doc: API documentation")
 makedepends=('cmake' 'git' 'qt5-tools')
 #provides=("${_name}")
-conflicts=("${_name}")
+#conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
@@ -30,6 +30,9 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCONFIGURATION_NAME:STRING='git' \
+    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
+    -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
   make
