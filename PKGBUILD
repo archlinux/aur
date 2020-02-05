@@ -23,14 +23,22 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_libname}"
-	./bootstrap --prefix=/usr
+	./bootstrap --noconfigure
 
 }
 
 build() {
 
 	cd "${srcdir}/${_libname}"
+	./configure --prefix=/usr
 	make
+
+}
+
+check() {
+
+	cd "${srcdir}/${_libname}"
+	make check
 
 }
 
