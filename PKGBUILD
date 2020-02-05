@@ -5,7 +5,7 @@
 pkgname=exodus
 pkgver=20.1.30
 pkgrel=1
-pkgdesc="All-in-one app to secure, manage and exchange blockchain assets"
+pkgdesc="Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet"
 arch=('x86_64')
 url="https://exodus.io"
 license=('custom')
