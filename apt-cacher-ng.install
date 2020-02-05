@@ -1,5 +1,5 @@
 pre_install() {
-  groupadd apt-cacher-ng
+  groupadd -r apt-cacher-ng
   useradd -d /var/cache/apt-cacher-ng -g apt-cacher-ng -r -s /usr/bin/nologin apt-cacher-ng
 }
 
