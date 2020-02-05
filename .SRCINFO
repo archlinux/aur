@@ -11,7 +11,7 @@ pkgbase = x16-rom
 	makedepends = pandoc
 	optdepends = x16-emulator: emulator for the ROMs
 	source = x16-rom-r36.tar.gz::https://github.com/mist64/x16-rom/archive/r36.tar.gz
-	source = https://raw.githubusercontent.com/commanderx16/x16-emulator/r36/github-pandoc.css
+	source = https://raw.githubusercontent.com/mist64/x16-emulator/r36/github-pandoc.css
 	md5sums = 248d486c05320c7579abd7204a3f2b32
 	md5sums = 3accdbadaf70264c743b1f655f5dc146
 
