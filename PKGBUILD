@@ -7,7 +7,7 @@ pkgdesc="A columnar in-memory analytics layer for big data."
 arch=('x86_64')
 url="https://arrow.apache.org"
 license=('Apache')
-depends=('boost-libs' 'brotli' 'double-conversion' 'c-ares-cmake' 'gflags' 'grpc=1.25.0' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
+depends=('boost-libs' 'brotli' 'double-conversion' 'c-ares-cmake' 'gflags' 'grpc=1.27' 'google-glog' 'lz4' 'protobuf' 'rapidjson' 'snappy' 'thrift' 'uriparser' 'zstd')
 checkdepends=('git')
 optdepends=()
 provides=('parquet-cpp')
@@ -43,7 +43,8 @@ build(){
                                       -DARROW_USE_GLOG=ON \
                                       -DARROW_WITH_ZSTD=ON \
                                       -DARROW_WITH_BROTLI=ON \
-                                      -DGTest_SOURCE=BUNDLED
+                                      -DGTest_SOURCE=BUNDLED \
+                                      -DgRPC_ROOT="/usr"
   make
 }
 
@@ -60,8 +61,6 @@ check(){
    rm -rf arrow-testing
    git clone https://github.com/apache/arrow-testing.git
    cd build
-   # disable arrow-flight-test which is broken with grpc-1.26
-   # should be fixed with commit 72351f6 in grpc
-   PARQUET_TEST_DATA="$srcdir/parquet-testing/data" ARROW_TEST_DATA="$srcdir/arrow-testing/data" ctest -E arrow-flight-test
+   PARQUET_TEST_DATA="$srcdir/parquet-testing/data" ARROW_TEST_DATA="$srcdir/arrow-testing/data" make test
 }
 # vim:ts=2:sw=2:et:

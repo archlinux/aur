@@ -16,7 +16,7 @@ pkgbase = arrow
 	depends = double-conversion
 	depends = c-ares-cmake
 	depends = gflags
-	depends = grpc=1.25.0
+	depends = grpc=1.27
 	depends = google-glog
 	depends = lz4
 	depends = protobuf
