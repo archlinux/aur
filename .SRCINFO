@@ -1,5 +1,5 @@
 pkgbase = amlite
-	pkgdesc = Protocol Buffers with small code size
+	pkgdesc = AmScope software
 	pkgver = 20171117
 	pkgrel = 2
 	url = https://www.amscope.com/

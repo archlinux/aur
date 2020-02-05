@@ -5,7 +5,7 @@
 pkgname=amlite
 pkgver=20171117
 pkgrel=2
-pkgdesc='Protocol Buffers with small code size'
+pkgdesc='AmScope software'
 arch=('i686' 'x86_64')
 url='https://www.amscope.com/'
 license=('custom')
