@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=ShortRead
-_bcver=1.44.1
+_bcver=1.44.3
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=(r 'r-biocgenerics>=0.23.3' r-biocparallel 'r-biostrings>=2.47.6' 'r-rsa
 makedepends=(gcc)
 optdepends=(r-biocstyle r-runit r-biomart r-genomicfeatures r-yeastnagalakshmi)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-md5sums=('6db17bc451e51ef0e0bc6e6d5089e401')
+md5sums=('71cda3a16e9e7e225af0d993510e03e3')
 
 build() {
   cd "${srcdir}"
