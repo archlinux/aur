@@ -11,7 +11,7 @@ pkgdesc='Automatic error monitoring for django, flask, etc.'
 arch=('any')
 url="https://www.bugsnag.com/platforms/python-error-reporting"
 license=('MIT')
-source=("git+https://github.com/bugsnag/bugsnag-python.git")
+source=("git+https://github.com/bugsnag/bugsnag-python.git#branch=master")
 makedepends=('git' 'python-setuptools')
 depends=(
     'python'
