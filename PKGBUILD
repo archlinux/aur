@@ -3,14 +3,14 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.0.10'
+pkgver='0.0.11'
 pkgrel='2'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
 license=('GPL3+')
 groups=()
-depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus')
+depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'alsa-lib')
 makedepends=('git' 'rust')
 checkdepends=()
 optdepends=()
@@ -56,6 +56,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/bash-completion/completions"
     mkdir -p "$pkgdir/usr/share/zsh/site-functions"
     mkdir -p "$pkgdir/usr/share/eruption/i18n"
+    mkdir -p "$pkgdir/usr/share/eruption/sfx"
 
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 644 "support/config/eruption.conf" "$pkgdir/etc/eruption/"
@@ -74,8 +75,22 @@ package() {
     install -m 644 "src/scripts/afterglow.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/afterhue.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/afterhue.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz1.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz1.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz2.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz2.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz3.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz3.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz4.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz4.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz5.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/audioviz5.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/batique.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/batique.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/billow.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/billow.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/fbm.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/fbm.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/fire.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/fire.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/fireworks.lua" "$pkgdir/usr/lib/eruption/scripts/"
@@ -90,22 +105,34 @@ package() {
     install -m 644 "src/scripts/impact.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/multigradient.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/multigradient.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/perlin.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/perlin.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/rainbow.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/rainbow.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/raindrops.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/raindrops.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/rmf.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/rmf.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/shockwave.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/shockwave.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/sysmon.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/sysmon.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/temperature.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/voronoi.lua" "$pkgdir/usr/lib/eruption/scripts/"
+    install -m 644 "src/scripts/voronoi.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/water.lua" "$pkgdir/usr/lib/eruption/scripts/"
     install -m 644 "src/scripts/water.lua.manifest" "$pkgdir/usr/lib/eruption/scripts/"
+
+    install -m 644 "support/sfx/typewriter1.wav" "$pkgdir/usr/share/eruption/sfx/"
+    install -m 644 "support/sfx/phaser1.wav" "$pkgdir/usr/share/eruption/sfx/"
+    install -m 644 "support/sfx/phaser2.wav" "$pkgdir/usr/share/eruption/sfx/"
 
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/preset-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
 
     # Web-Frontend
     mkdir -p "$pkgdir/usr/share/eruption/templates"
@@ -123,6 +150,7 @@ package() {
     install -m 644 "templates/detail.html.tera" "$pkgdir/usr/share/eruption/templates/"
     install -m 644 "templates/documentation.html.tera" "$pkgdir/usr/share/eruption/templates/"
     install -m 644 "templates/profiles.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/soundfx.html.tera" "$pkgdir/usr/share/eruption/templates/"
     install -m 644 "templates/settings.html.tera" "$pkgdir/usr/share/eruption/templates/"
 
     install -m 644 "static/css/animate.css" "$pkgdir/usr/share/eruption/static/css/"
