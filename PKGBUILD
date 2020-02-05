@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -17,11 +17,13 @@ options=(!strip)
 # seems manjaro is keeping this current
 # https://gitlab.manjaro.org/packages?utf8=%E2%9C%93&filter=nvidia-340xx
 source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
-  unfuck-for-5.5.x.patch
+  01-unfuck-for-340.108-build-fix.patch
+  02-unfuck-for-5.5.x.patch
   fix_multi_core_build.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
-            '9144ed832f33b6a09a95ffe8fe3a2cdec198ab4ac270e861065992939fe8d9b6'
+            '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57'
+            'c28d65854dd03e6a9e00d79fa0ca3521c11b2c198882bbd50870c8e71d18d765'
             '82d14e9e6ec47c345d225d9f398238b7254cd5ae581c70e8521b9157ec747890')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
