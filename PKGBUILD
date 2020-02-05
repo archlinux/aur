@@ -16,7 +16,7 @@ replaces=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/commanderx16/x16-emulator.git"
+source=("git+https://github.com/mist64/x16-emulator.git"
 	"modify-base-path.patch")
 md5sums=('SKIP'
 	'5cd0550d2af1b4267c9b9f30eed9691e')
