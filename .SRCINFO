@@ -1,7 +1,7 @@
 pkgbase = apt-mirror
 	pkgdesc = APT sources mirroring tool
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apt-mirror.github.io/
 	arch = i686
 	arch = x86_64
