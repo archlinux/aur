@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Cecilia
+Comment=Audio signal processing environment aimed at sound designers
+Icon=cecilia
+Exec=cecilia
+Terminal=false
+Categories=AudioVideo;Audio;
