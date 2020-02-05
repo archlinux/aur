@@ -19,7 +19,7 @@ replaces=()
 options=()
 install=
 changelog=
-source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip")
+source=("https://github.com/mist64/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip")
 md5sums=('74510e5f2f7386a5f66181d001b9594b')
 
 package_x16-emulator-bin() {
