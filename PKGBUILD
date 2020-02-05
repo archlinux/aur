@@ -16,7 +16,7 @@ replaces=()
 options=()
 install=x16-rom.install
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/commanderx16/$pkgname/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mist64/$pkgname/archive/$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/commanderx16/x16-emulator/$pkgver/github-pandoc.css")
 md5sums=('248d486c05320c7579abd7204a3f2b32'
          '3accdbadaf70264c743b1f655f5dc146')
