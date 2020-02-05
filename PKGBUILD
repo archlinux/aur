@@ -1,7 +1,7 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-git
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
 url="https://github.com/squalou/google-chat-linux.git"
@@ -23,9 +23,6 @@ build() {
   cd dist
   ar x `ls -1 ${appname}*.deb|head -n 1`
   tar xJf data.tar.xz
-  #overwrite npm run dist generated dektop file by upstream provided desktop file
-  cp ../google-chat-linux.desktop ${srcdir}/${pkgname}/dist/usr/share/applications/google-chat-linux.desktop
-
 }
 
 package() {
