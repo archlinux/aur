@@ -6,8 +6,8 @@
 _reponame=tagparser
 pkgname=tagparser-git
 _name=${pkgname%-git}
-pkgver=374.c0336ed
-pkgrel=1
+pkgver=560.fb4633a
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library for reading and writing MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska tags'
 license=('GPL')
@@ -16,7 +16,7 @@ optdepends=("$_name-doc: API documentation")
 makedepends=('cmake' 'git')
 checkdepends=('cppunit' 'openssl')
 #provides=("${_name}")
-conflicts=("${_name}")
+#conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
@@ -31,6 +31,9 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCONFIGURATION_NAME:STRING='git' \
+    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
+    -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
   make
