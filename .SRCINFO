@@ -15,7 +15,7 @@ pkgbase = passwordfile-git
 	depends = c++utilities-git
 	depends = openssl
 	optdepends = passwordfile-doc: API documentation
-	source = passwordfile::git://github.com/Martchus/passwordfile.git
+	source = passwordfile::git+https://github.com/Martchus/passwordfile.git
 	sha256sums = SKIP
 
 pkgname = passwordfile-git
