@@ -1,0 +1,17 @@
+pkgbase = python-rubicon-objc-git
+	pkgdesc = A bridge interface between Python and Objective-C
+	pkgver = 0.3.1.r10.g8f87954
+	pkgrel = 1
+	url = https://github.com/beeware/rubicon-objc
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	provides = python-rubicon-objc
+	conflicts = python-rubicon-objc
+	source = git+https://github.com/beeware/rubicon-objc
+	md5sums = SKIP
+
+pkgname = python-rubicon-objc-git
+
