@@ -1,21 +1,34 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=luaepnf
-pkgname=lua-$_rockname
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.3
 _rockrel=1
-pkgrel=1
-pkgdesc="Extended PEG Notation Format (easy grammars for LPeg)"
+pkgrel=2
+pkgdesc='Extended PEG Notation Format (easy grammars for LPeg)'
 arch=('i686' 'x86_64')
-url="http://siffiejoe.github.com/lua-luaepnf/"
+url='https://siffiejoe.github.com/lua-luaepnf/'
 license=('MIT')
-depends=('lua' 'lua-lpeg')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('95455d167555e9716bf91300a987281eeed761330570f8b1e59fb84813480d55')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/siffiejoe/lua-$_rockname/archive/v$pkgver.tar.gz")
+sha256sums=('57c0ad1917e45c5677bfed0f6122da2baff98117aba05a5e987a0238600f85f9')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "lua-$_rockname-$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr" install --deps-mode=none --no-manifest "$_rockname-scm-0.rockspec"
+}
+
+package_lua-luaepnf() {
+  depends+=('lua' 'lua-lpeg')
+  _package_helper 5.3
+}
+
+package_lua52-luaepnf() {
+  depends+=('lua52' 'lua52-lpeg')
+  _package_helper 5.2
+}
+
+package_lua51-luaepnf() {
+  depends+=('lua51' 'lua51-lpeg')
+  _package_helper 5.1
 }
