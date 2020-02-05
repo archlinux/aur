@@ -1,12 +1,12 @@
 # Maintainer: Gao xiang<hughgao01@gmail.com>
-# Contributor: Anton Kudelin <kudelin at protonmail dot com>
+# Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=gamess
 pkgver=2019R2
-pkgrel=1
+pkgrel=2
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
-url="http://www.msg.ameslab.gov/GAMESS/GAMESS.html"
+url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
 license=('custom')
 depends=('tcsh' 'openblas-lapack' 'python')
 makedepends=('python-jinja')
