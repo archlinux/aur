@@ -16,7 +16,7 @@ license=('custom')
 depends=('cmark' 'pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2'
          'harfbuzz' 'nettle' 'fontconfig' 'libxcursor' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'git' 'python2' 'pandoc')
-conflicts=("aseprite-git" "aseprite-gpl")
+conflicts=("aseprite-git" "aseprite-gpl" "skia-git")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname^}-\
 v${pkgver}-Source.zip"
 "${pkgname}.desktop"
