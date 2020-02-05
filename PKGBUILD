@@ -7,7 +7,7 @@ _reponame=reflective-rapidjson
 _llvmver=9
 pkgname=reflective-rapidjson-git
 _name=${pkgname%-git}
-pkgver=172.d7e7bdb
+pkgver=197.c68d9ea
 pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON'
@@ -18,7 +18,7 @@ optdepends=("boost: use Boost.Hana instead of code generator"
 makedepends=('cmake' 'clang-tools-extra' 'llvm' 'git')
 checkdepends=('cppunit' 'boost')
 #provides=("${_name}")
-conflicts=("${_name}")
+#conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
@@ -33,6 +33,9 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCONFIGURATION_NAME:STRING='git' \
+    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
+    -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
   make
