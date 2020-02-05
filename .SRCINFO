@@ -23,7 +23,7 @@ pkgbase = reflective-rapidjson-git
 	depends = clang<10.0.0
 	optdepends = boost: use Boost.Hana instead of code generator
 	optdepends = reflective-rapidjson-doc: API documentation
-	source = reflective-rapidjson::git://github.com/Martchus/reflective-rapidjson.git
+	source = reflective-rapidjson::git+https://github.com/Martchus/reflective-rapidjson.git
 	sha256sums = SKIP
 
 pkgname = reflective-rapidjson-git
