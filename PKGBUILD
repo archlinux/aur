@@ -5,8 +5,8 @@
 _replace_stock_icons=0
 
 pkgname=indicator-notifications
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="A Recent notifications indicator"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/~jconti/+archive/ubuntu/recent-notifications"
@@ -15,12 +15,12 @@ depends=('libindicator-gtk3' 'libnotify')
 makedepends=('gnome-common')
 options=('strip')
 source=("https://launchpad.net/~jconti/+archive/ubuntu/recent-notifications/+files/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('c388c1b01413a953099168a797ea7fabcbf5fab95fb598305345a8b9eebeacc0')
+sha256sums=('2938c348a4d1e3bdfce6b92b6493f05e6e2a8fb49b00670118e9146056ccbd2e')
 if [[ "${_replace_stock_icons}" == '1' ]] ; then
 	source+=('indicator-notification-unread.svg::https://raw.githubusercontent.com/linuxmint/Cinnamon/master/files/usr/share/cinnamon/applets/notifications@cinnamon.org/icons/low-notif-symbolic.svg'
 			 'indicator-notification-read.svg::https://raw.githubusercontent.com/linuxmint/Cinnamon/master/files/usr/share/cinnamon/applets/notifications@cinnamon.org/icons/empty-notif-symbolic.svg')
-	sha256sums+=('28f64e4720cf55a7b657d83eb523016043d2ba15f45ce78d8da33dea04be25ed'
-				 'da9c65b539f0364121c42aa967212af06a4d9e7ad122562438f69e6686ebca9f')
+	sha256sums+=('1c03fe8b2258d02583cb6ec83329bbdd1c7f422ac10ebcb68b819db61f751fec'
+            'fcd11e4473d5757f7e846c2772f09c5885201c6991bd01d81d04ed2f82b05131')
 fi
 
 build() {
