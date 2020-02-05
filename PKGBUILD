@@ -18,7 +18,7 @@ optdepends=("$pkgname-doc: API documentation")
 install=
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('2e6fdb8dd920da6c99a1296bd2985545f752e205ff86ab2444825838d8086416')
+sha256sums=('d47b9776b7fa399fb3cb97f4819b11312c4313851ed5622f33378ba88718c2c6')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
