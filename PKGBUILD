@@ -8,7 +8,7 @@ depends=('fftw' 'python-numpy' 'python-scipy')
 makedepends=('cython')
 license=('BSD')
 arch=('i686' 'x86_64')
-source=("$_pyname-$pkgver.tag.gz::https://github.com/pyFFTW/pyFFTW/archive/v$pkgver.tar.gz")
+source=("$_pyname-$pkgver.tar.gz::https://github.com/pyFFTW/pyFFTW/archive/v$pkgver.tar.gz")
 md5sums=('68eb892a9de886a17fd6d25f73f13bb8')
 
 check() {

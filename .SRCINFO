@@ -10,7 +10,7 @@ pkgbase = python-pyfftw
 	depends = fftw
 	depends = python-numpy
 	depends = python-scipy
-	source = pyFFTW-0.12.0.tag.gz::https://github.com/pyFFTW/pyFFTW/archive/v0.12.0.tar.gz
+	source = pyFFTW-0.12.0.tar.gz::https://github.com/pyFFTW/pyFFTW/archive/v0.12.0.tar.gz
 	md5sums = 68eb892a9de886a17fd6d25f73f13bb8
 
 pkgname = python-pyfftw
