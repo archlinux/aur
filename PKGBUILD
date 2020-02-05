@@ -8,7 +8,7 @@ _major=5.5
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -53,7 +53,7 @@ prepare() {
   yes "" | make ARCH=um config >/dev/null
 
   make ARCH=um kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 
   echo "Save configuration for later reuse"
   cat .config > "${startdir}/config.last"
