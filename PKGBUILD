@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.5.1.arch1
+pkgver=5.5.2.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -102,7 +102,7 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '2a5e7c0c271d57e8a44c171986e769458c66479122219b283ee104d715d5fd116f521cd3a2068c16d563ec36241f781e4d3c5dda4225d70126b01e03f9991880'
+            'e90465deefe6457dc0ad59ee2acda1c1363698ec3dfd84d73f53b5bf2afd40e727edb34349194b2c4fb3d95877a5e448766b7f51b4459005709e6926247a39d2'
             'ae4bfb0ffa5ffaac000800eaaf67433700f826e3b63773ed980841f7377e6853687091b5ba0036a1d0badeb604ea0816280e22a2a67dbe2a370814091069562f'
             '42bcaf0d212fcdd88ee85569e17095dd4b96584af1884232b6c635fa095d0c6ffb7ac17130dba9f85f4e59b4d84a3d0af8aad640264ed2060d651ba4c665d2cc')
 
@@ -152,7 +152,8 @@ prepare() {
             exit
         fi
     fi
-
+    
+    # Set yield_type to 0
     sed -i -e 's/int sched_yield_type __read_mostly = 1;/int sched_yield_type __read_mostly = 0;/' ./kernel/sched/pds.c
 
     # do not run 'make olddefconfig' as it sets default options
