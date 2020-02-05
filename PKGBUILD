@@ -9,7 +9,7 @@ url="https://github.com/WillEccles/cfm"
 license=('MPL2')
 depends=('glibc')
 makedepends=('git')
-source=("https://github.com/WillEccles/cfm/archive/v0.4.4.tar.gz")
+source=("https://github.com/WillEccles/cfm/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
