@@ -1,0 +1,18 @@
+pkgbase = bluespec-git
+	pkgdesc = Bluespec Compiler (BSC)
+	pkgver = r3.cc623d8
+	pkgrel = 1
+	url = https://github.com/B-Lang-org/bsc
+	arch = x86_64
+	license = custom
+	makedepends = ghc
+	makedepends = haskell-regex-compat
+	makedepends = haskell-syb
+	makedepends = haskell-old-time
+	makedepends = fontconfig
+	makedepends = libxft
+	source = git+https://github.com/B-Lang-org/bsc.git
+	md5sums = SKIP
+
+pkgname = bluespec-git
+
