@@ -1,7 +1,7 @@
 pkgbase = python-giotto-tda
 	pkgdesc = A high performance topological machine learning toolbox in Python
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/giotto-ai/giotto-tda
 	arch = any
 	license = AGPL

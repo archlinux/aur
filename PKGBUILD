@@ -2,7 +2,7 @@
 _modulename=giotto-tda
 pkgname=python-$_modulename
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance topological machine learning toolbox in Python"
 arch=(any)
 url="https://github.com/giotto-ai/giotto-tda"
@@ -19,7 +19,7 @@ install=
 source=(
     "${url}/archive/v${pkgver}.tar.gz" 
     ripser::https://github.com/scikit-tda/ripser.py/archive/v0.4.1.tar.gz
-    gudhi-devel::https://github.com/giotto-ai/gudhi-devel/archive/a5476516e0d1d56842a15c5a79af0df3c1e50c5b.tar.gz
+    gudhi-devel::https://github.com/giotto-ai/gudhi-devel/archive/a5476516e0d1d56842a15c5a79af0df3c1e50c5b.tar.gz # branch 'giotto' at the time of writing
     pybind11::https://github.com/pybind/pybind11/archive/v2.4.3.tar.gz
     
 )
@@ -37,8 +37,8 @@ prepare() {
     rm -r gtda/externals/ripser 
     mv ../ripser.py-0.4.1 gtda/externals/ripser
 
-    rm -r gtda/externals/gudhi-devel 
-    mv ../gudhi-devel-giotto gtda/externals/gudhi-devel
+    rm -r gtda/externals/gudhi-devel
+    mv ../gudhi-devel-a5476516e0d1d56842a15c5a79af0df3c1e50c5b  gtda/externals/gudhi-devel
 
     mv ../pybind11-2.4.3 gtda/externals/pybind11
 }
