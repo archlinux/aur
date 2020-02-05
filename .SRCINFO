@@ -8,8 +8,8 @@ pkgbase = interviews
 	license = GPL
 	depends = libx11
 	depends = neuron
-	source = https://neuron.yale.edu/ftp/neuron/versions/v7.5/iv-19.tar.gz
-	md5sums = 79fde976b2c89590fb78854aa2c04101
+	source = https://neuron.yale.edu/ftp/neuron/versions/v7.7/iv-19.tar.gz
+	md5sums = 4ffb44b21c67f1126128953f349e24e4
 
 pkgname = interviews
 
