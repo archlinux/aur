@@ -4,12 +4,13 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://www.sile-typesetter.org/'
 license=('MIT')
 source=("https://github.com/simoncozens/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
 _lua_deps=('cassowary'
+           'cosmo'
            'cliargs'
            'expat'
            'filesystem'
