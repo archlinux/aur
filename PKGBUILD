@@ -1,6 +1,6 @@
 # Maintainer: JonnyRobbie
 
-pkgname=gimp-operation-negative-darkroom-git
+pkgname=gegl-operation-negative-darkroom-git
 pkgver=v1.0.r1.ge382508
 pkgrel=1
 pkgdesc="GEGL operation - Negative Darkroom"
