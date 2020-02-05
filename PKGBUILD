@@ -6,7 +6,7 @@ pkgdesc="A community project to provide a high-quality semi-tethered jailbreak t
 arch=("x86_64")
 url="https://checkra.in/"
 license=('unknown')
-source=("https://assets.checkra.in/downloads/linux/cli/x86_64/checkra1n")
+source=("https://assets.checkra.in/downloads/linux/cli/x86_64/eda98d55f500a9de75aee4e7179231ed828ac2f5c7f99c87442936d5af4514a4/checkra1n")
 sha256sums=("eda98d55f500a9de75aee4e7179231ed828ac2f5c7f99c87442936d5af4514a4")
 
 package() {
