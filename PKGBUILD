@@ -1,13 +1,13 @@
 # Maintainer: Skye Viau <skye.viau@gmail.com>
 pkgname="checkra1n"
 pkgver="0.9.8"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A community project to provide a high-quality semi-tethered jailbreak to all, based on the ‘checkm8’ bootrom exploit."
 arch=("x86_64")
 url="https://checkra.in/"
 license=('unknown')
-source=("https://assets.checkra.in/downloads/linux/cli/x86_64/accb40d1ca1746849c485cb8e6e2b57cc2ad49faef41018143673deab03f6788/checkra1n")
-sha256sums=("accb40d1ca1746849c485cb8e6e2b57cc2ad49faef41018143673deab03f6788")
+source=("https://assets.checkra.in/downloads/linux/cli/x86_64/checkra1n")
+sha256sums=("eda98d55f500a9de75aee4e7179231ed828ac2f5c7f99c87442936d5af4514a4")
 
 package() {
   cd "${srcdir}"
