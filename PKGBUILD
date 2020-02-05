@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=gudhi
 pkgver='3.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Geometry understanding in higher dimensions"
 arch=(any)
 url="https://gudhi.inria.fr/"
@@ -29,7 +29,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}.${pkgver}/build"
-    make DESTDIR=${pkgdir}/usr install 
+    make DESTDIR=${pkgdir} install 
     cd "${srcdir}/${pkgname}.${pkgver}/build/python"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
