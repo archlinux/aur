@@ -26,7 +26,7 @@ pkgbase = passwordmanager-git
 	optdepends = kirigami2: Qt Quick GUI
 	provides = passwordmanager
 	conflicts = passwordmanager
-	source = passwordmanager::git://github.com/Martchus/passwordmanager.git
+	source = passwordmanager::git+https://github.com/Martchus/passwordmanager.git
 	sha256sums = SKIP
 
 pkgname = passwordmanager-git

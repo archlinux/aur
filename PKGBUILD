@@ -20,7 +20,7 @@ optdepends=('kirigami2: Qt Quick GUI')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/Martchus/${_reponame}"
-source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git://github.com/Martchus}/${_reponame}.git")
+source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git+https://github.com/Martchus}/${_reponame}.git")
 sha256sums=('SKIP')
 
 # add further dependencies for the Qt Quick GUI (only kirigami2 is "pluggable")
