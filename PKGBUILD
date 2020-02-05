@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 pkgname=brackets
 pkgver=1.14.1
-pkgrel=1
+pkgrel=2
 _cef_ver=3.2785.1486
 _node_ver=6.11.0
 pkgdesc="An open source code editor for the web, written in JavaScript, HTML and CSS."
@@ -25,13 +25,21 @@ source=("git+https://github.com/adobe/brackets#tag=release-${pkgver//_/-}"
 	"jslint::git+https://github.com/peterflynn/JSLint"
 	"git+https://github.com/jrburke/requirejs"
 	"mustache::git+https://github.com/janl/mustache.js"
-	'https://patch-diff.githubusercontent.com/raw/adobe/brackets-shell/pull/648.patch'
+	"git+https://github.com/requirejs/i18n"
+	"git+https://github.com/requirejs/text"
+	"git+https://github.com/jblas/path-utils.git"
+	"git+https://github.com/mustache/spec"
+	"https://patch-diff.githubusercontent.com/raw/adobe/brackets-shell/pull/648.patch"
 	"http://s3.amazonaws.com/files.brackets.io/cef/cef_binary_${_cef_ver}_linux64_release.zip"
 	"http://nodejs.org/dist/v${_node_ver}/node-v${_node_ver}-linux-x64.tar.gz"
 	"https://github.com/adobe/brackets/releases/download/release-${pkgver}/Brackets.Release.${pkgver}.64-bit.deb"
 )
 noextract=("cef_binary_${_cef_ver}_linux64_release.zip" "node-v${_node_ver}-linux-x64.tar.gz")
 md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -46,10 +54,16 @@ prepare() {
 
 	cd ${srcdir}/${pkgname}
 	git config submodule.src/extensions/default/JSLint/thirdparty/jslint.url "$srcdir/jslint"
-	for i in mustache requirejs
+	for i in i18n mustache path-utils requirejs text
 	do
 		git config submodule.src/thirdparty/${i}.url "$srcdir/$i"
 	done
+	git submodule update --init
+
+	cd ${srcdir}/${pkgname}/src/thirdparty/mustache
+	git config submodule.test/spec.url "$srcdir/spec"
+	git submodule update --init
+
 	git submodule update --init --recursive
 
 	cd ${srcdir}/brackets-shell
