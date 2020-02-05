@@ -6,8 +6,8 @@
 _reponame=passwordfile
 pkgname=passwordfile-git
 _name=${pkgname%-git}
-pkgver=45.2b28fbcc66
-pkgrel=1
+pkgver=105.b1a55de
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='C++ library to read/write passwords from/to encrypted files using AES-256-CBC via OpenSSL'
 license=('GPL')
@@ -16,7 +16,7 @@ optdepends=("$_name-doc: API documentation")
 makedepends=('cmake' 'git')
 checkdepends=('cppunit')
 #provides=("${_name}")
-conflicts=("${_name}")
+#conflicts=("${_name}")
 install=
 url="https://github.com/Martchus/${_reponame}"
 source=("${_reponame}::${MARTCHUS_GIT_URL_PREFIX:-git://github.com/Martchus}/${_reponame}.git")
@@ -32,6 +32,9 @@ build() {
   cmake \
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
+    -DCONFIGURATION_NAME:STRING='git' \
+    -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
+    -DCONFIGURATION_TARGET_SUFFIX:STRING='git' \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     .
   make
