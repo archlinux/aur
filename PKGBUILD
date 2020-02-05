@@ -1,7 +1,7 @@
 # Maintainer: Shiv Upadhyay <shivnupadhyay@gmail.com>
 pkgname=rigetti-quilc-git
 _pkgname=quilc
-pkgver=r493.d102d70
+pkgver=r494.b729f62
 pkgrel=1
 pkgdesc="The @rigetti optimizing Quil compiler."
 arch=('x86_64' 'i686')
@@ -13,6 +13,7 @@ checkdepends=()
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=(!strip)
 source=("git+https://github.com/rigetti/quilc.git")
 sha256sums=('SKIP')
 
