@@ -1,0 +1,4 @@
+pkg/
+qvm/
+src/
+*.tar.gz

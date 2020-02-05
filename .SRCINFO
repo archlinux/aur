@@ -1,0 +1,21 @@
+pkgbase = rigetti-qvm-git
+	pkgdesc = The @rigetti high-performance quantum virtual machine.
+	pkgver = r414.639e42f
+	pkgrel = 1
+	url = https://github.com/rigetti/qvm
+	arch = x86_64
+	arch = i686
+	license = Apache
+	license = AGPL3
+	makedepends = git
+	depends = sbcl
+	depends = quicklisp
+	depends = rigetti-quilc-git
+	provides = qvm
+	conflicts = qvm
+	options = !strip
+	source = git+https://github.com/rigetti/qvm.git
+	sha256sums = SKIP
+
+pkgname = rigetti-qvm-git
+
