@@ -3,7 +3,7 @@
 
 pkgname=aocl
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -18,7 +18,7 @@ options=('staticlibs' '!strip')
 depends=('env-modules')
 install=aocl.install
 sha256sums=(
-	"4fd14dc838ce13a6d1468ed0812905b102d85709b17ab8228513da37448d2993"
+	"e47320299b35a17a60bd3ea4b49263a7ae6a85f1acb86e9a5d9cad6c1e027c45"
 	"SKIP"
 	"SKIP"
 )
