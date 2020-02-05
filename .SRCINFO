@@ -1,16 +1,16 @@
 pkgbase = octave-optiminterp
 	pkgdesc = An optimal interpolation toolbox for octave. This package provides functions to perform a n-dimensional optimal interpolations of arbitrarily distributed data points.
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	url = https://octave.sourceforge.io/optiminterp/
 	install = octave-optiminterp.install
 	arch = any
 	groups = octave-forge
 	license = GPL3
-	depends = octave>=2.9.9
-	noextract = optiminterp-0.3.5.tar.gz
-	source = https://downloads.sourceforge.net/octave/optiminterp-0.3.5.tar.gz
-	sha256sums = d60b5e4788b25464a7a158eb7b6a92f9d5a59557697defaae58fb289e2b3b096
+	depends = octave>=3.6.0
+	noextract = optiminterp-0.3.6.tar.gz
+	source = https://downloads.sourceforge.net/octave/optiminterp-0.3.6.tar.gz
+	sha256sums = 8cfaa84e8c21ec93ce5bdae24655f446a7c0f93c4a7062b2b6ebb35ca590df16
 
 pkgname = octave-optiminterp
 

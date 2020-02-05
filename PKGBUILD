@@ -9,14 +9,14 @@
 
 _pack=optiminterp
 pkgname=octave-$_pack
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="An optimal interpolation toolbox for octave. This package provides functions to perform a n-dimensional optimal interpolations of arbitrarily distributed data points."
 arch=(any)
 url="https://octave.sourceforge.io/$_pack/"
 license=('GPL3')
 groups=('octave-forge')
-depends=('octave>=2.9.9')
+depends=('octave>=3.6.0')
 makedepends=()
 optdepends=()
 backup=()
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('d60b5e4788b25464a7a158eb7b6a92f9d5a59557697defaae58fb289e2b3b096')
+sha256sums=('8cfaa84e8c21ec93ce5bdae24655f446a7c0f93c4a7062b2b6ebb35ca590df16')
 
 _octave_run() {
 	taskset -c 0 octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
