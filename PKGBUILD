@@ -23,7 +23,7 @@ prepare() {
 
 package() {
 	install -d "$pkgdir/usr/lib/$pkgname"
-	cp -a opt/Android Messages/resources/* "$pkgdir/usr/lib/$pkgname"
+	cp -a "opt/Android Messages/resources"/* "$pkgdir/usr/lib/$pkgname"
 
 	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 
