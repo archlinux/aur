@@ -28,7 +28,7 @@ pkgbase = syncthingtray
 	optdepends = kio: KIO plugin for Syncthing actions in Dolphin
 	optdepends = plasma-workspace: Plasmoid for Plasma 5 desktop
 	source = syncthingtray-0.10.6.tar.gz::https://github.com/Martchus/syncthingtray/archive/v0.10.6.tar.gz
-	sha256sums = 7c0b7e760d37149ae87d66af5887f85e08bed45bf1891eee82271463e6824216
+	sha256sums = 693682f4925c311c6dfa7d95333a1f94725c2d4d17170f7d6d3b5a667a52a2c6
 
 pkgname = syncthingtray
 
