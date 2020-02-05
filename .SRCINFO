@@ -1,6 +1,6 @@
 pkgbase = libbacktrace-git
 	pkgdesc = Library to produce symbolic backtraces
-	pkgver = r21.5a99ff7
+	pkgver = r22.559ab7c
 	pkgrel = 1
 	url = https://github.com/ianlancetaylor/libbacktrace
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libbacktrace-git
-pkgver=r21.5a99ff7
+pkgver=r22.559ab7c
 pkgrel=1
 pkgdesc="Library to produce symbolic backtraces"
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ build() {
 
   ./configure \
     --prefix="/usr" \
+    --enable-shared \
     --with-system-libunwind
   make
 }
@@ -41,5 +42,5 @@ package() {
   cd "libbacktrace"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/libbacktrace/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libbacktrace"
 }
