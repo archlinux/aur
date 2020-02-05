@@ -1,0 +1,14 @@
+pkgbase = gimp-operation-negative-darkroom-git
+	pkgdesc = GEGL operation - Negative Darkroom
+	pkgver = v1.0.r1.ge382508
+	pkgrel = 1
+	url = https://gitlab.com/JonnyRobbie/gimp-plugin-analog
+	arch = any
+	license = GPLv3
+	makedepends = gegl
+	depends = gegl
+	source = git+https://gitlab.com/JonnyRobbie/gimp-plugin-analog.git
+	md5sums = SKIP
+
+pkgname = gimp-operation-negative-darkroom-git
+
