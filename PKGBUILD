@@ -2,7 +2,7 @@
 
 pkgname=notcurses
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
 license=('Apache')
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
   make
 }
 
@@ -28,7 +28,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}/build"
-  make install
+  make DESTDIR="$pkgdir/" install
 }
 
 sha256sums=('f5715711b4a9a8aa2aa648230a5cc5e1e0b82ac07a6d72cd92399b67d887c381')
