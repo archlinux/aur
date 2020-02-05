@@ -4,8 +4,8 @@
 pkgname=lll
 _reponame=solidity
 pkgver=0.6.1
-_commit=c8a2cb62832afb2dc09ccee6fd42c1516dfdb981
-pkgrel=1
+_commit=e6f7d5a49267f30c8dbf3ba2655c72012b5ccaa1
+pkgrel=2
 pkgdesc='The Lovely Little Language compiler for Ethereum smart contracts'
 arch=('x86_64')
 url='https://github.com/ethereum/solidity'
