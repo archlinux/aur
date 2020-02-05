@@ -3,7 +3,7 @@
 
 pkgname=git-bug
 pkgver=0.6.0
-pkgrel=1
+pkgrel=1.3
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64' 'i686')
 url="https://github.com/MichaelMure/${pkgname}"
