@@ -1,5 +1,5 @@
 pkgbase = dooble
-	pkgdesc = Colorful Web browser
+	pkgdesc = Dooble is the weather bug browser.
 	pkgver = 2020.02.02
 	pkgrel = 1
 	url = https://textbrowser.github.io/dooble/
