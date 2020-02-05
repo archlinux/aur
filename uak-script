@@ -54,7 +54,7 @@ if [[ $ACTION == "install-preset" ]]; then
             continue
         fi
 
-        do_uak add "$preset_kernel_version" "$kernel" $(echo /boot/*-ucode.img) "${!preset_initrd}" 
+        do_uak install "$preset_kernel_version" "$kernel" $(echo /boot/*-ucode.img) "${!preset_initrd}" 
     done
 
     exit 0

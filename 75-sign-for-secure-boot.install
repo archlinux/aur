@@ -6,7 +6,7 @@ if [[ ! "$UAK_EFI_KEYS_PATH" ]]; then
     UAK_EFI_KEYS_PATH=/etc/efi-keys
 fi
 
-if [[ "$COMMAND" == "add" ]]; then
+if [[ "$COMMAND" == "install" ]]; then
     sign=1
 
     if [[ ! -f "$UAK_EFI_KEYS_PATH/db.crt" ]]; then

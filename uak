@@ -47,7 +47,7 @@ function die() {
 
 function usage() {
     echo "Usage:"
-    echo "        $0 add KERNEL-VERSION KERNEL-IMAGE [INITRD-FILE ...]"
+    echo "        $0 install KERNEL-VERSION KERNEL-IMAGE [INITRD-FILE ...]"
     echo "        $0 remove KERNEL-VERSION"
     echo "        $0 regenerate"
 }
@@ -92,7 +92,7 @@ export UAK_ESP_TARGET="$UAK_ESP_PATH/EFI/Linux"
 COMMAND="$1"
 
 case "$COMMAND" in
-    add)
+    install)
         check_root
 
         KERNEL_VERSION="$2"
