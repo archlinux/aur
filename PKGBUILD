@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue-bin
-pkgver='0.1.4'
+pkgver='0.1.6'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -14,11 +14,9 @@ source=(
     "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-amd64"
     "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-amd64"
 )
-sha256sums=(
-    '8e156d1037a88448219d9c5bdbc844799e616604985c86a83541f0a23481f302'
-    '039d11971a190562210fc9ee2a1504256fd1440b9471e1bbbc9bbb86eca3ce49'
-    '5933369d330b45e98adf2b7847b6d63314d590c7c78f4bf243a7189cc4b6fd4a'
-)
+sha256sums=('6b11643497cedfa7517d1c041951be907f6e138e8efc339cd36309943995b8f1'
+            '039d11971a190562210fc9ee2a1504256fd1440b9471e1bbbc9bbb86eca3ce49'
+            '5933369d330b45e98adf2b7847b6d63314d590c7c78f4bf243a7189cc4b6fd4a')
 
 
 package() {
