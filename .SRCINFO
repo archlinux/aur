@@ -1,7 +1,7 @@
 pkgbase = spipgm-bin
 	pkgdesc = Tool for programming serial SPI FlashROM memories attached to PC via parallel port cable
-	pkgver = 2.28
-	pkgrel = 2
+	pkgver = 2.29
+	pkgrel = 1
 	url = http://rayer.g6.cz/programm/programe.htm
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = spipgm-bin
 	makedepends = unzip
 	options = !strip
 	source = http://rayer.g6.cz/programm/spipgm.zip
-	md5sums = a3c90331707e1db92c3f2baedebf3c55
+	md5sums = 8a121449041cc0a1a57a47ae0ac11290
 
 pkgname = spipgm-bin
 
