@@ -4,7 +4,6 @@
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 # Contributor: Hawdaa
-# Contributor: Xantares
 
 pkgname=slepc
 pkgver=3.12.2
@@ -14,18 +13,13 @@ arch=('i686' 'x86_64')
 url="http://slepc.upv.es"
 license=('BSD')
 depends=('petsc>=3.12' 'petsc<3.13')
+makedepends=('python')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
 sha256sums=('a586ce572a928ed87f04961850992a9b8e741677397cbaa3fb028323eddf4598')
 
 export MAKEFLAGS="-j1"
 
-prepare() {
-	# force using python2
-	find ${srcdir} -name "*" -type f -exec \
-	sed -i 's#\(/usr/bin/env \|/usr/bin/\)python[2-3]*#\1python2#' {} \;
-
-}
 
 build() {
 	# get SLEPC_DIR
@@ -39,7 +33,7 @@ build() {
 	unset PETSC_ARCH
 	export SLEPC_DIR=${_build_dir}
 
-	python2 ./configure --prefix=${pkgdir}${_install_dir}
+	python ./configure --prefix=${pkgdir}${_install_dir}
 	make
 }
 
