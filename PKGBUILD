@@ -7,7 +7,7 @@
 pkgname=tllocalmgr-git
 _pkgname='texlive-localmanager'
 pkgver=v0.7.r3.gbbd8488
-pkgrel=1
+pkgrel=2
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
@@ -24,9 +24,11 @@ depends=('texlive-core>=2011'
 makedepends=('git')
 
 source=("${_pkgname}::git://git.archlinux.org/users/remy/texlive-localmanager.git"
-        'tllocalmgr.patch')
+        'tllocalmgr-enhance.patch'
+        'tllocalmgr-fix-texlive-local-match.patch')
 sha256sums=('SKIP'
-            '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236')
+            '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236'
+            'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7')
 
 pkgver() {
   cd $_pkgname
@@ -38,7 +40,11 @@ prepare() {
 
   # enhances the tllocalmgr script a bit
   # thanks: @sharethewisdom and @cobaltspace
-  patch -p1 < "$srcdir/tllocalmgr.patch"
+  patch -p1 < "$srcdir/tllocalmgr-enhance.patch"
+
+  # fix missing exclusion of matches for texlive local packages
+  # thanks: @CaptainBern
+  patch -p1 < "$srcdir/tllocalmgr-fix-texlive-local-match.patch"
 }
 
 package() {

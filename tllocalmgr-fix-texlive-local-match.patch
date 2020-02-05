@@ -1,0 +1,13 @@
+diff --git a/tllocalmgr b/tllocalmgr
+index b947ed2..b8d75dc 100755
+--- a/tllocalmgr
++++ b/tllocalmgr
+@@ -140,7 +140,7 @@ chomp(my @pacman = `pacman -Qs ^texlive- | egrep ^local | cut -d'/' -f2`);
+ my @localpacman = grep { /^texlive-local-/ } @pacman;
+ # To have the standard collections we get rid of 
+ # texlive-local-<pkg> and texlive-localmanager:
+-my @collpacman = grep { !/^texlive-local/ } @pacman; 
++my @collpacman = grep { !/^(texlive-local|tllocalmgr)/ } @pacman; 
+ 
+ if (@localpacman) {
+ 	foreach (@localpacman) {
