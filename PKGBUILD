@@ -1,12 +1,12 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: xantares < xantares09 at hotmail dot com >
 
-_commit=b0ebe7555c291808db29377ba79cb8326301f0a6  # 0.23.18.1
+_commit=762cdaa2cd5c5ec09cc844f9a6bdc551c7f6c8ed  # 0.23.20
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-p11-kit
-pkgver=0.23.18.1
-pkgrel=2
+pkgver=0.23.20
+pkgrel=1
 pkgdesc="Provides a way to load and enumerate PKCS#11 modules (mingw-w64)"
 arch=('any')
 url="https://p11-glue.freedesktop.org"
