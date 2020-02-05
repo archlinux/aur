@@ -1,0 +1,14 @@
+pkgbase = swaynag-battery
+	pkgdesc = Shows a message when your battery is discharging
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/m00qek/swaynag-battery
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	source = https://github.com/m00qek/swaynag-battery/archive/v0.1.1.tar.gz
+	sha256sums = 6c36fa0d7804e1b959d8207b5bdc24b95f499f8d403833ec470d83765af2ec16
+
+pkgname = swaynag-battery
+
