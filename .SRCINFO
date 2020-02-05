@@ -1,6 +1,6 @@
 pkgbase = alock-git
 	pkgdesc = Simple transparent screen-lock
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/Arkq/alock
 	arch = i686
