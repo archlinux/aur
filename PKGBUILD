@@ -3,12 +3,12 @@
 pkgname=cfm
 pkgver=0.4.4
 pkgrel=1
-pkgdesc="TUI file manager with some features here and there. It's quick and light with VIM-like bindings."
+pkgdesc="TUI file manager with the goal of being simple, easy, and bloat-free, utilizing Vi-inspired keybinds."
 arch=('any')
 url="https://github.com/WillEccles/cfm"
 license=('MPL2')
 depends=('glibc')
-makedepends=('git')
+makedepends=()
 source=("https://github.com/WillEccles/cfm/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
