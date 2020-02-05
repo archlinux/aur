@@ -10,7 +10,7 @@
 
 pkgbase=calibre-git
 pkgname=(calibre-common-git calibre-git calibre-python3-git)
-pkgver=4.6.0.r6.g15e247f88a
+pkgver=4.8.0.r0.g75bf8b69c3
 pkgrel=1
 _dictionaries_commit="libreoffice-6.4.0.0.beta1"
 pkgdesc="Ebook management application"
