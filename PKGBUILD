@@ -17,7 +17,7 @@ options=()
 install=x16-rom.install
 changelog=
 source=("git+https://github.com/mist64/x16-rom.git"
-	"https://raw.githubusercontent.com/commanderx16/x16-emulator/master/github-pandoc.css")
+	"https://raw.githubusercontent.com/mist64/x16-emulator/master/github-pandoc.css")
 md5sums=('SKIP'
          'SKIP')
 
