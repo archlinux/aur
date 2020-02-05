@@ -51,9 +51,7 @@ package_nautilus-pdf-tools-git() {
 	cp -r src/pdf-tools/*.py "$pkgdir/usr/share/nautilus-python/extensions/pdf-tools"
 	install -Dm644 data/icons/updf.svg -t \
 		"$pkgdir/usr/share/nautilus-python/extensions/pdf-tools/icons"
-	install -Dm644 data/icons/pdf-tools-password-hide.svg -t \
-		"$pkgdir/usr/share/icons/hicolor/scalable/status"
-	install -Dm644 data/icons/pdf-tools-password-show.svg -t \
+	install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/status"
 	install -Dm644 debian/changelog -t "$pkgdir/usr/share/nautilus-python/extensions/pdf-tools"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
@@ -73,9 +71,7 @@ package_nemo-pdf-tools-git() {
 	cp -r src/pdf-tools/*.py "$pkgdir/usr/share/nemo-python/extensions/pdf-tools"
 	install -Dm644 data/icons/updf.svg -t \
 		"$pkgdir/usr/share/nemo-python/extensions/pdf-tools/icons"
-	install -Dm644 data/icons/pdf-tools-password-hide.svg -t \
-		"$pkgdir/usr/share/icons/hicolor/scalable/status"
-	install -Dm644 data/icons/pdf-tools-password-show.svg -t \
+	install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/status"
 	install -Dm644 debian/changelog -t "$pkgdir/usr/share/nemo-python/extensions/pdf-tools"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
@@ -95,9 +91,7 @@ package_caja-pdf-tools-git() {
 	cp -r src/pdf-tools/*.py "$pkgdir/usr/share/python-caja/extensions/pdf-tools"
 	install -Dm644 data/icons/updf.svg -t \
 		"$pkgdir/usr/share/python-caja/extensions/pdf-tools/icons"
-	install -Dm644 data/icons/pdf-tools-password-hide.svg -t \
-		"$pkgdir/usr/share/icons/hicolor/scalable/status"
-	install -Dm644 data/icons/pdf-tools-password-show.svg -t \
+	install -Dm644 data/icons/pdf-tools-password-{hide,show}.svg -t \
 		"$pkgdir/usr/share/icons/hicolor/scalable/status"
 	install -Dm644 debian/changelog -t "$pkgdir/usr/share/python-caja/extensions/pdf-tools"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
