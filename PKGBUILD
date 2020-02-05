@@ -18,8 +18,8 @@ options=()
 install=
 changelog=
 source=("git+https://github.com/commanderx16/x16-docs.git"
-	"https://raw.githubusercontent.com/commanderx16/x16-emulator/master/github-pandoc.css"
-	"https://raw.githubusercontent.com/commanderx16/x16-emulator/master/mdtohtml.lua")
+	"https://raw.githubusercontent.com/mist64/x16-emulator/master/github-pandoc.css"
+	"https://raw.githubusercontent.com/mist64/x16-emulator/master/mdtohtml.lua")
 md5sums=('SKIP'
          'SKIP'
          'SKIP')
