@@ -3,7 +3,7 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1358.ced4d83
+pkgver=r1379.191f135
 pkgrel=1
 
 pkgname=$_pkgname-git
@@ -32,8 +32,6 @@ pkgver() {
 }
 
 prepare() {
-  rm -Rf build
-  mkdir build
   cd $pkgname
 
   git submodule init
@@ -47,24 +45,19 @@ prepare() {
 }
 
 build() {
-  cd build
-  CFLAGS="$CFLAGS -Wno-unused-parameter"
-  CFLAGS="$CFLAGS -Wno-maybe-uninitialized"
-  arch-meson "." "../$pkgname" \
-        -Ddocs=true \
-        -Daudit=true \
-        -Dsystem-console-users=gdm
-  ninja
+  arch-meson $pkgname build \
+    -D audit=true \
+    -D docs=true \
+    -D system-console-users=gdm,sddm,lightdm,lxdm
+  ninja -C build
 }
 
 check() {
-  cd build
-  meson test
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd build
-  DESTDIR="$pkgdir" meson install
+  DESTDIR="$pkgdir" meson install -C build
 }
 
 # vim:set sw=2 et:
