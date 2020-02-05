@@ -1,10 +1,11 @@
-# Maintainer: Aleksey Filippov <sarum9in@gmail.com>
+# Maintainer: Lisa White <lisa.rsfp+dev@gmail.com>
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Aleksey Filippov <sarum9in@gmail.com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 _pkgbase=pika
 pkgname=(python-${_pkgbase} python2-${_pkgbase})
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A pure-Python implementation of the AMQP 0-9-1 protocol"
 arch=(any)
@@ -13,7 +14,7 @@ license=('GPL')
 depends=()
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/$_pkgbase/$_pkgbase/archive/$pkgver.tar.gz")
-sha256sums=('e94af105a9ed27a4f82d19d2ade1ddd12cbf3971463e09f4f44a28a4fefe53ef')
+sha256sums=('a0bd28351cc8a7437b8680a9d716d920f35cd5be307240d27644d5f15bc9a7dc')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
