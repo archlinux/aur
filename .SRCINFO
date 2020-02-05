@@ -1,13 +1,10 @@
 pkgbase = calendar-indicator
-	pkgdesc = An indicator for google calendar.
-	pkgver = 0.3.4
-	pkgrel = 3
-	url = http://www.atareao.es/apps/calendar-indicator-o-google-calendar-en-ubuntu/
-	arch = i686
-	arch = x86_64
+	pkgdesc = An indicator for Google calendar.
+	pkgver = 0.4.0.0extras19.04.1
+	pkgrel = 1
+	url = https://www.atareao.es/aplicacion/calendar-indicator-o-google-calendar-en-ubuntu/
+	arch = any
 	license = GPL3
-	makedepends = python2-distutils-extra
-	makedepends = python2-polib
 	depends = libappindicator-gtk3
 	depends = python
 	depends = shared-mime-info
@@ -15,10 +12,9 @@ pkgbase = calendar-indicator
 	depends = python-dateutil
 	depends = python-jinja
 	depends = python-requests
-	provides = calendar-indicator
 	conflicts = calendar-indicator-bzr
-	source = https://launchpad.net/~atareao/+archive/ubuntu/atareao/+files/calendar-indicator_0.3.4-0extras15.10.0.tar.xz
-	sha256sums = 4fbfbc8826eb823d0bc8dc025c3505740be24787083be53a3007f7fbdd5eb227
+	source = calendar-indicator_0.4.0-0extras19.04.1.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/atareao/+sourcefiles/calendar-indicator/0.4.0-0extras19.04.1/calendar-indicator_0.4.0-0extras19.04.1.tar.xz
+	sha256sums = 5299dacd33443196ab41fc0e593a4d56c7815cdfab02b9ce00b9da83cdc5f3fe
 
 pkgname = calendar-indicator
 
