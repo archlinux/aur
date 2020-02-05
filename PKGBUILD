@@ -1,7 +1,7 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=datadog-agent
-pkgver=6.14.0
+pkgver=7.17.0
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
@@ -12,21 +12,21 @@ depends=('sysstat')
 options=('!strip')
 source=("${pkgname}-${pkgver}-${_agentrel}-Release::https://apt.datadoghq.com/dists/stable/Release"
         "${pkgname}-${pkgver}-${_agentrel}-Release.sig::https://apt.datadoghq.com/dists/stable/Release.gpg"
-        "${pkgname}-${pkgver}-${_agentrel}-Packages::https://apt.datadoghq.com/dists/stable/6/binary-amd64/Packages"
+        "${pkgname}-${pkgver}-${_agentrel}-Packages::https://apt.datadoghq.com/dists/stable/7/binary-amd64/Packages"
         "https://apt.datadoghq.com/pool/d/da/datadog-agent_${pkgver}-${_agentrel}_amd64.deb"
         'datadog-agent.sysusers'
         'datadog-agent.tmpfiles')
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            'c7105df6a4c1dfbff4ac36068cc6f7dac3baa1ec74ad4aaeaa06c756b04353591ddc4f2c3f2a46f7b24c9bab3302f2cfeed3e46e07d909583245d66b5e17d6b8'
+            '193cb920afdc79e7665fef598c6c88d3eabc83008b656024766f1e3e98e275af49f85f57badec2f049c5058f5cc6086ad34e9bd96559cf241cee2f9917a138e5'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '2a3e873d88b8f3a5d90591f955894273eb28d0f9b352e54be4f1125d4229a8f1d7eece8bf6ad41b85ee194390821e9c851393fb36ac249069cfdf7470925ce21')
 validpgpkeys=('A2923DFF56EDA6E76E55E492D3A80E30382E94DE') # Datadog, Inc <package@datadoghq.com>
 
 prepare() {
     # Validate hashes from the PGP signed "Release" file
-    echo $(awk '/^SHA256/,/6\/binary-amd64\/Packages$/ {hash = $1} END {print hash}' ${pkgname}-${pkgver}-${_agentrel}-Release) ${pkgname}-${pkgver}-${_agentrel}-Packages \
+    echo $(awk '/^SHA256/,/7\/binary-amd64\/Packages$/ {hash = $1} END {print hash}' ${pkgname}-${pkgver}-${_agentrel}-Release) ${pkgname}-${pkgver}-${_agentrel}-Packages \
        > "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
     sha256sum -c "${pkgname}-${pkgver}-${_agentrel}-Packages.sha256"
 
