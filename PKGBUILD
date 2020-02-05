@@ -3,7 +3,7 @@
 
 pkgname=python2-pynvim
 _realname=pynvim
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Python client for Neovim'
 url='https://github.com/neovim/pynvim'
@@ -15,7 +15,7 @@ checkdepends=('python2-pytest' 'python2-pytest-runner')
 provides=('python2-neovim')
 replaces=('python2-neovim')
 source=("https://github.com/neovim/python-client/archive/${pkgver}.tar.gz")
-sha256sums=('6d48f194e5102cbc2043bf78647cfdea77bdb2b545fe942c20bbc6c58f489210')
+sha256sums=('132ea5c226399aed45a959f1d8efe8cdd89a769a672534722760a9a67b06dfa0')
 
 
 build() {
