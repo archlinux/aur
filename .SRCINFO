@@ -1,0 +1,12 @@
+pkgbase = nx-udev
+	pkgdesc = udev rule for the Nintendo Switch
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pheki/nx-udev
+	arch = any
+	license = GPL3
+	source = nx-udev-0.1.0.tar.gz::https://github.com/pheki/nx-udev/archive/v0.1.0.tar.gz
+	sha256sums = 174e1b569ffccece5bdf517835b54c91f62b1922452fb59c855ec3680f1d1491
+
+pkgname = nx-udev
+
