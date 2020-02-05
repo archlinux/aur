@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=fields
-_cranver=10.2
+_cranver=10.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(GPL2 GPL3)
 depends=('r>=3.0' r-spam r-maps gcc-fortran)
 makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('7c2b39b70a6722a5b44e5388344ff8e5')
+md5sums=('ddc343fd2e3b8288bf3b54d386df1417')
 
 build() {
   cd "${srcdir}"
