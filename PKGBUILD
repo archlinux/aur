@@ -3,7 +3,7 @@
 
 _gemname='gettext'
 pkgname="ruby-${_gemname}"
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc='Gettext gem is a pure Ruby Localization(L10n) library and tool which is modeled after the GNU gettext package.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=('ruby' 'ruby-locale' 'ruby-text')
 checkdepends=('ruby-test-unit' 'ruby-rake' 'ruby-test-unit-rr')
 source=("https://github.com/ruby-gettext/gettext/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
 options=("!emptydirs")
-sha512sums=('7d2818af2d622a46609103493cb5e82856e1a9f3ae67fad824bcbc2e11fca65040021554515a476e3a079a02d0636e9fe3afa706242795d0fb1037e8f7b374a6')
+sha512sums=('6ec32f4e1f493ed5ae3910002704b91577871a0185323efe0eaa96015d960ec13d71a48e7188c20464557570082b30a8fe0423882b9318fbbc834643fd095a7d')
 
 # update the gemspec to allow newer versions of rake
 # remove deprecated options from the gemspec
