@@ -1,6 +1,6 @@
 pkgbase = geiser
 	pkgdesc = Emacs environment to hack in Scheme
-	pkgver = 0.10
+	pkgver = 0.11
 	pkgrel = 1
 	url = http://www.nongnu.org/geiser/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = geiser
 	optdepends = racket: scheme implementation
 	optdepends = guile: scheme implementation
 	optdepends = chicken: scheme implementation
-	source = https://github.com/jaor/geiser/archive/0.10.tar.gz
-	sha256sums = 1082453d6d388b3ad83b96f193969027ae90c97fcae20a67d08d69786cd58769
+	source = https://gitlab.com/jaor/geiser/-/archive/0.11/geiser-0.11.tar.gz
+	sha256sums = 726f2371e44b6e8991a0c7034bfaefcd08a0395e89948387a7e7cdf2cdd7c60d
 
 pkgname = geiser
 
