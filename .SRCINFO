@@ -1,7 +1,7 @@
 pkgbase = enroot-git
 	pkgdesc = A simple yet powerful tool to turn traditional container/OS images into unprivileged sandboxes.
-	pkgver = 2.2.0
-	pkgrel = 2
+	pkgver = 3.0.0
+	pkgrel = 1
 	url = https://github.com/NVIDIA/enroot
 	install = enroot.install
 	arch = x86_64
