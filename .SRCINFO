@@ -1,16 +1,16 @@
 pkgbase = gudhi
 	pkgdesc = Geometry understanding in higher dimensions
-	pkgver = 3.0.0
-	pkgrel = 2
-	url = https://gudhi.inria.fr/
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/GUDHI/gudhi-devel
 	arch = any
 	license = GPLv3
 	depends = eigen
 	depends = cgal
 	depends = boost
 	options = !emptydirs
-	source = https://gforge.inria.fr/frs/download.php/file/38130/gudhi.3.0.0.tar.gz
-	sha256sums = 5bc0fabf0ddf3b3bb79a63b030f667f30e74ce7fafae2b85ad73f1a25447d0ac
+	source = https://github.com/GUDHI/gudhi-devel/archive/tags/gudhi-release-3.1.0.tar.gz
+	sha256sums = d8e4c28f9f113205eedc7cbe5b75b104431a0a65f9e2e4b30e9b6ed4eea21e64
 
 pkgname = gudhi
 
