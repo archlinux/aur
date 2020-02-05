@@ -5,6 +5,7 @@ pkgbase = cameracontrol-bin
 	url = https://gitlab.com/psposito/camera-control-webcam-switch-indicator
 	arch = any
 	license = FPC modified LGPL Version 2
+	depends = qt5pas
 	optdepends = qt5gtk2
 	optdepends = qt5ct
 	replaces = cameracontrol
