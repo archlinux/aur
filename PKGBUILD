@@ -9,7 +9,7 @@ arch=('any')
 url="http://ajaxsoundstudio.com/software/$_pkgname"
 license=('GPL3')
 depends=('python' 'python-pyo>=1.0.1' 'python-numpy>=1.18' 'python-wxpython>=4.0.7')
-makedepends=('git' 'python-setuptools')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
