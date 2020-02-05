@@ -1,7 +1,7 @@
 # Maintainer: cha.pa
 
 pkgname=nerd-fonts-hack
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Patched font Hack from nerd-fonts library"
 arch=("any")
@@ -11,7 +11,7 @@ makedepends=("fontconfig" "xorg-mkfontscale" "xorg-mkfontdir")
 install=$pkgname.install
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Hack.zip"
         "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/$pkgver/LICENSE")
-sha256sums=("d1147483fd0310fa6bfce6799f47654e3f435010fdc709877b15a23f090ed41c"
+sha256sums=("70852e59fcffbe31d401f615625bcb9ebb6af72732c2f1fe9b9d5370c2565514"
             "d2a29823384e9194a87936ccad495c764c2ef733b29bfa6f72a1d65803ce02e5")
 
 package() {
