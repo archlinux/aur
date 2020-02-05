@@ -1,7 +1,7 @@
 pkgbase = sshcommand
 	pkgdesc = Turn SSH into a thin client specifically for your app
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dokku/sshcommand
 	arch = any
 	license = mit
