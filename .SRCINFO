@@ -5,7 +5,6 @@ pkgbase = cecilia
 	url = http://ajaxsoundstudio.com/software/cecilia
 	arch = any
 	license = GPL3
-	makedepends = python-setuptools
 	depends = python
 	depends = python-pyo>=1.0.1
 	depends = python-numpy>=1.18

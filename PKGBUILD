@@ -8,7 +8,6 @@ arch=('any')
 url="http://ajaxsoundstudio.com/software/$pkgname"
 license=('GPL3')
 depends=('python' 'python-pyo>=1.0.1' 'python-numpy>=1.18' 'python-wxpython>=4.0.7')
-makedepends=('python-setuptools')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/belangeo/$_reponame/archive/$pkgver.tar.gz"
 	"$pkgname.sh"
