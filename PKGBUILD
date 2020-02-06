@@ -1,5 +1,5 @@
 pkgname=openblack-git
-pkgver=r346.f2d6b12
+pkgver=r891.b6669b7
 pkgrel=1
 pkgdesc="Open source reimplementation of the game Black & White (2001)."
 arch=('x86_64')
@@ -21,10 +21,13 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
+  # TODO: After bgfx merges all openblack PRs,
+  # Package and use bgfx instead of building it
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DUSE_SUBMODULES=OFF \
-        -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make
+        -DOPENBLACK_BUILD_BGFX=ON \
+        -DCMAKEuBUILD_TYPE=RelWithDebInfo
+  cmake --build .
 }
 
 package() {
