@@ -1,6 +1,6 @@
 pkgbase = blender-fracture_modifier-git
 	pkgdesc = Development version of Blenders fracture_modifier branch
-	pkgver = v2.79b.r2168.g969fca718a4
+	pkgver = 2.79b.r2169.g233ad61cb8d
 	pkgrel = 1
 	url = https://blender.org/
 	install = blender.install
@@ -13,7 +13,6 @@ pkgbase = blender-fracture_modifier-git
 	makedepends = mesa
 	makedepends = llvm
 	makedepends = ninja
-	makedepends = cuda
 	depends = alembic
 	depends = libgl
 	depends = python
@@ -53,6 +52,7 @@ pkgbase = blender-fracture_modifier-git
 	source = oiio-2.0.patch
 	source = Cleanup-use-PyImport_GetModuleDict.patch
 	source = python3.8.patch
+	source = addon_path.patch
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
@@ -69,6 +69,7 @@ pkgbase = blender-fracture_modifier-git
 	md5sums = f98eb0576a8e00444cc3e936d31a9812
 	md5sums = 1fafe7b27c376f0fd8b7bb7985deef6e
 	md5sums = 54caa2acab217f8abb9a00ef05f1d0d7
+	md5sums = 88097ddbca087f932f8805f0caa185f4
 
 pkgname = blender-fracture_modifier-git
 

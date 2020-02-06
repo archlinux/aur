@@ -8,10 +8,10 @@
 
 _branch="fracture_modifier"
 _sufix=${_branch}
-_blenver=2.82
 _fragment="#branch=${_branch}"
 pkgname=blender-${_sufix}-git
-pkgver=v2.79b.r2168.g969fca718a4
+pkgver=2.79b.r2169.g233ad61cb8d
+_blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
@@ -49,6 +49,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         oiio-2.0.patch
         Cleanup-use-PyImport_GetModuleDict.patch
         python3.8.patch
+        addon_path.patch
         )
 md5sums=('SKIP'
          'SKIP'
@@ -65,11 +66,12 @@ md5sums=('SKIP'
          '4e4423315f07bc724c7703c57c4481d7'
          'f98eb0576a8e00444cc3e936d31a9812'
          '1fafe7b27c376f0fd8b7bb7985deef6e'
-         '54caa2acab217f8abb9a00ef05f1d0d7')
+         '54caa2acab217f8abb9a00ef05f1d0d7'
+         '88097ddbca087f932f8805f0caa185f4')
 
 pkgver() {
   cd "$srcdir/blender"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -87,14 +89,14 @@ prepare() {
   git apply -v ${srcdir}/oiio-2.0.patch
   git apply -v ${srcdir}/Cleanup-use-PyImport_GetModuleDict.patch
   git apply -v ${srcdir}/python3.8.patch
-  msg "change BLENDER_VERSION to ${_blenver/./}"
-  sed -i "/#define BLENDER_VERSION */s/279/${_blenver/./}/" source/blender/blenkernel/BKE_blender_version.h
+  sed -i "s/@@_sufix@@/${_sufix}/g" ${srcdir}/addon_path.patch
+  git apply -v ${srcdir}/addon_path.patch
 }
 
 build() {
   mkdir -p "$srcdir/blender-build"
   cd "$srcdir/blender-build"
-  
+
   _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
   msg "python version detected: ${_pyver}"
 
@@ -140,7 +142,7 @@ package() {
   ((DISABLE_NINJA)) && make install DESTDIR="$pkgdir" || DESTDIR="$pkgdir" ninja install
 
   msg "install fracture-helper addon"  
-  install ${srcdir}/blender-fracture-helper/*.py ${pkgdir}/usr/share/blender/${_blenver}/scripts/addons/
+  install ${srcdir}/blender-fracture-helper/*.py ${pkgdir}/usr/share/blender/${_blenver}_${_sufix}/scripts/addons/
 
   msg "add -${_sufix} sufix to desktop shortcut"
   sed -i "s/=blender/=blender-${_sufix}/g" ${pkgdir}/usr/share/applications/blender.desktop
