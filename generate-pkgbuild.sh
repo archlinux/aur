@@ -86,7 +86,7 @@ for arch in $arches; do
 
     base_url="https://storage.googleapis.com/kubernetes-release/release/$version/bin/linux/$_arch"
 
-    echo "source_$arch=('$pkgname-$version:$base_url/kubectl')"
+    echo "source_$arch=('$pkgname-$version::$base_url/kubectl')"
     echo "sha256sums_$arch=('$(curl -sSL $base_url/kubectl.sha256)')"
 done
 
