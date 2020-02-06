@@ -1,16 +1,15 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
-maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=spaghettis-git
 pkgdesc="Yet another fork of Pure Data (in development, alpha)."
-pkgver=r5438.cfb8ceb6
+pkgver=r5442.7dcfaeb7
 pkgrel=1
 epoch=
 arch=(x86_64)
 url="https://github.com/Spaghettis/Spaghettis"
 license=(BSD)
 groups=()
-depends=('alsa-lib' 'glibc' 'jack' 'tk')
-makedepends=()
+depends=('jack' 'tk')
+makedepends=(git)
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,7 +21,7 @@ install=
 changelog=
 source=(git+https://github.com/Spaghettis/Spaghettis)
 noextract=()
-md5sums=('SKIP')
+md5sums=(SKIP)
 
 pkgver() {
   cd "${srcdir}/Spaghettis"
@@ -32,19 +31,15 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd "${srcdir}"
-}
-
 build() {
 	cd "${srcdir}/Spaghettis"
-	# ./configure --prefix=/usr
 	./build.sh
 }
 
 package() {
-  install -D "${srcdir}/Spaghettis/build/bin/spaghettis" "${pkgdir}/usr/bin/spaghettis"
   mkdir -p ${pkgdir}/usr/lib/spaghettis
+  install -D "${srcdir}/Spaghettis/build/bin/spaghettis" "${pkgdir}/usr/bin/spaghettis"
+  install -Dm644 "${srcdir}/Spaghettis/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cp -R "${srcdir}/Spaghettis/build/tcl" "${pkgdir}/usr/lib/spaghettis"
   cp -R "${srcdir}/Spaghettis/build/help" "${pkgdir}/usr/lib/spaghettis"
 
