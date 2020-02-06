@@ -27,7 +27,9 @@ optdepends=('gxmessage: crash dialog (GNOME)'
             'xorg-xmessage: crash dialog (other)')
 provides=('raze')
 conflicts=('raze')
-source=('Raze-master::git+https://github.com/coelckers/Raze'
+_srcname=Raze
+_srcver=master
+source=("${_srcname}-${_srcver}::git+https://github.com/coelckers/${_srcname}#commit=${_srcver}"
         '0001-Fix-file-paths.patch'
         'raze.desktop')
 sha256sums=('SKIP'
@@ -35,19 +37,19 @@ sha256sums=('SKIP'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
 
 pkgver() {
-    cd Raze-master
+    cd ${_srcname}-${_srcver}
 
-    git describe --long --tags | tr - +
+    git describe --tags | tr - +
 }
 
 prepare() {
-    cd Raze-master
+    cd ${_srcname}-${_srcver}
 
     patch -p1 -i"$srcdir"/0001-Fix-file-paths.patch
 }
 
 build() {
-    cd Raze-master
+    cd ${_srcname}-${_srcver}
 
     local _cflags="-ffile-prefix-map=\"$PWD\"=."
     cmake -DCMAKE_BUILD_TYPE=Release \
@@ -60,7 +62,7 @@ build() {
 }
 
 package() {
-    cd Raze-master
+    cd ${_srcname}-${_srcver}
 
     make install DESTDIR="$pkgdir"
 
