@@ -1,12 +1,12 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
-# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgname=mercurial-python3
 _pkgname=mercurial
-pkgver=5.2.2
-pkgrel=2
+pkgver=5.3
+pkgrel=0
 pkgdesc='A scalable distributed SCM tool - built with Python 3'
 arch=(x86_64)
 url="https://www.mercurial-scm.org/"
@@ -18,7 +18,7 @@ optdepends=('tk: for the hgk GUI')
 backup=(etc/mercurial/hgrc)
 source=(https://www.mercurial-scm.org/release/${_pkgname}-${pkgver}.tar.gz
         mercurial.profile)
-sha256sums=('ffc5ff47488c7b5dae6ead3d99f08ef469500d6567592a25311838320106c03b'
+sha256sums=('e57ff61d6b67695149dd451922b40aa455ab02e01711806a131a1e95c544f9b9'
             '87427151713e689cd87dc50d50c048e0e58285815e4eb61962b50583532cbde5')
 
 build() {
