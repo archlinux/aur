@@ -5,10 +5,10 @@ pkgver=1.10.0
 pkgrel=1
 pkgdesc='Pulumi - Modern Infrastructure as Code'
 arch=('x86_64')
-url="https://github.com/$pkgname"
+url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
 makedepends=('go-pie')
-source=("$pkgname-$pkgver.tar.gz::$url/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('a666192215021590149231b6001f17f92021c730ec6e8647f558945f67d5b608')
 
 _plugins=(
