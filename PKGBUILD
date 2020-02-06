@@ -2,7 +2,7 @@
 
 pkgname=pamixer-git
 _realname=pamixer
-pkgver=20150209
+pkgver=20191030
 pkgrel=1
 pkgdesc="Pulseaudio command-line mixer like amixer"
 arch=('i686' 'x86_64')

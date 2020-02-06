@@ -1,6 +1,6 @@
 pkgbase = pamixer-git
 	pkgdesc = Pulseaudio command-line mixer like amixer
-	pkgver = 20150209
+	pkgver = 20191030
 	pkgrel = 1
 	url = https://github.com/cdemoulins/pamixer
 	arch = i686
