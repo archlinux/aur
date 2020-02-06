@@ -1,0 +1,36 @@
+pkgbase = mangohud-git
+	pkgver = 0.1.0.r24.g1bc513f
+	pkgrel = 1
+	url = https://github.com/flightlessmango/MangoHud
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = python-mako
+	makedepends = glslang
+	makedepends = libglvnd
+	makedepends = lib32-libglvnd
+	depends = gcc-libs
+	depends = libx11
+	source = mangohud::git+https://github.com/flightlessmango/MangoHud.git
+	source = Vulkan-Docs::git+https://github.com/KhronosGroup/Vulkan-Docs.git
+	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+	source = ImGui::git+https://github.com/flightlessmango/ImGui.git
+	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = mangohud-git
+	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
+	depends = gcc-libs
+	depends = libx11
+	conflicts = mangohud
+
+pkgname = lib32-mangohud-git
+	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)
+	depends = lib32-gcc-libs
+	depends = lib32-libx11
+	conflicts = lib32-mangohud
+
