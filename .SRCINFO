@@ -1,7 +1,7 @@
 pkgbase = lua-linenoise
 	pkgdesc = A binding for the linenoise command line library
 	pkgver = 0.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hoelzro/lua-linenoise
 	arch = x86_64
 	arch = i686
