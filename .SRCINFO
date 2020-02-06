@@ -1,14 +1,20 @@
 pkgbase = lua-cldr
 	pkgdesc = Unicode CLDR data and Lua interface.
 	pkgver = 0.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alerque/cldr-lua
 	arch = any
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	source = https://raw.githubusercontent.com/alerque/cldr-lua/master/rockspecs/cldr-0.0.0-0.rockspec
-	sha256sums = 616ea4ce725b919fc307e2297a7fe2c092749a19602175cf465e76ce2faadeb2
+	source = cldr-0.0.0.tar.gz::https://github.com/alerque/cldr-lua/archive/0.0.0.tar.gz
+	sha256sums = 03cc703e4d8874cb2b94871fa69daa467e4c0fa44e39787e6c02375bfe2b911e
 
 pkgname = lua-cldr
+	depends = lua
+
+pkgname = lua52-cldr
+	depends = lua52
+
+pkgname = lua51-cldr
+	depends = lua51
 
