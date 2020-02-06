@@ -2,7 +2,7 @@
 
 pkgname=pam_wrapper
 pkgver=1.0.7
-pkgrel=2
+pkgrel=3
 pkgdesc='A helper library for PAM testing'
 arch=(x86_64)
 url='https://cwrap.org/pam_wrapper.html'
@@ -25,7 +25,10 @@ prepare() {
 }
 
 build() {
-  cd build
+  cd "$pkgname-$pkgver"
+  patch -p1 < ../fix-pam-module-output-crash.patch
+
+  cd ../build
   cmake "../$pkgname-$pkgver" -DCMAKE_INSTALL_PREFIX=/usr -DUNIT_TESTING=TRUE
   make
 }
