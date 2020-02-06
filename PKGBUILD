@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.4.1
-pkgrel=2
+pkgrel=3
 
 arch=("x86_64")
 license=("GPL2")
@@ -104,6 +104,10 @@ package() {
             -Ddm755 \
             "${srcdir}/Nominatim-${pkgver}/${_dir}" \
             "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
+        cp \
+            -aR
+            "${srcdir}/Nominatim-${pkgver}/${_dir}" \
+            "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
     done
 
     # directories to copy from build dir
@@ -113,6 +117,11 @@ package() {
     do
         install \
             -Ddm755 \
+            "${srcdir}/build/${_dir}" \
+            "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
+
+        cp \
+            -aR
             "${srcdir}/build/${_dir}" \
             "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
     done
