@@ -3,7 +3,7 @@
 pkgname=raze
 pkgver=0.4.0
 pkgrel=1
-pkgdesc='Build engine port backed by GZDoom tech (git version)'
+pkgdesc='Build engine port backed by GZDoom tech'
 arch=('i686' 'x86_64')
 url='https://github.com/coelckers/Raze'
 license=('custom:BUILD' 'custom:dumb' 'GPL2')
