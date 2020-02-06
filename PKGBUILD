@@ -1,21 +1,36 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+_rockname=mediator
+_pkgname=mediator_lua
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgname=lua-mediator
 pkgver=1.1.2
-_rockname=mediator_lua
 _rockrel=0
-pkgrel=1
-pkgdesc="Event handling through channels"
+pkgrel=2
+pkgdesc='Event handling through channels'
 arch=('i686' 'x86_64')
-url="http://olivinelabs.com/mediator_lua/"
+url="http://olivinelabs.com/$_pkgname/"
 license=('MIT')
-depends=('lua')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('751debefe0aa00fa93c0ae6371922055289e9948b0231d1430c214118fdb3f3b')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/Olivine-Labs/$_pkgname/archive/v$pkgver-$_rockrel.tar.gz")
+sha256sums=('faf5859fd2081be4e9e4fb8873a2dc65f7eff3fd93d6dd14da65f8e123fcff9b')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_pkgname-$pkgver-$_rockrel"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-mediator() {
+  depends+=('lua')
+  _package_helper 5.3
+}
+
+package_lua52-mediator() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-mediator() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
