@@ -1,6 +1,6 @@
 pkgbase = linux-lqx
 	pkgdesc = Liquorix Kernel
-	pkgver = 5.5.1_2
+	pkgver = 5.5.2_1
 	pkgrel = 1
 	url = http://liquorix.net/
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = linux-lqx
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.sign
-	source = https://github.com/damentz/liquorix-package/archive/5.5-2.tar.gz
+	source = https://github.com/damentz/liquorix-package/archive/5.5-3.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = fa74fdabb5e63384a39e54da05b86a9ae9ea16179524b041fbbdffc7177e80b53600ae98d76be127ba216148f9dc55fe07ab20637e22c6d6030cb4aa09eb2f86
 	sha512sums = SKIP
-	sha512sums = 81577128c65cd5e4c1392111d45d097a4f409be757cd09daaa25b327df158abd626546c232058df719ff5a51e6d70aa652c62019916feb980bf5b53075da51a3
+	sha512sums = 2a70f0a0b369e81a0b080c95df953faf28aa5ff15a8260034a4b217d471f5754b91e01a8956f066d2d9e59e6c135e385edc04a97ef581cde81e0a6ade688453c
 
 pkgname = linux-lqx
 	pkgdesc = The Liquorix Kernel kernel and modules
