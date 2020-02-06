@@ -1,11 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+_rockname=lcf
+_pkgname=lua_code_formatter
 pkgname=lua-lcf
 pkgver=5.3
-_pkgname=lua_code_formatter
-_rockname=${pkgname#lua-}
 _rockrel=4
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua code formatter'
 arch=('any')
 url="https://github.com/martin-eden/$_pkgname"
@@ -14,9 +14,11 @@ depends=('lua')
 makedepends=('luarocks')
 conflicts=('lua51-lcf')
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-sha256sums=('0cd4519ac9f8dd1a8af845131e18eda9a71954959c820cc9276c6ecef7d513d4')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/martin-eden/$_pkgname/archive/$pkgver-$_rockrel.tar.gz")
+sha256sums=('70d8894ee54a955c80bdd96e2db40f33239b5e3f570778ae0fb64d2da3e7df4c')
 
 package() {
-    luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
-    find "$pkgdir/usr" -name manifest -delete
+  cd "$_pkgname-$pkgver-$_rockrel"
+  luarocks --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-1.rockspec"
+  find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
 }

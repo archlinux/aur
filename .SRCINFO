@@ -1,15 +1,15 @@
 pkgbase = lua-lcf
 	pkgdesc = Lua code formatter
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martin-eden/lua_code_formatter
 	arch = any
 	license = GPL
 	makedepends = luarocks
 	depends = lua
 	conflicts = lua51-lcf
-	source = https://luarocks.org/lcf-5.3-4.src.rock
-	sha256sums = 0cd4519ac9f8dd1a8af845131e18eda9a71954959c820cc9276c6ecef7d513d4
+	source = lcf-5.3.tar.gz::https://github.com/martin-eden/lua_code_formatter/archive/5.3-4.tar.gz
+	sha256sums = 70d8894ee54a955c80bdd96e2db40f33239b5e3f570778ae0fb64d2da3e7df4c
 
 pkgname = lua-lcf
 
