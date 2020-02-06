@@ -1,0 +1,16 @@
+pkgbase = objgui-git
+	pkgdesc = ObjGui is a GUI disassembler and binary analysis tool utilizing GNU binutils.
+	pkgver = r120.56beadc
+	pkgrel = 1
+	url = https://github.com/jubal-R/ObjGui
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	provides = objgui
+	conflicts = objgui
+	source = objgui::git+https://github.com/jubal-R/ObjGui
+	md5sums = SKIP
+
+pkgname = objgui-git
+
