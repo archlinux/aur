@@ -27,6 +27,7 @@ pkgbase = mingw-w64-vtk-git
 	depends = mingw-w64-double-conversion
 	depends = mingw-w64-glew
 	depends = mingw-w64-pugixml
+	depends = mingw-w64-theora
 	options = !buildflags
 	options = staticlibs
 	options = !strip
