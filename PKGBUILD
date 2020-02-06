@@ -3,7 +3,7 @@
 # pak128.britain-extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended-pak128.britain
-pkgver=20200204
+pkgver=20200206
 pkgrel=1
 pkgdesc="Simutrans Extended graphic set, with a British theme"
 arch=('any')
@@ -13,12 +13,12 @@ depends=('simutrans-extended')
 source=(http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.britain-ex-nightly.tar.gz
         license.txt)
 sha256sums=('SKIP'
-            'SKIP')
+            'def758cfe51b6f16d838f777a6540163fb47f334df5a0fb86448f92a36a92017')
 
 package() {
   #data
-  mkdir -p "$pkgdir/usr/share/games/simutrans-extended/pak128.britain"
-  cp -r * "$pkgdir/usr/share/games/simutrans-extended/pak128.britain"
+  mkdir -p "$pkgdir/usr/share/games/simutrans-extended/pak128.britain-ex"
+  cp -r * "$pkgdir/usr/share/games/simutrans-extended/pak128.britain-ex"
   
   #license
   install -Dm644 license.txt "$pkgdir/usr/share/licenses/simutrans-extended-pak128.britain/license.txt"
