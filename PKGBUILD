@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.2.1
-pkgrel=2
+pkgver=4.2.2
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -33,6 +33,7 @@ depends=(
   libdrm
   libfreetype.so
   libiec61883
+  libmfx
   libmodplug
   libomxil-bellagio
   libpulse
@@ -74,7 +75,10 @@ makedepends=(
   ladspa
   nasm
 )
-optdepends=('ladspa: LADSPA filters')
+optdepends=(
+  'intel-media-sdk: Intel QuickSync support'
+  'ladspa: LADSPA filters'
+)
 provides=(
   libavcodec.so
   libavdevice.so
@@ -122,6 +126,7 @@ build() {
     --enable-libgsm \
     --enable-libiec61883 \
     --enable-libjack \
+    --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \

@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-libfdk_aac
 	pkgdesc = Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)
-	pkgver = 4.2.1
+	pkgver = 4.2.2
 	pkgrel = 1
 	epoch = 1
 	url = https://ffmpeg.org/
@@ -27,6 +27,7 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = libdrm
 	depends = libfreetype.so
 	depends = libiec61883
+	depends = libmfx
 	depends = libmodplug
 	depends = libomxil-bellagio
 	depends = libpulse
@@ -61,6 +62,7 @@ pkgbase = ffmpeg-libfdk_aac
 	depends = xz
 	depends = zlib
 	depends = libfdk-aac
+	optdepends = intel-media-sdk: Intel QuickSync support
 	optdepends = ladspa: LADSPA filters
 	provides = libavcodec.so
 	provides = libavdevice.so
@@ -70,7 +72,7 @@ pkgbase = ffmpeg-libfdk_aac
 	provides = libpostproc.so
 	provides = libswresample.so
 	provides = libswscale.so
-	provides = ffmpeg=4.2.1
+	provides = ffmpeg=4.2.2
 	conflicts = ffmpeg
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=cbb3c9497549f8856d8cd37ac63af1406a784e58
 	sha256sums = SKIP
