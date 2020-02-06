@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=1.20.2.r17.g14f84411
+pkgver=1.21.0.r128.ge7ed0f58
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -13,17 +13,15 @@ depends=('python-pyjwt>=1.4.0'
          'python-urllib3>=1.25.6'
          'python-colorama>=0.3.3'
          'python-yaml>=3.11'
-         'python-patch-ng>=1.17.1'
+         'python-patch-ng>=1.17.2'
          'python-fasteners>=0.14.1'
          'python-six>=1.10.0'
          'python-node-semver>=0.6.1'
          'python-bottle>=0.12.8'
          'python-distro>=1.0.2'
          'python-pluginbase>=0.5'
-         'python-pylint>=2.3.1'
          'python-future>=0.16.0'
          'python-pygments>=2.0'
-         'python-astroid>=2.2.0'
          'python-deprecation>=2.0'
          'python-tqdm>=4.28.1'
          'python-jinja>=2.3'
@@ -32,7 +30,7 @@ provides=('conan')
 conflicts=('conan')
 source=("conan-git::git+https://github.com/conan-io/conan.git" "arch-reqs.patch")
 md5sums=('SKIP'
-         'c3d593bd4806156696eb871d2d536856')
+         '47aa1de692d5aa3be8767a42e5cff295')
 
 
 pkgver() {
