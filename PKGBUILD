@@ -11,7 +11,11 @@ sha256sums=('eb9469db940aaa8aae9b37b81035233687499fdc2fbc5b55dfb7a37b0e9a1d60' S
 
 prepare() {
   cd ${pkgname}-${pkgver}
+  # nocomprendo builds its own copy of pocketsphinx
   patch -p1 -i "${srcdir}"/unbundle_pocketsphinx.patch
+
+  # nocomprendo looks in /usr/share/pocketsphinx/en_US
+  sed -i 's|= QString("/usr/share/pocketsphinx/").append(params.lang)|= QString("/usr/share/pocketsphinx/model/en-us")|g' main.cpp
 }
 
 build() {
