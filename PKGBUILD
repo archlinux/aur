@@ -5,14 +5,15 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.4.1
-pkgrel=0
+pkgrel=1
 
 arch=("x86_64")
 license=("GPL2")
 
 makedepends=(
-    "libxml2"
+    "clang"
     "cmake"
+    "libxml2"
 )
 depends=(
     "boost"

@@ -1,12 +1,14 @@
 pkgbase = nominatim
 	pkgdesc = Geocoding tool using OpenStreetmap data
 	pkgver = 3.4.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://nominatim.org
+	install = nominatim.install
 	arch = x86_64
 	license = GPL2
-	makedepends = libxml2
+	makedepends = clang
 	makedepends = cmake
+	makedepends = libxml2
 	depends = boost
 	depends = boost-libs
 	depends = expat
