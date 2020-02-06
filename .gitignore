@@ -1,0 +1,5 @@
+pkg/
+read-it-later/
+src/
+
+*.pkg.tar.xz
