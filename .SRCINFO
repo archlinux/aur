@@ -1,0 +1,18 @@
+pkgbase = swaytools
+	pkgdesc = Quality of life tools for sway
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tmccombs/swaytools
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = sway
+	optdepends = slurp: for swayinfo
+	optdepends = bemenu: for winfocus
+	optdepends = dmenu: for winfocus
+	source = https://github.com/tmccombs/swaytools/archive/0.1.0.tar.gz
+	b2sums = d1e94446590c702e69a45ab8d58c1067a83926d81f537f28b93eb3533d258451a2cacc675e98f6fcebb793f80d6a7de0cc413fb3e6de549199c6a5fb5f88b0c3
+
+pkgname = swaytools
+
