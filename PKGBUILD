@@ -1,28 +1,45 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-cldr-git
-pkgver=0.0.0.r2.g77065e7
-_branch='master'
 _rockname=cldr
+_project=cldr-lua
+pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
+pkgver=0.0.0.r3.gd6e38e1
+_branch='master'
 _rockrel=0
 pkgrel=1
-pkgdesc="Unicode CLDR data and Lua interface."
+pkgdesc='Unicode CLDR data and Lua interface.'
 arch=('any')
-url="https://github.com/alerque/lua-cldr"
+url='https://github.com/alerque/lua-cldr'
 license=('MIT')
-depends=('lua')
 makedepends=('luarocks')
 conflicts=('lua-cldr')
-source=("git://github.com/alerque/cldr-lua.git#branch=$_branch")
+source=("git://github.com/alerque/$_project.git#branch=$_branch")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/cldr-lua"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$_project"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-    cd "$srcdir/cldr-lua"
-    luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-scm-$_rockrel.rockspec"
-    find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_project"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr" install --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+}
+
+package_lua-cldr-git() {
+  depends+=('lua')
+  conflicts+=('lua-cldr')
+  _package_helper 5.3
+}
+
+package_lua52-cldr-git() {
+  depends+=('lua52')
+  conflicts+=('lua52-cldr')
+  _package_helper 5.2
+}
+
+package_lua51-cldr-git() {
+  depends+=('lua51')
+  conflicts+=('lua51-cldr')
+  _package_helper 5.1
 }
