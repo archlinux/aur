@@ -1,0 +1,18 @@
+pkgbase = python-kmapper
+	pkgdesc = Kepler Mapper: A flexible Python implementation of the Mapper algorithm
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/scikit-tda/kepler-mapper
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = python-numpy
+	depends = python-scikit-learn
+	options = !emptydirs
+	source = https://github.com/scikit-tda/kepler-mapper/archive/1.2.0.tar.gz
+	sha256sums = 3240183d4388ab43d8cf6578c2b83449ed58dff71fa65978a2d865a974c99766
+
+pkgname = python-kmapper
+
