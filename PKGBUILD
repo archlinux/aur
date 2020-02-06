@@ -20,12 +20,12 @@ _package_helper() {
   luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspecs/$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
-package_lua51-bit32() {
-  depends+=('lua51')
-  _package_helper 5.1
-}
-
 package_lua52-bit32() {
   depends+=('lua52')
   _package_helper 5.2
+}
+
+package_lua51-bit32() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
