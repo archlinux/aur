@@ -5,7 +5,7 @@ pkgname=("lua-$_rockname" "lua52-$_rockname")
 # TODO: restore "lua51-$_rockname" above when conflicting AUR package removed
 pkgver=1.3
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Lua String Hashing/Indexing Library'
 arch=('i686' 'x86_64')
 url="https://github.com/Olivine-Labs/$_rockname"
@@ -16,7 +16,7 @@ sha256sums=('23e8cd378bb4ab1693279100a785acb2246418e3570b7de7d995b5847b3507ca')
 
 _package_helper() {
   cd "$_rockname-$pkgver-$_rockrel"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr" install --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-say() {
