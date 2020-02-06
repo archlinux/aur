@@ -1,14 +1,18 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 
 pkgname=visual-studio-code-insiders
-pkgver=1576014894
+pkgver=1580933641
 pkgrel=1
 pkgdesc="Editor for building and debugging modern web and cloud applications (insiders version)"
 arch=('x86_64' 'i686')
 url="https://code.visualstudio.com/"
 license=('custom: commercial')
-provides=('vscode' 'visualstudiocode')
-depends=(fontconfig libxtst gtk3 python cairo alsa-lib nss gcc-libs libnotify libxss gvfs lsof which)
+provides=('code')
+conflicts=('code')
+# lsof: need for terminal splitting, see https://github.com/Microsoft/vscode/issues/62991
+depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lsof)
+optdepends=('glib2: Needed for move to trash functionality'
+            'libdbusmenu-glib: Needed for KDE global menu')
 source_x86_64=(code_x64_${pkgver}.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
                ${pkgname}.desktop ${pkgname}-url-handler.desktop
                )
