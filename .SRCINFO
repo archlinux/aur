@@ -1,16 +1,21 @@
 pkgbase = lua-stdlib
 	pkgdesc = Library of modules for common programming tasks
 	pkgver = 41.2.2
-	pkgrel = 1
-	url = http://github.com/lua-stdlib/lua-stdlib/
+	pkgrel = 2
+	url = https://github.com/lua-stdlib/lua-stdlib/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	depends = lua-penlight
-	source = https://luarocks.org/stdlib-41.2.2-1.rockspec
-	sha256sums = c6192597da0bc590f4eb4a5f4df5c5721d9f8c607666341d5a0b695419594c67
+	source = stdlib-41.2.2.tar.gz::https://github.com/lua-stdlib/lua-stdlib/archive/release-v41.2.2.tar.gz
+	sha256sums = 42ca25ddcde59f608694a3335d24919a4df4cf6f14ea46c75249561a16c84711
 
 pkgname = lua-stdlib
+	depends = lua
+
+pkgname = lua52-stdlib
+	depends = lua52
+
+pkgname = lua51-stdlib
+	depends = lua51
 

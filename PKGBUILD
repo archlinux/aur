@@ -3,21 +3,36 @@
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 
 _rockname=stdlib
-pkgname=lua-$_rockname
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=41.2.2
 _rockrel=1
-pkgrel=1
-pkgdesc="Library of modules for common programming tasks"
+pkgrel=2
+pkgdesc='Library of modules for common programming tasks'
 arch=('i686' 'x86_64')
-url="http://github.com/lua-stdlib/lua-stdlib/"
+url='https://github.com/lua-stdlib/lua-stdlib/'
 license=('MIT')
-depends=('lua' 'lua-penlight')
 makedepends=('luarocks')
 conflicts=()
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('c6192597da0bc590f4eb4a5f4df5c5721d9f8c607666341d5a0b695419594c67')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/lua-$_rockname/lua-$_rockname/archive/release-v$pkgver.tar.gz")
+sha256sums=('42ca25ddcde59f608694a3335d24919a4df4cf6f14ea46c75249561a16c84711')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "lua-$_rockname-release-v$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr" install --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-stdlib() {
+  depends+=('lua')
+  _package_helper 5.3
+}
+
+package_lua52-stdlib() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-stdlib() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
