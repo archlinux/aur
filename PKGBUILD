@@ -1,21 +1,35 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-lub
-pkgver=1.1.0
 _rockname=lub
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=1.1.0
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lubyk base module'
 arch=('i686' 'x86_64')
-url='https://luarocks.org/modules/gaspard/lub'
+url="https://lubyk.github.io/lubyk/$_rockname.html"
 license=('MIT')
-depends=('lua' 'lua-filesystem')
+_lua_deps=('filesystem')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-sha256sums=('ff420e115839aa4d8b8b5aa5d4b1c5f5cc267928e6f21b8265e7ee359969cf06')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/lubyk/$_rockname/archive/REL-$pkgver.tar.gz")
+sha256sums=('355f427f28155c4cf3a9673aa24c3754ea782c1c5f2081cbc4c28c00ed69a0b7')
 
-package() {
-    luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
-    find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_rockname-REL-$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-lub() {
+  depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.3
+}
+
+package_lua52-lub() {
+  depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+  _package_helper 5.2
+}
+
+package_lua51-lub() {
+  depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+  _package_helper 5.1
 }

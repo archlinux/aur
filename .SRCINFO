@@ -1,16 +1,24 @@
 pkgbase = lua-lub
 	pkgdesc = Lubyk base module
 	pkgver = 1.1.0
-	pkgrel = 1
-	url = https://luarocks.org/modules/gaspard/lub
+	pkgrel = 2
+	url = https://lubyk.github.io/lubyk/lub.html
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	depends = lua-filesystem
-	source = https://luarocks.org/lub-1.1.0-1.src.rock
-	sha256sums = ff420e115839aa4d8b8b5aa5d4b1c5f5cc267928e6f21b8265e7ee359969cf06
+	source = lub-1.1.0.tar.gz::https://github.com/lubyk/lub/archive/REL-1.1.0.tar.gz
+	sha256sums = 355f427f28155c4cf3a9673aa24c3754ea782c1c5f2081cbc4c28c00ed69a0b7
 
 pkgname = lua-lub
+	depends = lua
+	depends = lua-filesystem
+
+pkgname = lua52-lub
+	depends = lua52
+	depends = lua52-filesystem
+
+pkgname = lua51-lub
+	depends = lua51
+	depends = lua51-filesystem
 
