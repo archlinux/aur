@@ -1,0 +1,321 @@
+From 00fc7d7151408e53728a0df8868ad75dc0c00a7d Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 22 Jan 2020 11:50:37 +0100
+Subject: [PATCH 1/4] python: Fix crash when the PAM module outputs too much
+ data
+
+This code expected each input (whether echo on or echo off input),
+to generate at most one info or error output, which is obviously not
+correct. A PAM module with external inputs can throw dozens of messages
+and warnings even if the only expected input is a password.
+
+Allocate those placeholder arrays to be as big as possible to accomodate
+chatty PAM modules.
+
+Closes: https://bugzilla.samba.org/show_bug.cgi?id=14245
+
+Signed-off-by: Bastien Nocera <hadess@hadess.net>
+---
+ src/python/pypamtest.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/python/pypamtest.c b/src/python/pypamtest.c
+index 905c652..c4d0b07 100644
+--- a/src/python/pypamtest.c
++++ b/src/python/pypamtest.c
+@@ -852,8 +852,8 @@ static int fill_conv_data(PyObject *py_echo_off,
+ 		return ENOMEM;
+ 	}
+ 
+-	conv_data->out_info = new_conv_list(conv_count);
+-	conv_data->out_err = new_conv_list(conv_count);
++	conv_data->out_info = new_conv_list(PAM_CONV_MSG_MAX);
++	conv_data->out_err = new_conv_list(PAM_CONV_MSG_MAX);
+ 	if (conv_data->out_info == NULL || conv_data->out_err == NULL) {
+ 		free_conv_data(conv_data);
+ 		return ENOMEM;
+-- 
+2.24.1
+
+
+From e106274e4195aa3bc5f87d469c5555764b3becf0 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 22 Jan 2020 12:17:03 +0100
+Subject: [PATCH 2/4] modules: Add pam_chatty module
+
+Add a simple PAM module that will output "num_lines" lines of PAM info
+and/or error output.
+
+Signed-off-by: Bastien Nocera <hadess@hadess.net>
+---
+ src/modules/CMakeLists.txt |   2 +-
+ src/modules/pam_chatty.c   | 176 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 177 insertions(+), 1 deletion(-)
+ create mode 100644 src/modules/pam_chatty.c
+
+diff --git a/src/modules/CMakeLists.txt b/src/modules/CMakeLists.txt
+index 8e13a0b..e956f4c 100644
+--- a/src/modules/CMakeLists.txt
++++ b/src/modules/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ project(pam_wrapper-modules C)
+ 
+-set(PAM_MODULES pam_matrix pam_get_items pam_set_items)
++set(PAM_MODULES pam_matrix pam_get_items pam_set_items pam_chatty)
+ 
+ set(PAM_LIBRARIES pam)
+ if (HAVE_PAM_MISC)
+diff --git a/src/modules/pam_chatty.c b/src/modules/pam_chatty.c
+new file mode 100644
+index 0000000..5ffed5c
+--- /dev/null
++++ b/src/modules/pam_chatty.c
+@@ -0,0 +1,176 @@
++/*
++ * Copyright (c) 2015 Andreas Schneider <asn@samba.org>
++ * Copyright (c) 2015 Jakub Hrozek <jakub.hrozek@posteo.se>
++ * Copyright (c) 2020 Bastien Nocera <hadess@hadess.net>
++ *
++ * This program is free software: you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation, either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "config.h"
++
++#include <sys/param.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++
++#include <pwd.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include <stdint.h>
++#include <string.h>
++#include <unistd.h>
++#include <ctype.h>
++#include <errno.h>
++#include <time.h>
++#include <stdint.h>
++
++#ifndef discard_const
++#define discard_const(ptr) ((void *)((uintptr_t)(ptr)))
++#endif
++
++#ifndef discard_const_p
++#define discard_const_p(type, ptr) ((type *)discard_const(ptr))
++#endif
++
++#ifdef HAVE_SECURITY_PAM_APPL_H
++#include <security/pam_appl.h>
++#endif
++#ifdef HAVE_SECURITY_PAM_MODULES_H
++#include <security/pam_modules.h>
++#endif
++#ifdef HAVE_SECURITY_PAM_EXT_H
++#include <security/pam_ext.h>
++#endif
++
++#include "pwrap_compat.h"
++
++#define VERBOSE_KEY	"verbose"
++#define ERROR_KEY	"error"
++#define INFO_KEY	"info"
++#define NUM_LINES_KEY	"num_lines="
++
++#define DEFAULT_NUM_LINES 3
++
++/* We only return up to 16 messages from the PAM conversation.
++ * Value from src/python/pypamtest.c */
++#define PAM_CONV_MSG_MAX        16
++
++#define PAM_CHATTY_FLG_VERBOSE	(1 << 0)
++#define PAM_CHATTY_FLG_ERROR	(1 << 1)
++#define PAM_CHATTY_FLG_INFO	(1 << 1)
++
++#ifndef discard_const
++#define discard_const(ptr) ((void *)((uintptr_t)(ptr)))
++#endif
++
++#ifndef discard_const_p
++#define discard_const_p(type, ptr) ((type *)discard_const(ptr))
++#endif
++
++static int pam_chatty_conv(pam_handle_t *pamh,
++			   const int msg_style,
++			   const char *msg)
++{
++	int ret;
++	const struct pam_conv *conv;
++	const struct pam_message *mesg[1];
++	struct pam_response *r;
++	struct pam_message *pam_msg;
++
++	ret = pam_get_item(pamh, PAM_CONV, (const void **) &conv);
++	if (ret != PAM_SUCCESS) {
++		return ret;
++	}
++
++	pam_msg = malloc(sizeof(struct pam_message));
++	if (pam_msg == NULL) {
++		return PAM_BUF_ERR;
++	}
++
++	pam_msg->msg_style = msg_style;
++	pam_msg->msg = discard_const_p(char, msg);
++
++	mesg[0] = (const struct pam_message *) pam_msg;
++	ret = conv->conv(1, mesg, &r, conv->appdata_ptr);
++	free(pam_msg);
++
++	return ret;
++}
++
++/* Evaluate command line arguments and store info about them in the
++ * pam_matrix context
++ */
++static unsigned int parse_args(int argc,
++			       const char *argv[],
++			       unsigned int *num_lines)
++{
++	unsigned int flags = 0;
++
++	*num_lines = DEFAULT_NUM_LINES;
++
++	for (; argc-- > 0; ++argv) {
++		if (strncmp(*argv, NUM_LINES_KEY, strlen(NUM_LINES_KEY)) == 0) {
++			if (*(*argv+strlen(NUM_LINES_KEY)) != '\0') {
++				*num_lines = atoi(*argv+strlen(NUM_LINES_KEY));
++				if (*num_lines <= DEFAULT_NUM_LINES)
++					*num_lines = DEFAULT_NUM_LINES;
++				if (*num_lines > PAM_CONV_MSG_MAX)
++					*num_lines = PAM_CONV_MSG_MAX;
++			}
++		} else if (strncmp(*argv, VERBOSE_KEY,
++				   strlen(VERBOSE_KEY)) == 0) {
++			flags |= PAM_CHATTY_FLG_VERBOSE;
++		} else if (strncmp(*argv, ERROR_KEY,
++				   strlen(ERROR_KEY)) == 0) {
++			flags |= PAM_CHATTY_FLG_ERROR;
++		} else if (strncmp(*argv, INFO_KEY,
++				   strlen(INFO_KEY)) == 0) {
++			flags |= PAM_CHATTY_FLG_INFO;
++		}
++	}
++
++	return flags;
++}
++
++PAM_EXTERN int
++pam_sm_authenticate(pam_handle_t *pamh, int flags,
++		    int argc, const char *argv[])
++{
++	unsigned int optflags, num_lines;
++
++	optflags = parse_args (argc, argv, &num_lines);
++	if (!(optflags & PAM_CHATTY_FLG_VERBOSE))
++		return PAM_SUCCESS;
++
++	if (optflags & PAM_CHATTY_FLG_INFO) {
++		unsigned int i;
++
++		for (i = 0; i < num_lines; i++) {
++			pam_chatty_conv(pamh,
++					PAM_TEXT_INFO,
++					"Authentication succeeded");
++		}
++	}
++
++	if (optflags & PAM_CHATTY_FLG_ERROR) {
++		unsigned int i;
++
++		for (i = 0; i < num_lines; i++) {
++			pam_chatty_conv(pamh,
++					PAM_ERROR_MSG,
++					"Authentication generated an error");
++		}
++	}
++
++	return PAM_SUCCESS;
++}
+-- 
+2.24.1
+
+
+From 348ee7d7fe2e426bc099347b37357710e4f1cf47 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 22 Jan 2020 12:21:05 +0100
+Subject: [PATCH 3/4] tests: Add service file for chatty module
+
+So we can test it.
+
+Signed-off-by: Bastien Nocera <hadess@hadess.net>
+---
+ tests/CMakeLists.txt     | 3 +++
+ tests/services/chatty.in | 1 +
+ 2 files changed, 4 insertions(+)
+ create mode 100644 tests/services/chatty.in
+
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 997c15e..eb0477c 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -22,6 +22,9 @@ configure_file(services/matrix_py.in ${CMAKE_CURRENT_BINARY_DIR}/services/matrix
+ 
+ configure_file(services/pwrap_get_set.in ${CMAKE_CURRENT_BINARY_DIR}/services/pwrap_get_set @ONLY)
+ 
++set(PAM_CHATTY_PATH "${CMAKE_BINARY_DIR}/src/modules/pam_chatty.so")
++configure_file(services/chatty.in ${CMAKE_CURRENT_BINARY_DIR}/services/chatty @ONLY)
++
+ if (OSX)
+ 	set(TEST_ENVIRONMENT DYLD_FORCE_FLAT_NAMESPACE=1;DYLD_INSERT_LIBRARIES=${PAM_WRAPPER_LOCATION};PAM_WRAPPER=1;PAM_WRAPPER_SERVICE_DIR=${CMAKE_CURRENT_BINARY_DIR}/services})
+ 	add_definitions(-DOSX)
+diff --git a/tests/services/chatty.in b/tests/services/chatty.in
+new file mode 100644
+index 0000000..0099b50
+--- /dev/null
++++ b/tests/services/chatty.in
+@@ -0,0 +1 @@
++auth		required	@PAM_CHATTY_PATH@ verbose num_lines=16 info error
+-- 
+2.24.1
+
+
+From 3a130534011d4d13399cc7626a0a2b92e90e1ab6 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 22 Jan 2020 12:22:30 +0100
+Subject: [PATCH 4/4] tests: Add test for verbose PAM modules
+
+Signed-off-by: Bastien Nocera <hadess@hadess.net>
+---
+ tests/pypamtest_test.py | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/tests/pypamtest_test.py b/tests/pypamtest_test.py
+index 32ef65d..db66490 100755
+--- a/tests/pypamtest_test.py
++++ b/tests/pypamtest_test.py
+@@ -115,6 +115,11 @@ class PyPamTestRunTest(unittest.TestCase):
+         self.assertSequenceEqual(res.info, (u'Authentication succeeded',))
+         self.assertSequenceEqual(res.errors, ())
+ 
++    def test_run_chatty_auth(self):
++        neo_password = "secret"
++        tc = pypamtest.TestCase(pypamtest.PAMTEST_AUTHENTICATE)
++        res = pypamtest.run_pamtest("neo", "chatty", [tc], [ neo_password ])
++
+     def test_repr(self):
+         tc = pypamtest.TestCase(pypamtest.PAMTEST_CHAUTHTOK, 1, 2)
+         r = repr(tc)
+-- 
+2.24.1
+

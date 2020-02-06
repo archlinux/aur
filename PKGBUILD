@@ -2,7 +2,7 @@
 
 pkgname=pam_wrapper
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A helper library for PAM testing'
 arch=(x86_64)
 url='https://cwrap.org/pam_wrapper.html'
@@ -13,8 +13,12 @@ makedepends=(cmake python python2)
 checkdepends=(cmocka)
 optdepends=('python: Python 3 support'
             'python2: Python 2 support')
-source=("https://ftp.samba.org/pub/cwrap/$pkgname-$pkgver.tar.gz")
-sha256sums=('0537302eb6ceb07bcf5233c859b19264375beaa294bb3a9b7f58973981c8b219')
+source=("https://ftp.samba.org/pub/cwrap/$pkgname-$pkgver.tar.gz"
+        # https://bugzilla.samba.org/show_bug.cgi?id=14245
+        # https://gitlab.com/cwrap/pam_wrapper/-/merge_requests/2
+        'fix-pam-module-output-crash.patch')
+sha256sums=('0537302eb6ceb07bcf5233c859b19264375beaa294bb3a9b7f58973981c8b219'
+            'ad36643dc64951a7d99580fb02de3a7de841547f8ae01cc2fba5e7989e61b2e5')
 
 prepare() {
   mkdir -p build
