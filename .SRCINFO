@@ -13,7 +13,7 @@ pkgbase = kmon-bin
 	conflicts = kmon-bin-git
 	conflicts = kmon-bin-bin
 	source = https://github.com/orhun/kmon/releases/download/v0.1.0/kmon-0.1.0.tar.gz
-	sha256sums = a0f4d73ef37f109248f9c73d7349449541d0126a5b0a81d763f15357a4d96d0d
+	sha256sums = c48a2fccfab4171943c251ff74366dba04eb614dc76afcb998b7f18aacd6da19
 
 pkgname = kmon-bin
 
