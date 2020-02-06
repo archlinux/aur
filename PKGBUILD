@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2018-2020 Michael Picht
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # Maintainer: Michael Picht <michael dot picht at ussenterprise dot de>
 
 pkgorg=github.com/mipimipi
