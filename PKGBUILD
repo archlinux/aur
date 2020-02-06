@@ -2,18 +2,19 @@
 # Contributor: hexchain <i at hexchain dot org>
 
 pkgname=ca-certificates-blacklist-anti-china
-pkgver=3.47
+pkgver=3.49.2
 pkgrel=1
 pkgdesc="A set of Chinese CAs' certificates which should be avoided"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(any)
 license=('MPL' 'GPL')
-depends=('ca-certificates-utils')
-makedepends=('python2')
+depends=('ca-certificates-utils'
+         "ca-certificates-mozilla=$pkgver")
+makedepends=('python')
 source=("https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_${pkgver//./_}_RTM/src/nss-${pkgver}.tar.gz"
         "certdata2pem.py")
-sha256sums=('6cd0c4438b616bdacc0b5f25ff1506b0d07ee97ea6c95d514c5487200a155fa7'
-            '2a2ff9131c21fa3b23ad7c7a2f069eabc783e56c6eb05419ac5f365f48dea0fc')
+sha256sums=('faa7502c3ce9240d4be2aa88f63d88cf7d1cc512060e63ef21a7813c236160b2'
+            'd2a1579dae05fd16175fac27ef08b54731ecefdf414085c610179afcf62b096c')
 
 prepare() {
     mkdir -p certs
