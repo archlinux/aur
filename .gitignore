@@ -1,0 +1,4 @@
+src/
+pkg/
+Omada_Controller_v*_linux_x64.tar.gz
+*.pkg.tar*
