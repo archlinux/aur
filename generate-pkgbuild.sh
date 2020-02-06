@@ -6,25 +6,27 @@ usage() {
     echo "Usage: $0 {stable|regular|rapid}" >&2
 }
 
+get_major_version() {
+    curl https://cloud.google.com/feeds/kubernetes-engine-$1-channel-release-notes.xml \
+        | sed 's/xmlns=".*"//g' \
+        | xmllint --nocdata --xpath '(/feed/entry)[1]/content/text()' - \
+        | rg -o 'v?(\d\.\d+)\.\d+-gke\.\d+' -r '$1'
+}
+
 case $1 in
     -h)
         usage
         exit 0
         ;;
-    stable)
-        readonly major_version='1.13'
-        ;;
-    regular)
-        readonly major_version='1.14'
-        ;;
-    rapid)
-        readonly major_version='1.16'
+    stable | regular | rapid)
+        readonly major_version=$(get_major_version $1)
         ;;
     *)
         usage
         exit 1
         ;;
 esac
+
 
 readonly pkgname=kubectl
 
