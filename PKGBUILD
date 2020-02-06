@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-pkgname=raze-git
-pkgver=0.4.0+9+g67a2952ea
+pkgname=raze
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech (git version)'
 arch=('i686' 'x86_64')
@@ -27,7 +27,7 @@ optdepends=('gxmessage: crash dialog (GNOME)'
             'xorg-xmessage: crash dialog (other)')
 provides=('raze')
 conflicts=('raze')
-_srcver=master
+_srcver=$pkgver
 source=("Raze::git+https://github.com/coelckers/Raze#commit=${_srcver}"
         '0001-Fix-file-paths.patch'
         'raze.desktop')
