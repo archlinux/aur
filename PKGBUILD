@@ -2,7 +2,8 @@
 
 _pkgname=rainlendar
 pkgname=${_pkgname}-beta
-pkgver=2.15.2
+epoch=1
+pkgver=2.14.3.b161
 pkgrel=1
 pkgdesc="A desktop Calendar, ToDo list and Event list"
 arch=('x86_64')
@@ -11,9 +12,8 @@ license=('custom')
 depends=('gtk2' 'libcanberra' 'libsm')
 provides=('rainlendar2')
 conflicts=('rainlendar-pro' 'rainlendar-lite')
-source=("https://www.rainlendar.net/download/${_pkgname^}-Lite-${pkgver}-amd64.tar.bz2")
-#source=("http://www.rainlendar.net/download/${pkgver##*.}/${_pkgname^}-${pkgver}-amd64.tar.bz2")
-sha256sums=('abeded7f43c36eef99042d6b3683f63dd455e3d146d11bcdfb14489a361764a7')
+source=("http://www.rainlendar.net/download/${pkgver##*.}/${_pkgname^}-${pkgver}-amd64.tar.bz2")
+sha256sums=('4405753d13bb5c0a7c2ba09b025c45e3307525f56c8944d87bacfccd775497b4')
 
 package() {
   cd "${srcdir}"
