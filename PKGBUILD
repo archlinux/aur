@@ -22,7 +22,7 @@ depends=(
   fontconfig
   fribidi
   gmp
-  gnutls
+# gnutls - https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
   gsm
   jack
   lame
@@ -59,6 +59,7 @@ depends=(
   libxvidcore.so
   opencore-amr
   openjpeg2
+  openssl # https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
   opus
   sdl2
   speex
@@ -109,7 +110,6 @@ build() {
     --disable-stripping \
     --enable-fontconfig \
     --enable-gmp \
-    --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
     --enable-libaom \
@@ -146,10 +146,12 @@ build() {
     --enable-nvdec \
     --enable-nvenc \
     --enable-omx \
+    --enable-openssl \
     --enable-shared \
     --enable-version3 \
     --enable-libfdk_aac \
     --enable-nonfree
+#   --enable-gnutls  https://aur.archlinux.org/packages/ffmpeg-libfdk_aac/#comment-722966
 
   make
   make tools/qt-faststart
