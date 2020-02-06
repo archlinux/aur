@@ -1,0 +1,16 @@
+pkgbase = python-pygexf-git
+	pkgdesc = A python library to generate gexf file format
+	pkgver = r29.4ec08e9
+	pkgrel = 1
+	url = https://github.com/paulgirard/pygexf
+	arch = any
+	license = LGPL
+	makedepends = python-setuptools
+	depends = python
+	provides = python-pygexf
+	conflicts = python-pygexf
+	source = pygexf::git+https://github.com/paulgirard/pygexf.git
+	sha256sums = SKIP
+
+pkgname = python-pygexf-git
+
