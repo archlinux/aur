@@ -1,22 +1,21 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-luacov-coveralls
-pkgver=0.2.2
 _rockname=luacov-coveralls
+pkgname=lua-$_rockname
+pkgver=0.2.2
 _rockrel=1
-pkgrel=2
-pkgdesc="LuaCov reporter for coveralls.io service"
+pkgrel=3
+pkgdesc='LuaCov reporter for coveralls.io service'
 arch=('i686' 'x86_64')
-url="http://github.com/moteus/luacov-coveralls"
+url="http://github.com/moteus/$_rockname"
 license=('MIT')
 depends=('lua' 'lua-luacov')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-sha256sums=('177f2607beaef022c7e929eb3efa2f3fd7f67ff7097e73ad628f0718870e1bcf')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/moteus/$_rockname/archive/v$pkgver.tar.gz")
+sha256sums=('6534d446b6f7e5d2e7628210e7466df9f213c83dbf957beaa93e48f8261e9ed2')
 
 package() {
-    luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
-    find "$pkgdir/usr" -name manifest -delete
-    sed -i -e "s#' '.*/usr/lib/#' '/usr/lib/#" "$pkgdir/usr/bin/luacov-coveralls"
+  cd "$_rockname-$pkgver"
+  luarocks --tree="$pkgdir/usr/" make --deps-mode=none "rockspecs/$_rockname-$pkgver-$_rockrel.rockspec"
+  find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
 }
