@@ -4,7 +4,7 @@
 pkgname=sway
 pkgver=1.4
 epoch=1
-pkgrel=6
+pkgrel=7
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -19,7 +19,6 @@ optdepends=(
   'i3status: Status line'
   'mako: Lightweight notification daemon'
   'slurp: Select a region'
-  'swaybg: Wallpaper tool for Wayland compositors'
   'swayidle: Idle management daemon'
   'swaylock: Screen locker'
   'wallutils: Timed wallpapers'
