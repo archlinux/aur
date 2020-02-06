@@ -1,22 +1,30 @@
-# Maintainer: James Morris - jwm-art - james@jwm-art.net
+# Maintainer: Lennard Hofmann <lennard.hofmann@web.de>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
-
-pkgname=bebas_neue
-pkgver=20150506
+# Contributor: James Morris - jwm-art - james@jwm-art.net
+pkgname=otf-bebas-neue-git
+_pkgname=Bebas-Neue
+pkgver=r182.686d14a
 pkgrel=1
-#depends=('fontconfig' 'xorg-font-utils')
-pkgdesc="Bebas Neue is a sans serif font family based on the original Bebas Neue free font by Ryoichi Tsunekawa."
-arch=('any')
-url="http://fontfabric.com/bebas-neue/"
-license=('custom:FONTFABRIC(tm) FREE FONT END USER LICENSE AGREEMENT v1.0 2009')
-source=(bebas-${pkgver}.zip::http://fontfabric.com/downfont/bebas.zip)
-install=$pkgname.install
-md5sums=('efecbc6a12926cce38b7c380edbb15c5')
+pkgdesc="Sans-serif display font for headline, caption, and titling"
+arch=(any)
+url="https://github.com/dharmatype/Bebas-Neue"
+license=('custom:OFL')
+#depends=(fontconfig xorg-mkfontscale)
+makedepends=(git)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$_pkgname::git+https://github.com/dharmatype/$_pkgname.git")
+sha256sums=(SKIP)
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  cd "${srcdir}" || return 1
-  install -dm755 "${pkgdir}/usr/share/fonts/OTF" || return 1
-  install -m644 *.otf "${pkgdir}/usr/share/fonts/OTF" || return 1
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" || return 1
-  install -m644 'FFF_EULA_license.pdf' "${pkgdir}/usr/share/licenses/${pkgname}/eula.pdf" || return 1
+	cd "$srcdir/$_pkgname"
+	install -D -m644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
+	install -D -m644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+	install -D -m644 -t "$pkgdir/usr/share/fonts/OTF" \
+		fonts/BebasNeue\(2018\)ByDhamraType/otf/*.otf
 }
