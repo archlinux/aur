@@ -7,8 +7,8 @@
 # Then put these files in the build directory and retry.
 
 _version=3.11
-_sp=1
-_build=441.0
+_sp=2
+_build=446.3
 _base=396-4
 pkgname=lattice-diamond
 pkgdesc='Lattice Diamond design software'
@@ -24,7 +24,7 @@ source=("http://files.latticesemi.com/Diamond/${_version}/diamond_${_version/"."
         "${pkgname}.desktop"
         "${pkgname}.install")
 sha512sums=('d4f0e2ca10c8160b16fec3e1cb0d72538d452719fd6b10e3109c63d91a5862ce392479276ab3865c0a1469fe7145cafa9fc9d7c89b3827417447aa21fff7ec36'
-            '744a543df5fee434625f0357ed6d978ce5063e5019d34e597e65a6313b8af014a9efd8d9cdfd6870b38c86ad78f0ea648b6c87fd99aea84cba8baf1713ef97b1'
+            '8136bf30a7c8eb4eefaa080c1334b8feb84141e93cbf4ed368b322c2f3e138dd4029e4f070514122d3d7a1a5ea39e038768a1c2da0af904e9753fb7f48c64d17'
             '772fa260bb1a4ed7c4e328a99b3cd16b625e8880d7731abbe0cd59dbe4d743265e169a26ceba7b619a87c1cb9638a268a5501d3358863171ee808e59b2d3b0ac'
             '77f42fd480370c3a8bfe47083683c6ae22eaa8cf155426ce6983f183379efc8e70a248e8bb56080ff274046251afacbbba9cf3456c0fbcfd899c16053b13707c'
             '0f6f4463e1b1266a151afaaf6fefb3d69b712fafd6f2fa20beb211a3f9dd4db216be7255cc8fddaac946534754739c13406476fc6474236e7505bcd033a71d81')
