@@ -1,0 +1,21 @@
+pkgbase = python-ripser
+	pkgdesc = nested sampling visualisation
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/scikit-tda/ripser.py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = cython
+	depends = python
+	depends = cython
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-scikit-learn
+	depends = python-persim
+	options = !emptydirs
+	source = https://github.com/scikit-tda/ripser.py/archive/v0.4.1.tar.gz
+	sha256sums = ec7f34935f5e6d3430c7f5a27007ccf4f50a21936d4045c0d3aa1e77209ef8fa
+
+pkgname = python-ripser
+
