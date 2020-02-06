@@ -1,0 +1,14 @@
+pkgbase = python-secure
+	pkgdesc = secure.py is a lightweight package that adds optional security headers and cookie attributes for Python web frameworks.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/TypeError/secure.py/releases
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = secure.py-0.2.1.tar.gz::https://github.com/TypeError/secure.py/archive/v0.2.1.tar.gz
+	sha256sums = 20ccb7a9f55a58e572b14fb68ec49344bbbc8574debf288caa630d0fc8f29b3c
+
+pkgname = python-secure
+
