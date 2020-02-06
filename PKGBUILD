@@ -1,21 +1,36 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-term
+_rockname=term
+_pkgname=lua-$_rockname
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.7
-_rockname=lua-term
+_pkgver=0.07
 _rockrel=1
-pkgrel=1
-pkgdesc="Terminal functions for Lua"
+pkgrel=2
+pkgdesc='Terminal functions for Lua'
 arch=('i686' 'x86_64')
-url="https://github.com/hoelzro/lua-term"
+url="https://github.com/hoelzro/$_pkgname"
 license=('MIT')
-depends=('lua')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('e2edece302c1c14ba2b416d973c095801e7f32c50d156ea46f21e37bb82c2f65')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/hoelzro/$_pkgname/archive/$_pkgver.tar.gz")
+sha256sums=('c1a1d0c57107147ea02878a50b768d1c3c13aca2769b026c5bb7a84119607f30')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_pkgname-$_pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-term() {
+  depends+=('lua')
+  _package_helper 5.3
+}
+
+package_lua52-term() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-term() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
