@@ -1,21 +1,34 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-colors
-pkgver=8.05.26
 _rockname=colors
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=8.05.26
 _rockrel=1
-pkgrel=1
-pkgdesc="library provides methods to do color computation in HSL color space and for finding harmonious color palettes"
+pkgrel=2
+pkgdesc='HSL Color Theory Computation in Lua'
 arch=('i686' 'x86_64')
-url="http://sputnik.freewisdom.org/lib/colors/"
+url="http://sputnik.freewisdom.org/lib/$_rockname/"
 license=('MIT')
-depends=('lua')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-sha256sums=('6bffdd058af3f97c72a3e7fcfc7933a18c68661f4d559657a368e160ecc98071')
+source=("${_rockname}-${pkgver}.tar.gz::http://sputnik.freewisdom.org/files/$_rockname-$pkgver.tar.gz")
+sha256sums=('64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_rockname-$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspec"
+}
+
+package_lua-colors() {
+  depends+=('lua')
+  _package_helper 5.3
+}
+
+package_lua52-colors() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-colors() {
+  depends+=('lua51')
+  _package_helper 5.1
 }

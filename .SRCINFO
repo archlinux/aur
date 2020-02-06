@@ -1,15 +1,21 @@
 pkgbase = lua-colors
-	pkgdesc = library provides methods to do color computation in HSL color space and for finding harmonious color palettes
+	pkgdesc = HSL Color Theory Computation in Lua
 	pkgver = 8.05.26
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sputnik.freewisdom.org/lib/colors/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	source = https://luarocks.org/colors-8.05.26-1.src.rock
-	sha256sums = 6bffdd058af3f97c72a3e7fcfc7933a18c68661f4d559657a368e160ecc98071
+	source = colors-8.05.26.tar.gz::http://sputnik.freewisdom.org/files/colors-8.05.26.tar.gz
+	sha256sums = 64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b
 
 pkgname = lua-colors
+	depends = lua
+
+pkgname = lua52-colors
+	depends = lua52
+
+pkgname = lua51-colors
+	depends = lua51
 
