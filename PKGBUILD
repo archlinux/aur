@@ -9,7 +9,7 @@
 
 pkgname=acroread
 pkgver=9.5.5
-pkgrel=12
+pkgrel=13
 pkgdesc="Adobe Acrobat Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
@@ -18,7 +18,7 @@ optdepends=('acroread-fonts: CJK and extended font packs'
             'libcanberra: XDG sound support'
             'gtk-engine-murrine: fix ugly buttons and scrollbars'
             )
-depends=('desktop-file-utils' lib32-{gtk2,libxml2,libxt,mesa,libidn,glu})
+depends=('desktop-file-utils' lib32-{mesa,glu})
 optdepends=('acroread-fonts: CJK and extended font packs'
             'lib32-libcanberra: XDG sound support'
             'lib32-gtk-engine-murrine: fix ugly buttons and scrollbars')
@@ -32,7 +32,9 @@ source=($pkgname.desktop
 	http://archive.virtapi.org/packages/l/lib32-librsvg/lib32-librsvg-2.44.9-1-x86_64.pkg.tar.xz
 	http://archive.virtapi.org/packages/l/lib32-gdk-pixbuf2/lib32-gdk-pixbuf2-2.38.1-1-x86_64.pkg.tar.xz
 	http://archive.virtapi.org/packages/l/lib32-libxml2/lib32-libxml2-2.9.9-3-x86_64.pkg.tar.xz
-	http://archive.virtapi.org/packages/l/lib32-gtk2/lib32-gtk2-2.24.32-1-x86_64.pkg.tar.xz)
+	http://archive.virtapi.org/packages/l/lib32-gtk2/lib32-gtk2-2.24.32-1-x86_64.pkg.tar.xz
+	http://archive.virtapi.org/packages/l/lib32-libxt/lib32-libxt-1.2.0-1-x86_64.pkg.tar.xz
+	http://archive.virtapi.org/packages/l/lib32-libidn/lib32-libidn-1.35-1-x86_64.pkg.tar.xz)
 noextract=("${source[@]%%::*}")
 sha512sums=('178ca8a3abf630195eaebd6a76a7e5ac19165708acd52b99acab2de3d0bdb57fdf81d666edae41a947fa5a3fc14442c86fa855860d5d3d0d3e1db0386c583b96'
             'f9c18ca0dc0687de353afeb90925439a557a14604e6361ff2b229ec29257ff051ea9eac6a90671b38a745473b5c87135377d035520f441ceaabf2510d690675b'
@@ -42,7 +44,9 @@ sha512sums=('178ca8a3abf630195eaebd6a76a7e5ac19165708acd52b99acab2de3d0bdb57fdf8
 	    '214082ac08193fa8170bf30506c9a98d8b1eda0314b1d8ff7d87d98b264ae6809a2725d6b5aa40adc06cdf73771a8b8f04f980406a93bec2fad9a0662f273183'
 	    'd5844b9fd88ffb885b1e9c206905592a19851fe83997ad1cb0f84f2713be337255604ee66e4509a97edb915c0e0b92cce6daf6d643bc7f81a1e7d23cbf5706f2'
 	    'fde6a6ddfbbb3bdafaa273c0428728c8b8a842c86fa1437d85e47490688da2ec1c0d8dd3d61885874d3884588b11585d76e173fb880714be99ff3e59984a6c53'
-	    'c59c7968443666e08356aee17e47127a586977ad676ba6ff28ee5bcfe3ce4b69c1cb1aa7bbdb2bc3e0c1d19a982ad40d7dd3006ceff41d1f54b69f43bdb4782b')
+	    'c59c7968443666e08356aee17e47127a586977ad676ba6ff28ee5bcfe3ce4b69c1cb1aa7bbdb2bc3e0c1d19a982ad40d7dd3006ceff41d1f54b69f43bdb4782b'
+	    '8ed76dea0d03f45b0f15b8e9996ab06f295fe2b0c53bccb53737e49ba8dd0d051dbe38ea81fc3b7b41318ac4b1673f08d40a5618a497c4e7febd36e7d3e5f329'
+	    '4de0eec2ed41fb8d003d0ec4246403786e2d73e8a520a27a9bbe473e7d0fb731fda3e21f0ff02069dec07c6dd28194682d8f4e3b241cbf80833d1c0c930d42e4')
 prepare() {
     # Extracting content from bin file
     tail -c+6889 AdbeRdr9.5.5-1_i486linux_enu.bin | xz -qqd | tar x
