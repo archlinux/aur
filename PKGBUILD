@@ -3,7 +3,7 @@
 pkgname=('unifed-arch-kernel' 'unifed-arch-kernel-secure-boot')
 pkgbase=unifed-arch-kernel
 pkgver=0.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Generates unifed archlinux images using pacman power'
 arch=(x86_64)
 url='https://aur.archlinux.org/packages/unifed-arch-kernel/'
@@ -16,7 +16,7 @@ source=('uak-script'
         '75-sign-for-secure-boot.install'
         '95-unifed-arch-kernel-install.hook')
 md5sums=('aa4f4f6300e708d6ee67b86414a6ede1'
-         '3f5756050aaf4c0a13a11167682565a1'
+         'e541a9ec2e9dc1bb2e83ac3fc5d3977c'
          'cf19112a5294756657e8e2e3ebf6226d'
          'c07998165fc01a2f5e7d453b51a7a024'
          '9105de5ff7f384b1e48bdd4972b87917'

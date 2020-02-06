@@ -102,13 +102,13 @@ case "$COMMAND" in
         if [[ ! $KERNEL_VERSION ]] || [[ ! "$KERNEL_IMAGE" ]]; then
             die 1 "Not enough arguments"
         fi
-        
+
         if [[ ! -f "$KERNEL_IMAGE" ]]; then
             die 2 "Kernel image '${KERNEL_IMAGE}' not a file"
         fi
-        
+
         shift 3
-        
+
         EFISTUB_IMAGE=$(mktemp)
         EFISTUB_INSTALL_PATH="$UAK_ESP_TARGET/$ID-$KERNEL_VERSION.efi"
     ;;
@@ -116,13 +116,13 @@ case "$COMMAND" in
         check_root
 
         KERNEL_VERSION="$2"
-        
+
         if [[ ! $KERNEL_VERSION ]]; then
             die 1 "Not enough arguments"
         fi
 
         shift 2
-        
+
         EFISTUB_INSTALL_PATH="$UAK_ESP_TARGET/$ID-$KERNEL_VERSION.efi"
     ;;
     regenerate)
@@ -151,7 +151,7 @@ for plugin in "${PLUGINS[@]}"; do
 done
 
 
-if [[ "$COMMAND" == "add" ]]; then
+if [[ "$COMMAND" == "install" ]]; then
     if [[ -f "$EFISTUB_IMAGE" ]]; then
         install -DT "$EFISTUB_IMAGE" "$EFISTUB_INSTALL_PATH" || warning "Unable to install image at $EFISTUB_INSTALL_PATH"
     else
