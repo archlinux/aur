@@ -5,6 +5,7 @@ post_install() {
     cd /opt/hol
     poly < tools/smart-configure.sml
     bin/build --relocbuild
+    cd Manual; make
 
     cat <<EOF
 *************************************************
@@ -25,4 +26,5 @@ post_upgrade() {
     cd /opt/hol
     poly < tools/smart-configure.sml
     bin/build --relocbuild
+    cd Manual; make
 }

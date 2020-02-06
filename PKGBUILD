@@ -4,7 +4,7 @@
 # FIXME: holyhammer fails to build with ocaml-num
 pkgname=hol
 pkgver=kananaskis.13
-pkgrel=1
+pkgrel=2
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
 arch=('x86_64')
