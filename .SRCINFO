@@ -1,0 +1,22 @@
+pkgbase = python-pptx
+	pkgdesc = Create Open XML PowerPoint documents in Python
+	pkgver = 0.6.18
+	pkgrel = 1
+	url = https://github.com/scanny/python-pptx
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-behave
+	depends = flake8
+	depends = python-lxml
+	depends = python-mock
+	depends = python-pyparsing
+	depends = python-pillow
+	depends = python-pytest
+	depends = python-xlsxwriter
+	source = python-pptx-0.6.18.tar.gz::https://github.com/scanny/python-pptx/archive/v0.6.18.tar.gz
+	sha256sums = f427728c4f5f3a0d28f8d1fb6d2f8c56fe133acf1161cd16083c294e10071bc0
+
+pkgname = python-pptx
+
