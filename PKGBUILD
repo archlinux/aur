@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
     cd "${_pkgname}"
-    export _pyver=$(python -c "from sys import version_info; print(\"%d.%d\" % (version_info[0],version_info[1]))")
+    export _pyver=$(python -c "print('%d.%d' % __import__('sys').version_info[:2])")
     cp build/config-linux-gcc.py config.py
 
     ## use collada-dom-mitsuba
@@ -66,6 +66,7 @@ build() {
 
 package() {
     cd "${_pkgname}"
+    export _pyver=$(python -c "print('%d.%d' % __import__('sys').version_info[:2])")
     	install -d \
 		${pkgdir}/usr/bin \
 		${pkgdir}/usr/lib \
