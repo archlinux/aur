@@ -2,8 +2,8 @@
 _modulename=ripser
 pkgname=python-$_modulename
 pkgver=0.4.1
-pkgrel=1
-pkgdesc="nested sampling visualisation"
+pkgrel=2
+pkgdesc="A Lean Persistent Homology Library for Python"
 arch=(any)
 url="https://github.com/scikit-tda/ripser.py"
 license=('MIT')

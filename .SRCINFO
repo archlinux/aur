@@ -1,7 +1,7 @@
 pkgbase = python-ripser
-	pkgdesc = nested sampling visualisation
+	pkgdesc = A Lean Persistent Homology Library for Python
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scikit-tda/ripser.py
 	arch = any
 	license = MIT
