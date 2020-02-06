@@ -158,6 +158,9 @@ package() {
   msg "mv doc/blender to doc/blender-${_sufix}"
   mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-${_sufix}
 
+  msg "add -${pkgver%%.r*} sufix to man page"
+  mv ${pkgdir}/usr/share/man/man1/blender.1 ${pkgdir}/usr/share/man/man1/blender-${_sufix}
+
   msg "add -${_sufix} sufix to all icons"  
   for icon in `find ${pkgdir}/usr/share/icons -type f`
   do
