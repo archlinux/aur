@@ -1,7 +1,7 @@
 pkgbase = nominatim-data-postcodes-gb
 	pkgdesc = Optional postcode (GB) data to use with nominatim
 	pkgver = 20191119
-	pkgrel = 0
+	pkgrel = 1
 	url = https://nominatim.org
 	arch = any
 	license = unknown
