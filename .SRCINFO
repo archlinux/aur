@@ -1,0 +1,19 @@
+pkgbase = read-it-later-git
+	pkgdesc = wallabag client
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://belmoussaoui.com/2020/02/04/read-it-later/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = appstream-glib
+	depends = libhandy
+	provides = read-it-later
+	source = git+https://gitlab.gnome.org/bilelmoussaoui/read-it-later.git
+	sha512sums = SKIP
+
+pkgname = read-it-later-git
+
