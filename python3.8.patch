@@ -1,0 +1,73 @@
+From 4b663ecf264020b1d7003a137ce84b06d7ec4ce6 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Sat, 16 Nov 2019 20:29:30 +0100
+Subject: [PATCH] Add python 3.8 support.
+
+---
+ source/blender/python/generic/py_capi_utils.c | 27 +++++++++++++++----
+ 1 file changed, 22 insertions(+), 5 deletions(-)
+
+diff --git a/source/blender/python/generic/py_capi_utils.c b/source/blender/python/generic/py_capi_utils.c
+index 545e0506f84..a7eab70600b 100644
+--- a/source/blender/python/generic/py_capi_utils.c
++++ b/source/blender/python/generic/py_capi_utils.c
+@@ -696,9 +696,16 @@ PyObject *PyC_UnicodeFromByte(const char *str)
+  ****************************************************************************/
+ PyObject *PyC_DefaultNameSpace(const char *filename)
+ {
++	#if PY_VERSION_HEX >= 0x03080000
++	PyObject *modules = PyImport_GetModuleDict();
++	PyObject *builtins = PyEval_GetBuiltins();
++	#else
+ 	PyInterpreterState *interp = PyThreadState_GET()->interp;
++	PyObject *modules = interp->modules;
++	PyObject *builtins = interp->builtins;
++	#endif
+ 	PyObject *mod_main = PyModule_New("__main__");
+-	PyDict_SetItemString(interp->modules, "__main__", mod_main);
++	PyDict_SetItemString(modules, "__main__", mod_main);
+ 	Py_DECREF(mod_main); /* sys.modules owns now */
+ 	PyModule_AddStringConstant(mod_main, "__name__", "__main__");
+ 	if (filename) {
+@@ -706,8 +713,8 @@ PyObject *PyC_DefaultNameSpace(const char *filename)
+ 		 * note: this wont map to a real file when executing text-blocks and buttons. */
+ 		PyModule_AddObject(mod_main, "__file__", PyC_UnicodeFromByte(filename));
+ 	}
+-	PyModule_AddObject(mod_main, "__builtins__", interp->builtins);
+-	Py_INCREF(interp->builtins); /* AddObject steals a reference */
++	PyModule_AddObject(mod_main, "__builtins__", builtins);
++	Py_INCREF(builtins); /* AddObject steals a reference */
+ 	return PyModule_GetDict(mod_main);
+ }
+ 
+@@ -734,15 +741,25 @@ bool PyC_NameSpace_ImportArray(PyObject *py_dict, const char *imports[])
+ /* restore MUST be called after this */
+ void PyC_MainModule_Backup(PyObject **main_mod)
+ {
++	#if PY_VERSION_HEX >= 0x03080000
++	PyObject *modules = PyImport_GetModuleDict();
++	#else
+ 	PyInterpreterState *interp = PyThreadState_GET()->interp;
+-	*main_mod = PyDict_GetItemString(interp->modules, "__main__");
++	PyObject *modules = interp->modules;
++	#endif
++	*main_mod = PyDict_GetItemString(modules, "__main__");
+ 	Py_XINCREF(*main_mod); /* don't free */
+ }
+ 
+ void PyC_MainModule_Restore(PyObject *main_mod)
+ {
++	#if PY_VERSION_HEX >= 0x03080000
++	PyObject *modules = PyImport_GetModuleDict();
++	#else
+ 	PyInterpreterState *interp = PyThreadState_GET()->interp;
+-	PyDict_SetItemString(interp->modules, "__main__", main_mod);
++	PyObject *modules = interp->modules;
++	#endif
++	PyDict_SetItemString(modules, "__main__", main_mod);
+ 	Py_XDECREF(main_mod);
+ }
+ 
+-- 
+2.24.0
+

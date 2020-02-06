@@ -1,0 +1,131 @@
+From 44f719b63238503ef8f933f55383c6d4798995cc Mon Sep 17 00:00:00 2001
+From: Campbell Barton <ideasman42@gmail.com>
+Date: Thu, 13 Sep 2018 17:06:07 +1000
+Subject: [PATCH] Cleanup: use PyImport_GetModuleDict
+
+Replace direct access using PyThreadState_GET
+---
+ source/blender/python/bmesh/bmesh_py_api.c        | 2 +-
+ source/blender/python/generic/idprop_py_api.c     | 2 +-
+ source/blender/python/intern/bpy_interface.c      | 2 +-
+ source/blender/python/intern/gpu.c                | 4 ++--
+ source/blender/python/mathutils/mathutils.c       | 2 +-
+ source/blender/python/mathutils/mathutils_noise.c | 5 +++--
+ source/gameengine/Ketsji/KX_PythonInit.cpp        | 2 +-
+ 7 files changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/source/blender/python/bmesh/bmesh_py_api.c b/source/blender/python/bmesh/bmesh_py_api.c
+index d5973baeadb..d7324eabb6c 100644
+--- a/source/blender/python/bmesh/bmesh_py_api.c
++++ b/source/blender/python/bmesh/bmesh_py_api.c
+@@ -196,7 +196,7 @@ PyObject *BPyInit_bmesh(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	BPy_BM_init_types();
+ 	BPy_BM_init_types_select();
+diff --git a/source/blender/python/generic/idprop_py_api.c b/source/blender/python/generic/idprop_py_api.c
+index 4d4d5232800..8bed0f28cba 100644
+--- a/source/blender/python/generic/idprop_py_api.c
++++ b/source/blender/python/generic/idprop_py_api.c
+@@ -1795,7 +1795,7 @@ PyObject *BPyInit_idprop(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	mod = PyModule_Create(&IDProp_module_def);
+ 
+diff --git a/source/blender/python/intern/bpy_interface.c b/source/blender/python/intern/bpy_interface.c
+index 7ca087e4993..123c938b921 100644
+--- a/source/blender/python/intern/bpy_interface.c
++++ b/source/blender/python/intern/bpy_interface.c
+@@ -537,7 +537,7 @@ static bool python_script_exec(
+ 
+ 	if (py_dict) {
+ #ifdef PYMODULE_CLEAR_WORKAROUND
+-		PyModuleObject *mmod = (PyModuleObject *)PyDict_GetItemString(PyThreadState_GET()->interp->modules, "__main__");
++		PyModuleObject *mmod = (PyModuleObject *)PyDict_GetItemString(PyImport_GetModuleDict(), "__main__");
+ 		PyObject *dict_back = mmod->md_dict;
+ 		/* freeing the module will clear the namespace,
+ 		 * gives problems running classes defined in this namespace being used later. */
+diff --git a/source/blender/python/intern/gpu.c b/source/blender/python/intern/gpu.c
+index 43796dc9474..d902b6838f4 100644
+--- a/source/blender/python/intern/gpu.c
++++ b/source/blender/python/intern/gpu.c
+@@ -326,7 +326,7 @@ PyObject *GPU_initPython(void)
+ {
+ 	PyObject *module;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	module = PyInit_gpu();
+ 
+@@ -337,6 +337,6 @@ PyObject *GPU_initPython(void)
+ 	PyDict_SetItem(sys_modules, PyModule_GetNameObject(submodule), submodule);
+ 	Py_INCREF(submodule);
+ 
+-	PyDict_SetItem(PyImport_GetModuleDict(), PyModule_GetNameObject(module), module);
++	PyDict_SetItem(sys_modules, PyModule_GetNameObject(module), module);
+ 	return module;
+ }
+diff --git a/source/blender/python/mathutils/mathutils.c b/source/blender/python/mathutils/mathutils.c
+index a3a4e7f313b..f021d456b3a 100644
+--- a/source/blender/python/mathutils/mathutils.c
++++ b/source/blender/python/mathutils/mathutils.c
+@@ -615,7 +615,7 @@ PyMODINIT_FUNC PyInit_mathutils(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 
+ 	if (PyType_Ready(&vector_Type) < 0)
+ 		return NULL;
+diff --git a/source/blender/python/mathutils/mathutils_noise.c b/source/blender/python/mathutils/mathutils_noise.c
+index 839d1ffc588..834322c0aed 100644
+--- a/source/blender/python/mathutils/mathutils_noise.c
++++ b/source/blender/python/mathutils/mathutils_noise.c
+@@ -845,6 +845,7 @@ static struct PyModuleDef M_Noise_module_def = {
+ /*----------------------------MODULE INIT-------------------------*/
+ PyMODINIT_FUNC PyInit_mathutils_noise(void)
+ {
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 	PyObject *submodule = PyModule_Create(&M_Noise_module_def);
+ 	PyObject *item_types, *item_metrics;
+ 
+@@ -852,11 +853,11 @@ PyMODINIT_FUNC PyInit_mathutils_noise(void)
+ 	setRndSeed(0);
+ 
+ 	PyModule_AddObject(submodule, "types", (item_types = PyInit_mathutils_noise_types()));
+-	PyDict_SetItemString(PyThreadState_GET()->interp->modules, "noise.types", item_types);
++	PyDict_SetItemString(sys_modules, "noise.types", item_types);
+ 	Py_INCREF(item_types);
+ 
+ 	PyModule_AddObject(submodule, "distance_metrics", (item_metrics = PyInit_mathutils_noise_metrics()));
+-	PyDict_SetItemString(PyThreadState_GET()->interp->modules, "noise.distance_metrics", item_metrics);
++	PyDict_SetItemString(sys_modules, "noise.distance_metrics", item_metrics);
+ 	Py_INCREF(item_metrics);
+ 
+ 	return submodule;
+diff --git a/source/gameengine/Ketsji/KX_PythonInit.cpp b/source/gameengine/Ketsji/KX_PythonInit.cpp
+index 251273cf7a8..9611a4ea49b 100644
+--- a/source/gameengine/Ketsji/KX_PythonInit.cpp
++++ b/source/gameengine/Ketsji/KX_PythonInit.cpp
+@@ -2234,7 +2234,7 @@ PyMODINIT_FUNC initBGE(void)
+ {
+ 	PyObject *mod;
+ 	PyObject *submodule;
+-	PyObject *sys_modules = PyThreadState_GET()->interp->modules;
++	PyObject *sys_modules = PyImport_GetModuleDict();
+ 	const char *mod_full;
+ 
+ 	mod = PyModule_Create(&BGE_module_def);
+-- 
+2.25.0
+

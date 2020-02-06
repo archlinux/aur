@@ -47,6 +47,8 @@ source=("git://git.blender.org/blender.git${_fragment}"
         openvdb.patch
         collada1668.patch
         oiio-2.0.patch
+        Cleanup-use-PyImport_GetModuleDict.patch
+        python3.8.patch
         )
 md5sums=('SKIP'
          'SKIP'
@@ -61,7 +63,9 @@ md5sums=('SKIP'
          'bb325c8c879d677ad1f1c54797268716'
          'fe709e616e52c1acc47c1cc0f77c2694'
          '4e4423315f07bc724c7703c57c4481d7'
-         'f98eb0576a8e00444cc3e936d31a9812')
+         'f98eb0576a8e00444cc3e936d31a9812'
+         '1fafe7b27c376f0fd8b7bb7985deef6e'
+         '54caa2acab217f8abb9a00ef05f1d0d7')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -81,6 +85,8 @@ prepare() {
   git apply -v ${srcdir}/collada1668.patch
   git apply -v ${srcdir}/gcc9.patch
   git apply -v ${srcdir}/oiio-2.0.patch
+  git apply -v ${srcdir}/Cleanup-use-PyImport_GetModuleDict.patch
+  git apply -v ${srcdir}/python3.8.patch
   msg "change BLENDER_VERSION to ${_blenver/./}"
   sed -i "/#define BLENDER_VERSION */s/279/${_blenver/./}/" source/blender/blenkernel/BKE_blender_version.h
 }
