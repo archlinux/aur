@@ -1,6 +1,6 @@
 pkgbase = libfprint-git
 	pkgdesc = Library for fingerprint readers
-	pkgver = 1.90.0.r222.g2c9e252
+	pkgver = 1.90.0.r225.gbb08d2e
 	pkgrel = 1
 	epoch = 1
 	url = https://fprint.freedesktop.org/
