@@ -1,6 +1,6 @@
 pkgbase = buildstream-git
 	pkgdesc = Framework for modelling build pipelines in a declarative YAML format
-	pkgver = 1.91.3
+	pkgver = 1.93.1+22+g0591b0c8b
 	pkgrel = 1
 	url = https://buildstream.build
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = buildstream-git
 	depends = bubblewrap
 	depends = buildbox-casd
 	depends = python-click
+	depends = python-dateutil
 	depends = python-grpcio
 	depends = python-jinja
 	depends = python-pluginbase

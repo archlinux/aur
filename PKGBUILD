@@ -1,6 +1,6 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=buildstream-git
-pkgver=1.91.3
+pkgver=1.93.1+22+g0591b0c8b
 pkgrel=1
 pkgdesc="Framework for modelling build pipelines in a declarative YAML format"
 arch=('any')
@@ -10,6 +10,7 @@ depends=(
     bubblewrap
     buildbox-casd
     python-click
+    python-dateutil
     python-grpcio
     python-jinja
     python-pluginbase
