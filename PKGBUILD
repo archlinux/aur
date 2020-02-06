@@ -5,19 +5,19 @@ _project=cassowary.lua
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=2.2
 _rockrel=0
-pkgrel=4
-pkgdesc="The cassowary constraint solver."
+pkgrel=5
+pkgdesc='The cassowary constraint solver'
 arch=('i686' 'x86_64')
-url="https://github.com/simoncozens/$_project"
+url="https://github.com/sile-typesetter/$_project"
 license=('MIT')
 _lua_deps=('penlight')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/simoncozens/$_project/archive/v$pkgver.tar.gz")
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/sile-typesetter/$_project/archive/v$pkgver.tar.gz")
 sha256sums=('e2f7774b6883581491b8f2c9d1655b2136bc24d837a9e43f515590a766ec4afd')
 
 _package_helper() {
   cd "$_project-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
 }
 
 package_lua-cassowary() {
