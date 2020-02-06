@@ -2,23 +2,23 @@
 # Contributor: TBK <aur@jjtc.eu>
 
 pkgname=termius-beta
-pkgver=4.2.7
-pkgrel=2
+pkgver=5.4.1
+pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
 license=('custom')
 depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
 makedepends=('squashfs-tools')
-# Get latest version + link from https://uappexplorer.com/snap/ubuntu/termius-beta || snap info termius-beta || run the following
+# Get latest version + link from https://snapcraft.io/termius-beta|| snap info termius-beta || run the following
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.version' -r
 source=(
-    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_64.snap"
+    "${pkgname}-${pkgver}.snap::https://api.snapcraft.io/api/v1/snaps/download/yyZzRdoyiRz3EM7iuvjhaIjDfnlFJcZs_80.snap"
     "termius-beta.desktop"
     "tos.html"
 )
-sha256sums=('3ff6f8dfab1955be6c2398a55c36df3cf8345e41f9b5b27f60d514b23080fefb'
+sha256sums=('7bfdd1179940806de1df4648ff35630fdd65f45ad8718847f896c9c8a5540879'
             'cd9d14924c7721042640d6db1fbdc882b156d756bd906cd09193221b59f979f5'
             '9c969cc82314240860737dc09d48970271c798c9b1116ceb91556f75959788a2')
 
@@ -54,7 +54,6 @@ package() {
     mkdir -p "${pkgdir}"/usr/bin
     ln -sf /opt/${pkgname}/termius-beta "${pkgdir}"/usr/bin/${pkgname}
     install -Dm0644 tos.html "${pkgdir}"/usr/share/licenses/${pkgname}/tos.html
-    install -Dm0644 ${pkgname}/LICENSE* "${pkgdir}"/usr/share/licenses/${pkgname}/
     install -Dm0644 ${pkgname}.desktop "${pkgdir}"/usr/share/applications/${pkgname}.desktop
     install -Dm0644 ${pkgname}/meta/gui/icon.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
 }
