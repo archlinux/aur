@@ -1,12 +1,12 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=0.901.0.r146.g6b6dc638
+pkgver=v0.999.1.r16.g45193972
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
-depends=('electron4')
+depends=('electron6')
 makedepends=('npm' 'nodejs' 'git')
 source=(
     "deltachat-desktop-git::git://github.com/deltachat/deltachat-desktop.git"
@@ -43,8 +43,14 @@ package() {
     cd "$srcdir/${pkgname}"
     
     install -d "${pkgdir}/opt/DeltaChat/electron_app"
-    cp -r node_modules  images tsc-dist build static _locales "${pkgdir}/opt/DeltaChat/electron_app"
+    cp -r node_modules  images tsc-dist build html-dist _locales "${pkgdir}/opt/DeltaChat/electron_app"
+
+    rm -rf "${pkgdir}/opt/DeltaChat/electron_app/node_modules/deltachat-node/prebuilds/win32-x64"
+    rm -rf "${pkgdir}/opt/DeltaChat/electron_app/node_modules/deltachat-node/prebuilds/darwin-x64"
+    find "${pkgdir}/opt/DeltaChat/electron_app/node_modules/" -name *.js.map -exec rm {} \;
+
     cp index.js package.json "${pkgdir}/opt/DeltaChat/electron_app"
+
     
     install -Dm644 "${srcdir}/deltachat-desktop.desktop" "${pkgdir}/usr/share/applications/deltachat.desktop"
     install -Dm755 "${srcdir}/deltachat-desktop.sh" "${pkgdir}/opt/DeltaChat/deltachat"
