@@ -1,30 +1,32 @@
-# Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Contributor: Joey Dumont <joey.dumont@gmail.com>
 # Contributor: osc
-# Contributor: StefanHusmann
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: larsrh <hupel@in.tum.de>
 
 pkgname=pdftk-gcj
 _pkgname=pdftk
 pkgver=2.02
-pkgrel=4
+pkgrel=5
 pkgdesc="Tool for doing everyday things with PDF documents"
 arch=('x86_64')
 url="http://www.pdfhacks.com/pdftk"
 license=('GPL')
 depends=('gcc6-libs' 'gcc6-gcj' 'gcc-gcj-ecj')
 provides=('pdftk')
-options=('!makeflags')
 source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${_pkgname}-${pkgver}-src.zip"
-	"Makefile.Arch"
-	"pdftk"
+	'Makefile.Arch' 'Makefile.patch'
+	'pdftk'
 )
 sha1sums=('a4a27e984c5e1401cfa44b8e92a64113d7396a06'
           '0c8e1a442d266eb6782349e41652c6c07464222e'
-          '24479621dd7bfcfd455ced7272ffa64f99afe9a4')
+          '195c2b05023c0449f07c6748b503d33eb8dcf72b'
+          '668240583dc4f8564edd5eaec3c769ec6fdd4cc0')
 
 prepare() {
 	cd ${_pkgname}-$pkgver-dist/${_pkgname}
 	cp "$srcdir"/Makefile.Arch .
+	cd ..
+	patch -Np1 < "$srcdir"/Makefile.patch
 }
 
 build() {

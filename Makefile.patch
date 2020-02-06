@@ -1,0 +1,12 @@
+diff -Naur pdftk-2.02-orig/pdftk/Makefile.Base pdftk-2.02-new/pdftk/Makefile.Base
+--- pdftk-2.02-orig/pdftk/Makefile.Base	2013-07-23 23:48:52.000000000 +0200
++++ pdftk-2.02-new/pdftk/Makefile.Base	2020-02-06 15:04:03.471637847 +0100
+@@ -46,7 +46,7 @@
+ 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -I$(JAVALIBPATH) pdftk.cc -c
+ 
+ pdftk : pdftk.o attachments.o report.o passwords.o $(JAVALIB) $(LIBGCJ_SUPPLEMENT_FULL_O)
+-	$(CXX) $(CXXFLAGS) attachments.o report.o passwords.o pdftk.o $(JAVALIB) $(LIBGCJ_SUPPLEMENT_FULL_O) $(LDLIBS) -o pdftk
++	$(CXX) $(CXXFLAGS) attachments.o report.o passwords.o pdftk.o $(JAVALIB) $(LIBGCJ_SUPPLEMENT_FULL_O) $(LDLIBS) -Wl,-z,relro,-z,now -o pdftk
+ 
+ install:
+ 	/usr/bin/install pdftk /usr/local/bin 
