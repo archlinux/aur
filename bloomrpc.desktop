@@ -5,4 +5,5 @@ Exec="/opt/BloomRPC/bloomrpc" %U
 Terminal=false
 Type=Application
 Icon=bloomrpc
+StartupWMClass=bloom-rpc-client
 Categories=Utility;

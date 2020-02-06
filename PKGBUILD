@@ -1,7 +1,7 @@
 # Maintainer: Denis Lobanov <first name dot last name at zooei dot com>
 pkgname=bloomrpc
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI Client for gRPC Services"
 arch=(any)
 url="https://github.com/uw-labs/bloomrpc"
@@ -11,7 +11,7 @@ makedepends=('nodejs' 'npm'  'clang' 'git' 'yarn')
 source=("${pkgname}::git+https://github.com/uw-labs/bloomrpc.git#tag=${pkgver//_/-}"
         "${pkgname}.desktop")
 sha1sums=('SKIP'
-          'f050f42f2faedfb0df2da3e7afdaef42716a34ff')
+          '165cba3a4717d7903c76d73c21db4dc276e0e298')
 
 prepare() {
   cd "${pkgname}"
