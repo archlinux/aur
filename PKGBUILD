@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
-_version='4.0.20191220'
-_sha256='f21c4a32857a1bd7272cb3254ca10dd439c9052262140dbb6a7769ad9c52b9e4'
+_version='4.0.20200124'
+_sha256='63badcc2a4f107b29d67c0062b57ae99db71c5d1e33dd1b58a663b461452fe1c'
 
 pkgname=codecept-bin
 pkgver=${_version}
@@ -19,10 +19,6 @@ source=("https://codeception.com/releases/${_version}/codecept.phar"
 	"https://raw.githubusercontent.com/Codeception/Codeception/4.0/LICENSE")
 sha256sums=("${_sha256}"
 	"a170b2c91593ab8e55624afcd6b392d8df3e9e914105b1f1e9ea8b8b73aee16f")
-
-pkgver() {
-	echo ${_version}
-}
 
 package() {
 	cd "$srcdir"
