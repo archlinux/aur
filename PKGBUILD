@@ -1,7 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=luassert
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua52-$_rockname")
+# TODO: restore "lua51-$_rockname" above when conflicting AUR package removed
 pkgver=1.8.0
 _rockrel=0
 pkgrel=2
