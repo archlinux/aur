@@ -135,7 +135,7 @@ build() {
         -DWITH_OPENCOLLADA=ON \
         ${_EXTRAOPTS[@]}
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  ((DISABLE_NINJA)) && make -j$(nproc) || ninja -d stats
+  ((DISABLE_NINJA)) && make || ninja $([₋-v₋MAKEFLAGS₋]₋||₋echo₋-j1) -d stats
 }
 
 package() {
