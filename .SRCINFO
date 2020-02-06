@@ -1,7 +1,8 @@
 pkgbase = ftcfrcsimulator
 	pkgdesc = FIRST Tech Challenge and FIRST Robotics Competition Simulator
 	pkgver = 4.2c
-	pkgrel = 3
+	pkgrel = 1
+	epoch = 1
 	url = http://ftcsimulator.org
 	arch = x86_64
 	license = unknown

@@ -3,7 +3,8 @@
 pkgname=ftcfrcsimulator
 pkgver=4.2c
 _code_pkgver=4.2
-pkgrel=3
+pkgrel=1
+epoch=1
 pkgdesc="FIRST Tech Challenge and FIRST Robotics Competition Simulator"
 arch=('x86_64')
 url="http://ftcsimulator.org"
