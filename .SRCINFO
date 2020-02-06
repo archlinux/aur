@@ -1,7 +1,7 @@
 pkgbase = lua-cliargs
 	pkgdesc = A command-line argument parser.
 	pkgver = 3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/amireh/lua_cliargs
 	arch = i686
 	arch = x86_64
