@@ -10,7 +10,7 @@ pkgbase = java-service-wrapper
 	arch = armv7h
 	license = GPL2
 	license = custom:tanuki-community
-	makedepends = apache-ant
+	makedepends = ant
 	makedepends = java-environment>=8
 	source = https://wrapper.tanukisoftware.com/download/3.5.42/wrapper_3.5.42_src.tar.gz
 	source = java10.patch

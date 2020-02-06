@@ -8,7 +8,7 @@ pkgdesc="Enables a Java Application to be run as a Windows Service or Unix Daemo
 url="https://wrapper.tanukisoftware.com/doc/english/introduction.html"
 arch=('i686' 'x86_64' 'aarch64' 'armv6h' 'armv7h')
 license=('GPL2' 'custom:tanuki-community')
-makedepends=('apache-ant' 'java-environment>=8')
+makedepends=('ant' 'java-environment>=8')
 source=("https://wrapper.tanukisoftware.com/download/${pkgver}/wrapper_${pkgver}_src.tar.gz"
         'java10.patch')
 sha256sums=('8dfb63caaf450058cc2dab1aa2a401ea3e7b2ce8dd5ea9c2caa762e80efb24be'
