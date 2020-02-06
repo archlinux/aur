@@ -1,7 +1,7 @@
 # Maintainer: zoe <chp321 AT gmail DOT com>
 
 pkgname=tv_grab_fr_telerama
-pkgver=1.35
+pkgver=1.36
 pkgrel=1
 pkgdesc="Grab TV listings for France, from guidetv-iphone.telerama.fr"
 arch=(any)
