@@ -1,0 +1,31 @@
+diff --git a/nocomprendo.pro b/nocomprendo.pro
+index 8a11648..ff530cf 100644
+--- a/nocomprendo.pro
++++ b/nocomprendo.pro
+@@ -28,13 +28,13 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # Disables all the APIs depr
+ 
+ INCLUDEPATH +=  \
+     $$BASEDIR/include \
+-    $$BASEDIR/include/sphinxbase \
+-    $$BASEDIR/include/pocketsphinx
++    /usr/include/sphinxbase \
++    /usr/include/pocketsphinx
+ 
+-LIBS +=  $$PWD/libpocketsphinx.a $$PWD/libsphinxbase.a $$PWD/libsphinxad.a
++LIBS +=  -lpocketsphinx -lsphinxbase -lsphinxad
+ LIBS += -lpulse -lpulse-simple -lm -lutil -lxdo
+ 
+-PRE_TARGETDEPS += libpocketsphinx.a libsphinxbase.a lmtools/idngram2lm
++#PRE_TARGETDEPS += libpocketsphinx.a libsphinxbase.a lmtools/idngram2lm
+ 
+ use_espeak {
+     DEFINES += ENABLE_ESPEAK
+@@ -148,7 +148,7 @@ INSTALLS += pocket tools userdata target icons desktop
+ 
+ # More make targets
+ include(more-make-targets.pri)              # Additional targets : version, translation, files, count
+-include(psphinx-make-targets.pri)           # PocketSphinx additional targets for static libraries. Build from sources.
++#include(psphinx-make-targets.pri)           # PocketSphinx additional targets for static libraries. Build from sources.
+ QMAKE_EXTRA_TARGETS += help                 # Each .pri file add help lines. Register help target when finished now.
+ 
+ ### References ###
