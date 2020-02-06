@@ -2,8 +2,8 @@
 
 pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=79.0.3945.79
-pkgrel=2
+pkgver=80.0.3987.87
+pkgrel=1
 arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
@@ -15,8 +15,8 @@ source=(
 )
 optdepends=("ccache: Speed up compilation")
 backup=(etc/naiveproxy/config.json)
-md5sums=('8e804bbdad8bbe1e929f284512207a8d'
-         'de32228ba416bde58b16a1db250e0113')
+md5sums=('3aa2fe322a99a603b4afb27980a77472'
+         '6fcbad32d1db239e2cb1afb78a62bd19')
 provides=('naiveproxy')
 conflicts=('naiveproxy-git' 'naiveproxy-bin')
 
@@ -35,3 +35,4 @@ package(){
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/naiveproxy/LICENSE
   popd
 }
+
