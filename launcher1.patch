@@ -4,7 +4,7 @@
  [Desktop Entry]
  Name=NativeScript Sidekick
  Comment=NativeScript Sidekick is a desktop GUI that enhances the power of the NativeScript CLI and simplifies the development of mobile applications. It is designed to be a companion that complements your code editor, source control, and any other tools you use.
--Exec="/opt/NativeScript Sidekick/NativeScript Sidekick" %U
+-Exec="/opt/NativeScript Sidekick/NativeScriptSidekick" %U
 +Exec="/opt/NativeScriptSidekick/NativeScriptSidekick" %U
  Terminal=false
  Type=Application
