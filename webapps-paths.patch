@@ -1,0 +1,21 @@
+diff -ru a/settings/defaults.php b/settings/defaults.php
+--- a/settings/defaults.php	2019-12-28 23:57:37.000000000 +0200
++++ b/settings/defaults.php	2020-02-06 14:31:22.613567043 +0200
+@@ -1,6 +1,6 @@
+ <?php
+-@define('CONST_BasePath', '@CMAKE_SOURCE_DIR@');
+-@define('CONST_InstallPath', '@CMAKE_BINARY_DIR@');
++@define('CONST_BasePath', '/usr/share/webapps/nominatim');
++@define('CONST_InstallPath', '/usr/share/webapps/nominatim');
+ if (file_exists(getenv('NOMINATIM_SETTINGS'))) require_once(getenv('NOMINATIM_SETTINGS'));
+ if (file_exists(CONST_InstallPath.'/settings/local.php')) require_once(CONST_InstallPath.'/settings/local.php');
+ if (isset($_GET['debug']) && $_GET['debug']) @define('CONST_Debug', true);
+@@ -8,7 +8,7 @@
+ // General settings
+ @define('CONST_Debug', false);
+ @define('CONST_Database_DSN', 'pgsql:dbname=nominatim'); // or add ;host=...;port=...;user=...;password=...
+-@define('CONST_Database_Web_User', 'www-data');
++@define('CONST_Database_Web_User', 'http');
+ @define('CONST_Database_Module_Path', CONST_InstallPath.'/module');
+ @define('CONST_Max_Word_Frequency', '50000');
+ @define('CONST_Limit_Reindexing', true);

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+post_install() {
+    cat <<- 'EOF'
+    Create a PostgreSQL database and users for nomination by running
+    `sudo su - postgres "createuser nominatim; createdb -O nominatim nominatim; createuser http"`
+
+    Then `su` to user `nominatim` and follow the instructions at http://nominatim.org/release-docs/latest/admin/Import-and-Update/#choosing-the-data-to-import to download and import data.
+    
+	EOF
+}
