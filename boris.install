@@ -1,0 +1,9 @@
+# arg 1: the new package version
+post_install() {
+  /usr/bin/python -m pip install tablib
+}
+
+# arg 1: the old package version
+post_remove() {
+  /usr/bin/python -m pip uninstall --yes tablib
+}

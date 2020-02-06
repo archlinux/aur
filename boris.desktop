@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BORIS
+Comment=Behavioral Observation Research Interactive Software
+Path=/usr/share/boris
+Exec=boris
+Icon=/usr/share/boris/icon.icns
+Terminal=false
+Categories=Science;AudioVideo;

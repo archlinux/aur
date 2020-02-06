@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec /usr/bin/python '/usr/share/boris/src/boris.py' "$@"

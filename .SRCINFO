@@ -1,0 +1,26 @@
+pkgbase = behavioral-observation-research-interactive-software
+	pkgdesc = BORIS: a free, versatile open-source event-logging software for video/audio coding and live observations
+	pkgver = 7.9.7
+	pkgrel = 1
+	url = http://www.boris.unito.it/
+	install = boris.install
+	arch = any
+	license = GPL2
+	depends = python>=3.6
+	depends = vlc
+	depends = ffmpeg
+	depends = python-pyqt5
+	depends = python-matplotlib
+	depends = python-intervals
+	optdepends = graphviz: For generating transition flow graph
+	source = boris-7.9.7.tar.gz::https://github.com/olivierfriard/boris/archive/v7.9.7.tar.gz
+	source = boris.run
+	source = boris.desktop
+	source = icon.icns
+	md5sums = 791003afba26fa3670aa86f88fa23768
+	md5sums = 84eac4973fcb93f51670f8cb7c263273
+	md5sums = edec9dc79614a03901ea4108eb4819e2
+	md5sums = 97d978a3a708fd368e231462528950db
+
+pkgname = behavioral-observation-research-interactive-software
+
