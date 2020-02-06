@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 _modulename=persim
 pkgname=python-$_modulename
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Distances and representations of persistence diagrams"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b845d42f07d256d7004c12a767d55b540b0fc28c0ff719d2a4ccaa6d79b7d155')
+sha256sums=('bc8e0e513f9193f541556191e8220ad01ec2bdd02ca6f42d267a7d2bea847b6b')
 package() {
   cd "$srcdir/$_modulename-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1

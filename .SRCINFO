@@ -1,6 +1,6 @@
 pkgbase = python-persim
 	pkgdesc = Distances and representations of persistence diagrams
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/scikit-tda/persim
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-persim
 	depends = python-scipy
 	depends = python-hopcroftkarp-git
 	options = !emptydirs
-	source = https://github.com/scikit-tda/persim/archive/v0.1.1.tar.gz
-	sha256sums = b845d42f07d256d7004c12a767d55b540b0fc28c0ff719d2a4ccaa6d79b7d155
+	source = https://github.com/scikit-tda/persim/archive/v0.1.2.tar.gz
+	sha256sums = bc8e0e513f9193f541556191e8220ad01ec2bdd02ca6f42d267a7d2bea847b6b
 
 pkgname = python-persim
 
