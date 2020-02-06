@@ -5,8 +5,9 @@
 
 _pkgname=my-weather-indicator
 pkgname=my-weather-indicator-git
-pkgver=r104.9ce9b4c
-pkgrel=2
+epoch=1
+pkgver=0.9.4.0extras19.10.10.r123.355bd96
+pkgrel=1
 pkgdesc='A simple indicator for the weather'
 arch=('any')
 url='https://github.com/atareao/my-weather-indicator'
@@ -17,12 +18,18 @@ depends=('libappindicator-gtk3' 'libnotify' 'webkit2gtk' 'geocode-glib' 'python-
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator")
+source=("${_pkgname}::git+https://github.com/atareao/my-weather-indicator#branch=dev/19.10")
 sha256sums=('SKIP')
 
-pkgver() {
+_pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "%s.r%s.%s" "$(head -n 1 debian/changelog | cut -d'(' -f 2 | cut -d')' -f 1 | \
+        sed 's/-/./')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
