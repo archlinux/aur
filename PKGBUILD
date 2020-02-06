@@ -24,7 +24,8 @@ makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 optdepends=('acpid: power events on laptop lid close - almost essential for any ACPI based system like intel'
             'gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt'
             'geoclue2: needed for geolocation module'
-            'packagekit: needed for packagekit module')
+            'packagekit: needed for packagekit module'
+            'ddcutil: from AUR needed for desktop monitor backlight etc. controls')
 provides=("$_pkgname=$pkgver" 'notification-daemon')
 conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'

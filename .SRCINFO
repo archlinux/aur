@@ -30,6 +30,7 @@ pkgbase = enlightenment-git
 	optdepends = gdb: create backtraces on crash - needed for getting backtraces at crash time in ~/.e-crashdump.txt
 	optdepends = geoclue2: needed for geolocation module
 	optdepends = packagekit: needed for packagekit module
+	optdepends = ddcutil: from AUR needed for desktop monitor backlight etc. controls
 	provides = enlightenment=0.22.99.23505.gd68cb82a3
 	provides = notification-daemon
 	conflicts = enlightenment
