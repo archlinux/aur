@@ -66,9 +66,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=17
+_minor=18
 _srcname=linux-${_major}
-_clr=${_major}.15-899
+_clr=${_major}.17-901
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -78,7 +78,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='0.0.20200128'
+_wrg_snap='0.0.20200205'
 _gcc_more_v='20190822'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -89,7 +89,6 @@ source=(
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
   'pci-enable-overrides-for-missing-acs-capabilities.patch'
   'futex-wait-multiple-5.2.1.patch::https://aur.archlinux.org/cgit/aur.git/plain/futex-wait-multiple-5.2.1.patch?h=linux-fsync'
-  'Revert-e1000e-5.4.patch'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -359,13 +358,12 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            '8f7c4628793d6ff225fc5b7d622b8a2ee90ccbaea8eb0dd917821be460a053fe'
+            '88a35b9b03bf4ffe5b043baccc9655a80c24e67a64f2dcd7f9bb29c8faa37f3f'
             'SKIP'
-            '8610c6d8712cfd885f50b1a8c572518edf318c094d68491ea218bb50566a9a8a'
+            '9669e165fc7252cab7f908ba57f160f6d57539b7cc81180f260cb675d2fd362b'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
             '4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0'
-            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942'
-            'f774eb33e8457d2f64852200654cc8c9e0f7ebe1264771c0b6dbc221ec3b9a3f')
+            'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
