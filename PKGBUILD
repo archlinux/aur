@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 
 arch=("x86_64")
 license=("GPL2")
@@ -97,6 +97,7 @@ package() {
         "lib" \
         "munin" \
         "sql" \
+        "utils" \
         "wikidata"
     do
         install \
@@ -108,7 +109,6 @@ package() {
     # directories to copy from build dir
     for dir in \
         "settings" \
-        "utils" \
         "website"
     do
         install \
