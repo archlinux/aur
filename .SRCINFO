@@ -1,8 +1,8 @@
 pkgbase = lua-busted
 	pkgdesc = Elegant Lua unit testing.
 	pkgver = 2.0.0
-	pkgrel = 4
-	url = https://olivinelabs.com/busted/
+	pkgrel = 5
+	url = https://olivinelabs.com/busted
 	arch = i686
 	arch = x86_64
 	license = MIT
