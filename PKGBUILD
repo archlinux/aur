@@ -4,7 +4,7 @@
 
 pkgname=lib32-libxp
 pkgver=1.0.3
-pkgrel=3
+pkgrel=3.0
 pkgdesc="X11 X Print Library (32-bit)"
 arch=(x86_64)
 license=(custom)
@@ -41,7 +41,7 @@ package() {
   cd libXp-${pkgver}
 
   make DESTDIR="${pkgdir}" install
-  rm -fr ${pkgdir}/usr/include
+  rm -fr ${pkgdir}/usr/{include,share/man}
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
