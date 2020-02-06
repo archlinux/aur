@@ -1,10 +1,10 @@
 # Maintainer: Dafne Kiyui <didyouknowthat@dafne.rocks>
 # CoMaintainer: Kenneth Cremeans <kcrem@hfhosting.us>
-# Release Code Name: Joule
+# Release Code Name: Kelvin
 
 pkgname=lbry-app-bin
-pkgver=0.39.1
-pkgrel=3
+pkgver=0.41.0
+pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.com/'
@@ -13,8 +13,8 @@ license=('MIT')
 # gconf deprecated: https://github.com/electron/electron/issues/2727
 # gnome-keyring still required: https://github.com/lbryio/lbry-desktop/issues/386
 depends=('libnotify' 'libappindicator' 'libxtst' 'nss' 'libsecret' 'gnome-keyring')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.39.1/LBRY_0.39.1.deb')
-sha256sums=('c5c462eef4a5f1062d708c98adef88a0e2cacd796a039e41a14d83e085ef5c22')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.41.0/LBRY_0.41.0.deb')
+sha256sums=('5504176d2d645d5cc06c51aaea6e805a0f0c5961a6e3c46bc26e3bf7bc97fb6c')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
