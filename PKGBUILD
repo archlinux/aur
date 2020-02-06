@@ -1,21 +1,36 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-pegdebug
-pkgver=0.41
 _rockname=pegdebug
+_pkgname=PegDebug
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=0.41
 _rockrel=1
-pkgrel=1
-pkgdesc="PegDebug is a trace debugger for LPeg rules and captures"
+pkgrel=2
+pkgdesc='Trace debugger for LPeg rules and captures'
 arch=('i686' 'x86_64')
-url="http://github.com/pkulchenko/PegDebug"
+url="http://github.com/pkulchenko/$_pkgname"
 license=('MIT')
-depends=('lua' 'lua-lpeg')
+_lua_deps=('lpeg')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('42576660d3089a5089405139dbcac670a1c5aaeb7fadefea177ab505a892444a')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/pkulchenko/$_pkgname/archive/$pkgver.tar.gz")
+sha256sums=('0ba8c5ee25cf24e011b29d40cfa5577b19cb4d9d8a086e9238187e7831fb39d1')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_pkgname-$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "misc/$_rockname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-pegdebug() {
+  depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.3
+}
+
+package_lua52-pegdebug() {
+  depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+  _package_helper 5.2
+}
+
+package_lua51-pegdebug() {
+  depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+  _package_helper 5.1
 }
