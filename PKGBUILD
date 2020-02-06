@@ -1,28 +1,26 @@
 # Maintainer: Nate Levesque <public@thenaterhood.com>
 # Co-maintainer : Erik Dubois <erik.dubois@gmail.com>
+# Contributor: tinywrkb <tinywrkb@gmail.com>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 # Source : new application - https://forums.insynchq.com
 
 pkgname=insync
 pkgver=3.0.28.40721
-pkgrel=1
+pkgrel=2
 _dist=buster
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
 options=(!strip)
-depends=('xdg-utils'
+depends=('adobe-source-code-pro-fonts'
+         'alsa-lib'
+         'fontconfig'
          'glibc'
-         'python'
+         'hicolor-icon-theme'
          'libglvnd'
          'nss'
-         'libxcursor'
-         'libxi'
-         'libxtst'
-         'libxrandr'
-         'alsa-lib'
-         'libxcomposite')
+         'xdg-utils')
 optdepends=()
 arch=('x86_64')
 source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-${_dist}_amd64.deb"
