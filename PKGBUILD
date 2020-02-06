@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.4.1
-pkgrel=3
+pkgrel=4
 
 arch=("x86_64")
 license=("GPL2")
@@ -105,7 +105,7 @@ package() {
             "${srcdir}/Nominatim-${pkgver}/${_dir}" \
             "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
         cp \
-            -aR
+            -aR \
             "${srcdir}/Nominatim-${pkgver}/${_dir}" \
             "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
     done
@@ -121,7 +121,7 @@ package() {
             "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
 
         cp \
-            -aR
+            -aR \
             "${srcdir}/build/${_dir}" \
             "${pkgdir}/usr/share/webapps/${pkgname}/${_dir}"
     done
