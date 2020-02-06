@@ -1,0 +1,15 @@
+pkgbase = nominatim-data-wikipedia
+	pkgdesc = Optional Wikipedia data to use with nominatim
+	pkgver = 20190618
+	pkgrel = 0
+	url = https://nominatim.org
+	arch = any
+	license = unknown
+	depends = nominatim
+	source = https://www.nominatim.org/data/wikipedia_article.sql.bin
+	source = https://www.nominatim.org/data/wikipedia_redirect.sql.bin
+	sha256sums = 2043d9f91501e3e1ba9eab46c8d92dca826b3d21afd1f3f85eb2866614ba7d7a
+	sha256sums = 1dd3bf34cc1c2aac722269b30726bdfcb28ae523766b6839b26936937857b9ec
+
+pkgname = nominatim-data-wikipedia
+
