@@ -1,15 +1,21 @@
 pkgbase = lua-vstruct
 	pkgdesc = Lua library to manipulate binary data
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ToxicFrog/vstruct
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	source = https://luarocks.org/vstruct-2.0.2-1.rockspec
-	sha256sums = 74938d4e51c19ede701a4f52abbcd498ad8ee0179393cb6e01177b81fee043fd
+	source = vstruct-5ddf751b923f41be3dbb832d9a2df1c6055c26f3.tar.gz::https://github.com/ToxicFrog/vstruct/archive/5ddf751b923f41be3dbb832d9a2df1c6055c26f3.tar.gz
+	sha256sums = 41c18a2e15c1107319b848a20d1769d1f2fb4ac7036f71c71ce1e0fdb9426cc3
 
 pkgname = lua-vstruct
+	depends = lua
+
+pkgname = lua52-vstruct
+	depends = lua52
+
+pkgname = lua51-vstruct
+	depends = lua51
 
