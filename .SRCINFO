@@ -1,16 +1,24 @@
 pkgbase = lua-yaml
 	pkgdesc = LibYAML binding for Lua
 	pkgver = 1.1.2
-	pkgrel = 1
-	url = http://luaforge.net/projects/yaml/
+	pkgrel = 2
+	url = https://lubyk.github.io/lubyk/yaml.html
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	depends = lua-lub
-	source = https://luarocks.org/yaml-1.1.2-1.src.rock
-	sha256sums = 0f63e9b49f8879944372552bc197e567bd70eee6da2f2d5219b3b16a2331837e
+	source = yaml-1.1.2.tar.gz::https://github.com/lubyk/yaml/archive/REL-1.1.2.tar.gz
+	sha256sums = b4391d182677ab644403bf1ac028c7421c2605db124f9792193013c582a273ec
 
 pkgname = lua-yaml
+	depends = lua
+	depends = lua-lub
+
+pkgname = lua52-yaml
+	depends = lua52
+	depends = lua52-lub
+
+pkgname = lua51-yaml
+	depends = lua51
+	depends = lua51-lub
 
