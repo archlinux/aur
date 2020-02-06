@@ -36,7 +36,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch)
 sha256sums=('SKIP'
-            'b0ec717b10494dad234a10c9ba9c2a89ed52fd0afbc3b98bb8c4f9c5dd4755a0'
+            '2b6438946169935ec87fc2e5f3377f6d92a00ba7ad6ef5ab2e60340588dc74ea'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             '3b3089733bde4c0f945b0da4043950717af7f3993dd0b9eb3ca769c27c194422'
