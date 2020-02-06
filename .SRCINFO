@@ -1,6 +1,6 @@
 pkgbase = thunderbird-ubuntu-bin
 	pkgdesc = Standalone mail and news reader from mozilla.org Ubuntu patches (binary)
-	pkgver = 68.2.2
+	pkgver = 68.4.1
 	pkgrel = 1
 	url = https://www.thunderbird.net/
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = thunderbird-ubuntu-bin
 	provides = thunderbird-ubuntu
 	conflicts = thunderbird
 	conflicts = thunderbird-ubuntu
-	source = http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu/pool/main/t/thunderbird/thunderbird_68.2.2+build1-0ubuntu0.19.10.1_amd64.deb
-	sha256sums = 6dcb9fc73da5b23a45374f304adca75ab1efe538787fa324f2f1d95b11d53f34
+	source = http://ppa.launchpad.net/ubuntu-mozilla-security/ppa/ubuntu/pool/main/t/thunderbird/thunderbird_68.4.1+build1-0ubuntu0.19.10.1_amd64.deb
+	sha256sums = 5135ec9b8d335a6913985fec2e226d0d4e582ed64251f40f4aa8f7909c61a2e5
 
 pkgname = thunderbird-ubuntu-bin
 
