@@ -7,8 +7,8 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-qt5
-pkgver=5.14.0
-pkgrel=2
+pkgver=5.14.1
+pkgrel=1
 pkgdesc="Qt 5 for Android"
 arch=('any')
 url='https://www.qt.io'
@@ -65,11 +65,9 @@ _pkgfqn="qt-everywhere-src-${pkgver}"
 install="${pkgname}.install"
 source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:4}/${pkgver}/single/${_pkgfqn}.tar.xz"
         "0001-Support-pkg-config-under-Android.patch"
-        "0002-Use-pkg-config-to-find-external-libraries.patch"
         "0003-Fix-neon.patch")
-md5sums=('e7ea948ab99a2ef0726db5eac8e4fd8e'
+md5sums=('781c3179410aff7ef84607214e1e91b4'
          '6af9dcc450ae6c69d8fddccf0680d84a'
-         'f0f5dda8352a675566a08fa0f863a08b'
          '656c7eec7d37854cef1763c163c1ca98')
 
 prepare() {
@@ -80,7 +78,6 @@ prepare() {
     check_android_platform
 
     patch -Np1 -i "../0001-Support-pkg-config-under-Android.patch"
-    patch -Np1 -i "../0002-Use-pkg-config-to-find-external-libraries.patch"
 
     case "$_android_arch" in
         armv7a-eabi)
