@@ -1,33 +1,17 @@
-# Maintainer: Patrick Wozniak <hello@patwoz.de>
+# Maintainer: danieltetraquark
+# Contributor: Patrick Wozniak <hello@patwoz.de>
 
 pkgname=classifier-git
-pkgver=20160206.r74.d13d6c2
+pkgver=20200206.r129.09e958b
 pkgrel=1
 pkgdesc="Organize files in your directory instantly, by classifying them into different folders (git-version)"
 
-arch=('any')
-url="https://github.com/bhrigu123/classifier"
-license=('MIT')
+arch=("any")
+license=("MIT")
 
-depends=(
-  'python'
-)
-optdepends=(
-)
-makedepends=(
-)
-conflicts=(
-)
-
-backup=(
-)
-
-source=(
-  "${pkgname%-git}::git+${url}.git#branch=master"
-)
-sha256sums=(
-  'SKIP'
-)
+source=("${pkgname%-git}::git+https://github.com/bhrigu123/classifier.git#branch=master")
+depends=("python" "python-arrow")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${pkgname%-git}"
