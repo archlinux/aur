@@ -51,23 +51,24 @@ source=("git://git.blender.org/blender.git${_fragment}"
         python3.8.patch
         addon_path.patch
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         '0a4847775c9eec16a76ec7d3a03a678d'
-         'a9b7fea83b66f4ced146b32ef4433479'
-         'df6f12c3327678b0a05f9e48e9ace67c'
-         '8679d9ab041141cf4fa1ae4da9389986'
-         'bb325c8c879d677ad1f1c54797268716'
-         'fe709e616e52c1acc47c1cc0f77c2694'
-         '4e4423315f07bc724c7703c57c4481d7'
-         'f98eb0576a8e00444cc3e936d31a9812'
-         '1fafe7b27c376f0fd8b7bb7985deef6e'
-         '54caa2acab217f8abb9a00ef05f1d0d7'
-         '88097ddbca087f932f8805f0caa185f4')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '6d9a192dacd0061a17beba339772b7601c83e441576303f3dc5cccf71dc67dd3'
+            '39ab45862044a838e49720c93ef5d246c3192e1438bf3ceca169e3ed0439ea18'
+            '6093024b0a27f1fd144f5f8a25121939f74f41bcc164d8b8b58f33d3c364e456'
+            'ec95ba11ef9f41ca3123b330f25ab767f7916531f39943b4f92f28f36e1e0725'
+            '450a3ec68360981e47503e734e8229a4ad06554ad009664b4abfb6bf317962d9'
+            'e22d5908877165958991161c6800dac9f8810e2d92fb18c6fe09fe1a24e5d18c'
+            'ba390c37ea5a63e603c97350f9401fe1794c54406243a48f860195cc0c6085ab'
+            '5ff48d0e35025f21ee45274b56d1788b2e1768fa4d86b5032a40941057695176'
+            'f4fea95b9d27fb5c30a13cd57ae22d8f3091d456719377e28572091793e941c2'
+            '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
+            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e'
+            )
 
 pkgver() {
   cd "$srcdir/blender"
