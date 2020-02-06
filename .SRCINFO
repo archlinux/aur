@@ -1,6 +1,6 @@
 pkgbase = qv2ray
 	pkgdesc = Cross-platform V2ray Client written in Qt (Stable Release)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -11,27 +11,15 @@ pkgbase = qv2ray
 	makedepends = which
 	makedepends = gcc
 	makedepends = qt5-declarative
-	makedepends = go
+	makedepends = grpc-cli>=1.27.0
 	depends = hicolor-icon-theme
 	depends = qt5-charts>5.11.0
+	depends = grpc>=1.27.0
 	optdepends = v2ray
 	optdepends = v2ray-domain-list-community
 	optdepends = v2ray-geoip
 	provides = qv2ray
-	conflicts = qv2ray
-	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray#tag=v2.0.0
-	source = QNodeEditor::git+https://github.com/lhy0403/QNodeEditor#tag=v2.1.5
-	source = SingleApplication::git+https://github.com/itay-grudev/SingleApplication#tag=v3.0.19
-	source = x2struct::git+https://github.com/xyz347/x2struct#tag=v1.2
-	source = qzxing::git+https://github.com/ftylitak/qzxing#commit=2a58c5032b2180f2cce95e1db106cbaa4ecaed02
-	source = qhttpserver::git+https://github.com/nikhilm/qhttpserver#commit=02a6e7174b5be76e2c0e74a109817e39a141b9fd
-	source = QvRPCBridge::git+https://github.com/Qv2ray/QvRPCBridge#tag=v1.1
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	source = Qv2ray-2.0.1::git+https://github.com/Qv2ray/Qv2ray#tag=v2.0.1
 	sha512sums = SKIP
 
 pkgname = qv2ray
