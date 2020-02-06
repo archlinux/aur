@@ -3,23 +3,22 @@
 # Contributor: Pierre Chapuis <catwell at archlinux dot us>
 
 _rockname=stdlib
+_pkgname=lua-$_rockname
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=41.2.2
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library of modules for common programming tasks'
 arch=('i686' 'x86_64')
-url='https://github.com/lua-stdlib/lua-stdlib/'
+url="https://github.com/lua-stdlib/$_pkgname/"
 license=('MIT')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/lua-$_rockname/lua-$_rockname/archive/release-v$pkgver.tar.gz")
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/release-v$pkgver.tar.gz")
 sha256sums=('42ca25ddcde59f608694a3335d24919a4df4cf6f14ea46c75249561a16c84711')
 
 _package_helper() {
-  cd "lua-$_rockname-release-v$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr" install --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  cd "$_pkgname-release-v$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-stdlib() {

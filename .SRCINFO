@@ -1,7 +1,7 @@
 pkgbase = lua-stdlib
 	pkgdesc = Library of modules for common programming tasks
 	pkgver = 41.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lua-stdlib/lua-stdlib/
 	arch = i686
 	arch = x86_64
