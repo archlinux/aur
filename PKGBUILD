@@ -16,7 +16,7 @@ noextract=(${pkgname}-${pkgver}.tgz)
 optdepends=('python2: balena preload' 'openssh: balena ssh')
 optdepends_x86_64=('lib32-glibc: emulated builds')
 replaces=('resin-cli')
-sha256sums=('11298bf6715851048ead1fc98cc771be1803fbedb2fc5caad83306e9a3b0fd62')
+sha256sums=('ac816baea6456b5c88e726adb5c8fcce110e11f0556e16be2a753b1450ed3490')
 
 package() {
   npm install --global --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
