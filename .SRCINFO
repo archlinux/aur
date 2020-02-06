@@ -1,7 +1,7 @@
 pkgbase = lua-vstruct
 	pkgdesc = Lua library to manipulate binary data
 	pkgver = 2.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ToxicFrog/vstruct
 	arch = i686
 	arch = x86_64
