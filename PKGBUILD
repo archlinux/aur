@@ -1,21 +1,35 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-system
+_rockname=system
+_pkgname=luasystem
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.2.1
-_rockname=luasystem
 _rockrel=0
-pkgrel=1
-pkgdesc="Platform independent system calls for Lua."
+pkgrel=2
+pkgdesc="Platform independent system calls for Lua"
 arch=('i686' 'x86_64')
-url="http://olivinelabs.com/luasystem"
+url="https://github.com/o-lim/$_pkgname"
 license=('MIT')
-depends=('lua')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-sha256sums=('d1c706d48efc7279d33f5ea123acb4d27e2ee93e364bedbe07f2c9c8d0ad3d24')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/o-lim/$_pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('0b83f68e9edbba92bef11ec0ccf1e5bb779a7337653f7bb77e0240c8e85c0b94')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_pkgname-$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-system() {
+  depends+=('lua')
+  _package_helper 5.3
+}
+
+package_lua52-system() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-system() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
