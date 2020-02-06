@@ -1,13 +1,13 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=chestnut
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An open-source NLE video editor "
 arch=(x86_64)
 url="https://github.com/jonno85uk/chestnut"
 license=('GPL3')
 groups=()
-depends=('ffmpeg' 'qt5-base' 'qt5-multimedia' 'mediahandling')
+depends=('ffmpeg' 'qt5-base' 'qt5-multimedia' 'mediahandling' 'audiowaveform')
 makedepends=('git' 'pkgconfig') 
 provides=("${pkgname%}")
 conflicts=('chestnut-git')
