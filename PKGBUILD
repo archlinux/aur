@@ -150,7 +150,7 @@ prepare() {
                     -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
                     -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' ./.config
 	fi
-	
+
     ### Optionally disable NUMA for 64-bit kernels only
         # (x86 kernels do not support NUMA)
         if [ -n "$_NUMAdisable" ]; then
@@ -180,19 +180,15 @@ prepare() {
         fi
 
     ### Running make nconfig
-	
 	[[ -z "$_makenconfig" ]] ||  make nconfig
-	
+
     ### Running make menuconfig
-	
 	[[ -z "$_makemenuconfig" ]] || make menuconfig
-	
+
     ### Running make xconfig
-	
 	[[ -z "$_makexconfig" ]] || make xconfig
-	
+
     ### Running make gconfig
-	
 	[[ -z "$_makegconfig" ]] || make gconfig
 
     ### Save configuration for later reuse
