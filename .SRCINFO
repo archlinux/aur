@@ -1,6 +1,6 @@
 pkgbase = icecream
 	pkgdesc = takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines.
-	pkgver = 1.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = http://en.opensuse.org/Icecream
 	install = icecream.install
@@ -18,7 +18,7 @@ pkgbase = icecream
 	provides = icecream
 	conflicts = icecream-git
 	backup = etc/icecream.conf
-	source = https://github.com/icecc/icecream/archive/1.3.tar.gz
+	source = https://github.com/icecc/icecream/archive/1.3.1.tar.gz
 	source = icecream.conf
 	source = icecream.service
 	source = icecream-scheduler.service
