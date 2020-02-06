@@ -1,10 +1,11 @@
 pkgbase = social-engineer-toolkit
 	pkgdesc = The Social-Engineer Toolkit (SET)
-	pkgver = 8.0.1
+	pkgver = 8.0.3
 	pkgrel = 1
 	url = https://github.com/trustedsec/social-engineer-toolkit
+	changelog = CHANGELOG
 	arch = any
-	license = custom
+	license = BSD
 	makedepends = python2
 	depends = python2-pexpect
 	depends = python2-crypto
@@ -17,8 +18,8 @@ pkgbase = social-engineer-toolkit
 	depends = python2-beautifulsoup4
 	optdepends = metasploit
 	options = !strip
-	source = https://github.com/trustedsec/social-engineer-toolkit/archive/8.0.1.tar.gz
-	sha256sums = 23a4fe1de24b746f18aa0790f14ddda7d4d70b95071abbd3ae8cedf36268367b
+	source = https://github.com/trustedsec/social-engineer-toolkit/archive/8.0.3.tar.gz
+	sha256sums = ba07e90ac461c3fe5ac1582875699bd3247c7168ea7ee9ae34f2a51199437c08
 
 pkgname = social-engineer-toolkit
 
