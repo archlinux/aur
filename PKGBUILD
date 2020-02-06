@@ -3,8 +3,8 @@
 
 pkgname=hummingbird-bin
 _pkgname=hummingbird
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 epoch=1
 pkgdesc="AirVPN's free and open source OpenVPN 3 client based on AirVPN's OpenVPN 3 library fork"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=("otool")
 provides=("${pkgname%-bin}" "hummingbird")
 conflicts=("${pkgname%-bin}" "hummingbird")
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/AirVPN/hummingbird/raw/master/binary/hummingbird-linux-x86_64-${pkgver}.tar.gz")
-sha512sums=("f2cbc2acded6335c996271d9e86818a0375f4f46712b9edb7147494038bff48a1e72f666b319790a8250298e437a87dd8173313156da0497529c0eace3924fea")
+sha512sums=("b6c986277c69242ecf23beff1bb6c3d514922520ba33f074fad11a13e6b6b2a228713d67c21e775c5bfe15b47523423513c78fe8c845b13e68791d5781eb3f4c")
 
 package() {
     ldd "$srcdir/$_pkgname-linux-$arch-$pkgver/hummingbird"
