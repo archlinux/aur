@@ -1,16 +1,24 @@
 pkgbase = lua-luassert
 	pkgdesc = Lua Assertions Extension
 	pkgver = 1.8.0
-	pkgrel = 1
-	url = http://olivinelabs.com/busted/
+	pkgrel = 2
+	url = https://olivinelabs.com/busted/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
-	depends = lua
-	depends = lua-say
-	source = https://luarocks.org/luassert-1.8.0-0.rockspec
-	sha256sums = e1fb3f76453dcaac009ee3981beec670bf6da240ffd09773c5044f6a03f22485
+	source = luassert-1.8.0.tar.gz::https://github.com/Olivine-Labs/luassert/archive/v1.8.0.tar.gz
+	sha256sums = 5955234a63fdc208674314b2e97982bb551459b85b8ff11611a50421c6a29c76
 
 pkgname = lua-luassert
+	depends = lua
+	depends = lua-say
+
+pkgname = lua52-luassert
+	depends = lua52
+	depends = lua52-say
+
+pkgname = lua51-luassert
+	depends = lua51
+	depends = lua51-say
 

@@ -1,21 +1,35 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-luassert
-pkgver=1.8.0
 _rockname=luassert
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=1.8.0
 _rockrel=0
-pkgrel=1
-pkgdesc="Lua Assertions Extension"
+pkgrel=2
+pkgdesc='Lua Assertions Extension'
 arch=('i686' 'x86_64')
-url="http://olivinelabs.com/busted/"
+url='https://olivinelabs.com/busted/'
 license=('MIT')
-depends=('lua' 'lua-say')
+_lua_deps=('say')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.rockspec")
-sha256sums=('e1fb3f76453dcaac009ee3981beec670bf6da240ffd09773c5044f6a03f22485')
+source=("${_rockname}-${pkgver}.tar.gz::https://github.com/Olivine-Labs/$_rockname/archive/v$pkgver.tar.gz")
+sha256sums=('5955234a63fdc208674314b2e97982bb551459b85b8ff11611a50421c6a29c76')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.rockspec"
-  find "$pkgdir/usr" -name manifest -delete
+_package_helper() {
+  cd "$_rockname-$pkgver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr" install --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-luassert() {
+  depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.3
+}
+
+package_lua52-luassert() {
+  depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+  _package_helper 5.2
+}
+
+package_lua51-luassert() {
+  depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+  _package_helper 5.1
 }
