@@ -1,20 +1,9 @@
 # Maintainer: Meow < leon.tty1 at gmail dot com >
 
-# Get download links and md5sums for latest version of RStudio desktop
-## R code #############
-#
-#  require(XML)
-#  page = htmlTreeParse("http://www.rstudio.com/products/rstudio/download/",useInternalNodes = T)
-#  links = sapply(getNodeSet(page,'//table[@class="downloads"]/thead/tr/th[text()="Installers"]/../../..//a[contains(@href,".deb")]'),xmlGetAttr,'href')
-#  md5sums = sapply(getNodeSet(page,'//table[@class="downloads"]/thead/tr/th[text()="Installers"]/../../..//a[contains(@href,".deb")]/../..//code'),xmlValue)
-#  print(cbind(links,md5sums))
-#
-#######################
-
 # NOTE: If you are experiencing segmentation fault, delete the ".rstudio-desktop" folder from your home directory then restart the program should fix the issue.
 
 pkgname=rstudio-desktop-bin
-pkgver=1.2.5001
+pkgver=1.2.5033
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary from RStudio official repository)"
 arch=('x86_64')
@@ -29,7 +18,7 @@ provides=("rstudio-desktop=${pkgver}")
 options=(!strip)
 
 md5sums_x86_64=(
-4ff58a08c305207729feb65eb145a5a2
+b204d7f7ff79d4fa3d774445023e9048
 84e61f5eda991b978fa168d6762f7990
 391ba54997d6faddbfe41a185a823ee4)
 
