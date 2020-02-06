@@ -1,0 +1,39 @@
+pkgbase = raze-git
+	pkgdesc = Build engine port backed by GZDoom tech (git version)
+	pkgver = 0.4.0+9+g67a2952ea
+	pkgrel = 1
+	url = https://github.com/coelckers/Raze
+	arch = i686
+	arch = x86_64
+	license = custom:BUILD
+	license = custom:dumb
+	license = GPL2
+	makedepends = cmake
+	makedepends = desktop-file-utils
+	makedepends = git
+	depends = alsa-lib
+	depends = fluidsynth>=2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libjpeg
+	depends = libsndfile
+	depends = libvpx
+	depends = mpg123
+	depends = openal
+	depends = sdl2
+	optdepends = gxmessage: crash dialog (GNOME)
+	optdepends = kdialog: crash dialog (KDE)
+	optdepends = soundfont-fluid: FluidR3 soundfont for FluidSynth
+	optdepends = xorg-xmessage: crash dialog (other)
+	provides = raze
+	conflicts = raze
+	source = Raze-master::git+https://github.com/coelckers/Raze
+	source = 0001-Fix-file-paths.patch
+	source = raze.desktop
+	sha256sums = SKIP
+	sha256sums = cebea1d7bb84a60c4a3b0961ee5f827f5acf18a015ebc42c2bada31cab273221
+	sha256sums = ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8
+
+pkgname = raze-git
+

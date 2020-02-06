@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Raze
+GenericName=Build engine port backed by GZDoom tech
+Icon=raze
+Exec=raze %F
+Terminal=false
+Categories=Game;ActionGame;

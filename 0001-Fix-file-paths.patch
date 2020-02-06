@@ -1,0 +1,128 @@
+From 3f0271a0bdfc81c92c255aca95d4fa4241f3cbe4 Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jan@cholasta.net>
+Date: Thu, 6 Feb 2020 07:59:18 +0100
+Subject: [PATCH] Fix file paths
+
+---
+ .../mididevices/music_fluidsynth_mididevice.cpp    |  2 +-
+ source/common/gameconfigfile.cpp                   | 14 +-------------
+ source/common/gamecontrol.cpp                      |  2 +-
+ source/common/music/i_soundfont.cpp                |  4 +---
+ source/platform/posix/sdl/i_main.cpp               | 14 +-------------
+ 5 files changed, 5 insertions(+), 31 deletions(-)
+
+diff --git a/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp b/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp
+index 16ffa3ab0..fa16c3057 100644
+--- a/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp
++++ b/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp
+@@ -646,7 +646,7 @@ void Fluid_SetupConfig(const char* patches, std::vector<std::string> &patch_path
+ 		// The following will only be used if no soundfont at all is provided, i.e. even the standard one coming with GZDoom is missing.
+ #ifdef __unix__
+ 		// This is the standard location on Ubuntu.
+-		Fluid_SetupConfig("/usr/share/sounds/sf2/FluidR3_GS.sf2:/usr/share/sounds/sf2/FluidR3_GM.sf2", patch_paths, false);
++		Fluid_SetupConfig("/usr/share/soundfonts/FluidR3_GS.sf2:/usr/share/soundfonts/FluidR3_GM.sf2", patch_paths, false);
+ #endif
+ #ifdef _WIN32
+ 		// On Windows, look for the 4 megabyte patch set installed by Creative's drivers as a default.
+diff --git a/source/common/gameconfigfile.cpp b/source/common/gameconfigfile.cpp
+index dd4c0889e..949e6be16 100644
+--- a/source/common/gameconfigfile.cpp
++++ b/source/common/gameconfigfile.cpp
+@@ -100,15 +100,10 @@ FGameConfigFile::FGameConfigFile ()
+ 		// Debian likes them in /usr/share/games/doom
+ 		// I assume other distributions don't do anything radically different
+ 		SetValueForKey ("Path", "/usr/share/games/jfduke3d", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/jfduke3d", true);
+ 		SetValueForKey ("Path", "/usr/share/games/eduke32", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/eduke32", true);
+ 		SetValueForKey ("Path", "/usr/share/games/nblood", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/nblood", true);
+ 		SetValueForKey("Path", "/usr/share/games/jfsw", true);
+-		SetValueForKey("Path", "/usr/local/share/games/jfsw", true);
+ 		SetValueForKey("Path", "/usr/share/games/voidsw", true);
+-		SetValueForKey("Path", "/usr/local/share/games/voidsw", true);
+ 
+ #endif
+ 		SetValueForKey ("Path", "$STEAM", true); // also covers GOG.
+@@ -128,13 +123,9 @@ FGameConfigFile::FGameConfigFile ()
+ 		SetValueForKey ("Path", "$GAMEDIR", true);
+ #else
+ 		SetValueForKey ("Path", "$HOME/" GAME_DIR, true);
+-		SetValueForKey ("Path", SHARE_DIR, true);
+ 		SetValueForKey ("Path", "/usr/share/games/jfduke3d", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/jfduke3d", true);
+ 		SetValueForKey ("Path", "/usr/share/games/eduke32", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/eduke32", true);
+ 		SetValueForKey ("Path", "/usr/share/games/nblood", true);
+-		SetValueForKey ("Path", "/usr/local/share/games/nblood", true);
+ #endif
+ 	}
+ 
+@@ -151,10 +142,7 @@ FGameConfigFile::FGameConfigFile ()
+ 		SetValueForKey("Path", "$PROGDIR/soundfonts", true);
+ #else
+ 		SetValueForKey("Path", "$HOME/" GAME_DIR "/soundfonts", true);
+-		SetValueForKey("Path", "/usr/local/share/" GAME_DIR "/soundfonts", true);
+-		SetValueForKey("Path", "/usr/local/share/games/" GAME_DIR "/soundfonts", true);
+-		SetValueForKey("Path", "/usr/share/" GAME_DIR "/soundfonts", true);
+-		SetValueForKey("Path", "/usr/share/games/" GAME_DIR "/soundfonts", true);
++		SetValueForKey("Path", "/usr/share/" GAMENAMELOWERCASE "/soundfonts", true);
+ #endif
+ 	}
+ 
+diff --git a/source/common/gamecontrol.cpp b/source/common/gamecontrol.cpp
+index fd38c2fdf..c424ba57e 100644
+--- a/source/common/gamecontrol.cpp
++++ b/source/common/gamecontrol.cpp
+@@ -584,7 +584,7 @@ int RunGame()
+ 	FString logfile = Args->TakeValue("+logfile");
+ 
+ 	// As long as this engine is still in prerelease mode let's always write a log file.
+-	if (logfile.IsEmpty()) logfile.Format("%s" GAMENAMELOWERCASE ".log", M_GetDocumentsPath().GetChars());
++	if (logfile.IsEmpty()) logfile.Format("%s/" GAMENAMELOWERCASE ".log", M_GetDocumentsPath().GetChars());
+ 
+ 	if (logfile.IsNotEmpty())
+ 	{
+diff --git a/source/common/music/i_soundfont.cpp b/source/common/music/i_soundfont.cpp
+index 5d911a200..ce05a5463 100644
+--- a/source/common/music/i_soundfont.cpp
++++ b/source/common/music/i_soundfont.cpp
+@@ -243,9 +243,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
+ #ifndef _WIN32
+ 	mCaseSensitivePaths = true;
+ 	const char *paths[] = {
+-		"/usr/local/lib/timidity",
+-		"/etc/timidity",
+-		"/etc"
++		"/etc/timidity++"
+ 	};
+ #else
+ 	const char *paths[] = {
+diff --git a/source/platform/posix/sdl/i_main.cpp b/source/platform/posix/sdl/i_main.cpp
+index b0e2ce978..0c2a2a96e 100644
+--- a/source/platform/posix/sdl/i_main.cpp
++++ b/source/platform/posix/sdl/i_main.cpp
+@@ -121,19 +121,7 @@ int main (int argc, char **argv)
+ 	Args = new FArgs(argc, argv);
+ 
+ 	// Should we even be doing anything with progdir on Unix systems?
+-	char program[PATH_MAX];
+-	if (realpath (argv[0], program) == NULL)
+-		strcpy (program, argv[0]);
+-	char *slash = strrchr (program, '/');
+-	if (slash != NULL)
+-	{
+-		*(slash + 1) = '\0';
+-		progdir = program;
+-	}
+-	else
+-	{
+-		progdir = "./";
+-	}
++	progdir = "/usr/lib/raze/";
+ 	
+ 	I_StartupJoysticks();
+ 
+-- 
+2.25.0
+
