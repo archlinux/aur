@@ -1,7 +1,7 @@
 pkgbase = crestic
 	pkgdesc = Configurable restic wrapper
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nils-werner/crestic
 	arch = any
 	license = MIT
