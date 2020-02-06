@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/spiderfoot
+EnvironmentFile=/etc/default/spiderfoot
+ExecStart=/usr/bin/spiderfoot -l ${addr}:${port}
 
 [Install]
 WantedBy=multi-user.target

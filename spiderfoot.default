@@ -1,0 +1,6 @@
+## Defaults to listen on localhost port 7331
+
+# Listen Address
+addr=127.0.0.1
+# Listen Port
+port=7331
