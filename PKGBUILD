@@ -19,7 +19,7 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.9.r2960.55e413d4
+pkgver=2.0.10.r3020.a9bed696
 pkgrel=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=("git+$url.git"
         "psiphon.service")
 backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
 md5sums=('SKIP'
-         'c99b40eb39a44e492793d5decd692bc6'
+         'c1ec9a446e89495501b8375d2682aa49'
          'a6d6b01633a39325abbdb3597c50a4cc')
 
 pkgver() {
