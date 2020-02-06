@@ -1,6 +1,6 @@
-diff -x '*.pyc' -x __pycache__ -Naur spn/algorithms/sklearn.py /usr/lib/python3.8/site-packages/spn/algorithms/sklearn.py
---- spn/algorithms/sklearn.py	2019-03-06 08:26:14.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/algorithms/sklearn.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/algorithms/sklearn.py spn/algorithms/sklearn.py
+--- /usr/lib/python3.8/site-packages/spn/algorithms/sklearn.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/algorithms/sklearn.py	2020-02-06 14:46:43.587996915 -0300
 @@ -30,7 +30,7 @@
          tf_optimize_weights=False,
          tf_n_epochs=100,
@@ -28,9 +28,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/algorithms/sklearn.py /usr/lib/python3.
  
 -        return tf.distributions.Categorical(probs=probs).prob(data_placeholder[:, node.scope[0]])
 +        return tf.compat.v1.distributions.Categorical(probs=probs).prob(data_placeholder[:, node.scope[0]])
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/AQP/Ranges.py /usr/lib/python3.8/site-packages/spn/experiments/AQP/Ranges.py
---- spn/experiments/AQP/Ranges.py	2018-12-21 16:34:25.000000000 -0200
-+++ /usr/lib/python3.8/site-packages/spn/experiments/AQP/Ranges.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/AQP/Ranges.py spn/experiments/AQP/Ranges.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/AQP/Ranges.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/AQP/Ranges.py	2020-02-06 14:46:37.724570894 -0300
 @@ -1,62 +1,62 @@
 -"""
 -Created on May 22, 2018
@@ -156,9 +156,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/AQP/Ranges.py /usr/lib/pyth
 +
 +    def get_ranges(self):
 +        return self.ranges
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/AQP/tests/cumulative_distribution.py /usr/lib/python3.8/site-packages/spn/experiments/AQP/tests/cumulative_distribution.py
---- spn/experiments/AQP/tests/cumulative_distribution.py	2018-12-21 16:34:25.000000000 -0200
-+++ /usr/lib/python3.8/site-packages/spn/experiments/AQP/tests/cumulative_distribution.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/AQP/tests/cumulative_distribution.py spn/experiments/AQP/tests/cumulative_distribution.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/AQP/tests/cumulative_distribution.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/AQP/tests/cumulative_distribution.py	2020-02-06 14:46:38.634585290 -0300
 @@ -1,294 +1,294 @@
 -"""
 -Created on Jun 21, 2018
@@ -748,9 +748,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/AQP/tests/cumulative_distri
 +    plt.title("Inverse cumulative distribution")
 +    plt.plot(x_domain, y_domain)
 +    plt.show()
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/FPGA/RunNative.py /usr/lib/python3.8/site-packages/spn/experiments/FPGA/RunNative.py
---- spn/experiments/FPGA/RunNative.py	2018-12-21 16:34:25.000000000 -0200
-+++ /usr/lib/python3.8/site-packages/spn/experiments/FPGA/RunNative.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/FPGA/RunNative.py spn/experiments/FPGA/RunNative.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/FPGA/RunNative.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/FPGA/RunNative.py	2020-02-06 14:46:37.447899849 -0300
 @@ -23,12 +23,12 @@
  
  
@@ -794,9 +794,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/FPGA/RunNative.py /usr/lib/
                      # start = time.perf_counter()
                      tf_ll = sess.run(
                          tf_graph,
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/layers/spflow_vs_pytorch.py /usr/lib/python3.8/site-packages/spn/experiments/layers/spflow_vs_pytorch.py
---- spn/experiments/layers/spflow_vs_pytorch.py	2019-10-24 08:51:04.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/experiments/layers/spflow_vs_pytorch.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/layers/spflow_vs_pytorch.py spn/experiments/layers/spflow_vs_pytorch.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/layers/spflow_vs_pytorch.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/layers/spflow_vs_pytorch.py	2020-02-06 14:46:35.431201264 -0300
 @@ -161,8 +161,8 @@
      x = np.random.rand(batch_size, n_feats).astype(np.float32)
      tf_graph, placeholder, _ = spn_to_tf_graph(spflow_spn, x, dtype=np.float32)
@@ -808,9 +808,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/layers/spflow_vs_pytorch.py
          # warmup:
          for i in range(10):
              result = sess.run(tf_graph, feed_dict={placeholder: x})
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/LearnRGSPN.py /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/LearnRGSPN.py
---- spn/experiments/RandomSPNs/LearnRGSPN.py	2019-09-12 05:46:48.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/LearnRGSPN.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/LearnRGSPN.py spn/experiments/RandomSPNs/LearnRGSPN.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/LearnRGSPN.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/RandomSPNs/LearnRGSPN.py	2020-02-06 14:46:31.461138372 -0300
 @@ -126,7 +126,7 @@
  
      spns = vector_list[-1][0]
@@ -831,26 +831,19 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/LearnRGSPN.py /u
          print("starting")
          tfstart = time.perf_counter()
          sess.run(output, feed_dict={input_ph: train_im[0:1000]})
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/RAT_SPN.py
---- spn/experiments/RandomSPNs/RAT_SPN.py	2019-09-12 05:46:48.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/RAT_SPN.py	2020-02-04 15:54:17.607091839 -0300
-@@ -3,9 +3,14 @@
- import spn.structure.Base as base
- import spn.structure.leaves.parametric.Parametric as para
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/RAT_SPN.py spn/experiments/RandomSPNs/RAT_SPN.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/RAT_SPN.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/RandomSPNs/RAT_SPN.py	2020-02-06 14:57:05.721507515 -0300
+@@ -5,7 +5,7 @@
  
-+from spn.gpu.TensorFlow import tf_major_version
  from tensorflow.python.ops import math_ops
  from tensorflow.python.ops import random_ops
 -import tensorflow.contrib.distributions as dists
-+
-+if tf_major_version == 1:
-+    import tensorflow.contrib.distributions as dists
-+else:
-+    from tensorflow_probability import distributions as dists
++from tensorflow_probability import distributions as dists
  
  import time
  
-@@ -17,37 +22,37 @@
+@@ -17,37 +17,37 @@
  
  def variable_with_weight_decay(name, shape, stddev, wd, mean=0.0, values=None):
      if values is None:
@@ -900,7 +893,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
  
  
  class NodeVector(object):
-@@ -135,7 +140,7 @@
+@@ -135,7 +135,7 @@
              # gauss_log_pdf_single = tf.log(weighted_gauss_pdf + local_marginalized_broadcast)
              gauss_log_pdf_single = gauss_log_pdf_single * (1 - local_marginalized)
  
@@ -909,7 +902,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
          return gauss_log_pdf
  
      def sample(self, num_samples, num_dims, seed=None):
-@@ -144,7 +149,7 @@
+@@ -144,7 +144,7 @@
          sample_shape = [num_samples, num_dims, self.size]
          indices = tf.meshgrid(tf.range(num_samples), self.scope, tf.range(self.size))
          indices = tf.stack(indices, axis=-1)
@@ -918,7 +911,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
          samples = tf.scatter_nd(indices, sample_values, sample_shape)
          return samples
  
-@@ -187,7 +192,7 @@
+@@ -187,7 +187,7 @@
          if classes:
              return bernoulli_log_pdf_single
          else:
@@ -927,7 +920,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
          return bernoulli_log_pdf
  
      def sample(self, num_samples, num_dims, seed=None):
-@@ -195,7 +200,7 @@
+@@ -195,7 +195,7 @@
          sample_shape = [num_samples, num_dims, self.size]
          indices = tf.meshgrid(tf.range(num_samples), self.scope, tf.range(self.size))
          indices = tf.stack(indices, axis=-1)
@@ -936,7 +929,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
          samples = tf.scatter_nd(indices, sample_values, sample_shape)
          return samples
  
-@@ -223,7 +228,7 @@
+@@ -223,7 +223,7 @@
      def forward(self, inputs):
          dists1 = inputs[0]
          dists2 = inputs[1]
@@ -945,7 +938,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
              num_dist1 = int(dists1.shape[1])
              num_dist2 = int(dists2.shape[1])
  
-@@ -234,7 +239,7 @@
+@@ -234,7 +234,7 @@
              # product == sum in log-domain
              prod = dists1_expand + dists2_expand
              # flatten out the outer product
@@ -954,7 +947,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
  
          return prod
  
-@@ -279,8 +284,8 @@
+@@ -279,8 +279,8 @@
                  if args.sum_weight_l2:
                      exp_weights = tf.exp(self.weights)
                      weight_decay = tf.multiply(tf.nn.l2_loss(exp_weights), args.sum_weight_l2)
@@ -965,7 +958,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
              else:
                  self.weights = self.params
  
-@@ -289,7 +294,7 @@
+@@ -289,7 +289,7 @@
          weights = self.weights
  
          if self.args.linear_sum_weights:
@@ -974,7 +967,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
          else:
              prods = tf.expand_dims(prods, axis=-1)
              if self.dropout_op is not None:
-@@ -299,26 +304,26 @@
+@@ -299,26 +299,26 @@
                      dropout_shape = [batch_size, prod_num, self.size]
  
                      random_tensor = random_ops.random_uniform(dropout_shape, dtype=self.weights.dtype)
@@ -1006,7 +999,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
  
          others = tf.meshgrid(tf.range(inputs.shape[1]), tf.range(inputs.shape[0]), tf.range(self.size))
  
-@@ -355,7 +360,7 @@
+@@ -355,7 +355,7 @@
          self.output_vector = None
  
          # make the SPN...
@@ -1015,7 +1008,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
              if region_graph is not None:
                  self._make_spn_from_region_graph()
              elif vector_list is not None:
-@@ -363,7 +368,7 @@
+@@ -363,7 +363,7 @@
              else:
                  raise ValueError("Either vector_list or region_graph must not be None")
  
@@ -1024,7 +1017,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
          self.num_dims = len(self.output_vector.scope)
  
      def _make_spn_from_vector_list(self, vector_list, sess):
-@@ -380,7 +385,7 @@
+@@ -380,7 +380,7 @@
                          bernoulli_vector = BernoulliVector(
                              scope, self.args, name, given_params=a_node.probs.eval(session=sess)
                          )
@@ -1033,7 +1026,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
                          sess.run(init_new_vars_op)
                          self.vector_list[0].append(bernoulli_vector)
                          node_to_vec[id(a_node)] = bernoulli_vector
-@@ -393,7 +398,7 @@
+@@ -393,7 +393,7 @@
                              given_means=a_node.means.eval(session=sess),
                              given_stddevs=a_node.sigma_params.eval(session=sess),
                          )
@@ -1042,9 +1035,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/RAT_SPN.py /usr/
                              [gauss_vector.means, gauss_vector.sigma_params], name="init"
                          )
                          sess.run(init_new_vars_op)
-diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/train_mnist.py /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/train_mnist.py
---- spn/experiments/RandomSPNs/train_mnist.py	2019-10-25 11:20:57.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/train_mnist.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/train_mnist.py spn/experiments/RandomSPNs/train_mnist.py
+--- /usr/lib/python3.8/site-packages/spn/experiments/RandomSPNs/train_mnist.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/experiments/RandomSPNs/train_mnist.py	2020-02-06 14:46:33.921177352 -0300
 @@ -27,24 +27,24 @@
      return (train_im, train_lab), (test_im, test_lab)
  
@@ -1097,14 +1090,13 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/experiments/RandomSPNs/train_mnist.py /
      output_tensor = spn.forward(input_ph)
      tf_output = sess.run(output_tensor, feed_dict={input_ph: dummy_input})
  
-diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/site-packages/spn/gpu/TensorFlow.py
---- spn/gpu/TensorFlow.py	2019-11-01 10:10:05.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/gpu/TensorFlow.py	2020-02-04 16:33:40.567003875 -0300
-@@ -19,15 +19,17 @@
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/gpu/TensorFlow.py spn/gpu/TensorFlow.py
+--- /usr/lib/python3.8/site-packages/spn/gpu/TensorFlow.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/gpu/TensorFlow.py	2020-02-06 14:56:29.021290273 -0300
+@@ -19,15 +19,16 @@
  
  logger = logging.getLogger(__name__)
  
-+tf_major_version = int(tf.version.VERSION[0])
 +tf.compat.v1.disable_eager_execution()
  
  def log_sum_to_tf_graph(node, children, data_placeholder=None, variable_dict=None, log_space=True, dtype=np.float32):
@@ -1121,7 +1113,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
  
  
  def tf_graph_to_sum(node, tfvar):
-@@ -36,12 +38,12 @@
+@@ -36,12 +37,12 @@
  
  def log_prod_to_tf_graph(node, children, data_placeholder=None, variable_dict=None, log_space=True, dtype=np.float32):
      assert log_space
@@ -1136,7 +1128,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
          inps = np.arange(int(max(node.breaks))).reshape((-1, 1))
          tmpscope = node.scope[0]
          node.scope[0] = 0
-@@ -72,11 +74,11 @@
+@@ -72,11 +73,11 @@
  
  
  def spn_to_tf_graph(node, data, batch_size=None, node_tf_graph=_node_log_tf_graph, log_space=True, dtype=None):
@@ -1150,7 +1142,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
      variable_dict = {}
      tf_graph = eval_spn_bottom_up(
          node,
-@@ -95,7 +97,7 @@
+@@ -95,7 +96,7 @@
      for n, tfvars in variable_dict.items():
          tensors.append(tfvars)
  
@@ -1159,7 +1151,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
  
      for i, (n, tfvars) in enumerate(variable_dict.items()):
          tf_graph_to_node[type(n)](n, variable_list[i])
-@@ -103,7 +105,7 @@
+@@ -103,7 +104,7 @@
  
  def likelihood_loss(tf_graph):
      # minimize negative log likelihood
@@ -1168,7 +1160,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
  
  
  def optimize_tf(
-@@ -111,7 +113,7 @@
+@@ -111,7 +112,7 @@
      data: np.ndarray,
      epochs=1000,
      batch_size: int = None,
@@ -1177,7 +1169,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
      return_loss=False,
  ) -> Union[Tuple[Node, List[float]], Node]:
      """
-@@ -148,14 +150,14 @@
+@@ -148,14 +149,14 @@
      tf_graph, variable_dict, data_placeholder, data, epochs=1000, batch_size=None, optimizer=None
  ) -> List[float]:
      if optimizer is None:
@@ -1196,7 +1188,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
          if not batch_size:
              batch_size = data.shape[0]
          batches_per_epoch = data.shape[0] // batch_size
-@@ -189,26 +191,26 @@
+@@ -189,26 +190,26 @@
  
  
  def eval_tf_graph(tf_graph, data_placeholder, data, save_graph_path=None):
@@ -1231,7 +1223,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
  
          start = time.perf_counter()
          result = sess.run(tf_graph, feed_dict={data_placeholder: data}, options=run_options, run_metadata=run_metadata)
-@@ -230,7 +232,7 @@
+@@ -230,7 +231,7 @@
          return result, elapsed
  
          if save_graph_path is not None:
@@ -1240,18 +1232,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/gpu/TensorFlow.py /usr/lib/python3.8/si
              if trace:
                  summary_fw.add_run_metadata(run_metadata, "run")
  
-diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.py /usr/lib/python3.8/site-packages/spn/structure/leaves/parametric/Tensorflow.py
---- spn/structure/leaves/parametric/Tensorflow.py	2019-03-22 07:35:30.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/structure/leaves/parametric/Tensorflow.py	2020-02-04 15:51:06.150432240 -0300
-@@ -6,7 +6,7 @@
- 
- import tensorflow as tf
- 
--from spn.gpu.TensorFlow import add_node_to_tf_graph, add_tf_graph_to_node
-+from spn.gpu.TensorFlow import add_node_to_tf_graph, add_tf_graph_to_node, tf_major_version
- from spn.structure.leaves.parametric.Parametric import (
-     Gaussian,
-     Categorical,
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/structure/leaves/parametric/Tensorflow.py spn/structure/leaves/parametric/Tensorflow.py
+--- /usr/lib/python3.8/site-packages/spn/structure/leaves/parametric/Tensorflow.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/structure/leaves/parametric/Tensorflow.py	2020-02-06 14:55:43.414359616 -0300
 @@ -23,12 +23,12 @@
  
  
@@ -1284,7 +1267,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.
          if log_space:
              return dist.log_prob(data_placeholder[:, node.scope[0]])
  
-@@ -48,10 +48,14 @@
+@@ -48,10 +48,11 @@
  
  
  def poisson_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
@@ -1294,15 +1277,12 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.
 +        mean = tf.maximum(tf.compat.v1.get_variable("lambda", initializer=node.mean, dtype=dtype), 0.001)
          variable_dict[node] = mean
 -        dist = tf.contrib.distributions.Poisson(rate=mean)
-+        if tf_major_version == 1:
-+            dist = tf.contrib.distributions.Poisson(rate=mean)
-+        else:
-+            import tensorflow_probability as tfp
-+            dist = tfp.distributions.Poisson(rate=mean)
++        import tensorflow_probability as tfp
++        dist = tfp.distributions.Poisson(rate=mean)
          if log_space:
              return dist.log_prob(data_placeholder[:, node.scope[0]])
  
-@@ -59,10 +63,10 @@
+@@ -59,10 +60,10 @@
  
  
  def bernoulli_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
@@ -1316,7 +1296,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.
          if log_space:
              return dist.log_prob(data_placeholder[:, node.scope[0]])
  
-@@ -70,11 +74,11 @@
+@@ -70,11 +71,11 @@
  
  
  def gamma_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
@@ -1332,7 +1312,7 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.
          if log_space:
              return dist.log_prob(data_placeholder[:, node.scope[0]])
  
-@@ -82,14 +86,19 @@
+@@ -82,14 +83,16 @@
  
  
  def lognormal_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
@@ -1347,18 +1327,15 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.
 -        dist = tf.contrib.distributions.TransformedDistribution(
 -            distribution=tf.distributions.Normal(loc=mean, scale=stdev),
 -            bijector=tf.contrib.distributions.bijectors.Exp(),
-+        if tf_major_version == 1:
-+          import tf.contrib.distributions as dists
-+        else:
-+          import tensorflow_probability as tfp
-+          from tensorflow_probability import distributions as dists
++        import tensorflow_probability as tfp
++        from tensorflow_probability import distributions as dists
 +        dist = dists.TransformedDistribution(
 +            distribution=tf.compat.v1.distributions.Normal(loc=mean, scale=stdev),
 +            bijector=tfp.bijectors.Exp(),
              name="LogNormalDistribution",
          )
          if log_space:
-@@ -99,15 +108,15 @@
+@@ -99,15 +102,15 @@
  
  
  def categorical_to_tf_graph(node, data_placeholder=None, log_space=True, variable_dict=None, dtype=np.float32):
@@ -1378,9 +1355,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/structure/leaves/parametric/Tensorflow.
  
  
  def tf_graph_to_gaussian(node, tfvar):
-diff -x '*.pyc' -x __pycache__ -Naur spn/tests/test_rat_spn.py /usr/lib/python3.8/site-packages/spn/tests/test_rat_spn.py
---- spn/tests/test_rat_spn.py	2018-12-21 16:34:26.000000000 -0200
-+++ /usr/lib/python3.8/site-packages/spn/tests/test_rat_spn.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/tests/test_rat_spn.py spn/tests/test_rat_spn.py
+--- /usr/lib/python3.8/site-packages/spn/tests/test_rat_spn.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/tests/test_rat_spn.py	2020-02-06 14:46:25.667713125 -0300
 @@ -10,7 +10,7 @@
  class TestRatSpn(unittest.TestCase):
      def test_inference_results(self):
@@ -1404,9 +1381,9 @@ diff -x '*.pyc' -x __pycache__ -Naur spn/tests/test_rat_spn.py /usr/lib/python3.
          output_tensor = spn.forward(input_ph)
          tf_output = sess.run(output_tensor, feed_dict={input_ph: dummy_input})
  
-diff -x '*.pyc' -x __pycache__ -Naur spn/tests/test_tensorflow.py /usr/lib/python3.8/site-packages/spn/tests/test_tensorflow.py
---- spn/tests/test_tensorflow.py	2019-03-22 07:35:30.000000000 -0300
-+++ /usr/lib/python3.8/site-packages/spn/tests/test_tensorflow.py	2020-02-04 15:22:34.000000000 -0300
+diff '--color=auto' -x '*.pyc' -x __pycache__ -Naur /usr/lib/python3.8/site-packages/spn/tests/test_tensorflow.py spn/tests/test_tensorflow.py
+--- /usr/lib/python3.8/site-packages/spn/tests/test_tensorflow.py	2020-02-06 14:44:53.000000000 -0300
++++ spn/tests/test_tensorflow.py	2020-02-06 14:46:29.631109356 -0300
 @@ -47,8 +47,8 @@
  
          tf_graph, data_placeholder, variable_dict = spn_to_tf_graph(spn_copy, data, 1)

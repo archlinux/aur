@@ -2,8 +2,8 @@
 
 pkgname=python-spflow
 _pypiname=${pkgname/python-/}
-pkgver=0.0.39
-pkgrel=5
+pkgver=0.0.40
+pkgrel=1
 pkgdesc="Sum-Product Flow: An Easy and Extensible Library for Sum-Product Networks"
 arch=('any')
 url="https://github.com/SPFlow/SPFlow"
@@ -13,8 +13,8 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-statsmodels' 'python-net
   'python-sympy' 'python-pyqt5' 'python-pytest' 'python-ete' 'python-arff' 'python-torchvision'
   'python-tensorflow-cuda' 'python-pytorch-cuda' 'cppyy')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/76/49/6b37eaa9bf8c758b99c3f297b39d81bdc5b07329ac674659d67f56493ead/${_pypiname}-${pkgver}.tar.gz")
-sha256sums=('a32a237c4ca01742a5dc4cf5ef895423d8275df8d9fac43f3e44e19ee1931a6e')
+source=("https://files.pythonhosted.org/packages/18/95/f22f40e7e53c3d7b2bb0c698aa723b701b844efcb7cad7d6667bd5bfadd1/${_pypiname}-${pkgver}.tar.gz")
+sha256sums=('90183d810894dc1dcdc0ec63b7757b502d5b316311c4b91c07e892288a1f9d2e')
 
 build() {
   cd $srcdir
