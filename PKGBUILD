@@ -6,13 +6,12 @@ pkgname=("lua-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
 pkgver=0.0.0.r3.gd6e38e1
 _branch='master'
 _rockrel=0
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode CLDR data and Lua interface.'
 arch=('any')
-url='https://github.com/alerque/lua-cldr'
+url="https://github.com/alerque/$_project"
 license=('MIT')
 makedepends=('luarocks')
-conflicts=('lua-cldr')
 source=("git://github.com/alerque/$_project.git#branch=$_branch")
 sha256sums=('SKIP')
 
