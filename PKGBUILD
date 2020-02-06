@@ -2,17 +2,15 @@
 
 
 pkgname=social-engineer-toolkit-git
-pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf '%s' "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-pkgver=8.0.1.r2.71d349d4d
-pkgrel=2
+
+pkgver() { git -C "${pkgname%-git}" describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'; }
+pkgver=8.0.3.r4.bc1459567
+pkgrel=1
 
 pkgdesc='The Social-Engineer Toolkit (SET) - Development Version'
 arch=('any')
 url="https://github.com/trustedsec/${pkgname%-git}"
-license=('custom')
+license=('BSD')
 
 makedepends=('git' 'python2')
 depends=('python2-pexpect' 'python2-crypto' 'python2-requests'
@@ -25,12 +23,14 @@ conflicts=("${pkgname%-git}")
 
 options=('!strip')
 
-source=("git+https://github.com/trustedsec/${pkgname%-git}.git")
+changelog=CHANGELOG
+source=("git+$url.git")
 sha256sums=('SKIP')
+
 
 prepare() {
     cd "${pkgname%-git}"
-    sed -si '1s/python/python2/' se{toolkit,proxy,automate,update}
+    sed -si '1s/python3/python2/' se{toolkit,proxy,automate,update}
 }
 
 build() {
@@ -41,12 +41,13 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
-    install -dm755 "${pkgdir}/usr/"{bin,share/{{,licenses/}setoolkit,doc}}
-    cp -a --no-preserve=ownership * "${pkgdir}/usr/share/setoolkit/"
-    mv "${pkgdir}/usr/share/setoolkit/readme" "$pkgdir/usr/share/doc/setoolkit"
-    mv "${pkgdir}/usr/share/setoolkit/README.md" "$pkgdir/usr/share/doc/setoolkit/"
-    ln -s /usr/share/doc/setoolkit/LICENSE "${pkgdir}/usr/share/licenses/setoolkit/"
-    ln -s /usr/share/setoolkit/{setoolkit,seproxy,seautomate} "${pkgdir}/usr/bin/"
+    install -dm755 "$pkgdir/usr/"{bin,share/{,doc/,licenses/}setoolkit}
+    cp -a --no-preserve=ownership * "$pkgdir/usr/share/setoolkit/"
+    ln -s /usr/share/setoolkit/readme/* "$pkgdir/usr/share/doc/setoolkit/"
+    ln -s /usr/share/setoolkit/README.md "$pkgdir/usr/share/doc/setoolkit/"
+    ln -s /usr/share/doc/setoolkit/LICENSE "$pkgdir/usr/share/licenses/setoolkit/"
+    ln -s /usr/share/setoolkit/se{toolkit,proxy,automate} "$pkgdir/usr/bin/"
 }
 
-# vim: ts=4 sw=4 et:
+
+# vim: ts=4 sw=4 et ft=PKGBUILD:
