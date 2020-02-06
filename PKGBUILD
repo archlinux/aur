@@ -1,6 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=kmon-bin
-pkgver=v0.1.0
+pkgver=v0.1.1
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'git')
 provides=("${pkgname%-bin}")
 conflicts=("$pkgname" "${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/orhun/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-${pkgver#v}.tar.gz")
-sha256sums=('a84327006fbbe45b54cdfde6c9d5c562f609ad59bc273b8bbd9354ee3a5311a1')
+sha256sums=('370e3f5a9b4bfc81d5c46553f5f7e1fdc9c1e8597b76c9965638f03f315d6160')
 
 package() {
   install -Dt "$pkgdir/usr/bin/" "$srcdir/kmon"
