@@ -1,7 +1,7 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
-pkgver=4.2.0
-pkgrel=2
+pkgver=4.3.0
+pkgrel=1
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -19,15 +19,9 @@ conflicts=(
 )
 backup=('etc/authelia/configuration.yml')
 
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
-  'authelia.service'
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=(
-  '5150c22bbc375c28d9f9590cf23e6e664721438b23127a2f330336d22c7ca8e1'
-  'd1fe188957465088e6a6814d068016862a85b20fc40d60c12b28d12debe2e33e'
-)
+sha256sums=('4798235ac539ad5a225e1319369d3f710796d0976fba03198b1310d839ee211d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -40,7 +34,7 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm700 "${srcdir}/${pkgname}-${pkgver}/config.template.yml" "${pkgdir}/etc/${pkgname}/configuration.yml"
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -dm655 "${pkgdir}/usr/share/webapps/${pkgname}"
