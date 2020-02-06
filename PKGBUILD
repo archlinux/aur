@@ -5,7 +5,7 @@ pkgdesc="Optional Wikipedia data to use with nominatim"
 url="https://nominatim.org"
 
 pkgver=20190618
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("unknown")
@@ -24,7 +24,7 @@ sha256sums=(
 )
 
 package() {
-    install -Dm644 -t "${pkgdir}/usr/share/webapps/nominatim/data/" \
+    install -Dm644 -t "${pkgdir}/usr/share/webapps/nominatim/src/data/" \
         "${srcdir}/wikipedia_article.sql.bin" \
         "${srcdir}/wikipedia_redirect.sql.bin"
 }
