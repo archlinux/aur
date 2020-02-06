@@ -1,6 +1,6 @@
 pkgbase = read-it-later-git
-	pkgdesc = wallabag client
-	pkgver = 0.0.1
+	pkgdesc = A wallabag client GTK GUI
+	pkgver = 0.0.1.r90.e01b815
 	pkgrel = 1
 	url = https://belmoussaoui.com/2020/02/04/read-it-later/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = read-it-later-git
 	makedepends = rust
 	depends = appstream-glib
 	depends = libhandy
+	depends = webkit2gtk
 	provides = read-it-later
 	source = git+https://gitlab.gnome.org/bilelmoussaoui/read-it-later.git
 	sha512sums = SKIP

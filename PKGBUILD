@@ -3,13 +3,14 @@
 
 pkgname=read-it-later-git
 _pkgname=read-it-later
-pkgver=0.0.1
+pkgver=0.0.1.r90.e01b815
 pkgrel=1
-pkgdesc='read-it-later wallabag client'
+pkgdesc='A wallabag client GTK GUI'
 arch=('i686' 'x86_64')
 url='https://belmoussaoui.com/2020/02/04/read-it-later/'
 license=('GPL3')
 provides=(${pkgname%-*})
+conflicts=()
 depends=('appstream-glib' 'libhandy' 'webkit2gtk')
 makedepends=('git' 'meson' 'rust')
 source=('git+https://gitlab.gnome.org/bilelmoussaoui/read-it-later.git')
@@ -26,6 +27,10 @@ build() {
   cd "${srcdir}/${_pkgname}"
   meson --prefix /usr $builddir
   ninja -v -C $builddir
+}
+
+check() {
+  cd "${srcdir}/${_pkgname}"
   ninja -C $builddir test
 }
 
