@@ -1,0 +1,18 @@
+pkgbase = gh
+	pkgdesc = The GitHub CLI
+	pkgver = 0.5.4
+	pkgrel = 0
+	url = https://github.com/cli/cli
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = git
+	provides = gh
+	source = git+https://github.com/cli/cli#tag=v0.5.4
+	md5sums = SKIP
+
+pkgname = gh
+
