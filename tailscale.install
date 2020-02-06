@@ -1,0 +1,12 @@
+# -*- mode: shell-script -*-
+
+post_install() {
+    echo -e "\n\e[1m Tailscale $1\e[0m\n"
+    cat <<EOF
+Tailscale requires some additional setup steps before the service can
+start! Please follow the instructions at:
+
+    https://tailscale.com/kb/1036/install-arch
+
+EOF
+}
