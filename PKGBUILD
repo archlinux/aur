@@ -1,14 +1,14 @@
 # Maintainer: Guillaume Hayot <ghayot@postblue.info>
 pkgname=emulationstation
 _gitname=EmulationStation
-pkgver=2.7.6
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
 install=emulationstation.install
-depends=('vlc' 'alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'curl' 'libraw' 'libcec')
+depends=('vlc' 'alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'curl' 'libraw' 'libcec' 'rapidjson')
 makedepends=('cmake' 'boost' 'freetype2' 'eigen' 'curl' 'git')
 optdepends=('ttf-droid: Fallback fonts for Chinese/Japanese/Korean characters'
             'dolphin-emu: GameCube and Wii support'
@@ -22,7 +22,7 @@ conflicts=(emulationstation-git)
 source=("https://github.com/RetroPie/$_gitname/archive/v$pkgver.tar.gz"
         "emulationstation.desktop"
         "emulationstation.png")
-sha256sums=('f56b4301ddd97beb990aed387d34e021ea1df6a2f1256cf361cf2bcefd1b6247'
+sha256sums=('b42a849f014d5871aa6d31a81ed53eddb5f994cdf790bc123fb7200c3c3c28d0'
             '5564803e0a82e132ab507b9cd341b32d1ce5b8be527996fbe13607d90f1dde2c'
             'ac589d9da5c258226f8de76e99afe2b07ac86030ced90d284d31b51193057f9c')
 
