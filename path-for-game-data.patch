@@ -1,14 +1,27 @@
---- simmain.cc.orig	2020-01-29 20:46:22.995538482 +0100
-+++ simmain.cc	2020-01-29 20:50:24.586768985 +0100
-@@ -495,8 +495,9 @@
+--- simmain.cc.orig	2020-02-06 17:10:51.716713070 +0100
++++ simmain.cc	2020-02-06 18:43:33.119717473 +0100
+@@ -402,6 +402,12 @@
+ 
+ 	env_t::init();
+ 
++    // Make simutrans extended update the symlinks when opened
++#ifdef __linux__
++    system("cp -rsu /usr/share/games/simutrans-extended/ ~/.local/share/");
++    system("cp -rsu ~/.local/share/simutrans/pak* ~/.local/share/simutrans-extended/");
++#endif
++    
+ 	// you really want help with this?
+ 	if (gimme_arg(argc, argv, "-h",     0) ||
+ 			gimme_arg(argc, argv, "-?",     0) ||
+@@ -495,8 +501,9 @@
  		strcat( env_t::program_dir, path_sep );
  	}
  	else {
 -		strcpy( env_t::program_dir, argv[0] );
 -		*(strrchr( env_t::program_dir, path_sep[0] )+1) = 0;
-+		//strcpy( env_t::program_dir, argv[0] );
-+		//*(strrchr( env_t::program_dir, path_sep[0] )+1) = 0;
-+        strcpy(env_t::program_dir, "/usr/share/games/simutrans-extended/");
++        static char buffer[100];
++        sprintf(buffer, "%s/.local/share/simutrans-extended/", getenv("HOME"));
++        strcpy(env_t::program_dir, buffer);
  
  #ifdef __APPLE__
  		// change working directory from binary dir to bundle dir

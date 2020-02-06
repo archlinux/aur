@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended
 	pkgdesc = Transportation simulation game - Extended Version
-	pkgver = 20200204
+	pkgver = 20200206
 	pkgrel = 2
 	url = https://www.simutrans.com/
 	arch = x86_64
@@ -19,12 +19,14 @@ pkgbase = simutrans-extended
 	source = path-for-game-data.patch
 	source = config.patch
 	source = simutrans-extended.desktop
+	source = How to add files and paksets.md
 	sha256sums = SKIP
 	sha256sums = c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81
-	sha256sums = f7b04cb5da7887c084497cb0c364faf8a1ff3c677fee4ef6647fc45172f79d98
-	sha256sums = 800a09ad8e8acd78dd1e5614e53bd9b84009941cfce70482477ec6ebf147f363
+	sha256sums = eda4cc07461c77b5af211ea40dc0a400b045b088c50c442b34e6e762974629da
+	sha256sums = 50f2dc0f2f3bb50371ceedd477372a2373a49309f33a8984eb23079385a49f84
 	sha256sums = d38e01738dbdd02ab52b600cec5019d9465b4f177b0f61b249e01de5e85631f4
 	sha256sums = 0efcf72d3670c53de99c44cb0d8f43f7e7663fda5df0f631ba6c687cc85967d3
+	sha256sums = 5c1ad9a0ec65c59e36785623aa76b5331869743142a253b6385e4f743615072a
 
 pkgname = simutrans-extended
 
