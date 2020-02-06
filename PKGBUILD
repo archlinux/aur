@@ -3,8 +3,8 @@
 pkgname=naiveproxy-bin
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=79.0.3945.79
-pkgrel=2
+pkgver=80.0.3987.87
+pkgrel=1
 arch=('x86_64' 'i386' 'i686' 'pentium4' 'aarch64' 'arm' 'armv7h')
 url='https://github.com/klzgrad/naiveproxy'
 license=('BSD')
