@@ -3,23 +3,20 @@
 
 pkgname=haskell-ide-engine-git
 pkgver=r3043.38a6febb
-pkgrel=2
+pkgrel=3
 pkgdesc="The engine for haskell ide-integration. Not an IDE"
 arch=('x86_64')
 url="https://github.com/haskell/haskell-ide-engine"
 license=('custom:BSD3')
 provides=('haskell-ide-engine')
-makedepends=('git' 'stack' 'cabal-install' 'happy')
+makedepends=('git' 'stack')
 source=("${pkgname}::git://github.com/haskell/haskell-ide-engine.git")
 noextract=()
 md5sums=('SKIP')
 
-# supported are '8.2.2' '8.4.2' '8.4.3' '8.4.4' '8.6.1' '8.6.2' '8.6.3' '8.6.4'
-# '8.6.5' activated by default are the ones also used in a stackage snapshot
-# removing versions you do not use will greatly reduce the compilation time of
-# this package
+# supported ghc versions: 8.4.{2,3,4} 8.6.{4,5} 8.8.{1,2}
 
-_enabled_ghc_versions=('8.2.2' '8.4.3' '8.4.4' '8.6.3' '8.6.4' '8.6.5')
+_enabled_ghc_versions=('8.6.5')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
