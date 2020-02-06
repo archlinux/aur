@@ -27,6 +27,9 @@ prepare() {
     git config submodule."libs/libqvb".active false
     git config submodule."libs/gRPC-win32".active false
     git submodule update
+    
+    cd "${srcdir}/Qv2ray-${pkgver}"
+    bash -c "tools/grpc_gen.sh"
 }
 
 build() {
