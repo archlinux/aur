@@ -1,6 +1,6 @@
+/*.tar.gz
+
 /src/
 /pkg/
-/rua/
-/target/
-/*.tar.gz
-*.pkg.tar.xz
+/*.pkg.tar.xz
+
