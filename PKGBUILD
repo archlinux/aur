@@ -5,7 +5,7 @@
 # Contributor: Ali H. Caliskan <ali.h.caliskan AT gmail DOT com>
 
 pkgname=jstock
-pkgver=1.0.7.43
+pkgver=1.0.7.44
 pkgrel=1
 pkgdesc="A stock market software that helps you make smart investment decision"
 arch=('any')

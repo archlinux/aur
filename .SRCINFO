@@ -1,13 +1,13 @@
 pkgbase = jstock
 	pkgdesc = A stock market software that helps you make smart investment decision
-	pkgver = 1.0.7.43
+	pkgver = 1.0.7.44
 	pkgrel = 1
 	url = http://jstock.sourceforge.net/
 	arch = any
 	license = GPL
 	depends = java-runtime
 	depends = java-openjfx
-	source = https://github.com/yccheok/jstock/releases/download/release_1-0-7-43/jstock-1.0.7.43-bin.zip
+	source = https://github.com/yccheok/jstock/releases/download/release_1-0-7-44/jstock-1.0.7.44-bin.zip
 	source = jstock.desktop
 	source = jstock.png
 	source = jstock.sh
