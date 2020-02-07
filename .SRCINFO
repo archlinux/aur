@@ -1,15 +1,16 @@
 pkgbase = ocaml-biniou
 	pkgdesc = An optimized parsing and printing library for JSON
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocaml-community/biniou
 	arch = x86_64
 	license = BSD
 	makedepends = dune
 	depends = ocaml-easy-format
+	provides = ocaml-biniou
 	options = !strip
 	options = staticlibs
-	source = ocaml-biniou-1.2.1.tar.gz::https://github.com/ocaml-community/biniou/archive/1.2.1.tar.gz
+	source = https://github.com/ocaml-community/biniou/releases/download/1.2.1/biniou-1.2.1.tbz
 	sha256sums = 9e38566ede8f2593f9f743fb7da1c8a8674451eabe326b3e2b42a87834a66cb5
 
 pkgname = ocaml-biniou

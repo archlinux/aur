@@ -1,19 +1,20 @@
 # Author: Bruno Pagani <archange@archlinux.org>
-# Maintainer: nerflad <nerflad@gmail.com>
+# Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 _pkgname=biniou
 pkgname=ocaml-${_pkgname}
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An optimized parsing and printing library for JSON"
 arch=('x86_64')
 url="https://github.com/ocaml-community/${_pkgname}"
 license=('BSD')
 options=('!strip' 'staticlibs')
+provides=('ocaml-biniou')
 depends=('ocaml-easy-format')
 makedepends=('dune')
-source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/${pkgver}.tar.gz")
-sha256sums=('9e38566ede8f2593f9f743fb7da1c8a8674451eabe326b3e2b42a87834a66cb5')
+source=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tbz")
+sha256sums=('35546c68b1929a8e6d27a3b39ecd17b38303a0d47e65eb9d1480c2061ea84335')
 
 build() {
     cd ${_pkgname}-${pkgver}
