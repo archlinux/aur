@@ -1,10 +1,10 @@
 # Author: Bruno Pagani <archange@archlinux.org>
-# Maintainer: nerflad <nerflad@gmail.com>
+# Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 _pkgname=easy-format
 pkgname=ocaml-${_pkgname}
-pkgver=1.3.1
-pkgrel=5
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="Pretty-printing library for OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml-community/${_pkgname}"
@@ -12,22 +12,19 @@ license=('BSD')
 options=('!strip' 'staticlibs')
 depends=('glibc')
 makedepends=('dune')
-source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('489d55ea5de171cea2d7e2114bcd5cebd1fcbf89f839fbf3757769507502e1f0')
+source=(${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tbz)
+sha256sums=('3440c2b882d537ae5e9011eb06abb53f5667e651ea4bb3b460ea8230fa8c1926')
 
 build() {
     cd ${_pkgname}-${pkgver}
-    make all
-}
-
-check() {
-    cd ${_pkgname}-${pkgver}
-    make test
+    patch src/easy_format.ml ../../compile.patch
+    dune build -p easy-format
 }
 
 package() {
     cd ${_pkgname}-${pkgver}
-    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="$(ocamlfind printconf destdir)"
+    DESTDIR="${pkgdir}" dune install --prefix=/usr --libdir="lib/ocaml"
+
     install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
-    rm -r "${pkgdir}"/usr/doc
+    rm -rf "${pkgdir}"/usr/doc
 }
