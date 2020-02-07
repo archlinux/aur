@@ -1,15 +1,15 @@
-# Maintainer:Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer:Timo Sarawinski <timo@it-kraut.net>
 
 pkgname=bzr-bzr
 pkgver=2.8.0.6622
-pkgrel=2
+pkgrel=3
 pkgdesc="A decentralized revision control system (bazaar) from launchpad"
 arch=('i686' 'x86_64')
 url="https://bazaar.canonical.com/"
 license=('GPL')
 depends=('python2')
 optdepends=('python2-paramiko: SFTP support')
-makedepends=('bzr' 'pyrex')
+makedepends=('bzr' 'cython2')
 provides=('bzr')
 conflicts=('bzr')
 source=('bazaar-2.8::bzr+https+urllib://code.launchpad.net/~bzr-pqm/bzr/bzr.dev/')
