@@ -1,12 +1,11 @@
 pkgbase = termius-beta
 	pkgdesc = Desktop SSH Client
 	pkgver = 5.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.termius.com/
 	arch = x86_64
 	license = custom
 	makedepends = squashfs-tools
-	depends = gconf
 	depends = libnotify
 	depends = libappindicator-gtk3
 	depends = libxtst

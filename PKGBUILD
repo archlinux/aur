@@ -3,12 +3,12 @@
 
 pkgname=termius-beta
 pkgver=5.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
 license=('custom')
-depends=('gconf' 'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
+depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss')
 makedepends=('squashfs-tools')
 # Get latest version + link from https://snapcraft.io/termius-beta|| snap info termius-beta || run the following
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-beta | jq '.download_url' -r
