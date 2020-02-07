@@ -4,7 +4,7 @@
 pkgname=git-delta
 _name=${pkgname#*-}
 pkgver=0.0.16
-pkgrel=2
+pkgrel=3
 
 pkgdesc="A syntax-highlighting pager for git"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('git')
 makedepends=('rust')
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('5bfd978253db28a9845b6fb9b3a6594d6ec7a3b71b07a09696708e5536effd7c')
+sha256sums=('631349484bb52f3bb1c22385e19d98903c094212e83fe109f97aeff0281cf00e')
 
 
 build() {
