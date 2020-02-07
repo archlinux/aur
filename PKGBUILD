@@ -2,7 +2,7 @@
 # Maintainer: Richard Bradfield <bradfier@fstab.me>
 
 pkgname=github-cli
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="The GitHub CLI"
 arch=("any")
@@ -13,7 +13,7 @@ makedepends=("glibc" "go")
 optdepends=("git: To interact with repositories")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cli/cli/archive/v${pkgver}.tar.gz")
 sha256sums=(
-    "250ce6ac8b0a28a16585900e663d533b4858c6d98572fc4083f5cedcb57538fe"
+    "eacf8dcc085e0a65a76bbc94b8501fd7c2b37e511dd2e24361c02e80e87ba642"
 )
 
 build() {
@@ -25,4 +25,5 @@ package() {
 	cd "cli-$pkgver"
     install -Dm755 "${srcdir}/cli-${pkgver}/bin/gh" "${pkgdir}/usr/bin/gh"
     install -Dm644 "${srcdir}/cli-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/github-cli"
+    install -Dm644 "${srcdir}/cli-${pkgver}/README.md" "${pkgdir}/usr/share/doc/github-cli/README.md"
 }
