@@ -5,7 +5,7 @@
 
 pkgname=meanwhile
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Meanwhile libraries"
 arch=('i686' 'x86_64')
 url="https://github.com/obriencj/meanwhile"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-
+  ./autogen.sh
   CFLAGS="-mtune=generic -pipe -fstack-protector --param=ssp-buffer-size=4"
   CXXFLAGS="${CFLAGS}"
   export CFLAGS CXXFLAGS
