@@ -3,7 +3,7 @@
 Files in this directory are symlinked from: 
 
 1. `/usr/share/games/simutrans-extended` (shared Simutrans Extended installation)
-2. `/.local/share/simutrans` (paksets only, which is in turn symlinked to `/usr/share/games/simutrans` if Simutrans Standard is installed)
+2. `/.local/share/simutrans` (paksets only, which are in turn symlinked from `/usr/share/games/simutrans`)
 
 This means that the following paksets are already available here:
 
@@ -20,7 +20,7 @@ Symlinked files are updated everytime you open the game, so:
 1. Don't worry about deleting symlinks by accident.
 2. New paksets installed will be picked up automatically.
 
-But please **don't reemplace symlinked files in this directory**.
+But please **don't replace symlinked files in this directory**. You will lose your replaced files when you open Simutrans! Instead, if you want, for example, to install another version of "pak64" rename it to "pak64-myversion".
 
 # Adding files in the user config directory (~/.config/simutrans-extended)
 
