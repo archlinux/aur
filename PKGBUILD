@@ -1,6 +1,6 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgname=pymdown-extensions
-pkgver=6.2.1
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Extensions for Python Markdown"
 arch=("any")
@@ -8,7 +8,7 @@ url="http://facelessuser.github.io/pymdown-extensions/"
 license=("MIT")
 makedepends=("python-setuptools")
 source=("https://github.com/facelessuser/pymdown-extensions/archive/${pkgver}.tar.gz")
-sha256sums=('ea35182c3cd8480d3c6208611cc9d79b88ae73d69df81264721502d70d1790af')
+sha256sums=('9e2f98bbc31c76cfd0001b58c45b1a8add66d279f289f5c5b850778a4e771c22')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
