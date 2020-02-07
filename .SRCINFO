@@ -1,0 +1,19 @@
+pkgbase = gpseq-git
+	pkgdesc = A parallelism library for Vala and GObject
+	pkgver = 0.3.1.r0.57c8321
+	pkgrel = 1
+	url = https://gitlab.com/kosmospredanie/gpseq
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = LGPL3
+	makedepends = vala
+	makedepends = meson
+	makedepends = git
+	makedepends = gobject-introspection
+	depends = libgee
+	source = gpseq::git+https://gitlab.com/kosmospredanie/gpseq.git
+	sha256sums = SKIP
+
+pkgname = gpseq-git
+
