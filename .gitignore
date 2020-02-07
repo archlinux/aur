@@ -5,8 +5,8 @@ pkg/
 # built packages
 *.tar
 *.tar.sig
-*.tar.xz
-*.tar.xz.sig
+*.tar.zst
+*.tar.zst.sig
 
 # sources 
 *.tar.gz
