@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-http-parser
 _pkgname=http-parser
-pkgver=2.9.2
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Parser for HTTP Request/Response written in C (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/nodejs/http-parser/archive/v${pkgver}.tar.gz")
-sha512sums=('fe21ba46c9297b55a6382497b689da2af88999a9a5716ffef0731057ce1bb053056e4f20147284c78338e48ed1a793a0270fe0edfe3f4b589926e3ede603d023')
+sha512sums=('d200c52f594192ba80a8d5b59d414404843f8601dac647f29c27845db75ac1f015789031e30e91aaab5b553af1ee6af50b90f9342a444c10c1027e10fdb9a31b')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,7 +25,7 @@ build() {
   CFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 $CFLAGS"
   CXXFLAGS="-O2 -pipe -fno-plt -fexceptions --param=ssp-buffer-size=4 $CXXFLAGS"
   CPPFLAGS="-D_FORTIFY_SOURCE=2 $CPPFLAGS"
-  LDFLAGS="-Wl,-O1,--sort-common,--as-needed $LDFLAGS"
+  LDFLAGS="-Wl,-O1,--sort-common,--as-needed -fstack-protector $LDFLAGS"
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/build-${_arch}" && pushd "${srcdir}/build-${_arch}"
     cp -rf "${srcdir}/${_pkgname}-${pkgver}"/. "${srcdir}/build-${_arch}"
