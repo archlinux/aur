@@ -23,9 +23,9 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-storage-python-plugin"
          "${pkgbase}-webui")
 
-pkgmajor=18
-pkgver=18.2.6
-pkgrel=4
+pkgmajor=19
+pkgver=19.2.5
+pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -38,7 +38,6 @@ md5sums=('SKIP')
 prepare() {
   cd $pkgbase
   patch --forward --strip=1 --input="../../plattforms-archlinux.patch"
-  patch --forward --strip=1 --input="../../gfapi_device-detect-glfs_ftruncate-API-change.patch"
 }
 
 build() {
@@ -109,6 +108,9 @@ package_bareos-common() {
     usr/lib/bareos/libbareosndmp.so.$pkgver \
     usr/lib/bareos/libbareosndmp.so.$pkgmajor \
     usr/lib/bareos/libbareosndmp.so \
+    usr/lib/bareos/libbareosfastlz.so \
+    usr/lib/bareos/libbareosfastlz.so.$pkgver \
+    usr/lib/bareos/libbareosfastlz.so.$pkgmajor \
     usr/lib/bareos/scripts/bareos-config \
     usr/lib/bareos/scripts/bareos-config-lib.sh \
     usr/lib/bareos/scripts/btraceback.gdb \
@@ -183,6 +185,7 @@ package_bareos-database-mysql() {
     usr/lib/bareos/scripts/ddl/updates/mysql.2002_2003.sql \
     usr/lib/bareos/scripts/ddl/updates/mysql.2003_2004.sql \
     usr/lib/bareos/scripts/ddl/updates/mysql.2004_2171.sql \
+    usr/lib/bareos/scripts/ddl/updates/mysql.2171_2192.sql \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
@@ -209,6 +212,7 @@ package_bareos-database-postgresql() {
     usr/lib/bareos/scripts/ddl/updates/postgresql.2002_2003.sql \
     usr/lib/bareos/scripts/ddl/updates/postgresql.2003_2004.sql \
     usr/lib/bareos/scripts/ddl/updates/postgresql.2004_2171.sql \
+    usr/lib/bareos/scripts/ddl/updates/postgresql.2171_2192.sql \
     usr/lib/bareos/scripts/ddl/updates/postgresql.bee.1017_2004.sql \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
@@ -231,6 +235,7 @@ package_bareos-database-sqlite3() {
     usr/lib/bareos/scripts/ddl/updates/sqlite3.2002_2003.sql \
     usr/lib/bareos/scripts/ddl/updates/sqlite3.2003_2004.sql \
     usr/lib/bareos/scripts/ddl/updates/sqlite3.2004_2171.sql \
+    usr/lib/bareos/scripts/ddl/updates/sqlite3.2171_2192.sql \
   ; do
     _cp $srcdir/install/$f $pkgdir/$f
   done
@@ -292,6 +297,7 @@ package_bareos-director() {
     usr/bin/bareos-dir \
     usr/share/man/man8/bareos-dir.8 \
     usr/share/man/man8/bareos.8 \
+    etc/logrotate.d/bareos-dir \
   ; do
     # pacman LINT tool currently does not like spaces
     space_removal=`echo $f | tr ' ' '_'`
@@ -468,6 +474,7 @@ package_bareos-webui() {
           'etc/bareos/bareos-dir.d/profile/webui-admin.conf')
 
   _cp $srcdir/install/bareos-webui $pkgdir/usr/share/webapps/bareos-webui 
+  _cp $srcdir/install/etc/httpd/conf.d/bareos-webui.conf $pkgdir/etc/httpd/conf.d/extra/bareos-webui.conf
 
   for f in \
     etc/bareos/bareos-dir.d/console/admin.conf.example \
