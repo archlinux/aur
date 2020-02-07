@@ -3,7 +3,7 @@
 pkgname=simutrans-pak64.classic
 pkgver=0.1
 pkgrel=1
-pkgdesc="Resolution graphics set for Simutrans for model train fans"
+pkgdesc="Resolution graphics set for Simutrans, resembling the original"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
