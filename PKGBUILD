@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -15,14 +15,12 @@ source=(
     "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
     "setup_dxvk"
     "dxvk-async.patch"
-    "dxvk-mangohud.patch"
     "extraopts.patch"
 )
 sha256sums=(
     "SKIP"
     "b2413cabd8cca56e2d308ef5513edf1c7f909036ed2ccfeae17536a0e864dc96"
     "6ff286091c20327e67252e1e6812830a42c990d1ee56541023eb217712209f3c"
-    "2e335237623aaf006f8814fc9712f3a4be0d678cd0714879a3a4545f3bbf41ce"
     "acde3a23166f79fa87ab090200be2aabaf16e5876ce19b8270ad1179bb0bc7a5"
 )
 
@@ -71,9 +69,6 @@ prepare() {
     # I am not liable if anything happens to you by using it.
     # Patch enables async by default. YOU HAVE BEEN WARNED.
     #patch -p1 -i ../dxvk-async.patch
-
-    # Uncomment to enable Mango HUD for dxvk
-    #patch -p1 -i ../dxvk-mangohud.patch
 }
 
 build() {
