@@ -1,6 +1,6 @@
 pkgbase = fcitx-mozc-neologd-ut
-	pkgver = 2.23.2815.102.20191230
-	pkgrel = 2
+	pkgver = 2.23.2815.102.20200130
+	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
 	arch = x86_64
@@ -20,14 +20,15 @@ pkgbase = fcitx-mozc-neologd-ut
 	makedepends = glib2
 	makedepends = bzip2
 	makedepends = unzip
+	depends = protobuf
 	source = mozc-2.23.2815.102+dfsg.tar.xz::http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_2.23.2815.102+dfsg.orig.tar.xz
 	source = japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=
-	source = Fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
+	source = fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
 	source = mozc-2.23.2815.102-python-3.patch::https://github.com/google/mozc/files/4048079/mozc-2.23.2815.102-python-3.patch.txt
 	source = add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/add_support_new_japanese_era.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-2.23.2815.102.1.patch
 	source = https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-	source = https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F25%2F25392%2Fmozcdic-neologd-ut-20191230.2.tar.bz2
+	source = https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fusers%2F25%2F25426%2Fmozcdic-neologd-ut-20200130.1.tar.bz2
 	sha1sums = 7e0a39ffd5ea68ecadb792fc521c16b5be1f25cb
 	sha1sums = SKIP
 	sha1sums = 4fe935b5c2d316119cf8957b6518b3b5e7bf6ecf
@@ -49,12 +50,13 @@ pkgname = mozc-neologd-ut
 	conflicts = mozc-ut2
 	conflicts = fcitx-mozc-ut
 	conflicts = mozc-ut
+	conflicts = fcitx-mozc-neologd-ut+ut2
 
 pkgname = fcitx-mozc-neologd-ut
 	pkgdesc = Fcitx engine module for Mozc
 	arch = i686
 	arch = x86_64
-	depends = mozc-neologd-ut=2.23.2815.102.20191230
+	depends = mozc-neologd-ut=2.23.2815.102.20200130
 	depends = fcitx
 	replaces = fcitx-mozc
 	replaces = fcitx-mozc-ut2

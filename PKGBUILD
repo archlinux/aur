@@ -8,26 +8,27 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_neologddate=20191230
+_neologddate=20200130
 pkgver=${_mozcver}.${_neologddate}
-pkgrel=2
+pkgrel=1
 
 pkgname=mozc-neologd-ut
 true && pkgname=('mozc-neologd-ut' 'fcitx-mozc-neologd-ut')
 arch=('i686' 'x86_64')
 url="https://osdn.net/users/utuhiro/pf/utuhiro/files/"
 license=('custom')
+depends=('protobuf')
 makedepends=('clang' 'gyp' 'protobuf' 'ninja' 'pkg-config' 'python' 'curl' 'gtk2' 'qt5-base' 'zinnia' 'fcitx' 'libxcb' 'glib2' 'bzip2' 'unzip')
 
 source=(
   mozc-${_mozcver}+dfsg.tar.xz::http://ftp.jp.debian.org/debian/pool/main/m/mozc/mozc_${_mozcver}+dfsg.orig.tar.xz
   japanese_usage_dictionary::git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=${_japanese_usage_dictionary_rev}
-  Fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
+  fix-build-with-gcc8.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/Fix-build-with-gcc8.patch
   mozc-2.23.2815.102-python-3.patch::https://github.com/google/mozc/files/4048079/mozc-2.23.2815.102-python-3.patch.txt
   add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/add_support_new_japanese_era.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  "https://osdn.net/frs/chamber_redir.php?m=jaist&f=%2Fusers%2F25%2F25392%2Fmozcdic-neologd-ut-20191230.2.tar.bz2"
+  "https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fusers%2F25%2F25426%2Fmozcdic-neologd-ut-20200130.1.tar.bz2"
 )
 
 sha1sums=(
@@ -43,7 +44,7 @@ sha1sums=(
 
 prepare() {
   cd mozc-${_mozcver}+dfsg
-  patch -Np1 -i ${srcdir}/Fix-build-with-gcc8.patch
+  patch -Np1 -i ${srcdir}/fix-build-with-gcc8.patch
   patch -Np1 -i ${srcdir}/mozc-2.23.2815.102-python-3.patch
   patch -Np1 -i ${srcdir}/add_support_new_japanese_era.patch
   patch -Np1 -i ${srcdir}/fcitx-mozc-${_fcitxver}.patch
@@ -68,7 +69,7 @@ package_mozc-neologd-ut() {
   pkgdesc="A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
   arch=('i686' 'x86_64')
   depends=('qt5-base' 'zinnia')
-  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut')
+  conflicts=('fcitx-mozc' 'mozc' 'fcitx-mozc-ut2' 'mozc-ut2' 'fcitx-mozc-ut' 'mozc-ut' 'fcitx-mozc-neologd-ut+ut2')
   cd mozc-${_mozcver}+dfsg/src
   install -D -m 755 out_linux/${_bldtype}/mozc_server "${pkgdir}/usr/lib/mozc/mozc_server"
   install    -m 755 out_linux/${_bldtype}/mozc_tool   "${pkgdir}/usr/lib/mozc/mozc_tool"
