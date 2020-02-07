@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak64.german
+	pkgdesc = Low resolution graphics set for Simutrans, with a german theme
+	pkgver = 112.3.10
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	source = https://sourceforge.net/projects/simutrans/files/pak.german/pak64.german-112-3/pak64.german_0-112-3beta6_full.zip/download
+	sha256sums = e9f0a283af6967e32b18e1d1f84287fd54fb2adc48da38a8b784cefe0ecd6c37
+
+pkgname = simutrans-pak64.german
+
