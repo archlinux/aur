@@ -3,12 +3,12 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=2.47.0
-_gitrev=1035
-_gitver=e74d341b
+pkgver=2.50.0
+_gitrev=1045
+_gitver=37e9e857
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
-_web_buildid="159-65a90631b12c68"
+_web_buildid="166-78faf811b12c68"
 _web_desktop_ver="3.104.2-1b12c68"
 _web_tv_ver="4.17.1-65a9063"
 pkgrel=3
@@ -22,17 +22,12 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "buildid-${_web_buildid}.cmake::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/buildid.cmake"
         "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz"
         "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz.sha1"
-        "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz"
-        "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz.sha1"
         'qt.patch')
-noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"
-           "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz")
-sha512sums=('b090654cc2e5d07011c54965abe5591eb6dada832dcd0ccfe37c9cbb73d50e8b22e8f20e8ab64e30813bca26acc11b0470099f44c4e6217f4f3ce82f7dc3c95f'
-            '17e96f3270c0e8495bcb8fd9d90fabf4941375841642129ad0c35e07ec9f42df23e2a5f414cd69fdd2cbf43ef551b74d22b6132dd4001653f3f681b83768a0ed'
-            'a7da3407c0ed8e70be2b4757b66a84562e489d2c14c470adf849953ae6d7dbc1eeb7ac9cfcfbfe4207d1a84cdd92081896f0edf1388d7b88788415fdf231d532'
-            'c975ba666cb7e6dc583ae1329f18e780cd947467e1547f1eb6fe1f8c0a9e10250eb77f42efb3e427ae78b21fd8442c332a815a893941be1781f16e8408527e93'
-            '79fdf27cd1c13adcecdfed25d6986c52ee6411c5185f2f4c709d415689e6db253a21d2d5f67c287149d0f382622e642dc8823719bf7219ed0d665cfaf120e9b0'
-            '2265eb7b5fb842069dab6dd55cd84b3d4a0bc643b50cea870ded3032006a06cb9064ea2ea6e955b2f837f3fa4b4974613bf93f7e7dfae7d744ee8ff7462bf63e'
+noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz")
+sha512sums=('3ccbe5b71bb55c9aca5b457364812ee784cf1388f737d27dec82d1fc0fcc4dbe5caa437dea4ed8596c8dd36d73a7387eac8a621961aedfd65627c30bdeb9e410'
+            'fc97a14cde5a43985d0e58f580cb1fb90df3f199bda505016cebbe73f76964ef16cadea70374d36ac740817a6e99445ae7c915ae552cae74c515bd7bc87fe2c5'
+            '66a37f9288837efe15859bf97772894181ee9807f6fa29b88320b675ea97f1d4557ab39b652cd83f5d94dcdc4bf22b7efdc6ef9b9ee4ad39b009f7f4670fc32d'
+            '7efd3858a3f37eb756b5a0713ea68329ca510f9cc4a3a90a9529da778cc4c7aa71568045bf5d2e9cb6aaed137100b36d32878abea84a7e47c42c349a0a8f3df4'
             'SKIP')
 
 prepare() {
@@ -49,7 +44,7 @@ prepare() {
     for f in "buildid-${_web_buildid}.cmake"; do
         ln -sf "${srcdir}/${f}" "build/dependencies/${f}"
     done
-    for f in "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"{,.sha1} "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz"{,.sha1}; do
+    for f in "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"{,.sha1} ; do
         target="${f/-${_web_buildid}-/-}"
         ln -sf "${srcdir}/${f}" "build/dependencies/${target}"
     done
