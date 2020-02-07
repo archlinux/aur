@@ -2,7 +2,7 @@
 # Former maintainer: Robert Knauer <robert@privatdemail.net>
 
 pkgname=fhem
-pkgver=5.9
+pkgver=6.0
 pkgrel=1
 pkgdesc="A perl server for house automation"
 arch=('any')
@@ -22,7 +22,7 @@ source=(
   'tmpfiles.conf'
   'fix-makefile-paths.patch'
 )
-sha256sums=('359a1c60359e7c4e755c39559a0a58a3ca779545c651f6b26b17831a6f1a2b93'
+sha256sums=('5fc95d5e2febffcd270c3736257ae58d53e7004031fe09133bb1b99aa837e10f'
             '7adaffd1036198c8f942a7cbcdc187ba59557eccdfcd19aa28ed5f578810ce14'
             '564796d24351c6c1ebeb5995551ec670170b1c451b5efa12ea77f764f1ee7202'
             '216cbb566c38b893f7036e8e32997a3595c1cf618688be00371d9d49f715a2bd'
