@@ -4,7 +4,7 @@
 # code adapted from https://github.com/jaredallard/notion-app
 
 pkgname=notion-app
-pkgver=2.0.5
+pkgver=2.0.7
 pkgrel=2
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
@@ -17,7 +17,7 @@ source=(
         "https://desktop-release.notion-static.com/Notion-"${pkgver}".dmg" 
         'notion-app'
         'notion-app.desktop')
-md5sums=('5b6aec842c07d09c11d54773bf65678e'
+md5sums=('3f56f1fde5ba090d0a7ecd8af39d1e91'
          'ad3c23bc7d0186e2f622aa4b7310deac'
          'edd003624766ec781e4963698beef458')
 
