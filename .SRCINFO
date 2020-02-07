@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak64.ho-scale
+	pkgdesc = Resolution graphics set for Simutrans for model train fans
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	source = http://simutrans.bilkinfo.de/pak64.ho-scale-latest.tar.gz
+	sha256sums = 0f449c1905f7ddf4fb55eb032cbda6d8d2d670b209a47ce0a3bded7b3f283ade
+
+pkgname = simutrans-pak64.ho-scale
+
