@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak64.japan
+	pkgdesc = Low resolution graphics set for Simutrans, with a japan theme
+	pkgver = 120.0.1
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	source = http://sourceforge.net/projects/simutrans/files/pak64.japan/120-0/simupak64.japan-120-0-1.zip
+	sha256sums = f19830321f5bd5312f85b5471bc4adae2cb763dd9ee9c3d55be4c848e0f05c93
+
+pkgname = simutrans-pak64.japan
+
