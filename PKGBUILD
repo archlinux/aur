@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-aer
 pkgname=python-${_pkgname}
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
@@ -11,20 +11,29 @@ depends=(
     'python-qiskit-terra'
     'cython'
     'openblas'
-)
+    'muparserx')
+optdepends=(
+    'thrust: Parallelization (GPU/CPU) support'
+    'cuda: Parallelization with CUDA (NVIDIA)'
+    'openmp: Parallelization with OpenMP'
+    'intel-tbb: Parallelization with Intel TBB')
 makedepends=(
     'python-setuptools'
     'cmake'
-    'python-scikit-build'
-    'ninja'
-)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('bb5a293a5627f2312784ee6301815da7334886e15b62c5af1b86f3965124ba86')
+    'python-scikit-build')
+source=(
+    "${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz"
+    "cmake.patch")
+
+sha256sums=('a6191a7210eee24e7eb28395d5b922d1bf444a608cdf5fc9cf4b0949b72ca116'
+            '378188cb0789f56e51fed0ae16a06ed6f3def3210e3ec35384db4dbe61cc1f35')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     # Avoid python setup.py build to download cmake from PyPi
-    sed -i "s/'cmake'\, //" setup.py
+    sed -i "/\bcmake\b/d" setup.py
+    # Fix CMakeList.txt to use muparserx from AUR
+    patch --forward --strip=1 --input="${srcdir}/cmake.patch"
 }
 
 build() {
