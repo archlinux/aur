@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('sgtk-menu')
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="GTK menu for sway, i3 and some floating WMs"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('python-pynput: for positioning in floating window managers')
 
 source=("https://github.com/nwg-piotr/sgtk-menu/archive/v$pkgver.tar.gz")
 
-md5sums=('d4a4709e2d0a0e97c3a5c3baa717d670')
+md5sums=('1984bc77ecd02f683c135f61fcbebe77')
 
 package() {
   cd "$srcdir/"$pkgname"-$pkgver"
