@@ -2,11 +2,11 @@
 # Contributor: CubeTheThird <cubethethird@gmail.com>
 
 pkgname=amidst
-_version='4.3'
+_version='4.4'
 pkgver=${_version//_/-}
 _jarver="v${_version}"
 _jarfile="${pkgname}-${_jarver/./-}.jar"
-pkgrel=2
+pkgrel=1
 pkgdesc='Advanced Minecraft Interface and Data/Structure Tracking'
 arch=('any')
 license=('GPL3')
@@ -17,8 +17,8 @@ noextract=("$_jarfile")
 changelog=ChangeLog
 source=("https://github.com/toolbox4minecraft/amidst/releases/download/$_jarver/$_jarfile"
         amidst.desktop)
-md5sums=('fd4aeffacf53ab04a6bee9d4711413ee'
-         '3c6900ac68e3175768322e684f9f1bcb')
+md5sums=('6f7c05bd9af84b9d0803b2a393740379'
+         'b56a5d2ba2e3c71ca2c7824d2434d823')
 
 prepare() {
     bsdcpio -i -m --quiet --make-directories '*/amidst-*.png' < "$_jarfile"
@@ -41,6 +41,7 @@ package() {
 
     icon_sizes=(16 32 48 64 128 256)
     for s in "${icon_sizes[@]}"; do
+    echo $s
         install -Dm644 "amidst/icon/amidst-${s}x${s}.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/amidst.png"
     done
 }

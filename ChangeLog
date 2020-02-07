@@ -1,3 +1,20 @@
+2020-02-06 CubeTheThird <cubethethird@gmail.com>
+
+	* 4.4-1 :
+	Version Bump.
+	Icon fix.
+
+	Upstream Changelog:
+	4.4:
+	- fix incorrect Stronghold and Pillager Outposts locations
+	- fix broken End generation at large distances from the origin
+	- add Settings > Look & Feel menu item to change the Java Look & Feel of the application
+	4.4_beta_1
+	- added support up to Minecraft 1.15
+	- add -profile CLI argument to select a starting profile
+	- add -seed and -world-type CLI arguments to select a starting seed
+	- use the native menu bar on OS X
+
 2019-07-06 CubeTheThird <cubethethird@gmail.com>
 
 	* 4.3-2
