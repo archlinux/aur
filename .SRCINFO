@@ -8,6 +8,7 @@ pkgbase = pueue-bin-2
 	provides = pueue
 	conflicts = pueue-git
 	conflicts = pueue
+	conflicts = pueue-bin
 	source = https://github.com/Nukesor/pueue/archive/v0.1.6.tar.gz
 	source = pueue-linux-amd64-0.1.6::https://github.com/Nukesor/pueue/releases/download/v0.1.6/pueue-linux-amd64
 	source = pueued-linux-amd64-0.1.6::https://github.com/Nukesor/pueue/releases/download/v0.1.6/pueued-linux-amd64
