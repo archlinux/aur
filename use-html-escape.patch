@@ -1,0 +1,32 @@
+From 2fe97bd885dda4893ae946c0781014b7430106ab Mon Sep 17 00:00:00 2001
+From: Frank LENORMAND <lenormf@gmail.com>
+Date: Thu, 6 Feb 2020 18:39:25 +0000
+Subject: [PATCH] Use `html.escape()` to escape HTML characters
+
+---
+ screenplain/richstring.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/screenplain/richstring.py b/screenplain/richstring.py
+index ad667d1..ac5f0c4 100644
+--- a/screenplain/richstring.py
++++ b/screenplain/richstring.py
+@@ -3,8 +3,8 @@
+ # http://www.opensource.org/licenses/mit-license.php
+ 
+ import re
+-import cgi
+ import six
++import html
+ 
+ _magic_re = re.compile(u'[\ue700-\ue705]')
+ 
+@@ -14,7 +14,7 @@ def _escape(s):
+     and non-ascii characters with ampersand escapes.
+ 
+     """
+-    encoded = cgi.escape(s).encode('ascii', 'xmlcharrefreplace')
++    encoded = html.escape(s).encode('ascii', 'xmlcharrefreplace')
+     # In Py3, encoded is bytes type, so convert it to a string
+     return encoded.decode('ascii')
+ 
