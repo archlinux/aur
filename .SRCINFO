@@ -1,5 +1,5 @@
 pkgbase = libkate-python3-git
-	pkgdesc = A karaoke and text codec for embedding in ogg. With already broken KateDJ ported to Python 3.
+	pkgdesc = A karaoke and text codec for embedding in ogg. With fixes and port to Python 3 of before broken KateDJ.
 	pkgver = 0.4.1
 	pkgrel = 6
 	url = https://wiki.xiph.org/OggKate
