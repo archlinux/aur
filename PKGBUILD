@@ -1,13 +1,13 @@
 # Maintainer: Sulhan <ms at kilabit.info>
 pkgname=pgmodeler-git
-pkgver=v0.8.2.alpha1.r0.g3d505fb
+pkgver=v0.9.2.beta2.r56.gea971caa
 pkgrel=1
 pkgdesc="PostgreSQL Database Modeler"
 arch=('i686' 'x86_64')
 url="http://www.pgmodeler.com.br"
 license=('GPL3')
 install=${pkgname}.install
-depends=('qtchooser' 'qt5-base' 'libxml2' 'postgresql-libs' 'desktop-file-utils')
+depends=('qt5-base' 'libxml2' 'postgresql-libs' 'desktop-file-utils')
 makedepends=('git' 'patch')
 provides=('pgmodeler')
 conflicts=('pgmodeler')
@@ -15,13 +15,11 @@ source=(
   "${pkgname}::git+https://github.com/pgmodeler/pgmodeler.git#branch=develop"
   "pgmodeler.desktop"
   "pgmodeler-git.install"
-  "0001.patch"
 )
 md5sums=(
   'SKIP'
   'cfc645148c08399b2678d0dd68857706'
   'ea9cce04170c669434a402c966d257f9'
-  'c7ec0019361f0ff97bc9a73acd794eb2'
 )
 
 _prefix="/usr"
@@ -38,9 +36,6 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ## Apply patches.
-  patch -p1 < ../0001.patch
-  ## Build.
   qmake pgmodeler.pro PREFIX="${pkgdir}${_prefix}" RPATHDIR="${_prefix}/lib/pgmodeler"
   make
 }
