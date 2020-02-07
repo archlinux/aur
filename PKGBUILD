@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.6.5.1
+pkgver=0.6.5.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="一个支持全局透明代理且兼容 SS、SSR 的 V2Ray Linux GUI Client"
@@ -22,6 +22,12 @@ build() {
 
 package() {
     cd "V2RayA-$pkgver"
+    
     install -Dm644 "install/v2raya.service" "$pkgdir/usr/lib/systemd/system/v2raya.service"
     install -Dm755 "service/v2raya" -t "$pkgdir/usr/bin/"
+    
+    ICON_SOURCE=gui/public/img/icons
+    ICON_TARGET=/usr/share/icons
+    sudo install -Dm644 "$ICON_SOURCE/android-chrome-512x512.png" "$ICON_TARGET/v2raya.png"
+    sudo install -Dm755 "install/v2raya.desktop" -t "$pkgdir/usr/share/applications/"
 }
