@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/luxrck/rgssad"
 license=('MIT')
 depends=()
-makedepends=('git')
+makedepends=('git' 'rust' 'cargo')
 source=("${pkgname}::git+https://github.com/luxrck/rgssad.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
