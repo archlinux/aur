@@ -42,7 +42,7 @@ pkgbase = grub-git
 	sha256sums = SKIP
 	sha256sums = 171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4
 	sha256sums = a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29
-	sha256sums = fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa
+	sha256sums = 690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3
 
 pkgname = grub-git
 

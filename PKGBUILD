@@ -54,7 +54,7 @@ sha256sums=('SKIP'
             'SKIP'
             '171415ab075d1ac806f36c454feeb060f870416f24279b70104bba94bd6076d4'
             'a5198267ceb04dceb6d2ea7800281a42b3f91fd02da55d2cc9ea20d47273ca29'
-            'fd2e5f5453f3e44a2cb640c796b85cd70da8359c703f94cd531d457ede8c77fa')
+            '690adb7943ee9fedff578a9d482233925ca3ad3e5a50fffddd27cf33300a89e3')
  
 prepare() {
     cd grub
@@ -77,7 +77,7 @@ prepare() {
 
     # Pull in latest language files
     ./linguas.sh
-	
+
     # Remove lua module from grub-extras as it is incompatible with changes to grub_file_open   
     # http://git.savannah.gnu.org/cgit/grub.git/commit/?id=ca0a4f689a02c2c5a5e385f874aaaa38e151564e
     rm -rf "$srcdir"/grub-extras/lua
