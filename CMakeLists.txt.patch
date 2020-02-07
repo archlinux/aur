@@ -1,0 +1,10 @@
+*** cppast/CMakeLists.txt	2020-02-07 10:42:41.691588671 +0000
+--- EysHg.EDIT/CMakeLists.txt	2020-02-07 11:08:23.103012594 +0000
+***************
+*** 49,51 ****
+--- 49,53 ----
+  if(${build_tool})
+      add_subdirectory(tool)
+  endif()
++ 
++ install(TARGETS cppast)

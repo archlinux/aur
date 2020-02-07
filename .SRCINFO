@@ -1,0 +1,15 @@
+pkgbase = cppast-git
+	pkgver = 436.b155d6a
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/foonathan/cppast
+	arch = x86_64
+	license = MIT
+	provides = cppast
+	source = cppast::git+https://github.com/foonathan/cppast.git
+	source = CMakeLists.txt.patch
+	sha256sums = SKIP
+	sha256sums = 3bb8d82d3258a6800b672d7c7adc50331b26b3b1dd12926d0402c91ff5ddd293
+
+pkgname = cppast-git
+
