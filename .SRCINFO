@@ -1,7 +1,7 @@
 pkgbase = mutter-performance
 	pkgdesc = A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
 	pkgver = 3.34.3+1+g78a45e181
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter.install
 	arch = x86_64
@@ -37,10 +37,12 @@ pkgbase = mutter-performance
 	source = 0001-EGL-Include-EGL-eglmesaext.h.patch
 	source = 0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
 	source = 0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch
+	source = https://gitlab.gnome.org/GNOME/mutter/merge_requests/724.diff
 	sha256sums = SKIP
 	sha256sums = 8440403c1862187b648e3ddd20056666f1a9fea38d0511d7bdf4422ce70b4139
 	sha256sums = 9f6881cd9fe2031b7119288972d3b921358f387b8cbfbd4c624a0dc33abce8e2
 	sha256sums = 0ad4084834b6314873d2dc0a9c8bb3b30f0a6106fa44aac98a54129ec0fc0b2c
+	sha256sums = 7bcb46429e27b92c15cfe820b7079bf6e4cd4f2f67b4f3226f0d40879f779f9f
 
 pkgname = mutter-performance
 

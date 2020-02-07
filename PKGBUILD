@@ -9,14 +9,14 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('!493' '!575' '!579' '!719' '!724' '!762' '!983' '!1000')
-# _merge_requests_to_use=('!493' '!575' '!579' '!719' '!762' '!983' '!1000') # Saren's pick
-_merge_requests_to_use=('!575' '!983' '!1000')
+_merge_requests_to_use=('!493' '!575' '!579' '!719' '!724' '!762' '!983' '!1000') # Saren's pick
+# _merge_requests_to_use=('!575' '!983' '!1000')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
 pkgver=3.34.3+1+g78a45e181
-pkgrel=3
+pkgrel=4
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -35,11 +35,13 @@ _commit=78a45e18133bd4c789ec5a24828ffcda372743d3  # gnome-3-34
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         0001-EGL-Include-EGL-eglmesaext.h.patch
 	0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
-	0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch)
+	0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch
+        https://gitlab.gnome.org/GNOME/mutter/merge_requests/724.diff)
 sha256sums=('SKIP'
             '8440403c1862187b648e3ddd20056666f1a9fea38d0511d7bdf4422ce70b4139'
             '9f6881cd9fe2031b7119288972d3b921358f387b8cbfbd4c624a0dc33abce8e2'
-            '0ad4084834b6314873d2dc0a9c8bb3b30f0a6106fa44aac98a54129ec0fc0b2c')
+            '0ad4084834b6314873d2dc0a9c8bb3b30f0a6106fa44aac98a54129ec0fc0b2c'
+            '7bcb46429e27b92c15cfe820b7079bf6e4cd4f2f67b4f3226f0d40879f779f9f')
 
 pkgver() {
   cd $pkgname
@@ -72,6 +74,9 @@ pick_mr() {
       elif [ "$3" = "revert" ]; then
         echo "Reverting $1..."
         git revert "$2" --no-commit
+      elif [ "$3" = "patch" ]; then
+        echo "Patching $1..."
+        patch -Np1 -i "$2"
       else
         echo "Merging latest commits for $1..."
         git_cp_by_msg "$1" "$2" "$3"
@@ -138,13 +143,6 @@ prepare() {
   # Status: 1
   pick_mr '!429' 'clutter/stage-cogl: Add method to check if ongoing repaint is clipped' 'clutter/stage: Use a device-manager method to update input devices'
 
-  # Title: Sync timelines to hardware vsync
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
-  # Type: 1
-  # Status: 2
-  # Comment: Needs a manual rebase to compile
-  pick_mr '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
-
   # Title: backends: Do not reload keymap on new keyboard notifications
   # URL:  https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
   # Type: 1
@@ -175,6 +173,14 @@ prepare() {
   # Status: 2
   # Comment:
   pick_mr '!1000' 'clutter-actor: Add detail to captured-event'
+
+  # Title: Sync timelines to hardware vsync
+  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
+  # Type: 1
+  # Status: 2
+  # Comment: Stolen from AUR comments
+  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition -fno-strict-aliasing" LDFLAGS+=" -Wl,-Bsymbolic"
+  pick_mr '!724' '../724.diff' 'patch'
 
   # fix build with libglvnd's EGL headers
   git apply -3 ../0001-EGL-Include-EGL-eglmesaext.h.patch
