@@ -1,39 +1,35 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 pkgname=merlin
-pkgver=2.5.0
-pkgrel=2
-pkgdesc="Context sensitive completion for OCaml in Vim and Emacs"
-arch=('i686' 'x86_64')
-depends=('ocaml' 'ocaml-biniou' 'ocaml-findlib' 'ocaml-yojson' 'python2')
-makedepends=('make')
+pkgver=3.3.3
+pkgrel=1
+pkgdesc="Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)"
+arch=('x86_64')
+depends=('ocaml' 'ocaml-findlib>=1.5.2' 'ocaml-yojson>=1.6.0')
+makedepends=('git' 'dune>=1.8.0')
 url="https://github.com/ocaml/merlin"
 license=('MIT')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ocaml/$pkgname/tar.gz/v$pkgver)
-sha256sums=('4bf4f8b7b3a3852605a7bf8cf576dea569e368cb6642b2d68f435b6d9de55336')
+source=("${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tbz")
+sha256sums=('72909ef47eea1f6fca13b4109a34dccf8fe3923a3c026f1ed1db9eb5ee9aae15')
 options=('!strip')
-provides=('merlin' 'ocaml-merlin')
-conflicts=('ocaml-merlin' 'vim-ocaml-merlin-git')
+provides=('merlin')
+conflicts=('merlin' 'vim-ocaml-merlin-git')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
-  ./configure \
-      --prefix "/usr" \
-      --sharedir "/usr/share" \
-      --vimdir "/usr/share/vim/vimfiles" \
-      --enable-compiled-emacs-mode
-  make
+  dune build -p merlin
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
 
-  make install DESTDIR="$pkgdir"
+  DESTDIR="${pkgdir}" dune install -p merlin --prefix "/usr" --libdir "lib/ocaml"
 
-  install -Dm 644 LICENSE_MIT.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  # Dune installs documentation in /usr/doc, fix that.
+  install -dm755 "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 
-  for _doc in $(find . -maxdepth 1 -type f -name "*.md" -printf '%f\n') CHANGELOG; do
-    install -Dm 644 $_doc "$pkgdir/usr/share/doc/$pkgname/$_doc"
-  done
+  rm "${pkgdir}"/usr/lib/ocaml/${pkgname}/dune-package
 }
+
