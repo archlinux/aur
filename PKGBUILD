@@ -3,9 +3,9 @@
 
 pkgname='pop-gnome-shell-theme-bin'
 pkgver='5.0.0'
-pkgrel=15
+pkgrel=16
 _timestamp=1580846411
-_commit=b8a8a51
+_commit=ba7b5fd
 pkgdesc='System76 Pop GNOME Shell Theme'
 arch=('any')
 url='https://github.com/pop-os/gnome-shell-theme'
