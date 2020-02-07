@@ -3,8 +3,8 @@
 pkgbase='python-osrf_pycommon'
 pkgname=('python-osrf_pycommon')
 _module='osrf_pycommon'
-pkgver='0.1.8'
-pkgrel=2
+pkgver='0.1.9'
+pkgrel=1
 pkgdesc="Commonly needed Python modules, used by Python software developed at OSRF"
 url="http://osrf-pycommon.readthedocs.org/"
 depends=('python')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 license=('Apache')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('a2441228c8fa08ab7750de6d49e34684bcd6e25be912b807c33377a9487f8a61')
+sha256sums=('a5f8861f86a2e8552748b1d552de1297d05d027d38bbf7e811b2107a85d75eeb')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
