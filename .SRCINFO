@@ -1,5 +1,5 @@
 pkgbase = libkate-git
-	pkgdesc = A karaoke and text codec for embedding in ogg. Without KateDJ and Python2.
+	pkgdesc = A karaoke and text codec for embedding in ogg. Without broken KateDJ and Python2.
 	pkgver = 0.4.1
 	pkgrel = 6
 	url = https://wiki.xiph.org/OggKate
