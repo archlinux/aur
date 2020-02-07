@@ -1,7 +1,7 @@
 # Maintainer: emersion <contact@emersion.fr>
 
 pkgname=openvpn-protonvpn
-pkgver=20170620
+pkgver=20200207
 pkgrel=1
 pkgdesc="OpenVPN configuration files and helper for protonvpn.com"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('openvpn')
 optdepends=()
 makedepends=('unzip' 'coreutils')
 provides=('protonvpn')
-source=("${pkgname}-${pkgver}.zip::https://account.protonvpn.com/api/vpn/config?Category=Server&Platform=Linux&Protocol=udp&Tier=2")
+source=("${pkgname}-${pkgver}.zip::https://api.protonmail.ch/vpn/config?Category=Server&Platform=Linux&Protocol=udp&Tier=2")
 noextract=(zip)
 sha256sums=('SKIP') # ZIP is auto-generated, cannot use a checksum
 
