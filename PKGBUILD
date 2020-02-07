@@ -3,7 +3,7 @@
 
 pkgname=ca-certificates-blacklist-anti-china
 pkgver=3.49.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A set of Chinese CAs' certificates which should be avoided"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS"
 arch=(any)
