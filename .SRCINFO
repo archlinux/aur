@@ -1,0 +1,24 @@
+pkgbase = mullvad-vpn
+	pkgdesc = The Mullvad VPN client cli
+	pkgver = 2019.10
+	pkgrel = 1
+	url = https://www.mullvad.net
+	install = mullvad-vpn.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cargo
+	depends = nss
+	conflicts = mullvad-vpn
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2019.10?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=0c1a0aca41492fbb9ef1f187122e2f5bda0927ba?signed
+	source = override.conf
+	source = settings.json.sample
+	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316
+	sha256sums = 2729b6842bff30eb3dae23a2133054ab1cfe9312a4fc9baa8433a81e9bafd362
+
+pkgname = mullvad-vpn
+
