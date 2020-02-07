@@ -1,7 +1,7 @@
 pkgbase = ecodms-client
 	pkgdesc = Document Management Software
 	pkgver = 18.09.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ecodms.de/index.php/de/
 	install = ecodms-client.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = ecodms-client
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = libpng12
+	depends = libjpeg6-turbo
 	depends = pcre
 	depends = freeimage
 	options = !strip

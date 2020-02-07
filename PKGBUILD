@@ -2,12 +2,12 @@
 
 pkgname=ecodms-client
 pkgver=18.09.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
 license=('custom')
-depends=('bash' 'libappindicator-gtk2' 'qt5-webengine' 'qt5-svg' 'qt5-x11extras' 'libpng12' 'pcre' 'freeimage')
+depends=('bash' 'libappindicator-gtk2' 'qt5-webengine' 'qt5-svg' 'qt5-x11extras' 'libpng12' 'libjpeg6-turbo' 'pcre' 'freeimage')
 options=('!strip')
 install=${pkgname}.install
 
