@@ -1,7 +1,7 @@
 pkgbase = ruby-insist
 	pkgdesc = A simple block-driven assertion library for both testing and for production code
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jordansissel/ruby-insist
 	arch = any
 	license = apache
