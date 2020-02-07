@@ -1,0 +1,15 @@
+pkgbase = assetfinder
+	pkgdesc = Find domains and subdomains related to a given domain
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tomnomnom/assetfinder
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source_i686 = https://github.com/tomnomnom/assetfinder/releases/download/v0.1.0/assetfinder-linux-386-0.1.0.tgz
+	sha256sums_i686 = 18177c0b323a2c5ff71337b5d22d1b1ed05ded05c1c9df9d1b992aef2bf68a90
+	source_x86_64 = https://github.com/tomnomnom/assetfinder/releases/download/v0.1.0/assetfinder-linux-amd64-0.1.0.tgz
+	sha256sums_x86_64 = 9609bf91d8b4892cc88908747f17f5e5fe50525f00a814d41e6cd0efe1c2e545
+
+pkgname = assetfinder
+
