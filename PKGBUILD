@@ -7,7 +7,7 @@
 pkgname=libkate-python3-git
 pkgver=0.4.1
 pkgrel=6
-pkgdesc="A karaoke and text codec for embedding in ogg. With KateDJ ported to Python 3."
+pkgdesc="A karaoke and text codec for embedding in ogg. With already broken KateDJ ported to Python 3."
 url="https://wiki.xiph.org/OggKate"
 license=('BSD')
 arch=('x86_64')
