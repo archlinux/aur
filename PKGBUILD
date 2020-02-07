@@ -3,7 +3,7 @@
 _pkgname=synfigstudio
 pkgname=${_pkgname}-appimage
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional vector animation program (GUI)"
 arch=('x86_64')
 url="https://www.synfig.org"
@@ -29,7 +29,7 @@ sha256sums=(
     '6c4cb9ce465aa1e1bd8fd528add089cd1bdf690847f61cceb428a8f72e5e02f9'
     'cf1d7721325196f0b606a152c7b651c0abf735cb9c72ffbdb036e30517d3f725'
     '3e6b8fd52343b942c131f51f791e6ec8bcce36a15e4538b859f01a2f5674958e'
-    '17142491c74d26b8fad361f946f4d599e35991625ec6b966b88be11665816930'
+    '5150126853ec6ec646fb9bb02d62cf0346d6e362a83acc8be604b34cbf7ebbab'
     )
 
 options=(!strip)

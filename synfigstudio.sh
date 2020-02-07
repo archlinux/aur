@@ -1,2 +1,2 @@
 #!/bin/sh
-/opt/appimages/synfigstudio.appimage "$@"
+/opt/appimages/synfigstudio.AppImage "$@"
