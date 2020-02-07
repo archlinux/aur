@@ -1,0 +1,17 @@
+pkgbase = altium2kicad-git
+	pkgdesc = Altium to KiCad converter for PCB and schematics
+	pkgver = r219.f7e739f
+	pkgrel = 1
+	url = https://github.com/thesourcerer8/altium2kicad
+	arch = i686
+	arch = x86_64
+	arch = armv6
+	arch = armv6h
+	arch = armv7h
+	license = AGPL3
+	depends = perl
+	source = git+https://github.com/thesourcerer8/altium2kicad
+	sha256sums = SKIP
+
+pkgname = altium2kicad-git
+
