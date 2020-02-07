@@ -16,7 +16,7 @@ conflicts=('libkate')
 replaces=('libkate')
 provides=('libkate='${pkgver})
 makedepends=('pkg-config' 'git')
-optdepends=('wxpython: for KateDJ'
+optdepends=('python-wxpython: for KateDJ'
             'liboggz: for KateDJ')
 source=("$pkgname::git+https://gitlab.com/lubosz/kate.git#branch=python3")
 sha512sums=('SKIP')
@@ -41,5 +41,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  python2 -m compileall "${pkgdir}/usr/lib/python3.8/site-packages/kdj/"
+  python3 -m compileall "${pkgdir}/usr/lib/python3.8/site-packages/kdj/"
 }

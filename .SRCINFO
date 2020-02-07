@@ -10,7 +10,7 @@ pkgbase = libkate-python3-git
 	depends = libpng
 	depends = libogg
 	depends = python3
-	optdepends = wxpython: for KateDJ
+	optdepends = python-wxpython: for KateDJ
 	optdepends = liboggz: for KateDJ
 	provides = libkate=0.4.1
 	conflicts = libkate
