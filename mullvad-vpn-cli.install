@@ -6,6 +6,12 @@ pre_install() {
 }
 
 post_install() {
+    echo 'Copying sample settings...'
+    if [[ ! -e /etc/mullvad-vpn/settings.json ]]; then
+        cp -av /etc/mullvad-vpn/settings.json.sample \
+            /etc/mullvad-vpn/settings.json
+        echo 'Please edit /etc/mullvad-vpn/settings.json'
+    fi
 	echo 'Enabling Mullvad VPN daemon...'
 	systemctl enable --now mullvad-daemon
 }

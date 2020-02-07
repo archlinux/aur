@@ -73,7 +73,7 @@ package() {
     install --verbose -D --mode=755 target/release/mullvad -t "${pkgdir}/usr/bin"
 
     # Install settings.json
-    install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn/settings.json"
+    install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn"
 
     # Install license
     install --verbose -D --mode=644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
