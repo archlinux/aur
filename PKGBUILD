@@ -1,7 +1,7 @@
 # Maintainer: Roboron <robertoms258 at gmail dot com >
 
 pkgname=simutrans-pak64.classic
-pkgver=0.1
+pkgver=1.05
 pkgrel=1
 pkgdesc="Resolution graphics set for Simutrans, resembling the original"
 arch=('any')
