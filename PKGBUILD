@@ -1,6 +1,6 @@
 # Maintainer: Your Name <drmargarido@gmail.com>
 pkgname=d-tracker
-pkgver=0.12.beta.r9.gbba88b0
+pkgver=1.0.r1.g3d44b44
 pkgrel=1
 pkgdesc="Lightweight, cross-platform and simple to setup timetracker. Similar to hamster but uses about 10MB of RAM and has a small quantity of dependencies."
 arch=("i686" "x86_64")
@@ -19,11 +19,6 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	make
-}
-
-check() {
-	cd "${srcdir}/${pkgname}"
-	make test
 }
 
 package() {
