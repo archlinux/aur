@@ -14,8 +14,7 @@ url="https://github.com/SamSchott/${_srcname}"
 license=('MIT')
 source=(
     "git+${url}"
-    "maestral.service"
-    "maestral-config@.service")
+    "maestral@.service")
 makedepends=('git' 'python-setuptools' 'gendesk')
 depends=(
     'python-blinker'
@@ -35,8 +34,7 @@ optdepends=(
     'python-pyqt5: GUI'
     'gnome-shell-extension-appindicator: Gnome integration')
 md5sums=('SKIP'
-         '3ba26948bcf8652de28d95e3fd787fdb'
-         'c4fb651691cde2218426ca32c69cf859')
+         '170d961161ceecbfce039d4aaca59a2f')
 
 prepare() {
     gendesk -q -n \
@@ -70,9 +68,7 @@ package() {
     # Install the generated desktop file
     install -Dm644 "${srcdir}/${_name}.desktop" -t \
         "${pkgdir}/usr/share/applications"
-    # Install the systemd units provided
-    install -Dm644 "${srcdir}/maestral.service" \
-        "${pkgdir}/usr/lib/systemd/user/maestral.service"
-    install -Dm644 "${srcdir}/maestral-config@.service" \
-        "${pkgdir}/usr/lib/systemd/user/maestral-config@.service"
+    # Install the systemd unit provided
+    install -Dm644 "${srcdir}/maestral@.service" \
+        "${pkgdir}/usr/lib/systemd/user/maestral@.service"
 }
