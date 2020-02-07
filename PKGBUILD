@@ -1,6 +1,6 @@
 # Maintainer: Timo Kramer <fw minus aur at timokramer dot de>
 
-pkgname=mullvad-vpn
+pkgname=mullvad-vpn-cli
 pkgver=2019.10
 pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
