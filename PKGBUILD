@@ -5,7 +5,7 @@ branch= # master
 pkgname=asbru-cm${branch}-git
 _pkgname=asbru
 _fpkgname=asbru-cm
-pkgver=6.0.3.r5.gc9e912b
+pkgver=6.0.4.r2.g38d704c
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -34,7 +34,7 @@ package() {
 	gzip -c res/${_fpkgname}.1 > $pkgdir/usr/share/man/man1/${_pkgname}${branch}.1.gz
 	cp -p ${_fpkgname} $pkgdir/opt/${_pkgname}${branch}/${_pkgname}${branch}
 	chmod 755 $pkgdir/opt/${_pkgname}${branch}/${_pkgname}${branch}
-	ln -sf /opt/${_pkgname}${branch}/${_pkgname}${branch} $pkgdir/usr/bin/${_pkgname}${branch}
+	ln -sf /opt/${_pkgname}${branch}/${_pkgname}${branch} $pkgdir/usr/bin/${_fpkgname}${branch}
 }
 
 
