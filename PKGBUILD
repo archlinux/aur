@@ -26,7 +26,7 @@ prepare() {
 
 build() {
     cd certs
-    python2 ../certdata2pem.py
+    python ../certdata2pem.py
 }
 
 package() {
