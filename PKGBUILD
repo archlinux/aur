@@ -2,21 +2,21 @@
 # Contributor Pascal Grossé <pascal.grosse@gmail.com>
 
 pkgname=tome4
-pkgver='1.6.0'
+pkgver='1.6.6'
 pkgrel='1'
 pkgdesc="An open-source, single-player, role-playing roguelike game set in the world of Eyal."
 arch=('i686' 'x86_64')
 url="http://tome.te4.org/"
 license=('custom' 'GPL3')
 depends=('glu' 'openal' 'libvorbis' 'sdl2_ttf' 'sdl2_image' )
-makedepends=('premake' 'zip' 'unzip')
+makedepends=('premake' 'zip' 'unzip' 'glew-git')
 options=(!makeflags emptydirs)
 source=("http://te4.org/dl/t-engine/t-engine4-src-${pkgver}.tar.bz2"
 	aur-${pkgname}-${pkgver}-${pkgrel}.patch
 	tome4
 	tome4.desktop)
 conflicts=('tome4-beta' 'tome4-git' 'tome4-nomusic')
-sha256sums=('99cf757f9478e72096ffd20aa7f699c471ee1adbe794b335a88b17fa98273cfc'
+sha256sums=('f5e005e825d7f70a885b64cf4dca138a53f6f66f734b1e0e86c9339d8807bdaa'
             '37f5be7020a06228b7d22f4c622ab5a8843b4dbea7493d7e3b324bd592cd818e'
             '3a1e4901337f91697bcfaf095f488c447c27ccc2484a543e31f024d5aefb61a0'
             '80e663d9eb2d41c6d9c0a6b4b5b52eb33b0872c3412a617530777fd137c0baa1')
