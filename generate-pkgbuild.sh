@@ -59,7 +59,7 @@ url="https://github.com/kubernetes/kubectl"
 license=('Apache-2.0')
 
 package() {
-  install -Dm755 "\$srcdir/kubectl" "\$pkgdir/usr/bin/kubectl"
+  install -Dm755 "\$srcdir/$pkgname-$version" "\$pkgdir/usr/bin/kubectl"
 }
 
 EOF
@@ -86,7 +86,7 @@ for arch in $arches; do
 
     base_url="https://storage.googleapis.com/kubernetes-release/release/$version/bin/linux/$_arch"
 
-    echo "source_$arch=('$base_url/kubectl')"
+    echo "source_$arch=('$pkgname-$version::$base_url/kubectl')"
     echo "sha256sums_$arch=('$(curl -sSL $base_url/kubectl.sha256)')"
 done
 
