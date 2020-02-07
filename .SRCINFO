@@ -1,7 +1,7 @@
 pkgbase = monacoin-bin
 	pkgdesc = Monacoin is a peer-to-peer network based digital currency. This packages provides already compiled binaries.
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://monacoin.org/en/index.html
 	install = monacoin.install
 	arch = i686

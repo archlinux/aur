@@ -3,7 +3,7 @@
 pkgname=monacoin-bin
 _coinname=monacoin
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Monacoin is a peer-to-peer network based digital currency. This packages provides already compiled binaries."
 arch=('i686' 'x86_64')
 url="https://monacoin.org/en/index.html"
@@ -30,8 +30,8 @@ package() {
     install -Dm755 bin/monacoind "${pkgdir}"/usr/bin/monacoind
     install -Dm755 bin/monacoin-qt "${pkgdir}"/usr/bin/monacoin-qt
     install -Dm755 bin/monacoin-tx "${pkgdir}"/usr/bin/monacoin-tx
-    install -Dm644 share/man/man1/monacoin-cli.1 "${pkgdir}"/share/man/man1/monacoin-cli.1
-    install -Dm644 share/man/man1/monacoind.1 "${pkgdir}"/share/man/man1/monacoind.1
-    install -Dm644 share/man/man1/monacoin-qt.1 "${pkgdir}"/share/man/man1/monacoin-qt.1
-    install -Dm644 share/man/man1/monacoin-tx.1 "${pkgdir}"/share/man/man1/monacoin-tx.1
+    install -Dm644 share/man/man1/monacoin-cli.1 "${pkgdir}"/usr/share/man/man1/monacoin-cli.1
+    install -Dm644 share/man/man1/monacoind.1 "${pkgdir}"/usr/share/man/man1/monacoind.1
+    install -Dm644 share/man/man1/monacoin-qt.1 "${pkgdir}"/usr/share/man/man1/monacoin-qt.1
+    install -Dm644 share/man/man1/monacoin-tx.1 "${pkgdir}"/usr/share/man/man1/monacoin-tx.1
 }
