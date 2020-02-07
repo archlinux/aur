@@ -1,7 +1,7 @@
 pkgbase = nerd-fonts-terminus
 	pkgdesc = Patched font Terminus (Terminess) from the nerd-fonts library
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ryanoasis/nerd-fonts
 	arch = any
 	groups = nerd-fonts
@@ -13,7 +13,7 @@ pkgbase = nerd-fonts-terminus
 	conflicts = nerd-fonts-complete
 	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Terminus.zip
 	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
-	sha1sums = 7c1c214037c24831d972c6fe39af54ac15ecd554
+	sha1sums = edccce964227868dc866fd32f92d6b10e41dd598
 	sha1sums = 92fdad3c8babc0473da5f03e41fb1151417ab386
 
 pkgname = nerd-fonts-terminus

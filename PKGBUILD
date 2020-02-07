@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-terminus
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Patched font Terminus (Terminess) from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
@@ -13,7 +13,7 @@ conflicts=('nerd-fonts-git' 'nerd-fonts-complete')
 groups=("nerd-fonts")
 source=("https://github.com/ryanoasis/nerd-fonts/releases/download/v$pkgver/Terminus.zip"
         "https://github.com/ryanoasis/nerd-fonts/raw/v$pkgver/LICENSE")
-sha1sums=('7c1c214037c24831d972c6fe39af54ac15ecd554'
+sha1sums=('edccce964227868dc866fd32f92d6b10e41dd598'
           '92fdad3c8babc0473da5f03e41fb1151417ab386')
 
 package() {
