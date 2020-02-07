@@ -1,6 +1,6 @@
 pkgbase = zlfo.lv2-git
 	pkgdesc = Fully featured LFO for CV-based automation
-	pkgver = r19.0626dbb
+	pkgver = r20.12b0cde
 	pkgrel = 1
 	url = https://github.com/zrythm/ZLFO
 	arch = x86_64
