@@ -1,0 +1,14 @@
+pkgbase = sddm-raised
+	pkgdesc = Simple script to constantly raise/focus SDDM window, to prevent other windows being shown over it
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/jamezrin/sddm-raised
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = xdotool
+	source = sddm-raised::git+https://github.com/jamezrin/sddm-raised.git
+	md5sums = SKIP
+
+pkgname = sddm-raised
+
