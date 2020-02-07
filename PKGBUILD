@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2000-git
-pkgver=199.90d9909
+pkgver=216.e5d4a93
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 pkgdesc="libretro implementation of 2000 version of MAME (0.37b5) (Arcade)"
