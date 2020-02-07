@@ -1,7 +1,7 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 pkgname=moviebattles2
 pkgver=1.6.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast-paced, action packed mod for Jedi Knight: Jedi Academy"
 arch=('i686' 'x86_64')
 url="https://www.moviebattles.org"
@@ -29,7 +29,7 @@ curl -Lb \$tcf -C - -o "\$2" "\$1&confirm=\$confirm"
 EOF
 chmod +x gdrive-dl
 
-DLAGENTS+=("https::$(pwd)/gdrive-dl %u %o")
+DLAGENTS=("https::$(pwd)/gdrive-dl %u %o" "${DLAGENTS[@]}")
 
 package() {
     destdir=$pkgdir/opt/moviebattles2
