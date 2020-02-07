@@ -14,5 +14,5 @@ Keywords=vscode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/usr/share/vscodium-bin/bin/codium --new-window %F
+Exec=/usr/share/vscodium-bin-multiarch/bin/codium --new-window %F
 Icon=vscodium
