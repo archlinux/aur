@@ -1,5 +1,5 @@
 pkgname=termius-app
-pkgver=5.0.6
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 arch=('x86_64')
@@ -8,16 +8,19 @@ license=('GPL')
 depends=('desktop-file-utils' 'gconf' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libnotify' 'libxss' 'libxtst' 'nss')
 source=("${pkgname}-${pkgver}.deb::https://www.termius.com/download/linux/Termius.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-md5sums=("b9d44ae5ca75a352070be23a6e9c70f6")
+md5sums=("5bac22b9fb5c7101405a6abaed2f992a")
 validpgpkeys=()
 
 prepare() {
-	ar -x Termius.deb
-	mkdir ${pkgname}-${pkgver}
-	tar -xf data.tar.xz --directory="${pkgname}-${pkgver}"
+	ar -x ${pkgname}-${pkgver}.deb
+	#mkdir ${pkgname}-${pkgver}
+	tar -xf data.tar.xz #--directory="${pkgname}-${pkgver}"
 }
 
 package() {
-	cd "${pkgname}-${pkgver}"
+	#cd "${pkgname}-${pkgver}"
+	cd ${srcdir}
+	#rm -rf etc
+	rm -rf control.tar.gz data.tar.xz ${pkgname}-${pkgver}.deb debian-binary etc
 	cp -r ./ ${pkgdir}/
 }
