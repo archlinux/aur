@@ -1,0 +1,18 @@
+pkgbase = efibootmgr-gui-git
+	pkgdesc = Manage EFI boot loader entries with this simple GUI
+	pkgver = 0.1.r0.g223e42f
+	pkgrel = 1
+	url = https://github.com/Elinvention/efibootmgr-gui
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-gobject
+	depends = efibootmgr
+	depends = python3
+	provides = efibootmgr-gui
+	conflicts = efibootmgr-gui
+	source = git+https://github.com/Elinvention/efibootmgr-gui.git
+	md5sums = SKIP
+
+pkgname = efibootmgr-gui-git
+
