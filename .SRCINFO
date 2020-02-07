@@ -1,4 +1,4 @@
-pkgbase = pueue-bin
+pkgbase = pueue-bin-2
 	pkgdesc = A command scheduler for shells
 	pkgver = 0.1.6
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = pueue-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = pueue-bin
+pkgname = pueue-bin-2
 

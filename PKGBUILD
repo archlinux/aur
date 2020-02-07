@@ -1,6 +1,6 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
-pkgname=pueue-bin
+pkgname=pueue-bin-2
 pkgver='0.1.6'
 pkgrel=1
 arch=('any')
