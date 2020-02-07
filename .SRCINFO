@@ -1,7 +1,7 @@
 pkgbase = vscodium-bin-multiarch
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
-	pkgver = 1.41.1
-	pkgrel = 4
+	pkgver = 1.42.0
+	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	arch = aarch64
@@ -23,15 +23,15 @@ pkgbase = vscodium-bin-multiarch
 	provides = code
 	conflicts = code
 	conflicts = vscodium-bin
-	noextract = vscodium-bin-multiarch-1.41.1-4-x86_64.tar.gz
+	noextract = vscodium-bin-multiarch-1.42.0-1-x86_64.tar.gz
 	source = vscodium-bin.desktop
 	sha256sums = 5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86
-	source_x86_64 = vscodium-bin-multiarch-1.41.1-4-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-x64-1.41.1.tar.gz
-	sha256sums_x86_64 = 3d50cedad289730301ddbb6cc5f754753e3fc58b0c812da5390b2871c0639c58
-	source_aarch64 = vscodium-bin-multiarch-1.41.1-4-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-arm64-1.41.1.tar.gz
-	sha256sums_aarch64 = 851cc32a8b71efd6dacb864c2dfb8216eef3880c8dd9ec6998d12dbb69566319
-	source_armv7h = vscodium-bin-multiarch-1.41.1-4-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.41.1/VSCodium-linux-arm-1.41.1.tar.gz
-	sha256sums_armv7h = b13f911314d9523e75d0a9f0ee84dbcbe7d883e26aab1811776cd6643da64585
+	source_x86_64 = vscodium-bin-multiarch-1.42.0-1-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-x64-1.42.0.tar.gz
+	sha256sums_x86_64 = b83425865394d6414ea22aa065a4b2413e93acf63b97f973743c69c38960d138
+	source_aarch64 = vscodium-bin-multiarch-1.42.0-1-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-arm64-1.42.0.tar.gz
+	sha256sums_aarch64 = c94855c7d08ae197d2893aabc9467e37cad4ae0bd3c954ac573a4f526b99711d
+	source_armv7h = vscodium-bin-multiarch-1.42.0-1-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-arm-1.42.0.tar.gz
+	sha256sums_armv7h = 85745764ea7f541f9adb76d98a6675563fcc02d0cf8515f58600867f5f1fc377
 
 pkgname = vscodium-bin-multiarch
 
