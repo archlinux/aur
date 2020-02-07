@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=OpenAudible
+Comment=OpenAudible helps manage your Audible audiobooks
+Exec=openaudible
+StartupWMClass=install4j-org-openaudible-desktop-Application
+Icon=openaudible
+Categories=Utility;
