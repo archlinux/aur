@@ -1,0 +1,15 @@
+--- VST3 SDK/pluginterfaces/vst2.x/aeffect.h	2017-03-03 10:56:00.000000000 +0100
++++ VST3 SDK/pluginterfaces/vst2.x/aeffect.h	2020-02-07 21:49:58.291111777 +0100
+@@ -66,7 +66,11 @@
+ 	#pragma options push -a8
+ #elif defined(__GNUC__)
+     #pragma pack(push,8)
+-    #define VSTCALLBACK __cdecl
++    #if defined(__linux__)
++        #define VSTCALLBACK
++    #else
++        #define VSTCALLBACK __cdecl
++    #endif
+ #elif defined(WIN32) || defined(__FLAT__) || defined CBUILDER
+ 	#pragma pack(push)
+ 	#pragma pack(8)
