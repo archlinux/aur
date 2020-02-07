@@ -10,7 +10,7 @@ optdepends=("aws-cli: CLI for Amazon AWS"
 	"aws-vault: Manager for AWS Credentials"
 	"yubikey-manager: Manager for yubikey")
 makedepends=('git' 'go')
-provides=('gds-cli=${pkgver}')
+provides=("gds-cli=${pkgver}")
 conflicts=('gds-cli')
 source=("${pkgname}"::"git+https://github.com/alphagov/gds-cli")
 sha512sums=('SKIP')
