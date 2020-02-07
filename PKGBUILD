@@ -2,7 +2,7 @@
 
 pkgname=pueue-bin
 pkgver='0.1.6'
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
@@ -10,13 +10,13 @@ conflicts=('pueue-git' 'pueue')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
 source=(
-    "https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
-    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-amd64"
-    "https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-amd64"
+    "https://github.com/Nukesor/pueue/archive/v0.1.6.tar.gz"
+    "https://github.com/Nukesor/pueue/releases/download/v0.1.6/pueue-linux-amd64"
+    "https://github.com/Nukesor/pueue/releases/download/v0.1.6/pueued-linux-amd64"
 )
 sha256sums=('6b11643497cedfa7517d1c041951be907f6e138e8efc339cd36309943995b8f1'
-            '039d11971a190562210fc9ee2a1504256fd1440b9471e1bbbc9bbb86eca3ce49'
-            '5933369d330b45e98adf2b7847b6d63314d590c7c78f4bf243a7189cc4b6fd4a')
+            'b6fed858e820b2205cdee8ffe131ef3443e919bd4de61785708418d761a462b5'
+            'd3f176304797ea088e78901f5ab3473bef6a6873464b50089da69b10c7444daf')
 
 
 package() {
