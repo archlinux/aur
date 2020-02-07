@@ -1,0 +1,14 @@
+pkgbase = python-sqreen
+	pkgdesc = Sqreen agent to protect Python applications
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://www.sqreen.com
+	arch = any
+	license = CUSTOM
+	depends = python
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/a7/92/9b1d02f548d5755bd4e52061736333ce2374e12afb0eae0d58dfd1339f28/sqreen-1.18.0.tar.gz
+	sha256sums = 0626197913f71e6b39dd6a1f77a7d66726e8528f08a3b8650df4bf54ce0ed796
+
+pkgname = python-sqreen
+
