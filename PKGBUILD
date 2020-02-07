@@ -2,8 +2,8 @@
 
 pkgname=merlin
 pkgver=3.3.3
-pkgrel=2
-pkgdesc="Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)"
+pkgrel=3
+pkgdesc="Context sensitive completion for OCaml in Vim and Emacs"
 arch=('x86_64')
 depends=('ocaml' 'ocaml-findlib>=1.5.2' 'ocaml-yojson>=1.6.0')
 makedepends=('git' 'dune>=1.8.0')
