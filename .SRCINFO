@@ -1,0 +1,19 @@
+pkgbase = fiat-hpc-git
+	pkgdesc = Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra. HPC version
+	pkgver = 1.4.0_20200109
+	pkgrel = 1
+	url = https://bitbucket.org/adaptivesimulations/fiat-hpc
+	arch = i686
+	arch = x86_64
+	groups = dolfin-hpc-git
+	license = LGPL
+	depends = python
+	depends = python-numpy
+	provides = fiat-hpc
+	conflicts = fiat
+	options = !emptydirs
+	source = fiat::git+https://bitbucket.org/adaptivesimulations/fiat-hpc.git#branch=feature/python3
+	md5sums = SKIP
+
+pkgname = fiat-hpc-git
+
