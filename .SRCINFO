@@ -1,6 +1,6 @@
 pkgbase = python-catkin_lint
 	pkgdesc = Check catkin packages for common errors
-	pkgver = 1.6.3
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/fkie/catkin_lint
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-catkin_lint
 	provides = python-catkin-lint
 	conflicts = python2-catkin_lint
 	conflicts = python-catkin-lint
-	source = https://files.pythonhosted.org/packages/source/c/catkin_lint/catkin_lint-1.6.3.tar.gz
-	sha256sums = b279f157bef99fc2377a310f82aa4d8e8519eaf135bb272e22d6e09a9fd7695b
+	source = https://files.pythonhosted.org/packages/source/c/catkin_lint/catkin_lint-1.6.5.tar.gz
+	sha256sums = 9db138d524d970e557dd285472ff11f6bd8f23dc6b9df3780a85d0e9fb816a23
 
 pkgname = python-catkin_lint
 
