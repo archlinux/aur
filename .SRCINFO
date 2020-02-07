@@ -1,0 +1,21 @@
+pkgbase = openjpeg2-git
+	pkgdesc = An open source JPEG 2000 codec, version 2.3.2.r2787.647f9b11
+	pkgver = 2.3.2.r2787.647f9b11
+	pkgrel = 1
+	url = https://github.com/uclouvain/openjpeg
+	arch = x86_64
+	license = custom: BSD
+	makedepends = cmake
+	makedepends = doxygen
+	depends = zlib
+	depends = libpng
+	depends = libtiff
+	depends = lcms2
+	provides = openjpeg2
+	conflicts = openjpeg2
+	replaces = openjpeg2
+	source = openjpeg2::git+https://github.com/uclouvain/openjpeg
+	sha256sums = SKIP
+
+pkgname = openjpeg2-git
+
