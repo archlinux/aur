@@ -1,0 +1,18 @@
+pkgbase = kubernetes-website-git
+	pkgdesc = The Kubernetes documentation
+	pkgver = snapshot.initial.v1.17.r464.gea9977e3db
+	pkgrel = 1
+	url = https://github.com/kubernetes/website
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = hugo
+	provides = kubernetes-website
+	provides = kubernetes-doc
+	conflicts = kubernetes-website
+	conflicts = kubernetes-doc
+	source = git+https://github.com/kubernetes/website
+	md5sums = SKIP
+
+pkgname = kubernetes-website-git
+
