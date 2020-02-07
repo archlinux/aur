@@ -1,6 +1,6 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=r1402.20200129
+pkgver=r1447.20200207
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice. Дополнительные иструменты (Python)."
 arch=('i686' 'x86_64')
@@ -41,5 +41,6 @@ package()
 
     mkdir -p ${pkgdir}/usr/bin/
     cp -R "tools/rhvoice_say" "$pkgdir/usr/bin/"
+    cp -R "tools/rhvoice_config" "$pkgdir/usr/bin/"
     cp -R "tools/build/lib/" "$pkgdir/usr/"
 }
