@@ -2,7 +2,7 @@
 
 pkgname=merlin
 pkgver=3.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)"
 arch=('x86_64')
 depends=('ocaml' 'ocaml-findlib>=1.5.2' 'ocaml-yojson>=1.6.0')
@@ -24,7 +24,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
 
-  DESTDIR="${pkgdir}" dune install -p merlin --prefix "/usr" --libdir "lib/ocaml"
+  DESTDIR="${pkgdir}" dune install merlin --prefix "/usr" --libdir "lib/ocaml"
 
   # Dune installs documentation in /usr/doc, fix that.
   install -dm755 "${pkgdir}/usr/share/"
