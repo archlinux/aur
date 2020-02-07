@@ -1,0 +1,20 @@
+pkgbase = gds-cli-git
+	pkgdesc = CLI for GDS Staff
+	pkgver = 535.f8b405e
+	pkgrel = 1
+	url = https://github.com/alphagov/gds-cli
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = go
+	optdepends = aws-cli: CLI for Amazon AWS
+	optdepends = aws-vault: Manager for AWS Credentials
+	optdepends = yubikey-manager: Manager for yubikey
+	provides = gds-cli=${pkgver}
+	conflicts = gds-cli
+	source = gds-cli-git::git+https://github.com/alphagov/gds-cli
+	sha512sums = SKIP
+
+pkgname = gds-cli-git
+
