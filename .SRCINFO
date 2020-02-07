@@ -1,7 +1,7 @@
 pkgbase = kimchi
 	pkgdesc = KVM management plugin for WoK.
 	pkgver = 3.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/kimchi-project/kimchi
 	arch = any
 	groups = kimchi-project
