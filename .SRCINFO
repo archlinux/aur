@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak48.excentrique
+	pkgdesc = Low resolution graphics set for Simutrans, with an eccentric theme
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	source = http://sourceforge.net/projects/ironsimu/files/pak48.Excentrique/v018/pak48-excentrique_v018.zip
+	sha256sums = c69dc9cce34a3c61afed5f57751a480d3aa4366c9e45225777601f71fd1606ab
+
+pkgname = simutrans-pak48.excentrique
+
