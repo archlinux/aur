@@ -4,7 +4,7 @@ _appname=zeal
 _builddir=build
 
 pkgname=${_appname}-git
-pkgver=0.6.1.r86.g9a394d3
+pkgver=0.6.1.r112.g51ae407
 pkgrel=1
 pkgdesc="A simple documentation browser"
 arch=('i686' 'x86_64')
