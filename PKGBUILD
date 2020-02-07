@@ -7,7 +7,7 @@
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
 _pkgver=4.0
-pkgver=4.0.r8578.813315f3b
+pkgver=4.0.r8726.b6a3829ff
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ url="https://audacious-media-player.org/"
 license=('BSD' 'GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+depends=("audacious-git>=$_pkgver")
 
-makedepends=("audacious-git>=$_pkgver"
-             'glib2' 'python' # for gdbus-codegen
+makedepends=('glib2' 'python' # for gdbus-codegen
              'alsa-lib' 'pulseaudio' 'jack' 'lame' 'libvorbis' 'flac' 'mpg123'
              'faad2' 'ffmpeg' 'libmodplug' 'fluidsynth' 'libcdio-paranoia'
              'libsidplayfp' 'wavpack' 'libsamplerate' 'libnotify' 'lirc'
@@ -54,12 +54,12 @@ source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
 
   autoreconf -I m4
   ./configure \
@@ -70,7 +70,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
