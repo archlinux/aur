@@ -1,0 +1,19 @@
+pkgbase = libkate-git
+	pkgdesc = A karaoke and text codec for embedding in ogg. Without KateDJ and Python2.
+	pkgver = 0.4.1
+	pkgrel = 6
+	url = https://wiki.xiph.org/OggKate
+	arch = x86_64
+	license = BSD
+	makedepends = pkg-config
+	makedepends = git
+	depends = libpng
+	depends = libogg
+	provides = libkate=0.4.1
+	conflicts = libkate
+	replaces = libkate
+	source = libkate-git::git+https://gitlab.com/lubosz/kate.git#branch=no-katedj
+	sha512sums = SKIP
+
+pkgname = libkate-git
+
