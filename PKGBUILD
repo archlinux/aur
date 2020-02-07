@@ -39,7 +39,7 @@ package() {
 	gzip -c res/${_fpkgname}.1 > $pkgdir/usr/share/man/man1/${_pkgname}${branch}.1.gz
 	cp -p ${_fpkgname} $pkgdir/opt/${_pkgname}${branch}/${_pkgname}${branch}
 	chmod 755 $pkgdir/opt/${_pkgname}${branch}/${_pkgname}${branch}
-	ln -sf /opt/${_pkgname}${branch}/${_pkgname}${branch} $pkgdir/usr/bin/${_pkgname}${branch}
+	ln -sf /opt/${_pkgname}${branch}/${_pkgname}${branch} $pkgdir/usr/bin/${_fpkgname}${branch}
 }
 
 
