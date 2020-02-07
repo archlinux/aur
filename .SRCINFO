@@ -1,12 +1,12 @@
 pkgbase = git-brunch
 	pkgdesc = A git checkout and rebase command-line tool
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andys8/git-brunch
 	arch = x86_64
 	license = custom:BSD3
-	makedepends = git
 	makedepends = stack
+	depends = git
 	source = git-brunch-1.1.2::git://github.com/andys8/git-brunch.git#tag=v1.1.2
 	md5sums = SKIP
 
