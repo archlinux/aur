@@ -6,7 +6,7 @@
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=3.34.3
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
@@ -106,8 +106,8 @@ prepare() {
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/923
   # Type: 1
   # Status: 2
-  # Comment:
-  git_cp_by_msg '!923' 'js/ui: Keep refcounts to WallClock objects above 1.'
+  # Comment: Unlock freezes, it hits me too.
+  # git_cp_by_msg '!923' 'js/ui: Keep refcounts to WallClock objects above 1.'
 
   # Title: js/ui: Subscribe touchpad gesture handlers to only touchpad events [performance]
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/925
