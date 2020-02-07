@@ -1,0 +1,18 @@
+pkgbase = nginx-upload-module
+	pkgdesc = Module for nginx web server for handling file uploads using multipart/form-data encoding (RFC 1867)
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/vkholodkov/nginx-upload-module
+	arch = x86_64
+	license = BSD
+	depends = nginx=1.16.1
+	source = https://nginx.org/download/nginx-1.16.1.tar.gz
+	source = https://nginx.org/download/nginx-1.16.1.tar.gz.asc
+	source = nginx-upload-module-2.3.0.tar.gz::https://github.com/vkholodkov/nginx-upload-module/archive/2.3.0.tar.gz
+	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
+	sha256sums = f11c2a6dd1d3515736f0324857957db2de98be862461b5a542a3ac6188dbe32b
+	sha256sums = SKIP
+	sha256sums = c86e318addb9c88d70fdbd58ff1f6ef6f404a93070f6db8017a1f880c97946c4
+
+pkgname = nginx-upload-module
+
