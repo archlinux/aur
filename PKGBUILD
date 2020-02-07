@@ -21,11 +21,6 @@ pkgver() {
 
 build() {
   cd ${pkgname%-*}
-
-  msg "Patching default.mk"
-  sed -ri 's:# (INCLUDES = -I/usr/include/freetype2):\1:' default.mk
-
-  msg "Starting make..."
   make
 }
 
