@@ -1,7 +1,7 @@
 pkgbase = mcproxy
 	pkgdesc = Multicast Proxy for IGMP/MLD
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mcproxy.realmv6.org
 	arch = any
 	license = GPL
@@ -14,7 +14,7 @@ pkgbase = mcproxy
 	source = fix-checksum-calculation.patch
 	sha256sums = 07f09ce2726e2300b5df6a053a5cc62613932183bbab7b503feec60cea65897a
 	sha256sums = 7c0c8b43104a3136a2628196e6914a1aefa413a6b0e43c5eb88f986206f2eb10
-	sha256sums = 9dece4bdb0afe05d18ad5b696b1c9553ecf0418d36d0d13a2c9ea491fca6026d
+	sha256sums = 6699a93e60b5b33ec412c9cc94fd3755b1e479546eb5787475fc96c4b5823c93
 	sha256sums = c5006fe4f708ac10337e145b72417d3b51218324ba24346cb8959d01af4a5de3
 
 pkgname = mcproxy

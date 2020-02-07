@@ -1,7 +1,7 @@
 [Unit]
 Description=mcproxy multicast proxy for IGMP/MLD (RFC 4605)
 Documentation=http://mcproxy.realmv6.org/wiki/Documentation
-After=network.target netctl@wlan0\x2dFuuulan\x205.service pihole-FTL.service iptables.service
+After=network.target pihole-FTL.service iptables.service
 
 [Service]
 ExecStart=/usr/bin/mcproxy -r -f /etc/mcproxy/mcproxy.conf
