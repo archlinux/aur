@@ -1,0 +1,18 @@
+pkgbase = ufc2-hpc-git
+	pkgdesc = Unified form language. HPC version
+	pkgver = 2.1.1_20200126
+	pkgrel = 1
+	url = https://bitbucket.org/adaptivesimulations/ufc2-hpc/
+	arch = i686
+	arch = x86_64
+	groups = dolfin-hpc-git
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	provides = ufc2-hpc
+	options = !emptydirs
+	source = ufc2-hpc::git+https://bitbucket.org/adaptivesimulations/ufc2-hpc.git#branch=python3
+	md5sums = SKIP
+
+pkgname = ufc2-hpc-git
+
