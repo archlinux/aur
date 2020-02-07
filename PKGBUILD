@@ -2,9 +2,9 @@
 
 pkgname=multimc-twitch
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple Go program that handles Twitch's custom protocol and ccip files"
-arch=('i386' 'x86_64')
+arch=('i686' 'x86_64')
 url="https://github.com/ShayBox/MultiMC-Twitch"
 license=('MIT')
 source_i686+=(https://github.com/ShayBox/$pkgname/releases/download/$pkgver/linux-386.tar.gz)
