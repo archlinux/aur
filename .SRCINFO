@@ -1,7 +1,7 @@
 pkgbase = r-mnormt
 	pkgdesc = The multivariate Normal and T distributions.
-	pkgver = 1.5_5
-	pkgrel = 2
+	pkgver = 1.5_6
+	pkgrel = 1
 	url = https://cran.r-project.org/package=mnormt
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = r-mnormt
 	license = GPL-3
 	makedepends = gcc-fortran
 	depends = r>=2.2.0
-	source = http://cran.r-project.org/src/contrib/mnormt_1.5-5.tar.gz
-	md5sums = 19b5be2e9ed33b92d7a716bfcca6b2c7
+	source = http://cran.r-project.org/src/contrib/mnormt_1.5-6.tar.gz
+	md5sums = baf4a66a61ab3193c81a130e202cba8d
 
 pkgname = r-mnormt
 
