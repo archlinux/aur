@@ -5,7 +5,7 @@ _pkgver_major=5
 _pkgver_minor=5
 _pkgver_patch=2
 pkgver=$_pkgver_major.$_pkgver_minor.$_pkgver_patch
-pkgrel=1
+pkgrel=2
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/continental/ecal"
@@ -33,7 +33,6 @@ build() {
 	cd _build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
 		 -DCMAKE_BUILD_TYPE=Release \
-		 -DECAL_THIRDPARTY_BUILD_CMAKE_FUNCTIONS=OFF \
 		 -DECAL_THIRDPARTY_BUILD_PROTOBUF=OFF \
 		 -DECAL_THIRDPARTY_BUILD_SPDLOG=OFF
 	make
