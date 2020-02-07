@@ -11,18 +11,18 @@ url="https://github.com/kubernetes/kubectl"
 license=('Apache-2.0')
 
 package() {
-  install -Dm755 "$srcdir/kubectl" "$pkgdir/usr/bin/kubectl"
+  install -Dm755 "$srcdir/kubectl-v1.16.6" "$pkgdir/usr/bin/kubectl"
 }
 
-source_i686=('https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/386/kubectl')
+source_i686=('kubectl-v1.16.6::https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/386/kubectl')
 sha256sums_i686=('23a31fd8c8e393e05cf5b8fe4c63ab233c04bdc1d9aaf0ed2bd09b3ce5212d71')
-source_x86_64=('https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/amd64/kubectl')
+source_x86_64=('kubectl-v1.16.6::https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/amd64/kubectl')
 sha256sums_x86_64=('05aae29c6e96fc07db195878263d3b625b623b9f16f87851e4a8ed8d234bcc2d')
-source_armv5=('https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm/kubectl')
+source_armv5=('kubectl-v1.16.6::https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm/kubectl')
 sha256sums_armv5=('57b37697e4fae53b68786eaef5a2ea14cca38f62e9478aebd758648370c64608')
-source_armv6h=('https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm/kubectl')
+source_armv6h=('kubectl-v1.16.6::https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm/kubectl')
 sha256sums_armv6h=('57b37697e4fae53b68786eaef5a2ea14cca38f62e9478aebd758648370c64608')
-source_armv7h=('https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm/kubectl')
+source_armv7h=('kubectl-v1.16.6::https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm/kubectl')
 sha256sums_armv7h=('57b37697e4fae53b68786eaef5a2ea14cca38f62e9478aebd758648370c64608')
-source_aarch64=('https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm64/kubectl')
+source_aarch64=('kubectl-v1.16.6::https://storage.googleapis.com/kubernetes-release/release/v1.16.6/bin/linux/arm64/kubectl')
 sha256sums_aarch64=('4b852e138a3adc8378ab6ce863144b328924535cc118e33eb1d6245af81a0fbb')
