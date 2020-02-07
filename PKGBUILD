@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
 pkgname=(hydrus)
-pkgver=382
+pkgver=383
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -22,13 +22,15 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
             )
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=0ee29e48974c4d05c37a4fe5b39c6d6f49ca496e"
+source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=00dbc2daca7d4f0a3a680cf4a3d24caf98307aee"
         paths-in-opt.patch
+        qtgui-wrong-package.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
             'e6c77ba667604cfb2e7d9959e79d3ad05c976dcc6297f25a8fcad730a63d2f11'
+            '305b1540d1449fa785ca36288a8e7bd8fd7e3d80cbc1bb08760a95c9a4c98c44'
             '7b0dbc6f38f9aaff409e435ba807199575166976b52715d6b54418f89dbde634'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
@@ -36,6 +38,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "$pkgbase"
   git apply < ../paths-in-opt.patch
+  git apply < ../qtgui-wrong-package.patch
 
   # Fix permissions
   chmod a-x include/*.py
