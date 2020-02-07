@@ -1,0 +1,22 @@
+pkgbase = libkate-python3-git
+	pkgdesc = A karaoke and text codec for embedding in ogg. With KateDJ ported to Python 3.
+	pkgver = 0.4.1
+	pkgrel = 6
+	url = https://wiki.xiph.org/OggKate
+	arch = x86_64
+	license = BSD
+	makedepends = pkg-config
+	makedepends = git
+	depends = libpng
+	depends = libogg
+	depends = python3
+	optdepends = wxpython: for KateDJ
+	optdepends = liboggz: for KateDJ
+	provides = libkate=0.4.1
+	conflicts = libkate
+	replaces = libkate
+	source = libkate-python3-git::git+https://gitlab.com/lubosz/kate.git#branch=python3
+	sha512sums = SKIP
+
+pkgname = libkate-python3-git
+
