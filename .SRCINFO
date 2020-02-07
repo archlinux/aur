@@ -1,0 +1,18 @@
+pkgbase = zlfo.lv2-git
+	pkgdesc = Fully featured LFO for CV-based automation
+	pkgver = r19.0626dbb
+	pkgrel = 1
+	url = https://github.com/zrythm/ZLFO
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	depends = glib2
+	depends = librsvg
+	depends = cairo
+	options = debug
+	options = !strip
+	source = git+https://github.com/zrythm/ZLFO
+	md5sums = SKIP
+
+pkgname = zlfo.lv2-git
+
