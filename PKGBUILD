@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-4do-git
-pkgver=389.bd6b0fa
+pkgver=404.6e2762d
 pkgrel=1
 pkgdesc="libretro implementation of 4DO/libfreedo (3DO)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')

@@ -1,6 +1,6 @@
 pkgbase = libretro-4do-git
 	pkgdesc = libretro implementation of 4DO/libfreedo (3DO)
-	pkgver = 389.bd6b0fa
+	pkgver = 404.6e2762d
 	pkgrel = 1
 	url = https://github.com/libretro/4do-libretro
 	arch = i686
