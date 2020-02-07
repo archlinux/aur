@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname='python2-pyglet'
-pkgver=1.4.9
+pkgver=1.4.10
 pkgrel=1
 pkgdesc="A cross-platform windowing and multimedia library for Python"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python2' 'glu' 'python2-future')
 makedepends=('python2-setuptools')
 optdepends=('ffmpeg: provides audio&video support')
 source=("https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-$pkgver.zip")
-md5sums=('047ab2874e9be36e2190f95c48a84d0f')
+sha512sums=('89e23752a92be1138c8a3f5c9958149be7473d3812218dabe1f9478270579d9af065215b9884e3ee3bb1e8f04f00423b41575fdee774368b8182424910a7b0cf')
 
 prepare() {
 	cd "$srcdir"
