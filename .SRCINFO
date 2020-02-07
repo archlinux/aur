@@ -1,13 +1,13 @@
 pkgbase = buffalo
 	pkgdesc = A Go web development eco-system, designed to make your project easier.
-	pkgver = 0.15.1
+	pkgver = 0.15.5
 	pkgrel = 1
 	url = https://github.com/gobuffalo/buffalo/
 	arch = x86_64
 	license = MIT
 	makedepends = tar
-	source = buffalo-0.15.1.tar.gz::https://github.com/gobuffalo/buffalo/releases/download/v0.15.1/buffalo_0.15.1_linux_amd64.tar.gz
-	sha256sums = c0668d16a03eb81c6df8f489b69a8ed14e1b030ccd32340550bb5e7671837541
+	source = buffalo-0.15.5.tar.gz::https://github.com/gobuffalo/buffalo/releases/download/v0.15.5/buffalo_0.15.5_Linux_x86_64.tar.gz
+	sha256sums = 5bb92e070d3c8633fb0be5bd20698dd07c73272a16d80699deecd63d9f450697
 
 pkgname = buffalo
 
