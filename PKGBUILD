@@ -1,35 +1,30 @@
-# Maintainer: Pierre Chapuis <catwell@archlinux.us>
+# Maintainer: Pierre Chapuis <arch@catwell.info>
 
 pkgname=("python-bearer")
-pkgver=1.1.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Bearer python helper"
 arch=("any")
 url="https://www.bearer.sh"
 license=("MIT")
 options=(!emptydirs)
+depends=("python" "python-requests")
 source=(
-    "https://files.pythonhosted.org/packages/db/b6/6954a6a985a976d3848e9ee5fe6604857754d89d3c7a6ffa42d97c54abb6/bearer-1.1.0.tar.gz"
-    "LICENSE"
+    "https://files.pythonhosted.org/packages/1c/1a/6e82d7a52d480450f0e50186b075be7396a12d594c0a91906dcf19ee710d/bearer-3.1.0.tar.gz"
+    "https://raw.githubusercontent.com/Bearer/bearer-python/master/LICENSE"
 )
 sha256sums=(
-    "307483df5ef645c80914ec4a586577c1e6775e09e3b30d0762a658d473d6d805"
-    "ec423cc5506eea1ffbfc9955c3ec8f86139996963d84ff306a5ee41eda8a4ff1"
+    "3737cad0010d73890d026df536c7cd4ad0ce0996f86d8356a97848937a4d6a84"
+    "5736c527a1ca8f62fc5c760bfd4d91ac36697c04f4d55f9cc81d3c76cc71a8fe"
 )
 
-build() {
-    cd "$srcdir"
-    builddir="python3-build"
-    rm -rf "$builddir"
-    cp -r "bearer-$pkgver" "$builddir"
-    pushd "$builddir"
-        "${builddir%-build}" setup.py build
-    popd
+build () {
+    cd "$srcdir/bearer-$pkgver"
+    python3 setup.py build
 }
 
-package_python-bearer() {
-    depends=("python" "python-requests")
-    cd "$srcdir/python3-build"
+package () {
+    cd "$srcdir/bearer-$pkgver"
     python3 setup.py install --root="$pkgdir" -O1
     install -Dm644 "$srcdir/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
