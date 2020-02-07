@@ -25,7 +25,7 @@ depends=('libvirt-python'
         'python-ethtool'
         'novnc'
         'libguestfs'
-        'spice-html5-git'
+        'spice-html5'
         'wokd'
 )
 #optdepends=()
