@@ -38,7 +38,7 @@ check() {
 }
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
-  local _pkg_dir=${pkgdir}/usr/
+  local _pkg_dir=${pkgdir}/
   INSTALL_ROOT=${_pkg_dir} make install
   install -Dm644 ${srcdir}/mcproxy.conf ${pkgdir}/etc/mcproxy/mcproxy.conf
   install -Dm644 ${srcdir}/mcproxy.service "${pkgdir}/usr/lib/systemd/system/mcproxy.service"
