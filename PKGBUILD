@@ -4,7 +4,7 @@
 
 pkgname=vscodium-bin-multiarch
 pkgver=1.42.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/VSCodium/vscodium"
