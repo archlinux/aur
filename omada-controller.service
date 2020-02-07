@@ -1,5 +1,5 @@
 [Unit]
-Description=TP Link Omada Controller
+Description=Omada EAP Controller
 After=network.target
 
 [Service]
