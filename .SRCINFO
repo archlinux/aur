@@ -1,11 +1,12 @@
 pkgbase = vesta
 	pkgdesc = 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies.
-	pkgver = 3.4.6
+	pkgver = 3.4.8
 	pkgrel = 2
 	url = http://jp-minerals.org/vesta
 	install = vesta.install
 	arch = x86_64
 	license = custom
+	depends = gtk3
 	depends = gtk2
 	depends = glu
 	depends = desktop-file-utils
@@ -15,8 +16,8 @@ pkgbase = vesta
 	source = vesta.install
 	md5sums = fdd7040720e4b58a26caa7db09669acf
 	md5sums = caabe467168af9e44cf380af1abfe280
-	source_x86_64 = http://jp-minerals.org/vesta/archives/3.4.6/VESTA-x86_64.tar.bz2
-	md5sums_x86_64 = 1d4651e86193f305831aa5db3dcfe789
+	source_x86_64 = http://jp-minerals.org/vesta/archives/3.4.8/VESTA-gtk3.tar.bz2
+	md5sums_x86_64 = b646a3f2999aafc0969434019fa2c61b
 
 pkgname = vesta
 
