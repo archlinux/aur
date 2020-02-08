@@ -9,6 +9,7 @@ pkgbase = opensnitch-git
 	makedepends = git
 	makedepends = dep
 	makedepends = go-pie
+	makedepends = python-setuptools
 	depends = libnetfilter_queue
 	depends = libpcap
 	depends = python-protobuf-compiler

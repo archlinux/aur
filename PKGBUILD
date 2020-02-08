@@ -9,7 +9,7 @@ pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
 url="https://github.com/evilsocket/opensnitch"
 license=('GPL3')
-makedepends=('git' 'dep' 'go-pie')
+makedepends=('git' 'dep' 'go-pie' 'python-setuptools')
 depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
          'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5'
          'python-libconfigparser')
