@@ -1,7 +1,8 @@
-# Maintainer: Ryan Dowling <ryan@ryandowling.me>
+# Maintainer: Hao Long <aur@esd.cc>
+# Contributor: Ryan Dowling <ryan@ryandowling.me>
 
 pkgname=hyper-bin
-pkgver=2.0.0
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('x86_64')
@@ -9,23 +10,21 @@ url="https://hyper.is"
 license=('MIT')
 conflicts=('hyper' 'hyper-appimage')
 provides=('hyper')
-# from the DEB: Depends: gconf2, gconf-service, libnotify4, libappindicator1, libxtst6, libnss3, libxss1
-depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
-options=('!strip' '!upx')
-
-source_x86_64=(
-    "https://github.com/zeit/hyper/releases/download/${pkgver}/hyper_${pkgver}_amd64.deb"
-)
-
-md5sums_x86_64=(
-    'c2f69568ac4cc624f621f73dde8f1354'
-)
+depends=('gtk3' 'libxss' 'nss')
+options=('!strip')
+source=("https://github.com/zeit/hyper/releases/download/${pkgver}/hyper_${pkgver}_amd64.deb"
+        "https://github.com/zeit/hyper/raw/${pkgver}/LICENSE")
+sha256sums=('d78cf1f3f3928be00426e6409638c17eed9d5fed782065571a8759e4cae6643b'
+            'f1042dc10a7346f5f9f141ae8878f6a6dd048fa4890d30fe37c676c65aa3aca0')
 
 package() {
-    # extract the data file (already has everything as we need it)
-    tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+  # extract the data file (already has everything as we need it)
+  tar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
 
-    # link the binary
-    install -d -m755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/Hyper/resources/bin/hyper" "${pkgdir}/usr/bin/hyper"
+  # link the binary
+  install -d -m755 "${pkgdir}/usr/bin"
+  ln -sr "${pkgdir}/opt/Hyper/resources/bin/hyper" "${pkgdir}/usr/bin/hyper"
+
+  # License
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

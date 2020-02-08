@@ -1,23 +1,21 @@
 pkgbase = hyper-bin
 	pkgdesc = A terminal built on web technologies
-	pkgver = 2.0.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://hyper.is
 	arch = x86_64
 	license = MIT
-	depends = gconf
-	depends = libnotify
-	depends = libappindicator
-	depends = libxtst
-	depends = nss
+	depends = gtk3
 	depends = libxss
+	depends = nss
 	provides = hyper
 	conflicts = hyper
 	conflicts = hyper-appimage
 	options = !strip
-	options = !upx
-	source_x86_64 = https://github.com/zeit/hyper/releases/download/2.0.0/hyper_2.0.0_amd64.deb
-	md5sums_x86_64 = c2f69568ac4cc624f621f73dde8f1354
+	source = https://github.com/zeit/hyper/releases/download/3.0.2/hyper_3.0.2_amd64.deb
+	source = https://github.com/zeit/hyper/raw/3.0.2/LICENSE
+	sha256sums = d78cf1f3f3928be00426e6409638c17eed9d5fed782065571a8759e4cae6643b
+	sha256sums = f1042dc10a7346f5f9f141ae8878f6a6dd048fa4890d30fe37c676c65aa3aca0
 
 pkgname = hyper-bin
 
