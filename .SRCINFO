@@ -1,7 +1,7 @@
 pkgbase = intel-mkl-bin
 	pkgdesc = Intel Math Kernel Library - shared libraries and headers only, as distributed by Anaconda
 	pkgver = 2020.0.166
-	pkgrel = 0
+	pkgrel = 1
 	url = https://software.intel.com/en-us/mkl
 	arch = x86_64
 	license = custom
