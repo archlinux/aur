@@ -1,0 +1,15 @@
+pkgbase = puppet-bolt-git
+	pkgdesc = Bolt is an orchestration tool that automates remote nodes with SSH or WinRM
+	pkgver = 1.48.0.r21.g9064dbe6
+	pkgrel = 1
+	url = https://github.com/puppetlabs/bolt
+	arch = x86_64
+	license = Apache
+	makedepends = ruby
+	makedepends = git
+	conflicts = puppet-bolt
+	source = git+https://github.com/puppetlabs/bolt
+	sha256sums = SKIP
+
+pkgname = puppet-bolt-git
+
