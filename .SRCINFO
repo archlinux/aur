@@ -1,7 +1,7 @@
 pkgbase = python-mkl-fft-bin
 	pkgdesc = Fast Fourier Transform using Intel MKL - prebuilt binaries from Anaconda
 	pkgver = 1.0.15.0.py38ha843d7b.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/IntelPython/mkl_fft
 	arch = x86_64
 	license = custom
