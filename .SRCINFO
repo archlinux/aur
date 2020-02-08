@@ -1,7 +1,7 @@
 pkgbase = path-extractor
 	pkgdesc = A unix filter which outputs the filepaths found in stdin
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/edi9999/path-extractor
 	arch = x86_64
 	license = NONE
