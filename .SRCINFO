@@ -6,7 +6,7 @@ pkgbase = citardauq
 	arch = any
 	license = MIT
 	depends = python
-	source = git://github.com/kazmalhotra/citardauq.git
+	source = https://github.com/kazmalhotra/citardauq.git
 	md5sums = b6dfdfb3d79c0709e1154e9f55695726
 
 pkgname = citardauq
