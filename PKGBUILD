@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-hoppla-sa-git
 _pkgname=plasma5-applets-hoppla-sa
 _gitpkgname=hoppla-sa
-pkgver=r159.3ceb929
+pkgver=2.8.4.r0.g371268c
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 for controlling Phillips Hue lights"
 arch=('any')
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_gitpkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
