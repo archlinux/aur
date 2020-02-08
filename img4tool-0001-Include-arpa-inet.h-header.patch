@@ -1,0 +1,24 @@
+From 8d891ada1d15c17ed677cd6a08bbea9fa337af15 Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 8 Feb 2020 18:57:30 +0100
+Subject: [PATCH] Include arpa/inet.h header
+
+---
+ img4tool/lzssdec.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/img4tool/lzssdec.c b/img4tool/lzssdec.c
+index 4f16784..bd19e60 100644
+--- a/img4tool/lzssdec.c
++++ b/img4tool/lzssdec.c
+@@ -9,6 +9,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <sys/types.h>
++#include <arpa/inet.h>
+ 
+ #include "lzssdec.h"
+ 
+-- 
+2.25.0
+

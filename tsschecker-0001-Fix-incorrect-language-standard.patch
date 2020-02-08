@@ -1,0 +1,25 @@
+From fea67caa58f492b86fbab298e3329dbf5ff835fb Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 8 Feb 2020 18:22:55 +0100
+Subject: [PATCH] Fix incorrect language standard
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4d8ca11..e9e2384 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,7 @@ esac
+ 
+ # Checks for programs.
+ AC_PROG_CC
+-CFLAGS+=" -std=c11"
++CFLAGS+=" -std=gnu11"
+ AC_PROG_INSTALL
+ AC_PROG_LIBTOOL
+ AC_CONFIG_MACRO_DIRS([m4])
+-- 
+2.25.0
+

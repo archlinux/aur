@@ -1,7 +1,7 @@
 pkgbase = futurerestore-s0uthwest-git
 	pkgdesc = iOS upgrade and downgrade tool utilizing SHSH blobs - s0uthwest's fork - git version
 	pkgver = r248.08d0e00
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/s0uthwest/futurerestore
 	arch = x86_64
 	license = LGPL3
@@ -23,12 +23,16 @@ pkgbase = futurerestore-s0uthwest-git
 	source = git+https://github.com/tihmstar/tsschecker.git
 	source = git+https://github.com/s0uthwest/idevicerestore.git
 	source = git+https://github.com/tihmstar/jssy.git
+	source = img4tool-0001-Include-arpa-inet.h-header.patch
+	source = tsschecker-0001-Fix-incorrect-language-standard.patch
 	source = idevicerestore-0001-configure.ac-check-for-pthreads.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = bd9c4dc74f56a26d9aef10938fe0fb58cdec268a80a04b217dd4a32c5b60db2d
+	sha256sums = 3fcde7558ae9f5ebfa930a2b02074251a6817e2a984c8d0e18113baa0ea708a5
 	sha256sums = 621e0e9bd2a31d8be8da59c051d2190a98be0f5c4cd5158225ffd4ff91d3ab1e
 
 pkgname = futurerestore-s0uthwest-git
