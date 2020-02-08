@@ -1,6 +1,6 @@
 pkgbase = greenpak-designer
 	pkgdesc = GreenPAK1-6 Designer
-	pkgver = 6.12.003
+	pkgver = 6.21.005
 	pkgrel = 1
 	url = https://www.dialog-semiconductor.com/greenpak-designer-software
 	install = greenpak-designer.install
@@ -19,10 +19,10 @@ pkgbase = greenpak-designer
 	conflicts = greenpak-designer-dev
 	replaces = greenpak-designer-dev
 	options = !strip
-	source_i686 = http://www.silego.com/uploads/resources/gpd_LNX/GP1-6_Designer_v6.12.003_Debian8.10_i386_Setup.deb
-	sha256sums_i686 = fd4ae936845acfffe1bc5dc72c795d1eb76d49b311a8b42dfb3215d9b0fd88c4
-	source_x86_64 = http://www.silego.com/uploads/resources/gpd_LNX/GP1-6_Designer_v6.12.003_Debian8.10_amd64_Setup.deb
-	sha256sums_x86_64 = cfe4abf73075405ef4b4818244a394dd79efc5fc5a6397ff41a1ffef69233255
+	source_i686 = https://support.dialog-semiconductor.com/downloads/GP_Designer_v6.21.005_Debian-testing_i386_Setup.deb
+	sha256sums_i686 = c88e786cc13f9948d85e85e4f0493ea57d22db49f6e011f351b211e8bb0c28c4
+	source_x86_64 = https://support.dialog-semiconductor.com/downloads/GP_Designer_v6.21.005_Debian-testing_amd64_Setup.deb
+	sha256sums_x86_64 = d95c33db7bd777ef41654fc4ce122a316338a855e877fb1b2fd9974803208f52
 
 pkgname = greenpak-designer
 

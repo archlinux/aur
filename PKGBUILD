@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer
-_pkgver=6.12
-_pkgrel=3
+_pkgver=6.21
+_pkgrel=5
 pkgver=$_pkgver.$(printf "%03d" $_pkgrel)
 pkgrel=1
 pkgdesc="GreenPAK1-6 Designer"
@@ -16,21 +16,14 @@ replaces=('greenpak-designer-dev')
 options=('!strip')
 install=${pkgname}.install
 
-source_i686=("http://www.silego.com/uploads/resources/gpd_LNX/GP1-6_Designer_v${pkgver}_Debian8.10_i386_Setup.deb")
-sha256sums_i686=('fd4ae936845acfffe1bc5dc72c795d1eb76d49b311a8b42dfb3215d9b0fd88c4')
-source_x86_64=("http://www.silego.com/uploads/resources/gpd_LNX/GP1-6_Designer_v${pkgver}_Debian8.10_amd64_Setup.deb")
-sha256sums_x86_64=('cfe4abf73075405ef4b4818244a394dd79efc5fc5a6397ff41a1ffef69233255')
-
-if [[ $CARCH == 'i686' ]]; then
-  _arch='i386'
-elif [[ $CARCH == 'x86_64' ]]; then
-  _arch='amd64'
-fi
+source_i686=("https://support.dialog-semiconductor.com/downloads/GP_Designer_v${pkgver}_Debian-testing_i386_Setup.deb")
+sha256sums_i686=('c88e786cc13f9948d85e85e4f0493ea57d22db49f6e011f351b211e8bb0c28c4')
+source_x86_64=("https://support.dialog-semiconductor.com/downloads/GP_Designer_v${pkgver}_Debian-testing_amd64_Setup.deb")
+sha256sums_x86_64=('d95c33db7bd777ef41654fc4ce122a316338a855e877fb1b2fd9974803208f52')
 
 package() {
-  # Extract the proper package
-  ar p GP1-6_Designer_v${pkgver}_Debian8.10_${_arch}_Setup.deb data.tar.xz | \
-    tar -xJ --exclude="usr/share/doc-base" --exclude="usr/share/lintian" -C "${pkgdir}"/
+  # Extract the package data
+  tar -xJf data.tar.xz --exclude="usr/share/lintian" -C "${pkgdir}"/
 
   # Move /lib files to /usr/lib
   install -dm 755 "${pkgdir}/usr/lib"
@@ -76,5 +69,4 @@ package() {
   # Install license file
   install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
-  ln -s "/usr/share/doc/${pkgname}/licence.rtf.gz" "${pkgdir}/usr/share/licenses/${pkgname}/license.rtf.gz"
 }
