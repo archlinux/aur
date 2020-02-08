@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak128.britain
+	pkgdesc = High resolution graphics set for Simutrans, with a british theme
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	source = http://sourceforge.net/projects/simutrans/files/pak128.britain/pak128.Britain%20for%20120-1/pak128.Britain.1.17-120-1.zip
+	sha256sums = 25d3ce7acefa0b1b18a4a71e71c0eeed80c34eacd51a81ecb009b2fd23e671db
+
+pkgname = simutrans-pak128.britain
+
