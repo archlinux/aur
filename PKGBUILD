@@ -4,7 +4,7 @@
 pkgname=discord-ptb
 _pkgname=DiscordPTB
 pkgver=0.0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one voice and text chat for gamers that's free and secure. - Public Test Build"
 arch=('x86_64')
 url='https://discordapp.com'
@@ -18,7 +18,7 @@ source=("https://dl-ptb.discordapp.net/apps/linux/$pkgver/$pkgname-$pkgver.tar.g
         'OSS-LICENSES::https://discordapp.com/licenses')
 sha512sums=('c6d612bda8564ca198d46b2c95b8b415e9574631b72c9796beb6435a6e809058d00f64f89bf3dbcf54b68f6d93b6f7da782d7e9a3f60955127d80c79166832a8'
             '2478ed8c0c3f086cfa9e6f8a7f8264a3a0f20364b940f888efe7a695f54f103523547e9b95db046776d7d9c820447436fbf65e557daf583947a6bbef5620971d'
-            '5c128343b32808161bc13416c0043111214b82353410b5f2a1d02c286e6b290af3366d182b35145a814340c1c299f46d5c926adfb3175c43b7bf83827928132d')
+            'SKIP')
 
 prepare() {
   cd $_pkgname
