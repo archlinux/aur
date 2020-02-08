@@ -1,0 +1,17 @@
+pkgbase = fontpreview
+	pkgdesc = CLI tool to preview fonts
+	pkgver = r10.15d17ed
+	pkgrel = 1
+	url = https://github.com/sdushantha/fontpreview
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = xdotool
+	depends = fzf
+	depends = imagemagick
+	depends = sxiv
+	source = git://github.com/sdushantha/fontpreview.git
+	sha1sums = SKIP
+
+pkgname = fontpreview
+
