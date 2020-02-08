@@ -2,7 +2,7 @@
 pkgname=python-mercurial
 _pkgname=mercurial
 pkgver=5.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Mercurial for python 3 - python modules only'
 arch=(x86_64)
 url="https://www.mercurial-scm.org/"
