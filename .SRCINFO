@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak64.nippon
+	pkgdesc = An alternative japanese low resolution graphics set for Simutrans
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	source = http://github.com/wa-st/pak-nippon/releases/download/v0.3.0/pak.nippon-v0.3.0.zip
+	sha256sums = 37c51859dc5841ee4d9424b159b9cc7ab23da015cff49e28573b23a640e9a796
+
+pkgname = simutrans-pak64.nippon
+
