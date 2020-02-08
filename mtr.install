@@ -1,5 +1,5 @@
 post_install() {
-    setcap cap_net_raw+ep usr/bin/mtr-packet
+    setcap cap_net_raw+ep usr/bin/mtr-packet && chmod u-s usr/bin/mtr-packet
 }
 
 post_upgrade() {

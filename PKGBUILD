@@ -2,7 +2,7 @@
 
 _pkgname=mtr
 pkgname=$_pkgname-git
-pkgver=v0.92.r2.g4924a3f
+pkgver=v0.93.r36.gb4d3983
 pkgrel=1
 arch=('any')
 pkgdesc='Combines the functionality of traceroute and ping into one tool (CLI version, git)'
