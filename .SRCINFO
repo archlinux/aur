@@ -11,7 +11,6 @@ pkgbase = alacarte
 	makedepends = git
 	makedepends = gnome-common
 	depends = gnome-menus
-	depends = hicolor-icon-theme
 	depends = python-gobject
 	depends = gtk3
 	source = git+https://gitlab.gnome.org/lubosz/alacarte.git#branch=python3

@@ -9,7 +9,7 @@ pkgdesc="Menu editor for gnome. Git version using Python 3."
 arch=(any)
 license=('LGPL')
 url="https://www.gnome.org"
-depends=('gnome-menus' 'hicolor-icon-theme' 'python-gobject' 'gtk3')
+depends=('gnome-menus' 'python-gobject' 'gtk3')
 makedepends=('intltool' 'libxslt' 'docbook-xsl' 'git' 'gnome-common')
 source=('git+https://gitlab.gnome.org/lubosz/alacarte.git#branch=python3')
 sha256sums=('SKIP')
