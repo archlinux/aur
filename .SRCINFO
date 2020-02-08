@@ -1,16 +1,13 @@
 pkgbase = haskell-ide-engine
 	pkgdesc = The engine for haskell ide-integration. Not an IDE
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/haskell/haskell-ide-engine
 	arch = x86_64
 	license = custom:BSD3
-	makedepends = git
 	makedepends = stack
-	makedepends = cabal-install
-	makedepends = happy
-	source = haskell-ide-engine-1.1::git://github.com/haskell/haskell-ide-engine.git#tag=1.1
-	md5sums = SKIP
+	source = haskell-ide-engine-1.1.tar.gz::https://github.com/haskell/haskell-ide-engine/archive/1.1.tar.gz
+	sha384sums = 066cbac86f8a2bdcb68463188effa1a5f1d6804afa251caa351673a541eced306ed028fe8a5ba8c30e953a6fbb02fa4e
 
 pkgname = haskell-ide-engine
 
