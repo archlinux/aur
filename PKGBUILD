@@ -1,13 +1,13 @@
 # Maintainer: Samuel Lando samuel.lando@aol.com
 pkgname=pomodoro
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Time tool."
 arch=('any')
 url="http://samuellando.com"
 license=('GPL')
 source=("https://github.com/samuellando/pomodoro/archive/$pkgver.tar.gz")
-sha256sums=('8541729b91acd0522c61d7bd66f22b7b4b58ce3925f11bb61f9fc0aa36c5c9db')
+sha256sums=('0560126fa5ae9837444cf2ca207b84088b5ac5bd69f273d91c85cf59a6336154')
 
 package() {
   rm -r ${srcdir}/$pkgname-$pkgver/pomodoro.info.def
