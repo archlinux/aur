@@ -2,5 +2,4 @@
 *.tar.gz
 /src
 /pkg
-/libphutil
-
+*.log
