@@ -1,0 +1,13 @@
+=== modified file 'exporter.py'
+--- old/exporter.py	2014-05-15 09:26:03 +0000
++++ new/exporter.py	2017-12-27 17:01:10 +0000
+@@ -436,7 +436,7 @@
+                     pass
+ 
+         # Build and return the result
+-        return commands.CommitCommand(git_ref, mark, author_info,
++        return commands.CommitCommand(git_ref, str(mark), author_info,
+             committer_info, revobj.message.encode("utf-8"), from_, merges, iter(file_cmds),
+             more_authors=more_author_info, properties=properties)
+ 
+

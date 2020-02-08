@@ -1,0 +1,16 @@
+pkgbase = bzr-fastimport
+	pkgdesc = Bazaar Fast Import is a plugin providing fast loading of revision control data into Bazaar
+	pkgver = 0.14.0.r361
+	pkgrel = 2
+	url = https://launchpad.net/bzr-fastimport
+	arch = any
+	license = GPL2
+	depends = bzr
+	depends = python2-fastimport
+	source = bzr-fastimport::bzr+lp:bzr-fastimport#revision=360
+	source = str-mark.diff
+	sha256sums = SKIP
+	sha256sums = d7e2f7c088570d9f9482bf4bba97885cf262260737b87c0ebb1122234331aeb6
+
+pkgname = bzr-fastimport
+
