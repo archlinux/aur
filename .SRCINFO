@@ -1,0 +1,25 @@
+pkgbase = freetennis
+	pkgdesc = A tennis simulation game
+	pkgver = 0.4.8
+	pkgrel = 1
+	url = http://freetennis.sourceforge.net/
+	install = freetennis.install
+	arch = x86_64
+	license = GPL
+	makedepends = ocaml-ocamlsdl
+	makedepends = ocaml-graphics
+	makedepends = lablgtk2
+	depends = sdl_gfx
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_ttf
+	depends = gdk-pixbuf2
+	source = https://downloads.sourceforge.net/project/freetennis/freetennis/0.4.8/freetennis-0.4.8.tar.bz2
+	source = http://deb.debian.org/debian/pool/main/f/freetennis/freetennis_0.4.8-10.debian.tar.xz
+	source = freetennis.desktop
+	sha256sums = 0d4663d1c9ce5bbef4d87a9d9f85a4570016a2945c41d1d293fb1357e426bebf
+	sha256sums = 961ea9902c39c2e2e75564be6c412462b9261d45b825d8b5f8b6dc7e217a2d4a
+	sha256sums = 1dcb1eb0d624b3df365e0bcb9c875217cef87fcef10b80698c04f168d0a75475
+
+pkgname = freetennis
+

@@ -1,0 +1,6 @@
+post_install() {
+    echo ""
+    echo "==> FreeTennis can also be played in multiplayer over the network"
+    echo "==> Read the manpage for more information"
+    echo ""
+}

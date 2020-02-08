@@ -1,0 +1,19 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=FreeTennis
+GenericName=A tennis simulation
+GenericName[de]=Eine Tennissimulation
+Comment=play virtually tennis
+Comment[de]=Spiele virtuell Tennis
+Terminal=false
+StartupNotify=false
+Icon=freetennis
+Exec=freetennis -newbie
+Categories=Game;SportsGame;
+Actions=Realistic;
+
+[Desktop Action Realistic]
+Name=Realistic Mode
+Name[de]=Realistischer Modus
+Exec=freetennis -realistic
