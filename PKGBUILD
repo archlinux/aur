@@ -2,7 +2,7 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=0.17.3
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
@@ -22,10 +22,8 @@ source=(
 	"git+https://github.com/actor-framework/actor-framework#commit=b05a4b7b2a6f59b0508db84ea68e5ada2224f904"
 	"git+https://github.com/pybind/pybind11.git"
 	)
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	)
+sha256sums=('SKIP'
+            'SKIP')
 
 prepare(){
 	cd ${pkgname}
