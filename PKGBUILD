@@ -5,7 +5,7 @@
 
 pkgname=mixbus
 pkgver=5.3.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Harrison Mixbus - Digital Audio Workstation"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/$pkgname.html"
@@ -45,13 +45,6 @@ for plugin in essentials ${pkgname}5 xt_bc3 xt_ds xt_eg xt_eq xt_lc xt_mc xt_me 
 	fi
 done
 
-msg2 "Installing X42 Plugin Licenses"
-for plugin in eq whirl; do
-	if [ -f ../x42-$plugin.txt ]; then
-		install -Dm644 ../x42-$plugin.txt $pkgdir/usr/local/share/x42-$plugin.txt
-	fi
-done
-
 ## Create a .desktop file
 msg2 "Creating A Desktop Entry..."
 echo -e "[Desktop Entry]\nEncoding=UTF-8\nVersion=1.0\nType=Application\nTerminal=false\nExec=/opt/$pkgname/bin/${pkgname}5\nName=Mixbus $pkgver\nIcon=/opt/$pkgname/share/resources/Mixbus-icon_256px.png\nComment=Digital Audio Workstation\nCategories=AudioVideo;AudioEditing;Audio;Recorder;" > $pkgdir/usr/share/applications/$pkgname.desktop
@@ -61,6 +54,9 @@ chmod 644 $pkgdir/usr/share/applications/$pkgname.desktop
 
 # Remove uninstall script
 rm $pkgdir/opt/$pkgname/bin/Mixbus-$pkgver.uninstall.sh
+
+# Remove Plugins Provided By Archlinux
+rm -r $pkgdir/opt/$pkgname/lib/LV2/{avldrums,b_synth,b_whirl,dpl,fil4,gmsynth,meters,midifilter,reasonablesynth,stereoroute,tuna}.lv2
 
 ## Package has built successfully message
 msg2 "Package Built Successfully!!"
