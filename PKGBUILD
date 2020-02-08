@@ -15,7 +15,7 @@ md5sums=('8dc066695d6af82e9f2f6b8a96b892bf')
 
 package(){
 
-  pass
+  echo installing...
 }
 
 
