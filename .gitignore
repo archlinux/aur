@@ -5,3 +5,4 @@
 *.pkg.*
 *.zip
 *.zip.sig
+*.log
