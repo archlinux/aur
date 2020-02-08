@@ -2,16 +2,16 @@
 
 pkgname=puppet-bolt
 _ubuntu_release=bionic
-_pkgver="1.30.1-1${_ubuntu_release}"
-pkgver=1.30.1
+_pkgver="1.48.0-1${_ubuntu_release}"
+pkgver=1.48.0
 
 pkgrel=1
 pkgdesc='Puppet stand alone task runner'
 arch=('x86_64')
 url='https://github.com/puppetlabs/bolt'
 options=(staticlibs !strip)
-source=("http://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet6/p/puppet-bolt/puppet-bolt_${_pkgver}_amd64.deb")
-md5sums=('08732ed9a184387fb1964ae6e00e6181')
+source=("https://apt.puppetlabs.com/pool/${_ubuntu_release}/puppet6/p/puppet-bolt/puppet-bolt_${_pkgver}_amd64.deb")
+md5sums=('0364d2df6b7417955e9baacfd7b8a85d')
 
 package() {
   tar xJf data.tar.xz
