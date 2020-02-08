@@ -1,5 +1,5 @@
 # Maintainer: Lennard Hofmann <lennard.hofmann@web.de>
-pkgname=('otf-yrsa-font' 'ttf-yrsa-font')
+pkgname=('otf-yrsa' 'ttf-yrsa')
 pkgbase=yrsa-font
 pkgver=1.002
 pkgrel=1
@@ -21,14 +21,14 @@ _package() {
 	install -Dm644 README.txt "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
-package_otf-yrsa-font() {
-	conflicts=('ttf-yrsa-font')
+package_otf-yrsa() {
+	conflicts=('ttf-yrsa')
 	_package
 	install -Dm644 -t "$pkgdir/usr/share/fonts/${pkgbase%-font}" otf/*.otf
 }
 
-package_ttf-yrsa-font() {
-	conflicts=('otf-yrsa-font')
+package_ttf-yrsa() {
+	conflicts=('otf-yrsa')
 	_package
 	install -Dm644 -t "$pkgdir/usr/share/fonts/${pkgbase%-font}" ttf/*.ttf
 }
