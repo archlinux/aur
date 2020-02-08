@@ -2,7 +2,7 @@
 
 _pkgname=electronplayer
 pkgname=$_pkgname
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="An Electron-based web video player, supporting multiple services"
 arch=(any)
@@ -31,7 +31,7 @@ conflicts=("$_pkgname-git")
 
 source=("https://github.com/oscartbeaumont/ElectronPlayer/archive/v${pkgver}.tar.gz"
         "${_pkgname}.desktop")
-sha512sums=('39b515412fc735fa794858ff9b5e46a52958adff29d5f54af6c55acb249b8d84a6474c229a9daa472e1da16d6b211e839f7af242ac70b3ad11c88a65074240d6'
+sha512sums=('039e8955a056bcfa4dc674118e906f2029a1327dcf94bc98d9aa56df8360ccd378d9ab5dce09fd441b5e9ef5ccdaa45ea4a0cccdc61e0dd7b38b3c4d7569dc4e'
             '280a252895e641f4bd009b4acf7f9f42959f0b9d51424ea71bf564600533de3867a652efd9d982643c34907bb5e57fa677e6c73315cb69a2f12dfd52e6f09f03')
 
 
@@ -46,8 +46,11 @@ prepare() {
 build() {
     cd "ElectronPlayer-$pkgver"
 
-    # We are not using system Electron as we need castlabs Electron (not yet packaged)
-    npx electron-builder --linux dir
+    # We are not using system Electron as we need castlabs Electron (not packaged (yet?))
+    npx electron-builder \
+        -c "build/electron-builder.yml" \
+        -c.electronDownload.mirror="https://github.com/castlabs/electron-releases/releases/download/v" \
+        --linux dir
 }
 
 package() {
