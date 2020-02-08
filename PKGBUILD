@@ -17,7 +17,7 @@ _runname="Tracker-${pkgver}-linux-64bit-installer.run"
 source=("${url}/installers/${_runname}"
         "tracker.sh"
         "tracker.desktop")
-md5sums=('f0010a0c793a5885d28f001b1bee0e14'
+md5sums=('6db6baddb638f7057bafc71904aefbf4'
          '4f457c6b8231a48eb3cd302c7629fd9d'
          '805138863c7eb51258022e4d66edab92')
 
