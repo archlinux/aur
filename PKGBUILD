@@ -2,7 +2,7 @@
 
 _pkgname=libtd
 pkgname=${_pkgname}
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='TDLib (Telegram Database library) is a cross-platform library for building Telegram clients'
 arch=('x86_64')
