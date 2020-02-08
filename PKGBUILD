@@ -1,7 +1,7 @@
 # Maintainer: Kaz Malhotra <kazmal@protonmail.com>
 
 pkgname='citardauq'
-pkgver=1.0
+pkgver=1.01
 pkgrel=1
 pkgdesc='A CLI tool for solving quadratic equations'
 arch=('any')
