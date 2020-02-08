@@ -1,0 +1,16 @@
+pkgbase = xmlmind-xmleditor
+	pkgdesc = XMLmind XML Editor
+	pkgver = 9.2.0
+	pkgrel = 1
+	url = https://www.xmlmind.com/xmleditor
+	install = xxe.install
+	arch = any
+	license = Custom
+	makedepends = libicns
+	makedepends = gendesk
+	depends = java-runtime>=8
+	source = http://www.xmlmind.com/xmleditor/_download/xxe-perso-9_2_0.zip
+	sha256sums = 78e35604b6d6754ad47c02a2b7d71802bd82c60b6c2621a281dc9b1dc493279a
+
+pkgname = xmlmind-xmleditor
+

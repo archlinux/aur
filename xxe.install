@@ -1,0 +1,13 @@
+post_install() {
+    echo ""
+    echo ""
+    echo ">>> You have to read and accept the license agreement:"
+    echo ">>>"
+    echo ">>> https://www.xmlmind.com/xmleditor/license_xxe_perso.html"
+    echo ""
+    echo ""
+    echo ">>> Localisation files may be available from Options -> Install Add-ons."
+    echo ">>> UI Scaling can be activated from Options -> Preferences -> General."
+    echo ""
+    echo ""
+}
