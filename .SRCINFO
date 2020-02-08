@@ -6,6 +6,7 @@ pkgbase = assetfinder
 	arch = i686
 	arch = x86_64
 	license = MIT
+	replaces = assetfinder-git
 	source_i686 = https://github.com/tomnomnom/assetfinder/releases/download/v0.1.0/assetfinder-linux-386-0.1.0.tgz
 	sha256sums_i686 = 18177c0b323a2c5ff71337b5d22d1b1ed05ded05c1c9df9d1b992aef2bf68a90
 	source_x86_64 = https://github.com/tomnomnom/assetfinder/releases/download/v0.1.0/assetfinder-linux-amd64-0.1.0.tgz

@@ -8,6 +8,7 @@ pkgdesc="Find domains and subdomains related to a given domain"
 arch=('i686' 'x86_64')
 url="https://github.com/tomnomnom/assetfinder"
 license=('MIT')
+replaces=('assetfinder-git')
 
 source_i686=(https://github.com/tomnomnom/assetfinder/releases/download/v${pkgver}/assetfinder-linux-386-${pkgver}.tgz)
 source_x86_64=(https://github.com/tomnomnom/assetfinder/releases/download/v${pkgver}/assetfinder-linux-amd64-${pkgver}.tgz)
