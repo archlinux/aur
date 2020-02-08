@@ -3,7 +3,7 @@
 pkgname=swabiancoin
 _pkgname_source=SwabianCoin
 pkgver=20.01.02
-pkgrel=1
+pkgrel=2
 pkgdesc="SwabianCoin (SCN) is yet another cryptocurrency"
 arch=('x86_64')
 url="https://www.swabiancoin.com"
@@ -38,6 +38,6 @@ check() {
 package() {
 	cd $_pkgname_source-$pkgver/build
 	DESTDIR="$pkgdir" make install
-	mv "$pkgdir/usr/bin/full_node_cli" "$pkgdir/usr/bin/snc_full_node_cli"
+	mv "$pkgdir/usr/bin/full_node_cli" "$pkgdir/usr/bin/scn_full_node_cli"
 	rm -rf "$pkgdir/usr/include" "$pkgdir/usr/lib" "$pkgdir/usr/share" 
 }
