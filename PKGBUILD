@@ -14,17 +14,18 @@ _enginename=acestreamengine
 
 pkgname=acestream-engine-stable
 pkgver=3.1.49
-pkgrel=5
+pkgrel=6
 pkgdesc="P2P utility for multimedia live streaming and file transfer (stable version)"
 arch=("x86_64")
 url="http://acestream.org/"
 license=("custom")
 depends=(
     "net-tools"
-    "pygtk"
     "python2-apsw"
-    "python2-libappindicator"
     "python2-setuptools")
+optdepends=(
+    "pygtk"
+    "python2-libappindicator")
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
 backup=("usr/lib/$_pkgbasename/acestream.conf")

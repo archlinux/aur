@@ -1,18 +1,20 @@
 post_install() {
     echo
+    echo ">>> For GUI install also pygtk and python2-libappindicator"
     echo ">>> To start acestream-engine as systemd service, first reboot the system"
     echo
 }
 
 post_upgrade() {
     echo
+    echo ">>> For GUI install also pygtk and python2-libappindicator"
     echo ">>> To start acestream-engine as systemd service, first reboot the system"
     echo
 }
 
 post_remove() {
     echo
-    echo ">>> remove files under /var/lib/ACEStream and ~/.config/ACEStream"
+    echo ">>> Remove files under /var/lib/ACEStream and ~/.config/ACEStream"
     echo ">>> if you don't need to reinstall the package in the future"
     echo
 }
