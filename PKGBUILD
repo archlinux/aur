@@ -30,6 +30,10 @@ prepare() {
 
 build() {
 	cd "$pkgname"
+	aclocal
+	autoconf
+	autoheader
+	automake
 	./configure --prefix=/usr
 	make
 }
