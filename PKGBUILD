@@ -2,7 +2,7 @@
 
 pkgname=veloren-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
