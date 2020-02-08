@@ -1,8 +1,8 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=12.5.3
-pkgrel=2
+pkgver=12.6.5
+pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
 url='https://github.com/jgraph/drawio'
@@ -11,8 +11,8 @@ depends=(electron libnotify)
 makedepends=(yarn ant)
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz")
-sha256sums=('961844a59f5c0aba296e9276f4d2b531c0efa4f66e5b7eb2f592941dbfe15c19'
-            '439a83b5f7d6d8ebed2b5c07cd592fb85c441ea948d4139bf9076bfc7f204ff3')
+sha256sums=('e7eaaed5a6e8264fb8614a94cd3802896ceb2bab23eee1d3c3c44398c36af5be'
+            '04232b38430ad19c3473093dcf08bb9ae1c4b00752d8ea04b69439d45369bfce')
 
 build() {
   cp "$srcdir/drawio-desktop-$pkgver"/{package.json,yarn.lock} "$srcdir/drawio-$pkgver"/src/main/webapp/ 
