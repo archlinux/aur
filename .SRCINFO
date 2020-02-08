@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak96.comic
+	pkgdesc = Medium resolution graphics set for Simutrans, with a comic style
+	pkgver = 0.4.10.extended
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = Freeware
+	source = https://sourceforge.net/projects/simutrans/files/pak96.comic/pak96.comic%20for%20111-3/pak96.comic-0.4.10-plus.zip
+	sha256sums = 9e24684d63440be04ea5031d40642332ff3b04a9145af685f62fe24932eebc5c
+
+pkgname = simutrans-pak96.comic
+
