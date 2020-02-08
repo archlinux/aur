@@ -1,0 +1,18 @@
+pkgbase = ros-melodic-summit-xl-control
+	pkgdesc = ROS - This package contains the launch files that load the required controller interfaces for simulation in Gazebo.
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://wiki.ros.org/summit_xl_control
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-robot-state-publisher
+	depends = ros-melodic-summit-xl-pad
+	depends = ros-melodic-twist-mux
+	source = ros-melodic-summit-xl-control-1.1.3.tar.gz::https://github.com/RobotnikAutomation/summit_xl_common/archive/kinetic-1.1.3.tar.gz
+	sha256sums = 8979bdda706b4cfd155df3f22aeecf56869e227113a9947f99f1dfee658d08fe
+
+pkgname = ros-melodic-summit-xl-control
+
