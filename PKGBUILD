@@ -1,14 +1,14 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=hokiestalker-git
 _gitname=hokiestalker
-pkgver=28.02f5f8f
+pkgver=29.98405c6
 pkgrel=1
 pkgdesc="Query the Virginia Tech people search service for information about a person."
 url="https://github.com/mutantmonkey/hokiestalker"
 arch=('any')
 license=('ISC')
 depends=('python' 'python-lxml')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 provides=('hokiestalker')
 conflicts=('hokiestalker')
 source=('git+https://github.com/mutantmonkey/hokiestalker.git')

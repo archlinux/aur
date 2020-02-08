@@ -1,11 +1,12 @@
 pkgbase = hokiestalker-git
 	pkgdesc = Query the Virginia Tech people search service for information about a person.
-	pkgver = 28.02f5f8f
+	pkgver = 29.98405c6
 	pkgrel = 1
 	url = https://github.com/mutantmonkey/hokiestalker
 	arch = any
 	license = ISC
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	depends = python-lxml
 	provides = hokiestalker
