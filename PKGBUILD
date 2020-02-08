@@ -2,7 +2,7 @@
 # Thanks to: Simon Kronberg <Simon.Kronberg@gmail.com>
 
 pkgname=waterfox-classic-bin
-pkgver=2020.01
+pkgver=2020.01.1
 pkgrel=1
 pkgdesc="Privacy oriented Firefox fork."
 arch=('x86_64')
@@ -34,4 +34,4 @@ package() {
 }
 
 sha256sums=('8286eea183ad60e114bc5457d792210a19ab33502cb89cbd937702e1f974c6ff'
-            'a3afbfa6d1e9b13180a0b33910b62e40b32bac881995551e4eeaddfe3e3643a1')
+            '98c9112f1b3bb20237845ea2fd0ee02295c28b05a158f4b38b6e9f4883516e25')
