@@ -2,10 +2,10 @@
 _pkgbasename=axosnake
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=r67.6caf3a1
+pkgver=r69.f4e09b3
 pkgdesc="a snake game written in rust with quicksilver"
 arch=('any')
-url="https://gitlab.com/nycex/$_pkgbasename"
+url="https://codeberg.org/nycex/$_pkgbasename"
 license=('MIT')
 depends=('rust')
 source=(git+https://gitlab.com/nycex/${_pkgbasename})
