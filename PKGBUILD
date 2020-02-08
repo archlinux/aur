@@ -4,14 +4,14 @@ pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
 pkgver='0.0.11'
-pkgrel='2'
+pkgrel='3'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
 license=('GPL3+')
 groups=()
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'alsa-lib')
-makedepends=('git' 'rust')
+makedepends=('git' 'rust-nightly')
 checkdepends=()
 optdepends=()
 provides=()
@@ -139,6 +139,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/eruption/static/css"
     mkdir -p "$pkgdir/usr/share/eruption/static/css/themes/eruption"
     mkdir -p "$pkgdir/usr/share/eruption/static/css/themes/metal"
+    mkdir -p "$pkgdir/usr/share/eruption/static/css/styles"
     mkdir -p "$pkgdir/usr/share/eruption/static/js"
     mkdir -p "$pkgdir/usr/share/eruption/static/font"
     mkdir -p "$pkgdir/usr/share/eruption/static/img"
@@ -152,11 +153,13 @@ package() {
     install -m 644 "templates/profiles.html.tera" "$pkgdir/usr/share/eruption/templates/"
     install -m 644 "templates/soundfx.html.tera" "$pkgdir/usr/share/eruption/templates/"
     install -m 644 "templates/settings.html.tera" "$pkgdir/usr/share/eruption/templates/"
+    install -m 644 "templates/preview.html.tera" "$pkgdir/usr/share/eruption/templates/"
 
     install -m 644 "static/css/animate.css" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/style.css" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/themes/eruption/colors.css" "$pkgdir/usr/share/eruption/static/css/themes/eruption/"
     install -m 644 "static/css/themes/metal/colors.css" "$pkgdir/usr/share/eruption/static/css/themes/metal/"
+    install -m 644 "static/css/styles/tomorrow-night.css" "$pkgdir/usr/share/eruption/static/css/styles/"
     install -m 644 "static/css/bootstrap.css" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/bootstrap.css.map" "$pkgdir/usr/share/eruption/static/css/"
     install -m 644 "static/css/bootstrap.min.css" "$pkgdir/usr/share/eruption/static/css/"
@@ -206,4 +209,5 @@ package() {
     install -m 644 "static/js/bootstrap.min.js.map" "$pkgdir/usr/share/eruption/static/js/"
     install -m 644 "static/js/jquery.js" "$pkgdir/usr/share/eruption/static/js/"
     install -m 644 "static/js/fontawesome.min.js" "$pkgdir/usr/share/eruption/static/js/"
+    install -m 644 "static/js/highlight.pack.js" "$pkgdir/usr/share/eruption/static/js/"
 }
