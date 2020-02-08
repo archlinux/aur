@@ -5,7 +5,7 @@ _watch=('https://www.realvnc.com/en/connect/download/viewer/linux/' 'VNC-Viewer-
 
 pkgname=realvnc-vnc-viewer
 pkgver=6.20.113
-pkgrel=2
+pkgrel=3
 pkgdesc='VNC remote desktop client software by RealVNC'
 arch=('x86_64' 'i686' 'armv7h')
 url='https://www.realvnc.com/'
@@ -17,6 +17,7 @@ source_i686=("https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-${pk
 source_armv7h=("https://www.realvnc.com/download/file/viewer.files/VNC-Viewer-${pkgver}-Linux-ARM.deb")
 sha1sums_x86_64=('b187a762320636aa132b715d3fa766a28b6f36aa')
 sha1sums_i686=('00bdbc4cd3ed43ff4a3e60656de08c41ed0cbe55')
+sha1sums_armv7h=('95bc648180924cb7b2105378a3ce7b2c41030e29')
 
 package() {
     bsdtar -xv -C "${pkgdir}" -f "${srcdir}/data.tar.xz"
