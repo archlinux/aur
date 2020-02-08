@@ -1,7 +1,7 @@
 pkgbase = cp2k
 	pkgdesc = A quantum chemistry and solid state physics software package
 	pkgver = 7.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.cp2k.org
 	arch = x86_64
 	license = GPL2

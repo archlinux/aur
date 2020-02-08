@@ -4,7 +4,7 @@
 pkgname=cp2k
 pkgver=7.1.0
 _dbcsrver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
@@ -49,7 +49,7 @@ prepare() {
     _buildmode=$((_buildmode | 1))
   fi
   
-  if [ -n $_plumed ]
+  if [[ $_plumed ]]
   then
     echo "Adding PLUMED support"
     _buildmode=$((_buildmode | 2))
