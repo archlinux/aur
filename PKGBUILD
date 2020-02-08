@@ -8,7 +8,7 @@ url="https://git.sr.ht/~ark/imp"
 license=('MIT')
 conflicts=(imp)
 optdepends=('gpgme: gpg file decryption support')
-makedepends=(meson scdoc)
+makedepends=(git meson scdoc)
 source=("${pkgname%-git}::git+$url")
 md5sums=('SKIP')
 
