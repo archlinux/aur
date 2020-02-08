@@ -4,12 +4,12 @@
 pkgname=otf-bebas-neue-git
 _pkgname=Bebas-Neue
 pkgver=r182.686d14a
-pkgrel=1
+pkgrel=2
 pkgdesc="Sans-serif display font for headline, caption, and titling"
 arch=(any)
 url="https://github.com/dharmatype/Bebas-Neue"
 license=('custom:OFL')
-#depends=(fontconfig xorg-mkfontscale)
+depends=(fontconfig xorg-font-utils) # required for pacman hooks
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")

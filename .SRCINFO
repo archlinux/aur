@@ -1,11 +1,13 @@
 pkgbase = otf-bebas-neue-git
 	pkgdesc = Sans-serif display font for headline, caption, and titling
 	pkgver = r182.686d14a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dharmatype/Bebas-Neue
 	arch = any
 	license = custom:OFL
 	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
 	provides = otf-bebas-neue
 	conflicts = otf-bebas-neue
 	source = Bebas-Neue::git+https://github.com/dharmatype/Bebas-Neue.git
