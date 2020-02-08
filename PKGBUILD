@@ -2,7 +2,7 @@
 
 _name=pandoc-plantuml-filter
 pkgname=${_name}-py-git
-pkgver=v0.1.1.r7.g3226959
+pkgver=v0.1.1.r9.ge4db715
 pkgrel=1
 pkgdesc='Pandoc filter for PlantUML code blocks, python version'
 arch=('any')
