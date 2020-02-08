@@ -3,14 +3,14 @@
 
 pkgname=kvantum-qt5-git
 _gitname=Kvantum
-pkgver=0.14.0.r0.g9bbb18c
+pkgver=0.14.1.r13.g506e0db
 pkgrel=1
 pkgdesc="SVG-based Qt5 theme engine plus a config tool and extra themes"
 arch=('x86_64')
 url="https://github.com/tsujan/Kvantum"
 license=('GPL3')
 groups=('qt')
-depends=('qt5-svg' 'qt5-x11extras' 'hicolor-icon-theme')
+depends=('qt5-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'kwindowsystem')
 makedepends=('cmake' 'qt5-tools' 'git')
 optdepends=('adapta-aurorae-theme-git: Matching kwin decorations for KvAdapta and KvAdaptaDark'
             'breeze-enhanced-git: Made to match various themes of the Kvantum widget style')
