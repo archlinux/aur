@@ -2,48 +2,56 @@
 # Maintainer: Anton Kudelin <kudelin [at] protonmail [dot] com>
 
 pkgname=cp2k
-pkgver=6.1.0
-pkgrel=6
-_version="psmp"
+pkgver=7.1.0
+_dbcsrver=2.0.1
+pkgrel=1
 pkgdesc="A quantum chemistry and solid state physics software package"
 arch=("x86_64")
 url="https://www.cp2k.org"
 license=("GPL2")
-depends=('fftw' 'cp2k-data' 'scalapack' 'libxc' 'libint' 'libxsmm' 'spglib')
-makedepends=('gcc-fortran' 'python2' 'make' 'sed')
+depends=('fftw' 'elpa' 'libxc' 'libint2' 'libxsmm' 'spglib')
+makedepends=('gcc-fortran' 'python' 'sed')
+checkdepends=('numactl')
 optdepends=('cuda: GPU calculations support'
             'plumed-mpi: enhanced sampling support')
 provides=("$pkgname")
-conflicts=("$pkgname-bin" "$pkgname-git")
+conflicts=("$pkgname-bin" "$pkgname-git" "$pkgname-data")
 source=("https://github.com/cp2k/cp2k/archive/v$pkgver.tar.gz"
-        "basic.$_version"
-        "cuda_plumed.$_version"
-        "cuda.$_version"
-        "plumed.$_version")
-sha256sums=('d7dd5f164e1e51d2dcb8c7d927b99f6ac1d0f8de4a665bd9daee1a14864c30ae'
-            'd26e4b6fdfb2078500dec63cf3e4957fd0465cf25cd7bb116d6ee1800613d305'
-            '466f6f82b6e92b5ad2a5ff3a8faab346ff4cd8205f04572bb1d63dc2c0af9dc7'
-            'f53e90b5129f43b4842aa90f76e38faff2236a6df1cd14deed6310adf8fd7fac'
-            '368fd4effa3bd5750728993e31416cd7187d8dec7648e621e17aa076d2d72a9a')
+        "https://github.com/cp2k/dbcsr/archive/v$_dbcsrver.tar.gz"
+        "basic.psmp"
+        "cuda_plumed.psmp"
+        "cuda.psmp"
+        "plumed.psmp")
+sha256sums=('e244f76d7e1e98da7e4e4b2e6cefb723fa1205cfae4f94739413be74952e8b4e'
+            '1e283a3b9ce90bda321d77f4fa611b09a7eaad167d7bc579b2e9311f7b97b5ec'
+            'ecbb19d6f40bf28abd7b4771e6ad0df899634f31d11ac2da89e58becb01f3ec3'
+            'db6654c5d62f09a1ab166e5f82969f5cbf304cba633a286afd262eb048f5c5f0'
+            'e9c97e220257d0ecf9bec4bd9aaa64c348416286fffc82d2d6f6ceda333196e8'
+            '514d6ea683bb7b904df804e258f9de18274088fc0184a56c2fd4827aa0ae63fe')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
+  
+  # Prepare DBCSR
+  cp -r $srcdir/dbcsr-$_dbcsrver/* exts/dbcsr
   
   # Set up the default build environment
   export _buildmode=0
   export _arch="basic"
   export _corenumber=$( grep -c ^processor /proc/cpuinfo )
+  export _elpaver=$( ls /usr/include | grep elpa | sed 's/elpa_openmp-//g' )
+  export _plumed=$( find /usr/lib -maxdepth 1 -type d -name "plumed*" | awk -F'/' '{print $4}' )
   
   # Enable additional features
-  if [ -d "/opt/cuda" ]
+  if [ $( echo -n $( which nvcc) | tail -c 4 ) == nvcc ]
   then
-    msg2 "Adding CUDA support"
+    echo "Adding CUDA support"
     _buildmode=$((_buildmode | 1))
   fi
   
-  if [ -d "/usr/lib/plumed" ]
+  if [ -n $_plumed ]
   then
-    msg2 "Adding PLUMED support"
+    echo "Adding PLUMED support"
     _buildmode=$((_buildmode | 2))
   fi
   
@@ -51,54 +59,44 @@ prepare() {
     0)
       _arch="basic"
       ;;
-  
     1)
       _arch="cuda"
       ;;
-  
     2)
       _arch="plumed"
       ;;
-  
     3)
       _arch="cuda_plumed"
       ;;
   esac
   
   # Move arch-file into a proper directory  
-  mv ../$_arch.$_version arch/
+  mv ../$_arch.psmp arch
   
   # Changing the location of the data directory
-  sed -i 's@$(CP2KHOME)/data@/usr/share/cp2k/data@g' makefiles/Makefile
-  
-  # Fix python
-  find . -name "*.py" -exec sed -i "s@env python@env python2@g" {} +
-  sed -i "s@env python@env python2@g" tools/build_utils/fypp
-  sed -i "s@env python@env python2@g" makefiles/Makefile
-  
-  # A fix for Kepler GPUs
-  sed -i 's@P100@K20X@g' src/dbcsr/libsmm_acc/libcusmm/generate.py
-  sed -i 's@largeDB(@largeDB1(@g' src/dbcsr/libsmm_acc/libcusmm/parameters_K20X.txt
-  sed -i 's@triples += combinations(6,7,8)@#triples += combinations(6,7,8)@g' src/dbcsr/libsmm_acc/libcusmm/generate.py
-  sed -i 's@triples += combinations(13,14,25,26,32)@#triples += combinations(13,14,25,26,32)@g' src/dbcsr/libsmm_acc/libcusmm/generate.py
+  sed -i 's@$(CP2KHOME)/data@/usr/share/cp2k/data@g' Makefile
 }
 
 build() {
-  cd $srcdir/$pkgname-$pkgver/makefiles
-  
-  make ARCH=$_arch VERSION=$_version
+  cd $srcdir/$pkgname-$pkgver
+  make ARCH=$_arch VERSION=psmp
 }
 
 check() {
+  export DATA_DIR=$srcdir/$pkgname-$pkgver/data
   cd $srcdir/$pkgname-$pkgver/tools/regtesting
-  ./do_regtest -cp2kdir ../.. -nosvn -version $_version -arch $_arch -nobuild -maxtasks $_corenumber
-  msg2 "A few non-critical tests may fail"
+  
+  # In the case of a test failure you must examine it carefully
+  # because it can lead to an unpredictable error during a production run.
+  ./do_regtest -cp2kdir ../.. -version psmp -arch $_arch -nobuild -maxtasks $_corenumber
 }
 
 package() {
   cd $srcdir/$pkgname-$pkgver/exe/$_arch
-
-  install -Dm755 cp2k.$_version $pkgdir/usr/bin/cp2k
-  install -Dm755 cp2k_shell.$_version $pkgdir/usr/bin/cp2k-shell
-  install -Dm755 graph.$_version $pkgdir/usr/bin/cp2k-graph
+  install -dm755 $pkgdir/usr/{bin,share/$pkgname}
+  install -Dm755 cp2k.psmp $pkgdir/usr/bin/cp2k
+  install -Dm755 cp2k_shell.psmp $pkgdir/usr/bin/cp2k-shell
+  install -Dm755 graph.psmp $pkgdir/usr/bin/cp2k-graph
+  cp -r ../../data $pkgdir/usr/share/$pkgname
+  chmod -R 755 $pkgdir/usr/share/$pkgname
 }
