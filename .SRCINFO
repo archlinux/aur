@@ -5,6 +5,11 @@ pkgbase = matrixmixer32.lv2-git
 	url = https://github.com/x42/matrixmixer.lv2
 	arch = x86_64
 	license = GPL
+	depends = lv2
+	depends = cairo
+	depends = glibc
+	depends = glib2
+	depends = pango
 	source = git+https://github.com/x42/matrixmixer.lv2
 	md5sums = SKIP
 
