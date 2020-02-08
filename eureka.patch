@@ -1,14 +1,12 @@
 diff --git a/Makefile b/Makefile
-index 17088c5..234755b 100644
+index ebbd53a..9c1762e 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -140,7 +140,8 @@ stripped: all
- 
+@@ -151,6 +151,7 @@ stripped: all
  INSTALL_DIR=$(DESTDIR)$(PREFIX)/share/eureka
  
--install: stripped
-+install:
+ install: all
 +	install -d $(PREFIX)/bin
- 	install -o root -m 755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin/
+ 	install -m 755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin/
  	install -d $(INSTALL_DIR)/games
  	install -d $(INSTALL_DIR)/common
