@@ -12,7 +12,7 @@ depends=('dbus' 'glib2' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('npm' 'python' 'nodejs')
 #dpkg is not actually needed, it's just to avoid a build failure
 source=("https://github.com/Kylart/KawAnime/archive/v${pkgver}.tar.gz")
-sha256sums=('d929f1e06875445a5974e7296fe56394ac4b838f47717c932c21b877a0dc3aa9')
+sha256sums=('91c2d79ccc2a86aa9ed8fbcf7b0a4f84702494dc9c45e8e58a3055322e91ae45')
 
 build() {
  cd "$srcdir/KawAnime-$pkgver"
