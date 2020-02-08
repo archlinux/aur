@@ -1,6 +1,6 @@
 pkgbase = digilent.waveforms
 	pkgdesc = Digilent WaveForms Application, Runtime and SDK
-	pkgver = 3.12.1
+	pkgver = 3.12.2
 	pkgrel = 1
 	url = https://reference.digilentinc.com/waveforms3
 	install = digilent.waveforms.install
@@ -15,14 +15,14 @@ pkgbase = digilent.waveforms
 	depends = shared-mime-info
 	depends = xdg-utils
 	options = !strip
-	source_i686 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.1/digilent.waveforms_3.12.1_i386.deb
-	sha256sums_i686 = a4f2460acb6ce532b48d12e8f71c220afd389cc29e1985a2dcac9cc1d50cd8de
-	source_x86_64 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.1/digilent.waveforms_3.12.1_amd64.deb
-	sha256sums_x86_64 = 86001723c7712089b7be0cc12e33881542a2e297c0e0b40b77031a6080af6c13
-	source_armv6h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.1/digilent.waveforms_3.12.1_armhf.deb
-	sha256sums_armv6h = 766c00a5e83a7a55d6e9c6b6480153064892570c7d8b0ee712f9c592e8e06040
-	source_armv7h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.1/digilent.waveforms_3.12.1_armhf.deb
-	sha256sums_armv7h = 766c00a5e83a7a55d6e9c6b6480153064892570c7d8b0ee712f9c592e8e06040
+	source_i686 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.2/digilent.waveforms_3.12.2_i386.deb
+	sha256sums_i686 = 6e964f2e6959aa1a9338ee6fbe12b28acf4bf46cc8f26ed914cda2a894eab349
+	source_x86_64 = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.2/digilent.waveforms_3.12.2_amd64.deb
+	sha256sums_x86_64 = 768398db3e2cbf74ffe34e8f6099b2a70252c90208d764cd7e93ffb286f6e7e8
+	source_armv6h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.2/digilent.waveforms_3.12.2_armhf.deb
+	sha256sums_armv6h = 2fdea58b3f14b33a1a296af1a4aecbf0ebfae39c3a51e0ebb8688525f0d86089
+	source_armv7h = https://digilent.s3.amazonaws.com/Software/Waveforms2015/3.12.2/digilent.waveforms_3.12.2_armhf.deb
+	sha256sums_armv7h = 2fdea58b3f14b33a1a296af1a4aecbf0ebfae39c3a51e0ebb8688525f0d86089
 
 pkgname = digilent.waveforms
 
