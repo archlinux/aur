@@ -1,0 +1,22 @@
+pkgbase = c64-debugger-git
+	pkgdesc = Commodore 64 and Atari XL/XE debugger that works in real time
+	pkgver = 0.64.56.8.r40.14fce73
+	pkgrel = 1
+	url = https://sourceforge.net/projects/c64-debugger/
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	license = unknown
+	makedepends = git
+	makedepends = gtk3
+	makedepends = xcb-util
+	makedepends = alsa-lib
+	makedepends = upx
+	provides = c64-debugger
+	conflicts = c64-debugger
+	options = !strip
+	source = c64-debugger::git+https://git.code.sf.net/p/c64-debugger/code
+	md5sums = SKIP
+
+pkgname = c64-debugger-git
+
