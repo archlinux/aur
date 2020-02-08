@@ -1,0 +1,19 @@
+pkgbase = bzr
+	pkgdesc = A decentralized revision control system (bazaar)
+	pkgver = 2.7.0
+	pkgrel = 3
+	url = https://bazaar.canonical.com/
+	arch = x86_64
+	license = GPL
+	depends = python2
+	optdepends = python2-paramiko: SFTP support
+	source = https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz
+	source = https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz.sig
+	source = bzr-lazy-regex.patch
+	validpgpkeys = 84736900600FF95EF23513F52975A150DEF6218F
+	sha256sums = 0d451227b705a0dd21d8408353fe7e44d3a5069e6c4c26e5f146f1314b8fdab3
+	sha256sums = SKIP
+	sha256sums = b53c3dc8cba6f2c9758b61f0e9f40fc8452304e1fec15345e282dcd9d5657542
+
+pkgname = bzr
+
