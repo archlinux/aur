@@ -1,0 +1,7 @@
+post_install() {
+        echo "post_install"
+}
+
+post_upgrade() {
+        echo "post_upgrade"
+}
