@@ -4,13 +4,13 @@
 
 pkgname=jellyfin
 pkgver=10.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('dotnet-runtime' 'ffmpeg' 'sqlite')
-makedepends=('dotnet-sdk' 'yarn')
+depends=('dotnet-runtime-2.2' 'ffmpeg' 'sqlite')
+makedepends=('dotnet-sdk-2.2' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "jellyfin-web-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v$pkgver.tar.gz"
         'jellyfin.conf'
