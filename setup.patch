@@ -1,0 +1,21 @@
+diff -ru --color old/setup.py new/setup.py
+--- old/setup.py	2020-02-08 12:00:56.237165025 +0100
++++ new/setup.py	2020-02-08 12:00:43.487165315 +0100
+@@ -20,7 +20,7 @@
+ ]
+ 
+ install_requires = [
+-    'pycurl<=7.43.0.3',
++    'pycurl<=7.43.0.5',
+     'pyparsing',
+     'future',
+     'six',
+@@ -34,7 +34,7 @@
+ setup(
+     name="wfuzz",
+     include_package_data=True,
+-    data_files=[('docs/user', ['docs/user/advanced.rst'])],
++   #data_files=[('docs/user', ['docs/user/advanced.rst'])],
+     packages=find_packages(where='src'),
+     package_dir={'wfuzz': 'src/wfuzz'},
+     entry_points={

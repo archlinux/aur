@@ -7,10 +7,10 @@
 
 pkgname=wfuzz-git
 pkgver() {
-  cd "${pkgname/-git}"
+  cd "${pkgname%-git}"
   git describe --long --tags | sed 's/v[^0-9]*//;s/-/.r/;s/-g/./'
 }
-pkgver=2.4.5.r0.4d47a60
+pkgver=2.4.5.r13.a645274
 pkgrel=1
 
 pkgdesc='Web application fuzzer - python3 build of the dev branch'
@@ -24,18 +24,24 @@ makedepends=('python-mock' 'python-netaddr' 'python-pip' 'python-sphinx' 'git' '
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git" 'setup.patch')
+sha256sums=('SKIP'
+            'cbea3a1e7e6c8d8c4e74797a67022771c759d9a69c8c57ea7b91680d73565920')
+
+
+prepare() {
+  cd "${pkgname%-git}"
+  patch -Np1 -i ../setup.patch
+}
 
 build() {
-  cd "${pkgname/-git}/docs"
-
+  cd "${pkgname%-git}/docs"
   python conf.py
   make SPHINXOPTS='-Q -j auto' man html
 }
 
 package() {
-  cd "${pkgname/-git}"
+  cd "${pkgname%-git}"
 
   install -Dt "$pkgdir/usr/share/man/man1/" docs/_build/man/*.1
   install -Dt "$pkgdir/usr/share/doc/${pkgname/-git}/" -m644 README.md
