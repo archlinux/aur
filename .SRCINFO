@@ -1,6 +1,6 @@
 pkgbase = igetnonce-s0uthwest-git
 	pkgdesc = Tool for checking booted iOS device nonces - s0uthwest's fork - git version
-	pkgver = r14.8d4f0ae
+	pkgver = r10.6443eb5
 	pkgrel = 1
 	url = https://github.com/s0uthwest/igetnonce
 	arch = x86_64
