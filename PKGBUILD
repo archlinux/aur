@@ -1,24 +1,28 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
-_cranver=0.10
 _cranname=rstudioapi
-pkgname=r-rstudioapi
+_cranver=0.11
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Safely Access the RStudio API'
-arch=('any')
-url='https://cran.r-project.org/package=rstudioapi'
-license=('MIT')
-depends=('r' )
-optdepends=('r-testthat' 'r-knitr' 'r-rmarkdown')
+pkgdesc="Safely Access the RStudio API"
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(MIT)
+depends=(r)
+optdepends=(r-testthat r-knitr r-rmarkdown r-clipr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('c6ac84330a55f2e3dcffd2ec3f829532')
+md5sums=('ab1bb707fa7c94e0647ef4fe8cd0dd13')
 
-build(){
-    R CMD INSTALL rstudioapi_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership rstudioapi "$pkgdir"/usr/lib/R/library
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
