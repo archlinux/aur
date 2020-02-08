@@ -1,0 +1,12 @@
+pkgbase = matrixmixer32.lv2-git
+	pkgdesc = NxM Matrix Mixer LV2 Plugin
+	pkgver = r33.13fe883
+	pkgrel = 1
+	url = https://github.com/x42/matrixmixer.lv2
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/x42/matrixmixer.lv2
+	md5sums = SKIP
+
+pkgname = matrixmixer32.lv2-git
+
