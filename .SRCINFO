@@ -1,0 +1,12 @@
+pkgbase = assetfinder-git
+	pkgdesc = Find domains and subdomains related to a given domain
+	pkgver = r17.e0a2b33
+	pkgrel = 1
+	url = https://github.com/tomnomnom/assetfinder
+	arch = any
+	license = MIT
+	makedepends = go
+	conflicts = assetfinder
+
+pkgname = assetfinder-git
+
