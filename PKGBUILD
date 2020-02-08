@@ -9,7 +9,7 @@
 pkgname=conky19
 _pkgname=conky
 pkgver=1.9.0
-pkgrel=10
+pkgrel=11
 pkgdesc="Advanced system monitor for X - minimal configuration - can coexist with other conky versions"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky/"
@@ -59,6 +59,10 @@ build() {
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
+  mkdir -p ${pkgdir}/usr/share/doc/${pkgname}/
+  for file in doc/*.html; do
+    install -D -m644 "$file" ${pkgdir}/usr/share/doc/${pkgname}/
+  done
   install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   install -D -m644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/${pkgname}rc.vim
   install -D -m644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/${pkgname}rc.vim

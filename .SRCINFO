@@ -1,7 +1,7 @@
 pkgbase = conky19
 	pkgdesc = Advanced system monitor for X - minimal configuration - can coexist with other conky versions
 	pkgver = 1.9.0
-	pkgrel = 10
+	pkgrel = 11
 	url = https://github.com/brndnmtthws/conky/
 	arch = i686
 	arch = x86_64
