@@ -11,7 +11,7 @@ _fullname="$pkgname-$_fullver"
 _web_buildid="166-78faf811b12c68"
 _web_desktop_ver="3.104.2-1b12c68"
 _web_tv_ver="4.23.1-78faf81"
-pkgrel=4
+pkgrel=5
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
@@ -46,10 +46,10 @@ prepare() {
            CMakeModules/VersionConfiguration.cmake
 
     mkdir -p build/dependencies
-    for f in "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"{,.sha1} "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz"{,.sha1}; do
-        ln -sf "${srcdir}/${f}" "build/dependencies/${f}"
+    for f in "buildid-${_web_buildid}.cmake"; do
+         ln -sf "${srcdir}/${f}" "build/dependencies/${f}"
     done
-    for f in "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"{,.sha1} ; do
+    for f in "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"{,.sha1} "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz"{,.sha1}; do
         target="${f/-${_web_buildid}-/-}"
         ln -sf "${srcdir}/${f}" "build/dependencies/${target}"
     done
