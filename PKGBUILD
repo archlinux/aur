@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=kawanime
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 provides=("kawanime")
 conflicts=("kawanime")
 pkgdesc="Desktop app for anime fans"
@@ -18,7 +18,7 @@ build() {
  cd "$srcdir/KawAnime-$pkgver"
  export VUE_APP_ANILIST_CLIENT_ID=2025
  npm install
- npm run dist:linux
+ npm run build -- --linux deb
 }
 
 package() {
