@@ -1,0 +1,12 @@
+pkgbase = simutrans-pak128.japan
+	pkgdesc = High resolution graphics set for Simutrans, with a british theme
+	pkgver = 0.17
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = GPL
+	source = http://pak128.jpn.org/souko/pak128.japan.120.0.cab
+	sha256sums = 7493a9615761e799879b7902281c254a1977fba23f4d1040903ee2be8148d472
+
+pkgname = simutrans-pak128.japan
+
