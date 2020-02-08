@@ -1,0 +1,34 @@
+pkgbase = ros-melodic-hector-gazebo-plugins
+	pkgdesc = ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://wiki.ros.org/hector_gazebo_plugins
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-gazebo-dev
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-gazebo-ros
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-tf
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-message-runtime
+	depends = gazebo
+	source = ros-melodic-hector-gazebo-plugins-0.5.1.tar.gz::https://github.com/tu-darmstadt-ros-pkg/hector_gazebo/archive/0.5.1.tar.gz
+	sha256sums = c99d1e4b95360f0544fed91ca51ae469c09fefcdb10a7adfde002a94cda8531b
+
+pkgname = ros-melodic-hector-gazebo-plugins
+
