@@ -1,8 +1,4 @@
-# Maintainer: Mike Achtelik <mike_achtelik at hotmail dot com>
-# Contributor: David Birks <david@tellus.space>
-# Contributor: Michele Cereda <cereda.michele@gmail.com>
-# Contributor: JokerYu <dayushinn@gmail.com>
-# Contributor: Olivier Bilodeau <obilodeau@gosecure.ca>
+# Maintainer: Rodrigo Quelhas <rodrigo_quelhas@outlook.pt>
 
 pkgname="barracudavpn"
 pkgver="5.0.2.7"
