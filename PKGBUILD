@@ -15,9 +15,9 @@ _use_ppa=true
 
 pkgbase=gtk3-ubuntu
 pkgname=(gtk3-ubuntu gtk-update-icon-cache-ubuntu)
-_ubuntu_ver=3.24.11
+_ubuntu_ver=3.24.13
 _ubuntu_rel=1ubuntu1
-pkgver=3.24.11
+pkgver=3.24.13
 pkgrel=2
 pkgdesc="GObject-based multi-platform toolkit"
 arch=(x86_64)
@@ -25,7 +25,7 @@ url="http://www.gtk.org/"
 depends=(adwaita-icon-theme at-spi2-atk atk cairo cantarell-fonts colord dconf desktop-file-utils gdk-pixbuf2 gtk-update-icon-cache json-glib libcanberra libcups libepoxy librsvg libxcomposite libxcursor libxdamage libxi libxinerama libxkbcommon libxrandr mesa pango rest shared-mime-info wayland wayland-protocols gtk-update-icon-cache)
 makedepends=(gobject-introspection git gtk-doc glib2-docs sassc)
 license=(LGPL)
-_commit=622111f1caf9104251de79bfa27ccfba9614cc90  # tags/3.24.11^0
+_commit=f737908d2f7dc121e0d85507c16fd7a399d4b36a  # tags/3.24.13^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
 	settings.ini
 	gtk-query-immodules-3.0.hook
@@ -39,7 +39,7 @@ sha512sums=('SKIP'
             'f0ffd95544863f2e10fda81488b4727aa9a8a35a7d39fb96872db6664d03442db2b58af788b5990825c7b3a83681f7220ca481409cca5421dfb39b9a3bbac9ac'
             'abfd73de4faa6f53784182800395aa3c39bb98e15a0eb300fb4142073ff7ce565a0836a2363393b2f132060b5293dbc0c30c380a023f38d5bd39c62cb58389c2'
             '5cd50d93bb6bc203438a2a0764bd717409658e124058b18a1da26a21f10ef7564a16f32fc0633a68b45b2e303fa63a5efefeadd6b0bf1d7f474556df8cdb6c58'
-            '191b4d4cb3c690a818c09ff36d42b6f58db63cc0e924d9900fce5b1715d227d7702b85caa3c721640fb18cd59a9c9af6e31b2d2387e14e89cf5516006e4c63e7')
+            'bf7c8572421711fdf2e82be0d18b6a93747ac9ed236e4bcc8ab65e66d927ee704c6633f9479206c394e7823ed03958e98d43c2e21e4d2be3a7c8db7bb7bef1e0')
 
 pkgver() {
   cd gtk
@@ -50,28 +50,27 @@ prepare() {
     cd gtk
 
     local patches=(
-        gdk-Don-t-distribute-generated-files-in-tarballs.patch
-        gtk-Really-don-t-distribute-built-files.patch
-        demos-examples-tests-Don-t-distribute-built-files.patch
-        016_no_offscreen_widgets_grabbing.patch
-        017_no_offscreen_device_grabbing.patch
-        022_disable-viqr-im-for-vi-locale.patch
-        060_ignore-random-icons.patch
-        reftest-known-fail.patch
-        Don-t-test-default-constructed-GdkPixbuf-properties.patch
-        Disable-accessibility-dump-aka-a11ytests-test.patch
-        073_treeview_almost_fixed.patch
-        bzg_gtkcellrenderer_grabbing_modifier.patch
-        ubuntu_gtk_custom_menu_items.patch
-        print-dialog-show-options-of-remote-dnssd-printers.patch
-        uimanager-guard-against-nested-node-updates.patch
-        x-canonical-accel.patch
-        message-dialog-restore-traditional-look-on-unity.patch
-        0001-gtk-reftest-Force-icon-theme-to-Adwaita.patch
-        0001-calendar-always-emit-day-selected-once.patch
-        0001-gtkwindow-set-transparent-background-color.patch
-        unity-border-radius.patch
-        unity-headerbar-maximized-mode.patch
+       gdk-Don-t-distribute-generated-files-in-tarballs.patch
+       gtk-Really-don-t-distribute-built-files.patch
+       demos-examples-tests-Don-t-distribute-built-files.patch
+       016_no_offscreen_widgets_grabbing.patch
+       017_no_offscreen_device_grabbing.patch
+       060_ignore-random-icons.patch
+       reftest-known-fail.patch
+       Don-t-test-default-constructed-GdkPixbuf-properties.patch
+       Disable-accessibility-dump-aka-a11ytests-test.patch
+       073_treeview_almost_fixed.patch
+       bzg_gtkcellrenderer_grabbing_modifier.patch
+       ubuntu_gtk_custom_menu_items.patch
+       print-dialog-show-options-of-remote-dnssd-printers.patch
+       uimanager-guard-against-nested-node-updates.patch
+       x-canonical-accel.patch
+       message-dialog-restore-traditional-look-on-unity.patch
+       0001-gtk-reftest-Force-icon-theme-to-Adwaita.patch
+       0001-calendar-always-emit-day-selected-once.patch
+       0001-gtkwindow-set-transparent-background-color.patch
+       unity-border-radius.patch
+       unity-headerbar-maximized-mode.patch
     )
 
     for i in "${patches[@]}"; do
