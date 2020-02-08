@@ -1,0 +1,25 @@
+From f4e1bd75594efacecf916fdc3c3766a4db55937c Mon Sep 17 00:00:00 2001
+From: 0x9fff00 <0x9fff00+git@protonmail.ch>
+Date: Sat, 8 Feb 2020 19:09:11 +0100
+Subject: [PATCH 3/3] Don't overwrite CFLAGS
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 88f0ff6..f0b2683 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -27,7 +27,7 @@ case $host_os in
+ esac
+ 
+ # Checks the flags.
+-CFLAGS="-DIDEVICERESTORE_NOMAIN=1 -DTSSCHECKER_NOMAIN=1"
++CFLAGS+=" -DIDEVICERESTORE_NOMAIN=1 -DTSSCHECKER_NOMAIN=1"
+ CXXFLAGS+=" -std=gnu++11"
+ CFLAGS+=" -std=gnu11"
+ 
+-- 
+2.25.0
+
