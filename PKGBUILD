@@ -1,34 +1,34 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-jupyter_telemetry
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Configurable event-logging for Jupyter applications and extensions"
 url="https://github.com/jupyter/telemetry"
 arch=('any')
 license=('BSD')
 depends=('python-json-logger' 'python-jsonschema' 'python-ruamel-yaml' 'python-traitlets')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=(
-  "git+https://github.com/jupyter/telemetry.git#tag=v$pkgver"
+  "https://files.pythonhosted.org/packages/source/j/jupyter_telemetry/jupyter_telemetry-$pkgver.tar.gz"
 )
 sha256sums=(
-  'SKIP'
+  'd3eaac14be17510a4d288f3737580107ce14eef543e6133d56654d3f0e742b9b'
 )
 
 build() {
-    cd "telemetry"
+    cd "jupyter_telemetry-$pkgver"
     python setup.py build
 }
 
 check() {
-    cd "telemetry"
+    cd "jupyter_telemetry-$pkgver"
     PYTHONPATH="$PWD/build/lib:$PYTHONPATH" PYTHONDONTWRITEBYTECODE=1 pytest -v
 }
 
 package() {
-    cd "telemetry"
+    cd "jupyter_telemetry-$pkgver"
     python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1 --skip-build
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
