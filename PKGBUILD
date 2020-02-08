@@ -1,12 +1,12 @@
 # Maintainer: Vincent Hourdin <vh|at|free-astro=DOT=vinvin.tf>
 pkgname=siril-git
 _gitname=siril
-pkgver=745e41d
+pkgver=d1369ef5
 pkgrel=1
 pkgdesc="An astronomical image processing software for Linux. (IRIS clone)"
 arch=('i686' 'x86_64')
 license=('GPLv3')
-depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv')
+depends=('gtk3' 'fftw' 'cfitsio' 'gsl' 'libconfig' 'opencv' 'exiv2')
 makedepends=('intltool')
 url="https://free-astro.org/index.php/Siril"
 optdepends=('libpng: PNG import'
