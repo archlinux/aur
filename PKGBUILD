@@ -1,7 +1,7 @@
 # Maintainer: Ruzsa Balazs <ruzsa.balazs@gmail.com>
 pkgname=c64-debugger-git
 pkgver=0.64.56.8.r40.14fce73
-pkgrel=1
+pkgrel=2
 pkgdesc="Commodore 64 and Atari XL/XE debugger that works in real time"
 arch=('x86_64' 'i686' 'pentium4')
 url="https://sourceforge.net/projects/c64-debugger/"
@@ -34,5 +34,8 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}/MTEngine"
 	/usr/bin/install -d "${pkgdir}/usr/bin"
+	/usr/bin/install -d "${pkgdir}/usr/share/doc/${pkgname%-git}"
 	/usr/bin/install -m 755 c64debugger "${pkgdir}/usr/bin"
+	/usr/bin/install -m 644 Assets/*.txt "${pkgdir}/usr/share/doc/${pkgname%-git}"
+	/usr/bin/install -m 644 Assets/*.pdf "${pkgdir}/usr/share/doc/${pkgname%-git}"
 }
