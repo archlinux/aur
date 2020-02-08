@@ -20,7 +20,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1" #?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.desktop"
         'update-relays.sh')
@@ -28,9 +28,9 @@ sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
             '89267795175c5be95d13e8f700b69654faf2f38f35be5033eb8e94da404d2353')
-              #'EA0A77BF9E115615FC3BD8BC7653B940E494FE87' SIGNATURE NOT FOUND
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
-validpgpkeys=('8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
               # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {

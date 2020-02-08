@@ -16,10 +16,11 @@ pkgbase = mullvad-vpn-beta
 	depends = nss
 	provides = mullvad-vpn
 	conflicts = mullvad-vpn
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.1-beta1
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.1-beta1?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=90b0c06b59a0b9d6cda69924377335f39854b216?signed
 	source = mullvad-vpn.desktop
 	source = update-relays.sh
+	validpgpkeys = EA0A77BF9E115615FC3BD8BC7653B940E494FE87
 	validpgpkeys = 8339C7D2942EB854E3F27CE5AEE9DECFD582E984
 	sha256sums = SKIP
 	sha256sums = SKIP
