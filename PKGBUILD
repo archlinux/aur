@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=dracut-antievilmaid-git
-_gitname=antievilmaid
-pkgver=31.414fd06
+_gitname=qubes-antievilmaid
+pkgver=316.9716fa5
 pkgrel=1
 pkgdesc="Dracut module and conf file to enable Anti Evil Maid support."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 optdepends=("antievilmaid: Anti Evil Maid installation script")
 provides=('dracut-antievilmaid')
 conflicts=('dracut-antievilmaid')
-source=('git://git.qubes-os.org/joanna/antievilmaid.git')
+source=('git+https://github.com/QubesOS/qubes-antievilmaid.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,11 +23,11 @@ pkgver() {
 package() {
   cd $_gitname
 
-  install -D -m0644 dracut-antievilmaid/anti-evil-maid.conf \
+  install -D -m0644 etc/dracut.conf.d/anti-evil-maid.conf \
     "$pkgdir/etc/dracut.conf.d/anti-evil-maid.conf"
 
   install -d -m0755 "$pkgdir/usr/lib/dracut/modules.d"
-  cp -r dracut-antievilmaid/90anti-evil-maid \
+  cp -r 90anti-evil-maid \
     "$pkgdir/usr/lib/dracut/modules.d/"
 }
 
