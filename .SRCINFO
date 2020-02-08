@@ -1,0 +1,15 @@
+pkgbase = digestif
+	pkgdesc = A code analyzer and Language Server Protocol implementation for [La|Con|Bib]TeX[t] documents.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/astoff/digestif
+	arch = any
+	makedepends = luarocks
+	depends = lua
+	depends = lua-lpeg
+	depends = lua-dkjson
+	source = digestif-0.2.tar.gz::https://github.com/astoff/digestif/archive/0.2.tar.gz
+	sha256sums = eb7cf6e277e9eab68a5eeace2d904d5689b9d93ba7dff975da77d71a522c6140
+
+pkgname = digestif
+
