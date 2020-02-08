@@ -1,6 +1,6 @@
 pkgbase = kawanime
 	pkgdesc = Desktop app for anime fans
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 2
 	url = https://github.com/Kylart/KawAnime
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = kawanime
 	depends = desktop-file-utils
 	provides = kawanime
 	conflicts = kawanime
-	source = https://github.com/Kylart/KawAnime/archive/v0.4.1.tar.gz
+	source = https://github.com/Kylart/KawAnime/archive/v0.4.2.tar.gz
 	sha256sums = d929f1e06875445a5974e7296fe56394ac4b838f47717c932c21b877a0dc3aa9
 
 pkgname = kawanime

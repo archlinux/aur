@@ -1,6 +1,6 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=kawanime
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=2
 provides=("kawanime")
 conflicts=("kawanime")
