@@ -2,8 +2,8 @@
 
 _name=futurerestore
 pkgname=$_name-git
-pkgver=r180.38b1680
-pkgrel=1
+pkgver=r182.88861b6
+pkgrel=2
 pkgdesc='iOS upgrade and downgrade tool utilizing SHSH blobs - git version'
 arch=('x86_64')
 url="https://github.com/tihmstar/$_name"
@@ -17,18 +17,14 @@ source=("git+$url.git"
         'git+https://github.com/tihmstar/tsschecker.git'
         'git+https://github.com/tihmstar/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'
-        "$_name-0001-Exclude-subdirs-from-install.patch"
-        "$_name-0002-Fix-incorrect-language-standard.patch"
-        "$_name-0003-Don-t-overwrite-CFLAGS.patch"
+        "$_name-0001-Fix-incorrect-language-standard.patch"
         'tsschecker-0001-Fix-incorrect-language-standard.patch'
         'idevicerestore-0001-configure.ac-check-for-pthreads.patch')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '173e2299818e9a29183dc805301960ccd07f7fde1abc5ffa6f4cf82d365f5ae9'
-            '068a9581b71ba6625062d2eb13ad716dfe865bfa057692f4b62f7963f659e34c'
-            '79de9311acdf8a382293b499a671bbd7a434266d33f78227bfab645afe2b4c03'
+            '18ff40ea773b1af3cf37fed3964e2f8d0a8badfb908c3e9697e920be08901883'
             '3fcde7558ae9f5ebfa930a2b02074251a6817e2a984c8d0e18113baa0ea708a5'
             '0e40eb0567a96a619fce0f2daf8bb4779a9753554ed7356bd04cf0ea15d18296')
 

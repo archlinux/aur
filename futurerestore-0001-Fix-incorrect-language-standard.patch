@@ -1,20 +1,20 @@
-From 52aae49ebe45629040114606cd97e2bf3bd05f79 Mon Sep 17 00:00:00 2001
+From b014224a07540ce0d75b745fed486c33c8d4611f Mon Sep 17 00:00:00 2001
 From: 0x9fff00 <0x9fff00+git@protonmail.ch>
 Date: Fri, 8 Nov 2019 23:30:28 +0100
-Subject: [PATCH 2/3] Fix incorrect language standard
+Subject: [PATCH] Fix incorrect language standard
 
 ---
  configure.ac | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 0af46b1..88f0ff6 100644
+index 38965fb..f0b2683 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -28,8 +28,8 @@ esac
  
  # Checks the flags.
- CFLAGS="-DIDEVICERESTORE_NOMAIN=1 -DTSSCHECKER_NOMAIN=1"
+ CFLAGS+=" -DIDEVICERESTORE_NOMAIN=1 -DTSSCHECKER_NOMAIN=1"
 -CXXFLAGS+=" -std=c++11"
 -CFLAGS+=" -std=c11"
 +CXXFLAGS+=" -std=gnu++11"
