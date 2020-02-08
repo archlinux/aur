@@ -1,7 +1,7 @@
 # Maintainer: Hilary Jendrasiak <sylogista@sylogista.pl>
 pkgname='noaa-apt'
 pkgdesc='NOAA APT image decoder with GUI'
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 arch=('x86_64') 
 url="https://github.com/martinber/${pkgname}"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gsl' 'gtk3')
 makedepends=('cargo' 'rustup')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('ec01c9cc5dfc19cfa1e15a7ce6f81c21aba2cccc79e34a25c2a58e0a3748f2ffc8bad4c094d7e14079c3aeab270e0419acbfbba4f1dcfe3c9f16fc9227f2151e')
+sha512sums=('59add018617af7f0ee022c3dd39d14c2f4306de6364fcd2e604b6b064b5296acc41d0a46fc55f37263b64189a687a5b3636fd65721960f70926e45f1615866d4')
 
 build()
 {
