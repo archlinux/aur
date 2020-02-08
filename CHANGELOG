@@ -1597,3 +1597,12 @@ Sat Feb 8 15:05:05 2020 +0100
     
     Notable changes:
      2020-02-08 8e0ee37 actionless fix(install_cli): run mksrcinfo only after all files have been reviewed
+
+
+Sat Feb 8 16:32:36 2020 +0100
+-------------------------------------------------
+1.6.3           Hotfix release 1.6.3
+    
+    Notables changes:
+     2020-02-08 80d9409 actionless Revert "fix(install_cli): run mksrcinfo only after all files have been reviewed"
+     2020-02-08 47f2eb1 actionless fix(build): run mksrcinfo only after all files have been reviewed
