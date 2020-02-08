@@ -1,8 +1,8 @@
 diff --git a/proton b/proton
-index 22b5112..f0edf82 100755
+index 3a9422a..e4ef2c2 100755
 --- a/proton
 +++ b/proton
-@@ -104,39 +104,15 @@ class Proton:
+@@ -102,39 +102,15 @@ class Proton:
          self.user_settings_file = self.path("user_settings.py")
          self.wine_bin = self.bin_dir + "wine"
          self.wineserver_bin = self.bin_dir + "wineserver"
@@ -44,3 +44,12 @@ index 22b5112..f0edf82 100755
  
  class CompatData:
      def __init__(self, compatdata):
+@@ -396,8 +372,6 @@ class Session:
+ 
+         self.env["WINEDLLPATH"] = g_proton.lib64_dir + "/wine:" + g_proton.lib_dir + "/wine"
+ 
+-        self.env["GST_PLUGIN_SYSTEM_PATH_1_0"] = g_proton.lib64_dir + "gstreamer-1.0" + ":" + g_proton.lib_dir + "gstreamer-1.0"
+-        self.env["WINE_GST_REGISTRY_DIR"] = g_compatdata.path("gstreamer-1.0/")
+ 
+         if "PATH" in os.environ:
+             self.env["PATH"] = g_proton.bin_dir + ":" + os.environ["PATH"]

@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-_pkgver=4.11-12
-pkgver=${_pkgver//-/.}
-_geckover=2.47
+pkgver=5.0.1
+_srctag=${pkgver%.*}-${pkgver##*.}
+_geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=4
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -29,7 +29,7 @@ depends=(
   desktop-file-utils
   python
   steam-native-runtime
-  "wine-gecko>=$_geckover"
+  "wine-gecko-bin>=$_geckover"
   "wine-mono-bin>=$_monover"
 #  "dxvk>=$_dxvkver"
 )
@@ -98,7 +98,7 @@ optdepends=(
 )
 makedepends=(${makedepends[@]} ${depends[@]})
 source=(
-    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_pkgver
+    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_srctag
     wine-valve::git+https://github.com/ValveSoftware/wine.git
     vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
@@ -108,6 +108,10 @@ source=(
     SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-Headers.git
     Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
     FAudio::git+https://github.com/FNA-XNA/FAudio.git
+#    gstreamer::git+https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+#    gst-plugins-base::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-base.git
+#    gst-plugins-good::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-good.git
+#    glib::git+https://gitlab.gnome.org/GNOME/glib.git
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
     dxvk-extraopts.patch
@@ -123,8 +127,12 @@ sha256sums=(
     SKIP
     SKIP
     SKIP
-    'ef7d597550f11268df95cd52b6a3e6b689a98101eb9102582e5a3fcfa69f69df'
-    '7418f1ceca081e1b68d933ea6dd5da0351c7cc26e41667e3b3bc49c030504782'
+#    SKIP
+#    SKIP
+#    SKIP
+#    SKIP
+    'dd90298150a6facedd3c73419f35a5ff41ec4d518aaf6d259d9d5293c4d72d34'
+    'f12df8e1e2dcb6bcced6fdccfdf044b2dc55714712efd577fd5d92abfad0f5c5'
     '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
 )
 
@@ -143,6 +151,12 @@ prepare() {
         git config submodule."${submodule}".url ../"${submodule#*/}"-valve
         git submodule update "${submodule}"
     done
+
+#    for submodule in gstreamer gst-plugins-{base,good} glib; do
+#        git submodule init "${submodule}"
+#        git config submodule."${submodule}".url ../"${submodule#*/}"
+#        git submodule update "${submodule}"
+#    done
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
@@ -219,6 +233,8 @@ package() {
     mkdir -p "$pkgdir/usr/share/steam/compatibilitytools.d"
     mv dist "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}"
 
+    find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
+        -exec chmod go-w {} \;
     find "$pkgdir/usr/share/steam/compatibilitytools.d/${pkgname%-git}" \
         -type f \
         -not -path "*/proton" \
