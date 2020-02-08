@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-rt
 	pkgdesc = Linux Xanmod real-time version
-	pkgver = 5.4.10
+	pkgver = 5.4.17
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -17,17 +17,18 @@ pkgbase = linux-xanmod-rt
 	makedepends = imagemagick
 	makedepends = cpio
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/5.4.10-rt5-xanmod.tar.gz
+	source = https://github.com/xanmod/linux/archive/5.4.17-rt9-xanmod.tar.gz
 	source = choose-gcc-optimization.sh
-	sha256sums = 2e7f074bc7e54fed25c25097523079ae314cd599f5df8f66a8f4d3afd35f9ecf
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b
+	sha256sums = 5b7591a7a8b0f453ffa4e4077b09bc7d423059a0496e6f3985456b908ace6fef
 	sha256sums = 8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748
+	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
 
 pkgname = linux-xanmod-rt
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
-	depends = linux-firmware
 	depends = kmod
-	depends = mkinitcpio
+	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 

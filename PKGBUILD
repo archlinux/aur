@@ -50,8 +50,8 @@ fi
 ##
 
 pkgbase=linux-xanmod-rt
-pkgver=5.4.10
-xanmod=5
+pkgver=5.4.17
+xanmod=9
 pkgrel=1
 _rev=
 pkgdesc='Linux Xanmod real-time version'
@@ -67,10 +67,12 @@ _srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
 
 source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod${_rev}.tar.gz
        choose-gcc-optimization.sh
+       '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b'
 )
 
-sha256sums=('2e7f074bc7e54fed25c25097523079ae314cd599f5df8f66a8f4d3afd35f9ecf'
-            '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748')
+sha256sums=('5b7591a7a8b0f453ffa4e4077b09bc7d423059a0496e6f3985456b908ace6fef'
+            '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
+            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -123,6 +125,11 @@ prepare() {
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
+  if [ "$use_ns" = "n" ]; then
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  fi
+
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
@@ -146,7 +153,7 @@ build() {
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches"
-  depends=(coreutils linux-firmware kmod mkinitcpio)
+  depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
