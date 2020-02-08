@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=nlme
-_cranver=3.1-143
+_cranver=3.1-144
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.4.0')
 makedepends=(gcc)
 optdepends=(r-hmisc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('51848473d43e8130fcf668566de91588')
+md5sums=('1438f6b71c9aa06d8208992a2cfe27b9')
 
 build() {
   cd "${srcdir}"
