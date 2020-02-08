@@ -22,7 +22,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.2.43
+pkgver=1.3.113
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -40,13 +40,17 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'chromium-vaapi-fix.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=becfa71f57e28821900f1ec06b2863f1886fbf60
+arch_revision=530904e0084bde444db4372c1569476654852e6b
 for Patches in \
-  launch_manager.h-uses-std-vector.patch \
-  include-algorithm-to-use-std-lower_bound.patch \
-  icu65.patch \
-  fix-spammy-unique-font-matching-log.patch \
-  chromium-skia-harmony.patch
+        cros-search-service-Include-cmath-for-std-pow.patch \
+        move-RemoteTreeNode-declaration.patch \
+        sync-enable-USSPasswords-by-default.patch \
+        fix-shim-header-generation-when-unbundling-ICU.patch \
+        fix-building-with-system-zlib.patch \
+        remove-verbose-logging-in-local-unique-font-matching.patch \
+        fix-building-with-unbundled-libxml.patch \
+        fix-browser-frame-view-not-getting-a-relayout.patch \
+        chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
 done
@@ -56,10 +60,14 @@ sha256sums=('SKIP'
             '5a5f71370a02a6406d5f072f21bd98b4ea56d458608942bf78b6ebd8dc201c5a'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
-            'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
-            '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
-            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
-            '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
+            '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
+            '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
+            '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
+            'e477aa48a11ca4d53927f66a9593567fcd053325fb38af30ac3508465f1dd1f6'
+            '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
+            '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
+            'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
+            '5db225565336a3d9b9e9f341281680433c0b7bb343dff2698b2acffd86585cbe'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 prepare() {
@@ -82,18 +90,33 @@ prepare() {
     cd src/
     patch -Np1 -i "${srcdir}/chromium-vaapi-fix.patch"
 
-    # https://crbug.com/819294
-    patch -Np1 -i "${srcdir}/launch_manager.h-uses-std-vector.patch"
-    patch -Np1 -i "${srcdir}/include-algorithm-to-use-std-lower_bound.patch"
-
-    # https://crbug.com/1014272
-    patch -Np1 -i "${srcdir}/icu65.patch"
-
+    # https://crbug.com/957519
+    patch -Np1 -i "${srcdir}"/cros-search-service-Include-cmath-for-std-pow.patch
+    patch -Np1 -i "${srcdir}"/move-RemoteTreeNode-declaration.patch
+  
+    # https://crbug.com/1027929
+    patch -Np1 -i "${srcdir}"/sync-enable-USSPasswords-by-default.patch
+  
+    # https://crbug.com/989153
+    patch -Np1 -i "${srcdir}"/fix-shim-header-generation-when-unbundling-ICU.patch
+  
+    # https://crbug.com/977964
+    patch -Np1 -i "${srcdir}"/fix-building-with-system-zlib.patch
+  
     # https://crbug.com/1005508
-    patch -Np1 -i "${srcdir}/fix-spammy-unique-font-matching-log.patch"
-
+    patch -Np1 -i "${srcdir}"/remove-verbose-logging-in-local-unique-font-matching.patch
+  
+    # https://crbug.com/1043042
+    patch -Np1 -i "${srcdir}"/fix-building-with-unbundled-libxml.patch
+  
+    # https://crbug.com/1046122
+    patch -Np1 -i "${srcdir}"/fix-browser-frame-view-not-getting-a-relayout.patch
+  
     # https://crbug.com/skia/6663#c10
-    patch -Np0 -i "${srcdir}/chromium-skia-harmony.patch"
+    patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
+  
+    # Force script incompatible with Python 3 to use /usr/bin/python2
+    sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
 
     # Hacky patching
     sed -e 's/enable_distro_version_check = true/enable_distro_version_check = false/g' -i chrome/installer/linux/BUILD.gn
