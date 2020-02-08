@@ -6,7 +6,7 @@
 
 pkgname=chromium-no-extras
 pkgver=80.0.3987.87
-pkgrel=1
+pkgrel=2
 _pkgname=chromium
 _launcher_ver=6
 pkgdesc="Chromium without hangout services, widevine, pipewire, or chromedriver"
@@ -35,6 +35,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         remove-verbose-logging-in-local-unique-font-matching.patch
         fix-building-with-unbundled-libxml.patch
         fix-browser-frame-view-not-getting-a-relayout.patch
+        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+        rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-skia-harmony.patch)
 sha256sums=('f51f6fca5d9abbef855aa6b5bf427410c6e96ae58b64a7d45f843868cfb0ac8e'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
@@ -46,6 +48,8 @@ sha256sums=('f51f6fca5d9abbef855aa6b5bf427410c6e96ae58b64a7d45f843868cfb0ac8e'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
             '5db225565336a3d9b9e9f341281680433c0b7bb343dff2698b2acffd86585cbe'
+            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -117,6 +121,10 @@ prepare() {
 
   # https://crbug.com/1046122
   patch -Np1 -i ../fix-browser-frame-view-not-getting-a-relayout.patch
+
+  # https://crbug.com/1049258
+  patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+  patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
