@@ -2,9 +2,9 @@
 
 _pkgname=citra
 pkgname=$_pkgname-canary-git
-pkgver=r8261.e869f3604
+pkgver=r8266.e56b20f90
 pkgrel=1
-pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger written in C++"
+pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
 url="https://github.com/citra-emu/citra-canary/tree/master"
 license=('GPL2')
