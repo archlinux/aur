@@ -7,6 +7,7 @@ pkgbase = zulu-embedded-jdk8
 	arch = armv6h
 	arch = armv7h
 	arch = armv8h
+	arch = aarch64
 	arch = i686
 	arch = x86_64
 	license = custom
