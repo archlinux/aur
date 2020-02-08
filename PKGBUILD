@@ -1,6 +1,6 @@
 pkgname=fast-p
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)'
 arch=('x86_64')
 repo="github.com/bellecp/$pkgname"
@@ -15,7 +15,7 @@ gopkg="gopath/src/$repo"
 
 prepare() {
   mkdir -p ${gopkg%/*}
-  ln -rsf $pkgname-$pkgver $gopkg
+  ln -rTsf $pkgname-$pkgver $gopkg
   export GOPATH="$srcdir"/gopath
   cd $gopkg
   go get -v -d
@@ -25,13 +25,20 @@ build() {
   export GOPATH="$srcdir"/gopath
   cd $gopkg
   go install \
-    -gcflags "all=-trimpath=$PWD" \
-    -asmflags "all=-trimpath=$PWD" \
+    -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
     -v ./...
 }
 
+# ?   	github.com/bellecp/fast-p	[no test files]
+# check() {
+#   export GOPATH="$srcdir"/gopath
+#   cd $gopkg
+#   go test ./...
+# }
+
 package() {
   install -Dm755 gopath/bin/$pkgname "$pkgdir"/usr/bin/$pkgname
+  cd $pkgname-$pkgver
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/LICENSE
 }
-
