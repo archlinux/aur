@@ -24,13 +24,7 @@ install='snort.install'
 source=("https://www.snort.org/downloads/snort/${pkgname}-${pkgver}.tar.gz"
     "http://rules.emergingthreats.net/open/${pkgname}-2.9.0/emerging.rules.tar.gz"
     'snort@.service'
-    '001-gettid.patch'
 )
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-#    patch -p1 -i ../001-gettid.patch
-}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -66,5 +60,4 @@ package() {
 
 md5sums=('1021a58c7429a782d6d1917b36988923'
          'SKIP'
-         'a847030a34396e6b2d1cacd272ad42da'
-         'e64ad9f6aa6aac04f596d2478597df5d')
+         'a847030a34396e6b2d1cacd272ad42da')
