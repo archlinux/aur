@@ -3,28 +3,30 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.39.0.r5.gea459044a
+pkgver=1.39.7.r25.g037795888
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
 url="http://emscripten.org"
 license=('custom')
 depends=('nodejs' 'python2' 'python' 'libxml2')
-makedepends=('git' 'cmake' 'clang' 'ocaml-ctypes')
+makedepends=('git' 'ninja' 'cmake' 'clang' 'ocaml-ctypes')
 optdepends=('java-runtime: for using clojure'
 	    'gcc-go: for using llvm-go, go may also work'
 	    'ruby: for running some scripts')
 conflicts=('emscripten')
 provides=('emscripten')
-source=('git://github.com/kripken/emscripten.git#branch=incoming'
-        'git://github.com/kripken/emscripten-fastcomp.git#branch=incoming'
-        'git://github.com/kripken/emscripten-fastcomp-clang.git#branch=incoming'
+source=('git://github.com/kripken/emscripten.git'
+	'git+https://github.com/llvm/llvm-project.git#commit=411f1885b655ea622fe124a87a6eadfd988d7a5e'
         'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
+	'arch-template.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/arch-template.patch?h=packages/emscripten'
+	'libcxxabi-include-libunwind.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libcxxabi-include-libunwind.patch?h=packages/emscripten'
         'emscripten.config')
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP'
             '44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5'
+            '770f6c6322efeb280789e4d069ca19ad6621bb3867d3d51c86fe9f2256fb2fb0'
+            'db6ec4197d971c3d32d12df7871a1334e6c14d39174616dbb2217dcb03f40707'
             'f5c3836a05f51285c12033607ba174c72576644d59a534ebe6b0476912642d7f')
 
 pkgver() {
@@ -33,65 +35,46 @@ pkgver() {
 }
 
 prepare() {
-  sed '1s|python$|python2|' -i "$srcdir"/${pkgname%-git}-fastcomp-clang/tools/scan-view/bin/scan-view 
-  cd "$srcdir"/${pkgname%-git}-fastcomp
-  
-  # put clang source into the right place (http://git.io/i1GBkg)
-  [[ -d tools/clang ]] && rm -rf tools/clang
-  ln -s "$srcdir"/${pkgname%-git}-fastcomp-clang tools/clang
-
-  # reset folder for out-of-source build
-  [[ -d build ]] && rm -rf build
-  mkdir build
+  cd ${pkgname%-git}
+  patch -Np1 --no-backup-if-mismatch -i "$srcdir"/arch-template.patch
+  [[ -d "$srcdir"/llvm-project/llvm/build ]] || mkdir "$srcdir"/llvm-project/llvm/build
 }
 
 build() {
-  cd ${pkgname%-git}-fastcomp/build
-  cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+  cd "$srcdir"/llvm-project/llvm/build
+  cmake .. \
+    -GNinja \
+    -DPYTHON_EXECUTABLE=/usr/bin/python \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=YES \
-    -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
+    -DLLVM_TARGETS_TO_BUILD="X86;WebAssembly" \
     -DLLVM_BUILD_RUNTIME=OFF \
+    -DLLVM_TOOL_LTO_BUILD=ON \
+    -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON \
     -DLLVM_INCLUDE_EXAMPLES=OFF \
     -DLLVM_INCLUDE_TESTS=OFF \
-    -DCLANG_INCLUDE_TESTS=OFF 
-   make
+    -DLLVM_ENABLE_PROJECTS="lld;clang" \
+    -DCLANG_INCLUDE_TESTS=OFF
+  ninja -j1
 }
 
 package() {
-  # exported variables
-  install -Dm755 "$srcdir"/${pkgname%-git}.sh "$pkgdir"/etc/profile.d/${pkgname%-git}.sh
-  install -d "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp
-  install -d "$pkgdir"/usr/lib/${pkgname%-git}
-  install -d "$pkgdir"/usr/bin
+  # Install LLVM stuff according to https://github.com/emscripten-core/emscripten/blob/incoming/docs/process.md
+  install -d "$pkgdir"/usr/lib
+  cp -r "$srcdir"/llvm-project/llvm/build/bin "$pkgdir"/usr/lib/emscripten-llvm
 
-  cp -R "$srcdir"/${pkgname%-git}-fastcomp/build/bin/* \
-     "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp
-  install -m 0755 "$srcdir"/${pkgname%-git}-fastcomp/${pkgname%-git}-version.txt \
-	  "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp
+  # Install emscripten
+  cd "$srcdir"/emscripten
+  install -d "$pkgdir"/usr/lib/emscripten
+  cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/emscripten
 
-  cd "$srcdir"/${pkgname%-git}/src
-  for i in em++ emar emcc em-config emconfigure emmake emranlib \
-		emrun emscons
-  do
-    ln -s /usr/lib/${pkgname%-git}/$i "$pkgdir"/usr/bin/$i
-  done
-  cd ..
-  cp -R em* cmake/ site/ src/ system/ third_party/ tools/ \
-     "$pkgdir"/usr/lib/emscripten
-  install -m 0755 "$srcdir"/${pkgname%-git}.config \
-	  "$pkgdir"/usr/lib/${pkgname%-git}/tools/settings_template_readonly.py
-  install -Dm0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  
-  # copy structure
-  cd "$srcdir"/${pkgname%-git}
-  cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/${pkgname%-git}
+  patch -Np1 --no-backup-if-mismatch -i "$srcdir"/libcxxabi-include-libunwind.patch -d "$pkgdir"
 
-  # remove clutter
-  rm "$pkgdir"/usr/lib/${pkgname%-git}-fastcomp/{*-test,llvm-lit}
-  rm "$pkgdir"/usr/lib/${pkgname%-git}/*.bat
+  # Remove clutter
+  rm "$pkgdir"/usr/lib/emscripten/*.bat
 
-  # docs
   install -d "$pkgdir"/usr/share/doc
-  ln -s /usr/lib/${pkgname%-git}/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
+  ln -s /usr/lib/emscripten/site/source/docs "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm755 "$srcdir"/emscripten.sh "$pkgdir"/etc/profile.d/emscripten.sh
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
