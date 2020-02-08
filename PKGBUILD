@@ -28,7 +28,6 @@ sha256sums=('54af4a721b6534de5f23f86e6d644d3e5b03383f2d1d90f4dbfeff84bbed47e9'
 prepare() {
   [ -d "${srcdir}/includes" ] && rm -rf "${srcdir}/includes" ]
   cp -r "virtualbox-includes-${_headers}" "${srcdir}/includes"
-  msg2 "Patching sources..."
   sed -i '1s,python,&2,' "${srcdir}/vdautomount"
   patch -p1 -i "add-typedef-to-PARTITIONING_TYPE_vd.h.patch"
   patch -p1 -i "init-VDINTERFACEERROR_vdfuse.c.patch"
