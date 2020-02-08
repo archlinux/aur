@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-robotnik-sensors
+	pkgdesc = ROS - Robotnik standard sensors description. URDF and meshes.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://wiki.ros.org/robotnik_sensors
+	arch = any
+	license = BSD
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-xacro
+	depends = ros-melodic-urdf
+	depends = ros-melodic-xacro
+	depends = ros-melodic-hector-gazebo-plugins
+	depends = ros-melodic-gazebo-plugins
+	source = ros-melodic-robotnik-sensors-1.1.2.tar.gz::https://github.com/RobotnikAutomation/robotnik_sensors/archive/kinetic-1.1.2.tar.gz
+	sha256sums = ed93fb5c5a46b805cbfc9e930a95d26f5311411e4018dce76cdac291435f21fb
+
+pkgname = ros-melodic-robotnik-sensors
+
