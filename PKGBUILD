@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=basilisk
-pkgver=2020.01.12
+pkgver=2020.02.06
 pkgrel=2
 pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
 arch=('x86_64')
