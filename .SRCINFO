@@ -1,6 +1,6 @@
 pkgbase = whatip-git
 	pkgdesc = Info on your IP
-	pkgver = 0.1
+	pkgver = c6d0337
 	pkgrel = 1
 	url = https://gitlab.gnome.org/gabmus/whatip
 	arch = any
