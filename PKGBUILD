@@ -17,7 +17,9 @@ prepare() {
   cd ${pkgname}-${pkgver}
   git submodule init
   git submodule update -f --init
-  curl -L https://github.com/feelpp/feelpp/pull/1415/commits/8b29331f5b2a4c6f47631b788829d5529eaf2d17.patch | patch -p1
+
+  # https://github.com/feelpp/feelpp/pull/1415
+  git cherry-pick 8b29331f5b2a4c6f47631b788829d5529eaf2d17
 }
 
 build() {
@@ -37,8 +39,8 @@ build() {
     -DFEELPP_ENABLE_PYFEELPP_LIBFEELPP=OFF \
     -DFEELPP_ENABLE_DOCUMENTATION=OFF \
     -DFEELPP_ENABLE_GMSH=ON \
-    -DFEELPP_ENABLE_PETSC=ON \
-    -DFEELPP_ENABLE_SLEPC=ON \
+    -DFEELPP_ENABLE_PETSC=OFF \
+    -DFEELPP_ENABLE_SLEPC=OFF \
     -DFEELPP_ENABLE_ANN=ON \
     -DFEELPP_ENABLE_FFTW=ON \
     -DFEELPP_ENABLE_GSL=ON \
@@ -50,6 +52,6 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}/build
   make DESTDIR="$pkgdir" install
-#   rm "$pkgdir"/usr/bin/{gflags_completions.sh,ginsh}
+  rm "$pkgdir"/usr/bin/ginsh
 }
 
