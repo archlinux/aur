@@ -1,16 +1,17 @@
 pkgname=matebook-applet
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="System tray applet/control app for Huawei Matebook"
 arch=('x86_64')
 url="https://github.com/nekr0z/matebook-applet"
 license=('GPL')
-depends=('huawei-wmi-dkms' 'libappindicator-gtk3')
+depends=('libappindicator-gtk3')
+optdepends=('huawei-wmi-dkms: for kernels without huawei-wmi.')
 makedepends=('go')
 provides=("$pkgname")
 conflicts=("$pkgname-bin" "$pkgname-git")
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/nekr0z/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2c819d55d8f02911fcf442076b53b6de2c635d3376d8b5705aab066eb28d8b36')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
