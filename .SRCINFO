@@ -1,7 +1,7 @@
 pkgbase = ocaml-graphics
 	pkgdesc = Graphics library from OCaml
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml/graphics
 	arch = x86_64
 	license = LGPL2.1

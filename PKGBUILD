@@ -7,7 +7,7 @@
 # v5.1.0 requires dune 2.0 to be in the Arch repository
 pkgname=ocaml-graphics
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphics library from OCaml"
 arch=('x86_64')
 url="https://github.com/ocaml/graphics"
@@ -39,7 +39,7 @@ package() {
   # unfortunately, the files won't be found in the subfolder. Linking them
   cd "${pkgdir}/usr/lib/ocaml/"
 
-  for file in graphics/graphics*
+  for file in graphics/*graphics*
   do
     ln -s graphics/$(basename "$file") $(basename "$file")
   done
