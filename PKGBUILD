@@ -3,7 +3,7 @@
 pkgname=simutrans-pak128.japan
 pkgver=120
 pkgrel=1
-pkgdesc="High resolution graphics set for Simutrans, with a british theme"
+pkgdesc="High resolution graphics set for Simutrans, with a japan theme"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('GPL')
