@@ -2,8 +2,8 @@
 # Contributor: me at oguzkaganeren dot com dot tr
 
 pkgname=vscodium-bin
-pkgver=1.41.1
-pkgrel=2
+pkgver=1.42.0
+pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64')
 url="https://github.com/VSCodium/vscodium"
@@ -24,7 +24,7 @@ source=(
        )
 noextract=("${pkgname}-${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86'
-            '3d50cedad289730301ddbb6cc5f754753e3fc58b0c812da5390b2871c0639c58')
+            'b83425865394d6414ea22aa065a4b2413e93acf63b97f973743c69c38960d138')
 
 prepare() {
     mkdir -p ${srcdir}/${pkgname}
