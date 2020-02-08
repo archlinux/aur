@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-summit-xl-description
+	pkgdesc = ROS - URDF description of the Summit XL and Summit XL HL and omni versions
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://wiki.ros.org/summit_xl_description
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roslaunch
+	makedepends = ros-melodic-urdf
+	makedepends = ros-melodic-xacro
+	makedepends = ros-melodic-robotnik-sensors
+	depends = ros-melodic-robot-state-publisher
+	depends = ros-melodic-urdf
+	depends = ros-melodic-xacro
+	depends = ros-melodic-robotnik-sensors
+	source = ros-melodic-summit-xl-description-1.1.3.tar.gz::https://github.com/RobotnikAutomation/summit_xl_common/archive/kinetic-1.1.3.tar.gz
+	sha256sums = 8979bdda706b4cfd155df3f22aeecf56869e227113a9947f99f1dfee658d08fe
+
+pkgname = ros-melodic-summit-xl-description
+
