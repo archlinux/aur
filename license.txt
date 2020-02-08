@@ -1,0 +1,16 @@
+License
+=======
+
+The pak is compiled by different lcicense. Some files were without any 
+comment or with a very generous licences. Those files have no symbol 
+in the copyright entry and are distributed here under the Artistic License.
+
+Some file were under GVP. This is indicated by (GPLv3) behind the names.
+
+However, all graphics by 477 and Haru and some others were only released
+for FreeTrain and similar games. Those are marked with (FT). The according 
+license is as following:
+
+Unless otherwise specified the objects in this compilation are only to be
+used for Simutrans, FreeTrain and related games. The respective copyright
+notices must be obey, or the copyright must be acknowledges in another way.
