@@ -1,5 +1,5 @@
 pkgbase = greenpak-designer
-	pkgdesc = GreenPAK1-6 Designer
+	pkgdesc = GreenPAK3-6 Designer
 	pkgver = 6.21.005
 	pkgrel = 1
 	url = https://www.dialog-semiconductor.com/greenpak-designer-software
