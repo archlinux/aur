@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-costmap-prohibition-layer
+	pkgdesc = ROS - Package that implemets a costmap layer to add prohibited areas to the costmap-2D by a user configuration.
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://wiki.ros.org/costmap_prohibition_layer
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-costmap-2d
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-roscpp
+	depends = ros-melodic-costmap-2d
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-roscpp
+	source = ros-melodic-costmap-prohibition-layer-0.0.5.tar.gz::https://github.com/rst-tu-dortmund/costmap_prohibition_layer/archive/0.0.5.tar.gz
+	sha256sums = 4286f5a0b0ddda1b88023b1546b4f3dc2a200ff54183cf061323e4f8cf572a0b
+
+pkgname = ros-melodic-costmap-prohibition-layer
+
