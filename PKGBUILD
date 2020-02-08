@@ -3,7 +3,7 @@
 
 _pkgname='yuzu'
 pkgname="$_pkgname-git"
-pkgver=r13523.b11aeced1
+pkgver=r13623.aa3f9b960
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo Switch emulator/debugger"
 arch=('i686' 'x86_64')
@@ -51,6 +51,9 @@ build() {
 	
 	# Flag to disable pre-compiled headers so boost can build properly
 	CXXFLAGS+=" -DENABLE_PRECOMPILED_HEADERS=OFF"
+
+	# Flag to fix SDL exceptions occurring in some users' builds
+	CXXFLAGS+=" -I/usr/include/SDL2 -D_REENTRANT -pthread -lSDL2"
 	
 	mkdir -p build
 	cd build
