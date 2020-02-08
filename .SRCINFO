@@ -74,7 +74,7 @@ pkgbase = ffmpeg-libfdk_aac
 	provides = libswscale.so
 	provides = ffmpeg=4.2.2
 	conflicts = ffmpeg
-	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=cbb3c9497549f8856d8cd37ac63af1406a784e58
+	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=b53940e13dde81d721621b4d5296eede5795aadd
 	sha256sums = SKIP
 
 pkgname = ffmpeg-libfdk_aac
