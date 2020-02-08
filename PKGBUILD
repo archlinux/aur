@@ -1,9 +1,10 @@
+# Maintainer: effeffe <filippo.falezza at outlook dot it>
 # Maintainer: Zookah <zookah77 at gmail dot com>
 # Maintainer: Ydallilar <yigit dot dallilar at gmail dot com>
 # Contributor: Qinq-net
 
 pkgname=osp-tracker
-pkgver=5.0.5
+pkgver=5.1.3
 arch=('x86_64')
 pkgrel=2
 pkgdesc='Tracker video analysis and modeling tool'
