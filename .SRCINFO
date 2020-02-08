@@ -1,0 +1,14 @@
+pkgbase = python2-fastimport
+	pkgdesc = VCS fastimport/fastexport parser
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/fastimport/
+	arch = any
+	license = GPL
+	makedepends = python2-distutils-extra
+	depends = python2
+	source = https://pypi.io/packages/source/f/fastimport/fastimport-0.9.8.tar.gz
+	md5sums = 85a206e92e209937a8dd11ffe8139cf9
+
+pkgname = python2-fastimport
+
