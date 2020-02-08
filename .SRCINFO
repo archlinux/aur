@@ -1,0 +1,13 @@
+pkgbase = simutrans-extended-pak128.sweden
+	pkgdesc = High resolution graphics set for Simutrans Extended, with a swedish theme
+	pkgver = 20200208
+	pkgrel = 1
+	url = https://www.simutrans.com/
+	arch = any
+	license = custom:Artistic
+	depends = simutrans-extended
+	source = http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.sweden-ex-nightly.tar.gz
+	sha256sums = 8b96928867e1d76755ab33ff595dd6652407e9fa6d21d4404fec71be16f21e72
+
+pkgname = simutrans-extended-pak128.sweden
+
