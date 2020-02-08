@@ -2,11 +2,11 @@ pkgbase = citardauq
 	pkgdesc = A CLI tool for solving quadratic equations
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/KazMalhotra/citardauq
+	url = https://aur.archlinux.org/packages/citardauq/
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/kazmalhotra/citardauq.git
+	source = citardauq.py
 	md5sums = b6dfdfb3d79c0709e1154e9f55695726
 
 pkgname = citardauq
