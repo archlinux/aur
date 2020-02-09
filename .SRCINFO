@@ -1,13 +1,13 @@
 pkgbase = rlaunch
 	pkgdesc = A fast and light-weight application launcher
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/PonasKovas/rlaunch
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = rlaunch-1.1.0.tar.gz::https://github.com/PonasKovas/rlaunch/archive/1.1.0.tar.gz
-	md5sums = 56c7321a8331bce055644547631bca98
+	source = rlaunch-1.2.0.tar.gz::https://github.com/PonasKovas/rlaunch/archive/1.2.0.tar.gz
+	md5sums = b10a4abcaa3f32256fd7d413fb94cd77
 
 pkgname = rlaunch
 
