@@ -5,10 +5,14 @@ pkgbase = lua51-penlight
 	url = https://tieske.github.io/Penlight
 	arch = any
 	license = MIT
-	depends = lua51
-	depends = lua51-filesystem
-	source = lua-penlight-1.7.0.tar.gz::https://github.com/Tieske/Penlight/archive/1.7.0.tar.gz
+	source = https://github.com/Tieske/Penlight/archive/1.7.0/-1.7.0.tar.gz
 	sha256sums = 5b793fc93fa7227190e191e5b24a8f0ce9dd5958ccebe7a53842a58b5d46057f
 
+pkgname = lua52-penlight
+	depends = lua52
+	depends = lua52-filesystem
+
 pkgname = lua51-penlight
+	depends = lua51
+	depends = lua51-filesystem
 
