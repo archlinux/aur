@@ -49,6 +49,20 @@ if [ -z ${use_ns+x} ]; then
 fi
 ##
 
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
 pkgbase=linux-xanmod-lts
 _srcname=linux
 pkgver=4.19.102
@@ -69,7 +83,7 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        90-linux.hook  # pacman hook for initramfs regeneration
        ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
        choose-gcc-optimization.sh
-       0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch  # Grabbed from linux-ck package
+       0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch  # Grabbed from linux-ck package
 )
 
 sha256sums=('fb64eca226d3ba2a402e89824ab3c7bab70fc791a80facde483d19a50e0b2e1e'
@@ -77,7 +91,7 @@ sha256sums=('fb64eca226d3ba2a402e89824ab3c7bab70fc791a80facde483d19a50e0b2e1e'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
-            '36b1118c8dedadc4851150ddd4eb07b1c58ac5bbf3022cc2501a27c2b476da98')
+            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
 _kernelname=${pkgbase#linux}
 
@@ -128,6 +142,11 @@ prepare() {
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
+  if [ "$use_ns" = "n" ]; then
+    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
+    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
+  fi
+
   # Let's user choose microarchitecture optimization in GCC
   ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
@@ -139,6 +158,18 @@ prepare() {
   fi
 
   make olddefconfig
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ "$_localmodcfg" = "y" ]; then
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit
+    fi
+  fi
 
   make -s kernelrelease > ../version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
