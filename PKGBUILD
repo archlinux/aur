@@ -18,7 +18,7 @@ install=$pkgname.install
 url="https://www.segger.com/jlink-software.html"
 conflicts=("j-link-software-and-documentation")
 replaces=("j-link-software-and-documentation")
-DLAGENTS=("https::/usr/bin/env curl -o %o -d accept_license_agreement=accepted -d non_emb_ctr=confirmed")
+DLAGENTS=("https::/usr/bin/env curl --insecure -o %o -d accept_license_agreement=accepted -d non_emb_ctr=confirmed")
 options=(!strip)
 
 prepare() {
