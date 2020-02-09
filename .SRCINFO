@@ -1,16 +1,15 @@
 pkgbase = lua-penlight-git
-	pkgdesc = A set of pure Lua libraries focusing on input data handling, functional programming, and OS path management
-	pkgver = 1.5.4.r43.gee381b7
+	pkgdesc = Lua libraries for on input data handling, functional programming, and OS interface
+	pkgver = 1.7.0.r4.ge469fa0
 	pkgrel = 1
-	url = https://github.com/stevedonovan/Penlight
+	url = https://tieske.github.io/Penlight
 	arch = any
 	license = MIT
-	depends = bash
 	depends = lua
 	depends = lua-filesystem
 	provides = lua-penlight
 	conflicts = lua-penlight
-	source = lua-penlight-git::git+https://github.com/stevedonovan/Penlight.git
+	source = lua-penlight-git::git+https://github.com/Tieske/Penlight.git
 	md5sums = SKIP
 
 pkgname = lua-penlight-git

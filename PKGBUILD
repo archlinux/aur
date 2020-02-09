@@ -1,22 +1,22 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=lua-penlight-git
-pkgver=1.5.4.r43.gee381b7
+pkgver=1.7.0.r4.ge469fa0
 pkgrel=1
-pkgdesc='A set of pure Lua libraries focusing on input data handling, functional programming, and OS path management'
-url='https://github.com/stevedonovan/Penlight'
+pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
+url='https://tieske.github.io/Penlight'
 arch=('any')
 license=('MIT')
 conflicts=('lua-penlight')
 provides=('lua-penlight')
-depends=('bash' 'lua' 'lua-filesystem')
-source=("${pkgname}::git+https://github.com/stevedonovan/Penlight.git")
+depends=('lua' 'lua-filesystem')
+source=("${pkgname}::git+https://github.com/Tieske/Penlight.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  # Prefix revision with 'r'; replace all '-' with '.'
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
