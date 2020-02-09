@@ -1,6 +1,6 @@
 pkgbase = badwolf
 	pkgdesc = A minimalist and privacy-oriented WebKit browser.
-	pkgver = 0.5.0_rc.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://hacktivis.me/projects/badwolf
 	install = badwolf.install
@@ -13,15 +13,15 @@ pkgbase = badwolf
 	arch = armv7h
 	license = BSD
 	depends = webkit2gtk
-	source = https://hacktivis.me/releases/badwolf-0.5.0-rc.1.tar.gz
-	source = https://hacktivis.me/releases/badwolf-0.5.0-rc.1.tar.gz.sig
+	source = https://hacktivis.me/releases/badwolf-0.5.0.tar.gz
+	source = https://hacktivis.me/releases/badwolf-0.5.0.tar.gz.sig
 	source = arch.patch
 	source = LICENSE
 	validpgpkeys = DDC9237C14CF6F4DD847F6B390D93ACCFEFF61AE
-	sha512sums = 5c90e50feea0c94487c38a84b3245672855547ce30abaf97d78546437213e8646d8a3aa9c131eb23ab389e7a0f5eb51c04a071b0e85d86800240a383fe0c7b9d
+	sha512sums = bf3bb62aef67278268d62505c9b6c133d78e2b612bd2d5706146e953fa5baa5e42d06f6241b578794d3d705d5172322b352413356af9be84b50b36c26a4dc75e
 	sha512sums = SKIP
 	sha512sums = 1b4ecfe1858378268dc10c60da2891ec83dd2af0df42c72eaf2eb94ec49ffd7243ac6258ade040e78b64082265f8a65515ee0ba38b1cad1c21f6287c048df008
-	sha512sums = cee933ab08b1e05e526ddb7ee4f2e3243ebe27614e713201439e14432ce76a4eb009a96a36d666521a96661c481437d8393f4cd2f88acea138702784ce14e883
+	sha512sums = 9a3b68429fc2267d596e08671330cc81f6d00ac7217a7a3991ebb583823a13e323108b514f5ec672c0982844ec581d9fed28dfede8fd92976b41d46b2924e140
 
 pkgname = badwolf
 

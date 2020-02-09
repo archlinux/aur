@@ -4,6 +4,6 @@ post_install() {
 }
 
 post_upgrade() {
-  echo "-- Badwolf 0.5.0-rc.1 changelog: Dark theme disabled by default due to a bug in WebKitGTK (can be reenabled in config.h). TLS Error message dialog allowing exceptions. Brazilian Portugese translation available."
+  echo "-- Badwolf 0.5.0 changelog: Dark theme disabled by default due to a bug in WebKitGTK (can be reenabled in config.h). TLS Error message dialog allowing exceptions. Brazilian Portugese translation available."
   /bin/true
 }
