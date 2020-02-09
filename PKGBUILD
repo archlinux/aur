@@ -9,9 +9,8 @@ url='https://kazmal.tech/citardauq/'
 license=('MIT')
 depends=('python')
 source=("citardauq")
-md5sums=('92b48b83f0e6d60f103c2bc6d1184712')
-md5sums=('b6dfdfb3d79c0709e1154e9f55695726')
-md5sums=('8dc066695d6af82e9f2f6b8a96b892bf')
+md5sums=('a86d8e1d6842aac5c8378585bac26fd7')
+
 
 package(){
 

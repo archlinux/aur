@@ -7,7 +7,6 @@ pkgbase = citardauq
 	license = MIT
 	depends = python
 	source = citardauq
-	md5sums = b6dfdfb3d79c0709e1154e9f55695726
+	md5sums = a86d8e1d6842aac5c8378585bac26fd7
 
 pkgname = citardauq
- 
