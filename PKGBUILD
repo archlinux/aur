@@ -4,9 +4,8 @@
 # Contributor: Rob Lynn <rob22uk at gmail dot com>
 # Contributor: DerFlob <derflob at derflob dot de>
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
-
 pkgname=tilda-git
-pkgver=1.4.1.r0.g1607681
+pkgver=1.5.0.r0.gbdf581e
 pkgrel=1
 pkgdesc="A Gtk based drop down terminal for Linux and Unix."
 arch=('x86_64')
@@ -16,7 +15,7 @@ depends=('confuse' 'vte3')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lanoxx/tilda.git')
+source=("git+${url}.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -25,13 +24,13 @@ pkgver() {
 }
 
 build() {
-  cd ${pkgname%-git}
-  ./autogen.sh --prefix=/usr
-  make
+   cd ${pkgname%-git}
+   ./autogen.sh --prefix=/usr
+   make
 }
 
 package() {
-  cd ${pkgname%-git}
-  make DESTDIR="${pkgdir}/" install
+   cd ${pkgname%-git}
+   make DESTDIR="${pkgdir}/" install
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:

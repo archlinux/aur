@@ -1,6 +1,6 @@
 pkgbase = tilda-git
 	pkgdesc = A Gtk based drop down terminal for Linux and Unix.
-	pkgver = 1.4.1.r0.g1607681
+	pkgver = 1.5.0.r0.gbdf581e
 	pkgrel = 1
 	url = https://github.com/lanoxx/tilda
 	arch = x86_64
