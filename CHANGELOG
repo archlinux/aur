@@ -1,3 +1,7 @@
+1.2.0 (February 8, 2020)
+    Dramatically reduce the number of Twitch API calls with the -c,--check option
+    The above change should at least alleviate https://todo.sr.ht/~krathalan/wtwitch/2
+
 1.1.6-1 (December 20, 2019)
     Add error message for games with zero streamers
     Fix some formatting and reorganize man page
