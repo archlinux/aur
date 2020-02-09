@@ -8,8 +8,8 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=4.2.2
-pkgrel=2
+pkgver=4.2.3
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -91,7 +91,7 @@ provides=(
   "ffmpeg=$pkgver"
 )
 conflicts=("$_name")
-source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=b53940e13dde81d721621b4d5296eede5795aadd)
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=192d1d34eb3668fa27f433e96036340e1e5077a0)
 sha256sums=('SKIP')
 pkgver() {
   cd ffmpeg
