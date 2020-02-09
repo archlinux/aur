@@ -4,31 +4,20 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.2.3
-pkgrel=6
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="A video editing, animation, and playback library for C++, Python, and Ruby"
 arch=('x86_64')
 url="https://openshot.org/"
 license=('LGPL3')
-depends=('gcc-libs' 'glibc' 'libavcodec.so' 'libavformat.so' 'libavutil.so'
-'libswscale.so' 'libswresample.so' 'libmagick6' 'libopenshot-audio.so' 'python'
-'libjsoncpp.so' 'qt5-base' 'qt5-multimedia' 'x264' 'zeromq')
-makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
+# TODO: package cppzmq and resvg
+depends=('gcc-libs' 'glibc' 'libmagick' 'python' 'qt5-base' 'qt5-multimedia'
+'zeromq')
+makedepends=('cmake' 'doxygen' 'ffmpeg' 'jsoncpp' 'libopenshot-audio' 'swig'
+'unittestpp' 'x264')
 provides=('libopenshot.so')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz"
-        "$pkgname-find-juce.patch::https://github.com/OpenShot/libopenshot/pull/209.patch")
-sha256sums=('8536b0a790b0d98ed4c3b10e11d1b34ae68ccbc710887e3703a5143d95598746'
-            '038b945763dc035ecffe0968a9f0f7a29bb86a3919f4192901d5f152eb5c7f89')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -p1 -i "../${pkgname}-find-juce.patch"
-  # fix hardcoded cmake module to find python3.8:
-  # https://bugs.archlinux.org/task/64463
-  sed -e 's/3.7/3.7 3.8/' \
-      -i cmake/Modules/FindPythonLibs.cmake
-  mkdir -vp build
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/libopenshot/archive/v$pkgver.tar.gz")
+sha512sums=('6824ad22e81814b6427a4cb6489e5b893be264b5afa6e54287cd649f244f86b938c1b1d56280c1f49af65fa118d056d204bd39bc5b2ccdc10376d2df2f33a352')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -42,7 +31,8 @@ build() {
         -DPYTHON_LIBRARIES="/usr/lib/libpython3.so" \
         -DPYTHON_INCLUDE_DIRS="/usr/include/python${python_version}" \
         -DENABLE_RUBY=OFF \
-        -B build
+        -B build \
+        -S .
   make -C build
 }
 
@@ -52,6 +42,9 @@ check() {
 }
 
 package() {
+  depends+=('libavcodec.so' 'libavformat.so' 'libavutil.so' 'libjsoncpp.so'
+  'libopenshot-audio.so' 'libswscale.so' 'libswresample.so' 'libx264.so')
   cd "${pkgname}-${pkgver}"
   make -C build DESTDIR="${pkgdir}" install
+  install -vDm 644 {AUTHORS,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
