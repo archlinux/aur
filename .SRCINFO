@@ -1,0 +1,18 @@
+pkgbase = forge-autoreglib-git
+	pkgdesc = Minecraft mod library by Vazkii
+	pkgver = 1.5_36
+	pkgrel = 1
+	url = https://github.com/Vazkii/AutoRegLib
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = java-environment=8
+	depends = forge-server
+	conflicts = forge-autoreglib-1.4-bin
+	source = forge-autoreglib-git::git+https://github.com/Vazkii/AutoRegLib#branch=master
+	source = LICENSE
+	sha1sums = SKIP
+	sha1sums = 6280575615d8e517935d30317cfdec7c5a4b6aff
+
+pkgname = forge-autoreglib-git
+
