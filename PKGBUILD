@@ -7,7 +7,7 @@
 pkgname=digikam
 _pkgver=6.4.0
 pkgver=${_pkgver//-/_} # for beta versions
-pkgrel=6
+pkgrel=7
 pkgdesc="An advanced digital photo management application"
 arch=(x86_64)
 license=(GPL)
@@ -17,7 +17,8 @@ depends=(lensfun opencv akonadi-contacts knotifyconfig libksane kfilemetadata qt
 makedepends=(extra-cmake-modules doxygen eigen boost kdoctools libkvkontakte)
 optdepends=('hugin: panorama tool' 'qt5-imageformats: support for additional image formats (WEBP, TIFF)'
             'libkvkontakte: VKontakte plugin'
-            'rawtherapee: RAW import' 'darktable: RAW import')
+            'rawtherapee: RAW import' 'darktable: RAW import'
+            'perl: for digitaglinktree')
 source=("https://download.kde.org/stable/$pkgname/$_pkgver/$pkgname-$_pkgver.tar.xz"{,.sig}
          initialize-imagemagick.patch::"https://cgit.kde.org/digikam.git/patch/?id=76ff65ae"
          digikam-opencv-4.2.patch)
