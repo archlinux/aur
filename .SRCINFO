@@ -8,8 +8,6 @@ pkgbase = walk-sor-git
 	makedepends = git
 	depends = bash
 	depends = glibc
-	provides = walk-sor
-	conflicts = walk-sor
 	source = git+https://github.com/google/walk
 	sha256sums = SKIP
 

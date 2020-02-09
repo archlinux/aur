@@ -10,8 +10,8 @@ url="https://github.com/google/$_reponame"
 license=(Apache)
 depends=(bash glibc)
 makedepends=(git)
-provides=("${pkgbase%-git}")
-conflicts=("${pkgbase%-git}")
+# provides=("${pkgbase%-git}")
+# conflicts=("${pkgbase%-git}")
 source=("git+$url")
 sha256sums=('SKIP')
 
