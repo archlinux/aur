@@ -1,10 +1,9 @@
 # Maintainer: Mikel Pintado <mikelaitornube2010@gmail.com>
 
 pkgname=nuclear-player-bin
-pkgver=0.5.1
+pkgver=0.6.3
 repurl=https://github.com/nukeop/nuclear
-commidfull=$(git ls-remote $repurl.git -tags v$pkgver^{})
-# Delete the "^{}" next time
+commidfull=$(git ls-remote $repurl.git -tags v$pkgver)
 commid=${commidfull:0:6}
 pkgrel=1
 pkgdesc="A free, multiplatform music player app that streams from multiple sources."
@@ -18,7 +17,7 @@ source=(
     nuclear.desktop
 )
 md5sums=(
-    '31628b2c178ad1221ecd952fedd7a9d9'
+    'a23596c18678728f9116de5558ab6647'
     '02328fb5995b2e92b3ee11dca5c6b262'    
 )
 
