@@ -8,9 +8,8 @@ arch=('i686' 'x86_64')
 pkgdesc="AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore"
 url="http://www.azerothcore.org"
 license=('AGPL3')
-depends=('cmake' 'clang' 'readline' 'lib32-readline')
+depends=('cmake' 'clang' 'readline' 'lib32-readline' 'mariadb')
 optdepends=(
-  'libmysqlclient57: you need install this library from AUR'
   'ace: you need install this library from AUR'
 )
 
