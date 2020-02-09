@@ -8,6 +8,7 @@ pkgbase = haskell-language-server-git
 	license = Apache
 	makedepends = stack
 	makedepends = git
+	provides = haskell-language-server
 	source = haskell-language-server-git::git+https://github.com/haskell/haskell-language-server.git
 	md5sums = SKIP
 

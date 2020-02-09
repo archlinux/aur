@@ -7,6 +7,7 @@ pkgdesc="Integration point for ghcide and haskell-ide-engine."
 arch=('x86_64' 'aarch64')
 url="https://github.com/haskell/haskell-language-server"
 license=('Apache')
+provides=('haskell-language-server')
 makedepends=('stack' 'git')
 source=(${pkgname}::git+https://github.com/haskell/haskell-language-server.git)
 md5sums=('SKIP')
