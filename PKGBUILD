@@ -1,6 +1,6 @@
 # Maintainer: Ponas <mykolas.peteraitis@gmail.com>
 pkgname="rlaunch"
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A fast and light-weight application launcher"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/PonasKovas/rlaunch"
 license=('MIT')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/rlaunch/archive/${pkgver}.tar.gz")
-md5sums=('b10a4abcaa3f32256fd7d413fb94cd77')
+md5sums=('ffc487079ea66cbb79e3533d60b5cf5f')
 
 build () {
   cd "$srcdir/$pkgname-$pkgver"
