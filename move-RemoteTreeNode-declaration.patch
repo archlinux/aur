@@ -58,7 +58,7 @@ Cr-Commit-Position: refs/heads/master@{#725070}
  2 files changed, 80 insertions(+), 57 deletions(-)
 
 diff --git a/components/sync_bookmarks/bookmark_model_merger.cc b/components/sync_bookmarks/bookmark_model_merger.cc
-index eae153eff953..579848ee664e 100644
+index eae153eff95..579848ee664 100644
 --- a/components/sync_bookmarks/bookmark_model_merger.cc
 +++ b/components/sync_bookmarks/bookmark_model_merger.cc
 @@ -5,7 +5,6 @@
@@ -170,7 +170,7 @@ index eae153eff953..579848ee664e 100644
  // static
  BookmarkModelMerger::RemoteTreeNode
 diff --git a/components/sync_bookmarks/bookmark_model_merger.h b/components/sync_bookmarks/bookmark_model_merger.h
-index 9b592000dc59..bf0783ecf8ee 100644
+index 9b592000dc5..bf0783ecf8e 100644
 --- a/components/sync_bookmarks/bookmark_model_merger.h
 +++ b/components/sync_bookmarks/bookmark_model_merger.h
 @@ -5,6 +5,7 @@
@@ -235,6 +235,3 @@ index 9b592000dc59..bf0783ecf8ee 100644
  
    // A forest composed of multiple trees where the root of each tree represents
    // a permanent node, keyed by server-defined unique tag of the root.
--- 
-2.24.1
-
