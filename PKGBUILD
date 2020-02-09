@@ -11,7 +11,8 @@ depends=('python' 'python-pillow' 'python-wxpython' 'python-sphinx' 'gst-python'
 optdepends=('gst-plugins-bad: additional rendering formats'
 	    'gst-plugins-good: additional rendering formats'
 	    'gst-plugins-ugly: additional rendering formats'
-	    'gst-libav: additional rendering formats')
+	    'gst-libav: additional rendering formats'
+		'python-cairo: slideshow preview')
 source=("https://github.com/PhotoFilmStrip/PFS/archive/v$pkgver.tar.gz"
 		'ActionI18N.patch')
 md5sums=('a7b4362b9eb8ede7a4ee99f0165f383a'
