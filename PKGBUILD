@@ -3,7 +3,7 @@
 
 pkgbase=dakota
 pkgname=dakota
-pkgver=6.8
+pkgver=6.11.0
 pkgrel=1
 pkgdesc="A flexible, extensible interface between analysis codes and iterative systems analysis methods"
 arch=(i686 x86_64)
@@ -15,6 +15,7 @@ options=(!strip)
 _filename=$pkgname-$pkgver-release-public.src-UI
 _srcname=$pkgname-$pkgver-release-public.src-UI
 source=("https://dakota.sandia.gov/sites/default/files/distributions/public/${_filename}.tar.gz")
+sha512sums=('484d3c4483be9750b1f6c7fb6a13148a1e2811231899cc07d9a478a18f8b9d9080b2c2ca628c7657af907d4f4e0e9405a41ca35d8d58828b343b71e374a2f480')
 
 build() {
   cd "$srcdir/${_filename}"
@@ -44,5 +45,3 @@ package() {
   rm $pkgdir/usr/include/setoper.h
 
 }
-
-md5sums=('85375e8c4df406fe017beda63ab28215')
