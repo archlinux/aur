@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2-toolchain
-pkgver=0.6.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="build2 build toolchain (build system and package manager)"
 arch=(any)
