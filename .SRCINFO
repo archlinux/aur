@@ -7,5 +7,5 @@ pkgbase = cws
 	license = MIT
 	depends = python
 	source = cws
-	md5sums = 8dc066695d6af82e9f2f6b8a96b892bf
+	md5sums = 2c6a191f71a62d7b512bd9e8c8715b4d
 pkgname = cws
