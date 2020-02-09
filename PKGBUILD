@@ -1,7 +1,7 @@
 # Maintainer: Jashank Jeremy <arch-aur at jashankj dot space>
 
 pkgname=libxo
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='a library for generating text, XML, JSON, and HTML output'
 arch=('x86_64')
