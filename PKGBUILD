@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=boca-git
-pkgver=1.1.beta2.0.gcf6aa8ab
+pkgver=1.0.beta3.r0.g8605dc6e
 pkgrel=1
+epoch=2
 pkgdesc="A component library used by the fre:ac audio converter"
 arch=('i686' 'x86_64')
 url="https://github.com/enzo1982/boca"
@@ -15,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/([^-]*-g)/r/;s/-/./g')"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
