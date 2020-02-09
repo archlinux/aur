@@ -1,6 +1,6 @@
 pkgbase = fontpreview
 	pkgdesc = CLI tool to preview fonts
-	pkgver = r10.15d17ed
+	pkgver = r19.a938103
 	pkgrel = 1
 	url = https://github.com/sdushantha/fontpreview
 	arch = any

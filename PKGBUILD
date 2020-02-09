@@ -1,6 +1,6 @@
 # Maintainer: elsorino <elso at pm dot me>
 pkgname=fontpreview
-pkgver=r10.15d17ed
+pkgver=r19.a938103
 pkgrel=1
 pkgdesc="CLI tool to preview fonts"
 arch=('any')
@@ -24,7 +24,8 @@ pkgver() {
 }
 
 package() {
-  cd "$pkgname/"
-  make DEST="$pkgdir/" install
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/fontpreview/LICENSE.md"
+  cd $srcdir/$pkgname
+  install -d $pkgdir/usr/bin
+  install -m755 fontpreview  $pkgdir/usr/bin
+  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/fontpreview/LICENSE.md"
 }
