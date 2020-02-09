@@ -4,7 +4,7 @@
 # Simutrans Extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended
-pkgver=20200208
+pkgver=20200209
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version"
 arch=('x86_64')
@@ -13,7 +13,9 @@ license=('custom:Artistic')
 depends=('gcc-libs' 'zlib' 'sdl_mixer' 'bzip2' 'hicolor-icon-theme')
 makedepends=('dos2unix')
 optdepends=('timidity++: play MIDI music'
-            'simutrans-extended-pak128.britain: britain graphic set')
+            'simutrans-extended-pak128.britain: High resolution graphics set for Simutrans Extended, with a British theme'
+            'simutrans-extended-pak128.cs: High resolution graphics set for Simutrans Extended, with a czech theme'
+            'simutrans-extended-pak128.sweden: High resolution graphics set for Simutrans Extended, with a swedish theme')
 source=(git+https://github.com/jamespetts/simutrans-extended/
         https://raw.githubusercontent.com/aburch/simutrans/8593f5b1248d03f907a149f7abc41ae6512009e1/simutrans.svg
         settings-folder.patch
