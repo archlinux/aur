@@ -2,7 +2,7 @@
 
 pkgname=forge-quark-git
 pkgver=r2.0_211
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Minecraft mod quark by Vazkii"
 arch=('any')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname}"
 	java=$(find /usr/lib/jvm/ -maxdepth 1 -name \*-8-\* | sed -n '1p')
-	./gradlew build "-Dorg.gradle.java.home=$java"
+	./gradlew build "-Dorg.gradle.java.home=$java" --no-daemon
 }
 
 package() {
