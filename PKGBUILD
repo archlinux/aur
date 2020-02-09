@@ -5,15 +5,15 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
-pkgver=2.1.15
+pkgver=2.1.16
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='http://drawpile.net/'
 license=('GPL3')
-makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
+makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qtkeychain')
 source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('36625a40574e76ac4145cedc2d752038100e715263e3dfd1935f5a9bc36bcb70')
+sha256sums=('5c799e7a02ef63cf6a5d1e78511f3fa9051ca809f1602c853420f5a20223e6d7')
 
 _cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
 
@@ -38,7 +38,7 @@ package_drawpile() {
 
 package_drawpile-client() {
 	pkgdesc+=' (client)'
-	depends=('karchive' 'qt5-multimedia' 'desktop-file-utils')
+	depends=('desktop-file-utils' 'karchive' 'qt5-multimedia' 'qt5-x11extras' 'qtkeychain')
 	optdepends=('kdnssd: automatic service discovery (such as printers)'
 		'giflib: GIF support'
 		'miniupnpc: UPnP support'
