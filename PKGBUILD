@@ -5,7 +5,7 @@
 run_tests=false
 
 pkgname=certmonger
-pkgver=0.79.5
+pkgver=0.79.9
 pkgrel=1
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
@@ -16,16 +16,12 @@ checkdepends=(diffutils dos2unix expect)
 backup=(etc/certmonger/certmonger.conf
         etc/tmpfiles.d/certmonger.conf)
 install=${pkgname}.install
-source=("https://releases.pagure.org/certmonger/certmonger-${pkgver}.tar.gz"{,.sig})
-sha512sums=('b447bbbe6cbe1e3561c4a4083789baa4503516273273a7ac6a17b1287a3b36f8fa2b0c56e075a7eb98e582cdff5939c1c6436f2d011ed0f61b555da0d7b4a7ba'
-            'SKIP')
-
-# Rob Crittenden
-validpgpkeys=("B2457A44826F91F11AC8E58D3F73F755B836FFDC")
+source=("https://pagure.io/certmonger/archive/certmonger-${pkgver}/certmonger-certmonger-${pkgver}.tar.gz")
+sha512sums=('4721d8a8d82c0134b482bda171dffc3e2fa46f7b0d33f5d99a3785925a864a5e70c80656fb230d35703482f7e51941d2aaa2fbdfef24bf151ac8443a22907218')
 
 build() {
-  cd "${pkgname}-${pkgver}"
-
+  cd "${pkgname}-${pkgname}-${pkgver}"
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
@@ -40,13 +36,13 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgname}-${pkgver}"
   if [[ "${run_tests}" == "true" ]]; then
     make check
   fi
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
