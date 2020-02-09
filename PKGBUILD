@@ -3,13 +3,13 @@
 _gitname=chwp
 _cmdname=chwp
 pkgname=${_gitname}-git
-pkgver=0.0.22
+pkgver=0.0.25
 pkgrel=1
 pkgdesc="Changes the background wallpaper and lockscreen from the command line."
 arch=('x86_64')
 url="https://gitlab.com/rouvenhimmelstein/chwp"
 license=('GPL3')
-depends=('qt5-base')
+depends=('xorg-xrandr' 'qt5-base')
 makedepends=('git' 'cmake' 'qt5-base')
 provides=('chwp')
 conflicts=('chwp')

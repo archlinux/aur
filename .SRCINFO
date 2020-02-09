@@ -1,6 +1,6 @@
 pkgbase = chwp-git
 	pkgdesc = Changes the background wallpaper and lockscreen from the command line.
-	pkgver = 0.0.22
+	pkgver = 0.0.25
 	pkgrel = 1
 	url = https://gitlab.com/rouvenhimmelstein/chwp
 	arch = x86_64
@@ -8,10 +8,11 @@ pkgbase = chwp-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-base
+	depends = xorg-xrandr
 	depends = qt5-base
 	provides = chwp
 	conflicts = chwp
-	source = https://gitlab.com/rouvenhimmelstein/chwp/-/archive/0.0.22/chwp-0.0.22.tar.gz
+	source = https://gitlab.com/rouvenhimmelstein/chwp/-/archive/0.0.25/chwp-0.0.25.tar.gz
 	sha1sums = SKIP
 
 pkgname = chwp-git
