@@ -1,0 +1,24 @@
+pkgbase = walk-sor-git
+	pkgdesc = Plan 9 style utilities to replace find
+	pkgver = r12.70f7a8c
+	pkgrel = 1
+	url = https://github.com/google/walk
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = bash
+	depends = glibc
+	provides = walk-sor
+	conflicts = walk-sor
+	source = git+https://github.com/google/walk
+	sha256sums = SKIP
+
+pkgname = walk-git
+	pkgdesc = Recursively walks a directory, printing each path
+	depends = glibc
+
+pkgname = sor-git
+	pkgdesc = Takes standard input, dropping lines for which a command fails
+	arch = any
+	depends = bash
+
