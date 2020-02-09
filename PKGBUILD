@@ -2,16 +2,16 @@
 
 pkgname=cirkuit
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Cirkuit is a KDE4 GUI for the Circuit macros by Dwight Aplevich, for drawing high-quality line diagrams to include in TeX, LaTeX, for similar documents."
-url="http://wwwu.uni-klu.ac.at/magostin/cirkuit.html"
+url="https://wwwu.uni-klu.ac.at/magostin/cirkuit.html"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('kdebase-runtime' 'texlive-core' 'm4' 'ghostscript' 'texlive-pstricks' 'netpbm' 'poppler-qt')
-makedepends=('cmake' 'automoc4')
+depends=('poppler-qt5' 'm4' 'ghostscript' 'texlive-pstricks' 'netpbm' 'knewstuff' 'ktexteditor' 'kdelibs4support' 'hicolor-icon-theme' 'kdoctools')
 optdepends=('dpic: improved circuit macros support' 'gnuplot: Gnuplot backend')
-source=(http://wwwu.uni-klu.ac.at/magostin/src/$pkgname-$pkgver.tar.bz2)
-md5sums=('dccdb6bdb6f1afb99cbebe4780f96b49')
+makedepends=('texlive-core' 'cmake' 'extra-cmake-modules' 'kdesignerplugin')
+source=(https://wwwu.uni-klu.ac.at/magostin/src/$pkgname-$pkgver.tar.bz2)
+sha512sums=('880033a7f52142d474840a4d095f89f37a2181f452712bde121646850fe3954f2851fd6dfdcfdfd2ce7b0b8d630522343678e6c5d1b67cddde73b24b86c9e6a5')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
