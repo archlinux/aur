@@ -1,7 +1,7 @@
 pkgbase = jekyll
 	pkgdesc = A simple, blog aware, static site generator.
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jekyll/jekyll
 	arch = any
 	license = MIT
@@ -12,18 +12,12 @@ pkgbase = jekyll
 	depends = ruby-jekyll-watch>=2.0
 	depends = ruby-kramdown>=2.1.0
 	depends = ruby-liquid>=4.0
-	depends = ruby-liquid<5.0
 	depends = ruby-mercenary>=0.3.3
-	depends = ruby-mercenary<0.4
 	depends = ruby-pathutil>=0.9
-	depends = ruby-pathutil<1.0
 	depends = ruby-rouge>1.7
-	depends = ruby-rouge<4.0
 	depends = ruby-safe_yaml>=1.0
-	depends = ruby-safe_yaml<2.0
 	depends = ruby-i18n>=1
 	depends = ruby-em-websocket>=0.5
-	depends = ruby-em-websocket<1.0
 	depends = ruby-kramdown-parser-gfm
 	depends = ruby-terminal-table
 	optdepends = ruby-minima: Default theme for Jekyll
@@ -34,10 +28,9 @@ pkgbase = jekyll
 	provides = ruby-jekyll
 	conflicts = ruby-jekyll
 	replaces = ruby-jekyll
-	noextract = jekyll-4.0.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/jekyll-4.0.0.gem
-	sha256sums = 4a1dc48895d525bfb98cd562bf03ab6dd2727b5795360877c90e12670b9fec3a
+	source = jekyll-4.0.0.tar.gz::https://github.com/jekyll/jekyll/archive/v4.0.0.tar.gz
+	sha256sums = 262547c5c6365b73ef45da79005ecd08600f3f398ac0d071439abf0f11fc35a1
 
 pkgname = jekyll
 
