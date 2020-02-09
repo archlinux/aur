@@ -1,0 +1,13 @@
+pkgbase = cws
+	pkgdesc = A CLI tool that finds the most common words in a file
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://kazmal.tech/cws/
+	arch = any
+	license = MIT
+	depends = python
+	source = cws
+	md5sums = 8dc066695d6af82e9f2f6b8a96b892bf
+
+pkgname = cws
+
