@@ -1,27 +1,36 @@
-pkgname=lua-lsqlite3
-pkgver=0.9.4
-pkgrel=2
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+_rockname=lsqlite3
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=0.9.5
+_fossilver=fsl09y
+_rockrel=1
+pkgrel=1
 pkgdesc="A binding for Lua to the SQLite3 database library"
 arch=('i686' 'x86_64')
-url="http://lua.sqlite.org/"
-license=('custom:X11/MIT')
-depends=('lua' 'sqlite')
+url='http://lua.sqlite.org'
+license=('MIT')
+_lua_deps=('sqlite')
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/${pkgname#lua-}-$pkgver-$pkgrel.src.rock")
-sha512sums=('c1310688fc7c9618cddbbd5cc6181197229dfa891c77461f59916de49a0acd1833b936776efd742ab1c983abf9609a66dc1e8773e9422d06f18cc8eed2a4a217')
+source=("$_rockname-$pkgver.zip::http://lua.sqlite.org/index.cgi/zip/lsqlite3_$_fossilver.zip?uuid=${_fossilver/0/_}")
+sha256sums=('72498d89056ada0d03a2053224dc887bf7535eb75d006232be14ef7824848818')
 
-package() {
-  luarocks --tree="$pkgdir/usr" install "${pkgname#lua-}-$pkgver-$pkgrel.src.rock"
-
-  mkdir -p "$pkgdir/usr/share/doc"
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  mv "$pkgdir/usr/lib/luarocks/rocks-"*"/${pkgname#lua-}/$pkgver-$pkgrel/doc" \
-	"$pkgdir/usr/share/doc/$pkgname"
-  mv "$pkgdir/usr/lib/luarocks/rocks-"*"/${pkgname#lua-}/$pkgver-$pkgrel/examples" \
-	"$pkgdir/usr/share/doc/$pkgname/examples"
-  sed -ne '/\/\*\*\*/,/\*\*\*\// p' "$pkgdir/usr/share/doc/$pkgname/${pkgname#lua-}.wiki" \
-	> "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-  rm -rf "$pkgdir/usr/lib/luarocks"
+_package_helper() {
+  cd "${_rockname}_$_fossilver"
+  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
+package_lua-lsqlite3() {
+  depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  _package_helper 5.3
+}
+
+package_lua52-lsqlite3() {
+  depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+  _package_helper 5.2
+}
+
+package_lua51-lsqlite3() {
+  depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+  _package_helper 5.1
+}
