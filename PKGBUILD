@@ -4,7 +4,7 @@
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 
 pkgname=micro-git
-pkgver=v2.0.0.rc2.97ee3442
+pkgver=v2.0.0.rc3.63046ae9
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -31,6 +31,7 @@ build(){
 package(){
 
  install -Dm755 $srcdir/$pkgname/micro "$pkgdir/usr/bin/micro"
- install -Dm644 $srcdir/$pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ install -Dm644 $srcdir/$pkgname/assets/packaging/micro.1 "$pkgdir/usr/share/man/man1/micro.1"
+ install -Dm644 $srcdir/$pkgname/LICENSE "$pkgdir/usr/share/licenses/micro/LICENSE"
 
 }
