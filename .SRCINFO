@@ -1,0 +1,29 @@
+pkgbase = neocomp-git
+	pkgdesc = A fast free standalone X11 compositor
+	pkgver = 697
+	pkgrel = 1
+	url = https://github.com/delusionallogic/neocomp
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = asciidoc
+	makedepends = git
+	makedepends = libx11
+	makedepends = libxcomposite>=0.2
+	makedepends = libxdamage
+	makedepends = libxinerama
+	makedepends = libxext
+	makedepends = libxrender
+	makedepends = libxrandr
+	makedepends = libxfixes
+	makedepends = libconfig
+	makedepends = freetype2
+	makedepends = judy
+	depends = mesa
+	provides = neocomp
+	conflicts = neocomp
+	source = git://github.com/delusionallogic/neocomp.git
+	md5sums = SKIP
+
+pkgname = neocomp-git
+
