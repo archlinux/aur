@@ -3,9 +3,9 @@
 # pak128.britain-extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended-pak128.britain
-pkgver=20200208
+pkgver=20200209
 pkgrel=1
-pkgdesc="Simutrans Extended graphic set, with a British theme"
+pkgdesc="High resolution graphics set for Simutrans Extended, with a British theme"
 arch=('any')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
