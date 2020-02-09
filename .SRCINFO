@@ -1,0 +1,13 @@
+pkgbase = ipv666
+	pkgdesc = Golang IPv6 address enumeration
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/lavalamp-/ipv666
+	arch = any
+	license = BSD
+	makedepends = go-pie>=1.11
+	source = https://github.com/lavalamp-/ipv666/archive/v0.4.0.tar.gz
+	sha256sums = f88400ee7edbfe67bf628991c25252df5aa86b87d79d5f1befc27d127d6f9a74
+
+pkgname = ipv666
+
