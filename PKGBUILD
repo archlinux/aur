@@ -7,7 +7,7 @@
 pkgname=texlive-localmanager-git
 _pkgname="${pkgname%-git}"
 pkgver=v0.7.r3.gbbd8488
-pkgrel=2
+pkgrel=3
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://git.archlinux.org/users/remy/texlive-localmanager.git/'
@@ -22,7 +22,7 @@ depends=('texlive-core>=2011'
          'perl-lwp-protocol-https')
 makedepends=('git')
 
-source=("${_pkgname}::git://git.archlinux.org/users/remy/texlive-localmanager.git"
+source=("${_pkgname}::git+http://git.archlinux.org/users/remy/texlive-localmanager.git"
         'tllocalmgr-enhance.patch'
         'tllocalmgr-fix-texlive-local-match.patch')
 sha256sums=('SKIP'
