@@ -15,4 +15,4 @@ fi
 
 #Change into it and start
 cd $HOME
-/opt/kisslicer2/KISSlicer -inidir $XDG_CONFIG_HOME/kisslicer2
+/usr/bin/kisslicer2 -inidir $XDG_CONFIG_HOME/kisslicer2
