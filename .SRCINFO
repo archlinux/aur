@@ -1,7 +1,7 @@
 pkgbase = mosek
 	pkgdesc = A commercial solver for mathematical optimization problems.
-	pkgver = 9.1.11
-	pkgrel = 2
+	pkgver = 9.1.12
+	pkgrel = 1
 	epoch = 1
 	url = http://mosek.com/
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mosek
 	depends = gcc-libs
 	depends = openmp
 	options = !strip
-	source = mosek-9.1.11.tar.bz2::https://download.mosek.com/stable/9.1.11/mosektoolslinux64x86.tar.bz2
-	sha512sums = 40ef9018bfe97d26de7ee7b8cf40e1a719460a965d4363099b7a4111715f2e3655e01a24ff57291486b47383a78aefada928453423d38ef607bfb8796b4d2532
+	source = mosek-9.1.12.tar.bz2::https://download.mosek.com/stable/9.1.12/mosektoolslinux64x86.tar.bz2
+	sha512sums = 1d72da650c4fe5822847cae91f7a2fa80dfa9a3d1289a3ce9034a99c88070da916f610f51406b47c47d42c2095cbba8c34feb2f068547111b1b3ecf38a5d7c50
 
 pkgname = mosek
 
