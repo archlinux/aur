@@ -1,15 +1,15 @@
 pkgbase = libbpkg
 	pkgdesc = build2 package manager library
-	pkgver = 0.6.2
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://build2.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
-	depends = libbutl>=0.6
-	depends = libbutl<0.7
-	source = https://download.build2.org/0.6.2/build2-toolchain-0.6.2.tar.xz
-	sha256sums = 9f451f9e6355cc8c009b23d9a3454e6f010bac491b3b8a81a8364521c217af04
+	depends = libbutl>=0.12
+	depends = libbutl<0.12
+	source = https://download.build2.org/0.12.0/build2-toolchain-0.12.0.tar.xz
+	sha256sums = a0ecf9930b873242a0164653411caca2cc5c095abda5ee7bda800f1b0f93e396
 
 pkgname = libbpkg
 
