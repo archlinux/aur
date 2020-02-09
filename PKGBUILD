@@ -32,7 +32,7 @@ sha512sums=(
 )
 
 pkgver() {
-    printf "%s.%s+grpc" $(grep 'VERSION = ' ${srcdir}/Qv2ray/Qv2ray.pro | cut -d ' ' -f 3 | cut -d '.' -f 1,2,3) $(cat ${srcdir}/Qv2ray/Build.Counter)
+    printf "%s.%s+grpc" $(cat ${srcdir}/Qv2ray/makespec/VERSION) $(cat ${srcdir}/Qv2ray/Build.Counter)
 }
 
 prepare() {
