@@ -1,24 +1,24 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=i2util
-_pkgname=I2util
-pkgver=1.2
+pkgver=4.2.1
 pkgrel=1
 pkgdesc="Internet2 utility tools"
-arch=("i686" "x86_64")
+arch=("x86_64")
 url="https://software.internet2.edu/"
 license=('Apache')
 depends=("glibc")
-source=("https://software.internet2.edu/sources/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('08762c549e63a8102bfa9fe9a0f09c5f')
+source=("https://github.com/perfsonar/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('eb72b50fad16c40f61515ecee8ede2ecc85be3e1d92aa0650dc8be20c8f03f7b')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
+  autoreconf --force --install
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
 
