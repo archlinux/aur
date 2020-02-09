@@ -1,0 +1,433 @@
+From eae2a63c25fcb95e6fc1e6e062215ad1e8b24345 Mon Sep 17 00:00:00 2001
+From: Christian Krause <kizkizzbangbang@googlemail.com>
+Date: Thu, 16 Jul 2015 12:33:10 +0200
+Subject: [PATCH] use more portable /usr/bin/env perl for scripts
+
+This is useful, e.g. if your perl is not installed in /usr/bin or you
+want to give a specific perl precendence over the one installed in
+/usr/bin. Wherever there was `perl -w` there is now `use warnings;`.
+---
+ cd-hit-2d-para.pl                     | 3 ++-
+ cd-hit-auxtools/cd-hit-dup-PE-out.pl  | 2 +-
+ cd-hit-div.pl                         | 2 +-
+ cd-hit-para.pl                        | 3 ++-
+ clstr2tree.pl                         | 2 +-
+ clstr2txt.pl                          | 2 +-
+ clstr2xml.pl                          | 2 +-
+ clstr_cut.pl                          | 2 +-
+ clstr_merge.pl                        | 2 +-
+ clstr_merge_noorder.pl                | 2 +-
+ clstr_quality_eval.pl                 | 2 +-
+ clstr_quality_eval_by_link.pl         | 2 +-
+ clstr_reduce.pl                       | 2 +-
+ clstr_renumber.pl                     | 2 +-
+ clstr_rep.pl                          | 2 +-
+ clstr_reps_faa_rev.pl                 | 2 +-
+ clstr_rev.pl                          | 2 +-
+ clstr_select.pl                       | 2 +-
+ clstr_select_rep.pl                   | 2 +-
+ clstr_size_histogram.pl               | 2 +-
+ clstr_size_stat.pl                    | 2 +-
+ clstr_sort_by.pl                      | 2 +-
+ clstr_sort_prot_by.pl                 | 2 +-
+ clstr_sql_tbl.pl                      | 2 +-
+ clstr_sql_tbl_sort.pl                 | 2 +-
+ make_multi_seq.pl                     | 2 +-
+ plot_2d.pl                            | 2 +-
+ plot_len1.pl                          | 2 +-
+ psi-cd-hit/cd-hit-div.pl              | 2 +-
+ psi-cd-hit/clstr_select_rep.pl        | 2 +-
+ psi-cd-hit/clstr_select_seq.pl        | 2 +-
+ psi-cd-hit/fetch_fasta_by_ids.pl      | 2 +-
+ psi-cd-hit/fetch_fasta_exclude_ids.pl | 2 +-
+ psi-cd-hit/psi-2d.pl                  | 2 +-
+ psi-cd-hit/psi-cd-hit-local.pl        | 3 ++-
+ psi-cd-hit/psi-cd-hit.pl              | 4 +++-
+ 36 files changed, 41 insertions(+), 36 deletions(-)
+
+diff --git a/cd-hit-2d-para.pl b/cd-hit-2d-para.pl
+index 3cab955..9aa2d8a 100755
+--- a/cd-hit-2d-para.pl
++++ b/cd-hit-2d-para.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ # =============================================================================
+ # CD-HIT
+ # http://cd-hit.org/
+@@ -11,6 +11,7 @@
+ #                                      Email liwz@sdsc.edu
+ # =============================================================================
+ 
++use warnings;
+ use strict;
+ no strict "refs";
+ 
+diff --git a/cd-hit-auxtools/cd-hit-dup-PE-out.pl b/cd-hit-auxtools/cd-hit-dup-PE-out.pl
+index bfe5af3..f035229 100755
+--- a/cd-hit-auxtools/cd-hit-dup-PE-out.pl
++++ b/cd-hit-auxtools/cd-hit-dup-PE-out.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $script_name = $0;
+ my $script_dir = $0;
+diff --git a/cd-hit-div.pl b/cd-hit-div.pl
+index e349394..db8d942 100755
+--- a/cd-hit-div.pl
++++ b/cd-hit-div.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #not like cd-hit-div, this script do not sort input
+ #or throw away seq
+diff --git a/cd-hit-para.pl b/cd-hit-para.pl
+index 33f1a1b..db62e38 100755
+--- a/cd-hit-para.pl
++++ b/cd-hit-para.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ # =============================================================================
+ # CD-HIT
+ # http://cd-hit.org/
+@@ -11,6 +11,7 @@
+ #                                      Email liwz@sdsc.edu
+ # =============================================================================
+ 
++use warnings;
+ use strict;
+ no strict "refs";
+ 
+diff --git a/clstr2tree.pl b/clstr2tree.pl
+index 73fd37a..56d9fe2 100755
+--- a/clstr2tree.pl
++++ b/clstr2tree.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $clstr = shift;
+ $fr = shift; # for nr80.clstr $fr = 0.8
+diff --git a/clstr2txt.pl b/clstr2txt.pl
+index 902b083..127537e 100755
+--- a/clstr2txt.pl
++++ b/clstr2txt.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $no = 0;
+ my $clstr_no = "";
+diff --git a/clstr2xml.pl b/clstr2xml.pl
+index 10d828c..ba8264a 100755
+--- a/clstr2xml.pl
++++ b/clstr2xml.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #usage: clstr_xml.pl [-len|-size] level1.clstr [level2.clstr level3.clstr ...]
+ #purpose: to create xml file from cd-hit or hierarchical cd-hit(h-cd-hit) results
+diff --git a/clstr_cut.pl b/clstr_cut.pl
+index 498f180..ae0264c 100755
+--- a/clstr_cut.pl
++++ b/clstr_cut.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #keep only top $no proteins in cluster
+ 
+diff --git a/clstr_merge.pl b/clstr_merge.pl
+index 3fe108e..9186777 100755
+--- a/clstr_merge.pl
++++ b/clstr_merge.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # the order of clusters need to be identical
+ my ($master_clstr, @clstr) = @ARGV;
+diff --git a/clstr_merge_noorder.pl b/clstr_merge_noorder.pl
+index f8acdfc..0852aee 100755
+--- a/clstr_merge_noorder.pl
++++ b/clstr_merge_noorder.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ # order of clusters don't need to be the same
+ # but then I have to read everything into memory
+diff --git a/clstr_quality_eval.pl b/clstr_quality_eval.pl
+index 62f2a3d..060ab01 100755
+--- a/clstr_quality_eval.pl
++++ b/clstr_quality_eval.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ ## calculate the sensitivity and specificity of clusters
+ ## if the input fasta file has pre-defined classification term
+diff --git a/clstr_quality_eval_by_link.pl b/clstr_quality_eval_by_link.pl
+index 8fba8df..140c05c 100755
+--- a/clstr_quality_eval_by_link.pl
++++ b/clstr_quality_eval_by_link.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ ## calculate the sensitivity and specificity of clusters
+ ## if the input fasta file has pre-defined classification term
+diff --git a/clstr_reduce.pl b/clstr_reduce.pl
+index 990f4ad..3621025 100755
+--- a/clstr_reduce.pl
++++ b/clstr_reduce.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ 
+ $file90 = shift;
+diff --git a/clstr_renumber.pl b/clstr_renumber.pl
+index b542304..c66088d 100755
+--- a/clstr_renumber.pl
++++ b/clstr_renumber.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ $no = 0;
+ while($ll=<>){
+   if ($ll =~ /^>Cluster (\d+)/) {
+diff --git a/clstr_rep.pl b/clstr_rep.pl
+index 0ebeb88..84b86b3 100755
+--- a/clstr_rep.pl
++++ b/clstr_rep.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $rep = "";
+ $no = 0;
+diff --git a/clstr_reps_faa_rev.pl b/clstr_reps_faa_rev.pl
+index 80a4a8a..3574b2b 100755
+--- a/clstr_reps_faa_rev.pl
++++ b/clstr_reps_faa_rev.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ # output single fasta file
+ # for each cluster output at least $cutoff seqs
+ 
+diff --git a/clstr_rev.pl b/clstr_rev.pl
+index d7efdcc..71134e2 100755
+--- a/clstr_rev.pl
++++ b/clstr_rev.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ # if nr90 from nr100 and
+ #    nr80 from nr90, so I have nr90.clstr and nr80.clstr
+ # but, in nr80.clstr, some gi numbers whose from nr100 are there
+diff --git a/clstr_select.pl b/clstr_select.pl
+index 1b168d9..dc70147 100755
+--- a/clstr_select.pl
++++ b/clstr_select.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #my $by = shift;
+ my $min;
+diff --git a/clstr_select_rep.pl b/clstr_select_rep.pl
+index 80c7b7e..f7c38f4 100755
+--- a/clstr_select_rep.pl
++++ b/clstr_select_rep.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #my $by = shift;
+ my $min;
+diff --git a/clstr_size_histogram.pl b/clstr_size_histogram.pl
+index 01ecb63..b726e46 100755
+--- a/clstr_size_histogram.pl
++++ b/clstr_size_histogram.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+    print "Usage:\n\tclstr_size_histogram.pl [-bin N] clstr_file\n";
+diff --git a/clstr_size_stat.pl b/clstr_size_stat.pl
+index b234b06..ecda7db 100755
+--- a/clstr_size_stat.pl
++++ b/clstr_size_stat.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+    print "Usage:\n\tclstr_size_stat.pl clstr_file\n";
+diff --git a/clstr_sort_by.pl b/clstr_sort_by.pl
+index 82e9cf8..adb12d8 100755
+--- a/clstr_sort_by.pl
++++ b/clstr_sort_by.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $sort_by_what = shift;
+    $sort_by_what = "no" unless $sort_by_what;
+diff --git a/clstr_sort_prot_by.pl b/clstr_sort_prot_by.pl
+index 64f19e2..0832b99 100755
+--- a/clstr_sort_prot_by.pl
++++ b/clstr_sort_prot_by.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $sort_by = shift;
+    $sort_by = "len" unless ($sort_by);
+diff --git a/clstr_sql_tbl.pl b/clstr_sql_tbl.pl
+index f2dba07..68bfd7d 100755
+--- a/clstr_sql_tbl.pl
++++ b/clstr_sql_tbl.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+   print "Usage:\n\tclstr_sql_tbl.pl clstr_file tbl_file\n";
+diff --git a/clstr_sql_tbl_sort.pl b/clstr_sql_tbl_sort.pl
+index 67d60a8..3dfe9c4 100755
+--- a/clstr_sql_tbl_sort.pl
++++ b/clstr_sql_tbl_sort.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ if(@ARGV==0){
+    print "Usage:\n\tclstr_sql_tbl_sort.pl table_file level\n";
+diff --git a/make_multi_seq.pl b/make_multi_seq.pl
+index 7b05636..3678654 100755
+--- a/make_multi_seq.pl
++++ b/make_multi_seq.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #note you have to use "-d 0" in the cd-hit run
+ #note you better to use "-g 1" in the cd-hit run
+diff --git a/plot_2d.pl b/plot_2d.pl
+index 418a5cf..91342ca 100755
+--- a/plot_2d.pl
++++ b/plot_2d.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ use Image::Magick;
+ 
+diff --git a/plot_len1.pl b/plot_len1.pl
+index efcdfe0..e8be6e3 100755
+--- a/plot_len1.pl
++++ b/plot_len1.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ $file90 = shift;
+ $segs = shift;
+diff --git a/psi-cd-hit/cd-hit-div.pl b/psi-cd-hit/cd-hit-div.pl
+index e349394..db8d942 100755
+--- a/psi-cd-hit/cd-hit-div.pl
++++ b/psi-cd-hit/cd-hit-div.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ #not like cd-hit-div, this script do not sort input
+ #or throw away seq
+diff --git a/psi-cd-hit/clstr_select_rep.pl b/psi-cd-hit/clstr_select_rep.pl
+index b465586..63db0ce 100755
+--- a/psi-cd-hit/clstr_select_rep.pl
++++ b/psi-cd-hit/clstr_select_rep.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $by = shift;
+ my $min;
+diff --git a/psi-cd-hit/clstr_select_seq.pl b/psi-cd-hit/clstr_select_seq.pl
+index fd7bb8b..598b0e9 100755
+--- a/psi-cd-hit/clstr_select_seq.pl
++++ b/psi-cd-hit/clstr_select_seq.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my $by = shift;
+ my $min;
+diff --git a/psi-cd-hit/fetch_fasta_by_ids.pl b/psi-cd-hit/fetch_fasta_by_ids.pl
+index bfdbb26..9c17504 100755
+--- a/psi-cd-hit/fetch_fasta_by_ids.pl
++++ b/psi-cd-hit/fetch_fasta_by_ids.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my ($gi_file, $seq_file) = @ARGV;
+ 
+diff --git a/psi-cd-hit/fetch_fasta_exclude_ids.pl b/psi-cd-hit/fetch_fasta_exclude_ids.pl
+index 90e237e..13d061a 100755
+--- a/psi-cd-hit/fetch_fasta_exclude_ids.pl
++++ b/psi-cd-hit/fetch_fasta_exclude_ids.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ my ($gi_file, $seq_file) = @ARGV;
+ 
+diff --git a/psi-cd-hit/psi-2d.pl b/psi-cd-hit/psi-2d.pl
+index ab3f655..f3884a3 100755
+--- a/psi-cd-hit/psi-2d.pl
++++ b/psi-cd-hit/psi-2d.pl
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/usr/bin/env perl
+ 
+ 
+ my $script_name = $0;
+diff --git a/psi-cd-hit/psi-cd-hit-local.pl b/psi-cd-hit/psi-cd-hit-local.pl
+index a77c7f7..e7866c3 100755
+--- a/psi-cd-hit/psi-cd-hit-local.pl
++++ b/psi-cd-hit/psi-cd-hit-local.pl
+@@ -1,7 +1,8 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ ################################################################################
+ ######### PSI-cd-hit written by Weizhong Li at http://cd-hit.org
+ ################################################################################
++use warnings;
+ our $pid       = $$;
+ our $db_in     = "";   ###################
+ our $db_out    = "";   # input / output
+diff --git a/psi-cd-hit/psi-cd-hit.pl b/psi-cd-hit/psi-cd-hit.pl
+index af99e52..35aaeda 100755
+--- a/psi-cd-hit/psi-cd-hit.pl
++++ b/psi-cd-hit/psi-cd-hit.pl
+@@ -1,8 +1,10 @@
+-#!/usr/bin/perl -w
++#!/usr/bin/env perl
+ ################################################################################
+ ######### PSI-cd-hit written by Weizhong Li at http://cd-hit.org
+ ################################################################################
+ 
++use warnings;
++
+ our $script_name = $0;
+ our $script_dir = $0;
+    $script_dir =~ s/[^\/]+$//;
