@@ -1,7 +1,7 @@
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=libbutl
-pkgver=0.6.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="build2 utility library"
 arch=(i686 x86_64)
@@ -9,12 +9,12 @@ url="https://build2.org/"
 license=('MIT' 'BSD')
 depends=('gcc-libs')
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
-sha256sums=('9f451f9e6355cc8c009b23d9a3454e6f010bac491b3b8a81a8364521c217af04')
+sha256sums=('a0ecf9930b873242a0164653411caca2cc5c095abda5ee7bda800f1b0f93e396')
 
 build() {
   cd build2-toolchain-$pkgver
 
-  if test -z "$(command -v b && b --version | grep '^build2 0\.6\.')"
+  if test -z "$(command -v b && b --version | grep '^build2 0\.12\.')"
   then
     cd build2
     if ! test -x build2/b-boot; then
@@ -40,7 +40,7 @@ build() {
 package() {
   cd build2-toolchain-$pkgver
 
-  if test -z "$(command -v b && b --version | grep '^build2 0\.6\.')"
+  if test -z "$(command -v b && b --version | grep '^build2 0\.12\.')"
   then
     export BCMD="$(pwd)/build2/build2/b-boot"
   else
