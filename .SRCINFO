@@ -1,0 +1,17 @@
+pkgbase = ttf-graduate-git
+	pkgdesc = Variable font in classic college block style
+	pkgver = r45.6cead8a
+	pkgrel = 1
+	url = https://github.com/etunni/Graduate-Variable-Font
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	provides = ttf-graduate
+	conflicts = ttf-graduate
+	source = git+https://github.com/etunni/Graduate-Variable-Font
+	sha256sums = SKIP
+
+pkgname = ttf-graduate-git
+
