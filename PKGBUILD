@@ -6,7 +6,7 @@
 pkgname=cddb_get
 _realname=CDDB_get
 pkgver=2.28
-pkgrel=5
+pkgrel=6
 pkgdesc="Fetches CDDB info for an audio cd."
 arch=('any')
 url="https://web.archive.org/web/20190628161057/http://armin.emx.at/cddb/"
