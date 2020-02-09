@@ -1,6 +1,6 @@
 pkgbase = pioneer-bin
 	pkgdesc = A freeform single player space adventure in the spirit of Frontier: Elite II.
-	pkgver = 20190203
+	pkgver = 20200203
 	pkgrel = 1
 	url = http://pioneerspacesim.net/
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = pioneer-bin
 	md5sums = 46e51941124eb3cf1af9233820223478
 	md5sums = 1f05200234c41b4320f59de80534669c
 	md5sums = 9e61ce70a75f6b9ad0fd5cab5d0b7420
-	source_x86_64 = https://github.com/pioneerspacesim/pioneer/releases/download/20190203/pioneer-20190203-linux.tar.gz
-	md5sums_x86_64 = 7d9f55710ed7b79e1ca2f4e0d06644a7
+	source_x86_64 = https://github.com/pioneerspacesim/pioneer/releases/download/20200203/pioneer-20200203_linux.tar.gz
+	md5sums_x86_64 = 0d8bc0eda6ecd8fda8954b97762a3e81
 
 pkgname = pioneer-bin
 
