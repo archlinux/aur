@@ -9,9 +9,8 @@ url='https://kazmal.tech/cws/'
 license=('MIT')
 depends=('python')
 source=("cws")
-md5sums=('92b48b83f0e6d60f103c2bc6d1184712')
-md5sums=('b6dfdfb3d79c0709e1154e9f55695726')
-md5sums=('8dc066695d6af82e9f2f6b8a96b892bf')
+md5sums=('20254d90ecc536928e49d4d29d2f7669')
+
 
 package(){
 
