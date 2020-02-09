@@ -1,15 +1,15 @@
 pkgbase = pureref
 	pkgdesc = Reference Image Viewer
-	pkgver = 1.9.2
-	pkgrel = 5
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = http://www.pureref.com
 	arch = x86_64
 	license = unknown
 	makedepends = curl
 	makedepends = libarchive
 	makedepends = binutils
-	source = pureref-1.9.2.deb::https://www.pureref.com/files/installer.php?build=UNIX64.deb&downloadKey=%2BpTQ6NjIx5pijEkwca56YQ%3D%3D
-	sha512sums = 225c94dd06841222e6cef0806056b38a7f6ba2f29a719f5a886230cd51bcf227dd43a90f1e7d7c8da81327ef76f038364cf05c65edc0e1e57d132e4a7baa0a6d
+	source = pureref-1.10.0.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&downloadKey=VAyd7gd6XlPoY7tWy23Ncg%3D%3D
+	sha512sums = SKIP
 
 pkgname = pureref
 
