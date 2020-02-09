@@ -1,7 +1,7 @@
 # Maintainer: Garrett <floft.net/contact>
 pkgname=cinelerra-heroine
-pkgver=4.6
-pkgrel=2
+pkgver=7.2
+pkgrel=1
 pkgdesc="Cinelerra from the HeroineWarrior.com (64-bit)"
 arch=('x86_64')
 url="http://www.heroinewarrior.com/cinelerra.php"
@@ -10,42 +10,20 @@ depends=('libpng' 'freeglut' 'libxv' 'ncurses' 'libva'
          'openexr' 'libxft' 'freetype2' 'alsa-lib')
 makedepends=('yasm' 'nasm' 'libtool')
 conflicts=('cinelerra-cv')
-source=(https://sourceforge.net/projects/heroines/files/cinelerra-$pkgver.src.tar.xz
-        quicktime.patch
-        plugin_dir.patch
-        texi2html.patch
-        gpac.patch
-        libavcodec.patch
-        cinelerra_4.6.patch
+source=(https://netcologne.dl.sourceforge.net/project/heroines/cinelerra-${pkgver}-src.tar.xz
         cinelerra.desktop)
-md5sums=('3da60ce525abc278a028c8889d5b9fd6'
-         '0babae23875017653914bd121477ec97'
-         'cf9861e808948fe8ea4d4be27765ffa5'
-         '431503db853032e14ade0438ed3eea29'
-         'cefa6a8efe5ba5bc00ad9fc5649dd25c'
-         '4dd7fd1184dfe3813a8821d47ef70a55'
-         '3e84af8442b5a3d426ed64f29be71cbf'
-         '54ee50b75e5318509da5d4e8fa55caf3')
+sha512sums=('da422379e738bb9c9019bb95fbe4d3cf2f2df995e4d42bd1ef958a79b5013bbdb5c9f50f64e1091d2990215c514e4d28c30f50f65b94bb01a69f6a3e78c02dc7'
+            '111cd582cc8d165a6888f66b7de4286058e8037ed9b5dbcbffc4ad6ab283df15203325a2ba5096112e583cc03b56f38b604e7a070113a5deb3762af8f382ff94')
 
 prepare() {
-  cd "$srcdir/cinelerra-$pkgver-src"
+  cd "$srcdir/cinelerra-$pkgver"
 
   # Use ncurses instead of termcap
   sed -i 's/ltermcap/lncurses/g' ./thirdparty/speech_tools/{configure{,.in},config/config}
-
-  # fixes to make it compile
-  patch -Np1 -i "$srcdir/quicktime.patch"
-  patch -Np1 -i "$srcdir/texi2html.patch"
-  patch -Np1 -i "$srcdir/gpac.patch"
-  patch -Np1 -i "$srcdir/libavcodec.patch"
-  patch -Np1 -i "$srcdir/cinelerra_4.6.patch"
-  
-  # fix problems with Cinelerra_plugins in read-only directories
-  patch -Np1 -i "$srcdir/plugin_dir.patch"
 }
 
 build() {
-  cd "$srcdir/cinelerra-$pkgver-src"
+  cd "$srcdir/cinelerra-$pkgver"
 
   ./configure
 
@@ -57,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/cinelerra-$pkgver-src"
+  cd "$srcdir/cinelerra-$pkgver"
 
   # makes repackaging work
   [ ! -e "bin/cinelerra" ] && \
