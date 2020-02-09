@@ -4,7 +4,7 @@ pkgbase = simutrans-pak32.comic
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
-	license = custom:Artistic
+	license = Unknown
 	source = http://downloads.sourceforge.net/project/simutrans/pak32.comic/pak32.comic%20for%20102-0/pak32.comic_102-0.zip
 	sha256sums = da937cb9e086095ee4c1b2529d0b6095be6ae1a28eb29db578caac53d5050e68
 
