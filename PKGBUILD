@@ -1,10 +1,10 @@
 # Maintainer: Mikkel Oscar Lyderik Larsen <m@moscar.net>
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 # Contributor: Jacqueline Outka <joutka@vyvygen.org>
 # Contributor: Abuzer Rafey <arafey@vyvygen.org>
 
 pkgname=mkdocs-material
-pkgver=4.6.0
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="Material design theme for MkDocs"
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 depends=("mkdocs" "python-pygments" "pymdown-extensions" "python-mkdocs-minify-plugin")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/$pkgver.tar.gz")
-sha256sums=('abc55c89a7ea70da6fc91a87c861e9109f609f9c571cc89e638ceeebf75373a0')
+sha256sums=('fd92fe5f2c336d5cc46d0e77ca8476f62cefa733ad27b89695ce53049ffae0fe')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

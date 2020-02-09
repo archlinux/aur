@@ -1,6 +1,6 @@
 pkgbase = mkdocs-material
 	pkgdesc = Material design theme for MkDocs
-	pkgver = 4.6.0
+	pkgver = 4.6.2
 	pkgrel = 1
 	url = http://squidfunk.github.io/mkdocs-material/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mkdocs-material
 	depends = python-pygments
 	depends = pymdown-extensions
 	depends = python-mkdocs-minify-plugin
-	source = mkdocs-material-4.6.0.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/4.6.0.tar.gz
-	sha256sums = abc55c89a7ea70da6fc91a87c861e9109f609f9c571cc89e638ceeebf75373a0
+	source = mkdocs-material-4.6.2.tar.gz::https://github.com/squidfunk/mkdocs-material/archive/4.6.2.tar.gz
+	sha256sums = fd92fe5f2c336d5cc46d0e77ca8476f62cefa733ad27b89695ce53049ffae0fe
 
 pkgname = mkdocs-material
 
