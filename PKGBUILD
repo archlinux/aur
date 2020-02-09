@@ -1,33 +1,33 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Sébastien Luttringer <seblu@archlinux.org>
 # Contributor: Anders Bergh <anders1@gmail.com>
 
 pkgbase=luasql
 pkgname=('lua-sql-mysql' 'lua-sql-postgres' 'lua-sql-sqlite')
-pkgver=2.3.0
-pkgrel=9
+pkgver=2.5.0
+pkgrel=1
 arch=('x86_64')
-url='http://www.keplerproject.org/luasql/'
+url='https://keplerproject.github.io/luasql'
 license=('MIT')
 makedepends=('lua' 'libmariadbclient' 'postgresql-libs' 'sqlite')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/keplerproject/luasql/archive/v$pkgver.tar.gz")
-md5sums=('af9f0f3a2313a1fcf88c40700092048d')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/keplerproject/luasql/archive/$pkgver.tar.gz")
+sha256sums=('666482b6ed1d4ca4317db2345c46dc0fc54a39c8cfd14e34f1a83595864b0ae4')
 
 prepare() {
   cd $pkgbase-$pkgver
   # Lua 5.3 compat
-  sed 's/luaL_optint/(int)luaL_optinteger/' -i src/ls_mysql.c
+  sed -i -e 's/luaL_optint/(int)luaL_optinteger/' src/ls_mysql.c
 }
 
 build() {
   cd $pkgbase-$pkgver
   msg2 'Building sqlite support'
-  make T=sqlite3 PREFIX=/usr DRIVER_LIBS='-lsqlite3' DRIVER_INCS='-std=c99'
+  make sqlite3 PREFIX=/usr DRIVER_LIBS='-lsqlite3' DRIVER_INCS='-std=c99'
   msg2 'Building PostgreSQL support'
-  make T=postgres PREFIX=/usr DRIVER_LIBS='-lpq' DRIVER_INCS='-std=c99'
+  make postgres PREFIX=/usr DRIVER_LIBS='-lpq' DRIVER_INCS='-std=c99'
   msg2 'Building MySQL support'
-  make T=mysql PREFIX=/usr DRIVER_LIBS="$(mysql_config --libs)" \
+  make mysql PREFIX=/usr DRIVER_LIBS="$(mysql_config --libs)" \
     DRIVER_INCS="$(mysql_config --include) -std=c99"
 }
 
