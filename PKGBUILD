@@ -10,7 +10,7 @@ license=('GPL')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
 optdepends=('anki')
 makedepends=('p7zip' 'imagemagick')
-source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/subs2srs_v${pkgver}.zip/download")
+source=("${pkgname}_v${pkgver}.zip::https://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}_v${pkgver}/${pkgname}_v${pkgver}.zip/download")
 sha256sums=('b6731c6c02b63315669f1ad28587052af39dff3e7aba9dd6bcb49a9667b075d1')
 
 package() {
@@ -24,7 +24,7 @@ package() {
 
 	cat <<-END > "$pkgdir/usr/bin/$pkgname"
 	#!/bin/bash
-	conf_dir="$HOME/.config/$pkgname"
+	conf_dir="\$HOME/.config/$pkgname"
 
 	[ ! -d "\$conf_dir" ] && mkdir -p "\$conf_dir"
 	[ ! -f "\$conf_dir/preferences.txt" ] && cp "/opt/subs2srs/preferences.txt" "\$conf_dir/"
