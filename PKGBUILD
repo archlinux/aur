@@ -1,7 +1,7 @@
 # Maintainer: peterix@gmail.com
 
 pkgname=multimc-git
-pkgver=0.6.7.r0.gc291946d
+pkgver=0.6.8.r0.gd58481e0
 pkgrel=1
 pkgdesc="Free, open source launcher and instance manager for Minecraft."
 arch=('i686' 'x86_64')
