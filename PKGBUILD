@@ -1,6 +1,6 @@
 # Maintainer: dumblob <dumblob@gmail.com>
 
-pkgver=7.6.0
+pkgver=7.10.1
 pkgrel=1
 
 _basename=bonita-studio-community
@@ -11,13 +11,9 @@ pkgname="${_basename}-bin"
 pkgdesc='Bonita Studio with embedded Engine + Portal'
 url='https://www.bonitasoft.com/bonita-platform'
 license=('GPL2')
-arch=('i686' 'x86_64')
-# http://www.bonitasoft.com/products/download/bonita-bpm-linux-6-4-2-64bit?skip=true
-source_x86_64=("http://download.forge.objectweb.org/bonita/BonitaStudioCommunity-${pkgver}-x86_64.run")
-# http://www.bonitasoft.com/products/download/bonita-bpm-linux-6-4-2-32bit?skip=true
-source_i686=(  "http://download.forge.objectweb.org/bonita/BonitaStudioCommunity-${pkgver}-x86.run")
-sha256sums_x86_64=("814a8bb9b8b31035be516b510768235ce0781c4d21161c0a8a01939a6ee43cef")  # BonitaStudioCommunity-7.6.0-x86_64.run
-sha256sums_i686=(  "9d1e60fd3df378e77c639bfc65b47503c5a05c046b4b533f75d86fb9972088ee")  # BonitaStudioCommunity-7.6.0-x86.run
+arch=('x86_64')
+source=("https://release.ow2.org/bonita/BonitaStudioCommunity-${pkgver}-x86_64.run")
+sha256sums=(405387e38a435beb6f599092985b964125a80d0d30af5a4d27419da15278bf38)
 install="${_basename}.install"
 replaces=('bonita-bpm-community-bin')  # yeah, they renamed it
 
@@ -46,10 +42,6 @@ build() {
 #    false
 #  }
 
-  [ "$(ls -1 *.run | wc -l)" -eq 1 ] || {
-    printf 'ERR Multiple *.run files found.\n' >&2
-    false
-  }
   chmod +x *.run
   # FIXME a hack to kill the process, because it waits for user input indefinitely
   #  https://github.com/bonitasoft/bonita-studio/issues/397
