@@ -1,32 +1,55 @@
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua-penlight-git
+_pkgname=penlight
+pkgname=("lua-${_pkgname}-git" "lua52-${_pkgname}-git" "lua51-${_pkgname}-git")
 pkgver=1.7.0.r4.ge469fa0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url='https://tieske.github.io/Penlight'
 arch=('any')
 license=('MIT')
-conflicts=('lua-penlight')
-provides=('lua-penlight')
-depends=('lua' 'lua-filesystem')
-source=("${pkgname}::git+https://github.com/Tieske/Penlight.git")
-md5sums=('SKIP')
+_lua_deps=('filesystem')
+source=("${_pkgname}::git+https://github.com/Tieske/Penlight.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd ${_pkgname}
   git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  cd ${pkgname}
-  install -dm644              "${pkgdir}/usr/share/doc/${pkgname}/" # Create doc directory
-  cp -a docs/manual examples  "${pkgdir}/usr/share/doc/${pkgname}/" # Copy documentation and examples into doc/
-  cp -a config.ld             "${pkgdir}/usr/share/doc/${pkgname}/" # Copy config.ld to examples
-  install -DTpm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md" # Copy license file and create directory
+check() {
+  cd ${_pkgname}
+  export LUA_PATH="${PWD}/lua/?/init.lua;${PWD}/lua/?.lua;$(lua -e 'print(package.path)')"
+  lua run.lua
+}
 
-  luaversion=`lua -v | awk '{print tolower($1$2)}' | sed -r 's/lua([0-9]\.[0-9]).*/\1/g'`
-  mkdir -p       "${pkgdir}/usr/share/lua/${luaversion}/pl"
-  cp -a lua/pl/* "${pkgdir}/usr/share/lua/${luaversion}/pl"
+_package_helper() {
+  cd ${_pkgname}
+  install -Dm 644 lua/pl/* -t "${pkgdir}/usr/share/lua/$1/pl"
+  install -Dm 644 CONTRIBUTING.md CHANGELOG.md README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 docs/manual/* -t "${pkgdir}/usr/share/doc/${pkgname}/manual"
+  install -Dm 644 examples/* -t "${pkgdir}/usr/share/doc/${pkgname}/examples"
+  install -Dm 644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+package_lua-penlight-git() {
+  depends+=('lua' "${_lua_deps[@]/#/lua-}")
+  provides=("${pkgname/%-git}")
+  conflicts=("${pkgname/%-git}")
+  _package_helper 5.3
+}
+
+package_lua52-penlight-git() {
+  depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+  provides=("${pkgname/%-git}")
+  conflicts=("${pkgname/%-git}")
+  _package_helper 5.2
+}
+
+package_lua51-penlight-git() {
+  depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+  provides=("${pkgname/%-git}")
+  conflicts=("${pkgname/%-git}")
+  _package_helper 5.1
 }
