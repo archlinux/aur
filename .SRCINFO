@@ -9,10 +9,6 @@ pkgbase = django-rq
 	makedepends = python-setuptools
 	makedepends = python-django
 	makedepends = python-rq
-	makedepends = python2
-	makedepends = python2-setuptools
-	makedepends = python2-django
-	makedepends = python2-rq
 	source = django-rq-2.3.0.tar.gz::https://github.com/ui/django-rq/archive/v2.3.0.tar.gz
 	sha512sums = 8c1bc1f4306ca1202c4a4ba23fb4e59c72f9de6893912b7bb4eb943b51fc82a0f9be0cfd7774efdded6a882b3c82fc09ec60a9a6a58c9c3e24ae4af381f35596
 
@@ -20,9 +16,4 @@ pkgname = python-django-rq
 	depends = python
 	depends = python-django
 	depends = python-rq
-
-pkgname = python2-django-rq
-	depends = python2
-	depends = python2-django
-	depends = python2-rq
 
