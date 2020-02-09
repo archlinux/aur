@@ -1,9 +1,8 @@
 pkgbase = chemdoodle
 	pkgdesc = Chemical and Biological Publishing Software
-	pkgver = 8.1.0
+	pkgver = 10.2.0
 	pkgrel = 1
 	url = http://www.chemdoodle.com
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = gendesk
@@ -14,14 +13,11 @@ pkgbase = chemdoodle
 	depends = libxslt
 	depends = libxxf86vm
 	depends = alsa-lib
-	depends = gcc-libs-multilib
+	source = https://www.ichemlabs.com/downloads/ChemDoodle-linux-10.2.0.bin
 	source = chemdoodle.patch
-	md5sums = c1643ffbec64d90fa742cb4d1844f769
-	source_i686 = https://www.chemdoodle.com/downloads/ChemDoodle-linux-i586-8.1.0.bin
-	depends_i686 = gcc-libs
-	md5sums_i686 = e696fe450574d10ae6901a83d53d463f
-	source_x86_64 = https://www.chemdoodle.com/downloads/ChemDoodle-linux-8.1.0.bin
-	md5sums_x86_64 = 86e02b29a825b3a2e7a73cd022427faa
+	md5sums = 09ff47af09fb12412e5da6b5860e0283
+	md5sums = 23e25ceff4ee4d1580a09e5ca709fdc7
+	depends_x86_64 = gcc-libs-multilib
 
 pkgname = chemdoodle
 

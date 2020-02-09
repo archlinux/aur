@@ -1,7 +1,6 @@
-diff -aur ChemDoodle.pristine/ChemDoodle ChemDoodle/ChemDoodle
---- ChemDoodle.pristine/ChemDoodle	2016-08-03 12:21:31.620610882 -0500
-+++ ChemDoodle/ChemDoodle	2016-08-03 12:23:29.742378065 -0500
-@@ -4,20 +4,20 @@
+--- ChemDoodle/ChemDoodle	2020-01-24 17:38:48.000000000 +0100
++++ ChemDoodle/ChemDoodle	2020-02-09 20:45:52.339713369 +0100
+@@ -4,9 +4,9 @@
  #
  clear
  
@@ -13,18 +12,3 @@ diff -aur ChemDoodle.pristine/ChemDoodle ChemDoodle/ChemDoodle
  PATH=$JAVA_HOME/bin:$PATH
  export ICL_APP_DIR ICL_FROM_SHELL JAVA_HOME PATH
  
- if [ "$ICL_APP_DIR" != "" -a -d $ICL_APP_DIR/njre ]
- then
--  if [ -d $ICL_APP_DIR/jre ]
-+  if [ -d /tmp/jre ]
-   then
--    rm -rf $ICL_APP_DIR/jre
-+    rm -rf /tmp/jre
-   fi
--  mv $ICL_APP_DIR/njre $ICL_APP_DIR/jre
--  chmod 0755 $ICL_APP_DIR/jre/bin/*
-+  cp -R $ICL_APP_DIR/njre /tmp/jre
-+  chmod 0755 /tmp/jre/bin/*
- fi
- 
- $JAVA_HOME/bin/java `cat $ICL_APP_DIR/ChemDoodle.ini` -jar $ICL_APP_DIR/ChemDoodle.jar $*
