@@ -5,19 +5,23 @@
 #
 
 pkgname=v1541commander
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="virtual 1541 disk commander that allows you to create and modify D64 disk images (for the Commodore 1541 floppy drive)."
 arch=('i686' 'x86_64')
 url="https://github.com/excess-c64/v1541commander"
 license=('custom') # see LICENSE.txt
 depends=()
+#
 source=(
         ${pkgname}-v${pkgver}.tar.gz::https://github.com/excess-c64/${pkgname}/archive/v${pkgver}.tar.gz
-        lib1541img-v1.0.tar.gz::https://github.com/excess-c64/lib1541img/archive/v1.0.tar.gz
+        lib1541img-v1.1.tar.gz::https://github.com/excess-c64/lib1541img/archive/v1.1.tar.gz
         zimk.tar.gz::https://github.com/Zirias/zimk/archive/31500ca556f258ab2d37d75fb8de5506cbdd5840.tar.gz
        )
-md5sums=('a47887bd4eb570e07339400ce494182e' "4fb415b69b23fbd79c0c77bb8a7cb91c" "b7a17162aeb953fb938c4ea4597f8fd8")
+#
+md5sums=('7424638cde435cf590cc14a96c0b5dcd'
+         '1fd4b747ed7d2dfb5fb660927dce1764'
+         'b7a17162aeb953fb938c4ea4597f8fd8')
 
 #
 prepare()
