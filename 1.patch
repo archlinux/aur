@@ -1,0 +1,64 @@
+From aaa6af5f6249fc1e25c6913bb4dfe2561fda4a40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Thu, 13 Dec 2018 22:08:12 +0100
+Subject: [PATCH] Fix UI files usage
+
+This was incomplete in the meson port.
+---
+ meson.build            | 2 --
+ tool/meson.build       | 2 +-
+ tool/seahorse-widget.c | 4 ++--
+ 3 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 2fe05ee..7af175a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -19,7 +19,6 @@ po_dir = join_paths(meson.source_root(), 'po')
+ datadir = join_paths(seahorse_nautilus_prefix, get_option('datadir'))
+ bindir = join_paths(seahorse_nautilus_prefix, get_option('bindir'))
+ localedir = join_paths(seahorse_nautilus_prefix, get_option('localedir'))
+-uidir = join_paths(datadir, 'seahorse-nautilus', 'ui')
+ config_h_dir = include_directories('.')
+ 
+ # Dependencies
+@@ -75,7 +74,6 @@ conf.set_quoted('G_LOG_DOMAIN', meson.project_name())
+ conf.set_quoted('DATA_DIR', datadir)
+ conf.set_quoted('LOCALEDIR', localedir)
+ conf.set_quoted('GNOMELOCALEDIR', localedir)
+-conf.set_quoted('SEAHORSE_UIDIR', uidir)
+ conf.set('HAVE_LIBNOTIFY', libnotify_enabled)
+ config_file = configure_file(
+   output: 'config.h',
+diff --git a/tool/meson.build b/tool/meson.build
+index b2e4194..7791305 100644
+--- a/tool/meson.build
++++ b/tool/meson.build
+@@ -43,7 +43,7 @@ seahorse_tool_cflags = [
+ ]
+ 
+ seahorse_tool = executable('seahorse-tool',
+-  seahorse_tool_sources,
++  seahorse_tool_sources, resources,
+   dependencies: seahorse_tool_dependencies,
+   c_args: seahorse_tool_cflags,
+   include_directories: config_h_dir,
+diff --git a/tool/seahorse-widget.c b/tool/seahorse-widget.c
+index 57e0117..1955823 100644
+--- a/tool/seahorse-widget.c
++++ b/tool/seahorse-widget.c
+@@ -204,9 +204,9 @@ object_set_property (GObject *object, guint prop_id, const GValue *value, GParam
+         g_return_if_fail (swidget->name == NULL);
+         swidget->name = g_value_dup_string (value);
+         path = g_strdup_printf ("%sseahorse-%s.ui",
+-                                SEAHORSE_UIDIR, swidget->name);
++                                "/org/gnome/Seahorse/", swidget->name);
+         swidget->gtkbuilder = gtk_builder_new ();
+-        gtk_builder_add_from_file (swidget->gtkbuilder, path, &error);
++        gtk_builder_add_from_resource (swidget->gtkbuilder, path, &error);
+         if (error != NULL) {
+             g_warning ("couldn't load ui file: %s", error->message);
+             g_error_free (error);
+-- 
+2.24.1
+
