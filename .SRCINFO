@@ -1,0 +1,16 @@
+pkgbase = otf-impallari-caveat-git
+	pkgdesc = Handwriting font by Pablo Impallari
+	pkgver = r237.6d65a09
+	pkgrel = 1
+	url = https://github.com/googlefonts/caveat
+	arch = any
+	groups = impallari-fonts
+	license = custom:OFL
+	makedepends = git
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = git+https://github.com/googlefonts/caveat.git
+	sha256sums = SKIP
+
+pkgname = otf-impallari-caveat-git
+
