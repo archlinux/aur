@@ -5,7 +5,7 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-ui"
 
 pkgname=emacs-lsp-ui
-pkgver=6.0
+pkgver=6.2
 pkgrel=1
 pkgdesc="UI modules for lsp-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -13,7 +13,7 @@ arch=('any')
 license=('GPL3')
 depends=('emacs' 'emacs-dash' 'flycheck' 'emacs-lsp-mode' 'emacs-markdown-mode')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_gituser}/${_gitrepo}/archive/$pkgver.tar.gz")
-md5sums=('e012126a85af1312da0166fe4338d8d1')
+md5sums=('1572cd81519eb8d824e91227597bfc9b')
 
 build() {
   cd ${_gitrepo}-$pkgver
