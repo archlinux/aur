@@ -1,6 +1,6 @@
 pkgbase = python-django-dynamic-preferences
 	pkgdesc = Dynamic global and instance settings for your django project
-	pkgver = 1.8
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/EliotBerriot/django-dynamic-preferences
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-dynamic-preferences
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = python-django-dynamic-preferences-1.8.tar.gz::https://github.com/EliotBerriot/django-dynamic-preferences/archive/1.8.tar.gz
-	sha256sums = febd60daba82bc9dfa6d394bd5033e923757e184b1767bcea7b6e59192d07014
+	source = python-django-dynamic-preferences-1.8.1.tar.gz::https://github.com/EliotBerriot/django-dynamic-preferences/archive/1.8.1.tar.gz
+	sha256sums = 06628ce33787535cf4c1ec6eb1b110e9f2fb87f8c52af5277b9b7e47f290909f
 
 pkgname = python-django-dynamic-preferences
 	depends = python-wheel
