@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.5.2.arch1
+pkgver=5.5.2.arch2
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -160,7 +160,7 @@ prepare() {
     yes "" | make config >/dev/null
 
     make -s kernelrelease > version
-    msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+    msg2 "Prepared $pkgbase version $(<version)"
 
     [[ -z "$_makenconfig" ]] || make nconfig
 
