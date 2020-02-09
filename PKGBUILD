@@ -5,14 +5,14 @@
 
 pkgbase=etlegacy32-git
 pkgname=('etlegacy32-git' 'etlegacy32-mod-git')
-pkgver=2.75.529.gefdfbdd1
+pkgver=2.76.810.g164b964c3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
 license=('GPL3')
 makedepends=('git' 'cmake' 'zip')
-makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
-makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite')
+makedepends_i686=('libpng' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite')
+makedepends_x86_64=('lib32-libpng' 'lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libtheora' 'lib32-libvorbis' 'lib32-lua' 'lib32-minizip' 'lib32-openal' 'lib32-sdl2' 'lib32-sqlite')
 options=(!strip)
 source=('git://github.com/etlegacy/etlegacy.git')
 md5sums=('SKIP')
