@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=zlfo.lv2-git
 pkgdesc="Fully featured LFO for CV-based automation"
-pkgver=r20.12b0cde
+pkgver=r31.cef7f88
 pkgrel=1
 epoch=
 arch=(x86_64)
