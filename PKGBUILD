@@ -1,10 +1,10 @@
-# Maintainer: David Runge <dave@sleepmap.de>
+# Maintainer: David Runge <dvzrv@archlinux.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=flyspray
 pkgver=1.0rc9
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, web-based bug tracking system written in PHP'
 url="https://www.flyspray.org/"
 arch=('any')
@@ -36,6 +36,8 @@ prepare() {
   # removing forced redirect, if setup/index.php is accessible.
   # access to it should be denied via the webserver settings
   sed -e '45,82d' -i header.php
+  # removing unused perl script
+  rm -v setup/composerit.pl
 }
 
 build() {
