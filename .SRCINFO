@@ -1,0 +1,14 @@
+pkgbase = gamepad-tool-bin
+	pkgdesc = Simple GUI tool to create/modify gamepad mappings for SDL2 Game Controller API
+	pkgver = 1.2
+	pkgrel = 1
+	url = http://www.generalarcade.com/gamepadtool
+	arch = x86_64
+	license = unknown
+	depends = sdl2
+	depends = qt5-base
+	source = http://www.generalarcade.com/gamepadtool/linux/gamepad-tool-amd64_1.2.zip
+	sha256sums = d699f39212ec8a5ee88f9c012ce9d2ee40591abdba8797fb9d758765a45e0340
+
+pkgname = gamepad-tool-bin
+
