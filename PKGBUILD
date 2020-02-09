@@ -2,9 +2,9 @@
 #
 # Contributor: ValHue <vhuelamo at gmail dot com>
 #
-_ubuntur="0extras16.04.1"
+_ubuntur="0extras19.06.7"
 pkgname="caja-pdf-tools"
-pkgver="1.1.0"
+pkgver="1.2.9"
 pkgrel="1"
 pkgdesc="A set of tools to work with PDF documents from Caja."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-beautifulsoup4' 'python-polib')
 makedepends=('python-distutils-extra')
 provides=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.xz::https://launchpad.net/~atareao/+archive/ubuntu/caja-extensions/+sourcefiles/${pkgname}/${pkgver}-${_ubuntur}/${pkgname}_${pkgver}-${_ubuntur}.tar.xz")
-sha256sums=('4cb2e153bf14546a18fa38c34314b688c5630059e4dc479e7993a46bd948ffbe')
+sha256sums=('712367ad53e4bdce539559033c95ffb0cf38755cfbd91fe5a179aeebcb7633ef')
 
 build() {
 	cd "${srcdir}/temporal"
