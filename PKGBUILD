@@ -8,7 +8,7 @@
 # Based on community/morituri and aur/morituri-git PKGBUILDs
 
 pkgname=whipper-git
-pkgver=0.8.1.dev14+gbbd28c6
+pkgver=0.9.1.dev53+g3b269e7
 pkgrel=1
 pkgdesc='A Unix CD ripper aiming for accuracy over speed -- forked from morituri'
 arch=('any')
@@ -23,7 +23,6 @@ depends=(
     'python-musicbrainzngs'         # for metadata lookup
     'python-gobject'
     'python-pycdio'                 # for storing drive identification in config file
-    'python-requests'               # for retrieving AccurateRip database entries
     'python-ruamel-yaml'            # for generating and reading logs
     'python-setuptools'             # for plugin support
     'sox'                           # for track peak detection'
