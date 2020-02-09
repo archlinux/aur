@@ -4,7 +4,7 @@ pkgbase = simutrans-pak64.classic
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
-	license = custom:Artistic
+	license = Unknown
 	source = https://sourceforge.net/projects/simutrans/files/pakHAJO/pakHAJO_102-2-2/pakHAJO_24x24_0-102-2-2.zip
 	sha256sums = 44f655900f18a6cbb8b501ec1d836e05ddee5b8d7fcb1360a7a56c3d909f5776
 
