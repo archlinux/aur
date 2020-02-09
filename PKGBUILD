@@ -1,12 +1,13 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.in>
 pkgname=filtor
-pkgver=24.71fcec7
+pkgver=27.9fdfa5b
 pkgrel=1
 pkgdesc="A whitelisting proxy for the Tor control port."
 arch=('any')
 url="https://github.com/mutantmonkey/filtor"
 license=('WTFPL')
 depends=('python' 'tor')
+makedepends=('git')
 conflicts=('tor-control-port-proxy')
 replaces=('tor-control-port-proxy')
 install=${pkgname}.install
