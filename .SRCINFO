@@ -1,6 +1,6 @@
 pkgbase = django-rq
 	pkgdesc = A simple app that provides django integration for RQ (Redis Queue)
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/ui/django-rq
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = django-rq
 	makedepends = python2-setuptools
 	makedepends = python2-django
 	makedepends = python2-rq
-	source = django-rq-2.2.0.tar.gz::https://github.com/ui/django-rq/archive/v2.2.0.tar.gz
-	sha512sums = 3d3212348892bc4899b4939ab7d2fee3f5a77e962e7c0bc68238f5197a12abc44b960e91831ecf6f7de97be06be82ad2e0e9aa8591841cbaed14d0a569042c7f
+	source = django-rq-2.3.0.tar.gz::https://github.com/ui/django-rq/archive/v2.3.0.tar.gz
+	sha512sums = 8c1bc1f4306ca1202c4a4ba23fb4e59c72f9de6893912b7bb4eb943b51fc82a0f9be0cfd7774efdded6a882b3c82fc09ec60a9a6a58c9c3e24ae4af381f35596
 
 pkgname = python-django-rq
 	depends = python
