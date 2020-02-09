@@ -4,7 +4,7 @@
 
 pkgname=bibutils
 _basename=bibutils
-pkgver=6.2
+pkgver=6.8
 pkgrel=1
 pkgdesc="Bibliography conversion tools"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('tcsh')
 depends=(glibc)
 source=("http://downloads.sourceforge.net/project/${_basename}/${_basename}_${pkgver}_src.tgz")
-md5sums=('b28a42eafe4eb3fb9074ec9f40b68b75')
+sha512sums=('0b30809ee45cbfce70b9ffb3932aa5f50a218fe97f47cdf983e01f1ae5a062247cd021295b60dafb42eab1e6ef37fd351145e6e4d374d5790ae692778c3fcf22')
 
 build() {
   cd ${_basename}_$pkgver
