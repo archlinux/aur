@@ -1,5 +1,5 @@
-# Maintainer: Det <nimetonmaili g-mail>
-# Contributors: Achilleas Pipinellis, speed145a, Schnouki
+# Maintainer: Simon Brulhart <simon@brulhart.me>
+# Contributors: Det <nimetonmaili g-mail>, Achilleas Pipinellis, speed145a, Schnouki
 
 pkgname=firefox-beta-bin
 _pkgname=firefox-beta
