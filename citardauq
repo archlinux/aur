@@ -2,7 +2,7 @@
 import cmath, sys
 
 if len(sys.argv) != 4:
-    print("Please enter a, b, and c as arguments.")
+    print("Please enter a, b, and c as arguments. For more details, see https://kazmal.tech/citardauq")
 
 
 else:
