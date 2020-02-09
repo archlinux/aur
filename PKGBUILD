@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=zlfo.lv2-git
 pkgdesc="Fully featured LFO for CV-based automation"
-pkgver=r31.cef7f88
+pkgver=r32.d0ec3d2
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -20,7 +20,7 @@ backup=()
 options=(debug !strip)
 install=
 changelog=
-source=(git+https://github.com/zrythm/ZLFO)
+source=(git+https://git.zrythm.org/git/ZLFO)
 noextract=()
 md5sums=('SKIP')
 
