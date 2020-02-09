@@ -1,11 +1,10 @@
 # Maintainer: Ariel AxionL <axionl@aosc.io>
 # Contributor: GreaterFire <GreaterFire@protonmail.com>
-
 pkgname=trojan-git
 pkgver=r427.7cfe059
-pkgrel=2
+pkgrel=1
 pkgdesc="An unidentifiable mechanism that helps you bypass GFW"
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64')
 url="https://github.com/trojan-gfw/trojan"
 license=('GPL3')
 depends=('boost-libs' 'openssl' 'mariadb-libs')
@@ -20,22 +19,23 @@ backup=('etc/trojan/config.json')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $pkgname
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+    cd $pkgname
+    cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+    make
 }
 
 check() {
-  cd $pkgname
-  ctest
+    cd $pkgname
+    ctest
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR=$pkgdir install
+    cd $pkgname
+    make DESTDIR=$pkgdir install
 }
+# vim set: ts=4 sw=4 et
