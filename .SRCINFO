@@ -1,0 +1,16 @@
+pkgbase = forge-quark-git
+	pkgdesc = Minecraft mod quark by Vazkii
+	pkgver = r2.0_211
+	pkgrel = 1
+	url = https://quark.vazkii.net/
+	arch = any
+	license = custom:CC BY-NC-SA 3.0
+	makedepends = git
+	depends = forge-server>=1.14.4_28.1.61
+	depends = forge-autoreglib-git
+	conflicts = forge-quark-2.0-bin
+	source = forge-quark-git::git+https://github.com/Vazkii/Quark#branch=master
+	sha1sums = SKIP
+
+pkgname = forge-quark-git
+
