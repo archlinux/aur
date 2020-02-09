@@ -3,7 +3,7 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.12.2.3
+pkgver=0.14.0.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.dashpay.io/"
@@ -16,8 +16,8 @@ pkgdesc="Dash peer-to-peer network based digital currency "
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dashpay/dash/archive/v${pkgver}.tar.gz"
         "dashd@.service")
-sha256sums=('5347351483ce39d1dd0be4d93ee19aba1a6b02bc7f90948b4eea4466ad79d1c3'
-            '00b656fe05c5b58115d41c20ca7dfba6564eaa5335e3ff5c43c3eb8d9479cab9')
+sha512sums=('48344e2fe43ca9d2e8621f59b5141243ca3d9da58da7701903ce65d8b56e41bb98cf31e8284835f2303182a934a4df5cc4e13438d346938851fda79d924cb388'
+            'b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"

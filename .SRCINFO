@@ -1,6 +1,6 @@
 pkgbase = dash
 	pkgdesc = Dash peer-to-peer network based digital currency
-	pkgver = 0.12.2.3
+	pkgver = 0.14.0.5
 	pkgrel = 1
 	url = http://www.dashpay.io/
 	arch = i686
@@ -17,10 +17,10 @@ pkgbase = dash
 	optdepends = zeromq: Optional, allows generating ZMQ notifications
 	optdepends = miniupnpc: Firewall-jumping support
 	optdepends = db4.8: Wallet storage
-	source = dash-daemon-0.12.2.3.tar.gz::https://github.com/dashpay/dash/archive/v0.12.2.3.tar.gz
+	source = dash-daemon-0.14.0.5.tar.gz::https://github.com/dashpay/dash/archive/v0.14.0.5.tar.gz
 	source = dashd@.service
-	sha256sums = 5347351483ce39d1dd0be4d93ee19aba1a6b02bc7f90948b4eea4466ad79d1c3
-	sha256sums = 00b656fe05c5b58115d41c20ca7dfba6564eaa5335e3ff5c43c3eb8d9479cab9
+	sha512sums = 48344e2fe43ca9d2e8621f59b5141243ca3d9da58da7701903ce65d8b56e41bb98cf31e8284835f2303182a934a4df5cc4e13438d346938851fda79d924cb388
+	sha512sums = b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b
 
 pkgname = dash-daemon
 	pkgdesc = Dash peer-to-peer network based digital currency (daemon)
