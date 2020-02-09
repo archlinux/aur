@@ -1,0 +1,16 @@
+pkgbase = cddb_get
+	pkgdesc = Fetches CDDB info for an audio cd.
+	pkgver = 2.28
+	pkgrel = 5
+	url = https://web.archive.org/web/20190628161057/http://armin.emx.at/cddb/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl>=5.10.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/F/FO/FONKIE/CDDB_get-2.28.tar.gz
+	md5sums = e757e5e2f5a4c4aafcce0529310f2c6d
+	sha1sums = 20320871553b63b60a95776053aaadd5c2f508eb
+
+pkgname = cddb_get
+
