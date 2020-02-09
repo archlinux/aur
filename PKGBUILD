@@ -3,7 +3,7 @@
 
 pkgname=scuolabook
 _intpkgname=Scuolabook
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Puoi leggere su computer desktop, sul portatile e sul tablet i tuoi libri scolastici digitali."
 arch=('x86_64')
@@ -11,11 +11,11 @@ url="http://www.scuolabook.it/applicazioni"
 license=('custom')
 depends=("gst-plugins-bad" "libpulse" "nss" "mesa" "libxrandr" "qt5-svg" "qt5-webkit")
 
-source=(license http://s3.amazonaws.com/scuolabook_support/"$_intpkgname"_"$pkgver"_16.04_amd64.deb)
+source=(license https://cdn-support.scuolabook.it/${pkgver%.*}/"$_intpkgname"_"$pkgver"_amd64_16.04.deb)
 md5sums=('94f26429ae1b95e18457020be1d7dc08'
-         'f1d8bdce890fd85311e56bf165bb750c')
+         'b7c056dcdb0553f6c7e3442980722e1c')
 
-noextract=("$_intpkgname"_"$pkgver"_16.04_amd64.deb)
+noextract=("$_intpkgname"_"$pkgver"_amd64_16.04.deb)
 
 prepare() {
   cd "$srcdir"
