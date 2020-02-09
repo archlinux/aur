@@ -3,7 +3,7 @@
 # Contributor: Sebastien Bariteau <numkem@gmail.com>
 
 pkgname=mysql-connector-java
-pkgver=8.0.18
+pkgver=8.0.19
 pkgrel=1
 pkgdesc="Java library to connect to MySQL"
 depends=(java-environment)
@@ -12,11 +12,10 @@ license=(GPL,custom)
 url="http://www.mysql.com/downloads/connector/j/"
 source=(
   http://dev.mysql.com/Downloads/Connector-J/mysql-connector-java-${pkgver}.tar.gz
-  mysql-connector-java-${pkgver}.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-connector-java-${pkgver}.tar.gz
+#   mysql-connector-java-${pkgver}.tar.gz.asc::https://dev.mysql.com/downloads/gpg/?file=mysql-connector-java-${pkgver}.tar.gz
 )
-validpgpkeys=(A4A9406876FCBD3C456770C88C718D3B5072E1F5) # MySQL Release Engineering <mysql-build@oss.oracle.com>
-sha512sums=('3d21dbed869242b6ff8807a79de0c13ddeb064ce91bee83534532e5d996704dd924a9b620986039296fbe433158c81fd2e1afdb87f184d17ec454dda6c8a7c6e'
-            'SKIP')
+# validpgpkeys=(A4A9406876FCBD3C456770C88C718D3B5072E1F5) # MySQL Release Engineering <mysql-build@oss.oracle.com>
+sha512sums=('f1dabd2f003d9dc2b00dc2d8eb68f324aeda98b13cc5e98d22a359ba4b3d8feee038b122d040a33ecb9f198fe78716b33db8c48c3541ecb49019f866c5859893')
 
 package() {
   cd "$srcdir/mysql-connector-java-${pkgver}"
