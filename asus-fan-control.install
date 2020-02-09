@@ -16,6 +16,16 @@ systemctl enable asus-fan-control
 EOF
 }
 
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    # if older version is <= 2.12.0-1 and asus-fan-control is enabled, re-enable it to update its dependencies
+    if [ "$(vercmp '2.12.0-1' "$2" )" != '-1' ] && systemctl -q is-enabled asus-fan-control.service; then
+        systemctl enable asus-fan-control.service
+    fi
+}
+
+
 pre_remove(){
     systemctl disable asus-fan-control
     echo 'You mihgt want to reboot your system to restore the default fan speed'
