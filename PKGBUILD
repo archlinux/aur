@@ -7,9 +7,9 @@
 
 pkgname='intel-daal'
 _year='2019'
-_v_a='1'
-_v_b='004'
-_tag_suffix='_u1.1'
+_v_a='4'
+_v_b='007'
+_tag_suffix='_u4'
 pkgver="$_year.$_v_a.$_v_b"
 pkgrel=1
 pkgdesc='Intel Data Acceleration Library for C++ (Intel® DAAL)'
@@ -19,7 +19,7 @@ license=('Apache-2.0')
 depends=('intel-tbb' 'gcc-libs')
 
 source=("https://github.com/intel/daal/releases/download/$_year$_tag_suffix/l_daal_oss_p_$pkgver.tgz")
-sha512sums=('57c8ff215f597c52deb0b5335d80f489edb53543f2340ba494eede1993208352551de02c560383aca8eb5cd5835735e895a466448fe061e9949cf993d6587192')
+sha512sums=('a3b06ff510d7af20af631360d10188352cfda5f6f9f656d64abb5d6955d567ac06827ed1614e0420d1cadc583b730142e005079fd3ee788db6da16fc89916ca6')
 
 # Intel uses their own fancy architecture names; see:
 # https://software.intel.com/en-us/articles/intel-architecture-platform-terminology

@@ -1,6 +1,6 @@
 pkgbase = intel-daal
 	pkgdesc = Intel Data Acceleration Library for C++ (Intel® DAAL)
-	pkgver = 2019.1.004
+	pkgver = 2019.4.007
 	pkgrel = 1
 	url = https://software.intel.com/en-us/intel-daal
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = intel-daal
 	license = Apache-2.0
 	depends = intel-tbb
 	depends = gcc-libs
-	source = https://github.com/intel/daal/releases/download/2019_u1.1/l_daal_oss_p_2019.1.004.tgz
-	sha512sums = 57c8ff215f597c52deb0b5335d80f489edb53543f2340ba494eede1993208352551de02c560383aca8eb5cd5835735e895a466448fe061e9949cf993d6587192
+	source = https://github.com/intel/daal/releases/download/2019_u4/l_daal_oss_p_2019.4.007.tgz
+	sha512sums = a3b06ff510d7af20af631360d10188352cfda5f6f9f656d64abb5d6955d567ac06827ed1614e0420d1cadc583b730142e005079fd3ee788db6da16fc89916ca6
 
 pkgname = intel-daal
 
