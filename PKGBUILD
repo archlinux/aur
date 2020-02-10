@@ -44,7 +44,6 @@ prepare() {
   do
     THEME_NAME="${THEME_FILE%.*}"
     THEME_NAME="${THEME_NAME%-*}"
-    echo "${THEME_NAME}"
     mkdir -p "${THEME_NAME}"
     if echo "${THEME_FILE}" | grep "slim" > /dev/null
     then
