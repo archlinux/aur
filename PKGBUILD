@@ -40,5 +40,5 @@ package() {
     chmod +x $pkgdir/opt/MotionBox/MotionBox
     chmod +x $pkgdir/opt/MotionBox/start.sh
 
-    ln -s $pkgdir/opt/MotionBox/start.sh $pkgdir/usr/bin/MotionBox
+    ln -s /opt/MotionBox/start.sh $pkgdir/usr/bin/motionbox
 }
