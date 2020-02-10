@@ -5,7 +5,7 @@ pkgdesc="Optional postcode (US) data to use with nominatim"
 url="https://nominatim.org"
 
 pkgver=20190722
-pkgrel=1
+pkgrel=2
 
 arch=("any")
 license=("unknown")
@@ -25,6 +25,6 @@ noextract=(
 )
 
 package() {
-    install -Dm644 -t "${pkgdir}/usr/share/webapps/nominatim/src/data/" \
+    install -Dm644 -t "${pkgdir}/var/lib/nominatim/src/data/" \
         "${srcdir}/us_postcode_data.sql.gz"
 }

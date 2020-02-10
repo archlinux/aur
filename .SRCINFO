@@ -1,7 +1,7 @@
 pkgbase = nominatim-data-postcodes-us
 	pkgdesc = Optional postcode (US) data to use with nominatim
 	pkgver = 20190722
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nominatim.org
 	arch = any
 	license = unknown
