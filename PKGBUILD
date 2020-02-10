@@ -17,9 +17,9 @@ build() {
 
 	GPPVER="$(g++ --version | grep 'g++ (GCC)' | sed 's/g++ (GCC) //')"
 
-	bpkg create -d odb-gcc-${GPPVER} cc     \
-	config.cxx=g++                  \
-	config.cc.coptions=-O3          \
+	bpkg create -d odb-gcc-${GPPVER} cc \
+	config.cxx=g++ \
+	config.cc.coptions="-O3 -DODB_GCC_PLUGIN_DIR" \
 	config.bin.rpath=${pkgdir}/usr/lib \
 	config.install.root=${pkgdir}/usr
 
