@@ -1,0 +1,16 @@
+pkgbase = coin-or-coinglpk
+	pkgdesc = COIN-OR autotools harness to build Glpk
+	pkgver = 1.10.7
+	pkgrel = 1
+	url = https://github.com/coin-or-tools/ThirdParty-Glpk
+	arch = i686
+	arch = x86_64
+	groups = coin-or
+	license = custom
+	makedepends = wget
+	depends = gmp
+	source = https://github.com/coin-or-tools/ThirdParty-Glpk/archive/releases/1.10.7.tar.gz
+	sha256sums = 0bc56db9d9031bb699f91fd6d312cbd236a7d310af01d3296ba31cea3421024a
+
+pkgname = coin-or-coinglpk
+
