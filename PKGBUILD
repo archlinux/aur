@@ -9,14 +9,15 @@ _pkgname=openblas
 pkgver=0.3.8
 # grep VERSION "${srcdir}/${_PkgName}-${pkgver}"/lapack-netlib/README.md | tail -n 1 | cut -d ' ' -f 2
 _lapackver=3.9.0
-pkgrel=1
+_blasver=3.8.0
+pkgrel=2
 pkgdesc="Optimized BLAS library based on GotoBLAS2 1.13 BSD (providing blas, lapack, and cblas)"
 arch=('x86_64')
 url="http://www.openblas.net/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran')
-provides=('openblas' "blas=${_lapackver}" "lapack=${_lapackver}" "cblas=${_lapackver}" "lapacke=${_lapackver}")
+provides=('openblas' "blas=${_blasver}" "lapack=${_lapackver}" "cblas=${_blasver}" "lapacke=${_lapackver}")
 conflicts=('openblas' 'blas' 'lapack' 'cblas' 'lapacke')
 options=(!emptydirs)
 source=(${_PkgName}-${pkgver}.tar.gz::https://github.com/xianyi/${_PkgName}/archive/v${pkgver}.tar.gz)
@@ -53,12 +54,12 @@ package(){
   cd "${pkgdir}/usr/lib/"
   # BLAS
   ln -sf libopenblas.so libblas.so
-  ln -sf libopenblas.so libblas.so.${_lapackver:0:1}
-  ln -sf libopenblas.so libblas.so.${_lapackver}
+  ln -sf libopenblas.so libblas.so.${_blasver:0:1}
+  ln -sf libopenblas.so libblas.so.${_blasver}
   # CBLAS
   ln -sf libopenblas.so libcblas.so
-  ln -sf libopenblas.so libcblas.so.${_lapackver:0:1}
-  ln -sf libopenblas.so libcblas.so.${_lapackver}
+  ln -sf libopenblas.so libcblas.so.${_blasver:0:1}
+  ln -sf libopenblas.so libcblas.so.${_blasver}
   # LAPACK
   ln -sf libopenblas.so liblapack.so
   ln -sf libopenblas.so liblapack.so.${_lapackver:0:1}
