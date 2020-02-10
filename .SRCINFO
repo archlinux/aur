@@ -3,7 +3,6 @@ pkgbase = ttf-impallari-libre-baskerville
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/impallari/Libre-Baskerville
-	install = updatefont.install
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL

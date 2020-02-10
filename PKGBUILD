@@ -12,7 +12,7 @@ screenshot="http://www.impallari.com/media/uploads/profotos/132-foto01-original.
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("Libre-Baskerville-master.zip::https://codeload.github.com/impallari/Libre-Baskerville/zip/master")
 md5sums=('051941308b8f7446ee8a2fe877e76d60')
 
