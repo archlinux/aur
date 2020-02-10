@@ -1,0 +1,19 @@
+pkgbase = ocaml-ppx-yojson-conv-lib
+	pkgdesc = Runtime lib for ppx_yojson_conv
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/janestreet/ppx_yojson_conv_lib
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dune>=2.0.0
+	depends = ocaml
+	depends = ocaml-yojson>=1.7.0
+	provides = ocaml-ppx-yojson-conv-lib
+	conflicts = ocaml-ppx-yojson-conv-lib
+	options = !strip
+	source = https://github.com/janestreet/ppx_yojson_conv_lib/archive/v0.13.0.tar.gz
+	sha256sums = a51b3875663341cb011ce4b3f7097a5c934f891d3953b133312aaeaaed8ece87
+
+pkgname = ocaml-ppx-yojson-conv-lib
+
