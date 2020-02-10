@@ -15,10 +15,14 @@ Put
 
    (autoload 'hol "/opt/hol/tools/hol-mode"
      "Runs a HOL session in a comint window.
-   With a numeric prefix argument, runs it niced to that level
-   or at level 10 with a bare prefix. " t)
+      With a numeric prefix argument, runs it niced to that level
+      or at level 10 with a bare prefix. " t)
 
-into your .emacs file
+or
+
+   (load "/opt/hol/tools/hol-mode")
+
+into your .emacs file.
 EOF
 }
 
