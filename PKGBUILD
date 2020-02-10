@@ -3,58 +3,65 @@
 
 pkgname=ungoogled-chromium-ozone
 _pkgname=ungoogled-chromium
-pkgver=79.0.3945.79
+pkgver=80.0.3987.87
 pkgrel=1
 _launcher_ver=6
+_ungoogled_rel=2
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
          'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
              'pipewire' 'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
+            'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: for storing passwords in KWallet on KDE desktops'
-            'libva-intel-driver: for hardware video acceleration with Intel GPUs'
-            'intel-media-driver: for hardware video acceleration with newer intel gpus'
-            'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
-            'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
+            'kwallet: for storing passwords in KWallet on KDE desktops')
 provides=('chromium')
 conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        'ungoogled-chromium::git+https://github.com/Eloston/ungoogled-chromium'
+        'ungoogled-chromium.zip::https://github.com/Eloston/ungoogled-chromium/archive/80.0.3987.87-2.zip'
+        0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
         flags.archlinux.gn
         chromium-drirc-disable-10bpc-color-configs.conf
         vaapi-fix.patch
         fix-vaapi-ozone-build.patch
-        launch_manager.h-uses-std-vector.patch
-        include-algorithm-to-use-std-lower_bound.patch
-        icu65.patch
-        chromium-system-icu.patch
-        chromium-system-zlib.patch
-        chromium-system-hb.patch
-        fix-spammy-unique-font-matching-log.patch
+        cros-search-service-Include-cmath-for-std-pow.patch
+        move-RemoteTreeNode-declaration.patch
+        sync-enable-USSPasswords-by-default.patch
+        fix-shim-header-generation-when-unbundling-ICU.patch
+        fix-building-with-system-zlib.patch
+        remove-verbose-logging-in-local-unique-font-matching.patch
+        fix-building-with-unbundled-libxml.patch
+        fix-browser-frame-view-not-getting-a-relayout.patch
+        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+        rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('e1a7362d396b0f72e6ad8c1d53cae67db201e0eeaa2a96dbe9214d080925bcf3'
+sha256sums=('f51f6fca5d9abbef855aa6b5bf427410c6e96ae58b64a7d45f843868cfb0ac8e'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'SKIP'
-            '2f77b02f0e5b2396cdbede4360bd44f71d03844c36bd8c4f038f3e238fac8981'
+#            '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
+            'd8a57adf4b3106ab4d7ecdf5b050e02b87901b61c33cfa8810a7143c483e1fe4'
+            '157ba62d6b9ae92ade0babebd8a4f2d5ef8bdd54ae2f3646a61261e9805b86fa'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
             '9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094'
-            'bd0fae907c451252e91c4cbf1ad301716bc9f8a4644ecc60e9590a64197477d3'
-            '1f906676563e866e2b59719679e76e0b2f7f082f48ef0593e86da0351a586c73'
-            '1de9bdbfed482295dda45c7d4e323cee55a34e42f66b892da1c1a778682b7a41'
-            'e73cc2ee8d3ea35aab18c478d76fdfc68ca4463e1e10306fa1e738c03b3f26b5'
-            'eb67eda4945a89c3b90473fa8dc20637511ca4dcb58879a8ed6bf403700ca9c8'
-            'c0ad3fa426cb8fc1a237ddc6309a6b2dd4055bbe41dd07f50071ee61f969b81a'
-            '6fbffe59b886195b92c9a55137cef83021c16593f49714acb20023633e3ebb19'
+            '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
+            '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
+            '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
+            'e477aa48a11ca4d53927f66a9593567fcd053325fb38af30ac3508465f1dd1f6'
+            '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
+            '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
+            'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
+            '5db225565336a3d9b9e9f341281680433c0b7bb343dff2698b2acffd86585cbe'
+            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -69,7 +76,7 @@ declare -gA _system_libs=(
   [libdrm]=
   [libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
-  #[libvpx]=libvpx    # https://github.com/webmproject/libvpx/commit/5a0242ba5c
+  [libvpx]=libvpx
   [libwebp]=libwebp
   [libxml]=libxml2
   [libxslt]=libxslt
@@ -96,7 +103,7 @@ prepare() {
   sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    third_party/libxml/chromium/libxml_utils.cc
+    third_party/libxml/chromium/*.cc
 
   msg2 'Applying archlinux patches'
 
@@ -105,21 +112,35 @@ prepare() {
 
   # Fix vaapi linkage error
   patch -Np1 -i ../fix-vaapi-ozone-build.patch
-  
-  # https://crbug.com/819294
-  patch -Np1 -i ../launch_manager.h-uses-std-vector.patch
-  patch -Np1 -i ../include-algorithm-to-use-std-lower_bound.patch
 
-  # https://crbug.com/1014272
-  patch -Np1 -i ../icu65.patch
+  # build fixes
+  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
 
-  # Fixes from Gentoo
-  patch -Np1 -i ../chromium-system-icu.patch
-  patch -Np1 -i ../chromium-system-zlib.patch
-  patch -Np1 -i ../chromium-system-hb.patch
+  # https://crbug.com/957519
+  patch -Np1 -i ../cros-search-service-Include-cmath-for-std-pow.patch
+  patch -Np1 -i ../move-RemoteTreeNode-declaration.patch
+
+  # https://crbug.com/1027929
+  patch -Np1 -i ../sync-enable-USSPasswords-by-default.patch
+
+  # https://crbug.com/989153
+  patch -Np1 -i ../fix-shim-header-generation-when-unbundling-ICU.patch
+
+  # https://crbug.com/977964
+  patch -Np1 -i ../fix-building-with-system-zlib.patch
 
   # https://crbug.com/1005508
-  patch -Np1 -i ../fix-spammy-unique-font-matching-log.patch
+  patch -Np1 -i ../remove-verbose-logging-in-local-unique-font-matching.patch
+
+  # https://crbug.com/1043042
+  patch -Np1 -i ../fix-building-with-unbundled-libxml.patch
+
+  # https://crbug.com/1046122
+  patch -Np1 -i ../fix-browser-frame-view-not-getting-a-relayout.patch
+
+  # https://crbug.com/1049258
+  patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
+  patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
 
   # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
   # M79 is supposed to download it as a component but it doesn't seem to work
@@ -129,7 +150,7 @@ prepare() {
   patch -Np0 -i ../chromium-skia-harmony.patch
 
   # Ungoogled chromium stuff
-  _ungoogled_repo="$srcdir/$_pkgname"
+  _ungoogled_repo="$srcdir/$_pkgname-$pkgver-$_ungoogled_rel"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Applying ungoogled chromium patches'
   # Prune binaries
@@ -178,7 +199,7 @@ build() {
   export NM=nm
 
   # Ungoogled Chromium stuff
-  _ungoogled_repo="$srcdir/$_pkgname"
+  _ungoogled_repo="$srcdir/$_pkgname-$pkgver-$_ungoogled_rel"
   nproc=$(nproc)
   mkdir -p out/Release
   # Assemble GN flags
