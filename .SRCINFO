@@ -1,24 +1,20 @@
 pkgbase = iris-temperature
 	pkgdesc = Adjusts the color temperature of your screen according to your surroundings.
-	pkgver = 0.9.2.2
+	pkgver = 0.9.9
 	pkgrel = 3
 	url = https://iristech.co/iris/
 	arch = x86_64
-	arch = i686
 	license = custom: Iris tech
 	depends = libselinux
 	provides = iris
-	noextract = Iris-0.9.2.2.AppImage
+	noextract = Iris-0.9.9.AppImage
 	options = !strip
-	options = !upx
 	source = iris.desktop
 	source = iris.png::https://iristech.co/wp-content/themes/iris/img/Logo.png
+	source = https://raw.githubusercontent.com/danielng01/Iris-Builds/master/Linux/Iris-0.9.9-Linux-64bit.zip
 	sha256sums = 3cb01db99de3de6ad4a991afe153388b8ff1511f91f12e4bc04144ad2d17c95e
-	sha256sums = SKIP
-	source_x86_64 = https://raw.githubusercontent.com/danielng01/Iris-Builds/master/Linux/Iris-0.9.2.2-Linux-64bit.tar.gz
-	sha256sums_x86_64 = 0e0ce86f8333eb9bf6a41a495b70e1bff96b8b573e30ee1ac0a3f2ac9de7ee97
-	source_i686 = https://raw.githubusercontent.com/danielng01/Iris-Builds/master/Linux/Iris-0.9.2.2-Linux-32bit.tar.gz
-	sha256sums_i686 = 1ec3a8293be6a32ccf9957d1856bca828294e71cfa7fbea02818865d672346aa
+	sha256sums = f94af99fe39db4999ea6fadfd7e7be59014879155c72a879f358099de33bb4bd
+	sha256sums = 2b11f02c732d543717bc7131d7d197c5564d285213e7779128c3441ac3c71489
 
 pkgname = iris-temperature
 
