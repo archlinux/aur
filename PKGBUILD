@@ -1,7 +1,7 @@
 # Maintainer: Samuel Damashek <samuel dot damashek at gmail dot com>
 # Maintainer: Alex Xu <alex_y_xu dot yahoo at ca>
 pkgname=huggle
-pkgver=3.4.4
+pkgver=3.4.9
 pkgrel=1
 pkgdesc="diff browser intended for dealing with vandalism and other unconstructive edits on Wikimedia projects"
 arch=('i686' 'x86_64')
