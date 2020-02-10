@@ -22,7 +22,7 @@ pkgbase = vidify
 	depends = python-qtpy
 	optdepends = vidify-audiosync: audio synchronization extension
 	source = https://github.com/vidify/vidify/archive/2.0.1.tar.gz
-	md5sums = 69ca744d3adba0a6bee9230d3316aadb
+	md5sums = 92ab3ba7aeda722de2ab508365b6c4f6
 
 pkgname = vidify
 
