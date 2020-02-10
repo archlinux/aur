@@ -1,4 +1,64 @@
-## v0.5.5 (Unreleased)
+## v0.6.0 (Unreleased)
+
+## v0.5.6 (February 10, 2020)
+
+### Notes
+
+- A hotfix to ENS resolver contract address has been applied due to a security vulnerability. More information here: https://medium.com/the-ethereum-name-service/ens-registry-migration-bug-fix-new-features-64379193a5a
+- A bug related to syncing has been fixed
+
+### Commits
+* [#2021](https://github.com/ethersphere/swarm/pull/2021) bmt:  Introduce SectionWriter, implement hash.Hash in bmt
+* [#2096](https://github.com/ethersphere/swarm/pull/2096) Revert "stream: limit the number of peers we sync with on bin 0 (#1972)"
+* [#2095](https://github.com/ethersphere/swarm/pull/2095) stream: fix stream not wanted bug
+* [#2091](https://github.com/ethersphere/swarm/pull/2091) contract/ens: use new ens contract address 0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e
+* [#1983](https://github.com/ethersphere/swarm/pull/1983) swap: prevent debt cheques
+* [#2090](https://github.com/ethersphere/swarm/pull/2090) api/http/langos: fix TestHTTPMultipleRangeResponse test
+* [#2088](https://github.com/ethersphere/swarm/pull/2088) state, swap: add batch support to state store
+
+
+## v0.5.5 (January 29, 2020)
+
+### Notes
+
+- RNS resolution is now available in addition to the existing ENS resolution. See more about RNS here: https://developers.rsk.co/rif/rns
+- Retrieve requests will now load balance across different peers in the address book
+- Retrieve request which were forwarded will now be answered without going through the local store, making retrievals faster
+- New peers will be suggested to connect to by address space gaps
+- Protocol handlers are now async by design
+- Fixes a bug where requested plain hashes would be redundantly sent to ENS resolver
+
+### Commits
+
+* [#2081](https://github.com/ethersphere/swarm/pull/2081) api: do not try to resolve swarm hashes over ens
+* [#2073](https://github.com/ethersphere/swarm/pull/2073) kademlia: use IsSameAs instead of Match for capability index comparison
+* [#2063](https://github.com/ethersphere/swarm/pull/2063) swap, uint256: unify variable types, pt. 1
+* [#2065](https://github.com/ethersphere/swarm/pull/2065) network: Suggest peer by address space gap
+* [#2070](https://github.com/ethersphere/swarm/pull/2070) swarm: simplify network test
+* [#2062](https://github.com/ethersphere/swarm/pull/2062) Protocol async errors refactor
+* [#2074](https://github.com/ethersphere/swarm/pull/2074) swap: move shared test helpers to separate file
+* [#2066](https://github.com/ethersphere/swarm/pull/2066) swap: refactor cashout logic to cashout processor
+* [#2072](https://github.com/ethersphere/swarm/pull/2072) network, storage: fix usage of base logger
+* [#2018](https://github.com/ethersphere/swarm/pull/2018) p2p, network, bzzeth: p2p protocol handlers to async
+* [#2051](https://github.com/ethersphere/swarm/pull/2051) P2p validate accounting
+* [#1981](https://github.com/ethersphere/swarm/pull/1981) network/retrieval: integrate kademlia load balancing
+* [#2064](https://github.com/ethersphere/swarm/pull/2064) tracing: fix Setup function
+* [#2056](https://github.com/ethersphere/swarm/pull/2056) api, cmd/swarm: remove unused cli context from act functions
+* [#2057](https://github.com/ethersphere/swarm/pull/2057) cmd, metrics: decouple metrics and cli library
+* [#2061](https://github.com/ethersphere/swarm/pull/2061) swap: pass depositAmount to testDeploy
+* [#2060](https://github.com/ethersphere/swarm/pull/2060) cmd/swarm, internal/debug: decouple cli library from internal/debug
+* [#2059](https://github.com/ethersphere/swarm/pull/2059) cmd, tracing: decouple cli from tracing package
+* [#2053](https://github.com/ethersphere/swarm/pull/2053) swap: pass the context to waitForTx directly
+* [#2023](https://github.com/ethersphere/swarm/pull/2023) swap: added cheques metrics
+* [#2016](https://github.com/ethersphere/swarm/pull/2016) storage: Preserve counter across Encrypt() calls
+* [#2015](https://github.com/ethersphere/swarm/pull/2015) log, network, storage, testutil: Log base address only in tests
+* [#1999](https://github.com/ethersphere/swarm/pull/1999) storage/localstore: decode tags in push index only if it is complete
+* [#2000](https://github.com/ethersphere/swarm/pull/2000) all:use bzzaddr instead of overlay address for logging
+* [#1982](https://github.com/ethersphere/swarm/pull/1982) netstore: optimize fetchers for retrieve forwarding
+* [#1964](https://github.com/ethersphere/swarm/pull/1964) swap, contracts, vendor: move to ERC20
+* [#2001](https://github.com/ethersphere/swarm/pull/2001) api/http: use swarm.eth instead theswarm.eth in html templates
+* [#2002](https://github.com/ethersphere/swarm/pull/2002) metrics: remove metrics.influxdb.accounting flag
+* [#1939](https://github.com/ethersphere/swarm/pull/1939) swarm, api, main: RNS resolution
 
 ## v0.5.4 (November 29, 2019)
 
