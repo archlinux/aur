@@ -1,11 +1,11 @@
 pkgbase = megaman-rocknroll
 	pkgdesc = MegaMan based fan game made with Godot
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dennisengelhard.com/rock-n-roll/
 	install = megaman-rocknroll.install
 	arch = x86_64
-	license = custom
+	license = unknown
 	depends = alsa-lib
 	depends = dbus
 	depends = flac
