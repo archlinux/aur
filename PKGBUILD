@@ -1,6 +1,6 @@
 # Contributor: Jonathan Liu <net147@gmail.com>
 pkgname=htp
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="HTML pre-processor"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('perl')
 options=('docs')
 makedepends=('make' 'gcc')
 source=("http://downloads.sourceforge.net/htp/$pkgname-$pkgver.tar.gz")
-md5sums=('5ed177996785254d83695e83019c8fe5')
+sha512sums=('32d82bb42ef877bd815fe45fa81599a1428ad6d3269cbe53a4e686bcfe6d1c12ac2af280462768d488b1983ca67cc521da4ed78cc82d904575ffeff08c7eec1d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
