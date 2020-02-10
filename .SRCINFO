@@ -1,13 +1,13 @@
 pkgbase = otf-bodoni
 	pkgdesc = An OpenType Bodoni revival created by indestructible type*.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://indestructibletype.com/Bodoni.html
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
-	source = https://indestructibletype.com/Bodoni.zip
-	sha256sums = d8e61cb93c475e933589398f88815820b714df8e4a2971c4b220bd51be7fced2
+	source = https://github.com/indestructible-type/Bodoni/archive/2.1.tar.gz
+	sha256sums = 63bb89966c21232defe7ca834240883262b4f856a7ea7472ea4ec915549554f6
 
 pkgname = otf-bodoni
 
