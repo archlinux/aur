@@ -4,66 +4,51 @@
 # Modified for libfprint2 by Stephen Bird <sebirdman@gmail.com>
 
 pkgname=fprintd-libfprint2
-pkgname_=fprintd
-pkgver=0.9.0+70+gb97903f
+_pkgname=fprintd
+pkgver=0.9.0+127+g6d583cb
 pkgrel=1
-pkgdesc="D-Bus service to access fingerprint readers, modified to use libfprint2"
+pkgdesc="D-Bus service to access fingerprint readers"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fprint/fprintd"
 license=(GPL)
-depends=(dbus-glib 'glib2>=2.56' 'libfprint-git>=1.90.0' 'polkit>=0.91')
+depends=(dbus-glib 'libfprint-git>=1.90.0' 'polkit>=0.91')
+optdepends=('pam: to use the fprintd pam plugin')
 provides=(fprintd)
 conflicts=(fprintd)
-makedepends=(intltool gtk-doc git pam)
-checkdepends=(python-cairo python-dbusmock python-gobject)
+makedepends=(intltool git gtk-doc meson pam)
+checkdepends=(pam_wrapper python-cairo python-dbus python-dbusmock python-gobject)
 groups=(fprint)
 source=(
   "git+https://gitlab.freedesktop.org/libfprint/fprintd.git"
   'disable-systemd-protection.patch'
-  'storage_fix.patch'
-  'disable_pam_tests.patch'
+  'pam_dir.patch'
 )
 sha256sums=(
   'SKIP'
   '4854d32d6579de31fd59b4df02f6a29db2e266dedfe9edda13bedcda1b083be1'
-  '2c81b9f4c5e593ee3ebdca08584be4b42c7a1a33f240c0da6e2aab50f0ff4b5c'
-  'e94a80acaccc0e4830595b575f3865ed86a9866c18f910a83b568f602c750e3d'
+  'deae323c3ae28558aabca84b26c2e3e0004714941ab39384e45deaf7ca578b39'
 )
 
 pkgver() {
-  cd $pkgname_
+  cd $_pkgname
   git describe --tags | sed 's/^V_//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgname_
+  cd $_pkgname
   patch -p1 -i "${srcdir}/disable-systemd-protection.patch"
-  patch -p1 -i "${srcdir}/storage_fix.patch"
-  patch -p1 -i "${srcdir}/disable_pam_tests.patch"
-  NOCONFIGURE=1 ./autogen.sh
+  patch -p1 -i "${srcdir}/pam_dir.patch"
+}
+
+build() {
+  arch-meson $_pkgname build -D gtk_doc=true
+  ninja -C build
 }
 
 check() {
-  cd $pkgname_
-  make check
-}
-
-
-build() {
-  cd $pkgname_
-  ./configure \
-    --prefix=/usr \
-    --sysconfdir=/etc \
-    --libexecdir=/usr/lib \
-    --localstatedir=/var \
-    --disable-static \
-    --enable-gtk-doc
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+  meson test -C build
 }
 
 package() {
-  cd $pkgname_
-  make DESTDIR="$pkgdir" dbus_confdir=/usr/share/dbus-1/system.d install
-  install -d -m 755 "$pkgdir/var/lib/fprint"
+  DESTDIR="$pkgdir" meson install -C build
 }

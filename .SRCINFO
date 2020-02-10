@@ -1,31 +1,33 @@
 pkgbase = fprintd-libfprint2
-	pkgdesc = D-Bus service to access fingerprint readers, modified for libfprint2
-	pkgver = 0.9.0+70+gb97903f
+	pkgdesc = D-Bus service to access fingerprint readers
+	pkgver = 0.9.0+127+g6d583cb
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
 	arch = x86_64
 	groups = fprint
 	license = GPL
-	makedepends = intltool
-	makedepends = gtk-doc
-	makedepends = pam
-	makedepends = git
+	checkdepends = pam_wrapper
+	checkdepends = python-cairo
+	checkdepends = python-dbus
 	checkdepends = python-dbusmock
-        checkdepends = python-cairo
-        checkdepends = python-gobject
-	depends = libfprint-git
+	checkdepends = python-gobject
+	makedepends = intltool
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = meson
+	makedepends = pam
 	depends = dbus-glib
-	depends = polkit
-	depends = glib2
+	depends = libfprint-git>=1.90.0
+	depends = polkit>=0.91
+	optdepends = pam: to use the fprintd pam plugin
+	provides = fprintd
 	conflicts = fprintd
 	source = git+https://gitlab.freedesktop.org/libfprint/fprintd.git
 	source = disable-systemd-protection.patch
-	source = disable_pam_tests.patch
-	source = storage_fix.patch
+	source = pam_dir.patch
 	sha256sums = SKIP
 	sha256sums = 4854d32d6579de31fd59b4df02f6a29db2e266dedfe9edda13bedcda1b083be1
-	sha256sums = 2c81b9f4c5e593ee3ebdca08584be4b42c7a1a33f240c0da6e2aab50f0ff4b5c
-	sha256sums = e94a80acaccc0e4830595b575f3865ed86a9866c18f910a83b568f602c750e3d
+	sha256sums = deae323c3ae28558aabca84b26c2e3e0004714941ab39384e45deaf7ca578b39
 
 pkgname = fprintd-libfprint2
 
