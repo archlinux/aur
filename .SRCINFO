@@ -3,14 +3,13 @@ pkgbase = ttf-impallari-milonga
 	pkgver = 1.0
 	pkgrel = 1
 	url = http://www.impallari.com/projects/overview/milonga/
-	install = updatefont.install
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = Milonga.zip::https://fonts.google.com/download?family=Milonga
-	md5sums = 7dcc574ddbd7a35be07bf7aa1f825e2a
+	md5sums = 06d60b626e7278aee1d8f1f4b4f7549e
 
 pkgname = ttf-impallari-milonga
 
