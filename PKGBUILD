@@ -3,7 +3,7 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-unity-theme' 'yaru-icon-theme' 'yaru-session')
 pkgver=20.04.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"

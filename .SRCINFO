@@ -1,7 +1,7 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 19.10.5
-	pkgrel = 1
+	pkgver = 20.04.1
+	pkgrel = 2
 	url = https://github.com/ubuntu/yaru
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = git+https://github.com/ubuntu/yaru#tag=19.10.5
-	sha256sums = SKIP
+	source = https://github.com/ubuntu/yaru/archive/20.04.1.tar.gz
+	sha256sums = 269c2aa9cbfbe0778338199934325fbe808ccfa84c28df7e1d3ad1921afcacab
 
 pkgname = yaru-sound-theme
 	pkgdesc = Yaru default ubuntu sound theme
@@ -27,7 +27,9 @@ pkgname = yaru-gtk-theme
 pkgname = yaru-gnome-shell-theme
 	pkgdesc = Yaru default ubuntu gnome shell theme
 	depends = gnome-shell
-	depends = yaru-session
+
+pkgname = yaru-unity-theme
+	pkgdesc = Yaru default ubuntu unity theme
 
 pkgname = yaru-icon-theme
 	pkgdesc = Yaru default ubuntu icon theme
@@ -39,4 +41,5 @@ pkgname = yaru-icon-theme
 pkgname = yaru-session
 	pkgdesc = Yaru session
 	depends = gnome-shell
+	depends = yaru-gnome-shell-theme
 
