@@ -1,7 +1,7 @@
 # Maintainer: Sajjad 'MCSH' Heydari <mcshemail@gmail.com>
 pkgname=ignite-cli
-pkgver=2.1.0
-pkgrel=3
+pkgver=3.5.1
+pkgrel=1
 pkgdesc="ignite cli tool for react native"
 arch=(any)
 url="https://github.com/infinitered/ignite"
