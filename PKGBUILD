@@ -1,11 +1,11 @@
 # Maintainer: Michael Roth <mail.michael.roth+aur@gmail.com>
 pkgname=megaman-rocknroll
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 
 pkgdesc="MegaMan based fan game made with Godot"
 url="https://dennisengelhard.com/rock-n-roll/"
-license=('custom')
+license=('unknown')
 
 arch=('x86_64')
 
