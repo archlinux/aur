@@ -9,7 +9,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.6.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -46,7 +46,7 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         0001-platform-add-Arch-Linux-platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook)
-sha256sums=('9ee590baf2fd91c082de71e39fb178443c96c70f9e2c0037faa361e16d067c75'
+sha256sums=('58612882840a08341579d0602501e0dbb1b83ebadd93bed78b5f3b55e3d821e7'
             'f30985cdc09070da6c935bc8e3b1f0d870f91766bf6ecdef41815386beccb369'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
@@ -162,7 +162,7 @@ package_python-ipalib() {
              'python-dbus'
              'python-setuptools'
              'python-six'
-             'python-ldap'
+             'python2-ldap'
              'python-dnspython>=1.15'
              'python-netifaces>=0.10.4'
              'python-pyusb')
