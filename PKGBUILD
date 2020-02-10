@@ -49,6 +49,20 @@ if [ -z ${use_ns+x} ]; then
 fi
 ##
 
+# Compile ONLY used modules to VASTLYreduce the number of modules built
+# and the build time.
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD read the database kept if it exists
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
+
+### IMPORTANT: Do no edit below this line unless you know what you're doing
+
 pkgbase=linux-xanmod-rt
 pkgver=5.4.17
 xanmod=9
@@ -59,8 +73,8 @@ arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
 makedepends=(
-  xmlto kmod inetutils bc libelf git python-sphinx python-sphinx_rtd_theme
-  graphviz imagemagick cpio
+  xmlto kmod inetutils bc libelf cpio
+  python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
 _srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
@@ -141,6 +155,18 @@ prepare() {
   fi
 
   make olddefconfig
+
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+  if [ "$_localmodcfg" = "y" ]; then
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit
+    fi
+  fi
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
