@@ -1,12 +1,12 @@
 pkgbase = frostwire
 	pkgdesc = FrostWire is a free and easy Downloader, BitTorrent Client and Media Player
 	pkgver = 6.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.frostwire.com
 	arch = x86_64
 	license = custom
 	depends = xdg-utils
-	depends = jre10-openjdk
+	depends = jre11-openjdk
 	optdepends = mplayer
 	source = frostwire.desktop
 	source = frostwire.png

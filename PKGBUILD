@@ -4,12 +4,12 @@
 pkgname=frostwire
 pkgver=6.8.4
 _pkgver=292
-pkgrel=1
+pkgrel=2
 pkgdesc="FrostWire is a free and easy Downloader, BitTorrent Client and Media Player"
 arch=('x86_64')
 url="http://www.frostwire.com"
 license=('custom')
-depends=('xdg-utils' 'jre10-openjdk')
+depends=('xdg-utils' 'jre11-openjdk')
 optdepends=('mplayer')
 source_x86_64=("https://github.com/frostwire/frostwire/releases/download/frostwire-desktop-6.8.4-build-$_pkgver/frostwire-$pkgver.amd64.tar.gz")
 source=($pkgname.desktop
