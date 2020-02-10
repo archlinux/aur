@@ -14,7 +14,7 @@ groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 #install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://fonts.google.com/download?family=Petit%20Formal%20Script")
-md5sums=('1df4ac0e70d307de2174b695b3545d85')
+md5sums=('ccfde35c5e91454aff3c20eddc60d4bd')
 
 package() {
   cd ${srcdir}/
