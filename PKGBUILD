@@ -1,14 +1,14 @@
 # Maintainer: Daniel YC Lin <dlin.tw at gmail>
 pkgname=coin-or-symphony
-pkgver=5.6.16
+pkgver=5.6.17
 pkgrel=1
 pkgdesc="COIN-OR solver for mixed-integer linear programs(MILPs)"
 arch=(i686 x86_64)
-url="https://projects.coin-or.org/SYMPHONY"
+url="https://github.com/coin-or/SYMPHONY"
 license=(EPL)
 groups=(coin-or)
 depends=(coin-or-cgl)
-source=("http://www.coin-or.org/download/source/SYMPHONY/SYMPHONY-${pkgver}.tgz")
+source=("https://github.com/coin-or/SYMPHONY/archive/releases/${pkgver}.tar.gz")
 
 build() {
   cd SYMPHONY-$pkgver/SYMPHONY
@@ -37,4 +37,4 @@ package() {
   PKG_CONFIG_LIBDIR="$pkgdir"/usr/lib/pkgconfig/ \
     make DESTDIR="$pkgdir" install
 }
-md5sums=('55345811e8943e43effae06082e052b6')
+md5sums=('3461ca1fadb5519790efe0a06fe5da63')
