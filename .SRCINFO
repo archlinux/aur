@@ -1,6 +1,6 @@
 pkgbase = vim-youcompleteme-git
 	pkgdesc = A code-completion engine for Vim
-	pkgver = r2600.d9a9ce47
+	pkgver = r2623.52632f13
 	pkgrel = 1
 	url = https://ycm-core.github.io/YouCompleteMe/
 	install = install.sh
