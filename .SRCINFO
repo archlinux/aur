@@ -11,10 +11,8 @@ pkgbase = python-cheetah3
 	sha512sums = f991865d384cbc7fe287c5d89d9990bfdde205df64f2c9cf8df17427ce865701e4fb2c35e7d52753b40ac170a56b8d071e7ae8bff83cbefe8ec662099fbe1340
 
 pkgname = python-cheetah3
-	depends = python-setuptools
 	optdepends = python-markdown
 
 pkgname = python2-cheetah3
-	depends = python2-setuptools
 	optdepends = python2-markdown
 
