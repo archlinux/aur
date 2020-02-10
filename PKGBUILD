@@ -7,14 +7,14 @@ pkgname=('python-altair')
 depends=('python' 'python-entrypoints' 'python-jinja' 'python-jsonschema' 'python-numpy' 'python-pandas' 'python-toolz')
 makedepends=('python-setuptools')
 optdepends=('python-selenium: png and svg export support')
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Declarative statistical visualization library for Python"
 arch=('any')
 url="https://altair-viz.github.io/"
 license=('MIT')
 source=("${_pyname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz")
-sha256sums=('92dcd7b84c715f8e02bbdf37e36193a4af8138b5b064c05f237e6ed41573880a')
+sha256sums=('d31270c82ce5e37b25fc3bc4e990dc6ac593620a2be0c8c075f297409a92af90')
 
 
 build () {
