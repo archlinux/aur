@@ -4,7 +4,7 @@ _pkgname=altium2kicad
 
 pkgname=${_pkgname}-git
 pkgver=r219.f7e739f
-pkgrel=1
+pkgrel=4
 pkgdesc="Altium to KiCad converter for PCB and schematics"
 arch=('i686' 'x86_64' 'armv6' 'armv6h' 'armv7h')
 url="https://github.com/thesourcerer8/altium2kicad"
@@ -19,6 +19,8 @@ sha256sums=(
   'SKIP'
 )
 
+conflicts=( 'perl-math-bezier' )
+
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -30,19 +32,27 @@ build() {
 package () {
   cd "${_pkgname}"
 
-  install -d "$pkgdir/usr/share/altium2kicad"
-  cp -R \
-    "Math" \
-    "Altium2KiCad.png" \
-    "README.md" \
-    "step2wrl.FCMacro" \
-    "Tests.md" \
-    "LICENSE" \
-    "convertpcb.pl" "convertschema.pl" "unpack.pl" \
-    "${pkgdir}/usr/share/altium2kicad"
+  # Install license file
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" \
+    "LICENSE"
 
+  # Install readmes
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" \
+    "README.md" "Tests.md"
 
-  install -d "$pkgdir/usr/bin/"
-  ln -s "/usr/share/altium2kicad/unpack.pl" "${pkgdir}/usr/bin/altium2kicad_unpack"
-  chmod +x "${pkgdir}/usr/bin/altium2kicad_unpack"
+  # # Install Freecad macro
+  # install -Dm644 "step2wrl.FCMacro" \
+  #   "${pkgdir}/usr/share/"
+
+  # Install Perl libraries
+  find "Math" -type f -exec \
+    install -Dm644 "{}" "${pkgdir}/usr/lib/perl5/5.30/vendor_perl/{}" \;
+
+  # Install executables
+  install -d "${pkgdir}/usr/bin"
+  for exe in "unpack" "convertpcb" "convertschema" ; do
+    install -Dm755 -t "${pkgdir}/usr/lib/altium2kicad" "${exe}.pl"
+    ln -s "/usr/lib/altium2kicad/${exe}.pl" "${pkgdir}/usr/bin/altium2kicad_${exe}"
+  done
+
 }
