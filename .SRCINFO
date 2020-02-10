@@ -1,14 +1,14 @@
 pkgbase = nwjs-ffmpeg-codecs-bin
 	pkgdesc = Additional proprietary codecs for nw.js from ffmpeg
-	pkgver = 0.43.6
+	pkgver = 0.44.0
 	pkgrel = 1
 	url = https://github.com/iteufel/nwjs-ffmpeg-prebuilt
 	install = codecs-preload.install
 	arch = x86_64
 	license = LGPL2.1
 	depends = nwjs-bin
-	source = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.43.6/0.43.6-linux-x64.zip
-	sha512sums = 73b7a9fb4d682890fca77ea7f3dc789c6cf6a61c98f2437482b6c8afae9c03f3d3379e30e2820989701830791a5d58f1887e70cf6418741565d52e42ebf877be
+	source = https://github.com/iteufel/nwjs-ffmpeg-prebuilt/releases/download/0.44.0/0.44.0-linux-x64.zip
+	sha512sums = a4234071d81ff6f8f3dc6920035437505f2e9266c30cb23cf4205afe8ccae841111dbc8b845d78789701c82c1baec3f1bb42ab87b312cb8c40e4aa77640dd4b8
 
 pkgname = nwjs-ffmpeg-codecs-bin
 
