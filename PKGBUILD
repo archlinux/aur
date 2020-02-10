@@ -3,7 +3,7 @@
 pkgbase=spotifyd-bin
 pkgname=('spotifyd-bin' 'spotifyd-bin-slim')
 pkgver=0.2.24
-pkgrel=1
+pkgrel=2
 conflicts=('spotifyd')
 provides=('spotifyd')
 depends=('alsa-lib')
@@ -19,7 +19,7 @@ sha256sums_x86_64=('bda3c4be1323f952feaa38936413f99f3c2c18947256bafa78db5c56c25b
             '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
 sha256sums_aarch64=('bda3c4be1323f952feaa38936413f99f3c2c18947256bafa78db5c56c25b31b7'
             '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
-sha256sums_armv6h=('bda3c4be1323f952feaa38936413f99f3c2c18947256bafa78db5c56c25b31b7'
+sha256sums_armv6h=('8c8d46469901da1996031db1ea08cd51d3705006f5f67312572c2913ecf7597e'
                    '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
 sha256sums_armv7h=('f88215ae7bf7c85a1882b8c833876663e7a1fdd988180fd18454fab70709d852'
                    '67bce68cfad74bfccad4b471045d3c5d5fb0f693545f3ef12511d171ea41a5e4')
