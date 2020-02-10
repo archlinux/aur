@@ -1,6 +1,6 @@
 pkgbase = dockbarx-gtk3-git
 	pkgdesc = DockBarX GTK3 port. (Standalone panel and mate applet)
-	pkgver = 0.93+60+gbfc5f3b
+	pkgver = 0.93+104+g74a25c0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/M7S/dockbarx
@@ -20,6 +20,7 @@ pkgbase = dockbarx-gtk3-git
 	optdepends = mate-panel: mate applet
 	optdepends = zeitgeist: recently used file list
 	optdepends = xfce4-dockbarx-plugin-gtk3-git: xfce4 plugin
+	optdepends = python-pyudev: dockx battery applet
 	provides = dockbarx=0.93
 	source = dockbarx::git+https://github.com/M7S/dockbarx.git#branch=pygi-python3
 	sha256sums = SKIP

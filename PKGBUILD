@@ -4,7 +4,7 @@ _pkgname=dockbarx
 pkgname="${_pkgname}"-gtk3-git
 _branchname='pygi-python3'
 epoch=1
-pkgver=0.93+60+gbfc5f3b
+pkgver=0.93+104+g74a25c0
 pkgrel=1
 pkgdesc="DockBarX GTK3 port. (Standalone panel and mate applet)"
 arch=('i688' 'x86_64')
@@ -15,7 +15,8 @@ depends=('libkeybinder3' 'python-cairo' 'python-dbus' 'python-gobject' 'python-p
 makedepends=('python-setuptools' 'python-polib' 'git')
 optdepends=('mate-panel: mate applet'
             'zeitgeist: recently used file list'
-            'xfce4-dockbarx-plugin-gtk3-git: xfce4 plugin')
+            'xfce4-dockbarx-plugin-gtk3-git: xfce4 plugin'
+            'python-pyudev: dockx battery applet')
 provides+=("${_pkgname}=${pkgver%%+*}")
 source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git#branch=${_branchname})
 sha256sums=('SKIP')
@@ -27,14 +28,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-
   python setup.py install --root "${pkgdir}" --optimize=1
 
-  mkdir -p "${pkgdir}"/usr/share/pixmaps
   install -Dm644 "${srcdir}/${_pkgname}"/icons/hicolor/128x128/apps/dockbarx.png "${pkgdir}"/usr/share/pixmaps/dockbarx.png
-
-  mkdir -p "${pkgdir}"/usr/share/glib-2.0/schemas/
-  install -m 644 "${srcdir}/${_pkgname}"/org.dockbar.dockbarx.gschema.xml "${pkgdir}"/usr/share/glib-2.0/schemas/
-
-  sed -i 's:^Categories=.*:Categories=Settings:' "${pkgdir}"/usr/share/applications/dbx_preference.desktop
 }
