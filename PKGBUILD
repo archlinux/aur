@@ -14,7 +14,7 @@ depends=('fontconfig' 'xorg-font-utils')
 #install=updatefont.install
 #source=("http://www.impallari.com/media/releases/${_font}-v${pkgver}.zip")
 #source=("http://www.impallari.com/media/uploads/prosources/update-20-source.zip")
-source=("Quattrocento_Sans.zip::https://fonts.google.com/download?family=Quattrocento+Sans")
+source=("Quattrocento.zip::https://fonts.google.com/download?family=Quattrocento")
 md5sums=('SKIP')
 
 package() {
