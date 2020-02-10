@@ -4,7 +4,7 @@
 _npmname=jshint
 pkgname=nodejs-"$_npmname"
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Static analysis tool for JavaScript'
 arch=('any')
 url='https://jshint.com/'
@@ -17,6 +17,7 @@ noextract=("${source[@]##*/}")
 
 package() {
     npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "${source[0]}"
-    find "$pkgdir" -name package.json -execdir sed -i -e '/_where/d' {} \;
+    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+    find "${pkgdir}" -type f -name package.json -exec sed -i -e '/_where/d' {} \;
     chown -R root:root $pkgdir
 }
