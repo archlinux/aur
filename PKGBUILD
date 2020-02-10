@@ -1,15 +1,15 @@
 # Maintainer: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=ctypes-sh
-pkgver=0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="ctypes.sh is a bash plugin that allows you to call routines in shared libraries from within bash"
 arch=('i686' 'x86_64')
 url="http://ctypes.sh/"
 license=('MIT')
 depends=('bash' 'libffi')
-source=("https://github.com/taviso/ctypes.sh/releases/download/v0.01/ctypes-sh-${pkgver}.tar.gz")
-sha256sums=('6e4555c051e0e1408792f41a7f9df63ecbbc5a7c4f6a70580f8d4e64615173a5')
+source=("https://github.com/taviso/ctypes.sh/releases/download/v${pkgver}/ctypes-sh-${pkgver}.tar.gz")
+sha256sums=('f7c8276b556101c51838296560d152fdcd96b860254a38d216b92986f31f8297')
 
 build() {
 	cd "$pkgname-$pkgver"
