@@ -1,23 +1,11 @@
 pkgbase = mindforger-src
-	pkgdesc = Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks. (Build from source.)
+	pkgdesc = Deprecated - use mindforger from AUR that is now built from source.
 	pkgver = 1.50.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dvorka/mindforger
 	arch = any
 	license = GPL-2.0
-	makedepends = git
-	depends = hicolor-icon-theme
-	depends = qt5-base
-	depends = qt5-svg
-	depends = qt5-webkit
-	depends = zlib
-	optdepends = dropbox: Dropbox syncing
-	provides = mindforger
-	conflicts = mindforger
-	source = mindforger::git+https://github.com/dvorka/mindforger.git#tag=1.50.0
-	source = mindforger-repository::git+https://github.com/dvorka/mindforger-repository.git#commit=a17ada7
-	sha256sums = SKIP
-	sha256sums = SKIP
+	depends = mindforger
 
 pkgname = mindforger-src
 
