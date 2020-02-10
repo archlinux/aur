@@ -1,1 +1,1 @@
-u   nominatim   -   "Nominatim geocoder"    /usr/share/webapps/nominatim    /bin/bash
+u   nominatim   -   "Nominatim geocoder"    /var/lib/nominatim    /bin/bash

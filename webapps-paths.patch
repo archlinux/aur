@@ -5,8 +5,8 @@ diff -ru a/settings/defaults.php b/settings/defaults.php
  <?php
 -@define('CONST_BasePath', '@CMAKE_SOURCE_DIR@');
 -@define('CONST_InstallPath', '@CMAKE_BINARY_DIR@');
-+@define('CONST_BasePath', '/usr/share/webapps/nominatim/src');
-+@define('CONST_InstallPath', '/usr/share/webapps/nominatim');
++@define('CONST_BasePath', '/var/lib/nominatim/src');
++@define('CONST_InstallPath', '/var/lib/nominatim/bin');
  if (file_exists(getenv('NOMINATIM_SETTINGS'))) require_once(getenv('NOMINATIM_SETTINGS'));
  if (file_exists(CONST_InstallPath.'/settings/local.php')) require_once(CONST_InstallPath.'/settings/local.php');
  if (isset($_GET['debug']) && $_GET['debug']) @define('CONST_Debug', true);
