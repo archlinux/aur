@@ -1,7 +1,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=jmt
-pkgver=0.9.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Java Modelling Tools (JMT) is a comprehensive framework for performance evaluation, system modeling with analytical and simulation techniques, capacity planning and workload characterization studies."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('java-environment>=8')
 source=("jmt.jar::http://downloads.sourceforge.net/project/jmt/jmt/JMT-${pkgver}/JMT-singlejar-${pkgver}.jar"
         "jmt.desktop")
-sha256sums=('8e8fbfcea7934da1608d1bcd1b3bf146e2793a0b4812887e7be4ef3bf92ac32b'
+sha256sums=('1ff6f790714b7cef721c590485c020fd889b7822130919c38480ad49687e6384'
             '7f16e8dd880036a54e32cfc02213107c0efee1192bfb7ceddaa699b193490327')
 
 package() {
