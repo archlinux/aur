@@ -1,27 +1,25 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 
-pkgbasename='defcon'
-pkgname="python-$pkgbasename-git"
-pkgver=r273.bba773c
+_pypiname=defcon
+pkgname=python-$_pypiname-git
+pkgver=0.6.0.r63.g71f1cd9
+epoch=1
 pkgrel=1
-pkgdesc=""
+pkgdesc='A set of UFO based objects for use in font editing applications'
 arch=('any')
-url="https://github.com/trufont/$pkgbasename"
+url="https://github.com/robotools/$_pypiname"
 license=('MIT')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/trufont/$pkgbasename.git")
+source=("git://github.com/robotools/$_pypiname.git")
 sha256sums=('SKIP')
 
 package() {
-  cd "$pkgbasename"
+  cd "$_pypiname"
   python3 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 pkgver() {
-  cd "$pkgbasename"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pypiname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
