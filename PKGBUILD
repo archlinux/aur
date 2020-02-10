@@ -4,7 +4,7 @@
 # Contributor: Nicolas Floquet <nicolasfloquet AT gmail DOT com>
 pkgname=e2tools
 pkgver=0.0.16
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple set of GPL'ed utilities to read, write, and manipulate files in an ext2/ext3 filesystem."
 arch=('i686' 'x86_64')
 url="https://e2tools.github.io/"
@@ -39,12 +39,6 @@ b2sums=('c843938b2217bfe1e36fcb1197b3a0d27d6fb5867c99d89b5e2af2eebe807aa6cf264b8
         '1351953af9a10d27f829246fc426f2e32abcfaac5246ba0b5216fd21bfbe7e597b1ede38523d544b863ea1d08efb0a7400298b05782c1cbc4d9a499da2e15493'
         '6f2ba4caa51d06526a3ae24019a6872f45be5177dcd74abc44dc9f13cd3d086bcc98d358fad1a4f1ba403ab5c6b3db94d9a46df23b9875ceeaceb9f027e0c976')
 
-#prepare() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  chmod 777 . -R
-#  patch -p1 < "${srcdir}/e2tools-fedora-fixes.patch"
-#  patch -p1 < "${srcdir}/e2tools-printf-lld-64bit.patch"
-#}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

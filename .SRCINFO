@@ -1,7 +1,7 @@
 pkgbase = e2tools
 	pkgdesc = A simple set of GPL'ed utilities to read, write, and manipulate files in an ext2/ext3 filesystem.
 	pkgver = 0.0.16
-	pkgrel = 4
+	pkgrel = 5
 	url = https://e2tools.github.io/
 	arch = i686
 	arch = x86_64
