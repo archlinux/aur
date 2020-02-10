@@ -3,42 +3,17 @@
 # Ex-Maintainer: TheWaffleGuy <gvxq@hotmail.com>
 # Contributor: Nicolas Floquet <nicolasfloquet AT gmail DOT com>
 pkgname=e2tools
-pkgver=0.0.16
-pkgrel=5
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="A simple set of GPL'ed utilities to read, write, and manipulate files in an ext2/ext3 filesystem."
 arch=('i686' 'x86_64')
 url="https://e2tools.github.io/"
 license=('GPL')
 depends=('e2fsprogs')
 options=(!buildflags)
-source=(https://github.com/e2tools/e2tools/releases/download/$pkgver/e2tools-$pkgver.tar.gz
-        e2cp.1
-        e2ln.1
-        e2ls.1
-        e2mkdir.1
-        e2mv.1
-        e2rm.1
-        e2tail.1
-        e2tools.7)
-sha256sums=('4e3c8e17786ccc03fc9fb4145724edf332bb50e1b3c91b6f33e0e3a54861949b'
-            '36cbcd3bfe3355b9ad229e41ad8ba35a07e4a27417ac984f5576269999f63484'
-            'a2cbf3a35ad8d330d4d6e3e557166ec776e318fc0617747fc1eec5b66df60096'
-            '7fce4712905070fe1c527b1796cbf49421b45509d3acef27d20351a4b378eb08'
-            '6f2460f5d0f8ce0fb055e9c369e571d7661bcbc023b8f2cc0c19589754d6e2ba'
-            '439951268653471a8270a9c5f8b9be9f12a1fef4a890b8f06ba75d53ce93e41b'
-            '23ba333e2121b5424797122b845b7283d7e871d1e8f4facab2392bb913e018ac'
-            '4b6ee8b860c56e582344cf75c704810231bbf9af852c3f1bc38689ebc4e03ce3'
-            '8e66e17d1269d8e16da39ebdc08bacdb3a5ce1ab1820188cf8dbf378ece90fe4')
-b2sums=('c843938b2217bfe1e36fcb1197b3a0d27d6fb5867c99d89b5e2af2eebe807aa6cf264b8fb0ea5573f22507f19e676eb124ef694866b8f76bf815880ce2a0f876'
-        'a4d19b39c7f15637e2701b609262c8b790eb6fb263c33d9eaaec98b9459c19281e1c60a366ca43d9dad11ba7b4059cbd70369fd8b39a43dce1ca15dc106288fb'
-        '148bc18da5d379af09642d8a20ff29c353b0cd26b6bc1c3510566abf01ee024b338ed95aa19f40843458df79ed2acb15bd8be8c04c06e78f51217418df5d9ea3'
-        '5186b07243a3c03f498705c1f0e20318a73b9722e1066c7fb817fd0f560e91e73eaa808d37d585562589d34665bb5a1d05e7129f4d5ddf79246438c414f0c734'
-        '2597dc9b63b1d4bb36371aeec8fc5f1f2b7ee3886be99237a13bdcb01c50d054a32dc6e1fbb9d5e8c075963b0169751377ddda89732d010085f97c50d517159e'
-        '8e9809df4a9a99f930ffc6e81cd15860b6f9a854d3e713c978f15f537fc4a0aedf5ea7ee030ff4f2f0c8565b62c96c982994cb0f936ca8138bdaa278fae4068c'
-        '4f635fab15690b4058af595c1b7e8c201818fcffbbe80fc95d4aa59cd1ddf06dd281d3b68f2e74cf769fa8c4aba391ed9ad2675293a29060f26640f3be881078'
-        '1351953af9a10d27f829246fc426f2e32abcfaac5246ba0b5216fd21bfbe7e597b1ede38523d544b863ea1d08efb0a7400298b05782c1cbc4d9a499da2e15493'
-        '6f2ba4caa51d06526a3ae24019a6872f45be5177dcd74abc44dc9f13cd3d086bcc98d358fad1a4f1ba403ab5c6b3db94d9a46df23b9875ceeaceb9f027e0c976')
-
+source=(https://github.com/e2tools/e2tools/releases/download/v$pkgver/e2tools-$pkgver.tar.gz)
+sha256sums=('c1a06b5ae2cbddb6f04d070e889b8bebf87015b8585889999452ce9846122edf')
+b2sums=('62a1e478b71e9105274ba8b815f1f4765ecc05593de481c4ef384ff9463a0be811efe5f37bd3509393dfd3bdfb0103625e192ebcce52cbf896a6f7758cb50884')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -47,19 +22,6 @@ build() {
 }
 
 package() {
-  install -dm 0755 "${pkgdir}/usr/share/man/man1"
-  install -dm 0755 "${pkgdir}/usr/share/man/man7"
-  install -pm 0644 \
-    e2cp.1 \
-    e2ln.1 \
-    e2ls.1 \
-    e2mkdir.1 \
-    e2mv.1 \
-    e2rm.1 \
-    e2tail.1 \
-    "${pkgdir}/usr/share/man/man1"
-  install -pm 0644 e2tools.7 "${pkgdir}/usr/share/man/man7"
-
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
