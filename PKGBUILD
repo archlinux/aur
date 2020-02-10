@@ -1,5 +1,6 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gtkhtml3
