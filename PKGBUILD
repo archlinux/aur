@@ -1,6 +1,6 @@
 # Maintainer: Mario O.M. <marioortizmanero@gmail.com>
 pkgname=vidify
-pkgver=2.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Watch live music videos for the songs playing on your device"
 arch=("any")
@@ -14,7 +14,7 @@ optdepends=("python-mpv: support for the mpv player")
 optdepends=("vidify-audiosync: audio synchronization extension")
 makedepends=("python-setuptools")
 source=("https://github.com/vidify/vidify/archive/$pkgver.tar.gz")
-md5sums=('c83a9a17ce821b56e91c456f1bddc883')
+md5sums=('69ca744d3adba0a6bee9230d3316aadb')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -24,4 +24,8 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+    # Installing the desktop file and icon
+    install -Dm755 "dev/vidify.desktop" "$pkgdir/usr/share/applications/vidify.desktop"
+    install -Dm644 "vidify/gui/res/icon.svg" "$pkgdir/usr/share/pixmaps/vidify.svg"
 }
