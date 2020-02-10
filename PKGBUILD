@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha at gmail>
 pkgname=demeter
-pkgver=0.9.25
-pkgrel=2
+pkgver=0.9.26
+pkgrel=1
 pkgdesc="Demeter is a comprehensive system for processing and analyzing X-ray Absorption Spectroscopy data."
 arch=('i686' 'x86_64')
 url="https://bruceravel.github.io/demeter/"
@@ -26,10 +26,10 @@ source=(https://github.com/bruceravel/${pkgname}/archive/${pkgver}.tar.gz
 	dhephaestus.desktop
 	)
 
-md5sums=('ddd8f92b88c262c9f3e041cce87369a2'
-         'a978d9dd0527e655f6a040472a8d84dd'
-         'accb135663d3f3cfdd5733bb983048c5'
-         '733d9d4df36032b606b0c27dc268795b')
+sha512sums=('1e79fba4a5a6da35e6d3b353455d7c17b3af5455ee43288d644524ebdb15cba483ebd57d6cf216b71f3983b29dddd3762248758f5565ee770d6f695538b6f112'
+            '78cd3f5cef6e990f386c6161e214b6e4986e2cccf3019b1766f3ce97cb81b40804092d85a7f532e76fd0e5185940ea0a3b9dd01315ffc177fcca75164b1940f5'
+            '43457010f1d7251c606380c0a4ca9faa601be627d37476c4a23dd1d4715c1793bfbdfb45dd8925c2fe8b92b9d1f4798f05b22a4898633a2b6e9b702cafe767a7'
+            '4f7b47ed4b09226fe494b52ca9f51d0ac2a12e816507bd279c6cfde14c356f5843740c0d2c01781eaf0c0b8ad3a0d49a617d1a5ccc1af67d67bae26498adc1d3')
 
 prepare() {
 	cd "$pkgname-$pkgver"
