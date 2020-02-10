@@ -1,9 +1,9 @@
 # Maintainer: Zhiwei Chen <condy0919@gmail.com>
 
 _pkgname=ppx_yojson_conv_lib
-pkgname=ocaml-ppx-yojson-conv-lib
+pkgname=ocaml-${_pkgname}
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Runtime lib for ppx_yojson_conv"
 arch=('x86_64')
 depends=('ocaml' 'ocaml-yojson>=1.7.0')
@@ -13,8 +13,8 @@ license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('a51b3875663341cb011ce4b3f7097a5c934f891d3953b133312aaeaaed8ece87')
 options=('!strip')
-provides=('ocaml-ppx-yojson-conv-lib')
-conflicts=('ocaml-ppx-yojson-conv-lib')
+provides=('ocaml-ppx_yojson_conv_lib')
+conflicts=('ocaml-ppx_yojson_conv_lib')
 
 build() {
   cd "${_pkgname}-${pkgver}"
