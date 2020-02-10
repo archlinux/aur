@@ -3,7 +3,7 @@
 
 _pkgname=hol
 pkgname=${_pkgname}-git
-pkgver=20200205
+pkgver=20200210
 pkgrel=1
 pkgdesc='HOL4 theorem-proving system'
 url='https://hol-theorem-prover.org/'
