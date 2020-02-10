@@ -9,7 +9,7 @@
 
 pkgname=nodejs-ipv6
 pkgver=13.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='NodeJS patched to work in IPv6 only network'
 arch=('x86_64')
 provides=("${pkgname%-ipv6}")
@@ -19,12 +19,16 @@ license=('MIT')
 depends=('openssl' 'zlib' 'icu' 'libuv' 'c-ares' 'libnghttp2') # 'http-parser' 'v8')
 makedepends=('python' 'procps-ng')
 optdepends=('npm: nodejs package manager')
-source=("nodejs-$pkgver.tar.gz::https://github.com/nodejs/node/archive/v$pkgver.tar.gz")
-sha512sums=('187519194b2b666ad323a50800468e03d13fd52f0b66bef74679d9a40d61263d75060e055ecd63db3d471b2c914a1d6d562054dd65984efa67274320083b0dbf')
+source=(
+"nodejs-$pkgver.tar.gz::https://github.com/nodejs/node/archive/v$pkgver.tar.gz"
+"patch.diff")
+sha512sums=(
+"187519194b2b666ad323a50800468e03d13fd52f0b66bef74679d9a40d61263d75060e055ecd63db3d471b2c914a1d6d562054dd65984efa67274320083b0dbf"
+"ec70e2c49e8a75114e45f1af71519cf0445773e57579eaa51ddecfc134bdaaffb37bc7e863f3103d1f0ddcf4a26e41aa1be678d34c997916e59aecbfe3dd19e5")
 
 build() {
   cd node-$pkgver
-  patch lib/dns.js < "$srcdir"/../patch.diff
+  patch lib/dns.js < "${srcdir}/patch.diff"
 
   ./configure \
     --prefix=/usr \
