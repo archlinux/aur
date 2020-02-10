@@ -1,7 +1,7 @@
 pkgbase = hamsket-nightly-bin
 	pkgdesc = Forked Free and Open Source messaging and emailing app that combines common web applications into one
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 6
 	url = https://github.com/TheGoddessInari/hamsket
 	arch = x86_64
 	license = GPL3
