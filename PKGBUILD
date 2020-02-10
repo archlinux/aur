@@ -1,10 +1,10 @@
 # Maintainer: Kars Wang <jaklsy g-mail>
 
 pkgname=lantern-headless
-pkgver=2.0.2
+pkgver=5.6.4
 pkgrel=1
 _pkgname=lantern
-_git_revision=365c62b
+_git_revision=2ea216c
 # git show -s --format=%ci "${_git_revision}"
 _git_revision_date='2015-09-01 23:11:32 -0700'
 _build_date="$(date -u '+%Y%m%d.%H%M%S')"
@@ -19,8 +19,8 @@ provides=('lantern')
 options=('!emptydirs' '!strip')
 source=("https://github.com/getlantern/lantern/archive/${pkgver}.tar.gz"
         'lantern.service')
-sha1sums=('bd2a791c188f2f7a9fb2455eb8b888dcff93f490'
-          '822a905e8fe1d221a7ac5b7f0417d4ab82bed45a')
+sha512sums=('1e5974a61af9347946d56c4d565849538407f1a8f97fd6310454a87bcedc0a7a78ef7bcc4761499daf38a050ae70e1e2583980580147310e14da2d641458fe44'
+            '540e0500459642207c26601cacef67df052464a604563f121819b549e54e9559bbf5a7ff31b2c9f12382cba4b07e435437d818a37fb9be300119a06ef466c496')
 
 if [ "$CARCH" = 'i686' ]; then
     _arch='386'
