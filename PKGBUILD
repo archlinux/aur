@@ -1,33 +1,27 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer : Laurent Carlier <lordheavym@gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
 pkgbase=uzbl
 pkgname=('uzbl-core' 'uzbl-browser' 'uzbl-tabbed')
 epoch=1
-pkgver=0.9.1+95+g3a4c70ad
+pkgver=0.9.1
 pkgrel=1
 arch=('x86_64')
-url="http://www.uzbl.org"
+url='https://www.uzbl.org'
 license=('GPL3')
 makedepends=('git' 'python-setuptools' 'webkit2gtk')
-_commit=3a4c70ad114b763f50a02c72ee4332dd20af033d  # next
-source=("git+https://github.com/uzbl/uzbl.git#commit=$_commit")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd $pkgbase
-  git describe --tags | sed 's/^v//;s/-/+/g'
-}
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/$pkgbase/$pkgbase/archive/v$pkgver.tar.gz")
+sha256sums=('9721873db3fd859707f703a101b4f2d0538f92e9678f8ad437a7203078f9abbe')
 
 build() {
   cd $pkgbase
 
-  make PREFIX=/usr 
+  make PREFIX=/usr
 
   # fake installation
-  mkdir ${srcdir}/fakeinstall
+  mkdir -p ${srcdir}/fakeinstall
   make DESTDIR=${srcdir}/fakeinstall PREFIX=/usr install
 }
 
@@ -53,8 +47,7 @@ package_uzbl-browser() {
 
   mv -v ${srcdir}/fakeinstall/usr/bin/uzbl-browser ${pkgdir}/usr/bin/
   mv -v ${srcdir}/fakeinstall/usr/bin/uzbl-event-manager ${pkgdir}/usr/bin/
-   
-  mv -v ${srcdir}/fakeinstall/usr/lib/python3.6 ${pkgdir}/usr/lib
+
   mv -v ${srcdir}/fakeinstall/usr/share/man/man1/uzbl-browser.1 ${pkgdir}/usr/share/man/man1
   mv -v ${srcdir}/fakeinstall/usr/share/man/man1/uzbl-event-manager.1 ${pkgdir}/usr/share/man/man1
   mv -v ${srcdir}/fakeinstall/usr/share/{appdata,icons,uzbl} ${pkgdir}/usr/share/
