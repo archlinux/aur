@@ -1,7 +1,7 @@
 pkgbase = frostwire
 	pkgdesc = FrostWire is a free and easy Downloader, BitTorrent Client and Media Player
-	pkgver = 6.8.3
-	pkgrel = 289
+	pkgver = 6.8.4
+	pkgrel = 1
 	url = http://www.frostwire.com
 	arch = x86_64
 	license = custom
@@ -12,8 +12,8 @@ pkgbase = frostwire
 	source = frostwire.png
 	sha256sums = 1a4b90abc9315c1bf7c59bf7b46825d45203b5fa1bb95c1cd62fb417513b0551
 	sha256sums = 905dae96dfad2851653cb30e7718524ce2609be703ed1f7a5cd5bdac37233604
-	source_x86_64 = https://github.com/frostwire/frostwire/releases/download/frostwire-desktop-6.8.3-build-289/frostwire-6.8.3.amd64.tar.gz
-	sha256sums_x86_64 = 78116fe6c230d9e05bd58add945983eca5b3228152c335730f985667efae9890
+	source_x86_64 = https://github.com/frostwire/frostwire/releases/download/frostwire-desktop-6.8.4-build-292/frostwire-6.8.4.amd64.tar.gz
+	sha256sums_x86_64 = ff83c49c84b898af41141d073b2652c8f1aa93ecf5624da44e0bc6204cc940e3
 
 pkgname = frostwire
 
