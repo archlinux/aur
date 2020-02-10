@@ -1,7 +1,7 @@
 pkgbase = gitlab-ee
 	pkgdesc = Project management and code hosting application
 	pkgver = 12.7.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/gitlab-org/gitlab
 	install = gitlab.install
 	arch = x86_64

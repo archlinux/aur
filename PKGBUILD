@@ -14,7 +14,7 @@
 _pkgname=gitlab
 pkgname=$_pkgname-ee
 pkgver=12.7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/gitlab"
@@ -127,7 +127,7 @@ build() {
   # Gems will be installed into vendor/bundle
   bundle config build.gpgme --use-system-libraries  # See https://bugs.archlinux.org/task/63654
   bundle config force_ruby_platform true # some native gems are not available for newer ruby
-  bundle install --jobs=$(nproc) --no-cache --deployment --without development test aws kerberos
+  bundle install --jobs=$(nproc) --no-cache --deployment --without development test aws
 
   # workaround for a ruby2.7 issue
   # https://gitlab.com/groups/gitlab-org/-/epics/2380
