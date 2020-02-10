@@ -1,12 +1,12 @@
 # Maintainer: Ardeaf <ardeaf@gmail.com>
 
 pkgname=redelete
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Delete all of your reddit comments and submissions, with optional filters to skip certain posts.'
 arch=('x86_64')
 url=https://github.com/ardeaf/redelete
-license=('AGPL-3.0')
+license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("redelete-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
