@@ -1,7 +1,7 @@
 pkgbase = motionbox
 	pkgdesc = MotionBox is a Video Browser for Motion Freedom
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://omega.gg/MotionBox/
 	arch = x86_64
 	license = GPL3
