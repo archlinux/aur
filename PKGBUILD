@@ -3,7 +3,7 @@ pkgbase='dbb-app'
 pkgname=("${pkgbase}" 'dbb-cli')
 gitname="${pkgbase}"
 pkgrel=1
-pkgver='2.2.2'
+pkgver='3.0.0'
 url='https://digitalbitbox.com/'
 arch=('i686' 'x86_64')
 license=('MIT')
@@ -12,11 +12,9 @@ source=(
     '51-hid-digitalbitbox.rules'
     'digitalbitbox.desktop'
 )
-sha256sums=(
-    'SKIP'
-    'fc8273cb499f6643ebfdf197f7fa00efbed171d65c6eff75f93460a0ec5b41d4'
-    '255065c71b2ad7ab7328518689d800a6284ecf9c445c6004281800420bdc411f'
-)
+sha256sums=('SKIP'
+            'fc8273cb499f6643ebfdf197f7fa00efbed171d65c6eff75f93460a0ec5b41d4'
+            '255065c71b2ad7ab7328518689d800a6284ecf9c445c6004281800420bdc411f')
 
 build() {
     cd "${srcdir}/${gitname}"
