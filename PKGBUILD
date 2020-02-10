@@ -4,7 +4,7 @@
 
 pkgname=icu52
 _pkgname=icu
-pkgver=52.1
+pkgver=52.2
 pkgrel=3
 pkgdesc="International Components for Unicode library"
 arch=(i686 x86_64)
@@ -12,12 +12,12 @@ url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5' 'sh')
 #provides=("$_pkgname==$pkgver")
-source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz
+source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz
 	icu.8198.revert.icu5431.patch
 	icu.clang.float128.patch)
-md5sums=('9e96ed4c1d99c0d14ac03c140f9f346c'
-         'ebd5470fc969c75e52baf4af94a9ee82'
-         '10eaaee78f06692864afd86a8d19b00d')
+sha512sums=('b104ef9bb45f1ba93ab2f1d59cd886882e4271dc3736b5a04d912901e37583b91a1782a4fcff440c2e738af3cc8430104c8701fe14622ad56d52cab315e7dbdb'
+            'f672a81ff5436ca8827ed904c23738e3629e0cbadc9933a07e7ec3519f970570d2c63fd1811e55284dc99602a1ebc93a365a934ef6dbee43223ab790f6d78969'
+            '2cb3c96ecba1f685bf64e41e44fccdba3ed6fb6a31bac434d1af41d026fcf2c6eac54def78488dc87b8248e62e9b7d0563b8a483d7c98af94e94ec52427ac031')
 
 prepare() {
   cd icu/source
