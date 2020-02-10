@@ -12,7 +12,7 @@ screenshot="http://www.impallari.com/media/uploads/profotos/135-foto01-original.
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/Encode-Sans/archive/master.zip")
 md5sums=('b38a26b123ecb84df4152b998e8dd031')
 
