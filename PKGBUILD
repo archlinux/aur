@@ -12,7 +12,7 @@ screenshot="http://www.impallari.com/media/uploads/proupdates/94-foto01-original
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/Libre-Caslon-Display/archive/master.zip")
 md5sums=('648fd3351f41cb73d2bd3d4dab1f9338')
 
