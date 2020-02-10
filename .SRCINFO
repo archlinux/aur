@@ -1,8 +1,8 @@
 pkgbase = spdynu
 	pkgdesc = DynDNS Client for spdyn.de
 	pkgver = 2018.11
-	pkgrel = 1
-	url = https://gitlab.com/StevenSeifried/spdynu/
+	pkgrel = 2
+	url = https://github.com/StevenSeifried/spdynu
 	arch = any
 	license = GPL2
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = spdynu
 	depends = make
 	depends = gcc
 	conflicts = spdynu-git
-	source = https://gitlab.com/StevenSeifried/spdynu/-/archive/2018.11/spdynu-2018.11.tar.gz
+	source = https://github.com/StevenSeifried/spdynu/archive/2018.11.tar.gz
 	sha256sums = ea2878e5b468e0d56c0e6c7f1691f849e9006255d4503b3942480f70a6cb2409
 	sha512sums = c707f61929e2ebbe25f3eafc392de100084d75c0d0e59ed254de9f7c25ee6a7abbd83efacf029017f10f13e074e01b37997723180a2b4d17b0b8bdaec683f802
 
