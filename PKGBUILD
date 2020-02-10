@@ -4,7 +4,7 @@
 pkgname=sdrangel-git
 _pkgname=${pkgname%-git}
 pkgver=4.13.0.r0.583a144c6
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
@@ -47,6 +47,7 @@ build() {
   # https://bugs.gentoo.org/704322
   export CXXFLAGS="$CXXFLAGS -fpermissive"
   cmake .. \
+	-DENABLE_GENERIC=1 \
   	-DCMAKE_BUILD_TYPE=Release \
   	-DCMAKE_INSTALL_PREFIX=/usr \
   	-DLIBDSDCC_INCLUDE_DIR=/usr/include/dsdcc \

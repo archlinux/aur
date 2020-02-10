@@ -1,7 +1,7 @@
 pkgbase = sdrangel-git
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
 	pkgver = 4.13.0.r0.583a144c6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
 	arch = i686
