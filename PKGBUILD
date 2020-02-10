@@ -4,7 +4,7 @@
 pkgname=cameracontrol-bin
 pkgalias=cameracontrol
 _realname=CameraControl
-pkgdesc="Έλεγχος webcam και camera και μικροφώνου για Linux - Webcam and camera and microphone control for Linux"
+pkgdesc="Camera Control for Linux / Audio Control - Έλεγχος camera / μικροφώνου για Linux"
 pkgver=1.3
 pkgrel=1
 pkgbase=cameracontrol-bin
