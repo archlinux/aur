@@ -11,7 +11,7 @@ url="https://github.com/impallari"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://codeload.github.com/impallari/Cabin/zip/master")
 md5sums=('d802f38fbc80f76dd4f2cff67c0e536f')
 
