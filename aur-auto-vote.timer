@@ -1,6 +1,5 @@
 [Unit]
 Description=Weekly vote on installed and uninstalled AUR packages
-Unit=aur-auto-vote.service
 
 [Timer]
 OnCalendar=weekly

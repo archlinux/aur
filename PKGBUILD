@@ -3,7 +3,7 @@
 pkgname=aur-auto-vote-git
 _pkgname=${pkgname%-git}
 _reponame=bin
-pkgver=53.d330cce
+pkgver=144.3ea89cc
 pkgrel=1
 pkgdesc="Automates voting on installed and uninstalled AUR packages"
 arch=('any')
@@ -15,7 +15,7 @@ source=("git+https://github.com/cryzed/bin.git"
         "aur-auto-vote.timer")
 md5sums=('SKIP'
          '7496d1d73a29a477a532d682d8715084'
-         'f940f9816e5013c197d075d62c3cf64a')
+         '0b990cd54f3524b4acbd59ba25adac7f')
 install="${pkgname}.install"
 
 pkgver() {
