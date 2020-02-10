@@ -1,7 +1,7 @@
 pkgbase = nodejs-csscomb
 	pkgdesc = Coding style formatter for CSS
 	pkgver = 4.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/csscomb/csscomb.js
 	arch = any
 	license = MIT
