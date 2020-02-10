@@ -1,0 +1,16 @@
+pkgbase = python2-reportlab
+	pkgdesc = A proven industry-strength PDF generating solution
+	pkgver = 3.5.34
+	pkgrel = 1
+	url = http://www.reportlab.com/
+	arch = x86_64
+	license = BSD
+	makedepends = python2-distribute
+	depends = freetype2
+	depends = python2-pip
+	depends = python2-pillow
+	source = https://files.pythonhosted.org/packages/0f/0b/bce8f4a6641c30889fd82b50665f0f7521d633bfd3360af2c11b8b2200af/reportlab-3.5.34.tar.gz
+	md5sums = 77d37a7f9f785b3666206de0fbc44aab
+
+pkgname = python2-reportlab
+
