@@ -3,16 +3,17 @@
 
 pkgname=sdrangel-git
 _pkgname=${pkgname%-git}
-pkgver=4.4.5.r2.b8ed5a77
+pkgver=4.13.0.r0.583a144c6
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
 license=('GPL3')
-depends=('pkg-config' 'log4cpp' 'opencv' 'fftw'  'ffmpeg'
+depends=('pkg-config' 'log4cpp' 'opencv' 'fftw' 'ffmpeg'
          'cm256cc' 'dsdcc' 'pulseaudio' 'lz4' 'nanomsg'
-         'qt5-base' 'qt5-tools' 'qt5-multimedia') # QT5
-makedepends=('git' 'cmake' 'ffmpeg' 'airspy' 'bladerf' 'hackrf' 'limesuite' 'rtl-sdr' 'boost')
+         'limesuite'
+         'qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-websockets') # QT5
+makedepends=('git' 'cmake' 'airspy' 'bladerf' 'hackrf' 'rtl-sdr' 'boost')
 optdepends=('ffmpeg: DATV demodulator'
             'libmirisdr4: SDRPlay support'
             'rtl-sdr: RTLSDR support'
@@ -26,7 +27,7 @@ conflicts=("sdrangel")
 source=("git+$url"
         'sdrangel-opencv4.patch')
 sha512sums=('SKIP'
-            '8c516f85862fa4d79acfc3c4dd54a9cbdc0b53745d611651a741f5c1239f0ded2ca62121361ca5ccf62146f457bb598e4b7036f6a1decb64d86cdc51b6ec1203')
+            'e27b43c8565cc03b8ec66e17e5429c29add8b9e1f1bdaebbbd75442fe08721fc6c89dbb478f8642146f2293962c639a36efdb6aa0276e54930f0745106ae8dda')
 
 pkgver() {
   cd $_pkgname
@@ -36,7 +37,6 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  sed -i 's|sdrangel_icon.xpm|sdrangel.xpm|' desktop/sdrangel.desktop
   patch -p1 < ../sdrangel-opencv4.patch # Fix build with openCV 4
 }
 
@@ -44,6 +44,8 @@ build() {
   mkdir -p $_pkgname/build
   cd $_pkgname/build
 
+  # https://bugs.gentoo.org/704322
+  export CXXFLAGS="$CXXFLAGS -fpermissive"
   cmake .. \
   	-DCMAKE_BUILD_TYPE=Release \
   	-DCMAKE_INSTALL_PREFIX=/usr \
@@ -57,9 +59,5 @@ package() {
   cd $_pkgname/build
 
   make DESTDIR="$pkgdir" install
-
-  # Install .desktop file
-  install -Dm 644 ../desktop/sdrangel_icon.xpm "$pkgdir"/usr/share/pixmaps/sdrangel.xpm
-  install -Dm 644 ../desktop/sdrangel.desktop "$pkgdir"/usr/share/applications/adrangel.desktop
 }
 
