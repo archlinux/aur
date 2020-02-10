@@ -1,6 +1,6 @@
 pkgbase = vidify
 	pkgdesc = Watch live music videos for the songs playing on your device
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/vidify/vidify
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = vidify
 	depends = python-pyqtwebengine
 	depends = python-qtpy
 	optdepends = vidify-audiosync: audio synchronization extension
-	source = https://github.com/vidify/vidify/releases/download/2.0.2/vidify-2.0.2.tar.gz
-	md5sums = 9a84df96251afd1a336615a8aca79ba4
+	source = https://github.com/vidify/vidify/releases/download/2.0.3/vidify-2.0.3.tar.gz
+	md5sums = 143aebac67c8b8c5e869f3b454c43391
 
 pkgname = vidify
 
