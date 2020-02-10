@@ -5,7 +5,7 @@
 
 pkgname=python-poppler-qt5
 pkgver=0.75.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
 url="https://github.com/frescobaldi/$pkgname"
@@ -14,6 +14,11 @@ depends=('python-pyqt5' 'poppler-qt5')
 makedepends=('python-sip' 'sip' 'python-setuptools')
 source=("https://github.com/frescobaldi/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('92e6bd8f4ce90ba4e3e0c2ada026b643481ba1b109d45e8fdbdaedca8416a995')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
 
 package() {
     cd "$pkgname-$pkgver"
