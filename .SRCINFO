@@ -1,5 +1,5 @@
 pkgbase = kadnode
-	pkgdesc = A P2P based DNS resolver
+	pkgdesc = P2P DNS with content key, crypto key and PKI support. DynDNS alternative.
 	pkgver = 2.3.0
 	pkgrel = 1
 	url = http://github.com/mwarning/KadNode

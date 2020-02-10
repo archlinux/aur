@@ -4,7 +4,7 @@ pkgname=kadnode
 pkgver=2.3.0
 pkgrel=1
 
-pkgdesc="A P2P based DNS resolver"
+pkgdesc="P2P DNS with content key, crypto key and PKI support. DynDNS alternative."
 arch=('x86_64' 'i686')
 url="http://github.com/mwarning/KadNode"
 license=('MIT')
