@@ -1,7 +1,7 @@
 # Maintainer: hashworks <mail@hashworks.net>
 pkgname=zimwriterfs
-pkgver=1.3.7
-pkgrel=3
+pkgver=1.3.8
+pkgrel=1
 pkgdesc="A tool for creating ZIM files based on contents on a local filesystem"
 license=('GPL3')
 arch=('any')
@@ -9,7 +9,7 @@ depends=('libzim>=6.0.1' 'gumbo-git' 'xapian-core')
 makedepends=('meson')
 url='https://github.com/openzim/zimwriterfs'
 source=("https://github.com/openzim/zimwriterfs/archive/${pkgver}.tar.gz")
-sha256sums=(d55e13194e29100bf88bb201c5661ab7d2600a9e45c6caeb2a21647cdbf6cb4e)
+sha256sums=(8074fe6cb5906764efc21e1341d2c825ce0bf55c97a9c5de3931ee565280e256)
 
 build() {
 	cd "${pkgname}-${pkgver}"
