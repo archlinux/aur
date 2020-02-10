@@ -2,7 +2,7 @@
 
 pkgname=ifmetric
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to adjust the routing metric for a network interface"
 arch=("x86_64")
 url="http://0pointer.de/lennart/projects/ifmetric/"
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    ./configure --prefix=/usr --sbindir=/usr/bin --disable-static
+    ./configure --prefix=/usr --sbindir=/usr/bin --disable-static --disable-lynx
     make
 }
 

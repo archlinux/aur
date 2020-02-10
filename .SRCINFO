@@ -1,7 +1,7 @@
 pkgbase = ifmetric
 	pkgdesc = A tool to adjust the routing metric for a network interface
 	pkgver = 0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://0pointer.de/lennart/projects/ifmetric/
 	arch = x86_64
 	license = GPL2
