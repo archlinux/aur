@@ -1,7 +1,7 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coreemu/core/
 	arch = i686
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = core
 	depends = python-lxml
 	depends = python-netaddr
 	depends = python-pillow
+	depends = python-yaml
 	depends = tkimg
 	depends = util-linux
 	depends = xterm
