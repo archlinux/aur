@@ -1,6 +1,7 @@
 pkgbase = lua-testmore
+	pkgdesc = A Lua port of the Perl Test::More unit testing framework
 	pkgver = 0.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/fperrad/lua-TestMore
 	arch = any
 	license = MIT
