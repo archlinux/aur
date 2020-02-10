@@ -1,7 +1,7 @@
 pkgbase = nodejs-less-plugin-autoprefix
 	pkgdesc = Uses autoprefixer to add prefixes to css after conversion from less
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://lesscss.org
 	arch = any
 	license = Apache 2.0
