@@ -1,8 +1,8 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 
 pkgname=kadnode
-pkgver=2.2.5
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 
 pkgdesc="A P2P based DNS resolver"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('mbedtls')
 
 source=("https://github.com/mwarning/KadNode/archive/v${pkgver}.tar.gz")
-md5sums=('ef37043dac33334a1c5407aa3a3512da')
+md5sums=('4a39a84be9573bf014b88d1ae7adc823')
 
 backup=('etc/kadnode/kadnode.conf' 'etc/kadnode/peers.txt')
 install="kadnode.install"
