@@ -12,7 +12,7 @@ arch=('any')
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-allerta')
-install=updatefont.install
+#install=updatefont.install
 source=("http://pixelspread.com/allerta/allerta.zip")
 md5sums=('944ee51768a80bdbe822c2c2f0b8d6a1')
 
