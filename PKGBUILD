@@ -3,7 +3,7 @@ _program=alpine-make-oci
 _coder=DanielDavis5
 
 pkgname="$_program"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Creates an OCI compliant Alpine Linux container image."
 arch=('any')
@@ -24,4 +24,4 @@ package() {
     DESTDIR="$pkgdir" ninja -C build install
 }
 
-md5sums=('7508fb2230fd14cc5e84c9f2586d7f77')
+md5sums=('8ba98041609850ce265da29069be9e08')
