@@ -1,8 +1,8 @@
 pkgbase = league-fonts
-	pkgdesc = A package depending on all the fonts from The League Of The Moveable Type
+	pkgdesc = A package depending on all the fonts from The League of Moveable Type
 	pkgver = 20171115
 	pkgrel = 2
-	url = http://theleagueofmoveabletype.com
+	url = https://www.theleagueofmoveabletype.com
 	arch = any
 	license = custom:OFL
 	depends = ttf-league-spartan

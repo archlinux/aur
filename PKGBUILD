@@ -4,9 +4,9 @@
 pkgname=league-fonts
 pkgver=20171115
 pkgrel=2
-pkgdesc='A package depending on all the fonts from The League Of The Moveable Type'
+pkgdesc='A package depending on all the fonts from The League of Moveable Type'
 arch=('any')
-url='http://theleagueofmoveabletype.com'
+url='https://www.theleagueofmoveabletype.com'
 license=('custom:OFL')
 depends=('ttf-league-spartan'
          'ttf-blackout'
@@ -31,4 +31,3 @@ sha256sums=()
 package() {
   :
 }
-
