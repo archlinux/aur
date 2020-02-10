@@ -3,16 +3,15 @@
 
 pkgname=ices0
 _pkgname=ices
-pkgver=0.4
+pkgver=0.4.11
 pkgrel=1
 pkgdesc="Source client for broadcasting in MP3 format to an Icecast2 server"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="http://icecast.org/ices.php"
 depends=('libxml2' 'lame' 'libvorbis' 'libshout' 'python2' 'perl')
-source=(http://downloads.us.xiph.org/releases/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('d31450c4011561dae0229f071cb41cb6')
-sha1sums=('427f39d3ac4a45e84222c8f8a4007767a754749c')
+source=(https://github.com/Moonbase59/ices0/archive/v${pkgver}.tar.gz)
+sha512sums=('d31450c4011561dae0229f071cb41cb6')
 options=('!docs')
 install=$pkgname.install
 
