@@ -1,4 +1,4 @@
-pkgbase = kappa-launcher
+pkgbase = kappa-launcher-git
 	pkgdesc = Twitch launcher using rofi
 	pkgver = r35.8e6c834
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = kappa-launcher
 	source = git://github.com/jp1995/kappa-launcher.git
 	sha1sums = SKIP
 
-pkgname = kappa-launcher
+pkgname = kappa-launcher-git
 
