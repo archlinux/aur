@@ -4,7 +4,7 @@
 # Contributor: Robert Emil Berge <robert@rebi.no>
 
 pkgname=jack-dbus
-pkgver=0.124.1
+pkgver=0.125.0
 pkgrel=4
 
 pkgdesc="The Jack1 audio server with dbus patch"
@@ -19,15 +19,17 @@ optdepends=('libffado: FireWire support' 'celt: NetJACK driver')
 provides=("jack=$pkgver" 'jackdbus')
 conflicts=('jack' 'jack2' 'jack2-dbus')
 
-source=("$pkgname::git://github.com/LADI/jack1"
+source=("$pkgname::git://github.com/jackaudio/jack1"
         'tools-git::git://github.com/jackaudio/tools.git'
         'example-clients-git::git://github.com/jackaudio/example-clients.git'
         '99-audio.conf'
         '40-hpet-permissions.rules')
 
-md5sums=('SKIP' 'SKIP' 'SKIP'
-         'ae65b7c9ebe0fff6c918ba9d97ae342d'
-         '471aad533ff56c5d3cbbf65ce32cadef')
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'c21f593d46ff12d1b8d3ce7ca4593c230a673e67ed4e486944f52fd51bdf902873d3fb253220c8ec9c6c5d5b9f002ecf3dd72318222cd748b1925bfcbf1df5d7'
+            '1f876aa61de4bc4e54d46dde7f8c8c2aa575fc382c09f3dc6819c328224b1998c7171cfd3039d35ca214e40909ad71f8d56a9b3b5652046beb5ca97e44a780b1')
 
 prepare() {
   cd "$pkgname"
