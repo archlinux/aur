@@ -1,6 +1,6 @@
 pkgbase = byobu
 	pkgdesc = Enhanced profile and useful notifications for tmux/screen
-	pkgver = 5.130
+	pkgver = 5.131
 	pkgrel = 1
 	url = https://launchpad.net/byobu
 	install = byobu.install
@@ -11,9 +11,9 @@ pkgbase = byobu
 	depends = python
 	depends = tmux
 	optdepends = screen: alternative back-end for byobu (default: tmux)
-	source = https://launchpad.net/byobu/trunk/5.130/+download/byobu_5.130.orig.tar.gz
+	source = https://launchpad.net/byobu/trunk/5.131/+download/byobu_5.131.orig.tar.gz
 	source = gnome3_desktop_application_not_starting.patch
-	md5sums = cb2a78c9a56ccf8bca4a15274f369cbd
+	md5sums = 633e3c74f894c44d9fa927e2b8c0b876
 	md5sums = 23db3b90ae454c00384fcd3af8ad3020
 
 pkgname = byobu
