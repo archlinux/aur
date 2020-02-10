@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Morata <nahuelmorata@gmail.com>
 # Contributor: Christoph Hoopmann <choopm at 0pointer.org>
 pkgname=codeigniter
-pkgver=3.1.6
+pkgver=3.1.11
 pkgrel=1
 pkgdesc="An object-oriented web-application framework for PHP projects"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('php')
 source=("codeigniter-create-project" "https://github.com/bcit-ci/CodeIgniter/archive/$pkgver.zip")
 
 sha256sums=('b938a7c8f789402f0f97f2a18ce54d2cc9e7f89837d5c7b4e678a1ac1668b56b'
-            '2024ca884444c769c755bc20ba1cd16269ca090a3a626e51954de108221d41e4')
+            '03ef0b3788ef67f1b21e811bbeb20dab04ed1179c890b1bed347c8cc8f714e77')
 build() {
     true
 }
