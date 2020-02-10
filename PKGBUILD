@@ -1,6 +1,6 @@
 # Maintainer: Michael Clayfield <me@michaelclayfield.com>
 pkgname=alerta
-pkgver=7.4.1
+pkgver=7.4.4
 pkgrel=1
 pkgdesc="A tool used to consolidate and de-duplicate alerts from multiple sources"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('python-psycopg2' 'postgresql' 'mongodb')
 source=("https://github.com/alerta/alerta/archive/v$pkgver.tar.gz"
 	"${pkgname}d.service"
 	"${pkgname}.sysusers")
-sha256sums=('ec85df1e61121a03d8fb84526c0665823ebe4b378e8e3d18f16ecca929d48ba5'
+sha256sums=('8b14eefc0c75311fe76bc325f52374d6fc4ef4dcc9a5a94a74f5c6af731128fd'
             '4449acb346807229e4cbfeed68d9ba6006a165e65dec09487fb6e627088016c2'
             'f0a2f76266ba07275ab2baeab1497dfb2946305e85ae68e3b34dd14e2ac47423')
 
