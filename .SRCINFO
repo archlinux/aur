@@ -1,8 +1,8 @@
 pkgbase = charybdis
 	pkgdesc = A highly scalable IRCv3-compliant IRCd
 	pkgver = 4.1.2
-	pkgrel = 2
-	url = https://https://charybdis-ircd.github.io/
+	pkgrel = 3
+	url = https://charybdis-ircd.github.io/
 	install = charybdis.install
 	arch = i686
 	arch = x86_64

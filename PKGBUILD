@@ -6,9 +6,9 @@
 _pkgname=charybdis
 pkgname=charybdis
 pkgver=4.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A highly scalable IRCv3-compliant IRCd'
-url='https://https://charybdis-ircd.github.io/'
+url='https://charybdis-ircd.github.io/'
 license=('GPL2')
 options=('!strip')
 install=charybdis.install
