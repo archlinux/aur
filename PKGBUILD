@@ -12,9 +12,9 @@ url="http://www.impallari.com/projects/overview/${_font}/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("New_Rocker.zip::https://fonts.google.com/download?family=New%20Rocker")
-md5sums=('447c5e7bde1c79d779ea3ff7e1f764d3')
+md5sums=('8187b82ba8976f254a443bf169b80097')
 
 package() {
   cd ${srcdir}
