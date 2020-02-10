@@ -1,13 +1,12 @@
 pkgbase = bpkg
 	pkgdesc = build2 package manager
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://build2.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = libbpkg>=0.12
-	depends = libbpkg<0.12
 	depends = sqlite>=3.18
 	source = https://download.build2.org/0.12.0/build2-toolchain-0.12.0.tar.xz
 	sha512sums = fa59e86925b4d64bf22dea01af1fec2772e59dee467129f29e69921e4faacc5d6f1ad51341179ad48ad00181ef74400e8590a2b62031040df400c6210c242359

@@ -1,13 +1,14 @@
-# Maintainer: Filipe Verri <filipeverri@gmail.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Previous maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=bpkg
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="build2 package manager"
 arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT')
-depends=('libbpkg>=0.12' 'libbpkg<0.12' 'sqlite>=3.18')
+depends=('libbpkg>=0.12' 'sqlite>=3.18')
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
 sha512sums=('fa59e86925b4d64bf22dea01af1fec2772e59dee467129f29e69921e4faacc5d6f1ad51341179ad48ad00181ef74400e8590a2b62031040df400c6210c242359')
 
