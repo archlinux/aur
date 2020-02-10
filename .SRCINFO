@@ -1,7 +1,7 @@
 pkgbase = gitlab-ee
 	pkgdesc = Project management and code hosting application
 	pkgver = 12.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitlab
 	install = gitlab.install
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = gitlab-ee
 	optdepends = smtp-server: mail server in order to receive mail notifications
 	provides = gitlab
 	conflicts = gitlab
+	noextract = gitlab-ee-12.7.5.tar.gz
 	options = !buildflags
 	backup = etc/webapps/gitlab/application.rb
 	backup = etc/webapps/gitlab/gitlab.yml

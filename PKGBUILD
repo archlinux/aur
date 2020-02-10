@@ -14,7 +14,7 @@
 _pkgname=gitlab
 pkgname=$_pkgname-ee
 pkgver=12.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management and code hosting application"
 arch=('x86_64')
 url="https://gitlab.com/gitlab-org/gitlab"
@@ -55,23 +55,25 @@ sha512sums=('c624549b782fcc8911a95cbe1272fb94f79ab4718847b3d5df8d788f3a911a8d33b
             'abacbff0d7be918337a17b56481c84e6bf3eddd9551efe78ba9fb74337179e95c9b60f41c49f275e05074a4074a616be36fa208a48fc12d5b940f0554fbd89c3'
             '88e199d2f63e4f235930c35c6dfde80e6010e590907bd4de0af1fbfe6d5491ff56845aefcfe8edefa707712bd84fef96880655747b8bfb949ceeadc0456b0121'
             '0cc5c1df3cd18978df9a01bb64680d3a375c1ff4de6a453045dd26355777b4f08e3a05f55f035c8012a9683100de0bc3d11c280debcb343eb7167fc25342d5c0')
+noextract=("${pkgname}-${pkgver}.tar.gz")
 
 _datadir="/usr/share/webapps/${_pkgname}"
 _etcdir="/etc/webapps/${_pkgname}"
 _homedir="/var/lib/${_pkgname}"
 _logdir="/var/log/${_pkgname}"
 _srcdir="$_pkgname"
+_pkgdir="${pkgname}-${pkgver}"
 
 prepare() {
-  # Get first 7 characters from sha1 which has 40 characters in total
-  local revision=$(ls -d ${_srcdir}* | rev | cut -c 34-40 | rev)
+  mkdir -p "${_pkgdir}"
+  bsdtar --strip-components 1 --cd "${_pkgdir}" -xf "${source[0]%%::*}"
 
-  cd "${_srcdir}"
+  cd "${_pkgdir}"
 
   patch -p1 < ../build_fix.patch
 
   # GitLab tries to read its revision information from a file.
-  echo "${revision}" > REVISION
+  bsdtar -tvf "${srcdir}/${source[0]%%::*}" | head -n1 | cut -d- -f5 | cut -c1-7 > REVISION
 
   export SKIP_STORAGE_VALIDATION='true'
 
@@ -119,7 +121,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_srcdir}"*
+  cd "${_pkgdir}"
 
   echo "Fetching bundled gems..."
   # Gems will be installed into vendor/bundle
@@ -149,7 +151,8 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_srcdir}"*
+  cd "${_pkgdir}"
+
   depends+=('gitlab-shell')
 
   install -d "${pkgdir}/usr/share/webapps"
