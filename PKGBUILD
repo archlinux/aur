@@ -1,0 +1,27 @@
+# Maintainer: Mario O.M. <marioortizmanero@gmail.com>
+pkgname=vidify
+pkgver=2.0
+pkgrel=1
+pkgdesc="Watch live music videos for the songs playing on your device"
+arch=("any")
+url="https://github.com/vidify/vidify"
+license=("LGPL")
+depends=("python" "glib2" "python-gobject" "gtk3" "youtube-dl" "python-vlc"
+         "python-lyricwikia" "python-pydbus" "python-tekore"
+         "python-qdarkstyle" "python-appdirs" "python-pyqt5"
+         "python-pyqtwebengine" "python-qtpy")
+optdepends=("python-mpv: support for the mpv player")
+optdepends=("vidify-audiosync: audio synchronization extension")
+makedepends=("python-setuptools")
+source=("https://github.com/vidify/vidify/archive/$pkgver.tar.gz")
+md5sums=('c83a9a17ce821b56e91c456f1bddc883')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
