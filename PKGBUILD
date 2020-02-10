@@ -1,4 +1,5 @@
-# Maintainer: Filipe Verri <filipeverri@gmail.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Previous maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2-toolchain
 pkgver=0.12.0
