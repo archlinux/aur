@@ -14,7 +14,7 @@ groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('otf-raleway' 'ttf-impallari-raleway-family')
 provides=('otf-raleway')
-install=updatefont.install
+#install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/Raleway/archive/master.zip")
 md5sums=('643bfae379a973891fd5251db6f6b7a9')
 
