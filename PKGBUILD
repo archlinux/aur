@@ -9,10 +9,10 @@ pkgver=2.9
 pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=('i686' 'x86_64' 'armv7h')
-url='http://www.pjsip.org/'
+url='https://www.pjsip.org/'
 license=('GPL')
 makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp' 'openssl' 'opus' 'portaudio' 'python' 'speex' 'swig' 'util-linux')
-source=("http://www.pjsip.org/release/$pkgver/$pkgname-$pkgver.tar.bz2"
+source=("https://www.pjsip.org/release/$pkgver/$pkgname-$pkgver.tar.bz2"
         0001-Don-t-build-Java-bindings.patch
         0002-Query-python-executable-for-actual-version-in-use.patch)
 md5sums=('66757078e7bd7cf316acb0425c2fdd6f'
