@@ -1,5 +1,6 @@
 # Maintainer: Lucki <https://aur.archlinux.org/account/Lucki>
 # Contributor: Carl Reinke <mindless2112 gmail com>
+# shellcheck disable=SC2034,2154
 
 pkgname=lix-git
 _pkgname=${pkgname%-git}
@@ -9,29 +10,13 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/SimonN/lix-unstable.git")
 sha512sums=('SKIP')
-
-pkgver()
-{
-    # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-    cd "$pkgname" || exit
-    (
-        set -o pipefail
-
-        # version with unix committer date to bypass git squashes
-        printf "%s.r%s.%s" \
-            "$(< src/net/version.d sed -rn 's/.*_gameVersion = Version\(([0-9]+), ([0-9]+), ([0-9]+)\).*/\1.\2.\3/p')" \
-            "$(git show -s --format=%ct HEAD)" \
-            "$(git rev-parse --short HEAD)"
-    )
-}
-
 pkgdesc="An action-puzzle game inspired by Lemmings"
 arch=('i686' 'x86_64')
 url="http://www.lixgame.com/"
 license=('custom:CC0')
 depends=('allegro' 'enet' 'hicolor-icon-theme' 'liblphobos')
 makedepends=('git' 'ldc' 'dub')
-_dubv=(	"4.0.4+5.2.0"   # allegro
+_dubv=( "4.0.4+5.2.0"   # allegro
         "0.7.1"         # bolts
         "4.1.0"         # derelict-enet
         "3.0.0-beta.2"  # derelict-util
@@ -79,8 +64,21 @@ sha512sums+=(   'SKIP'
                 'SKIP'
                 )
 
-_build()
-{
+pkgver() {
+    # https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+    cd "$pkgname" || exit
+    (
+        set -o pipefail
+
+        # version with unix committer date to bypass git squashes
+        printf "%s.r%s.%s" \
+            "$(<src/net/version.d sed -rn 's/.*_gameVersion = Version\(([0-9]+), ([0-9]+), ([0-9]+)\).*/\1.\2.\3/p')" \
+            "$(git show -s --format=%ct HEAD)" \
+            "$(git rev-parse --short HEAD)"
+    )
+}
+
+_build() {
     _r=0
 
     # add local dependencies to search path
@@ -97,7 +95,8 @@ _build()
             --compiler=ldc \
         `# force FHS compatibility:` \
             --build=releaseXDG \
-        || _r="$?"
+        `# Save result code for later when failed:` \
+            || _r="$?"
 
     # remove local dependencies from search path so dub won't find them
     # later again
@@ -107,27 +106,23 @@ _build()
     # and their latest version
     dub clean-caches
 
-    if [[ "$_r" != 0 ]]
-    then
+    if [[ "$_r" != 0 ]]; then
         # dub failed so we also fail after we removed the local dependencies
         return "$_r"
     fi
 }
 
-build()
-{
+build() {
     cd "$pkgname" || exit
     _build build
 }
 
-check()
-{
+check() {
     cd "$pkgname" || exit
     _build test
 }
 
-package()
-{
+package() {
     # install application entry
     install -Dm644 \
         `# SRCFILE:` \
