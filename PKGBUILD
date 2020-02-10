@@ -3,9 +3,9 @@
 
 pkgname=biglybt
 pkgver=2.2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
-arch=('x86_64')
+arch=('x86_64' 'armv7h')
 url="https://www.biglybt.com/"
 license=('GPL3')
 depends=('desktop-file-utils' 'xdg-user-dirs' 'java-runtime>=8')
