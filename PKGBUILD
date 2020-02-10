@@ -1,3 +1,4 @@
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
 # Maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=libbutl
