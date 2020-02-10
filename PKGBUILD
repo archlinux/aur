@@ -11,13 +11,13 @@ url="http://www.impallari.com/${_font}/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=(
   "Lobster_Two.zip::https://fonts.google.com/download?family=Lobster%20Two"
 #  "https://googlefontdirectory.googlecode.com/hg/ofl/lobstertwo/FONTLOG.txt"
   )
 md5sums=(
-  'e916a848304ef65cbf852a793e8ef2c4'
+  'a29e870297c1f120b89d50fcd28cd0a5'
 #  '72c6cb64d60499ef3b5716cd2925705d'
   )
 
