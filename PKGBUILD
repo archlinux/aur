@@ -1,7 +1,7 @@
 # Maintainer: Tobias Martin <tm-x at gmx dot net>
 
 pkgname=cni
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=2
 pkgdesc="Specification and libraries for writing plugins to configure network interfaces in Linux containers"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 depends=('glibc')
 source=("https://github.com/containernetworking/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('3b5b35ed546f82a939b3090ac49d2f7ab0542a079d0f45b0dd9b45cf4849abb6c10fbcb810b7567a7a15d6b8144f5b3962bfca319a37342c5bc39f5fa58f0777')
+sha512sums=('ca97ad8cd693a50c7c793266e23c2c38c4cb6917dc38c68f88921f48daf437375aa2d347eba70c8dc4e08ba6e6f008e0164282029fa36aab98417e763eb29285')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
