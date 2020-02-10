@@ -2,13 +2,13 @@
 # Maintainer: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mindforger
-pkgver=1.49.2
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://www.mindforger.com/"
 license=(GPL2)
-depends=(qt5-webkit)
+depends=(qt5-base qt5-webkit zlib)
 makedepends=(git cmake)
 source=("git+https://github.com/dvorka/mindforger.git#tag=$pkgver"
         "git+https://github.com/dvorka/mindforger-repository.git"
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
 prepare() {
   cd "$pkgname"
   git submodule init
-  git config 'submodule.doc/mindforger-repository.url' "${srcdir}/mindforger-repository"
+  git config 'submodule.doc.url' "${srcdir}/mindforger-repository"
   git config 'submodule.deps/discount.url' "${srcdir}/mindforger-discount"
   git config 'submodule.deps/mitie.url' "${srcdir}/mindforger-MITIE"
   git config 'submodule.deps/cmark-gfm.url' "${srcdir}/mindforger-cmark"
@@ -50,5 +50,6 @@ package() {
   cd "$srcdir/$pkgname"
   make INSTALL_ROOT="$pkgdir" install
   # Remove package-specific static lib $pkgdir/usr/lib/libdiscount.a
-  rm -r "$pkgdir/usr/lib"
+  rm "$pkgdir/usr/lib/libdiscount.a"
+  rmdir "$pkgdir/usr/lib"
 }
