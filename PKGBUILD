@@ -11,7 +11,7 @@ url="http://www.impallari.com/lobster/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 #source=("http://www.impallari.com/media/releases/${_font}-${pkgver}.zip")
 #md5sums=('ed3c3873340a17276a8ad556ecf3da5a')
 #source=("${_font}-${pkgver}.zip::https://fonts.google.com/download?family=Lobster")
