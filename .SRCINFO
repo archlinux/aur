@@ -1,0 +1,14 @@
+pkgbase = miopen-deps
+	pkgdesc = AMD's Machine Intelligence Library - dependencies
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/ROCmSoftwarePlatform/MIOpen
+	arch = x86_64
+	license = MIT
+	options = !strip
+	options = staticlibs
+	source = MIOpen-roc-3.0.0.tar.gz::https://github.com/ROCmSoftwarePlatform/MIOpen/archive/roc-3.0.0.tar.gz
+	sha256sums = 7a5e7b6dca1e70d70683c1403d63128e739fe63a7f68d6c9fc7f9a7af1465a5c
+
+pkgname = miopen-deps
+
