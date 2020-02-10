@@ -10,8 +10,8 @@ license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=(
-  'rofi-git'
-  'jq-git'
+  'rofi'
+  'jq'
   'streamlink-git'
   )
 optdepends=(
