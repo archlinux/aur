@@ -2,7 +2,7 @@
 # Maintainer: Emanuel Couto <unit73e at gmail dot com>
 
 pkgname=hdevtools
-pkgver=0.1.6.1
+pkgver=0.1.8.0
 pkgrel=1
 pkgdesc="A backend for text editor plugins for Haskell"
 url="https://github.com/hdevtools/hdevtools/"
@@ -12,7 +12,7 @@ depends=('ghc' 'haskell-cmdargs' 'haskell-system-filepath' 'haskell-ghc-paths'
          'haskell-network' 'haskell-syb')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e7e46acf4a6567159e431739f4c4103b91eae257394560e4b1aaa8e427393440')
+sha256sums=('2e6685a5c3fb97047997b0490623d1023cc7e2d7226e37e3e229f77968c03c98')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
