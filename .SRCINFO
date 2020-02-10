@@ -1,6 +1,6 @@
 pkgbase = distrho-lv2-git
 	pkgdesc = Distrho LV2 Audio Plugins, using the JUCE Toolkit
-	pkgver = r417.7e62235e
+	pkgver = r427.45189f72
 	pkgrel = 1
 	url = http://distrho.sourceforge.net/
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = distrho-lv2-git
 	makedepends = libxrender
 	makedepends = libxcursor
 	makedepends = ladspa
-	makedepends = clang
 	depends = gcc-libs
 	depends = lv2
 	depends = libxext
