@@ -12,6 +12,8 @@ pkgbase = kappa-launcher-git
 	optdepends = chatterino: chat client
 	optdepends = chatty: alternative chat client
 	optdepends = xdg-utils: browser function
+	provides = kappa-launcher
+	conflicts = kappa-launcher
 	source = git://github.com/jp1995/kappa-launcher.git
 	sha1sums = SKIP
 

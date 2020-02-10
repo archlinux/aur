@@ -1,5 +1,6 @@
  # Maintainer: poncho
 pkgname=kappa-launcher-git
+_pkgname=kappa-launcher
 pkgver=r35.8e6c834
 pkgrel=1
 pkgdesc="Twitch launcher using rofi"
@@ -23,12 +24,12 @@ source=("git://github.com/jp1995/kappa-launcher.git")
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir/$_pkgname
   install -d $pkgdir/usr/bin
   install -m755 kpl $pkgdir/usr/bin
 }
