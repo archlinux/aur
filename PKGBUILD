@@ -15,8 +15,8 @@
 #     $ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/autoload/wee_slack.py
 
 pkgname=wee-slack
-pkgver=2.3.0
-pkgrel=4
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='A WeeChat plugin for Slack.com'
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
@@ -24,9 +24,7 @@ license=('MIT')
 depends=('weechat' 'python-websocket-client')
 conflicts=('wee-slack-git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/wee-slack/wee-slack/archive/v${pkgver}.tar.gz")
-sha512sums=(
-  '69e9beab24e46e2ab4ce8153a44a34ebd89195c4ad1ac7c5daa7b06711f2d11145e62e957127ff77e096709a0fa6de7772ad5af7d140c04fe7c3dff2102dc04b'
-)
+sha512sums=('2e6d0f0555adc5eec143dd784d360e33c1a93b8cbab92931ee6778663ccc600e4d040d1e8492bc5085597893f6778b47c6f52a7a894c29c6ed796a323ff06d39')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
