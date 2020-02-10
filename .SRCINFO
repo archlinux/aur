@@ -1,6 +1,6 @@
 pkgbase = python-lyricwikia
 	pkgdesc = LyricWikia API for song lyrics
-	pkgver = 0.1.9
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = http://github.com/enricobacis/lyricwikia
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-lyricwikia
 	depends = python-six
 	depends = python-requests
 	depends = python-beautifulsoup4
-	source = https://github.com/enricobacis/lyricwikia/archive/0.1.9.tar.gz
+	source = https://github.com/enricobacis/lyricwikia/archive/0.1.11.tar.gz
 	md5sums = 38cf496f85110964fb303cfa8a4aa26b
 
 pkgname = python-lyricwikia
