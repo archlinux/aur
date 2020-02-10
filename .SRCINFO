@@ -2,7 +2,7 @@ pkgbase = cups-xerox-phaser-6500
 	pkgdesc = CUPS driver for the Xerox Phaser 6500 series
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://www.support.xerox.com/support/phaser-6500/downloads/engb.html?operatingSystem=linux&fileLanguage=en_GB
+	url = https://www.support.xerox.com/support/phaser-6500/downloads/engb.html?operatingSystem=linux&fileLanguage=en_GB
 	arch = i686
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = cups-xerox-phaser-6500
 	makedepends = libtool
 	depends = cups
 	source = http://download.support.xerox.com/pub/drivers/6500/drivers/linux/en_GB/Xerox-Phaser-6500-Linux.rpm
-	md5sums = aad7730c2a9f7f755d66cb477d8f732a
+	sha256sums = 29b46cd1e57463ad4adcfa507bdaecd9fcdbda50fdb4cb34f53164af45dbebcb
 
 pkgname = cups-xerox-phaser-6500
 
