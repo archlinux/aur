@@ -5,9 +5,9 @@
 
 _srcname=libvterm
 pkgname=libvterm-vwm
-pkgver=9.0
+pkgver=9.3
 pkgrel=1
-_commit=65c8fc8ed27f361851b56e613fded1e837e54d62
+_commit=55d7c847ba0fc7859708468da062a8493c3a9eff
 pkgdesc="Terminal emulation library to mimic VT100 and rxvt capabilities"
 arch=('i686' 'x86_64')
 url="https://github.com/TragicWarrior/libvterm"
@@ -17,7 +17,7 @@ makedepends=('cmake' 'git')
 source=("git+https://github.com/TragicWarrior/${_srcname}.git#commit=${_commit}"
         "ncurses-import.patch")
 sha256sums=('SKIP'
-            '43977c763e4f4179d26f1702280bc67bfa3841b775827100c95cd9569b768c22')
+            '90c511a2fa7822813294e215c756691f170c7083c7344135ac6b3ed780e5d4ce')
 
 
 prepare() {

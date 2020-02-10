@@ -69,3 +69,15 @@
  #endif
  
  #ifdef __FreeBSD__
+
+--- libvterm/nc_wrapper.c
++++ libvterm/nc_wrapper.c
+@@ -2,7 +2,7 @@
+ #include <dlfcn.h>
+ 
+ #ifdef __linux__
+-#include <ncursesw/curses.h>
++#include <curses.h>
+ #endif
+ 
+ #ifdef __FreeBSD__
