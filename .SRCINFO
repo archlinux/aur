@@ -26,7 +26,6 @@ pkgbase = brave
 	optdepends = sccache: For faster builds
 	source = git+https://github.com/brave/brave-browser.git#tag=v1.3.114
 	source = brave-vaapi-enable.patch
-	source = chromium-vaapi-fix.patch
 	source = brave-launcher
 	source = brave-browser.desktop
 	source = cros-search-service-Include-cmath-for-std-pow.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/cros-search-service-Include-cmath-for-std-pow.patch?h=packages/chromium&id=530904e0084bde444db4372c1569476654852e6b

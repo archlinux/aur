@@ -37,7 +37,6 @@ optdepends=('cups: Printer support'
             'sccache: For faster builds')
 source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
-        'chromium-vaapi-fix.patch'
         'brave-launcher'
         'brave-browser.desktop')
 arch_revision=530904e0084bde444db4372c1569476654852e6b
@@ -88,7 +87,6 @@ prepare() {
 
     msg2 "Apply Chromium patches..."
     cd src/
-    patch -Np1 -i "${srcdir}/chromium-vaapi-fix.patch"
 
     # https://crbug.com/957519
     patch -Np1 -i "${srcdir}"/cros-search-service-Include-cmath-for-std-pow.patch
