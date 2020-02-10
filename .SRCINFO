@@ -1,0 +1,19 @@
+pkgbase = kappa-launcher
+	pkgdesc = Twitch launcher using rofi
+	pkgver = r35.8e6c834
+	pkgrel = 1
+	url = https://github.com/jp1995/kappa-launcher
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rofi
+	depends = jq
+	depends = streamlink
+	optdepends = chatterino: chat client
+	optdepends = chatty: alternative chat client
+	optdepends = xdg-utils: browser function
+	source = git://github.com/jp1995/kappa-launcher.git
+	sha1sums = SKIP
+
+pkgname = kappa-launcher
+
