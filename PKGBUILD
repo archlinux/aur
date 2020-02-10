@@ -4,7 +4,7 @@
 # Contributor: Andrew Kluger <evilgnome@gmail.com>
 
 pkgname=micro-git
-pkgver=nightly.r84.gc6361421
+pkgver=nightly.r91.g00205aa6
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('xclip: Required for copying/pasting text')
 conflicts=('micro-bin' 'micro' 'micro-nightly-bin')
 provides=('micro')
 source=("${pkgname}"::"git+https://github.com/zyedidia/micro.git")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
