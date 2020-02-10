@@ -24,7 +24,7 @@ sha512sums=('187519194b2b666ad323a50800468e03d13fd52f0b66bef74679d9a40d61263d750
 
 build() {
   cd node-$pkgver
-  patch lib/dns.js < ../../patch.diff
+  patch lib/dns.js < "$srcdir"/../patch.diff
 
   ./configure \
     --prefix=/usr \
