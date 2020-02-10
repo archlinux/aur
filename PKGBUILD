@@ -3,10 +3,10 @@
 
 pkgname=codelite-git
 _gitname=codelite
-pkgver=v12.0.10.r93.gb98f6878b
+pkgver=v12.0.10.r1164.gc53af8dc8
 pkgrel=1
 pkgdesc="A cross platform C/C++/PHP and Node.js IDE written in C++"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.codelite.org/"
 license=('GPL')
 install=codelite-git.install
