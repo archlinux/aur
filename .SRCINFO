@@ -1,8 +1,8 @@
 pkgbase = gtkhtml3
 	pkgdesc = A lightweight HTML renderer/editor widget for GTK2
 	pkgver = 3.32.2
-	pkgrel = 7
-	url = https://github.com/GNOME/gtkhtml
+	pkgrel = 8
+	url = https://gitlab.gnome.org/Archive/gtkhtml
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,8 +15,8 @@ pkgbase = gtkhtml3
 	depends = libsoup
 	conflicts = gtkhtml4
 	replaces = gtkhtml
-	source = http://ftp.gnome.org/pub/gnome/sources/gtkhtml/3.32/gtkhtml-3.32.2.tar.bz2
-	sha256sums = 8746053cf709e1de37c7ac775ab1364ddda4b75167660ed7f98a237b3797e39f
+	source = https://gitlab.gnome.org/Archive/gtkhtml/-/archive/GTKHTML_3_32_2/gtkhtml-GTKHTML_3_32_2.tar.bz2
+	sha256sums = a5b4793d6bcea074d6e06024f6c6fb0310642a48dc99a2e209397df0a4fbebe9
 
 pkgname = gtkhtml3
 
