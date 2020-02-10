@@ -1,4 +1,5 @@
-# Maintainer: Filipe Verri <filipeverri@gmail.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Old maintainer: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=libbpkg
 pkgver=0.12.0
