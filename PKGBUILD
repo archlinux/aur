@@ -1,7 +1,7 @@
 # Maintainer: Samadi van Koten <me at vktec dot co dot uk>
 
 pkgname=ircd-hybrid
-pkgver=8.2.22
+pkgver=8.2.28
 pkgrel=1
 pkgdesc='A lightweight, high-performance internet relay chat daemon.'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=()
 provides=()
 options=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ircd-hybrid/ircd-hybrid/archive/$pkgver.tar.gz")
-md5sums=('SKIP')
+sha512sums=('d354c6dc43614d41995be44049d33395f8bfd025aab5bcb39721d358a06ea9bc03962d3cb8ed985e35b3397c248dd0e09b485343cc9da0934520dace5ec77b94')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

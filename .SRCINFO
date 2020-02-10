@@ -1,14 +1,14 @@
 pkgbase = ircd-hybrid
 	pkgdesc = A lightweight, high-performance internet relay chat daemon.
-	pkgver = 8.2.22
+	pkgver = 8.2.28
 	pkgrel = 1
 	url = http://www.ircd-hybrid.org/
 	arch = i686
 	arch = x86_64
 	license = GPLv2
 	depends = openssl
-	source = ircd-hybrid-8.2.22.tar.gz::https://github.com/ircd-hybrid/ircd-hybrid/archive/8.2.22.tar.gz
-	md5sums = SKIP
+	source = ircd-hybrid-8.2.28.tar.gz::https://github.com/ircd-hybrid/ircd-hybrid/archive/8.2.28.tar.gz
+	sha512sums = d354c6dc43614d41995be44049d33395f8bfd025aab5bcb39721d358a06ea9bc03962d3cb8ed985e35b3397c248dd0e09b485343cc9da0934520dace5ec77b94
 
 pkgname = ircd-hybrid
 
