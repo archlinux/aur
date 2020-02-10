@@ -8,7 +8,17 @@ pkgdesc="Status monitor for Nagios, Icinga, Zabbix and more"
 arch=('any')
 url="https://nagstamon.ifw-dresden.de/"
 license=('MIT')
-depends=('python' 'python-keyring' 'python-beautifulsoup4' 'python-requests-kerberos')
+depends=(
+  'python>=3.8'
+  'python<3.9'
+  'python-keyring'
+  'python-psutil'
+  'python-pyqt5>=5.5'
+  'python-beautifulsoup4'
+  'python-requests'
+  'python-requests-kerberos'
+  'python-lxml'
+  )
 
 source=(https://nagstamon.ifw-dresden.de/files/stable/nagstamon_${pkgver}_all.deb)
 
