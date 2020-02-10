@@ -10,10 +10,10 @@ User=gitlab
 Group=gitlab
 WorkingDirectory=<DATADIR>
 # Prevent ExecJS from complaining that Node is not installed in production
-Environment=RAILS_ENV=production PATH=/opt/ruby2.5/bin:/usr/bin EXECJS_RUNTIME=Disabled
+Environment=RAILS_ENV=production EXECJS_RUNTIME=Disabled
 SyslogIdentifier=gitlab-mailroom
 PIDFile=/run/gitlab/mailroom.pid
-ExecStart=/usr/bin/bundle-2.5 exec mail_room -q -c <DATADIR>/config/mail_room.yml
+ExecStart=/usr/bin/bundle exec mail_room -q -c <DATADIR>/config/mail_room.yml
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 Restart=on-failure
 RestartSec=1
