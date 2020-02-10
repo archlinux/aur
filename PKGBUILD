@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=dv-gui
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Java GUI for iniVation's Dynamic Vision (DV) C++ framework."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("http://release.inivation.com/gui/$pkgname-linux-$pkgver.tar.gz")
 noextract=()
-sha256sums=('32d9317a769595e9479bc10ca61fdb224b033ab9942eb21bebb947331570c749')
+sha256sums=('b609379fbebcdd54d823477276c10b3aea2f7da70e6fdbaf8672e89d243aff4c')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
