@@ -3,9 +3,9 @@
 pkgname=kanban-bin
 pkgver=1.7.1
 pkgrel=1
-pkgdesc="Self hosted Kanban board for GitLab issues (precompiled binary)"
+pkgdesc='Self hosted Kanban board for GitLab issues (precompiled binary)'
 arch=('x86_64')
-url="http://kanban.leanlabs.io/"
+url='https://kanban.leanlabs.io/'
 license=('MIT')
 depends=('redis')
 conflicts=('kanban')
