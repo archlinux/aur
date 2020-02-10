@@ -11,7 +11,7 @@ url="http://www.impallari.com/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("hermeneus_one.zip::https://dl.dafont.com/dl/?f=hermeneus_one")
 md5sums=('03ab2e294830c9820a5a0e408640ed52')
 

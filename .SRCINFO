@@ -3,7 +3,6 @@ pkgbase = ttf-impallari-hermeusone
 	pkgver = 1.002
 	pkgrel = 1
 	url = http://www.impallari.com/
-	install = updatefont.install
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
