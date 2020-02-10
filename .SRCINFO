@@ -14,7 +14,7 @@ pkgbase = kbdd-git
 	depends = dbus-glib
 	provides = kbdd
 	conflicts = kbdd
-	source = git://github.com/qnikst/kbdd
+	source = git+https://github.com/qnikst/kbdd.git
 	md5sums = SKIP
 
 pkgname = kbdd-git

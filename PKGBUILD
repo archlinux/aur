@@ -13,7 +13,7 @@ url="https://github.com/qnikst/kbdd"
 license=('GPL3')
 makedepends=('git' 'automake' 'autoconf' 'python')
 depends=('libx11' 'dbus-glib')
-source=("git://github.com/qnikst/kbdd")
+source=("git+https://github.com/qnikst/kbdd.git")
 md5sums=('SKIP')
 
 build() {
