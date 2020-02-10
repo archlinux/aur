@@ -1,14 +1,15 @@
 pkgbase = satanic-gnome-themes
 	pkgdesc = Themes for Gnome/GTK from Ubuntu Satanic Edition.
-	pkgver = 666.8
+	pkgver = 666.9
 	pkgrel = 1
 	url = http://www.ubuntusatanic.org
 	arch = any
 	license = GPL
+	makedepends = squashfs-tools
 	depends = gtk-engine-aurora
-	depends = satanic-icon-themes
-	source = http://www.ubuntusatanic.org/hell/pool/main/s/satanic-gnome-themes/satanic-gnome-themes_666.8_all.deb
-	md5sums = 515b495d50cf5d6e983aa9246cd2b5a1
+	noextract = satanic-undead-i386-666.9.iso
+	source = https://netix.dl.sourceforge.net/project/archiveos/u/ubuntu-satanic/satanic-undead-i386-666.9.iso
+	sha256sums = dec381affcc91edc0273bfe736da07cb4c7cd2db3e95b6d724735ff8cd73ddfd
 
 pkgname = satanic-gnome-themes
 
