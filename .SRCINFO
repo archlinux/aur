@@ -11,7 +11,7 @@ pkgbase = roberta
 	depends = scummvm
 	depends = inotify-tools
 	optdepends = steam: The Steam client
-	source = git+https://github.com/dreamer/roberta.git#tag=v0.1.0
+	source = https://github.com/dreamer/roberta/releases/download/v0.1.0/roberta.tar.xz
 	sha512sums = SKIP
 
 pkgname = roberta
