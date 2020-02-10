@@ -1,0 +1,16 @@
+pkgbase = nagstamon-stable
+	pkgdesc = Status monitor for Nagios, Icinga, Zabbix and more
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = https://nagstamon.ifw-dresden.de/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-keyring
+	depends = python-beautifulsoup4
+	depends = python-requests-kerberos
+	source = https://nagstamon.ifw-dresden.de/files/stable/nagstamon_3.4.1_all.deb
+	sha256sums = 2197ef8e4fb881fa36e6df8969b32b52450370aa5f47dc39c4373428ce29837b
+
+pkgname = nagstamon-stable
+
