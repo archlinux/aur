@@ -2,13 +2,13 @@
 #Contributor: Maël Leclair <mael.leclair@gmail.com>
 pkgname=grisbi-git
 _pkgname=grisbi
-pkgver=1.9.1.r0.g400f24637
+pkgver=1.9.1.r21.g37d8cf74d
 pkgrel=1
 pkgdesc="Personal financial management program"
 arch=('any')
 url="http://www.grisbi.org"
 license=('GPL')
-depends=('gtk3')
+depends=('gtk3' 'libgsf')
 optdepends=('libofx: for OFX support')
 makedepends=('git' 'intltool')
 provides=('grisbi')
