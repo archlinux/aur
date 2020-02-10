@@ -1,0 +1,14 @@
+post_upgrade() {
+  post_install $1
+}
+
+post_install() {
+  echo ">>> "
+  echo ">>> Have fun playing!"
+  echo ">>> Savegames and config files can be found in ~/.godot/app_userdata/Megaman_RnR/"
+  echo ">>> "
+}
+
+op=$1
+shift
+$op $*
