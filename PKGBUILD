@@ -1,11 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-pkgname='bibledit'
+pkgname=bibledit
 pkgdesc='Linux desktop client relase of bibledit for translating the Bible'
-pkgver='1.0.348'
-pkgrel='0.1'
+pkgver=1.0.348
+pkgrel=0.1
 arch=('any')
-url='http://bibledit.org/'
-license='GPL3'
+url='https://bibledit.org/'
+license=('GPL3')
 source=("http://bibledit.org/linux/$pkgname-$pkgver.tar.gz")
 sha256sums=('43367f64a3c14f2e51227758ee63b2bf6ffe68a8fb3e8a731acf018a1cfbe997')
 depends=('sword' 'sqlite' 'gtk3' 'cairo' 'at-spi2-atk')
