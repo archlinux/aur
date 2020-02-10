@@ -1,4 +1,4 @@
-# Maintainer: Tim Rice < t [dot] rice [at] ms [dot] unimelb [dot] edu [dot] au>
+# Maintainer: omgold@aur
 pkgname=satanic-icon-themes
 pkgver=666.9
 pkgrel=1
@@ -6,25 +6,24 @@ pkgdesc="Icons from Ubuntu Satanic Edition."
 url="http://www.ubuntusatanic.org"
 arch=('any')
 license=('GPL')
-depends=()
 optdepends=()
-makedepends=()
+makedepends=(squashfs-tools)
 conflicts=()
 replaces=()
 backup=()
-source=("$url/hell/pool/main/s/${pkgname}/${pkgname}_${pkgver}_all.deb")
-md5sums=('da67063378ed26a966c6f364e56a1f63')
+_iso_file=satanic-undead-i386-666.9.iso
+source=("https://netix.dl.sourceforge.net/project/archiveos/u/ubuntu-satanic/$_iso_file")
+noextract=($_iso_file)
+
+sha256sums=('dec381affcc91edc0273bfe736da07cb4c7cd2db3e95b6d724735ff8cd73ddfd')
 
 build() {
-  msg "Extracting ... "
-  ar xv ${pkgname}_${pkgver}_all.deb || return 1
-  tar xvf data.tar.gz || return 1
-  msg2 "Done extracting."
+    bsdtar -xf ${_iso_file} casper/filesystem.squashfs
+    rm -rf $srcdir/squashfs-root
+    unsquashfs $srcdir/casper/filesystem.squashfs /usr/share/icons/
 }
 
 package() {
-  msg "Moving files ... "
-  mv $srcdir/usr $pkgdir || return 1
-  msg2 "Done moving files."
+    mkdir -p $pkgdir/usr/share/icons
+    mv $srcdir/squashfs-root/usr/share/icons/{Revenge,Sanguine} $pkgdir/usr/share/icons
 }
-

@@ -5,8 +5,10 @@ pkgbase = satanic-icon-themes
 	url = http://www.ubuntusatanic.org
 	arch = any
 	license = GPL
-	source = http://www.ubuntusatanic.org/hell/pool/main/s/satanic-icon-themes/satanic-icon-themes_666.9_all.deb
-	md5sums = da67063378ed26a966c6f364e56a1f63
+	makedepends = squashfs-tools
+	noextract = satanic-undead-i386-666.9.iso
+	source = https://netix.dl.sourceforge.net/project/archiveos/u/ubuntu-satanic/satanic-undead-i386-666.9.iso
+	sha256sums = dec381affcc91edc0273bfe736da07cb4c7cd2db3e95b6d724735ff8cd73ddfd
 
 pkgname = satanic-icon-themes
 
