@@ -1,6 +1,6 @@
 pkgname=libosp-bin
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HemiStereo sensor libraries"
 arch=('x86_64')
 url="https://3dvisionlabs.com/"
@@ -20,6 +20,8 @@ package() {
     install -m755 "lib/libosp_calib.so" "${pkgdir}/usr/lib/"
     install -m755 "lib/libosp_core.so" "${pkgdir}/usr/lib/"
     install -m755 "lib/libosp_cv.so" "${pkgdir}/usr/lib/"
+    install -m755 "lib/libosp_grpc_server.a" "${pkgdir}/usr/lib/"
+    install -m755 "lib/libosp_grpc_service.a" "${pkgdir}/usr/lib/"
     install -m755 "lib/libosp_io.so" "${pkgdir}/usr/lib/"
     install -m755 "lib/libosp_sdk.so" "${pkgdir}/usr/lib/"
     install -m755 "lib/libosp_types.so" "${pkgdir}/usr/lib/"
