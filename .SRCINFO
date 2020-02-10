@@ -1,6 +1,6 @@
 pkgbase = terra-git
 	pkgdesc = Low-level system programming language that is designed to interoperate seamlessly with the Lua programming language.
-	pkgver = ac615b0
+	pkgver = 0.0.0.r1213.gf6c76fc
 	pkgrel = 1
 	url = http://terralang.org/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = terra-git
 	license = MIT
 	makedepends = git
 	makedepends = wget
-	depends = clang35
-	depends = llvm35
-	source = git://github.com/zdevito/terra
-	md5sums = SKIP
+	makedepends = clang35
+	makedepends = llvm35
+	source = git://github.com/zdevito/terra.git
+	sha256sums = SKIP
 
 pkgname = terra-git
 
