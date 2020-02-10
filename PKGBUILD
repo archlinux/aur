@@ -1,7 +1,7 @@
 # Maintainer: Augustin deMayo <gus.demayo@gmail.com>
 
 pkgname=jammr
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="jammr lets you play with musicians over the internet"
 arch=("i686" "x86_64")
@@ -10,8 +10,8 @@ license=("GPL2")
 depends=("libvorbis" "libogg" "libstdc++296" "portaudio" "portmidi" "qt5-base")
 makedepends=("qt5-base" "portmidi")
 options=("!emptydirs")
-source=("https://codeload.github.com/stefanha/wahjam/tar.gz/${pkgname}-${pkgver}")
-md5sums=("380874966a852279ac0403dee38262f2")
+source=("https://github.com/wahjam/wahjam/archive/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('1172681298275118bd58a469d57df07fb080d43b7e7bc6712a1061ae1d21520b6e9cb99e6671b6590f3721a3c8aaecb5c1869a37e92a4a64a161bb3289657ce0')
 
 build() {
   cd wahjam-jammr-${pkgver}
