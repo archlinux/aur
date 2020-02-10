@@ -1,7 +1,7 @@
 # Maintainer: easymodo <easymodofrf@gmail.com>
 pkgname=qimgv-git
 _pkgname=qimgv
-pkgver=v0.8.8.r12.g6e84931
+pkgver=v0.8.9.r4.g0bd6fb0
 pkgrel=1
 pkgdesc="Qt5 image viewer. Fast, configurable, easy to use. Supports video playback."
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
     cd "${srcdir}/${_pkgname}/build"
     cmake .. \
         -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DCMAKE_INSTALL_LIBDIR:PATH=/usr/lib \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_BUILD_TYPE=Release
     make
 }
