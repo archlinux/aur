@@ -1,12 +1,12 @@
 pkgbase = redelete-bin
 	pkgdesc = Delete all of your reddit comments and submissions, with optional filters to skip certain posts.
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/ardeaf/redelete
 	arch = x86_64
-	license = AGPL-3.0
+	license = MIT
 	depends = gcc-libs
-	source = redelete-v0.2.2-x86_64-unknown-linux-gnu.tar.gz::https://github.com/ardeaf/redelete/releases/download/v0.2.2/redelete-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
+	source = redelete-v0.2.3-x86_64-unknown-linux-gnu.tar.gz::https://github.com/ardeaf/redelete/releases/download/v0.2.3/redelete-v0.2.3-x86_64-unknown-linux-gnu.tar.gz
 	md5sums = a7359083a303e95c40e1c963a2e6c7e6
 
 pkgname = redelete-bin
