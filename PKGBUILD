@@ -14,7 +14,7 @@ groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 #install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://fonts.google.com/download?family=Kaushan%20Script")
-md5sums=('e66d715a2771bce1032328ab8550e095')
+md5sums=('29974ac1c48376411e36d4c4fbdfb7b2')
 
 package() {
   cd ${srcdir}
