@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=elementary-planner-git
-pkgver=2.0.1.r1.df4c4be
+pkgver=2.1.1.r45.gc4b6e4c6
 pkgrel=1
 pkgdesc="Personal task manager designed for elementary OS"
 arch=('x86_64')
 url="https://planner-todo.web.app"
 license=('GPL3')
-depends=('gtk3' 'libsoup' 'granite' 'webkit2gtk' 'evolution-data-server'
+depends=('libsoup' 'granite' 'webkit2gtk' 'evolution-data-server'
          'gtk-theme-elementary' 'elementary-icon-theme')
 makedepends=('git' 'meson' 'vala' 'cmake' 'appstream')
 provides=("${pkgname%-git}")
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/planner"
-	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
