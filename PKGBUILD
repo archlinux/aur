@@ -11,7 +11,7 @@ url="http://www.impallari.com/cabinsketch/"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://github.com/impallari/CabinSketch/archive/master.zip")
 md5sums=('b6ed40b8bcc486a2bb5442a853286eee')
 
