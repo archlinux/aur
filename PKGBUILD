@@ -2,7 +2,7 @@
 
 _pkgname=mindforger
 pkgname=$_pkgname-src
-pkgver=1.49.2
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks. (Build from source.)"
 arch=('any')
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+https://github.com/dvorka/$_pkgname.git#tag=$pkgver"
-	"$_pkgname-repository::git+https://github.com/dvorka/$_pkgname-repository.git#commit=05f3b4e"
+	"$_pkgname-repository::git+https://github.com/dvorka/$_pkgname-repository.git#commit=a17ada7"
 )
 sha256sums=('SKIP' 'SKIP')
 
