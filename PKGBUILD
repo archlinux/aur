@@ -3,10 +3,10 @@
 
 pkgname=python-pillow-simd
 pkgver=7.0.0.post3
-pkgrel=1
+pkgrel=2
 epoch=1
-_appname=Pillow-SIMD
-_py3basever=3.7m
+_name=Pillow-SIMD
+_py3basever=3.8m
 pkgdesc="Python Imaging Library (PIL) fork. Pillow fork for better image processing performance."
 arch=('x86_64')
 url="https://github.com/uploadcare/pillow-simd"
@@ -18,17 +18,17 @@ optdepends=('freetype2: for the ImageFont module'
             'tk: for the ImageTK module')
 makedepends=('python-setuptools' 'freetype2' 'libraqm' 'libwebp' 'tk')
 checkdepends=('python-pytest')
-source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 conflicts=('python-pillow')
-provides=('python-pillow=6.0.0')
+provides=("python-pillow=$pkgver")
 
 build() {
-  cd "$srcdir/$_appname-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   python3 setup.py build
 }
 
 package() {
-  cd "$srcdir/$_appname-$pkgver"
+  cd "$srcdir/$_name-$pkgver"
   python3 setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -dm755 "$pkgdir/usr/include/python$_py3basever/"

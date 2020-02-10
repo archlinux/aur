@@ -1,7 +1,7 @@
 pkgbase = python-pillow-simd
 	pkgdesc = Python Imaging Library (PIL) fork. Pillow fork for better image processing performance.
 	pkgver = 7.0.0.post3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/uploadcare/pillow-simd
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-pillow-simd
 	optdepends = libraqm: for complex text scripts
 	optdepends = libwebp: for webp images
 	optdepends = tk: for the ImageTK module
-	provides = python-pillow=6.0.0
+	provides = python-pillow=7.0.0.post3
 	conflicts = python-pillow
 	source = https://files.pythonhosted.org/packages/source/P/Pillow-SIMD/Pillow-SIMD-7.0.0.post3.tar.gz
 	sha256sums = c27907af0e7ede1ceed281719e722e7dbf3e1dbfe561373978654a6b64896cb7
