@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-paraview
+pkgbase = mingw-w64-paraview58
 	pkgdesc = Parallel Visualization Application using VTK (mingw-w64)
 	pkgver = 5.8.0
 	pkgrel = 1
@@ -35,5 +35,5 @@ pkgbase = mingw-w64-paraview
 	source = http://paraview.org/files/v5.8/ParaView-v5.8.0-RC2.tar.gz
 	sha256sums = SKIP
 
-pkgname = mingw-w64-paraview
+pkgname = mingw-w64-paraview58
 

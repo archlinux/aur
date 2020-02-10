@@ -1,4 +1,4 @@
-pkgname=mingw-w64-paraview
+pkgname=mingw-w64-paraview58
 _majordotminor=5.8
 pkgver=${_majordotminor}.0
 _pkgver=${pkgver}-RC2
