@@ -1,23 +1,21 @@
 pkgbase = lua-messagepack
-	pkgver = 0.3.7
+	pkgdesc = Pure Lua implementation of MessagePack spec v5
+	pkgver = 0.5.2
 	pkgrel = 1
-	url = https://fperrad.github.io/lua-MessagePack
+	url = https://framagit.org/fperrad/lua-MessagePack
 	arch = any
 	license = MIT
 	checkdepends = lua
 	checkdepends = lua-testmore
-	source = lua-messagepack-0.3.7.tar.gz::https://github.com/fperrad/lua-MessagePack/archive/0.3.7.tar.gz
-	sha256sums = e20606256c1a228158ea8e47bea8a964a1ea1b77f3120d6eba34ee4bf0eec623
-
-pkgname = lua51-messagepack
-	pkgdesc = Implementation of MessagePack spec v5 for Lua 5.1
-	depends = lua51
-
-pkgname = lua52-messagepack
-	pkgdesc = Implementation of MessagePack spec v5 for Lua 5.2
-	depends = lua52
+	source = lua-messagepack-0.5.2.tar.bz2::https://framagit.org/fperrad/lua-MessagePack/-/archive/0.5.2/lua-MessagePack-0.5.2.tar.bz2
+	sha256sums = f94dbe14bbf72bf4a6d91110353614f01a7300372af3af77f5ba308569a07ab0
 
 pkgname = lua-messagepack
-	pkgdesc = Implementation of MessagePack spec v5 for Lua 5.3
 	depends = lua
+
+pkgname = lua52-messagepack
+	depends = lua52
+
+pkgname = lua51-messagepack
+	depends = lua51
 

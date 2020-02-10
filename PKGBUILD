@@ -1,47 +1,45 @@
-# $Id: PKGBUILD 198064 2016-12-05 19:20:57Z anatolik $
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Florian Walch <florian+aur@fwalch.com>
 # Contributor: Florian Hahn <flo@fhahn.com>
 
-pkgbase=lua-messagepack
-pkgname=(lua51-messagepack lua52-messagepack lua-messagepack)
-pkgver=0.3.7
+_rockname=messagepack
+_project=lua-MessagePack
+pkgbase=lua-$_rockname
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=0.5.2
+_rockrel=1
 pkgrel=1
-arch=(any)
-url='https://fperrad.github.io/lua-MessagePack'
-license=(MIT)
-checkdepends=(lua lua-testmore)
-source=(lua-messagepack-$pkgver.tar.gz::https://github.com/fperrad/lua-MessagePack/archive/$pkgver.tar.gz)
-sha256sums=('e20606256c1a228158ea8e47bea8a964a1ea1b77f3120d6eba34ee4bf0eec623')
+pkgdesc='Pure Lua implementation of MessagePack spec v5'
+arch=('any')
+url="https://framagit.org/fperrad/$_project"
+license=('MIT')
+checkdepends=('lua' 'lua-testmore')
+source=("$pkgbase-$pkgver.tar.bz2::https://framagit.org/fperrad/$_project/-/archive/$pkgver/$_project-$pkgver.tar.bz2")
+sha256sums=('f94dbe14bbf72bf4a6d91110353614f01a7300372af3af77f5ba308569a07ab0')
 
-package_lua51-messagepack() {
-  pkgdesc='Implementation of MessagePack spec v5 for Lua 5.1'
-  depends=(lua51)
-
-  cd lua-MessagePack-${pkgver}
-  make LUAVER=5.1 PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+check() {
+  cd "$_project-$pkgver"
+  make check
 }
 
-package_lua52-messagepack() {
-  pkgdesc='Implementation of MessagePack spec v5 for Lua 5.2'
-  depends=(lua52)
-
-  cd lua-MessagePack-$pkgver
-  make LUAVER=5.2 PREFIX=/usr DESTDIR="$pkgdir" install
+_package_helper() {
+  cd "$_project-$pkgver"
+  make LUAVER=$1 PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-messagepack() {
-  pkgdesc='Implementation of MessagePack spec v5 for Lua 5.3'
-  depends=(lua)
-
-  cd lua-MessagePack-$pkgver
-  make LUAVER=5.3 PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  depends+=('lua')
+  _package_helper 5.3
 }
 
-check() {
-  cd lua-MessagePack-$pkgver
-  make check
+package_lua52-messagepack() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-messagepack() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
 
