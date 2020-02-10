@@ -1,22 +1,19 @@
 pkgbase = lua-testmore
-	pkgver = 0.3.2
+	pkgver = 0.3.5
 	pkgrel = 1
-	url = https://fperrad.github.io/lua-TestMore
+	url = https://framagit.org/fperrad/lua-TestMore
 	arch = any
 	license = MIT
 	checkdepends = lua
-	source = lua-testmore-0.3.2.tar.gz::https://github.com/fperrad/lua-TestMore/archive/0.3.2.tar.gz
-	sha256sums = 893d1d963738b39d564f4e9adfd07c3176c2639d991c94fc9b3a8090440f7628
-
-pkgname = lua51-testmore
-	pkgdesc = Unit testing framework for Lua 5.1
-	depends = lua51
-
-pkgname = lua52-testmore
-	pkgdesc = Unit testing framework for Lua 5.2
-	depends = lua52
+	source = lua-testmore-0.3.5.tar.bz2::https://framagit.org/fperrad/lua-TestMore/-/archive/0.3.5/lua-TestMore-0.3.5.tar.bz2
+	sha256sums = a2daca2648e904def3e5467612d09e4f8956b1bc474d5f0994533e2aed3c5b8b
 
 pkgname = lua-testmore
-	pkgdesc = Unit testing framework Lua 5.3
 	depends = lua
+
+pkgname = lua52-testmore
+	depends = lua52
+
+pkgname = lua51-testmore
+	depends = lua51
 

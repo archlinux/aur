@@ -1,45 +1,41 @@
-# $Id: PKGBUILD 137223 2015-07-21 17:21:56Z anatolik $
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgbase=lua-testmore
-pkgname=(lua51-testmore lua52-testmore lua-testmore)
-pkgver=0.3.2
+_rockname=testmore
+_project=lua-TestMore
+pkgbase=lua-$_rockname
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=0.3.5
+_rockrel=1
 pkgrel=1
-arch=(any)
-url='https://fperrad.github.io/lua-TestMore'
-license=(MIT)
-checkdepends=(lua)
-source=(lua-testmore-$pkgver.tar.gz::https://github.com/fperrad/lua-TestMore/archive/$pkgver.tar.gz)
-sha256sums=('893d1d963738b39d564f4e9adfd07c3176c2639d991c94fc9b3a8090440f7628')
+arch=('any')
+url="https://framagit.org/fperrad/$_project"
+license=('MIT')
+checkdepends=('lua')
+source=("$pkgbase-$pkgver.tar.bz2::https://framagit.org/fperrad/$_project/-/archive/$pkgver/$_project-$pkgver.tar.bz2")
+sha256sums=('a2daca2648e904def3e5467612d09e4f8956b1bc474d5f0994533e2aed3c5b8b')
 
-package_lua51-testmore() {
-  pkgdesc='Unit testing framework for Lua 5.1'
-  depends=(lua51)
-
-  cd lua-TestMore-${pkgver}
-  make LUAVER=5.1 PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+check() {
+  cd "$_project-$pkgver"
+  make check
 }
 
-package_lua52-testmore() {
-  pkgdesc='Unit testing framework for Lua 5.2'
-  depends=(lua52)
-
-  cd lua-TestMore-$pkgver
-  make LUAVER=5.2 PREFIX=/usr DESTDIR="$pkgdir" install
+_package_helper() {
+  cd "$_project-$pkgver"
+  make LUAVER=$1 PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-testmore() {
-  pkgdesc='Unit testing framework Lua 5.3'
-  depends=(lua)
-
-  cd lua-TestMore-$pkgver
-  make LUAVER=5.3 PREFIX=/usr DESTDIR="$pkgdir" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  depends+=('lua')
+  _package_helper 5.3
 }
 
-check() {
-  cd lua-TestMore-$pkgver
-  make check
+package_lua52-testmore() {
+  depends+=('lua52')
+  _package_helper 5.2
 }
 
+package_lua51-testmore() {
+  depends+=('lua51')
+  _package_helper 5.1
+}
