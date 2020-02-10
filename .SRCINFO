@@ -1,10 +1,11 @@
 pkgbase = bibledit
 	pkgdesc = Editory for translating the Bible (Cloud release)
 	pkgver = 5.0.813
-	pkgrel = 0.1
+	pkgrel = 1
 	url = https://bibledit.org/
 	arch = any
 	license = GPL3
+	makedepends = mimetic
 	depends = sword
 	depends = sqlite
 	depends = gtk3
