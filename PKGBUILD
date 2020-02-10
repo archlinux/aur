@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Brown <brown.benjam@husky.neu.edu>
 pkgname=deepspeech-models
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A TensorFlow implementation of Baidu's DeepSpeech architecture - models and supporting files."
 arch=('any')
 url="https://github.com/mozilla/DeepSpeech"
@@ -16,5 +16,5 @@ sha512sums=('4f8d2930b5566adca982b58f9abc4e101854a0d695ef3057153906bb6db0b31fa2f
 
 package() {
     mkdir -p "$pkgdir/usr/share/mozilla/deepspeech/models"
-    install -Dm 444 "$_tarball_path/output_graph.pbmm" "$_tarball_path/lm.binary" "$_tarball_path/trie" "$pkgdir/usr/share/mozilla/deepspeech/models"
+    install -Dm 444 "$_tarball_path/output_graph.pbmm" "$_tarball_path/output_graph.tflite" "$_tarball_path/lm.binary" "$_tarball_path/trie" "$pkgdir/usr/share/mozilla/deepspeech/models"
 }
