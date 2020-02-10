@@ -7,8 +7,8 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
 _pkgver=2020.1
-_channel=beta
-pkgver=${_pkgver}.${_channel}1
+_channel=stable
+pkgver=${_pkgver}.${_channel}
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
@@ -20,7 +20,7 @@ provides=("${pkgname%-beta}")
 conflicts=("${pkgname%-beta}")
 install="${pkgname%-beta}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
-source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}1?signed"
+source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "${pkgname%-beta}.desktop"
         'update-relays.sh')
@@ -54,9 +54,9 @@ build() {
 		-ldflags "-extldflags $LDFLAGS" \
 		-v -o libwg.a -buildmode c-archive
 
-    target_triple_dir="../../build/lib/x86_64-unknown-linux-gnu"
-    mkdir -p $target_triple_dir
-    cp libwg.a $target_triple_dir
+	target_triple_dir="../../build/lib/x86_64-unknown-linux-gnu"
+	mkdir -p $target_triple_dir
+	cp libwg.a $target_triple_dir
 
 	cd "$srcdir/mullvadvpn-app"
 
