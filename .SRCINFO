@@ -1,7 +1,7 @@
 pkgbase = nodejs-node-inspector
 	pkgdesc = Web Inspector based nodeJS debugger
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/node-inspector/node-inspector/
 	arch = any
 	license = BSD
