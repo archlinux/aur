@@ -19,13 +19,11 @@ optdepends=(
 makedepends=('cpanminus' 'perl-locale-gettext')
 install="${pkgname}.install"
 source=(
-  "https://github.com/downloads/zerodogg/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
+  "https://gitlab.com/zerodogg/dayplanner/-/archive/${pkgver}/dayplanner-${pkgver}.tar.gz"
   "${pkgname}.desktop"
 )
-sha256sums=(
-  '41ea26b13ad31938c6fdff98bfa8830cac286f2e73cef7920f9897616e6483c4'
-  '275d517022ca10f9db18915a4879b55909a3ed11acf7fea5154250cccf502048'
-)
+sha256sums=('b5d9a8fab1a2e6d2c78cc0ed2470563a9950f40f81e1ddd81b18572ce4fd98b6'
+            '275d517022ca10f9db18915a4879b55909a3ed11acf7fea5154250cccf502048')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
