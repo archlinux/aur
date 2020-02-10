@@ -2,7 +2,7 @@
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 pkgroot=ucsf-chimera
 pkgname=ucsf-chimera
-pkgver=1.13.1
+pkgver=1.14
 pkgrel=1
 pkgdesc='Extensible molecular modeling system'
 url='https://rbvi.ucsf.edu/chimera/'
@@ -43,11 +43,8 @@ package() {
   # Run the installer.
   chmod +x "${_file}"
   echo "${pkgdir}/opt/ucsf-chimera" | "./${_file}"
-
-  # Remove libraries that conflict with system libraries
-  cd "${pkgdir}/opt/ucsf-chimera/lib/"
-  rm libfreetype.* libz.*
 }
 
 # vim: ft=sh ts=2 sw=2 et
+
 
