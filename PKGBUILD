@@ -2,7 +2,7 @@
 
 pkgname=ant-gtk-theme
 pkgver=1.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Ant Theme for GTK 3.x"
 arch=('any')
 license=('GPL')
@@ -10,23 +10,23 @@ url=https://www.gnome-look.org/p/1099856
 options=('!strip')
 depends=('gtk3')
 
-source=("Ant.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant.tar"
-	"Ant-Bloody.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody.tar"
-	"Ant-Nebula.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Nebula.tar"
-	"Ant-Dracula.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Dracula.tar"
-	"Ant-Dracula-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Dracula-slim.tar"
-	"Ant-Nebula-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Nebula-slim.tar"
-	"Ant-Bloody-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody-slim.tar"
-	"Ant-slim.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-slim.tar")
+source=("Ant-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant.tar"
+	"Ant-Bloody-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody.tar"
+	"Ant-Nebula-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Nebula.tar"
+	"Ant-Dracula-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Dracula.tar"
+	"Ant-Dracula-slim-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Dracula-slim.tar"
+	"Ant-Nebula-slim-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Nebula-slim.tar"
+	"Ant-Bloody-slim-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-Bloody-slim.tar"
+	"Ant-slim-${pkgver}.tar::https://aur-files.storage.googleapis.com/${pkgname}/${pkgver}/Ant-slim.tar")
 
-noextract=('Ant.tar'
-           'Ant-Bloody.tar'
-           'Ant-Nebula.tar'
-           'Ant-Dracula.tar'
-           'Ant-Dracula-slim.tar'
-           'Ant-Nebula-slim.tar'
-           'Ant-Bloody-slim.tar'
-           'Ant-slim.tar'
+noextract=("Ant-${pkgver}.tar"
+           "Ant-Bloody-${pkgver}.tar"
+           "Ant-Nebula-${pkgver}.tar"
+           "Ant-Dracula-${pkgver}.tar"
+           "Ant-Dracula-slim-${pkgver}.tar"
+           "Ant-Nebula-slim-${pkgver}.tar"
+           "Ant-Bloody-slim-${pkgver}.tar"
+           "Ant-slim-${pkgver}.tar"
 )
 
 sha512sums=('eff8f9d6db62c28cca4f82b46a477b0e980193ade010f541bf3007513cc35041d812326ac4272a06157d6208af4fc8adc73897622d66469eb1839e80977e7d70'
@@ -43,6 +43,8 @@ prepare() {
   for THEME_FILE in "${noextract[@]}"
   do
     THEME_NAME="${THEME_FILE%.*}"
+    THEME_NAME="${THEME_NAME%-*}"
+    echo "${THEME_NAME}"
     mkdir -p "${THEME_NAME}"
     if echo "${THEME_FILE}" | grep "slim" > /dev/null
     then
