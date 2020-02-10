@@ -8,23 +8,21 @@ pkgver=1.80
 pkgrel=3
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
-url="http://studio.zerobrane.com/"
+url='https://studio.zerobrane.com/'
 license=('MIT')
 depends=('wxlua-git' 'lua-socket' 'hicolor-icon-theme')
 makedepends=('cmake')
 provides=('zerobrane-studio')
 conflicts=('zerobrane-studio-git')
 optdepends=('love: to debug love programs')
-_github_user="pkulchenko"
-_github_project="ZeroBraneStudio"
-source=("https://github.com/$_github_user/$_github_project/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/ZeroBraneStudio/archive/$pkgver.tar.gz"
         "zbstudio.patch"
         "getbitmap.patch"
         "user.lua")
-sha512sums=('f0605e2c739cafc7d0ea6a53cba6136ea3d871d12c3887d7d45c1e7384b968bd7a43c5db1ba6258403b48f46c0b83e557ac17937c092ccf1074b27f5b74a79b1'
-            '4d09fdbc47fdead6218ab83e344748a21b0232cc3dcbe4d2f0d820eeaa6c3f36e9d0a9568bc4c042e85293bf8a7f5bf53df29c2a799cdd4846151d5e87459eb3'
-            '3728458bbb019dcfac42e29ac7d2ecaea9e50c64b71d608c6664c047d6fb586331ae71fd17aaa72e5e0a072e7cbb30a1eb03065f3707c5f9cd94a71c76c34771'
-            '4de7e9b5db74b2af3b10d03abe0fe590cab5dd2df5900047595c124a58f823cab2acdf179d6580f193d8cc1face8155c16d6d9029df96001d1fb64cf1a8a13b2')
+sha256sums=('4bc9d122cabf65e74c8ec427d4f265e5f5e772b3594fea8a8f691e7f4219cfd3'
+            '73ca0f1a9d99882a821cacfc354d0bf85e7814f352c4a53c506dc44b048485c7'
+            'b256bce3df66aea997b6ae01d43fccb9f771265fb851bf7298f4d384317719a2'
+            '475fe6e129f9469100a941fc74b90a9fe4bc5eceaca447d2899a1511212cbfcc')
 
 prepare() {
   cd "$srcdir/$_github_project-$pkgver"
