@@ -1,8 +1,8 @@
 pkgbase = cups-xerox-workcentre-3025
 	pkgdesc = Xerox WorkCentre 3025 printer driver for CUPS.
 	pkgver = 1.0_25
-	pkgrel = 3
-	url = http://www.support.xerox.com/support/workcentre-3025
+	pkgrel = 2
+	url = https://www.support.xerox.com/support/workcentre-3025
 	arch = x86_64
 	license = custom
 	makedepends = binutils
