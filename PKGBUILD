@@ -1,6 +1,6 @@
 # Maintainer: Max Zhao <alcasa.mz@gmail.com>
 pkgname=kube-spawn
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A tool for creating multi-node Kubernetes clusters on a Linux machine using kubeadm & systemd-nspawn. Brought to you by the Kinvolk team. https://kinvolk.io"
 arch=("any")
@@ -11,7 +11,7 @@ makedepends=("docker")
 source=(
 "https://github.com/kinvolk/$pkgname/archive/v$pkgver.tar.gz"
 )
-md5sums=('7c42f8c0ae240efabaf5f6ecf95721e1')
+sha512sums=('b7cdabb3339080f498c1c6054466c663924488cf1e716e9a20f34c8da1ffe141a96110ce9007b5c99b340b7ecdfc944c3930db3afd749a67c073306e7d379cbe')
 
 build() {
 	cd "$pkgname-$pkgver"
