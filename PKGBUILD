@@ -9,8 +9,8 @@ license=('Apache')
 depends=('java-environment=11' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf' 'python')
 options=('!distcc' '!strip' '!ccache')
-source=("bazel-bootstrap.zip::https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
-        "bazel-bootstrap.zip.sig::https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
+source=("bazel-bootstrap-${pkgver}.zip::https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip"
+        "bazel-bootstrap-${pkgver}.zip.sig::https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
 )
 
 sha512sums=('5a98e7bcc7a078c37a5ee70054c45b2c30ef85c741a081a53e172678a1425b107a529636f32887ad41cd32609b69340dba82478dc20ecc856b131f23ea977200'
