@@ -1,4 +1,5 @@
-# Maintainer: Marco Pompili <aur (at) emarcs (dot) org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Marco Pompili <aur (at) emarcs (dot) org>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Danny Coates <dannycoates@gmail.com>
 # Contributor: Danny Coates <dannycoates@gmail.com>
@@ -34,11 +35,11 @@ pkgver=1.1.2
 pkgrel=1
 pkgdesc="Web Inspector based nodeJS debugger"
 arch=('any')
-url="http://github.com/node-inspector/node-inspector"
+url="https://github.com/$_npmname/$_npmname/"
 license=('BSD')
 depends=('nodejs')
 makedepends=('npm')
-source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
+source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
 noextract=("$_npmname-$pkgver".tgz)
 sha256sums=('969f309a0148bb9546999e7b45d474a4e5fd3715967a982e7e776022aca3577f')
 
