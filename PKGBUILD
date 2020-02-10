@@ -3,7 +3,8 @@
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname=ejabberd-current
-pkgver=18.09
+_pkgname=ejabberd
+pkgver=20.01
 pkgrel=0
 pkgdesc="Jabber server written in Erlang"
 arch=('x86_64')
@@ -53,7 +54,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/processone/ejabberd/archive
 	"$pkgname.logrotate"
 	"ejabberd.service"
 	"sysuser.conf")
-sha256sums=('85c57ba9784f7346f94236c3d1b1dae676f5bb2ee65c6d2204fb4bbcd7582769'
+sha256sums=('9ddb07b9b370fa3fbd97631eda3f5fc3e2113b541f1e57b9069ef4047b9102a9'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -91,7 +92,7 @@ sha256sums=('85c57ba9784f7346f94236c3d1b1dae676f5bb2ee65c6d2204fb4bbcd7582769'
             '68de8fd4df6e4f0e21a241dcd2b7075bdff495876646dd726c7054bf5780e3c6')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   mkdir -p "$srcdir/$pkgname-$pkgver/deps"
   for i in \
     base64url cache_tab eimp elixir epam eredis esip ezlib fast_tls fast_xml fast_yaml goldrush hamcrest iconv jiffy jose lager luerl meck moka p1_mysql p1_oauth2 p1_pgsql p1_utils rebar_elixir_plugin riakc riak_pb samerlib sqlite3 stringprep stun xmpp \
@@ -104,7 +105,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   [ -x configure ] || ./autogen.sh
   ./configure \
     --prefix=/usr \
@@ -116,7 +117,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$_pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 
   install -Dm04750 deps/epam/priv/bin/epam "$pkgdir"/usr/lib/ejabberd-$pkgver/priv/bin/epam
