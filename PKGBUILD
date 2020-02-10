@@ -2,7 +2,7 @@
 
 _pkgname=youtube-viewer
 pkgname=gtk-youtube-viewer-git
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 pkgdesc="GTK+ application for searching and streaming videos from YouTube."
 arch=('any')
@@ -17,7 +17,6 @@ depends=('perl' 'perl-data-dump' 'perl-json' 'perl-lwp-protocol-https' 'perl-lib
 
 optdepends=(
     'ffmpeg: conversions and MKV merging'
-    'gtk2-perl: for the Gtk2 interface'
     'gnome-icon-theme: icons in menus'
     'perl-json-xs: faster JSON parsing'
     'perl-lwp-useragent-cached: local cache support'
@@ -41,7 +40,7 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    /usr/bin/perl Build.PL --gtk
+    /usr/bin/perl Build.PL --gtk3
 }
 
 check(){

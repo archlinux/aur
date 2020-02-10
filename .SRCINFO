@@ -1,6 +1,6 @@
 pkgbase = gtk-youtube-viewer-git
 	pkgdesc = GTK+ application for searching and streaming videos from YouTube.
-	pkgver = 3.7.2
+	pkgver = 3.7.3
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = gtk-youtube-viewer-git
 	depends = perl-gtk3
 	depends = perl-file-sharedir
 	optdepends = ffmpeg: conversions and MKV merging
-	optdepends = gtk2-perl: for the Gtk2 interface
 	optdepends = gnome-icon-theme: icons in menus
 	optdepends = perl-json-xs: faster JSON parsing
 	optdepends = perl-lwp-useragent-cached: local cache support
