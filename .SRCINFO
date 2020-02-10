@@ -1,6 +1,6 @@
 pkgbase = dexbot
 	pkgdesc = Trading bot for the DEX (BitShares)
-	pkgver = 0.1.12.r6.g31f4f4f
+	pkgver = 0.17.8.r0.ga2ec28b
 	pkgrel = 1
 	url = https://dexbot.info
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = dexbot
 	depends = python>=3
 	depends = python-setuptools
 	depends = python-pip
-	source = git+git://github.com/codaone/dexbot.git
+	source = git+git://github.com/Codaone/DEXBot.git
 	md5sums = SKIP
 
 pkgname = dexbot

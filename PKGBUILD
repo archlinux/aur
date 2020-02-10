@@ -1,7 +1,7 @@
 # Maintainer: svdev <sergio at svcdev dot com>
 
 pkgname=dexbot
-pkgver=0.1.12.r6.g31f4f4f
+pkgver=0.17.8.r0.ga2ec28b
 pkgrel=1
 pkgdesc="Trading bot for the DEX (BitShares)"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://dexbot.info"
 license=("MIT")
 depends=('python>=3' 'python-setuptools' 'python-pip')
 makedepends=('git')
-source=("git+git://github.com/codaone/dexbot.git")
+source=("git+git://github.com/Codaone/DEXBot.git")
 md5sums=('SKIP')
 
 pkgver() {
