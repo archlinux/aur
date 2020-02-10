@@ -17,7 +17,7 @@ _id=405
 
 pkgname=cnijfilter-${_name}
 pkgver=3.80
-pkgrel=1
+pkgrel=2
 _pkgver=3.80-1
 pkgdesc="Canon IJ Printer Driver (for ${_name} series)"
 url="http://support-au.canon.com.au/contents/AU/EN/0100469302.html"
@@ -28,10 +28,10 @@ source=(http://gdlp01.c-wss.com/gds/3/0100004693/01/cnijfilter-source-${_pkgver}
         fix_cups.patch
         fix_png.patch
         fix_configures.patch)
-md5sums=('b6b92717930021d24bd750d4197bdf3b'
-         'c973834af2962d7ad239811b0b0d1db1'
-         '5f665042df2175da3629667aaf258782'
-         'd75d20fa9041fff6b5df02cdea9e8732')
+sha512sums=('95a16e3b4fc38ce0b7a12bd74466d97e726bc410b59bf6d1963fa52b16a8cc67f6a993a5ef945107201f860d8ac6734c462bc0bf6d2160d6c85c5f61aff040c1'
+            '659c526db1a28df0d63793b4f0a9dff69312b3607630b14ee393f1b13c65042a28d5082dee45d57af8dc50d6842eccf49c8588af48a4721b8d82eb09f0e03229'
+            'aecf5a4375dfe2d3b56c4dba37e985c3d6ecde05eba91361c028ec7b2c393377f20e76e843b989b0c282e1969089bd02f8ccdda43397be4a8d6ad7e973c8152f'
+            'dffa3149541585ac99e77c4b62e0e21980105854415fe502b3658d68a42bab248def1ad9729ca6c4868236bfdf91988e8fdbb2b71e0b784434255c21052c1244')
 
 if [ "$CARCH" == "x86_64" ]; then
   _libdir=libs_bin64
