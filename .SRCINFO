@@ -1,7 +1,7 @@
 pkgbase = nominatim-data-wikipedia
 	pkgdesc = Optional Wikipedia data to use with nominatim
 	pkgver = 20190618
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nominatim.org
 	arch = any
 	license = unknown
