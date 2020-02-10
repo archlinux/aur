@@ -7,16 +7,16 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2019.10
-pkgrel=2
+pkgver=2020.1
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('libnotify' 'libappindicator-gtk3' 'libxss' 'nss')
-makedepends=('git' 'cargo' 'npm')
+makedepends=('git' 'go-pie' 'rust' 'npm')
 install="$pkgname.install"
-_commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
+_commit='90b0c06b59a0b9d6cda69924377335f39854b216'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
         "$pkgname.desktop"
@@ -25,8 +25,10 @@ sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
             'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+              # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {
 	# Point the submodule to our local copy
@@ -41,13 +43,25 @@ prepare() {
 }
 
 build() {
+	cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
+
+	# Build wireguard-go
+	go build \
+		-trimpath \
+		-ldflags "-extldflags $LDFLAGS" \
+		-v -o libwg.a -buildmode c-archive
+
+	target_triple_dir="../../build/lib/x86_64-unknown-linux-gnu"
+	mkdir -p $target_triple_dir
+	cp libwg.a $target_triple_dir
+
 	cd "$srcdir/mullvadvpn-app"
 
 	# Remove old Rust build artifacts
 	cargo clean --release --locked
 
 	# Build mullvad-daemon
-	cargo build --release --locked
+	cargo build --release --locked --all-features
 
 	# Copy binaries for packaging
 	cp dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} \
