@@ -24,6 +24,7 @@ sha256sums=('7d5f8a1e509ff98d74c7e081820ea5ad46b7b9e5304e3712f08ed37aa29a7c05'
 
 package() {
     install -d "$pkgdir/opt/MotionBox"
+    install -d "$pkgdir/usr/bin"
 
     # copy application icon
     install -Dm644 MotionBox.png "$pkgdir/opt/MotionBox/MotionBox.png"
