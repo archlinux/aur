@@ -2,33 +2,6 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Marco Pompili <aur (at) emarcs (dot) org>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
-# Contributor: Danny Coates <dannycoates@gmail.com>
-# Contributor: Danny Coates <dannycoates@gmail.com>
-# Contributor: 3y3 <3y3@bk.ru>
-# Contributor: Adam Hořčica <horcicaa@gmail.com>
-# Contributor: Akzhan Abdulin <akzhan.abdulin@gmail.com>
-# Contributor: cattail <zhongchiyu@gmail.com>
-# Contributor: Dave <badave@gmail.com>
-# Contributor: Dick Hardt <dickhardt@gmail.com>
-# Contributor: Gary Katsevman <git@gkatsev.com>
-# Contributor: Glenn Block <glenn.block@gmail.com>
-# Contributor: Ionuț G. Stan <ionut.g.stan@gmail.com>
-# Contributor: Karan Batra-Daitch <karanganesha04@gmail.com>
-# Contributor: Kasper Ligaard <kasperligaard@gmail.com>
-# Contributor: Mark Constable <markc@renta.net>
-# Contributor: Matthew O'Riordan <matthew.oriordan@gmail.com>
-# Contributor: Michael Schoonmaker <michael@strongloop.com>
-# Contributor: Miroslav Bajtos <miroslav@strongloop.com>
-# Contributor: Panagiotis Astithas <pastith@gmail.com>
-# Contributor: Peter Flannery <flannery.peter@ntlworld.com>
-# Contributor: Philip Tellis <philip.tellis@gmail.com>
-# Contributor: Sam Roberts <sam@strongloop.com>
-# Contributor: Sergey Krilov <serg.kr@gmail.com>
-# Contributor: ssafejava <s@safejava.com>
-# Contributor: dannycoates <dannycoates@gmail.com>
-# Contributor: piscisaureus <bertbelder@gmail.com>
-# Contributor: bajtos <miroslav@strongloop.com>
-# Contributor: strongloop <callback@strongloop.com>
 
 _npmname=node-inspector
 pkgname=nodejs-$_npmname
