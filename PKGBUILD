@@ -1,7 +1,7 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=hexchat-theme-manager
-pkgver=2.12.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc='A simple application to manage HexChat themes'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('mono' 'hexchat')
 makedepends=('monodevelop')
 source=("https://dl.hexchat.net/hexchat/hexchat-$pkgver.tar.xz")
-sha256sums=('6dad783f37aac32a8301a12d498af7a74900f011aec4e77bb378ae9797a3ccf6')
+sha256sums=('901a9d13db5a4da69b827f6093306bbd16863dc49016f7668bd3e4506512e882')
 
 build() {
   cd "hexchat-$pkgver"
