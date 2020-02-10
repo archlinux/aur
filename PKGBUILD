@@ -12,9 +12,9 @@ screenshot="http://www.impallari.com/media/uploads/proupdates/82-foto01-original
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("Milonga.zip::https://fonts.google.com/download?family=Milonga")
-md5sums=('7dcc574ddbd7a35be07bf7aa1f825e2a')
+md5sums=('06d60b626e7278aee1d8f1f4b4f7549e')
 
 package() {
   cd ${srcdir}
