@@ -11,7 +11,7 @@ url="https://github.com/impallari/Miltonian"
 license=('custom:OFL')
 groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
-install=updatefont.install
+#install=updatefont.install
 source=("Miltonian-master.zip::https://codeload.github.com/impallari/Miltonian/zip/master")
 md5sums=('3e33d91d524c322c87d5862c1591e5b4')
 

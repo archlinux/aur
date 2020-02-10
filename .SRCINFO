@@ -3,7 +3,6 @@ pkgbase = ttf-impallari-miltonian
 	pkgver = 1.007
 	pkgrel = 1
 	url = https://github.com/impallari/Miltonian
-	install = updatefont.install
 	arch = any
 	groups = impallari-fonts
 	license = custom:OFL
