@@ -14,7 +14,7 @@ groups=("${_group}-fonts")
 depends=('fontconfig' 'xorg-font-utils')
 #install=updatefont.install
 source=("${_font}-${pkgver}.zip::https://fonts.google.com/download?family=Domine")
-md5sums=('4f5250e1552d3ef265bbadd193f6a07a')
+md5sums=('1c415d4bed853b2922095622696dbe65')
 
 package() {
   cd ${srcdir}/
