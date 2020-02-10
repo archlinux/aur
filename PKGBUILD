@@ -1,4 +1,5 @@
-# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer:
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Marco Pompili <aur (at) emarcs (dot) org>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Danny Coates <dannycoates@gmail.com>
