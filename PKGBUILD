@@ -3,7 +3,7 @@
 # shellcheck disable=SC2154
 
 pkgname=clickhouse-static
-pkgver=20.1.3.7
+pkgver=20.1.4.14
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time. Static binary'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('readline')
 #   ClickHouse git directory with checked out tag and updated submodules.
 # e.g. ./populate-sources.sh ~/workdir/github/ClickHouse/ClickHouse
 
-source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
+source=("ClickHouse-${pkgver}-stable.tar.gz::https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
     arrow.tgz::https://github.com/apache/arrow/archive/b789226cc.tar.gz
     aws-c-common.tgz::https://github.com/awslabs/aws-c-common/archive/736a82d.tar.gz
     aws-c-event-stream.tgz::https://github.com/awslabs/aws-c-event-stream/archive/3bc3366.tar.gz
@@ -50,7 +50,7 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
     mariadb-connector-c.tgz::https://github.com/ClickHouse-Extras/mariadb-connector-c/archive/1801630.tar.gz
     openssl.tgz::https://github.com/ClickHouse-Extras/openssl/archive/c74e7895eb.tar.gz
     orc.tgz::https://github.com/apache/orc/archive/5981208e.tar.gz
-    poco.tgz::https://github.com/ClickHouse-Extras/poco/archive/d478f62bd.tar.gz
+    poco.tgz::https://github.com/ClickHouse-Extras/poco/archive/d805cf5ca.tar.gz
     protobuf.tgz::https://github.com/ClickHouse-Extras/protobuf/archive/d6a10dd.tar.gz
     rapidjson.tgz::https://github.com/Tencent/rapidjson/archive/01950eb7.tar.gz
     re2.tgz::https://github.com/google/re2/archive/7cf8b88.tar.gz
@@ -63,9 +63,9 @@ source=("https://github.com/yandex/ClickHouse/archive/v$pkgver-stable.tar.gz"
     zlib-ng.tgz::https://github.com/ClickHouse-Extras/zlib-ng/archive/bba56a7.tar.gz
     zstd.tgz::https://github.com/facebook/zstd/archive/25559750.tar.gz
 )
-# sha256sum v*stable.tar.gz *tgz | sed 's/  / # /'
+# sha256sum ClickHouse-*-stable.tar.gz *tgz | sed 's/  / # /'
 sha256sums=(
-f1ca2c25e7c7c3fec990b1c62c321f5e3aba49541561cc232b57e5918187f222 # v20.1.3.7-stable.tar.gz
+6c652c30cd152369a3c62d1cc92013bc273db0c4f75245264e0956ef103a04fc # ClickHouse-20.1.4.14-stable.tar.gz
 93ee4cfdfaa471fbb8b8b963f9179ba5a7a0b32e20e69cb15125b51fa08ec97a # arrow.tgz
 06fd1dc5b3612c70ee507de9393bb6b0cd291f1de2940d3bd531f727a1d8bc2b # aws-c-common.tgz
 d900dd46f03585af7af83ea31ec5fe0437a80bf07349be9b7590ad3cffa42327 # aws-c-event-stream.tgz
@@ -100,7 +100,7 @@ c41328df4d1b79f9043ad86219320d12af18dedcacbe76aa6115f906c28c6381 # libgsasl.tgz
 3316dd42dc0c0d688fe3dbab840c84d157dcd04c9abbc563eb0c98c217a6cf59 # mariadb-connector-c.tgz
 3ca3158fe1a9ecde3272a08e1f3dfbe488f6200f8df365746d659a07d25dfbe7 # openssl.tgz
 3207d094a85a4b2fed16fd7fda8720449e83931010efe04104986bd1e0053e1c # orc.tgz
-faf4a4654f47f7391269a9a29ca525f2108e40418e04937bcb87719dc19cf5d7 # poco.tgz
+0b9460e437d155571d29c31f31530fdd566d2d7ef33426697bee940d07a58df5 # poco.tgz
 78e97675bd56926a32c40e530a2fce20d4e25a291287c303bd903843cd71a12c # protobuf.tgz
 fcbbd610196f3e4f550ebb3a6bb2359b56cab969a2dce65e33a1bc8504a38168 # rapidjson.tgz
 2e1d268c4340fc86206756f265f5910608c6d8e07a3668a955191c486afb072b # re2.tgz
@@ -121,8 +121,9 @@ install="${pkgname}.install"
 prepare() {
   for contrib_tar in *.tgz; do
     local contrib=${contrib_tar/.tgz/}
+    echo "Populate contrib/${contrib}"
     local contrib_src=$(tar tf "${contrib_tar}" --exclude='*/*' --exclude='./*/*')
-    cp -a "${contrib_src}/." "ClickHouse-${pkgver}-stable/contrib/${contrib}"
+    cp -al "${contrib_src}/." "ClickHouse-${pkgver}-stable/contrib/${contrib}"
   done
 }
 
