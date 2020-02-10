@@ -33,7 +33,6 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   cd VTK
-  sed -i "s| AND NOT CMAKE_CROSSCOMPILING||g" IO/OggTheora/vtk.module
 }
 
 build() {
