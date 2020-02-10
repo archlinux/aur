@@ -2,12 +2,12 @@
 
 pkgname=libbpkg
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="build2 package manager library"
 arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT')
-depends=('libbutl>=0.12' 'libbutl<0.12')
+depends=('libbutl>=0.12')
 source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
 sha256sums=('a0ecf9930b873242a0164653411caca2cc5c095abda5ee7bda800f1b0f93e396')
 
