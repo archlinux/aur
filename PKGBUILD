@@ -4,8 +4,9 @@
 # Contributor: Harley Laue <losinggeneration@gmail.com>
 
 pkgname=zerobrane-studio
+_pkgname=ZeroBraneStudio
 pkgver=1.80
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
 url='https://studio.zerobrane.com/'
@@ -15,7 +16,7 @@ makedepends=('cmake')
 provides=('zerobrane-studio')
 conflicts=('zerobrane-studio-git')
 optdepends=('love: to debug love programs')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/ZeroBraneStudio/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/$_pkgname/archive/$pkgver.tar.gz"
         "zbstudio.patch"
         "getbitmap.patch"
         "user.lua")
@@ -25,22 +26,20 @@ sha256sums=('4bc9d122cabf65e74c8ec427d4f265e5f5e772b3594fea8a8f691e7f4219cfd3'
             '475fe6e129f9469100a941fc74b90a9fe4bc5eceaca447d2899a1511212cbfcc')
 
 prepare() {
-  cd "$srcdir/$_github_project-$pkgver"
+  cd "$_pkgname-$pkgver"
   patch -p1 < "$srcdir/zbstudio.patch"
   patch -p1 < "$srcdir/getbitmap.patch"
 }
 
 build() {
-  cd "$srcdir/$_github_project-$pkgver/build"
-
-   sed -e '/check_lua_module(wx TRUE)/ s/^#*/#/' -i CMakeLists.txt
+  cd "$_pkgname-$pkgver/build"
+  sed -e '/check_lua_module(wx TRUE)/ s/^#*/#/' -i CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo
-
   make -j4
 }
 
 package() {
-  cd "$srcdir/$_github_project-$pkgver/build"
+  cd "$_pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   cp ../LICENSE "$pkgdir/usr/share/licenses/$pkgname"
