@@ -4,7 +4,7 @@
 # Contributor: Nicolas Floquet <nicolasfloquet AT gmail DOT com>
 pkgname=e2tools
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple set of GPL'ed utilities to read, write, and manipulate files in an ext2/ext3 filesystem."
 arch=('i686' 'x86_64')
 url="https://e2tools.github.io/"
