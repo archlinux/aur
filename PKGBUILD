@@ -19,7 +19,7 @@ sha256sums=('dec381affcc91edc0273bfe736da07cb4c7cd2db3e95b6d724735ff8cd73ddfd')
 
 build() {
     bsdtar -xf ${_iso_file} casper/filesystem.squashfs
-    rm -r $srcdir/squashfs-root
+    rm -rf $srcdir/squashfs-root
     unsquashfs $srcdir/casper/filesystem.squashfs /usr/share/backgrounds/
 }
 
