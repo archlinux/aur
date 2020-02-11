@@ -1,42 +1,48 @@
 # Maintainer: Cravix < dr dot neemous at gmail dot com >
 
-pkgname=limnoria-git
+pkgbase=limnoria-git
+pkgname=("limnoria-git" "limnoria-python3-git")
 _pkgname=Limnoria
-pkgver=v0.83.4.1.r4198.6f9deecb
+pkgver=20200211
 pkgrel=1
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features (dev channel)"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
 license=('3-clause BSD')
-depends=('python2')
+depends=('python>=3.4')
 makedepends=('git')
-optdepends=("python2-charade: Detect page's encoding"
-            "python2-pytz: Enable Time plugin to calculate the time in specified timezone"
-            "python2-dateutil: Enable Time plugin to parse the input time string"
-            "python2-gnupg: GnuPG support"
-            "python2-feedparser: RSS plugin support"
-            #"python2-sqlalchemy: Alternative DB engine when no SQLite3 engine installed" 
-            # But SQLite module has already been integrated into python package, so it doesn't matter
-            "python2-socksipy-branch: SOCKS proxy support"
-            #"python2-mock: For testing only"
-            "python2-ecdsa: ECDSA support")
+optdepends=("python-charade: Detect page's encoding"
+    "python-pytz: Enable Time plugin to calculate the time in specified timezone"
+    "python-dateutil: Enable Time plugin to parse the input time string"
+    "python-gnupg: GnuPG support"
+    "python-feedparser: RSS plugin support"
+    "python-sqlalchemy: Aka plugin support"
+    "python-socksipy-branch: SOCKS proxy support"
+    "python-mock: For testing only"
+    "python-cryptography: ECDSA support")
+conflicts=('limnoria' 'limnoria-python3')
 source=("git://github.com/ProgVal/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}"
 
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    sed -n '1s/[^[:digit:]]//gp' src/version.py
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-  
-  python2 setup.py build
+    cd "$srcdir/$_pkgname"
+
+    python3 setup.py build
 }
 
-package() {
-  cd "$srcdir/$_pkgname"
+package_limnoria-git() {
+    cd "$srcdir/$_pkgname"
 
-  python2 setup.py install --root="$pkgdir" || return 1
+    python3 setup.py install --root="$pkgdir" || return 1
+}
+
+package_limnoria-python3-git() {
+    msg "This package contains nothing and is only for migration,"
+    msg "and will be removed in next release."
 }

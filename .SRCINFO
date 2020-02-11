@@ -1,21 +1,27 @@
 pkgbase = limnoria-git
 	pkgdesc = An IRC bot based on Supybot, with sqlite3 support and other features (dev channel)
-	pkgver = v0.83.4.1.r4198.6f9deecb
+	pkgver = 20200211
 	pkgrel = 1
 	url = https://github.com/ProgVal/Limnoria
 	arch = any
 	license = 3-clause BSD
 	makedepends = git
-	depends = python2
-	optdepends = python2-charade: Detect page's encoding
-	optdepends = python2-pytz: Enable Time plugin to calculate the time in specified timezone
-	optdepends = python2-dateutil: Enable Time plugin to parse the input time string
-	optdepends = python2-gnupg: GnuPG support
-	optdepends = python2-feedparser: RSS plugin support
-	optdepends = python2-socksipy-branch: SOCKS proxy support
-	optdepends = python2-ecdsa: ECDSA support
+	depends = python>=3.4
+	optdepends = python-charade: Detect page's encoding
+	optdepends = python-pytz: Enable Time plugin to calculate the time in specified timezone
+	optdepends = python-dateutil: Enable Time plugin to parse the input time string
+	optdepends = python-gnupg: GnuPG support
+	optdepends = python-feedparser: RSS plugin support
+	optdepends = python-sqlalchemy: Aka plugin support
+	optdepends = python-socksipy-branch: SOCKS proxy support
+	optdepends = python-mock: For testing only
+	optdepends = python-cryptography: ECDSA support
+	conflicts = limnoria
+	conflicts = limnoria-python3
 	source = git://github.com/ProgVal/Limnoria.git
 	md5sums = SKIP
 
 pkgname = limnoria-git
+
+pkgname = limnoria-python3-git
 
