@@ -6,6 +6,7 @@ pkgbase = libodb-pgsql
 	arch = x86_64
 	license = GPL3
 	depends = build2
+	depends = postgresql-libs
 	options = !libtool
 
 pkgname = libodb-pgsql

@@ -5,7 +5,7 @@ pkgver=2.5.0b17
 pkgrel=1
 pkgdesc="The ODB PostreSQL runtime library"
 arch=('i686' 'x86_64')
-depends=('build2')
+depends=('build2' 'postgresql-libs')
 options=('!libtool')
 license=('GPL3')
 
