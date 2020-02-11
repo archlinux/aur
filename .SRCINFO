@@ -1,6 +1,6 @@
 pkgbase = uniconvertor2-git
 	pkgdesc = A universal vector graphics translator
-	pkgver = r397.efbd37c
+	pkgver = r477.646dfc1
 	pkgrel = 1
 	epoch = 1
 	url = https://sk1project.net/
