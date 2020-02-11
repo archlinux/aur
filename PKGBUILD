@@ -5,13 +5,13 @@
 
 pkgname=zerobrane-studio
 _pkgname=ZeroBraneStudio
-pkgver=1.80
-pkgrel=4
+pkgver=1.90
+pkgrel=1
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
 url='https://studio.zerobrane.com/'
 license=('MIT')
-depends=('wxlua-git' 'lua-socket' 'hicolor-icon-theme')
+depends=('wxlua' 'lua-socket' 'hicolor-icon-theme')
 makedepends=('cmake')
 provides=('zerobrane-studio')
 conflicts=('zerobrane-studio-git')
@@ -20,9 +20,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/$_pkgname/archiv
         "zbstudio.patch"
         "getbitmap.patch"
         "user.lua")
-sha256sums=('4bc9d122cabf65e74c8ec427d4f265e5f5e772b3594fea8a8f691e7f4219cfd3'
-            '73ca0f1a9d99882a821cacfc354d0bf85e7814f352c4a53c506dc44b048485c7'
-            'b256bce3df66aea997b6ae01d43fccb9f771265fb851bf7298f4d384317719a2'
+sha256sums=('62307538cb1daa8c298c838f124f7cfff13c29e4c64c4ffea72191a6f1347ff2'
+            '44f3a18f169a571bace71c67c398917ea0ff1c163c7d22bec49aed7585bcb9b2'
+            '07bfc89ea616382678172f167b518217b80a2cb04f8dfc926310f5e26c24ce1a'
             '475fe6e129f9469100a941fc74b90a9fe4bc5eceaca447d2899a1511212cbfcc')
 
 prepare() {
@@ -33,17 +33,16 @@ prepare() {
 
 build() {
   cd "$_pkgname-$pkgver/build"
-  sed -e '/check_lua_module(wx TRUE)/ s/^#*/#/' -i CMakeLists.txt
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make -j4
+  # sed -e '/check_lua_module(wx TRUE)/ s/^#*/#/' -i CMakeLists.txt
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+  make
 }
 
 package() {
   cd "$_pkgname-$pkgver/build"
   make DESTDIR="$pkgdir/" install
-  install -d "$pkgdir/usr/share/licenses/$pkgname"
-  cp ../LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  cp "$srcdir/user.lua" "$pkgdir/usr/share/zbstudio/cfg/user.lua"
-  cp "../lualibs/lua_parser_loose.lua" "$pkgdir/usr/share/zbstudio/lualibs/"
-  cp "../lualibs/lua_lexer_loose.lua" "$pkgdir/usr/share/zbstudio/lualibs/"
+  install -Dm644 "$srcdir/user.lua" -t "$pkgdir/usr/share/zbstudio/cfg"
+  pushd ..
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 lualibs/lua_{parser,lexer}_loose.lua -t "$pkgdir/usr/share/zbstudio/lualibs"
 }
