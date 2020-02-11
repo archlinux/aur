@@ -1,6 +1,6 @@
 pkgbase = xde-styles
 	pkgdesc = Four consistent styles across light-weight WMs for XDE
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://github.com/bbidulock/xde-styles
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = xde-styles
 	optdepends = xde-menu: for root menus
 	optdepends = xde-ctools: for window menus
 	optdepends = xde-session: for key bindings
-	source = https://github.com/bbidulock/xde-styles/releases/download/1.3/xde-styles-1.3.tar.lz
-	sha256sums = 814fe5d76b776215ca4066ca8543ef83f27b08e591da03551f1d49ef31824eeb
+	source = https://github.com/bbidulock/xde-styles/releases/download/1.4/xde-styles-1.4.tar.lz
+	sha256sums = 9b9a778131f2ad2e7bfcb91077ffb7fdf0a8bfd298f771988b801c66dc0e4678
 
 pkgname = xde-styles
 
