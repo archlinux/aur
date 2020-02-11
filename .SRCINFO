@@ -1,7 +1,7 @@
 pkgbase = deepin-wxwork
 	pkgdesc = Tencent Weixin Work Client on Deepin Wine
 	pkgver = 2.8.10.2010deepin0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.deepin.com/
 	arch = x86_64
 	license = custom
@@ -10,7 +10,7 @@ pkgbase = deepin-wxwork
 	source = https://mirrors.tuna.tsinghua.edu.cn/deepin/pool/non-free/d/deepin.com.weixin.work/deepin.com.weixin.work_2.8.10.2010deepin0_i386.deb
 	source = run.sh
 	md5sums = a82495943fe4b748cf2b740704f1ec45
-	md5sums = 54e20108bcca254aeea3b37ceb74b5b2
+	md5sums = df6b75140bf0d043eea0c7b5696d4704
 
 pkgname = deepin-wxwork
 
