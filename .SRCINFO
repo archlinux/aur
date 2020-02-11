@@ -1,0 +1,14 @@
+pkgbase = pacana
+	pkgdesc = Pacman repository analysis tool
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://github.com/bbidulock/pacana
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = pacman
+	source = https://github.com/bbidulock/pacana/releases/download/0.10/pacana-0.10.tar.lz
+	md5sums = cb8a1e5198fe70ca4fdacd64888c9d32
+
+pkgname = pacana
+
