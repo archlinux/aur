@@ -1,20 +1,23 @@
 pkgbase = symengine
 	pkgdesc = Fast symbolic manipulation library, written in C++
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = http://sympy.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = boost
+	makedepends = llvm
 	depends = gmp
 	depends = gperftools
-	depends = boost-libs
+	depends = flint
+	depends = libmpc
+	optdepends = llvm-libs
+	optdepends = zlib
 	conflicts = csympy-git
 	replaces = csympy-git
-	source = symengine-0.5.0.tar.gz::https://github.com/sympy/symengine/archive/v0.5.0.tar.gz
-	sha256sums = 5d02002f00d16a0928d1056e6ecb8f34fd59f3bfd8ed0009a55700334dbae29b
+	source = symengine-0.6.0.tar.gz::https://github.com/sympy/symengine/archive/v0.6.0.tar.gz
+	sha256sums = 4d2caa86c03eaaa8ed004084d02f87b5c51b6229f8ba70d161227e22d6302f0a
 
 pkgname = symengine
 
