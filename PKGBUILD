@@ -1,7 +1,7 @@
 # Maintainer: Ardeaf <ardeaf@gmail.com>
 
 pkgname=redelete
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Delete all of your reddit comments and submissions, with optional filters to skip certain posts.'
 arch=('x86_64')
@@ -26,4 +26,4 @@ package() {
   install -Dm755 target/release/redelete "$pkgdir"/usr/bin/redelete
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/redelete/LICENSE
 }
-md5sums=('47f2d037e9f8c3b61b5ad9afd589a82c')
+md5sums=('83ee23b93e4a0170dc4eb2f95027e7b9')
