@@ -1,0 +1,15 @@
+pkgbase = python2-audit
+	pkgdesc = Userspace components of the audit framework (python 2.X bindings)
+	pkgver = 2.8.5
+	pkgrel = 1
+	url = https://people.redhat.com/sgrubb/audit
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = audit
+	source = https://people.redhat.com/sgrubb/audit/audit-2.8.5.tar.gz
+	sha512sums = 7d416aaa21c1a167f8e911ca82aecbaba804424f3243f505066c43ecc4a62a34feb2c27555e99d3268608404793dccca0f828c63670e3aa816016fb493f8174a
+
+pkgname = python2-audit
+
