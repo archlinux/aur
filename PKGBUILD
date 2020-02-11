@@ -1,7 +1,11 @@
-# Maintainer: Alberto Casademunt <alberto.casademunt at protonmail dot ch>
+# Maintainer: Taijian <taijian@posteo.de>
+# Contributor: Alberto Casademunt <alberto.casademunt at protonmail dot ch>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-control-center-nocheese
-pkgver=3.34.0.1+10+g0f8e3f332
+pkgbase=gnome-control-center
+pkgver=3.34.2
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop."
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -22,19 +26,19 @@ optdepends=('system-config-printer: Printer settings'
             'rygel: media sharing'
             'openssh: remote login')
 groups=(gnome)
-_commit=0f8e3f332c47e1f9bb336e320d4c5a6d9d762572  # gnome-3-34
+_commit=049df20eca021449eadc61960770e8d9709da16e  # tags/3.34.2^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd gnome-control-center
+  cd $pkgbase
   git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd gnome-control-center
+  cd $pkgbase
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
