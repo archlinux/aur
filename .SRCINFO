@@ -1,14 +1,14 @@
 pkgbase = python-libconcord
 	pkgdesc = Python bindings for libconcord.
-	pkgver = 1.3
+	pkgver = 1.4
 	pkgrel = 1
 	url = http://www.phildev.net/harmony/index.shtml
 	arch = any
 	license = GPL3
-	depends = libconcord=1.3
+	depends = libconcord=1.4
 	depends = python
-	source = https://github.com/jaymzh/concordance/releases/download/v1.3/concordance-1.3.tar.bz2
-	sha256sums = bd0d1a7cc3aca0276cc02ee1bc7cf30b44f0b84a5edcac862844b83f789ccb8a
+	source = https://github.com/jaymzh/concordance/releases/download/v1.4/concordance-1.4.tar.bz2
+	sha256sums = e7484707926393c2b44ae5e21e978a597c0f50e210e13b9e1e8168e1476382c7
 
 pkgname = python-libconcord
 
