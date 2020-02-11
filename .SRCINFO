@@ -1,7 +1,7 @@
 pkgbase = miopen-deps
 	pkgdesc = AMD's Machine Intelligence Library - dependencies
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/MIOpen
 	arch = x86_64
 	license = MIT

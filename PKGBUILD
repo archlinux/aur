@@ -1,6 +1,6 @@
 pkgname=miopen-deps
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD's Machine Intelligence Library - dependencies"
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/MIOpen"
@@ -23,7 +23,7 @@ package() {
 	cd "${srcdir}/build_${pkgname}"
 
 	# Fix paths in pkg-config files
-	find -iname "*.pc" -exec sed -e "s|/.*build_${pkgname}/|${rocmdir}|g" -i {} \;
+	find -iname "*.pc" -exec sed -e "s|/.*build_${pkgname}/|${rocmdir}/|g" -i {} \;
 
 	cp -rp ./${pkgname} ${pkgdir}${rocmdir}/${pkgname}
 }
