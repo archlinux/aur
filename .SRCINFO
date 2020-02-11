@@ -1,7 +1,7 @@
 pkgbase = kdiff3-git
 	pkgdesc = A KDE file comparator/merge tool
-	pkgver = 1.8.70_4622189
-	pkgrel = 1
+	pkgver = 1.8.70.r1162.0fa8910
+	pkgrel = 2
 	url = https://cgit.kde.org/kdiff3.git
 	arch = i686
 	arch = x86_64

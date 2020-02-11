@@ -1,7 +1,7 @@
 _basename=kdiff3
 pkgname=${_basename}-git
-pkgver=1.8.70_4622189
-pkgrel=1
+pkgver=1.8.70.r1162.0fa8910
+pkgrel=2
 pkgdesc="A KDE file comparator/merge tool"
 arch=('i686' 'x86_64')
 url="https://cgit.kde.org/kdiff3.git"
@@ -13,9 +13,9 @@ source=("git+https://github.com/KDE/kdiff3.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_basename"
+  cd "$srcdir/${_basename}"
   ver=`grep -Po 'ecm_setup_version\(\K([0-9.]+)' CMakeLists.txt`
-  git describe --always | sed "s/-/./g" | sed "s/^/${ver}_/g"
+  printf "%s.r%s.%s" "${ver}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
