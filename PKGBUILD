@@ -3,7 +3,7 @@
 pkgname=openra-ura-git
 _pkgname=${pkgname/-git}
 pkgver=431.git.128dc53
-pkgrel=2
+pkgrel=3
 pkgdesc="A Comamnd & Conquer: Red Alert-inspired mod of OpenRA"
 arch=('any')
 url="http://redalertunplugged.com/"
@@ -15,10 +15,18 @@ makedepends=('dos2unix' 'git' 'unzip')
 provides=('openra-ura')
 options=(!strip)
 source=("git+https://github.com/RAunplugged/uRA.git"
+"Makefile.patch"
+"fetch-engine.patch"
+# Information on how to obtain the following file is available at
+# https://dev.maxmind.com/geoip/geoip2/geolite2/
+"local://GeoLite2-Country.mmdb.gz"
 "openra-ura"
 "openra-ura.appdata.xml"
 "openra-ura.desktop")
 md5sums=('SKIP'
+         'feae017ba5765215cd151a892362e6b1'
+         '711019044fbb1c1e3aa5edc58b54343d'
+         'efb8c043dfa095146f373fec367aef64'
          'e3cad77b684f1e8f8456e7b1e4b50cd1'
          '9f15794f7fb1bb9940cdb7c7f90f898a'
          '462aae2e4517dd55ef4e0dcafe0d4888')
@@ -33,6 +41,7 @@ pkgver() {
 prepare() {
     cd $srcdir/uRA
     dos2unix *.md
+    patch -Np1 -i $srcdir/fetch-engine.patch
 }
 
 build() {
@@ -46,7 +55,7 @@ package() {
     mkdir -p $pkgdir/usr/{lib/openra-ura/mods,bin,share/pixmaps,share/doc/packages/openra-ura,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-ura
     chown 775 -R ${pkgdir}/var/games/openra-ura
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/openra-ura
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ura
     cp -r mods/ura $pkgdir/usr/lib/openra-ura/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-ura/mods
     install -Dm755 $srcdir/openra-ura $pkgdir/usr/bin/openra-ura
