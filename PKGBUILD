@@ -3,7 +3,7 @@
 # Contributor: pressh <pressh@gmail.com>
 
 pkgname=alacarte-git
-pkgver=3.11.91+26+g7345d8f
+pkgver=3.11.91+27+g3614c2c
 pkgrel=1
 pkgdesc="Menu editor for gnome. Git version using Python 3."
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=('intltool' 'libxslt' 'docbook-xsl' 'git' 'gnome-common')
 provides=("alacarte="$pkgver)
 replaces=("alacarte")
 conflicts=("alacarte")
-source=('git+https://gitlab.gnome.org/lubosz/alacarte.git#branch=python3')
+source=('git+https://gitlab.gnome.org/GNOME/alacarte.git')
 sha256sums=('SKIP')
 
 pkgver() {
