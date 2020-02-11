@@ -51,7 +51,7 @@ package() {
 	cp -r --no-preserve=ownership --preserve=mode 'resources/' "$pkgdir/usr/lib/$_pkgname/resources/"
 
 	install -dm755 "$pkgdir/usr/bin"
-	ln -nfs "/usr/lib/$_pkgname/electron" "$pkgdir/usr/bin/$_pkgname"
+	ln -nfs "/usr/lib/$_pkgname/$_projectname" "$pkgdir/usr/bin/$_pkgname"
 
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 'LICENSES.chromium.html' "$pkgdir/usr/share/licenses/$pkgname/LICENSES.chromium.html"
