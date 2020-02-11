@@ -3,8 +3,8 @@
 pkgname="gws2-git"
 _reponame="gws2"
 _binname="gws"
-pkgver=0.1.0.r3.ga26c963
-pkgrel=4
+pkgver=0.1.0.r94.gb7a5d37
+pkgrel=5
 pkgdesc="Colorful KISS helper for git workspaces"
 url="https://github.com/emlun/${_reponame}"
 license=('GPL3')
@@ -40,7 +40,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_reponame}"
-  cargo test
+  cargo test --release
 }
 
 package() {
