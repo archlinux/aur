@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xde-ctools-git
-pkgver=1.11.r1.g9338899
+pkgver=1.12.r2.gb051028
 pkgrel=1
 pkgdesc="X Desktop Environment C-language tools"
 groups=('xde-git')
@@ -28,8 +28,11 @@ prepare() {
 
 build() {
   cd $pkgname
-  ./configure
-  make
+  # gtk2 is using deprecated glib2 declarations
+  ./configure CFLAGS="-Wno-deprecated-declarations $CFLAGS"
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  make CFLAGS="-Wno-deprecated-declarations $CFLAGS"
 }
 
 package() {
