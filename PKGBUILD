@@ -5,60 +5,44 @@
 # Contributor: favardin
 
 pkgname=wxlua
-pkgver=2.8.12.3
-pkgrel=4
-pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language."
+pkgver=3.0.0.8
+pkgrel=1
+pkgdesc="Lua bindings fore the wxWidgets library (Lua 5.3 compatible fork)"
 arch=('i686' 'x86_64')
-url="http://wxlua.sourceforge.net"
+url="https://github.com/pkulchenko/${pkgname}"
 license=('custom:wxWindows')
-depends=('lua52' 'desktop-file-utils' 'wxgtk2.8' 'webkitgtk2')
+depends=('desktop-file-utils' 'wxgtk2' 'lua')
 optdepends=('webkit2gtk')
 makedepends=('cmake')
-provides=('wxstedit')
-conflicts=('wxstedit')
-source=("http://downloads.sourceforge.net/$pkgname/$pkgname/$pkgver/wxLua-$pkgver-src.tar.gz")
-md5sums=('e0a28904d046400713c07d7c4c9515ef')
-
-prepare() {
-  cd wxLua-"$pkgver"-src
-  [ -d b ] || mkdir b
-
-  # wxstedit doc folder fix
-  sed -i 's|doc/|share/&|' modules/wxstedit/CMakeLists.txt
-
-  # right shebang for wxluafreeze.lua
-  sed -i 's| \..*/|/usr/bin/env |;1s||$|' apps/wxluafreeze/wxluafreeze.lua
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pkulchenko/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('85d5182eec6e7cbb8428b9c144ef7fbe364f4fed6411aafcead648893e5b6fa0')
 
 build() {
-  cd wxLua-"$pkgver"-src/b
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_BUILD_TYPE=Release \
-           -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-2.8 \
-           -DwxLua_LUA_INCLUDE_DIR=/usr/include \
-           -DwxLua_LUA_LIBRARY=/usr/lib/liblua.so.5.2 \
-           -DwxLua_LUA_LIBRARY_USE_BUILTIN=0 \
-           -DwxLua_LUA_LIBRARY_VERSION=5.2
-  make
+    cd "${pkgname}-${pkgver}/wxLua/build"
+    cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DwxWidgets_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
+        -DwxLuaBind_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
+        -DBUILD_SHARED_LIBS=TRUE
+    make
 }
 
 package() {
-  cd wxLua-"$pkgver"-src/b
-  make DESTDIR="$pkgdir/" install
+    cd "${pkgname}-${pkgver}/wxLua/build"
+    make DESTDIR="$pkgdir/" install
+    rm "$pkgdir"/usr/bin/lua{,c}
 
-  # mv lua module
-  install -d "$pkgdir/usr/lib/lua/5.2"
-  mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.2/wx.so"
+    install -d "$pkgdir/usr/lib/lua/5.3"
+    mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.3/wx.so"
 
-  # desktop file
-  install -Dm644 ../distrib/autopackage/"$pkgname".desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+    pushd ..
 
-  # mime file
-  install -Dm644 ../distrib/autopackage/"$pkgname".xml \
-    "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+    install -Dm644 distrib/autopackage/"$pkgname".desktop \
+        "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-  # license
-  install -Dm 644 ../docs/licence.txt \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 distrib/autopackage/"$pkgname".xml \
+        "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+
+    install -Dm 644 docs/licence.txt \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
