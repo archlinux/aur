@@ -3,11 +3,11 @@
 pkgname=libodb-oracle
 pkgver=2.5.0b17
 pkgrel=1
-pkgdesc="The ODB MySQL runtime library"
+pkgdesc="The ODB Oracle runtime library"
 arch=('i686' 'x86_64')
 depends=('build2' 'oracle-instantclient-sdk' 'oracle-instantclient-sqlplus' 'unixodbc')
 options=('!libtool')
-license=('GPL3')
+license=('custom')
 
 build() {
 	cd "${srcdir}"

@@ -1,10 +1,10 @@
 pkgbase = libodb-oracle
-	pkgdesc = The ODB MySQL runtime library
+	pkgdesc = The ODB Oracle runtime library
 	pkgver = 2.5.0b17
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = custom
 	depends = build2
 	depends = oracle-instantclient-sdk
 	depends = oracle-instantclient-sqlplus
