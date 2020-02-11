@@ -2,7 +2,7 @@
 
 pkgname=crazydiskinfo
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive TUI S.M.A.R.T viewer"
 arch=('x86_64')
 url='https://github.com/otakuto/crazydiskinfo'
@@ -14,6 +14,9 @@ sha256sums=('fca9a4487bb088d4e12d11b0c3040843a109818e9f757912490a0ca15ad95bb4')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/tinfow/tinfo/g' CMakeLists.txt
+  sed -i 's/ncursesw/ncurses/g' CMakeLists.txt
 }
 
 build() {
