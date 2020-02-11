@@ -1,6 +1,6 @@
 pkgbase = linux-rt
 	pkgver = 5.4.17.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
