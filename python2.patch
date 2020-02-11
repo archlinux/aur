@@ -1,0 +1,8 @@
+--- src/system-config-users.py		2013-08-13 11:09:05.000000000 +0200
++++ src/system-config-users.py.new	2020-02-11 19:23:42.054023217 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # -*- coding: utf-8 -*-
+ #
+ # system-config-users.py - this program calls mainWindow to start the GUI

@@ -1,62 +1,36 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Infy <eugene.yudin@gmail.com>
-# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Mantainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
-pkgname=pcsxr-git
-pkgver=1.9.94.r1697.6484236c
+pkgname=system-config-users
+pkgver=1.3.5
 pkgrel=1
-pkgdesc='A Sony PlayStation emulator based on the PCSX-df Project'
+pkgdesc='A graphical interface for administering users and groups'
 arch=('i686' 'x86_64')
-url='https://github.com/pcsxr/PCSX-Reloaded/tree/master/pcsxr'
+url='https://than.fedorapeople.org/system-config-users'
 license=('GPL')
-depends=('ffmpeg' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'libarchive' 'libcdio'
-         'libgl' 'libpulse' 'libx11' 'libxext' 'libxtst' 'libxv' 'libxxf86vm'
-         'sdl2' 'zlib')
-makedepends=('cmake' 'git' 'intltool' 'mesa')
-[[ $CARCH == i686 ]] && makedepends+=('nasm')
-provides=('pcsxr')
-conflicts=('pcsxr' 'pcsx-df')
-replaces=('pcsxr-svn')
-source=('pcsxr::git+https://github.com/pcsxr/PCSX-Reloaded.git')
-sha256sums=('SKIP')
+depends=('libselinux-python2' 'libuser' 'python2' 'python2-rpm' 'selinux-python2'
+         'rpm-tools' 'xdg-utils')
+makedepends=()
+source=('https://than.fedorapeople.org/system-config-users/system-config-users-1.3.5.tar.bz2'
+        'python2.patch')
+sha256sums=('bec51eeb845cbbcfbbb42831b2f8b76a6ce56f30bf6ad33bee6aa4d1086a7cf2'
+            '7eea5d2699b62839427c885af85633279d7db4ff2ef4867cc3b66220d59f5c0e')
 
-pkgver() {
-  cd pcsxr
-
-  echo "1.9.94.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
 
 prepare() {
-  cd pcsxr/pcsxr
-  
-  sed -i 's/iso9660/cdio/' cmake/FindCdio.cmake
-  
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
+  SRC_PATH="${pkgname}-${pkgver}"
+  cp python2.patch $SRC_PATH
+  cd $SRC_PATH
+  patch -Np0 -i python2.patch
 }
 
 build() {
-  cd pcsxr/pcsxr/build
+  cd "${pkgname}-${pkgver}"
 
-  cmake .. \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBDIR='/usr/lib' \
-    -DSND_BACKEND='pulse' \
-    -DENABLE_CCDDA='ON' \
-    -DUSE_LIBARCHIVE='ON' \
-    -DUSE_LIBCDIO='ON' \
-    -DCMAKE_C_FLAGS_RELEASE:STRING="-O2 -DNDEBUG -mtune=native -pipe -I/usr/include/harfbuzz/ -lGLU -lGL " \
-    -DCMAKE_CXX_FLAGS_RELEASE:STRING="-O2 -DNDEBUG -mtune=native -pipe -I/usr/include/harfbuzz/ -lGLU -lGL " \
-    -DOpenGL_GL_PREFERENCE:STRING="GLVND"
   make
 }
 
 package() {
-  cd pcsxr/pcsxr/build
+  cd "${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 }
