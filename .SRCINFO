@@ -1,6 +1,6 @@
 pkgbase = qv2ray
 	pkgdesc = Cross-platform V2ray Client written in Qt (Stable Release)
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -15,11 +15,9 @@ pkgbase = qv2ray
 	depends = hicolor-icon-theme
 	depends = qt5-charts>5.11.0
 	depends = grpc>=1.27.0
-	optdepends = v2ray
-	optdepends = v2ray-domain-list-community
-	optdepends = v2ray-geoip
+	optdepends = v2ray: use system v2ray
 	provides = qv2ray
-	source = Qv2ray-2.0.1::git+https://github.com/Qv2ray/Qv2ray#tag=v2.0.1
+	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=master
 	sha512sums = SKIP
 
 pkgname = qv2ray
