@@ -2,15 +2,15 @@
 
 pkgname=pb-for-desktop
 pkgrel=1
-pkgver=9.5.0
-pkgdesc="The missing Desktop application for Pushbullet"
+pkgver=10.5.0
+pkgdesc="The Desktop application for Pushbullet"
 url="https://github.com/sidneys/pb-for-desktop"
 provides=('pb-for-desktop')
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libnotify' 'notify-osd' 'gconf' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libxtst' 'nss')
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-x64.pacman")
-sha256sums_x86_64=('ad820374cb5aaab2b566fbb27f3dec5c2674584fdbcc1b1ced29c079ec67ead5')
+sha256sums_x86_64=('6797ac0e25709a5be64266431eb8f17694ad29fa61d8911f6618160c57011a07')
 
 package() {
     # Install the application files in /opt
@@ -27,7 +27,7 @@ package() {
     done
 
     # Add a launch script
-    printf '#!/usr/bin/bash\n\nXDG_DATA_DIRS=/usr/local/share/:/usr/share/ "/usr/opt/PB for Desktop/pb-for-desktop"' > "${srcdir}/pushbullet"
+    printf '#!/usr/bin/bash\n\nXDG_DATA_DIRS=/usr/local/share/:/usr/share/ "/opt/PB for Desktop/pb-for-desktop"' > "${srcdir}/pushbullet"
     install -d "${pkgdir}/usr/bin"
     install -D -m755 "${srcdir}/pushbullet" "${pkgdir}/usr/bin/"
 }
