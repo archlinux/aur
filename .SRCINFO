@@ -1,6 +1,6 @@
 pkgbase = redelete
 	pkgdesc = Delete all of your reddit comments and submissions, with optional filters to skip certain posts.
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ardeaf/redelete
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = redelete
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = redelete-0.2.3.tar.gz::https://github.com/ardeaf/redelete/archive/v0.2.3.tar.gz
-	md5sums = 9d44f3c04ae215c53775edf0e2284e9f
+	source = redelete-0.3.0.tar.gz::https://github.com/ardeaf/redelete/archive/v0.3.0.tar.gz
+	md5sums = 47f2d037e9f8c3b61b5ad9afd589a82c
 
 pkgname = redelete
 
