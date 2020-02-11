@@ -2,7 +2,7 @@
 
 pkgname=ocaml-ppxfind-git
 pkgver=20190513
-pkgrel=2
+pkgrel=3
 pkgdesc="ocamlfind ppx tool"
 arch=('x86_64')
 url='https://github.com/diml/ppxfind'
@@ -10,7 +10,7 @@ license=('BSD')
 provides=('ocaml-ppxfind')
 conflicts=('ocaml-ppxfind')
 depends=('ocaml')
-makedepends=('ocamlbuild' 'ocaml-findlib' 'ocaml-migrate-parsetree')
+makedepends=('dune' 'ocamlbuild' 'ocaml-findlib' 'ocaml-migrate-parsetree')
 source=("${pkgname}::git://github.com/diml/ppxfind.git")
 md5sums=('SKIP')
 
