@@ -24,6 +24,6 @@ sha256sums_i686=('26952e013ece4d0e869fc9179bfd2b1f6c319cdc707fadf44fdb56fa9e62f4
 package() {
   mkdir -p "${pkgdir}/usr/bin"
   cp checkra1n "${pkgdir}/usr/bin"
-  chmod 4755 "${pkgdir}/usr/bin/checkra1n"
+  chmod +x "${pkgdir}/usr/bin/checkra1n"
 }
 
