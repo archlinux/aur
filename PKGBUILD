@@ -26,7 +26,7 @@ depends=(
   libdrm
   libmodplug
   libtheora
-  libva.so
+  libva
   libva-drm.so
   libvorbisenc.so
   libvorbis.so
