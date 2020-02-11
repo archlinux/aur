@@ -3,7 +3,7 @@
 pkgname=python-blinkstick-git
 _name=blinkstick
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="BlinkStick Python interface to control devices connected to the computer."
 
 url='http://www.blinkstick.com'
@@ -11,10 +11,14 @@ arch=('any')
 license=('custom')
 depends=('python-pyusb')
 
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 source=("$_name::git+https://github.com/arvydas/blinkstick-python.git")
 sha256sums=('SKIP')
 
+
+pkgver() {
+  cd "${srcdir}/${_name}/"
+  echo ${pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 build() {
   cd "${srcdir}/${_name}"
