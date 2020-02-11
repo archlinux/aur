@@ -2,13 +2,14 @@
 
 pkgname=fscrypt-git
 pkgver=0.2.6.0.g43b4079
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for managing Linux filesystem encryption'
 arch=('x86_64' 'i686')
 url='https://github.com/google/fscrypt'
 license=('Apache')
 makedepends=('git' 'go')
 depends=('pam')
+conflicts=('fscrypt')
 provides=('fscrypt')
 source=('git+https://github.com/google/fscrypt.git' 'pam_config')
 sha256sums=('SKIP'

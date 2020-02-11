@@ -1,7 +1,7 @@
 pkgbase = fscrypt-git
 	pkgdesc = A tool for managing Linux filesystem encryption
 	pkgver = 0.2.6.0.g43b4079
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/fscrypt
 	arch = x86_64
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = fscrypt-git
 	makedepends = go
 	depends = pam
 	provides = fscrypt
+	conflicts = fscrypt
 	source = git+https://github.com/google/fscrypt.git
 	source = pam_config
 	sha256sums = SKIP
