@@ -15,10 +15,19 @@ makedepends=('dos2unix' 'git' 'unzip')
 provides=("${_pkgname}")
 options=(!strip)
 source=("git+${url}.git"
+# The following file needs to be downloaded manually from
+# Maxmind, see https://dev.maxmind.com/geoip/geoip2/geolite2/
+# for details
+"local://GeoLite2-Country.mmdb.gz"
+"fetch-engine.patch"
+"Makefile.patch"
 "${_pkgname}"
 "${_pkgname}.appdata.xml"
 "${_pkgname}.desktop")
 md5sums=('SKIP'
+         'efb8c043dfa095146f373fec367aef64'
+         '711019044fbb1c1e3aa5edc58b54343d'
+         'feae017ba5765215cd151a892362e6b1'
          '8974b3935a56e8fd957ee5dc9404595c'
          'd3c7476b79a6b07522e597f05eaa8ae7'
          '40267bdbbcde926b3524e99cce966592')
@@ -33,12 +42,12 @@ pkgver() {
 prepare() {
     cd $srcdir/Generals-Alpha
     dos2unix *.md
+    patch -Np1 -i $srcdir/fetch-engine.patch
 }
 
 build() {
     cd $srcdir/Generals-Alpha
     make version VERSION="${pkgver}"
-    printf "Per https://github.com/MustaphaTR/Generals-Alpha/issues/13 this mod currently will not build properly."
     make || (printf "make failed; please do not complain at the AUR about this, as this is an upstream issue.\n" && \
 	printf "So report this at ${url}/issues/new, after checking\n" && \
 	printf "for existing issues.\n")
