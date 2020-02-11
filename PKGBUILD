@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=blackbox-git
-pkgver=0.74.0
+pkgver=0.76.r1.gca2400c
 pkgrel=1
 pkgdesc="A window manager for X11"
 arch=('i686' 'x86_64')
@@ -17,18 +17,20 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags --long | sed 's|-|.|g;s|[.]g[a-f0-9]*$||'
+  git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd $pkgname
+  ./autogen.sh
 }
 
 build() {
   cd $pkgname
-  ./autogen.sh
   ./configure \
-      --prefix=/usr \
-      --mandir=/usr/share/man \
       --enable-static \
       --enable-shared
-  make V=0
+  make
 }
 
 package() {
