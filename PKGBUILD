@@ -6,7 +6,7 @@
 pkgname=libselinux-python2
 pkgver=3.0
 pkgrel=1
-pkgdesc="SELinux library and simple utilities (python 2.x bindings"
+pkgdesc="SELinux library and simple utilities (python 2.x bindings)"
 arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
 license=('custom')
