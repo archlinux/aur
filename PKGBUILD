@@ -3,7 +3,7 @@
 # https://wiki.archlinux.org/index.php/Rust_package_guidelines
 
 pkgname=ytop
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A TUI system monitor written in Rust"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=("cargo")
 provides=(${pkgname})
 conflicts=(${pkgname})
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=("3c32d9b77f9e7301d123602f02a7205f315043bd393004e0827ce1c7424aedaa")
+sha256sums=("2dc0c375e2f99fcdea1e38eb621e71dc5b65e2e67c4fd936c71c36bbe35ba489")
 
 build() {
 	cd "${pkgname}-${pkgver}"
