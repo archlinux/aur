@@ -1,6 +1,6 @@
 pkgbase = linux-clear-headers-bin
 	pkgdesc = Header files and scripts for Clear Linux kernel and modules
-	pkgver = 5.4.18.902
+	pkgver = 5.5.2.903
 	pkgrel = 1
 	epoch = 0
 	url = https://clearlinux.org/node/15538
@@ -8,12 +8,12 @@ pkgbase = linux-clear-headers-bin
 	license = GPL2
 	conflicts = linux-clear-headers
 	options = !strip
-	source = https://cdn.download.clearlinux.org/update/32260/Manifest.linux-dev
-	source = https://cdn.download.clearlinux.org/update/32260/pack-linux-dev-from-0.tar
-	source = https://cdn.download.clearlinux.org/update/32260/files/71686f0e4aa3eb5a31247c1658935cb45ec347cebee6cc713d52b3f353d8b3df.tar
-	sha256sums = c8b34561bb9c800c9edad89f6388572a3f023cfe7c90dc618b9773b2273607d7
-	sha256sums = 75fe6a75f479612f20b02e7da70f9ced3e25372ed89d079cb36b16c4f918d732
-	sha256sums = 3a97368702ea7e50b40b33dad09ecc0ec61fab18e8f57abb446fc3469d84a1a3
+	source = https://cdn.download.clearlinux.org/update/32280/Manifest.linux-dev
+	source = https://cdn.download.clearlinux.org/update/32280/pack-linux-dev-from-0.tar
+	source = https://cdn.download.clearlinux.org/update/32280/files/0cc632994f7355ee0df74401652035646e0552940175a288c147c3a3ed46fb1e.tar
+	sha256sums = 8b981ba84b60ffae2b9fb16343aaa01ffab98bb00e4bad0c4641e00c8ef315cb
+	sha256sums = 0d93cf8232535bf3933a40a3e3054645a8bebcb6f3169caa495d75c5673f318e
+	sha256sums = 7417e51b8db28a6c9f2a320db5d6dcf390374de764813284023f463fa4f298a1
 
 pkgname = linux-clear-headers-bin
 
