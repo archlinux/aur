@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.5.2
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,26 +8,30 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.2.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.2.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.3.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.3.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.5/5.5-ck1/patch-5.5-ck1.xz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-	source = 0003-ALSA-hda-Fix-DP-MST-support-for-NVIDIA-codecs.patch
-	source = 0004-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch
+	source = 0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
+	source = 0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
+	source = 0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+	source = 0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 24f5f383b0337374f160723bcf3bf679c75cb5bd3fd0824a56998e47c04ef99e
+	sha256sums = 2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2
 	sha256sums = SKIP
 	sha256sums = eb95e2f45dc868b097136d75077b8861b85fea109de78bff253fbf98162e5cb6
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
 	sha256sums = 37a9d61e8a0b5a73992e1397c3a9cc947d39e715f205f3c665eb157b96d58f98
-	sha256sums = 7c66fd00db7147d62274edc0cf0276fcca1036892a354b31deb20c424462cf2c
-	sha256sums = db6aa91dd446a021945f8671c70cafbfc743a3cba7f0d0f4b02bde6cf98c376e
-	sha256sums = 3299c34452dbaa480e253e03d3f4bd44805ac732fd4c3e7ebbd228bf51229419
-	sha256sums = 84d3ab282a371f616fc7be5089ec71ece1e193700afe4e77c86ce50ce579e253
+	sha256sums = c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17
+	sha256sums = a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87
+	sha256sums = d5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929
+	sha256sums = 03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3
+	sha256sums = 49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe
+	sha256sums = 8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3
 
 pkgname = linux-ck
 	pkgdesc = The Linux-ck kernel and modules with the ck1 patchset featuring MuQSS CPU scheduler
@@ -36,11 +40,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.5.2
+	provides = linux-ck=5.5.3
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.5.2
-	provides = linux-headers=5.5.2
+	provides = linux-ck-headers=5.5.3
+	provides = linux-headers=5.5.3
 

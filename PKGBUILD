@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -78,22 +78,26 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.5/5.5-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0003-ALSA-hda-Fix-DP-MST-support-for-NVIDIA-codecs.patch
-  0004-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch
+  0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
+  0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
+  0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+  0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('24f5f383b0337374f160723bcf3bf679c75cb5bd3fd0824a56998e47c04ef99e'
+sha256sums=('2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
             'SKIP'
             'eb95e2f45dc868b097136d75077b8861b85fea109de78bff253fbf98162e5cb6'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             '37a9d61e8a0b5a73992e1397c3a9cc947d39e715f205f3c665eb157b96d58f98'
-            '7c66fd00db7147d62274edc0cf0276fcca1036892a354b31deb20c424462cf2c'
-            'db6aa91dd446a021945f8671c70cafbfc743a3cba7f0d0f4b02bde6cf98c376e'
-            '3299c34452dbaa480e253e03d3f4bd44805ac732fd4c3e7ebbd228bf51229419'
-            '84d3ab282a371f616fc7be5089ec71ece1e193700afe4e77c86ce50ce579e253')
+            'c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17'
+            'a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87'
+            'd5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929'
+            '03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3'
+            '49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe'
+            '8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -163,7 +167,7 @@ prepare() {
     fi
 
   make -s kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
