@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/Qv2ray"
-    printf "%s" $(git describe --long --tags | sed 's/v//;s/-\S*//g')
+    printf "%s" $(cat ${srcdir}/Qv2ray/makespec/VERSION)
 }
 
 prepare() {
