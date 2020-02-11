@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=crazydiskinfo
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An interactive TUI S.M.A.R.T viewer"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(MIT)
 depends=('libatasmart')
 makedepends=('cmake')
 source=("https://github.com/otakuto/crazydiskinfo/archive/${pkgver}.tar.gz")
-sha256sums=('828165463a566b1736c5d94cfe8e0036085b99cefee65191fcba770156d9a2bd')
+sha256sums=('fca9a4487bb088d4e12d11b0c3040843a109818e9f757912490a0ca15ad95bb4')
 
 prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
