@@ -1,6 +1,6 @@
 pkgbase = xde-ctools
 	pkgdesc = X Desktop Environment C-language tools
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/bbidulock/xde-ctools
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = xde-ctools
 	depends = libcanberra
 	depends = libnotify
 	optdepends = xdg-launch: launch with recent update and launch notification
-	source = https://github.com/bbidulock/xde-ctools/releases/download/1.11/xde-ctools-1.11.tar.lz
-	sha256sums = 43130ac08a69083fe74e9efd8b6d40b94463296af1d637c94fb18da697c1f8da
+	source = https://github.com/bbidulock/xde-ctools/releases/download/1.12/xde-ctools-1.12.tar.lz
+	sha256sums = 750583c76cf50bdf96f3283914f37fa33b508f4f1692680ec39a0e06685fe02b
 
 pkgname = xde-ctools
 
