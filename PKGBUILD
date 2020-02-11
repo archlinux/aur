@@ -2,7 +2,7 @@
 
 pkgname=('python-gtkspellcheck' 'python2-gtkspellcheck')
 pkgver=4.0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Spell-checking library written in Python for Gtk based on Enchant"
 arch=('any')
 url="https://github.com/koehlma/pygtkspellcheck"
@@ -15,8 +15,8 @@ sha512sums=('f2ea035093a4d8bd9ca3b04f7433808b1ea8c3723b3ea12b95f470d8eb003c9cf58
 package_python-gtkspellcheck() {
   depends=('python-pyenchant' 'python-gobject')
 
-  cd "$srcdir/pygtkspellcheck"
-  python3 setup.py install --root="$pkgdir" -O1
+  cd "${srcdir}/pygtkspellcheck-${pkgver}"
+  python3 setup.py install --root="${pkgdir}" -O1
 }
 
 package_python2-gtkspellcheck() {
@@ -25,8 +25,8 @@ package_python2-gtkspellcheck() {
   replaces=('python2-gtkspell')
   conflicts=('python2-gtkspell')
 
-  cd "$srcdir/pygtkspellcheck"
-  GTKSPELL=true python2 setup.py install --root="$pkgdir" -O1
+  cd "${srcdir}/pygtkspellcheck-${pkgver}"
+  GTKSPELL=true python2 setup.py install --root="${pkgdir}" -O1
 }
 
 # vim:set ts=2 sw=2 et:
