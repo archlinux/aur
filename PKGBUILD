@@ -18,7 +18,7 @@ md5sums=('SKIP')
 build() {
   mkdir -p 5.1
   # Build for 5.1
-  (cd 5.1; luarocks build --pack-binary-rock --lua-version=5.1 --deps-mode=none ../"$pkgname"/"gifine-dev-$pkgver.rockspec")
+  (cd 5.1; luarocks build --pack-binary-rock --lua-version=5.1 --deps-mode=none ../gifine/"gifine-dev-$pkgver.rockspec")
 }
 
 package() {
