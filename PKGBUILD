@@ -1,11 +1,12 @@
 # Maintainer: Fred Hornsey <hornseyf@objectcomputing.com>
-# Former Maintainer: Brian Bidulock <bidulock@openss7.org>
-#
+# Contributor: Goncalo Camelo Neves Pereira <up201503829@fe.up.pt>
+# Contributor: Brian Bidulock <bidulock@openss7.org>
+
 pkgname=opendds
 _pkgname=OpenDDS
 pkgver=3.13.3
-pkgrel=1
-_ace_tao_version=6.5.7
+pkgrel=2
+_ace_tao_version=6.5.8
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
 url="http://www.opendds.org/"
@@ -18,9 +19,9 @@ source=(
   "https://github.com/objectcomputing/OpenDDS/releases/download/DDS-$pkgver/OpenDDS-$pkgver.tar.gz"
   build.patch
 )
-md5sums=('b0a66007920a1bb591ae6d458954c136'
+md5sums=('456034b884332f68ecaabbbfac4b0b64'
          '35a0907fd6d6b9c29a5c4718e8c35624'
-         'f3eaf93bc0986b7da69ab9dbae0c8aad')
+         'e0e1e325285a4b3e81a87673a43b4194')
 
 prepare() {
   cd "$srcdir"
