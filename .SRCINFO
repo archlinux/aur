@@ -1,5 +1,5 @@
-pkgbase = libselinux
-	pkgdesc = SELinux library and simple utilities
+pkgbase = libselinux-python2
+	pkgdesc = SELinux library and simple utilities (python 2.x bindings)
 	pkgver = 3.0
 	pkgrel = 1
 	url = http://userspace.selinuxproject.org
@@ -9,19 +9,23 @@ pkgbase = libselinux
 	groups = selinux
 	license = custom
 	makedepends = python
+        makedepends = python2
 	makedepends = ruby
 	makedepends = xz
 	makedepends = swig
 	depends = libsepol>=3.0
 	depends = pcre
 	optdepends = python: python bindings
+        optdepends = python2: python 2.x bindings
 	optdepends = ruby: ruby bindings
 	provides = selinux-usr-libselinux=3.0-1
+        provides = libselinux
+        conflicts = libselinux
 	conflicts = selinux-usr-libselinux
 	source = https://github.com/SELinuxProject/selinux/releases/download/20191204/libselinux-3.0.tar.gz
 	source = libselinux.tmpfiles.d
 	sha256sums = 2ea2b30f671dae9d6b1391cbe8fb2ce5d36a3ee4fb1cd3c32f0d933c31b82433
 	sha256sums = afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc
 
-pkgname = libselinux
+pkgname = libselinux-python2
 
