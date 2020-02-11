@@ -19,7 +19,7 @@ prepare() {
 
 	mkdir -p "$_builddir/$(echo "$_buildpath" | rev | cut -d '/' -f 2- | rev)/"
 	mv "errgo-$pkgver/" "$_builddir/$_buildpath/"
-	rm -r "$_builddir/$_buildpath/go."{mod,sum}
+	rm -r "$_builddir/$_buildpath/go."{'mod','sum'}
 }
 
 check() {
