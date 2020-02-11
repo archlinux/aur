@@ -2,7 +2,7 @@
 pkgname=vidify
 pkgver=2.0.5
 pkgrel=1
-pkgdesc="Watch live music videos for the songs playing on your device"
+pkgdesc="Watch music videos in real-time for the songs playing on your device"
 arch=("any")
 url="https://github.com/vidify/vidify"
 license=("LGPL")
