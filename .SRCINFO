@@ -1,11 +1,12 @@
 pkgbase = wxlua
-	pkgdesc = Lua bindings fore the wxWidgets library (Lua 5.3 compatible fork)
+	pkgdesc = Lua bindings for wxWidgets (Lua 5.3 compatible fork)
 	pkgver = 3.0.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pkulchenko/wxlua
 	arch = i686
 	arch = x86_64
 	license = custom:wxWindows
+	checkdepends = cppcheck
 	makedepends = cmake
 	depends = desktop-file-utils
 	depends = wxgtk2
