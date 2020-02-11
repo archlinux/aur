@@ -4,7 +4,7 @@
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
-_pkgver=3.0.0
+_pkgver=3.0.2
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='An easy to use screencast creator'
@@ -25,7 +25,7 @@ source=(
 	'install.pri'
 )
 sha512sums=(
-	'e277a3cd2152c2fdf0da3efb7976417b5499124282cfabd76f9ef4627a73457b59792f5492367acd386a0dc77773414e4d1717ec7e5c023350bd7502647e675e'
+	'78b23361444b516cccfb7e2a1b803618046f37fbcff6a744d2e8a5887f68c5b2c44c63d69bbbd9340b03c29eadbf1a3bf607da6c3d00b32fdfe72cab967aefbe'
 	'55b27e0eb5f0f1f1193057c854666ccaea6df89d090239e58a0b8fe6c8749d9d2ca3e80812ea7ecded22fdf75d7fd8a0699e8dbeae6c93c97bc6b648f114e5f4'
 )
 
