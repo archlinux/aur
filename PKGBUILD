@@ -2,12 +2,13 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.67.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
 license=('GPL3')
 depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
+makedepends=('asar')
 optdepends=('zenity: for dialogs'
             'kdialog: for dialogs'
             'xdialog: for dialogs')
@@ -37,8 +38,14 @@ prepare() {
 		"squashfs-root/${pkgname%-bin}.desktop"
 
 	# Disable auto-update
-	sed -i 's|publishAutoUpdate: true|publishAutoUpdate: false|g' \
-		squashfs-root/resources/app-update.yml
+	cd "$srcdir/squashfs-root/resources"
+	mkdir -p app-asar
+	asar extract app.asar app-asar
+	rm app.asar
+	sed -i 's|"enableAutoUpdate": true|"enableAutoUpdate": false|g' \
+		app-asar/package.json
+	asar pack app-asar app.asar
+	rm -rf app-asar
 }
 
 package() {
