@@ -1,24 +1,22 @@
 pkgbase = wxlua-git
-	pkgdesc = A set of bindings to the wxWidgets library for the Lua programming language - fork with Lua 5.3 support
-	pkgver = WX_3_1_0.7d9d59.r17.gead9b38
-	pkgrel = 2
+	pkgdesc = Lua bindings for wxWidgets (Lua 5.3 compatible fork)
+	pkgver = 3.0.0.8.r7.g7684ddf
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/pkulchenko/wxlua
 	arch = i686
 	arch = x86_64
-	arch = armv7h
-	arch = armv8
 	license = custom:wxWindows
+	checkdepends = cppcheck
 	makedepends = git
 	makedepends = cmake
 	depends = desktop-file-utils
-	depends = wxgtk
+	depends = wxgtk2
 	depends = lua
 	provides = wxlua
-	provides = wxstedit
 	conflicts = wxlua
-	conflicts = wxstedit
 	source = git://github.com/pkulchenko/wxlua.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = wxlua-git
 

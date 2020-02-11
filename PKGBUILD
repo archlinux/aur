@@ -5,29 +5,34 @@
 # Contributor: hollunder <murks at tuxfamily dot org>
 
 pkgname=wxlua-git
-pkgver=WX_3_1_0.7d9d59.r17.gead9b38
-pkgrel=2
-pkgdesc="A set of bindings to the wxWidgets library for the Lua programming language - fork with Lua 5.3 support"
-arch=('i686' 'x86_64' 'armv7h' 'armv8')
-url="https://github.com/pkulchenko/wxlua"
+_pkgname=${pkgname/%-git}
+pkgver=3.0.0.8.r7.g7684ddf
+pkgrel=1
+epoch=1
+pkgdesc="Lua bindings for wxWidgets (Lua 5.3 compatible fork)"
+arch=('i686' 'x86_64')
+url="https://github.com/pkulchenko/$_pkgname"
 license=('custom:wxWindows')
-depends=('desktop-file-utils' 'wxgtk' 'lua')
+depends=('desktop-file-utils' 'wxgtk2' 'lua')
 makedepends=('git' 'cmake')
-provides=('wxlua' 'wxstedit')
-conflicts=('wxlua' 'wxstedit')
-source=("git://github.com/pkulchenko/wxlua.git")
-md5sums=('SKIP')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+checkdepends=('cppcheck')
+source=("git://github.com/pkulchenko/$_pkgname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname%-git}"
+    git describe --tags --match "v[0-9\.]*" origin/master | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${pkgname%-git}"/wxLua/
-
-    cd build
+    cd "${pkgname%-git}/wxLua/build"
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+        -DwxLua_LUA_LIBRARY_USE_BUILTIN=FALSE \
+        -DwxLua_LUA_LIBRARY_BUILD_SHARED=TRUE \
+        -DwxLua_LUA_LIBRARY="/usr/lib/liblua.so" \
+        -DwxLua_LUA_INCLUDE_DIR="/usr/include/" \
         -DCMAKE_BUILD_TYPE=Release \
         -DwxWidgets_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
         -DwxLuaBind_COMPONENTS="stc;gl;html;aui;adv;core;net;base" \
@@ -36,16 +41,14 @@ build() {
 }
 
 package() {
-    cd "${pkgname%-git}"/wxLua/build
+    cd "${pkgname%-git}/wxLua/build"
     make DESTDIR="$pkgdir/" install
-    rm "$pkgdir"/usr/bin/lua
-    rm "$pkgdir"/usr/bin/luac
+    rm -f "$pkgdir"/usr/bin/lua{,c}
 
-    # mv lua module
     install -d "$pkgdir/usr/lib/lua/5.3"
     mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.3/wx.so"
 
-    cd ..
+    pushd ..
 
     install -Dm644 distrib/autopackage/wxlua.desktop \
         "$pkgdir/usr/share/applications/wxlua.desktop"
