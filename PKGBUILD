@@ -5,30 +5,27 @@
 
 pkgname=etcher-git
 _pkgname=etcher
-pkgver=1.5.67.r0.g4d65bd9f
-pkgrel=2
+pkgver=1.5.76.r0.g80e02317
+pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
 _github_url='https://github.com/balena-io/etcher'
 url='https://etcher.io'
 license=(Apache)
-depends=(electron3-bin gtk2 libxtst libxss gconf nss alsa-lib nodejs)
-makedepends=(npm python2 git jq)
-optdepends=('libnotify: for notifications'
-            'speech-dispatcher: for text-to-speech')
+depends=("electron" "gtk3" "libxtst" "libxss" "nss" "alsa-lib" "nodejs" "glib2" "polkit" "libusb")
+makedepends=("npm" "python2" "git" "jq")
+optdepends=("libnotify: for notifications")
 conflicts=("${_pkgname}"
   "${_pkgname}-git"
   "${_pkgname}-bin"
 )
 options=('!strip')
 source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git"
-        'git+https://github.com/balena-io/scripts.git'
-        "${pkgname}-electron"
+        "${pkgname}-electron.sh"
         "${pkgname}-electron.desktop"
         )
 sha256sums=('SKIP'
-            'SKIP'
-            'e3870f588df1985b4a45ffa29db899465874e6e1b55c020c2f5b280f3fa77e21'
+            'c8b0f3d9615a21a5f03af36ef9033e71e9c9716c1381879bd7279a7fcf95bb1f'
             'd23e62375aa83a57bfeebbbd7bde09a7d1917deaee78c9e4d3bdf26e1a47870f')
 
 pkgver() {
@@ -39,15 +36,12 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   git submodule init
-  git config submodule.scripts/resin.url "${srcdir}/scripts"
-  git submodule update
+  git submodule update || cd "${srcdir}/${_pkgname}/scripts/resin" && git checkout --
 }
 
 build() {
   cd "${_pkgname}"
   export NPM_VERSION=$(npm --version)
-  rm -rf node_modules
-  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
   make electron-develop
   make webpack
   npm prune --production
@@ -64,7 +58,7 @@ package() {
   install -D assets/icon.png "${_appdir}/assets/icon.png"
   install -D lib/gui/app/index.html "${_appdir}/lib/gui/app/index.html"
 
-  install -Dm755 "${srcdir}/${pkgname}-electron" "${pkgdir}/usr/bin/${pkgname}-electron"
+  install -Dm755 "${srcdir}/${pkgname}-electron.sh" "${pkgdir}/usr/bin/${pkgname}-electron"
   install -Dm644 "${srcdir}/${pkgname}-electron.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}-electron.desktop"
 
@@ -72,4 +66,6 @@ package() {
     install -Dm644 "assets/iconset/${size}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${size}/apps/${pkgname}-electron.png"
   done
+
+  find "${pkgdir}" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
 }
