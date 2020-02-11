@@ -8,6 +8,8 @@ url='https://stem.torproject.org/'
 license=('LGPL3')
 depends=('python')
 makedepends=('git')
+conflicts=('python-stem')
+provides=('python-stem')
 source=('git+https://git.torproject.org/stem.git')
 sha256sums=('SKIP')
 

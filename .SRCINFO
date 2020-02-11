@@ -8,6 +8,8 @@ pkgbase = python-stem-git
 	license = LGPL3
 	makedepends = git
 	depends = python
+	provides = python-stem
+	conflicts = python-stem
 	source = git+https://git.torproject.org/stem.git
 	sha256sums = SKIP
 
