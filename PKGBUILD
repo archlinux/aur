@@ -33,21 +33,18 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}/wxLua/build"
+    cd "${pkgname}-${pkgver}/wxLua"
+    pushd "build"
     make DESTDIR="$pkgdir/" install
     rm -f "$pkgdir"/usr/bin/lua{,c}
+    popd
 
     install -d "$pkgdir/usr/lib/lua/5.3"
-    mv "$pkgdir/usr/lib/libwx.so" "$pkgdir/usr/lib/lua/5.3/wx.so"
+    mv "$pkgdir"/usr/lib/{lib,lua/5.3/}wx.so
 
-    pushd ..
+    install -Dm 644 docs/licence.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    install -Dm644 distrib/autopackage/"$pkgname".desktop \
-        "$pkgdir/usr/share/applications/$pkgname.desktop"
-
-    install -Dm644 distrib/autopackage/"$pkgname".xml \
-        "$pkgdir/usr/share/mime/packages/$pkgname.xml"
-
-    install -Dm 644 docs/licence.txt \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    pushd distrib/autopackage
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 "${pkgname}.xml" -t "${pkgdir}/usr/share/mime/packages/"
 }
