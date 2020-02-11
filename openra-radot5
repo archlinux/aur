@@ -1,0 +1,19 @@
+#!/bin/sh
+cd "/usr/lib/openra-radot5"
+
+# Run the game
+mono --debug OpenRA.Game.exe Game.Mod=radot5 Engine.LaunchPath="/usr/bin/openra-radot5" "Engine.ModSearchPaths=/usr/lib/openra-radot5/mods" "$@"
+
+# Show a crash dialog if something went wrong
+if [ $? != 0 ] && [ $? != 1 ]; then
+  ERROR_MESSAGE="OpenRA Red Alert .5 has encountered a fatal error.\nPlease refer to the crash logs and FAQ for more information.\n\nLog files are located in ~/.openra/Logs\nThe FAQ is available at http://wiki.openra.net/FAQ"
+  if command -v zenity > /dev/null; then
+    zenity --no-wrap --error --title "OpenRA Red Alert .5" --text "${ERROR_MESSAGE}" 2> /dev/null
+  elif command -v kdialog > /dev/null; then
+    kdialog --title "OpenRA Red Alert .5" --error "${ERROR_MESSAGE}"
+  else
+    printf "${ERROR_MESSAGE}\n"
+  fi
+  exit 1
+fi
+

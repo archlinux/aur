@@ -1,0 +1,37 @@
+pkgbase = openra-radot5-git
+	pkgdesc = OpenRA mod that tell the storyline between 1936 to Red Alert 1
+	pkgver = 157.git.5f7c0d2
+	pkgrel = 1
+	url = https://github.com/MustaphaTR/Red-Alert-.5
+	install = openra-radot5.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	makedepends = msbuild
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-radot5
+	options = !strip
+	source = git+https://github.com/MustaphaTR/Red-Alert-.5.git
+	source = openra-radot5
+	source = openra-radot5.appdata.xml
+	source = openra-radot5.desktop
+	md5sums = SKIP
+	md5sums = 19f94aacaab367f2dada6c5d89987a8f
+	md5sums = c53603fdbe9b438722658226bcc36aee
+	md5sums = aa5929872e801213be21a5d4f0b58f3b
+
+pkgname = openra-radot5-git
+
