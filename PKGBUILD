@@ -5,7 +5,7 @@ pkgver='1.8.0'
 pkgrel='2'
 pkgdesc='Tor control library for Python - python2 version'
 arch=('any')
-url='https://stem.torproject.org/'
+url="https://$_projectname.torproject.org/"
 license=('LGPL3')
 depends=('python2' 'python2-cryptography' 'python2-pysha3')
 optdepends=('tor: tor-server to talk to')
@@ -31,7 +31,7 @@ prepare() {
 		-e '/|test.integ.installation.TestInstallation/d' \
 		-e '/|test.integ.control.controller.TestController/d' \
 		-e '/|test.integ.descriptor.collector.TestCollector/d'
-	rm 'test/'{integ,unit}'/installation.py'
+	rm 'test/'{'integ','unit'}'/installation.py'
 	rm 'test/integ/control/controller.py'
 	rm 'test/integ/descriptor/collector.py'
 }
