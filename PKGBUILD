@@ -51,7 +51,7 @@ _major=5.5
 _minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,9 +71,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v9-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v9-sep/0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch"
+        "${_lucjanpath}/arch-patches-v10-sep/0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch"
          # the main kernel config files
         'config')
 
@@ -326,9 +329,12 @@ sha512sums=('ffc4f5605b6f9278030146d8ed8f1c3341bb588f6a96400ff5466daf0d74e95e94b
             'SKIP'
             '487c062cf2d0e12faa2797547b25bd0a6cfca7e0df1bf8b7e9f23ca253477aff0f889467e6223dd1992ea322034ede09929e67a03317fad457d908aac8ebac14'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '3508727e453cb8daf9239bcf8029b1e8f579760a54e4dbf534fde7d4d4d1ab1473383152d6a04fc9bbabd7c4e21401b14d274a970a39456e64bfd8622f168a4d'
-            '8ba3cc2beb2f299921c212cea5fed49840f169cc8a4a516b8b9156d02a2760a4c6071fc2792097abd88e9e531af3f357bda022a91a4c2e268cf7e33f096c4d2f'
-            '754b3bfddd9d28c55fbd75ca264720a990e4f8cccb8eaa2533c67230ae213b8acdfe8f0baa7322f739d54a9ba95a1964e2d0414ad725d9186a7b557d6d68bd71'
+            '5dd1df3dcbe57199ce50840ad29649da9512e8ef50d30fb97def772e6f72bf5414a57aac3dd2c63ee23c25d275c12d4d919b0985db3ed21846c05c721ffae845'
+            '0944de2d50b4b255d09cf5c35adfbd8c7d8c25ff6838312e6c9345cd9ce27f258a45978bd7bf2cda4bb04090b4c94fd5e20e20f728e9329c92fcd337b58818e0'
+            'f4bb3b9c4f8891241b8b8ac8e00b8f013d92c18ea6feccae5cbbb38b9e50e9c1202b379012d0787a67c0d6b38874cb887766e41bf9075f66fc9089d7835e51fb'
+            '6e357c3c98ebd791f909ca3d51bf4fc8d966b449e2b11a24ca16d768eaa20cdbf223f115b07bd8a1c22faa8c7025228adbe45849b761bb2c13cc54a52e48b6d4'
+            'dda3728e041ad1adff147d04f9963719f5c75e3a5a6d48bc39799bfad2e3e7c0a06cb9bfbd31141237177f722bc9f6335e10535ae96f22852cecb6105c3b9f04'
+            '8cb482be6f6185cd52563aa985d711e38c0c971bb39fb66f24279eb76b9fc5160349b2519d57ac2006f2e490e9a210560dab9fc3c3b5a2cf47015baae3655ddd'
             '603e6e3d8301a3b2f4623d4001535782fdea8a314efd85aa419a75c9bc5446368f70d56b857ff32f9ef584b17594bd9d291f728e5d4099180e550e5d5854d499')
 
 validpgpkeys=(
