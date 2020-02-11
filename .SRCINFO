@@ -6,7 +6,8 @@ pkgbase = python2-py010parser
 	arch = any
 	license = custom
 	makedepends = python2-setuptools
-	depends = python2
+	depends = python2-regex
+	depends = python2-six
 	source = https://github.com/d0c-s4vage/py010parser/archive/v0.1.18.tar.gz
 	md5sums = c0b236be2bfe464aa8db3ab98ce7db67
 
