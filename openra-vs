@@ -2,7 +2,7 @@
 cd "/usr/lib/openra-vs"
 
 # Run the game
-mono --debug OpenRA.Game.exe Game.Mod=rv Engine.LaunchPath="/usr/bin/openra-vs" "Engine.ModSearchPaths=/usr/lib/openra-vs/mods" "$@"
+mono --debug OpenRA.Game.exe Game.Mod=ra2vsh Engine.LaunchPath="/usr/bin/openra-vs" "Engine.ModSearchPaths=/usr/lib/openra-vs/mods" "$@"
 
 # Show a crash dialog if something went wrong
 if [ $? != 0 ] && [ $? != 1 ]; then

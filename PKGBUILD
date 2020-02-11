@@ -19,7 +19,7 @@ source=("git+${url}.git"
 "openra-vs.appdata.xml"
 "openra-vs.desktop")
 md5sums=('SKIP'
-         '66bbc154f883d0635a8dbd619074a0c4'
+         '2f433e978c719c73a08147fd49c7c3c1'
          'd0c770a035d7bbda24171dcd58b54b47'
          '476642809c2b0e5af5a926218c7d2821')
 

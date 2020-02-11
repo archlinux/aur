@@ -29,7 +29,7 @@ pkgbase = openra-vs-git
 	source = openra-vs.appdata.xml
 	source = openra-vs.desktop
 	md5sums = SKIP
-	md5sums = 66bbc154f883d0635a8dbd619074a0c4
+	md5sums = 2f433e978c719c73a08147fd49c7c3c1
 	md5sums = d0c770a035d7bbda24171dcd58b54b47
 	md5sums = 476642809c2b0e5af5a926218c7d2821
 
