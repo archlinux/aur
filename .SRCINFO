@@ -27,6 +27,7 @@ pkgbase = i2p-dev
 	source = router.config
 	source = i2prouter.bash
 	source = i2prouter.sh
+	source = chromium-i2p.sh
 	sha256sums = SKIP
 	sha256sums = 644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876
 	sha256sums = df26da04c8415ac24ec73b0dd08d3459a8964553bb77e5da5ab9833b0a31d865
@@ -34,6 +35,7 @@ pkgbase = i2p-dev
 	sha256sums = 4ee28e022dccaf99043aa2735f05b7270b8eccf040c67f7ef48e114b5ca6e971
 	sha256sums = 7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a
 	sha256sums = b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8
+	sha256sums = 2d5ae5f5379e6ea095bb30c374b493b1fdd47b06aa536760c6c73bb062eb6eef
 
 pkgname = i2p-dev
 

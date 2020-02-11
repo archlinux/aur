@@ -26,7 +26,7 @@ _commit=master
 #mirror: https://gitlab.com/I2P/i2p.i2p.git
 source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
-        'i2prouter.bash' 'i2prouter.sh')
+        'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
 sha256sums=('SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
@@ -34,7 +34,8 @@ sha256sums=('SKIP'
             '5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0'
             '4ee28e022dccaf99043aa2735f05b7270b8eccf040c67f7ef48e114b5ca6e971'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
-            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8')
+            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8'
+            '2d5ae5f5379e6ea095bb30c374b493b1fdd47b06aa536760c6c73bb062eb6eef')
 
 pkgver() {
     cd "$_gitname"
@@ -97,6 +98,7 @@ package() {
     install -Dm644 "$srcdir/router.config"     "opt/i2p/router.config"
     install -Dm644 "$srcdir/wrapper.config"    "opt/i2p/wrapper.config"
     install -Dm755 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
+    install -Dm755 "$srcdir/chromium-i2p.sh"   "opt/i2p/scripts/chromium-i2p"
 
     install -Dm644 "$srcdir/i2prouter.bash"    "usr/share/bash-completion/completions/i2prouter"
     install -Dm644 "$srcdir/$_gitname/installer/resources/bash-completion/eepget" \
@@ -107,13 +109,12 @@ package() {
     mv opt/i2p/licenses/*                      "usr/share/licenses/i2p/"
 
     ln -s /opt/i2p/{eepget,i2prouter} "usr/bin/"
-    chmod +x opt/i2p/{eepget,i2prouter}
-    chmod -x opt/i2p/*.config
+    chmod +x opt/i2p/eepget
 
     sed -i opt/i2p/{eepget,wrapper.config} \
         -e 's:%INSTALL_PATH:/opt/i2p:g'
 
-    # dont automatically start the webserver (3) or open a webbrowser (4)
+    # dont automatically start the webserver(3) or open a webbrowser(4)
     sed -i opt/i2p/clients.config \
         -e "s:clientApp.3.startOnLoad=.*:clientApp.3.startOnLoad=false:" \
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
