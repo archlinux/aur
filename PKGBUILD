@@ -1,7 +1,7 @@
 # Maintainer: Timothy Gelter <timothy dot gelter plus aur at gmail dot com>
 pkgname=cryptr-bin
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for Vault"
 arch=('x86_64')
 url="https://github.com/adobe/cryptr#readme"
@@ -15,5 +15,5 @@ md5sums=('194d791e890856869bb38c147ce34566')
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
-	install -D -m644 "/opt/Cryptr/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/Cryptr/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
