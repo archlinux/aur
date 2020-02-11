@@ -20,5 +20,6 @@ package(){
 
 build() {
   sudo chmod +x citardauq
-  sudo cp citardauq /bin
+  sudo cp citardauq /usr/bin
+  echo Installed citardauq.
 }
