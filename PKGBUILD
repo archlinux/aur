@@ -18,7 +18,7 @@ source=("https://github.com/IbcAlpha/IBC/releases/download/${pkgver}/IBCLinux-${
         'fdemo.ini'
         'ibc@.service')
 md5sums=('32c87ce8738e3f144d207f7abf8f5a23'
-         '97276d324a45bbf44cf82cf802c5ab0a'
+         '21fd3128d3b4dfaeb26bcf825f7f8b9b'
          '55001e560331a3ee0c4988961090eff9'
          'a1bed3fed40a1a5165fbd86fb8204eec'
          'e4cc6b5177719502cbcd9ea3a0152eab')
