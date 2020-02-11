@@ -4,6 +4,7 @@ pkgname=odb
 pkgver=2.5.0b17
 pkgrel=1
 pkgdesc="C++ Object-Relational Mapping compiler"
+url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
 depends=('build2')
 conflicts=('libcutl' 'libstudxml')
