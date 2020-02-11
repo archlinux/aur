@@ -2,14 +2,14 @@
 # Thu Apr  6 04:15:22 UTC 2017
 pkgbase = keepass-plugin-keeautoexec
 	pkgdesc = A KeePass plugin allows to automatically open additional databases when opening a database.
-	pkgver = 2.2
+	pkgver = 2.4
 	pkgrel = 1
 	url = http://keepass.info/plugins.html#keeautoexec
 	arch = any
 	license = GPLv2
 	depends = keepass
-	source = http://keepass.info/extensions/v2/keeautoexec/KeeAutoExec-2.2.zip
-	md5sums = fb143b1a7e8c767d3e835c01cf43837c
+	source = http://keepass.info/extensions/v2/keeautoexec/KeeAutoExec-2.4.zip
+	md5sums = 48055c080f4e8efcde7e91eb31981e6a
 
 pkgname = keepass-plugin-keeautoexec
 
