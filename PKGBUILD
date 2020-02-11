@@ -3,7 +3,7 @@
 pkgname=ncnn-git
 _pkgname=ncnn
 pkgver=20200106.r52.g0185301
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
 license=('BSD')
@@ -31,6 +31,7 @@ build() {
         -DCMAKE_TOOLCHAIN_FILE=../toolchains/host.gcc.toolchain.cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DNCNN_BUILD_EXAMPLES=OFF \
+        -DNCNN_BUILD_TOOLS=OFF \
         -DNCNN_VULKAN=ON \
         ..
     make
