@@ -8,8 +8,9 @@ arch=('x86_64')
 url='http://www.sqlabs.com/cubesql.php'
 license=('custom:cubesql')
 optdepends=('gtk2' 'libgtkhtml')
-_cubesql_ver=571
-source=("http://www.sqlabs.com/download/cubesql/${_cubesql_ver}/cubesql_linux64bit.gz" 'cubesql.service' 'cubesql-admin')
+_cubesql_ver=572
+#source=("http://www.sqlabs.com/download/cubesql/${_cubesql_ver}/cubesql_linux64bit.gz" 'cubesql.service' 'cubesql-admin')
+source=("https://www.sqlabs.com/download/cubesql/latest/cubesql_linux64bit.tar.gz" 'cubesql.service' 'cubesql-admin')
 sha256sums=('ae99e1580426b2ca022f10c7f61d514bf326b34c428685efbb4a744cbbe4115d' 'SKIP' 'SKIP')
 
 package() {
