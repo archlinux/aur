@@ -15,10 +15,16 @@ makedepends=('dos2unix' 'git' 'unzip')
 provides=("${_pkgname}")
 options=(!strip)
 source=("git+https://github.com/IceReaper/KKnD.git"
+"local://GeoLite2-Country.mmdb.gz"
+"fetch-engine.patch"
+"Makefile.patch"
 "${_pkgname}"
 "${_pkgname}.appdata.xml"
 "${_pkgname}.desktop")
 md5sums=('SKIP'
+         'efb8c043dfa095146f373fec367aef64'
+         '711019044fbb1c1e3aa5edc58b54343d'
+         'feae017ba5765215cd151a892362e6b1'
          '97e2915c76fed6ddc325652bbc03daa6'
          'c5f78612c8da1e25119bd13c14989a14'
          'bca1c5bd8363910c329041cafcb784d5')
@@ -36,6 +42,7 @@ prepare() {
     printf "Success in converting docs...\n"
     make version VERSION="${pkgver}"
     printf "Success in setting version\n"
+    patch -Np1 -i $srcdir/fetch-engine.patch
 }
 
 build() {
@@ -47,7 +54,7 @@ package() {
     cd $srcdir/KKnD
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/${_pkgname},share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/${_pkgname}
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,Eluant.dll*,FuzzyLogicLibrary.dll,GeoLite2-Country.mmdb.gz,'global mix database.dat',ICSharpCode.SharpZipLib.dll,launch-dedicated.sh,launch-game.sh,MaxMind.Db.dll,OpenAL-CS.dll,OpenAL-CS.dll.config,Open.Nat.dll,OpenRA.Game.exe,OpenRA.Platforms.Default.dll,OpenRA.Server.exe,OpenRA.Utility.exe,rix0rrr.BeaconLib.dll,SDL2-CS.dll,SDL2-CS.dll.config,SharpFont.dll,SharpFont.dll.config,VERSION} $pkgdir/usr/lib/${_pkgname}
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/${_pkgname}
     cp -r mods/*kknd* $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
