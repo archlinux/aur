@@ -37,72 +37,14 @@ package() {
   tar Jxf data.tar.xz -C "$pkgdir"
   install -dm755 "$pkgdir/usr/bin"
 
-  # libgstreamer is no dep anymore since v1.2
-
-  # ARCH=${CARCH/686/386/}
-  # ARCH=${ARCH/x86_64/amd64}
-  #
-  # ar x libgstreamer0.10-0_0.10.36-1.2ubuntu3_${ARCH}.deb
-  # tar Jxf data.tar.xz \
-  #     --wildcards \
-  #     -C "${pkgdir}/usr/lib/rstudio/bin" \
-  #     ./usr/lib/${CARCH/686/386}-linux-gnu/libgstreamer-0.10.so.\* \
-  #     ./usr/lib/${CARCH/686/386}-linux-gnu/libgstbase-0.10.so.\* \
-  #     --strip-components=4
-  #
-  # ar x libgstreamer-plugins-base0.10-0_0.10.36-1.1ubuntu2.1_${ARCH}.deb
-  # tar Jxf data.tar.xz \
-  #     --wildcards \
-  #     -C "${pkgdir}/usr/lib/rstudio/bin" \
-  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstapp-0.10.so.\* \
-  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstinterfaces-0.10.so.\* \
-  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstpbutils-0.10.so.\* \
-  #     ./usr/lib/${CARCH/686/386/}-linux-gnu/libgstvideo-0.10.so.\* \
-  #     --strip-components=4
-
-  #cd "$pkgdir/usr/lib/rstudio/bin"
-  #ln -sf /usr/lib/libncursesw.so.6 libtinfo.so.5
-  #ln -sf /usr/lib/libedit.so.0  libedit.so.2
-
-#  cd "$pkgdir/usr/lib/rstudio/bin/rsclang"
-#  patchelf --set-rpath '$ORIGIN/..' libclang.so
-
   cd "$pkgdir/usr/lib/rstudio/bin/pandoc"
   ln -sf /usr/bin/pandoc ./
   ln -sf /usr/bin/pandoc-citeproc ./
 
-#  cd "$pkgdir/usr/lib/rstudio/bin/plugins"
-#  ls */*.so | xargs -n1 patchelf --set-rpath '$ORIGIN/../..'
-
   find "$pkgdir/usr" -type d -print0 | xargs -0 chmod 755
   find "$pkgdir/usr" -type f -name '*.so.*' -print0 | xargs -0 chmod 644
 
-  # deprecated with v1.2.x
-  # cd "$pkgdir/usr/lib/rstudio/bin"
-  # ls libQt*.so.*| grep '\.[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
-  # while read x;do
-  #   if [[ ! -e "${x%.+([0-9]).+([0-9])}" ]];then
-  #     ln -s "$x" "${x%.+([0-9]).+([0-9])}"
-  #   fi
-  # done
-  # ls lib*.so.* | grep '\.so\.[0-9]\{1,\}\.[0-9]\{1,\}$'|
-  # while read x;do
-  #   if [[ ! -e "${x%.+([0-9])}" ]];then
-  #     ln -s "$x" "${x%.+([0-9])}"
-  #   fi
-  # done
-
-  # this throwed an error in v1.1.444
-  # ln -sf /usr/lib/qt/plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so plugins/platforminputcontexts/
-  # ls /usr/lib/libFcitxQt5WidgetsAddons.so{,.*} \
-  #     /usr/lib/libFcitxQt5DBusAddons.so{,.*} |
-  #     while read x;do
-  #         ln -sf "$x" ./
-  #     done
-
-
   cd "$pkgdir/usr/bin"
-  #ln -s -f ../lib/rstudio/bin/rstudio rstudio-bin
   echo '#!/bin/sh
 export QT_DIR=/usr/lib/rstudio/bin
 export QT_PLUGIN_PATH=$QT_DIR/plugins
