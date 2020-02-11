@@ -1,7 +1,7 @@
 pkgbase = opendds
 	pkgdesc = Open source C++ implementation of OMG Data Distribution Service (DDS)
 	pkgver = 3.13.3
-	pkgrel = 1
+	pkgrel = 3
 	url = http://www.opendds.org/
 	arch = i686
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = opendds
 	provides = ace
 	provides = tao
 	options = !buildflags
-	source = https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_7/ACE+TAO-6.5.7.tar.gz
+	source = https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-6_5_8/ACE+TAO-6.5.8.tar.gz
 	source = https://github.com/objectcomputing/OpenDDS/releases/download/DDS-3.13.3/OpenDDS-3.13.3.tar.gz
 	source = build.patch
-	md5sums = b0a66007920a1bb591ae6d458954c136
+	md5sums = 456034b884332f68ecaabbbfac4b0b64
 	md5sums = 35a0907fd6d6b9c29a5c4718e8c35624
-	md5sums = f3eaf93bc0986b7da69ab9dbae0c8aad
+	md5sums = e0e1e325285a4b3e81a87673a43b4194
 
 pkgname = opendds
 

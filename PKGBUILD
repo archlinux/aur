@@ -5,7 +5,7 @@
 pkgname=opendds
 _pkgname=OpenDDS
 pkgver=3.13.3
-pkgrel=2
+pkgrel=3
 _ace_tao_version=6.5.8
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
