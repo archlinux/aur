@@ -18,18 +18,15 @@ optdepends=('plumed: metadynamics support'
             'env-modules-tcl: modulefile support')
 md5sums=('afffe8a5473a0bd143b98f0396f52f0f'
          '954a26eb9c71cbc21ccad8506030ae35'
-         'eff0977b0c5d2da8ea74186dadd9ed01'
          '2e4a52fb820aae6a0b707fec89cb23d1'
          '94c0e67fac1a7e182fa71c165980d69d'
          '860a64577fe9e4d8b236b7eb2a252327'
          '20e82439a05f3abdca9c0dcdd2695e6f')
 options=(staticlibs !buildflags !makeflags)
-install=amber.install
 
 # Due to licensing issues you must register and download the package from the AmberMD url and put it in the PKGBUILD folder!
 source=("local://AmberTools${pkgver}.tar.bz2"
         "amber.sh"
-        "amber.sysusers"
         "amber.patch"
         "${pkgver}"
         "sander"
@@ -106,12 +103,8 @@ package() {
 
   # install stuff
   install -Dm644 ${srcdir}/${pkgver} ${pkgdir}/opt/${pkgname}/share/modulefiles/ambertools/${pkgver}
-  install -Dm644 ${srcdir}/amber.sysusers ${pkgdir}/usr/lib/sysusers.d/amber.conf
 
   # install wrappers
   install -Dm755 ${srcdir}/sander ${pkgdir}/usr/bin/sander
   install -Dm755 ${srcdir}/sander.MPI ${pkgdir}/usr/bin/sander.MPI
-
-  # fix permissions
-  chown -R root:4535 ${pkgdir}/opt/${pkgname}
 }
