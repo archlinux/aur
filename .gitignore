@@ -1,6 +1,9 @@
-mullvad-vpn-2019.10-1-x86_64.pkg.tar.xz
 mullvadvpn-app-binaries/
 mullvadvpn-app/
 pkg/
 src/
 *.pkg.tar.xz
+.BUILDINFO
+.INSTALL
+.MTREE
+.PKGINFO

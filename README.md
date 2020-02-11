@@ -8,10 +8,14 @@ This repository is an alternative for people who want to avoid building and runn
 
 - `gpg2 --keyserver pool.sks-keyservers.net --recv-keys EA0A77BF9E115615FC3BD8BC7653B940E494FE87`
 - `gpg2 --edit-key EA0A77BF9E115615FC3BD8BC7653B940E494FE87`
+- `gpg2 --keyserver pool.sks-keyservers.net --recv-keys 8339C7D2942EB854E3F27CE5AEE9DECFD582E984`
+- `gpg2 --edit-key 8339C7D2942EB854E3F27CE5AEE9DECFD582E984`
+for each key do:
 - in gpg console enter `trust`
 - in gpg console enter `5`
 - in gpg console enter `quit`
-- `makepkg`
+### build package
+- `makepkg --cleanbuild --clean --force`
 - `pacman -U mullvad-vpn-....pkg.tar.xz`
 
 ## CLI Manual

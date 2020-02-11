@@ -1,7 +1,7 @@
 # Maintainer: Timo Kramer <fw minus aur at timokramer dot de>
 
 pkgname=mullvad-vpn-cli
-pkgver=2019.10
+pkgver=2020.1
 pkgrel=1
 pkgdesc="The Mullvad VPN client cli"
 url="https://www.mullvad.net"
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('nss')
 makedepends=('git' 'cargo')
 conflicts=('mullvad-vpn')
-install="$pkgname.install"
-_commit='0c1a0aca41492fbb9ef1f187122e2f5bda0927ba'
+install="${pkgname}.install"
+_commit='90b0c06b59a0b9d6cda69924377335f39854b216'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=${_commit}?signed"
         'override.conf'
@@ -20,8 +20,10 @@ sha256sums=('SKIP'
             'SKIP'
             'ed978958f86da9acbce950a832491b140a350c594e2446b99a7c397a98731316'
             '2729b6842bff30eb3dae23a2133054ab1cfe9312a4fc9baa8433a81e9bafd362')
-validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87')
+validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
+              '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
+              # David Lönnhager (code signing) <david dot l at mullvad dot net>
 
 prepare() {
     # Point the submodule to our local copy
@@ -35,6 +37,9 @@ prepare() {
 build() {
     cd "${srcdir}/mullvadvpn-app"
 
+    # Build wireguard-go
+    ./wireguard/build-wireguard-go.sh
+
     # Remove old Rust build artifacts
     cargo clean --release --locked
 
@@ -42,11 +47,14 @@ build() {
     cargo build --release --locked
 
     # Copy binaries for packaging
-    cp dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} \
-        dist-assets/
-    cp target/release/*talpid_openvpn_plugin* dist-assets/
-    cp target/release/{mullvad,mullvad-daemon,mullvad-problem-report} \
-        dist-assets/
+    cp dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} dist-assets/
+    binaries=(mullvad
+              mullvad-daemon
+              mullvad-problem-report
+              libtalpid_openvpn_plugin.so)
+    for binary in ${binaries[*]}; do
+        cp target/release/${binary} dist-assets/${binary}
+    done
 }
 
 check() {
@@ -59,7 +67,7 @@ package() {
 
     # Install main files
     install --verbose --directory --mode=755 "${pkgdir}/opt/mullvad-vpn-cli"
-    cp -av dist-assets/*  "${pkgdir}/opt/mullvad-vpn-cli"
+    cp -av dist-assets/* "${pkgdir}/opt/mullvad-vpn-cli"
 
     # Install daemon service
     install --verbose -D --mode=644 dist-assets/linux/mullvad-daemon.service -t \
