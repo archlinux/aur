@@ -2,13 +2,13 @@
 
 pkgname=ulex-git
 pkgver=20171127
-pkgrel=3
+pkgrel=4
 pkgdesc="ulex is a lexer generator for Unicode and OCaml"
 url="https://github.com/whitequark/ulex"
 arch=(x86_64)
 license=('GPL')
-depends=('ocaml' 'camlp4' 'ocamlbuild' 'ocaml-findlib')
-makedepends=()
+depends=('ocaml' 'camlp4')
+makedepends=('ocamlbuild' 'ocaml-findlib')
 provides=('ulex')
 conflicts=('ulex')
 source=("${pkgname}::git://github.com/whitequark/ulex.git")
