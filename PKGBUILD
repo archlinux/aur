@@ -3,7 +3,7 @@
 _pkgname=ocp-indent
 pkgname=ocaml-${_pkgname}
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Indentation tool for OCaml, to be used from editors like Emacs and Vim."
 arch=('x86_64')
 depends=('ocaml' 'ocaml-findlib' 'ocaml-cmdliner>=1.0.0')
@@ -21,7 +21,7 @@ build() {
   cd "${_pkgname}-${pkgver}"
 
   # Fix compile error
-  patch src/indentConfig.ml ../../config.patch
+  patch src/indentConfig.ml ${srcdir}/config.patch
   sed -i 's|(flags :standard -w -9)|(flags :standard -w -9 -warn-error -57)|g' src/dune
 
   dune build
