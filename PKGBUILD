@@ -1,9 +1,9 @@
 # Maintainer: Matthias Lisin <ml@visu.li>
 # Contributor: sum01 <sum01@protonmail.com>
 pkgname=rocketchat-desktop
-pkgver=2.17.5
+pkgver=2.17.6
 _srcname="Rocket.Chat.Electron-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Rocket.Chat Native Cross-Platform Desktop Application via Electron.'
 arch=('i686' 'x86_64')
 url="https://github.com/RocketChat/Rocket.Chat.Electron"
@@ -17,11 +17,11 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         rocketchat-desktop.desktop
         fix-build.patch
         use-system-dictionaries.patch)
-sha512sums=('9f081256ab86830dd34623744d209229454c8fcd1bab7bda62b68c874a3a1d957ea516b1be5ac3648a644b9da2f74d9478667aa567fb4035c25616da30ab0c7a'
+sha512sums=('aa85d2477a3a23fe7b60ff3be41959deef86aacc468b747af8748ec79ac104b54d004d5e89ff52bebab02b8ce3474036d2854e4b6308fe5b71b86ab69b73bef0'
             '1f0f7197012421ff42d2936f73e697e35eef8c57fb9fed59ee022f9d170d6496407f89e426526fba8451fe304b3a8de1724d1cd14bd85d781bbf6aa9ca078d7d'
             'd87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26'
-            'f614b29f3fb330e870edd51a3f1b9ca05c72c2c937a5a4d23797947751d55f8ac8db217f8edbe277e721c1a07f5bc84fd0be7a4903a7d991f7a9eb9625f34ce9'
-            'bf4edfa22a6819c2437f60f201c52195cf1fd1e5e7c82e02ef78d3beb37becf28d321b1ef1980d2084fe439b8004e5f44acf09cef79d42fb35c6363463435357')
+            'ae924a722734962432c795f051dc35771c0347b655845fcb614c3424674e23aca071708ae0b84b19794b6f532af7a409ca078ff0f60db0ee88a8bcb09f78c1ab'
+            '88361c770163c4c1d692128a4c8848d2f9700382394dbbe1391b2d0c22268dee1be850d391eece22ee51d9c119971337884dfd7a4c58c29e384b652592c4df9b')
 if [[ $CARCH == "i686" ]]; then
     _releasename="release:linux-ia32"
     _distname="linux-ia32-unpacked"
@@ -41,7 +41,8 @@ prepare() {
 
 build() {
     cd "$_srcname"
-    NODE_ENV=production yarn --cache-folder="$srcdir/yarn-cache" gulp build "$_releasename"
+    NODE_ENV=production yarn --cache-folder="$srcdir/yarn-cache" gulp build
+    NODE_ENV=production yarn --cache-folder="$srcdir/yarn-cache" gulp "$_releasename"
 }
 
 package() {

@@ -1,7 +1,7 @@
 diff -ura package.orig/electron-builder.json package.new/electron-builder.json
---- package.orig/electron-builder.json	2019-10-11 21:15:47.916614387 +0200
-+++ package.new/electron-builder.json	2019-10-11 21:25:14.248408458 +0200
-@@ -78,12 +78,10 @@
+--- package.orig/electron-builder.json	2020-02-11 13:55:00.000000000 +0100
++++ package.new/electron-builder.json	2020-02-11 15:44:30.577329034 +0100
+@@ -83,12 +83,10 @@
  		],
  		"artifactName": "rocketchat-${version}-${arch}.${ext}"
  	},
@@ -17,9 +17,9 @@ diff -ura package.orig/electron-builder.json package.new/electron-builder.json
  		"executableName": "rocketchat-desktop",
  		"category": "GNOME;GTK;Network;InstantMessaging",
 diff -ura package.orig/gulpfile.js package.new/gulpfile.js
---- package.orig/gulpfile.js	2019-10-11 21:15:47.917614395 +0200
-+++ package.new/gulpfile.js	2019-10-11 21:31:05.716040749 +0200
-@@ -65,6 +65,20 @@
+--- package.orig/gulpfile.js	2020-02-11 13:55:00.000000000 +0100
++++ package.new/gulpfile.js	2020-02-11 15:43:14.856730664 +0100
+@@ -62,6 +62,20 @@
  	c: { productName: 'rocketchat' },
  }));
  
