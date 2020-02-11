@@ -1,0 +1,14 @@
+pkgbase = python-dbus-next
+	pkgdesc = The next great DBus library for Python with asyncio support
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/altdesktop/python-dbus-next
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/dbus-next/dbus_next-0.1.2.tar.gz
+	md5sums = df838d695284dd1775860f9691a8663f
+
+pkgname = python-dbus-next
+
