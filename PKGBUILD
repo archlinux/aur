@@ -1,8 +1,11 @@
 # Maintainer: Austin Haedicke <austin.haedicke@gmail.com>
+# Telegram @savagezen / @savagezen_aur
+# GitHub https://github.com/savagezen/pkgbuild
+
 # Contributor: Jonathon Fernyhough <jonathon@manjaro.org>
 
 pkgname=zef
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Perl6 Module Management"
 arch=('any')
@@ -14,7 +17,7 @@ url="https://github.com/ugexe/zef"
 license=('PerlArtistic')
 options=('!purge')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ugexe/$pkgname/tar.gz/v$pkgver)
-sha256sums=('2b683e375c3746dbafa5e9de1e3ebcf8d74041c0545cbf0d323ff4bb52a18d7b')
+sha256sums=('13982fdd9b08b8b3dbe6bdbd9ddd01f919e433313bc431bda3cf1ed5d3bedf19')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
