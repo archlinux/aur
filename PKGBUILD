@@ -4,6 +4,7 @@ pkgname=libodb-mssql
 pkgver=2.5.0b17
 pkgrel=1
 pkgdesc="The ODB mssql runtime library"
+url="https://www.codesynthesis.com/products/odb/"
 arch=('i686' 'x86_64')
 depends=('build2' 'unixodbc')
 options=('!libtool')
