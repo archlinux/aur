@@ -15,6 +15,8 @@ makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-raplus')
 options=(!strip)
 source=("git+${url}.git"
+# You have to get the following file from MaxMind, which will require a free account
+# https://dev.maxmind.com/geoip/geoip2/geolite2/
 "local://GeoLite2-Country.mmdb.gz"
 "openra-raplus"
 "fetch-engine.patch"
