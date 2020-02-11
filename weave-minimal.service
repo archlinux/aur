@@ -1,0 +1,25 @@
+[Unit]
+Description=Minimal weave server for Pale Moon sync
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/weave-minimal
+User=weave
+Group=weave
+Restart=on-failure
+RestartSec=300s
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+NoNewPrivileges=yes
+ReadWritePaths=/var/lib/weave
+
+[Install]
+WantedBy=multi-user.target
+

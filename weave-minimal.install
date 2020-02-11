@@ -1,0 +1,37 @@
+## arg 1:  the new package version
+#pre_install() {
+# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+  id -u weave >/dev/null 2>&1
+  if [ $? -eq 1 ]; then
+    echo Adding weave user/group.
+    groupadd weave 
+    useradd -m -d /var/lib/weave/ -g weave -s /usr/bin/nologin 
+  fi
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#pre_upgrade() {
+# do something here
+#}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+# do something here
+#}
+
