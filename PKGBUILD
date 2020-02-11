@@ -24,7 +24,7 @@ provides=(mesa=$pkgver-$pkgrel vulkan-intel=$pkgver-$pkgrel vulkan-radeon=$pkgve
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
+source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
