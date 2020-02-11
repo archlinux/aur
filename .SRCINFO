@@ -1,15 +1,15 @@
 pkgbase = tklib
 	pkgdesc = Tklib specializes in utilities for GUI programming.
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
-	url = http://tcllib.sourceforge.net/
+	url = https://core.tcl-lang.org/tklib/home
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = tk
 	depends = tcllib
-	source = http://core.tcl.tk/tklib/raw/tklib-0.6.tar.bz2?name=6a397dec6188148cf6a6fe290cf2bd92a9190c42
-	md5sums = 92efb16228bc98d389156a7ac4fe4770
+	source = https://github.com/tcltk/tklib/archive/tklib-0.7.tar.gz
+	sha256sums = 1afe81a09c5fad2d9758b88c0250a49fc24c0e337d6d773ad2d622919dafd206
 
 pkgname = tklib
 
