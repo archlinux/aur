@@ -1,0 +1,13 @@
+pkgbase = libodb-mssql
+	pkgdesc = The ODB MySQL runtime library
+	pkgver = 2.5.0b17
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = build2
+	depends = unixodbc
+	options = !libtool
+
+pkgname = libodb-mssql
+
