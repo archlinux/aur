@@ -43,32 +43,27 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
-
 	# Build wireguard-go
+	cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
+	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
 	go build \
 		-trimpath \
 		-ldflags "-extldflags $LDFLAGS" \
-		-v -o libwg.a -buildmode c-archive
-
-	target_triple_dir="../../build/lib/x86_64-unknown-linux-gnu"
-	mkdir -p $target_triple_dir
-	cp libwg.a $target_triple_dir
+		-v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
+		-buildmode c-archive
 
 	cd "$srcdir/mullvadvpn-app"
 
 	# Remove old Rust build artifacts
 	cargo clean --release --locked
 
-	# Build mullvad-daemon
+	# Build binaries
 	cargo build --release --locked --all-features
 
 	# Copy binaries for packaging
-	cp dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} \
-		dist-assets/
-	cp target/release/*talpid_openvpn_plugin* dist-assets/
-	cp target/release/{mullvad,mullvad-daemon,mullvad-problem-report} \
-		dist-assets/
+	for binary in mullvad-daemon mullvad mullvad-problem-report libtalpid_openvpn_plugin.so; do
+		cp "target/release/$binary" "dist-assets/$binary"
+	done
 
 	# Update relay list & generate relays.json
 	../update-relays.sh
