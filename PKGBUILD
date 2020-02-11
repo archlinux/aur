@@ -3,7 +3,7 @@
 
 pkgname=opendds-git
 pkgver=3.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
 url="http://www.opendds.org/"
@@ -20,7 +20,7 @@ source=(
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
-         '66375089cf36c73b540f1c180a8c2409')
+         'c44b0c8d7ebccc2b9be0a040ec9f8c2b')
 
 prepare() {
   cd "$srcdir"

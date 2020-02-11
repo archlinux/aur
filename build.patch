@@ -8,15 +8,3 @@
  
    exclude {
      java/jms
---- src/ACE_TAO/TAO/TAO_IDL/tao_idl.mpc
-+++ src/ACE_TAO/TAO/TAO_IDL/tao_idl.mpc
-@@ -42,7 +42,8 @@
- "	ln -sf $(INSTALL_PREFIX)/bin/tao_idl $(DESTDIR)$(INSTALL_PREFIX)/share/ace/bin"
- "ifeq ($(shared_libs),1)"
- "	@$(MKDIR) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
--"	ln -sf $(INSTALL_PREFIX)/$(INSTALL_LIB)/$(LIB_PREFIX)TAO_IDL_[FB]E.$(SOEXT) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
-+"	ln -sf $(INSTALL_PREFIX)/$(INSTALL_LIB)/$(LIB_PREFIX)TAO_IDL_FE.$(SOEXT) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
-+"	ln -sf $(INSTALL_PREFIX)/$(INSTALL_LIB)/$(LIB_PREFIX)TAO_IDL_BE.$(SOEXT) $(DESTDIR)$(INSTALL_PREFIX)/share/ace/lib"
- "endif"
-   }
- 

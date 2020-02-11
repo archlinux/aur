@@ -1,7 +1,7 @@
 pkgbase = opendds-git
 	pkgdesc = Open source C++ implementation of OMG Data Distribution Service (DDS)
 	pkgver = 3.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.opendds.org/
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = opendds-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 66375089cf36c73b540f1c180a8c2409
+	md5sums = c44b0c8d7ebccc2b9be0a040ec9f8c2b
 
 pkgname = opendds-git
 
