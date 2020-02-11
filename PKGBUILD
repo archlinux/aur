@@ -6,30 +6,62 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.2
+pkgver=4.2.2
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='http://ffmpeg.org/'
 license=('GPL3')
-depends=('aom' 'bzip2' 'fribidi' 'glibc' 'gmp' 'gnutls' 'gsm'
-         'lame' 'libdrm' 'libmodplug'
-         'libtheora' 'libwebp' 'libxml2'
-         'opencore-amr' 'openjpeg2' 'opus' 'speex' 'v4l-utils'
-         'xz' 'zlib'
-         'libbluray.so' 'libva'
-         'libvorbisenc.so' 'libvorbis.so'
-         'libvpx.so' 'libx264.so' 'libx265.so' 'libxvidcore.so'
-         'rtmpdump')
-         #'libdav1d.so'
-makedepends=('yasm')
-provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
-          'libavutil.so' 'libpostproc.so' 'libswresample.so'
-          'libswscale.so' 'ffmpeg')
+depends=(
+  aom
+  bzip2
+  fribidi
+  gmp
+  gnutls
+  gsm
+  lame
+  libbluray.so
+  libdav1d.so
+  libdrm
+  libmodplug
+  libtheora
+  libva.so
+  libva-drm.so
+  libvorbisenc.so
+  libvorbis.so
+  libvpx.so
+  libwebp
+  libx264.so
+  libx265.so
+  libxml2
+  libxvidcore.so
+  opencore-amr
+  openjpeg2
+  opus
+  speex
+  v4l-utils
+  xz
+  zlib
+  rtmpdump
+)
+makedepends=(
+  nasm
+)
+provides=(
+  libavcodec.so
+  libavdevice.so
+  libavfilter.so
+  libavformat.so
+  libavutil.so
+  libpostproc.so
+  libswresample.so
+  libswscale.so
+  ffmpeg
+)
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5')
+sha256sums=('cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -39,11 +71,9 @@ prepare() {
 build() {
   cd ${_pkgname}-${pkgver}
 
-  #hide new gcc9 warnings
-  export CFLAGS="$CFLAGS -Wno-attributes -Wno-deprecated-declarations"
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-debug \
     --disable-static \
     --disable-stripping \
@@ -55,13 +85,14 @@ build() {
     --enable-libaom \
     --disable-libass \
     --enable-libbluray \
-    --disable-libdav1d \
+    --enable-libdav1d \
     --enable-libdrm \
     --disable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
     --disable-libiec61883 \
     --disable-libjack \
+    --disable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
