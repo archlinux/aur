@@ -27,7 +27,6 @@ depends=(
   libmodplug
   libtheora
   libva
-  libva-drm.so
   libvorbisenc.so
   libvorbis.so
   libvpx.so

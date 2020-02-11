@@ -24,7 +24,6 @@ pkgbase = ffmpeg-headless
 	depends = libmodplug
 	depends = libtheora
 	depends = libva
-	depends = libva-drm.so
 	depends = libvorbisenc.so
 	depends = libvorbis.so
 	depends = libvpx.so
