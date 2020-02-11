@@ -4,7 +4,7 @@ url='https://wiki.ros.org/python_qt_binding'
 pkgname='ros-melodic-python-qt-binding'
 pkgver='0.3.6'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -34,7 +34,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/pyt
 	"sip_path.patch")
 sha256sums=('b56b8b35f72b8543aab7903eb4e9d456991994a06032a08ba72ba627c6652e12'
             '0aff7f07a1cdb9b09bbf792c4d79e431c8f4a5ccdd2d5a34168dd0a81ad4beb7'
-            'd80b1e8fb25b557e3508772a388a5f2362b46311e7d8b71d677b2500e6608ff7')
+            'd60d8edfc7dec99700fd66076d6fd01963a26e7623562c1ef289abc041e8d2ef')
 
 prepare() {
 	cd ${srcdir}/${_dir}
