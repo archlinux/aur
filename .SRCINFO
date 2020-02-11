@@ -1,6 +1,6 @@
 pkgbase = blackboxwm
 	pkgdesc = A window manager for X11 (maintained fork of blackbox)
-	pkgver = 0.75
+	pkgver = 0.76
 	pkgrel = 1
 	url = http://github.com/bbidulock/blackboxwm
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = blackboxwm
 	replaces = blackbox
 	options = !libtool
 	options = staticlibs
-	source = https://github.com/bbidulock/blackboxwm/releases/download/0.75/blackbox-0.75.tar.lz
-	sha256sums = 197e7e8a5616f1a3be77b37f5dafa6c72e6621c779ba87f15d7463c2a71e7f6b
+	source = https://github.com/bbidulock/blackboxwm/releases/download/0.76/blackbox-0.76.tar.lz
+	sha256sums = 57af0e14487cdcf9dda50b54e5dda5849b30153f2784fd4dba8cebc394fc625e
 
 pkgname = blackboxwm
 
