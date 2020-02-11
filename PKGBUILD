@@ -8,14 +8,14 @@
 
 pkgname=aseprite
 pkgver=1.2.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
 license=('custom')
 depends=('cmark' 'pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2'
          'harfbuzz' 'nettle' 'fontconfig' 'libxcursor' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('cmake' 'ninja' 'git' 'python2' 'pandoc')
+makedepends=('cmake' 'ninja' 'git' 'python2')
 conflicts=("aseprite-git" "aseprite-gpl" "skia-git")
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname^}-\
 v${pkgver}-Source.zip"
@@ -189,7 +189,7 @@ package() {
   install --directory --verbose "${pkgdir}/usr/share/doc/${pkgname}"
   cp --recursive --verbose '../docs' "${pkgdir}/usr/share/doc/${pkgname}"
   install --mode=644 --verbose 'bin/data/EULA.txt' "${pkgdir}/usr/share/doc/${pkgname}"
-  pandoc '../README.md' --output="${pkgdir}/usr/share/doc/${pkgname}/README.html"
+  install --mode=644 --verbose '../README.md' "${pkgdir}/usr/share/doc/${pkgname}"
 
   install -D --mode=644 --verbose "../${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
