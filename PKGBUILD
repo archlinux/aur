@@ -1,6 +1,6 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
-pkgbase='lua-gifine'
+pkgbase='lua51-gifine'
 pkgname=('gifine')
 pkgdesc='Quickly record and edit gifs and videos of your desktop'
 pkgver=1
@@ -12,6 +12,7 @@ depends=('ffmpeg' 'graphicsmagick' 'gifsicle' 'slop' 'lua51-lgi')
 makedepends=('luarocks')
 provides=('gifine')
 source=("git+$url")
+options=('strip')
 md5sums=('SKIP')
 
 build() {
