@@ -65,10 +65,10 @@ _use_current=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.4
-_minor=18
+_major=5.5
+_minor=2
 _srcname=linux-${_major}
-_clr=${_major}.17-901
+_clr=${_major}.2-903
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -79,7 +79,7 @@ license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
 _wrg_snap='0.0.20200205'
-_gcc_more_v='20190822'
+_gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
@@ -179,8 +179,8 @@ prepare() {
     ### Patch source to unlock additional gcc CPU optimizations
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
-        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+        echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch ..."
+        patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
         fi
 
     ### Get kernel version
@@ -192,7 +192,7 @@ prepare() {
 
     ### Prepared version
         make -s kernelrelease > version
-        echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+        echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally use running kernel's config
     # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -356,12 +356,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
+sha256sums=('a6fbd4ee903c128367892c2393ee0d9657b6ed3ea90016d4dc6f1f6da20b2330'
             'SKIP'
-            '88a35b9b03bf4ffe5b043baccc9655a80c24e67a64f2dcd7f9bb29c8faa37f3f'
+            '07cbd21a049b0bf5a96d7e0b8272db8e53e9947f0eff06fa2a765bb3b34bc8fa'
             'SKIP'
             '9669e165fc7252cab7f908ba57f160f6d57539b7cc81180f260cb675d2fd362b'
-            '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5'
+            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             '4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
 
