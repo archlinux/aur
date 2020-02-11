@@ -2,7 +2,7 @@
 
 pkgname=python2-pfp
 _pkgname=pfp
-pkgver=0.2.1
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='An interpreter for 010 template scripts.'
 arch=(any)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python2-py010parser python2-six python2-intervaltree)
 makedepends=(python2-setuptools)
 source=("https://github.com/d0c-s4vage/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('26773d2baebb155c1e5d85032b76e960')
+md5sums=('ad2a6da94112ea1a182e6587487928e2')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
