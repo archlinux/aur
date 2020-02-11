@@ -18,10 +18,6 @@ pkgbase = libselinux-python2
 	optdepends = python: python bindings
         optdepends = python2: python 2.x bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libselinux=3.0-1
-        provides = libselinux
-        conflicts = libselinux
-	conflicts = selinux-usr-libselinux
 	source = https://github.com/SELinuxProject/selinux/releases/download/20191204/libselinux-3.0.tar.gz
 	source = libselinux.tmpfiles.d
 	sha256sums = 2ea2b30f671dae9d6b1391cbe8fb2ce5d36a3ee4fb1cd3c32f0d933c31b82433
