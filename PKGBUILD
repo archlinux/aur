@@ -1,9 +1,4 @@
-# Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
-# Contributor: Timothée Ravier <tim@siosm.fr>
-# Contributor: Nicky726 (Nicky726 <at> gmail <dot> com)
-# Contributor: Sergej Pupykin (pupykin <dot> s+arch <at> gmail <dot> com)
-# Contributor: Zezadas
-# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
+# Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 #
 # This PKGBUILD is maintained on https://github.com/archlinuxhardened/selinux.
 # If you want to help keep it up to date, please open a Pull Request there.
@@ -21,9 +16,6 @@ depends=('libsepol>=3.0' 'pcre')
 optdepends=('python: python bindings'
 	    'python2: python 2.X bindings'
             'ruby: ruby bindings')
-conflicts=()
-provides=()
-replaces=()
 source=("https://github.com/SELinuxProject/selinux/releases/download/20191204/libselinux-${pkgver}.tar.gz"
         "libselinux.tmpfiles.d")
 sha256sums=('2ea2b30f671dae9d6b1391cbe8fb2ce5d36a3ee4fb1cd3c32f0d933c31b82433'
