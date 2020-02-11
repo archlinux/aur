@@ -1,223 +1,5 @@
-diff -ur aloha/bin/aloha aloha/bin/aloha
---- a/aloha/bin/aloha
-+++ b/aloha/bin/aloha
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- 
- 
- import sys
-diff -ur bin/.compile.py bin/.compile.py
---- a/bin/.compile.py
-+++ b/bin/.compile.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur bin/mg5 bin/mg5
---- a/bin/mg5
-+++ b/bin/mg5
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- 
- ################################################################################
- #
-diff -ur bin/mg5_aMC bin/mg5_aMC
---- a/bin/mg5_aMC
-+++ b/bin/mg5_aMC
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- import time
- start = time.time()
- 
-diff -ur madgraph/interface/common_run_interface.py madgraph/interface/common_run_interface.py
---- a/madgraph/interface/common_run_interface.py
-+++ b/madgraph/interface/common_run_interface.py
-@@ -907,7 +907,7 @@
-                 fsock.close()
-                 return
-             else:
--                subprocess.call(['python', 'write_param_card.py'],
-+                subprocess.call(['python2', 'write_param_card.py'],
-                              cwd=pjoin(self.me_dir,'bin','internal','ufomodel'))
-                 default = pjoin(self.me_dir,'bin','internal','ufomodel','param_card.dat')
- 
-diff -ur madgraph/iolibs/gen_infohtml.py madgraph/iolibs/gen_infohtml.py
---- a/madgraph/iolibs/gen_infohtml.py
-+++ b/madgraph/iolibs/gen_infohtml.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc
---- a/madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc
-+++ b/madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- 
- # This is an example of how to run MadLoop from Python using the f2py compilation of the wrapper file 'f2py_wrapper.f'.
- 
-diff -ur madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
---- a/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
-+++ b/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- 
- # This is an example of how to run MadLoop from Python using the f2py compilation of the wrapper file 'f2py_wrapper.f'.
- 
-diff -ur madgraph/madweight/blob_solution.py madgraph/madweight/blob_solution.py
---- a/madgraph/madweight/blob_solution.py
-+++ b/madgraph/madweight/blob_solution.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- try:
-     import madgraph.madweight.particle_class as particle_class
-diff -ur madgraph/madweight/Cards.py madgraph/madweight/Cards.py
---- a/madgraph/madweight/Cards.py
-+++ b/madgraph/madweight/Cards.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ##########################################################################
- ##                                                                      ##
- ##                               MadWeight                              ##
-diff -ur madgraph/madweight/change_tf.py madgraph/madweight/change_tf.py
---- a/madgraph/madweight/change_tf.py
-+++ b/madgraph/madweight/change_tf.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- #Extension
- 
-diff -ur madgraph/madweight/create_param.py madgraph/madweight/create_param.py
---- a/madgraph/madweight/create_param.py
-+++ b/madgraph/madweight/create_param.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ##########################################################################
- ##                                                                      ##
- ##                               MadWeight                              ##
-diff -ur madgraph/madweight/create_run.py madgraph/madweight/create_run.py
---- a/madgraph/madweight/create_run.py
-+++ b/madgraph/madweight/create_run.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- #Extension
- import string,os,sys,re,popen2,time,stat,filecmp
-diff -ur madgraph/madweight/diagram_class.py madgraph/madweight/diagram_class.py
---- a/madgraph/madweight/diagram_class.py
-+++ b/madgraph/madweight/diagram_class.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- import sys
- import logging
-diff -ur madgraph/madweight/mod_file.py madgraph/madweight/mod_file.py
---- a/madgraph/madweight/mod_file.py
-+++ b/madgraph/madweight/mod_file.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python 
-+#!/usr/bin/env python2
- ####################################################################################################
- ####################################################################################################
- ##                                                                                                ##
-diff -ur madgraph/madweight/MW_driver.py madgraph/madweight/MW_driver.py
---- a/madgraph/madweight/MW_driver.py
-+++ b/madgraph/madweight/MW_driver.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- # Copyright (c) 2012 The MadGraph Development team and Contributors             
- #
-diff -ur madgraph/madweight/MW_info.py madgraph/madweight/MW_info.py
---- a/madgraph/madweight/MW_info.py
-+++ b/madgraph/madweight/MW_info.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ##########################################################################
- ##                                                                      ##
- ##                               MadWeight                              ##
-diff -ur madgraph/madweight/substructure_class.py madgraph/madweight/substructure_class.py
---- a/madgraph/madweight/substructure_class.py
-+++ b/madgraph/madweight/substructure_class.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- 
- try:
-diff -ur madgraph/madweight/verif_event.py madgraph/madweight/verif_event.py
---- a/madgraph/madweight/verif_event.py
-+++ b/madgraph/madweight/verif_event.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ##########################################################################
- ##                                                                      ##
- ##                               MadWeight                              ##
-diff -ur madgraph/madweight/write_MadWeight.py madgraph/madweight/write_MadWeight.py
---- a/madgraph/madweight/write_MadWeight.py
-+++ b/madgraph/madweight/write_MadWeight.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ##### -*- coding: cp1252 -*-
- 
- #Extension
-diff -ur madgraph/various/combine_plots.py madgraph/various/combine_plots.py
---- a/madgraph/various/combine_plots.py
-+++ b/madgraph/various/combine_plots.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2013 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur madgraph/various/histograms.py madgraph/various/histograms.py
---- a/madgraph/various/histograms.py
-+++ b/madgraph/various/histograms.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2010 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur madgraph/various/plot_djrs.py madgraph/various/plot_djrs.py
---- a/madgraph/various/plot_djrs.py
-+++ b/madgraph/various/plot_djrs.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2010 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur madgraph/various/progressbar.py madgraph/various/progressbar.py
---- a/madgraph/various/progressbar.py
-+++ b/madgraph/various/progressbar.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python2
- # -*- coding: iso-8859-1 -*-
- #
- # progressbar  - Text progressbar library for python.
-diff -ur MadSpin/decay.py MadSpin/decay.py
+diff --git a/MadSpin/decay.py b/MadSpin/decay.py
+index 869d32b..0280643 100755
 --- a/MadSpin/decay.py
 +++ b/MadSpin/decay.py
 @@ -1,4 +1,4 @@
@@ -226,7 +8,8 @@ diff -ur MadSpin/decay.py MadSpin/decay.py
  
  from __future__ import division
  from madgraph.interface import reweight_interface
-diff -ur MadSpin/madspin MadSpin/madspin
+diff --git a/MadSpin/madspin b/MadSpin/madspin
+index c51d27a..d47cff1 100755
 --- a/MadSpin/madspin
 +++ b/MadSpin/madspin
 @@ -1,4 +1,4 @@
@@ -235,7 +18,20 @@ diff -ur MadSpin/madspin MadSpin/madspin
  
  ################################################################################
  #
-diff -ur Template/LO/bin/generate_events Template/LO/bin/generate_events
+diff --git a/Template/LO/Source/.make_opts b/Template/LO/Source/.make_opts
+index eeed925..95eaaf8 100644
+--- a/Template/LO/Source/.make_opts
++++ b/Template/LO/Source/.make_opts
+@@ -117,5 +117,5 @@ endif
+ 
+ # Helper function to check MG5 version
+ define CHECK_MG5AMC_VERSION
+-python -c 'import re; from distutils.version import StrictVersion; print StrictVersion("$(MG5AMC_VERSION)") >= StrictVersion("$(1)") if re.match("^[\d\.]+$$","$(MG5AMC_VERSION)") else True;'
++python2 -c 'import re; from distutils.version import StrictVersion; print StrictVersion("$(MG5AMC_VERSION)") >= StrictVersion("$(1)") if re.match("^[\d\.]+$$","$(MG5AMC_VERSION)") else True;'
+ endef
+\ No newline at end of file
+diff --git a/Template/LO/bin/generate_events b/Template/LO/bin/generate_events
+index 7ac36c7..18d5ecb 100755
 --- a/Template/LO/bin/generate_events
 +++ b/Template/LO/bin/generate_events
 @@ -1,4 +1,4 @@
@@ -244,16 +40,8 @@ diff -ur Template/LO/bin/generate_events Template/LO/bin/generate_events
  ################################################################################
  #
  # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur Template/LO/bin/internal/addmasses_optional.py Template/LO/bin/internal/addmasses_optional.py
---- a/Template/LO/bin/internal/addmasses_optional.py
-+++ b/Template/LO/bin/internal/addmasses_optional.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python2
- #
- # doubleswitch.py
- # Author: Stephen Mrenna
-diff -ur Template/LO/bin/internal/Gridpack/gridrun Template/LO/bin/internal/Gridpack/gridrun
+diff --git a/Template/LO/bin/internal/Gridpack/gridrun b/Template/LO/bin/internal/Gridpack/gridrun
+index 68e523c..7af6c0b 100755
 --- a/Template/LO/bin/internal/Gridpack/gridrun
 +++ b/Template/LO/bin/internal/Gridpack/gridrun
 @@ -1,4 +1,4 @@
@@ -262,7 +50,18 @@ diff -ur Template/LO/bin/internal/Gridpack/gridrun Template/LO/bin/internal/Grid
  
  ################################################################################
  #
-diff -ur Template/LO/bin/madevent Template/LO/bin/madevent
+diff --git a/Template/LO/bin/internal/addmasses_optional.py b/Template/LO/bin/internal/addmasses_optional.py
+index 10e6f64..a2f3a16 100755
+--- a/Template/LO/bin/internal/addmasses_optional.py
++++ b/Template/LO/bin/internal/addmasses_optional.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ #
+ # doubleswitch.py
+ # Author: Stephen Mrenna
+diff --git a/Template/LO/bin/madevent b/Template/LO/bin/madevent
+index a3d9f71..fc5dfce 100755
 --- a/Template/LO/bin/madevent
 +++ b/Template/LO/bin/madevent
 @@ -1,4 +1,4 @@
@@ -271,73 +70,8 @@ diff -ur Template/LO/bin/madevent Template/LO/bin/madevent
  
  ################################################################################
  #
-diff -ur Template/MadWeight/bin/madweight.py Template/MadWeight/bin/madweight.py
---- a/Template/MadWeight/bin/madweight.py
-+++ b/Template/MadWeight/bin/madweight.py
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2011 The MadGraph Development team and Contributors
-diff -ur Template/MadWeight/bin/mw_options Template/MadWeight/bin/mw_options
---- a/Template/MadWeight/bin/mw_options
-+++ b/Template/MadWeight/bin/mw_options
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- 
- ################################################################################
- #
-diff -ur Template/MadWeight/mod_file/check_model.py Template/MadWeight/mod_file/check_model.py
---- a/Template/MadWeight/mod_file/check_model.py
-+++ b/Template/MadWeight/mod_file/check_model.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- #test
- 
-diff -ur Template/MadWeight/mod_file/mod_file.py Template/MadWeight/mod_file/mod_file.py
---- a/Template/MadWeight/mod_file/mod_file.py
-+++ b/Template/MadWeight/mod_file/mod_file.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- #Extension
- import string
-diff -ur Template/MadWeight/mod_file/mod_setup_model Template/MadWeight/mod_file/mod_setup_model
---- a/Template/MadWeight/mod_file/mod_setup_model
-+++ b/Template/MadWeight/mod_file/mod_setup_model
-@@ -45,7 +45,7 @@
- 
-         if (-e $tfdir."/TF_".$transfer_fct.".dat") {
-       print "TF $transfer_fct found  in $tfdir \n";
--      system("python ./bin/change_tf.py $transfer_fct 0");
-+++ b/     system("python2 ./bin/change_tf.py $transfer_fct 0");
-       }
-         else{print "Error Transfer function $transfer_fct not found \n";
-           exit;
-diff -ur Template/MadWeight/Python/clean.py Template/MadWeight/Python/clean.py
---- a/Template/MadWeight/Python/clean.py
-+++ b/Template/MadWeight/Python/clean.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- ##########################################################################
- ##                                                                      ##
- ##                               MadWeight                              ##
-diff -ur Template/MadWeight/Python/expand_MadWeight.py Template/MadWeight/Python/expand_MadWeight.py
---- a/Template/MadWeight/Python/expand_MadWeight.py
-+++ b/Template/MadWeight/Python/expand_MadWeight.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- 
- # Module
- import string
-diff -ur Template/MadWeight/Python/Info.py Template/MadWeight/Python/Info.py
+diff --git a/Template/MadWeight/Python/Info.py b/Template/MadWeight/Python/Info.py
+index 92b0e81..ec22eca 100755
 --- a/Template/MadWeight/Python/Info.py
 +++ b/Template/MadWeight/Python/Info.py
 @@ -1,4 +1,4 @@
@@ -346,7 +80,28 @@ diff -ur Template/MadWeight/Python/Info.py Template/MadWeight/Python/Info.py
  
  def giveInfo(class_):
          if type(class_)!=str:
-diff -ur Template/MadWeight/Python/madweight.py Template/MadWeight/Python/madweight.py
+diff --git a/Template/MadWeight/Python/clean.py b/Template/MadWeight/Python/clean.py
+index 64a4e35..59d1899 100755
+--- a/Template/MadWeight/Python/clean.py
++++ b/Template/MadWeight/Python/clean.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/Template/MadWeight/Python/expand_MadWeight.py b/Template/MadWeight/Python/expand_MadWeight.py
+index abe4909..35ab543 100755
+--- a/Template/MadWeight/Python/expand_MadWeight.py
++++ b/Template/MadWeight/Python/expand_MadWeight.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # Module
+ import string
+diff --git a/Template/MadWeight/Python/madweight.py b/Template/MadWeight/Python/madweight.py
+index 953800d..4dcd048 100755
 --- a/Template/MadWeight/Python/madweight.py
 +++ b/Template/MadWeight/Python/madweight.py
 @@ -1,4 +1,4 @@
@@ -355,7 +110,8 @@ diff -ur Template/MadWeight/Python/madweight.py Template/MadWeight/Python/madwei
  
  # idea have 2 script
  # madweight.py -> direct submission 
-diff -ur Template/MadWeight/Python/put_banner.py Template/MadWeight/Python/put_banner.py
+diff --git a/Template/MadWeight/Python/put_banner.py b/Template/MadWeight/Python/put_banner.py
+index a6a06b8..b0f1ef8 100755
 --- a/Template/MadWeight/Python/put_banner.py
 +++ b/Template/MadWeight/Python/put_banner.py
 @@ -1,4 +1,4 @@
@@ -364,7 +120,8 @@ diff -ur Template/MadWeight/Python/put_banner.py Template/MadWeight/Python/put_b
  ##########################################################################
  ##                                                                      ##
  ##                               MG/ME/MW                               ##
-diff -ur Template/MadWeight/Python/splitbanner.py Template/MadWeight/Python/splitbanner.py
+diff --git a/Template/MadWeight/Python/splitbanner.py b/Template/MadWeight/Python/splitbanner.py
+index a425a1a..f0e4c4e 100755
 --- a/Template/MadWeight/Python/splitbanner.py
 +++ b/Template/MadWeight/Python/splitbanner.py
 @@ -1,4 +1,4 @@
@@ -373,7 +130,8 @@ diff -ur Template/MadWeight/Python/splitbanner.py Template/MadWeight/Python/spli
  ##########################################################################
  ##                                                                      ##
  ##                               MadWeight                              ##
-diff -ur Template/MadWeight/Python/tests.py Template/MadWeight/Python/tests.py
+diff --git a/Template/MadWeight/Python/tests.py b/Template/MadWeight/Python/tests.py
+index f5c4731..1154bc6 100755
 --- a/Template/MadWeight/Python/tests.py
 +++ b/Template/MadWeight/Python/tests.py
 @@ -1,4 +1,4 @@
@@ -382,67 +140,649 @@ diff -ur Template/MadWeight/Python/tests.py Template/MadWeight/Python/tests.py
  ####################################################################################################
  ####################################################################################################
  ##                                                                                                ##
-diff -ur Template/MadWeight/src/makefile Template/MadWeight/src/makefile
+diff --git a/Template/MadWeight/bin/madweight.py b/Template/MadWeight/bin/madweight.py
+index c8ac32a..c7247bb 100755
+--- a/Template/MadWeight/bin/madweight.py
++++ b/Template/MadWeight/bin/madweight.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph Development team and Contributors
+diff --git a/Template/MadWeight/bin/mw_options b/Template/MadWeight/bin/mw_options
+index 4a28be1..b98d018 100755
+--- a/Template/MadWeight/bin/mw_options
++++ b/Template/MadWeight/bin/mw_options
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/Template/MadWeight/mod_file/check_model.py b/Template/MadWeight/mod_file/check_model.py
+index 8e80f6a..a8a2d26 100755
+--- a/Template/MadWeight/mod_file/check_model.py
++++ b/Template/MadWeight/mod_file/check_model.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #test
+ 
+diff --git a/Template/MadWeight/mod_file/mod_file.py b/Template/MadWeight/mod_file/mod_file.py
+index d95cf20..444933a 100755
+--- a/Template/MadWeight/mod_file/mod_file.py
++++ b/Template/MadWeight/mod_file/mod_file.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Extension
+ import string
+diff --git a/Template/MadWeight/mod_file/mod_setup_model b/Template/MadWeight/mod_file/mod_setup_model
+index a2e32db..380f629 100755
+--- a/Template/MadWeight/mod_file/mod_setup_model
++++ b/Template/MadWeight/mod_file/mod_setup_model
+@@ -45,7 +45,7 @@ close(INPUT);
+ 
+         if (-e $tfdir."/TF_".$transfer_fct.".dat") {
+       print "TF $transfer_fct found  in $tfdir \n";
+-      system("python ./bin/change_tf.py $transfer_fct 0");
++      system("python2 ./bin/change_tf.py $transfer_fct 0");
+       }
+         else{print "Error Transfer function $transfer_fct not found \n";
+           exit;
+diff --git a/Template/MadWeight/src/makefile b/Template/MadWeight/src/makefile
+index eac7b86..0b563b2 100755
 --- a/Template/MadWeight/src/makefile
 +++ b/Template/MadWeight/src/makefile
-@@ -24,9 +24,9 @@
+@@ -24,9 +24,9 @@ $(PROG): $(PROCESS) $(MW_PS)  makefile $(LIBS)
  	$(FC) $(FFLAGS) -o $(PROG) $(PROCESS) $(MW_PS) $(LINKLIBS)
  
  transfer_card.inc:../../Cards/transfer_card.dat ../../Cards/MadWeight_card.dat
 -	python ../../bin/internal/madweight/Cards.py
-+
++	python2 ../../bin/internal/madweight/Cards.py
  madweight_card.inc:../../Cards/transfer_card.dat ../../Cards/MadWeight_card.dat
 -	python ../../bin/internal/madweight/Cards.py
-+
++	python2 ../../bin/internal/madweight/Cards.py
  
  driver.o: phasespace.inc nexternal.inc data.inc coupl.inc madweight_card.inc nb_tf.inc
  initialization.o: madweight_card.inc TF_param.inc coupl.inc run.inc madweight_param.inc pmass.inc nexternal.inc maxamps.inc leshouche.inc nb_tf.inc
-diff -ur Template/NLO/bin/aMCatNLO Template/NLO/bin/aMCatNLO
---- a/Template/NLO/bin/aMCatNLO
-+++ b/Template/NLO/bin/aMCatNLO
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_V.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_V.f
+index 2744ab3..774152f 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_V.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_V.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_h.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_h.f
+index 0b03a03..baf54ac 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_h.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_h.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_hjj.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_hjj.f
+index 638c542..60ea93b 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_hjj.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_hjj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_leptons.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_leptons.f
+index 77e1b10..8ff65db 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_leptons.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_leptons.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lplm.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lplm.f
+index 7ece1da..15293f4 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lplm.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lplm.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lvl.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lvl.f
+index e139a82..7d49eae 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lvl.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_lvl.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_taptam.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_taptam.f
+index 4599579..435024c 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_taptam.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_taptam.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_tj.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_tj.f
+index 8eb4ca4..8d55c42 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_tj.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_tj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx.f
+index 90f4807..c983fe0 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx_v2.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx_v2.f
+index a419b2a..283d491 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx_v2.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_pp_ttx_v2.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_rates.f b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_rates.f
+index 1097bb7..0ca587f 100644
+--- a/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_rates.f
++++ b/Template/NLO/MCatNLO/HWAnalyzer/hw6an_HwU_rates.f
+@@ -11,7 +11,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_V.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_V.f
+index ee5c3f0..31ad476 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_V.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_V.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_h.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_h.f
+index d29e8bf..8d34f27 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_h.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_h.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_hjj.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_hjj.f
+index 755294b..af05679 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_hjj.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_hjj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_leptons.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_leptons.f
+index 1c5f4d0..a25539a 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_leptons.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_leptons.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lplm.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lplm.f
+index 9bb9d18..077b320 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lplm.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lplm.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lvl.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lvl.f
+index eabf4a5..fe66f5a 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lvl.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_lvl.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_taptam.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_taptam.f
+index 86c9818..2b230b1 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_taptam.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_taptam.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_tj.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_tj.f
+index 0f57b6e..248bb04 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_tj.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_tj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx.f
+index 263b9e5..81768ee 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx_v2.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx_v2.f
+index ec5193d..5e6a121 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx_v2.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_pp_ttx_v2.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_rates.f b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_rates.f
+index 349a83f..235ebe7 100644
+--- a/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_rates.f
++++ b/Template/NLO/MCatNLO/HWPPAnalyzer/hwppan_HwU_rates.f
+@@ -11,7 +11,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_V.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_V.f
+index 06da454..3b36816 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_V.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_V.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_h.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_h.f
+index 9351780..6046bea 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_h.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_h.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_hjj.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_hjj.f
+index 148722e..53d6ff7 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_hjj.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_hjj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_leptons.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_leptons.f
+index f23fc70..fd18023 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_leptons.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_leptons.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lplm.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lplm.f
+index 39ea2e5..590944f 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lplm.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lplm.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lvl.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lvl.f
+index 186ff75..9c24793 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lvl.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_lvl.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_taptam.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_taptam.f
+index dbde5ba..f9f474c 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_taptam.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_taptam.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_tj.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_tj.f
+index c9b65c2..ba4b40e 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_tj.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_tj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx.f
+index a3921f7..f0223a3 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx_v2.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx_v2.f
+index 4b77215..0b18ece 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx_v2.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_pp_ttx_v2.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_rates.f b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_rates.f
+index a3d878c..ffe3751 100644
+--- a/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_rates.f
++++ b/Template/NLO/MCatNLO/PY8Analyzer/py8an_HwU_rates.f
+@@ -11,7 +11,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_V.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_V.f
+index 846c3f1..96c55e3 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_V.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_V.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_h.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_h.f
+index 48b123b..1c4df47 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_h.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_h.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
  
- ################################################################################
- #
-diff -ur Template/NLO/bin/calculate_xsect Template/NLO/bin/calculate_xsect
---- a/Template/NLO/bin/calculate_xsect
-+++ b/Template/NLO/bin/calculate_xsect
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur Template/NLO/bin/generate_events Template/NLO/bin/generate_events
---- a/Template/NLO/bin/generate_events
-+++ b/Template/NLO/bin/generate_events
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur Template/NLO/bin/internal/split_jobs.py Template/NLO/bin/internal/split_jobs.py
---- a/Template/NLO/bin/internal/split_jobs.py
-+++ b/Template/NLO/bin/internal/split_jobs.py
-@@ -1,4 +1,4 @@
--#!/usr/bin/env python
-+#!/usr/bin/env python2
- #  MZ, 2012-06-14
- import os
- import sys
-diff -ur Template/NLO/bin/shower Template/NLO/bin/shower
---- a/Template/NLO/bin/shower
-+++ b/Template/NLO/bin/shower
-@@ -1,4 +1,4 @@
--#! /usr/bin/env python
-+#!/usr/bin/env python2
- ################################################################################
- #
- # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur Template/NLO/Utilities/NLO_Born3.py Template/NLO/Utilities/NLO_Born3.py
+ C----------------------------------------------------------------------
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_hjj.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_hjj.f
+index 65cd559..c881c0f 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_hjj.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_hjj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ 
+ C----------------------------------------------------------------------
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_leptons.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_leptons.f
+index cd76a79..96250ec 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_leptons.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_leptons.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lplm.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lplm.f
+index 92fea41..8b87d87 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lplm.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lplm.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lvl.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lvl.f
+index 18cfd55..6b10a1d 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lvl.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_lvl.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_taptam.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_taptam.f
+index 52ed987..de73992 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_taptam.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_taptam.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ 
+ C----------------------------------------------------------------------
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_tj.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_tj.f
+index 8020ba3..2370064 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_tj.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_tj.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ 
+ C----------------------------------------------------------------------
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx.f
+index 1826ede..df37176 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ 
+ C----------------------------------------------------------------------
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx_v2.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx_v2.f
+index c22f9be..78755ea 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx_v2.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_pp_ttx_v2.f
+@@ -14,7 +14,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ 
+ C----------------------------------------------------------------------
+diff --git a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_rates.f b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_rates.f
+index 10e2b80..8b01f55 100644
+--- a/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_rates.f
++++ b/Template/NLO/MCatNLO/PYAnalyzer/py6an_HwU_rates.f
+@@ -11,7 +11,7 @@ c  <MG5_aMC_install_dir>/madgraph/various/histograms.py
+ c
+ c You can learn about how to run it and what options are available with
+ c
+-c  python <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
++c  python2 <MG5_aMC_install_dir>/madgraph/various/histograms.py --help
+ c
+ C----------------------------------------------------------------------
+       SUBROUTINE RCLOS()
+diff --git a/Template/NLO/Utilities/NLO_Born3.py b/Template/NLO/Utilities/NLO_Born3.py
+index dbb8173..c5edaf1 100755
 --- a/Template/NLO/Utilities/NLO_Born3.py
 +++ b/Template/NLO/Utilities/NLO_Born3.py
 @@ -1,4 +1,4 @@
@@ -451,7 +791,8 @@ diff -ur Template/NLO/Utilities/NLO_Born3.py Template/NLO/Utilities/NLO_Born3.py
  
  inp = open('./MADatNLO.top', 'r')
  out = open('./MADatNLO_combined.top', 'w')
-diff -ur Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
+diff --git a/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py b/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
+index f7ba469..fb604a6 100755
 --- a/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
 +++ b/Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py
 @@ -1,4 +1,4 @@
@@ -460,7 +801,8 @@ diff -ur Template/NLO/Utilities/VetoPrefactors/resum_reweighter.py Template/NLO/
  
  ################################################################################
  #
-diff -ur Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
+diff --git a/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py b/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
+index 87a75fa..a5eaa77 100755
 --- a/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
 +++ b/Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py
 @@ -1,4 +1,4 @@
@@ -469,29 +811,359 @@ diff -ur Template/NLO/Utilities/VetoPrefactors/virt_reweighter.py Template/NLO/U
  
  ################################################################################
  #
-diff -ur tests/acceptance_tests/test_histograms.py tests/acceptance_tests/test_histograms.py
+diff --git a/Template/NLO/bin/aMCatNLO b/Template/NLO/bin/aMCatNLO
+index e1a347f..88fd730 100755
+--- a/Template/NLO/bin/aMCatNLO
++++ b/Template/NLO/bin/aMCatNLO
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/Template/NLO/bin/calculate_xsect b/Template/NLO/bin/calculate_xsect
+index 5000f2a..2616864 100755
+--- a/Template/NLO/bin/calculate_xsect
++++ b/Template/NLO/bin/calculate_xsect
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/Template/NLO/bin/generate_events b/Template/NLO/bin/generate_events
+index 7302c07..57f68b8 100755
+--- a/Template/NLO/bin/generate_events
++++ b/Template/NLO/bin/generate_events
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/Template/NLO/bin/internal/split_jobs.py b/Template/NLO/bin/internal/split_jobs.py
+index 0b50e56..7af39a1 100755
+--- a/Template/NLO/bin/internal/split_jobs.py
++++ b/Template/NLO/bin/internal/split_jobs.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ #  MZ, 2012-06-14
+ import os
+ import sys
+diff --git a/Template/NLO/bin/shower b/Template/NLO/bin/shower
+index 5bde455..065565b 100755
+--- a/Template/NLO/bin/shower
++++ b/Template/NLO/bin/shower
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2011 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/aloha/bin/aloha b/aloha/bin/aloha
+index 2fe8b10..e3b177a 100755
+--- a/aloha/bin/aloha
++++ b/aloha/bin/aloha
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ import sys
+diff --git a/bin/.compile.py b/bin/.compile.py
+index 0f396d6..783cf3f 100755
+--- a/bin/.compile.py
++++ b/bin/.compile.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
+@@ -285,9 +285,9 @@ class Compile_MG5:
+ 
+     def precompilation(self, debug=False):
+         if debug:
+-            subprocess.call('python -m compileall .', shell=True, cwd=root_path)            
++            subprocess.call('python2 -m compileall .', shell=True, cwd=root_path)            
+         else:
+-            subprocess.call('python -O -m compileall .', shell=True, cwd=root_path)
++            subprocess.call('python2 -O -m compileall .', shell=True, cwd=root_path)
+ 
+ if __name__ == '__main__':
+     Compile_MG5(sys.argv[1:])
+diff --git a/bin/mg5 b/bin/mg5
+index 9a0d695..99b0531 100755
+--- a/bin/mg5
++++ b/bin/mg5
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ ################################################################################
+ #
+diff --git a/bin/mg5_aMC b/bin/mg5_aMC
+index 7dac966..e8bbd11 100755
+--- a/bin/mg5_aMC
++++ b/bin/mg5_aMC
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ import time
+ start = time.time()
+ 
+diff --git a/madgraph/interface/common_run_interface.py b/madgraph/interface/common_run_interface.py
+index 52a4cb5..8e66199 100755
+--- a/madgraph/interface/common_run_interface.py
++++ b/madgraph/interface/common_run_interface.py
+@@ -899,7 +899,7 @@ class CommonRunCmd(HelpToCmd, CheckValidForCmd, cmd.Cmd):
+                 fsock.close()
+                 return
+             else:
+-                subprocess.call(['python', 'write_param_card.py'],
++                subprocess.call(['python2', 'write_param_card.py'],
+                              cwd=pjoin(self.me_dir,'bin','internal','ufomodel'))
+                 default = pjoin(self.me_dir,'bin','internal','ufomodel','param_card.dat')
+ 
+diff --git a/madgraph/interface/madgraph_interface.py b/madgraph/interface/madgraph_interface.py
+index b73b077..d12a7df 100755
+--- a/madgraph/interface/madgraph_interface.py
++++ b/madgraph/interface/madgraph_interface.py
+@@ -6319,7 +6319,7 @@ MG5aMC that supports quadruple precision (typically g++ based on gcc 4.6+).""")
+             if new_interface:
+                 ff = open(pjoin(MG5DIR, 'bin', '%s.py' % name) , 'w') 
+                 if __debug__:
+-                    text = '''#! /usr/bin/env python
++                    text = '''#!/usr/bin/env python2
+ import os
+ import sys
+ root_path = os.path.split(os.path.dirname(os.path.realpath( __file__ )))[0]
+@@ -6328,7 +6328,7 @@ sys.argv.pop(0)
+ os.system('%s  -tt %s %s --mode={0}' %(sys.executable, str(exe_path) , ' '.join(sys.argv) ))
+ '''.format(name)                    
+                 else:
+-                    text = '''#! /usr/bin/env python
++                    text = '''#!/usr/bin/env python2
+ import os
+ import sys
+ root_path = os.path.split(os.path.dirname(os.path.realpath( __file__ )))[0]
+diff --git a/madgraph/iolibs/gen_infohtml.py b/madgraph/iolibs/gen_infohtml.py
+index 52acde6..2bdd639 100755
+--- a/madgraph/iolibs/gen_infohtml.py
++++ b/madgraph/iolibs/gen_infohtml.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc b/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
+index 29e1b66..263abee 100644
+--- a/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
++++ b/madgraph/iolibs/template_files/loop_optimized/check_sa.py.inc
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # This is an example of how to run MadLoop from Python using the f2py compilation of the wrapper file 'f2py_wrapper.f'.
+ 
+diff --git a/madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc b/madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc
+index 44d8a53..08cc1c8 100644
+--- a/madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc
++++ b/madgraph/iolibs/template_files/loop_optimized/check_sa_all.py.inc
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ # This is an example of how to run MadLoop from Python using the f2py compilation of the wrapper file 'f2py_wrapper.f'.
+ 
+diff --git a/madgraph/madweight/Cards.py b/madgraph/madweight/Cards.py
+index 1c949db..70605e4 100755
+--- a/madgraph/madweight/Cards.py
++++ b/madgraph/madweight/Cards.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/madgraph/madweight/MW_driver.py b/madgraph/madweight/MW_driver.py
+index f075c47..a1d4f36 100755
+--- a/madgraph/madweight/MW_driver.py
++++ b/madgraph/madweight/MW_driver.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ # Copyright (c) 2012 The MadGraph Development team and Contributors             
+ #
+diff --git a/madgraph/madweight/MW_info.py b/madgraph/madweight/MW_info.py
+index acaa43d..20592e6 100755
+--- a/madgraph/madweight/MW_info.py
++++ b/madgraph/madweight/MW_info.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/madgraph/madweight/blob_solution.py b/madgraph/madweight/blob_solution.py
+index 571b420..660d778 100755
+--- a/madgraph/madweight/blob_solution.py
++++ b/madgraph/madweight/blob_solution.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ try:
+     import madgraph.madweight.particle_class as particle_class
+diff --git a/madgraph/madweight/change_tf.py b/madgraph/madweight/change_tf.py
+index 4717715..f1b6e7c 100755
+--- a/madgraph/madweight/change_tf.py
++++ b/madgraph/madweight/change_tf.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Extension
+ 
+diff --git a/madgraph/madweight/create_param.py b/madgraph/madweight/create_param.py
+index f8fbb43..b80a490 100755
+--- a/madgraph/madweight/create_param.py
++++ b/madgraph/madweight/create_param.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/madgraph/madweight/create_run.py b/madgraph/madweight/create_run.py
+index 2fa5a6d..49b76ef 100755
+--- a/madgraph/madweight/create_run.py
++++ b/madgraph/madweight/create_run.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ #Extension
+ import string,os,sys,re,popen2,time,stat,filecmp
+diff --git a/madgraph/madweight/diagram_class.py b/madgraph/madweight/diagram_class.py
+index 1e35e71..96a45b1 100755
+--- a/madgraph/madweight/diagram_class.py
++++ b/madgraph/madweight/diagram_class.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import sys
+ import logging
+diff --git a/madgraph/madweight/mod_file.py b/madgraph/madweight/mod_file.py
+index 5b3242f..4fb0a0c 100755
+--- a/madgraph/madweight/mod_file.py
++++ b/madgraph/madweight/mod_file.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python 
++#!/usr/bin/env python2
+ ####################################################################################################
+ ####################################################################################################
+ ##                                                                                                ##
+diff --git a/madgraph/madweight/substructure_class.py b/madgraph/madweight/substructure_class.py
+index 370ee1f..3affadf 100755
+--- a/madgraph/madweight/substructure_class.py
++++ b/madgraph/madweight/substructure_class.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ 
+ try:
+diff --git a/madgraph/madweight/verif_event.py b/madgraph/madweight/verif_event.py
+index 0882a96..224d17a 100755
+--- a/madgraph/madweight/verif_event.py
++++ b/madgraph/madweight/verif_event.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##########################################################################
+ ##                                                                      ##
+ ##                               MadWeight                              ##
+diff --git a/madgraph/madweight/write_MadWeight.py b/madgraph/madweight/write_MadWeight.py
+index f7a9a6f..4cf5fac 100755
+--- a/madgraph/madweight/write_MadWeight.py
++++ b/madgraph/madweight/write_MadWeight.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ##### -*- coding: cp1252 -*-
+ 
+ #Extension
+diff --git a/madgraph/various/combine_plots.py b/madgraph/various/combine_plots.py
+index 34311e4..474ae00 100755
+--- a/madgraph/various/combine_plots.py
++++ b/madgraph/various/combine_plots.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2013 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/madgraph/various/histograms.py b/madgraph/various/histograms.py
+index 6ad5fd7..8d2874c 100755
+--- a/madgraph/various/histograms.py
++++ b/madgraph/various/histograms.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2010 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/madgraph/various/plot_djrs.py b/madgraph/various/plot_djrs.py
+index c0fb743..30fcfbc 100644
+--- a/madgraph/various/plot_djrs.py
++++ b/madgraph/various/plot_djrs.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ ################################################################################
+ #
+ # Copyright (c) 2010 The MadGraph5_aMC@NLO Development team and Contributors
+diff --git a/madgraph/various/progressbar.py b/madgraph/various/progressbar.py
+index 2f1bc4d..eaeae7d 100755
+--- a/madgraph/various/progressbar.py
++++ b/madgraph/various/progressbar.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2
+ # -*- coding: iso-8859-1 -*-
+ #
+ # progressbar  - Text progressbar library for python.
+diff --git a/tests/acceptance_tests/test_histograms.py b/tests/acceptance_tests/test_histograms.py
+index 82239bf..b7d61fd 100755
 --- a/tests/acceptance_tests/test_histograms.py
 +++ b/tests/acceptance_tests/test_histograms.py
-@@ -47,5 +47,4 @@
+@@ -47,5 +47,5 @@ class IOTest_Histogram(IOTests.IOTestManager):
            histo_list.output(pjoin('%s','HistoOut'), format = 'gnuplot');
          ''' % (sys.path, _file_path, self.IOpath)
  
 -        os.system('echo "%s" | python' % line) 
--
-+++ b/       os.system('echo "%s" | python2' % line)
-diff -ur tests/acceptance_tests/test_model_equivalence.py tests/acceptance_tests/test_model_equivalence.py
++        os.system('echo "%s" | python2' % line) 
+ 
+diff --git a/tests/acceptance_tests/test_model_equivalence.py b/tests/acceptance_tests/test_model_equivalence.py
+index 37e93bd..e7b063d 100755
 --- a/tests/acceptance_tests/test_model_equivalence.py
 +++ b/tests/acceptance_tests/test_model_equivalence.py
-@@ -322,7 +322,7 @@
+@@ -322,7 +322,7 @@ class TestModelCreation(unittest.TestCase, CheckFileCreate):
              pass
          # prepare for a local compilation
          
 -        subprocess.call(['python','write_param_card.py'], cwd=os.path.join(MG5DIR,'models','sm'),
-+++ b/       subprocess.call(['python2','write_param_card.py'], cwd=os.path.join(MG5DIR,'models','sm'),
++        subprocess.call(['python2','write_param_card.py'], cwd=os.path.join(MG5DIR,'models','sm'),
                          stdout=subprocess.PIPE)
          files.cp(os.path.join(MG5DIR,'models','sm','param_card.dat'),
                   join('param_card.dat'))
-diff -ur tests/parallel_tests/loop_sample_script.py tests/parallel_tests/loop_sample_script.py
+diff --git a/tests/parallel_tests/loop_sample_script.py b/tests/parallel_tests/loop_sample_script.py
+index 1ee58f4..4fc64b5 100755
 --- a/tests/parallel_tests/loop_sample_script.py
 +++ b/tests/parallel_tests/loop_sample_script.py
 @@ -1,4 +1,4 @@
@@ -500,7 +1172,8 @@ diff -ur tests/parallel_tests/loop_sample_script.py tests/parallel_tests/loop_sa
  ################################################################################
  #
  # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur tests/parallel_tests/sample_script.py tests/parallel_tests/sample_script.py
+diff --git a/tests/parallel_tests/sample_script.py b/tests/parallel_tests/sample_script.py
+index 2be23d9..ff11bf9 100755
 --- a/tests/parallel_tests/sample_script.py
 +++ b/tests/parallel_tests/sample_script.py
 @@ -1,4 +1,4 @@
@@ -509,7 +1182,8 @@ diff -ur tests/parallel_tests/sample_script.py tests/parallel_tests/sample_scrip
  ################################################################################
  #
  # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur tests/test_manager.py tests/test_manager.py
+diff --git a/tests/test_manager.py b/tests/test_manager.py
+index 9518cf5..75d154a 100755
 --- a/tests/test_manager.py
 +++ b/tests/test_manager.py
 @@ -1,4 +1,4 @@
@@ -518,7 +1192,16 @@ diff -ur tests/test_manager.py tests/test_manager.py
  ################################################################################
  #
  # Copyright (c) 2009 The MadGraph5_aMC@NLO Development team and Contributors
-diff -ur vendor/IREGI/src/oneloop/create.py vendor/IREGI/src/oneloop/create.py
+@@ -1092,6 +1092,6 @@ https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/DevelopmentPage/CodeTesting
+ #    run('TestTestFinder')
+ #    run('test_check_valid_on_file')
+ #    run('test_collect_dir.*') # '.*' stands for all possible char (re format)
+-#    python tests/test_manager.py test_decay.py -l INFO|less
++#    python2 tests/test_manager.py test_decay.py -l INFO|less
+ 
+ 
+diff --git a/vendor/IREGI/src/oneloop/create.py b/vendor/IREGI/src/oneloop/create.py
+index 43290c5..ea98b6f 100755
 --- a/vendor/IREGI/src/oneloop/create.py
 +++ b/vendor/IREGI/src/oneloop/create.py
 @@ -1,4 +1,4 @@
@@ -527,7 +1210,8 @@ diff -ur vendor/IREGI/src/oneloop/create.py vendor/IREGI/src/oneloop/create.py
  import re,string,os,sys,subprocess
  locdir,thisFile = os.path.split(os.path.abspath(sys.argv[0]))
  srcdir = os.path.join(locdir,'src')
-diff -ur vendor/IREGI/src/oneloop/example_cpp/create.py vendor/IREGI/src/oneloop/example_cpp/create.py
+diff --git a/vendor/IREGI/src/oneloop/example_cpp/create.py b/vendor/IREGI/src/oneloop/example_cpp/create.py
+index fca7438..820cce8 100755
 --- a/vendor/IREGI/src/oneloop/example_cpp/create.py
 +++ b/vendor/IREGI/src/oneloop/example_cpp/create.py
 @@ -1,4 +1,4 @@
@@ -536,7 +1220,8 @@ diff -ur vendor/IREGI/src/oneloop/example_cpp/create.py vendor/IREGI/src/oneloop
  import re,string,os,sys,subprocess
  locdir,thisFile = os.path.split(os.path.abspath(sys.argv[0]))
  srcdir = os.path.join(locdir,'src')
-diff -ur vendor/IREGI/src/oneloop/src/avh_olo.py vendor/IREGI/src/oneloop/src/avh_olo.py
+diff --git a/vendor/IREGI/src/oneloop/src/avh_olo.py b/vendor/IREGI/src/oneloop/src/avh_olo.py
+index 438f55a..6ec087a 100755
 --- a/vendor/IREGI/src/oneloop/src/avh_olo.py
 +++ b/vendor/IREGI/src/oneloop/src/avh_olo.py
 @@ -1,4 +1,4 @@
@@ -545,7 +1230,31 @@ diff -ur vendor/IREGI/src/oneloop/src/avh_olo.py vendor/IREGI/src/oneloop/src/av
  import re,sys
  import avh_pc_olo
  
-diff -ur vendor/IREGI/src/oneloop/src/avh_pc_exe.py vendor/IREGI/src/oneloop/src/avh_pc_exe.py
+@@ -25,14 +25,14 @@ for option in sysargv:
+     elif re.match(r'cppintf',option): cppintf = re.sub(r'cppintf=','',option) 
+     else:
+         avh_pc.prnt('')
+-        avh_pc.prnt('usage: python avh_pc_olo.py [dpkind="kind"]')
+-        avh_pc.prnt('                            [qpkind="kind"]')
+-        avh_pc.prnt('                            [kindmod="module"]')
+-        avh_pc.prnt('                            [ddtype="type"]')
+-        avh_pc.prnt('                            [qdtype="type"]')
+-        avh_pc.prnt('                            [mptype="type"]')
+-        avh_pc.prnt('                            [tlevel="yes"]')
+-        avh_pc.prnt('                            [cppintf="yes"]')
++        avh_pc.prnt('usage: python2 avh_pc_olo.py [dpkind="kind"]')
++        avh_pc.prnt('                             [qpkind="kind"]')
++        avh_pc.prnt('                             [kindmod="module"]')
++        avh_pc.prnt('                             [ddtype="type"]')
++        avh_pc.prnt('                             [qdtype="type"]')
++        avh_pc.prnt('                             [mptype="type"]')
++        avh_pc.prnt('                             [tlevel="yes"]')
++        avh_pc.prnt('                             [cppintf="yes"]')
+         avh_pc.prnt('       If no option is provided, dpkind="kind(1d0)" is set')
+         avh_pc.prnt('       by default. However, dpkind must be provided expli-')
+         avh_pc.prnt('       citly if to be combined with qpkind and/or mptype.')
+diff --git a/vendor/IREGI/src/oneloop/src/avh_pc_exe.py b/vendor/IREGI/src/oneloop/src/avh_pc_exe.py
+index 150e4c0..f372e43 100755
 --- a/vendor/IREGI/src/oneloop/src/avh_pc_exe.py
 +++ b/vendor/IREGI/src/oneloop/src/avh_pc_exe.py
 @@ -1,4 +1,4 @@

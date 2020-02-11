@@ -1,7 +1,7 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph
-pkgver=2.6.6
+pkgver=2.7.0
 _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
@@ -30,8 +30,8 @@ optdepends=(
 source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.${_minor}.x/+download/MG5_aMC_v${pkgver}.tar.gz"
         "python2.patch"
         "mg5_configuration.patch")
-sha256sums=('56aaa6bd7ecfb82180735a379a63af86bcf814168ee670860ad36c7d9e4a2096'
-            '2b84d4122542c25957c43f0dd20080040d65c1b7f666402a4a45676e04c6d0df'
+sha256sums=('67001eecb5e8fc712eea5e1c1d016cd407db7d0c06f48c80610d4ae664341e4e'
+            '7f698c8c8ae934098fb3a736a93175d0428473090e01517a68e9e6231742d24d'
             'a251d1bc6be29032c051cde8b0d050330b4777ff94fea6df5a495a9506c4eadc')
 options=("!strip")
 
