@@ -1,8 +1,8 @@
 # Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='dynwg'
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc='A DynDNS watchdog for WireGuard over systemd-networkd'
 arch=('any')
 url="https://github.com/coNQP/${pkgname}"
