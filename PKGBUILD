@@ -13,6 +13,7 @@ depends=('less')
 source=(
     'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
     # on hold until the AWS CLI team publish their key
+    # See https://github.com/aws/aws-cli/issues/4942
     # 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig'
 )
 #validpgpkeys=('FB5DB77FD5C118B80511ADA8A6310ACC4672475C')
