@@ -1,20 +1,30 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=aws-cli-v2
-pkgver=latest
-pkgrel=1
-pkgdesc="Experimental v2 of the AWS CLI"
+pkgver=2.0.0
+pkgrel=2
+pkgdesc='Universal Command Line Interface for Amazon Web Services version 2'
 arch=('i686' 'x86_64')
-url="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html"
-license=('Apache-2.0')
-depends=(
+url='https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html'
+license=('Apache')
+provides=('aws-cli')
+conflicts=('aws-cli')
+makedepends=('unzip')
+depends=('less')
+source=(
+    'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip'
+    # on hold until the AWS CLI team publish their key
+    # 'https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip.sig'
 )
-makedepends=(
-  'unzip'
+#validpgpkeys=('FB5DB77FD5C118B80511ADA8A6310ACC4672475C')
+md5sums=(
+    'SKIP'
 )
-source=("awscliv2.zip::https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip")
-sha1sums=('SKIP')
 
 package() {
-  cd "$srcdir"
-  ./aws/install -i "$pkgdir/usr/share/aws-cli" -b "$pkgdir/usr/bin"
+  $srcdir/aws/install -i "$pkgdir/usr/share/aws-cli" -b "$pkgdir/usr/bin" >/dev/null
+
+  BIN_DIR=/usr/share/aws-cli/v2/current/bin
+  for i in $pkgdir/$BIN_DIR/*; do
+    ln -sf $BIN_DIR/$(basename $i) $pkgdir/usr/bin/
+  done
 }
