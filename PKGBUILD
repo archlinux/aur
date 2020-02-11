@@ -3,8 +3,8 @@
 # Contributor: <jnbek1972 at gmail dot com>
 # Contributor: <raku at rakutiki.tv>
 pkgname=waterfox-classic-git
-pkgver=56.3+4e300fc5cebf
-pkgrel=2
+pkgver=56.3+713628aa85e7
+pkgrel=1
 pkgdesc="64-Bit optimized Firefox fork, no data collection, allows unsigned extensions"
 arch=('i686' 'x86_64')
 license=('MPL')
