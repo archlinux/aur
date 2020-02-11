@@ -33,9 +33,9 @@ prepare() {
 	git submodule update
 	find . -type f -exec sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2.7|g' {} \;
 	find . -type f -exec sed -i 's|#!/usr/bin/python2.7|#!/usr/bin/env python2.7|g' {} \;
-	rm -rf 'shared-data/'{mailpile-gui/,multipile/}
-	rm -rf 'shared-data/default-theme/'{less/,index.html}
-	rm -rf 'mailpile/tests'
+	rm -rf 'shared-data/'{"$pkgname-gui/",'multipile/'}
+	rm -rf 'shared-data/default-theme/'{'less/','index.html'}
+	rm -rf "$pkgname/tests"
 }
 
 pkgver() {
