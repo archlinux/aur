@@ -2,7 +2,7 @@
 
 pkgname=python2-py010parser
 _pkgname=py010parser
-pkgver=0.1.10
+pkgver=0.1.18
 pkgrel=1
 pkgdesc='Library parsing 010 templates into an AST.'
 arch=(any)
@@ -11,7 +11,7 @@ license=('custom')
 depends=(python2)
 makedepends=(python2-setuptools)
 source=("https://github.com/d0c-s4vage/${_pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('98a90ce0894c720674c9bc926893f330')
+md5sums=('c0b236be2bfe464aa8db3ab98ce7db67')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
