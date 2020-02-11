@@ -1,0 +1,18 @@
+pkgbase = android-unpackbootimg
+	pkgdesc = Tools to work with Android boot images
+	pkgver = r9.b92cac0
+	pkgrel = 1
+	url = https://github.com/anestisb/android-unpackbootimg
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = make
+	optdepends = python
+	options = !makeflags
+	source = android-unpackbootimg::git+https://github.com/anestisb/android-unpackbootimg.git
+	sha256sums = SKIP
+
+pkgname = android-unpackbootimg
+
