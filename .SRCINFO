@@ -1,0 +1,37 @@
+pkgbase = openra-vs-git
+	pkgdesc = A Command & Conquer: Red Alert 2-inspired mod of OpenRA
+	pkgver = 2005.git.d193909
+	pkgrel = 1
+	url = https://github.com/AttacqueSuperior/ValiantShades
+	install = openra-vs.install
+	arch = any
+	license = GPL3
+	makedepends = dos2unix
+	makedepends = git
+	makedepends = unzip
+	makedepends = msbuild
+	depends = mono
+	depends = ttf-dejavu
+	depends = openal
+	depends = libgl
+	depends = freetype2
+	depends = sdl2
+	depends = lua51
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = desktop-file-utils
+	depends = xdg-utils
+	depends = zenity
+	provides = openra-vs
+	options = !strip
+	source = git+https://github.com/AttacqueSuperior/ValiantShades.git
+	source = openra-vs
+	source = openra-vs.appdata.xml
+	source = openra-vs.desktop
+	md5sums = SKIP
+	md5sums = 66bbc154f883d0635a8dbd619074a0c4
+	md5sums = d0c770a035d7bbda24171dcd58b54b47
+	md5sums = 476642809c2b0e5af5a926218c7d2821
+
+pkgname = openra-vs-git
+

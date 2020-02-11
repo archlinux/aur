@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRA - Valiant Shades
+GenericName=Real Time Strategy Game
+GenericName[de]=Echtzeit-Strategiespiel
+Comment=A game inspired by Command & Conquer: Red Alert 2
+Icon=openra-vs
+Exec=openra-vs
+Terminal=false
+Categories=Game;StrategyGame;X-RTS;X-RealTimeStrategy;X-RealTimeStrategyGame;
