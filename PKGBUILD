@@ -9,7 +9,7 @@ pkgdesc="Cross-platform V2ray Client written in Qt (Stable Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
-depends=('hicolor-icon-theme' 'qt5-charts>5.11.0' 'grpc>=1.27.0')
+depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0')
 optdepends=('v2ray: use system v2ray')
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'grpc-cli>=1.27.0')
 provides=('qv2ray')

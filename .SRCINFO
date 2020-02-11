@@ -13,7 +13,7 @@ pkgbase = qv2ray
 	makedepends = qt5-declarative
 	makedepends = grpc-cli>=1.27.0
 	depends = hicolor-icon-theme
-	depends = qt5-charts>5.11.0
+	depends = qt5-base>5.11.0
 	depends = grpc>=1.27.0
 	optdepends = v2ray: use system v2ray
 	provides = qv2ray
