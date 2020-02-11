@@ -8,7 +8,7 @@ license=('GPL3')
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'xdg-utils' 'libxss')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-provides=('session-desktopb-bin')
+provides=('session-desktop-bin')
 
 pkgver=1
 source=("https://getsession.org/linux")
