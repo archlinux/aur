@@ -6,6 +6,8 @@ pkgbase = cws
 	arch = any
 	license = MIT
 	depends = python
+	optdepends = lolcat: make stuff look pretty
 	source = cws
 	md5sums = 2c6a191f71a62d7b512bd9e8c8715b4d
+
 pkgname = cws
