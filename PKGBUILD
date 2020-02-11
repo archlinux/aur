@@ -7,8 +7,8 @@ pkgdesc="Twitch launcher using rofi"
 arch=('any')
 url="https://github.com/jp1995/kappa-launcher"
 license=('MIT')
-provides=($_pkgname)
-conflicts=($_pkgname)
+provides=($pkgname)
+conflicts=($pkgname)
 depends=(
   'rofi'
   'jq'
