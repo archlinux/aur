@@ -1,7 +1,7 @@
 # Maintainer: Mort Yao <soi@mort.ninja>
 
 pkgname=ocaml-ppx_tools-git
-pkgver=20190719
+pkgver=20200211
 pkgrel=1
 pkgdesc="Tools for authors of ppx rewriters and other syntactic tools"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('ocaml-ppx_tools')
 conflicts=('ocaml-ppx_tools')
 depends=('ocaml')
-makedepends=('ocaml-findlib')
+makedepends=('ocaml-findlib' 'dune')
 source=("${pkgname}::git://github.com/ocaml-ppx/ppx_tools.git")
 md5sums=('SKIP')
 
