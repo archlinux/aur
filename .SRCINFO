@@ -1,4 +1,4 @@
-pkgbase = gnome-control-center
+pkgbase = gnome-control-center-nocheese
 	pkgdesc = GNOME's main interface to configure various aspects of the desktop.
 	pkgver = 3.34.2
 	pkgrel = 1

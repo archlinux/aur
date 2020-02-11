@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-control-center-nocheese
-pkgbase=gnome-control-center
+_pkgbase=gnome-control-center
 pkgver=3.34.2
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop."
@@ -33,12 +33,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  cd $pkgbase
+  cd $_pkgbase
   git describe --tags | sed 's/^GNOME_CONTROL_CENTER_//;s/_/./g;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgbase
+  cd $_pkgbase
   git submodule init
   git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
   git submodule update
