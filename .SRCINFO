@@ -1,6 +1,6 @@
 pkgbase = nali-cli
 	pkgdesc = Parse geoinfo of IP Address without leaving your terminal
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://nali.skk.moe/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = nali-cli
 	optdepends = bind-tools: nali-dig / nali-nslookup support
 	optdepends = iputils: nali-ping / nali-tracepath support
 	optdepends = traceroute: nali-traceroute support
-	noextract = nali-cli-2.0.1.tgz
-	source = https://registry.npmjs.org/nali-cli/-/nali-cli-2.0.1.tgz
-	source = nali-cli-2.0.1.LICENSE::https://github.com/SukkaW/nali-cli/raw/master/LICENSE
-	sha256sums = ac25a6baefb1b02b233b8da53feaf5e2d53a939472ba2a940810659f76827d82
+	noextract = nali-cli-2.1.0.tgz
+	source = https://registry.npmjs.org/nali-cli/-/nali-cli-2.1.0.tgz
+	source = https://github.com/SukkaW/nali-cli/raw/master/LICENSE
+	sha256sums = ca7450ce8e016a1682dc76035b838f00d8b7cf93075540e431bc202d2844c0ff
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 
 pkgname = nali-cli
