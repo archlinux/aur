@@ -1,0 +1,18 @@
+pkgbase = gpng-git
+	pkgdesc = A tiny utility that encodes GnuPG messages into PNG format.
+	pkgver = r9.e834611
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/nicholascw/gPNG
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	depends = png++
+	replaces = gpng
+	source = gpng::git+https://github.com/nicholascw/gPNG.git#branch=master
+	md5sums = SKIP
+
+pkgname = gpng-git
+
