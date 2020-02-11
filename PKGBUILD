@@ -1,3 +1,7 @@
+# Maintainer: Ke Liu <spcter119@gmail.com>
+# Contributor: huiyiqun <huiyiqun@gmail.com>
+# Contributor: houbaron <https://github.com/houbaron>
+
 pkgname=deepin-wxwork
 pkgver=2.8.10.2010deepin0
 pkgrel=1
