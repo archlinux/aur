@@ -25,7 +25,7 @@ build() {
 	cd gcc-${GPPVER}
 	bpkg add https://pkg.cppget.org/1/beta
 	bpkg fetch --trust-yes
-	bpkg build --trust-yes libodb-pgsql ?sys:libpq ?sys:libodb
+	bpkg build --trust-yes ${pkgname} ?sys:libpq ?sys:libodb
 }
 
 package() {
@@ -38,5 +38,5 @@ package() {
 	for f in ${pkgdir}/usr/lib/pkgconfig/*.pc; do sed -i "s|${pkgdir}||" ${f}; done
 
 	mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
-	mv ${pkgdir}/usr/share/doc/libodb-pgsql/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
+	mv ${pkgdir}/usr/share/doc/${pkgname}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }
