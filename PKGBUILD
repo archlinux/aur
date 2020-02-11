@@ -19,6 +19,11 @@ depends=(
 	'python-yaml'
 	'python-decorator'
 	'python-censys'
+	'python-gevent'
+	'python-grequests'
+	'python-aiodns'
+	'python-pycares'
+	'python-dnspython'
 )
 makedepends=('git' 'python-setuptools')
 provides=("${pkgname}")
