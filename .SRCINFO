@@ -1,0 +1,17 @@
+pkgbase = pacana-git
+	pkgdesc = Pacman repository analysis tool
+	pkgver = 0.10.r2.gdc77568
+	pkgrel = 1
+	url = https://github.com/bbidulock/pacana
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pacman
+	provides = pacana=0.10-1
+	conflicts = pacana
+	source = pacana-git::git+https://github.com/bbidulock/pacana.git
+	md5sums = SKIP
+
+pkgname = pacana-git
+
