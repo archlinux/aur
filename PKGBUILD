@@ -1,32 +1,37 @@
-# Maintainer: Adrià Arrufat <swiftscythe@gmail.com>
+# Maintainer: Miguel Revilla <yo at miguelrevilla dot com>
+# Contributor: Adrià Arrufat <swiftscythe@gmail.com>
 # Contributor: Filipe Verri <filipeverri@gmail.com>
 
 pkgname=build2
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="build2 build system"
 arch=(i686 x86_64)
 url="https://build2.org/"
 license=('MIT')
-makedepends=(wget)
-source=("https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz")
-sha256sums=('a0ecf9930b873242a0164653411caca2cc5c095abda5ee7bda800f1b0f93e396')
+makedepends=('wget')
+depends=('sqlite3' 'pkgconf')
+source=("https://download.build2.org/${pkgver}/build2-toolchain-${pkgver}.tar.xz"
+		"build.patch")
+
+sha256sums=('a0ecf9930b873242a0164653411caca2cc5c095abda5ee7bda800f1b0f93e396'
+            'd6c3b46e2fd014a6f9771626647c6a9a33ec2c1caefab47d15db129c9c42b66a')
 
 build() {
-  cd build2-toolchain-$pkgver
-  mkdir -p install
-  ./build.sh --trust yes --install-dir `pwd`/install g++
+  cd ${srcdir}/build2-toolchain-${pkgver}
+
+  patch -p0 < ${srcdir}/build.patch
+
+  mkdir -p ${srcdir}/build/usr
+  ./build.sh --trust yes --install-dir ${srcdir}/build/usr g++
+
+  for f in ${srcdir}/build/usr/lib/pkgconfig/*.pc; do sed -i "s|${srcdir}/build||" ${f}; done
 }
 
 package() {
-  cd build2-toolchain-$pkgver
-  mkdir -p "$pkgdir/usr/bin"
-  cp install/bin/* "$pkgdir/usr/bin/"
-  mkdir -p "$pkdir/usr/share"
-  cp -R install/share/ "$pkgdir/usr/share/"
-  mkdir -p "$pkdir/usr/lib"
-  cp -R install/lib/ "$pkgdir/usr/lib/"
-  rm $pkgdir/usr/lib/{libsqlite3.so,libpkgconf.so}
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 ./build2/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${srcdir}/build
+  cp -av usr ${pkgdir}
+
+  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}/
+  mv ${pkgdir}/usr/share/doc/build2/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
 }

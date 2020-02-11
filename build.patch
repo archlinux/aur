@@ -1,0 +1,20 @@
+--- build.sh.orig	2019-11-20 11:41:28.000000000 +0100
++++ build.sh	2020-02-11 03:43:42.624594118 +0100
+@@ -368,7 +368,7 @@
+ run bpkg-stage $verbose create \
+ cc \
+ config.cxx="$cxx" \
+-config.cc.coptions="$*" \
++config.cc.coptions="-I/usr/include/pkgconf $*" \
+ config.bin.lib=shared \
+ config.bin.rpath="$conf_rpath" \
+ config.install.root="$idir" \
+@@ -376,7 +376,7 @@
+ 
+ run bpkg-stage $verbose add "$BUILD2_REPO"
+ run bpkg-stage $verbose $bpkg_fetch_ops fetch
+-run bpkg-stage $verbose $jobs $bpkg_build_ops build --for install --yes --plan= build2 bpkg bdep
++run bpkg-stage $verbose $jobs $bpkg_build_ops build --for install --yes --plan= build2 bpkg bdep ?sys:libsqlite3 ?sys:libpkgconf
+ run bpkg-stage $verbose $jobs install build2 bpkg bdep
+ 
+ run command -v b
