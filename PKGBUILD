@@ -1,24 +1,24 @@
-# Contributor: L0cutus, <stefano.zamprogno@gmail.com>
-pkgname=rdiff-backup-fs
-pkgver=1.0.0
-pkgrel=3
-pkgdesc="Filesystem in userspace for rdiff-backup repositories"
-arch=('i686' 'x86_64')
-url="http://code.google.com/p/rdiff-backup-fs/"
-license=('GPL')
-depends=('fuse' 'zlib')
-source=(http://rdiff-backup-fs.googlecode.com/files/${pkgname}-${pkgver}.tar.gz)
-md5sums=('c59fb6796ff4a70e0759fbc79b52db07')
-sha512sums=('35d82ae183c559d93110f6ad0645e75e3fa02fea09194517488312c2c73a00cdcdadd3813a532f2eb986417b2af9dc245c298963bc8fb7758b54464d284db327')
+# Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
-build()
-{
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr
-  make
+pkgname="rdiff-backup-fs"
+pkgver="1.0.0"
+pkgrel="1"
+pkgdesc="A FUSE filesystem for accessing rdiff-backup archives."
+arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
+url="https://code.google.com/archive/p/rdiff-backup-fs"
+license=("GPLv3")
+depends=("fuse2")
+makedepends=()
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rdiff-backup-fs/rdiff-backup-fs-${pkgver}.tar.gz")
+sha256sums=("f921121c33ec0ec72268566af5e9dd6a68ea289d014f6960c9a3489c2c870a15")
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}" || return
+    ./configure --prefix=/usr && \
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make prefix="$pkgdir/usr" install
+    cd "${srcdir}/${pkgname}-${pkgver}" || return
+    make DESTDIR="${pkgdir}" install
 }
