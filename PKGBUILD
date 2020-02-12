@@ -3,7 +3,7 @@
 packager="Spider.007 <archPackage@spider007.net>"
 pkgname=netatop
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
 groups=('modules')

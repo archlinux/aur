@@ -1,2 +1,2 @@
-post_install(){ depmod -a ; }
-post_upgrade(){ depmod -a ; }
+post_install(){ depmod -a ; modprobe netatop ; }
+post_upgrade(){ depmod -a ; modprobe netatop ; }
