@@ -1,6 +1,6 @@
 pkgbase = linux-rt
 	pkgver = 5.4.17.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
@@ -42,7 +42,7 @@ pkgbase = linux-rt
 	sha256sums = SKIP
 	sha256sums = f836174fc06ca8c9edb69d7d7ea480a6f6957caf00dfc08b042dbdd85a5cf265
 	sha256sums = SKIP
-	sha256sums = 6717f70ab716375d769f83db43f0c16b45dd041cb24f3c4c0a29ff9d9b405dca
+	sha256sums = d9410b382b50d47002a1aed9f5c77885f58f59b1b389024cfddec5b5590a8962
 	sha256sums = ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85
 	sha256sums = cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa
 	sha256sums = 4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c

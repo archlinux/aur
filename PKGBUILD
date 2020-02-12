@@ -1,16 +1,11 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
-# Contributor: Ray Rashif <schiv@archlinux.org>
-# Contributor: timbosa <tinny_tim@dodo.com.au>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rt
 _pkgver=5.4.17
 _rtpatchver=9
 pkgver="${_pkgver}.${_rtpatchver}"
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -49,7 +44,7 @@ sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
             'SKIP'
             'f836174fc06ca8c9edb69d7d7ea480a6f6957caf00dfc08b042dbdd85a5cf265'
             'SKIP'
-            '6717f70ab716375d769f83db43f0c16b45dd041cb24f3c4c0a29ff9d9b405dca'
+            'd9410b382b50d47002a1aed9f5c77885f58f59b1b389024cfddec5b5590a8962'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
             'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
             '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
@@ -65,7 +60,7 @@ sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
@@ -149,9 +144,6 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  # this is gone in v5.3
-  mkdir "$builddir/.tmp_versions"
-
   echo "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
@@ -218,20 +210,12 @@ _package-docs() {
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  echo "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  echo "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
