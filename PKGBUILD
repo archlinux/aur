@@ -24,7 +24,7 @@ source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=$pkgver?signed"
 sha256sums=('SKIP'
             'SKIP'
             '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
-            'ec125bc9cfe2403bacfcaebf4b58f88b4d734b0f6194c23016efd7e15684f8e0')
+            '89267795175c5be95d13e8f700b69654faf2f38f35be5033eb8e94da404d2353')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
               '8339C7D2942EB854E3F27CE5AEE9DECFD582E984')
