@@ -1,0 +1,17 @@
+pkgbase = quill-stroker-git
+	pkgdesc = Quill is simple library for stroking along paths with variable width
+	pkgver = r57.dbbbc04
+	pkgrel = 1
+	url = https://github.com/sandsmark/quill
+	arch = any
+	license = BSD
+	makedepends = git
+	provides = quill-stroker
+	conflicts = quill-stroker
+	source = git+https://github.com/CrimsonAS/quill.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 1b1ffb9308412ae949cb7dee02f293fa
+
+pkgname = quill-stroker-git
+
