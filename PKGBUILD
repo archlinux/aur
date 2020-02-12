@@ -12,12 +12,12 @@ arch=('i686' 'x86_64')
 url="https://github.com/hoelzro/$_pkgname"
 license=('MIT')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/hoelzro/$_pkgname/archive/$_pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/hoelzro/$_pkgname/archive/$_pkgver.tar.gz")
 sha256sums=('c1a1d0c57107147ea02878a50b768d1c3c13aca2769b026c5bb7a84119607f30')
 
 _package_helper() {
   cd "$_pkgname-$_pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-term() {
