@@ -1,18 +1,18 @@
 pkgbase = sfsimage
 	pkgdesc = Script to manage squashfs forensic evidence containers.
-	pkgver = 0.9
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://www.digitalforensics.ch/sfsimage
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = awk
 	depends = dc3dd
 	depends = squashfs-tools
 	depends = pv
 	provides = sfsimage
 	conflicts = sfsimage
-	source = https://www.digitalforensics.ch/sfsimage/sfsimage-0.9.tar
-	sha256sums = 95efacb9c5cac7b404ba5943dbfbf9eb80057695182ab6b0d7a2e0ef3abdca3f
+	source = https://www.digitalforensics.ch/sfsimage/sfsimage-1.0.tar
+	sha256sums = b427c7a35b59848e6811529ca3ae45f0ebb4ab64b9c199ad5aba1a6e96881a93
 
 pkgname = sfsimage
 

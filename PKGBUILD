@@ -1,15 +1,15 @@
 # maintainer: < aur \at semjonov \dot de >
-# copyright: Bruce Nikkel < nikkel \at digitalforensics.ch >
+# author: Bruce Nikkel < nikkel \at digitalforensics.ch >
 
 pkgname="sfsimage"
 pkgdesc="Script to manage squashfs forensic evidence containers."
 
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 
 arch=('any')
 url="https://www.digitalforensics.ch/sfsimage"
-license=('custom')
+license=('MIT')
 
 depends=('dc3dd' 'squashfs-tools' 'pv')
 makedepends=('awk')
@@ -18,18 +18,17 @@ provides=($pkgname)
 conflicts=($pkgname)
 
 source=("$url/$pkgname-$pkgver.tar")
-sha256sums=('95efacb9c5cac7b404ba5943dbfbf9eb80057695182ab6b0d7a2e0ef3abdca3f')
+sha256sums=('b427c7a35b59848e6811529ca3ae45f0ebb4ab64b9c199ad5aba1a6e96881a93')
 
 build() {
-  # write license file from copyright and warranty notice
+  # copy license file from manual
   cd "$srcdir/"
-  grep Copyright: sfsimage | tee NOWARRANTY
-  awk '/NO WARRANTIES/{flag=1;next}/^\./{flag=0}flag' sfsimage.1 | tee -a NOWARRANTY
+  awk '/^\.SH MIT License/ { print $2, $3; flag=1; next } /^\./ { flag=0 } flag { print }' sfsimage.1 > LICENSE
 }
 
 package() {
   cd "$srcdir/"
-  install -Dm644 "NOWARRANTY" "$pkgdir/usr/share/licenses/$pkgname/NOWARRANTY"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "sfsimage"   "$pkgdir/usr/bin/sfsimage"
   install -Dm644 "sfsimage.1" "$pkgdir/usr/share/man/man1/sfsimage.1"
 }
