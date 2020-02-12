@@ -5,7 +5,7 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=68.4.2
+pkgver=68.5.0
 pkgrel=1
 _gnu=-gnu1
 pkgdesc="GNU version of the Firefox browser."
@@ -35,30 +35,6 @@ sha256sums=('SKIP'
 
 prepare() {
   cd gnuzilla
-
-  # Version patch
-  patch --ignore-whitespace << 'EOF'
---- makeicecat	2020-01-24 18:41:46.475971093 +0100
-+++ makeicecat_new	2020-01-24 18:42:20.121972160 +0100
-@@ -23,7 +23,7 @@
- 
- FFMAJOR=68
- FFMINOR=4
--FFSUB=1
-+FFSUB=2
- GNUVERSION=1
- FFVERSION=$FFMAJOR.$FFMINOR.$FFSUB
- ICECATVERSION=$FFVERSION-gnu$GNUVERSION
-@@ -44,7 +44,7 @@
- wget -N https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${FFVERSION}esr/source/firefox-${FFVERSION}esr.source.tar.xz.asc
- gpg --recv-keys --keyserver keyserver.ubuntu.com 14F26682D0916CDD81E37B6D61B7B526D98F0353
- gpg --verify firefox-${FFVERSION}esr.source.tar.xz.asc
--echo -n a00a7712d0f919162ce8181a9a3fc3e9ef37adf1caff0945a863b4c0c1d9f360 firefox-${FFVERSION}esr.source.tar.xz |sha256sum -c -
-+echo -n 5d523259d9a01ca147c088494b6a7bd402ba75b1679a963558b0a0151e7d2ef4 firefox-${FFVERSION}esr.source.tar.xz |sha256sum -c -
- 
- echo Extracting Firefox tarball
- tar -xf firefox-${FFVERSION}esr.source.tar.xz
-EOF
 
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
@@ -120,9 +96,9 @@ EOF
   patch -Np1 -i ../../../0001-Use-remoting-name-for-GDK-application-names.patch
 
   # Remove extra tag
-  mv -f browser/base/content/aboutDialog.xul browser/base/content/aboutDialog.xul_bad
-  cat browser/base/content/aboutDialog.xul_bad | uniq > browser/base/content/aboutDialog.xul
-  rm -f browser/base/content/aboutDialog.xul_bad
+  #mv -f browser/base/content/aboutDialog.xul browser/base/content/aboutDialog.xul_bad
+  #cat browser/base/content/aboutDialog.xul_bad | uniq > browser/base/content/aboutDialog.xul
+  #rm -f browser/base/content/aboutDialog.xul_bad
 
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk

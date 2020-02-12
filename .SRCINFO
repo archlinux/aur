@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox browser.
-	pkgver = 68.4.2
+	pkgver = 68.5.0
 	pkgrel = 1
 	url = http://www.gnu.org/software/gnuzilla/
 	arch = x86_64
