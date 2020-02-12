@@ -1,6 +1,6 @@
 # Maintainer: Danil Yarantsev <tiberiumk12 at gmail dot com>
 pkgname=doom2df-git
-pkgver=r1174.5b8e9b8
+pkgver=r1198.26f953e
 pkgrel=1
 pkgdesc="Doom 2D Forever: A Doom 2D remake with multiplayer"
 arch=(x86_64 i686)
@@ -10,7 +10,7 @@ depends=(sdl2_mixer sdl2 enet libgl miniupnpc)
 makedepends=(git fpc)
 source=(
   'git://repo.or.cz/d2df-sdl.git'
-  'http://doom2d.org/doom2d_forever/latest/win32-d2df-latest.zip'
+  'https://deadsoftware.ru/files/deaddoomer/d2df/win32-d2df-latest.zip'
   'doom2df.desktop'
   'doom2df.png'
 )

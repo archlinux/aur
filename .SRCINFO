@@ -1,6 +1,6 @@
 pkgbase = doom2df-git
 	pkgdesc = Doom 2D Forever: A Doom 2D remake with multiplayer
-	pkgver = r1174.5b8e9b8
+	pkgver = r1198.26f953e
 	pkgrel = 1
 	url = http://doom2d.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = doom2df-git
 	depends = miniupnpc
 	options = !strip
 	source = git://repo.or.cz/d2df-sdl.git
-	source = http://doom2d.org/doom2d_forever/latest/win32-d2df-latest.zip
+	source = https://deadsoftware.ru/files/deaddoomer/d2df/win32-d2df-latest.zip
 	source = doom2df.desktop
 	source = doom2df.png
 	md5sums = SKIP
