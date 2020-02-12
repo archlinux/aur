@@ -1,0 +1,16 @@
+pkgbase = codablock-bls-signatures
+	pkgdesc = Chia Networks BLS Signatures implementation fork for Dashcore
+	pkgver = 20181101
+	pkgrel = 1
+	url = https://github.com/codablock/bls-signatures/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = libgmp-static
+	makedepends = libsodium-static
+	makedepends = cmake
+	source = codablock-bls-signatures-v20181101.tar.gz::https://github.com/codablock/bls-signatures/archive/v20181101.tar.gz
+	md5sums = 35b84b652c356596e9a0c1824eb734b9
+
+pkgname = codablock-bls-signatures
+
