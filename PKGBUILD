@@ -3,7 +3,7 @@
 # Contributor: Brendan MacDonell <macdonellba at gmail dot com>
 
 pkgname=s3ql
-pkgver=3.3
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('i686' 'x86_64')
@@ -16,13 +16,15 @@ depends=(
   'python-apsw'
   'python-llfuse'
   'python-dugong'
+  'python-systemd'
   'python-requests'
   'python-google-auth'
+  'python-google-auth-oauthlib'
 )
 makedepends=('gcc')
 install="s3ql.install"
 source=(https://github.com/s3ql/s3ql/releases/download/release-$pkgver/s3ql-$pkgver.tar.bz2)
-md5sums=('ef740497010211d82750b84bad1aba7c')
+md5sums=('3d81fad6bf8090a48539e1b9848f70d2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"

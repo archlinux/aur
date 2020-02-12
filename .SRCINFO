@@ -1,6 +1,6 @@
 pkgbase = s3ql
 	pkgdesc = A full-featured file system for online data storage.
-	pkgver = 3.3
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/s3ql/s3ql/
 	install = s3ql.install
@@ -14,9 +14,12 @@ pkgbase = s3ql
 	depends = python-apsw
 	depends = python-llfuse
 	depends = python-dugong
+	depends = python-systemd
 	depends = python-requests
 	depends = python-google-auth
-	source = https://github.com/s3ql/s3ql/releases/download/release-3.3/s3ql-3.3.tar.bz2
-	md5sums = ef740497010211d82750b84bad1aba7c
+	depends = python-google-auth-oauthlib
+	source = https://github.com/s3ql/s3ql/releases/download/release-3.3.2/s3ql-3.3.2.tar.bz2
+	md5sums = 3d81fad6bf8090a48539e1b9848f70d2
 
 pkgname = s3ql
+
