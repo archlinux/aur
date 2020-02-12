@@ -23,7 +23,7 @@ build() {
 _package_helper() {
     cd "$_tardir"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-    make prefix=/usr DESTDIR="$pkgdir" install$1
+    make prefix=/usr DESTDIR="$pkgdir" install"$1"
 }
 
 package_lua-unix() {
