@@ -4,7 +4,7 @@
 
 _name=panflute
 pkgname=python-$_name
-pkgver=1.12.2
+pkgver=1.12.4
 pkgrel=1
 pkgdesc="Pythonic Pandoc filters"
 arch=(any)
@@ -14,8 +14,8 @@ makedepends=("python" "python-pip")
 depends=("python-click"
          "python-yaml"
          "python-shutilwhich")
-source=("https://github.com/sergiocorreia/$_name/archive/v$pkgver.tar.gz")
-sha256sums=('950e25b9273d743baa4b49f4cfd1b24e3e32f721a3f44dc5bce1c7c2c74581b0')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sergiocorreia/$_name/archive/$pkgver.tar.gz")
+sha256sums=('92f9f712a54151b07af736b3b6ba1733c3602600c84b4407fdb714272ff92565')
 
 build() {
 	cd "$srcdir/$_name-$pkgver"
