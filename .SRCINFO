@@ -1,6 +1,6 @@
 pkgbase = plecs-standalone
 	pkgdesc = A circuit simulation tool written by Plexim (license needed / 30-days free trial)
-	pkgver = v4.3.4
+	pkgver = v4.3.6
 	pkgrel = 1
 	url = http://www.plexim.com/de/products/plecs_standalone
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = plecs-standalone
 	source = plecs.desktop
 	source = plecs.png
 	source = plecs.sh
-	source = plecs-standalone-v4.3.4-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-3-4_linux64.tar.gz
+	source = plecs-standalone-v4.3.6-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-4-3-6_linux64.tar.gz
 	md5sums = 7e0990a952785f929402da88efbd6cde
 	md5sums = 8ed62f1ce2de47c761c9244531dc154e
 	md5sums = 675ece23be004504ae71890909f8819c
-	md5sums = 0eb191ecd58b39d5d171fae6e8ecd281
+	md5sums = 5542d38cef1d9dbac5ff7fd709f6b61c
 	sha1sums = 6dbc37f69996baf211e0c387cc5ee6bb4c456619
 	sha1sums = e1d9007695acbf40ce55b47f3724c4de8b5ac270
 	sha1sums = 4150e3dcc41210b7a28b7042972f76e7f6f3ac71
-	sha1sums = f092fab5bcd7e4abbfb958e1b07c32c187e40c6f
+	sha1sums = eef8bf9311e2392aeef7708a28fa1cd018f24a53
 
 pkgname = plecs-standalone
 
