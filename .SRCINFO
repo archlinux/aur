@@ -16,5 +16,5 @@ pkgbase = sunvox-1.x
 	depends = libxau
 	depends = libxdmcp
 	source = https://github.com/LatorreDev/sunvox_mirror/blob/1.9.5c/sunvox-1.9.5c.zip
-	sha256sums = 4ce93d3df85f3be8f19420c472c758fbbbb5a2433e0dcb08b52664719b1a2a5f
+	sha256sums = 610d84f117ac50d6e670f125eb04a0eebd6eb624ea65b5585452ab92809e1cb0
 pkgname = sunvox-1.x
