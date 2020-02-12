@@ -64,7 +64,7 @@ pkgbase=linux-bootsplash
 pkgdesc='Linux kernel with kernel bootsplash support'
 _srcver=5.5.3-arch1
 pkgver=${_srcver%-*}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL2)
@@ -102,7 +102,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
-            '99f9170890845cd168271b4e6d75390dea1106b6aa06c032e3435074de05b95c'
+            SKIP
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
