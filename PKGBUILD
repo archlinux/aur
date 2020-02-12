@@ -5,7 +5,7 @@ pkgname=vintagestory
 # "unstable" for release candidates and "pre" for testing releases before big updates.
 _release=stable
 # _pkgver is separate to allow specifying pre-release versions such as "-rc.1".
-_pkgver=1.11.11
+_pkgver=1.12.0
 
 # makepkg doesn't support hyphens in pkgver. They'll be replaced with underscores.
 pkgver=${_pkgver//-/_}
@@ -19,7 +19,7 @@ source=("https://cdn.vintagestory.at/gamefiles/$_release/vs_archive_$_pkgver.tar
 #       "https://account.vintagestory.at/files/$_release/vs_archive_$_pkgver.tar.gz" (alternative source)
         "vintagestory.desktop"
         "vintagestory.sh")
-md5sums=("96cfa74f751531c818f6ee155dd341db"
+md5sums=("1e5073a5af612ca3abd556a74710a2ae"
          "ab6680c4499b58b14aa36acc2ab4038a"
          "da232b56f48e047ec60791bb7d8b6398")
 
