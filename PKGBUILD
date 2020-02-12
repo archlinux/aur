@@ -1,7 +1,7 @@
 
 pkgname=piwigo
 pkgver=2.10.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Piwigo is a photo gallery software for the web that comes with powerful features to publish and manage your collection of pictures."
 arch=(any)
 url="http://piwigo.org/"
@@ -45,6 +45,8 @@ package() {
     cd ${pkgdir}/usr/share/webapps/piwigo/
     curl https://github.com/Piwigo/Piwigo/commit/c6ed0b5838b6dbcbdcc5d9cddf2c66362cea4591.patch --output pull1.patch
     curl https://github.com/Piwigo/Piwigo/commit/f1d1b55d82e9f2d77c5b54422bced31f44370ce0.patch --output pull2.patch
+     curl https://github.com/Piwigo/Piwigo/commit/53e52711236f3657d2b447726459f29fc1a1bb25.patch --output pull3.patch
     patch -p1 < pull1.patch
     patch -p1 < pull2.patch
+    patch -p1 < pull3.patch
 }
