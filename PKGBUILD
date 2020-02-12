@@ -22,7 +22,7 @@ pkgver() {
 
 _package_helper() {
   cd "$_project"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
 }
 
 package_lua-cldr-git() {
