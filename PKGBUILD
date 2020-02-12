@@ -14,7 +14,7 @@ url="https://github.com/lua-stdlib/$_pkgname"
 license=('MIT')
 _lua_deps=('std-_debug')
 makedepends=('luarocks')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/lua-stdlib/normalize/archive/v$pkgver.tar.gz")
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/lua-stdlib/$_pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('7ca9bc7812a0581f421f29dcb996011575849e4acda3d1683aa27fe4ff8c2687')
 
 _package_helper() {
