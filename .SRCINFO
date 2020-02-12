@@ -1,12 +1,12 @@
 pkgbase = tanka-bin
 	pkgdesc = Flexible, reusable and concise configuration for Kubernetes
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/grafana/tanka
 	arch = x86_64
 	license = Apache
-	source = https://github.com/grafana/tanka/releases/download/v0.7.0/tk-linux-amd64
-	sha256sums = 3b378ecb362a3259ed7a7db311b106fdced48ac4019bc492118973a66daac364
+	source = https://github.com/grafana/tanka/releases/download/v0.7.1/tk-linux-amd64
+	sha256sums = d37bc10c4dda8a7f961ffda5a24b8a5ac29b93030570e46b1f31c6506dd38eab
 
 pkgname = tanka-bin
 
