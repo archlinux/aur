@@ -1,11 +1,13 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Vinícius dos Santos Oliveira <vini.ipsmaker@gmail.com>
+
 pkgname=way-cooler
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 epoch=1
-pkgdesc="Customizeable Wayland compositor written in Rust"
+pkgdesc="Customizeable Wayland compositor written in Rust (upstream abandoned)"
 arch=('i686' 'x86_64')
-url="https://github.com/way-cooler/way-cooler"
+url='https://way-cooler.org/'
 license=('MIT')
 depends=('wlc')
 makedepends=('cargo' 'rust' 'git' 'cairo')
@@ -13,16 +15,16 @@ optdepends=('weston: default terminal emulator'
             'dmenu: default launcher'
             'way-cooler-bg: draws a background for Way Cooler')
 backup=('etc/way-cooler/init.lua')
-source=("${pkgname}::git+https://github.com/way-cooler/way-cooler.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('c95e5ac960eacf79a1267aa36cb3a94d6e023d0389845424b782e5b65cc56346')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
 
   #cargo install way-cooler --root "$pkgdir"
   #mkdir "$pkgdir/usr"
