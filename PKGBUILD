@@ -10,12 +10,12 @@ arch=('i686' 'x86_64')
 url="https://keplerproject.github.io/$_rockname"
 license=('MIT')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/keplerproject/$_rockname/archive/v$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/keplerproject/$_rockname/archive/v$pkgver.tar.gz")
 sha256sums=('b48eb004f0a74bc64aa1419d9999057b9595668c37abfa4a126de4083d89ef44')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
   find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
 }
 
