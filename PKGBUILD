@@ -9,7 +9,7 @@ arch=('any')
 url="http://sourceforge.net/projects/stlarchicons"
 license=('GPL')
 install=stlarch_icons.install
-source=("http://sourceforge.net/projects/stlarchicons/files/$pkgname-$pkgver.tar.gz")
+source=("https://sourceforge.net/projects/stlarchicons/files/$pkgname-$pkgver.tar.gz/download")
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
