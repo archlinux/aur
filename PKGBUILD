@@ -26,7 +26,7 @@ build() {
   cd "ThirdParty-ASL-releases-$pkgver"
   for _arch in ${_architectures}; do 
     mkdir -p build-${_arch} && pushd build-${_arch}
-    LIBS="-lssp" ${_arch}-configure lt_cv_deplibs_check_method=pass_all ..
+    LDFLAGS="-lssp" ${_arch}-configure lt_cv_deplibs_check_method=pass_all ..
     make MINGW_TARGET=${_arch}
     popd
   done
