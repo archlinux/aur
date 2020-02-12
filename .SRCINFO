@@ -8,6 +8,7 @@ pkgbase = mullvad-vpn-cli
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
+	makedepends = go
 	depends = nss
 	conflicts = mullvad-vpn
 	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2020.1?signed
