@@ -1,6 +1,6 @@
 pkgbase = systemd-light
-	pkgver = 244.1
-	pkgrel = 2
+	pkgver = 244.3
+	pkgrel = 1
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	makedepends = acl
@@ -34,7 +34,7 @@ pkgbase = systemd-light
 	makedepends = libmicrohttpd
 	makedepends = libseccomp
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=50a79652baa8650dc2bf7fe5979e67eb673a218e?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=b7ed902b2394f94e7f1fbe6c3194b5cd9a9429e6?signed
 	source = git+https://github.com/systemd/systemd#tag=v244?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
@@ -92,7 +92,7 @@ pkgname = systemd-light
 	depends = hwids
 	depends = libcap
 	depends = libgcrypt
-	depends = systemd-light-libs=244.1
+	depends = systemd-light-libs=244.3
 	depends = libidn2
 	depends = libidn2.so
 	depends = lz4
@@ -113,10 +113,11 @@ pkgname = systemd-light
 	optdepends = systemd: replacement for systemd-networkd
 	optdepends = systemd: replacement for systemd-resolved
 	optdepends = systemd: replacement for systemd-timesyncd
-	provides = systemd=244.1
+	optdepends = libmicrohttpd: remote journald capabilities
+	provides = systemd=244.3
 	provides = nss-myhostname
-	provides = systemd-tools=244.1
-	provides = udev=244.1
+	provides = systemd-tools=244.3
+	provides = udev=244.3
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -147,7 +148,7 @@ pkgname = systemd-light-libs
 	depends = libgcrypt
 	depends = lz4
 	depends = xz
-	provides = systemd-libs=244.1
+	provides = systemd-libs=244.3
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so

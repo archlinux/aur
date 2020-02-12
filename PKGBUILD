@@ -36,9 +36,9 @@ pkgbase=systemd-light
 _pkgbase=${pkgbase%-light}
 pkgname=('systemd-light' 'systemd-light-libs')
 # Can be from either systemd or systemd-stable
-_tag='50a79652baa8650dc2bf7fe5979e67eb673a218e' # git rev-parse v${pkgver}
-pkgver=244.1
-pkgrel=2
+_tag='b7ed902b2394f94e7f1fbe6c3194b5cd9a9429e6' # git rev-parse v${pkgver}
+pkgver=244.3
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -92,6 +92,8 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
+  # units: Split modprobing out into a separate service unit
+  '625077264ba01a108386eeea733ee244e6b7ff14'
 )
 
 _reverts=(
