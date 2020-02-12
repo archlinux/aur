@@ -1,12 +1,13 @@
 pkgbase = il-git
 	pkgdesc = Interactive List
-	pkgver = 0.1.0.r8.g0f1934f
+	pkgver = 0.1.0.r26.ga1c1399
 	pkgrel = 1
 	url = https://git.sr.ht/~ark/il
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = crystal
+	makedepends = shards
 	makedepends = scdoc
 	conflicts = il
 	source = il::git+https://git.sr.ht/~ark/il

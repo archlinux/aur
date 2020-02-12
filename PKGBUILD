@@ -1,13 +1,13 @@
 # Maintainer: Julian Hurst <julian.hurst@pm.me>
 pkgname=il-git
-pkgver=0.1.0.r8.g0f1934f
+pkgver=0.1.0.r26.ga1c1399
 pkgrel=1
 pkgdesc="Interactive List"
 arch=('x86_64')
 url="https://git.sr.ht/~ark/il"
 license=('MIT')
 conflicts=(il)
-makedepends=(git crystal scdoc)
+makedepends=(git crystal shards scdoc)
 source=("${pkgname%-git}::git+$url")
 md5sums=('SKIP')
 
