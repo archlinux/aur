@@ -17,7 +17,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '0d01621e8af435d01734cf0644ad8b898329f9a3e1f0037d22a9ab0969d52466')
+            '265b4f265a1384da8782d364f2094cb9d50fcca945767f6919b7f83629160413')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
