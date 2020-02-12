@@ -3,7 +3,7 @@
 
 _hkgname=MissingH
 pkgname=haskell-missingh
-pkgver=1.4.2.0
+pkgver=1.4.2.1
 pkgrel=1
 pkgdesc="Large utility library"
 url="http://software.complete.org/missingh"
@@ -14,7 +14,7 @@ depends=('ghc-libs' "haskell-hslogger" "haskell-network"
          "haskell-regex-compat")
 makedepends=('ghc' 'haskell-hunit')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
-sha512sums=('6e97ac1c7a126c17a9497bf5afcfab11a2bbf56358ef013f1e7ac5d4095b531976157e9bba1b3abab7a45c98e4d3525e919c926506842e56ef721edcbd944b3c')
+sha512sums=('4e8adc6d20b1aadc25db45789b98df5b9bf0f6763b5a7e291c3107f9ff229070af97f3e8c2cdb54ca8b308c92ba35b13e237da9aed2fb66badb2fd750b6ca9f3')
 
 build() {
     cd $_hkgname-$pkgver
