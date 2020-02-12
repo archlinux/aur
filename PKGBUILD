@@ -2,8 +2,8 @@
 
 pkgname=python-blinkstick-git
 _name=blinkstick
-pkgver=1.1.8
-pkgrel=2
+pkgver=r197.4950676
+pkgrel=1
 pkgdesc="BlinkStick Python interface to control devices connected to the computer."
 
 url='http://www.blinkstick.com'
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_name}/"
-  echo ${pkgver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {

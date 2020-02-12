@@ -1,7 +1,7 @@
 pkgbase = python-blinkstick-git
 	pkgdesc = BlinkStick Python interface to control devices connected to the computer.
-	pkgver = 1.1.8
-	pkgrel = 2
+	pkgver = r197.4950676
+	pkgrel = 1
 	url = http://www.blinkstick.com
 	arch = any
 	license = custom
