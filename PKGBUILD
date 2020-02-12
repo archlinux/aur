@@ -4,20 +4,20 @@
 
 _target=sh3eb-elf
 pkgname=${_target}-binutils
-pkgver=2.32
+pkgver=2.34
 pkgrel=1
 pkgdesc="GNU binary utilities for the ${_target} target."
 arch=(i686 x86_64)
-options=('!libtool' '!buildflags') 
+options=('!libtool' '!buildflags')
 url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib' 'flex')
 source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2)
-sha256sums=('de38b15c902eb2725eac6af21183a5f34ea4634cb0bcef19612b50e5ed31072d')
+sha256sums=('89f010078b6cf69c23c27897d686055ab89b198dddf819efb0a4f2c38a0b36e6')
 
 prepare() {
   cd "${srcdir}/binutils-${pkgver}"
- 
+
   # ensure a clean build
   [[ -d binutils-build ]] && rm -rf binutils-build
   mkdir binutils-build
@@ -47,7 +47,7 @@ build() {
 
 check() {
   cd "${srcdir}/binutils-${pkgver}/binutils-build"
-  
+
   # unset LDFLAGS as testsuite makes assumptions about which ones are active
   # do not abort on errors - manually check log files
   make LDFLAGS="" -k check
