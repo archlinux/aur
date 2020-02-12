@@ -67,11 +67,14 @@ function package_open3d-git() {
         mesa
         xorg-server-devel
     )
+    provides=(
+        open3d
+    )
     optdepends=(
         'openmp: Multiprocess support'
     )
     conflicts=(
-        open3d-git
+        open3d
     )
     cd "${srcdir}/${pkgbase}/build"
     make install
@@ -86,7 +89,7 @@ function package_python-open3d-git() {
         libjpeg-turbo
         libpng
         mesa
-        open3d
+        open3d-git
         python
         xorg-server-devel
     )
@@ -95,7 +98,7 @@ function package_python-open3d-git() {
         'openmp: Multiprocess support'
         'pybind11: System pybind11 support'
     )
-    privides=(
+    provides=(
         python-py3d
     )
     conflicts=(
@@ -117,7 +120,7 @@ function package_python-py3d-git() {
         libjpeg-turbo
         libpng
         mesa
-        open3d
+        open3d-git
         python
         xorg-server-devel
     )
@@ -126,7 +129,7 @@ function package_python-py3d-git() {
         'openmp: Multiprocess support'
         'pybind11: System pybind11 support'
     )
-    privides=(
+    provides=(
         python-open3d
     )
     conflicts=(
