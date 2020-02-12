@@ -22,7 +22,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.3.114
+pkgver=1.3.115
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=530904e0084bde444db4372c1569476654852e6b
+arch_revision=c089b31bfa889d0addf21de7ae5432563609f644
 for Patches in \
         cros-search-service-Include-cmath-for-std-pow.patch \
         move-RemoteTreeNode-declaration.patch \
@@ -49,6 +49,8 @@ for Patches in \
         remove-verbose-logging-in-local-unique-font-matching.patch \
         fix-building-with-unbundled-libxml.patch \
         fix-browser-frame-view-not-getting-a-relayout.patch \
+        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch \
+        rebuild-Linux-frame-button-cache-when-activation.patch \
         chromium-skia-harmony.patch
 do
   source+=("${Patches}::https://git.archlinux.org/svntogit/packages.git/plain/trunk/${Patches}?h=packages/chromium&id=${arch_revision}")
@@ -56,7 +58,6 @@ done
 
 sha256sums=('SKIP'
             '2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814'
-            '5a5f71370a02a6406d5f072f21bd98b4ea56d458608942bf78b6ebd8dc201c5a'
             '43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70'
             '2191ba32800a423f37b7a667093e2bdef5762fe5111fee1d5067e66e26564488'
             '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
@@ -67,6 +68,8 @@ sha256sums=('SKIP'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
             '5db225565336a3d9b9e9f341281680433c0b7bb343dff2698b2acffd86585cbe'
+            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
+            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
 
 prepare() {
@@ -159,10 +162,10 @@ package() {
         brave_*.pak \
         chrome_*.pak \
         icudtl.dat \
-        natives_blob.bin \
         resources.pak \
         v8_context_snapshot.bin \
         "${pkgdir}/usr/lib/brave/"
+        # In v1.3.115 sync is disabled, so natives_blob.bin is not available. Remember to put it back when sync is working again
 
     cd "${srcdir}"
     install -Dm0755 brave-launcher "${pkgdir}/usr/bin/${pkgname}"
