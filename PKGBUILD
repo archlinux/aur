@@ -1,5 +1,5 @@
 pkgname=raccoon-bin
-pkgver=4.6.0
+pkgver=4.12.0
 pkgrel=1
 arch=('any')
 pkgdesc="Alternative Google Play (with GUI) client to download Android APK files to your computer, binary version"
@@ -9,11 +9,11 @@ depends=('java-environment')
 provides=('raccoon')
 source=('raccoon.desktop'
         'https://github.com/onyxbits/Raccoon/raw/master/artwork/icon.svg'
-        "https://raccoon.onyxbits.de/sites/raccoon.onyxbits.de/files/raccoon-${pkgver}.jar")
+        "https://raccoon.onyxbits.de/apk-downloader/raccoon-${pkgver}.jar")
 noextract=('${pkgname}-${pkgver}.jar')
 sha512sums=('99ae7ab9aa77f6de0779c9179e16dbccd36362adc710cd5d7289c473b6aff62d39a0e29be63840bc7f614e360d17b51f877ff2bf2fda938da8fa13e3f9248647'
             'f63e94b86f5b111b8833d53767b0f6eada48426e1b0e30df0137bed455c80ec37087f656e2f0cac9386f4d25441686df82c988252120fc335028d2885b8653f6'
-            '0f656bc3a03506a2053028c95ef1e55d52a251f3ba7f3bf61709f00a3a6525433de24a2d9378a42065ce9627a262b7dce9968db9e9b4c2e3806ae5bce660562d')
+            'cf67a58fa42a4fb0b6ca98e166dab706fb446ac11c01f3964e454c5921d1aec9a7f85010a54081fd231b3a735151a0b523a678688d627598d9846f7a0cbef1dc')
 
 package() {
   # install files to java shared dir
