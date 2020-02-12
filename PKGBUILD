@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.67.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -30,6 +30,9 @@ prepare() {
 
 	chmod +x "${pkgname%-bin}-$pkgver.AppImage"
 	./"${pkgname%-bin}-$pkgver.AppImage" --appimage-extract
+
+	# Correct path for .desktop file
+	sed -i 's|Exec=AppRun|Exec=/opt/tutanota-desktop/tutanota-desktop|g' "squashfs-root/${pkgname%-bin}.desktop"
 
 	# Disable auto-update
 	cd "$srcdir/squashfs-root/resources"
