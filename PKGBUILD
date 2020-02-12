@@ -8,9 +8,10 @@ pkgdesc='Web browser that blocks ads and trackers by default (dev binary release
 arch=('x86_64')
 url='https://brave.com/download-dev'
 license=('custom')
-depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libgnome-keyring' 'ttf-font')
+depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font')
 optdepends=('cups: Printer support'
-            'pepper-flash: Adobe Flash support')
+            'pepper-flash: Adobe Flash support'
+	    'libgnome-keyring: gnome keyring support')
 provides=("${pkgname}" 'brave-dev-browser')
 conflicts=("${pkgname}" 'brave-bin')
 source=("$pkgname-$pkgver.zip::https://github.com/brave/brave-browser/releases/download/v${pkgver}/brave-v${pkgver}-linux-x64.zip"
