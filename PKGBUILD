@@ -11,12 +11,12 @@ url='http://cosmo.luaforge.net/'
 license=('MIT')
 _lua_deps=('lpeg')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/mascarenhas/$_rockname/archive/v$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/mascarenhas/$_rockname/archive/v$pkgver.tar.gz")
 sha256sums=('86d17aea5080a90671d965cffeb9b104c19e0e1ea55c08687c0924c4512b52b1')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspec/$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspec/$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-cosmo() {
