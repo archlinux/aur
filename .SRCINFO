@@ -6,7 +6,7 @@ pkgbase = python-cfgv
 	arch = any
 	license = MIT
 	makedepends = python
-	makedepends = python2
+	makedepends = python-setuptools
 	source = https://pypi.io/packages/source/c/cfgv/cfgv-3.0.0.tar.gz
 	md5sums = 25dfe5f7a55914666e0da155592cd92b
 
@@ -14,9 +14,4 @@ pkgname = python-cfgv
 	pkgdesc = Python 3 client for cfgv
 	depends = python
 	depends = python-six
-
-pkgname = python2-cfgv
-	pkgdesc = Python 2 client for cfgv
-	depends = python2
-	depends = python2-six
 
