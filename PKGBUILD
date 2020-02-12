@@ -2,7 +2,7 @@
 # Based on AUR ghidra, .desktop from ghidra-bin
 
 pkgname=ghidra-darcula
-pkgver=9.1
+pkgver=9.1.2
 _ghidra_data=60529abb6c1e28b689f539384a1ebd1fe13d6528
 _darcula=08c13c5f1a12624f4d8df8723b39061e11c93241
 _darcula_version=2019.09
