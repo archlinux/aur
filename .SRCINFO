@@ -1,6 +1,6 @@
 pkgbase = open3d
 	pkgdesc = A Modern Library for 3D Data Processing
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	epoch = 3
 	url = http://www.open3d.org
@@ -21,11 +21,9 @@ pkgbase = open3d
 	optdepends = pybind11: System pybind11 support
 	optdepends = python: Python support
 	optdepends = jupyter-notebook: Jupyter notebook support
-	source = open3d::git+https://github.com/IntelVCL/Open3D.git#tag=v0.8.0
-	source = fix_tetramesh.patch
+	source = open3d::git+https://github.com/IntelVCL/Open3D.git#tag=v0.9.0
 	source = fix_3rdparty_path.patch
 	sha256sums = SKIP
-	sha256sums = 62db4ca21f7da73f6add22dd3697cb820952e67d006cdb618d16c5980ed0659f
 	sha256sums = 3bf6b79fd075b356a5c2d86a557e0bc6e6df0e84d53c2077d2c6685641838d81
 
 pkgname = open3d
