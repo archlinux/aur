@@ -1,21 +1,22 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=lua51-formatter
-pkgver=0.1.1
 _rockname=formatter
+pkgname="lua51-$_rockname"
+pkgver=0.1.1
 _rockrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautifies Lua code"
 arch=('i686' 'x86_64')
 url="https://luarocks.org/modules/luarocks/formatter"
 license=('GPL')
-depends=('lua51' 'lua15-checks' 'lua51-metalua-compiler' 'lua51-penlight')
+_lua_deps=('checks' 'metalua-compiler' 'penlight')
+depends=('lua51' "${_lua_deps[@]/#/lua51-}")
 makedepends=('luarocks')
-conflicts=()
-source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-sha256sums=('1db31a2d840cc75e3ecbb6ba21d76085c2efaa639b98667c717da2e2d9317a5f')
+source=("$pkgname-$pkgver-$_rockrel.tar.gz::https://github.com/LuaDevelopmentTools/luaformatter/archive/v$pkgver-$_rockrel.tar.gz")
+sha256sums=('77883b9d7322d55d61366e88baf1483a0e4871cdc38b449a3fa3fa33cd157ec5')
 
 package() {
-  luarocks --lua-version=5.1 --tree="$pkgdir/usr" install --deps-mode=none "$_rockname-$pkgver-$_rockrel.src.rock"
-  find "$pkgdir/usr" -name manifest -delete
+  cd "lua$_rockname-$pkgver-$_rockrel"
+  luarocks --lua-version=5.1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "luarocks/$_rockname-$pkgver-$_rockrel.rockspec"
+  find "$pkgdir/usr/bin" -type f -execdir sed -i -e "s#$pkgdir##" {} \;
 }

@@ -1,18 +1,18 @@
 pkgbase = lua51-formatter
 	pkgdesc = Beautifies Lua code
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://luarocks.org/modules/luarocks/formatter
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = luarocks
 	depends = lua51
-	depends = lua15-checks
+	depends = lua51-checks
 	depends = lua51-metalua-compiler
 	depends = lua51-penlight
-	source = https://luarocks.org/formatter-0.1.1-1.src.rock
-	sha256sums = 1db31a2d840cc75e3ecbb6ba21d76085c2efaa639b98667c717da2e2d9317a5f
+	source = lua51-formatter-0.1.1-1.tar.gz::https://github.com/LuaDevelopmentTools/luaformatter/archive/v0.1.1-1.tar.gz
+	sha256sums = 77883b9d7322d55d61366e88baf1483a0e4871cdc38b449a3fa3fa33cd157ec5
 
 pkgname = lua51-formatter
 
