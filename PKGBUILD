@@ -94,7 +94,7 @@ function package_python-open3d() {
         'openmp: Multiprocess support'
         'pybind11: System pybind11 support'
     )
-    privides=(
+    provides=(
         python-py3d
     )
     conflicts=(
@@ -125,7 +125,7 @@ function package_python-py3d() {
         'openmp: Multiprocess support'
         'pybind11: System pybind11 support'
     )
-    privides=(
+    provides=(
         python-open3d
     )
     conflicts=(
