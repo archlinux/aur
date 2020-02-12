@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/clipto.pro/AppRun
+/opt/clipto.pro/clipto.pro
