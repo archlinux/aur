@@ -1,6 +1,4 @@
-==================================
-The Linux bootsplash systemd units
-==================================
+# bootsplash-systemd
 
 Copy the files to `/usr/lib/systemd/system/` and run:
 
