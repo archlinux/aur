@@ -69,7 +69,7 @@ package () {
     make install DESTDIR="$pkgdir/"
 
 	for file in README.md documentation/sile.pdf ; do
-		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$(basename $file)"
+		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$(basename "$file")"
 	done
 
 	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
