@@ -13,6 +13,7 @@ pkgbase = ffc-hpc-git
 	depends = python
 	depends = fiat-hpc-git
 	depends = ufl-hpc-git
+	depends = ufc2-hpc-git
 	depends = python-numpy
 	depends = instant-hpc-git
 	depends = swig
