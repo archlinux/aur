@@ -1,24 +1,42 @@
-# Maintainer: William J. Bowman <aur@williamjbowman.com>
+# Maintainer: Kazuki Sawada <kazuki@6715.jp>
+# Contributor: William J. Bowman <aur@williamjbowman.com>
 
 _pkgname=s3ql
-pkgname=s3ql-hg
-pkgver=r2760.bd156222419a
-pkgrel=2
+pkgname=$_pkgname-git
+pkgver=3.3.2.22.gfa48c94d
+pkgrel=1
 pkgdesc="A full-featured file system for online data storage."
 arch=('i686' 'x86_64')
-url="https://bitbucket.org/nikratio/s3ql/overview"
+url="https://github.com/s3ql/s3ql/"
 license=('GPL3')
-depends=('python' 'python-apsw' 'python-crypto' 'python-defusedxml' 'python-dugong>=3.2'
-         'python-llfuse>=0.43' 'python-requests')
-makedepends=('gcc' 'cython' 'python-sphinx')
-source=(s3ql::hg+https://bitbucket.org/nikratio/s3ql)
+depends=(
+  'python'
+  'python-cryptography'
+  'python-defusedxml'
+  'python-apsw'
+  'python-trio'
+  'python-pyfuse3'
+  'python-dugong'
+  'python-systemd'
+  'python-requests'
+  'python-google-auth'
+  'python-google-auth-oauthlib'
+)
+makedepends=(
+  'gcc'
+  'cython'
+  'python-sphinx'
+  'texlive-latexextra'
+)
+provides=($_pkgname)
+conflicts=($_pkgname)
+replaces=($_pkgname-hg)
+source=(git+https://github.com/s3ql/s3ql.git)
 md5sums=('SKIP')
-provides=('s3ql')
-conflicts=('s3ql')
 
 pkgver() {
   cd "$_pkgname"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  git describe | sed 's/release-//; s/[_-]/./g'
 }
 
 build() {
