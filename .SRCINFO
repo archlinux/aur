@@ -1,6 +1,6 @@
 pkgbase = python-nbval
 	pkgdesc = A py.test plugin to validate Jupyter notebooks
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/computationalmodelling/nbval
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = python-nbval
 	depends = jupyter-nbformat
 	depends = python-ipykernel
 	depends = python-coverage
-	source = https://github.com/computationalmodelling/nbval/archive/0.9.4/python-nbval-0.9.4.tar.gz
-	sha256sums = 34a9d53dc7da0420ba365a1d7adfee620346bdaea3088c80ddfdfc3f4b886bd9
+	source = https://github.com/computationalmodelling/nbval/archive/0.9.5/python-nbval-0.9.5.tar.gz
+	sha256sums = 2c8179bf8c23e3f58db980373b0b40b68c791039a996c604d96bb05b4665820f
 
 pkgname = python-nbval
 
