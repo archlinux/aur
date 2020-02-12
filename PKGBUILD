@@ -11,12 +11,12 @@ url="https://lubyk.github.io/lubyk/$_rockname.html"
 license=('MIT')
 _lua_deps=('filesystem')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/lubyk/$_rockname/archive/REL-$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/lubyk/$_rockname/archive/REL-$pkgver.tar.gz")
 sha256sums=('355f427f28155c4cf3a9673aa24c3754ea782c1c5f2081cbc4c28c00ed69a0b7')
 
 _package_helper() {
   cd "$_rockname-REL-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-lub() {
