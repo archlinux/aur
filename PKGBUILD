@@ -2,13 +2,13 @@
 
 pkgname=genie-systemd-git
 _pkgname=genie
-pkgver=1.17.r6.g91f846d
+pkgver=1.20.r9.gb42a15e
 pkgrel=1
 pkgdesc="A quick way into a systemd \"bottle\" for WSL (development version)"
 arch=('x86_64')
 url="https://github.com/arkane-systems/genie"
 license=('custom:The Unlicense')
-depends=('daemonize' 'dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'hostess')
+depends=('daemonize' 'dotnet-runtime>=3.0' 'dotnet-host>=3.0' 'hostess' 'inetutils')
 makedepends=('dotnet-sdk>=3.0')
 conflicts=('genie-systemd')
 provides=('genie-systemd')
