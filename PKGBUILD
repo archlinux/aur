@@ -8,7 +8,7 @@ url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('nss')
-makedepends=('git' 'cargo' 'go')
+makedepends=('git' 'cargo' 'go-pie')
 conflicts=('mullvad-vpn')
 install="${pkgname}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
@@ -35,10 +35,16 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/mullvadvpn-app"
-
     # Build wireguard-go
-    ./wireguard/build-wireguard-go.sh
+    cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
+    mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
+    go build \
+        -trimpath \
+        -ldflags "-extldflags $LDFLAGS" \
+        -v -o "../../build/lib/$arch-unknown-linux-gnu"/libwg.a \
+        -buildmode c-archive
+
+    cd "${srcdir}/mullvadvpn-app"
 
     # Remove old Rust build artifacts
     cargo clean --release --locked
