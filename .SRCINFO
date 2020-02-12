@@ -6,7 +6,15 @@ pkgbase = emacs-eaf
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	depends = emacs python-dbus python-xlib python-qtpy python-pyqtwebengine python-qrcode python-feedparser python-pymupdf python-grip
+	depends = emacs
+	depends = python-dbus
+	depends = python-xlib
+	depends = python-qtpy
+	depends = python-pyqtwebengine
+	depends = python-qrcode
+	depends = python-feedparser
+	depends = python-pymupdf
+	depends = python-grip
 	source = git://github.com/manateelazycat/emacs-application-framework
 
 pkgname = emacs-eaf
