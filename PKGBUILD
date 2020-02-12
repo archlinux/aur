@@ -3,8 +3,8 @@ url='https://wiki.ros.org/cpp_common'
 
 pkgname='ros-melodic-cpp-common'
 pkgver='0.6.13'
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
