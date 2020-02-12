@@ -14,7 +14,7 @@ depends=('lua')
 makedepends=('luarocks')
 conflicts=('lua51-lcf')
 source=("https://luarocks.org/$_rockname-$pkgver-$_rockrel.src.rock")
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/martin-eden/$_pkgname/archive/$pkgver-$_rockrel.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/martin-eden/$_pkgname/archive/$pkgver-$_rockrel.tar.gz")
 sha256sums=('70d8894ee54a955c80bdd96e2db40f33239b5e3f570778ae0fb64d2da3e7df4c')
 
 package() {
