@@ -1,7 +1,7 @@
 # Maintainer: Aitor Alonso <contact: https://aalonso.eu>
 
 pkgname=qogir-icon-theme-git
-pkgver=1.0
+pkgver=2020.01.29.r1.gc6ad0297
 pkgrel=1
 pkgdesc='A colorful design icon theme for linux desktops'
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Qogir-icon-theme
-  git describe --tags | sed 's/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
