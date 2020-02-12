@@ -9,8 +9,8 @@
 # Upstream: https://projects.archlinux.org/svntogit/community.git/tree/trunk?h=packages/awesome
 
 _pkgbase=awesome
-_pkgname=${_pkgbase}-way-cooler
-pkgname=${_pkgname}-git
+_pkgname=$_pkgbase-way-cooler
+pkgname=$_pkgname-git
 pkgver=4.3.r333.g3b4f3640
 pkgrel=1
 pkgdesc='Highly configurable framework window manager (wayland compatible fork using way-cooler)'
@@ -34,7 +34,7 @@ source=("$pkgname::git+https://github.com/way-cooler/$_pkgbase.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "$pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -44,7 +44,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname \
+  cmake ../"$pkgname" \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONFDIR=/etc \
@@ -56,6 +56,6 @@ package() {
   cd build
   make DESTDIR="$pkgdir" install
 
-  install -Dm644 "$srcdir"/$pkgname/awesome.desktop \
+  install -Dm644 "$srcdir"/"$pkgname"/awesome.desktop \
     "$pkgdir/usr/share/xsessions/awesome.desktop"
 }
