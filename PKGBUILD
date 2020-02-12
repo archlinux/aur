@@ -12,12 +12,12 @@ url="https://github.com/pkulchenko/$_pkgname"
 license=('MIT')
 _lua_deps=('lpeg')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/pkulchenko/$_pkgname/archive/$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/pkulchenko/$_pkgname/archive/$pkgver.tar.gz")
 sha256sums=('0ba8c5ee25cf24e011b29d40cfa5577b19cb4d9d8a086e9238187e7831fb39d1')
 
 _package_helper() {
   cd "$_pkgname-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "misc/$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "misc/$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-pegdebug() {
