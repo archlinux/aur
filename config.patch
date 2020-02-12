@@ -1,12 +1,11 @@
---- config.default.orig	2020-02-06 20:39:36.253376351 +0100
-+++ config.default	2020-02-06 20:40:18.840282908 +0100
-@@ -6,19 +6,19 @@
- #BACKEND = allegro
+--- config.default.orig	2020-02-11 19:33:53.000000000 +0100
++++ config.default	2020-02-12 23:34:14.135593553 +0100
+@@ -7,18 +7,18 @@
  #BACKEND = gdi
  #BACKEND = sdl
--#BACKEND = sdl2
-+BACKEND = sdl2
- #BACKEND = mixer_sdl
+ #BACKEND = sdl2
+-#BACKEND = mixer_sdl
++BACKEND = mixer_sdl
  #BACKEND = posix
  
  #COLOUR_DEPTH = 0
@@ -22,4 +21,33 @@
 +OSTYPE = linux
  #OSTYPE = mingw
  #OSTYPE = mac
+ 
+@@ -36,23 +36,23 @@
+ 
+ #WIN32_CONSOLE = 1 # adds a console for windows debugging
+ 
+-#MULTI_THREAD = 1 # Enable multithreading
++MULTI_THREAD = 1 # Enable multithreading
+ 
+ # using freetype for Truetype font support
+-USE_FREETYPE = 0
++USE_FREETYPE = 1
+ 
+ # using UPnP for easy server hosting behind routers
+-#USE_UPNP = 0
++USE_UPNP = 1
+ 
+ # using zstd compression library
+-#USE_ZSTD = 0
++USE_ZSTD = 1
+ 
+ # Define these as empty strings, if you don't have the respective config program
+ #ALLEGRO_CONFIG = allegro-config
+ #PNG_CONFIG     = pkg-config libpng
+ #SDL_CONFIG     = sdl-config
+ #SDL2_CONFIG    = sdl2-config
+-#FREETYPE_CONFIG    = freetype-config
++FREETYPE_CONFIG = pkg-config freetype2
+ 
+ #VERBOSE = 1
  

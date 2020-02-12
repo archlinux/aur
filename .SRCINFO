@@ -1,6 +1,6 @@
 pkgbase = simutrans-nightly
 	pkgdesc = Transportation simulation game - Nightly build
-	pkgver = 20200210
+	pkgver = 20200212
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = x86_64
@@ -44,7 +44,7 @@ pkgbase = simutrans-nightly
 	sha256sums = c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81
 	sha256sums = 5fc55926b0eb7f41ed5004457a0afa113d6a18fe1e201c5b297393c3046e94de
 	sha256sums = 0d37c0d25928fc4f8a6fc30e4dbf7b2b949f183e87e27f69494f38bbab5708f0
-	sha256sums = 6f46fdbd019dde7d2b17a76dad1cc953c20607885a49de5a6c56e5e49ed85773
+	sha256sums = 88ddeaa1ddfc8634d0f341c60c58a7110f146ad7e1986733214e192383524095
 	sha256sums = 99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3
 	sha256sums = f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3
 

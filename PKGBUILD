@@ -3,7 +3,7 @@
 # PKGBUILD adapted from Simutrans https://www.archlinux.org/packages/community/x86_64/simutrans/
 
 pkgname=simutrans-nightly
-pkgver=20200210
+pkgver=20200212
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build"
 arch=('x86_64')
@@ -43,7 +43,7 @@ sha256sums=('SKIP'
             'c0c2dd5da146f64901b00c6ee67e0818a166b983a81cee7897c4843aa9f21c81'
             '5fc55926b0eb7f41ed5004457a0afa113d6a18fe1e201c5b297393c3046e94de'
             '0d37c0d25928fc4f8a6fc30e4dbf7b2b949f183e87e27f69494f38bbab5708f0'
-            '6f46fdbd019dde7d2b17a76dad1cc953c20607885a49de5a6c56e5e49ed85773'
+            '88ddeaa1ddfc8634d0f341c60c58a7110f146ad7e1986733214e192383524095'
             '99545152f5e739b7eb028152383fa10d3e3d303c99167e1c6e5a6bd7dcd00fa3'
             'f933d5608052b73e03e21d4ade0909e471c643ee5493023921fa5bc963a06ab3')
 
@@ -57,8 +57,8 @@ prepare() {
   patch -Np0 -i ../path-for-game-data.patch
 
   # Configure the build process
-  cp config.template config.default
-  patch -Np0 -i ../config.patch
+  #cp config.template config.default
+  #patch -Np0 -i ../config.patch
 }
 
 build() {
