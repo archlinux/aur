@@ -10,11 +10,11 @@ pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
 pkgver=v0.14.0.5.r0.g2ae1ce480
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
-depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'openssl')
-makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qrencode' 'protobuf' 'qt5-tools' 'python3' 'cmake' 'libevent')
+depends=('qt5-base' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode')
+makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qt5-tools' 'python3' 'cmake' 'codablock-bls-signatures')
 license=('MIT')
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool). WARNING: Unstable, development version."
 provides=('dashd' 'dash-qt' 'dash-cli')
@@ -42,8 +42,8 @@ pkgver() {
 build() {
   CXXFLAGS+=" -fPIC -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
   cd "$_gitname"
-  CPPFLAGS="${CPPFLAGS} -I$PWD/depends/built/x86_64-pc-linux-gnu/include"
-  LDFLAGS="${LDFLAGS} -L${PWD}/depends/built/x86_64-pc-linux-gnu/lib -L${PWD}/depends/built/x86_64-pc-linux-gnu/lib64"
+  CPPFLAGS="${CPPFLAGS} -I$PWD/depends/built/$CARCH-pc-linux-gnu/include"
+  LDFLAGS="${LDFLAGS} -L${PWD}/depends/built/$CARCH-pc-linux-gnu/lib -L${PWD}/depends/built/$CARCH-pc-linux-gnu/lib64"
   ./autogen.sh
   ./configure --prefix=`pwd`/depends/$CARCH-pc-linux-gnu --with-incompatible-bdb --with-gui=qt5 --enable-tests=no --enable-hardening
   make
