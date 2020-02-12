@@ -1,6 +1,8 @@
+diff --git a/Makefile.in b/Makefile.in
+index a8eeae2..46b6da9 100644
 --- a/Makefile.in
 +++ b/Makefile.in
-@@ -774,7 +774,7 @@
+@@ -799,7 +799,7 @@ lemon$(BEXE):	$(TOP)/tool/lemon.c $(TOP)/tool/lempar.c
  
  # Rules to build the program that generates the source-id
  #
@@ -9,16 +11,16 @@
  	$(BCC) -o $@ $(TOP)/tool/mksourceid.c
  
  # Rules to build individual *.o files from generated *.c files. This
-@@ -1067,7 +1067,7 @@
- 	mv parse.h parse.h.temp
- 	$(TCLSH_CMD) $(TOP)/tool/addopcodes.tcl parse.h.temp >parse.h
+@@ -1091,7 +1091,7 @@ parse.c:	$(TOP)/src/parse.y lemon$(BEXE)
+ 	cp $(TOP)/src/parse.y .
+ 	./lemon$(BEXE) $(OPT_FEATURE_FLAGS) $(OPTS) parse.y
  
 -sqlite3.h:	$(TOP)/src/sqlite.h.in $(TOP)/manifest mksourceid$(BEXE) $(TOP)/VERSION
 +sqlite3.h:	$(TOP)/src/sqlite.h.in $(TOP)/manifest mksourceid $(TOP)/VERSION
  	$(TCLSH_CMD) $(TOP)/tool/mksqlite3h.tcl $(TOP) >sqlite3.h
  
  keywordhash.h:	$(TOP)/tool/mkkeywordhash.c
-@@ -1189,7 +1189,7 @@
+@@ -1214,7 +1214,7 @@ FTS5_SRC = \
     $(TOP)/ext/fts5/fts5_varint.c \
     $(TOP)/ext/fts5/fts5_vocab.c  \
  
