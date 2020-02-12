@@ -9,7 +9,7 @@
 
 pkgname=nodejs-ipv6
 pkgver=13.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc='NodeJS patched to work in IPv6 only network'
 arch=('x86_64')
 provides=("${pkgname%-ipv6}")
