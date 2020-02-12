@@ -12,12 +12,12 @@ url="https://github.com/sile-typesetter/$_project"
 license=('MIT')
 _lua_deps=('penlight')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/sile-typesetter/$_project/archive/v$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/sile-typesetter/$_project/archive/v$pkgver.tar.gz")
 sha256sums=('e2f7774b6883581491b8f2c9d1655b2136bc24d837a9e43f515590a766ec4afd')
 
 _package_helper() {
   cd "$_project-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-$_rockrel.rockspec"
 }
 
 package_lua-cassowary() {
