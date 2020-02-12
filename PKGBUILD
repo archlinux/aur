@@ -4,8 +4,8 @@
 ## ATTENTION!! You will need to download the trial and/or obtain a license from Harrison Consoles. Then, drop all appropriate files in the root with the PKGBUILD. Also, uncomment the lines that reference the license file if you want an easy install process.
 
 pkgname=mixbus32c
-pkgver=5.3.22
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 pkgdesc="Harrison Mixbus - Digital Audio Workstation (32C Version)"
 arch=('x86_64')
 url="http://harrisonconsoles.com/site/$pkgname.html"
@@ -15,7 +15,7 @@ provides=("$pkgname")
 
 prepare() {
 ## Setup mixbus for installation
-_archive=Mixbus32C-$pkgver-64bit-gcc5.tar
+_archive=Mixbus32C-6.0.0-Linux-64bit-gcc5.tar
 if [ -f ../${_archive} ]; then
 	ln -srf ../${_archive} $srcdir/${_archive}
 	msg2 "Unpacking Installer..."
@@ -39,7 +39,7 @@ cp -r $srcdir/Mixbus32C_$(uname -m)-$pkgver/* $pkgdir/opt/$pkgname
 
 ## Installing License Files
 msg2 "Installing Mixbus Licenses..."
-for plugin in essentials $pkgname-5 xt_bc3 xt_ds xt_eg xt_eq xt_lc xt_mc xt_me xt_sc xt_tg; do
+for plugin in essentials $pkgname-6 xt_bc3 xt_ds xt_eg xt_eq xt_lc xt_mc xt_me xt_sc xt_tg; do
 	if [ -f ../license_key_harrison_$plugin.txt ]; then
 		install -Dm644 ../license_key_harrison_$plugin.txt $pkgdir/usr/local/share/license_key_harrison_$plugin.txt
 	fi
@@ -47,7 +47,7 @@ done
 
 ## Create a .desktop file
 msg2 "Creating A Desktop Entry..."
-echo -e "[Desktop Entry]\nEncoding=UTF-8\nVersion=1.0\nType=Application\nTerminal=false\nExec=/opt/$pkgname/bin/${pkgname}5\nName=Mixbus32C $pkgver\nIcon=/opt/$pkgname/share/resources/Mixbus32C-icon_256px.png\nComment=Digital Audio Workstation\nCategories=AudioVideo;AudioEditing;Audio;Recorder;" > $pkgdir/usr/share/applications/$pkgname.desktop
+echo -e "[Desktop Entry]\nEncoding=UTF-8\nVersion=1.0\nType=Application\nTerminal=false\nExec=/opt/$pkgname/bin/${pkgname}6\nName=Mixbus32C $pkgver\nIcon=/opt/$pkgname/share/resources/Mixbus32C-icon_256px.png\nComment=Digital Audio Workstation\nCategories=AudioVideo;AudioEditing;Audio;Recorder;" > $pkgdir/usr/share/applications/$pkgname.desktop
 
 # Mark as excuteable
 chmod 644 $pkgdir/usr/share/applications/$pkgname.desktop
