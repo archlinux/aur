@@ -133,7 +133,9 @@ build () {
         -D shared-glapi=true \
         -D valgrind=false \
         -D tools=[] \
-
+        -D zstd=false
+        # disabling zstd because of  a problem with lib32-zstd . 
+        # https://bugs.archlinux.org/task/65439
     meson configure _build
     ninja  $NINJAFLAGS -C _build
 }
