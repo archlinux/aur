@@ -1,72 +1,56 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/coelckers/Raze'
-license=('custom:BUILD' 'custom:dumb' 'GPL2')
-depends=('alsa-lib'
-         'fluidsynth>=2'
-         'gtk3'
-         'hicolor-icon-theme'
+license=('custom:BUILD' 'GPL2')
+depends=('hicolor-icon-theme'
          'libgl'
          'libjpeg'
-         'libsndfile'
          'libvpx'
-         'mpg123'
-         'openal'
-         'sdl2')
+         'sdl2'
+         'zmusic')
 makedepends=('cmake'
              'desktop-file-utils'
              'git')
-optdepends=('gxmessage: crash dialog (GNOME)'
+optdepends=('gtk3: IWAD selection dialog'
+            'gxmessage: crash dialog (GNOME)'
             'kdialog: crash dialog (KDE)'
-            'soundfont-fluid: FluidR3 soundfont for FluidSynth'
+            'openal: in-game sound'
             'xorg-xmessage: crash dialog (other)')
-provides=('raze')
-conflicts=('raze')
-_srcver=$pkgver
-source=("Raze::git+https://github.com/coelckers/Raze#commit=${_srcver}"
+source=("Raze::git+https://github.com/coelckers/Raze#tag=${pkgver}"
         '0001-Fix-file-paths.patch'
         'raze.desktop')
 sha256sums=('SKIP'
-            'cebea1d7bb84a60c4a3b0961ee5f827f5acf18a015ebc42c2bada31cab273221'
+            '35c2a1c652f84a56c6ee5a35ec30f9b2028307ee8e14ed053810a344beafc784'
             'ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8')
-
-pkgver() {
-    cd Raze
-
-    git describe --tags | tr - +
-}
 
 prepare() {
     cd Raze
-
-    patch -p1 -i"$srcdir"/0001-Fix-file-paths.patch
+    patch -i "$srcdir"/0001-Fix-file-paths.patch -p 1
 }
 
 build() {
     cd Raze
-
+    mkdir -p build
     local _cflags="-ffile-prefix-map=\"$PWD\"=."
-    cmake -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
-          -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${_cflags}" \
-          -DCMAKE_INSTALL_PREFIX=/usr \
-          -DINSTALL_PK3_PATH=lib/raze \
-          .
-    make
+    cmake -B build \
+          -D CMAKE_BUILD_TYPE=Release \
+          -D CMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
+          -D CMAKE_CXX_FLAGS="${CXXFLAGS} ${_cflags}" \
+          -D CMAKE_INSTALL_PREFIX=/usr \
+          -D ZMUSIC_LIBRARIES=/usr/lib/libzmusic.so \
+          -D INSTALL_PK3_PATH=lib/raze
+    make -C build
 }
 
 package() {
     cd Raze
-
-    make install DESTDIR="$pkgdir"
-
-    desktop-file-install --dir="$pkgdir"/usr/share/applications "$srcdir"/raze.desktop
-    install -D -m644 source/platform/posix/game.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/raze.xpm
-    install -D -m644 package/common/buildlic.txt "$pkgdir"/usr/share/licenses/$pkgname/buildlic.txt
-    install -D -m644 libraries/dumb/licence.txt "$pkgdir"/usr/share/licenses/$pkgname/dumb.txt
+    make -C build install DESTDIR="$pkgdir"
+    desktop-file-install "$srcdir"/raze.desktop --dir="$pkgdir"/usr/share/applications
+    install source/platform/posix/game.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/raze.xpm -D -m 644
+    install package/common/buildlic.txt "$pkgdir"/usr/share/licenses/$pkgname/buildlic.txt -D -m 644
 }

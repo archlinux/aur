@@ -1,29 +1,15 @@
-From 3f0271a0bdfc81c92c255aca95d4fa4241f3cbe4 Mon Sep 17 00:00:00 2001
+From c52a9fd04f97ed11ff441e6754c5bdeeb2f35efd Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Thu, 6 Feb 2020 07:59:18 +0100
 Subject: [PATCH] Fix file paths
 
 ---
- .../mididevices/music_fluidsynth_mididevice.cpp    |  2 +-
- source/common/gameconfigfile.cpp                   | 14 +-------------
- source/common/gamecontrol.cpp                      |  2 +-
- source/common/music/i_soundfont.cpp                |  4 +---
- source/platform/posix/sdl/i_main.cpp               | 14 +-------------
- 5 files changed, 5 insertions(+), 31 deletions(-)
+ source/common/gameconfigfile.cpp     | 14 +-------------
+ source/common/gamecontrol.cpp        |  2 +-
+ source/common/music/i_soundfont.cpp  |  4 +---
+ source/platform/posix/sdl/i_main.cpp | 14 +-------------
+ 4 files changed, 4 insertions(+), 30 deletions(-)
 
-diff --git a/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp b/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp
-index 16ffa3ab0..fa16c3057 100644
---- a/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp
-+++ b/libraries/zmusic/mididevices/music_fluidsynth_mididevice.cpp
-@@ -646,7 +646,7 @@ void Fluid_SetupConfig(const char* patches, std::vector<std::string> &patch_path
- 		// The following will only be used if no soundfont at all is provided, i.e. even the standard one coming with GZDoom is missing.
- #ifdef __unix__
- 		// This is the standard location on Ubuntu.
--		Fluid_SetupConfig("/usr/share/sounds/sf2/FluidR3_GS.sf2:/usr/share/sounds/sf2/FluidR3_GM.sf2", patch_paths, false);
-+		Fluid_SetupConfig("/usr/share/soundfonts/FluidR3_GS.sf2:/usr/share/soundfonts/FluidR3_GM.sf2", patch_paths, false);
- #endif
- #ifdef _WIN32
- 		// On Windows, look for the 4 megabyte patch set installed by Creative's drivers as a default.
 diff --git a/source/common/gameconfigfile.cpp b/source/common/gameconfigfile.cpp
 index dd4c0889e..949e6be16 100644
 --- a/source/common/gameconfigfile.cpp
@@ -71,7 +57,7 @@ index dd4c0889e..949e6be16 100644
  	}
  
 diff --git a/source/common/gamecontrol.cpp b/source/common/gamecontrol.cpp
-index fd38c2fdf..c424ba57e 100644
+index dac122893..111f1f954 100644
 --- a/source/common/gamecontrol.cpp
 +++ b/source/common/gamecontrol.cpp
 @@ -584,7 +584,7 @@ int RunGame()
@@ -84,10 +70,10 @@ index fd38c2fdf..c424ba57e 100644
  	if (logfile.IsNotEmpty())
  	{
 diff --git a/source/common/music/i_soundfont.cpp b/source/common/music/i_soundfont.cpp
-index 5d911a200..ce05a5463 100644
+index 672ec9268..046c52b7b 100644
 --- a/source/common/music/i_soundfont.cpp
 +++ b/source/common/music/i_soundfont.cpp
-@@ -243,9 +243,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
+@@ -230,9 +230,7 @@ FPatchSetReader::FPatchSetReader(const char *filename)
  #ifndef _WIN32
  	mCaseSensitivePaths = true;
  	const char *paths[] = {
