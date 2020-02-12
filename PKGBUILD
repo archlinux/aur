@@ -1,34 +1,42 @@
-# Maintainer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
-# shellcheck disable=2034
-# shellcheck disable=2148
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
-pkgname=lua-posix
-pkgver=34.0.4
-pkgrel=2
-pkgdesc="posix bindings for Lua"
+_rockname=posix
+pkgbase=lua-$_rockname
+_pkgbase="${pkgbase//-}"
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=34.1.1
+_rockrel=1
+pkgrel=1
+pkgdesc="POSIX bindings for Lua"
 arch=('i686' 'x86_64')
-url="https://github.com/luaposix/luaposix#luaposix"
+url="https://github.com/$_pkgbase/$_pkgbase"
 license=('custom')
-depends=('lua' 'lua-std-normalize')
-conflicts=('lua-posix-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/luaposix/luaposix/archive/release-v$pkgver.tar.gz")
-md5sums=('b811b67c038e4310e05bb6149ebe6702')
+makedepends=('luarocks')
+_lua_deps=('std-normalize')
+source=("$_pkgbase-$pkgver.tar.gz::https://github.com/$_pkgbase/$_pkgbase/archive/release-v$pkgver.tar.gz")
+sha256sums=('273df2dbd9581a2f22e4265f14d0d759c487c0c9830f94395d7d690474382810')
 
-build() {
-  # shellcheck disable=2154
-  cd "$srcdir"/luaposix-release-v$pkgver || exit 1
-
-  build-aux/luke \
-    all
+_package_helper() {
+    cd "$_pkgbase-release-v$pkgver"
+    luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgbase-$pkgver-$_rockrel.rockspec"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-package() {
-  cd "$srcdir"/luaposix-release-v$pkgver || exit 1
+package_lua-posix() {
+    depends+=('lua' "${_lua_deps[@]/#/lua-}")
+    conflicts+=("$pkgname-git")
+    _package_helper 5.3
+}
 
-  # shellcheck disable=2154
-  build-aux/luke \
-    PREFIX="$pkgdir"/usr \
-    install
+package_lua52-posix() {
+    depends+=('lua52' "${_lua_deps[@]/#/lua52-}")
+    conflicts+=("$pkgname-git")
+    _package_helper 5.2
+}
 
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+package_lua51-posix() {
+    depends+=('lua51' "${_lua_deps[@]/#/lua51-}")
+    conflicts+=("$pkgname-git")
+    _package_helper 5.1
 }
