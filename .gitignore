@@ -1,0 +1,5 @@
+src
+pkg
+salt-lint-git*.zst
+salt-lint-git*.xz
+salt-lint
