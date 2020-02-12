@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.0.0_devel.119653.4d03e531273
+pkgver=20.1.0_devel.120096.286141197da
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -24,9 +24,9 @@ provides=(lib32-mesa=$pkgver-$pkgrel lib32-vulkan-intel=$pkgver-$pkgrel lib32-vu
 conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-mesa-driver' 'lib32-mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
-source=('mesa::git://anongit.freedesktop.org/mesa/mesa'
-         'LICENSE'
-	'llvm32.native'
+source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
+                'LICENSE'
+                'llvm32.native'
 )
 
 md5sums=('SKIP'
