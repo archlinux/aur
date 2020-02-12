@@ -1,8 +1,8 @@
-# Maintainer: Kristian Grønås <morguldir@protonmail.com>
+# Maintainer: morguldir <morguldir@protonmail.com>
 pkgname=aclidswitch-git
 _pkgname=aclidswitch
 pkgdesc='Simple Power Management tool'
-pkgrel=4
+pkgrel=5
 pkgver=35.19b1955
 arch=('any')
 license=('GPL2')
