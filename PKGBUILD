@@ -1,10 +1,11 @@
+# Maintainer: Fabius
 # Contributor: Adria Arrufat <swiftscythe @t gmail d@t com>
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey
 pkgver=0.9
-pkgrel=1
-pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features."
+pkgrel=2
+pkgdesc="A screencast tool to display your keys inspired by Screenflick"
 arch=('any')
 url="https://github.com/wavexx/screenkey"
 license=('GPL3')
@@ -24,4 +25,3 @@ package() {
   python2 setup.py install --skip-build --optimize=1 --root="$pkgdir/"
 }
 
-# vim:set ts=2 sw=2 et:
