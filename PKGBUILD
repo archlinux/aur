@@ -8,7 +8,7 @@ url="https://www.mullvad.net"
 arch=('x86_64')
 license=('GPL3')
 depends=('nss')
-makedepends=('git' 'cargo' 'go-pie')
+makedepends=('git' 'cargo' 'go-pie' 'jq')
 conflicts=('mullvad-vpn')
 install="${pkgname}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
@@ -53,7 +53,7 @@ build() {
     cargo build --release --locked
 
     # Copy binaries for packaging
-    cp dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} dist-assets/
+    cp -v dist-assets/binaries/x86_64-unknown-linux-gnu/{openvpn,sslocal} dist-assets/
     binaries=(mullvad
               mullvad-daemon
               mullvad-problem-report
@@ -61,6 +61,13 @@ build() {
     for binary in ${binaries[*]}; do
         cp target/release/${binary} dist-assets/${binary}
     done
+
+    # Update relays.json
+    curl --request POST \
+         --fail \
+         --header "Content-Type: application/json" \
+         --data '{"jsonrpc": "2.0", "id": "0", "method": "relay_list_v3"}' \
+         https://api.mullvad.net/rpc/ | jq --indent 4 '.result' > ../relays.json
 }
 
 check() {
@@ -88,6 +95,9 @@ package() {
 
     # Install settings.json
     install --verbose -D --mode=644 "${srcdir}/settings.json.sample" -t "${pkgdir}/etc/mullvad-vpn"
+
+    # Install relays.json
+    install --verbose -D --mode=644 "${srcdir}/relays.json" -t "${pkgdir}/var/cache/mullvad-vpn"
 
     # Install license
     install --verbose -D --mode=644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

@@ -40,7 +40,7 @@ post_remove() {
 	echo 'sudo rm -rf /var/log/mullvad-vpn/'
 	echo 'sudo rm -rf /var/cache/mullvad-vpn/'
 	echo ''
-	echo 'Optionally alter config:'
-	echo 'e.g. vim /etc/mullvad-vpn/settings.json'
+	echo 'Optionally remove config:'
+	echo 'sudo rm /etc/mullvad-vpn/settings.json'
 	echo -------------------------------------------------------------
 }
