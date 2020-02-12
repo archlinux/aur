@@ -4,7 +4,7 @@
 
 _target="sh3eb-elf"
 pkgname=${_target}-gcc
-pkgver=9.1.0
+pkgver=9.2.0
 pkgrel=1
 _islver=0.19
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
@@ -13,10 +13,10 @@ license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
-source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-	"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz")
-sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0'
-            '6d6c1aa00e2a6dfc509fa46d9a9dbe93af0c451e196a670577a148feecf6b8a5')
+source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
+	"https://isl.gforge.inria.fr/isl-${_islver}.tar.xz")
+sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+            '3971ac488fcaf2c0d9614f94eedb931a468a2ac0e672888f73fb01fa85156b07')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver/+/-}"
