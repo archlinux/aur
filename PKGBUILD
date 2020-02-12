@@ -19,7 +19,7 @@ sha256sums=('273df2dbd9581a2f22e4265f14d0d759c487c0c9830f94395d7d690474382810')
 
 _package_helper() {
     cd "$_pkgbase-release-v$pkgver"
-    luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgbase-$pkgver-$_rockrel.rockspec"
+    luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_pkgbase-$pkgver-$_rockrel.rockspec"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
