@@ -17,8 +17,8 @@ sha256sums=('987f42f0754b7bc0c84967b81fc2b4db0ed2ebe2117ccc5a5faa59e462447723')
 noextract=("${source[@]##*/}")
 
 package() {
-    npm install -g --user root --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" "${source[@]##*/}"
-    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
-    find "${pkgdir}" -type f -name package.json -exec sed -i -e "/${pkgdir//\//\\/}/d" -e "/${srcdir//\//\\/}/d" {} \;
-    chown -R root:root $pkgdir
+    npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]##*/}"
+    find "$pkgdir"/usr -type d -exec chmod 755 {} +
+    find "$pkgdir" -type f -name package.json -exec sed -i -e "/${pkgdir//\//\\/}/d" -e "/${srcdir//\//\\/}/d" {} \;
+    chown -R root:root "$pkgdir"
 }
