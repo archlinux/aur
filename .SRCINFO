@@ -1,0 +1,28 @@
+pkgbase = python-salt
+	pkgdesc = Portable, distributed, remote execution and configuration management system
+	pkgver = 3000
+	pkgrel = 00
+	url = http://saltstack.org
+	arch = any
+	license = custom:Apache Software License 2.0
+	makedepends = python-distro
+	makedepends = python-pip
+	makedepends = python-wheel
+	depends = python
+	depends = python-markupsafe
+	depends = python-pycrypto
+	depends = python-pyzmq
+	depends = python-requests
+	depends = python-msgpack
+	depends = python-jinja
+	depends = python-yaml
+	conflicts = salt
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/28/63/ad60e60c982810d55e23012e2359c96f92694842a476708f44e5d671a9b6/salt-3000.tar.gz
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = 8084ef6f2a275b627ae364b9d562b4ff
+	md5sums = c996f5a78d858a52c894fa3f4bec68c1
+
+pkgname = python-salt
+

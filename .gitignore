@@ -1,0 +1,6 @@
+src
+pkg
+python-salt*.zst
+python-salt*.xz
+salt*.whl
+salt*tar.gz
