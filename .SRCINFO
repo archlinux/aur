@@ -1,7 +1,7 @@
 pkgbase = postgis-git
 	pkgdesc = Postgres GIS extensions (from git)
-	pkgver = 76e34fa54
-	pkgrel = 2
+	pkgver = 3.1.0alpha1.r7.gabc6fd77a
+	pkgrel = 3
 	url = https://postgis.net/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = postgis-git
 	depends = libxslt
 	provides = postgis
 	conflicts = postgis
+	replaces = postgis-svn
 	source = postgis-git::git+https://git.osgeo.org/gitea/postgis/postgis.git
 	md5sums = SKIP
 
