@@ -9,17 +9,17 @@ pkgver=3.0.0.8
 pkgrel=2
 pkgdesc="Lua bindings for wxWidgets (Lua 5.3 compatible fork)"
 arch=('i686' 'x86_64')
-url="https://github.com/pkulchenko/${pkgname}"
+url="https://github.com/pkulchenko/$pkgname"
 license=('custom:wxWindows')
 depends=('desktop-file-utils' 'wxgtk2' 'lua')
 optdepends=('webkit2gtk')
 makedepends=('cmake')
 checkdepends=('cppcheck')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pkulchenko/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('85d5182eec6e7cbb8428b9c144ef7fbe364f4fed6411aafcead648893e5b6fa0')
 
 build() {
-    cd "${pkgname}-${pkgver}/wxLua/build"
+    cd "$pkgname-$pkgver/wxLua/build"
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
         -DwxLua_LUA_LIBRARY_USE_BUILTIN=FALSE \
         -DwxLua_LUA_LIBRARY_BUILD_SHARED=TRUE \
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}/wxLua"
+    cd "$pkgname-$pkgver/wxLua"
     pushd "build"
     make DESTDIR="$pkgdir/" install
     rm -f "$pkgdir"/usr/bin/lua{,c}
@@ -45,6 +45,6 @@ package() {
     install -Dm 644 docs/licence.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     pushd distrib/autopackage
-    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
-    install -Dm644 "${pkgname}.xml" -t "${pkgdir}/usr/share/mime/packages/"
+    install -Dm644 "$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm644 "$pkgname.xml" -t "$pkgdir/usr/share/mime/packages/"
 }
