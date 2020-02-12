@@ -2,7 +2,7 @@
 
 pkgname=otr-verwaltung3p-dev-git
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
@@ -16,7 +16,7 @@ optdepends=('gnome-keyring: For password storing in keyring'
             'mediainfo-gui: For plugin Mediainfo'
             'otr-verwaltung3p-vdub: For cutting old OTR files')
 makedepends=('python-distutils-extra')
-conflicts=('otr-verwaltung3p')
+conflicts=('otr-verwaltung3p' 'otr-verwaltung3p-dev')
 provides=('otr-verwaltung3p')
 source=("git+https://github.com/EinApfelBaum/otr-verwaltung3p.git#branch=development")
 sha256sums=('SKIP')
