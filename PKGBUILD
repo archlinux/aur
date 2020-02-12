@@ -3,12 +3,12 @@
 
 pkgname="emacs-eaf"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="EAF extends GNU Emacs to an entire universe of powerful GUI applications."
 arch=('x86_64')
 url="https://github.com/manateelazycat/emacs-application-framework"
 license=('GPL3')
-depends=('emacs' 'python-dbus' 'python-xlib' 'python-qtpy' 'python-pyqtwebengine' 'python-qrcode' 'python-feedparser' 'python-pymupdf' 'python-grip')
+depends=('emacs' 'python-dbus' 'python-xlib' 'python-qtpy' 'python-pyqtwebengine' 'python-qrcode' 'python-feedparser' 'python-pymupdf' 'python-grip' 'python-pydbus')
 makedepends=('git')
 provides=('emacs-eaf')
 conflicts=('emacs-eaf')
