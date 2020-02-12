@@ -12,17 +12,17 @@ source_x86_64=("https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-l
                "https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-linux/signet-${pkgver}.sig"
                "https://nthdimtech.com/downloads/signet-releases/${pkgver}/gnu-linux/50-signet.rules"
                "https://www.gnu.org/licenses/gpl.txt"
-               "https://raw.githubusercontent.com/nthdimtech/signet-client/${pkgver}/client/images/signet.iconset/icon_16x16.png"
-               "https://raw.githubusercontent.com/nthdimtech/signet-client/${pkgver}/browser-plugins/firefox/icons/icon-32.png"               
-               "https://raw.githubusercontent.com/nthdimtech/signet-client/${pkgver}/client/images/signet.iconset/icon_64x64.png"
-               "https://raw.githubusercontent.com/nthdimtech/signet-client/${pkgver}/client/images/signet.iconset/icon_128x128.png"
-               "https://raw.githubusercontent.com/nthdimtech/signet-client/${pkgver}/client/images/signet.iconset/icon_256x256.png"
-               "https://raw.githubusercontent.com/nthdimtech/signet-client/${pkgver}/client/images/signet.iconset/icon_512x512.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_16x16.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/browser-plugins/firefox/icons/icon-32.png"               
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_64x64.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_128x128.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_256x256.png"
+               "https://raw.githubusercontent.com/nthdimtech/signet-client/v${pkgver}/client/images/signet.iconset/icon_512x512.png"
                "${pkgname}.desktop")
 validpgpkeys=('D47581AE98C17249915387BE0E47D2FA6E50979D') # Neils Nesse
 sha256sums_x86_64=('f46ab7fcfed9527a0dd3c19d267ece612832fdae05d18f7916f08e2469f7092e'
                    '9c8dfdc8e8bbf6f303256767b1c988fb770d94f73b4fb9b5e95f7d53189f123b'
-                   'af34a217fee566de4c149429459e4cd13f38435857ff8c9f5fd7bb0199e86820'
+                   '597ad50a940cba7a2127653db0ec47d4be24866a7bcbb57c3e35a69179b5f04e'
                    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
                    '420da6b48346cfb2f726722a799c4fad70bdd2fcc0d5cb5753ecd129cf7ee35e'
                    'f511fa945aae0b210cd3873aa1cfb7ccc19d2f60c98e3d7bbbe2994b9859ec02'
