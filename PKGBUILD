@@ -3,7 +3,7 @@
 _pkgname=bleachbit
 pkgname=bleachbit-py3-git
 pkgver=r4914.13ee23b7
-pkgrel=2
+pkgrel=3
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. Python 3 version.'
 url='https://www.bleachbit.org/'
 license=('GPL3')
@@ -17,8 +17,7 @@ provides=('bleachbit')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  git checkout origin/py3
-  patch bleachbit.py < ../../python3-patch.patch
+  git checkout py3
 }
 
 pkgver() {
