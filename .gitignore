@@ -1,0 +1,9 @@
+src
+pkg
+python-salt-lint*.zst
+python-salt-lint*.xz
+salt-lint*.zst
+salt-lint*.xz
+salt-lint*.tar.gz
+salt-lint
+salt_lint*.whl
