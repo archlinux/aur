@@ -24,7 +24,7 @@ check() {
 
 _package_helper() {
   cd "$_project-$pkgver"
-  make LUAVER=$1 PREFIX=/usr DESTDIR="$pkgdir" install
+  make LUAVER="$1" PREFIX=/usr DESTDIR="$pkgdir" install
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
