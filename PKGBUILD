@@ -1,4 +1,4 @@
-# Submitter:   Anton Yermalovich <zuzu@bk.ru>
+#Submitter:   Anton Yermalovich <zuzu@bk.ru>
 # Maintainer:  David Latorre <david@latorredev.com>
 # Contributor: zwergnase <zwergnase@posteo.de>
 
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('unzip')
 source=('https://raw.githubusercontent.com/LatorreDev/sunvox_mirror/1.9.5c/1.9.5c/sunvox-1.9.5c.zip')
-sha256sums=('f1bf4aedd6eaf5d626d2c66daff0e88535425beb80f56a9a8cb12cdf89057777')
+sha256sums=('d12b0e8824ecb8e7f98fd42b65c2ecdbafc8d5c7f23e07f8a688db20848b34a6'):
 package() {
 	install -dm755 "${pkgdir}/opt/sunvox"
 	install -dm755 "${pkgdir}/usr/share/licenses/sunvox"  
