@@ -1,35 +1,20 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: archlinux.info:tdy
 
+_rockname=luaposix
 pkgname=lua52-posix
-pkgver=33.4.0
+pkgver=34.1.1
 pkgrel=1
 pkgdesc="Lua 5.2 bindings for POSIX APIs"
-arch=(i686 x86_64)
-url=https://github.com/luaposix/luaposix
-license=(MIT)
-depends=(lua52)
-source=(https://github.com/luaposix/luaposix/archive/release-v$pkgver.tar.gz)
-sha256sums=(e66262f5b7fe1c32c65f17a5ef5ffb31c4d1877019b4870a5d373e2ab6526a21)
-
-prepare() {
-  cd luaposix-release-v$pkgver
-  export LUA=/usr/bin/lua5.2
-  export LUA_INCLUDE=-I/usr/include/lua5.2
-}
-
-build() {
-  cd luaposix-release-v$pkgver
-  ./configure --prefix=/usr --libdir=/usr/lib/lua/5.2 --datadir=/usr/share/lua/5.2
-  make
-}
-
-check() {
-  cd luaposix-release-v$pkgver
-  make -k check
-}
+arch=('i686' 'x86_64')
+url="https://github.com/$_rockname/$_rockname"
+license=('MIT')
+depends=('lua52')
+makedepends=('luarocks')
+source=("$_rockname-$pkgver.tar.gz::https://github.com/$_rockname/$_rockname/archive/release-v$pkgver.tar.gz")
+sha256sums=('273df2dbd9581a2f22e4265f14d0d759c487c0c9830f94395d7d690474382810')
 
 package() {
-  cd luaposix-release-v$pkgver
-  make DESTDIR="$pkgdir" install
-  install COPYING -m 644 -Dt "$pkgdir"/usr/share/licenses/$pkgname/
+    cd "$_rockname-release-v$pkgver"
+    luarocks --lua-version=5.2 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-1.rockspec"
 }
