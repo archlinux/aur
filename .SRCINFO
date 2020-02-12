@@ -13,7 +13,7 @@ pkgbase = boca-git
 	depends = expat
 	depends = libpulse
 	depends = uriparser
-	depends = smooth-git
+	depends = smooth
 	provides = boca
 	provides = libboca
 	provides = libboca-1.0.so=2-64
