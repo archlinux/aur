@@ -1,0 +1,5 @@
+linux-pf-git
+src
+pkg
+*.pkg.*
+*.pkg
