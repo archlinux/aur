@@ -12,12 +12,12 @@ url="https://siffiejoe.github.com/$_pkgname"
 license=('MIT')
 _lua_deps=('lpeg')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/siffiejoe/$_pkgname/archive/v$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/siffiejoe/$_pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('57c0ad1917e45c5677bfed0f6122da2baff98117aba05a5e987a0238600f85f9')
 
 _package_helper() {
   cd "$_pkgname-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-0.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-scm-0.rockspec"
 }
 
 package_lua-luaepnf() {
