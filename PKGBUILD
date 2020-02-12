@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan'
-license=('GPL2')
+license=('MIT')
 depends=('vapoursynth'
          'vulkan-icd-loader'
          )
@@ -58,4 +58,5 @@ package(){
   install -Dm644 models-upconv_7_photo/*  "${pkgdir}/usr/lib/vapoursynth/models/models-upconv_7_photo"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
