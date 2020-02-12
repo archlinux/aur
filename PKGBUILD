@@ -1,7 +1,7 @@
 # Maintainer: Plague-doctor <plague <at>> privacyrequired <<dot>> com >
 
 pkgname=trezord-go
-pkgver=2.0.27
+pkgver=2.0.28
 pkgrel=1
 pkgdesc="TREZOR Communication Daemon aka TREZOR Bridge (written in Go)"
 arch=('x86_64' 'i686')
@@ -38,6 +38,7 @@ package() {
     install -p -m644 "$srcdir/src/github.com/trezor/trezord-go/release/linux/trezor.rules" \
         "$pkgdir/etc/udev/rules.d"
 }
+
 
 
 
