@@ -2,7 +2,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 
 pkgname=mingw-w64-postgresql
-pkgver=11.4
+pkgver=12.1
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS (mingw-w64)'
 arch=('any')
@@ -15,15 +15,18 @@ provides=('mingw-w64-postgresql-libs')
 conflicts=('mingw-w64-postgresql-libs')
 replaces=('mingw-w64-postgresql-libs')
 source=("http://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2"
-        '0001-Use-.dll.a-as-extension-for-import-libraries.patch')
-sha256sums=('02802ddffd1590805beddd1e464dd28a46a41a5f1e1df04bab4f46663195cc8b'
-            '10fdb0beeb4c282f3395bb9cc7b20234d6534067fc0834e781fc5feb264c2b78')
+        '0001-Use-.dll.a-as-extension-for-import-libraries.patch'
+        '0002-use-mingw-pthread.patch')
+sha256sums=('a09bf3abbaf6763980d0f8acbb943b7629a8b20073de18d867aecdb7988483ed'
+            '1012ccd145b3191d7b3f3362961decc31f42c0dd349e9150e435ed464417d460'
+            'fadddea99386132cc81f5c38b51c36621ede4d3ccb66f4cc26a540c0c9b62bd6')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd postgresql-$pkgver
   patch -p1 -i ${srcdir}/0001-Use-.dll.a-as-extension-for-import-libraries.patch
+  patch -p1 -i ${srcdir}/0002-use-mingw-pthread.patch
 }
 
 build() {

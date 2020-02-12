@@ -1,0 +1,10 @@
+--- a/src/interfaces/libpq/Makefile   2020-01-07 12:50:48.446033775 +0100
++++ b/src/interfaces/libpq/Makefile       2020-01-07 12:51:15.381102946 +0100
+@@ -69,7 +69,7 @@
+        $(WINDRES) -i $< -o $@
+ 
+ ifeq ($(enable_thread_safety), yes)
+-OBJS += pthread-win32.o
++# OBJS += pthread-win32.o
+ endif
+ endif

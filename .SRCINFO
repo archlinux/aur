@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-postgresql
 	pkgdesc = Sophisticated object-relational DBMS (mingw-w64)
-	pkgver = 11.4
+	pkgver = 12.1
 	pkgrel = 1
 	url = https://www.postgresql.org
 	arch = any
@@ -17,10 +17,12 @@ pkgbase = mingw-w64-postgresql
 	options = staticlibs
 	options = !strip
 	options = !buildflags
-	source = http://ftp.postgresql.org/pub/source/v11.4/postgresql-11.4.tar.bz2
+	source = http://ftp.postgresql.org/pub/source/v12.1/postgresql-12.1.tar.bz2
 	source = 0001-Use-.dll.a-as-extension-for-import-libraries.patch
-	sha256sums = 02802ddffd1590805beddd1e464dd28a46a41a5f1e1df04bab4f46663195cc8b
-	sha256sums = 10fdb0beeb4c282f3395bb9cc7b20234d6534067fc0834e781fc5feb264c2b78
+	source = 0002-use-mingw-pthread.patch
+	sha256sums = a09bf3abbaf6763980d0f8acbb943b7629a8b20073de18d867aecdb7988483ed
+	sha256sums = 1012ccd145b3191d7b3f3362961decc31f42c0dd349e9150e435ed464417d460
+	sha256sums = fadddea99386132cc81f5c38b51c36621ede4d3ccb66f4cc26a540c0c9b62bd6
 
 pkgname = mingw-w64-postgresql
 
