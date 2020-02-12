@@ -1,0 +1,25 @@
+pkgbase = plask
+	pkgdesc = Photonic LAser Simulation Kit: a comprehensive tool for numerical analysis of broad range of physical phenomena in photonic devices
+	pkgver = 2020.02.04
+	pkgrel = 1
+	url = https://plask.app
+	arch = x86_64
+	license = custom
+	depends = boost-libs
+	depends = expat
+	depends = openmp
+	depends = openblas
+	depends = lapack
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-lxml
+	depends = python-yaml
+	depends = pyside2
+	optdepends = python-h5py: for saving results to files
+	optdepends = python-scipy: for scientific tools
+	optdepends = ipython: for interactive shell
+	source = plask-2020.02.04.tar.xz::https://get.plask.app/packages/plask-2020.02.04-1-x86_64.pkg.tar.xz
+	sha256sums = 48e1393ac89f1ae6ca9e75d199ffe7da0e925943af24ded0004a1e3b842f044b
+
+pkgname = plask
+
