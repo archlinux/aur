@@ -21,7 +21,7 @@ depends=(
         'libxdmcp'
 )
 makedepends=('unzip')
-source=('https://raw.githubusercontent.com/LatorreDev/sunvox_mirror/1.9.5c/1.9.5c/sunvox-1.9.5c.zip')
+source=('https://github.com/LatorreDev/sunvox_mirror/blob/1.9.5c/sunvox-1.9.5c.zip')
 sha256sums=('4ce93d3df85f3be8f19420c472c758fbbbb5a2433e0dcb08b52664719b1a2a5f')
 package() {
 	install -dm755 "${pkgdir}/opt/sunvox"
