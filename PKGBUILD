@@ -62,7 +62,7 @@ _localmodcfg=
 
 pkgbase=linux-bootsplash
 pkgdesc='Linux kernel with kernel bootsplash support'
-_srcver=5.2.11-arch1
+_srcver=5.5.3-arch1
 pkgver=${_srcver%-*}
 pkgrel=1
 arch=(x86_64)
@@ -70,20 +70,18 @@ url="https://www.kernel.org/"
 license=(GPL2)
 makedepends=(kmod inetutils bc libelf)
 options=('!strip')
-_gcc_more_v='20190714'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar.xz"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
-  "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
-  0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-  0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-  0003-bootsplash.patch
-  0004-bootsplash.patch
-  0005-bootsplash.patch
-  0006-bootsplash.patch
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
+  0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
+  0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+  0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
   0007-bootsplash.patch
   0008-bootsplash.patch
   0009-bootsplash.patch
@@ -93,21 +91,27 @@ source=(
   0013-bootsplash.patch
   0014-bootsplash.patch
   0015-bootsplash.patch
+  0016-bootsplash.patch
+  0017-bootsplash.patch
+  0018-bootsplash.patch
+  0019-bootsplash.patch
   'ajax-loader.gif'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('0c2a831f993dc8a8a8e1ca4186b467de72ff173c6f5855e2aab70f6f7fb033f9'
-            'SKIP'
-            '1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87'
+sha256sums=('2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
+            '99f9170890845cd168271b4e6d75390dea1106b6aa06c032e3435074de05b95c'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36'
-            '91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3'
-            'ef926edbd866d95464eb86f7565de572eb97ecfa0369d3b2e078016a0e71a871'
+            'c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17'
+            'a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87'
+            'd5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929'
+            '03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3'
+            '49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe'
+            '8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3'
             'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
             'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
             '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
@@ -120,11 +124,12 @@ sha256sums=('0c2a831f993dc8a8a8e1ca4186b467de72ff173c6f5855e2aab70f6f7fb033f9'
             'e9f22cbb542591087d2d66dc6dc912b1434330ba3cd13d2df741d869a2c31e89'
             '27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc'
             '60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d'
-            '035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef'
+            '92a06fecdc3b5d7ea47d0b922cbedd2c227084f7aaf9d70858a3250eb73f740c'
             'aebc793d0064383ee6b1625bf3bb32532ec30a5c12bf9117066107d412119123')
 
-_kernelname=${pkgbase#linux}
-: ${_kernelname:=-ARCH}
+export KBUILD_BUILD_HOST=archlinux
+export KBUILD_BUILD_USER=$pkgbase
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd linux-${pkgver}
@@ -150,16 +155,6 @@ prepare() {
 
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
-
-  # https://github.com/graysky2/kernel_gcc_patch
-  msg2 "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch ..."
-  patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
-
-  if [ -n "$_subarch" ]; then
-    yes "$_subarch" | make oldconfig
-  else
-    make prepare
-  fi
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db

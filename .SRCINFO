@@ -1,6 +1,6 @@
 pkgbase = linux-bootsplash
 	pkgdesc = Linux kernel with kernel bootsplash support
-	pkgver = 5.2.11
+	pkgver = 5.5.3
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -10,18 +10,17 @@ pkgbase = linux-bootsplash
 	makedepends = bc
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.2.11.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.3.tar.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook
 	source = linux.preset
-	source = enable_additional_cpu_optimizations-20190714.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20190714.tar.gz
-	source = 0001-add-sysctl-to-disallow-unprivileged-CLONE_NEWUSER-by.patch
-	source = 0002-ZEN-Add-CONFIG-for-unprivileged_userns_clone.patch
-	source = 0003-bootsplash.patch
-	source = 0004-bootsplash.patch
-	source = 0005-bootsplash.patch
-	source = 0006-bootsplash.patch
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+	source = 0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
+	source = 0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
+	source = 0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+	source = 0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
 	source = 0007-bootsplash.patch
 	source = 0008-bootsplash.patch
 	source = 0009-bootsplash.patch
@@ -31,18 +30,24 @@ pkgbase = linux-bootsplash
 	source = 0013-bootsplash.patch
 	source = 0014-bootsplash.patch
 	source = 0015-bootsplash.patch
+	source = 0016-bootsplash.patch
+	source = 0017-bootsplash.patch
+	source = 0018-bootsplash.patch
+	source = 0019-bootsplash.patch
 	source = ajax-loader.gif
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = 0c2a831f993dc8a8a8e1ca4186b467de72ff173c6f5855e2aab70f6f7fb033f9
-	sha256sums = SKIP
-	sha256sums = 1c4d5500a3b4995035c2e940fc0ad2a2dae7be047c8eb20c097444e348258f87
+	sha256sums = 2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2
+	sha256sums = 99f9170890845cd168271b4e6d75390dea1106b6aa06c032e3435074de05b95c
 	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
 	sha256sums = c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636
 	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
-	sha256sums = f1abc13a8d859fbf6350040e45d7f04ad551a6d39f113ba96fbbd820118c0e36
-	sha256sums = 91fafa76bf9cb32159ac7f22191b3589278b91e65bc4505cf2fc6013b8037bf3
-	sha256sums = ef926edbd866d95464eb86f7565de572eb97ecfa0369d3b2e078016a0e71a871
+	sha256sums = c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17
+	sha256sums = a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87
+	sha256sums = d5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929
+	sha256sums = 03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3
+	sha256sums = 49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe
+	sha256sums = 8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3
 	sha256sums = a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c
 	sha256sums = e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717
 	sha256sums = 8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0
@@ -55,7 +60,7 @@ pkgbase = linux-bootsplash
 	sha256sums = e9f22cbb542591087d2d66dc6dc912b1434330ba3cd13d2df741d869a2c31e89
 	sha256sums = 27471eee564ca3149dd271b0817719b5565a9594dc4d884fe3dc51a5f03832bc
 	sha256sums = 60e295601e4fb33d9bf65f198c54c7eb07c0d1e91e2ad1e0dd6cd6e142cb266d
-	sha256sums = 035ea4b2a7621054f4560471f45336b981538a40172d8f17285910d4e0e0b3ef
+	sha256sums = 92a06fecdc3b5d7ea47d0b922cbedd2c227084f7aaf9d70858a3250eb73f740c
 	sha256sums = aebc793d0064383ee6b1625bf3bb32532ec30a5c12bf9117066107d412119123
 
 pkgname = linux-bootsplash
@@ -67,12 +72,12 @@ pkgname = linux-bootsplash
 	depends = mkinitcpio
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = bootsplash-systemd: to enable bootsplash
-	provides = linux=5.2.11
+	provides = linux=5.5.3
 	backup = etc/mkinitcpio.d/linux-bootsplash.preset
 
 pkgname = linux-bootsplash-headers
 	pkgdesc = Header files and scripts for building modules for Linux-bootsplash kernel
 	depends = linux
-	provides = linux-headers=5.2.11
-	provides = linux-headers=5.2.11
+	provides = linux-headers=5.5.3
+	provides = linux-headers=5.5.3
 
