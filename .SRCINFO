@@ -1,7 +1,7 @@
 pkgbase = signet
 	pkgdesc = Desktop Client for Signet
 	pkgver = 0.9.15
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPLv3
 	makedepends = gnupg

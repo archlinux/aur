@@ -1,7 +1,7 @@
 # Maintainer: Nichlas Severinsen <ns@nsz.no>
 pkgname=signet
 pkgver=0.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop Client for Signet"
 arch=('x86_64')
 makedepends=('gnupg')
