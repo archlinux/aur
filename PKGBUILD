@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
     cd "${pkgname%-git}"
-    install -Dm 755 {.,$pkgdir/usr/bin}/${pkgname%-git}
+    install -Dm 755 {.,"$pkgdir/usr/bin}/${pkgname%-git}"
 }
