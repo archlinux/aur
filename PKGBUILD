@@ -17,7 +17,7 @@ sha256sums=('72498d89056ada0d03a2053224dc887bf7535eb75d006232be14ef7824848818')
 
 _package_helper() {
   cd "${_rockname}_$_fossilver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-lsqlite3() {
