@@ -1,7 +1,7 @@
 pkgname=mingw-w64-paraview58
 _majordotminor=5.8
 pkgver=${_majordotminor}.0
-_pkgver=${pkgver}-RC2
+_pkgver=${pkgver}-RC3
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -19,7 +19,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/ParaView-v${_pkgver}"
-  curl -L https://gitlab.kitware.com/paraview/paraview/merge_requests/3906.patch | patch -p1
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6406.patch | patch -p1

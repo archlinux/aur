@@ -34,7 +34,7 @@ pkgbase = mingw-w64-paraview58
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = http://paraview.org/files/v5.8/ParaView-v5.8.0-RC2.tar.gz
+	source = http://paraview.org/files/v5.8/ParaView-v5.8.0-RC3.tar.gz
 	sha256sums = SKIP
 
 pkgname = mingw-w64-paraview58
