@@ -95,11 +95,6 @@ EOF
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../../../0001-Use-remoting-name-for-GDK-application-names.patch
 
-  # Remove extra tag
-  #mv -f browser/base/content/aboutDialog.xul browser/base/content/aboutDialog.xul_bad
-  #cat browser/base/content/aboutDialog.xul_bad | uniq > browser/base/content/aboutDialog.xul
-  #rm -f browser/base/content/aboutDialog.xul_bad
-
   # Patch to move files directly to /usr/lib/icecat. No more symlinks.
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME);g' -i config/baseconfig.mk
   sed -e 's;$(libdir)/$(MOZ_APP_NAME)-devel-$(MOZ_APP_VERSION);$(libdir)/$(MOZ_APP_NAME)-devel;g' -i config/baseconfig.mk
