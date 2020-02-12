@@ -7,6 +7,7 @@ pkgbase = pwm
 	license = GPL2
 	makedepends = unzip
 	depends = java-runtime
+	source = 
 	sha256sums = a996ef6e7eb8ba5134194ad79db2d107
 
 pkgname = pwm
