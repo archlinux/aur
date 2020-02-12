@@ -7,14 +7,15 @@
 
 pkgname=mythtv
 pkgver=30.0
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
 depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva' 'libiec61883' 'perl-net-upnp' 'urlgrabber' 'libsamplerate'
-         'qt5-webkit' 'x265' 'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python' 'libxnvctrl' 'libhdhomerun')
+         'qt5-webkit' 'x265' 'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr' 'mysql-python' 'libxnvctrl'
+         'libhdhomerun' 'libbluray')
 makedepends=('git' 'help2man' 'yasm' 'mariadb-libs' 'libxml2' 'libcec' 'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww'
              'perl-dbd-mysql' 'python2-lxml' 'perl-xml-simple' 'perl-xml-xpath')
 optdepends=('glew: for GPU commercial flagging'
@@ -36,6 +37,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$p
         '002-in_progress.patch'
         '003-mythcount.patch'
         '004-exiv2.patch'
+        '005-mythuiwebbrowser.patch'
 )
 sha256sums=('7f7ae9b8927659616f181afc12d7ddc26b0a4b0d13982e2586985f4770640b43'
             '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
@@ -44,7 +46,8 @@ sha256sums=('7f7ae9b8927659616f181afc12d7ddc26b0a4b0d13982e2586985f4770640b43'
             '965b279c2a5c51229f0cf42b37e1df0413e22375c9796f85d10f7a5921478a42'
             'ca0084165572f679bee7813653dd67fdb7eba528e1add56d6bd6ba5394d571ea'
             '64575e3bf452d473970b1c752152b2404397012c7eb6ba64c0d445234135b5d2'
-            '689aec9cf0cb01e29c63e39381405875ffceea037b093d38f0f3e1519c200556')
+            '689aec9cf0cb01e29c63e39381405875ffceea037b093d38f0f3e1519c200556'
+            'debb5ee0b15d12e6e5ab94ab1e7a64f86721f226c6d326c53db783258409ce2d')
 
 prepare() {
   cd $pkgname-$pkgver/$pkgname
@@ -54,7 +57,7 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../../$src"
   done
 
