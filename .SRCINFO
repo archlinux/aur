@@ -1,7 +1,7 @@
 pkgbase = gdb-multiarch
 	pkgdesc = The GNU Debugger for all gdb supported architectures (i386/arm/mips...)
-	pkgver = 8.3.1
-	pkgrel = 3
+	pkgver = 9.1
+	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
 	arch = x86_64
@@ -13,13 +13,11 @@ pkgbase = gdb-multiarch
 	depends = guile2.0
 	depends = gdb-common
 	options = !emptydirs
-	source = https://ftp.gnu.org/gnu/gdb/gdb-8.3.1.tar.xz
-	source = https://ftp.gnu.org/gnu/gdb/gdb-8.3.1.tar.xz.sig
-	source = python-3.8.patch
+	source = https://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz
+	source = https://ftp.gnu.org/gnu/gdb/gdb-9.1.tar.xz.sig
 	validpgpkeys = F40ADB902B24264AA42E50BF92EDB04BFF325CF3
-	sha256sums = 1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4
+	sha256sums = 699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737
 	sha256sums = SKIP
-	sha256sums = 77d93856d1272e30494e8180e2fb3adc124cb939eee6447f45326087e49cdd6e
 
 pkgname = gdb-multiarch
 
