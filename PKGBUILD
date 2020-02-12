@@ -1,5 +1,5 @@
-# Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 _pkgname=penlight
 pkgname=("lua-$_pkgname-git" "lua52-$_pkgname-git" "lua51-$_pkgname-git")
