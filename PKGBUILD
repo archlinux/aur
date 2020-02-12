@@ -23,7 +23,6 @@ sha256sums=('bc6f93de33f520c09d8159d7b16214c18dae6a463027924f3834c2d44a6ca575'
 
 prepare( ){
     cd "$pkgname-v$pkgver-"*
-    [[ ${pkgver} == "1.7.0" ]] && sed -i -e '12s/FLAGS) \$(IM/FLAGS) --buildmode exe $(IM/' Makefile.build.mk ||:
 }
 
 build() {
