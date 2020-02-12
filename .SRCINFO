@@ -15,13 +15,3 @@ pkgname = lua-posix
 	depends = lua-std-normalize
 	conflicts = lua-posix-git
 
-pkgname = lua52-posix
-	depends = lua52
-	depends = lua52-std-normalize
-	conflicts = lua52-posix-git
-
-pkgname = lua51-posix
-	depends = lua51
-	depends = lua51-std-normalize
-	conflicts = lua51-posix-git
-

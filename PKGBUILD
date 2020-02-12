@@ -4,7 +4,7 @@
 _rockname=posix
 pkgbase=lua-$_rockname
 _pkgbase="${pkgbase//-}"
-pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname") # "lua52-$_rockname" "lua51-$_rockname")
 pkgver=34.1.1
 _rockrel=1
 pkgrel=1
