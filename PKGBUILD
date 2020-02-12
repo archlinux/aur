@@ -1,6 +1,6 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=v0.999.1.r16.g45193972
+pkgver=v0.999.1.r83.g4fbb8a79
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -17,7 +17,7 @@ source=(
 sha256sums=(
     "SKIP"
     "5772cf1942bd4fb1ecddfff4a4ad4783140960b1d109861908567fbd0fc3a553"
-    "0afb3320e8f7632f8c2a4dc7414c51ced19f01544b3be6e5045626c070c7648c"
+    "5e20ea657599390e317523ae17b17aba0d26c59474a7f80282af5f2668002f59"
 )
 
 
