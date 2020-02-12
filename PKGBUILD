@@ -53,5 +53,6 @@ package() {
   cd ${pkgname}-${pkgver}/build
   make DESTDIR="$pkgdir" install
   rm "$pkgdir"/usr/bin/ginsh
+  rm "$pkgdir"/usr/lib/libz.a
 }
 
