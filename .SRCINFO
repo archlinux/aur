@@ -1,14 +1,14 @@
 pkgbase = xkbcat
 	pkgdesc = simple sudoless X11 keylogger
 	pkgver = 2.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anko/xkbcat
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
-	license = GPL
+	license = ISC
 	depends = libxi
 	source = xkbcat-2.1.1.tar.gz::https://github.com/anko/xkbcat/archive/v2.1.1.tar.gz
 	sha256sums = 8a2e39c49c156c4131c3271207ba8910b6a3b70023f70161995f1eb04941f2eb
