@@ -1,0 +1,17 @@
+pkgbase = erlang_ls-git
+	pkgdesc = Erlang Language Server Protocol Implementation
+	pkgver = r704.9eb3e93
+	pkgrel = 1
+	url = https://github.com/erlang-ls/erlang_ls
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = erlang
+	depends = rebar3
+	provides = erlang_ls-git
+	conflicts = erlang_ls-git
+	source = git+https://github.com/erlang-ls/erlang_ls
+	md5sums = SKIP
+
+pkgname = erlang_ls-git
+
