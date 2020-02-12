@@ -3,14 +3,14 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r3353.0525de95
+pkgver=r5.0be82553
 pkgrel=1
-pkgdesc="AT&T's KornShell (${_pkgname}) from ast-base, Meson Build"
+pkgdesc="AT&T's KornShell (${_pkgname}) from ast-base"
 arch=('x86_64')
 url='http://kornshell.org/'
 license=('EPL' 'CPL')
 depends=('glibc')
-makedepends=('gcc' 'git' 'meson')
+makedepends=('gcc' 'git')
 conflicts=('ksh' 'ksh93')
 provides=('ksh')
 install='ksh93.install'
@@ -28,38 +28,37 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	meson build
-	ninja -C build
+	./bin/package make
 }
 
 package() {
-  	cd "${srcdir}"
+	cd "${srcdir}"
 	install -dm 755 "${pkgdir}/usr/share/ksh"
 	install -dm 755 "${pkgdir}/usr/share/ksh/functions"
 	install -dm 755 "${pkgdir}/usr/share/doc/ksh"
 	install -dm 755 "${pkgdir}/usr/share/licenses/ksh"
-	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/ksh/LICENCE"
+	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/ksh/LICENSE"
 	install -Dm 644 sample.kshrc "${pkgdir}/etc/skel/.kshrc"
 	cd "${srcdir}/$_pkgname"
-	install -Dm 644 "src/cmd/${_pkgname}/docs/nval.3" "${pkgdir}/usr/share/man/man3/nval.3"
-	install -Dm 644 "src/cmd/${_pkgname}/docs/shell.3" "${pkgdir}/usr/share/man/man3/shell.3"
- 	install -Dm 644 "src/cmd/${_pkgname}/docs/ksh.1" "${pkgdir}/usr/share/man/man1/ksh.1"
+	install -Dm 644 "src/cmd/${_pkgname}/nval.3" "${pkgdir}/usr/share/man/man3/nval.3"
+	install -Dm 644 "src/cmd/${_pkgname}/shell.3" "${pkgdir}/usr/share/man/man3/shell.3"
+	install -Dm 644 "src/cmd/${_pkgname}/sh.1" "${pkgdir}/usr/share/man/man1/ksh.1"
 	local _man
 	for _man in 'rksh' 'pfksh'; do
 		ln -sf 'ksh.1' "${pkgdir}/usr/share/man/man1/${_man}.1"
 	done
 	local _fun
 	for _fun in 'dirs' 'popd' 'pushd'; do
-	install -Dm 644 "src/cmd/${_pkgname}/functions/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
+		install -Dm 644 "src/cmd/${_pkgname}/fun/${_fun}" "${pkgdir}/usr/share/ksh/functions/${_fun}"
 	done
 	local _dox
 	for _dox in 'COMPATIBILITY' 'DESIGN' 'OBSOLETE' 'README' 'RELEASE' 'RELEASE88' 'RELEASE93' 'TYPES'; do
-	  install -Dm 644 "src/cmd/${_pkgname}/${_dox}" "${pkgdir}/usr/share/doc/ksh/${_dox}"
+		install -Dm 644 "src/cmd/${_pkgname}/${_dox}" "${pkgdir}/usr/share/doc/ksh/${_dox}"
 	done
-	install -Dm 755 "build/src/cmd/${_pkgname}/ksh" "${pkgdir}/usr/bin/ksh"	
+	install -Dm 755 "arch/linux.i386-64/bin/ksh" "${pkgdir}/usr/bin/ksh"	
 	local _exe
 	for _exe in 'rksh' 'pfksh'; do
 		ln -sf 'ksh' "${pkgdir}/usr/bin/${_exe}"
 	done
-	install -Dm 755 "build/src/cmd/${_pkgname}/shcomp" "${pkgdir}/usr/bin/shcomp"
+	install -Dm 755 "arch/linux.i386-64/bin/shcomp" "${pkgdir}/usr/bin/shcomp"
 }

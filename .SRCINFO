@@ -1,6 +1,6 @@
 pkgbase = ksh93-git
-	pkgdesc = AT&T's KornShell (ksh93) from ast-base, Meson Build
-	pkgver = r3353.0525de95
+	pkgdesc = AT&T's KornShell (ksh93) from ast-base
+	pkgver = r5.0be82553
 	pkgrel = 1
 	url = http://kornshell.org/
 	install = ksh93.install
@@ -9,7 +9,6 @@ pkgbase = ksh93-git
 	license = CPL
 	makedepends = gcc
 	makedepends = git
-	makedepends = meson
 	depends = glibc
 	provides = ksh
 	conflicts = ksh
