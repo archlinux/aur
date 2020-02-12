@@ -3,8 +3,9 @@
 pkgbase='lua51-gifine'
 pkgname=('gifine')
 pkgdesc='Quickly record and edit gifs and videos of your desktop'
-pkgver=1
-pkgrel=2
+pkgver=dev
+_rockrel=1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/leafo/gifine"
 license=('MIT')
@@ -12,19 +13,13 @@ depends=('ffmpeg' 'graphicsmagick' 'gifsicle' 'slop' 'lua51-lgi')
 makedepends=('luarocks')
 provides=('gifine')
 source=("git+$url")
-options=('strip')
 md5sums=('SKIP')
 
-build() {
-  mkdir -p 5.1
-  # Build for 5.1
-  (cd 5.1; luarocks build --pack-binary-rock --lua-version=5.1 --deps-mode=none ../gifine/"gifine-dev-$pkgver.rockspec")
-}
-
 package() {
-  luarocks install --lua-version=5.1 --tree="$pkgdir/usr/" --deps-mode=none 5.1/*.rock
-  # remove luarocks-created root manifest
-  rm "$pkgdir/usr/lib/luarocks/rocks-5.1/manifest"
+	cd $srcdir/gifine
+	luarocks --lua-version=5.1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "gifine-$pkgver-$_rockrel.rockspec"
+	sed -i "s@$pkgdir@@" "$pkgdir/usr/bin/gifine"
+	install -Dm 644 "hi.png" "$pkgdir/usr/share/pixmaps/gifine.png"
+	install -Dm 644 "../../gifine.desktop" "$pkgdir/usr/share/applications/gifine.desktop"
 }
-
 # vim:set ts=2 sw=2 et:
