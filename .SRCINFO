@@ -1,13 +1,13 @@
 pkgbase = gitlab-pages
 	pkgdesc = GitLab Pages daemon used to serve static websites for GitLab users
 	pkgver = 1.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gitlab-org/gitlab-pages
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	backup = etc/$pkgname/config.cfg
+	backup = etc/gitlab-pages/config.cfg
 	source = gitlab-pages-v1.15.0.tar.gz::https://gitlab.com/gitlab-org/gitlab-pages/repository/v1.15.0/archive.tar.gz
 	source = config.cfg
 	source = gitlab-pages.service

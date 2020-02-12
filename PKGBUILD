@@ -4,7 +4,7 @@
 
 pkgname=gitlab-pages
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GitLab Pages daemon used to serve static websites for GitLab users'
 url="https://gitlab.com/gitlab-org/$pkgname"
 license=('MIT')
@@ -15,7 +15,7 @@ source=("$pkgname-v$pkgver.tar.gz::https://gitlab.com/gitlab-org/$pkgname/reposi
 	'config.cfg'
 	"$pkgname.service"
 	'service.env')
-backup=('etc/$pkgname/config.cfg')
+backup=("etc/$pkgname/config.cfg")
 sha256sums=('bc6f93de33f520c09d8159d7b16214c18dae6a463027924f3834c2d44a6ca575'
             '5e2135793d43ec2f3343b49cf45b00f44ef74e813c7d152d2e0ed46af5c25122'
             'ae62235f0fd66eaed7ad74048daf21b92058aba90e40fc2d3e7a684e9883c32e'
