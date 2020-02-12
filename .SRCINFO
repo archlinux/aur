@@ -1,0 +1,12 @@
+pkgbase = emacs-eaf
+	pkgdesc = EAF extends GNU Emacs to an entire universe of powerful GUI applications.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/manateelazycat/emacs-application-framework
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = emacs python-dbus python-xlib python-qtpy python-pyqtwebengine python-qrcode python-feedparser python-pymupdf python-grip
+	source = git://github.com/manateelazycat/emacs-application-framework
+
+pkgname = emacs-eaf
