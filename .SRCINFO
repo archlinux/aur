@@ -1,0 +1,16 @@
+pkgbase = vim-gist
+	pkgdesc = Vim plugin for Gist
+	pkgver = 7.3
+	pkgrel = 1
+	url = https://github.com/mattn/vim-gist
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	depends = vim-webapi
+	depends = git
+	source = https://github.com/mattn/vim-gist/archive/7.3.tar.gz
+	sha256sums = 2678423e9a8df18026f60359128921fbdf03088a26612d0006048f9b46199049
+
+pkgname = vim-gist
+
