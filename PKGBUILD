@@ -6,15 +6,13 @@
 pkgname=zerobrane-studio
 _pkgname=ZeroBraneStudio
 pkgver=1.90
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight Lua-based IDE for Lua"
 arch=(any)
 url='https://studio.zerobrane.com/'
 license=('MIT')
 depends=('wxlua' 'lua-socket' 'hicolor-icon-theme')
 makedepends=('cmake')
-provides=('zerobrane-studio')
-conflicts=('zerobrane-studio-git')
 optdepends=('love: to debug love programs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pkulchenko/$_pkgname/archive/$pkgver.tar.gz"
         "zbstudio.patch"
@@ -33,7 +31,6 @@ prepare() {
 
 build() {
   cd "$_pkgname-$pkgver/build"
-  # sed -e '/check_lua_module(wx TRUE)/ s/^#*/#/' -i CMakeLists.txt
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
   make
 }

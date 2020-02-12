@@ -1,7 +1,7 @@
 pkgbase = zerobrane-studio
 	pkgdesc = A lightweight Lua-based IDE for Lua
 	pkgver = 1.90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://studio.zerobrane.com/
 	arch = any
 	license = MIT
@@ -10,8 +10,6 @@ pkgbase = zerobrane-studio
 	depends = lua-socket
 	depends = hicolor-icon-theme
 	optdepends = love: to debug love programs
-	provides = zerobrane-studio
-	conflicts = zerobrane-studio-git
 	source = zerobrane-studio-1.90.tar.gz::https://github.com/pkulchenko/ZeroBraneStudio/archive/1.90.tar.gz
 	source = zbstudio.patch
 	source = getbitmap.patch
