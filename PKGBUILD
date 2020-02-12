@@ -11,12 +11,12 @@ arch=('i686' 'x86_64')
 url="https://github.com/Olivine-Labs/$_rockname"
 license=('MIT')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::https://github.com/Olivine-Labs/$_rockname/archive/v$pkgver-$_rockrel.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::https://github.com/Olivine-Labs/$_rockname/archive/v$pkgver-$_rockrel.tar.gz")
 sha256sums=('23e8cd378bb4ab1693279100a785acb2246418e3570b7de7d995b5847b3507ca')
 
 _package_helper() {
   cd "$_rockname-$pkgver-$_rockrel"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
 }
 
 package_lua-say() {
