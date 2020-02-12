@@ -1,0 +1,17 @@
+pkgbase = depixelator-git
+	pkgdesc = A small header-only c++ library to depixelize pixels to contours
+	pkgver = r8.c09fca8
+	pkgrel = 1
+	url = https://github.com/reMarkable/depixelator
+	arch = any
+	license = BSD
+	makedepends = git
+	provides = depixelator
+	conflicts = depixelator
+	source = git+https://github.com/reMarkable/depixelator.git
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = cdaee571ecbbc34f8d58891422dda7a7
+
+pkgname = depixelator-git
+
