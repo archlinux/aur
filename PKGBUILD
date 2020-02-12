@@ -10,12 +10,12 @@ arch=('i686' 'x86_64')
 url="http://sputnik.freewisdom.org/lib/$_rockname/"
 license=('MIT')
 makedepends=('luarocks')
-source=("${_rockname}-${pkgver}.tar.gz::http://sputnik.freewisdom.org/files/$_rockname-$pkgver.tar.gz")
+source=("$_rockname-$pkgver.tar.gz::http://sputnik.freewisdom.org/files/$_rockname-$pkgver.tar.gz")
 sha256sums=('64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b')
 
 _package_helper() {
   cd "$_rockname-$pkgver"
-  luarocks --lua-version=$1 --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspec"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "rockspec"
 }
 
 package_lua-colors() {
