@@ -2,13 +2,13 @@
 # See https://phalanx.openinfosecfoundation.org/projects/suricata for more info
 
 pkgname=suricata-git
-pkgver=4.0.1.r82.g84b66b7aa
+pkgver=5.0.1.r109.gaeefc82eb
 pkgrel=1
 pkgdesc='Suricata is a free and open source, mature, fast and robust network threat detection engine'
 url='https://suricata-ids.org'
 arch=('i686' 'x86_64')
 license=('GPL2' 'CUSTOM')
-makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'pkg-config' 'fakeroot' 'which')
+makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'pkg-config' 'fakeroot' 'which' 'cbindgen')
 depends=('libcap-ng' 'libnet' 'libpcap' 'libyaml' 'pcre')
 #optdepends=('')
 backup=('etc/suricata/suricata.yaml' 'etc/suricata/classification.config' 'etc/suricata/reference.config' 'etc/suricata/threshold.config')
