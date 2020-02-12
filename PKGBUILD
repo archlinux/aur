@@ -43,7 +43,7 @@ build() {
     # --shared-v8
     # --shared-http-parser
 
-  make -j15
+  make -j"$(($(nproc)-1))"
 }
 
 check() {
