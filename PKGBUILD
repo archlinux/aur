@@ -2,7 +2,7 @@
 # Maintainer: Martin Kröning <m.kroening@hotmail.de>
 _target=riscv64-unknown-elf
 pkgname=$_target-gdb
-pkgver=8.3.1
+pkgver=9.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the 32bit and 64bit RISC-V bare-metal target'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=(GPL3)
 depends=(xz ncurses expat python guile2.0 gdb-common mpfr)
 options=(!emptydirs)
 source=(https://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz{,.sig})
-sha256sums=('1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4'
+sha256sums=('699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737'
             'SKIP')
 validpgpkeys=('F40ADB902B24264AA42E50BF92EDB04BFF325CF3') # Joel Brobecker
 
@@ -25,7 +25,8 @@ prepare() {
 build() {
   cd gdb-$pkgver
 
-  ./configure \
+  mkdir -p build && cd build
+  ../configure \
     --target=$_target \
     --prefix=/usr \
     --enable-languages=c,c++ \
@@ -33,7 +34,7 @@ build() {
     --enable-interwork \
     --with-system-readline \
     --disable-nls \
-    --with-python=/usr/bin/python3 \
+    --with-python=/usr/bin/python \
     --with-guile=guile-2.0 \
     --with-system-gdbinit=/etc/gdb/gdbinit
 
@@ -41,7 +42,7 @@ build() {
 }
 
 package() {
-  cd gdb-$pkgver
+  cd gdb-$pkgver/build
 
   make -C gdb DESTDIR=$pkgdir install
 
