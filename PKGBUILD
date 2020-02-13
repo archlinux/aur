@@ -8,12 +8,8 @@ pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
 url='https://github.com/Qv2ray/Qv2ray'
 license=('GPL3')
-depends=(
-    'hicolor-icon-theme' 'qt5-charts>5.11.0' 'grpc>=1.27.0'
-)
-optdepends=(
-    'v2ray: use system v2ray'
-)
+depends=('hicolor-icon-theme' 'qt5-base>5.11.0' 'grpc>=1.27.0')
+optdepends=('v2ray: use system v2ray core.')
 makedepends=('git' 'make' 'qt5-tools' 'which' 'gcc' 'qt5-declarative' 'grpc-cli>=1.27.0')
 provides=('qv2ray')
 conflicts=('qv2ray')
@@ -49,6 +45,9 @@ prepare() {
 }
 
 build() {
+    export _QV2RAY_BUILD_INFO_="Qv2ray for Arch Linux CN"
+    export _QV2RAY_BUILD_EXTRA_INFO_="(Official Build) $(uname -a | cut -d " " -f3,13)"
+
     cd "${srcdir}/Qv2ray"
     mkdir -p build && cd build
     qmake 'CONFIG += use_grpc' 'DEFINES += QV2RAY_DEFAULT_VCORE_PATH=\\\"/usr/bin/v2ray\\\"' 'DEFINES += QV2RAY_DEFAULT_VASSETS_PATH=\\\"/usr/lib/v2ray\\\"' PREFIX=/usr ../
