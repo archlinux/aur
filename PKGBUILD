@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-qogir-git
 _gitname=Qogir-kde
-pkgver=r26.00ba46a
+pkgver=r37.c6af9dc
 pkgrel=1
 pkgdesc="Qogir theme for Kvantum"
 arch=('any')
@@ -11,16 +11,13 @@ depends=('kvantum-qt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'qogir-kde-theme-git')
-_commit=00ba46ac80c7710a0663d7c442adb9c6faccf237
+_commit='c6af9dc43edb4f0dd53696853cf62835bd6e10f4'
 source=("git+https://github.com/vinceliuice/Qogir-kde.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    ( set -o pipefail
-		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	)
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
