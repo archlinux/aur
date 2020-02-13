@@ -1,6 +1,6 @@
 pkgbase = ironscanner
 	pkgdesc = Collect as much information as possible on a image scanner, run test scan, and send a detailed report to OpenPaper.work.
-	pkgver = 2.0+33+g148792b
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/OpenPaperwork/ironscanner
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = ironscanner
 	makedepends = vala
 	makedepends = gobject-introspection
 	depends = python3
-	source = git+https://gitlab.gnome.org/World/OpenPaperwork/ironscanner.git#commit=148792bacfed010e12ae79a7407757c894f66583
+	conflicts = ironscanner-git
+	source = git+https://gitlab.gnome.org/World/OpenPaperwork/ironscanner.git#commit=f13633f7383329d587e360e4a09dedee9f2cfcf1
 	sha256sums = SKIP
 
 pkgname = ironscanner
