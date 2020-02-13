@@ -10,6 +10,7 @@ arch=(any)
 url=https://github.com/mattn/webapi-vim
 license=(UNKNOWN)
 depends=(vim curl)
+groups=(vim-plugins)
 source=($url/archive/$pkgver.tar.gz)
 sha256sums=('7e97e8ddb1497dae0226569cdf713418cfa0995913c8869339f50fe6bfb6f9f4')
 

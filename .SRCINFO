@@ -4,6 +4,7 @@ pkgbase = vim-webapi
 	pkgrel = 1
 	url = https://github.com/mattn/webapi-vim
 	arch = any
+	groups = vim-plugins
 	license = UNKNOWN
 	depends = vim
 	depends = curl
