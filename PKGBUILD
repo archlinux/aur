@@ -1,13 +1,13 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 
 pkgname=libzypp-git
-pkgver=17.11.3.13.gcc3ddd71f
+pkgver=17.22.1
 pkgrel=1
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
 license=('GPL')
-depends=('libsolv-git' 'openssl' 'curl' 'libsystemd')
+depends=('libsolv-git' 'openssl' 'curl' 'libsystemd' 'fcgi')
 makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
              'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc')
 provides=('libzypp')

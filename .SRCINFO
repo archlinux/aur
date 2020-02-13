@@ -1,6 +1,6 @@
 pkgbase = libzypp-git
 	pkgdesc = Package, Patch, Pattern, and Product Management
-	pkgver = 17.11.3.13.gcc3ddd71f
+	pkgver = 17.22.1
 	pkgrel = 1
 	url = https://github.com/openSUSE/libzypp
 	arch = i686
@@ -22,6 +22,7 @@ pkgbase = libzypp-git
 	depends = openssl
 	depends = curl
 	depends = libsystemd
+	depends = fcgi
 	provides = libzypp
 	conflicts = libzypp
 	source = git+https://github.com/openSUSE/libzypp.git
