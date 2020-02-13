@@ -7,15 +7,15 @@
 
 pkgname=telegram-desktop-dev
 pkgver=1.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('enchant' 'libdbusmenu-qt5' 'ffmpeg' 'hicolor-icon-theme'
+depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'libdbusmenu-qt5'
          'libappindicator-gtk3' 'lz4' 'minizip' 'openal' 'qt5-imageformats'
          'xxhash')
-makedepends=('cmake' 'git' 'python' 'range-v3')
+makedepends=('cmake' 'git' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 
 provides=('telegram-desktop')
@@ -135,15 +135,12 @@ build() {
         -Ddisable_autoupdate=1 \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
         -DCMAKE_BUILD_TYPE=Release \
+        -DTDESKTOP_API_TEST=ON \
         -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
         -DDESKTOP_APP_USE_PACKAGED=ON \
-        -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF \
-        -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
         -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
-        -DDESKTOP_APP_SPECIAL_TARGET="" \
-        -DTDESKTOP_API_TEST=ON \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
