@@ -9,7 +9,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2020.2
 _channel=stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -43,6 +43,9 @@ prepare() {
 
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
+
+	# Use Electron 8.0.0:
+	sed -i 's/"electron": "^7.1.10",/"electron": "^8.0.0",/g' gui/package.json
 }
 
 build() {
