@@ -11,9 +11,9 @@ pkgdesc='A command-line utility that checks for best practices in SaltStack.'
 arch=(any)
 url=https://github.com/warpnet/salt-lint
 license=(MIT)
-depends=(python python-salt python-pathspec python-wheel)
+depends=(python python-salt python-pathspec)
 ## EXTRA_DEPENDS ##
-makedepends=(python-pip python-distro)
+makedepends=(python-pip python-distro python-wheel)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
