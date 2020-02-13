@@ -1,8 +1,8 @@
 # Maintainer: Zachery Gyurkovitz <zgyurkovitz@gmail.com>
 
 pkgname=etterna
-pkgver=0.66.1
-pkgrel=2
+pkgver=0.67.1
+pkgrel=1
 pkgdesc="A advanced cross-platform rhythm game focused on keyboard play"
 arch=('i686' 'x86_64')
 url="https://etternaonline.com"
@@ -19,7 +19,7 @@ source=(
     "${pkgname}.desktop"
 )
 sha256sums=(
-    "25e62a9de6fdfd33068dd7579d2d3b383ee95bdc0c4096af28059fe67a9a645e"
+    "7be9d73d3c2b8b978628bdebb9bcc3b9284fac06df897ab5521689ce5693318f"
     "7b497e7d3d74c2f3ebf1634fe0b576603099c372f7787a21646976d76e0e0995"
 )
 build() {
@@ -33,6 +33,8 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
+    install -dm777 "${pkgdir}/opt/${pkgname}"
+    chmod +s "${pkgdir}/opt/${pkgname}"
     install -dm777 "${pkgdir}/opt/${pkgname}/Cache"
 
     install -Dm755 "Etterna" "${pkgdir}/opt/${pkgname}/Etterna"
@@ -40,7 +42,6 @@ package() {
     cp -r -t "${pkgdir}/opt/${pkgname}" \
         "Assets/" \
         "BackgroundEffects/" \
-        "Characters/" \
         "Data/" \
         "NoteSkins/" \
         "Scripts/" \
@@ -57,7 +58,6 @@ package() {
     chmod 777 -R \
         "Assets/" \
         "BackgroundEffects/" \
-        "Characters/" \
         "Data/" \
         "NoteSkins/" \
         "Scripts/" \
