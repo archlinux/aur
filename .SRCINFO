@@ -1,0 +1,14 @@
+pkgbase = python-pyexcel-xlsx
+	pkgdesc = A wrapper library to read, manipulate and write data in xlsx and xlsm format using openpyxl
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/pyexcel/pyexcel-xlsx
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/pyexcel/pyexcel-xlsx/archive/v0.5.8.tar.gz
+	sha256sums = 2870c701e7a0f100af8963e9b37b90520bf2fddd8d7964f01b362bd422056846
+
+pkgname = python-pyexcel-xlsx
+
