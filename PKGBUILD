@@ -1,6 +1,6 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=distro-info-data
-pkgver=0.38
+pkgver=0.43
 pkgrel=1
 pkgdesc="information about the distributions' releases (data files)"
 arch=('any')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=()
 makedepends=('python2')
 options=(!emptydirs)
-source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('afa3b8b5c3d655f0361a91dc412f6ddf8d404130bfb6d8146077faac5059739b')
+source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_${pkgver}.tar.xz)
+sha256sums=('6b6871a808fed7275f18c637916993b83df32dbf13ba318e3cfb2266ddccc1e8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
