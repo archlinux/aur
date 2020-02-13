@@ -1,7 +1,7 @@
 pkgbase = bluejeans
 	pkgdesc = BlueJeans desktop app for video calls
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.bluejeans.com
 	install = bluejeans.install
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = bluejeans
 	depends = fontconfig
 	depends = freetype2
 	depends = gcc-libs
-	depends = gconf
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc

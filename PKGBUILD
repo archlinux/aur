@@ -7,7 +7,7 @@
 
 pkgname=bluejeans
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
 url="https://www.bluejeans.com"
@@ -23,7 +23,6 @@ depends=('alsa-lib'
          'fontconfig'
          'freetype2'
          'gcc-libs'
-         'gconf'
          'gdk-pixbuf2'
          'glib2'
          'glibc'
