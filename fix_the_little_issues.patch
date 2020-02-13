@@ -1,0 +1,40 @@
+Fixed some of the cmake buildsystem issues. CMake provides an ALSA
+module for a long time now ...
+---
+diff -uprN nana.org/build/cmake/enable_audio.cmake nana/build/cmake/enable_audio.cmake
+--- nana.org/build/cmake/enable_audio.cmake	2020-02-13 16:49:53.913064651 +0100
++++ nana/build/cmake/enable_audio.cmake	2020-02-13 16:50:04.823602262 +0100
+@@ -4,12 +4,12 @@ option(NANA_CMAKE_ENABLE_AUDIO "Enable c
+ if(NANA_CMAKE_ENABLE_AUDIO)
+     target_compile_definitions(nana PUBLIC NANA_ENABLE_AUDIO)
+     if(UNIX)
+-        find_package(ASOUND) # ? https://github.com/hintjens/demidi/blob/master/Findasound.cmake
+-        if(ASOUND_FOUND)
+-            target_include_directories(nana PUBLIC ${ASOUND_INCLUDE_DIRS})
+-            target_link_libraries(nana PUBLIC  ${ASOUND_LIBRARIES})
++        find_package(ALSA) # ? https://github.com/hintjens/demidi/blob/master/Findasound.cmake
++        if(ALSA_FOUND)
++            target_include_directories(nana PUBLIC ${ALSA_INCLUDE_DIRS})
++            target_link_libraries(nana PUBLIC  ${ALSA_LIBRARIES})
+         else()
+             message(FATAL_ERROR "libasound is not found")
+         endif()
+     endif()
+-endif()
+\ No newline at end of file
++endif()
+diff -uprN nana.org/build/cmake/shared_libs.cmake nana/build/cmake/shared_libs.cmake
+--- nana.org/build/cmake/shared_libs.cmake	2020-02-13 16:49:53.913064651 +0100
++++ nana/build/cmake/shared_libs.cmake	2020-02-13 17:07:49.469445929 +0100
+@@ -37,10 +37,6 @@ if(BUILD_SHARED_LIBS)   # todo test
+ endif()
+ 
+ if(NANA_STATIC_STDLIB)
+-    target_link_libraries(nana
+-        PUBLIC
+-            $<$<CXX_COMPILER_ID:GNU>:-static-libgcc -static-libstdc++>
+-            $<$<CXX_COMPILER_ID:Clang>:-static-libgcc -static-libstdc++>
+-            )
++    target_link_libraries(nana PUBLIC -static-libgcc -static-libstdc++)
+ endif()
+ 

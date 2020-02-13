@@ -1,6 +1,6 @@
 pkgbase = nana
 	pkgdesc = An opensource cross-platform GUI library written in modern C++11 for static linking
-	pkgver = 1.7.2
+	pkgver = 1.7.3
 	pkgrel = 1
 	url = http://nanapro.org/en-us/
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = nana
 	depends = libpng
 	depends = libx11
 	depends = libxft
-	source = https://sourceforge.net/projects/nanapro/files/Nana/Nana 1.x/nana_1.7.2.zip
-	source = fix_all_the_little_issues.patch
-	sha256sums = 442b0e0ad899792bb97dd5b3aed0cb3d36b62fb2e0564b28604b5bcb228960c3
-	sha256sums = 0033bdd672a2acfb8fe785b15de27e8e89fc843f94340bcde814e631477e3239
+	source = https://sourceforge.net/projects/nanapro/files/Nana/Nana 1.x/nana_1.7.3.zip
+	source = fix_the_little_issues.patch
+	sha256sums = af69c2d570d32efdc386c5245cfcd05ebdde4e21c1459b229a78496d2609a9c3
+	sha256sums = 0a00b824b90b9380be9a4376507b0880fb75466b8114275156f2d3bd44c9f32b
 
 pkgname = nana
 
