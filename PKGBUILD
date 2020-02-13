@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.0.1.3648+grpc
+pkgver=2.1.1.3861+grpc
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ conflicts=('qv2ray')
 
 source=(
     'Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=dev'
-    'QNodeEditor::git+https://github.com/lhy0403/QNodeEditor'
+    'QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor'
     'SingleApplication::git+https://github.com/itay-grudev/SingleApplication'
     'x2struct::git+https://github.com/xyz347/x2struct'
     'qzxing::git+https://github.com/ftylitak/qzxing'
@@ -32,7 +32,7 @@ sha512sums=(
 )
 
 pkgver() {
-    printf "%s.%s+grpc" $(cat ${srcdir}/Qv2ray/makespec/VERSION) $(cat ${srcdir}/Qv2ray/Build.Counter)
+    printf "%s.%s+grpc" $(cat ${srcdir}/Qv2ray/makespec/VERSION) $(cat ${srcdir}/Qv2ray/makespec/BUILDVERSION)
 }
 
 prepare() {
