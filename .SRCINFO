@@ -1,7 +1,7 @@
 pkgbase = fcitx5-anthy-git
 	pkgdesc = Anthy input method for fcitx5
-	pkgver = r143.59c61bb
-	pkgrel = 1
+	pkgver = r144.11af2a7
+	pkgrel = 2
 	url = https://github.com/fcitx/fcitx5-anthy
 	arch = x86_64
 	license = GPL
