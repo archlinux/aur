@@ -1,6 +1,6 @@
 # Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
 pkgname=waterfox-current-bin
-pkgver=2020.01.1
+pkgver=2020.02
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
@@ -28,4 +28,4 @@ package() {
 }
 
 sha256sums=('4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d'
-            '53ad9853f403887cb7d7bd051e008b2beebbf45fdc84f0fd24ad4b7024629f82')
+            '23f3832093251987d3000ef182b804c347e2ab540f6dfd7183eec420236089ea') # CHANGE THIS FOR REMOTE UPDATES.
