@@ -11,7 +11,7 @@ license=('GPL3')
 install=openra-raclassic.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip')
+makedepends=('msbuild' 'dos2unix' 'git' 'unzip')
 provides=('openra-raclassic')
 options=(!strip)
 source=("git+${url}.git"

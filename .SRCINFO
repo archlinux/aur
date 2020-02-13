@@ -6,6 +6,7 @@ pkgbase = openra-raclassic-git
 	install = openra-raclassic.install
 	arch = any
 	license = GPL3
+	makedepends = msbuild
 	makedepends = dos2unix
 	makedepends = git
 	makedepends = unzip
