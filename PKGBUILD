@@ -33,7 +33,7 @@ prepare() {
 }
 
 build() {
-  msg2 'Building libcd'
+  echo 'Building libcd'
   cd "$srcdir"/ftgl
   make
 
@@ -43,7 +43,7 @@ build() {
     IM_LIB=/usr/lib \
     USE_FTGL=Yes
 
-  msg2 'Building Lua 5.3 bindings'
+  echo 'Building Lua 5.3 bindings'
   make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
     STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed" \
     IM_INC=/usr/include/im \
@@ -51,7 +51,7 @@ build() {
     IMLUA_LIB=/usr/lib/lua/5.3 \
     USE_LUA53=Yes
 
-  msg2 'Building Lua 5.2 bindings'
+  echo 'Building Lua 5.2 bindings'
   make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
     STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.2,--enable-new-dtags,--as-needed" \
     IM_INC=/usr/include/im \
@@ -60,7 +60,7 @@ build() {
     LUA_INC=/usr/include/lua5.2 \
     USE_LUA52=Yes
 
-  msg2 'Building Lua 5.1 bindings'
+  echo 'Building Lua 5.1 bindings'
   make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
     STDLDFLAGS="-shared -Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed" \
     IM_INC=/usr/include/im \
