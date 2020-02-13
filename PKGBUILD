@@ -11,7 +11,7 @@ url="https://freefem.org/index.html"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack'
 	 'arpack' 'parmetis' 'cblas')
-makedepends=('texlive-core' 'gcc-fortran' 'unzip''autoconf' 'python')
+makedepends=('texlive-core' 'gcc-fortran' 'unzip' 'autoconf' 'python')
 conflicts=('freefem++')
 provides=('freefem++')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz")
