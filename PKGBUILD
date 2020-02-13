@@ -4,7 +4,7 @@ _name=xgboost
 pkgbase=xgboost-git
 pkgname=('xgboost-git'
          'python-xgboost-git')
-pkgver=r3854.97007765
+pkgver=r4049.911a90283
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
 license=('APACHE')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c717e84c937ce3c6bb710f39ddcf0588e61deb0e356836abd0257158703b225e')
+            '4940b84afffe9c2be646d0f77bcfb0d8d36aadcabc4a83b40113e1d97ae917b5')
 
 pkgver() {
   cd "${_name}"
@@ -38,6 +38,9 @@ prepare() {
 
 build() {
   cd "${_name}"
+  mkdir build
+  cd build
+  cmake .. # -DUSE_CUDA=ON
   make
 }
 
@@ -60,7 +63,6 @@ package_xgboost-git() {
 
   # Install shared libraries
   mkdir -p "${pkgdir}/usr/lib"
-  install -Dm644 lib/*.a "${pkgdir}/usr/lib"
   install -Dm644 lib/*.so "${pkgdir}/usr/lib"
 
   # Install includes

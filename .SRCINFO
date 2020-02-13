@@ -1,5 +1,5 @@
 pkgbase = xgboost-git
-	pkgver = r3854.97007765
+	pkgver = r4049.911a90283
 	pkgrel = 1
 	url = https://github.com/dmlc/xgboost
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = xgboost-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c717e84c937ce3c6bb710f39ddcf0588e61deb0e356836abd0257158703b225e
+	sha256sums = 4940b84afffe9c2be646d0f77bcfb0d8d36aadcabc4a83b40113e1d97ae917b5
 
 pkgname = xgboost-git
 	pkgdesc = An optimized distributed gradient boosting library designed to be highly efficient, flexible and portable
