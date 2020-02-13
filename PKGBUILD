@@ -1,7 +1,7 @@
 # Maintainer: Tom Whitwell <tom.whitwell@digital.cabinet-office.gov.uk>
 pkgname=gds-cli-git
-pkgver=535.f8b405e
-pkgrel=2
+pkgver=537.b236e25
+pkgrel=1
 pkgdesc="CLI for GDS Staff"
 arch=('i686' 'x86_64')
 url="https://github.com/alphagov/gds-cli"
