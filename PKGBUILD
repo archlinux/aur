@@ -3,8 +3,7 @@
 _name=xgboost
 pkgbase=xgboost-git
 pkgname=('xgboost-git'
-         'python-xgboost-git'
-         'python2-xgboost-git')
+         'python-xgboost-git')
 pkgver=r3854.97007765
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
@@ -14,7 +13,7 @@ source=('git+https://github.com/dmlc/xgboost.git'
         'git+https://github.com/dmlc/rabit'
         'git+https://github.com/NVlabs/cub'
         'python_no_libs.patch')
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python-setuptools')
 arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
@@ -46,8 +45,7 @@ package_xgboost-git() {
   pkgdesc='An optimized distributed gradient boosting library designed to be highly efficient, flexible and portable'
   provides=('xgboost')
   conflicts=('xgboost')
-  optdepends=('python-xgboost-git: Python 3 Wrapper'
-              'python2-xgboost-git: Python 2 Wrapper')
+  optdepends=('python-xgboost-git: Python 3 Wrapper')
 
   cd "${_name}"
 
@@ -74,20 +72,6 @@ package_xgboost-git() {
   # Copy the demos to opt/xgboost
   mkdir -p "${pkgdir}"/opt/xgboost
   cp -r demo "${pkgdir}"/opt/xgboost
-}
-
-package_python2-xgboost-git() {
-  pkgdesc='XGBoost Python 2 wrapper'
-  depends=('xgboost'
-           'python2'
-           'python2-numpy'
-           'python2-scipy')
-  conflicts=('python2-xgboost')
-  provides=('python2-xgboost')
-
-  cd "${_name}/python-package"
-
-  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python-xgboost-git() {
