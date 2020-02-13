@@ -1,9 +1,10 @@
 pkgbase = pcal
 	pkgdesc = Generate annotated PostScript or HTML calendars in a monthly or yearly format
 	pkgver = 4.11.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://pcal.sourceforge.net/
-	arch = any
+	arch = x86_64
+	arch = armv7h
 	license = unknown
 	depends = glibc
 	source = http://downloads.sourceforge.net/project/pcal/pcal/pcal-4.11.0/pcal-4.11.0.tgz

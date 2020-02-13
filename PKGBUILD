@@ -3,11 +3,11 @@
 # Contributor: Christoph Siegenthaler <csi@gmx.ch>
 pkgname=pcal
 pkgver=4.11.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Generate annotated PostScript or HTML calendars in a monthly or yearly format"
 url="http://pcal.sourceforge.net/"
 license=('unknown')
-arch=('any')
+arch=('x86_64' 'armv7h')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tgz")
 sha1sums=('214bcb4c4b7bc986ae495c96f2ab169233a7f973')
