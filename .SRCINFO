@@ -1,7 +1,7 @@
 pkgbase = chrome-token-signing
 	pkgdesc = Chrome and Firefox extension for signing with your eID on the web
 	pkgver = 1.1.1.513
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://www.id.ee/
 	arch = x86_64
