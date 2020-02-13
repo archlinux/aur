@@ -1,7 +1,7 @@
 pkgbase = polychord
 	pkgdesc = Next generation nested sampling
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PolyChord/PolyChordLite
 	arch = any
 	license = custom
