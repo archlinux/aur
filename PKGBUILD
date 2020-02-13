@@ -14,10 +14,6 @@ makedepends=('python' 'python-setuptools')
 source=("https://pypi.io/packages/source/c/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
 md5sums=('25dfe5f7a55914666e0da155592cd92b')
 
-prepare() {
-  cp -a ${pypi_name}-${pkgver}
-}
-
 build() {
   cd "${srcdir}/${pypi_name}-${pkgver}"
   python setup.py build
