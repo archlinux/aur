@@ -1,0 +1,15 @@
+diff --git a/server/faker-glx.cpp b/server/faker-glx.cpp
+index 4a620b79..eed2b07e 100644
+--- a/server/faker-glx.cpp
++++ b/server/faker-glx.cpp
+@@ -1811,11 +1811,10 @@ void glXQueryDrawable(Display *dpy, GLXDrawable draw, int attribute,
+ 	CATCH();
+ }
+ 
+-int glXQueryGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf, int attribute,
++void glXQueryGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf, int attribute,
+ 	unsigned int *value)
+ {
+ 	glXQueryDrawable(dpy, pbuf, attribute, value);
+-	return 0;
+ }

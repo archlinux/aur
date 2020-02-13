@@ -2,7 +2,7 @@
 
 _pkgname=virtualgl
 pkgname=$_pkgname-git
-pkgver=2.4.r138.ga930d056
+pkgver=2.4.r399.g2a7fadbc
 pkgrel=1
 pkgdesc='Redirects 3D commands from an OpenGL application onto a server-side 3D graphics card'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('libxv' 'glu' 'libjpeg-turbo' 'xcb-util-keysyms')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/VirtualGL/virtualgl.git")
-sha256sums=('SKIP')
+source=("$_pkgname::git+https://github.com/VirtualGL/virtualgl.git#branch=dev" "fix_mesa_change.patch")
+sha256sums=('SKIP' '38ef2efcf973f42855c7e5260d758904d06c8a04d29c6e43e9f07620977535b4')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
@@ -23,6 +23,8 @@ pkgver() {
 prepare() {
     cd "$srcdir"
     mkdir -p build
+    cd "virtualgl"
+    patch -p1 < ./../fix_mesa_change.patch
 }
 
 build() {
