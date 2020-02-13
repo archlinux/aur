@@ -1,9 +1,9 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: David Birks <david@birks.dev>
 # Contributor: colemickens <cole.mickens@gmail.com>
 
 pkgname=kubectl-beta-bin
 pkgdesc="Command-line tool for deploying and managing applications on Kubernetes (beta)"
-pkgver=1.18.0_alpha.3
+pkgver=1.18.0_alpha.5
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/kubernetes/kubernetes"
@@ -11,7 +11,7 @@ license=('Apache')
 provides=('kubectl')
 conflicts=('kubectl' 'kubectl-bin' 'kubernetes>=1.4.6')
 source=("kubectl-${pkgver/_/-}::https://storage.googleapis.com/kubernetes-release/release/v${pkgver/_/-}/bin/linux/amd64/kubectl")
-sha512sums=('9f47bd9be1adcd6537224ed4292a4b3e91dcf1f4bf47d338f37cd62b4c3f8a7485ab0cda70e17970ed89a8ede53d9ddae4868260e7eafa2193e01f6c63064077')
+sha512sums=('b53fd8530693f3c0eb5f1fedc055c1e2cf4ec6c6469b3baf5e7a967ffc698fbcf09c21b71e7c8debad334e15dab5f1da1d38857a449f54c305a679928baa1327')
 
 package() {
   install -Dm 755 "$srcdir/kubectl-${pkgver/_/-}" "$pkgdir/usr/bin/kubectl"
