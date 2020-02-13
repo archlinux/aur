@@ -2,14 +2,15 @@
 
 pkgname=libzypp-git
 pkgver=17.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Package, Patch, Pattern, and Product Management"
 arch=('i686' 'x86_64')
 url="https://github.com/openSUSE/libzypp"
 license=('GPL')
-depends=('libsolv-git' 'openssl' 'curl' 'libsystemd' 'fcgi')
+depends=('libsolv-git' 'openssl' 'curl' 'libsystemd')
 makedepends=('git' 'cmake' 'ninja' 'boost' 'dejagnu' 'graphviz'
-             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc')
+             'libxml2' 'expat' 'gnupg' 'rpm-org' 'libproxy' 'asciidoc'
+             'libsigc++' 'nginx' 'fcgi')
 provides=('libzypp')
 conflicts=('libzypp')
 source=('git+https://github.com/openSUSE/libzypp.git')
