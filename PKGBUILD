@@ -6,9 +6,9 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn-beta
-_pkgver=2020.1
-_channel=stable
-pkgver=${_pkgver}.${_channel}
+_pkgver=2020.2
+_channel=beta
+pkgver=${_pkgver}.${_channel}1
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
