@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-bin
 	pkgdesc = Privacy oriented Firefox fork.
-	pkgver = 2020.01.1
+	pkgver = 2020.02
 	pkgrel = 1
 	url = https://www.waterfoxproject.org
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = waterfox-classic-bin
 	provides = waterfox
 	conflicts = waterfox-bin
 	source = waterfox-classic.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.01.1.en-US.linux-x86_64.tar.bz2
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.02.en-US.linux-x86_64.tar.bz2
 	sha256sums = 8286eea183ad60e114bc5457d792210a19ab33502cb89cbd937702e1f974c6ff
-	sha256sums = 98c9112f1b3bb20237845ea2fd0ee02295c28b05a158f4b38b6e9f4883516e25
+	sha256sums = a3b5d62078fad09bd165d54af9c73d6928891aafab65d2cd7916eac19e6d6980
 
 pkgname = waterfox-classic-bin
 
