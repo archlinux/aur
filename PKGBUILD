@@ -13,20 +13,33 @@ optdepends=()
 conflicts=()
 backup=()
 options=('!strip')
-source=("git://github.com/parallella/parallella-examples.git")
-md5sums=('SKIP')
+source=(
+    "git://github.com/parallella/parallella-examples.git"
+    "git://github.com/adapteva/epiphany-examples.git"
+)
+md5sums=(
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "parallella-examples"
     echo $(git rev-list --count master).$(git rev-parse --short master)
+
+    # uname -p is not portable (http://mkaczanowski.com/unknown-uname-p)
+    find ../ -name 'build.sh' -exec sed -i "s/uname -p/uname -m \| grep -io 'arm'/g" {} \;
 }
 
 build() {
   cd "${srcdir}/parallella-examples"
   find . | grep "\.git/" | xargs rm -rf
+
+  cd "${srcdir}/epiphany-examples"
+  find . | grep "\.git/" | xargs rm -rf
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/adapteva/examples"
-  cp -r parallella-examples/* "${pkgdir}/opt/adapteva/examples/"
+  mkdir -p "${pkgdir}/opt/adapteva"
+  cp -r parallella-examples "${pkgdir}/opt/adapteva/"
+  cp -r epiphany-examples "${pkgdir}/opt/adapteva/"
 }

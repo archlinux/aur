@@ -13,6 +13,8 @@ pkgbase = parallella-examples
 	provides = parallella-examples
 	options = !strip
 	source = git://github.com/parallella/parallella-examples.git
+	source = git://github.com/adapteva/epiphany-examples.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = parallella-examples
