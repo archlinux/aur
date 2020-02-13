@@ -9,7 +9,7 @@ license=('GPL3')
 install=openra-yr.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip' 'msbuild' 'msbuild' 'msbuild')
+makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-yr')
 options=(!strip)
 source=("git+${url}.git"
