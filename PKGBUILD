@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=archwrt-ss.sh-git
-pkgver=r43.8b34954
+pkgver=r44.459fe87
 pkgrel=1
 pkgdesc="A simple Shadowsocks transparent proxy setup script by archwrt."
 arch=('any')
