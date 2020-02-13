@@ -1,0 +1,15 @@
+pkgbase = python-jsonmerge
+	pkgdesc = Python module that allows merging a series of JSON documents into a single one
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/avian2/jsonmerge
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jsonschema
+	source = https://files.pythonhosted.org/packages/source/j/jsonmerge/jsonmerge-1.7.0.tar.gz
+	sha512sums = 60fec6660f706cf3bdc1869954066e499940f98dc15359b8a63a58067132fb20afef9e9d7773e27fb9f8332b220e6d4b63beae378bb87b061070bb07ee8f5bd5
+
+pkgname = python-jsonmerge
+
