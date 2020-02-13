@@ -7,7 +7,7 @@ _major=5.5
 _minor=3
 _clr=905
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -29,8 +29,8 @@ _kernel_version="${_major}.${_minor}-${_clr}.native"
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.kernel-native"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-kernel-native-from-0.tar"
 )
-sha256sums=('de7647d66e73c34862b5783a199550bf1cc1caec3a80622286be4cf48fdb7512'
-            'd822ae7694e1e906baf9e052c9411c533fa700cd41588f0ad217b51e3143e1bf')
+b2sums=('84ceffbbf76af42ef50cf945122b78847f54056ea81de6544d36e7058158025a808aafc1c7ed5df2034c65b47ad8068e0dfed3a58684649ad8fda9ded09e9fcc'
+        'c84358a51565c7fef4dc8ec806eaf4e63bf488244aff345ee7f63bd66e84cd2ee4ec3674fe07c45a97070e2788705b72ebd409fc78f0739b906992e556705c28')
 build() {
     # get kernel's filename (hash) from the Manifest, ie:
     # 4776962fb058c91e89dcefac4740d7a1af37ea12d217d3f8d0f49797553146e7
