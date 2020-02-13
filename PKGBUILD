@@ -2,8 +2,8 @@
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 
 pkgname=vivaldi-rpi
-_pkgver=2.10.1745.26-1
-pkgver=2.10.1745.26
+_pkgver=2.11.1811.33-1
+pkgver=2.11.1811.33
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind for Raspberry Pi'
 arch=('armv6h' 'armv7h')
@@ -20,7 +20,7 @@ optdepends=(
     'libnotify: native notifications'
 )
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_armhf.deb")
-sha512sums=('c534ff4b54b83a040bc65c787c8a1c0a43fb06b0020ed09c73424586b5d40c44960e62c427a97e226a9961b57fd64bd2b026ddb238c46172db9c0ae13763c356')
+sha512sums=('fe40af7fb239fba17850857ede6e8981a1e25e3bfe2b62299e787b5544ed6c1e53cf00c32ca5993d26e328461fd000e9c15d521ea68e8dca95879508259c94b4')
 
 prepare() {
  tar -xf data.tar.xz
