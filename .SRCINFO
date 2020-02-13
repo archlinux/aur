@@ -15,8 +15,9 @@ pkgbase = dike
 	depends = libxinerama
 	depends = libappindicator-gtk2
 	source = https://www.firma.infocert.it/pdf/licenza-dike6.pdf
+	sha256sums = c3b034216532919c0782349a50912dec280b8aa352a7272e740ff73cf5f3ab1f
 	source_x86_64 = https://rinnovofirma.infocert.it/download/x86_64/latest
-	sha256sums_x86_64 = c3b034216532919c0782349a50912dec280b8aa352a7272e740ff73cf5f3ab1f
+	sha256sums_x86_64 = 2478e1184d2001219be6711ef68a8288ee96f7e8a01cb3ecba0c752ffc56f8e3
 
 pkgname = dike
 
