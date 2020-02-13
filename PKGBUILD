@@ -33,7 +33,14 @@
 #└── VersionInfo.xml*
 
 ## Maybe you'd create this archive like this:
-## tar -cvf matlab.tar -C ~/matlab_R2019b_glnxa64/ .
+## 1) download the matlab installer form themathworks, let's imagine that file is ~/Downloads/matlab_R2019b_glnxa64.zip
+## 2) extract it: unzip ~/Downloads/matlab_R2019b_glnxa64.zip -d ~/matlab
+## 3) run the installer almost completely through manually: ~/matlab/install -downloadFolder ${HOME}/matlab/dl -destinationFolder ${HOME}/matlab/deleteme
+##    you must enter all your proper license info here, the purpose of this is to get the toolbox files you'll need for the offline install later
+##    when you see that the installer has finished downloading everything, press the Cancel button in the gui and end the installer early
+##    you don't really want the installer to extract/decrypt the files it has downloaded
+## 4) delete anything that might have started to be installed in the above step: rm -rf ~/matlab/deleteme
+## 5) now you can create the tarball you'll need here: tar -cvf matlab.tar -C ~/matlab/ .
 
 ## You can get your file installation key (that you must manually put into matlab.fik) from https://mathworks.com/licensecenter
 ## Then maybe you could make the matlab.fik file you need for this package like this:
@@ -53,8 +60,8 @@ _partialinstall=false
 
 pkgname=matlab
 _install_dir="/opt/${pkgname}"
-# as of R2019b Update 3, MATLAB's version number is:
-pkgver=9.7.0.1261785
+# as of R2019b Update 4, MATLAB's version number is:
+pkgver=9.7.0.1296695
 pkgrel=1
 pkgdesc='A high-level language for numerical computation and visualization'
 arch=('x86_64')
@@ -82,7 +89,7 @@ optdepends=('gcc6: For MEX support')
 source=("local:///matlab.tar"
 	"local:///matlab.fik")
 md5sums=("SKIP" "SKIP")
-PKGEXT='.pkg.tar'
+#PKGEXT='.pkg.tar'
 
 OPTIONS=(!strip staticlibs)
 
@@ -115,19 +122,20 @@ package() {
 	msg2 'Starting MATLAB installer'
 	## I assume it's a bad idea, but I had to unset a few vars to prevent
 	## fakeroot from slowing the matlab installer to a crawl (commented out by default)
-	#LDLP=${LD_LIBRARY_PATH}
-	#LDP=${LD_PRELOAD}
-	#unset LD_LIBRARY_PATH
-	#unset LD_PRELOAD
+	LDLP=${LD_LIBRARY_PATH}
+	LDP=${LD_PRELOAD}
+	unset LD_LIBRARY_PATH
+	unset LD_PRELOAD
 	./install -t -inputFile "${srcdir}/installer_input.txt"
-	#export LD_LIBRARY_PATH="$LDLP"
-	#export LD_PRELOAD="$LDP"
 
 	if [ $? -eq 0 ]; then
 		msg2 'Matlab installer done without error'
 	else
 		meg2 'Error encountered while running matlab installer'
 	fi
+
+        export LD_LIBRARY_PATH="$LDLP"
+        export LD_PRELOAD="$LDP"
 
 	msg2 'Installing license agreement file'
 	install -D -m644 "${pkgdir}${_install_dir}/license_agreement.txt" "${pkgdir}/usr/share/licenses/tmw/${pkgname}/LICENSE"
