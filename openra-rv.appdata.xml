@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>openra-ra2.desktop</id>
+  <id>openra-rv.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>OpenRA - Romanov's Vengeance</name>
@@ -14,7 +14,6 @@
     </p>
   </description>
   <url type="homepage">https://github.com/MustaphaTR/Romanovs-Vengeance</url>
-  <update_contact>paul_at_chote.net</update_contact>
   <content_rating type="oars-1.0">
     <content_attribute id="violence-cartoon">none</content_attribute>
     <content_attribute id="violence-fantasy">none</content_attribute>
