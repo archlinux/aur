@@ -1,0 +1,58 @@
+From d53a3bebee798e54a83fa49e8abd7e0e3f719e03 Mon Sep 17 00:00:00 2001
+From: Bertrand Jacquin <bertrand@jacquin.bzh>
+Date: Fri, 24 Jan 2020 20:16:27 +0000
+Subject: [PATCH] httpserver: include deque
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+It seems gcc 9.2.0 requires deque to be included:
+
+  x86_64-pc-linux-gnu-g++ -std=c++11 -DHAVE_CONFIG_H -I. -I../src/config   -I. -I./obj -I/usr/include/db5.1/ -pthread -I/usr/include -I./leveldb/include -I./leveldb/helpers/memenv   -I./secp256k1/include    -pthread -I/usr/include/db5.1 -DHAVE_BUILD_INFO -D__STDC_FORMAT_MACROS    -march=native -O2 -pipe -fomit-frame-pointer -c -o libdogecoin_server_a-httpserver.o `test -f 'httpserver.cpp' || echo './'`httpserver.cpp
+  httpserver.cpp:71:10: error: ‘deque’ in namespace ‘std’ does not name a template type
+     71 |     std::deque<std::unique_ptr<WorkItem>> queue;
+        |          ^~~~~
+  httpserver.cpp:30:1: note: ‘std::deque’ is defined in header ‘<deque>’; did you forget to ‘#include <deque>’?
+     29 | #include <event2/keyvalq_struct.h>
+    +++ |+#include <deque>
+     30 |
+  httpserver.cpp: In member function ‘bool WorkQueue<WorkItem>::Enqueue(WorkItem*)’:
+  httpserver.cpp:110:13: error: ‘queue’ was not declared in this scope; did you mean ‘Enqueue’?
+    110 |         if (queue.size() >= maxDepth) {
+        |             ^~~~~
+        |             Enqueue
+  httpserver.cpp:113:9: error: ‘queue’ was not declared in this scope; did you mean ‘Enqueue’?
+    113 |         queue.emplace_back(std::unique_ptr<WorkItem>(item));
+        |         ^~~~~
+        |         Enqueue
+  httpserver.cpp: In member function ‘void WorkQueue<WorkItem>::Run()’:
+  httpserver.cpp:125:35: error: ‘queue’ was not declared in this scope; did you mean ‘Enqueue’?
+    125 |                 while (running && queue.empty())
+        |                                   ^~~~~
+        |                                   Enqueue
+  httpserver.cpp:129:31: error: ‘queue’ was not declared in this scope; did you mean ‘Enqueue’?
+    129 |                 i = std::move(queue.front());
+        |                               ^~~~~
+        |                               Enqueue
+  httpserver.cpp: In member function ‘size_t WorkQueue<WorkItem>::Depth()’:
+  httpserver.cpp:154:16: error: ‘queue’ was not declared in this scope; did you mean ‘Enqueue’?
+    154 |         return queue.size();
+        |                ^~~~~
+        |                Enqueue
+---
+ src/httpserver.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/httpserver.cpp b/src/httpserver.cpp
+index dba9527305..5c08e676df 100644
+--- a/src/httpserver.cpp
++++ b/src/httpserver.cpp
+@@ -19,6 +19,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <signal.h>
++#include <deque>
+ #include <future>
+ 
+ #include <event2/event.h>
+
