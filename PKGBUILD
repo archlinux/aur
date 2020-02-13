@@ -7,7 +7,7 @@ _major=5.5
 _minor=3
 _clr=905
 pkgver=${_major}.${_minor}.${_clr}
-pkgrel=1
+pkgrel=2
 # use in case we need to update the Arch package without incrementing pkgrel
 epoch=0
 arch=('x86_64')
@@ -25,9 +25,9 @@ _config_hash=4aa027f9ab78c80b1ee609ed3d92e3ab6a3ef61b07700b47a54fdabb69ed1596
 source=("https://cdn.download.clearlinux.org/update/${_clear_version}/Manifest.linux-dev"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/pack-linux-dev-from-0.tar"
         "https://cdn.download.clearlinux.org/update/${_clear_version}/files/${_config_hash}.tar")
-sha256sums=('63f7adf30c6452ff2667d9c957ec338643f0db329b74a3600348e4a003f618c8'
-            '56dbfb0ad321f258f2b7f185c75c80215e0e96e4a79f41222d426dd4e470728f'
-            'f08104792bc226344d656f7bda91e9ab084421e903b8614daf15c5a923d19948')
+b2sums=('4e5f94dec5ac6a2eb7e0f94a26e330202def91d46ed48b7901c66042e74da2eb322ff8004035f197fce507404c1d73a1998f954b57389ad8ab87befed1ac14dc'
+        'f1a7cb1104adf395ed4b9c325caa23762df0bfe8ec0f580bb54f0914ec89f4601c8f6c3ae538e99e5f740ceb93245be8d608c57847a32beb4172e42569ec99fe'
+        '654545fb877bc93272af265bfb2beb1633d95099295b9d63745755c40d082b85eb16ed5c22e44e309c2b3809e303269e8b8ceb199bb1c4910d50b349f5df138d')
 build() {
     local files=$(sed -n -re "s/^[FL]...[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/(modules.*build.*)$/\1 \2/p" Manifest.linux-dev)
     local config=$(sed -n -re "s/^F.b.[[:space:]]+([a-f0-9]+)[[:space:]]+$_clear_version[[:space:]]+\/usr\/lib\/kernel\/config.*$/\1/p" Manifest.linux-dev)
