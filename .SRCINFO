@@ -1,8 +1,8 @@
 pkgbase = deskew-hg
 	pkgdesc = deskew is a command-line program which deskews images containing text
-	pkgver = 30.2c46db9991ab
+	pkgver = 89.a33d5fb77b06
 	pkgrel = 1
-	url = http://galfar.vevb.net/wp/projects/deskew/
+	url = http://jwilk.net/software/deskew
 	arch = any
 	license = MIT
 	makedepends = mercurial

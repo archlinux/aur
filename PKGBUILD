@@ -3,13 +3,12 @@
 pkgname=deskew-hg
 _hgname=app-deskew
 _bbuser=galfar
-pkgrel=2
-pkgver=30.2c46db9991ab
+pkgrel=1
+pkgver=89.a33d5fb77b06
 pkgdesc="deskew is a command-line program which deskews images containing text"
 arch=("any")
 url="http://jwilk.net/software/deskew"
 license=('MIT')
-depends=('python')
 makedepends=('mercurial' 'fpc')
 source=("${_hgname}::hg+https://bitbucket.org/${_bbuser}/${_hgname}")
 provides=('deskew')
@@ -22,6 +21,7 @@ pkgver() {
 
 package() {
   cd "$_hgname"
+  cd Scripts
   # Change \r\n to \n
   tr -d '\r' < Compile.bat > compile.sh
   chmod +x compile.sh
