@@ -2,6 +2,7 @@ pkg
 src
 pip-tools-*.tar.gz
 pip-tools-*.pkg.tar.xz
+pip-tools-*.pkg.tar.zst
 pip-tools-*.src.tar.gz
 .AURINFO
 
