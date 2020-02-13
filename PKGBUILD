@@ -4,7 +4,7 @@
 #https://github.com/bluepeppers/pip2arch/
 
 pkgname=deimos
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Mesos containerization hooks for Docker"
 url="https://github.com/mesosphere/deimos"
@@ -12,8 +12,8 @@ depends=('python2')
 optdepends=('mesos' 'docker')
 license=('Apache')
 arch=('any')
-source=("https://pypi.python.org/packages/source/d/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('ec4211860b33a363d3b5323db884bcc0')
+source=("https://github.com/mesosphere/deimos/archive/$pkgver.tar.gz")
+sha512sums=('bf9ec16798d753ca2071c8d9353e3b4cc3959519a2b554148d0d1fe8777a60b96af185f80fbb5c3765c70887f1f6f04c82538faf6f93782dc16aac31a00aa26d')
 
 build() {
     cd $srcdir/$pkgname-$pkgver

@@ -1,6 +1,6 @@
 pkgbase = deimos
 	pkgdesc = Mesos containerization hooks for Docker
-	pkgver = 0.4.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/mesosphere/deimos
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = deimos
 	depends = python2
 	optdepends = mesos
 	optdepends = docker
-	source = https://pypi.python.org/packages/source/d/deimos/deimos-0.4.0.tar.gz
-	md5sums = ec4211860b33a363d3b5323db884bcc0
+	source = https://github.com/mesosphere/deimos/archive/0.4.2.tar.gz
+	sha512sums = bf9ec16798d753ca2071c8d9353e3b4cc3959519a2b554148d0d1fe8777a60b96af185f80fbb5c3765c70887f1f6f04c82538faf6f93782dc16aac31a00aa26d
 
 pkgname = deimos
 
