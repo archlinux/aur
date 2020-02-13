@@ -1,7 +1,7 @@
 # Maintainer: Knut Ahlers <knut at ahlers dot me>
 
 pkgname=envrun
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Helper utility to inject environment variables stored in a file into processes"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/Luzifer/$pkgname"
 license=('Apache')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('21c9225ecd829f91f57bba2121f347bd287c37b78d8927b86b9d1b8aef41841d846ba3dee0d254b4994237e085b33e69c9060ca1dbb731c816840ed7a5fbe18d')
+sha512sums=('8009183ffcc28ea7362868536b0df866d71ca394fe706cb23eadfaa6c6c0acfec817257d64ea37a1059af91aaf4ae4776949866d7a9f885941c815a4cbd03071')
 
 build() {
 	export GO111MODULE=on
