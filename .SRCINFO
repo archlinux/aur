@@ -1,0 +1,25 @@
+pkgbase = profanity-omemo-git
+	pkgdesc = A console based jabber client (with OMEMO support).
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://profanity-im.github.io
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = curl
+	depends = expat
+	depends = libgcrypt
+	depends = libnotify
+	depends = libotr
+	depends = libxss
+	depends = libsignal-protocol-c
+	depends = libstrophe-git
+	provides = profanity
+	conflicts = profanity
+	source = profanity::git://github.com/profanity-im/profanity.git#branch=master
+	sha256sums = SKIP
+
+pkgname = profanity-omemo-git
+
