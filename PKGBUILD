@@ -2,21 +2,19 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=telegram-cli-git
-pkgver=r1128.6547c0b
+pkgver=r1352.e35dc1a
 pkgrel=1
 pkgdesc="Telegram messenger CLI"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/vysheng/tg"
 license=('GPL2')
-depends=('libconfig' 'libevent' 'lua' 'jansson')
+depends=('libconfig' 'libevent' 'lua' 'jansson' 'zlib')
 makedepends=('git')
 conflicts=('telegram-cli')
 provides=('telegram-cli')
 
-source=("$pkgname"::'git+https://github.com/vysheng/tg'
-	"$pkgname.patch")
-sha256sums=('SKIP'
-            '720550515339552641cc5b01fffe63167634a22d2f7b2fe935d28183031d82f2')
+source=("$pkgname"::'git+https://github.com/kenorb-contrib/tg')
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
@@ -26,7 +24,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update --init --recursive --force
-    patch -p1 < "$srcdir/$pkgname.patch"
 }
 
 build() {
