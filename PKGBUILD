@@ -4,7 +4,7 @@
 # Contributor: royrocks <royrocks13@gmail.com>
 
 pkgname=cups-bjnp
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='CUPS back-end for the canon printers using the proprietary USB over IP BJNP protocol'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('libcups')
 makedepends=('cups')
 source=("http://downloads.sourceforge.net/sourceforge/cups-bjnp/cups-bjnp-${pkgver}.tar.gz")
-sha256sums=('586a8e0b2e92d41e85e981a16e3015a240f11a02b1bbbd0b92cd45620f411b0e')
+sha256sums=('c914b2fd9d8e26ce22f2df6244d9defeec31ee9a5360f723eecb3b00f2168500')
 
 build() {
   cd cups-bjnp-${pkgver}
@@ -31,4 +31,3 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-# vim: ts=2 sw=2 et:
