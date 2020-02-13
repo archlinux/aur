@@ -15,7 +15,7 @@ optdepends=("ffmpeg: video support")
 source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.patch")
 sha256sums=("c466ae98fd26ac8a30d1b35a899201eaf0ede593b0a3f61f806c49261acb6982"
-            "91475fcd6bb066206a39d0991a70c7176912b01d8c166f5a607b83045d530195")
+            "6e5a7e0997170c6df5b86ad5629a0750e9b5fe17749b279d4aaf27d845d1cb6a")
 
 prepare() {
     cd "${srcdir}/gr-${pkgver}" || return
