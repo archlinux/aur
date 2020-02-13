@@ -1,8 +1,9 @@
 # Maintainer: Duologic <jeroen@simplsitic.be>
+# Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka-bin
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.0
+pkgrel=0
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes"
 arch=('x86_64')
 url="https://github.com/grafana/tanka"
