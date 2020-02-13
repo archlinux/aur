@@ -7,7 +7,7 @@ _srcname=linux-5.5
 _major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=1
+_minor=3
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -30,22 +30,28 @@ source=(
   # "$_rcpatch.patch::https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable-rc.git/patch/?id=$_srcname.y&id2=v${_major}.${_minor}"
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0003-Btrfs-send-fix-emission-of-invalid-clone-operations-.patch
+0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
+0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
+0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('3937a004c915b7bfadd2afe4b6cf6593e867435630501ca203cd90b0e8db2ba4'
+sha256sums=('21f9870ce477ca81ef5b7b4fa9d8b8c013007a36606aed91fdfcbf8988b3d1e7'
             'SKIP'
-            '0323916148e3bccf478a43bc650d0c3a2debbc5a152c5f37256a900bd7e730d9'
+            '2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
             'SKIP'
             'e967ac8bd663509cc0ca6451a95a9965eb59832e316eec77484960dcedec8c1c'
-            '7091cec8958db80362ed3c6bcc3c32014256bcefee4f7893689872f235fe81f3'
-            '3052bf384a53467dacf5044b935e058334c2a2ef1ee4aae3b7227940645b6d5b'
-            '18a1511840e1149a88c8925a14104cddcabbf9787c8908ddea4d26cdaa1c0c34')
+            'c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17'
+            'a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87'
+            'd5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929'
+            '03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3'
+            '49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe'
+            '8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3')
 
 _kernelname=${pkgbase#linux}
 
@@ -78,7 +84,7 @@ prepare() {
   make olddefconfig
 
   make -s kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
