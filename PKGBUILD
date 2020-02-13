@@ -3,8 +3,8 @@
 
 pkgname=lizzie-git
 _pkgname=lizzie
-pkgver=0.7.r4.g0c1232c
-_pkgver=0.7
+pkgver=0.7.2.r5.gd2d2640
+_pkgver=0.7.2
 pkgrel=1
 pkgdesc="Analysis interface for Leela Zero"
 arch=('x86_64')
