@@ -3,12 +3,12 @@
 
 pkgname=sabaki
 pkgver=0.43.3
-pkgrel=3
+pkgrel=4
 pkgdesc='An elegant SGF editor for the game of Go'
 arch=('any')
 url='http://sabaki.yichuanshen.de/'
 license=('MIT')
-depends=('nodejs' 'gconf')
+depends=('nodejs')
 makedepends=('npm')
 install=${pkgname}.install
 source=("https://github.com/SabakiHQ/Sabaki/archive/v${pkgver}.tar.gz"
