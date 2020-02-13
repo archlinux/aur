@@ -2,7 +2,7 @@
 
 pkgname=faubox
 pkgver=14.11.100
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop client for FAU's file synchronization service"
 arch=('any')
 url="https://www.fau.eu/intranet/tools/faubox-cloud-storage-for-all-fau-members/"
@@ -11,10 +11,10 @@ depends=('jre8-openjdk')
 makedepends=('gendesk')
 
 
-source=(faubox
-        https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz)
-sha256sums=(710a2e2b98411b1cb47c5723de3d5b925328c83f362fd4f80e1bad6717dda0b9
-            9a04b17bacb17a72a5101033a9006d93a2b21a63c87319d0a00ac333c916acd4)
+source=("faubox.sh"
+        "https://faubox.rrze.uni-erlangen.de/client_deployment/FAUbox_Linux.tar.gz")
+sha256sums=("0c8d4a37f00f60b4afa4bc4e1b91598a0996bbf44b3dd3e8be1fe9c47ec25391"
+            "9a04b17bacb17a72a5101033a9006d93a2b21a63c87319d0a00ac333c916acd4")
 
 
 prepare() {
@@ -23,7 +23,7 @@ prepare() {
 
 package() {
     cd ${srcdir}
-    install -Dm655 faubox ${pkgdir}/usr/bin/faubox
+    install -Dm655 faubox.sh ${pkgdir}/usr/bin/faubox
     install -Dm644 faubox.desktop ${pkgdir}/usr/share/applications/faubox.desktop
     
     cd ${srcdir}/FAUbox
