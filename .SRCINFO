@@ -1,0 +1,22 @@
+pkgbase = python-tinyprog-git
+	pkgdesc = TinyFPGA programmer
+	pkgver = 1.0.24.dev114+g97f6353
+	pkgrel = 1
+	url = https://tinyfpga.com/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-tqdm
+	depends = python-pyserial
+	depends = python-jsonmerge
+	depends = python-intelhex
+	depends = python-six
+	depends = python-packaging
+	depends = python-pyusb
+	source = git+https://github.com/tinyfpga/TinyFPGA-Bootloader.git
+	sha512sums = SKIP
+
+pkgname = python-tinyprog-git
+
