@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=distro-info
 _python=python2
-pkgver=0.18
+pkgver=0.23
 pkgrel=1
 pkgdesc="provides information about the distributions' releases"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('python-distro-info' 'python2-distro-info' 'perl-distro-info')
 conflicts=('python-distro-info' 'python2-distro-info' 'perl-distro-info')
 options=(!emptydirs)
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('ab5d0a7c3b0c54328997d5a9376f12232514a650ca69a03594cbb9f51793e431')
+sha256sums=('38572fab05cb6a309240a10f9b004e202f3362a53f0684257e5e84036491c473')
 
 build() {
   #cd "$srcdir/$pkgname-$pkgver"
