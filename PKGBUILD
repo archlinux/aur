@@ -1,8 +1,8 @@
 # Mantainer: Michael M. Tung <mtung at mat dot upv dot es>
 
 pkgname=pandoc-panflute
-pkgver=1.11
-pkgrel=2
+pkgver=1.12
+pkgrel=1
 pkgdesc='A Python package that makes creating Pandoc filters fun.'
 url='https://github.com/sergiocorreia/panflute'
 depends=('pandoc' 'python' 'python-pandocfilters' 'python-shutilwhich' 'python-future')
