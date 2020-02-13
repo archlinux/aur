@@ -1,0 +1,30 @@
+pkgbase = openvpn3-git
+	pkgdesc = OpenVPN 3 Linux client
+	pkgver = 7_beta.r63.gee9ae86
+	pkgrel = 1
+	url = https://github.com/OpenVPN/openvpn3-linux
+	install = openvpn3-git.install
+	arch = any
+	license = AGPL3
+	makedepends = pkgconf
+	makedepends = autoconf
+	makedepends = autoconf-archive
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	depends = glib2>=2.50
+	depends = jsoncpp>=0.10.5
+	depends = libcap-ng>=0.7.5
+	depends = lz4>=1.7.3
+	depends = libutil-linux>=2.23.2
+	optdepends = python>=3.5
+	optdepends = python-docutils
+	optdepends = openssl: OpenSSL version
+	optdepends = mbedtls: mbed TLS version
+	optdepends = python-dbus
+	optdepends = python-gobject
+	source = git+https://github.com/OpenVPN/openvpn3-linux.git
+	sha256sums = SKIP
+
+pkgname = openvpn3-git
+

@@ -1,0 +1,4 @@
+post_install() {
+  sudo groupadd -fr openvpn
+  id -u openvpn &> /dev/null || sudo useradd -r -s /sbin/nologin -g openvpn openvpn
+}
