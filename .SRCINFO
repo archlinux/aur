@@ -6,6 +6,7 @@ pkgbase = aws-vault
 	arch = x86_64
 	arch = i686
 	license = MIT
+	optdepends = zenity: graphical prompt
 	source = aws-vault-5.2.1::https://github.com/99designs/aws-vault/releases/download/v5.2.1/aws-vault-linux-amd64
 	sha256sums = b19ccfbbf11ada99e92c62fc6d622e34e97c891ca5a59a71ccd625ef9cf6f459
 

@@ -8,6 +8,7 @@ pkgdesc='A vault for securely storing and accessing AWS credentials in developme
 arch=('x86_64' 'i686')
 url='https://github.com/99designs/aws-vault'
 license=('MIT')
+optdepends=('zenity: graphical prompt')
 source=("$pkgname-$pkgver::https://github.com/99designs/aws-vault/releases/download/v${pkgver}/aws-vault-linux-amd64")
 sha256sums=('b19ccfbbf11ada99e92c62fc6d622e34e97c891ca5a59a71ccd625ef9cf6f459')
 
