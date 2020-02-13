@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-ozone
 	pkgdesc = A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone
 	pkgver = 80.0.3987.87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ungoogled-software.github.io/
 	arch = x86_64
 	license = BSD
@@ -54,6 +54,10 @@ pkgbase = ungoogled-chromium-ozone
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: for storing passwords in KWallet on KDE desktops
+	optdepends = intel-media-driver: for hardware video acceleration with Intel GPUs (>= Broadwell)
+	optdepends = libva-intel-driver: for hardware video acceleration with Intel GPUs (<= Haswell)
+	optdepends = libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs
+	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
 	conflicts = chromium
 	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-80.0.3987.87.tar.xz
@@ -80,7 +84,7 @@ pkgbase = ungoogled-chromium-ozone
 	sha256sums = 04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1
 	sha256sums = SKIP
 	sha256sums = d8a57adf4b3106ab4d7ecdf5b050e02b87901b61c33cfa8810a7143c483e1fe4
-	sha256sums = 157ba62d6b9ae92ade0babebd8a4f2d5ef8bdd54ae2f3646a61261e9805b86fa
+	sha256sums = 53e8a314da1f33b99d4286cc3c2e4cb2d43132b75af8a282414fda950bd493e9
 	sha256sums = babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb
 	sha256sums = 0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a
 	sha256sums = 9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094

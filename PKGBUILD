@@ -4,9 +4,9 @@
 pkgname=ungoogled-chromium-ozone
 _pkgname=ungoogled-chromium
 pkgver=80.0.3987.87
-pkgrel=1
+pkgrel=2
 _launcher_ver=6
-_ungoogled_rel=2
+_ungoogled_ver=80.0.3987.87-2
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -20,7 +20,11 @@ optdepends=('pepper-flash: support for Flash content'
             'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
-            'kwallet: for storing passwords in KWallet on KDE desktops')
+            'kwallet: for storing passwords in KWallet on KDE desktops'
+            'intel-media-driver: for hardware video acceleration with Intel GPUs (>= Broadwell)'
+            'libva-intel-driver: for hardware video acceleration with Intel GPUs (<= Haswell)'
+            'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
+            'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
 provides=('chromium')
 conflicts=('chromium')
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz
@@ -46,9 +50,8 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
 sha256sums=('f51f6fca5d9abbef855aa6b5bf427410c6e96ae58b64a7d45f843868cfb0ac8e'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'SKIP'
-#            '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
             'd8a57adf4b3106ab4d7ecdf5b050e02b87901b61c33cfa8810a7143c483e1fe4'
-            '157ba62d6b9ae92ade0babebd8a4f2d5ef8bdd54ae2f3646a61261e9805b86fa'
+            '53e8a314da1f33b99d4286cc3c2e4cb2d43132b75af8a282414fda950bd493e9'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
             '9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094'
@@ -150,7 +153,7 @@ prepare() {
   patch -Np0 -i ../chromium-skia-harmony.patch
 
   # Ungoogled chromium stuff
-  _ungoogled_repo="$srcdir/$_pkgname-$pkgver-$_ungoogled_rel"
+  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   _utils="${_ungoogled_repo}/utils"
   msg2 'Applying ungoogled chromium patches'
   # Prune binaries
@@ -199,7 +202,7 @@ build() {
   export NM=nm
 
   # Ungoogled Chromium stuff
-  _ungoogled_repo="$srcdir/$_pkgname-$pkgver-$_ungoogled_rel"
+  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
   nproc=$(nproc)
   mkdir -p out/Release
   # Assemble GN flags
