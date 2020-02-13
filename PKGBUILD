@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa-git
-pkgver=20.0.0_devel.118918.d62dd8b0cb7
+pkgver=20.1.0_devel.120133.08cff938b76
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -21,14 +21,10 @@ pkgver() {
   echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare () {
-  cd "${srcdir}"/mesa
-}
-
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch}
+    ${_arch}-meson build-${_arch} -Dshared-glapi=true
     ninja -C build-${_arch}
   done
 }
