@@ -1,6 +1,6 @@
 # Maintainer: Tuomas Siipola <siiptuo at kapsi dot fi>
 pkgname=tmc-cli
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="The command-line client for University of Helsinki's TestMyCode -framework"
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/testmycode/tmc-cli/releases/download/$pkgver/tmc-cli
         "tmc-cli-$pkgver-LICENSE::https://raw.githubusercontent.com/testmycode/tmc-cli/$pkgver/LICENSE"
         tmc)
 noextract=("tmc-cli-$pkgver.jar")
-sha256sums=('41abdd9f331239400cecaa82f773bb506a96462d31d4e53a7ed7325e34b19960'
+sha256sums=('0b1d4a01d360348db89a208fc3a67535cbe4ac85f17470782c91ccb7cf04ddbe'
             '3d25976888243d361560f9ad52472b78fb5e6c7cc91c9161896887242a8be90d'
             '2959507c6c804afbff7814428215daca53bf2827595e95af38210f8fbcd3d8eb'
             '3107dc5967527b475fd43b41283758521c7375aca79cd19fea63cb94d1fba3e6'
