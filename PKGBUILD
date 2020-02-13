@@ -12,9 +12,9 @@ _zipcode_rel=201810
 _pkgbase=mozc
 pkgname=fcitx5-mozc-git
 pkgdesc="Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)"
-pkgver=2.18.2612.102.1.r1317.f059c021
+pkgver=2.18.2612.102.1.r1317.6e4c4a3f
 _fcitx_patchver=2.18.2612.102.1
-pkgrel=1.3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/google/mozc"
 license=('custom')
@@ -22,7 +22,7 @@ depends=('qt5-base' 'fcitx5-git' 'zinnia')
 makedepends=('pkg-config' 'python2' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'git' 'clang')
 replaces=('mozc-fcitx')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'fcitx-mozc')
-source=(git+https://gitlab.com/fcitx/mozc.git#branch=fcitx
+source=(git+https://github.com/fcitx/mozc.git#branch=fcitx
         zero_query_dict-iterator-decrement.patch
         https://downloads.sourceforge.net/pnsft-aur/x-ken-all-${_zipcode_rel}.zip
         https://downloads.sourceforge.net/pnsft-aur/jigyosyo-${_zipcode_rel}.zip
