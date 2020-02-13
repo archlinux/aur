@@ -1,12 +1,12 @@
 pkgbase = r-ps
 	pkgdesc = List, Query, Manipulate System Processes
-	pkgver = 1.3.0
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ps
 	arch = i686
 	arch = x86_64
-	license = GPL3
-	depends = r
+	license = BSD3
+	depends = r>=3.1
 	optdepends = r-callr
 	optdepends = r-covr
 	optdepends = r-curl
@@ -16,8 +16,8 @@ pkgbase = r-ps
 	optdepends = r-rlang
 	optdepends = r-testthat
 	optdepends = r-tibble
-	source = http://cran.r-project.org/src/contrib/ps_1.3.0.tar.gz
-	md5sums = 55cba01a19f91e7f3bc9f8d2dcbb4d60
+	source = http://cran.r-project.org/src/contrib/ps_1.3.2.tar.gz
+	md5sums = 86da3f4222799dbd4cca1e9d06cab168
 
 pkgname = r-ps
 
