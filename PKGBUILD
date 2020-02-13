@@ -1,12 +1,13 @@
 # Maintainer: Versus Void <chaoskeeper at mail DOT ru>
 pkgname=sccache-git
-pkgver=r801.9777708
+pkgver=r844.c701598
 pkgrel=1
 pkgdesc="ccache-like tool. Wraps compiler and avoids compilation when possible. Supports rustc"
 arch=(i686 x86_64)
 url="https://github.com/mozilla/sccache"
 license=('Apache')
 makedepends=('git' 'rust')
+provides=('sccache')
 conflicts=('sccache' 'sccache-bin')
 install=sccache.install
 source=('git+https://github.com/mozilla/sccache/')
