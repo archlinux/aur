@@ -17,7 +17,7 @@ options=("!strip")
 license=('custom')
 depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss')
 conflicts=('google-chrome')
-sha256sums=('1f654b0000981dace41771ca9719bf5731ff372cda0d2af111d2e6f9e25a049a'
+sha256sums=('SKIP'
             'f9aede3a3cb27ef96fc42bf6bde7b6215a974cc82c024133451e1f0ca745ea50'
             '3fda44a5b8b222434530f27923568de1fda1eb0caa8621b56a8b2a6a2a2e3d5d')
 
