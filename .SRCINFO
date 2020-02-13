@@ -1,6 +1,6 @@
 pkgbase = waterfox-current-bin
 	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
-	pkgver = 2020.02
+	pkgver = 2020.01.1
 	pkgrel = 1
 	url = https://www.waterfoxproject.org/
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = waterfox-current-bin
 	provides = waterfox-current
 	conflicts = waterfox-current
 	source = waterfox-current.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-2020.02.en-US.linux-x86_64.tar.bz2
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-2020.01.1.en-US.linux-x86_64.tar.bz2
 	sha256sums = 4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d
-	sha256sums = 23f3832093251987d3000ef182b804c347e2ab540f6dfd7183eec420236089ea
+	sha256sums = 53ad9853f403887cb7d7bd051e008b2beebbf45fdc84f0fd24ad4b7024629f82
 
 pkgname = waterfox-current-bin
 
