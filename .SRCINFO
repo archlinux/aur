@@ -1,0 +1,14 @@
+pkgbase = icotools-icoprog-usb
+	pkgdesc = Programmer and Debug Tool for the IcoBoard (USB Base Board variant)
+	pkgver = r145.9c6185b
+	pkgrel = 1
+	url = https://github.com/cliffordwolf/icotools
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	depends = libftdi-compat
+	source = git+https://github.com/cliffordwolf/icotools.git
+	sha512sums = SKIP
+
+pkgname = icotools-icoprog-usb
+
