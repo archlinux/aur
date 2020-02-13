@@ -1,7 +1,7 @@
 pkgbase = searx
 	pkgdesc = A privacy-respecting, hackable metasearch engine (python(3) based)
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asciimoo.github.io/searx/
 	arch = any
 	license = AGPL
@@ -26,9 +26,11 @@ pkgbase = searx
 	source = https://github.com/asciimoo/searx/archive/v0.16.0.zip
 	source = searx.ini
 	source = searx.sysusers
+	source = 0003-Fix-deprecated-werkzeug-import.patch
 	sha512sums = 3ae4e4c295830e65eefbd39ed9885b60a42a4d4db4d87c179ace76cf43f8c75d49f1363f019bedd135c0597191612e16592cacd159ae97a42a25dcc2fee9d00b
 	sha512sums = 6e1e7771e747e2bcb9cbc3e5ec9735461b6d791c0c0412e06e7dd802c18625edd0916de32164bf780c18ef7b6a87f55ed1e917377b3adb2bf53c0344f34b49e8
 	sha512sums = 6856e26451fe053d37c2ce4b9d5f3b35891dd8ec702c5256c02d04415124c57705abc497f12943948a85621bb0238d26c2c1f3a7bf42404a6ff1487c7655909e
+	sha512sums = 064738f57b8bfbd937d56c592f7321140aab5f894e8ea457ae0d2d9407523f58471f4ba7424968f1d6db7fe51e4f8d360d1e997284eeb7b8528dbcf10f5f12dd
 
 pkgname = searx
 

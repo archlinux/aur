@@ -1,0 +1,43 @@
+From b8b13372c8fd3bfe978a1c724ab98b05348df054 Mon Sep 17 00:00:00 2001
+Message-Id: <b8b13372c8fd3bfe978a1c724ab98b05348df054.1581582658.git.git@rationality.eu>
+In-Reply-To: <a818d3241df2cf010086f837a504b11983c3d55f.1581582658.git.git@rationality.eu>
+References: <a818d3241df2cf010086f837a504b11983c3d55f.1581582658.git.git@rationality.eu>
+From: Nicolas Gelot <nicolas.gelot@e.email>
+Date: Thu, 6 Feb 2020 22:40:58 +0100
+Subject: [PATCH 3/6] Fix deprecated werkzeug import
+
+Close: #1830
+Signed-off-by: Nicolas Gelot <nicolas.gelot@e.email>
+---
+ requirements.txt | 2 +-
+ searx/webapp.py  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index 6e4df37a..ea4a5a7a 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,6 +1,6 @@
+ certifi==2019.3.9
+ babel==2.7.0
+-flask-babel==0.12.2
++flask-babel==1.0.0
+ flask==1.0.2
+ idna==2.8
+ jinja2==2.10.1
+diff --git a/searx/webapp.py b/searx/webapp.py
+index aadefe6b..5ed9f127 100644
+--- a/searx/webapp.py
++++ b/searx/webapp.py
+@@ -47,7 +47,7 @@ except:
+     from html import escape
+ from datetime import datetime, timedelta
+ from time import time
+-from werkzeug.contrib.fixers import ProxyFix
++from werkzeug.middleware.proxy_fix import ProxyFix
+ from flask import (
+     Flask, request, render_template, url_for, Response, make_response,
+     redirect, send_from_directory
+-- 
+2.25.0
+
