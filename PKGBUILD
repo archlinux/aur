@@ -5,18 +5,18 @@
 
 pkgname=directfb
 pkgver=1.7.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A thin library that provides hardware graphics acceleration, input device handling and abstraction, integrated windowing system on top of the Linux Framebuffer Device"
 arch=('i686' 'x86_64')
 url="http://www.directfb.org"
 license=('LGPL')
 depends=('gcc-libs' 'libjpeg' 'sdl' 'libpng' 'freetype2' 'libdrm' 'libgl' 'mesa')
-#source=(http://www.directfb.org/downloads/Core/DirectFB-${pkgver%.*}/DirectFB-${pkgver}.tar.gz)
-source=(http://sources.webos-ports.org/DirectFB-$pkgver.tar.gz)
-sha1sums=('205d824906906303db9b096cc2d3bea0662e8860')
+source=(https://github.com/deniskropp/DirectFB/archive/DIRECTFB_1_7_7.tar.gz)
+sha512sums=('4b4c800e3fa18a02aba6cd2224b57fd9522b024a5b90a5f69676d73254875513822634d039f307a2e5334bbb9f905a8e7d8d6bd388fcbc94580a35d652965f32')
 
 build() {
-  cd DirectFB-${pkgver}
+  cd $srcdir/DirectFB-DIRECTFB_1_7_7/
+  ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --enable-static \
     --enable-zlib --enable-x11 --enable-sdl --disable-vnc --disable-osx \
     --enable-video4linux2 --enable-voodoo \
@@ -25,6 +25,6 @@ build() {
 } 
 
 package() {
-  cd DirectFB-${pkgver}
+  cd $srcdir/DirectFB-DIRECTFB_1_7_7/
   make DESTDIR="${pkgdir}" install
 }
