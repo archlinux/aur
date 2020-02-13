@@ -1,0 +1,17 @@
+pkgbase = bbswitch-zen
+	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops
+	pkgver = 0.8
+	pkgrel = 1
+	url = http://github.com/Bumblebee-Project/bbswitch
+	arch = x86_64
+	license = GPL
+	makedepends = linux-zen-headers
+	depends = linux-zen
+	provides = bbswitch
+	conflicts = bbswitch-dkms
+	conflicts = bbswitch-git-dkms
+	source = bbswitch-0.8.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz
+	md5sums = SKIP
+
+pkgname = bbswitch-zen
+
