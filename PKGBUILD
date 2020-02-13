@@ -20,7 +20,7 @@ source=("git+${url}.git"
 "openra-rv.desktop")
 md5sums=('SKIP'
          '80198a3797c5f4103536702d15e37f19'
-         '8bc1150ba694cb3e1a8bcadee4ef75ce'
+         'cdade4bc4fcba3ea1d3dea6bd0e9a2c9'
          '98c237db6df1eb777658842765948ea2')
 
 pkgver() {

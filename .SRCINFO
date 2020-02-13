@@ -30,7 +30,7 @@ pkgbase = openra-rv-git
 	source = openra-rv.desktop
 	md5sums = SKIP
 	md5sums = 80198a3797c5f4103536702d15e37f19
-	md5sums = 8bc1150ba694cb3e1a8bcadee4ef75ce
+	md5sums = cdade4bc4fcba3ea1d3dea6bd0e9a2c9
 	md5sums = 98c237db6df1eb777658842765948ea2
 
 pkgname = openra-rv-git
