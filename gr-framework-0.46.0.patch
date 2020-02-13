@@ -16,6 +16,18 @@ index 64718ef9..911dd62d 100644
      - make
  
  windows-32bit-cross:
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 48788c30..429d3491 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -310,6 +310,7 @@ if(UNIX AND NOT APPLE)
+                  C_STANDARD_REQUIRED ON
+                  POSITION_INDEPENDENT_CODE ON
+                  INSTALL_RPATH "${INSTALL_RPATH}"
++                 OUTPUT_NAME GR3platform
+     )
+   else()
+     message(WARNING "libGR3platform.so requires X11 and will not be built.")
 diff --git a/cmake/FindQhull.cmake b/cmake/FindQhull.cmake
 index ec771f97..19a54e45 100644
 --- a/cmake/FindQhull.cmake
