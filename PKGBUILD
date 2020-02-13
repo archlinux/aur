@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications ( AppImage, Flatpak, Snap, AUR and Web )"
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=('flatpak: required for Flatpak support'
             'breeze: for KDE Plasma main theme be available')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('44c274066d3a8da82138cc830dbb03d40b288d30e2dcbee16a9cc6ca3421dc5566967a9f240403fb1ff7173231b721b32fab92de58f0e6f69c229e241bcfedf3')
+sha512sums=('91b4e30bbf38913ca9599f78501038213fe0a1b8cc304528e97986c0906739c32ed4a2bfe113910a31670cb087c0fc010a6a6f737091dffc91be2666cb386582')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
