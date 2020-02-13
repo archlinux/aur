@@ -1,22 +1,23 @@
 pkgbase = platformio
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = 4.0.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/platformio/platformio-core/
 	arch = any
 	license = Apache
+	depends = python-setuptools
 	depends = python-bottle
 	depends = python-click
 	depends = python-colorama
-	depends = python-lockfile
 	depends = python-pyserial>=3.4
 	depends = python-requests
 	depends = python-semantic-version
-	depends = python-setuptools
 	depends = python-tabulate
+	depends = python-pyelftools
+	depends = python-marshmallow
 	conflicts = platformio-git
-	source = https://github.com/platformio/platformio-core/archive/v4.0.2.tar.gz
-	sha256sums = 1fb3dcdf31b71896eeaa04cd113135274ef630219ab4f692a6bde7b3ca98cc70
+	source = https://github.com/platformio/platformio-core/archive/v4.2.0.tar.gz
+	sha256sums = ae60d49ab6ac4c07d46196c30119339ae16f0e3c792c51376fdd12faa6204b48
 
 pkgname = platformio
 
