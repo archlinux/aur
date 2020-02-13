@@ -2,8 +2,8 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 
 pkgname='stratisd'
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc='Easy to use local storage management for Linux.'
 arch=('x86_64')
 url='https://stratis-storage.github.io/'
@@ -11,16 +11,11 @@ license=('MPL2')
 makedepends=('asciidoc' 'cargo' 'rust')
 depends=('dbus')
 optdepends=('stratis-cli: command line interface')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz"
-        "pr1704.patch::https://patch-diff.githubusercontent.com/raw/stratis-storage/stratisd/pull/1704.patch")
-sha256sums=('d67d8bea566262cfc60a1596af98b3b7da5324b822a6c4d2f934794223766bf7'
-            'ee019eaf9cd332094e822cd75714be6e3934e738574b13c918deb1c866794523')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/stratis-storage/stratisd/archive/v${pkgver}.tar.gz")
+b2sums=('86a2b2e58aed08ea34e1ddbc064ec4e4bfd3f4f4544d60ba580941b71e56b80b65c99852934b2c4826ed2cac073bb66dcd4dcf1d4ff243f38f026582eb7257b1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-
-  # patch double parens as in https://github.com/stratis-storage/stratisd/pull/1704
-  patch -Np1 -i ../pr1704.patch
 
   # patch systemd config
   sed -i 's,/usr/libexec,/usr/bin,g' stratisd.service
