@@ -13,7 +13,7 @@ url=https://github.com/warpnet/salt-lint
 license=(MIT)
 depends=(python python-pathspec python-salt)
 ## EXTRA_DEPENDS ##
-makedepends=(python-distro python-pip python-wheel)
+makedepends=(python-distro python-pip python-wheel git)
 checkdepends=()
 provides=()
 conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.

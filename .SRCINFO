@@ -8,6 +8,7 @@ pkgbase = salt-lint-git
 	makedepends = python-distro
 	makedepends = python-pip
 	makedepends = python-wheel
+	makedepends = git
 	depends = python
 	depends = python-pathspec
 	depends = python-salt
