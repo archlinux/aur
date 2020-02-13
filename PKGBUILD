@@ -17,11 +17,11 @@ source=('git://github.com/sergiocorreia/panflute.git')
 md5sums=('SKIP')
 
 pkgver() {
-  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | sed -e "s/.*= '\(.*\)\..*'/\1/"
+  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | tail -1 | sed -e "s/.*= '\(.*\)\..*'/\1/"
 }
 
 pkgrel() {
-  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | sed -e "s/.*= '.*\..*\.\(.*\).*'/\1/"
+  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | tail -1 | sed -e "s/.*= '.*\..*\.\(.*\).*'/\1/"
 }
 
 package() {
