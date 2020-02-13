@@ -2,7 +2,7 @@
 
 pkgname='starship'
 pkgdesc='The cross-shell prompt for astronauts'
-pkgver='0.35.1'
+pkgver='0.36.0'
 pkgrel='1'
 arch=('x86_64')
 url='https://starship.rs/'
@@ -15,7 +15,7 @@ checkdepends=('rust' 'git')
 provides=(starship)
 #install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/starship/starship/archive/v${pkgver}.tar.gz")
-sha256sums=('22b4bf8bfe45d492d69433942e02731b141091f11b03860cb02d21f4f2431285')
+sha256sums=('fffc89dd93672408d4b4f44c487fe304ed0f54fdc508f41b1434ab7b35ee3de6')
 
 build() {
     cd "$pkgname-$pkgver"
