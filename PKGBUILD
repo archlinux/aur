@@ -1,7 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=antimicrox-git
-pkgver=2.25.18.g5b8011d
+pkgver=2.25.39.geaf3d1b
 pkgrel=1
 pkgdesc='Map keyboard and mouse actions to gamepad buttons, inspired by qjoypad. Antimicro fork'
 url='https://github.com/juliagoda/antimicroX'
@@ -9,6 +9,8 @@ arch=('x86_64')
 license=('GPL3')
 depends=('libxtst' 'qt5-base' 'sdl2')
 makedepends=('git' 'cmake' 'qt5-tools' 'itstool' 'extra-cmake-modules')
+conflicts=('antimicrox')
+provides=('antimicrox')
 source=('git://github.com/juliagoda/antimicroX#branch=master')
 md5sums=('SKIP')
 
