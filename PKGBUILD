@@ -9,22 +9,24 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=v0.14.0.5.r0.g2ae1ce480
-pkgrel=3
+pkgver=v0.15.0.0.rc3.r5.gf23e722da
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode')
-makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qt5-tools' 'python3' 'cmake' 'codablock-bls-signatures')
+makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qt5-tools' 'python3' 'cmake' 'codablock-bls-signatures' 'libbacktrace-git')
 license=('MIT')
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool). WARNING: Unstable, development version."
 provides=('dashd' 'dash-qt' 'dash-cli')
 conflicts=('dashcore' 'dashcore-bin')
-source=("git://github.com/dashpay/dash.git")
-sha512sums=('SKIP')
+source=('deque.patch'
+        "git://github.com/dashpay/dash.git")
+sha512sums=('87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172af13f52d94d752464ee125fa69d9b423f495baa52bde1fe02e4762aa889d5'
+            'SKIP')
 
 prepare () {
   cd "$_gitname"
-  git pull origin v0.14.0.x
+  git pull origin v0.15.x
  #deque patch 2020-02-12
  #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when dash fixes/commits this. 

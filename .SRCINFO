@@ -1,7 +1,7 @@
 pkgbase = dashcore-git
 	pkgdesc = Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool). WARNING: Unstable, development version.
-	pkgver = v0.14.0.5.r0.g2ae1ce480
-	pkgrel = 3
+	pkgver = v0.15.0.0.rc3.r5.gf23e722da
+	pkgrel = 1
 	url = https://github.com/dashpay/dash
 	arch = x86_64
 	license = MIT
@@ -17,6 +17,7 @@ pkgbase = dashcore-git
 	makedepends = python3
 	makedepends = cmake
 	makedepends = codablock-bls-signatures
+	makedepends = libbacktrace-git
 	depends = qt5-base
 	depends = boost
 	depends = boost-libs
@@ -31,7 +32,9 @@ pkgbase = dashcore-git
 	provides = dash-cli
 	conflicts = dashcore
 	conflicts = dashcore-bin
+	source = deque.patch
 	source = git://github.com/dashpay/dash.git
+	sha512sums = 87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172af13f52d94d752464ee125fa69d9b423f495baa52bde1fe02e4762aa889d5
 	sha512sums = SKIP
 
 pkgname = dashcore-git
