@@ -3,7 +3,7 @@
 all: PKGBUILD .SRCINFO
 
 PKGBUILD:
-	makepkg -oc
+	makepkg -doc
 
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
