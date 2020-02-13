@@ -2,9 +2,9 @@
 # Contributor: Térence Clastres <t dot clastres at gmail dot com>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi/
 pkgname=vivaldi-arm64
-_pkgver=2.10.1745.26-1
-pkgver=2.10.1745.26
-pkgrel=2
+_pkgver=2.11.1811.33-1
+pkgver=2.11.1811.33
+pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
 options=('!strip' '!emptydirs')
@@ -21,7 +21,7 @@ optdepends=(
 )
 provides=('www-browser' 'vivaldi')
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-${pkgrel}_arm64.deb")
-sha256sums=('34c165d240bd34e55493148c8935ef5d62393c2c08cf89095ea5ac282ec709bd')
+sha256sums=('0c645ded7a7f47bb4820474f3d2585e01f065fb2201cc793898a86f9b594271b')
 
 prepare() {
  tar -xf data.tar.xz
