@@ -5,12 +5,12 @@
 _pkgname=libksysguard
 pkgname=libksysguard-light
 pkgver=5.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Libraries for ksysguard without the big dependency on qt5-webengine'
 arch=(x86_64)
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=(LGPL)
-depends=(libxres kio)
+depends=(libxres kio qt5-webchannel)
 makedepends=(extra-cmake-modules kdoctools plasma-framework)
 groups=(plasma)
 conflicts=(libksysguard)
