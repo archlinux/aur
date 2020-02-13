@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=qogir-gtk-theme-git
-pkgver=2019.05.03.18.gbefadd7
+pkgver=2019.10.25.r12.gde987de
 pkgrel=1
 pkgdesc='Qogir is a flat Design theme for GTK'
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd Qogir-theme
-  git describe --tags | sed 's/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
