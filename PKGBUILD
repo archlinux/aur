@@ -1,6 +1,6 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=lens_calibrate
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 epoch=
 pkgdesc='Script to calculate lens calibration data for the lensfun project'

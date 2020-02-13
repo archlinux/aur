@@ -1,6 +1,6 @@
 pkgbase = lens_calibrate
 	pkgdesc = Script to calculate lens calibration data for the lensfun project
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://gitlab.com/cryptomilk/lens_calibrate
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = lens_calibrate
 	depends = hugin>=2018
 	depends = imagemagick
 	depends = gnuplot
-	source = git+https://gitlab.com/cryptomilk/lens_calibrate.git#tag=lens_calibrate-0.1.1
+	source = git+https://gitlab.com/cryptomilk/lens_calibrate.git#tag=lens_calibrate-0.2.0
 	sha512sums = SKIP
 
 pkgname = lens_calibrate
