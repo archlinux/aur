@@ -6,7 +6,7 @@ pkgbase=libcd
 pkgname=('libcd' 'lua-cd' 'lua51-cd' 'lua52-cd')
 pkgdesc="Canvas Draw - 2D vector graphics library"
 pkgver=5.12
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://www.tecgraf.puc-rio.br/cd/"
 makedepends=('glu' 'lsb-release' 'lua' 'lua51' 'lua52' 'lua-im' 'lua51-im' 'lua52-im')
@@ -41,7 +41,8 @@ build() {
   make cd cd_pdflib cdpdf cdgl cdim cdcontextplus \
     IM_INC=/usr/include/im \
     IM_LIB=/usr/lib \
-    USE_FTGL=Yes
+    USE_FTGL=Yes \
+    USE_GTK3=Yes
 
   echo 'Building Lua 5.3 bindings'
   make cdlua5 cdluapdf5 cdluagl5 cdluacontextplus5 cdluaim5 \
