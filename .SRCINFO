@@ -1,6 +1,6 @@
 pkgbase = birdfont
 	pkgdesc = A free font editor that lets you create vector graphics and export TTF, EOT & SVG fonts
-	pkgver = 2.26.0
+	pkgver = 2.28.0
 	pkgrel = 1
 	url = https://birdfont.org/
 	install = birdfont.install
@@ -14,10 +14,10 @@ pkgbase = birdfont
 	depends = webkit2gtk
 	depends = libnotify
 	depends = libxmlbird
-	source = https://birdfont.org/releases/birdfont-2.26.0.tar.xz
-	source = https://birdfont.org/releases/birdfont-2.26.0.tar.xz.sig
+	source = https://birdfont.org/releases/birdfont-2.28.0.tar.xz
+	source = https://birdfont.org/releases/birdfont-2.28.0.tar.xz.sig
 	validpgpkeys = FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4
-	sha512sums = 8522d014b7714b9d8990e1a62e45c0ae354ae42e9122aba0f6abef381c73774f49659a6ce9dc446c82df853c10e08a3a270548a0258ddff46581fcde8aed9b17
+	sha512sums = 2ec9debb79245e02ba7820c75c6eac42b3968ad744db17bae2f9bfe14d7d47cccf3fa834612814be3ce809601b370dc65b68f060781ec6517fa59e358b606193
 	sha512sums = SKIP
 
 pkgname = birdfont
