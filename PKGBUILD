@@ -4,7 +4,7 @@
 
 pkgname=simutrans-nightly
 pkgver=20200212
-pkgrel=1
+pkgrel=2
 pkgdesc="Transportation simulation game - Nightly build"
 arch=('x86_64')
 url="https://www.simutrans.com/"
@@ -57,8 +57,8 @@ prepare() {
   patch -Np0 -i ../path-for-game-data.patch
 
   # Configure the build process
-  #cp config.template config.default
-  #patch -Np0 -i ../config.patch
+  cp config.template config.default
+  patch -Np0 -i ../config.patch
 }
 
 build() {
