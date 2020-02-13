@@ -1,7 +1,7 @@
 pkgbase = kiwix-tools
 	pkgdesc = kiwix command line tools
-	pkgver = 3.0.1
-	pkgrel = 9
+	pkgver = 3.0.2
+	pkgrel = 1
 	url = https://github.com/kiwix/kiwix-tools
 	arch = armv7h
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = kiwix-tools
 	makedepends = meson
 	depends = kiwix-lib
 	replaces = kiwix-cli-git
-	source = https://github.com/kiwix/kiwix-tools/archive/3.0.1.tar.gz
-	sha256sums = b4d2ff9dfb7d71bb06ee837392a714cf8934d21dba65d5d051c0caa0112e4974
+	source = https://github.com/kiwix/kiwix-tools/archive/3.0.2.tar.gz
+	sha256sums = 681cf32312d04ed373fcafb278353dcd706b2e6050e2790775e5ffaca77c8bc3
 
 pkgname = kiwix-tools
 
