@@ -2,21 +2,20 @@
 # contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem
-pkgver=4.4.3
-_pkgver=4.4-3
+pkgver=4.5
+_pkgver=4.5
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
 url="https://freefem.org/index.html"
 license=('LGPL')
 depends=('fftw' 'freeglut' 'glu' 'suitesparse' 'hdf5' 'gsl' 'openmpi' 'lapack'
-	 'arpack' 'parmetis' 'python')
-makedepends=('texlive-core' 'gcc-fortran' 'unzip')
+	 'arpack' 'parmetis' 'cblas')
+makedepends=('texlive-core' 'gcc-fortran' 'unzip''autoconf' 'python')
 conflicts=('freefem++')
 provides=('freefem++')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz")
-sha256sums=('57db0e1d8fc14b25265ebe155a9f748216b8a74e0d6af65b567b1beaade698b0')
-options=('!makeflags')
+sha256sums=('5b2d4125c312da8fbedd49a72e742f18f35e0ae100c82fb493067dfad5d51432')
 
 prepare() {
   cd FreeFem-sources-${_pkgver}
@@ -25,13 +24,13 @@ prepare() {
   ./configure --prefix=/usr \
 	      --sysconfdir=/etc \
 	      --enable-download \
-	      --enable-hpddm \
 	      --enable-optim \
 	      --disable-mumps \
-	      --disable-hpddm
+	      --disable-hpddm \
+              --disable-parmmg
+    cd 3rdparty
+    make clean
 
-  find . -name Makefile -exec sed -i 's+^gcc+gcc =+' {} \;
-  find . -name Makefile -exec sed -i 's+^dir+dir =+' {} \;
 }
 
 build() {
