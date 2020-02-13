@@ -1,6 +1,6 @@
 pkgbase = diamond-aligner
 	pkgdesc = accelerated BLAST compatible local sequence aligner
-	pkgver = 0.9.24
+	pkgver = 0.9.30
 	pkgrel = 1
 	url = https://github.com/bbuchfink/diamond
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = diamond-aligner
 	makedepends = cmake
 	depends = gcc-libs
 	depends = zlib
-	source = diamond-aligner-0.9.24.tar.gz::https://github.com/bbuchfink/diamond/archive/v0.9.24.tar.gz
-	md5sums = c0db4f35a5a4be587a6654d08e436546
+	source = diamond-aligner-0.9.30.tar.gz::https://github.com/bbuchfink/diamond/archive/v0.9.30.tar.gz
+	sha512sums = 8a873216808f88e2e2730192e079086e2668823d2002cd1f3f0642710f99f2ee56ac8729837d839f3a663a241a85690f7efbb99024a5827277ace3158469c201
 
 pkgname = diamond-aligner
 
