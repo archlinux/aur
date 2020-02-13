@@ -1,4 +1,4 @@
-.PHONY: PKGBUILD
+.PHONY: PKGBUILD clean
 
 all: PKGBUILD .SRCINFO
 
@@ -7,3 +7,6 @@ PKGBUILD:
 
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
+
+clean:
+	rm -rf gds-cli-git pkg src

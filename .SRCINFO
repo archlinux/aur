@@ -1,7 +1,7 @@
 pkgbase = gds-cli-git
 	pkgdesc = CLI for GDS Staff
 	pkgver = 535.f8b405e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alphagov/gds-cli
 	arch = i686
 	arch = x86_64

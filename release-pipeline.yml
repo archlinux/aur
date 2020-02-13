@@ -35,6 +35,7 @@ jobs:
                 sudo chown -R notroot.notroot .
                 git clone gds-cli-aur gds-cli-aur_updated
                 cd gds-cli-aur_updated
+                sed -i 's/pkgrel\=.*$/pkgrel\=1/' PKGBUILD
                 set +x
                 git config --global credential.helper store
                 git config --global push.default simple
