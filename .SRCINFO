@@ -1,0 +1,18 @@
+pkgbase = hantek6022api-git
+	pkgdesc = Hantek 6022BE Python API
+	pkgver = r196.0dc39ab
+	pkgrel = 1
+	url = https://github.com/Ho-Ro/Hantek6022API
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	makedepends = sdcc
+	makedepends = git
+	depends = python
+	depends = python-libusb1
+	provides = hantek6022api
+	source = hantek6022api-git::git+https://github.com/Ho-Ro/Hantek6022API.git
+	md5sums = SKIP
+
+pkgname = hantek6022api-git
+
