@@ -17,8 +17,8 @@ source=("https://github.com/syscoin/syscoin/releases/download/v${pkgver}/syscoin
 md5sums=('4df07843e8bd0a1616619d22119ed19c')
 
 prepare() {
-  wget -q https://raw.githubusercontent.com/syscoin-core/packaging/master/debian/syscoin-qt.desktop
-  wget -q https://github.com/syscoin/syscoin/raw/master/share/pixmaps/syscoin256.png
+  wget -N -q https://raw.githubusercontent.com/syscoin-core/packaging/master/debian/syscoin-qt.desktop
+  wget -N -q https://github.com/syscoin/syscoin/raw/master/share/pixmaps/syscoin256.png
 }
 
 
