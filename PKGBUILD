@@ -10,7 +10,7 @@ url="https://github.com/danieljabailey/Pascal-FC"
 license=('GPL2')
 depends=('fpc' 'git')
 makedepends=('fpc')
-source=('pascal-fc::git+git://github.com/danieljabailey/Pascal-FC'
+source=('pascal-fc::git+git://github.com/danieljabailey/Pascal-FC#commit=5d0e1e919d6cce435d965c7eae847ea7bd0aa8db'
 	'path_fix.patch')
 noextract=()
 md5sums=('SKIP'
