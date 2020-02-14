@@ -8,7 +8,7 @@
 
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=vulkan-device-filter-git
-pkgver=v0.0.1.r1.8c6a5a1
+pkgver=v0.0.1.r8.7a7a8c1
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
@@ -46,6 +46,6 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -D -m755 target/release/libvulkan_device_filter_layer.so $pkgdir/usr/share/vulkan/implicit_layer.d/libVkLayer_device_filter.so
-	install -D -m644 -t $pkgdir/usr/share/vulkan/implicit_layer.d vulkan-device-filter-layer/VkLayer_device_filter.json
+	install -D -m755 -t $pkgdir/usr/share/vulkan/explicit_layer.d target/release/libvulkan_device_filter_layer.so
+	install -D -m644 -t $pkgdir/usr/share/vulkan/explicit_layer.d vulkan-device-filter-layer/VkLayer_device_filter.json
 }
