@@ -4,7 +4,7 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 _pkgname='mailpile'
 pkgname="$_pkgname-git"
-pkgver='r6265.aafe85bc'
+pkgver='1.0.0rc1.r710.gaafe85bc'
 pkgrel='1'
 pkgdesc='A free & open modern, fast email client with user-friendly encryption and privacy features - git version'
 arch=('any')
@@ -33,14 +33,14 @@ prepare() {
 	git submodule update
 	find . -type f -exec sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2.7|g' {} \;
 	find . -type f -exec sed -i 's|#!/usr/bin/python2.7|#!/usr/bin/env python2.7|g' {} \;
-	rm -rf 'shared-data/'{"$pkgname-gui/",'multipile/'}
+	rm -rf 'shared-data/'{"$_pkgname-gui/",'multipile/'}
 	rm -rf 'shared-data/default-theme/'{'less/','index.html'}
-	rm -rf "$pkgname/tests"
+	rm -rf "$_pkgname/tests"
 }
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
