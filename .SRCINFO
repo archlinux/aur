@@ -1,6 +1,6 @@
 pkgbase = python-uvloop-systemlibuv
 	pkgdesc = A fast, drop-in replacement of the built-in asyncio event loop. Use system libuv.
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/MagicStack/uvloop
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = python-uvloop-systemlibuv
 	depends = libuv
 	provides = python-uvloop
 	conflicts = python-uvloop
-	source = https://github.com/MagicStack/uvloop/archive/v0.13.0.tar.gz
-	sha256sums = 3159f81a6caa38e97ee03fc2a706c8b8a21fb726e01d0cfcbed1f8de2ce55fd8
+	source = https://github.com/MagicStack/uvloop/archive/v0.14.0.tar.gz
+	sha256sums = 29738dd376afd33fbaebbb5c129385cbfe08c04ca7d2c187be60334233935d6a
 
 pkgname = python-uvloop-systemlibuv
 
