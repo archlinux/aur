@@ -2,7 +2,7 @@
 
 _name=ddnet-maps
 pkgname=$_name-git
-pkgver=r1120.ga2dd7213
+pkgver=r1225.gbba7abb1
 pkgrel=1
 pkgdesc="All released maps with configs for DDraceNetwork server"
 arch=(any)
