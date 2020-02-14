@@ -1,13 +1,13 @@
 pkgbase = nodejs-renovate
 	pkgdesc = Automated dependency updates. Multi-platform and multi-language.
-	pkgver = 19.129.0
+	pkgver = 19.133.11
 	pkgrel = 1
 	url = https://www.npmjs.com/package/renovate
 	arch = any
 	makedepends = npm
 	depends = nodejs
-	source = http://registry.npmjs.org/renovate/-/renovate-19.129.0.tgz
-	sha256sums = 91c9b8c0d419e435ca8b092344cc7d85a182b5a5a593de20470b2cfc80a2e4b3
+	source = http://registry.npmjs.org/renovate/-/renovate-19.133.11.tgz
+	sha256sums = 757e9fb7da33929173936d7699d28d65e83462539f20d79b9c81a2252ca133df
 
 pkgname = nodejs-renovate
 
