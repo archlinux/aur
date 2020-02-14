@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=('00c43539da73af982b136ab5ea6809ac9bb74188b05eb40d13428d13fe2ebef0'
             '0a17c0f9d4eb7195faaa99975628b610c821185f3ad712894029e5a135a54d4b'
-            'ee8cec128bcfd52a5110c0dfae237130635b4e89e4746ccdc46df9aa3b1fd48f')
+            'eea84108fe4117b0ac6841f3f22247c270373a0d825fedcf56e6626a734d1a8d')
 
 package() {
 	cd "$srcdir/$_reponame-$pkgver/"

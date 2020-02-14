@@ -3,6 +3,6 @@ Type=Application
 Name=Cecilia
 Comment=Audio signal processing environment aimed at sound designers
 Icon=cecilia
-Exec=cecilia
+Exec=/usr/bin/cecilia
 Terminal=false
 Categories=AudioVideo;Audio;
