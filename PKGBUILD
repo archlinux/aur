@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=1.22.0.r24.g4ea97afc
+pkgver=1.23.0.dev.r4185.4ea97afca
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -35,7 +35,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(grep -oP "__version__ = '\K([0-9a-z.-]+)(?=')" conans/__init__.py | sed 's/\([^-]*-g\)/r\1/;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
