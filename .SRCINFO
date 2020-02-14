@@ -1,0 +1,18 @@
+pkgbase = rid-git
+	pkgdesc = rid - Reddit Image Downloader - Simple bash script downloading images from a subreddit.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dbeley/rid
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = bash
+	depends = wget
+	depends = jq
+	provides = rid
+	conflicts = rid
+	source = git+https://github.com/dbeley/rid
+	md5sums = SKIP
+
+pkgname = rid-git
+
