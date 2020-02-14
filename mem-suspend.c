@@ -11,6 +11,7 @@ int main(void)
   if (fd != -1)
   {
     write(fd, "mem", 3);
+    close(fd);
   }
   else
   {

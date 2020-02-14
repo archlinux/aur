@@ -7,7 +7,7 @@ pkgdesc="A script for suspending to memory"
 arch=('x86_64')
 license=('custom:WTFPL')
 source=("mem-suspend.c")
-sha256sums=('4d4dfdcb7e5aa9b65489a28dd80e1a146fbc5d52034a938ccd0ee46ad744815c')
+sha256sums=('e0b58463e54d2b34c0a852daaddc50db120ecb9f52fd15bafa863abf6f122700')
 
 build() {
   cd "$srcdir"
