@@ -1,0 +1,33 @@
+pkgbase = ant-git
+	pkgdesc = Java based build tool
+	pkgver = 1.10.8alpha
+	pkgrel = 1
+	url = https://ant.apache.org/
+	arch = any
+	license = APACHE
+	makedepends = git
+	makedepends = bash
+	makedepends = java-environment
+	makedepends = junit
+	makedepends = java-hamcrest
+	source = git+https://gitbox.apache.org/repos/asf/ant#commit=2f0e194b8a18f094d2a9e47e34e16544ced55245
+	source = ant.conf
+	sha256sums = SKIP
+	sha256sums = 23bbef577b56d48adb1985dbd9795e5533146646f1e8bb879dd061a4014ffcf2
+
+pkgname = ant-git
+	depends = java-environment
+	depends = bash
+	optdepends = junit: junit tasks
+	optdepends = java-hamcrest: junit tasks
+	provides = apache-ant
+	provides = ant
+	conflicts = apache-ant
+	conflicts = ant
+	backup = etc/ant.conf
+
+pkgname = ant-git-doc
+	pkgdesc = Apache Ant build tool documentation
+	conflicts = apache-ant-doc
+	conflicts = ant-doc
+
