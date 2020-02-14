@@ -2,7 +2,7 @@
 pkgname='cecilia'
 _reponame="${pkgname}5"
 pkgver='5.4.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio signal processing environment aimed at sound designers'
 arch=('any')
 url="http://ajaxsoundstudio.com/software/$pkgname"
