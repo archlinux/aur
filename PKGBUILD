@@ -13,17 +13,21 @@ license=('Apache License 2.0')
 _maven="https://maven.atlassian.com/public/com/atlassian/amps/$_pkgname"
 depends=('java-environment')
 
-pkgver() {
+get_version() {
     if [[ "$PKGVER" ]]; then
         echo "$PKGVER"
         return
     fi
 
     _url=${_maven}/maven-metadata.xml
-    echo ":: Obtaining latest version from maven-metadata.xml: ${_url}" >&2
 
     version=$(curl -sL "${_url}" | grep -Po '<latest>\K[^<]+')
+    echo "$version"
+}
 
+version=$(get_version)
+
+pkgver() {
     echo "${version}" | sed -r 's/[-:]/./g'
 }
 
