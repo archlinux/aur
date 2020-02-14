@@ -1,0 +1,20 @@
+pkgbase = byuu
+	pkgdesc = a new multi-system emulator, which shares emulation cores with higan
+	pkgver = 0.10
+	pkgrel = 1
+	url = https://byuu.org/byuu
+	arch = x86_64
+	license = GPL
+	depends = sdl2
+	depends = libao
+	depends = libxv
+	depends = libpulse
+	depends = gtksourceview2
+	depends = openal
+	depends = perl-net-dbus
+	depends = perl-x11-protocol
+	source = https://byuu.org/download/byuu_v0r10-source.zip
+	md5sums = 395874f6bf90c3da4ece68478517471b
+
+pkgname = byuu
+
