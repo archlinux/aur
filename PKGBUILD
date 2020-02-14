@@ -1,16 +1,16 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='borgit'
-_pkgverUpstream="0.0.4"
+_pkgverUpstream="0.0.5"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Write your Borg backup jobs with sourced bash configuration files"
 arch=('any')
 url='https://eomanis.duckdns.org/permshare/borgit/'
 license=('GPL3')
-depends=('bash' 'coreutils' 'borg')
+depends=('bash' 'borg' 'coreutils' 'findutils')
 source=("https://eomanis.duckdns.org/permshare/borgit/borgit-${_pkgverUpstream}.tar.gz")
-sha384sums=('2ec3ebf280dfe86f7996a0284ffe251d6eeca5c711f3d9028f88d37688e330411ddecaa811ef8f00e2f333159fcff326')
+sha384sums=('06210fe04dad92285f0dd2c0494c852f492e3a72799593a8f851a0f0589485d8e3d307660913256782ddbf3505ab85c8')
 
 package() {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
@@ -22,7 +22,7 @@ package() {
     chmod u=rwx,go=rx "borgit"
     cp -t . "${srcRootDir}/borgem"
     chmod u=rwx,go=rx "borgem"
-
+    
     # Gzip and place the manual pages
     mkdir -p "${pkgdir}/usr/share/man"
     cd "${pkgdir}/usr/share/man"
