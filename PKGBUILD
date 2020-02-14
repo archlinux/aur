@@ -1,8 +1,8 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=tanka
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Flexible, reusable and concise configuration for Kubernetes"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://tanka.dev"
