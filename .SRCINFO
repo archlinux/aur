@@ -1,0 +1,15 @@
+pkgbase = dotenv-linter-git
+	pkgdesc = Linter for .env files. Written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mgrachev/dotenv-linter/releases
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = dotenv-linter
+	source = git+https://github.com/mgrachev/dotenv-linter/releases
+	md5sums = SKIP
+
+pkgname = dotenv-linter-git
+
