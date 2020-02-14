@@ -2,7 +2,7 @@
 
 pkgname=pfp-vim-git
 _pkgname=pfp-vim
-pkgver=r13.01195ec
+pkgver=r24.a7a598e
 pkgrel=1
 pkgdesc='Hex-editor plugin that uses 010 templates to parse binary data using pfp.'
 arch=(any)
@@ -23,6 +23,7 @@ package() {
 
   install -d -m 755 ${pkgdir}/usr/share/vim/vimfiles/{plugin,syntax}
 
+  install -D -m 644 pfp_plugin.py ${pkgdir}/usr/share/vim/vimfiles/pfp_plugin.py
   install -D -m 644 plugin/* ${pkgdir}/usr/share/vim/vimfiles/plugin
   install -D -m 644 syntax/* ${pkgdir}/usr/share/vim/vimfiles/syntax
 
