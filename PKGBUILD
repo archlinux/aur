@@ -12,7 +12,7 @@ source=('rsnapshot@.service'
 		'rsnapshot-monthly.timer')
 
 package() {
-	install -dm644 "${pkgdir}/etc/systemd/system"
+	install -dm755 "${pkgdir}/etc/systemd/system"
 	install -m644 "${srcdir}/rsnapshot@.service" "${pkgdir}/etc/systemd/system"
 	install -m644 "${srcdir}/rsnapshot-hourly.timer" "${pkgdir}/etc/systemd/system"
 	install -m644 "${srcdir}/rsnapshot-daily.timer" "${pkgdir}/etc/systemd/system"
