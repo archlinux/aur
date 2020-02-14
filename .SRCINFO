@@ -1,0 +1,13 @@
+pkgbase = tinc-boot-git
+	pkgdesc = Bootstrap your Tinc node quickly and easy
+	pkgver = 54.c55df72
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/User/
+	arch = x86_64
+	license = MPL2
+	makedepends = go>=1.1
+	provides = tinc-boot
+
+pkgname = tinc-boot-git
+
