@@ -2,7 +2,7 @@
 pkgname=govuk-guix-git
 pkgver=r22071.8d3fbcde3
 pkgrel=1
-pkgdesc="CLI for GDS Staff"
+pkgdesc="Package, service and system definitions using GNU Guix for software and systems related to GOV.UK."
 arch=('any')
 url="https://github.com/alphagov/govuk-guix"
 license=('MIT')

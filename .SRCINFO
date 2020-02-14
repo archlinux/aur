@@ -1,12 +1,12 @@
 pkgbase = govuk-guix-git
-	pkgdesc = CLI for GDS Staff
+	pkgdesc = Package, service and system definitions using GNU Guix for software and systems related to GOV.UK.
 	pkgver = r22071.8d3fbcde3
 	pkgrel = 1
 	url = https://github.com/alphagov/govuk-guix
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = ruby
 	provides = govuk-guix=r22071.8d3fbcde3
 	conflicts = govuk-guix
 	source = govuk-guix-git::git+https://github.com/alphagov/govuk-guix
