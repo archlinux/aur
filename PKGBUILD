@@ -5,7 +5,7 @@
 
 pkgname=gnome-control-center-nocheese
 _pkgbase=gnome-control-center
-pkgver=3.34.2
+pkgver=3.34.4
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop."
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -26,7 +26,7 @@ optdepends=('system-config-printer: Printer settings'
             'rygel: media sharing'
             'openssh: remote login')
 groups=(gnome)
-_commit=049df20eca021449eadc61960770e8d9709da16e  # tags/3.34.2^0
+_commit=de0c355aa2a5ba37bc95d7230775df5fbcbe1a17  # tags/3.34.4^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-control-center.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
