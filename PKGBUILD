@@ -2,7 +2,7 @@
 
 _gemname=backport
 pkgname=ruby-backport
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=0
 pkgdesc="A pure Ruby library for event-driven IO"
 arch=("any")
@@ -13,7 +13,7 @@ noextract=($_gemname-$pkgver.gem)
 license=("MIT")
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha256sums=("59dafc60e88cdf6611bd854894d1e4aee7a3284333c47431c656563c94e0450e")
+sha256sums=("6c17bb30a2e3fefe1739bbc2a17ad71578b2e7ab9582f8d0019e96eeafa4b2f6")
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
