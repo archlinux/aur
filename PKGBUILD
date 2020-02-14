@@ -30,11 +30,11 @@ source=("git+https://github.com/i2p/${_gitname}.git#commit=${_commit}"
 
 sha256sums=('SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
-            'df26da04c8415ac24ec73b0dd08d3459a8964553bb77e5da5ab9833b0a31d865'
+            'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
             '5c57456bf3f364175d036dfc6c6ceea5e57cdda970407829c04d09a4c821a9c0'
             '4ee28e022dccaf99043aa2735f05b7270b8eccf040c67f7ef48e114b5ca6e971'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
-            '7e94bcd530161251f99cdc033fbbaad0a07f3dac02ebd318edb08580ea500160'
+            '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
             '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0')
 
 pkgver() {
