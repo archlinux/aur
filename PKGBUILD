@@ -2,7 +2,7 @@
 
 pkgname=syscoin-git
 _gitname=syscoin
-pkgver=v4.1.2
+pkgver=v4.1.2.1
 pkgrel=1
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
@@ -22,12 +22,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  wget -q https://github.com/syscoin-core/packaging/blob/master/debian/syscoin-qt.desktop
   ./autogen.sh
-   PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
-   CFLAGS+=" -I/usr/include/openssl-1.0" \
-   LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
-   ./configure --with-gui=qt5
-   make -j$(nproc)
+  PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  CFLAGS+=" -I/usr/include/openssl-1.0" \
+  LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl" \
+  ./configure --with-gui=qt5
+  make -j$(nproc)
 }
 
 package() {
@@ -35,7 +36,7 @@ package() {
 	msg2 'Installing syscoin-qt...'
 	install -Dm755 "$srcdir/$_gitname/src/qt/syscoin-qt" "$pkgdir/usr/bin/syscoin-qt"
 	install -Dm644 "$srcdir/$_gitname/share/pixmaps/syscoin128.xpm" "$pkgdir/usr/share/pixmaps/syscoin128.xpm"
-#	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/contrib/debian/syscoin-qt.desktop"
+	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/$_gitname/syscoin-qt.desktop"
 
 	# install syscoin-daemon
 	msg2 'Installing syscoin-daemon...'
