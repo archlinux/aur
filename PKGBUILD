@@ -10,9 +10,9 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='3ca4db9469dce2c0914933db4948456a367c5dc7' # git rev-parse v${pkgver}
-pkgver=244.2
-pkgrel=2
+_tag='b7ed902b2394f94e7f1fbe6c3194b5cd9a9429e6' # git rev-parse v${pkgver}
+pkgver=244.3
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -81,8 +81,6 @@ _backports=(
 )
 
 _reverts=(
-  # Support Plugable UD-PRO8 dock
-  '98c03090274a067806090e2974fd2091f8206457'
 )
 
 prepare() {
