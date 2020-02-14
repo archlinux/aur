@@ -7,15 +7,18 @@ arch=('any')
 url="https://github.com/daimh/$pkgname"
 license=('GPL')
 groups=()
-depends=('coreutils'
+depends=(
+	'coreutils'
 	'bc'
-	'mlocate'
 	'util-linux'
 	'rsync'
 	'psmisc'
 )
 makedepends=()
-optdepends=('gnuplot: plotting support')
+optdepends=(
+	'gnuplot: plotting support'
+	'mlocate'
+)
 provides=()
 conflicts=()
 replaces=()
