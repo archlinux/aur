@@ -1,7 +1,7 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 # Contributor: Grey Christoforo <first name at last name dot net>
 _cranname=digest
-_cranver=0.6.23
+_cranver=0.6.24
 pkgname=r-${_cranname}
 pkgver=${_cranver}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('r>=3.1.0')
 optdepends=('r-tinytest' 'r-knitr' 'r-markdown')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 #source=("http://cran.r-project.org/src/contrib/Archive/${_cranname}/${_cranname}_${_cranver}.tar.gz") # replace with this if 404 error
-md5sums=('0e0276152fe1518eb2b3e86394bfa347') 
+md5sums=('148f98231f5e467c68709d4f477a2d7f') 
 
 build() {
     cd "${srcdir}"
