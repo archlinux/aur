@@ -4,7 +4,7 @@
 # Previous Maintainer (27.04.2016 - 15.10.2017): Youngbin Han <sukso96100 at gmail com>
 # Previous Contributor: blainester <theblainestory at gmail com>
 pkgname=micro-bin
-pkgver=1.4.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=('x86_64' 'i686')
@@ -17,8 +17,8 @@ provides=('micro')
 source_x86_64=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux64.tar.gz")
 source_i686=("https://github.com/zyedidia/micro/releases/download/v${pkgver}/micro-${pkgver}-linux32.tar.gz")
 
-sha256sums_x86_64=('e7d4c9427f9fdfed78e69d42cf518e93ae15fc8f70b7f0f87d292ed81206e900')
-sha256sums_i686=('d72d511b4f0fec5bb614b38607e68c5f0918f836d0f60e87c48f0b18e2eab916')
+sha256sums_x86_64=('433952bcf52bc28675d7bcf8c0b375c79894755134fff5ef6f4e4ed627a29452')
+sha256sums_i686=('13e35084cde2d91a9dc5c93fea9a7b5ccb076187c6a3cb8b5dfa10d170c06021')
 
 package(){
  install -Dm755 "${srcdir}/micro-${pkgver}/micro" "${pkgdir}/usr/bin/micro"
