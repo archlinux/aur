@@ -1,6 +1,7 @@
 pkgbase = chromemateria-gtk-theme
+	pkgdesc = Based GTK Theme Materia and ChromeOS
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stezkoy/chromemateria-gtk-theme
 	arch = any
 	license = GPL3

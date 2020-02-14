@@ -1,8 +1,8 @@
 # Maintainer: Stezkoy <seracam@yandex.ru>
 pkgname=chromemateria-gtk-theme
 pkgver=1.0
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="Based GTK Theme Materia and ChromeOS"
 arch=('any')
 url="https://github.com/stezkoy/chromemateria-gtk-theme"
 license=('GPL3')
