@@ -8,7 +8,7 @@ pkgdesc="Bash script for downgrading one or more packages to a version in your c
 arch=('any')
 url="https://github.com/pbrisbin/$pkgname"
 license=('GPL')
-source=("https://github.com/pbrisbin/$pkgname/archive/v$pkgver.tar.gz")
+source=("downgrade-v$pkgver.tar.gz::https://github.com/pbrisbin/$pkgname/archive/v$pkgver.tar.gz")
 depends=('pacman-contrib') # pacsort
 optdepends=('sudo: for installation via sudo')
 
