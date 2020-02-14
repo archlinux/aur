@@ -1,43 +1,41 @@
-# Maintainer:  Christoph Mohr <christoph.mohr@gmail.com>
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Christoph Mohr <christoph.mohr@gmail.com>
 # Contributor: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 # Contributor: Utsob Roy <uroybd(at)gmail(dot)com>
-
-pkgname=ferdi-bin
-pkgver=5.4.0
-pkgrel=1
-pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more. fork removing the non-skippable app delay frequently inviting you to buy a licence'
+_pkgname='ferdi'
+pkgname="$_pkgname-bin"
+pkgver='5.4.3'
+pkgrel='1'
+pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
 arch=('x86_64')
-url='https://getferdi.com/'
+url="https://get${_pkgname}.com"
 license=('Apache')
-depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
-optdepends=('gnome-keyring')
-conflicts=('ferdi' 'ferdi-git')
-source=("https://github.com/getferdi/ferdi/releases/download/v${pkgver//_/-}/ferdi_${pkgver//_/-}_amd64.deb"
-        "ferdi.desktop")
-sha256sums=('SKIP'
-            'SKIP')
+depends=('alsa-lib' 'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2' 'libsecret' 'libxslt' 'libxss' 'libxtst' 'minizip' 'nss' 're2' 'snappy')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/get$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.x86_64.rpm")
+sha256sums=('7f4c7dabc4ef25d8c9d972754484857256585738a4fff54957dd5cafb212dbf0')
 
-package() {
-  # Extract package data
-  bsdtar -xJf data.tar.xz
-
-  # Install package data
-  mv "usr" "${pkgdir}"
-  install -dm755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib"
-  mv "opt/Ferdi" "${pkgdir}/usr/lib/ferdi"
-  ln -s "../lib/ferdi/ferdi" "${pkgdir}/usr/bin/ferdi"
-
-  # Permission fix
-  chmod 644 "${pkgdir}/usr/lib/ferdi/"*.so
-
-  # Install icon
-  install -Dm 644 "$srcdir/ferdi.desktop" "$pkgdir/usr/share/applications/ferdi.desktop"
-
-  # Link licenses
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -s "/usr/lib/ferdi/LICENSE.electron.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
-  ln -s "/usr/lib/ferdi/LICENSES.chromium.html" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+prepare() {
+	sed -E -i -e "s|Exec=/opt/${_pkgname^}/$_pkgname|Exec=/usr/bin/$_pkgname|" "$srcdir/usr/share/applications/$_pkgname.desktop"
 }
 
+package() {
+	cd "$srcdir/"
+
+	install -dm755 "$pkgdir/opt/"
+	cp -r --no-preserve=ownership --preserve=mode "opt/${_pkgname^}/" "$pkgdir/opt/$_pkgname/"
+
+	install -dm755 "$pkgdir/usr/bin/"
+	ln -sf "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+
+	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	for _size in 16 24 32 48 64 96 128 256 512 1024; do
+		install -Dm644 "usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
+	done
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
+	for _license in 'LICENSE.electron.txt' 'LICENSES.chromium.html'; do
+		ln -sf "/opt/$_pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+	done
+}
