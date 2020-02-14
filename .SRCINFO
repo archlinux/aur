@@ -1,7 +1,7 @@
 pkgbase = libdispatch
 	pkgdesc = Comprehensive support for concurrent code execution on multicore hardware
 	pkgver = 5.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apple.github.io/swift-corelibs-libdispatch
 	arch = i686
 	arch = x86_64
