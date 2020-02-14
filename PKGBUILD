@@ -6,17 +6,17 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop9
-pkgver=1.9.9
+pkgver=1.9.13
 pkgrel=1
 pkgdesc='Official Telegram Desktop client (personal build)'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libappindicator-gtk3')
+         'qt5-imageformats' 'xxhash' 'libappindicator-gtk3' 'libdbusmenu-qt5')
 # for libappindicator-gtk3 see https://bugs.archlinux.org/task/65080
 
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
@@ -29,7 +29,7 @@ source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver
         "clicky_sticker_panel.patch"
         "dont_pulse_mentions.patch"
         "no_circles.patch")
-sha512sums=('ba6400e6f5eec5bda6e8a54b43846e695b2cce731cb6b39f17407cc39e3e9b8078d977253d29962671f30e33dbe012f8e40f340f781fd8ca73487e5f2d42e3de'
+sha512sums=('995face8a2ffb54f9f31aaa8d5a26421f4915e73360945553b6fa4e4b02431ca83ec1e72d6d2ce77f5b9daa39892859c88f7ea53c3ddbeec2cb37f27451878d2'
             '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b'
             'fdef3a430bdd60d88c9e9011ee878805e7803699204a2a7e22797d0f8729bf7dc0543851083ad700a4ece32bc768b6bfeb6f0135c8c039e035b22afb6df1171d'
             '91a0edab6408a223db77b75df5a913ffd36efa79340e8d78fa01ac2c3b6e09d5a5fc7fa214ccd40473093809f86b7aef199cebf56a1d5821c20083c4a3e5780b'
@@ -66,6 +66,7 @@ build() {
         -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
         -DDESKTOP_APP_USE_PACKAGED=ON \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
+        -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
         -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
