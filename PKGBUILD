@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=1.4.21
+pkgver=2.0
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -30,10 +30,12 @@ backup=("etc/$pkgname/logging.ini"
         "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
-        "$pkgname.tmpfiles")
-md5sums=('c1fdecee9ec013fcce447754cad132d5'
+        "$pkgname.tmpfiles"
+        "$pkgname-2.0-dont-fail-when-etc-pki-certs-are-not-found.patch::$url/pull/506.patch")
+md5sums=('6c45844299ac9b169daa5e95385f914c'
          'd277502b9a95484594f86231d073dae0'
-         '1052fa4db74b59b0c195f4756bd865e8')
+         '1052fa4db74b59b0c195f4756bd865e8'
+         'ca99e3fcf085a3a6a89b90477a39d88c')
 
 _prefix=/usr
 _bindir=$_prefix/bin
@@ -47,6 +49,8 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	pushd "$pkgname" >/dev/null
+
+	patch -p2 -i "$srcdir/$pkgname-2.0-dont-fail-when-etc-pki-certs-are-not-found.patch"
 
 	# ArchLinux does not provides gtar symlink
 	sed -e "/config_opts\['tar'\]/ s|.*|config_opts['tar'] = \"bsdtar\"|" \
