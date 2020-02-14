@@ -19,7 +19,7 @@ _sourcedirectory="$pkgname"
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed -e's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
