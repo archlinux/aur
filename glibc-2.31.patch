@@ -1,0 +1,100 @@
+From beee0ef61866cb567b9abc23bd850f922e59e3f0 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Wed, 13 Nov 2019 23:19:35 +1100
+Subject: [PATCH] seccomp: Allow clock_nanosleep() in sandbox.
+
+seccomp: Allow clock_nanosleep() to make OpenSSH working with latest
+glibc.  Patch from Jakub Jelen <jjelen@redhat.com> via bz #3093.
+---
+ sandbox-seccomp-filter.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index b5cda70bb..96ab141f7 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -242,6 +242,12 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_nanosleep
+ 	SC_ALLOW(__NR_nanosleep),
+ #endif
++#ifdef __NR_clock_nanosleep
++	SC_ALLOW(__NR_clock_nanosleep),
++#endif
++#ifdef __NR_clock_nanosleep
++	SC_ALLOW(__NR_clock_nanosleep),
++#endif
+ #ifdef __NR__newselect
+ 	SC_ALLOW(__NR__newselect),
+ #endif
+From 69298ebfc2c066acee5d187eac8ce9f38c796630 Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Wed, 13 Nov 2019 23:27:31 +1100
+Subject: [PATCH] Remove duplicate __NR_clock_nanosleep
+
+---
+ sandbox-seccomp-filter.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index 96ab141f7..be2397671 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -245,9 +245,6 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_clock_nanosleep
+ 	SC_ALLOW(__NR_clock_nanosleep),
+ #endif
+-#ifdef __NR_clock_nanosleep
+-	SC_ALLOW(__NR_clock_nanosleep),
+-#endif
+ #ifdef __NR__newselect
+ 	SC_ALLOW(__NR__newselect),
+ #endif
+From 030b4c2b8029563bc8a9fd764288fde08fa2347c Mon Sep 17 00:00:00 2001
+From: Darren Tucker <dtucker@dtucker.net>
+Date: Mon, 16 Dec 2019 13:55:56 +1100
+Subject: [PATCH] Allow clock_nanosleep_time64 in seccomp sandbox.
+
+Needed on Linux ARM.  bz#3100, patch from jjelen@redhat.com.
+---
+ sandbox-seccomp-filter.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index be2397671..3ef30c9d5 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -245,6 +245,9 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_clock_nanosleep
+ 	SC_ALLOW(__NR_clock_nanosleep),
+ #endif
++#ifdef __NR_clock_nanosleep_time64
++	SC_ALLOW(__NR_clock_nanosleep_time64),
++#endif
+ #ifdef __NR__newselect
+ 	SC_ALLOW(__NR__newselect),
+ #endif
+From a991cc5ed5a7c455fefe909a30cf082011ef5dff Mon Sep 17 00:00:00 2001
+From: Khem Raj <raj.khem@gmail.com>
+Date: Tue, 7 Jan 2020 16:26:45 -0800
+Subject: [PATCH] seccomp: Allow clock_gettime64() in sandbox.
+
+This helps sshd accept connections on mips platforms with
+upcoming glibc ( 2.31 )
+---
+ sandbox-seccomp-filter.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/sandbox-seccomp-filter.c b/sandbox-seccomp-filter.c
+index 3ef30c9d5..999c46c9f 100644
+--- a/sandbox-seccomp-filter.c
++++ b/sandbox-seccomp-filter.c
+@@ -248,6 +248,9 @@ static const struct sock_filter preauth_insns[] = {
+ #ifdef __NR_clock_nanosleep_time64
+ 	SC_ALLOW(__NR_clock_nanosleep_time64),
+ #endif
++#ifdef __NR_clock_gettime64
++	SC_ALLOW(__NR_clock_gettime64),
++#endif
+ #ifdef __NR__newselect
+ 	SC_ALLOW(__NR__newselect),
+ #endif

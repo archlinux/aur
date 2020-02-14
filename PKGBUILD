@@ -10,7 +10,7 @@
 
 pkgname=openssh-selinux
 pkgver=8.1p1
-pkgrel=1
+pkgrel=4
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
@@ -28,17 +28,24 @@ source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux
         'sshdgenkeys.service'
         'sshd.service'
         'sshd.conf'
-        'sshd.pam')
+        'sshd.pam'
+        'glibc-2.31.patch')
 sha256sums=('02f5dbef3835d0753556f973cd57b4c19b6b1f6cd24c03445e23ac77ca1b93ff'
             'SKIP'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
-            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
+            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846'
+            '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93')
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
 install=install
+
+prepare() {
+	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	patch -p1 -i "${srcdir}/glibc-2.31.patch"
+}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
@@ -48,6 +55,7 @@ build() {
 		--sbindir=/usr/bin \
 		--libexecdir=/usr/lib/ssh \
 		--sysconfdir=/etc/ssh \
+		--disable-strip \
 		--with-ldns \
 		--with-libedit \
 		--with-ssl-engine \
@@ -71,7 +79,18 @@ check() {
         # it runs as nobody which has /bin/false as login shell.
 
 	if [[ -e /usr/bin/scp && ! -e /.arch-chroot ]]; then
-		make tests
+		# Running tests in parallel is broken in 8.1p1-4, so force -j1:
+		#
+		# openssh-selinux/src/openssh-8.1p1/regress/ssh-rsa already exists.
+		# Overwrite (y/n)? ssh-keygen for ssh-rsa failed
+		# putty interop tests not enabled
+		# run test putty-ciphers.sh ...
+		# ssh connect with failed
+		# failed simple connect
+		# make[1]: *** [Makefile:211: t-exec] Error 1
+		# make[1]: Leaving directory 'openssh-selinux/src/openssh-8.1p1/regress'
+		# make: *** [Makefile:610: t-exec] Error 2
+		make tests -j1
 	fi
 }
 
