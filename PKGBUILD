@@ -31,6 +31,7 @@ backup=(
     'etc/systemd/system/initrd-debug-progs.service'
     'etc/systemd/system/initrd-debug-shell.service'
     'etc/systemd/system/initrd-dropbear.service'
+    'etc/systemd/system/initrd-tinysshd.service'
     'etc/systemd/system/initrd-emergency.service'
     'etc/systemd/system/initrd-network.service'
     'etc/systemd/system/initrd-shell.service'

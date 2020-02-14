@@ -25,6 +25,7 @@ pkgbase = mkinitcpio-systemd-tool
 	backup = etc/systemd/system/initrd-debug-progs.service
 	backup = etc/systemd/system/initrd-debug-shell.service
 	backup = etc/systemd/system/initrd-dropbear.service
+	backup = etc/systemd/system/initrd-tinysshd.service
 	backup = etc/systemd/system/initrd-emergency.service
 	backup = etc/systemd/system/initrd-network.service
 	backup = etc/systemd/system/initrd-shell.service
