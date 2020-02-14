@@ -1,5 +1,5 @@
 pkgbase = virtualbox-svn
-	pkgver = 82582
+	pkgver = 82781
 	pkgrel = 1
 	url = http://virtualbox.org
 	arch = x86_64
@@ -40,11 +40,11 @@ pkgbase = virtualbox-svn
 	makedepends = sdl_ttf
 	makedepends = vde2
 	makedepends = xalan-c
-	makedepends = xf86driproto
+	makedepends = xorgproto
 	makedepends = xorg-server-devel
 	makedepends = subversion
 	source = VirtualBox::svn+http://www.virtualbox.org/svn/vbox/trunk
-	source = git+https://github.com/jwrdegoede/vboxsf#commit=87b9015c57dd7f226c768131bf8b4c0249de9835
+	source = git+https://github.com/jwrdegoede/vboxsf#commit=5aba938bcabd978e4615186ad7d8617d633e6f30
 	source = virtualbox-host-dkms.conf
 	source = virtualbox-guest-dkms.conf
 	source = virtualbox-vboxsf-dkms.conf
