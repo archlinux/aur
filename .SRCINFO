@@ -1,0 +1,17 @@
+pkgbase = hexcurse-git
+	pkgdesc = Versatile ncurses-based hex editor.
+	pkgver = v1.60.0.r6.ga7d60e8
+	pkgrel = 1
+	url = https://github.com/LonnyGomes/hexcurse
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	options = !makeflags
+	source = git+https://github.com/LonnyGomes/hexcurse
+	source = hexcurse_gccerrors.patch
+	md5sums = SKIP
+	md5sums = 0d1229aa298581c16493a26f25ff40f2
+
+pkgname = hexcurse-git
+
