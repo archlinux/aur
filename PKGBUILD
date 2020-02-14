@@ -1,23 +1,32 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: mnussbaum <michaelnussbaum08@gmail.com>
+# Past Maintainer: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Adam Lloyd <lloyda2 (at) rpi (dot) edu>
 
 pkgname=maruku
-pkgver=0.6.1
-pkgrel=2
-pkgdesc="A Markdown-superset interpreter"
+pkgver=0.7.3
+pkgrel=0
+pkgdesc="A pure-Ruby Markdown-superset interpreter"
 arch=(any)
-url="http://maruku.rubyforge.org/"
-license=('GPL2')
-depends=(ruby ruby-syntax)
+url="https://github.com/bhollis/maruku"
+license=("MIT")
+depends=(ruby)
 makedepends=(rubygems)
-source=(http://gems.rubyforge.org/gems/maruku-$pkgver.gem)
-noextract=(maruku-$pkgver.gem)
-md5sums=('b919c2b706ca83502a8bec0be5c16c6d')
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
+noextract=($pkgname-$pkgver.gem)
+sha256sums=("dd14156f57b5433993710adca63b766d18b36f6e35cb25c21b178a6edfedebe4")
 
-build() {
-  cd $srcdir
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" maruku-$pkgver.gem
+package() {
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $pkgname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
 }
 
 # vim:set ts=2 sw=2 et:
