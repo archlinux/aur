@@ -1,7 +1,7 @@
 # Maintainer: Tom Whitwell <tom.whitwell@digital.cabinet-office.gov.uk>
 pkgname=gds-cli-git
 pkgver=539.0d39742
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI for GDS Staff"
 arch=('i686' 'x86_64')
 url="https://github.com/alphagov/gds-cli"
@@ -9,7 +9,7 @@ license=('unknown')
 optdepends=("aws-cli: CLI for Amazon AWS"
 	"aws-vault: Manager for AWS Credentials"
 	"yubikey-manager: Manager for yubikey")
-makedepends=('git' 'go')
+makedepends=('git' 'go-pie')
 provides=("gds-cli=${pkgver}")
 conflicts=('gds-cli')
 source=("${pkgname}"::"git+https://github.com/alphagov/gds-cli")

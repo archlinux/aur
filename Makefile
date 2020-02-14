@@ -1,12 +1,15 @@
-.PHONY: PKGBUILD clean
+.PHONY: PKGBUILD clean package
 
 all: PKGBUILD .SRCINFO
 
 PKGBUILD:
-	makepkg -doc
+	makepkg -docC
 
 .SRCINFO: PKGBUILD
 	makepkg --printsrcinfo > .SRCINFO
 
+package: .SRCINFO
+	makepkg
+
 clean:
-	rm -rf gds-cli-git pkg src
+	rm -rf gds-cli-git pkg src completion *.tar.xz
