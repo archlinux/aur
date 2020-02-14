@@ -1,6 +1,6 @@
 pkgbase = wwphone
 	pkgdesc = A proprietary CTI and SIP client from wwcom
-	pkgver = 3.0.24
+	pkgver = 3.0.26
 	pkgrel = 1
 	url = https://www.wwcom.ch/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = wwphone
 	depends = alsa-lib
 	depends = hidapi
 	depends = libxss
-	depends = qt5pas
-	source = https://wwcom.ch/downloads/wwphone_3_0_24.deb
-	sha256sums = 4c1e524519e0d1e2c5eca1d6007afe7302999a72a317356f3996e4447199339e
+	depends = gtk2
+	source = https://wwcom.ch/downloads/wwphone_3_0_26.deb
+	sha256sums = ee873f2a56c4c5e498af37a13de540eb384c5449bc554a5910f5e5da353f3f37
 
 pkgname = wwphone
 
