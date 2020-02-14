@@ -1,0 +1,21 @@
+pkgbase = python-stashy
+	pkgdesc = Python API client for the Atlassian Stash REST API
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/cosmin/stashy
+	arch = any
+	license = APACHE2
+	makedepends = python-mock
+	makedepends = python2-enum34
+	makedepends = python2-mock
+	source = https://github.com/cosmin/stashy/archive/v0.6.tar.gz
+	sha256sums = eec3c4771347f620e9a7957ce8ab8b44d3a74ad9dcb9280ac6c8305e017adfe4
+
+pkgname = python-stashy
+	depends = python-requests
+	depends = python-decorator
+
+pkgname = python2-stashy
+	depends = python2-requests
+	depends = python2-decorator
+
