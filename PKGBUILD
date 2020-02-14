@@ -5,8 +5,8 @@
 _target="shcasio-elf"
 pkgname=${_target}-gcc
 pkgver=9.2.0
-pkgrel=1
-_islver=0.19
+pkgrel=2
+_islver=0.22
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
 license=('GPL' 'LGPL')
@@ -14,9 +14,9 @@ url="http://gcc.gnu.org"
 depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=("https://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"
-	"https://isl.gforge.inria.fr/isl-${_islver}.tar.xz")
+	"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz")
 sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
-            '3971ac488fcaf2c0d9614f94eedb931a468a2ac0e672888f73fb01fa85156b07')
+            '6c8bc56c477affecba9c59e2c9f026967ac8bad01b51bdd07916db40a517b9fa')
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver/+/-}"
