@@ -1,0 +1,15 @@
+pkgbase = electerm-bin
+	pkgdesc = An electron-based SSH/SFTP Connection manager and terminal
+	pkgver = 1.0.28
+	pkgrel = 4
+	url = https://github.com/electerm/electerm
+	arch = x86_64
+	license = MIT
+	provides = electerm
+	source = https://github.com/electerm/electerm/releases/download/v1.0.28/electerm-1.0.28-linux-x64.tar.gz
+	source = https://raw.githubusercontent.com/electerm/electerm/master/LICENSE
+	sha256sums = b1a24c66af425373bef48d002bdc159d4ef7921ac793dfbf481d0dff6e56900e
+	sha256sums = b6d96207cff171127c04f59f9eb545b575b71cd93ebc355247cad63e23ca500d
+
+pkgname = electerm-bin
+
