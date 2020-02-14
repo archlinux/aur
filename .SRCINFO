@@ -1,6 +1,6 @@
 pkgbase = github-cli
 	pkgdesc = The GitHub CLI
-	pkgver = 0.5.4
+	pkgver = 0.5.5
 	pkgrel = 1
 	url = https://github.com/cli/cli
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = github-cli
 	makedepends = go
 	depends = glibc
 	optdepends = git: To interact with repositories
-	source = github-cli-0.5.4.tar.gz::https://github.com/cli/cli/archive/v0.5.4.tar.gz
-	sha256sums = eacf8dcc085e0a65a76bbc94b8501fd7c2b37e511dd2e24361c02e80e87ba642
+	source = github-cli-0.5.5.tar.gz::https://github.com/cli/cli/archive/v0.5.5.tar.gz
+	sha256sums = 7c2cfdafe765a598b70b3e6de839590e8fa30a89bedc85799a43bdbc6fd3277e
 
 pkgname = github-cli
 
