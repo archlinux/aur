@@ -7,7 +7,6 @@ pkgbase = wineasio
 	arch = i686
 	arch = x86_64
 	license = LGPL
-	makedepends = ed
 	makedepends = steinberg-asio
 	depends = wine
 	depends = jack

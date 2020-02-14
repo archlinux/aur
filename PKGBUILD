@@ -14,7 +14,7 @@ license=('LGPL')
 
 depends=('wine' 'jack')
 depends_x86_64+=('lib32-jack')
-makedepends=('ed' 'steinberg-asio')
+makedepends=('steinberg-asio')
 makedepends_x86_64+=('gcc-multilib')
 
 install="$pkgname".install
