@@ -1,8 +1,8 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('sgtk-menu')
 pkgver=1.3.0
-pkgrel=1
-pkgdesc="GTK menu for sway, i3 and some floating WMs"
+pkgrel=2
+pkgdesc="GTK launcher for sway & other WMs w/ menu, dmenu, application grid and button bar"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/sgtk-menu"
 license=('GPL3')

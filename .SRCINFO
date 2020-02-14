@@ -1,7 +1,7 @@
 pkgbase = sgtk-menu
-	pkgdesc = GTK menu for sway, i3 and some floating WMs
+	pkgdesc = GTK launcher for sway & other WMs w/ menu, dmenu, application grid and button bar
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nwg-piotr/sgtk-menu
 	arch = x86_64
 	license = GPL3
