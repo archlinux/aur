@@ -1,7 +1,7 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='borgit'
-_pkgverUpstream="0.0.5"
+_pkgverUpstream="0.1.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Write your Borg backup jobs with sourced bash configuration files"
@@ -10,7 +10,7 @@ url='https://eomanis.duckdns.org/permshare/borgit/'
 license=('GPL3')
 depends=('bash' 'borg' 'coreutils' 'findutils')
 source=("https://eomanis.duckdns.org/permshare/borgit/borgit-${_pkgverUpstream}.tar.gz")
-sha384sums=('06210fe04dad92285f0dd2c0494c852f492e3a72799593a8f851a0f0589485d8e3d307660913256782ddbf3505ab85c8')
+sha384sums=('9ee0dc071e8113aaecc37b0ae982a10379f8f273d9f76e4feaaea0a95cfb49987076096ac79a4e321c5d0ae0b5e67af8')
 
 package() {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
