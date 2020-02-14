@@ -22,21 +22,21 @@ pkgver() {
     _url=${_maven}/maven-metadata.xml
     echo ":: Obtaining latest version from maven-metadata.xml: ${_url}" >&2
 
-    version=$(curl -sL "${_url}" | grep -Po '<latest>\K[^<]+' | sed -r 's/[-:]/./g')
+    version=$(curl -sL "${_url}" | grep -Po '<latest>\K[^<]+')
 
-    echo "${version}"
+    echo "${version}" | sed -r 's/[-:]/./g'
 }
 
 package() {
   cd "${srcdir}"
-  echo ":: Downloading $_maven/$pkgver/$_pkgname-$pkgver.tar.gz" >&2
-  wget "$_maven/$pkgver/$_pkgname-$pkgver.tar.gz"
-  tar xvf "$_pkgname-$pkgver.tar.gz"
+  echo ":: Downloading $_maven/$version/$_pkgname-$version.tar.gz" >&2
+  wget "$_maven/$version/$_pkgname-$version.tar.gz"
+  tar xvf "$_pkgname-$version.tar.gz"
 
   cd "$pkgdir"
   mkdir -p opt/atlassian/plugin-sdk
 
-  cp -r "$srcdir"/atlassian-plugin-sdk-$pkgver/* opt/atlassian/plugin-sdk
+  cp -r "$srcdir"/atlassian-plugin-sdk-$version/* opt/atlassian/plugin-sdk
 
   # remove executable flag from .bat in bin
   if [[ -n $(find opt/atlassian/plugin-sdk/apache-maven-*/bin/ -type f -name "*.bat") ]]; then
