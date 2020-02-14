@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
 	pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-	pkgver = 18
+	pkgver = 19
 	pkgrel = 1
 	url = https://github.com/random-archer/mkinitcpio-systemd-tool
 	arch = any
