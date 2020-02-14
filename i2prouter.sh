@@ -20,8 +20,8 @@ check_user() {
     if [[ "$(id -un)" != "$I2P_USER" ]]; then
         #debug "current user: $(id -un)  dropping to user: $I2P_USER"
         #chmod 700 /opt/i2p/.{i2p,tmp}
-        SCRIPT_PATH="$(cd $(dirname $0) && pwd)/$(basename $0)"
-        su - "$I2P_USER" -c "${SCRIPT_PATH} $@"
+        SCRIPT_PATH="$(cd "$(dirname $0)" && pwd)/$(basename $0)"
+        su - "$I2P_USER" -c "${SCRIPT_PATH}" "$@"
         exit $?
     fi
 }
@@ -70,8 +70,7 @@ check_if_running() {
 _console() {
     if [[ ! "$pid" ]]; then
         trap '' INT QUIT
-        eval $COMMAND_LINE
-        [[ $? != 0 ]] && fail "Failed to launch the wrapper!"
+        eval "$COMMAND_LINE" || fail "Failed to launch the wrapper!"
     else
         echo "I2P Router is already running! (pid: $pid)"
     fi
@@ -81,8 +80,7 @@ _start() {
     if [[ ! "$pid" ]]; then
         echo -n "Starting I2P Router"
         COMMAND_LINE+=" wrapper.daemonize=TRUE"
-        eval $COMMAND_LINE
-        [[ $? != 0 ]] && fail "Failed to launch the wrapper!"
+        eval "$COMMAND_LINE" || fail "Failed to launch the wrapper!"
         i=0
         while [[ ! "$pid" || $i < $TIMEOUT ]]; do
             echo -n "."
@@ -99,14 +97,13 @@ _start() {
 
 _restart() {
     [[ "$pid" ]] &&
-        kill -USR1 $(get_wrapper_pid) || echo "I2P Router is not running"
+        kill -USR1 "$(get_wrapper_pid)" || echo "I2P Router is not running"
 }
 
 _stop() {
     if [[ "$pid" ]]; then
         echo -n "Hard shutdown initiated"
-        kill -TERM "$pid"
-        [[ $? != 0 ]] && fail "Unable to stop I2P Router: kill -TERM $pid"
+        kill -TERM "$pid" || fail "Unable to stop I2P Router: kill -TERM $pid"
         i=0
         while [[ "$pid" || $i > $TIMEOUT ]]; do
             echo -n "."
@@ -118,7 +115,7 @@ _stop() {
             fail "timeout: Failed to stop wrapper! (pid: $pid)"
         else
             echo " done"
-            [[ "$1" = 'start' ]] && _start
+            #[[ "$1" = 'start' ]] && _start
         fi
     else
         echo "I2P Router is not running."
@@ -128,10 +125,9 @@ _stop() {
 _graceful() {
     if [[ "$pid" ]]; then
         echo -n "Graceful shutdown initiated"
-        kill -HUP "$pid"
-        [[ $? != 0 ]] && fail "Unable to stop I2P Router."
+        kill -HUP "$pid" || fail "Unable to stop I2P Router."
         i=0
-        while [[ "$pid" || $i > 660 ]]; do
+        while [[ "$pid" || $i -gt 660 ]]; do
             echo -n "."
             sleep 1
             [[ ! $(get_pid) ]] && unset pid
@@ -150,9 +146,8 @@ _graceful() {
 _dump() {
     if [[ "$pid" ]]; then
         echo "Dumping threads..."
-        kill -QUIT "$pid"
-        [[ $? != 0 ]] &&
-            fail "Failed to dump threads" || echo "Thread Dump is available in wrapper.log"
+        kill -QUIT "$pid" || fail "Failed to dump threads"
+        echo "Thread Dump is available in wrapper.log"
     else
         echo "I2P Router is not running."
     fi

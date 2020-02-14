@@ -1,11 +1,11 @@
- #!/usr/bin/env bash
+#!/usr/bin/env bash
 set -e
 
 DATADIR=${XDG_CONFIG_HOME:-$HOME/.config}/chromium-i2p
 
 [[ ! -f $DATADIR/.config ]] && {
     echo "creating config..."
-    install -dm700 $DATADIR
+    install -dm700 "$DATADIR"
     cat <<< '
 CACHEDIR=/dev/shm/chromium-i2p # store in ram, or
 #CACHEDIR=$DATADIR/.tmp        # keep on disk
@@ -15,11 +15,11 @@ INCOGNITO=--incognito          # comment out if you wish to have
                                # urlhistory, passwords, etc. saved
 PROXY=127.0.0.1:4444
 CONSOLE=127.0.0.1:7657
-' >$DATADIR/.config
+' >"$DATADIR/.config"
     echo "$DATADIR/.config"
 }
 
-source $DATADIR/.config
+source "$DATADIR/.config"
 
 /usr/bin/chromium "$INCOGNITO" \
     --user-data-dir="$DATADIR" \
@@ -55,4 +55,4 @@ source $DATADIR/.config
     --no-report-upload \
     --site-per-process \
     --use-fake-device-for-media-stream \
-    ${@:-$CONSOLE}
+   "${@:-$CONSOLE}"
