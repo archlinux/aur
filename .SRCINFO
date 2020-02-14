@@ -1,6 +1,6 @@
 pkgbase = imgproxy
 	pkgdesc = Fast and secure standalone server for resizing and converting remote images
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://github.com/imgproxy/imgproxy
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = imgproxy
 	makedepends = go
 	makedepends = rsync
 	depends = vips
-	source = https://github.com/imgproxy/imgproxy/archive/v2.9.0.tar.gz
-	sha256sums = cb6c003adcb154bb2aa797f2ada67abac2d4c9438587c565df1274aad7fe8236
+	source = https://github.com/imgproxy/imgproxy/archive/v2.10.0.tar.gz
+	sha256sums = 8f773f7719a338234d43d55d207ed04b771cbaf278c6cfdfb755ecd9e611c004
 
 pkgname = imgproxy
 
