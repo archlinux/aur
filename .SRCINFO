@@ -1,12 +1,12 @@
 pkgbase = github-cli
 	pkgdesc = The GitHub CLI
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cli/cli
 	arch = any
 	license = MIT
 	makedepends = glibc
-	makedepends = go
+	makedepends = go-pie
 	depends = glibc
 	optdepends = git: To interact with repositories
 	source = github-cli-0.5.5.tar.gz::https://github.com/cli/cli/archive/v0.5.5.tar.gz

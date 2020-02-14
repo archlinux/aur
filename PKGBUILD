@@ -3,13 +3,13 @@
 
 pkgname=github-cli
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The GitHub CLI"
 arch=("any")
 url="https://github.com/cli/cli"
 license=("MIT")
 depends=("glibc")
-makedepends=("glibc" "go")
+makedepends=("glibc" "go-pie")
 optdepends=("git: To interact with repositories")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cli/cli/archive/v${pkgver}.tar.gz")
 sha256sums=(
@@ -18,7 +18,9 @@ sha256sums=(
 
 build() {
 	cd "cli-$pkgver"
-    go build -ldflags "-X github.com/cli/cli/command.Version=v${pkgver} -X github.com/cli/cli/command.BuildDate=$(date +%Y-%m-%d)" -o "bin/gh" ./cmd/gh
+    go build \
+        -trimpath \
+        -ldflags "-extldflags ${LDFLAGS} -X github.com/cli/cli/command.Version=v${pkgver} -X github.com/cli/cli/command.BuildDate=$(date +%Y-%m-%d)" -o "bin/gh" ./cmd/gh
 }
 
 package() {
