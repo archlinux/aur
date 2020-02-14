@@ -2,8 +2,8 @@
 
 pkgname=('python-aigpy' 'python2-aigpy')
 _pkgname=aigpy
-pkgver=2019.9.20.2
-pkgrel=2
+pkgver=2020.2.14.0
+pkgrel=1
 pkgdesc="Python Common Lib"
 arch=('any')
 url="https://pypi.org/project/aigpy"
@@ -12,10 +12,10 @@ makedepends=(
   'python-setuptools'
   'python2-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/06/8d/46ca89b991b15bfc28c9f44ca620be6fc3fe50c627a0f4316385e1b81474/${_pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/7c/81/13cc277b28d4bd6360828052e67b86dc7d415a8454fdb79f016b87f6e4a7/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE")
-sha256sums=('ad7f4e1a8fad7ca7f0efdcc79d7ed256b38521d9a07ca4c784e4143909036857'
-  '83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c')
+sha256sums=('785262f400dd7e7cfb27da791a84428381f675d52f800877471e9c6d1ea78c6c'
+            '83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c')
 
 prepare() {
   cp -r "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-${pkgver}-2"

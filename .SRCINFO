@@ -1,15 +1,15 @@
 pkgbase = python-aigpy
 	pkgdesc = Python Common Lib
-	pkgver = 2019.9.20.2
-	pkgrel = 2
+	pkgver = 2020.2.14.0
+	pkgrel = 1
 	url = https://pypi.org/project/aigpy
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/06/8d/46ca89b991b15bfc28c9f44ca620be6fc3fe50c627a0f4316385e1b81474/aigpy-2019.9.20.2.tar.gz
+	source = https://files.pythonhosted.org/packages/7c/81/13cc277b28d4bd6360828052e67b86dc7d415a8454fdb79f016b87f6e4a7/aigpy-2020.2.14.0.tar.gz
 	source = LICENSE
-	sha256sums = ad7f4e1a8fad7ca7f0efdcc79d7ed256b38521d9a07ca4c784e4143909036857
+	sha256sums = 785262f400dd7e7cfb27da791a84428381f675d52f800877471e9c6d1ea78c6c
 	sha256sums = 83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c
 
 pkgname = python-aigpy
