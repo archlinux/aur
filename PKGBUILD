@@ -4,7 +4,7 @@
 pkgbase=python-pytest-dependency
 pkgname=('python-pytest-dependency' 'python2-pytest-dependency')
 _name=${pkgname#python-}
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Manage dependencies of tests."
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('python-setuptools'
              'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('1a1579dec5a35f37ee93af96de09e7e8753a95bd48e3c581592f0e13aa2fed3bf097e014921b9c67540e8ebfe03ca31c528c9ff4738c2116ff372b790dae7a41')
+sha512sums=('efc615d41d0db9f3fbce2578a306d70675756ec9feb8de90c9e730eaa15d1f50779c356cff9e7621946c6f431c68c348abac5319d4dce5bfd4da0ba829eb2f69')
 
 prepare() {
   cp -a pytest-dependency-${pkgver}{,-py2}
