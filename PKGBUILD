@@ -11,7 +11,7 @@ license=('MIT')
 url="http://pre-commit.com/"
 depends=(
   'python' 'python-nodeenv' 'python-aspy-yaml' 'python-virtualenv' 'python-cached-property' 'python-identify'
-  'python-cached-property' 'python-cfgv'
+  'python-cached-property' 'python-cfgv' 'python-toml'
 )
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
 md5sums=('4206bb583587c01737d2bd1ac330d93d')

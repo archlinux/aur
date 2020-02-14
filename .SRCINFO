@@ -13,6 +13,7 @@ pkgbase = python-pre-commit
 	depends = python-identify
 	depends = python-cached-property
 	depends = python-cfgv
+	depends = python-toml
 	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-2.0.1.tar.gz
 	md5sums = 4206bb583587c01737d2bd1ac330d93d
 
