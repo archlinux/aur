@@ -7,7 +7,6 @@ pkgdesc="Share files across the LAN by Linux Mint"
 arch=("x86_64")
 _github="github.com/linuxmint/warp"
 url="https://$_github"
-license=(MIT)
 depends=(pygobject-devel python-setproctitle python-zeroconf)
 makedepends=(git meson)
 source=("$pkgname::git://$_github/")
