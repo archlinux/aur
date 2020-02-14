@@ -1,7 +1,7 @@
 pkgbase = cecilia-git
 	pkgdesc = Audio signal processing environment aimed at sound designers - git version
 	pkgver = 5.4.0.r2.gf8d35ad
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ajaxsoundstudio.com/software/cecilia
 	arch = any
 	license = GPL3
