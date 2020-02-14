@@ -31,7 +31,7 @@ prepare() {
 	tar -xzf 'data.tar.gz' -C "$_sourcedirectory/"
 
 	cd "$srcdir/$_sourcedirectory/"
-	sed -E -i -e "s|Exec=/usr/local/bin/x$_pkgname|Exec=x$_pkgname|" -e "s|Icon=/usr/share/icons/$_pkgname.xbm|Icon=$_pkgname|" "etc/X11/applnk/Applications/$_pkgname.desktop"
+	sed -E -i -e "s|Exec=/usr/local/bin/x$_pkgname|Exec=/usr/bin/x$_pkgname|" -e "s|Icon=/usr/share/icons/$_pkgname.xbm|Icon=$_pkgname|" "etc/X11/applnk/Applications/$_pkgname.desktop"
 	convert "usr/share/icons/$_pkgname.xbm" "usr/share/icons/$_pkgname.png"
 }
 
