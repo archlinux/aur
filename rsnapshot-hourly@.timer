@@ -4,7 +4,7 @@ Description=rsnapshot hourly timer
 [Timer]
 OnCalendar=*-*-* *:00
 Persistent=true
-Unit=rsnapshot@hourly.service
+Unit=rsnapshot-hourly@%i.service
 
 [Install]
 WantedBy=timers.target

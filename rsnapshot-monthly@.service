@@ -1,0 +1,8 @@
+[Unit]
+Description=rsnapshot monthly backup (%I)
+
+[Service]
+Type=oneshot
+Nice=19
+IOSchedulingClass=idle
+ExecStart=/usr/bin/rsnapshot -c %I monthly
