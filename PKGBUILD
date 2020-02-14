@@ -23,37 +23,37 @@ prepare() {
 package() {
 	# install syscoin-qt client
 	msg2 'Installing syscoin-qt...'
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-qt" "$pkgdir/usr/bin/syscoin-qt"
-	install -Dm644 "$srcdir/syscoin256.png" "$pkgdir/usr/share/pixmaps/syscoin256.png"
-	desktop-file-install -m 644 --dir="$pkgdir/usr/share/applications/" "$srcdir/syscoin-qt.desktop"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-qt" "$pkdir/usr/local/bin/syscoin-qt"
+	install -Dm644 "$srcdir/syscoin256.png" "$pkdir/usr/share/pixmaps/syscoin256.png"
+	desktop-file-install -m 644 --dir="$pkdir/usr/share/applications/" "$srcdir/syscoin-qt.desktop"
 
 	# install syscoin-daemon
 	msg2 'Installing syscoin-daemon...'
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoind" "$pkgdir/usr/bin/syscoind"
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/sysrelayer.nod" "$pkgdir/usr/bin/sysrelayer.nod"
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/sysgeth.nod" "$pkgdir/usr/bin/sysgeth.nod"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoind" "$pkdir/usr/local/bin/syscoind"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/sysrelayer.nod" "$pkdir/usr/local/bin/sysrelayer.nod"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/sysgeth.nod" "$pkdir/usr/local/bin/sysgeth.nod"
 
 	# install syscoin-cli
 	msg2 'Installing syscoin-cli...'
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-cli" "$pkgdir/usr/bin/syscoin-cli"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-cli" "$pkdir/usr/local/bin/syscoin-cli"
 
 	# install syscoin-tx
 	msg2 'Installing syscoin-tx...'
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-tx" "$pkgdir/usr/bin/syscoin-tx"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-tx" "$pkdir/usr/local/bin/syscoin-tx"
 
 	# install syscoin-wallet
 	msg2 'Installing syscoin-wallet...'
-	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-wallet" "$pkgdir/usr/bin/syscoin-wallet"
+	install -Dm755 "$srcdir/$pkgname-$pkgver/bin/syscoin-wallet" "$pkdir/usr/local/bin/syscoin-wallet"
 
 	# install license
-	install -D -m644 "$srcdir/$pkgname-$pkgver/include/syscoinconsensus.h" "$pkgdir/usr/include/syscoinconsensus.h"
-	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so" "$pkgdir/usr/lib/libsyscoinconsensus.so"
-	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so.0" "$pkgdir/usr/lib/libsyscoinconsensus.so.0"
-	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libsyscoinconsensus.so.0.0.0"
+	install -D -m644 "$srcdir/$pkgname-$pkgver/include/syscoinconsensus.h" "$pkdir/usr/local/include/syscoinconsensus.h"
+	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so" "$pkdir/usr/local/lib/libsyscoinconsensus.so"
+	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so.0" "$pkdir/usr/local/lib/libsyscoinconsensus.so.0"
+	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so.0.0.0" "$pkdir/usr/local/lib/libsyscoinconsensus.so.0.0.0"
 
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-cli.1" "$pkgdir/usr/share/man/man1/syscoin-cli.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoind.1" "$pkgdir/usr/share/man/man1/syscoind.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-qt.1" "$pkgdir/usr/share/man/man1/syscoin-qt.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-tx.1" "$pkgdir/usr/share/man/man1/syscoin-tx.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-wallet.1" "$pkgdir/usr/share/man/man1/syscoin-wallet.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-cli.1" "$pkdir/usr/local/share/man/man1/syscoin-cli.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoind.1" "$pkdir/usr/local/share/man/man1/syscoind.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-qt.1" "$pkdir/usr/local/share/man/man1/syscoin-qt.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-tx.1" "$pkdir/usr/local/share/man/man1/syscoin-tx.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-wallet.1" "$pkdir/usr/local/share/man/man1/syscoin-wallet.1"
 }
