@@ -2,10 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.17
-_rtpatchver=9
+_pkgver=5.4.19
+_rtpatchver=10
 pkgver="${_pkgver}.${_rtpatchver}"
-pkgrel=3
+pkgrel=1
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -29,7 +29,6 @@ source=(
   0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
   0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
   0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
-  0013-e1000e-Revert-e1000e-Make-watchdog-use-delayed-work.patch
   0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
 )
 validpgpkeys=(
@@ -40,11 +39,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
+sha256sums=('9584b971153e46a4a07573ca8f0ed78d7ca17b1eee25ff52f8b844b5d1fb77b8'
             'SKIP'
-            'f836174fc06ca8c9edb69d7d7ea480a6f6957caf00dfc08b042dbdd85a5cf265'
+            '62114d7417aa23209893c79aeb4263331412435aa7c662a236acc77e2789dff6'
             'SKIP'
-            'd9410b382b50d47002a1aed9f5c77885f58f59b1b389024cfddec5b5590a8962'
+            'c601f45d4903622c8d7a71d8e5dd827de3e37747907f7d61c7effbe6f70d034d'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
             'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
             '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
@@ -55,7 +54,6 @@ sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
             '5a1584d26c7d046fa0398b56980f628b4194dff95d0916e9527dbea7299e7765'
             'de34a0a82ce40de4394ad9d02421a53ac04c5e0b36a79b5f937fdebc93ac7bfb'
             '1a3073cbbc5d4e3a7970fc92706a5ec5729ea4a5cffb94af8343e046881cabf1'
-            'bb376024ac7a13108064af60150af8746b57ebb72df2f464fddc037a14c9faff'
             '7e6b2c7f919dc28d1144fe8d5cc08f9455ba65a32577944cf86d9c278fff6d20')
 
 export KBUILD_BUILD_HOST=archlinux
