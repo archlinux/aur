@@ -5,12 +5,12 @@ _pkgname=xxe
 pkgver=9.2.0
 _pkgver=9_2_0
 pkgrel=1
-pkgdesc="XMLmind XML Editor"
+pkgdesc="IDE for editing XML files"
 license=('Custom')
 url="https://www.xmlmind.com/xmleditor"
 arch=('any')
 depends=('java-runtime>=8')
-makedepends=('libicns' 'gendesk')
+makedepends=('libicns' 'gendesk' 'elinks')
 install=${_pkgname}.install
 source=("http://www.xmlmind.com/xmleditor/_download/xxe-perso-${_pkgver}.zip")
 sha256sums=('78e35604b6d6754ad47c02a2b7d71802bd82c60b6c2621a281dc9b1dc493279a')
@@ -28,6 +28,23 @@ prepare() {
       --startupnotify=True \
       --exec=/usr/bin/xxe \
       --categories='Development;IDE;Java'
+
+  # Save license in plain text format
+  # (downloading, using consistent headings, removing website navigation stuff)
+  curl https://www.xmlmind.com/xmleditor/license_xxe_perso.html | \
+  sed -r -e   's/(<h)2([^>]*>)/\11\2/' | \
+  sed -r -e 's/(<\/h)2([^>]*>)/\11\2/' | \
+  elinks -dump -no-references -no-home | \
+  sed '1,/Dictionary Builder/d' \
+  > LICENSE
+
+  # If this fails, either the license or the website might have changed
+  if [ "$(md5sum LICENSE)" != "a92dfcdeecdaacc853a4b551ca223154  LICENSE" ]; then
+    echo ""
+    echo ">>> License file needs to be reviewed"
+    echo ""
+    exit 1
+  fi
 }
 
 package() {
@@ -36,7 +53,7 @@ package() {
   mkdir -p "${pkgdir}"/usr/share/doc/${_pkgname}
   mkdir -p "${pkgdir}"/usr/share/licenses/${_pkgname}
 
-  cp -a "${srcdir}"/xxe-perso-${_pkgver} "${pkgdir}"/opt/xxe/
+  cp -a xxe-perso-${_pkgver} "${pkgdir}"/opt/xxe/
 
   ln -s /opt/xxe/bin/xxe "${pkgdir}"/usr/bin/xxe
   ln -s /opt/xxe/bin/xxetool "${pkgdir}"/usr/bin/xxetool
@@ -57,7 +74,10 @@ package() {
         "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/xxe.png
   done
 
-  install -Dm644 xxe.desktop -t "$pkgdir"/usr/share/applications/
+  install -Dm644 xxe.desktop -t "${pkgdir}"/usr/share/applications/
+
+  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${_pkgname}/
+  ln -s ${_pkgname} "${pkgdir}"/usr/share/licenses/${pkgname}
 
   # remove unneeded stuff
   find  "${pkgdir}"/opt/xxe/bin/ -name \*.bat -delete
