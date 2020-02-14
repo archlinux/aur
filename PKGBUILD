@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.3.18.arch1.r860172.4866cc197a17
+pkgver=v5.3.18.arch1.r860214.8cd876a76fa6
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v5.3.18-arch1
@@ -108,11 +108,6 @@ sha512sums=('SKIP'
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
-pkgver() {
-    cd $_reponame
-    printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 prepare() {
     cd $_reponame
@@ -172,6 +167,11 @@ prepare() {
 
     # save configuration for later reuse
     cat .config > "$startdir/config.last"
+}
+
+pkgver() {
+    cd $_reponame
+    printf "%s.r%s.%s" "${_srcver_tag//-/.}" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -331,3 +331,4 @@ for _p in "${pkgname[@]}"; do
         _package${_p#$pkgbase}
     }"
 done
+
