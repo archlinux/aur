@@ -3,12 +3,12 @@
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
 pkgver=0.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-depends=('gconf' 'libnotify')
+depends=('libnotify')
 provides=('webtorrent-desktop')
 conflicts=('webtorrent-desktop' 'webtorrent-desktop-git')
 source=("https://github.com/webtorrent/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux.zip"
