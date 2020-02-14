@@ -1,0 +1,12 @@
+pkgbase = arm-linux-gnueabi-gcc75-linaro-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler fo 32-bit Armv7 Cortex-A
+	pkgver = 7.5
+	pkgrel = 1
+	url = https://www.linaro.org/downloads/
+	arch = x86_64
+	license = GPL
+	source = arm-linux-gnueabi-gcc75-linaro-bin-v7.5::https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz
+	md5sums = 7e5a330aed9dfbe69c79589911db29d9
+
+pkgname = arm-linux-gnueabi-gcc75-linaro-bin
+
