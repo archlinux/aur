@@ -1,6 +1,6 @@
 # Maintainer: Tom Whitwell <tom.whitwell@digital.cabinet-office.gov.uk>
 pkgname=gds-cli-git
-pkgver=r539.0d39742
+pkgver=2.5.0.r4.g0d39742
 pkgrel=1
 pkgdesc="CLI for GDS Staff"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha512sums=('SKIP')
 pkgver() {
 	pushd "${srcdir}/${pkgname}" >/dev/null
 	{
-		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+		git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/^v\(.*\)/\1/'
 	}
 	popd >/dev/null
 }
