@@ -31,6 +31,7 @@ prepare() {
 	tar -xzf 'data.tar.gz' -C "$_sourcedirectory/"
 
 	cd "$srcdir/$_sourcedirectory/"
+	sed -E -i -e "s|Exec=/usr/local/bin/x$_pkgname|Exec=x$_pkgname|" -e "s|Icon=/usr/share/icons/$_pkgname.xbm|Icon=$_pkgname|" "etc/X11/applnk/Applications/$_pkgname.desktop"
 	convert "usr/share/icons/$_pkgname.xbm" "usr/share/icons/$_pkgname.png"
 }
 
@@ -62,6 +63,5 @@ package() {
 	# LICENSE, desktop file, icon
 	install -Dm644 '../LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "etc/X11/applnk/Applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-	sed -E -i -e "s|Exec=/usr/local/bin/x$_pkgname|Exec=x$_pkgname|" -e "s|Icon=/usr/share/icons/$_pkgname.xbm|Icon=$_pkgname|" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -Dm644 "usr/share/icons/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
