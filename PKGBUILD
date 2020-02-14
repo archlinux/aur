@@ -22,7 +22,7 @@ pkgver() {
     _url=${_maven}/maven-metadata.xml
     echo ":: Obtaining latest version from maven-metadata.xml: ${_url}" >&2
 
-    version=$(curl -sL "${_url}" | grep -Po '<latest>\K[^<]+')
+    version=$(curl -sL "${_url}" | grep -Po '<latest>\K[^<]+' | sed -r 's/[-:]/./g')
 
     echo "${version}"
 }
