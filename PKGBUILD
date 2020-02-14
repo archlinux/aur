@@ -3,7 +3,7 @@
 # Author: Patrick Brisbin <pbrisbin@gmail.com>
 pkgname=downgrade
 pkgver=6.2.4
-pkgrel=0
+pkgrel=1
 pkgdesc="Bash script for downgrading one or more packages to a version in your cache or the A.L.A."
 arch=('any')
 url="https://github.com/pbrisbin/$pkgname"
