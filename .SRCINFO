@@ -6,7 +6,7 @@ pkgbase = govuk-guix-git
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = ruby
+	depends = ruby
 	provides = govuk-guix=r22071.8d3fbcde3
 	conflicts = govuk-guix
 	source = govuk-guix-git::git+https://github.com/alphagov/govuk-guix

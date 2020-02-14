@@ -6,7 +6,8 @@ pkgdesc="Package, service and system definitions using GNU Guix for software and
 arch=('any')
 url="https://github.com/alphagov/govuk-guix"
 license=('MIT')
-makedepends=('git' 'ruby')
+makedepends=('git')
+depends=('ruby')
 provides=("govuk-guix=${pkgver}")
 conflicts=('govuk-guix')
 source=("${pkgname}"::"git+https://github.com/alphagov/govuk-guix")
