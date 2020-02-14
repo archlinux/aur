@@ -5,9 +5,9 @@
 # Contributor: Florian Richter <Florian_Richter@gmx.de>
 
 pkgname=yacy
-pkgver=1.92
-_pkgextraver=20161226_9000
-pkgrel=2
+pkgver=1.922
+_pkgextraver=20191013_9964
+pkgrel=1
 pkgdesc="Peer to peer search engine"
 arch=('any')
 url=http://www.yacy.net/
@@ -15,16 +15,16 @@ license=('GPL2')
 depends=('java-environment')
 makedepends=('apache-ant')
 install=yacy.install
-source=("http://www.yacy.net/release/yacy_v${pkgver}_${_pkgextraver}.tar.gz"
+source=("http://latest.yacy.net/yacy_v${pkgver}_${_pkgextraver}.tar.gz"
         'yacy.sh'
         'yacy.service')
 options=(!emptydirs)
-sha512sums=('476e185f4abbcbe988e1fa192b8d032d967ff29d25cca83d8493bc3b6a651519c61129ce54d7a9952ffdb011056cb734297a3497ec19ee58e25c650cef8c1684'
+sha512sums=('cc21a5513a25da9941c9bac6d1006eee733290ccb1fa4038e3a7228bfb384344985797cb23b643772feffadcb55f6a1b972f52b9e386a15bf3a9029fa1dfce05'
             'ba15bcb3ee1873bae57881ca4d96f65ee1fa5b40cff0f0c21c542cad6a7983a057ec83faae9452b426d5441aad02f80e3633d1798d7f0d84a680ed2233adb11f'
             '754b6224ef2a640cbfb50a3d46e92c04955dac3e683239872d2a5c9ba92016a1511c6049903322dd8a21e6d2cc51e2f4e9bd3339b4ef4aada68ae20b3acc189b')
 
 build() {
-	. /etc/profile.d/apache-ant.sh
+	source /etc/profile
 
 	cd "$srcdir/$pkgname"
 	ant all
