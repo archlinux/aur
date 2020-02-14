@@ -2,7 +2,7 @@
 # Contributor: Jendrik Wenke <jendrikwenke+aur at gmail dot com>
 
 pkgname=scala-dotty
-_reltag=0.24.0-RC1
+_reltag=0.26.0-RC1
 pkgver=${_reltag//-/}
 pkgrel=1
 pkgdesc='Research compiler that will become Scala 3'
@@ -11,9 +11,9 @@ url='http://dotty.epfl.ch'
 license=('BSD')
 depends=('java-environment>=8' 'java-environment<=11')
 source=("https://github.com/lampepfl/dotty/releases/download/${_reltag}/dotty-${_reltag}.tar.gz")
-sha1sums=('748286ef8428f0dbb550c2d8815510a6ab33f9f8')
-sha256sums=('361d703dd310cb02e3379695df422f00319d5e70264b7ffeaf1b6c227906df5f')
-sha512sums=('1d3d94cd7cf5072db1ca565247bd81aa02dbb80443312057df90f29b0e5adb485076f675c3da2c539630378cbd8c6d27357bef9f89d88cefe9964c07c257447e')
+sha1sums=('d157933f8510b43d591037981295bebe8840f88f')
+sha256sums=('ce98dfacec906a2c22ca4060d819e10500428cc79eccc04b2ff84c0a5cf2d29a')
+sha512sums=('2e82f57509a5fd78bbfc63acd41366e4d08a150a69bb7157da21136808fa3e4def5e194fe13f51b0f1e9fc697f4091caa66360fa0eb5b35e58e8d714eb8745df')
 
 package() {
        install -d "${pkgdir}/usr/bin" "${pkgdir}/usr/share/scala-dotty/bin"
