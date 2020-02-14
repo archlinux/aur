@@ -8,6 +8,7 @@ Documentation=man:lxd(1)
 Environment=LXD_OVMF_PATH=/usr/share/ovmf/x64
 ExecStart=/usr/bin/lxd --group=lxd --logfile=/var/log/lxd/lxd.log
 ExecStartPost=/usr/bin/lxd waitready --timeout=600
+ExecStop=/usr/bin/lxd shutdown
 TimeoutStartSec=600s
 TimeoutStopSec=30s
 Restart=on-failure

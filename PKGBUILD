@@ -7,8 +7,8 @@
 pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
-pkgver=3.20
-pkgrel=3
+pkgver=3.21
+pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -25,15 +25,15 @@ optdepends=(
     'ovmf: VM support'
     'systemd-libs: unix device hotplug support'
 )
-source=("${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("https://github.com/lxc/lxd/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc}
         "lxd.socket"
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('fb0189ff417a55fef551c749e60993977421e4788cbb9f57a08f037d8b8b4b3f'
+sha256sums=('14d976c39f7faa80eb249668982cbf40dd5d6f3edf9879cd3d8ffa604121353f'
             'SKIP'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
-            'e1155d3e874b299e906877b5cf6f798205583e6f3b2ce8e2f94d99621888094f'
+            '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
             'd0184d9c4bb485e3aad0d4ac25ea7e85ac0f7ed6ddc96333e74fcd393a5b5ec4')
 
 
