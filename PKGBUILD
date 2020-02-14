@@ -1,12 +1,13 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 pkgname='traktarr'
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Use Trakt to add shows to Sonarr and movies to Radarr."
 arch=(any)
 url="https://github.com/l3uddz/traktarr"
 license=('GPL3')
 depends=('python'
+         'python-apprise'
          'python-backoff'
          'python-schedule'
          'python-click'

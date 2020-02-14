@@ -1,11 +1,12 @@
 pkgbase = traktarr
 	pkgdesc = Use Trakt to add shows to Sonarr and movies to Radarr.
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/l3uddz/traktarr
 	arch = any
 	license = GPL3
 	depends = python
+	depends = python-apprise
 	depends = python-backoff
 	depends = python-schedule
 	depends = python-click
