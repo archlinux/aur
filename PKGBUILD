@@ -1,8 +1,7 @@
 # Maintainer: Stefan Tatschner <stefan@rumpelsepp.org>
 
 pkgname=public-inbox
-pkgver=1.1.0pre1
-_pkgver=1.1.0-pre1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='An "archives first" approach to mailing lists'
 arch=('any')
@@ -11,7 +10,7 @@ license=('AGPL')
 depends=(perl perl-timedate perl-digest-sha perl-email-mime perl-plack perl-uri)
 options=('!emptydirs' purge)
 # The build system fails if there is no git repo.
-source=("$pkgname::git+https://public-inbox.org/#tag=v$_pkgver")
+source=("$pkgname::git+https://public-inbox.org/#tag=v$pkgver")
 md5sums=('SKIP')
 
 build() {
