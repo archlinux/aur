@@ -1,0 +1,15 @@
+pkgbase = ttf-product-sans
+	pkgdesc = Product Sans is a geometric sans-serif typeface created by Google for branding purposes.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.google.com/
+	install = ttf-product-sans.install
+	arch = any
+	license = Proprietary
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = local://product.ttf
+	sha256sums = d23139478aa3b37805e6790e32ec724ff5622cffb1633832b062538a3b0055a5
+
+pkgname = ttf-product-sans
+
