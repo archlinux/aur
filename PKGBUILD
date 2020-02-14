@@ -5,7 +5,7 @@
 pkgname=python2-pafy
 _pkgname="mps-youtube-pafy-8161210"
 
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Python API for YouTube"
 
@@ -19,7 +19,7 @@ makedepends=('git' 'python2-setuptools')
 conflicts=('python-pafy' 'python2-pafy-git')
 
 source=("python-pafy-$pkgver.tar.gz::https://github.com/mps-youtube/pafy/archive/v$pkgver.tar.gz")
-sha1sums=('bb79fce739f44e6ac0f13911c8e388378fd5fccf')
+sha1sums=('e190a90949605353a9c4c415f41fd4599f4ce1db')
 
 package() {
 	cd pafy-$pkgver
