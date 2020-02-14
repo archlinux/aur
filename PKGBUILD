@@ -1,36 +1,37 @@
-pkgbase=python-pysqlite
+# Maintainer: Thore Bödecker <me [at] foxxx0 [dot] de>
+# Contributor: Daniel Milde <daniel@milde.cz>
+
 pkgname=python2-pysqlite
-pkgver=2.8.1
+_pkgname="${pkgname#python2-}"
+pkgver=2.8.3
 pkgrel=1
 pkgdesc="A Python DB-API 2.0 interface for the SQLite embedded relational database engine"
 license=('custom')
-arch=('any')
+arch=('x86_64')
 url="https://pypi.python.org/pypi/pysqlite"
 depends=('python2' 'sqlite')
-conflicts=('python-pysqlite<=2.8.1-1')
-replaces=('python-pysqlite<=2.8.1-1')
-source=(https://pypi.python.org/packages/source/p/pysqlite/pysqlite-${pkgver}.tar.gz
-        setup.cfg)
-sha256sums=('75cae18f9646f2a6137e1fb5302dba674b6982eeab3a2829377e98b13cfea066'
-         '37eeb06fdb89d5dd7674f8f8094614c21468b6b469169b1db5981632aa573dca')
+source=("https://pypi.python.org/packages/source/p/pysqlite/pysqlite-${pkgver}.tar.gz")
+sha256sums=('17d3335863e8cf8392eea71add33dab3f96d060666fe68ab7382469d307f4490')
 
 prepare() {
-  cp "${srcdir}/setup.cfg" pysqlite-${pkgver}
+  :
 }
 
 build() {
-  cd pysqlite-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 check() {
-  cd pysqlite-${pkgver}/build/lib.*/
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  py2_version="$(python2 -c 'import sys; print "{}.{}".format(sys.version_info.major, sys.version_info.minor)')"
+  cd "build/lib.linux-${arch}-${py2_version}/"
   python2 -c "from pysqlite2 import test; test.test()"
 }
 
-package_python2-pysqlite() {
-  cd pysqlite-${pkgver}
-  python2 setup.py install --root="${pkgdir}"
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   rm -r "${pkgdir}/usr/pysqlite2-doc"
 }
