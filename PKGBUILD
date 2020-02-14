@@ -3,7 +3,7 @@
 # Contributor: zwergnase <zwergnase@posteo.de>
 
 pkgname=sunvox
-pkgver=1.9.4c
+pkgver=1.9.5c
 pkgrel=1
 pkgdesc="Small, fast and powerful modular synthesizer with pattern-based sequencer (tracker)."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('unzip')
 source=(http://warmplace.ru/soft/sunvox/$pkgname-$pkgver.zip)
-md5sums=('10bbeed0e3efe9345d17127fdf7751ef')
+md5sums=('b04fbc2e945d54f9da4910065f956ce4')
 
 package() {
 	install -dm755 "${pkgdir}/opt/${pkgname}"
@@ -39,5 +39,5 @@ package() {
 	cp -a "${srcdir}/sunvox/examples" "${pkgdir}/opt/${pkgname}/examples"
 	cp -a "${srcdir}/sunvox/instruments" "${pkgdir}/opt/${pkgname}/instruments"
 	cp -a "${srcdir}/sunvox/effects" "${pkgdir}/opt/${pkgname}/effects"
-	install -Dm644 "${srcdir}/sunvox/docs/license/SunVox.txt"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/sunvox/docs/license/sunvox.txt"  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
