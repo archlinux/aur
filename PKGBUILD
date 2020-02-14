@@ -1,18 +1,18 @@
 # Maintainer: eomanis at web dot de
 
 pkgname='yabddnsd'
-_pkgverUpstream="0.6.8"
+_pkgverUpstream="0.7.0"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="Yet another bash dynamic DNS daemon"
 arch=('any')
 url='https://eomanis.duckdns.org/permshare/yabddnsd/'
 license=('GPL3')
-depends=('bash>=4.4' 'grep' 'sed' 'wget' 'bind-tools' 'coreutils' 'iproute2' 'bc')
+depends=('bash>=4.4' 'bc' 'bind-tools' 'coreutils' 'findutils' 'grep' 'iproute2' 'sed' 'wget')
 optdepends=('miniupnpc: Detection of public IPv4 address using UPnP')
 replaces=('freedns-maintain-ip')
 source=("https://eomanis.duckdns.org/permshare/yabddnsd/yabddnsd-${_pkgverUpstream}.tar.gz")
-sha384sums=('97de8873a46c04cf6dc5f95d1fd4623309283a8c6d809c3a175942036c2217bcc11f48f65b15a19ead751ca6a3fac9d7')
+sha384sums=('e90e85e923a953e7d3b375fc1018eb4ea7ff479835d0912cbb57def2f8e18edc8c4369e4d953d25c90cbe64841d3a76f')
 
 package() {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
