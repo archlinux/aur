@@ -1,0 +1,13 @@
+pkgbase = chromemateria-gtk-theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/stezkoy/chromemateria-gtk-theme
+	arch = any
+	license = GPL3
+	depends = gtk3
+	depends = gtk-engine-murrine
+	source = chromemateria-gtk-theme::git+https://github.com/stezkoy/chromemateria-gtk-theme.git
+	md5sums = SKIP
+
+pkgname = chromemateria-gtk-theme
+
