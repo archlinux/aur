@@ -3,7 +3,7 @@
 pkgname=lm-warp-git
 pkgver=0.0.1
 pkgrel=1
-pkgdesc="Share files across the LAN"
+pkgdesc="Share files across the LAN by Linux Mint"
 arch=("x86_64")
 _github="github.com/linuxmint/warp"
 url="https://$_github"

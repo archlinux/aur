@@ -1,5 +1,5 @@
 pkgbase = lm-warp-git
-	pkgdesc = Share files across the LAN
+	pkgdesc = Share files across the LAN by Linux Mint
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/linuxmint/warp
