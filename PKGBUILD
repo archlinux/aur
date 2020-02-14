@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=conan-git
-pkgver=1.21.0.r128.ge7ed0f58
+pkgver=1.22.0.r24.g4ea97afc
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -30,7 +30,7 @@ provides=('conan')
 conflicts=('conan')
 source=("conan-git::git+https://github.com/conan-io/conan.git" "arch-reqs.patch")
 md5sums=('SKIP'
-         '47aa1de692d5aa3be8767a42e5cff295')
+         '9ed61a4a87e1ace586c04860218ff341')
 
 
 pkgver() {
