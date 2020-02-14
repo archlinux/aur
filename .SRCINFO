@@ -1,0 +1,18 @@
+pkgbase = click-git
+	pkgdesc = The 'Command Line Interactive Controller for Kubernetes'
+	pkgver = 0.4.3.302.g8942cd5
+	pkgrel = 1
+	url = https://github.com/databricks/click
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = click
+	conflicts = click
+	source = click::git+https://github.com/databricks/click.git
+	sha256sums = SKIP
+
+pkgname = click-git
+
