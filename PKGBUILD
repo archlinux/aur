@@ -35,11 +35,12 @@ package() {
     sed -ri 's/(Icon=).+/\1bluemail/' "${pkgdir}/opt/bluemail/meta/gui/bluemail.desktop"
     install -Dm644 "${pkgdir}/opt/bluemail/meta/gui/bluemail.desktop" "${pkgdir}/usr/share/applications/bluemail.desktop"
 
-    # Cleanup snap vendor files
+    # Cleanup snap vendor files and useless files
     rm -rf "${pkgdir}/opt/bluemail/bin"
     rm -rf "${pkgdir}/opt/bluemail/etc"
     rm -rf "${pkgdir}/opt/bluemail/lib"
     rm -rf "${pkgdir}/opt/bluemail/meta"
     rm -rf "${pkgdir}/opt/bluemail/usr"
     rm -rf "${pkgdir}/opt/bluemail/var"
+    rm -f "${pkgdir}/opt/bluemail/*.sh"
 }
