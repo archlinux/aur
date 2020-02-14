@@ -1,0 +1,7 @@
+The 'mouse.p' is a small program I wrote back in 1983 for a ZX81-only maze competition arranged by a local (Finnish) computer magazine. It became second in that competition, and got a special mention of "creative display buffer usage". I'm still a bit proud of that :).
+
+("Kiitos juustosta" means "Thanks for the cheese")
+
+Jouni Rinne
+Pirkkala, Finland
+14.2.2020

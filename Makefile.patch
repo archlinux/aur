@@ -1,0 +1,20 @@
+--- Makefile.orig	2004-10-02 00:05:44.000000000 +0300
++++ Makefile	2020-02-13 22:32:26.890849472 +0200
+@@ -33,14 +33,14 @@
+ # possible. This definition is ok for gcc; if your compiler has
+ # problems, comment this out.
+ #
+-INLINEDEF=-DINLINE_DRAWPIX
++#INLINEDEF=-DINLINE_DRAWPIX
+ 
+ # dest for make install
+ #
+-PREFIX=/usr/local
++PREFIX=/usr
+ BINDIR=$(PREFIX)/bin
+ XBINDIR=$(BINDIR)
+-MANDIR=$(PREFIX)/man/man1
++MANDIR=$(PREFIX)/share/man/man1
+ LIBDIR=$(PREFIX)/lib/z81
+ 
+ # if you want the X version to be installed in the usual X executables
