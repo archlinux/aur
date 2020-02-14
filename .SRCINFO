@@ -9,6 +9,7 @@ pkgbase = lm-warp-git
 	depends = pygobject-devel
 	depends = python-setproctitle
 	depends = python-zeroconf
+	depends = python-xapp
 	source = lm-warp-git::git://github.com/linuxmint/warp/
 	sha512sums = SKIP
 
