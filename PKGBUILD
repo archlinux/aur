@@ -2,7 +2,7 @@
 
 pkgname=syscoin
 pkgver=4.1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
 url="https://syscoin.org"
