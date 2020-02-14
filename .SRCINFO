@@ -1,7 +1,7 @@
 pkgbase = riscv64-unknown-elf-gdb
 	pkgdesc = The GNU Debugger for the 32bit and 64bit RISC-V bare-metal target
 	pkgver = 9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gnu.org/software/gdb/
 	arch = x86_64
 	license = GPL3

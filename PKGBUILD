@@ -3,7 +3,7 @@
 _target=riscv64-unknown-elf
 pkgname=$_target-gdb
 pkgver=9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='The GNU Debugger for the 32bit and 64bit RISC-V bare-metal target'
 arch=(x86_64)
 url='https://www.gnu.org/software/gdb/'
