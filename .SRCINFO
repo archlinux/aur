@@ -11,6 +11,7 @@ pkgbase = gds-cli-git
 	optdepends = aws-cli: CLI for Amazon AWS
 	optdepends = aws-vault: Manager for AWS Credentials
 	optdepends = yubikey-manager: Manager for yubikey
+	optdepends = govuk-guix: CLI tool for managing GOV.UK services
 	provides = gds-cli=2.5.0.r4.g0d39742
 	conflicts = gds-cli
 	source = gds-cli-git::git+https://github.com/alphagov/gds-cli

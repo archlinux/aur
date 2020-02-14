@@ -8,7 +8,8 @@ url="https://github.com/alphagov/gds-cli"
 license=('unknown')
 optdepends=("aws-cli: CLI for Amazon AWS"
 	"aws-vault: Manager for AWS Credentials"
-	"yubikey-manager: Manager for yubikey")
+	"yubikey-manager: Manager for yubikey"
+    "govuk-guix: CLI tool for managing GOV.UK services")
 makedepends=('git' 'go-pie')
 provides=("gds-cli=${pkgver}")
 conflicts=('gds-cli')
