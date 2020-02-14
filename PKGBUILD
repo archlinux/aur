@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -31,4 +31,4 @@ package() {
   make DESTDIR="$pkgdir/" install
 }
 
-sha256sums=('a43726ed41533e73ad157d91932b75d9adb46f592660bfc3453563a57b47629c')
+sha256sums=('e6a340209e75c6100d64fceda18a02ba00def86b69a446a95d3e7e12ca1280df')
