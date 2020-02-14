@@ -1,10 +1,10 @@
 # Maintainer: Gabriel B. Casella <gbc921@gmail.com>
+# Maintainer: Cassio Batista <cassio.batista.13@gmail.com>
 # Contributor: Rafael Beraldo <rafaelluisberaldo@gmail.com>
-# Contributor: Cassio Batista <cassio.batista.13@gmail.com>
 
 pkgname=abntex2
 pkgver=1.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="a LaTeX class for writing ABNT-compliant documents"
 arch=('i686' 'x86_64')
 url="https://github.com/abntex/abntex2"

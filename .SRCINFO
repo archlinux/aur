@@ -1,7 +1,7 @@
 pkgbase = abntex2
 	pkgdesc = a LaTeX class for writing ABNT-compliant documents
 	pkgver = 1.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abntex/abntex2
 	install = abntex2.install
 	arch = i686
