@@ -5,7 +5,7 @@
 _target="shcasio-elf"
 pkgname=${_target}-gcc
 pkgver=9.2.0
-pkgrel=2
+pkgrel=3
 _islver=0.22
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
@@ -37,7 +37,7 @@ build() {
 
   cd gcc-build
 
-  [ $NOEXTRACT -eq 1 ] || ../configure \
+  ../configure \
     --prefix=/usr \
     --program-prefix=${_target}- \
     --target=sh3eb-elf \
