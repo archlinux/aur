@@ -1,9 +1,8 @@
 # Maintainer: Tim Diels <timdiels.m@gmail.com>
 
 pkgname=electroneum
-pkgver=0.11.0.0.revert
-real_pkgver=0.11.0.0-revert
-pkgrel=2
+pkgver=3.1.0.1
+pkgrel=1
 pkgdesc='Secure, private, mobile based cryptocurrency '
 arch=('any')
 url='https://electroneum.com'
@@ -18,8 +17,8 @@ optdepends=(
     'doxygen: documentation'
     'graphviz: documentation'
 )
-source=("https://github.com/$pkgname/$pkgname/archive/v$real_pkgver.tar.gz")
-md5sums=('ecaa9b3aaa47db4b45c1d6ab4b3274b9')
+source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver}.tar.gz")
+sha512sums=('14d14a003c23552e30edbe66b3a3c116f35695bd03044f517abaa46ea627f17c882d83fbdf3e0dd9407ba8b8325d3105200270403a6ee4bafda56627bf28e8ba')
 
 build() {
     cd "$pkgname-$real_pkgver"
