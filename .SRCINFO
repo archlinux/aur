@@ -1,0 +1,20 @@
+pkgbase = swami
+	pkgdesc = A SoundFont editor
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = http://www.swamiproject.org
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = gtk2
+	depends = fftw
+	depends = audiofile
+	depends = fluidsynth
+	optdepends = libpng
+	source = https://github.com/swami/swami/archive/v2.2.0.tar.gz
+	source = cwd.patch
+	sha1sums = 218685dec42d2db2dffa77a28633096d29458950
+	sha1sums = c8f475348486f7664deb1d47afa90039d31529e8
+
+pkgname = swami
+
