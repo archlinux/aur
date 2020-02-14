@@ -1,9 +1,9 @@
 pkgbase = github-cli
 	pkgdesc = The GitHub CLI
 	pkgver = 0.5.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cli/cli
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = glibc
 	makedepends = go-pie

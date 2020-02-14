@@ -3,9 +3,9 @@
 
 pkgname=github-cli
 pkgver=0.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The GitHub CLI"
-arch=("any")
+arch=("x86_64")
 url="https://github.com/cli/cli"
 license=("MIT")
 depends=("glibc")
