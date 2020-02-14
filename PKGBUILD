@@ -1,7 +1,7 @@
 _npmname=renovate
-_npmver=19.129.0
+_npmver=19.133.11
 pkgname=nodejs-renovate
-pkgver=19.129.0
+pkgver=${_npmver}
 pkgrel=1
 pkgdesc="Automated dependency updates. Multi-platform and multi-language."
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-sha256sums=('91c9b8c0d419e435ca8b092344cc7d85a182b5a5a593de20470b2cfc80a2e4b3')
+sha256sums=('757e9fb7da33929173936d7699d28d65e83462539f20d79b9c81a2252ca133df')
 
 package() {
   npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$_npmver.tgz
