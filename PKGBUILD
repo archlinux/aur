@@ -1,26 +1,27 @@
-# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+# Maintainer: mnussbaum <michaelnussbaum08@gmail.com>
+# Past maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
-_gemname=progressbar
-pkgname=ruby-$_gemname
-pkgver=0.21.0
-pkgrel=1
+pkgname=ruby-progressbar
+pkgver=1.10.1
+pkgrel=0
 pkgdesc="A text progress bar library for Ruby"
 arch=(any)
-url="https://github.com/peleteiro/progressbar"
-license=('RUBY')
-depends=('ruby')
-source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
-sha512sums=('63ef32fd583af0dc75284cbc94dae12883d0ba662a7cbfb0bcfdb09d936f2ef2628fee784f680e37316607b63f51ff538667b723cd904d63d01fe79d02f8ebbc')
-noextract=($_gemname-$pkgver.gem)
+url="https://github.com/jfelchner/ruby-progressbar"
+license=("MIT")
+depends=("ruby")
+source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
+sha256sums=("ee23400615f91c2ce6bc1e3bfa98392302ef38cbba8ad6de1bc26a4e1a88e7cc")
+noextract=($pkgname-$pkgver.gem)
 
 package() {
-  cd "$srcdir"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" \
-    "$_gemname-$pkgver.gem"
+  local _gemdir="$(ruby -e"puts Gem.default_dir")"
 
-  install -Dm644 $(find "${pkgdir}" -name LICENSE) \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  gem install \
+    --ignore-dependencies \
+    --no-user-install \
+    -i "$pkgdir/$_gemdir" \
+    -n "$pkgdir/usr/bin" \
+    $_gemname-$pkgver.gem
+
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
-
-# vim:set ts=2 sw=2 et:
