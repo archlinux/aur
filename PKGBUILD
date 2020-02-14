@@ -5,7 +5,7 @@
 _target="shcasio-elf"
 pkgname=${_target}-gcc
 pkgver=9.2.0
-pkgrel=3
+pkgrel=4
 _islver=0.22
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ sha256sums=('ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver/+/-}"
-  ln -s ../isl-$_islver isl
+  ln -sf ../isl-$_islver isl
 
   [[ -d gcc-build ]] && rm -rf gcc-build
   mkdir gcc-build
