@@ -9,6 +9,7 @@ arch=(any)
 url="https://github.com/jfelchner/ruby-progressbar"
 license=("MIT")
 depends=("ruby")
+makedepends=(rubygems)
 source=(http://rubygems.org/downloads/$pkgname-$pkgver.gem)
 sha256sums=("ee23400615f91c2ce6bc1e3bfa98392302ef38cbba8ad6de1bc26a4e1a88e7cc")
 noextract=($pkgname-$pkgver.gem)

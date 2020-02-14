@@ -5,6 +5,7 @@ pkgbase = ruby-progressbar
 	url = https://github.com/jfelchner/ruby-progressbar
 	arch = any
 	license = MIT
+	makedepends = rubygems
 	depends = ruby
 	noextract = ruby-progressbar-1.10.1.gem
 	source = http://rubygems.org/downloads/ruby-progressbar-1.10.1.gem
