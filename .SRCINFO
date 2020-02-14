@@ -1,0 +1,18 @@
+pkgbase = molblocks
+	pkgdesc = A suite to break small molecules into chemically meaningful fragments
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://compbio.cs.princeton.edu/molblocks/
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = patch
+	makedepends = make
+	depends = openbabel2
+	source = https://compbio.cs.princeton.edu/molblocks/molblocks.tar.gz
+	source = fix_linking.patch
+	sha1sums = f9cf416d89a282e6dd75a114faef9aa822ded6a6
+	sha1sums = ef8909111347af97ef4c70e296f6d881fbb2a892
+
+pkgname = molblocks
+

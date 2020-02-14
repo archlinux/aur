@@ -1,0 +1,13 @@
+--- Makefile	2013-10-24 18:44:45.000000000 +0400
++++ Makefile	2020-02-14 17:52:48.328016664 +0300
+@@ -1,8 +1,8 @@
+ CXXFLAGS := -O3 -Wall 
+-INCLUDES := -Iboost -I/usr/local/include/openbabel-2.0
+-LIBS=-L/usr/local/lib -lm -lopenbabel
++INCLUDES := -Iboost -I/usr/include/openbabel-2.0
++LIBS=-L/usr/local/lib -lm -l:libopenbabel.so.5
+ 
+ all: fragment analyze
+ 
+ fragment: fragment.C
+ 	g++ $(CXXFLAGS) -o fragment fragment.C utilities.C $(INCLUDES) $(LIBS)
