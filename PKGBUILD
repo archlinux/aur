@@ -3,7 +3,7 @@
 _pkgname='wxtoimg'
 pkgname="$_pkgname-beta"
 pkgver='2.11.2'
-pkgrel='6'
+pkgrel='7'
 pkgdesc='Software to decode APT and WEFAX signals from weather satellites'
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://${_pkgname}restored.xyz/beta"
