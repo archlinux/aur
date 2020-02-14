@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 pkgname=pwninit-bin
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=0
 provides=('pwninit')
 conflicts=('pwninit')
@@ -10,7 +10,7 @@ pkgdesc="pwninit - automate starting binary exploit challenges. Pre-compiled."
 license=('MIT')
 url="https://github.com/io12/pwninit"
 source=("${pkgname}-${pkgver}::https://github.com/io12/pwninit/releases/download/${pkgver}/pwninit")
-md5sums=('14ab0a95a15646fec8f3b7c318c59b5c')
+sha256sums=('ac2984416f41790367759bb4c0f2a10653d7b4a31264291f71ab3199a321795e')
 
 package() {
   install -Dm 755 "${pkgname}-${pkgver}" -T "${pkgdir}/usr/bin/pwninit"
