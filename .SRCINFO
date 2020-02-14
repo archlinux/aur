@@ -17,9 +17,9 @@ pkgbase = lib32-lv2
 	conflicts = lib32-lv2core
 	replaces = lib32-lv2core
 	source = http://lv2plug.in/spec/lv2-1.16.0.tar.bz2
-	source = lv2-1.16.0-fix_lv2_validate.patch::https://github.com/ventosus/lv2/commit/51e6005c9f33a9dd6ac5004a09fcb6ffbdee8dee.patch
+	source = lv2-1.16.0-fix_lv2_validate.patch
 	sha512sums = ead6d590cded5dd7a548d6ffe0f2f9f8efadfa7bb9e8b4fa0aea6664ccdfbb3ca697514bddebe695a9442fba5b62714b5cd45c1bf7d0aaef12ffe50972c2d88c
-	sha512sums = 448cc7d3d8cac70ae4abda5ea1b6c4320084649a0af8fcacaa9e86f3dfd7c6599a4c25e8c452f1f30385fa9a363b67e87b634a63d70c7add9de29effef7f3c28
+	sha512sums = d0293d9599440db06066ef5c26bbef8195a4dc9cc9581036bf9a2b8fb96140e10f24ebd30f40cab62ee91acb70de8de17c7cc1dcf7b017736858aa12222df5bc
 
 pkgname = lib32-lv2
 
