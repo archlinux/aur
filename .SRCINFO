@@ -1,18 +1,18 @@
 pkgbase = drpython
 	pkgdesc = Python IDE built with wxWidgets
-	pkgver = 3.11.3
+	pkgver = 3.11.4
 	pkgrel = 2
 	url = http://drpython.sourceforge.net/
 	arch = any
 	license = GPL
 	depends = wxpython
 	optdepends = python2-docs: Python documentation
-	source = http://downloads.sourceforge.net/sourceforge/drpython/DrPython%20Current/3.11.3/DrPython_3.11.3.zip
+	source = http://downloads.sourceforge.net/sourceforge/drpython/DrPython%20%283.x%29/3.11.4/DrPython_3.11.4.zip
 	source = drpython.sh
 	source = drpython.desktop
-	md5sums = eb59cf61d840af274d2940ce1a3c2bd4
-	md5sums = 4301f6421351e0632cf2d4f8f373616f
-	md5sums = 171d08cdc4f3cc429c60d70a5e4e5e3e
+	sha512sums = 13943eb28d7155e99e0ffb57903ddde25c964c908ac848f14041c456bc6aa71bab7cad1101e489c09ba5efb5af35e33895a518021bb607f5047844927bcebf2b
+	sha512sums = 565512c83b10ec371b6d5d9c279c875e9dd0bd50480a246f8cbe905181d83686a3230f61fe41f1fffb0ac17d0b07c2a7b7311de8b27e91bc9a3f88f44328e7b8
+	sha512sums = 06f375050c07f19a94b195b3ecaeb786b16ffb7ef22a1d01330d625153e2de3a6caa015d5ec71abd36c4d80e4a39926e65cb11f3907c9c69c4b7fa522bc8318d
 
 pkgname = drpython
 
