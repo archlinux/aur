@@ -1,17 +1,18 @@
 # Maintainer: Gabriel B. Casella <gbc921@gmail.com>
 # Contributor: Rafael Beraldo <rafaelluisberaldo@gmail.com>
+# Contributor: Cassio Batista <cassio.batista.13@gmail.com>
 
 pkgname=abntex2
-pkgver=1.9.6
+pkgver=1.9.7
 pkgrel=1
 pkgdesc="a LaTeX class for writing ABNT-compliant documents"
 arch=('i686' 'x86_64')
 url="https://github.com/abntex/abntex2"
 license=('LPPL')
-depends=('texlive-core')
+depends=('texlive-core' 'texlive-latexextra')
 source=("http://dl.bintray.com/laurocesar/generic/${pkgname}.tds-${pkgver}.tar.gz")
 conflicts=('texlive-publishers')
-sha1sums=('044c074cb263bb7a9cb51f3ce394a15264064190')
+sha1sums=('66b60932890ce5e680edb3a63866340491ec6da2')
 
 install=abntex2.install
 
