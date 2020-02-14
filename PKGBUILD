@@ -49,7 +49,7 @@ pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.4
 _minor=19
-_rtver=10
+_rtver=11
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -341,7 +341,7 @@ done
 
 sha512sums=('f122ee2baf31c4af6e6c727116558ef535d824fd893b80944f3272a32aa33c699be692c19b6a7333a4fbe93e706dca1f1b5ab3c918d9c9fa690daee42e2185e6'
             'SKIP'
-            'f86c058a4b1f500db9d56bafb16c2e462d5e68a9af28762e08b36934aa99bfef6fc37a1bf4df75af625bbc213db3c41ab3113bf5e50997f4f6c0c4709273ebe3'
+            '34c5bc4af3073b813c4767f6e78094ee601168fbfc08683ea7c7cc384801a34337a093b1fc730068b391eeebe34338d1056e7f8fbe4ddb8bf11f34750513abf3'
             'SKIP'
             '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
