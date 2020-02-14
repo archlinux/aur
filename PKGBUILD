@@ -37,8 +37,8 @@ sha256sums=('265729c1d676939bc81f96689b72c5f413083f4bbd849393f7629db05523d238'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
             '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
-            'b5f1a5bb354552acebe2857b9579410f7fd589f2f7d6b12fbbfe4127a2d33fd8'
-            '2d5ae5f5379e6ea095bb30c374b493b1fdd47b06aa536760c6c73bb062eb6eef')
+            '7e94bcd530161251f99cdc033fbbaad0a07f3dac02ebd318edb08580ea500160'
+            '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0')
 
 package() {
     cd "$pkgdir"
@@ -60,7 +60,7 @@ package() {
 
     install -Dm644 "$srcdir/router.config"     "opt/i2p/router.config"
     install -Dm644 "$srcdir/wrapper.config"    "opt/i2p/wrapper.config"
-    install -Dm755 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
+    install -Dm754 "$srcdir/i2prouter.sh"      "opt/i2p/i2prouter"
     install -Dm755 "$srcdir/chromium-i2p.sh"   "opt/i2p/scripts/chromium-i2p"
 
     install -Dm644 "$srcdir/i2prouter.bash"    "usr/share/bash-completion/completions/i2prouter"
