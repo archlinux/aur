@@ -1,7 +1,7 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
-	pkgver = 1.42.0
-	pkgrel = 3
+	pkgver = 1.42.1
+	pkgrel = 1
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	arch = aarch64
@@ -22,15 +22,15 @@ pkgbase = vscodium-bin
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = code
 	conflicts = code
-	noextract = vscodium-bin-1.42.0-3-x86_64.tar.gz
+	noextract = vscodium-bin-1.42.1-1-x86_64.tar.gz
 	source = vscodium-bin.desktop
 	sha256sums = 5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86
-	source_x86_64 = vscodium-bin-1.42.0-3-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-x64-1.42.0.tar.gz
-	sha256sums_x86_64 = b83425865394d6414ea22aa065a4b2413e93acf63b97f973743c69c38960d138
-	source_aarch64 = vscodium-bin-1.42.0-3-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-arm64-1.42.0.tar.gz
-	sha256sums_aarch64 = c94855c7d08ae197d2893aabc9467e37cad4ae0bd3c954ac573a4f526b99711d
-	source_armv7h = vscodium-bin-1.42.0-3-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.0/VSCodium-linux-arm-1.42.0.tar.gz
-	sha256sums_armv7h = 85745764ea7f541f9adb76d98a6675563fcc02d0cf8515f58600867f5f1fc377
+	source_x86_64 = vscodium-bin-1.42.1-1-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.1/VSCodium-linux-x64-1.42.1.tar.gz
+	sha256sums_x86_64 = be05377a2a88a3167e3959cf312c55a404314be30df96d7df543e87b761e4cdd
+	source_aarch64 = vscodium-bin-1.42.1-1-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.1/VSCodium-linux-arm64-1.42.1.tar.gz
+	sha256sums_aarch64 = e40af11260dfe851510272c5ecb22cdbb65bbee6545eba841bdcc81165aada27
+	source_armv7h = vscodium-bin-1.42.1-1-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.42.1/VSCodium-linux-arm-1.42.1.tar.gz
+	sha256sums_armv7h = 4406e67781b543b2d1b8a25b038a675d94bd778c1d95356ca4abbcfe2758ea21
 
 pkgname = vscodium-bin
 
