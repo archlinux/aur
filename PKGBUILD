@@ -12,9 +12,7 @@ depends=("glibc")
 makedepends=("glibc" "go-pie")
 optdepends=("git: To interact with repositories")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cli/cli/archive/v${pkgver}.tar.gz")
-sha256sums=(
-    "7c2cfdafe765a598b70b3e6de839590e8fa30a89bedc85799a43bdbc6fd3277e"
-)
+sha256sums=('7c2cfdafe765a598b70b3e6de839590e8fa30a89bedc85799a43bdbc6fd3277e')
 
 build() {
 	cd "cli-$pkgver"
