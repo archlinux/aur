@@ -3,7 +3,7 @@
 
 pkgname=aocl
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -18,7 +18,7 @@ options=('staticlibs' '!strip')
 depends=('env-modules')
 install=aocl.install
 sha256sums=(
-	"e47320299b35a17a60bd3ea4b49263a7ae6a85f1acb86e9a5d9cad6c1e027c45"
+	"8ea9ec16051893e480f7ba09babeaa833897586aa4d0c2c53b22132b5884150c"
 	"SKIP"
 	"SKIP"
 )
@@ -44,11 +44,6 @@ package() {
 	# strip unneeded directories
 	mv ${prefix}/amd/${pkgname}/${pkgver}/* ${prefix}
 	rm -r ${prefix}/amd
-
-	# fix amd-libm
-	sed -e "s/__mm256/__m256/g" \
-		-e "s/emmintrin.h/immintrin.h/g" \
-		-i ${prefix}/amd-libm/include/amdlibm.h
 
 	# modulefile
 	echo -e "\nSymlinking modulefile..."
