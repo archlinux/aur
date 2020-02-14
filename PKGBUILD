@@ -5,7 +5,7 @@
 _target="shcasio-elf"
 pkgname=${_target}-gcc
 pkgver=9.2.0
-pkgrel=4
+pkgrel=5
 _islver=0.22
 pkgdesc="The GNU Compiler Collection for the Casio calculators SuperH processors."
 arch=(i686 x86_64)
@@ -32,6 +32,7 @@ build() {
   export CFLAGS="-O2 -pipe -s -fomit-frame-pointer -ffunction-sections -fdata-sections"
   export CXXFLAGS=$CFLAGS
   export LDFLAGS="-Wl,--gc-sections"
+  export LIBRARY_PATH="" # Fix a bug in the matrix
 
   echo ${pkgver} > gcc/BASE-VER
 
@@ -40,9 +41,14 @@ build() {
   ../configure \
     --prefix=/usr \
     --program-prefix=${_target}- \
+	--with-local-prefix=/usr/${_target} \
+	--with-as=/usr/bin/${_target}-as \
+	--with-ld=/usr/bin/${_target}-ld \
     --target=sh3eb-elf \
+	--with-multilib-list=m3,m4-nofpu \
     --host=$CHOST \
     --build=$CHOST \
+	--enable-languages=c,c++ \
     --disable-shared \
     --disable-nls \
     --disable-tls \
@@ -50,22 +56,7 @@ build() {
 	--enable-libssp \
 	--enable-lto \
     --disable-threads \
-	--with-multilib-list=m3,m4-nofpu \
-    --enable-languages=c,c++ \
-    --enable-multilib \
-    --with-system-zlib \
-    --with-local-prefix=/usr/${_target} \
-    --with-as=/usr/bin/${_target}-as \
-    --with-ld=/usr/bin/${_target}-ld \
     --disable-libgomp \
-    --enable-interwork \
-    --enable-addons \
-    --enable-sjlj-exceptions \
-    --disable-hosted-libstdcxx \
-    --with-gnu-as \
-    --with-gnu-ld \
-    --disable-libssp \
-    --disable-__cxa_atexit
 
   make all-gcc all-target-libgcc
 }
