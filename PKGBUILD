@@ -1,7 +1,7 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
 pkgver=8867.2642d9b20
-pkgrel=1
+pkgrel=2
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
@@ -25,7 +25,7 @@ build() {
 
   cmake "../${pkgname}_src" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCACHE_NAME_SUFFIX="-latest" \
+    -DCACHE_NAME_SUFFIX="-git" \
     -DCMAKE_BUILD_TYPE=Release \
     -DPROC_TARGET_NUMBER="2" \
     -DWITH_LTO="ON"
