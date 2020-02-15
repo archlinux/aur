@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-gazebo-ros
 	pkgdesc = ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS.
 	pkgver = 2.8.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gazebosim.org/tutorials?cat=connect_ros
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = Apache 2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
