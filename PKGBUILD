@@ -17,4 +17,8 @@ package(){
 	# Extract package data
 	tar xf data.tar.gz -C "${pkgdir}"
 
+	mkdir "${pkgdir}/usr/bin"
+	mv "${pkgdir}/usr/sbin/fdbserver" "${pkgdir}/usr/bin/fdbserver"
+	rmdir "${pkgdir}/usr/sbin" || true
+	sed -i "s,/usr/sbin,/usr/bin," "${pkgdir}/etc/foundationdb/foundationdb.conf"
 }
