@@ -1,0 +1,30 @@
+pkgbase = deepin-wine-wxwork
+	pkgdesc = Tencent WXWork (com.wxwork) on Deepin Wine For Archlinux
+	pkgver = 3.0.7.1708
+	pkgrel = 1
+	url = https://weixin.qq.com/
+	install = deepin-wine-wxwork.install
+	arch = x86_64
+	license = custom
+	depends = p7zip
+	depends = wine
+	depends = wine-mono
+	depends = wine_gecko
+	depends = xorg-xwininfo
+	depends = wqy-microhei
+	depends = lib32-alsa-lib
+	depends = lib32-alsa-plugins
+	depends = lib32-libpulse
+	depends = lib32-openal
+	depends = lib32-mpg123
+	depends = lib32-libldap
+	conflicts = deepin-wxwork
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin.com.weixin.work/deepin.com.weixin.work_2.8.10.2010deepin0_i386.deb
+	source = WXWork-3.0.7.1708.exe::https://dldir1.qq.com/wework/work_weixin/WXWork_3.0.7.1708.exe
+	source = run.sh
+	md5sums = a82495943fe4b748cf2b740704f1ec45
+	md5sums = 4fe39dbaa7473ff281ec52090c8bbdbb
+	md5sums = 262e9832f292f6d7641d6033d797d55d
+
+pkgname = deepin-wine-wxwork
+
