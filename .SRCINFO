@@ -1,14 +1,14 @@
 pkgbase = eruption-roccat-vulcan-git
 	pkgdesc = Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/
 	install = eruption.install
 	arch = i686
 	arch = x86_64
 	license = GPL3+
 	makedepends = git
-	makedepends = rust-nightly
+	makedepends = rust
 	depends = libevdev
 	depends = hidapi
 	depends = systemd-libs
