@@ -7,7 +7,7 @@ pkgdesc='A frontend to curl that adds the ease of use of httpie'
 arch=('x86_64')
 url="https://curlie.io/"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'git')
 depends=('curl')
 source=("git+https://github.com/rs/curlie.git#tag=v$pkgver")
 sha256sums=('SKIP')
