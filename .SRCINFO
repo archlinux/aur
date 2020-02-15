@@ -1,6 +1,6 @@
 pkgbase = lightdm-webkit-theme-litarvan-git
 	pkgdesc = Modern and full-featured LightDM theme
-	pkgver = 3.0.0.pre3.r23.gc79eb52
+	pkgver = 3.0.0.r7.g9745227
 	pkgrel = 1
 	url = https://github.com/Litarvan/lightdm-webkit-theme-litarvan
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = lightdm-webkit-theme-litarvan-git
 	depends = lightdm-webkit2-greeter
 	provides = lightdm-webkit-theme-litarvan
 	conflicts = lightdm-webkit-theme-litarvan
-	source = lightdm-webkit-theme-litarvan-git::git://github.com/Litarvan/lightdm-webkit-theme-litarvan/
+	source = lightdm-webkit-theme-litarvan-git::git+https://github.com/Litarvan/lightdm-webkit-theme-litarvan.git
 	sha512sums = SKIP
 
 pkgname = lightdm-webkit-theme-litarvan-git

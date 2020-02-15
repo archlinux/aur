@@ -1,9 +1,9 @@
 # Maintainer: Kyle Laker <kyle+aur at laker dot email>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+
 _basepkg="lightdm-webkit-theme-litarvan"
 pkgname="${_basepkg}-git"
-#pkgname=lightdm-webkit-theme-litarvan
-pkgver=3.0.0.pre3.r23.gc79eb52
+pkgver=3.0.0.r7.g9745227
 pkgrel=1
 pkgdesc='Modern and full-featured LightDM theme'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('lightdm-webkit2-greeter')
 conflicts=("$_basepkg")
 provides=("$_basepkg")
 makedepends=('git' 'npm')
-source=("$pkgname::git://$_github/")
+source=("$pkgname::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
