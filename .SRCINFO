@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-laser-proc
 	pkgdesc = ROS - laser_proc
 	pkgver = 0.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/laser_proc
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
