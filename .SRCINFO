@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-wiimote
 	pkgdesc = ROS - The wiimote package allows ROS nodes to communicate with a Nintendo Wiimote and its related peripherals, including the Nunchuk, Motion Plus, and (experimentally) the Classic.
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/wiimote
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = GPL
 	makedepends = cmake
 	makedepends = ros-build-tools
