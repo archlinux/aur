@@ -1,6 +1,6 @@
 pkgbase = librewolf-bin
 	pkgdesc = Community-maintained fork of Librefox: a privacy and security-focused browser
-	pkgver = 72.0.2
+	pkgver = 73.0
 	pkgrel = 1
 	url = https://LibreWolf.gitlab.io
 	install = librewolf-bin.install
@@ -27,8 +27,8 @@ pkgbase = librewolf-bin
 	provides = librewolf
 	conflicts = librewolf
 	options = !emptydirs
-	source = https://gitlab.com/librewolf-community/browser/arch/-/jobs/409271226/artifacts/raw/librewolf-72.0.2-1-x86_64.pkg.tar.xz
-	sha256sums = b19984711db368a6893d9afa09c6fe5a0b9186e5e7e950bd70e0a65017a68f3b
+	source = https://gitlab.com/librewolf-community/browser/arch/uploads/8a4baa82b402eff025493fecf7a5851f/librewolf-73.0-1-x86_64.pkg.tar.xz
+	sha256sums = dfcd8ee286b1812b096f81e7e158bbdb82c2a6fbf0775bd345d59bae3ad62338
 
 pkgname = librewolf-bin
 
