@@ -1,6 +1,6 @@
 pkgbase = pam-gnupg-git
 	pkgdesc = Unlock GnuPG keys on login
-	pkgver = r15.17f0305
+	pkgver = r39.caeeec7
 	pkgrel = 1
 	url = https://github.com/cruegge/pam-gnupg
 	arch = i686
