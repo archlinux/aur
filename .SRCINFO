@@ -1,0 +1,15 @@
+pkgbase = pam-gnupg
+	pkgdesc = Unlock GnuPG keys on login
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cruegge/pam-gnupg
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pam
+	depends = gnupg
+	source = https://github.com/cruegge/pam-gnupg/archive/v0.1.tar.gz
+	sha256sums = b6e1a018185fb0ed467fa33e25998a9d666634da3828f8e4497e5d3739a59dc4
+
+pkgname = pam-gnupg
+
