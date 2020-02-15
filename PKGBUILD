@@ -6,8 +6,8 @@ url='https://wiki.ros.org/unique_id'
 pkgname='ros-melodic-unique-id'
 pkgver='1.0.6'
 _pkgver_patch=0
-arch=('any')
-pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
@@ -51,9 +51,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
