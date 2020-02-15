@@ -1,7 +1,7 @@
 pkgbase = aws-vault-git
 	pkgdesc = A vault for securely storing and accessing AWS credentials in development environments
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/99designs/aws-vault
 	arch = i686
 	arch = x86_64

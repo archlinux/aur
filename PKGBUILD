@@ -1,7 +1,7 @@
 # Maintainer: Tom Whitwell <tom@whi.tw>
 pkgname=aws-vault-git
 pkgver=5.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A vault for securely storing and accessing AWS credentials in development environments"
 arch=('i686' 'x86_64')
 url="https://github.com/99designs/aws-vault"
@@ -55,8 +55,8 @@ package() {
 	msg2 'completion files'
 	pushd "${srcdir}/${pkgname}" >/dev/null
 	{
-		install -Dm644 "completions/bash/aws-vault" "${pkgdir}/usr/share/zsh/site-functions/aws-vault"
-		install -Dm644 "completions/zsh/_aws-vault" "${pkgdir}/usr/share/bash-completion/completions/_aws-vault"
+		install -Dm644 "completions/bash/aws-vault" "${pkgdir}/usr/share/bash-completion/completions/aws-vault"
+		install -Dm644 "completions/zsh/_aws-vault" "${pkgdir}/usr/share/zsh/site-functions/_aws-vault"
 	}
 	popd >/dev/null
 }
