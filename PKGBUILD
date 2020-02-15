@@ -1,6 +1,6 @@
 # Maintainer: Michael Koloberdin <koloberdin@gmail.com>
 pkgname=urweb
-pkgver=20190217
+pkgver=20200209
 pkgrel=1
 pkgdesc="Ur/Web: purely functional language/framework for web programming"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('curl' 'mlton')
 depends=('libmariadbclient' 'postgresql-client' 'sqlite3' 'openssl' 'uthash')
 source=("https://github.com/urweb/urweb/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
 	"use-system-uthash.patch")
-sha512sums=('5f21ef3b5330ab2a5be204cc89b4184d9dad03b4d30f87c81fd48366d43dc115ab9a4c1b3e2de203c876413b528b221935282a020851c4e4ea7dcd13529dadf3'
+sha512sums=('a8b196cb8132d4f32069b7400ebc19569a34637daabc06139f1ad3cd808550f31ff09b670981fe7829c2b185497fcba9ffe202a30537cab179e26e84d58b40b6'
             'df7089e75d91c14568bcc01d0a0cf9d57e073c5e2c278508305176a8b7f2775f27a26b66d82e1566f00d473e89099480273a7b6f5f11d927802de959da3678ac')
 
 prepare() {
