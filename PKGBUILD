@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=greetd-git
-pkgver=r140.928171e0b0
+pkgver=r146.07baaae3c3
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
@@ -40,9 +40,6 @@ package() {
   install -d "$pkgdir"/usr/bin
   install -m755 greetd/target/release/greetd "$pkgdir"/usr/bin/
   install -m755 greetd/target/release/agreety "$pkgdir"/usr/bin/
-
-  install -d "$pkgdir"/etc/pam.d
-  install -m644 greetd/greeter.pam "$pkgdir"/etc/pam.d/greeter
 
   install -d "$pkgdir"/usr/lib/systemd/system
   install -m644 greetd/greetd.service "$pkgdir"/usr/lib/systemd/system/
