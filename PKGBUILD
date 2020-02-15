@@ -6,8 +6,8 @@ pkgdesc='Conversion nodes for messages from SocketCAN to a ROS Topic and vice ve
 url="http://wiki.ros.org/socketcan_bridge?distro=melodic"
 
 pkgver='0.8.1'
-pkgrel=1
-arch=('any')
+pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 license=('LGPL3')
 
 ros_makedepends=(
@@ -45,9 +45,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DCATKIN_ENABLE_TESTING=OFF \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
