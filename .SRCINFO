@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-test-mavros
 	pkgdesc = ROS - Tests for MAVROS package.
 	pkgver = 0.32.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mavlink/mavros
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD, GPLv3, LGPLv3
 	makedepends = cmake
 	makedepends = ros-build-tools
