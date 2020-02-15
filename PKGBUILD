@@ -8,7 +8,7 @@ pkgver() {
   git -C "$_pkgname" describe --tags | sed 's/v\?\([^-]\+\)-/\1.r/;s/-g/./'
 }
 pkgver=6.0.8.r3.961cd57
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Desktop integration for webapps'
 url="https://github.com/peppermintos/$_pkgname"
@@ -24,7 +24,7 @@ optdepends=('brave' 'firefox' 'chromium' 'google-chrome' 'vivaldi')
 
 source=("git+$url.git" "$_pkgname.patch")
 sha256sums=('SKIP'
-            '8aaff26c46a803ea6fb3a9e442a6fed830ff5c70228939783ceaa33578af5732')
+            'da1bee7eac42880ea640f3ff69d3514f1794b01510cf496e7dc11200908ace37')
 
 
 prepare() {
