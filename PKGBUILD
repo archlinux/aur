@@ -1,9 +1,10 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 # Contributor: Whitney Marshall <whitney.marshall@gmail.com>
 # Contributor: McNoggins <Gagnon88 (at) gmail (dot) com>
+# Contributor: Hielke Christian Braun <hcb@unco.de>
 
 pkgname=go-mtpfs-git
-pkgver=20190802
+pkgver=20200111
 pkgrel=1
 pkgdesc="Simple tool for viewing MTP devices as FUSE filesystems"
 arch=('x86_64' 'i686')
@@ -14,7 +15,6 @@ makedepends=('go>=1.3.0' 'git')
 options=('!strip' '!emptydirs')
 source=("git+https://github.com/hanwen/go-mtpfs.git")
 md5sums=("SKIP")
-_gourl=github.com/hanwen/go-mtpfs
 
 pkgver() {
   # Use date of latest commit for pkgver
@@ -23,24 +23,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir"
-  # Build using go
-  go mod init hanwen/go-mtpfs
-  go get -v -x ${_gourl}
+  cd "$srcdir/go-mtpfs"
+  go build ./
 }
 
 package() {
-
-  # Package license (if available)
-  for f in LICENSE COPYING; do
-    if [ -e "$srcdir/src/$_gourl/$f" ]; then
-      install -Dm644 "$srcdir/src/$_gourl/$f" "$pkgdir/usr/share/licenses/$pkgname/$f"
-    fi
-  done
-  
-  # Package executables
-  if [ -e "$srcdir/bin/go-mtpfs" ]; then
-    install -Dm755 "$srcdir/bin/go-mtpfs" \
-      "$pkgdir/usr/bin/go-mtpfs"
-  fi
+  install -Dm644 "$srcdir/go-mtpfs/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 "$srcdir/go-mtpfs/go-mtpfs" "$pkgdir/usr/bin/go-mtpfs"
 }
