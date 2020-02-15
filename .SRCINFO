@@ -1,6 +1,6 @@
 pkgbase = linux-rt-lts
 	pkgver = 4.19.100.41
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
@@ -31,7 +31,7 @@ pkgbase = linux-rt-lts
 	sha256sums = SKIP
 	sha256sums = 310dbe3ebbae886cb61be245e28c4af8af30ec905df967a27aefe0741d3cc72a
 	sha256sums = SKIP
-	sha256sums = 910998e7f633ee71349fba8e6c0475ec1bdda91e57b54db4db36a6f788643377
+	sha256sums = 2dff2b5674ff63f6960ba9ce1a597f87a773d1bd67cdbedca6baeafec79b9da3
 	sha256sums = a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2
 
 pkgname = linux-rt-lts

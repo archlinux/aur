@@ -1,16 +1,11 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
-# Contributor: Ray Rashif <schiv@archlinux.org>
-# Contributor: timbosa <tinny_tim@dodo.com.au>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 _pkgver=4.19.100
 _rtpatchver=41
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -38,12 +33,12 @@ sha256sums=('58138bb6a6930ba46d6d45be0422c53ccebb2b5513440a398465a233cd60e713'
             'SKIP'
             '310dbe3ebbae886cb61be245e28c4af8af30ec905df967a27aefe0741d3cc72a'
             'SKIP'
-            '910998e7f633ee71349fba8e6c0475ec1bdda91e57b54db4db36a6f788643377'
+            '2dff2b5674ff63f6960ba9ce1a597f87a773d1bd67cdbedca6baeafec79b9da3'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="@${SOURCE_DATE_EPOCH:-$(date +%s)}"
+export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd $_srcname
@@ -196,20 +191,12 @@ _package-docs() {
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   echo "Installing documentation..."
-  mkdir -p "$builddir"
-  cp -t "$builddir" -a Documentation
-
-  echo "Removing doctrees..."
-  rm -r "$builddir/Documentation/output/.doctrees"
-
-  echo "Moving HTML docs..."
   local src dst
   while read -rd '' src; do
-    dst="$builddir/Documentation/${src#$builddir/Documentation/output/}"
-    mkdir -p "${dst%/*}"
-    mv "$src" "$dst"
-    rmdir -p --ignore-fail-on-non-empty "${src%/*}"
-  done < <(find "$builddir/Documentation/output" -type f -print0)
+    dst="${src#Documentation/}"
+    dst="$builddir/Documentation/${dst#output/}"
+    install -Dm644 "$src" "$dst"
+  done < <(find Documentation -name '.*' -prune -o ! -type d -print0)
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
