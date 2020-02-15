@@ -2,7 +2,7 @@
 # Contributor: Timofey Titovets <nefelim4ag@gmail.com>
 
 pkgname=rrcc
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="RoboRock Control Center for Xiaomi vacuum cleaners"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('libssh'
          'qt5-websockets')
 source=("$pkgname-$pkgver.tar.gz"::"https://github.com/LazyT/rrcc/archive/$pkgver.tar.gz"
         "$pkgname.desktop")
-md5sums=('ed2cf9274acb08646d3b34877551aa42'
+md5sums=('130d10a9c5f9ee63e2793d9cc3189bb5'
          '35473fc49be43e11dab4fa8b1760dab8')
 
 prepare() {
