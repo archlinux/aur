@@ -20,8 +20,7 @@ pkgbase = art-rawconverter
 	depends = libcanberra
 	depends = libiptcdata
 	depends = desktop-file-utils
-	provides = art-rawconverter
-	conflicts = art-rawconverter
+	conflicts = art-rawconverter-git
 	source = art-rawconverter_1.0::git+https://bitbucket.org/agriggio/art.git#tag=1.0
 	source = bft_20.zip::https://discuss.pixls.us/uploads/short-url/fG7iCaIWBWBem30O67V15EfO521.zip
 	sha256sums = SKIP
