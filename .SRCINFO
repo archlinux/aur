@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-interactive-markers
 	pkgdesc = ROS - 3D interactive marker communication library for RViz and similar tools.
 	pkgver = 1.11.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/interactive_markers
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
