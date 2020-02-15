@@ -6,7 +6,7 @@
 
 pkgname=ttf-sil-fonts
 pkgver=7
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage depending on all OFL-licensed font packages from SIL"
 arch=('any')
 url='https://software.sil.org/fonts'
@@ -21,6 +21,7 @@ _silfonts=('abyssinica'
            'ezra'
            'galatia'
            'lateef'
+           'mingzat'
            'mondulkiri'
            'nuosu'
            'padauk'

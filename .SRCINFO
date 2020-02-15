@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-fonts
 	pkgdesc = Metapackage depending on all OFL-licensed font packages from SIL
 	pkgver = 7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.sil.org/fonts
 	arch = any
 	license = custom:OFL
@@ -15,6 +15,7 @@ pkgbase = ttf-sil-fonts
 	depends = ttf-sil-ezra
 	depends = ttf-sil-galatia
 	depends = ttf-sil-lateef
+	depends = ttf-sil-mingzat
 	depends = ttf-sil-mondulkiri
 	depends = ttf-sil-nuosu
 	depends = ttf-sil-padauk
