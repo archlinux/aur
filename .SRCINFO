@@ -1,7 +1,7 @@
 pkgbase = pcaudiolib-git
 	pkgdesc = Portable C Audio Library (git version)
 	pkgver = 1.1.2.gd6a6b00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rhdunn/pcaudiolib
 	arch = aarch64
 	arch = armv6h
@@ -10,6 +10,8 @@ pkgbase = pcaudiolib-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
 	optdepends = alsa-lib: ALSA output support
 	optdepends = pulseaudio: Pulseaudio output support
 	provides = pcaudiolib
