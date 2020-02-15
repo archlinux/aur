@@ -7,7 +7,7 @@
 pkgbase=cyrus-imapd
 pkgname=(cyrus-imapd cyrus-imapd-docs)
 pkgver=3.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="An email, contacts and calendar server"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.cyrusimap.org/"
@@ -17,6 +17,7 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav' 'rsync'
              'python-sphinx' 'perl-pod-pom-view-restructured')
 source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
+        "libcap.patch::https://github.com/cyrusimap/cyrus-imapd/pull/2991.patch"
         "perl-libs.patch"
         "vzic-flags.patch"
         "imapd.conf.patch"
@@ -26,6 +27,7 @@ source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
 validpgpkeys=('5B55619A9D7040A9DEE2A2CB554F04FEB36378E0')
 sha512sums=('5cd066916797efb975cdb97720f65edc72d3fe82afbd78a26aa8369d95ae4ca09c0593dd4bec5521156c64ea38af7a13065f3b35447a76267dec93feb0ac6ac6'
             'SKIP'
+            '9b2b0dfb5b37bed874f6f57920397af1b422fc3b0d2b5b1171f2bd7b73e4e778e4adc7a28cb2d48becc12b50626017aa4a5a206201f660533ae283a6b78add7e'
             '63fdce85cd89ea8cdce31c36546c1d600620ef2c9a2f2426e0301e76887c6b56602687c8551b2f5d1b1ae948b21a964dffcf6da41745d9481f2b734f936093d1'
             'ff1adb55abb059f0c022ae3e375c0a099278d69174bef712b85af40b00fa68a6d49604d09f80195a429ff842813e914557d7aff773231776cbbc5037164c180a'
             '0862ffc8c05208efd4d2fb50a6e3719ebc65fc2d72f8e6404235aa32cc44d8227056a17b78f2726e15ff8e38d473795f837c34bfbe89b694b2298c9baab9d5db'
@@ -36,6 +38,7 @@ sha512sums=('5cd066916797efb975cdb97720f65edc72d3fe82afbd78a26aa8369d95ae4ca09c0
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
+  patch -Np1 < "${srcdir}/libcap.patch"
   patch -Np1 < "${srcdir}/perl-libs.patch"
   patch -Np1 < "${srcdir}/vzic-flags.patch"
   autoreconf
