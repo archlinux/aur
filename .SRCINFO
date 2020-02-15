@@ -1,16 +1,20 @@
 pkgbase = lm-warp-git
 	pkgdesc = Share files across the LAN by Linux Mint
-	pkgver = 0.0.1
+	pkgver = r21.cb9f695
 	pkgrel = 1
 	url = https://github.com/linuxmint/warp
 	arch = x86_64
+	license = none
 	makedepends = git
 	makedepends = meson
 	depends = pygobject-devel
 	depends = python-setproctitle
 	depends = python-zeroconf
 	depends = python-xapp
-	source = lm-warp-git::git://github.com/linuxmint/warp/
+	depends = xapps
+	provides = lm-warp
+	conflicts = lm-warp
+	source = git+https://github.com/linuxmint/warp.git
 	sha512sums = SKIP
 
 pkgname = lm-warp-git

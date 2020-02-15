@@ -1,24 +1,30 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=lm-warp-git
-pkgver=0.0.1
+pkgver=r21.cb9f695
 pkgrel=1
 pkgdesc="Share files across the LAN by Linux Mint"
 arch=("x86_64")
-_github="github.com/linuxmint/warp"
-url="https://$_github"
-depends=(pygobject-devel python-setproctitle python-zeroconf python-xapp)
-makedepends=(git meson)
-source=("$pkgname::git://$_github/")
+url="https://github.com/linuxmint/warp"
+license=("none")
+depends=("pygobject-devel" "python-setproctitle" "python-zeroconf" "python-xapp" "xapps")
+makedepends=("git" "meson")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/warp"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-  cd "$srcdir"
-  pwd
-  meson --prefix /usr --buildtype=plain "$pkgname" build
-  ninja -C build
+    meson --prefix /usr --buildtype=plain warp build
+    ninja -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+    DESTDIR="$pkgdir" ninja -C build install
 }
