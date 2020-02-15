@@ -1,4 +1,4 @@
-pkgbase = wslu
+pkgbase = wslu-git
 	pkgdesc = A collection of utilities for Windows 10 Linux Subsystems
 	pkgver = vrolling
 	pkgrel = 2

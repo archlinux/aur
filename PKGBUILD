@@ -9,7 +9,6 @@ url='https://github.com/wslutilities/wslu'
 license=('GPL3')
 depends=('bc' 'imagemagick' 'bash-completion')
 makedepends=('git' 'make' 'gzip')
-pkgbase=${pkgname%-git}
 conflicts=('wslu')
 provides=('wslu')
 source=("git+https://github.com/wslutilities/wslu.git")
