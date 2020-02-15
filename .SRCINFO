@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-control-toolbox
 	pkgdesc = ROS - The control toolbox contains modules that are useful across all controllers.
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/control_toolbox
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
