@@ -21,5 +21,5 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	install -Dm755 vul $pkgdir/usr/bin/grb
+	install -Dm755 grb $pkgdir/usr/bin/grb
 }
