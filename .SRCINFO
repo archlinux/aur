@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-class-loader
 	pkgdesc = ROS - The class_loader package is a ROS-independent package for loading plugins during runtime and the foundation of the higher level ROS pluginlib library.
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/class_loader
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
