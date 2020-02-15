@@ -1,0 +1,71 @@
+meta:
+  containers:
+    ruby: &makepkg-image-resource
+      type: docker-image
+      source:
+        repository: whynothugo/makepkg
+        tag: latest
+jobs:
+  - name: Trigger
+    plan:
+      - in_parallel:
+          - get: gds-cli-src
+            trigger: true
+
+  - name: Build
+    plan:
+      - in_parallel:
+          - get: gds-cli-src
+            passed: [Trigger]
+            trigger: true
+          - get: gds-cli-aur
+      - task: Run Make job
+        config:
+          platform: linux
+          image_resource: *makepkg-image-resource
+          inputs:
+            - name: gds-cli-aur
+          outputs:
+            - name: gds-cli-aur_updated
+          run:
+            path: sh
+            args:
+              - -exc
+              - |
+                sudo chown -R notroot.notroot .
+                git clone gds-cli-aur gds-cli-aur_updated
+                cd gds-cli-aur_updated
+                sed -i 's/pkgrel\=.*$/pkgrel\=1/' PKGBUILD
+                set +x
+                git config --global credential.helper store
+                git config --global push.default simple
+                git config --global user.email "concourse@whitwell.dev"
+                git config --global user.name "Concourse"
+                git config --global credential.https://github.com.username ((concourse-github-username))
+                echo "https://((concourse-github-username)):((concourse-github-token))@github.com" > ${HOME}/.git-credentials
+                set -x
+                make all
+                VERSION=$(sed -n 's/pkgver\=\(.*\)/\1/p' PKGBUILD)
+                git add PKGBUILD .SRCINFO
+                git commit -m "Update gds-cli to ${VERSION}"
+        on_success:
+          put: gds-cli-aur
+          params:
+            repository: gds-cli-aur_updated
+
+resources:
+  - name: gds-cli-aur
+    type: git
+    source:
+      uri: ssh://aur@aur.archlinux.org/gds-cli-git.git
+      branch: master
+      private_key: |
+        ((concourse-ssh-key.id_rsa))
+
+  - name: gds-cli-src
+    type: git
+    source:
+      uri: git@github.com:alphagov/gds-cli.git
+      branch: master
+      private_key: |
+        ((concourse-ssh-key.id_rsa))

@@ -1,0 +1,4 @@
+aws-vault-git
+pkg
+src
+*.tar.xz
