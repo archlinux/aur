@@ -14,7 +14,7 @@ makedepends=('linux-headers' 'git')
 depends=('krb5' 'openssl' 'libedit' 'ldns')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
-#validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
+validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
 provides=('openssh')
 conflicts=('openssh')
 #source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname}-${pkgver}.tar.gz"{,.asc}
