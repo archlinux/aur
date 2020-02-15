@@ -9,12 +9,13 @@ pkgbase=lua51-penlight
 _pkgbase=Penlight
 pkgname=('lua52-penlight' 'lua51-penlight')
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url="https://tieske.github.io/${_pkgbase}"
 arch=('any')
 license=('MIT')
 _lua_deps=('filesystem')
+checkdepends=('lua' 'lua-luacov' "${_lua_deps[@]/#/lua-}") # Luacov because of upstream bug since fixed, remove when bumping release
 source=("https://github.com/Tieske/${_pkgbase}/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('5b793fc93fa7227190e191e5b24a8f0ce9dd5958ccebe7a53842a58b5d46057f')
 
