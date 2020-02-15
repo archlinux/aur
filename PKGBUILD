@@ -1,7 +1,7 @@
 # Maintainer: Michael Picht <mipi@fsfe.org> 
  
 pkgname=crema
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="Manage (remote) custom repositories"          
 arch=(any) 
