@@ -1,0 +1,22 @@
+pkgbase = meta-group-texlive-most
+	pkgdesc = Metapackage for all the texlive-most group.
+	pkgver = 202002150113
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = none
+	depends = texlive-bibtexextra
+	depends = texlive-core
+	depends = texlive-fontsextra
+	depends = texlive-formatsextra
+	depends = texlive-games
+	depends = texlive-humanities
+	depends = texlive-latexextra
+	depends = texlive-music
+	depends = texlive-pictures
+	depends = texlive-pstricks
+	depends = texlive-publishers
+	depends = texlive-science
+
+pkgname = meta-group-texlive-most
+
