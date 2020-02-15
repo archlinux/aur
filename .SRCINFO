@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-turtlebot3-slam
 	pkgdesc = ROS - The turtlebot3_slam package provides roslaunch scripts for starting the SLAM
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtlebot3_slam
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
