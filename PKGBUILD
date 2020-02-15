@@ -5,7 +5,7 @@ url='https://wiki.ros.org/base_local_planner'
 pkgname='ros-melodic-base-local-planner'
 pkgver='1.16.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=13
+pkgrel=14
 license=('BSD')
 
 ros_makedepends=(ros-melodic-angles
