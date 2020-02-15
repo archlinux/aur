@@ -2,15 +2,29 @@
 
 pkgname=wslu-git
 pkgver=vrolling
-pkgrel=0
+pkgrel=2
 pkgdesc="A collection of utilities for Windows 10 Linux Subsystems"
 arch=('any')
 url='https://github.com/wslutilities/wslu'
 license=('GPL3')
 depends=('bc' 'imagemagick' 'bash-completion')
 makedepends=('git' 'make' 'gzip')
+pkgbase=${pkgname%-git}
+conflicts=('wslu')
+provides=('wslu')
 source=("git+https://github.com/wslutilities/wslu.git")
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/wslu"
+
+# VERSION='VER_NUM.rREV_NUM.HASH', or a relevant subset in case VER_NUM or HASH
+# are not available, is recommended.
+
+# Git, tags available
+	printf "%s" "$(git describe --tags --long | sed 's/v\([0-9.]\+\)-\([0-9]\+\)-\(.*\)$/\1r\2.\4/')"
+
+}
 
 build() {
   cd wslu
