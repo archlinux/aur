@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-libmavconn
 	pkgdesc = ROS - MAVLink communication library.
 	pkgver = 0.33.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/libmavconn
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = GPLv3, LGPLv3, BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
