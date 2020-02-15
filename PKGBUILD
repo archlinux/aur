@@ -1,7 +1,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='prm'
-pkgver=v3.1.0
+pkgver=v3.2.0
 pkgrel=1
 pkgdesc='Pull Request Manager for Maintainers'
 url='https://ldez.github.io/prm/'
@@ -19,16 +19,16 @@ _basedownloadurl="${_repourl}/releases/download/${pkgver}"
 _basearchive="${pkgname}_${pkgver}_linux"
 
 source_x86_64=("${_basedownloadurl}/${_basearchive}_amd64.tar.gz")
-sha256sums_x86_64=('3b9c108de3b0a08c57069135709ca0bb74f0dad4a80737841fc4e9ff25e16b47')
+sha256sums_x86_64=('4bf75218a1f68e65323f2f8d5802a727137caa97503aaa1ae086dba68491b927')
 
 source_i686=("${_basedownloadurl}/${_basearchive}_386.tar.gz")
-sha256sums_i686=('9029e7ca3bbc30eabdb0b4ec8f33e0f0f5496d64c2c74b723cb65597611fcab1')
+sha256sums_i686=('aca2baad828d3d309e6c888a327759a8e2a7a9f9e7d7140dd2f05ab4c6a59ae2')
 
 source_armv7h=("${_basedownloadurl}/${_basearchive}_armv7.tar.gz")
-sha256sums_armv7h=('af9f5afa60a72a06a94befd0796b030c8d11ad619b491a966a86869ff8364956')
+sha256sums_armv7h=('7840319159fb551a0a4005ced88c10a35fa376566ff8175d17bae02833899dd0')
 
 source_aarch64=("${_basedownloadurl}/${_basearchive}_arm64.tar.gz")
-sha256sums_aarch64=('64918934de72a0d9542574b34e933c6420d36b2c5a810549fccaac4e103bb244')
+sha256sums_aarch64=('49f3c6a1709e74259d783626bf15c01b241db9b75c0e557fa8992e19d3147297')
 
 package() {
 	# Bin
