@@ -1,6 +1,6 @@
 pkgbase = naabu-git
 	pkgdesc = A fast port scanner written in go with focus on reliability and simplicity
-	pkgver = r62.a96663f
+	pkgver = 1.1.0.r6.ga96663f
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/naabu
 	arch = x86_64
@@ -13,3 +13,4 @@ pkgbase = naabu-git
 	sha256sums = SKIP
 
 pkgname = naabu-git
+
