@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-acsuite-git
 	pkgdesc = Plugin for Vapoursynth: acsuite (GIT version)
-	pkgver = r4.157f7d5
-	pkgrel = 3
+	pkgver = r19.3fb691c
+	pkgrel = 4
 	url = https://github.com/OrangeChannel/acsuite
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-acsuite-git
 	depends = vapoursynth
 	depends = mkvtoolnix-cli
 	depends = mkvtoolnix-gui
+	depends = ffmpeg
 	provides = vapoursynth-plugin-acsuite
 	conflicts = vapoursynth-plugin-acsuite
 	source = acsuite::git+https://github.com/OrangeChannel/acsuite.git
