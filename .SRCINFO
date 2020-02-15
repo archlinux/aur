@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-tracetools
 	pkgdesc = ROS - Wrapper interface for tracing libraries.
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bosch-robotics-cr/tracetools
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = APLv2
 	makedepends = cmake
 	makedepends = ros-build-tools
