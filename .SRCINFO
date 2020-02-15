@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 2020.01.1
+	pkgver = 2020.02
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -42,15 +42,15 @@ pkgbase = waterfox-classic-kpe
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox-classic=2020.01.1
-	provides = waterfox-classic-kde=2020.01.1
+	provides = waterfox-classic=2020.02
+	provides = waterfox-classic-kde=2020.02
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
 	replaces = waterfox-kde
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=1188166febec6afe2e6beefd9a843fd9809d0f02
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=df884bb1dbafb2c23595ec74b0fd74bc92e5c3c7
 	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/distribution.ini
