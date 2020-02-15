@@ -3,4 +3,5 @@ src
 *.deb
 *.gz
 *.xz
+*.zst
 git.sh
