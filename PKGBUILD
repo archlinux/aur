@@ -48,7 +48,7 @@ package() {
   install -m755 "${srcdir}/run.sh" "${pkgdir}/opt/deepinwine/apps/Deepin-WXWork/"
   install -m644 "${srcdir}/${wxwork_installer}-${pkgver}.exe" "${pkgdir}/opt/deepinwine/apps/Deepin-WXWork/"
   msg "Printing help info ..."
-  printf "\033[0;34m============================提示/INFO===============================\n"
+  echo -e "\033[0;34m============================提示/INFO==============================="
   echo -e "\033[0;34m* 报告问题(Report issue):"
   echo -e "\033[0;34m  https://github.com/St-kai/deepin-wine-wxwork-arch/issues"
   # echo -e "\033[0;34m* 切换到 'deepin-wine'(Switch to 'deepin-wine'):"
