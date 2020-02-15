@@ -1,0 +1,18 @@
+pkgbase = ruby-xspear
+	pkgdesc = Powerfull XSS Scanning and Parameter Analysis tool&gem
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/hahwul/XSpear
+	arch = any
+	license = MIT
+	depends = ruby-colorize
+	depends = ruby-selenium-webdriver
+	depends = ruby-terminal-table
+	depends = ruby-progress_bar
+	noextract = XSpear-1.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/XSpear-1.4.0.gem
+	sha256sums = 5fd9b571ab1509dab9628c1e38e884157effef8bd590cce048bdeed7296f3c4f
+
+pkgname = ruby-xspear
+
