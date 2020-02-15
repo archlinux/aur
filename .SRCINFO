@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-warehouse-ros
 	pkgdesc = ROS - Persistent storage of ROS messages.
 	pkgver = 0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/warehouse_ros
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools

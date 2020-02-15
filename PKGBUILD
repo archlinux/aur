@@ -5,8 +5,8 @@ url='https://wiki.ros.org/warehouse_ros'
 
 pkgname='ros-melodic-warehouse-ros'
 pkgver='0.9.3'
-arch=('any')
-pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-tf
@@ -57,9 +57,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-        -DPYTHON_BASENAME=.cpython-38 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
