@@ -11,7 +11,7 @@ url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
 arch=('x86_64')
 makedepends=('linux-headers' 'git')
-depends=('krb5' 'openssl' 'libedit' 'ldns' 'libfido2')
+depends=('krb5' 'openssl' 'libedit' 'ldns' 'libfido2.so')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
