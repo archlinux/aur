@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-backend
 pkgver=5.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sensu Go Backend"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
@@ -34,6 +34,7 @@ build() {
 post_install() {
   groupadd sensu
   useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
+  systemctl restart sensu-backend.service
 }
 
 package() {

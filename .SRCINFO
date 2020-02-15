@@ -1,7 +1,7 @@
 pkgbase = sensu-backend
 	pkgdesc = Sensu Go Backend
 	pkgver = 5.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sensu.io
 	arch = x86_64
 	arch = armv7h
