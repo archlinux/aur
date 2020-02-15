@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-rosauth
 	pkgdesc = ROS - Server Side tools for Authorization and Authentication of ROS Clients
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rosauth
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
