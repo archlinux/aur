@@ -1,0 +1,16 @@
+pkgbase = wl-gammactl
+	pkgdesc = Command-line / GUI utility for setting contrast, brightness and gamma on wlroots based compositors
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/mischw/wl-gammactl.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	source = git+https://github.com/mischw/wl-gammactl.git
+	md5sums = SKIP
+
+pkgname = wl-gammactl
+
