@@ -1,6 +1,6 @@
-# Maintainer: Christoph Ruegge <chrueg@gmail.com>
+# Maintainer: Christoph Ruegge <mail@cxcs.de>
 pkgname=pam-gnupg-git
-pkgver=r15.17f0305
+pkgver=r39.caeeec7
 pkgrel=1
 pkgdesc="Unlock GnuPG keys on login"
 arch=('i686' 'x86_64')
@@ -29,8 +29,3 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
 }
-
-# Local Variables:
-# indent-tabs-mode: nil
-# tab-width: 2
-# End:
