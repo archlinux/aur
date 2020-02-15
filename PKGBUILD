@@ -2,7 +2,7 @@
 
 pkgname=openra-dr-git
 _pkgname=${pkgname/-git}
-pkgver=365.git.c7fb9fe
+pkgver=370.git.ce17a05
 pkgrel=1
 pkgdesc="A Dark Reign-inspired mod of OpenRA"
 arch=('any')
@@ -25,6 +25,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd $srcdir/DarkReign
+    git checkout -q develop
     no=$(git rev-list --count HEAD)
     hash=$(git log | head -n 1 | cut -d ' ' -f 2 | head -c 7)
     printf "${no}.git.${hash}"
