@@ -2,7 +2,7 @@
 
 pkgname=frzr
 pkgver=0.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A deployment and update system for read-only btrfs subvolume based operating systems"
 arch=('any')
 url="https://github.com/gamer-os/frzr"
@@ -19,4 +19,5 @@ package() {
   install -m 755 "$srcdir/frzr-$pkgver/frzr-release" "$pkgdir/usr/bin"
   install -m 755 "$srcdir/frzr-$pkgver/frzr-unlock" "$pkgdir/usr/bin"
   install -m 644 "$srcdir/frzr-$pkgver/frzr-autoupdate.service" "$pkgdir/etc/systemd/system"
+  install -m 644 "$srcdir/frzr-$pkgver/frzr-etc.service" "$pkgdir/etc/systemd/system"
 }

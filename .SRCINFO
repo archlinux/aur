@@ -1,7 +1,7 @@
 pkgbase = frzr
 	pkgdesc = A deployment and update system for read-only btrfs subvolume based operating systems
 	pkgver = 0.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gamer-os/frzr
 	arch = any
 	license = MIT
