@@ -15,7 +15,7 @@ _silfonts=('abyssinica'
            # 'andika' Blocked by AUR package
            'annapurna'
            'apparatus'
-           # 'charis' Blocked by AUR package
+           # 'charis' Has different name in AUR
            'dai-banna'
            'doulos'
            'ezra'
@@ -27,7 +27,7 @@ _silfonts=('abyssinica'
            'scheherazade'
            'sophia-nubian'
            'tai-heritage-pro')
-depends=('gentium-plus-font' "${_silfonts[@]/#/ttf-sil-}")
+depends=('gentium-plus-font' 'ttf-charis-sil' "${_silfonts[@]/#/ttf-sil-}")
 
 package() {
     :

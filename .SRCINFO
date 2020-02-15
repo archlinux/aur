@@ -6,6 +6,7 @@ pkgbase = ttf-sil-fonts
 	arch = any
 	license = custom:OFL
 	depends = gentium-plus-font
+	depends = ttf-charis-sil
 	depends = ttf-sil-abyssinica
 	depends = ttf-sil-annapurna
 	depends = ttf-sil-apparatus
