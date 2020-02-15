@@ -5,28 +5,33 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 
 pkgname=ttf-sil-fonts
-pkgver=7
-pkgrel=2
+pkgver=8
+pkgrel=1
 pkgdesc="Metapackage depending on all OFL-licensed font packages from SIL"
 arch=('any')
 url='https://software.sil.org/fonts'
 license=('custom:OFL')
 _silfonts=('abyssinica'
+           'alkalami'
            # 'andika' Blocked by AUR package
            'annapurna'
            'apparatus'
+           'awami-nastaliq'
            # 'charis' Has different name in AUR
            'dai-banna'
            'doulos'
            'ezra'
            'galatia'
+           'harmattan'
            'lateef'
            'mingzat'
            'mondulkiri'
+           'namdhinggo'
            'nuosu'
            'padauk'
            'scheherazade'
            'sophia-nubian'
+           'tagmukay'
            'tai-heritage-pro')
 depends=('gentium-plus-font' 'ttf-charis-sil' "${_silfonts[@]/#/ttf-sil-}")
 
