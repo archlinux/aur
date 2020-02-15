@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-turtlebot3-fake
 	pkgdesc = ROS - Package for TurtleBot3 fake node. With this package, simple tests can be done without a robot. You can do simple tests using this package on rviz without real robots.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtlebot3_fake
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = Apache-2.0
 	makedepends = cmake
 	makedepends = ros-build-tools
