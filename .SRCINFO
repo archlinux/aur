@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-carrot-planner
 	pkgdesc = ROS - This planner attempts to find a legal place to put a carrot for the robot to follow. It does this by moving back along the vector between the robot and the goal point.
 	pkgver = 1.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/carrot_planner
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
