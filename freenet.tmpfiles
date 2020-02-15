@@ -1,2 +1,6 @@
-d /run/freenet 0700 freenet freenet
-d /opt/freenet 0700 freenet freenet
+d /run/freenet           0750 freenet freenet
+d /opt/freenet           0750 freenet freenet
+d /opt/freenet/tmp       0700 freenet freenet
+d /opt/freenet/plugins   0750 freenet freenet
+d /opt/freenet/user      0750 freenet freenet
+d /opt/freenet/user/data 0750 freenet freenet

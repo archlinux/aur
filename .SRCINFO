@@ -1,7 +1,7 @@
 pkgbase = freenet
-	pkgdesc = An encrypted network without censorship
-	pkgver = 0.7.5.1484
-	pkgrel = 1
+	pkgdesc = A peer-to-peer platform for censorship-resistant communication and publishing
+	pkgver = 0.7.5.1485
+	pkgrel = 2
 	url = https://freenetproject.org
 	install = freenet.install
 	arch = i686
@@ -13,33 +13,35 @@ pkgbase = freenet
 	makedepends = zip
 	depends = java-runtime>=8
 	depends = gmp
+	depends = nss
 	depends = java-service-wrapper
 	backup = opt/freenet/wrapper.config
 	backup = opt/freenet/conf/freenet.ini
-	source = git+https://github.com/freenet/fred.git#tag=build01484
-	source = git+https://github.com/freenet/plugin-UPnP.git#tag=10007
+	source = git+https://github.com/freenet/fred.git?signed#tag=build01485
 	source = git+https://github.com/freenet/plugin-KeyUtils.git#tag=v5026
-	source = git+https://github.com/freenet/plugin-WebOfTrust.git#branch=next
+	source = git+https://github.com/freenet/plugin-UPnP.git#tag=10007
+	source = git+https://github.com/redwerk/plugin-Library.git#tag=v37-dw-rw3
+	source = git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=next-30
+	source = git+https://github.com/freenet/seedrefs.git
 	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
-	source = https://github.com/freenet/seedrefs/files/1609768/seednodes.zip
-	source = 0001-strip-non-compile-deps.patch
 	source = run.sh
-	source = freenet.ini
 	source = wrapper.config
+	source = freenet.ini
 	source = freenet.service
 	source = freenet.tmpfiles
+	validpgpkeys = B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99
-	sha256sums = 4b2017c3da5f2dad1bc7aec2a1afb33a8d0a8cbf754f8f8d95cb0bb34f71d2ae
-	sha256sums = 171dc64316dcdafc98ddc0136ed4b14ab2d6688817e9e9c08be97560a38f2879
-	sha256sums = c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25
-	sha256sums = 30788b1b7856fbcfcfbe6825cd772a22b75cf1d680c2cbfd9b15ef3fc2d0c077
-	sha256sums = f03cb422c1b1c068b61092d118838a6f77462e80d78a32cf231146ffcc6b9a7a
-	sha256sums = f4fa90c9840cfdb62ec384b366ae3472246300ddacca74310e1e06a5c1fb582c
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = c56b3427ce3df2a9126acf737107738dffeab54d618887743c45a317d39a1b10
+	sha256sums = 9c8a99f7644859f37242465c2646f819c9458c4c0fe8d930db32837ddb2c6daf
+	sha256sums = 1171d0545882e45e03531e760fd28024700bf50400a3e3a13f31deeace8dbb03
+	sha256sums = 10f97306ef75953f20978d3d2aa5d14daa8fa13e4db88e8270ea951239212c20
+	sha256sums = 8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847
 
 pkgname = freenet
 

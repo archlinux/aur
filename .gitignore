@@ -1,6 +1,7 @@
 contrib/
 fred/
 plugin-*/
+seedrefs/
 src/
 pkg/
 .gradle/

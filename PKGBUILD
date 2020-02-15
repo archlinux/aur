@@ -1,85 +1,86 @@
 # Maintainer: skydrome <skydrome at@at proton mail dot com>
 # Contributors: Thynix
 
-_fred=#tag=build01484
-_wot=#branch=next
-_keyutils=#tag=v5026
-_upnp=#tag=10007
+_fred=build01485
+_wot=next-30
+_keyutils=v5026
+_upnp=10007
+_library=v37-dw-rw3
 
-_pkgver=0.7.5
-_plugins=('WebOfTrust' 'UPnP' 'KeyUtils')
-
+_plugins=('WebOfTrust' 'UPnP' 'KeyUtils' 'Library')
 
 pkgname=freenet
-pkgver=0.7.5.1484
-pkgrel=1
-pkgdesc="An encrypted network without censorship"
+pkgver=0.7.5.1485
+pkgrel=2
+pkgdesc="A peer-to-peer platform for censorship-resistant communication and publishing"
 url="https://freenetproject.org"
 license=('GPL2')
 arch=('i686' 'x86_64')
 install='freenet.install'
-depends=('java-runtime>=8' 'gmp' 'java-service-wrapper')
+depends=('java-runtime>=8' 'gmp' 'nss' 'java-service-wrapper')
 makedepends=('java-environment>=8' 'ant' 'git' 'zip')
 backup=('opt/freenet/wrapper.config'
         'opt/freenet/conf/freenet.ini')
 
-source=("git+https://github.com/freenet/fred.git${_fred}"
-        "git+https://github.com/freenet/plugin-UPnP.git${_upnp}"
-        "git+https://github.com/freenet/plugin-KeyUtils.git${_keyutils}"
-        "git+https://github.com/freenet/plugin-WebOfTrust.git${_wot}"
+# https://freenetproject.org/assets/keyring.gpg
+validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
+
+source=("git+https://github.com/freenet/fred.git?signed#tag=$_fred"
+        "git+https://github.com/freenet/plugin-KeyUtils.git#tag=$_keyutils"
+        "git+https://github.com/freenet/plugin-UPnP.git#tag=$_upnp"
+        "git+https://github.com/redwerk/plugin-Library.git#tag=$_library"
+        "git+https://github.com/xor-freenet/plugin-WebOfTrust.git#branch=$_wot"
+        "git+https://github.com/freenet/seedrefs.git"
         "IpToCountry.dat::http://software77.net/geo-ip/?DL=4"
-        "https://github.com/freenet/seedrefs/files/1609768/seednodes.zip"
-        '0001-strip-non-compile-deps.patch'
-        'run.sh' 'freenet.ini' 'wrapper.config' 'freenet.service' 'freenet.tmpfiles')
+        'run.sh' 'wrapper.config' freenet.{ini,service,tmpfiles})
 
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '0d91d2462f36d35235cc86cbdee11890cadec91a0a01b89d96010924f6c2be99'
-            '4b2017c3da5f2dad1bc7aec2a1afb33a8d0a8cbf754f8f8d95cb0bb34f71d2ae'
-            '171dc64316dcdafc98ddc0136ed4b14ab2d6688817e9e9c08be97560a38f2879'
-            'c0ce093a098d91dee6be294f8a2fc929aabad95612f994933194d0da5c4cdd25'
-            '30788b1b7856fbcfcfbe6825cd772a22b75cf1d680c2cbfd9b15ef3fc2d0c077'
-            'f03cb422c1b1c068b61092d118838a6f77462e80d78a32cf231146ffcc6b9a7a'
-            'f4fa90c9840cfdb62ec384b366ae3472246300ddacca74310e1e06a5c1fb582c')
+            'SKIP'
+            'SKIP'
+            'c56b3427ce3df2a9126acf737107738dffeab54d618887743c45a317d39a1b10'
+            '9c8a99f7644859f37242465c2646f819c9458c4c0fe8d930db32837ddb2c6daf'
+            '1171d0545882e45e03531e760fd28024700bf50400a3e3a13f31deeace8dbb03'
+            '10f97306ef75953f20978d3d2aa5d14daa8fa13e4db88e8270ea951239212c20'
+            '8f35e9d7d00e4caa26d0c1cbcbcedc9081ed0535d0c67e3f9d2d75c11ff9e847')
 
 pkgver() {
-    cd "fred"
-    printf "%s.%s" "${_pkgver}" \
+    cd fred
+    printf "0.7.5.%s" \
         "$(git describe --abbrev=0 |sed 's/build0//;s/-/./g')"
 }
 
 prepare() {
-    cd "fred"
+    cd fred
 
-    # Gradle 6 and Java 13 support
-    git pull origin pull/683/head
-    git apply -v "$srcdir/0001-strip-non-compile-deps.patch"
+    # Java 13 support
+    git pull -r -v https://github.com/skydrome/fred.git gradle-6.1-aur -q
+
+    rm -f seednodes.fref
+    for node in "$srcdir"/seedrefs/0* ;do
+        printf "$(<$node)\n\n" >>seednodes.fref
+    done
 }
 
 build() {
-    cd "fred"
+    cd fred
 
+    export ANT_HOME=/usr/share/ant
     export GRADLE_USER_HOME="$startdir/.gradle"
     export GRADLE_OPTS="-Dorg.gradle.internal.launcher.welcomeMessageEnabled=false"
 
     msg "Building Freenet..."
     ./gradlew \
-            -DtargetJavaVersion=$(javac -version 2>&1 |awk '{print $2}') \
+            -DtargetJavaVersion="$(javac -version 2>&1 |awk '{print $2}')" \
             --no-build-cache --no-daemon \
             copyRuntimeLibs
 
-    build_plugins
-}
-
-build_plugins() {
-    export ANT_HOME=/usr/share/ant
-
-    for plugin in ${_plugins[@]}; do
-        msg "Building Plugin ${plugin}..."
-        cd "$srcdir/plugin-${plugin}"
+    for plugin in "${_plugins[@]}"; do
+        msg "Building Plugin $plugin..."
+        cd "$srcdir/plugin-$plugin"
         ant dist \
             -Dfile.encoding=UTF-8 \
             -Dtarget-version=8 -Dsource-version=8 \
@@ -90,37 +91,36 @@ build_plugins() {
 }
 
 package() {
-    cd "fred"
+    cd fred
 
-    # freenet
+    # create file structure
     install -dm755 "$pkgdir"/usr/bin
-    install -dm700 "$pkgdir"/run/freenet
-    install -dm700 "$pkgdir"/opt/freenet
-    install -dm700 "$pkgdir"/opt/freenet/{tmp,downloads,lib,conf,noderef,persistent-temp,plugins,user}
-    install -dm700 "$pkgdir"/opt/freenet/{plugins/data,user/{data,certs}}
+    install -dm750 "$pkgdir"/run/freenet
+    install -dm750 "$pkgdir"/opt/freenet
+    install -dm700 "$pkgdir"/opt/freenet/tmp
+    install -dm750 "$pkgdir"/opt/freenet/{downloads,lib,conf,noderef,persistent-temp,plugins,user}
+    install -dm750 "$pkgdir"/opt/freenet/{plugins/data,user/{data,certs}}
 
-    install -m640  "$srcdir"/{wrapper.config,run.sh,IpToCountry.dat} "$pkgdir"/opt/freenet
-    install -m640  "$srcdir"/freenet.ini                             "$pkgdir"/opt/freenet/conf
-    install -m640  "$srcdir"/seednodes/seednodes.fref                "$pkgdir"/opt/freenet/noderef
-    install -m640  "$srcdir"/fred/build/output/*.jar                 "$pkgdir"/opt/freenet/lib
+    # install freenet
+    install -m755  "$srcdir"/run.sh                           "$pkgdir"/usr/bin/freenet
+    install -m640  "$srcdir"/{wrapper.config,IpToCountry.dat} "$pkgdir"/opt/freenet
+    install -m640  "$srcdir"/freenet.ini                      "$pkgdir"/opt/freenet/conf
+    install -m640  "$srcdir"/fred/seednodes.fref              "$pkgdir"/opt/freenet/noderef
+    install -m640  "$srcdir"/fred/build/output/*.jar          "$pkgdir"/opt/freenet/lib
+
+    # install plugins
+    for plugin in "${_plugins[@]}"; do
+    install -m640 "$srcdir"/plugin-$plugin/dist/$plugin.jar "$pkgdir"/opt/freenet/plugins
+    done
+    echo "pluginmanager.loadplugin=$(IFS=\;;echo "${_plugins[*]}")" \
+        >>"$pkgdir"/opt/freenet/conf/freenet.ini
 
     # delete bundled wrapper
     zip -qd "$pkgdir"/opt/freenet/lib/freenet-ext-29.jar "org/tanukisoftware/*"
 
-    # plugins
-    for plugin in ${_plugins[@]}; do
-    install -m640 "$srcdir"/plugin-${plugin}/dist/${plugin}.jar "$pkgdir"/opt/freenet/plugins
-    done
-    echo "pluginmanager.loadplugin=$(echo ${_plugins[@]}|sed 's| |;|g')" \
-        >>"$pkgdir"/opt/freenet/conf/freenet.ini
-
-    # launcher
-    chmod +x "$pkgdir"/opt/freenet/run.sh
-    ln -s /opt/freenet/run.sh "$pkgdir"/usr/bin/freenet
-
     # systemd
-    install -Dm644 "$srcdir"/freenet.tmpfiles   "$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
-    install -Dm644 "$srcdir"/freenet.service    "$pkgdir"/usr/lib/systemd/system/freenet.service
+    install -Dm644 "$srcdir"/freenet.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/freenet.conf
+    install -Dm644 "$srcdir"/freenet.service  "$pkgdir"/usr/lib/systemd/system/freenet.service
 
     # license
     install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/freenet/LICENSE

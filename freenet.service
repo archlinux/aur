@@ -6,13 +6,17 @@ After=network.target time-sync.target
 Type=forking
 User=freenet
 PIDFile=/run/freenet/freenet.pid
+LimitNOFILE=4096
 
 NoNewPrivileges=yes
 PrivateTmp=yes
 PrivateDevices=yes
+ProtectHome=tmpfs
+ProtectSystem=strict
 DeviceAllow=/dev/null rw
 DeviceAllow=/dev/urandom r
-LimitNOFILE=4096
+ReadOnlyDirectories=/
+ReadWriteDirectories=-/run/freenet -/opt/freenet
 
 ExecStart=/usr/bin/java-service-wrapper /opt/freenet/wrapper.config \
     wrapper.name=freenet \

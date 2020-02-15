@@ -12,7 +12,6 @@ post_install() {
     echo "==> You may see 'Data Not Found' or 'Route Not Found' errors, this is normal."
     echo "==> For best performance Freenet should be run 24/7 as much as possible."
     echo "==> Your node's configuration WebUI is located at http://127.0.0.1:8888/ "
-    echo "==> https://freenetproject.org/faq.html"
 }
 
 post_upgrade() {
@@ -23,7 +22,6 @@ post_upgrade() {
             -e "s:JSTUN;::"
         mv /opt/freenet/conf/node /opt/freenet/noderef
     } || true
-
     chown -R freenet:freenet /opt/freenet
 }
 
@@ -33,4 +31,5 @@ pre_remove() {
         userdel freenet &&
         echo "ok" || echo "fail"
     }
+    echo "==> Delete /opt/freenet if you wish to completely remove everything"
 }
