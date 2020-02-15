@@ -51,7 +51,7 @@ _major=5.5
 _minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -72,12 +72,19 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0007-drm-i915-Serialise-i915_active_acquire-with-__active.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0008-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0009-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0010-drm-i915-gem-Try-to-flush-pending-unbind-events.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0011-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0012-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch"
+        "${_lucjanpath}/arch-patches-v11-sep/0013-drm-i915-Introduce-a-vma.kref.patch"
          # the main kernel config files
         'config')
 
@@ -330,12 +337,19 @@ sha512sums=('87af2cf22b3c8884ce276a92d7a538a723b8fdbac9e40ec243ca78576afb4baa8a1
             'SKIP'
             'aa80a7d169780884fbb226e2d24b526b157ee73b54fa607be99ecb499e9206187fc224073b57497b7a46b30a390c6d90f7f00a120f43ba7d0963cf5b48a238d6'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '5dd1df3dcbe57199ce50840ad29649da9512e8ef50d30fb97def772e6f72bf5414a57aac3dd2c63ee23c25d275c12d4d919b0985db3ed21846c05c721ffae845'
-            '0944de2d50b4b255d09cf5c35adfbd8c7d8c25ff6838312e6c9345cd9ce27f258a45978bd7bf2cda4bb04090b4c94fd5e20e20f728e9329c92fcd337b58818e0'
-            'f4bb3b9c4f8891241b8b8ac8e00b8f013d92c18ea6feccae5cbbb38b9e50e9c1202b379012d0787a67c0d6b38874cb887766e41bf9075f66fc9089d7835e51fb'
-            '6e357c3c98ebd791f909ca3d51bf4fc8d966b449e2b11a24ca16d768eaa20cdbf223f115b07bd8a1c22faa8c7025228adbe45849b761bb2c13cc54a52e48b6d4'
-            'dda3728e041ad1adff147d04f9963719f5c75e3a5a6d48bc39799bfad2e3e7c0a06cb9bfbd31141237177f722bc9f6335e10535ae96f22852cecb6105c3b9f04'
-            '8cb482be6f6185cd52563aa985d711e38c0c971bb39fb66f24279eb76b9fc5160349b2519d57ac2006f2e490e9a210560dab9fc3c3b5a2cf47015baae3655ddd'
+            'e00e0066a751627b7f051b16f9907baa55187a8f29daf597d0aac6a3995b57a60fb9a1406aca55961a504c0110b7dd3877557eab0c895a886a97baabf0f71472'
+            'c9d3a40f4dcf3f71552a255a2ceb65ae64700f16e3e1316a64adc9f260d7d17af4fcebd3cc39afe07a5920d577c4b8a7ee0f8b9598e3cbd93782ddc35b4ea6c5'
+            '42b7ddd6bf97067896b3d0c34750e26bba47ac0a81b6adbf89cf4057e1303bb527ab8a49330012da0de70921f89b07f850bb2f957bde91003620ec8ace9358b4'
+            '49358897c2e6ea012de5bdb8fdb892e313cec86bc60ea1149f67d1b5f660eb4a14095ffa21f8a00e297dea040c088bcbc52a679280e3b9ae83b902628007cafe'
+            '967e1bad8480cd195aaebfe105338cf5dcca26a5f281e58b406e3f91d4cd2224c28e3913fb5afb3804c814b8774a5b2d1c61d7450453200289db9e125ea04457'
+            'ba800c88aeb680e8d3d4a2c41f9b9d3ef9e4820b3d27e44b8ce03820d8ad71f901b635d51db193761990cdc35baa1245e1b45d0f76db314f5acc5cb35cb2aa0c'
+            '46844d466d8dacbed6141b507e53495315758155f10e3f7d5a271d5770a9bb89aeca6b1ef0cb0d4e52a89ddb798de179d3d5dbb020836184d0b2db747f228734'
+            '86ca04513495d88ab721684f5040ac23bf3efbe88cff79916b35b858d084f4797420191de796352f79973c22803761d231fdf2b86851b45ad153d584c52b40f5'
+            '86fed804c34293b7055a89e489711c39bc56ce5c635f4f934777c4597c910cdaf19ba80d96662c3cb8f7d595d47f2f6335d3a04c620c45cfc8833ff93742c116'
+            '56fb9a3f4e8cb811c5c03e7f7c63af29a077422fad9fcbe7098d444ee3d5c7b58ac350913895b64c1edb688025bdeb821857d49b582a350ff52914c14adf6cd4'
+            '917c1a7ce7d644c3db8607933a953948871777590acf60aa88f970243d5205d98eaac6300eebea140c20c6f47884f1fc07307d46b539d95cbf880f08d1bd707a'
+            '7799b9cb4e8df2413ecfc74b1db871c16616167cb593bf3eb159736565f660bb0a07796adedc25401103ff4e44350c83c7acd36ede660d18fafb128b21aca633'
+            'c0b4631c3c3ed5868c4e77357f0f4fb7916414c18b424dfbb00d16dbe4aa7e9b744229252386c99bbc90a3b1c0c4772da5277a357a277b6bb9bfe680152bf84f'
             'c2ccaf95a6de80893745ebc5b765e20afbc319e075bd1eda0c2d87845c5dd69b2a38d2207ffde1b323c0d5577cf9d18daa190559d2c603b3b2f46237851a1b65')
 
 validpgpkeys=(
