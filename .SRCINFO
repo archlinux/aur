@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-robot-localization
 	pkgdesc = ROS - The robot_localization package provides nonlinear state estimation through sensor fusion of an abritrary number of sensors.
 	pkgver = 2.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/robot_localization
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = ros-build-tools
 	makedepends = ros-melodic-tf2-ros
