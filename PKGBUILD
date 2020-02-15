@@ -1,8 +1,8 @@
 # Maintainer: Dustin Falgout <dustin@falgout.us>
 
 pkgname=wavebox
-pkgver=10.0.69
-pkgrel=3
+pkgver=10.0.80.beta3
+pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=(x86_64)
 url="https://wavebox.io"
@@ -10,11 +10,12 @@ license=('custom:Wavebox-EULA')
 depends=('ttf-liberation' 'libappindicator-gtk3' 'at-spi2-atk' 'cairo' 'libcups' 'gdk-pixbuf2' 'glib2' 'gtk3' 'nspr' 'nss' 'libxss' 'wget' 'xdg-utils')
 optdepends=('pam-u2f: Two-Factor Auth')
 conflicts=('wavebox-bin' 'wavebox-bin-beta')
-source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/stable/linux/tar"
+#source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/stable/linux/tar"
+source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/beta/linux/tar"
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('fb327708886125351f791dbc0c3cce2e'
+md5sums=('f5ed7f7f82c6cdd9dc7baf99308594b3'
          'cf3416572bcd3e3528958f36306e6e7c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
