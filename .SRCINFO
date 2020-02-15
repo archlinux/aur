@@ -1,0 +1,19 @@
+pkgbase = ghidra-extension-vmlinux-loader-git
+	pkgdesc = This extension can be used to load vmlinux kernel images into Ghidra.
+	pkgver = r4.g0363685
+	pkgrel = 1
+	url = https://github.com/idl3r/GhidraVmlinuxLoader
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gradle
+	makedepends = unzip
+	makedepends = ghidra
+	depends = ghidra
+	source = GhidraVmlinuxLoader::git+https://github.com/idl3r/GhidraVmlinuxLoader
+	source = 9_1.patch::https://github.com/idl3r/GhidraVmlinuxLoader/commit/928d5fc5cca9446da4bf0e1649488f7b2e082b58.patch
+	sha512sums = SKIP
+	sha512sums = 9d3340fbce665d6654a5172e35ac24dfb898bdf6b9b39454034a708ebcde147937eb5ad52d2474377f63870d69cd016f806641eb55284c591425cd73b379fb1f
+
+pkgname = ghidra-extension-vmlinux-loader-git
+
