@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 # Contributor: mock
 pkgname=ttf-nishiki-teki
-pkgver=3.65d
+pkgver=3.65i
 pkgrel=1
 pkgdesc='Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”'
 arch=('any')
@@ -9,7 +9,7 @@ url='http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.htm'
 license=('custom')
 source=("$pkgname-v$pkgver.zip::http://hwm3.gyao.ne.jp/shiroi-niwatori/nishiki-teki.zip"
         "LICENSE")
-sha512sums=('0ba8c34c448109f4fd8854b520ebc8ee17d681d627ec63a9b810c493b267d3f6a1a6f321770ec1fcaf7991824ceecac4a66df0a2167b56c1c2fc68897d307f34'
+sha512sums=('fcd6596ce9496cc1dfe892d006a35fe62637e9ed281a14208ba325ed42fdd0aac5c958b41efff5e9ea2a559d370d0a8a87af67bf06700b492494bf35cf635417'
             'f6138f41a7eade900bcda1a5be608cbb4a8205ce53c6d175d6ae13693ff34b8e2cdc42f9dd4ae49b7285a5f09c1fb4f077ad872361abb8303c1589acf5958436')
 
 package() {
