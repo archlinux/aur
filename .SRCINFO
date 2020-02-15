@@ -1,7 +1,7 @@
 pkgbase = linux-show-player
 	pkgdesc = Sound cue playback software designed for live musical shows and theatre plays
-	pkgver = 0.5.1_py3.7
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = http://linux-show-player.sourceforge.net/
 	arch = any
 	license = GPL3
@@ -16,8 +16,8 @@ pkgbase = linux-show-player
 	optdepends = portmidi: for portmidi support
 	optdepends = python-jack-client: for JACK output support
 	options = !emptydirs
-	source = https://github.com/FrancescoCeruti/linux-show-player/archive/v0.5.1-py3.7.tar.gz
-	sha256sums = 2a9bd80fa45c508c9c19d7edd430199290c9096f74e520e766f99a8223297946
+	source = https://github.com/FrancescoCeruti/linux-show-player/archive/v0.5.2.tar.gz
+	sha256sums = b78689e5c8f5cdf1600fd8e58e30264e677ab0d8c77538aaaeb571f56185c9bb
 
 pkgname = linux-show-player
 
