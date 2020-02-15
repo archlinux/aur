@@ -5,8 +5,8 @@ url='https://wiki.ros.org/summit_xl_gazebo'
 
 pkgname='ros-melodic-summit-xl-gazebo'
 pkgver='1.1.3'
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -71,9 +71,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
