@@ -1,8 +1,8 @@
-From 0e6fb279c7fc6fc818942f668f731946286c959c Mon Sep 17 00:00:00 2001
+From b0dbc3d2f076fa5acee310b34534b44f15ae4836 Mon Sep 17 00:00:00 2001
 From: Dan Moulding <dmoulding@me.com>
 Date: Tue, 28 Jan 2020 02:31:07 -0700
-Subject: [PATCH 3/7] iwlwifi: mvm: Do not require PHY_SKU NVM section for 3168
- devices
+Subject: [PATCH 03/14] iwlwifi: mvm: Do not require PHY_SKU NVM section for
+ 3168 devices
 
 The logic for checking required NVM sections was recently fixed in
 commit b3f20e098293 ("iwlwifi: mvm: fix NVM check for 3168
