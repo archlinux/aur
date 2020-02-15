@@ -1,5 +1,5 @@
 pkgbase = foundationdb-server-bin
-	pkgdesc = FoundationDB server. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains the server.
+pkgdesc = FoundationDB server. FoundationDB is a scalable, fault-tolerant, ordered key-value store with full ACID transactions. This package contains the server.
 	pkgver = 6.2.15
 	pkgrel = 1
 	url = https://www.foundationdb.org
