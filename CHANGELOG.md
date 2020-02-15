@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 3.2.1 (2019-12-13)
+
+### New
+
+* Added support for Python 3.8. [Michele Tessaro]
+
+
 ## 3.2.0 (2019-12-08)
 
 ### New
@@ -12,6 +19,8 @@
   The default should be the most reasonable with most plugins.
 
 ### Changes
+
+* Updated changelog. [Michele Tessaro]
 
 * Documented how to set plantuml include search path (refs #37) [Michele Tessaro]
 
