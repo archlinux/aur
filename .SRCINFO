@@ -1,8 +1,9 @@
 pkgbase = proji
 	pkgdesc = A fast and powerful cli project scaffolding tool
 	pkgver = 0.18.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nikoksr/proji
+	install = proji.install
 	arch = x86_64
 	license = custom:MIT
 	makedepends = go-pie
