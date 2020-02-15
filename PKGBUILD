@@ -1,8 +1,9 @@
-# Maintainer: Kyle <kyle@gmx.ca>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: Kyle <kyle@gmx.ca>
 pkgname=pcaudiolib-git
 _gitname=pcaudiolib
-pkgver=b5b2860 # determined from git origin
-pkgrel=1
+pkgver=1.1.2.gd6a6b00 # determined from git origin
+pkgrel=2
 pkgdesc="Portable C Audio Library (git version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/rhdunn/pcaudiolib"
@@ -11,8 +12,8 @@ depends=()
 optdepends=('alsa-lib: ALSA output support'
   'pulseaudio: Pulseaudio output support')
 makedepends=('git')
-provides=()
-conflicts=()
+provides=( pcaudiolib )
+conflicts=( pcaudiolib )
 source=('git+https://github.com/rhdunn/pcaudiolib.git')
 md5sums=('SKIP')
 
@@ -33,5 +34,3 @@ package() {
   cd $_gitname
   make DESTDIR="$pkgdir/" install
 }
-
-# vim:set ts=2 sw=2 et:
