@@ -1,0 +1,9 @@
+CUDA_ROOT=/opt/cuda
+NCCL_ROOT=/usr/include
+
+export CPATH=$NCCL_ROOT/include:$CPATH
+export LD_LIBRARY_PATH=$NCCL_ROOT/lib/:$CUDA_ROOT/lib64:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$NCCL_ROOT/lib/:$LIBRARY_PATH
+export CFLAGS="-I$CUDA_ROOT/include $CFLAGS"
+export CUDA_HOME=$CUDA_ROOT
+export CUDA_PATH=$CUDA_ROOT

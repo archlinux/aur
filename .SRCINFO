@@ -1,0 +1,27 @@
+pkgbase = espnet-cuda-git
+	pkgdesc = End-to-End Speech Processing Toolkit.
+	pkgver = r6287.1e8b6ce88
+	pkgrel = 1
+	url = https://github.com/espnet/espnet
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = git
+	depends = python>=3.6.1
+	depends = python-virtualenv
+	depends = python-pytorch-cuda>=1.0.0
+	depends = sentencepiece-git
+	depends = libsndfile
+	depends = cuda>=8.0
+	depends = cuda<11
+	depends = cudnn>=6
+	depends = kaldi
+	optdepends = nccl>=2.0: for multi-GPU setup
+	provides = espnet
+	conflicts = espnet-cuda-git
+	source = espnet-cuda-git::git+https://github.com/espnet/espnet
+	source = espnet-cuda-git.sh
+	md5sums = SKIP
+	md5sums = 32dad7fc986f0250d22a2e7a2e5d28ce
+
+pkgname = espnet-cuda-git
+
