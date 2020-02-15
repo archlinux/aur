@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-viso2-ros
 	pkgdesc = ROS - wrapper for libviso2
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/viso2
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = GPL
 	makedepends = cmake
 	makedepends = ros-build-tools
