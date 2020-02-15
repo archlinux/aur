@@ -1,0 +1,17 @@
+pkgbase = ttf-crimson-pro
+	pkgdesc = A professionally produced redesign of Crimson by Jacques Le Bailly
+	pkgver = 1.002
+	pkgrel = 1
+	url = https://github.com/Fonthausen/CrimsonPro
+	arch = any
+	license = OFL
+	source = https://github.com/Fonthausen/CrimsonPro/archive/04168bbd2884a098082451f6ffa677ca2c0bec4d/ttf-crimson-pro-1.002.zip
+	sha256sums = 170284f7e42b72103b79dedc22eb188da68c1ccbaf418f39acfdfb310c1d3acc
+
+pkgname = ttf-crimson-pro
+	pkgdesc = A professionally produced redesign of Crimson by Jacques Le Bailly (8 fixed weights)
+	conflicts = ttf-crimson-pro-git
+
+pkgname = ttf-crimson-pro-variable
+	pkgdesc = A professionally produced redesign of Crimson by Jacques Le Bailly (variable weight)
+
