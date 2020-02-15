@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-kpe
-pkgver=2020.01.1
+pkgver=2020.02
 pkgrel=0
 pkgdesc="Free, open and private browser with patches for better integration with KDE"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
-_commit=2f580adcfbedbd9e29ef96c50d8aafcdb8f02900
+_commit=6bce12d08d55de605a41c66ea540108ec25418a8
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.desktop"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/distribution.ini"
