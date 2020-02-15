@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-roscpp-tutorials
 	pkgdesc = ROS - This package attempts to show the features of ROS step-by-step, including using messages, servers, parameters, etc.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/roscpp_tutorials
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
