@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-v4l2-request-git
 	pkgdesc = FFmpeg with v4l2-request support
 	pkgver = r94743.fa3f88530e
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Kwiboo/FFmpeg/tree/v4l2-request-hwaccel-4.2.2
 	arch = aarch64
 	license = GPL3

@@ -1,8 +1,9 @@
 # Maintainer: Andre Vallestero < gmail-com: andrevallestero >
 
 pkgname=ffmpeg-v4l2-request-git
+_srcname=FFmpeg
 pkgver=r94743.fa3f88530e
-pkgrel=1
+pkgrel=3
 pkgdesc='FFmpeg with v4l2-request support'
 arch=('aarch64')
 url='https://github.com/Kwiboo/FFmpeg/tree/v4l2-request-hwaccel-4.2.2'
@@ -26,12 +27,12 @@ source=('git+https://github.com/Kwiboo/FFmpeg.git#branch=v4l2-request-hwaccel-4.
 sha256sums=('SKIP')
 
 pkgver() {
-	cd FFmpeg
+	cd "$_srcname"
 	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd FFmpeg
+	cd "$_srcname"
 
 	printf '%s\n' '  -> Running ffmpeg configure script...'
 
@@ -78,13 +79,14 @@ build() {
         --enable-shared \
         --enable-version3 \
         --enable-libudev \
-        --enable-v4l2-request
+        --enable-v4l2-request \
+        --enable-pic
 
 	make
 	make tools/qt-faststart
 }
 
 package() {
-	make -C FFmpeg DESTDIR="$pkgdir" install
-	install -D -m755 FFmpeg/tools/qt-faststart -t "${pkgdir}/usr/bin"
+	make -C "$_srcname" DESTDIR="$pkgdir" install
+	install -D -m755 "$_srcname"/tools/qt-faststart -t "${pkgdir}/usr/bin"
 }
