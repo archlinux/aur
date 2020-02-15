@@ -1,6 +1,6 @@
 pkgbase = vimix-kde-git
 	pkgdesc = Vimix kde is a flat Design theme for KDE Plasma desktop
-	pkgver = 23.0b832b4
+	pkgver = 25.05c03e6
 	pkgrel = 1
 	url = https://github.com/vinceliuice/vimix-kde
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = vimix-kde-git
 pkgname = vimix-kde-git
 	optdepends = vimix-gtk-themes-git: Matching GTK theme
 	optdepends = kvantum-theme-vimix-git: Vimix theme for Kvantum
-	optdepends = tela-icon-theme-git: Recommended icon theme
+	optdepends = vimix-icon-theme-git: Recommended icon theme
 
 pkgname = kvantum-theme-vimix-git
 	pkgdesc = Vimix theme for Kvantum

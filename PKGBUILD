@@ -3,7 +3,7 @@
 pkgbase=vimix-kde-git
 _gitname=vimix-kde
 pkgname=('vimix-kde-git' 'kvantum-theme-vimix-git')
-pkgver=23.0b832b4
+pkgver=25.05c03e6
 pkgrel=1
 pkgdesc="Vimix kde is a flat Design theme for KDE Plasma desktop"
 arch=('any')
@@ -22,10 +22,10 @@ pkgver() {
 package_vimix-kde-git() {
     optdepends=('vimix-gtk-themes-git: Matching GTK theme'
         'kvantum-theme-vimix-git: Vimix theme for Kvantum'
-        'tela-icon-theme-git: Recommended icon theme')
+        'vimix-icon-theme-git: Recommended icon theme')
 	
     cd "${srcdir}/${_gitname}"
-    install -d "${pkgdir}/"usr/share/{aurorae,color-schemes,plasma}
+    install -d "${pkgdir}/"usr/share/{aurorae,color-schemes,plasma,sddm}
 	
 	sed -i '5,8d' install.sh
 	
@@ -34,6 +34,8 @@ package_vimix-kde-git() {
     PLASMA_DIR=${pkgdir}/usr/share/plasma/desktoptheme \
     LOOKFEEL_DIR=${pkgdir}/usr/share/plasma/look-and-feel \
     ./install.sh -b
+    
+    cp -ur "${srcdir}/${_gitname}/"sddm/themes "${pkgdir}/"usr/share/sddm/
 }
 
 package_kvantum-theme-vimix-git() {
