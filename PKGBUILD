@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt
 _pkgver=5.4.19
-_rtpatchver=10
+_rtpatchver=11
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -41,7 +41,7 @@ validpgpkeys=(
 )
 sha256sums=('9584b971153e46a4a07573ca8f0ed78d7ca17b1eee25ff52f8b844b5d1fb77b8'
             'SKIP'
-            '62114d7417aa23209893c79aeb4263331412435aa7c662a236acc77e2789dff6'
+            '8fd8726f213ce70a9d4b9cb10f6c51aaf1470bf33bc76579631c75b0a1d319d4'
             'SKIP'
             'c601f45d4903622c8d7a71d8e5dd827de3e37747907f7d61c7effbe6f70d034d'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
