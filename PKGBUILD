@@ -5,8 +5,8 @@ url='https://wiki.ros.org/nodelet_topic_tools'
 
 pkgname='ros-melodic-nodelet-topic-tools'
 pkgver='1.9.16'
-arch=('any')
-pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -56,9 +56,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
