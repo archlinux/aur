@@ -1,6 +1,6 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.0.0+4+g9256324
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
 arch=('x86_64')
@@ -15,15 +15,15 @@ makedepends=('cmake' 'git')
 checkdepends=('abi-compliance-checker')
 _srcname=ZMusic
 _sover=arch.1
-_checkver=1.0.0
+_checkver=1.1.0
 source=("${_srcname}::git+https://github.com/coelckers/ZMusic"
-        '0001-Use-correct-soundfont-path.patch'
-        "libzmusic.so.${_sover}-${_checkver}-x86_64.dump.gz"
-        "libzmusiclite.so.${_sover}-${_checkver}-x86_64.dump.gz")
+        '0001-Use-correct-soundfont-path.patch')
+source_x86_64=("libzmusic.so.${_sover}-${_checkver}-x86_64.dump.gz"
+               "libzmusiclite.so.${_sover}-${_checkver}-x86_64.dump.gz")
 sha256sums=('SKIP'
-            '6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f'
-            'fb524e664305019a2be2ba6da0634b902906c6c9b4ad71e1ec68a548f76f3243'
-            'c7ec2809cc27a17c5a010537545ba2e80c75956c0a91dfbb9dd5e496a6f4308b')
+            '6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f')
+sha256sums_x86_64=('eb6276f8bbd6db3e2e0bb742138ea4e3a273663128311c7a9df4f254236bbd35'
+                   'd490fe9bdd34e5622c2dbda3d605d49545ae1cc17abda6f0c5c898a0087e2123')
 
 pkgver() {
     cd $_srcname
@@ -44,7 +44,11 @@ build() {
 }
 
 check() {
-    if [ ! -f "$srcdir"/libzmusic.so.${_sover}-${_checkver}-${CARCH}.dump.gz ]; then
+    if [ $_checkver = ${pkgver%%+*} ]; then
+        return
+    fi
+    if [ "$srcdir"/libzmusic.so.*-${_checkver}-${CARCH}.dump.gz \
+         != "$srcdir"/libzmusic.so.${_sover}-${_checkver}-${CARCH}.dump.gz ]; then
         return
     fi
 
