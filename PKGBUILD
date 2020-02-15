@@ -3,7 +3,7 @@
 pkgname=meta-group-texlive-most
 pkgver=202002150113
 pkgrel=1
-pkgdesc='Metapackage for all the texlive-most group.'
+pkgdesc='Meta package for texlive-most'
 arch=('any')
 license=('none')
 depends=(
