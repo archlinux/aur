@@ -1,7 +1,7 @@
 pkgbase = openssh-u2f
 	pkgdesc = Premier connectivity tool for remote login with the SSH protocol with U2F-Support
 	pkgver = 8.2p1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.openssh.com/portable.html
 	install = install
 	arch = x86_64
