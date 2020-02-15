@@ -1,29 +1,18 @@
 pkgbase = texture
 	pkgdesc = WYSIWYG editor and reader for DAR/JATS (XML) scientific content
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://substance.io/texture/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = jq
-	makedepends = electron4
-	depends = nodejs
-	depends = gtk3
-	depends = nss
-	depends = libxss
-	depends = ffmpeg
-	depends = flac
-	depends = re2
-	depends = libxslt
-	depends = minizip
-	depends = libevent
-	depends = snappy
-	depends = http-parser
+	depends = electron4
 	options = !emptydirs
 	source = texture-v2.2.tar.gz::https://github.com/substance/texture/archive/v2.2.tar.gz
+	source = run.sh
 	sha256sums = d39833e54519486647c3fedba9bd067cb4e3500951d72b6a7a4d12cad4ce3b1e
+	sha256sums = SKIP
 
 pkgname = texture
 
