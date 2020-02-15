@@ -5,7 +5,7 @@ _pkgname="s2argv-execs"
 
 pkgname="$_pkgname-git"
 pkgver=r37.aa3c3d6
-pkgrel=1
+pkgrel=2
 pkgdesc="s2argv converts a command string into an argv array for execv*, execs is like execv taking a string instead of an argv"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
