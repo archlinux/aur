@@ -1,0 +1,16 @@
+pkgbase = freetz-tools-git
+	pkgdesc = Development tools of the Freetz project
+	pkgver = r14389.b8cb05c9e
+	pkgrel = 1
+	url = https://freetz.github.io/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = sed
+	provides = freetz-tools
+	conflicts = freetz-tools
+	source = freetz-tools::git+https://github.com/Freetz/freetz.git
+	sha384sums = SKIP
+
+pkgname = freetz-tools-git
+
