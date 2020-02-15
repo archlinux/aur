@@ -2,7 +2,7 @@
 
 pkgname='deezer-nativefier'
 pkgver='1.0'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Deezer desktop built with nativefier (Electron)'
 arch=('any')
 url='https://www.deezer.com/'
@@ -29,8 +29,8 @@ build () {
 package () {
   install -dm755 "${pkgdir}/"{opt,usr/{bin,share/{applications,licenses/${pkgname}}}}
     
-  cp -rL "${srcdir}/deezer-linux-"* "${pkgdir}/opt/${pkgname}"
-  ln -sfrv "${pkgdir}/opt/${pkgname}/deezer" "${pkgdir}/usr/bin/${pkgname}"
+  cp -rL "${srcdir}/Deezer-linux-"* "${pkgdir}/opt/${pkgname}"
+  ln -sfrv "${pkgdir}/opt/${pkgname}/Deezer" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   for _size in "192x192" "128x128" "96x96" "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"

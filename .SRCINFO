@@ -1,7 +1,7 @@
 pkgbase = deezer-nativefier
 	pkgdesc = Deezer desktop built with nativefier (Electron)
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.deezer.com/
 	arch = any
 	license = custom
