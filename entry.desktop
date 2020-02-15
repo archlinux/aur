@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Texture
+Comment=WYSIWYG editor and reader for DAR/JATS (XML) scientific content
+Comment[pt]=Editor WYSIWYG e leitor de conteúdo científico em DAR/JATS (XML)
+Exec=texture
+Terminal=false
+Type=Application
+Icon=texture
+Categories=Education;Science

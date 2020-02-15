@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron4 /opt/texture/ "$@"
+exec electron4 /usr/lib/texture.asar "$@"
