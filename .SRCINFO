@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-roscpp-core
 	pkgdesc = ROS - Underlying data libraries for roscpp messages.
 	pkgver = 0.6.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wiki.ros.org/roscpp_core
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
