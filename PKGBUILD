@@ -3,7 +3,7 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.3.r1.gdcd0023
+pkgver=0.10.3.r14.gc4e040c
 pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
@@ -27,10 +27,10 @@ _lua_deps=('cassowary'
            'zlib')
 depends=('fontconfig'
          'harfbuzz'
+         'gentium-plus-font'
          'icu'
          'lua'
-         "${_lua_deps[@]/#/lua-}"
-         'ttf-gentium-plus')
+         "${_lua_deps[@]/#/lua-}")
 makedepends=('git'
              'poppler')
 checkdepends=('lua-busted')
@@ -65,14 +65,12 @@ check () {
 }
 
 package () {
-    cd "${pkgname%-git}"
-    make install DESTDIR="$pkgdir/"
+	cd "${pkgname%-git}"
+	make install DESTDIR="$pkgdir/"
 
-	for file in README.md documentation/sile.pdf ; do
-		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$(basename "$file")"
-	done
+	install -Dm644 README.md documentation/sile.pdf -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
+	cp -ar examples "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
