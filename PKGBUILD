@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.3
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://www.sile-typesetter.org/'
 license=('MIT')
@@ -29,7 +29,7 @@ depends=('fontconfig'
          'icu'
          'lua'
          "${_lua_deps[@]/#/lua-}"
-         'ttf-gentium-plus')
+         'gentium-plus-font')
 checkdepends=('lua-busted')
 sha256sums=('d89d5ce7d2bf46fb062e5299ffd8b5d821dc3cb3462a0e7c1109edeee111d856')
 
