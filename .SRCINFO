@@ -1,0 +1,20 @@
+pkgbase = python2-networkx
+	pkgdesc = Python 2 package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
+	pkgver = 2.2
+	pkgrel = 2
+	url = https://networkx.github.io
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python2-decorator
+	optdepends = python2-numpy: Provides sparse matrix representation of graphs and many numerical scientific tools
+	optdepends = python2-scipy: Provides flexible drawing of graphs
+	optdepends = python2-pydot: Provides graph drawing and graph layout algorithms
+	optdepends = python2-pyparsing: Required for pydot, GML file reading
+	optdepends = python2-yaml: Required for YAML format reading and writing
+	source = https://github.com/networkx/networkx/archive/networkx-2.2.tar.gz
+	sha256sums = 74efce06507cdc2e506c6b7d485a18617adc3a7f355e2dc48ca71c83929bc679
+
+pkgname = python2-networkx
+
