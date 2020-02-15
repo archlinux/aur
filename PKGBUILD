@@ -4,16 +4,19 @@
 
 pkgname='icinga2'
 pkgver=2.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
-depends=('boost-libs' 'libedit' 'libsystemd' 'openssl' 'yajl')
+# There currently is a bug in boost 1.72 preventing icinga2 from compiling, use
+# boost 1.69 as a workaround. See also
+# https://github.com/Icinga/icinga2/issues/7730#issuecomment-569496219
+depends=('boost1.69-libs' 'libedit' 'libsystemd' 'openssl' 'yajl')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
-makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'systemd')
+makedepends=('boost1.69' 'cmake' 'libmariadbclient' 'postgresql-libs' 'systemd')
 replaces=('icinga2-common')
 backup=(etc/default/icinga2
         etc/icinga2/features-available/api.conf

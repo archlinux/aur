@@ -1,3 +1,6 @@
+2.11.2-2
+  - Build against boost 1.69 as a workaround for a bug in boost 1.72
+
 2.11.2-1
   - New upstream version 2.11.2
 
