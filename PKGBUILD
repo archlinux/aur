@@ -3,17 +3,18 @@
 pkgbase=python-pipx
 pkgname=python-pipx
 _name=pipx
-pkgver=0.14.0.0
-pkgrel=2
+pkgver=0.15.1.3
+pkgrel=1
 pkgdesc='Execute binaries from Python packages in isolated environments'
 arch=('any')
 url='https://github.com/cs01/pipx/'
 license=('MIT')
-depends=('python-userpath' 'python-argcomplete')
-makedepends=('python-setuptools')
+depends=('python-setuptools' 'python-userpath' 'python-argcomplete')
+makedepends=()
 #source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 source=("https://github.com/cs01/${_name}/archive/${pkgver}.tar.gz")
-sha512sums=('38bec26099535a9bd84e5a7d4a30753b2ebdcbbd8c33179d62eb5fc1c09ff816122ee672dfc5c191cad6ffb5496d0fe9fc825ddec7f689758f1c9a34f53270e4')
+sha512sums=('fc05089a4a84fcd15a6a470c77a586bbae28286388892e45a981e3e4fd58f6a78d897b82f985bc0f7d3d9f29f89bd1ec9927bbf0a45de4b6a1532c9a62c63c32')
+
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
