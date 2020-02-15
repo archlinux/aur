@@ -2,27 +2,26 @@
 pkgbase=python-asdf
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=2.4.2
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A Python tool for reading and writing Advanced Scientific Data Format (ASDF) files"
 arch=('i686' 'x86_64')
 url="https://asdf.readthedocs.io/en/latest/"
 license=('BSD')
 makedepends=('python>=3.3'
-             'python-setuptools'
+             'python-setuptools-scm'
              'python-numpy>=1.8'
              'python-jsonschema<4'
              'python-yaml>=3.10'
              'python-six>=1.9.0'
-             'python-semantic-version>=2.3.1'
-             'python-semantic-version<=2.6.0'
+             'python-semantic-version>=2.8'
              'python-pytest'
              'python-astropy'
              'python-sphinx-astropy'
              'graphviz')
 #checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('0ae265459c13ab0396231c676a8f01aa')
+md5sums=('412b949bb366700299ef1a8b39db1cfe')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -35,11 +34,11 @@ build() {
 #check() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
-#    python setup.py test
+#    pytest
 #}
 
 package_python-asdf() {
-    depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.3.1' 'python-semantic-version<=2.6.0')
+    depends=('python>=3.3' 'python-numpy>=1.8' 'python-jsonschema<4' 'python-yaml>=3.10' 'python-six>=1.9.0' 'python-semantic-version>=2.8')
     optdepends=('python-astropy>=3.0: Support for units, time, transform, wcs, or running the tests'
                 'python-lz4: Support for lz4 compression'
                 'python-asdf-doc: Documentation for Python-ASDF'
@@ -55,6 +54,7 @@ package_python-asdf-doc() {
     pkgdesc="Documentation for Python ASDF module"
     cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
+    install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../licenses/*
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
     cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
 }
