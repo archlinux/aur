@@ -9,13 +9,13 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=openssh-selinux
-pkgver=8.1p1
-pkgrel=4
+pkgver=8.2p1
+pkgrel=1
 pkgdesc='Premier connectivity tool for remote login with the SSH protocol, with SELinux support'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
 arch=('x86_64')
-makedepends=('linux-headers')
+makedepends=('linux-headers' 'git')
 depends=('krb5' 'openssl' 'libedit' 'ldns' 'libselinux')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
@@ -24,14 +24,14 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30')
-source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
+#source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname/-selinux}-${pkgver}.tar.gz"{,.asc}
+source=("git://anongit.mindrot.org/openssh.git?signed#tag=V_8_2_P1"
         'sshdgenkeys.service'
         'sshd.service'
         'sshd.conf'
         'sshd.pam'
         'glibc-2.31.patch')
-sha256sums=('02f5dbef3835d0753556f973cd57b4c19b6b1f6cd24c03445e23ac77ca1b93ff'
-            'SKIP'
+sha256sums=('SKIP'
             '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
             'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
@@ -43,12 +43,15 @@ backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 install=install
 
 prepare() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+#	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	cd "${srcdir}/${pkgname/-selinux}"
 	patch -p1 -i "${srcdir}/glibc-2.31.patch"
+	autoreconf
 }
 
 build() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+#	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	cd "${srcdir}/${pkgname/-selinux}"
 
 	./configure \
 		--prefix=/usr \
@@ -72,7 +75,8 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+#	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	cd "${srcdir}/${pkgname/-selinux}"
 
 	# Tests require openssh to be already installed system-wide,
 	# also connectivity tests will fail under makechrootpkg since
@@ -95,7 +99,8 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+#	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
+	cd "${srcdir}/${pkgname/-selinux}"
 
 	make DESTDIR="${pkgdir}" install
 
