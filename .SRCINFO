@@ -12,6 +12,7 @@ pkgbase = openssh-u2f
 	depends = openssl
 	depends = libedit
 	depends = ldns
+	depends = libfido2
 	optdepends = xorg-xauth: X11 forwarding
 	optdepends = x11-ssh-askpass: input passphrase in X
 	provides = openssh
