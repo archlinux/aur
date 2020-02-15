@@ -7,14 +7,14 @@ _pkgname2="vde2"
 
 pkgname="$_pkgname-git"
 pkgver=r74.926dc9a
-pkgrel=1
+pkgrel=2
 pkgdesc="VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2' 'LGPL' 'CUSTOM')
-groups=('view-os')
-depends=('s2argv-execs' 'libpcap' 'openssl')
-makedepends=('python' 's2argv-execs' 'libpcap' 'openssl')
+license=('GPL2' 'LGPL' 'custom:BSD')
+groups=('virtualsquare')
+depends=('s2argv-execs' 'libpcap' 'python')
+makedepends=('git' 'cmake')
 provides=("$_pkgname" "$_pkgname2")
 conflicts=("$_pkgname" "$_pkgname2")
 replaces=("$_pkgname2")
@@ -45,8 +45,6 @@ pkgver() {
 build() {
 	cd "vde-2"
 	autoreconf -if
-	libtoolize
-	autoreconf -if
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib/vde2 --enable-experimental
 	make
 
@@ -64,7 +62,7 @@ package() {
 	install -D -m 644 ../dhcpd.conf.sample $pkgdir/usr/share/vde2/dhcpd.conf.sample
 	install -D -m 644 ../iptables.rules.sample $pkgdir/usr/share/vde2/iptables.rules.sample
 	# install slirp license
-	install -D -m 644 COPYING.slirpvde $pkgdir/usr/share/licenses/vde2/COPYING.slirpvde
+	install -D -m 644 COPYING.slirpvde "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.slirpvde"
 
 	cd "../$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
