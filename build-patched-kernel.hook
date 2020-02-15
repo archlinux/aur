@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = linux
+[Action]
+Description = Patch linux kernel
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/build-patched-kernel
+AbortOnFail

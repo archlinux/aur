@@ -1,0 +1,8 @@
+post_install() {
+	if [ -f "/etc/pacman.d/patch-kernel.conf.pacsave" ]; then
+		mv -v "/etc/pacman.d/patch-kernel.conf.pacsave" "/etc/pacman.d/patch-kernel.conf"
+	else
+		echo "To enable automatic kernel patching you have to customize /etc/pacman.d/patch-kernel.conf."
+		echo -e "\033[0;33mpatch-kernel-pacman-hook is highly experimental, use at your own risk.\033[0m"
+	fi
+}

@@ -1,0 +1,56 @@
+#!/bin/bash -e
+
+CONFIG=/etc/pacman.d/patch-kernel.conf
+
+source "${CONFIG}"
+
+if [ "${KERNEL_PATCHES}" == "" ]; then
+	# Nothing to do.
+	exit 0
+fi
+
+if [ "${MAKEPKG_USER}" == "" ]; then
+	echo "You need to specify a non-root user to build the patched kernel in ${CONFIG}."
+	exit 1
+fi
+
+if [ "${BUILD_DIRECTORY}" == "" ]; then
+	echo "You need to specify a build directory for building the patched kernel in ${CONFIG}."
+	exit 1
+fi
+
+if [ "$EUID" -ne 0 ]; then
+	echo "This script is expected to be run as pacman hook as root user."
+fi
+
+
+CONFIG="${CONFIG}" su -s /bin/bash -w CONFIG - "${MAKEPKG_USER}" -c '
+set -e
+source "${CONFIG}"
+
+cd "${BUILD_DIRECTORY}"
+
+asp update linux &> /dev/null
+asp -f export core/linux &> /dev/null
+cd linux
+
+for patch in ${KERNEL_PATCHES}; do
+sed -i -e "/source=(/a\\" -e "\"${patch}\"" PKGBUILD
+sed -i -e "s/sha256sums=(/sha256sums=(\"SKIP\" /" PKGBUILD
+done
+
+echo "Building patched kernel. This may take a while. Logs will be written to \"${MAKEPKG_LOG:-/tmp/makepkg_linux.log}\"."
+if ! PKGEXT=".pkg.tar.zst" makepkg ${MAKEPKG_OPTIONS} &> "${MAKEPKG_LOG:-/tmp/makepkg_linux.log}"; then
+	echo "Failed to build patched kernel. Aborting."
+	exit 1
+fi
+
+echo "Build successful. Applied patches according to makepkg log:"
+grep -oP "Applying patch \K.*(?=\.\.\.)" "${MAKEPKG_LOG:-/tmp/makepkg_linux.log}"
+
+'
+
+echo "Overwriting pacman cache:"
+
+source "${BUILD_DIRECTORY}"/linux/PKGBUILD
+cp -v "${BUILD_DIRECTORY}"/linux/linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst ${PACMAN_CACHE_DIR:-/var/cache/pacman/pkg/}

@@ -1,0 +1,18 @@
+pkgbase = patch-kernel-pacman-hook
+	pkgdesc = Pacman hook to automatically build the linux package from ABS with additional patches upon updates.
+	pkgver = 1
+	pkgrel = 1
+	install = patch-kernel-pacman-hook.install
+	arch = any
+	license = MIT
+	depends = asp
+	backup = etc/pacman.d/patch-kernel.conf
+	source = build-patched-kernel
+	source = build-patched-kernel.hook
+	source = patch-kernel.conf
+	sha512sums = e2164f6511c179847aa9fda2372f38c59035ed333c5f0b589bb353756a6dd4abbf951e4b96e0d7d43948c0d323ca2daea968de8f2574a127d29ff6d84a0939a1
+	sha512sums = 134eb0cfdaedb4d677a3cc92e5d9fd2f5a63a657ffefd5c217fa662d06b1ba6cb47e29915c2763e34afcefbfeba7e61aa932b7f6258c639ac1ff4b9fd9b17df5
+	sha512sums = a8debf2dfac793689eb411cf31833eea9d8f20bd5af493f312f15d02082d77a2f025fa1cef047091cb95aae00f09a999ce4524c8696de10fcdb73678a8379025
+
+pkgname = patch-kernel-pacman-hook
+
