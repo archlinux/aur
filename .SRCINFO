@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-ros-core
 	pkgdesc = ROS - A metapackage to aggregate the packages required to use publish / subscribe, services, launch files, and other core ROS concepts.
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/ros_core
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
