@@ -6,8 +6,9 @@ pkgdesc="Online framework for reliable, reproducible and portable molecular simu
 arch=("i686" "x86_64")
 url="https://openkim.org"
 license=('CDDL')
-depends=(bash)
-makedepends=(cmake gcc-libs)
+depends=(xxd)
+optdepends=('doxygen: build OpenKIM documentation')
+makedepends=(cmake gcc-fortran)
 install=$pkgname.install
 source=(https://s3.openkim.org/kim-api/kim-api-${pkgver}.txz
 	Fix-Doxygen-command-error.patch)
