@@ -1,0 +1,31 @@
+pkgbase = libva-hantro-h264-git
+	pkgdesc = Video Acceleration (VA) API for Linux (Hantro H264 support, git version)
+	pkgver = r1580.0b8a288
+	pkgrel = 1
+	url = https://github.com/pH5/libva/tree/hantro-h264
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = libglvnd
+	makedepends = mesa
+	makedepends = meson
+	depends = libdrm
+	depends = libgl
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = wayland
+	optdepends = libva-vdpau-driver: backend for Nvidia and AMD cards
+	optdepends = libva-intel-driver: backend for Intel cards
+	provides = libva
+	provides = libva-drm.so
+	provides = libva-glx.so
+	provides = libva-wayland.so
+	provides = libva-x11.so
+	provides = libva.so
+	conflicts = libva
+	source = git+https://github.com/pH5/libva.git#branch=hantro-h264
+	sha256sums = SKIP
+
+pkgname = libva-hantro-h264-git
+
