@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-rospy
 	pkgdesc = ROS - rospy is a pure Python client library for ROS.
 	pkgver = 1.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/rospy
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
