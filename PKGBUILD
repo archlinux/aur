@@ -3,7 +3,7 @@
 pkgname=libva-v4l2-request-hantro-h264-git
 _srcname=libva-v4l2-request
 pkgver=r240.406420a
-pkgrel=1
+pkgrel=2
 pkgdesc='LibVA implementation for the Linux Video4Linux2 Request API (Hantro 264 support, git version)'
 arch=('aarch64')
 url="https://github.com/pH5/libva-v4l2-request"
@@ -29,6 +29,6 @@ build() {
 package() {
 	cd "$srcdir/$_srcname"
 	DESTDIR="$pkgdir" ninja -C build install
-	mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+	mkdir -p "$pkgdir/usr/share/licenses/$_srcname"
 	install -D -m644 COPYING* "$pkgdir/usr/share/licenses/$_srcname/"
 }
