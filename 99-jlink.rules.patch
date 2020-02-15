@@ -1,0 +1,15 @@
+--- 99-jlink.rules	2020-02-15 18:45:50.699863019 +0100
++++ 99-jlink.rules_new	2020-02-15 18:49:22.662829214 +0100
+@@ -353,9 +353,9 @@
+ # Make sure that VCOM ports of J-Links can be opened with user rights
+ # We simply say that all devices from SEGGER which are in the "tty" domain are enumerated with normal user == R/W
+ #
+-SUBSYSTEM=="tty", ATTRS{idVendor}=="1366", MODE="0666", GROUP="dialout"
+-SUBSYSTEM=="tty", ATTRS{idVendor}=="c251", MODE="0666", GROUP="dialout"
+-SUBSYSTEM=="tty", ATTRS{idVendor}=="0d28", MODE="0666", GROUP="dialout"
++SUBSYSTEM=="tty", ATTRS{idVendor}=="1366", MODE="0666", GROUP="uucp"
++SUBSYSTEM=="tty", ATTRS{idVendor}=="c251", MODE="0666", GROUP="uucp"
++SUBSYSTEM=="tty", ATTRS{idVendor}=="0d28", MODE="0666", GROUP="uucp"
+ #
+ # End of list
+ #
