@@ -6,9 +6,8 @@ pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.3
 pkgrel=3
 arch=('x86_64')
-url='https://www.sile-typesetter.org/'
+url='https://www.sile-typesetter.org'
 license=('MIT')
-source=("https://github.com/simoncozens/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
 _lua_deps=('cassowary'
            'cosmo'
            'cliargs'
@@ -26,16 +25,13 @@ _lua_deps=('cassowary'
            'zlib')
 depends=('fontconfig'
          'harfbuzz'
+         'gentium-plus-font'
          'icu'
          'lua'
-         "${_lua_deps[@]/#/lua-}"
-         'gentium-plus-font')
+         "${_lua_deps[@]/#/lua-}")
 checkdepends=('lua-busted')
+source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
 sha256sums=('d89d5ce7d2bf46fb062e5299ffd8b5d821dc3cb3462a0e7c1109edeee111d856')
-
-prepare () {
-	cd "$pkgname-$pkgver"
-}
 
 build () {
 	cd "$pkgname-$pkgver"
@@ -45,17 +41,13 @@ build () {
 
 check () {
 	cd "$pkgname-$pkgver"
-    make busted
+	make busted
 }
 
 package () {
 	cd "$pkgname-$pkgver"
-	make install DESTDIR="$pkgdir/"
-
-	for file in README.md documentation/sile.pdf ; do
-		install -Dm644 "$file" "$pkgdir/usr/share/doc/$pkgname/$(basename "$file")"
-	done
+	make install DESTDIR="$pkgdir"
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md documentation/sile.pdf
 	cp -ar examples "$pkgdir/usr/share/doc/$pkgname"
-
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
