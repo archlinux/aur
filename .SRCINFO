@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-navfn
 	pkgdesc = ROS - navfn provides a fast interpolated navigation function that can be used to create plans for a mobile base.
 	pkgver = 1.16.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/navfn
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
