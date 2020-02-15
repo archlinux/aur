@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-dwa-local-planner
 	pkgdesc = ROS - This package provides an implementation of the Dynamic Window Approach to local robot navigation on a plane.
 	pkgver = 1.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/dwa_local_planner
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
