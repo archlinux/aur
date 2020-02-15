@@ -3,8 +3,8 @@ url='https://wiki.ros.org/rqt_image_view'
 
 pkgname='ros-melodic-rqt-image-view'
 pkgver='0.4.13'
-arch=('any')
-pkgrel=3
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
