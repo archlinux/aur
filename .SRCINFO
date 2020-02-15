@@ -1,6 +1,6 @@
 pkgbase = qv2ray-dev-git
 	pkgdesc = Cross-platform V2ray Client written in Qt (Development Release)
-	pkgver = 2.1.1.3861+grpc
+	pkgver = 2.1.2.3861+grpc
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = qv2ray-dev-git
 	provides = qv2ray
 	conflicts = qv2ray
 	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=dev
-	source = QNodeEditor::git+https://github.com/lhy0403/QNodeEditor
+	source = QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor
 	source = SingleApplication::git+https://github.com/itay-grudev/SingleApplication
 	source = x2struct::git+https://github.com/xyz347/x2struct
 	source = qzxing::git+https://github.com/ftylitak/qzxing

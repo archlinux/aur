@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.1.1.3861+grpc
+pkgver=2.1.2.3861+grpc
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
@@ -23,9 +23,12 @@ source=(
     'qhttpserver::git+https://github.com/nikhilm/qhttpserver'
 )
 
-sha512sums=(
-    'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-)
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
     printf "%s.%s+grpc" $(cat ${srcdir}/Qv2ray/makespec/VERSION) $(cat ${srcdir}/Qv2ray/makespec/BUILDVERSION)
