@@ -1,0 +1,12 @@
+pkgbase = vul-git
+	pkgdesc = Latin Vulgate Bible in the terminal
+	pkgver = r12.996c670
+	pkgrel = 1
+	url = https://github.com/LukeSmithxyz/vul
+	arch = any
+	license = custom:Public Domain
+	depends = bash
+	source = vul::git+https://github.com/LukeSmithxyz/vul
+	md5sums = SKIP
+
+pkgname = vul-git
