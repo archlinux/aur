@@ -1,7 +1,7 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 pkgname="iget-git"
-pkgver=1.3.5.f232bb8
+pkgver=1.3.5_13_g20cc672.20cc672
 pkgrel=1
 pkgdesc='A no-hassle command-line image downloader.'
 arch=('any')
