@@ -6,8 +6,8 @@ url='https://wiki.ros.org/audio_capture'
 pkgname='ros-melodic-audio-capture'
 pkgver='0.3.3'
 _pkgver_patch=0
-arch=('any')
-pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
