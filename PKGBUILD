@@ -5,8 +5,8 @@ url='https://wiki.ros.org/audio_play'
 
 pkgname='ros-melodic-audio-play'
 pkgver='0.3.3'
-arch=('any')
-pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
