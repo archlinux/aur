@@ -4,7 +4,7 @@
 pkgname=python-cloudscraper
 _author=VeNoMouS
 _gitname=cloudscraper
-pkgver=1.2.22
+pkgver=1.2.23
 pkgrel=1
 pkgdesc='A Python module to bypass Cloudflares anti-bot page. (Release version)'
 url='https://github.com/VeNoMouS/cloudscraper.git'
@@ -22,7 +22,7 @@ makedepends=('git' 'python-setuptools')
 provides=('python-cloudscraper')
 
 source=("$_gitname-$pkgver.tar.gz::https://www.github.com/$_author/$_gitname/archive/$pkgver.tar.gz")
-sha256sums=('4214f9a1900abc06dd1044a37fabbfd5515be3db185df31d0e83cb6ff3e3cb37')
+sha256sums=('33c2efacc6e20535bc9e15eee6401cd9364624aba0a87a0e069878882e8a6cf6')
 
 package() {
   cd "$_gitname-$pkgver"
