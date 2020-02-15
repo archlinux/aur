@@ -32,7 +32,7 @@ build() {
 
 package() {
 	cd "$pkgname-v$pkgver-"*
-	install -Dm 755 $pkgname -t "$pkgdir/usr/bin"
+	install -Dm 755 "$pkgname" -t "$pkgdir/usr/bin"
 	install -Dm 644 "$srcdir/config.cfg" -t "$pkgdir/etc/$pkgname"
 	install -Dm 644 "$srcdir/$pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 	install -Dm 644 "$srcdir/service.env" -t "$pkgdir/etc/$pkgname"
