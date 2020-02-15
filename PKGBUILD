@@ -1,7 +1,7 @@
 # Maintainer: Anaël Megna <anael.megna@gmail.com>
 
 pkgname=meta-group-texlive-most
-pkgver=202002150113
+pkgver=202002150115
 pkgrel=1
 pkgdesc='Meta package for texlive-most'
 arch=('any')
