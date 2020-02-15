@@ -1,7 +1,7 @@
 pkgbase = libva-v4l2-request-hantro-h264-git
 	pkgdesc = LibVA implementation for the Linux Video4Linux2 Request API (Hantro 264 support, git version)
 	pkgver = r240.406420a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pH5/libva-v4l2-request
 	arch = aarch64
 	license = LGPL2.1
