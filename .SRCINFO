@@ -1,0 +1,18 @@
+pkgbase = proji
+	pkgdesc = A fast and powerful cli project scaffolding tool
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://github.com/nikoksr/proji
+	arch = x86_64
+	license = custom:MIT
+	makedepends = go-pie
+	makedepends = golang-golang-x-sys
+	makedepends = golang-golang-x-text
+	makedepends = golang-github-stretchr-testify
+	makedepends = git
+	depends = glibc
+	source = proji::git+https://github.com/nikoksr/proji.git#tag=v0.18.1
+	sha512sums = SKIP
+
+pkgname = proji
+
