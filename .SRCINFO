@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-moveit-ros-manipulation
 	pkgdesc = ROS - Components of MoveIt used for manipulation.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://moveit.ros.org
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
