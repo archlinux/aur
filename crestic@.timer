@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily crestic backup %I
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
