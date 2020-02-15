@@ -3,8 +3,8 @@ url='https://wiki.ros.org/realtime_tools'
 
 pkgname='ros-melodic-realtime-tools'
 pkgver='1.15.0'
-arch=('any')
-pkgrel=0
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-roscpp
