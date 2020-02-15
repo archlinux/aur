@@ -2,7 +2,8 @@
 # Contributor: Michael Lojkovic <mikelojkovic@gmail.com>
 
 pkgname=gtk-theme-windows10-dark
-pkgver=3.0
+pkgver=3.2
+_pkgver=3.0
 pkgrel=1
 pkgdesc="GTK 3.x Theme made to emulate a Windows 10 environment on Linux machines"
 arch=('any')
@@ -16,7 +17,7 @@ sha1sums=('d92fcedd23d233c2e05c40e82873275965385f4c')
 
 
 package() {
-	cd Windows-10-Dark-${pkgver}-dark
+	cd Windows-10-Dark-${_pkgver}-dark
 
   	# create theme dir
   	install -d -m 755 "$pkgdir/usr/share/themes/Windows10Dark"
