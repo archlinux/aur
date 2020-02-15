@@ -4,8 +4,8 @@ url='https://moveit.ros.org'
 
 pkgname='ros-melodic-moveit-setup-assistant'
 pkgver='1.0.2'
-arch=('any')
-pkgrel=2
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-srdfdom
@@ -55,9 +55,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=-python3.7m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
