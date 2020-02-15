@@ -1,9 +1,13 @@
 pkgbase = ros-melodic-amcl
 	pkgdesc = ROS - amcl is a probabilistic localization system for a robot moving in 2D.
 	pkgver = 1.16.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.ros.org/amcl
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = LGPL
 	makedepends = cmake
 	makedepends = ros-build-tools
