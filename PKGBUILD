@@ -1,7 +1,7 @@
 # Maintainer: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=cozette-otb
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/slavfox/Cozette/releases/download/v.${pkgver}/cozette.otb"
         "https://github.com/slavfox/Cozette/archive/v.${pkgver}.tar.gz")
-sha256sums=('35764cd2e7dcab578bf55a7a85f392f66635b232e03fe5e29fb4aa6e54e651cf'
-            '09026d3c9b68cf1ad941b8158cddee6daebd4c4bd845c853c2c9b5ed69ca4c69')
+sha256sums=('2dc676dbc340aa9ed4507d8a50421d6f4430283b97dc635f8986167c943848f5'
+            '99a2fd4b3b37d33e0926eb98979d3af1e803ff94c40b25b62dfc8d1320131aea')
 
 package() {
     cd "${srcdir}"
