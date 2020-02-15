@@ -1,0 +1,15 @@
+pkgbase = ruby-options
+	pkgdesc = parse options from *args cleanly
+	pkgver = 2.3.2
+	pkgrel = 1
+	url = https://github.com/ahoward/options
+	arch = any
+	license = RUBY
+	depends = ruby
+	noextract = options-2.3.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/options-2.3.2.gem
+	sha256sums = 32413a4b9e363234eed2eecfb2a1a9deb32810f72c54820a37a62f65b905c5e8
+
+pkgname = ruby-options
+
