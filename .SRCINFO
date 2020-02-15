@@ -1,0 +1,15 @@
+pkgbase = iso2opl-git
+	pkgdesc = ISO installer for Open PS2 Loader project
+	pkgver = r5.3bbcfe1
+	pkgrel = 1
+	url = http://www.psx-scene.com/forums/showthread.php?t=62141
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = iso2opl
+	conflicts = iso2opl
+	source = iso2opl::git+https://github.com/arcadenea/iso2opl.git
+	sha256sums = SKIP
+
+pkgname = iso2opl-git
+
