@@ -2,7 +2,7 @@
 
 pkgname=gvisor-bin
 _pkgname=runsc
-pkgver=20200127.0
+pkgver=20200211.0
 pkgrel=1
 pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/$_pkgname")
-sha256sums=('09e970cfca06712488edae1eb7b24a66acb39df1e83e282c0abd755c6ceba4df')
+sha256sums=('a23096eb3a4bf500b5219c0a48a4ce623b43f78cb14ac9f78beb551bde6e9e6f')
 
 package() {
 	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
