@@ -1,6 +1,6 @@
 pkgbase = freeorion
-	pkgdesc = turn-based space empire and galactic conquest (4X) computer game
-	pkgver = 0.4.8
+	pkgdesc = Turn-based space empire and galactic conquest (4X) computer game
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = http://www.freeorion.org/
 	arch = i686
@@ -16,9 +16,10 @@ pkgbase = freeorion
 	depends = openal
 	depends = hicolor-icon-theme
 	depends = freetype2
+	provides = freeorion
 	conflicts = freeorion-git
-	source = freeorion-0.4.8.tar.gz::https://github.com/freeorion/freeorion/releases/download/v0.4.8/FreeOrion_v0.4.8_2018-08-23.26f16b0_Source.tar.gz
-	md5sums = c3ad0186b868e939688483713d0d8dec
+	source = https://github.com/freeorion/freeorion/archive/v0.4.9.tar.gz
+	md5sums = 66e11dfeb836ea04474a8539713737ee
 
 pkgname = freeorion
 
