@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-fonts
 	pkgdesc = Metapackage depending on all OFL-licensed font packages from SIL
 	pkgver = 8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.sil.org/fonts
 	arch = any
 	license = custom:OFL

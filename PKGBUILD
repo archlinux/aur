@@ -6,7 +6,7 @@
 
 pkgname=ttf-sil-fonts
 pkgver=8
-pkgrel=1
+pkgrel=2
 pkgdesc="Metapackage depending on all OFL-licensed font packages from SIL"
 arch=('any')
 url='https://software.sil.org/fonts'
