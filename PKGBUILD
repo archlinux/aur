@@ -2,13 +2,14 @@
 # Contributor: bslackr <brendan at vastactive dot com>
 # Contributor: Firmicus <firmicus āt gmx dōt net>
 
-pkgname=ttf-sil-lateef
+_pkgname=lateef
+pkgname=ttf-sil-$_pkgname
 _fname=LateefGR
 pkgver=1.200
 pkgrel=4
 pkgdesc='Arabic script font for Sindhi and other languages of southern Asia'
 arch=('any')
-url='https://software.sil.org/lateef/'
+url="https://software.sil.org/$_pkgname"
 license=('custom:OFL')
 depends=('fontconfig' 'xorg-font-utils')
 source=("http://software.sil.org/downloads/r/lateef/$_fname-$pkgver.zip")
