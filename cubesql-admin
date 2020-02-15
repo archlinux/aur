@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/lib/cubesql/cubeSQLAdmin $@
+exec /usr/lib/cubesql/cubeSQLAdmin $@

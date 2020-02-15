@@ -1,8 +1,12 @@
 [Unit]
 Description=cubeSQL database management system
+After=network.target
 
 [Service]
-ExecStart=/usr/bin/cubesql -x /var/lib/cubesql
+User=cubesql
+Group=cubesql
+Environment=DIR=/var/lib/cubesql
+ExecStart=/usr/bin/cubesql -x ${DIR} -s ${DIR}/cubesql.settings
 
 [Install]
 WantedBy=multi-user.target

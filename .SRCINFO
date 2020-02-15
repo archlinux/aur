@@ -1,18 +1,21 @@
 pkgbase = cubesql
 	pkgdesc = cubeSQL is a relational database management system built on top of the sqlite database engine.
 	pkgver = 5.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sqlabs.com/cubesql.php
 	arch = x86_64
 	license = custom:cubesql
-	optdepends = gtk2
-	optdepends = libgtkhtml
+	optdepends = gtk3
 	source = https://www.sqlabs.com/download/cubesql/latest/cubesql_linux64bit.tar.gz
 	source = cubesql.service
 	source = cubesql-admin
+	source = cubesql-sysusers.conf
+	source = cubesql-tmpfiles.conf
 	sha256sums = ae99e1580426b2ca022f10c7f61d514bf326b34c428685efbb4a744cbbe4115d
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3bfe6eec238b33581f9441be552b34a875b8dac783314d0efaec6dd3992be490
+	sha256sums = dec44ae33559e89061db90177322d3e9a289df64da1b1287df3bd47379b6a8b5
+	sha256sums = bf57a4e0ec18559a3de8457e07262aece9cf27995af84a561f56f7ff84dfb88f
+	sha256sums = 0cd36e0d6bace234c454d1b66a2ed843de6b883900915165a19f5bc4bda7fd97
 
 pkgname = cubesql
 
