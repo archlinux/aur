@@ -6,8 +6,8 @@ _pkgname="vdeplug4"
 _pkgname2="vde2"
 
 pkgname="$_pkgname-git"
-pkgver=r44.7ebdc73
-pkgrel=2
+pkgver=r74.926dc9a
+pkgrel=1
 pkgdesc="VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
@@ -27,6 +27,7 @@ source=(
 	vde-connection.sample
 )
 install=vde2.install
+options=(!makeflags)
 sha256sums=(
 	'SKIP'
 	'SKIP'
@@ -49,9 +50,9 @@ build() {
 	./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --libexecdir=/usr/lib/vde2 --enable-experimental
 	make
 
-	cd "../$_pkgname"
-	autoreconf -i
-	./configure --prefix="/usr"
+	mkdir -p "../$_pkgname/build"
+	cd "../$_pkgname/build"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
@@ -65,6 +66,6 @@ package() {
 	# install slirp license
 	install -D -m 644 COPYING.slirpvde $pkgdir/usr/share/licenses/vde2/COPYING.slirpvde
 
-	cd "../$_pkgname"
+	cd "../$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
 }
