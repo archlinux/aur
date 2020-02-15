@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
