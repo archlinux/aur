@@ -5,8 +5,8 @@ url='https://wiki.ros.org/cv_bridge'
 
 pkgname='ros-melodic-cv-bridge'
 pkgver='1.13.0'
-arch=('any')
-pkgrel=4
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=5
 license=('BSD')
 
 ros_makedepends=(
@@ -70,9 +70,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.8 \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.8.so \
-		-DPYTHON_BASENAME=.cpython-38 \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
