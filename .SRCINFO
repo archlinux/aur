@@ -25,7 +25,6 @@ pkgbase = openssh-u2f
 	source = sshd.conf
 	source = sshd.pam
 	source = glibc-2.31.patch
-	validpgpkeys = 59C2118ED206D927E667EBE3D3E5F56B6D920D30
 	sha256sums = SKIP
 	sha256sums = 4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7
 	sha256sums = e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7
