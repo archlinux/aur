@@ -21,12 +21,12 @@ md5sums=('f5ed7f7f82c6cdd9dc7baf99308594b3'
          'b92c8854e4553540df6bc998afe68cc4')
 
 prepare() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${pkgname}"*
 	# patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}_${pkgver}"
+	cd "${srcdir}/${pkgname}"*
 
 	install -Dm 644 ${srcdir}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm 644 ${srcdir}/wavebox.appdata.xml ${pkgdir}/usr/share/appdata/wavebox.appdata.xml
@@ -35,5 +35,5 @@ package() {
 	install -Dm 644 ${srcdir}/wavebox.menu ${pkgdir}/usr/share/menu/wavebox.menu
 	install -dm 755 ${pkgdir}/opt/wavebox.io
 
-	cp -r ../"${pkgname}_${pkgver}" ${pkgdir}/opt/wavebox.io/wavebox
+	cp -r ../"${pkgname}"* ${pkgdir}/opt/wavebox.io/wavebox
 }
