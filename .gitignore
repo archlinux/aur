@@ -1,0 +1,6 @@
+pkg/*
+src/*
+*.exe
+*.deb
+*.pkg.tar.*
+.vscode/*
