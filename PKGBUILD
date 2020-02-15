@@ -11,7 +11,8 @@ url="https://github.com/aragon/aragon-cli"
 license=('GPL')
 depends=('nodejs')
 makedepends=('nodejs' 'npm')
-source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmscope}/${_npmname}-${pkgver}.tgz")
+# npm view @aragon/cli dist.tarball
+source=("http://registry.npmjs.org/${_npmscope}/${_npmname}/-/${_npmname}-${pkgver}.tgz")
 sha256sums=('7b688d5797e9c1d48a218f6fd230e4674125f27eb2a630d358a3762d76318ec6')
 noextract=('${_npmname}-${pkgver}.tgz')
 
