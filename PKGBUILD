@@ -3,8 +3,8 @@ url='https://wiki.ros.org/qt_gui_cpp'
 
 pkgname='ros-melodic-qt-gui-cpp'
 pkgver='0.3.16'
-arch=('any')
-pkgrel=0
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
