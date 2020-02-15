@@ -5,6 +5,9 @@ pkgbase = lua-penlight-git
 	url = https://tieske.github.io/Penlight
 	arch = any
 	license = MIT
+	checkdepends = lua
+	checkdepends = lua-luacov
+	checkdepends = lua-filesystem
 	source = penlight::git+https://github.com/Tieske/Penlight.git
 	sha256sums = SKIP
 

@@ -4,12 +4,13 @@
 _pkgname=penlight
 pkgname=("lua-$_pkgname-git" "lua52-$_pkgname-git" "lua51-$_pkgname-git")
 pkgver=1.7.0.r4.ge469fa0
-pkgrel=2
+pkgrel=3
 pkgdesc='Lua libraries for on input data handling, functional programming, and OS interface'
 url='https://tieske.github.io/Penlight'
 arch=('any')
 license=('MIT')
 _lua_deps=('filesystem')
+checkdepends=('lua' 'lua-luacov' "${_lua_deps[@]/#/lua-}") # Luacov because of upstream bug since fixed, remove when bumping release
 source=("$_pkgname::git+https://github.com/Tieske/Penlight.git")
 sha256sums=('SKIP')
 
