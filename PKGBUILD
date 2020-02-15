@@ -6,8 +6,8 @@ url='https://wiki.ros.org/sound_play'
 pkgname='ros-melodic-sound-play'
 pkgver='0.3.3'
 _pkgver_patch=0
-arch=('any')
-pkgrel=1
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-actionlib-msgs
@@ -66,9 +66,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
-        -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
-        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
