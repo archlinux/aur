@@ -1,0 +1,16 @@
+pkgbase = ruby-progress_bar
+	pkgdesc = Simple Progress Bar for output to a terminal
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = http://github.com/paul/progress_bar
+	arch = any
+	license = WTFPL
+	depends = ruby-highline
+	depends = ruby-options
+	noextract = progress_bar-1.3.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/progress_bar-1.3.1.gem
+	sha256sums = 3633e9d0d8424f6480e1f0b3299f3e234e9417e0110bc8168b43236de712a1b1
+
+pkgname = ruby-progress_bar
+
