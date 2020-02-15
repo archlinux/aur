@@ -14,7 +14,7 @@ pkgdesc="Alpha version of Blender 2.81-release branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
-         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'oidn'
+         'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'openimagedenoise'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
@@ -91,7 +91,7 @@ build() {
         -DPYTHON_VERSION=${_pyver} \
         ${_EXTRAOPTS[@]}
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  ((DISABLE_NINJA)) && make -j$(nproc) || ninja -d stats
+  ((DISABLE_NINJA)) && make || ninja $([ -v MAKEFLAGS ] || echo -j1) -d stats
 }
 
 package() {
