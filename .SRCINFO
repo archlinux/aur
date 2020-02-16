@@ -1,13 +1,14 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
-	pkgver = 9.0.1
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://github.com/angular/angular-cli
 	arch = any
 	license = MIT
-	depends = nodejs
 	depends = npm
-	options = !strip
+	noextract = angular-cli-9.0.2.tar.gz
+	source = angular-cli-9.0.2.tar.gz::https://registry.npmjs.org/@angular/cli/-/cli-9.0.2.tgz
+	md5sums = 914c426c5f1084a281343e2c13e04f70
 
 pkgname = angular-cli
 
