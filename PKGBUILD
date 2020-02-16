@@ -10,8 +10,8 @@ depends=("python" "glib2" "python-gobject" "gtk3" "youtube-dl" "python-vlc"
          "python-lyricwikia" "python-pydbus" "python-tekore"
          "python-qdarkstyle" "python-appdirs" "python-pyqt5"
          "python-pyqtwebengine" "python-qtpy")
-optdepends=("python-mpv: support for the mpv player")
-optdepends=("vidify-audiosync: audio synchronization extension")
+optdepends=("python-mpv: support for the mpv player"
+            "vidify-audiosync: audio synchronization extension")
 makedepends=("python-setuptools")
 source=("https://github.com/vidify/vidify/releases/download/$pkgver/vidify-$pkgver.tar.gz")
 md5sums=('6c8d5a1c23aa74ccfa03b7499920ee40')
