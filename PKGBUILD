@@ -11,9 +11,11 @@ _url_qt="https://github.com/PapirusDevelopmentTeam/materia-kde"
 pkgver=r1262.b1e4c563
 pkgrel=1
 license=('GPL')
-makedepends=(bc sassc resvg)
+makedepends=(bc sassc inkscape)
 depends=('gtk3>=3.22' 'gtk-engine-murrine' 'gnome-themes-extra' 'kvantum-qt5')
-optdepends=()
+optdepends=(
+    'resvg: faster compilation'
+)
 provides=()
 conflicts=('materia-theme' 'kvantum-theme-materia')
 replaces=()

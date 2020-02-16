@@ -7,11 +7,12 @@ pkgbase = materia-custom-accent
 	license = GPL
 	makedepends = bc
 	makedepends = sassc
-	makedepends = resvg
+	makedepends = inkscape
 	depends = gtk3>=3.22
 	depends = gtk-engine-murrine
 	depends = gnome-themes-extra
 	depends = kvantum-qt5
+	optdepends = resvg: faster compilation
 	conflicts = materia-theme
 	conflicts = kvantum-theme-materia
 	source = materia-theme::git+https://github.com/nana-4/materia-theme.git
