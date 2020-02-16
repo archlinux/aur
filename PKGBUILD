@@ -6,8 +6,8 @@ pkgdesc="Open source wireless development platform suitable for Bluetooth experi
 url="https://github.com/greatscottgadgets/ubertooth/"
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusbx' 'libpcap' 'python2-numpy' 'python2-pyusb')
-optdepends=('qt5-declarative' 'python2-pyside2')
+depends=('bluez-libs' 'libbtbb>=2018.12.R1' 'libusbx' 'libpcap' 'python-numpy' 'python-pyusb')
+optdepends=('qt5-declarative' 'python-pyside2')
 makedepends=('cmake')
 source=("https://github.com/greatscottgadgets/ubertooth/releases/download/${_pkgver}/ubertooth-${_pkgver}.tar.xz")
 sha256sums=('0042daa79db0f4148a0255cdf05aa57006e23ac36edf7024e9e99ccc4892867b')
@@ -19,7 +19,7 @@ build() {
   cmake -DENABLE_PYTHON=FALSE -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr -DUDEV_RULES_PATH=${pkgdir}/etc/udev/rules.d -DINSTALL_UDEV_RULES=TRUE -DUDEV_RULES_GROUP=uucp ..
   make
   cd ../python/specan_ui
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
@@ -29,7 +29,7 @@ package() {
 
   # GUI
   cd ../python/specan_ui
-  python2 setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
   # Firmware
   install -dm755 "${pkgdir}/usr/share/ubertooth"
