@@ -10,7 +10,7 @@ _reponame=TinyFPGA-Bootloader
 _repo=tinyfpga/$_reponame
 
 pkgdesc="TinyFPGA programmer"
-arch=('x86_64')
+arch=('any')
 url="https://tinyfpga.com/"
 license=('GPL3')
 
