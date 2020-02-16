@@ -5,8 +5,8 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=4.4.0
-pkgrel=3
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
 url="http://www.mudlet.org"
@@ -21,19 +21,7 @@ conflicts=('mudlet-git')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('4496d1ab8cdbec8bebf4932b7cbd64df5318d01e591ca4cb1d65cfbfd2401c70')
-
-prepare() {
-    cd "$srcdir/src"
-    #Fix missing includes
-    sed -i '29 a #include <QFileInfo>' TMedia.h
-    sed -i '29 a #include <QJsonDocument>' TMedia.h
-    sed -i '29 a #include <QJsonObject>' TMedia.h
-    sed -i '29 a #include <QDir>' TMedia.h
-    sed -i '29 a #include <QStandardPaths>' TMedia.h 
-    sed -i '29 a #include <QNetworkAccessManager>' TMedia.h 
-    sed -i '29 a #include <QNetworkDiskCache>' TMedia.h
-    }
+sha256sums=('c4c3672b2b2a04ad2f0366ccaf06bcccc242b82c01312bdf31cd01e6ef68f865')
 
 
 build() {
