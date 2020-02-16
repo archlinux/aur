@@ -3,13 +3,14 @@
 _pkgname="libvdestack"
 
 pkgname="$_pkgname-git"
-pkgver=r11.d9070d4
+pkgver=r18.373dccd
 pkgrel=1
 pkgdesc="Internet of Threads through Network Namespaces"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2')
+license=('LGPL')
 depends=('s2argv-execs-git' 'vdeplug4-git')
+makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -22,8 +23,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	autoreconf -if
-	./configure --prefix=/usr
+	cmake -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
