@@ -3,13 +3,14 @@
 _pkgname="userbindmount"
 
 pkgname="$_pkgname-git"
-pkgver=r6.149048f
-pkgrel=2
+pkgver=r17.fea54ed
+pkgrel=1
 pkgdesc="A library and a utility command providing support for bind mount in user namespaces."
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2')
-groups=('view-os')
+license=('GPL2' 'LGPL')
+depends=('libcap')
+makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -21,12 +22,13 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man
+	mkdir -p "$_pkgname/build"
+	cd "$_pkgname/build"
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man ..
 	make
 }
 
 package() {
-	cd "$_pkgname"
+	cd "$_pkgname/build"
 	make DESTDIR="$pkgdir/" install
 }
