@@ -1,51 +1,50 @@
 diff --git a/build/makefile_base.mak b/build/makefile_base.mak
-index 1b02135..0170d4a 100644
+index 1b02135..34ca827 100644
 --- a/build/makefile_base.mak
 +++ b/build/makefile_base.mak
-@@ -90,6 +90,8 @@ SELECT_DOCKER_IMAGE :=
+@@ -89,8 +89,8 @@ SELECT_DOCKER_IMAGE :=
+ # controllable by SUBMAKE_JOBS.  Not ideal.
  ifneq ($(CONTAINER_SHELL32)$(CONTAINER_SHELL64),)
  	SUBMAKE_JOBS ?= 36
- 	MAKE := make -j$(SUBMAKE_JOBS)
-+else
-+	MAKE := make -j$(SUBMAKE_JOBS)
+-	MAKE := make -j$(SUBMAKE_JOBS)
  endif
++MAKE := make -j$(SUBMAKE_JOBS)
  
  # Use default shell if no STEAMRT_ variables setup a container to invoke.  Commands will just run natively.
-@@ -154,7 +156,7 @@ else
+ ifndef CONTAINER_SHELL64
+@@ -154,7 +154,8 @@ else
      VKD3D_INSTALL_TARGET := install-strip
  endif
  
 -OPTIMIZE_FLAGS := -O2 -march=nocona $(call cc-option,$(CC),-mtune=core-avx2,) -mfpmath=sse
++CFLAGS ?= -O2 -march=nocona $(call cc-option,$(CC),-mtune=core-avx2,)
 +OPTIMIZE_FLAGS := $(CFLAGS) -mfpmath=sse
  SANITY_FLAGS   := -fwrapv -fno-strict-aliasing
  COMMON_FLAGS   := $(OPTIMIZE_FLAGS) $(SANITY_FLAGS)
  
-@@ -213,6 +215,18 @@ GST_GOOD_OBJ64 := ./obj-gst-good64
+@@ -213,6 +214,16 @@ GST_GOOD_OBJ64 := ./obj-gst-good64
  FAUDIO := $(SRCDIR)/FAudio
  FAUDIO_OBJ32 := ./obj-faudio32
  FAUDIO_OBJ64 := ./obj-faudio64
 +FAUDIO_DEPS32 :=
 +FAUDIO_DEPS64 :=
-+
-+ifeq ($(WITH_FFMPEG),1)
-+	FAUDIO_DEPS32 += ffmpeg32
-+	FAUDIO_DEPS64 += ffmpeg64
-+endif # WITH_FFMPEG
-+
 +ifneq ($(STEAMRT_PATH),) # Don't build cmake in native mode
 +	FAUDIO_DEPS32 += cmake32
 +	FAUDIO_DEPS64 += cmake64
 +endif # STEAMRT_PATH
++ifeq ($(WITH_FFMPEG),1)
++	FAUDIO_DEPS32 += ffmpeg32
++	FAUDIO_DEPS64 += ffmpeg64
++endif # WITH_FFMPEG
  
  LSTEAMCLIENT := $(SRCDIR)/lsteamclient
  LSTEAMCLIENT32 := ./syn-lsteamclient32/lsteamclient
-@@ -229,6 +243,13 @@ WINE_DST32 := ./dist-wine32
+@@ -229,6 +240,12 @@ WINE_DST32 := ./dist-wine32
  WINE_OBJ32 := ./obj-wine32
  WINE_OBJ64 := ./obj-wine64
  WINEMAKER := $(abspath $(WINE)/tools/winemaker/winemaker)
 +WINE_DEPS32 := faudio32 vkd3d32
 +WINE_DEPS64 := faudio64 vkd3d64
-+
 +ifneq ($(STEAMRT_PATH),) # Don't build gstreamer/bison in native mode
 +	WINE_DEPS32 += gst_base32 bison32
 +	WINE_DEPS64 += gst_base64 bison64
@@ -53,7 +52,7 @@ index 1b02135..0170d4a 100644
  
  # Wine outputs that need to exist for other steps (dist)
  WINE_OUT_BIN := $(DST_DIR)/bin/wine64
-@@ -236,9 +257,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
+@@ -236,9 +253,11 @@ WINE_OUT_SERVER := $(DST_DIR)/bin/wineserver
  WINE_OUT := $(WINE_OUT_BIN) $(WINE_OUT_SERVER)
  # Tool-only build outputs needed for other projects
  WINEGCC32 := $(TOOLS_DIR32)/bin/winegcc
@@ -65,13 +64,12 @@ index 1b02135..0170d4a 100644
  WINEBUILD64 := $(TOOLS_DIR64)/bin/winebuild
  WINE_BUILDTOOLS64 := $(WINEGCC64) $(WINEBUILD64)
  
-@@ -246,6 +269,13 @@ WINEWIDL_OBJ32 := ./obj-widl32
+@@ -246,6 +265,12 @@ WINEWIDL_OBJ32 := ./obj-widl32
  WINEWIDL_OBJ64 := ./obj-widl64
  WINEWIDL32 := $(WINEWIDL_OBJ32)/tools/widl/widl
  WINEWIDL64 := $(WINEWIDL_OBJ64)/tools/widl/widl
 +WINEWIDL_DEPS32 :=
 +WINEWIDL_DEPS64 :=
-+
 +ifneq ($(STEAMRT_PATH),) # Don't build bison in native mode
 +	WINEWIDL_DEPS32 += bison32
 +	WINEWIDL_DEPS64 += bison64
@@ -79,13 +77,12 @@ index 1b02135..0170d4a 100644
  
  VRCLIENT := $(SRCDIR)/vrclient_x64
  VRCLIENT32 := ./syn-vrclient32
-@@ -261,22 +291,41 @@ VULKAN_H_OBJ32 := ./obj-vulkan-headers32
+@@ -261,22 +286,38 @@ VULKAN_H_OBJ32 := ./obj-vulkan-headers32
  VULKAN_H_OBJ64 := ./obj-vulkan-headers64
  VULKAN_H32 := $(TOOLS_DIR32)/include/vulkan/vulkan.h
  VULKAN_H64 := $(TOOLS_DIR64)/include/vulkan/vulkan.h
 +VULKAN_H_DEPS32 :=
 +VULKAN_H_DEPS64 :=
-+
 +ifneq ($(STEAMRT_PATH),) # Don't build cmake in native mode
 +	VULKAN_H_DEPS32 += cmake32
 +	VULKAN_H_DEPS64 += cmake64
@@ -98,7 +95,6 @@ index 1b02135..0170d4a 100644
  SPIRV_H64 := $(TOOLS_DIR64)/include/spirv/spirv.h
 +SPIRV_H_DEPS32 :=
 +SPIRV_H_DEPS64 :=
-+
 +ifneq ($(STEAMRT_PATH),) # Don't build cmake in native mode
 +	SPIRV_H_DEPS32 += cmake32
 +	SPIRV_H_DEPS64 += cmake64
@@ -108,6 +104,8 @@ index 1b02135..0170d4a 100644
  VKD3D_OBJ32 := ./obj-vkd3d32
  VKD3D_OBJ64 := ./obj-vkd3d64
  
++CMAKE_BIN32 := cmake
++CMAKE_BIN64 := cmake
 +ifneq ($(STEAMRT_PATH),) # Don't build cmake in native mode
  CMAKE := $(SRCDIR)/cmake
 -CMAKE_OBJ32 := ./obj-cmake32
@@ -116,35 +114,29 @@ index 1b02135..0170d4a 100644
 +CMAKE_OBJ64 := ../obj-cmake64
  CMAKE_BIN32 := $(CMAKE_OBJ32)/built/bin/cmake
  CMAKE_BIN64 := $(CMAKE_OBJ64)/built/bin/cmake
-+else
-+CMAKE_BIN32 := cmake
-+CMAKE_BIN64 := cmake
 +endif # STEAMRT_PATH
  
  BISON_VER = 3.3.2
  BISON_TARBALL := bison-$(BISON_VER).tar.xz
-@@ -286,6 +335,11 @@ BISON_OBJ64 := ./obj-bison64
+@@ -285,6 +326,10 @@ BISON_OBJ32 := ./obj-bison32
+ BISON_OBJ64 := ./obj-bison64
  BISON_BIN32 := $(BISON_OBJ32)/built/bin/bison
  BISON_BIN64 := $(BISON_OBJ64)/built/bin/bison
- 
 +ifneq ($(STEAMRT_PATH),) # Don't build bison in native mode
 +	WINE_BISON32 = BISON=$(abspath $(BISON_BIN32))
 +	WINE_BISON64 = BISON=$(abspath $(BISON_BIN64))
 +endif # STEAMRT_PATH
-+
+ 
  
  FONTS := $(SRCDIR)/fonts
- FONTS_OBJ := ./obj-fonts
-@@ -388,11 +442,28 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/wine-gecko-$(GECKO_VER)-x86_64
+@@ -388,11 +433,26 @@ DIST_GECKO64 := $(DIST_GECKO_DIR)/wine-gecko-$(GECKO_VER)-x86_64
  DIST_WINEMONO_DIR := $(DST_DIR)/share/wine/mono
  DIST_WINEMONO := $(DIST_WINEMONO_DIR)/wine-mono-$(WINEMONO_VER)
  DIST_FONTS := $(DST_DIR)/share/fonts
 +DIST_DEPS := wine vrclient lsteamclient steam
-+
 +ifneq ($(STEAMRT_PATH),) # Don't build gstreamer in native mode
 +	DIST_DEPS += gst_good
 +endif # STEAMRT_PATH
-+
 +ifneq ($(NO_DXVK),1) # May be disabled by configure
 +	DIST_DEPS += dxvk
 +endif # NO_DXVK
@@ -165,7 +157,7 @@ index 1b02135..0170d4a 100644
  DEPLOY_COPY_TARGETS := $(DIST_COPY_TARGETS) $(DIST_VERSION) $(DIST_LICENSE) $(DIST_OFL_LICENSE)
  REDIST_COPY_TARGETS := $(DEPLOY_COPY_TARGETS) $(DIST_COMPAT_MANIFEST)
  
-@@ -468,7 +539,7 @@ $(DIST_FONTS): fonts
+@@ -468,7 +528,7 @@ $(DIST_FONTS): fonts
  ALL_TARGETS += dist
  GOAL_TARGETS += dist
  
@@ -174,7 +166,7 @@ index 1b02135..0170d4a 100644
  	echo `date '+%s'` `GIT_DIR=$(abspath $(SRCDIR)/.git) git describe --tags` > $(DIST_VERSION)
  	cp $(DIST_VERSION) $(DST_BASE)/
  	rm -rf $(abspath $(DIST_PREFIX)) && \
-@@ -515,6 +586,8 @@ module64:
+@@ -515,6 +575,8 @@ module64:
  
  module: module32 module64
  
@@ -183,7 +175,7 @@ index 1b02135..0170d4a 100644
  ##
  ## glib
  ##
-@@ -846,6 +919,7 @@ gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
+@@ -846,6 +908,7 @@ gst_good32: $(GST_GOOD_CONFIGURE_FILES32)
  	cp -a $(TOOLS_DIR32)/lib/libgst* $(DST_DIR)/lib/ && \
  	cp -a $(TOOLS_DIR32)/lib/gstreamer-1.0 $(DST_DIR)/lib/
  
@@ -191,7 +183,7 @@ index 1b02135..0170d4a 100644
  
  ##
  ## ffmpeg
-@@ -863,13 +937,15 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -863,13 +926,15 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  		$(abspath $(FFMPEG))/configure \
  			--cc=$(CC_QUOTED) --cxx=$(CXX_QUOTED) \
  			--prefix=$(abspath $(TOOLS_DIR64)) \
@@ -208,7 +200,7 @@ index 1b02135..0170d4a 100644
  			--disable-swscale \
  			--disable-postproc \
  			--disable-avfilter \
-@@ -895,17 +971,19 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
+@@ -895,17 +960,19 @@ $(FFMPEG_CONFIGURE_FILES64): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ6
  $(FFMPEG_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
  $(FFMPEG_CONFIGURE_FILES32): $(FFMPEG)/configure $(MAKEFILE_DEP) | $(FFMPEG_OBJ32)
  	cd $(dir $@) && \
@@ -230,7 +222,7 @@ index 1b02135..0170d4a 100644
  			--disable-swscale \
  			--disable-postproc \
  			--disable-avfilter \
-@@ -948,14 +1026,14 @@ ffmpeg64: $(FFMPEG_CONFIGURE_FILES64)
+@@ -948,14 +1015,14 @@ ffmpeg64: $(FFMPEG_CONFIGURE_FILES64)
  	+$(MAKE) -C $(FFMPEG_OBJ64)
  	+$(MAKE) -C $(FFMPEG_OBJ64) install
  	mkdir -pv $(DST_DIR)/lib64
@@ -247,7 +239,7 @@ index 1b02135..0170d4a 100644
  
  endif # ifeq ($(WITH_FFMPEG),1)
  
-@@ -981,19 +1059,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
+@@ -981,19 +1048,22 @@ FAUDIO_CONFIGURE_FILES32 := $(FAUDIO_OBJ32)/Makefile
  FAUDIO_CONFIGURE_FILES64 := $(FAUDIO_OBJ64)/Makefile
  
  $(FAUDIO_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -276,7 +268,7 @@ index 1b02135..0170d4a 100644
  
  faudio32: SHELL = $(CONTAINER_SHELL32)
  faudio32: $(FAUDIO_CONFIGURE_FILES32)
-@@ -1183,36 +1264,50 @@ WINE32_MAKE_ARGS := \
+@@ -1183,36 +1253,48 @@ WINE32_MAKE_ARGS := \
  
  # 64bit-configure
  $(WINE_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -288,7 +280,6 @@ index 1b02135..0170d4a 100644
 +			--with-gstreamer \
 +			--without-mingw \
  			--without-curses \
-+			--without-alsa \
 +			--without-oss \
 +			--disable-winemenubuilder \
 +			--disable-win16 \
@@ -317,7 +308,6 @@ index 1b02135..0170d4a 100644
 +			--with-gstreamer \
 +			--without-mingw \
  			--without-curses \
-+			--without-alsa \
 +			--without-oss \
 +			--disable-winemenubuilder \
 +			--disable-win16 \
@@ -335,7 +325,7 @@ index 1b02135..0170d4a 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1367,6 +1462,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
+@@ -1367,6 +1449,8 @@ vrclient32: $(VRCLIENT_CONFIGURE_FILES32) | $(WINE_BUILDTOOLS32) $(filter $(MAKE
  
  ## Create & configure object directory for cmake
  
@@ -344,7 +334,7 @@ index 1b02135..0170d4a 100644
  CMAKE_CONFIGURE_FILES32 := $(CMAKE_OBJ32)/Makefile
  CMAKE_CONFIGURE_FILES64 := $(CMAKE_OBJ64)/Makefile
  
-@@ -1418,12 +1515,16 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
+@@ -1418,12 +1502,16 @@ cmake32-intermediate: $(CMAKE_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),cmake3
  	+$(MAKE) -C $(CMAKE_OBJ32) install
  	touch $(CMAKE_BIN32)
  
@@ -361,7 +351,7 @@ index 1b02135..0170d4a 100644
  $(BISON):
  	if [ -e "$(SRCDIR)/../bison/$(BISON_TARBALL)" ]; then \
  		mkdir -p $(dir $@); \
-@@ -1488,6 +1589,8 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
+@@ -1488,6 +1576,8 @@ bison32-intermediate: $(BISON_CONFIGURE_FILES32) $(filter $(MAKECMDGOALS),bison3
  	+$(MAKE) -C $(BISON_OBJ32) install
  	touch $(BISON_BIN32)
  
@@ -370,7 +360,7 @@ index 1b02135..0170d4a 100644
  ##
  ## dxvk
  ##
-@@ -1508,7 +1611,7 @@ $(DXVK_CONFIGURE_FILES64): $(MAKEFILE_DEP) $(DXVK)/build-win64.txt | $(DXVK_OBJ6
+@@ -1508,7 +1598,7 @@ $(DXVK_CONFIGURE_FILES64): $(MAKEFILE_DEP) $(DXVK)/build-win64.txt | $(DXVK_OBJ6
  	fi
  	cd "$(abspath $(DXVK))" && \
  	PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" \
@@ -379,7 +369,7 @@ index 1b02135..0170d4a 100644
  
  # 32-bit configure.  Remove coredata file if already configured (due to e.g. makefile changing)
  $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ32)
-@@ -1517,7 +1620,7 @@ $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ3
+@@ -1517,7 +1607,7 @@ $(DXVK_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(DXVK)/build-win32.txt | $(DXVK_OBJ3
  	fi
  	cd "$(abspath $(DXVK))" && \
  	PATH="$(abspath $(SRCDIR))/glslang/bin/:$(PATH)" \
@@ -388,7 +378,7 @@ index 1b02135..0170d4a 100644
  
  ## dxvk goals
  DXVK_TARGETS = dxvk dxvk_configure dxvk32 dxvk64 dxvk_configure32 dxvk_configure64
-@@ -1536,7 +1639,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
+@@ -1536,7 +1626,7 @@ dxvk_configure32: $(DXVK_CONFIGURE_FILES32)
  dxvk: dxvk32 dxvk64
  
  dxvk64: $(DXVK_CONFIGURE_FILES64)
@@ -397,7 +387,7 @@ index 1b02135..0170d4a 100644
  	mkdir -p "$(DST_DIR)/lib64/wine/dxvk"
  	cp "$(DXVK_OBJ64)"/bin/dxgi.dll "$(DST_DIR)"/lib64/wine/dxvk
  	cp "$(DXVK_OBJ64)"/bin/d3d11.dll "$(DST_DIR)"/lib64/wine/dxvk
-@@ -1549,7 +1652,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
+@@ -1549,7 +1639,7 @@ dxvk64: $(DXVK_CONFIGURE_FILES64)
  
  
  dxvk32: $(DXVK_CONFIGURE_FILES32)
@@ -406,7 +396,7 @@ index 1b02135..0170d4a 100644
  	mkdir -p "$(DST_DIR)"/lib/wine/dxvk
  	cp "$(DXVK_OBJ32)"/bin/dxgi.dll "$(DST_DIR)"/lib/wine/dxvk/
  	cp "$(DXVK_OBJ32)"/bin/d3d11.dll "$(DST_DIR)"/lib/wine/dxvk/
-@@ -1568,24 +1671,24 @@ VULKAN_H_CONFIGURE_FILES32 := $(VULKAN_H_OBJ32)/Makefile
+@@ -1568,24 +1658,24 @@ VULKAN_H_CONFIGURE_FILES32 := $(VULKAN_H_OBJ32)/Makefile
  VULKAN_H_CONFIGURE_FILES64 := $(VULKAN_H_OBJ64)/Makefile
  
  $(VULKAN_H_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -437,7 +427,7 @@ index 1b02135..0170d4a 100644
  
  # SPIRV-Headers
  
-@@ -1593,24 +1696,24 @@ SPIRV_H_CONFIGURE_FILES32 := $(SPIRV_H_OBJ32)/Makefile
+@@ -1593,24 +1683,24 @@ SPIRV_H_CONFIGURE_FILES32 := $(SPIRV_H_OBJ32)/Makefile
  SPIRV_H_CONFIGURE_FILES64 := $(SPIRV_H_OBJ64)/Makefile
  
  $(SPIRV_H_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -468,7 +458,7 @@ index 1b02135..0170d4a 100644
  
  # widl; required for vkd3d, which is built before wine
  
-@@ -1618,16 +1721,23 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
+@@ -1618,16 +1708,22 @@ WINEWIDL_CONFIGURE_FILES64 := $(WINEWIDL_OBJ64)/Makefile
  WINEWIDL_CONFIGURE_FILES32 := $(WINEWIDL_OBJ32)/Makefile
  
  $(WINEWIDL_CONFIGURE_FILES32): SHELL = $(CONTAINER_SHELL32)
@@ -480,7 +470,6 @@ index 1b02135..0170d4a 100644
 +			--with-gstreamer \
 +			--without-mingw \
  			--without-curses \
-+			--without-alsa \
 +			--without-oss \
 +			--disable-winemenubuilder \
 +			--disable-win16 \
@@ -497,7 +486,7 @@ index 1b02135..0170d4a 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1637,17 +1747,24 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
+@@ -1637,17 +1733,23 @@ $(WINEWIDL32): $(WINEWIDL_CONFIGURE_FILES32)
  	make tools/widl
  
  $(WINEWIDL_CONFIGURE_FILES64): SHELL = $(CONTAINER_SHELL64)
@@ -509,7 +498,6 @@ index 1b02135..0170d4a 100644
 +			--with-gstreamer \
 +			--without-mingw \
  			--without-curses \
-+			--without-alsa \
 +			--without-oss \
 +			--disable-winemenubuilder \
 +			--disable-win16 \
@@ -526,7 +514,7 @@ index 1b02135..0170d4a 100644
  			CC=$(CC_QUOTED) \
  			CXX=$(CXX_QUOTED)
  
-@@ -1672,7 +1789,7 @@ $(VKD3D_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(VULKAN_H32) $(SPIRV_H32) $(VKD3D)/
+@@ -1672,7 +1774,7 @@ $(VKD3D_CONFIGURE_FILES32): $(MAKEFILE_DEP) $(VULKAN_H32) $(SPIRV_H32) $(VKD3D)/
  		$(abspath $(VKD3D))/configure \
  			--disable-tests \
  			--prefix=$(abspath $(TOOLS_DIR32)) \

@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-pkgver=5.0.1
+pkgver=5.0.2
 _srctag=${pkgver%.*}-${pkgver##*.}
 _geckover=2.47.1
 _monover=4.9.4
@@ -131,7 +131,7 @@ sha256sums=(
 #    SKIP
 #    SKIP
 #    SKIP
-    'dd90298150a6facedd3c73419f35a5ff41ec4d518aaf6d259d9d5293c4d72d34'
+    'b9e8443c3f1949cc8b0d311594aa46cbfb79da48c3f00e95c97e87656368dd49'
     'f12df8e1e2dcb6bcced6fdccfdf044b2dc55714712efd577fd5d92abfad0f5c5'
     '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
 )
