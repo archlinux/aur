@@ -1,0 +1,19 @@
+pkgbase = vmware-auto-unlocker-git
+	pkgdesc = Unlocker for VMWare macOS
+	pkgver = v1.1.r5.g79ef82d
+	pkgrel = 1
+	url = https://github.com/paolo-projects/auto-unlocker/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	depends = libarchive
+	depends = zlib
+	provides = vmware-auto-unlocker
+	conflicts = vmware-auto-unlocker
+	source = git+https://github.com/paolo-projects/auto-unlocker.git#branch=master
+	sha512sums = SKIP
+
+pkgname = vmware-auto-unlocker-git
+
