@@ -1,55 +1,51 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Provides ROS plugins that offer message and service publishers for interfacing with Gazebo through ROS."
-url='http://gazebosim.org/tutorials?cat=connect_ros'
+pkgdesc="ROS - Provides ROS plugins that offer message and service publishers
+for interfacing with Gazebo through ROS."
+url='http://wiki.ros.org/gazebo_ros'
 
 pkgname='ros-melodic-gazebo-ros'
-pkgver='2.8.5'
+pkgver='2.8.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('Apache 2.0')
 
-ros_makedepends=(ros-melodic-tf
-  ros-melodic-std-msgs
-  ros-melodic-gazebo-msgs
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-roscpp
+ros_makedepends=(
   ros-melodic-catkin
-  ros-melodic-roslib
-  ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
-  ros-melodic-rosgraph-msgs
   ros-melodic-cmake-modules
-  ros-melodic-gazebo-dev)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  tinyxml)
+  ros-melodic-gazebo-dev
+  ros-melodic-gazebo-dev
+)
 
-ros_depends=(ros-melodic-tf
-  ros-melodic-std-msgs
+makedepends=(
+  cmake
+  ros-build-tools
+  ${ros_makedepends[@]}
+)
+
+ros_depends=(
+  ros-melodic-gazebo-dev
   ros-melodic-gazebo-msgs
-  ros-melodic-dynamic-reconfigure
-  ros-melodic-roscpp
   ros-melodic-roslib
+  ros-melodic-roscpp
+  ros-melodic-tf
   ros-melodic-std-srvs
-  ros-melodic-geometry-msgs
   ros-melodic-rosgraph-msgs
-  ros-melodic-gazebo-dev)
-depends=(${ros_depends[@]}
+  ros-melodic-dynamic-reconfigure
+  ros-melodic-std-msgs
+  ros-melodic-geometry-msgs
+)
+
+depends=(
+  ${ros_depends[@]}
   tinyxml
-  python)
+  python-argparse
+)
 
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
-        "spawn_model.patch")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
 
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed'
-            '8d561d1634519ad8a4bf937320f39e9c36248ec64862f766a7a16b010b0bfdb2')
-
-prepare() {
-    cd "${srcdir}/${_dir}/scripts/"
-    patch -uN spawn_model ../../../spawn_model.patch || return 1
-}
+sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4')
 
 build() {
   # Use ROS environment variables
