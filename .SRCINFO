@@ -1,6 +1,6 @@
 pkgbase = python-asset
 	pkgdesc = A package resource and symbol loading helper library, for Python
-	pkgver = 0.6.12
+	pkgver = 0.6.13
 	pkgrel = 1
 	url = https://pypi.org/project/asset/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-asset
 	depends = python
 	depends = python-globre
 	depends = python-aadict
-	source = asset-0.6.12.tar.gz::https://files.pythonhosted.org/packages/47/f6/3fd40111e48cf242211c65976b9c3a1729450803adad67de5dcbb8419bad/asset-0.6.12.tar.gz
-	sha256sums = addb25dbdbfa820c667e246f9c09122401df21cd9e94db919c72f8f04fc972eb
+	source = asset-0.6.13.tar.gz::https://files.pythonhosted.org/packages/bf/e9/9db1ecda28adb6c9a9df8af24301290c40996d4a24c26c93cc79ffa6270a/asset-0.6.13.tar.gz
+	sha256sums = ec56cbf77931cb74d063848531db782f6f0fe1272d1f47f322c15efd0fa732ea
 
 pkgname = python-asset
 
