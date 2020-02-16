@@ -1,0 +1,14 @@
+pkgbase = obs-scene-switcher
+	pkgdesc = Tracks your active window and switches OBS scenes accordingly
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/muesli/obs-scene-switcher
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	source = https://github.com/muesli/obs-scene-switcher/archive/v0.1.0.tar.gz
+	sha256sums = ac4379fe8a19ce6bf313503f0d046a06becbb361429d6eea4eca586a935dbc04
+
+pkgname = obs-scene-switcher
+
