@@ -1,7 +1,7 @@
 pkgbase = ubertooth
 	pkgdesc = Open source wireless development platform suitable for Bluetooth experimentation
 	pkgver = 2018.12.R1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/greatscottgadgets/ubertooth/
 	arch = x86_64
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = ubertooth
 	depends = libbtbb>=2018.12.R1
 	depends = libusbx
 	depends = libpcap
-	depends = python2-numpy
-	depends = python2-pyusb
+	depends = python-numpy
+	depends = python-pyusb
 	optdepends = qt5-declarative
-	optdepends = python2-pyside2
+	optdepends = python-pyside2
 	source = https://github.com/greatscottgadgets/ubertooth/releases/download/2018-12-R1/ubertooth-2018-12-R1.tar.xz
 	sha256sums = 0042daa79db0f4148a0255cdf05aa57006e23ac36edf7024e9e99ccc4892867b
 
