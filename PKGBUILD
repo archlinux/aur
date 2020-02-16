@@ -1,7 +1,7 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('obhud')
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for handling laptop-specific keys and events in Openbox"
 arch=('i686' 'x86_64')
 url="https://github.com/nwg-piotr/obhud"
@@ -15,7 +15,7 @@ source=("https://github.com/nwg-piotr/obhud/raw/master/dist/obhud-0.2.3.tar.gz"
 "https://github.com/nwg-piotr/obhud/raw/master/dist/timer.sh")
 
 md5sums=('423b36b8a90de04516487c6ab85c7690'
-         '89995467e1d46692720d5331b8d444ac'
+         '3fc138d07ab29cf86d184a730b7902bd'
          '8f3afd928dd1cdbfa5252cf614e392a4'
          '6c9b537c6f32d3047a2b691d8ef600a7')
 
