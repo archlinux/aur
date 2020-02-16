@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.7.0
 arch=('x86_64')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-mkl')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
@@ -23,7 +23,6 @@ prepare() {
 build() {
   cd "${srcdir}/arrayfire-full-${pkgver}"/build
 
-  export MKLROOT=/usr/include/mkl
   cmake .. \
       -GNinja \
       -DMKL_THREAD_LAYER="GNU OpenMP" \
