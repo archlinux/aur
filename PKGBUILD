@@ -11,7 +11,7 @@ _music='sc55' # (sc55/opl3) - update checksums if you change
 
 pkgbase=dxx-rebirth-git
 pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r575.gca383c1fe
+pkgver=0.60.0.beta2.r657.gc088f1538
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('x86_64')
@@ -39,6 +39,7 @@ pkgver() {
 build() {
     local -a _common_opts=(
         "$MAKEFLAGS"
+        '-Cdxx-rebirth'
         'lto=1'
         'sdlmixer=1'
         'builddir=./build'
@@ -50,7 +51,6 @@ build() {
         'use_tracker=yes'
         'screenshot=png')
     
-    cd dxx-rebirth
     scons "${_common_opts[@]}" 'd1x=1' 'd2x=0' 'sharepath=/usr/share/d1x-rebirth'
     scons "${_common_opts[@]}" 'd1x=0' 'd2x=1' 'sharepath=/usr/share/d2x-rebirth'
 }
