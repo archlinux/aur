@@ -4,7 +4,7 @@
 # own dongle. instructions included
 
 pkgname=cbm-git
-pkgver=r17.903c8ca
+pkgver=r19.a62ad24
 pkgrel=1
 pkgdesc="Car Backdoor Maker : A hardware backdoor tool is presented having several advanced features"
 arch=('i686' 'x86_64')
