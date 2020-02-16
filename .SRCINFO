@@ -1,7 +1,7 @@
 pkgbase = vdeplug4-git
 	pkgdesc = VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud
 	pkgver = r74.926dc9a
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rd235/vdeplug4
 	install = vde2.install
 	arch = any
@@ -14,6 +14,7 @@ pkgbase = vdeplug4-git
 	depends = s2argv-execs
 	depends = libpcap
 	depends = python
+	depends = wolfssl
 	provides = vdeplug4
 	provides = vde2
 	conflicts = vdeplug4

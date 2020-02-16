@@ -7,13 +7,13 @@ _pkgname2="vde2"
 
 pkgname="$_pkgname-git"
 pkgver=r74.926dc9a
-pkgrel=2
+pkgrel=3
 pkgdesc="VDE: Virtual Distributed Ethernet. Plug your VM directly to the cloud"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
 license=('GPL2' 'LGPL' 'custom:BSD')
 groups=('virtualsquare')
-depends=('s2argv-execs' 'libpcap' 'python')
+depends=('s2argv-execs' 'libpcap' 'python' 'wolfssl')
 makedepends=('git' 'cmake')
 provides=("$_pkgname" "$_pkgname2")
 conflicts=("$_pkgname" "$_pkgname2")
