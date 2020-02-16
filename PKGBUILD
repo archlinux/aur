@@ -1,7 +1,7 @@
 # Maintainer: Dan Beste <drb@wishalloy.io>
 
 pkgname='gog-stardew-valley'
-pkgver=1.4.3
+pkgver=1.4.5
 pkgrel=1
 # Fix upstream versioning shenanigans:
 epoch=1
@@ -14,13 +14,13 @@ arch=('x86_64')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
-  'local:///stardew_valley_1_4_3_379_34693.sh'
+  'local:///stardew_valley_1_4_5_433754439_36068.sh'
   'StardewValley'
 )
 sha256sums=(
   '9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc'
   'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
-  'aabd5b0ab7ac3813ad89d7344ea52a503483d04e627160113965e4d21293659f'
+  '1770fccdf0e159adaf891b0f0293630d11a2217b47a40232b0efd6e0abe36070'
   '0c6826084d72917748e54f9308b7395f8d3780b4a745860839203e2af428d202'
 )
 package() {
