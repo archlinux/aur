@@ -1,0 +1,16 @@
+pkgbase = mediawiki-extension-lockdown-git
+	pkgdesc = MediaWiki extension for selective cache disabling
+	pkgver = r149.6e1e8cc
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:Lockdown
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-extension-lockdown
+	conflicts = mediawiki-extension-lockdown
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/Lockdown
+	sha512sums = SKIP
+
+pkgname = mediawiki-extension-lockdown-git
+
