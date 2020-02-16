@@ -2,7 +2,7 @@
 
 pkgname=ukopp2
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A backup program for USB devices"
 url="http://www.kornelix.net/ukopp/ukopp.html"
 arch=('i686' 'x86_64')
