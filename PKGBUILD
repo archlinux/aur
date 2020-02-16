@@ -65,7 +65,7 @@ fi
 pkgbase=linux-xanmod
 pkgver=5.5.4
 xanmod=3
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
