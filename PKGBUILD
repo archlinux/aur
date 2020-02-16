@@ -1,6 +1,8 @@
 # Maintainer: Otto Sabart <aur@seberm.com>
 # Maintainer: Olivier Medoc <o_medoc@yahoo.fr>
 
+# Ref.: https://github.com/QubesOS/qubes-vmm-xen/tree/xen-4.13/archlinux
+
 pkgname=qubes-vm-xen
 _gitname=${pkgname%-git*}
 pkgver='4.8.5'
@@ -8,7 +10,7 @@ pkgrel=14
 epoch=
 pkgdesc="QubesOS component"
 arch=("x86_64")
-url="http://qubes-os.org/"
+url="https://github.com/QubesOS/qubes-vmm-xen"
 license=('GPL')
 groups=()
 depends=('python2' 'bridge-utils' 'python2-lxml' 'libutil-linux' 'lzo' 'libsystemd' 'yajl')
