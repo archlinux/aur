@@ -3,7 +3,7 @@
 _pkgname="libvolatilestream"
 
 pkgname="$_pkgname-git"
-pkgver=r4.c2812a8
+pkgver=r11.0937e7c
 pkgrel=1
 pkgdesc="volatile stream = stdio FILE* stream as a temporary dynamically allocated (and deallocated) memory buffer"
 arch=('any')
