@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.3.13.1
+	pkgver = 5.5.3.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.3.13-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.3-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = xmlto
@@ -16,7 +16,7 @@ pkgbase = linux-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.3.13-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.3-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -25,8 +25,8 @@ pkgbase = linux-vfio
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
 	sha256sums = 10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1
-	sha256sums = dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1
-	sha256sums = 3d711ad5eda51c42b20575a66683cd416fe7a02a3162d8a7107f2b2c82d328ce
+	sha256sums = 31ae60837b90feba277b182a9015e4df6e74fd660aba1a2841f49ecd57617559
+	sha256sums = 334f3472adc0280614b278ead7375d3a982dc1b9310c1fc62bc8b8e96eb2b6d4
 
 pkgname = linux-vfio
 	pkgdesc = The Linux kernel and modules

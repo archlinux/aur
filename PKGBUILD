@@ -1,10 +1,10 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.3.13.1
+pkgver=5.5.3.arch1
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver%.*}-arch${pkgver##*.}
+_srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
 license=(GPL2)
@@ -28,8 +28,10 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '10ee7800902b1d82f9c184b367c9d904f4dc48f6d9ce3277327e825d7ab690d1'
-            'dbf4ac4b873ce6972e63b78d74ddba18f2701716163bb7f4b4fe5e909346a6e1'
-            '3d711ad5eda51c42b20575a66683cd416fe7a02a3162d8a7107f2b2c82d328ce')
+            '31ae60837b90feba277b182a9015e4df6e74fd660aba1a2841f49ecd57617559'
+            '334f3472adc0280614b278ead7375d3a982dc1b9310c1fc62bc8b8e96eb2b6d4'
+)
+
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
