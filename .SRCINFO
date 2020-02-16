@@ -1,7 +1,7 @@
 pkgbase = xfce4-panel-compiz
 	pkgdesc = Panel for the Xfce desktop environment with fixes for Compiz
-	pkgver = 4.14.0
-	pkgrel = 2
+	pkgver = 4.14.3
+	pkgrel = 1
 	url = http://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -16,16 +16,17 @@ pkgbase = xfce4-panel-compiz
 	depends = libwnck
 	depends = hicolor-icon-theme
 	depends = desktop-file-utils
-	provides = xfce4-panel=4.14.0
+	depends = libwnck3
+	provides = xfce4-panel=4.14.3
 	conflicts = xfce4-panel
-	source = http://archive.xfce.org/src/xfce/xfce4-panel/4.14/xfce4-panel-4.14.0.tar.bz2
+	source = http://archive.xfce.org/src/xfce/xfce4-panel/4.14/xfce4-panel-4.14.3.tar.bz2
 	source = button-visibility.patch
 	source = fix-scrolling.patch
 	source = fix-scrolling2.patch
 	source = fix-scrolling3.patch
 	source = pager-dimensions.patch
 	source = wrap-workspaces.patch
-	sha256sums = d5f8f3bd7e142139987e5e62cda26135a424baabb5e47aa0c23b4169d0a66ef4
+	sha256sums = ef22324d26e5af735134bb10f85b6e16525ac9f48be8d2f6b634142fbfcabbc9
 	sha256sums = 556f7ecc22fdf024101d2e8a0416b953efaef48ff4ed649aab97d5b115a94931
 	sha256sums = 023fbeb4caa99dc97d460040f3d507794f3f576dc6cde98d834ba8a8e581f5ee
 	sha256sums = 2bbcace9c0c25c14fc1180a1064329240867a0b83c1c668aadc8c77f92ee0aab
