@@ -3,7 +3,7 @@
 pkgname=yarn-nightly
 _pkgver=$(curl -s -L https://nightly.yarnpkg.com/latest.json | jq -r '.tar.version')
 _pkgname="yarn-v$_pkgver"
-pkgver=1.10.0.20180729.2007
+pkgver=1.23.0.20200205.1242
 pkgrel=1
 pkgdesc='Fast, reliable, and secure dependency management'
 arch=(any)
@@ -23,10 +23,8 @@ source=(
   "https://nightly.yarnpkg.com/yarn-v$_pkgver.tar.gz.asc"
 )
 
-sha512sums=(
-  'SKIP'
-  'SKIP'
-)
+sha512sums=('e87897d10e162ba0129c5873a96c4cad38dcf59df2d464819504f6ce5417e6f55f59404eb37adcde86ac09932a5a7c60bf19182ee2e5459849c586fd23960e8b'
+            'SKIP')
 
 validpgpkeys=(# Yarn Packaging <yarn@dan.cx>
               # https://pgp.mit.edu/pks/lookup?op=get&search=0x1646B01B86E50310
