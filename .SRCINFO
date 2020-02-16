@@ -1,13 +1,12 @@
 pkgbase = vdens-git
 	pkgdesc = Create User Namespaces connected to VDE networks
-	pkgver = r20.c65c775
-	pkgrel = 3
+	pkgver = r27.84f247f
+	pkgrel = 1
 	url = https://github.com/rd235/vdens
-	install = vdens.install
 	arch = any
-	groups = view-os
 	license = GPL2
-	makedepends = vdeplug4-git
+	makedepends = git
+	makedepends = cmake
 	makedepends = s2argv-execs-git
 	depends = vdeplug4-git
 	provides = vdens
