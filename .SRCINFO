@@ -1,10 +1,10 @@
 pkgbase = plex-sub-zero
 	pkgdesc = Subtitles for Plex, as good you would expect them to be
 	pkgver = 2.6.5.3223
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pannal/Sub-Zero.bundle
 	arch = any
-	license = custom
+	license = MIT
 	depends = python
 	depends = plex-media-server
 	options = !strip
