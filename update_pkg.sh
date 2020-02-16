@@ -27,7 +27,9 @@ tmp=$(mktemp -d)
 cd $tmp
 wget -q "$REPO$deb"
 md5=$(md5sum $deb | cut -d\  -f1)
+rm $deb
 cd $cur
+rmdir $tmp
 
 echo "Updating package..."
 
