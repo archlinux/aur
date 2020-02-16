@@ -6,7 +6,7 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
 pkgver='5.4.1.beta.5.r271.gf07b3f70'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
@@ -60,9 +60,6 @@ prepare() {
 	git config submodule.recipes.url "$srcdir/$pkgname-recipes"
 	git config submodule.src/internal-server.url "$srcdir/$pkgname-internal-server"
 	git submodule update --init --recursive
-
-	# Update submodules until https://github.com/getferdi/ferdi/pull/382 is merged
-	git submodule update --remote
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat /usr/lib/electron/version)"'"|' 'package.json'
