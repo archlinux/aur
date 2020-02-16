@@ -5,7 +5,7 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=72.0.2
+pkgver=73.0
 pkgrel=1
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
@@ -28,11 +28,11 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('77fd224bea885172d757aef587ad443f2171aa84e4297bca55df91a1951be389'
+sha256sums=('b57af802aae32d7f4624ce8b373701236b76904abcb893ded9e0cb5805ba6e17'
             'SKIP'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
-            '70b756e17d41f07c2160faa606c1b86f28ff07acc9b5d324d11bc7de300d6c82')
+            'd158e8559a8f683cf4e3eb8cd2c0b1ccfd307ca48d6f3fa9b00dcfc6f951a310')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
