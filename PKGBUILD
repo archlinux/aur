@@ -4,11 +4,11 @@ _pkgname="vdeplug_vlan"
 
 pkgname="$_pkgname-git"
 pkgver=r3.37f5795
-pkgrel=2
+pkgrel=3
 pkgdesc="802.1q (vlan) support nested plugin for vdeplug4"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2')
+license=('LGPL')
 depends=('vdeplug4-git')
 makedepends=('git')
 provides=("$_pkgname")
