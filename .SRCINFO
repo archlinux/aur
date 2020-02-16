@@ -1,7 +1,7 @@
 pkgbase = qubes-gui-agent-linux
 	pkgdesc = The Qubes GUI Agent for AppVMs
-	pkgver = 4.1.5
-	pkgrel = 1
+	pkgver = 4.0.27
+	pkgrel = 2
 	url = https://github.com/QubesOS/qubes-gui-agent-linux
 	arch = x86_64
 	license = GPL
@@ -23,7 +23,7 @@ pkgbase = qubes-gui-agent-linux
 	makedepends = qubes-libvchan-xen
 	makedepends = qubes-db-vm
 	makedepends = lsb-release
-	source = qubes-vm-gui::git+https://github.com/QubesOS/qubes-gui-agent-linux.git?signed#tag=v4.1.5
+	source = qubes-vm-gui::git+https://github.com/QubesOS/qubes-gui-agent-linux.git?signed#tag=v4.0.27
 	source = PKGBUILD-z-qubes-session.sh
 	validpgpkeys = 0AF64C3B1F1214B38C8C57861FA2DBE674387CC3
 	validpgpkeys = 0064428F455451B3EBE78A7F063938BA42CFA724

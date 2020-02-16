@@ -6,8 +6,8 @@
 pkgbase=qubes-gui-agent-linux
 pkgname=(qubes-vm-gui qubes-vm-pulseaudio)
 _gitname=${pkgname%-git*}
-pkgver=4.1.5
-pkgrel=1
+pkgver=4.0.27
+pkgrel=2
 pkgdesc="The Qubes GUI Agent for AppVMs"
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-gui-agent-linux"
