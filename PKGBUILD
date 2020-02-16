@@ -86,7 +86,7 @@ build() {
             -Dtarget-version=8 -Dsource-version=8 \
             -Dfreenet-cvs-snapshot.location=../fred/build/output/freenet.jar \
             -Dfreenet-ext.location=../fred/build/output/freenet-ext-29.jar \
-            -Dtest.skip=true
+            -Dtest.skip=true -Dskip_tests=true
     done
 }
 
