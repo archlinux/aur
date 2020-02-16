@@ -1,0 +1,17 @@
+pkgbase = screenfetch-c-git
+	pkgdesc = A rewrite of screenFetch in C
+	pkgver = 1.6.0.r4.gf14a1bf
+	pkgrel = 1
+	url = https://github.com/woodruffw/screenfetch-c
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = libglvnd
+	provides = screenfetch-c
+	conflicts = screenfetch-c
+	source = screenfetch-c::git+https://github.com/woodruffw/screenfetch-c
+	md5sums = SKIP
+
+pkgname = screenfetch-c-git
+
