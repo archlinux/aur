@@ -7,10 +7,10 @@
 pkgname=qubes-gpg-split
 _gitname=${pkgname%-git*}
 pkgver=2.0.42
-pkgrel=1
+pkgrel=2
 pkgdesc="Split GPG implements a concept similar to having a smart card with your private GPG keys, except that the role of the “smart card” plays another Qubes AppVM."
 arch=("x86_64")
-url="https://www.qubes-os.org/doc/split-gpg/"
+url="https://github.com/QubesOS/qubes-app-linux-split-gpg"
 license=('GPL')
 depends=('gnupg' 'zenity')
 makedepends=(pkg-config make gcc pandoc)
@@ -23,7 +23,7 @@ source=("$_gitname::git+https://github.com/QubesOS/qubes-app-linux-split-gpg.git
 sha512sums=('SKIP')
 
 build() {
-    cd "$srcdir/$_gitname/"
+    cd "${srcdir}/${_gitname}/"
     cd "src/"
     make
 }
