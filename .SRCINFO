@@ -1,6 +1,6 @@
 pkgbase = python-manilaclient
 	pkgdesc = Client library for OpenStack Manila API
-	pkgver = 1.29.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = http://docs.openstack.org/python-manilaclient
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = python-manilaclient
 	depends = python-babel
 	depends = python-six
 	depends = python-keystoneclient
-	source = https://github.com/openstack/python-manilaclient/archive/1.29.0.tar.gz
-	sha512sums = 93d2611cb46f978d2de9c900e58a3eb2fb51c92c79f36a289f7246d00b2734c550e44cfe284ef491de95ff193035a841e0ed44886062a90b1cfce8d76f5b53a7
+	source = https://github.com/openstack/python-manilaclient/archive/2.0.0.tar.gz
+	sha512sums = 0b77b8afe1de435268f80f7ad15f682bd118523cde2e4b490a7f87d68fb58c97ac68bdedd996867325828ee6298482b34ddfd265ae414e66c667cad2c92910cb
 
 pkgname = python-manilaclient
 
