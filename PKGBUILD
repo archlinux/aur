@@ -56,7 +56,9 @@ fi
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+if [ -z ${_localmodcfg} ]; then
+  _localmodcfg=n
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -177,15 +179,15 @@ prepare() {
 
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
-    if [ -n "$_localmodcfg" ]; then
-      if [ -f $HOME/.config/modprobed.db ]; then
-        msg2 "Running Steven Rostedt's make localmodconfig now"
-        make LSMOD=$HOME/.config/modprobed.db localmodconfig
-      else
-        msg2 "No modprobed.db data found"
-        exit
-      fi
+  if [ "$_localmodcfg" = "y" ]; then
+    if [ -f $HOME/.config/modprobed.db ]; then
+      msg2 "Running Steven Rostedt's make localmodconfig now"
+      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+    else
+      msg2 "No modprobed.db data found"
+      exit
     fi
+  fi
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
