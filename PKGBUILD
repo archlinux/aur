@@ -2,7 +2,7 @@
 
 pkgname=subfinder-bin
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites"
 arch=("x86_64")
 url="https://github.com/projectdiscovery/subfinder"
