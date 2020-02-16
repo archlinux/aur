@@ -2,8 +2,9 @@
 # Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 ################################################################################
-# The only difference between this PKGBUILD and the one from `emacs-git` is that
-# this one builds emacs from `emacs-27` release branch.
+# The difference between this PKGBUILD and the one from `emacs-git` is that:
+# - this one builds emacs from `emacs-27` release branch.
+# - link-time optimization and use of clang are disabled by default.
 # 
 # It hence should be more stable and less frequently updated than `emacs-git`.
 # 
@@ -33,7 +34,7 @@
 ################################################################################
 CHECK=            # Run tests. May fail, this is developement after all.
 CLANG=            # Use clang.
-LTO="YES"         # Enable link-time optimization. Not that experimental anymore.
+LTO=              # Enable link-time optimization. Not that experimental anymore.
                   # Seems fixed in GCC, so I've reenabled binutils support, please
 		  # report any bug, to make it use clang by default again.
 CLI=              # CLI only binary.
@@ -70,7 +71,7 @@ NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 pkgname="emacs27-git"
 pkgver=27.0.60.140075
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. emacs-27 release branch."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"

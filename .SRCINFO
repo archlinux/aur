@@ -1,7 +1,7 @@
 pkgbase = emacs27-git
 	pkgdesc = GNU Emacs. emacs-27 release branch.
 	pkgver = 27.0.60.140075
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
 	license = GPL3
