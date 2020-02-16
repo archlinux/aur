@@ -1,7 +1,7 @@
 pkgbase = octoprint
 	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
 	pkgver = 1.3.12
-	pkgrel = 4
+	pkgrel = 5
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = any
@@ -28,7 +28,6 @@ pkgbase = octoprint
 	depends = python2-requests
 	depends = python2-sarge
 	depends = python2-six
-	depends = python2-speaklater
 	depends = python2-tornado
 	depends = python2-urllib3
 	optdepends = ffmpeg: timelapse support

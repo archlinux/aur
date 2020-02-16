@@ -2,7 +2,7 @@
 
 pkgname=octoprint
 pkgver=1.3.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
 url="http://octoprint.org/"
@@ -29,7 +29,6 @@ depends=(
 		python2-requests
 		python2-sarge
 		python2-six
-		python2-speaklater
 		python2-tornado
 		python2-urllib3
 		)
