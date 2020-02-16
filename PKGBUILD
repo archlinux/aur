@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('a3054abef192e15f398fd978bfe48d2caf5d81c754980d448ad8b76ffad7667a')
+sha256sums=('b2c2fcfc0223074ae68829f07555adcbd611d5d0415922210aadcfb691d4dd37')
 options=('!emptydirs')
 
 build() {
@@ -22,3 +22,4 @@ package() {
   rm "$pkgdir"/usr/share/doc/$pkgname/$pkgname.man
   sed -i 's+/usr/share/galaxy2/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
+pkgrel=2

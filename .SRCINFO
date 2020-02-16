@@ -1,7 +1,7 @@
 pkgbase = galaxy2
 	pkgdesc = Stellar Simulation
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kornelix.net/galaxy2/galaxy2.html
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = galaxy2
 	depends = gtk3
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/galaxy2-1.5.tar.gz
-	sha256sums = a3054abef192e15f398fd978bfe48d2caf5d81c754980d448ad8b76ffad7667a
+	sha256sums = b2c2fcfc0223074ae68829f07555adcbd611d5d0415922210aadcfb691d4dd37
 
 pkgname = galaxy2
 
