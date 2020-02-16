@@ -2,25 +2,25 @@
 pkgbase=mad-metasploit-git
 pkgname=(mad-metasploit-git mad-metasploit-archive-git)
 _pkgname=mad-metasploit
-pkgver=r125.61eed15
-pkgrel=2
+pkgver=r178.0ebe2c0
+pkgrel=1
 pkgdesc="A Collection of Metasploit Plugins, Modules and Scripts"
 arch=('any')
 url="https://www.hahwul.com/p/mad-metasploit.html"
 license=('MIT')
 depends=('ruby' 'metasploit')
 makedepends=('git')
-#optdepends=(
+optdepends=(
 #  "arachni-scanner: arachni web scanner plugin" # This used to have a seriously broken PKGBUILD
-#  "searchsploit: db_exploit plugin" # Broken Link
-#)
+  "exploitdb: db_exploit plugin"
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/hahwul/mad-metasploit.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 # Git, no tags available
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
