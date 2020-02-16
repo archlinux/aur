@@ -1,0 +1,18 @@
+pkgbase = python-gpytorch-git
+	pkgdesc = A highly efficient and modular implementation of GPs, with GPU acceleration. Implemented in PyTorch.
+	pkgver = r2694.bd9a8b27
+	pkgrel = 1
+	url = https://gpytorch.ai
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pytorch
+	provides = python-gpytorch
+	conflicts = python-gpytorch
+	source = gpytorch::git+https://github.com/cornellius-gp/gpytorch
+	sha256sums = SKIP
+
+pkgname = python-gpytorch-git
+
