@@ -4,7 +4,7 @@
 
 pkgname=asix-dkms
 pkgver=4.23.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters"
 arch=('i686' 'x86_64')
 
@@ -38,7 +38,8 @@ prepare() {
 
     # Use a DKMS build against the right kernel release
     sed -i "${srcdir}/${_filename}/Makefile" \
-        -e 's/^KDIR.*/KDIR   = \/lib\/modules\/$(KERNELRELEASE)\/build/g'
+        -e 's/^KDIR.*/KDIR   = \/lib\/modules\/$(KERNELRELEASE)\/build/g' \
+        -e 's/SUBDIRS/M/g'
 }
 
 package() {

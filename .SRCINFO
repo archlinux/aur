@@ -1,7 +1,7 @@
 pkgbase = asix-dkms
 	pkgdesc = A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters
 	pkgver = 4.23.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.asix.com.tw/
 	arch = i686
 	arch = x86_64
