@@ -1,9 +1,9 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=79.0.3945.79
+pkgver=80.0.3987.87
 pkgver2=0ubuntu0
-pkgver3=19.04.3
+pkgver3=18.04.1
 pkgrel=1
 pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
 arch=("x86_64")
@@ -19,7 +19,7 @@ conflicts=(
 source=(
   "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${pkgver2}.${pkgver3}_amd64.deb"
 )
-md5sums=("9bf1ad825cf0df0e52e4a1e904c1b74f")
+md5sums=("8ce0cc80a5509d00ec5717811df79e77")
 
 prepare() {
   cd "$srcdir"
