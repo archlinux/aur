@@ -3,7 +3,6 @@ pkgbase = otf-inconsolata-lgc-markup
 	pkgver = 1.00
 	pkgrel = 1
 	url = http://bdtechconcepts.com/Inconsolata-LGC-Markup-Font.html
-	install = otf-inconsolata-lgc-markup.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
@@ -12,7 +11,7 @@ pkgbase = otf-inconsolata-lgc-markup
 	source = 90-non-tt-inconsolata-lgc-markup.conf
 	sha1sums = 57cdab400c3b496d3bf8e015a68f87dbbb89133d
 	sha1sums = 732efcb262f05c792549bbddfb30f43312f9bd55
-	sha1sums = edb285b90d4a33ae2637af89267978f4039880ef
+	sha1sums = 1ba485be5297e78106f2c655215776fea6bafd49
 
 pkgname = otf-inconsolata-lgc-markup
 

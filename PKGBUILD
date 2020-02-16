@@ -9,7 +9,6 @@ pkgdesc="Based on Inconsolata LGC. Slightly modified for markup languages "\
 url="http://bdtechconcepts.com/Inconsolata-LGC-Markup-Font.html"
 arch=('any')
 license=('custom:OFL')
-install=$pkgname.install
 source=(https://fontlibrary.org/assets/downloads/inconsolata-lgc-markup/11723591be7ecb75419dd8e3b3fd7ece/inconsolata-lgc-markup.zip
 	45-inconsolata-lgc-markup.conf
 	90-non-tt-inconsolata-lgc-markup.conf)
