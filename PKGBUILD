@@ -2,12 +2,14 @@
 
 pkgname=esbuild-git
 pkgver=r73.697e0f5
-pkgrel=1
+pkgrel=2
 pkgdesc="An extremely fast JavaScript bundler and minifier"
 arch=("x86_64" "i686")
 url="https://github.com/evanw/esbuild"
 license=(MIT)
 makedepends=(go)
+provides=(esbuild)
+conflicts=(esbuild)
 source=("${pkgname}::git+https://github.com/evanw/esbuild.git")
 sha256sums=('SKIP')
 
