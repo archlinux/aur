@@ -1,6 +1,6 @@
 pkgbase = snowflake
 	pkgdesc = Graphical SFTP client and terminal emulator with helpful utilities.
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/subhra74/snowflake
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = snowflake
 	makedepends = java-environment>=11
 	makedepends = maven
 	depends = java-runtime>=11
-	source = snowflake-1.0.3.tar.gz::https://github.com/subhra74/snowflake/archive/v1.0.3.tar.gz
+	source = snowflake-1.0.4.tar.gz::https://github.com/subhra74/snowflake/archive/v1.0.4.tar.gz
 	source = snowflake
 	source = snowflake.desktop
-	sha256sums = 8259cea965e05db73463eab1872ba75e354b53f87dd0b7f35422d6122c1362d4
+	sha256sums = 92b49024a21fb8369476cb77823851f710cc56eaec3fb219330afdac43fab36a
 	sha256sums = d688b2ac7cbc88a28d02a108ef82fe6a6dbf6ac66c9aa3745f6869408bfa2b3f
 	sha256sums = 832e38bbf4a7b451b2bf674b294a9bc8299a24a9d7d37b517c1f3fd71ba6f80e
 
