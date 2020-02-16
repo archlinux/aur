@@ -1,0 +1,16 @@
+pkgbase = ahab
+	pkgdesc = Dockerize your project, git style
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/MichaelDarr/ahab
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go>=1.13
+	depends = docker>=1.19
+	conflicts = ahab-git
+	source = ahab-0.1.tar.gz::https://github.com/MichaelDarr/ahab/archive/v0.1.tar.gz
+	sha256sums = 364cb92fbe353b3a97f8047b377aa814d6d4990838bc3ea41c7ddec144619f15
+
+pkgname = ahab
+

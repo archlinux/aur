@@ -1,0 +1,6 @@
+*.tar.xz
+*.tar.lz
+*.tar.gz
+/ahab
+/pkg
+/src
