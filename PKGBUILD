@@ -4,7 +4,7 @@
 pkgname=octave-hg
 epoch=5
 pkgrel=1
-pkgver=6.0.0.r27223.1ae91e5d70cc
+pkgver=6.0.0.r28064.fbed279b7074
 pkgdesc="A high-level language, primarily intended for numerical computations."
 url="http://www.octave.org"
 arch=('i686' 'x86_64')
@@ -40,11 +40,11 @@ prepare () {
   git submodule update
 
   cd ${_hgrepo}
-  for i in config.sub config.guess
+  for i in config.sub config.guess texinfo.tex
   do
     [[ -f $i ]] && rm build-aux/$i
   done
-  cp /usr/share/automake-1.16/texinfo.tex build-aux/
+  install -Dm644 /usr/share/automake-1.16/texinfo.tex build-aux/
 }
 
 build() {
