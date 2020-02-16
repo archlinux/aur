@@ -1,6 +1,6 @@
 pkgbase = matcha-gtk-theme
 	pkgdesc = A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 2019_11_02
+	pkgver = 2020_02_06
 	pkgrel = 1
 	url = https://github.com/vinceliuice/matcha
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = matcha-gtk-theme
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = https://github.com/vinceliuice/matcha/archive/2019-11-02.tar.gz
-	sha256sums = 44050eff15133d65f5f3b6561e6c44668c97a7838420bbf241c146973b35616f
+	source = https://github.com/vinceliuice/matcha/archive/2020-02-06.tar.gz
+	sha256sums = 7b22059984c06afe2f4bf93d11e8b5e3c999a4cbb16d655b75e2aa1ce8cad6ed
 
 pkgname = matcha-gtk-theme
 
