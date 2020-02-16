@@ -1,0 +1,19 @@
+pkgbase = wpa_wrapper
+	pkgdesc = Network managemet utility
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = sudo
+	depends = iw
+	depends = wpa_supplicant
+	depends = python3
+	depends = net-tools
+	source = wpa_wrapper::git+https://github.com/CuBeRJAN/wpa_wrapper-cleanup.git
+	source = https://raw.githubusercontent.com/CuBeRJAN/wpa_wrapper-cleanup/master/wpa_wrapper/scripts/main.py
+	sha256sums = SKIP
+	sha256sums = 3da2a1fdf21064eff3389a870feab069b6bf95ab3253e6ce35d6fc7c3bb6d0be
+
+pkgname = wpa_wrapper
+
