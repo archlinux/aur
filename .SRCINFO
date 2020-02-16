@@ -1,6 +1,6 @@
 pkgbase = raze-git
 	pkgdesc = Build engine port backed by GZDoom tech (git version)
-	pkgver = 0.4.2+29+g4c682813e
+	pkgver = 0.4.4+17+ga873dcf6e
 	pkgrel = 1
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
