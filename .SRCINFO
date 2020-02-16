@@ -1,7 +1,7 @@
 pkgbase = userbindmount-git
 	pkgdesc = A library and a utility command providing support for bind mount in user namespaces.
 	pkgver = r17.fea54ed
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rd235/userbindmount
 	arch = any
 	license = GPL2

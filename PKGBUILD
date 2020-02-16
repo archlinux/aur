@@ -4,7 +4,7 @@ _pkgname="userbindmount"
 
 pkgname="$_pkgname-git"
 pkgver=r17.fea54ed
-pkgrel=1
+pkgrel=2
 pkgdesc="A library and a utility command providing support for bind mount in user namespaces."
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
@@ -24,7 +24,7 @@ pkgver() {
 build() {
 	mkdir -p "$_pkgname/build"
 	cd "$_pkgname/build"
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_MANDIR=/usr/share/man ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 	make
 }
 
