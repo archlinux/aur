@@ -2,7 +2,7 @@
 
 pkgbase=gtest-py3
 pkgname=('gtest-py3' 'gmock-py3')
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Google Test - C++ testing utility'
 url='https://github.com/google/googletest'
@@ -10,26 +10,8 @@ arch=('x86_64')
 license=('BSD')
 makedepends=('python' 'cmake' 'gcc-libs' 'sh')
 _srcname=googletest-release-${pkgver}
-source=(${_srcname}.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz
-        gtest-1.8.1-libversion.patch
-        gtest-1.8.1-null-pointer.patch)
-sha512sums=('e6283c667558e1fd6e49fa96e52af0e415a3c8037afe1d28b7ff1ec4c2ef8f49beb70a9327b7fc77eb4052a58c4ccad8b5260ec90e4bceeac7a46ff59c4369d7'
-            'e9bd9d65f6e54f71be0026b84c6543a71f9e3d5c0da92eb7f01df3f5937871eff2b8177e3680fec8d733888327eda5f5f3caaf88a3263ada542cdd2b42475ac5'
-            'afa75f975d8aed453c901245dae753939958d8b72e3e5c52995efe7980f44de4fd1ea08f1b0a4cc927443d858de0a1fe34a919512ce05ae443bfb9600b08f029')
-
-prepare() {
-  cd ${_srcname}
-  cp ../gtest-1.8.1-libversion.patch gtest-1.8.1-libversion.patch
-  sed "s|__GOOGLETEST_VERSION__|${pkgver}|g" -i gtest-1.8.1-libversion.patch
-  # https://src.fedoraproject.org/rpms/gtest/tree/master
-  patch -Np1 -i gtest-1.8.1-libversion.patch
-  patch -Np1 -i ../gtest-1.8.1-null-pointer.patch
-
-  # fixup version as they are never correct
-  sed -E "s|(GOOGLETEST_VERSION) [0-9\\.]+|\\1 ${pkgver}|" -i CMakeLists.txt
-  sed -E "s|^( +)\\[[0-9\\.]+\\],$|\\1[${pkgver}],|" -i {googletest,googlemock,.}/configure.ac
-  sed -E "s|(GTEST_MIN_VERSION)=\"1.8.0\"|\\1=\"${pkgver}\"|" -i googlemock/configure.ac
-}
+source=(${_srcname}.tar.gz::https://github.com/google/googletest/archive/release-${pkgver}.tar.gz)
+sha512sums=('bd52abe938c3722adc2347afad52ea3a17ecc76730d8d16b065e165bc7477d762bce0997a427131866a89f1001e3f3315198204ffa5d643a9355f1f4d0d7b1a9')
 
 build() {
   mkdir -p build
@@ -39,14 +21,6 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
   cmake build
-
-  # Only for g{test,mock}-config
-  cd ${_srcname}/googletest
-  autoreconf -fvi
-  ./configure --prefix=/usr
-  cd ../googlemock
-  autoreconf -fvi
-  ./configure --prefix=/usr
 }
 
 package_gtest-py3() {
@@ -68,9 +42,7 @@ package_gtest-py3() {
 
   cd ${_srcname}/googletest
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md CHANGES CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 755 scripts/gtest-config -t "${pkgdir}/usr/bin"
-  install -Dm 644 m4/gtest.m4 -t "${pkgdir}/usr/share/aclocal"
+  install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 cmake/* -t "${pkgdir}/usr/src/gtest/cmake"
   install -Dm 644 src/* -t "${pkgdir}/usr/src/gtest/src"
   install -Dm 644 CMakeLists.txt -t "${pkgdir}/usr/src/gtest"
@@ -86,8 +58,7 @@ package_gmock-py3() {
 
   cd ${_srcname}/googlemock
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md CHANGES CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 755 scripts/gmock-config -t "${pkgdir}/usr/bin"
+  install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 src/* -t "${pkgdir}/usr/src/gmock"
   install -Dm 644 scripts/generator/{*.py,LICENSE,README*} -t "${pkgdir}/usr/share/gmock/generator"
   install -Dm 644 scripts/generator/cpp/* -t "${pkgdir}/usr/share/gmock/generator/cpp"
