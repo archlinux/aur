@@ -1,6 +1,6 @@
 pkgbase = termplay
 	pkgdesc = Play an image/video in your terminal!
-	pkgver = 2.0.5
+	pkgver = 2.0.6
 	pkgrel = 1
 	url = https://github.com/jD91mZM2/termplay
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = termplay
 	optdepends = ffmpeg: Video support
 	optdepends = maim: Screen-mirroring support
 	optdepends = youtube-dl: YouTube support
-	source = termplay-2.0.5.tar.gz::https://github.com/jD91mZM2/termplay/archive/2.0.5.tar.gz
-	sha512sums = 0d8e14301137c01e51294ab571507310d77cd1aa7c51fb47b85a637edc9110cce2466da7b5bfc43271d92560df65fe5bac8585be24021be98396056adf410fbb
+	source = termplay-2.0.6.tar.gz::https://github.com/jD91mZM2/termplay/archive/v2.0.6.tar.gz
+	sha512sums = c81d1324a4b33148f011af6b6eb6379b0f9b6c53f6f646d16502f73138c3f4ab37d2f3ac1e9a7a8aaddd201f8dc4cd8f0d2d20d7f9c9e27c45a04e0490a25089
 
 pkgname = termplay
 
