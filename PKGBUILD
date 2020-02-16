@@ -17,15 +17,19 @@ makedepends=(
     "ninja"
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/wmww/gtk-layer-shell/archive/v$pkgver.tar.gz")
-sha512sums=('3788559405a495d43279b20b9d64e1fb0fb9be4125eb3011a623565938246310c2e81cb6d52db111e42a9cd0739bb273ccf7fcb7c52db8b74a1e44108e061c6d')
+sha512sums=('813ae86939d4bb300e78197a09fe7e4ccda9e2e6c008b72fa45d0a5be311ade1762af31835d3e7fea00f49a438f7ad37d3e57c84e0a2ebbbf58e807048c072da')
 
 build() {
-    rm -rf build
-    arch-meson "${pkgname}-${pkgver}" build
+    cd "$pkgname-$pkgver"
+    meson --prefix=/usr \
+        --wrap-mode=nofallback \
+        --buildtype=plain \
+        build
     ninja -C build
 }
 
 package() {
-    DESTDIR="${pkgdir}/" ninja -C build install
-    install -Dm644 "$pkgname-$pkgver/COPYING" -t "$pkgdir/usr/share/licenses/$pkgname"
+    cd "$pkgname-$pkgver"
+    DESTDIR="$pkgdir" ninja -C build install
+    install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
