@@ -6,7 +6,7 @@ pkgname=$_pkgname-git
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-pkgver=r155.1f02fce
+pkgver=r161.6a2489c
 pkgrel=1
 arch=('x86_64')
 
