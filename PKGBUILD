@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-osprofiler
-pkgver='2.9.0'
+pkgver='3.0.0'
 pkgrel='1'
 pkgdesc='Library for cross-project profiling library'
 arch=('any')
@@ -14,7 +14,7 @@ checkdepends=('python-mock' 'python-stestr' 'python-ddt'
               'python-testrepository' 'python-testtools' 'python-elasticsearch'
               'python-pymongo' 'python-redis' 'python-docutils' 'bandit')
 source=("https://github.com/openstack/osprofiler/archive/$pkgver.tar.gz")
-sha512sums=('1896c2cf0bdf85bf564297168090e46ad04fac69b0751c70ffe2bae13d9dbd84ca1cce7b5e46aa5919ce6a2c1f4bd8d0d994a35a45c3dcdb92fc8dde381e86d6')
+sha512sums=('6bb31536fd17f67b19fe251f779d008d3e9aed6faf4d382e77e2507b17f1aba2a60c8cb5275ba3f267d383398f3473943abfeae82bc24b12a0b5f8df6d546697')
 
 export PBR_VERSION=$pkgver
 
