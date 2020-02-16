@@ -1,0 +1,14 @@
+pkgbase = windows10-icon-theme
+	pkgdesc = Windows 10 icon theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/B00merang-Artwork/Windows-10
+	arch = any
+	license = GPL3
+	provides = windows10-icon-theme-git
+	conflicts = windows10-icon-theme-git
+	source = windows10-icon-theme-1.0.tar.gz::https://github.com/B00merang-Artwork/Windows-10/archive/1.0.tar.gz
+	sha1sums = 0de5edd89e5a82165ee34abbbb86bebc31d5fa7c
+
+pkgname = windows10-icon-theme
+
