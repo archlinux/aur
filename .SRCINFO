@@ -1,0 +1,17 @@
+pkgbase = open-fpga-loader-git
+	pkgdesc = Universal utility for programming FPGA
+	pkgver = r155.1f02fce
+	pkgrel = 1
+	url = https://github.com/trabucayre/openFPGALoader
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	depends = libftdi
+	provides = open-fpga-loader
+	conflicts = open-fpga-loader
+	source = git+https://github.com/trabucayre/openFPGALoader.git
+	sha512sums = SKIP
+
+pkgname = open-fpga-loader-git
+
