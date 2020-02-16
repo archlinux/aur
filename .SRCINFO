@@ -8,6 +8,8 @@ pkgbase = vlc-bittorrent-git
 	makedepends = boost
 	depends = vlc
 	depends = libtorrent-rasterbar
+	conflicts = vlc-bittorrent
+	replaces = vlc-bittorrent
 	source = git+https://github.com/johang/vlc-bittorrent.git
 	sha256sums = SKIP
 

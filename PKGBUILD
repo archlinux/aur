@@ -9,6 +9,8 @@ url="https://github.com/johang/vlc-bittorrent"
 license=('GPL')
 depends=(vlc libtorrent-rasterbar)
 makedepends=(boost)
+conflicts=('vlc-bittorrent')
+replaces=('vlc-bittorrent')
 source=('git+https://github.com/johang/vlc-bittorrent.git')
 sha256sums=('SKIP')
 
