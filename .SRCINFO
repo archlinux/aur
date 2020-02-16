@@ -1,14 +1,21 @@
 pkgbase = ccrplus
 	pkgdesc = A opensource and cross-platform judge environment for OI contest.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sxyzccr/CCR-Plus
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gcc
-	makedepends = qt5-base
+	makedepends = imagemagick
 	depends = qt5-base
+	source = CCR-Plus::git+https://github.com/sxyzccr/CCR-Plus.git
+	source = ccrplus.desktop
+	source = ccrplus.patch
+	source = logo.png
+	md5sums = SKIP
+	md5sums = 1931fae6a6bc9b3af2c482abb2c486a2
+	md5sums = 373961947698de92068588bd4e982609
+	md5sums = 868c770c21bd42936562591d569bdfe3
 
 pkgname = ccrplus
 
