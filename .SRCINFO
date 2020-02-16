@@ -1,0 +1,24 @@
+pkgbase = ros-melodic-rotors-comm
+	pkgdesc = ROS - RotorS specific messages and services
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://wiki.ros.org/rotors_comm
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = ASL 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-cmake-modules
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-message-generation
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-octomap-msgs
+	source = ros-melodic-rotors-comm-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
+	sha256sums = 46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20
+
+pkgname = ros-melodic-rotors-comm
+
