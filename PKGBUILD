@@ -6,8 +6,8 @@ _gitname=performance-tweaks
 pkgname=(
     'performance-tweaks'
     )
-pkgver=r2.4ebcef5
-pkgrel=2
+pkgver=r5.203e0aa
+pkgrel=1
 arch=('any')
 _branch='master'
 url="https://github.com/librewish/performance-tweaks"
@@ -52,6 +52,7 @@ package_performance-tweaks() {
         'systemd-swap'
         'nohang-git'
 	'ananicy-git'
+	'hdparm'
 	'x86_energy_perf_policy'
         )
     optdepends=(
