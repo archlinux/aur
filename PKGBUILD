@@ -3,7 +3,7 @@
 
 pkgname=jlink-software-and-documentation
 pkgver=6.62a
-pkgrel=4
+pkgrel=5
 epoch=24
 pkgdesc="Segger JLink software & documentation pack for Linux"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ package(){
     # Create links where needed
     ln -s /opt/SEGGER/JLink/Doc/LicenseIncGUI.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     sed -i 's/0x//g' 99-jlink.rules
-    patch -i ${srcdir}/99-jlink.rules.patch 99-jlink.rules
+    patch -i "${srcdir}/99-jlink.rules.patch" 99-jlink.rules
     install -Dm644 99-jlink.rules "${pkgdir}/usr/lib/udev/rules.d/"
     rm -f "${pkgdir}/etc/udev/rules.d/99-jlink.rules"
 
