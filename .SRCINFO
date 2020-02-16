@@ -1,0 +1,17 @@
+pkgbase = something
+	pkgdesc = Finally something
+	pkgver = r2894.95ca07bd
+	pkgrel = 1
+	url = https://github.com/tsoding/something
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	depends = sdl2
+	depends = libpng
+	provides = something
+	conflicts = something
+	source = something::git+https://github.com/tsoding/something
+	sha512sums = SKIP
+
+pkgname = something
+
