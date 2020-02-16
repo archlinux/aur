@@ -1,3 +1,4 @@
+# Maintainer: Dave Wheeler <dwwheeler at gmail dot com>
 # Maintainer: Eric Liu <eric@hnws.me>
 # Official repo maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Official repo maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
@@ -5,7 +6,7 @@
 
 pkgname=kibana-xpack
 relpkgname=kibana
-pkgver=7.5.2
+pkgver=7.6.0
 pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
@@ -21,7 +22,7 @@ source=(https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-${pkgver}
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('7717eabe15a2ccd50cdc2acce592fc60af303516af2337145ab59be901d781e6545503a969ff7147e71e7189404ecbc870898daa92292e42002390f65e7cae41'
+sha512sums=('296416b9697ae66b20aae37ada855d7212fc5151055a35cc81e7c3cfef589758f10f600b382e9f4b419fcd327ff605d8da23a25e867f6a1e4d3bd133e0317b72'
             '3216c2864cf184cea0883677a05bf83cf396fda52dbd3d9a187de22f0c45d13db58f8fb4dc926694ba7d7a24000cf6d5f6218805f74fb5d729fc85c643ca8f2f'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
             '9085884430c656cc68b855c3d6740e5fd0854a8785930341b29e15e201deacc1870d8223255d9ebe096cb111319bea9bf4faa03d0760d5819976ebf912221c7d')
@@ -51,6 +52,7 @@ package() {
 
   rm -r "${pkgdir}/usr/share/kibana/node"
   find "${pkgdir}/usr/share/kibana/node_modules" -type d -empty -delete
+  rm "${pkgdir}/usr/share/kibana/data/uuid"
 }
 
 # vim: ts=2 sw=2 et:
