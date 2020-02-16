@@ -3,14 +3,14 @@ _name=openmvs
 _pkgver=0.9
 _fragment="#branch=develop"
 pkgname=${_name}-git
-pkgver=0.9.r11.g4ca6d29
+pkgver=0.9.r78.g8603471
 pkgrel=1
 pkgdesc="open Multi-View Stereo reconstruction library with simple and automatic set of tools"
 arch=('i686' 'x86_64')
 url="http://cdcseacave.github.io/openMVS"
 license=('GPL')
 depends=('glew' 'glfw' 'suitesparse' 'blas' 'google-glog' 'opencv' 'boost-libs')
-makedepends=('git' 'cmake' 'cuda' 'boost' 'gflags' 'eigen' 'ceres-solver' 'cgal' 'nvidia-utils')
+makedepends=('git' 'qt5-base' 'cmake' 'cuda' 'boost' 'gflags' 'eigen' 'ceres-solver' 'cgal' 'nvidia-utils')
 optdepends=('nvidia-utils: GPU optimized mesh reconstruction code'
             )
 

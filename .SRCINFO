@@ -1,12 +1,13 @@
 pkgbase = openmvs-git
 	pkgdesc = open Multi-View Stereo reconstruction library with simple and automatic set of tools
-	pkgver = 0.9.r11.g4ca6d29
+	pkgver = 0.9.r78.g8603471
 	pkgrel = 1
 	url = http://cdcseacave.github.io/openMVS
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = qt5-base
 	makedepends = cmake
 	makedepends = cuda
 	makedepends = boost
