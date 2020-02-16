@@ -19,8 +19,8 @@ pkgbase = obinskit
 	options = !emptydirs
 	source_x86_64 = http://releases.obins.net/occ/linux/tar/ObinsKit_1.1.1_x64.tar.gz
 	source_x86_64 = deb_extra_files_obins.tar.gz
-	sha256sums_x86_64 = 100988b25457113e06a91676e754b00297cfc6487497385e9a8451ad2ba9a200
-	sha256sums_x86_64 = a8e75e41ed64e39d141f42fbcb41451eaafe537735278f973bc2f5906c212dd7
+	sha256sums_x86_64 = 157a2e2706705f7738811d7cec0c4052c816a317f0a4597e10c30a07d67842f0
+	sha256sums_x86_64 = e4ccd0755f753e6f333871e5d7ac765160e154e7be17a75556f0b8e927452f8c
 
 pkgname = obinskit
 
