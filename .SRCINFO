@@ -1,7 +1,7 @@
 pkgbase = ttf-nerd-fonts-input
 	pkgdesc = Fonts for Code, from Font Bureau, patched with nerd-fonts
 	pkgver = 20170404
-	pkgrel = 3
+	pkgrel = 4
 	url = http://input.fontbureau.com/
 	arch = any
 	license = custom:Font Software License Agreement
@@ -10,9 +10,9 @@ pkgbase = ttf-nerd-fonts-input
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
 	source = Input_Fonts_20170404.zip::http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.2&accept=I+do&email=
-	source = https://github.com/ryanoasis/nerd-fonts/archive/v2.0.0.tar.gz
-	sha256sums = 18c69fbe80ed468dbd8445074bd696eb316f0b9102db3bc59a4f89b0d6f6d31d
-	sha256sums = 0d5939042eff3b2d9b81ee2a871b3d2c046cbc6781f20ae87cdecfc1833e7bc8
+	source = https://github.com/ryanoasis/nerd-fonts/archive/v2.1.0.tar.gz
+	sha256sums = 6bdc29a3d727147041689ab52bf73c315dbecaa6e5393f8f662dfe7d94e82a83
+	sha256sums = a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8
 
 pkgname = ttf-nerd-fonts-input
 

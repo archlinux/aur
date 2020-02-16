@@ -4,8 +4,8 @@
 
 pkgname=ttf-nerd-fonts-input
 pkgver=20170404
-nerdfont_ver=2.0.0
-pkgrel=3
+nerdfont_ver=2.1.0
+pkgrel=4
 pkgdesc='Fonts for Code, from Font Bureau, patched with nerd-fonts'
 arch=('any')
 url='http://input.fontbureau.com/'
@@ -17,10 +17,8 @@ url_long="${url}build/?fontSelection=whole&a=0&g=0&i=0&l=0&zero=0&asterisk=0&bra
 # url_long="${url}build/?fontSelection=whole&a=ss&g=ss&i=serifs_round&l=serifs_round&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email="
 source=("Input_Fonts_${pkgver}.zip::${url_long}"
         "https://github.com/ryanoasis/nerd-fonts/archive/v${nerdfont_ver}.tar.gz")
-sha256sums=('18c69fbe80ed468dbd8445074bd696eb316f0b9102db3bc59a4f89b0d6f6d31d'
-            '0d5939042eff3b2d9b81ee2a871b3d2c046cbc6781f20ae87cdecfc1833e7bc8')
-
-
+sha256sums=('6bdc29a3d727147041689ab52bf73c315dbecaa6e5393f8f662dfe7d94e82a83'
+            'a084ca91a174b547bab4523507824c76aa91ebcf38f9256a4ffd181813f87bd8')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/fonts/TTF
