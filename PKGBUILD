@@ -2,7 +2,7 @@
 
 pkgname=booktab
 pkgver=4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
 url="https://booktab.it/"
