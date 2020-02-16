@@ -4,12 +4,13 @@ _pkgname="vdeplug_agno"
 
 pkgname="$_pkgname-git"
 pkgver=r3.1529186
-pkgrel=1
+pkgrel=2
 pkgdesc="agnostic encryption nested plugin for vdeplug4"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2')
+license=('LGPL')
 depends=('vdeplug4-git')
+makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
