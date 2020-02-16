@@ -1,4 +1,4 @@
-From 962eb3d555c0d95d704922032c4750b468818e4e Mon Sep 17 00:00:00 2001
+From 5daaa10c03afc2180b698e0751bbc2b4abc313f0 Mon Sep 17 00:00:00 2001
 From: Eli Schwartz <eschwartz@archlinux.org>
 Date: Fri, 28 Sep 2018 05:19:46 +0000
 Subject: [PATCH] Revert "elf: Correct absolute (SHN_ABS) symbol run-time
@@ -18,19 +18,19 @@ This reverts commit e7feec374c635b6a29d65c39ae5e1855528fed39.
  delete mode 100644 elf/tst-absolute-sym.c
 
 diff --git a/elf/Makefile b/elf/Makefile
-index 8f962991a3..98d531ae3a 100644
+index 632a4d8b0f..2a824e3c64 100644
 --- a/elf/Makefile
 +++ b/elf/Makefile
-@@ -190,7 +190,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
+@@ -197,7 +197,7 @@ tests += restest1 preloadtest loadfail multiload origtest resolvfail \
  	 tst-tlsalign tst-tlsalign-extern tst-nodelete-opened \
  	 tst-nodelete2 tst-audit11 tst-audit12 tst-dlsym-error tst-noload \
  	 tst-latepthread tst-tls-manydynamic tst-nodelete-dlclose \
 -	 tst-debug1 tst-main1 tst-absolute-sym tst-absolute-zero tst-big-note \
 +	 tst-debug1 tst-main1 tst-absolute-zero tst-big-note \
  	 tst-unwind-ctor tst-unwind-main tst-audit13 \
- 	 tst-sonamemove-link tst-sonamemove-dlopen tst-dlopen-aout
- #	 reldep9
-@@ -276,7 +276,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
+ 	 tst-sonamemove-link tst-sonamemove-dlopen tst-dlopen-tlsmodid \
+ 	 tst-dlopen-self tst-auditmany tst-initfinilazyfail tst-dlopenfail \
+@@ -303,7 +303,7 @@ modules-names = testobj1 testobj2 testobj3 testobj4 testobj5 testobj6 \
  		tst-audit12mod1 tst-audit12mod2 tst-audit12mod3 tst-auditmod12 \
  		tst-latepthreadmod $(tst-tls-many-dynamic-modules) \
  		tst-nodelete-dlclose-dso tst-nodelete-dlclose-plugin \
@@ -38,9 +38,9 @@ index 8f962991a3..98d531ae3a 100644
 +		tst-main1mod tst-libc_dlvsym-dso \
  		tst-absolute-zero-lib tst-big-note-lib tst-unwind-ctor-lib \
  		tst-audit13mod1 tst-sonamemove-linkmod1 \
- 		tst-sonamemove-runmod1 tst-sonamemove-runmod2
+ 		tst-sonamemove-runmod1 tst-sonamemove-runmod2 \
 diff --git a/elf/dl-addr.c b/elf/dl-addr.c
-index e48795871b..482704e77f 100644
+index 693cfd2a62..4458a521f4 100644
 --- a/elf/dl-addr.c
 +++ b/elf/dl-addr.c
 @@ -60,7 +60,6 @@ determine_info (const ElfW(Addr) addr, struct link_map *match, Dl_info *info,
@@ -61,12 +61,12 @@ index e48795871b..482704e77f 100644
  	  matchsym = (ElfW(Sym) *) symtab;
 diff --git a/elf/tst-absolute-sym-lib.c b/elf/tst-absolute-sym-lib.c
 deleted file mode 100644
-index 2493d76ca5..0000000000
+index 65daf73080..0000000000
 --- a/elf/tst-absolute-sym-lib.c
 +++ /dev/null
 @@ -1,25 +0,0 @@
 -/* BZ #19818 absolute symbol calculation shared module.
--   Copyright (C) 2018-2019 Free Software Foundation, Inc.
+-   Copyright (C) 2018-2020 Free Software Foundation, Inc.
 -   This file is part of the GNU C Library.
 -
 -   The GNU C Library is free software; you can redistribute it and/or
@@ -92,12 +92,12 @@ index 2493d76ca5..0000000000
 -}
 diff --git a/elf/tst-absolute-sym-lib.lds b/elf/tst-absolute-sym-lib.lds
 deleted file mode 100644
-index e71d53e2a3..0000000000
+index 7f5f2e4757..0000000000
 --- a/elf/tst-absolute-sym-lib.lds
 +++ /dev/null
 @@ -1,19 +0,0 @@
 -/* BZ #19818 absolute symbol calculation linker script.
--   Copyright (C) 2018-2019 Free Software Foundation, Inc.
+-   Copyright (C) 2018-2020 Free Software Foundation, Inc.
 -   This file is part of the GNU C Library.
 -
 -   The GNU C Library is free software; you can redistribute it and/or
@@ -117,12 +117,12 @@ index e71d53e2a3..0000000000
 -"absolute" = 0x55aa;
 diff --git a/elf/tst-absolute-sym.c b/elf/tst-absolute-sym.c
 deleted file mode 100644
-index 4af1554929..0000000000
+index bbabf9cafb..0000000000
 --- a/elf/tst-absolute-sym.c
 +++ /dev/null
 @@ -1,38 +0,0 @@
 -/* BZ #19818 absolute symbol calculation main executable.
--   Copyright (C) 2018-2019 Free Software Foundation, Inc.
+-   Copyright (C) 2018-2020 Free Software Foundation, Inc.
 -   This file is part of the GNU C Library.
 -
 -   The GNU C Library is free software; you can redistribute it and/or
@@ -160,7 +160,7 @@ index 4af1554929..0000000000
 -
 -#include <support/test-driver.c>
 diff --git a/sysdeps/generic/ldsodefs.h b/sysdeps/generic/ldsodefs.h
-index f3ba13ee68..556eb7be66 100644
+index 497938ffa2..6499adbf9d 100644
 --- a/sysdeps/generic/ldsodefs.h
 +++ b/sysdeps/generic/ldsodefs.h
 @@ -89,8 +89,7 @@ typedef struct link_map *lookup_t;
@@ -174,5 +174,5 @@ index f3ba13ee68..556eb7be66 100644
  /* On some architectures a pointer to a function is not just a pointer
     to the actual code of the function but rather an architecture
 -- 
-2.23.0
+2.25.0
 
