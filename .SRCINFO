@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-ozone
 	pkgdesc = A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone
 	pkgver = 80.0.3987.106
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ungoogled-software.github.io/
 	install = chromium.install
 	arch = x86_64
