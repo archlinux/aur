@@ -1,0 +1,22 @@
+pkgbase = karma
+	pkgdesc = Search of Emails and Passwords on Pwndb
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/decoxviii/karma
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-docopt
+	depends = python-requests
+	depends = python-pysocks
+	depends = python-texttable
+	provides = karma
+	conflicts = karma
+	source = karma-1.2.0.tar.gz::https://github.com/decoxviii/karma/archive/1.2.0.tar.gz
+	source = path_change.patch
+	sha256sums = da3eb8bfdc3c192053f312d99f84e1861b0120e5b01cdbbbc874845448bc77e7
+	sha256sums = cf277a63110e513a8aec9d921266c8b22e5e58b93995bf4aa6f1c8684a15166b
+
+pkgname = karma
+
