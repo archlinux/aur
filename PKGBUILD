@@ -3,7 +3,7 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=1.3.6.11.gf4874cd7
+pkgver=1.3.6.114.g0dced59c
 pkgrel=1
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
@@ -24,12 +24,12 @@ pkgver() {
 
 prepare() {
   cd mu
-  ./autogen.sh
+  ./autogen.sh --prefix=/usr
 }
 
 build() {
   cd mu
-  ./configure --prefix=/usr
+  make
 }
 
 package() {
