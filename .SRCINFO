@@ -18,6 +18,7 @@ pkgbase = gfeeds
 	depends = python-readability-lxml
 	depends = libhandy
 	depends = python-dateutil
+	depends = python-pytz
 	provides = gnome-feeds
 	conflicts = gnome-feeds
 	conflicts = gnome-feeds-git
