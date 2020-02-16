@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=fstl
+GenericName=STL viewer
+Comment=A viewer for STL files
+Exec=fstl %f
+Terminal=false
+Categories=Graphics;3DGraphics;Viewer;Qt;
+Icon=fstl
+MimeType=model/stl;model/x.stl-ascii;model/x.stl-binary;
