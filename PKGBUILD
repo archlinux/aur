@@ -1,7 +1,7 @@
 # Maintainer: Daniel Schopf <schopf.dan at gmail dot com>
 pkgname=kim-api
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Online framework for reliable, reproducible and portable molecular simulations"
 arch=("i686" "x86_64")
 url="https://openkim.org"
@@ -29,6 +29,8 @@ build() {
 	-DCMAKE_INSTALL_PREFIX="/usr" \
 	-DCMAKE_INSTALL_LIBDIR="lib" \
 	-DCMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
+	-DBASH_COMPLETION_COMPLETIONSDIR="/usr/share/bash-completion/completions" \
+	-DZSH_COMPLETION_COMPLETIONSDIR="/usr/share/zsh/functions/Completion/Unix" \
 	-DKIM_API_BUILD_EXAMPLES=ON
   make
 }
@@ -36,8 +38,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-
-  # remove empty directories
-  cd "$pkgdir"
-  rm -rf usr/share
 }
