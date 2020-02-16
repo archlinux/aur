@@ -4,37 +4,37 @@ pkgdesc="ROS - mavros_msgs defines messages for MAVROS."
 url='https://wiki.ros.org/mavros_msgs'
 
 pkgname='ros-melodic-mavros-msgs'
-pkgver='0.32.2'
-arch=('any')
+pkgver='1.0.0'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('GPLv3, LGPLv3, BSD')
 
-ros_makedepends=(ros-melodic-std-msgs
-  ros-melodic-geographic-msgs
+ros_makedepends=(
   ros-melodic-catkin
-  ros-melodic-geometry-msgs
   ros-melodic-message-generation
-  ros-melodic-sensor-msgs)
-makedepends=('cmake' 'ros-build-tools'
-  ${ros_makedepends[@]})
+)
 
-ros_depends=(ros-melodic-geographic-msgs
+makedepends=(
+  cmake
+  ros-build-tools
+  ${ros_makedepends[@]}
+)
+
+ros_depends=(
   ros-melodic-message-runtime
+  ros-melodic-std-msgs
   ros-melodic-geometry-msgs
   ros-melodic-sensor-msgs
-  ros-melodic-std-msgs)
-depends=(${ros_depends[@]})
+  ros-melodic-geographic-msgs
+)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/mavros_msgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/mavlink/mavros-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
+depends=(
+  ${ros_depends[@]}
+)
 
-# Tarball version (faster download)
 _dir="mavros-${pkgver}/mavros_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/mavlink/mavros/archive/${pkgver}.tar.gz")
-sha256sums=('d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8')
+sha256sums=('08c911a3e92990e260ab25715b6605303b1ac52a8de0e3b0f504bcfab6390b0d')
 
 build() {
   # Use ROS environment variables
@@ -54,9 +54,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

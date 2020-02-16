@@ -1,25 +1,25 @@
 pkgbase = ros-melodic-mavros-msgs
 	pkgdesc = ROS - mavros_msgs defines messages for MAVROS.
-	pkgver = 0.32.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://wiki.ros.org/mavros_msgs
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
 	license = GPLv3, LGPLv3, BSD
 	makedepends = cmake
 	makedepends = ros-build-tools
-	makedepends = ros-melodic-std-msgs
-	makedepends = ros-melodic-geographic-msgs
 	makedepends = ros-melodic-catkin
-	makedepends = ros-melodic-geometry-msgs
 	makedepends = ros-melodic-message-generation
-	makedepends = ros-melodic-sensor-msgs
-	depends = ros-melodic-geographic-msgs
 	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
 	depends = ros-melodic-geometry-msgs
 	depends = ros-melodic-sensor-msgs
-	depends = ros-melodic-std-msgs
-	source = ros-melodic-mavros-msgs-0.32.2.tar.gz::https://github.com/mavlink/mavros/archive/0.32.2.tar.gz
-	sha256sums = d5e04661f88896a9a77f22a083023ce5e8e13dd71c1f8f1b7d5e187b3bf6c4f8
+	depends = ros-melodic-geographic-msgs
+	source = ros-melodic-mavros-msgs-1.0.0.tar.gz::https://github.com/mavlink/mavros/archive/1.0.0.tar.gz
+	sha256sums = 08c911a3e92990e260ab25715b6605303b1ac52a8de0e3b0f504bcfab6390b0d
 
 pkgname = ros-melodic-mavros-msgs
 
