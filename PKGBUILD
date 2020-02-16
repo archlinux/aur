@@ -3,13 +3,14 @@
 # Contributor: madmack <ali at devasque dot com> (x-4.6)
 
 pkgname=asix-dkms
+_pkgbase=asix
 pkgver=4.23.0
 pkgrel=4
-pkgdesc="A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters"
+pkgdesc='A kernel module for ASIX AX88760 AX88772 AX88772A AX88772B AX88772C AX88178 USB 2.0 network adapters'
 arch=('i686' 'x86_64')
 
 # Browse the pages for USB-to-Ethernet devices and see which devices are
-# comatible with this driver.
+# compatible with this driver.
 # https://www.asix.com.tw/download.php?sub=driverdetail&PItemID=84
 url="http://www.asix.com.tw/"
 license=('GPL')
@@ -21,12 +22,12 @@ conflicts=("asix-module")
 _filename="AX88772C_772B_772A_760_772_178_Linux_Driver_v${pkgver}_Source"
 source=(
     "https://www.asix.com.tw/FrootAttach/driver/${_filename}.tar.bz2"
-    'asix-dkms.conf'
-    '0001-linux-4.20.patch'
+    'dkms.conf'
+    'linux-4.20.patch'
 )
 sha512sums=(
     '7c43eed69e948f2d921b758c2dab1236540832c7ce48b7308b6e3fa5ee1e4f4bc9f190e1497ea85d7a953959bd86f00461ae81c0bbd710959c7dafba6c4c2688'
-    'ded1bed08f61ce207e394fc4f49345f0ea50639f53fb797907402b3503feecc485ba85fb799f2b3bc9c22cd4a250509c5eb99d4b36d42228a9475a9e7d67b293'
+    'f7023dc914f5199e7317ef0f4f12b1e21946ae1adba230af9b43679da3416cc21b54dd9285cbdb9fc135d0ad4199216426be0cb07444b2e7c702196d4cca786f'
     'e9e7025e8157d6950200a45a07d35de99c1342a60f02fa1701753e589cfa1964de86c136e8ce26f51d284cd716f75fe9953b1ee09381e9f1599aa89c8e61db8f'
 )
 
@@ -34,7 +35,7 @@ prepare() {
     cd "${srcdir}/${_filename}"
 
     # Linux kernel internals changed since Linux 4.20.
-    patch -p1 < "${srcdir}/0001-linux-4.20.patch"
+    patch -p1 < "${srcdir}/linux-4.20.patch"
 
     # Use a DKMS build against the right kernel release
     sed -i "${srcdir}/${_filename}/Makefile" \
@@ -66,10 +67,13 @@ package() {
 	printf "${pkgname}\n" \
         > "${pkgdir}/etc/modules-load.d/asix-dkms.conf"
 
-    # Patch dkms file and rename it to the mandatory dkms.conf filename.
-    install -m644 "${pkgname}.conf" "${installDir}/dkms.conf"
-    sed -e "s/@PKGVER@/${pkgver}/" \
-        -i "${installDir}/dkms.conf"
+    install -m644 dkms.conf "${installDir}/dkms.conf"
+    # The module name must have the same name here, because there already exist
+    # a kernel module named "asix" that comes bundled with the Arch Linux kernel.
+    sed -i "${installDir}/dkms.conf" \
+        -e "s/@PKGNAME@/${pkgname}/" \
+        -e "s/@_PKGBASE@/${_pkgbase}/" \
+        -e "s/@PKGVER@/${pkgver}/"
 
     # Install module sources
     cd "${srcdir}/${_filename}"
@@ -82,8 +86,8 @@ package() {
     # providing the correct rights for us. While this is technically the case
     # for now, using 'install' ensures we are using the correct rights even if
     # upstream weren't.
-    # We are using a 'while' loop with 'read' and process substitution in order to harden this
-    # script in the event special chars were to be used.
+    # We are using a 'while' loop with 'read' and process substitution in order
+    # to harden this script in the event special chars were to be used.
     # src.: http://mywiki.wooledge.org/BashPitfalls#line-92
     while IFS= read -r -d '' directory; do
         install -dm755 "${installDir}/${directory}"
