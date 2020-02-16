@@ -1,7 +1,7 @@
 # Maintainer: Manuel Lladosa <$(base64 --decode <<<'bWFub2xvbGxyQHJpc2V1cC5uZXQK')>
 # Contributor: Tarn Burton <twburton at gmail dot com>
 pkgname='pioneer-git'
-pkgver=20191009.r10.g020188a
+pkgver=20200203.r13.g6acf6aef2
 pkgrel=1
 pkgdesc="A game of lonely space adventure"
 arch=('x86_64')
