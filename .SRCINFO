@@ -1,9 +1,8 @@
 pkgbase = ttf-news-cycle
 	pkgdesc = A realist sans-serif typeface based on ATF's 1908 News Gothic.
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.glyphography.com/fonts/
-	install = ttf-news-cycle.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
