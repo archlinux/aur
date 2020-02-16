@@ -1,10 +1,13 @@
 pkgbase = libvolatilestream-git
 	pkgdesc = volatile stream = stdio FILE* stream as a temporary dynamically allocated (and deallocated) memory buffer
 	pkgver = r11.0937e7c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rd235/libvolatilestream
 	arch = any
 	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	depends = glibc
 	provides = libvolatilestream
 	conflicts = libvolatilestream
 	source = git+https://github.com/rd235/libvolatilestream.git
