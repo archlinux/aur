@@ -21,7 +21,7 @@ source=("https://dennisengelhard.files.wordpress.com/2020/02/megaman_rocknroll_l
          mmrnr.png
 )
 
-sha256sums=('b3a77e09ecda0b49538403e294af8a92e04f46b746d99eae7466b858f0d35eb8'
+sha256sums=('f916bdf0dec0983274609b36fce2c04eb49c91dbf57255884bbcb07938516464'
             '8fe73015af3b6f684f278b0f6aa274f82ca78f80264f2e3af2cc96145075fb0a'
             '93d862cacc440d79434450e345cfcdf7e84791bd550ea0ccb234acd9a0d62613')
 
