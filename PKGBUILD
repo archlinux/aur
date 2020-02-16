@@ -27,7 +27,7 @@ source=(
 )
 sha512sums=(
     '7c43eed69e948f2d921b758c2dab1236540832c7ce48b7308b6e3fa5ee1e4f4bc9f190e1497ea85d7a953959bd86f00461ae81c0bbd710959c7dafba6c4c2688'
-    'f7023dc914f5199e7317ef0f4f12b1e21946ae1adba230af9b43679da3416cc21b54dd9285cbdb9fc135d0ad4199216426be0cb07444b2e7c702196d4cca786f'
+    'ba2f214bc0baa2b2f8baf480e904ea8ed15dfc24c15d3dd453f9a0db47615b16ff5722fc1384435959b281b4ec322956ba1380fef8146ef019ddc56e304c495d'
     'e9e7025e8157d6950200a45a07d35de99c1342a60f02fa1701753e589cfa1964de86c136e8ce26f51d284cd716f75fe9953b1ee09381e9f1599aa89c8e61db8f'
 )
 
@@ -50,28 +50,13 @@ package() {
     installDir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
     install -dm755 "${installDir}"
 
-    # The kernel from kernel.org does provide an outdated module asix.
-    # Arch Linux packages that module in their default kernel (normal + lts).
-    # We need to blacklist this module. This makes sure it is not loaded as
-    # ours will be conflicting with the default module.
-	install -dm755 "${pkgdir}/etc/modprobe.d"
-	install -m644 /dev/null \
-        "${pkgdir}/etc/modprobe.d/blacklist-asix.conf"
-	printf "blacklist asix\n" \
-        > "${pkgdir}/etc/modprobe.d/blacklist-asix.conf"
-
-    # Load asix-dkms automatically at boot
-	install -dm755 "${pkgdir}/etc/modules-load.d"
-    install -m644 /dev/null \
-        "${pkgdir}/etc/modules-load.d/asix-dkms.conf"
-	printf "${pkgname}\n" \
-        > "${pkgdir}/etc/modules-load.d/asix-dkms.conf"
-
     install -m644 dkms.conf "${installDir}/dkms.conf"
-    # The module name must have the same name here, because there already exist
-    # a kernel module named "asix" that comes bundled with the Arch Linux kernel.
+
+    # Even if upstream (and Arch Linux kernel as well) already have a module
+    # named asix, we will put it in the /updates folder. The one placed in
+    # updates will automatically supersede the one from upstream, this is
+    # simpler as this doesn't require blacklisting.
     sed -i "${installDir}/dkms.conf" \
-        -e "s/@PKGNAME@/${pkgname}/" \
         -e "s/@_PKGBASE@/${_pkgbase}/" \
         -e "s/@PKGVER@/${pkgver}/"
 
