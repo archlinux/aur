@@ -1,3 +1,4 @@
+micro-*.pkg.tar.zst
 micro-*.pkg.tar.xz
 micro-*.log
 PKGBUILD-namcap.log
