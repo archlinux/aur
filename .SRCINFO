@@ -1,0 +1,19 @@
+pkgbase = cloak
+	pkgdesc = A Command Line OTP (One Time Password) Authenticator application
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/evansmurithi/cloak
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = cloak-0.2.0.tar.gz::https://github.com/evansmurithi/cloak/archive/v0.2.0.tar.gz
+	sha256sums = 87d356875eb26c70e95ccbd8ac1ecfa99bf974c486b42bea92460d18f6ac9699
+
+pkgname = cloak
+
