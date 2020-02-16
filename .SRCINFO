@@ -1,6 +1,6 @@
 pkgbase = filebin
 	pkgdesc = A pastebin service written in PHP
-	pkgver = 0.9.18
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://wiki.server-speed.net/projects/filebin
 	install = filebin.install

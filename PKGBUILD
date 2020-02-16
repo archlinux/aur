@@ -1,6 +1,6 @@
 # Maintainer: Simon Hanna<simon DOT Hanna AT serve-me DOT info>
 pkgname=filebin
-pkgver=0.9.18
+pkgver=3.4.3
 pkgrel=1
 pkgdesc="A pastebin service written in PHP"
 arch=('any')
