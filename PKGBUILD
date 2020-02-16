@@ -1,8 +1,9 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-_pkgbase=linux-lts
 pkgbase=linux-lts419
-pkgver=4.19.103
+_basever=4.19
+_srcname=linux-$_basever
+pkgver=4.19.104
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -13,9 +14,9 @@ makedepends=(
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
-_srcname=linux-$pkgver
 source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz #signature is mising
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 )
@@ -24,8 +25,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('b4784571bd7f3dc10ae3dc4414876dbd73fc6750401299b206670ce3e5c4bb43'
+sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
+            'd29b55ce53f9cd6f81ac3e0525cde6fbe2a6ba7085f08df188e9f756d9a3a4fc'
             '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
@@ -35,6 +37,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   cd $_srcname
+
+  # add upstream patch
+  echo "Updating to ${pkgver}..."
+  patch -Nup1 -i "${srcdir}/patch-${pkgver}"
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion

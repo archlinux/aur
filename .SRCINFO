@@ -1,6 +1,6 @@
 pkgbase = linux-lts419
 	pkgdesc = LTS 4.19 Linux
-	pkgver = 4.19.103
+	pkgver = 4.19.104
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -14,14 +14,16 @@ pkgbase = linux-lts419
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.103.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.103.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.104.xz
 	source = config
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = b4784571bd7f3dc10ae3dc4414876dbd73fc6750401299b206670ce3e5c4bb43
+	sha256sums = 0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1
 	sha256sums = SKIP
+	sha256sums = d29b55ce53f9cd6f81ac3e0525cde6fbe2a6ba7085f08df188e9f756d9a3a4fc
 	sha256sums = 4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6
 	sha256sums = a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2
 
