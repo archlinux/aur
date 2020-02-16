@@ -59,6 +59,9 @@ prepare() {
 	git config submodule.src/internal-server.url "$srcdir/$pkgname-internal-server"
 	git submodule update --init --recursive
 
+	# Update submodules until https://github.com/getferdi/ferdi/pull/382 is merged
+	git submodule update --remote
+
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat /usr/lib/electron/version)"'"|' 'package.json'
 
