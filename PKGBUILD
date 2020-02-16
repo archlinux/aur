@@ -10,7 +10,7 @@ license=("BSD")
 depends=(
   "python2-pyexiftool" "python2-pylzma" "python2-bottle" "python2-pyelftools" 
   "python2-bitstring" "python2-dnspython" "python2-m2crypto" "python2-pyasn1" 
-  "python2-requests" "python2-sqlalchemy" "python2-prettytable" "python2-magic" 
+  "python2-requests" "python2-sqlalchemy" "python2-prettytable" 
   "python2-pydeep" "ssdeep" "python2-ssdeep" "python2-beautifulsoup4" 
   "python2-pefile" "python2-crypto" "python2-olefile" "python2-oletools") 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/botherder/viper/archive/v${pkgver}.tar.gz" "viper-cli" "viper-web" "viper-api")
