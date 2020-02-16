@@ -5,9 +5,9 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 pkgname='ferdi'
 pkgver='5.4.3'
-_recipescommit='f6da5d54280e5156c46c295ad48d6cdcd5e10bb8'
-_internalservercommit='24c8ea3aad5b828297686a032103d2cc4eabc373'
-pkgrel='1'
+_recipescommit='3dcb305ffb706a7604cdfbadf7f2d2e236cb223d'
+_internalservercommit='c39e8b45a51387f24d30e62a170681fc3422ad08'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -20,12 +20,14 @@ source=(
 	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.zip"
 	"$pkgname.desktop"
 	"$pkgname.sh"
+	'fix-autostart-path.diff'
 )
 sha256sums=('5b76514a103a46c9c3c578a474de28b9d5ba4140122cd0950cfe02b9b8e2c84f'
-            '3524ac90ec0087af47bbdeb4de666d5eb0e8e6558e719cbf34f6737669a8d184'
-            '48e60f9cf26da82e3836b782ffb9718018f041dadfa25abb3f9825a514326e9b'
+            '1f4a4c7e88d39b3951fa73c07a03634966b5c46314cb7c4b892fbc288949e19e'
+            'e5487a47583290ee02f1ef08ab7016fbb51c662e4ece11a8f98912d7d8d69014'
             '5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53'
-            '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5')
+            '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
+            '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 case "$CARCH" in
 	i686)
@@ -58,6 +60,9 @@ prepare() {
 	# Prevent Ferdi from being launched in dev mode
 	sed -i 's|export const isDevMode = .*|export const isDevMode = false;|g' 'src/environment.js'
 	sed -i "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" 'src/index.js'
+
+	# Specify path for autostart file
+	patch --forward -p1 < '../fix-autostart-path.diff'
 
 	# Prepare dependencies
 	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
