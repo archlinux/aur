@@ -1,6 +1,6 @@
 pkgbase = flipper
 	pkgdesc = A desktop debugging platform for mobile (iOS, Android) developers.
-	pkgver = 0.28.0
+	pkgver = 0.31.1
 	pkgrel = 2
 	url = https://fbflipper.com/
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = flipper
 	depends = libsecret
 	depends = libxss
 	depends = nss
-	source = git+https://github.com/facebook/flipper.git#tag=v0.28.0
+	source = git+https://github.com/facebook/flipper.git#tag=v0.31.1
 	sha256sums = SKIP
 
 pkgname = flipper

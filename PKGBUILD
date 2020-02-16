@@ -1,7 +1,7 @@
 # Maintainer: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.28.0
+pkgver=0.31.1
 pkgrel=2
 pkgdesc="A desktop debugging platform for mobile (iOS, Android) developers. "
 arch=('any')
