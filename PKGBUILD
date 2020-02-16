@@ -6,7 +6,7 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
 pkgver='5.4.1.beta.5.r271.gf07b3f70'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
@@ -100,8 +100,8 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	install -Dm644 'out/linux-unpacked/resources/app.asar' "$pkgdir/usr/lib/$_pkgname/app.asar"
-	install -dm755 "$pkgdir/usr/lib/$_pkgname/resources/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$_pkgname/resources/app.asar.unpacked/recipes/"
+	install -dm755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
+	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/recipes/"
 
 	install -Dm755 "../$_pkgname.sh" "$pkgdir/usr/bin/ferdi"
 
