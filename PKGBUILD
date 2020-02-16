@@ -1,7 +1,7 @@
 # Maintainer: Aidan Coward <aidan -dot- coward -at- gmail -dot- com>
 
 pkgname=xmage
-pkgver=1.4.42V3
+pkgver=1.4.42V4
 pkgrel=0
 
 pkgdesc="Java-based program for playing Magic:The Gathering, including client and server"
@@ -14,7 +14,7 @@ license=('MIT')
 source=("http://xmage.de/files/xmage_${pkgver}.zip"
 	'https://raw.githubusercontent.com/magefree/mage/master/LICENSE.txt')
 
-sha256sums=("21a75f15503db1b834e4e87a60f2e88b02260f389745990469c34dd08b1c4cba" 
+sha256sums=("b86dab7aedb310bf33976d59ac357e239f53cd5ebeb61281ff5783a6331b7680" 
 	"SKIP")
 
 ###########################
