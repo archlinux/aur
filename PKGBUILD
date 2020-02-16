@@ -12,6 +12,7 @@ depends=(
     "wayland"
 )
 makedepends=(
+    "gtk-doc"
     "gobject-introspection"
     "meson"
     "ninja"
@@ -24,6 +25,7 @@ build() {
     meson --prefix=/usr \
         --wrap-mode=nofallback \
         --buildtype=plain \
+        -Ddocs=true \
         build
     ninja -C build
 }
