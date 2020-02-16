@@ -1,4 +1,4 @@
-# Maintainer: japm48 <japm48@gmail.com>
+# Maintainer: japm48 <japm48gh@gmail.com>
 
 _pkgname=jsonmerge
 pkgname=python-${_pkgname}
