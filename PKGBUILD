@@ -1,11 +1,12 @@
 # Maintainer: Fahad Hossain <8bit.demoncoder AT gmail.com>
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
+# Maintainer: Matti Viljanen <matti.viljanen@kapsi.fi>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
 pkgver=80.0.3987.87
 pkgver2=0ubuntu0
 pkgver3=18.04.1
 pkgrel=1
-pkgdesc="Prebuilt ffmpeg-codecs package for vivaldi"
+pkgdesc="Prebuilt ffmpeg codecs package for Vivaldi"
 arch=("x86_64")
 url="https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
