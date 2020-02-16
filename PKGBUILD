@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.4.3'
 _recipescommit='3dcb305ffb706a7604cdfbadf7f2d2e236cb223d'
 _internalservercommit='c39e8b45a51387f24d30e62a170681fc3422ad08'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -58,8 +58,8 @@ prepare() {
 	sed -E -i -e 's|("electron": ").*"|\1'"$(cat /usr/lib/electron/version)"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
-	sed -i 's|export const isDevMode = .*|export const isDevMode = false;|g' 'src/environment.js'
-	sed -i "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" 'src/index.js'
+	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
+	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
