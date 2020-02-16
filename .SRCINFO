@@ -1,28 +1,28 @@
 pkgbase = booktab
 	pkgdesc = MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva.
-	pkgver = 4.0
-	pkgrel = 8
+	pkgver = 4.8
+	pkgrel = 1
 	url = https://booktab.it/
 	arch = x86_64
 	license = unknown
+	depends = pcre
 	depends = fontconfig
 	depends = libxrandr
 	depends = libxdamage
 	depends = libcups
 	depends = nss
 	depends = libpng12
-	depends = icu55
 	depends = libxcursor
 	depends = libxinerama
-	depends = gstreamer0.10-base
 	depends = libpulse
 	depends = qt5-svg
 	depends = qt5-webkit
 	depends = qt5-multimedia
 	depends = qt5-webengine
-	noextract = BooktabZSetup-4.0.deb
-	source = https://booktab.it/setup-z/BooktabZSetup-4.0.deb
-	md5sums = 1672cd7af08028fea1dfc1e57ee1854f
+	noextract = BooktabSetup.deb
+	options = !strip
+	source = https://booktab.it/setup-z/BooktabSetup.deb
+	md5sums = 005697505340556499c0e82f28875422
 
 pkgname = booktab
 

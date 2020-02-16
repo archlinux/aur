@@ -1,20 +1,22 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=booktab
-pkgver=4.0
-pkgrel=8
+pkgver=4.8
+pkgrel=1
 pkgdesc="MyZanichelli - La piattaforma che ti permette di consultare tutti i tuoi libri scolastici in versione multimediale e interattiva."
 arch=('x86_64')
 url="https://booktab.it/"
 license=('unknown')
-depends=("fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "icu55" "libxcursor" "libxinerama" "gstreamer0.10-base" "libpulse" "qt5-svg" "qt5-webkit" "qt5-multimedia" "qt5-webengine")
+depends=("pcre" "fontconfig" "libxrandr" "libxdamage" "libcups" "nss" "libpng12" "libxcursor" "libxinerama" "libpulse" "qt5-svg" "qt5-webkit" "qt5-multimedia" "qt5-webengine")
 
-_debname=BooktabZSetup-4.0.deb
+_debname=BooktabSetup.deb
 
 source=(https://booktab.it/setup-z/${_debname})
-md5sums=('1672cd7af08028fea1dfc1e57ee1854f')
+md5sums=('005697505340556499c0e82f28875422')
 
 noextract=(${_debname})
+
+options=(!strip)
 
 prepare() {
   cd "$srcdir"
@@ -31,14 +33,15 @@ package() {
   # install -m644 usr/share/applications/"$pkgname"z.desktop "$pkgdir"/usr/share/applications/"$pkgname"z.desktop
   install -m755 usr/bin/booktab "$pkgdir"/usr/bin/booktab
 
-  install -dm755 "$pkgdir"/usr/lib
-  install -m644 usr/lib/libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so.6.5.3
-  ln -s ./libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so
-  install -m644 usr/lib/libbtbanalytics.a "$pkgdir"/usr/lib/libbtbanalytics.a
-  install -m644 usr/lib/libbtbcore.a "$pkgdir"/usr/lib/libbtbcore.a
-  install -m644 usr/lib/libbtbcoregui.a "$pkgdir"/usr/lib/libbtbcoregui.a
+#  install -dm755 "$pkgdir"/usr/lib
+#  install -m644 usr/lib/libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so.6.5.3
+#  ln -s ./libPDFNetC.so.6.5.3 "$pkgdir"/usr/lib/libPDFNetC.so
+#  install -m644 usr/lib/libbtbanalytics.a "$pkgdir"/usr/lib/libbtbanalytics.a
+#  install -m644 usr/lib/libbtbcore.a "$pkgdir"/usr/lib/libbtbcore.a
+#  install -m644 usr/lib/libbtbgui.a "$pkgdir"/usr/lib/libbtbgui.a
+#  install -m644 usr/lib/libbtbservices.a "$pkgdir"/usr/lib/libbtbservices.a
 
-  ln -s /usr/lib/libpcre16.so "$pkgdir"/usr/lib/libpcre16.so.3
+  # ln -s /usr/lib/libpcre16.so "$pkgdir"/usr/lib/libpcre16.so.3
 
   cp -dpr --no-preserve=ownership usr/share/duDat "$pkgdir"/usr/share
 }
