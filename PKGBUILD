@@ -1,7 +1,7 @@
 # Maintainer: José Rebelo <joserebelo at outlook dot com>
 
 pkgname=opensurge
-pkgver=0.5.1.1
+pkgver=0.5.1.2
 pkgrel=1
 pkgdesc='Open Surge is a fun 2D retro platformer inspired by Sonic games, and a game creation system.'
 arch=('i686' 'x86_64')
