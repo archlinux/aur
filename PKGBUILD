@@ -1,28 +1,33 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 url='https://arrayfire.com'
 pkgver=3.7.0
 arch=('x86_64')
-pkgrel=1
+pkgrel=2
 license=('BSD')
-depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew')
+depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-mkl')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
 optdepends=('cuda: Required for using CUDA backend'
             'nvidia-utils: Required for using CUDA backend'
             'cudnn: Required for using CUDA backend'
-            'libclc: Required for using OpenCL backend')
+            'opencl-driver: Required for using OpenCL backend')
 options=('!buildflags')
 source=("http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2")
 sha512sums=('64f34f742eced91356a96706d5f4846ead90b2618eeb5da90e6b797d62ab70b71dee9f2b2c0d09c09d5868e9c81ebbe4762947e195a37834481d9730e189d1d7')
 
-build() {
-  cd "${srcdir}/arrayfire-full-${pkgver}"
+prepare() {
+  mkdir "${srcdir}/arrayfire-full-${pkgver}"/build
+}
 
-  mkdir -p build
-  cd build
+build() {
+  cd "${srcdir}/arrayfire-full-${pkgver}"/build
+
+  export MKLROOT=/usr/include/mkl
   cmake .. \
       -GNinja \
+      -DMKL_THREAD_LAYER="GNU OpenMP" \
+      -DUSE_CPU_MKL=ON \
       -DGOOGLETEST_VERSION=1.9.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
       -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -40,12 +45,11 @@ build() {
   ninja
 }
 
-# check() {
-#   cd "${srcdir}/arrayfire-full-${pkgver}/build"
-#
-#   # Some tests fail :(
-#   make test
-# }
+check() {
+  cd "${srcdir}/arrayfire-full-${pkgver}/build"
+
+  make test
+}
 
 package() {
   cd "${srcdir}/arrayfire-full-${pkgver}"
