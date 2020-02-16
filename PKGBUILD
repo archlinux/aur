@@ -2,13 +2,13 @@
 
 pkgname=edumips64
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform educational MIPS64 CPU simulator"
 arch=('any')
 url="https://www.edumips.org"
 license=('GPL')
 depends=('java-runtime' 'javahelp2')
-source=(https://github.com/lupino3/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.jar
+source=(https://github.com/EduMIPS64/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.jar
         $pkgname.desktop
         $pkgname.png
         $pkgname)

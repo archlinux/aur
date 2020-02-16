@@ -1,13 +1,13 @@
 pkgbase = edumips64
 	pkgdesc = Cross-platform educational MIPS64 CPU simulator
 	pkgver = 1.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.edumips.org
 	arch = any
 	license = GPL
 	depends = java-runtime
 	depends = javahelp2
-	source = https://github.com/lupino3/edumips64/releases/download/v1.2.6/edumips64-1.2.6.jar
+	source = https://github.com/EduMIPS64/edumips64/releases/download/v1.2.6/edumips64-1.2.6.jar
 	source = edumips64.desktop
 	source = edumips64.png
 	source = edumips64
