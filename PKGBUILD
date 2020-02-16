@@ -142,13 +142,8 @@ prepare() {
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  fi
-
   # Let's user choose microarchitecture optimization in GCC
-  ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
+  sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
