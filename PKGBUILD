@@ -11,10 +11,10 @@
 # Contributor: djnm <nmihalich [at} gmail dott com>
 
 pkgname=dwarffortress-spacefox
-pkgver=0.42.06
-_dfver=42_06
-_sfver=42.06a
-_ufver=0.42.06
+pkgver=0.47.02
+_dfver=47_02
+_sfver=47.02
+_ufver=0.47.02
 pkgrel=1
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
@@ -48,9 +48,9 @@ source=("df_${_dfver}.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_li
         "dwarffortress-sf.png"
         "LICENSE-sf")
 
-md5sums=('47f5a2ea1c4de2b742b50dd876b73feb'
-         'f72c86fc57a6c165e9153f5f7134372e'
-         '96a026706eb7858063668fa84eab1211'
+md5sums=('f888c07240c02fa792d25d325517d1ec'
+         'cfba769b568d520a3e42e748c552774f'
+         'f872d22e6d397dcf54c1a7fec4078df6'
          '53c9d5bfcb35281c81b78fea23da0698'
          '60de2d654998220f426bbe41f2e57471'
          'b1d51f82400073af9bb179e34a9209d0'
