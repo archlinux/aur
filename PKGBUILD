@@ -1,14 +1,14 @@
-# Maintainer: Dominic Meiser dosm dot mail at gmail
+# Maintainer: Dominic Meiser git at msrd0 dot de
 
 pkgname=slic3r-dev
 _pkgver=1.3.1_dev
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Development build of Slic3r, a 3D Printer Toolpath Generator"
 arch=('x86_64')
 url="https://slic3r.org"
 license=('AGPL3')
-depends=('freeglut' 'glu' 'perl')
+depends=('freeglut' 'glu' 'gtk2' 'perl')
 makedepends=('jq' 'wget')
 conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
 provides=('slic3r')
