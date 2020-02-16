@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=10.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Backup software to synchronize files and folders"
 arch=('i686' 'x86_64')
 url="https://freefilesync.org"
@@ -19,17 +19,15 @@ source=(
 	revert_xdg_config_path.patch
 	revert_bulk_append.patch
 	revert_linkflags.patch
-	fix_missing_includes_and_compile_targets.patch
 	FreeFileSync.desktop
 	RealTimeSync.desktop
 	dlagent
 	)
 
-sha256sums=('8f46e0d64732e6735d88051c55219e0881750c958d71a139db15040d3e71b7fa'
+sha256sums=('34d04deaf8abcd1177aa9e0349bfeb8d8e8689d9b40656e9e8da1c32c7d3389d'
             'bd2b786be724818cf232129ecd432f305a5fdecc298a3e503a1e9182cad6a707'
             '2ea1f157ab31feb18b0d8ac117a1820174a4b2b9bdaee2027c1fbc2c287e1caa'
             'd3dedc100163ce00ae5889a6039a1fff11ae32b676ae5e83ae9182509f80638d'
-            '22dcce4f1b99bcfe92a4a2e4e9dada319baa3716b363aa3689ad2cb14d46fd51'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             '1649e7ea66235c6f82daf9beb6b61b7765df54e9ef70f7f6fc1283f5c2b1e54a')
@@ -54,10 +52,6 @@ prepare() {
 # inlining of constants not present in libssh2's distributed headers
     sed -i 's/MAX_SFTP_READ_SIZE/30000/g' FreeFileSync/Source/afs/sftp.cpp
     sed -i 's/MAX_SFTP_OUTGOING_SIZE/30000/g' FreeFileSync/Source/afs/sftp.cpp
-
-# add missing includes and compile targets
-    patch --binary -p1 -i fix_missing_includes_and_compile_targets.patch
-
 }
 
 build() {
