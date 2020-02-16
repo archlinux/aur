@@ -1,7 +1,7 @@
 # Maintainer: Mario O.M. <marioortizmanero@gmail.com>
 pkgname=vidify
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch music videos in real-time for the songs playing on your device"
 arch=("any")
 url="https://github.com/vidify/vidify"
