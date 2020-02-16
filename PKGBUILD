@@ -2,12 +2,13 @@
 
 pkgname=python-futurist
 pkgver='1.10.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Code from the future, delivered to you in the now.'
 arch=('any')
 url='https://docs.openstack.org/futurist/'
 license=('Apache')
-depends=('python-pbr' 'python-six' 'python-monotonic' 'python-prettytable')
+depends=('python-pbr' 'python-six' 'python-monotonic' 'python-prettytable'
+         'python-wheel')
 checkdepends=('python-eventlet' 'python-oslotest' 'python-testrepository'
               'python-testscenarios' 'python-testtools')
 source=("https://github.com/openstack/futurist/archive/$pkgver.tar.gz")
