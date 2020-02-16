@@ -1,6 +1,6 @@
 pkgbase = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets
-	pkgver = 2.1.16
+	pkgver = 2.1.17
 	pkgrel = 1
 	url = http://drawpile.net/
 	arch = i686
@@ -13,9 +13,8 @@ pkgbase = drawpile
 	makedepends = qt5-svg
 	makedepends = qt5-tools
 	makedepends = qt5-x11extras
-	makedepends = qtkeychain
-	source = http://drawpile.net/files/src/drawpile-2.1.16.tar.gz
-	sha256sums = 5c799e7a02ef63cf6a5d1e78511f3fa9051ca809f1602c853420f5a20223e6d7
+	source = http://drawpile.net/files/src/drawpile-2.1.17.tar.gz
+	sha256sums = ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086
 
 pkgname = drawpile
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (meta package)
@@ -31,11 +30,11 @@ pkgname = drawpile-client
 	depends = karchive
 	depends = qt5-multimedia
 	depends = qt5-x11extras
-	depends = qtkeychain
 	optdepends = kdnssd: automatic service discovery (such as printers)
 	optdepends = giflib: GIF support
 	optdepends = miniupnpc: UPnP support
 	optdepends = qt5-color-widgets: alternative color wheel
+	optdepends = qtkeychain: Password storage
 
 pkgname = drawpile-server
 	pkgdesc = Collaborative drawing program specially made for use with pen tablets (server)

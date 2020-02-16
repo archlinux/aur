@@ -5,15 +5,15 @@
 
 pkgbase='drawpile'
 pkgname=("${pkgbase}"{,'-client','-server'})
-pkgver=2.1.16
+pkgver=2.1.17
 pkgrel=1
 pkgdesc='Collaborative drawing program specially made for use with pen tablets'
 arch=('i686' 'x86_64')
 url='http://drawpile.net/'
 license=('GPL3')
-makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qtkeychain')
+makedepends=('cmake' 'extra-cmake-modules' 'karchive' 'qt5-multimedia' 'qt5-svg' 'qt5-tools' 'qt5-x11extras')
 source=("http://drawpile.net/files/src/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('5c799e7a02ef63cf6a5d1e78511f3fa9051ca809f1602c853420f5a20223e6d7')
+sha256sums=('ee7f7ba81e6f1a9c3c32275f84364d10713c24ec040da8cb4b13c3ea6bb09086')
 
 _cmakeargs+=('-Wno-dev' '-DKIS_TABLET=ON')
 
@@ -38,11 +38,12 @@ package_drawpile() {
 
 package_drawpile-client() {
 	pkgdesc+=' (client)'
-	depends=('desktop-file-utils' 'karchive' 'qt5-multimedia' 'qt5-x11extras' 'qtkeychain')
+	depends=('desktop-file-utils' 'karchive' 'qt5-multimedia' 'qt5-x11extras')
 	optdepends=('kdnssd: automatic service discovery (such as printers)'
 		'giflib: GIF support'
 		'miniupnpc: UPnP support'
-		'qt5-color-widgets: alternative color wheel')
+		'qt5-color-widgets: alternative color wheel'
+		'qtkeychain: Password storage')
 	install="${pkgbase}.install"
 	cd "${pkgbase}-${pkgver}"
 
