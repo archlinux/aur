@@ -61,7 +61,7 @@ prepare() {
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
-        printf "$(<$node)\n\n" >>seednodes.fref
+        printf "%s\n\n" "$(<$node)" >>seednodes.fref
     done
 }
 
