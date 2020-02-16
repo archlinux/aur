@@ -1,6 +1,6 @@
-pkgbase = emacs-git
-	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 28.0.50.139945
+pkgbase = emacs27-git
+	pkgdesc = GNU Emacs. emacs-27 release branch.
+	pkgver = 27.0.60.140075
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
@@ -22,14 +22,14 @@ pkgbase = emacs-git
 	provides = emacs-seq
 	conflicts = emacs
 	conflicts = emacs26-git
-	conflicts = emacs-27-git
+	conflicts = emacs-git
 	conflicts = emacs-seq
 	replaces = emacs26-git
-	replaces = emacs27-git
+	replaces = emacs-git
 	replaces = emacs-seq
 	options = !strip
-	source = emacs-git::git://git.savannah.gnu.org/emacs.git
+	source = emacs-git::git://git.savannah.gnu.org/emacs.git#branch=emacs-27
 	md5sums = SKIP
 
-pkgname = emacs-git
+pkgname = emacs27-git
 

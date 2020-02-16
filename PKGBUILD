@@ -1,4 +1,15 @@
-# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Jack Random <https://aur.archlinux.org/account/jackrandom/>
+# Maintainer of emacs-git: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+
+################################################################################
+# The only difference between this PKGBUILD and the one from `emacs-git` is that
+# this one builds emacs from `emacs-27` release branch.
+# 
+# It hence should be more stable and less frequently updated than `emacs-git`.
+# 
+# `Starting the Emacs 27 release cycle` announcement on emacs-devel:
+# https://lists.gnu.org/archive/html/emacs-devel/2019-12/msg00635.html
+################################################################################
 
 ################################################################################
 # CAVEAT LECTOR: This PKGBUILD is highly opinionated. I give you
@@ -57,19 +68,19 @@ NOGZ="YES"        # Don't compress .el files.
 ################################################################################
 
 ################################################################################
-pkgname="emacs-git"
-pkgver=28.0.50.139945
+pkgname="emacs27-git"
+pkgver=27.0.60.140075
 pkgrel=1
-pkgdesc="GNU Emacs. Development master branch."
+pkgdesc="GNU Emacs. emacs-27 release branch."
 arch=('x86_64' )
 url="http://www.gnu.org/software/emacs/"
 license=('GPL3' )
 depends=('alsa-lib' 'gnutls' 'libxml2' 'jansson' 'libotf' 'harfbuzz' 'gpm')
 makedepends=('git')
 provides=('emacs' 'emacs-seq')
-conflicts=('emacs' 'emacs26-git' 'emacs-27-git' 'emacs-seq')
-replaces=('emacs26-git' 'emacs27-git' 'emacs-seq')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+conflicts=('emacs' 'emacs26-git' 'emacs-git' 'emacs-seq')
+replaces=('emacs26-git' 'emacs-git' 'emacs-seq')
+source=("emacs-git::git://git.savannah.gnu.org/emacs.git#branch=emacs-27")
 # If Savannah access is blocked for reasons, use Github instead.
 # Edit the config file of your local repo copy as well.
 #source=("emacs-git::git://github.com/emacs-mirror/emacs.git")
