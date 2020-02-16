@@ -1,7 +1,7 @@
 pkgbase = ferdi-git
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - git version
 	pkgver = 5.4.1.beta.5.r271.gf07b3f70
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getferdi.com
 	arch = x86_64
 	arch = i686
@@ -18,10 +18,12 @@ pkgbase = ferdi-git
 	source = ferdi-git-internal-server::git+https://github.com/getferdi/internal-server
 	source = ferdi.desktop
 	source = ferdi.sh
+	source = fix-autostart-path.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53
 	sha256sums = 3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5
+	sha256sums = 91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095
 
 pkgname = ferdi-git

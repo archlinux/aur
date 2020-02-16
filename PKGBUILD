@@ -6,7 +6,7 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
 pkgver='5.4.1.beta.5.r271.gf07b3f70'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
@@ -21,12 +21,14 @@ source=(
 	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
 	"$_pkgname.desktop"
 	"$_pkgname.sh"
+	'fix-autostart-path.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53'
-            '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5')
+            '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
+            '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 case "$CARCH" in
 	i686)
@@ -66,8 +68,11 @@ prepare() {
 	sed -E -i 's|("electron": ").*"|\1'"$(cat /usr/lib/electron/version)"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
-	sed -i 's|export const isDevMode = .*|export const isDevMode = false;|g' 'src/environment.js'
-	sed -i "s|import isDevMode from 'electron-is-dev'|export const isDevMode = false|g" 'src/index.js'
+	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
+	sed -i "s|import isDev from 'electron-is-dev'|const isDev = false|g" 'src/environment.js'
+
+	# Specify path for autostart file
+	patch --forward -p1 < '../fix-autostart-path.diff'
 
 	# Prepare dependencies
 	export HOME="$srcdir/$pkgname-home"
