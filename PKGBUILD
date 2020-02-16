@@ -4,7 +4,7 @@
 _plugin_name=trackmenot
 _file=3438065
 pkgname=firefox-extension-${_plugin_name}
-pkgver=0.10.43
+pkgver=0.10.46
 pkgrel=1
 pkgdesc="Firefox extension to protect web habits from tracking and profiling"
 license=('cc-by-nc-sa')
