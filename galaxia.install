@@ -3,4 +3,5 @@ post_install() {
 	echo 'Y' | galaxia -s warp
 	printf "generating BHTree files for disc with nowarp\n"
 	echo 'Y' | galaxia -s nowarp
+	return 0
 }
