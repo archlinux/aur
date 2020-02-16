@@ -1,0 +1,14 @@
+pkgbase = python2-pyinotify
+	pkgdesc = Python module used for monitoring filesystems events on Linux platforms with inotify.
+	pkgver = 0.9.6
+	pkgrel = 7
+	url = https://github.com/seb-m/pyinotify
+	arch = any
+	license = custom:MIT
+	makedepends = python2
+	depends = python2
+	source = python2-pyinotify-0.9.6.tar.gz::https://github.com/seb-m/pyinotify/archive/0.9.6.tar.gz
+	sha256sums = 7943f198c5cef2bdc121d847937fbe565daaa7d4daaf1b8de8ef5689812f481c
+
+pkgname = python2-pyinotify
+
