@@ -80,9 +80,37 @@ source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
        choose-gcc-optimization.sh
        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
 
+# Archlinux patches
+_commits="
+          1533cd73061e99ed6dd58cba03da2b762a616a95
+          4dfbfe187c731b4f33e1a66e70ca10854e469527
+          4e64b7d1a9e63f7b9c1cecc8995e6fc1fed42e77
+          167299b5c1cc6f0c1274271aec0ab2b9fec01594
+          e3d3fd13d0ac1e12848b4f2a57e9e4bf2b557bf0
+          89678e8921d00143665237e719f96cfc8425f804
+          bfe34ef7e07d52ada331df8e1c5938906693b950
+          52bc26b084be047fbc485f711dc2b88c0a1b2923
+          513cbef093293a7f0e331eb4fee8e6a1bb9bf5a2
+          2029f44eb483a6ab7c0bc017cb699b7084f5eab4
+"
+for _patch in $_commits; do
+    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+done
+    
+
 sha256sums=('b7923cea2743bfe44511bd5d511d1eb748735f312d2cc9cd99e01c0082638ac4'
             '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
-            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
+            '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee'
+            '2eef809ec0a942261910a83fcd8ee28fc64105b7c7dee8370ad8f36bcfde1442'
+            '730c422db446f1fe89beb1f465fb1baa0acaeca4eda3a6a62bf4ea355938e75a'
+            'e59493e1f6e61298d80d7b53ee32359993cc9f9a82d05ef05de7d872404c1a78'
+            '9653c9310468c38fce09d5c6450965359f453c9ec64d04b8647aad3759539d06'
+            '6b8c563287b694efff91a65cff7fc3924e0468e6874b62dd5ace629e96c1394b'
+            '2fac1c411f5c33405226b294081107ec1d0e24c52f02651c6e674b9b34f08431'
+            '1e3ad73ede2a80e1052b7e66dcc2adec7f909038c77195c3ad59ad4e8f731f6c'
+            '277596368b8fe02704e5291a1ad043adad279e98216eb78d2c4f38c4a047a63b'
+            '6a9de6902bc97f201a5c32768e8a68a0e8f2639d2e1cfe86d8f01bc6fda1f221'
+            'dc46801624696fb8df0e9e5aed0f66e55e48dd03a5dfe6b04281ba810c79ce70')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
