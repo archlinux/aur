@@ -3,14 +3,14 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Ivailo Monev <xakepa10@gmail.com>
 
-_udev_ver=237
+_udev_ver=243
 
 pkgbase=eudev
 pkgname=( 'eudev' 'libeudev')
-pkgver=3.2.5
+pkgver=3.2.9
 pkgrel=1
 arch=('x86_64')
-url="http://www.gentoo.org/proj/en/eudev/"
+url="https://github.com/gentoo/eudev"
 license=('GPL')
 makedepends=('gobject-introspection' 'gperf' 'gtk-doc' 'intltool' 'kmod')
 options=('!libtool' '!staticlibs')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gentoo/eudev/archive/v${pkg
 	'initcpio_hooks'
 	'initcpio_install'
 	'udev-hwdb.hook')
-sha256sums=('870920011285b919fca5c60eaa5670312eeffe3883dd8cf564cd1179fc639336'
+sha256sums=('7d281276b480da3935d1acb239748c2c9db01a8043aad7e918ce57a223d8cd24'
             '892ce43218e0a458981bbce451252c8987dc398e60b8de288e7542b8f2409c13'
             '77dd1fd318b4456409aceb077f060b87944defb07cf39d29ad1968dc6f361875'
             '846e9ddbb95c8394ba7efe75107cc1308426921bc042f5d6b48fa4c2dcbac151')
