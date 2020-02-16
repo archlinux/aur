@@ -1,0 +1,4 @@
+post_install() {
+	printf "generating BHTree files for disc with warp\n"
+	galaxia -s warp
+}

@@ -1,0 +1,14 @@
+pkgbase = galaxia
+	pkgdesc = code written in C++ to generate a synthetic survey of the Milky Way
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = http://galaxia.sourceforge.net/
+	install = galaxia.install
+	arch = any
+	license = GPL3
+	depends = gcc-libs
+	source = https://phoenixnap.dl.sourceforge.net/project/galaxia/galaxia-0.7.2.tar.gz
+	md5sums = 0f1dec3a69bde5231f7082787ef99d30
+
+pkgname = galaxia
+
