@@ -1,7 +1,7 @@
 # Maintainer: Andy Botting <andy@andybotting.com>
 
 pkgname=python-designateclient
-pkgver='3.0.0'
+pkgver='3.1.0'
 pkgrel='1'
 pkgdesc='Python client library for Designate'
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python-cliff' 'python-debtcollector' 'python-jsonschema'
 checkdepends=('python-oslo-config' 'python-oslotest' 'python-requests-mock'
               'python-subunit')
 source=("https://github.com/openstack/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('15e1b74769924a94558329d982754b6f7442110312cbef47cd699942964dccbda7718b40932a0dd7bc67587792030f79ebc45bd22ee0c1e30eb0e651694ead85')
+sha512sums=('46f09e13cb632cd32eac171a9a7f3352d4179ce4accd6cd07b0df5e49b4e027a129fff53a78e04825d94a5be5ad60ea4a372440c0eb12a93d2bec96d93ea065d')
 
 export PBR_VERSION=$pkgver
 
