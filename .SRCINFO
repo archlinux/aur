@@ -40,7 +40,6 @@ pkgbase = casile-git
 	depends = remake
 	depends = rsync
 	depends = sile
-	depends = ttf-hack
 	depends = sqlite
 	depends = tex-gyre-fonts
 	depends = texlive-core
