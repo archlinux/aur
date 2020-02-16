@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-pkgver=5.4.14.zen1
+pkgver=5.5.4.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,9 +27,9 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '331c113d60a825af504f3e163209ae5b02fbdd9f7d142c7e20e81699b7210431'
-            '2c0c014d6b344b07db615146e94261b8051be85480c814d9460c0e5b64af776b'
-            '63a85f1cab572419633566560e0f615ddf845da0e497ca05d728c89ac6314738')
+            '7a607333e6ec115cb3d1330bc9f9eaf01305fb9907b324e0c85b1458c0612286'
+            '31ae60837b90feba277b182a9015e4df6e74fd660aba1a2841f49ecd57617559'
+            '334f3472adc0280614b278ead7375d3a982dc1b9310c1fc62bc8b8e96eb2b6d4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
