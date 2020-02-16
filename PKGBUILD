@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname=durian
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="items search tool and watcher for Path of Exile"
 url="http://thirdy.github.io/durian"
@@ -15,7 +15,7 @@ source=("https://github.com/thirdy/${pkgname}/releases/download/v${pkgver}/${pkg
         "icon-128x128.png"
         "durian.sh")
 
-sha256sums=('fa79f4479c4ad0b673cad47f8482f6fa9093db4e6031992caf100898bfdc1e17'
+sha256sums=('9f2d4dacf212f5be02e33f19c08cea15de159ec9e8717978e1107db939a84aff'
             '8535d56a223568ca05e5a84361d36e4269f9b7c176e93c8b5f6c0a0c4993be5c'
             '45ec0230d18832190bc1addcecaf9e4fd932b4bd60a7e28efce6ad298542866c')
 package() {
