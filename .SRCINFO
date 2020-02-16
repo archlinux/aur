@@ -1,0 +1,15 @@
+pkgbase = vlc-bittorrent-git
+	pkgdesc = A bittorrent plugin for VLC.
+	pkgver = v2.8.r1.g0d64665
+	pkgrel = 1
+	url = https://github.com/johang/vlc-bittorrent
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	depends = vlc
+	depends = libtorrent-rasterbar
+	source = git+https://github.com/johang/vlc-bittorrent.git
+	sha256sums = SKIP
+
+pkgname = vlc-bittorrent-git
+
