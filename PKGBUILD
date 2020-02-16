@@ -4,7 +4,7 @@ pkgdesc="High performance software library for parallel computing with an easy-t
 url='https://arrayfire.com'
 pkgver=3.7.0
 arch=('x86_64')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-mkl')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
@@ -59,4 +59,5 @@ package() {
   cd build
 
   DESTDIR="${pkgdir}/" ninja install
+  rm -r "${pkgdir}"/usr/LICENSES
 }
