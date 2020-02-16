@@ -1,0 +1,29 @@
+pkgbase = ros-melodic-rotors-joy-interface
+	pkgdesc = ROS - The rotors_joy_interface package to control MAVs with a joystick
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://wiki.ros.org/rotors_joy_interface
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = ASL 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-mav-msgs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-trajectory-msgs
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-mav-msgs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-trajectory-msgs
+	source = ros-melodic-rotors-joy-interface-2.2.3.tar.gz::https://github.com/ethz-asl/rotors_simulator/archive/2.2.3.tar.gz
+	sha256sums = 46e6be40ebd08ba41a4a532c1774228d240d11aa39ad82f9ab50e445dc4a6f20
+
+pkgname = ros-melodic-rotors-joy-interface
+
