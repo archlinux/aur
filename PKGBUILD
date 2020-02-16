@@ -30,7 +30,7 @@ build() {
 	-DCMAKE_INSTALL_LIBDIR="lib" \
 	-DCMAKE_INSTALL_LIBEXECDIR="/usr/lib" \
 	-DBASH_COMPLETION_COMPLETIONSDIR="/usr/share/bash-completion/completions" \
-	-DZSH_COMPLETION_COMPLETIONSDIR="/usr/share/zsh/functions/Completion/Unix" \
+	-DZSH_COMPLETION_COMPLETIONSDIR="/usr/share/zsh/site-functions" \
 	-DKIM_API_BUILD_EXAMPLES=ON
   make
 }
