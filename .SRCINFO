@@ -1,0 +1,14 @@
+pkgbase = obs-cli
+	pkgdesc = OBS-cli is a command-line remote control for OBS
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/muesli/obs-cli
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	source = https://github.com/muesli/obs-cli/archive/v0.1.0.tar.gz
+	sha256sums = fdf82fe31ca743696283c454bb423aeb4e87162626b0838639bbf3dec07210c0
+
+pkgname = obs-cli
+
