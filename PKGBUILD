@@ -1,8 +1,8 @@
 # Maintainer: Allen Wild <allenwild93@gmail.com>
 # Contributor: Matt Coffin <mcoffin13@gmail.com>
 pkgname=bossa-git
-pkgver=1.9.1.r8.g8202074
-pkgrel=3
+pkgver=1.9.1.r14.g3532de8
+pkgrel=1
 pkgdesc="Flash programming utility for Atmel's SAM family of flash-based ARM microcontrollers"
 arch=('i686' 'x86_64')
 url="https://github.com/shumatech/BOSSA"
@@ -11,10 +11,8 @@ makedepends=('git')
 depends=('readline' 'wxgtk')
 provides=('bossa')
 conflicts=('bossa')
-source=("git://github.com/shumatech/BOSSA"
-        "arduino-reset.patch::https://github.com/shumatech/BOSSA/pull/78.patch")
-sha256sums=('SKIP'
-            'da2571b32da6dd7212654efb96aa7f17a80790e695118f8a13847ffca62de294')
+source=("git://github.com/shumatech/BOSSA")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/BOSSA"
@@ -23,7 +21,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/BOSSA"
-  patch -Np1 -i "$srcdir/arduino-reset.patch"
 }
 
 build() {

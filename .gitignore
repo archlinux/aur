@@ -1,8 +1,6 @@
-/arduino-reset.patch
-/version-option.patch
 /pkg/
 /src/
 /BOSSA/
-*.pkg.tar.xz
+*.pkg.tar*
 *.swp
 *~
