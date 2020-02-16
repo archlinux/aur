@@ -1,7 +1,7 @@
 pkgbase = megaman-rocknroll
 	pkgdesc = MegaMan based fan game made with Godot
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dennisengelhard.com/rock-n-roll/
 	install = megaman-rocknroll.install
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = megaman-rocknroll
 	depends = lz4
 	depends = systemd-libs
 	depends = xz
-	source = https://dennisengelhard.files.wordpress.com/2020/02/megaman_rocknroll_linux_1.2.zip
+	source = https://dennisengelhard.files.wordpress.com/2020/02/megaman_rocknroll_linux1.2.zip
 	source = megaman-rocknroll.desktop
 	source = mmrnr.png
 	sha256sums = b3a77e09ecda0b49538403e294af8a92e04f46b746d99eae7466b858f0d35eb8

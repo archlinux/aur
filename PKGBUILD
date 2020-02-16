@@ -1,7 +1,7 @@
 # Maintainer: Michael Roth <mail.michael.roth+aur@gmail.com>
 pkgname=megaman-rocknroll
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 
 pkgdesc="MegaMan based fan game made with Godot"
 url="https://dennisengelhard.com/rock-n-roll/"
@@ -16,7 +16,7 @@ install=megaman-rocknroll.install
 
 depends=('alsa-lib' 'dbus' 'flac' 'gcc-libs' 'glibc' 'libasyncns' 'libgcrypt' 'libglvnd' 'libgpg-error' 'libogg' 'libpulse' 'libsndfile' 'libvorbis' 'libxau' 'libxcb' 'libxcursor' 'libxdmcp' 'libxext' 'libxfixes' 'libxinerama' 'libxrandr' 'libxrender' 'lz4' 'systemd-libs' 'xz')
 
-source=("https://dennisengelhard.files.wordpress.com/2020/02/megaman_rocknroll_linux_${pkgver}.zip"
+source=("https://dennisengelhard.files.wordpress.com/2020/02/megaman_rocknroll_linux1.2.zip"
          megaman-rocknroll.desktop
          mmrnr.png
 )
