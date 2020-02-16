@@ -1,12 +1,15 @@
 # Maintainer: JustKidding <jk@vin.ovh>
-# Derived from PKGBUILD for chromium
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-ozone
+pkgver=80.0.3987.106
+pkgrel=1
 _pkgname=ungoogled-chromium
-pkgver=80.0.3987.87
-pkgrel=2
 _launcher_ver=6
-_ungoogled_ver=80.0.3987.87-2
+_ungoogled_ver=80.0.3987.106-1
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -25,16 +28,9 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-intel-driver: for hardware video acceleration with Intel GPUs (<= Haswell)'
             'libva-mesa-driver: for hardware video acceleration with AMD/ATI GPUs'
             'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
-provides=('chromium')
-conflicts=('chromium')
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz
+install=chromium.install
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        'ungoogled-chromium.zip::https://github.com/Eloston/ungoogled-chromium/archive/80.0.3987.87-2.zip'
-        0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
-        flags.archlinux.gn
-        chromium-drirc-disable-10bpc-color-configs.conf
-        vaapi-fix.patch
-        fix-vaapi-ozone-build.patch
         cros-search-service-Include-cmath-for-std-pow.patch
         move-RemoteTreeNode-declaration.patch
         sync-enable-USSPasswords-by-default.patch
@@ -42,19 +38,20 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-building-with-system-zlib.patch
         remove-verbose-logging-in-local-unique-font-matching.patch
         fix-building-with-unbundled-libxml.patch
-        fix-browser-frame-view-not-getting-a-relayout.patch
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
-        chromium-skia-harmony.patch)
-sha256sums=('f51f6fca5d9abbef855aa6b5bf427410c6e96ae58b64a7d45f843868cfb0ac8e'
+        chromium-skia-harmony.patch
+        # -----------
+        $_pkgname-$_ungoogled_ver.zip::https://github.com/Eloston/ungoogled-chromium/archive/$_ungoogled_ver.zip
+        flags.archlinux.gn
+        chromium-drirc-disable-10bpc-color-configs.conf
+        vaapi-fix.patch
+        vaapi-fix-wayland-init.patch
+        0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
+        fix-vaapi-ozone-build.patch)
+sha256sums=('2ead924b4414a8a5f085fa0e0df56563ef41bd4290cc403c05d5beec238cbe82'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'SKIP'
-            'd8a57adf4b3106ab4d7ecdf5b050e02b87901b61c33cfa8810a7143c483e1fe4'
-            '53e8a314da1f33b99d4286cc3c2e4cb2d43132b75af8a282414fda950bd493e9'
-            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
-            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
-            '9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094'
             '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
             '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
             '08ef82476780e0864b5bf7f20eb19db320e73b9a5d4f595351e12e97dda8746f'
@@ -62,11 +59,21 @@ sha256sums=('f51f6fca5d9abbef855aa6b5bf427410c6e96ae58b64a7d45f843868cfb0ac8e'
             '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
-            '5db225565336a3d9b9e9f341281680433c0b7bb343dff2698b2acffd86585cbe'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            # -----------
+            '27bc03aeabfed83f5d2009a8ac4a7576f4d60af648ef4472ef500040da2100d7'
+            '53e8a314da1f33b99d4286cc3c2e4cb2d43132b75af8a282414fda950bd493e9'
+            'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
+            '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
+            'a4c022263b474ae14abd899b8e453f7d9ed9c0715b0b248b8a423aa2777095c4'
+            'd8a57adf4b3106ab4d7ecdf5b050e02b87901b61c33cfa8810a7143c483e1fe4'
+            '9aebd800e5fe191cd5f4bd82c33419eefdd80919e6c6f5a3a9346a224625f094')
+provides=('chromium')
+conflicts=('chromium')
+
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
@@ -96,7 +103,7 @@ _unwanted_bundled_libs=(
 depends+=(${_system_libs[@]})
 
 prepare() {
-  cd "$srcdir/chromium-${pkgver}"
+  cd "$srcdir/chromium-$pkgver"
 
   # Allow building against system libraries in official builds
   sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
@@ -107,17 +114,6 @@ prepare() {
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
-
-  msg2 'Applying archlinux patches'
-
-  # Fix VA-API on Intel and Nvidia
-  patch -Np1 -i ../vaapi-fix.patch
-
-  # Fix vaapi linkage error
-  patch -Np1 -i ../fix-vaapi-ozone-build.patch
-
-  # build fixes
-  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
 
   # https://crbug.com/957519
   patch -Np1 -i ../cros-search-service-Include-cmath-for-std-pow.patch
@@ -138,9 +134,6 @@ prepare() {
   # https://crbug.com/1043042
   patch -Np1 -i ../fix-building-with-unbundled-libxml.patch
 
-  # https://crbug.com/1046122
-  patch -Np1 -i ../fix-browser-frame-view-not-getting-a-relayout.patch
-
   # https://crbug.com/1049258
   patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
   patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
@@ -151,6 +144,15 @@ prepare() {
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
+
+  # Fix VA-API on Intel and Nvidia
+  patch -Np1 -i ../vaapi-fix.patch
+
+  # Fix vaapi linkage error
+  patch -Np1 -i ../fix-vaapi-ozone-build.patch
+
+  # build fixes
+  patch -Np1 -i ../0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
 
   # Ungoogled chromium stuff
   _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
@@ -189,7 +191,7 @@ prepare() {
 build() {
   make -C chromium-launcher-$_launcher_ver
 
-  cd "$srcdir/chromium-${pkgver}"
+  cd "$srcdir/chromium-$pkgver"
 
   if check_buildoption ccache y; then
     # Avoid falling back to preprocessor mode when sources contain time macros
@@ -201,19 +203,17 @@ build() {
   export AR=ar
   export NM=nm
 
-  # Ungoogled Chromium stuff
-  _ungoogled_repo="$srcdir/$_pkgname-$_ungoogled_ver"
-  nproc=$(nproc)
+  _ungoogled_repo="$srcdir/ungoogled-chromium-$_ungoogled_ver"
   mkdir -p out/Release
   # Assemble GN flags
   cp "$_ungoogled_repo/flags.gn" "out/Release/args.gn"
   printf '\n' >> "out/Release/args.gn"
   cat "$srcdir/flags.archlinux.gn" >> "out/Release/args.gn"
-  
+
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
   fi
-  
+
   if check_option strip y; then
     _flags+=('symbol_level=0')
   fi
@@ -237,14 +237,14 @@ package() {
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/chromium/LICENSE.launcher"
 
-  cd "$srcdir/chromium-${pkgver}"
+  cd "$srcdir/chromium-$pkgver"
+
+  install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
+    "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
-  
-  install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
-    "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
 
   install -Dm644 chrome/installer/linux/common/desktop.template \
     "$pkgdir/usr/share/applications/chromium.desktop"
