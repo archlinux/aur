@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.31.0.r24.g99700bc52c
+pkgver=0.32.0.r99.ga4b12c54b6
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -111,7 +111,6 @@ build() {
         '--enable-sdl2-video'
         '--disable-cocoa'
         '--enable-drm'
-        '--enable-drmprime'
         '--enable-gbm'
         '--enable-wayland-scanner'
         '--enable-wayland-protocols'
