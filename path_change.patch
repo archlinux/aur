@@ -1,5 +1,5 @@
-31c31
-<     sys.path.insert(0, path.abspath(path.join(path.dirname(__file__), '..')))
+12c12
+<     sys.path.insert(0, path)
 ---
 >     sys.path.insert(0,'/usr/share/karma')
 

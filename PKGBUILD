@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=karma-git
 _pkgname=karma
-pkgver=r22.4311af4
+pkgver=r26.7cddd82
 pkgrel=1
 pkgdesc="Search of Emails and Passwords on Pwndb"
 arch=('any')
@@ -15,7 +15,7 @@ install=
 source=("${_pkgname}::git+https://github.com/decoxviii/karma.git"
 	"path_change.patch")
 sha256sums=('SKIP'
-            '1c10f1eb45312b46c526d560d4d2e2842de2e86065cb9d3a8938189e96838a20')
+            '9bb89f46926ee4822019640f7b5823eb8776d7ea84b99162e8256eab18dd47de')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -26,22 +26,11 @@ pkgver() {
 prepare() {
   cd "${srcdir}"
   # Adjust path declaration
-  patch -i path_change.patch "${_pkgname}/bin/karma.py"
+  patch -i path_change.patch "${_pkgname}/bin/karma"
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-
-  # main prog
-  #install -Dm755 "bin/karma.py" "${pkgdir}/usr/share/${_pkgname}/bin/karma.py"
-  install -Dm755 "bin/karma.py" "${pkgdir}/usr/bin/karma.py"
-  install -Dm644 "karma/__init__.py" "${pkgdir}/usr/share/${_pkgname}/karma/__init__.py"
-  install -Dm644 "karma/core.py" "${pkgdir}/usr/share/${_pkgname}/karma/core.py"
-  install -Dm644 "karma/banner.py" "${pkgdir}/usr/share/${_pkgname}/karma/banner.py"
-
-  # misc philes
-  install -Dm644 "README.md" "${pkgdir}/usr/share/${_pkgname}/README.md"
-  install -Dm644 "requirements.txt" "${pkgdir}/usr/share/${_pkgname}/requirements.txt"
-  install -Dm644 "screenshot.png" "${pkgdir}/usr/share/${_pkgname}/screenshot.png"
+  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
 }
 
