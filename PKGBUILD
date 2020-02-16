@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.4.3'
 _recipescommit='3dcb305ffb706a7604cdfbadf7f2d2e236cb223d'
 _internalservercommit='c39e8b45a51387f24d30e62a170681fc3422ad08'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -90,8 +90,8 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	install -Dm644 'out/linux-unpacked/resources/app.asar' "$pkgdir/usr/lib/$pkgname/app.asar"
-	install -dm755 "$pkgdir/usr/lib/$pkgname/resources/app.asar.unpacked/"
-	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$pkgname/resources/app.asar.unpacked/recipes/"
+	install -dm755 "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
+	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/recipes/"
 
 	install -Dm755 "../$pkgname.sh" "$pkgdir/usr/bin/ferdi"
 
