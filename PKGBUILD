@@ -1,7 +1,7 @@
 # Maintainer: Mark Wells (halfhorn) com dot gmail at mwellsa
 pkgname=galaxia
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="code written in C++ to generate a synthetic survey of the Milky Way"
 arch=('any')
