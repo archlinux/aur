@@ -1,7 +1,7 @@
 # Maintainer: liberodark
 
 pkgname=editrocket
-pkgver=4.5.0
+pkgver=4.5.5
 pkgrel=1
 pkgdesc="The Text and Source Code Editor for Programmers"
 arch=('x86_64')
