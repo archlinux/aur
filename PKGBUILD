@@ -1,7 +1,7 @@
 # Maintainer: Maxim Baz <$pkgname at maximbaz dot com>
 
 pkgname=rebuild-detector
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc='Detects which packages need to be rebuilt'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('parallel' 'pacutils' 'pacman-contrib')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::https://github.com/maximbaz/${pkgname}/releases/download/${pkgver}/${pkgname}.tar.gz.sig")
-sha256sums=('86d7b45fa9eee754588683443b91039662e291ae5ca5a5dc9a360fbb234defba'
+sha256sums=('8b21fcb4767e49bd845fd32a5166e35fdeb6d886fbcc60c12dabf582367dc9a7'
             'SKIP')
 validpgpkeys=('EB4F9E5A60D32232BB52150C12C87A28FEAC6B20')
 
