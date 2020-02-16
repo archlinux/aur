@@ -1,27 +1,24 @@
 pkgbase = ferdi
-	pkgdesc = Ferdi is a messaging browser that allows you to combine your favorite messaging services into one application.
-	pkgver = 5.4.1_beta.4
+	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application
+	pkgver = 5.4.3
 	pkgrel = 1
-	url = https://getferdi.com/
+	url = https://getferdi.com
 	arch = x86_64
 	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = Apache
-	makedepends = expac
-	makedepends = git
 	makedepends = npm
-	makedepends = python2
 	depends = electron
-	conflicts = ferdi-git
-	source = git+https://github.com/getferdi/ferdi#tag=v5.4.1-beta.4
-	source = git+https://github.com/getferdi/recipes#commit=ecf037c
-	source = git+https://github.com/getferdi/internal-server#commit=cca6cd9
+	source = ferdi-5.4.3-1.tar.gz::https://github.com/getferdi/ferdi/archive/v5.4.3.tar.gz
+	source = ferdi-5.4.3-1-recipes.tar.gz::https://github.com/getferdi/recipes/archive/f6da5d54280e5156c46c295ad48d6cdcd5e10bb8.zip
+	source = ferdi-5.4.3-1-internal-server.tar.gz::https://github.com/getferdi/internal-server/archive/24c8ea3aad5b828297686a032103d2cc4eabc373.zip
 	source = ferdi.desktop
 	source = ferdi.sh
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
+	sha256sums = 5b76514a103a46c9c3c578a474de28b9d5ba4140122cd0950cfe02b9b8e2c84f
+	sha256sums = 3524ac90ec0087af47bbdeb4de666d5eb0e8e6558e719cbf34f6737669a8d184
+	sha256sums = 48e60f9cf26da82e3836b782ffb9718018f041dadfa25abb3f9825a514326e9b
+	sha256sums = 5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53
+	sha256sums = 3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5
 
 pkgname = ferdi
-
