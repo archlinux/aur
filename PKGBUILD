@@ -8,7 +8,7 @@
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.83.r92593.09122883b2a
+pkgver=2.83.r93435.819af2094b2
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -35,6 +35,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         blender-2.8.desktop
         SelectCudaComputeArch.patch
+        osl.patch
         )
 md5sums=('SKIP'
          'SKIP'
@@ -42,7 +43,8 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'cd108dca1c77607c6a7cc45aa284ea97'
-         '4441d9a6db38b85b7dc5c3c9e6872951')
+         '4441d9a6db38b85b7dc5c3c9e6872951'
+         '3cac70b24bcf8866c45fb84350f25835')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -56,6 +58,7 @@ prepare() {
   if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
     git apply -v ${srcdir}/SelectCudaComputeArch.patch
   fi
+  git apply -v ${srcdir}/osl.patch
 }
 
 build() {
@@ -89,6 +92,7 @@ build() {
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_PYTHON_INSTALL=OFF \
         -DPYTHON_VERSION=${_pyver} \
+        -DOSL_SHADER_DIR:PATH=/usr/share/OSL/shaders \
         ${_EXTRAOPTS[@]}
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
   ((DISABLE_NINJA)) && make || ninja $([ -v MAKEFLAGS ] || echo -j1) -d stats
