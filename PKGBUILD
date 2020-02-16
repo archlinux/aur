@@ -11,6 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("ftp://ftp.tvdr.de/vdr/${pkgbase}-${pkgver}.tar.bz2"
+        "$pkgbase-$pkgver-glibc-2.31.patch::https://patch-diff.githubusercontent.com/raw/VDR4Arch/vdr/pull/1.patch"
         'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -20,6 +21,7 @@ source=("ftp://ftp.tvdr.de/vdr/${pkgbase}-${pkgver}.tar.bz2"
         'vdr.service'
         'vdr.sysuser')
 md5sums=('b2897fe6b6e6711d512a69642b1b8ec1'
+         '1dedc6c9eeeeb28a4d44cf4f726c4419'
          '292e065582d97ed1ae4977a2a7b6091d'
          'de3dcdea1a4282211c6dac370019548b'
          'fc450f75037b8712673db4969a1dd758'
@@ -44,6 +46,9 @@ prepare() {
 
   # Custom extensions
   patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"
+
+  # glibc 2.31 fix
+  patch -p1 -i "$srcdir/$pkgbase-$pkgver-glibc-2.31.patch"
 
   # Don't install plugins with VDR
   sed -i '/^install: /s/install-plugins //' Makefile
