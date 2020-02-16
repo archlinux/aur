@@ -2,17 +2,16 @@ pkgbase = gtk-layer-shell
 	pkgdesc = Library to create Wayland desktop components using the Layer Shell protocol
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/wmww/gtk-layer-shell
 	arch = x86_64
-	license = custom:MIT
+	license = MIT
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
 	makedepends = meson
 	makedepends = ninja
-	makedepends = gobject-introspection
-	depends = wayland
 	depends = gtk3
-	source = https://github.com/wmww/gtk-layer-shell/releases/download/v0.1.0/gtk-layer-shell-0.1.0.tar.xz
-	sha256sums = 752842ade62b5d0745279049393d71e1fae943ceac4973aef9f43bf0c7a49359
-	sha512sums = 3788559405a495d43279b20b9d64e1fb0fb9be4125eb3011a623565938246310c2e81cb6d52db111e42a9cd0739bb273ccf7fcb7c52db8b74a1e44108e061c6d
+	depends = wayland
+	source = gtk-layer-shell-0.1.0.tar.gz::https://github.com/wmww/gtk-layer-shell/archive/v0.1.0.tar.gz
+	sha512sums = 813ae86939d4bb300e78197a09fe7e4ccda9e2e6c008b72fa45d0a5be311ade1762af31835d3e7fea00f49a438f7ad37d3e57c84e0a2ebbbf58e807048c072da
 
 pkgname = gtk-layer-shell
 
