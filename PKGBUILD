@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('allegro')
 makedepends=('cmake' 'surgescript')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/alemart/opensurge/archive/v$pkgver.tar.gz")
-sha256sums=('dfb598be9feb5a1abbd1217f386e934c43dad4efe423190a8950820ba109e209')
+sha256sums=('d060e3215231741ce0b4e5b897af52f8755c57660c8a33856bf921c83af18ba2')
 
 build() {
   cd $pkgname-$pkgver
