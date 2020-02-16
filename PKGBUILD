@@ -5,8 +5,8 @@ _extname_lowercase="${_extname,,}"
 _pkgname_base="mediawiki-extension-${_extname_lowercase}"
 
 pkgname="${_pkgname_base}-git"
-pkgver=r126.5c4546b
-pkgrel=1
+pkgver=r142.155fa9b
+pkgrel=2
 pkgdesc="MediaWiki extension for LDAP authentication"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Extension:${_extname}"
@@ -22,6 +22,13 @@ pkgver()
 {
 	cd "${_extname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare()
+{
+	cd "${_extname}"
+	sed -Ei 's|/etc/mediawiki|/etc/webapps/mediawiki|g' extension.json
+	sed -Ei 's|/etc/mediawiki|/etc/webapps/mediawiki|g' README.mediawiki
 }
 
 package()
