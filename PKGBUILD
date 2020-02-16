@@ -11,7 +11,7 @@ pkgdesc="Python module that allows merging a series of JSON documents into a sin
 url="https://github.com/avian2/jsonmerge"
 license=('MIT')
 
-depends=()
+depends=(python python-jsonschema)
 makedepends=(python-setuptools)
 
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
