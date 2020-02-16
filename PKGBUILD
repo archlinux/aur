@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Language and environment for statistical computing and graphics, linked to the Intel(R) MKL."
 arch=('x86_64')
 license=('GPL')
@@ -154,7 +154,7 @@ build() {
     LIBnn=lib
 
   # Place Intel's basic math library prior to GLIBC libm
-  sed -i "s/\(^\| \)-lm\( \|$\)/\1-limf -lm\2/g" {./,etc/}Makeconf
+  # sed -i "s/\(^\| \)-lm\( \|$\)/\1-limf -lm\2/g" {./,etc/}Makeconf
 
   # Build the package
   make
