@@ -1,7 +1,7 @@
 # Maintainer: Arthur Williams <taaparthur at gmail dot com>
 pkgname='mpxmanager'
 pkgver='1.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A MPX/Xi2 aware window manager'
 arch=('any')
 url="github.com/TAAPArthur/MPXManager"

@@ -1,6 +1,6 @@
 pkgbase = mpxmanager
 	pkgdesc = A MPX/Xi2 aware window manager
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = github.com/TAAPArthur/MPXManager
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = mpxmanager
 	optdepends = xorg-server-xvfb: testing
 	options = staticlibs
 	options = !strip
-	source = mpxmanager-1.1.0.tar.gz::https://github.com/TAAPArthur/MPXManager/archive/1.1.0.tar.gz
-	md5sums = c242af6c10a1826125c7f497cead860d
+	source = mpxmanager-1.2.0.tar.gz::https://github.com/TAAPArthur/MPXManager/archive/1.2.0.tar.gz
+	md5sums = cb250cf3519f48f8b355a3b87dd94001
 
 pkgname = mpxmanager
 
