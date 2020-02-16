@@ -1,7 +1,7 @@
 pkgbase = octoprint
 	pkgdesc = Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)
 	pkgver = 1.3.12
-	pkgrel = 3
+	pkgrel = 4
 	url = http://octoprint.org/
 	install = octoprint.install
 	arch = any
@@ -13,16 +13,13 @@ pkgbase = octoprint
 	depends = python2-blinker
 	depends = python2-chardet
 	depends = python2-feedparser
-	depends = python2-frozendict
 	depends = python2-idna
 	depends = python2-itsdangerous
 	depends = python2-markdown
 	depends = python2-markupsafe
-	depends = python2-netaddr
 	depends = python2-netifaces>=0.10.6
 	depends = python2-netifaces<0.11
 	depends = python2-pathtools
-	depends = python2-pkginfo
 	depends = python2-psutil
 	depends = python2-pyasn1
 	depends = python2-pyserial
@@ -44,7 +41,7 @@ pkgbase = octoprint
 	options = !distcc
 	options = !ccache
 	backup = etc/conf.d/octoprint
-	source = octoprint::git+https://github.com/foosel/OctoPrint.git
+	source = octoprint::git+https://github.com/foosel/OctoPrint.git#tag=1.3.12
 	source = octoprint.sysusers
 	source = octoprint.service
 	source = octoprint-serve

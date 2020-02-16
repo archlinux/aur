@@ -2,7 +2,7 @@
 
 pkgname=octoprint
 pkgver=1.3.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Responsive web interface for controlling a 3D printer (RepRap, Ultimaker, ...)"
 arch=(any)
 url="http://octoprint.org/"
@@ -14,16 +14,13 @@ depends=(
 		python2-blinker
 		python2-chardet
 		python2-feedparser
-		python2-frozendict
 		python2-idna
 		python2-itsdangerous
 		python2-markdown
 		python2-markupsafe
-		python2-netaddr
 		'python2-netifaces>=0.10.6'
 		'python2-netifaces<0.11'
 		python2-pathtools
-		python2-pkginfo
 		python2-psutil
 		python2-pyasn1
 		python2-pyserial
@@ -47,7 +44,7 @@ provides=(octoprint)
 conflicts=('octoprint-venv')
 install=octoprint.install
 backup=(etc/conf.d/octoprint)
-source=($pkgname::git+https://github.com/foosel/OctoPrint.git
+source=("$pkgname::git+https://github.com/foosel/OctoPrint.git#tag=$pkgver"
 		octoprint.sysusers
 		octoprint.service
 		octoprint-serve
@@ -63,7 +60,6 @@ sha256sums=('SKIP'
 prepare()
 {
 	cd $srcdir/$pkgname
-	git checkout -q $pkgver
 
 	for s in ${source[@]}; do
 		case $s in
