@@ -1,10 +1,12 @@
 pkgbase = strcase-git
 	pkgdesc = Multiway branch (switch) for short strings in C (in one header file)
-	pkgver = r10.7e3be3c
-	pkgrel = 2
+	pkgver = r12.ba6e574
+	pkgrel = 1
 	url = https://github.com/rd235/strcase
 	arch = any
-	license = GPL2
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
 	provides = strcase
 	conflicts = strcase
 	source = git+https://github.com/rd235/strcase.git

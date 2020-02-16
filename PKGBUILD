@@ -3,12 +3,13 @@
 _pkgname="strcase"
 
 pkgname="$_pkgname-git"
-pkgver=r10.7e3be3c
-pkgrel=2
+pkgver=r12.ba6e574
+pkgrel=1
 pkgdesc="Multiway branch (switch) for short strings in C (in one header file)"
 arch=('any')
 url="https://github.com/rd235/$_pkgname"
-license=('GPL2')
+license=('LGPL')
+makedepends=('git' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url.git")
@@ -27,6 +28,4 @@ build() {
 package() {
 	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
-	mkdir "$pkgdir"/usr/share
-	mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
 }
