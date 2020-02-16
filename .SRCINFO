@@ -1,6 +1,6 @@
 pkgbase = shen-sbcl
 	pkgdesc = A portable functional programming language (SBCL port)
-	pkgver = 2.7.0
+	pkgver = 3.0.3
 	pkgrel = 1
 	epoch = 1
 	url = http://www.shenlanguage.org/
@@ -10,8 +10,10 @@ pkgbase = shen-sbcl
 	depends = zlib
 	provides = shen
 	options = !strip
-	source = https://github.com/Shen-Language/shen-cl/archive/v2.7.0.tar.gz
-	sha512sums = b25530deef6a56d3ad90203c92cb894a7e25bf1b4620bf31b812c9da3ee4450dc548cd7c0df0d1c141133030dbcac8ae513b10f7cbc9f0857e7c8b2bb465872e
+	source = https://github.com/Shen-Language/shen-cl/archive/v3.0.3.tar.gz
+	source = https://github.com/Shen-Language/shen-cl/releases/download/v3.0.3/shen-cl-v3.0.3-linux-prebuilt.tar.gz
+	sha512sums = da7e3bae598f14b8713c07d880ea7cadd7fe6bf70df4ca8fdaaf2023b5b7f86be232336eea3e5fd1104209e8b97d31d3063e4d59aeb2c2be9b2ee8022270b411
+	sha512sums = 6944180f0662a672e4b6093a7ae5be63d5bdef1d0b633abb1ec18ef289b218c7d26ede784d6c5d1fcef03cf817b0b2a1166a91401c4d0e5fd7f465420e274fef
 
 pkgname = shen-sbcl
 
