@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=BooktabZ
-Comment=BooktabZ book reader
-Keywords=educational;
-TryExec=/usr/bin/booktab_launcher
-Exec=/usr/bin/booktab_launcher
-Icon=/usr/share/duDat/BooktabZ/booktab_icon_144x144.png
-Type=Application
-StartupNotify=true
