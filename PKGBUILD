@@ -2,7 +2,7 @@
 
 pkgname=mcmojave-kde-theme-git
 _gitname=McMojave-kde
-pkgver=r28.ed26d62
+pkgver=r49.70f1741
 pkgrel=1
 pkgdesc="MacOSX Mojave like theme for KDE Plasma "
 arch=('any')
@@ -22,8 +22,8 @@ pkgver() {
 }
 
 package() {
-   mkdir -p ${pkgdir}/usr/share/aurorae
-   cp -r  ${srcdir}/${_gitname}/aurorae ${pkgdir}/usr/share
+   mkdir -p ${pkgdir}/usr/share/aurorae/themes/{McMojave,McMojave-1.5x,McMojave-2.0x,McMojave-light}
+   cp -r  ${srcdir}/${_gitname}/aurorae/* ${pkgdir}/usr/share/aurorae/themes
    
    mkdir -p ${pkgdir}/usr/share/color-schemes
    cp -r ${srcdir}/${_gitname}/color-schemes ${pkgdir}/usr/share
