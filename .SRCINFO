@@ -1,0 +1,12 @@
+pkgbase = hid-flash
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/Serasidis/STM32_HID_Bootloader
+	arch = x86_64
+	license = GPL3
+	depends = libusb
+	source = https://github.com/Serasidis/STM32_HID_Bootloader/archive/2.2.2.tar.gz
+	sha256sums = 5e0c1ab26beba27e5ab9c5aa041c53759029e6fea031f01bb7c32b1d9be5ecff
+
+pkgname = hid-flash
+
