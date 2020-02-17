@@ -1,36 +1,44 @@
-# Maintainer: GI_Jack <GI_Jack@hackermail.com>
+# Maintainer  : Kr1ss $(echo \<kr1ss+x-yandex+com\>|sed s/\+/./g\;s/\-/@/)
+# Contributor : GI_Jack <GI_Jack@hackermail.com>
+
+
 pkgname=karma-git
 _pkgname=karma
-pkgver=r26.7cddd82
+
+epoch=1
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
+pkgver=v1.0.0.r23.7cddd82
 pkgrel=1
-pkgdesc="Search of Emails and Passwords on Pwndb"
+
+pkgdesc='Search of Emails and Passwords on Pwndb'
 arch=('any')
 url="https://github.com/decoxviii/karma"
 license=('MIT')
-depends=('python' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
+
 makedepends=('git')
-provides=("karma")
-conflicts=("karma")
-install=
-source=("${_pkgname}::git+https://github.com/decoxviii/karma.git"
-	"path_change.patch")
-sha256sums=('SKIP'
-            '9bb89f46926ee4822019640f7b5823eb8776d7ea84b99162e8256eab18dd47de')
+depends=('python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
 
-pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  # Git, no tags available
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 
-prepare() {
-  cd "${srcdir}"
-  # Adjust path declaration
-  patch -i path_change.patch "${_pkgname}/bin/karma"
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+
+build() {
+  cd "$_pkgname"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+  cd "$_pkgname"
+  python setup.py install -O1 --skip-build --root="$pkgdir"
+  install -Dm644 README.md -t"$pkgdir/usr/share/doc/$_pkgname/"
+  install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/$_pkgname/"
 }
 
+
+# vim: ts=2 sw=2 et ft=PKGBUILD:
