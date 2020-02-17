@@ -15,6 +15,7 @@ pkgbase = kdeconnect-bluetooth
 	depends = kpeoplevcard
 	depends = pulseaudio-qt
 	depends = kirigami2
+	depends = bluez-qt
 	optdepends = sshfs: remote filesystem browser
 	optdepends = python-nautilus: Nautilus integration
 	optdepends = bluez: Basic bluetooth support
