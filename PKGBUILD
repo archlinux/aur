@@ -2,7 +2,7 @@
 
 _pkgname=timekpr
 pkgname=$_pkgname-next
-pkgver=0.2.9
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in."
 arch=('any')
@@ -18,7 +18,7 @@ provides=('timekpr')
 conflicts=('timekpr' 'timekpr-next-beta' 'timekpr-beta' 'timekpr-revived-bzr' 'timekpr-next-git')
 source=("https://launchpad.net/timekpr-next/stable/$pkgver/+download/timekpr-next-$pkgver.tar.gz")
 install='timekpr-next.install'
-md5sums=('1a37b78d198e3ff9bcf06dd5db4b9849')
+md5sums=('f841b32d79dc744ae7b47f70671a296a')
 
 package() {
 	cd "$pkgname"
