@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.6.2.r12.g391f1f7
+pkgver=1.6.2.r18.g3df5f9f
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -22,13 +22,11 @@ changelog="${pkgname}.Changelog"
 _srcdir="${pkgname%-git}"
 source=(
   'git+https://github.com/DisplayLink/evdi'
-  'https://crazy.dev.frugalware.org/evdi-all-in-one-fixes.patch'
+  #'https://crazy.dev.frugalware.org/evdi-all-in-one-fixes.patch'
   #'relro.patch'
 )
-md5sums=('SKIP'
-         '7f6104e6e8df04574b2bf1f12d9a51ee')
-sha256sums=('SKIP'
-            '211f791455046c580277a86dfc129255268c033f87eee93bc0e72569f1df8aa8')
+md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   set -u
@@ -50,7 +48,7 @@ prepare() {
   done
 
   # Fix build for kernel 5.4
-  sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i 'module/Makefile'
+  #sed -E -e 's:SUBDIRS=([^ ]+) :M=\1 &:g' -i 'module/Makefile'
   set +u
 }
 
