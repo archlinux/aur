@@ -1,12 +1,15 @@
-pkgname=('alacritty-git' 'alacritty-terminfo-git')
+pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.4.2.1436.g767d5915
+pkgver=0.4.2.1462.gff09e393
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
 license=('Apache')
+depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
 makedepends=('rust' 'cargo' 'cmake' 'fontconfig' 'ncurses' 'desktop-file-utils' 'gdb' 'libxcb')
 checkdepends=('ttf-dejavu') # for monospace fontconfig test
+provides=('alacritty')
+conflicts=('alacritty')
 source=("$_pkgname::git+https://github.com/jwilm/alacritty.git")
 sha256sums=('SKIP')
 
@@ -26,10 +29,6 @@ check(){
 }
 
 package_alacritty-git() {
-	depends=('freetype2' 'fontconfig' 'libxi' 'libxcursor' 'libxrandr')
-	optdepends=('alacritty-terminfo: terminfo for alacritty')
-	provides=('alacritty')
-	conflicts=('alacritty')
 
 	cd $_pkgname
 
@@ -43,16 +42,4 @@ package_alacritty-git() {
 	install -D -m644 "extra/completions/_alacritty" "$pkgdir/usr/share/zsh/site-functions/_alacritty"
 	install -D -m644 "extra/completions/alacritty.fish" "$pkgdir/usr/share/fish/vendor_completions.d/alacritty.fish"
 	install -D -m644 "extra/logo/alacritty-term.svg" "$pkgdir/usr/share/pixmaps/Alacritty.svg"
-}
-
-package_alacritty-terminfo-git() {
-	pkgdesc="Terminfo files for the alacritty terminal emulator"
-	depends=('ncurses')
-	provides=('alacritty-terminfo')
-	conflicts=('alacritty-terminfo')
-
-	cd $_pkgname/extra
-
-	install -dm 755 "$pkgdir/usr/share/terminfo/a/"
-	tic -o "$pkgdir/usr/share/terminfo" -xe alacritty,alacritty-direct alacritty.info
 }
