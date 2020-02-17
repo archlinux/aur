@@ -1,6 +1,6 @@
 pkgbase = libwebsockets-libuv
 	pkgdesc = C library for websocket clients and servers (compiled with libuv support)
-	pkgver = 3.2
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://libwebsockets.org
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = libwebsockets-libuv
 	provides = libwebsockets
 	conflicts = libwebsockets
 	replaces = libwebsockets
-	source = https://libwebsockets.org/git/libwebsockets/snapshot/libwebsockets-v3.2-stable.tar.gz
-	sha256sums = 3b10d3198b12b07108e38f11b88345715335ddc82e2c2d4980f5b8556ca97048
+	source = https://github.com/warmcat/libwebsockets/archive/v3.2.2.tar.gz
+	sha256sums = 166d6e17cab64bfc10c2a71799c298284540a1fa63f6ea3de5caccb34502243c
 
 pkgname = libwebsockets-libuv
 

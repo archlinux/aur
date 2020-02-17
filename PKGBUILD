@@ -5,7 +5,7 @@
 # Maintainer: Elmar Klausmeier <Elmar.Klausmeier@gmail.com>
 
 pkgname=libwebsockets-libuv
-pkgver=3.2
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="C library for websocket clients and servers (compiled with libuv support)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,11 +16,11 @@ conflicts=('libwebsockets')
 provides=('libwebsockets')
 replaces=('libwebsockets')
 license=('LGPL')
-source=("https://libwebsockets.org/git/libwebsockets/snapshot/libwebsockets-v$pkgver-stable.tar.gz")
-sha256sums=('3b10d3198b12b07108e38f11b88345715335ddc82e2c2d4980f5b8556ca97048')
+source=("https://github.com/warmcat/libwebsockets/archive/v$pkgver.tar.gz")
+sha256sums=('166d6e17cab64bfc10c2a71799c298284540a1fa63f6ea3de5caccb34502243c')
 
 build() {
-	cd "libwebsockets-v${pkgver}-stable"
+	cd "libwebsockets-${pkgver}"
 
 	mkdir build  &&  cd build
 	cmake -DCMAKE_BUILD_TYPE=Release \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-	cd "libwebsockets-v${pkgver}-stable/build"
+	cd "libwebsockets-${pkgver}/build"
 	make DESTDIR="${pkgdir}" install
 
 	cd ..
