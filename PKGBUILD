@@ -1,7 +1,7 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=testdisk-wip
-pkgver=7.1
+pkgver=7.2
 pkgrel=1
 pkgdesc="Checks and undeletes partitions. Includes PhotoRec signature based recovery tool. WIP version"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ optdepends=('libewf: support EnCase files'
             'ntfs-3g: support NTFS partitions'
             'progsreiserfs: support ReiserFS partitions'
             'qt5-base: QPhotoRec GUI')
+makedepends=('qt5-tools')
 conflicts=('testdisk')
 provides=('testdisk')
 source=(http://www.cgsecurity.org/testdisk-$pkgver-WIP.tar.bz2)
