@@ -3,7 +3,7 @@
 pkgname=python-inotify-simple
 _name=inotify_simple
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple wrapper around inotify."
 license=("BSD")
 url="https://pypi.python.org/pypi/inotify_simple"
