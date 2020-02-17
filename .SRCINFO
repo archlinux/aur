@@ -1,15 +1,15 @@
 pkgbase = chad_stride
 	pkgdesc = A small curses program to stride across your terminal
-	pkgver = 0.69
-	pkgrel = 1
+	pkgver = 0.69420
+	pkgrel = 2
 	url = https://github.com/sambattalio/chad_stride
 	arch = x86_64
 	license = GPL3
 	makedepends = glibc
 	depends = glibc
 	provides = chad_stride
-	source = https://github.com/sambattalio/chad_stride/archive/0.69.tar.gz
-	md5sums = e244cf82352945b6feb261ff033f7244
+	source = https://github.com/sambattalio/chad_stride/archive/0.69420.tar.gz
+	md5sums = 4da1ab58ddacde55f372cccf96d57a3c
 
 pkgname = chad_stride
 

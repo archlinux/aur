@@ -5,8 +5,8 @@
 
 # Maintainer:Gavin Inglis <ginglis05 at gmail dot com>
 pkgname=chad_stride
-pkgver=0.69
-pkgrel=1
+pkgver=0.69420
+pkgrel=2
 pkgdesc="A small curses program to stride across your terminal"
 arch=("x86_64")
 url="https://github.com/sambattalio/chad_stride"
@@ -14,8 +14,9 @@ license=('GPL3')
 depends=("glibc")
 makedepends=("glibc")
 provides=("chad_stride")
-source=("https://github.com/sambattalio/chad_stride/archive/0.69.tar.gz")
-md5sums=('e244cf82352945b6feb261ff033f7244')
+source=("https://github.com/sambattalio/chad_stride/archive/0.69420.tar.gz")
+md5sums=('4da1ab58ddacde55f372cccf96d57a3c')
+
 
 
 build() {
