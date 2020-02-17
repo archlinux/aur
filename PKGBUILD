@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=nerd-fonts-fira-code
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Patched font Fira (Fura) Code from the nerd-fonts library"
 arch=("any")
 url="https://github.com/ryanoasis/nerd-fonts"
