@@ -33,9 +33,12 @@ url='https://github.com/teejee2008/timeshift'
 license=('GPL')
 _arch_depends=('rsync' 'libgee06' 'json-glib') # from installer/install.sh
 _arch_depends[1]="${_libgee}"
-depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}" 'cronie' 'vte3' 'xapps')
+depends=('gtk3' 'libsoup' 'desktop-file-utils' "${_arch_depends[@]}" 'vte3' 'xapps')
 unset _arch_depends
-optdepends=('gksu: run timeshift from a menu')
+optdepends=(
+  'cronie: scheduling'
+  'gksu: run timeshift from a menu'
+)
 makedepends=('vala' 'diffutils' 'coreutils' 'vte3')
 options=('!emptydirs')
 install="${pkgname}-install.sh"
