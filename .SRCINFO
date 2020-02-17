@@ -1,6 +1,6 @@
 pkgbase = multibound-git
 	pkgdesc = Starbound profile launcher
-	pkgver = r14.104d44a
+	pkgver = r22.a55331c
 	pkgrel = 1
 	url = https://github.com/zetaPRIME/MultiBound2/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = multibound-git
 	makedepends = qt5-tools
 	depends = qt5-base
 	depends = qt5-declarative
-	depends = libxml++
+	depends = qt5-webengine
 	conflicts = multibound
 	source = multibound::git+https://github.com/zetaPRIME/MultiBound2.git
 	md5sums = SKIP

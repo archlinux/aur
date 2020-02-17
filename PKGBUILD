@@ -1,13 +1,13 @@
 # Maintainer: zetaPRIME <qmanxt at gmail dot com>
 pkgname=multibound-git
 _realname=multibound
-pkgver=r14.104d44a
+pkgver=r22.a55331c
 pkgrel=1
 pkgdesc="Starbound profile launcher"
 arch=('any')
 url="https://github.com/zetaPRIME/MultiBound2/"
 license=('LGPL2')
-depends=('qt5-base' 'qt5-declarative' 'libxml++')
+depends=('qt5-base' 'qt5-declarative' 'qt5-webengine')
 makedepends=('git' 'qt5-tools')
 conflicts=('multibound')
 source=($_realname::git+https://github.com/zetaPRIME/MultiBound2.git)
