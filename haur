@@ -1,0 +1,39 @@
+#!/bin/bash
+
+REMOVE=false
+
+for arg in "$@"
+do
+	if [ "$arg" == "--remove" ] || [ "$arg" == "-r" ]
+	then
+		REMOVE=true
+	fi
+done
+
+if [ $REMOVE == true ]
+then
+for PACKAGE_NAME in "$@"
+do
+if [ $PACKAGE_NAME != "--remove" ] || [ $PACKAGE_NAME != "-r" ]
+then	
+	echo "Removing $PACKAGE_NAME"
+	sudo pacman -Rns $PACKAGE_NAME
+fi
+done
+exit 0
+fi
+
+for PACKAGE_NAME in "$@"
+do
+
+if [ $PACKAGE_NAME != "--remove" ] || [ $PACKAGE_NAME != "-r" ]
+then
+echo "Installing '$PACKAGE_NAME'"
+
+mkdir -p ~/.aur
+cd ~/.aur
+git clone https://aur.archlinux.org/$PACKAGE_NAME.git
+cd $PACKAGE_NAME
+makepkg -si
+fi
+done
