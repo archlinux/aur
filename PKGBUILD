@@ -1,8 +1,9 @@
+# Maintainer: René Wagner < rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-boolean'
-pkgver='0.45'
+pkgver='0.46'
 pkgrel='1'
 pkgdesc="Boolean support for Perl"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/boolean'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/boolean-0.45.tar.gz')
-md5sums=('9a7da4cca2c02fb8b575cf0b7bb26046')
-sha512sums=('1acc26a5015f067e701fa52cbc80fb1fe84f2b4246690a96fc1efb608fb9c40cf0998f9932a485e659e3ea03a7c05d82d779fb029ed70a0a468f7bf3573f260e')
-_distdir="boolean-0.45"
+source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/boolean-0.46.tar.gz')
+sha256sums=('95c088085c3e83bf680fe6ce16d8264ec26310490f7d1680e416ea7a118f156a')
+_distdir="boolean-0.46"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
