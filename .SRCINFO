@@ -1,0 +1,17 @@
+pkgbase = aptman-git
+	pkgdesc = Changes pacman syntax to be more like APT
+	pkgver = r4.1471674
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPLv3
+	makedepends = go
+	source = git+https://gitlab.com/moussaelianarsen/aptman.git
+	md5sums = SKIP
+
+pkgname = aptman-git
+
