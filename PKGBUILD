@@ -1,8 +1,8 @@
-# Maintainer: Guillaume Alaux <guillaume@archlinux.org>
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Guillaume Alaux <guillaume@archlinux.org>
 
 pkgname=tomcat8
-pkgver=8.5.50
+pkgver=8.5.51
 pkgrel=1
 pkgdesc='Open source implementation of the Java Servlet 3.1 and JavaServer Pages 2.3 technologies'
 arch=(any)
@@ -26,15 +26,23 @@ backup=(
 )
 install=tomcat8.install
 source=(
-  https://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz
+  https://archive.apache.org/dist/tomcat/tomcat-8/v${pkgver}/bin/apache-tomcat-${pkgver}.tar.gz{,.asc}
   tomcat8.service
   tomcat8.sysusers
   tomcat8.tmpfiles
 )
-sha256sums=('ea762293e889f85d40f5ec14ac4474e133a379522d623f4ba5993da6260bf06e'
-            '01ba022e06d6afa71f6f7d774e48c042c63eca9e06f0c95c92cf8d5a3828a8b2'
-            '02e7a1edb82ed117629189806d40c2c7b70ec994ecbafc11cb7dc7eec35af216'
-            '0dc1fdb537d3488756755f3fb713a9638597d4c68596f6f94f2707e8363cf5e2')
+validpgpkeys=(
+  A9C5DF4D22E99998D9875A5110C01C5A2F6059E7 # Mark E D Thomas
+  713DA88BE50911535FE716F5208B0AB1D63011C7 # Violeta Georgieva Georgieva
+)
+
+sha256sums=(
+  836ecd816605e281636cae78c5b494ccaeb168c24f8266a72e9e704b2204affe
+  SKIP
+  01ba022e06d6afa71f6f7d774e48c042c63eca9e06f0c95c92cf8d5a3828a8b2
+  02e7a1edb82ed117629189806d40c2c7b70ec994ecbafc11cb7dc7eec35af216
+  0dc1fdb537d3488756755f3fb713a9638597d4c68596f6f94f2707e8363cf5e2
+)
 
 _gid_log=19
 _gid_tomcat=57
@@ -74,12 +82,12 @@ package() {
   chmod 775 "${pkgdir}"/var/lib/tomcat8/webapps
   ln -s /var/lib/tomcat8/webapps "${pkgdir}"/usr/share/tomcat8/webapps
 
-  install -dm1777 "${pkgdir}"/var/tmp
-  install -dm775 -o ${_uid_tomcat} -g ${_gid_tomcat} "${pkgdir}"/var/tmp/tomcat8/{temp,work}
+  install -dm 1777 "${pkgdir}"/var/tmp
+  install -dm 775 -o ${_uid_tomcat} -g ${_gid_tomcat} "${pkgdir}"/var/tmp/tomcat8/{temp,work}
   ln -s /var/tmp/tomcat8/temp "${pkgdir}"/usr/share/tomcat8/temp
   ln -s /var/tmp/tomcat8/work "${pkgdir}"/usr/share/tomcat8/work
 
-  install -Dm 644 ../tomcat8.service -t "${pkgdir}"/usr/lib/systemd/system/
+  install -Dm 644 ../tomcat8.service "${pkgdir}"/usr/lib/systemd/system/tomcat8.service
   install -Dm 644 ../tomcat8.sysusers "${pkgdir}"/usr/lib/sysusers.d/tomcat8.conf
   install -Dm 644 ../tomcat8.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/tomcat8.conf
 }
