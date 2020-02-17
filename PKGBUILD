@@ -1,8 +1,9 @@
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mp3-tag'
-pkgver='1.14'
+pkgver='1.15'
 pkgrel='1'
 pkgdesc="Module for reading tags of MP3 audio files"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/MP3-Tag'
-source=('http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.14.tar.gz')
-md5sums=('fb087efa020572d8f46890db489be8bb')
-sha512sums=('05e35f024868505cfc8a07146442e248ef1e80c3c156fd1eabeb874d458356f6b391793e343a24e9e490fd537e7f280316f651b6717378c06953480d271ed2e1')
-_distdir="MP3-Tag-1.14"
+source=('https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/MP3-Tag-1.15.zip')
+sha256sums=('aaac48f4637edca408fd79381bc0bff0f9b11bd8e1e94de059dae993365f56d1')
+_distdir="MP3-Tag-1.15"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
