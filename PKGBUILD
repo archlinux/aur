@@ -9,7 +9,6 @@ url="https://github.com/azdrums/${pkgname}"
 arch=('x86_64')
 license=('GPL2')
 depends=('qt5-base' 'jack2' 'a2jmidid')
-makedepends=('git')
 conflicts=('jacksettings-git')
 source=("${_pkgname}.tar.gz"::"https://github.com/azdrums/jacksettings/archive/${pkgver}.tar.gz")
 sha256sums=('a723e2a63d2de7b7fd5daf23b46b1f4c55697ace8658519060c6b0dc26344ad2')

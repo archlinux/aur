@@ -5,7 +5,6 @@ pkgbase = jacksettings
 	url = https://github.com/azdrums/jacksettings
 	arch = x86_64
 	license = GPL2
-	makedepends = git
 	depends = qt5-base
 	depends = jack2
 	depends = a2jmidid
