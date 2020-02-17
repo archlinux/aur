@@ -1,0 +1,18 @@
+pkgbase = ruby-puppet-strings
+	pkgdesc = Puppet documentation via YARD
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://rubocop.readthedocs.io/gems/puppet-strings
+	arch = any
+	license = APACHE
+	makedepends = rubygems
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-yard
+	noextract = puppet-strings-2.3.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/puppet-strings-2.3.1.gem
+	sha256sums = e3c81c0d52920dea4e77c721f291dd1a00ff03c3783c051b5602cb872086f9e2
+
+pkgname = ruby-puppet-strings
+
