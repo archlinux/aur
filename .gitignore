@@ -1,4 +1,3 @@
 *.tar*
-aws-vault-linux-amd64
 pkg
 src
