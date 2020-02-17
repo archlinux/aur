@@ -7,9 +7,7 @@ arch=('any')
 url="https://github.com/decoxviii/karma"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable' 'tor')
-makedepends=('git')
-provides=("karma")
-conflicts=("karma")
+conflicts=("karma-git")
 install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/decoxviii/${pkgname}/archive/${pkgver}.tar.gz"
 	"path_change.patch")
