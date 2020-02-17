@@ -2,7 +2,7 @@
 # Maintainer: Joseph R Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon-git
 _pkgname=cphalcon
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="High performance, full-stack PHP framework delivered as a C extension. Git package."
 arch=('i686' 'x86_64')
@@ -37,22 +37,22 @@ _PHP_VERSION=`php-config --version`
 [ $CARCH == "x86_64" ] && _arch="64bits" || _arch="32bits"
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-        git fetch
-	printf "%s" "$(git describe --abbrev=0 --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//g')"
+  cd "$srcdir/$_pkgname"
+  git fetch
+  printf "%s" "$(git describe --abbrev=0 --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//g')"
 }
 
 build() {
-	export CPPFLAGS+="-DPHALCON_RELEASE"
-	cd "$srcdir/$_pkgname/build/$_PHP_VERSION/$_arch"
-	phpize
-	./configure --prefix=/usr
-	make
+  export CPPFLAGS+="-DPHALCON_RELEASE"
+  cd "$srcdir/$_pkgname/build/$_PHP_VERSION/$_arch"
+  phpize
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/$_pkgname/build/$_PHP_VERSION/$_arch"
-	make INSTALL_ROOT="$pkgdir" install
-	install -Dm644 "$srcdir/phalcon.ini" "$pkgdir/etc/php/conf.d/phalcon.ini"
+  cd "$srcdir/$_pkgname/build/$_PHP_VERSION/$_arch"
+  make INSTALL_ROOT="$pkgdir" install
+  install -Dm644 "$srcdir/phalcon.ini" "$pkgdir/etc/php/conf.d/phalcon.ini"
   install -Dm644 "$srcdir/$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/php-phalcon/LICENSE.txt"
 }
