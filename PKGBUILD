@@ -5,7 +5,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Helper for the Arch User Repository"
 arch=('any')
-license=('GPL')
+license=('LGPLv3')
 depends=('bash' 'git')
 source=("haur")
 package () {
