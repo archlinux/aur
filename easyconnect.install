@@ -31,10 +31,6 @@ pre_install() {
 
 post_install() {
 
-	#系统信息,默认赋值ubuntu
-	RELEASE_TYPE="ubuntu"
-	RELEASE_ID=`lsb_release -i | cut -f2`
-	VERSION_ID=`lsb_release -r | cut -f2`
 	#######################################################################
 	#宏定义
 	EasyConnectDir=/usr/share/sangfor/EasyConnect
@@ -43,20 +39,6 @@ post_install() {
 	ECAGENT_IMPORT_CA=${ResourcesDir}"/usr/bin/ECAgent --install-import-cert"
 	#######################################################################
 
-	####################
-	#系统判断,lsb_release适应所有linux系统
-	####################
-	detect_distro ()
-	{
-	case $RELEASE_ID in
-	    ubuntu|Ubuntu|UBUNTU)
-	        RELEASE_TYPE="ubuntu"
-	        ;;
-	    *)
-	        RELEASE_TYPE="unkown"
-	        ;;
-	esac
-	}
 	###################
 	#添加系统服务
 	###################
@@ -96,8 +78,6 @@ post_install() {
 	#手动启动EasyMonitor,这里处理可能有不妥之处，需要修改
 	#${ResourcesDir}/bin/EasyMonitor
 
-	#判断系统信息
-	detect_distro
 	change_authority
 	add_service
 	exit 0
@@ -116,25 +96,6 @@ pre_remove() {
 	#EasyMonitor位置
 	EASYMONITOR="/usr/share/sangfor/EasyConnect/resources/bin/EasyMonitor"
 
-	####################
-	#系统判断
-	####################
-	detect_distro ()
-	{
-	    RELEASE_ID=`lsb_release -i | cut -f2`
-	    VERSION_ID=`lsb_release -r | cut -f2`
-
-	    case $RELEASE_ID in
-	        ubuntu|Ubuntu|UBUNTU)
-	            RELEASE_TYPE=ubuntu
-	            ;;
-	        *)
-	            RELEASE_TYPE=unkown
-	            ;;
-	        *)
-	    esac
-
-	}
 
 	###################
 	#删除系统服务
@@ -212,7 +173,6 @@ pre_remove() {
 
 
 	#停止服务
-	detect_distro
 	del_service
 	#杀死相关进程
 	kill_programe
