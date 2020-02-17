@@ -9,8 +9,8 @@
 
 pkgname=python-nipype
 _name=${pkgname/python-/}
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
@@ -19,7 +19,7 @@ depends=('python-etelemetry' 'python-filelock' 'python-matplotlib' 'python-numpy
 makedepends=('python-sphinx')
 optdepends=('python-dipy' 'ants-git' '3dslicer' 'afni' 'freesurfer' 'fsl' 'spm12')
 source=("https://github.com/nipy/${_name}/archive/${pkgver}.tar.gz")
-sha256sums=('7ad51c07f1578a4f8f6c89bf6279d63863e5fd87f7743f9395cfeaec0992ee64')
+sha256sums=('935b660bfd81f773bd5291a90a921cc226f62940950c094be04f080f6c69501d')
 
 _setpaths(){
 
@@ -59,7 +59,7 @@ build() {
 
     _setpaths
     echo "MATLABCMD: ${MATLABCMD}"
-    make
+    python setup.py build
 
 }
 
