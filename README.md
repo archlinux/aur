@@ -1,5 +1,7 @@
 # haur
 
+[![Build Status](https://travis-ci.com/karx1/haur.svg?branch=master)](https://travis-ci.com/karx1/haur) ![AUR version](https://img.shields.io/aur/version/haur)
+
 *H*elper for the *A*rch *U*ser *R*epository
 
 ## Installlation
