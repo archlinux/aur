@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Joplin
+GenericName=Note
+Comment=Take notes and manage personal tasks
+Type=Application
+Icon=joplin
+Exec=JoplinDesktop.AppImage
+Categories=Electron;Utility;Task;Productivity;Todo;Note;
+Keywords=Task;Productivity;Todo;Note;
+StartupNotify=true

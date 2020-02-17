@@ -2,3 +2,4 @@
 !PKGBUILD
 !.git*
 !.SRCINFO
+!*.desktop
