@@ -1,6 +1,6 @@
 pkgbase = mangohud
-	pkgver = 0.1.0
-	pkgrel = 4
+	pkgver = v0.2.0
+	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = unknown
@@ -9,16 +9,11 @@ pkgbase = mangohud
 	makedepends = glslang
 	makedepends = libglvnd
 	makedepends = lib32-libglvnd
+	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = libx11
-	source = mangohud::git+https://github.com/flightlessmango/MangoHud.git#tag=v0.1.0
-	source = Vulkan-Docs::git+https://github.com/KhronosGroup/Vulkan-Docs.git
-	source = Vulkan-Loader::git+https://github.com/KhronosGroup/Vulkan-Loader.git
+	source = mangohud::git+https://github.com/flightlessmango/MangoHud.git
 	source = ImGui::git+https://github.com/flightlessmango/ImGui.git
-	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git
-	sha512sums = SKIP
-	sha512sums = SKIP
-	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
