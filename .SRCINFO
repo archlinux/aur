@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.32.0.2.gcbfcd3e703
+	pkgver = v0.32.0.109.g36ca0e0030
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = mpv-build-git
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols
 	makedepends = ffnvcodec-headers
-	makedepends = cuda
+	makedepends = clang
 	depends = desktop-file-utils
 	depends = fribidi
 	depends = hicolor-icon-theme

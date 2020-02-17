@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.32.0.2.gcbfcd3e703
+pkgver=v0.32.0.109.g36ca0e0030
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -56,6 +56,7 @@ makedepends=(
              'vulkan-headers'
              'wayland-protocols'
              'ffnvcodec-headers'
+             'clang'
              )
 optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
@@ -81,12 +82,6 @@ sha256sums=('SKIP'
             'SKIP'
             )
 backup=('etc/mpv/encoding-profiles.conf')
-
-_enable_cuda=0
-if [ -d /opt/cuda ]; then
-  makedepends+=('cuda')
-  _enable_cuda=1
-fi
 
 if [ -f /usr/lib/libvapoursynth.so ]; then
   depends+=('vapoursynth')
@@ -116,6 +111,7 @@ prepare() {
     '--enable-libjack'
     '--enable-libpulse'
     '--enable-nonfree'
+    '--enable-cuda'
     )
   _mpv_options=(
     '--prefix=/usr'
@@ -134,10 +130,6 @@ prepare() {
     '--enable-openal'
     '--enable-sdl2'
     )
-
-if [ ${_enable_cuda} = "1" ]; then
-  _ffmpeg_options+=('--extra-cflags="-I/opt/cuda/include"')
-fi
 
   echo ${_ffmpeg_options[@]} > ffmpeg_options
   echo ${_mpv_options[@]} > mpv_options
