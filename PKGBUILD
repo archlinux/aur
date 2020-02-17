@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=raze
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Build engine port backed by GZDoom tech'
 arch=('x86_64')
@@ -53,4 +53,5 @@ package() {
     desktop-file-install "$srcdir"/raze.desktop --dir="$pkgdir"/usr/share/applications
     install source/platform/posix/game.xpm "$pkgdir"/usr/share/icons/hicolor/256x256/apps/raze.xpm -D -m 644
     install package/common/buildlic.txt "$pkgdir"/usr/share/licenses/$pkgname/buildlic.txt -D -m 644
+    install soundfont/raze.sf2 "$pkgdir"/usr/share/raze/soundfonts/raze.sf2 -D -m 644
 }
