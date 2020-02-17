@@ -1,7 +1,7 @@
 pkgbase = matrix-puppet-hangouts-git
-	pkgdesc = Single user Node.js Hangouts bridge for Matrix
+	pkgdesc = Single user Node.js Hangouts bridge for Matrix-Synapse <1.10.x
 	pkgver = r57.b055642
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Apache
 	makedepends = npm
@@ -9,7 +9,9 @@ pkgbase = matrix-puppet-hangouts-git
 	depends = nodejs
 	depends = hangups-git
 	optdepends = python: for maintenance scripts
+	optdepends = matrix-synapse<1.10.0: if also hosting a homeserver
 	conflicts = matrix-puppet-hangouts
+	conflicts = matrix-synapse>=1.10.0
 	source = matrix-puppet-hangouts::git+https://github.com/matrix-hacks/matrix-puppet-hangouts
 	source = README
 	source = setup.sh
