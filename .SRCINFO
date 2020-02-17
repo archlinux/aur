@@ -1,12 +1,12 @@
 pkgbase = emacs-buttercup
 	pkgdesc = Behavior-driven development framework for testing Emacs Lisp code
-	pkgver = 1.19
+	pkgver = 1.20
 	pkgrel = 1
 	url = https://github.com/jorgenschaefer/emacs-buttercup
 	arch = any
 	license = GPL
-	source = emacs-buttercup-1.19.tar.gz::https://github.com/jorgenschaefer/emacs-buttercup/archive/v1.19.tar.gz
-	sha256sums = 8cd36a7992907b0f7138631d83388edf542911c59631b45a8e5ce81cc8ede6a7
+	source = emacs-buttercup-1.20.tar.gz::https://github.com/jorgenschaefer/emacs-buttercup/archive/v1.20.tar.gz
+	sha256sums = 23fbe8d254c7bd96992ecc070f305686f39428e36a79eb281ef542052b36cd7e
 
 pkgname = emacs-buttercup
 

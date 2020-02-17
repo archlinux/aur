@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-buttercup 
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="Behavior-driven development framework for testing Emacs
 Lisp code"
@@ -9,7 +9,7 @@ url="https://github.com/jorgenschaefer/emacs-buttercup"
 arch=('any')
 license=('GPL')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8cd36a7992907b0f7138631d83388edf542911c59631b45a8e5ce81cc8ede6a7')
+sha256sums=('23fbe8d254c7bd96992ecc070f305686f39428e36a79eb281ef542052b36cd7e')
 
 build() {
   cd $pkgname-$pkgver
