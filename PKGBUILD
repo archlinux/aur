@@ -5,7 +5,7 @@ pkgname=("limnoria" "limnoria-python3")
 _pkgname=Limnoria
 pkgver=20200131
 _pkgver=2020-01-31
-pkgrel=1
+pkgrel=2
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
@@ -18,7 +18,7 @@ optdepends=("python-charade: Detect page's encoding"
     "python-gnupg: GnuPG support"
     "python-feedparser: RSS plugin support"
     "python-sqlalchemy: Aka plugin support"
-    "python-socksipy-branch: SOCKS proxy support"
+    "python-pysocks: SOCKS proxy support"
     "python-mock: For testing only"
     "python-cryptography: ECDSA support")
 conflicts=('limnoria-git' 'limnoria-python3-git')

@@ -1,7 +1,7 @@
 pkgbase = limnoria
 	pkgdesc = An IRC bot based on Supybot, with sqlite3 support and other features
 	pkgver = 20200131
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ProgVal/Limnoria
 	arch = any
 	license = 3-clause BSD
@@ -13,7 +13,7 @@ pkgbase = limnoria
 	optdepends = python-gnupg: GnuPG support
 	optdepends = python-feedparser: RSS plugin support
 	optdepends = python-sqlalchemy: Aka plugin support
-	optdepends = python-socksipy-branch: SOCKS proxy support
+	optdepends = python-pysocks: SOCKS proxy support
 	optdepends = python-mock: For testing only
 	optdepends = python-cryptography: ECDSA support
 	conflicts = limnoria-git
