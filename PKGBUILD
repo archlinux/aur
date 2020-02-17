@@ -1,36 +1,41 @@
 # Maintainer: Leon Plickat <leonhenrik.plickat@stud.uni-goettingen.de>
 
 pkgname=lavalauncher
-pkgver=1.3
+pkgver=1.6
 pkgrel=1
 pkgdesc='A simple launcher panel for Wayland'
 arch=(x86_64)
 url='https://git.sr.ht/~leon_plickat/lavalauncher'
 license=(GPL3)
 depends=(cairo wayland wayland-protocols scdoc)
-makedepends=(git gcc make)
+makedepends=(git gcc meson ninja)
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("${pkgname%-*}::git+${url}" 'Makefile.patch')
-sha256sums=('SKIP' '9015bf10858ff1743ef56d2661b14ddf929e09c3c9677be26477a41c90014655')
+source=("${pkgname%-*}::git+${url}")
+sha256sums=('SKIP')
 
 pkgver() {
-	printf "1.3"
+	printf "1.6"
 }
 
 prepare()
 {
 	cd "${pkgname%-*}"
-	patch -Np1 -i ../Makefile.patch
-	git checkout v1.3
+	git checkout v1.6
 }
 
 build()
 {
-	make -C "${pkgname%-*}"
+	cd "${pkgname%-*}"
+	rm -fr build
+	meson build \
+		--prefix /usr
+	ninja -C build
 }
 
 package()
 {
-	make -C "${pkgname%-*}" PREFIX=/usr DESTDIR="$pkgdir/" install
+	cd "${pkgname%-*}"
+	DESTDIR="${pkgdir}" ninja -C build install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
