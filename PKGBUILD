@@ -14,6 +14,10 @@ provides=('kdeconnect')
 source=("https://download.kde.org/stable/kdeconnect/$pkgver/kdeconnect-kde-$pkgver.tar.xz"{,.sig})
 sha256sums=('caee7945a9d9bb881a943dc8d2fd0d702c04da5bdb2df14d4f875e7cf5d5261a'
             'SKIP')
+validpgpkeys=(B3487CA0FF36258E2A2F338BD33E721DF877EFE8  # Albert Vaca Cintora <albertvaka@gmail.com>
+              F53223F3337665C2CCEA122E873AC3459BBCF5C0) # Nicolas Fella <nicolas.fella@kdab.com>
+
+
 prepare() {
   mkdir -p build
 }
