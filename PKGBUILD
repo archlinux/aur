@@ -13,7 +13,7 @@ license=('AGPL' 'Apache')
 
 makedepends=('git' 'go-pie' 'jq' 'npm' 'nodejs')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
-if [ "${CARCH}" != 'x86_64' ]; then
+if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
 fi
 optdepends=(
@@ -21,14 +21,14 @@ optdepends=(
     'percona-server: SQL server storage'
     'postgresql: SQL server storage'
 )
-backup=("etc/webapps/${pkgname}/config.json")
+backup=("etc/webapps/$pkgname/config.json")
 source=(
-    "${pkgname}-server-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}-server/archive/v${pkgver}.tar.gz"
-    "${pkgname}-webapp-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}-webapp/archive/v${pkgver}.tar.gz"
+    "$pkgname-server-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-server/archive/v$pkgver.tar.gz"
+    "$pkgname-webapp-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-webapp/archive/v$pkgver.tar.gz"
     "mattermost-ldflags.patch"
-    "${pkgname}.service"
-    "${pkgname}.sysusers"
-    "${pkgname}.tmpfiles"
+    "$pkgname.service"
+    "$pkgname.sysusers"
+    "$pkgname.tmpfiles"
 )
 sha512sums=('216d06c8242720c17a64f4b52e291dee069a002dce3979f1fad407404f03d57e7e880fee7e0a5b16711e1352defadfb94a73e091e4b87b480df073dcaa20f1af'
             '1dd5d60c4b2601f1c70994f0cf0ff4d763af6f7a305c5acffbf76e4f0db945024a11a1ae3d540bb396d02cf5cc5a781bf52fe600a77917b5cc29633bcc34dfd0'
@@ -47,26 +47,26 @@ prepare() {
     # cp -RL ../mattermost-webapp/dist/* dist/mattermost/client/
     # this command will fail with
     # cp: cannot stat '../mattermost-webapp/dist/*': No such file or directory
-    cd "${srcdir}"
-    rm -rf ${pkgname}-server ${pkgname}-webapp
-    mv ${pkgname}-server-${pkgver} ${pkgname}-server
-    mv ${pkgname}-webapp-${pkgver} ${pkgname}-webapp
+    cd "$srcdir"
+    rm -rf "$pkgname"-server "$pkgname"-webapp
+    mv "$pkgname-server-$pkgver" "$pkgname"-server
+    mv "$pkgname-webapp-$pkgver" "$pkgname"-webapp
 
-    mkdir -p src/github.com/${pkgname}
-    cd src/github.com/${pkgname}
+    mkdir -p src/github.com/"$pkgname"
+    cd src/github.com/"$pkgname"
 
     # Remove previous platform folders if any previous clone was effective
-    rm -f ${pkgname}-server
-    rm -f ${pkgname}-webapp
+    rm -f "$pkgname"-server
+    rm -f "$pkgname"-webapp
 
     # Create the directory structure to match Go namespaces
-    ln -s "${srcdir}"/${pkgname}-server ${pkgname}-server
-    ln -s "${srcdir}"/${pkgname}-webapp ${pkgname}-webapp
-    cd ${pkgname}-server
+    ln -s "$srcdir"/"$pkgname"-server "$pkgname"-server
+    ln -s "$srcdir"/"$pkgname"-webapp "$pkgname"-webapp
+    cd "$pkgname"-server
 
     # Pass Arch Linux's Go compilation flags to Mattermost in order to take
     # into account advanced features like PIE.
-    patch < "${srcdir}"/mattermost-ldflags.patch
+    patch < "$srcdir"/mattermost-ldflags.patch
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
@@ -80,7 +80,7 @@ prepare() {
     # The Go programming language only supports 8 instruction sets, therefore
     # we cannot rely on ${CARCH} and need to cast manually.
     # src.: https://golang.org/doc/install/source#introduction
-    case "${CARCH}" in
+    case "$CARCH" in
         i686)
             sed -r -i build/release.mk \
                 -e "5,7s/amd64/386/"
@@ -109,23 +109,23 @@ prepare() {
     # inspired compilation date format without any letter format (only use
     # numbers).
     sed -r -i Makefile \
-        -e "s/^(\s*)BUILD_HASH =.*/\1BUILD_HASH = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/" \
+        -e "s/^(\s*)BUILD_HASH =.*/\1BUILD_HASH = $pkgver-$pkgrel Arch Linux \($CARCH\)/" \
         -e 's/BUILD_DATE = \$\(shell date -u\)/BUILD_DATE = \$(shell date -u +'"'"'%Y-%m-%d %H:%M:%S'"'"')/'
 
     # Enforce build hash to Arch Linux as well for the field corresponding to
     # the webapp.
-    cd "${srcdir}"/${pkgname}-webapp
+    cd "$srcdir"/"$pkgname"-webapp
     sed -r -i webpack.config.js \
-        -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
+        -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"$pkgver-$pkgrel Arch Linux \($CARCH\)\"\),/"
 
     # Link against system gifsicle
-    if [ "${CARCH}" != 'x86_64' ]; then
-        gifsicleNpm="${srcdir}"/${pkgname}-webapp/node_modules/gifsicle/vendor/gifsicle
+    if [ "$CARCH" != 'x86_64' ]; then
+        gifsicleNpm="$srcdir"/$pkgname-webapp/node_modules/gifsicle/vendor/gifsicle
         gifsicleNpm="${gifsicleNpm//\//\\/}"
         gifsicleSystem="$(which gifsicle)"
         gifsicleSystem="${gifsicleSystem//\//\\/}"
         sed -r -i Makefile \
-            -e "s/(\t*)npm install(.*)/\0\n\trm \"${gifsicleNpm}\"\n\tln -s \"${gifsicleSystem}\" \"${gifsicleNpm}\"/"
+            -e "s/(\t*)npm install(.*)/\0\n\trm \"$gifsicleNpm\"\n\tln -s \"$gifsicleSystem\" \"$gifsicleNpm\"/"
     fi
 }
 
@@ -133,36 +133,36 @@ build() {
     # No need to build mattermost-webapp as the server is taking care of this
     # step via its build-client make instruction.
 
-    cd "${srcdir}"/src/github.com/${pkgname}/${pkgname}-server
+    cd "$srcdir"/src/github.com/"$pkgname/$pkgname"-server
     # Prevent the build to crash when some dependencies are not met or
     # outdated. This cleans the webapp as well (cf. mattermost-server/Makefile,
     # clean target).
     make clean
-    GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make build-linux
-    GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make build-client
-    GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make package
+    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make build-linux
+    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make build-client
+    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make package
 }
 
 package() {
     # Init directory hierarchy
     install -dm755 \
-        "${pkgdir}"/usr/bin \
-        "${pkgdir}"/usr/share/webapps \
-        "${pkgdir}"/etc/webapps \
-        "${pkgdir}"/usr/share/doc/${pkgname}
+        "$pkgdir"/usr/bin \
+        "$pkgdir"/usr/share/webapps \
+        "$pkgdir"/etc/webapps \
+        "$pkgdir"/usr/share/doc/"$pkgname"
 
     # Copy mattermost build to destination
-    cd "${srcdir}"/src/github.com/${pkgname}/${pkgname}-server
-    cp -a dist/${pkgname} "${pkgdir}"/usr/share/webapps/
+    cd "$srcdir"/src/github.com/"$pkgname/$pkgname"-server
+    cp -a dist/"$pkgname" "$pkgdir"/usr/share/webapps/
 
-    cd "${pkgdir}"/usr/share/webapps/${pkgname}
+    cd "$pkgdir"/usr/share/webapps/"$pkgname"
 
     # Move logs to right location
     rm -rf logs
-    ln -s /var/log/${pkgname} logs
+    ln -s /var/log/"$pkgname" logs
 
     # Readme and docs
-    mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${pkgname}
+    mv NOTICE.txt README.md "$pkgdir"/usr/share/doc/"$pkgname"
 
     # Config file management
     cp config/default.json config/config.json
@@ -175,34 +175,34 @@ package() {
        --arg mmVarLib '/var/lib/mattermost' \
        config/config.json > config/config-new.json
     mv config/config-new.json config/config.json
-    mv config "${pkgdir}"/etc/webapps/${pkgname}
-    ln -s /etc/webapps/${pkgname} config
+    mv config "$pkgdir"/etc/webapps/"$pkgname"
+    ln -s /etc/webapps/"$pkgname" config
 
     # Avoid access denied when Mattermost tries to rewrite its asset data
     # (root.html, manifest.json and *.css) during runtime. Reuse var tmpfile
     # directory SELinux security context.
     # cf. https://github.com/mattermost/mattermost-server/blob/f8d31def8eb463fcd866ebd08f3e6ef7a24e2109/utils/subpath.go#L48
     # cf. https://wiki.archlinux.org/index.php/Web_application_package_guidelines
-    install -dm700 "${pkgdir}"/var/lib/mattermost/client
+    install -dm700 "$pkgdir"/var/lib/mattermost/client
     # We want recursivity as Mattermost wants to modify files in
     # client/files/code_themes/ as well.
     # Not recursive: for file in root.html manifest.json *.css; do
     find client -type f -iname 'root.html' -o -iname 'manifest.json' -o -iname '*.css' | while IFS= read -r fileAndPath; do
-        install -dm700 "${pkgdir}"/var/lib/mattermost/"${fileAndPath%/*}"
-        install -m700 "${fileAndPath}" "${pkgdir}"/var/lib/mattermost/"${fileAndPath%/*}"
-        rm "${fileAndPath}"
-        ln -s /var/lib/mattermost/"${fileAndPath}" "${fileAndPath}"
+        install -dm700 "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
+        install -m700 "$fileAndPath" "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
+        rm "$fileAndPath"
+        ln -s /var/lib/mattermost/"$fileAndPath" "$fileAndPath"
     done
     # As we are using install, only the leaves have their permissions
     # redefined. Some folders in the hierarchy might not have the right
     # permissions. Fix this.
-    chmod -R 700 "${pkgdir}"/var/lib/mattermost/
+    chmod -R 700 "$pkgdir"/var/lib/mattermost/
 
     # Install package config
-    cd "${srcdir}"
-    install -Dm755 bin/${pkgname} "${pkgdir}"/usr/share/webapps/${pkgname}/bin/${pkgname}
-    ln -s /usr/share/webapps/${pkgname}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
-    install -Dm644 ${pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm644 ${pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
-    install -Dm644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
+    cd "$srcdir"
+    install -Dm755 bin/"$pkgname" "$pkgdir"/usr/share/webapps/"$pkgname/bin/$pkgname"
+    ln -s /usr/share/webapps/"$pkgname/bin/$pkgname" "$pkgdir"/usr/bin/"$pkgname"
+    install -Dm644 "$pkgname".service -t "$pkgdir"/usr/lib/systemd/system/
+    install -Dm644 "$pkgname".sysusers "$pkgdir"/usr/lib/sysusers.d/"$pkgname".conf
+    install -Dm644 "$pkgname".tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/"$pkgname".conf
 }
