@@ -1,6 +1,6 @@
 pkgbase = lxd-git
 	pkgdesc = Daemon based on liblxc offering a REST API to manage containers
-	pkgver = 3.21.r10.74cf807fd
+	pkgver = 3.21.r12.4efa92f71
 	pkgrel = 1
 	url = https://linuxcontainers.org/lxd
 	arch = x86_64
