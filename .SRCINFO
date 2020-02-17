@@ -1,14 +1,14 @@
 pkgbase = rabbitvcs-cli
 	pkgdesc = Command Line (CLI) front-end for RabbitVCS
-	pkgver = 0.17.3
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/rabbitvcs/rabbitvcs
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = rabbitvcs>=0.17.3
-	source = rabbitvcs-0.17.3-1.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/5555d67769c0af1d143a78c56ea91425caf23178.tar.gz
-	sha256sums = d5d3e038bd9d007c8ebe7289598cf66fa0f79c12dbf46e9ebd64dc1ebb8367fe
+	depends = rabbitvcs>=0.18.0
+	source = rabbitvcs-0.18.0-1.tar.gz::https://github.com/rabbitvcs/rabbitvcs/archive/e44328e01ed82dd8a8dbfec952f5982e355b8416.tar.gz
+	sha256sums = a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143
 
 pkgname = rabbitvcs-cli
 
