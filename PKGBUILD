@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-qogir-git
 _gitname=Qogir-kde
-pkgver=r37.c6af9dc
+pkgver=r38.3a631ec
 pkgrel=1
 pkgdesc="Qogir theme for Kvantum"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('kvantum-qt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'qogir-kde-theme-git')
-_commit='c6af9dc43edb4f0dd53696853cf62835bd6e10f4'
+_commit='3a631ec628ec942d644fe27d5ea208069d1c8b89'
 source=("git+https://github.com/vinceliuice/Qogir-kde.git#commit=$_commit")
 sha256sums=('SKIP')
 
