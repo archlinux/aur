@@ -1,0 +1,15 @@
+pkgbase = nodejs-wiki-cli
+	pkgdesc = Search Wikipedia and read summaries directly in your terminal!
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/hexrcs/wiki-cli
+	arch = any
+	license = GPL3
+	makedepends = npm
+	depends = nodejs
+	noextract = wiki-cli-0.0.4.tgz
+	source = http://registry.npmjs.org/wiki-cli/-/wiki-cli-0.0.4.tgz
+	sha256sums = 6564b788d8bcfe1b7de6902ea346ce264e9532cd998e6adce136c6b9aa3c3201
+
+pkgname = nodejs-wiki-cli
+
