@@ -19,8 +19,4 @@ cat << 'EOM'
 EOM
 }
 
-post_remove() {
-  rm -rf /etc/mautrix-telegram/
-}
-
 # vim: ts=2 sw=2 et:
