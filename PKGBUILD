@@ -10,9 +10,9 @@ pkgdesc='A tool to enumerate information from NTLM authentication enabled web en
 arch=('any')
 url='https://github.com/sachinkamath/ntlmrecon'
 license=('MIT')
-depends=('python3' 'python-ordered-set')
+depends=('python' 'python-ordered-set' 'python-iptools' 'python-colorama' 'python-termcolor')
 makedepends=('git' 'python-setuptools')
-source=("$pkgname::git+https://github.com/sachinkamath/ntlmrecon.git")
+source=("git+https://github.com/sachinkamath/ntlmrecon.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -29,7 +29,6 @@ build() {
 
 package() {
   cd $pkgname
-
 
   python3 setup.py install --root="$pkgdir" --prefix=/usr -O1 --skip-build
 

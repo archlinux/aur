@@ -10,9 +10,12 @@ pkgbase = ntlmrecon
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python3
+	depends = python
 	depends = python-ordered-set
-	source = ntlmrecon::git+https://github.com/sachinkamath/ntlmrecon.git
+	depends = python-iptools
+	depends = python-colorama
+	depends = python-termcolor
+	source = git+https://github.com/sachinkamath/ntlmrecon.git
 	sha512sums = SKIP
 
 pkgname = ntlmrecon
