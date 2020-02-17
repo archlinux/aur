@@ -1,0 +1,20 @@
+pkgbase = mediawiki-extension-visualeditor-git
+	pkgdesc = MediaWiki extension for rich text editing
+	pkgver = r16039.74116a7219
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Extension:VisualEditor
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mediawiki>=1.34
+	depends = mediawiki<1.35
+	depends = parsoid
+	provides = mediawiki-extension-visualeditor
+	conflicts = mediawiki-extension-visualeditor
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/VisualEditor#branch=REL1_34
+	source = VisualEditor_submodule::git+https://gerrit.wikimedia.org/r/VisualEditor/VisualEditor.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = mediawiki-extension-visualeditor-git
+
