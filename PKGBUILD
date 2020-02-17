@@ -1,29 +1,25 @@
 # Maintainer: RedTide <redtid3@gmail.com>
 
 pkgname=jacksettings
-pkgver=v0.0.1.alpha.r0.g3e4500c
+pkgver=0.1.0
 pkgrel=1
+_pkgname="${pkgname}-${pkgver}"
 pkgdesc="JACK settings using jackd via systemd"
 url="https://github.com/azdrums/${pkgname}"
 arch=('x86_64')
 license=('GPL2')
-depends=('qt5-base' 'jack2')
-optdepends=('a2jmidid: A daemon for exposing legacy ALSA sequencer applications in JACK MIDI system.')
+depends=('qt5-base' 'jack2' 'a2jmidid')
 makedepends=('git')
 conflicts=('jacksettings-git')
-source=("${pkgname}"::"git+https://github.com/azdrums/${pkgname}.git")
-md5sums=('SKIP')
-pkgver() {
-	cd "${pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("${_pkgname}.tar.gz"::"https://github.com/azdrums/jacksettings/archive/${pkgver}.tar.gz")
+sha256sums=('a723e2a63d2de7b7fd5daf23b46b1f4c55697ace8658519060c6b0dc26344ad2')
 build() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 	qmake PREFIX="/usr/" JACKSettings.pro
 	make INSTALL_DIR=$pkgdir
 }
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${_pkgname}"
 	make INSTALL_ROOT=$pkgdir install
-	install -Dm644 "${srcdir}/${pkgname}/systemd/a2jmidi@.service" "${pkgdir}/usr/lib/systemd/user/a2jmidi@.service"
+	install -Dm644 "${srcdir}/${_pkgname}/systemd/a2jmidi@.service" "${pkgdir}/usr/lib/systemd/user/a2jmidi@.service"
 }
