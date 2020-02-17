@@ -1,12 +1,23 @@
-pkgbase = pkgbase
-	pkgdesc = Japanese-Russian kanji and word dictionary
-	pkgver = 1.10
+pkgbase = v2ray-desktop
+	pkgdesc = A Cross-platform GUI Client for V2Ray written in Qt 5 and QML 2 (Stable Release)
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = http://www.susi.ru/yarxi/
+	url = https://github.com/Dr-Incognito/V2Ray-Desktop
 	arch = x86_64
-	license = custom
-	depends = ttf-sazanami
-	depends = nas
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-tools>=5.14.0
+	makedepends = which
+	makedepends = gcc
+	makedepends = qt5-declarative>=5.14.0
+	depends = v2ray
+	depends = qt5-base>=5.14.0
+	depends = qt5-quickcontrols>=5.14.0
+	depends = qt5-quickcontrols2>=5.14.0
+	provides = v2ray-desktop
+	source = V2Ray-Desktop::git+https://github.com/Dr-Incognito/V2Ray-Desktop#tag=1.4.0
+	sha512sums = SKIP
 
-pkgname = yarxi
+pkgname = v2ray-desktop
 
