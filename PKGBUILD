@@ -1,12 +1,12 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=karma
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Search of Emails and Passwords on Pwndb"
 arch=('any')
 url="https://github.com/decoxviii/karma"
 license=('MIT')
-depends=('python' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
+depends=('python' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable' 'tor')
 makedepends=('git')
 provides=("karma")
 conflicts=("karma")
