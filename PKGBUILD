@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
-pkgver=0.9.54.r0.69154b2
+pkgver=0.9.57.r1.e73aa28
 pkgrel=1
 pkgdesc="Automatic screen brightness tool."
 arch=('x86_64')
@@ -8,7 +8,8 @@ url="https://getgammy.com"
 license=('GPL3')
 depends=('mesa' 'qt5-base')
 makedepends=('git' 'imagemagick')
-optdepends=('plog: library for debug logging')
+optdepends=('plog: library for debug logging'
+            'qt5ct: recommended on DE without Qt integration')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Fushko/gammy.git'
