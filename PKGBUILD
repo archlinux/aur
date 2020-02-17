@@ -3,7 +3,7 @@
 _pkgname=godot-export-templates
 pkgname=${_pkgname}-git
 _gitname=godot
-pkgver=3.2.dev
+pkgver=4.0.dev
 pkgrel=1
 pkgdesc='Godot export templates'
 url='https://godotengine.org/'
@@ -36,8 +36,8 @@ build() {
   scons platform=x11 tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
   
   # 64 bit headless server
-  scons platform=server tools=no target=release bits=64 CXX=clang++ -j$(nproc)
-  scons platform=server tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
+  #scons platform=server tools=no target=release bits=64 CXX=clang++ -j$(nproc)
+  #scons platform=server tools=no target=release_debug bits=64 CXX=clang++ -j$(nproc)
 
   # 32 bit x11
   #scons platform=x11 tools=no target=release bits=32 CXX=clang++ -j$(nproc)
@@ -53,8 +53,8 @@ package() {
   install -Dm644 bin/godot.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
 
   # 64 bit server
-  install -Dm644 bin/godot_server.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
-  install -Dm644 bin/godot_server.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  #install -Dm644 bin/godot_server.x11.opt.64.llvm "${pkgdir}"/usr/share/godot/templates/
+  #install -Dm644 bin/godot_server.x11.opt.debug.64.llvm "${pkgdir}"/usr/share/godot/templates/
 
   # 32 bit x11
   #install -Dm644 bin/godot.x11.opt.32.llvm "${pkgdir}"/usr/share/godot/templates/
