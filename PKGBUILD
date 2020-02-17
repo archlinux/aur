@@ -1,7 +1,7 @@
 # PACKAGER: wolftankk <wolftankk@gmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=php-phalcon
-pkgver=4.0.3
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
@@ -11,12 +11,8 @@ license=('PHP')
 depends=('php>=5.5')
 makedepends=('gcc')
 backup=('etc/php/conf.d/phalcon.ini')
-
-source=(
-	"https://github.com/phalcon/cphalcon/archive/v$pkgver.zip"
-)
-
-sha256sums=('0e1fb2dab8d8bce051be0588fd3ded1d0be25481e7a747b3d057586ed930c4b8')
+source=("https://github.com/phalcon/cphalcon/archive/v$pkgver.zip")
+sha256sums=('64672a608647dd372a0dbe384b5da42f9307215e48294273f2d80d4d3d753750')
 
 #get php version
 PHP_FULL_VERSION=`php-config --version`
@@ -35,35 +31,38 @@ build() {
   echo "int main() {}" > t.c
   $CC $CFLAGS t.c -o t 2> t.t
   if [ $? != 0 ]; then
-	  chmod +x gcccpuopt
-	  BFLAGS=`./gcccpuopt`
-	  export CFLAGS="-O2 -fomit-frame-pointer $BFLAGS"
-	  $CC $CFLAGS t.c -o t 2> t.t
-	  if [ $? != 0 ]; then
-		  export CFLAGS="-O2"
-	  fi
+    chmod +x gcccpuopt
+    BFLAGS=`./gcccpuopt`
+    export CFLAGS="-O2 -fomit-frame-pointer $BFLAGS"
+    $CC $CFLAGS t.c -o t 2> t.t
+    if [ $? != 0 ]; then
+      export CFLAGS="-O2"
+    fi
   fi
 
   if [ $($CC -dumpversion | cut -f1 -d.) -ge 4 ]; then
-	  $CC $CFLAGS -fvisibility=hidden t.c -o t 2> t.t && export CFLAGS="$CFLAGS -fvisibility=hidden"
+    $CC $CFLAGS -fvisibility=hidden t.c -o t 2> t.t && export CFLAGS="$CFLAGS -fvisibility=hidden"
   fi
 
   rm -f t.t t.c t
 
-
-  #cd dir
   cd "$srcdir/cphalcon-$pkgver/build/$PHP_VERSION/$_arch"
 
   #Clean current compilation
   if [ -f Makefile ]; then
-	  make clean
-	  phpize --clean
+    make clean
+    phpize --clean
   fi
 
   phpize
   ./configure --prefix=/usr --enable-phalcon
   make
 }
+
+# check() {
+#   cd "$srcdir/cphalcon-$pkgver"
+#   make test
+# }
 
 package() {
   cd "$srcdir/cphalcon-$pkgver/build/$PHP_VERSION/$_arch"
