@@ -5,6 +5,7 @@ pkgver=1.0
 pkgrel=1
 pkgdesc="Helper for the Arch User Repository"
 arch=('any')
+url="https://github.com/karx1/haur"
 license=('LGPLv3')
 depends=('bash' 'git')
 source=("haur")
