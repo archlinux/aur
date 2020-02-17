@@ -4,7 +4,7 @@ _watch=('https://www.xnview.com/en/xnconvert/' '>Version (\d[\d.]*\d+)\b')
 
 pkgname=xnconvert
 pkgver=1.83
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful batch image-converter and resizer."
 url="https://www.xnview.com/en/xnconvert/"
 arch=('x86_64' 'i686')
