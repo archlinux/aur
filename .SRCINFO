@@ -1,0 +1,16 @@
+pkgbase = mediawiki-skin-tweeki-git
+	pkgdesc = MediaWiki skin based on Twitter's Bootstrap
+	pkgver = 1.1.0.r23.g9441ca6
+	pkgrel = 1
+	url = https://www.mediawiki.org/wiki/Skin:Tweeki
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = mediawiki
+	provides = mediawiki-skin-tweeki
+	conflicts = mediawiki-skin-tweeki
+	source = git+https://github.com/thaider/Tweeki.git
+	sha512sums = SKIP
+
+pkgname = mediawiki-skin-tweeki-git
+
