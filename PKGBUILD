@@ -36,7 +36,7 @@ package() {
   cp -a program/* "${pkgdir}/usr/share/nikto"
 
   install -Dm 755 "${srcdir}/nikto.sh" "${pkgdir}/usr/bin/nikto"
-  install -Dm 644 program/nikto.conf "${pkgdir}/etc/nikto.conf"
+  install -Dm 644 program/nikto.conf.default "${pkgdir}/etc/nikto.conf"
   install -Dm 644 documentation/nikto.1 "${pkgdir}/usr/share/man/man1/nikto.1"
   install -Dm 644 program/docs/nikto_manual.html "${pkgdir}/usr/share/doc/${pkgname}/manual.html"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
