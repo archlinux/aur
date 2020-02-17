@@ -5,7 +5,7 @@
 
 gitname=urxvt-tabbedex
 pkgname=${gitname}-mina86-git
-pkgver=0.4.r65.g089d0cb
+pkgver=v19.21.r10.ga65e1cc
 pkgrel=1
 pkgdesc="A tabbed extension for rxvt-unicode with several enhancements"
 arch=("any")
