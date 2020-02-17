@@ -1,0 +1,16 @@
+pkgbase = mixed-content-scan
+	pkgdesc = Scan your HTTPS-enabled website for Mixed Content
+	pkgver = 2.9
+	pkgrel = 1
+	url = https://github.com/bramus/mixed-content-scan
+	arch = any
+	license = MIT
+	makedepends = composer
+	depends = php
+	provides = mixed-content-scan
+	conflicts = mixed-content-scan
+	source = https://github.com/bramus/mixed-content-scan/archive/2.9.tar.gz
+	sha256sums = 90ed047f3a074b976e297973c228b7d5cc76ea647f11dec347031b203f8885fe
+
+pkgname = mixed-content-scan
+
