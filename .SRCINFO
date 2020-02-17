@@ -1,0 +1,17 @@
+pkgbase = aptyay-git
+	pkgdesc = Changes yay syntax to be more like APT
+	pkgver = r1.7fe906d
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPLv3
+	makedepends = go
+	source = git+https://gitlab.com/moussaelianarsen/aptyay.git
+	md5sums = SKIP
+
+pkgname = aptyay-git
+
