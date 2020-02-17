@@ -1,0 +1,41 @@
+To facilitate running multiple bridges, a systemd template service has been provided.
+
+The template started as matrix-puppet-hangouts@FOO expects to find the following files:
+  /etc/synapse/matrix-puppet-hangouts/
+     config-FOO.yaml
+     registration-FOO.yaml
+     refresh_token-FOO.txt
+  /var/lib/matrix-puppet-hangouts/
+     room-store-FOO.db
+     user-store-FOO.db
+
+Unfortunately, matrix-puppet-hangouts has hard-coded paths, so there's currently
+a lot of symlinks and a fake home folder (gross). A setup.sh script helps create
+the expected structure and perform the registration
+
+Another problem is the login procedure for hangups is currently rather unfriendly.
+
+Quick Setup (assuming bridge and synapse are on the same computer):
+0. Change to the config directory
+	cd /etc/synapse/matrix-puppet-hangouts/
+1. Run setup.sh [user] to make a bunch of folders and symlinks. Ex:
+	./setup.sh FOO
+2. Edit the config json to suite your needs.
+3. Login to hangups
+	sudo -u synapse hangups --token-path refresh_token-FOO.txt --manual
+	follow the onscreen instructions. after pasting your token, an ncurses hangouts client will show; press Ctrl+C to exit
+   See https://github.com/tdryer/hangups/issues/350#issuecomment-323553771 for more details.
+4. Generate the registration file. Ex:
+   ./setup.sh FOO --register http://localhost:8090
+5. Include the registration-*.yaml file in your synapse config
+  # homeserver.yaml
+	app_service_config_files:
+	  - /etc/synapse/matrix-puppet-hangouts/registration-FOO.yaml
+6. Restart the home server and start the appservice. Ex:
+  systemctl start matrix-puppet-hangouts@FOO
+  systemctl restart synapse
+
+NOTE: If you run multiple instances, be sure to change the port
+
+For further documentation look to the upstream project:
+https://github.com/matrix-org/matrix-appservice-irc

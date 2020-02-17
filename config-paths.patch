@@ -1,0 +1,35 @@
+diff --git a/config.sample.json b/config.sample.json
+index 57cb3ce..a4c47d3 100644
+--- a/config.sample.json
++++ b/config.sample.json
+@@ -1,9 +1,9 @@
+ {
+-  "registrationPath": "hangouts-registration.yaml",
++  "registrationPath": "/etc/synapse/matrix-puppet-hangouts/registration-FOO.yaml",
+   "port": 8090,
+   "bridge": {
+-    "homeserverUrl": "https://your-home-server.example.org",
++    "homeserverUrl": "http://localhost",
+     "domain": "example.org",
+-    "registration": "hangouts-registration.yaml"
++    "registration": "/etc/synapse/matrix-puppet-hangouts/registration-FOO.yaml"
+   }
+ }
+diff --git a/index.js b/index.js
+index 141065e..d7b1818 100644
+--- a/index.js
++++ b/index.js
+@@ -5,10 +5,11 @@ const {
+   Puppet,
+   MatrixPuppetBridgeBase
+ } = require("matrix-puppet-bridge");
++const home = require('os').homedir()
+ const HangoutsClient = require('./client');
+-const config = require('./config.json');
++const config = require(home + '/config.json');
+ const path = require('path');
+-const puppet = new Puppet(path.join(__dirname, './config.json' ));
++const puppet = new Puppet(path.join(home, './config.json' ));
+ const debug = require('debug');
+ const debugVerbose = debug('verbose:matrix-puppet:hangouts:index');
+ 
