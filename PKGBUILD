@@ -3,13 +3,18 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-light-git
-pkgver=r31.0.g771ef4b
+pkgver=r32.3.g14b27b5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (Optional Depends, GIT Version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
-optdepends=('vapoursynth-plugin-addgrain-git'
+depends=('vapoursynth'
+         'vapoursynth-plugin-adjust-git'
+         'vapoursynth-plugin-mvsfunc-git'
+         )
+optdepends=('vapoursynth'
+            'vapoursynth-plugin-addgrain-git'
             'vapoursynth-plugin-awarpsharp2-git'
             'vapoursynth-plugin-bilateral-git'
             'vapoursynth-plugin-ctmf-git'
@@ -17,18 +22,21 @@ optdepends=('vapoursynth-plugin-addgrain-git'
             'vapoursynth-plugin-deblock-git'
             'vapoursynth-plugin-dfttest-git'
             'vapoursynth-plugin-eedi2-git'
-            'vapoursynth-plugin-fft3dfilter-git'
+            'vapoursynth-plugin-eedi3cl-git'
             'vapoursynth-plugin-f3kdb-git'
             'vapoursynth-plugin-fluxsmooth'
-            'vapoursynth-plugin-fmtconv'
-            'vapoursynth-plugin-genericfilters-git'
+            'vapoursynth-plugin-fft3dfilter-git'
+            'vapoursynth-plugin-fmtconv-git'
+            'vapoursynth-plugin-hqdn3d-git'
             'vapoursynth-plugin-knlmeanscl'
-            'vapoursynth-plugin-mvtools'
-            'vapoursynth-plugin-mvsfunc-git'
+            'vapoursynth-plugin-mvtools-git'
+            'vapoursynth-plugin-nnedi3_resample-git'
             'vapoursynth-plugin-nnedi3-git'
-            'vapoursynth-plugin-sangnommod-git'
-            'vapoursynth-plugin-scenechange'
-            'vapoursynth-plugin-temporalsoften-git'
+            'vapoursynth-plugin-nnedi3cl-git'
+            'vapoursynth-plugin-sangnom'
+            'vapoursynth-plugin-svpflow1'
+            'vapoursynth-plugin-svpflow2-bin'
+            'vapoursynth-plugin-znedi3-git'
             )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
