@@ -1,0 +1,14 @@
+pkgbase = xfetch
+	pkgdesc = Yet another fetch written in ruby
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/JAugusto42/xfetch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = ruby
+	source = xfetch-2.0.0.tar.gz::https://github.com/JAugusto42/xfetch/archive/2.0.0.tar.gz
+	md5sums = e25e4b9de90b727e9802f791a59f292b
+
+pkgname = xfetch
+
