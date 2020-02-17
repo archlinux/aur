@@ -1,7 +1,7 @@
 pkgbase = mediawiki-extension-ldapauthentication2-git
-	pkgdesc = An extension for LDAP authentication
-	pkgver = r54.f8607b9
-	pkgrel = 1
+	pkgdesc = MediaWiki extension for LDAP authentication
+	pkgver = r62.0c39a55
+	pkgrel = 2
 	url = https://www.mediawiki.org/wiki/Extension:LDAPAuthentication2
 	arch = any
 	license = GPL

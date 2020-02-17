@@ -5,14 +5,15 @@ _extname_lowercase="${_extname,,}"
 _pkgname_base="mediawiki-extension-${_extname_lowercase}"
 
 pkgname="${_pkgname_base}-git"
-pkgver=r54.f8607b9
-pkgrel=1
-pkgdesc="An extension for LDAP authentication"
+pkgver=r62.0c39a55
+pkgrel=2
+pkgdesc="MediaWiki extension for LDAP authentication"
 arch=('any')
 url="https://www.mediawiki.org/wiki/Extension:${_extname}"
 license=('GPL')
-depends=('mediawiki' 'mediawiki-extension-ldapprovider'
-	'mediawiki-extension-pluggableauth')
+depends=('mediawiki'
+         'mediawiki-extension-ldapprovider'
+         'mediawiki-extension-pluggableauth')
 makedepends=('git')
 provides=("$_pkgname_base")
 conflicts=("$_pkgname_base")
@@ -27,8 +28,8 @@ pkgver()
 
 package()
 {
-	local ext_dir="${pkgdir}/usr/share/webapps/mediawiki/extensions"
+	local ext_dir="/usr/share/webapps/mediawiki/extensions/${_extname}"
 
-	install -d -m755 "$ext_dir"
-	cp -a "$_extname" "${ext_dir}/"
+	install -d -m755 "${pkgdir}${ext_dir}"
+	cp -a "$_extname"/* "${pkgdir}${ext_dir}/"
 }
