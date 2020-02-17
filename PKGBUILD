@@ -6,8 +6,8 @@ pkgname=karma-git
 _pkgname=karma
 
 epoch=1
-pkgver() { git -C "$_pkgname" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=1.0.0.r23.7cddd82
+pkgver() { git -C "$_pkgname" describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'; }
+pkgver=1.2.0.r10.7cddd82
 pkgrel=1
 
 pkgdesc='Search of Emails and Passwords on Pwndb'
@@ -35,9 +35,14 @@ build() {
   python setup.py build
 }
 
+check() {
+  cd "$_pkgname"
+  python setup.py check
+}
+
 package() {
   cd "$_pkgname"
-  python setup.py install -O1 --skip-build --root="$pkgdir"
+  python setup.py install --optimize=1 --skip-build --root="$pkgdir"
   install -Dm644 README.md -t"$pkgdir/usr/share/doc/$_pkgname/"
   install -Dm644 LICENSE -t"$pkgdir/usr/share/licenses/$_pkgname/"
 }
