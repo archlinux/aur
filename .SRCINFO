@@ -1,13 +1,13 @@
 pkgbase = keepass-readable-passphrase-generator
-	pkgdesc = The Readable Passphrase Generator generates passphrases which are (mostly) grammatically correct but nonsensical. These are easy to remember (for humans) but difficult to guess (for humans and computers).
-	pkgver = 1.1.2
+	pkgdesc = The Readable Passphrase Generator generates passphrases which are (mostly) grammatically correct but nonsensical.
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://bitbucket.org/ligos/readablepassphrasegenerator
+	url = https://github.com/ligos/readablepassphrasegenerator
 	arch = any
 	license = Apache
 	depends = keepass
-	source = ReadablePassphrase-1.1.2.plgx::https://bitbucket.org/ligos/readablepassphrasegenerator/downloads/ReadablePassphrase%201.1.2.plgx
-	sha256sums = 815ad95971eae8629aab665aec36a0824b9e6f1214367d977085e375bfb9b8b2
+	source = https://github.com/ligos/readablepassphrasegenerator/releases/download/release-1.2.0/ReadablePassphrase.1.2.0.plgx
+	sha256sums = F3EFABE676C7F12CE4115B5BA450D1AA272298F2F6469423A5E59EB43DA2C2B2
 
 pkgname = keepass-readable-passphrase-generator
 
