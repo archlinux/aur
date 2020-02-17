@@ -1,6 +1,6 @@
 pkgbase = puppet-lint
 	pkgdesc = Check that your Puppet manifests conform to the style guide.
-	pkgver = 2.3.6
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/rodjek/puppet-lint
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = puppet-lint
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = puppet-lint-2.3.6.gem
-	source = https://rubygems.org/downloads/puppet-lint-2.3.6.gem
-	sha256sums = 3a4e0bb19eca582cd2a37dac6f45c417cf50ac28f988d087be2635400815d3f3
+	noextract = puppet-lint-2.4.2.gem
+	source = https://rubygems.org/downloads/puppet-lint-2.4.2.gem
+	sha256sums = 334957137b31380d5df352c722fe142767ed46520a4279a80fe7f3917b9797df
 
 pkgname = puppet-lint
 
