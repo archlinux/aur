@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=17
-_rtpatchver=9
-_clr=${_major}.13-51
+_minor=19
+_rtpatchver=11
+_clr=${_major}.19-56
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
 pkgver=${_major}.${_minor}.${_rtpatchver}
@@ -100,7 +100,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec |\
-          grep -Ev '^Patch0000|^Patch0123|^Patch0130|^Patch0002|^Patch0003' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0000|^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-preempt-rt/${i}"
         done
@@ -117,8 +117,7 @@ prepare() {
                        --enable-after IKCONFIG IKCONFIG_PROC
 
         # Power management and ACPI options
-        scripts/config --enable HIBERNATION \
-                       --enable ACPI_REV_OVERRIDE_POSSIBLE \
+        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                        --enable ACPI_TABLE_UPGRADE
 
         # Enable loadable module support
@@ -169,7 +168,7 @@ prepare() {
 
     ### Prepared version
         make -s kernelrelease > version
-        echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+        echo "Prepared $pkgbase version $(<version)"
 
     ### Optionally load needed modules for the make localmodconfig
         # See https://aur.archlinux.org/packages/modprobed-db
@@ -318,9 +317,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('945f2bf6af69eed0ac81ef75b571f37ae1e16a9bb8a2ae698a365ee3ec2c74b9'
+sha256sums=('9584b971153e46a4a07573ca8f0ed78d7ca17b1eee25ff52f8b844b5d1fb77b8'
             'SKIP'
-            'f836174fc06ca8c9edb69d7d7ea480a6f6957caf00dfc08b042dbdd85a5cf265'
+            '8fd8726f213ce70a9d4b9cb10f6c51aaf1470bf33bc76579631c75b0a1d319d4'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
