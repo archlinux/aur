@@ -9,6 +9,7 @@ conflicts=('joplin')
 arch=('x86_64')
 url="https://github.com/laurent22/joplin"
 license=(MIT)
+depends=(fuse)
 source=(
   ${url}/releases/download/v${pkgver}/Joplin-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
