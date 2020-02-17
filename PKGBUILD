@@ -1,7 +1,8 @@
 # Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
+# Contributor: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
 pkgname=gnome-control-center-git
-pkgver=3.31.4+11+gcccb12a6d
+pkgver=3.35.91+3+ga80bbdf1a
 pkgrel=1
 pkgdesc="GNOME's main interface to configure various aspects of the desktop"
 url="https://gitlab.gnome.org/GNOME/gnome-control-center"
@@ -13,7 +14,7 @@ depends=(accountsservice cups-pk-helper gnome-bluetooth gnome-desktop
          gnome-online-accounts gnome-settings-daemon gsettings-desktop-schemas-git gtk3
          libgtop nm-connection-editor sound-theme-freedesktop upower libpwquality
          gnome-color-manager smbclient libmm-glib libgnomekbd grilo clutter-gtk libibus
-         cheese libgudev bolt)
+         cheese-git libgudev bolt)
 makedepends=(docbook-xsl modemmanager git python meson)
 optdepends=('system-config-printer: Printer settings'
             'gnome-user-share: Bluetooth and WebDAV file sharing'
