@@ -8,7 +8,6 @@ url="https://github.com/decoxviii/karma"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable' 'tor')
 conflicts=("karma-git")
-install=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/decoxviii/${pkgname}/archive/${pkgver}.tar.gz"
 	"path_change.patch")
 sha256sums=('da3eb8bfdc3c192053f312d99f84e1861b0120e5b01cdbbbc874845448bc77e7'
