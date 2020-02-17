@@ -1,0 +1,17 @@
+pkgbase = gtksheet
+	pkgdesc = A spreadsheet widget for Gtk+
+	pkgver = 4.3.3
+	pkgrel = 1
+	url = http://fpaquet.github.io/gtksheet/
+	arch = any
+	license = GPL2
+	makedepends = autoconf
+	depends = gtk3
+	depends = pango
+	depends = cairo
+	depends = atk
+	source = https://github.com/fpaquet/gtksheet/archive/V4.3.3.tar.gz
+	sha256sums = b9eedd2111ea3c8e4b577965a15b003265f95edb98da11d588247085a69b8f59
+
+pkgname = gtksheet
+
