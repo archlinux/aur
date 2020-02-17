@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.31.0.r57.g8b85b40b2f
+pkgver=0.32.0.r109.g36ca0e0030
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -150,10 +150,10 @@ provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
 conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
 replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
 options=('!emptydirs')
-source=('git+https://github.com/mpv-player/mpv-build.git'
-        'git+https://github.com/mpv-player/mpv.git'
-        'git+https://github.com/ffmpeg/ffmpeg.git'
-        'git+https://github.com/libass/libass.git'
+source=('mpv-build::git+https://github.com/mpv-player/mpv-build.git'
+        'mpv::git+https://github.com/mpv-player/mpv.git'
+        'ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git'
+        'libass::git+https://github.com/libass/libass.git'
         'LICENSE'
         )
 sha256sums=('SKIP'
@@ -340,7 +340,6 @@ prepare() {
     '--enable-cdda'
     '--enable-cplugins'
     '--enable-drm'
-    '--enable-drmprime'
     '--enable-dvbin'
     '--enable-dvdnav'
     '--enable-egl-drm'
@@ -389,23 +388,6 @@ prepare() {
     '--enable-zimg'
     '--enable-zlib'
   )
-
-    # ffmpeg: removed or can't build
-    # '--disable-vapoursynth-lazy'
-    # [N] '--enable-omx-rpi'
-    # '--enable-libsmbclient'
-    # [D] '--enable-avresample'
-
-    # mpv: removed or can't build
-    # [R] '--enable-zsh-comp'
-    # [R] '--enable-audio-input'
-    # [R] '--enable-dvdread'
-    # [R] '--enable-libv4l2'
-    # [R] '--enable-tv'
-    # [R] '--enable-tv-v4l2'
-    # [R] '--enable-vaapi-glx'
-    # [O] '--enable-test'
-
 
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
