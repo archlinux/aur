@@ -1,5 +1,5 @@
 pkgbase = wpa_wrapper
-	pkgdesc = Network managemet utility
+	pkgdesc = Network management utility.
 	pkgver = 1.0
 	pkgrel = 1
 	arch = any

@@ -2,7 +2,7 @@
 pkgname=wpa_wrapper
 pkgver=1.0
 pkgrel=1
-pkgdesc="Network managemet utility"
+pkgdesc="Network management utility."
 arch=(any)
 url=""
 license=('GPL3')
