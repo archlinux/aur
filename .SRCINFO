@@ -1,7 +1,7 @@
 pkgbase = syncthing-discosrv
 	pkgdesc = Discover server for the syncthing P2P synchronization utility
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = http://syncthing.net
 	install = syncthing-discosrv.install
@@ -11,7 +11,7 @@ pkgbase = syncthing-discosrv
 	arch = armv6h
 	arch = armv7h
 	license = MIT
-	makedepends = go
+	makedepends = go-pie
 	depends = glibc
 	source = https://github.com/syncthing/syncthing/archive/v1.3.4.tar.gz
 	source = syncthing-discosrv.service
