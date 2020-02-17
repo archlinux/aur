@@ -7,7 +7,7 @@ pkgdesc="Language Server Protocol for Terraform"
 arch=('x86_64' 'i686')
 url="https://github.com/juliosueiras/terraform-lsp"
 license=('MIT')
-makedepends=('go')
+makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz"
         'fix-build.patch')
 sha256sums=('04195dd8b50f3fbe0b00d60e4d82f5b9737b51ac394df5a91577974a62220815'
