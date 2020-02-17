@@ -2,7 +2,7 @@
 
 pkgname=glib2-static
 pkgver=2.62.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
@@ -17,8 +17,9 @@ sha256sums=('479ae4d3e37123765c4e850a99bf4846008e7141446118250f5f017d988e7a81'
             '220ff38e418a470b7790e65a2c05527793110c38a1105552b93be884230215f7')
 
 prepare() {
+  cd "glib-$pkgver"
   # https://mail.gnome.org/archives/distributor-list/2020-February/msg00001.html
-  git apply -3 ../CVE-2020-6750.patch
+  patch -Np1 -i ../CVE-2020-6750.patch
 }
 
 build() {

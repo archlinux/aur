@@ -1,7 +1,7 @@
 pkgbase = glib2-static
 	pkgdesc = Low level core library: Static library
 	pkgver = 2.62.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
