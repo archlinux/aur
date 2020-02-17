@@ -5,12 +5,12 @@
 
 pkgname=openshot
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An award-winning free and open-source video editor"
 arch=('any')
 url="https://www.openshot.org/"
 license=('GPL3')
-depends=('ffmpeg' 'python-mlt' 'python-pyqt5' 'python-requests' 'libopenshot'
+depends=('ffmpeg' 'mlt' 'python-pyqt5' 'python-requests' 'libopenshot'
 'libopenshot-audio' 'python-pyzmq' 'qt5-base' 'qt5-svg' 'qt5-webkit')
 optdepends=('faac: for exporting audio using AAC')
 makedepends=('python-setuptools')
