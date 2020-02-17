@@ -1,20 +1,20 @@
+# Maintainer : René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.28
 
 pkgname='perl-net-curl'
-pkgver='0.35'
+pkgver='0.43'
 pkgrel='1'
 pkgdesc="Perl interface for libcurl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('curl>=7.37.0' 'perl')
-makedepends=()
+makedepends=('gcc')
 url='http://search.mcpan.org/dist/Net-Curl'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-0.35.tar.gz')
-md5sums=('fe0c0e85856c9697d13c139961aeb616')
-sha512sums=('7d25f33cf80119a722af47c3c59d3454ca1b7daa70e9105afa1dde3ac0b3fb3586880d892930e0c906b4326638a094c8345cf8add94a27cf383c36e654cc6492')
-_distdir="Net-Curl-0.35"
+source=('http://search.mcpan.org/CPAN/authors/id/S/SY/SYP/Net-Curl-0.43.tar.gz')
+sha256sums=('8bf55332d1fb9288034537fa682e1058affbf7269819fa62ef9e032328dc93b6')
+_distdir="Net-Curl-0.43"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
