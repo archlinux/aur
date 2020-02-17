@@ -9,7 +9,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2020.2
 _channel=stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -37,15 +37,15 @@ prepare() {
 	# Point the submodule to our local copy
 	cd "$srcdir/mullvadvpn-app"
 	git submodule init dist-assets/binaries
-	git config submodule.mullvadvpn-app-binaries.url \
-		"$srcdir/mullvadvpn-app-binaries"
+	git config submodule.mullvadvpn-app-binaries.url "$srcdir/mullvadvpn-app-binaries"
 	git submodule update
 
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
 
-	# Use Electron 8.0.0:
-	sed -i 's/"electron": "^7.1.10",/"electron": "^8.0.0",/g' gui/package.json
+	# Use system Electron version:
+	#electronVer=$(electron --version | tail -c +2)
+	#sed -i 's/"electron": "^7.1.10",/"electron": "^'$electronVer'",/g' gui/package.json
 }
 
 build() {
@@ -67,7 +67,13 @@ build() {
 	cargo build --release --locked --all-features
 
 	# Copy binaries for packaging
-	for binary in mullvad-daemon mullvad mullvad-problem-report libtalpid_openvpn_plugin.so; do
+	binaries=(
+		mullvad-daemon
+		mullvad
+		mullvad-problem-report
+		libtalpid_openvpn_plugin.so
+	)
+	for binary in ${binaries[*]}; do
 		cp "target/release/$binary" "dist-assets/$binary"
 	done
 
