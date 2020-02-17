@@ -5,7 +5,7 @@
 
 pkgname=lxd-git
 _pkgname=lxd
-pkgver=3.19.r157.5e6963a91
+pkgver=3.21.r10.74cf807fd
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -28,16 +28,21 @@ options=('!strip' '!emptydirs')
 source=("git+https://github.com/lxc/lxd.git"
         "lxd.service"
         "lxd.socket"
+        "make43.patch"
 )
 md5sums=('SKIP'
          '5b7032b4b6adc4c4b80d9a919b9cd8a2'
-         '1fb28d8dfe82af71d0675c8e9a0a7293')
+         '1fb28d8dfe82af71d0675c8e9a0a7293'
+         'c7c5ef146949d281406b3df2fbf59449')
 
 _lxd=github.com/lxc/lxd
 
 prepare() {
   mkdir -p "${srcdir}/go/src/github.com/lxc"
   ln -rTsf "${_pkgname}" "${srcdir}/go/src/${_lxd}"
+
+  cd "${srcdir}/go/src/${_lxd}"
+  patch -p1 -i "${srcdir}/make43.patch"
 }
 
 pkgver() {

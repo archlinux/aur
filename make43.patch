@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index 3ff398dbb..b2e27a6d0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,7 @@ LINGUAS=$(basename $(POFILES))
+ POTFILE=po/$(DOMAIN).pot
+ VERSION=$(shell grep "var Version" shared/version/flex.go | cut -d'"' -f2)
+ ARCHIVE=lxd-$(VERSION).tar
+-TAG_SQLITE3=$(shell printf "\#include <sqlite3.h>\nvoid main(){int n = SQLITE_IOERR_NOT_LEADER;}" | $(CC) ${CGO_CFLAGS} -o /dev/null -xc - >/dev/null 2>&1 && echo "libsqlite3")
++TAG_SQLITE3=$(shell printf "#include <sqlite3.h>\nvoid main(){int n = SQLITE_IOERR_NOT_LEADER;}" | $(CC) ${CGO_CFLAGS} -o /dev/null -xc - >/dev/null 2>&1 && echo "libsqlite3")
+ GOPATH ?= $(HOME)/go
+ 
+ .PHONY: default
