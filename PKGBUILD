@@ -2,7 +2,7 @@
 
 _projname='NExtGen'
 pkgname="${_projname,,}"
-pkgver='0.1.1'
+pkgver='0.1.2'
 pkgrel=1
 pkgdesc="A small bash script that lets you easily set up a new extension project for GNOME's Nautilus file manager"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('bash' 'libnautilus-extension')
 conflicts=("${pkgname}-git")
 source=("https://github.com/madmurphy/${_projname}/archive/${pkgver}.tar.gz")
-sha256sums=('4b30b8b674a0ecb24fb16068b4cf73ee22c543f6d0688b84c725206959a40230')
+sha256sums=('ae6c7419930c2af8aa29886b0f616693e51012dc0c728b82ef7bfa6e51ce9b02')
 
 package() {
 
