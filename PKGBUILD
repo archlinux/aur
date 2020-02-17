@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/karx1/haur"
 license=('LGPLv3')
 depends=('bash' 'git')
-source=("haur")
+source=("haur" "haur-clear-cache")
 package () {
 	install -Dm777 "$srcdir"/haur "$pkgdir"/usr/bin/haur
+	install -Dm777 "$srcdir"/haur-clear-cache "$pkgdir"/usr/bin/haur-clear-cache
 }
-md5sums=('9858312c2043c7e713cd38cd2759a37c')
