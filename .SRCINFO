@@ -1,0 +1,17 @@
+pkgbase = vlc-listenbrainz-git
+	pkgdesc = ListenBrainz plugin for VLC
+	pkgver = r11.1a8886e
+	pkgrel = 1
+	url = https://github.com/amCap1712/vlc-listenbrainz-plugin
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vlc
+	provides = vlc-listenbrainz
+	conflicts = vlc-listenbrainz
+	source = git+https://github.com/amCap1712/vlc-listenbrainz-plugin.git
+	sha512sums = SKIP
+
+pkgname = vlc-listenbrainz-git
+
