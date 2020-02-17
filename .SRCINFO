@@ -1,0 +1,36 @@
+pkgbase = elasticsearch6
+	pkgdesc = Distributed RESTful search engine built on top of Lucene
+	pkgver = 6.8.6
+	pkgrel = 1
+	url = https://www.elastic.co/products/elasticsearch
+	arch = any
+	license = Apache
+	depends = java-runtime-headless
+	depends = systemd
+	backup = etc/elasticsearch6/elasticsearch.yml
+	backup = etc/elasticsearch6/log4j2.properties
+	backup = etc/elasticsearch6/jvm.options
+	backup = etc/default/elasticsearch6
+	source = https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-6.8.6.tar.gz
+	source = elasticsearch-env
+	source = elasticsearch.service
+	source = elasticsearch@.service
+	source = elasticsearch-keystore.service
+	source = elasticsearch-keystore@.service
+	source = elasticsearch-sysctl.conf
+	source = elasticsearch-user.conf
+	source = elasticsearch-tmpfile.conf
+	source = elasticsearch.default
+	sha256sums = 351861766c5fd8c1148e74c4186c6f77dcfe14b0c2c3a7e74315d3989b9ae068
+	sha256sums = cce7cfe85ddea80ff6db10ec88f973b87ffa97b9f6a2614234b846551a7731d7
+	sha256sums = ff1c01c16f77d18b0cf8c94798dd74f86a1f89d132508b98dcc8a8e9251c1750
+	sha256sums = 2af4e23d1e1b99211c413a73600e369b190eb7d5ff1ad844ad93191b0adc5311
+	sha256sums = 51ec569bbcbcb16929f6f39d7dfda9a0a8938225e4041e2e84aa18cb2c36dd3f
+	sha256sums = bc159a611dbb4a05dfe8805429bc02a65b4f78191e14d17a68f655e90237a327
+	sha256sums = b3feb1e9c7e7ce6b33cea6c727728ed700332aae942ca475c3bcc1d56b9f113c
+	sha256sums = 815f6a39db6f54bb40750c382ffbdc298d2c4c187ee8ea7e2f855923e2ff354b
+	sha256sums = 0ead1f4724268b51c0db15ee8f0612d23f87c3dc0445b737bc9b96e5511cb38c
+	sha256sums = bb74e5fb8bc28f2125e015395ab05bea117b72bfc6dadbca827694b362ee0bf8
+
+pkgname = elasticsearch6
+
