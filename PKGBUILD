@@ -2,7 +2,7 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.1.r2.gf8b92b60
+pkgver=3.1.r17.ge7700bfd
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
@@ -27,7 +27,8 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  [[ -d NEW ]] || mkdir NEW
+  [[ -d NEW/PyQt5 ]] || mkdir -p NEW/PyQt5
+  [[ -d NEW/PyQt5/bindings ]] && rm -rf NEW/PyQt5/bindings
   ln -s /usr/lib/python3.8/site-packages/PyQt5/bindings/ NEW/PyQt5
   export SIP_DIR=NEW/
   python setup.py build
