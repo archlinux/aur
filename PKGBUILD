@@ -1,7 +1,7 @@
 # Maintainer: Allen Choong <allencch at hotmail dot com>
 pkgname=emoji-keyboard-git
-pkgver=r27.afe17aa
-pkgrel=3
+pkgver=r627.51c6efeb1
+pkgrel=1
 pkgdesc="Virtual keyboard-like emoji picker for linux (wayland disabled)"
 arch=('any')
 url="https://github.com/OzymandiasTheGreat/emoji-keyboard"
@@ -24,7 +24,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  sed -i -e "78i\	return False" lib/emoji_shared.py
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
