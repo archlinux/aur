@@ -2,7 +2,7 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
@@ -15,13 +15,13 @@ options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
 _urlbase='https://download.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/s'
-_fullver="$pkgver-0.1.20191213git005fc1f.fc32.x86_64"
+_fullver="$pkgver-0.1.20200131git2194dc2.fc32.x86_64"
 source=(
   "$_urlbase/swift-lang-$_fullver.rpm"
   "$_urlbase/swift-lang-runtime-$_fullver.rpm"
 )
-sha256sums=('78f26e0a4f864bab7def8fc7fc9b8d7c98570e4cf40b409ce33ea93eb49c58fb'
-            '9049d655f3883d0e6c2fe661e53f00aa47b91a512a8984781df6dd21aa6a7efd')
+sha256sums=('6f7fc4f51c20a9ad52a79615bdeeef5c5425bc199345bfa41a864b343b750f4c'
+            '8a553da367a49c799798f69eb45c94737b2570f37e379d04cac02c6f94a5d283')
 
 package() {
   cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
