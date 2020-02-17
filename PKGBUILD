@@ -61,17 +61,17 @@ _localmodcfg=
 _major=5.4
 _minor=20
 _srcname=linux-${_major}
-_clr=${_major}.19-4
+_clr=${_major}.20-5
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2019'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='0.0.20200214'
+_wrg_snap='0.0.20200215'
 _gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -327,7 +327,7 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
             'a3fa58e27a36b8e363f95207206cf8cb162ec348cf8ccb8c6c4f9c478f2ca1b6'
             'SKIP'
-            '6aaed62beb23803a456b7875a56e9462125a589c9dfb6d0b672c1a8f9f3f45ab'
+            '0def6f3608ec06f6dfc454aa5281a7c38b06ff27096cb341448d20602da4e923'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
 validpgpkeys=(
