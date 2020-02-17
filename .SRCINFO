@@ -1,0 +1,16 @@
+pkgbase = eliza-bin
+	pkgdesc = Eliza the novel game by Zachtronics.
+	pkgver = 2019.09.03
+	pkgrel = 1
+	url = http://www.zachtronics.com/eliza/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = unzip
+	source = local://Eliza_DRM-Free_Build_Linux_09.03.2019.zip
+	source = Eliza.desktop
+	md5sums = 5aacadfcd9735fdb2ebaaba0173e4e92
+	md5sums = SKIP
+
+pkgname = eliza-bin
+

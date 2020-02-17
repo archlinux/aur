@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Eliza
+Icon=/opt/Eliza/Content/icon.png
+Exec=/opt/Eliza/Eliza
+Categories=Game;
