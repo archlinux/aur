@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=make-git
-pkgver=4.2.1.r50.g7ef56bc
+pkgver=4.3.r2.g4533348
 pkgrel=1
 pkgdesc="A tool which controls the generation of executables and other non-source files of a program from the program's source files"
 arch=('i686' 'x86_64')
@@ -24,9 +24,10 @@ pkgver() {
 build() {
   cd "make"
 
-  autoreconf -fi
-  ./configure --prefix="/usr" --with-guile
-  make update
+  ./bootstrap
+  ./configure \
+    --prefix="/usr" \
+    --with-guile
   make
 }
 
