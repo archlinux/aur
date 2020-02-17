@@ -30,8 +30,8 @@ if [ $PACKAGE_NAME != "--remove" ] || [ $PACKAGE_NAME != "-r" ]
 then
 echo "Installing '$PACKAGE_NAME'"
 
-mkdir -p ~/.aur
-cd ~/.aur
+mkdir -p ~/.haur
+cd ~/.haur
 git clone https://aur.archlinux.org/$PACKAGE_NAME.git
 cd $PACKAGE_NAME
 makepkg -si
