@@ -1,7 +1,7 @@
 pkgbase = calculix
 	pkgdesc = CalculiX: 3D finite element solver and post-processor (executables)
 	pkgver = 2.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.calculix.de/
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = calculix
 	options = !buildflags
 	source = http://www.dhondt.de/ccx_2.16.src.tar.bz2
 	source = http://www.dhondt.de/ccx_2.16.test.tar.bz2
-	source = http://www.dhondt.de/cgx_2.16.all.tar.bz2
+	source = http://www.dhondt.de/cgx_2.16.1.all.tar.bz2
 	source = calculix_2.16_archlinux.patch
 	sha256sums = ebd95a0e4d52a3a8fb969eefc85417c82f649f25526bb6d83d69868ab44d47b7
 	sha256sums = fcbeb4d03a960ec26b5027fd729f6a13b607ab5fece4c5673c16fa740592f687
-	sha256sums = 8389dbe31aa2d371f45f921743f39e91979e8bebb6cf43d5e645331c2f036ca1
-	sha256sums = e4017aae611a87b3c82357d9ee8794a38cf714d36a8da83d8c0ad546dfaad8f4
+	sha256sums = 0125efb8dfe47c920b266d8c6a326677eae3967a113a75c079405c1d9415cb54
+	sha256sums = 54f34feffd3c07b1cc1e1390e50b3f2db575c7f9c60d1fb4515e440d36c69bbd
 
 pkgname = calculix
 
