@@ -1,6 +1,6 @@
 pkgbase = karma-git
 	pkgdesc = Search of Emails and Passwords on Pwndb
-	pkgver = v1.0.0.r23.7cddd82
+	pkgver = 1.0.0.r23.7cddd82
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/decoxviii/karma

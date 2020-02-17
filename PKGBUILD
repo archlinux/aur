@@ -6,27 +6,29 @@ pkgname=karma-git
 _pkgname=karma
 
 epoch=1
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
-}
-pkgver=v1.0.0.r23.7cddd82
+pkgver() { git -C "$_pkgname" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
+pkgver=1.0.0.r23.7cddd82
 pkgrel=1
 
 pkgdesc='Search of Emails and Passwords on Pwndb'
 arch=('any')
-url="https://github.com/decoxviii/karma"
+url="https://github.com/decoxviii/$_pkgname"
 license=('MIT')
 
 makedepends=('git')
 depends=('python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 source=("git+$url.git")
 sha256sums=('SKIP')
 
+
+prepare() {
+  cd "$_pkgname"
+  sed -i 's/\(karma\)\.py/\1/g' "bin/$_pkgname"
+}
 
 build() {
   cd "$_pkgname"
