@@ -1,15 +1,15 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pacoloco-git
-pkgver=r21
+pkgver=r1
 pkgrel=1
-pkgdesc='Lightweight pacman proxy server'
-arch=(i686 x86_64)
+pkgdesc='Pacman caching proxy server'
+arch=(x86_64)
 url='https://github.com/anatol/pacoloco'
-backup=(etc/pacoloco.ini)
-license=(GPL3)
+backup=(etc/pacoloco.yaml)
+license=(MIT)
 depends=(glibc)
-makedepends=(git ragel)
+makedepends=(git go)
 source=(git://github.com/anatol/pacoloco)
 sha1sums=('SKIP')
 
@@ -21,12 +21,14 @@ pkgver() {
 
 build() {
   cd pacoloco
-  make
+  go build
 }
 
 package() {
   cd pacoloco
   install -D -m755 pacoloco "$pkgdir"/usr/bin/pacoloco
-  install -D -m644 systemd/pacoloco.service "$pkgdir"/usr/lib/systemd/system/pacoloco.service
-  install -D -m644 pacoloco.ini "$pkgdir"/etc/pacoloco.ini
+  install -D -m644 pacoloco.yaml.sample "$pkgdir"/etc/pacoloco.yaml
+  install -D -m644 pacoloco.sysusers.d "$pkgdir"/usr/lib/sysusers.d/pacoloco.conf
+  install -D -m644 pacoloco.service "$pkgdir"/usr/lib/systemd/system/pacoloco.service
+  install -D -m644 pacoloco.tmpfiles.d "$pkgdir"/usr/lib/tmpfiles.d/pacoloco.conf
 }

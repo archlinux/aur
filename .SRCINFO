@@ -1,15 +1,14 @@
 pkgbase = pacoloco-git
-	pkgdesc = Lightweight pacman proxy server
-	pkgver = r21
+	pkgdesc = Pacman caching proxy server
+	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/anatol/pacoloco
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	makedepends = git
-	makedepends = ragel
+	makedepends = go
 	depends = glibc
-	backup = etc/pacoloco.ini
+	backup = etc/pacoloco.yaml
 	source = git://github.com/anatol/pacoloco
 	sha1sums = SKIP
 
