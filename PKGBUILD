@@ -6,7 +6,7 @@
 
 pkgname='gnunet-git'
 _appname='gnunet'
-pkgver='0.11.8.r28462.03273ff52'
+pkgver='0.12.2.r28750.b03978816'
 pkgrel=1
 pkgdesc="A framework for secure peer-to-peer networking"
 arch=('any')
@@ -61,7 +61,7 @@ pkgver() {
 prepare() {
 
 	cd "${srcdir}/${_appname}"
-	autoreconf -fi
+	./bootstrap
 	sed -i 's|contrib doc|doc|' Makefile.*
 	[ -f Makefile ] || ./configure --prefix=/usr \
 	--without-mysql
