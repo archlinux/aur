@@ -8,7 +8,7 @@ grep "pkgver3=" PKGBUILD
 echo "Searching for updates..."
 
 REPO='http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/'
-PACKAGE=$(wget -qO- $REPO | perl -ne '/(?<=href=")(chromium-codecs-ffmpeg-extra_(\d*\.\d*\.\d*\.\d*)-(\dubuntu\d).(\d{2}\.\d{2}(?:\.\d)?)_amd64.deb)(?=").*\d*\.\d*M/ and print "$1#$2#$3#$4\n";' | sort | tail -n 1)
+PACKAGE=$(wget -qO- $REPO | perl -ne '/(?<=href=")(chromium-codecs-ffmpeg-extra_(\d*\.\d*\.\d*\.\d*)-(\dubuntu\d).(\d{2}\.\d{2}(?:\.\d)?)_amd64.deb)(?=").*\d*\.\d*M/ and print "$1#$2#$3#$4\n";' | sort --version-sort | tail -n 1)
 
 deb=$(echo $PACKAGE | cut -d# -f1)
 ver1=$(echo $PACKAGE | cut -d# -f2)
