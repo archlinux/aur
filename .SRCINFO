@@ -1,6 +1,6 @@
 pkgbase = haur
 	pkgdesc = Helper for the Arch User Repository
-	pkgver = 1.0
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/karx1/haur
 	arch = any
@@ -13,4 +13,3 @@ pkgbase = haur
 	md5sums = cc3f9f8eaa5cdb1254bc7e71916b6a0a
 
 pkgname = haur
-
