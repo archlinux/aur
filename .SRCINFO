@@ -17,6 +17,7 @@ pkgbase = kdeconnect-bluetooth
 	depends = kirigami2
 	optdepends = sshfs: remote filesystem browser
 	optdepends = python-nautilus: Nautilus integration
+	optdepends = bluez: Basic bluetooth support
 	provides = kdeconnect
 	source = https://download.kde.org/stable/kdeconnect-bluetooth/1.4/kdeconnect-bluetooth-kde-1.4.tar.xz
 	source = https://download.kde.org/stable/kdeconnect-bluetooth/1.4/kdeconnect-bluetooth-kde-1.4.tar.xz.sig
