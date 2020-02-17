@@ -1,7 +1,9 @@
 #!/bin/bash
 
+OUTPUT=$(haur)
+
 testEquality() {
-  assertEquals haur ""
+  assertEquals $OUTPUT ""
 }
 
 . shunit2-2.1.6/src/shunit2
