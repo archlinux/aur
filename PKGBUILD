@@ -11,7 +11,7 @@ depends=()
 optdepends=()
 conflicts=()
 options=()
-source=("${pkname}-v${pkgver}.tar.gz::https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/release.tar.gz")
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/release.tar.gz")
 sha256sums=('SKIP')
 
 package() {
