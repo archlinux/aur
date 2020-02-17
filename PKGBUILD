@@ -5,7 +5,7 @@
 
 pkgname=micro
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and intuitive terminal-based text editor"
 arch=("armv6h" "armv7h" "i686" "x86_64")
 url="https://github.com/zyedidia/${pkgname}"
@@ -14,7 +14,7 @@ depends=("glibc")
 makedepends=("git" "go")
 optdepends=('xclip: Required for copying/pasting text')
 source=(
-  "${pkgname}-${pkgver}::git+https://github.com/zyedidia/${pkgname}.git#tag=v1.4.1"
+  "${pkgname}-${pkgver}::git+https://github.com/zyedidia/${pkgname}.git#tag=v${pkgver}"
   "semver::git+https://github.com/blang/semver"
   "go-humanize::git+https://github.com/dustin/go-humanize"
   "errors::git+https://github.com/go-errors/errors"
