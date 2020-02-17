@@ -1,7 +1,7 @@
 # Maintainer: kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=scalafmt
-pkgver=2.3.2
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="code formatter for the Scala programming language"
 arch=('any')
@@ -16,9 +16,11 @@ build() {
     -r bintray:scalameta/maven \
     -o "${srcdir}/scalafmt.bin" \
     --standalone \
+    --force \
     --main org.scalafmt.cli.Cli
 }
 
 package() {
   install -Dm755 "${srcdir}/scalafmt.bin" "${pkgdir}/usr/bin/scalafmt"
 }
+
