@@ -10,7 +10,7 @@
 pkgname=python-nipype
 _name=${pkgname/python-/}
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Neuroimaging in python pipelines and interfaces'
 arch=('any')
 url='https://pypi.python.org/pypi/prov/'
@@ -44,14 +44,6 @@ _setpaths(){
 
 }
 
-prepare() {
-
-    cd ${srcdir}/${_name}-${pkgver}
-
-    # Allow most recent python-prov
-    sed -i 's^prov==^prov>=^g' requirements.txt rtd_requirements.txt nipype/info.py
-
-}
 
 build() {
 
