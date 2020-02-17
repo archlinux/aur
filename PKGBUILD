@@ -1,7 +1,7 @@
 # Maintainer: Warinyourself <warinyourself | gmail>
 
 pkgname=lightdm-webkit-theme-osmos
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A sleek, customizable Archlinux theme for lightdm."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('lightdm' 'lightdm-webkit2-greeter>=2.2.3')
 install='lightdm-webkit-theme-osmos.install'
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('70577af536e7c50a0e5407065cf36db5')
+md5sums=('98c9977055e5f8cda68084f587d39133')
 
 package() {
   cd "$pkgdir"
@@ -19,4 +19,4 @@ package() {
   cd usr/share/lightdm-webkit/themes/
   cp -r --recursive "$srcdir" "$pkgname"
 }
-md5sums=('70577af536e7c50a0e5407065cf36db5')
+md5sums=('98c9977055e5f8cda68084f587d39133')
