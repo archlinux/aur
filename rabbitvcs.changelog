@@ -1,5 +1,34 @@
-2014-29-01 Zeph <zeph33@gmail.com>
+	* 0.18
+    Migrated to GTK+3, GTK+2 is no longer supported
+    Now support python 3
+    Improved the annotate window
+    Allow for setting a default commit message
+    Add support for Pluma text editor
+    Rename the nautilus-3 and thunar-gtk3 clients to nautilus and thunar, previous clients are removed
+    Pulled in nemo extension
+    Tons of bug fixes and minor improvements
+
+	* 0.17.1
+		Update subversion to only save status objects for files and directories in the current view
+
+	* 0.16
+		Issue 316 Enhancement Colour-code entries in log
+		Issue 336 Enhancement Copy to clipboard from revision log
+		Issue 352 Enhancement Filter by Author or Date in Log/revision history
+		Issue 358 Enhancement Rethink layout of nautllus properties dialog
+		Issue 496 Enhancement Keyboard shortcut for closing dialogues
+		Issue 510 Enhancement RabbitVCS Git fetch --all
+		Issue 645 Enhancement Refresh in the commit-dialog
+		Issue 675 Enhancement Copy svn log to clipboard
+		Issue 703 Enhancement When viewing changes, allow multiple selections
+		Issue 714 Defect Regression - shortcut keys for closing log dialog
+		Issue 715 Defect Regression - filtering a log displays the wrong selections in the files UI.
+		Issue 720 Defect Regression - Forward buttons no longer enabled
+		Issue 728 Enhancement Nemo integration
+		Issue 843 Defect
+		Issue 692 Enhancement Apply patch by Francis Bisson for Caja integration
+		Issue 492 Defect Add the effective user id into the generated file paths
 
 	* 0.15.3-4 :
-	added ChangeLog.
-	added patch for git folder shows bomb emblem
+		added ChangeLog.
+		added patch for git folder shows bomb emblem
