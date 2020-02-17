@@ -6,7 +6,7 @@ pkgname=$_pkgname-git
 provides=($_pkgname)
 conflicts=($_pkgname)
 
-pkgver=r161.6a2489c
+pkgver=r166.4252e6d
 pkgrel=1
 arch=('x86_64')
 
@@ -33,8 +33,6 @@ build() {
   mkdir -p build
   cd build
   
-  # /usr/local -> /usr
-  find ../src -type f -exec sed -i -e 's|/usr/local/|/usr/|' {} \;
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
   cmake --build .
 }
