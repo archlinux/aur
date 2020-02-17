@@ -15,9 +15,10 @@ then
 for PACKAGE_NAME in "$@"
 do
 if [ $PACKAGE_NAME != "--remove" ] || [ $PACKAGE_NAME != "-r" ]
-then	
+then
 	echo "Removing $PACKAGE_NAME"
 	sudo pacman -Rns $PACKAGE_NAME
+	echo $PACKAGE_NAME > $HOME/.haur_cache
 fi
 done
 exit 0
