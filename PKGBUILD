@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname=pnglatex
-pkgver=de1de3c
+pkgver=7f8ca12
 pkgrel=1
 pkgdesc="Small script to turn LaTeX formulas into png images"
 arch=('any')

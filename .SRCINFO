@@ -1,6 +1,6 @@
 pkgbase = pnglatex
 	pkgdesc = Small script to turn LaTeX formulas into png images
-	pkgver = de1de3c
+	pkgver = 7f8ca12
 	pkgrel = 1
 	url = https://github.com/mneri/pnglatex
 	arch = any
