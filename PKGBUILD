@@ -6,7 +6,6 @@ pkgver=2019.09.03
 pkgrel=1
 url='http://www.zachtronics.com/eliza/'
 arch=(i686 x86_64)
-makedepends=(unzip)
 license=(custom)
 source=(
     local://Eliza_DRM-Free_Build_Linux_09.03.2019.zip
