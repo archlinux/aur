@@ -1,35 +1,43 @@
 # Maintainer: Pellegrino Prevete <cGVsbGVncmlub3ByZXZldGVAZ21haWwuY29tCg== | base -d>
 
-_pkgname="cheese"
-pkgname="$_pkgname"-git
-pkgver=3.34.0+21+ga6c7313d
-pkgrel=1
-pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
-url="https://blogs.gnome.org/clutter/"
-arch=(x86_64)
-license=(GPL2)
-depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango libxrandr)
-makedepends=(gobject-introspection git gtk-doc)
-_commit=60015d7d9756a89fb608887b52fa6b6a5a7db18d  # tags/1.22.4^0
-provides=("$_pkgname")
-conflicts=("$_pkgname" "cogl-git")
-replaces=("$_pkgname")
-source=("git+https://gitlab.gnome.org/GNOME/$_pkgname.git")
+_pkgname=cheese
+pkgname=$_pkgname-git
+pkgver=3.34.0+1+a6c7313d
+pkgrel=2
+pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
+url="https://wiki.gnome.org/Apps/Cheese"
+arch=(any)
+license=(GPL)
+depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutter-gst clutter-gtk
+         libcanberra librsvg gnome-desktop libgudev dconf gnome-video-effects)
+makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
+checkdepends=(xorg-server-xvfb)
+groups=(gnome)
+source=("git+https://gitlab.gnome.org/GNOME/cheese.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe | sed 's/-/+/g'
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd $_pkgname
+  git tag -f 3.34.0 61ff7a2c26b618cb24be7ca3c050530671055602  # Fixup missing tag
 }
 
 build() {
-  arch-meson $_pkgname build -D documentation=true
+  arch-meson $_pkgname build -D tests=true
   ninja -C build
 }
+
+check() (
+  glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/$_pkgname/data}"
+  export GSETTINGS_SCHEMA_DIR
+
+  xvfb-run meson test -C build --print-errorlogs
+)
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
 }
-
-
-# vim:set ts=2 sw=2 et:
