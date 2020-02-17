@@ -1,0 +1,19 @@
+post_install() {
+    getent passwd ofork > /dev/null 2>&1 || useradd -r -M -N -g http -s /bin/bash -d /usr/share/webapps/ofork ofork > /dev/null 2>&1
+    /usr/share/webapps/ofork/bin/ofork.SetPermissions.pl --ofork-user=ofork --web-group=http /usr/share/webapps/ofork > /dev/null 2>&1
+    chmod 2775 /usr/share/webapps/ofork
+}
+
+post_remove() {
+    getent passwd ofork > /dev/null 2>&1 && userdel -rf ofork > /dev/null 2>&1
+}
+
+pre_upgrade() {
+    chown 0:0 -R /etc/webapps/ofork
+    chown 0:0 -R /usr/share/webapps/ofork
+}
+
+post_upgrade() {
+    /usr/share/webapps/ofork/bin/ofork.SetPermissions.pl --ofork-user=ofork --web-group=http /usr/share/webapps/ofork > /dev/null 2>&1
+    chmod 2775 /usr/share/webapps/ofork
+}
