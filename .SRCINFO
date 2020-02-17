@@ -1,6 +1,6 @@
 pkgbase = protontricks
 	pkgdesc = A simple wrapper that does winetricks things for Proton enabled games.
-	pkgver = 1.4
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/Matoking/protontricks
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = protontricks
 	optdepends = zenity: GUI for GNOME desktop
 	provides = protontricks
 	conflicts = protontricks-git
-	source = git+https://github.com/Matoking/protontricks.git#tag=1.4
+	source = git+https://github.com/Matoking/protontricks.git#tag=1.4.1
 	sha512sums = SKIP
 
 pkgname = protontricks
