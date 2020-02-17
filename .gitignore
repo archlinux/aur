@@ -2,6 +2,7 @@
 /src
 /*.gz
 /*.xz
+/*.zst
 /*.tar
 /*.sig
 /*.rpm
