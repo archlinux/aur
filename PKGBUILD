@@ -3,11 +3,11 @@
 _gemname=solargraph
 pkgname=ruby-solargraph
 pkgver=0.38.5
-pkgrel=0
+pkgrel=1
 pkgdesc="A Ruby language server"
 arch=("any")
 depends=(
-  maruku
+  ruby-maruku
   ruby
   ruby-ast
   ruby-backport
