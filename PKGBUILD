@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20200205.r0.g14b549456391
+pkgver=20200217.r0.gc25a951c50dc
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -57,7 +57,7 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
-_lucjanver=5.4
+_lucjanver=5.6-rc
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
@@ -317,5 +317,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '823e5be350152e9f36342229156ffd59c2632d1aab3b85b55caad15bcf1fc6c55e7a22b5b28eecb84a9e96bbc351ca1d348c2ba4b66302134919bababef16a93'
-            '0b58154a521e41f6275f56198ed8613afaf70b3b793aeed526c00caa74f94dd6191f2358e4678e18add05f6423f472372a1f5cf6ea652197da296ed2a5628ba5')
+            '2ff3827235189dd2217b1b7dee31925e9a75e053f85b08ea1c544d608d632bc4e5b5fbd90d3e154998662bf89137bc854afa257e10ba2726ee3eea8e8e6a0b4b'
+            'a14808fd73c1d15ca1d73de1e0cf91cecc89332c8ed650352c972b116325c6126cb70e2a40b002616b2bcc9e9197f4486705c353ad3da300c7bbd6ce44ff3737')
