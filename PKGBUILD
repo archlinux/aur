@@ -7,7 +7,7 @@
 
 pkgname=atom-editor-bin
 pkgver=1.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hackable text editor built on Electron (official precompiled binary)"
 arch=('x86_64')
 url="https://github.com/atom/atom"
