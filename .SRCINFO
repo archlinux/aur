@@ -1,7 +1,7 @@
 pkgbase = mediawiki-extension-lockdown-git
-	pkgdesc = MediaWiki extension for selective cache disabling
+	pkgdesc = MediaWiki extension implementing per-namespace group permissions
 	pkgver = r145.0aac342
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mediawiki.org/wiki/Extension:Lockdown
 	arch = any
