@@ -8,7 +8,7 @@ _pkgname=karma
 epoch=1
 pkgver() { git -C "$_pkgname" describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=1.2.0.r10.7cddd82
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Search of Emails and Passwords on Pwndb'
 arch=('any')
@@ -16,7 +16,7 @@ url="https://github.com/decoxviii/$_pkgname"
 license=('MIT')
 
 makedepends=('git')
-depends=('python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
+depends=('tor' 'python-docopt' 'python-requests' 'python-pysocks' 'python-texttable')
 
 provides=("$_pkgname")
 conflicts=("$_pkgname")
