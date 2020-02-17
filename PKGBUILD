@@ -3,14 +3,14 @@
 
 _name=terraform-lsp
 pkgname=terraform-lsp-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Language Server Protocol for Terraform"
 arch=('x86_64')
 url="https://github.com/juliosueiras/terraform-lsp"
 license=('MIT')
 source=("https://github.com/juliosueiras/${_name}/releases/download/v${pkgver}/${_name}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('55fec793344f6377f53b6955a394cc87e15c4384d2ac9b4193c792de90c13f7a')
+sha256sums=('73624dde3d1bad07eb482534af56570e2b7218d3fd47fc0c0ea8fbb0c7a7d07a')
 
 package() {
   cd "${srcdir}"
