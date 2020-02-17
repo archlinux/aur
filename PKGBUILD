@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=loop
-pkgver=598ccc8
+pkgver=944df76
 pkgrel=1
 pkgdesc="UNIX's missing loop command"
 arch=('any')
