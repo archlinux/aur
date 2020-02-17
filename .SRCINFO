@@ -1,6 +1,6 @@
 pkgbase = ttyd
 	pkgdesc = Share your terminal over the web
-	pkgver = 1.5.2
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://tsl0922.github.io/ttyd/
 	arch = i686
@@ -11,10 +11,12 @@ pkgbase = ttyd
 	makedepends = vim
 	depends = json-c
 	depends = libpcap
-	depends = libwebsockets
+	depends = libwebsockets-libuv
 	depends = zlib
-	source = https://github.com/tsl0922/ttyd/archive/1.5.2/ttyd-1.5.2.tar.gz
-	sha512sums = a1b2931fed58d338fc73b531afe7ae097b30e84d761137068207d0ebd13dd19a330d9d2ec919c0436a9244d2cbfb8e42f1f4bcf9a095fb04934defd08ba78203
+	source = ttyd.service
+	source = https://github.com/tsl0922/ttyd/archive/1.6.0/ttyd-1.6.0.tar.gz
+	sha512sums = b6c731444ad78d68464082557a4b7dae857f2b86511810f055d2a4c8e1c7051328cdbcd1f8a43c322a2dd20c20474b483f9fa104785268bafdefb04cce54287d
+	sha512sums = f713ebfc4b36784a9a66b2ed1c11386c6edb2acfe8030e60f589f0d4325a9c237001d47c0de9938fa3d4c8d58cd8e233ec7fe9760fcda6b9fa5a518a4f4b7c90
 
 pkgname = ttyd
 
