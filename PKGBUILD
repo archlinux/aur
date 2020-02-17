@@ -22,7 +22,7 @@ source=("${_pkgbase}::git+https://github.com/matrix-hacks/${_pkgbase}"
 	   "${_pkgbase}@.service")
 sha256sums=('SKIP'
             '69aaa542079a8fa4a4ac73a0598acef5d2991a24b657af987c13014ee96e21e0'
-            'd59a393341a1b4a9843cb61374ddad42ed9d2790acb7903f8dd1619c73b81515'
+            '19bc3e24513c0c580dc862f2fc14f40baff9b4d2b09280586014042af32881bf'
             '7e17b23c7f23558e1cdee0bd3e3c0820c91ac1f05a2b7ce7edcbc750413aa371'
             '39ef6f75eed3c743bafc3974e83a8916446120985a5e2b39f9c6aa70abfbe585'
             'e80f54718c308237eeae039326c69e6b599c6578db3ed72ab7b79d2f8e1c38d6')
