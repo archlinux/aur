@@ -5,7 +5,6 @@ pkgbase = pak-config-pacman-git
 	url = https://gitlab.com/moussaelianarsen/pak
 	arch = x86_64
 	license = GPL3
-	depends = pacman
 	depends = aptman-git
 	provides = pak-config
 	conflicts = pak-config-yay-git
