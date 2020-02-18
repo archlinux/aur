@@ -23,7 +23,7 @@ minor='967956'
 amdver='2.4.99'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
-source=("https://drivers.amd.com/drivers/linux//${prefix}${major}-${minor}${postfix}.tar.xz")
+source=("https://drivers.amd.com/drivers/linux/${major}/${prefix}${major}-${minor}${postfix}.tar.xz")
 sha256sums=('d8bb480c72b4225ad864c60335d33254ce7d442590e8dd9c05659cc868b7be2f')
 
 pkgver() {

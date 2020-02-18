@@ -11,7 +11,7 @@ pkgbase = opencl-amd
 	depends = gcc-libs
 	provides = opencl-driver
 	conflicts = amdgpocl
-	source = https://drivers.amd.com/drivers/linux//amdgpu-pro-19.50-967956-ubuntu-18.04.tar.xz
+	source = https://drivers.amd.com/drivers/linux/19.50/amdgpu-pro-19.50-967956-ubuntu-18.04.tar.xz
 	sha256sums = d8bb480c72b4225ad864c60335d33254ce7d442590e8dd9c05659cc868b7be2f
 
 pkgname = opencl-amd
