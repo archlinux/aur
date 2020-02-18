@@ -1,6 +1,6 @@
 pkgbase = nikola-git
 	pkgdesc = A modular, fast, simple, static website generator. (git version)
-	pkgver = 8.0.1.r40.g1d544a5ae
+	pkgver = 8.0.4.r5.gc452d36a8
 	pkgrel = 1
 	url = https://getnikola.com/
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = nikola-git
 	depends = python-yapsy>=1.11.223
 	depends = python-pyrss2gen
 	depends = python-dateutil
-	depends = python-logbook
 	depends = python-blinker
 	depends = python-natsort
 	depends = python-setuptools
@@ -38,7 +37,7 @@ pkgbase = nikola-git
 	optdepends = python-phpserialize: for WordPress imports
 	optdepends = python-aiohttp: for nikola auto
 	optdepends = python-watchdog: for nikola auto
-	optdepends = python-yaml: for YAML metadata and datafiles
+	optdepends = python-pyyaml: for YAML metadata and datafiles
 	optdepends = python-toml: for TOML metadata and datafiles
 	conflicts = python-nikola
 	conflicts = python2-nikola

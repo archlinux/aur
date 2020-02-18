@@ -3,7 +3,7 @@
 _pyname=nikola
 _gitname=nikola
 pkgname=nikola-git
-pkgver=8.0.1.r40.g1d544a5ae
+pkgver=8.0.4.r5.gc452d36a8
 pkgrel=1
 pkgdesc='A modular, fast, simple, static website generator. (git version)'
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 options=(!emptydirs)
 depends=('python' 'python-doit' 'python-pygments' 'python-pillow'
          'python-docutils' 'python-mako' 'python-unidecode' 'python-lxml'
-         'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil' 'python-logbook'
+         'python-yapsy>=1.11.223' 'python-pyrss2gen' 'python-dateutil'
          'python-blinker' 'python-natsort' 'python-setuptools'
          'python-requests' 'python-piexif' 'python-markdown' 'python-babel')
 optdepends=('python-jinja: for Jinja2 themes'
@@ -28,7 +28,7 @@ optdepends=('python-jinja: for Jinja2 themes'
             'python-phpserialize: for WordPress imports'
             'python-aiohttp: for nikola auto'
             'python-watchdog: for nikola auto'
-            'python-yaml: for YAML metadata and datafiles'
+            'python-pyyaml: for YAML metadata and datafiles'
             'python-toml: for TOML metadata and datafiles')
 makedepends=('git')
 source=("git+https://github.com/getnikola/${_gitname}.git" "make_tab_completion.py")
@@ -38,8 +38,7 @@ replaces=('python-nikola-git' 'python2-nikola-git' 'python-nikola-doc-git')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  #git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g;s/7.8.8/8dev/'
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g'
 }
 
 package() {
