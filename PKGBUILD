@@ -3,7 +3,7 @@
 _pkgbase=Nordic
 pkgbase=nordic-kde-git
 pkgname=(nordic-kde-git kvantum-theme-nordic-git)
-pkgver=1.6.5.r34.gf0d3dc4
+pkgver=1.6.5.r38.g1315a16
 pkgrel=1
 pkgdesc="Theme for KDE Plasma 5 using the awesome Nord color pallete"
 arch=(any)
@@ -15,8 +15,12 @@ source=("git+${url}.git"
 sha256sums=(SKIP SKIP)
 
 pkgver() {
-  cd ${_pkgbase}
-  git describe --long --tags | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd ${_pkgbase}
+    git describe --long --tags | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    echo -e "X-KDE-fallbackPackage=org.kde.breeze.desktop\n" >> ${srcdir}/${_pkgbase}/kde/look-and-feel/metadata.desktop
 }
 
 package_nordic-kde-git() {
@@ -30,7 +34,9 @@ package_nordic-kde-git() {
     mkdir -p "${pkgdir}"/usr/share/color-schemes
     cp -r colorschemes/* "${pkgdir}"/usr/share/color-schemes
     cp -r konsole "${pkgdir}"/usr/share
-    cd ../../${_pkgbase}-kde
+    mkdir -p "${pkgdir}"/usr/share/plasma/look-and-feel/Nordic
+    cp -r look-and-feel/* "${pkgdir}"/usr/share/plasma/look-and-feel/Nordic
+    cd ${srcdir}/${_pkgbase}-kde
     rm -r LICENSE
     mkdir -p "${pkgdir}"/usr/share/plasma/desktoptheme/Nordic
     cp -r * "${pkgdir}"/usr/share/plasma/desktoptheme/Nordic
