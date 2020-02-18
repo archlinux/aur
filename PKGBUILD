@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libaec
-pkgver=1.0.2
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Adaptive Entropy Coding library (mingw-w64)"
 arch=('any')
@@ -8,9 +8,10 @@ license=('custom')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
-_md5=b30adc1abf805d7454896ab83c900eb8
+_md5=ea0b7d197a950b0c110da8dfdecbb71f
 source=("${url}/uploads/${_md5}/libaec-${pkgver}.tar.gz")
 sha256sums=('024722866eb859bf926d6f9cb20edd3f26e80a1bdbea1889e9235d5eca3106d0')
+sha256sums=('f2b1b232083bd8beaf8a54a024225de3dd72a673a9bcdf8c3ba96c39483f4309')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -19,15 +20,12 @@ build() {
   for _arch in ${_architectures}; do
 
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
-    ${_arch}-cmake \
-      -DBUILD_SHARED_LIBS=OFF \
-      ..
+    ${_arch}-cmake -DBUILD_SHARED_LIBS=OFF ..
     make
     popd
 
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake \
-      ..
+    ${_arch}-cmake ..
     make
     popd
   done
