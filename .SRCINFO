@@ -1,0 +1,22 @@
+pkgbase = needrestart-git
+	pkgdesc = Restart daemons after library updates.
+	pkgver = 3.4.r37.gd44354c
+	pkgrel = 1
+	url = https://github.com/liske/needrestart
+	arch = any
+	license = GPL
+	depends = perl-module-find
+	depends = perl-term-readkey
+	depends = perl-proc-processtable
+	depends = perl-sort-naturally
+	depends = perl-module-scandeps
+	depends = perl-libintl-perl
+	optdepends = iucode-tool: for outdated microcode detection
+	provides = needrestart
+	conflicts = needrestart
+	options = !emptydirs
+	source = git+https://github.com/liske/needrestart.git
+	sha256sums = SKIP
+
+pkgname = needrestart-git
+
