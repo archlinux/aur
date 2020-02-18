@@ -1,6 +1,6 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=python-parglare
-pkgver=0.9.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A pure Python scannerless LR/GLR parser"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-click')
 options=(!emptydirs)
 source=("https://github.com/igordejanovic/parglare/archive/${pkgver}.tar.gz")
-sha384sums=('37612cd65028a2d666e0ca39f5c5619d8664041a7777ba8fc585de918992eb4189a556b0ac215012303c866d2c740a2e')
+sha384sums=('37637cf5f3d99b2f7c77748cd2841bdd261e0192427fc8e0dd9b8e87337390e4f931b052667a4ae2a1fe54f18da5aade')
 
 package() {
     cd "$srcdir/parglare-${pkgver}"
