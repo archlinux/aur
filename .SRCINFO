@@ -1,7 +1,7 @@
 pkgbase = python-clickhouse-driver
 	pkgdesc = ClickHouse Python Driver with native (TCP) interface support
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mymarilyn/clickhouse-driver
 	arch = any
 	license = MIT
