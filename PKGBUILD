@@ -3,7 +3,7 @@
 pkgname=snake-terminal-git
 _pkgname=snake
 pkgver=r21.31af0e8
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal interface for Snake"
 arch=('i686' 'x86_64')
 url="https://github.com/samtay/snake"
