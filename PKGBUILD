@@ -3,7 +3,7 @@
 pkgname=wasm-pack
 pkgver=0.9.1
 pkgrel=1
-pkgdesc="Simple http server in Rust"
+pkgdesc="Your favorite rust -> wasm workflow tool!"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/rustwasm/wasm-pack"
 license=('MIT')

@@ -1,5 +1,5 @@
 pkgbase = wasm-pack
-	pkgdesc = Simple http server in Rust
+	pkgdesc = Your favorite rust -> wasm workflow tool!
 	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/rustwasm/wasm-pack
