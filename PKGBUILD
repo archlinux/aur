@@ -27,16 +27,18 @@ validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
+        "modern-dark.zip::https://github.com/eyedeekay/modern-dark/archive/master.zip"
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh'
         upstream-fixes.patch::'https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch')
 
 sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
             'SKIP'
+            'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
-            '7a4688db826c3dddb762976cd8c9a5d465255c3577069243d8e5af941a4126e2'
+            '90f202e5b66d5a5b425522b409e71fb892d34c534e32ce2d6fe5284015cacf94'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
             '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
             '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0'
@@ -98,4 +100,8 @@ package() {
         -e "s:clientApp.4.startOnLoad=.*:clientApp.4.startOnLoad=false:"
 
     rm -r opt/i2p/{osid,postinstall.sh,runplain.sh,INSTALL-headless.txt,LICENSE.txt,licenses,man,lib/wrapper*}
+
+    cp -rf "$srcdir"/modern-dark-master/themes "opt/i2p/docs/"
+    cd opt/i2p/docs/themes/console/dark-modern/images
+    ln -sf ../../dark/images/i2plogo.png i2plogo.png
 }
