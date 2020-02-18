@@ -1,0 +1,15 @@
+pkgbase = hunspell-be
+	pkgdesc = Belarusian hunspell dictionary (academic orthography)
+	pkgver = 0.58.1webext
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/belarusian-spellcheck-webext/
+	arch = any
+	license = CC-BY-SA 3.0
+	optdepends = hunspell: the spell checking libraries and apps
+	source = hunspell-be-0.58.1webext.zip::https://addons.mozilla.org/firefox/downloads/file/3362283/belarusian_spellcheck_dictionary-0.58.1webext.xpi
+	md5sums = 94c4b63df14d5a53710608a847549505
+	sha1sums = 4d540b9a63527943059fe692d5795ed5354d8e11
+	sha256sums = c6790b32db345d2d8064a8d68c253d016ce9c7902f1dc6837a932c6008eb89a2
+
+pkgname = hunspell-be
+
