@@ -2,7 +2,7 @@
 # https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-linux
 
 pkgname=azure-cli
-pkgver=2.0.81
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Command-line tools for Azure."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("python-azure-cli")
 source=("https://azurecliprod.blob.core.windows.net/install.py"
         "install.response"
         "az")
-sha256sums=("9dc76481771bb2e219217187a1331a85a426e685d4070867a42d5825956ee512"
+sha256sums=("8835ac5023e292b9c3afa44f7e9a2c0058c56789114891fb921ee85fbc9c2002"
             "7c05e9915a52fb72fa8d1c498b173c42457d669351313eaddccf43f86ed0e0ec"
             "990f70efec828c1e1f3f57748fc6e40f9705f2223dc96683e8e29d118daac116")
 
