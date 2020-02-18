@@ -2,7 +2,7 @@
 
 pkgbase=python-spynnaker-git
 pkgname=('python-spynnaker-git' 'python2-spynnaker-git')
-pkgver=4692.98a8fcf3e.3497.ac36bcaa.242.e954a29.460.12e29c5.791.1a59fec.2099.57546bc7.181.2e13446.755.67b4904.2298.0742876b.781.deaf5a7.1337.b843890.209.3815337.627.1fdb049
+pkgver=1
 pkgrel=1
 pkgdesc="Spinnaker implementation of PyNN"
 arch=('any')
