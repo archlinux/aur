@@ -1,53 +1,36 @@
-# Maintainer: Christoph W <c w e g e n e r at gmail dot com>
+# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Contributor: Christoph W <c w e g e n e r at gmail dot com>
 
-pkgname='usql'
-_gitname='usql'
-pkgver='0.6.0'
-pkgrel='1'
-pkgdesc='usql is a universal command-line interface for SQL databases'
+pkgname=usql
+pkgver=0.7.8
+pkgrel=1
+pkgdesc='A universal command-line interface for SQL databases'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://github.com/xo/usql'
+url="https://github.com/xo/usql"
 license=('MIT')
-depends=('go')
-makedepends=('go' 'git')
-provides=('usql')
-source=("git+https://github.com/xo/usql#tag=v$pkgver")
-md5sums=('SKIP')
-build()
-{
-  export GOPATH="$srcdir"
-  export GOBIN="$GOPATH/bin"
-  export PATH="$GOBIN:$PATH"
+depends=('icu')
+makedepends=('go-pie')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('d8d07324afe2478068f99b79e35ad5f5c06fa0e0051504cff5bce592ee75c6c2')
 
-  go get -u github.com/kardianos/govendor
+build() {
+    cd "$pkgname-$pkgver"
 
-  mkdir -p "$GOPATH/src/github.com/xo"
-  mv -f "$srcdir/usql" "$GOPATH/src/github.com/xo/"
+    TAGS="most sqlite_app_armor sqlite_fts5 sqlite_introspect sqlite_json1
+          sqlite_stat4 sqlite_userauth sqlite_vtable sqlite_icu no_adodb"
 
-  cd "$GOPATH/src/github.com/xo/usql"
-
-  echo "Building usql version=$pkgver"
-  TAGS="most fts5 vtable json1"
-  # Remove ADODB (unavailable on linux)
-  # Temporarily remove Avatica (does not compile successfully)
-  TAGS="$TAGS no_adodb no_avatica"
-
-  govendor init
-  govendor fetch ./...
-  govendor remove github.com/xo/usql/internal
-
-  go install -tags "$TAGS" \
-  -ldflags="-X github.com/xo/usql/text.CommandName=$pkgname -X github.com/xo/usql/text.CommandVersion=$pkgver"
-
-
+    go build \
+        -tags="$TAGS" \
+        -gcflags="all=-trimpath=$PWD" \
+	    -asmflags="all=-trimpath=$PWD" \
+        -ldflags="-extldflags $LDFLAGS
+                  -s -w -X github.com/xo/usql/text.CommandName=$pkgname
+                  -X github.com/xo/usql/text.CommandVersion=$pkgver" \
+        -o $pkgname .
 }
-package()
-{
-  cd $GOBIN
-  install -Dsm755 usql "$pkgdir/usr/bin/usql"
 
-  cd "$GOPATH/src/github.com/xo/usql"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/usql/README.md"
-  install -Dm644 "contrib/usqlpass" "${pkgdir}/usr/share/doc/usql/usqlpass"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/usql/LICENSE"
+package() {
+    cd $pkgname-$pkgver
+    install -Dm755 $pkgname -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
