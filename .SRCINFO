@@ -1,4 +1,4 @@
-pkgbase = aptman-git
+pkgbase = pak-git
 	pkgdesc = Changes pacman syntax to be more like APT
 	pkgver = r3.f0ec020
 	pkgrel = 1
@@ -14,5 +14,5 @@ pkgbase = aptman-git
 	source = git+https://gitlab.com/moussaelianarsen/pak.git
 	md5sums = SKIP
 
-pkgname = aptman-git
+pkgname = pak-git
 
