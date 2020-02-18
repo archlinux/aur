@@ -1,0 +1,19 @@
+pkgbase = pacmanlogviewer-git
+	pkgdesc = Inspect pacman log files
+	pkgver = 1.4.2.r0.g4271be3
+	pkgrel = 1
+	url = https://opendesktop.org/content/show.php?content=150484
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = pacmanlogviewer
+	conflicts = pacmanlogviewer
+	source = git+https://github.com/gcala/pacmanlogviewer.git
+	sha256sums = SKIP
+
+pkgname = pacmanlogviewer-git
+
