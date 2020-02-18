@@ -3,9 +3,8 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.2.3
-_commit=f2c1d58f97f35a4b33436ad9a1cb08f4f9a80676
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
 license=('GPL')
@@ -16,7 +15,8 @@ optdepends=('chromaprint: fingerprinting'
             'qt5-multimedia: media player toolbar'
             'qt5-translations: full UI translation')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/metabrainz/picard.git#commit=$_commit")
+source=("git+https://github.com/metabrainz/picard.git#tag=release-$pkgver?signed")
+validpgpkeys=('9FD61CE6F154EC5A3531D0DE23A723D6417E5D5A')
 sha256sums=('SKIP')
 
 build() {
