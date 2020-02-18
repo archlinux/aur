@@ -11,6 +11,7 @@ pkgbase = pak-git
 	license = GPLv3
 	makedepends = go
 	depends = pak-config
+	replaces = pak
 	source = git+https://gitlab.com/moussaelianarsen/pak.git
 	md5sums = SKIP
 
