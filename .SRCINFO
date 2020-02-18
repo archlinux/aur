@@ -1,6 +1,6 @@
 pkgbase = lprint
 	pkgdesc = A Label Printer Application
-	pkgver = 1.0rc1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/michaelrsweet/lprint
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = lprint
 	depends = cups
 	depends = libpng
 	depends = libusb
-	source = https://github.com/michaelrsweet/lprint/releases/download/v1.0rc1/lprint-1.0rc1.tar.gz
-	source = https://github.com/michaelrsweet/lprint/releases/download/v1.0rc1/lprint-1.0rc1.tar.gz.sig
+	source = https://github.com/michaelrsweet/lprint/releases/download/v1.0/lprint-1.0.tar.gz
+	source = https://github.com/michaelrsweet/lprint/releases/download/v1.0/lprint-1.0.tar.gz.sig
 	validpgpkeys = 845464660B686AAB36540B6F999559A027815955
-	md5sums = b913ef2c766607d88db7e07230ccd35c
+	md5sums = ecc32ed66eb94799bc2b06c9872fbe08
 	md5sums = SKIP
 
 pkgname = lprint

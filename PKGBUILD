@@ -1,7 +1,7 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=lprint
-pkgver=1.0rc1
+pkgver=1.0
 pkgrel=1
 pkgdesc="A Label Printer Application"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('apache')
 depends=('avahi' 'cups' 'libpng' 'libusb')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig})
 validpgpkeys=('845464660B686AAB36540B6F999559A027815955')  # M. Sweet
-md5sums=('b913ef2c766607d88db7e07230ccd35c'
+md5sums=('ecc32ed66eb94799bc2b06c9872fbe08'
          'SKIP')
 
 build() {
