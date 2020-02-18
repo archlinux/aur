@@ -1,5 +1,5 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
-pkgname=pak-config
+pkgname=pak-config-pacman
 pkgver=1.0
 pkgrel=4
 pkgdesc="A pacman config for pak"

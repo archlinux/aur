@@ -1,4 +1,4 @@
-pkgbase = pak-config
+pkgbase = pak-config-pacman
 	pkgdesc = A pacman config for pak
 	pkgver = 1.0
 	pkgrel = 4
@@ -16,5 +16,5 @@ pkgbase = pak-config
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = pak-config
+pkgname = pak-config-pacman
 
