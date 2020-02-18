@@ -1,6 +1,6 @@
 # Maintainer: Dr-Incognito <v2ray.dev at gmail dot com>
 pkgname=v2ray-desktop
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Cross-platform GUI Client for V2Ray written in Qt 5 and QML 2 (Stable Release)"
 arch=("x86_64")
@@ -21,9 +21,10 @@ prepare() {
 
 build() {
     cd "${srcdir}/V2Ray-Desktop"
-    sed -i "s/\"v2ray-core\"/\"\/usr\/bin\"/" src/constants.h
-    sed -i "s/Exec=%1/Exec=\/usr\/bin\/v2ray-desktop/" src/misc/tpl-linux-autostart.desktop
-    sed -i "s/Icon=/Icon=\/usr\/share\/icons\/hicolor\/256x256\/apps\//" src/misc/tpl-linux-autostart.desktop
+    sed -ie "s/V2RAY_USE_LOCAL_INSTALL[[:space:]]*= true/V2RAY_USE_LOCAL_INSTALL=false/" src/constants.h
+    sed -i "s/Exec=%1/Exec=\/opt\/v2ray-desktop\/v2ray-desktop/" src/misc/tpl-linux-autostart.desktop
+    sed -i "s/Icon=/Icon=\/opt\/v2ray-desktop\//" src/misc/tpl-linux-autostart.desktop
+    lrelease src/locales/zh-CN.ts
     mkdir -p build && cd build
     qmake PREFIX=/usr ../src
     make -j$nproc
@@ -31,7 +32,8 @@ build() {
 
 package() {
     cd "${srcdir}/V2Ray-Desktop"
-    install -Dm755 build/V2Ray-Desktop "${pkgdir}/usr/bin/v2ray-desktop"
+    install -Dm755 build/V2Ray-Desktop "${pkgdir}/opt/v2ray-desktop/v2ray-desktop"
+    install -Dm644 src/images/v2ray.png "${pkgdir}/opt/v2ray-desktop/v2ray-desktop.png"
+    install -Dm644 src/locales/zh-CN.qm "${pkgdir}/opt/v2ray-desktop/locales/zh-CN.qm"
     install -Dm644 src/misc/tpl-linux-autostart.desktop "${pkgdir}/usr/share/applications/v2ray-desktop.desktop"
-    install -Dm644 src/images/v2ray.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/v2ray-desktop.png"
 }
