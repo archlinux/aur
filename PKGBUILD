@@ -2,7 +2,7 @@
  
 _realname='gxr'
 pkgname="$_realname-git"
-pkgver=0.13.99.814.2ca7b4d
+pkgver=0.13.99.825.31c2296
 pkgrel=1
 pkgdesc='A glib wrapper for the OpenVR and OpenXR APIs.'
 arch=('i686' 'x86_64')
