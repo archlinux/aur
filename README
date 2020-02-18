@@ -1,0 +1,31 @@
+The systemd service mautrix-hangouts.service expects config and registration files here.
+
+Quick Setup:
+  ( adapted from https://github.com/tulir/mautrix-hangouts/wiki/Bridge-setup )
+
+1. Copy example config and ensure service can read it
+ sudo cp /usr/share/mautrix-hangouts/example-config.yaml /etc/synapse/mautrix-hangouts/config.yaml
+ sudo chown mautrix-hangouts /etc/synapse/mautrix-hangouts/config.yaml
+
+2. Update the config to your liking. You'll at least need to change the
+  homeserver settings. You also need to add your homeserver in the permissions
+  section and the auth server.
+
+3. Generate the registration:
+ sudo mautrix-hangouts -g -c /etc/synapse/mautrix-hangouts/config.yaml \
+	  -r /etc/synapse/mautrix-hangouts/registration.yaml \
+      -b /usr/share/mautrix-hangouts/example-config.yaml
+
+4. Add the registration file to Synapse's homeserver.yaml:
+ #homeserver.yaml
+ app_service_config_files:
+    - /etc/synapse/mautrix-hangouts/registration.yaml
+
+5. Restart synapse
+ sudo systemctl restart synapse
+
+6. Create/update the database:
+ sudo mautrix-hangouts-db-upgrade
+
+7. Start the bridge:
+ sudo systemctl start mautrix-hangouts

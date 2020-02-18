@@ -1,0 +1,18 @@
+# /usr/lib/systemd/system/matrix-puppet-hangouts@.service
+# /etc/systemd/system/hangouts-puppet.service
+[Unit]
+Description=Hangouts Matrix Puppet
+
+[Service]
+Type=simple
+User=mautrix-hangouts
+Group=mautrix-hangouts
+WorkingDirectory=/var/lib/mautrix-hangouts/
+ExecStart=/usr/bin/mautrix-hangouts -c /etc/synapse/mautrix-hangouts/config.yaml \
+          -r /etc/synapse/mautrix-hangouts/registration.yaml \
+          -b /usr/share/mautrix-hangouts/example-config.yaml
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
