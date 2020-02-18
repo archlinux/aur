@@ -2,14 +2,13 @@
 
 _pkgname=annapurna
 pkgname=ttf-sil-$_pkgname
-_fname=AnnapurnaSIL
+_fname=${_pkgname^}SIL
 pkgver=1.204
-pkgrel=1
+pkgrel=2
 pkgdesc='supports the many diverse languages that use the Devanagari script'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
 license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('d85cbd17f90a882255eb6f915729e164703c2b708b80ebd96db948556c13e9f0')
 

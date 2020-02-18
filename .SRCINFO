@@ -1,12 +1,10 @@
 pkgbase = ttf-sil-annapurna
 	pkgdesc = supports the many diverse languages that use the Devanagari script
 	pkgver = 1.204
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.sil.org/annapurna
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = http://software.sil.org/downloads/r/annapurna/AnnapurnaSIL-1.204.zip
 	sha256sums = d85cbd17f90a882255eb6f915729e164703c2b708b80ebd96db948556c13e9f0
 
