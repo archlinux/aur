@@ -1,6 +1,6 @@
 pkgbase = opencamlib-git
 	pkgdesc = Multi-Purpose CNC Toolpath Library
-	pkgver = 2018.08.25.gf31b0a6
+	pkgver = 2019.07.4.g983a416
 	pkgrel = 1
 	url = https://github.com/aewallin/opencamlib
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = opencamlib-git
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
-	depends = python2
+	depends = python
 	depends = boost
 	provides = opencamlib
 	conflicts = opencamlib
