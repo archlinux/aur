@@ -1,11 +1,12 @@
 # Maintainer: Ryan Pepper <pypper@protonmail.com>
 # Maintainer: Daniel Landau <daniel@landau.fi>
 # Maintainer: Christian Bundy <christianbundy@fraction.io>
+# Maintainer: Linus Karlsson <linus@zozs.se>
 
 pkgname=ssb-patchwork
 _upstream=patchwork
-pkgver=3.17.2
-pkgrel=2
+pkgver=3.17.3
+pkgrel=1
 pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
 arch=('i686' 'x86_64')
 url="https://github.com/ssbc/patchwork"
@@ -20,7 +21,7 @@ source=(
 )
 
 sha256sums=(
-'87f9fffa7a608c34f69829eabbd85e723d0a0aabee924517fbb2a75ded0b103b'
+'966221a8797bf64a6c01428f7813d42b9dbf726c972f8fc4b9230c5b67f3c4b5'
 '971e80b18637bacc329ac5e1eb902e81a73495b513b903d7aeb67fcf479cb04e'
 'b226436970db40030ad03e9cd847c103aa534d775cd81212308e86a23917d76a'
 )
