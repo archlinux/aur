@@ -1,0 +1,14 @@
+pkgbase = python2-jsonschema
+	pkgdesc = An implementation of JSON Schema validation for Python
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/jsonschema/
+	arch = any
+	license = MIT
+	makedepends = python2
+	makedepends = python2-setuptools
+	source = https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-3.2.0.tar.gz
+	sha256sums = c8a85b28d377cc7737e46e2d9f2b4f44ee3c0e1deac6bf46ddefc7187d30797a
+
+pkgname = python2-jsonschema
+
