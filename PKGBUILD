@@ -1,12 +1,12 @@
 # Maintainer: Sam Guymer <sam at guymer dot me>
-# https://github.com/SAP/SapMachine/releases/download/sapmachine-11.0.6/sapmachine-jdk-11.0.6_linux-x64_bin.tar.gz
+# https://github.com/SAP/SapMachine/releases/download/sapmachine-11.0.6.0.1/sapmachine-jdk-11.0.6.0.1_linux-x64_bin.tar.gz
 
 _packagename=sapmachine
 _java_ver=11
 _jdkname=${_packagename}-jdk-${_java_ver}
 pkgname="${_jdkname}-bin"
-_sapmachine_jdk_build=11.0.6+10-LTS-sapmachine
-pkgver=11.0.6
+_sapmachine_jdk_build=11.0.6.0.1+10-LTS-sapmachine
+pkgver=11.0.6.0.1
 pkgrel=1
 pkgdesc='This project contains a downstream version of the OpenJDK project. It is used to build and maintain a SAP supported version of OpenJDK for SAP customers and partners who wish to use OpenJDK to run their applications.'
 arch=('x86_64')
@@ -33,7 +33,7 @@ provides=(
 install="${_packagename}-jdk-bin.install"
 _tarballname="sapmachine-jdk-${pkgver}_linux-x64_bin"
 source=("https://github.com/SAP/SapMachine/releases/download/${_packagename}-${pkgver}/${_tarballname}.tar.gz")
-sha256sums=('9bc9af984caaa531d46a7ea8ef38e2e24eb5ac331d7f783f90d9801b332719bf')
+sha256sums=('697d5575ac0a9f24ee4f7a11d264311f2ca0e05841305236fd02d47325792e25')
 
 _jvmdir="/usr/lib/jvm/${_jdkname}"
 
