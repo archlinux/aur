@@ -1,15 +1,16 @@
 pkgbase = python2-jmespath
-	pkgdesc = allows you to declaratively specify how to extract elements from a JSON document.
-	pkgver = 0.7.1
-	pkgrel = 1
-	url = https://github.com/boto/jmespath
+	pkgdesc = A query language for JSON
+	pkgver = 0.9.4
+	pkgrel = 3
+	url = https://github.com/jmespath/jmespath
 	arch = any
 	license = Apache
-	makedepends = python2
-	makedepends = python2-distribute
-	source = jmespath-0.7.1.tar.gz::https://github.com/boto/jmespath/archive/0.7.1.tar.gz
-	sha256sums = 7d158a87b3629e216f6169409380801d7b1f7d2313485dcc20069882314ce9f9
+	checkdepends = python2-nose
+	checkdepends = python2-py
+	makedepends = python2-setuptools
+	depends = python2
+	source = -0.9.4.tar.gz::https://github.com/jmespath/jmespath.py/archive/0.9.4.tar.gz
+	sha512sums = 38b8d27dbd13d5ab056e115f4e8048fd54d649955dfcb2c296fe14dc684cd729351618c06c5b9a4b4d27798cfec6c2b7b340f498e961475e6fb3c9640b4e51ae
 
 pkgname = python2-jmespath
-	depends = python2
 

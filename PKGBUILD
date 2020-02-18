@@ -1,48 +1,34 @@
-# $Id$
-# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Chris Severance aur.severach AatT spamgourmet.com
 # Contributor: Chris Fordham <chris [at] fordham-nagy [dot] id [dot] au> aka flaccid
 # Package Source: https://github.com/flaccid/archlinux-packages/blob/master/python-jmespath/PKGBUILD
 
-set -u
-_pyver="python2"
-_pybase='jmespath'
-pkgname="${_pyver}-${_pybase}"
-pkgver='0.7.1'
-pkgrel='1'
-pkgdesc='allows you to declaratively specify how to extract elements from a JSON document.'
+pkgname=python2-jmespath
+pkgver=0.9.4
+pkgrel=3
+pkgdesc='A query language for JSON'
 arch=('any')
-#url="https://pypi.python.org/pypi/${_pybase}/"
-url="https://github.com/boto/${_pybase}"
-license=('Apache') # Apache License 2.0
-makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
-_srcdir="${_pybase}.py-${pkgver}"
-#_verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
-source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('7d158a87b3629e216f6169409380801d7b1f7d2313485dcc20069882314ce9f9')
+url="https://github.com/jmespath/jmespath"
+license=('Apache')
+depends=('python2')
+makedepends=('python2-setuptools')
+checkdepends=('python2-nose' 'python2-py')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/jmespath/jmespath.py/archive/$pkgver.tar.gz")
+sha512sums=('38b8d27dbd13d5ab056e115f4e8048fd54d649955dfcb2c296fe14dc684cd729351618c06c5b9a4b4d27798cfec6c2b7b340f498e961475e6fb3c9640b4e51ae')
 
 build() {
-  set -u
-  cd "${_srcdir}"
-  ${_pyver} setup.py build
-  set +u
+  cd "$srcdir"/jmespath.py-$pkgver
+  python2 setup.py build
 }
 
 check() {
-  set -u
-  cd "${_srcdir}"
-  # If pip is installed, some package tests download missing packages. We can't allow that.
-  #${_pyver} setup.py test --verbose
-  set +u
+  cd "$srcdir"/jmespath.py-$pkgver
+  LC_CTYPE=en_US.utf8 nosetests2
 }
 
 package() {
-  set -u
-  depends=("${_pyver}") # "${_pydepends[@]}")
-  cd "${_srcdir}"
-  ${_pyver} setup.py install --root="${pkgdir}"
-  install -Dpm644 'LICENSE.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  set +u
-}
-set +u
+  cd jmespath.py-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
 
-# vim:set ts=2 sw=2 et:
+  mv "$pkgdir"/usr/bin/jp{,2}.py
+}
