@@ -22,7 +22,7 @@ pkgver() {
 }
 
 build() {
-  mkdir "$srcdir/opencamlib/build"
+  mkdir -p "$srcdir/opencamlib/build"
   cd "$srcdir/opencamlib/build"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_PY_3="ON" -DBUILD_PY_LIB="ON" ../src
   make
