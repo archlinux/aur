@@ -8,7 +8,6 @@ pkgbase = pak-config-pacman
 	depends = pacman
 	depends = pak
 	depends = swift-language
-	provides = pak-config
 	provides = pacwrap
 	conflicts = pak-config-yay
 	source = https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacwrap/pacwrap.swift
