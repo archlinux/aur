@@ -1,0 +1,16 @@
+pkgbase = pixterm
+	pkgdesc = Draw images in your ANSI terminal with true color
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/eliukblau/pixterm
+	arch = x86_64
+	arch = i686
+	license = MPL2
+	makedepends = go
+	provides = pixterm
+	conflicts = pixterm-git
+	source = https://github.com/eliukblau/pixterm/archive/v1.3.1.tar.gz
+	sha256sums = cf824dda268b931e8af6867af0576aaa53b42eec286e1ae38bed77561c0be482
+
+pkgname = pixterm
+
