@@ -2,7 +2,7 @@
 
 pkgname=joystickwake
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A joystick-aware screen waker'
 arch=('any')
 url="https://github.com/foresto/joystickwake"
@@ -16,7 +16,7 @@ sha256sums=('ac9dc689797eafef7a214fd6cbe50b9e68270239363e377a43c504ce709fd34f')
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkname}"
-  cp LICENSE "${pkgdir}/usr/share/licenses/${pkname}"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 

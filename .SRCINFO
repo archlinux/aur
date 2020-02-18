@@ -1,7 +1,7 @@
 pkgbase = joystickwake
 	pkgdesc = A joystick-aware screen waker
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/foresto/joystickwake
 	arch = any
 	license = MIT
