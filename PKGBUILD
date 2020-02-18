@@ -2,7 +2,7 @@
 
 pkgname=coppeliasim
 pkgver=4_0_0
-pkgrel=1
+pkgrel=2
 pkgdesc="CoppeliaSim, formerly known as V-REP, is the Swiss army knife among robot simulators."
 arch=("x86_64")
 url="http://www.coppeliarobotics.com/index.html"
@@ -15,7 +15,7 @@ provides=('vrep')
 install=""
 source=("http://www.coppeliarobotics.com/files/CoppeliaSim_Edu_V${pkgver}_Ubuntu18_04.tar.xz"
         "coppeliasim.sh")
-md5sums=('efffc21811fc7295f6db76516eb71534'
+md5sums=('3634eaa7b5e01c258422b11761430dfc'
          'c6ac387b3f540d5d6a7bcb0b97c67828')
 prepare()
 {
