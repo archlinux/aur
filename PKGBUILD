@@ -1,7 +1,7 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=webthings-gateway
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='WebThings Gateway by Mozilla'
 url='https://iot.mozilla.org/gateway/'
 arch=('x86_64')
@@ -12,18 +12,12 @@ depends=(
   'nodejs<13.0.0'        # we only test up to 12.x
   'pagekite'
   'python-adapt-parser'
-  'python-argparse'      # this is really a dependency of python-adapt-parser
   'python-gateway-addon'
-  'python-pip'
-  'python-pyee'          # this is really a dependency of python-adapt-parser
-  'python-six'           # this is really a dependency of python-adapt-parser
 )
 makedepends=(
   'git'
   'jq'
   'npm'
-  'python-setuptools'
-  'python-wheel'
   'python2'
 )
 optdepends=(
@@ -35,7 +29,6 @@ optdepends=(
 backup=()
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-iot/gateway/archive/${pkgver}.tar.gz"
-  "gateway-addon-python.tar.gz::https://github.com/mozilla-iot/gateway-addon-python/archive/v0.11.0.tar.gz"
   "intent-parser.zip::https://github.com/mozilla-iot/intent-parser/archive/52b1d7f1f9d53d83adb813bc7bfbbbed203c0627.zip"
   "${pkgname}.conf"
   "${pkgname}.install"
@@ -46,7 +39,6 @@ source=(
 )
 sha256sums=(
   '2b1b79b92af7e580b9d520c5e439197893f9fa2e77a6e04e57a1a395dd896c6a'
-  '748ab1687c96fbad54832bf44db0b169a1d8d9cc6595d861ded4218e90a7a159'
   'b59382026981c14bd5a08c82cb88d9ebb159ed98b0fb7bcaf954bc2f41f7b2d5'
   '8c2f4a28c9bdd4571d27e98e1f4beecd9fc7d8bfa57c412f2d749d4c0a774cde'
   '60a275bf3a4b93defcc2a47a0833e9baf2e019443f401a4399e81277f8c9bf5c'
