@@ -3,11 +3,11 @@
 
 pkgname=openvpn-openssl-1.0
 _pkgname=openvpn
-pkgver=2.4.7
-pkgrel=2
+pkgver=2.4.8
+pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network) (build against openssl-1.0)'
 arch=('i686' 'x86_64')
-url='http://openvpn.net/index.php/open-source.html'
+url='https://openvpn.net/index.php/open-source.html'
 depends=('openssl-1.0' 'lzo' 'iproute2' 'systemd-libs' 'pkcs11-helper')
 conflicts=('openvpn')
 provides=('openvpn')
@@ -15,22 +15,27 @@ optdepends=('easy-rsa: easy CA and certificate handling'
             'pam: authenticate via PAM')
 makedepends=('git' 'systemd')
 license=('custom')
-source=("git+git://github.com/OpenVPN/openvpn.git#tag=v${pkgver}")
+source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}"/${_pkgname}
 
-  autoreconf -i
+  autoreconf --force --install
 }
 
 build() {
   mkdir "${srcdir}"/build
   cd "${srcdir}"/build
 
+  # for reproducibility we force bash for build system:
+  # https://www.mail-archive.com/openvpn-devel@lists.sourceforge.net/msg19302.html
+  # https://www.gnu.org/software/autoconf/manual/autoconf-2.69/html_node/Defining-Variables.html
+
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
-  "${srcdir}"/${_pkgname}/configure \
+  CONFIG_SHELL=/bin/bash "${srcdir}"/${_pkgname}/configure \
+    CONFIG_SHELL=/bin/bash \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --enable-iproute2 \
