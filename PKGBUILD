@@ -6,8 +6,8 @@
 pkgname=perl-app-cope
 _appname=cope
 _dist=App-Cope
-pkgver=1.00
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="A wrapper around programs that output to a terminal, to give them colour for utility and aesthetics while still keeping them the same at the text level."
 url=http://stuff.cytzol.org/cope/
 arch=(any)
@@ -21,8 +21,8 @@ conflicts=($_appname)
 provides=($_appname)
 install="${pkgname}.install"
 
-source=("${_dist}-${pkgver}.tar.gz::https://github.com/nichivo/cope/releases/download/v${pkgver}/${_dist}-${pkgver}.tar.gz")
-sha256sums=('2c26109f01dd76e58523e0e9c96665df955119033fefe8e34f13a79a6a6d1eb2')
+source=("${_dist}-${pkgver}::git+https://github.com/xvybihal/cope.git#branch=v1.1")
+sha256sums=('SKIP')
 
 
 build() {
