@@ -7,6 +7,7 @@ arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
 license=('GPL3')
 depends=('aptyay-git')
+replaces=('pak-config-yay')
 provides=('pak-config')
 source=("https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/yay/pak.cfg")
 md5sums=('SKIP')
