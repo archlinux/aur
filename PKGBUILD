@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=python-django-q
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A multiprocessing distributed task queue for Django'
 arch=(any)
@@ -19,13 +19,13 @@ makedepends=(
   git
   python-setuptools
 )
-source=(git+https://github.com/Koed00/django-q.git#tag=3389e00f09b7ca542dd1b5d9d9de06f472f25622)
+source=(git+https://github.com/Koed00/django-q.git#tag=17c1e2b651dad8becb2d7df196f4a0e648c1bdaf)
 sha256sums=(SKIP)
 
 pkgver() {
   cd django-q
 
-  git describe --tags | sed 's/^v.//'
+  git describe --tags | sed 's/^v//'
 }
 
 build() {
