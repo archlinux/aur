@@ -1,7 +1,7 @@
 _hkgname=terminal-progress-bar
 pkgname=haskell-terminal-progress-bar
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple progress bar in the terminal"
 url="http://hackage.haskell.org/package/terminal-progress-bar"
 license=('BSD')
