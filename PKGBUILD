@@ -4,12 +4,11 @@ _pkgname=mingzat
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
 pkgver=1.000
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode font based on Jason Glavy’s JG Lepcha'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('7e1fe44012da7843c63263fe161abd12d4309f9cef00cb58d1055dd812d8e6ba')
 
