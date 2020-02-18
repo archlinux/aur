@@ -1,7 +1,7 @@
 #Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
 
 pkgname=liquidctl
-pkgver='1.3.0'
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 url="https://github.com/jonasmalacofilho/liquidctl"
@@ -10,7 +10,7 @@ makedepends=()
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-${pkgver}.tar.gz")
-sha256sums=('ce0483b0a7f9cf2618cb30bdf3ff4195e20d9df6c615f69afe127f54956e42ce')
+sha256sums=('d13180867e07420c5890fe1110e8f45fe343794549a9ed7d5e8e76663bc10c24')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
