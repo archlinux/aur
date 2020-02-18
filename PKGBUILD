@@ -12,7 +12,7 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.11.4.2.r645.gcf9c8f8
+pkgver=0.11.5.1.r673.g07d08b5
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -22,12 +22,13 @@ license=('GPL3' 'custom')
 makedepends=('git')
 depends=('bash' 'dosfstools' 'efibootmgr')
 optdepends=('sudo: privilege elevation'
-            'parted: For finding ESP'
+            'gptfdisk: For finding ESP'
             'imagemagick: For refind-mkfont script'
             'python: For refind-mkdefault script'
-            'sbsigntools: For EFI binary signing (Secure Boot support)'
-            'preloader-signed: pre-signed shim loader (Secure Boot support)'
-            'shim-signed: pre-signed shim loader (Secure Boot support)')
+            'openssl: To generate Secure Boot keys'
+            'sbsigntools: For EFI binary signing'
+            'preloader-signed: pre-signed Secure Boot shim loader'
+            'shim-signed: pre-signed Secure Boot shim loader')
 
 options=('!strip' '!buildflags' '!makeflags')
 
