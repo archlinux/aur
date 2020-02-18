@@ -4,7 +4,7 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2018.11.26.r641.g02fc6396
+pkgver=2018.11.26.r683.gd10b2a21
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
 url="https://pipenv.readthedocs.io"
@@ -80,4 +80,7 @@ package() {
   PIPENV_SHELL=bash python -m pipenv --completion | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/pipenv"
   PIPENV_SHELL=zsh  python -m pipenv --completion | install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_pipenv"
   PIPENV_SHELL=fish python -m pipenv --completion | install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/pipenv.fish"
+
+  cd pipenv/vendor
+  find -name '*LICENSE' -type f -exec install -Dm 644 {} "${pkgdir}/usr/share/licenses/${pkgname}/vendor/{}" \;
 }
