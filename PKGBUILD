@@ -1,6 +1,6 @@
 # Contributor: Martin Grønlien Pejcoch <mpejcoch@gmail.com>
 pkgname=ecflow
-pkgver=5.2.2
+pkgver=5.2.3
 pkgrel=1
 pkgdesc="ecFlow - workflow manager from ECMWF"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/8650755/ecFlow-${pkgver}-Source.tar.gz)
 noextract=()
-sha256sums=('ebb2e556a996ac9cc743d025cbdda68db353b1df12318b16ebc1f4e06d2d6096')
+sha256sums=('8a863a33a23d61c0e85c28eab7292409b99567a902f80566a07731e524258c01')
 
 prepare() {
   cd ecFlow-${pkgver}-Source
