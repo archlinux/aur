@@ -1,7 +1,5 @@
 pkgname=mingw-w64-paraview58
-_majordotminor=5.8
-pkgver=${_majordotminor}.0
-_pkgver=${pkgver}-RC3
+pkgver=5.8.0
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -12,13 +10,13 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-eigen' 'mingw-w64-utf8cpp' 'mingw-w64-
 provides=('mingw-w64-paraview')
 conflicts=('mingw-w64-paraview')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("http://paraview.org/files/v${_majordotminor}/ParaView-v${_pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz")
+sha256sums=('a6f3bbab3b4cb98beaeae5699e62562330210cddeadcfaa7cce8f9d25bac5e85')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
-  cd "${srcdir}/ParaView-v${_pkgver}"
+  cd "${srcdir}/ParaView-v${pkgver}"
   cd VTK
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6296.patch | patch -p1
   curl -L https://gitlab.kitware.com/vtk/vtk/merge_requests/6406.patch | patch -p1
@@ -26,7 +24,7 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/ParaView-v${_pkgver}"
+  cd "${srcdir}/ParaView-v${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
@@ -47,7 +45,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/ParaView-v${_pkgver}/build-${_arch}
+    cd "$srcdir"/ParaView-v${pkgver}/build-${_arch}
     make install/fast DESTDIR="$pkgdir"
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
