@@ -1,9 +1,9 @@
 pkgbase = mangohud
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = meson
 	makedepends = python-mako
 	makedepends = glslang
