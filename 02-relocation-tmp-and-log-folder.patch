@@ -1,0 +1,15 @@
+diff --git a/bin/htrace.sh b/bin/htrace.sh
+index 125f078..549bdc5 100755
+--- a/bin/htrace.sh
++++ b/bin/htrace.sh
+@@ -74,8 +74,8 @@ readonly _rel="${_init_directory}/.."
+ # shellcheck disable=SC2154
+ readonly _src="${_rel}/src"
+ readonly _lib="${_rel}/lib"
+-readonly _tmp="${_rel}/tmp"
+-readonly _log="${_rel}/log"
++readonly _tmp="$(mktemp -d)"
++readonly _log="/tmp/htrace.sh-log"
+ 
+ # shellcheck disable=SC1090
+ source "${_src}/../config"

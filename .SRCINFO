@@ -1,0 +1,30 @@
+pkgbase = htrace.sh
+	pkgdesc = A shell script for http/https troubleshooting and profiling
+	pkgver = 1.1.7
+	pkgrel = 1
+	url = https://github.com/trimstray/htrace.sh
+	arch = any
+	license = MIT
+	depends = bind-tools
+	depends = mmdblookup
+	depends = bc
+	depends = jq
+	depends = testssl.sh
+	depends = nodejs-observatory-cli
+	depends = ssllabs-scan
+	depends = mixed-content-scan
+	depends = nmap
+	depends = subfinder
+	depends = wafw00f
+	depends = nghttp2
+	provides = htrace.sh
+	conflicts = htrace.sh
+	source = https://github.com/trimstray/htrace.sh/archive/v1.1.7.tar.gz
+	source = 01-rename-testssl.patch
+	source = 02-relocation-tmp-and-log-folder.patch
+	sha256sums = 727b684361d2cb88c605471f9d030e0f132d9d8bde7fb2734d8753b4e7cf73bc
+	sha256sums = dd15bd186d5e32dc1d87997bde068d07fa32c61385466aeee0896c300d32071a
+	sha256sums = 8feae39f2f3a4fb2b0c24734bdfdd778aa8b12848b4f2d7c81fe3a04eb7553ff
+
+pkgname = htrace.sh
+
