@@ -27,7 +27,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname%-git}"
-  sed 's|#include <ncursesw/ncurses.h>|#include <ncurses.h>|' -i "${srcdir}/${pkgname%-git}/gptcurses.cc"
+  # https://sourceforge.net/p/gptfdisk/discussion/939590/thread/bc29ca06f8/
+  sed -i '/^#include /s|ncursesw/||' gptcurses.cc
 }
 
 build() {
