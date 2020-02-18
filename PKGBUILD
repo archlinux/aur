@@ -4,12 +4,11 @@ _pkgname=galatia
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}SIL
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode font to support Biblical Polytonic Greek'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('0d0a34646a18267c5147ee01448268098ebb00c4563eb6e9260037f2d171aa92')
 

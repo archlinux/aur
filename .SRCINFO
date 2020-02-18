@@ -1,12 +1,10 @@
 pkgbase = ttf-sil-galatia
 	pkgdesc = Unicode font to support Biblical Polytonic Greek
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://software.sil.org/galatia
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
+	license = OFL
 	source = http://software.sil.org/downloads/r/galatia/GalatiaSIL-2.1.zip
 	sha256sums = 0d0a34646a18267c5147ee01448268098ebb00c4563eb6e9260037f2d171aa92
 
