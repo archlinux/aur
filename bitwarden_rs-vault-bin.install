@@ -1,0 +1,47 @@
+post_install() {
+	# Patch config to make bitwarden_rs aware of vault 
+	echo "Trying to automatically reconfigure bitwarden_rs by patching /etc/bitwarden_rs.env ..."
+	echo '--- /etc/bitwarden_rs.env       2018-07-12 12:10:14.679534090 +0200
++++ /etc/bitwarden_rs.env       2018-07-12 12:21:34.165391938 +0200
+@@ -13,4 +13,4 @@
+ ## Web vault settings
+-# WEB_VAULT_FOLDER=web-vault/
++WEB_VAULT_FOLDER=/usr/share/bitwarden_rs/vault/
+-WEB_VAULT_ENABLED=false
++# WEB_VAULT_ENABLED=true
+ 
+'|patch /etc/bitwarden_rs.env >/dev/null
+        
+        if [ $? -eq  0 ];  then
+		echo "Reconfiguring successful!, please restart bitwarden_rs.service!"
+	else
+		echo "Patching failed. Please insert the following two lines into /etc/bitwarden_rs.env (make sure that DOMAIN is (un)set correctly) and restart bitwarden_rs.service"
+		echo "WEB_VAULT_FOLDER=/usr/share/bitwarden_rs/vault/"
+		echo "WEB_VAULT_ENABLED=true"
+	fi
+
+}
+
+
+post_remove() {
+	# Patch config to disable vault
+	echo "Trying to automatically reconfigure bitwarden_rs by patching /etc/bitwarden_rs.env ..."
+	echo '--- /etc/bitwarden_rs.env       2018-07-12 12:10:14.679534090 +0200
++++ /etc/bitwarden_rs.env       2018-07-12 12:21:34.165391938 +0200
+@@ -13,4 +13,4 @@
+ ## Web vault settings
+-WEB_VAULT_FOLDER=/usr/share/bitwarden_rs/vault/
++# WEB_VAULT_FOLDER=web-vault/
+-# WEB_VAULT_ENABLED=true
++WEB_VAULT_ENABLED=false
+ 
+'|patch /etc/bitwarden_rs.env >/dev/null
+	
+	if [ $? -eq  0 ]; then
+		echo "Reconfiguring successful!, please restart bitwarden_rs.service!"
+	else
+		echo "Patching failed. Please change /etc/bitwarden_rs.env to include the following two lines and restart bitwarden_rs.service"
+		echo "# WEB_VAULT_FOLDER=/usr/share/bitwarden_rs/vault/"
+		echo "WEB_VAULT_ENABLED=false"
+	fi
+}
