@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.9.12
-pkgrel=2
+pkgver=1.9.14
+pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
@@ -144,6 +144,7 @@ build() {
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
+        -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop"
     make -C build
 }
