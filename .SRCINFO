@@ -1,7 +1,7 @@
 pkgbase = muso
 	pkgdesc = muso: music sorter
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quebin31/muso
 	arch = any
 	license = GPL3
