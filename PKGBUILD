@@ -1,17 +1,17 @@
 # Maintainer: Jonas Malaco <jonas@protocubo.io>
 # Contributor: Fabio Loli
 # Contributor: Adam Rutkowski
-pkgname=python-liquidctl-git
+pkgname=liquidctl-git
 pkgver=1.3.3.r46.9a8d3a0
 pkgrel=1
-pkgdesc="Cross-platform CLI and Python drivers for AIO liquid coolers and other devices"
+pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 arch=('any')
 url="https://github.com/jonasmalacofilho/liquidctl"
 license=('GPL3')
 depends=('python' 'python-setuptools' 'python-docopt' 'python-pyusb' 'python-hidapi')
 makedepends=('git')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}" "python-${pkgname%-git}")
+conflicts=("${pkgname%-git}" "python-${pkgname%-git}")
 source=("$pkgname::git+https://github.com/jonasmalacofilho/liquidctl.git#branch=master")
 sha256sums=('SKIP')
 
