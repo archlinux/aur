@@ -1,0 +1,19 @@
+pkgbase = python-fbchat-asyncio-git
+	pkgdesc = A facebook chat library with asyncio support
+	pkgver = r965.9d26c79
+	pkgrel = 1
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-aenum
+	depends = python-hbmqtt-tulir-git
+	provides = python-fbchat-asyncio
+	provides = python-fbchat
+	conflicts = python-fbchat-asyncio
+	conflicts = python-fbchat
+	source = fbchat-asyncio::git+https://github.com/tulir/fbchat-asyncio
+	sha256sums = SKIP
+
+pkgname = python-fbchat-asyncio-git
+
