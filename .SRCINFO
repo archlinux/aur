@@ -1,0 +1,33 @@
+pkgbase = openscenegraph34
+	pkgdesc = Open Source, high performance real-time graphics toolkit
+	pkgver = 3.4.1
+	pkgrel = 1
+	url = http://www.openscenegraph.org
+	arch = x86_64
+	license = custom:OSGPL
+	makedepends = cmake
+	makedepends = libvncserver
+	makedepends = qt5-base
+	makedepends = ffmpeg
+	makedepends = mesa
+	makedepends = ninja
+	makedepends = qt5-webkit
+	depends = giflib
+	depends = jasper
+	depends = librsvg
+	depends = xine-lib
+	depends = curl
+	depends = pth
+	optdepends = libvncserver
+	optdepends = qt5-base
+	optdepends = ffmpeg
+	optdepends = qt5-webkit
+	optdepends = gst-plugins-base-libs
+	optdepends = openexr
+	conflicts = openscenegraph
+	source = https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.4.1.tar.gz
+	sha256sums = 930eb46f05781a76883ec16c5f49cfb29a059421db131005d75bec4d78401fd5
+	sha512sums = 4a65625e208d24256b5564bbe9d6f557758b51fae0acf85d1f71968a237fec299088536830fc862d25e02039de9ea13176b298a68aaa644eac958acbe1f4e143
+
+pkgname = openscenegraph34
+
