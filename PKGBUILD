@@ -1,7 +1,7 @@
 # Maintainer: Poscat <poscat@mail.poscat.moe>
 
 pkgname=haskell-language-server-git
-pkgver=r63.d1a232f
+pkgver=r77.80bc2e8
 pkgrel=1
 pkgdesc="Integration point for ghcide and haskell-ide-engine."
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,14 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule update --init --recursive
+}
+
 build() {
   cd "${srcdir}/${pkgname}"
-  stack build
+  stack build --stack-yaml=stack-8.8.2.yaml
 }
 
 package() {
