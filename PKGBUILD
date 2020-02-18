@@ -1,5 +1,5 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
-pkgname=aptman-git
+pkgname=pak-git
 pkgver=r3.f0ec020
 pkgrel=1
 pkgdesc="Changes pacman syntax to be more like APT"
