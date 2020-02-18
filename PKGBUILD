@@ -11,6 +11,11 @@ makedepends=('go')
 source=('git+https://gitlab.com/moussaelianarsen/pak.git')
 md5sums=('SKIP')
 
+pkgver() {
+    cd "$srcdir/pak"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
 	cd pak
 	make
