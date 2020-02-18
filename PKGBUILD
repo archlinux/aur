@@ -5,12 +5,11 @@ pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
 pkgver=7.100
 _pkgver=5.300
-pkgrel=1
+pkgrel=2
 pkgdesc='Khmer Mondulkiri, Busra, Oureang, and Ratanakiri fonts for the Khmer script'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip"
         "http://software.sil.org/downloads/r/$_pkgname/$_fname-$_pkgver.zip")
 sha256sums=('c2e5dc08f4835be9a0da5cf9dcf92105aff973e47fc31e075e8bc44bec632c85'
