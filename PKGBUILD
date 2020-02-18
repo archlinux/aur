@@ -1,10 +1,10 @@
-# Maintainer: ValHue <vhuelamo@gmail.com>
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 #
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Martin Wimpress <code@flexion.org>
 #
 pkgname="caja-dropbox"
-pkgver="1.23.0"
+pkgver="1.24.0"
 pkgrel="1"
 pkgdesc="Dropbox extension for Caja file manager "
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('caja' 'glib2' 'libnotify' 'polkit' 'procps' 'pygtk' 'xdg-utils')
 optdepends=('dropbox: Dropbox support')
 makedepends=('mate-common' 'python-docutils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('16eaddb5420dc1042ce46d97341dbbb91802760e16992491d5208166a4b59768')
+sha256sums=('f76c9effccf7f36650cda9e82ad1c581a4535d7b9da05dd99e767699c46dc311')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
