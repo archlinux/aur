@@ -1,12 +1,15 @@
 pkgbase = pomodoro
 	pkgdesc = Time tool.
-	pkgver = 4
+	pkgver = r6.06b5346
 	pkgrel = 1
 	url = http://samuellando.com
 	arch = any
 	license = GPL
-	source = https://github.com/samuellando/pomodoro/archive/4.tar.gz
-	sha256sums = 4f8c0d82c11714fe198d5dd2182264f860d500d8b6ff4a8e3dab12fd45f4dc37
+	makedepends = git
+	provides = pomodoro
+	conflicts = pomodoro
+	source = pomodoro::git+https://github.com/samuellando/pomodoro.git
+	md5sums = SKIP
 
 pkgname = pomodoro
 
