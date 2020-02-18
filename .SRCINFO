@@ -8,7 +8,6 @@ pkgbase = pak-config-yay
 	depends = yay
 	depends = pak
 	depends = swift-language
-	provides = pak-config
 	provides = yaywrap
 	conflicts = pak-config-pacman
 	source = https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/yaywrap/yaywrap.swift
