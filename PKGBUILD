@@ -2,7 +2,7 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=4.97
+pkgver=4.98
 pkgrel=1
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
@@ -25,7 +25,7 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('aa9c5fdd6e69d595db047d30da1a8249713d21d8ade8aee7d60b5dad2f5c206d'
+sha256sums=('eeb8f819df7dd31e9b97a86c693f95044703fe4b3fbcbaf40a8fc893d0805e10'
             '202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a'
             'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
 
@@ -41,8 +41,12 @@ package() {
     touch "$pkgdir/etc/$pkgname/nobrowser.txt"
 
     install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
-    install -Dm644 "$pkgname-$pkgver"/src/{var,utils,controlflow,display,fileutils}.py \
-        -t "$pkgdir/usr/share/$pkgname/"
+
+    for file in controlflow display fileutils transport utils var; do
+        install -Dm644 "$pkgname-$pkgver/src/$file.py" \
+            -t "$pkgdir/usr/share/$pkgname/"
+    done
+
     install -Dm644 "$pkgname-$pkgver"/src/gapi/{__init__,errors}.py \
         -t "$pkgdir/usr/share/$pkgname/gapi"
 
