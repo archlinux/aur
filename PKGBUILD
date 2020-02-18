@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cjs-git
-pkgver=4.0.0.r2.gea081f32
+pkgver=4.4.0.r0.gfe3b1ec4
 pkgrel=2
 pkgdesc="Javascript Bindings for Cinnamon"
 arch=('i686' 'x86_64')
@@ -34,7 +34,8 @@ build() {
 
     ./configure --prefix=/usr \
                 --libexecdir=/usr/lib \
-                --disable-static
+                --disable-static \
+                --disable-Werror
 
     #https://bugzilla.gnome.org/show_bug.cgi?id=656231
     sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
