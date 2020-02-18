@@ -1,0 +1,19 @@
+pkgbase = anime4k-git
+	pkgdesc = A High-Quality Real Time Upscaler for Anime Video
+	pkgver = r179.2a7a486
+	pkgrel = 1
+	url = https://github.com/bloc97/Anime4K#anime4k
+	arch = any
+	license = MIT
+	makedepends = java-environment>=12
+	makedepends = maven
+	makedepends = go-md2man
+	depends = java-runtime>=12
+	depends = xdg-utils
+	provides = anime4k
+	conflicts = anime4k
+	source = anime4k::git+https://github.com/bloc97/Anime4K
+	sha512sums = SKIP
+
+pkgname = anime4k-git
+
