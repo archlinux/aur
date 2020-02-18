@@ -2,7 +2,7 @@
 
 pkgname=syscoin
 pkgver=4.1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
 url="https://syscoin.org"
@@ -49,13 +49,14 @@ package() {
 
 	# install license
 	install -D -m644 "$srcdir/$pkgname-$pkgver/include/syscoinconsensus.h" "$pkgdir/usr/local/include/syscoinconsensus.h"
-	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so" "$pkgdir/usr/local/lib/libsyscoinconsensus.so"
-	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so.0" "$pkgdir/usr/local/lib/libsyscoinconsensus.so.0"
 	install -D -m644 "$srcdir/$pkgname-$pkgver/lib/libsyscoinconsensus.so.0.0.0" "$pkgdir/usr/local/lib/libsyscoinconsensus.so.0.0.0"
+	ln -s "$pkgdir/usr/local/lib/libsyscoinconsensus.so.0.0.0" "$pkgdir/usr/local/lib/libsyscoinconsensus.so"
+	ln -s "$pkgdir/usr/local/lib/libsyscoinconsensus.so.0.0.0" "$pkgdir/usr/local/lib/libsyscoinconsensus.so.0"
 
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-cli.1" "$pkgdir/usr/local/share/man/man1/syscoin-cli.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoind.1" "$pkgdir/usr/local/share/man/man1/syscoind.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-qt.1" "$pkgdir/usr/local/share/man/man1/syscoin-qt.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-tx.1" "$pkgdir/usr/local/share/man/man1/syscoin-tx.1"
-	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-wallet.1" "$pkgdir/usr/local/share/man/man1/syscoin-wallet.1"
+	mkdir -p "$pkgdir/usr/share/man/man1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-cli.1" "$pkgdir/usr/share/man/man1/syscoin-cli.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoind.1" "$pkgdir/usr/share/man/man1/syscoind.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-qt.1" "$pkgdir/usr/share/man/man1/syscoin-qt.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-tx.1" "$pkgdir/usr/share/man/man1/syscoin-tx.1"
+	install -m 644 -D "$srcdir/$pkgname-$pkgver/share/man/man1/syscoin-wallet.1" "$pkgdir/usr/share/man/man1/syscoin-wallet.1"
 }
