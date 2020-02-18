@@ -1,0 +1,21 @@
+pkgbase = python-hbmqtt-tulir-git
+	pkgdesc = An opensource MQTT client and broker, tulir's fork
+	pkgver = r795.2df63ac
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-docopt
+	depends = python-transitions
+	depends = python-websockets
+	depends = python-passlib
+	provides = python-hbmqtt
+	provides = python-hbmqtt-tulir
+	conflicts = python-hbmqtt
+	conflicts = python-hbmqtt-tulir
+	source = hbmqtt::git+https://github.com/tulir/hbmqtt
+	sha256sums = SKIP
+
+pkgname = python-hbmqtt-tulir-git
+
