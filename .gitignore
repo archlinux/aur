@@ -1,0 +1,8 @@
+# ignore source files
+*.tar
+*.tar.gz
+*.tgz
+
+# ignore built artefacts
+src/
+pkg/

@@ -1,0 +1,16 @@
+pkgbase = python-clickhouse-driver
+	pkgdesc = ClickHouse Python Driver with native (TCP) interface support
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/mymarilyn/clickhouse-driver
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-tzlocal
+	depends = python-pytz
+	source = https://github.com/mymarilyn/clickhouse-driver/archive/0.1.2.tar.gz
+	sha256sums = 9920211509a27af0b24086b19005c3419a4cd8255a3bd68621a0f1469e38a5ee
+
+pkgname = python-clickhouse-driver
+
