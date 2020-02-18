@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/moussaelianarsen/pak"
 license=('GPL3')
 depends=('aptman-git')
+replaces=('pak-config-pacman')
 provides=('pak-config')
 source=("https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacman/pak.cfg")
 md5sums=('SKIP')
