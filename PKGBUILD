@@ -6,7 +6,7 @@
 # Contributor: Hokum <hokum_at_mail_dot_ru>
 
 pkgname='gptfdisk-git'
-pkgver=1.0.4.r177.g4cd84de
+pkgver=1.0.5.r201.g6528173
 pkgrel=1
 pkgdesc='A text-mode partitioning tool that works on GUID Partition Table (GPT) disks - GIT Version'
 arch=('x86_64')
@@ -23,6 +23,11 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
   printf '%s.r%s.g%s' "$(grep -Po 'GPTFDISK_VERSION "\K[\d.]+' "${srcdir}/${pkgname%-git}/support.h")" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname%-git}"
+  sed 's|#include <ncursesw/ncurses.h>|#include <ncurses.h>|' -i "${srcdir}/${pkgname%-git}/gptcurses.cc"
 }
 
 build() {
