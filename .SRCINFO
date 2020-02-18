@@ -1,7 +1,7 @@
 pkgbase = snake-terminal-git
 	pkgdesc = Terminal interface for Snake
 	pkgver = r21.31af0e8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/samtay/snake
 	arch = i686
 	arch = x86_64
