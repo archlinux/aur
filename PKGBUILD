@@ -4,7 +4,7 @@ pkgname=jaspersoftstudio
 _pkgname=JaspersoftStudio
 _binname="Jaspersoft Studio"
 pkgver=6.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse based Jasper Reports generator"
 arch=('x86_64')
 url="http://community.jaspersoft.com/project/jaspersoft-studio"
@@ -26,7 +26,7 @@ Version=${pkgver}
 Encoding=UTF-8
 Name=Jaspersoft Studio
 Comment=${pkgdesc}
-Exec=GTK2_RC_FILES=/usr/share/themes/Raleigh/gtk-2.0/gtkrc "/opt/${pkgname}/${_binname}"
+Exec=env GTK2_RC_FILES=/usr/share/themes/Raleigh/gtk-2.0/gtkrc "/opt/${pkgname}/${_binname}"
 Icon=/opt/${pkgname}/icon.xpm
 Terminal=false
 Type=Application

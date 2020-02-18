@@ -1,7 +1,7 @@
 pkgbase = jaspersoftstudio
 	pkgdesc = Eclipse based Jasper Reports generator
 	pkgver = 6.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://community.jaspersoft.com/project/jaspersoft-studio
 	arch = x86_64
 	license = Eclipse
