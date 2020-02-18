@@ -13,5 +13,5 @@ md5sums=('SKIP')
 conflicts=('pak-config-pacman-git')
 
 package() {
-	install -Dm644 pak.cfg $pkgdir/etc
+	install -Dm644 pak.cfg $pkgdir/etc/pak.cfg
 }
