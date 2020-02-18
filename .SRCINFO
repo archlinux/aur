@@ -1,0 +1,16 @@
+pkgbase = qt5ct-refresh-git
+	pkgdesc = Simple utility to force-refresh qt5ct style settings
+	pkgver = r3.94433c7
+	pkgrel = 1
+	url = https://gitlab.com/zetaPRIME/qt5ct-refresh/
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	conflicts = qt5ct-refresh
+	source = qt5ct-refresh::git+https://gitlab.com/zetaPRIME/qt5ct-refresh.git
+	md5sums = SKIP
+
+pkgname = qt5ct-refresh-git
+

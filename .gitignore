@@ -1,0 +1,6 @@
+src
+pkg
+qt5ct-refresh
+*.tar.xz
+*.tar.gz
+*.log 
