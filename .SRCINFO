@@ -1,13 +1,12 @@
 pkgbase = tauon-music-box
 	pkgdesc = A modern streamlined music player
 	pkgver = 5.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taiko2k/tauonmb
 	arch = any
 	license = GPL3
 	depends = python3
 	depends = noto-fonts
-	depends = noto-fonts-emoji
 	depends = noto-fonts-extra
 	depends = sdl2_image
 	depends = python-pillow
