@@ -2,8 +2,8 @@
 pkgbase=decklink
 pkgname=(decklink mediaexpress)
 _pkgname=decklink
-pkgver=11.4
-pkgrel=3
+pkgver=11.5
+pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
 arch=('i686' 'x86_64')
 url="https://www.blackmagicdesign.com/support/family/capture-and-playback"
@@ -14,7 +14,7 @@ options=('!strip' 'staticlibs')
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
 
-_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/14b0524fb0dc4115b89847530192f9f8"
+_pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/9a205dd8b075460b8a021c519258d6cd"
 _pkgsrc_file=${_pkgname}-${pkgver}.tar.gz
 
 DLAGENTS=("https::/usr/bin/curl \
@@ -30,7 +30,7 @@ DLAGENTS=("https::/usr/bin/curl \
 )
 
 source=("${_pkgsrc_file}"::"${_pkgsrc_url}")
-sha256sums=('20140faf551c5ee0cb99f3b75e465de6c795b11931db9b5902d4ef100153d692')
+sha256sums=('d57b379b7b14e0289e6436d7558de00bcfe5cebb43a0fec5052097f66921c080')
 
 package_decklink() {
   depends=('dkms' 'qt5-base' 'libpng')
