@@ -5,7 +5,7 @@
 pkgname=franz
 _pkgver=5.4.1
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,7 +13,7 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 depends=(electron)
-makedepends=(expac git npm python2)
+makedepends=(expac git npm python)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$_pkgver"
         'franz.desktop'
         'franz.sh')
@@ -22,10 +22,6 @@ sha512sums=('SKIP'
             '8584507cfc2736f4736637925536b2c06063c59cd943346717633564ae88b64c5eea294c8897f1250812478ed493f54a470501e98e99d084a2ff012dff9671f8')
 
 prepare() {
-  # Prepare Python 2 for later
-  mkdir python2_path
-  ln -s `which python2` python2_path/python
-
   # Small patching
   cd $pkgname
 
@@ -43,7 +39,7 @@ prepare() {
 
   # Better configuration for npm cache and calling installed binaries
   export npm_config_cache="$srcdir"/npm_cache
-  export PATH="$srcdir/$pkgname/node_modules/.bin:$srcdir/python2_path:$PATH"
+  export PATH="$srcdir/$pkgname/node_modules/.bin:$PATH"
 
   # Adjust node-sass version to avoid build issues
   npm install "node-sass@4.13.0"
@@ -58,7 +54,7 @@ build() {
 
   # Better configuration for npm cache and calling installed binaries
   export npm_config_cache="$srcdir"/npm_cache
-  export PATH="$srcdir/$pkgname/node_modules/.bin:$srcdir/python2_path:$PATH"
+  export PATH="$srcdir/$pkgname/node_modules/.bin:$PATH"
 
   # Actually build the package
   gulp build
