@@ -1,6 +1,6 @@
 pkgbase = dataloader
 	pkgdesc = An easy to use graphical tool that helps you to get your data into Salesforce objects
-	pkgver = 43.0
+	pkgver = 48.0.0
 	pkgrel = 1
 	url = https://developer.salesforce.com/page/Data_Loader
 	install = dataloader.install
@@ -9,15 +9,16 @@ pkgbase = dataloader
 	license = GPL2
 	makedepends = git
 	makedepends = maven
+	makedepends = jre11-openjdk
 	depends = java-runtime>=1.6
 	depends = gtk2
 	depends = gtk-update-icon-cache
 	source = dataloader.desktop
 	source = dataloader.install
-	source = dataloader.xpm
+	source = dataloader.svg
 	md5sums = b519f96b515793fa80cd820e25d70d68
 	md5sums = 94f2b99bb9af44899cd4d2ded981fd54
-	md5sums = 895815be928816f9ace42c3135a428b5
+	md5sums = 0b9294d4865f364681a79fbbc73dd88a
 	source_i686 = git+https://github.com/forcedotcom/dataloader.git
 	md5sums_i686 = SKIP
 	source_x86_64 = git+https://github.com/forcedotcom/dataloader.git
