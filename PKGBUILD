@@ -1,9 +1,9 @@
 # Maintainer: James Henderson <james@jarohen.me.uk>
 pkgname=bridje-bin
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bridje is a statically typed LISP targeting GraalVM, drawing inspiration from both Clojure and Haskell."
-arch=('x86_64')
+arch=('any')
 url="https://github.com/bridje/bridje"
 license=('custom')
 depends=('jdk11-graalvm-bin')
