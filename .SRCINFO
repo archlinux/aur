@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosbaglive
 	pkgdesc = ROS - Plays rosbags as though they were happening NOW.
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rosbaglive
 	arch = any
 	license = BSD
