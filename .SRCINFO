@@ -1,7 +1,7 @@
 pkgbase = git-machete
 	pkgdesc = Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen
 	pkgver = 2.13.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VirtusLab/git-machete
 	arch = any
 	license = MIT

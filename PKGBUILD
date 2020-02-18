@@ -2,7 +2,7 @@
 
 pkgname='git-machete'
 pkgver=2.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen"
 arch=('any')
 url='https://github.com/VirtusLab/git-machete'
@@ -20,7 +20,7 @@ build() {
 
 check() {
   cd "$srcdir/$pkgname-${pkgver}"
-  python setup.py test
+  python -m unittest
 }
 
 package() {
