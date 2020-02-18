@@ -2,7 +2,7 @@
 
 pkgname=github-cli-git
 pkgver=0.5.5.r25.g48ffd5a
-pkgrel=1
+pkgrel=2
 pkgdesc="The GitHub CLI tool"
 arch=('i686' 'x86_64')
 url="https://github.com/cli/cli"
@@ -12,7 +12,6 @@ makedepends=('git' 'go-pie')
 optdepends=("git: To interact with repositories")
 provides=('github-cli')
 conflicts=('github-cli')
-options=('staticlibs')
 source=("git+https://github.com/cli/cli.git")
 sha256sums=('SKIP')
 
