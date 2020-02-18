@@ -1,12 +1,12 @@
 pkgbase = pak-config-yay
 	pkgdesc = A pacman config for yay
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 5
 	url = https://gitlab.com/moussaelianarsen/pak
 	arch = x86_64
 	license = GPL3
 	depends = yay
-	depends = pak-git
+	depends = pak
 	depends = swift-language
 	provides = pak-config
 	provides = yaywrap
@@ -16,5 +16,5 @@ pkgbase = pak-config-yay
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = pak-config-yay-git
+pkgname = pak-config-yay
 

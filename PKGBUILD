@@ -1,5 +1,5 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
-pkgname=pak-config-yay-git
+pkgname=pak-config-yay
 pkgver=1.0
 pkgrel=5
 pkgdesc="A pacman config for yay"
