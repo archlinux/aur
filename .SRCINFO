@@ -1,6 +1,6 @@
 pkgbase = python-pre-commit
 	pkgdesc = A framework for managing and maintaining multi-language pre-commit hooks.
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://pre-commit.com/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-pre-commit
 	depends = python-cached-property
 	depends = python-cfgv
 	depends = python-toml
-	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-2.0.1.tar.gz
-	md5sums = 4206bb583587c01737d2bd1ac330d93d
+	source = https://pypi.io/packages/source/p/pre_commit/pre_commit-2.1.0.tar.gz
+	md5sums = 5ce231e54c7e229890d8ce449e07a487
 
 pkgname = python-pre-commit
 	pkgdesc = Python 3 client for pre-commit
