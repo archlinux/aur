@@ -1,7 +1,7 @@
 _hkgname=bytestring-progress
 pkgname=haskell-bytestring-progress
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for tracking the consumption of a lazy ByteString"
 url="http://hackage.haskell.org/package/bytestring-progress"
 license=('BSD')
