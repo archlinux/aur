@@ -1,0 +1,25 @@
+pkgbase = pango-anydesk
+	pkgdesc = Older version of pango temporary needed by AnyDesk package
+	pkgver = 1.43.0
+	pkgrel = 2
+	epoch = 1
+	url = https://www.pango.org/
+	arch = x86_64
+	license = LGPL
+	checkdepends = ttf-dejavu
+	checkdepends = cantarell-fonts
+	makedepends = gobject-introspection
+	makedepends = help2man
+	makedepends = gtk-doc
+	makedepends = git
+	makedepends = meson
+	depends = libthai
+	depends = cairo
+	depends = libxft
+	depends = harfbuzz
+	depends = fribidi
+	source = git+https://gitlab.gnome.org/GNOME/pango.git#commit=26f1135f374f3ad5eb963dcdf016542fbbda361b
+	sha256sums = SKIP
+
+pkgname = pango-anydesk
+
