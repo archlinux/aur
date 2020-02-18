@@ -1,27 +1,32 @@
-# Maintainer: Sirat18 <aur@sirat18.de>
-# Contributor: fnord0 <fnord0 AT riseup DOT net>
+# Maintainer: Hao Long <aur@esd.cc>
 
-_gitname=wafw00f
 pkgname=wafw00f-git
-pkgver=0.9.3.r102.ge8ad02c
-pkgrel=2
-pkgdesc="A set of security tools to identify and fingerprint Web Application Firewall/WAF products protecting a website"
-arch=('any')
-url="https://github.com/sandrogauci/wafw00f"
-license=('GPL')
-depends=('python' 'python-pluginbase')
-makedepends=('git' 'python-distribute')
+pkgver=2.1.0.r2.g74b8c75
+pkgrel=1
+pkgdesc="The Web Application Firewall Fingerprinting Tool"
+arch=("any")
+url="https://github.com/EnableSecurity/wafw00f"
+license=('BSD')
 provides=('wafw00f')
-source=("$_gitname"::'git+https://github.com/sandrogauci/wafw00f.git')
-sha512sums=('SKIP')
+conflicts=('wafw00f')
+depends=("python-pluginbase"
+         "python-requests")
+makedepends=('python-setuptools')
+source=("$pkgname::git://github.com/EnableSecurity/wafw00f.git")
+sha256sums=('SKIP')
 
 pkgver() {
-	  cd "$_gitname"
-	  printf "%s.r%s.g%s" "$(grep '__version__' wafw00f/__init__.py | cut -d "'" -f 2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $pkgname
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd $pkgname
+  python setup.py build
 }
 
 package() {
-      cd "$srcdir/$_gitname"
-	  python setup.py install --root="$pkgdir/" --optimize=1
+  cd $pkgname
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-# vim:syntax=sh
