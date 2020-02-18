@@ -1,0 +1,26 @@
+pkgbase = boost171
+	pkgdesc = Free peer-reviewed portable C++ source libraries
+	pkgver = 1.71.0
+	pkgrel = 1
+	url = https://www.boost.org/
+	arch = i686
+	arch = x86_64
+	license = Boost Software License - Version 1.0
+	makedepends = gzip
+	makedepends = icu
+	makedepends = openmpi
+	makedepends = python
+	makedepends = python-numpy
+	makedepends = zlib
+	makedepends = zstd
+	optdepends = python: for python bindings
+	optdepends = python2: for python2 bindings
+	provides = boost
+	provides = boost-libs
+	conflicts = boost
+	conflicts = boost-libs
+	source = https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
+	sha256sums = 96b34f7468f26a141f6020efb813f1a2f3dfb9797ecf76a7d7cbd843cc95f5bd
+
+pkgname = boost171
+
