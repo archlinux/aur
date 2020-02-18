@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-vision-msgs
 	pkgdesc = ROS - Messages for interfacing with various computer vision pipelines, such as object detectors.
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = http://www.ros.org/
 	arch = any
 	license = Apache License 2.0
@@ -18,8 +18,8 @@ pkgbase = ros-melodic-vision-msgs
 	depends = ros-melodic-message-generation
 	depends = ros-melodic-sensor-msgs
 	depends = ros-melodic-std-msgs
-	source = ros-melodic-vision-msgs-0.0.1.tar.gz::https://github.com/Kukanani/vision_msgs/archive/0.0.1.tar.gz
-	sha256sums = c50d20dcf010ab02c6c167e58d0f4fc23230d9a90ec774219f6baf7d50597ad9
+	source = ros-melodic-vision-msgs-1.0.0.tar.gz::https://github.com/Kukanani/vision_msgs/archive/1.0.0.tar.gz
+	sha256sums = c3d9bb2b7eb3dec393e87b7c6d6eeb772ab57aed4cd80c00ef5da6240373aecd
 
 pkgname = ros-melodic-vision-msgs
 
