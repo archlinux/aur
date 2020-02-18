@@ -1,0 +1,17 @@
+pkgbase = pak-config-pacman-git
+	pkgdesc = A pacman config for pak
+	pkgver = r3.f0ec020
+	pkgrel = 1
+	url = https://gitlab.com/moussaelianarsen/pak
+	arch = x86_64
+	license = GPL3
+	depends = pacman
+	depends = pak-git
+	depends = aptman-git
+	provides = pak-config
+	conflicts = pak-config-yay-git
+	source = https://gitlab.com/moussaelianarsen/pak/raw/master/plugins/pacman/pak.cfg
+	md5sums = SKIP
+
+pkgname = pak-config-pacman-git
+
