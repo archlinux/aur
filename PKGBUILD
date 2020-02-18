@@ -4,15 +4,14 @@
 
 _pkgname=lateef
 pkgname=ttf-sil-$_pkgname
-_fname=LateefGR
+_fname=${_pkgname^}GR
 pkgver=1.200
-pkgrel=4
-pkgdesc='Arabic script font for Sindhi and other languages of southern Asia'
+pkgrel=5
+pkgdesc='An Arabic script font for Sindhi and other languages of southern Asia'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-source=("http://software.sil.org/downloads/r/lateef/$_fname-$pkgver.zip")
+license=('OFL')
+source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('ef6c6b4b4cb8d8502c78efc43cb99d29f391e6cb9eba1b133a661ffda3ddc7e1')
 
 package() {
