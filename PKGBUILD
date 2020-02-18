@@ -1,5 +1,5 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
-pkgname=pak-git
+pkgname=pak
 pkgver=1.0
 pkgrel=3
 pkgdesc="A package manager wrapper written in swift designed to unify different package managers"
