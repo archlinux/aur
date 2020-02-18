@@ -4,12 +4,11 @@ _pkgname=tai-heritage
 pkgname=ttf-sil-$_pkgname-pro
 _fname=TaiHeritagePro
 pkgver=2.600
-pkgrel=2
+pkgrel=3
 pkgdesc='A typeface that reflects the traditional style of the Tai Viet script'
 arch=('any')
 url="https://software.sil.org/${_pkgname/-}"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
+license=('OFL')
 source=("https://software.sil.org/downloads/r/${_pkgname/-}/$_fname-$pkgver.zip")
 sha256sums=('1b9c38008d7704ce6dc0e3be6b9e767f5c114252d4f417d474f2a22989af746d')
 
