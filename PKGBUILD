@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python2')
 makedepends=('python2-setuptools')
 checkdepends=('python2-nose' 'python2-py')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/jmespath/jmespath.py/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jmespath/jmespath.py/archive/$pkgver.tar.gz")
 sha512sums=('38b8d27dbd13d5ab056e115f4e8048fd54d649955dfcb2c296fe14dc684cd729351618c06c5b9a4b4d27798cfec6c2b7b340f498e961475e6fb3c9640b4e51ae')
 
 build() {
