@@ -1,8 +1,10 @@
-# Maintainer: grmat <grmat@sub.red>
+# Maintainer: Christopher Snowhill <kode54 at gmail dot com>
+# Contributor: johnnybash <georgpfahler at wachenzell dot org>
+# Contributor: grmat <grmat at sub dot red>
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
-pkgver=19.30.934563
+pkgver=19.50.967956
 pkgrel=1
 arch=('x86_64')
 url='http://www.amd.com'
@@ -16,12 +18,13 @@ DLAGENTS='https::/usr/bin/wget --referer https://support.amd.com/en-us/kb-articl
 
 prefix='amdgpu-pro-'
 postfix='-ubuntu-18.04'
-major='19.30'
-minor='934563'
+major='19.50'
+minor='967956'
+amdver='2.4.99'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 
-source=("https://drivers.amd.com/drivers/linux/${prefix}${major}-${minor}${postfix}.tar.xz")
-sha256sums=('b97f0e31a9ca01971b1855e8e191fa825d538f7941331d3b15bc46474dde50f6')
+source=("https://drivers.amd.com/drivers/linux//${prefix}${major}-${minor}${postfix}.tar.xz")
+sha256sums=('d8bb480c72b4225ad864c60335d33254ce7d442590e8dd9c05659cc868b7be2f')
 
 pkgver() {
 	echo "${major}.${minor}"
@@ -39,7 +42,7 @@ package() {
 
 	mkdir -p "${srcdir}/libdrm"
 	cd "${srcdir}/libdrm"
-	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_2.4.98-${minor}_amd64.deb"
+	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/libdrm-amdgpu-amdgpu1_${amdver}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared/amdgpu-pro/amdgpu}
 	rm "libdrm_amdgpu.so.1"
