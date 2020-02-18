@@ -1,5 +1,5 @@
 pkgbase = mangohud
-	pkgver = v0.2.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mangohud
 	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = libx11
-	source = mangohud::git+https://github.com/flightlessmango/MangoHud.git
+	source = mangohud::git+https://github.com/flightlessmango/MangoHud.git#tag=v0.2.0
 	source = ImGui::git+https://github.com/flightlessmango/ImGui.git
 	sha512sums = SKIP
 	sha512sums = SKIP

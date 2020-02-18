@@ -2,7 +2,7 @@
 
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud')
-pkgver=v0.2.0
+pkgver=0.2.0
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 # LICENSE is missing on 0.1.0, was added on master
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('gcc-libs' 'libx11')
 makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers')
-source=("$pkgbase::git+$url.git"
+source=("$pkgbase::git+$url.git#tag=v$pkgver"
         'ImGui::git+https://github.com/flightlessmango/ImGui.git')
 sha512sums=('SKIP'
             'SKIP')
