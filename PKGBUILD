@@ -11,8 +11,10 @@ makedepends=('boost' 'cmake' 'doxygen')
 depends=('python' 'boost')
 provides=('opencamlib')
 conflicts=('opencamlib')
-source=("git+https://github.com/aewallin/opencamlib.git")
-md5sums=('SKIP')
+source=("git+https://github.com/aewallin/opencamlib.git"
+        "opencamlib.conf")
+md5sums=('SKIP'
+         'a47c8358b60c11c4d620e6a0c24c0b50')
 
 pkgver() {
   cd opencamlib
@@ -29,4 +31,5 @@ build() {
 package() {
   cd "$srcdir/opencamlib/build"
   make install DESTDIR=$pkgdir
+  install -Dm644 "$srcdir/opencamlib.conf" "${pkgdir}/etc/ld.so.conf.d/opencamlib.conf"
 }

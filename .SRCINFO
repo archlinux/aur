@@ -14,7 +14,9 @@ pkgbase = opencamlib-git
 	provides = opencamlib
 	conflicts = opencamlib
 	source = git+https://github.com/aewallin/opencamlib.git
+	source = opencamlib.conf
 	md5sums = SKIP
+	md5sums = a47c8358b60c11c4d620e6a0c24c0b50
 
 pkgname = opencamlib-git
 
