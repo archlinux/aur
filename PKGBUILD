@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.32.0.r99.ga4b12c54b6
+pkgver=0.32.0.r110.g0df0a847f4
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
@@ -188,7 +188,7 @@ check() {
     do
         printf '%s\n' "  -> Running test '${_test}'..."
         build-tests/mpv --unittest="$_test"
-    done < <(build-tests/mpv --unittest='help' | awk 'FNR == 1 { next } !/img_format|all-simple/ { printf "%s\0", $1 }')
+    done < <(build-tests/mpv --unittest='help' | awk 'FNR == 1 { next } !/img_format|all-simple|repack_zimg/ { printf "%s\0", $1 }')
 }
 
 package() {
