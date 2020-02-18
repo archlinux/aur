@@ -1,0 +1,16 @@
+[Unit]
+Description=facebook Matrix Puppet
+
+[Service]
+Type=simple
+User=mautrix-facebook
+Group=mautrix-facebook
+WorkingDirectory=/var/lib/mautrix-facebook/
+ExecStart=/usr/bin/mautrix-facebook -c /etc/synapse/mautrix-facebook/config.yaml \
+          -r /etc/synapse/mautrix-facebook/registration.yaml \
+          -b /usr/share/mautrix-facebook/example-config.yaml
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
