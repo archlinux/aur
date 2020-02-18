@@ -2,7 +2,7 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.1.0.r22.g70faf09
+pkgver=0.1.0.r48.gd131cc1
 _branch='master'
 pkgrel=1
 arch=(any)
