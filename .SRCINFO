@@ -1,6 +1,6 @@
 pkgbase = wasm-pack
 	pkgdesc = Simple http server in Rust
-	pkgver = 0.8.1
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/rustwasm/wasm-pack
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = wasm-pack
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/rustwasm/wasm-pack/archive/v0.8.1.tar.gz
-	sha384sums = f9f937138e97890bb56d20d6e1c76739c18a0edabdd921f246926787aeb538642ec01b038d45ba6a17e31a2c9adf1355
+	source = https://github.com/rustwasm/wasm-pack/archive/v0.9.1.tar.gz
+	sha384sums = b01cdf34ea43e0fed215f53084cdec33a090d0e69e97017b35d4c1967872c420da242e2d9e470a0d7db2ae435e428ab5
 
 pkgname = wasm-pack
 

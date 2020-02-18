@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=wasm-pack
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Simple http server in Rust"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo')
 options=()
 source=("https://github.com/rustwasm/wasm-pack/archive/v${pkgver}.tar.gz")
-sha384sums=('f9f937138e97890bb56d20d6e1c76739c18a0edabdd921f246926787aeb538642ec01b038d45ba6a17e31a2c9adf1355')
+sha384sums=('b01cdf34ea43e0fed215f53084cdec33a090d0e69e97017b35d4c1967872c420da242e2d9e470a0d7db2ae435e428ab5')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
