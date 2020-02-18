@@ -5,7 +5,7 @@
 
 pkgname=python-poppler-qt5
 pkgver=0.75.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Python binding to libpoppler-qt5.'
 arch=('any')
 url="https://github.com/frescobaldi/$pkgname"
@@ -17,7 +17,9 @@ sha256sums=('92e6bd8f4ce90ba4e3e0c2ada026b643481ba1b109d45e8fdbdaedca8416a995')
 
 build() {
     cd "$pkgname-$pkgver"
-    python setup.py build
+    # python setup.py build
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    python setup.py build_ext --pyqt-sip-dir="$site_packages"/PyQt5/bindings/
 }
 
 package() {
