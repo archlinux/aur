@@ -1,0 +1,16 @@
+pkgbase = krpc-cpp
+	pkgdesc = KRPC Client for c++
+	pkgver = 0.4.8
+	pkgrel = 1
+	url = https://github.com/krpc/krpc
+	arch = any
+	license = LGPL3
+	depends = asio
+	depends = protobuf
+	source = https://github.com/krpc/krpc/releases/download/v0.4.8/krpc-cpp-0.4.8.zip
+	source = https://gist.githubusercontent.com/manimax3/dbf7c75640071bb0cf3c41405fe1a0b7/raw/ddc67527030b4d3e8924db4050969b747f0a598f/krpc-cpp-asio-fix.patch
+	md5sums = 143c6230784a699dbe21d62923f12672
+	md5sums = a1b12b52009fb1a5a9ae490d1c3bf123
+
+pkgname = krpc-cpp
+
