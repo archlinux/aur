@@ -3,11 +3,11 @@
 
 pkgname=hybrid-encoder
 pkgver=20200217
-pkgrel=1
+pkgrel=2
 pkgdesc="A very complete gui for video encoding"
 arch=('x86_64')
 license=('custom')
-depends=('framecounter' 'freetype2' 'glib2' 'openssl' 'qt5-multimedia')
+depends=('framecounter' 'freetype2' 'glib2' 'openssl' 'qt5-multimedia' 'kvazaar')
 optdepends=('aften: support for AC-3 audio encoding'
 'bdsup2subpp-git: support for subtitle converison for image based stream formats'
 'dcaenc: support for DTS audio encoding'
@@ -16,7 +16,7 @@ optdepends=('aften: support for AC-3 audio encoding'
 'fdkaac: support for AAC audio encoding'
 'flac: support for lossless FLAC audio encoding'
 'gpac: support for MP4 container muxing'
-'kvazaar-git: support for H.265 video encoding'
+'kvazaar: support for H.265 video encoding'
 'libvpx: support fot VP8 video encoding'
 'lsdvd: support for listing the content of DVD disks'
 'mediainfo: support for technical and tag information about a video or audio file'
@@ -47,7 +47,7 @@ package() {
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
-md5sums_x86_64=('768f235a34b173ca8d54e3da49d9c881'
+md5sums_x86_64=('1cee0d5981827f1750b20b33dd1ebb47'
                 'dd87c6eb6df85049de38c61dfe400347'
                 '798dd936a3bc9bcd3b131d5dd6db96e6'
                 '1fd2ac133744f86e25fd680d14aed2b4')
