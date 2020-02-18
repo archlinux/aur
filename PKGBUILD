@@ -2,13 +2,14 @@
 
 pkgname=bitwarden_rs-vault-bin
 pkgver=2.12.0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrates the Vault Web-Interface into bitwarden_rs. Pre-compiled binaries from https://github.com/dani-garcia/bw_web_builds."
 arch=('any')
 url="https://github.com/bitwarden/web"
 license=('AGPL3')
 depends=('bitwarden_rs')
 conflicts=("bitwarden_rs-vault-git" "bitwarden_rs-vault") 
+provides=('bitwarden_rs-vault')
 install=bitwarden_rs-vault-bin.install
 source=("bw_web_build.tgz::https://github.com/dani-garcia/bw_web_builds/releases/download/v$pkgver/bw_web_v$pkgver.tar.gz"
 	"$pkgname.install")
