@@ -4,9 +4,9 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=4.3.2
-pkgrel=6
+pkgrel=7
 _wwwpkgname=AdminLTE
-_wwwpkgver=4.3.2
+_wwwpkgver=4.3.3
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
@@ -27,7 +27,7 @@ backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt' 'etc/pihole/regex.
 source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	    admin-$_wwwpkgver.tar.gz::https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
         arch-server-core-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-core-$pkgver.patch"
-        arch-server-admin-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$_wwwpkgver.patch"
+        arch-server-admin-$_wwwpkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-server-archlinux-customization/master/arch-server-admin-$_wwwpkgver.patch"
 	    dnsmasq.include
 	    lighttpd.pi-hole.conf
 	    nginx.pi-hole.conf
@@ -41,9 +41,9 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 )
 
 md5sums=('33ea26a46937a0b5d20037639eb0ee34'
-         'b21acb085ea8c39ee57745c7192c31f0'
-         'e3d1a24c72ec40560a1575bdc3a9a6b5'
-         'cded1c60935255a89c9542fafd3a73d9'
+         '3f9da0e1f9134393758b7a1425ca66f6'
+         '313c22e4fecfbbab03b39fde07cdce95'
+         '7742a2b661e98d0e7f97471211fc86f6'
          '4d9038588164bb9130c8ca11653f83f3'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -59,7 +59,7 @@ prepare() {
   cd "$srcdir"/"$_pkgname"-"$pkgver"
   patch -Np1 -i "$srcdir"/arch-server-core-$pkgver-$_now.patch
   cd "$srcdir"/"$_wwwpkgname"-"$_wwwpkgver"
-  patch -Np1 -i "$srcdir"/arch-server-admin-$pkgver-$_now.patch
+  patch -Np1 -i "$srcdir"/arch-server-admin-$_wwwpkgver-$_now.patch
 }
 
 package() {
