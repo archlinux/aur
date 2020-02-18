@@ -1,13 +1,13 @@
 # Maintainer: Jianfeng Zhang <swordfeng123@gmail.com>
 
 pkgname=mom
-pkgver=0.5.14
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Memory Overcommitment Manager, for virtual machines"
 arch=('any')
 url="https://gerrit.ovirt.org/#/admin/projects/mom"
 license=("GPL2")
-depends=('python2' 'libvirt-python2')
+depends=('python' 'python-six' 'libvirt-python')
 makedepends=('git')
 source=("git+https://gerrit.ovirt.org/mom#tag=v${pkgver}"
         "momd@.service"
@@ -20,7 +20,7 @@ backup=('etc/mom')
 build() {
     cd mom
     ./autogen.sh
-    PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sbindir=/usr/bin
+    ./configure --prefix=/usr --sbindir=/usr/bin
     make
 }
 
