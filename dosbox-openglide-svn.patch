@@ -1,7 +1,7 @@
-diff -Nawurp a/configure.ac b/configure.ac
---- a/configure.ac	2019-06-15 00:25:54.000000000 +0000
-+++ b/configure.ac	2019-06-15 00:40:57.000000000 +0000
-@@ -557,7 +557,7 @@ int main(int argc,char * argv[]) {
+diff -Naurp a/configure.ac b/configure.ac
+--- a/configure.ac	2020-02-18 16:16:51.000000000 +0000
++++ b/configure.ac	2020-02-18 16:29:49.000000000 +0000
+@@ -598,7 +598,7 @@ int main(int argc,char * argv[]) {
  dnl Some target detection and actions for them
  case "$host" in
      *-*-cygwin* | *-*-mingw32*)
@@ -10,9 +10,9 @@ diff -Nawurp a/configure.ac b/configure.ac
         AC_DEFINE(C_DIRECTSERIAL, 1, [ Define to 1 if you want serial passthrough support (Win32, Posix and OS/2 only).])
         if test x$have_sdl_net_lib = xyes -a x$have_sdl_net_h = xyes ; then
           LIBS="$LIBS -lws2_32"
-diff -Nawurp a/include/glidedef.h b/include/glidedef.h
+diff -Naurp a/include/glidedef.h b/include/glidedef.h
 --- a/include/glidedef.h	1970-01-01 00:00:00.000000000 +0000
-+++ b/include/glidedef.h	2019-06-15 00:25:58.000000000 +0000
++++ b/include/glidedef.h	2020-02-18 16:20:33.000000000 +0000
 @@ -0,0 +1,179 @@
 +/*
 + *  Copyright (C) 2002-2007  The DOSBox Team
@@ -193,9 +193,9 @@ diff -Nawurp a/include/glidedef.h b/include/glidedef.h
 +#endif // __3DFX_H__
 +
 +#endif // GLIDEDEF_H
-diff -Nawurp a/include/glide.h b/include/glide.h
+diff -Naurp a/include/glide.h b/include/glide.h
 --- a/include/glide.h	1970-01-01 00:00:00.000000000 +0000
-+++ b/include/glide.h	2019-06-15 00:25:58.000000000 +0000
++++ b/include/glide.h	2020-02-18 16:20:33.000000000 +0000
 @@ -0,0 +1,331 @@
 +/*
 + *  Copyright (C) 2002-2007  The DOSBox Team
@@ -528,9 +528,9 @@ diff -Nawurp a/include/glide.h b/include/glide.h
 +};
 +
 +#endif // DOSBOX_GLIDE_H
-diff -Nawurp a/include/mem.h b/include/mem.h
+diff -Naurp a/include/mem.h b/include/mem.h
 --- a/include/mem.h	2019-06-15 00:25:57.000000000 +0000
-+++ b/include/mem.h	2019-06-15 00:25:58.000000000 +0000
++++ b/include/mem.h	2020-02-18 16:20:33.000000000 +0000
 @@ -152,6 +152,8 @@ static INLINE Bit32u phys_readd(PhysPt a
  
  void MEM_BlockWrite(PhysPt pt,void const * const data,Bitu size);
@@ -540,9 +540,9 @@ diff -Nawurp a/include/mem.h b/include/mem.h
  void MEM_BlockCopy(PhysPt dest,PhysPt src,Bitu size);
  void MEM_StrCopy(PhysPt pt,char * data,Bitu size);
  
-diff -Nawurp a/src/dosbox.cpp b/src/dosbox.cpp
---- a/src/dosbox.cpp	2019-06-15 00:25:56.000000000 +0000
-+++ b/src/dosbox.cpp	2019-06-15 00:25:58.000000000 +0000
+diff -Naurp a/src/dosbox.cpp b/src/dosbox.cpp
+--- a/src/dosbox.cpp	2020-02-18 16:16:50.000000000 +0000
++++ b/src/dosbox.cpp	2020-02-18 16:20:33.000000000 +0000
 @@ -81,6 +81,7 @@ void PCI_Init(Section*);
  
  void KEYBOARD_Init(Section*);	//TODO This should setup INT 16 too but ok ;)
@@ -551,7 +551,7 @@ diff -Nawurp a/src/dosbox.cpp b/src/dosbox.cpp
  void MOUSE_Init(Section*);
  void SBLASTER_Init(Section*);
  void GUS_Init(Section*);
-@@ -744,6 +745,17 @@ void DOSBOX_Init(void) {
+@@ -752,6 +753,17 @@ void DOSBOX_Init(void) {
  	Pmulti_remain->Set_help("see serial1");
  
  
@@ -569,18 +569,18 @@ diff -Nawurp a/src/dosbox.cpp b/src/dosbox.cpp
  	/* All the DOS Related stuff, which will eventually start up in the shell */
  	secprop=control->AddSection_prop("dos",&DOS_Init,false);//done
  	secprop->AddInitFunction(&XMS_Init,true);//done
-diff -Nawurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
---- a/src/gui/sdlmain.cpp	2019-06-15 00:25:54.000000000 +0000
-+++ b/src/gui/sdlmain.cpp	2019-06-15 00:25:58.000000000 +0000
-@@ -49,6 +49,7 @@
- #include "cpu.h"
+diff -Naurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
+--- a/src/gui/sdlmain.cpp	2020-02-18 16:16:51.000000000 +0000
++++ b/src/gui/sdlmain.cpp	2020-02-18 16:20:33.000000000 +0000
+@@ -50,6 +50,7 @@
  #include "cross.h"
  #include "control.h"
+ #include "render.h"
 +#include "glidedef.h"
  
  #define MAPPERFILE "mapper-" VERSION ".map"
  //#define DISABLE_JOYSTICK
-@@ -438,6 +439,10 @@ check_gotbpp:
+@@ -604,6 +605,10 @@ check_gotbpp:
  
  
  void GFX_ResetScreen(void) {
@@ -591,7 +591,7 @@ diff -Nawurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
  	GFX_Stop();
  	if (sdl.draw.callback)
  		(sdl.draw.callback)( GFX_CallBackReset );
-@@ -846,6 +851,9 @@ void GFX_SwitchFullScreen(void) {
+@@ -1214,6 +1219,9 @@ void GFX_SwitchFullScreen(void) {
  		sticky_keys(true); //restore sticky keys to default state in windowed mode.
  #endif
  	}
@@ -601,7 +601,7 @@ diff -Nawurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
  	GFX_ResetScreen();
  }
  
-@@ -1663,7 +1671,7 @@ void GFX_Events() {
+@@ -2104,7 +2112,7 @@ void GFX_Events() {
  			throw(0);
  			break;
  		case SDL_VIDEOEXPOSE:
@@ -610,7 +610,7 @@ diff -Nawurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
  			break;
  #ifdef WIN32
  		case SDL_KEYDOWN:
-@@ -2103,6 +2111,7 @@ int main(int argc, char* argv[]) {
+@@ -2558,6 +2566,7 @@ int main(int argc, char* argv[]) {
  			if (strcmp(sdl_drv_name,"windib")==0) LOG_MSG("SDL_Init: Starting up with SDL windib video driver.\n          Try to update your video card and directx drivers!");
  		}
  #endif
@@ -618,9 +618,9 @@ diff -Nawurp a/src/gui/sdlmain.cpp b/src/gui/sdlmain.cpp
  	sdl.num_joysticks=SDL_NumJoysticks();
  
  	/* Parse configuration files */
-diff -Nawurp a/src/hardware/glide.cpp b/src/hardware/glide.cpp
+diff -Naurp a/src/hardware/glide.cpp b/src/hardware/glide.cpp
 --- a/src/hardware/glide.cpp	1970-01-01 00:00:00.000000000 +0000
-+++ b/src/hardware/glide.cpp	2019-06-15 00:25:58.000000000 +0000
++++ b/src/hardware/glide.cpp	2020-02-18 16:20:33.000000000 +0000
 @@ -0,0 +1,1962 @@
 +/*
 + *  Copyright (C) 2002-2013  The DOSBox Team
@@ -2584,9 +2584,9 @@ diff -Nawurp a/src/hardware/glide.cpp b/src/hardware/glide.cpp
 +
 +    }	/* switch */
 +}	/* process_msg() */
-diff -Nawurp a/src/hardware/Makefile.am b/src/hardware/Makefile.am
+diff -Naurp a/src/hardware/Makefile.am b/src/hardware/Makefile.am
 --- a/src/hardware/Makefile.am	2019-06-15 00:25:57.000000000 +0000
-+++ b/src/hardware/Makefile.am	2019-06-15 00:25:58.000000000 +0000
++++ b/src/hardware/Makefile.am	2020-02-18 16:20:33.000000000 +0000
 @@ -10,6 +10,6 @@ libhardware_a_SOURCES = adlib.cpp dma.cp
                          memory.cpp mixer.cpp pcspeaker.cpp pci_bus.cpp pic.cpp sblaster.cpp tandy_sound.cpp timer.cpp \
  			vga.cpp vga_attr.cpp vga_crtc.cpp vga_dac.cpp vga_draw.cpp vga_gfx.cpp vga_other.cpp \
@@ -2595,9 +2595,9 @@ diff -Nawurp a/src/hardware/Makefile.am b/src/hardware/Makefile.am
 +			cmos.cpp disney.cpp gus.cpp mpu401.cpp ipx.cpp ipxserver.cpp dbopl.cpp glide.cpp
  
  
-diff -Nawurp a/src/hardware/memory.cpp b/src/hardware/memory.cpp
+diff -Naurp a/src/hardware/memory.cpp b/src/hardware/memory.cpp
 --- a/src/hardware/memory.cpp	2019-06-15 00:25:55.000000000 +0000
-+++ b/src/hardware/memory.cpp	2019-06-15 00:25:58.000000000 +0000
++++ b/src/hardware/memory.cpp	2020-02-18 16:20:33.000000000 +0000
 @@ -23,6 +23,7 @@
  #include "setup.h"
  #include "paging.h"
