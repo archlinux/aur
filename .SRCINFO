@@ -1,7 +1,7 @@
 pkgbase = nodejs-ipv6
 	pkgdesc = NodeJS patched to work in IPv6 only network
-	pkgver = 13.8.0
-	pkgrel = 4
+	pkgver = 13.9.0
+	pkgrel = 1
 	url = https://nodejs.org/
 	arch = x86_64
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = nodejs-ipv6
 	optdepends = npm: nodejs package manager
 	provides = nodejs
 	conflicts = nodejs
-	source = nodejs-13.8.0.tar.gz::https://github.com/nodejs/node/archive/v13.8.0.tar.gz
+	source = nodejs-13.9.0.tar.gz::https://github.com/nodejs/node/archive/v13.9.0.tar.gz
 	source = patch.diff
-	sha512sums = 187519194b2b666ad323a50800468e03d13fd52f0b66bef74679d9a40d61263d75060e055ecd63db3d471b2c914a1d6d562054dd65984efa67274320083b0dbf
+	sha512sums = e32572cd833d7f45f56b5fa7ff6e5940c1fe4c73e8793e65ea6988d2908ed78844bf5e45f46237f27a0b00e08cf8f57473098c0bf9e496f763437bc2247e0c07
 	sha512sums = ec70e2c49e8a75114e45f1af71519cf0445773e57579eaa51ddecfc134bdaaffb37bc7e863f3103d1f0ddcf4a26e41aa1be678d34c997916e59aecbfe3dd19e5
 
 pkgname = nodejs-ipv6
