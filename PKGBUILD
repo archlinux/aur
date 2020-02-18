@@ -2,7 +2,7 @@
  
 _realname='gulkan'
 pkgname="$_realname-git"
-pkgver=0.13.99.140.9684b5e
+pkgver=0.13.99.221.74c9a98
 pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=('git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git')
 md5sums=('SKIP')
 
 ver() {
-  PREFIX="project('gulkan', 'c', version: '"
+  PREFIX="        version: '"
   echo $(grep "$PREFIX" meson.build | sed -e "s/${PREFIX}//" | sed "s/',//")
 }
 
