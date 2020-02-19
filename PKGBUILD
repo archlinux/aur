@@ -1,7 +1,7 @@
 # Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
 
 pkgname=skympc-git
-pkgver=1.6.5.0.r149.g9661bd1
+pkgver=1.6.5.0.r150.g1ba975a
 pkgrel=1
 pkgdesc="A simple MPD (Music Player Daemon) client, powerd by Qt"
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
   cd SkyMPC
-  qmake-qt5 PREFIX=/usr SkyMPC.pro \
+  qmake-qt5 SkyMPC.pro \
     QMAKE_CFLAGS_RELEASE="${CFLAGS}" \
     QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
     QMAKE_LFLAGS_RELEASE="${LDFLAGS}"
@@ -34,7 +34,7 @@ build() {
 
 package() {
   cd SkyMPC
-  install -Dm755 SkyMPC "${pkgdir}/usr/bin/SkyMPC"
+  install -Dm755 _bin/SkyMPC "${pkgdir}/usr/bin/SkyMPC"
   install -Dm644 image/appicon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/SkyMPC.svg"
   install -Dm644 image/appicon.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/SkyMPC.png"
   install -Dm644 LinuxDesktop/SkyMPC.desktop "${pkgdir}/usr/share/applications/SkyMPC.desktop"
