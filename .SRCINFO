@@ -1,0 +1,17 @@
+pkgbase = pipeline-c-git
+	pkgdesc = The `pipeline` shell command
+	pkgver = 45.d7181e2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/codekitchen/pipeline
+	arch = x86_64
+	license = MIT
+	depends = ncurses
+	depends = readline
+	provides = pipeline-c
+	conflicts = pipeline-git
+	source = pipeline-c::git+https://github.com/codekitchen/pipeline.git
+	sha256sums = SKIP
+
+pkgname = pipeline-c-git
+
