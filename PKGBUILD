@@ -3,14 +3,14 @@
 
 pkgname=agetpkg
 pkgver=3
-pkgrel=2
+pkgrel=3
 pkgdesc='Arch Linux Archive Get Package'
 arch=('any')
-url='https://github.com/seblu/agetpkg'
+url='https://git.seblu.net/archlinux/agetpkg'
 license=('GPL2')
 makedepends=('git')
 depends=('python' 'python-xdg')
-source=("git+https://github.com/seblu/agetpkg#tag=v$pkgver")
+source=("git+https://git.seblu.net/archlinux/agetpkg#tag=v$pkgver")
 md5sums=('SKIP')
 
 package() {

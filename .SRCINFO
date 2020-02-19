@@ -1,14 +1,14 @@
 pkgbase = agetpkg
 	pkgdesc = Arch Linux Archive Get Package
 	pkgver = 3
-	pkgrel = 2
-	url = https://github.com/seblu/agetpkg
+	pkgrel = 3
+	url = https://git.seblu.net/archlinux/agetpkg
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = python
 	depends = python-xdg
-	source = git+https://github.com/seblu/agetpkg#tag=v3
+	source = git+https://git.seblu.net/archlinux/agetpkg#tag=v3
 	md5sums = SKIP
 
 pkgname = agetpkg
