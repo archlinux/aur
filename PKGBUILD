@@ -1,6 +1,6 @@
 # Maintainer: Michael Darr <michael.e.darr@gmail.com>
 pkgname="ahab"
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
 pkgdesc="Dockerize your project, git style"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(
  'go>=1.13')
 conflicts=('ahab-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MichaelDarr/ahab/archive/v${pkgver}.tar.gz")
-sha256sums=('364cb92fbe353b3a97f8047b377aa814d6d4990838bc3ea41c7ddec144619f15')
+sha256sums=('3787b712118696ccdc63f3a0ca2638927f440b08258facfbef39fc304b8d082b')
 
 build() {
  cd "$srcdir/${pkgname}-${pkgver}"
