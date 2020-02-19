@@ -1,0 +1,16 @@
+pkgbase = osctl
+	pkgdesc = A CLI for out-of-band management of Kubernetes nodes created by Talos
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://www.talos-systems.com
+	arch = i686
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	source = git+https://github.com/talos-systems/talos.git#commit=fb48851d691d21ab6fc9356a8106b3e498552763
+	sha256sums = SKIP
+
+pkgname = osctl
+
