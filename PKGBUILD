@@ -2,13 +2,16 @@
 
 pkgname=python-box
 pkgver=4.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Python dictionaries with dot notation access"
 arch=('any')
-url="https://github.com/cdgriffith/Boxs"
+url="https://github.com/cdgriffith/Box"
 license=('MIT')
 provides=("${pkgname}")
-depends=()
+depends=(
+    'python-toml'
+    'python-ruamel-yaml'
+)
 source=(
     "https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 )
