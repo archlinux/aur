@@ -1,8 +1,9 @@
 # Maintainer: Timothy Gu <timothygu99@gmail.com>
 
-pkgname=pam_wrapper
+pkgname=(pam_wrapper python-pypamtest python2-pypamtest)
+pkgbase=pam_wrapper
 pkgver=1.0.7
-pkgrel=4
+pkgrel=5
 pkgdesc='A helper library for PAM testing'
 arch=(x86_64)
 url='https://cwrap.org/pam_wrapper.html'
@@ -11,8 +12,11 @@ groups=(cwrap)
 depends=(pam)
 makedepends=(cmake python python2)
 checkdepends=(cmocka)
-optdepends=('python: Python 3 support'
-            'python2: Python 2 support')
+# pam-wrapper is the name of another AUR package that we are trying to merge
+# into this one.
+provides=(pam-wrapper)
+conflicts=(pam-wrapper)
+replaces=(pam-wrapper)
 source=("https://ftp.samba.org/pub/cwrap/$pkgname-$pkgver.tar.gz"
         # https://bugzilla.samba.org/show_bug.cgi?id=14245
         # https://gitlab.com/cwrap/pam_wrapper/-/merge_requests/2
@@ -40,7 +44,32 @@ check() {
   make -k test
 }
 
-package() {
+package_pam_wrapper() {
   cd build
   make DESTDIR="$pkgdir/" install
+  rm -rf "$pkgdir"/usr/lib/python*
+}
+
+package_python-pypamtest() {
+  depends=(pam_wrapper python)
+  pkgdesc='A helper library for PAM testing (Python bindings)'
+
+  cd build
+  make DESTDIR="$pkgdir/" install
+
+  cd "$pkgdir"
+  find . -mindepth 1 '!' -type d '!' -path '*python3*' -delete
+  find . -mindepth 1 -type d -empty -delete
+}
+
+package_python2-pypamtest() {
+  depends=(pam_wrapper python2)
+  pkgdesc='A helper library for PAM testing (Python 2 bindings)'
+
+  cd build
+  make DESTDIR="$pkgdir/" install
+
+  cd "$pkgdir"
+  find . -mindepth 1 '!' -type d '!' -path '*python2*' -delete
+  find . -mindepth 1 -type d -empty -delete
 }

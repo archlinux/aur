@@ -1,7 +1,7 @@
 pkgbase = pam_wrapper
 	pkgdesc = A helper library for PAM testing
 	pkgver = 1.0.7
-	pkgrel = 4
+	pkgrel = 5
 	url = https://cwrap.org/pam_wrapper.html
 	arch = x86_64
 	groups = cwrap
@@ -11,12 +11,23 @@ pkgbase = pam_wrapper
 	makedepends = python
 	makedepends = python2
 	depends = pam
-	optdepends = python: Python 3 support
-	optdepends = python2: Python 2 support
+	provides = pam-wrapper
+	conflicts = pam-wrapper
+	replaces = pam-wrapper
 	source = https://ftp.samba.org/pub/cwrap/pam_wrapper-1.0.7.tar.gz
 	source = fix-pam-module-output-crash.patch
 	sha256sums = 0537302eb6ceb07bcf5233c859b19264375beaa294bb3a9b7f58973981c8b219
 	sha256sums = ad36643dc64951a7d99580fb02de3a7de841547f8ae01cc2fba5e7989e61b2e5
 
 pkgname = pam_wrapper
+
+pkgname = python-pypamtest
+	pkgdesc = A helper library for PAM testing (Python bindings)
+	depends = pam_wrapper
+	depends = python
+
+pkgname = python2-pypamtest
+	pkgdesc = A helper library for PAM testing (Python 2 bindings)
+	depends = pam_wrapper
+	depends = python2
 
