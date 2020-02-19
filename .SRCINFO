@@ -1,24 +1,26 @@
 pkgbase = lib32-gconf
-	pkgdesc = A configuration database system
-	pkgver = 3.2.6
-	pkgrel = 1
-	url = http://www.gnome.org
+	pkgdesc = An obsolete configuration database system
+	pkgver = 3.2.6+11+g07808097
+	pkgrel = 6
+	url = https://projects-old.gnome.org/gconf/
 	install = gconf.install
 	arch = x86_64
 	license = LGPL
-	makedepends = gcc-multilib
-	makedepends = gobject-introspection
 	makedepends = intltool
-	makedepends = python2
+	makedepends = gtk-doc
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = gcc-multilib
 	depends = gconf
 	depends = lib32-dbus-glib
 	depends = lib32-gtk3
-	source = http://ftp.gnome.org/pub/gnome/sources/GConf/3.2/GConf-3.2.6.tar.xz
-	source = gconf-reload.patch
+	source = lib32-gconf::git+https://gitlab.gnome.org/Archive/gconf.git#commit=0780809731c8ab1c364202b1900d3df106b28626
 	source = 01_xml-gettext-domain.patch
-	sha256sums = 1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c
-	sha256sums = 567b78d8b4b4bbcb77c5f134d57bc503c34867fcc6341c0b01716bcaa4a21694
+	source = gconf-reload.patch
+	sha256sums = SKIP
 	sha256sums = c883dec2b96978874a53700cfe7f26f24f8296767203e970bc6402b4b9945eb8
+	sha256sums = 567b78d8b4b4bbcb77c5f134d57bc503c34867fcc6341c0b01716bcaa4a21694
 
 pkgname = lib32-gconf
 
