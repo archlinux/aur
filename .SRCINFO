@@ -1,0 +1,13 @@
+pkgbase = reboot-checker
+	pkgdesc = Script determining if a reboot of the system is required
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/daersc/reboot-checker
+	arch = any
+	license = GPL3
+	depends = libnotify
+	source = https://gitlab.com/daersc/reboot-checker/-/archive/1.0/reboot-checker-1.0.tar.gz
+	md5sums = 50879923f512a9aed4ef0ddf33a6dacc
+
+pkgname = reboot-checker
+
