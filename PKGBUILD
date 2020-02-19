@@ -3,7 +3,7 @@
 java_=8
 pkgname_=native-image
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=19.3.1
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="Plugin to turn GraalVM-based applications into native binary images (Java ${java_} version)"
 arch=('x86_64')
@@ -11,13 +11,13 @@ url='https://github.com/oracle/graal'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/${pkgname_}-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('3fd2e5b5299c8ce7c939235b4d01df990aeb236f127f98fbf19b588c521793fa')
+sha256sums=('9aee17470ce750eb2454625988c59de86a79b14b811e78085553385bfa7adaff')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ LICENSE_NATIVEIMAGE.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ lib/ LICENSE_NATIVEIMAGE.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
