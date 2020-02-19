@@ -3,12 +3,12 @@
 
 pkgname=tableplus
 pkgver=0.1.38
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
 url="https://tableplus.com/"
 license=('custom')
-depends=('gtksourceview3' 'libgee')
+depends=('gtksourceview3' 'libgee' 'gnome-keyring')
 source=('LICENSE'
         "https://deb.tableplus.com/debian/pool/main/t/tableplus/tableplus_${pkgver}_amd64.deb"
 )
