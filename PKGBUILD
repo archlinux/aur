@@ -1,7 +1,6 @@
 # Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
-
 pkgname=gnome-shell-extension-arc-menu-git
-pkgver=36.Stable.r2.ge712c55
+pkgver=41.Stable.r0.g5557736
 pkgrel=1
 pkgdesc='A GNOME shell extension designed to replace the standard menu found in GNOME 3.'
 arch=(any)
@@ -14,12 +13,12 @@ source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd Arc-Menu
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd Arc-Menu
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd Arc-Menu
-  make DESTDIR="$pkgdir" INSTALL="system" install
+    cd Arc-Menu
+    make DESTDIR="$pkgdir" INSTALL="system" install
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:

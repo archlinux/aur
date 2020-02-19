@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-arc-menu-git
 	pkgdesc = A GNOME shell extension designed to replace the standard menu found in GNOME 3.
-	pkgver = 36.Stable.r2.ge712c55
+	pkgver = 41.Stable.r0.g5557736
 	pkgrel = 1
 	url = https://gitlab.com/LinxGem33/Arc-Menu
 	install = gnome-shell-extension.install
