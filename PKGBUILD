@@ -1,7 +1,7 @@
 # Maintainer: Nimrod Maclomair <nimrod4garoa at gmail dot com>
 pkgname=olsrd-git
 pkgrel=1
-pkgver=v0.9.7.r71.g4ef6d68e
+pkgver=v0.9.7.r73.g8b7fcf61
 pkgdesc='The olsr.org implementation of the Optimized Link State Routing Protocol.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.olsr.org/mediawiki/index.php/Olsrd'
@@ -10,13 +10,20 @@ depends=()
 optdepends=('gpsd')
 makedepends=('bison' 'flex' 'gpsd')
 source=("$pkgname"::'git+https://github.com/OLSR/olsrd.git'
+		'0001-gpslib-fix-for-3_20.patch'
 		'olsrd.service')
 sha256sums=('SKIP'
+            'fa865bc4b4a987a92b683825be42686d4b9d7a33d5fd1a3ea4b6976e23fcb08e'
             '321f2e0d30af597a38442eb8f039757767efc5da88205b85cf96819384c94ac7')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "$srcdir/$pkgname"
+  patch --forward --strip=1 --input="${srcdir}/0001-gpslib-fix-for-3_20.patch"
 }
 
 build(){
