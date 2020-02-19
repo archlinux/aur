@@ -2,7 +2,7 @@
 # Maintainer: Allen Zhong <zhongbenli@pingcap.com>
 pkgname=tikv-pd
 pkgver=3.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage and schedule the TiKV cluster.'
 makedepends=('go' 'make' 'git')
 arch=('x86_64')
@@ -28,6 +28,9 @@ prepare() {
   rm -rf "$GOPATH/src/$_gopkgname"
   mkdir -p `dirname "$GOPATH/src/$_gopkgname"`
   mv -Tv "$srcdir/pd-${pkgver}" "$GOPATH/src/$_gopkgname"
+
+  # patch Makefile
+  sed -i 's/go build/go build -trimpath/g' "$GOPATH/src/$_gopkgname/Makefile"
 }
 
 build() {

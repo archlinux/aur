@@ -1,7 +1,7 @@
 pkgbase = tikv-pd
 	pkgdesc = Manage and schedule the TiKV cluster.
 	pkgver = 3.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pingcap/pd
 	arch = x86_64
 	license = Apache
