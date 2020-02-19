@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=eigenpy
-pkgver=1.6.12
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Bindings between numpy and eigen using boost::python"
 arch=('i686' 'x86_64')
@@ -17,8 +17,7 @@ validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
 build() {
     cd "$pkgname-$pkgver"
 
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_UNIT_TESTS=ON .
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib .
     make
 }
 
