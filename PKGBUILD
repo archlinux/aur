@@ -2,8 +2,8 @@
 #
 _pkgbase=veeam
 pkgname=veeam
-pkgver=3.0.2.1190
-pkgrel=2
+pkgver=4.0.0.1961
+pkgrel=1
 pkgdesc="Veeam Agent for Linux"
 arch=('x86_64')
 url=http://repository.veeam.com/backup/linux/agent
@@ -12,7 +12,8 @@ depends=('ncurses' 'lvm2' 'fuse' 'rpmextract')
 install=${pkgname}.install
 source=( "${url}/rpm/el/7/x86_64/veeam-${pkgver}-1.el7.x86_64.rpm" )
 conflicts=("${_pkgbase}")
-sha256sums=('29013226d237df36c8b722549fa565b6fa745939deab1be22e17b21f837f7b37')
+sha256sums=('7b72684922d71f71adda4111ff688735d5ea1f06eea4119be683dadf2af967d5')
+backup=('etc/veeam/veeam.ini' 'var/lib/veeam/veeam_db.sqlite' 'var/lib/veeam/veeam_db.sqlite-shm' 'var/lib/veeam/veeam_db.sqlite-wal')
 #
 build() {
   msg "build..."
@@ -28,7 +29,6 @@ package() {
   install -Dm 0644 "${srcdir}/lib/systemd/system/veeamservice.service" "${pkgdir}/usr/lib/systemd/system/veeamservice.service"
   install -Dm 0755 "${srcdir}/usr/bin/veeam" "${pkgdir}/usr/bin/veeam"
   install -Dm 0755 "${srcdir}/usr/bin/veeamconfig" "${pkgdir}/usr/bin/veeamconfig"
-  install -Dm 0755 "${srcdir}/usr/sbin/veeamagentid" "${pkgdir}/usr/bin/veeamagentid"
   install -Dm 0755 "${srcdir}/usr/sbin/veeammount" "${pkgdir}/usr/bin/veeammount"
   install -Dm 0755 "${srcdir}/usr/sbin/veeamagent" "${pkgdir}/usr/bin/veeamagent"
   install -Dm 0755 "${srcdir}/usr/sbin/veeamjobman" "${pkgdir}/usr/bin/veeamjobman"

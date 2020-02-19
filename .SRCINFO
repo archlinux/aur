@@ -1,7 +1,7 @@
 pkgbase = veeam
 	pkgdesc = Veeam Agent for Linux
-	pkgver = 3.0.2.1190
-	pkgrel = 2
+	pkgver = 4.0.0.1961
+	pkgrel = 1
 	url = http://repository.veeam.com/backup/linux/agent
 	install = veeam.install
 	arch = x86_64
@@ -11,8 +11,12 @@ pkgbase = veeam
 	depends = fuse
 	depends = rpmextract
 	conflicts = veeam
-	source = http://repository.veeam.com/backup/linux/agent/rpm/el/7/x86_64/veeam-3.0.2.1190-1.el7.x86_64.rpm
-	sha256sums = 29013226d237df36c8b722549fa565b6fa745939deab1be22e17b21f837f7b37
+	backup = etc/veeam/veeam.ini
+	backup = var/lib/veeam/veeam_db.sqlite
+	backup = var/lib/veeam/veeam_db.sqlite-shm
+	backup = var/lib/veeam/veeam_db.sqlite-wal
+	source = http://repository.veeam.com/backup/linux/agent/rpm/el/7/x86_64/veeam-4.0.0.1961-1.el7.x86_64.rpm
+	sha256sums = 7b72684922d71f71adda4111ff688735d5ea1f06eea4119be683dadf2af967d5
 
 pkgname = veeam
 
