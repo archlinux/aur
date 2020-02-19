@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-harmattan
 	pkgdesc = An Arabic script font designed for use by languages in West Africa
 	pkgver = 1.001
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/harmattan
 	arch = any
 	license = OFL
