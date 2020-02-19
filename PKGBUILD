@@ -6,14 +6,14 @@
 
 pkgname=ttf-sil-fonts
 pkgver=8
-pkgrel=2
+pkgrel=3
 pkgdesc="Metapackage depending on all OFL-licensed font packages from SIL"
 arch=('any')
 url='https://software.sil.org/fonts'
-license=('custom:OFL')
-_silfonts=('abyssinica'
+license=('OFL')
+_silfonts=('abyssinica>=2.000-2'
            'alkalami'
-           # 'andika' Blocked by AUR package
+           # 'andika' Has different name in AUR
            'annapurna'
            'apparatus'
            'awami-nastaliq'
@@ -22,8 +22,9 @@ _silfonts=('abyssinica'
            'doulos'
            'ezra'
            'galatia'
+           # 'gentium-plus' Has different name in [community]
            'harmattan'
-           'lateef'
+           'lateef>=1.200-4'
            'mingzat'
            'mondulkiri'
            'namdhinggo'
@@ -33,7 +34,7 @@ _silfonts=('abyssinica'
            'sophia-nubian'
            'tagmukay'
            'tai-heritage-pro')
-depends=('gentium-plus-font' 'ttf-charis-sil' "${_silfonts[@]/#/ttf-sil-}")
+depends=('gentium-plus-font' 'ttf-charis-sil>=5.000-3' 'ttf-andika>=5.000-3' "${_silfonts[@]/#/ttf-sil-}")
 
 package() {
     :
