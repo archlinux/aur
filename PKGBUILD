@@ -10,7 +10,7 @@ arch=('any')
 url="https://goodies.xfce.org/projects/artwork/xfce4-artwork"
 license=('GPL2')
 groups=('xfce4-goodies')
-source=(http://ftp.debian.org/debian/pool/main/x/$pkgname/${pkgname}_$_debian_pkgver.orig.tar.gz)
+source=(https://deb.debian.org/debian/pool/main/x/$pkgname/${pkgname}_$_debian_pkgver.orig.tar.gz)
 sha256sums=('7a97c0acd0ed67ebb871866cc79c2925bea45bf1b92442bd88fac390dbe639ac')
 
 build() {
