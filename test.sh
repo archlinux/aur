@@ -1,9 +1,14 @@
 #!/bin/bash
 
-OUTPUT=$(haur)
 
 testEquality() {
-  assertEquals $OUTPUT ""
+  if ./haur -g &>/dev/null; then
+    echo "Test failed"
+    exit 1
+  else
+    echo "Test successful"
+    exit 0
+  fi
 }
 
-. shunit2-2.1.6/src/shunit2
+testEquality
