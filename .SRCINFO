@@ -1,6 +1,6 @@
 pkgbase = bsnes-hd
 	pkgdesc = Nintendo SNES emulator, featuring HD Mode 7 and Widescreen.
-	pkgver = beta_10_2.r0.g3a74cbe
+	pkgver = beta_10_3.r0.g87173e8
 	pkgrel = 1
 	url = https://github.com/DerKoun/bsnes-hd
 	arch = x86_64
