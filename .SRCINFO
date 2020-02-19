@@ -21,3 +21,26 @@ pkgbase = authelia-git
 
 pkgname = authelia-git
 
+pkgbase = authelia-git
+	pkgdesc = The Cloud ready multi-factor authentication portal for your Apps.
+	pkgver = 4.4.0.r1.g27a4ee7
+	pkgrel = 1
+	url = https://github.com/authelia/authelia
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = gcc
+	makedepends = git
+	makedepends = go
+	makedepends = nodejs
+	makedepends = yarn
+	provides = authelia
+	conflicts = authelia
+	conflicts = authelia-bin
+	backup = etc/authelia/configuration.yml
+	source = authelia::git+https://github.com/authelia/authelia.git#branch=master
+	sha256sums = SKIP
+
+pkgname = authelia-git
+
