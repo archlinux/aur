@@ -1,7 +1,7 @@
 pkgbase = corosync
-	pkgdesc = Cluster engine for nodal communication systems with additional features for implementing high availability within applications.
+	pkgdesc = Cluster engine for nodal communications systems with high availability features.
 	pkgver = 3.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.corosync.org/
 	arch = i686
 	arch = x86_64
