@@ -2,9 +2,9 @@
 # Maintainer: Allen Zhong <zhongbenli@pingcap.com>
 pkgname=tidb
 pkgver=3.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A distributed HTAP database compatible with the MySQL protocol'
-makedepends=('go' 'make' 'git')
+makedepends=('go' 'make')
 arch=('x86_64')
 url='https://github.com/pingcap/tidb'
 license=('Apache')
@@ -40,8 +40,9 @@ build() {
   # Remove all git operations.
   sed -i '/(shell git /d' Makefile
   _LDFLAGS="-X github.com/pingcap/parser/mysql.TiDBReleaseVersion=$pkgver -X $_gopkgname/util/printer.TiDBGitHash=v$pkgver -X $_gopkgname/util/printer.TiDBGitBranch=release"
+  _BUILD_FLAG="-trimpath"
 
-  LDFLAGS=$_LDFLAGS make server
+  BUILD_FLAG=$_BUILD_FLAG LDFLAGS=$_LDFLAGS make server
 }
 
 package() {

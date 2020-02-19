@@ -1,13 +1,12 @@
 pkgbase = tidb
 	pkgdesc = A distributed HTAP database compatible with the MySQL protocol
 	pkgver = 3.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pingcap/tidb
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	makedepends = make
-	makedepends = git
 	depends = tikv
 	provides = tidb-server
 	backup = etc/tidb/tidb.toml
