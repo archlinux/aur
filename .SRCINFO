@@ -1,6 +1,6 @@
 pkgbase = simutrans-extended-pak128.britain
 	pkgdesc = High resolution graphics set for Simutrans Extended, with a British theme
-	pkgver = 20200217
+	pkgver = 20200220
 	pkgrel = 1
 	url = https://www.simutrans.com/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = simutrans-extended-pak128.britain
 	depends = simutrans-extended
 	source = http://bridgewater-brunel.me.uk/downloads/nightly/pakset/pak128.britain-ex-nightly.tar.gz
 	source = license.txt
-	sha256sums = cfafb6ec7db4ab039cfa48c3437b17588a0945a7c2a02ac28bf5f689cb2e238f
+	sha256sums = SKIP
 	sha256sums = def758cfe51b6f16d838f777a6540163fb47f334df5a0fb86448f92a36a92017
 
 pkgname = simutrans-extended-pak128.britain
