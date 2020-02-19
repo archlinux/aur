@@ -9,7 +9,7 @@ url="https://github.com/Xtra-Computing/thundersvm"
 license=('APL')
 makedepends=(eigen cmake python-wheel)
 arch=('x86_64')
-source=("https://github.com/Xtra-Computing/${pkgbase}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/Xtra-Computing/${_pkgbase}/archive/v${pkgver}.tar.gz")
 sha256sums=('c8b4f7ece312a51ab72ef72e550f7ca3973f5328bc128df64158fe6e3b3b8c0e')
 
 build() {
