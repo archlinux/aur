@@ -1,7 +1,7 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
 	pkgver = 5.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
 	arch = x86_64
 	license = GPL2
@@ -14,20 +14,20 @@ pkgbase = linux-versioned-bin
 	sha256sums = c390ff437d20cd9a8418d722c5734d4ef71c67796c5e81f6c5c0ded928ee40c8
 
 pkgname = linux-versioned-latest-bin
-	pkgdesc = Dummy package depending on the latest linuxX.Y.Z-archN-M-bin
+	pkgdesc = Dummy package depending on linux5.5.4-arch1-1-bin
 	depends = linux5.5.4-arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when new kernels are installed
 	provides = linux
 	conflicts = linux
 
 pkgname = linux-versioned-latest-headers-bin
-	pkgdesc = Dummy package depending on the latest linuxX.Y.Z-archN-M-headers-bin
+	pkgdesc = Dummy package depending on linux5.5.4-arch1-1-headers-bin
 	depends = linux5.5.4-arch1-1-headers-bin
 	provides = linux-headers
 	conflicts = linux-headers
 
 pkgname = linux-versioned-latest-docs-bin
-	pkgdesc = Dummy package depending on the latest linuxX.Y.Z-archN-M-docs-bin
+	pkgdesc = Dummy package depending on linux5.5.4-arch1-1-docs-bin
 	depends = linux5.5.4-arch1-1-docs-bin
 	provides = linux-docs
 	conflicts = linux-docs

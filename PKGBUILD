@@ -13,7 +13,7 @@ pkgname=("linux-versioned-latest-bin"
          "${_versioned_pkgname}-headers-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_kernver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Repackaging of the Arch kernel with a unique package name for each version'
 url="https://git.archlinux.org/linux.git/log/?h=v${_kernver}-${_archver}"
 arch=(x86_64)
@@ -39,7 +39,7 @@ sha256sums=('7b9e536050d8bf740b00fab87a52ab843ff9dedbb9ece35f45b219cef91cf7db'
             'c390ff437d20cd9a8418d722c5734d4ef71c67796c5e81f6c5c0ded928ee40c8')
 
 package_linux-versioned-latest-bin() {
-    pkgdesc="Dummy package depending on the latest linuxX.Y.Z-archN-M-bin"  
+    pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
     depends=("${_versioned_pkgname}-bin")
     provides=('linux')
     conflicts=('linux')
@@ -47,14 +47,14 @@ package_linux-versioned-latest-bin() {
 }
 
 package_linux-versioned-latest-headers-bin() {
-    pkgdesc="Dummy package depending on the latest linuxX.Y.Z-archN-M-headers-bin"  
+    pkgdesc="Dummy package depending on ${_versioned_pkgname}-headers-bin"  
     depends=("${_versioned_pkgname}-headers-bin")
     provides=('linux-headers')
     conflicts=('linux-headers')
 }
 
 package_linux-versioned-latest-docs-bin() {
-    pkgdesc="Dummy package depending on the latest linuxX.Y.Z-archN-M-docs-bin"  
+    pkgdesc="Dummy package depending on ${_versioned_pkgname}-docs-bin"  
     depends=("${_versioned_pkgname}-docs-bin")
     provides=('linux-docs')
     conflicts=('linux-docs')
