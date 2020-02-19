@@ -7,15 +7,17 @@ githuborg=skycoinproject
 pkgdesc="CX Skycoin Blockchain Programming Language"
 pkgver=0.7.1
 pkggopath="github.com/${githuborg}/${pkgname1}"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkggopath}"
 license=()
-makedepends=('git' 'go' 'gcc' 'glade' 'xorg-server-xvfb' 'libxinerama' 'libxcursor' 'libxrandr' 'libglvnd' 'libglade' 'mesa' 'libxi' 'cairo' 'perl' 'pango')
+makedepends=('git' 'go' 'gcc' 'glade' 'xorg-server-xvfb' 'libxinerama' 'libxcursor' 'libxrandr' 'libglvnd' 'libglade' 'mesa' 'libxi' 'cairo' 'perl' 'pango' 'skycoin-keyring')
 source=("${url}/archive/v${pkgver}.tar.gz"
-"https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key")
-sha256sums=('5659cc64d4caa359da4ba68ef2729b2b87e477ce11a9dfe1a751e9a48acf7c6a'
-'41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
+"PKGBUILD.sig")
+sha256sums=('1deb342041cc365c92617e8cf6c24801ff3011f2df90a988b4541b5bc83be4fe'
+            'SKIP')
+validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
+                           '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 
 export GOOS=linux
 export GOPATH="${srcdir}"
@@ -40,9 +42,8 @@ mipsel)   export GOARCH="mipsle" ;;
 
 
 prepare() {
-	gpg --import key
 	#verify PKGBUILD signature
-	gpg --verify ../PKGBUILD.sig ../PKGBUILD
+	gpg --verify ${srcdir}/PKGBUILD.sig ../PKGBUILD
   # https://wiki.archlinux.org/index.php/Go_package_guidelines
   mkdir -p ${srcdir}/go/src/${pkggopath//${pkgname1}/} "${srcdir}"/go/bin
   ln -rTsf ${srcdir}/${pkgname1}-${pkgver} ${srcdir}/go/src/${pkggopath}
@@ -62,22 +63,25 @@ build() {
   cd ${srcdir}/go/src/${pkggopath}
 	make install-gfx-deps
   make build-full
-	go install \
-	  -gcflags "all=-trimpath=${GOPATH}" \
-	  -asmflags "all=-trimpath=${GOPATH}" \
-	  -ldflags "-extldflags ${LDFLAGS}" \
-	  -v ./cmd/...
+
+	cmddir=${srcdir}/go/src/github.com/${githuborg}/${pkgname1}/cmd
+  #using go build for determinism
+	cd ${cmddir}/newcoin
+  msg2 'building cx-newcoin binary'
+  go build -trimpath -ldflags '-extldflags ${LDFLAGS}' -ldflags=-buildid= -o $GOBIN/ .
+  #binary transparency
+  cd $GOBIN
+  msg2 'binary sha256sums'
+  sha256sum $(ls)
 }
 
 package() {
-	msg2 'installing CX'
 	options=(!strip staticlibs)
 	#make dirs
 	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/usr/lib/${projectname}/go/bin
 	mkdir -p ${pkgdir}/usr/lib/${projectname}/go/src/github.com/${projectname}/
 	mkdir -p ${pkgdir}/usr/lib/${projectname}/${pkgname1}/
-	msg2 'installing binaries'
 	#^MAKE DEPENDANCIES ARE IN GOBIN; GET ONLY CX & NEWCOIN
 	install -Dm755 ${srcdir}/go/bin/newcoin ${pkgdir}/usr/lib/${projectname}/go/bin/newcoin
 	ln -rTsf ${pkgdir}/usr/lib/${projectname}/go/bin/newcoin ${pkgdir}/usr/bin/newcoin
@@ -85,5 +89,4 @@ package() {
 	install -Dm755 ${srcdir}/go/bin/${pkgname1} ${pkgdir}/usr/lib/${projectname}/go/bin/${pkgname1}
 	ln -rTsf ${pkgdir}/usr/lib/${projectname}/go/bin/${pkgname1} ${pkgdir}/usr/bin/${pkgname1}
 	chmod 755 ${pkgdir}/usr/bin/${pkgname1}
-
 }
