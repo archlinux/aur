@@ -1,15 +1,15 @@
 pkgbase = coursier
 	pkgdesc = Pure Scala Artifact Fetching
-	pkgver = 2.0.0_RC6_9
+	pkgver = 2.0.0_RC6_10
 	pkgrel = 1
 	url = http://get-coursier.io
 	arch = any
 	license = Apache
 	depends = java-runtime-headless>=8
 	depends = bash
-	noextract = builder-2.0.0_RC6_9
-	source = builder-2.0.0_RC6_9::https://github.com/coursier/coursier/releases/download/v2.0.0-RC6-9/coursier
-	sha256sums = 58e1bc452a0f04b24db90307c0dcc0759920cc356cc1263439d387363844bd65
+	noextract = builder-2.0.0_RC6_10
+	source = builder-2.0.0_RC6_10::https://github.com/coursier/coursier/releases/download/v2.0.0-RC6-10/coursier
+	sha256sums = 551afe11eea7b72b63f221ed9e28155b72b77dda43263660c389a3cee4f33e38
 
 pkgname = coursier
 
