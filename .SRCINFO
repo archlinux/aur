@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-tagmukay
 	pkgdesc = A Shifinagh font that supports the Tawallammat dialect of Tamajaq
 	pkgver = 2.000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/tagmukay
 	arch = any
 	license = OFL
