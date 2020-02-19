@@ -16,6 +16,6 @@ package() {
     cd "$_fname-$pkgver"
     find -type f -name "$_fname*.ttf" -execdir \
         install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" {} \;
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.txt FONTLOG.txt documentation/$_fname*.pdf
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.txt FONTLOG.txt documentation/"$_fname"*.pdf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 }
