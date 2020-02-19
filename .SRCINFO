@@ -1,0 +1,17 @@
+pkgbase = pg_icu_ext-git
+	pkgdesc = postgresql background worker to capture data
+	pkgver = v1.5.1.r1.g444a52a
+	pkgrel = 1
+	url = https://github.com/dverite/icu_ext
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = postgresql
+	options = !emptydirs
+	options = !libtool
+	source = git://github.com/dverite/icu_ext.git
+	md5sums = SKIP
+
+pkgname = pg_icu_ext-git
+
