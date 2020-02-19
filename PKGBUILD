@@ -3,15 +3,15 @@
 
 pkgname=f21-backgrounds
 pkgver=21.1.0
-pkgrel=7
-_rhver=${pkgver}-9.fc31
+pkgrel=8
+_rhver=${pkgver}-10.fc32
 pkgdesc="Fedora 21 backgrounds"
 arch=('any')
-url="https://fedoraproject.org/wiki/Wallpapers#Fedora_21"
+url="https://fedoraproject.org/wiki/F21_Artwork"
 license=('CC-BY' 'CC-BY-SA')
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('00d727482b678ece93257786680d2a224d3617b8ecacb57cd82b6799ef0aa522')
+sha256sums=('60f4b897111924eba8c47d8fc8d8c693dc2c4056aa8573db79e3f46e0009cdae')
 
 prepare()  {
     tar -xvJf ./${pkgname}-${pkgver}.tar.xz
