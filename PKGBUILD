@@ -2,8 +2,8 @@
 
 _pkgname=via
 pkgname=$_pkgname-bin
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards."
 arch=(any)
 url="https://caniuse$_pkgname.com/"
