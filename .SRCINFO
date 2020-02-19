@@ -1,13 +1,18 @@
 pkgbase = python-pycaption
-	pkgdesc = Closed caption converter
+	pkgdesc = Python module to read/write popular video caption formats
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/pbs/pycaption
 	arch = any
-	makedepends = python3
-	depends = python
-	source = https://pypi.python.org/packages/24/1f/dc3e07788a14ab287a5ec922490e1d646216e838d038ed3db23c1517ce59/pycaption-1.0.1.tar.gz
-	md5sums = d5c11f5e4d1c2c94027029e25c7f732b
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-lxml
+	depends = python-cssutils
+	depends = python-future
+	depends = python-six
+	source = https://pypi.org/packages/source/p/pycaption/pycaption-1.0.1.tar.gz
+	sha256sums = 1000447d92903c2044838f899578c6b8a2e853e9bef4a179b48415e367ea5038
 
 pkgname = python-pycaption
 
