@@ -1,14 +1,14 @@
 pkgbase = dust
 	pkgdesc = du + rust = dust. Like du but more intuitive
-	pkgver = 0.4.41
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/bootandy/dust
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cargo
-	source = dust-0.4.41.tar.gz::https://github.com/bootandy/dust/archive/v0.4.41.tar.gz
-	sha512sums = 9814506d0fbf0902791149059b9c9a33994d4112a157d30c314b8ca2be60ef209301ad9fcad12d2d4f27c42453042b165d689115a9a04542f1b7e2c0b61a3221
+	source = dust-0.5.0.tar.gz::https://github.com/bootandy/dust/archive/v0.5.0.tar.gz
+	sha512sums = 74c4d0df3fdfcd88db2f3fd4eb4d0ca55e6bb6d294b5a2b189fd411253d69222188420026cdc2b0e2fab89151fbd020accb03e70d6b793c92b11789b22d5444f
 
 pkgname = dust
 
