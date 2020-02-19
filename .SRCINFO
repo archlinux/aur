@@ -1,7 +1,7 @@
 pkgbase = giada-git
 	pkgdesc = A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians
 	pkgver = v0.16.2.r0.ga042f4a1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.giadamusic.com/
 	arch = x86_64
 	groups = pro-audio

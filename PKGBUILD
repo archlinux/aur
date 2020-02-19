@@ -2,7 +2,7 @@
 
 pkgname=giada-git
 pkgver=v0.16.2.r0.ga042f4a1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, minimal, hardcore audio tool for DJs, live performers and electronic musicians"
 arch=('x86_64')
 url="https://www.giadamusic.com/"
@@ -40,13 +40,11 @@ prepare() {
   autoreconf -vfi
   # XDG desktop file
   gendesk -n -f \
-          --pkgname ${pkgname} \
+          --pkgname ${pkgname/-git} \
           --pkgdesc "${pkgdesc}" \
           --name Giada \
           --categories "AudioVideo;Audio;Midi;Sequencer"
-  convert +set date:create +set date:modify \
-    "src/ext/${pkgname/-git}.ico" \
-    "${pkgname}.png"
+
  # fixing catch2 include for system library
   sed -e 's|catch\.hpp|catch2/catch\.hpp|g' -i tests/*.cpp
 
@@ -76,7 +74,8 @@ package() {
   make DESTDIR="$pkgdir/" install
   # XDG integration
   install -vDm 644 "${pkgname/-git}.desktop" -t "${pkgdir}/usr/share/applications"
-  install -vDm 644 "${pkgname}.png" -t "${pkgdir}/usr/share/pixmaps"
+  install -vDm 644 "extras/${pkgname/-git}-logo.png" \
+    "${pkgdir}/usr/share/pixmaps/${pkgname/-git}.png"
   # docs
   install -vDm 644 {ChangeLog,README.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}"
