@@ -7,15 +7,18 @@ githuborg=skycoinproject
 pkgdesc="CX Object Storage System for the Skycoin Blockchain"
 pkgver=3.1.0
 pkggopath="github.com/${githuborg}/${pkgname1}"
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://${pkggopath}"
 license=()
-makedepends=('go' 'dep')
+makedepends=('go' 'dep' 'skycoin-keyring')
 source=("https://${pkggopath}/archive/v${pkgver}.tar.gz"
-"https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key")
+"PKGBUILD.sig")
 sha256sums=('e4fc5221d89b0f548a0093c944829c0b3e94f96efcc339effc5fea34f4accbd3'
-'41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
+'SKIP')
+validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
+                           '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
+
 
 prepare() {
   gpg --import key
@@ -31,12 +34,22 @@ prepare() {
   msg2 'installing go dependencies'
   #dep init
   dep ensure
-  cd cmd
-  go install -v ./...
+  cmddir=${srcdir}/go/src/github.com/${githuborg}/${pkgname1}/cmd
+  #using go build for determinism
+	cd ${cmddir}/cxocli
+  msg2 'building cxocli binary'
+  go build -trimpath -ldflags '-extldflags ${LDFLAGS}' -ldflags=-buildid= -o $GOBIN/ .
+  cd ${cmddir}/cxod
+  msg2 'building cxod binary'
+  go build -trimpath -ldflags '-extldflags ${LDFLAGS}' -ldflags=-buildid= -o $GOBIN/ .
+  #binary transparency
+  cd $GOBIN
+  msg2 'binary sha256sums'
+  sha256sum $(ls)
+
 }
 
 package() {
-  msg2 'installing CXO'
   options=(!strip staticlibs)
   mkdir -p ${pkgdir}/usr/bin
   mkdir -p ${pkgdir}/usr/lib/${projectname}/go/bin
