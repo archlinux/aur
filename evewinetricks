@@ -4,7 +4,7 @@
 
 check_wine
 
-WINETRICKs=$(which winetricks 2>/dev/null)
+WINETRICKS=$(which winetricks 2>/dev/null)
 
 if [ "x$WINETRICKS" = "x"  ] ;then
     desktop_msg "winetricks not found!"
