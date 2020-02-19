@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=kronosnet
-pkgver=1.11
+pkgver=1.14
 pkgrel=1
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('lksctp-tools' 'doxygen' 'libqb')
 depends=('nss' 'lzo' 'zstd')
 source=("https://kronosnet.org/releases/$pkgname-$pkgver.tar.xz")
-md5sums=('d5d2aea4c0496af8645773fbc724bb6a')
+md5sums=('33a7598f046220f2718c2205d9510022')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -26,6 +26,8 @@ build() {
               --sbindir=/usr/bin \
               --enable-publicandocs \
               --with-systemddir=/usr/lib/systemd/system
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
