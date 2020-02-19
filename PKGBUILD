@@ -1,16 +1,16 @@
 # Maintainer: Peter <craven@gmx.net>
-# Contributor: Jonathon Fernyhough <>
+# Contributor: Jonathon Fernyhough <jonathon"manjaro+org>
 
 pkgname=chez-scheme-git
 _pkgname=ChezScheme
 pkgver=9.5.r65.gd8c2704
-pkgrel=3
+pkgrel=4
 pkgdesc="Chez Scheme is an implementation of the Revised6 Report on Scheme (R6RS) with numerous language and programming environment extensions. (threaded build)"
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
 license=('Apache')
 depends=('ncurses')
-makedepends=('git' 'libx11' 'xproto')
+makedepends=('git' 'libx11' 'xorgproto')
 provides=(chez-scheme)
 conflicts=(petite-chez-scheme)
 replaces=(petite-chez-scheme)
