@@ -5,27 +5,25 @@
 _pipname=panflute
 pkgname=python-$_pipname
 pkgver=1.12.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 arch=('any')
 url="https://github.com/sergiocorreia/$_pipname"
 license=('BSD')
-makedepends=('python-pip')
-depends=('python'
-         'python-click'
-         'python-yaml'
-         'python-shutilwhich')
-provides=('pandoc-panflute')
-conflicts=('pandoc-panflute')
+_pydeps=('click'
+         'shutilwhich'
+         'yaml')
+depends=('python'  "${_pydeps[@]/#/python-}")
+makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sergiocorreia/$_pipname/archive/$pkgver.tar.gz")
 sha256sums=('92f9f712a54151b07af736b3b6ba1733c3602600c84b4407fdb714272ff92565')
 
 build() {
-	cd "$_name-$pkgver"
+	cd "$_pipname-$pkgver"
 	python setup.py build
 }
 
 package() {
-    cd "$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1
+    cd "$_pipname-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
