@@ -1,0 +1,16 @@
+pkgbase = polkadot-git
+	pkgdesc = Polkadot Node Implementation
+	pkgver = 0.7.20.633
+	pkgrel = 1
+	url = https://github.com/paritytech/polkadot
+	arch = i686
+	arch = x86_64
+	license = GNU
+	makedepends = rust
+	makedepends = cargo
+	provides = polkadot
+	source = polkadot::git+https://github.com/paritytech/polkadot.git
+	sha256sums = SKIP
+
+pkgname = polkadot-git
+
