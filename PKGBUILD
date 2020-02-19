@@ -3,7 +3,7 @@
 pkgname=(pam_wrapper python-pypamtest python2-pypamtest)
 pkgbase=pam_wrapper
 pkgver=1.0.7
-pkgrel=5
+pkgrel=6
 pkgdesc='A helper library for PAM testing'
 arch=(x86_64)
 url='https://cwrap.org/pam_wrapper.html'
@@ -51,8 +51,11 @@ package_pam_wrapper() {
 }
 
 package_python-pypamtest() {
-  depends=(pam_wrapper python)
   pkgdesc='A helper library for PAM testing (Python bindings)'
+  depends=(pam_wrapper python)
+  unset provides
+  unset conflicts
+  unset replaces
 
   cd build
   make DESTDIR="$pkgdir/" install
@@ -63,8 +66,11 @@ package_python-pypamtest() {
 }
 
 package_python2-pypamtest() {
-  depends=(pam_wrapper python2)
   pkgdesc='A helper library for PAM testing (Python 2 bindings)'
+  depends=(pam_wrapper python2)
+  unset provides
+  unset conflicts
+  unset replaces
 
   cd build
   make DESTDIR="$pkgdir/" install
