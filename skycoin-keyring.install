@@ -1,0 +1,19 @@
+post_install() {
+
+	pacman-key --init
+	pacman-key --add /usr/share/pacman/keyrings/endeavouros.gpg 
+	pacman-key --lsign-key 497AF50C92AD2384C56E1ACA003DB8B0CB23504F
+	pacman-key --populate
+
+}
+
+post_upgrade() {
+
+	pacman-key --init
+	pacman-key --add /usr/share/pacman/keyrings/endeavouros.gpg 
+	pacman-key --lsign-key 497AF50C92AD2384C56E1ACA003DB8B0CB23504F
+	pacman-key --populate
+
+
+}
+# -*- mode: bash;-*-
