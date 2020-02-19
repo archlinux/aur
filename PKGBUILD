@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A delightful community-driven framework for managing your bash configuration, and an auto-update tool so that makes it easy to keep up with the latest updates from the community"
 arch=('x86_64')
 url='https://github.com/ohmybash/oh-my-bash'
-license=('WTFPL')
+license=('GPLv2')
 depends=('bash')
 makedepends=('git')
 optdepends=('ruby: for some plugin functionality'
@@ -39,6 +39,6 @@ package() {
   cd "${srcdir}/${pkgname}"
 
   mkdir -p "${pkgdir}/usr/share/oh-my-bash"
-  install -D -m644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   cp -r * "${pkgdir}/usr/share/oh-my-bash/"
 }
