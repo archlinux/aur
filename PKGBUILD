@@ -4,17 +4,23 @@
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 
 pkgname=dosage
-pkgver=2.15
+pkgver=2.17
 pkgrel=1
 pkgdesc='A comic downloader and archiver.'
 arch=('any')
-url='http://dosage.rocks'
-license=('GPL')
-depends=('python' 'python-requests')
-source=("https://github.com/webcomics/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('fc685c521478a95a9b667e05faa99d10')
+url='https://dosage.rocks'
+license=('MIT')
+depends=('python' 'python-colorama' 'python-imagesize' 'python-lxml' 'python-requests' 'python-six')
+makedepends=('git' 'python-wheel')
+source=("git+https://github.com/webcomics/$pkgname.git#tag=$pkgver")
+md5sums=('SKIP')
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $srcdir/$pkgname
   python setup.py install --root=$pkgdir/ --optimize=1
+  install -d $pkgdir/usr/share/doc/$pkgname
+  install CHANGELOG.md $pkgdir/usr/share/doc/$pkgname
+  install COPYING $pkgdir/usr/share/doc/$pkgname
+  install README.md $pkgdir/usr/share/doc/$pkgname
+  install doc/* $pkgdir/usr/share/doc/$pkgname
 }
