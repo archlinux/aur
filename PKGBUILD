@@ -1,7 +1,7 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=8867.2642d9b20
-pkgrel=2
+pkgver=8868.8a2e02286
+pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
