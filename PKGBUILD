@@ -9,6 +9,7 @@ pkgdesc="A Qt based source measure unit GUI for sigrok"
 arch=('x86_64')
 url="https://github.com/knarfS/smuview"
 license=('GPL3')
+depends=('fuse')
 provides=('smuview')
 conflicts=('smuview')
 source=("https://github.com/knarfS/${_pkgname}/releases/download/v${pkgver}/${_spkgname}-${pkgver}-${arch}.AppImage"

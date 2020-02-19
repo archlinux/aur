@@ -5,6 +5,7 @@ pkgbase = smuview-appimage
 	url = https://github.com/knarfS/smuview
 	arch = x86_64
 	license = GPL3
+	depends = fuse
 	provides = smuview
 	conflicts = smuview
 	options = !strip
