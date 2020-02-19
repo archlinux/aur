@@ -1,7 +1,9 @@
+# Maintainer: timescam <rex.ky.ng at gmail dot com>
+
 pkgname=cava-git
 _pkgname=cava
 pkgver=r246.d654130
-pkgrel=2
+pkgrel=3
 pkgdesc='Console-based Audio Visualizer for Alsa. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/karlstav/cava'
