@@ -1,0 +1,16 @@
+pkgbase = esperantilo-bin
+	pkgdesc = A text editor with particular Esperanto functions, spell and grammar checking and machine translation
+	pkgver = 0.993
+	pkgrel = 1
+	url = http://www.esperantilo.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	provides = esperantilo
+	source_i686 = http://www.esperantilo.org/esperantilo.bin
+	md5sums_i686 = d028ff0026fa52ae41f0b8af73a9a36d
+	source_x86_64 = http://www.esperantilo.org/esperantilo.bin
+	md5sums_x86_64 = d028ff0026fa52ae41f0b8af73a9a36d
+
+pkgname = esperantilo-bin
+
