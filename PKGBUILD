@@ -29,7 +29,7 @@ source=($pkgname.desktop
         http://archive.virtapi.org/packages/l/lib32-glib2/lib32-glib2-2.56.0%252B7%252Bg66948ae23-1-x86_64.pkg.tar.xz
         http://archive.virtapi.org/packages/l/lib32-harfbuzz/lib32-harfbuzz-1.7.6-2-x86_64.pkg.tar.xz
 	http://archive.virtapi.org/packages/l/lib32-pango/lib32-pango-1.43.0-1-x86_64.pkg.tar.xz
-	http://archive.virtapi.org/packages/l/lib32-librsvg/lib32-librsvg-2.44.9-1-x86_64.pkg.tar.xz
+	http://mirrors.aggregate.org/archlinux/multilib/os/x86_64/lib32-librsvg-2.44.9-1-x86_64.pkg.tar.xz
 	http://archive.virtapi.org/packages/l/lib32-gdk-pixbuf2/lib32-gdk-pixbuf2-2.38.1-1-x86_64.pkg.tar.xz
 	http://archive.virtapi.org/packages/l/lib32-libxml2/lib32-libxml2-2.9.9-3-x86_64.pkg.tar.xz
 	http://archive.virtapi.org/packages/l/lib32-gtk2/lib32-gtk2-2.24.32-1-x86_64.pkg.tar.xz
