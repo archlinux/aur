@@ -1,0 +1,13 @@
+pkgbase = graalwasm-jdk8-bin
+	pkgdesc = GraalVM-based, high-performance WebAssembly platform, Java 8 version
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	license = custom
+	depends = jdk8-graalvm-bin
+	source = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.0.0/wasm-installable-svm-java8-linux-amd64-20.0.0.jar
+	sha256sums = 455d68ada02d91234437ffb716a6ba2041afa7405c5be4b0612262306304634b
+
+pkgname = graalwasm-jdk8-bin
+
