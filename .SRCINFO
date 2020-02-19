@@ -1,7 +1,7 @@
 pkgbase = gedit-plugin-markdown_preview-git
 	pkgdesc = A gedit plugin previewing markdown (.md) documents
 	pkgver = r95.23602c7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maoschanz/gedit-plugin-markdown_preview
 	arch = any
 	license = GPL3
