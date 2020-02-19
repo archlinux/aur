@@ -9,7 +9,7 @@
 pkgname='dashcore-git'
 _gitname='dash'
 _gitbranch='master'
-pkgver=v0.15.0.0.rc3.r5.gf23e722da
+pkgver=v0.15.0.0.r0.g351fbf65e
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
@@ -17,8 +17,8 @@ depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq'
 makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'git' 'qt5-tools' 'python3' 'cmake' 'codablock-bls-signatures' 'libbacktrace-git')
 license=('MIT')
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool). WARNING: Unstable, development version."
-provides=('dashd' 'dash-qt' 'dash-cli')
-conflicts=('dashcore' 'dashcore-bin')
+provides=('dash-daemon' 'dash-qt' 'dash-cli')
+conflicts=('dashcore' 'dashcore-bin' 'dash-cli' 'dash-qt' 'dash-daemon')
 source=('deque.patch'
         "git://github.com/dashpay/dash.git")
 sha512sums=('87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172af13f52d94d752464ee125fa69d9b423f495baa52bde1fe02e4762aa889d5'
@@ -55,6 +55,7 @@ package() {
   install -D -m755 "$srcdir/$_gitname/src/qt/dash-qt" "$pkgdir/usr/bin/dash-qt"
   install -D -m755 "$srcdir/$_gitname/src/dashd" "$pkgdir/usr/bin/dashd"
   install -D -m755 "$srcdir/$_gitname/src/dash-cli" "$pkgdir/usr/bin/dash-cli"
+  install -D -m755 "$srcdir/$_gitname/src/dash-tx" "$pkgdir/usr/bin/dash-tx"
   install -D -m644 "$srcdir/$_gitname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "$srcdir/$_gitname/share/pixmaps/dash128.png" "$pkgdir/usr/share/pixmaps/dash128.png"
   install -D -m644 "$srcdir/$_gitname/contrib/debian/dash-qt.desktop" "$pkgdir/usr/share/applications/dash-qt.desktop"
