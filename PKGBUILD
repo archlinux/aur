@@ -6,7 +6,7 @@ _pkgname=pandoc
 pkgname=$_pkgname-sile-git
 _pkgver=2.9.2
 pkgver=2.9.2.r8.g78db4f240
-pkgrel=2
+pkgrel=3
 pkgdesc='Conversion between markup formats (sile fork)'
 url='https://pandoc.org'
 license=('GPL')
@@ -27,9 +27,9 @@ depends=('ghc-libs' 'haskell-http' 'haskell-juicypixels' 'haskell-sha' 'haskell-
 optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter'
             'pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter'
             'texlive-core: for pdf output')
-provides=('pandoc')
-conflicts=('haskell-pandoc' 'pandoc')
+conflicts=('haskell-pandoc' "$_pkgname")
 replaces=('haskell-pandoc')
+provides=("$_pkgname")
 makedepends=('ghc' 'haskell-diff' 'haskell-tasty' 'haskell-tasty-hunit' 'haskell-tasty-lua'
              'haskell-tasty-quickcheck' 'haskell-tasty-golden' 'haskell-quickcheck'
              'haskell-executable-path')
@@ -44,7 +44,7 @@ pkgver() {
 prepare() {
     cd "$_pkgname"
 
-    # SILE fork isn't expected to pass some tests yet
+    # Nuke build time test options, SILE fork isn't expected to pass yet
     sed -i -e 's!--\(enable-\)\?tests\? ! !' Makefile
 
     # TODO: find a better solution
@@ -55,7 +55,7 @@ build() {
     cd "$_pkgname"
 
     runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-        --prefix=/usr --docdir="/usr/share/doc/${pkgbase}" --datasubdir="$_pkgname" --enable-tests \
+        --prefix=/usr --docdir="/usr/share/doc/${pkgbase}" --datasubdir="$pkgname" --enable-tests \
         --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid \
             -f-trypandoc -f-embed_data_files -f-static
     runhaskell Setup build
