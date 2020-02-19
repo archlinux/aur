@@ -22,19 +22,19 @@ git clone https://github.com/karx1/haur.git
 
 Usage is pretty simple.
 
-To install:
+To install a package:
 ```bash
 haur <package name>
 ```
 
-To remove:
+To remove a package:
 ```bash
 haur -r <package name>
 ```
 
 Deleting a package only removes it from pacman, not the disk. To clear removed packages:
 ```bash
-haur-clear-cache
+haur -c
 ```
 
 
