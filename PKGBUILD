@@ -1,24 +1,29 @@
-# Maintainer: wagnerflo <florian@wagner-flo.net>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+
 _cranname=scales
-_cranver=1.0.0
-pkgname=r-$_cranname
-pkgver=${_cranver}
-pkgrel=3
-pkgdesc="Tools for Splitting, Applying and Combining Data"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('i686' 'x86_64')
-license=('MIT')
-depends=('r>=3.1' 'r-rcolorbrewer' 'r-plyr'
-             'r-munsell>=0.5' 'r-labeling' 'r-rcpp' 'r-r6' 'r-viridislite')
-optdepends=('r-dichromat')
-provides=("r-cran-${_cranname}")
-conflicts=("r-cran-${_cranname}")
-replaces=("r-cran-${_cranname}")
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('0c1f4a14edd336a404da34a3cc71a6a9d0ca2040ba19360c41a79f36e06ca30c')
+_cranver=1.1.0
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
+pkgrel=1
+pkgdesc="Scale Functions for Visualization"
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(MIT)
+depends=('r>=3.2' 'r-farver>=2.0.0' r-labeling 'r-munsell>=0.5' r-r6 r-rcolorbrewer r-viridislite r-lifecycle)
+optdepends=(r-bit64 r-covr r-dichromat r-hms r-testthat r-ggplot2)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('875fcbd3bf93934e076c7c877b8c5f05')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
 
 package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+

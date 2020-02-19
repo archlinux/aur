@@ -1,25 +1,26 @@
 pkgbase = r-scales
-	pkgdesc = Tools for Splitting, Applying and Combining Data
-	pkgver = 1.0.0
-	pkgrel = 3
-	url = http://cran.r-project.org/web/packages/scales/index.html
-	arch = i686
-	arch = x86_64
+	pkgdesc = Scale Functions for Visualization
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=scales
+	arch = any
 	license = MIT
-	depends = r>=3.1
-	depends = r-rcolorbrewer
-	depends = r-plyr
-	depends = r-munsell>=0.5
+	depends = r>=3.2
+	depends = r-farver>=2.0.0
 	depends = r-labeling
-	depends = r-rcpp
+	depends = r-munsell>=0.5
 	depends = r-r6
+	depends = r-rcolorbrewer
 	depends = r-viridislite
+	depends = r-lifecycle
+	optdepends = r-bit64
+	optdepends = r-covr
 	optdepends = r-dichromat
-	provides = r-cran-scales
-	conflicts = r-cran-scales
-	replaces = r-cran-scales
-	source = http://cran.r-project.org/src/contrib/scales_1.0.0.tar.gz
-	sha256sums = 0c1f4a14edd336a404da34a3cc71a6a9d0ca2040ba19360c41a79f36e06ca30c
+	optdepends = r-hms
+	optdepends = r-testthat
+	optdepends = r-ggplot2
+	source = https://cran.r-project.org/src/contrib/scales_1.1.0.tar.gz
+	md5sums = 875fcbd3bf93934e076c7c877b8c5f05
 
 pkgname = r-scales
 
