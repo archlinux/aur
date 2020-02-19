@@ -8,7 +8,7 @@
 
 pkgname=aseprite
 pkgver=1.2.16.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url="http://www.aseprite.org/"
