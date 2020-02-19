@@ -1,0 +1,6 @@
+*.tar
+*.gz
+*.xz
+*.tgz
+*.log
+*.zst
