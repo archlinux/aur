@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/whatip
 
 pkgname=whatip-git
-pkgver=c6d0337
+pkgver=0.1.1.r7.g6f51f62
 pkgrel=1
 pkgdesc='Info on your IP'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
     'python'
     'libhandy'
     'python-requests'
-    'python-pyroute2'
+    'python-netaddr'
     'iproute2'
     'python-gobject'
     'gobject-introspection'
