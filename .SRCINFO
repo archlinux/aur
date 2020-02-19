@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-namdhinggo
 	pkgdesc = Unicode font for the Limbu writing system of Nepal
 	pkgver = 1.004
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/namdhinggo
 	arch = any
 	license = OFL
