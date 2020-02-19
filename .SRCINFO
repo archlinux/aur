@@ -1,20 +1,19 @@
 pkgbase = dosage-git
 	pkgdesc = A comic downloader and archiver.
-	pkgver = 1412
+	pkgver = 2.18.dev7+g5fa65741a
 	pkgrel = 1
-	url = http://dosage.rocks
+	url = https://dosage.rocks
 	arch = any
-	license = GPL
+	license = MIT
 	makedepends = git
+	makedepends = python-wheel
 	depends = python
 	depends = python-colorama
+	depends = python-imagesize
 	depends = python-lxml
-	depends = python-pbr
 	depends = python-requests
 	source = git+https://github.com/webcomics/dosage.git
-	source = dosage.1.gz
 	md5sums = SKIP
-	md5sums = 3d1ba2b7d8464c3ec1fd0d77eba9f151
 
 pkgname = dosage-git
 

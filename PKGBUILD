@@ -3,28 +3,30 @@
 # Contributor: Zaplanincan <zaplanincan@gmail.com>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 
-pkgname=dosage-git
 _pkgname=dosage
-pkgver=1412
+pkgname=$_pkgname-git
+pkgver=2.18.dev7+g5fa65741a
 pkgrel=1
 pkgdesc='A comic downloader and archiver.'
 arch=('any')
-url='http://dosage.rocks'
-license=('GPL')
-depends=('python' 'python-colorama' 'python-lxml' 'python-pbr' 'python-requests')
-makedepends=('git')
-source=("git+https://github.com/webcomics/$_pkgname.git"
-	'dosage.1.gz')
-md5sums=('SKIP'
-	'3d1ba2b7d8464c3ec1fd0d77eba9f151')
+url='https://dosage.rocks'
+license=('MIT')
+depends=('python' 'python-colorama' 'python-imagesize' 'python-lxml' 'python-requests')
+makedepends=('git' 'python-wheel')
+source=("git+https://github.com/webcomics/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git rev-list --count HEAD
+  cd $srcdir/$_pkgname
+  python setup.py --version
 }
 
 package() {
   cd $srcdir/$_pkgname
   python setup.py install --root=$pkgdir/ --optimize=1
-  install -D ../../dosage.1.gz $pkgdir/usr/share/man/man1/dosage.1.gz
+  install -d $pkgdir/usr/share/doc/$_pkgname
+  install CHANGELOG.md $pkgdir/usr/share/doc/$_pkgname
+  install COPYING $pkgdir/usr/share/doc/$_pkgname
+  install README.md $pkgdir/usr/share/doc/$_pkgname
+  install doc/* $pkgdir/usr/share/doc/$_pkgname
 }
