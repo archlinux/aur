@@ -1,15 +1,14 @@
 pkgbase = aruco
-	pkgdesc = Augmented reality library based on OpenCV
-	pkgver = 2.0.19
+	pkgdesc = ArUco is a C++ library for detection of squared planar markers based on OpenCV
+	pkgver = 3.1.11
 	pkgrel = 1
 	url = https://www.uco.es/investiga/grupos/ava/node/26
-	arch = i686
-	arch = x86_64
-	license = BSD
+	arch = any
+	license = GPLv3
 	makedepends = cmake
 	depends = opencv
-	source = http://downloads.sourceforge.net/aruco/aruco-2.0.19.zip
-	md5sums = b5a24f87f1cb36256b4d276e5a9bff84
+	source = https://downloads.sourceforge.net/project/aruco/3.1.11/aruco-3.1.11.zip
+	md5sums = 68c39f743f9b4ed9d292fa8d87a964ab
 
 pkgname = aruco
 
