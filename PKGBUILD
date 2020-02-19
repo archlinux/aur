@@ -1,6 +1,6 @@
 # Maintainer: Theo Henson <theodorehenson@protonmail.com>
 pkgname=rco
-pkgver=0.1.1
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A configuration manager written in rust."
 arch=('any')
@@ -12,7 +12,7 @@ depends=(
 makedepends=(
   'cargo'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tteeoo/rco/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tteeoo/rco/archive/${pkgver}.tar.gz")
 md5sums=('5b79318506e343fac48f634e4a35d2e4')
 
 build() {
