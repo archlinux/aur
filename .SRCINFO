@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-mondulkiri
 	pkgdesc = Khmer Mondulkiri, Busra, Oureang, and Ratanakiri fonts for the Khmer script
 	pkgver = 7.100
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/mondulkiri
 	arch = any
 	license = OFL
