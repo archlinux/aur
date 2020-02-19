@@ -2,12 +2,12 @@
 
 pkgname=libqb-git
 _pkgname=libqb
-pkgver=1.0.2.r0.g608de6d
+pkgver=1.9.0.r7.g99671f4
 pkgrel=1
 pkgdesc='Library with the primary purpose of providing high performance client server reusable features'
 arch=('i686' 'x86_64')
-provides=('libqb')
-conflicts=('libqb')
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
+conflicts=("${_pkgname}")
 depends=('glibc')
 makedepends=('git' 'doxygen' 'splint')
 license=('LGPL2.1')

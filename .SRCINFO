@@ -1,6 +1,6 @@
 pkgbase = libqb-git
 	pkgdesc = Library with the primary purpose of providing high performance client server reusable features
-	pkgver = 1.0.2.r0.g608de6d
+	pkgver = 1.9.0.r7.g99671f4
 	pkgrel = 1
 	url = https://github.com/ClusterLabs/libqb
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libqb-git
 	makedepends = doxygen
 	makedepends = splint
 	depends = glibc
-	provides = libqb
+	provides = libqb=1.9.0-1
 	conflicts = libqb
 	source = libqb-git::git+https://github.com/ClusterLabs/libqb.git
 	md5sums = SKIP
