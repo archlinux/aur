@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-tai-heritage-pro
 	pkgdesc = A typeface that reflects the traditional style of the Tai Viet script
 	pkgver = 2.600
-	pkgrel = 3
+	pkgrel = 4
 	url = https://software.sil.org/taiheritage
 	arch = any
 	license = OFL
