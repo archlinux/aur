@@ -1,22 +1,23 @@
+# Maintainer: Anton Leontiev <scileont /at/ gmail.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Baptiste Grenier <baptiste@bapt.name>
-# Contributor: Anton Leontiev <scileont /at/ gmail.com>
-pkgname=ttf-andika
+
+_pkgname=andika
+pkgname=ttf-$_pkgname
+_fname=${_pkgname^}
 pkgver=5.000
-pkgrel=2
+pkgrel=3
 pkgdesc='A sans serif, Unicode-compliant font designed especially for literacy use'
-url='http://software.sil.org/andika/'
+url="http://software.sil.org/$_pkgname"
 arch=('any')
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-conflicts=('ttf-sil-fonts')
-source=(https://software.sil.org/downloads/r/andika/Andika-$pkgver.zip)
-md5sums=('b1667e145cdf1f074887b632d72a52d4')
+license=('OFL')
+source=("https://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
+sha256sums=('604b7a1194be099bdf311ef76cbce086a054fa16d2b101cfaedcf527c63df507')
 
 package() {
-	cd Andika-$pkgver
-	install -Dm644 Andika-R.ttf "$pkgdir/usr/share/fonts/TTF/AndikaRegular.ttf"
-	install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 README.txt "$pkgdir/usr/share/andika/README"
-	install -m644 FONTLOG.txt "$pkgdir/usr/share/andika/FONTLOG"
-	install -m644 documentation/Andika-features.pdf "$pkgdir/usr/share/andika/Andika-features.pdf"
+    cd "$_fname-$pkgver"
+    find -type f -name "$_fname*.ttf" -execdir \
+        install -Dm644 {} -t "$pkgdir/usr/share/fonts/TTF" \;
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.txt FONTLOG.txt documentation/Andika-features.pdf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 }
