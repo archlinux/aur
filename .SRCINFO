@@ -1,13 +1,13 @@
 pkgbase = mpdmenu
 	pkgdesc = dmenu frontend to MPD
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = http://github.com/cdown/mpdmenu
 	arch = any
 	license = ISC
 	depends = dmenu
-	source = https://github.com/cdown/mpdmenu/archive/1.0.4.zip
-	md5sums = 4d25d98825928a3b860a36efba31f7dc
+	source = https://github.com/cdown/mpdmenu/archive/1.0.5.zip
+	md5sums = 94128ef59659f6e5aa39081b28b84e0d
 
 pkgname = mpdmenu
 
