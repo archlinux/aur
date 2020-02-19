@@ -2,7 +2,7 @@
 
 pkgname=anydesk-rpi
 pkgver=5.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support"
 arch=('armv7h')
 url="https://anydesk.de"
