@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-awami-nastaliq
 	pkgdesc = Designed for Arabic-based writing systems using the Nastaliq-style
 	pkgver = 2.000
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/awami
 	arch = any
 	license = custom:OFL
