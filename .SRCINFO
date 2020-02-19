@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-alkalami
 	pkgdesc = Unicode font for Arabic-based writing systems in the Kango region of Nigeria and Niger
 	pkgver = 1.200
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/alkalami
 	arch = any
 	license = custom:OFL
