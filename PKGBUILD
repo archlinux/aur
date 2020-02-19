@@ -5,7 +5,7 @@ pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}SIL
 _pname=AppSIL
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Symbols used for Biblical text apparatus'
 arch=('any')
 url="https://scripts.sil.org/$_fname"
@@ -15,7 +15,8 @@ sha256sums=('0d8e3143b9c46c97916ab2cf85ae2187fe33b9b40859567a5524266dd58581bc')
 
 package() {
     cd "Apparatus SIL"
-    find -type f -iname "$_pname*.ttf" -execdir \
-        install -Dm644 {} -t "$pkgdir/usr/share/fonts/TTF" \;
-    install -Dm644 OFL.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+    find -type f -name "$_pname*.ttf" -execdir \
+        install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" {} \;
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" FONTLOG.txt
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt
 }
