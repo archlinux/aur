@@ -1,11 +1,13 @@
 pkgbase = nodejs-jshint
 	pkgdesc = Static analysis tool for JavaScript
 	pkgver = 2.11.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://jshint.com/
 	arch = any
 	license = MIT
 	makedepends = npm
+	makedepends = jq
+	makedepends = moreutils
 	depends = nodejs
 	noextract = jshint-2.11.0.tgz
 	source = https://registry.npmjs.org/jshint/-/jshint-2.11.0.tgz
