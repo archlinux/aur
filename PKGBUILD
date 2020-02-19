@@ -6,7 +6,7 @@ _pkgname=ezra
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}SIL
 pkgver=2.51
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenType Hebrew font from SIL"
 arch=('any')
 url="https://software.sil.org/$_pkgname"
@@ -16,8 +16,9 @@ sha256sums=('f16bcb3ec4473ac6a9f138ee0dbde7cc2f835e93a90cbe8649b3f32677760cc1')
 
 package() {
     cd "$_fname$pkgver"
-      find
     find -type f -name "SILE**.ttf" -execdir \
-        install -Dm644 {} -t "$pkgdir/usr/share/fonts/TTF" \;
-    install -Dm644 Licenses.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+        install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" {} \;
+      find
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.txt FONTLOG.txt
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" Licenses.txt
 }
