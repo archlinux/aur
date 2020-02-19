@@ -3,24 +3,22 @@
 java_=11
 pkgname_=fastr
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=19.3.1
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the R language (Java ${java_} version)"
 arch=('x86_64')
 url='https://github.com/oracle/fastr'
 license=('GPL3')
 depends=("jdk${java_}-graalvm-bin"
-         'gcc-libs' # for libgomp.so.1 and others
-         'gcc6-libs' # for libgfortran.so.3 (gcc-libs has .so.5)
-         'sed') # for Rscript fix; TODO remove once no longer needed
+         'gcc-libs') # for libgomp.so.1 and others
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/r-installable-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('9186464fe474120285a361e5dbc1c914b0439234493b1f3202b3b26e86a1dd52')
+sha256sums=('da934a4bee62738cc11d978c5849fb60f330bd403f3aa4843dab1acbfc5fd3d6')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ LICENSE_FASTR 3rd_party_licenses_fastr.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" languages/ lib/ LICENSE_FASTR 3rd_party_licenses_fastr.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
@@ -57,10 +55,4 @@ package() {
     ln -s -- '/usr/lib/gcc/x86_64-pc-linux-gnu/6.5.0/libgfortran.so.3' "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/languages/R/lib/libgfortran.so.3"
 
     install -DTm644 LICENSE_FASTR "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    sed -i "/^exec/ i\\
-# added by AUR package, hopefully temporarily\\
-export LD_LIBRARY_PATH=/usr/lib/jvm/java-${java_}-graalvm/languages/R/lib\${LD_LIBRARY_PATH:+:\$LD_LIBRARY_PATH}\\
-
-" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/languages/R/bin/Rscript"
 }
