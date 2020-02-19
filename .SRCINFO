@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-lateef
 	pkgdesc = An Arabic script font for Sindhi and other languages of southern Asia
 	pkgver = 1.200
-	pkgrel = 5
+	pkgrel = 6
 	url = https://software.sil.org/lateef
 	arch = any
 	license = OFL
