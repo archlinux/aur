@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.20
-pkgver=5.4.v.20
+gitver=v5.4.21
+pkgver=5.4.v.21
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	'5012_enable-cpu-optimizations-for-gcc91.patch')
 sha256sums=('SKIP'
              #config.x86_64
-            'd5aa73d8283f7344e97fb23035976086bd360df38b16d6a87043043c2b40b604'
+            '73d9638dd489c3aeb4e5a5013003a627b3c9d0a799330e28d1b89db4f12e1205'
              #.preset file
              '0ac0cf410b0f3eeaa07d41505613e118ea59e01144e905f2dc0a808379f87e87'
              #patch file
