@@ -21,7 +21,7 @@ backup=('etc/authelia/configuration.yml')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('4798235ac539ad5a225e1319369d3f710796d0976fba03198b1310d839ee211d')
+sha256sums=('450fa28bebc1ba46fa37ba2b2b752f21226c9fbb036b81b5211948827298baca')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
