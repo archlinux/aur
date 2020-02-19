@@ -6,7 +6,7 @@
 pkgname=fprintd-libfprint2
 _pkgname=fprintd
 pkgver=1.90.1+12+g750a815
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus service to access fingerprint readers"
 arch=(x86_64)
 url="https://www.freedesktop.org/wiki/Software/fprint/fprintd"
@@ -16,7 +16,7 @@ optdepends=('pam: to use the fprintd pam plugin')
 provides=(fprintd)
 conflicts=(fprintd)
 makedepends=(intltool git gtk-doc meson pam)
-checkdepends=(pam_wrapper python-cairo python-dbus python-dbusmock python-gobject)
+checkdepends=(python-cairo python-dbus python-dbusmock python-gobject python-pypamtest)
 groups=(fprint)
 source=(
   "git+https://gitlab.freedesktop.org/libfprint/fprintd.git"
