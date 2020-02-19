@@ -1,14 +1,14 @@
 pkgbase = haur
 	pkgdesc = Helper for the Arch User Repository
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/karx1/haur
 	arch = any
 	license = LGPLv3
 	depends = bash
 	depends = git
 	source = haur
-	md5sums = fed8ddfb90c4bdf6830b71532834a295
+	md5sums = 7c7eb9f491d39d5c77b8cbc33254d8f2
 
 pkgname = haur
 
