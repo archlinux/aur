@@ -66,9 +66,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.5
-_minor=4
+_minor=5
 _srcname=linux-${_major}
-_clr=${_major}.3-908
+_clr=${_major}.4-909
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -78,7 +78,7 @@ url="https://github.com/clearlinux-pkgs/linux"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='0.0.20200214'
+_wrg_snap='0.0.20200215'
 _gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -358,9 +358,9 @@ done
 
 sha256sums=('a6fbd4ee903c128367892c2393ee0d9657b6ed3ea90016d4dc6f1f6da20b2330'
             'SKIP'
-            'cf640d75bdf4211446aa699a562c7bbd6d0360c6bc11e9ca22e8032de14697db'
+            '591340b56c24fd02db6b65542a14b7c3f50be8e1e224f2cc18c5da14ab5fc869'
             'SKIP'
-            '6aaed62beb23803a456b7875a56e9462125a589c9dfb6d0b672c1a8f9f3f45ab'
+            '0def6f3608ec06f6dfc454aa5281a7c38b06ff27096cb341448d20602da4e923'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             '4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0'
             'b8a9225b4b5cbabac26398d11cc26566e4407d150dacb92f3411c9bb8cc23942')
