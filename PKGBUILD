@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=d2vwitch-git
-pkgver=v2.7.g82502e7
+pkgver=v3.3.gbd0b13b
 pkgrel=1
 pkgdesc="Cross-platform D2V creator. (GIT version)"
 arch=('x86_64')
@@ -15,7 +15,9 @@ depends=('vapoursynth'
          'qt5-base'
          'xdg-utils'
          )
-makedepends=('git')
+makedepends=('git'
+             'meson'
+             )
 provides=('d2vwitch')
 conflicts=('d2vwitch')
 source=('d2vwitch::git+https://github.com/dubhater/D2VWitch.git'
@@ -31,19 +33,19 @@ pkgver() {
 }
 
 prepare() {
-  cd d2vwitch
-  ./autogen.sh
+  mkdir -p build
 }
 
 build() {
-  cd d2vwitch
-  ./configure \
-    --prefix=/usr
-  make
+  cd build
+  arch-meson ../d2vwitch \
+    --libdir /usr/lib/vapoursynth
+
+  LC_ALL=C ninja
 }
 
-package() {
-  make -C d2vwitch DESTDIR="${pkgdir}" install
+package(){
+  DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${srcdir}/d2vwitch.desktop" "${pkgdir}/usr/share/applications/d2vwitch.desktop"
 
