@@ -5,6 +5,7 @@ GenericName=Indexes MPEG (1, 2) streams and writes D2V files
 Comment=Indexes MPEG (1, 2) streams and writes D2V files
 Type=Application
 Exec=d2vwitch
+Icon=d2vwitch
 Terminal=false
 StartupNotify=false
 Categories=AudioVideo;

@@ -25,7 +25,7 @@ source=('d2vwitch::git+https://github.com/dubhater/D2VWitch.git'
         'd2vwitch.png'
         )
 sha256sums=('SKIP'
-            '6d9204fc7dab73b19976241ce5a4e74fed5c3d264796b782c02d783dd8f1bbb0'
+            'ae75722403c34d53ea2e55b1b53abdfb02cdb4eaaf4e642e84bee0d26e2ab5d1'
             'c63a756f6e375ef4a6f220fcdde3f4a05f7a101c0c0dc3743ce9207730719bd5'
             )
 
