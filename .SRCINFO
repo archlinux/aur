@@ -1,10 +1,10 @@
 pkgbase = ttf-sil-dai-banna
 	pkgdesc = Unicode font for rendering New Tai Lue (Xishuangbanna Dai) characters
 	pkgver = 2.200
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.sil.org/daibanna
 	arch = any
-	license = custom:OFL
+	license = OFL
 	source = http://software.sil.org/downloads/r/dai-banna/DaiBanna-2.200.zip
 	sha256sums = bab67e560484ee9bc041d1e95ae2e36a08ceb9cde6800ef032381fae0700f691
 
