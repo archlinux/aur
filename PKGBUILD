@@ -10,12 +10,12 @@ pkgoption1="gui-standalone-linux-x64"
 pkgoption2="gui-standalone-linux-arm"
 pkgver='0.27.0'
 pkggopath="github.com/${githuborg}/${pkgname1}"
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://${pkggopath}"
 url1="https://downloads.${pkgname1}.com/wallet"
 license=()
-makedepends=(git skycoin-keyring)
+makedepends=(skycoin-keyring)
 provides=(skycoin)
 source=("${pkgname1}-scripts.tar.gz"
 "${pkgname1}-systemd.tar.gz"

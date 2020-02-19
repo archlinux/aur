@@ -1,10 +1,9 @@
 pkgbase = skycoin-bin
 	pkgdesc = Skycoin Cryptocurrency Wallet; Binary Release
 	pkgver = 0.27.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/skycoinproject/skycoin
 	arch = any
-	makedepends = git
 	makedepends = skycoin-keyring
 	provides = skycoin
 	source = skycoin-scripts.tar.gz
