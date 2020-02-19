@@ -10,7 +10,7 @@ url="http://www.corosync.org/"
 license=('BSD')
 depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb' 'libcgroup' 'kronosnet')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/corosync/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('c22d4e0f84c28781b37f03f4414c752e')
+md5sums=('3655d1b0009b1bbc8924e1f090873ee1')
 
 prepare() {
   cd ${pkgname}-${pkgver}
