@@ -10,7 +10,8 @@ pkgdesc="Prebuilt ffmpeg codecs package for Vivaldi"
 arch=("x86_64")
 url="https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download"
 license=('LGPL')
-depends=('vivaldi' 'perl' 'wget')
+depends=('vivaldi' 'perl')
+makedepends=('wget')
 changelog="changes"
 provides=(
   'vivaldi-ffmpeg-codecs'
