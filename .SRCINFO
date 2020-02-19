@@ -1,16 +1,15 @@
 pkgbase = sccache
-	pkgdesc = ccache with cloud storage
+	pkgdesc = Shared compilation cache
 	pkgver = 0.2.12
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mozilla/sccache
+	arch = i686
 	arch = x86_64
-	arch = aarch64
-	license = Apache
-	checkdepends = openssl-1.0
-	makedepends = cargo
+	license = apache
+	makedepends = rust
 	depends = openssl
 	source = sccache-0.2.12.tar.gz::https://github.com/mozilla/sccache/archive/0.2.12.tar.gz
-	sha512sums = 1f7495aa7c0749c4bfbd85a88a304a6ed18cc9bfcd341f0f1a668a743ae31d355bc8c5b3199b048d8bcab3ce8e9c8b844a609e4c3009d4e5497dd080aa881a45
+	sha256sums = 591a82ddbc2e970630a9426c78c25cbc52c3261b06d57cb4e1f11ab8008629fa
 
 pkgname = sccache
 
