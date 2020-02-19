@@ -11,22 +11,23 @@ pkgrel=5
 arch=('x86_64')
 url="https://${pkggopath}"
 license=()
-makedepends=('unzip')
+makedepends=('unzip' 'skycoin-keyring')
 provides=('cx')
 conflicts=('cx')
 source=("https://${pkggopath}/releases/download/v$pkgver/${pkgname1}-$pkgver-bin-linux-x64.zip"
-"https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key")
+"PKGBUILD.sig")
 sha256sums=('99235508f1c5f8df651f89a34e61e418d2c092f037b1210e8541cae16334f2d4'
-'41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14')
+'SKIP')
+validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
+                           '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 
 prepare() {
-  gpg --import key
   #verify PKGBUILD signature
-  gpg --verify ../PKGBUILD.sig ../PKGBUILD
+  gpg --verify ${srcdir}/PKGBUILD.sig ../PKGBUILD
   mkdir -p ${srcdir}/bin
-  mv ${pkgname1}-$pkgver-bin-linux-x64.zip ${srcdir}/bin/${pkgname1}-$pkgver-bin-linux-x64.zip
+  mv ${pkgname1}-${pkgve}r-bin-linux-x64.zip ${srcdir}/bin/${pkgname1}-${pkgver}-bin-linux-x64.zip
   cd ${srcdir}/bin
-  unzip ${pkgname1}-$pkgver-bin-linux-x64.zip
+  unzip ${pkgname1}-${pkgver}-bin-linux-x64.zip
 }
 
 package() {
