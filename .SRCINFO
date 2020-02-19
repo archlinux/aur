@@ -1,7 +1,7 @@
 pkgbase = ttf-sil-sophia-nubian
 	pkgdesc = Unicode font with coverage of Coptic Unicode character set for Nubian languages
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://software.sil.org/sophianubian
 	arch = any
 	license = OFL
