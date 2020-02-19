@@ -4,6 +4,9 @@
 # uncomment if you do not want to build all language translations
 #export LG2=en
 
+# https://db-ip.com/db/lite.php
+_geoip=2020-02
+
 pkgname=i2p
 pkgver=0.9.44
 pkgrel=1
@@ -28,6 +31,7 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         "modern-dark.zip::https://github.com/eyedeekay/modern-dark/archive/master.zip"
+        #"https://download.db-ip.com/free/dbip-country-lite-${_geoip}.mmdb.gz"
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh'
         upstream-fixes.patch::'https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch')
@@ -35,6 +39,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
 sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
             'SKIP'
             'SKIP'
+            #'da29ae2b01c2f3ae09867a562c0308d1ae3918cc8fa0f45015ebfaf2293b46e7'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
@@ -42,13 +47,14 @@ sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
             '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
             '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0'
-            'ad7cf01d7fcc7107dc3360ad4b3f488cdcf2bab64c7d271d2ced89c2f942f613')
+            'd911ef26b3b4c8e20c194befa900eb31d2fc0327e1f88fd7ae45506f6b414b83')
 
 prepare() {
     cd "$pkgname-$pkgver"
     sed -i ../upstream-fixes.patch \
         -e 's|BUILD = 1|BUILD = 0|'
     patch -Np1 -i ../upstream-fixes.patch
+    #cp -f ../dbip-country-lite-${_geoip}.mmdb.gz installer/resources/GeoLite2-Country.mmdb.gz
 }
 
 build() {
