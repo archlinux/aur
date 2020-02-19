@@ -3,7 +3,7 @@
 
 pkgname=corosync-git
 _pkgname=corosync
-pkgver=3.0.2.r18.g0a323ff2
+pkgver=3.0.3.r28.g98448d4e
 pkgrel=1
 pkgdesc="Cluster engine for nodal communication systems with additional features for implementing high availability within applications."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="http://www.corosync.org/"
 license=('BSD')
 makedepends=('git')
 depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb-git' 'libcgroup' 'kronosnet-git')
-provides=(${_pkgname})
+provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=(${_pkgname})
 source=("$pkgname::git+https://github.com/corosync/${_pkgname}.git")
 md5sums=('SKIP')
@@ -44,6 +44,8 @@ build() {
               --enable-libcgroup \
               --with-systemddir=/usr/lib/systemd/system \
               --with-tmpfilesdir=/usr/lib/tmpfiles.d
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
