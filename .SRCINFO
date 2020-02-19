@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-2.1
-	pkgver = 2.1.15.sdk803
+	pkgver = 2.1.16.sdk804
 	pkgrel = 2
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = dotnet-core-2.1
 	makedepends = openssl
 	makedepends = zlib
 	options = staticlibs
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/701502b0-f9a2-464f-9832-4e6ca3126a2a/62655f151db917025e9be8cc4b7c1ed9/dotnet-sdk-2.1.803-linux-x64.tar.gz
-	sha512sums_x86_64 = 57d48d6ca1bd92ac348dc05220d984811c0cf005774d7afdfbbf125a842acb0a26572146ed25a7eb26f4e0404fe840b70d1e7ec1fb7c9a5c6cfe81fefc41b363
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/a9668b0a-6b9c-431a-b009-2cd4ae80dcdf/1d52e8dafeda6e66bcf9ba2a16a35cd3/dotnet-sdk-2.1.803-linux-arm.tar.gz
-	sha512sums_armv7h = 6c7e4616f25945c400b2b6c18752743268af1618651b0538576626b1fa9f98e4e8338c0b913109d3725e6f421e8206b5c0a2621a6bb25360bb14a2620a566ed6
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/9b3f7bac-a314-4886-8477-0686bfb1cbc4/746767a98f7278755f4952dd18eb4eed/dotnet-sdk-2.1.803-linux-arm64.tar.gz
-	sha512sums_aarch64 = 646d0028949b2925ec735c44e56adefe59292825e400536f76af5ec1a31153a2dc402677996169ce934001210e65c0922c3e20197938ca39a19df2a7358daca4
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/9ba4d9b0-3fca-40ed-b5a2-1552dfa4f89e/8e5e555b543a7afd8fd764e080d25671/dotnet-sdk-2.1.804-linux-x64.tar.gz
+	sha512sums_x86_64 = 82b039856dadd2b47fa56a262d1a1a389132f0db037d4ee5c0872f2949c2cd447c33a978e1f532783119aa416860e03f26b840863ca3a97392a4b77f8df5bf66
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/365bc2c9-eb08-4c17-b462-e4addba6dd0a/5101726ab1e41e751c169e3b735357fc/dotnet-sdk-2.1.804-linux-arm.tar.gz
+	sha512sums_armv7h = 5a2427fd3461aa5dc5a90857e7d599447c29bbd36daaf216ce2d42d6f430ad5b3278168cfaf5d241bf1340df693c93c5beecc95a5679aab35f40dcbd11dcb486
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/2d8b6ed1-e489-4e68-bc88-201801435297/bfe788aeab04d79507d940675ee6f27b/dotnet-sdk-2.1.804-linux-arm64.tar.gz
+	sha512sums_aarch64 = 4f30381658ca8e45fb7da0db23f5e6a24a61db42e534d097bd59691bb058d1a71906d4386cbcf673eef582616af3b7400cecbdf10959a418bed7a6ed70f7939a
 
 pkgname = dotnet-runtime-2.1
 	pkgdesc = The .NET Core runtime version 2.1
@@ -37,13 +37,13 @@ pkgname = dotnet-runtime-2.1
 	depends = libcurl.so
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime-2.1
-	provides = dotnet-runtime=2.1.15.sdk803
+	provides = dotnet-runtime=2.1.16.sdk804
 	conflicts = dotnet-runtime-2.1
 
 pkgname = dotnet-sdk-2.1
 	pkgdesc = The .NET Core SDK version 2.1
 	depends = dotnet-runtime-2.1
 	provides = dotnet-sdk-2.1
-	provides = dotnet-sdk=2.1.15.sdk803
+	provides = dotnet-sdk=2.1.16.sdk804
 	conflicts = dotnet-sdk-2.1
 
