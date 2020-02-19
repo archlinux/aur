@@ -1,12 +1,13 @@
 pkgbase = nodejs-csscomb
 	pkgdesc = Coding style formatter for CSS
 	pkgver = 4.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/csscomb/csscomb.js
 	arch = any
 	license = MIT
-	makedepends = nodejs
 	makedepends = npm
+	makedepends = jq
+	makedepends = moreutils
 	depends = nodejs
 	noextract = csscomb-4.2.0.tgz
 	source = https://registry.npmjs.org/csscomb/-/csscomb-4.2.0.tgz
