@@ -1,4 +1,6 @@
-#Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
+# Maintainer: Sergey Kasmy <SleeplessSloth79@gmail.com>
+# Contributor: Adam Rutkowski <hq@mtod.org>
+# Contributor: FabioLolix <fabio.lolix@gmail.com>
 
 pkgname=liquidctl
 pkgver=1.3.3
