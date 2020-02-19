@@ -3,7 +3,7 @@
 _pkgbase=mautrix-hangouts
 pkgname=${_pkgbase}-git
 pkgver=r49.1241db9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Matrix-Hangouts puppeting bridge with multi-user support"
 arch=(any)
 conflicts=(mautrix-hangouts)
@@ -19,7 +19,7 @@ depends=(python
 	     hangups
 	     sudo
 	    )
-makedepends=(npm git)
+makedepends=(git)
 optdepends=()
 source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "usr-share.patch"
@@ -30,7 +30,7 @@ source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "${_pkgbase}.service")
 sha256sums=('SKIP'
             '627acf28bc80600abb3c0ddf4b0ed563bd77814687c96afabaf1779a55c335d9'
-            '71ba0e551199e1e339997a614d795066635c6aed66c7e61358a1abfc7155fe55'
+            'eefb2404ecc09eb1484ff3fb73986c9a44d92c5ae729e41269f82148b4299160'
             '918d04d07223c83324e18f44fc181abaadc49b747de76a9bcfd48e6bdda6bd05'
             '36aee765d66afa89778962432660ff49f711bf6982758e0c572d760568555758'
             'e078d74a16e9cbf8b7f6426274256e72f84ab34ed29c240cce3249985fb566da'
@@ -59,10 +59,3 @@ package() {
   install -Dm644 "$srcdir"/sysusers-mautrix-hangouts.conf "$pkgdir"/usr/lib/sysusers.d/mautrix-hangouts.conf
   install -Dm644 "$srcdir"/tmpfiles-mautrix-hangouts.conf "$pkgdir"/usr/lib/tmpfiles.d/mautrix-hangouts.conf
 }
-sha256sums=('SKIP'
-            '627acf28bc80600abb3c0ddf4b0ed563bd77814687c96afabaf1779a55c335d9'
-            'eefb2404ecc09eb1484ff3fb73986c9a44d92c5ae729e41269f82148b4299160'
-            '918d04d07223c83324e18f44fc181abaadc49b747de76a9bcfd48e6bdda6bd05'
-            '36aee765d66afa89778962432660ff49f711bf6982758e0c572d760568555758'
-            'e078d74a16e9cbf8b7f6426274256e72f84ab34ed29c240cce3249985fb566da'
-            '6cef4d60dbe05b92c8d5a2353de3e3ea8b3b34a25aad27c0b985f62e8942e833')
