@@ -1,5 +1,26 @@
 #!/bin/bash
 
+if test -t 1; then
+
+    # see if it supports colors...
+    ncolors=$(tput colors)
+
+    if test -n "$ncolors" && test $ncolors -ge 8; then
+        bold="$(tput bold)"
+        underline="$(tput smul)"
+        standout="$(tput smso)"
+        normal="$(tput sgr0)"
+        black="$(tput setaf 0)"
+        red="$(tput setaf 1)"
+        green="$(tput setaf 2)"
+        yellow="$(tput setaf 3)"
+        blue="$(tput setaf 4)"
+        magenta="$(tput setaf 5)"
+        cyan="$(tput setaf 6)"
+        white="$(tput setaf 7)"
+    fi
+fi
+
 REMOVE=false
 CLEAR_CACHE=false
 
@@ -27,7 +48,7 @@ while getopts ":rch" opt; do
       exit 0
       ;;
     \?)
-      echo "Invalid Option: -$OPTARG" 1>&2
+      echo "${red}Invalid Option: -$OPTARG${normal}" 1>&2
       exit 1
       ;;
     esac
@@ -37,37 +58,37 @@ shift $((OPTIND -1))
 
 if [ $REMOVE == true ]; then
   for PACKAGE_NAME in "$@"; do
-    echo "Removing $PACKAGE_NAME..."
+    echo "${blue}Removing $PACKAGE_NAME...${normal}"
     sudo pacman -Rns $PACKAGE_NAME
     echo $PACKAGE_NAME > ~/.haur_cache
   done
   if [ $CLEAR_CACHE == true ]; then
     if test -f "$HOME/.haur_cache"; then
-      echo "Clearing cache..."
+      echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
-        echo "Removing $line"
+        echo "${blue}Removing $line${normal}"
         rm -rf $HOME/.haur/$line
       done < "$HOME/.haur_cache"
       rm ~/.haur_cache
     else
-      echo "Nothing to clear"
+      echo "${blue}Nothing to clear${normal}"
     fi
   fi
 else
   if [ $CLEAR_CACHE == true ]; then
     if test -f "$HOME/.haur_cache"; then
-      echo "Clearing cache..."
+      echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
-        echo "Removing $line"
+        echo "${blue}Removing $line${normal}"
         rm -rf $HOME/.haur/$line
       done < "$HOME/.haur_cache"
       rm ~/.haur_cache
     else
-      echo "Nothing to clear"
+      echo "${blue}Nothing to clear${normal}"
     fi
   fi
   for PACKAGE_NAME in "$@"; do
-    echo "Installing $PACKAGE_NAME..."
+    echo "${blue}Installing $PACKAGE_NAME...${normal}"
     mkdir -p ~/.haur
     cd ~/.haur
     git clone https://aur.archlinux.org/$PACKAGE_NAME.git
