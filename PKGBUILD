@@ -11,6 +11,5 @@ depends=('bash' 'git')
 source=("haur")
 package () {
 	install -Dm777 "$srcdir"/haur "$pkgdir"/usr/bin/haur
-	install -Dm777 "$srcdir"/haur-clear-cache "$pkgdir"/usr/bin/haur-clear-cache
 }
 md5sums=('fed8ddfb90c4bdf6830b71532834a295')
