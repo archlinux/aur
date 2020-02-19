@@ -1,17 +1,17 @@
 pkgbase = zathura-cb-git
 	pkgdesc = Comic book support for zathura
-	pkgver = 0.1.4.2.g1a7ba12
+	pkgver = 0.1.8.r7.gd03db86
 	pkgrel = 1
-	url = http://pwmt.org/projects/zathura/plugins/zathura-cb
+	url = https://pwmt.org/projects/zathura-cb/
 	arch = i686
 	arch = x86_64
-	license = custom
+	license = custom:zlib
 	makedepends = git
-	depends = zathura-git
-	optdepends = unrar: For *.cbr support
-	optdepends = unzip: For *.cbz support
-	optdepends = p7zip: For *.cb7 support
-	optdepends = tar: For *.cbt support
+	makedepends = meson
+	makedepends = ninja
+	depends = zathura
+	depends = libarchive
+	depends = desktop-file-utils
 	provides = zathura-cb
 	conflicts = zathura-cb
 	source = zathura-cb::git+https://git.pwmt.org/pwmt/zathura-cb.git#branch=develop

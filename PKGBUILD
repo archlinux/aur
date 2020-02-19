@@ -1,41 +1,40 @@
-# Maintainer: Moritz Lipp <mlq@pwmt.org>
+# Maintainer: Lex Black <autumn-wind at web dot de>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
 
+_gitname=zathura-cb
 pkgname=zathura-cb-git
+pkgver=0.1.8.r7.gd03db86
 pkgrel=1
-pkgver=0.1.4.2.g1a7ba12
 pkgdesc="Comic book support for zathura"
 arch=('i686' 'x86_64')
-url="http://pwmt.org/projects/zathura/plugins/zathura-cb"
-license=('custom')
-depends=('zathura-git')
-makedepends=('git')
+url="https://pwmt.org/projects/zathura-cb/"
+license=('custom:zlib')
+depends=('zathura' 'libarchive' 'desktop-file-utils')
+makedepends=('git' 'meson' 'ninja')
 conflicts=('zathura-cb')
 provides=('zathura-cb')
-optdepends=(
-  'unrar: For *.cbr support'
-  'unzip: For *.cbz support'
-  'p7zip: For *.cb7 support'
-  'tar:   For *.cbt support'
-)
-source=('zathura-cb::git+https://git.pwmt.org/pwmt/zathura-cb.git#branch=develop')
+source=(${_gitname}::git+https://git.pwmt.org/pwmt/zathura-cb.git#branch=develop)
 md5sums=('SKIP')
-_gitname=zathura-cb
+
+
+pkgver() {
+  cd "$_gitname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
-  cd "$srcdir/$_gitname"
-  make
+  cd "$_gitname"
+  arch-meson build
+
+  cd build
+  ninja
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
-  install -D -m664 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+  cd "$_gitname/build"
 
-pkgver() {
-  cd "$srcdir/$_gitname"
-  local ver="$(git describe --long --always)"
-  printf "%s" "${ver//-/.}"
+  DESTDIR="$pkgdir" ninja install
+  install -Dm664 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
