@@ -12,5 +12,5 @@ md5sums=('d028ff0026fa52ae41f0b8af73a9a36d')
 
 package() {
     chmod +x esperantilo.bin
-    mv esperantilo.bin /usr/bin/esperantilo
+    sudo mv esperantilo.bin /usr/bin/esperantilo
 }
