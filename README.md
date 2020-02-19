@@ -12,6 +12,12 @@ cd haur
 makepkg -si
 ```
 
+Alternative install (not supported, use AUR instead):
+```bash
+git clone https://github.com/karx1/haur.git
+./install.sh
+```
+
 ## Usage
 
 Usage is pretty simple.
@@ -19,11 +25,6 @@ Usage is pretty simple.
 To install:
 ```bash
 haur <package name>
-```
-Alternative install (not supported, use AUR instead):
-```bash
-git clone https://github.com/karx1/haur.git
-./install.sh
 ```
 
 To remove:

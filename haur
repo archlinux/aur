@@ -1,40 +1,77 @@
 #!/bin/bash
 
 REMOVE=false
+CLEAR_CACHE=false
 
-for arg in "$@"
-do
-	if [ "$arg" == "--remove" ] || [ "$arg" == "-r" ]
-	then
-		REMOVE=true
-	fi
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    "--remove") set -- "$@" "-r" ;;
+    "--clear-cache") set -- "$@" "-c" ;;
+    "--help")   set -- "$@" "-h" ;;
+    *)        set -- "$@" "$arg"
+  esac
 done
+shift $((OPTIND -1))
 
-if [ $REMOVE == true ]
-then
-for PACKAGE_NAME in "$@"
-do
-if [ $PACKAGE_NAME != "--remove" ] || [ $PACKAGE_NAME != "-r" ]
-then
-	echo "Removing $PACKAGE_NAME"
-	sudo pacman -Rns $PACKAGE_NAME
-	echo $PACKAGE_NAME > $HOME/.haur_cache
-fi
+while getopts ":rch" opt; do
+  case $opt in
+    r )
+      REMOVE=true
+      ;;
+    c )
+      CLEAR_CACHE=true
+      ;;
+    h )
+      echo "Usage: haur [--remove | -r] | [--clear-cache | -c] <package names>"
+      exit 0
+      ;;
+    \?)
+      echo "Invalid Option: -$OPTARG" 1>&2
+      exit 1
+      ;;
+    esac
 done
-exit 0
+shift $((OPTIND -1))
+
+
+if [ $REMOVE == true ]; then
+  for PACKAGE_NAME in "$@"; do
+    echo "Removing $PACKAGE_NAME..."
+    sudo pacman -Rns $PACKAGE_NAME
+    echo $PACKAGE_NAME > ~/.haur_cache
+  done
+  if [ $CLEAR_CACHE == true ]; then
+    if test -f "$HOME/.haur_cache"; then
+      echo "Clearing cache..."
+      while IFS= read -r line || [[ -n "$line" ]]; do
+        echo "Removing $line"
+        rm -rf $HOME/.haur/$line
+      done < "$HOME/.haur_cache"
+      rm ~/.haur_cache
+    else
+      echo "Nothing to clear"
+    fi
+  fi
+else
+  if [ $CLEAR_CACHE == true ]; then
+    if test -f "$HOME/.haur_cache"; then
+      echo "Clearing cache..."
+      while IFS= read -r line || [[ -n "$line" ]]; do
+        echo "Removing $line"
+        rm -rf $HOME/.haur/$line
+      done < "$HOME/.haur_cache"
+      rm ~/.haur_cache
+    else
+      echo "Nothing to clear"
+    fi
+  fi
+  for PACKAGE_NAME in "$@"; do
+    echo "Installing $PACKAGE_NAME..."
+    mkdir -p ~/.haur
+    cd ~/.haur
+    git clone https://aur.archlinux.org/$PACKAGE_NAME.git
+    cd $PACKAGE_NAME
+    makepkg -si
+  done
 fi
-
-for PACKAGE_NAME in "$@"
-do
-
-if [ $PACKAGE_NAME != "--remove" ] || [ $PACKAGE_NAME != "-r" ]
-then
-echo "Installing '$PACKAGE_NAME'"
-
-mkdir -p ~/.haur
-cd ~/.haur
-git clone https://aur.archlinux.org/$PACKAGE_NAME.git
-cd $PACKAGE_NAME
-makepkg -si
-fi
-done
