@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.5.4
-pkgver=5.5.v.4
-pkgrel=2
+gitver=v5.5.5
+pkgver=5.5.v.5
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -21,19 +21,14 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	5012_enable-cpu-optimizations-for-gcc91.patch
-	# patch for asus WMI
-	AsusBatPatch.patch
 )
 sha256sums=('SKIP'
              #config.x86_64
-             '3baaeda116f798f827a2246a00bb4658ebde6a8406ab61e3ec4898b162dc6dd6'
+            '58bfb5403694cd8058434b2483b6e944f276d1ff4dd5f1e90be92537e450388c'
              #.preset file
              '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
              #patch gentoo
              'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
-	     #Asusbat patchfile
-	     '94cd6dddbc4e933d06345b5d0593bd827339c64bc8612af0e101cbea449861a3'
-
            )
 
 _kernelname=${pkgbase#linux}
@@ -58,8 +53,6 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
-  # Implement suggested asus_wmi change
-  git apply ../AsusBatPatch.patch
   # get kernel version
   yes "" | make prepare
 

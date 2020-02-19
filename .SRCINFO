@@ -1,6 +1,6 @@
 pkgbase = linux-amd
-	pkgver = 5.5.v.4
-	pkgrel = 2
+	pkgver = 5.5.v.5
+	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,12 +16,10 @@ pkgbase = linux-amd
 	source = config.x86_64
 	source = linux-amd.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
-	source = AsusBatPatch.patch
 	sha256sums = SKIP
-	sha256sums = 3baaeda116f798f827a2246a00bb4658ebde6a8406ab61e3ec4898b162dc6dd6
+	sha256sums = 58bfb5403694cd8058434b2483b6e944f276d1ff4dd5f1e90be92537e450388c
 	sha256sums = 71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08
 	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
-	sha256sums = 94cd6dddbc4e933d06345b5d0593bd827339c64bc8612af0e101cbea449861a3
 
 pkgname = linux-amd
 	pkgdesc = Linux kernel for AMD CPU based hardware
