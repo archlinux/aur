@@ -1,8 +1,8 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=esbuild-git
-pkgver=r73.697e0f5
-pkgrel=2
+pkgver=r84.e989f9d
+pkgrel=1
 pkgdesc="An extremely fast JavaScript bundler and minifier"
 arch=("x86_64" "i686")
 url="https://github.com/evanw/esbuild"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}/src/esbuild/main/"
-  GOPATH="${srcdir}/${pkgname}/" go build -o esbuild -trimpath -ldflags "-extldflags ${LDFLAGS}"
+  GOPATH="${srcdir}/${pkgname}/" GO111MODULE=off go build -o esbuild -trimpath -ldflags "-extldflags ${LDFLAGS}"
 }
 
 package() {
