@@ -2,7 +2,7 @@
 
 pkgname=kronosnet-git
 _pkgname=kronosnet
-pkgver=1.90.r405.g63d5a3e
+pkgver=1.90.r459.gcc12097
 pkgrel=1
 pkgdesc="VPNs on steroids"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'doxygen' 'lksctp-tools' 'libqb-git')
 depends=('nss' 'lzo' 'zstd')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("$pkgname::git+https://github.com/fabbione/$_pkgname.git")
+source=("$pkgname::git+https://github.com/$_pkgname/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -33,6 +33,8 @@ build() {
               --sbindir=/usr/bin \
               --enable-publicandocs \
               --with-systemddir=/usr/lib/systemd/system
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
