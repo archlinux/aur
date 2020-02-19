@@ -24,7 +24,7 @@ pkgname=("${pkgbase}-common"
          "${pkgbase}-webui")
 
 pkgmajor=19
-pkgver=19.2.5
+pkgver=19.2.6
 pkgrel=1
 arch=(i686 x86_64 armv7h aarch64)
 groups=('bareos')
