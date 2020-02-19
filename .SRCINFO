@@ -1,7 +1,7 @@
 pkgbase = pandoc-sile-git
 	pkgdesc = Conversion between markup formats (sile fork)
-	pkgver = 2.9.1.1.r8.g4ccd9b69e
-	pkgrel = 0.1
+	pkgver = 2.9.2.r8.g78db4f240
+	pkgrel = 1
 	url = https://pandoc.org
 	arch = x86_64
 	license = GPL
@@ -66,9 +66,12 @@ pkgbase = pandoc-sile-git
 	optdepends = pandoc-citeproc: for citation rendering with pandoc-citeproc filter
 	optdepends = pandoc-crossref: for numbering figures, equations, tables and cross-references to them with pandoc-crossref filter
 	optdepends = texlive-core: for pdf output
+	provides = pandoc
+	provides = pandoc-sile
 	conflicts = haskell-pandoc
+	conflicts = pandoc
 	replaces = haskell-pandoc
-	source = git://github.com/alerque/pandoc.git#branch=sile-2.9.1.1
+	source = git://github.com/alerque/pandoc.git#branch=sile-2.9.2
 	sha512sums = SKIP
 
 pkgname = pandoc-sile-git
