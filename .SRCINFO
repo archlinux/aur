@@ -1,6 +1,6 @@
 pkgbase = rav1e
 	pkgdesc = The fastest and safest AV1 encoder
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/xiph/rav1e
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = rav1e
 	makedepends = nasm
 	depends = gcc-libs
 	options = staticlibs
-	source = rav1e-0.3.0.tar.gz::https://github.com/xiph/rav1e/archive/v0.3.0.tar.gz
-	sha256sums = 6f51888eb0d3710f4f8c519a2a8b859a88019e0c335efc6abf7f940abc8dc57b
+	source = rav1e-0.3.1.tar.gz::https://github.com/xiph/rav1e/archive/v0.3.1.tar.gz
+	sha256sums = 581b50e1e550835b65dd20f3c851cf2dae93eac0ee016caadfaa5faef8eee6f0
 
 pkgname = rav1e
 
