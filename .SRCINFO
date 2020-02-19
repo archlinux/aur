@@ -8,6 +8,7 @@ pkgbase = gedit-plugin-markdown_preview-git
 	makedepends = git
 	depends = gedit
 	depends = python-markdown
+	depends = webkit2gtk
 	optdepends = pandoc: export and stylesheet support
 	optdepends = pymdown-extensions: extra Python Markdown extensions
 	optdepends = python-pygments: for CodeHilite extension

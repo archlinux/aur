@@ -6,7 +6,7 @@ pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
 url="https://github.com/maoschanz/gedit-plugin-markdown_preview"
 license=('GPL3')
-depends=('gedit' 'python-markdown')
+depends=('gedit' 'python-markdown' 'webkit2gtk')
 makedepends=('git')
 optdepends=('pandoc: export and stylesheet support'
             'pymdown-extensions: extra Python Markdown extensions'
