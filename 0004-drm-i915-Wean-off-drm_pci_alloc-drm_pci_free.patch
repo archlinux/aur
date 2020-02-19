@@ -1,7 +1,7 @@
-From 7af5e53f87d728579cba99568717a6af3625184b Mon Sep 17 00:00:00 2001
+From 1533cd73061e99ed6dd58cba03da2b762a616a95 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 2 Feb 2020 15:39:34 +0000
-Subject: [PATCH 4/7] drm/i915: Wean off drm_pci_alloc/drm_pci_free
+Subject: [PATCH 04/14] drm/i915: Wean off drm_pci_alloc/drm_pci_free
 
 drm_pci_alloc and drm_pci_free are just very thin wrappers around
 dma_alloc_coherent, with a note that we should be removing them.

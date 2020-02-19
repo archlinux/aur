@@ -1,7 +1,7 @@
-From 6ffd5925e2659e589d48b8dcaf06e0b3cc0f4d52 Mon Sep 17 00:00:00 2001
+From 4e64b7d1a9e63f7b9c1cecc8995e6fc1fed42e77 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Fri, 7 Feb 2020 21:14:52 +0000
-Subject: [PATCH 6/7] drm/i915/execlists: Always force a context reload when
+Subject: [PATCH 06/14] drm/i915/execlists: Always force a context reload when
  rewinding RING_TAIL
 
 If we rewind the RING_TAIL on a context, due to a preemption event, we

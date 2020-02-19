@@ -7,7 +7,7 @@ _srcname=linux-5.5
 _major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=3
+_minor=4
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -36,22 +36,36 @@ source=(
 0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
 0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
 0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
+0007-drm-i915-Serialise-i915_active_acquire-with-__active.patch
+0008-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
+0009-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
+0010-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
+0011-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
+0012-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
+0013-drm-i915-Introduce-a-vma.kref.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('21f9870ce477ca81ef5b7b4fa9d8b8c013007a36606aed91fdfcbf8988b3d1e7'
+sha256sums=('48c03db86f96e1edffbd66c6eed953c84c76de42f23e1c6756b4fa09a2c90ecf'
             'SKIP'
-            '2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
+            'ea40fd0deb0ba043c628ad4039c67ca9e4d8adc88d67d8b8c5a20f264403a6fb'
             'SKIP'
             'e967ac8bd663509cc0ca6451a95a9965eb59832e316eec77484960dcedec8c1c'
-            'c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17'
-            'a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87'
-            'd5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929'
-            '03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3'
-            '49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe'
-            '8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3')
+            '2be34867fcb55a5ab7ee0f25b3fbe4da1b4c55fd118053c9510a9b1e87ed0960'
+            '39e2bd569c5efe83c2facddd9e0b846a6c35937b1280a9ddead5c150fa8ca10d'
+            '07d60156eb70be84adc1376a3d7434811f1373282c0b5198c4cd580c8bfcaa7e'
+            '853403b019a9495c72df52cabe85653590b9a4021343c09e2438c25b96aae163'
+            '8385a3771e4d747a8c6d06bb9a3dd73870fc378ded8d0d0f2b1388b89813719b'
+            '9556c74b7744ad863da61384d2b2b9e996be4652dd4d93d3fcab7f256b224f06'
+            'fe4a15e4e85e0a1ab2e6e3ab790ba53eb5cf538b9a16b6e2327cb3c89f66fc75'
+            'f0177eb3395c910064a9bbd7ae5849f0e6e0094227d2b01367978ca6553fc10c'
+            '51d6e34f69be927600edb3fddbd0dda75773fb28818bcc35f540cf14501e1ef6'
+            'b74618c46e3d2f17d851ccf36d57142a2187787f0e1f529e72898b1d267ab422'
+            '586b7a558b47c443ccccbb6267ffe3fef59d14004b9d5c4591daca4999766fe9'
+            '466cd85077249c54168dba181378d590009f0bb7215a119d1bed6ebbdfe35cd5'
+            '127e6d1ead0c2ba5414038a7a3680e2303a230e88c55d2b6cbf35495dbe345e3')
 
 _kernelname=${pkgbase#linux}
 
