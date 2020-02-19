@@ -31,6 +31,9 @@ package() {
                  ${pkgdir}/usr/share/licenses/${pkgname}/eula.txt
   rm ${pkgdir}/opt/Allegorithmic/Substance_Designer/eula.txt
 
+  # Workaround for https://forum.substance3d.com/index.php/topic,29285.0.html
+  # rm ${pkgdir}/opt/Allegorithmic/Substance_Designer/libfreetype.so.6
+
   install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/substance-designer.desktop"
   install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps" "${srcdir}/substance-designer-icon.png"
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/substance-designer"
