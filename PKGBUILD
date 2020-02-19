@@ -4,13 +4,13 @@
 
 pkgname=liquidctl
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform tool and drivers for liquid coolers and other devices"
 url="https://github.com/jonasmalacofilho/liquidctl"
 depends=('python' 'python-setuptools' 'python-pyusb' 'python-hidapi' 'python-docopt')
 license=('GPL3')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/l/liquidctl/liquidctl-${pkgver}.tar.gz")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('d13180867e07420c5890fe1110e8f45fe343794549a9ed7d5e8e76663bc10c24')
 
 build() {
