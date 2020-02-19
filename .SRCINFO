@@ -1,14 +1,18 @@
 pkgbase = skycoin-keyring
 	pkgdesc = Skycoin archlinux packages keyring
 	pkgver = 20200220
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0pcom/PKGBUILDs
 	install = skycoin-keyring.install
 	arch = any
 	source = skycoin-keyring.install
 	source = skycoin-keyring.gpg
-	sha256sums = 9880980b6668c9e85612c8c350ec10927a9f3d2c994623b84ae99c4a74887028
+	source = skycoin-trusted
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	validpgpkeys = 98F934F04F9334B81DFA3398913BBD5206B19620
+	sha256sums = e63b689c0c7a183ef55d155d2d51e9796ab107e807e71139650a377fa1d32db7
 	sha256sums = dc9e87ebf2fbecc2836c0ef54b32affffacd0940aeb8a475bc3286098f0155f1
+	sha256sums = 77c8eb384324ed90a5a565c7d38b6e5e700039d7563813c59c500c23c45235e0
 
 pkgname = skycoin-keyring
 
