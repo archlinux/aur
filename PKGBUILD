@@ -3,7 +3,7 @@
 java_=8
 pkgname_=truffleruby
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=19.3.1
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Ruby language (Java ${java_} version)"
 arch=('x86_64')
@@ -11,13 +11,13 @@ url='https://github.com/oracle/truffleruby'
 license=('EPL' 'GPL2' 'LGPL2.1')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('b900767987f7972bb4e3c00374b25dc0ede70aa49b00dcc99e53c1ba5e9b0ba4')
+sha256sums=('8742cde8ce9d6b5082377afc7288bfad2f406321a93384bcbd6fa1a9442375dc')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ LICENSE_TRUFFLERUBY.txt 3rd_party_licenses_truffleruby.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ lib/ LICENSE_TRUFFLERUBY.txt 3rd_party_licenses_truffleruby.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
