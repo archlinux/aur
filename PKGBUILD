@@ -1,6 +1,6 @@
 # Maintainer: Piotr Balwierz
 pkgname=bedtools
-pkgver=2.28.0
+pkgver=2.29.2
 pkgrel=1
 pkgdesc='powerful toolset for genome arithmetic'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL2')
 depends=('bash' 'zlib')
 checkdepends=('python' 'samtools')
 source=("https://github.com/arq5x/bedtools2/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha1sums=('ff962a600f37bfb675eee4785120b595247481b7')
+sha1sums=('ed08e3ca549d6a732fd3b0a1f1c05774a84cbb8c')
 
 build()
 {
