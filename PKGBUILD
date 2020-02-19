@@ -2,11 +2,12 @@
 # Contributor: Peter Wu <peter@lekensteyn.nl>
 # Contributor: Evaggelos Balaskas <eblaskas _AT_ ebalaskas _DOT_ gr>
 # Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-# Maintainer: Nikos Skalkotos <skalkoto (at) Gmail.com>
+# Contributor: Nikos Skalkotos <skalkoto (at) Gmail.com>
+# Maintainer: Csaba Henk <csaba+arch@lowlife.hu>
 
-pkgname=libguestfs
-pkgver=1.40.2
-pkgver_short=${pkgver%.*}
+pkgname=libguestfs-git
+_pkgname=libguestfs
+pkgver=1.41.8.r82.gc509420be
 pkgrel=1
 pkgdesc="Access and modify virtual machine disk image"
 arch=("i686" "x86_64")
@@ -17,7 +18,7 @@ backup=("etc/libguestfs-tools.conf"
 	"etc/xdg/virt-builder/repos.d/libguestfs.gpg")
 # backup=("etc/libguestfs-tools.conf" "etc/php.d/guestfs_php.ini")
 install="appliance.install"
-_pythonver=2
+#_pythonver=2
 depends=("qemu-headless"
          "augeas"
          "hivex>=1.3.2"
@@ -27,7 +28,8 @@ depends=("qemu-headless"
          "file"
          "cpio"
          "wget"
-	 "jansson")
+	 "jansson"
+	 "supermin>=5.1")
 makedepends=("qemu-headless"
              "pcre"
              "cdrkit"
@@ -35,22 +37,26 @@ makedepends=("qemu-headless"
              "libconfig"
              "libxml2"
              "gperf"
-             "python${_pythonver}"
+#             "python${_pythonver}"
+             "python"
              "perl"
              "perl-string-shellquote"
              "perl-libintl-perl"
              "perl-sys-virt"
 	     "perl-module-build"
 	     "jansson"
+	     "po4a"
 #             "lua"
 #             "ghc"
-#             "ruby"
+             "ruby"
 #             "erlang"
 #             "gjs"
 #             "php"
-#             "gobject-introspection"
+             "gobject-introspection"
              "ocaml-findlib"
-             "ocaml")
+             "ocaml"
+             "go"
+             "rust")
 optdepends=("python${_pythonver}: Python bindings"
 #            "ruby: Ruby Bindings"
 #            "gjs: Javascript Bindings for GNOME"
@@ -61,12 +67,32 @@ optdepends=("python${_pythonver}: Python bindings"
             "perl: Perl Bindings"
             "perl-sys-virt: Sys-Virt tools"
             "ocaml: Ocaml libs")
-provides=("guestfish=${pkgver}")
+provides=("guestfish=${pkgver}" "${_pkgname}")
+conflicts=("${_pkgname}")
 options=()
-source=("http://libguestfs.org/download/${pkgver_short}-stable/${pkgname}-${pkgver}.tar.gz"
+source=("git+https://github.com/libguestfs/libguestfs"
+        "git+https://git.savannah.gnu.org/git/gnulib.git"
+        "git+https://github.com/libguestfs/libguestfs-common"
         "update-libguestfs-appliance")
-sha512sums=('d288f15d5a70b4b87a4271ea2eb7dc0ec4f48fdb136b8f62003352a069f75573de873e1063763889f410fb1b99951252e9a48dd73bf0233047f21aae43ac6de2'
+sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             '6f695baf27927a7643b2b3f6a2497ca37e306b2e8640bd6025c49f1fc3b243a379b38ad6183acb099e9d762e5ab55b28bbdfab0c6dbd1d3fe748caa0846b1c5a')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+
+  git submodule init
+  git config submodule.gnulib.url $srcdir/gnulib
+  git config submodule.oommon.url $srcdir/libguestfs-common
+  git submodule update
+}
 
 check() {
     # test-lock fails, perhaps related to:
@@ -75,16 +101,22 @@ check() {
     : make check
 }
 
+_fix_pod_files() {
+  # work around podfile generation isssue
+  rm -f po-docs/podfiles
+  make -C po-docs update-po
+}
+
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}"
 
 # Currently OCaml lua, erlang, php, haskel, ruby, ghc, GObject and java bindings
 # are disabled. If you want to create any of the aforementioned language
 # bindings uncomment the appropriate line in makedepends and remove the
 # --disable-* option in ./configure
 
+  ./autogen.sh
   ./configure \
-    PYTHON=python$_pythonver \
     --prefix=/usr \
     --libdir=/usr/lib \
     --mandir=/usr/share/man \
@@ -98,17 +130,25 @@ build() {
     --disable-lua \
     --disable-erlang \
     --disable-php \
-    --disable-haskell \
-    --disable-ruby \
-    --disable-gobject \
-    --disable-golang
+    --disable-haskell # \
+#    --disable-ruby \
+#    --disable-gobject \
+#    --disable-golang
 
-  make
+  if ! make; then
+    _fix_pod_files
+    make
+  fi
+  # for some reason ruby is not properly made (albeit enabled)
+  make -C ruby
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}"
+  if ! make DESTDIR="${pkgdir}" install; then
+    _fix_pod_files
+    make DESTDIR="${pkgdir}" install
+  fi
 
   mkdir -p "$pkgdir/usr/lib/guestfs" "$pkgdir/var/cache/guestfs"
   install -Dm755 "${srcdir}/update-libguestfs-appliance" "${pkgdir}/usr/bin/update-libguestfs-appliance"
