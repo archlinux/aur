@@ -2,7 +2,7 @@
 # Maintainer: Allen Zhong <zhongbenli@pingcap.com>
 pkgname=tikv
 pkgver=3.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Distributed transactional key-value database, originally created to complement TiDB'
 makedepends=('go' 'make' 'rustup' 'awk' 'cmake' 'gcc')
 arch=('x86_64')
@@ -25,6 +25,9 @@ sha256sums=('e4c752d3b75825ff3202a2d30628fad05da614fd1f35e19defd35e6726a268e7'
 prepare() {
     cd tikv-${pkgver}
     rustup component add rustfmt-preview
+
+    # patch Makefile
+    sed -i 's/cargo build/cargo build --locked/g' Makefile
 }
 
 build() {

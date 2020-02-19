@@ -1,7 +1,7 @@
 pkgbase = tikv
 	pkgdesc = Distributed transactional key-value database, originally created to complement TiDB
 	pkgver = 3.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tikv/tikv
 	arch = x86_64
 	license = Apache
