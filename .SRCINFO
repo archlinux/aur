@@ -1,13 +1,13 @@
 pkgbase = graalpython-jdk8-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 8 version
-	pkgver = 19.3.1
+	pkgver = 20.0.0
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
 	license = custom
 	depends = jdk8-graalvm-bin
-	source = https://github.com/graalvm/graalpython/releases/download/vm-19.3.1/python-installable-svm-java8-linux-amd64-19.3.1.jar
-	sha256sums = d71ca7604a49a5251c928176c920034393f427c8ddd01f3d19189be20b6a2cad
+	source = https://github.com/graalvm/graalpython/releases/download/vm-20.0.0/python-installable-svm-java8-linux-amd64-20.0.0.jar
+	sha256sums = 825604d89eea33b0ace68da28a46e2b7c50a49c380d062e0a6e9fed4f4e4fed8
 
 pkgname = graalpython-jdk8-bin
 

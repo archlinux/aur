@@ -3,7 +3,7 @@
 java_=8
 pkgname_=graalpython
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=19.3.1
+pkgver=20.0.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Python language (early development), Java ${java_} version"
 arch=('x86_64')
@@ -11,13 +11,13 @@ url='https://github.com/graalvm/graalpython'
 license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source=("https://github.com/graalvm/$pkgname_/releases/download/vm-${pkgver}/python-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('d71ca7604a49a5251c928176c920034393f427c8ddd01f3d19189be20b6a2cad')
+sha256sums=('825604d89eea33b0ace68da28a46e2b7c50a49c380d062e0a6e9fed4f4e4fed8')
 
 package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ LICENSE_GRAALPYTHON.txt 3rd_party_licenses_graalpython.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ lib/ LICENSE_GRAALPYTHON.txt 3rd_party_licenses_graalpython.txt THIRD_PARTY_LICENSE_GRAALPYTHON.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
