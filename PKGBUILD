@@ -1,7 +1,7 @@
 # Maintainer: kXuan <kxuanobj@gmail.com>
 
 pkgname=envoyproxy
-pkgver=1.12.2
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('bazel' 'cmake' 'git' 'go' 'ninja' 'perl' 'python')
 source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
 )
-sha512sums=('883f6b27929d1807d968f8ba97b6931dbbe60ba2761e1af663ed7839889c153c6410867883bc97ba481f40162ea96e66f9505b042cd6ae6dacece653513e0e43')
+sha512sums=('64d0d523903bbcdc30beea89bc130c91a1bf168f6a2fbab4e191c693d0b8c02da06a3725cd53bb70650e16b44884004c468f5c0e20135cf4214c36eb60a62b90')
 
 prepare() {
   cd "envoy-$pkgver"
@@ -21,7 +21,7 @@ prepare() {
 #  done
   go get github.com/bazelbuild/buildtools/buildifier
   # The commit id of $pkgver
-  echo "44f8c365a1f1798f0af776f6aa64279dc68f5666" > SOURCE_VERSION
+  echo "bb7ceff4c3c5bd4555dff28b6e56d27f2f8be0a7" > SOURCE_VERSION
 }
 
 build() {

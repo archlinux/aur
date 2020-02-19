@@ -1,6 +1,6 @@
 pkgbase = envoyproxy
 	pkgdesc = A high performance, open source, general RPC framework that puts mobile and HTTP/2 first.
-	pkgver = 1.12.2
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://envoyproxy.io
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = envoyproxy
 	makedepends = ninja
 	makedepends = perl
 	makedepends = python
-	source = https://github.com/envoyproxy/envoy/archive/v1.12.2.tar.gz
-	sha512sums = 883f6b27929d1807d968f8ba97b6931dbbe60ba2761e1af663ed7839889c153c6410867883bc97ba481f40162ea96e66f9505b042cd6ae6dacece653513e0e43
+	source = https://github.com/envoyproxy/envoy/archive/v1.13.0.tar.gz
+	sha512sums = 64d0d523903bbcdc30beea89bc130c91a1bf168f6a2fbab4e191c693d0b8c02da06a3725cd53bb70650e16b44884004c468f5c0e20135cf4214c36eb60a62b90
 
 pkgname = envoyproxy
 
