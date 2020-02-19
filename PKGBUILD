@@ -2,7 +2,7 @@
 
 pkgname=6cord
 # https://gitlab.com/diamondburned/6cord/releases
-pkgver=9.5
+pkgver=9.6
 pkgrel=1
 pkgdesc='Discord, TUI and SIXEL.'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://gitlab.com/diamondburned/6cord"
 license=('MPL-2.0')
 makedepends=('go' 'git')
 source=("https://gitlab.com/diamondburned/6cord/-/archive/stable-$pkgver/6cord-stable-$pkgver.tar.gz")
-sha256sums=('8ba69d154842aac4cebf85ff92e6d39d31827a43042bcccfcad3185876d5319b')
+sha256sums=('5716968065d882b1537878e9fcaa035f61bc9b0d36cbdac3eff97fe90b4c6d52')
 conflicts=('6cord-git')
 
 build() {
