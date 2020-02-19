@@ -66,5 +66,8 @@ package() {
 
     # Install license
     install -Dm644 ParaView-v${pkgver/R/-R}/License_v1.2.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+
+    # add paraview to PATH
+    install -Dm 755 ../paraview.sh -t "${pkgdir}/etc/profile.d"
 }
 # vim:set sw=2 ts=2 et:
