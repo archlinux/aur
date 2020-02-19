@@ -1,22 +1,18 @@
 pkgbase = skycoin-bin
-	pkgdesc = Skycoin Cryptocurrency Wallet; Deterministic Build
-	pkgver = 0.26.0
-	pkgrel = 3
+	pkgdesc = Skycoin Cryptocurrency Wallet; Binary Release
+	pkgver = 0.27.0
+	pkgrel = 1
 	url = https://github.com/skycoinproject/skycoin
-	arch = x86_64
+	arch = any
 	makedepends = git
-	makedepends = docker
+	makedepends = skycoin-keyring
 	provides = skycoin
-	source = https://github.com/skycoinproject/skycoin/archive/v0.26.0.tar.gz
-	source = https://dl.google.com/go/go1.13.linux-amd64.tar.gz
-	source = Dockerfile
-	source = https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key
-	sha256sums = 60f7f2a7c33dbe754ffc74b86de7c2a759e246a83953d4d52fb869d1b3fa1ee2
-	sha256sums = 68a2297eb099d1a76097905a2ce334e3155004ec08cdea85f24527be3c48e856
-	sha256sums = SKIP
-	sha256sums = 41c0a4a42ae64479b008392053f4a947618acd6bb9c3ed2672dafdb2453caa14
+	source = skycoin-scripts.tar.gz
+	source = skycoin-systemd.tar.gz
+	validpgpkeys = DE08F924EEE93832DABC642CA8DC761B1C0C0CFC
+	validpgpkeys = 98F934F04F9334B81DFA3398913BBD5206B19620
+	sha256sums = ca8344614b60e0d9d57b0eba4b44e0febc4addf83a54685539c45e08364b2d23
+	sha256sums = d14d3d597b80a2b79e5edb7e956a7926ca7065230e87fdca026036888835ad42
 
 pkgname = skycoin-bin
-	options = !strip
-	options = staticlibs
 
