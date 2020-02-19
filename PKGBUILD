@@ -2,7 +2,7 @@
 
 pkgname=oh-my-bash-git
 pkgver=r71.b527766
-pkgrel=1
+pkgrel=2
 pkgdesc="A delightful community-driven framework for managing your bash configuration, and an auto-update tool so that makes it easy to keep up with the latest updates from the community"
 arch=('x86_64')
 url='https://github.com/ohmybash/oh-my-bash'
