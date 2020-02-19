@@ -1,0 +1,20 @@
+pkgbase = fff-ueberzug-git
+	pkgdesc = A simple file manager written in bash. This fork uses ueberzug instead of w3m-img
+	pkgver = aaff747
+	pkgrel = 1
+	url = https://github.com/zeljkobekcic/fff
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = xdg-utils
+	depends = fbset
+	depends = python-ueberzug
+	depends = xdotool
+	provides = fff
+	conflicts = fff
+	conflicts = python-ueberzug-git
+	source = git+https://github.com/zeljkobekcic/fff.git
+	sha256sums = SKIP
+
+pkgname = fff-ueberzug-git
+
