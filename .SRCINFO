@@ -1,7 +1,7 @@
 pkgbase = jdk11-graalvm-bin
 	pkgdesc = Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 11 version
-	pkgver = 19.3.1
-	pkgrel = 2
+	pkgver = 20.0.0
+	pkgrel = 1
 	url = https://www.graalvm.org/
 	install = jdk11-graalvm-bin.install
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = jdk11-graalvm-bin
 	provides = java-runtime=11
 	provides = java-environment=11
 	options = staticlibs
-	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-linux-amd64-19.3.1.tar.gz
-	sha256sums_x86_64 = 691f0577c75c4ba0fb50916087925e6eb8a5a73de51994a37eee022d1e2c9e7d
-	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-19.3.1/graalvm-ce-java11-linux-aarch64-19.3.1.tar.gz
-	sha256sums_aarch64 = 5c774ec6158ddf3c66488e6b6c6fe6db4e244f0eac08d2b48804cc2ec74845e0
+	source_x86_64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.0.0/graalvm-ce-java11-linux-amd64-20.0.0.tar.gz
+	sha256sums_x86_64 = d16c4a340a4619d98936754caeb6f49ee7a61d809c5a270e192b91cbc474c726
+	source_aarch64 = https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-20.0.0/graalvm-ce-java11-linux-aarch64-20.0.0.tar.gz
+	sha256sums_aarch64 = dd230410722d3a7ac25c1318adccddec3f5d85af92aef5906a8e2d755bb2168a
 
 pkgname = jdk11-graalvm-bin
 
