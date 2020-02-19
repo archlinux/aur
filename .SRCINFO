@@ -1,6 +1,6 @@
 pkgbase = vim-webapi-git
 	pkgdesc = Vim Interface to Web API
-	pkgver = 0.3.4.gdfc6063
+	pkgver = 0.3.39.g10b8e92
 	pkgrel = 1
 	url = https://github.com/mattn/webapi-vim
 	install = vim-helptags.install
@@ -10,6 +10,8 @@ pkgbase = vim-webapi-git
 	makedepends = git
 	depends = vim
 	depends = curl
+	provides = vim-webapi
+	conflicts = vim-webapi
 	source = git://github.com/mattn/webapi-vim.git
 	md5sums = SKIP
 
