@@ -1,5 +1,5 @@
 pkgbase = pg_icu_ext-git
-	pkgdesc = postgresql background worker to capture data
+	pkgdesc = PostgreSQL icu_ext package. See https://github.com/dverite/icu_ext
 	pkgver = v1.5.1.r1.g444a52a
 	pkgrel = 1
 	url = https://github.com/dverite/icu_ext
