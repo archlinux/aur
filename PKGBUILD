@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=stringi
-_cranver=1.4.5
+_cranver=1.4.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(custom)
 depends=('r>=2.14' 'icu>=55')
 makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('83434d4f28361417b653fae33ba721e5')
+md5sums=('8655caec20f6c0356f70c81a598f7a2a')
 
 build() {
   cd "${srcdir}"
