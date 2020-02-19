@@ -4,7 +4,7 @@ pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
 pkgver=0.1.0.r48.gd131cc1
 _branch='master'
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://github.com/sile-typesetter/casile/'
 license=('LGPL3')
@@ -30,7 +30,7 @@ depends=('bc'
          'moreutils'
          'nodejs'
          'otf-libertinus'
-         'pandoc'
+         'pandoc-sile-git'
          'pcre'
          'pdftk'
          'perl-yaml'
