@@ -8,6 +8,7 @@ pkgbase = thundersvm
 	makedepends = cuda
 	makedepends = cmake
 	makedepends = python-wheel
+	makedepends = python-setuptools
 	source = https://github.com/Xtra-Computing/thundersvm/archive/v0.3.4.tar.gz
 	sha256sums = c8b4f7ece312a51ab72ef72e550f7ca3973f5328bc128df64158fe6e3b3b8c0e
 
