@@ -1,22 +1,25 @@
-# Maintainer: Oscar Morante <spacepluk@gmail.com>
+# Maintainer: t-ask <t-ask-aur at cixera.com>
+# Co-maintainer: Oscar Morante <spacepluk@gmail.com>
 # Co-maintainer: Dragoon Aethis <dragoon@dragonic.eu>
+
 pkgname=substance-designer
-pkgver=2017.1.3
+pkgver=2019.3.3
 pkgrel=1
+_build=3313
 pkgdesc="Node-based, non-destructive PBR material authoring tool."
 arch=('x86_64')
 url='https://www.allegorithmic.com/products/substance-designer'
 license=('custom')
 depends=('fontconfig' 'gcc-libs-multilib' 'glu' 'hicolor-icon-theme' 'libtiff4')
 options=('!strip')
-source=('https://download.allegorithmic.com/substance-designer/2017.x/Substance_Designer-2017.1.3-474-linux-x64-standard-full.rpm'
+source=("https://download.allegorithmic.com/substance-designer/2019.x/Substance_Designer-${pkgver}-${_build}-linux-x64-standard.rpm"
         'substance-designer-icon.png'
         'substance-designer.desktop'
         'substance-designer')
 noextract=()
-sha256sums=('f9af0e99d51a7013923baf1cc0fbe5e511746c1f685ee922bd7636e3bce5fbae'
+sha256sums=('fabd2e19802d3f29b46850621e74a14040c1c9ba201a9cbaffdc05ee79a9cdfa'
             '8f7f090d96dbb3535747d2c09c32970343c8887df610bc7ef92b59871a9bfb35'
-            '30e4467dd10879a8fd8b96e1054abd6ec873eef9d01447bc4abcd6e13e19fdd9'
+            'c1f601250bbcd87f3e1016cdc73206842fc98802257286fba7f68df85570db41'
             '714d4484f5ca6d1ac0de77729ab60fc6aee53a7dc217fda5a6401fb6f8eee156')
 validpgpkeys=()
 
