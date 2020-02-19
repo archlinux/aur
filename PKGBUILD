@@ -1,10 +1,11 @@
 # Maintainer: JP Cimalando <jp-dev@inbox.ru>
+# Maintainer: Emanuele Giacomelli <manu-archlinux@altmails.com>
 
 pkgname=mingw-w64-fltk
 _pkgname=fltk
 pkgdesc="Graphical user interface toolkit for X (mingw-w64)"
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('custom:LGPL')
 url="http://www.fltk.org/"
@@ -28,21 +29,24 @@ build() {
   cd $_pkgname-$pkgver
   sed -i -e 's/$(LINKFLTK)/$(LINKSHARED)/' \
          -e 's/$(LINKFLTKIMG)/$(LINKSHARED)/' test/Makefile
-  for arch in x86_64-w64-mingw32 i686-w64-mingw32; do
-    cp -a "$srcdir/$_pkgname-$pkgver" "$srcdir/build-$arch"
-    cd "$srcdir/build-$arch"
-    "$arch"-configure --prefix=/usr/"$arch" --enable-threads --enable-xft --enable-shared .
+  for _arch in x86_64-w64-mingw32 i686-w64-mingw32; do
+    cp -a "$srcdir/$_pkgname-$pkgver" "$srcdir/build-$_arch"
+    cd "$srcdir/build-$_arch"
+    local _ldflags="$(source mingw-env "$_arch" && echo "$LDFLAGS")"
+    DSOFLAGS="$_ldflags" \
+        "$_arch"-configure --prefix=/usr/"$_arch" --enable-threads \
+        --enable-xft --enable-shared .
     make
   done
 }
 
 package() {
-  for arch in x86_64-w64-mingw32 i686-w64-mingw32; do
-    cd "$srcdir/build-$arch"
+  for _arch in x86_64-w64-mingw32 i686-w64-mingw32; do
+    cd "$srcdir/build-$_arch"
     make DESTDIR="$pkgdir" install
-    chmod 0644 "$pkgdir/usr/$arch/lib"/*.a
+    chmod 0644 "$pkgdir/usr/$_arch/lib"/*.a
     install -d "$pkgdir/usr/bin"
-    ln -sf "../$arch/bin/fltk-config" "$pkgdir/usr/bin/$arch-fltk-config"
+    ln -sf "../$_arch/bin/fltk-config" "$pkgdir/usr/bin/$_arch-fltk-config"
   done
 
   cd "$srcdir/$_pkgname-$pkgver"
