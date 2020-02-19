@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Zen monitor
-Type=Application
-Comment=Show temperature and power consumption of Zen-based CPUs
-Exec=zenmonitor
-Categories=System
-GenericName=CPU infos
-Keywords=system;cpu;temperature
