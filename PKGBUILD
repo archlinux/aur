@@ -4,8 +4,8 @@
 
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
-pkgver=0.14.0.5
-pkgrel=2
+pkgver=0.15.0.0
+pkgrel=1
 arch=('x86_64')
 url="http://www.dash.org/"
 depends=('boost-libs' 'libevent')
@@ -17,9 +17,9 @@ license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dashpay/dash/archive/v${pkgver}.tar.gz"
         'dashd@.service'
         'deque.patch')
-sha512sums=('48344e2fe43ca9d2e8621f59b5141243ca3d9da58da7701903ce65d8b56e41bb98cf31e8284835f2303182a934a4df5cc4e13438d346938851fda79d924cb388'
+sha512sums=('cb7534161e8f25507afeda65a5aca3d07594531b87981be1e80251e8ffbe816525f4829a073c99e3666220de73ade7f3f1c3bdaac377553a667d20d3c21ce3f7'
             'b5c59efacbe85de0292590af12e35d8c001c2b71eebda9829754be48e61a70ad7e8ed99662ed4e8da53006eb72e1994c435813b35c16a9c566ddf455efe81b5b'
-            'bb85a882cf5646cef7eb50a4fd1c60fb50409fafc5ef18351a767fce927fd7dbe616b468f74d02d4ed267683de798e563b9cd7be9b1c7a5100113b2164b54825')
+            'f558e938285fbf14c2f1773b2b23018e52ee03d4d2c89c2e1c73dc5f84180b77acc229a2c041f2f058e3a0ea329302d3bd9ef683c5c88570f3d2c4ab5a7050a6')
 
 prepare () {
   cd "$pkgbase-$pkgver"

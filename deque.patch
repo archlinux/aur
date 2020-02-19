@@ -52,7 +52,6 @@ index dba9527305..5c08e676df 100644
  #include <sys/stat.h>
  #include <signal.h>
 +#include <deque>
- #include <future>
  
  #include <event2/event.h>
 
