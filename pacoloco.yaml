@@ -1,0 +1,11 @@
+cache_dir: /tmp
+port: 9129
+repos:
+  archlinux:
+    urls:
+      - http://mirror.lty.me/archlinux
+      - http://mirrors.kernel.org/archlinux
+  quarry:
+    url: http://pkgbuild.com/~anatolik/quarry/x86_64
+  sublime:
+    url: https://download.sublimetext.com/arch/stable/x86_64

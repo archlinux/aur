@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pacoloco-git
-pkgver=r1
+pkgver=r6
 pkgrel=1
 pkgdesc='Pacman caching proxy server'
 arch=(x86_64)
