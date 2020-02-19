@@ -1,14 +1,14 @@
 pkgbase = rco
 	pkgdesc = A configuration manager written in rust.
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tteeoo/rco
 	arch = any
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
 	source = rco-0.1.3.tar.gz::https://github.com/tteeoo/rco/archive/0.1.3.tar.gz
-	md5sums = 5b79318506e343fac48f634e4a35d2e4
+	md5sums = 7f98a7dc5411df89eaa0d37b685db8fd
 
 pkgname = rco
 
