@@ -1,0 +1,13 @@
+diff --git a/cmake/defaults/Packages.cmake b/cmake/defaults/Packages.cmake
+index 7968add25..55f336da8 100644
+--- a/cmake/defaults/Packages.cmake
++++ b/cmake/defaults/Packages.cmake
+@@ -46,7 +46,7 @@ if(PXR_ENABLE_PYTHON_SUPPORT)
+     find_package(Boost
+         COMPONENTS
+             program_options
+-            python
++            python27
+         REQUIRED
+     )
+ 
