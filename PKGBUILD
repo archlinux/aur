@@ -2,21 +2,22 @@
 # Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-gtk3-git
-pkgver=3.16.0.r599.g831126c3a
+pkgver=3.16.0.r930.g675e2663a
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - gtk3 / git checkout'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://www.claws-mail.org/'
-depends=('gtk2' 'gtk3' 'startup-notification' 'enchant' 'gpgme' 'libetpan' 'compface'
+depends=('gtk3' 'startup-notification' 'enchant' 'gpgme' 'libetpan' 'compface'
   'libsm' 'dbus-glib')
 makedepends=('git' 'spamassassin' 'bogofilter' 'valgrind'
   # dependencies for plugins
-  'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'pygtk' 'libytnef' 'libical' 'dillo'
+  'libgdata' 'libnotify' 'libcanberra' 'poppler-glib' 'python-gobject' 'libytnef' 'libical' 'dillo' 'webkit2gtk' 'gumbo-parser'
   # deps to build the docs
   'docbook-utils' 'texlive-core' 'texlive-formatsextra')
 optdepends=(
   'python2:           needed for some tools and python plugin'
+  'python:            needed for some tools and python plugin'
   'pygtk:             needed for python plugin'
   'perl:              needed for some tools and perl plugin'
   'spamassassin:      adds support for spamfiltering'
@@ -33,6 +34,8 @@ optdepends=(
   'ghostscript:       for pdf viewer plugin'
   'libical:           for vcalendar plugin'
   'dillo:             for html viewer plugin'
+  'webkit2gtk:        for fancy HTML viewer plugin'
+  'gumbo-parser:      for litehtml plugin'
 )
 replaces=('sylpheed-claws' 'claws-mail-extra-plugins')
 conflicts=('claws-mail-extra-plugins' 'claws-mail')
