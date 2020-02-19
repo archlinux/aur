@@ -8,13 +8,13 @@
 _localepurge=
 
 pkgname=sigil-git
-pkgver=0.9.17.r33.g9135aa97
+pkgver=1.1.0.r32.gecf560a5
 pkgrel=1
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
 license=('GPL3')
-depends=('hunspell' 'minizip' 'mathjax' 'python-css-parser' 'python-lxml' 'python-six'
+depends=('hunspell' 'minizip' 'mathjax2' 'python-css-parser' 'python-dulwich' 'python-lxml' 'python-six'
          'qt5-webengine')
 makedepends=('git' 'qt5-tools' 'cmake')
 optdepends=('hunspell-en_US: for English dictionary support'
@@ -56,7 +56,7 @@ build() {
         -DUSE_SYSTEM_LIBS=1 \
         -DSYSTEM_LIBS_REQUIRED=1 \
         -DINSTALL_BUNDLED_DICTS=0 \
-        -DMATHJAX_DIR=/usr/share/mathjax \
+        -DMATHJAX_DIR=/usr/share/mathjax2 \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
