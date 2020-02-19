@@ -38,7 +38,7 @@ for pkgNameAndVersion in "${packageList[@]}"; do
 		mirror=${mirrorArray[mirrorIndex]}
 		pkgNameAndVersion=${pkgNameAndVersion/ /-}
 		val=${mirror/\$repo/$repo}
-		val=$(echo ${val/\$arch/$arch}/$pkgNameAndVersion-$archpkg.pkg.tar.xz)
+		val=$(echo ${val/\$arch/$arch}/$pkgNameAndVersion-$archpkg.pkg.tar.zst)
 		downloadList="$downloadList $val"
 		((mirrorIndex++))
 		if [[ $mirrorIndex -ge $mirrorArrayLen ]]; then

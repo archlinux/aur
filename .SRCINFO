@@ -1,6 +1,6 @@
 pkgbase = pacman-parallelizer
 	pkgdesc = A minimal package downloader for pacman, using aria2
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/lestofante/PacmanParallelizer
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = pacman-parallelizer
 	depends = aria2
 	depends = pacman-contrib
 	source = pp.sh
-	md5sums = 366163f7c8af9dd5b8e89e75e430810c
+	md5sums = 626c0d5518131fcb5e9b151db1e1d93e
 
 pkgname = pacman-parallelizer
 
