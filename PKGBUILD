@@ -1,9 +1,9 @@
 # Maintainer: ml <ml@visu.li>
-# @TODO systemd socket, ui
+# @TODO systemd service optimization, systemd socket, ui
 pkgname=gotify-server
-pkgver=2.0.13
-_commit=b2b56e09af0ec937a74291d2582cc038fde950e8
-pkgrel=2
+pkgver=2.0.14
+_commit=e56f7bc4c7efdb61fea88a0b65d501277604cefa
+pkgrel=1
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
 arch=(x86_64)
 url='https://gotify.net/'
@@ -16,7 +16,7 @@ source=(
   'config.yml'
   'gotify-server.service'
 )
-sha256sums=('a18177dce403df17e21d8b15551d0525d7c0140a5f8a06148df1db1bc2749639'
+sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
             '2052ac82ceb607701bd505c9df4170bb65c14601a4c8dda3c4ee36fd399c3dfa'
             '6d90cb466122331b983fac2d20a53f82c96db3e340297ec218cf296d0083dbc5'
             '4023cd8e241accc8e650dd5a93fbad0c3f9c3ca87b1a83d1fd39c83178216dfa'
