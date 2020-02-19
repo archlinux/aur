@@ -21,9 +21,9 @@ pkgbase = mattermost-desktop-bin
 	source = mattermost-desktop.desktop
 	sha256sums = 9e60ac9cc5a9cbebccb4180e7de947968aa49858812b5623812a1ab651a91093
 	source_i686 = https://releases.mattermost.com/desktop/4.4.0/mattermost-desktop-4.4.0-linux-ia32.tar.gz
-	sha256sums_i686 = ff71d4fd4408167e6f61713c40019f27912b8cc330420ca0de1292f8d595a399
+	sha256sums_i686 = 494799734653583517991e0b6b414f9c88e3ce8e352455d44b09e810cc00967e
 	source_x86_64 = https://releases.mattermost.com/desktop/4.4.0/mattermost-desktop-4.4.0-linux-x64.tar.gz
-	sha256sums_x86_64 = fa53ddd82b68c963d322c2f2a3d1e55a358ba986e73a9ab9aff24b25dce0456a
+	sha256sums_x86_64 = 764d9fb083b1903997b10dbb4de2081157a2955dcdc35c5d007f2df8a1393f7e
 
 pkgname = mattermost-desktop-bin
 
