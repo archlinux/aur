@@ -3,15 +3,15 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=f30-backgrounds
 pkgver=30.1.2
-pkgrel=2
-_rhver="${pkgver}-2.fc31"
+pkgrel=3
+_rhver="30.1.2-3.fc32"
 pkgdesc="Fedora 30 backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Artwork/MediaArt/F30"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('dcc0cae7a7d689498ec88f162a2b514918ed894e73011149a701846ef5abbd26')
+sha256sums=('dfdd7cb643ebfe884ef2f869ae5f8f2004dfb3f1e90c85a2aed4800649a51bbe')
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz

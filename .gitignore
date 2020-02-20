@@ -3,3 +3,4 @@
 *.xz
 pkg
 src
+.PKGBUILD
