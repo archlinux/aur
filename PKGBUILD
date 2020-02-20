@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.18.40
+pkgver=4.18.50
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -14,13 +14,11 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
         "$pkgname.desktop"
         systray.patch
         menu-bar.patch
-        nav-buttons.patch
         0001-MPRIS-interface.patch)
-sha256sums=('7f5fc641c35637aac7481fd8bd3feea3db630fa3a4606db8faefba6467417c18'
+sha256sums=('225e04775440929bc0abacc1cc7d9999b33c88af10d3333079b8b485e75cb502'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             'f7df7ba3dd91d8d327c3bfe69c65d3969b3f7a80ca253c29bad316e09f65ab8b'
             '8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0'
-            '751b903a3a75f401621fdb0e3017eeb380c0aa9586dfb7b894c89851c09ba964'
             'e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414')
 
 prepare() {
@@ -58,8 +56,6 @@ prepare() {
     patch -p1 < "$srcdir/systray.patch"
     # Disable menu bar
     patch -p1 < "$srcdir/menu-bar.patch"
-    # Fix navbar
-    patch -p1 < "$srcdir/nav-buttons.patch"
 
     # Monkeypatch MPRIS D-Bus interface
     patch -p1 < "$srcdir/0001-MPRIS-interface.patch"
