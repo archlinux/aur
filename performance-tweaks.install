@@ -43,6 +43,12 @@ post_upgrade() {
   msg "Attempting to set performance governor..."
   cpupower frequency-set -g performance
   x86_energy_perf_policy -v performance
+  nvidia-settings -a "[gpu:0]/GpuPowerMizerMode=1" 2> /dev/null
+  echo performance > /sys/class/drm/card0/device/power_dpm_state
+  echo high > /sys/class/drm/card0/device/power_dpm_force_performance_level
+  echo performance > /sys/module/pcie_aspm/parameters/policy
+  echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
+  echo 1 > /sys/devices/system/cpu/cpufreq/boost
   msg "Attempting to enable services..."
   systemctl is-active haveged >/dev/null || systemctl enable haveged
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
