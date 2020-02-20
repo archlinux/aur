@@ -8,9 +8,7 @@ pkgbase = sfrename
 	license = GPL3
 	depends = gtk3>=3.22.0
 	source = https://download.savannah.nongnu.org/releases/small-file-renamer/sfrename-1.2.3.tar.gz
-	source = https://download.savannah.nongnu.org/releases/small-file-renamer/sfrename-1.2.3.tar.gz.sig
 	md5sums = e3908009bc54ea95128504ac4680b3c2
-	md5sums = SKIP
 
 pkgname = sfrename
 

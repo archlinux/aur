@@ -8,9 +8,8 @@ arch=('i686' 'x86_64')
 url="https://www.nongnu.org/small-file-renamer/"
 license=('GPL3')
 depends=('gtk3>=3.22.0')
-source=("https://download.savannah.nongnu.org/releases/small-file-renamer/$pkgname-$pkgver.tar.gz"{,.sig})
-md5sums=('e3908009bc54ea95128504ac4680b3c2'
-         'SKIP')
+source=("https://download.savannah.nongnu.org/releases/small-file-renamer/$pkgname-$pkgver.tar.gz")
+md5sums=('e3908009bc54ea95128504ac4680b3c2')
 build() {
         cd "$srcdir/$pkgname-$pkgver"
         ./configure --prefix=/usr
