@@ -1,0 +1,16 @@
+pkgbase = synthv-editor
+	pkgdesc = Synthesizer V at the Forefront of Singing Synth
+	pkgver = 108
+	pkgrel = 1
+	url = https://synthesizerv.com/download
+	arch = x86_64
+	license = custom
+	provides = synthesizerv
+	conflicts = synthesizerv
+	source = https://s3-ap-northeast-1.amazonaws.com/synthesizerv-download/synthv-editor.zip
+	source = synthesizer-v-editor.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = synthv-editor
+
