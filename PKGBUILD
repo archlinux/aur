@@ -31,4 +31,4 @@ package() {
   env PYROOT=/usr make install
 }
 
-sha256sums=('ff47b1da75a5bfc29d1b8ea5941231e4d9b38c757a0f03c8f63281943f1da4dc')
+sha256sums=('27f89e61d39afb6b937e2fd9c097e9962b198844e9afe541ead348ff1499af5d')
