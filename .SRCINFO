@@ -1,20 +1,20 @@
 pkgbase = fcl
 	pkgdesc = Flexible Collision Library.
-	pkgver = 0.5.0
-	pkgrel = 2
-	url = https://github.com/flexible-collision-library
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/flexible-collision-library/fcl
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = octomap
-	depends = boost
 	depends = libccd
+	depends = eigen
 	optdepends = octomap: collision detection with octrees
 	optdepends = tinyxml: support for global penetration depth test
 	optdepends = flann: support for fast approximate nearest neighbor searches
-	source = https://github.com/flexible-collision-library/fcl/archive/0.5.0.tar.gz
-	sha256sums = 8e6c19720e77024c1fbff5a912d81e8f28004208864607447bc90a31f18fb41a
+	source = https://github.com/flexible-collision-library/fcl/archive/v0.6.0.tar.gz
+	sha256sums = 6891abac5cc26d64f5ef8894bc6c2a30174558c5c83a3ed63cf65a21cb619b2b
 
 pkgname = fcl
 

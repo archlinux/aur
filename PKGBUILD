@@ -1,20 +1,20 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 pkgdesc="Flexible Collision Library."
-url='https://github.com/flexible-collision-library'
+url='https://github.com/flexible-collision-library/fcl'
 pkgname=fcl
-pkgver=0.5.0
+pkgver=0.6.0
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 makedepends=('cmake' 'octomap')
-depends=('boost' 'libccd')
+depends=('libccd' 'eigen')
 optdepends=('octomap: collision detection with octrees'
             'tinyxml: support for global penetration depth test'
             'flann: support for fast approximate nearest neighbor searches')
 _dir=fcl-${pkgver}
-source=(https://github.com/flexible-collision-library/fcl/archive/${pkgver}.tar.gz)
-sha256sums=('8e6c19720e77024c1fbff5a912d81e8f28004208864607447bc90a31f18fb41a')
+source=(https://github.com/flexible-collision-library/fcl/archive/v${pkgver}.tar.gz)
+sha256sums=('6891abac5cc26d64f5ef8894bc6c2a30174558c5c83a3ed63cf65a21cb619b2b')
 
 build() {
   mkdir -p ${srcdir}/build
