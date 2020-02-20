@@ -1,0 +1,13 @@
+pkgbase = cryptpng
+	pkgdesc = A tool for encrypting and decrypting data inside a png file.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Trivernis/cryptpng
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = https://github.com/Trivernis/cryptpng/archive/v1.0.zip
+	sha512sums = 8a726d44621617c79a36f0e8da502065d6534de8b74eb8b7d42abc80556715f14035cf35af905a70b05bcf82651a8677199b78e3dc3981293f8fa3fcb6a3f900
+
+pkgname = cryptpng
+
