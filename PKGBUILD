@@ -1,7 +1,7 @@
 # Maintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Modern TUI library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
@@ -17,7 +17,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
   make
 }
 
@@ -28,7 +28,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}/build"
-  make DESTDIR="$pkgdir/" install
+  env PYROOT=/usr make install
 }
 
-sha256sums=('45b9ee46a9ba43cc8c47345c75fe1215d05f1602528b13c6086c8eb1810e3bc2')
+sha256sums=('ff47b1da75a5bfc29d1b8ea5941231e4d9b38c757a0f03c8f63281943f1da4dc')
