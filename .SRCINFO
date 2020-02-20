@@ -1,13 +1,13 @@
 pkgbase = laughlin-backgrounds
 	pkgdesc = Fedora 14 (Laughlin) backgrounds.
 	pkgver = 14.1.0
-	pkgrel = 6
+	pkgrel = 19
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_14
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/l/laughlin-backgrounds-14.1.0-18.fc31.src.rpm
-	sha256sums = a5cf5c570bb56627d031fab56e0b02a36e56253e5f1b0850675a3402128d12e7
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/l/laughlin-backgrounds-14.1.0-19.fc32.src.rpm
+	sha256sums = SKIP
 
 pkgname = laughlin-backgrounds
 
