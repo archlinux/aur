@@ -10,6 +10,7 @@ pkgbase = swami
 	depends = fftw
 	depends = audiofile
 	depends = fluidsynth
+	depends = libinstpatch
 	optdepends = libpng
 	source = https://github.com/swami/swami/archive/v2.2.0.tar.gz
 	source = cwd.patch
