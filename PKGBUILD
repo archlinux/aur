@@ -6,11 +6,12 @@ _pkgname=andika
 pkgname=ttf-$_pkgname
 _fname=${_pkgname^}
 pkgver=5.000
-pkgrel=3
+pkgrel=4
 pkgdesc='A sans serif, Unicode-compliant font designed especially for literacy use'
 url="http://software.sil.org/$_pkgname"
 arch=('any')
 license=('OFL')
+conflicts=('ttf-sil-fonts<=6')
 source=("https://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('604b7a1194be099bdf311ef76cbce086a054fa16d2b101cfaedcf527c63df507')
 
