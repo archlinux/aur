@@ -7,6 +7,7 @@ pkgbase = indicator-sound-switcher
 	license = GPL
 	depends = python
 	depends = python-gobject
+	depends = libkeybinder3
 	depends = libappindicator-gtk3
 	depends = pulseaudio
 	options = !emptydirs
