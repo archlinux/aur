@@ -1,10 +1,11 @@
 pkgbase = ttf-sil-apparatus
 	pkgdesc = Symbols used for Biblical text apparatus
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://scripts.sil.org/ApparatusSIL
 	arch = any
-	license = custom:OFL
+	license = OFL
+	conflicts = ttf-sil-fonts<=6
 	source = ApparatusSIL-1.0.zip::https://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=AppSIL1.0.zip&filename=ApparatusSIL.zip
 	sha256sums = 0d8e3143b9c46c97916ab2cf85ae2187fe33b9b40859567a5524266dd58581bc
 
