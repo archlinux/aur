@@ -1,6 +1,6 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname=maxima-jupyter-git
-pkgver=r356.d9121c1
+pkgver=r368.b944978
 pkgrel=1
 pkgdesc="A Maxima kernel for Jupyter, based on CL-Jupyter (Common Lisp kernel)"
 arch=("any")

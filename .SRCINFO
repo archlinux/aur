@@ -1,6 +1,6 @@
 pkgbase = maxima-jupyter-git
 	pkgdesc = A Maxima kernel for Jupyter, based on CL-Jupyter (Common Lisp kernel)
-	pkgver = r356.d9121c1
+	pkgver = r368.b944978
 	pkgrel = 1
 	url = https://github.com/robert-dodier/maxima-jupyter
 	arch = any
