@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
 pkgrel=1
-pkgver=r941.49248f5
+pkgver=r1121.393310f
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -37,8 +37,7 @@ package() {
 	# install additional files
 	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" \
 		"README.md" \
-		"ChangeLog.md" \
 		"doc/tutorial.md"
 	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-		"LICENSE"
+		"LICENSE.md"
 }
