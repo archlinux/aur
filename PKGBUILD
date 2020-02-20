@@ -2,7 +2,7 @@
 
 pkgname=python-minkowskiengine-git
 _pkgname=MinkowskiEngine
-pkgver=r195.fe836bd
+pkgver=r240.8d0316a
 pkgrel=1
 pkgdesc="Auto-diff library for generalized sparse convolutions"
 url="https://github.com/StanfordVL/MinkowskiEngine"
@@ -29,12 +29,12 @@ prepare() {
     export CUDA_HOME=/opt/cuda
     # Use cblas, which is included in the community package.
     # You may comment or change the following two lines to use other blas.
-    sed -i "s/BLAS := open/BLAS := cblas/g" Makefile
+    sed -i "s/openblas/cblas/g" Makefile
     sed -i "s/openblas/cblas/g" setup.py
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
     # Build isolation doesn't work in this library.
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --blas=cblas --root="$pkgdir/" --optimize=1
 }
