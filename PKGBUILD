@@ -2,9 +2,9 @@
 
 pkgbase=pluma-python3
 _srcname=pluma
-_tag=v1.23.2
-pkgver=1.23.2
-pkgrel=3
+_tag=v1.24.0
+pkgver=1.24.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/mate-desktop/pluma"
 license=('GNU GENERAL PUBLIC LICENSE Version 2')
