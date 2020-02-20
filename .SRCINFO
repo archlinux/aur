@@ -6,6 +6,7 @@ pkgbase = wafw00f-git
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-pluginbase
 	depends = python-requests
 	provides = wafw00f

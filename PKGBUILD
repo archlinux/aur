@@ -11,7 +11,7 @@ provides=('wafw00f')
 conflicts=('wafw00f')
 depends=("python-pluginbase"
          "python-requests")
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'git')
 source=("$pkgname::git://github.com/EnableSecurity/wafw00f.git")
 sha256sums=('SKIP')
 
