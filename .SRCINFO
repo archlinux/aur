@@ -1,0 +1,18 @@
+pkgbase = python2-cycler
+	pkgdesc = Composable style cycles
+	pkgver = 0.10.0
+	pkgrel = 6
+	url = https://github.com/matplotlib/cycler
+	arch = any
+	license = BSD
+	checkdepends = python2-nose
+	checkdepends = python2-coverage
+	makedepends = python2-setuptools
+	makedepends = python2-six
+	makedepends = git
+	depends = python2-six
+	source = git+https://github.com/matplotlib/cycler.git#tag=v0.10.0
+	sha512sums = SKIP
+
+pkgname = python2-cycler
+
