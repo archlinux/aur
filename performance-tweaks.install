@@ -53,7 +53,6 @@ post_upgrade() {
   systemctl is-active nohang >/dev/null || systemctl enable nohang
   systemctl is-active cpupower >/dev/null || systemctl enable cpupower
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
-  sysctl -p /etc/sysctl.d/99-sysctl.conf
   add_group
   echo ""
   msg "services enabled."
@@ -67,6 +66,12 @@ post_install() {
   msg "Attempting to set performance governor..."
   cpupower frequency-set -g performance
   x86_energy_perf_policy -v performance
+  nvidia-settings -a "[gpu:0]/GpuPowerMizerMode=1" 2> /dev/null
+  echo performance > /sys/class/drm/card0/device/power_dpm_state
+  echo high > /sys/class/drm/card0/device/power_dpm_force_performance_level
+  echo performance > /sys/module/pcie_aspm/parameters/policy
+  echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
+  echo 1 > /sys/devices/system/cpu/cpufreq/boost
   msg "Attempting to enable services..."
   systemctl is-active haveged >/dev/null || systemctl enable haveged
   systemctl is-active systemd-swap >/dev/null || systemctl enable systemd-swap
@@ -77,11 +82,15 @@ post_install() {
   systemctl is-active nohang >/dev/null || systemctl enable nohang
   systemctl is-active cpupower >/dev/null || systemctl enable cpupower
   systemctl is-active ananicy >/dev/null || systemctl enable ananicy
-  sysctl -p /etc/sysctl.d/99-sysctl.conf
   add_group
   echo ""
   msg "services should now be enabled."
   msg "Please add new users to 'input,video,plugdev' group."
+  msg "Reboot your system, so changes will take effect.."
+  echo ""
+}
+
+# vim: ts=2 sw=2 et:
   msg "Reboot your system, so changes will take effect.."
   echo ""
 }
