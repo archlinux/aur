@@ -1,0 +1,289 @@
+From 91380241e7a8b16033978087d18fef157ccc0301 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Thu, 20 Feb 2020 22:32:12 +0100
+Subject: [PATCH] Limit job execution dependant on available memory (-m)
+
+Setting a value in range [0,100] for -m limits starting of new jobs. once
+the limit has been exceeded at most one single job is run at a time.
+
+This aims at C++ make projects that run into memory limitations when
+building expensive (in regards to memory) compilation units, e.g. caused
+by massive template instantiations.
+
+The implementation currently covers support for Apple, Linux and Windows.
+---
+ doc/manual.asciidoc |  9 +++++++
+ src/build.cc        |  4 ++-
+ src/build.h         |  7 ++++-
+ src/ninja.cc        | 14 +++++++++-
+ src/util.cc         | 64 +++++++++++++++++++++++++++++++++++++++++++++
+ src/util.h          |  6 ++++-
+ src/util_test.cc    | 31 ++++++++++++++++++++++
+ 7 files changed, 131 insertions(+), 4 deletions(-)
+
+diff --git a/doc/manual.asciidoc b/doc/manual.asciidoc
+index 9976ce4c..918f5f58 100644
+--- a/doc/manual.asciidoc
++++ b/doc/manual.asciidoc
+@@ -186,6 +186,15 @@ match those of Make; e.g `ninja -C build -j 20` changes into the
+ Ninja defaults to running commands in parallel anyway, so typically
+ you don't need to pass `-j`.)
+ 
++In certain environments it might be helpful to dynamically limit the
++amount of running jobs depending on the currently available resources.
++Thus `ninja` can be started with `-l` and/or `-m` options to prevent
++from starting new jobs in case load average or memory usage exceed
++the defined limit. `-l` takes one single numeric argument defining
++the limit for the typical unix load average. `-m` takes one single
++numeric argument within [0,100] as a percentage of the memory usage
++(reduced by caches) on the host.
++
+ 
+ Environment variables
+ ~~~~~~~~~~~~~~~~~~~~~
+diff --git a/src/build.cc b/src/build.cc
+index cd8df4e0..65d564e7 100644
+--- a/src/build.cc
++++ b/src/build.cc
+@@ -696,7 +696,9 @@ bool RealCommandRunner::CanRunMore() const {
+       subprocs_.running_.size() + subprocs_.finished_.size();
+   return (int)subproc_number < config_.parallelism
+     && ((subprocs_.running_.empty() || config_.max_load_average <= 0.0f)
+-        || GetLoadAverage() < config_.max_load_average);
++        || GetLoadAverage() < config_.max_load_average)
++    && ((subprocs_.running_.empty() || config_.max_memory_usage <= 0.0f)
++       || GetMemoryUsage() < config_.max_memory_usage);
+ }
+ 
+ bool RealCommandRunner::StartCommand(Edge* edge) {
+diff --git a/src/build.h b/src/build.h
+index 97773c49..981921a8 100644
+--- a/src/build.h
++++ b/src/build.h
+@@ -159,7 +159,8 @@ struct CommandRunner {
+ /// Options (e.g. verbosity, parallelism) passed to a build.
+ struct BuildConfig {
+   BuildConfig() : verbosity(NORMAL), dry_run(false), parallelism(1),
+-                  failures_allowed(1), max_load_average(-0.0f) {}
++                  failures_allowed(1), max_load_average(-0.0f),
++                  max_memory_usage(-0.0f) {}
+ 
+   enum Verbosity {
+     NORMAL,
+@@ -173,6 +174,10 @@ struct BuildConfig {
+   /// The maximum load average we must not exceed. A negative value
+   /// means that we do not have any limit.
+   double max_load_average;
++  /// The maximum memory usage we must not exceed. The value is
++  /// defined within [0.0,1.0]. A negative values indicates that we do
++  /// not have any limit.
++  double max_memory_usage;
+   DepfileParserOptions depfile_parser_options;
+ };
+ 
+diff --git a/src/ninja.cc b/src/ninja.cc
+index 14296392..8be04f43 100644
+--- a/src/ninja.cc
++++ b/src/ninja.cc
+@@ -214,6 +214,10 @@ void Usage(const BuildConfig& config) {
+ "  -j N     run N jobs in parallel (0 means infinity) [default=%d on this system]\n"
+ "  -k N     keep going until N jobs fail (0 means infinity) [default=1]\n"
+ "  -l N     do not start new jobs if the load average is greater than N\n"
++"  -m N     do not start new jobs if the memory usage exceeds N percent\n"
++#if !(defined(__APPLE__) || defined(linux) || defined(_WIN32))
++"           (not yet implemented on this platform)\n"
++#endif
+ "  -n       dry run (don't run commands but act like they succeeded)\n"
+ "\n"
+ "  -d MODE  enable debugging (use '-d list' to list modes)\n"
+@@ -1268,7 +1272,7 @@ int ReadFlags(int* argc, char*** argv,
+ 
+   int opt;
+   while (!options->tool &&
+-         (opt = getopt_long(*argc, *argv, "d:f:j:k:l:nt:vw:C:h", kLongOptions,
++         (opt = getopt_long(*argc, *argv, "d:f:j:k:l:m:nt:vw:C:h", kLongOptions,
+                             NULL)) != -1) {
+     switch (opt) {
+       case 'd':
+@@ -1309,6 +1313,14 @@ int ReadFlags(int* argc, char*** argv,
+         config->max_load_average = value;
+         break;
+       }
++      case 'm': {
++        char* end;
++        const int value = strtol(optarg, &end, 10);
++        if (end == optarg || value < 0 || value > 100)
++          Fatal("-m parameter is invalid: allowed range is [0,100]");
++        config->max_memory_usage = value/100.0; // map to [0.0,100.0]
++        break;
++      }
+       case 'n':
+         config->dry_run = true;
+         break;
+diff --git a/src/util.cc b/src/util.cc
+index 4df2bb23..1f70a807 100644
+--- a/src/util.cc
++++ b/src/util.cc
+@@ -19,6 +19,7 @@
+ #include <io.h>
+ #elif defined( _WIN32)
+ #include <windows.h>
++#include <Psapi.h>
+ #include <io.h>
+ #include <share.h>
+ #endif
+@@ -40,6 +41,7 @@
+ 
+ #include <vector>
+ 
++// to determine the load average
+ #if defined(__APPLE__) || defined(__FreeBSD__)
+ #include <sys/sysctl.h>
+ #elif defined(__SVR4) && defined(__sun)
+@@ -51,6 +53,13 @@
+ #include <sys/sysinfo.h>
+ #endif
+ 
++// to determine the memory usage
++#if defined(__APPLE__)
++#include <mach/mach.h>
++#elif defined(linux)
++#include <fstream>
++#endif
++
+ #include "edit_distance.h"
+ #include "metrics.h"
+ 
+@@ -595,6 +604,61 @@ double GetLoadAverage() {
+ }
+ #endif // _WIN32
+ 
++double GetMemoryUsage() {
++#if defined(__APPLE__)
++  // total memory
++  uint64_t physical_memory;
++  {
++    size_t length = sizeof(physical_memory);
++    if (!(sysctlbyname("hw.memsize",
++                       &physical_memory, &length, NULL, 0) == 0)) {
++      return -0.0f;
++    }
++  }
++
++  // pagesize
++  unsigned pagesize = 0;
++  {
++    size_t length = sizeof(pagesize);
++    if (!(sysctlbyname("hw.pagesize",
++                       &pagesize, &length, NULL, 0) == 0)) {
++      return -0.0f;
++    }
++  }
++
++  // current free memory
++  vm_statistics_data_t vm;
++  mach_msg_type_number_t ic = HOST_VM_INFO_COUNT;
++  host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t) &vm, &ic);
++
++  return 1.0 - static_cast<double>(pagesize) * vm.free_count / physical_memory;
++#elif defined(linux)
++  ifstream meminfo("/proc/meminfo", ifstream::in);
++  string token;
++  uint64_t free(0), total(0);
++  while (meminfo >> token) {
++    if (token == "MemAvailable:") {
++      meminfo >> free;
++    } else if (token == "MemTotal:") {
++      meminfo >> total;
++    } else {
++      continue;
++    }
++    if (free > 0 && total > 0) {
++      return (double) (total - free) / total;
++    }
++  }
++  return -0.0f; // this is the fallback in case the API has changed
++#elif (_WIN32)
++  PERFORMANCE_INFORMATION perf;
++  GetPerformanceInfo(&perf, sizeof(PERFORMANCE_INFORMATION));
++  return 1.0 - static_cast<double>(perf.PhysicalAvailable) /
++               static_cast<double>(perf.PhysicalTotal);
++#else // any unsupported platform
++  return -0.0f;
++#endif
++}
++
+ string ElideMiddle(const string& str, size_t width) {
+   switch (width) {
+       case 0: return "";
+diff --git a/src/util.h b/src/util.h
+index 6a4a7a9f..e6cad933 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -94,9 +94,13 @@ string StripAnsiEscapeCodes(const string& in);
+ int GetProcessorCount();
+ 
+ /// @return the load average of the machine. A negative value is returned
+-/// on error.
++/// on error or if the feature is not supported on this platform.
+ double GetLoadAverage();
+ 
++/// @return the memory usage of the machine. A negative value is returned
++/// on error or if the feature is not supported on this platform.
++double GetMemoryUsage();
++
+ /// Elide the given string @a str with '...' in the middle if the length
+ /// exceeds @a width.
+ string ElideMiddle(const string& str, size_t width);
+diff --git a/src/util_test.cc b/src/util_test.cc
+index b43788d3..13d2821f 100644
+--- a/src/util_test.cc
++++ b/src/util_test.cc
+@@ -16,6 +16,13 @@
+ 
+ #include "test.h"
+ 
++#ifdef _WIN32
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
++#else
++#include <unistd.h>
++#endif
++
+ namespace {
+ 
+ bool CanonicalizePath(string* path, string* err) {
+@@ -416,6 +423,30 @@ TEST(StripAnsiEscapeCodes, StripColors) {
+             stripped);
+ }
+ 
++TEST(SystemInformation, ProcessorCount) {
++#ifdef _WIN32
++  SYSTEM_INFO info;
++  GetSystemInfo(&info);
++  const int expected = info.dwNumberOfProcessors;
++#else
++  const int expected = sysconf(_SC_NPROCESSORS_ONLN);
++#endif
++  EXPECT_EQ(expected, GetProcessorCount());
++}
++
++TEST(SystemInformation, LoadAverage) {
++#if ! (defined(_WIN32) || defined(__CYGWIN__))
++  EXPECT_LT(0.0f, GetLoadAverage());
++#endif
++}
++
++TEST(SystemInformation, MemoryUsage) {
++#if defined(__APPLE__) || defined(linux) || defined(_WIN32)
++  EXPECT_LT(0.0f, GetMemoryUsage());
++  EXPECT_GT(1.0f, GetMemoryUsage());
++#endif
++}
++
+ TEST(ElideMiddle, NothingToElide) {
+   string input = "Nothing to elide in this short string.";
+   EXPECT_EQ(input, ElideMiddle(input, 80));
+-- 
+2.25.1
+
