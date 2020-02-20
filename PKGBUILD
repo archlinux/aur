@@ -1,5 +1,5 @@
 #Maintainer: weearc <q19981121@163.com>
-pkgname=qiniucloud
+pkgname=qiniuclient
 _pkgname=qiniuClient
 pkgver=v0.3.0
 _pkgver=0.3.0
