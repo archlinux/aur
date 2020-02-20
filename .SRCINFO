@@ -9,9 +9,7 @@ pkgbase = wallchanger
 	depends = json-c>=0.12.1
 	depends = gtk3>=3.22.0
 	source = https://download.savannah.nongnu.org/releases/wallchanger/wallchanger-1.3.10.tar.gz
-	source = https://download.savannah.nongnu.org/releases/wallchanger/wallchanger-1.3.10.tar.gz.sig
 	md5sums = 436fdcc6d9f443df3d0e6f298d2e8f88
-	md5sums = SKIP
 
 pkgname = wallchanger
 
