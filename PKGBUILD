@@ -22,7 +22,7 @@ sha256sums=(
 
 package() {
     # Install required source files.
-    cd "${srcdir}/Omada_Controller_v3.2.6_linux_x64"
+    cd "${srcdir}/Omada_Controller_v${pkgver}_linux_x64"
     local BASEDIR="${pkgdir}/opt/omada-controller"
     install -dm 755 "${BASEDIR}"
 
