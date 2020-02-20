@@ -2,7 +2,7 @@
 
 pkgname=kaf
 pkgver=0.1.28
-pkgrel=1
+pkgrel=2
 pkgdesc="Kafka CLI inspired by kubectl & docker"
 arch=('x86_64')
 license=('Apache')
@@ -22,5 +22,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -D -m755 kaf "${pkgdir}/usr/bin/${pkgname}"
+
+  # Generate bash completion script
+  mkdir -p "${pkgdir}/etc/bash_completion.d"
+  ./kaf completion bash > "${pkgdir}/etc/bash_completion.d/kaf"
 }
 
