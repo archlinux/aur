@@ -2,7 +2,7 @@
 # Previous Maintainer: Arne Hoch <arne@derhoch.de>
 
 pkgname=sqlcl
-pkgver=19.2.1.206.1649
+pkgver=19.4.0.354.0937
 pkgrel=1
 pkgdesc="SQL Developer command line interface for Oracle"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("LICENSE"
         "manual://${pkgname}-${pkgver}.zip"
         "sqlcl.sh")
 sha256sums=('f904a30b07ddf7806a33620f93b94c3d315154d26a371ece48695bb3555064a2'
-            '23b40f9ffb3c0c33c8463a7e875a30fd6582fc85849144b76dc3e24f24b7856e'
+            '6342d96721b6fa3093e94e154f780b2ed44ac358dc4edb9b1b8ba850b9f238c7'
             '4a0469c0adc964d91c611a643075087235dc2de8332e87297abe9865d19c2a14')
 
 msg "Warning: This software cannot be downloaded automatically."
