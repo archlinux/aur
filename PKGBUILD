@@ -6,16 +6,23 @@
 #_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # suppress 3.x to prevent Travis build exceed time limit.
 
+#some extra, not officially supported stuff goes here:
+_EXTRAOPTS+=( -DWITH_ALEMBIC_HDF5=ON
+              -DWITH_CYCLES_EMBREE=ON
+              -DWITH_USD=ON
+              -DUSD_ROOT=/usr
+            )
+
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.83.r93502.cef4d344f94
+pkgver=2.83.r93560.e2722aec6bc
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'openimagedenoise'
-         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
+         'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng' 'embree' 'usd=19.11')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 ((DISABLE_NINJA)) ||  makedepends+=('ninja')
 ((DISABLE_CUDA)) && optdepends=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
@@ -35,14 +42,16 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         blender-2.8.desktop
         SelectCudaComputeArch.patch
+        usd_python.patch #add missing python headers when building against python enabled usd.
         )
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'cd108dca1c77607c6a7cc45aa284ea97'
-         '4441d9a6db38b85b7dc5c3c9e6872951')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            '9d7bd988939f4e8d06adc3166bacd76cc87a488b40f042f033863af35eadfc43'
+            '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
+            '893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -56,6 +65,7 @@ prepare() {
   if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
     git apply -v ${srcdir}/SelectCudaComputeArch.patch
   fi
+  git apply -v ${srcdir}/usd_python.patch
 }
 
 build() {
