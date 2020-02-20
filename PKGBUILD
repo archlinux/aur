@@ -1,14 +1,14 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r31.r2.g6bf9d9e
-pkgrel=2
+pkgver=r36.r3.gcf98ca4
+pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
 url="http://commanderx16.com/"
 license=('BSD')
 groups=('commander-x16')
 depends=('sdl2')
-makedepends=('git' 'pandoc')
+makedepends=('git' 'pandoc' 'gendesk')
 optdepends=('x16-rom: ROMs for the emulator')
 provides=('x16-emulator')
 conflicts=('x16-emulator')
@@ -29,6 +29,7 @@ pkgver() {
 prepare() {
 	cd "${pkgname%-git}"
 	patch -uN main.c ../modify-base-path.patch
+	gendesk -n --pkgname "${pkgname%-git}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgname%-git}" --exec "x16emu" --categories "Game;Emulator"
 }
 
 build() {
@@ -43,4 +44,6 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-git}/github-pandoc.css"
 	install -Dm644 README.html "$pkgdir/usr/share/doc/${pkgname%-git}/README.html"
+	install -Dm644 .gh/logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+	install -Dm644 "${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }

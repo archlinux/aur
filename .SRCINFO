@@ -1,13 +1,14 @@
 pkgbase = x16-emulator-git
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16
-	pkgver = r31.r2.g6bf9d9e
-	pkgrel = 2
+	pkgver = r36.r3.gcf98ca4
+	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = x86_64
 	groups = commander-x16
 	license = BSD
 	makedepends = git
 	makedepends = pandoc
+	makedepends = gendesk
 	depends = sdl2
 	optdepends = x16-rom: ROMs for the emulator
 	provides = x16-emulator
