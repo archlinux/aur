@@ -2,12 +2,12 @@
 _pkgname='shd'
 pkgname="$_pkgname-git"
 pkgver='r26.166aa73'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Console tool to display drive list with commonly checked smart info - git version'
 arch=('any')
 url="https://github.com/alttch/$_pkgname"
 license=('MIT')
-depends=('python' 'python-neotermcolor' 'python-pysmart' 'python-rapidtables' 'smartmontools')
+depends=('python' 'python-neotermcolor' 'python-pysmart' 'python-rapidtables')
 makedepends=('git' 'python-setuptools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
