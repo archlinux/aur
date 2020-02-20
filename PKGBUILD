@@ -1,4 +1,4 @@
-# Maintainer: Romain Porte <microjoe@microjoe.org>
+# Maintainer: pescepalla < base64 -d <<< cGVzY2VwYWxsYUBwb3N0ZW8ubWUK >
 
 pkgname=cmaptools
 pkgver=v6.03.01

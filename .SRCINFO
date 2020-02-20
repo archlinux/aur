@@ -17,7 +17,7 @@ pkgbase = cmaptools
 	md5sums = a6aa32dfa1a7a5bc5e6dc585e197e002
 	md5sums = c37998dc8a4703de169283d49a49c40d
 	md5sums = 23f9a626c04321284930d6a79b2cf5b1
-	md5sums = acda9def3e84dd87066530ba187bcd1d
+	md5sums = 772e8c9d9be5e9728f32b1a8adcc10ba
 
 pkgname = cmaptools
 
