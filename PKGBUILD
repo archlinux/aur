@@ -1,4 +1,5 @@
-# Maintainer: Adrian Freund <freundadrian@gmail.com>
+# Maintainer: timescam <rex.ky.ng at gmail dot com>
+
 pkgname=playerctl-git
 _pkgname=playerctl
 pkgver=2.0.1.r4.g20b3b82
