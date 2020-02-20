@@ -1,7 +1,7 @@
 pkgbase = uni
 	pkgdesc = Query the Unicode database from the commandline, with good support for emojis
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arp242/uni
 	arch = x86_64
 	license = MIT

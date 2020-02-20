@@ -1,6 +1,6 @@
 pkgname=uni
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 arch=('x86_64')
 repo="github.com/arp242/$pkgname"
@@ -11,20 +11,20 @@ source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('04edf69aca7b086328fa1a7bd8e06617ba074eaec041eda6bdad7a1ba0a00dee')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   go build \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
-    -o $pkgname .
+    -o "$pkgname" .
 }
 
 check() {
-  cd $pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   go test ./...
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/LICENSE
+  cd "$pkgname-$pkgver"
+  install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
