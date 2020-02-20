@@ -4,7 +4,7 @@ _pkgname=basilisk
 pkgname=${_pkgname}-bin
 epoch=1
 _buildid=20190912144248
-pkgver=52.9.2020.01.12
+pkgver=52.9.2020.02.18
 pkgrel=1
 pkgdesc="Basilisk Browser from the makers of Pale Moon"
 url="http://www.basilisk-browser.org"
@@ -17,8 +17,10 @@ optdepends=('hunspell: spell checker and morphological analyzer'
 #source=(http://archive.palemoon.org/basilisk/basilisk-${_buildid}.linux-x86_64.{tar.bz2,json}
 source=('http://us.basilisk-browser.org/release/basilisk-latest.linux64.tar.xz'
         'basilisk.desktop')
-sha256sums=('f799ffffba5c3226f8bdd351f3a68bf924b1e3bd04ac29aec45c341b2492d431'
+sha256sums=('e3ae824148419b54c67ea42eb75a1939d6bad91d4f4f364305d9423122e43efc'
             'c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 
 pkgver() {
 #	grep 'moz_app_version' "${srcdir}"/basilisk-${_buildid}.linux-x86_64.json | sed -e 's/.*:[\ \t]*"//;s/"[,]*[\ \t]*$//'
