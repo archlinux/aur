@@ -1,0 +1,13 @@
+pkgbase = roundcubemail-html5_notifier
+	pkgdesc = Displays Desktop Notifications like the ones you might know from Google Mail
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = https://github.com/stremlau/html5_notifier
+	arch = any
+	license = ISC
+	depends = roundcubemail
+	source = https://github.com/stremlau/html5_notifier/archive/v0.6.4.tar.gz
+	sha256sums = 52c335329a7e11c3f67c8224dcb8a3526ff97481ad47a64e846af1fe9c9bddf0
+
+pkgname = roundcubemail-html5_notifier
+
