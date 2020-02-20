@@ -2,7 +2,7 @@
 
 pkgname=python-spinners
 _name=${pkgname#python-}
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
 pkgdesc="Spinners for terminal, python wrapper for amazing node library cli-spinners"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('f396fea1ee00c0622988d7d2bf2895d26dd6f70850ca2ce94eaca52ca4873560')
+sha256sums=('1eb6aeb4781d72ab42ed8a01dcf20f3002bf50740d7154d12fb8c9769bf9e27f')
 
 build() {
 	cd "$_name-$pkgver"
