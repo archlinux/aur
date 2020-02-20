@@ -3,7 +3,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=4.19.104
+pkgver=${_basever}.105
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -27,7 +27,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            'd29b55ce53f9cd6f81ac3e0525cde6fbe2a6ba7085f08df188e9f756d9a3a4fc'
+            '1e394bd7e51773b45a4d745d232aa9bfc172d38fd8957cfbcea8477ec7b22ac5'
             '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
@@ -39,7 +39,7 @@ prepare() {
   cd $_srcname
 
   # add upstream patch
-  echo "Updating to ${pkgver}..."
+  echo "Updating base kernel to ${pkgver}..."
   patch -Nup1 -i "${srcdir}/patch-${pkgver}"
 
   echo "Setting version..."
