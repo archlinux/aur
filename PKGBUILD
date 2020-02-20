@@ -1,4 +1,4 @@
-# Maintainer: Claudio Cocciarelli <claudiococciarelli at gmail dot com>
+# Maintainer: Simon Gardling <titaniumtown@gmail.com>
 
 pkgname=mutter-dev
 _pkgname=mutter
