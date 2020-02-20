@@ -2,30 +2,30 @@
 
 pkgbase=wraith-master
 pkgname=("wraith-master-cli" "wraith-master-gtk")
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A Wraith Prism RGB control application built with Kotlin/Native"
 arch=("x86_64")
 url="https://gitlab.com/serebit/${pkgbase}"
 license=("Apache-2.0")
-depends=("libusb" "gcc" "glibc")
-makedepends=("java-environment=8" "ncurses5-compat-libs")
+depends=()
+makedepends=("gradle" "ncurses5-compat-libs")
 source=("${pkgbase}-${pkgver}::git+https://gitlab.com/serebit/${pkgbase}#tag=${pkgver}")
 sha256sums=("SKIP")
 
 setup() {
 	cd ${pkgbase}-${pkgver}
-	GRADLE_USER_HOME=$PWD/.gradle ./gradlew --refresh-dependencies --no-daemon
+	GRADLE_USER_HOME=$PWD/.gradle gradle --refresh-dependencies --no-daemon
 }
 
 package_wraith-master-cli() {
 	cd ${pkgbase}-${pkgver}
-	GRADLE_USER_HOME=$PWD/.gradle KONAN_DATA_DIR=$PWD/.konan ./gradlew :cli:install -Pinstalldir=${pkgdir}/usr -Pudevdir=${pkgdir}/usr/lib/udev --no-daemon
+	GRADLE_USER_HOME=$PWD/.gradle KONAN_DATA_DIR=$PWD/.konan gradle :cli:install -Pinstalldir=${pkgdir}/usr -Pudevdir=${pkgdir}/usr/lib/udev --no-daemon
 }
 
 package_wraith-master-gtk() {
-	depends=("gtk3" "glib2")
+	depends=("gtk3")
 
     cd ${pkgbase}-${pkgver}
-	GRADLE_USER_HOME=$PWD/.gradle KONAN_DATA_DIR=$PWD/.konan ./gradlew :gtk:install -Pinstalldir=${pkgdir}/usr -Pudevdir=${pkgdir}/usr/lib/udev --no-daemon
+	GRADLE_USER_HOME=$PWD/.gradle KONAN_DATA_DIR=$PWD/.konan gradle :gtk:install -Pinstalldir=${pkgdir}/usr -Pudevdir=${pkgdir}/usr/lib/udev --no-daemon
 }
