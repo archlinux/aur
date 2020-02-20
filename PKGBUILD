@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "${pkgname}-${pkgver}"
-	cmake '-D CMAKE_INSTALL_PREFIX=/usr' .
+	cmake -D CMAKE_INSTALL_PREFIX=/usr .
 	make
 }
 
