@@ -25,6 +25,7 @@ depends=('python'
          'python-pyparsing'
          'python-requests'
          'python-slugify'
+         'python-stevedore'
          'python-tqdm'
         )
 optdepends=('papis-rofi: integration with rofi')

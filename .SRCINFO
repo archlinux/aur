@@ -24,6 +24,7 @@ pkgbase = papis
 	depends = python-pyparsing
 	depends = python-requests
 	depends = python-slugify
+	depends = python-stevedore
 	depends = python-tqdm
 	optdepends = papis-rofi: integration with rofi
 	source = https://files.pythonhosted.org/packages/source/p/papis/papis-0.9.tar.gz
