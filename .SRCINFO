@@ -9,6 +9,7 @@ pkgbase = nomachine
 	arch = armv6h
 	arch = armv7h
 	arch = armv8h
+	arch = aarch64
 	groups = network
 	license = custom:"NoMachine EULA"
 	depends = bash
@@ -31,5 +32,7 @@ pkgbase = nomachine
 	sha512sums_armv7h = ed4979fb9111d1ba448beca3d0c407378ef6df50b7dac924f87bb2b9ffd26c8cbe75125b65e53fc21b85cf0f70e89857e20f74ad20657142d2adea77a2b0266a
 	source_armv8h = http://download.nomachine.com/download/6.9/Raspberry/nomachine_6.9.2_1_aarch64.tar.gz
 	sha512sums_armv8h = c36ab5ea5f51809b303d3d9bf440ada961d029a2188a7806649c2d326859620b863c23d5691d4cb1375f458b7ef5bf859c23537766870c557a2f397ccaf43e0d
+	source_aarch64 = http://download.nomachine.com/download/6.9/Raspberry/nomachine_6.9.2_1_aarch64.tar.gz
+	sha512sums_aarch64 = c36ab5ea5f51809b303d3d9bf440ada961d029a2188a7806649c2d326859620b863c23d5691d4cb1375f458b7ef5bf859c23537766870c557a2f397ccaf43e0d
 pkgname = nomachine
 
