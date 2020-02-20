@@ -1,7 +1,8 @@
 # Maintainer: Dustin Falgout <dustin@falgout.us>
 
 pkgname=wavebox
-pkgver=10.0.82.beta3
+_pkgver=10.0.82
+pkgver=10.0.82_2
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=(x86_64)
@@ -15,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/beta/linux/
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('74a90e553afb09b66082ff3185d85f4d'
+md5sums=('4f1e2b985506805b4747eb9395adc30c'
          'cf3416572bcd3e3528958f36306e6e7c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
