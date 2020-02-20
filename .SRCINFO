@@ -1,0 +1,41 @@
+pkgbase = linux-sfh
+	pkgdesc = Linux with experimental AMD Sensor Fusion HUB (SFH) drivers
+	pkgver = 5.5.4.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.4-arch1
+	source = amd-sfh-v3.patch::https://patchwork.kernel.org/series/240125/mbox/
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = 37c9f1d81d504ff78a0759723020341aa87367bb7cdc98550c67923b10f7823f
+	sha256sums = 64013428da9a5fafff29f29250789d6fac17faaa3137ef924ed6c7583cad6ccd
+
+pkgname = linux-sfh
+	pkgdesc = The Linux with experimental AMD Sensor Fusion HUB (SFH) drivers kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-sfh-headers
+	pkgdesc = Headers and scripts for building modules for the Linux with experimental AMD Sensor Fusion HUB (SFH) drivers kernel
+
+pkgname = linux-sfh-docs
+	pkgdesc = Documentation for the Linux with experimental AMD Sensor Fusion HUB (SFH) drivers kernel
+
