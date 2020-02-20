@@ -1,6 +1,6 @@
 # Maintainer: Arsen Musayelyan <moussaelianarsen@gmail.com>
 pkgname=pak-git
-pkgver=r3.f0ec020
+pkgver=r5.c1917b0
 pkgrel=1
 pkgdesc="Changes pacman syntax to be more like APT"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
