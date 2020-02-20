@@ -32,6 +32,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
     -DPXR_BUILD_TESTS:BOOL=OFF
 #   -DPXR_ENABLE_PYTHON_SUPPORT:BOOL=OFF
+    -DPXR_BUILD_MONOLITHIC:BOOL=ON          # Required by blender-2.83
     -DPXR_PYTHON_SHEBANG:STRING=python2
                 )
   cmake -S USD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
