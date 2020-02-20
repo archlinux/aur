@@ -1,4 +1,4 @@
-# Maintainer: Claudio Cocciarelli <claudiococciarelli at gmail dot com>
+# Maintainer: Simon Gardling <titaniumtown@gmail.com>
 
 pkgname=gnome-shell-dev
 _pkgname=gnome-shell
