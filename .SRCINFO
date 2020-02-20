@@ -7,9 +7,11 @@ pkgbase = esbuild-git
 	arch = i686
 	license = MIT
 	makedepends = go
+	makedepends = git
 	provides = esbuild
 	conflicts = esbuild
 	source = esbuild-git::git+https://github.com/evanw/esbuild.git
 	sha256sums = SKIP
 
 pkgname = esbuild-git
+
