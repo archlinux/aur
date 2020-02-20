@@ -1,0 +1,13 @@
+pkgbase = noto-fonts-emoji-flags
+	pkgdesc = Google Noto emoji fonts with more regional flags
+	pkgver = 20200120
+	pkgrel = 1
+	url = https://www.google.com/get/noto/
+	arch = any
+	license = custom:OFL
+	provides = emoji-font
+	source = noto-fonts-emoji-flags-20200120.zip::https://github.com/juju2143/noto-emoji/archive/20200120.zip
+	sha256sums = 0163b6b7f5ff219ced8f483b4c827284c2000e373565ca6ef8309b2bf7f9727f
+
+pkgname = noto-fonts-emoji-flags
+
