@@ -51,7 +51,7 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  # Removed malformed SFH documentation.
+  # Remove malformed SFH documentation.
   rm -f Documentation/hid/amd-sfh-hid.rst
 
   echo "Setting config..."
