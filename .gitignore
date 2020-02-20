@@ -1,4 +1,4 @@
-/smarthhc
-/pkg
-/src
-*.tar*
+pkg
+src
+*.tar.*
+*.patch
