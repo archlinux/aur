@@ -1,7 +1,7 @@
 pkgbase = rco
 	pkgdesc = A configuration manager written in rust.
 	pkgver = 0.1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tteeoo/rco
 	arch = any
 	license = MIT
