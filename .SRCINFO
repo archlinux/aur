@@ -1,12 +1,12 @@
 pkgbase = f31-backgrounds
 	pkgdesc = Fedora 31 backgrounds.
 	pkgver = 31.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fedoraproject.org/wiki/F31_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f31-backgrounds-31.0.4-1.fc32.src.rpm
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f31-backgrounds-31.0.4-2.fc32.src.rpm
 	sha256sums = SKIP
 
 pkgname = f31-backgrounds
