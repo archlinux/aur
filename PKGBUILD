@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=yuna
-pkgver=1.4.11
+pkgver=1.4.12
 pkgrel=1
 pkgdesc='Anime player integating AniList, Crunchyroll, and Hidive'
 arch=(x86_64)
@@ -13,7 +13,7 @@ options=(!strip)
 source=($pkgname-$pkgver.tar.gz::https://github.com/BeeeQueue/yuna/archive/v$pkgver.tar.gz
         electron-builder.patch
         yuna.desktop)
-sha512sums=('25ca2b799c4e12b345ce23fecd36c8d91003d6a67c1ad4ac70327f283e78c28d66d460f8357b0c1beeb9576ec904df4b3f4f781a0eb3499019150a47d3849d84'
+sha512sums=('879cd422906dc40edb842565f447e8b79cb9001f5c57902bf0793acdf1a0c3d8bac247f10faac4be57b003afb4f92c17ba9a80745e1b97ca3b739f4728db170f'
             '893065948029906084e5a7f94982a666fc553b294d2a423dc1642d6c67b1755e1f6ac0304adf726ff26c6b1ce74fbb8fc76a8bd129527abb3d7529ca59ebf643'
             '1853e9eac6b6a3b0734711d0803135902f118168603c795543de3296928293773d2be7a2aef05b045b737305d6cb50273e01843544de53d9caf06d0b4dc3e982')
 
