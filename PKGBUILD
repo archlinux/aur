@@ -17,7 +17,7 @@ provides=("usd=${pkgver}")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch")
 sha256sums=('SKIP'
-            '7aac699cf4bca264d1cd15ed4b02c327783ac83b5cbea9bf4606e2877fa5081c')
+            '92ff2922bf2a615e3279f1fb834dd1f0a356f843ce511efbeaf9797578409d49')
 
 prepare() {
   git -C USD apply -v ${srcdir}/boost_python2.patch
@@ -29,11 +29,18 @@ prepare() {
 
 build() {
   _CMAKE_FLAGS+=(
-    -DPXR_BUILD_TESTS=OFF
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr
+    -DPXR_BUILD_TESTS:BOOL=OFF
+#   -DPXR_ENABLE_PYTHON_SUPPORT:BOOL=OFF
+    -DPXR_PYTHON_SHEBANG:STRING=python2
                 )
   cmake -S USD -B build -G Ninja "${_CMAKE_FLAGS[@]}"
   ninja -C build $([ -v MAKEFLAGS ] || echo -j1)
 }
+
+#check() {
+#  ninja -C build test
+#}
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install

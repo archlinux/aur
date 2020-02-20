@@ -1,8 +1,13 @@
 diff --git a/cmake/defaults/Packages.cmake b/cmake/defaults/Packages.cmake
-index 7968add25..55f336da8 100644
+index 7968add25..86619cb2e 100644
 --- a/cmake/defaults/Packages.cmake
 +++ b/cmake/defaults/Packages.cmake
-@@ -46,7 +46,7 @@ if(PXR_ENABLE_PYTHON_SUPPORT)
+@@ -43,12 +43,16 @@ if(PXR_ENABLE_PYTHON_SUPPORT)
+     find_package(PythonLibs 2.7 REQUIRED)
+ 
+     # --Boost
++    # replace 'python' with 'python27' as boost>=1.67 require python version suffix
++    # https://cmake.org/cmake/help/v3.15/module/FindBoost.html
      find_package(Boost
          COMPONENTS
              program_options
@@ -10,4 +15,8 @@ index 7968add25..55f336da8 100644
 +            python27
          REQUIRED
      )
++    # fix rest of code expecting 'Boost_PYTHON_LIBRAR'
++    set(Boost_PYTHON_LIBRARY "${Boost_PYTHON27_LIBRARY}")
  
+     # --Jinja2
+     find_package(Jinja2)

@@ -23,7 +23,7 @@ pkgbase = usd
 	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v20.02
 	source = boost_python2.patch
 	sha256sums = SKIP
-	sha256sums = 7aac699cf4bca264d1cd15ed4b02c327783ac83b5cbea9bf4606e2877fa5081c
+	sha256sums = 92ff2922bf2a615e3279f1fb834dd1f0a356f843ce511efbeaf9797578409d49
 
 pkgname = usd
 
