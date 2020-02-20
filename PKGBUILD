@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=gedit-plugin-markdown_preview-git
 pkgver=r96.a931204
 pkgrel=1
