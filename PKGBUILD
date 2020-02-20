@@ -6,12 +6,12 @@ _majorver=${_jdkver}.0.2
 _buildvershort=8
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse (former IBM) OpenJ9 with latest GA release of openjdk (jdk${_jdkver})"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
 license=('GPL2')
-depends=('java-environment-common' 'ca-certificates-utils' 'nss')
+depends=('ca-certificates-utils' 'java-environment-common' 'java-runtime-common' 'nss')
 provides=(
   "java-environment=${_jdkver}"
   "java-environment-openjdk=${_jdkver}"
