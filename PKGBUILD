@@ -8,7 +8,7 @@ _npmid="@$_npmscope/$_npmname"
 
 pkgname="$_npmscope-$_npmname"
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for Angular"
 arch=('any')
 url="https://github.com/$_npmscope/$pkgname"
@@ -31,7 +31,10 @@ package() {
     chown -R root:root $pkgdir
 
     # Package contains reference to $srcdir/$pkgdir
-    find "${pkgdir}" -type f -name package.json -exec sed -i -e "/${pkgdir//\//\\/}/d" -e "/${srcdir//\//\\/}/d" {} \;
+    find "${pkgdir}" -type f -name package.json -exec sed -i -e '/_where/d' {} \;
+    # print first line (the '{' symbol) and lines from the "author" key to the end
+    # before the "author" key there are underscored keys (npm internal keys that we don't need)
+    sed -i -n -e '1p;/  "author": {$/,$p' "$pkgdir"/usr/lib/node_modules/@angular/cli/package.json
     sed -i "s|$pkgdir||" "$pkgdir"/usr/lib/node_modules/@angular/cli/node_modules/sshpk/package.json
 
     install -Dm644 "$pkgdir/usr/lib/node_modules/$_npmid/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
