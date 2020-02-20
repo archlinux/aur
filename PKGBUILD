@@ -3,27 +3,19 @@
 
 pkgbase=bcc
 pkgname=('bcc' 'bcc-tools' 'python-bcc')
-pkgver=0.12.0
-_libbpf_commit='ab067ed'
-pkgrel=2
+pkgver=0.13.0
+pkgrel=1
 pkgdesc='BPF Compiler Collection'
 arch=('x86_64')
 url='https://github.com/iovisor/bcc'
 license=('Apache')
 makedepends=('cmake' 'clang>=3.7.0' 'llvm>=3.7.0' 'flex' 'bison' 'python')
 checkdepends=('netperf' 'iperf')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgname}/archive/v${pkgver}.tar.gz"
-	"libbpf-${_libbpf_commit}.tar.gz"::"https://github.com/libbpf/libbpf/archive/${_libbpf_commit}.tar.gz")
-sha512sums=('db3ea929b1296f4d9d82d2a11e89e11a1c31512d3f7f935475a7613e0128a5cf9441f3138969535ef41de0c0f677c7446f62f1c64575d41a9896e5339f3f112b'
-            '6ea224609d8e11c3441c9ec4ffe71966650009453c9115206d12c2a6e1ebccffcbaee5d9a6ae34d44b6cd86afd1e8b32797310c0b97da42f85e049a5cae3e653')
-
-prepare() {
-	# Move git-submodule into right place without invoking git
-	mv "${srcdir}/libbpf-${_libbpf_commit}"*/* "${srcdir}/${pkgbase}-${pkgver}/src/cc/libbpf"
-}
+source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/iovisor/${pkgbase}/releases/download/v${pkgver}/${pkgbase}-src-with-submodule.tar.gz")
+sha512sums=('9f95f70bbebb3b5e175b2c513a51c024fdbe67283c02b81b56cdef74b1720b82df40a4555c1e1fdcfa56c64cd418abfa11b371e4111ffb3997c848f014690471')
 
 build() {
-	cd "${srcdir}/${pkgbase}-${pkgver}"
+	cd "${srcdir}/${pkgbase}"
 	rm -rf build
 	mkdir build
 	cd build
@@ -44,7 +36,7 @@ package_bcc() {
 		'python-bcc: Python 3 bindings for BCC')
 	provides=('bcc' 'libbcc')
 
-	cd "${srcdir}/${pkgbase}-${pkgver}/build"
+	cd "${srcdir}/${pkgbase}/build"
 
 	# Install the kitchen sink
 	make DESTDIR="${pkgdir}" install
@@ -63,10 +55,10 @@ package_bcc-tools() {
 	optdepends=('python-bcc: Python 3 bindings for BCC'
 		'luajit: Lua bindings for BCC')
 
-	cd "${srcdir}/${pkgbase}-${pkgver}/build/tools"
+	cd "${srcdir}/${pkgbase}/build/tools"
 	make DESTDIR="${pkgdir}" install
 
-	cd "${srcdir}/${pkgbase}-${pkgver}/build/man"
+	cd "${srcdir}/${pkgbase}/build/man"
 	make DESTDIR="${pkgdir}" install
 }
 
@@ -77,7 +69,7 @@ package_python-bcc() {
 	optdepends=('python-netaddr: Network address representation and manipulation'
 		'python-pyroute2: Netlink and Linux network configuration')
 
-	cd "${srcdir}/${pkgbase}-${pkgver}/build"
+	cd "${srcdir}/${pkgbase}/build"
 
 	# Force a quick python3 binding build (C library is already buidl)
 	cmake -DREVISION="${pkgver}" \
@@ -88,5 +80,5 @@ package_python-bcc() {
 	make
 
 	# Install just those bindings
-	make -C "${srcdir}/${pkgbase}-${pkgver}/build/src/python" DESTDIR="${pkgdir}" install
+	make -C "${srcdir}/${pkgbase}/build/src/python" DESTDIR="${pkgdir}" install
 }

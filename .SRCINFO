@@ -1,7 +1,7 @@
 pkgbase = bcc
 	pkgdesc = BPF Compiler Collection
-	pkgver = 0.12.0
-	pkgrel = 2
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
@@ -13,10 +13,8 @@ pkgbase = bcc
 	makedepends = flex
 	makedepends = bison
 	makedepends = python
-	source = bcc-0.12.0.tar.gz::https://github.com/iovisor/bcc/archive/v0.12.0.tar.gz
-	source = libbpf-ab067ed.tar.gz::https://github.com/libbpf/libbpf/archive/ab067ed.tar.gz
-	sha512sums = db3ea929b1296f4d9d82d2a11e89e11a1c31512d3f7f935475a7613e0128a5cf9441f3138969535ef41de0c0f677c7446f62f1c64575d41a9896e5339f3f112b
-	sha512sums = 6ea224609d8e11c3441c9ec4ffe71966650009453c9115206d12c2a6e1ebccffcbaee5d9a6ae34d44b6cd86afd1e8b32797310c0b97da42f85e049a5cae3e653
+	source = bcc-0.13.0.tar.gz::https://github.com/iovisor/bcc/releases/download/v0.13.0/bcc-src-with-submodule.tar.gz
+	sha512sums = 9f95f70bbebb3b5e175b2c513a51c024fdbe67283c02b81b56cdef74b1720b82df40a4555c1e1fdcfa56c64cd418abfa11b371e4111ffb3997c848f014690471
 
 pkgname = bcc
 	pkgdesc = BPF Compiler Collection - C library and examples
