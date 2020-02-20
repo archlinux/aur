@@ -1,7 +1,7 @@
 pkgbase = fast-p
 	pkgdesc = Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)
 	pkgver = 0.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bellecp/fast-p
 	arch = x86_64
 	license = MIT
