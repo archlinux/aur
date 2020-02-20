@@ -7,7 +7,7 @@
 
 pkgname=bluejeans
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueJeans desktop app for video calls"
 arch=('x86_64')
 url="https://www.bluejeans.com"
@@ -69,7 +69,7 @@ depends=('alsa-lib'
          'xz'
          'zlib')
 install=bluejeans.install
-source=(https://swdl.bluejeans.com/desktop-app/linux/${pkgver}/BlueJeans.rpm)
+source=(BlueJeans-${pkgver}.rpm::https://swdl.bluejeans.com/desktop-app/linux/${pkgver}/BlueJeans.rpm)
 sha256sums=('ad9dcc9d4026318128eac686cad635854cbba94b6a13d4d12d67bea2e80510fe')
 
 package() {
@@ -81,3 +81,4 @@ package() {
   mv "opt" "${pkgdir}/"
   mv "usr/share" "${pkgdir}/usr/"
 }
+sha256sums=('ad9dcc9d4026318128eac686cad635854cbba94b6a13d4d12d67bea2e80510fe')
