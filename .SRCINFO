@@ -1,7 +1,7 @@
 pkgbase = angular-cli
 	pkgdesc = CLI tool for Angular
 	pkgver = 9.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/angular/angular-cli
 	arch = any
 	license = MIT
