@@ -1,0 +1,17 @@
+pkgbase = shd
+	pkgdesc = Console tool to display drive list with commonly checked smart info
+	pkgver = 0.0.12
+	pkgrel = 1
+	url = https://github.com/alttch/shd
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-neotermcolor
+	depends = python-pysmart
+	depends = python-rapidtables
+	depends = smartmontools
+	source = shd-0.0.12-1.tar.gz::https://github.com/alttch/shd/archive/166aa7346317a80e7cca6a35abb77d692a0f80d9.tar.gz
+	sha256sums = 4321bb29f17c2d81a9f507da2575dac18ce5e8a02026e8c58c77e6c1e140e0e0
+
+pkgname = shd
