@@ -1,6 +1,6 @@
 pkgbase = berry
 	pkgdesc = A healthy, bite-sized window manager written over the XLib Library
-	pkgver = git+caf4f33
+	pkgver = git+e8b246f
 	pkgrel = 2
 	url = https://github.com/JLErvin/berry
 	arch = x86_64
