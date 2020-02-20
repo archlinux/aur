@@ -1,0 +1,16 @@
+pkgbase = aludel-git
+	pkgdesc = lightweight, Qt-based notification daemon a la dunst
+	pkgver = r4.8897d0d
+	pkgrel = 1
+	url = https://gitlab.com/zetaPRIME/aludel/
+	arch = any
+	license = LGPL2
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-base
+	conflicts = qt5ct-refresh
+	source = aludel::git+https://gitlab.com/zetaPRIME/aludel.git
+	md5sums = SKIP
+
+pkgname = aludel-git
+

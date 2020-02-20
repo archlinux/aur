@@ -1,0 +1,6 @@
+src
+pkg
+aludel
+*.tar.xz
+*.tar.gz
+*.log 
