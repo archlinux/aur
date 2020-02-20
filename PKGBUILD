@@ -1,7 +1,7 @@
 # Maintainer: Theo Henson <theodorehenson@protonmail.com>
 pkgname=rco
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.4
+pkgrel=1
 pkgdesc="A configuration manager written in rust."
 arch=('any')
 url="https://github.com/tteeoo/rco"
@@ -23,7 +23,7 @@ build() {
 package() {
     mkdir $pkgdir/usr/bin/ -p
     mkdir $pkgdir/usr/share/licenses/rco/ -p
-    cp $srcdir/$pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/rco/
+    cp $srcdir/$pkgname-$pkgver/defaults/MIT-LICENSE.txt $pkgdir/usr/share/licenses/rco/
     cp $srcdir/$pkgname-$pkgver/target/release/rco $pkgdir/usr/bin/
 }
 
