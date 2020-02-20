@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Vandekerckhove <seb01 at foxatwork dot be>
 pkgname=wayk-now
-pkgver=2020.1.1.0
+pkgver=2020.1.3.0
 pkgrel=1
 pkgdesc='Instant Remote Support and Remote Desktop'
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=${pkgname}.install
 depends=('gtk3' 'libappindicator3' 'libxext' 'libxcursor' 'libxrandr' 'libxfixes' 'libxtst' 'libxinerama' 'glibc' 'cairo' 'glib2' 'pango' 'libx11' 'libxdamage')
 optdepends=('libnotify')
 source=("https://cdn.devolutions.net/download/Linux/Wayk/${pkgver}/wayk-now_${pkgver}_amd64.deb")
-sha256sums=('29bd59a9050c2acc456380a56a7cbcdfb0087349ef71ef1ad7d4f05c471e282a')
+sha256sums=('dc6ef7ed31c92ce30bf5ac74840ab8c0f896575da000a2093241471c60eee353')
 
 prepare() {
     tar -xf data.tar.xz -C "${srcdir}"
