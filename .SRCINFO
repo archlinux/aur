@@ -1,6 +1,6 @@
 pkgbase = aptyay-git
 	pkgdesc = Changes yay syntax to be more like APT
-	pkgver = r1.7fe906d
+	pkgver = r2.42785d0
 	pkgrel = 1
 	arch = x86_64
 	arch = i686
