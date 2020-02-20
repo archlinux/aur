@@ -1,12 +1,12 @@
 pkgbase = f23-backgrounds
 	pkgdesc = Fedora 23 backgrounds.
 	pkgver = 23.1.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://fedoraproject.org/wiki/F23_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f23-backgrounds-23.1.0-8.fc31.src.rpm
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f23-backgrounds-23.1.0-9.fc32.src.rpm
 	sha256sums = SKIP
 
 pkgname = f23-backgrounds
