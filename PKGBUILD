@@ -38,7 +38,6 @@ validpgpkeys=()
 
 prepare() {
 	cd ${srcdir}/
-	unzip $pkgname-latest-linux.zip
 	./cosbrowser.AppImage --appimage-extract
     
 }
