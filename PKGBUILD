@@ -4,11 +4,12 @@ _pkgname=alkalami
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}
 pkgver=1.200
-pkgrel=3
+pkgrel=4
 pkgdesc='Unicode font for Arabic-based writing systems in the Kango region of Nigeria and Niger'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
 license=('custom:OFL')
+conflicts=('ttf-sil-fonts<=6')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('f294789b09d1aaaa56f70b198ab842b88803ae649ce3e4e74df8e9f1ac4662d5')
 
