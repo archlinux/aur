@@ -31,5 +31,3 @@ package() {
     cd ./${pkgname}
     make install DESTDIR="${pkgdir}"
 }
-
-md5sums=('fdfefed91f981143e5708e2bde7638eb')
