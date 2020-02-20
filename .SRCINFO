@@ -1,5 +1,5 @@
 pkgbase = linux-sfh
-	pkgdesc = Linux with experimental AMD Sensor Fusion HUB (SFH) drivers
+	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
 	pkgver = 5.5.4.arch1
 	pkgrel = 1
 	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
@@ -26,7 +26,7 @@ pkgbase = linux-sfh
 	sha256sums = 64013428da9a5fafff29f29250789d6fac17faaa3137ef924ed6c7583cad6ccd
 
 pkgname = linux-sfh
-	pkgdesc = The Linux with experimental AMD Sensor Fusion HUB (SFH) drivers kernel and modules
+	pkgdesc = The Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -34,8 +34,8 @@ pkgname = linux-sfh
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-sfh-headers
-	pkgdesc = Headers and scripts for building modules for the Linux with experimental AMD Sensor Fusion HUB (SFH) drivers kernel
+	pkgdesc = Headers and scripts for building modules for the Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel
 
 pkgname = linux-sfh-docs
-	pkgdesc = Documentation for the Linux with experimental AMD Sensor Fusion HUB (SFH) drivers kernel
+	pkgdesc = Documentation for the Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel
 

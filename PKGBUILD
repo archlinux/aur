@@ -4,7 +4,7 @@
 pkgbase=linux-sfh
 pkgver=5.5.4.arch1
 pkgrel=1
-pkgdesc='Linux with experimental AMD Sensor Fusion HUB (SFH) drivers'
+pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
