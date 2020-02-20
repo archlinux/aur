@@ -2,7 +2,7 @@
 
 pkgname=cryptpng
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for encrypting and decrypting data inside a png file.'
 arch=(x86_64)
 url=https://github.com/Trivernis/cryptpng
@@ -24,5 +24,5 @@ build() {
 package() {
   install -d "$pkgdir"/usr/{lib,bin}
   cp -a cryptpng-$pkgver "$pkgdir"/usr/lib/cryptpng
-  ln -s /usr/lib/cryptpng "$pkgdir"/usr/bin
+  ln -s /usr/lib/cryptpng/cryptpng "$pkgdir"/usr/bin
 }
