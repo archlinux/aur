@@ -3,15 +3,20 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=constantine-backgrounds
 pkgver=12.1.1
-pkgrel=5
-_rhver="${pkgver}-17.fc31"
+_string=$(curl -sL "https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/$(echo $pkgname | head -c 1)" | grep "${pkgname}" | cut -d '"' -f 6)
+_rhver=$(echo ${_string} | sed "s/${pkgname}-//g" | sed 's/.src.rpm//g')
+pkgrel=$(echo ${_rhver} | cut -d '-' -f 2| sed 's/.fc[0-9]*//g')
 pkgdesc="Fedora 12 (Constantine) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_12"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/c/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('7da1233dd820428df6d5de390b1917d892685e32bac42a1734985563e3916b99')
+sha256sums=('SKIP')
+
+pkgver() {
+  echo $_string | cut -d '-' -f 3
+}
 
 prepare()  {
   tar -xv --lzma -f ./${pkgname}-${pkgver}.tar.lzma
