@@ -7,8 +7,8 @@
 # Contributor: Emīls Piņķis <emil at mullvad dot net>
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
-pkgver=2020.2
-pkgrel=3
+pkgver=2020.3
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -39,10 +39,6 @@ prepare() {
 
 	# Disable building of rpm
 	sed -i "s/'deb', 'rpm'/'deb'/g" gui/tasks/distribution.js
-
-	# Use system Electron version:
-	#electronVer=$(electron --version | tail -c +2)
-	#sed -i 's/"electron": "^7.1.10",/"electron": "^'$electronVer'",/g' gui/package.json
 }
 
 build() {
