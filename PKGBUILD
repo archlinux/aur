@@ -58,7 +58,8 @@ build() {
         -GNinja
 
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-    ninja -C build "${MAKEFLAGS:--j1}"
+  # shellcheck disable=SC2086 # to allowing MAKEFLAGS to expand into multiple flags.
+    ninja -C build ${MAKEFLAGS:--j1}
 }
 
 package() {
