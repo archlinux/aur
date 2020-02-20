@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /opt/shodo
+LANG="pt_BR.ISO-8859-1" java -jar shodo.jar
