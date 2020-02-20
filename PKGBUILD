@@ -1,31 +1,35 @@
 # Maintainer: Samo Turk <samo.turk@gmail.com> 
 pkgname=rdkit
-_pkgname=RDKit
-pkgver=2019_09_1
+pkgver=2019_09_3
 pkgrel=1
 pkgdesc="RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python."
 arch=("i686" "x86_64" "armv7h")
 url="http://rdkit.org/"
-license=('New BSD License')
-depends=( 'bison' 'boost' 'boost-libs' 'cmake' 'flex' 'python' 'python-numpy' 'sqlite3' 'python-cairocffi' 'python-pillow' 'eigen3' )
+license=('BSD')
+depends=(python python-numpy python-cairocffi python-pillow boost boost-libs sqlite cairo eigen)
+makedepends=('cmake>=3.1')
 source=("https://github.com/rdkit/rdkit/archive/Release_${pkgver}.tar.gz")
-sha256sums=('bfcb3c094cd0e7ec6fbebacde71f29f61df71601eb3d577eb295fd45771513eb')
+sha256sums=('88bbc298eb6c17584471b17a34e202b1da3d59d92ea5b6b6dcda635b739f76f2')
 conflicts=('rdkit-python2' 'rdkit-git')
+provides=(rdkit)
 
 build() {
   cd ${srcdir}/${pkgname}-Release_${pkgver}
-  cmake . \
+
+  mkdir -p build
+  cd build
+
+  cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DRDK_INSTALL_INTREE=0 \
+    -DRDK_INSTALL_INTREE=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-    -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m/ \
-    -DPYTHON_EXECUTABLE=/usr/bin/python \
-    -DRDK_BUILD_INCHI_SUPPORT=OFF
+    -DRDK_BUILD_INCHI_SUPPORT=OFF \
+    -DBoost_NO_BOOST_CMAKE=ON \
+    -DRDK_BUILD_CAIRO_SUPPORT=ON
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-Release_${pkgver}
+  cd ${srcdir}/${pkgname}-Release_${pkgver}/build
   make DESTDIR=${pkgdir} install 
 }

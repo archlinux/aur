@@ -1,27 +1,27 @@
 pkgbase = rdkit
 	pkgdesc = RDKit - A collection of cheminformatics and machine-learning software written in C++ and Python.
-	pkgver = 2019_09_1
+	pkgver = 2019_09_3
 	pkgrel = 1
 	url = http://rdkit.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = New BSD License
-	depends = bison
-	depends = boost
-	depends = boost-libs
-	depends = cmake
-	depends = flex
+	license = BSD
+	makedepends = cmake>=3.1
 	depends = python
 	depends = python-numpy
-	depends = sqlite3
 	depends = python-cairocffi
 	depends = python-pillow
-	depends = eigen3
+	depends = boost
+	depends = boost-libs
+	depends = sqlite
+	depends = cairo
+	depends = eigen
+	provides = rdkit
 	conflicts = rdkit-python2
 	conflicts = rdkit-git
-	source = https://github.com/rdkit/rdkit/archive/Release_2019_09_1.tar.gz
-	sha256sums = bfcb3c094cd0e7ec6fbebacde71f29f61df71601eb3d577eb295fd45771513eb
+	source = https://github.com/rdkit/rdkit/archive/Release_2019_09_3.tar.gz
+	sha256sums = 88bbc298eb6c17584471b17a34e202b1da3d59d92ea5b6b6dcda635b739f76f2
 
 pkgname = rdkit
 
