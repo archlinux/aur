@@ -3,11 +3,13 @@
 # Created by Darjan Krijan <darjan_krijan@gmx.de>
 #
 
-set MODULE    "aocl"
+set MODULE    "aocl-aocc"
 set BASE_DIR  "/opt"
 set VERSION   "2.1"
 set AOCL_ROOT "${BASE_DIR}/${MODULE}"
 set AOCL_TEXT "AMD Optimizing CPU Libraries (AOCL)"
+
+conflict aocl-gcc
 
 prepend-path CPATH           ${AOCL_ROOT}/amd-securerng/include
 prepend-path CPATH           ${AOCL_ROOT}/amd-scalapack/include

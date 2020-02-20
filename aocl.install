@@ -1,5 +1,5 @@
 post_install() {
-	echo "Use 'module load aocl' to set up the environment for AMD Optimizing CPU Libraries."
+	echo "Use 'module load aocl-gcc' or 'module load aocl-aocc' to set up the environment for AMD Optimizing CPU Libraries."
 }
 
 post_upgrade() {
