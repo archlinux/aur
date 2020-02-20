@@ -1,11 +1,12 @@
 pkgbase = ttf-sil-ezra
 	pkgdesc = OpenType Hebrew font from SIL
 	pkgver = 2.51
-	pkgrel = 4
+	pkgrel = 5
 	url = https://software.sil.org/ezra
 	arch = any
 	license = OFL,
 	license = custom
+	conflicts = ttf-sil-fonts<=6
 	source = http://software.sil.org/downloads/r/ezra/EzraSIL-2.51.zip
 	sha256sums = f16bcb3ec4473ac6a9f138ee0dbde7cc2f835e93a90cbe8649b3f32677760cc1
 
