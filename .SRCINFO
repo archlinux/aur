@@ -1,4 +1,4 @@
-pkgbase = zfs-utils
+pkgbase = zfs-utils-any
 	pkgdesc = Userspace utilities for the Zettabyte File System.
 	pkgver = 0.8.3
 	pkgrel = 1
@@ -21,5 +21,5 @@ pkgbase = zfs-utils
 	b2sums = 570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3
 	b2sums = 491a7f20b0c6b4ce4fcedab617b2d7a4f2a01f1bc8f1ae57efde2fb22c2ab09a1107a8f4877b95c27576fe4216d01f181936787f51ce532bb13c5806badf7519
 
-pkgname = zfs-utils
+pkgname = zfs-utils-any
 

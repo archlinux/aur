@@ -3,7 +3,7 @@
 
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
-pkgname=zfs-utils
+pkgname=zfs-utils-any
 pkgver=0.8.3
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
