@@ -1,13 +1,14 @@
 pkgbase = kanjitomo
 	pkgdesc = identify Japanese characters from images or screen
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kanjitomo.net
 	arch = any
 	license = custom
 	depends = java-environment
+	backup = usr/share/kanjitomo/config.txt
 	source = KanjiTomo.zip::http://kanjitomo.net/download.php
-	md5sums = 71f6550cd49684d1d781059c1bdcd94a
+	md5sums = cab2ad34a77f5c3b56ae6344324d12e1
 
 pkgname = kanjitomo
 

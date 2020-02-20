@@ -1,13 +1,14 @@
 pkgname='kanjitomo'
 pkgdesc="identify Japanese characters from images or screen"
 pkgver=1.0.0
-pkgrel=1
-arch=('any') 
+pkgrel=2
+arch=('any')
 license=('custom')
 url="http://kanjitomo.net"
 source=("KanjiTomo.zip::http://kanjitomo.net/download.php")
-md5sums=('71f6550cd49684d1d781059c1bdcd94a')
+md5sums=('cab2ad34a77f5c3b56ae6344324d12e1')
 depends=('java-environment')
+backup=("usr/share/$pkgname/config.txt")
 
 package () {
   cd "$pkgsrc"
@@ -20,8 +21,10 @@ package () {
   sed -n '/## ACKNOWLEDGEMENTS ##/,$p' README.txt > "$pkgdir/usr/share/licenses/$pkgname/libraries_license_information"
   # starter
   mkdir -p "$pkgdir/usr/bin/"
-  echo -e "#!/bin/bash\ncd /usr/share/kanjitomo\nexec java -Xmx1000m -jar KanjiTomo.jar -run" > "$pkgdir/usr/bin/$pkgname"
+  echo -e "#!/bin/bash\ncd /usr/share/kanjitomo\nexec java -Xmx1200m -jar KanjiTomo.jar -run" > "$pkgdir/usr/bin/$pkgname"
   chmod +x "$pkgdir/usr/bin/$pkgname"
+  # default config
+  echo "ENABLE_HOTKEYS=1" > "$pkgdir/usr/share/$pkgname/config.txt"
   # desktopfile
   mkdir -p "$pkgdir/usr/share/applications/"
   echo -e "[Desktop Entry]\nName=$pkgname\nComment=$pkgdesc\nExec=/usr/bin/$pkgname\nTerminal=false\nType=Application\nCategories=Education\nIcon=$pkgname" \
