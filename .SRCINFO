@@ -1,12 +1,12 @@
 pkgbase = f22-backgrounds
 	pkgdesc = Fedora 22 backgrounds.
 	pkgver = 22.1.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://fedoraproject.org/wiki/F22_Artwork
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f22-backgrounds-22.1.1-7.fc31.src.rpm
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/f/f22-backgrounds-22.1.1-8.fc32.src.rpm
 	sha256sums = SKIP
 
 pkgname = f22-backgrounds
