@@ -1,7 +1,7 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
 	pkgver = 4.18.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.deezer.com/
 	arch = any
 	license = custom:"Copyright (c) 2006-2018 Deezer S.A."
@@ -16,11 +16,13 @@ pkgbase = deezer
 	source = deezer.desktop
 	source = systray.patch
 	source = menu-bar.patch
+	source = quit.patch
 	source = 0001-MPRIS-interface.patch
 	sha256sums = 225e04775440929bc0abacc1cc7d9999b33c88af10d3333079b8b485e75cb502
 	sha256sums = f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99
 	sha256sums = f7df7ba3dd91d8d327c3bfe69c65d3969b3f7a80ca253c29bad316e09f65ab8b
 	sha256sums = 8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0
+	sha256sums = 75c7edd8714393579e29842a8e15aabccfd0a9b5130ff7501890e7c1c1931b46
 	sha256sums = e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414
 
 pkgname = deezer

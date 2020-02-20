@@ -1,0 +1,26 @@
+diff --git a/build/main.js b/build/main.js
+index 6934bbd..a150316 100644
+--- a/build/main.js
++++ b/build/main.js
+@@ -3123,7 +3123,7 @@ module.exports = (function(modules) {
+         };
+       }
+       getQuitOptions() {
+-        return { label: i18n.t("menu_quit-deezer_label"), role: "quit" };
++        return { label: i18n.t("menu_quit-deezer_label"), click: () => { external_electron_.app.isQuiting = true; external_electron_.app.quit(); } };
+       }
+       getReloadOptions() {
+         return {
+@@ -4714,6 +4714,12 @@ module.exports = (function(modules) {
+           this.window.on("resize", () => {
+             this.windowState.save();
+           }),
++          this.window.on('close', function(event) {
++            if(!external_electron_.app.isQuiting){
++              event.preventDefault();
++              this.hide();
++            }
++          }),
+           this.window.once("ready-to-show", () => {
+             if (windowState.isMaximized) this.window.maximize();
+             else if (isPlatform(PLATFORM_WINDOWS)) {
