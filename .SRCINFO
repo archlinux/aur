@@ -1,0 +1,17 @@
+pkgbase = brother-hll2310d
+	pkgdesc = Brother HL-L2310D CUPS driver
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = x86_64
+	arch = i686
+	license = custom:Brother
+	depends = perl
+	depends = bash
+	depends = ghostscript
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf103531/hll2310dpdrv-4.0.0-1.i386.rpm
+	md5sums = 786ededd9b19d559dcb49160bb81c8a2
+
+pkgname = brother-hll2310d
+
