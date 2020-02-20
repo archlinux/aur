@@ -1,0 +1,16 @@
+pkgbase = qiniucloud
+	pkgdesc = 云存储管理客户端。仿文件夹式管理、图片预览、拖拽上传、文件夹上传、同步、批量导出URL等功能
+	pkgver = v0.3.0
+	pkgrel = 1
+	url = https://github.com/willnewii/qiniuClient
+	arch = any
+	license = MIT
+	makedepends = yarn
+	makedepends = npm
+	depends = electron4
+	depends = libxcb
+	source = https://github.com/willnewii/qiniuClient/archive/0.3.0.tar.gz
+	sha256sums = 449ebf10c4d6936dac6df9498cf9043a542570cd7017de12d79386ff3506478b
+
+pkgname = qiniucloud
+
