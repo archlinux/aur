@@ -1,8 +1,8 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: drakkan <nicola.murino at gmail dot com>
+# Maintainer: drakkan <nicola.murino at gmail dot com>
+# Contributor : Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdsoap
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Qt-based client-side and server-side SOAP component'
 license=(GPL3 LGPL custom)
@@ -11,7 +11,7 @@ url='https://github.com/KDAB/KDSoap'
 depends=(qt5-base)
 makedepends=(cmake)
 source=("https://github.com/KDAB/KDSoap/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('e73fbaf57f01a6d45f8f0530861a8f528bf0216633c2c70617cec4434237e742'
+sha256sums=('e3b9626d5cb08f41a709fa35031ce17bfdd075b7387baf14ecf8a9ca10994828'
             'SKIP')
 validpgpkeys=(E86C000370B1B9E2A9191AD53DBFB6882C9358FB) # KDAB Products (user for KDAB products) <info@kdab.com>
 
