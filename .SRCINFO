@@ -1,0 +1,17 @@
+pkgbase = python-network2tikz-git
+	pkgdesc = A converter that takes a network (cnet, igraph, networkx, pathpy, ...) and creates a tikz-network for smooth integration into LaTeX.
+	pkgver = 0.1.8.r0.gd8a4daa
+	pkgrel = 1
+	url = https://github.com/hackl/network2tikz
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-numpy
+	provides = python-network2tikz
+	conflicts = python-network2tikz
+	source = git+https://github.com/hackl/network2tikz#tag=v0.1.8
+	md5sums = SKIP
+
+pkgname = python-network2tikz-git
+
