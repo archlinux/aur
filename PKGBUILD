@@ -1,8 +1,9 @@
-# Maintainer: Erik Wallström <erik.wallstrom@live.com>
+# Maintainer: timescam <rex.ky.ng at gmail dot com>
+
 pkgname=pop-shell-theme-git
 _pkgname=gnome-shell-theme
 pkgver="r98.21a1337"
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the GNOME Shell theme that goes along with the Pop GTK Theme."
 arch=("any")
 url="https://github.com/pop-os/gnome-shell-theme"

@@ -1,7 +1,7 @@
 pkgbase = pop-shell-theme-git
 	pkgdesc = This is the GNOME Shell theme that goes along with the Pop GTK Theme.
 	pkgver = r98.21a1337
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/gnome-shell-theme
 	arch = any
 	license = GPL2
