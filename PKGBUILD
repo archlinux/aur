@@ -10,6 +10,8 @@ pkgdesc="Userspace utilities for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
 license=('CDDL')
+conflicts=("zfs-utils")
+provides=("zfs-utils")
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "zfs.initcpio.install"
