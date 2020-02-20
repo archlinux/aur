@@ -1,13 +1,13 @@
 pkgbase = lovelock-backgrounds
 	pkgdesc = Fedora 15 (Lovelock) backgrounds.
 	pkgver = 14.91.1
-	pkgrel = 6
+	pkgrel = 17
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_15
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/l/lovelock-backgrounds-14.91.1-16.fc31.src.rpm
-	sha256sums = ac2f5abed577869067cf6988a6f3c68f7a43938d5e44003073dcd8130a33ffa4
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/l/lovelock-backgrounds-14.91.1-17.fc32.src.rpm
+	sha256sums = SKIP
 
 pkgname = lovelock-backgrounds
 
