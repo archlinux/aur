@@ -1,0 +1,12 @@
+pkgbase = vim-to-github
+	pkgdesc = Will take you from Vim to GitHub
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/tonchis/vim-to-github
+	arch = any
+	license = MIT
+	source = https://github.com/tonchis/vim-to-github/archive/v1.0.2.tar.gz
+	sha256sums = afe12efe7369d32c547cf76784c80f795bea82e8a1dc1d1ff72581edd9cb11d7
+
+pkgname = vim-to-github
+
