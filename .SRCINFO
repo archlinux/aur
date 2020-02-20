@@ -1,0 +1,15 @@
+pkgbase = genius-spicetify-git
+	pkgdesc = Spicetify app that fetches lyrics from Genius
+	pkgver = r6.4c033d1
+	pkgrel = 1
+	url = https://github.com/khanhas/genius-spicetify
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = spicetify-cli
+	depends = spotify
+	source = git+https://github.com/khanhas/genius-spicetify.git
+	sha256sums = SKIP
+
+pkgname = genius-spicetify-git
+
