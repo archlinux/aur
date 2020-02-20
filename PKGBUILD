@@ -1,7 +1,7 @@
 # Maintainer: Kevin Del Castillo R. <quebin31@gmail.com>
 
 pkgname=muso
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="muso: music sorter"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=()
 conflicts=()
 options=()
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/release.tar.gz")
-sha256sums=('fc5462152abc602eab744d0fa46a6a6fb992144ce89825f7c2d16663533350b9')
+sha256sums=('0c9bc98ba0fb1dbedd424fc0de665fdd0cb323dc8458253f504086f004a614b6')
 
 package() {
     mkdir -p "$pkgdir/usr/bin/"
