@@ -3,8 +3,8 @@
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
-pkgver=2019.1.6
-pkgrel=1
+pkgver=2020.1.0
+pkgrel=3
 license=('custom')
  
 arch=(any)
@@ -12,14 +12,14 @@ pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='http://www.receita.fazenda.gov.br'
  
 
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2019/irpf/arquivos/IRPF2019-1.6.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2020/irpf/arquivos/IRPF2020-1.0.zip
         Copyright
         $pkgname.png
         $pkgname.desktop
         $pkgname.install
 		$pkgname)
  
-md5sums=('f0d798c870326e4c28549388b5ebbf17'
+md5sums=('f264c832b7ba7e14a763dadecf7ce88e'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
@@ -31,8 +31,8 @@ install=$pkgname.install
  
  
 package() {
-        cd "$srcdir"/IRPF2019
-        rm -f IRPF2019.exe
+        cd "$srcdir"/IRPF2020
+        rm -f IRPF2020.exe
 		rm -f exec.sh
         mkdir -p "$pkgdir"/usr/share/{icons/hicolor/128x128/apps,applications,licenses/irpf,irpf}
 		mkdir "$pkgdir"/usr/bin
@@ -42,8 +42,7 @@ package() {
 		cp -rf help "$pkgdir"/usr/share/irpf/
        
         install -Dm644 irpf.jar "$pkgdir"/usr/share/irpf/
-        install -Dm644 IRPF2019.ini "$pkgdir"/usr/share/irpf/
-        install -Dm644 IRPF2019.acb "$pkgdir"/usr/share/irpf/
+        #install -Dm644 IRPF2020.acb "$pkgdir"/usr/share/irpf/
 
         install -Dm644 Leia-me.htm "$pkgdir"/usr/share/irpf/
         install -Dm644 offline.png "$pkgdir"/usr/share/irpf/
