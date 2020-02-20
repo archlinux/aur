@@ -1,16 +1,18 @@
+# Maintainer: Fabius
 # Contributor: Angelo Theodorou <encelo@users.sourceforge.net>
 pkgname=festival-italian
 pkgver=1.0
-pkgrel=2
-pkgdesc="Italian version of FESTIVAL"
+pkgrel=3
+pkgdesc="Italian Version of FESTIVAL Text to Speech synthesis system"
 arch=('any')
 url="http://www.pd.istc.cnr.it/FESTIVAL/home/default.htm"
 license=('GPL')
+makedepends=('unzip')
 depends=('festival')
 source=(http://downloads.sourceforge.net/sourceforge/it-festival/Italian-FESTIVAL.zip)
-md5sums=('e54ff149497a1b76a3a6b65f62eaab35')
+sha256sums=('747ef3a31571896d7d772ea46d4ee68cf0fbc57af21e8c5220fced731695f496')
 
-build() {
+package() {
   cd $srcdir
 
   for i in $(ls *.zip | grep -v win)
