@@ -7,7 +7,7 @@
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
 pkgver=0.105.5
-pkgrel=1
+pkgrel=2
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -66,7 +66,7 @@ prepare() {
   cd home-assistant
 
   # lift hard dep constraints, we'll deal with breaking changes ourselves
-  sed 's/==/>=/g' -i setup.py
+  sed 's/==/>=/g' -i setup.py homeassistant/package_constraints.txt
 }
 
 build() {
