@@ -5,6 +5,11 @@
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
+# Patch downloaded from
+# https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
+# but 2020-02-11 aur user writed that this repo was removed.
+# Send me letter with new location of this repo or repo with new patch.
+
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor
 pkgver=9.22
@@ -22,7 +27,7 @@ source=(http://dist.schmorp.de/rxvt-unicode/${_pkgname}-${pkgver}.tar.bz2
         urxvt.desktop
         urxvtc.desktop
         urxvt-tabbed.desktop
-        https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
+        24-bit-color.patch
        )
 sha256sums=('e94628e9bcfa0adb1115d83649f898d6edb4baced44f5d5b769c2eeb8b95addd'
             '5f9c435d559371216d1c5b49c6ec44bfdb786b12d925d543c286b0764dea0319'
