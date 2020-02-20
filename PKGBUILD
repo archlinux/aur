@@ -4,11 +4,12 @@ _pkgname=doulos
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}SIL
 pkgver=5.000
-pkgrel=3
+pkgrel=4
 pkgdesc='complete support for the International Phonetic Alphabet'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
 license=('OFL')
+conflicts=('ttf-sil-fonts<=6')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('0b309c3db813a98ce884c0bd25c7f5c0bd96bbffd076459e39298812ca22472e')
 
