@@ -2,13 +2,13 @@
 # Contributor: Philipp Schmitt (philipp<at>schmitt<dot>co)
 
 pkgname=kanboard
-pkgver=1.2.12
+pkgver=1.2.13
 pkgrel=1
 pkgdesc='Simple visual task board'
 arch=('any')
 url='http://kanboard.net/'
 license=('MIT')
-depends=('php' 'php-gd')
+depends=('php>=7.2' 'php-gd')
 optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
 backup=('etc/webapps/kanboard/config.php' 'etc/webapps/kanboard/kanboard-apache.conf' 'etc/webapps/kanboard/kanboard-nginx.conf'
 'etc/webapps/kanboard/kanboard-nginx-subdir.conf')
@@ -42,7 +42,7 @@ package() {
     cp ${pkgdir}/usr/share/webapps/${pkgname}/config.default.php ${pkgdir}/etc/webapps/${pkgname}/config.php
 }
 
-sha256sums=('0a8b27226cb8443051cb51409f0a93f946114ecef9bc86898478530db39cb792'
+sha256sums=('5c5eb3d4eb0f90fd8e10b68f43f065c68ffa67ca882edf13cf6b0aaf26422109'
             '6eb379e74f744d95a930c90ae7744cb8236501bdcd24c7efb6a2eaf1a857204f'
             '62853c973e5b0718ceae5dbeb76b478bb218ce89d732e66a5eef1c7c258ea4b4'
             '5fdf81a69cda8c3c813e5d21f62d4112264645c95d376d7b31dae4573724930a'
