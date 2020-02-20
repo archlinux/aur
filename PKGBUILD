@@ -11,7 +11,7 @@ pkgdesc="Metapackage depending on all OFL-licensed font packages from SIL"
 arch=('any')
 url='https://software.sil.org/fonts'
 license=('OFL')
-_silfonts=('abyssinica>=2.000-2'
+_silfonts=('abyssinica>=2.000-5'
            'alkalami'
            # 'andika' Has different name in AUR
            'annapurna'
@@ -24,7 +24,7 @@ _silfonts=('abyssinica>=2.000-2'
            'galatia'
            # 'gentium-plus' Has different name in [community]
            'harmattan'
-           'lateef>=1.200-4'
+           'lateef>=1.200-7'
            'mingzat'
            'mondulkiri'
            'namdhinggo'
@@ -34,7 +34,7 @@ _silfonts=('abyssinica>=2.000-2'
            'sophia-nubian'
            'tagmukay'
            'tai-heritage-pro')
-depends=('gentium-plus-font' 'ttf-charis-sil>=5.000-3' 'ttf-andika>=5.000-3' "${_silfonts[@]/#/ttf-sil-}")
+depends=('gentium-plus-font' 'ttf-charis-sil>=5.000-3' 'ttf-andika>=5.000-4' "${_silfonts[@]/#/ttf-sil-}")
 
 package() {
     :
