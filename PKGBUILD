@@ -1,4 +1,4 @@
-# Maintainer: pescepalla <pescepalla@posteo.me>
+# Maintainer: pescepalla < base64 -d <<< cGVzY2VwYWxsYUBwb3N0ZW8ubWUK >
 
 pkgname='ibus-typing-booster-git'
 pkgdesc='A completion input method for faster typing, git version.'
