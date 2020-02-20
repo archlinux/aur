@@ -1,0 +1,21 @@
+pkgbase = python2-cairocffi
+	pkgdesc = cairocffi is a CFFI-based drop-in replacement for Pycairo, a set of Python bindings and object-oriented API for cairo.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://cairocffi.readthedocs.io/
+	arch = any
+	license = BSD
+	makedepends = python2-cffi
+	makedepends = python2-setuptools
+	makedepends = cairo
+	makedepends = python2-xcffib
+	makedepends = gdk-pixbuf2
+	depends = python2-cffi
+	depends = cairo
+	depends = python2-xcffib
+	optdepends = gdk-pixbuf2: for cairocffi.pixbuf
+	source = python2-cairocffi-0.9.0.tar.gz::https://github.com/Kozea/cairocffi/archive/v0.9.0.tar.gz
+	sha512sums = a1a4d2ccb5885798f8889bbc181f6325fc0fff88065d01dd1dc2936dbd5ac71e959bb28516864ffd9244de13fba87c2c99028cea708476e8cf378f5538f5496c
+
+pkgname = python2-cairocffi
+
