@@ -2,15 +2,20 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=schroedinger-cat-backgrounds
 pkgver=18.91.0
-pkgrel=6
-_rhver="${pkgver}-11.fc31"
+_string=$(curl -sL "https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/$(echo $pkgname | head -c 1)" | grep "${pkgname}" | cut -d '"' -f 6)
+_rhver=$(echo ${_string} | sed "s/${pkgname}-//g" | sed 's/.src.rpm//g')
+pkgrel=$(echo ${_rhver} | cut -d '-' -f 2| sed 's/.fc[0-9]*//g')
 pkgdesc="Fedora 19 (Schroedinger Cat) backgrounds."
 arch=("i686" "x86_64")
 url="https://fedoraproject.org/wiki/Wallpapers#Fedora_19"
 license=("CC-BY-SA")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/s/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('12fd34f263703daf23ec40524d8385d18927c992d17748af44f954105f5b4cd8')
+sha256sums=('SKIP')
+
+pkgver() {
+  echo $_string | cut -d '-' -f 4
+}
 
 prepare()  {
   tar -xvJf ./${pkgname}-${pkgver}.tar.xz
