@@ -1,22 +1,23 @@
-# Maintainer : Daniel Bermond < gmail: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Rainmaker <rainmaker52@gmail.com>
 # Contributor: gary9872	<garysBoXatgeemale.com>
 # Contributor: khomutsky <bogdan@khomutsky.com>
 # Contributor: M0Rf30
 
 pkgname=virtualbox-bin
-pkgver=6.1.2
-_build=135662
+pkgver=6.1.4
+_build=136177
 _rev=79806
 pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
 license=('GPL2')
-depends=('dkms' 'fontconfig' 'gcc' 'libgl' 'libidl2' 'libxcursor' 'libxinerama'
-         'libxmu' 'python' 'sdl')
+depends=('device-mapper' 'dkms' 'fontconfig' 'gcc' 'hicolor-icon-theme' 'libgl'
+         'libidl2' 'libxcursor' 'libxinerama' 'libxmu' 'python' 'sdl')
 makedepends=('linux-headers')
 optdepends=('virtualbox-ext-oracle: for Oracle extensions'
+            'java-runtime: for webservice java bindings'
             'linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("virtualbox=${pkgver}" 'virtualbox-sdk' 'VIRTUALBOX-HOST-MODULES'
@@ -39,8 +40,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'dkms.conf'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('23d5e96a7e006d06532993b8ecafeadbeca885f947e522cf1e8e26398f354a08'
-            '9ca7392d07e1bba9536ec1fad8cb11207c867be0b430c0dbcfbb1cbf71641ead'
+sha256sums=('02e609e7404afa448c4a789136326e4dbacd28bbd1b3f7a4d59f644aea0fb98c'
+            '755d07a510574940ad6b664fa63fb7fa4b752d121f7decb76cc8e7fa77ba9718'
             '584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e'
             '600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114'
             '452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49'
@@ -53,18 +54,18 @@ sha256sums=('23d5e96a7e006d06532993b8ecafeadbeca885f947e522cf1e8e26398f354a08'
             '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424')
 
 prepare() {
-    mkdir -p "${pkgname}-${pkgver}"
+    mkdir -p "${pkgname}-${pkgver}/VirtualBox-extracted"
     
     # extract the main source file
     yes 2>/dev/null | sh "VirtualBox-${pkgver}-${_build}-Linux_amd64.run" \
-                          --target "${srcdir}/${pkgname}-${pkgver}" \
-                          --nox11 \
-                          --noexec \
-                          &> /dev/null
-              
+                          --target "${pkgname}-${pkgver}" --nox11 --noexec &> /dev/null
+    tar -jxf "${pkgname}-${pkgver}/VirtualBox.tar.bz2" -C "${pkgname}-${pkgver}/VirtualBox-extracted"
+    
     # extract sdk
-    cd "${pkgname}-${pkgver}"
-    bsdtar -xf "${srcdir}/VirtualBoxSDK-${pkgver}-${_build}.zip"
+    bsdtar -xf "VirtualBoxSDK-${pkgver}-${_build}.zip" -C "${pkgname}-${pkgver}"
+    
+    # fix dkms build
+    patch -d "${pkgname}-${pkgver}/VirtualBox-extracted" -Np1 -i "${srcdir}/013-Makefile.patch"
 }
 
 package() {
@@ -72,13 +73,8 @@ package() {
     
     # install bundled files
     printf '%s\n' '  -> Installing bundled files...'
-    install -d "${pkgdir}/${_installdir}"
-    tar -jxf "${srcdir}/${pkgname}-${pkgver}/VirtualBox.tar.bz2" -C "${pkgdir}/${_installdir}"
-    
-    # fix dkms build
-    printf '%s\n' "  -> Fixing DKMS build..."
-    cd "${pkgdir}/${_installdir}"
-    patch -Np1 -i "${srcdir}/013-Makefile.patch"
+    install -d "${pkgdir}/opt"
+    cp -pr "${pkgname}-${pkgver}/VirtualBox-extracted" "${pkgdir}/${_installdir}"
     
     # hardened build: mark binaries suid root, and make sure the
     # directory is only writable by the user
@@ -186,7 +182,7 @@ package() {
     # module sources in /usr/src
     printf '%s\n' '  -> Installing module sources...'
     install -d -m0755 "${pkgdir}/usr/src"
-    mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}"
+    mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}_non_OSE"
     
     # write the configuration file
     printf '%s\n' '  -> Writing the configuration file...'
@@ -207,7 +203,6 @@ __EOF__
 # Load virtualbox kernel modules at boot
 # This file was installed by the ${pkgname} AUR package
 vboxdrv
-vboxpci
 vboxnetadp
 vboxnetflt
 __EOF__
