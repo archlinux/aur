@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: James Thomas <notrevolution at gmail dot com>
 
 pkgname=epubcheck
 pkgver=4.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to validate epub files."
 arch=('any')
 url="https://github.com/IDPF/epubcheck"
@@ -21,10 +21,10 @@ build() {
 }
             
 package() {
-  install -d "${pkgdir}/usr/share"/{java,docs,licenses}/"${pkgname}" "${pkgdir}/usr/share/java/${pkgname}/lib"
+  install -d "${pkgdir}/usr/share"/{java,doc,licenses}/"${pkgname}" "${pkgdir}/usr/share/java/${pkgname}/lib"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/target/epubcheck.jar" "${pkgdir}/usr/share/java/${pkgname}/epubcheck.jar"    
   install -m644 "${srcdir}/${pkgname}-${pkgver}/target/lib"/*.jar "${pkgdir}/usr/share/java/${pkgname}/lib"
-  install -m644 "${srcdir}/${pkgname}-${pkgver}"/*.md "${pkgdir}/usr/share/docs/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}-${pkgver}"/*.md "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 
   install -Dm644 "${srcdir}/epubcheck.1" "${pkgdir}/usr/share/man/man1/epubcheck.1"
