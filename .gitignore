@@ -1,5 +1,14 @@
+# from https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
 *.tar
-*.gz
+*.tar.*
+*.rpm
+*.jar
+*.exe
+*.msi
 *.zip
-src/
-pkg/
+*.tgz
+*.log
+*.log.*
+*.sig
+
+*/

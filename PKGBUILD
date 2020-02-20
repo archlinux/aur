@@ -1,21 +1,27 @@
-# Maintainer: Janne Heß <jannehess@gmail.com>
-
-# Contributor: Janne Heß <jannehess@gmail.com>
-
-pkgname=python2-pysmart
-_realname=pySMART
-pkgver=0.3
-pkgrel=1
-pkgdesc='Wrapper for smartctl (smartmontools)'
-url='https://pypi.python.org/pypi/pySMART'
-license=('GPL2')
-depends=('python2' 'smartmontools')
-source=("https://pypi.python.org/packages/source/p/pySMART/${_realname}-${pkgver}.zip")
-sha256sums=('d4a13d4facc23d8878358994cd355398836a616acc78e285a40d626cecd0817f')
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+_projectname='pysmart'
+_reponame='py-SMART'
+pkgname="python2-$_projectname"
+pkgver='20200121'
+_commit='d85e26697dbaf77b99e3028056824fcc9e745594'
+pkgrel='2'
+pkgdesc='Wrapper for smartctl (smartmontools) - FreeNAS fork - python2 version'
 arch=('any')
+url="https://github.com/freenas/$_reponame"
+license=('LGPL2.1')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$_commit.tar.gz")
+sha256sums=('9a4a97981727d038c4bbece76786be49472ff0fec9d44928d0c277b990d718b2')
 
-package() {
-	cd "${srcdir}/${_realname}-${pkgver}"
-	python2 setup.py install --root="${pkgdir}/" --optimize=1
+_sourcedirectory="$_reponame-$_commit"
+
+build() {
+	cd "$srcdir/$_sourcedirectory/"
+	python2 setup.py build
 }
 
+package() {
+	cd "$srcdir/$_sourcedirectory/"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+}
