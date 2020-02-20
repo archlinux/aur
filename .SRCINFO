@@ -1,0 +1,18 @@
+pkgbase = buzz-git
+	pkgdesc = A simple system tray application for notifying about unseen e-mail
+	pkgver = .r0.aa48ced
+	pkgrel = 1
+	url = https://github.com/jonhoo/buzz
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	depends = libappindicator3
+	depends = gtk3
+	source = buzz-git::git+https://github.com/jonhoo/buzz
+	md5sums = SKIP
+
+pkgname = buzz-git
+
