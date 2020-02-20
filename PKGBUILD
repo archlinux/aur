@@ -58,7 +58,7 @@ build() {
         -GNinja
 
     export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-    ninja -C build $([ -v MAKEFLAGS ] || echo -j1)
+    ninja -C build "${MAKEFLAGS:--j1}"
 }
 
 package() {
