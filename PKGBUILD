@@ -3,7 +3,7 @@
 
 pkgname=betaflight-configurator
 pkgver=10.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Crossplatform configuration tool for the Betaflight flight control system"
 arch=('x86_64')
 url="https://github.com/betaflight/betaflight-configurator"
@@ -39,8 +39,8 @@ package() {
 	cd $pkgname-$pkgver
 	install -d "$pkgdir/usr/share/$pkgname/"
 	cp -r dist/* "$pkgdir/usr/share/$pkgname/"
-	install -D "assets/linux/icon/bf_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -D "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "assets/linux/icon/bf_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	
 	install -d "$pkgdir/usr/bin/"
 	install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
