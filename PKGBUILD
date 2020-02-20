@@ -5,7 +5,7 @@
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
 pkgver=2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -13,15 +13,16 @@ url="https://developer.amd.com/amd-aocl/"
 source=(
 	"local://${pkgbase}-linux-aocc-${pkgver}.tar.gz"
 	"local://${pkgbase}-linux-gcc-${pkgver}.tar.gz"
-	"local://${pkgbase}.install"
+	"local://${pkgbase}-aocc.install"
+	"local://${pkgbase}-gcc.install"
 	"local://modulefile"
 )
 options=('staticlibs' '!strip')
 depends=('env-modules')
-install=${pkgbase}.install
 sha256sums=(
 	"e7af89ca23a545cc8bea54c2cb5005a42bf359611f5d4c28336f78f691da3a23"
 	"8ea9ec16051893e480f7ba09babeaa833897586aa4d0c2c53b22132b5884150c"
+	"SKIP"
 	"SKIP"
 	"SKIP"
 )
@@ -33,6 +34,8 @@ if [ -z ${MODULESHOME} ]; then
 fi
 
 package_aocl-aocc() {
+	install=${pkgname}.install
+
 	aocl_prefix=/opt/${pkgname}
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
@@ -58,6 +61,8 @@ package_aocl-aocc() {
 }
 
 package_aocl-gcc() {
+	install=${pkgname}.install
+
 	aocl_prefix=/opt/${pkgname}
 	prefix=${pkgdir}/${aocl_prefix}
 	mkdir -p ${prefix}
