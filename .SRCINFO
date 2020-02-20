@@ -1,7 +1,7 @@
 pkgbase = blackbox-explorer
 	pkgdesc = Cleanflight and Betaflight Blackbox Explorer (NW.js build)
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/betaflight/blackbox-log-viewer
 	arch = x86_64
 	license = GPL3

@@ -2,7 +2,7 @@
 pkgname=blackbox-explorer
 _reponame=blackbox-log-viewer
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cleanflight and Betaflight Blackbox Explorer (NW.js build)"
 arch=("x86_64")
 url="https://github.com/betaflight/${_reponame}"
@@ -27,8 +27,8 @@ package() {
 	cd "$_reponame-$pkgver"
         install -d "$pkgdir/usr/share/$pkgname/"
 	cp -r dist/* "$pkgdir/usr/share/$pkgname/"
-	install -D "assets/linux/icon/bf_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-	install -D "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -Dm644 "assets/linux/icon/bf_icon_128.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 	
         install -d "$pkgdir/usr/bin/"
 	install -Dm 755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
