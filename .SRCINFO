@@ -1,0 +1,27 @@
+pkgbase = hawck-git
+	pkgdesc = Keyboard macro/rebinding daemon
+	pkgver = 20200219
+	pkgrel = 1
+	url = https://github.com/snyball/Hawck
+	install = hawck-git.install
+	arch = x86_64
+	license = BSD
+	makedepends = meson
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = catch2
+	makedepends = ninja
+	depends = libnotify
+	depends = lua
+	depends = ruby
+	depends = zenity
+	depends = gawk
+	depends = python
+	depends = gzip
+	depends = kbd
+	optdepends = doxygen
+	source = git+https://github.com/snyball/Hawck.git
+	md5sums = SKIP
+
+pkgname = hawck-git
+
