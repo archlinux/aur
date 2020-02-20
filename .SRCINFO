@@ -1,13 +1,13 @@
 pkgbase = spherical-cow-backgrounds
 	pkgdesc = Fedora 18 (Spherical Cow) backgrounds.
 	pkgver = 18.0.0
-	pkgrel = 6
+	pkgrel = 13
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_18
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/s/spherical-cow-backgrounds-18.0.0-12.fc31.src.rpm
-	sha256sums = ee4f7824142801072b125722f7567e6a9be778dc0152bc06a8992ddf2ccb4667
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/s/spherical-cow-backgrounds-18.0.0-13.fc32.src.rpm
+	sha256sums = SKIP
 
 pkgname = spherical-cow-backgrounds
 
