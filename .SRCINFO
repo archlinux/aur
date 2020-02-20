@@ -1,13 +1,13 @@
 pkgbase = solar-backgrounds
 	pkgdesc = Fedora 10 (Cambridge) solar backgrounds.
 	pkgver = 0.92.0
-	pkgrel = 6
+	pkgrel = 19
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_10
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/s/solar-backgrounds-0.92.0-18.fc31.src.rpm
-	sha256sums = 55b890f4a4e3a47f1d354e9177839554cc0e9cffd808a13bb2a6dcf82bedda84
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/s/solar-backgrounds-0.92.0-19.fc32.src.rpm
+	sha256sums = SKIP
 
 pkgname = solar-backgrounds
 
