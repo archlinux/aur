@@ -2,14 +2,14 @@
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
 pkgver=r36
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
 url="http://commanderx16.com/"
 license=('unknown')
 groups=('commander-x16')
 depends=()
-makedepends=()
+makedepends=('gendesk')
 optdepends=('x16-emulator-bin: X16 emulator'
             'x16-rom-bin: X16 ROMs'
             'x16-docs-bin: X16 documentation')
@@ -19,8 +19,14 @@ replaces=()
 options=()
 install=
 changelog=
-source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip")
-md5sums=('74510e5f2f7386a5f66181d001b9594b')
+source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip"
+	"https://raw.githubusercontent.com/commanderx16/x16-emulator/$pkgver/.gh/logo.png")
+md5sums=('74510e5f2f7386a5f66181d001b9594b'
+         '1a858decc66ce2b47a27b24bb836280c')
+
+prepare() {
+	gendesk -n --pkgname "${pkgbase%-bin}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgbase%-bin}" --exec "x16emu" --categories "Game;Emulator"
+}
 
 package_x16-emulator-bin() {
 	pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
@@ -31,8 +37,10 @@ package_x16-emulator-bin() {
 	conflicts=('x16-emulator')
 
 	install -Dm755 x16emu "$pkgdir/usr/bin/x16emu"
-	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/$pkgname/github-pandoc.css"
-	install -Dm644 docs/README.html "$pkgdir/usr/share/doc/$pkgname/README.html"
+	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-bin}/github-pandoc.css"
+	install -Dm644 docs/README.html "$pkgdir/usr/share/doc/${pkgname%-bin}/README.html"
+	install -Dm644 logo.png "$pkgdir/usr/share/pixmaps/${pkgname%-bin}.png"
+	install -Dm644 "${pkgname%-bin}.desktop" "$pkgdir/usr/share/applications/${pkgname%-bin}.desktop"
 }
 
 package_x16-rom-bin() {
