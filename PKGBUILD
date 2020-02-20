@@ -4,8 +4,9 @@
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>
 pkgname=fedorainfinity-backgrounds
 pkgver=0.0.5
-pkgrel=6
-_rhver="${pkgver}-19.fc31"
+_string=$(curl -sL "https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/$(echo $pkgname | head -c 1)" | grep "${pkgname}" | cut -d '"' -f 6)
+_rhver=$(echo ${_string} | sed "s/${pkgname}-//g" | sed 's/.src.rpm//g')
+pkgrel=$(echo ${_rhver} | cut -d '-' -f 2| sed 's/.fc[0-9]*//g')
 pkgdesc="Fedora 8 (Werewolf) infinity backgrounds."
 arch=("i686" "x86_64")
 conflicts=('infinity-background')
@@ -14,7 +15,11 @@ url="https://fedoraproject.org/wiki/Wallpapers#Fedora_8"
 license=("GPL")
 _rhlink="https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages"
 source=("${_rhlink}/f/${pkgname}-${_rhver}.src.rpm")
-sha256sums=('5f4da9171bfc373298c5e404d6fb2e6cf7671d6b533daaec75f95c60d3d3d929')
+sha256sums=('SKIP')
+
+pkgver() {
+  echo $_string | cut -d '-' -f 3
+}
 
 prepare()  {
   tar -xvjf ./desktop-backgrounds-infinity-${pkgver}.tar.bz2
