@@ -1,5 +1,5 @@
 pkgbase = performance-tweaks
-	pkgver = r7.013dc89
+	pkgver = r10.f8ba3da
 	pkgrel = 1
 	url = https://github.com/librewish/performance-tweaks
 	arch = any
