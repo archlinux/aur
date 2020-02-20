@@ -1,5 +1,5 @@
 pkgbase = alacritty-git
-	pkgver = 0.4.2.1462.gff09e393
+	pkgver = 0.4.2.1465.g8abca441
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = alacritty-git
 	makedepends = desktop-file-utils
 	makedepends = gdb
 	makedepends = libxcb
+	makedepends = git
 	depends = freetype2
 	depends = fontconfig
 	depends = libxi
