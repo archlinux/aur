@@ -7,6 +7,8 @@ pkgbase = lua-posix
 	arch = x86_64
 	license = custom
 	makedepends = luarocks
+	makedepends = lua52
+	makedepends = lua51
 	source = luaposix-34.1.1.tar.gz::https://github.com/luaposix/luaposix/archive/release-v34.1.1.tar.gz
 	sha256sums = 273df2dbd9581a2f22e4265f14d0d759c487c0c9830f94395d7d690474382810
 
