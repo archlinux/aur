@@ -1,5 +1,5 @@
 pkgname=mupen64plus-qt
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="A customizable launcher for Mupen64Plus"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('BSD')
 depends=('quazip' 'mupen64plus' 'hicolor-icon-theme')
 install=mupen64plus-qt.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dh4/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('d42d3f28244c701ec5c0f500042b93d6111b93c881f95152f7c91993342328d0')
+sha256sums=('467f4e5b75a0f63f23b1c8266746b3e7932b9dc4ee950c42b2bfaf9660e64614')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
