@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gedit-plugin-markdown_preview-git
-pkgver=r95.23602c7
-pkgrel=2
+pkgver=r96.a931204
+pkgrel=1
 pkgdesc="A gedit plugin previewing markdown (.md) documents"
 arch=('any')
 url="https://github.com/maoschanz/gedit-plugin-markdown_preview"
