@@ -1,4 +1,4 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Trivernis <trivernis@gmail.com>
 
 pkgname=yuna
 pkgver=1.4.12
