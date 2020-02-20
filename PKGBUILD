@@ -22,7 +22,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.3.115
+pkgver=1.3.118
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("git+https://github.com/brave/brave-browser.git#tag=v${pkgver}"
         'brave-vaapi-enable.patch'
         'brave-launcher'
         'brave-browser.desktop')
-arch_revision=c089b31bfa889d0addf21de7ae5432563609f644
+arch_revision=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 for Patches in \
         cros-search-service-Include-cmath-for-std-pow.patch \
         move-RemoteTreeNode-declaration.patch \
@@ -48,7 +48,6 @@ for Patches in \
         fix-building-with-system-zlib.patch \
         remove-verbose-logging-in-local-unique-font-matching.patch \
         fix-building-with-unbundled-libxml.patch \
-        fix-browser-frame-view-not-getting-a-relayout.patch \
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch \
         rebuild-Linux-frame-button-cache-when-activation.patch \
         chromium-skia-harmony.patch
@@ -67,7 +66,6 @@ sha256sums=('SKIP'
             '18276e65c68a0c328601b12fefb7e8bfc632346f34b87e64944c9de8c95c5cfa'
             '5bc775c0ece84d67855f51b30eadcf96fa8163b416d2036e9f9ba19072f54dfe'
             'e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b'
-            '5db225565336a3d9b9e9f341281680433c0b7bb343dff2698b2acffd86585cbe'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
@@ -92,29 +90,30 @@ prepare() {
     cd src/
 
     # https://crbug.com/957519
-    patch -Np1 -i "${srcdir}"/cros-search-service-Include-cmath-for-std-pow.patch
-    patch -Np1 -i "${srcdir}"/move-RemoteTreeNode-declaration.patch
+    patch -Np1 -i "${srcdir}"/cros-search-service-Include-cmath-for-std-pow.patch || true
+    patch -Np1 -i "${srcdir}"/move-RemoteTreeNode-declaration.patch || true
   
     # https://crbug.com/1027929
-    patch -Np1 -i "${srcdir}"/sync-enable-USSPasswords-by-default.patch
+    patch -Np1 -i "${srcdir}"/sync-enable-USSPasswords-by-default.patch || true
   
     # https://crbug.com/989153
-    patch -Np1 -i "${srcdir}"/fix-shim-header-generation-when-unbundling-ICU.patch
+    patch -Np1 -i "${srcdir}"/fix-shim-header-generation-when-unbundling-ICU.patch || true
   
     # https://crbug.com/977964
-    patch -Np1 -i "${srcdir}"/fix-building-with-system-zlib.patch
+    patch -Np1 -i "${srcdir}"/fix-building-with-system-zlib.patch || true
   
     # https://crbug.com/1005508
-    patch -Np1 -i "${srcdir}"/remove-verbose-logging-in-local-unique-font-matching.patch
+    patch -Np1 -i "${srcdir}"/remove-verbose-logging-in-local-unique-font-matching.patch || true
   
     # https://crbug.com/1043042
-    patch -Np1 -i "${srcdir}"/fix-building-with-unbundled-libxml.patch
+    patch -Np1 -i "${srcdir}"/fix-building-with-unbundled-libxml.patch || true
   
-    # https://crbug.com/1046122
-    patch -Np1 -i "${srcdir}"/fix-browser-frame-view-not-getting-a-relayout.patch
-  
+    # https://crbug.com/1049258
+    patch -Np1 -i "${srcdir}"/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch || true
+    patch -Np1 -i "${srcdir}"/rebuild-Linux-frame-button-cache-when-activation.patch || true
+
     # https://crbug.com/skia/6663#c10
-    patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch
+    patch -Np0 -i "${srcdir}"/chromium-skia-harmony.patch || true
   
     # Force script incompatible with Python 3 to use /usr/bin/python2
     sed -i '1s|python$|&2|' third_party/dom_distiller_js/protoc_plugins/*.py
