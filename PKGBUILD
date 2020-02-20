@@ -4,11 +4,12 @@ _pkgname=awami-nastaliq
 pkgname=ttf-sil-$_pkgname
 _fname=AwamiNastaliq
 pkgver=2.000
-pkgrel=3
+pkgrel=4
 pkgdesc='Designed for Arabic-based writing systems using the Nastaliq-style'
 arch=('any')
 url="https://software.sil.org/${_pkgname/-*}"
-license=('custom:OFL')
+license=('OFL')
+conflicts=('ttf-sil-fonts<=6')
 source=("http://software.sil.org/downloads/r/${_pkgname/-*}/$_fname-$pkgver.zip")
 sha256sums=('caa282f45361b6f661a9aeccb039f6264b0be2dfd631f5e83c6b8ee940b5794a')
 
