@@ -14,12 +14,11 @@ pkgbase = hawck-git
 	depends = libnotify
 	depends = lua
 	depends = ruby
-	depends = zenity
-	depends = gawk
 	depends = python
-	depends = gzip
 	depends = kbd
 	optdepends = doxygen
+	optdepends = zenity
+	optdepends = polkit-gnome
 	source = git+https://github.com/snyball/Hawck.git
 	md5sums = SKIP
 
