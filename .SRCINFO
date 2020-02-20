@@ -1,0 +1,16 @@
+pkgbase = python-ads-git
+	pkgdesc = Python tool for ADS
+	pkgver = r312.63e1e53
+	pkgrel = 1
+	url = https://github.com/andycasey/ads
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	provides = python-ads
+	conflicts = python-ads
+	source = python-ads::git+https://github.com/andycasey/ads.git
+	md5sums = SKIP
+
+pkgname = python-ads-git
+
