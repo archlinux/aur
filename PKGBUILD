@@ -1,4 +1,5 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
+# Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=ibm-sw-tpm2
 pkgver=1563
