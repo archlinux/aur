@@ -8,12 +8,14 @@ url="https://github.com/mgrachev/dotenv-linter"
 license=('MIT')
 provides=('dotenv-linter')
 conflicts=('dotenv-linter-git')
+makedepends=('curl')
+md5sums=('SKIP')
+
+source=("https://github.com/mgrachev/dotenv-linter/releases/download/v${pkgver}/dotenv-linter-linux-x86_64.tar.gz")
 
 package() {
-  # Install binary
-  mkdir dotenv-linter-bin 
-  cd ${srcdir}/${pkgname}
-  curl -O -L -C - https://github.com/mgrachev/dotenv-linter/releases/download/v1.1.1/dotenv-linter-linux-x86_64.tar.gz
+  # Extract binary
   tar xzf dotenv-linter-linux-x86_64.tar.gz
-  install -Dm 755 "${srcdir}/${pkgname}/dotenv-linter" "${pkgdir}/usr/bin/dotenv-linter"
+  # Install binary
+  install -Dm 755 "dotenv-linter" "${pkgdir}/usr/bin/dotenv-linter"
 }

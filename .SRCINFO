@@ -5,8 +5,11 @@ pkgbase = dotenv-linter-bin
 	url = https://github.com/mgrachev/dotenv-linter
 	arch = x86_64
 	license = MIT
+	makedepends = curl
 	provides = dotenv-linter
 	conflicts = dotenv-linter-git
+	source = https://github.com/mgrachev/dotenv-linter/releases/download/v1.1.1/dotenv-linter-linux-x86_64.tar.gz
+	md5sums = SKIP
 
 pkgname = dotenv-linter-bin
 
