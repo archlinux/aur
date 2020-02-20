@@ -1,7 +1,7 @@
 pkgbase = emacs-gnuplot-mode-git
 	pkgdesc = Emacs-mode for writing gnuplot scripts
-	pkgver = 0.7.0.29.g21f9046
-	pkgrel = 2
+	pkgver = 0.7.0.34.ga406143
+	pkgrel = 1
 	url = https://github.com/bruceravel/gnuplot-mode
 	arch = any
 	license = GPL2
