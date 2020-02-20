@@ -3,7 +3,7 @@
 pkgname=playerctl-git
 _pkgname=playerctl
 pkgver=2.0.1.r4.g20b3b82
-pkgrel=1
+pkgrel=2
 pkgdesc="mpris media player controller and lib for spotify, vlc, audacious, bmp, xmms2, and others."
 arch=('i686' 'x86_64')
 url="https://github.com/acrisci/playerctl"
