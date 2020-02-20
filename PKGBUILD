@@ -4,11 +4,12 @@ _pkgname=nuosu
 pkgname=ttf-sil-$_pkgname
 _fname=${_pkgname^}SIL
 pkgver=2.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Unicode font for the standardized Yi script'
 arch=('any')
 url="https://software.sil.org/$_pkgname"
 license=('OFL')
+conflicts=('ttf-sil-fonts<=6')
 source=("http://software.sil.org/downloads/r/$_pkgname/$_fname-$pkgver.zip")
 sha256sums=('b1acb6da9b9ccaa921fea1f8e206c743928f84fb083dbeb77485e1824cdcf9e7')
 
