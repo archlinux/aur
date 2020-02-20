@@ -8,7 +8,7 @@ arch=("x86_64" "i686")
 url="https://github.com/projectdiscovery/naabu"
 license=("GPL3")
 depends=("libpcap")
-makedepends=("dep" "go")
+makedepends=("dep" "go" "git")
 source=("${pkgname}::git+https://github.com/projectdiscovery/naabu.git")
 sha256sums=('SKIP')
 

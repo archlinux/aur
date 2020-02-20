@@ -8,6 +8,7 @@ pkgbase = naabu-git
 	license = GPL3
 	makedepends = dep
 	makedepends = go
+	makedepends = git
 	depends = libpcap
 	source = naabu-git::git+https://github.com/projectdiscovery/naabu.git
 	sha256sums = SKIP
