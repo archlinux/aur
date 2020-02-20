@@ -7,7 +7,7 @@ pkgname=zfs-utils
 pkgver=0.8.3
 pkgrel=1
 pkgdesc="Userspace utilities for the Zettabyte File System."
-arch=("i686" "x86_64")
+arch=('any')
 url="https://zfsonlinux.org/"
 license=('CDDL')
 optdepends=('python: for arcstat/arc_summary/dbufstat')
@@ -34,6 +34,8 @@ prepare() {
 
 build() {
     cd "${srcdir}"/zfs-${pkgver}
+
+    ./autogen.sh
 
     ./configure --prefix=/usr \
                 --sysconfdir=/etc \
