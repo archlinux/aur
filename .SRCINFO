@@ -1,13 +1,13 @@
 pkgbase = heisenbug-backgrounds
 	pkgdesc = Fedora 20 (Heisenbug) backgrounds.
 	pkgver = 20.0.0
-	pkgrel = 6
+	pkgrel = 11
 	url = https://fedoraproject.org/wiki/Wallpapers#Fedora_20
 	arch = i686
 	arch = x86_64
 	license = CC-BY-SA
-	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/h/heisenbug-backgrounds-20.0.0-10.fc31.src.rpm
-	sha256sums = 31efc9bb4afe96451675035be7959a67e558403f37bc3c87a0a75b53474ede20
+	source = https://archives.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/source/tree/Packages/h/heisenbug-backgrounds-20.0.0-11.fc32.src.rpm
+	sha256sums = SKIP
 
 pkgname = heisenbug-backgrounds
 
