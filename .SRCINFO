@@ -1,6 +1,6 @@
 pkgbase = ccdc-mercury
 	pkgdesc = Crystal Structure Visualisation, Exploration and Analysis Made Easy
-	pkgver = 4.2.0
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://www.ccdc.cam.ac.uk/solutions/csd-system/components/mercury/
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = ccdc-mercury
 	depends = opengl-driver
 	depends = libx11
 	options = !strip
-	source = https://downloads.ccdc.cam.ac.uk/Mercury/4.2.0/mercurystandalone-4.2.0-linux-x64-installer.run
-	sha256sums = 59f40da1c828fafcbc906a2a72dd872d138a5426b2f85c47d09d1ceb9b74c651
+	source = https://downloads.ccdc.cam.ac.uk/Mercury/4.3.1/mercurystandalone-4.3.1-linux-x64-installer.run
+	sha256sums = 142b412754c6756a0c6ad662b7d24ccd1690eb3544dce158265cfa1f424f46a3
 
 pkgname = ccdc-mercury
 

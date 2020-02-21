@@ -1,7 +1,7 @@
 # Maintainer: Mirko Scholz
 
 pkgname=ccdc-mercury
-pkgver=4.2.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="Crystal Structure Visualisation, Exploration and Analysis Made Easy"
 arch=(x86_64)
@@ -15,7 +15,7 @@ _installer="mercurystandalone-${pkgver}-linux-x64-installer.run"
 
 source=("https://downloads.ccdc.cam.ac.uk/Mercury/$pkgver/$_installer")
 
-sha256sums=('59f40da1c828fafcbc906a2a72dd872d138a5426b2f85c47d09d1ceb9b74c651')
+sha256sums=('142b412754c6756a0c6ad662b7d24ccd1690eb3544dce158265cfa1f424f46a3')
 options=(!strip)
 
 
