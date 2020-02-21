@@ -4,13 +4,13 @@ _rockname=yaml
 pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.1.2
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='LibYAML binding for Lua'
 arch=('i686' 'x86_64')
 url="https://lubyk.github.io/lubyk/$_rockname.html"
 license=('MIT')
 _lua_deps=('lub')
-makedepends=('luarocks')
+makedepends=('luarocks' 'lua52' 'lua51')
 source=("$_rockname-$pkgver.tar.gz::https://github.com/lubyk/$_rockname/archive/REL-$pkgver.tar.gz")
 sha256sums=('b4391d182677ab644403bf1ac028c7421c2605db124f9792193013c582a273ec')
 

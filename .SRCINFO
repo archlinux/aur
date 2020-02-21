@@ -1,12 +1,14 @@
 pkgbase = lua-yaml
 	pkgdesc = LibYAML binding for Lua
 	pkgver = 1.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lubyk.github.io/lubyk/yaml.html
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
+	makedepends = lua52
+	makedepends = lua51
 	source = yaml-1.1.2.tar.gz::https://github.com/lubyk/yaml/archive/REL-1.1.2.tar.gz
 	sha256sums = b4391d182677ab644403bf1ac028c7421c2605db124f9792193013c582a273ec
 
