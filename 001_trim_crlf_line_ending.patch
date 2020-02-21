@@ -1,0 +1,42 @@
+diff --git a/ihex.c b/ihex.c
+index 860a8ad..642d54f 100644
+--- a/ihex.c
++++ b/ihex.c
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <ctype.h>
+ #include <string.h>
+ #include "ihex.h"
+ 
+@@ -131,6 +132,7 @@ uint8_t IHEX_ReadFile(FILE *fp, uint8_t *data, uint16_t maxlen, uint16_t *max_ad
+   uint8_t i;
+   uint8_t byte;
+   char str[128];
++  char *end;
+ 
+   addr = 0;
+   segment = 0;
+@@ -138,6 +140,10 @@ uint8_t IHEX_ReadFile(FILE *fp, uint8_t *data, uint16_t maxlen, uint16_t *max_ad
+   {
+     if (fgets(str, sizeof(str), fp) == NULL)
+       return IHEX_ERROR_FILE;
++    // trim whitespace on the right
++    end = str + strlen(str) - 1;
++    while (end > str && isspace((unsigned char) *end)) end--;
++    end[1] = '\0';
+     if (strlen(str) < IHEX_MIN_STRING)
+       return IHEX_ERROR_FMT;
+     len = IHEX_GetByte(&str[IHEX_OFFS_LEN]);
+diff --git a/ihex.h b/ihex.h
+index d2f2f83..e96c6cf 100644
+--- a/ihex.h
++++ b/ihex.h
+@@ -6,7 +6,7 @@
+ #include <stdbool.h>
+ 
+ #define IHEX_LINE_LENGTH    16
+-#define IHEX_MIN_STRING     12
++#define IHEX_MIN_STRING     11
+ 
+ #define IHEX_OFFS_LEN       1
+ #define IHEX_OFFS_ADDR      3
