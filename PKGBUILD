@@ -7,7 +7,7 @@ arch=("x86_64")
 url="https://github.com/Dr-Incognito/V2Ray-Desktop"
 license=("GPL3")
 depends=("v2ray" "qt5-base>=5.14.0" "qt5-quickcontrols>=5.14.0" "qt5-quickcontrols2>=5.14.0")
-makedepends=("git>=2.11" "qt5-tools>=5.14.0" "qt5-declarative>=5.14.0" curl which gcc make jq sed)
+makedepends=("git>=2.11" "qt5-tools>=5.14.0" "qt5-declarative>=5.14.0" curl jq)
 provides=(v2ray-desktop)
 source=("V2Ray-Desktop::git+${url}#tag=${pkgver}")
 sha512sums=("SKIP")

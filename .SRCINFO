@@ -9,11 +9,7 @@ pkgbase = v2ray-desktop
 	makedepends = qt5-tools>=5.14.0
 	makedepends = qt5-declarative>=5.14.0
 	makedepends = curl
-	makedepends = which
-	makedepends = gcc
-	makedepends = make
 	makedepends = jq
-	makedepends = sed
 	depends = v2ray
 	depends = qt5-base>=5.14.0
 	depends = qt5-quickcontrols>=5.14.0
