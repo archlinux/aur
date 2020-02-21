@@ -61,6 +61,8 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+#_bfq_rev_path="bfq-reverts-sep"
+#_bfq_rev_patch="0001-Revert-block-bfq-do-not-plug-I-O-for-bfq_queues-with.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
 _bfq_rel="r2K200211"
@@ -70,6 +72,7 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
+        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
