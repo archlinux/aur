@@ -10,6 +10,7 @@ pkgbase = onedrive-abraunegg
 	depends = curl
 	depends = libnotify
 	depends = sqlite
+	depends = d-runtime
 	provides = onedrive=2.3.13
 	conflicts = onedrive
 	conflicts = onedrive-abraunegg-git
