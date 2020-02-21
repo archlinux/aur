@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Cedric Girard <girard.cedric@gmail.com>
 # Contributor: Det <nimetonmaili at gmail a-dot com>
 # Based on [extra]'s thunderbird
