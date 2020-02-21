@@ -3,7 +3,7 @@
 pkgname=lemon-lime-git
 _pkgname=lemon-lime 
 pkgver=v.0.1.0120
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
