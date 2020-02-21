@@ -2,7 +2,7 @@
 
 pkgname=maptool-jar
 _pkgname=MapTool
-pkgver=1.5.8
+pkgver=1.5.13
 pkgrel=1
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
@@ -18,8 +18,8 @@ source=(
     "$_pkgname.desktop"
 )
 sha256sums=(
-    '3130587ee213a6e781e9fb97cfd5417f7fddbaaf9a760b2fd73c3ed0e5b6d96c'
-    '237a14cea4597599d67684299e31837d9a2d45a7b3e7dbf961f2d9049daf1a54'
+    '71a859dc00ef1c53b18d563271a1de48bf55a662ca687cd4368d3a82bd8a6735'
+    '4ee0df3f5826df5c1062deffef7b845184eaa7729253bde97bdcbc2287e62cfb'
     '4db045122b4dbb7ca04db3359faa6a991e7c5b7e222ff8ddacd1cbc4012fec3b'
 )
 

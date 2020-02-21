@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/lib/jvm/java-10-jre/jre/bin/java -jar /usr/share/java/MapTool/MapTool-1.5.7.jar "$@"
+exec [ -x /usr/lib/jvm/java-10-jdk/bin/java ] && /usr/lib/jvm/java-10-jdk/bin/java -jar /usr/share/java/MapTool/MapTool-1.5.13.jar "$@" || /usr/lib/jvm/java-10-jre/jre/bin/java -jar /usr/share/java/MapTool/MapTool-1.5.13.jar "$@"
