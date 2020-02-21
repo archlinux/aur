@@ -1,7 +1,7 @@
 # Maintainer: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
 pkgname=('texture')
-pkgver=2.2
-pkgrel=4
+pkgver=2.3
+pkgrel=1
 pkgdesc="WYSIWYG editor and reader for DAR/JATS (XML) scientific content"
 arch=('any')
 url='http://substance.io/texture/'
@@ -15,7 +15,7 @@ source=(
   "entry.desktop"
   "run.sh"
 )
-sha256sums=('d39833e54519486647c3fedba9bd067cb4e3500951d72b6a7a4d12cad4ce3b1e'
+sha256sums=('d06b806e11f0deea16208645b91b3d1fa90ad9d8eb95a4dbeb58ec8294001a3b'
             'SKIP'
             'SKIP')
 
