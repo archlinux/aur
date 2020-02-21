@@ -5,8 +5,8 @@
 # Co-Maintainer: TheGoliath <contact@xdfr.de>
 
 pkgname='inspircd'
-pkgver='3.4.0'
-pkgrel='3'
+pkgver='3.5.0'
+pkgrel='1'
 pkgdesc='A modular C++ IRC daemon (ircd).'
 arch=('any')
 url='http://www.inspircd.org/'
@@ -27,7 +27,7 @@ optdepends=('gnutls: m_ssl_gnutls'
 install='inspircd.install'
 source=("https://github.com/inspircd/inspircd/archive/v$pkgver.tar.gz"
         'inspircd.service')
-sha512sums=('871fefff5e337dc6228fae223ff7ac534e159b5bfb838419247b1d16339c860b0b939a28dd4610cf3b8c37328b5e6ccba2ddd80adbd27638f4f3fa28e4f99066'
+sha512sums=('64e7be4b013c418577362b33be73b8f7045f1071ccb2c4e83fdf1a96b98656a3541e20c005bc32532007da21d9ba963f534cd14d16c2e1cf8afcf34b22ffad8c'
             '5a16a7c237693ffc6a108358f339b6aa2451fb16430561848ae869f890199b38fab6a13640bcc35cf1d07e32d7e5fff405d88668ee05ddaffc2ef61cb42ee832')
 
 build() {
