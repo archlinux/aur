@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-system76-power-git
 	pkgdesc = Gnome shell extension for System76 power management
-	pkgver = 1.2.0.r4.gf9f05fb
+	pkgver = 1.2.0.r6.g5253c21
 	pkgrel = 1
 	url = https://github.com/pop-os/gnome-shell-extension-system76-power
 	arch = any
