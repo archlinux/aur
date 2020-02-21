@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=fonts-tlwg
