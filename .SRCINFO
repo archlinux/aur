@@ -1,0 +1,21 @@
+pkgbase = python-ax-platform
+	pkgdesc = Adaptive Experimentation Platform
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://ax.dev
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-botorch
+	depends = python-jinja
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-scikit-learn
+	depends = python-plotly
+	source = python-ax-platform-0.1.9::https://github.com/facebook/Ax/archive/0.1.9.tar.gz
+	sha256sums = 2de992e042aca36b9ea6b7ce392c881180f57b0d0b6de34b360277a44cbce2e0
+
+pkgname = python-ax-platform
+
