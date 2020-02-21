@@ -47,7 +47,9 @@ if (kernver, archver, archrel) != (latest_kernver, latest_archver, latest_archre
         f.write(subprocess.check_output(['makepkg', '--printsrcinfo']).decode())
 
     subprocess.check_call(['git', 'add', 'PKGBUILD', '.SRCINFO'])
-    subprocess.check_call(['git', 'commit', '-m', f'{kernver}-{archver}-{archrel}'])
+    subprocess.check_call(
+        ['git', 'commit', '-m', f'{latest_kernver}-{latest_archver}-{latest_archrel}']
+    )
 
     def yn_choice(message, default='y'):
         try:
