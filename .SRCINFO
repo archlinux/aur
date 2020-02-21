@@ -1,6 +1,6 @@
 pkgbase = qdirstat
 	pkgdesc = Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)
-	pkgver = 1.6
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/shundhammer/qdirstat
 	install = qdirstat.install
@@ -14,8 +14,8 @@ pkgbase = qdirstat
 	depends = desktop-file-utils
 	provides = qdirstat-git
 	conflicts = qdirstat-git
-	source = qdirstat-1.6.tar.gz::https://github.com/shundhammer/qdirstat/archive/1.6.tar.gz
-	sha256sums = 9d3eb8bb969ea0177104ab021068c911f2e7b4f93880ea4ee1774c57ae11e4d6
+	source = qdirstat-1.6.1.tar.gz::https://github.com/shundhammer/qdirstat/archive/1.6.1.tar.gz
+	sha256sums = 8cc12a054930a29dc3b1480e4fa63597ddffeac8841cf7804230410f96b6cf3b
 
 pkgname = qdirstat
 
