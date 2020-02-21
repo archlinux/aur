@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=8884.d335c4f93
+pkgver=1.1_21_g3ff525dec
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP' '7381c57e48b1437bec6b775029370f99f6fc14eced53678972e9f0b7e02a
 
 pkgver() {
   cd "$srcdir/${pkgname}_src"
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  printf "%s" "$(git describe | sed -r 's/\-/_/g' )" 
 }
 
 build() {
