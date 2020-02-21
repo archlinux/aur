@@ -1,6 +1,6 @@
 pkgbase = platformio
 	pkgdesc = A cross-platform code builder and library manager
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/platformio/platformio-core/
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = platformio
 	depends = python-pyelftools
 	depends = python-marshmallow
 	conflicts = platformio-git
-	source = https://github.com/platformio/platformio-core/archive/v4.2.0.tar.gz
-	sha256sums = ae60d49ab6ac4c07d46196c30119339ae16f0e3c792c51376fdd12faa6204b48
+	source = https://github.com/platformio/platformio-core/archive/v4.2.1.tar.gz
+	sha256sums = 9b405e4ab29232673f28a4302edabaeef15fb963b00aae6b37f6e6b4068bd26c
 
 pkgname = platformio
 
