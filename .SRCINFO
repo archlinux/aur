@@ -1,6 +1,6 @@
 pkgbase = crystal-icr
 	pkgdesc = Interactive console for Crystal programming language
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 2
 	url = https://github.com/crystal-community/icr
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = crystal-icr
 	makedepends = shards
 	depends = crystal
 	depends = readline
-	source = https://github.com/crystal-community/icr/archive/v0.7.0.tar.gz
-	sha256sums = 181046ff6ea3502573ad6af3e53bcd4b4cede1ed6e58410bd61c6dc28e8cb0ac
+	source = https://github.com/crystal-community/icr/archive/v0.8.0.tar.gz
+	sha256sums = 8c7825dd035bbb4bc6499873d4bd125185a01cae10dc8dd6f98e6e013def381c
 
 pkgname = crystal-icr
 
