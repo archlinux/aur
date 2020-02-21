@@ -1,7 +1,7 @@
 pkgbase = twitter-nativefier
 	pkgdesc = Twitter desktop built with nativefier (Electron)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twitter.com/
 	arch = any
 	license = custom
