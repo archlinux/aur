@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Dshared-glapi=true
+    ${_arch}-meson build-${_arch}
     ninja -C build-${_arch}
   done
 }
