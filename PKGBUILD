@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.5.4
+_kernver=5.5.5
 _archver=arch1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
@@ -13,7 +13,7 @@ pkgname=("linux-versioned-bin"
          "${_versioned_pkgname}-headers-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_kernver}
-pkgrel=6
+pkgrel=1
 pkgdesc='Repackaging of the Arch kernel with a unique package name for each version'
 url="https://git.archlinux.org/linux.git/log/?h=v${_kernver}-${_archver}"
 arch=(x86_64)
@@ -46,9 +46,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('7b9e536050d8bf740b00fab87a52ab843ff9dedbb9ece35f45b219cef91cf7db'
-            'cb52382de2492f878d297ad0a6dfc06c6da9fbd812fc40a26b8aef20c3e199c2'
-            'c390ff437d20cd9a8418d722c5734d4ef71c67796c5e81f6c5c0ded928ee40c8')
+sha256sums=('8a5831a8df34bc83f95e493406dfa8eaafebae1fb68a33697df7f2e630841aad'
+            'aa6474d4c4077d218e41d38894fcd4491c7c3829d4c92d7ab3c19f326c3fde61'
+            '227c420e6a05b83aea63cf3add0429d2d694e0f955c7cdc56207513b000441c3')
 
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -66,7 +66,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.5.4-arch1-1-bin() {
+package_linux5.5.5-arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -74,10 +74,10 @@ package_linux5.5.4-arch1-1-bin() {
               'linux-firmware: firmware images needed for some devices')
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${_pkgname}-${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${_versioned_pkgname}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.5.4-arch1-1-headers-bin() {
+package_linux5.5.5-arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -85,7 +85,7 @@ package_linux5.5.4-arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/linux"{,"-${KERNNAME}"}
 }
 
-package_linux5.5.4-arch1-1-docs-bin() {
+package_linux5.5.5-arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
