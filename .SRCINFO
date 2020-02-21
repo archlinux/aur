@@ -1,0 +1,14 @@
+pkgbase = evcxr
+	pkgdesc = A Rust REPL
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/google/evcxr
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = evcxr-0.5::git+https://github.com/google/evcxr#tag=239e431c58d04c641da22af791e4d3e1b894365e
+	md5sums = SKIP
+
+pkgname = evcxr
+
