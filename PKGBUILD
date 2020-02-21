@@ -6,7 +6,7 @@
 
 pkgname=pianoteq-stage
 pkgver=6.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq"
@@ -25,7 +25,7 @@ sha512sums=('cc539eed0b155a05e277dcdb3746106b5cbf8931d3b396833297a46e0485b92299b
             '71690cc597b16cd363ddf8837c81eece620be275bf7860e2a2a30cc94da73f32a809d24a086c6ceacbe945282c8b73d03d6567e6058b620b4beb07feb4e46dab')
 
 prepare(){
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 6' --exec='pianoteq\ 6' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 6' --exec='"pianoteq 6"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
