@@ -1,0 +1,15 @@
+pkgbase = proton-ge-custom-bin
+	pkgdesc = Compatibility tool for Steam Play (with GloriousEggroll patches)
+	pkgver = 5.1
+	pkgrel = 2
+	url = https://github.com/GloriousEggroll/proton-ge-custom
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	depends = steam
+	source = https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.1-GE-2/Proton-5.1-GE-2.tar.gz
+	md5sums = 0dcae33c1d967ce5c57fce5d8d0c1a7d
+
+pkgname = proton-ge-custom-bin
+
