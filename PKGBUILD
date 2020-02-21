@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=rgl
-_cranver=0.100.47
+_cranver=0.100.50
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('r>=3.2.0' r-htmlwidgets r-htmltools r-knitr 'r-jsonlite>=0.9.20' r-shi
 makedepends=(gcc)
 optdepends=(r-rmarkdown r-deldir r-orientlib r-misc3d r-rstudioapi r-magick r-plotrix r-tripack r-interp r-alphashape3d zlib libpng freetype2 pandoc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('99d51d2fb5e4cd0585d91dd9da7573d5')
+md5sums=('37ef932763c3fad286ba4f1b36e63055')
 
 build() {
   cd "${srcdir}"
