@@ -1,0 +1,19 @@
+pkgbase = tfhe-git
+	pkgdesc = Fast Fully Homomorphic Encryption Library over the Torus
+	pkgver = v1.0.1.r29.gd7ec12f
+	pkgrel = 1
+	url = https://tfhe.github.io/tfhe/
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cmake>=3.5.1
+	makedepends = make
+	makedepends = gcc>=5.2.0
+	makedepends = git
+	provides = tfhe
+	conflicts = tfhe
+	source = tfhe::git+https://github.com/tfhe/tfhe.git
+	md5sums = SKIP
+
+pkgname = tfhe-git
+
