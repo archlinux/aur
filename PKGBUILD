@@ -6,12 +6,12 @@ pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=0.7
 _pkgver=0.07
 _rockrel=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Terminal functions for Lua'
 arch=('i686' 'x86_64')
 url="https://github.com/hoelzro/$_pkgname"
 license=('MIT')
-makedepends=('luarocks')
+makedepends=('luarocks' 'lua52' 'lua51')
 source=("$_rockname-$pkgver.tar.gz::https://github.com/hoelzro/$_pkgname/archive/$_pkgver.tar.gz")
 sha256sums=('c1a1d0c57107147ea02878a50b768d1c3c13aca2769b026c5bb7a84119607f30')
 
