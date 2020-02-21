@@ -16,7 +16,7 @@ kernver, archver, archrel, pkgrel = subprocess.check_output(
 ).decode('utf8').strip().split()
 
 if (kernver, archver, archrel) != (latest_kernver, latest_archver, latest_archrel):
-    print("out of date!")
+    print("linux-versioned-bin out of date!")
     with open('PKGBUILD') as f:
         pkgbuild = f.read()
 
@@ -60,3 +60,5 @@ if (kernver, archver, archrel) != (latest_kernver, latest_archver, latest_archre
 
     if yn_choice('git push?'):
         subprocess.check_call(['git', 'push'])
+else:
+    print("linux-versioned-bin is up to date")

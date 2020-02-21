@@ -3,7 +3,7 @@ _pkgname=linux
 _kernver=5.5.4
 _archver=arch1
 _pkgrel=1
-pkgbase='linux-versioned-bin'
+pkgbase="${_pkgname}-versioned-bin"
 KERNNAME=${_kernver}-${_archver}-${_pkgrel}
 _versioned_pkgname=${_pkgname}${KERNNAME}
 pkgname=("linux-versioned-bin"
@@ -13,7 +13,7 @@ pkgname=("linux-versioned-bin"
          "${_versioned_pkgname}-headers-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_kernver}
-pkgrel=5
+pkgrel=6
 pkgdesc='Repackaging of the Arch kernel with a unique package name for each version'
 url="https://git.archlinux.org/linux.git/log/?h=v${_kernver}-${_archver}"
 arch=(x86_64)
@@ -69,56 +69,26 @@ package_linux-versioned-docs-bin() {
 package_linux5.5.4-arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
+  conflicts=("${_pkgname}")
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  # Ignore already decompressed source, since kernel, docs and headers are all mixed
-  # together in there:
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  MODULES=${pkgdir}/usr/lib/modules
-
-  # Modify the name used by mkinitcpio to include the version: 
-  echo "linux-${KERNNAME}" | install -Dm644 /dev/stdin "${MODULES}/${KERNNAME}/pkgbase"
-  
-  # Rename the modules directory to have the suffix '-versioned' so we don't conflict
-  # with the 'linux' package:
-  mv "${MODULES}/${KERNNAME}" "${MODULES}/${KERNNAME}-versioned"
+  sed -ic "s/${_pkgname}/${_pkgname}-${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
 package_linux5.5.4-arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
-  # Ignore already decompressed source, since kernel, docs and headers are all mixed
-  # together in there:
+  conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-
-  MODULES=${pkgdir}/usr/lib/modules
-  # Rename the modules directory to have the suffix '-versioned' so we don't conflict
-  # with the 'linux-headers' package:
-  mv "${MODULES}/${KERNNAME}" "${MODULES}/${KERNNAME}-versioned"
-
-  # Change the src directory symlink to include the version, and link to the renamed
-  # modules directory:
-  rm "${pkgdir}/usr/src/linux" 
-  ln -s "../../lib/modules/${KERNNAME}-versioned/build" \
-    "${pkgdir}/usr/src/linux-${KERNNAME}"
+  mv "${pkgdir}/usr/src/linux"{,"-${KERNNAME}"}
 }
 
 package_linux5.5.4-arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
-  # Ignore already decompressed source, since kernel, docs and headers are all mixed
-  # together in there:
+  conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-
-  MODULES=${pkgdir}/usr/lib/modules
-  # Rename the modules directory to have the suffix '-versioned' so we don't conflict
-  # with the 'linux-docs' package:
-  mv "${MODULES}/${KERNNAME}" "${MODULES}/${KERNNAME}-versioned"
-
-  # Change the doc directory symlink to include the version, and link to the renamed
-  # modules directory:
-  rm "${pkgdir}/usr/share/doc/linux" 
-  ln -s "../../lib/modules/${KERNNAME}-versioned/build/Documentation" \
-    "${pkgdir}/usr/share/doc/linux-${KERNNAME}"
+  mv "${pkgdir}/usr/share/doc/linux"{,"-${KERNNAME}"}
 }

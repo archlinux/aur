@@ -1,7 +1,7 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
 	pkgver = 5.5.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
 	arch = x86_64
 	license = GPL2
@@ -33,10 +33,13 @@ pkgname = linux5.5.4-arch1-1-bin
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	conflicts = linux
 
 pkgname = linux5.5.4-arch1-1-headers-bin
 	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.5.4-arch1-1
+	conflicts = linux-headers
 
 pkgname = linux5.5.4-arch1-1-docs-bin
 	pkgdesc = Documentation for the Linux kernel 5.5.4-arch1-1
+	conflicts = linux-docs
 
