@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: John K. Luebs <jkl@johnluebs com>
 # Contributor: Simon Gomizelj <https://github.com/vodik>
 # Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
