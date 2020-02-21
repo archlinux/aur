@@ -8,6 +8,7 @@ pkgbase = zfs-utils-any
 	optdepends = python: for arcstat/arc_summary/dbufstat
 	provides = zfs-utils
 	conflicts = zfs-utils
+	replaces = zfs-utils
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz.asc
 	source = zfs.initcpio.install

@@ -12,6 +12,7 @@ url="https://zfsonlinux.org/"
 license=('CDDL')
 conflicts=("zfs-utils")
 provides=("zfs-utils")
+replaces=("zfs-utils")
 optdepends=('python: for arcstat/arc_summary/dbufstat')
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc}
         "zfs.initcpio.install"
