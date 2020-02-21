@@ -2,29 +2,29 @@
 # Contributor: Jooa <aur at (name) dot xyz>
 
 _cranname=sp
-_cranver=1.3-2
-pkgname=r-sp
+_cranver=1.4-0
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Classes and Methods for Spatial Data"
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-arch=('x86_64' 'i686')
-license=('GPL2' 'GPL3')
-depends=('r>=3.0')
-optdepends=('r-rcolorbrewer' 'r-gdal' 'r-geos' 'r-gstat' 'r-maptools' 'r-deldir')
-makedepends=('gcc')
+license=(GPL2 GPL3)
+depends=('r>=3.0.0')
+makedepends=(gcc)
+optdepends=(r-rcolorbrewer r-rgdal r-rgeos r-gstat r-maptools r-deldir)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('940a22add254fbb5ebd80a380f4777fcd1af282975ebad400d177f3a20d6f24e')
+md5sums=('5f59384babb0be2128af3ddca3c05e1c')
 
 build() {
   cd "${srcdir}"
 
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
 
 package() {
   cd "${srcdir}"
 
-  install -dm0755 "$pkgdir/usr/lib/R/library"
-  cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
