@@ -1,0 +1,20 @@
+post_install() {
+	sudo groupadd -f games
+	sudo chmod g+rx /usr/share/proton-ge-custom
+	sudo chown root:games /usr/share/proton-ge-custom
+	sudo chown root:users /usr/share/proton-ge-custom
+}
+
+pre_upgrade()  {
+	sudo rm -rf /usr/share/proton-ge-custom
+}
+
+post_upgrade() {
+	sudo chmod g+rx /usr/share/proton-ge-custom
+	sudo chown root:games /usr/share/proton-ge-custom
+	sudo chown root:users /usr/share/proton-ge-custom
+}
+
+post_remove() {
+	sudo rm -rf /usr/share/proton-ge-custom
+}
