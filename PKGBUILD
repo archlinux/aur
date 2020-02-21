@@ -2,7 +2,7 @@
 # Based on basilisk browser PKGBUILD
 
 pkgname=serpent-browser
-pkgver=2020.02.06
+pkgver=2020.02.18
 pkgrel=1
 pkgdesc="Unbranded version of Basilisk web browser"
 arch=(x86_64)
@@ -18,7 +18,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags)
 source=(https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz
         serpent-browser.desktop)
-sha256sums=('04571b15fb720535cf390e3004821f22d2f120e720b121fd3046b907714b3e37'
+sha256sums=('08406ab8804f2bc16f79d40a3f50fbea9ce1121b1d4dc0248e79dd04ba72060c'
             'f6c1f975ac3700adbb5e5ef6e0a2adc2fb9c4063a858f0d39765a2af9ccf996c')
 
 prepare() {
