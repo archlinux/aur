@@ -1,4 +1,5 @@
-# Maintainer: jerry73204 <jerry73204@gmail.com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Contributor: jerry73204 <jerry73204@gmail.com>
 # Contributor: piojo
 
 pkgname=pxz
