@@ -1,22 +1,25 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 5.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
 	makedepends = libxslt
 	makedepends = patchelf
+	makedepends = librsvg
 	source = vmware-horizon-client-5.3.0-15208949-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/CART20FQ4/VMware-Horizon-Client-5.3.0-15208949.x64.bundle
 	source = http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass
 	source = vmware-horizon-usb
 	source = vmware-horizon-usb.service
 	source = vmware-horizon-virtual-printing.service
+	source = vmware-horizon.svg
 	sha256sums = 4f2a8d5f420d467233c28f59fd9c20f2e39abcac4983d9248d5c1515c53d3253
 	sha256sums = d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163
 	sha256sums = 008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f
 	sha256sums = a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226
 	sha256sums = e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36
+	sha256sums = cea92d3ed97b717c631fed5664c06fc71a6deac21ba32da78970c582ed48c747
 
 pkgname = vmware-horizon-client
 	install = vmware-horizon-client.install
