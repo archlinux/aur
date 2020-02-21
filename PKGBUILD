@@ -1,6 +1,6 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=matcha-gtk-theme-git
-pkgver=r241.b9188b7
+pkgver=r249.7f76285
 pkgrel=1
 pkgdesc='A flat design theme for GTK3, GTK2, and Gnome-Shell.'
 arch=('any')
@@ -21,8 +21,8 @@ package() {
   mkdir "${pkgdir}"/usr/share
   mkdir "${pkgdir}"/usr/share/themes
   cd "${pkgname}"
-  export _ORIGINAL_MATCHA_INSTALL_DIR=/usr/share/themes
-  export _NEW_MATCHA_INSTALL_DIR="${pkgdir}"/usr/share/themes
-  sed -i 's|'${_ORIGINAL_MATCHA_INSTALL_DIR}'|'${_NEW_MATCHA_INSTALL_DIR}'|g' ./Install
-	./Install
+  _ORIGINAL_MATCHA_INSTALL_DIR=/usr/share/themes
+  _NEW_MATCHA_INSTALL_DIR="${pkgdir}"/usr/share/themes
+  sed -i 's|'${_ORIGINAL_MATCHA_INSTALL_DIR}'|'${_NEW_MATCHA_INSTALL_DIR}'|g' ./install.sh
+	./install.sh
 }
