@@ -1,0 +1,13 @@
+pkgbase = grub-mkconfig-hook
+	pkgdesc = alpm hook to run grub-mkconfig after a kernel install/remove/upgrade
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/grub-mkconfig-hook/
+	arch = any
+	license = GPL
+	depends = grub
+	source = grub-mkconfig.hook
+	sha256sums = 5f64a46b48cfa02d74cc6ad8cf6960696131e22aebe327c48530de9f27dfec48
+
+pkgname = grub-mkconfig-hook
+
