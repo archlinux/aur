@@ -3,8 +3,8 @@
 
 pkgname=python-nio
 _pypiname=matrix-nio
-pkgver=0.7.2
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc='python no-IO library for the matrix chat protocol'
 arch=('any')
 url='https://github.com/poljar/matrix-nio'
@@ -17,7 +17,7 @@ depends=('python' 'python-olm' 'python-h11' 'python-h2'
          'python-pycryptodome' 'python-unpaddedbase64' 'python-aiohttp'
          'python-cachetools' 'python-aiofiles')
 source=("https://github.com/poljar/$_pypiname/archive/$pkgver.tar.gz")
-sha512sums=('9ec233d7a83eb03cde5d81cec38e7a33eeaed427e9b7122118c110dc2f2e3dd65091a6d8de2e807f78083db9fc07dd8a847a5c28daaa54f85a24538d07ab6b9c')
+sha512sums=('b49ba2f7822a630a8e9ec01fd846bab4eba406923e46025f4e2256ab34a2b8ab6856b4be2b8bdc14b7e565b490bdf1ced8eb1b4b40361cd4bc9f5dae44e0e567')
 
 package_python-nio() {
   cd "$srcdir"/$_pypiname-$pkgver
