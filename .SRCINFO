@@ -1,6 +1,6 @@
 pkgbase = python-dash-daq
 	pkgdesc = Control components for Dash
-	pkgver = 0.2.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/plotly/dash-daq
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-dash-daq
 	depends = python-future
 	depends = yarn
 	depends = python-yaml
-	source = https://github.com/plotly/dash-daq/archive/v0.2.2.tar.gz
-	sha256sums = 0909d5556760f8caa7e2b3e8c48e4e4e812cb1a66422e4c59ceb7cee498982c1
+	source = https://github.com/plotly/dash-daq/archive/v0.3.3.tar.gz
+	sha256sums = 8ae2c55cff42e839d3a48392c624d102238b87b9ac29be8f74fbe8cb09081ee5
 
 pkgname = python-dash-daq
 
