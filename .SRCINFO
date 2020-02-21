@@ -1,6 +1,6 @@
 pkgbase = sengi-appimage
 	pkgdesc = Mastodon & Pleroma Multi-account Desktop Client
-	pkgver = 0.19.4
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://nicolasconstant.github.io/sengi/
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = sengi-appimage
 	depends = fuse
 	provides = sengi
 	conflicts = sengi
-	noextract = Sengi-0.19.4-linux.AppImage
+	noextract = Sengi-0.20.0-linux.AppImage
 	options = !strip
-	source = Sengi-0.19.4-linux.AppImage::https://github.com/NicolasConstant/sengi/releases/download/0.19.4/Sengi-0.19.4-linux.AppImage
+	source = Sengi-0.20.0-linux.AppImage::https://github.com/NicolasConstant/sengi/releases/download/0.20.0/Sengi-0.20.0-linux.AppImage
 	source = sengi.desktop
 	source = sengi.png
-	sha256sums = 644a21c75c087e22b4376dcb3d68678757839d60d041b1a923db33eced25ff5f
+	sha256sums = 164188deeb7a6a5eb537131826745ed3473ea7d50ed2650cf0e438f3f8b25e15
 	sha256sums = SKIP
 	sha256sums = SKIP
 
