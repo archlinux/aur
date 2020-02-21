@@ -1,0 +1,17 @@
+pkgbase = tsh3-bin
+	pkgdesc = CLI client used by Teleport Users
+	pkgver = 3.2.15
+	pkgrel = 1
+	url = https://gravitational.com/teleport
+	arch = x86_64
+	license = Apache
+	provides = tsh
+	conflicts = tsh
+	conflicts = tsh3
+	conflicts = teleport
+	conflicts = teleport-bin
+	source = https://get.gravitational.com/teleport-v3.2.15-linux-amd64-bin.tar.gz
+	sha256sums = 5a3c70578ce2ee7cb821f61d2f808528d30271ca25281b71e90839c68c9105c9
+
+pkgname = tsh3-bin
+
