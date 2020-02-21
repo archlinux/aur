@@ -48,7 +48,7 @@ package() {
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
 
   for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
-    install -Dm755 "$pkgname-$pkgver/contrib/$util" -t \
+    install -Dm755 "$pkgname/contrib/$util" -t \
                    "$pkgdir/usr/share/$pkgname/scripts"
   done
 }
