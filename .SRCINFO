@@ -1,7 +1,7 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
 	pkgver = 5.5.4
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = linux-versioned-bin
 pkgname = linux-versioned-bin
 	pkgdesc = Dummy package depending on linux5.5.4-arch1-1-bin
 	depends = linux5.5.4-arch1-1-bin
-	optdepends = grub-hook: to run grub-mkconfig when new kernels are installed
+	optdepends = grub-mkconfig-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
 	pkgdesc = Dummy package depending on linux5.5.4-arch1-1-headers-bin
@@ -27,8 +27,16 @@ pkgname = linux-versioned-docs-bin
 	depends = linux5.5.4-arch1-1-docs-bin
 
 pkgname = linux5.5.4-arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.5.4-arch1-1
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux5.5.4-arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.5.4-arch1-1
 
 pkgname = linux5.5.4-arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.5.4-arch1-1
 

@@ -13,7 +13,7 @@ pkgname=("linux-versioned-bin"
          "${_versioned_pkgname}-headers-bin"
          "${_versioned_pkgname}-docs-bin")
 pkgver=${_kernver}
-pkgrel=4
+pkgrel=5
 pkgdesc='Repackaging of the Arch kernel with a unique package name for each version'
 url="https://git.archlinux.org/linux.git/log/?h=v${_kernver}-${_archver}"
 arch=(x86_64)
@@ -31,7 +31,7 @@ _docssrc=$(pacman -Sp "${_pkgname}-docs" 2> /dev/null)
 
 _arch_archive=https://archive.archlinux.org/packages/.all
 
-# If not, then use the Arch linux archive:
+# If not, then use the Arch Linux archive:
 if [ $(basename "${_kernsrc}" 2> /dev/null) != "${_kernpkg}" ]; then
   _kernsrc=${_arch_archive}/${_kernpkg}
 fi
@@ -53,7 +53,7 @@ sha256sums=('7b9e536050d8bf740b00fab87a52ab843ff9dedbb9ece35f45b219cef91cf7db'
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
     depends=("${_versioned_pkgname}-bin")
-    optdepends=('grub-hook: to run grub-mkconfig when new kernels are installed')
+    optdepends=('grub-mkconfig-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-versioned-headers-bin() {
@@ -66,7 +66,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-__package_linux() {
+package_linux5.5.4-arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -85,9 +85,7 @@ __package_linux() {
   mv "${MODULES}/${KERNNAME}" "${MODULES}/${KERNNAME}-versioned"
 }
 
-eval "package_${_versioned_pkgname}-bin() { __package_linux; }"
-
-__package_linux-headers() {
+package_linux5.5.4-arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   # Ignore already decompressed source, since kernel, docs and headers are all mixed
   # together in there:
@@ -106,9 +104,7 @@ __package_linux-headers() {
     "${pkgdir}/usr/src/linux-${KERNNAME}"
 }
 
-eval "package_${_versioned_pkgname}-headers-bin() { __package_linux-headers; }"
-
-__package_linux-docs() {
+package_linux5.5.4-arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   # Ignore already decompressed source, since kernel, docs and headers are all mixed
   # together in there:
@@ -126,5 +122,3 @@ __package_linux-docs() {
   ln -s "../../lib/modules/${KERNNAME}-versioned/build/Documentation" \
     "${pkgdir}/usr/share/doc/linux-${KERNNAME}"
 }
-
-eval "package_${_versioned_pkgname}-docs-bin() { __package_linux-docs; }"
