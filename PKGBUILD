@@ -2,14 +2,14 @@
 # Contributor: Étienne Deparis <etienne [at] depar.is>
 pkgname=python-inotify-simple
 _name=inotify_simple
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 pkgdesc="A simple wrapper around inotify."
 license=("BSD")
 url="https://pypi.python.org/pypi/inotify_simple"
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a19baa9e776f72c1cbdabd75d908f68819f1678433fe31b91fed5572551f4ef6')
+sha256sums=('5be8a720232619d392210e0b1c0dca279eb5bc34f38a52beb590c33e9bb7885f')
 arch=('any')
 
 build() {
