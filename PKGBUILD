@@ -2,7 +2,7 @@
 pkgname=vaudtax
 pkgver=2019
 _pkgver=1.1.1-production
-pkgrel=2
+pkgrel=3
 pkgdesc="VaudTax"
 url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2018/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
@@ -35,4 +35,4 @@ package() {
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 md5sums=('9cb9f30854f7d77c1041a541bc251ebf'
-         '1b797df588e1d3851c67c7aee1f3f844')
+         '58628ce238328666d4b5c749ac528138')
