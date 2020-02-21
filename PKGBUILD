@@ -6,7 +6,7 @@ _gitname=lxqt-kcm-integration-extra
 pkgname=(
     'lxqt-kcm-integration-extra-git'
     )
-pkgver=r2.0fce5ef
+pkgver=r4.8c6e687
 pkgrel=1
 arch=('any')
 _branch='master'
@@ -45,7 +45,6 @@ pkgver() {
 package_lxqt-kcm-integration-extra-git() {
     pkgdesc='extra kcm support for lxqt-kwin'
     depends=(
-        'lxqt-kcm-integration-git'
         )
     optdepends=(
         'kcm-wacomtablet: wacom tablet kcm support'
@@ -60,7 +59,7 @@ package_lxqt-kcm-integration-extra-git() {
 	'nx-firewall-git: ufw firewall kcm support'
 	)
 
-    provides=('lxqt-kcm-integration-extra')
+    provides=('lxqt-kcm-integration-extra' 'lxqt-kcm-integration-git' 'lxqt-kcm-integration')
 
     _install ''
 }
