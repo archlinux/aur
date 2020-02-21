@@ -1,0 +1,6 @@
+post_install() {
+	echo
+	echo To finish installation, source \
+	/usr/share/kak-auto-pairs-git/rc/auto-pairs.kak in your .kakrc
+	echo
+}
