@@ -46,15 +46,16 @@ prepare() {
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "$srcdir/$pkgname-$pkgver"
+  local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
 
-  python3.8 setup.py install --root=$pkgdir --optimize=1
+  python setup.py install --root="$pkgdir" --optimize=1
 
-  mv $pkgdir/usr/lib/python3.8/site-packages/{README.rst,requirements*,searx}
+  mv "${pkgdir}${_site_packages}"/{README.rst,requirements*,searx}
 
-  mkdir -p $pkgdir/etc/$pkgname
-  mv $pkgdir/usr/lib/python3.8/site-packages/$pkgname/settings.yml $pkgdir/etc/$pkgname/
-  ln -s /etc/$pkgname/settings.yml $pkgdir/usr/lib/python3.8/site-packages/$pkgname/settings.yml
+  mkdir -p "$pkgdir/etc/$pkgname"
+  mv "${pkgdir}${_site_packages}/$pkgname/settings.yml" $pkgdir/etc/$pkgname/
+  ln -s /etc/$pkgname/settings.yml "${pkgdir}${_site_packages}/$pkgname/settings.yml"
 
   install -Dm644 "${srcdir}/searx.sysusers" "${pkgdir}/usr/lib/sysusers.d/searx.conf"
   install -Dm644 "${srcdir}/searx.ini" "${pkgdir}/etc/uwsgi/searx.ini"
