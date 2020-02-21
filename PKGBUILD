@@ -4,7 +4,7 @@ pkgbase='sublime-music'
 pkgname=('sublime-music')
 _module='sublime-music'
 pkgver='0.8.13'
-pkgrel=1
+pkgrel=2
 pkgdesc='A native Subsonic/Airsonic/*sonic client for Linux. Build using Python and GTK+.'
 url='https://gitlab.com/sumner/sublime-music'
 depends=(
@@ -36,7 +36,7 @@ source=(
     'https://gitlab.com/sumner/sublime-music/-/jobs/artifacts/v0.8.13/download?job=build_logo'
 )
 md5sums=('3e60ffa2f8bd29e72725f09cf07ba064'
-         '06909ee117744ed2309a977ec55f5881')
+         'e2f9199c04776e7abaf79089d36b8a3d')
 
 
 build() {
