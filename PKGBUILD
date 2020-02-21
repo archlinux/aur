@@ -1,6 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=lemon-lime-git
+_pkgname=lemon-lime 
 pkgver=v.0.1.0120
 pkgrel=1
 epoch=
@@ -61,11 +62,11 @@ check() {
 
 package() {
 	cd "$srcdir/Project_LemonLime"
-	install -D -m755 lemon "$pkgdir/usr/bin/$pkgname"
+	install -D -m755 lemon "$pkgdir/usr/bin/$_pkgname"
 	
-	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 	install -D -m644 pics/icon.png "$pkgdir/usr/share/pixmaps/lemon-lime.png"
-	install -D -m644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -D -m644 ../$pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 	#install -D -m644 Changelog.md "$pkgdir/usr/share/doc/$pkgname/Changelog.md"
 }
