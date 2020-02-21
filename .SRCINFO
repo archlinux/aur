@@ -1,14 +1,14 @@
 pkgbase = bottom
-	pkgdesc = A graphical top clone, written in Rust. Inspired by both gtop and gotop.
-	pkgver = 0.1.2
+	pkgdesc = Yet another cross-platform graphical process/system monitor.
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ClementTsang/bottom
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = bottom-0.1.2.tar.gz::https://github.com/ClementTsang/bottom/archive/v0.1.2.tar.gz
-	sha512sums = 5d44c7ed10baafa860cf3a76989f4760a982a9101ed12e9dc75821c7a3dbd72cd8b51d89bde4a805f5b08654000a289d927f7aa7959086478eb93061ecab3b85
+	source = bottom-0.2.0.tar.gz::https://github.com/ClementTsang/bottom/releases/download/0.2.0/bottom_source_code.tar.gz
+	sha512sums = c8d2041fc6343e10e7a6ca2c7951d14b9c756f48a6f6c1ef3fec2bf2315c9e62098fe1efda87166d5f5a9a113bd945ea636e73540d7f30f83148b4dd6c3b985f
 
 pkgname = bottom
 
