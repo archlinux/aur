@@ -1,23 +1,23 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
-_pkgbasename=libcap
-pkgname=lib32-$_pkgbasename
-pkgver=2.29
+pkgname=lib32-libcap
+pkgver=2.32
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="https://sites.google.com/site/fullycapable/"
 license=('GPL2')
-depends=('lib32-attr' $_pkgbasename)
-makedepends=('gcc-multilib' 'linux-api-headers')
-validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
+depends=('lib32-glibc' 'lib32-attr' 'libcap')
+makedepends=('linux-api-headers')
+provides=('libcap.so')
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.{xz,sign})
-md5sums=('dd865b8a0a13cb8e9768e832e00f9f11'
-         'SKIP')
+sha256sums=('1005e3d227f2340ad1e3360ef8b69d15e3c72a29c09f4894d7aac038bd26e2be'
+            'SKIP')
+validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 
 prepare() {
-  cd ${_pkgbasename}-${pkgver}
+  cd libcap-$pkgver
 
   # use our buildflags
   sed -i "s/CFLAGS :=/CFLAGS += \$(CPPFLAGS) /" Make.Rules
@@ -25,18 +25,12 @@ prepare() {
 }
 
 build() {
-  cd ${_pkgbasename}-${pkgver}
-
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-
-  make -C libcap CC="gcc -m32" prefix=/usr lib=lib32
+  make -C libcap-$pkgver/libcap KERNEL_HEADERS=/usr/include CC="gcc -m32"
 }
 
 package() {
-  cd ${_pkgbasename}-${pkgver}
+  cd libcap-$pkgver
+  make -C libcap prefix=/usr lib=lib32 DESTDIR="$pkgdir" RAISE_SETFCAP=no install
 
-  make -C libcap prefix=/usr lib=lib32 DESTDIR="$pkgdir" install
-  chmod 755 "$pkgdir"/usr/lib32/libcap.so.${pkgver}
-
-  rm -rf "$pkgdir"/usr/include
+  rm -r "$pkgdir"/usr/include
 }
