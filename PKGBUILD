@@ -2,7 +2,7 @@
 # Contributor: boscowitch <boscowitch@boscowitch.de>
 
 pkgname=advcp
-pkgver=8.30
+pkgver=8.31
 pkgrel=1
 
 _pkgname=coreutils
@@ -15,9 +15,9 @@ depends=("glibc" "pam" "acl" "gmp" "libcap")
 provides=("acp" "amv" "advcp" "advmv" "cpg" "mvg")
 install=${pkgname}.install
 source=(ftp://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$pkgver.tar.xz
-        https://raw.githubusercontent.com/mrdrogdrog/advcpmv/master/advcpmv-0.8-8.30.patch)
-sha256sums=("e831b3a86091496cdba720411f9748de81507798f6130adeaef872d206e1b057"
-            "9954d975554f3c06b518d4d17c5247ef751fe8f29d692799e79c9386ab4a1c1b")
+        https://raw.githubusercontent.com/jarun/advcpmv/master/advcpmv-0.8-8.31.patch)
+sha256sums=("ff7a9c918edce6b4f4b2725e3f9b37b0c4d193531cac49a48b56c4d0d3a9e9fd"
+            "57cd37e98e52aeae7657b5f79489c2457e83ef7d80f5c42a4ae2865170b572ad")
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
