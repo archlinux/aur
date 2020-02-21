@@ -10,8 +10,8 @@ pkgbase = attica-git
 	makedepends = git
 	makedepends = extra-cmake-modules-git
 	depends = qt5-base
-	provides = attica-qt5
-	conflicts = attica-qt5
+	provides = attica
+	conflicts = attica
 	source = attica::git+git://anongit.kde.org/attica
 	md5sums = SKIP
 

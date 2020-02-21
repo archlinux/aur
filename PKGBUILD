@@ -7,8 +7,8 @@ url='https://projects.kde.org/projects/frameworks/attica'
 license=('LGPL')
 depends=('qt5-base')
 makedepends=('cmake' 'git' 'extra-cmake-modules-git')
-conflicts=('attica-qt5')
-provides=('attica-qt5')
+conflicts=('attica')
+provides=('attica')
 source=('attica::git+git://anongit.kde.org/attica')
 md5sums=('SKIP')
 
