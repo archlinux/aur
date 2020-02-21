@@ -3,14 +3,14 @@
 # my old fork is at https://sourceforge.net/u/ilikenwf/mcomix/ci/gtk3/tree/
 
 pkgname=mcomix-gtk3-git
-pkgver=r1883.2ce9f7a
+pkgver=r1912.b80f348
 pkgrel=1
 pkgdesc="A comic book reader. Forked from MComix and ported to GTK3."
 arch=('any')
 url="https://github.com/multiSnow/mcomix3"
 license=('GPL')
 depends=('python-pillow' 'python-gobject')
-makedepends=('gettext' 'intltool')
+makedepends=('gettext' 'intltool' 'git')
 optdepends=('libunrar: for rar compressed comics' \
             'p7zip: for 7z compressed comics' \
             'unrar: for rar compressed comics' \
