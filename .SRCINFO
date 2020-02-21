@@ -1,0 +1,12 @@
+pkgbase = guijs
+	pkgdesc = The app that makes your #devlife easier.
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/Akryum/guijs
+	arch = x86_64
+	options = !strip
+	source = guijs-0.1.0.deb::https://github.com/Akryum/guijs/releases/download/v0.1.0-tauri/guijs_0.1.0_amd64.deb
+	sha1sums = fc914c1ea8fee83c63113cc86e22bfb3d1c8121a
+
+pkgname = guijs
+
