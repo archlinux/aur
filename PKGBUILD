@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Pablo Vilas <pablovilas89 at gmail dot com>
 # Contributor: Testuser_01 <arch@nico-siebler.de>
 
