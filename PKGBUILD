@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname="mongodb-bin-4.0"
 pkgver=4.0.16
