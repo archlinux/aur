@@ -5,7 +5,7 @@ pkgname=('avidemux-core-git'
          'avidemux-qt-git'
          'avidemux-cli-git'
          )
-pkgver=2.7.2.190317.04c29e0e8
+pkgver=2.7.5.200221.73b12dfc2
 pkgrel=1
 pkgdesc="A graphical/cli tool to edit video (filter/re-encode/split). (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,6 @@ url='http://www.avidemux.org'
 license=('GPL2')
 makedepends=('git'
              'cmake'
-             'subversion'
              'yasm'
              'nasm'
              'a52dec'
@@ -45,12 +44,14 @@ makedepends=('git'
              'vapoursynth'
              'hicolor-icon-theme'
              )
-source=('avidemux::git+https://github.com/mean00/avidemux2.git#branch=ffmpeg4x'
+source=('avidemux::git+https://github.com/mean00/avidemux2.git'
+        'git+https://github.com/mean00/avidemux2_i18n.git'
         'fix_verbose.patch'
         'add_settings_pluginui_message_error.patch'
         'opus_check.patch'
         )
 sha256sums=('SKIP'
+            'SKIP'
             '4f751cbb3a65f904f7c0ad68473880e2a9edcda332a293e20ad238280ec52884'
             'c5b5d3d7bcdf4c588a780c12fdac7791ddb0527db438c85b4c1c078507da2f0b'
             'ae6d2c93163b7b760591688c7811dfdd4a952ed9074d8cbdf4953b701f0fa7db'
@@ -69,6 +70,9 @@ prepare() {
 
   #exit
   cd avidemux
+
+  git config submodule.i18n.url "${srcdir}/avidemux2_i18n"
+  git submodule update --init
 
   # http://avidemux.org/smif/index.php/topic,16301.0.html
   patch -p1 -i "${srcdir}/fix_verbose.patch"
@@ -109,6 +113,7 @@ build() {
   cmake ../avidemux/avidemux/qt4 \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DENABLE_QT5=ON \
     -DFAKEROOT="${srcdir}/fakeroot"
 
@@ -119,6 +124,7 @@ build() {
   cmake ../avidemux/avidemux_plugins \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DOpenGL_GL_PREFERENCE=GLVND \
     -DENABLE_QT5=ON \
     -DPLUGIN_UI=QT4 \
     -DUSE_EXTERNAL_LIBA52=ON \
