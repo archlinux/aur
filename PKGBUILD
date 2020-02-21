@@ -6,7 +6,7 @@
 pkgname=sway9
 pkgver=1.4
 epoch=1
-pkgrel=4
+pkgrel=5
 _commit=8cbcdc245c8a215279711cc18fc9f2d0a2577933
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
@@ -18,11 +18,11 @@ provides=(sway)
 conflicts=(sway)
 backup=(etc/sway/config)
 optdepends=(
+  'alacritty: Terminal emulator used by the default config'
   'dmenu: Application launcher'
-  'i3status: Status line'
   'grim: Screenshot utility'
+  'i3status: Status line'
   'mako: Lightweight notification daemon'
-  'rxvt-unicode: Terminal emulator'
   'slurp: Select a region'
   'swayidle: Idle management daemon'
   'swaylock: Screen locker'
@@ -46,6 +46,11 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
   install -Dm644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 50-systemd-user.conf -t "$pkgdir/etc/sway/config.d/"
+
+  for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
+    install -Dm755 "$pkgname-$pkgver/contrib/$util" -t \
+                   "$pkgdir/usr/share/$pkgname/scripts"
+  done
 }
 
 # vim: ts=2 sw=2 et
