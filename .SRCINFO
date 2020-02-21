@@ -1,0 +1,13 @@
+pkgbase = otf-xcharter
+	pkgdesc = Extension of Bitstream Charter, which provides small caps, oldstyle figures and superior figures in all four styles, Cyrillic and Greek.
+	pkgver = 1.205
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/xcharter
+	arch = any
+	license = custom:LPPL
+	depends = fontconfig
+	source = http://mirrors.ctan.org/fonts/xcharter.zip
+	sha1sums = 568183e2024e3f01e19c3bdc4020395f276ca99d
+
+pkgname = otf-xcharter
+
