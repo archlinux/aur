@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Slavi Pantaleev <s.pantaleev at gmail.com>
 
 pkgname=tomighty
