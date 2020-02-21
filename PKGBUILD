@@ -5,9 +5,9 @@ pkgname=iscan-plugin-gt-f670
 _pkgname=iscan-gt-f670-bundle
 pkgver=2.30.4
 _pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="iscan plugin for Epson Perfection Photo V200 scanners and similar"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
 license=('custom:EPSON')
 depends=('iscan')
@@ -17,7 +17,7 @@ changelog=ChangeLog
 _ARCH=amd64
 _ARCH2=x64
 source=("https://download2.ebz.epson.net/iscan/plugin/gt-f670/deb/x64/iscan-gt-f670-bundle-$pkgver.x64.deb.tar.gz")
-md5sums=('a05cabde4c3a69d372138d1c5ad597fe')
+md5sums=('c7bccf4d7ec68c269110704128989b1e')
 
 
 build(){

@@ -1,3 +1,8 @@
+2020-02-21 FoolEcho <foolecho at gmail dot com>
+	* 2.30.4-2 :
+	Checksum change.
+	Removed i686 support.
+
 2019-09-01 FoolEcho <foolecho at gmail dot com>
 	* 2.30.4-1 :
 	Plugin updated to 2.1.3.
