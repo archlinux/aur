@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Eduardo Leggiero <https://www.leggiero.uk/>
 
 pkgname=perl-ntlm
