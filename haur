@@ -30,6 +30,7 @@ for arg in "$@"; do
     "--remove") set -- "$@" "-r" ;;
     "--clear-cache") set -- "$@" "-c" ;;
     "--help")   set -- "$@" "-h" ;;
+    "--"*) echo "Invalid Option: ${arg}" ; exit 1 ;;
     *)        set -- "$@" "$arg"
   esac
 done
