@@ -1,13 +1,14 @@
 pkgbase = lua-dkjson
-	pkgdesc = Pure Lua JSON module with UTF-8 support and without any dependencies to other external libraries
-	pkgver = 2.4
-	pkgrel = 3
-	url = http://chiselapp.com/user/dhkolf/repository/dkjson/home
+	pkgdesc = David Kolf’s Pure Lua JSON module with UTF-8 support and no external dependencies
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://dkolf.de/src/dkjson-lua.fsl/home
 	arch = any
 	license = MIT
-	depends = lua
-	source = dkjson.lua::http://dkolf.de/src/dkjson-lua.fsl/raw/dkjson.lua?name=0b725e9e99117b71a1f62e921c98bf3327ac8809
-	md5sums = 51cd3c73f4804b31243886c38d89addd
+	makedepends = luarocks
+	source = http://dkolf.de/src/dkjson-lua.fsl/tarball/dkjson-2.5.tar.gz
+	sha256sums = b469e80daa9f2355c675d9293e831f3f69153e49856c59634db97899121a720d
 
 pkgname = lua-dkjson
+	depends = lua
 

@@ -1,18 +1,37 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Stephen Smith <stephen304@gmail.com>
 # Maintainer: Pierre Neidhardt <ambrevar@gmail.com>
 # Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
 
-pkgname=lua-dkjson
-pkgver=2.4
-pkgrel=3
-pkgdesc="Pure Lua JSON module with UTF-8 support and without any dependencies to other external libraries"
-arch=("any")
-url="http://chiselapp.com/user/dhkolf/repository/dkjson/home"
-license=("MIT")
-depends=("lua")
-source=("dkjson.lua::http://dkolf.de/src/dkjson-lua.fsl/raw/dkjson.lua?name=0b725e9e99117b71a1f62e921c98bf3327ac8809")
-md5sums=("51cd3c73f4804b31243886c38d89addd")
+_rockname=dkjson
+pkgname=("lua-$_rockname") # "lua52-$_rockname" "lua51-$_rockname")
+pkgver=2.5
+pkgrel=1
+_rockrel=2
+pkgdesc='David Kolf’s Pure Lua JSON module with UTF-8 support and no external dependencies'
+arch=('any')
+url="http://dkolf.de/src/$_rockname-lua.fsl/home"
+license=('MIT')
+makedepends=('luarocks')
+source=("http://dkolf.de/src/$_rockname-lua.fsl/tarball/$_rockname-$pkgver.tar.gz")
+sha256sums=('b469e80daa9f2355c675d9293e831f3f69153e49856c59634db97899121a720d')
 
-package() {
-	cd "$srcdir"
-	install -Dm644 dkjson.lua "$pkgdir/usr/share/lua/5.3/dkjson.lua"
+_package_helper() {
+  cd "$_rockname-$pkgver"
+  luarocks --lua-version="$1" --tree="$pkgdir/usr/" make --deps-mode=none --no-manifest "$_rockname-$pkgver-$_rockrel.rockspec"
+}
+
+package_lua-dkjson() {
+  depends+=('lua')
+  _package_helper 5.3
+}
+
+package_lua52-dkjson() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-dkjson() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
