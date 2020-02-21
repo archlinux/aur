@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 # Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 
