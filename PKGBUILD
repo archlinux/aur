@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: rtfreedman  <rob<d0t>til<d0t>freedman< T>googlemail<d0t>com>
 # Contributor: Pyro Devil <p.devil@gmail.com>
 
