@@ -1,0 +1,9 @@
+v0.1.0
+======
+First release with Mutter API
+
+Note:
+ - Shared object filename changed
+ - Source ID changed
+
+That allows parallel use of the old plugin and this one
