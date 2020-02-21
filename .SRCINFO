@@ -1,17 +1,18 @@
 pkgbase = edx-downloader-git
 	pkgdesc = A simple tool to download video lectures from edx.org.
-	pkgver = 0.1.10.r0.g265718c
+	pkgver = 0.1.12.r2.g1009c18
 	pkgrel = 1
 	url = https://github.com/coursera-dl/edx-dl
 	arch = any
 	license = LGPL3
 	makedepends = git
-	makedepends = pandoc
+	makedepends = python-setuptools
 	depends = python
 	depends = python-beautifulsoup4
 	depends = youtube-dl
 	depends = python-six
 	depends = python-html5lib
+	depends = python-requests
 	provides = edx-downloader
 	conflicts = edx-downloader
 	source = edx-dl::git+https://github.com/coursera-dl/edx-dl.git#branch=master
