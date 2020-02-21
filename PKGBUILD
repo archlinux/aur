@@ -1,31 +1,66 @@
-pkgname=lua-iconv
-pkgver=7
-pkgrel=2
-pkgdesc="Lua bindings for the iconv API"
-arch=('i686' 'x86_64')
-url="http://ittner.github.com/lua-iconv/"
-license=('custom')
-depends=('lua')
-conflicts=()
-source=(
-	"https://github.com/downloads/ittner/lua-iconv/lua-iconv-$pkgver.tar.gz"
-	"https://github.com/downloads/ittner/lua-iconv/lua-iconv-$pkgver.tar.gz.sig"
-)
-sha512sums=(
-	'03b537ba6050ca8e59e6a62474e837c0d6463d1da4610e6da820afc573659571f75de0c7507792e8b7348fd91623d7af7050ead18bd09ec0c7b89a742e024a57'
-	'SKIP'
-)
-validpgpkeys=('9B49FCE2E6B9D1AD610129AD4F6DF1140041A1FB') # Alexandre Erwin Ittner <FIRST_NAME@LAST_NAME.com.br>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-build() {
-	cd "$srcdir/lua-iconv-$pkgver"
-	make LUAPKG=lua53
+_rockname=iconv
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
+pkgver=7
+pkgrel=3
+pkgdesc='Lua bindings for the iconv API'
+arch=('i686' 'x86_64')
+url="http://ittner.github.com/$pkgname"
+license=('custom')
+# depends=('iconv')
+makedepends=('lua' 'lua52' 'lua51')
+source=("https://github.com/downloads/ittner/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('c1db1915c754b5cfe7e45af61467bc6dfa4f0037d281ccbce6b53c974e2faf09')
+noextract=("${source[@]##*/}")
+# NOTE: GPG key expried for 2 years, tried contaacting op via email
+# "https://github.com/downloads/ittner/$pkgname/$pkgname-$pkgver.tar.gz.sig"
+# validpgpkeys=('9B49FCE2E6B9D1AD610129AD4F6DF1140041A1FB') # Alexandre Erwin Ittner <FIRST_NAME@LAST_NAME.com.br>
+
+prepare() {
+    for dir in lua{,52,51}-"$_rockname-$pkgver"; do
+        mkdir -p "$dir"
+        pushd "$dir"
+        bsdtar --strip-components 1 -xf "$srcdir/${source[@]##*/}"
+        sed -i -e '/^LUA/s/ = / ?= /;/	make test/d' Makefile
+        popd
+    done
 }
 
-package() {
-	cd "$srcdir/lua-iconv-$pkgver"
-	install -Dm0644 iconv.so "$pkgdir/usr/lib/lua/5.3/iconv.so"
-	install -Dm0644 README   "$pkgdir/usr/share/doc/$pkgname/README"
-	install -Dm0644 COPYING  "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+check() {
+	cd "$pkgname-$pkgver"
+    make LUABIN=lua LUAPKG=lua test
+}
+
+build() {
+    set -x
+    for dir in lua{,52,51}-"$_rockname-$pkgver"; do
+        local lv=${dir/-*}
+        pushd "$dir"
+        make LUABIN="$lv" LUAPKG="$lv"
+        popd
+    done
+}
+
+_package_helper() {
+	cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" LUABIN=lua$1 install
+    install -Dm0644 README   "$pkgdir/usr/share/doc/$pkgname/README"
+    install -Dm0644 COPYING  "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_lua-iconv() {
+  depends+=('lua')
+  _package_helper
+}
+
+package_lua52-iconv() {
+  depends+=('lua52')
+  _package_helper 5.2
+}
+
+package_lua51-iconv() {
+  depends+=('lua51')
+  _package_helper 5.1
 }
 
