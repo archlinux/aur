@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Samuel Kesterson <arch@k-labs.com>
 
 pkgname=brother-hl4150cdn
