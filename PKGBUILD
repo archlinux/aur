@@ -18,11 +18,7 @@ pkgver() {
 }
 
 prepare() {
-if [[ -d "${srcdir}/build" ]]; then
-      msg "Cleaning the previous build directory..."
-      rm -rf "${srcdir}/build"
-  fi
-  mkdir "${srcdir}/build"
+  mkdir -p "${srcdir}/build"
 }
 
 build() {
