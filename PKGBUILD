@@ -1,6 +1,6 @@
 # Maintainer: Alex Agura <agura@tfwno.gf>
 pkgname=asus-fan-control
-pkgver=2.12.0+38+g7a53b61
+pkgver=2.12.0+45+g5f84131
 pkgrel=1
 pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('acpi_call-lts: for the linux-lts kernel'
             'acpi_call-dkms: for other non-standard kernels')
 install=$pkgname.install
 #source=("https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz")
-_commit=7a53b619847784f9f96fb61aa61dea1a112b34bd
+_commit=5f8413164a65c590dad8bac31399d0908275de0a
 source=("$pkgname::git+https://github.com/dominiksalvet/asus-fan-control.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -26,9 +26,6 @@ prepare(){
 
     # Our asus-fan-control executable is installed to /usr/bin
     sed -ie '/^ExecStart/s:/local::' .gitpack/data/asus-fan-control.service
-
-    # Fix loading acpi_call since Arch no longer does that on boot
-    sed -ie '/^After=/s/$/ modprobe@acpi_call.service\nWants=modprobe@acpi_call.service/' .gitpack/data/asus-fan-control.service
 }
 
 package() {

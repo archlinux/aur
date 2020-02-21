@@ -1,6 +1,6 @@
 pkgbase = asus-fan-control
 	pkgdesc = Fan control for ASUS devices running Linux.
-	pkgver = 2.12.0+38+g7a53b61
+	pkgver = 2.12.0+45+g5f84131
 	pkgrel = 1
 	url = https://github.com/dominiksalvet/asus-fan-control
 	install = asus-fan-control.install
@@ -11,7 +11,7 @@ pkgbase = asus-fan-control
 	depends = dmidecode
 	optdepends = acpi_call-lts: for the linux-lts kernel
 	optdepends = acpi_call-dkms: for other non-standard kernels
-	source = asus-fan-control::git+https://github.com/dominiksalvet/asus-fan-control.git#commit=7a53b619847784f9f96fb61aa61dea1a112b34bd
+	source = asus-fan-control::git+https://github.com/dominiksalvet/asus-fan-control.git#commit=5f8413164a65c590dad8bac31399d0908275de0a
 	md5sums = SKIP
 
 pkgname = asus-fan-control
