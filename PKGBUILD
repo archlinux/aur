@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: kiefer <jorgelmadrid@gmail.com>
 # Contributor: Alessio Sergi <asergi at archlinux dot us>
