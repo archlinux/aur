@@ -1,7 +1,7 @@
 pkgbase = gcc7
 	pkgdesc = The GNU Compiler Collection (7.x.x)
 	pkgver = 7.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = x86_64
 	license = GPL
@@ -18,13 +18,15 @@ pkgbase = gcc7
 	source = https://gcc.gnu.org/pub/gcc/releases/gcc-7.5.0/gcc-7.5.0.tar.xz
 	source = https://gcc.gnu.org/pub/gcc/infrastructure/isl-0.18.tar.bz2
 	source = bz84080.patch
+	source = libsanitizer.patch
 	sha256sums = b81946e7f01f90528a1f7352ab08cc602b9ccc05d4e44da4bd501c5a189ee661
 	sha256sums = 6b8b0fd7f81d0a957beb3679c81bbb34ccc7568d5682844d8924424a0dadcb1b
 	sha256sums = bce05807443558db55f0d6b4dae37a678ea1bb3388b541c876fe3d110e3717e7
+	sha256sums = ee25895428a9dbd3217de109a043c54cb9f51e6a04a260be088a619c0f677e68
 
 pkgname = gcc7
 	pkgdesc = The GNU Compiler Collection - C and C++ frontends (7.x.x)
-	depends = gcc7-libs=7.5.0-1
+	depends = gcc7-libs=7.5.0-2
 	depends = binutils>=2.28
 	depends = libmpc
 	options = !emptydirs
@@ -38,6 +40,6 @@ pkgname = gcc7-libs
 
 pkgname = gcc7-fortran
 	pkgdesc = Fortran front-end for GCC (7.x.x)
-	depends = gcc7=7.5.0-1
+	depends = gcc7=7.5.0-2
 	options = !emptydirs
 
