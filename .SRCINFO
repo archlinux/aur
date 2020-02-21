@@ -1,6 +1,6 @@
 pkgbase = skaffold-bin
 	pkgdesc = Command line tool that facilitates continuous development for Kubernetes applications
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://skaffold.dev
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = skaffold-bin
 	optdepends = bash-completion: for tab completion
 	provides = skaffold
 	conflicts = skaffold
-	source = skaffold-bin-1.3.1::https://storage.googleapis.com/skaffold/releases/v1.3.1/skaffold-linux-amd64
-	sha256sums = ab5b4b832e63add8795cdecdd59f89055a8d0bd625de3e59ace918ecb25db27b
+	source = skaffold-bin-1.4.0::https://storage.googleapis.com/skaffold/releases/v1.4.0/skaffold-linux-amd64
+	sha256sums = 36691f2df2afaa5b4820b1d6fc0f5c0a489ff203a340698ed5b7cd81ee47cc66
 
 pkgname = skaffold-bin
 
