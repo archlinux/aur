@@ -1,0 +1,13 @@
+diff --git a/modules/libpref/init/all.js b/modules/libpref/init/all.js
+index 9ab3057ddd2a..96be3363fac4 100644
+--- a/modules/libpref/init/all.js
++++ b/modules/libpref/init/all.js
+@@ -2186,7 +2186,7 @@ pref("network.dnsCacheExpirationGracePeriod", 60);
+ pref("network.dns.disablePrefetch", true);
+ 
+ // This preference can be used to turn off DNS prefetch (HTTPS).
+-pref("network.dns.disablePrefetchFromHTTPS", true)
++pref("network.dns.disablePrefetchFromHTTPS", true);
+      
+ // This preference controls whether .onion hostnames are
+ // rejected before being given to DNS. RFC 7686
