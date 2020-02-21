@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Vlad M. <vlad@archlinux.net>
 # Contributor: Attila Bukor <r1pp3rj4ck[at]w4it[dot]eu>
 # Contributor: D. Can Celasun <dcelasun[at]gmail[dot]com>
