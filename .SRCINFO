@@ -1,0 +1,18 @@
+pkgbase = updiprog-git
+	pkgdesc = utility for programming AVR devices with UPDI interface using standard TTL serial port
+	pkgver = v0.2.r2.3741ea7
+	pkgrel = 1
+	url = https://github.com/Polarisru/updiprog
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = git
+	provides = updiprog
+	conflicts = updiprog
+	source = updiprog-git::git+https://github.com/Polarisru/updiprog.git
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = 8145eee13c59c4723ff3b8175c41ea860117fd4fd93cfd18dd176cb74d55cd8a
+
+pkgname = updiprog-git
+
