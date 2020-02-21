@@ -1,13 +1,13 @@
 pkgbase = battery-checker
 	pkgdesc = Script determining if the laptop battery is low
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://gitlab.com/daersc/battery-checker
 	arch = any
 	license = GPL3
 	depends = libnotify
-	source = https://gitlab.com/daersc/battery-checker/-/archive/1.0/battery-checker-1.0.tar.gz
-	md5sums = 29541ab7f031be3118509ddfa1688d51
+	source = https://gitlab.com/daersc/battery-checker/-/archive/1.1/battery-checker-1.1.tar.gz
+	md5sums = 48659c5cb6840e1868b4bb4a16ba438f
 
 pkgname = battery-checker
 
