@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Etienne Perot <etienne at perot dot me>
 
 pkgname=parcimonie-sh-git
