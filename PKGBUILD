@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.19.0.1
-pkgrel=3
+pkgrel=4
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1580810855
+epoch=1582312105
 
 
 # Release commit for 0.19.0.1
@@ -26,12 +26,13 @@ url='https://namecoin.org/'
 license=('MIT')
 depends=('desktop-file-utils' 'openssl' 'db4.8' 'boost' 'boost-libs' 'libevent'
          'qt5-base' 'qt5-tools' 'qrencode' 'miniupnpc' 'protobuf' 'zeromq')
+makedepends=('git' 'gzip' 'patch' 'make' 'coreutils')
 provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
           'namecoin-qt' 'namecoin-tx')
 conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
            'namecoin-qt' 'namecoin-tx')
 source=('git://github.com/namecoin/namecoin-core'
-        "$pkgname-boost-1.72.patch::https://github.com/bitcoin/bitcoin/commit/a64e97dd476b.patch"
+        "$pkgname-boost-1.72.patch::https://github.com/bitcoin/bitcoin/commit/a64e97dd476bda7c7981979d045b0d06d6f7ce47.patch"
         'namecoin.desktop'
         'namecoin1500x1500.png'
         'namecoind.service'
@@ -61,41 +62,56 @@ build() {
     # so I'm leaving i686 with the normal dynamic build.
     if [ "$CARCH" == i686 ]; then
         ./configure --prefix=/usr --enable-upnp-default --enable-hardening \
-                    --with-gui=qt5 --disable-tests
+                    --with-gui=qt5 --disable-tests --enable-bip70 \
+                    --enable-ecmult-static-precomputation
+
+        make DESTDIR="$srcdir/tmp"
+        make DESTDIR="$srcdir/tmp" install
+
 
     # This should produce a static build that doesn't brick every time Arch
     # rolls out updates to the system libraries.
     elif [ "$CARCH" == x86_64 ]; then
-        ./configure LDFLAGS="-static-libstdc++" \
-                   --prefix=/usr \
-                   --enable-glibc-back-compat \
-                   --enable-reduce-exports \
-                   --enable-upnp-default \
-                   --enable-hardening \
-                   --with-gui=qt5 \
-                   --disable-tests
-    fi
+        ./configure --prefix="${srcdir}/namecoin-core/depends/x86_64-pc-linux-gnu" \
+                    --enable-glibc-back-compat \
+                    --enable-reduce-exports \
+                    --enable-upnp-default \
+                    --enable-hardening \
+                    --with-gui=qt5 \
+                    --disable-tests \
+                    --enable-bip70 \
+                    --enable-ecmult-static-precomputation \
+                    LDFLAGS="-static-libstdc++"
 
-    make DESTDIR="$srcdir/tmp"
-    make DESTDIR="$srcdir/tmp" install
+        make DESTDIR="$srcdir/tmp" STATIC=all
+        make DESTDIR="$srcdir/tmp" STATIC=all install
+    fi
 }
 
-
-# Namecoin does not include any man pages.
-# Or rather, it has Bitcoin's man pages completely unchanged.
-# Therefore, I have not included them in the package.
 package() {
-    install -Dm644 "$srcdir/namecoin.desktop" "$pkgdir/usr/share/applications/namecoin.desktop"
+    PREFIXDIR="${srcdir}/namecoin-core/depends/x86_64-pc-linux-gnu"
+    install -Dm644 "$srcdir/namecoin.desktop"      "$pkgdir/usr/share/applications/namecoin.desktop"
     install -Dm644 "$srcdir/namecoin1500x1500.png" "$pkgdir/usr/share/pixmaps/namecoin1500x1500.png"
-    install -Dm755 "$srcdir/tmp/usr/bin/namecoin-qt" "$pkgdir/usr/bin/namecoin-qt"
-    install -Dm755 "$srcdir/tmp/usr/bin/namecoind" "$pkgdir/usr/bin/namecoind"
-    install -Dm755 "$srcdir/tmp/usr/bin/namecoin-cli" "$pkgdir/usr/bin/namecoin-cli"
-    install -Dm755 "$srcdir/tmp/usr/bin/namecoin-tx" "$pkgdir/usr/bin/namecoin-tx"
+    install -Dm644 "$srcdir/namecoind@.service"    "$pkgdir/usr/lib/systemd/system/namecoind@.service"
+    install -Dm644 "$srcdir/namecoind.service"     "$pkgdir/usr/lib/systemd/user/namecoind.service"
     install -Dm644 "$srcdir/namecoin-core/COPYING" "$pkgdir/usr/share/licenses/namecoin/COPYING"
-    install -Dm644 "$srcdir/tmp/usr/include/namecoinconsensus.h" "$pkgdir/usr/include/namecoinconsensus.h"
-    install -Dm644 "$srcdir/tmp/usr/lib/libnamecoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libnamecoinconsensus.so.0.0.0"
-    install -Dm644 "$srcdir/namecoind@.service" "$pkgdir/usr/lib/systemd/system/namecoind@.service"
-    install -Dm644 "$srcdir/namecoind.service" "$pkgdir/usr/lib/systemd/user/namecoind.service"
+    install -Dm755 "$srcdir/tmp/${PREFIXDIR}/bin/bench_namecoin" "$pkgdir/usr/bin/bench_namecoin"
+    install -Dm755 "$srcdir/tmp/${PREFIXDIR}/bin/namecoin-qt"    "$pkgdir/usr/bin/namecoin-qt"
+    install -Dm755 "$srcdir/tmp/${PREFIXDIR}/bin/namecoind"      "$pkgdir/usr/bin/namecoind"
+    install -Dm755 "$srcdir/tmp/${PREFIXDIR}/bin/namecoin-cli"   "$pkgdir/usr/bin/namecoin-cli"
+    install -Dm755 "$srcdir/tmp/${PREFIXDIR}/bin/namecoin-tx"    "$pkgdir/usr/bin/namecoin-tx"
+    install -Dm644 "$srcdir/tmp/${PREFIXDIR}/include/namecoinconsensus.h"       "$pkgdir/usr/include/namecoinconsensus.h"
+    install -Dm644 "$srcdir/tmp/${PREFIXDIR}/share/man/man1/namecoin-cli.1"     "$pkgdir/usr/share/man/man1/namecoin-cli.1"
+    install -Dm644 "$srcdir/tmp/${PREFIXDIR}/share/man/man1/namecoind.1"        "$pkgdir/usr/share/man/man1/namecoind.1"
+    install -Dm644 "$srcdir/tmp/${PREFIXDIR}/share/man/man1/namecoin-qt.1"      "$pkgdir/usr/share/man/man1/namecoin-qt.1"
+    install -Dm644 "$srcdir/tmp/${PREFIXDIR}/share/man/man1/namecoin-tx.1"      "$pkgdir/usr/share/man/man1/namecoin-tx.1"
+    install -Dm644 "$srcdir/tmp/${PREFIXDIR}/share/man/man1/namecoin-wallet.1"  "$pkgdir/usr/share/man/man1/namecoin-wallet.1"
+    gzip "$pkgdir/usr/share/man/man1/namecoin-cli.1"
+    gzip "$pkgdir/usr/share/man/man1/namecoind.1"
+    gzip "$pkgdir/usr/share/man/man1/namecoin-qt.1"
+    gzip "$pkgdir/usr/share/man/man1/namecoin-tx.1"
+    gzip "$pkgdir/usr/share/man/man1/namecoin-wallet.1"
+    install -Dm755 "$srcdir/tmp/${PREFIXDIR}/lib/libnamecoinconsensus.so.0.0.0" "$pkgdir/usr/lib/libnamecoinconsensus.so.0.0.0"
     cd "$pkgdir/usr/lib/"
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so.0"
     ln -s "libnamecoinconsensus.so.0.0.0" "libnamecoinconsensus.so"
