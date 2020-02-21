@@ -3,7 +3,7 @@
 pkgname='clip-history'
 pkgver='0.6'
 _language='en-US'
-pkgrel=0
+pkgrel=1
 pkgdesc='A clipboard manager that simply keeps a list of everything copied'
 url='https://github.com/TAAPArthur/clip-history'
 arch=('any')
@@ -11,9 +11,9 @@ license=('MIT')
 depends=('python3' 'xsel' 'python-gobject')
 
 source=('https://github.com/TAAPArthur/clip-history/archive/v0.6.tar.gz')
-md5sums=('9466bcc600c111f9018f5bddde57838f')
+md5sums=('713680af796a1230b99f0093aef390f6')
 
 package() {
-    cd 'clip-history-$pkgver'
+    cd "clip-history-$pkgver"
     make DESTDIR=$pkgdir install
 }
