@@ -1,4 +1,4 @@
-# Maintainer: Frederik Schwan <frederik dot schwan at linux dot com>
+# Maintainer: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Ghost of Kendo <ghostofkendo at gmail dot com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Pierre Chapuis <catwell@archlinux.us>
