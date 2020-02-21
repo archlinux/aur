@@ -1,11 +1,12 @@
 pkgbase = oselas-2018.12-arm-v7a-linux-gnueabihf-bin
 	pkgdesc = OSELAS cross toolchain for ARMv7a hardfloat, pinned 2018.12 (from Debian package)
 	pkgver = 2018.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pengutronix.de/en/software/toolchain.html
 	arch = x86_64
 	license = GPL
 	depends = ncurses
+	depends = python37
 	provides = oselas-arm-v7a-linux-gnueabihf=2018.12.0
 	options = !strip
 	source = https://debian.pengutronix.de/debian/pool/main/o/oselas.toolchain/oselas.toolchain-2018.12.0-arm-v7a-linux-gnueabihf-gcc-8.2.1-glibc-2.28-binutils-2.31.1-kernel-4.19-sanitized_2018.12.0-1_amd64.deb
