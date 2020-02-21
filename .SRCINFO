@@ -1,0 +1,13 @@
+pkgbase = getdepends
+	pkgdesc = A script that gets a binary and give it's dependencies on Arch Linux using ldd.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/molaeiali/getdepends
+	arch = any
+	license = CC-BY-SA-4.0
+	depends = pkgfile
+	source = https://gitlab.com/molaeiali/getdepends/-/archive/1.0/getdepends-1.0.zip
+	sha256sums = e4475012cf99dd2bbb12669afb07805977a7d350fecceb60a861ae3e9c7fe2ef
+
+pkgname = getdepends
+
