@@ -3,7 +3,7 @@
 pkgname=jriver-media-center
 _debpkgver=26.0.26
 pkgver=26.0.26
-pkgrel=1
+pkgrel=2
 pkgdesc="The Most Comprehensive Media Software"
 arch=('x86_64')
 url="http://www.jriver.com/"
