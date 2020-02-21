@@ -1,5 +1,5 @@
 pkgbase = proton-ge-custom-bin
-	pkgdesc = Compatibility tool for Steam Play (with GloriousEggroll patches)
+	pkgdesc = Compatibility tool for Steam Play  (with GloriousEggroll patches)
 	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
