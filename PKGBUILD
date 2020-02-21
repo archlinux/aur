@@ -8,15 +8,17 @@ pkgbase=qemu-git
 _gitname=qemu
 pkgname=(qemu-git qemu-headless-git qemu-arch-extra-git qemu-headless-arch-extra-git qemu-block-{iscsi-git,rbd-git,gluster-git} qemu-guest-agent-git)
 pkgdesc="A generic and open source machine emulator and virtualizer. Git version."
-pkgver=v4.2.0.r1501.gb29c3e23f6
+pkgver=v4.2.0.r1621.gb651b80822
 pkgrel=1
 epoch=9
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
 url="http://wiki.qemu.org/"
-_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs lzo snappy curl vde2 libcap-ng spice libcacard usbredir)
-depends=(dtc virglrenderer sdl2 vte3 libpulse "${_headlessdeps[@]}")
-makedepends=(spice-protocol python ceph libiscsi glusterfs git)
+_headlessdeps=(seabios gnutls libpng libaio numactl jemalloc xfsprogs libnfs
+               lzo snappy curl vde2 libcap-ng spice libcacard usbredir libslirp
+               libssh)
+depends=(dtc virglrenderer sdl2 vte3 libpulse brltty "${_headlessdeps[@]}")
+makedepends=(spice-protocol python ceph libiscsi glusterfs python-sphinx git)
 source=(git://git.qemu.org/qemu.git
         qemu-ga.service
         65-kvm.rules)
@@ -40,7 +42,7 @@ prepare() {
   mkdir -p extra-arch-{full,headless}/usr/{bin,share/qemu}
 
   #cd "${srcdir}/${_gitname}"
-  sed -i 's/vte-2\.90/vte-2.91/g' configure
+  #sed -i 's/vte-2\.90/vte-2.91/g' configure
 }
 
 build() {
@@ -52,6 +54,7 @@ build() {
     --disable-sdl \
     --disable-gtk \
     --disable-vte \
+    --disable-brlapi \
     --disable-opengl \
     --disable-virglrenderer
 }
@@ -70,12 +73,12 @@ _build() (
     --sysconfdir=/etc \
     --localstatedir=/var \
     --libexecdir=/usr/lib/qemu \
-    --python=/usr/bin/python \
     --smbd=/usr/bin/smbd \
     --enable-modules \
     --enable-sdl \
     --enable-jemalloc \
     --disable-werror \
+    --enable-slirp=system \
     "${@:2}"
 
   make
