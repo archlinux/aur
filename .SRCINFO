@@ -1,0 +1,17 @@
+pkgbase = ros-melodic-ros-type-introspection
+	pkgdesc = Deserialize ROS messages that are unknown at compilation time
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = http://www.ros.org/wiki/ros_type_introspection
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = ros-build-tools
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-roscpp-serialization
+	depends = ros-melodic-rostime
+	source = ros_type_introspection.tar.gz::https://github.com/facontidavide/ros_type_introspection/archive/2.0.4.tar.gz
+	sha256sums = 648e7debaacef15ecbb7330851a7c70e2563dace8f7fffd4f1632b7ce2b8c61c
+
+pkgname = ros-melodic-ros-type-introspection
+
