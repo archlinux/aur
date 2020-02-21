@@ -2,7 +2,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=munge
-pkgver=0.5.13
+pkgver=0.5.14
 pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,11 +13,12 @@ optdepends=("zlib: zlib compression support"
 	"bzip2: bzip2 compression support")
 install="${pkgname}.install"
 source=("https://github.com/dun/munge/archive/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a577e9824320849da1efce12b42a5cd9a591f6f9f42a38c5c26f787fd0f21021144a0b7bbb9fd0a46f1d72a49b355bfc5bc078ca55cf4bd7cf0c3b9b4797b2a9')
+sha512sums=('ea89428889e261b58db14d0ab37a32decda3a8c77fe81edd9ec347bfafe748133f3a8bbba2e2e625b829261060599a7a30a42310fbbd0ad71c0ef6e18dcd5940')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 
+	./bootstrap
 	./configure \
 		--prefix=/usr \
 		--sbindir=/usr/bin \
@@ -31,10 +32,6 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
 
 	make DESTDIR="${pkgdir}" install
-
-	# Remove obsolete init script (Arch Linux uses SystemD)
-	rm -f "${pkgdir}"/etc/init.d/munge
-	rmdir "${pkgdir}"/etc/init.d
 
 	# It is bad practice to put package-files in /run
 	# The dir /var/run/munge will be created in post_install, see .install
