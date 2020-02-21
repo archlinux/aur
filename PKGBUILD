@@ -3,7 +3,7 @@
 # Contributor: Andrew Stubbs <andrew dot stubbs at gmail dot com>
 
 pkgname=etcher-bin
-pkgver=1.5.76
+pkgver=1.5.79
 pkgrel=1
 pkgdesc="Flash OS images to SD cards & USB drives, safely and easily"
 arch=("x86_64")
@@ -11,7 +11,45 @@ url="http://www.${pkgname%-bin}.io/"
 license=("apache")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-depends=("alsa-lib" "libxss" "libxtst" "nss")
+depends=(
+	'alsa-lib'
+	'atk'
+	'at-spi2-atk'
+	'at-spi2-core'
+	'avahi'
+	'cairo'
+	'fontconfig'
+	'freetype2'
+	'fribidi'
+	'gdk-pixbuf2'
+	'graphite'
+	'gtk3'
+	'harfbuzz'
+	'libcups'
+	'libdatrie'
+	'libepoxy'
+	'libpng'
+	'libthai'
+	'libx11'
+	'libxau'
+	'libxcb'
+	'libxcomposite'
+	'libxcursor'
+	'libxdamage'
+	'libxdmcp'
+	'libxext'
+	'libxfixes'
+	'libxi'
+	'libxinerama'
+	'libxkbcommon'
+	'libxrandr'
+	'libxrender'
+	'libxss'
+	'libxtst'
+	'pango'
+	'pixman'
+	'wayland'
+)
 makedepends=('bzip2')
 optdepends=("libnotify: for notifications"
             "speech-dispatcher: for text-to-speech")
@@ -19,7 +57,7 @@ source=("https://github.com/balena-io/${pkgname%-bin}/releases/download/v${pkgve
 	    "etcher")
 
 options=("!strip")
-sha256sums=("d9f295fdf31adff849c0327620858d3f06707216db78954677c424351f201692"
+sha256sums=("54af66e849424e898ca60974a01cdce54af61a8a51e75a884700e62ef0824656"
 	        "ce48173bc432b90543a21c48d6c0f66d8b26d293e02a588f2307992f1861f9d3")
 
 build() {
