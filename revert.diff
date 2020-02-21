@@ -6,12 +6,12 @@ index fb06b9556..0180e201e 100644
        "-instcombine-lower-dbg-declare=0",
      ]
  
--    if (target_os != "chromeos") {
+-    if (!is_chromeos && default_toolchain != "//build/toolchain/cros:target") {
 -      # TODO(https://crbug.com/1049161): Remove '-DCLANG_SPAWN_CC1=ON' from build.py instead
 -      # once this change has marinated a bit.
 -      cflags += [ "-fintegrated-cc1" ]
 -    }
-+    # if (target_os != "chromeos") {
++    # if (!is_chromeos && default_toolchain != "//build/toolchain/cros:target") {
 +    #   # TODO(https://crbug.com/1049161): Remove '-DCLANG_SPAWN_CC1=ON' from build.py instead
 +    #   # once this change has marinated a bit.
 +    #   cflags += [ "-fintegrated-cc1" ]
