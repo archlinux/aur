@@ -12,4 +12,4 @@ source=("haur")
 package () {
 	install -Dm777 "$srcdir"/haur "$pkgdir"/usr/bin/haur
 }
-md5sums=('7c7eb9f491d39d5c77b8cbc33254d8f2')
+md5sums=('cc4b40403e0c3f2247f3ea72d578a000')
