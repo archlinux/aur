@@ -6,23 +6,21 @@
 
 pkgname='bluez-utils-compat'
 _pkgbase='bluez'
-pkgver=5.52
-pkgrel=2
+pkgver=5.53
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 license=('GPL2')
 pkgdesc="Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools."
 depends=('dbus' 'systemd' 'glib2')
-makedepends=('libical' 'alsa-lib' 'ell')
+makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'ell')
 optdepends=('ell: for btpclient')
 conflicts=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
-provides=('bluez-hcidump' 'bluez-utils' 'bluez-hcitool')
-replaces=('bluez-hcidump' 'bluez<=4.101')
-makedepends=('dbus' 'libical' 'systemd' 'alsa-lib' 'ell')
+provides=('bluez-hcidump' "bluez-utils=${pkgver}" 'bluez-hcitool')
 source=(https://www.kernel.org/pub/linux/bluetooth/"${_pkgbase}-${pkgver}".tar.{xz,sign}
         'refresh_adv_manager_for_non-LE_devices.diff::https://git.archlinux.org/svntogit/packages.git/plain/trunk/refresh_adv_manager_for_non-LE_devices.diff?h=packages/bluez')
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha512sums=('9024481910d1dee85578bf3d7a4fc4be2bece516e6216c91aa1a7ac18537f092b47c41c4a5506ddd7e279599d58002e98203c5439745c01df4dbc22a75234c84'
+sha512sums=('62956e6293ec2517ec453dc7a6c82d34a8c446df8add8fe411b0a45fd5604817f3a19fbc646ad6f68df435f3cd2bd10ae040890e30db83b022f90b54cc6b3c74'
             'SKIP'
             'c6ef673956963725edc52d667648e51df5b99f820e87705096b4b9338e8a4540722e734f1e8e67998c2fbbefec30645ff1fa064789c8a858f770d1214399561d')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
