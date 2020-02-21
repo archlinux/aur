@@ -1,10 +1,5 @@
 post_install() {
-  cat << _EOF
-
-==> To activate run:
-==> sudo plymouth-set-default-theme -R tuxedo-one
-
-_EOF
+  plymouth-set-default-theme -R tuxedo-one
 }
 
 post_upgrade() {

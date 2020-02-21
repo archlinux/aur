@@ -1,7 +1,7 @@
 pkgbase = tuxedo-plymouth-one
 	pkgdesc = TUXEDO style plymouth theme
 	pkgver = 1.0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tuxedocomputers/tuxedo-plymouth-one
 	install = tuxedo-plymouth-one.install
 	arch = any

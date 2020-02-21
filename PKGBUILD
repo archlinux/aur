@@ -2,7 +2,7 @@
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=tuxedo-plymouth-one
 pkgver=1.0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="TUXEDO style plymouth theme"
 arch=('any')
 url="https://github.com/tuxedocomputers/tuxedo-plymouth-one"
