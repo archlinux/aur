@@ -3,7 +3,7 @@
 
 pkgname=azure-cli
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tools for Azure."
 arch=('any')
 url="https://github.com/Azure/azure-cli"
@@ -13,7 +13,11 @@ conflicts=("python-azure-cli")
 source=("https://azurecliprod.blob.core.windows.net/install.py"
         "install.response"
         "az")
-sha256sums=("8835ac5023e292b9c3afa44f7e9a2c0058c56789114891fb921ee85fbc9c2002"
+# SKIP checking sum for install.py as it's changed periodically without URL
+# versioned, breaking helpers like yay or manual build without clean. And it's
+# using https so we should be fine. If incompatible changes of the script occur
+# in the future, the sum should get checked again.
+sha256sums=("SKIP"  # "8835ac5023e292b9c3afa44f7e9a2c0058c56789114891fb921ee85fbc9c2002"
             "7c05e9915a52fb72fa8d1c498b173c42457d669351313eaddccf43f86ed0e0ec"
             "990f70efec828c1e1f3f57748fc6e40f9705f2223dc96683e8e29d118daac116")
 
