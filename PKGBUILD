@@ -13,7 +13,7 @@ depends=('python' 'python-gobject')
 
 sha256sums=('ae96f5fee70f30896c60036a385c9f8aaf6b322cbfd547df62b66d62155e1cfa'
             'SKIP')
-validpgpkeys=('AE54EAF95DC5D7BB5F1CF422E8E098BBF6E920A0') # Ronan Pigott <rpigott@berkeley.edu>
+# validpgpkeys=('AE54EAF95DC5D7BB5F1CF422E8E098BBF6E920A0') # Ronan Pigott <rpigott@berkeley.edu>
 
 package() {
 	install -Dm755 blight.py "$pkgdir/usr/bin/blight"
