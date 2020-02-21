@@ -9,13 +9,13 @@ url = "https://www.archlinux.org/packages/core/x86_64/linux/json/"
 data = subprocess.check_output(['curl', '-s', url]).decode()
 info = json.loads(data)
 latest_kernver, latest_archver = info['pkgver'].rsplit('.', 1)
-latest_archrel = info['pkgrel']
+latest_pkgrel = info['pkgrel']
 
-kernver, archver, archrel, pkgrel = subprocess.check_output(
-    ['bash', '-c', f'source PKGBUILD; echo $_kernver $_archver $_pkgrel $pkgrel']
+kernver, archver, pkgrel = subprocess.check_output(
+    ['bash', '-c', 'source PKGBUILD; echo ${_kernver} ${_archver} ${_pkgrel}']
 ).decode('utf8').strip().split()
 
-if (kernver, archver, archrel) != (latest_kernver, latest_archver, latest_archrel):
+if (kernver, archver, pkgrel) != (latest_kernver, latest_archver, latest_pkgrel):
     print("linux-versioned-bin out of date!")
     with open('PKGBUILD') as f:
         pkgbuild = f.read()
@@ -23,20 +23,15 @@ if (kernver, archver, archrel) != (latest_kernver, latest_archver, latest_archre
     replacements = (
         (f'_kernver={kernver}', f'_kernver={latest_kernver}'),
         (f'_archver={archver}', f'_archver={latest_archver}'),
-        (f'_pkgrel={archrel}', f'_pkgrel={latest_archrel}'),
+        (f'_pkgrel={pkgrel}', f'_pkgrel={latest_pkgrel}'),
         (
-            f'{kernver}-{archver}-{archrel}',
-            f'{latest_kernver}-{latest_archver}-{latest_archrel}',
+            f'{kernver}.{archver}-{pkgrel}',
+            f'{latest_kernver}.{latest_archver}-{latest_pkgrel}',
         ),
     )
 
     for a, b in replacements:
         pkgbuild = pkgbuild.replace(a, b)
-
-    if kernver == latest_kernver:
-        pkgbuild = pkgbuild.replace(f'\npkgrel={pkgrel}', f'\npkgrel={int(pkgrel)+1}')
-    else:
-        pkgbuild = pkgbuild.replace(f'\npkgrel={pkgrel}', f'\npkgrel=1')
 
     with open('PKGBUILD', 'w') as f:
         f.write(pkgbuild)
@@ -48,7 +43,7 @@ if (kernver, archver, archrel) != (latest_kernver, latest_archver, latest_archre
 
     subprocess.check_call(['git', 'add', 'PKGBUILD', '.SRCINFO'])
     subprocess.check_call(
-        ['git', 'commit', '-m', f'{latest_kernver}-{latest_archver}-{latest_archrel}']
+        ['git', 'commit', '-m', f'{latest_kernver}.{latest_archver}-{latest_pkgrel}']
     )
 
     def yn_choice(message, default='y'):

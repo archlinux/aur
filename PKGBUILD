@@ -3,26 +3,27 @@ _pkgname=linux
 _kernver=5.5.5
 _archver=arch1
 _pkgrel=1
+_pkgver=${_kernver}.${_archver}
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME=${_kernver}-${_archver}-${_pkgrel}
-_versioned_pkgname=${_pkgname}${KERNNAME}
-pkgname=("linux-versioned-bin"
-         "linux-versioned-headers-bin"
-         "linux-versioned-docs-bin"
+_versioned_pkgname=${_pkgname}${_pkgver}-${_pkgrel}
+pkgname=("${_pkgname}-versioned-bin"
+         "${_pkgname}-versioned-headers-bin"
+         "${_pkgname}-versioned-docs-bin"
          "${_versioned_pkgname}-bin"
          "${_versioned_pkgname}-headers-bin"
          "${_versioned_pkgname}-docs-bin")
-pkgver=${_kernver}
-pkgrel=1
+pkgver=${_pkgver}
+pkgrel=${_pkgrel}
 pkgdesc='Repackaging of the Arch kernel with a unique package name for each version'
 url="https://git.archlinux.org/linux.git/log/?h=v${_kernver}-${_archver}"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=${_pkgname}-${_kernver}.${_archver}-${_pkgrel}-${arch}.pkg.tar.zst
-_headerspkg=${_pkgname}-headers-${_kernver}.${_archver}-${_pkgrel}-${arch}.pkg.tar.zst
-_docspkg=${_pkgname}-docs-${_kernver}.${_archver}-${_pkgrel}-${arch}.pkg.tar.zst
+_kernpkg=${_pkgname}-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_headerspkg=${_pkgname}-headers-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
+_docspkg=${_pkgname}-docs-${_pkgver}-${_pkgrel}-${arch}.pkg.tar.zst
 
 # See if the sources are available from our own mirror:
 _kernsrc=$(pacman -Sp "${_pkgname}" 2> /dev/null) 
@@ -66,7 +67,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.5.5-arch1-1-bin() {
+package_linux5.5.5.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -74,10 +75,10 @@ package_linux5.5.5-arch1-1-bin() {
               'linux-firmware: firmware images needed for some devices')
   tar -xf "${_kernpkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  sed -ic "s/${_pkgname}/${_versioned_pkgname}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
+  sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.5.5-arch1-1-headers-bin() {
+package_linux5.5.5.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -85,7 +86,7 @@ package_linux5.5.5-arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/linux"{,"-${KERNNAME}"}
 }
 
-package_linux5.5.5-arch1-1-docs-bin() {
+package_linux5.5.5.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
