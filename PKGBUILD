@@ -5,8 +5,8 @@
 # - To build any other l10n version, please refer to my own custom
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
-_pkgname=browser-f
-pkgver=1.32.1
+_gitname=browser-f
+pkgver=1.33.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -25,12 +25,12 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=573f01ecdb53dc1add3b4b68a8e5a4113896e304')
-sha256sums=('ec69008726e60af40a86026a2252c09996770efe502279ead4f0512c5231c4ce'
+sha256sums=('25305a1f331f9f96a9bb5a2d3ea811926d3fa1428bbc718091a40b81a1e456fe'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c')
 options=(!emptydirs !makeflags !strip)
 
 prepare() {
-  cd "$srcdir/${_pkgname}-$pkgver/mozilla-release/toolkit/mozapps/installer"
+  cd "$srcdir/${_gitname}-$pkgver/mozilla-release/toolkit/mozapps/installer"
   # Do not try to upload anything anywhere
   sed -i 's/ifeq ($(OS_ARCH), Linux)/ifeq ($(OS_ARCH), Nope)/' upload-files.mk
 
@@ -58,7 +58,7 @@ Name[fr]=Nouvelle fenêtre en mode oubli
 Exec=/usr/lib/cliqz/cliqz --private-window %u
 END
 
-  cd "$srcdir/${_pkgname}-$pkgver/mozilla-release"
+  cd "$srcdir/${_gitname}-$pkgver/mozilla-release"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i "$srcdir/0001-Use-remoting-name-for-GDK-application-names.patch"
@@ -115,12 +115,12 @@ ac_add_options --disable-updater
 ac_add_options --disable-tests
 END
 
-  cd "$srcdir/${_pkgname}-$pkgver"
-  sed -i 's|^./mach build$|xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build|' magic_build_and_package.sh
+  cd "$srcdir/${_gitname}-$pkgver"
+  sed -i 's|^./mach build$|xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" ./mach build|' magic_build_and_package.sh
 }
 
 build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "$srcdir/${_gitname}-$pkgver"
 
   export CQZ_RELEASE_CHANNEL="$_cqzchannel"
   export CQZ_VERSION=$pkgver
@@ -150,21 +150,21 @@ package() {
   cd "$srcdir"
   # Uncomment the two following lines and comment the en-US ones if you
   # want to build a deutsch version of cliqz.
-  #mv "${_pkgname}-$pkgver/obj/dist/$pkgname-$pkgver.de.linux-x86_64.tar.bz2" .
+  #mv "${_gitname}-$pkgver/obj/dist/$pkgname-$pkgver.de.linux-x86_64.tar.bz2" .
   #tar xjf "$pkgname-$pkgver.de.linux-x86_64.tar.bz2"
-  mv "${_pkgname}-$pkgver/obj/dist/$pkgname-$pkgver.en-US.linux-x86_64.tar.bz2" .
+  mv "${_gitname}-$pkgver/obj/dist/$pkgname-$pkgver.en-US.linux-x86_64.tar.bz2" .
   tar xjf "$pkgname-$pkgver.en-US.linux-x86_64.tar.bz2"
 
   cp -R "$pkgname" "$pkgdir/usr/lib/"
 
-  cd "${_pkgname}-$pkgver"
+  cd "${_gitname}-$pkgver"
   for size in 16 22 24 32 48 256; do
     install -D -m644 "mozilla-release/browser/branding/cliqz/default$size.png" \
             "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
   done
 
   install -d -m755 "$pkgdir/usr/lib/$pkgname/browser/defaults/preferences"
-  cp "$srcdir/${_pkgname}-$pkgver/mozilla-release/toolkit/mozapps/installer/linux/rpm/no-updates.js" vendor.js
+  cp "$srcdir/${_gitname}-$pkgver/mozilla-release/toolkit/mozapps/installer/linux/rpm/no-updates.js" vendor.js
   cat >> vendor.js <<END
 
 // Do not update/overwrite search engines
