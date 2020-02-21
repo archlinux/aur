@@ -1,7 +1,7 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
 	pkgver = 5.5.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
 	arch = x86_64
 	license = GPL2
