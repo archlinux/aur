@@ -4,7 +4,7 @@
 pkgname=sile
 pkgdesc='Modern typesetting system inspired by TeX'
 pkgver=0.10.3
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
@@ -27,8 +27,10 @@ depends=('fontconfig'
          'harfbuzz'
          'gentium-plus-font'
          'icu'
+         'libpng' # this goes with libtexpdf if ever split out to a library package
          'lua'
          "${_lua_deps[@]/#/lua-}")
+provides=('libtexpdf.so')
 checkdepends=('lua-busted')
 source=("https://github.com/sile-typesetter/sile/releases/download/v$pkgver/sile-$pkgver.tar.bz2")
 sha256sums=('d89d5ce7d2bf46fb062e5299ffd8b5d821dc3cb3462a0e7c1109edeee111d856')
