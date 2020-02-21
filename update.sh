@@ -37,6 +37,8 @@ SRCS=(
     https://gitlab.com/sumner/sublime-music/-/jobs/artifacts/v$1/download?job=build_logo
 )
 
+rm -rf 'download\?job=build_logo'
+
 printf '' > PKGBUILD
 echo "# Maintainer: Sumner Evans <sumner.evans98 at gmail dot com>
 
