@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreenlocker-git
-pkgver=r328.c4054d7
-pkgrel=2
+pkgver=r764.dee0f32
+pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(i686 x86_64)
 url='https://projects.kde.org/kscreenlocker'
