@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-core
 pkgver=2019
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Gnat components collection - Core packages.'
 url='https://github.com/AdaCore/gnatcoll-core/'
@@ -15,7 +15,7 @@ makedepends=('gprbuild')
 provides=('gnatcoll-core')
 conflicts=('gnatcoll' 'gnatcoll-core-git')
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf8ae231e87a8f1d425052')
+source=('https://community.download.adacore.com/v1/99ea2dc09e018deb14f15c00e8c4b7b21f94c94f?filename=gnatcoll-core-2019-20190515-24AD8-src.tar.gz')
 sha1sums=('99ea2dc09e018deb14f15c00e8c4b7b21f94c94f')
 
 build()
