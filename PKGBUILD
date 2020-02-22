@@ -6,29 +6,22 @@ pkgver=0.9.13
 pkgdesc='SANE - Apple AirScan (eSCL) driver'
 url='https://github.com/alexpevzner/sane-airscan'
 arch=('aarch64' 'x86_64')
-license=('GPLv2')
-depends=('libjpeg-turbo' 'sane' 'glib2' 'libsoup' 'libxml2' 'avahi' 'gcc' 'make' 'pkgconf')
-makedepends=('git')
-source=('git://github.com/alexpevzner/sane-airscan.git')
+license=('GPL2')
+depends=('sane' 'libsoup')
+makedepends=('ctags' 'git')
+source=("git+http://github.com/alexpevzner/sane-airscan.git#tag=${pkgver}")
 sha1sums=('SKIP')
-provides=("sane-airscan")
 
 build() {
-    cd "${srcdir}/sane-airscan"
+    cd $pkgname
 
-    make -j $(nproc)
+    make
 }
 
 package() {
-    cd "${srcdir}/sane-airscan"
-    
-    mkdir -p "${pkgdir}/etc/sane.d"
-    mkdir -p "${pkgdir}/etc/sane.d/dll.d"
-    cp -n airscan.conf "${pkgdir}/etc/sane.d"
-    cp -n dll.conf "${pkgdir}/etc/sane.d/dll.d/airscan"
-    install -Dm644 libsane-airscan.so.1 "${pkgdir}/usr/lib/sane/libsane-airscan.so.1"
-    mkdir -p "${pkgdir}/usr/share/man/man5"
-    tar -cpf "${pkgdir}/usr/share/man/man5/sane-airscan.5.gz" sane-airscan.5
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd $pkgname
+
+    make DESTDIR="$pkgdir" install
+
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }

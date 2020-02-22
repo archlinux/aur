@@ -5,19 +5,12 @@ pkgbase = sane-airscan
 	url = https://github.com/alexpevzner/sane-airscan
 	arch = aarch64
 	arch = x86_64
-	license = GPLv2
+	license = GPL2
+	makedepends = ctags
 	makedepends = git
-	depends = libjpeg-turbo
 	depends = sane
-	depends = glib2
 	depends = libsoup
-	depends = libxml2
-	depends = avahi
-	depends = gcc
-	depends = make
-	depends = pkgconf
-	provides = sane-airscan
-	source = git://github.com/alexpevzner/sane-airscan.git
+	source = git+http://github.com/alexpevzner/sane-airscan.git#tag=0.9.13
 	sha1sums = SKIP
 
 pkgname = sane-airscan
