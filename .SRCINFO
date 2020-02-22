@@ -7,6 +7,7 @@ pkgbase = spotify-tray-git
 	license = GPL3
 	makedepends = git
 	depends = spotify
+	depends = gtk3
 	provides = spotify-tray
 	conflicts = spotify-tray
 	source = spotify-tray::git+https://github.com/tsmetana/spotify-tray.git
