@@ -8,7 +8,7 @@
 
 pkgname=bleachbit-cli
 _pkgname=bleachbit
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Deletes unneeded files to free disk space and maintain privacy. CLI version/no GUI.'
 conflicts=($_pkgname)
@@ -16,9 +16,9 @@ provides=("bleachbit=${pkgver}")
 arch=(any)
 url='https://www.bleachbit.org/'
 license=(GPL3)
-depends=(python2-gobject)
+depends=(python2-gobject python2-scandir)
 source=($_pkgname-$pkgver.tar.gz::https://github.com/bleachbit/bleachbit/archive/v$pkgver.tar.gz)
-sha256sums=('dba0263e948f19747b7344e34a94bb8670a4bb8cd70724caa6f17c5f23cec099')
+sha256sums=('c0e25253781d768da4eacf56739bf547dc59f2fe212f44e464f4fcc1bc855e44')
 
 prepare() {
   cd $_pkgname-$pkgver
