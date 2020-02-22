@@ -2,12 +2,11 @@
 # Contributor: David Pflug <david@pflug.email>
 pkgname=ttf-bitstream-charter
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 _conffile=82-charter.conf
 pkgdesc="A serif typeface designed by Matthew Carter for low resolution devices. Provides OTF, TTF and fontconfig configuration."
 arch=("any")
 depends=("fontconfig")
-provides=('ttf-font' 'otf-font')
 conflicts=("otf-bitstream-charter")
 url="https://practicaltypography.com/charter.html"
 license=("custom")
