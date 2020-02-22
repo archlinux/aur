@@ -1,4 +1,4 @@
-# Maintainer: Lennard Hofmann <lennard.hofmann@web.de>
+# Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: James Morris - jwm-art - james@jwm-art.net
 pkgname=otf-bebas-neue-git
