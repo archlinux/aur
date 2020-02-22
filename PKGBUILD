@@ -26,8 +26,8 @@ _sourcedirectory="$pkgname-$pkgver-$pkgrel"
 
 prepare() {
 	cd "$srcdir/"
-	mkdir "$_sourcedirectory/"
-	tar -xJf 'data.tar.xz' -C "$_sourcedirectory/"
+	mkdir -p "$_sourcedirectory/"
+	bsdtar -xf 'data.tar.xz' -C "$_sourcedirectory/"
 }
 
 package() {
