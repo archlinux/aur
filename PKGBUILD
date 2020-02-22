@@ -4,7 +4,7 @@
 
 pkgname=libgpr
 pkgver=2019
-pkgrel=1
+pkgrel=2
 pkgdesc="Ada library to handle GPRbuild project files"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gprbuild/"
@@ -14,7 +14,7 @@ makedepends=('gprbuild-bootstrap')
 conflicts=("${pkgname}-git")
 
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093'
+source=('https://community.download.adacore.com/v1/0c03c05cef70b85144ba0e624a46e8952183b666?filename=gprbuild-2019-20190517-194D8-src.tar.gz'
         'relocatable-build.patch'
         'expose-cargs-and-largs-makefile.patch')
 sha1sums=('0c03c05cef70b85144ba0e624a46e8952183b666'
