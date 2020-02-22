@@ -1,0 +1,28 @@
+pkgbase = gnome-keyring-git
+	pkgdesc = Stores passwords and encryption keys
+	pkgver = 3.35.1+8+gfd130b33
+	pkgrel = 1
+	epoch = 1
+	url = https://wiki.gnome.org/Projects/GnomeKeyring
+	install = gnome-keyring.install
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = docbook-xsl
+	makedepends = python
+	depends = gcr
+	depends = libcap-ng
+	depends = pam
+	depends = openssh
+	provides = gnome-keyring
+	provides = org.freedesktop.secrets
+	conflicts = gnome-keyring
+	source = git+https://gitlab.gnome.org/GNOME/gnome-keyring.git
+	source = add-cinnamon.diff
+	sha256sums = SKIP
+	sha256sums = d05210f5b0a7d4b22c0dff2854854af2eb5708aa2b296095e070dca68e9f815a
+
+pkgname = gnome-keyring-git
+

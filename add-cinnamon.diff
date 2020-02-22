@@ -1,0 +1,44 @@
+ daemon/gnome-keyring-pkcs11.desktop.in.in  | 2 +-
+ daemon/gnome-keyring-secrets.desktop.in.in | 2 +-
+ daemon/gnome-keyring-ssh.desktop.in.in     | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git c/daemon/gnome-keyring-pkcs11.desktop.in.in i/daemon/gnome-keyring-pkcs11.desktop.in.in
+index b43e1e9d..80434cbd 100644
+--- c/daemon/gnome-keyring-pkcs11.desktop.in.in
++++ i/daemon/gnome-keyring-pkcs11.desktop.in.in
+@@ -3,7 +3,7 @@ Type=Application
+ Name=Certificate and Key Storage
+ Comment=GNOME Keyring: PKCS#11 Component
+ Exec=@bindir@/gnome-keyring-daemon --start --components=pkcs11
+-OnlyShowIn=GNOME;Unity;MATE;
++OnlyShowIn=GNOME;Unity;MATE;Cinnamon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=PreDisplayServer
+ X-GNOME-AutoRestart=false
+diff --git c/daemon/gnome-keyring-secrets.desktop.in.in i/daemon/gnome-keyring-secrets.desktop.in.in
+index dd9deec7..b6d7b2d0 100644
+--- c/daemon/gnome-keyring-secrets.desktop.in.in
++++ i/daemon/gnome-keyring-secrets.desktop.in.in
+@@ -3,7 +3,7 @@ Type=Application
+ Name=Secret Storage Service
+ Comment=GNOME Keyring: Secret Service
+ Exec=@bindir@/gnome-keyring-daemon --start --components=secrets
+-OnlyShowIn=GNOME;Unity;MATE;
++OnlyShowIn=GNOME;Unity;MATE;Cinnamon;
+ NoDisplay=true
+ X-GNOME-Autostart-Phase=PreDisplayServer
+ X-GNOME-AutoRestart=false
+diff --git c/daemon/gnome-keyring-ssh.desktop.in.in i/daemon/gnome-keyring-ssh.desktop.in.in
+index 38aa24cb..163ff554 100644
+--- c/daemon/gnome-keyring-ssh.desktop.in.in
++++ i/daemon/gnome-keyring-ssh.desktop.in.in
+@@ -3,7 +3,7 @@ Type=Application
+ Name=SSH Key Agent
+ Comment=GNOME Keyring: SSH Agent
+ Exec=@bindir@/gnome-keyring-daemon --start --components=ssh
+-OnlyShowIn=GNOME;Unity;MATE;
++OnlyShowIn=GNOME;Unity;MATE;Cinnamon;
+ X-GNOME-Autostart-Phase=PreDisplayServer
+ X-GNOME-AutoRestart=false
+ X-GNOME-Autostart-Notify=true
