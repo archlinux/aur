@@ -4,7 +4,7 @@ pkgbase = ttf-fenix
 	pkgrel = 1
 	url = https://tipotype.com/underground/fenix/
 	arch = any
-	license = custom:OFL
+	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = ttf-fenix-1.001.zip::https://fonts.google.com/download?family=Fenix
