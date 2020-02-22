@@ -1,7 +1,7 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=ros-melodic-plotjuggler
 pkgdesc="juggle with data"
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 _gitorg=facontidavide
 _gitname=PlotJuggler
@@ -27,15 +27,13 @@ depends=("binutils" "qt5-base" "qt5-svg" "qt5-multimedia" ${ros_depends[@]})
 
 _dir="${_gitname}-${pkgver}"
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/${_gitorg}/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=("5cf7d941bd57d3ac2b19c8a228942ccbf9c676b79d971c026f456cb17296f339")
+sha256sums=("d1e882cad04975ed0b3c6853d73934aa6c3cc84db027fe7962e21ea99d1f2d6e")
 
 
 prepare() {
     cd "${srcdir}/${_dir}"
-    sed -i "s/std::__cxx11::string/std::string/" ./plotter_gui/transforms/lua_custom_function.cpp
     sed -i "\|3rdparty/backward-cpp|d" ./CMakeLists.txt
     sed -i "s|../3rdparty/backward-cpp/backward.cpp||" ./plotter_gui/CMakeLists.txt
-    echo "void DataStreamROS::clockCallback(const rosgraph_msgs::Clock::ConstPtr &msg) {}" >> ./plugins/ROS/DataStreamROS/datastream_ROS.cpp 
 }
 
 

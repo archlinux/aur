@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-plotjuggler
 	pkgdesc = juggle with data
-	pkgver = 2.6.0
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://www.plotjuggler.io
 	arch = any
@@ -22,8 +22,8 @@ pkgbase = ros-melodic-plotjuggler
 	depends = ros-melodic-tf
 	depends = ros-melodic-diagnostic-msgs
 	depends = ros-melodic-nav-msgs
-	source = PlotJuggler-2.6.0.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/2.6.0.tar.gz
-	sha256sums = 5cf7d941bd57d3ac2b19c8a228942ccbf9c676b79d971c026f456cb17296f339
+	source = PlotJuggler-2.6.1.tar.gz::https://github.com/facontidavide/PlotJuggler/archive/2.6.1.tar.gz
+	sha256sums = d1e882cad04975ed0b3c6853d73934aa6c3cc84db027fe7962e21ea99d1f2d6e
 
 pkgname = ros-melodic-plotjuggler
 
