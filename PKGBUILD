@@ -1,7 +1,7 @@
 # Maintainer: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname='icon-library'
-pkgver='0.0.4'
+pkgver='0.0.5'
 pkgrel='1'
 pkgdesc="Symbolic icons for your apps"
 changelog='CHANGELOG'
