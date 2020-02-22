@@ -3,8 +3,8 @@
 
 # 方法来自https://github.com/cytle/wechat_web_devtools重新打包
 
-_wechat_devtools_ver="1.02.1907300"
-_wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/1.2.0/201907300/wechat_devtools_1.02.1907300_x64.exe"
+_wechat_devtools_ver="1.02.1911180"
+_wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/nightly/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.02.1911180_x64.exe"
 
 _wechat_devtools_exe="wechat_devtools_${_wechat_devtools_ver}_x64.exe"
 _nwjs_ver="0.38.0"
@@ -13,7 +13,7 @@ _node_version="v11.14.0"
 
 pkgname=wechat-devtools
 pkgver=${_wechat_devtools_ver}
-pkgrel=3
+pkgrel=1
 epoch=2
 pkgdesc="WeChat Devtools Linux version."
 arch=("x86_64")
@@ -26,7 +26,7 @@ source=("nwjs.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk
         "wechat-devtools.desktop"
         "logo.svg")
 md5sums=(3ad6fb08c23f1880b5779fe88bbd8eaa
-         ab47a8e35238c209bd323880ce8db721
+         0d63deb617d89aed0415a3ff48b6d1c9
          1415f0460ade665a8beeb9e08ff2ee13
          88e0efe5d58444b3d39695d4fb16d61b)
 options=('!strip')
@@ -41,8 +41,6 @@ build() {
     nvm install ${_node_version}
     nvm use ${_node_version}
 
-    npm install nw-gyp -g
-
     # node bin
     cp $(which node) node
 
@@ -50,24 +48,6 @@ build() {
     cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信开发者工具/package.nw
     sed -i 's#AppData/Local/\${global.userDirName}/User Data/Default#.config/\${global.userDirName}/Default#g' ./js/common/cli/index.js
     sed -i 's#USERPROFILE#HOME#g' ./js/common/cli/index.js
-
-    # rebuild node-sync-ipc
-    cd ${srcdir}/wechat_devtools/\$APPDATA/Tencent/微信开发者工具/package.nw/node_modules/
-
-    ## build node-sync-ipc with node-gyp
-    cd node-sync-ipc
-    npm install
-    cd ..
-
-    ## build node-sync-ipc-nwjs with nw-gyp
-    cd node-sync-ipc-nwjs
-    npm install
-    ln -s $(which python2) python # FIXME: how to set python path for nw-gyp?
-    PATH=.:$PATH nw-gyp rebuild --target=${_nwjs_ver}
-    rm python
-    cd ..
-
-    nvm deactivate
 }
 
 package() {
