@@ -1,7 +1,7 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=opendnssec
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC"
 arch=('i686' 'x86_64')
@@ -28,13 +28,13 @@ source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
         "opendnssec.tmpfiles")
 noextract=()
 
-sha1sums=('550ac98a9a1dca7d32015cf5ffd5fee7771ec2c7'
+sha1sums=('3aca59010c2067578ede0dbc216f15d70f9447e9'
           '72bff87f9a2900e24921451f35716b8a94fcf695'
           '04e8bf7504cf728b2c3744d19295a63839dd61ca'
           '2a4fac3a16fea3f89b281f0933b6920524978d49'
           'fa28111fdce06c389813ff6ed2d4cae136252488'
           'f10d783b3e0232fd3beff645a07207c161371d0c')
-sha256sums=('2bc3e63e566156c06dd592fca053c581c79d40e3357669b32503d5617136bd41'
+sha256sums=('b2c0caa673b8cfef73585dedf276997f5ca69bb3d523ce4e080f70dfcb23c56c'
             'd11f75881ddf9f6b753b6179ec039ee3a77bb55baa7bef183af239de3e6db073'
             '1a7f604364c050f7206ba893d109db5851c60cb5b000bd282ac55b81d8ff14ca'
             '596d238ad219de1c88f79fd26a8b829250bf0512a308b34c11fd231d0b4eb0f4'
