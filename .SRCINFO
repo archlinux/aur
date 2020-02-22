@@ -1,10 +1,10 @@
 pkgbase = lua-busted
 	pkgdesc = Elegant Lua unit testing
 	pkgver = 2.0.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://olivinelabs.com/busted
-	arch = i686
 	arch = x86_64
+	arch = i686
 	license = MIT
 	makedepends = luarocks
 	source = busted-2.0.0.tar.gz::https://github.com/Olivine-Labs/busted/archive/v2.0.0.tar.gz
