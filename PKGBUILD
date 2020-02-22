@@ -1,8 +1,8 @@
 # Maintainer: Bruce Zhang
 pkgname=ppet
 _name=PPet
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='给你的桌面添加一点趣味~'
 arch=('x86_64')
 url="https://github.com/zenghongtu/PPet"
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('electron')
 makedepends=('yarn' 'jq' 'moreutils')
 conflicts=("$pkgname-bin")
-source=("$pkgname-$pkgver.src.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('164575f10253867f34b135fa3e84e3d81bdbb2c896d7425ea12cb44da99f9c7c')
+source=("$pkgname-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('e147f26c690a4c2aa335e109f77f386caf2328dcc542cbd0360eeb63c6c1d072')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
