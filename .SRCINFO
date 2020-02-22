@@ -45,5 +45,5 @@ pkgname = linux-bcachefs-git-headers
 	provides = linux-headers=v5.3.18.arch1.r860214.8cd876a76fa6
 
 pkgname = linux-bcachefs-git-docs
-	pkgdesc = Documentation for the Linux kernel
+	pkgdesc = Documentation for the Linux kernel ~ featuring Kent Overstreet's bcachefs filesystem
 

@@ -161,7 +161,7 @@ prepare() {
     yes "" | make config >/dev/null
 
     make -s kernelrelease > version
-    msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+    msg2 "Prepared $pkgbase version $(<version)"
 
     [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -176,7 +176,8 @@ pkgver() {
 
 build() {
     cd $_reponame
-    make bzImage modules htmldocs
+    make all
+    make htmldocs
 }
 
 _package() {
@@ -299,7 +300,7 @@ _package-headers() {
 }
 
 _package-docs() {
-    pkgdesc="Documentation for the $pkgdesc kernel"
+    pkgdesc="Documentation for the $pkgdesc kernel $_pkgdesc_extra"
 
     cd $_srcname
     local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
