@@ -2,7 +2,7 @@
 # Contributor: Zhuoyun Wei <wzyboy@wzyboy.org>
 
 pkgname=ledger2beancount
-pkgver=1.8
+pkgver=2.0
 pkgrel=1
 pkgdesc='Ledger to Beancount text-based converter'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl' 'perl-config-onion' 'perl-date-calc'
          'perl-getopt-long-descriptive' 'perl-string-interpolate' 'perl-yaml-libyaml')
 conflicts=('ledger2beancount-git')
 source=("https://github.com/zacchiro/ledger2beancount/archive/${pkgver}.tar.gz")
-sha256sums=('c6f49cbaf2dfe8fe141b506e92fb9cdd1e1c2103d1e99dc93f761b4318596f9e')
+sha256sums=('6f14cf8b0caa04834c61ad80bda09250ea671e11e5d76c9eb7ad7fc7eb26325d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
