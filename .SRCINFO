@@ -1,0 +1,15 @@
+pkgbase = jsx-lexer
+	pkgdesc = A JSX lexer for Pygments
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/fcurella/jsx-lexer
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	makedepends = nodejs
+	depends = python3
+	source = https://github.com/fcurella/jsx-lexer/archive/v0.0.8.tar.gz
+	sha256sums = 3220744d4c98084a49d009332df573acb8758982c837d88b932df80c2b1201ee
+
+pkgname = jsx-lexer
+
