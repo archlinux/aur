@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.3.2.r81.g9db3c75
+pkgver=1.3.3.r4.g32940672
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -40,6 +40,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
+  sed -i "/files = Glob('src\/cbang\/%s\/\*.h'/a\    files += Glob('include/cbang/%s/*.h' % dir)" SConstruct
   sed -i "20i\    conf.CBRequireLib('v8_libplatform')" config/v8/__init__.py
 }
 
