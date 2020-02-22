@@ -2,7 +2,7 @@
 
 pkgname=otr-verwaltung3p-dev-git
 pkgver=1.0.0.beta002.r1.g271f1e3
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
@@ -28,6 +28,10 @@ pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+prepare() {
+    echo ${pkgver} > "${srcdir}/${_gitname}/data/VERSION"
+    }
 
 package() {
     cd "${srcdir}/${_gitname}"
