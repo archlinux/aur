@@ -1,6 +1,6 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 pkgname=bazel-bootstrap
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="(Bootstrap Build) Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ source=("bazel-bootstrap-${pkgver}.zip::https://github.com/bazelbuild/bazel/rele
         "bazel-bootstrap-${pkgver}.zip.sig::https://github.com/bazelbuild/bazel/releases/download/${pkgver}/bazel-${pkgver}-dist.zip.sig"
 )
 
-sha512sums=('5a98e7bcc7a078c37a5ee70054c45b2c30ef85c741a081a53e172678a1425b107a529636f32887ad41cd32609b69340dba82478dc20ecc856b131f23ea977200'
+sha512sums=('4b7215f9bba23b10f5175cfc4fa7987191ffabd9f5768d0fa39bd4bb09da532e83f9f21b1a786a4f2f41afd082ab697ed98434cb5effb8b66e599b134d95e820'
             'SKIP')
 validpgpkeys=('71A1D0EFCFEB6281FD0437C93D5919B448457EE0')
 
