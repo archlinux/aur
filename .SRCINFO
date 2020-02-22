@@ -1,0 +1,45 @@
+pkgbase = linux-lts-versioned-bin
+	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
+	pkgver = 5.4.21
+	pkgrel = 1
+	url = https://www.kernel.org/
+	arch = x86_64
+	license = GPL2
+	options = !strip
+	source = https://archive.archlinux.org/packages/.all/linux-lts-5.4.21-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-lts-headers-5.4.21-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-lts-docs-5.4.21-1-x86_64.pkg.tar.zst
+	sha256sums = f091a9d9c025c21e4faec649421c205971132d0f234e8c8b094d704876a7d24f
+	sha256sums = b37f2d610e709df46bf1e988956a662b1fc4430f6020f6373ce6ad70ccfd220f
+	sha256sums = 218e8cabf8f5fdd999ea05b6171f5210f7670cc0a9e871b3324f2c3f9c4cc54e
+
+pkgname = linux-lts-versioned-bin
+	pkgdesc = Dummy package depending on linux5.4.21-1-lts-bin
+	depends = linux5.4.21-1-lts-bin
+	optdepends = grub-mkconfig-hook: to run grub-mkconfig when kernels are added/removed
+
+pkgname = linux-lts-versioned-headers-bin
+	pkgdesc = Dummy package depending on linux5.4.21-1-lts-headers-bin
+	depends = linux5.4.21-1-lts-headers-bin
+
+pkgname = linux-lts-versioned-docs-bin
+	pkgdesc = Dummy package depending on linux5.4.21-1-lts-docs-bin
+	depends = linux5.4.21-1-lts-docs-bin
+
+pkgname = linux5.4.21-1-lts-bin
+	pkgdesc = The Linux kernel and modules, version 5.4.21-1-lts
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	conflicts = linux-lts
+
+pkgname = linux5.4.21-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.21-1-lts
+	conflicts = linux-lts-headers
+
+pkgname = linux5.4.21-1-lts-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.4.21-1-lts
+	conflicts = linux-lts-docs
+
