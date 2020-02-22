@@ -1,14 +1,14 @@
 # Maintainer: jkdhn <aur@jkdhn.me>
 
 pkgname=saleae-logic-alpha
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Debug hardware like a pro"
 arch=('x86_64')
 url="https://discuss.saleae.com/c/logic-2-0-alpha-software/7"
 license=('unknown')
 source=("https://downloads.saleae.com/logic2/Logic-${pkgver}-master.AppImage")
-sha512sums=("4f830f216da763fd71aa31f152d1783c86af6fd07a20556b1fa87215a95205319d73131d21b80abae9027ee7e4f5b36da6e6d81eb5b57e4c423d8a11d7f9a774")
+sha512sums=("d39fd258b50ee8d1dd4023a6a73904e196524ab1df12053d75632948f007283e92b6af56b9d626c1c194b98fa477da812968e50afd335fb3521428f26556211b")
 
 build() {
 	_file="Logic-${pkgver}-master.AppImage"
@@ -34,12 +34,12 @@ package() {
 	rm "${pkgdir}/opt/${pkgname}/version"
 	rm -rf "${pkgdir}/usr/lib/"
 
-	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${pkgname}/Logic" "${pkgdir}/usr/bin/${pkgname}"
-
 	install -Dm644 "${pkgdir}/opt/saleae-logic-alpha/resources/linux/99-SaleaeLogic.rules" "${pkgdir}/etc/udev/rules.d/99-SaleaeLogic.rules"
 
 	# Fix permissions (example: 700->755, 640->644)
 	find "${pkgdir}"   -perm "/111" -exec chmod 755 \{\} \;
 	find "${pkgdir}" ! -perm "/111" -exec chmod 644 \{\} \;
+
+	mkdir -p "${pkgdir}/usr/bin/"
+	ln -s "/opt/${pkgname}/Logic" "${pkgdir}/usr/bin/${pkgname}"
 }
