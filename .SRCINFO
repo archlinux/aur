@@ -1,0 +1,22 @@
+pkgbase = robo3t-1.2-bin
+	pkgdesc = Shell-centric MongoDB management tool
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://robomongo.org/
+	arch = x86_64
+	license = GPLv3
+	depends = qt5-base
+	depends = pcre
+	depends = openssl-1.0
+	conflicts = robo3t
+	conflicts = robomongo
+	replaces = robomongo-bin
+	source = https://download.robomongo.org/1.2.1/linux/robo3t-1.2.1-linux-x86_64-3e50a65.tar.gz
+	source = https://raw.githubusercontent.com/Studio3T/robomongo/master/src/robomongo/gui/resources/icons/logo-256x256.png
+	source = robo3t.desktop
+	sha256sums = 2ac31b5c1a489f0e04582c3ffed592328e0b3d7a8163520f8fefcd58f1bd0deb
+	sha256sums = a63c4b244c451e2e881934119e435d6ce54ce8157dac724753143b48e6652eb7
+	sha256sums = c9d0123bab9c6101cb3d0ace98079de6b596a0e51b0c3b74d8a1bc48fed825c7
+
+pkgname = robo3t-1.2-bin
+
