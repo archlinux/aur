@@ -23,7 +23,6 @@ cat > gdrive-dl <<EOF
 #!/bin/sh
 tcf=cookie
 confirm=\$(curl -c - -o /dev/null "\$1" | tee \$tcf | awk '/download/ { print \$NF }')
-echo $confirm
 curl -Lb \$tcf -C - -o "\$2" "\$1&confirm=\$confirm"
 EOF
 chmod +x gdrive-dl
