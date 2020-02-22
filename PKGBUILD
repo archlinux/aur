@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='font based on Patrick Wagesreiter’s handwriting'
 arch=(any)
 url="https://fonts.google.com/specimen/Patrick+Hand"
-license=(custom:OFL)
+license=(OFL)
 depends=(fontconfig xorg-font-utils)
 source=("$_pkgname-$pkgver.zip::https://fonts.google.com/download?family=Patrick+Hand"
         "$_pkgname-SC-$pkgver.zip::https://fonts.google.com/download?family=Patrick+Hand+SC")

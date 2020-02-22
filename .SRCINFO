@@ -4,7 +4,7 @@ pkgbase = ttf-patrick-hand-full
 	pkgrel = 1
 	url = https://fonts.google.com/specimen/Patrick+Hand
 	arch = any
-	license = custom:OFL
+	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = ttf-patrick-hand-2.001.zip::https://fonts.google.com/download?family=Patrick+Hand
