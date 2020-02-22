@@ -1,7 +1,7 @@
 pkgbase = xmlada
 	pkgdesc = An XML parser for Ada95
 	pkgver = 2019
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/xmlada/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xmlada
 	makedepends = gprbuild-bootstrap
 	depends = gcc-ada
 	conflicts = xmlada-git
-	source = http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5
+	source = https://community.download.adacore.com/v1/ce0b67754f149cd230ba842effeff0ab3033ed0c?filename=xmlada-2019-20190429-19B9D-src.tar.gz
 	source = expose-cargs-and-largs-makefile.patch
 	source = COPYING.RUNTIME
 	sha1sums = ce0b67754f149cd230ba842effeff0ab3033ed0c
