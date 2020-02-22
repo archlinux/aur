@@ -1,13 +1,10 @@
-# Script generated with import_catkin_packages.py
-# For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Provides a cmake config for the default version of Gazebo for the ROS distribution."
 url='https://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-melodic-gazebo-dev'
-pkgver='2.8.5'
-_pkgver_patch=0
-arch=('any')
-pkgrel=1
+pkgver='2.8.6'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=2
 license=('Apache 2.0')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -18,16 +15,9 @@ ros_depends=()
 depends=(${ros_depends[@]}
   gazebo)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/gazebo_dev/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
-_dir="gazebo_ros_pkgs-${pkgver}/gazebo_dev"
+_dir="gazebo_ros_pkgs-${pkgver}/gazebo-dev"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4')
 
 build() {
   # Use ROS environment variables
@@ -47,9 +37,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
