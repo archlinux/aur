@@ -2,6 +2,7 @@ pkgname=gnome-keyring-git
 _pkgname=gnome-keyring
 pkgver=3.35.1+8+gfd130b33
 pkgrel=1
+epoch=1
 pkgdesc="Stores passwords and encryption keys"
 url="https://wiki.gnome.org/Projects/GnomeKeyring"
 arch=(x86_64)
