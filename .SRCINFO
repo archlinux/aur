@@ -1,0 +1,29 @@
+pkgbase = python-fangfrisch
+	pkgdesc = Freshclam like utility that allows downloading unofficial virus definition files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://rseichter.github.io/fangfrisch/
+	install = fangfrisch.install
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = clamav
+	depends = python
+	depends = python-sqlalchemy
+	provides = clamav-unofficial-sigs
+	conflicts = clamav-unofficial-sigs
+	replaces = clamav-unofficial-sigs
+	backup = etc/fangfrisch/fangfrisch.conf
+	source = https://files.pythonhosted.org/packages/source/f/fangfrisch/fangfrisch-1.0.0.tar.gz
+	source = fangfrisch.conf
+	source = fangfrisch.service
+	source = fangfrisch.timer
+	source = fangfrisch.tmpfiles
+	sha512sums = 0e5ef64ea2a5a01874d54be09378c377b33c340760b4800a390cbc08ef071a60c8c619c01c1f00248d2435a986a6d33b14da9998368a38416f875d7cdd1b1620
+	sha512sums = df3148c4fd26f2e4f85c4e60acce8d8fdfb7408dc0c33c80ef26d0c9f481e00043f44f3f8a5d4b2db3342e47eddf8d1a1bf1f136b52e8782d0384e8afe5bfccd
+	sha512sums = 810fd48296fdac2b141ac8a9da02a9c133f3ae0b62177c62e72b03aab0c86b2c062f53ab070d4c5e8cbb7a6bfa6f9879225c46f604d9a0914deb0f0798a86f03
+	sha512sums = 5f17b94c2a86ed468ac12f84bd258b915cfaa1858cada3e59293489447c634c6401921d654000d87f8eca970bfba8a9506aced100902771d98efc7d4cdb27cb5
+	sha512sums = f421c4f2618422957cd203bf8f50bae1e5656d6208774244092987c07427ca86bf587884510c9180a0cb554200fdc996b0fad382671c913e6729b215b6f8e651
+
+pkgname = python-fangfrisch
+

@@ -1,0 +1,6 @@
+post_install() {
+    echo 'NOTE: Create database structure by running:'
+    echo '  sudo -u clamav /usr/bin/fangfrisch --conf /etc/fangfrisch/fangfrisch.conf initdb'
+    echo 
+    echo 'NOTE: Enable fangfrisch.timer for regular automatic updates.'
+}

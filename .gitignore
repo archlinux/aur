@@ -1,0 +1,5 @@
+src
+pkg
+*x86_64.pkg.tar.xz
+*any.pkg.tar.xz
+fangfrisch-*.tar.gz
