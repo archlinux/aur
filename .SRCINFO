@@ -1,7 +1,7 @@
 pkgbase = swaylock-fancy-git
 	pkgdesc = Blurs and pixelates background, adds lock icon and text, for sway.
 	pkgver = r189.5cf977b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Big-B/swaylock-fancy
 	arch = any
 	license = MIT

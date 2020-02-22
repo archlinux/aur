@@ -4,7 +4,7 @@
 _gitname=swaylock-fancy
 pkgname=swaylock-fancy-git
 pkgver=r189.5cf977b
-pkgrel=1
+pkgrel=2
 pkgdesc="Blurs and pixelates background, adds lock icon and text, for sway."
 arch=('any')
 url="https://github.com/Big-B/swaylock-fancy"
@@ -22,6 +22,11 @@ pkgver() {
 }
 
 package() {
+    # Run the install
     cd "${srcdir}/$_gitname"
     DESTDIR="$pkgdir" make install
+
+    # Have to redirect the prefix to arch's default location
+    cd "$pkgdir"/usr/bin
+    sed "$_gitname" -i -e "s:^PREFIX=.*:PREFIX=/usr/share/$_gitname:g"
 }
