@@ -10,7 +10,7 @@ url="http://$pkgname.sourceforge.net/"
 license=('PSF')
 depends=('python2' 'python2-lockfile' 'python2-pydns')
 makedepends=('python2-setuptools')
-source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('14752d9930a4f103789918a26eaed0348d27329f34e14666edfc6d05b6b01053')
 
 package() {

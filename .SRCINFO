@@ -9,7 +9,7 @@ pkgbase = spambayes
 	depends = python2
 	depends = python2-lockfile
 	depends = python2-pydns
-	source = https://downloads.sourceforge.net/sourceforge/spambayes/spambayes-1.1a6.tar.gz
+	source = spambayes-1.1a6-8.tar.gz::https://downloads.sourceforge.net/sourceforge/spambayes/spambayes-1.1a6.tar.gz
 	sha256sums = 14752d9930a4f103789918a26eaed0348d27329f34e14666edfc6d05b6b01053
 
 pkgname = spambayes
