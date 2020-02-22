@@ -1,5 +1,5 @@
 pkgbase = arm-linux-gnueabi-gcc75-linaro-bin
-	pkgdesc = The GNU Compiler Collection - cross compiler fo 32-bit Armv7 Cortex-A
+	pkgdesc = The GNU Compiler Collection - cross compiler for 32-bit Armv7 Cortex-A
 	pkgver = 7.5
 	pkgrel = 1
 	url = https://www.linaro.org/downloads/
