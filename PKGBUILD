@@ -2,24 +2,21 @@
 
 pkgname=wasmer-bin
 pkgver=0.14.0
-pkgrel=0
+pkgrel=1
 pkgdesc='Universal WebAssembly runtime'
 arch=(x86_64)
 license=(MIT)
 url='https://wasmer.io/'
 depends=(bash)
-conflicts=(wasmer wapm libwasmer_runtime_c_api.so.${pkgver})
-provides=(wasmer wapm libwasmer_runtime_c_api.so.${pkgver})
+conflicts=(wasmer wapm)
+provides=(wasmer wapm)
 source=(
   "wasmer-linux-amd64-${pkgver}.tar.gz"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
-  "libwasmer_runtime_c_api.so.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/libwasmer_runtime_c_api.so"
-  "wasmer.h.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer.h"
-  "wasmer.hh.${pkgver}"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer.hh"
   "https://raw.githubusercontent.com/wasmerio/wasmer/${pkgver}/LICENSE"
   wapm.sh
   logo.sh
 )
-sha512sums=(SKIP SKIP SKIP SKIP SKIP SKIP SKIP)
+sha512sums=(SKIP SKIP SKIP SKIP)
 
 build() {
   cd "$srcdir"
@@ -40,14 +37,6 @@ package() {
   install -Dm755 wapm.sh "$pkgdir"/usr/bin/wapm.sh
   install -Dm755 bin/wapm "$pkgdir"/usr/bin/wapm.bin
   ln -s wapm.sh "$pkgdir"/usr/bin/wapm
-
-  # libraries
-  install -Dm755 libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so.${pkgver}
-  ln -s libwasmer_runtime_c_api.so.${pkgver} "$pkgdir"/usr/lib/libwasmer_runtime_c_api.so
-
-  # headers
-  install -Dm755 wasmer.h.${pkgver} "$pkgdir"/usr/lib/wasmer.h
-  install -Dm755 wasmer.hh.${pkgver} "$pkgdir"/usr/lib/wasmer.hh
 
   # wapm completions
   install -Dm644 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
