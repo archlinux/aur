@@ -4,7 +4,7 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
-pkgver=9.3.0.r15.g4a09af0
+pkgver=9.3.0.r17.g48380d4
 _pkgver=9.3.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
@@ -21,7 +21,7 @@ options=(!emptydirs)
 provides=('pamac')
 conflicts=('pamac')
 # End of Manjaro users section
-source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git#branch=development)
+source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git)
 sha256sums=('SKIP')
 
 pkgver() {
