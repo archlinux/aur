@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Contributor ("wookietreiber") <christian.krause@mailbox.org>
 
 _gemname=bindata
 pkgname=ruby-$_gemname
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Declarative way to read and write structured binary data"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby')
 makedepends=('ruby-rdoc' 'ruby-rake' 'git')
 options=(!emptydirs)
 source=("${_gemname}-${pkgver}.tar.gz"::"https://github.com/dmendel/bindata/archive/v${pkgver}.tar.gz")
-sha256sums=('a4271967ca82a82ae785c713c639785a8ece9114341205c3800cf0d0b0b65f26')
+sha256sums=('c18e4dfc38964570129e4338ac413fdd80209870279096ba0d2db09d2f7007bb')
 
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"

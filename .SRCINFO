@@ -1,6 +1,6 @@
 pkgbase = ruby-bindata
 	pkgdesc = Declarative way to read and write structured binary data
-	pkgver = 2.4.4
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/dmendel/bindata
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ruby-bindata
 	makedepends = git
 	depends = ruby
 	options = !emptydirs
-	source = bindata-2.4.4.tar.gz::https://github.com/dmendel/bindata/archive/v2.4.4.tar.gz
-	sha256sums = a4271967ca82a82ae785c713c639785a8ece9114341205c3800cf0d0b0b65f26
+	source = bindata-2.4.5.tar.gz::https://github.com/dmendel/bindata/archive/v2.4.5.tar.gz
+	sha256sums = c18e4dfc38964570129e4338ac413fdd80209870279096ba0d2db09d2f7007bb
 
 pkgname = ruby-bindata
 
