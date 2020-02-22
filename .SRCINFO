@@ -1,7 +1,7 @@
 pkgbase = gnat-gps
 	pkgdesc = GNAT Programming Studio for Ada
 	pkgver = 2019
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libre.adacore.com/libre/tools/gps
 	arch = i686
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = gnat-gps
 	depends = gnome-icon-theme-symbolic
 	depends = python2-gobject
 	depends = python2-jedi
-	source = https://github.com/AdaCore/gps/archive/3b331d05ecf8b0d0e76d0b264c8f5c4fa7bca3d3.zip
-	source = http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f
+	source = https://github.com/AdaCore/gps/archive/eb0d52567d9e1af49ee3248144442c9fa46bbb55.zip
+	source = https://community.download.adacore.com/v1/6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d?filename=libadalang-tools-2019-20190517-195C4-src.tar.gz
 	source = patch-Makefile.in
 	source = patch-docs-Makefile.in
 	source = xref-docgen.adb-patch
 	source = src_contexts.adb-patch
 	source = gps.desktop
-	sha1sums = 203427f62483f7fda557a0be4bac9045a55b351d
+	sha1sums = ed71bc62dc796263a5ba91472be90067d71396cc
 	sha1sums = 6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d
 	sha1sums = 763584d9a931887eff11151310504c02df279224
 	sha1sums = 60813145324cd5ea9f081648da10cffd99f87586

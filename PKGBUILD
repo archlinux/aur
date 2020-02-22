@@ -4,7 +4,7 @@
 
 pkgname=gnat-gps
 pkgver=2019
-pkgrel=1
+pkgrel=2
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
@@ -18,15 +18,15 @@ depends=("clang" "libadalang"
          "python2-gobject" "python2-jedi")
 makedepends=("gprbuild")
 
-source=(https://github.com/AdaCore/gps/archive/3b331d05ecf8b0d0e76d0b264c8f5c4fa7bca3d3.zip
-        http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f
+source=(https://github.com/AdaCore/gps/archive/eb0d52567d9e1af49ee3248144442c9fa46bbb55.zip
+        https://community.download.adacore.com/v1/6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d?filename=libadalang-tools-2019-20190517-195C4-src.tar.gz
         patch-Makefile.in
         patch-docs-Makefile.in
         xref-docgen.adb-patch
         src_contexts.adb-patch
         gps.desktop)
 
-sha1sums=('203427f62483f7fda557a0be4bac9045a55b351d'
+sha1sums=('ed71bc62dc796263a5ba91472be90067d71396cc'
           '6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d'
           '763584d9a931887eff11151310504c02df279224'
           '60813145324cd5ea9f081648da10cffd99f87586'
@@ -34,7 +34,7 @@ sha1sums=('203427f62483f7fda557a0be4bac9045a55b351d'
           'bd80d0f84c128e1e0d6a1aa3ac4b419226a4c616'
           '1f4ee00408551af23eec12488188016ffee17c72')
 
-gps_version="3b331d05ecf8b0d0e76d0b264c8f5c4fa7bca3d3"
+gps_version="eb0d52567d9e1af49ee3248144442c9fa46bbb55"
 
 
 prepare()
