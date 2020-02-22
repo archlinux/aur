@@ -1,4 +1,4 @@
-# Maintainer: Lennard Hofmann <lennard.hofmann@web.de>
+# Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
 pkgname=('otf-yrsa' 'ttf-yrsa')
 pkgbase=yrsa-font
 pkgver=1.002
