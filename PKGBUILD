@@ -1,6 +1,6 @@
 pkgname=plasma-workspace-git
 pkgver=r8766.ed72b1de7
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -13,8 +13,8 @@ depends=('qt5-tools' 'kded-git' 'libksysguard-git' 'kjsembed-git'
   'kholidays-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 optdepends=('plasma-workspace-wallpapers: additional wallpapers')
-conflicts=('plasma-workspace' 'drkonqi' 'kdebase-workspace')
-provides=('plasma-workspace' 'drkonqi')
+conflicts=('plasma-workspace' 'drkonqi' 'plasma-wayland-session' 'kdebase-workspace')
+provides=('plasma-workspace' 'drkonqi' 'plasma-wayland-session')
 source=('git://anongit.kde.org/plasma-workspace.git')
 groups=('plasma')
 md5sums=('SKIP')
