@@ -3,11 +3,11 @@ Operation = Install
 Operation = Upgrade
 Operation = Remove
 Type = File
-Target = boot/vmlinuz-linu*
+Target = usr/lib/modules/*/vmlinuz
 
 [Action]
 Description = Updating GRUB Config
 Depends = grub
 When = PostTransaction
-Exec = /bin/sh -c 'grub-mkconfig -o /boot/grub/grub.cfg'
+Exec = /usr/bin/grub-mkconfig -o /boot/grub/grub.cfg
 
