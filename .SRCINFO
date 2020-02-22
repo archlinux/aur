@@ -1,0 +1,26 @@
+pkgbase = gjs-dev
+	pkgdesc = Javascript Bindings for GNOME
+	pkgver = 1.63.91
+	pkgrel = 1
+	epoch = 2
+	url = https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md
+	arch = x86_64
+	license = GPL
+	checkdepends = valgrind
+	checkdepends = xorg-server-xvfb
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = autoconf-archive
+	makedepends = sysprof
+	makedepends = meson
+	depends = cairo
+	depends = gobject-introspection-runtime
+	depends = js68
+	depends = dconf
+	provides = gjs
+	conflicts = gjs
+	source = git+https://gitlab.gnome.org/GNOME/gjs.git#commit=016300e9a2fda5a310b4a42a487355e68491a1fa
+	sha512sums = SKIP
+
+pkgname = gjs-dev
+
