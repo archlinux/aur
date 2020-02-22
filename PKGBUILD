@@ -9,6 +9,8 @@ url='https://projects.kde.org/kscreenlocker'
 license=(LGPL)
 depends=(plasma-framework-git kidletime-git kwayland-git libxcursor)
 makedepends=(extra-cmake-modules-git git python kdoctools-git)
+provides=(kscreenlocker)
+conflicts=(kscreenlocker)
 source=('git://anongit.kde.org/kscreenlocker.git')
 md5sums=('SKIP')
 

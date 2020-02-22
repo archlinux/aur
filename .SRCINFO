@@ -16,6 +16,8 @@ pkgbase = kscreenlocker-git
 	depends = kidletime-git
 	depends = kwayland-git
 	depends = libxcursor
+	provides = kscreenlocker
+	conflicts = kscreenlocker
 	source = git://anongit.kde.org/kscreenlocker.git
 	md5sums = SKIP
 
