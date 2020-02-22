@@ -8,25 +8,24 @@ url = "https://www.archlinux.org/packages/core/x86_64/linux-lts/json/"
 
 data = subprocess.check_output(['curl', '-s', url]).decode()
 info = json.loads(data)
-latest_kernver, latest_archver = info['pkgver'].rsplit('.', 1)
+latest_pkgver = info['pkgver']
 latest_pkgrel = info['pkgrel']
 
-kernver, archver, pkgrel = subprocess.check_output(
-    ['bash', '-c', 'source PKGBUILD; echo ${_kernver} ${_archver} ${_pkgrel}']
+pkgver, pkgrel = subprocess.check_output(
+    ['bash', '-c', 'source PKGBUILD; echo ${_pkgver} ${_pkgrel}']
 ).decode('utf8').strip().split()
 
-if (kernver, archver, pkgrel) != (latest_kernver, latest_archver, latest_pkgrel):
+if (pkgver, pkgrel) != (latest_pkgver, latest_pkgrel):
     print("linux-lts-versioned-bin out of date!")
     with open('PKGBUILD') as f:
         pkgbuild = f.read()
 
     replacements = (
-        (f'_kernver={kernver}', f'_kernver={latest_kernver}'),
-        (f'_archver={archver}', f'_archver={latest_archver}'),
+        (f'_kernver={pkgver}', f'_kernver={latest_pkgver}'),
         (f'_pkgrel={pkgrel}', f'_pkgrel={latest_pkgrel}'),
         (
-            f'{kernver}.{archver}-{pkgrel}',
-            f'{latest_kernver}.{latest_archver}-{latest_pkgrel}',
+            f'{pkgver}-{pkgrel}',
+            f'{latest_pkgver}-{latest_pkgrel}',
         ),
     )
 
@@ -43,7 +42,7 @@ if (kernver, archver, pkgrel) != (latest_kernver, latest_archver, latest_pkgrel)
 
     subprocess.check_call(['git', 'add', 'PKGBUILD', '.SRCINFO'])
     subprocess.check_call(
-        ['git', 'commit', '-m', f'{latest_kernver}.{latest_archver}-{latest_pkgrel}']
+        ['git', 'commit', '-m', f'{latest_pkgver}-{latest_pkgrel}']
     )
 
     def yn_choice(message, default='y'):
