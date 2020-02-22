@@ -6,8 +6,11 @@ pkgbase = intervalset
 	arch = i686
 	arch = x86_64
 	license = LGPL-3.0
-	makedepends = meson ninja pkgconf
-	depends = boost gtest
+	makedepends = meson
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = boost
+	depends = gtest
 	source = https://framagit.org/batsim/intervalset/-/archive/v1.2.0/intervalset-v1.2.0.tar.gz
 	md5sums = 8ac913678803166a6db4f21636000274
 
