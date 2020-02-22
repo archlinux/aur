@@ -1,20 +1,7 @@
-# Maintainer: Viachaslau Khalikin <khalikin'at'yandex'dot'by>
+# Maintainer: Viachaslau Khalikin <khalikin'at'yandex>
 
 # from https://github.com/mail-ru-im/im-desktop/blob/master/external/readme.txt
-_external_url='https://icq.com/files/ohmpeoVRtQk3j3i1DoAF625d82046f1bg'
-
-_parseurl () {
-    local external_url=$(curl -s ${_external_url} | grep -m1 -Po '"https://[^"]+(external)\.(7z)"')
-    test -n $external_url && _external_url=$external_url
-}
-_parseurl
-unset _parseurl
-
-_useragent="Mozilla/5.0 (X11; Linux ${CARCH}; rv:68.0) Gecko/20100101 Firefox/68.0"
-_useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/ /g')"
-_useragent_escaped="${_useragent// /\\ }"
-
-DLAGENTS=("https::/usr/bin/wget -U ${_useragent_escaped} -r -np -nd -H %u")
+_external_url='https://hb.bizmrg.com/icq-www/external/external.7z'
 
 _check_arch () {
 case $CARCH in
@@ -32,8 +19,8 @@ unset _check_arch
 _git_reponame='im-desktop'
 
 pkgname='icqdesktop-git'
-pkgver=r5.8422caa
-pkgrel=2
+pkgver=r8.07c0995
+pkgrel=1
 arch=('i686' 'x86_64')
 #depends=('')
 makedepends=('git' 'cmake' 'glfw-x11')
@@ -46,7 +33,7 @@ source=("${pkgname}::git+https://github.com/mail-ru-im/${_git_reponame}.git"
         'icq.desktop')
 noextract=('external.7z')
 md5sums=('SKIP'
-         '9a71b93b56fe50b6d3541552af7dd55c'
+         '7c7e365df1432cc43ec5c3835da7783e'
          '7c16e645547ab40bd577b81c9705d5c1')
 conflicts=('icqdesktop' 'icqdesktop-bin')
 provides=('icqdesktop-git')
@@ -57,13 +44,14 @@ pkgver() {
 }
 
 prepare() {
-  bsdtar -x -f external.7z -C "${pkgname}/external"
+  bsdtar -x -f external.7z -C "${pkgname}"
 }
 
 # ! Compiling require >6Gb free memory
 build() {
   cmake ${pkgname} -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DLINUX_ARCH=$LINUX_ARCH
-  make 
+  # FIXME: can't open file 'buildsystem/prepare_zstd_dict.py': [Errno 2] No such file or directory
+  make --ignore-errors
 }
 
 package() {
@@ -71,3 +59,5 @@ package() {
   install -Dm644 "${pkgname}/gui/resources/main_window/logo_icq.svg" "${pkgdir}/usr/share/pixmaps/icq.png"
   install -Dm644 icq.desktop "${pkgdir}/usr/share/applications/icq.desktop"
 }
+
+# vim:set ft=sh ts=2 sw=2 et:
