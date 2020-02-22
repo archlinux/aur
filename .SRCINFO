@@ -4,7 +4,7 @@ pkgbase = ttf-creepster
 	pkgrel = 1
 	url = https://fonts.google.com/specimen/Creepster
 	arch = any
-	license = custom:OFL
+	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = ttf-creepster-1.000.zip::https://fonts.google.com/download?family=Creepster
