@@ -1,18 +1,18 @@
 pkgbase = python-ckcc-protocol
 	pkgdesc = Python code and command utilities to communicate with coldcard cryptocurrency wallet
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Coldcard/ckcc-protocol
 	arch = any
 	license = custom
 	depends = python
-	depends = python-hidapi<0.9.0.1
+	depends = python-hidapi
 	depends = python-click
 	depends = python-pyaes
 	depends = python-ecdsa
 	options = !emptydirs
-	source = python-ckcc-protocol-1.0.0.tar.gz::https://github.com/Coldcard/ckcc-protocol/archive/v1.0.0.tar.gz
-	sha256sums = 297aee0d24df98357cd1302b64ca560eb29309dd1b3ec981d68a61e399da4cb3
+	source = python-ckcc-protocol-1.0.1.tar.gz::https://github.com/Coldcard/ckcc-protocol/archive/v1.0.1.tar.gz
+	sha256sums = ab448dcf441563785c546c84f1d2db6ac7f85b169436bf6df2c7e066e8b0724c
 
 pkgname = python-ckcc-protocol
 
