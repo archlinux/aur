@@ -153,6 +153,7 @@ ac_add_options --enable-av1
 export MOZ_GECKO_PROFILER=
 export MOZ_ENABLE_PROFILER_SPS=
 export MOZ_PROFILING=
+export MOZ_INCLUDE_SOURCE_INFO=1
 END
 
   echo "Patching for KDE"
