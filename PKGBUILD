@@ -3,10 +3,10 @@ _pkgname=linux
 _kernver=5.5.5
 _archver=arch1
 _pkgrel=1
-_pkgver=${_kernver}.${_archver}
+_pkgver="${_kernver}.${_archver}"
 pkgbase="${_pkgname}-versioned-bin"
-KERNNAME=${_kernver}-${_archver}-${_pkgrel}
-_versioned_pkgname=${_pkgname}${_pkgver}-${_pkgrel}
+KERNNAME="${_kernver}-${_archver}-${_pkgrel}"
+_versioned_pkgname="${_pkgname}${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
          "${_pkgname}-versioned-docs-bin"
@@ -54,7 +54,7 @@ sha256sums=('8a5831a8df34bc83f95e493406dfa8eaafebae1fb68a33697df7f2e630841aad'
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
     depends=("${_versioned_pkgname}-bin")
-    optdepends=('grub-mkconfig-hook: to run grub-mkconfig when kernels are added/removed')
+    optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-versioned-headers-bin() {
@@ -83,7 +83,7 @@ package_linux5.5.5.arch1-1-headers-bin() {
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  mv "${pkgdir}/usr/src/linux"{,"-${KERNNAME}"}
+  mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
 package_linux5.5.5.arch1-1-docs-bin() {
@@ -91,5 +91,5 @@ package_linux5.5.5.arch1-1-docs-bin() {
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  mv "${pkgdir}/usr/share/doc/linux"{,"-${KERNNAME}"}
+  mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
 }
