@@ -1,8 +1,6 @@
-# Maintainer: Andrea Scarpino <andrea@archlinux.org>
-
 pkgname=ktexteditor-git
-pkgver=r1114.f3f4319
-pkgrel=2
+pkgver=r2330.8630da5f
+pkgrel=1
 pkgdesc='KTextEditor framework'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/ktexteditor'
@@ -11,9 +9,8 @@ depends=(kparts-git libgit2)
 makedepends=(extra-cmake-modules-git git)
 provides=(ktexteditor)
 conflicts=(ktexteditor)
-source=('git://anongit.kde.org/ktexteditor.git' "pkgbuild-syntax-highlight.patch")
-md5sums=('SKIP'
-         '3a03efe92f1403991c51f2859ee092f6')
+source=('git://anongit.kde.org/ktexteditor.git')
+md5sums=('SKIP')
 
 pkgver() {
   cd ktexteditor
@@ -22,9 +19,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd ktexteditor
-  patch -p0 -i "$srcdir"/pkgbuild-syntax-highlight.patch
 }
 
 build() {
