@@ -5,10 +5,10 @@
 pkgname=('dash-daemon' 'dash-cli' 'dash-qt')
 pkgbase=dash
 pkgver=0.15.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.dash.org/"
-depends=('boost-libs' 'libevent')
+depends=('boost-libs' 'libevent' 'libbacktrace-git')
 makedepends=('boost' 'codablock-bls-signatures')
 optdepends=('miniupnpc: Firewall-jumping support'
             'db4.8: Wallet storage and wallet portability')
