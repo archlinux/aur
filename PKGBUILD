@@ -1,5 +1,5 @@
-# $Id: PKGBUILD 194370 2016-11-02 10:31:59Z alucryd $
-# Maintainer : Paul Wilk <paul.wilk@null.net>
+# Maintainer: timescam <rex.ky.ng at gmail dot com>
+# Contributor: Paul Wilk <paul.wilk@null.net>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg0.10
 pkgver=0.10.16
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
@@ -66,7 +66,6 @@ build() {
     --enable-libv4l2 \
     --enable-libvorbis \
     --enable-libvpx \
-    --enable-libx264 \
     --enable-libxvid \
     --enable-postproc \
     --enable-runtime-cpudetect \
