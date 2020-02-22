@@ -1,7 +1,7 @@
 pkgbase = python-mlflow
 	pkgdesc = An open source platform for the machine learning lifecycle
-	pkgver = 1.5.0
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://mlflow.org
 	arch = x86_64
 	license = Apache-2.0
@@ -35,8 +35,8 @@ pkgbase = python-mlflow
 	optdepends = python-mleap
 	optdepends = python-azure-storage
 	optdepends = python-google-cloud-storage
-	source = python-mlflow-1.5.0::https://github.com/mlflow/mlflow/archive/v1.5.0.tar.gz
-	sha256sums = edef1e24ad947ee286a90cbd45b635234a1cad6961fe507d1c38a58ee47f4a08
+	source = python-mlflow-1.6.0::https://github.com/mlflow/mlflow/archive/v1.6.0.tar.gz
+	sha256sums = b6782aaeae609a4d2baefb31f018b2bc8d7dcef39e5c26745bf144ab6f25c750
 
 pkgname = python-mlflow
 
