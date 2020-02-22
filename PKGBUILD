@@ -15,23 +15,17 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-  export GOPATH="$srcdir"/gopath
-  mkdir -p gopath/src/github.com/tunneller
-  cp -r $pkgname/* gopath/src/github.com/tunneller
-}
-
 build() {
-  cd "gopath/src/github.com/tunneller"
+  cd "$pkgname"
 
-#go install
-  go install \
+  go build \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
-    -v ./...
+    -o tunneller .
 }
 
 package() {
-  install -Dm755 gopath/bin/tunneller "$pkgdir"/usr/bin/tunneller
+  cd $pkgname
+  install -Dm755 tunneller  "$pkgdir"/usr/bin/tunneller
 }
 
