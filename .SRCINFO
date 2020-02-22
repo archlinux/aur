@@ -16,8 +16,12 @@ pkgbase = k40whisperer
 	optdepends = python-pyclipper
 	source = https://www.scorchworks.com/K40whisperer/K40_Whisperer-0.43_src.zip
 	source = 97-ctc-lasercutter.rules
+	source = k40whisperer.install
+	source = k40_whisperer.py.patch
 	sha256sums = 9fbd62b226b186883317135bc820b19e2fd55911a000a5befc5d55ef4100cf9d
 	sha256sums = 19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508
+	sha256sums = 5d32866a044ce3239881eacd01720b95285031a003a79056644d30e728fcee19
+	sha256sums = b92ec53119e4cba6269e3db7cf00144659194eeee2e085bf186ca544803466bc
 
 pkgname = k40whisperer
 
