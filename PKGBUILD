@@ -4,7 +4,7 @@
 
 pkgname=sddm
 pkgver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc='QML based X11 and Wayland display manager'
 arch=('x86_64')
 url='https://github.com/sddm/sddm'
@@ -13,7 +13,9 @@ depends=('qt5-declarative' 'xorg-xauth' 'xorg-server')
 makedepends=('extra-cmake-modules' 'python-docutils' 'qt5-tools')
 backup=('usr/share/sddm/scripts/Xsetup'
         'usr/share/sddm/scripts/Xstop'
-        'etc/pam.d/sddm')
+        'etc/pam.d/sddm'
+        'etc/pam.d/sddm-autologin'
+        'etc/pam.d/sddm-greeter')
 provides=('display-manager')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         sddm.sysusers sddm.tmpfiles)
