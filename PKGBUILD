@@ -2,7 +2,7 @@
 
 pkgname=gtkada
 pkgver=2019
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
@@ -12,9 +12,8 @@ license=('GPL')
 depends=('gcc-ada' 'gtk3')
 makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5ce7f58931e87adb2d312c53')
-sha1sums=('eac201014c9d51fb36cb8346cec8e90ec51536d0')
-
+source=(https://community.download.adacore.com/v1/eac201014c9d51fb36cb8346cec8e90ec51536d0?filename=gtkada-2019-20190424-19D98-src.tar.gz)
+sha1sums=(eac201014c9d51fb36cb8346cec8e90ec51536d0)
 
 build()
 {
