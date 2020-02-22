@@ -1,30 +1,25 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Andri Yngvason <andri@yngvason.is>
 
 pkgname=wayvnc
-pkgver=0+r83+gda3cf24
-_commit=da3cf24a825b180528fd6e12a43b9dbd8166e0e9
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='VNC server for wlroots-based Wayland compositors'
 arch=(x86_64)
 url=https://github.com/any1/wayvnc
 license=(custom:ISC)
-depends=(libglvnd libxkbcommon neatvnc)
-makedepends=(git meson ninja)
-source=(git+$url#commit=$_commit)
+depends=(libglvnd libxkbcommon libuv pixman neatvnc)
+makedepends=(meson ninja)
+source=("$pkgname-v$pkgver.tar.gz::https://github.com/any1/wayvnc/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd $pkgname
-  echo 0+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
-}
-
 build() {
-  mkdir -p build
-  arch-meson build $pkgname
+  cd $pkgname-$pkgver
+  arch-meson build
   ninja -C build
 }
 
 package() {
+  cd $pkgname-$pkgver
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm 644 $pkgname/COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
+  install -Dm 644 COPYING -t "$pkgdir"/usr/share/licenses/$pkgname
 }
