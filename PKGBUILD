@@ -23,6 +23,7 @@ _hash_time=($(curl -s "$url3"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\
 _hash_time=($(curl -s "$url4"|grep -e "hash =" -e "timetamp ="|sed "s/.*= '\(.*\)';/\1/"))
 
 source=("https://github.com/Austcool-Walker/macbuntu-theme/releases/download/1.0/${pkgname}.txz"
+	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/Arc-Dark-OSX.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/jFhANdVGWjRVQHRB.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/pMlCEu5HhOoggOV4.txz"
 	"https://github.com/Austcool-Walker/macbuntu-packages/raw/master/IQcbr.txz"
@@ -48,8 +49,9 @@ source=("https://github.com/Austcool-Walker/macbuntu-theme/releases/download/1.0
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/%E4%BA%A4%E9%8C%AF%E3%81%9B%E3%81%97%E6%88%A6%E7%A5%9E.jpg"
 	"https://github.com/Austcool-Walker/macbuntu-icons/raw/master/BlackHeartSwimsuit.png")
 sha512sums=('e0b69da47480db9675359e37ff4b5187007735127c2eebf6032d0a70fa06daa7c1b577426a14d907396ac410e2406b04831bbab653c93a335ad0014a7749d20d'
+            '2e68ebd7fee21f21e52f05404f7a127aab26f2081c163991309af419982d46957b93afadb72a7724642e73b8ea6d6c14d46f2c8734e1caa39687d6762e7b9435'
             '71498c01d0a92764eeb4c379c875f686d678365141061381b143b5a7e23774e30da82dc0b9f0e5d9ed371fd0180aea5478073ef55f5f12a6b2e9d629b020e43c'
-            'd2c030ec69bc300c1bb2ad531efc43cdf7a42cdc0ee5348dec6004e496c7d5603b83aa3dfc7b23301d329955932b4fa2431005aeb4df5ef7df213addb5754364'
+            '21bbc894532c69d374ad75f94565b3e5a04caedb3183fd4cf4c80e1be903deef1f5a727cb94d6265781de6af544ae75fe030d0c3689beb44d9e8b87f47e7782d'
             '2a7960771c24a5ac3362c414323110124d0de1dd4b408495ca3468c190f476300db6f2d8f5cec36bdc24dddfd49deb56cd4eaa27633aeac6968d863fe818f63c'
             '547107b3f0c84e9fce3b43bcc88cecc888efb0bd8aac1f455a7ad47afbdbecac984d18ccc7f905dd74eedf224e3fa37a75bc6a640c4aad890f5993478ef94ff1'
             '3c700f9dfbd7f2718d02baf2735dd4ec9635342b564a7e97d39b72b543c6814d4d1af08f11585e32881b3c680b0f8e54b4bde9b01be56db2988ca89b4c6eac28'
