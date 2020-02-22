@@ -1,36 +1,34 @@
 # Maintainer: Dmitri Goutnik <dg@syrec.org>
 
 pkgname=trdsql
-pkgver=0.4.1
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Tool that can execute SQL queries on CSV, LTSV and JSON"
 arch=('i686' 'x86_64')
 url="https://github.com/noborus/trdsql"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'dep')
+makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('17aab53f4384824ea9a386f240a20b770bbbdb8c521383558febc998fad966ef')
+sha256sums=('f3bf3dd0106d459c03c59b42cff0f4acab35708aa250ca5b034631da30cf4b49')
 
-prepare() {
-  mkdir -p src/github.com/noborus
-  mv ${pkgname}-${pkgver} src/github.com/noborus/trdsql
-  cd src/github.com/noborus/trdsql
-  env GOPATH="${srcdir}" dep ensure
-}
 
 build() {
-  cd src/github.com/noborus/trdsql
-  env GOPATH="${srcdir}" go build
+  cd "$pkgname-$pkgver"
+  go build \
+    -mod=vendor \
+    -trimpath \
+    -ldflags "-extldflags $LDFLAGS" \
+    -o $pkgname .
 }
 
-# check() {
-#   cd src/github.com/noborus/trdsql
-#   env GOPATH="${srcdir}" go test ./...
-# }
+#check() {
+#  cd "$pkgname-$pkgver"
+#  go test -mod=vendor ./...
+#}
 
 package() {
-  cd src/github.com/noborus/trdsql
+  cd "$pkgname-$pkgver"
   install -Dm755 trdsql "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
