@@ -1,7 +1,7 @@
 # Maintainer: Ilya Zlobintsev <ilya.zlve@gmail.com>
 pkgname=qbittorrent-cli-bin
 pkgver=1.5.19350.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface for remote qBittorrent instances"
 arch=("x86_64")
 url="https://github.com/fedarovich/qbittorrent-cli"
@@ -25,5 +25,5 @@ package() {
 	mkdir -p "$pkgdir/usr/lib/$pkgname"
 	mkdir -p "$pkgdir/usr/bin"
 	cp $srcdir/* "$pkgdir/usr/lib/$pkgname/"
-	ln -s "$pkgdir/usr/lib/$pkgname/qbt" "$pkgdir/usr/bin/qbt"
+	ln -s "/usr/lib/$pkgname/qbt" "$pkgdir/usr/bin/qbt"
 }
