@@ -1,7 +1,7 @@
 pkgbase = qtum-core
 	pkgdesc = Qtum Core is a Smart Contracts blockchain platform which makes use of UTXO and Proof of Stake.
-	pkgver = 0.18.3
-	pkgrel = 2
+	pkgver = 0.19.0
+	pkgrel = 1
 	url = https://qtum.org
 	arch = x86_64
 	license = MIT
@@ -28,8 +28,8 @@ pkgbase = qtum-core
 	conflicts = qtum-daemon
 	conflicts = qtum-tx
 	conflicts = qtum-qt
-	source = https://github.com/qtumproject/qtum/archive/mainnet-ignition-v0.18.3.tar.gz
-	sha256sums = f23e8ceb9bfc2473b25341e4c19cc09a5250b8a50d1aaf3b5a3a19862a7c1780
+	source = https://github.com/qtumproject/qtum/archive/mainnet-ignition-v0.19.0.tar.gz
+	sha256sums = 9f3dd4f39584a91bccfc9ad302345786510052e052211d398b8963cc8ebd3c8b
 
 pkgname = qtum-core
 
