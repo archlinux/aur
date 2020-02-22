@@ -16,15 +16,15 @@ depends=('electron')
 makedepends=('npm')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
-	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.zip"
-	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.zip"
+	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
+	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.tar.gz"
 	"$pkgname.desktop"
 	"$pkgname.sh"
 	'fix-autostart-path.diff'
 )
 sha256sums=('5b76514a103a46c9c3c578a474de28b9d5ba4140122cd0950cfe02b9b8e2c84f'
-            '1f4a4c7e88d39b3951fa73c07a03634966b5c46314cb7c4b892fbc288949e19e'
-            'e5487a47583290ee02f1ef08ab7016fbb51c662e4ece11a8f98912d7d8d69014'
+            '1061b711f465d886997db989bcb24b7746f19c9a18215a4e7576d05aa911575a'
+            'afdc9d2783f6d4be8cc143bf866848781d3a28479c9bcfb7edade61bde1883a8'
             '5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53'
             '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
