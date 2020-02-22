@@ -1,17 +1,16 @@
-# Maintainer: Antonio Rojas <arojas@archlinux.org>
-# Contributor: Alexey D. <lq07829icatm at rambler.ru>
-
 pkgname=plasma-workspace-git
-pkgver=r4154.a84e771
-pkgrel=3
+pkgver=r8766.ed72b1de7
+pkgrel=1
 pkgdesc='KDE Plasma Workspace'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
 license=('LGPL')
-depends=('qt5-tools' 'kded-git' 'libksysguard-git' 'kjsembed-git' 'knotifyconfig-git' 'ktexteditor-git' 'kde-cli-tools-git' 
-	 'kio-extras-git' 'baloo-git' 'milou-git' 'libkscreen-git' 'breeze-git' 'kwin-git' 'gpsd' 'libqalculate' 
-	 'khelpcenter-git' 'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xprop' 'prison-git' 'kxmlrpcclient-git'
-	 'networkmanager-qt' 'kscreenlocker-git' 'kholidays-git')
+depends=('qt5-tools' 'kded-git' 'libksysguard-git' 'kjsembed-git'
+  'knotifyconfig-git' 'ktexteditor-git' 'kio-extras-git' 'baloo-git' 'milou-git'
+  'libkscreen-git' 'breeze-git' 'kwin-git' 'gpsd' 'libqalculate'
+  'khelpcenter-git' 'xorg-xrdb' 'xorg-xsetroot' 'xorg-xmessage' 'xorg-xprop'
+  'prison-git' 'kxmlrpcclient-git' 'networkmanager-qt' 'kscreenlocker-git'
+  'kholidays-git')
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 optdepends=('plasma-workspace-wallpapers: additional wallpapers')
 conflicts=('plasma-workspace' 'drkonqi' 'kdebase-workspace')
