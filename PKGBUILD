@@ -1,9 +1,9 @@
-# Maintainer: Nathaniel Maia <natemaia10@gmail.com>
-# Contributor: Marcus Shaetzle
+# Maintainer: Marcus Schaetzle <kickshaw22@gmail.com>
+# Contributor: Nathaniel Maia <natemaia10@gmail.com>
 # Contributor: Eric Vidal <eric@obarun.org>
 
 pkgname=kickshaw
-pkgver=0.7.3
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
 url='http://download.savannah.gnu.org/releases/obladi'
