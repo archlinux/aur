@@ -3,7 +3,7 @@
 
 pkgname=libadalang-tools
 pkgver=2019
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Libadalang-based tools: gnatpp, gnatmetric and gnatstub"
 url='https://github.com/AdaCore/libadalang-tools'
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('libadalang')
 makedepends=('gprbuild')
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf8f4e31e87a8f1d42509f')
+source=('https://community.download.adacore.com/v1/6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d?filename=libadalang-tools-2019-20190517-195C4-src.tar.gz')
 sha1sums=('6b32f1aa7cc443bcaf268ef13fa46e3b0fdf147d')
 
 
