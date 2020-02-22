@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.02
+pkgver=2020.02.1
 pkgrel=0
 pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
 arch=('x86_64')
@@ -24,7 +24,7 @@ replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=df884bb1dbafb2c23595ec74b0fd74bc92e5c3c7
+_commit=b09d5851a2bce79c96a66602ea527ad28a672660
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
@@ -34,7 +34,8 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         no-plt.diff
         "waterfox-classic-kde-2019.12.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/waterfox-classic-kde-2019.12.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
-        pgo_fix_missing_kdejs.patch)
+        pgo_fix_missing_kdejs.patch
+        "Bug1387912.patch::https://github.com/mozilla/gecko-dev/commit/8e8d4fdf49032bbd235cc745be2eece2ddfe4141.patch")
 sha256sums=('SKIP'
             '2b6438946169935ec87fc2e5f3377f6d92a00ba7ad6ef5ab2e60340588dc74ea'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -44,12 +45,10 @@ sha256sums=('SKIP'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
             '0ec569e42cc6e6dab4bbb2d078210acf57bcbe6f16afb2dbeb5b6ff9d0809c87'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
-            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e')
+            'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
+            '4e94ecbd0903218ed8603e1979f8a405b7c4eebd684f20dfba7c249288136d8d')
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
-
   # Fix openSUSE's patches for Waterfox
   #sed -i 's/Firefox/Waterfox/g' $srcdir/mozilla-kde-$_patchrev.patch
   #sed -i 's/KMOZILLAHELPER/KWATERFOXHELPER/g' $srcdir/mozilla-kde-$_patchrev.patch
@@ -99,7 +98,6 @@ ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 ac_add_options --with-system-png
 ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
 ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
@@ -121,6 +119,8 @@ ac_add_options --disable-tests
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
 ac_add_options --disable-gconf
+
+ac_add_options --disable-elf-hack
 
 # If you want to have text-to-speech support, comment this line:
 ac_add_options --disable-webspeech
@@ -168,12 +168,12 @@ END
   echo "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
 
+  patch -Np1 -i ../Bug1387912.patch
+
 }
 
 build() {
   cd Waterfox
-
-  export PATH="$srcdir/path:$PATH"
   ./mach build
 }
 

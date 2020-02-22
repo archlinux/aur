@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Free, open and private browser with openSUSE's patches for better integration with KDE
-	pkgver = 2020.02
+	pkgver = 2020.02.1
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -42,15 +42,15 @@ pkgbase = waterfox-classic-kpe
 	optdepends = alsa-lib: Audio support
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox-classic=2020.02
-	provides = waterfox-classic-kde=2020.02
+	provides = waterfox-classic=2020.02.1
+	provides = waterfox-classic-kde=2020.02.1
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
 	replaces = waterfox-kde
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=df884bb1dbafb2c23595ec74b0fd74bc92e5c3c7
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=b09d5851a2bce79c96a66602ea527ad28a672660
 	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop
 	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/distribution.ini
@@ -60,6 +60,7 @@ pkgbase = waterfox-classic-kpe
 	source = waterfox-classic-kde-2019.12.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/waterfox-classic-kde-2019.12.patch
 	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch
 	source = pgo_fix_missing_kdejs.patch
+	source = Bug1387912.patch::https://github.com/mozilla/gecko-dev/commit/8e8d4fdf49032bbd235cc745be2eece2ddfe4141.patch
 	sha256sums = SKIP
 	sha256sums = 2b6438946169935ec87fc2e5f3377f6d92a00ba7ad6ef5ab2e60340588dc74ea
 	sha256sums = 0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc
@@ -70,6 +71,7 @@ pkgbase = waterfox-classic-kpe
 	sha256sums = 0ec569e42cc6e6dab4bbb2d078210acf57bcbe6f16afb2dbeb5b6ff9d0809c87
 	sha256sums = 877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8
 	sha256sums = bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e
+	sha256sums = 4e94ecbd0903218ed8603e1979f8a405b7c4eebd684f20dfba7c249288136d8d
 
 pkgname = waterfox-classic-kpe
 
