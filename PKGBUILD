@@ -1,7 +1,7 @@
 # Maintainer: Dadoum <contact@dadoum.ml>
-pkgname=checkra1n-ubuntu-bin
+pkgname=checkra1n
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A community project to provide a high-quality semi-tethered jailbreak to all, based on the ‘checkm8’ bootrom exploit. "
 arch=('x86_64')
 url="https://checkra.in/"
@@ -24,38 +24,24 @@ depends=('glibc>=2.24'
 makedepends=('tar' 'binutils')
 checkdepends=()
 optdepends=()
-provides=('checkra1n')
-conflicts=('checkra1n')
-replaces=()
+replaces=('checkra1n-ubuntu-bin')
 backup=()
 options=()
 install=
 changelog=
-source=("https://assets.checkra.in/debian/checkra1n_0.9.8-2_amd64.deb")
-noextract=('checkra1n_0.9.8-2_amd64.deb')
+source=("https://assets.checkra.in/debian/checkra1n_"$pkgver"-"$pkgrel"_amd64.deb")
+noextract=('checkra1n_"$pkgver"-"$pkgrel"_amd64.deb')
 md5sums=('6ff4d19f2a31b54465951fd6f2efc94c')
 validpgpkeys=()
 options=('!strip')
 
 prepare() {
-	ar xf checkra1n_0.9.8-2_amd64.deb
+	ar xf checkra1n_"$pkgver"-"$pkgrel"_amd64.deb
 	rm debian-binary control.tar.gz
-}
-
-check() {
-	echo "eta son"
-}
-
-build() {
-	echo "It is binary"
-}
-
-clean() {
-	echo plz no clean
 }
 
 package() {
 	mkdir -p $pkgdir
-	tar xf data.tar.xz -C $pkgdir         
+	tar xf data.tar.xz -C "$pkgdir"         
         rm data.tar.xz
 }
