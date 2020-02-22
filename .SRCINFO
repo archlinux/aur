@@ -1,10 +1,10 @@
-pkgbase = checkra1n-ubuntu-bin
+pkgbase = checkra1n
 	pkgdesc = A community project to provide a high-quality semi-tethered jailbreak to all, based on the ‘checkm8’ bootrom exploit.
 	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://checkra.in/
 	arch = x86_64
-	license = MIT
+	license = unknown
 	makedepends = tar
 	makedepends = binutils
 	depends = glibc>=2.24
@@ -28,5 +28,5 @@ pkgbase = checkra1n-ubuntu-bin
 	source = https://assets.checkra.in/debian/checkra1n_0.9.8-2_amd64.deb
 	md5sums = 6ff4d19f2a31b54465951fd6f2efc94c
 
-pkgname = checkra1n-ubuntu-bin
+pkgname = checkra1n
 

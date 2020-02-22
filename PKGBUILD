@@ -1,11 +1,11 @@
 # Maintainer: Dadoum <contact@dadoum.ml>
-pkgname=checkra1n-ubuntu-bin
+pkgname=checkra1n
 pkgver=0.9.8
 pkgrel=1
 pkgdesc="A community project to provide a high-quality semi-tethered jailbreak to all, based on the ‘checkm8’ bootrom exploit. "
 arch=('x86_64')
 url="https://checkra.in/"
-license=('MIT')
+license=('unknown')
 groups=()
 depends=('glibc>=2.24' 
 	'ncurses5-compat-libs>=6.0' 
