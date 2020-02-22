@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo \
+'To finish installation, source /usr/share/kak-smarttab-git/rc/smarttab.kak
+in your .kakrc'
+	echo
+}
