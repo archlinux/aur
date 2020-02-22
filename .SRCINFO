@@ -1,0 +1,17 @@
+pkgbase = kak-inc-dec-git
+	pkgdesc = Increment and decrement numbers in Kakoune
+	pkgver = r14.f76f6f4
+	pkgrel = 1
+	url = https://gitlab.com/Screwtapello/kakoune-inc-dec
+	install = kak-inc-dec-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = kakoune
+	provides = kak-inc-dec
+	conflicts = kak-inc-dec
+	source = git+https://gitlab.com/Screwtapello/kakoune-inc-dec
+	sha256sums = SKIP
+
+pkgname = kak-inc-dec-git
+

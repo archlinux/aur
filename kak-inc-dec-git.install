@@ -1,0 +1,6 @@
+post_install() {
+	echo
+	echo To finish installation, source \
+	/usr/share/kak-inc-dec-git/rc/inc-dec.kak in your .kakrc
+	echo
+}
