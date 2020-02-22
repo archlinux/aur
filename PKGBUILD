@@ -23,7 +23,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_reponame"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" UNLICENSE
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" rc/palette.kak
 }
