@@ -1,10 +1,10 @@
 pkgbase = lm-warp-git
 	pkgdesc = Share files across the LAN by Linux Mint
-	pkgver = r21.cb9f695
+	pkgver = r39.53989e7
 	pkgrel = 1
 	url = https://github.com/linuxmint/warp
 	arch = x86_64
-	license = none
+	license = GPL
 	makedepends = git
 	makedepends = meson
 	depends = pygobject-devel

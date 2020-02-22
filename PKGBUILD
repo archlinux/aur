@@ -2,12 +2,14 @@
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=lm-warp-git
-pkgver=r21.cb9f695
+pkgver=r39.53989e7
 pkgrel=1
 pkgdesc="Share files across the LAN by Linux Mint"
 arch=("x86_64")
 url="https://github.com/linuxmint/warp"
-license=("none")
+# License file is missing from the root of the repository; however, GPL-2+ is given in the
+# debian/control file: https://github.com/linuxmint/warp/blob/master/debian/copyright
+license=("GPL")
 depends=("pygobject-devel" "python-setproctitle" "python-zeroconf" "python-xapp" "xapps")
 makedepends=("git" "meson")
 provides=("${pkgname%-git}")
