@@ -1,16 +1,15 @@
 pkgbase = tako
-	pkgdesc = A command language and shell based on Python
-	pkgver = 0.2.5
-	pkgrel = 2
+	pkgdesc = command language and shell based on Python
+	pkgver = 0.2.7
+	pkgrel = 1
 	url = https://takoshell.org/
 	install = tako.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	conflicts = tako-git
-	source = https://takoshell.org/releases/takoshell-0.2.5.tar.gz
-	sha256sums = 23cbec63a10be3d6114ecbc17ad6a00083dcf6534944fb1881a8401be14872a3
+	source = https://takoshell.org/releases/takoshell-0.2.7.tar.gz
+	sha256sums = 4c1fe66927f13676dd904fff3017d1a51e63f74eb47f6bc76583bb3bb47f0cd3
 
 pkgname = tako
 
