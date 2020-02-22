@@ -1,0 +1,15 @@
+pkgbase = battery-checker-git
+	pkgdesc = Script determining if the laptop battery is low
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://gitlab.com/daersc/battery-checker
+	arch = any
+	license = GPL3
+	depends = libnotify
+	provides = battery-checker
+	conflicts = battery-checker
+	source = git+https://gitlab.com/daersc/battery-checker.git
+	md5sums = SKIP
+
+pkgname = battery-checker-git
+
