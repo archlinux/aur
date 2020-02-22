@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libevhtp-git
 pkgver=1.2.18.r10.gf78d0a8
