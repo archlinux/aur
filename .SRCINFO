@@ -1,0 +1,19 @@
+pkgbase = python-reconchess
+	pkgdesc = ReconChess python implementation
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/reconnaissanceblindchess/reconchess
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-chess
+	depends = python-pygame
+	depends = python-lxml
+	depends = python-requests
+	source = python-reconchess-1.6.1::https://github.com/reconnaissanceblindchess/reconchess/archive/v1.6.1.tar.gz
+	sha256sums = 4bb454f47ff009313cf6a67b1148a88f3a898be703716d9509eb1ad3ef629ac3
+
+pkgname = python-reconchess
+
