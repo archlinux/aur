@@ -1,14 +1,14 @@
 # Contributor: graysky <graysky AT archlinux dot us>
 pkgname=('linpack')
-pkgver=2019.4.003
+pkgver=2019.6.005
 _math_kernel_lib=2019
 pkgrel=1
 arch=('x86_64')
 license=('custom')
 url="http://software.intel.com/en-us/articles/intel-math-kernel-library-linpack-download"
-source=("https://software.intel.com/sites/default/files/managed/ee/cd/l_mklb_p_$pkgver.tgz"
+source=("https://software.intel.com/sites/default/files/managed/cc/19/l_mklb_p_$pkgver.tgz"
 'linpack.conf' 'linpack_runme_xeon64')
-sha256sums=('25e3d4e872e0b7b0b2b9a2cb268311f49db642281d0f441dccfbd2d6edab94f4'
+sha256sums=('9ebbd4f4898cdc5e8ee1425c5c955169cd3aa6f8742db37dd4d0d23fc7650a30'
             'd7e31c8c7e2648c8fa3c4838d98dfc39b8fadf0f74bdaa4ca52cd38277ec8254'
             '369736f6074ab579a1df38ba09be4784547833be020f13d1b60374f64ca5d5f6')
 
