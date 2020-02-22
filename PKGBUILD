@@ -3,11 +3,12 @@
 # Contributor: Firmicus <firmicus at gmx dot net>
 pkgname=ttf-sil-scheherazade
 pkgver=2.100
-pkgrel=4
+pkgrel=5
 pkgdesc="An Arabic Naskh-style Unicode typeface"
 arch=('any')
 url="https://software.sil.org/scheherazade/"
 license=('custom:OFL')
+conflicts=('ttf-sil-fonts<=6')
 source=("https://software.sil.org/downloads/r/scheherazade/Scheherazade-$pkgver.zip")
 sha256sums=('251c8817ceb87d9b661ce1d5b49e732a0116add10abc046be4b8ba5196e149b5')
 
