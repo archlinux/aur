@@ -1,8 +1,8 @@
 pkgbase = gjs-git
 	pkgdesc = Javascript Bindings for GNOME
-	pkgver = 1.63.2+21+g471591a3
+	pkgver = 1.63.91+2+g6ea0f836
 	pkgrel = 1
-	url = https://wiki.gnome.org/Projects/Gjs
+	url = https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md
 	arch = x86_64
 	license = GPL
 	checkdepends = valgrind
@@ -18,7 +18,7 @@ pkgbase = gjs-git
 	depends = dconf
 	provides = gjs
 	conflicts = gjs
-	source = git+https://gitlab.gnome.org/GNOME/gjs
+	source = git+https://gitlab.gnome.org/GNOME/gjs.git/
 	sha256sums = SKIP
 
 pkgname = gjs-git
