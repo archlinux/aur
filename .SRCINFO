@@ -1,6 +1,6 @@
 pkgbase = dragonfly-reverb-git
 	pkgdesc = An algorithmic hall reverb and a room reverb (git version)
-	pkgver = 2.0.0.r232.16bcb09
+	pkgver = 3.0.0.r276.85dc8b8
 	pkgrel = 1
 	url = https://michaelwillis.github.io/dragonfly-reverb/
 	arch = i686

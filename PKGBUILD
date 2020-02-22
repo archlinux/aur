@@ -16,7 +16,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("$_pkgname::git+https://github.com/michaelwillis/dragonfly-reverb.git"
         'dpf::git+https://github.com/DISTRHO/DPF.git')
-sha512sums=('SKIP' 'SKIP')
+sha512sums=('SKIP'
+            'SKIP')
 
 _reverbs=(
     "DragonflyEarlyReflections - A stereo-to-stereo reverb effect based on Moorer's early reflection model from Freeverb3"
