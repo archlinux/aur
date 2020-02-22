@@ -24,7 +24,7 @@ validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key
               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
 
 prepare() {
-    cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
+    cd "${srcdir}"/${pkgname%-dkms-any}-${pkgver}
 
     patch -p1 -i ../0001-only-build-the-module-in-dkms.conf.patch
 
@@ -32,25 +32,25 @@ prepare() {
     sed -ri "/AC_CONFIG_FILES/,/]\)/{
 /AC_CONFIG_FILES/n
 /]\)/n
-/^\s*(module\/.*)?(${pkgname%-dkms}.release|Makefile)/!d
+/^\s*(module\/.*)?(${pkgname%-dkms-any}.release|Makefile)/!d
 }" configure.ac
 
     autoreconf -fi
 }
 
 build() {
-    cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
+    cd "${srcdir}"/${pkgname%-dkms-any}-${pkgver}
 
-    ./scripts/dkms.mkconf -n ${pkgname%-dkms} -v ${pkgver} -f dkms.conf
+    ./scripts/dkms.mkconf -n ${pkgname%-dkms-any} -v ${pkgver} -f dkms.conf
 }
 
 package() {
 
-    cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
+    cd "${srcdir}"/${pkgname%-dkms-any}-${pkgver}
 
-    dkmsdir="${pkgdir}/usr/src/${pkgname%-dkms}-${pkgver}"
+    dkmsdir="${pkgdir}/usr/src/${pkgname%-dkms-any}-${pkgver}"
     install -d "${dkmsdir}"/{config,scripts}
-    cp -a configure dkms.conf Makefile.in META ${pkgname%-dkms}_config.h.in ${pkgname%-dkms}.release.in include/ module/ "${dkmsdir}"/
+    cp -a configure dkms.conf Makefile.in META ${pkgname%-dkms-any}_config.h.in ${pkgname%-dkms}.release.in include/ module/ "${dkmsdir}"/
     cp config/config.* config/missing config/*sh "${dkmsdir}"/config/
     cp scripts/enum-extract.pl scripts/dkms.postbuild "${dkmsdir}"/scripts/
 }
