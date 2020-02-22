@@ -1,7 +1,7 @@
 pkgbase = stapler
 	pkgdesc = A small utility making use of the pypdf library to provide a (somewhat) lighter alternative to pdftk
 	pkgver = 1.0.0b1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hellerbarde/stapler
 	arch = any
 	license = BSD
