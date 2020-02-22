@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Font reminding of the 1960s Latin music'
 arch=(any)
 url="https://fonts.google.com/specimen/Boogaloo"
-license=(custom:OFL)
+license=(OFL)
 depends=(fontconfig xorg-font-utils)
 source=("$pkgname-$pkgver.zip::https://fonts.google.com/download?family=Boogaloo")
 sha256sums=('244a357fbfaf6401e6c4e1de94ffc9ee7f6bd2ef2fc0b70b0dc301a8e60220f4')
