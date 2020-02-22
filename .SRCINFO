@@ -5,6 +5,8 @@ pkgbase = zfs-dkms-any
 	url = https://zfsonlinux.org/
 	arch = any
 	license = CDDL
+	depends = zfs-dkms-any=0.8.3
+	depends = dkms
 	provides = zfs-dkms
 	provides = zfs
 	conflicts = zfs-dkms
@@ -23,6 +25,4 @@ pkgbase = zfs-dkms-any
 	b2sums = 1fdae935043d979b9241f07f8baa25a9a0367c24c31c84a59dfe8d6b468a523d8f49b68da3c7fd3194db6638f9d7bef046fc5e2669ce25d73c65009c16bf6c50
 
 pkgname = zfs-dkms-any
-	depends = zfs-utils=0.8.3
-	depends = dkms
 

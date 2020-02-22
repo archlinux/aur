@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 arch=('any')
 url="https://zfsonlinux.org/"
+depends=("zfs-dkms-any=0.8.3" "dkms")
 license=('CDDL')
 conflicts=("zfs-dkms" "zfs")
 provides=("zfs-dkms" "zfs")
@@ -44,7 +45,6 @@ build() {
 }
 
 package() {
-    depends=("zfs-utils=${pkgver}" 'dkms')
 
     cd "${srcdir}"/${pkgname%-dkms}-${pkgver}
 
