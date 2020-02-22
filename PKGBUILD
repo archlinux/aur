@@ -2,6 +2,7 @@ pkgname=gjs-git
 _pkgname=gjs
 pkgver=1.63.91+2+g6ea0f836
 pkgrel=1
+epoch=2
 pkgdesc="Javascript Bindings for GNOME"
 url="https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md"
 arch=(x86_64)
