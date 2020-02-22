@@ -1,0 +1,17 @@
+pkgbase = kak-snippets-git
+	pkgdesc = Expand typed text to snippets in Kakoune
+	pkgver = r62.94931c2
+	pkgrel = 1
+	url = https://github.com/occivink/kakoune-snippets
+	install = kak-snippets-git.install
+	arch = any
+	makedepends = git
+	depends = kakoune>=2019.07.01
+	depends = perl
+	provides = kak-snippets
+	conflicts = kak-snippets
+	source = git+https://github.com/occivink/kakoune-snippets
+	sha256sums = SKIP
+
+pkgname = kak-snippets-git
+
