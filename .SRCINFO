@@ -1,7 +1,7 @@
 pkgbase = pandoc-include-code
 	pkgdesc = A pandoc filter for including code from source files
 	pkgver = 1.5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owickstrom/pandoc-include-code
 	arch = i686
 	arch = x86_64
