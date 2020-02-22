@@ -1,7 +1,7 @@
 # Maintainer: Benedikt Rascher-Friesenhausen <benediktrascherfriesenhausen+aur@gmail.com>
 
 pkgname=python-passpy
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="ZX2C4's pass compatible library and cli"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = python-passpy
 	pkgdesc = ZX2C4's pass compatible library and cli
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/bfrascher/passpy.git
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-passpy
 	depends = python-click
 	depends = python-pyperclip
 	depends = xclip
-	source = https://github.com/bfrascher/passpy/archive/1.0.1.tar.gz
+	source = https://github.com/bfrascher/passpy/archive/1.0.2.tar.gz
 	sha512sums = c3f8bc5a365edb8ee912276baa9b78e91112ee3dfaddb5727f8be176c507ed73f5cb889eebba96c26fa6a8377858a247f47155daa3935cc10eca22b4f0e39d9a
 
 pkgname = python-passpy
