@@ -5,13 +5,13 @@
 pkgname='dashcore'
 _pkgname='dash'
 pkgver=0.15.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dash Core (DASH, Dashpay, formerly Darkcoin) is an open source, privacy-centric digital currency. (Includes the qt-client, the headless daemon and the command-line tool.)"
 arch=('x86_64')
 url="https://www.dash.org/"
 license=('MIT')
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode')
-makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'qt5-tools' 'codablock-bls-signatures')
+makedepends=('autoconf' 'automake' 'binutils' 'gcc' 'libtool' 'make' 'pkg-config' 'qt5-tools' 'codablock-bls-signatures' 'libbacktrace-git')
 provides=('dash-daemon' 'dash-qt' 'dash-cli')
 conflicts=('dashcore-git' 'dashcore-bin' 'dash-cli' 'dash-qt' 'dash-daemon')
 source=('dash256.png'
