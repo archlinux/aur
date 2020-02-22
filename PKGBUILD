@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-rom-git
-pkgver=r32.r0.g179b121
+pkgver=r36.r25.ge7b986a
 pkgrel=1
 pkgdesc="ROM files for The 8-Bit Guy's Commander X16"
 arch=('any')
@@ -35,7 +35,8 @@ build() {
 
 package() {
 	cd "${pkgname%-git}"
-	install -Dm644 rom.bin "$pkgdir/usr/share/${pkgname%-git}/rom.bin"
+	install -Dm644 build/x16/rom.bin "$pkgdir/usr/share/${pkgname%-git}/rom.bin"
+	install -Dm644 build/x16/rom_labels.h "$pkgdir/usr/include/x16/rom_labels.h"
 	install -Dm644 ../github-pandoc.css "$pkgdir/usr/share/doc/${pkgname%-git}/github-pandoc.css"
 	install -Dm644 KERNAL-BASIC.html "$pkgdir/usr/share/doc/${pkgname%-git}/KERNAL-BASIC.html"
 }
