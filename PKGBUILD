@@ -1,6 +1,6 @@
 # Maintainer: Willem Mulder <14mRh4X0r@gmail.com>
 pkgname=ffmpegfs
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="FUSE-based transcoding filesystem from many formats to MP3 or MP4 including video transcoding"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64') # Not arch-specific, should work on all
@@ -9,13 +9,11 @@ license=('GPL3' 'FDL1.3')
 makedepends=('asciidoc' 'w3m' 'xxd')
 depends=('fuse' 'ffmpeg' 'sqlite' 'libbluray')
 source=("https://github.com/nschlia/ffmpegfs/releases/download/v$pkgver/ffmpegfs-$pkgver.tar.gz"
-        "revert-move-to-var-cache.patch")
-sha384sums=('188fb452d59359f94c689eb65de5b226c1affebeffeef37692595f187dcc306209f0b1658635741a6a372d19f9cd05ae'
-            '359b739b93d314d9d5a132a359c04c121c15225f5383cbe9570b4f7b44aaa6685fa24fb281281258e0937fff7b9ee776')
+        "move-cache-to-xdg-cache-home.patch")
 
 prepare() {
     cd "$pkgname-$pkgver"
-    patch -p1 -i ../revert-move-to-var-cache.patch
+    patch -p1 -i ../move-cache-to-xdg-cache-home.patch
 }
 
 build() {
@@ -30,3 +28,8 @@ package() {
 
     install -Dm644 README.md "$pkgdir/usr/share/doc/ffmpegfs/README.md"
 }
+
+sha384sums=('7d09182ae0bed45d86567a51a52038dffe1c2b69c9b5a8bb842b5bcce1cc429b92f9ed9cd694abdcce385286ae1895fc'
+            'a55b6baadb81bc02c332c08ba7d6410aca3f86c032348bcfc44f2f11afc91b1e9588a21217353214ff634f25ad46c0ee')
+sha384sums=('7d09182ae0bed45d86567a51a52038dffe1c2b69c9b5a8bb842b5bcce1cc429b92f9ed9cd694abdcce385286ae1895fc'
+            'ec9c63cf5d2d7de81a766f95aa4f1a83889b639fcc258caafbe2812091a1885b587cffc869f90d5088f532ee5a69441b')
