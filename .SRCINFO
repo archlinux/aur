@@ -1,6 +1,6 @@
 pkgbase = pikaur
 	pkgdesc = AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay.
-	pkgver = 1.6.4
+	pkgver = 1.6.5
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pikaur
 	optdepends = python-pysocks: for socks5 proxy support
 	provides = pikaur
 	conflicts = pikaur-git
-	source = pikaur-1.6.4.tar.gz::https://github.com/actionless/pikaur/archive/1.6.4.tar.gz
-	md5sums = 45c1bb6f81de94528f356a5917031ece
+	source = pikaur-1.6.5.tar.gz::https://github.com/actionless/pikaur/archive/1.6.5.tar.gz
+	md5sums = 66dc2e51ffe62349ff401f7f3ba90e95
 
 pkgname = pikaur
 
