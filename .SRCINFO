@@ -1,0 +1,14 @@
+pkgbase = tunneller-git
+	pkgdesc = Tunneller allows you to expose services which are running on localhost, or on your local network, to the public internet.
+	pkgver = release.0.6.r7.gf02ebdb
+	pkgrel = 1
+	url = https://github.com/skx/tunneller
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go-pie
+	source = tunneller-git::git+https://github.com/skx/tunneller.git
+	sha256sums = SKIP
+
+pkgname = tunneller-git
+
