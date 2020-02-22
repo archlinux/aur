@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-gnatinspect
 	pkgdesc = GNAT Components Collection - the gnatinspect tool.
 	pkgver = 2019
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gnatcoll-db/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gnatcoll-gnatinspect
 	depends = gnatcoll-readline
 	depends = gnatcoll-xref
 	source = https://github.com/AdaCore/gnatcoll-db/archive/master.zip
-	sha1sums = dc4186e802daa71ab88170cd91708738c170d2fb
+	sha1sums = eeefdd157ccd2ad62e807ab64eae07bb3f651300
 
 pkgname = gnatcoll-gnatinspect
 
