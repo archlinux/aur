@@ -2,8 +2,8 @@
 
 pkgname=lemon-lime-git
 _pkgname=lemon-lime 
-pkgver=v.0.1.0120
-pkgrel=3
+pkgver=v.0.1.0120.r8.e34f227
+pkgrel=1
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=(x86_64)
@@ -32,9 +32,9 @@ validpgpkeys=()
 
 pkgver() {
 	cd "$srcdir/Project_LemonLime"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	#git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 # Git, tags available
-#	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/beta//g;s/\.\.*/./g')"
 
 # Git, no tags available
 #	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
