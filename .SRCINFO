@@ -4,7 +4,7 @@ pkgbase = ttf-bangers
 	pkgrel = 1
 	url = https://fonts.google.com/specimen/Bangers
 	arch = any
-	license = custom:OFL
+	license = OFL
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = ttf-bangers-1.0.zip::https://fonts.google.com/download?family=Bangers
