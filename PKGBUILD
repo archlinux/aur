@@ -1,41 +1,25 @@
-# Maintainer: archlinux.info:tdy
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: archlinux.info:tdy
 
-pkgbase=python-chess
-pkgname=(python-chess python2-chess)
-pkgver=0.16.2
+pkgname=python-chess
+pkgver=0.30.1
 pkgrel=1
-pkgdesc="A Python chess library with move generation/validation and PGN/Polyglot/Gaviota/Syzygy/UCI support"
+pkgdesc="A Python chess library with move generation/validation and
+         PGN/Polyglot/Gaviota/Syzygy/UCI support"
 arch=(any)
-url=https://github.com/niklasf/$pkgbase
+url=https://github.com/niklasf/python-chess
 license=(GPL3)
-makedepends=(python-setuptools python2-setuptools)
-source=(https://github.com/niklasf/$pkgbase/archive/v$pkgver.tar.gz)
-sha256sums=(08fc9993f5a781d77ac1c38eed520bef07314ae977427c46f515a416a63f7e64)
-
-prepare() {
-  cp -a $pkgbase-$pkgver{,-py2}
-}
+depends=(python)
+makedepends=(python python-setuptools)
+source=(https://github.com/niklasf/$pkgname/archive/v$pkgver.tar.gz)
+sha256sums=("3e39b204b38208c4f8af47c9ab2bc85443b1800a819a604003ce87271e7eb5fd")
 
 build() {
-  cd $pkgbase-$pkgver
+  cd $pkgname-$pkgver
   python setup.py build
-
-  cd ../$pkgbase-$pkgver-py2
-  python2 setup.py build
 }
 
-package_python-chess() {
-  depends=(python)
-  conflicts=($pkgname-git)
-
-  cd $pkgbase-$pkgver
+package() {
+  cd $pkgname-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-chess() {
-  depends=(python2)
-  conflicts=($pkgname-git)
-
-  cd $pkgbase-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
 }
