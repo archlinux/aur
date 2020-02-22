@@ -1,6 +1,6 @@
 pkgbase = xi-term
 	pkgdesc = A terminal frontend for the Xi editor
-	pkgver = 77eb8aa
+	pkgver = d264767
 	pkgrel = 1
 	url = https://github.com/xi-frontend/xi-term
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = xi-term
 	makedepends = cargo
 	makedepends = git
 	makedepends = make
-	depends = xi-core-git
+	depends = xi-core
 	provides = xi-term
 	conflicts = xi-term
 	source = xi-term::git+https://github.com/xi-frontend/xi-term

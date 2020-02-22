@@ -1,13 +1,13 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=xi-term
-pkgver=77eb8aa
+pkgver=d264767
 pkgrel=1
 pkgdesc="A terminal frontend for the Xi editor"
 arch=('any')
 url="https://github.com/xi-frontend/xi-term"
 license=('MIT')
 provides=("xi-term")
-depends=('xi-core-git')
+depends=('xi-core')
 makedepends=('cargo' 'git' 'make')
 conflicts=('xi-term')
 source=("$pkgname::git+${url}")
