@@ -19,4 +19,5 @@ build() {
 package() {
     cd $srcdir/jsx-lexer-${pkgver}
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
