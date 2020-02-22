@@ -13,10 +13,9 @@ sha256sums=('4cc409f6e5a0bfa95f8c48d95d31054a4f7b7ef0d03b1ab38abcd534d8688038')
 
 package() {
 
-	_pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
+	local _site_packages="$(python -c 'import site; print(site.getsitepackages()[0])')"
 
 	cd "MediaInfoLib-$pkgver"
-	install -Dm644 "Source/MediaInfoDLL/MediaInfoDLL.py" -t \
-		"$pkgdir/usr/lib/python$_pyver/site-packages"
+	install -Dm644 "Source/MediaInfoDLL/MediaInfoDLL.py" -t "$pkgdir/$_site_packages"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
