@@ -5,7 +5,7 @@ pkgbase = kak-snippets-git
 	url = https://github.com/occivink/kakoune-snippets
 	install = kak-snippets-git.install
 	arch = any
-	license = custom:unlicense
+	license = Unlicense
 	makedepends = git
 	depends = kakoune>=2019.07.01
 	depends = perl

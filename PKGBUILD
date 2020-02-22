@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Expand typed text to snippets in Kakoune'
 arch=(any)
 url="https://github.com/occivink/$_reponame"
-license=(custom:unlicense)
+license=(Unlicense)
 depends=('kakoune>=2019.07.01' 'perl')
 makedepends=(git)
 provides=("${pkgname%-git}")
@@ -23,7 +23,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$_reponame"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" UNLICENSE
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 	install -Dm544 -t "$pkgdir/usr/share/$pkgname/rc" snippets*.kak
 }
