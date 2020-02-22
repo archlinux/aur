@@ -1,0 +1,17 @@
+pkgbase = kak-palette-git
+	pkgdesc = Color preview in Kakoune
+	pkgver = r7.652a00d
+	pkgrel = 1
+	url = https://github.com/alexherbo2/palette.kak
+	install = kak-palette-git.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = kakoune
+	provides = kak-palette
+	conflicts = kak-palette
+	source = git+https://github.com/alexherbo2/palette.kak
+	sha256sums = SKIP
+
+pkgname = kak-palette-git
+
