@@ -15,6 +15,7 @@ depends=('glibc' 'glib2' 'sdl2')
 makedepends=('alsa-lib' 'cmake' 'dbus' 'doxygen' 'jack' 'ladspa'
 'libpulse' 'libsndfile' 'portaudio' 'readline' 'systemd-libs')
 provides=('libfluidsynth.so' 'soundfont-synthesizer' 'fluidsynth')
+conflicts=('fluidsynth')
 backup=("etc/conf.d/fluidsynth")
 source=("fluidsynth-$pkgver.tar.gz::https://github.com/fluidsynth/fluidsynth/archive/v$pkgver.tar.gz")
 sha512sums=('f8776c59aa0aa4a25fe3c38973c994e8608f8fad8a2e478db0d0232d4c787983dfdcba200c558cd810e892930b50184af4bc4a7f3c98ec5c38e147fd715e51b8')
