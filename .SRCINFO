@@ -5,6 +5,7 @@ pkgbase = lemon-lime-git
 	url = https://github.com/iotang/Project_LemonLime
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	depends = qt5-base
 	provides = lemon-lime
 	conflicts = lemon-lime
