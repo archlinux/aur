@@ -1,6 +1,5 @@
-# Maintainer: Wouter Haffmans <wouter@simply-life.net>
-pkgname=grantlee-qt5-git
-pkgver=v5.0.0.13.g8b120f2
+pkgname=grantlee-git
+pkgver=v5.2.0.0.gb6454a9
 pkgrel=1
 pkgdesc="Grantlee is a string template engine based on the Django template system."
 arch=('i686' 'x86_64')
@@ -9,9 +8,9 @@ license=('LGPL2.1')
 depends=('qt5-base' 'qt5-script')
 makedepends=('git' 'cmake')
 optdepends=()
-conflicts=('grantlee-qt5' 'grantlee-git')
-provides=('grantlee-qt5')
-replaces=('grantlee-git')
+conflicts=('grantlee' 'grantlee-qt5-git')
+provides=('grantlee' 'grantlee-qt5')
+replaces=('grantlee-qt5-git')
 source=("$pkgname"::'git+https://github.com/steveire/grantlee.git')
 md5sums=('SKIP')
 
