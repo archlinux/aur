@@ -2,7 +2,7 @@
 
 pkgname=yuna
 pkgver=1.4.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Anime player integating AniList, Crunchyroll, and Hidive'
 arch=(x86_64)
 url=https://yuna.moe
