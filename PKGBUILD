@@ -1,8 +1,8 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=otr-verwaltung3p-dev-git
-pkgver=0.0.0
-pkgrel=2
+pkgver=1.0.0.beta002.r1.g271f1e3
+pkgrel=1
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
@@ -15,7 +15,7 @@ optdepends=('gnome-keyring: For password storing in keyring'
             'kwallet: For password storing in wallet'
             'mediainfo-gui: For plugin Mediainfo'
             'otr-verwaltung3p-vdub: For cutting old OTR files')
-makedepends=('python-distutils-extra')
+makedepends=('git' 'python-distutils-extra')
 conflicts=('otr-verwaltung3p' 'otr-verwaltung3p-dev')
 provides=('otr-verwaltung3p')
 source=("git+https://github.com/EinApfelBaum/otr-verwaltung3p.git#branch=development")
@@ -26,7 +26,7 @@ _gitname='otr-verwaltung3p'
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
