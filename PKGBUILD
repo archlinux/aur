@@ -50,7 +50,7 @@ package() {
 
     dkmsdir="${pkgdir}/usr/src/${pkgname%-dkms-any}-${pkgver}"
     install -d "${dkmsdir}"/{config,scripts}
-    cp -a configure dkms.conf Makefile.in META ${pkgname%-dkms-any}_config.h.in ${pkgname%-dkms}.release.in include/ module/ "${dkmsdir}"/
+    cp -a configure dkms.conf Makefile.in META ${pkgname%-dkms-any}_config.h.in ${pkgname%-dkms-any}.release.in include/ module/ "${dkmsdir}"/
     cp config/config.* config/missing config/*sh "${dkmsdir}"/config/
     cp scripts/enum-extract.pl scripts/dkms.postbuild "${dkmsdir}"/scripts/
 }
