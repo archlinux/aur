@@ -1,0 +1,24 @@
+pkgbase = gnome-weather-git
+	pkgdesc = Access current weather conditions and forecasts
+	pkgver = 3.34.0+27+g07c3cf5
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Weather
+	arch = any
+	groups = gnome
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = gjs
+	depends = libgweather
+	depends = geoclue2
+	depends = gnome-desktop
+	provides = gnome-weather
+	conflicts = gnome-weather
+	source = git+https://gitlab.gnome.org/GNOME/gnome-weather.git
+	sha512sums = SKIP
+
+pkgname = gnome-weather-git
+
