@@ -1,0 +1,33 @@
+pkgbase = boost1.69
+	pkgver = 1.69.0
+	pkgrel = 4
+	url = https://www.boost.org/
+	arch = x86_64
+	license = custom
+	makedepends = icu
+	makedepends = python
+	makedepends = python2
+	makedepends = python-numpy
+	makedepends = python2-numpy
+	makedepends = bzip2
+	makedepends = zlib
+	makedepends = openmpi
+	source = https://downloads.sourceforge.net/project/boost/boost/1.69.0/boost_1_69_0.tar.bz2
+	sha256sums = 8f32d4617390d1c2d16f26a27ab60d97807b35440d45891fa340fc2648b04406
+
+pkgname = boost1.69-libs
+	pkgdesc = Free peer-reviewed portable C++ source libraries - runtime libraries
+	depends = bzip2
+	depends = zlib
+	depends = icu
+	optdepends = openmpi: for mpi support
+	provides = libboost_context.so
+
+pkgname = boost1.69
+	pkgdesc = Free peer-reviewed portable C++ source libraries - development headers
+	depends = boost1.69-libs=1.69.0
+	optdepends = python: for python bindings
+	optdepends = python2: for python2 bindings
+	conflicts = boost
+	options = staticlibs
+
