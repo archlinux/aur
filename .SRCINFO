@@ -1,7 +1,7 @@
 pkgbase = intervalset
 	pkgdesc = C++ library to manage sets of integral closed intervals — based on Boost.Icl
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://framagit.org/batsim/intervalset
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = intervalset
 	makedepends = meson
 	makedepends = ninja
 	makedepends = pkgconf
+	makedepends = gtest
 	depends = boost
-	depends = gtest
 	source = https://framagit.org/batsim/intervalset/-/archive/v1.2.0/intervalset-v1.2.0.tar.gz
 	md5sums = 8ac913678803166a6db4f21636000274
 
