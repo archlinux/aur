@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - A simple viewer for ROS image topics."
 url='https://wiki.ros.org/image_view'
 
 pkgname='ros-melodic-image-view'
 pkgver='1.13.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -47,6 +45,7 @@ ros_depends=(
 depends=(
 	${ros_depends[@]}
 	gtk2
+	gtk3
 )
 
 _dir="image_pipeline-${pkgver}/image_view"
@@ -57,7 +56,7 @@ sha256sums=('3c2309d421acf354ca69a7c814ceec7c8b24732c31a7f1c47a055aedd95cb1c4'
 
 prepare() {
   cd "${srcdir}/${_dir}"
-  patch -uN CMakeLists.txt ../../../CMakeLists.patch || return 1
+  patch -uN CMakeLists.txt ${srcdir}/CMakeLists.patch || return 1
 }
 
 build() {
