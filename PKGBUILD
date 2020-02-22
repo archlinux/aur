@@ -42,6 +42,4 @@ build() {
 package() {
   cd build
   make DESTDIR="$pkgdir" install
-
-  sed 's:qtpaths:qtpaths-qt5:' -i "$pkgdir"/usr/bin/startkde
 }
