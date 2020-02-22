@@ -58,7 +58,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
