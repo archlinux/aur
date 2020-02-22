@@ -2,7 +2,7 @@
 
 pkgname=devtools-git
 _pkgname=devtools
-pkgver=20191212
+pkgver=20200213
 pkgrel=1
 pkgdesc='Tools for Arch Linux package maintainers'
 arch=('any')
