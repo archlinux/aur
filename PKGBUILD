@@ -1,10 +1,10 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.21.0.r1134.f8e6431
+pkgver=0.26.1.r1774.78701a4
 pkgrel=1
 pkgdesc="Open source modding toolkit for Halo Combat Evolved on the PC"
-depends=('libtiff' 'libarchive' 'flac' 'freetype2' 'libsamplerate' 'libvorbis' 'zstd')
+depends=('libtiff' 'libarchive' 'flac' 'freetype2' 'libsamplerate' 'libvorbis' 'zlib' 'zstd')
 makedepends=('cmake' 'git' 'python')
 arch=('i686' 'x86_64')
 url="https://invader.opencarnage.net"
