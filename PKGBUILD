@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Expand typed text to snippets in Kakoune'
 arch=(any)
 url="https://github.com/occivink/$_reponame"
-ulicense=(custom:OFL)
+license=(custom:unlicense)
 depends=('kakoune>=2019.07.01' 'perl')
 makedepends=(git)
 provides=("${pkgname%-git}")
