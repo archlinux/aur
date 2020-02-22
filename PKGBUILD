@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-screencast-git
-pkgver=r39.07eae89
+pkgver=r48.1fa298e
 pkgrel=1
 pkgdesc="Take videos of your session"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
