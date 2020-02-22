@@ -2,5 +2,5 @@
 !./.SRCINFO
 !./.gitignore
 !./0001-Don-t-build-Java-bindings.patch
-!./0002-Query-python-executable-for-actual-version-in-use.patch
 !./PKGBUILD
+!./config_site.h

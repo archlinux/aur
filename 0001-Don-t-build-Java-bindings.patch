@@ -1,25 +1,26 @@
-From 2a528772c79a6575bef2dfcd0699945409ef9dd1 Mon Sep 17 00:00:00 2001
-From: Nobody <nobody@nowhere.net>
-Date: Mon, 17 Sep 2001 00:00:00 +0000
-Subject: [PATCH 1/2] Don't build Java bindings
+From c80630d6923f50b29fc136e75a8bed5de4ae50dd Mon Sep 17 00:00:00 2001
+From: Caleb Maclennan <caleb@alerque.com>
+Date: Sat, 22 Feb 2020 04:54:58 +0000
+Subject: [PATCH] Don't build Java bindings
 
+Signed-off-by: Caleb Maclennan <caleb@alerque.com>
 ---
  pjsip-apps/src/swig/Makefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/pjsip-apps/src/swig/Makefile b/pjsip-apps/src/swig/Makefile
-index ef8d0c9..e6d2580 100644
+index abb317b..1f4759f 100644
 --- a/pjsip-apps/src/swig/Makefile
 +++ b/pjsip-apps/src/swig/Makefile
 @@ -7,7 +7,7 @@ else
      ifneq ($(findstring ios,$(TARGET_NAME)),)
-   	DIRS = csharp
+   	LANG = csharp
      else
--  	DIRS = python java
-+        DIRS = python
+-  	LANG = python java
++  	LANG = python
      endif
  endif
  
 -- 
-2.20.1
+2.25.1
 

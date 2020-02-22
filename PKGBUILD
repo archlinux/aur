@@ -4,30 +4,31 @@
 # Contributor: Travis Hegner <travis.hegner@gmail.com>
 
 pkgbase=pjproject
-pkgname=(pjproject python-pjproject)
-pkgver=2.9
-pkgrel=2
+pkgname=("$pkgbase" "python-$pkgbase")
+pkgver=2.10
+pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
 license=('GPL')
-makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp' 'openssl' 'opus' 'portaudio' 'python' 'speex' 'swig' 'util-linux')
-source=("https://www.pjsip.org/release/$pkgver/$pkgname-$pkgver.tar.bz2"
-        0001-Don-t-build-Java-bindings.patch
-        0002-Query-python-executable-for-actual-version-in-use.patch)
-md5sums=('66757078e7bd7cf316acb0425c2fdd6f'
-         '84f243ca0469ee9079e01622b622d65f'
-         'feabd9629dd9ab619fbb56894e2e43f4')
+makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
+             'openssl' 'opus' 'portaudio' 'speex' 'swig' 'util-linux'
+             'python' 'python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/pjsip/$pkgbase/archive/$pkgver.tar.gz"
+        '0001-Don-t-build-Java-bindings.patch'
+        'config_site.h')
+sha256sums=('936a4c5b98601b52325463a397ddf11ab4106c6a7b04f8dc7cdd377efbb597de'
+            'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
+            '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
 prepare() {
-  cd "$srcdir/$pkgbase-$pkgver"
-  patch -Np1 < "$srcdir/0001-Don-t-build-Java-bindings.patch"
-  patch -Np1 < "$srcdir/0002-Query-python-executable-for-actual-version-in-use.patch"
-  echo "#define PJ_HAS_IPV6 1" >> "pjlib/include/pj/config_site.h"
+  cd "$pkgbase-$pkgver"
+  patch -Np1 < "../${source[1]}"
+  cp "../${source[2]}" 'pjlib/include/pj/config_site.h'
 }
 
 build() {
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver"
   export CXXFLAGS="$CXXFLAGS -fPIC"
   if [ "$CARCH" = "i686" ]; then
     export CXXFLAGS="$CXXFLAGS -march=i686"
@@ -44,24 +45,26 @@ build() {
     --disable-opencore-amr \
     "${arch_opts[@]}"
 
-  echo "#define PJ_HAS_IPV6 1" >> "$srcdir/$pkgname-$pkgver/pjlib/include/pj/config_site.h"
-  make -j1 dep
-  make -j1
+  make dep
+  make
 
-  make -C pjsip-apps/src/swig -j1
+  make -C pjsip-apps/src/swig
+
+  cd 'pjsip-apps/src/swig/python'
+  python setup.py build
 }
 
 package_pjproject() {
-  depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux' 'ffmpeg' 'libsrtp' 'opus')
+  depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux'
+           'ffmpeg' 'libsrtp' 'opus')
   optdepends=('e2fsprogs' 'python-pjproject: Python bindings')
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$pkgbase-$pkgver"
   make -j1 DESTDIR="$pkgdir" install
-  install -D -m755 pjsip-apps/bin/pjsua-*gnu* "$pkgdir"/usr/bin/pjsua
+  install -D -m755 pjsip-apps/bin/pjsua-*gnu* "$pkgdir/usr/bin/pjsua"
 }
 
 package_python-pjproject() {
   depends=('pjproject' 'python')
-  cd "$srcdir/$pkgbase-$pkgver/pjsip-apps/src/swig/python"
-
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "$pkgbase-$pkgver/pjsip-apps/src/swig/python"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
