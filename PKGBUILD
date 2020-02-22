@@ -49,7 +49,7 @@ _1k_HZ_ticks=
 pkgbase=linux-next-git
 pkgver=20200221.r0.gbee46b309a13
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -173,7 +173,7 @@ prepare() {
 build() {
   cd $_srcname
 
-  make bzImage modules
+  make all
   make htmldocs
 }
 
