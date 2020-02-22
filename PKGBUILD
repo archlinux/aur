@@ -2,7 +2,7 @@
 
 pkgname=gnatcoll-postgres
 pkgver=2019
-pkgrel=1
+pkgrel=2
 
 pkgdesc='GNAT Components Collection - Postgres database support'
 url='https://github.com/AdaCore/gnatcoll-db/'
@@ -13,7 +13,7 @@ depends=('gnatcoll-sql' 'postgresql')
 makedepends=('gprbuild')
 
 source=('https://github.com/AdaCore/gnatcoll-db/archive/master.zip')
-sha1sums=('dc4186e802daa71ab88170cd91708738c170d2fb')
+sha1sums=('eeefdd157ccd2ad62e807ab64eae07bb3f651300')
 
 
 build()
