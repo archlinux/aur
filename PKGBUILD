@@ -1,7 +1,7 @@
 # Maintainer: Mateen Ulhaq <mulhaq2005+aur at gmail dot com>
 
 pkgname=frece
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Frecency sorted database"
 arch=("x86_64")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/YodaEmbedding/frece/archive/$pkgver.tar.gz")
-sha256sums=("af5cb178df8ef9a7f7d2ce7d76a9c794e8b1222c6dc0d7e884bd09adc65aed85")
+sha256sums=("b62f184f461631aeee86c24978ddf3359ef16fe872a9f4523bc8d5ba6d6c5cba")
 
 build() {
     cd "$pkgname-$pkgver"
