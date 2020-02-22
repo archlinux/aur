@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo \
+'To finish installation source /usr/share/kak-state-save-git/rc/state-save.kak
+in your .kakrc'
+	echo
+}

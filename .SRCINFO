@@ -1,0 +1,17 @@
+pkgbase = kak-state-save-git
+	pkgdesc = Save and restore state between sessions in Kakoune
+	pkgver = r26.ab7c0c7
+	pkgrel = 1
+	url = https://gitlab.com/Screwtapello/kakoune-state-save
+	install = kak-state-save-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = kakoune
+	provides = kak-state-save
+	conflicts = kak-state-save
+	source = git+https://gitlab.com/Screwtapello/kakoune-state-save
+	sha256sums = SKIP
+
+pkgname = kak-state-save-git
+
