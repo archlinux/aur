@@ -1,7 +1,7 @@
 pkgbase = neatvnc
 	pkgdesc = Fast and neat VNC server library
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/any1/neatvnc
 	arch = x86_64
 	license = custom:ISC

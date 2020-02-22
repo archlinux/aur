@@ -2,7 +2,7 @@
 
 pkgname=neatvnc
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and neat VNC server library'
 arch=(x86_64)
 url=https://github.com/any1/neatvnc
@@ -14,7 +14,7 @@ sha512sums=('SKIP')
 
 build() {
 	cd $pkgname-$pkgver
-	meson build --buildtype=release -Dtls=enabled
+	arch-meson build -Dtls=enabled
 	ninja -C build
 }
 
