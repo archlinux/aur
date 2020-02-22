@@ -4,15 +4,15 @@
 
 pkgname=gprbuild-bootstrap
 pkgver=2019
-pkgrel=1
+pkgrel=2
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
 url='https://github.com/AdaCore/gprbuild/'
 license=('GPL3')
 depends=('gcc-ada')
 
-source=('http://mirrors.cdn.adacore.com/art/5cdf8e8031e87a8f1d425093'
-        'http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5')
+source=('https://community.download.adacore.com/v1/0c03c05cef70b85144ba0e624a46e8952183b666?filename=gprbuild-2019-20190517-194D8-src.tar.gz'
+        'https://community.download.adacore.com/v1/ce0b67754f149cd230ba842effeff0ab3033ed0c?filename=xmlada-2019-20190429-19B9D-src.tar.gz')
 sha1sums=(0c03c05cef70b85144ba0e624a46e8952183b666
           ce0b67754f149cd230ba842effeff0ab3033ed0c)
 
