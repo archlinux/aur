@@ -16,6 +16,8 @@ build() {
 }
 
 package() {
+    #install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     cd "./target/release"
     strip btm
     install -Dm755 btm "$pkgdir/usr/bin/btm"
