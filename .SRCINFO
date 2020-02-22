@@ -1,0 +1,15 @@
+pkgbase = fso-unbootimg
+	pkgdesc = Utility to unpack images made with Android's mkbootimg
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = git://github.com/freesmartphone/utilities.git
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	source = git+https://github.com/freesmartphone/utilities.git#commit=4566e120fc80fd372f68b20e044387bd97218bfd
+	sha256sums = SKIP
+
+pkgname = fso-unbootimg
+
