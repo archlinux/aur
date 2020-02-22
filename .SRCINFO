@@ -1,0 +1,32 @@
+pkgbase = xdg-desktop-portal-git
+	pkgdesc = Desktop integration portals for sandboxed apps
+	pkgver = 1.6.0+18+g552a4f3
+	pkgrel = 1
+	url = https://github.com/flatpak/xdg-desktop-portal
+	arch = x86_64
+	license = LGPL2.1
+	checkdepends = epiphany
+	checkdepends = gedit
+	checkdepends = gvfs
+	makedepends = python
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = git
+	makedepends = flatpak
+	makedepends = libportal
+	depends = glib2
+	depends = pipewire
+	depends = fuse2
+	depends = geoclue2
+	provides = xdg-desktop-portal
+	conflicts = xdg-desktop-portal
+	source = git+https://github.com/flatpak/xdg-desktop-portal
+	sha512sums = SKIP
+
+pkgname = xdg-desktop-portal-git
+	depends = glib2
+	depends = pipewire
+	depends = fuse2
+	depends = geoclue2
+	depends = xdg-desktop-portal-impl
+
