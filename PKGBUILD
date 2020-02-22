@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=websocat-git
 pkgver=1.5.0.r6.gbc738c8
