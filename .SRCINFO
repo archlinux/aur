@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = Rawconverter ART including blackfoxx-Theme built from latest sources
-	pkgver = 1.1_21_g3ff525dec
+	pkgver = 1.1_22_gcee51f6cd
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
