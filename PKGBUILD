@@ -4,14 +4,14 @@ pkgname=vibrantlinux-git
 pkgrel=1
 pkgdesc='vibranceGUI replacement for Linux (NVIDIA only)'
 arch=('x86_64' 'i686')
-url='https://gitlab.com/zee220/vibrantlinux'
+url='https://github.com/zee2200/vibrantlinux'
 license=('MIT')
 depends=('nvidia-settings' 'qt5-base')
 makedepends=('git')
 conflicts=()
-source=("${_pkgname}::git+https://gitlab.com/zee220/vibrantlinux.git" 'vibrantLinux.desktop')
+source=("${_pkgname}::git+https://github.com/zee2200/vibrantLinux.git" 'vibrantLinux.desktop')
 sha256sums=('SKIP' 'SKIP')
-pkgver=1.2.2.r3.gd872dbc
+pkgver=1.2.5.r0.g0f27e4c
 
 pkgver() {
     cd "${_pkgname}"
