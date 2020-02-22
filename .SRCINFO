@@ -1,0 +1,19 @@
+pkgbase = retro-gtk-git
+	pkgdesc = Toolkit to write GTK+ 3 based Libretro frontends
+	pkgver = 0.18.1+65+g9d8d7d3
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Games
+	arch = x86_64
+	license = GPL3
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = vala
+	depends = gtk3
+	depends = libpulse
+	provides = retro-gtk
+	conflicts = retro-gtk
+	source = git+https://gitlab.gnome.org/GNOME/retro-gtk.git
+	sha256sums = SKIP
+
+pkgname = retro-gtk-git
+
