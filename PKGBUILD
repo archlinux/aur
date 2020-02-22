@@ -1,7 +1,7 @@
 # Maintainer: Theo Henson <theodorehenson@protonmail.com>
 pkgname=rco
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A configuration manager written in rust."
 arch=('any')
 url="https://github.com/tteeoo/rco"
