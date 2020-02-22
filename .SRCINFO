@@ -1,0 +1,17 @@
+pkgbase = kak-surround-git
+	pkgdesc = Provides commands to add, change, and delete surrounder in Kakoune
+	pkgver = r21.efe74c6
+	pkgrel = 1
+	url = https://github.com/h-youhei/kakoune-surround
+	install = kak-surround-git.install
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = kakoune
+	provides = kak-surround
+	conflicts = kak-surround
+	source = git+https://github.com/h-youhei/kakoune-surround
+	sha256sums = SKIP
+
+pkgname = kak-surround-git
+

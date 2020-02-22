@@ -1,0 +1,7 @@
+post_install() {
+	echo
+	echo \
+'To finish installation, source /usr/share/kak-surround-git/rc/surround.kak
+in your .kakrc'
+	echo
+}
