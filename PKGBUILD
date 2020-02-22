@@ -2,13 +2,16 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom
-pkgver=r84.9a447ae
+pkgver=r119.3e1200e
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
 url='http://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
-depends=('raspberrypi-firmware')
+depends=(
+  'raspberrypi-firmware'
+  'python'
+)
 backup=('etc/default/rpi-eeprom-update')
 source=('rpi-eeprom::git+https://github.com/raspberrypi/rpi-eeprom.git'
         'rpi-eeprom-update.patch')
