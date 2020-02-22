@@ -4,7 +4,7 @@
 _hkgname=pandoc-include-code
 pkgname=pandoc-include-code
 pkgver=1.5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A pandoc filter for including code from source files"
 url="https://github.com/owickstrom/pandoc-include-code"
 license=('MPL2')
