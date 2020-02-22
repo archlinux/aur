@@ -1,21 +1,19 @@
 # Maintainer: dalz <dalz @t disroot d0t org>
 pkgname=moviebattles2
-pkgver=1.6.1.1
-pkgrel=3
+pkgver=1.6.1.2
+pkgrel=1
 pkgdesc="A fast-paced, action packed mod for Jedi Knight: Jedi Academy"
 arch=('i686' 'x86_64')
 url="https://www.moviebattles.org"
 license=('unknown')
 depends=('bin32-openjk')
 source=(
-    "$pkgname-1.6.1.zip::https://drive.google.com/uc?id=1VOqrtwfos25GhHlyDvPadbGRQIUCAbse&export=download"
-    'http://update.moviebattles.org/MovieBattlesII_V1.6_V1.6.1.1_Upgrade.zip'
+    "$pkgname-1.6.1.2.zip::https://drive.google.com/uc?id=1nekll_ZfBipv8Szz6UYulFfzqH0IAuNm&export=download"
     'moviebattles2.desktop'
     'moviebattles2.png'
     'moviebattles2')
 md5sums=(
-    '6721e8562a4aa4260ac5218cc6d3f55c'
-    '91939df4ef31373db2253cd5c09261b2'
+    '9c02c488f3e107e9f615d37a6c40adb3'
     '14d9db62e04f1cbed851ba7e098ff207'
     '3d20693ab4602ba56d61e9ee401e1dba'
     '400671872ffab35708b1acd1129b3797')
@@ -25,6 +23,7 @@ cat > gdrive-dl <<EOF
 #!/bin/sh
 tcf=cookie
 confirm=\$(curl -c - -o /dev/null "\$1" | tee \$tcf | awk '/download/ { print \$NF }')
+echo $confirm
 curl -Lb \$tcf -C - -o "\$2" "\$1&confirm=\$confirm"
 EOF
 chmod +x gdrive-dl
