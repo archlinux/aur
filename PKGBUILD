@@ -1,17 +1,17 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 
 pkgname=perl-log-any
-pkgver=1.707
-pkgrel=2
+pkgver=1.708
+pkgrel=1
 pkgdesc='Bringing loggers and listeners together'
 arch=(any)
 license=(PerlArtistic GPL)
 options=(!emptydirs)
 depends=(perl)
 url=https://metacpan.org/release/Log-Any
-source=("https://search.cpan.org/CPAN/authors/id/P/PR/PREACTION/Log-Any-$pkgver.tar.gz")
-md5sums=(610f81b7b74859a105790347472dce34)
-sha512sums=(b5fc37130b3bb07c9fac896c539657fffad2e80c2055a09816e133e48f3f5db9a3b896ea11bf087b5fe6844a72fb6189656a3033c7761c00f471282747e1c290)
+source=("https://cpan.metacpan.org/authors/id/P/PR/PREACTION/Log-Any-$pkgver.tar.gz")
+md5sums=(2ee5e3b84f54542d3f8dad26b2426985)
+sha512sums=(7cb86cb376140cd99a1f5aca97e5991ae958dbea39c64db3f095663341160cda055572694679f281581e0ba5c2a74d92c27a13aaed6b40f33c6f95d0c3ac7523)
 _ddir="Log-Any-$pkgver"
 
 build()
@@ -35,7 +35,6 @@ package()
 (
   cd "$srcdir/$_ddir"
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 )
 
 # Local Variables:
