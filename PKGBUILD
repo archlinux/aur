@@ -1,13 +1,13 @@
 # Maintainer: Nigel Kukard <nkukard@lbsd.net>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Maxim Kurnosenko <asusx2@mail.ru>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 # Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 
 pkgname=asterisk
-pkgver=17.1.0
+pkgver=17.2.0
 pkgrel=1
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -130,7 +130,7 @@ source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/${pkgnam
         "${pkgname}.sysusers"
         "${pkgname}.logrotated"
         "${pkgname}.tmpfile")
-sha256sums=('e34917ad2bc345ddd405e0b31f6b9fa23fa721b43069c7949ec9592a7f76cdc1'
+sha256sums=('f9c7ae7234afa89ac070d8c900aeaeb61a0cbe91d7210bf59c3f14cb28602891'
             'fc2e42f79e1672cc25b9b8ad2ba99616fbba0047641c986d30718655d0e7d4d8'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
