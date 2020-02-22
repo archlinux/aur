@@ -1,6 +1,6 @@
 # Maintainer: Andrew Nelless <andrew at nelless dot net>
 pkgname='avro-cpp'
-pkgver=1.9.2_rc1
+pkgver=1.9.1
 pkgrel=1
 arch=('i686' 'x86_64')
 
@@ -10,22 +10,19 @@ license=('Apache')
 groups=('avro')
 depends=('boost-libs')
 makedepends=('boost' 'cmake' 'python2')
-_cppdir="avro-release-${pkgver//_/-}/lang/c++"
 
-source=(
-	"https://github.com/apache/avro/archive/release-${pkgver//_/-}.tar.gz"
-#	"https://www-us.apache.org/dist/avro/avro-$pkgver/cpp/$pkgname-$pkgver.tar.gz"
+source=("https://www-us.apache.org/dist/avro/avro-$pkgver/cpp/$pkgname-$pkgver.tar.gz"
 	$pkgname-python2.patch)
-sha256sums=('20c43ec8a0a4329caa875c35538b9b0faf60b6b0e6822c330b59a0ec83d11c73'
+sha256sums=('ff0c98f6f81294167677b221edcdd56b350fac523d857a5f53cf7fcd2187c683'
             '5d54151dd25e717a19109c97e68ce2a07d3b28b9fd3fb3ae1dc5df06b8600fd4')
 
 prepare() {
-    cd "$srcdir/$_cppdir"
+    cd "$srcdir/$pkgname-$pkgver"
     patch -p1 -i "$srcdir/$pkgname-python2.patch"
 }
 
 build() {
-    cd "$srcdir/$_cppdir"
+    cd "$srcdir/$pkgname-$pkgver"
     mkdir build
     cd build
 
@@ -38,11 +35,11 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$_cppdir/build"
+    cd "$srcdir/$pkgname-$pkgver/build"
     make test
 }
 
 package() {
-    cd "$srcdir/$_cppdir/build"
+    cd "$srcdir/$pkgname-$pkgver/build"
     make DESTDIR="$pkgdir/" install
 }
