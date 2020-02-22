@@ -52,7 +52,7 @@ sha256sums=('f091a9d9c025c21e4faec649421c205971132d0f234e8c8b094d704876a7d24f'
 package_linux-lts-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
     depends=("${_versioned_pkgname}-bin")
-    optdepends=('grub-mkconfig-hook: to run grub-mkconfig when kernels are added/removed')
+    optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-lts-versioned-headers-bin() {
@@ -81,7 +81,7 @@ package_linux5.4.21-1-lts-headers-bin() {
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  mv "${pkgdir}/usr/src/${_pkgname}"{,"-${KERNNAME}"}
+  mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
 package_linux5.4.21-1-lts-docs-bin() {
@@ -89,5 +89,5 @@ package_linux5.4.21-1-lts-docs-bin() {
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
   rm "${pkgdir}"/{.MTREE,.BUILDINFO,.PKGINFO}
-  mv "${pkgdir}/usr/share/doc/${_pkgname}"{,"-${KERNNAME}"}
+  mv "${pkgdir}/usr/share/doc/"{"${_pkgname}","${_versioned_pkgname}"}
 }
