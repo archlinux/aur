@@ -1,0 +1,21 @@
+pkgbase = xo-sql-git
+	pkgdesc = Command line tool to generate idiomatic Go code for SQL databases
+	pkgver = r202.1a94fa5
+	pkgrel = 1
+	url = https://github.com/xo/xo
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go-pie
+	depends = glibc
+	provides = xo
+	conflicts = xo
+	source = xo::git+https://github.com/xo/xo
+	sha256sums = SKIP
+
+pkgname = xo-sql-git
+
