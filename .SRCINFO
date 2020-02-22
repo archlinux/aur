@@ -1,0 +1,29 @@
+pkgbase = gnome-books-git
+	pkgdesc = Access and organize your e-books on GNOME
+	pkgver = 3.34.0+17+gebf83fde
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Books
+	arch = x86_64
+	groups = gnome
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = evince
+	depends = gjs
+	depends = gtk3
+	depends = gnome-desktop
+	depends = tracker-miners
+	depends = webkit2gtk
+	depends = libgepub
+	depends = gnome-epub-thumbnailer
+	provides = gnome-books
+	conflicts = gnome-books
+	source = git+https://gitlab.gnome.org/GNOME/gnome-books.git
+	source = git+https://gitlab.gnome.org/GNOME/libgd.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = gnome-books-git
+
