@@ -1,8 +1,8 @@
 pkgbase = tako-git
 	pkgdesc = A command language and shell based on Python
-	pkgver = 0.2.5
-	pkgrel = 2
-	url = https://gitlab.com/adqm/tako
+	pkgver = r3747.50bc4f7b
+	pkgrel = 1
+	url = https://takoshell.org/index.html
 	install = tako.install
 	arch = any
 	license = GPL3
@@ -10,7 +10,7 @@ pkgbase = tako-git
 	makedepends = git
 	depends = python
 	conflicts = tako
-	source = git+https://gitlab.com/adqm/tako.git
+	source = git://hz.mit.edu/tako.git
 	sha256sums = SKIP
 
 pkgname = tako-git
