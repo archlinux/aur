@@ -1,0 +1,24 @@
+pkgbase = ripes-git
+	pkgdesc = A graphical processor simulator and assembly editor for the RISC-V ISA
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mortbopet/Ripes
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = qt5-base
+	source = ripes-git-2.0.0::git+https://github.com/mortbopet/Ripes.git
+	source = git+https://github.com/mortbopet/VSRTL.git
+	source = ELFIO::git+https://github.com/serge1/ELFIO.git
+	source = git+https://github.com/pbhogan/Signals.git
+	source = better-enums::git+https://github.com/mortbopet/better-enums.git
+	source = cereal::git+https://github.com/USCiLab/cereal.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ripes-git
+
