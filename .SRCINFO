@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.5.4.arch1
+	pkgver = 5.5.5.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-pds
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.5.4-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.5.5-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 0005-v5.5_undead-pds099o.patch
@@ -25,7 +25,7 @@ pkgbase = linux-pds
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = e90465deefe6457dc0ad59ee2acda1c1363698ec3dfd84d73f53b5bf2afd40e727edb34349194b2c4fb3d95877a5e448766b7f51b4459005709e6926247a39d2
+	sha512sums = e96d5c9a209cc3d45107ddef757534664dfd4e433a9b32a7516580968fdffe90d6842ac3c9fa9c6729cfb6bf3ffbe593d9e82a24f821e640ac20b2a15de6f07c
 	sha512sums = ae4bfb0ffa5ffaac000800eaaf67433700f826e3b63773ed980841f7377e6853687091b5ba0036a1d0badeb604ea0816280e22a2a67dbe2a370814091069562f
 	sha512sums = dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c
 
@@ -37,13 +37,13 @@ pkgname = linux-pds
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.5.4.arch1
+	provides = linux-pds=5.5.5.arch1
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.5.4.arch1
-	provides = linux-pds-headers=5.5.4.arch1
-	provides = linux-headers=5.5.4.arch1
+	depends = linux-pds=5.5.5.arch1
+	provides = linux-pds-headers=5.5.5.arch1
+	provides = linux-headers=5.5.5.arch1
 
 pkgname = linux-pds-docs
 	pkgdesc = Documentation for the Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
