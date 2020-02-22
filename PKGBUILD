@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc='Automatically inserts closing pairs in Kakoune'
 arch=(any)
 url="https://github.com/alexherbo2/auto-pairs.kak"
-license=(custom:unlicense)
+license=(Unlicense)
 depends=(kakoune)
 makedepends=(git)
 provides=("${pkgname%-git}")
@@ -22,7 +22,6 @@ pkgver() {
 
 package() {
 	cd "$srcdir/auto-pairs.kak"
-	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" UNLICENSE
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 	install -Dm644 -t "$pkgdir/usr/share/$pkgname/rc" rc/auto-pairs.kak
 }
