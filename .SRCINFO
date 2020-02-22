@@ -1,0 +1,19 @@
+pkgbase = regainer-git
+	pkgdesc = Advanced ReplayGain scanner and tagger
+	pkgver = r35.da64115
+	pkgrel = 1
+	url = https://github.com/kepstin/regainer
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = flit
+	depends = python
+	depends = python-mutagen
+	depends = ffmpeg
+	provides = regainer
+	conflicts = regainer
+	source = git+https://github.com/kepstin/regainer.git
+	sha512sums = SKIP
+
+pkgname = regainer-git
+
