@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=CEmu
+GenericName=TI-84 Plus CE emulator
 Comment=An open-source third-party TI-84 Plus CE / TI-83 Premium CE calculator emulator
-Exec=cemu
-Icon=cemu
+Exec=ticemu
+Icon=ticemu
 StartupNotify=true
 Terminal=false
 Type=Application
