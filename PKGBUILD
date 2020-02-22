@@ -1,15 +1,15 @@
 # Maintainer: dax <dev@dax.moe>
 pkgname=ddcpuid
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
-pkgdesc="Advanced x86/AMD64 Processor Information Tool"
+pkgdesc="dd's x86 CPU Identification tool"
 arch=('x86_64')
 url="https://github.com/dd86k/ddcpuid"
 license=('MIT')
 depends=()
 makedepends=('ldc')
 source=("https://github.com/dd86k/$pkgname/archive/v$pkgver.zip")
-sha256sums=('d9c5829a609a71cc0fba6407967915e70260a4ce9777b1082463a1ba66b54787')
+sha256sums=('cf93bb26cf4a78603888f296fa26122d98c0473363a3d0a844c366dc65a7c59e')
 
 build() {
 	cd "$pkgname-$pkgver"
