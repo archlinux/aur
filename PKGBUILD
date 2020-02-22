@@ -15,14 +15,25 @@ makedepends=("unzip" "dos2unix")
 
 _pkgfile="K40_Whisperer-${pkgver}_src"
 
-source=("https://www.scorchworks.com/K40whisperer/${_pkgfile}.zip" "97-ctc-lasercutter.rules")
-sha256sums=("9fbd62b226b186883317135bc820b19e2fd55911a000a5befc5d55ef4100cf9d" "19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508")
+source=(
+  "https://www.scorchworks.com/K40whisperer/${_pkgfile}.zip"
+  "97-ctc-lasercutter.rules"
+  "${pkgname}.install"
+  "k40_whisperer.py.patch"
+)
+sha256sums=(
+  "9fbd62b226b186883317135bc820b19e2fd55911a000a5befc5d55ef4100cf9d"
+  "19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508"
+  "5d32866a044ce3239881eacd01720b95285031a003a79056644d30e728fcee19"
+  "b92ec53119e4cba6269e3db7cf00144659194eeee2e085bf186ca544803466bc"
+)
 
 install="${pkgname}.install"
 
 build() {
   cd ${_pkgfile}
   dos2unix k40_whisperer.py
+  patch k40_whisperer.py ../k40_whisperer.py.patch
   chmod +x k40_whisperer.py
 }
 

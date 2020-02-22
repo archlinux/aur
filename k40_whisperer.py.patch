@@ -1,0 +1,22 @@
+507,510c507,510
+<             self.left_image  = self.Imaging_Free(Image.open("left.png"),bg=None)
+<             self.right_image = self.Imaging_Free(Image.open("right.png"),bg=None)
+<             self.up_image    = self.Imaging_Free(Image.open("up.png"),bg=None)
+<             self.down_image  = self.Imaging_Free(Image.open("down.png"),bg=None)
+---
+>             self.left_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/left.png"),bg=None)
+>             self.right_image = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/right.png"),bg=None)
+>             self.up_image    = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/up.png"),bg=None)
+>             self.down_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/down.png"),bg=None)
+517,521c517,521
+<             self.UL_image  = self.Imaging_Free(Image.open("UL.png"),bg=None)
+<             self.UR_image  = self.Imaging_Free(Image.open("UR.png"),bg=None)
+<             self.LR_image  = self.Imaging_Free(Image.open("LR.png"),bg=None)
+<             self.LL_image  = self.Imaging_Free(Image.open("LL.png"),bg=None)
+<             self.CC_image  = self.Imaging_Free(Image.open("CC.png"),bg=None)
+---
+>             self.UL_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/UL.png"),bg=None)
+>             self.UR_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/UR.png"),bg=None)
+>             self.LR_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/LR.png"),bg=None)
+>             self.LL_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/LL.png"),bg=None)
+>             self.CC_image  = self.Imaging_Free(Image.open("/usr/lib/k40whisperer/CC.png"),bg=None)
