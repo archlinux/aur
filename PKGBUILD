@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.19.0.1
-pkgrel=4
+pkgrel=5
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1582312105
+epoch=1582500989
 
 
 # Release commit for 0.19.0.1
@@ -89,7 +89,11 @@ build() {
 }
 
 package() {
-    PREFIXDIR="${srcdir}/namecoin-core/depends/x86_64-pc-linux-gnu"
+    if [ "$CARCH" == i686 ]; then
+        PREFIXDIR="/usr"
+    elif [ "$CARCH" == x86_64 ]; then
+        PREFIXDIR="${srcdir}/namecoin-core/depends/x86_64-pc-linux-gnu"
+    fi
     install -Dm644 "$srcdir/namecoin.desktop"      "$pkgdir/usr/share/applications/namecoin.desktop"
     install -Dm644 "$srcdir/namecoin1500x1500.png" "$pkgdir/usr/share/pixmaps/namecoin1500x1500.png"
     install -Dm644 "$srcdir/namecoind@.service"    "$pkgdir/usr/lib/systemd/system/namecoind@.service"
