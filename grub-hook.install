@@ -1,12 +1,12 @@
 post_upgrade() {
-  if [ -z /usr/lib/initcpio/install/grub ] ; then
+  if [ ! -f /usr/lib/initcpio/install/grub ] ; then
   /usr/bin/false
   else
   rm -rf /usr/lib/initcpio/install/grub
-  fi
   echo "Please remove 'grub' to the HOOKs array in /etc/mkinitcpio.conf with pacman hooks it's unnecessary."
+  fi
 
-  if [ -z /etc/pacman.d/hooks/grub.sh ] ; then
+  if [ ! -f /etc/pacman.d/hooks/grub.sh ] ; then
   /usr/bin/false
   else
   rm -rf /etc/pacman.d/hooks/grub.sh
@@ -14,14 +14,14 @@ post_upgrade() {
 }
 
 post_remove() {
-  if [ -z /usr/lib/initcpio/install/grub ] ; then
+  if [ ! -f /usr/lib/initcpio/install/grub ] ; then
   /usr/bin/false
   else
   rm -rf /usr/lib/initcpio/install/grub
-  fi
   echo "Please remove 'grub' to the HOOKs array in /etc/mkinitcpio.conf."
+  fi
 
-  if [ -z /etc/pacman.d/hooks/grub.sh ] ; then
+  if [ ! -f /etc/pacman.d/hooks/grub.sh ] ; then
   /usr/bin/false
   else
   rm -rf /etc/pacman.d/hooks/grub.sh
