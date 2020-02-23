@@ -8,8 +8,8 @@ pkgdesc="A microbenchmark support library, by Google (32-bit)"
 arch=('x86_64')
 url="https://github.com/google/benchmark"
 license=('Apache')
-depends=('gcc-libs-multilib')
-makedepends=('cmake')
+depends=('lib32-gcc-libs')
+makedepends=('cmake' 'gcc-multilib')
 
 source=("https://github.com/google/benchmark/archive/v${pkgver}.tar.gz")
 sha256sums=('3c6a165b6ecc948967a1ead710d4a181d7b0fbcaa183ef7ea84604994966221a')
