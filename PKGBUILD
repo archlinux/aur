@@ -3,7 +3,7 @@
 
 pkgname=emscripten-git
 epoch=2
-pkgver=1.39.7.r25.g037795888
+pkgver=1.39.8.r77.g1fc7303e5
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -20,13 +20,11 @@ source=('git://github.com/kripken/emscripten.git'
 	'git+https://github.com/llvm/llvm-project.git#commit=411f1885b655ea622fe124a87a6eadfd988d7a5e'
         'emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten'
 	'arch-template.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/arch-template.patch?h=packages/emscripten'
-	'libcxxabi-include-libunwind.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libcxxabi-include-libunwind.patch?h=packages/emscripten'
-        'emscripten.config')
+	'emscripten.config')
 sha256sums=('SKIP'
             'SKIP'
             '44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5'
             '770f6c6322efeb280789e4d069ca19ad6621bb3867d3d51c86fe9f2256fb2fb0'
-            'db6ec4197d971c3d32d12df7871a1334e6c14d39174616dbb2217dcb03f40707'
             'f5c3836a05f51285c12033607ba174c72576644d59a534ebe6b0476912642d7f')
 
 pkgver() {
@@ -67,8 +65,6 @@ package() {
   cd "$srcdir"/emscripten
   install -d "$pkgdir"/usr/lib/emscripten
   cp -rup em* cmake site src system third_party tools "$pkgdir"/usr/lib/emscripten
-
-  patch -Np1 --no-backup-if-mismatch -i "$srcdir"/libcxxabi-include-libunwind.patch -d "$pkgdir"
 
   # Remove clutter
   rm "$pkgdir"/usr/lib/emscripten/*.bat

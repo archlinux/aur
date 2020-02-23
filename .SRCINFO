@@ -1,6 +1,6 @@
 pkgbase = emscripten-git
 	pkgdesc = LLVM-to-JavaScript compiler
-	pkgver = 1.39.7.r25.g037795888
+	pkgver = 1.39.8.r77.g1fc7303e5
 	pkgrel = 1
 	epoch = 2
 	url = http://emscripten.org
@@ -25,13 +25,11 @@ pkgbase = emscripten-git
 	source = git+https://github.com/llvm/llvm-project.git#commit=411f1885b655ea622fe124a87a6eadfd988d7a5e
 	source = emscripten.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/emscripten.sh?h=packages/emscripten
 	source = arch-template.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/arch-template.patch?h=packages/emscripten
-	source = libcxxabi-include-libunwind.patch::https://git.archlinux.org/svntogit/community.git/plain/trunk/libcxxabi-include-libunwind.patch?h=packages/emscripten
 	source = emscripten.config
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 44d6e3df973a7e7ef0b66dbc05d2d49fe06adf711a0f51ba9f05107dfffc35c5
 	sha256sums = 770f6c6322efeb280789e4d069ca19ad6621bb3867d3d51c86fe9f2256fb2fb0
-	sha256sums = db6ec4197d971c3d32d12df7871a1334e6c14d39174616dbb2217dcb03f40707
 	sha256sums = f5c3836a05f51285c12033607ba174c72576644d59a534ebe6b0476912642d7f
 
 pkgname = emscripten-git
