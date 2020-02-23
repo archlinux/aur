@@ -1,27 +1,26 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
-# Co-maintainer/contributor: Caleb Bassi <calebjbassi@gmail.com>
+# Maintainer: Sean E. Russell <ser@ser1.net> -> also the program developer
+# Contributor: Caleb Bassi <calebjbassi@gmail.com>
 
 pkgname=gotop
-pkgver=3.0.0
-pkgrel=4
-pkgdesc='A terminal based graphical activity monitor inspired by gtop and vtop'
+pkgver=3.3.1
+pkgrel=1
+pkgdesc="A terminal based graphical activity monitor inspired by gtop and vtop"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
-url="https://github.com/cjbassi/gotop"
+url="https://github.com/xxxserxxx/gotop"
 license=(AGPL3)
-provides=(gotop)
-conflicts=(gotop)
-makedepends=("go")
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d5147080bb6057f0bf0900b38438e89aa066959c845bdd4c84a9c9fe478b176f')
+makedepends=(go)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('79b261e5d778ddfdf85ded375dc4877b7d508916b771c2d1b7655849776ea66c')
 
 build() {
-  cd "${srcdir}"/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   go build \
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
     -ldflags "-extldflags ${LDFLAGS}" \
-    -mod vendor \
-    .
+    -buildmode=pie \
+    ./cmd/gotop
 }
 
 package() {
