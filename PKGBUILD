@@ -1,7 +1,7 @@
 # Maintainer: William Belanger <echo d2lsbGlhbS5iZWxyQGdtYWlsLmNvbQ== | base64 -d>
 
 pkgname=qoob
-pkgver=0.1.0
+pkgver=0.2
 pkgrel=1
 pkgdesc="foobar-like music player for Linux"
 url="https://gitlab.com/william.belanger/qoob"
@@ -12,7 +12,7 @@ optdepends=('gst-libav: additional codecs (i.e. AAC)'
             'gst-plugins-bad: additional codecs (i.e. AAC)'
             'gst-plugins-ugly: additional codecs')
 source=("https://gitlab.com/william.belanger/qoob/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('4a59a993e3136f487733034198d98c621c35ff12df8d86ec25ed9eb9141eb702')
+sha256sums=('165936720404a3e2afc5382b83f6ce293e1c5e38a657f7ea72cfeb9a4a7d2779')
 
 package()
 {

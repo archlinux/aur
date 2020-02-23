@@ -1,6 +1,6 @@
 pkgbase = qoob
 	pkgdesc = foobar-like music player for Linux
-	pkgver = 0.1.0
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/qoob
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = qoob
 	optdepends = gst-libav: additional codecs (i.e. AAC)
 	optdepends = gst-plugins-bad: additional codecs (i.e. AAC)
 	optdepends = gst-plugins-ugly: additional codecs
-	source = https://gitlab.com/william.belanger/qoob/-/archive/v0.1.0/qoob-v0.1.0.tar.bz2
-	sha256sums = 4a59a993e3136f487733034198d98c621c35ff12df8d86ec25ed9eb9141eb702
+	source = https://gitlab.com/william.belanger/qoob/-/archive/v0.2/qoob-v0.2.tar.bz2
+	sha256sums = 165936720404a3e2afc5382b83f6ce293e1c5e38a657f7ea72cfeb9a4a7d2779
 
 pkgname = qoob
 
