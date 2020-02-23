@@ -3,32 +3,32 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.62.4
-pkgrel=2
+pkgver=2.62.5
+pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
 arch=(x86_64)
-provides=("glib2=$pkgver")
+provides=(glib2=$pkgver libgio-2.0.so libglib-2.0.so libgmodule-2.0.so
+           libgobject-2.0.so libgthread-2.0.so)
 conflicts=('glib2')
-depends=(pcre libffi libutil-linux zlib tumbler)
-makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux meson dbus)
+depends=(pcre libffi libutil-linux zlib tumbler libmount.so)
+makedepends=(gettext gtk-doc shared-mime-info python libelf git util-linux
+             meson dbus)
 checkdepends=(desktop-file-utils)
 optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
             'libelf: gresource inspection tool')
-options=('!docs' '!emptydirs')
+options=('!docs')
 license=(LGPL2.1)
-_commit=dac69d7128b3b66ed7007ab944eb629d30f4de4b  # tags/2.62.4^0
+_commit=86c2832f950c389e230ec09c8bf0b92b475f0ee3  # tags/2.62.5^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        CVE-2020-6750.patch
         noisy-glib-compile-schemas.diff
         glib-compile-schemas.hook
         gio-querymodules.hook
         glib-thumbnailer.patch)
 sha256sums=('SKIP'
-            '220ff38e418a470b7790e65a2c05527793110c38a1105552b93be884230215f7'
             '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
-            'e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3'
-            '5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6'
+            '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
+            '557c88177f011ced17bdeac1af3f882b2ca33b386a866fdf900b35f927a2bbe8'
             '9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74')
 
 pkgver() {
@@ -38,9 +38,6 @@ pkgver() {
 
 prepare() {
   cd glib
-
-  # https://mail.gnome.org/archives/distributor-list/2020-February/msg00001.html
-  git apply -3 ../CVE-2020-6750.patch
 
   # Suppress noise from glib-compile-schemas.hook
   git apply -3 ../noisy-glib-compile-schemas.diff
@@ -67,9 +64,11 @@ package() {
   DESTDIR="$pkgdir" meson install -C build
   install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
 
-  python -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
-  python -O -m compileall -d /usr/share/glib-2.0/codegen "$pkgdir/usr/share/glib-2.0/codegen"
+  python -m compileall -d /usr/share/glib-2.0/codegen \
+    "$pkgdir/usr/share/glib-2.0/codegen"
+  python -O -m compileall -d /usr/share/glib-2.0/codegen \
+    "$pkgdir/usr/share/glib-2.0/codegen"
 
-  # Split docs
-  mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
+  # rm docs
+  rm -r "$pkgdir/usr/share/gtk-doc"
 }

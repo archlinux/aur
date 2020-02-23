@@ -1,7 +1,7 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
-	pkgver = 2.62.4
-	pkgrel = 2
+	pkgver = 2.62.5
+	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
 	license = LGPL2.1
@@ -20,23 +20,26 @@ pkgbase = glib2-patched-thumbnailer
 	depends = libutil-linux
 	depends = zlib
 	depends = tumbler
+	depends = libmount.so
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2=2.62.4
+	provides = glib2=2.62.5
+	provides = libgio-2.0.so
+	provides = libglib-2.0.so
+	provides = libgmodule-2.0.so
+	provides = libgobject-2.0.so
+	provides = libgthread-2.0.so
 	conflicts = glib2
 	options = !docs
-	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=dac69d7128b3b66ed7007ab944eb629d30f4de4b
-	source = CVE-2020-6750.patch
+	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=86c2832f950c389e230ec09c8bf0b92b475f0ee3
 	source = noisy-glib-compile-schemas.diff
 	source = glib-compile-schemas.hook
 	source = gio-querymodules.hook
 	source = glib-thumbnailer.patch
 	sha256sums = SKIP
-	sha256sums = 220ff38e418a470b7790e65a2c05527793110c38a1105552b93be884230215f7
 	sha256sums = 81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531
-	sha256sums = e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3
-	sha256sums = 5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6
+	sha256sums = 64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25
+	sha256sums = 557c88177f011ced17bdeac1af3f882b2ca33b386a866fdf900b35f927a2bbe8
 	sha256sums = 9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74
 
 pkgname = glib2-patched-thumbnailer
