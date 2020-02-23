@@ -1,7 +1,7 @@
 # Maintainer: Philipp Uhl <philipp.uhl@rwth-aachen.de>
 
 pkgname=deadd-notification-center-bin
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Customizable notification-daemon with notification center"
 url="https://github.com/phuhl/linux_notification_center"
@@ -22,4 +22,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-md5sums=('6b367f8187d0f71633fc22d47b6dd2cf')
+md5sums=('eafe3edc55ac68e098dc61d58c6f7351')
