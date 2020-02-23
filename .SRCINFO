@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-theming-customcss
 	pkgdesc = Custom CSS support for Nextcloud servers
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/juliushaertl/theming_customcss
 	arch = any
 	license = AGPL
 	depends = nextcloud
 	options = !strip
-	source = theming_customcss-1.4.0::https://github.com/juliushaertl/theming_customcss/releases/download/v1.4.0/theming_customcss.tar.gz
-	md5sums = 1ec9df991fe5274349cf9769cb5cf469
+	source = theming_customcss-1.5.0.tar.gz::https://github.com/juliushaertl/theming_customcss/releases/download/v1.5.0/theming_customcss.tar.gz
+	sha256sums = 327ec2028e3fa06bd0d70c6d08b1aff90f5ac71ce4a6886937d1a93053632c76
 
 pkgname = nextcloud-app-theming-customcss
 
