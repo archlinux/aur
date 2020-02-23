@@ -1,7 +1,7 @@
 pkgbase = make-3.81
 	pkgdesc = GNU make utility to maintain groups of programs (3.81 version)
 	pkgver = 3.81
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/make
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = make-3.81
 	sha256sums = 16b77de9f013bcd536b7bc1efbe314223aedfe250f9063e33cbb4dfd347215a2
 	sha256sums = SKIP
 	sha256sums = 7145e958d5209c3de5a40fe77f71141363dadfbbe7a206826d7b7d7c09c8f98f
-	sha256sums = 94368caa194cbdccc0a0c9ad31c515fe5b7a02bc66e2d01be4327335f60cbe33
+	sha256sums = 4a4c500fce66348a1d6a46d6bfb97263d90c4a9441aea6a42f7b0f3decedd8d8
 
 pkgname = make-3.81
 
