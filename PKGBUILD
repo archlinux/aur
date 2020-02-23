@@ -7,6 +7,11 @@ arch=('x86_64')
 url="https://localbyflywheel.com/"
 license=('freemium')
 makedepends=('rpmextract')
+depends=(
+  'numactl'
+  'ncurses5-compat-libs'
+  'libaio'
+)
 options=('emptydirs')
 source=("https://local-by-flywheel-flywheel.netdna-ssl.com/releases/5-2-5/local-5-2-5-linux.rpm")
 sha1sums=('8cfb9c25623a38e8409093e3cca7e7034171e301')
