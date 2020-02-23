@@ -1,6 +1,6 @@
 pkgbase = oguri-git
 	pkgdesc = A very nice animated wallpaper tool for Wayland compositors.
-	pkgver = r72.5582689
+	pkgver = r96.518baf2
 	pkgrel = 1
 	url = https://github.com/vilhalmer/oguri
 	arch = i686

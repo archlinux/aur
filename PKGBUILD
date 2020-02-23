@@ -1,7 +1,7 @@
 # Maintainer: Thomas Lam <thomas@lamcw.com>
 
 pkgname=oguri-git
-pkgver=r72.5582689
+pkgver=r96.518baf2
 pkgrel=1
 pkgdesc="A very nice animated wallpaper tool for Wayland compositors."
 arch=('i686' 'x86_64')
@@ -34,5 +34,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	DESTDIR="$pkgdir" ninja -C "$srcdir/build" install
+	install -D -m755 contrib/oguri-swaybg $pkgdir/usr/bin/oguri-swaybg
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 }
