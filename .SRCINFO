@@ -1,0 +1,14 @@
+pkgbase = phetch
+	pkgdesc = A quick lil gopher client for your terminal.
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/xvxx/phetch
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = openssl
+	source = phetch-0.9.0.tar.gz::https://crates.io/api/v1/crates/phetch/0.9.0/download
+	sha256sums = ae97e341446bbf01be48aaefd9171de6b0b2e20b85c67dc77ec22251b818f7db
+
+pkgname = phetch
+
