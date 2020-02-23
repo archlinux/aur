@@ -5,7 +5,6 @@ pkgbase = otf-kokoro
 	url = https://typingart.net/?p=46
 	arch = any
 	license = custom:IPA Font License
-	depends = fontconfig
 	source = https://typingart.net/fontdata/kokoro.zip
 	sha256sums = e4566175799d52f9e3b6dd8774596428ea27dd40596e1283aa627689e5ac98d8
 

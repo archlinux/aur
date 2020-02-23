@@ -8,7 +8,6 @@ pkgdesc="Japanese slender font (Mincho-style) based on IPA Font v3"
 url="https://typingart.net/?p=46"
 license=("custom:IPA Font License")
 arch=("any")
-depends=("fontconfig")
 source=("https://typingart.net/fontdata/kokoro.zip")
 sha256sums=("e4566175799d52f9e3b6dd8774596428ea27dd40596e1283aa627689e5ac98d8")
 # Official source is typingart.net but does not support download without
