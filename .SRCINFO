@@ -3,7 +3,6 @@ pkgbase = blender-fracture_modifier-git
 	pkgver = 2.79b.r2169.g233ad61cb8d
 	pkgrel = 1
 	url = https://blender.org/
-	install = blender.install
 	arch = i686
 	arch = x86_64
 	license = GPL
