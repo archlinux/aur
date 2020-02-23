@@ -8,7 +8,6 @@ pkgdesc="Japanese curvy and gentle style font (Mincho-style) based on IPA Font v
 url="https://typingart.net/?p=44"
 license=("custom:IPA Font License")
 arch=("any")
-depends=("fontconfig")
 source=("https://typingart.net/fontdata/hannari.zip")
 sha256sums=("f9f7cb9c2711e04b8ad492af5d3ae11b948f1de7bec7896470b1728602010a4e")
 # Official source is typingart.net but does not support download without
