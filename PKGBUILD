@@ -1,32 +1,24 @@
-# Maintainer: Netflix, Inc. <netflixoss@netflix.com>
-# Contributor: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
+# Maintainer: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 
 pkgname=dynomite
-pkgver=0.5.9
-upstream_pkgrel=5_MuslCompatiblity
+pkgver=0.6.21
+upstream_pkgrel=-rc2
 pkgrel=3
-pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols. Stable version."
+pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols"
 arch=('i686' 'x86_64')
 url="https://github.com/Netflix/dynomite"
 license=('Apache-2.0')
-makedepends=( 'openssl-1.0' )
-conflicts=('dynomite-git')
+conflicts=('dynomite')
 provides=('dynomite')
 source=(
-  "https://github.com/Netflix/${pkgname}/archive/v${pkgver}-${upstream_pkgrel}.tar.gz"
-  "0001-sysconfdir.patch"
+  "https://github.com/Netflix/${pkgname}/archive/v${pkgver}${upstream_pkgrel}.tar.gz"
 )
-md5sums=(
-  '25f14fb09ef6aac6509ec01ffd942f41'
-  '5f8f09361a6afb6d59726de58f86b6fb'
+sha256sums=(
+  '37ac75726bc139db1063b8ffbfcd42dc83e9dd71f35ffaabf973900a0cb3e597'
 )
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${upstream_pkgrel}"
-  patch -p1 < ../0001-sysconfdir.patch
-
-  export CFLAGS=" -I/usr/include/openssl-1.0"
-  export LDFLAGS=" -L/usr/lib/openssl-1.0 -lssl -lcrypto"
+  cd "${srcdir}/${pkgname}-${pkgver}${upstream_pkgrel}"
   autoreconf -fvi
   ./configure --prefix=/usr \
     --sbindir='${exec_prefix}/bin' \
@@ -36,12 +28,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${upstream_pkgrel}"
+  cd "${srcdir}/${pkgname}-${pkgver}${upstream_pkgrel}"
   HOME="${srcdir}/testhome" make -k check
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${upstream_pkgrel}"
+  cd "${srcdir}/${pkgname}-${pkgver}${upstream_pkgrel}"
 
   make DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
