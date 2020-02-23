@@ -1,6 +1,6 @@
 # Maintainer: DDoSolitary <DDoSolitary@gmail.com>
 pkgname=nodejs-unblockneteasemusic
-pkgver=0.23.1
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="Revive unavailable songs for Netease Cloud Music"
 arch=(any)
@@ -15,7 +15,7 @@ source=(
 	args.conf
 )
 sha512sums=(
-	687708a0bc7212aacdbca733f37e69120e1d1dbb567c32231640b75e4aeef60c918a1c627834cde0b71e5421964b3c4d7141683b60c5d37142ec009dfe8d5260
+	3cc3e06a9ecca8ade822d87e7d2094800227daa87dc1524b3114b49d8cb55c936b3d5819971ce599ffdeb8f0057070cba56f8da0374c72dd1a4e23574e326931
 	30a085967dbaf8d8caeb25f58cb5b2a9f98c258d4893a3e648c4ca2310572966877faecaee94b8081b9799d268827f5cf1e26184c6a4bf927b1a3458f30ef5df
 	20b8c61fcc55a7d2b4b4b8e231f2888a8232b9edcd7811cf845976ca944c31d982cffdce3ad574abb87d3cf12d5ba442ce3baae4a18a7763fb9769e16f99207b
 	bbf170413150b9eab5fe996f213ca2e454f7acac7ce64c39a70e8ae4a2e2fb5a467b5a253898e0f488a272dfde2060310d7ebff958390dd918510bda764a65be
