@@ -40,10 +40,12 @@ source=(
   aegisub::git+https://github.com/Aegisub/Aegisub.git
   git+https://github.com/Aegisub/assdraw.git
   0001-Use-target-name-without-directory-in-_OBJ-macro.patch::https://github.com/Aegisub/Aegisub/commit/6bd3f4c26b8fc1f76a8b797fcee11e7611d59a39.patch
+  0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch::https://github.com/Aegisub/Aegisub/commit/5f235ff459e6a7ec36639894d1f45a638a9d73f3.patch
 )
 sha256sums=('SKIP'
             'SKIP'
-            '12b191b104fc8fa8745fd98f4aa9d2425699f2e2e719ef2062bdf6a025a045c0')
+            '12b191b104fc8fa8745fd98f4aa9d2425699f2e2e719ef2062bdf6a025a045c0'
+            '9859311688dd4a6f3e2b330109c96aa3d16f54c76a8d2be31b2e505cb9a5e843')
 
 pkgver() {
   cd aegisub
@@ -63,6 +65,9 @@ prepare() {
 
   # https://github.com/Aegisub/Aegisub/issues/171
   patch -p1 -i ../0001-Use-target-name-without-directory-in-_OBJ-macro.patch
+
+  # Fix build with wxWidgets 3.0
+  patch -p1 -i ../0001-Restrict-the-usage-of-undocumented-wxBitmap-ctor-to-.patch
 
   cp -f /usr/share/aclocal/ax_boost_{chrono,filesystem,locale,regex,system,thread}.m4 m4macros/
 
