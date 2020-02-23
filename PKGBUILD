@@ -14,7 +14,9 @@ source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 prepare() {
   mkdir -p "${pkgname}-${pkgver}/build"
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_PYTHON=OFF
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DUSE_PYTHON=OFF
 }
 
 build() {
