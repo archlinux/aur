@@ -4,7 +4,7 @@
 pkgname=nccl
 pkgver=2.5.7
 _upstr_pkgrel=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Library for NVIDIA multi-GPU and multi-node collective communication primitives'
 arch=('x86_64')
 url='https://developer.nvidia.com/nccl/'
@@ -43,17 +43,14 @@ build() {
                        -gencode=arch=compute_70,code=compute_70 \
                        -gencode=arch=compute_72,code=compute_72 \
                        -gencode=arch=compute_75,code=compute_75"
-  export VERBOSE=1
 
-  make CUDA_HOME='/opt/cuda' src.build
+  make CUDA_HOME=/opt/cuda PREFIX=/usr src.build
 }
 
 package() {
-  cd "${pkgname}/build"
+  cd "${pkgname}"
 
-  install -Dm644 include/nccl.h "${pkgdir}/usr/include/nccl.h"
-  mkdir -p "${pkgdir}/usr/lib"
-  cp -a lib/* "${pkgdir}/usr/lib"
+  make PREFIX="${pkgdir}"/usr install
 
   install -Dm644  "${srcdir}/${pkgname}"/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
