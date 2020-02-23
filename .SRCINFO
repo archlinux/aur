@@ -1,21 +1,25 @@
 pkgbase = java-openjdk-ea-bin
-	pkgdesc = Java OpenJDK 14 Early-Access Build
-	pkgver = 14b36
+	pkgdesc = Java OpenJDK 15 Early-Access Build
+	pkgver = 15b11
 	pkgrel = 1
-	url = http://jdk.java.net/14
+	url = https://jdk.java.net/15
 	arch = x86_64
 	license = GPL2
-	depends = java-environment-common
+	depends = java-environment-common>=3
 	depends = ca-certificates-utils
 	depends = nss
-	provides = java-environment=14
-	provides = java-environment-openjdk=14
-	provides = java-runtime=14
-	provides = java-runtime-openjdk=14
-	provides = java-runtime-headless=14
-	provides = java-runtime-headless-openjdk=14
-	source = https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz
-	sha256sums = c7006154dfb8b66328c6475447a396feb0042608ee07a96956547f574a911c09
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	depends = freetype2
+	provides = java-environment=15
+	provides = java-environment-openjdk=15
+	provides = java-runtime=15
+	provides = java-runtime-openjdk=15
+	provides = java-runtime-headless=15
+	provides = java-runtime-headless-openjdk=15
+	source = https://download.java.net/java/early_access/jdk15/11/GPL/openjdk-15-ea+11_linux-x64_bin.tar.gz
+	sha256sums = dbaed2c9b6a3158494de3a5d87e772a9950535f9053a239c5dcbc1baee5b967d
 
 pkgname = java-openjdk-ea-bin
 

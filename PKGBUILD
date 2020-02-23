@@ -2,15 +2,18 @@
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-ea-bin
-_majorver=14
-_buildver=36
+_majorver=15
+_buildver=11
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build"
 arch=('x86_64')
-url="http://jdk.java.net/${_majorver}"
+url="https://jdk.java.net/${_majorver}"
 license=('GPL2')
-depends=('java-environment-common' 'ca-certificates-utils' 'nss')
+depends=(
+  'java-environment-common>=3' 'ca-certificates-utils'
+  'nss' 'libxrender' 'libxtst' 'alsa-lib' 'freetype2'
+)
 provides=(
   "java-environment=${_majorver}"
   "java-environment-openjdk=${_majorver}"
@@ -19,13 +22,11 @@ provides=(
   "java-runtime-headless=${_majorver}"
   "java-runtime-headless-openjdk=${_majorver}"
 )
-#source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-source=("https://download.java.net/java/GA/jdk14/076bab302c7b4508975440c56f6cc26a/36/GPL/openjdk-14_linux-x64_bin.tar.gz")
-sha256sums=('c7006154dfb8b66328c6475447a396feb0042608ee07a96956547f574a911c09')
+source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
+sha256sums=('dbaed2c9b6a3158494de3a5d87e772a9950535f9053a239c5dcbc1baee5b967d')
 
-_eaname1=java-${_majorver}-openjdk
-_eaname2=java${_majorver}-openjdk
-_jvmdir=usr/lib/jvm/${_eaname1}
+_eaname=java-${_majorver}-openjdk
+_jvmdir=usr/lib/jvm/${_eaname}
 
 package() {
   # Install
@@ -38,13 +39,13 @@ package() {
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
 
   # Legal
-  install -d "${pkgdir}/usr/share/licenses/${_eaname2}"
-  cp -a legal "${pkgdir}/usr/share/licenses/${_eaname2}/"
-  ln -s /usr/share/licenses/${_eaname2} "${pkgdir}/${_jvmdir}/legal"
+  install -d "${pkgdir}/usr/share/licenses/${_eaname}"
+  cp -a legal "${pkgdir}/usr/share/licenses/${_eaname}/"
+  ln -s /usr/share/licenses/${_eaname} "${pkgdir}/${_jvmdir}/legal"
 
   # Conf
   install -d "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/${_eaname2}"
-  ln -s /etc/${_eaname2} "${pkgdir}/${_jvmdir}/conf"
+  cp -r conf "${pkgdir}/etc/${_eaname}"
+  ln -s /etc/${_eaname} "${pkgdir}/${_jvmdir}/conf"
 }
 # vim:set ts=2 sw=2 et:
