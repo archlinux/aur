@@ -7,12 +7,12 @@
 ((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 
 # Configuration.
-_branch="fracture_modifier"
+_branch="functions"
 _sufix=${_branch}
 _fragment="#branch=${_branch}"
 
 pkgname=blender-${_sufix}-git
-pkgver=2.79b.r70678.g233ad61cb8d
+pkgver=2.83.r95931.gbeed795e5aa
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
@@ -39,16 +39,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
-        'git+https://github.com/scorpion81/blender-fracture-helper.git'
         SelectCudaComputeArch.patch
-        gcc8.patch
-        gcc9.patch
-        ffmpeg.patch
-        openvdb.patch
-        collada1668.patch
-        oiio-2.0.patch
-        Cleanup-use-PyImport_GetModuleDict.patch
-        python3.8.patch
         addon_path.patch
         )
 sha256sums=('SKIP'
@@ -56,21 +47,12 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            '39ab45862044a838e49720c93ef5d246c3192e1438bf3ceca169e3ed0439ea18'
-            '6093024b0a27f1fd144f5f8a25121939f74f41bcc164d8b8b58f33d3c364e456'
-            'ec95ba11ef9f41ca3123b330f25ab767f7916531f39943b4f92f28f36e1e0725'
-            '450a3ec68360981e47503e734e8229a4ad06554ad009664b4abfb6bf317962d9'
-            'e22d5908877165958991161c6800dac9f8810e2d92fb18c6fe09fe1a24e5d18c'
-            'ba390c37ea5a63e603c97350f9401fe1794c54406243a48f860195cc0c6085ab'
-            '5ff48d0e35025f21ee45274b56d1788b2e1768fa4d86b5032a40941057695176'
-            'f4fea95b9d27fb5c30a13cd57ae22d8f3091d456719377e28572091793e941c2'
-            '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
-            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e')
+            '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
+            '81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72')
 
 pkgver() {
   cd "$srcdir/blender"
-  printf "%sb.r%s.g%s" "$(grep -Po "BLENDER_VERSION *\K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.g%s" "$(grep -Po "BLENDER_VERSION *\K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -80,14 +62,6 @@ prepare() {
   if [[ ! -v _cuda_capability ]] && grep -q nvidia <(lsmod); then
     git apply -v "${srcdir}/SelectCudaComputeArch.patch"
   fi
-  git apply -v "${srcdir}/gcc8.patch"
-  git apply -v "${srcdir}/ffmpeg.patch"
-  git apply -v "${srcdir}/openvdb.patch"
-  git apply -v "${srcdir}/collada1668.patch"
-  git apply -v "${srcdir}/gcc9.patch"
-  git apply -v "${srcdir}/oiio-2.0.patch"
-  git apply -v "${srcdir}/Cleanup-use-PyImport_GetModuleDict.patch"
-  git apply -v "${srcdir}/python3.8.patch"
   if [[ -v _sufix ]]; then
     git apply -v <(sed "s/@@_sufix@@/${_sufix}/g" "${srcdir}/addon_path.patch")
   fi
@@ -141,9 +115,6 @@ package() {
   cd "$srcdir/blender-build"
   export DESTDIR="$pkgdir"
   if ((DISABLE_NINJA)); then make install; else ninja install; fi
-
-  msg "install fracture-helper addon"
-  install -Dm644 "${srcdir}"/blender-fracture-helper/*.py "${pkgdir}/usr/share/blender/${_blenver}_${_sufix}/scripts/addons/"
 
   if [[ -v _sufix ]]; then
     msg "add -${_sufix} sufix to desktop shortcut"

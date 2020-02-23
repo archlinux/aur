@@ -1,6 +1,6 @@
-pkgbase = blender-fracture_modifier-git
-	pkgdesc = Development version of Blenders fracture_modifier branch
-	pkgver = 2.79b.r70678.g233ad61cb8d
+pkgbase = blender-functions-git
+	pkgdesc = Development version of Blenders functions branch
+	pkgver = 2.83.r95931.gbeed795e5aa
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -31,40 +31,22 @@ pkgbase = blender-fracture_modifier-git
 	depends = libtiff
 	depends = libpng
 	optdepends = cuda: CUDA support in Cycles
-	provides = blender-fracture_modifier
-	conflicts = blender-fracture_modifier
-	source = git://git.blender.org/blender.git#branch=fracture_modifier
+	provides = blender-functions
+	conflicts = blender-functions
+	source = git://git.blender.org/blender.git#branch=functions
 	source = blender-addons.git::git://git.blender.org/blender-addons.git
 	source = blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git
 	source = blender-translations.git::git://git.blender.org/blender-translations.git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
-	source = git+https://github.com/scorpion81/blender-fracture-helper.git
 	source = SelectCudaComputeArch.patch
-	source = gcc8.patch
-	source = gcc9.patch
-	source = ffmpeg.patch
-	source = openvdb.patch
-	source = collada1668.patch
-	source = oiio-2.0.patch
-	source = Cleanup-use-PyImport_GetModuleDict.patch
-	source = python3.8.patch
 	source = addon_path.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 39ab45862044a838e49720c93ef5d246c3192e1438bf3ceca169e3ed0439ea18
-	sha256sums = 6093024b0a27f1fd144f5f8a25121939f74f41bcc164d8b8b58f33d3c364e456
-	sha256sums = ec95ba11ef9f41ca3123b330f25ab767f7916531f39943b4f92f28f36e1e0725
-	sha256sums = 450a3ec68360981e47503e734e8229a4ad06554ad009664b4abfb6bf317962d9
-	sha256sums = e22d5908877165958991161c6800dac9f8810e2d92fb18c6fe09fe1a24e5d18c
-	sha256sums = ba390c37ea5a63e603c97350f9401fe1794c54406243a48f860195cc0c6085ab
-	sha256sums = 5ff48d0e35025f21ee45274b56d1788b2e1768fa4d86b5032a40941057695176
-	sha256sums = f4fea95b9d27fb5c30a13cd57ae22d8f3091d456719377e28572091793e941c2
-	sha256sums = 229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59
-	sha256sums = e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e
+	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
+	sha256sums = 81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72
 
-pkgname = blender-fracture_modifier-git
+pkgname = blender-functions-git
 

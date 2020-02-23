@@ -4,39 +4,39 @@ index 8fd6aee28da..99d61882451 100644
 +++ b/intern/ghost/intern/GHOST_SystemPathsUnix.cpp
 @@ -56,7 +56,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getSystemDir(int, const char *versions
  {
- 	/* no prefix assumes a portable build which only uses bundled scripts */
- 	if (static_path) {
--		static string system_path = string(static_path) + "/blender/" + versionstr;
-+		static string system_path = string(static_path) + "/blender/" + versionstr + "_@@_sufix@@";
- 		return (GHOST_TUns8 *)system_path.c_str();
- 	}
+   /* no prefix assumes a portable build which only uses bundled scripts */
+   if (static_path) {
+-    static string system_path = string(static_path) + "/blender/" + versionstr;
++    static string system_path = string(static_path) + "/blender/" + versionstr + "_@@_sufix@@";
+     return (GHOST_TUns8 *)system_path.c_str();
+   }
  
 @@ -77,7 +77,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
- 			last_version = version;
+       last_version = version;
  
- 			if (home) {
--				user_path = string(home) + "/.blender/" + versionstr;
-+				user_path = string(home) + "/.blender/" + versionstr + "_@@_sufix@@";
- 			}
- 			else {
- 				return NULL;
+       if (home) {
+-        user_path = string(home) + "/.blender/" + versionstr;
++        user_path = string(home) + "/.blender/" + versionstr + "_@@_sufix@@";
+       }
+       else {
+         return NULL;
 @@ -92,7 +92,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
- 			last_version = version;
+       last_version = version;
  
- 			if (home) {
--				user_path = string(home) + "/blender/" + versionstr;
-+				user_path = string(home) + "/blender/" + versionstr + "_@@_sufix@@";
- 			}
- 			else {
- 				home = getenv("HOME");
+       if (home) {
+-        user_path = string(home) + "/blender/" + versionstr;
++        user_path = string(home) + "/blender/" + versionstr + "_@@_sufix@@";
+       }
+       else {
+         home = getenv("HOME");
 @@ -100,7 +100,7 @@ const GHOST_TUns8 *GHOST_SystemPathsUnix::getUserDir(int version, const char *ve
- 				if (home == NULL)
- 					home = getpwuid(getuid())->pw_dir;
+         if (home == NULL)
+           home = getpwuid(getuid())->pw_dir;
  
--				user_path = string(home) + "/.config/blender/" + versionstr;
-+				user_path = string(home) + "/.config/blender/" + versionstr + "_@@_sufix@@";
- 			}
- 		}
+-        user_path = string(home) + "/.config/blender/" + versionstr;
++        user_path = string(home) + "/.config/blender/" + versionstr + "_@@_sufix@@";
+       }
+     }
  
 diff --git a/source/creator/CMakeLists.txt b/source/creator/CMakeLists.txt
 index 8fb04c320a0..3102752ec97 100644
@@ -44,21 +44,21 @@ index 8fb04c320a0..3102752ec97 100644
 +++ b/source/creator/CMakeLists.txt
 @@ -303,15 +303,15 @@ endif()
  if(UNIX AND NOT APPLE)
- 	if(WITH_PYTHON_MODULE)
- 		if(WITH_INSTALL_PORTABLE)
--			set(TARGETDIR_VER ${BLENDER_VERSION})
-+			set(TARGETDIR_VER ${BLENDER_VERSION}_@@_sufix@@)
- 		else()
--			set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION})
-+			set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION}_@@_sufix@@)
- 		endif()
- 	else()
- 		if(WITH_INSTALL_PORTABLE)
--			set(TARGETDIR_VER ${BLENDER_VERSION})
-+			set(TARGETDIR_VER ${BLENDER_VERSION}_@@_sufix@@)
- 		else()
--			set(TARGETDIR_VER share/blender/${BLENDER_VERSION})
-+			set(TARGETDIR_VER share/blender/${BLENDER_VERSION}_@@_sufix@@)
- 		endif()
- 	endif()
+   if(WITH_PYTHON_MODULE)
+     if(WITH_INSTALL_PORTABLE)
+-      set(TARGETDIR_VER ${BLENDER_VERSION})
++      set(TARGETDIR_VER ${BLENDER_VERSION}_@@_sufix@@)
+     else()
+-      set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION})
++      set(TARGETDIR_VER ${PYTHON_SITE_PACKAGES}/${BLENDER_VERSION}_@@_sufix@@)
+     endif()
+   else()
+     if(WITH_INSTALL_PORTABLE)
+-      set(TARGETDIR_VER ${BLENDER_VERSION})
++      set(TARGETDIR_VER ${BLENDER_VERSION}_@@_sufix@@)
+     else()
+-      set(TARGETDIR_VER share/blender/${BLENDER_VERSION})
++      set(TARGETDIR_VER share/blender/${BLENDER_VERSION}_@@_sufix@@)
+     endif()
+   endif()
  
