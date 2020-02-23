@@ -1,6 +1,6 @@
 pkgbase = blender-new-object-types-git
 	pkgdesc = Development version of Blenders new-object-types branch
-	pkgver = 2.83.r95931.gbeed795e5aa
+	pkgver = 2.83.r93482.gbe2874f9c36
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -40,6 +40,7 @@ pkgbase = blender-new-object-types-git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = SelectCudaComputeArch.patch
 	source = addon_path.patch
+	source = osl.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -47,6 +48,7 @@ pkgbase = blender-new-object-types-git
 	sha256sums = SKIP
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
 	sha256sums = 81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72
+	sha256sums = 4998ee68a9404366f9b9be26f11d40a1476a5ab24a5618654432f67ab9cc75b8
 
 pkgname = blender-new-object-types-git
 

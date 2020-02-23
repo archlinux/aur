@@ -10,9 +10,10 @@
 _branch="new-object-types"
 _sufix=${_branch}
 _fragment="#branch=${_branch}"
+_EXTRAOPTS+=( -DOSL_SHADER_DIR:PATH=/usr/share/OSL/shaders )
 
 pkgname=blender-${_sufix}-git
-pkgver=2.83.r95931.gbeed795e5aa
+pkgver=2.83.r93482.gbe2874f9c36
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
@@ -41,6 +42,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         SelectCudaComputeArch.patch
         addon_path.patch
+        osl.patch
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -48,7 +50,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
-            '81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72')
+            '81e0047ba48662ee0ec1da1ffd427641305a0edc68c7913da9460ae4c1fefe72'
+            '4998ee68a9404366f9b9be26f11d40a1476a5ab24a5618654432f67ab9cc75b8')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -59,6 +62,7 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
+  git apply -v "${srcdir}/osl.patch"
   if [[ ! -v _cuda_capability ]] && grep -q nvidia <(lsmod); then
     git apply -v "${srcdir}/SelectCudaComputeArch.patch"
   fi
@@ -76,8 +80,8 @@ build() {
 
   # determine whether we can precompile CUDA kernels
   if pacman -Qq cuda 2>&- ; then
-    _EXTRAOPTS=( -DWITH_CYCLES_CUDA_BINARIES=ON \
-                 -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+    _EXTRAOPTS+=( -DWITH_CYCLES_CUDA_BINARIES=ON \
+                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
     if [[ -v _cuda_capability ]]; then
       _EXTRAOPTS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
     fi

@@ -1,0 +1,13 @@
+diff --git a/intern/cycles/kernel/shaders/CMakeLists.txt b/intern/cycles/kernel/shaders/CMakeLists.txt
+index 1c9445107ad..b1604978cce 100644
+--- a/intern/cycles/kernel/shaders/CMakeLists.txt
++++ b/intern/cycles/kernel/shaders/CMakeLists.txt
+@@ -131,7 +131,7 @@ foreach(_file ${SRC_OSL})
+   string(REPLACE ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} _OSO_FILE ${_OSO_FILE})
+   add_custom_command(
+     OUTPUT ${_OSO_FILE}
+-    COMMAND ${OSL_COMPILER} -q -O2  -I"${CMAKE_CURRENT_SOURCE_DIR}" -o ${_OSO_FILE} ${_OSL_FILE}
++    COMMAND ${OSL_COMPILER} -q -O2  -I"${CMAKE_CURRENT_SOURCE_DIR}" -I"${OSL_SHADER_DIR}" -o ${_OSO_FILE} ${_OSL_FILE}
+     DEPENDS ${_OSL_FILE} ${SRC_OSL_HEADERS} ${OSL_COMPILER})
+   list(APPEND SRC_OSO
+     ${_OSO_FILE}
