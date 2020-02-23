@@ -1,10 +1,10 @@
 pkgdesc="ROS - Provides a cmake config for the default version of Gazebo for the ROS distribution."
-url='https://gazebosim.org/tutorials?cat=connect_ros'
+url='https://wiki.ros.org/gazebo_ros_pkgs'
 
 pkgname='ros-melodic-gazebo-dev'
 pkgver='2.8.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('Apache 2.0')
 
 ros_makedepends=(ros-melodic-catkin)
@@ -15,7 +15,7 @@ ros_depends=()
 depends=(${ros_depends[@]}
   gazebo)
 
-_dir="gazebo_ros_pkgs-${pkgver}/gazebo-dev"
+_dir="gazebo_ros_pkgs-${pkgver}/gazebo_dev"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
 sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4')
 
