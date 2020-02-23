@@ -15,7 +15,7 @@ arch=(any)
 url="https://octave.sourceforge.io/$_pack/"
 license=('custom')
 groups=('octave-forge')
-depends=('octave>=4.0.1')
+depends=('octave>=4.2.0' 'octave-matgeom>=1.0.0')
 makedepends=()
 optdepends=()
 backup=()

@@ -7,7 +7,8 @@ pkgbase = octave-geometry
 	arch = any
 	groups = octave-forge
 	license = custom
-	depends = octave>=4.0.1
+	depends = octave>=4.2.0
+	depends = octave-matgeom>=1.0.0
 	noextract = geometry-4.0.0.tar.gz
 	source = https://downloads.sourceforge.net/octave/geometry-4.0.0.tar.gz
 	sha256sums = 1ad2403c01948ebac55d67f9048f79ae28bb99802ef65376c94e981cfb49adfe
