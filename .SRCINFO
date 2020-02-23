@@ -1,0 +1,21 @@
+pkgbase = gopls
+	pkgdesc = Language server for Go programming language
+	pkgver = v0.3.2
+	pkgrel = 1
+	url = https://github.com/golang/tools/blob/master/gopls
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv7l
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.12
+	depends = glibc
+	provides = gopls
+	conflicts = go-tools
+	conflicts = go-tools-complete-git
+	source = gopls-v0.3.2.tar.gz::https://github.com/golang/tools/archive/gopls/v0.3.2.tar.gz
+	sha256sums = e762dfb20f356627cb0beac2b85846bd1c10d916eaf0b3b3a9f49ad09adf9cca
+
+pkgname = gopls
+
