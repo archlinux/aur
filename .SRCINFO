@@ -1,18 +1,14 @@
 pkgbase = python-django-jsonfield
 	pkgdesc = A reusable JSONField model for Django to store ad-hoc data
-	pkgver = 2.0.2
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/dmkoch/django-jsonfield
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://github.com/dmkoch/django-jsonfield/archive/2.0.2.tar.gz
-	sha256sums = 4f75edff3389217fc0ef17d53345fa668d0b5e8c455334773077101d85a3ca1c
+	depends = python-django
+	source = python-django-jsonfield-pkgver.tar.gz::https://github.com/dmkoch/django-jsonfield/archive/3.1.0.tar.gz
+	sha256sums = 83830542a6fcd517cb362a20239c9305a38295319b0476d79ec05b918bca1fad
 
 pkgname = python-django-jsonfield
-	depends = python-django
-
-pkgname = python2-django-jsonfield
-	depends = python2-django
 

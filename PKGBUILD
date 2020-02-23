@@ -1,27 +1,19 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
-pkgbase='python-django-jsonfield' 
-pkgname=('python-django-jsonfield' 'python2-django-jsonfield')
-pkgver='2.0.2'
-pkgrel=2
+pkgname='python-django-jsonfield'
+pkgver=3.1.0
+pkgrel=1
 pkgdesc='A reusable JSONField model for Django to store ad-hoc data'
 arch=('any')
 url='https://github.com/dmkoch/django-jsonfield'
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/dmkoch/django-jsonfield/archive/$pkgver.tar.gz")
-sha256sums=('4f75edff3389217fc0ef17d53345fa668d0b5e8c455334773077101d85a3ca1c')
+depends=('python-django')
+makedepends=('python-setuptools')
+source=("$pkgname-pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('83830542a6fcd517cb362a20239c9305a38295319b0476d79ec05b918bca1fad')
 
-package_python-django-jsonfield() {
-    depends=('python-django')
-    cd "$srcdir/django-jsonfield-$pkgver"
+package() {
+    cd "$srcdir/jsonfield-$pkgver"
     install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python './setup.py' install --root="$pkgdir" --optimize=1
-}
-
-package_python2-django-jsonfield() {
-    depends=('python2-django')
-    cd "$srcdir/django-jsonfield-$pkgver"
-    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
