@@ -1,0 +1,11 @@
+pkgbase = greenrain
+	pkgdesc = Generate Green Rain / Matrix Digital Rain in Linux Terminal with curses lib
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aguegu/greenrain
+	arch = any
+	license = GNU
+	depends = git
+
+pkgname = greenrain
+
