@@ -1,19 +1,23 @@
 pkgbase = r-repr
-	pkgdesc = String and binary representations of objects for several formats / mime types
-	pkgver = 0.15.0
+	pkgdesc = Serializable Representations
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/repr/index.html
-	arch = i686
-	arch = x86_64
+	url = https://cran.r-project.org/package=repr
+	arch = any
 	license = GPL3
-	depends = r>=3.0.0
+	depends = r>=3.0.1
 	depends = r-htmltools
+	depends = r-jsonlite
+	depends = r-pillar>=1.4.0
 	depends = r-base64enc
-	provides = r-cran-repr
-	conflicts = r-cran-repr
-	replaces = r-cran-repr
-	source = http://cran.r-project.org/src/contrib/repr_0.15.0.tar.gz
-	sha256sums = 00a2b8ab86bbf04b7f79e64d38ce26fe03e5069699557be27ae0de165343cf57
+	optdepends = r-highr
+	optdepends = r-cairo
+	optdepends = r-stringr
+	optdepends = r-testthat
+	optdepends = r-diffobj
+	optdepends = r-leaflet
+	source = https://cran.r-project.org/src/contrib/repr_1.1.0.tar.gz
+	md5sums = e804cd097ad2cad848cf93d5cdaea279
 
 pkgname = r-repr
 
