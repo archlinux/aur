@@ -1,7 +1,7 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=v1.10
+pkgver=v1.14
 pkgrel=1
 epoch=
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
@@ -19,6 +19,8 @@ md5sums=("SKIP")
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
   mkdir -p "${_pkgname}/build"
+  cd "${_pkgname}"
+  git checkout tags/${pkgver}
 }
 
 build() {
