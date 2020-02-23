@@ -1,6 +1,6 @@
 # Maintainer: Tyler Wolf <tjwolf0305@protonmail.com>
 
-_commit=f588eb54295bba97e40e9a6aa8edd22cdab00d6d
+_commit=d97369a7ef153f6582f93e6d86d02cdf61f536f9
 pkgname=wego-darksky
 _pkgname=wego
 pkgver=1.0
