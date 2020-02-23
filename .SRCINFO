@@ -1,6 +1,6 @@
 pkgbase = reposurgeon
 	pkgdesc = Performs surgery on version control repositories.
-	pkgver = 4.1
+	pkgver = 4.4
 	pkgrel = 1
 	url = http://www.catb.org/esr/reposurgeon/
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = reposurgeon
 	optdepends = mercurial
 	optdepends = src
 	optdepends = subversion
-	source = https://gitlab.com/esr/reposurgeon/-/archive/4.1/reposurgeon-4.1.tar.gz
-	sha512sums = eba69468099fae6e03f4dcc09297926b417fec8b74f7882fe632feefb67497142e420f23469cb483c8123b30965c76de2f4bdb9379fec7e3733e20b4fafe69cd
+	source = https://gitlab.com/esr/reposurgeon/-/archive/4.4/reposurgeon-4.4.tar.gz
+	sha512sums = a84929b4f6b09423a35deb3890467810715e8f4f32fbbcdf675aa9f9d24fb071eed25feac4b5878414eaec9aa1a2e688e5e42ed1a132206a8c6f966a8a85fa28
 
 pkgname = reposurgeon
 
