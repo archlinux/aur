@@ -4,19 +4,16 @@
 
 pkgname='icinga2'
 pkgver=2.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
-# There currently is a bug in boost 1.72 preventing icinga2 from compiling, use
-# boost 1.69 as a workaround. See also
-# https://github.com/Icinga/icinga2/issues/7730#issuecomment-569496219
-depends=('boost1.69-libs' 'libedit' 'libsystemd' 'openssl' 'yajl')
+depends=('boost-libs' 'libedit' 'libsystemd' 'openssl' 'yajl')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
-makedepends=('boost1.69' 'cmake' 'libmariadbclient' 'postgresql-libs' 'systemd')
+makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'systemd')
 replaces=('icinga2-common')
 backup=(etc/default/icinga2
         etc/icinga2/features-available/api.conf
@@ -46,11 +43,23 @@ backup=(etc/default/icinga2
 install='icinga2.install'
 changelog="icinga2.changelog"
 source=("https://github.com/Icinga/$pkgname/archive/v$pkgver.tar.gz"
+        'https://www.boost.org/patches/1_72_0/0001-revert-cease-dependence-on-range.patch'
         "$pkgname.tmpfiles"
         "$pkgname.sysusers")
 sha256sums=('b9da300ce6914fe2d25652dc87f5c22aa036b33f4e3e24e1ffe1d746d192a812'
+            'da7950df251a9d785a84c0092fb7ac4f68f6872c6172cccb303a5453e0ef98fd'
             '1302b333f49ead14f8808a379535971501d3a0c1ba02a7bf7b4406b7d27c754c'
             '2f946a33ea50a3c4400a81acd778e6411ffe5e2257a98004288b84a64f382810')
+
+prepare() {
+  mkdir -p "$srcdir/include/boost/coroutine"
+  cd "$srcdir/include"
+
+  # Workaround to make icinga2 compile with boost 1.72, see also
+  # https://github.com/Icinga/icinga2/issues/7730#issuecomment-569496219
+  cp /usr/include/boost/coroutine/asymmetric_coroutine.hpp boost/coroutine/
+  patch -p1 < "$srcdir/0001-revert-cease-dependence-on-range.patch"
+}
 
 build() {
   mkdir -p "$srcdir/$pkgname-$pkgver/build"
@@ -73,7 +82,8 @@ build() {
     -DBoost_NO_BOOST_CMAKE=TRUE \
     -DBoost_NO_SYSTEM_PATHS=TRUE \
     -DBOOST_LIBRARYDIR=/usr/lib \
-    -DBOOST_INCLUDEDIR=/usr/include
+    -DBOOST_INCLUDEDIR=/usr/include \
+    -DCMAKE_CXX_FLAGS=-I"$srcdir/include"
 
   make
 }
