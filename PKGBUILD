@@ -2,7 +2,7 @@
 pkgname=bootique-git
 _pkgname=bootique
 pkgver=r11.244d11f
-pkgrel=3
+pkgrel=4
 pkgdesc="A templated theming system built in POSIX sh"
 arch=("any")
 url="https://github.com/BanchouBoo/${_pkgname}"
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 package() {
-  cd $_pkgname
+  cd $srcdir/$_pkgname
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/bootique-git/LICENSE"
   install -D -m755 bootique "$pkgdir/usr/bin/$_pkgname"
 }
