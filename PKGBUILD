@@ -1,26 +1,49 @@
-# Maintainer: Barfin
+## Maintainer:     barfin <barfin@protonmail.com>
+## Co-Maintainer:  Jaja <jaja@mailbox.org>
+
 pkgname=proton-ge-custom-bin
-pkgver=5.2
+pkgver=5.2_GE_2
 pkgrel=1
-pkgdesc="Compatibility tool for Steam Play (with GloriousEggroll patches)"
-arch=(i686 x86_64)
-url="https://github.com/GloriousEggroll/proton-ge-custom"
+pkgdesc="A fancy custom distribution of Valves Proton with various patches"
+arch=('any')
+url='https://github.com/GloriousEggroll/proton-ge-custom'
+license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 depends=(steam)
-license=(custom)
-makedepends=(wget)
-install=$pkgname.install
-source=($url/releases/download/$pkgver-GE-$pkgrel/Proton-$pkgver-GE-$pkgrel.tar.gz)
+optdepends=('winetricks: protonfixes backend'
+            'wine-staging: 32bit prefixes')
+source=(${pkgname}-${pkgver//_/-}.tar.gz::"${url}/releases/download/${pkgver//_/-}/Proton-${pkgver//_/-}.tar.gz"
+        "supplementary.tar.zst")
+md5sums=('457c948807ecd47c4c4e692485513064'
+         '732f822ca65b838808d79eec6696fa6d')
+
+## naming conventions
+_pkgname=${pkgname//-bin/}
+_pkgver=${pkgver//_/-}
+_srcdir=Proton-${_pkgver}
+
+prepare() {
+## unpack wine
+install -d ${_srcdir}/dist
+bsdtar -xf ${_srcdir}/proton_dist.tar.gz -C ${_srcdir}/dist/
+rm ${_srcdir}/proton_dist.tar.gz
+## create empty config file
+cat <<EOF > ${_srcdir}/user_settings.py
+user_settings = {}
+EOF
+## remove: dist_lock, extract_tarball, make_default_prefix
+patch ${_srcdir}/proton distlock-extract-defaultpfx.patch >/dev/null
+}
 
 package() {
-  wget -nc $url/releases/download/$pkgver-GE-$pkgrel/Proton-$pkgver-GE-$pkgrel.tar.gz
-  tar -zxf Proton-$pkgver-GE-$pkgrel.tar.gz
-  cd Proton-$pkgver-GE-$pkgrel
-  mkdir -p "$pkgdir"/usr/share/steam/compatibilitytools.d
-  mkdir -p $pkgdir/usr/share/proton-ge-custom
-  cp -r * "$pkgdir"/usr/share/proton-ge-custom
-  mkdir -p "$pkgdir"/usr/share/steam/compatibilitytools.d
-  cp compatibilitytool.vdf "$pkgdir"/usr/share/steam/compatibilitytools.d
-  mv "$pkgdir"/usr/share/steam/compatibilitytools.d/compatibilitytool.vdf "$pkgdir"/usr/share/steam/compatibilitytools.d/protongeaur.vdf
-  sed -i -e 's#"install_path" "."#"install_path" "/usr/share/proton-ge-custom"#g' "$pkgdir"/usr/share/steam/compatibilitytools.d/protongeaur.vdf  
+## paths in pkgdir
+local _protondir=${pkgdir}/usr/share/steam/compatibilitytools.d/${_pkgver}
+install -d ${_protondir}/
+local _licensedir=${pkgdir}/usr/share/licenses/${_pkgname}
+install -d ${_licensedir}/
+## licenses
+mv ${_srcdir}/LICENSE ${_licensedir}/license
+mv ${_srcdir}/LICENSE.OFL ${_licensedir}/license_OFL
+mv ${_srcdir}/protonfixes/LICENSE ${_licensedir}/license_protonfixes
+## proton executables
+mv ${_srcdir}/* ${_protondir}
 }
-md5sums=('184a317173ce0eb6c27597a1be0ebccc')
