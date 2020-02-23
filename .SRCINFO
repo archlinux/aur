@@ -1,0 +1,16 @@
+pkgbase = annotatego-git
+	pkgdesc = Creates sourcehut JSON annotations for Go source trees
+	pkgver = r7.e52c42d
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/annotatego
+	arch = x86_64
+	license = LGPL3
+	makedepends = git
+	makedepends = go
+	provides = annotatego
+	conflicts = annotatego
+	source = annotatego::git+https://git.sr.ht/~sircmpwn/annotatego
+	sha256sums = SKIP
+
+pkgname = annotatego-git
+
