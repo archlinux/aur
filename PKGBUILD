@@ -1,21 +1,21 @@
-# Maintainer: steamport <steamport@protonmail.com>
+# Maintainer: steamport <steamport@tutanota.com>
 pkgname=kristforge-git
-pkgver=r27.af563f6
+pkgver=r52.41c96dd
 pkgrel=1
-pkgdesc="An unofficial package for kristforge. Kristforge is an OpenCL-accelerated krist miner, capable of very high speeds, with vector type support"
+pkgdesc="Kristforge is a cross-platform hardware accelerated GPU and CPU krist miner. Kristforge uses OpenCL and accelerated CPU instruction sets to maximize performance, making it the fastest krist miner in existence."
 arch=('x86_64')
-url="https://github.com/apemanzilla/kristforge"
-license=('MIT')
+url="https://github.com/tmpim/kristforge"
+license=('Apache-2.0')
 groups=()
-depends=('openssl' 'ocl-icd' 'jsoncpp' 'curl' 'uwebsockets')
-makedepends=('git' 'tclap' 'cmake' 'vim')
-provides=()
-conflicts=()
+depends=('gcc-libs' 'opencl-driver')
+makedepends=('git' 'cargo' 'opencl-headers')
+provides=('kristforge')
+conflicts=('kristforge')
 replaces=()
 backup=()
 options=()
 install=
-source=('kristforge::git+https://github.com/tmpim/kristforge.git#branch=legacy')
+source=('kristforge::git+https://github.com/tmpim/kristforge.git#branch=master')
 noextract=()
 md5sums=('SKIP')
 
@@ -26,12 +26,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/kristforge"
-	cmake .
-	make
+	cargo build --release
 }
-
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
-	cp "$srcdir/kristforge/kristforge" "$pkgdir/usr/bin/kristforge"
+	cp "$srcdir/kristforge/target/release/kristforge" "$pkgdir/usr/bin/kristforge"
 }

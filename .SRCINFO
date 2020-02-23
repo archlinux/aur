@@ -1,20 +1,18 @@
 pkgbase = kristforge-git
-	pkgdesc = An unofficial package for kristforge. Kristforge is an OpenCL-accelerated krist miner, capable of very high speeds, with vector type support
-	pkgver = r27.af563f6
+	pkgdesc = Kristforge is a cross-platform hardware accelerated GPU and CPU krist miner. Kristforge uses OpenCL and accelerated CPU instruction sets to maximize performance, making it the fastest krist miner in existence.
+	pkgver = r52.41c96dd
 	pkgrel = 1
-	url = https://github.com/apemanzilla/kristforge
+	url = https://github.com/tmpim/kristforge
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	makedepends = git
-	makedepends = tclap
-	makedepends = cmake
-	makedepends = vim
-	depends = openssl
-	depends = ocl-icd
-	depends = jsoncpp
-	depends = curl
-	depends = uwebsockets
-	source = kristforge::git+https://github.com/tmpim/kristforge.git#branch=legacy
+	makedepends = cargo
+	makedepends = opencl-headers
+	depends = gcc-libs
+	depends = opencl-driver
+	provides = kristforge
+	conflicts = kristforge
+	source = kristforge::git+https://github.com/tmpim/kristforge.git#branch=master
 	md5sums = SKIP
 
 pkgname = kristforge-git
