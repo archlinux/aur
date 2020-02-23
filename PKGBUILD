@@ -1,9 +1,8 @@
-# Maintainer: Netflix, Inc. <netflixoss@netflix.com>
-# Contributor: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
+# Maintainer: Mikhail f. Shiryaev <mr<dot>felixoid<at>gmail<dot>com>
 
 _gitname=dynomite
 pkgname=${_gitname}-git
-pkgver=0.6.9.r27.gce073ac
+pkgver=0.6.21.rc2.r0.g5398600
 pkgrel=1
 pkgdesc="Dynomite is a thin, distributed dynamo layer for different storage engines and protocols"
 arch=('i686' 'x86_64')
@@ -14,7 +13,7 @@ provides=('dynomite')
 source=(
   "git+https://github.com/Netflix/dynomite.git"
 )
-md5sums=(
+sha256sums=(
   'SKIP'
 )
 

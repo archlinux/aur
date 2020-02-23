@@ -1,6 +1,6 @@
 pkgbase = dynomite-git
 	pkgdesc = Dynomite is a thin, distributed dynamo layer for different storage engines and protocols
-	pkgver = 0.6.9.r27.gce073ac
+	pkgver = 0.6.21.rc2.r0.g5398600
 	pkgrel = 1
 	url = https://github.com/Netflix/dynomite
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = dynomite-git
 	provides = dynomite
 	conflicts = dynomite
 	source = git+https://github.com/Netflix/dynomite.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = dynomite-git
 
