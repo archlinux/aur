@@ -5,13 +5,14 @@
 _pkgname=zenpower
 pkgname=zenpower-dkms
 pkgver=0.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux kernel driver for reading sensors for AMD Zen family CPUs'
 arch=('x86_64' 'i686')
 url='https://github.com/ocerman/zenpower'
 license=('GPL2')
 depends=('dkms')
 provides=('zenpower')
+conflicts=('zenpower')
 install=$_pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/ocerman/$_pkgname/archive/v$pkgver.tar.gz"
         "$_pkgname.conf")
