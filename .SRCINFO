@@ -1,17 +1,15 @@
 pkgbase = cpdup
-	pkgdesc = DragonFly BSD tool to mirror filesystems retaining permissions, flags, ownership, and utimes
-	pkgver = 1.18
+	pkgdesc = Tool to mirror filesystems retaining permissions, flags, ownership, and utimes
+	pkgver = 1.20
 	pkgrel = 1
-	url = http://apollo.backplane.com/FreeBSDPorts/
+	url = https://github.com/DragonFlyBSD/cpdup
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = pkg-config
 	depends = libbsd
-	source = http://apollo.backplane.com/FreeBSDPorts/cpdup-1.18.tar.gz
-	source = GNUmakefile
-	sha256sums = 2bc7ac20a84ae229a1133e0501b41b0065217dff4da1d2a89948d2c696568526
-	sha256sums = ff2ce54d0f9d77ee2e49ec18cd88c031a2a650e75422ceb491eed381eeca6a0c
+	source = https://github.com/DragonFlyBSD/cpdup/archive/v1.20.tar.gz
+	sha256sums = b8b3edb51c8f57e16f37bb6e4261214af2fdab4e7a13067dd5d47d46f55b1c93
 
 pkgname = cpdup
 
