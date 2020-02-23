@@ -1,17 +1,30 @@
-# Maintainer: sasvari <sasvari@fastmail.com>
+# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+
 pkgname=python-ezdxf
-_pkgname=ezdxf
-pkgver=0.8.8
+pkgver=0.11
 pkgrel=1
-pkgdesc="A Python package to create/manipulate DXF drawings."
-arch=(any)
-url="http://ezdxf.readthedocs.io/"
+pkgdesc="Python interface to DXF"
+arch=('any')
+url=https://ezdxf.mozman.at/
 license=('MIT')
-depends=('python')
-sha256sums=('c0a00ed6b7a4daf3e91934cc96d09a5d2a8c7de243f0ce932f68c16f773ac768')
-source=("https://github.com/mozman/$_pkgname/archive/v$pkgver.tar.gz")
+depends=(python python-pyparsing)
+makedepends=(python-setuptools)
+source=(https://github.com/mozman/ezdxf/archive/v${pkgver}.tar.gz)
+sha256sums=('88085dca0b0f7fb339b843ffa0cf14820137cedb42b026e89f9e306df61d8ae5')
+
+prepare() {
+  cd "$srcdir/ezdxf-$pkgver"
+}
+
+build() {
+  cd "$srcdir/ezdxf-$pkgver"
+  python setup.py build
+}
+
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	python setup.py install --optimize=1 --root="$pkgdir/" --prefix="/usr"
+  cd "$srcdir/ezdxf-$pkgver"
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
+
+# vim:ts=2:sw=2:et:

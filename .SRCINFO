@@ -1,13 +1,15 @@
 pkgbase = python-ezdxf
-	pkgdesc = A Python package to create/manipulate DXF drawings.
-	pkgver = 0.8.8
+	pkgdesc = Python interface to DXF
+	pkgver = 0.11
 	pkgrel = 1
-	url = http://ezdxf.readthedocs.io/
+	url = https://ezdxf.mozman.at/
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/mozman/ezdxf/archive/v0.8.8.tar.gz
-	sha256sums = c0a00ed6b7a4daf3e91934cc96d09a5d2a8c7de243f0ce932f68c16f773ac768
+	depends = python-pyparsing
+	source = https://github.com/mozman/ezdxf/archive/v0.11.tar.gz
+	sha256sums = 88085dca0b0f7fb339b843ffa0cf14820137cedb42b026e89f9e306df61d8ae5
 
 pkgname = python-ezdxf
 
