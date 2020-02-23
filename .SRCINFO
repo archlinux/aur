@@ -1,14 +1,14 @@
-pkgbase = benchmark
-	pkgdesc = A microbenchmark support library, by Google
+pkgbase = lib32-benchmark
+	pkgdesc = A microbenchmark support library, by Google (32-bit)
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/google/benchmark
-	arch = any
+	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	depends = gcc-libs
+	depends = gcc-libs-multilib
 	source = https://github.com/google/benchmark/archive/v1.5.0.tar.gz
 	sha256sums = 3c6a165b6ecc948967a1ead710d4a181d7b0fbcaa183ef7ea84604994966221a
 
-pkgname = benchmark
+pkgname = lib32-benchmark
 
