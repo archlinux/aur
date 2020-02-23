@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=easyssh
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc="SSH connection manager for Pantheon"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=(libgranite.so gtk3 vte3)
 makedepends=(vala meson ninja)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/muriloventuroso/easyssh/archive/${pkgver}.tar.gz")
-sha256sums=('7159509f86e425b49538c92bd2d5cc9b9b498ff63479fb39bb7dd193b9efce5b')
+sha256sums=('9ca938b62c4adf2fe23e4b855b55fbc61297515434d1a042155efdb4ec60a371')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
