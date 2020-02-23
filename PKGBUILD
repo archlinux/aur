@@ -1,7 +1,7 @@
 # Maintainer: Damien Flament <damien.flament at gmx dot com>
 
 pkgname='shellspec'
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="BDD style unit testing framework for POSIX compliant shell script"
 url="https://github.com/shellspec/$pkgname"
@@ -13,7 +13,7 @@ makedepends=()
 
 _distdir="$pkgname-$pkgver"
 source=("$_distdir.tar.gz::$url/archive/${pkgver}.tar.gz")
-md5sums=('e59281b85e32f0c64a2c736491712341')
+md5sums=('a40cdf9b7c0f003c97644a0157d941f1')
 
 build() {
     cd "$_distdir" || return
