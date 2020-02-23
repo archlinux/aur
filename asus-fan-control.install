@@ -1,15 +1,8 @@
 post_install(){
-    modprobe acpi_call || cat <<EOF
-Warning: failed to probe acpi_call module, you might need to reboot your system or
-install the acpi_call version appropriate for your kernel
-EOF
-
-    echo 'Trying to get current fan speed policy...'
-    sudo asus-fan-control -get-temps
-
     cat <<EOF
-If your model is absent in /usr/share/asus-fan-control/default-temps, you are advised to
-use 'asus-fan-control -set-temps:' to adjust fan speeds prior to enabling a systemd service.
+If your model is absent in /usr/share/asus-fan-control/models, you are advised to
+use 'asus-fan-control set-temps' to adjust fan speeds prior to enabling a systemd service.
+Run 'asus-fan-control get-temps' to get your current fan speed policy.
 
 To start asus-fan-control on boot:
 systemctl enable asus-fan-control
@@ -22,6 +15,12 @@ post_upgrade() {
     # if older version is <= 2.12.0-1 and asus-fan-control is enabled, re-enable it to update its dependencies
     if [ "$(vercmp '2.12.0-1' "$2" )" != '-1' ] && systemctl -q is-enabled asus-fan-control.service; then
         systemctl enable asus-fan-control.service
+    fi
+
+    # there are some changes in 3.0.0, so print the post_install message again and move old config
+    if [ "$(vercmp '3.0.0-1' "$2" )" = '1' ]; then
+        post_install
+        mv -f /etc/asus-fan-control/{custom-,}temps
     fi
 }
 
