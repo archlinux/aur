@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 
 pkgname=zulu-embedded-jdk8
-pkgver=1.8.0_232
+pkgver=1.8.0_242
 pkgrel=1
 pkgdesc='Zulu Embedded is a certified build of OpenJDK for Armv8/v7/v6 devices.'
 arch=('armv6h' 'armv7h' 'armv8h' 'aarch64' 'i686' 'x86_64')
@@ -16,12 +16,12 @@ depends=('java-runtime-common>=3' 'java-environment-common=3'
 
 case "$CARCH" in
     armv?h) _arch='aarch32hf'
-        _build=8.42.0.195
-        sha256sums=('b8ebbb103c012f018c7100ca19dc13f5e59d7418432d5fa05618e1a189c156ea')
+        _build=8.44.0.213
+        sha256sums=('ff5e716bff85439f83f70bd4c256faa9a9934dcedf957f9539899f805d609446')
         ;;
     aarch64) _arch='aarch64'
-        _build=8.42.0.195
-        sha256sums=('01a815dbdc28022aea574b414c1769c62ce9cadc1058857e19235e88e1c027d2')
+        _build=8.44.0.213
+        sha256sums=('7555f0001b5e56f25fd484c775d772711356a1a29ade068ea4bcd0fa16ac4938')
         ;;
     i686) _arch='i686'
         _build=8.44.0.11
