@@ -1,0 +1,17 @@
+pkgbase = kristforge-bin
+	pkgdesc = Kristforge is a cross-platform hardware accelerated GPU and CPU krist miner. Kristforge uses OpenCL and accelerated CPU instruction sets to maximize performance, making it the fastest krist miner in existence.
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/tmpim/kristforge
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = unzip
+	depends = gcc-libs
+	depends = opencl-driver
+	provides = kristforge
+	conflicts = kristforge
+	source = https://github.com/tmpim/kristforge/releases/download/v3.1.2/kristforge_linux.zip
+	md5sums = 14cefc4b10e45b03887be551c7a44fc6
+
+pkgname = kristforge-bin
+
