@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sherlock-git
-pkgver=20200109.639d781
+pkgver=0.10.6.r1003.45a8c5e
 pkgrel=1
 pkgdesc="Find usernames across social networks"
 arch=('any')
@@ -29,7 +29,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git log -1 --format='%cd.%h' --date=short | tr -d -
+  printf "%s.r%s.%s" "$(grep '__version__ = ' sherlock.py | cut -d '"' -f 2)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
