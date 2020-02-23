@@ -2,8 +2,8 @@
 # Contributor: Hugo Courtial <hugo [at] courtial [not colon] me>
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
-_openfx_arena_commit=9f85655
-_lodepng_commit=2febfe0
+_openfx_arena_commit=e6672bc
+_lodepng_commit=5a0dba1
 _openfx_commit=1645fd7
 _openfx_io_commit=587643d
 _openfx_supportext_commit=6f7cdfe
@@ -11,7 +11,7 @@ _SequenceParsing_commit=977e36f
 _tinydir_commit=3aae922
 
 pkgname=openfx-arena
-pkgver=2.3.15_rc15
+pkgver=2.3.15_rc16
 pkgrel=1
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
@@ -61,8 +61,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
   make CONFIG=release \
-       AUDIO=ON \
-       RICHTEXT=ON
+       AUDIO=ON
 }
 
 package() {
