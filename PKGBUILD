@@ -13,11 +13,12 @@ source=("https://github.com/dankamongmen/notcurses/archive/v${pkgver}.tar.gz")
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}/build"
+  cd "${pkgname}-${pkgver}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_PYTHON=OFF
 }
 
 build() {
   cd "${pkgname}-${pkgver}/build"
-  cmake .. -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
   make
 }
 
@@ -28,7 +29,7 @@ check() {
 
 package() {
   cd "${pkgname}-${pkgver}/build"
-  env PYROOT=/usr make install
+  make install DESTDIR="$pkgdir"
 }
 
-sha256sums=('27f89e61d39afb6b937e2fd9c097e9962b198844e9afe541ead348ff1499af5d')
+sha256sums=('4db50a20f3655ec88e3d4b665f0d0e98cfbbef14240fdd3dcb15624865c2c42d')
