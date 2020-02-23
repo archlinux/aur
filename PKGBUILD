@@ -13,7 +13,7 @@ url="https://github.com/garglk/garglk"
 license=('GPL')
 depends=('gtk2' 'sdl_mixer' 'sdl_sound' 'libvorbis' 'freetype2')
 #sdl_image ?
-makedepends=('ftjam' 'pkgconfig' 'desktop-file-utils')
+makedepends=('ftjam' 'pkgconfig' 'desktop-file-utils' 'git')
 provides=('gargoyle-git')
 conflicts=('gargoyle-mod' 'gargoyle')
 replaces=('gargoyle-mod' 'gargoyle')
