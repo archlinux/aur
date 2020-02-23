@@ -1,0 +1,3 @@
+post_install() {
+  echo "NOTE: To be able to download ÁNYK packages as normal user you have to add yourself to 'anyk' group"
+}

@@ -4,7 +4,7 @@
 pkgname=anyk
 pkgver=2.95.0
 subver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Form fill program of the hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
 arch=('any')
 url='https://www.nav.gov.hu/nav/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/abevjava_install.html'
@@ -16,12 +16,14 @@ source=("https://www.nav.gov.hu/data/cms511362/abevjava_install-${pkgver}-${subv
         'abevjava'
         'abevjavapath.cfg'
         'anyk.desktop'
-        'setenv')
+        'setenv'
+        'anyk.sysusers')
 md5sums=('b19ded78f1db9844a82d99548b1aadd5'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
          'f47ca1665690ac1a54786be1fb937d1a'
-         '2e0fae11fbaa20d376a1228ac0262209')
+         '2e0fae11fbaa20d376a1228ac0262209'
+         'b13f867247c573d73509520ffd02de56')
 
 package() {
     install -d -m 755 "${pkgdir}/usr/bin"
@@ -34,7 +36,24 @@ package() {
     install -m 644 "${srcdir}"/abevjavapath.cfg "${pkgdir}"/etc
 
     install -D "${srcdir}/${pkgname}".desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
-	install -Dm 644 "${srcdir}"/application/abevjava.png "${pkgdir}"/usr/share/pixmaps/abevjava.png
+	  install -Dm 644 "${srcdir}"/application/abevjava.png "${pkgdir}"/usr/share/pixmaps/abevjava.png
 
     cp -r "${srcdir}"/application/* "${pkgdir}"/usr/share/abevjava
+
+    # Create anyk group and set download folder writable for group members
+    install -Dm 644 "${srcdir}/anyk.sysusers" "${pkgdir}/usr/lib/sysusers.d/anyk.conf"
+    
+    chgrp -R 169 "${pkgdir}/usr/share/abevjava/abev"
+    chgrp -R 169 "${pkgdir}/usr/share/abevjava/eroforrasok"
+    chgrp -R 169 "${pkgdir}/usr/share/abevjava/nyomtatvanyok"
+    chgrp -R 169 "${pkgdir}/usr/share/abevjava/upgrade"
+    chgrp -R 169 "${pkgdir}/usr/share/abevjava/segitseg"
+
+    chmod -R g=u "${pkgdir}/usr/share/abevjava/abev"
+    chmod -R g=u "${pkgdir}/usr/share/abevjava/eroforrasok"
+    chmod -R g=u "${pkgdir}/usr/share/abevjava/nyomtatvanyok"
+    chmod -R g=u "${pkgdir}/usr/share/abevjava/upgrade"
+    chmod -R g=u "${pkgdir}/usr/share/abevjava/segitseg"
+    
+    install=anyk.install
 }
