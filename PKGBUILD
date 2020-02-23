@@ -29,7 +29,6 @@ provides=("blender-${_sufix}")
 conflicts=("blender-${_sufix}")
 #options=(!makeflags)
 license=('GPL')
-install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
 # the path in .gitmodules.
