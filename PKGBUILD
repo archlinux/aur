@@ -1,10 +1,10 @@
 # Maintainer: Yuhanun Citgez <y dot citgez at student dot utwente dot nl>
-# Maintainer: Hans Goor <me at eyedevelop dot org>
+# Co-maintainer: Hans Goor <me at eyedevelop dot org>
 
 pkgname=verona
-pkgver=5
+pkgver=6
 pkgrel=1
-commit_hash=3dc59189df88e576651fbae6d6b3f9cb9dd19a38
+commit_hash=c656f50eaca2de8a0d515d50f3cd71ba9d024df0
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
 arch=('x86_64')
 url='https://github.com/microsoft/verona'
