@@ -1,5 +1,6 @@
-# Maintainer: FabioLolix <fabio dot loli at disroot dot org>
-# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Maintainer:
+# Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: FabioLolix <fabio dot loli at disroot dot org>
 # Contributor: Conor Anderson <conor at conr dot ca>
 pkgname=lighttable-git
 pkgver=0.8.1.r114.g3760844
@@ -15,7 +16,7 @@ conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=("${pkgname%-git}::git+https://github.com/LightTable/LightTable.git"
         "${pkgname%-git}.desktop")
 sha256sums=('SKIP'
-            'e03434b57de5e29c8a64e2d3877339254e08899c4784e256d5eede939199cf70')
+            '0b86a091507d4f85e7c113807d8524a03e4ce70e763c70239e35974c3e2fb587')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"

@@ -20,7 +20,7 @@ pkgbase = lighttable-git
 	source = lighttable::git+https://github.com/LightTable/LightTable.git
 	source = lighttable.desktop
 	sha256sums = SKIP
-	sha256sums = e03434b57de5e29c8a64e2d3877339254e08899c4784e256d5eede939199cf70
+	sha256sums = 0b86a091507d4f85e7c113807d8524a03e4ce70e763c70239e35974c3e2fb587
 
 pkgname = lighttable-git
 

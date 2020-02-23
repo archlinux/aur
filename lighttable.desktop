@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=0.8.1
 Name=Light Table
-GenericName=Source Code Editor
+GenericName=The Next Generation Code Editor
 Exec=lighttable
 Terminal=false
 Icon=lighttable
