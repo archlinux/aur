@@ -22,7 +22,7 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.6pre36
+pkgver=18.6pre37
 _major=18.5
 pkgrel=2
 arch=('x86_64')
@@ -108,11 +108,12 @@ source=(
   029-PR17246.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17246.patch
   030-PR17276.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17276.patch
   031-PR17283.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17283.patch
-  032-PR17297.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17297.patch
-  033-PR17299.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17299.patch
-  034-PR17303.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17303.patch
-  035-PR17305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17305.patch
-  036-PR17356.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17356.patch
+  032-PR17295.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17295.patch
+  033-PR17297.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17297.patch
+  034-PR17299.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17299.patch
+  035-PR17303.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17303.patch
+  036-PR17305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17305.patch
+  037-PR17356.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17356.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -165,6 +166,7 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             '7212ebb7e4e0c3519e20cc22c0e48e67d545f0f1bd1d81da4259a880c07887ad'
             '2063547a76936be129bffe292a1fc915c9f53595ef4774004860c9c3cc7c89fe'
             '657045d9837e17f618d40707cb5127e50f25480430a62a11543976ce66cadbca'
+            '78e1391e41831fe416de370ebaff408dda78a1b3a9ef1864e05c9e136f390870'
             '345cc33bbb9a55368f3a051588887f7b64fecabe49d59c3bd9bcbca2cecd2630'
             '63bd10c32bb7d9017b129cd009dfb0743b7b692c7e9018dd8ea0de347143ee15'
             '3f85e64a2ff1c4b4dbb0ab82c7fbfd29e14b5e006af1f1e8ea5ebfe18b8d2b2b'

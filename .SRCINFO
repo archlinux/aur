@@ -1,5 +1,5 @@
 pkgbase = kodi-devel
-	pkgver = 18.6pre36
+	pkgver = 18.6pre37
 	pkgrel = 2
 	url = https://kodi.tv
 	arch = x86_64
@@ -101,11 +101,12 @@ pkgbase = kodi-devel
 	source = 029-PR17246.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17246.patch
 	source = 030-PR17276.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17276.patch
 	source = 031-PR17283.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17283.patch
-	source = 032-PR17297.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17297.patch
-	source = 033-PR17299.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17299.patch
-	source = 034-PR17303.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17303.patch
-	source = 035-PR17305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17305.patch
-	source = 036-PR17356.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17356.patch
+	source = 032-PR17295.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17295.patch
+	source = 033-PR17297.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17297.patch
+	source = 034-PR17299.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17299.patch
+	source = 035-PR17303.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17303.patch
+	source = 036-PR17305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17305.patch
+	source = 037-PR17356.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17356.patch
 	sha256sums = 108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29
 	sha256sums = 38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d
 	sha256sums = 071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a
@@ -147,6 +148,7 @@ pkgbase = kodi-devel
 	sha256sums = 7212ebb7e4e0c3519e20cc22c0e48e67d545f0f1bd1d81da4259a880c07887ad
 	sha256sums = 2063547a76936be129bffe292a1fc915c9f53595ef4774004860c9c3cc7c89fe
 	sha256sums = 657045d9837e17f618d40707cb5127e50f25480430a62a11543976ce66cadbca
+	sha256sums = 78e1391e41831fe416de370ebaff408dda78a1b3a9ef1864e05c9e136f390870
 	sha256sums = 345cc33bbb9a55368f3a051588887f7b64fecabe49d59c3bd9bcbca2cecd2630
 	sha256sums = 63bd10c32bb7d9017b129cd009dfb0743b7b692c7e9018dd8ea0de347143ee15
 	sha256sums = 3f85e64a2ff1c4b4dbb0ab82c7fbfd29e14b5e006af1f1e8ea5ebfe18b8d2b2b
@@ -170,7 +172,7 @@ pkgname = kodi-devel
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = shairplay: AirPlay support
 	optdepends = upower: Display battery level
-	provides = kodi=18.6pre36
+	provides = kodi=18.6pre37
 	conflicts = kodi
 
 pkgname = kodi-bin-devel
@@ -196,7 +198,7 @@ pkgname = kodi-bin-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.6pre36
+	provides = kodi-bin=18.6pre37
 	conflicts = kodi-bin
 
 pkgname = kodi-wayland-devel
@@ -222,7 +224,7 @@ pkgname = kodi-wayland-devel
 	depends = tinyxml
 	depends = waylandpp>=0.2.7-1
 	depends = kodi-devel
-	provides = kodi-bin=18.6pre36
+	provides = kodi-bin=18.6pre37
 	provides = kodi-wayland
 	conflicts = kodi-wayland
 
@@ -249,14 +251,14 @@ pkgname = kodi-gbm-devel
 	depends = taglib
 	depends = tinyxml
 	depends = kodi-devel
-	provides = kodi-bin=18.6pre36
+	provides = kodi-bin=18.6pre37
 	provides = kodi-gbm
 	conflicts = kodi-gbm
 
 pkgname = kodi-eventclients-devel
 	pkgdesc = Kodi Event Clients
 	optdepends = python2: most eventclients are implemented in python2
-	provides = kodi-eventclients=18.6pre36
+	provides = kodi-eventclients=18.6pre37
 	conflicts = kodi-eventclients
 
 pkgname = kodi-tools-texturepacker-devel
@@ -265,12 +267,12 @@ pkgname = kodi-tools-texturepacker-devel
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=18.6pre36
+	provides = kodi-tools-texturepacker=18.6pre37
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-dev-devel
 	pkgdesc = Kodi dev files
 	depends = kodi-devel
-	provides = kodi-dev=18.6pre36
+	provides = kodi-dev=18.6pre37
 	conflicts = kodi-dev
 
