@@ -1,10 +1,10 @@
-# Maintainer: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr 
+# Maintainer: Geoff Hudson <geoff [at] sadcomputer [dot] co [dot] uk> Contributor: Aaron Miller <aaronm [at] cldtk [dot] com> Contributor: Anthony Boccia <aboccia [at] boccia [dot] me> Contributor: Griffin Smith <wildgriffin [at] gmail [dot] com> Contributor: Bill Durr 
 # <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
 _pkgname=crashplan
-pkgver=7.4.0
-_pkgtimestamp=1525200006740
-_pkgbuild=566
+pkgver=7.7.0
+_pkgtimestamp=1525200006770
+_pkgbuild=833
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -14,13 +14,13 @@ depends=('bash' 'java-runtime-headless=8' 'alsa-lib' 'gconf' 'gtk3' 'libxss')
 makedepends=('cpio')
 conflicts=('crashplan')
 install=crashplan-pro.install
-source=(https://download.code42.com/installs/agent/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
+source=(https://download.code42.com/installs/agent/cloud/${pkgver}/${_pkgbuild}/install/CrashPlanSmb_${pkgver}_${_pkgtimestamp}_${_pkgbuild}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('c4b5103f924a914f38e37551439b0b3ca8241fe23a3c97a91fc250e9abd80c82'
+sha256sums=('f105feaa533661041194bd1eb154475e220d30db40cf4764a8662b55d14d14bf'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
             'fd4c80dbd2ea3dcfc9966832a599f1bb310f705f813474d1900c1867ea55155c')
-
+options=(debug !strip)
 build() {
   cd $srcdir/crashplan-install
 
