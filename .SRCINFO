@@ -1,0 +1,15 @@
+pkgbase = zmqpp-git
+	pkgdesc = ZMQPP's latest version
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/zeromq/zmqpp
+	arch = x86_64
+	makedepends = make
+	depends = libsodium
+	depends = zeromq
+	provides = libzmqpp
+	source = git+https://github.com/zeromq/zmqpp#commit=7f099a8dba534661c69db32e31e13f06f34ad6bc
+	md5sums = SKIP
+
+pkgname = zmqpp-git
+
