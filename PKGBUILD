@@ -1,6 +1,6 @@
 # Maintainer: Rasmus Lindroth <rasmus@lindroth.xyz>
 pkgname=i3keys
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc='Lists used and unused keys in your i3wm config'
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/RasmusLindroth/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("https://github.com/RasmusLindroth/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('3b9e3f760e6d5b3decafd59fbd89700a886ccbc52ac3dd6b1a31d5e16156ce04')
+sha256sums=('c35e60aa551050cfd6f7fda403bc66a3b1b88ecbe5b487e4a5c95d5e1c26f7eb')
 
 build() {
   cd $pkgname-$pkgver
