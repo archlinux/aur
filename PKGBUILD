@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 
 pkgname="mingw-w64-kdsoap"
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Qt-based client-side and server-side SOAP component (mingw-w64)"
 arch=('any')
@@ -10,23 +10,17 @@ license=('GPL3' 'LGPL' 'custom')
 url='https://github.com/KDAB/KDSoap'
 options=('!buildflags' 'staticlibs' '!strip')
 depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-cmake')
+makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 
 source=("https://github.com/KDAB/KDSoap/releases/download/kdsoap-${pkgver}/kdsoap-${pkgver}.tar.gz"{,.asc})
-sha256sums=('e73fbaf57f01a6d45f8f0530861a8f528bf0216633c2c70617cec4434237e742'
+sha256sums=('e3b9626d5cb08f41a709fa35031ce17bfdd075b7387baf14ecf8a9ca10994828'
   'SKIP')
 
 validpgpkeys=(E86C000370B1B9E2A9191AD53DBFB6882C9358FB) # KDAB Products (user for KDAB products) <info@kdab.com>
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-prepare() {
-  cd "${srcdir}/kdsoap-${pkgver}"
-  sed -i 's/add_subdirectory(examples)//g' CMakeLists.txt
-}
-
 build() { 
-  unset LDFLAGS
   cd "$srcdir/kdsoap-$pkgver/"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
