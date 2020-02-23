@@ -20,7 +20,7 @@ post_upgrade() {
     # there are some changes in 3.0.0, so print the post_install message again and move old config
     if [ "$(vercmp '3.0.0-1' "$2" )" = '1' ]; then
         post_install
-        test -f /etc/asus-fan-control/custom-temps && mv /etc/asus-fan-control/{custom-,}temps
+        test -f /etc/asus-fan-control/custom-temps && mv /etc/asus-fan-control/{custom-,}temps || true
     fi
 }
 
