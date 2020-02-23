@@ -1,23 +1,31 @@
-# Maintainer: portaloffreedom
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: portaloffreedom
 
 _cranname=gdtools
-_cranver=0.1.7
-pkgname=r-${_cranname}
-pkgver=${_cranver}
+_cranver=0.2.1
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Useful tools for writing vector graphics devices"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('r>=3.0.0' 'r-withr')
-provides=("r-cran-${_cranname}=0.1.7")
-conflicts=("r-cran-${_cranname}")
-replaces=("r-cran-${_cranname}")
-source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('ffad0248bf8b676ca7721239076492f0')
+pkgdesc="Utilities for Graphical Rendering"
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL3)
+depends=(r 'r-rcpp>=0.12.12' 'r-systemfonts>=0.1.1' cairo freetype2)
+makedepends=(gcc)
+optdepends=(r-htmltools r-testthat r-fontquiver r-curl)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('19c6a571012cb970a45dac33aa60568f')
+
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
+}
 
 package() {
-    mkdir -p ${pkgdir}/usr/lib/R/library
-    cd ${srcdir}
-    R CMD INSTALL ${_cranname} -l ${pkgdir}/usr/lib/R/library
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+
