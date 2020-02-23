@@ -20,7 +20,7 @@ post_upgrade() {
     # there are some changes in 3.0.0, so print the post_install message again and move old config
     if [ "$(vercmp '3.0.0-1' "$2" )" = '1' ]; then
         post_install
-        mv -f /etc/asus-fan-control/{custom-,}temps
+        test -f /etc/asus-fan-control/custom-temps && mv /etc/asus-fan-control/{custom-,}temps
     fi
 }
 
@@ -29,6 +29,6 @@ pre_remove(){
     systemctl disable asus-fan-control
     echo 'You mihgt want to reboot your system to restore the default fan speed'
     if [ -f /etc/asus-fan-control/custom-temps ]; then
-        echo "Run 'rm /etc/asus-fan-control/custom-temps' to remove your custom fan speed policy"
+        echo "Run 'rm /etc/asus-fan-control/temps' to remove your custom fan speed policy"
     fi
 }
