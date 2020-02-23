@@ -1,0 +1,21 @@
+pkgbase = qpiano-git
+	pkgdesc = MIDI file/player that teaches you how to play the piano
+	pkgver = r1109.09d8f71
+	pkgrel = 1
+	url = https://github.com/glixx/QPiano/
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = qt5-base
+	depends = alsa-lib
+	depends = ftgl
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	depends = ttf-dejavu
+	conflicts = qpiano
+	source = qpiano-git::git+https://github.com/glixx/QPiano.git
+	md5sums = SKIP
+
+pkgname = qpiano-git
+
