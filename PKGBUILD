@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=vctrs
-_cranver=0.2.2
+_cranver=0.2.3
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.2' 'r-ellipsis>=0.2.0' r-digest r-glue 'r-rlang>=0.4.2')
 makedepends=(gcc)
 optdepends=(r-bit64 r-covr r-crayon r-generics r-knitr r-pillar r-pkgdown r-rmarkdown r-testthat r-tibble r-xml2 r-zeallot)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('cc0e82d6af5756f7d22f5421420f5472')
+md5sums=('309921a667c8d675da85dedf9ae43cd7')
 
 build() {
   cd "${srcdir}"
