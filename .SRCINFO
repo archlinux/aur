@@ -1,12 +1,12 @@
 pkgbase = otf-hannari-mincho
-	pkgdesc = Japanese curvy and gentle style font.
+	pkgdesc = Japanese curvy and gentle style font (Mincho-style) based on IPA Font v3
 	pkgver = 1.12
 	pkgrel = 1
-	url = http://typingart.net/?p=44
+	url = https://typingart.net/?p=44
 	arch = any
 	license = custom:IPA Font License
 	depends = fontconfig
-	source = hannari.zip::https://github.com/luxcem/typingart-fonts/blob/master/hannari-mincho/hannari.zip?raw=true
+	source = https://typingart.net/fontdata/hannari.zip
 	sha256sums = f9f7cb9c2711e04b8ad492af5d3ae11b948f1de7bec7896470b1728602010a4e
 
 pkgname = otf-hannari-mincho
