@@ -1,8 +1,9 @@
+# Maintainer: René Wagner < rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-fetch'
-pkgver='0.11'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="Smart URI fetching/caching"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl-class-errorhandler' 'perl-uri' 'perl-libwww')
 makedepends=()
 url='https://metacpan.org/release/URI-Fetch'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/URI-Fetch-0.11.tar.gz')
-md5sums=('28f1ed3ffce1f01787ba82ce0f53a4be')
-sha512sums=('34adec1cbb698ec0901d37aee45ecfea72351e5af8d65e3bf94833731e53f1cf47cfd4d310baf0e8f1f84edfe671a155039af91e332446cea146dcc8a8c86eb9')
-_distdir="URI-Fetch-0.11"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/URI-Fetch-0.13.tar.gz')
+sha256sums=('0db061a05dc2b950d3468ddb2e8435ff0e891c1c2da618150a42835371ec8667')
+_distdir="URI-Fetch-0.13"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
