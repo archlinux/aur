@@ -17,15 +17,15 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golang/tools/archive/go
 sha256sums=('e762dfb20f356627cb0beac2b85846bd1c10d916eaf0b3b3a9f49ad09adf9cca')
 
 build() {
-  cd "${srcdir}/tools-${pkgname}-${pkgver}/${pkgname}"
+  cd "tools-${pkgname}-${pkgver}/${pkgname}"
 
-  GO111MODULE=on go build -o "$srcdir/$pkgname"
+  GO111MODULE=on go build -o "../../$pkgname" -trimpath
+  mv ../LICENSE ../../LICENSE
 }
 
 package() {
-  cd "${srcdir}"
   install -Dm755 "${pkgname}" -t "${pkgdir}"/usr/bin/
-  install -Dm644 "tools-${pkgname}-${pkgver}"/LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
+  install -Dm644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 
 # vim: ts=2 sw=2 et:
