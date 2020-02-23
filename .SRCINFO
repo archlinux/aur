@@ -1,0 +1,15 @@
+pkgbase = workstyle-git
+	pkgdesc = Dynamically renames sway/i3 workspaces to indicate which programs are running in each one
+	pkgver = 0.2.1.r29.g43b0b5b
+	pkgrel = 1
+	url = https://github.com/pierrechevalier83/workstyle
+	arch = x86_64
+	makedepends = git
+	makedepends = rust
+	provides = workstyle
+	conflicts = workstyle
+	source = workstyle::git+https://github.com/pierrechevalier83/workstyle
+	md5sums = SKIP
+
+pkgname = workstyle-git
+
