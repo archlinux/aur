@@ -18,7 +18,7 @@ pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
+depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 
@@ -41,7 +41,6 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
         'git+https://github.com/scorpion81/blender-fracture-helper.git'
-        blender-fracture_modifier.desktop
         SelectCudaComputeArch.patch
         gcc8.patch
         gcc9.patch
@@ -59,7 +58,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6d9a192dacd0061a17beba339772b7601c83e441576303f3dc5cccf71dc67dd3'
             '39ab45862044a838e49720c93ef5d246c3192e1438bf3ceca169e3ed0439ea18'
             '6093024b0a27f1fd144f5f8a25121939f74f41bcc164d8b8b58f33d3c364e456'
             'ec95ba11ef9f41ca3123b330f25ab767f7916531f39943b4f92f28f36e1e0725'
@@ -69,8 +67,7 @@ sha256sums=('SKIP'
             '5ff48d0e35025f21ee45274b56d1788b2e1768fa4d86b5032a40941057695176'
             'f4fea95b9d27fb5c30a13cd57ae22d8f3091d456719377e28572091793e941c2'
             '229853b98bb62e1dec835aea6b2eab4c3dabbc8be591206573a3c1b85f10be59'
-            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e'
-            )
+            'e959c2ae13baa35e9ee6d9ff8f30fea55a60ccd59a0b8d047df134aee4b5424e')
 
 pkgver() {
   cd "$srcdir/blender"
