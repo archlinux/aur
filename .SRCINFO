@@ -1,6 +1,6 @@
 pkgbase = ccnet-server
 	pkgdesc = Internal communication framework and user/group management for seafile server
-	pkgver = 7.0.5
+	pkgver = 7.1.1
 	pkgrel = 1
 	url = https://github.com/haiwen/ccnet-server
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = ccnet-server
 	depends = postgresql-libs
 	provides = ccnet
 	conflicts = ccnet
-	source = ccnet-server-v7.0.5-server.tar.gz::https://github.com/haiwen/ccnet-server/archive/v7.0.5-server.tar.gz
-	sha256sums = 1e5e222340859b959254fcb5cbcd9aedb90cdd79f5dbd6790b2f0c737abd4f5b
+	source = ccnet-server-v7.1.1-server.tar.gz::https://github.com/haiwen/ccnet-server/archive/v7.1.1-server.tar.gz
+	sha256sums = 5b4196b8049d3d7b5a0d37292241f55e5b362b6894bc1d2e346c2e054941d0da
 
 pkgname = ccnet-server
 
