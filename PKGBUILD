@@ -2,8 +2,8 @@
 pkgname=bootique-git
 _pkgname=bootique
 pkgver=r11.244d11f
-pkgrel=2
-pkgdesc="A templated theming system built in POSIX sh."
+pkgrel=3
+pkgdesc="A templated theming system built in POSIX sh"
 arch=("any")
 url="https://github.com/BanchouBoo/${_pkgname}"
 license=("MIT")
@@ -14,7 +14,7 @@ source=("git+https://github.com/BanchouBoo/bootique.git")
 md5sums=("SKIP")
 
 pkgver() {
-  cd $_pkgname
+  cd $srcdir/$_pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

@@ -1,11 +1,13 @@
 pkgbase = bootique-git
-	pkgdesc = A templated theming system built in POSIX sh.
+	pkgdesc = A templated theming system built in POSIX sh
 	pkgver = r11.244d11f
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/BanchouBoo/bootique
 	arch = any
 	license = MIT
 	makedepends = git
+	provides = bootique
+	conflicts = bootique
 	source = git+https://github.com/BanchouBoo/bootique.git
 	md5sums = SKIP
 
