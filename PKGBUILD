@@ -78,9 +78,9 @@ build() {
   # determine whether we can precompile CUDA kernels
   _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
   if [ "$_CUDA_PKG" != "" ] && ! ((DISABLE_CUDA)) ; then
-      _EXTRAOPTS=( -DWITH_CYCLES_CUDA_BINARIES=ON
-                   -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
-                   -DOPTIX_ROOT_DIR=/opt/optix )
+      _EXTRAOPTS+=( -DWITH_CYCLES_CUDA_BINARIES=ON
+                    -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda
+                    -DOPTIX_ROOT_DIR=/opt/optix )
       if [ -v _cuda_capability ]; then
         _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
       fi
