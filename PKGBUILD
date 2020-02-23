@@ -1,37 +1,24 @@
 # Maintainer: Joffrey <j-off@live.fr>
 
-pkgbase='python-django-simple-captcha'
-pkgname=('python-django-simple-captcha' 'python2-django-simple-captcha')
-pkgver='0.5.11'
-pkgrel=2
+pkgname='python-django-simple-captcha'
+pkgver=0.5.12
+pkgrel=1
 pkgdesc='Django application to add captcha images to any Django form'
 arch=('any')
 url='https://github.com/mbi/django-simple-captcha'
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7ca26a4f48e14e5f8be022c0dc099ef98980f3fc99f403ca565ab1f3addaee5b')
+depends=(
+    'python-django'
+    'python-six'
+    'python-pillow'
+    'python-django-ranged-response'
+)
+makedepends=('python-setuptools')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('89db73a3883573ad5e22c511948a5500491f9848363174d835a2364750c81a77')
 
-package_python-django-simple-captcha() {
-    depends=(
-        'python-django'
-        'python-six'
-        'python-pillow'
-        'python-django-ranged-response'
-    )
+package() {
     cd "$srcdir/django-simple-captcha-$pkgver"
     install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     python './setup.py' install --root="$pkgdir" --optimize=1
-}
-
-package_python2-django-simple-captcha() {
-    depends=(
-        'python2-django'
-        'python2-six'
-        'python2-pillow'
-        'python2-django-ranged-response'
-    )
-    cd "$srcdir/django-simple-captcha-$pkgver"
-    install -Dm644 './LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    python2 './setup.py' install --root="$pkgdir" --optimize=1
 }
