@@ -1,7 +1,7 @@
 pkgbase = otf-san-francisco
 	pkgdesc = The system font for macOS, iOS, watchOS, and tvOS
 	pkgver = 1.0
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://developer.apple.com/fonts/
 	arch = any
