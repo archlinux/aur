@@ -1,8 +1,8 @@
 # Maintainer: Frank Siegert <frank.siegert@googlemail.com>
 # Contributor: bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=openboard
-pkgver=1.5.3
-pkgrel=4
+pkgver=1.5.4
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -14,17 +14,13 @@ depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf fr
 source=("https://github.com/OpenBoard-org/OpenBoard/archive/v$pkgver.tar.gz"
         qchar.patch
         qwebkit.patch
-        https://github.com/OpenBoard-org/OpenBoard/pull/218.diff
-        https://github.com/OpenBoard-org/OpenBoard/pull/223.diff
         openboard.desktop)
 source+=(quazip.diff)
 source+=(poppler.patch)
 source+=(drop_ThirdParty_repo.patch)
-md5sums=('fe3644033dccfd16c80b683210e4ac57'
+md5sums=('6eb3a76c7ac58f3f45c879b2f305d4b6'
          'bf2c524f3897cfcfb4315bcd92d4206e'
          '60f64db6bf627015f4747879c4b30fd3'
-         'f484614cc48181287607afb5a45ef644'
-         '04c421c140e983d41975943ede5fe61a'
          '21d1749400802f8fc0669feaf77de683'
          '30a7928f696f958d5e8f06e02c49639f'
          '9a8f9ec3b244390b4c17a10494a94d29'
@@ -34,8 +30,6 @@ prepare() {
   cd $srcdir/OpenBoard-$pkgver
   patch -p1 < $srcdir/qchar.patch
   patch -p1 < $srcdir/qwebkit.patch
-  patch -p1 < $srcdir/218.diff
-  patch -p1 < $srcdir/223.diff
   patch -p1 < $srcdir/quazip.diff
   patch -p1 < $srcdir/poppler.patch
   patch -p1 < $srcdir/drop_ThirdParty_repo.patch
