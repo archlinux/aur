@@ -21,7 +21,7 @@ source=("https://www.nav.gov.hu/data/cms511362/abevjava_install-${pkgver}-${subv
 md5sums=('b19ded78f1db9844a82d99548b1aadd5'
          '14e676f715c1008dda83ffd7c3a127ec'
          '5dae655a84d5dd76401011f5629d8f0f'
-         'f47ca1665690ac1a54786be1fb937d1a'
+         '30433a6c8c23555fe2fc3442be342c27'
          '2e0fae11fbaa20d376a1228ac0262209'
          'b13f867247c573d73509520ffd02de56')
 
