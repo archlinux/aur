@@ -1,6 +1,6 @@
 pkgbase = python-jplephem
 	pkgdesc = Use a JPL ephemeris to predict planet positions
-	pkgver = 2.11
+	pkgver = 2.13
 	pkgrel = 1
 	url = https://github.com/brandon-rhodes/python-jplephem
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = python-jplephem
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/j/jplephem/jplephem-2.11.tar.gz
-	md5sums = 2a425f939f6e770020424b7798b0f574
+	source = https://files.pythonhosted.org/packages/source/j/jplephem/jplephem-2.13.tar.gz
+	md5sums = f760f7a5426f2980c065aeb896554986
 
 pkgname = python-jplephem
 	depends = python-numpy
