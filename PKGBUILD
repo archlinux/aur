@@ -3,18 +3,17 @@
 #
 # Contributor: Joeny Ang <ang(dot)joeny(at)gmail(dot)com>
 # Contributor: Valentin Huélamo <vhuelamo(at)gmail(dot)com>
-
+#
 pkgname="memaker"
 pkgver="1.5"
-pkgrel="9"
+pkgrel="10"
 pkgdesc="An application to create avatars from themed packages"
 arch=('i686' 'x86_64')
 url="http://memaker.org/"
 license=('GPL')
-depends=('python2-notify' 'python2-xdg' 'python2-numpy' 'gnome-python-desktop')
+depends=('python2-notify' 'python2-xdg' 'python2-rsvg' 'python2-numpy' 'gnome-python-desktop')
 optdepends=('python2-pillow: for better thumbnails'
             'python2-launchpadlib: Allow Memaker to use a launchpad account')
-provides=("${pkgname}")
 source=("http://launchpad.net/memaker/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.ui.diff")
@@ -54,4 +53,4 @@ package() {
     install -D -m644 ${startdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
 
-# vim:set ts=4 sw=2 ft=sh et:
+# vim: set ts=4 sw=4 et syn=sh ft=sh:
