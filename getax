@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd "$(dirname "$(dirname "$(realpath "$0")")")"
+
+exec /usr/bin/java \
+    -cp lib/dvbern-lib-update.jar:lib/cryptutil.jar \
+    ch.dvbern.lib.update.Launcher
