@@ -6,7 +6,7 @@ origname='PianoBooster'
 pkgname='pianobooster-git'
 pkgver=v0.7.2.r0.g9504171
 pkgrel=1
-makedepends=('cmake' 'alsa-lib' 'freetype2' 'ftgl' 'mesa' 'glu' 'qt5-base' 'qt5-tools' 'jack' 'fluidsynth' 'hicolor-icon-theme')
+makedepends=('cmake' 'qt5-tools')
 depends=('ttf-dejavu' 'unzip' 'hicolor-icon-theme' 'alsa-lib' 'freetype2' 'ftgl' 'mesa' 'glu' 'qt5-base' 'jack' 'libffado' 'fluidsynth' 'soundfont-fluid' 'libnotify' 'rtmidi')
 optdepends=('qt5-translations')
 conflicts=('pianobooster')
@@ -18,17 +18,16 @@ source=("git+https://github.com/captnfab/${_pkgname}")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build () {
     cd "${srcdir}/${_pkgname}"
-    cmake . \
-       -DUSE_SYSTEM_FONT=ON \
-       -DWITH_MAN=ON \
-       -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+    cmake -DUSE_SYSTEM_FONT=ON \
+          -DWITH_MAN=ON \
+          -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" .
     make
 }
 
