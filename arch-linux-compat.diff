@@ -1,18 +1,13 @@
-diff --git a/dep/libtorrent-rasterbar-1.2.2_extended/include/libtorrent/aux_/socket_type.hpp b/dep/libtorrent-rasterbar-1.2.2_extended/include/libtorrent/aux_/socket_type.hpp
-index 1342d39..7cbe90f 100644
---- a/dep/libtorrent-rasterbar-1.2.2_extended/include/libtorrent/aux_/socket_type.hpp
-+++ b/dep/libtorrent-rasterbar-1.2.2_extended/include/libtorrent/aux_/socket_type.hpp
-@@ -184,6 +184,10 @@ namespace aux {
- 		using receive_buffer_size = tcp::socket::receive_buffer_size;
- 		using send_buffer_size = tcp::socket::send_buffer_size;
- 
-+#if BOOST_VERSION >= 106600
-+		using executor_type = tcp::socket::executor_type;
-+#endif
-+
- 		explicit socket_type(io_service& ios): m_io_service(ios), m_type(0) {}
- 		~socket_type();
- 
+diff --git a/.gitignore b/.gitignore
+index 4a0174f..e1c7852 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -6,4 +6,4 @@
+ /cmake-build-debug-visual-studio/
+ /cmake-build-release/
+ /cmake-build-release-ccache/
+-/cmake-build-releasewithtests
++/cmake-build-release-with-tests/
 diff --git a/main.cpp b/main.cpp
 index f80f15c..6a9f0d5 100644
 --- a/main.cpp
@@ -48,124 +43,6 @@ index f80f15c..6a9f0d5 100644
      scn::P2PConnector p2p_connector(std::stoi(std::string(argv[4])), blockchain);
      scn::MinerLocal miner(std::stoi(std::string(argv[3])));
      scn::BlockchainManager manager(public_key, private_key_string.str(), blockchain, p2p_connector, miner);
-diff --git a/src/scn/Blockchain/Blockchain.h b/src/scn/Blockchain/Blockchain.h
-index 8232f6d..08865a2 100644
---- a/src/scn/Blockchain/Blockchain.h
-+++ b/src/scn/Blockchain/Blockchain.h
-@@ -28,7 +28,7 @@ namespace scn {
-     class Blockchain {
-     public:
- 
--        Blockchain(const std::string& folder_path);
-+        explicit Blockchain(const std::string& folder_path);
- 
-         virtual ~Blockchain();
- 
-diff --git a/src/scn/Blockchain/Cache.h b/src/scn/Blockchain/Cache.h
-index c431c89..3ab115f 100644
---- a/src/scn/Blockchain/Cache.h
-+++ b/src/scn/Blockchain/Cache.h
-@@ -28,7 +28,7 @@ namespace scn {
-     class Cache {
-     public:
- 
--        Cache(const std::string& folder_path);
-+        explicit Cache(const std::string& folder_path);
- 
-         virtual ~Cache();
- 
-diff --git a/src/scn/BlockchainManager/CycleStateCollect.h b/src/scn/BlockchainManager/CycleStateCollect.h
-index 86ba311..91e18f0 100644
---- a/src/scn/BlockchainManager/CycleStateCollect.h
-+++ b/src/scn/BlockchainManager/CycleStateCollect.h
-@@ -26,7 +26,7 @@ namespace scn {
- 
-     class CycleStateCollect : public ICycleState {
-     public:
--        CycleStateCollect(BlockchainManager& base);
-+        explicit CycleStateCollect(BlockchainManager& base);
- 
-         virtual ~CycleStateCollect();
- 
-@@ -36,7 +36,7 @@ namespace scn {
- 
-         virtual void onExit() override;
- 
--        virtual State getState() const { return State::Collect; }
-+        virtual State getState() const override { return State::Collect; }
- 
-     protected:
-         BlockchainManager& base_;
-diff --git a/src/scn/BlockchainManager/CycleStateFetchBlockchain.h b/src/scn/BlockchainManager/CycleStateFetchBlockchain.h
-index cc1334d..3caa85c 100644
---- a/src/scn/BlockchainManager/CycleStateFetchBlockchain.h
-+++ b/src/scn/BlockchainManager/CycleStateFetchBlockchain.h
-@@ -28,7 +28,7 @@ namespace scn {
- 
-     class CycleStateFetchBlockchain : public ICycleState {
-     public:
--        CycleStateFetchBlockchain(BlockchainManager& base);
-+        explicit CycleStateFetchBlockchain(BlockchainManager& base);
- 
-         virtual ~CycleStateFetchBlockchain();
- 
-@@ -42,7 +42,7 @@ namespace scn {
- 
-         virtual void blockReceivedCallback(IPeer& peer, const CollectionBlock &block, bool reply) override;
- 
--        virtual State getState() const { return State::FetchBlockchain; }
-+        virtual State getState() const override { return State::FetchBlockchain; }
- 
-         virtual bool isSynchronized() const;
- 
-diff --git a/src/scn/BlockchainManager/CycleStateIntroduceBaseline.h b/src/scn/BlockchainManager/CycleStateIntroduceBaseline.h
-index ebb609d..8d7e7ed 100644
---- a/src/scn/BlockchainManager/CycleStateIntroduceBaseline.h
-+++ b/src/scn/BlockchainManager/CycleStateIntroduceBaseline.h
-@@ -26,7 +26,7 @@ namespace scn {
- 
-     class CycleStateIntroduceBaseline : public ICycleState {
-     public:
--        CycleStateIntroduceBaseline(BlockchainManager& base);
-+        explicit CycleStateIntroduceBaseline(BlockchainManager& base);
- 
-         virtual ~CycleStateIntroduceBaseline();
- 
-@@ -36,7 +36,7 @@ namespace scn {
- 
-         virtual void onExit() override;
- 
--        virtual State getState() const { return State::IntroduceBaseline; }
-+        virtual State getState() const override { return State::IntroduceBaseline; }
- 
-     protected:
-         BlockchainManager& base_;
-diff --git a/src/scn/BlockchainManager/CycleStateIntroduceBlock.h b/src/scn/BlockchainManager/CycleStateIntroduceBlock.h
-index 324bd1f..a9c0022 100644
---- a/src/scn/BlockchainManager/CycleStateIntroduceBlock.h
-+++ b/src/scn/BlockchainManager/CycleStateIntroduceBlock.h
-@@ -41,7 +41,7 @@ namespace scn {
- 
-         virtual void blockReceivedCallback(IPeer& peer, const CollectionBlock &block, bool reply) override;
- 
--        virtual State getState() const { return State::IntroduceBlock; }
-+        virtual State getState() const override { return State::IntroduceBlock; }
- 
-         static const blockchain_time_t time_between_propagations_ms_ = 4000;
- 
-diff --git a/src/scn/BlockchainManager/PeersMonitor.h b/src/scn/BlockchainManager/PeersMonitor.h
-index 60f7a5d..f4b3023 100644
---- a/src/scn/BlockchainManager/PeersMonitor.h
-+++ b/src/scn/BlockchainManager/PeersMonitor.h
-@@ -29,7 +29,7 @@ namespace scn {
- 
-     class PeersMonitor {
-     public:
--        PeersMonitor(ISynchronizedTimer& sync_timer);
-+        explicit PeersMonitor(ISynchronizedTimer& sync_timer);
- 
-         virtual ~PeersMonitor();
- 
 diff --git a/src/scn/Common/Common.cpp b/src/scn/Common/Common.cpp
 index 1d55842..7683299 100644
 --- a/src/scn/Common/Common.cpp
@@ -197,10 +74,10 @@ index 1d55842..7683299 100644
  }
 \ No newline at end of file
 diff --git a/src/scn/Common/Common.h b/src/scn/Common/Common.h
-index 12b4883..bb55b43 100644
+index e19acc0..ee511ad 100644
 --- a/src/scn/Common/Common.h
 +++ b/src/scn/Common/Common.h
-@@ -55,6 +55,12 @@ namespace scn {
+@@ -64,6 +64,12 @@ namespace scn {
          hash_t fromArray(const uint8_t* array);
  
      }
@@ -213,37 +90,8 @@ index 12b4883..bb55b43 100644
  }
  
  
-diff --git a/src/scn/Common/PublicKeyPEM.h b/src/scn/Common/PublicKeyPEM.h
-index 5d9275e..17802a0 100644
---- a/src/scn/Common/PublicKeyPEM.h
-+++ b/src/scn/Common/PublicKeyPEM.h
-@@ -24,9 +24,9 @@ namespace scn {
- 
-     class PublicKeyPEM {
-     public:
--        PublicKeyPEM(const std::ifstream &public_key_file_stream);
-+        explicit PublicKeyPEM(const std::ifstream &public_key_file_stream);
- 
--        PublicKeyPEM(const std::string &public_key_string);
-+        explicit PublicKeyPEM(const std::string &public_key_string);
- 
-         PublicKeyPEM();
- 
-diff --git a/src/scn/Miner/MinerLocal.h b/src/scn/Miner/MinerLocal.h
-index 6ff72d0..71a6a7c 100644
---- a/src/scn/Miner/MinerLocal.h
-+++ b/src/scn/Miner/MinerLocal.h
-@@ -27,7 +27,7 @@ namespace scn {
- 
-     class MinerLocal : public IMiner {
-     public:
--        MinerLocal(uint32_t num_worker_threads);
-+        explicit MinerLocal(uint32_t num_worker_threads);
-         virtual ~MinerLocal();
- 
-         virtual void start(const hash_t& previous_epoch_highest_hash,
 diff --git a/src/scn/P2PConnector/P2PConnector.cpp b/src/scn/P2PConnector/P2PConnector.cpp
-index 88c4009..0b6b1e4 100644
+index 041ee5e..735b852 100644
 --- a/src/scn/P2PConnector/P2PConnector.cpp
 +++ b/src/scn/P2PConnector/P2PConnector.cpp
 @@ -52,7 +52,7 @@ P2PConnector::P2PConnector(uint16_t port, const Blockchain& blockchain)
@@ -264,21 +112,8 @@ index 88c4009..0b6b1e4 100644
          if (ec) {
              LOG(ERROR) << "error reading torrent file: " << ec.message();
              return;
-diff --git a/src/scn/SynchronizedTime/SynchronizedTimer.h b/src/scn/SynchronizedTime/SynchronizedTimer.h
-index 1628c64..318d083 100644
---- a/src/scn/SynchronizedTime/SynchronizedTimer.h
-+++ b/src/scn/SynchronizedTime/SynchronizedTimer.h
-@@ -26,7 +26,7 @@ namespace scn {
-         SynchronizedTimer();
-         virtual ~SynchronizedTimer();
- 
--        virtual blockchain_time_t now() const;
-+        virtual blockchain_time_t now() const override;
-     };
- 
- }
 diff --git a/test/TestP2PConnector.cpp b/test/TestP2PConnector.cpp
-index 86504aa..33b21c8 100644
+index 090715f..2c92282 100644
 --- a/test/TestP2PConnector.cpp
 +++ b/test/TestP2PConnector.cpp
 @@ -25,7 +25,7 @@ using namespace scn;

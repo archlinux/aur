@@ -2,7 +2,7 @@
 
 pkgname=swabiancoin
 _pkgname_source=SwabianCoin
-pkgver=20.02.01
+pkgver=20.02.02
 pkgrel=1
 pkgdesc="SwabianCoin (SCN) is yet another cryptocurrency"
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('boost' 'openssl' 'curl' 'gflags')
 makedepends=('cmake' 'gtest')
 source=(https://github.com/SwabianCoin/SwabianCoin/archive/v$pkgver.tar.gz
 	arch-linux-compat.diff)
-sha256sums=('e01b7e100d847105da7fbef664a9d978ed279cc4a8d7855a8e818513b8ce5cbb'
-            '90eaf6dfeba402f35e67f02a2c3fc3b4747994de748a07fc0598de1216b470b4')
+sha256sums=('34d6837b1b8379dcf8a23dacdb0580c2681974e6ab42eb50a3b4ebe4a8e648f8'
+            'f09b58c15426cc76ae26e5f88c01ff4b32ac2e7e1247dd06328f0b1c60e88167')
 
 prepare() {
   cd $_pkgname_source-$pkgver
