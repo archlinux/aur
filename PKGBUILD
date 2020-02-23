@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=7.0.5
+pkgver=7.1.1
 pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -21,16 +21,12 @@ conflicts=('seafile')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     'fix_seafile-controller_paths.diff'
-    'fix_seafile-admin.diff'
-    'fix_mysql_support.diff'
     'seafile-server@.service'
 )
 sha256sums=(
-    '360cb9c95e4e1005a24d2b433825b6d02b6aab9bb60c26146a68f5dd65b4e6f9'
+    '6f8ea0204c322b3f1675e73f2e639d1167e880bc53596e9fe5fbb6c501de6bee'
     '8069df2e84e5142a030c4598e410eeece1aaed2fdce3b8abe82b4752d257ffb9'
-    '51a7f13b8c3dfcb3f510c68c9791bf6ace1a0b332ba26fdf55c850409bf387fa'
-    '4596350a73025b63ad8189488bff896c09a4b1e2855e25ee5bbc111d25b7cfe7'
-    'da31d1b61031cbacc42e1ab708c67c83dba933ff391b07677dabab7ab79729f4'
+    '19ed8a238b9cff5a8ad363fa6eda884a49da283aa913270dd667d1b9a19d8056'
 )
 
 prepare() {
@@ -39,13 +35,14 @@ prepare() {
     rm -rf "./scripts/"{build,upgrade/win32,*.bat,*.md} "./integration-tests"
 
     # Apply patchs
+    patch -p1 -i "$srcdir/fix_seafile-controller_paths.diff"
     sed -i "s|(DESTDIR)@prefix@|@prefix@|" "./lib/libseafile.pc.in"
-    for diff in "$srcdir"/*.diff; do patch -p1 -i "$diff"; done
 
-    # Fix python path
-    shebang='#!/usr/bin/env python'; pyenv='PYTHON=python[.0-9]+'
-    grep -s -l -r    "$shebang" | xargs sed -i -E "1 s|$shebang|${shebang}2|"
-    grep -s -l -r -E "$pyenv"   | xargs sed -i -E "s|$pyenv|PYTHON=python2|g"
+    # Fix paths to Gunicorn
+    sed \
+        -e 's|gunicorn_exe=.*|gunicorn_exe=/usr/bin/gunicorn|g' \
+        -e 's|thirdpart/bin/gunicorn|$gunicorn_exe|g' \
+        -i ./scripts/seahub.sh
 }
 
 build() {
@@ -55,7 +52,8 @@ build() {
         --enable-fuse \
         --enable-python \
         --prefix=/usr \
-        PYTHON='/usr/bin/python2'
+        --with-mysql=/usr/bin/mysql_config
+        PYTHON='/usr/bin/python'
     make
 }
 
@@ -64,13 +62,13 @@ package() {
     make DESTDIR="$pkgdir" install
 
     # Prepare directories layout for deploying
-    mkdir -p "$pkgdir/usr/share/$pkgname/runtime"
-    cp -r -p "./scripts" "$pkgdir/usr/share/$pkgname/scripts"
+    # These makes setup-seafile*.sh happy, whether we use them or not
+    install -dm755 "$pkgdir/usr/share/$pkgname/"{runtime,seafile/docs}
+    cp -p ./doc/*.doc "$pkgdir/usr/share/$pkgname/seafile/docs"
 
-    mv "$pkgdir/usr/share/$pkgname/scripts/seahub.conf" \
-       "$pkgdir/usr/share/$pkgname/runtime/"
-    mv "$pkgdir/usr/share/$pkgname/scripts/upgrade" \
-       "$pkgdir/usr/share/$pkgname/"
+    # The scripts needs this bin directory.
+    ln -s /usr/bin/ "$pkgdir/usr/share/$pkgname/seafile/bin"
+    cp -r -p "./scripts"/* "$pkgdir/usr/share/$pkgname/"
 
     install -Dm644 \
         "$srcdir/seafile-server@.service" \

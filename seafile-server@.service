@@ -1,14 +1,16 @@
 [Unit]
-Description=Next-generation open source cloud storage with advanced features on privacy protection and teamwork.
+Description=Next-generation open source cloud storage.
 After=syslog.target network.target
 
 [Service]
 Type=forking
-WorkingDirectory=/srv/seafile/%i
-ExecStart=/usr/bin/seafile-admin start
-ExecStop=/usr/bin/seafile-admin stop
-PIDFile=/srv/seafile/%i/seafile-data/pids/seaf-server.pid
 User=seafile
+WorkingDirectory=/srv/seafile/%i/seafile-server
+
+ExecStartPre=/srv/seafile/%i/seafile-server/seafile.sh start
+ExecStart=/srv/seafile/%i/seafile-server/seahub.sh start
+ExecStop=/srv/seafile/%i/seafile-server/seahub.sh stop
+ExecStop=/srv/seafile/%i/seafile-server/seafile.sh stop
 
 [Install]
 WantedBy=multi-user.target
