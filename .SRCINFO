@@ -1,22 +1,16 @@
 pkgbase = python-django-constance
 	pkgdesc = Dynamic Django settings
-	pkgver = 2.4.0
-	pkgrel = 2
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/jazzband/django-constance
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-django-constance-2.4.0.tar.gz::https://github.com/jazzband/django-constance/archive/2.4.0.tar.gz
-	sha256sums = 29e81a2b97a660aa08212029ae664da054cb9c83763ce35b2c959b0b0414202b
-
-pkgname = python2-django-constance
-	depends = python2-django
-	optdepends = python2-django-picklefield: Database support
-	optdepends = python2-redis: Redis support
-
-pkgname = python-django-constance
 	depends = python-django
 	optdepends = python-django-picklefield: Database support
 	optdepends = python-redis: Redis support
+	source = python-django-constance-2.6.0.tar.gz::https://github.com/jazzband/django-constance/archive/2.6.0.tar.gz
+	sha256sums = c68091e74475cbfb2d67adeebe8cc028b04cf37588c4993c0972df63b8b507dd
+
+pkgname = python-django-constance
 
