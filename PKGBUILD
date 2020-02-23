@@ -3,7 +3,7 @@
 # Contributor: Andreas Schönfelder <passtschu at freenet dot de>
 
 pkgname=phoronix-test-suite-milestone
-pkgver=9.0.0m3
+pkgver=9.4.0m2
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux, milestone version"
 arch=(any)
@@ -21,8 +21,16 @@ optdepends=('php-gd'
             'openmpi: required for universe-cli test suite')
 provides=(phoronix-test-suite)
 conflicts=(phoronix-test-suite)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz")
-sha256sums=('ce04f51bed1b0e28b1246e69325cebeef2c3224c9d49593e7f03cef081da89b3')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/phoronix-test-suite/phoronix-test-suite/archive/v${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/phoronix-test-suite-launcher.patch")
+sha256sums=('54d12af9c6ec425140ecc9547bce8f3d0f656b0992c8ef878db2cc36c809afcf'
+            '577326343d0303a59fd469c3f9c9740e756dd59c0660c54363b62d6fd1cee26d')
+options=(!strip)
+
+prepare() {
+  cd "${srcdir}/phoronix-test-suite-${pkgver}"
+  patch phoronix-test-suite -i "${srcdir}/phoronix-test-suite-launcher.patch"
+}
 
 package() {
   cd "${srcdir}/phoronix-test-suite-${pkgver}"
@@ -43,5 +51,5 @@ package() {
   install -D "${srcdir}/phoronix-test-suite-${pkgver}"/pts-core/external-test-dependencies/xml/generic-packages.xml \
              "${pkgdir}"/usr/share/phoronix-test-suite/pts-core/external-test-dependencies/xml/generic-packages.xml
 
-  sed -e "s/^export PTS_DIR=.*/export PTS_DIR=\/usr\/share\/phoronix-test-suite/g" -i ${pkgdir}/usr/bin/phoronix-test-suite
+  ln -s /usr/bin/phoronix-test-suite "$pkgdir/usr/bin/pts"
 }
