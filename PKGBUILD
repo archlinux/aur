@@ -12,7 +12,7 @@ _sufix=${_branch}
 _fragment="#branch=${_branch}"
 
 pkgname=blender-${_sufix}-git
-pkgver=2.79b.r2169.g233ad61cb8d
+pkgver=2.79b.r70678.g233ad61cb8d
 _blenver=${pkgver:0:4}
 pkgrel=1
 pkgdesc="Development version of Blenders ${_branch} branch"
@@ -70,7 +70,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/blender"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%sb.r%s.g%s" "$(grep -Po "BLENDER_VERSION *\K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
