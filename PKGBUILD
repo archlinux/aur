@@ -1,4 +1,4 @@
-# Maintainer: ptrr <piksarv .at. gmail.com>
+# Contributor: ptrr <piksarv .at. gmail.com>
 # Contributor: lobisquit <enricolovisotto@gmail.com>
 # Contributor: chmgtr1 <chmgtr1@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -10,12 +10,12 @@
 
 pkgname="python-scipy-openblas"
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SciPy is open-source software for mathematics, science, and engineering."
 arch=('i686' 'x86_64')
 url="http://www.scipy.org/"
 license=('BSD')
-makedepends=('gcc-fortran' 'python-numpy-openblas' 'python-setuptools' 'openblas-lapack')
+makedepends=('gcc-fortran' 'python-numpy-openblas' 'python-setuptools' 'openblas-lapack' 'pybind11')
 checkdepends=('python-pytest')
 source=("https://github.com/scipy/scipy/releases/download/v${pkgver}/scipy-${pkgver}.tar.gz")
 sha512sums=('79407a2cbb4ba29c0941570181df4d7835e5791e50a3abef9b63c2fc5b15308a2e4964eb71cdebbee8cd2dcb8e497cf92fe50ee21fb12cac3013ea5e0466b25d')
