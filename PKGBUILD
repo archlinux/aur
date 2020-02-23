@@ -1,7 +1,7 @@
 # Maintainer: Philipp Uhl <philipp.uhl@rwth-aachen.de>
 
 pkgname=deadd-notification-center
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Customizable notification-daemon with notification center"
 url="https://github.com/phuhl/linux_notification_center"
@@ -9,6 +9,7 @@ license=("BSD")
 arch=('x86_64')
 depends=('gobject-introspection-runtime' 'gtk3')
 makedepends=('stack' 'cairo' 'pango' 'gobject-introspection')
+conflicts=('deadd-notification-center-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/phuhl/linux_notification_center/archive/${pkgver}.tar.gz")
 prepare() {
     tar -zxvf "${pkgname}-${pkgver}.tar.gz"
@@ -23,4 +24,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-md5sums=('0efdf98e114a38bb4421632116c55f9a')
+md5sums=('eafe3edc55ac68e098dc61d58c6f7351')
