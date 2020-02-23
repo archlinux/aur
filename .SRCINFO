@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-dev
 	pkgdesc = Official Telegram Desktop client - development release
-	pkgver = 1.9.14
+	pkgver = 1.9.16
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = telegram-desktop-dev
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
-	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.9.14
+	source = tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=v1.9.16
 	source = Catch::git+https://github.com/philsquared/Catch
 	source = GSL::git+https://github.com/Microsoft/GSL.git
 	source = QR::git+https://github.com/nayuki/QR-Code-generator
