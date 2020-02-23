@@ -1,7 +1,7 @@
 _npmname=resume-cli
-_npmver=1.1.2
+_npmver=1.2.7
 pkgname=nodejs-resume-cli
-pkgver=${_npmver}
+pkgver="${_npmver}"
 pkgrel=1
 pkgdesc="The command line tool for JSON Resume"
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=(${_npmname}-${_npmver}.tgz)
-sha256sums=('88e4dda20f63ef3e84ec14f85c5760c371ac281ea09d9e64afdcdf4d76f21728')
+sha256sums=('a84f2739ca1d2ee5d9ca113ae9a9a7ee9d90808f9bffbade8e72c12eb2552958')
 
 package() {
     cd ${srcdir}
