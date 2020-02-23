@@ -1,8 +1,8 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=pagraphcontrol-git
-pkgver=1.0.9.r1.g5cb776f
-pkgrel=3
+pkgver=1.0.10.r0.g42c4c40
+pkgrel=1
 pkgdesc="PulseAudio Graph Control"
 arch=('x86_64')
 url='https://github.com/futpib/pagraphcontrol'
