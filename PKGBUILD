@@ -1,14 +1,16 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
-# shellcheck disable=SC2034
+# shellcheck disable=SC2034,SC2154,SC2164,SC2191
 
-#to enforce cuda verison uncomment this line and update value of sm_xx model accordingly
+# To force cuda compute arch uncomment this line and update value of sm_xx model accordingly
 #_cuda_capability+=(sm_30 sm_35 sm_37)
 #_cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75)
-((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # suppress 3.x to prevent Travis build exceed time limit.
+((TRAVIS)) && _cuda_capability+=(sm_50 sm_52 sm_60 sm_61 sm_70 sm_75) # Travis memory limit is not enough to build for arch 3.x.
 
+# Configuration.
 _branch="fracture_modifier"
 _sufix=${_branch}
 _fragment="#branch=${_branch}"
+
 pkgname=blender-${_sufix}-git
 pkgver=2.79b.r2169.g233ad61cb8d
 _blenver=${pkgver:0:4}
@@ -79,19 +81,20 @@ prepare() {
   cd "$srcdir/blender"
   # update the submodules
   git submodule update --init --recursive --remote
-  if [ -z "$_cuda_capability" ] && grep -q nvidia <(lsmod); then 
-    git apply -v ${srcdir}/SelectCudaComputeArch.patch
+  if [[ ! -v _cuda_capability ]] && grep -q nvidia <(lsmod); then
+    git apply -v "${srcdir}/SelectCudaComputeArch.patch"
   fi
-  git apply -v ${srcdir}/gcc8.patch
-  git apply -v ${srcdir}/ffmpeg.patch
-  git apply -v ${srcdir}/openvdb.patch
-  git apply -v ${srcdir}/collada1668.patch
-  git apply -v ${srcdir}/gcc9.patch
-  git apply -v ${srcdir}/oiio-2.0.patch
-  git apply -v ${srcdir}/Cleanup-use-PyImport_GetModuleDict.patch
-  git apply -v ${srcdir}/python3.8.patch
-  sed -i "s/@@_sufix@@/${_sufix}/g" ${srcdir}/addon_path.patch
-  git apply -v ${srcdir}/addon_path.patch
+  git apply -v "${srcdir}/gcc8.patch"
+  git apply -v "${srcdir}/ffmpeg.patch"
+  git apply -v "${srcdir}/openvdb.patch"
+  git apply -v "${srcdir}/collada1668.patch"
+  git apply -v "${srcdir}/gcc9.patch"
+  git apply -v "${srcdir}/oiio-2.0.patch"
+  git apply -v "${srcdir}/Cleanup-use-PyImport_GetModuleDict.patch"
+  git apply -v "${srcdir}/python3.8.patch"
+  if [[ -v _sufix ]]; then
+    git apply -v <(sed "s/@@_sufix@@/${_sufix}/g" "${srcdir}/addon_path.patch")
+  fi
 }
 
 build() {
@@ -102,18 +105,17 @@ build() {
   msg "python version detected: ${_pyver}"
 
   # determine whether we can precompile CUDA kernels
-  _CUDA_PKG=`pacman -Qq cuda 2>/dev/null` || true
-  if [ "$_CUDA_PKG" != "" ]; then
-      _EXTRAOPTS=(-DWITH_CYCLES_CUDA_BINARIES=ON \
-                  -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda)
-      if [ -v _cuda_capability ]; then
-        _EXTRAOPTS+=(-DCYCLES_CUDA_BINARIES_ARCH=$(IFS=';'; echo "${_cuda_capability[*]}";))
-      fi
+  if pacman -Qq cuda 2>&- ; then
+    _EXTRAOPTS=( -DWITH_CYCLES_CUDA_BINARIES=ON \
+                 -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
+    if [[ -v _cuda_capability ]]; then
+      _EXTRAOPTS+=( -DCYCLES_CUDA_BINARIES_ARCH="$(IFS=';'; echo "${_cuda_capability[*]}";)" )
+    fi
   fi
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
   cmake -G "$generator" "$srcdir/blender" \
-        -C${srcdir}/blender/build_files/cmake/config/blender_release.cmake \
+        -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_INSTALL_PORTABLE=OFF \
         -DWITH_PLAYER=OFF \
@@ -123,7 +125,7 @@ build() {
         -DWITH_SYSTEM_GLEW=ON \
         -DWITH_CODEC_FFMPEG=ON \
         -DWITH_PYTHON_INSTALL=OFF \
-        -DPYTHON_VERSION=${_pyver} \
+        -DPYTHON_VERSION="${_pyver}" \
         -DWITH_MOD_OCEANSIM=ON \
         -DWITH_CYCLES_OPENSUBDIV=ON \
         -DWITH_CYCLES_OSL=ON \
@@ -133,46 +135,49 @@ build() {
         -DWITH_OPENVDB=ON \
         -DWITH_OPENVDB_BLOSC=ON \
         -DWITH_OPENCOLLADA=ON \
-        ${_EXTRAOPTS[@]}
+        "${_EXTRAOPTS[@]}"
   export NINJA_STATUS="[%p | %f<%r<%u | %cbps ] "
-  ((DISABLE_NINJA)) && make || ninja $([₋-v₋MAKEFLAGS₋]₋||₋echo₋-j1) -d stats
+# shellcheck disable=SC2086 # allow MAKEFLAGS to split when multiple flags provided.
+  if ((DISABLE_NINJA)); then make; else ninja ${MAKEFLAGS:--j1}; fi
 }
 
 package() {
   cd "$srcdir/blender-build"
-  ((DISABLE_NINJA)) && make install DESTDIR="$pkgdir" || DESTDIR="$pkgdir" ninja install
+  export DESTDIR="$pkgdir"
+  if ((DISABLE_NINJA)); then make install; else ninja install; fi
 
-  msg "install fracture-helper addon"  
-  install ${srcdir}/blender-fracture-helper/*.py ${pkgdir}/usr/share/blender/${_blenver}_${_sufix}/scripts/addons/
+  msg "install fracture-helper addon"
+  install -Dm644 "${srcdir}"/blender-fracture-helper/*.py "${pkgdir}/usr/share/blender/${_blenver}_${_sufix}/scripts/addons/"
 
-  msg "add -${_sufix} sufix to desktop shortcut"
-  sed -i "s/=blender/=blender-${_sufix}/g" ${pkgdir}/usr/share/applications/blender.desktop
-  sed -i "s/=Blender/=Blender-${_sufix}/g" ${pkgdir}/usr/share/applications/blender.desktop
-  mv ${pkgdir}/usr/share/applications/blender.desktop ${pkgdir}/usr/share/applications/blender-${_sufix}.desktop
+  if [[ -v _sufix ]]; then
+    msg "add -${_sufix} sufix to desktop shortcut"
+    sed -i "s/=blender/=blender-${_sufix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
+    sed -i "s/=Blender/=Blender-${_sufix}/g" "${pkgdir}/usr/share/applications/blender.desktop"
+    mv "${pkgdir}/usr/share/applications/blender.desktop" "${pkgdir}/usr/share/applications/blender-${_sufix}.desktop"
 
-  msg "add -${_sufix} sufix to binaries"
-  mv ${pkgdir}/usr/bin/blender ${pkgdir}/usr/bin/blender-${_sufix}
-  mv ${pkgdir}/usr/bin/blender-thumbnailer.py ${pkgdir}/usr/bin/blender-${_sufix}-thumbnailer.py
-#  mv ${pkgdir}/usr/bin/blenderplayer ${pkgdir}/usr/bin/blenderplayer-${_sufix}
+    msg "add -${_sufix} sufix to binaries"
+    mv "${pkgdir}/usr/bin/blender" "${pkgdir}/usr/bin/blender-${_sufix}"
+    mv "${pkgdir}/usr/bin/blender-thumbnailer.py" "${pkgdir}/usr/bin/blender-${_sufix}-thumbnailer.py"
 
-  msg "mv doc/blender to doc/blender-${_sufix}"
-  mv ${pkgdir}/usr/share/doc/blender ${pkgdir}/usr/share/doc/blender-${_sufix}
+    msg "mv doc/blender to doc/blender-${_sufix}"
+    mv "${pkgdir}/usr/share/doc/blender" "${pkgdir}/usr/share/doc/blender-${_sufix}"
 
-  msg "add -${pkgver%%.r*} sufix to man page"
-  mv ${pkgdir}/usr/share/man/man1/blender.1 ${pkgdir}/usr/share/man/man1/blender-${_sufix}
+    msg "add -${_sufix} sufix to man page"
+    mv "${pkgdir}/usr/share/man/man1/blender.1" "${pkgdir}/usr/share/man/man1/blender-${_sufix}.1"
 
-  msg "add -${_sufix} sufix to all icons"  
-  for icon in `find ${pkgdir}/usr/share/icons -type f`
-  do
-    # ${filename##/*.} extra extenssion from path
-    # ${filename%.*} extract filename form path
-    # look at bash "manipulatin string" 
-    mv $icon ${icon%.*}-${_sufix}.${icon##/*.}
-  done
+    msg "add -${_sufix} sufix to all icons"
+    while read -r icon
+    do
+      # ${filename##/*.} extra extenssion from path
+      # ${filename%.*} extract filename form path
+      # look at bash "manipulatin string"
+      mv "$icon" "${icon%.*}-${_sufix}.${icon##/*.}"
+    done < <(find "${pkgdir}/usr/share/icons" -type f)
+  fi
 
-  if [ -e "$pkgdir"/usr/share/blender/*/scripts/addons/cycles/lib/ ] ; then
+  if [[ -e "$pkgdir/usr/share/blender/${_blenver}${_sufix:+_$_sufix}/scripts/addons/cycles/lib/" ]] ; then
     # make sure the cuda kernels are not stripped
-    chmod 444 "$pkgdir"/usr/share/blender/*/scripts/addons/cycles/lib/*
+    chmod 444 "$pkgdir"/usr/share/blender/${_blenver}${_sufix:+_$_sufix}/scripts/addons/cycles/lib/*
   fi
 }
 # vim:set sw=2 ts=2 et:
