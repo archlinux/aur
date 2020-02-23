@@ -8,6 +8,7 @@ arch=(any)
 url="https://metacpan.org/release/Modern-Perl"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
+makedepends=('make')
 options=(!emptydirs)
 source=("http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz")
 sha256sums=('da1c83cee84fab9edb9e31d7f7abac43e1337b2e66015191ec4b6da59298c480')

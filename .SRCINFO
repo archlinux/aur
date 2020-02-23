@@ -6,7 +6,7 @@ pkgbase = perl-modern-perl
 	arch = any
 	license = GPL
 	license = PerlArtistic
-	makedepends = perl-module-build
+	makedepends = make
 	depends = perl>=5.10.0
 	options = !emptydirs
 	source = http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-1.20200211.tar.gz
