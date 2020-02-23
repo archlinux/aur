@@ -7,9 +7,8 @@ pkgbase = kristforge-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
-	makedepends = opencl-headers
 	depends = gcc-libs
-	depends = opencl-driver
+	optdepends = opencl-driver
 	provides = kristforge
 	conflicts = kristforge
 	source = kristforge::git+https://github.com/tmpim/kristforge.git#branch=master
