@@ -2,7 +2,7 @@
 
 pkgname=i3-gnome
 pkgver=3.34.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Use i3 with GNOME Session integration."
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 	'gnome-flashback'
 )
 source=($pkgname-$pkgver.zip::https://github.com/i3-gnome/i3-gnome/archive/$pkgver.zip)
-md5sums=('a61c70344bd28d0ecccb90871872ec2f')
+sha256sums=('8962380e4961fbcd54f65b1979910e796a4266af9e38789e80a4c1dde3f8f569')
 
 build() {
   cd "$pkgname-$pkgver"
