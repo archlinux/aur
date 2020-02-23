@@ -2,7 +2,7 @@
 
 pkgname=deadd-notification-center-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Customizable notification-daemon with notification center"
 url="https://github.com/phuhl/linux_notification_center"
 license=("BSD")
@@ -19,7 +19,9 @@ build() {
 
 package() {
     cd "linux_notification_center-${pkgver}"
+    make service
     make DESTDIR="$pkgdir" install
 }
+
 
 md5sums=('eafe3edc55ac68e098dc61d58c6f7351')
