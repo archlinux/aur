@@ -2,11 +2,31 @@ post_install() {
 	cat <<EOF
 **** NOTICE ****
 *
-* To use the geoipupdate package,
-* you need to add configuration data to /etc/geoipupdate/GeoIP.conf.
-*
+* To use the geoipupdate package, you need to add configuration data to /etc/GeoIP.conf.
 * Please See <http://dev.maxmind.com/geoip/geoipupdate/>
 *
+* To use the program, you must specify the following in the configuration file: AccountID, LicenseKey, EditionIDs.
+*
+* If you do not have these you will need a MaxMind registration: on December 30th, 2019, MaxMind started 
+* requiring free accounts to access the free Geolite2 databases, in order to comply with various privacy regulations.
+* Please see <https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/>
+
+* Start by registering for a free GeoLite2 account, and signing in:
+* <https://www.maxmind.com/en/geolite2/signup>
+
+* After successful registration and login navigate the to the License Keys page under your account, and create 
+* a new license key for the version of geoipupdate that was installed.
+*
+* Once you have generated a key, download the config pre-filled configuration file. This file should be saved at /etc/GeoIP.conf,
+* rather, just copy the three required variables mentioned above into your existing configuration file.
+*
+* Then you can run it first to download the databases for the first time.
+*
+* $ sudo geoipupdate --config-file /etc/GeoIP.conf
+
+* The GeoLite2 Country, City, and ASN databases are updated weekly, every Tuesday.
+* (This information may be outdated. This information may be outdated. If the exact time of the update is important, please take a look.)
+* 
 * To schedule automatic updates, start and enable
 *
 * geoipupdate.timer
@@ -14,9 +34,7 @@ post_install() {
 * $ sudo systemctl start geoipupdate.timer
 * $ sudo systemctl enable geoipupdate.timer
 *
-* by default, this will run geoipupdate weekly, and one minute
-* after every reboot.
-* 
+* by default, this will run geoipupdate weekly, and one minute after every reboot.
 *
 EOF
 }

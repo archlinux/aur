@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/geoipupdate
+ExecStart=/usr/bin/geoipupdate --config-file /etc/GeoIP.conf
 
 [Install]
 WantedBy=multi-user.target
