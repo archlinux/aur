@@ -2,12 +2,13 @@
 # Contributor: Jiaxi Hu < sftrytry at gmail dot com >
 
 _pkgname=OpenBLAS
-_lapackver=3.8.0
+_lapackver=3.9.0
+_blasver=3.8.0
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 BUILDFLAG="USE_OPENMP=1 USE_THREAD=1 MAJOR_VERSION=3 NO_LAPACK=0 BUILD_LAPACK_DEPRECATED=1 CROSS=1 HOSTCC=gcc"
 
 pkgname=mingw-w64-openblas-lapack
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="An optimized BLAS library based on GotoBLAS2 1.13 BSD, providing optimized blas, lapack, and cblas (mingw-w64)"
 arch=('any')
@@ -17,8 +18,8 @@ depends=('mingw-w64-crt')
 makedepends=('perl'
              'mingw-w64-gcc')
 provides=('mingw-w64-openblas'
-          "mingw-w64-blas=$_lapackver"
-          "mingw-w64-cblas=$_lapackver"
+          "mingw-w64-blas=$_blasver"
+          "mingw-w64-cblas=$_blasver"
           "mingw-w64-lapack=$_lapackver"
           "mingw-w64-lapacke=$_lapackver")
 conflicts=('mingw-w64-openblas'
@@ -28,7 +29,7 @@ conflicts=('mingw-w64-openblas'
            'mingw-w64-lapacke')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/xianyi/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('bde136122cef3dd6efe2de1c6f65c10955bbb0cc01a520c2342f5287c28f9379')
+sha256sums=('8f86ade36f0dbed9ac90eb62575137388359d97d8f93093b38abe166ad7ef3a8')
 
 prepare() {
   cd ${srcdir}
