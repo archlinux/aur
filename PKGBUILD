@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seahub
-pkgver=7.0.5
+pkgver=7.1.1
 pkgrel=1
 pkgdesc='The web frontend for seafile server'
 arch=('any')
@@ -12,64 +12,70 @@ url='https://github.com/haiwen/seahub'
 license=('Apache')
 depends=(
     "seafile-server>=$pkgver"
-    'python2-dateutil'
-    'python2-memcached'
-    'python2-chardet'
-    'python2-six'
-    'python2-pillow'
-    'python2-django'
-    'python2-django-compressor'
-    'python2-django-post-office'
-    'python2-django-statici18n'
-    'python2-django-rest-framework'
-    'python2-django-constance'
-    'python2-openpyxl'
-    'python2-pytz'
-    'python2-django-formtools'
-    'python2-qrcode'
-    'python2-requests'
-    'python2-requests-oauthlib'
-    'python2-django-simple-captcha'
-    'python2-flup'
-    'python2-gunicorn'
-    'python2-django-webpack-loader'
-    'python2-cas'
-    'python2-django-picklefield'
-    'python2-futures'
-    'python2-social-auth-core'
-    'xmlsec'  # dep missing for python2-dm.xmlsec.binding
+    'python-future'
+    'python-django-statici18n'
+    'python-django-post-office'
+    'python-django-webpack-loader'
+    'gunicorn'
+    'python-pymysql'
+    'python-django-picklefield'
+    'python-openpyxl'
+    'python-qrcode'
+    'python-django-formtools'
+    'python-django-simple-captcha'
+    'python-django-rest-framework'
+    'python-dateutil'
+    'python-requests'
+    'python-pillow'
+    'python-pyjwt'
+    'python-pycryptodome'
+    'python-django-ranged-response'
 )
 optdepends=(
-    'mysql-python: MySQL support'
-    'python2-wsgidav-seafile: Webdav support'
-    'python2-django-pylibmc: Memcached support'
+    'python-wsgidav-seafile: Webdav support'
+    'python-django-pylibmc: Memcached support'
     'ffmpeg: For video thumbnails'
 )
-source=("$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz")
-sha256sums=('950f15d7156f67d592969b02fc691e1c00dc393002f393c3fe6eef9fe831b034')
+source=(
+    "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
+    'https://www.djangoproject.com/m/releases/1.11/Django-1.11.25.tar.gz'
+)
+sha256sums=(
+    '31dbcfa3ff176925f3de69d9b920fa8407150587be97b3fc568d52042dc44e23'
+    '5314e8586285d532b7aa5c6d763b0248d9a977a37efec86d30f0212b82e8ef66'
+)
 options=('!strip')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver-server"
+
     # Remove useless files and directories
     rm -rf \
-        './'{CONTRIBUTORS,HACKING,Makefile} \
-        './'{*test*,*dev*,*sh*,README*,pylintrc*,LICENSE*} \
+        ./{CONTRIBUTORS,HACKING,Makefile} \
+        ./{*test*,*dev*,*sh*,README*,pylintrc*,LICENSE*} \
         "$(find . -name \*.pyc)"
 
-    shebang='#!/usr/bin/env python'
-    grep -s -l -r "$shebang" | xargs sed -i "1 s|$shebang|${shebang}2|"
+    sed -i -E "/SEAFILE_VERSION/s/[0-9.]+/$pkgver/" ./seahub/settings.py
 }
 
 build() {
     cd "$srcdir/$pkgname-$pkgver-server"
+
     for locale in ./locale/*/LC_MESSAGES/*.po; do
+        echo "$locale"
         msgfmt -vo "${locale%.po}.mo" "$locale"
     done
 }
 
 package() {
     cd "$srcdir/seahub-$pkgver-server/"
+
     install -dm755 "$pkgdir/usr/share/seafile-server/seahub"
     cp -r -p "./"* "$pkgdir/usr/share/seafile-server/seahub/"
+
+    cd "$srcdir/Django-1.11.25"
+    python setup.py install \
+        --root="$pkgdir" --optimize=1 \
+        --install-lib "usr/share/seafile-server/$pkgname/thirdpart"
+    rm -rf "$pkgdir/usr/bin/"
 }
