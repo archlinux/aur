@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Soundnode
+GenericName=Soundcloud client
+Comment=Soundnode is the Soundcloud client for desktop.
+Exec=soundnode
+Icon=soundnode.png
+Terminal=false
+Type=Application
+Categories=AudioVideo;Player
+Name[it_IT]=soundnode.desktop
