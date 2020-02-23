@@ -29,7 +29,6 @@ package() {
     install -d -m 755 "${pkgdir}/etc"
 
     unzip -oq "$srcdir/usr/share/abevjava/abevjava_install-$pkgver-${subver}.jar" -d "$srcdir"
-    install -m 655 "${srcdir}"/abevjava_* "${pkgdir}"/usr/share/abevjava
     install -m 655 "${srcdir}"/setenv "${pkgdir}"/usr/share/abevjava
     install -m 655 "${srcdir}"/abevjava "${pkgdir}"/usr/bin
     install -m 644 "${srcdir}"/abevjavapath.cfg "${pkgdir}"/etc
