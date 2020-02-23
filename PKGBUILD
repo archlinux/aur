@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=arch-upgrade
-pkgver=1.18
+pkgver=1.19
 pkgrel=1
 pkgdesc="Desktop app to upgrade your Arch Linux system"
 url="https://github.com/bulletmark/$pkgname"
@@ -11,7 +11,7 @@ optdepends=("zenity" "wmctrl")
 backup=("etc/$pkgname.conf")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 install=install.sh
-md5sums=('bf5a63724e20113685810f7a0eec9ee7')
+md5sums=('8f9fecdbc59c48fddbe625ff0486b2d9')
 
 package() {
   cd "$pkgname-$pkgver"
