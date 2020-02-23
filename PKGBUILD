@@ -1,14 +1,14 @@
 # Maintainer: Alisson Lauffer <alissonvitortc@gmail.com>
 pkgname=bluemail-bin
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="BlueMail is a free, secure, universal email app, capable of managing an unlimited number of mail accounts"
 arch=('x86_64')
 url="https://www.bluemail.me"
 license=('custom')
 provides=('bluemail')
 
-depends=()
+depends=('libglvnd')
 optdepends=('libnotify: Desktop notifications')
 makedepends=('squashfs-tools' 'imagemagick')
 
@@ -42,5 +42,7 @@ package() {
     rm -rf "${pkgdir}/opt/bluemail/meta"
     rm -rf "${pkgdir}/opt/bluemail/usr"
     rm -rf "${pkgdir}/opt/bluemail/var"
-    rm -f "${pkgdir}/opt/bluemail/*.sh"
+    rm -f ${pkgdir}/opt/bluemail/*.sh
+    rm -f ${pkgdir}/opt/bluemail/libEGL.so
+    rm -f ${pkgdir}/opt/bluemail/libGLESv2.so
 }
