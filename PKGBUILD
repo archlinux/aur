@@ -2,7 +2,7 @@
 # Maintainer: Maxim Mikityanskiy <maxtram95@gmail.com>
 
 pkgname=mindforger
-pkgver=1.50.0
+pkgver=1.51.0
 pkgrel=1
 pkgdesc="Thinking notebook and Markdown IDE. Search, browse, view and edit your Markdown files. Get as much as possible from knowledge in your remarks"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
