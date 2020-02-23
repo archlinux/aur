@@ -2,17 +2,13 @@ pkgbase = python-django-pylibmc
 	pkgdesc = Memcached cache backend for Django using pylibmc
 	pkgver = 0.6.1
 	pkgrel = 2
-	url = https://github.com/django-pylibmc/django-pylibmc/
+	url = https://github.com/django-pylibmc/django-pylibmc
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = django-pylibmc-0.6.1.tar.gz::https://github.com/django-pylibmc/django-pylibmc//archive/v0.6.1.tar.gz
+	depends = python-pylibmc
+	source = python-django-pylibmc-0.6.1.tar.gz::https://github.com/django-pylibmc/django-pylibmc/archive/v0.6.1.tar.gz
 	sha256sums = e0c37aaad086e8e9ec987ea35a75107b0375d924c24136e5f56995a916c54b1a
 
 pkgname = python-django-pylibmc
-	depends = python-pylibmc>=1.4.1
-
-pkgname = python2-django-pylibmc
-	depends = python2-pylibmc>=1.4.1
 
