@@ -1,8 +1,8 @@
 # Maintainer: Alvin Rhaman <ararouge at protonmail dot ch>
 
 pkgname="bootique-git"
-pkgver="r11.244d11f"
-pkgrel=6
+pkgver="r14.0896231"
+pkgrel=1
 pkgdesc="A templated theming system built in POSIX sh"
 arch=("any")
 url="https://github.com/BanchouBoo/bootique"
