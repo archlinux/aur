@@ -1,22 +1,22 @@
-# Maintainer: yuhr <sdn.pate(at)gmail.com>
+# Maintainer: luxcem <a@luxcem.fr>
+# Contributor: yuhr <sdn.pate(at)gmail.com>
 
 pkgname=otf-hannari-mincho
 pkgver=1.12
 pkgrel=1
 pkgdesc="Japanese curvy and gentle style font."
 url="http://typingart.net/?p=44"
-license=('custom')
-arch=('any')
-depends=('fontconfig' 'xorg-font-utils')
-install=$pkgname.install
-source=(hannari.zip::https://github.com/qothr/cabinet/blob/master/hannari.zip?raw=true)
-md5sums=('77b42a9edf5c43e3968f1d6ac87bfea7')
+license=("custom")
+arch=("any")
+depends=("fontconfig")
+# Official source is typingart.net but does not support download without
+# the official Referer header. Fall back to github
+source=("hannari.zip::https://github.com/luxcem/typingart-fonts/blob/master/hannari-mincho/hannari.zip?raw=true")
+sha256sums=("f9f7cb9c2711e04b8ad492af5d3ae11b948f1de7bec7896470b1728602010a4e")
 
 package() {
-  cd ${srcdir}
-  install -dm755 "${pkgdir}"/usr/share/fonts/OTF
+  install -d "${pkgdir}"/usr/share/fonts/OTF
   install -m644 Hannari.otf "${pkgdir}"/usr/share/fonts/OTF/
-
   install -d "${pkgdir}/usr/share/licenses/${pkgname}/"
-  install -Dm644 IPA_Font_License_Agreement_v1.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm644 IPA_Font_License_Agreement_v1.0.txt "${pkgdir}/usr/share/licenses/${pkgname}/"LICENCE
 }
