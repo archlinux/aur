@@ -1,3 +1,5 @@
+# Maintainer: Tony Benoy <me@tonybenoy.com>
+
 _pkgname=starlette
 pkgname=python-starlette
 pkgver=0.13.2
