@@ -6,7 +6,7 @@ pkgver=1.12
 pkgrel=1
 pkgdesc="Japanese curvy and gentle style font."
 url="http://typingart.net/?p=44"
-license=("custom")
+license=("custom:IPA Font License")
 arch=("any")
 depends=("fontconfig")
 # Official source is typingart.net but does not support download without

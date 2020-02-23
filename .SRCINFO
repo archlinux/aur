@@ -4,7 +4,7 @@ pkgbase = otf-hannari-mincho
 	pkgrel = 1
 	url = http://typingart.net/?p=44
 	arch = any
-	license = custom
+	license = custom:IPA Font License
 	depends = fontconfig
 	source = hannari.zip::https://github.com/luxcem/typingart-fonts/blob/master/hannari-mincho/hannari.zip?raw=true
 	sha256sums = f9f7cb9c2711e04b8ad492af5d3ae11b948f1de7bec7896470b1728602010a4e
