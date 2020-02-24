@@ -2,7 +2,7 @@
 # Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-rrf
-pkgver=2.4.6
+pkgver=2.4.7
 pkgrel=1
 pkgdesc='OpenVPN with my "Recursive Routing Fix" patch installed.'
 arch=('x86_64')
@@ -13,9 +13,10 @@ optdepends=('easy-rsa: easy CA and certificate handling'
 makedepends=('systemd' 'patch')
 provides=('openvpn')
 license=('custom')
+conflicts=('openvpn')
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
 source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz"{,.asc} "recursive-routing-fix.patch")
-sha256sums=('738dbd37fcf8eb9382c53628db22258c41ba9550165519d9200e8bebaef4cbe2'
+sha256sums=('73dce542ed3d6f0553674f49025dfbdff18348eb8a25e6215135d686b165423c'
             'SKIP'
             '1570ac6306de32958e7e3c6a69517a4b1fc80135201534890a66e75e780e4dd5')
 
@@ -41,7 +42,7 @@ build() {
 check() {
   cd "${srcdir}"/openvpn-${pkgver}
 
-  make check
+  make
 }
 
 package() {
