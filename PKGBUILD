@@ -7,7 +7,9 @@
 
 pkgname=telegram-desktop-userfonts
 pkgver=1.9.14
-pkgrel=2
+pkgrel=3
+conflicts=('telegram-desktop')
+provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
