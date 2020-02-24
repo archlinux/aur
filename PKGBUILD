@@ -3,8 +3,8 @@
 # Maintainer: m4dz <code@m4dz.net>
 _gitname=Projecteur
 pkgname=projecteur
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="Linux Desktop Application for the Logitech Spotlight device."
 arch=('x86_64')
 url="https://github.com/jahnf/Projecteur"
@@ -16,7 +16,7 @@ provides=('projecteur')
 conflicts=('projecteur-git')
 source=("https://github.com/jahnf/Projecteur/archive/v$pkgver.tar.gz"
         "projecteur.install")
-sha256sums=('4600f1911a3b313a091d96eb13abdf07754bbbfbcec1a598691f9722ee5f3bb9'
+sha256sums=('e2582b908c54f3b0f1f66247dd7f24174a40f5764385662b7b70acdeccd03ebc'
             'a8d406a61d84834358aba36718547be20eb6ee1d055c4ffdb28fe9f56d22aaaf')
 
 prepare() {
