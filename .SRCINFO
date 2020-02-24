@@ -1,6 +1,6 @@
 pkgbase = retroshare-git
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
-	pkgver = v0.6.5.r403.ga51259beb
+	pkgver = v0.6.5.r1060.gbe4d812df
 	pkgrel = 1
 	url = http://retroshare.cc/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = retroshare-git
 	depends = libupnp
 	depends = libxss
 	depends = libmicrohttpd
-	depends = sqlcipher
 	depends = xapian-core
+	depends = sqlcipher
 	optdepends = tor: tor hidden node support
 	optdepends = i2p: i2p hidden node support
 	provides = retroshare
