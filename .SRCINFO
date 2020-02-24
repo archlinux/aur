@@ -1,6 +1,6 @@
 pkgbase = sddm-git
 	pkgdesc = The Simple Desktop Display Manager
-	pkgver = 0.18.1.0.gde41b8e
+	pkgver = 0.18.1.1.g5342323
 	pkgrel = 1
 	url = https://github.com/sddm/sddm
 	arch = x86_64
@@ -16,7 +16,10 @@ pkgbase = sddm-git
 	provides = display-manager
 	conflicts = sddm
 	backup = usr/share/sddm/scripts/Xsetup
+	backup = usr/share/sddm/scripts/Xstop
 	backup = etc/pam.d/sddm
+	backup = etc/pam.d/sddm-autologin
+	backup = etc/pam.d/sddm-greeter
 	source = git://github.com/sddm/sddm.git#branch=master
 	source = sddm.sysusers
 	source = sddm.tmpfiles
