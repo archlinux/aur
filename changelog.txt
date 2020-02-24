@@ -1,0 +1,44 @@
+2019-07-12 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:2.1.alpha2.r156.ga1f759bc-1
+	Removed patch for Qt >= 5.13 again, as it has been merged upstream.
+
+2019-07-10 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:2.1.alpha2.r143.g39960af9-1
+	Switched from building 'master' branch to 'develop'.
+	Change URL scheme of VCS sources to HTTPS and renamed checkout and source
+	directories to 'carla' (new source checkout required).
+	Applied patch for Qt >= 5.13 compability.
+
+2019-06-29 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:2.0.0.r4.g946f9592-1
+	Removed Qt4 support.
+
+2018-03-31 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.9.8.r54.gebd3f2e5-1 :
+	Removed 'clxclient' from optdepends.
+	Removed DEFAULT_QT5 make flag (Qt5 is now the default).
+
+2017-11-24 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.9.7b.r283.g7068200a-1 :
+	Removed experimental plugins.
+	Removed their dependencies.
+
+2017-07-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.9.7b.r2.gc57e8169-2 :
+	Added missing 'clthreads' dependency.
+
+2017-07-20 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 1:1.9.7b.r2.gc57e8169-1 :
+	New PKBUILD maintainer.
+	Added 'changelog.txt' file.
+	Set epoch to 1, since version number now has a 'b' prefix.
+	Fixed missing Qt5 plugin bridge.
+	Removed obsolete 'carla.install' file.
+	Updated / cleaned / fixed dependencies.
