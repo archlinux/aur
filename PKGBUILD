@@ -2,8 +2,8 @@
 #                         (What a silly email.).
 
 pkgname="stretchy-snek-boi"
-pkgver=1.0.1
-pkgrel=1
+pkgver=1.0.2
+pkgrel=2
 pkgdesc="A snake game clone."
 arch=("x86_64")
 license=('WTFPL 2.0')
