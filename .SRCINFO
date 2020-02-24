@@ -1,6 +1,6 @@
 pkgbase = projecteur-git
 	pkgdesc = Linux Desktop Application for the Logitech Spotlight device.
-	pkgver = 0.7.r230.e2b2403
+	pkgver = 0.8.r238.53be1ca
 	pkgrel = 1
 	url = https://github.com/jahnf/Projecteur
 	install = projecteur.install
