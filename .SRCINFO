@@ -22,6 +22,7 @@ pkgbase = gnome-shell-dev
 	depends = upower
 	depends = gnome-session
 	depends = gnome-settings-daemon
+	depends = sysprof-dev
 	depends = gnome-themes-extra
 	depends = gsettings-desktop-schemas
 	depends = libcanberra-pulse
