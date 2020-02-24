@@ -4,38 +4,34 @@
 _name=gzdoom
 pkgname=${_name}
 pkgver=4.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Doom source port with OpenGL support'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
 depends=('alsa-lib'
+         'fluidsynth>=2'
+         'gtk3'
          'hicolor-icon-theme'
          'libgl'
          'libjpeg'
+         'libsndfile'
+         'mpg123'
+         'openal'
          'sdl2')
-makedepends=('cmake'
-             'desktop-file-utils'
-             'fluidsynth>=2'
-             'git'
-             'gtk3')
+makedepends=('cmake' 'desktop-file-utils' 'git')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
             'chexquest3-wad: Chex Quest 3 game data'
             'doom1-wad: Doom shareware game data'
-            'fluidsynth>=2: FluidSynth MIDI device'
             'freedm: FreeDM game data'
             'freedoom1: Freedoom: Phase 1 game data'
             'freedoom2: Freedoom: Phase 2 game data'
-            'gtk3: IWAD selection dialog'
             'gxmessage: crash dialog (GNOME)'
             'hacx-wad: HacX game data'
             'harmony-wad: Harmony game data'
             'heretic1-wad: Heretic shareware game data'
             'hexen1-wad: Hexen demo game data'
             'kdialog: crash dialog (KDE)'
-            'libsndfile: WAV/FLAC/OGG audio support'
-            'mpg123: MP3 audio support'
-            'openal: in-game sound'
             'soundfont-fluid: FluidR3 soundfont for FluidSynth'
             'strife0-wad: Strife shareware game data'
             'square1-wad: The Adventures of Square, Episode 1 game data'
@@ -60,14 +56,17 @@ prepare() {
 build() {
     cd $_name
 
-    local _cflags="-ffile-prefix-map=\"$PWD\"=. \
-                   -DSHARE_DIR=\\\"/usr/share/$_name\\\" \
-                   -DFLUIDSYNTHLIB2=\\\"libfluidsynth.so.2\\\""
+    local _cflags="-ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/$_name\\\""
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_C_FLAGS="${CFLAGS} ${_cflags}" \
           -DCMAKE_CXX_FLAGS="${CXXFLAGS} ${_cflags}" \
           -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -Wl,-z,noexecstack" \
           -DCMAKE_INSTALL_PREFIX=/usr \
+          -DDYN_FLUIDSYNTH=OFF \
+          -DDYN_GTK=OFF \
+          -DDYN_MPG123=OFF \
+          -DDYN_OPENAL=OFF \
+          -DDYN_SNDFILE=OFF \
           -DINSTALL_PATH=bin \
           -DINSTALL_PK3_PATH=share/$_name \
           .
