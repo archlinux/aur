@@ -5,15 +5,15 @@
 
 pkgbase=kata-containers-bin
 pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image kata-linux-container kata-containers-static)
-pkgver="1.10.0"
+pkgver="1.10.1"
 _pkgver=${pkgver/\~/-}
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_default_suffix="-4.1"  # f30 package build revision
+_default_suffix="-5.1"  # f30 package build revision
 _kata_kernel_ver="4.19.86.60"
 _bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
 
@@ -27,9 +27,9 @@ source=(
   #"https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-shim-bin-${pkgver}${_default_suffix}.${CARCH}.rpm"
 )
 sha256sums=(
-  'aa3cf95adc7bb476085d2cf47cb4ec1875fc59a477b8c47741244498985f60f3'
+  'ade88ae5a50365c3f677b99ec79c816291bc1bef676070d1125b10d81f92cf49'
   #'0f49409c3d92ec61a7af737622b1e6cde2e3cb76133bf54fafe8335d8342af45'
-  '811e333bf837cc8d67977705c1a5968b0f7b58760cf8756ecbf63cdc776e3095'
+  '76c1cf70739fa3ee7a0558bb78f43c7d2b49408ede33ecf2b7fd486738634d83'
   #'d9fa74e78c62cc078c31a551feab22861e8c30da5e6b58d3ad81db1e03f73dc4'
   #'ea0061c4c48d058597345c3c98bc0219204cb8544774885f8f13f2040d0c00dc'
   #'a17ff2f49436f6a89099d94ac7086a37bceeb46ea80cf440ca5a9bfa1b44aa5e'
