@@ -13,7 +13,7 @@ url='https://github.com/kliment/Printrun'
 license=('GPL')
 provides=('printrun-git')
 conflicts=('printrun-git')
-depends=('python-pyserial' 'python-wxpython' 'python-pyglet' 'python-numpy')
+depends=('python-pyserial' 'python-wxpython' 'python-pyglet' 'python-numpy' 'python-appdirs')
 optdepends=(
   'python-cairo: to use Projector feature'
   'python-cairosvg: to use Projector feature'

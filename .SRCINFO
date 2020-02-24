@@ -12,6 +12,7 @@ pkgbase = printrun
 	depends = python-wxpython
 	depends = python-pyglet
 	depends = python-numpy
+	depends = python-appdirs
 	optdepends = python-cairo: to use Projector feature
 	optdepends = python-cairosvg: to use Projector feature
 	optdepends = python-dbus: to inhibit sleep when printing
