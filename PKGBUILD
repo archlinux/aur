@@ -4,12 +4,11 @@
 pkgname=otf-bravura
 pkgver=1.320
 _tag=6aa3a101b9d08e90cf8cd354264cf737a30e5c95
-pkgrel=1
-pkgdesc='an SMuFL compliant music font designed by Daniel Spreadbury at Steinberg'
+pkgrel=2
+pkgdesc='An SMuFL compliant music font designed by Daniel Spreadbury at Steinberg'
 arch=('any')
-url="http://www.smufl.org/fonts/"
+url='http://www.smufl.org/fonts/'
 license=('OFL')
-depends=('fontconfig' 'xorg-font-utils')
 source=("$pkgname-$pkgver.zip::https://github.com/steinbergmedia/${pkgname/otf-}/archive/$_tag.zip")
 sha256sums=('90b7c137e1726638f100d3170e3ad59a48f34352741e77adf641c072c201de78')
 
