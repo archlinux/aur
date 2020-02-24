@@ -10,8 +10,7 @@ license=('GPL2')
 depends=('sane' 'libsoup')
 makedepends=('ctags' 'git')
 source=("https://github.com/alexpevzner/${pkgname}/archive/${pkgver}.tar.gz")
-sha1sums=('SKIP')
-conflicts=('sane-airscan-git')
+sha256sums=('526cb3b3029195cbd5e6d362950b45c045415585e2fb3f18631fa470df6ad531')
 
 build() {
     cd ${pkgname}-${pkgver}
@@ -20,6 +19,6 @@ build() {
 
 package() {
     cd ${pkgname}-${pkgver}
-    make DESTDIR="${pkgname}-${pkgver}" install
+    make DESTDIR="${pkgdir}" install
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
