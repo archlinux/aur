@@ -1,7 +1,7 @@
 # Maintainer: Will Price <will.price94@gmail.com>
 
 pkgname=ttf-sudo
-pkgver=0.40
+pkgver=0.42
 pkgrel=1
 pkgdesc="A font for programmers and command line users"
 arch=(any)
@@ -10,7 +10,6 @@ license=(SIL)
 install=ttf-sudo.install
 depends=(fontconfig xorg-font-utils)
 source=("https://github.com/jenskutilek/sudo-font/archive/v${pkgver}.tar.gz")
-md5sums=('b4428fc26e85066152961719d75ae323')
 
 package() {
   for font in "$srcdir/sudo-font-$pkgver/sudo/"Sudo*.ttf; do
@@ -21,3 +20,4 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 md5sums=('fb13ae5477150ee8e25476b10a2a038e')
+md5sums=('fc0ff0f0133c6e5a3d61fadb2914ac2e')
