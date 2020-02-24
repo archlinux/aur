@@ -2,7 +2,7 @@
 pkgname=getax
 pkgver=2019
 _update=1.02
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for the tax reporting of physical people in the canton of Geneva, Switzerland."
 url="http://www.getax.ch/support/"
 depends=(
@@ -16,7 +16,7 @@ _base="https://www.getax.ch/getaxpp"
 source=(
 	"$pkgname-$pkgver-$_update.tar.gz::$_base/$pkgver/$pkgname$pkgver.tar.gz"
 	"getax"
-	"config|cd|resources|immeublesValeurLocative.txt::$_base/1.01/config/cd/resources/immeublesValeurLocative.txt"
+	"config|cd|resources|immeublesValeurLocative.txt::$_base/maj19/1.01/config/cd/resources/immeublesValeurLocative.txt"
 	"config|cd|shortHelp|fr|a--31.71-01::$_base/maj19/1.01/config/cd/shortHelp/fr/a--31.71-01"
 	"config|cd|shortHelp|fr|b4--32.30-01::$_base/maj19/1.01/config/cd/shortHelp/fr/b4--32.30-01"
 	"config|cd|shortHelp|fr|d--15.10-13::$_base/maj19/1.01/config/cd/shortHelp/fr/d--15.10-13"

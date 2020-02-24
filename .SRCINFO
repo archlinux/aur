@@ -1,7 +1,7 @@
 pkgbase = getax
 	pkgdesc = Application for the tax reporting of physical people in the canton of Geneva, Switzerland.
 	pkgver = 2019
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.getax.ch/support/
 	arch = x86_64
 	license = unkown
@@ -10,7 +10,7 @@ pkgbase = getax
 	depends = webkitgtk2
 	source = getax-2019-1.02.tar.gz::https://www.getax.ch/getaxpp/2019/getax2019.tar.gz
 	source = getax
-	source = config|cd|resources|immeublesValeurLocative.txt::https://www.getax.ch/getaxpp/1.01/config/cd/resources/immeublesValeurLocative.txt
+	source = config|cd|resources|immeublesValeurLocative.txt::https://www.getax.ch/getaxpp/maj19/1.01/config/cd/resources/immeublesValeurLocative.txt
 	source = config|cd|shortHelp|fr|a--31.71-01::https://www.getax.ch/getaxpp/maj19/1.01/config/cd/shortHelp/fr/a--31.71-01
 	source = config|cd|shortHelp|fr|b4--32.30-01::https://www.getax.ch/getaxpp/maj19/1.01/config/cd/shortHelp/fr/b4--32.30-01
 	source = config|cd|shortHelp|fr|d--15.10-13::https://www.getax.ch/getaxpp/maj19/1.01/config/cd/shortHelp/fr/d--15.10-13
