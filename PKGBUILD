@@ -1,46 +1,38 @@
+# Maintainer: xiretza <xiretza+aur@gmail.com>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
 
-pkgname='perl-class-errorhandler'
-pkgver='0.03'
-pkgrel='1'
+_perlmod="Class-ErrorHandler"
+_modnamespace=Class
+pkgname=perl-class-errorhandler
+pkgver=0.04
+pkgrel=1
 pkgdesc="Base class for error handling"
 arch=('any')
+url="https://metacpan.org/release/$_perlmod"
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.008_001')
-makedepends=()
-url='http://search.mcpan.org/dist/Class-ErrorHandler'
-source=('http://search.mcpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Class-ErrorHandler-0.03.tar.gz')
-md5sums=('1335940a9467e98abfedd85bc09938d1')
-sha512sums=('aefc6497b8ebdd3efe1643a84051b2739879f5472753a484b8eb14a29ba1826806bdc17ddb46efb50e969ceedae309fe7cfa965d9c45054b40fe2fbaed7b60a7')
-_distdir="Class-ErrorHandler-0.03"
+makedepends=('perl-module-build')
+source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
+sha512sums=('9e235da1c2091f9422723af4528305b8ed2b50920a865e6fee76380a8c512fcd837d752f4ea5146df12c506c776e88c1075419ab3809be3296995387df759c83')
 
 build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+  cd "$srcdir/$_perlmod-$pkgver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
-  )
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
-  )
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  make test
 }
 
 package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+  cd "$srcdir/$_perlmod-$pkgver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  make install DESTDIR="$pkgdir/"
 }
 
 # Local Variables:
