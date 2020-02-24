@@ -4,7 +4,7 @@ pkgname=java-openjfx-ea-bin
 _majorver=15
 _buildver=1
 pkgver=${_majorver}rc${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
 arch=('x86_64')
 url='https://openjfx.io/'
@@ -33,7 +33,7 @@ package() {
     install -d "${pkgdir}/${_jvmdir}/jmods"
     cp -a "javafx-jmods-${_majorver}/"* "${pkgdir}/${_jvmdir}/jmods/"
     # Docs 
-    install -d "${pkgdir}/usr/share/doc/java-openjfx-ea"
-    cp -a "javafx-${_majorver}-javadoc/"* "${pkgdir}/usr/share/doc/java-openjfx-ea/"
+    install -d "${pkgdir}/usr/share/doc/java${_majorver}-openjfx"
+    cp -a "javafx-${_majorver}-javadoc/"* "${pkgdir}/usr/share/doc/java${_majorver}-openjfx/"
 }
 # vim:set ts=4 sw=4 et:
