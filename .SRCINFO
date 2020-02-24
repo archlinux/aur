@@ -1,6 +1,6 @@
 pkgbase = obapps3
 	pkgdesc = Graphical tool for configuring application settings in Openbox. Version for python-wxpython >= 4.0, python3
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/gCurse/obapps3
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = obapps3
 	depends = python-xlib
 	conflicts = obapps
 	options = !strip
-	source = obapps3-0.2.1.tar.gz::https://github.com/gCurse/obapps3/archive/v0.2.1.tar.gz
-	sha256sums = f128da3bd03de1f9d8f0732c76f49fb442af1e7a6e29563c0bdd4a2b60e4bd1d
+	source = obapps3-0.2.2.tar.gz::https://github.com/gCurse/obapps3/archive/v0.2.2.tar.gz
+	sha256sums = 3974b00abdedb83b14a29c6866db45ff6f0ec6f8b64567da37244aa0d186c196
 
 pkgname = obapps3
 

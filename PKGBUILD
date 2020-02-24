@@ -1,7 +1,7 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=obapps3
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Graphical tool for configuring application settings in Openbox. Version for python-wxpython >= 4.0, python3"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-wxpython>=4.0' 'python-xlib')
 conflicts=('obapps')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gCurse/obapps3/archive/v${pkgver}.tar.gz")
-sha256sums=('f128da3bd03de1f9d8f0732c76f49fb442af1e7a6e29563c0bdd4a2b60e4bd1d')
+sha256sums=('3974b00abdedb83b14a29c6866db45ff6f0ec6f8b64567da37244aa0d186c196')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
