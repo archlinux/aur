@@ -13,7 +13,7 @@ depends=('glibc')
 conflicts=('wego')
 makedepends=('git' 'go')
 source=("wego-$pkgver.tar.gz::$url/archive/$_commit.tar.gz")
-sha256sums=('c2a227ccfaffcbe3263c1579dfc55f90b0d79b2e7df79247a95dce3f66a689d2')
+sha256sums=('c2088de3557738a269736aee1e8811d78a7ee6fc9e34e9a4d56c942a79b527e5')
 
 prepare() {
   mkdir -p src/github.com/tylerwolf35
