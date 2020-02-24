@@ -8,7 +8,7 @@ pkgdesc="FastAPI is a modern, fast (high-performance), web framework for buildin
 arch=('any')
 url="https://fastapi.tiangolo.com/"
 license=('MIT')
-depends=('python' 'python-setuptools' 'python-starlette')
+depends=('python' 'python-setuptools' 'python-starlette' 'python-pydantic')
 _name=${pkgname#python-}
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_pkgname}-${pkgver}.tar.gz")
