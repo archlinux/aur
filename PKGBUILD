@@ -15,6 +15,6 @@ sha256sums=('8d7363b7e8d45a67f172580756a9cb26aec63b57cc583e263ceb25c784e8534e')
 
 package() {
   cd "$srcdir"
-  install -Dm755 scalafmt-linux/scalafmt "${pkgdir}/usr/bin/scalafmt"
+  install -Dm755 scalafmt "${pkgdir}/usr/bin/scalafmt"
 }
 
