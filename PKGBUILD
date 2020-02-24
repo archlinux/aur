@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=dtool
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A collection of development tools for numeric conversion'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=()
 conflicts=('dtool-git')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c62dca0482b84ceaee7632da14bf5b7ccc16a8ddaed753bbf354fa1cc28bbdb8')
+sha256sums=('0900c7ce029ae80e85bbdd0c512bc9ec5fef84d59db12ceb04f64c2a8b6a6d3f')
 
 build() {
   cd "$pkgname-$pkgver"
