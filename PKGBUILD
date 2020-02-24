@@ -8,7 +8,7 @@ pkgdesc="Next generation desktop shell"
 url="https://gitlab.gnome.org/GNOME/gnome-shell"
 arch=(x86_64)
 license=(GPL2)
-depends=(accountsservice gcr gjs-git js68 gnome-bluetooth upower gnome-session gnome-settings-daemon sysprof-dev
+depends=(accountsservice gcr gjs-dev js68 gnome-bluetooth upower gnome-session gnome-settings-daemon sysprof-dev
          gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
          mutter-dev nm-connection-editor unzip gstreamer libibus)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
