@@ -1,30 +1,41 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Mantainer: Michael M. Tung <mtung at mat dot upv dot es>
 
-pkgname=pandoc-panflute
-pkgver=1.12
+_pipname=panflute
+pkgname=python-$_pipname-git
+pkgver=1.12.5
 pkgrel=1
-pkgdesc='A Python package that makes creating Pandoc filters fun.'
-url='https://github.com/sergiocorreia/panflute'
-depends=('pandoc' 'python' 'python-pandocfilters' 'python-shutilwhich' 'python-future')
-license=('BSD3')
+pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
+url="https://github.com/sergiocorreia/$_pipname"
 arch=('any')
-
-makedepends=('git')
-provides=('pandoc-panflute-git')
-conflicts=('pandoc-panflute-git')
-
-source=('git://github.com/sergiocorreia/panflute.git')
-md5sums=('SKIP')
+license=('BSD')
+_pydeps=('click'
+         'shutilwhich'
+         'yaml')
+depends=('pandoc' 'python'  "${_pydeps[@]/#/python-}")
+makedepends=('git' 'python-setuptools')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+checkdepends=('python-pandocfilters')
+source=("$pkgname::git://github.com/sergiocorreia/$_pipname.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | tail -1 | sed -e "s/.*= '\(.*\)\..*'/\1/"
+    cd "${pkgname}"
+    git describe --tags --abbrev=7 HEAD | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-pkgrel() {
-  curl -s https://raw.githubusercontent.com/sergiocorreia/panflute/master/panflute/version.py | tail -1 | sed -e "s/.*= '.*\..*\.\(.*\).*'/\1/"
+build() {
+    cd "${pkgname}"
+	python setup.py build
+}
+
+check() {
+    cd "${pkgname}"
+	python setup.py test
 }
 
 package() {
-    cd "$srcdir/panflute"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    cd "${pkgname}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
