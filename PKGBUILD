@@ -7,17 +7,18 @@
 
 pkgname=telegram-desktop-userfonts
 pkgver=1.9.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libappindicator-gtk3' 'libdbusmenu-qt5')
-# for libappindicator-gtk3 see https://bugs.archlinux.org/task/65080
-
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl')
-optdepends=('ttf-opensans: default Open Sans font family')
+         'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
+# We used to have libappindicator-gtk3 as a hard-dep here (see https://bugs.archlinux.org/task/65080)
+# but it seems that it's better to have as an opt-dep (see https://bugs.archlinux.org/task/65336)
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libappindicator-gtk3')
+optdepends=('ttf-opensans: default Open Sans font family'
+            'libappindicator-gtk3: AppIndicator-based tray icon')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         telegram-desktop.sh)
 sha512sums=('56efa64048d23b280782b51319c0071c6cef833cb7e2584e52c6e45488577755beb85185ec9187029c425cc8d4c9c1887142687c744697e7731a15abe2846056'
