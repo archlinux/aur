@@ -12,16 +12,20 @@ depends=('glibc')
 source=(http://www.almy.us/files/sstsrc.zip)
 md5sums=('87301bc87b5a06e525f228d073428895')
 
-build() {
-  cd "$srcdir/sstsrc"
+prepare() {
+  cd "$srcdir"
   # adjust the path of the documentation
   sed 's|"sst.doc"|"/usr/share/doc/sst/sst.doc"|g' -i sst.c
+}
+
+build() {
+  cd "$srcdir"
   make
 }
 
 package() {
   # binary
-  install -Dm755 "$srcdir/sstsrc/sst" "$pkgdir/usr/bin/sst"
+  install -Dm755 "$srcdir/sst" "$pkgdir/usr/bin/sst"
   # documentation
-  install -Dm644 "$srcdir/sstsrc/sst.doc" "$pkgdir/usr/share/doc/$pkgname/sst.doc"
+  install -Dm644 "$srcdir/sst.doc" "$pkgdir/usr/share/doc/$pkgname/sst.doc"
 }
