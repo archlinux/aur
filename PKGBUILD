@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gammy-git
-pkgver=0.9.57.r1.e73aa28
+pkgver=0.9.57.r2.b29b16d
 pkgrel=1
-pkgdesc="Automatic screen brightness tool."
+pkgdesc="Adaptive screen brightness/temperature tool."
 arch=('x86_64')
 url="https://getgammy.com"
 license=('GPL3')
