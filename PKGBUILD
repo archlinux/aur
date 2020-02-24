@@ -1,10 +1,10 @@
 # Maintainer : David C. Rankin <drankinatty@gmail.com>
 
 pkgname=virtualbox-bin-5
-pkgver=5.2.35
-_build=135458
+pkgver=5.2.38
+_build=136252
 _rev=79806
-pkgrel=2
+pkgrel=1
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version 5)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -22,8 +22,8 @@ replaces=('virtualbox_bin' 'virtualbox-sun')
 backup=('etc/vbox/vbox.cfg' 'etc/conf.d/vboxweb')
 options=('!strip' '!emptydirs')
 install="${pkgname%-5}.install"
-source=("https://www.virtualbox.org/download/testcase/VirtualBoxSDK-${pkgver}-${_build}.zip"
-# source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pkgver}-${_build}.zip"
+# source=("https://www.virtualbox.org/download/testcase/VirtualBoxSDK-${pkgver}-${_build}.zip"
+source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBoxSDK-${pkgver}-${_build}.zip"
         "VBoxAuth-r${_rev}.h"::"https://www.virtualbox.org/svn/vbox/trunk/include/VBox/VBoxAuth.h?p=${_rev}"
         "VBoxAuthPAM-r${_rev}.c"::"https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/pam/VBoxAuthPAM.c?p=${_rev}"
         "VBoxAuthSimple-r${_rev}.cpp"::"https://www.virtualbox.org/svn/vbox/trunk/src/VBox/HostServices/auth/simple/VBoxAuthSimple.cpp?p=${_rev}"
@@ -34,10 +34,10 @@ source=("https://www.virtualbox.org/download/testcase/VirtualBoxSDK-${pkgver}-${
         'do_dkms'
         'dkms.conf'
         '009-include-path.patch'
-        "https://www.virtualbox.org/download/testcase/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
-#         "http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
+        "http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
+#         "https://www.virtualbox.org/download/testcase/VirtualBox-${pkgver}-${_build}-Linux_amd64.run")
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('3cd932111c52a1fddfca4f254f17b40e6614d88ab0ee6c4df0e9e1c23a2e6bc5'
+sha256sums=('4be78336b0a8c8a0c064ce8e8f7a21c6b97915dc48741e658f1de8a1ea93aeea'
             '584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e'
             '600df773fca199dc21acde10c95a4733b03b3efd8ffaef3a9fb9da363a9cd114'
             '452351c15d97aeda29e45dbcb0da69412dc3a615c9aece43a424af3639368d49'
@@ -48,7 +48,7 @@ sha256sums=('3cd932111c52a1fddfca4f254f17b40e6614d88ab0ee6c4df0e9e1c23a2e6bc5'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             'e9df0fff15184d0a90abe17707bdbe1931582433bbc14ded4fb3b0252653c801'
             '5112f0e1ba3bd0bd92ef2edb2d21024e265abb02841aa29aa05410526adc273f'
-            'ced011f39293cfbc9e9776b85275faf502b5e08c8ec18ad1c1d464587276a5fe')
+            '4871c91c45da3c6ab38b0c6b3e5e7c7844dce21c49adfb57309abe0c462eff4f')
 
 prepare() {
     [ "$CARCH" = 'i686'   ] && local _arch='x86'
