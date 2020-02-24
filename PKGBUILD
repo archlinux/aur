@@ -1,24 +1,21 @@
 # Maintainer: Robert Kubosz <kubosz.robert@gmail.com>
 
 pkgname=dyplompwr
-pkgver=2.0
-pkgrel=2
-_gitrel=v2.0
-pkgdesc='Latex package with unofficial thesis template for students of Wrocław University of Technology'
+pkgver=2.1
+pkgrel=1
+pkgdesc='Latex package with unofficial thesis template for students of Wrocław
+University of Technology'
 arch=('any')
 depends=('texlive-core' 'urw-garamond' 'urw-classico')
 license=('MIT')
 url='https://github.com/rkubosz/dyplompwr'
-source=("https://github.com/rkubosz/dyplompwr/releases/download/$_gitrel/dyplompwr.zip"
-        'license')
-md5sums=('7acfcf67b6697133131fb61acf708d99'
-         '532f9a8276206a404a50e40544238013')
+source=("https://github.com/rkubosz/dyplompwr/archive/v$pkgver.zip")
+sha256sums=('b87b9e96ec9a69d54c3c18620e7a59bc396fefdfaae6d0f3bc9adc7282599adc')
 
 package() {
-    cd "$srcdir"
     texpath=usr/share/texmf/tex/latex
-    mkdir -p "$pkgdir/$texpath/$pkgname"
-    cp -R  "$pkgname" "$pkgdir/$texpath"
-    install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/license"
-    install -Dm644 doc/manual.pdf "$pkgdir/$texpath/doc/$pkgname/manual.pdf"
+    mkdir -p "$pkgdir/$texpath"
+    cp -r "$srcdir/$pkgname-$pkgver/dyplompwr" "$pkgdir/$texpath"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/license" "$pkgdir/usr/share/licenses/$pkgname/license"
+    install -Dm644 "$srcdir/$pkgname-$pkgver/doc/manual.pdf" "$pkgdir/$texpath/doc/$pkgname/manual.pdf"
 }
