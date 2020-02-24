@@ -1,52 +1,43 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-bin
-_majorver=13
-_buildver=33
+_majorver=14
+_buildver=36
 pkgver=${_majorver}b${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Oracle Build."
 arch=('x86_64')
 url="http://jdk.java.net/${_majorver}"
 license=('GPL2')
-depends=('java-environment-common' 'ca-certificates-utils' 'nss')
+depends=('java-environment-common' 'java-runtime-common' 'ca-certificates-utils' 'nss')
 provides=(
-  "java-environment=${_majorver}" 
-  "java-environment-openjdk=${_majorver}"
-  "java-runtime=${_majorver}" 
-  "java-runtime-openjdk=${_majorver}"
-  "java-runtime-headless=${_majorver}"
-  "java-runtime-headless-openjdk=${_majorver}"
+    "java-environment=${_majorver}" 
+    "java-environment-openjdk=${_majorver}"
+    "java-runtime=${_majorver}" 
+    "java-runtime-openjdk=${_majorver}"
+    "java-runtime-headless=${_majorver}"
+    "java-runtime-headless-openjdk=${_majorver}"
 )
-conflicts=(
-  "jdk-openjdk>=${_majorver}"
-  "jre-openjdk>=${_majorver}"
-  "jre-openjdk-headless>=${_majorver}"
-  "jdk${_majorver}-openjdk"
-  "jre${_majorver}-openjdk"
-  "jre${_majorver}-openjdk-headless"
-)
-
-source=("openjdk-${_majorver}_${_buildver}_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk${_majorver}/5b8a42f3905b406298b72d750b6919f6/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
+source=("openjdk-${_majorver}_${_buildver}_linux-x64_bin.tar.gz::https://download.java.net/java/GA/jdk${_majorver}/076bab302c7b4508975440c56f6cc26a/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
 #source=("https://download.java.net/java/GA/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}_linux-x64_bin.tar.gz")
-sha256sums=('5f547b8f0ffa7da517223f6f929a5055d749776b1878ccedbd6cc1334f4d6f4d')
+sha256sums=('c7006154dfb8b66328c6475447a396feb0042608ee07a96956547f574a911c09')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
 package() {
-  # Install
-  install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_majorver}
-  cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
-  # Link JKS keystore from ca-certificates-utils
-  rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
-  ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
-  # Legal
-  install -d "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk"
-  cp -a legal "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk/"
-  ln -s /usr/share/licenses/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/legal"
-  # Conf
-  install -d "${pkgdir}/etc"
-  cp -r conf "${pkgdir}/etc/java${_majorver}-openjdk"
-  ln -s /etc/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/conf"
+    # Install
+    install -d "${pkgdir}/${_jvmdir}"
+    cd jdk-${_majorver}
+    cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
+    # Link JKS keystore from ca-certificates-utils
+    rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+    ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
+    # Legal
+    install -d "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk"
+    cp -a legal "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk/"
+    ln -s /usr/share/licenses/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/legal"
+    # Conf
+    install -d "${pkgdir}/etc"
+    cp -r conf "${pkgdir}/etc/java${_majorver}-openjdk"
+    ln -s /etc/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/conf"
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
