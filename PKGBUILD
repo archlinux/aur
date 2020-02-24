@@ -1,6 +1,7 @@
 # Maintainer: Simon Gardling <titaniumtown@gmail.com>
 
 pkgname=sysprof-dev
+_pkgname=sysprof
 pkgver=3.35.3
 pkgrel=1
 pkgdesc="Kernel based performance profiler"
