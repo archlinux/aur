@@ -1,0 +1,14 @@
+pkgbase = r-codetools
+	pkgdesc = Code Analysis Tools for R
+	pkgver = 0.2.16
+	pkgrel = 1
+	url = https://cran.r-project.org/package=codetools
+	arch = any
+	license = GPL2
+	license = GPL3
+	depends = r>=2.1
+	source = https://cran.r-project.org/src/contrib/codetools_0.2-16.tar.gz
+	md5sums = 0f04011ff13aa9df73195efa9e71bed9
+
+pkgname = r-codetools
+
