@@ -7,9 +7,9 @@
 _pkgname=xdg-utils
 pkgname=$_pkgname-mimeo
 # https://gitlab.freedesktop.org/xdg/xdg-utils/commits/master
-_commit=0547886c0a7ae79145998495a6e3af6a1450d0c7 # master # 2019-04-19
-pkgver=1.1.3+18+g0547886
-pkgrel=5
+_commit=9816ebb3e6fd9f23e993b8b7fcbd56f92d9c9197 # master # 2020-02-20
+pkgver=1.1.3+19+g9816ebb
+pkgrel=1
 pkgdesc="Command line tools that assist applications with a variety of desktop integration tasks; patched to use mimeo"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/xdg-utils/"
