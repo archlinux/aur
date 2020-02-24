@@ -1,6 +1,6 @@
 pkgbase = astrill
 	pkgdesc = VPN configuration tool for Astrill's servers
-	pkgver = 3.2.0
+	pkgver = 3.8.0.2156
 	pkgrel = 0
 	url = http://astrill.com/
 	arch = x86_64
