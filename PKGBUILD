@@ -1,4 +1,4 @@
-# Maintainer: Dylan Simowitz <aur@dylan.simowitz.com>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname="hello-kde-git"
 _pkgname="hello"
