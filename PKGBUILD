@@ -5,7 +5,7 @@ _pkgsrcname="pulsectl"
 _pkgname="python-pulse-control"
 _pkgname2="python2-pulse-control"
 pkgname=($_pkgname $_pkgname2)
-pkgver=19.10.4
+pkgver=20.2.2
 pkgrel=1
 pkgdesc="Python high-level interface and ctypes-based bindings for PulseAudio."
 url="http://github.com/mk-fg/$_pkgname"
@@ -13,7 +13,7 @@ license=("MIT")
 arch=("any")
 makedepends=("python-setuptools" "python2-setuptools")
 source=("https://pypi.io/packages/source/${_pkgsrcname::1}/$_pkgsrcname/$_pkgsrcname-$pkgver.tar.gz")
-md5sums=("c51f573fcec8e398a793ea54015d5ec8")
+md5sums=("b6ec1fd903e8bbaebc06e0c257c9dc53")
 
 prepare() {
 	mv $_pkgsrcname-$pkgver $_pkgname-$pkgver
