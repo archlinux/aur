@@ -1,6 +1,6 @@
 pkgbase = dwm-cdown-git
 	pkgdesc = dwm with cdown's personalisations
-	pkgver = 0.r1739.b0813c8
+	pkgver = 0.r1742.82438eb
 	pkgrel = 1
 	url = https://github.com/cdown/dwm
 	arch = any
