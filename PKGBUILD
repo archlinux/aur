@@ -15,4 +15,6 @@ sha256sums=('1deeb9ff9cf754126dc8870421062719b75c1471f2588c580a1a557ca7523ab7')
 package() {
     cd "$srcdir/bravura-bravura-$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" redist/otf/*.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" redist/OFL*.txt
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md redist/bravura-text.md redist/FONTLOG.txt
 }
