@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-bwdif-git
+	pkgdesc = Plugin for Vapoursynth: bwdif (GIT version)
+	pkgver = r1.0.g477e518
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=175862
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-bwdif
+	conflicts = vapoursynth-plugin-bwdif
+	source = bwdif::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Bwdif.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-bwdif-git
+
