@@ -1,28 +1,26 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=supersm
-_pkgname=SuperSM
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="A Super Symlink Manager"
 arch=("any")
-url="https://github.com/peeweep/SuperSM"
+url="https://github.com/peeweep/supersm"
 license=('MIT')
 makedepends=('boost' 'cmake' 'make')
-source=("${_pkgname}-${pkgver}.tar.gz"::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('54cad12a90d7cde1a7cb2e14243a69862dfc0113dbafd28a7a4469fea28a3318')
+provides=('supersm')
+conflicts=('supersm-git')
+source=("${pkgname}-${pkgver}.tar.gz"::${url}/archive/${pkgver}.tar.gz)
+sha256sums=('be2f1aa9fce1a4226727544ce3e374ff348e78f49afa315a6bbdf571dc50183b')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  mkdir build
-  cd build
-  cmake ..
-  make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  cmake -Bbuild && make -C build
 }
 
 package() {
-  install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/build/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
