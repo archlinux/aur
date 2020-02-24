@@ -1,50 +1,36 @@
-# Maintainer: jfperini <@jfperini>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 # Contributor: jfperini <@jfperini>
 
 pkgname=eviacam
-pkgver=2.0.1+r648.65a817d
+pkgver=2.1.4
 pkgrel=1
-pkgdesc="eViacam - Mouse replacement software that moves the pointer as you move your head."
+pkgdesc='Enable Viacam (eViacam) is a mouse replacement software that moves the pointer as you move your head'
 arch=('any')
-url="http://eviacam.sourceforge.net"
-license=('GPL v3')
-depends=('opencv' 'wxgtk' 'gtk2' 'libxext' 'libxtst')
-makedepends=('git' 'libtool' 'automake' 'autoconf')
-# conflicts=('')
-# provides=('')
-source=("$pkgname"::'git+http://git.code.sf.net/p/eviacam/eviacam')
-# Because the sources are not static, skip Git checksum:
-md5sums=('SKIP')
+url='https://eviacam.crea-si.com/'
+license=('GPL3')
+depends=('opencv' 'wxgtk' 'gtk3' 'libxext' 'libxtst')
+makedepends=('libtool' 'automake' 'autoconf')
+provides=('eviacam')
+source=("https://github.com/cmauri/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('1da6f425254306f48a77abae560d5b66')
 
-pkgver() {
-
-	cd "$srcdir/$pkgname"
-    
-	# Use the tag of the last commit
-    	printf "2.0.1+r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    	# git log -1 --format='%cd.%h' --date=short | tr -d -
-    
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    patch --forward --strip=1 --input="../../0001-Patch-for-new-opencv-4.2.patch"
 }
 
-
 build() {
-
-    	cd "$srcdir/$pkgname"
-    
-    	msg2 "  -> Build program..."
-    	./autogen.sh
-    	./configure
-    	make
-    
+	cd "${srcdir}/${pkgname}-${pkgver}"
+    ./autogen.sh
+  	./configure --with-wx-config=/usr/bin/wx-config-gtk3
+  	make
 }
 
 package() {
-
-    	cd "$srcdir/$pkgname" 
-    
-    	msg2 "  -> Installing program..."
-    	make DESTDIR=$pkgdir install
-    
+	cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+    mkdir -p "${pkgdir}"/usr/share/man/man1
+    mv "${pkgdir}/usr/local/share/man/man1"/eviacam* "${pkgdir}"/usr/share/man/man1/
+    rm -rf "${pkgdir}/usr/local/share/man"
 }
-
 # vim: ts=2 sw=2 et:

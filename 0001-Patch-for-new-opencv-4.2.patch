@@ -1,0 +1,383 @@
+From d98f25bbc31463b7dc0446d442f6fed60a55eff0 Mon Sep 17 00:00:00 2001
+From: Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
+Date: Tue, 11 Feb 2020 16:23:43 +0100
+Subject: [PATCH] Patch for new opencv 4.2
+
+---
+ creavision/crvnormroi.cpp      | 24 ++++++++++++------------
+ creavision/crvnormroi.h        | 22 +++++++++++-----------
+ src/visionpipeline.cpp         |  2 +-
+ src/visionpipeline.h           |  2 +-
+ wxcamwindow/visiblenormroi.cpp | 30 +++++++++++++++---------------
+ wxcamwindow/visiblenormroi.h   | 20 ++++++++++----------
+ wxcamwindow/wxnormroi.cpp      |  4 ++--
+ 7 files changed, 52 insertions(+), 52 deletions(-)
+
+diff --git a/creavision/crvnormroi.cpp b/creavision/crvnormroi.cpp
+index 4ae0052..2137141 100755
+--- a/creavision/crvnormroi.cpp
++++ b/creavision/crvnormroi.cpp
+@@ -187,7 +187,7 @@ void CNormROI::SetP1Resize (const float x, const float y)
+ {
+ 	float min_p1x, min_p1y, max_p1x, max_p1y;
+ 
+-	CvPoint2D32f p2_lim;
++	cv::Point2d p2_lim;
+ 
+ 	p2_lim.x= m_x + m_width;
+ 	p2_lim.y= m_y + m_height;
+@@ -335,7 +335,7 @@ void CNormROI::GetSize (float& width, float& height)
+ //
+ // Working with generic integer coordinates
+ //
+-inline void CNormROI::Integer2Normalized (const CvSize& size, const int ix, const int iy, float &nx, float &ny)
++inline void CNormROI::Integer2Normalized (const cv::Size& size, const int ix, const int iy, float &nx, float &ny)
+ {
+ 	assert (size.width> 0);
+ 	assert (size.height> 0);
+@@ -344,7 +344,7 @@ inline void CNormROI::Integer2Normalized (const CvSize& size, const int ix, cons
+ 	ny= (float) iy / (float) size.height;
+ }
+ 
+-inline void CNormROI::Normalized2Integer (const CvSize& size, const float nx, const float ny, int &ix, int &iy)
++inline void CNormROI::Normalized2Integer (const cv::Size& size, const float nx, const float ny, int &ix, int &iy)
+ {
+ 	assert (size.width> 0);
+ 	assert (size.height> 0);
+@@ -356,7 +356,7 @@ inline void CNormROI::Normalized2Integer (const CvSize& size, const float nx, co
+ }
+ 
+ //inline 
+-void CNormROI::SetP1ResizeInteger (const CvSize& size, const int x, const int y)
++void CNormROI::SetP1ResizeInteger (const cv::Size& size, const int x, const int y)
+ {
+ 	float new_x, new_y;
+ 
+@@ -366,7 +366,7 @@ void CNormROI::SetP1ResizeInteger (const CvSize& size, const int x, const int y)
+ }
+ 
+ //inline 
+-void CNormROI::SetP1MoveInteger (const CvSize& size, const int x, const int y)
++void CNormROI::SetP1MoveInteger (const cv::Size& size, const int x, const int y)
+ {
+ 	float new_x, new_y;
+ 
+@@ -376,7 +376,7 @@ void CNormROI::SetP1MoveInteger (const CvSize& size, const int x, const int y)
+ }
+ 
+ //inline 
+-void CNormROI::SetP2ResizeInteger (const CvSize& size, const int x, const int y)
++void CNormROI::SetP2ResizeInteger (const cv::Size& size, const int x, const int y)
+ {
+ 	float new_x, new_y;
+ 
+@@ -386,7 +386,7 @@ void CNormROI::SetP2ResizeInteger (const CvSize& size, const int x, const int y)
+ }
+ 
+ //inline 
+-void CNormROI::SetCenterInteger (const CvSize& size, const int x, const int y)
++void CNormROI::SetCenterInteger (const cv::Size& size, const int x, const int y)
+ {
+ 	float new_x, new_y;
+ 
+@@ -395,7 +395,7 @@ void CNormROI::SetCenterInteger (const CvSize& size, const int x, const int y)
+ 	SetCenter (new_x, new_y);
+ }
+ 
+-void CNormROI::GetCenterInteger (const CvSize& size, int& x, int& y)
++void CNormROI::GetCenterInteger (const cv::Size& size, int& x, int& y)
+ {
+ 	float fx, fy;
+ 
+@@ -405,7 +405,7 @@ void CNormROI::GetCenterInteger (const CvSize& size, int& x, int& y)
+ }
+ 
+ //inline 
+-void CNormROI::SetSizeInteger (const CvSize& size, const int width, const int height)
++void CNormROI::SetSizeInteger (const cv::Size& size, const int width, const int height)
+ {
+ 	float new_width, new_height;
+ 
+@@ -415,7 +415,7 @@ void CNormROI::SetSizeInteger (const CvSize& size, const int width, const int he
+ }
+ 
+ //inline 
+-void CNormROI::GetBoxInteger (const CvSize& size, int& x, int& y, int& width, int& height)
++void CNormROI::GetBoxInteger (const cv::Size& size, int& x, int& y, int& width, int& height)
+ {
+ 	// DEBUG, 
+ 	CheckInvariant();
+@@ -427,12 +427,12 @@ void CNormROI::GetBoxInteger (const CvSize& size, int& x, int& y, int& width, in
+ 	assert (y + height<= size.height);
+ }
+ 
+-void CNormROI::GetBoxInteger (const CvSize& size, CvRect& box)
++void CNormROI::GetBoxInteger (const cv::Size& size, CvRect& box)
+ {
+ 	GetBoxInteger (size, box.x, box.y, box.width, box.height);
+ }
+ 
+-void CNormROI::GetP1P2Integer (const CvSize& size, CvPoint& p1, CvPoint& p2)
++void CNormROI::GetP1P2Integer (const cv::Size& size, CvPoint& p1, CvPoint& p2)
+ {
+ 	Normalized2Integer (size, m_x, m_y, p1.x, p1.y);
+ 	Normalized2Integer (size, m_x + m_width, m_y + m_height, p2.x, p2.y);
+diff --git a/creavision/crvnormroi.h b/creavision/crvnormroi.h
+index fed4779..7474c7b 100755
+--- a/creavision/crvnormroi.h
++++ b/creavision/crvnormroi.h
+@@ -43,15 +43,15 @@ public:
+ 	void GetSize (float& width, float& height);
+ 	
+ 	// Get/Set position using relative arbitrary integer coordinates
+-	void SetP1ResizeInteger (const CvSize& size, const int x, const int y);
+-	void SetP1MoveInteger (const CvSize& size, const int x, const int y);
+-	void SetP2ResizeInteger (const CvSize& size, const int x, const int y);
+-	void SetCenterInteger (const CvSize& size, const int x, const int y);
+-	void GetCenterInteger (const CvSize& size, int& x, int& y);
+-	void SetSizeInteger (const CvSize& size, const int width, const int height);
+-	void GetBoxInteger (const CvSize& size, int& x, int& y, int& width, int& height);
+-	void GetBoxInteger (const CvSize& size, CvRect& box);
+-	void GetP1P2Integer (const CvSize& size, CvPoint& p1, CvPoint& p2);
++	void SetP1ResizeInteger (const cv::Size& size, const int x, const int y);
++	void SetP1MoveInteger (const cv::Size& size, const int x, const int y);
++	void SetP2ResizeInteger (const cv::Size& size, const int x, const int y);
++	void SetCenterInteger (const cv::Size& size, const int x, const int y);
++	void GetCenterInteger (const cv::Size& size, int& x, int& y);
++	void SetSizeInteger (const cv::Size& size, const int width, const int height);
++	void GetBoxInteger (const cv::Size& size, int& x, int& y, int& width, int& height);
++	void GetBoxInteger (const cv::Size& size, CvRect& box);
++	void GetP1P2Integer (const cv::Size& size, CvPoint& p1, CvPoint& p2);
+ 
+ 	float GetRotation () { return m_rotation; }
+ 	void SetRotation (float value) { m_rotation= value; }
+@@ -83,8 +83,8 @@ protected:
+ 	virtual void Destroy();
+ 
+ 	// Coordinate conversion
+-	void Integer2Normalized (const CvSize& size, const int ix, const int iy, float &nx, float &ny);
+-	void Normalized2Integer (const CvSize& size, const float nx, const float ny, int &ix, int &iy);
++	void Integer2Normalized (const cv::Size& size, const int ix, const int iy, float &nx, float &ny);
++	void Normalized2Integer (const cv::Size& size, const float nx, const float ny, int &ix, int &iy);
+ 
+ 	// ROI hierarchy
+ 	typedef std::list<CNormROI *> TNormROIList;
+diff --git a/src/visionpipeline.cpp b/src/visionpipeline.cpp
+index 488f2b2..f711d59 100755
+--- a/src/visionpipeline.cpp
++++ b/src/visionpipeline.cpp
+@@ -223,7 +223,7 @@ void DrawCorners(CIplImage &image, const std::vector<Point2f> corners, CvScalar
+ 
+ void CVisionPipeline::NewTracker(CIplImage &image, float &xVel, float &yVel)
+ {
+-	CvPoint2D32f trackAreaLocation;
++	cv::Point2d trackAreaLocation;
+ 	CvSize2D32f trackAreaSize;
+ 	bool updateFeatures = false;
+ 
+diff --git a/src/visionpipeline.h b/src/visionpipeline.h
+index 02dcd8e..fbd3c7c 100755
+--- a/src/visionpipeline.h
++++ b/src/visionpipeline.h
+@@ -93,7 +93,7 @@ private:
+ 	wxCondition m_condition;
+ 
+ 	// Face location detection
+-	CvRect m_faceLocation;
++	cv::Rect m_faceLocation;
+ 	int m_faceLocationStatus; // 0 -> not available, 1 -> available
+ 
+ 	enum { NUM_CORNERS = 20 };
+diff --git a/wxcamwindow/visiblenormroi.cpp b/wxcamwindow/visiblenormroi.cpp
+index da3e440..5c9bc64 100755
+--- a/wxcamwindow/visiblenormroi.cpp
++++ b/wxcamwindow/visiblenormroi.cpp
+@@ -237,7 +237,7 @@ bool CVisibleNormROI::UnregisterChildROI (CVisibleNormROI* pNormROI)
+ //
+ // Interaction code
+ //
+-void CVisibleNormROI::GetDirectionSegment (const CvSize& winSize, CvPoint& p1, CvPoint& p2)
++void CVisibleNormROI::GetDirectionSegment (const cv::Size& winSize, CvPoint& p1, CvPoint& p2)
+ {
+ 	GetP1P2Integer (winSize, p1, p2);
+ 	float line_lenght= sqrtf (
+@@ -254,7 +254,7 @@ void CVisibleNormROI::GetDirectionSegment (const CvSize& winSize, CvPoint& p1, C
+ }
+ 
+ // Cursor motion, no click
+-int CVisibleNormROI::OnMouseMovedNoClick (const CvSize& winSize, const CvPoint& cursor)
++int CVisibleNormROI::OnMouseMovedNoClick (const cv::Size& winSize, const cv::Point& cursor)
+ {
+ 	Lock ();
+ 
+@@ -265,7 +265,7 @@ int CVisibleNormROI::OnMouseMovedNoClick (const CvSize& winSize, const CvPoint&
+ 	return retval;
+ }
+ 
+-int CVisibleNormROI::OnMouseMovedNoClickRec (const CvSize& winSize, const CvPoint& cursor)
++int CVisibleNormROI::OnMouseMovedNoClickRec (const cv::Size& winSize, const cv::Point& cursor)
+ {
+ 	int retval;
+ 	TNormROIListIterator i;
+@@ -283,7 +283,7 @@ int CVisibleNormROI::OnMouseMovedNoClickRec (const CvSize& winSize, const CvPoin
+ 	return OVER_NONE;
+ }
+ 
+-int CVisibleNormROI::OnMouseMovedNoClick0 (const CvSize& winSize, const CvPoint& cursor)
++int CVisibleNormROI::OnMouseMovedNoClick0 (const cv::Size& winSize, const cv::Point& cursor)
+ {
+ 	CvPoint p1, p2, or_p1, or_p2;
+ 	
+@@ -332,7 +332,7 @@ int CVisibleNormROI::OnMouseMovedNoClick0 (const CvSize& winSize, const CvPoint&
+ }
+ 
+ // Cursor motion, left button down
+-bool CVisibleNormROI::OnMouseMovedClick (const CvSize& winSize, const CvPoint& cursor, const CvPoint& prevCursor)
++bool CVisibleNormROI::OnMouseMovedClick (const cv::Size& winSize, const cv::Point& cursor, const cv::Point& prevCursor)
+ {
+ 	Lock ();
+ 
+@@ -343,7 +343,7 @@ bool CVisibleNormROI::OnMouseMovedClick (const CvSize& winSize, const CvPoint& c
+ 	return retval;
+ }
+ 
+-bool CVisibleNormROI::OnMouseMovedClickRec (const CvSize& winSize, const CvPoint& cursor, const CvPoint& prevCursor)
++bool CVisibleNormROI::OnMouseMovedClickRec (const cv::Size& winSize, const cv::Point& cursor, const cv::Point& prevCursor)
+ {
+ 	TNormROIListIterator i;
+ 
+@@ -358,7 +358,7 @@ bool CVisibleNormROI::OnMouseMovedClickRec (const CvSize& winSize, const CvPoint
+ 	return false;
+ }
+ 
+-bool CVisibleNormROI::OnMouseMovedClick0 (const CvSize& winSize, const CvPoint& cursor, const CvPoint& prevCursor)
++bool CVisibleNormROI::OnMouseMovedClick0 (const cv::Size& winSize, const cv::Point& cursor, const cv::Point& prevCursor)
+ {
+ 	CvPoint p1, p2, or_p1, or_p2;
+ 	
+@@ -403,14 +403,14 @@ bool CVisibleNormROI::OnMouseMovedClick0 (const CvSize& winSize, const CvPoint&
+ }
+ 
+ // Painting
+-void CVisibleNormROI::OnPaint (const CvSize& winSize, CIplImage *pImg)
++void CVisibleNormROI::OnPaint (const cv::Size& winSize, CIplImage *pImg)
+ {
+ 	Lock ();
+ 	OnPaintRec (winSize, pImg);
+ 	Unlock();
+ }
+ 
+-void CVisibleNormROI::OnPaintRec (const CvSize& winSize, CIplImage *pImg)
++void CVisibleNormROI::OnPaintRec (const cv::Size& winSize, CIplImage *pImg)
+ {		
+ 	TNormROIListIterator i;
+ 
+@@ -423,7 +423,7 @@ void CVisibleNormROI::OnPaintRec (const CvSize& winSize, CIplImage *pImg)
+ 	OnPaint0 (winSize, pImg);
+ }
+ 
+-void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
++void CVisibleNormROI::OnPaint0 (const cv::Size& winSize, CIplImage *pImg)
+ {
+ 	int thickness;
+ 	
+@@ -432,7 +432,7 @@ void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
+ 
+ 	if (m_cursorOver>= OVER_LEFT_LINE && m_cursorOver<= OVER_BR_CORNER)  thickness= 3;
+ 	else thickness= 1;
+-	cvRectangle (pImg->ptr(), p1, p2, CV_RGB( 255-m_degradation, 255-m_degradation, m_degradation ), thickness, 4);
++	cvRectangle (pImg->ptr(), p1, p2, cvScalar(m_degradation, 255-m_degradation, 255-m_degradation, 0), thickness, 4);
+ 
+ 	// Affordances
+ 	CvPoint pa, pb;
+@@ -441,14 +441,14 @@ void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
+ 	pb.x= p1.x + thickness;
+ 	pb.y= p1.y + thickness;
+ 
+-	cvRectangle (pImg->ptr(), pa, pb, CV_RGB( 255-m_degradation, 255-m_degradation, m_degradation ), CV_FILLED );
++	cvRectangle (pImg->ptr(), pa, pb, cvScalar(m_degradation, 255-m_degradation, 255-m_degradation, 0), CV_FILLED );
+ 
+ 	pa.x= p2.x - thickness;
+ 	pa.y= p2.y - thickness;
+ 	pb.x= p2.x + thickness;
+ 	pb.y= p2.y + thickness;
+ 
+-	cvRectangle (pImg->ptr(), pa, pb, CV_RGB( 255-m_degradation, 255-m_degradation, m_degradation ), CV_FILLED );
++	cvRectangle (pImg->ptr(), pa, pb, cvScalar(m_degradation, 255-m_degradation, 255-m_degradation, 0), CV_FILLED );
+ 
+ 	GetDirectionSegment (winSize, p1, p2);
+ 	
+@@ -456,7 +456,7 @@ void CVisibleNormROI::OnPaint0 (const CvSize& winSize, CIplImage *pImg)
+ 	{
+ 		if (m_cursorOver== OVER_ORIENTER)  thickness= 3;
+ 		else thickness= 1;
+-		cvLine (pImg->ptr(), p1, p2, CV_RGB( 255,255,0 ), thickness, CV_AA );
+-		cvCircle(pImg->ptr(), p2, SELECTION_TOLERANCE, CV_RGB( 255,255,0 ), thickness, CV_AA );
++		cvLine (pImg->ptr(), p1, p2, cvScalar(0, 255, 255, 0), thickness, CV_AA );
++		cvCircle(pImg->ptr(), p2, SELECTION_TOLERANCE, cvScalar(0, 255, 255, 0), thickness, CV_AA );
+ 	}
+ }
+diff --git a/wxcamwindow/visiblenormroi.h b/wxcamwindow/visiblenormroi.h
+index 38e6a33..cc239b2 100755
+--- a/wxcamwindow/visiblenormroi.h
++++ b/wxcamwindow/visiblenormroi.h
+@@ -67,24 +67,24 @@ public:
+ 		   OVER_ORIENTER, OVER_UL_CORNER, OVER_BR_CORNER };
+ 
+ 	// Returns where is the cursor over
+-	int OnMouseMovedNoClick (const CvSize& winSize, const CvPoint& cursor);
+-	bool OnMouseMovedClick (const CvSize& winSize, const CvPoint& cursor, const CvPoint& prevCursor);
+-	void OnPaint (const CvSize& winSize, CIplImage *pImg);
++	int OnMouseMovedNoClick (const cv::Size& winSize, const cv::Point& cursor);
++	bool OnMouseMovedClick (const cv::Size& winSize, const cv::Point& cursor, const cv::Point& prevCursor);
++	void OnPaint (const cv::Size& winSize, CIplImage *pImg);
+ 
+ 	bool RegisterChildROI (CVisibleNormROI* pNormROI);
+ 	bool UnregisterChildROI (CVisibleNormROI* pNormROI);
+ 	
+ private:
+-	void GetDirectionSegment (const CvSize& winSize, CvPoint& p1, CvPoint& p2);
++	void GetDirectionSegment (const cv::Size& winSize, CvPoint& p1, CvPoint& p2);
+ 
+-	int OnMouseMovedNoClickRec (const CvSize& winSize, const CvPoint& cursor);
+-	int OnMouseMovedNoClick0 (const CvSize& winSize, const CvPoint& cursor);
++	int OnMouseMovedNoClickRec (const cv::Size& winSize, const cv::Point& cursor);
++	int OnMouseMovedNoClick0 (const cv::Size& winSize, const cv::Point& cursor);
+ 
+-	bool OnMouseMovedClickRec (const CvSize& winSize, const CvPoint& cursor, const CvPoint& prevCursor);
+-	bool OnMouseMovedClick0 (const CvSize& winSize, const CvPoint& cursor, const CvPoint& prevCursor);
++	bool OnMouseMovedClickRec (const cv::Size& winSize, const cv::Point& cursor, const cv::Point& prevCursor);
++	bool OnMouseMovedClick0 (const cv::Size& winSize, const cv::Point& cursor, const cv::Point& prevCursor);
+ 	
+-	void OnPaintRec (const CvSize& winSize, CIplImage *pImg);
+-	void OnPaint0 (const CvSize& winSize, CIplImage *pImg);
++	void OnPaintRec (const cv::Size& winSize, CIplImage *pImg);
++	void OnPaint0 (const cv::Size& winSize, CIplImage *pImg);
+ 	
+ 	void Lock();
+ 	void Unlock();
+diff --git a/wxcamwindow/wxnormroi.cpp b/wxcamwindow/wxnormroi.cpp
+index f79a1e4..6eda8fd 100755
+--- a/wxcamwindow/wxnormroi.cpp
++++ b/wxcamwindow/wxnormroi.cpp
+@@ -40,7 +40,7 @@ CWXNormROI::~CWXNormROI(void)
+ 
+ bool CWXNormROI::OnEvtMotion ( wxMouseEvent& event, wxPoint prevCursor )
+ {
+-	CvSize winSize;
++	cv::Size winSize;
+ 	bool processed;
+ 
+ 	m_pWindow->GetClientSize (&winSize.width, &winSize.height);
+@@ -97,7 +97,7 @@ bool CWXNormROI::OnEvtLeftDClick ( wxMouseEvent& WXUNUSED(event) )
+ 
+ void CWXNormROI::OnPaint (CIplImage *pImg)
+ {
+-	CvSize winSize;
++	cv::Size winSize;
+ 	m_pWindow->GetClientSize(&winSize.width, &winSize.height);
+ 	m_pVisibleNormROI->OnPaint (winSize, pImg);
+ }
+-- 
+2.17.1
+
