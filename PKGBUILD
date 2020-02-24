@@ -1,106 +1,35 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
-pkgbase=python-ipympl
-pkgname=(python2-ipympl python-ipympl python-ipympl-common)
-_pkgname="${pkgbase#*-}"
+pkgname=python-ipympl
+_pkgname="${pkgname#*-}"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Matplotlib Jupyter Extension"
 url="https://pypi.org/project/ipympl/"
-_deppy2=(
-  'python2>=2.7'
-  'python2<2.8'
-)
-_deppy=(
-  'python>=3.8'
-  'python<3.9'
-)
 _depends=(
-  'python')
-_makedepends=(
+  'python>=3.8'
+  'python<3.9')
+makedepends=(
   'python-setuptools')
 license=('BSD')
 arch=(any)
 source=("https://pypi.python.org/packages/38/27/fc9dee4779bd3ff3086b8776cea47094548a84e3e9887a45426ab9d0c539/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('2cb2b38f5a1a32f8fe3bf33fc63b55ba60953faadea1282ff4591f44556dd8fcff1a6da59af6e6491d474765a82f7e69a7fc213b39b9b46e6b5e5000cca7f731')
 
-makedepends=(
-  "${_deppy[@]}"
-  "${_deppy2[@]}"
-  "${_depends[@]}"
-  "${_depends[@]//python/python2}"
-  "${_makedepends[@]}"
-  "${_makedepends[@]//ython/ython2}"
-)
-prepare() {
-  cp -r ${_pkgname}-${pkgver}{,-py2}
-}
-
 build() {
-  (
-    echo "building python2"
-    cd ${_pkgname}-${pkgver}-py2
-    python2 setup.py build
-    mkdir "${srcdir}/pkg-py2"
-    py_ver=$(python2 --version | cut -d' ' -f2 | cut -d. -f1,2)
-    mkdir -p "${srcdir}/pkg-py2/usr/lib/python${py_ver}/site-packages/jupyterlab"
-    mkdir -p "${srcdir}/pkg-py2/usr/share/jupyter"
-    ln -s "../../lib/python${py_ver}/site-packages/jupyterlab" "${srcdir}/pkg-py2/usr/share/jupyter/lab"
-    python2 setup.py install --root="${srcdir}/pkg-py2/" --optimize=1 --skip-build
-    rm "${srcdir}/pkg-py2/usr/share/jupyter/lab"
-  )
-  (
-    echo "building python"
-    cd ${_pkgname}-${pkgver}
-    python setup.py build
-    mkdir "${srcdir}/pkg"
-    py_ver=$(python --version | cut -d' ' -f2 | cut -d. -f1,2)
-    mkdir -p "${srcdir}/pkg/usr/lib/python${py_ver}/site-packages/jupyterlab"
-    mkdir -p "${srcdir}/pkg/usr/share/jupyter"
-    ln -s "../../lib/python${py_ver}/site-packages/jupyterlab" "${srcdir}/pkg/usr/share/jupyter/lab"
-    python setup.py install --root="${srcdir}/pkg/" --optimize=1 --skip-build
-    rm "${srcdir}/pkg/usr/share/jupyter/lab"
-  )
-  mkdir "${srcdir}/pkg-common"
-  for s in "${srcdir}/pkg-py2" "${srcdir}/pkg"; do
-    (
-      cd "$s"
-      find * -not -type d
-    )
-  done \
-  | sort \
-  | uniq -d \
-  | grep -vxF LICENSE \
-  | while read -r f; do
-    diff "${srcdir}/pkg-py2/${f}" "${srcdir}/pkg/${f}" || return $?
-    install -D "${srcdir}/pkg-py2/${f}" "${srcdir}/pkg-common/${f}"
-    rm "${srcdir}/pkg/${f}" "${srcdir}/pkg-py2/${f}"
-  done
-  find "${srcdir}/pkg" "${srcdir}/pkg-py2" -depth -type d -empty -delete
+  cd "${_pkgname}-${pkgver}"
+  python setup.py build
 }
 
-package_python2-ipympl() {
-  depends=(
-    "${_deppy2[@]}"
-    "${_depends[@]//python/python2}"
-    'python-ipympl-common'
-  )
-  mv "${srcdir}/pkg-py2"/* "${pkgdir}/"
-  install -D "${_pkgname}-${pkgver}-py2/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python-ipympl() {
-  depends=(
-    "${_deppy[@]}"
-    "${_depends[@]}"
-    'python-ipympl-common'
-  )
-  mv "${srcdir}/pkg"/* "${pkgdir}/"
-  install -D "${_pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python-ipympl-common() {
-  mv "${srcdir}/pkg-common"/* "${pkgdir}/"
+package() {
+  cd "${_pkgname}-${pkgver}"
+  py_ver=$(python --version | cut -d' ' -f2 | cut -d. -f1,2)
+  mkdir -p "${pkgdir}/usr/lib/python${py_ver}/site-packages/jupyterlab"
+  mkdir -p "${pkgdir}/usr/share/jupyter"
+  ln -s "../../lib/python${py_ver}/site-packages/jupyterlab" "${pkgdir}/usr/share/jupyter/lab"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
   mv "${pkgdir}/usr/etc" "${pkgdir}/"
+  rm -rf --one-file-system "${pkgdir}/usr/share/jupyter/lab"
+  install -D "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
