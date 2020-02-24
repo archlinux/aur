@@ -19,7 +19,7 @@ source_x86_64=("${_url}/${pkgname}_${pkgver/_/-}_amd64.deb"{,.asc})
 source_i686=("${_url}/${pkgname}_${pkgver/_/-}_i386.deb"{,.asc})
 source_armv7h=("${_url}/${pkgname}_${pkgver/_/-}_armhf.deb"{,.asc})
 
-sha512sums=('186d66b43fc2f5af479a0461540f6e5511f9e9ea05a8b792888ab749b0b18e93cbb2e45e04d7f6e5891a81cd07d113db323dd42b01b37afd1a37f0f7248c2745')
+sha512sums=('SKIP')
 sha512sums_x86_64=('ca0bc5bc14ac9d5b533c117b420b8f7b01ea82729e6c8e6cfb8b35671aa3fb266fd6c19bdebf7a12ff138193df084dd9c17db40ec24896a714484cfb05d69194'
                    'SKIP')
 sha512sums_i686=('61fc828a8228f513a7edebbb9738c31266fbaafaa797985aa157e69d22f0a6b227027972dcc21a6a14b5e32dd1e4020b96f374bf7fe0e17f20ddd5b076f3f6b1'
