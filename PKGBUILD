@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Message and service data structures for interacting with Gazebo from ROS."
-url='https://gazebosim.org/tutorials?cat=connect_ros'
+url='https://wiki.ros.org/gazebo_msgs'
 
 pkgname='ros-melodic-gazebo-msgs'
-pkgver='2.8.5'
-arch=('any')
-pkgrel=2
+pkgver='2.8.6'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-melodic-std-msgs
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_msgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz"
         "spawn_model.patch")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed'
+sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4'
             'a8a83abda169cca6a7709dc618f0b74a270f55ce274ac0108eec5df09f3bb3e8')
 
 build() {
@@ -51,9 +51,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 
