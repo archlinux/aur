@@ -1,0 +1,36 @@
+# Maintainer: Rustam Aliyev <ru5j4r0@google.com>
+pkgname=pyflow-git
+pkgver=VERSION
+pkgrel=1
+pkgdesc="An installation and dependency system for Python"
+arch=('x86_64' 'i686')
+url="https://github.com/David-OConnor/pyflow"
+license=('MIT')
+depends=('xz')
+makedepends=('cargo' 'git')
+checkdepends=('cargo')
+changelog=CHANGELOG.md
+source=("git+https://github.com/David-OConnor/pyflow.git")
+b2sums=('SKIP')
+validpgpkeys=(B3D4420410BC16F84C358DF6AF36488D565A347A)
+
+pkgver() {
+  cd $pkgname
+  git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+}
+
+build() {
+	cd $pkgname
+	cargo build --release --locked
+}
+
+check() {
+	cd $pkgname
+	cargo test --release --locked
+}
+
+package() {
+	cd $pkgname
+	install -Dt "$pkgdir/usr/bin" target/release/pyflow
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
