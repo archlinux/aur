@@ -1,10 +1,10 @@
 pkgbase = getax
 	pkgdesc = Application for the tax reporting of physical people in the canton of Geneva, Switzerland.
 	pkgver = 2019
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.getax.ch/support/
 	arch = x86_64
-	license = unkown
+	license = unknown
 	depends = gnome-vfs
 	depends = java-runtime=8
 	depends = webkitgtk2

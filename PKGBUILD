@@ -2,7 +2,7 @@
 pkgname=getax
 pkgver=2019
 _update=1.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for the tax reporting of physical people in the canton of Geneva, Switzerland."
 url="http://www.getax.ch/support/"
 depends=(
@@ -11,7 +11,7 @@ depends=(
 	'webkitgtk2'
 )
 arch=(x86_64)
-license=('unkown')
+license=('unknown')
 _base="https://www.getax.ch/getaxpp"
 source=(
 	"$pkgname-$pkgver-$_update.tar.gz::$_base/$pkgver/$pkgname$pkgver.tar.gz"
