@@ -2,7 +2,7 @@ pkgbase = tev
 	pkgdesc = High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files.
 	pkgver = v1.14
 	pkgrel = 1
-	url = https://github.com/Tom94/tev
+	url = https://github.com/Tom94/tev#tag=v1.14
 	arch = i686
 	arch = x86_64
 	license = BSD-3-Clause
