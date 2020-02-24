@@ -2,7 +2,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=aws-vault
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc='A vault for securely storing and accessing AWS credentials in development environments'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ makedepends=('go')
 optdepends=('zenity: graphical prompt'
             'kdialog: graphical prompt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2dfd7e4b119c2b5b1207a350cf3e5278c21aca612b7ea2d4eafc2f705d48c7e0')
+sha256sums=('6bca7d1bebf02e72714bfbfa162cbb38a33a48e4ea64dc2829626ff68a407a6a')
 
 build() {
   cd $pkgname-$pkgver
