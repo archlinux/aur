@@ -1,7 +1,7 @@
 pkgbase = ttf-kanjistrokeorders
 	pkgdesc = Kanji stroke order font
 	pkgver = 4.002
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sites.google.com/site/nihilistorguk/
 	arch = any
 	license = custom
