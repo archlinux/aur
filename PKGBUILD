@@ -6,6 +6,7 @@
 # Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
 
 pkgname=debhelpergit
+aliasname=debhelper
 pkgver=12.9
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
@@ -19,7 +20,7 @@ source=("git+https://salsa.debian.org/debian//debhelper.git#tag=debian/$pkgver")
 md5sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$aliasname"
   make
 }
 
