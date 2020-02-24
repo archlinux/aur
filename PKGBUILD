@@ -1,8 +1,8 @@
 # Maintainer: yair reshef <yair99@gmail.com>
-# Contributor: piojo, jediofthecode
+# Contributor: piojo, jediofthecode, megahertz
 
 pkgname=astrill
-pkgver=3.2.0
+pkgver=3.8.0.2156
 pkgrel=0
 pkgdesc="VPN configuration tool for Astrill's servers"
 arch=('x86_64' 'i686')
@@ -10,13 +10,13 @@ url="http://astrill.com/"
 license=('custom')
 depends=()
 if [ "${CARCH}" = 'x86_64' ]; then
-    rpmpkg='astrill-setup-linux64-3.2.rpm'
-    md5sums=('9cccb28cfeb5aa5d7de0034941071e14')
+    rpmpkg='desktop-linux64-3.8.0.2156.rpm'
+    md5sums=('3681872f9e6007e24f914a384e483a55')
 else
-    rpmpkg='astrill-setup-linux-3.2.rpm'
-    md5sums=('ad33977e9dd490b7adf25bec262e52bb')
+    rpmpkg='desktop-linux-3.8.0.2156.rpm'
+    md5sums=('7418880b51db0fe6781e6a4f17b93f76')
 fi
-source=("https://www.astrill.com/downloads/$rpmpkg")
+source=("https://www.astrill.com/public/arch/$rpmpkg")
 
 package() {
     mv "${srcdir}/usr" "${pkgdir}"

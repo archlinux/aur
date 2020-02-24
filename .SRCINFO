@@ -6,8 +6,8 @@ pkgbase = astrill
 	arch = x86_64
 	arch = i686
 	license = custom
-	source = https://www.astrill.com/downloads/astrill-setup-linux.rpm
-	md5sums = ee21d58a2f61985c26d801cdc8b32309
+	source = https://www.astrill.com/public/arch/desktop-linux64-3.8.0.2156.rpm
+	md5sums = 3681872f9e6007e24f914a384e483a55
 
 pkgname = astrill
 
