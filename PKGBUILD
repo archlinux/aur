@@ -7,7 +7,7 @@ pkgdesc="a snake game written in rust with quicksilver"
 arch=('any')
 url="https://codeberg.org/nycex/$_pkgbasename"
 license=('MIT')
-depends=('rust')
+depends=('cargo')
 source=(git+https://gitlab.com/nycex/${_pkgbasename})
 sha256sums=('SKIP')
 
