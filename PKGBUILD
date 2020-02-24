@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://hardysimpson.github.com/zlog"
 license=('LGPL')
 depends=(glibc)
-makedepends=(lyx texlive-bin hevea)
+makedepends=(lyx hevea)
 source=("https://github.com/HardySimpson/$_realname/archive/$pkgver.tar.gz")
 md5sums=('fd277b54669848bceecd4fd6251109b4')
 

@@ -7,7 +7,6 @@ pkgbase = libzlog
 	arch = x86_64
 	license = LGPL
 	makedepends = lyx
-	makedepends = texlive-bin
 	makedepends = hevea
 	depends = glibc
 	source = https://github.com/HardySimpson/zlog/archive/1.2.14.tar.gz
