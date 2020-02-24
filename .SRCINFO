@@ -1,0 +1,20 @@
+pkgbase = ocaml-lsp-git
+	pkgdesc = OCaml Language Server Protocol implementation
+	pkgver = r297.5e864ab
+	pkgrel = 1
+	url = https://github.com/ocaml/ocaml-lsp
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = dune>=1.11
+	depends = ocaml
+	depends = ocaml-yojson
+	depends = ocaml-ppx_yojson_conv_lib
+	provides = ocaml-lsp
+	conflicts = ocaml-lsp
+	options = !strip
+	source = ocaml-lsp::git+https://github.com/ocaml/ocaml-lsp.git
+	sha256sums = SKIP
+
+pkgname = ocaml-lsp-git
+
