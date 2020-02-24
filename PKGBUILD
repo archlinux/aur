@@ -1,4 +1,5 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Vsevolod Ivanov <seva@binarytrails.net>
 # Contributor: Daniel Wallace <daniel.wallace at gatech dot edu>
 
 _pkgname_base=irssi-libnotify
