@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=python-imageio-ffmpeg
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="FFMPEG wrapper for Python"
 arch=("any")
@@ -11,7 +11,7 @@ url="https://github.com/imageio/imageio-ffmpeg"
 depends=('python' 'ffmpeg')
 makedepends=('python-setuptools')
 source=("https://github.com/imageio/imageio-ffmpeg/archive/v${pkgver}.tar.gz")
-sha256sums=('c0403283c5eb51aef4be9d5ac41ea2d5a2ff5ff903cd69af7f47090116c6db00')
+sha256sums=('83c03933ed519be458bd8f227c27b9f95a99cb1a35c92ffee584eea2978a85b7')
 
 build() {
     cd "imageio-ffmpeg-${pkgver}"
