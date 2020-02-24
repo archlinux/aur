@@ -2,17 +2,17 @@
 
 _pkgname=gnucap-adms
 pkgname=$_pkgname-git
-pkgver=r578.e719276
+pkgver=r645.1154b51
 pkgrel=1
 pkgdesc="automatic device model compiler for Gnucap"
 arch=('i686' 'x86_64')
 url="http://gnucap.org/"
 license=('GPL')
-depends=('gnucap' 'boost' 'adms-git' 'gnucap-make-git')
+depends=('python' 'gnucap' 'boost' 'adms-git' 'gnucap-custom-git')
 makedepends=('git')
 provides=('gnucap-adms')
 conflicts=('gnucap-adms')
-source=("$_pkgname::git+git://git.sv.gnu.org/gnucap/gnucap-adms.git#branch=unstable")
+source=("$_pkgname::git+git://git.sv.gnu.org/gnucap/gnucap-adms.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
