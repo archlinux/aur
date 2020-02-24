@@ -11,8 +11,6 @@ license=('Apache-2.0')
 # Please write if the binary won't work.
 arch=('any')
 
-depends=('java-runtime')
-
 sha256sums=('8d7363b7e8d45a67f172580756a9cb26aec63b57cc583e263ceb25c784e8534e')
 
 package() {
