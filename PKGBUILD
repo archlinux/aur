@@ -9,7 +9,7 @@
 
 pkgname=myrepos
 pkgver=1.20180726
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple Repository management tool"
 arch=('any')
 depends=('perl')
@@ -27,7 +27,7 @@ optdepends=('bzr: support for bzr repositories'
             'svn: support for subversion repositories'
             'unison: support for unison as a vcs'
             'vcsh: support for vcsh')
-url='http://myrepos.branchable.com'
+url='https://myrepos.branchable.com'
 license=('GPL2')
 source=("https://git.joeyh.name/index.cgi/myrepos.git/snapshot/$pkgname-$pkgver.tar.gz")
 sha256sums=('bfb909037da678a1668f3f7f86efee7ee31f2bc66d90b83dd9e6b6a5f998c4e2')

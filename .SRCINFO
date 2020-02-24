@@ -1,8 +1,8 @@
 pkgbase = myrepos
 	pkgdesc = Multiple Repository management tool
 	pkgver = 1.20180726
-	pkgrel = 1
-	url = http://myrepos.branchable.com
+	pkgrel = 2
+	url = https://myrepos.branchable.com
 	arch = any
 	license = GPL2
 	makedepends = git
