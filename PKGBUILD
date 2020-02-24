@@ -1,11 +1,10 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=luassert
-pkgname=("lua-$_rockname" "lua52-$_rockname")
-# TODO: restore "lua51-$_rockname" above when conflicting AUR package removed
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=1.8.0
 _rockrel=0
-pkgrel=3
+pkgrel=4
 pkgdesc='Lua Assertions Extension'
 arch=('i686' 'x86_64')
 url='https://olivinelabs.com/busted/'

@@ -1,7 +1,7 @@
 pkgbase = lua-luassert
 	pkgdesc = Lua Assertions Extension
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://olivinelabs.com/busted/
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,8 @@ pkgname = lua-luassert
 pkgname = lua52-luassert
 	depends = lua52
 	depends = lua52-say
+
+pkgname = lua51-luassert
+	depends = lua51
+	depends = lua51-say
 
