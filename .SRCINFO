@@ -1,7 +1,7 @@
 pkgbase = scalafmt-native-bin
 	pkgdesc = Code formatter for Scala, native version via graalvm
 	pkgver = 2.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scalameta.org/scalafmt/
 	arch = any
 	license = Apache-2.0
