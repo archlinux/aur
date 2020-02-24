@@ -16,7 +16,7 @@ license=('custom')
 conflicts=('openvpn')
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7') # OpenVPN - Security Mailing List <security@openvpn.net>
 source=("https://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz"{,.asc} "recursive-routing-fix.patch")
-sha256sums=('73dce542ed3d6f0553674f49025dfbdff18348eb8a25e6215135d686b165423c'
+sha256sums=('65e1da3f3a08e7e900c175e7fc30d834881fd2dea0eb39b25325a861a9da0bc5'
             'SKIP'
             '1570ac6306de32958e7e3c6a69517a4b1fc80135201534890a66e75e780e4dd5')
 

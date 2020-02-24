@@ -20,7 +20,7 @@ pkgbase = openvpn-rrf
 	source = https://swupdate.openvpn.net/community/releases/openvpn-2.4.8.tar.gz.asc
 	source = recursive-routing-fix.patch
 	validpgpkeys = F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7
-	sha256sums = 73dce542ed3d6f0553674f49025dfbdff18348eb8a25e6215135d686b165423c
+	sha256sums = 65e1da3f3a08e7e900c175e7fc30d834881fd2dea0eb39b25325a861a9da0bc5
 	sha256sums = SKIP
 	sha256sums = 1570ac6306de32958e7e3c6a69517a4b1fc80135201534890a66e75e780e4dd5
 
