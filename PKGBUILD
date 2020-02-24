@@ -14,6 +14,8 @@ groups=(gnome-extra)
 source=("git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-$pkgver")
 sha256sums=('SKIP')
 provides=(sysprof)
+conflicts=(sysprof)
+
 
 pkgver() {
   cd sysprof
