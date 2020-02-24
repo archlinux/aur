@@ -1,7 +1,7 @@
 # Maintainer: Alvin Rhaman <ararouge at protonmail dot ch>
 
 pkgname="bootique-git"
-pkgver="r14.0896231"
+pkgver="r14.0896"
 pkgrel=1
 pkgdesc="A templated theming system built in POSIX sh"
 arch=("any")
@@ -15,7 +15,7 @@ md5sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/bootique"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse 4 --short HEAD)"
 }
 
 package() {
