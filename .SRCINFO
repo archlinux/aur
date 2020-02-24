@@ -1,7 +1,7 @@
 pkgbase = glib2-static
 	pkgdesc = Low level core library: Static library
-	pkgver = 2.62.4
-	pkgrel = 4
+	pkgver = 2.62.5
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
 	license = LGPL2.1
@@ -21,10 +21,8 @@ pkgbase = glib2-static
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://gitlab.gnome.org/GNOME/glib/-/archive/2.62.4/glib-2.62.4.tar.gz
-	source = CVE-2020-6750.patch
+	source = https://gitlab.gnome.org/GNOME/glib/-/archive/2.62.5/glib-2.62.5.tar.gz
 	sha256sums = 479ae4d3e37123765c4e850a99bf4846008e7141446118250f5f017d988e7a81
-	sha256sums = 220ff38e418a470b7790e65a2c05527793110c38a1105552b93be884230215f7
 
 pkgname = glib2-static
 
