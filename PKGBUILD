@@ -2,7 +2,7 @@
 
 pkgname="razer-laptop-control-dkms-git"
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for razer laptop's for RGB, fan and power control"
 arch=('i686' 'x86_64')
 url="https://github.com/rnd-ash/razer-laptop-control"
@@ -11,7 +11,7 @@ depends=('dkms' 'udev')
 makedepends=('git')
 source=("git+https://github.com/rnd-ash/razer-laptop-control")
 md5sums=("SKIP")
-conflicts=("openrazer-meta")
+conflicts=("openrazer-meta" "openrazer-driver-dkms" "openrazer-meta-git" "openrazer-daemon-git")
 
 prepare() {
     cd $reponame
