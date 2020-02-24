@@ -5,6 +5,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!mullvad-vpn.desktop
 !mullvad-vpn.install
+!mullvad-vpn.sh
 !update-relays.sh

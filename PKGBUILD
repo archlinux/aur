@@ -9,7 +9,7 @@ pkgname=mullvad-vpn-beta
 _pkgver=2020.3
 _channel=stable
 pkgver=${_pkgver}.${_channel}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop (latest/beta release)"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -22,11 +22,11 @@ install="${pkgname%-beta}.install"
 _commit='90b0c06b59a0b9d6cda69924377335f39854b216'
 source=("git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"
         "git+https://github.com/mullvad/mullvadvpn-app-binaries.git#commit=$_commit?signed"
-        "${pkgname%-beta}.desktop"
+        "${pkgname%-beta}.sh"
         'update-relays.sh')
 sha256sums=('SKIP'
             'SKIP'
-            '121d90e6683e64d9c0d2dbb7b346fa918bdb37cf21fdaf9f66232304ed23abc2'
+            'a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4'
             '89267795175c5be95d13e8f700b69654faf2f38f35be5033eb8e94da404d2353')
 validpgpkeys=('EA0A77BF9E115615FC3BD8BC7653B940E494FE87'
               # Linus Färnstrand (code signing key) <linus at mullvad dot net>
@@ -45,6 +45,8 @@ prepare() {
 }
 
 build() {
+	echo "Building Mullvad VPN $_pkgver..."
+
 	# Build wireguard-go
 	cd "$srcdir/mullvadvpn-app/wireguard/wireguard-go"
 	mkdir -p "../../build/lib/$arch-unknown-linux-gnu"
@@ -57,12 +59,15 @@ build() {
 	cd "$srcdir/mullvadvpn-app"
 
 	# Remove old Rust build artifacts
+	echo "Removing old Rust build artifacts"
 	cargo clean --release --locked
 
 	# Build binaries
+	echo "Building Rust code..."
 	cargo build --release --locked --all-features
 
 	# Copy binaries for packaging
+	echo "Copying binaries"
 	binaries=(
 		mullvad-daemon
 		mullvad
@@ -78,7 +83,9 @@ build() {
 
 	# Build Electron GUI app
 	cd gui
+	echo "Installing JavaScript dependencies..."
 	npm install --cache "$srcdir/npm-cache"
+	echo "Packing final release artifact..."
 	npm run pack:linux
 }
 
@@ -109,24 +116,19 @@ package() {
 		"$pkgdir/usr/bin/mullvad-problem-report"
 
 	# Link to the GUI binary
-	ln -s "/opt/Mullvad VPN/mullvad-gui" "$pkgdir/usr/bin/${pkgname%-beta}"
+	install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
-	# Install desktop file from .deb
-	install -Dm644 "$srcdir/${pkgname%-beta}.desktop" -t \
+	cd dist
+
+	# Install desktop file & icons from .deb
+	ar x "MullvadVPN-${_pkgver}.0_amd64.deb"
+	tar -xf data.tar.xz
+	install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
 		"$pkgdir/usr/share/applications"
 
-	# Install icons
-	for icon_size in 16 48; do
+	for icon_size in 16 32 48 64 128 256 512 1024; do
 		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir/$icons_dir
-		install -m644 dist/.icon-set/icon_${icon_size}x${icon_size}.png \
-			$pkgdir$icons_dir/${pkgname%-beta}.png
-	done
-
-	for icon_size in 32 64 128 256 512 1024; do
-		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-		install -d $pkgdir/$icons_dir
-		install -m644 dist/.icon-set/icon_${icon_size}.png \
-			$pkgdir$icons_dir/${pkgname%-beta}.png
+		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir$icons_dir
 	done
 }
