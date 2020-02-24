@@ -1,0 +1,20 @@
+pkgbase = sysprof-dev
+	pkgdesc = Kernel based performance profiler
+	pkgver = 3.35.3
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Sysprof
+	arch = x86_64
+	groups = gnome-extra
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = git
+	makedepends = meson
+	depends = gtk3
+	depends = polkit
+	depends = libdazzle
+	provides = sysprof
+	source = git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-3.35.3
+	sha256sums = SKIP
+
+pkgname = sysprof-dev
+
