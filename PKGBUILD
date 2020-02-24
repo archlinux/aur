@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components."
-url='https://gazebosim.org/tutorials?cat=connect_ros'
+url='https://wiki.ros.org/gazebo_plugins'
 
 pkgname='ros-melodic-gazebo-plugins'
-pkgver='2.8.5'
+pkgver='2.8.6'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-melodic-diagnostic-updater
@@ -63,16 +63,9 @@ ros_depends=(ros-melodic-diagnostic-updater
   ros-melodic-rospy)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/gazebo_plugins/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_plugins"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4')
 
 build() {
   # Use ROS environment variables
