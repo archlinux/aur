@@ -1,0 +1,18 @@
+pkgbase = tela-circle-icon-theme-git
+	pkgdesc = A flat colorful design icon theme
+	pkgver = r3.f7ca1fd
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Tela-circle-icon-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	provides = tela-circle-icon-theme
+	conflicts = tela-circle-icon-theme
+	options = !strip
+	source = tela-circle-icon-theme::git+https://github.com/vinceliuice/Tela-circle-icon-theme.git
+	sha256sums = SKIP
+
+pkgname = tela-circle-icon-theme-git
+
