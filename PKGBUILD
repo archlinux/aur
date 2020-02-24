@@ -2,7 +2,7 @@
 # Contributer: Christian Hesse <mail@eworm.de>
 
 pkgname=openvpn-rrf
-pkgver=2.4.7
+pkgver=2.4.8
 pkgrel=1
 pkgdesc='OpenVPN with my "Recursive Routing Fix" patch installed.'
 arch=('x86_64')
