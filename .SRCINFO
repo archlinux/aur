@@ -16,7 +16,7 @@ pkgbase = gnome-shell-dev
 	makedepends = asciidoc
 	depends = accountsservice
 	depends = gcr
-	depends = gjs>=2:1.63.2
+	depends = gjs-git
 	depends = js68
 	depends = gnome-bluetooth
 	depends = upower
