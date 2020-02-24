@@ -37,7 +37,6 @@ pkgbase = syslog-ng-git
 	depends = json-c
 	depends = curl
 	depends = libnet
-	depends = libnsl
 	optdepends = logrotate: for rotating log files
 	optdepends = json-c: for the JSON plugin
 	optdepends = curl: for the HTTP plugin
