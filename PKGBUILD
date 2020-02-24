@@ -3,7 +3,7 @@
 pkgbase=linux-lts419
 _basever=4.19
 _srcname=linux-$_basever
-pkgver=${_basever}.105
+pkgver=${_basever}.106
 pkgrel=1
 pkgdesc='LTS 4.19 Linux'
 url="https://www.kernel.org/"
@@ -27,7 +27,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
             'SKIP'
-            '1e394bd7e51773b45a4d745d232aa9bfc172d38fd8957cfbcea8477ec7b22ac5'
+            'f4e37d0b0ad65186397600f23c0f8fc974a169691443f92a65d179526c4c22e1'
             '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
