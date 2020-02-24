@@ -12,7 +12,7 @@ pkgbase = mutter-dev
 	makedepends = egl-wayland
 	depends = dconf
 	depends = js68
-	depends = gjs>=2:1.63.2
+	depends = gjs-git
 	depends = gobject-introspection-runtime
 	depends = gsettings-desktop-schemas
 	depends = libcanberra
