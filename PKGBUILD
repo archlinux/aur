@@ -12,6 +12,7 @@ makedepends=('ctags' 'git')
 source=('git://github.com/alexpevzner/sane-airscan.git')
 sha1sums=('SKIP')
 conflicts=("sane-airscan")
+provides=("sane-airscan")
 
 
 pkgver() {

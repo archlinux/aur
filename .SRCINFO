@@ -10,6 +10,7 @@ pkgbase = sane-airscan-git
 	makedepends = git
 	depends = sane
 	depends = libsoup
+	provides = sane-airscan
 	conflicts = sane-airscan
 	source = git://github.com/alexpevzner/sane-airscan.git
 	sha1sums = SKIP
