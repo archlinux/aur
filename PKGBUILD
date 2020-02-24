@@ -8,7 +8,7 @@ pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-depends=(dconf js68 gjs-git gobject-introspection-runtime gsettings-desktop-schemas libcanberra sysprof-dev
+depends=(dconf js68 gjs-dev gobject-introspection-runtime gsettings-desktop-schemas libcanberra sysprof-dev
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
          gnome-settings-daemon libgudev libinput pipewire)
 makedepends=(intltool gobject-introspection git egl-wayland)
