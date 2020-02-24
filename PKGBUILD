@@ -9,7 +9,7 @@ url='https://www.tarantool.org'
 license=(BSD)
 depends=(readline ncurses zlib libyaml openssl libunwind curl icu)
 makedepends=(git cmake systemd)
-checkdepends=(python2-daemon python2-gevent python2-tarantool)
+checkdepends=(python2-gevent python2-tarantool)
 source=(git+https://github.com/tarantool/tarantool.git#tag=$pkgver
         git+https://github.com/tarantool/luajit.git#branch=tarantool-1.7
         git+https://github.com/tarantool/libyaml.git
@@ -79,7 +79,7 @@ build() {
 
 check() {
   cd tarantool/test
-  ./test-run.py --suite box || true
+  ./test-run.py --suite box
 }
 
 package() {
