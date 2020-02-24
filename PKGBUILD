@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
-# Maintainer: Jamie Magee <jamie dot magee at gmail dot com>
+# Contributer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=java-openjfx-ea-bin
-_majorver=14
-_buildver=6
+_majorver=15
+_buildver=1
 pkgver=${_majorver}rc${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -10,12 +10,14 @@ arch=('x86_64')
 url='https://openjfx.io/'
 license=('GPL2')
 depends=('java-openjdk-ea-bin' 'gstreamer' 'libxtst' 'webkit2gtk' 'ffmpeg' 'qt5-base')
+provides=("java-openjfx=${_majorver}")
+conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('29c6dc6ce4c0bad1373462d7ad2d71a5ab420711024b82caf6e5fd87dce6e68c'
-            'ccbafd0926ffe1bbca8e676547686c5713e0cbc6ca57e297de90707b0581a4f1'
-            '8719908fce65e1a71d0f64b144fdf6338b6ef712570801568739024a9c3c1be0')
+sha256sums=('d6947ca522d24a30f5f3bd9f21d254cb56680cf19db6095f4a29ba4811bd2686'
+            '7ebc9fb28c8e44f5374b59ec6d6d6927655b1d254d08cbfc261a1c33aec19fb5'
+            '2e0f3b3c8711ae03293acbe0f104f91c4b076088ea5ce0cb6f0140601fb27ebc')
 
 _jvmdir=usr/lib/jvm/java-${_majorver}-openjdk
 
