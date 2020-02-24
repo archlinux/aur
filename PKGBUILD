@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _major=5.5
-_minor=5
+_minor=6
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=4
+pkgrel=1
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -61,8 +61,8 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-#_bfq_rev_path="bfq-reverts-sep"
-#_bfq_rev_patch="0001-Revert-block-bfq-do-not-plug-I-O-for-bfq_queues-with.patch"
+_bfq_rev_path="bfq-reverts-sep"
+_bfq_rev_patch="0001-Revert-block-bfq-do-not-plug-I-O-for-bfq_queues-with.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
 _bfq_rel="r2K200211"
@@ -72,7 +72,7 @@ _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
         "${_lucjanpath}/arch-patches-v11-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
@@ -337,8 +337,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('2d0ed596509546169d0e0d46c23e10920e6b565178e044fe57b68b7ff0ec5c613bb090105affc74e5bcacda36f8c8a49c269017e90dd7145f58e9359707f35d1'
+sha512sums=('faa2c4687d7da6eb4d0db08492408b64558166bd4918e88c01b1fa34893aaeee8dc352aa10dc8f58628f224bdfee7a7f8e88b98da771463237898845f45407e3'
             'SKIP'
+            '3e5a8fed7befb0932256a5b3c8c67c91ed1fd0873bd332b39886be6d1fd0b350fa8ac3c6e71df838f4a8d4014262c800f7731f0c314272ff9ee11e6933a04583'
             'aa80a7d169780884fbb226e2d24b526b157ee73b54fa607be99ecb499e9206187fc224073b57497b7a46b30a390c6d90f7f00a120f43ba7d0963cf5b48a238d6'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
             'e00e0066a751627b7f051b16f9907baa55187a8f29daf597d0aac6a3995b57a60fb9a1406aca55961a504c0110b7dd3877557eab0c895a886a97baabf0f71472'
