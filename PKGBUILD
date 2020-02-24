@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=21
+_minor=22
 _srcname=linux-${_major}
-_clr=${_major}.20-5
+_clr=${_major}.21-6
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -101,7 +101,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-lts2019/linux-lts2019.spec |\
-          grep -Ev '^Patch0123|^Patch1001' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0123|^Patch1001|^Patch0051' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-lts2019/${i}"
         done
@@ -325,7 +325,7 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'a8a136ffa760eb998b2916fee5b8935c5f70c7233b57f8a8dde8f61dd48fc908'
+            '49db8b62becb52c529bb4ffbc5e367fcfc32093f5975f1361d271f837adde86a'
             'SKIP'
             '0def6f3608ec06f6dfc454aa5281a7c38b06ff27096cb341448d20602da4e923'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
