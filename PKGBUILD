@@ -174,7 +174,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  make all
 }
 
 _package() {
