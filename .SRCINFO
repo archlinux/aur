@@ -1,13 +1,13 @@
 pkgbase = myetherwallet
 	pkgdesc = Client-side interface for interacting with the Ethereum blockchain
-	pkgver = 5.2.11
+	pkgver = 5.3.3
 	pkgrel = 1
 	url = https://github.com/MyEtherWallet/MyEtherWallet
 	arch = any
 	license = MIT
 	depends = xdg-utils
-	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v5.2.11/MyEtherWallet-v5.2.11.zip
-	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v5.2.11/MyEtherWallet-v5.2.11.zip.sig
+	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v5.3.3/MyEtherWallet-v5.3.3.zip
+	source = https://github.com/MyEtherWallet/MyEtherWallet/releases/download/v5.3.3/MyEtherWallet-v5.3.3.zip.sig
 	source = myetherwallet.desktop
 	source = myetherwallet
 	source = LICENSE
