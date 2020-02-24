@@ -1,15 +1,15 @@
 pkgbase = git-ftp
-	pkgdesc = Git powered FTP client written as shell script
-	pkgver = 1.5.2
-	pkgrel = 2
+	pkgdesc = Uses Git to upload only changed files to FTP servers
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = https://github.com/git-ftp/git-ftp
 	arch = any
 	license = GPL
 	makedepends = pandoc
 	depends = curl
 	depends = git
-	source = git-ftp-1.5.2.tar.gz::https://github.com/git-ftp/git-ftp/archive/1.5.2.tar.gz
-	sha256sums = a6bf52f6f1d30c4d8f52fd0fbd61dc9f32e66099e3e9c4994bec65094305605b
+	source = git-ftp-1.6.0.tar.gz::https://github.com/git-ftp/git-ftp/archive/1.6.0.tar.gz
+	sha256sums = 088b58d66c420e5eddc51327caec8dcbe8bddae557c308aa739231ed0490db01
 
 pkgname = git-ftp
 

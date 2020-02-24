@@ -3,9 +3,9 @@
 # Contributor: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname=git-ftp
-pkgver=1.5.2
-pkgrel=2
-pkgdesc='Git powered FTP client written as shell script'
+pkgver=1.6.0
+pkgrel=1
+pkgdesc='Uses Git to upload only changed files to FTP servers'
 arch=('any')
 url='https://github.com/git-ftp/git-ftp'
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('curl' 'git')
 makedepends=('pandoc')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-ftp/git-ftp/archive/$pkgver.tar.gz")
-sha256sums=('a6bf52f6f1d30c4d8f52fd0fbd61dc9f32e66099e3e9c4994bec65094305605b')
+sha256sums=('088b58d66c420e5eddc51327caec8dcbe8bddae557c308aa739231ed0490db01')
 
 build() {
     cd "$pkgname-$pkgver/man"
