@@ -1,0 +1,20 @@
+pkgbase = qtcreator-gitqlient-plugin-git
+	pkgdesc = GitQlientPlugin provides you a plugin to integrate Git in QtCreator full UI oriented
+	pkgver = r37.df1b2a7
+	pkgrel = 1
+	url = https://github.com/francescmm/GitQlientPlugin
+	arch = i686
+	arch = x86_64
+	groups = qt
+	groups = qt5
+	license = MIT
+	makedepends = git
+	makedepends = qtcreator-src
+	depends = qtcreator
+	provides = qtcreator-gitqlient-plugin
+	conflicts = qtcreator-gitqlient-plugin
+	source = qtcreator-gitqlient-plugin-git::git://github.com/francescmm/GitQlientPlugin.git
+	md5sums = SKIP
+
+pkgname = qtcreator-gitqlient-plugin-git
+
