@@ -1,6 +1,6 @@
 # Maintainer: birdsnotberries <pkg@wodeland.monster>
 pkgname=byuu
-pkgver=0.14
+pkgver=1
 pkgrel=1
 pkgdesc="a new multi-system emulator, which shares emulation cores with higan"
 arch=(x86_64)
@@ -9,16 +9,16 @@ license=('GPL')
 groups=()
 depends=(sdl2 libao libxv libpulse gtksourceview2 openal
 		perl-net-dbus perl-x11-protocol)
-source=("https://byuu.org/download/${pkgname}_v0r14-source.zip")
-md5sums=(2986c0850bb7a8828b2ad97a12d25095)
+source=("https://byuu.org/download/${pkgname}_v${pkgver}-source.zip")
+md5sums=(173abc26294a47fe85f31a464affc407)
 
 build() {
-	cd "${pkgname}_v0r14-source"
+	cd "${srcdir}/${pkgname}_v${pkgver}-source"
 	make -C higan target=byuu
 }
 
 package() {
-	cd "${pkgname}_v0r14-source"
+	cd "${srcdir}/${pkgname}_v${pkgver}-source"
 	install -Dm 755 higan/out/byuu -t "${pkgdir}"/usr/bin
 	install -Dm 644 higan/target-byuu/resource/byuu.desktop -t "${pkgdir}"/usr/share/applications/
   	install -Dm 644 higan/target-byuu/resource/byuu.png -t "${pkgdir}"/usr/share/pixmaps/
