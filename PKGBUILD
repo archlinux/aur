@@ -1,4 +1,4 @@
-# Maintainer: AlphaJack <alpha at tuta dot io>
+# Maintainer: AlphaJack <alphajack at tuta dot io>
 # Contributor: ianux
 # Contributor: priyank
 # Contributor: etix
@@ -16,7 +16,7 @@ optdepends=('flac: flac audio support'
             'libmp4v2: aac audio support'
             'libogg: ogg audio support')
 source=(https://github.com/Moonbase59/ices0/archive/v${pkgver}.tar.gz)
-sha512sums=('df8d7d7a52c690ee26d5b3716a8ac92f1bf79f84efb975b9036c8cd42d0fcd3a5a07b04a78de39>
+sha512sums=('df8d7d7a52c690ee26d5b3716a8ac92f1bf79f84efb975b9036c8cd42d0fcd3a5a07b04a78de39afe80e50e341da476b42b03a7e241e83496ec7f8ac1a42710a')
 options=('!docs')
 install=$pkgname.install
 
@@ -38,3 +38,4 @@ package() {
   mv ${pkgdir}/usr/share/man1/ices.1 ${pkgdir}/usr/share/man1/ices0.1
   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/$pkgname/COPYING
 }
+
