@@ -1,16 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vimix-cursors
 _pkgname=Vimix-cursors
-pkgver=2020.02.09
-_pkgver=2020-02-09
+pkgver=2020.02.24
+_pkgver=2020-02-24
 pkgrel=1
 pkgdesc="An X Cursor theme inspired by Material design and based on capitaine-cursors"
 arch=('any')
 url="https://github.com/vinceliuice/Vimix-cursors"
 license=('GPL3')
-makedepends=('git' 'inkscape' 'xorg-xcursorgen')
+makedepends=('inkscape' 'xorg-xcursorgen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver.tar.gz")
-sha256sums=('99f9d13133a57f7dbc3584f0e8196f66d4dd245355d2ecf7a238d7c4ef90aa4c')
+sha256sums=('69298d02264b5b15239c340f8fa899f91574c0eac49ad5745e8e588315423618')
 
 prepare() {
 	cd "$_pkgname-$_pkgver"
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname-$_pkgver"
-	bash -e ./build.sh
+	./build.sh
 }
 
 package() {
