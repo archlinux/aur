@@ -15,18 +15,17 @@ makedepends=(
 )
 options=('!strip')
 source=(
-  https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
+  https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz #ignore signature
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/patch-${pkgver}.xz #signature is mising
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 )
-validpgpkeys=(
-  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-)
+#validpgpkeys=(
+#  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+#  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+#)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('0c68f5655528aed4f99dae71a5b259edc93239fa899e2df79c055275c21749a1'
-            'SKIP'
             'f4e37d0b0ad65186397600f23c0f8fc974a169691443f92a65d179526c4c22e1'
             '4e68572e7cc4c5368f0236e0792660ae8498373988625dca46e509399a7eaea6'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
