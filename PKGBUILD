@@ -2,7 +2,7 @@
 
 pkgname=('python-trimesh' 'python2-trimesh')
 _name=trimesh
-pkgver=3.5.23
+pkgver=3.5.24
 pkgrel=1
 pkgdesc="Trimesh is a pure Python (2.7-3.4+) library for loading and using triangular meshes with an emphasis on watertight surfaces."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-md5sums=('0202d11801a24ccc3bab4805c37ee339')
+md5sums=('eacdd799ae6ba79bbdc29a41e0f5f8f2')
 
 
 build() {
