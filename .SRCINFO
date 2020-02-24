@@ -13,7 +13,7 @@ pkgbase = tev
 	depends = zlib
 	provides = tev
 	conflicts = tev
-	source = tev::git+https://github.com/Tom94/tev.git
+	source = tev::git+https://github.com/Tom94/tev.git#tag=v1.14
 	md5sums = SKIP
 
 pkgname = tev
