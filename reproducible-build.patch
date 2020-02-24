@@ -1,0 +1,20 @@
+diff --git a/Makefile b/Makefile
+index 475c85b..2800d44 100644
+--- a/Makefile
++++ b/Makefile
+@@ -37,13 +37,13 @@ build:
+ 	cargo build
+ 
+ release:
+-	cargo build --release
++	cargo build --release --locked
+ 
+ lint:
+ 	cargo clippy -- -D warnings
+ 
+ test:
+-	cargo test
++	cargo test --release --locked
+ 
+ clean:
+ 	cargo clean

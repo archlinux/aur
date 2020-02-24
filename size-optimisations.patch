@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 82216f5..1a056fe 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -20,3 +20,8 @@ users = "0.9"
+ xdg = "^2.1"
+ tar = "0.4"
+ xz2 = "0.1"
++
++[profile.release]
++panic = 'abort'
++opt-level = 'z'
++lto = true
