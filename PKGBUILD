@@ -1,7 +1,7 @@
 # Maintainer: Millian Poquet <millian.poquet@gmail.com>
 pkgname=simgrid
 pkgver=3.25
-pkgrel=2
+pkgrel=3
 pkgdesc='A scientific instrument to study the behavior of large-scale distributed systems such as Grids, Clouds, HPC or P2P systems.'
 arch=('i686' 'x86_64')
 url='https://simgrid.org/'
@@ -15,9 +15,9 @@ package() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
   cmake . \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -Denable_compile_optimizations=OFF \
+    -Denable_compile_optimizations=ON \
     -Denable_documentation=OFF \
-    -Denable_lto=OFF \
+    -Denable_lto=ON \
     -Denable_smpi=ON
   make -j $(nproc)
   make DESTDIR="${pkgdir}" install

@@ -1,7 +1,7 @@
 pkgbase = simgrid
 	pkgdesc = A scientific instrument to study large-scale distributed systems
 	pkgver = 3.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://simgrid.org/
 	arch = i686
 	arch = x86_64
