@@ -1,7 +1,13 @@
 post_install() {
   echo
   echo '==='
-  echo 'Standard installation on a USB flash drive now available, see new aui-mkinstall command.'
+  echo 'New command options for aui-mksio:'
+  echo
+  echo '--addpkg'
+  echo '--nvidia'
+  echo '--optimus'
+  echo
+  echo 'See aui-mkiso --help for details.'
   echo '==='
   echo
 }
