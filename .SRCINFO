@@ -1,0 +1,18 @@
+pkgbase = intarna-git
+	pkgdesc = Efficient target prediction incorporating accessibility of interaction sites
+	pkgver = v3.1.5
+	pkgrel = 1
+	url = https://github.com/BackofenLab/IntaRNA
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = viennarna
+	provides = intarna
+	conflicts = intarna
+	source = intarna::git+https://github.com/BackofenLab/IntaRNA.git#tag=v3.1.5
+	md5sums = SKIP
+
+pkgname = intarna-git
+
