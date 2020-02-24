@@ -1,7 +1,7 @@
 # Maintainer: Afnan Enayet <afnan at afnan.io>
 pkgname=blaze
 provides=('blaze')
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc='An open-source, high-performance C++ math library for dense and sparse arithmetic.'
 url='https://bitbucket.org/blaze-lib/blaze'
