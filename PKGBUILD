@@ -29,7 +29,6 @@ build() {
 	cd build
 	cmake ../$pkgname \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DWANT_QT4:BOOL="0" \
 	-DCMAKE_BUILD_TYPE:STRING="Release" \
 	-DWANT_AUDIOFILE:BOOL="1" \
 	-DWANT_GTKSTYLE:BOOL="1" \
