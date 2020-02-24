@@ -1,7 +1,7 @@
 # Maintainer: Daniel Schopf <schopf.dan at gmail dot com>
 pkgname=kim-api
 pkgver=2.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Online framework for reliable, reproducible and portable molecular simulations"
 arch=("i686" "x86_64")
 url="https://openkim.org"
