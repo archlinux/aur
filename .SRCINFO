@@ -1,12 +1,13 @@
 pkgbase = vimix-icon-theme
-	pkgdesc = Fresh and simple personality icon theme.
-	pkgver = 1.3
+	pkgdesc = A Material Design icon theme based on Paper Icon Theme
+	pkgver = 2020.02.24
 	pkgrel = 1
-	url = https://vinceliuice.deviantart.com/art/Vimix-icon-themes-530683384
+	url = https://github.com/vinceliuice/vimix-icon-theme
 	arch = any
-	license = custom:CC-BY-SA-4.0
-	source = https://github.com/vinceliuice/vimix-icon-theme/archive/vimix-icon-theme_1.3.tar.gz
-	sha256sums = 91283632c7d2181dc19b2ea7b28b5b71b6ba5979f7a516b5dc1495165889dbf8
+	license = CC BY-SA 4.0
+	options = !strip
+	source = vimix-icon-theme-2020.02.24.tar.gz::https://github.com/vinceliuice/vimix-icon-theme/archive/2020-02-24.tar.gz
+	sha256sums = 9f45abc7f1fa5212ed0453a9de54a8996786e38636e2cf07f8193667cef86358
 
 pkgname = vimix-icon-theme
 
