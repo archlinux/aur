@@ -66,9 +66,9 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.5
-_minor=5
+_minor=6
 _srcname=linux-${_major}
-_clr=${_major}.4-909
+_clr=${_major}.5-911
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -110,7 +110,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux/linux.spec |\
-          grep -Ev '^Patch0123|^Patch1001' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0123|^Patch1001|^Patch0051' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux/${i}"
         done
@@ -358,7 +358,7 @@ done
 
 sha256sums=('a6fbd4ee903c128367892c2393ee0d9657b6ed3ea90016d4dc6f1f6da20b2330'
             'SKIP'
-            '591340b56c24fd02db6b65542a14b7c3f50be8e1e224f2cc18c5da14ab5fc869'
+            '694bda875d41e9eafa4b71c4501c55815eb1e9cd85d43808bafcd19954cb5a38'
             'SKIP'
             '0def6f3608ec06f6dfc454aa5281a7c38b06ff27096cb341448d20602da4e923'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
