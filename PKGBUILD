@@ -1,15 +1,16 @@
-# Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
+# Maintainer: Cedric Girard <cgirard [dot] archlinux [at] valinor [dot] fr>
+# Contributor: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=roundcubemail-plugin-contextmenu
-pkgver=2.3
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc='Contextmenus for various parts of Roundcube using commands from the toolbars'
 arch=('any')
 url='https://github.com/JohnDoh/roundcube-contextmenu'
 license=('GPL3')
 depends=('roundcubemail')
-source=("https://github.com/JohnDoh/roundcube-contextmenu/archive/${pkgver}.tar.gz")
-sha256sums=('2e42440d4ea00e3d4b2102bd31e167d9b44d4661533bc6628cd6511f04b268e5')
+source=("roundcubemail-plugin-contextmenu-${pkgver}.tar.gz::https://github.com/JohnDoh/roundcube-contextmenu/archive/${pkgver}.tar.gz")
+sha256sums=('6959573ad09cde5bb1781db3f68373e17b49c790ec9084607de82d7261a2766c')
 
 package() {
     mkdir -p "${pkgdir}/usr/share/webapps/roundcubemail/plugins"
