@@ -1,7 +1,7 @@
 # Maintainer: Thomas Kiss <thokis@gmail.com>
 
 pkgname=sane-airscan-git
-pkgver=0.9.15.r4.g04857b0
+pkgver=0.9.16
 pkgrel=1
 pkgdesc='SANE - Apple AirScan (eSCL) driver'
 url='https://github.com/alexpevzner/sane-airscan'

@@ -1,6 +1,6 @@
 pkgbase = sane-airscan-git
 	pkgdesc = SANE - Apple AirScan (eSCL) driver
-	pkgver = 0.9.15.r4.g04857b0
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://github.com/alexpevzner/sane-airscan
 	arch = aarch64
