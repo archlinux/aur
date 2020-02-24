@@ -2,7 +2,7 @@
 
 pkgname=sane-airscan
 pkgrel=1
-pkgver=0.9.15
+pkgver=0.9.16
 pkgdesc='SANE - Apple AirScan (eSCL) driver'
 url='https://github.com/alexpevzner/sane-airscan'
 arch=('aarch64' 'x86_64')
