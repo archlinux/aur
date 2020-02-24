@@ -6,7 +6,7 @@ pkgrel=1
 epoch=
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."
 arch=("i686" "x86_64")
-url="https://github.com/Tom94/tev"
+url="https://github.com/Tom94/tev#tag=$pkgver"
 license=('BSD-3-Clause')
 depends=("zenity" "mesa" "zlib")
 makedepends=("cmake" "git")
@@ -19,8 +19,6 @@ md5sums=("SKIP")
 prepare() {
   git -C "${_pkgname}" submodule update --init --recursive
   mkdir -p "${_pkgname}/build"
-  cd "${_pkgname}"
-  git checkout tags/${pkgver}
 }
 
 build() {
