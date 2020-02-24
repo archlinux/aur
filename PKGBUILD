@@ -5,7 +5,7 @@
 
 pkgname=notion-app
 pkgver=2.0.7
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="The all-in-one workspace for your notes and tasks"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
         'notion-app.desktop')
 md5sums=('3f56f1fde5ba090d0a7ecd8af39d1e91'
          'ad3c23bc7d0186e2f622aa4b7310deac'
-         'edd003624766ec781e4963698beef458')
+         '557f7e0acfb56649f9ce7d9f7f85f7e6')
 
 build() {
   msg "Converting dmg image..."
