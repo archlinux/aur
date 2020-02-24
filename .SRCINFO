@@ -1,12 +1,12 @@
 pkgbase = otf-crimson-text
 	pkgdesc = A font family for book production in the tradition of beautiful oldstyle typefaces
 	pkgver = 2019.07
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/skosch/Crimson/
 	arch = any
 	license = OFL
-	source = otf-crimson-text.zip::https://github.com/skosch/Crimson/archive/f8255058575d26ddf35ab0b2d5ab7832c40f7a1a.zip
+	source = otf-crimson-text-2019.07.zip::https://github.com/skosch/Crimson/archive/f8255058575d26ddf35ab0b2d5ab7832c40f7a1a.zip
 	sha256sums = 751e1922bc3fc89bd545e7a6c28a6b8c0f28e266dce83f67fa6bd546672b6cad
 
 pkgname = otf-crimson-text
