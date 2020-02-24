@@ -1,8 +1,8 @@
 # Maintainer: Caesim404 <caesim404 at gmail dot com>
 
 pkgname="yatqa"
-_pkgver="3.9.8.3"
-pkgver="${_pkgver/-/}"
+_realpkgver="3.9.8.3b"
+pkgver="3.9.8.3.b"
 epoch="1"
 pkgrel="1"
 pkgdesc="Tool for managing TeamSpeak 3 servers and instances"
@@ -12,12 +12,12 @@ license=("custom")
 depends=("wine")
 makedepends=("p7zip" "icoutils")
 install="yatqa.install"
-source=("https://dl.yat.qa/stable/YaTQA-Setup_${_pkgver}.exe"
+source=("https://dl.yat.qa/stable/YaTQA-Setup_${_realpkgver}.exe"
         "yatqa"
         "yatqa.desktop"
         "yatqa.install"
         "LICENSE")
-sha256sums=('1a146e5bc5c8f0c1eebfe40745f24ea6e90497854dc55e1599979e2c10f33a31'
+sha256sums=('b17b4412979f80e2e58bdb003caaeadf36d4c6e5c269c8d121db9850805b1423'
             '57fcd761e93b6f5d8bd6f4e354aafc9174ecdeea0fe39ea89dc68245b3c9ce02'
             '98c8f8313858f9fd7a00f75001effcf298b8b1bc43e142ac3e361016f5be9c6f'
             '45fe54d9f4655abb6774a01c961ee547507a92c2499645164f14ea5b1dc1a55a'
@@ -26,7 +26,7 @@ sha256sums=('1a146e5bc5c8f0c1eebfe40745f24ea6e90497854dc55e1599979e2c10f33a31'
 build() {
     cd "${srcdir}"
     
-    7z x -aos "YaTQA-Setup_${_pkgver}.exe" yatqa.exe yatqa.ini
+    7z x -aos "YaTQA-Setup_${_realpkgver}.exe" yatqa.exe yatqa.ini
     
     wrestool -x -t 14 -o yatqa.ico yatqa.exe
     icotool -x -w 144 -o yatqa.png yatqa.ico
