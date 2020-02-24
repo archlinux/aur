@@ -1,4 +1,5 @@
 aws-cdk-*.tgz
-aws-cdk-*.tar.*
+nodejs-aws-cdk-*-any.pkg.tar.xz
+nodejs-aws-cdk-*.src.tar.gz
 pkg
 src
