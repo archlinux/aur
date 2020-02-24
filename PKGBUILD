@@ -4,9 +4,9 @@
 # Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
 
 _rockname=dkjson
-pkgname=("lua-$_rockname") # "lua52-$_rockname" "lua51-$_rockname")
+pkgname=("lua-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 _rockrel=2
 pkgdesc='David Kolf’s Pure Lua JSON module with UTF-8 support and no external dependencies'
 arch=('any')
