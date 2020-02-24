@@ -60,9 +60,9 @@ _localmodcfg=
 
 _major=5.6
 _minor=0
-_rc=2
+_rc=3
 _srcname=linux-${_major}-rc${_rc}
-_clr=${_major}.0.rc1-12
+_clr=${_major}.0.rc2-13
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
 pkgrel=1
@@ -311,7 +311,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('37cbd2341d7d27188ae2de4c676bf614d1d55b42467e36187189e5b21bd26dac'
+sha256sums=('b37a722be6f70f268977d1b820ef5692f89e43369e19afeacce95d9dd32c46f0'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
