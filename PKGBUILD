@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=yubioath-desktop
 pkgname=yubico-${_pkgname}-git
-pkgver=1304
+pkgver=1342
 pkgrel=1
 pkgdesc="Crossplatform graphical user interface to generate one-time passwords."
 arch=('x86_64')
@@ -33,7 +33,7 @@ package() {
   cd "${_pkgname}"
 
   make INSTALL_ROOT="${pkgdir}/" install
-  install -D -m0644 resources/yubioath-desktop.desktop "${pkgdir}/usr/share/applications/yubioath-desktop.desktop"
+  install -D -m0644 resources/com.yubico.yubioath.desktop "${pkgdir}/usr/share/applications/yubioath-desktop.desktop"
   install -D -m0644 resources/icons/com.yubico.yubioath.png "${pkgdir}/usr/share/pixmaps/com.yubico.yubioath.png"
   install -D -m0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

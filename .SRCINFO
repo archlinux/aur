@@ -1,6 +1,6 @@
 pkgbase = yubico-yubioath-desktop-git
 	pkgdesc = Crossplatform graphical user interface to generate one-time passwords.
-	pkgver = 1304
+	pkgver = 1342
 	pkgrel = 1
 	url = https://developers.yubico.com/yubioath-desktop/
 	arch = x86_64
