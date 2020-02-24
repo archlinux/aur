@@ -2,7 +2,7 @@
 _pkgname=hopcroftkarp
 pkgname=python-$_pkgname-git
 pkgver=r43.4ecacde
-pkgrel=1
+pkgrel=2
 pkgdesc="a module to find a maximum matching in bipartite graphs"
 arch=('any')
 url="https://github.com/sofiatolaosebikan/hopcroftkarp"
@@ -27,5 +27,6 @@ pkgver() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
+  rm test/__init__.py
   python setup.py install --root="$pkgdir/" --optimize=1
 }
