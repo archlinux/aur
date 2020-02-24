@@ -3,7 +3,7 @@
 
 pkgname=python-climin-git
 pkgver=r544.2215b1a
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Optimizers for machine learning"
 arch=("any")
@@ -13,6 +13,11 @@ depends=('python' 'python-numpy' 'python-scipy')
 makedepends=('python-setuptools')
 source=("git://github.com/BRML/climin.git")
 sha512sums=("SKIP")
+
+prepare() {
+    # Do not install tests into site-packages root
+    rm "${srcdir}/climin/test/__init__.py"
+}
 
 build() {
     cd climin

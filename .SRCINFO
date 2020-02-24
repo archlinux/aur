@@ -1,7 +1,7 @@
 pkgbase = python-climin-git
 	pkgdesc = Optimizers for machine learning
 	pkgver = r544.2215b1a
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/BRML/climin
 	arch = any
