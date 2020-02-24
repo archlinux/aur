@@ -1,9 +1,11 @@
-# Maintainer: Tavian Barnes <tavianator@tavianator.com>
+# Maintainer: Danila Kiver <danila.kiver@mail.ru>
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
+
 pkgname=java8-openjdk-hsdis
 _java_ver=8
-_jdk_update=112
-_jdk_build=15
-_binutils_ver=2.27
+_jdk_update=242
+_jdk_build=08
+_binutils_ver=2.31
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
@@ -14,8 +16,8 @@ license=('GPL2')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(hotspot-${_repo_ver}.tar.gz::${_url_src}/hotspot/archive/${_repo_ver}.tar.gz
         http://ftp.gnu.org/gnu/binutils/binutils-${_binutils_ver}.tar.bz2)
-sha256sums=('cf8551cebf5991ccd60459e4d1bc486e03c7257fd33eb14e949670854024843c'
-            '369737ce51587f92466041a97ab7d2358c6d9e1b6490b3940eb09fb0a9a6ac88')
+sha256sums=('8b799f2ef8e804110aa6ccd23fc46a04047141f7f8ad32936a6fc66f828b24a2'
+            '2c49536b1ca6b8900531b9e34f211a81caf9bf85b1a71f82b81ae32fcd8ffe19')
 
 prepare() {
   cd "${srcdir}/binutils-${_binutils_ver}"
