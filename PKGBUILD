@@ -5,7 +5,7 @@
 pkgname=perl-hash-merge-simple
 _pkgname=Hash-Merge-Simple
 pkgver=0.051
-pkgrel=1
+pkgrel=2
 pkgdesc='Recursively merge two or more hashes, simply'
 arch=('any')
 license=('PerlArtistic' 'GPL')
