@@ -29,14 +29,12 @@ build() {
   [[ -d build ]] || mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-        -DPLUGINS:STRING="ALL" \
+	-DPLUGINS:STRING="ALL;-ruby" \
         -DTOOLS:STRING="ALL" \
         -DBUILD_STATIC:STRING=OFF \
-        -DBINDINGS:STRING="ALL" \
+        -DBINDINGS:STRING="ALL;-ruby" \
         -DSWIG_EXECUTABLE:STRING="/usr/bin/swig" \
         -DLUA_INCLUDE_DIR:PATH=/usr/include \
-	-DPLUGINS:STRING="ALL;-ruby" \
-        -DBINDINGS:STRING="ALL;-ruby" \
         -DLUA_LIBRARY:STRING=/usr/lib/liblua.so ..
   make clean 
   make
