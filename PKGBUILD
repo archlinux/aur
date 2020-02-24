@@ -2,7 +2,7 @@
 
 pkgname=supersm
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Super Symlink Manager"
 arch=("any")
 url="https://github.com/peeweep/supersm"
@@ -11,7 +11,7 @@ makedepends=('boost' 'cmake' 'make')
 provides=('supersm')
 conflicts=('supersm-git')
 source=("${pkgname}-${pkgver}.tar.gz"::${url}/archive/${pkgver}.tar.gz)
-sha256sums=('be2f1aa9fce1a4226727544ce3e374ff348e78f49afa315a6bbdf571dc50183b')
+sha256sums=('52f8e73ef28480232d3372c9f508c433e1ff28bb403f895e2a969dcfef75494b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
