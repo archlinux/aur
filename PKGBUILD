@@ -2,7 +2,7 @@
 # Contributor: Anton Novosyolov <anton.novosyolov@gmail.com>
 
 pkgname=python-slacker
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='Full-featured Python interface for the Slack API'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 options=(!emptydirs)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/os/slacker/archive/v${pkgver}.tar.gz")
-sha256sums=('2e1daf53c9fadc53a8e8c94984ed33a02a35ff7893c9450ae531dc3c0e9eb1f4')
+sha256sums=('ddfad064d6b478e88682377533f8cf51d7fce2f5c09152124d212551d8f8f189')
 
 build() {
     cd "$srcdir/slacker-${pkgver}"

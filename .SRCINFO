@@ -1,6 +1,6 @@
 pkgbase = python-slacker
 	pkgdesc = Full-featured Python interface for the Slack API
-	pkgver = 0.13.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = http://github.com/os/slacker
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-slacker
 	depends = python
 	depends = python-requests
 	options = !emptydirs
-	source = python-slacker-0.13.0.tar.gz::https://github.com/os/slacker/archive/v0.13.0.tar.gz
-	sha256sums = 2e1daf53c9fadc53a8e8c94984ed33a02a35ff7893c9450ae531dc3c0e9eb1f4
+	source = python-slacker-0.14.0.tar.gz::https://github.com/os/slacker/archive/v0.14.0.tar.gz
+	sha256sums = ddfad064d6b478e88682377533f8cf51d7fce2f5c09152124d212551d8f8f189
 
 pkgname = python-slacker
 
