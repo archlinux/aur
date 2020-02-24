@@ -1,7 +1,7 @@
 pkgbase = opentx-companion-bin
 	pkgdesc = Models and settings editor for the OpenTX open source firmware.
-	pkgver = 2.2.3
-	pkgrel = 2
+	pkgver = 2.3.5
+	pkgrel = 1
 	url = http://www.open-tx.org/
 	install = opentx-companion-bin.install
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = opentx-companion-bin
 	conflicts = companion9x-svn
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://downloads.open-tx.org/2.2/release/companion/linux/companion22_2.2.3_amd64.deb
-	sha512sums_x86_64 = a4f68062b0a86d07f9fe7541f7c4e383e050baef058b8de8294ee18fc365dbfe5ffe5bece5d8c430a822a0096282eb454c08cd5fa72e1af8b66afeac68695868
+	source_x86_64 = https://downloads.open-tx.org/2.3/release/companion/linux/companion23_2.3.5_amd64.deb
+	sha512sums_x86_64 = ecd21d7f94fbeba766465cb7345e23f312a3af7b61b66fe86b05bb740f9f7219dedb13796179c8acb6f6b65dcca8ec7a9f1457810a9285d8279e2ccec12da9b9
 
 pkgname = opentx-companion-bin
 

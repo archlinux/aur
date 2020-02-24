@@ -2,8 +2,8 @@
 # Maintainer: Alex
 # Contributor: Alex
 pkgname=('opentx-companion-bin')
-pkgver=2.2.3
-pkgrel=2
+pkgver=2.3.5
+pkgrel=1
 pkgdesc="Models and settings editor for the OpenTX open source firmware."
 arch=('x86_64')
 url="http://www.open-tx.org/"
@@ -13,8 +13,8 @@ provides=('companion')
 conflicts=('companion' 'companion9x-svn')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://downloads.open-tx.org/2.2/release/companion/linux/companion22_${pkgver}_amd64.deb")
-sha512sums_x86_64=('a4f68062b0a86d07f9fe7541f7c4e383e050baef058b8de8294ee18fc365dbfe5ffe5bece5d8c430a822a0096282eb454c08cd5fa72e1af8b66afeac68695868')
+source_x86_64=("https://downloads.open-tx.org/2.3/release/companion/linux/companion23_${pkgver}_amd64.deb")
+sha512sums_x86_64=('ecd21d7f94fbeba766465cb7345e23f312a3af7b61b66fe86b05bb740f9f7219dedb13796179c8acb6f6b65dcca8ec7a9f1457810a9285d8279e2ccec12da9b9')
 
 package(){
 
@@ -25,11 +25,7 @@ package(){
 	cd "${pkgdir}"
 
 	mv usr/local/bin usr/bin
-	mv lib usr/lib
-
-	sed -i -e 's:^Exec=/usr/local/bin/:Exec=/usr/bin/:g' "usr/share/applications/companion22.desktop"
-	sed -i -e 's:^Exec=/usr/local/bin/:Exec=/usr/bin/:g' "usr/share/applications/simulator22.desktop"
-
-	cd ..
-
+	mv usr/local/lib usr/lib
+	mv lib/* usr/lib
+	rm -r lib
 }
