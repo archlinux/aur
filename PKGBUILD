@@ -3,14 +3,14 @@
 
 pkgname=xmake
 pkgver=2.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A make-like build utility based on Lua"
 arch=('i686' 'x86_64')
 url="https://github.com/xmake-io/xmake"
 license=('Apache')
 makedepends=()
 source=("$pkgname.tar.gz::https://github.com/xmake-io/xmake/releases/download/v${pkgver}/xmake-v${pkgver}.tar.gz")
-sha256sums=('7e1de40c68466c52b00e92989c6c561356f6ec1603acca0bfdc8c703effb04ec')
+sha256sums=('94ba21b4ca9586509b78d1bb1e788be966f19c5b9cb6f6ea8fcab26c69f9bda2')
 
 build() {
     cd "$srcdir"
@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "$srcdir"
-    make install DESTDIR="${pkgdir}/usr" PREFIX="/usr"
+    make install DESTDIR="${pkgdir}" PREFIX="/usr"
 }
