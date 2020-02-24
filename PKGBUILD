@@ -8,7 +8,7 @@ arch=('any')
 url="https://vinceliuice.github.io/theme-vimix.html"
 license=('GPL3')
 depends=('gtk3' 'gtk-engine-murrine' 'gtk-engines')
-optdepends=('kvantum-theme-vimix: Matching Kvantum theme'
+optdepends=('kvantum-theme-vimix-git: Matching Kvantum theme'
             'vimix-icon-theme: Matching icon theme'
             'vimix-cursors: Matching cursor theme'
             'tela-icon-theme: Recommended icon theme')
