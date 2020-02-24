@@ -1,14 +1,13 @@
 pkgbase = otf-libertinus
-	pkgdesc = The Libertinus font family. A fork of the Linux Libertine and Linux Biolinum fonts with bugfixes and an OpenType math companion.
+	pkgdesc = The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math
 	pkgver = 6.10
-	pkgrel = 1
-	url = https://github.com/libertinus-fonts/libertinus
+	pkgrel = 2
+	url = https://github.com/alif-type/libertinus
 	arch = any
-	license = custom: OFL
-	depends = fontconfig
+	license = OFL
 	conflicts = otf-libertine-git
 	conflicts = otf-libertinus-git
-	source = https://github.com/libertinus-fonts/libertinus/releases/download/v6.10/libertinus-6.10.zip
+	source = https://github.com/alif-type/libertinus/releases/download/v6.10/libertinus-6.10.zip
 	sha256sums = 54cd1eedb95c67a4679a00ad2e2144c82395fc39cbcbf0ca88ea6dd1da4d5498
 
 pkgname = otf-libertinus
