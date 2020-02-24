@@ -1,10 +1,11 @@
 pkgbase = ttf-charis-sil
 	pkgdesc = A transitional serif typeface based on Bitstream Charter.
 	pkgver = 5.000
-	pkgrel = 3
+	pkgrel = 4
 	url = https://software.sil.org/charis/
 	arch = any
 	license = custom:OFL
+	conflicts = ttf-sil-fonts<=6
 	source = https://software.sil.org/downloads/r/charis/CharisSIL-5.000.zip
 	sha256sums = 5e3e5473b30363008c289cc87e2aa584a0916087a63a3f689defa8e0cee09bfd
 
