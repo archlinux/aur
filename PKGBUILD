@@ -2,8 +2,8 @@
 #                         (What a silly email.).
 
 pkgname="stretchy-snek-boi"
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.4
+pkgrel=3
 pkgdesc="A snake game clone."
 arch=("x86_64")
 license=('WTFPL 2.0')
@@ -18,5 +18,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	sudo make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" install
 }
