@@ -4,9 +4,8 @@
 pkgname=otf-libertinus
 _pkgname="${pkgname#*-}"
 pkgver=6.10
-pkgrel=2
+pkgrel=3
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
-conflicts=('otf-libertine-git' 'otf-libertinus-git')
 arch=('any')
 license=('OFL')
 url="https://github.com/alif-type/$_pkgname"
@@ -17,5 +16,5 @@ package() {
 	cd "${_pkgname^}-$pkgver"
 	install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" ${_pkgname^}*.otf
 	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" OFL.txt AUTHORS.txt
-	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" FONTLOG.txt documentation/*
+	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt FONTLOG.txt documentation/*
 }
