@@ -2,17 +2,17 @@
 
 _pkgname=gnucap-custom
 pkgname=$_pkgname-git
-pkgver=r33.0483cea
+pkgver=r38.cb4639b
 pkgrel=1
 pkgdesc="customisable executable + a few plugins for gnucap"
 arch=('x86_64')
-url="https://gitlab.com/gnucap/gnucap-custom"
+url="https://codeberg.org/gnucap/gnucap-custom"
 license=('GPL')
-depends=('gnucap')
+depends=('gnucap-git' 'boost')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://gitlab.com/gnucap/$_pkgname.git")
+source=("$_pkgname::git+https://codeberg.org/gnucap/$_pkgname.git#branch=master")
 md5sums=('SKIP')
 
 

@@ -1,15 +1,16 @@
 pkgbase = gnucap-custom-git
 	pkgdesc = customisable executable + a few plugins for gnucap
-	pkgver = r33.0483cea
+	pkgver = r38.cb4639b
 	pkgrel = 1
-	url = https://gitlab.com/gnucap/gnucap-custom
+	url = https://codeberg.org/gnucap/gnucap-custom
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = gnucap
+	depends = gnucap-git
+	depends = boost
 	provides = gnucap-custom
 	conflicts = gnucap-custom
-	source = gnucap-custom::git+https://gitlab.com/gnucap/gnucap-custom.git
+	source = gnucap-custom::git+https://codeberg.org/gnucap/gnucap-custom.git#branch=master
 	md5sums = SKIP
 
 pkgname = gnucap-custom-git
