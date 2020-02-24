@@ -1,0 +1,12 @@
+#!/bin/sh
+
+export WINEPREFIX="${WINBOX_HOME:-"${XDG_DATA_HOME:-"${HOME}/.local/share"}/winbox"}/wine"
+export WINEARCH=win64
+export WINEDLLOVERRIDES="mscoree=" # disable mono
+export WINEDEBUG=-all
+if [ ! -d "${WINEPREFIX}" ] ; then
+   mkdir -p "${WINEPREFIX}"
+   wineboot -u
+fi
+
+wine /usr/share/winbox/winbox.exe "$@"
