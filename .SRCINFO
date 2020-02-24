@@ -1,7 +1,7 @@
 pkgbase = teamocil
 	pkgdesc = set up window and splits layouts for tmux using YAML configuration files
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/remi/teamocil
 	arch = any
 	license = MIT

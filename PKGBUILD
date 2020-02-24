@@ -3,7 +3,7 @@
 
 pkgname=teamocil
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='set up window and splits layouts for tmux using YAML configuration files'
 arch=('any')
 url='https://github.com/remi/teamocil'
