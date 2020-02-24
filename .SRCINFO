@@ -1,23 +1,24 @@
 pkgbase = java-openjfx-bin
-	pkgdesc = Java OpenJFX 13 client application platform (Gluon build).
-	pkgver = 13
-	pkgrel = 3
+	pkgdesc = Java OpenJFX 14 client application platform (Gluon build).
+	pkgver = 14rc8
+	pkgrel = 1
 	url = https://openjfx.io/
 	arch = x86_64
 	license = GPL2
 	depends = ffmpeg
 	depends = gstreamer
-	depends = java-environment>=13
+	depends = java-environment>=14
 	depends = libxtst
 	depends = qt5-base
 	depends = webkit2gtk
-	provides = java-openjfx=13
-	conflicts = java-openjfx>=13
-	conflicts = java13-openjfx
-	source = https://download2.gluonhq.com/openjfx/13/openjfx-13_linux-x64_bin-sdk.zip
-	source = https://download2.gluonhq.com/openjfx/13/openjfx-13_linux-x64_bin-jmods.zip
-	sha256sums = 6f2d1ed4678615d909546b2b4a88f710fd7367bb78a0d7c195ee4645a4c7efc5
-	sha256sums = cf14074968bfa07ba075662ea6f60db8208ac50776f619c274afe51b581d9954
+	provides = java-openjfx=14
+	conflicts = java14-openjfx
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+8_linux-x64_bin-sdk.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+8_linux-x64_bin-jmods.zip
+	source = https://download2.gluonhq.com/openjfx/14/openjfx-14-ea+8-javadoc.zip
+	sha256sums = 5e849d7c2071529c7ee7ac49eb4877cd28754df5175a8b04cfa8bb4f9d6cf759
+	sha256sums = 91e5647fb5689906fe012ca81b71bc78e94af6058d9e3674dc53dad6abc907b3
+	sha256sums = f114656702f23aa59b3d3828db5228436962f13af20d83b96716915d04211d27
 
 pkgname = java-openjfx-bin
 
