@@ -10,8 +10,8 @@ depends=('xz')
 makedepends=('cargo')
 checkdepends=('cargo')
 changelog=CHANGELOG.md
-source=("https://github.com/ru5j4r0/aur/raw/master/pyflow/$pkgname-$pkgver.tar.zst")
-b2sums=(f627b528be505ff999385a50f840baae7fc1a1e88c29d20b11e548c9eaa6fc15cf115e678f4eed7cbda0153c46d54769b835ffc86d13401a0a43cdaaaa5e59fb)
+source=("https://github.com/David-OConnor/pyflow/archive/0.2.4.tar.gz")
+b2sums=(75cf6463928ed34ac9234973d00ea9b087df8b6fb0aff75e11b99b91eb1bef76c32c898e81d9f5dff5350efbf7d51c816200cc89052837ce54c2a875c2a126f5)
 validpgpkeys=(B3D4420410BC16F84C358DF6AF36488D565A347A)
 
 build() {
