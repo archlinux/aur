@@ -1,17 +1,22 @@
-# Maintainer: ianux <ianux at free dot fr>
+# Maintainer: AlphaJack <alpha at tuta dot io>
+# Contributor: ianux
 # Contributor: priyank
 # Contributor: etix
 
 pkgname=ices0
 pkgver=0.4.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Source client for broadcasting in MP3 format to an Icecast2 server"
-arch=('i686' 'x86_64')
-license=('GPL')
-url="http://icecast.org/ices.php"
-depends=('libxml2' 'lame' 'libvorbis' 'libshout' 'python2' 'perl')
+arch=('i686' 'x86_64' 'armv7h')
+license=('GPL-2.0')
+url="https://icecast.org/ices/"
+depends=('libxml2' 'lame' 'libvorbis' 'libshout' 'python2' 'perl' 'pkgconf' 'autoconf')
+optdepends=('flac: flac audio support'
+            'faad2: aac audio support'
+            'libmp4v2: aac audio support'
+            'libogg: ogg audio support')
 source=(https://github.com/Moonbase59/ices0/archive/v${pkgver}.tar.gz)
-sha512sums=('df8d7d7a52c690ee26d5b3716a8ac92f1bf79f84efb975b9036c8cd42d0fcd3a5a07b04a78de39afe80e50e341da476b42b03a7e241e83496ec7f8ac1a42710a')
+sha512sums=('df8d7d7a52c690ee26d5b3716a8ac92f1bf79f84efb975b9036c8cd42d0fcd3a5a07b04a78de39>
 options=('!docs')
 install=$pkgname.install
 
@@ -21,7 +26,7 @@ build() {
   autoreconf -fi
   automake --add-missing
   ./configure --prefix=/usr --sysconfdir=/usr/share/$pkgname -mandir=/usr/share \
-    --with-python=/usr/bin/python2 --without-faad --without-flac
+   --with-python=/usr/bin/python2
   make
 }
 
