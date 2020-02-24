@@ -4,7 +4,7 @@
 # Contributor: Niels Abspoel <aboe76 (at) Gmail (dot) com>
 
 pkgname=puppetserver
-pkgver=6.7.2
+pkgver=6.9.0
 pkgrel=1
 pkgdesc="Server automation framework and application"
 arch=('any')
@@ -26,14 +26,14 @@ backup=('etc/default/puppetserver'
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::https://downloads.puppetlabs.com/puppet/${pkgname}-${pkgver}.tar.gz.asc")
-sha512sums=('e2015554648dc861d513b5778c274e2b09c4ea2ebd53141d152a5bba1046ac6ef163083296c176008a7606581b8368df99aa72907e0edd59e687aa9991209fb5'
+sha512sums=('b1446d407d50e3da502e2cd882647379fb51334bf5d4cc13d3654c8f7cbec2d6c4d7efd8acdfbdc1c70c6e30e3b420ed642cbdb97ee5f6a16b3b404dbd42bba7'
             'SKIP')
 validpgpkeys=('6F6B15509CF8E59E6E469F327F438280EF8D349F')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  echo 'hiera-eyaml 3.0.0' >> ext/build-scripts/jruby-gem-list.txt
+  echo 'hiera-eyaml 3.2.0' >> ext/build-scripts/jruby-gem-list.txt
   sed -i 's:sysconfig:default:' ext/redhat/puppetserver.service
   sed -i "s:\[/opt/puppetlabs/puppet/lib/ruby/vendor_ruby\]:\[$( ruby -e \
     'puts RbConfig::CONFIG["vendorlibdir"]' ),$( ruby -e \
