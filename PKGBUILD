@@ -3,8 +3,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=4.3.2
-pkgrel=7
+pkgver=4.3.5
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=4.3.3
 _now=`date +%N`
@@ -40,10 +40,10 @@ source=(pihole-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$
 	    piholeDebug.sh
 )
 
-md5sums=('33ea26a46937a0b5d20037639eb0ee34'
+md5sums=('177b0155ccf81d676dcd2e12c469dee9'
          '3f9da0e1f9134393758b7a1425ca66f6'
-         '313c22e4fecfbbab03b39fde07cdce95'
-         '7742a2b661e98d0e7f97471211fc86f6'
+         'bc36a8081d93c1209623a86bc8cf17c1'
+         '7e9adad25e01adc525a9f50842bc9124'
          '4d9038588164bb9130c8ca11653f83f3'
          '971cc2859672341d77f8deba702fb7f7'
          'b63fcf29c29796023a2677bcf2b369a7'
@@ -103,7 +103,7 @@ package() {
   install -Dm644 $_pkgname-$pkgver/advanced/Templates/logrotate "$pkgdir"/etc/pihole/logrotate
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/whitelist.txt
   install -Dm644 /dev/null "$pkgdir"/etc/pihole/blacklist.txt
-  install -Dm644 /dev/null "$pkgdir"/etc/pihole/regex.list
+  install -Dm664 /dev/null "$pkgdir"/etc/pihole/regex.list
 
   install -Dm644 lighttpd.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/lighttpd.example.conf
   install -Dm644 nginx.pi-hole.conf "$pkgdir"/usr/share/pihole/configs/nginx.example.conf
