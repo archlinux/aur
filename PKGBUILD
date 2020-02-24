@@ -2,7 +2,7 @@
 
 pkgname=haur
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Helper for the Arch User Repository"
 arch=('any')
 url="https://github.com/karx1/haur"
