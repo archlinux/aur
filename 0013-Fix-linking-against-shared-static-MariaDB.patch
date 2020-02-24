@@ -22,5 +22,5 @@ index cd20eef1df..babd0465ce 100644
                  { "type": "mysqlConfig", "query": "--libs", "cleanlibs": true },
                  { "type": "mysqlConfig", "query": "--libs_r", "cleanlibs": false },
 -- 
-2.25.0
+2.25.1
 
