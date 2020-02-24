@@ -1,4 +1,4 @@
-# Maintainer: nycex <nycex@protonmail.com>
+# Maintainer: nycex <nycex / cccp.org>
 _pkgbasename=axosnake
 pkgname=$_pkgbasename-git
 pkgrel=1
