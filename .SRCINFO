@@ -8,7 +8,7 @@ pkgbase = haur
 	depends = bash
 	depends = git
 	source = haur
-	md5sums = cc4b40403e0c3f2247f3ea72d578a000
+	md5sums = 23c78cb76dc3aebd7f45efce417c9830
 
 pkgname = haur
 
