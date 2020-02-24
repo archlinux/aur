@@ -1,7 +1,7 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=exa
 pkgname=${_pkgname}-git
-pkgver=991
+pkgver=v0.9.0.r80.78ba0b8
 pkgrel=1
 pkgdesc='Replacement for ls written in Rust.'
 arch=('i686' 'x86_64')
@@ -16,11 +16,11 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git rev-list --count HEAD
+    printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
-package() {
-    make -C "$pkgname"
+build() {
+    make -C "$srcdir/$_pkgname"
 }
 
 package() {
@@ -28,12 +28,13 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     make PREFIX="$pkgdir/usr" install
     install -Dm644 contrib/completions.bash \
-    "$pkgdir/etc/bash_completion.d/$pkgname"
-	install -Dm644 contrib/completions.zsh \
-    "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
-	install -Dm644 contrib/completions.fish \
-    "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
+        "$pkgdir/etc/bash_completion.d/$pkgname"
+    install -Dm644 contrib/completions.zsh \
+        "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+    install -Dm644 contrib/completions.fish \
+        "$pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish"
     install -Dm644 LICEN?E \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 "$srcdir/$_pkgname/contrib/man/$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/$_pkgname/contrib/man/$_pkgname.1" \
+        "$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
