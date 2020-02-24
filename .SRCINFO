@@ -1,0 +1,12 @@
+pkgbase = routed-gothic-fonts
+	pkgdesc = A clean vintage drafting, avionics, routed signage, and keyboard legend font.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://webonastick.com/fonts/routed-gothic
+	arch = any
+	license = OFL-1.0
+	source = routed-gothic-1.0.0.tar.gz::https://github.com/dse/routed-gothic/archive/v1.0.0.tar.gz
+	sha256sums = e0079b81fa068a4672f02585f7bc2910bf1535d8cd73b04d4a023bd2cbca361d
+
+pkgname = routed-gothic-fonts
+
