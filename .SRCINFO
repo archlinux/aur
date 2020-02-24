@@ -1,7 +1,7 @@
 pkgbase = pi-hole-ftl
 	pkgdesc = The Pi-hole FTL engine
 	pkgver = 4.3.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/pi-hole/FTL
 	install = pi-hole-ftl.install
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = pi-hole-ftl
 	backup = etc/pihole/pihole-FTL.conf
 	backup = etc/pihole/pihole-FTL.db
 	source = https://github.com/pi-hole/FTL/archive/v4.3.1.tar.gz
-	source = arch-ftl-4.3.1-967777019.patch::https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-4.3.1.patch
+	source = arch-ftl-4.3.1-129650068.patch::https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-4.3.1.patch
 	source = nettle35.patch
 	source = glib.patch
 	source = pi-hole-ftl.tmpfile
@@ -33,7 +33,7 @@ pkgbase = pi-hole-ftl
 	md5sums = b0d6917f83dea640bfabeeedb4e10fe1
 	md5sums = ca844c23699ba64777571253bc7ccb21
 	md5sums = 68e78907dc2a0c89421d02377e76d353
-	md5sums = 959df75dcc4ecb06040200e7f4621339
+	md5sums = f6c4319adee31fd507485d25601bd400
 	md5sums = 0495c002b7d5dce303d451e4cd2fede5
 	md5sums = a9c8de83f02d36bfe96db57975984bbb
 

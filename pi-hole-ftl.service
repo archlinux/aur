@@ -7,6 +7,7 @@ User=pihole
 Group=pihole
 PIDFile=/run/pihole-ftl/pihole-FTL.pid
 ExecStartPre=/bin/chown -R pihole:pihole /etc/pihole
+ExecStartPre=/bin/chown pihole:http /etc/pihole/regex.list
 ExecStart=/usr/bin/pihole-FTL no-daemon
 ExecReload=/bin/kill -USR1 $MAINPID
 Restart=on-failure
