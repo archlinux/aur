@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=elektra-git
-pkgver=0.9.0.r881.gfe1b27e31
+pkgver=0.9.1.r176.g5cf9b3cf8
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store from git master"
 url="https://www.libelektra.org"
@@ -35,6 +35,8 @@ build() {
         -DBINDINGS:STRING="ALL" \
         -DSWIG_EXECUTABLE:STRING="/usr/bin/swig" \
         -DLUA_INCLUDE_DIR:PATH=/usr/include \
+	-DPLUGINS:STRING="ALL;-ruby" \
+        -DBINDINGS:STRING="ALL;-ruby" \
         -DLUA_LIBRARY:STRING=/usr/lib/liblua.so ..
   make clean 
   make

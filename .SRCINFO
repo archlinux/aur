@@ -1,6 +1,6 @@
 pkgbase = elektra-git
 	pkgdesc = A universal hierarchical configuration store from git master
-	pkgver = 0.9.0.r881.gfe1b27e31
+	pkgver = 0.9.1.r176.g5cf9b3cf8
 	pkgrel = 1
 	url = https://www.libelektra.org
 	arch = i686
