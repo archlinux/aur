@@ -18,18 +18,18 @@ conflicts=(sysprof)
 
 
 pkgver() {
-  cd $pkgname
+  cd sysprof
   git describe --tags | sed 's/^sysprof-//;s/-/+/g'
 }
 
 prepare() {
-  cd $pkgname
+  cd sysprof
 }
 
 build() {
   CFLAGS+=" -ffat-lto-objects"
 
-  arch-meson $pkgname build
+  arch-meson sysprof build
   ninja -C build
 }
 

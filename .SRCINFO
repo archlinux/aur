@@ -13,6 +13,7 @@ pkgbase = sysprof-dev
 	depends = polkit
 	depends = libdazzle
 	provides = sysprof
+	conflicts = sysprof
 	source = git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-3.35.3
 	sha256sums = SKIP
 
