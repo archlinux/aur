@@ -1,6 +1,6 @@
 pkgname=tp_smapi-dkms
 pkgver=0.43
-pkgrel=2
+pkgrel=3
 pkgdesc="DKMS controlled modules for ThinkPad's SMAPI functionality"
 arch=(any)
 url="http://www.thinkwiki.org/wiki/Tp_smapi"
@@ -34,9 +34,6 @@ package() {
       -i "${pkgdir}"/usr/src/${pkgname}-${pkgver}/dkms.conf
 
   sed -i 's/KVER/KERNELRELEASE/g' "${pkgdir}"/usr/src/${pkgname}-${pkgver}/Makefile
-
-  # load module on startup
-  echo tp_smapi | install -Dm644 /dev/stdin "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
 
 # vim: set et sw=2 sts=2:
