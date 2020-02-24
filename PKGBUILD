@@ -1,10 +1,10 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
-url='https://gazebosim.org/tutorials?cat=connect_ros'
+url='https://wiki.ros.org/gazebo_ros_pkgs'
 
 pkgname='ros-melodic-gazebo-ros-pkgs'
-pkgver='2.8.5'
+pkgver='2.8.6'
 arch=('any')
 pkgrel=1
 license=('BSD,LGPL,Apache 2.0')
@@ -19,16 +19,9 @@ ros_depends=(ros-melodic-gazebo-msgs
   ros-melodic-gazebo-dev)
 depends=(${ros_depends[@]})
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/gazebo_ros_pkgs-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros_pkgs"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
-sha256sums=('0b0f6eeaeca611ebe12ec0ea4388121098fdafee5ecc8d76c6ae69b8b8f14aed')
+sha256sums=('df928fbeebd277b8eedf7eb367ab88631de71ef6c552424731eaf855186bc4b4')
 
 build() {
   # Use ROS environment variables
