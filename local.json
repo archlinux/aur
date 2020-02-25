@@ -1,0 +1,8 @@
+{
+    "discord": {
+        "client_id": "INSERT_CLIENT_ID_HERE",
+        "client_secret": "INSERT_CLIENT_SECRET_HERE",
+        "redirect_uri": "INSERT_REDIRECT_URI_HERE"
+    }
+}
+

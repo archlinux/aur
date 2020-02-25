@@ -1,0 +1,19 @@
+pkgbase = quad-bot
+	pkgdesc = Discord Bot
+	pkgver = 0.1
+	pkgrel = 0
+	url = https://github.com/vicr123/quad
+	install = quad.install
+	arch = any
+	license = GPL3
+	makedepends = gulp
+	depends = nodejs
+	source = quad-bot-0.1::git+https://github.com/vicr123/quad.git
+	source = check.js
+	source = local.json
+	sha256sums = SKIP
+	sha256sums = 5db8b740c61cc4cc3ecbbd682f3104197300937642edad8ce3bcfcab67d89713
+	sha256sums = SKIP
+
+pkgname = quad-bot
+
