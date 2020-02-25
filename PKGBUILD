@@ -11,7 +11,7 @@ license=('LPPL')
 depends=('urw-arial' 'texlive-core' 'texlive-bibtexextra' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-latexextra' 'texlive-science')
 provides=('texlive-tubslatex')
 conflicts=('texlive-tubslatex')
-source=("https://gitlab.ibr.cs.tu-bs.de/api/v4/projects/tubslatex%2Ftubslatex/jobs/artifacts/1.2.0/raw/builds/tubslatex.tds.zip?job=build_installer" "$pkgname.maps" "CONTENTS")
+source=("https://gitlab.ibr.cs.tu-bs.de/tubslatex/tubslatex/-/jobs/116760/artifacts/raw/builds/tubslatex.tds.zip" "$pkgname.maps" "CONTENTS")
 md5sums=(
   ''
   '9308c3138886469377a8d975a43cde39'
