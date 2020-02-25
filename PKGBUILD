@@ -1,39 +1,40 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=hunter-git
-pkgver=1.3.4+r28+gd42f7d3
-pkgrel=2
-pkgdesc='ranger-like file browser written in Rust (git)'
-arch=(i686 x86_64)
-url=https://github.com/rabite0/hunter
-license=(WTFPL)
-depends=(xdg-utils gst-plugins-base-libs libsixel)
-makedepends=(git rustup gst-plugins-bad)
-optdepends=('gst-plugins-good: media support'
-            'gst-plugins-bad: media support'
-            'gst-plugins-ugly: media support'
-            'gst-libav: media support'
-            'nerd-fonts-complete: supported icon pack'
-            'bat: syntax highlighting'
-            'highlight: syntax highlighting'
-            'libarchive: archive support'
-            'p7zip: archive support'
-            'atool: archive support'
+pkgver=1.3.5.r55.g84d7773
+pkgrel=1
+pkgdesc='Ranger-like CLI file browser written in Rust'
+arch=('i686' 'x86_64')
+url='https://github.com/rabite0/hunter'
+license=('WTFPL')
+provides=('hunter')
+conflicts=('hunter')
+depends=('xdg-utils' 'gst-plugins-base-libs' 'libsixel')
+makedepends=('rustup' 'git' 'gcc' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+optdepends=('gst-plugins-good: Media support'
+            'gst-plugins-bad: Media support'
+            'gst-plugins-ugly: Media support'
+            'gst-libav: Media support'
+            'nerd-fonts-complete: Icon pack support'
+            'bat: Syntax highlighting'
+            'highlight: Syntax highlighting'
+            'libarchive: Archive support'
+            'p7zip: Archive support'
+            'atool: Archive support'
             'w3m: HTML support'
             'links: HTML support'
             'elinks: HTML support'
             'lynx: HTML support'
             'poppler: PDF support'
             'mupdf-tools: PDF support'
-            'fzf: default file finder')
-provides=(hunter)
-conflicts=(hunter)
-source=(git+$url)
+            'fzf: Default file finder')
+source=("git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd hunter
-  git describe --tags | sed 's#v##;s#-#+#g;s#+#+r#'
+  cd "${srcdir}/hunter"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
