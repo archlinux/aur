@@ -1,0 +1,14 @@
+pkgbase = pup
+	pkgdesc = Command line tool for processing HTML
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ericchiang/pup
+	arch = x86_64
+	license = custom:MIT
+	makedepends = go-pie
+	depends = glibc
+	source = pup-0.4.0::git+https://github.com/ericchiang/pup#tag=v0.4.0
+	sha256sums = SKIP
+
+pkgname = pup
+
