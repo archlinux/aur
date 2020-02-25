@@ -1,13 +1,14 @@
 pkgbase = prometheus-redis-exporter
-	pkgdesc = Prometheus exporter for machine metrics
+	pkgdesc = Prometheus exporter for Redis
 	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://github.com/prometheus/node_exporter
+	url = https://github.com/oliver006/redis_exporter
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	conflicts = prometheus-redis-exporter-bin
 	source = https://github.com/oliver006/redis_exporter/archive/v1.4.0.tar.gz
 	source = prometheus-redis-exporter.service
 	sha256sums = 6ce36bd157c84d4403cf838d51279e4c1597694bc2a65dfb354bfe5fa5bbb20b

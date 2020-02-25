@@ -3,12 +3,13 @@
 pkgname=prometheus-redis-exporter
 pkgver=1.4.0
 pkgrel=1
-pkgdesc="Prometheus exporter for machine metrics"
+pkgdesc="Prometheus exporter for Redis"
 arch=('x86_64')
-url="https://github.com/prometheus/node_exporter"
+url="https://github.com/oliver006/redis_exporter"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
+conflicts=('prometheus-redis-exporter-bin')
 source=("https://github.com/oliver006/redis_exporter/archive/v${pkgver}.tar.gz"
         "prometheus-redis-exporter.service")
 sha256sums=('6ce36bd157c84d4403cf838d51279e4c1597694bc2a65dfb354bfe5fa5bbb20b'
