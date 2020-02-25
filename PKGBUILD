@@ -1,4 +1,4 @@
-# Maintainer: Nico Jansen <aur@nzbr.de>
+# Maintainer: nzbr <aur@nzbr.de>
 
 pkgname=vlogsolv
 pkgver=1.0b
