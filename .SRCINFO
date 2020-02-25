@@ -1,15 +1,15 @@
 pkgbase = blight
 	pkgdesc = Basic general backlight utility written in python
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/RPigott/blight
 	arch = any
 	license = custom:ISC
 	depends = python
 	depends = python-gobject
-	source = blight-0.0.3.tar.gz::https://github.com/RPigott/blight/releases/download/v0.0.3/blight-0.0.3.tar.gz
-	source = blight-0.0.3.tar.gz.asc::https://github.com/RPigott/blight/releases/download/v0.0.3/blight-0.0.3.tar.gz.asc
-	sha256sums = ae96f5fee70f30896c60036a385c9f8aaf6b322cbfd547df62b66d62155e1cfa
+	source = blight-0.0.4.tar.gz::https://github.com/RPigott/blight/releases/download/v0.0.4/blight-0.0.4.tar.gz
+	source = blight-0.0.4.tar.gz.asc::https://github.com/RPigott/blight/releases/download/v0.0.4/blight-0.0.4.tar.gz.asc
+	sha256sums = 09479aa27762414b8914a97ed09234a41d53fa4e3a3b69d5773ac5aa4f084fc9
 	sha256sums = SKIP
 
 pkgname = blight
