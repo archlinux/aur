@@ -1,6 +1,6 @@
 # Maintainer: Corey Stephan <corey.stephan@marquette.edu>
 pkgname=grb-git
-pkgver=r2.2f031ac
+pkgver=r1
 pkgrel=1
 pkgdesc="Greek Bible (Septuagint & New Testament) in the terminal"
 arch=(any)
