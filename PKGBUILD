@@ -30,16 +30,12 @@ _kernsrc=$(pacman -Sp "${_pkgname}" 2> /dev/null)
 _headerssrc=$(pacman -Sp "${_pkgname}-headers" 2> /dev/null) 
 _docssrc=$(pacman -Sp "${_pkgname}-docs" 2> /dev/null) 
 
-_arch_archive=https://archive.archlinux.org/packages/.all
-
 # If not, then use the Arch Linux archive:
-if [ $(basename "${_kernsrc}" 2> /dev/null) != "${_kernpkg}" ]; then
+_kernsrc_basename=$(basename "${_kernsrc}" 2> /dev/null)
+if [ "${_kernsrc_basename}" != "${_kernpkg}" ]; then
+  _arch_archive=https://archive.archlinux.org/packages/.all
   _kernsrc=${_arch_archive}/${_kernpkg}
-fi
-if [ $(basename "${_headerssrc}" 2> /dev/null) != "${_headerspkg}" ]; then
   _headerssrc=${_arch_archive}/${_headerspkg}
-fi
-if [ $(basename "${_docssrc}" 2> /dev/null) != "${_docspkg}" ]; then
   _docssrc=${_arch_archive}/${_docspkg}
 fi
 
