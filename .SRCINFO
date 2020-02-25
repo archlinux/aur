@@ -1,13 +1,13 @@
 pkgbase = aget
-	pkgdesc = Detect which compiler version was used for compiling an ELF file
+	pkgdesc = Clone AUR packages without having to remember the URL
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xyproto/aget
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/xyproto/aget#tag=1.0.0
+	source = git+https://github.com/xyproto/aget#commit=d1039320aeb70c6d3b57a1450670658da8f961f0
 	sha256sums = SKIP
 
 pkgname = aget
