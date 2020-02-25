@@ -3,7 +3,7 @@ set -e -u -o pipefail
 
 VERSION=$1
 PKGREL=${2:-1}
-SOURCE="https://github.com/brocode/fblog/releases/download/$VERSION/fblog"
+SOURCE="https://github.com/brocode/fblog/releases/download/v$VERSION/fblog"
 NAME="fblog"
 SHA256=$(curl -L --silent --fail $SOURCE  | sha256sum | awk '{print $1}')
 
