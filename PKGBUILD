@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hand AT viess.mn>
 
 pkgname='xmrig-proxy'
-pkgver=5.5.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('5f13f638a3186cc8671fba186bdef488af2a885b6c6f566752442e0f1de256a9')
+sha256sums=('e674be9ae1e09bec7650dbb14cc81fbe8d8f557e12624e947010ac518f14bb46')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -25,10 +25,6 @@ prepare() {
   # reset default donate level
   msg2 "Resetting donation level to zero"
   sed -i -e 's/constexpr const int kDefaultDonateLevel = 2;/constexpr const int kDefaultDonateLevel = 0;/g' src/donate.h
-
-  # fix build problem relating to https://github.com/xmrig/xmrig-proxy/issues/295
-  msg2 "Fix CMakeLists.txt"
-  sed -i -e 's/set(EXTRA_LIBS pthread uuid\.a rt dl)/set(EXTRA_LIBS pthread uuid rt dl)/' CMakeLists.txt
 }
 
 build() {
