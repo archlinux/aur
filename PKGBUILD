@@ -2,7 +2,7 @@
 _hkgname=aura
 pkgname=aura-bin
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure package manager for Arch Linux and the AUR - Prebuilt binary"
 url="https://github.com/fosskers/aura"
 license=('GPL-3')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('aura')
 conflicts=('aura' 'aura-git')
 options=('strip')
-source=(https://github.com/aurapm/aura/releases/download/v${pkgver}/aura-${pkgver}-x86_64.tar.gz)
+source=(https://github.com/fosskers/aura/releases/download/v${pkgver}/aura-${pkgver}-x86_64.tar.gz)
 md5sums=('39e4163ce0a301086a583f06dcf99ae0')
 
 package() {
