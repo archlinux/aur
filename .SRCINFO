@@ -1,0 +1,16 @@
+pkgbase = python-mouse-follows-focus
+	pkgdesc = WM-independent python script that implements mouse-follows-focus functionality and plays well with focus-follows-mouse
+	pkgver = r3.520a7ac
+	pkgrel = 1
+	url = https://github.com/setzer22/mouse-follows-focus
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-xlib
+	source = mouse-follows-focus::git+https://github.com/setzer22/mouse-follows-focus.git
+	source = mouse-follows-focus.sh
+	md5sums = SKIP
+	md5sums = d1acedd88c5799ac27a095ec2bd05333
+
+pkgname = python-mouse-follows-focus
+
