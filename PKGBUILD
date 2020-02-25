@@ -2,9 +2,9 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.1.0.r48.gd131cc1
+pkgver=0.1.0.r52.g90058aa
 _branch='master'
-pkgrel=2
+pkgrel=1
 arch=(any)
 url='https://github.com/sile-typesetter/casile/'
 license=('LGPL3')
@@ -27,6 +27,7 @@ depends=('bc'
          'lua-filesystem'
          'lua-yaml'
          'm4'
+         'make'
          'moreutils'
          'nodejs'
          'otf-libertinus'
@@ -44,7 +45,6 @@ depends=('bc'
          'python-ruamel-yaml'
          'python-setuptools' # Make up for yq missing this dep in [community]
          'python-usfm2osis-cw-git'
-         'remake'
          'rsync'
          'sile'
          'sqlite'
