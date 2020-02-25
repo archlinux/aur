@@ -44,7 +44,7 @@ provides=("lollypop")
 source=("git+https://gitlab.gnome.org/World/lollypop#branch=next")
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/lollypop"
 
 	git describe --tags \
 		| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
