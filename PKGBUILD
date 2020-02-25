@@ -1,18 +1,19 @@
 # Maintainer: Michał Pałubicki <maln0ir@gmx.com>
+# Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=csvkit
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A suite of utilities for converting to and working with CSV."
 arch=("any")
 url="http://csvkit.readthedocs.org"
 license=("MIT")
 depends=(
     'python'
-    'python-agate>=1.5.5'
+    'python-agate>=1.6.1'
     'python-agate-dbf>=0.2.0'
     'python-agate-excel>=0.2.2'
-    'python-agate-sql>=0.5.2'
+    'python-agate-sql>=0.5.3'
     'python-babel'
     'python-dateutil'
     'python-openpyxl'
