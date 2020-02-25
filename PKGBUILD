@@ -4,7 +4,7 @@
 _pkgname=nspr
 pkgname=nspr-hg
 # TODO: read version from source
-pkgver=4.24
+pkgver=4.26
 pkgrel=1
 pkgdesc="Netscape Portable Runtime"
 url="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR"

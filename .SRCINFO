@@ -1,6 +1,6 @@
 pkgbase = nspr-hg
 	pkgdesc = Netscape Portable Runtime
-	pkgver = 4.24
+	pkgver = 4.26
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSPR
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = nspr-hg
 	makedepends = zip
 	depends = glibc
 	depends = sh
-	provides = nspr=4.24
+	provides = nspr=4.26
 	conflicts = nspr
 	source = hg+https://hg.mozilla.org/projects/nspr
 	sha256sums = SKIP
