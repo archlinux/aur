@@ -1,12 +1,13 @@
 pkgbase = libdbus-minimal
 	pkgdesc = DBus library
 	pkgver = 1.12.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/Software/dbus
 	arch = x86_64
 	license = GPL
 	license = custom
 	provides = libdbus
+	provides = libdbus-1.so
 	conflicts = libdbus
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.12.16.tar.gz
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.12.16.tar.gz.asc

@@ -5,12 +5,12 @@
 
 pkgname=libdbus-minimal
 pkgver=1.12.16
-pkgrel=1
+pkgrel=2
 pkgdesc="DBus library"
 url="http://www.freedesktop.org/Software/dbus"
 arch=('x86_64')
 license=('GPL' 'custom')
-provides=('libdbus')
+provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
 md5sums=('2dbeae80dfc9e3632320c6a53d5e8890'
