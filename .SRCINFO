@@ -1,0 +1,12 @@
+pkgbase = python-youtube-dl
+	pkgdesc = YouTube video downloader
+	pkgver = 2020.2.16
+	pkgrel = 1
+	url = https://github.com/ytdl-org/youtube-dl
+	arch = any
+	license = Unlicense
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-youtube-dl
+
