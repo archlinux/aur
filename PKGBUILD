@@ -5,13 +5,13 @@
 pkgbase=python-daemon
 pkgname=('python-daemon' 'python2-daemon')
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to implement a well-behaved Unix daemon process'
 arch=('any')
 url='https://pypi.python.org/pypi/python-daemon'
 license=('Apache')
 makedepends=('python-setuptools' 'python2-setuptools' 'python-docutils' 'python2-docutils' 'python-lockfile' 'python2-lockfile')
-checkdepends=('python-mock' 'python2-mock' 'python-testscenarios' 'python2-testscenarios')
+checkdepends=('python-mock' 'python-testscenarios')
 source=(https://files.pythonhosted.org/packages/source/p/$pkgbase/$pkgbase-$pkgver.tar.gz)
 sha256sums=('57c84f50a04d7825515e4dbf3a31c70cc44414394a71608dee6cfde469e81766')
 
@@ -28,12 +28,8 @@ build() {
 }
 
 check() {
-  cd "${srcdir}"/python-daemon-$pkgver
+  cd python-daemon-$pkgver
   python setup.py test
-
-  cd "${srcdir}"/python-daemon-$pkgver-py2
-# test fails
-#   python2 setup.py test
 }
 
 package_python-daemon() {
