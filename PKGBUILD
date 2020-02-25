@@ -3,7 +3,7 @@
 pkgorg=joaoleal
 _pkgname=CppADCodeGen
 pkgname=cppadcodegen
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A C++ Algorithmic Differentiation Package"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('eigen: required when DAE differentiation index reduction is used',
             'llvm: only required for JIT compilation')
 makedepends=('cmake')
 source=("$url/archive/v$pkgver.tar.gz")
-sha1sums=('4e539a19b2cee0401605217b5b7e586b306c5008')
+sha256sums=('8bb6c7a7ef9cceb5efad65d8a547e36ac67a825025d168b9773af755a800b34b')
 
 build() {
     cd "$_pkgname-$pkgver"
