@@ -40,7 +40,7 @@ prepare() {
 	mv "../internal-server-$_internalservercommit/" 'src/internal-server/'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i -e 's|("electron": ").*"|\1'"$(cat /usr/lib/electron/version)"'"|' 'package.json'
+	sed -E -i -e 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
@@ -83,7 +83,7 @@ build() {
 	export npm_config_cache="$srcdir/$pkgname-$pkgver-$pkgrel-npm-cache"
 
 	npx gulp build
-	npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat /usr/lib/electron/version)"
+	npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
