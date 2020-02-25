@@ -1,18 +1,18 @@
 # Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=bootleg-bin
-pkgver=0.1.6_1
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Simple template processing command line tool to help build static websites'
 arch=('x86_64')
 url='https://github.com/retrogradeorbit/bootleg'
 license=('EPL')
-provides=('bootleg-bin')
-conflicts=('bootleg-bin')
+provides=('bootleg')
+conflicts=()
 
-source=("https://github.com/retrogradeorbit/bootleg/releases/download/v${pkgver/_/-}/${pkgname/\-bin/}-${pkgver/_/-}-linux-amd64.tgz")
+source=("https://github.com/retrogradeorbit/bootleg/releases/download/v${pkgver}/${pkgname/\-bin/}-${pkgver}-linux-amd64.tgz")
 
-sha256sums=('50006950f9ff90ba8396543b1071cc2a7730b762e6d05a1ebf58048adb115e45')
+sha256sums=('55d1627387a5e534b5a2632d69790140778200b2a382947c36a2c9fc28b04077')
 
 package() {
   install -Dm755 "${srcdir}/bootleg" "${pkgdir}/usr/bin/bootleg"
