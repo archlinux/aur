@@ -1,4 +1,4 @@
-# Maintainer: Rafael Silva <silvagracarafael@gmail.com>
+# Maintainer: Rafael Silva <silvagracarafael gmail.com>
 
 pkgname=armmem-git
 pkgver=r2.940c92e
