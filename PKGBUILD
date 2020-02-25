@@ -5,7 +5,7 @@ _gituser="syohex"
 _gitrepo="emacs-anzu"
 
 pkgname=emacs-anzu-git
-pkgver=0.62r10.ge6c56ca
+pkgver=0.62.r12.g592f8ee
 pkgrel=1
 pkgdesc="Emacs Port of anzu.vim"
 url="https://github.com/${_gituser}/${_gitrepo}"
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  git describe --tags --long | sed 's+-+r+' | tr - .
+  git describe --tags --long | sed 's+-+.r+' | tr - .
 }
 
 build() {
