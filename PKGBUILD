@@ -1,24 +1,25 @@
-# Maintainer: Tim Schubert <tim.schubert@tu-bs.de>
+# Maintainer: Robert Hartung <hartung@ibr.cs.tu-bs.de>
+# Contributor: Tim Schubert <tim.schubert@tu-bs.de>
 pkgname=texlive-tubs
-pkgver=1.1.0
+pkgver=1.2.0
 _revnr=${pkgver}
 pkgrel=1
 pkgdesc="LaTeX-Templates for the Corporate Design of TU Braunschweig"
 arch=('any')
-url="http://tubslatex.ejoerns.de/"
+url="https://www.tu-braunschweig.de/latex"
 license=('LPPL')
 depends=('urw-arial' 'texlive-core' 'texlive-bibtexextra' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-latexextra' 'texlive-science')
 provides=('texlive-tubslatex')
 conflicts=('texlive-tubslatex')
-source=("http://tubslatex.ejoerns.de/$pkgver/tubslatex_$pkgver.tds.zip" "$pkgname.maps" "CONTENTS")
+source=("https://gitlab.ibr.cs.tu-bs.de/api/v4/projects/tubslatex%2Ftubslatex/jobs/artifacts/1.2.0/raw/builds/tubslatex.tds.zip?job=build_installer" "$pkgname.maps" "CONTENTS")
 md5sums=(
-  '3768f97ff43dc5cdf5faa52d42b18dd5'
+  ''
   '9308c3138886469377a8d975a43cde39'
-  '8a5b8f3b01c2a08af1350c34da1638bf')
+  '0c3f2dd8a9de10032ebf04caa355c1a8')
 sha512sums=(
-  'bad54c632d0413a98b163fd393d280f68196733d6c34c4d6fed59919075112c96813f56d389ef06fd3f5163328e06b692a0e9df400f27881b42581d9d7ff6f78'
+  ''
   'ef2db742d543ccde08d40386b4625b8bfdfda50354f18d7e256ad732901cbd4046c776bcf2d79b5ec0950cd51310a9e4709586473fbdb3925240faec92e15b1f'
-  '7d3fdbfe1c80d7da2f73a7bdcf3c347b8114778f7d358b82ef75d9472341df3449b389fb79f9b915eb24273715422b2ab1c9bee29f349fa3c401f8014eaee34c')
+  'c82b6a1afe0b36286b5c824acf29197d3a7ef5cbbdd00ed251af81aae1f5ea20f7964c8d3b213f3a2169d946f3fa0bf84f6115a8464ff91c13e959873bcd3ed4')
 
 package() {
   cd "$srcdir"
