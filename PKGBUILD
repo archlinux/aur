@@ -30,6 +30,6 @@ package() {
   find "${pkgdir}" -name "package.json" -exec sed -e "s|${srcdir}||" -i {} \;
 
   chmod -R u=rwX,go=rX "$pkgdir"
-
   chown -R root:root "$pkgdir"
+
 }
