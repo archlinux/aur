@@ -2,7 +2,8 @@
 
 pkgname=musixmatch-bin
 _pkgname=${pkgname%-bin}
-pkgver=3.9.0
+pkgver=3.10.4043
+_pkgver=master.20200211001
 pkgrel=1
 pkgdesc='Lyrics for your music'
 arch=('x86_64')
@@ -19,11 +20,11 @@ depends=(
 )
 optdepends=('spotify: Instant synchronised lyrics')
 source=(
-	"https://download-app.musixmatch.com/download/${_pkgname}_$pkgver-linux_x64.deb"
+	"https://download-app.musixmatch.com/download/${_pkgname}_$pkgver-${_pkgver}_amd64.deb"
 	'eula.md'
 )
 sha256sums=(
-	'9c348ac4d761c44b284da99bbb6cddfb6fda754f06b8baf992d169cb153e9fa6'
+	'f1dbb249f5622a7b5bb62bc53616c5579b79029aee8c7ff7ecc27f11c12e7bd1'
 	'98debf3d134d676f8188406d03b880c0ccde743b882b8d1e0bcaf02dd2eb0705'
 )
 

@@ -1,6 +1,6 @@
 pkgbase = musixmatch-bin
 	pkgdesc = Lyrics for your music
-	pkgver = 3.9.0
+	pkgver = 3.10.4043
 	pkgrel = 1
 	url = https://about.musixmatch.com/apps
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = musixmatch-bin
 	depends = libxtst
 	depends = nss
 	optdepends = spotify: Instant synchronised lyrics
-	source = https://download-app.musixmatch.com/download/musixmatch_3.9.0-linux_x64.deb
+	source = https://download-app.musixmatch.com/download/musixmatch_3.10.4043-master.20200211001_amd64.deb
 	source = eula.md
-	sha256sums = 9c348ac4d761c44b284da99bbb6cddfb6fda754f06b8baf992d169cb153e9fa6
+	sha256sums = f1dbb249f5622a7b5bb62bc53616c5579b79029aee8c7ff7ecc27f11c12e7bd1
 	sha256sums = 98debf3d134d676f8188406d03b880c0ccde743b882b8d1e0bcaf02dd2eb0705
 
 pkgname = musixmatch-bin
