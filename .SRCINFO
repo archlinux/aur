@@ -1,6 +1,6 @@
 pkgbase = lego
 	pkgdesc = Lets Encrypt client and ACME library written in Go
-	pkgver = v3.3.0
+	pkgver = v3.4.0
 	pkgrel = 1
 	url = https://go-acme.github.io/lego/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = lego
 	license = MIT
 	provides = lego
 	conflicts = lego-git
-	source_x86_64 = https://github.com/go-acme/lego/releases/download/v3.3.0/lego_v3.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a7d5cdf1056a3e59ae5d5362546801bf3461aa04d7f2c938b21a19c6afb25708
-	source_i686 = https://github.com/go-acme/lego/releases/download/v3.3.0/lego_v3.3.0_linux_386.tar.gz
-	sha256sums_i686 = 0a4e90408539c066e1788f7ea8092ad4740d6b50bf37eaa6ba136aa5ee86d0ff
-	source_armv7h = https://github.com/go-acme/lego/releases/download/v3.3.0/lego_v3.3.0_linux_armv7.tar.gz
-	sha256sums_armv7h = e670fb6bb71264b3e1f952268088f77bd356e91bbd7dcb443fb28762ae8a13b5
-	source_aarch64 = https://github.com/go-acme/lego/releases/download/v3.3.0/lego_v3.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3da5499855628bbdde679fa83d14a72217af503d353edb4dc1a55043e04688e7
+	source_x86_64 = https://github.com/go-acme/lego/releases/download/v3.4.0/lego_v3.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 48d043189a750f03316d976a8f21cd60c40773365efad1dfd246629f09a79457
+	source_i686 = https://github.com/go-acme/lego/releases/download/v3.4.0/lego_v3.4.0_linux_386.tar.gz
+	sha256sums_i686 = 4e8183d2a6b21d1292136fb1ab8c14cb50d4762daafba54e058d483591700752
+	source_armv7h = https://github.com/go-acme/lego/releases/download/v3.4.0/lego_v3.4.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 5607798df82897dcf97fa707743431ac348726be5daec4306ea6b29566046824
+	source_aarch64 = https://github.com/go-acme/lego/releases/download/v3.4.0/lego_v3.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a4147926f21e4ce99db721a1aaed01fac6ee98db242cab0ec3565a7bca069a52
 
 pkgname = lego
 
