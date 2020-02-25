@@ -3,7 +3,7 @@
 # Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=(zabbix-agent-lts)
-pkgver=4.0.17
+pkgver=4.0.18
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://www.zabbix.com/'
@@ -14,7 +14,7 @@ source=(https://downloads.sourceforge.net/sourceforge/zabbix/zabbix-${pkgver}.ta
 sha512sums=('faa045def2cc822e06f164d3fc38fbc4cc5ab7c0a850e18669c3affc5ce9365620d924e69d36cee933f70b3fc28640864f75e4465f0d0db83a10ce8b90741589'
             '8c1fa2676bc0ef91bc39ec5f97b4d3ba5c365d063420455a3785121a54e120bc5afeacde42a48f4509c115f940dcc3b6c2f43044a7fbfb421182fc93b22a2444'
             '3ab3ac1acc7e35c8896157aef601ebc30815237ac5252cbd0c1ecb26eeaf9eccf5c49938ae8c85bb79a6f95f607f082f6b80ed660829599ec03aa626cca6d3dc'
-            'ca6b4779de23829dfdd80ee21e924fbe4e2754f4e693bed4b1a2aa846cd87d150e399b1169d7fe58d30c50ed837c1b8254e580de420267d0a1834d6dc409c43d')
+            'c686611f60242cb2bef408bacbd71b7f3e88ad01b5ac9c34566c36812c9469c85c2388a9efd2ded5b329a3ffa7ec474845f2bac4e100e66b80078823c276cecb')
 
 prepare() {
   cd $srcdir/zabbix-$pkgver
