@@ -30,21 +30,6 @@ sha256sums=('SKIP'
             '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
-case "$CARCH" in
-	i686)
-		_electronbuilderarch='ia32'
-	;;
-	armv7h)
-		_electronbuilderarch='armv7l'
-	;;
-	aarch64)
-		_electronbuilderarch='arm64'
-	;;
-	*)
-		_electronbuilderarch='x64'
-	;;
-esac
-
 _sourcedirectory="$pkgname"
 
 pkgver() {
@@ -62,7 +47,7 @@ prepare() {
 	git submodule update --init --recursive
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat /usr/lib/electron/version)"'"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron/version')"'"|' 'package.json'
 
 	# Prevent Ferdi from being launched in dev mode
 	sed -i "s|import isDevMode from 'electron-is-dev'|const isDevMode = false|g" 'src/index.js' 'src/config.js'
@@ -83,6 +68,21 @@ prepare() {
 build() {
 	cd "$srcdir/$_sourcedirectory/"
 
+	case "$CARCH" in
+		i686)
+			local _electronbuilderarch='ia32'
+		;;
+		armv7h)
+			local _electronbuilderarch='armv7l'
+		;;
+		aarch64)
+			local _electronbuilderarch='arm64'
+		;;
+		*)
+			local _electronbuilderarch='x64'
+		;;
+	esac
+
 	export NODE_ENV='production'
 	export HOME="$srcdir/$pkgname-home"
 	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
@@ -90,7 +90,7 @@ build() {
 	export npm_config_cache="$srcdir/$pkgname-npm-cache"
 
 	npx gulp build
-	npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat /usr/lib/electron/version)"
+	npx electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist='/usr/lib/electron' -c.electronVersion="$(cat '/usr/lib/electron/version')"
 }
 
 package() {
