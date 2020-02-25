@@ -1,13 +1,14 @@
 pkgbase = sccache
 	pkgdesc = Shared compilation cache
 	pkgver = 0.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla/sccache
 	arch = i686
 	arch = x86_64
 	license = apache
 	makedepends = rust
 	depends = openssl
+	depends = zlib
 	source = sccache-0.2.13.tar.gz::https://github.com/mozilla/sccache/archive/0.2.13.tar.gz
 	sha256sums = 81c973cf9a89e77f02a6b5710298531ba2e50d2555e8a931e505fbf570522e2a
 

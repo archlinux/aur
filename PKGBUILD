@@ -3,12 +3,12 @@
 
 pkgname=sccache
 pkgver=0.2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Shared compilation cache"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/sccache"
 license=('apache')
-depends=('openssl')
+depends=('openssl' 'zlib')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mozilla/sccache/archive/$pkgver.tar.gz")
 sha256sums=('81c973cf9a89e77f02a6b5710298531ba2e50d2555e8a931e505fbf570522e2a')
