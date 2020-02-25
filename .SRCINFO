@@ -1,13 +1,13 @@
 pkgbase = check-manifest
 	pkgdesc = Check MANIFEST.in in a Python package for completeness
-	pkgver = 0.40
-	pkgrel = 2
+	pkgver = 0.41
+	pkgrel = 1
 	url = https://github.com/mgedmin/check-manifest
 	arch = any
 	license = MIT
 	depends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-0.40.tar.gz
-	sha256sums = 42de6eaab4ed149e60c9b367ada54f01a3b1e4d6846784f9b9710e770ff5572c
+	source = https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-0.41.tar.gz
+	sha256sums = 88afe85b751717688f8bc3b63d9543d0d962da98f1f420c554eaeb8d76c571a8
 
 pkgname = check-manifest
 
