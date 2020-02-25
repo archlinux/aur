@@ -6,5 +6,5 @@ Target = usr/lib/modules/*/pkgbase
 [Action]
 Description = Removing linux initcpios...
 When = PreTransaction
-Exec = /usr/local/bin/dracut-remove.sh
+Exec = /usr/share/libalpm/scripts/dracut-remove
 NeedsTargets

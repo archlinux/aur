@@ -34,5 +34,5 @@ for kernel in "${kernels[@]}"; do
 	echo "Building dracut for $kernel - $modules"
 
 	dracut -f -H --no-hostonly-cmdline "/boot/initramfs-${kernel}.img" "${modules}"
-	dracut -f	-N "/boot/initramfs-${kernel}-fallback.img" "${modules}"
+	dracut -f -N "/boot/initramfs-${kernel}-fallback.img" "${modules}"
 done
