@@ -3,7 +3,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-plugins-git
-pkgver=1.1.103.gb3702f2
+pkgver=1.1.219.gd39789c
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('x86_64')
@@ -18,11 +18,9 @@ optdepends=('libotr: for OTR plugin'
             'libsignal-protocol-c: for omemoplugin')
 source=('git://github.com/psi-im/plugins'
         'git://github.com/psi-im/psi.git'
-        'psi-plus::git://github.com/psi-plus/main.git'
         'git://github.com/psi-im/iris.git'
         'git://github.com/psi-im/libpsi.git')
 md5sums=('SKIP'
-         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP')
@@ -41,12 +39,6 @@ prepare() {
   git config submodule.iris.url "$srcdir/iris"
   git config submodule.src/libpsi.url "$srcdir/libpsi"
   git submodule update
-
-  # patches from Psi+ project
-  for patch in "$srcdir"/psi-plus/patches/*.diff; do
-    echo "* Appling ${patch##*/}"
-    patch -p1 -i "$patch"
-  done
   
   # copy to proper path
   cp -r $srcdir/plugins $srcdir/psi/src/
@@ -54,7 +46,7 @@ prepare() {
     
 build() {
   cd $srcdir/psi
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DIS_PSIPLUS=ON..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DONLY_PLUGINS=ON -DPSI_PLUS=ON..
   make
 }
 
