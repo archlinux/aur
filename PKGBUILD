@@ -6,7 +6,7 @@ pkgrel=1
 pkgver=v0.4.0.r9.g8631416
 arch=('x86_64')
 url='http://me.dt.in.th/page/ttycast'
-license=('Apache')
+license=('MIT')
 optdepends=('ttyrec' 'ovh-ttyrec-git')
 makedepends=('npm' 'git' 'jq')
 source=("git+https://github.com/dtinth/ttycast#branch=master")
