@@ -4,13 +4,12 @@
 _pipname=panflute
 pkgname=python-$_pipname
 pkgver=1.12.5
-pkgrel=4
+pkgrel=5
 pkgdesc='A Pythonic alternative to John MacFarlane’s pandocfilters'
 url="https://github.com/sergiocorreia/$_pipname"
 arch=('any')
 license=('BSD')
 _pydeps=('click'
-         'shutilwhich'
          'yaml')
 depends=('pandoc' 'python' "${_pydeps[@]/#/python-}")
 makedepends=('python-setuptools')
