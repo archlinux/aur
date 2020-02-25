@@ -1,6 +1,6 @@
 # Maintainer: Akaash Suresh <https://github.com/Curry>
 pkgname=qmk-git
-pkgver=0.0.28.r0.gbbc5ffd
+pkgver=0.0.29.r0.gdc3ca88
 pkgrel=1
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
