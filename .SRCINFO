@@ -1,7 +1,7 @@
 pkgbase = gtest-py3
 	pkgdesc = Google Test - C++ testing utility
 	pkgver = 1.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/googletest
 	arch = x86_64
 	license = BSD
@@ -10,7 +10,9 @@ pkgbase = gtest-py3
 	makedepends = gcc-libs
 	makedepends = sh
 	source = googletest-release-1.10.0.tar.gz::https://github.com/google/googletest/archive/release-1.10.0.tar.gz
+	source = gtest-1.10.0-libversion.patch
 	sha512sums = bd52abe938c3722adc2347afad52ea3a17ecc76730d8d16b065e165bc7477d762bce0997a427131866a89f1001e3f3315198204ffa5d643a9355f1f4d0d7b1a9
+	sha512sums = 57d18cdd2d7b744c4e759a51899372befc78624de00fccc71464293f8c36d32f7dd3bb87ec55fc0303031a397bbba5d45075662687cf5bba378f5001dabf2faa
 
 pkgname = gtest-py3
 	pkgdesc = Google Test - C++ testing utility based on the xUnit framework (like JUnit)
