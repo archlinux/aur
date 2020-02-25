@@ -14,7 +14,6 @@ package() {
   python_dir=`python -c "from distutils import sysconfig; print(sysconfig.get_python_lib())"`
   install -d "$pkgdir"/${python_dir}
   cp -rv numpoly "$pkgdir"/${python_dir}
-  pyver=`python -c "import sys; print(sys.version[0:3])"`
-  mkdir "$pkgdir"/${python_dir}/numpoly-${pkgver}-${pyver}.dist-info/ 
-  touch "$pkgdir"/${python_dir}/numpoly-${pkgver}-${pyver}.dist-info/METADATA
+  mkdir "$pkgdir"/${python_dir}/numpoly-${pkgver}.dist-info/
+  touch "$pkgdir"/${python_dir}/numpoly-${pkgver}.dist-info/METADATA
 }
