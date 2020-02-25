@@ -1,7 +1,8 @@
 post_install() {
     echo
     echo "  See /etc/fonts/conf.avail/75-joypixels.conf for how to enforce rendering emojis via JoyPixels"
-    echo "  It conflicts with other fonts, so either symlink it to /etc/fonts/conf.d/ or copy and modify as needed."
+    echo "  It contains various techniques, some of which can cause issues like rendering numbers as emojis"
+    echo "  Copy the file to /etc/fonts/conf.d/ and modify as needed to make it work for your own setup."
     echo
 }
 
