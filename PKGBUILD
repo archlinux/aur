@@ -5,8 +5,10 @@ pkgrel=1
 pkgdesc="YouTube video downloader"
 arch=(any)
 url="https://github.com/ytdl-org/youtube-dl"
-license=(Unlicense)
+license=(GPLv3)
 makedepends=("python" "python-pip")
+sha256sums=('SKIP')
+
 pkgver() {
   cd "${srcdir}/${pkgname}"
   ( set -o pipefail
