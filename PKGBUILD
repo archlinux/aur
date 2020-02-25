@@ -4,7 +4,7 @@
 pkgname=waterfox-classic-kpe
 pkgver=2020.02.1
 pkgrel=0
-pkgdesc="Free, open and private browser with openSUSE's patches for better integration with KDE"
+pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfox.net/"
