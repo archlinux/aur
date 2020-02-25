@@ -1,7 +1,7 @@
 pkgbase = perl-posix-strftime-compiler
 	pkgdesc = Perl module providing GNU C library compatible strftime for loggers and servers
 	pkgver = 0.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/POSIX-strftime-Compiler
 	arch = any
 	license = PerlArtistic

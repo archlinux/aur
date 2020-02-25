@@ -4,7 +4,7 @@
 
 pkgname=perl-posix-strftime-compiler
 pkgver=0.42
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module providing GNU C library compatible strftime for loggers and servers'
 arch=('any')
 url='https://metacpan.org/release/POSIX-strftime-Compiler'
@@ -37,5 +37,5 @@ package() {
 	cd POSIX-strftime-Compiler-0.42
 	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
