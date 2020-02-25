@@ -1,17 +1,17 @@
 # Maintainer: Valentin Elovskiy <evvsoft@gmail.com>
 
 pkgname=prometheus-redis-exporter
-pkgver=0.25.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Prometheus exporter for machine metrics"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://github.com/prometheus/node_exporter"
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 source=("https://github.com/oliver006/redis_exporter/archive/v${pkgver}.tar.gz"
         "prometheus-redis-exporter.service")
-sha256sums=('2567e1f2a2ba1d4222f0c4dc4e2ba1e773427208f98e32ed33d067f38dd93ac6'
+sha256sums=('6ce36bd157c84d4403cf838d51279e4c1597694bc2a65dfb354bfe5fa5bbb20b'
             'f48565cf25f3ca8b120b5ad0cef9689d96d1fec22a7dd82e8de78ec23de3dad1')
 
 prepare() {

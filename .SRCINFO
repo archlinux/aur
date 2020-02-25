@@ -1,17 +1,16 @@
 pkgbase = prometheus-redis-exporter
 	pkgdesc = Prometheus exporter for machine metrics
-	pkgver = 0.25.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/prometheus/node_exporter
 	arch = x86_64
-	arch = i686
 	license = MIT
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = https://github.com/oliver006/redis_exporter/archive/v0.25.0.tar.gz
+	source = https://github.com/oliver006/redis_exporter/archive/v1.4.0.tar.gz
 	source = prometheus-redis-exporter.service
-	sha256sums = 2567e1f2a2ba1d4222f0c4dc4e2ba1e773427208f98e32ed33d067f38dd93ac6
+	sha256sums = 6ce36bd157c84d4403cf838d51279e4c1597694bc2a65dfb354bfe5fa5bbb20b
 	sha256sums = f48565cf25f3ca8b120b5ad0cef9689d96d1fec22a7dd82e8de78ec23de3dad1
 
 pkgname = prometheus-redis-exporter
