@@ -7,15 +7,7 @@ arch=(any)
 url="https://github.com/ytdl-org/youtube-dl"
 license=(GPLv3)
 makedepends=("python" "python-pip")
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
+md5sums=('SKIP')
 
 build() {
   pip install --no-deps --target="youtube-dl" youtube-dl==2020.2.16
