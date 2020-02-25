@@ -8,7 +8,7 @@ _type=legacy
 pkgname=notepadpp
 _pkgname=notepad-plus-plus
 pkgver=7.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A free source code editor for Windows"
 arch=('x86_64')
 url="https://${_pkgname}.org/"
@@ -16,6 +16,8 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('wine' 'sh')
 makedepends=('unzip')
+provides=(notepadpp)
+conflicts=('notepadpp-win32' 'notepadpp-win64')
 source=(notepadpp-legacy
         notepadpp-overlayfs
         notepadpp.desktop
