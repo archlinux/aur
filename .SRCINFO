@@ -1,0 +1,17 @@
+pkgbase = prometheus-redis-exporter-bin
+	pkgdesc = Prometheus exporter for Redis (binary)
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/oliver006/redis_exporter
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = prometheus-redis-exporter
+	conflicts = prometheus-redis-exporter
+	source = https://github.com/oliver006/redis_exporter/releases/download/v1.4.0/redis_exporter-v1.4.0.linux-amd64.tar.gz
+	source = prometheus-redis-exporter.service
+	sha256sums = 799fa6c73129490a66bff8fe21cb60a8dee204dc67bacff89b2dd3994f1e8dde
+	sha256sums = f48565cf25f3ca8b120b5ad0cef9689d96d1fec22a7dd82e8de78ec23de3dad1
+
+pkgname = prometheus-redis-exporter-bin
+
