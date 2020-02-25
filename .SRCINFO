@@ -1,6 +1,6 @@
 pkgbase = vul-git
 	pkgdesc = Latin Vulgate Bible in the terminal
-	pkgver = r12.996c670
+	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/LukeSmithxyz/vul
 	arch = any
