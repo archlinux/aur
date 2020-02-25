@@ -2,7 +2,7 @@
 
 pkgname=pantalaimon
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantalaimon is an end-to-end encryption aware Matrix reverse proxy daemon.'
 arch=('any')
 url='https://github.com/matrix-org/pantalaimon'
@@ -20,5 +20,10 @@ build() {
 package() {
         cd "${pkgname}-${pkgver}"
         python setup.py install --prefix=/usr --root="$pkgdir"
-        install -D -m 644 "${srcdir}/pantalaimon.service" ${pkgdir}/usr/lib/systemd/user/pantalaimon.service
+        install -Dm644 "${srcdir}"/pantalaimon.service "${pkgdir}"/usr/lib/systemd/user/pantalaimon.service
+	install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/man/*.md -t "${pkgdir}"/usr/share/doc/"${pkgname}"/
+	install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/man/*.1 -t "${pkgdir}"/usr/share/man/man1/
+	install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/man/*.5 -t "${pkgdir}"/usr/share/man/man5/
+	install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/man/*.8 -t "${pkgdir}"/usr/share/man/man8/
+	install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
