@@ -1,0 +1,15 @@
+pkgbase = armmem-git
+	pkgdesc = Takes an ELF and a Linker Script as input and prints informations about the program.
+	pkgver = r2.940c92e
+	pkgrel = 1
+	url = https://github.com/vankxr/armmem
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	source = armmem-git::git+https://github.com/vankxr/armmem
+	md5sums = SKIP
+
+pkgname = armmem-git
+
