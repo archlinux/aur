@@ -1,16 +1,16 @@
-pkgbase = ida-free
-	pkgdesc = Freeware version of the world's smartest and most feature-full disassembler
-	pkgver = 7.0.191002
+pkgbase = ida-eval
+	pkgdesc = Evaluation version of the world's smartest and most feature-full disassembler
+	pkgver = 7.4
 	pkgrel = 1
 	url = https://www.hex-rays.com/products/ida/
 	arch = x86_64
 	license = custom
 	makedepends = fakechroot
 	options = !strip
-	source = idafree70_linux.run-7.0.191002-1::https://out7.hex-rays.com/files/idafree70_linux.run
-	source = ida-free.desktop
-	sha256sums = 136e0e1995f16e1ff85244c269450fa91fb5454a565ca7623712f34ac004e245
-	sha256sums = 55f2ed3f165df6efb5f7975b17d8e53bee1d88cad33efb9d4422402213d17440
+	source = idademo74_linux.run
+	source = ida-eval.desktop
+	sha256sums = 547373518e2823a94195ea5e06cacf53c101610afa0f642204e7265f4b548045
+	sha256sums = 5f51fea009781672998ffec1c1d63d392e87ac6eb04b637a1ee2827805b8e1db
 
-pkgname = ida-free
+pkgname = ida-eval
 
