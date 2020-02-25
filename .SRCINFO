@@ -1,0 +1,20 @@
+pkgbase = crunchyrolldl-git
+	pkgdesc = Crunchyroll Downloader for Linux
+	pkgver = r25.5846c23
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ThePBone/CrunchyrollDownloader
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = mesa
+	provides = crunchyrolldl
+	conflicts = crunchyrolldl
+	source = crunchyrolldl::git+https://github.com/ThePBone/CrunchyrollDownloader
+	source = crunchyrolldl.desktop
+	sha256sums = SKIP
+	sha256sums = 68e0077963131cb74f225dfc1cba291ebc25972330d99d1e63c00a2d592f31c6
+
+pkgname = crunchyrolldl-git
+

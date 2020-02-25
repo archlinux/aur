@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Crunchyroll Downloader
+GenericName=Downloader
+Comment=Download series and movies from Crunchyroll
+Keywords=Downloader 
+Categories=AudioVideo;Internet;Network
+Exec=CrunchyrollDownloader
+Icon=crunchyrolldl
+StartupNotify=false
+Terminal=false
+Type=Application
