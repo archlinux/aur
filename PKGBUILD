@@ -4,7 +4,7 @@
 
 _pkgname=nss
 pkgname=nss-hg
-pkgver=3.39.0r14421.1f58a4995451
+pkgver=3.51.0r15514.ab0e7e272e36
 pkgrel=1
 pkgdesc="Mozilla Network Security Services"
 arch=(i686 x86_64)
@@ -76,5 +76,5 @@ package() {
   install -t "$pkgdir/usr/include/nss" -m644 *.h
 
   rm "$pkgdir/usr/lib/libnssckbi.so"
-  ln -s libnssckbi-p11-kit.so "$pkgdir/usr/lib/libnssckbi.so"
+  ln -sf pkcs11/p11-kit-trust.so "$pkgdir/usr/lib/libnssckbi.so"
 }
