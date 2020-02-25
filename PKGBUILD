@@ -4,11 +4,8 @@
 # uncomment if you do not want to build all language translations
 #export LG2=en
 
-# https://db-ip.com/db/lite.php
-_geoip=2020-02
-
 pkgname=i2p
-pkgver=0.9.44
+pkgver=0.9.45
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -31,15 +28,15 @@ _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         "modern-dark.zip::https://github.com/eyedeekay/modern-dark/archive/master.zip"
-        #"https://download.db-ip.com/free/dbip-country-lite-${_geoip}.mmdb.gz"
+        #"https://download.db-ip.com/free/dbip-country-lite-$(date +%Y-%m).mmdb.gz"
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh'
         upstream-fixes.patch::'https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch')
 
-sha256sums=('9f03a636e2dc7e25455fb75869b3a8313fd177d231e056b0556159efec4d6d9d'
+sha256sums=('e65c7dbbf464b6bc64afb228306fbfed0f1e67ffec74f96852b82acade53921c'
             'SKIP'
             'SKIP'
-            #'da29ae2b01c2f3ae09867a562c0308d1ae3918cc8fa0f45015ebfaf2293b46e7'
+            #'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
             '5d134ee5bc614b54ec48de7c5214f6dbe08abcfab7d286c5b1c7616e39b478ed'
@@ -54,7 +51,7 @@ prepare() {
     sed -i ../upstream-fixes.patch \
         -e 's|BUILD = 1|BUILD = 0|'
     patch -Np1 -i ../upstream-fixes.patch
-    #cp -f ../dbip-country-lite-${_geoip}.mmdb.gz installer/resources/GeoLite2-Country.mmdb.gz
+    #cp -f ../dbip-country-lite-$(date +%Y-%m).mmdb.gz installer/resources/GeoLite2-Country.mmdb.gz
 }
 
 build() {
