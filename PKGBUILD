@@ -6,7 +6,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=281.0.0
+pkgver=282.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
@@ -23,14 +23,12 @@ source=(
   "0001-fix-console-io-syntax-warning.patch"
   "0002-set-python2-for-dev-appserver-py.patch"
   "0003-set-python2-for-endpointscfg-py.patch"
-  "0004-fix-ipaddress-syntaxwarning.patch"
 )
-sha256sums=('ac76927f7c6bbea63f66529d830cf440f09448a8f471d31b4b1e0951e2dcc116'
+sha256sums=('0ae87a2cf021007d1f7b1b326f91c420d38b1d0966b6b0ec3ce866736ade6e17'
             'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295'
             'b3faeb3af2922510048d12063fa215610f12879f5cc9f8b78786c7d9f2957c70'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
-            'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe'
-            'a23fe05f0438591b78b4baf1129f0601fe0cae8ceaa8f45eae675776317bbc9c')
+            'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe')
 
 prepare() {
   cd "$pkgname"
