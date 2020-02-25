@@ -1,0 +1,25 @@
+pkgbase = gcc-arm-none-eabi-bin
+	pkgdesc = GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)
+	pkgver = 9_2019_q4_major
+	pkgrel = 1
+	url = https://developer.arm.com/open-source/gnu-toolchain/gnu-rm
+	arch = x86_64
+	license = custom
+	depends = glibc
+	optdepends = arm-none-eabi-gdb: GNU Debugger for ARM EABI
+	provides = gcc-arm-none-eabi
+	provides = arm-none-eabi-gcc
+	provides = arm-none-eabi-binutils
+	provides = arm-none-eabi-newlib
+	conflicts = gcc-arm-none-eabi
+	conflicts = arm-none-eabi-gcc
+	conflicts = arm-none-eabi-binutils
+	conflicts = arm-none-eabi-newlib
+	options = !strip
+	options = staticlibs
+	source = https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/9-2019q4/RC2.1/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
+	md5sums = fe0029de4f4ec43cf7008944e34ff8cc
+	sha256sums = bcd840f839d5bf49279638e9f67890b2ef3a7c9c7a9b25271e83ec4ff41d177a
+
+pkgname = gcc-arm-none-eabi-bin
+
