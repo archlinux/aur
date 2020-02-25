@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOF
+==> IMPORTANT: Make sure you have a config file in ~/.config/wmderland/config
+==> An example config file has been placed at /etc/xdg/wmderland/config
+EOF
+}

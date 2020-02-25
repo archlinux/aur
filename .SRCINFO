@@ -1,0 +1,16 @@
+pkgbase = wmderland-git
+	pkgdesc = X11 tiling window manager using space partitioning trees
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/aesophor/wmderland
+	install = wmderland.install
+	arch = x86_64
+	license = MIT
+	makedepends = gcc>=6.0
+	makedepends = cmake>=3.9
+	depends = libx11
+	source = git://github.com/aesophor/wmderland.git
+	sha256sums = SKIP
+
+pkgname = wmderland-git
+
