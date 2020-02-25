@@ -8,7 +8,7 @@
 # Contributor: Andrej Mihajlov <and at mullvad dot net>
 pkgname=mullvad-vpn
 pkgver=2020.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop"
 url="https://www.mullvad.net"
 arch=('x86_64')
@@ -124,8 +124,8 @@ package() {
 		"$pkgdir/usr/share/applications"
 
 	for icon_size in 16 32 48 64 128 256 512 1024; do
-		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+		icons_dir=usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir/$icons_dir
-		install -m644 $icons_dir/$pkgname.png -t $pkgdir$icons_dir
+		install -m644 $icons_dir/${pkgname%-beta}.png -t $pkgdir/$icons_dir
 	done
 }
