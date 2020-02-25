@@ -41,7 +41,7 @@ optdepends=(
 )
 conflicts=("lollypop" "lollypop-git")
 provides=("lollypop")
-source=("git+https://gitlab.gnome.org/World/lollypop#branch=next")
+source=("git+https://gitlab.gnome.org/World/lollypop")
 
 pkgver() {
 	cd "$srcdir/lollypop"
