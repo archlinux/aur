@@ -9,6 +9,7 @@ pkgbase = candevstudio-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
+	makedepends = boost
 	depends = qt5-base
 	depends = qt5-serialbus
 	provides = candevstudio
