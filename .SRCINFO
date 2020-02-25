@@ -1,0 +1,17 @@
+pkgbase = nodejs-ttycast-git
+	pkgdesc = Broadcast your tty to the world! Stream your live terminal session online
+	pkgver = v0.4.0.r9.g8631416
+	pkgrel = 1
+	url = http://me.dt.in.th/page/ttycast
+	arch = x86_64
+	license = Apache
+	makedepends = npm
+	makedepends = git
+	makedepends = jq
+	optdepends = ttyrec
+	optdepends = ovh-ttyrec
+	source = git+https://github.com/dtinth/ttycast#branch=master
+	sha256sums = SKIP
+
+pkgname = nodejs-ttycast-git
+
