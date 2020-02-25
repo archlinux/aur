@@ -3,12 +3,13 @@
 
 pkgname=plasma-meta
 pkgver=5.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install KDE Plasma'
 arch=(any)
 url='https://www.archlinux.org/'
 depends=(bluedevil
          drkonqi
+         kde-gtk-config
          kdeplasma-addons
          khotkeys
          kinfocenter
@@ -35,4 +36,4 @@ depends=(bluedevil
          discover
          xdg-desktop-portal-kde
 )
-optdepends=('kde-gtk-config: GTK Theme configuration KCM' 'breeze-grub: Breeze theme for GRUB')
+optdepends=('breeze-grub: Breeze theme for GRUB')
