@@ -1,6 +1,6 @@
 pkgbase = ros-melodic-realtime-tools
 	pkgdesc = ROS - Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior.
-	pkgver = 1.15.0
+	pkgver = 1.15.1
 	pkgrel = 1
 	url = https://wiki.ros.org/realtime_tools
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = ros-melodic-realtime-tools
 	makedepends = ros-melodic-rospy
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-rospy
-	source = ros-melodic-realtime-tools-1.15.0.tar.gz::https://github.com/ros-controls/realtime_tools/archive/1.15.0.tar.gz
-	sha256sums = 4ba0833ae3b4a7bf45a6f678a0fcbf7570b9383107e45d809f2007ad07d4e430
+	source = ros-melodic-realtime-tools-1.15.1.tar.gz::https://github.com/ros-controls/realtime_tools/archive/1.15.1.tar.gz
+	sha256sums = 3356e9df104c177bd588db133eba65a351af62e35e64c87f2a5fc72c3fd2cd5a
 
 pkgname = ros-melodic-realtime-tools
 

@@ -1,8 +1,9 @@
-pkgdesc="ROS - Contains a set of tools that can be used from a hard realtime thread, without breaking the realtime behavior."
+pkgdesc="ROS - Contains a set of tools that can be used from a hard realtime
+thread, without breaking the realtime behavior."
 url='https://wiki.ros.org/realtime_tools'
 
 pkgname='ros-melodic-realtime-tools'
-pkgver='1.15.0'
+pkgver='1.15.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -17,10 +18,9 @@ ros_depends=(ros-melodic-roscpp
   ros-melodic-rospy)
 depends=(${ros_depends[@]})
 
-# Tarball version (faster download)
 _dir="${srcdir}/realtime_tools-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz")
-sha256sums=('4ba0833ae3b4a7bf45a6f678a0fcbf7570b9383107e45d809f2007ad07d4e430')
+sha256sums=('3356e9df104c177bd588db133eba65a351af62e35e64c87f2a5fc72c3fd2cd5a')
 
 build() {
   # Use ROS environment variables
