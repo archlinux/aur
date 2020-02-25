@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/share/sayit/SayIt $@
+exec /usr/share/sayit/SayIt "$@"
