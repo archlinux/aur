@@ -1,7 +1,7 @@
 pkgbase = auctex
 	pkgdesc = An extensible package for writing and formatting TeX files in Emacs
-	pkgver = 12.1
-	pkgrel = 3
+	pkgver = 12.2
+	pkgrel = 1
 	url = https://www.gnu.org/software/auctex/
 	install = auctex.install
 	arch = any
@@ -9,11 +9,10 @@ pkgbase = auctex
 	depends = emacs
 	depends = ghostscript
 	depends = texlive-core
-	options = !makeflags
-	source = https://ftp.gnu.org/pub/gnu/auctex/auctex-12.1.tar.gz
-	source = https://ftp.gnu.org/pub/gnu/auctex/auctex-12.1.tar.gz.sig
+	source = https://ftp.gnu.org/pub/gnu/auctex/auctex-12.2.tar.gz
+	source = https://ftp.gnu.org/pub/gnu/auctex/auctex-12.2.tar.gz.sig
 	validpgpkeys = 70CDE487C45540307F86972BE2FD58BF20485F50
-	sha256sums = c95cca4d70a9783617f7b5035c5e2c77438fa35d2505555d40190ac2652a5db4
+	sha256sums = 59677958aa76c7a15cf62f098524f79b1cdb74d24bcdf36448ecbb5911d07893
 	sha256sums = SKIP
 
 pkgname = auctex
