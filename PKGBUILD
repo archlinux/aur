@@ -31,5 +31,9 @@ package(){
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
+  install -Dm644 "Collections/${_plug}_numpy.py" "${pkgdir}${_site_packages}/${_plug}_numpy.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}_numpy.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}_numpy.py"
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
