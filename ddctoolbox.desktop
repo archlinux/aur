@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=DDCToolbox
+GenericName=Editor
+Comment=Create and edit VDC files on Linux
+Keywords=editor
+Categories=AudioVideo;Audio;
+Exec=DDCToolbox
+Icon=ddctoolbox
+StartupNotify=false
+Terminal=false
+Type=Application

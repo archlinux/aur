@@ -1,0 +1,20 @@
+pkgbase = ddctoolbox-git
+	pkgdesc = DDC Toolbox for Linux
+	pkgver = r106.e89da89
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/ThePBone/DDCToolbox
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = mesa
+	provides = ddctoolbox
+	conflicts = ddctoolbox
+	source = ddctoolbox::git+https://github.com/ThePBone/DDCToolbox
+	source = ddctoolbox.desktop
+	sha256sums = SKIP
+	sha256sums = d62019fb77f8cd40c7942453345f20e6479ba4ad22930ca2e138b1cddea9ed34
+
+pkgname = ddctoolbox-git
+
