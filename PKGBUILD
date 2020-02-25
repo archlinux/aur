@@ -1,18 +1,17 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.1.0
+pkgver=1.1.0+2+gb9d22fb
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
 arch=('x86_64')
 url='https://github.com/coelckers/ZMusic'
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
-depends=('alsa-lib' 'gcc-libs' 'zlib')
-optdepends=('fluidsynth>=2: FluidSynth MIDI device'
-            'libsndfile: WAV/FLAC/OGG audio support'
-            'mpg123: MP3 audio support'
-            'soundfont-fluid: default soundfont for FluidSynth')
+depends=('alsa-lib' 'fluidsynth>=2' 'libsndfile' 'mpg123' 'zlib')
+optdepends=('soundfont-fluid: default soundfont for FluidSynth')
 makedepends=('cmake' 'git')
 checkdepends=('abi-compliance-checker')
+provides=('zmusic')
+conflicts=('zmusic')
 _srcname=ZMusic
 _sover=arch.1
 _checkver=1.1.0
@@ -39,7 +38,12 @@ prepare() {
 build() {
     cd $_srcname
     mkdir -p build
-    cmake -B build -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr
+    cmake -B build \
+          -D CMAKE_BUILD_TYPE=Release \
+          -D CMAKE_INSTALL_PREFIX=/usr \
+          -D DYN_FLUIDSYNTH=OFF \
+          -D DYN_MPG123=OFF \
+          -D DYN_SNDFILE=OFF
     make -C build
 }
 
@@ -54,13 +58,20 @@ check() {
 
     cd $_srcname
     mkdir -p check
-    cmake -B check -D CMAKE_BUILD_TYPE=Debug -D CMAKE_CXX_FLAGS="${CXXFLAGS} -g -Og"
+    cmake -B check \
+          -D CMAKE_BUILD_TYPE=Debug \
+          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -g -Og" \
+          -D CMAKE_INSTALL_PREFIX=/usr \
+          -D DYN_FLUIDSYNTH=OFF \
+          -D DYN_MPG123=OFF \
+          -D DYN_SNDFILE=OFF
     make -C check
 
     for _lib in libzmusic.so.${_sover} libzmusiclite.so.${_sover}; do
-        gunzip "$srcdir"/${_lib}-${_checkver}-${CARCH}.dump.gz -c >${_lib}-${_checkver}-${CARCH}.dump
-        abi-dumper check/source/$_lib -lver $pkgver -public-headers include -output ${_lib}-${pkgver}-${CARCH}.dump
-        abi-compliance-checker -l $_lib -old ${_lib}-${_checkver}-${CARCH}.dump -new ${_lib}-${pkgver}-${CARCH}.dump
+        _old="$srcdir"/${_lib}-${_checkver}-${CARCH}.dump
+        _new=${_lib}-${pkgver}-${CARCH}.dump
+        abi-dumper check/source/$_lib -lver $pkgver -public-headers include -output $_new
+        abi-compliance-checker -l $_lib -old $_old -new $_new
     done
 }
 
