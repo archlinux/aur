@@ -100,7 +100,7 @@ package() {
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
 	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/recipes/"
 
-	install -Dm755 "../$_pkgname.sh" "$pkgdir/usr/bin/ferdi"
+	install -Dm755 "../$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
 
 	install -Dm644 "../$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	for _size in 16 24 32 48 64 96 128 256 512 1024; do
