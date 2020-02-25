@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 
 testEquality() {
   if ./haur -g &>/dev/null; then
