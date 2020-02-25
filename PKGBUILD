@@ -2,7 +2,7 @@
 
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.2.0.32.g3138b06
+pkgver=v0.3.0.37.gbb44453
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,6 +10,7 @@ url='https://forum.doom9.org/showthread.php?t=171956'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-mvsfunc-git'
+         'python-numpy'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
