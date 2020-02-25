@@ -2,7 +2,7 @@
 
 pkgname=qmplay2-git
 pkgver=19.12.19
-pkgrel=1
+pkgrel=2
 pkgdesc='QMPlay2 is a video and audio player which can play most formats and codecs'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/zaps166/QMPlay2'
@@ -26,13 +26,10 @@ build()
 	# Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
 	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=OFF'
 
-	# Uncomment below line for ccache
-	#USE_CCACHE='-DCMAKE_CXX_COMPILER_LAUNCHER=ccache'
-
 	cd $srcdir
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
-	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_LINK_TIME_OPTIMIZATION=OFF $USE_CCACHE $USE_SIDPLAYFP
+	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DUSE_LINK_TIME_OPTIMIZATION=OFF -DUSE_PCH=ON $USE_SIDPLAYFP
 	time make
 }
 
