@@ -9,7 +9,7 @@ pkgbase = nodejs-ttycast-git
 	makedepends = git
 	makedepends = jq
 	optdepends = ttyrec
-	optdepends = ovh-ttyrec
+	optdepends = ovh-ttyrec-git
 	source = git+https://github.com/dtinth/ttycast#branch=master
 	sha256sums = SKIP
 
