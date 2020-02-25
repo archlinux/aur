@@ -7,7 +7,6 @@ arch=(any)
 url="https://github.com/ytdl-org/youtube-dl"
 license=(GPLv3)
 makedepends=("python" "python-pip")
-source=("${pkgname}::git+https://github.com/ytdl-org/youtube-dl.git")
 
 
 pkgver() {
