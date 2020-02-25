@@ -4,12 +4,12 @@ pkgname=bitwarden-cli
 pkgver=1.8.0
 # commit of bitwarden/jslib
 _jslibcommit='e16cb9b801bec1cf1744d8b48f39421ad37e1644'
-pkgrel=1
+pkgrel=2
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
 url="https://github.com/bitwarden/cli"
 license=('GPL3')
-makedepends=('nvm' 'npm')
+makedepends=('nvm' 'npm' 'git')
 depends=('nodejs')
 conflicts=('bitwarden-cli-git')
 options=('!strip')
