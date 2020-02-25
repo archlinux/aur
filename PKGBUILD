@@ -4,7 +4,7 @@
 # Contributor: Alexey D. <lq07829icatm@rambler.ru>
 
 pkgname=psi-plus-git
-pkgver=1.4.1006.r1148.gbbaafae
+pkgver=1.4.1026.r1151.g2170e90
 pkgrel=1
 pkgdesc="Psi+ is a powerful XMPP client (Qt, C++) designed for the XMPP power users (built with Qt 5.x)"
 url="https://psi-plus.com"
@@ -40,12 +40,6 @@ prepare() {
   git config submodule.src/libpsi.url "$srcdir/libpsi"
   # git submodule update
   git submodule update --remote
-
-  # patches from Psi+ project
-  for patch in "$srcdir"/psi-plus/patches/*.diff; do
-    echo "* Appling ${patch##*/}"
-    patch -p1 -i "$patch"
-  done
 
   # set version 
   cd $srcdir/psi-plus/admin 
