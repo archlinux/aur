@@ -3,9 +3,9 @@
 
 pkgname=bitwarden
 pkgver=1.16.6
-pkgrel=4
+pkgrel=5
 _jslibcommit='53d08067df953e7a66ebf0b972e6443e1f275d86'
-_nodeversion='12.16.1'
+_nodeversion='10.19.0'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
