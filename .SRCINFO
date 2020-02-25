@@ -1,0 +1,15 @@
+pkgbase = pumba-git
+	pkgdesc = Chaos testing tool for Docker
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/alexei-led/pumba/releases
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	provides = pumba
+	source = pumba::git+https://github.com/alexei-led/pumba
+	sha256sums = SKIP
+
+pkgname = pumba-git
+
