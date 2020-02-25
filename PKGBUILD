@@ -7,7 +7,6 @@ arch=(any)
 url="https://github.com/ytdl-org/youtube-dl"
 license=(GPLv3)
 makedepends=("python" "python-pip")
-md5sums=('SKIP')
 
 build() {
   pip install --no-deps --target="youtube-dl" youtube-dl==2020.2.16
