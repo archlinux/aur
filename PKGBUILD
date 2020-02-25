@@ -1,18 +1,17 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=miniserve-bin
-_pkgname=miniserve
-pkgver=0.5.0
+pkgname=bottom-bin
+pkgver=0.2.1
 pkgrel=0
-pkgdesc="Tool to serve files via HTTP"
-provides=('miniserve')
-conflicts=('miniserve')
+pkgdesc='Yet another cross-platform graphical process/system monitor.'
+provides=('bottom')
+conflicts=('bottom')
 arch=('x86_64')
-url="https://github.com/svenstaro/miniserve"
+url="https://github.com/ClementTsang/bottom"
 license=(MIT)
 source=(
-  ${url}/releases/download/v${pkgver}/miniserve-linux-x86_64
-  ${url}/raw/v${pkgver}/LICENSE
+  archive-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/bottom_x86_64-unknown-linux-gnu.tar.gz
+  LICENSE::${url}/raw/${pkgver}/LICENSE
 )
 sha512sums=(
   SKIP
@@ -20,6 +19,6 @@ sha512sums=(
 )
 
 package() {
-  install -Dm755 miniserve-linux-x86_64 "$pkgdir"/usr/bin/miniserve
+  install -Dm755 btm "$pkgdir"/usr/bin/btm
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
