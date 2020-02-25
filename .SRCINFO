@@ -1,0 +1,15 @@
+pkgbase = qmic-git
+	pkgdesc = QMI IDL compiler
+	pkgver = 0.1.r13.g815dd49
+	pkgrel = 1
+	url = https://github.com/andersson/qmic
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	provides = qmic
+	conflicts = qmic
+	source = git+https://github.com/andersson/qmic
+	md5sums = SKIP
+
+pkgname = qmic-git
+
