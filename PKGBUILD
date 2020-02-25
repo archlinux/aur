@@ -1,6 +1,6 @@
 # Maintainer: Corey Stephan <corey.stephan@marquette.edu>
 pkgname=vul-git
-pkgver=r2.2f031ac
+pkgver=r12.996c670
 pkgrel=1
 pkgdesc="Latin Vulgate Bible in the terminal"
 arch=(any)
