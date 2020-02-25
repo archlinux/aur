@@ -1,7 +1,7 @@
 pkgname=gtkcord3-git
 _pkgname=gtkcord3
 pkgver=indev
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
@@ -18,6 +18,6 @@ build() {
 package() {
 	cd $_pkgname
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-	install -Dm644 LICENSE /usr/share/licenses/$_pkgname/LICENSE
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
