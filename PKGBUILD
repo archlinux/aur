@@ -29,21 +29,6 @@ sha256sums=('5b76514a103a46c9c3c578a474de28b9d5ba4140122cd0950cfe02b9b8e2c84f'
             '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
-case "$CARCH" in
-	i686)
-		_electronbuilderarch='ia32'
-	;;
-	armv7h)
-		_electronbuilderarch='armv7l'
-	;;
-	aarch64)
-		_electronbuilderarch='arm64'
-	;;
-	*)
-		_electronbuilderarch='x64'
-	;;
-esac
-
 _sourcedirectory="$pkgname-$pkgver"
 
 prepare() {
@@ -75,6 +60,21 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
+
+	case "$CARCH" in
+		i686)
+			local _electronbuilderarch='ia32'
+		;;
+		armv7h)
+			local _electronbuilderarch='armv7l'
+		;;
+		aarch64)
+			local _electronbuilderarch='arm64'
+		;;
+		*)
+			local _electronbuilderarch='x64'
+		;;
+	esac
 
 	export NODE_ENV='production'
 	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
