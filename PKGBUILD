@@ -3,14 +3,14 @@
 
 pkgname=hunter
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Ranger-like CLI file browser written in Rust'
 arch=('i686' 'x86_64')
 url='https://github.com/rabite0/hunter'
 license=('WTFPL')
 provides=('hunter')
-depends=('xdg-utils' 'gst-plugins-base-libs')
-makedepends=('rustup' 'gcc' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'libsixel')
+depends=('xdg-utils' 'gst-plugins-base-libs' 'libsixel')
+makedepends=('rustup' 'gcc' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 optdepends=('gst-plugins-good: Media support'
             'gst-plugins-bad: Media support'
             'gst-plugins-ugly: Media support'
