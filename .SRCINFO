@@ -1,7 +1,7 @@
 pkgbase = zmusic
 	pkgdesc = GZDoom's music system as a standalone library
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
 	license = BSD
@@ -12,20 +12,19 @@ pkgbase = zmusic
 	checkdepends = abi-compliance-checker
 	makedepends = cmake
 	depends = alsa-lib
-	depends = gcc-libs
+	depends = fluidsynth>=2
+	depends = libsndfile
+	depends = mpg123
 	depends = zlib
-	optdepends = fluidsynth>=2: FluidSynth MIDI device
-	optdepends = libsndfile: WAV/FLAC/OGG audio support
-	optdepends = mpg123: MP3 audio support
 	optdepends = soundfont-fluid: default soundfont for FluidSynth
 	source = ZMusic-1.1.0.tar.gz::https://github.com/coelckers/ZMusic/archive/1.1.0.tar.gz
 	source = 0001-Use-correct-soundfont-path.patch
-	source = libzmusic.so.arch.1-1.0.0-x86_64.dump.gz
-	source = libzmusiclite.so.arch.1-1.0.0-x86_64.dump.gz
 	sha256sums = 69255ddb62ecb238474bc57e3f761a593006a22eef90c4e786ef613d9a643b3a
 	sha256sums = 6c1b5bf589e5c36186869276ade865d35fdf860241dcd2e0f557e5a82dfd066f
-	sha256sums = fb524e664305019a2be2ba6da0634b902906c6c9b4ad71e1ec68a548f76f3243
-	sha256sums = c7ec2809cc27a17c5a010537545ba2e80c75956c0a91dfbb9dd5e496a6f4308b
+	source_x86_64 = libzmusic.so.arch.1-1.0.0-x86_64.dump.gz
+	source_x86_64 = libzmusiclite.so.arch.1-1.0.0-x86_64.dump.gz
+	sha256sums_x86_64 = fb524e664305019a2be2ba6da0634b902906c6c9b4ad71e1ec68a548f76f3243
+	sha256sums_x86_64 = c7ec2809cc27a17c5a010537545ba2e80c75956c0a91dfbb9dd5e496a6f4308b
 
 pkgname = zmusic
 
