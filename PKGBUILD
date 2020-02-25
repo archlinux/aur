@@ -2,7 +2,7 @@
 
 pkgorg='stack-of-tasks'
 pkgname=('pinocchio' 'pinocchio-docs')
-pkgver=2.2.2
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ build() {
     cd "$pkgbase-$pkgver/build"
 
     cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib \
-        -DBUILD_WITH_COLLISION_SUPPORT=ON -DBUILD_UNIT_TESTS=ON -DBUILD_UTILS=ON \
+        -DBUILD_WITH_COLLISION_SUPPORT=ON -DBUILD_UTILS=ON -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DBUILD_WITH_AUTODIFF_SUPPORT="$(pacman -Qs cppad > /dev/null && echo -n ON || echo -n OFF)" \
         -DBUILD_WITH_CODEGEN_SUPPORT="$(pacman -Qs cppadcodegen > /dev/null && echo -n ON || echo -n OFF)" \
         ..
