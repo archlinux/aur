@@ -1,13 +1,13 @@
 pkgbase = glooctl
 	pkgdesc = Provides useful functions to install, configure, and debug Gloo.
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://docs.solo.io/gloo/latest
 	arch = x86_64
 	license = apache
 	provides = glooctl-bin
-	source = glooctl-1.3.8::https://github.com/solo-io/gloo/releases/download/v1.3.8/glooctl-linux-amd64
-	sha256sums = 68b26f9af38149f1913ab4489383bdd1d6c090943878912f0d99071cef171496
+	source = glooctl-1.3.9::https://github.com/solo-io/gloo/releases/download/v1.3.9/glooctl-linux-amd64
+	sha256sums = 5ebcf074167d4f32ef2c6beb2c8da500ff3a008a136f596d0721185e14ef0dfa
 
 pkgname = glooctl-bin
 
