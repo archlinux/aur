@@ -18,7 +18,7 @@ conflicts=(sysprof)
 
 
 pkgver() {
-  cd sysprof
+  cd $_pkgname
   git describe --tags | sed 's/^sysprof-//;s/-/+/g'
 }
 
