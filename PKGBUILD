@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ksysguard
-pkgver=5.18.1
+pkgver=5.18.2
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=(x86_64)
@@ -15,7 +15,7 @@ optdepends=('nvidia-utils: NVIDIA GPU usage')
 groups=(plasma)
 install=$pkgname.install
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig})
-sha256sums=('d88c8c324fd5835d6287107b162b2434f43dcd3adb01bb9b2a9c4b93afb0ece2'
+sha256sums=('53549f51cabf31bbf17c96492eae9025fad32c6659c412fe5c2eb5a4efbcf4e1'
             'SKIP')
 validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
