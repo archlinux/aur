@@ -1,7 +1,7 @@
 pkgbase = boost171
 	pkgdesc = Free peer-reviewed portable C++ source libraries
 	pkgver = 1.71.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.boost.org/
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = boost171
 	makedepends = zstd
 	optdepends = python: for python bindings
 	optdepends = python2: for python2 bindings
-	provides = boost
 	provides = boost-libs
 	conflicts = boost
 	conflicts = boost-libs
