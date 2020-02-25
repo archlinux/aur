@@ -1,17 +1,17 @@
-From c52a9fd04f97ed11ff441e6754c5bdeeb2f35efd Mon Sep 17 00:00:00 2001
+From 104b0ed4916d639c53cdb2d5e9caf3549330c113 Mon Sep 17 00:00:00 2001
 From: Jan Cholasta <jan@cholasta.net>
 Date: Thu, 6 Feb 2020 07:59:18 +0100
 Subject: [PATCH] Fix file paths
 
 ---
- source/common/gameconfigfile.cpp     | 14 +-------------
+ source/common/gameconfigfile.cpp     | 13 +------------
  source/common/gamecontrol.cpp        |  2 +-
  source/common/music/i_soundfont.cpp  |  4 +---
  source/platform/posix/sdl/i_main.cpp | 14 +-------------
- 4 files changed, 4 insertions(+), 30 deletions(-)
+ 4 files changed, 4 insertions(+), 29 deletions(-)
 
 diff --git a/source/common/gameconfigfile.cpp b/source/common/gameconfigfile.cpp
-index dd4c0889e..949e6be16 100644
+index dd4c0889e..ae7d282d4 100644
 --- a/source/common/gameconfigfile.cpp
 +++ b/source/common/gameconfigfile.cpp
 @@ -100,15 +100,10 @@ FGameConfigFile::FGameConfigFile ()
@@ -30,11 +30,9 @@ index dd4c0889e..949e6be16 100644
  
  #endif
  		SetValueForKey ("Path", "$STEAM", true); // also covers GOG.
-@@ -128,13 +123,9 @@ FGameConfigFile::FGameConfigFile ()
- 		SetValueForKey ("Path", "$GAMEDIR", true);
- #else
+@@ -130,11 +125,8 @@ FGameConfigFile::FGameConfigFile ()
  		SetValueForKey ("Path", "$HOME/" GAME_DIR, true);
--		SetValueForKey ("Path", SHARE_DIR, true);
+ 		SetValueForKey ("Path", SHARE_DIR, true);
  		SetValueForKey ("Path", "/usr/share/games/jfduke3d", true);
 -		SetValueForKey ("Path", "/usr/local/share/games/jfduke3d", true);
  		SetValueForKey ("Path", "/usr/share/games/eduke32", true);
@@ -44,7 +42,7 @@ index dd4c0889e..949e6be16 100644
  #endif
  	}
  
-@@ -151,10 +142,7 @@ FGameConfigFile::FGameConfigFile ()
+@@ -151,10 +143,7 @@ FGameConfigFile::FGameConfigFile ()
  		SetValueForKey("Path", "$PROGDIR/soundfonts", true);
  #else
  		SetValueForKey("Path", "$HOME/" GAME_DIR "/soundfonts", true);
@@ -57,10 +55,10 @@ index dd4c0889e..949e6be16 100644
  	}
  
 diff --git a/source/common/gamecontrol.cpp b/source/common/gamecontrol.cpp
-index dac122893..111f1f954 100644
+index 05ed78781..4b330ddff 100644
 --- a/source/common/gamecontrol.cpp
 +++ b/source/common/gamecontrol.cpp
-@@ -584,7 +584,7 @@ int RunGame()
+@@ -599,7 +599,7 @@ int RunGame()
  	FString logfile = Args->TakeValue("+logfile");
  
  	// As long as this engine is still in prerelease mode let's always write a log file.

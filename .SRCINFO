@@ -1,7 +1,7 @@
 pkgbase = raze
 	pkgdesc = Build engine port backed by GZDoom tech
 	pkgver = 0.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coelckers/Raze
 	arch = x86_64
 	license = custom:BUILD
@@ -9,22 +9,22 @@ pkgbase = raze
 	makedepends = cmake
 	makedepends = desktop-file-utils
 	makedepends = git
+	depends = gtk3
 	depends = hicolor-icon-theme
 	depends = libgl
 	depends = libjpeg
 	depends = libvpx
+	depends = openal
 	depends = sdl2
 	depends = zmusic
-	optdepends = gtk3: IWAD selection dialog
 	optdepends = gxmessage: crash dialog (GNOME)
 	optdepends = kdialog: crash dialog (KDE)
-	optdepends = openal: in-game sound
 	optdepends = xorg-xmessage: crash dialog (other)
 	source = Raze::git+https://github.com/coelckers/Raze#tag=0.4.5
 	source = 0001-Fix-file-paths.patch
 	source = raze.desktop
 	sha256sums = SKIP
-	sha256sums = 35c2a1c652f84a56c6ee5a35ec30f9b2028307ee8e14ed053810a344beafc784
+	sha256sums = cb6a0ff91f3746a1bd9583540f51e3c3ad445a34b1a2a0a46d18a64797223e68
 	sha256sums = ffc02d8f6f0d4464a74e025d41063f2441d9423d4ed605a0290eb266ae9531c8
 
 pkgname = raze
