@@ -1,0 +1,14 @@
+pkgbase = vapoursynth-plugin-arearesize-git
+	pkgdesc = Plugin for Vapoursynth: arearesize (GIT version)
+	pkgver = r1.5.g77d9b09
+	pkgrel = 1
+	url = https://forum.doom9.org/showthread.php?t=180415
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	source = arearesize::git+https://github.com/Kiyamou/VapourSynth-AreaResize.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-arearesize-git
+
