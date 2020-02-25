@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+app_name='notepadpp'
+
+pkgdir="/usr/share/${app_name}"
+localdir="${HOME}/.local/share/${app_name}"
+configdir="${HOME}/.config/${app_name}"
+cachedir="${HOME}/.cache/${app_name}"
+
+unset WINEPREFIX
+
+for folder in "${localdir}" "${cachedir}" "${configdir}"; do
+    if [ ! -d "${folder}" ]; then
+        mkdir -p "${folder}"
+    fi
+done
+
+if mount | grep -q "${localdir}"; then
+    echo "${app_name} already mounted"
+elif ! fuse-overlayfs -o lowerdir="${pkgdir}" -o upperdir="${configdir}" -o workdir="${cachedir}" "${localdir}"; then
+    echo "ERROR: cannot mount fuse-overlayfs for ${app_name}"
+    exit 1
+fi
+
+if [ -n "${1}" ]; then
+    argpath="Z:\\$(readlink -f "${1}" | sed 's|/|\\\\|g')"
+fi
+
+WINEDEBUG=-all exec wine "${localdir}/${app_name}" "${args}${argpath}"
+
