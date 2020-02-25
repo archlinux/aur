@@ -1,6 +1,6 @@
 pkgbase = xmrig-mo
 	pkgdesc = High performance RandomX and CryptoNight CPU miner, with MoneroOcean auto alg switching
-	pkgver = 5.6.0mo1
+	pkgver = 5.7.0mo1
 	pkgrel = 1
 	url = https://github.com/MoneroOcean/xmrig
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = xmrig-mo
 	depends = libuv
 	depends = openssl
 	depends = hwloc
-	source = https://github.com/MoneroOcean/xmrig/archive/v5.6.0-mo1.tar.gz
+	source = https://github.com/MoneroOcean/xmrig/archive/v5.7.0-mo1.tar.gz
 	source = xmrig-mo.service
 	source = xmrig-mo.sysusers
-	sha256sums = 8cacf9e06aeff21b8d7be0c0bf5399f60dc92ba4343390ce557a245e7f5a4132
+	sha256sums = 5a6d821198ea2e3efa00e6966eab8f04407eaf0ddcdfe3f3940dc58e88c0a813
 	sha256sums = eceb05ca62896015f4cb2866e9caa516efc9a77a370d9ecf2eaf4763ff315e5f
 	sha256sums = d8f499302fb2b642fe02586c81c410a299e0a6e133aef1cc1c783bcdcb3f44f6
 
