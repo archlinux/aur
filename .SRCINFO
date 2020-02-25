@@ -1,6 +1,6 @@
 pkgbase = np2kai-git
 	pkgdesc = Neko Project II Kai, a PC-9801 emulator. (GIT version)
-	pkgver = rev.19.47.ge0b9fe5
+	pkgver = rev.21.57.g82a79e0
 	pkgrel = 1
 	url = http://domisan.sakura.ne.jp/article/np2kai/np2kai.html
 	arch = x86_64
