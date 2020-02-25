@@ -1,0 +1,17 @@
+pkgbase = canonical-multipass
+	pkgdesc = Multipass is a lightweight VM manager for Linux, Windows and macOS.
+	pkgver = 1.0.2
+	pkgrel = 0.1
+	url = https://multipass.run
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = gcc-libs
+	depends = systemd-libs
+	depends = libnsl
+	depends = qt5-base
+	source = git+https://github.com/canonical/multipass.git#tag=v1.0.2
+	sha256sums = SKIP
+
+pkgname = canonical-multipass
+
