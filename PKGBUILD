@@ -2,8 +2,8 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.207
-pkgrel=3
+pkgver=0.218
+pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
 license=('custom:MAME License')
@@ -28,17 +28,30 @@ makedepends=('nasm'
              'glu'
              'glm'
              'wget'
-             'asio'
+#              'asio'
              'python-sphinxcontrib-svg2pdfconverter'
              'rapidjson'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'mame.sh'
+        'https://patch-diff.githubusercontent.com/raw/bkaradzic/GENie/pull/493.diff'
+        'mame.desktop::https://git.archlinux.org/svntogit/community.git/plain/trunk/mame.desktop?h=packages/mame'
+        'mame.svg::https://git.archlinux.org/svntogit/community.git/plain/trunk/mame.svg?h=packages/mame'
         )
-sha256sums=('69c29533d2128345c59fbf23fabc3af696322a77a6c1d7a7bd7f5a2ee57adafb'
+sha256sums=('c855d2a53956d7ecc6b2d029747495278cd701dc785c50548f0f20ffa673b91f'
             '441ecf30fa03c13945947f56bb577b7e12c9a6cc287097fd969eb71be0f3ae85'
+            'SKIP'
+            '6beb883c8efed5b7466d43d0658b47c3e4a9928b5d0245ed56446b230e28306b'
+            '17c442c933d764175e4ce1de50a80c0c2ddd5d733caf09c3cd5e6ba697ac43f4'
             )
+
 install=sdlmame-wout-toolkits.install
+
+prepare() {
+  cd "mame-mame${pkgver/./}"
+
+  patch -d 3rdparty/genie -p1 -i "${srcdir}/493.diff"
+}
 
 build() {
   cd "mame-mame${pkgver/./}"
@@ -53,7 +66,7 @@ build() {
        TEST=0 \
        STRIP_SYMBOLS=1 \
        VERBOSE=1 \
-       USE_SYSTEM_LIB_ASIO=1 \
+       USE_SYSTEM_LIB_ASIO=0 \
        USE_SYSTEM_LIB_EXPAT=1 \
        USE_SYSTEM_LIB_ZLIB=1 \
        USE_SYSTEM_LIB_JPEG=1 \
@@ -65,7 +78,7 @@ build() {
        USE_SYSTEM_LIB_UTF8PROC=1 \
        USE_SYSTEM_LIB_GLM=1 \
        USE_SYSTEM_LIB_RAPIDJSON=1 \
-       USE_SYSTEM_LIB_PUGIXML=1 \
+       USE_SYSTEM_LIB_PUGIXML=1
 
 }
 
@@ -75,7 +88,7 @@ package() {
   # Install the sdlmame script
   install -Dm755 "${srcdir}/mame.sh" "${pkgdir}/usr/bin/mame"
 
-  # Install the applications and the UI font in /usr/share
+  # Install the applications, and the UI font in /usr/share
   install -Dm755 mame64 "${pkgdir}/usr/lib/mame/mame"
   _apps=('castool'
          'chdman'
@@ -95,7 +108,10 @@ package() {
          'testkeys'
          'unidasm'
          )
-  for i in "${_apps[@]}"; do install -Dm755 "${i}" "${pkgdir}/usr/lib/mame/${i}"; done
+  for i in "${_apps[@]}"; do
+    install -Dm755 "${i}" "${pkgdir}/usr/lib/mame/${i}"
+    ln -s "../lib/mame/${i}" "${pkgdir}/usr/bin/mame-${i}"
+  done
 
   # Install the extra bits
   _extra=('artwork'
@@ -126,5 +142,9 @@ package() {
         -e "s|${pkgdir}||g" \
         -i "${i}"
   done
-  
+
+  # install desktop file and icon
+  install -Dm644 "${srcdir}/mame.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm644 "${srcdir}/mame.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
+
 }
