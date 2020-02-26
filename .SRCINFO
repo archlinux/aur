@@ -1,0 +1,19 @@
+pkgbase = xr-hardware-git
+	pkgdesc = Udev rules for allowing USB access to popular XR/VR/AR headsets
+	pkgver = 0.2.1.r0.g3b7d526
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/monado/utilities/xr-hardware
+	install = xr-hardware.install
+	arch = any
+	license = Boost
+	provides = oculus-udev
+	provides = osvr-udev
+	provides = vive-udev
+	conflicts = oculus-udev
+	conflicts = osvr-udev
+	conflicts = vive-udev
+	source = git+https://gitlab.freedesktop.org/monado/utilities/xr-hardware.git
+	sha256sums = SKIP
+
+pkgname = xr-hardware-git
+
