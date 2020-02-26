@@ -13,8 +13,8 @@ source_x86_64=("https://github.com/lets-cli/$_pkgname/releases/download/v$pkgver
 source_i686=("https://github.com/lets-cli/$_pkgname/releases/download/v$pkgver/lets_Linux_i386.tar.gz")
 provides=('lets')
 
-md5sums_x86_64=('cf2ff14a4874d9d9d716de841c5be5a0')
-md5sums_i686=('b2e84ebc94b1da2dfdf4801442e39508')
+md5sums_x86_64=('96232539bd1feeb24867a01174711712')
+md5sums_i686=('a7e99720d209cb2e2c0c83915635fcee')
 
 package() {
     install -Dm755 "$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
