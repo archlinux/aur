@@ -7,10 +7,10 @@
 
 pkgname=packettracer
 pkgver=7.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Cisco PacketTracer 7.3.0 installation package"
 arch=( 'x86_64' )
-depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'java-runtime' 'libjpeg-turbo' 'nss')
+depends=('openssl-1.0' 'dbus' 'icu' 'glib2' 'libxml2' 'libjpeg-turbo' 'nss')
 options=('!strip' '!emptydirs')
 url="https://www.netacad.com/courses/packet-tracer"
 license=('custom')
@@ -27,7 +27,7 @@ package() {
 	mv ${pkgdir}/opt/pt/ ${pkgdir}/opt/packettracer/
 
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s ${pkgdir}/opt/packettracer "${pkgdir}/usr/bin/packettracer"
+	ln -s /opt/packettracer/packettracer "${pkgdir}/usr/bin/packettracer"
 
 	ln -s /usr/lib/libdouble-conversion.so "${pkgdir}/opt/packettracer/bin/libdouble-conversion.so.1"
 
