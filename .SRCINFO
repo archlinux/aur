@@ -1,0 +1,14 @@
+pkgbase = mythes-tr
+	pkgdesc = Turkish thesaurus
+	pkgver = r77.491563f
+	pkgrel = 1
+	url = https://github.com/maidis/mythes-tr
+	arch = any
+	license = LGPL2.1
+	makedepends = git
+	optdepends = libmythes: offers thesaurus library functions
+	source = mythes-tr::git+https://github.com/maidis/mythes-tr
+	md5sums = SKIP
+
+pkgname = mythes-tr
+
