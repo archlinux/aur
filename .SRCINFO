@@ -1,6 +1,6 @@
 pkgbase = pcloudcc
 	pkgdesc = A simple linux console client for pCloud cloud storage.
-	pkgver = 2.1.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/pcloudcom/console-client
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = pcloudcc
 	makedepends = boost
 	depends = zlib
 	depends = fuse
-	source = pcloudcc-2.1.0-1-src.zip::https://github.com/plague-doctor/console-client/archive/master.zip
-	validpgpkeys = A8F7858263C1E39480B731DCEAD4F103068DF8E5
-	sha256sums = 8bb6895a1eddb06e3e22342b684d6231c34dd51078a66db3b4c953d1ff217c76
+	source = pcloudcc::git+https://github.com/pcloudcom/console-client.git
+	sha256sums = SKIP
 
 pkgname = pcloudcc
 
