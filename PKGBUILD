@@ -1,6 +1,6 @@
 _npmname=now
 pkgname=nodejs-$_npmname
-pkgver=17.0.3
+pkgver=17.0.4
 pkgrel=1
 pkgdesc="The command line interface for Zeit Now"
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('02cd3719f36767f32fbb0ef94717c557dac7716a9385848a8e32039d7538f9ea')
+sha256sums=('f8009a78b1589b1df2a14b23dab79a7c2924d999a4389175a91bc3e6811cab19')
 
 # For more info about this package see:
 # https://wiki.archlinux.org/index.php/Node.js_package_guidelines
