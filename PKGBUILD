@@ -1,8 +1,8 @@
-# Maintainer: Christopher Vittal <christopher dot vittal at gmail dot com>
+# Maintainer: Chris Vittal <chris@vittal.dev>
 _pkgname='plink1.9'
 pkgname="$_pkgname-git"
 _pkgver=1.9
-pkgver=1.9.r191.g927247b5
+pkgver=1.9.r40.gdcc7785a
 pkgrel=1
 pkgdesc="whole-genome association analysis toolset, version 1.9"
 arch=(x86_64)
