@@ -7,13 +7,13 @@ pkgname='ferdi'
 pkgver='5.4.3'
 _recipescommit='3dcb305ffb706a7604cdfbadf7f2d2e236cb223d'
 _internalservercommit='c39e8b45a51387f24d30e62a170681fc3422ad08'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
 license=('Apache')
-depends=('electron')
-makedepends=('npm')
+depends=('electron' 'libxkbfile')
+makedepends=('npm' 'python')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
