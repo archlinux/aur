@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.5.5
+_kernver=5.5.6
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
@@ -31,8 +31,7 @@ _headerssrc=$(pacman -Sp "${_pkgname}-headers" 2> /dev/null)
 _docssrc=$(pacman -Sp "${_pkgname}-docs" 2> /dev/null) 
 
 # If not, then use the Arch Linux archive:
-_kernsrc_basename=$(basename "${_kernsrc}" 2> /dev/null)
-if [ "${_kernsrc_basename}" != "${_kernpkg}" ]; then
+if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
   _arch_archive=https://archive.archlinux.org/packages/.all
   _kernsrc=${_arch_archive}/${_kernpkg}
   _headerssrc=${_arch_archive}/${_headerspkg}
@@ -43,9 +42,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('8a5831a8df34bc83f95e493406dfa8eaafebae1fb68a33697df7f2e630841aad'
-            'aa6474d4c4077d218e41d38894fcd4491c7c3829d4c92d7ab3c19f326c3fde61'
-            '227c420e6a05b83aea63cf3add0429d2d694e0f955c7cdc56207513b000441c3')
+sha256sums=('ab80f9db2d77f2e7e385513f343cdd5d42ccc76b448270cc7fd54eba58722d40'
+            '7adab39e2822a186ba45eb9745d592fc6afc3d164ac441cfef7731eb1b1c857a'
+            'a13535cf28c4c80fb8b0ab5a414e8ac0ed9540373415b3e8645b5044a65565fd')
 
 package_linux-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -63,7 +62,7 @@ package_linux-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.5.5.arch1-1-bin() {
+package_linux5.5.6.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -74,7 +73,7 @@ package_linux5.5.5.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.5.5.arch1-1-headers-bin() {
+package_linux5.5.6.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -82,7 +81,7 @@ package_linux5.5.5.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.5.5.arch1-1-docs-bin() {
+package_linux5.5.6.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
