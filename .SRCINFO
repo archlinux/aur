@@ -6,6 +6,9 @@ pkgbase = balena-engine
 	url = https://www.balena.io/
 	arch = x86_64
 	arch = i686
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
 	license = Apache
 	makedepends = git
 	makedepends = go>=1.10.8
