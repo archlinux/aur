@@ -3,8 +3,8 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.5.5.arch1
-pkgrel=2
+pkgver=5.5.6.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -29,9 +29,9 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'd8ec5445fe03cd5e0cb95a8bcbdf4887a1649825b0a68b8ffd62dabe300ecb8f'
-            '31ae60837b90feba277b182a9015e4df6e74fd660aba1a2841f49ecd57617559'
-            '334f3472adc0280614b278ead7375d3a982dc1b9310c1fc62bc8b8e96eb2b6d4'
+            'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
+            '14a660a9d445ed3d1abde0338e92d7f23d94d850c3fc21634c45147d00e1ca61'
+            'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0'
 )
 
 
@@ -66,7 +66,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
