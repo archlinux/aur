@@ -5,14 +5,14 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
-pkgver='5.4.1.beta.5.r271.gf07b3f70'
-pkgrel='5'
+pkgver='5.4.1.beta.5.r345.g8a6c744f'
+pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('electron')
-makedepends=('git' 'npm')
+depends=('electron' 'libxkbfile')
+makedepends=('git' 'npm' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
