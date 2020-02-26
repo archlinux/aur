@@ -1,0 +1,31 @@
+pkgbase = komikku-git
+	pkgdesc = Online/offline Manga reader for GNOME, built for the Librem 5
+	pkgver = v0.11.1+44+g8d6c146
+	pkgrel = 1
+	url = https://gitlab.com/valos/Komikku
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = gtk3
+	depends = libhandy
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-beautifulsoup4
+	depends = python-cloudscraper
+	depends = python-dateparser
+	depends = python-lxml
+	depends = python-magic-ahupp
+	depends = python-pillow
+	depends = python-pure-protobuf
+	depends = python-unidecode
+	provides = komikku
+	conflicts = komikku
+	source = git+https://gitlab.com/valos/Komikku.git
+	sha512sums = SKIP
+
+pkgname = komikku-git
+
