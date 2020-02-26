@@ -6,6 +6,7 @@ pkgbase = aur-audit-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = bat
 	source = aur-audit-git::git+https://github.com/alxpettit/aur-audit.git
 	sha256sums = SKIP
 
