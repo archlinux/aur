@@ -2,7 +2,7 @@
 
 pkgname=oilshell
 pkgver=0.8.pre1
-pkgrel=2
+pkgrel=3
 pkgdesc='Oil, a new unix shell'
 arch=('x86_64')
 url='http://www.oilshell.org/'
@@ -29,5 +29,5 @@ package() {
   ln -s /usr/bin/oil.ovm "$pkgdir/usr/bin/oil"
 
   # install manpage
-  install -Dm644 doc/osh.1 "$pkgdir/usr/share/man/man1"
+  install -Dm644 doc/osh.1 "$pkgdir/usr/share/man/man1/osh.1"
 }
