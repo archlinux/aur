@@ -8,6 +8,8 @@ url="https://github.com/yeastplume/aloevera"
 license=('Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
+optdepends=('cc65: compile assembly and header files'
+            'x16-emulator: run BASIC and bin files')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeastplume/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('2bfda79f95d01654749003d2b3f8eb3e')
 
