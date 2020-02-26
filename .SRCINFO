@@ -1,7 +1,7 @@
 pkgbase = oilshell
 	pkgdesc = Oil, a new unix shell
 	pkgver = 0.8.pre1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.oilshell.org/
 	install = oilshell.install
 	arch = x86_64
