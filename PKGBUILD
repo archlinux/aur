@@ -8,8 +8,10 @@ arch=('any')
 url="https://github.com/karx1/haur"
 license=('LGPLv3')
 depends=('bash' 'git')
-source=("haur")
+source=("haur" "Makefile")
 package () {
-	install -Dm777 "$srcdir"/haur "$pkgdir"/usr/bin/haur
+	make clean
+	make install srcdir=$srcdir pkgdir=$pkgdir
 }
-md5sums=('23c78cb76dc3aebd7f45efce417c9830')
+md5sums=('23c78cb76dc3aebd7f45efce417c9830'
+         'ade16df76b02ce1da65fc01c3ead5570')
