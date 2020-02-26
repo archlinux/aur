@@ -21,7 +21,7 @@ source=("git+${url}.git#branch=${BRANCH:-master}"
 "skywire-systemd.tar.gz"
 "PKGBUILD.sig")
 sha256sums=('SKIP'
-            'ba2d150094f3cc9c182c051532bc2848b0d8f32276dced6a4a15201bb67db665'
+            'd7b865e9b794d0889c1044cee25d1c1aad1fdd2c4256da18c11b3b19e218224a'
             '5b110b1ce7544d46f52934b742fcb819dbfc50c78702e93a1efa3246d14af45b'
             'SKIP')
 validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
