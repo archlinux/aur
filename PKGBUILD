@@ -3,7 +3,7 @@
 pkgname=lets-bin
 _pkgname=lets
 
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 arch=("x86_64" "i686")
 pkgdesc="CLI task runner - a better alternative to make"
