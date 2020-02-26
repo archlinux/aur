@@ -6,7 +6,6 @@ pkgbase = wings3d
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
-	makedepends = imagemagick
 	depends = erlang
 	depends = erlang-cl
 	depends = erlang-sdl

@@ -6,10 +6,11 @@ pkgver=2.2.5
 pkgrel=1
 pkgdesc='3D modeler using the winged edge data structure'
 arch=(x86_64)
+# https is not available
 url='http://www.wings3d.com/'
 license=(GPL)
 depends=(erlang erlang-cl erlang-sdl)
-makedepends=(gendesk imagemagick)
+makedepends=(gendesk)
 optdepends=('povray: render scenes with POV-Ray')
 source=("https://downloads.sourceforge.net/project/wings/wings/$pkgver/wings-$pkgver.tar.bz2"
         "$pkgname.sh")
@@ -24,35 +25,21 @@ prepare() {
     --pkgdesc "$pkgdesc" \
     --genericname '3D Modeler' \
     --categories 'Graphics;3DGraphics'
-
-  # Convert the icon in a reproducable way
-  convert +set date:create +set date:modify "$_p"/win32/wings.ico $pkgname.png
-
-  # Path fix for building wpc_lwo
-  ln -s "$_p" "$_p"/plugins_src/import_export/wings
-  ln -s "$_p" wings
-
-  sed -i 's/-Werror//' "$_p"/{src,e3d,plugins_src/import_export}/Makefile
 }
 
 build() {
-  export ESDL_PATH="$(echo /usr/lib/erlang/lib/esdl-*)"
   export ERL_LIBS="$srcdir"
-
-  make -C "$_p" all lang
+  make -C "${pkgname%3d}-$pkgver" unix
 }
 
 package() {
   install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
-
-  install -Dm644 $pkgname.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 $pkgname-3.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-
+  install -Dm644 -t "$pkgdir/usr/share/applications" $pkgname.desktop
+  cd "${pkgname%3d}-$pkgver/icons"
+  install -Dm644 wings_icon_48x48.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  cd ../build
   install -d "$pkgdir/usr/lib/$pkgname"
-  for subdir in e3d ebin icons plugins psd shaders src textures tools; do
-    cp -r "$_p"/$subdir/ "$pkgdir/usr/lib/$pkgname"
-  done
+  cp -r "wings-$pkgver-linux/lib/wings-$pkgver"/* "$pkgdir/usr/lib/$pkgname/"
 }
 
 # getver: -u=2 github.com/dgud/wings/releases
