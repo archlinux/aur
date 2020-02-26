@@ -1,6 +1,6 @@
 pkgname=eolie-stable
 _gitname=eolie
-pkgver=0.9.97.r26.geb9ed8af
+pkgver=0.9.97.r34.g369520f7
 pkgrel=1
 pkgdesc="Simple web browser for GNOME (stable branch: last release + fixes)"
 arch=('x86_64' 'i686')
