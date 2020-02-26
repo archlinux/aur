@@ -6,7 +6,7 @@
 
 pkgname=dolphin-root
 _pkgname=${pkgname%-root}
-pkgver=19.04.2
+pkgver=19.12.2
 pkgrel=1
 pkgdesc="KDE File Manager, patched to be able to run as root"
 arch=(armv7h i686 x86_64)
@@ -14,14 +14,13 @@ url="https://kde.org/applications/system/dolphin/"
 license=(LGPL)
 depends=(baloo-widgets knewstuff kio-extras kcmutils kparts kinit phonon-qt5)
 makedepends=(extra-cmake-modules kdoctools)
-optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kde-thumbnailer-odf: ODF thumbnails'
-            'ruby: installing new service menus from KDE Store' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
+optdepends=('kde-cli-tools: for editing file type options' 'ffmpegthumbs: video thumbnails' 'kdegraphics-thumbnailers: PDF and PS thumbnails'
             'konsole: terminal panel' 'purpose: share context menu')
 conflicts=($_pkgname)
 provides=($_pkgname)
-source=("https://download.kde.org/stable/applications/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
+source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$pkgver.tar.xz"{,.sig}
         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch)
-sha512sums=('e1480c2f98f06a29048683180e1ab30992e57a4cefde1b3a1a0da1c1c654482cc2e57d23fb7a7b8102e76f86c2b09b09900d37dbddc753c85f545146d47c5574'
+sha512sums=('c9b43a3e923e6f261225ab7ebc0a35722f4aba197015e48739c7b0cc442dfa227875b55e85a28c8703abdfab7b592432d14ca3560155e59ad39a4542345646dc'
             'SKIP'
             '01fb828b6383250df76d71923a49ed79e54599a6b3b28428aeb94466c7a442a2e03642fffa6387f2d456b2a39149e6d38269a94fb76d07e3e02d8aa56a358f0e')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
@@ -36,8 +35,6 @@ prepare() {
 build() {
   cd build
   cmake ../$_pkgname-$pkgver \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
