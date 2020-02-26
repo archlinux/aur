@@ -3,7 +3,7 @@
 
 _basename=openexr
 pkgname=lib32-openexr
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library"
 url="https://www.openexr.com/"
@@ -13,15 +13,15 @@ depends=('lib32-gcc-libs' 'lib32-zlib' 'openexr')
 makedepends=('cmake' 'lib32-fltk' 'lib32-freeglut')
 conflicts=('lib32-ilmbase')
 replaces=('lib32-ilmbase')
-source=($_basename-$pkgver.tar.gz::"https://github.com/openexr/openexr/archive/v$pkgver.tar.gz")
-sha256sums=('4904c5ea7914a58f60a5e2fbc397be67e7a25c380d7d07c1c31a3eefff1c92f1')
+source=($_basename-$pkgver.tar.gz::"https://github.com/openexr/openexr/archive/v$pkgver.tar.gz"
+        openexr-pc-prefix.patch::"https://github.com/AcademySoftwareFoundation/openexr/commit/0b26a9de.patch")
+sha256sums=('3ebbe9a8e67edb4a25890b98c598e9fe23b10f96d1416d6a3ff0732e99d001c1'
+            'f20d7588badb679828816e0ada201705b7d1cc5a4d82df3d586707a792b10950')
 
 prepare() {
     cd $_basename-$pkgver
 
-    # Take DESTDIR into account when creating symlinks
-    sed -e 's|chdir ${CMAKE_INSTALL_FULL_LIBDIR}|chdir \\$ENV\\{DESTDIR\\}${CMAKE_INSTALL_FULL_LIBDIR}|' \
-        -i OpenEXR/config/LibraryDefine.cmake -i IlmBase/config/LibraryDefine.cmake
+    patch -p1 -i ../openexr-pc-prefix.patch # Fix prefix in pc file
 }
 
 build() {
@@ -52,8 +52,4 @@ package() {
     rm -r "${pkgdir}/usr/share"
 
     install -D -m644 "$srcdir"/$_basename-$pkgver/LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
-
-    # Fix pc include path
-    sed -e 's|=include|=${prefix}/include|g' -e 's|=lib|=${prefix}/lib|g' \
-        -i "$pkgdir"/usr/lib32/pkgconfig/OpenEXR.pc -i "$pkgdir"/usr/lib32/pkgconfig/IlmBase.pc
 }

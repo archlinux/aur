@@ -1,6 +1,6 @@
 pkgbase = lib32-openexr
 	pkgdesc = An high dynamic-range image file format library
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://www.openexr.com/
 	arch = x86_64
@@ -13,8 +13,10 @@ pkgbase = lib32-openexr
 	depends = openexr
 	conflicts = lib32-ilmbase
 	replaces = lib32-ilmbase
-	source = openexr-2.4.0.tar.gz::https://github.com/openexr/openexr/archive/v2.4.0.tar.gz
-	sha256sums = 4904c5ea7914a58f60a5e2fbc397be67e7a25c380d7d07c1c31a3eefff1c92f1
+	source = openexr-2.4.1.tar.gz::https://github.com/openexr/openexr/archive/v2.4.1.tar.gz
+	source = openexr-pc-prefix.patch::https://github.com/AcademySoftwareFoundation/openexr/commit/0b26a9de.patch
+	sha256sums = 3ebbe9a8e67edb4a25890b98c598e9fe23b10f96d1416d6a3ff0732e99d001c1
+	sha256sums = f20d7588badb679828816e0ada201705b7d1cc5a4d82df3d586707a792b10950
 
 pkgname = lib32-openexr
 
