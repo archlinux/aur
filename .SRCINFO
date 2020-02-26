@@ -1,0 +1,17 @@
+pkgbase = python-opencv-python
+	pkgdesc = Wrapper package for OpenCV Python bindings
+	pkgver = 4.2.0.32
+	pkgrel = 1
+	url = https://github.com/skvark/opencv-python
+	arch = x86_64
+	license = MIT
+	license = BSD
+	license = LGPL
+	makedepends = python-pip
+	depends = python-numpy>=1.17.3
+	options = !strip
+	source = https://files.pythonhosted.org/packages/cp38/o/opencv-python/opencv_python-4.2.0.32-cp38-cp38-manylinux1_x86_64.whl
+	sha256sums = 1b90d50bc7a31e9573a8da1b80fcd1e4d9c86c0e5f76387858e1b87eb8b0332b
+
+pkgname = python-opencv-python
+
