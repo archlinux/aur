@@ -5,13 +5,13 @@
 # entire build system, we just built it as is and copy it into /opt/shadered.
 
 pkgname=shadered-git
-pkgver=1.3.0_386.9203f37
+pkgver=1.3.0_434.1b6ab1d
 pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
 url="https://github.com/dfranx/SHADERed"
 license=("MIT")
-depends=(sdl2 sfml glew glm assimp gtk3)
+depends=(assimp glew glm gtk3 sdl2 sfml)
 makedepends=(cmake git)
 
 source=("git+https://github.com/dfranx/SHADERed.git"
@@ -26,8 +26,7 @@ pkgver() {
 
 build() {
   cd SHADERed/
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
   cmake .
   make
 }
