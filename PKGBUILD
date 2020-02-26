@@ -31,9 +31,9 @@ prepare() {
 build() {
   for _arch in ${_architectures}; do
     rm -rf FreeImage-${_arch}
-    cp -r FreeImage FreeImage-${_arch}
-    pushd FreeImage-${_arch}
-    make \
+    cp -r FreeImage FreeImage-${_arch}-static
+    pushd FreeImage-${_arch}-static
+    make libFreeImage.a \
       CC=${_arch}-gcc \
       CXX=${_arch}-g++ \
       LD=${_arch}-g++ \
@@ -41,8 +41,12 @@ build() {
       AR=${_arch}-ar \
       DLLTOOL=${_arch}-dlltool \
       FREEIMAGE_LIBRARY_TYPE="STATIC" \
+      LDFLAGS="-static" \
       -f Makefile.mingw
-    make \
+    popd
+    cp -r FreeImage FreeImage-${_arch}
+    pushd FreeImage-${_arch}
+    make FreeImage.dll \
       CC=${_arch}-gcc \
       CXX=${_arch}-g++ \
       LD=${_arch}-g++ \
@@ -50,6 +54,7 @@ build() {
       AR=${_arch}-ar \
       DLLTOOL=${_arch}-dlltool \
       FREEIMAGE_LIBRARY_TYPE="SHARED" \
+      LDFLAGS="-shared -Wl,--out-implib,libFreeImage.dll.a" \
       -f Makefile.mingw
     popd
   done  
@@ -58,12 +63,13 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd ${srcdir}/FreeImage-${_arch}
     install -d "${pkgdir}"/usr/${_arch}/{lib,bin,include}
-    install -m755 Dist/FreeImage.dll "${pkgdir}"/usr/${_arch}/bin/
-    install -m644 Dist/FreeImage.dll.a "${pkgdir}"/usr/${_arch}/lib/libFreeImage.dll.a
-    install -m644 Dist/libFreeImage.a "${pkgdir}"/usr/${_arch}/lib/
-    install -m644 Dist/FreeImage.h   "${pkgdir}"/usr/${_arch}/include/
+    cd ${srcdir}/FreeImage-${_arch}-static
+    install -m644 libFreeImage.a "${pkgdir}"/usr/${_arch}/lib/
+    cd ${srcdir}/FreeImage-${_arch}
+    install -m755 FreeImage.dll "${pkgdir}"/usr/${_arch}/bin/
+    install -m644 FreeImage.dll.a "${pkgdir}"/usr/${_arch}/lib/libFreeImage.dll.a
+    install -m644 Source/FreeImage.h   "${pkgdir}"/usr/${_arch}/include/
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
   done
