@@ -5,17 +5,20 @@
 # Contributor: Piotr Balcerowski <piotr@balcerowski.org>
 
 pkgname=libcurl-openssl-1.0
-pkgver=7.61.1
+pkgver=7.68.0
 pkgrel=1
 pkgdesc="An URL retrieval library (without versioned symbols, built against openssl-1.0)"
 arch=('x86_64')
 url="https://curl.haxx.se"
 license=('MIT')
-depends=('ca-certificates' 'curl' 'krb5' 'libssh2' 'openssl-1.0' 'zlib' 'libpsl')
+depends=('curl' 'glibc' 'krb5' 'libssh2' 'openssl-1.0' 'libpsl' 'zlib'
+         'libssh2.so')
 provides=('libcurl-openssl-1.0.so')
 options=('strip')
-source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz")
-sha512sums=('6469a3ff27623826bf29a9256ba730ae0a5135c20b27377027554e19ed26be6d0225db0101b60e7f12aa22d55eccaa53f4015414ef5736ee6002c6d780ed513f')
+source=("https://curl.haxx.se/download/curl-${pkgver}.tar.gz"{,.asc})
+sha512sums=('58b42c08b1cf4cb6e68f8e469d5b5f6298eebe286ba2677ad29e1a7eefd15b8609af54544f4c5a7dadebbd3b23bd77700830f2f60fbea7ae3f2f306e640010b0'
+            'SKIP')
+validpgpkeys=('27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2') # Daniel Stenberg
 
 build() {
   cd curl-${pkgver}
@@ -23,7 +26,7 @@ build() {
   export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
 
   ./configure \
-    --prefix=/usr \
+    --prefix='/usr' \
     --disable-ldap \
     --disable-ldaps \
     --disable-manual \
@@ -31,8 +34,9 @@ build() {
     --enable-ipv6 \
     --enable-threaded-resolver \
     --with-gssapi \
-    --with-random=/dev/urandom \
-    --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+    --with-libssh2 \
+    --with-random='/dev/urandom' \
+    --with-ca-bundle='/etc/ssl/certs/ca-certificates.crt'
 
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make -C lib
@@ -43,15 +47,14 @@ package() {
 
   make -C lib DESTDIR="${pkgdir}" install
 
-  mv "${pkgdir}"/usr/lib/libcurl{,-openssl-1.0}.so.4.5.0
+  mv "${pkgdir}"/usr/lib/libcurl{,-openssl-1.0}.so.4.6.0
   rm "${pkgdir}"/usr/lib/libcurl.{a,so}*
-  ln -s libcurl-openssl-1.0.so.4.5.0 "${pkgdir}"/usr/lib/libcurl-openssl-1.0.so
-
-  install -d "${pkgdir}"/usr/lib/libcurl-openssl-1.0
-  for _i in so so.4 so.4.5.0; do
-    ln -s ../libcurl-openssl-1.0.so.4.5.0 "${pkgdir}"/usr/lib/libcurl-openssl-1.0/libcurl.${_i}
+  for version in 3 4 4.0.0 4.1.0 4.2.0 4.3.0 4.4.0 4.5.0; do
+    ln -s libcurl-openssl-1.0.so.4.6.0 "${pkgdir}"/usr/lib/libcurl-openssl-1.0.so.${version}
   done
 
   install -dm 755 "${pkgdir}"/usr/share/licenses
   ln -s curl "${pkgdir}"/usr/share/licenses/${pkgname}
 }
+
+# vim: ts=2 sw=2 et:
