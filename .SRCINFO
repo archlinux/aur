@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-kagefunc-git
 	pkgdesc = Plugin for Vapoursynth: kagefunc (GIT version)
-	pkgver = r46.fe8e96c
+	pkgver = r47.8d3f377
 	pkgrel = 2
 	url = https://github.com/Irrational-Encoding-Wizardry/kagefunc
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = vapoursynth-plugin-kagefunc-git
 	depends = vapoursynth-plugin-bm3d-git
 	depends = vapoursynth-plugin-knlmeanscl-git
 	depends = vapoursynth-plugin-tcanny-git
-	depends = python-numpy
+	depends = vapoursynth-plugin-adaptivegrain-git
 	provides = vapoursynth-plugin-kagefunc
 	conflicts = vapoursynth-plugin-kagefunc
 	source = kagefunc::git+https://github.com/Irrational-Encoding-Wizardry/kagefunc.git
