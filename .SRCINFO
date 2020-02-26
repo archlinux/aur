@@ -1,0 +1,30 @@
+pkgbase = eolie-stable-git
+	pkgdesc = Simple web browser for GNOME (stable branch: last release + fixes)
+	pkgver = 0.9.97.r34.g369520f7
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Eolie
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	depends = gtkspell3
+	depends = python-cairo
+	depends = python-dateutil
+	depends = python-gobject
+	depends = webkit2gtk
+	optdepends = python-beautifulsoup4: Import html bookmarks
+	optdepends = python-crypto: Firefox Sync support
+	optdepends = python-fxa: Firefox Sync support
+	optdepends = python-pyopenssl: Show SSL certificates
+	optdepends = python-requests-hawk: Firefox Sync support
+	provides = eolie=0.9.97.r34.g369520f7
+	conflicts = eolie
+	conflicts = eolie-git
+	conflicts = eolie-next
+	source = git+https://gitlab.gnome.org/World/lollypop#branch=next
+	sha256sums = SKIP
+
+pkgname = eolie-stable-git
+
