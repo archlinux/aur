@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Iwan Timmer <irtimmer@gmail.com>
 pkgname=tpm2-pkcs11-git
-pkgver=1.0.1.r30.9c77c56
+pkgver=1.1.0rc0.r10.e4be68d
 pkgrel=1
 pkgdesc='PKCS#11 interface for Trusted Platform Module 2.0 hardware'
 arch=('x86_64')
@@ -9,7 +9,8 @@ url='https://github.com/tpm2-software/tpm2-pkcs11'
 license=('BSD' 'custom:IPR')
 depends=('openssl' 'python-cryptography' 'python-pyasn1-modules' 'python-yaml' 'sqlite' 'tpm2-tools')
 makedepends=('git' 'autoconf-archive')
-checkdepends=('cmocka' 'ibm-sw-tpm2' 'iproute2' 'java-hamcrest' 'junit' 'libp11' 'opensc' 'tpm2-abrmd' 'xxd')
+checkdepends=('cmocka' 'ibm-sw-tpm2' 'expect' 'iproute2' 'java-hamcrest' 'junit'
+              'libp11' 'opensc' 'tpm2-abrmd' 'wget' 'xxd')
 source=("git+$url.git")
 sha512sums=('SKIP')
 
