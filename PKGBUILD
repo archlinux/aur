@@ -6,13 +6,13 @@
 
 pkgname=lutris-git
 _pkgname=lutris
-pkgver=0.5.3.r120.gd17fbee9
+pkgver=0.5.4.r134.g870428a8
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
 url='https://lutris.net/'
 license=('GPL3')
-depends=('python-gobject' 'python-yaml' 'python-evdev' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow')
+depends=('python-gobject' 'python-yaml' 'python-evdev' 'python-dbus' 'python-pip' 'gtk3' 'glib2' 'psmisc' 'cabextract' 'unzip' 'p7zip' 'curl' 'xorg-xrandr' 'gnome-desktop' 'python-requests' 'python-pillow' 'mesa-demos')
 makedepends=('git' 'python-setuptools')
 checkdepends=('xorg-server-xvfb' 'xterm' 'python-nose-cover3' 'wine' 'webkit2gtk')
 optdepends=(
