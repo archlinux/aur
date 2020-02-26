@@ -1,16 +1,18 @@
 # Maintainer: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=3.5.2
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
 license=('GPL3')
 
-#Git commit hash for version-specific submodules
-pkgver_mavlink='d240d0986710045663894aebcea89e71ce981ee4'
-pkgver_gps='2a4865adc3808687d6c6f550f497a02eb920c382'
+# Git commit hash for version-specific submodules
+pkgver_mavlink='cf28669660332f9348994ae0e323582d8d19d704' # libs/mavlink/include/mavlink/
+pkgver_aossl='3aaff1bd9e35047abdb363239bb3e3c114d07ea1' # libs/OpenSSL/android_openssl
+pkgver_gst='9d782fad9dc0384ba86ecae64511c193f6149f93' # libs/gst-plugins-good
+pkgver_gps='2a4865adc3808687d6c6f550f497a02eb920c382' # src/GPS/Drivers
 
 depends=('bzip2'
 		 'dbus'
@@ -50,31 +52,48 @@ makedepends=('git' 'qt5-base')
 
 source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcontrol/archive/v${pkgver}.tar.gz"
 		"mavlink-v2.0-qgc${pkgver}.zip::https://github.com/mavlink/c_library_v2/archive/${pkgver_mavlink}.zip"
+		"gst-plugins-good-qgc${pkgver}.zip::https://github.com/mavlink/gst-plugins-good/archive/${pkgver_gst}.zip"
+		"aossl-qgc${pkgver}.zip::https://github.com/Auterion/android_openssl/archive/${pkgver_aossl}.zip"
 		"gps-drivers-qgc${pkgver}.zip::https://github.com/PX4/GpsDrivers/archive/${pkgver_gps}.zip"
+		'libcudata-qgc.patch'
 )
 
-sha256sums=('195e1749cabbc69589df401a6af03f86796c3953ef78055418d8c734448d7685'
-			'65c0fc60be9435375f74990a5c83fb0cdef6d15c100245759d2465d480a5b9b5'
-			'1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4'
-)
+sha256sums=('2eb84acdf451d5152537516a43dae93ac52f9e48fefb3df16e6709f1a9989e4e'
+            'f3aa1ae178cfa22c4d0bf8c46edc28902ed626a970f0164bd2eba031c9d76432'
+            '51b2d5af91e16d6009e73690c62a289dff9004c170e626dc8c322dd49a745c8b'
+            'ad96ca7c11864d26047637dc02a0278bbf33997a6f6be37ef1b7ca44669f1149'
+            '1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4'
+            'SKIP')
 
 prepare() {
 	mavlinkdir="c_library_v2-${pkgver_mavlink}"
+	aossldir="android_openssl-${pkgver_aossl}"
+	gstdir="gst-plugins-good-${pkgver_gst}"
 	gpsdir="GpsDrivers-${pkgver_gps}"
 
 	mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
 
 	# Copy in the mavlink source
 	rm -r "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/v2.0"
-	cp -R "${srcdir}/${mavlinkdir}" "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/"
-	mv "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/${mavlinkdir}" "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/v2.0"
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/v2.0"
+	cp -R "${srcdir}/${mavlinkdir}/"* "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/v2.0"
+	# mv "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/${mavlinkdir}" "${srcdir}/${pkgname}-${pkgver}/libs/mavlink/include/mavlink/v2.0"
+	# Copy in the GST source
+	rm -r "${srcdir}/${pkgname}-${pkgver}/libs/gst-plugins-good/"
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}/libs/gst-plugins-good/"
+	cp -R "${srcdir}/${gstdir}/"* "${srcdir}/${pkgname}-${pkgver}/libs/gst-plugins-good/"
+	# Copy in the GST source
+	rm -r "${srcdir}/${pkgname}-${pkgver}/libs/OpenSSL/android_openssl/"
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}/libs/OpenSSL/android_openssl/"
+	cp -R "${srcdir}/${aossldir}/"* "${srcdir}/${pkgname}-${pkgver}/libs/OpenSSL/android_openssl/"
 	# Copy in the GPS source
 	rm -r "${srcdir}/${pkgname}-${pkgver}/src/GPS/Drivers"
-	cp -R "${srcdir}/${gpsdir}" "${srcdir}/${pkgname}-${pkgver}/src/GPS/"
-	mv "${srcdir}/${pkgname}-${pkgver}/src/GPS/${gpsdir}" "${srcdir}/${pkgname}-${pkgver}/src/GPS/Drivers"
+	mkdir -p "${srcdir}/${pkgname}-${pkgver}/src/GPS/Drivers"
+	cp -R "${srcdir}/${gpsdir}/"* "${srcdir}/${pkgname}-${pkgver}/src/GPS/Drivers"
+	# mv "${srcdir}/${pkgname}-${pkgver}/src/GPS/${gpsdir}" "${srcdir}/${pkgname}-${pkgver}/src/GPS/Drivers"
 
-	#cd "${srcdir}/${pkgname}-${pkgver}/"
-	#patch --strip=1 < "${srcdir}/${pkgname}-${pkgver}.patch"
+	cd "${srcdir}/${pkgname}-${pkgver}/"
+	patch --strip=1 < "${srcdir}/libcudata-qgc.patch"
 }
 
 build() {
