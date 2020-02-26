@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r45.1.5.g5d0b380
+pkgver=r48.22.g85bfa65
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -21,6 +21,8 @@ makedepends=('git'
              'libavformat.so'
              'libavcodec.so'
              'libavutil.so'
+             'curl'
+             'libarchive'
              )
 provides=('vapoursynth')
 conflicts=('vapoursynth'
@@ -28,6 +30,8 @@ conflicts=('vapoursynth'
            )
 optdepends=('imagemagick: imwri plugin'
             'tesseract: OCR plugin'
+            'libarchive: OCR plugin'
+            'curl: OCR plugin'
             'libass.so: subtext plugin'
             'libavformat.so: subtext plugin'
             'libavcodec.so: subtext plugin'
@@ -52,12 +56,12 @@ prepare() {
 
   cd vapoursynth
   mkdir -p doc/_static
-
-  ./autogen.sh
 }
 
 build() {
-  cd build
+  cd vapoursynth
+  ./autogen.sh
+  cd ../build
   ../vapoursynth/configure \
     --prefix=/usr
 
