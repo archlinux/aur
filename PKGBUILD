@@ -8,10 +8,10 @@
 
 _gitname=projectm
 pkgname=projectm-git
-pkgver=1606.8f442c5b
+pkgver=1966.533e5542b
 pkgrel=1
-conflicts=('projectm')
-provides=('projectm')
+conflicts=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
+provides=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
 arch=('x86_64' 'i686')
 url='https://github.com/projectM-visualizer/projectm'
