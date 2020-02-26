@@ -18,7 +18,7 @@ conflicts=('dnsmasq')
 provides=('dnsmasq')
 install=$pkgname.install
 backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db')
-source=("https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
+source=($pkgname-v$pkgver::"https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
         arch-ftl-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
         "nettle35.patch"
         "glib.patch"
