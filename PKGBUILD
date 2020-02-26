@@ -44,20 +44,22 @@ pkgver() {
 
 package_lxqt-kcm-integration-extra-git() {
     pkgdesc='extra kcm support for lxqt-kwin'
-    depends=(
-        )
-    optdepends=(
-        'kcm-wacomtablet: wacom tablet kcm support'
-        'print-manager: printing kcm support'
-	'fancontrol-kcm: fancontrol kcm support'
-	'kcm-fcitx: fcitx input method kcm support'
-	'kcm-fcitx5-git: fcitx5 input method kcm support'
-	'plymouth-kcm: plymouth kcm support'
-	'sddm-kcm: sddm kcm support'
-	'kdeconnect: kdeconnect kcm support'
-	'plasma-thunderbolt: thunderbolt kcm support'
-	'nx-firewall-git: ufw firewall kcm support'
-	)
+depends=("kde-cli-tools" "kglobalaccel" "kwin" "plasma-workspace")
+optdepends=('bluedevil: needed for lxqt-kcm-bluetooth'
+            'kde-gtk-config: needed for lxqt-kcm-appearance'
+            'kinfocenter: needed for lxqt-kcm-systeminfo'
+            'plasma-desktop: needed for lxqt-kcm-appearance colors and styles'
+            'kcm-wacomtablet: wacom tablet kcm support'
+            'print-manager: printing kcm support'
+	    'fancontrol-kcm: fancontrol kcm support'
+	    'kcm-fcitx: fcitx input method kcm support'
+	    'kcm-fcitx5-git: fcitx5 input method kcm support'
+	    'plymouth-kcm: plymouth kcm support'
+	    'sddm-kcm: sddm kcm support'
+	    'kdeconnect: kdeconnect kcm support'
+	    'plasma-thunderbolt: thunderbolt kcm support'
+	    'nx-firewall-git: ufw firewall kcm support'
+	   )
 
     provides=('lxqt-kcm-integration-extra' 'lxqt-kcm-integration-git' 'lxqt-kcm-integration')
 
