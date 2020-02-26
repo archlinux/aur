@@ -1,9 +1,9 @@
 # Maintainer: Michael Darr <michael.e.darr@gmail.com>
 _pkgname="ahab"
 pkgname="${_pkgname}-git"
-pkgver=0.1
+pkgver=0.3
 pkgrel=1
-pkgdesc="Dockerize your project, git style"
+pkgdesc="Configure, launch, and work in Dockerized environments"
 arch=('any')
 url="https://github.com/MichaelDarr/ahab"
 license=('GPL3')
