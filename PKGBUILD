@@ -2,7 +2,7 @@
 # Contributor: honzor 
 
 pkgname=libmodbus
-pkgver=3.1.4
+pkgver=3.1.6
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ backup=()
 options=(!libtool)
 install=
 source=(http://libmodbus.org/releases/libmodbus-$pkgver.tar.gz)
-md5sums=('b1a8fd3a40d2db4de51fb0cbcb201806')
+md5sums=('15c84c1f7fb49502b3efaaa668cfd25e')
 noextract=()
 
 
