@@ -1,22 +1,22 @@
 # Maintainer: Clement Tsang (xoronth) <cjhtsang@uwaterloo.ca>
 
 pkgname=bottom
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Yet another cross-platform graphical process/system monitor."
+pkgdesc="A cross-platform graphical process/system monitor with a customizable interface and a multitude of features."
 makedepends=('cargo')
 arch=('x86_64')
 url="https://github.com/ClementTsang/bottom"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ClementTsang/bottom/releases/download/$pkgver/bottom_source_code.tar.gz")
 license=('MIT')
-sha512sums=('b9fe000e9789f0f20c82fc5c37c478d7fd53f355eccc87304dbc8a2066a9bfaa0d3ad2ffad74f5dc64e39db35fac754ce73d18d558874c45e161dd93ffbb1c00')
+sha512sums=('94fffc17fbcdfd4c2360a15f57c14baf5043921b87aab9fae477c0ba9a4f67bc0c617e7e3b146aec1382a19fec0697b7854f9b195f30115bc86d8e2f2d47c241')
 
 build() {
     cargo build --release
 }
 
 package() {
-    #install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "README.md" "$pkgdir/usr/share/doc/${pkgname}/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     cd "./target/release"
     strip btm
