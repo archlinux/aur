@@ -10,9 +10,11 @@ pkgbase = dump978-fa-git
 	arch = armv7h
 	license = BSD
 	makedepends = git
+	makedepends = boost
 	depends = rtl-sdr
 	depends = bladerf>=2.0.2
 	depends = soapyrtlsdr
+	depends = boost-libs
 	source = dump978::git+git://github.com/flightaware/dump978
 	source = dump978.service
 	sha256sums = SKIP

@@ -10,8 +10,8 @@ pkgdesc="FlightAware/Mutability fork of dump978, a simple Mode S decoder for RTL
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/flightaware/dump978"
 license=('BSD')
-depends=('rtl-sdr' 'bladerf>=2.0.2' 'soapyrtlsdr')
-makedepends=('git')
+depends=('rtl-sdr' 'bladerf>=2.0.2' 'soapyrtlsdr' 'boost-libs')
+makedepends=('git' 'boost')
 source=('dump978::git+git://github.com/flightaware/dump978'
 	'dump978.service')
 
