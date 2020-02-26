@@ -14,10 +14,12 @@ backup=('etc/default/readsb')
 
 source=('readsb::git+git://github.com/Mictronics/readsb'
         'readsb.default'
+        'readsb.sysusers'
 	'readsb.service')
 
 sha256sums=('SKIP'
             '561069dcfb4fb370327430ddb509c18b598311426143b614261f5a05143e42ee'
+            '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
             'a99005c2103187615af3d6acf79ffb6507848aef91bb936af5a0bc8a6ac696ea')
 
 pkgver() {
@@ -34,5 +36,6 @@ package() {
   install -D -m 755 "${srcdir}/${_gitname}/readsb" "${pkgdir}/usr/bin/readsb"
   install -D -m 755 "${srcdir}/${_gitname}/viewadsb" "${pkgdir}/usr/bin/viewadsb"
   install -D -m 644 readsb.default "${pkgdir}/etc/default/readsb"
+  install -D -m 644 readsb.sysusers "${pkgdir}/usr/lib/sysusers.d/readsb.conf"
   install -D -m 644 readsb.service "${pkgdir}/usr/lib/systemd/system/readsb.service"
 }

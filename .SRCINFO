@@ -16,9 +16,11 @@ pkgbase = readsb-git
 	backup = etc/default/readsb
 	source = readsb::git+git://github.com/Mictronics/readsb
 	source = readsb.default
+	source = readsb.sysusers
 	source = readsb.service
 	sha256sums = SKIP
 	sha256sums = 561069dcfb4fb370327430ddb509c18b598311426143b614261f5a05143e42ee
+	sha256sums = 3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05
 	sha256sums = a99005c2103187615af3d6acf79ffb6507848aef91bb936af5a0bc8a6ac696ea
 
 pkgname = readsb-git
