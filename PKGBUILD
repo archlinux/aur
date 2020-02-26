@@ -1,4 +1,5 @@
-# Maintainer: Marco Donadoni <marcodonadoni at live dot it>
+# Maintainer: Daniel Matos <daniel99matos at gmail dot com>
+# Contributor: Marco Donadoni <marcodonadoni at live dot it>
 # Contributor: Jeroen Rijken <jeroen dot rijken at gmail dot com>
 pkgname=archi
 pkgver=4.6.0
@@ -10,7 +11,7 @@ license=('MIT')
 depends=('java-runtime-openjdk=8' 'bash')
 optdepends=('webkitgtk2: hints view support')
 provides=('archi')
-_build="78f12b4a3e195fe0b"
+_build="81e23a2d4f206ed1f"
 source=("https://www.archimatetool.com/downloads/$_build/Archi-Linux64-$pkgver.tgz"
         "$pkgname.desktop"
         "$pkgname-launcher.sh"
