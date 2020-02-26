@@ -2,7 +2,7 @@
 
 pkgname=srhtctl
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for interacting with the sr.ht API'
 arch=('x86_64')
 url='https://git.xenrox.net/~xenrox/srhtctl'
@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git' 'go-pie')
 provides=('srhtctl')
 source=("$pkgname-$pkgver.tar.gz::https://git.xenrox.net/~xenrox/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('b7a1ab59c6f0c8c2efa728ffc70668c277e1bb48f9b6e05f2c323208e84075de')
+sha256sums=('764e0c605714d4dce16c62f10c03cbdc9d978d1c65d8852804b05c9720065bf5')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
