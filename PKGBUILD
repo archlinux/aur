@@ -60,7 +60,7 @@ pref("browser.shell.checkDefaultBrowser", false);
 // Use LANG environment variable to choose locale
 pref("intl.locale.matchOS", true);
 
-// Automatic installing updates won't work on root, so disable this
+// Automatic installation of updates won't work on root, so disable this
 pref("app.update.auto", false);
 
 // Use system-provided dictionaries
