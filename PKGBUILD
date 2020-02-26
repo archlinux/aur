@@ -15,7 +15,7 @@ install=$pkgname.install
 backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt'
 'etc/dnsmasq.d/01-pihole.conf')
 
-source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
+source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	arch-server-core-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-standalone-archlinux-customization/master/arch-server-core-$pkgver.patch"
 	dnsmasq.include
 	$_pkgname-gravity.service
