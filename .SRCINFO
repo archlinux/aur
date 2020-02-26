@@ -1,0 +1,41 @@
+pkgbase = core-git
+	pkgdesc = Common Open Research Emulator
+	pkgver = r2075.177f2737
+	pkgrel = 1
+	url = https://github.com/coreemu/core/
+	arch = any
+	license = BSD
+	makedepends = help2man
+	makedepends = imagemagick
+	makedepends = python-sphinx
+	makedepends = python-grpcio-tools
+	makedepends = openvswitch
+	makedepends = git
+	depends = bridge-utils
+	depends = ebtables
+	depends = ethtool
+	depends = fabric
+	depends = iproute2
+	depends = libev
+	depends = openvswitch
+	depends = procps-ng
+	depends = python3
+	depends = python-future
+	depends = python-grpcio
+	depends = python-lxml
+	depends = python-mako
+	depends = python-netaddr
+	depends = python-pillow
+	depends = python-yaml
+	depends = tkimg
+	depends = util-linux
+	depends = xterm
+	optdepends = openvswitch: Open vSwitch support
+	provides = core
+	conflicts = core
+	backup = etc/core/core.conf
+	source = core::git+https://github.com/coreemu/core#branch=develop
+	md5sums = SKIP
+
+pkgname = core-git
+
