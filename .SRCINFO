@@ -1,7 +1,7 @@
 pkgbase = plask
 	pkgdesc = Photonic LAser Simulation Kit: a comprehensive tool for numerical analysis of broad range of physical phenomena in photonic devices
 	pkgver = 2020.02.24
-	pkgrel = 1
+	pkgrel = 3
 	url = https://plask.app
 	arch = x86_64
 	license = custom
