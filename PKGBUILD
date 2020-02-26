@@ -15,11 +15,19 @@ makedepends=(intltool gobject-introspection git egl-wayland)
 provides=(mutter)
 conflicts=(mutter)
 groups=(gnome)
-source=("git+https://gitlab.gnome.org/GNOME/mutter.git#tag=$pkgver")
+source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd $_pkgname
+  git describe --abbrev=0
+}
+
 build() {
-  arch-meson "$_pkgname" build
+  cd $_pkgname
+  git checkout tags/$pkgver
+  cd ..
+  arch-meson "$_pkgname" build -D gtk_doc=true
   ninja -C build
 }
 
