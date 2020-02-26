@@ -1,0 +1,8 @@
+diff --git a/requirements/crypto.txt b/requirements/crypto.txt
+index 9a62bb31f8..acdfd2028e 100644
+--- a/requirements/crypto.txt
++++ b/requirements/crypto.txt
+@@ -1,2 +1 @@
+-pycrypto>=2.6.1; sys.platform not in 'win32,darwin'
+-pycryptodomex; sys.platform == 'win32'
++pycryptodomex
