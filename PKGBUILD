@@ -51,10 +51,22 @@ END
     ln -srf "$pkgdir/usr/bin/waterfox-classic" \
         "$pkgdir/opt/waterfox-classic/waterfox-bin"
 
-    # Use system-provided dictionaries
+    # Add additional useful settings
     rm -r "$pkgdir"/opt/waterfox-classic/dictionaries
-    ln -Ts /usr/share/hunspell "$pkgdir/opt/waterfox-classic/dictionaries"
-    ln -Ts /usr/share/hyphen "$pkgdir/opt/waterfox-classic/hyphenation"
+    install -Dm644 /dev/stdin "$pkgdir/opt/waterfox-classic/browser/defaults/preferences/vendor.js" <<END
+// Disable default browser checking
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Use LANG environment variable to choose locale
+pref("intl.locale.matchOS", true);
+
+// Automatic installing updates won't work on root, so disable this
+pref("app.update.auto", false);
+
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+END
+
 }
 
 sha256sums=('67bcd2aed38969553130872652946ddd00a804ba2046c14a554e9bb99de54b24'
