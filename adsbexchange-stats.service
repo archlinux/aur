@@ -1,15 +1,17 @@
 [Unit]
 Description=ADSBexchange Stats
+Wants=network.target readsb.service
+After=network.target readsb.service
 
 [Service]
 Type=simple
+User=readsb
+RuntimeDirectory=adsbexchange-stats
+RuntimeDirectoryMode=0755
+WorkingDirectory=/run/adsbexchange-stats
 ExecStart=/usr/bin/adsbexchange-stats
-WorkingDirectory=/var/run
-StandardOutput=inherit
-StandardError=inherit
 Restart=always
 RestartSec=30
-User=readsb
 
 [Install]
 WantedBy=multi-user.target

@@ -15,7 +15,7 @@ source=('adsbexchange-stats::git+git://github.com/adsbxchange/adsbexchange-stats
 	'adsbexchange-stats.service')
 
 sha256sums=('SKIP'
-            '3161db1fdff029439604d59f492f3854953398ab9640ca72046dc429c33ae816')
+            'e6ef0503ebf8022ad5c0a320dde1bd94a5e69c7649a697069c2b8184d02ea0fd')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
