@@ -1,7 +1,7 @@
 # Maintainer: Kye Morton <pryre.dev@outlook.com>
 pkgname=qgroundcontrol-bin
 pkgver=4.0.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Ground control for unmanned vehicles."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
