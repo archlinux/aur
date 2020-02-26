@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-adaptivegrain-git
+	pkgdesc = Reimplementation of the adaptive grain mask as a Vapoursynth plugin
+	pkgver = 0.2.0.20.gcf9280a
+	pkgrel = 1
+	url = https://git.kageru.moe/kageru/adaptivegrain
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rustup
+	depends = vapoursynth
+	provides = vapoursynth-plugin-adaptivegrain
+	conflicts = vapoursynth-plugin-adaptivegrain
+	source = adaptivegrain::git+https://git.kageru.moe/kageru/adaptivegrain.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-adaptivegrain-git
+
