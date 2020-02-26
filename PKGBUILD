@@ -1,7 +1,7 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=ros-melodic-plotjuggler
 pkgdesc="juggle with data"
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 _gitorg=facontidavide
 _gitname=PlotJuggler
@@ -27,7 +27,7 @@ depends=("binutils" "qt5-base" "qt5-svg" "qt5-multimedia" ${ros_depends[@]})
 
 _dir="${_gitname}-${pkgver}"
 source=("${_gitname}-${pkgver}.tar.gz::https://github.com/${_gitorg}/${_gitname}/archive/${pkgver}.tar.gz")
-sha256sums=("d1e882cad04975ed0b3c6853d73934aa6c3cc84db027fe7962e21ea99d1f2d6e")
+sha256sums=("38475b9782436e9ebd9412730b46ca483cde3f164b6e5602da7701d1abda3cde")
 
 
 prepare() {
