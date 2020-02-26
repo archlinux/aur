@@ -1,6 +1,6 @@
 
 pkgname=python-scikit-optimize
-pkgver=0.6
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Sequential model-based optimization toolbox."
 arch=('any')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python-scikit-learn' 'python-matplotlib' 'python-pyaml')
 makedepends=('python-setuptools')
 source=("https://github.com/scikit-optimize/scikit-optimize/archive/v${pkgver}.tar.gz")
-sha256sums=('5bdbb73ca344e3a8a4487ab96a9b262d882d693f1edeb8ffab003f7f97bd540b')
+sha256sums=('c38dcea26ebcfa0877f0b6f7138d9e992ac738dc95ce7f689799ae0fd9fa607e')
 
 build() {
   cd "$srcdir"/scikit-optimize-$pkgver
