@@ -4,7 +4,7 @@ pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 _pkgname=LibreWolf
-pkgver=73.0
+pkgver=73.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
 arch=(x86_64 aarch64)
@@ -21,14 +21,13 @@ options=(!emptydirs)
 install=librewolf-bin.install
 
 case "$CARCH" in
-        aarch64) _uploadh='d676c03a2f42c51f816b05830f9bb716'
-                _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/uploads/${_uploadh}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz"
-                sha256sums+=('b744541388e1e78e08db3fed1c95ebbce85972d612fc81d8399d573441fc58ae')
+        aarch64) _uploadh='450964267'
+                _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/-/jobs/${_uploadh}/artifacts/raw/ci/${pkgname//-bin/""}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst"
+                sha256sums+=('dc933479b0ddd4b26695ddd851e168d3e5a6f57789989070961337c66f17e7f3')
                 ;;
-        x86_64) _uploadh='8a4baa82b402eff025493fecf7a5851f'
-                sha256sums+=('dfcd8ee286b1812b096f81e7e158bbdb82c2a6fbf0775bd345d59bae3ad62338')
+        x86_64) _uploadh='8f0174726c60c895d643ec7533a41858'
+                sha256sums+=('84a82009d3aa727c3655c866980cf40a1b6338305f29307800bdacf44bbc9d9f')
                 _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/uploads/${_uploadh}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz"
-                # _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/-/jobs/${_uploadh}/artifacts/raw/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz"
                 ;;
 esac
 
