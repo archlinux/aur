@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=STM32CubeIDE
-Comment=STM32CubeIDE 1.2.0
+Comment=STM32CubeIDE 1.3.0
 GenericName=STM32CubeIDE
-Exec=/opt/stm32cubeide/stm32cubeide %F
+Exec=env GDK_BACKEND=x11 /opt/stm32cubeide/stm32cubeide %F
 Icon=/opt/stm32cubeide/icon.xpm
 Path=/opt/stm32cubeide/
 Terminal=false
