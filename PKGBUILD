@@ -1,5 +1,5 @@
 pkgname=python-numpoly
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Numpy compatible polynomial representation"
 arch=('any')
@@ -7,7 +7,7 @@ url="https://github.com/jonathf/numpoly"
 license=('BSD')
 depends=('python-numpy')
 source=("https://github.com/jonathf/numpoly/archive/v${pkgver}.tar.gz")
-sha256sums=('d658ecb3d3eeec00f4c75dfdb05937537b4f73125b983856edc105930599bdb3')
+sha256sums=('86935940bd9059823dafbb7599bc0f37f3239e6ebbe744d6307323072956cb7a')
 
 package() {
   cd "${srcdir}/numpoly-$pkgver"
