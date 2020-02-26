@@ -1,36 +1,30 @@
-# Maintainer: Ainola <ainola@archlinux.org>
+# Contributor: Brett Cornwall <ainola@archlinux.org>
 # Contributor: Ner0
 # Contributor: quantax
 # Contributor: xyproto
 
 pkgname=ags
-pkgver=3.4.4.2
+pkgver=3.5.0.24
 pkgrel=1
 pkgdesc='A development tool that is primarily used to create graphical adventure games'
 arch=('x86_64')
 url='https://github.com/adventuregamestudio/ags'
 license=('Artistic2.0')
 depends=('dumb-a4' 'libtheora' 'freetype2')
-makedepends=('wxgtk')
+makedepends=('cmake' 'wxgtk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/adventuregamestudio/ags/archive/v.$pkgver.tar.gz"
         'https://github.com/adventuregamestudio/ags/commit/44d954493bb5f3e95a11a4eddbb62bd6110b1b63.patch')
-sha256sums=('dfbbabc8d54ec5182194a4565e3acb5c6daef5e90e6bafec65340183a9402743'
+sha256sums=('289d6d832cb35f18d67a03bbdb30f62c6f6ad6984a99e0e34356c6717df40b9f'
             '6b7092e5794ae532f79c5c6ad5f5761c217b3ec874da43537152fb8e60b20019')
 
-prepare() {
-    mv "ags-v.$pkgver" "$pkgname-$pkgver"
-
-    # Copious use of auto_ptr spams the compilation output. Until they're
-    # replaced, just suppress the message.
-    sed -i 's/-Wfatal-errors/-Wfatal-errors\ -Wno-deprecated-declarations/' \
-        "$pkgname-$pkgver/Engine/Makefile-defs.linux"
-}
-
 build() {
-    cd "$pkgname-$pkgver"
-    make -C Engine
+    cd "ags-v.$pkgver"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr \
+          -DCMAKE_BUILD_TYPE='Release' \
+          -B build
+    make -C build
 }
 
 package() {
-    install -Dm755 "$pkgname-$pkgver/Engine/ags" -t "$pkgdir/usr/bin/"
+    install -Dm755 "ags-v.$pkgver/build/ags" -t "$pkgdir/usr/bin/"
 }
