@@ -11,9 +11,7 @@ EnvironmentFile=/etc/default/readsb
 User=readsb
 RuntimeDirectory=readsb
 RuntimeDirectoryMode=0755
-ExecStart=/usr/bin/readsb --device 0 \
-                          --device-type rtlsdr \
-                          --gain -10 \
+ExecStart=/usr/bin/readsb --gain -10 \
                           --ppm 0 \
                           --max-range 360 \
                           --net \
@@ -27,7 +25,7 @@ ExecStart=/usr/bin/readsb --device 0 \
                           --net-bo-port 30005 \
                           --json-location-accuracy 1 \
                           --write-json /run/readsb \
-                          $USER_OPTIONS
+                          $USER_OPTIONS --quiet
 
 Type=simple
 Restart=on-failure

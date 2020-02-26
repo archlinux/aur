@@ -9,6 +9,8 @@ arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Mictronics/readsb"
 license=('BSD')
 depends=('bladerf' 'libiio' 'libad9361' 'rtl-sdr')
+provides=('readsb')
+conflicts=('readsb')
 makedepends=('git')
 backup=('etc/default/readsb')
 
@@ -18,9 +20,9 @@ source=('readsb::git+git://github.com/Mictronics/readsb'
 	'readsb.service')
 
 sha256sums=('SKIP'
-            '890a39ad0a51c05e3ce328109f713dcaf133991552a8c4e597a8f05b3b9d2ba4'
+            '1b6721ee262fdc04f9009a793eca96b81127145b4314e21b3ad468c504c1c9d6'
             '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
-            'a99005c2103187615af3d6acf79ffb6507848aef91bb936af5a0bc8a6ac696ea')
+            'da7b799553bf6098573a9a03fce4baaf1ef20f668a7a4772d4c1bd62aaf08736')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
