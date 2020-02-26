@@ -117,4 +117,5 @@ package() {
 	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/file-roller.png ${pkgdir}/usr/share/icons/macOS/apps/128/org.gnome.ArchiveManager.png
 	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/screenshot.svg ${pkgdir}/usr/share/icons/macOS/apps/128/org.gnome.Screenshot.svg
 	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/gnome-logs.png ${pkgdir}/usr/share/icons/macOS/apps/128/org.gnome.Logs.png
+	cp -v ${pkgdir}/usr/share/icons/macOS/apps/128/gnome-software.png ${pkgdir}/usr/share/icons/macOS/apps/128/mintinstall.png
 }
