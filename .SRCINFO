@@ -1,11 +1,10 @@
 pkgbase = python2-networkx
 	pkgdesc = Python 2 package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://networkx.github.io
 	arch = any
 	license = BSD
-	checkdepends = python2-nose
 	makedepends = python2-setuptools
 	depends = python2-decorator
 	optdepends = python2-numpy: Provides sparse matrix representation of graphs and many numerical scientific tools
