@@ -10,7 +10,14 @@ pkgbase = lxqt-kcm-integration-extra-git
 
 pkgname = lxqt-kcm-integration-extra-git
 	pkgdesc = extra kcm support for lxqt-kwin
-	depends = 
+	depends = kde-cli-tools
+	depends = kglobalaccel
+	depends = kwin
+	depends = plasma-workspace
+	optdepends = bluedevil: needed for lxqt-kcm-bluetooth
+	optdepends = kde-gtk-config: needed for lxqt-kcm-appearance
+	optdepends = kinfocenter: needed for lxqt-kcm-systeminfo
+	optdepends = plasma-desktop: needed for lxqt-kcm-appearance colors and styles
 	optdepends = kcm-wacomtablet: wacom tablet kcm support
 	optdepends = print-manager: printing kcm support
 	optdepends = fancontrol-kcm: fancontrol kcm support
