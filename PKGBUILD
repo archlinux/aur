@@ -1,7 +1,7 @@
 # Submitter: Jooch <jooch (at) gmx (dot) com>
 # Maintainer: Jooch <jooch (at) gmx (dot) com>
 pkgname=openhardwaremonitor
-pkgver=0.8.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="An open source program that monitors temperature sensors, fan speeds, voltages, load and clock speeds of a computer."
 arch=('any')
@@ -16,11 +16,11 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=("http://openhardwaremonitor.org/files/openhardwaremonitor-v${pkgver}-beta.zip"
+source=("http://openhardwaremonitor.org/files/openhardwaremonitor-v${pkgver}.zip"
 		"LICENSE"
 		"openhardwaremonitor.desktop"
 		"openhardwaremonitor.png")
-sha1sums=(	'f37890bc9e1697808a4da4d9e09c9a6c552d9c68'
+sha1sums=(	'2e86b607bab6f15839491f97369ba46ab15cbed8'
 		'8ab3769d8ea8fbe53a0288602706040498a4f54b'
 		'e8ce33b638ea1bd379467454eabb60f8ed37c5f3'
 		'5596ef1ea456c9d2c471b5b09cd2f5ffa98a8759')
