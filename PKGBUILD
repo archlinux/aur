@@ -1,8 +1,8 @@
 # Maintainer: Metal A-wing <1 at 233 dot email>
 
 pkgname=deno
-pkgver=0.31.0
-pkgrel=1
+pkgver=0.34.0
+pkgrel=2
 pkgdesc="A secure JavaScript/TypeScript runtime built with V8, Rust, and Tokio"
 arch=('i686' 'x86_64')
 url="https://github.com/denoland/deno"
@@ -27,7 +27,7 @@ build() {
 
 check() {
   cd ${pkgname}-${pkgver}
-  ./target/release/deno run tests/002_hello.ts
+  ./target/release/deno run cli/tests/002_hello.ts
 }
 
 package() {

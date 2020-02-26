@@ -1,7 +1,7 @@
 pkgbase = deno
 	pkgdesc = A secure JavaScript/TypeScript runtime built with V8, Rust, and Tokio
-	pkgver = 0.31.0
-	pkgrel = 1
+	pkgver = 0.34.0
+	pkgrel = 2
 	url = https://github.com/denoland/deno
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = deno
 	makedepends = cargo
 	makedepends = nodejs
 	depends = gcc-libs
-	source = deno-0.31.0::git+https://github.com/denoland/deno#tag=v0.31.0
+	source = deno-0.34.0::git+https://github.com/denoland/deno#tag=v0.34.0
 	sha512sums = SKIP
 
 pkgname = deno
