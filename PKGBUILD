@@ -3,7 +3,7 @@
 _pkgname=janet
 pkgname=janet-lang
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
@@ -13,7 +13,7 @@ makedepends=('git' 'clang')
 provides=('janet')
 conflicts=('janet-lang-git')
 source=("https://github.com/janet-lang/janet/archive/v${pkgver}.tar.gz")
-sha256sums=('9faa4ed79c9281c4f9c0a005588ef0452a0b77217cd297fc0a73a5fda6d14e5d')
+sha256sums=('2a119f3a79b209a858864e73ca3efda57ac044df3c89762a31480bbea386d2a3')
 
 janet_build='JANET_BUILD=\"f7ee8bd\"'
 
@@ -35,6 +35,8 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
+
+    install -dm 755 "${pkgdir}/usr/lib/janet"
     install -Dm 755 "build/janet" "${pkgdir}/usr/bin/janet"
     install -Dm 755 "auxbin/jpm" "${pkgdir}/usr/bin/jpm"
     install -Dm 644 "src/include/janet.h" "${pkgdir}/usr/include/janet/janet.h"
@@ -45,6 +47,7 @@ package() {
     install -Dm 644 "jpm.1" "${pkgdir}/usr/share/man/jpm.1"
     install -Dm 644 "build/janet.pc" "${pkgdir}/usr/lib/pkgconfig/janet.pc"
 
-    cp -a examples ${pkgdir}/usr/share/janet
-    cp -a build/doc.html ${pkgdir}/usr/share/janet
+    install -dm 755 "${pkgdir}/usr/share/janet"
+    cp -a examples "${pkgdir}/usr/share/janet"
+    cp -a build/doc.html "${pkgdir}/usr/share/janet"
 }
