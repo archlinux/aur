@@ -1,4 +1,4 @@
-# Maintainer: fryfrog@gmail.com
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=readsb-git
 _gitname=readsb
