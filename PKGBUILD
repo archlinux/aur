@@ -5,10 +5,10 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=73.0
+pkgver=73.0.1
 pkgrel=1
 pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://LibreWolf.gitlab.io"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
@@ -27,11 +27,19 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.cfg.patch
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('b57af802aae32d7f4624ce8b373701236b76904abcb893ded9e0cb5805ba6e17'
+sha256sums=('53415180e74da60fc91700ce1ff33bf5b6f51e65353017a98270899a08e0c3d2'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
             'SKIP'
             'SKIP')
+
+if [[ $CARCH == 'aarch64' ]]; then
+  source+=(arm.patch
+           https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
+  sha256sums+=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
+               '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
+fi
+
 prepare() {
   _POCKET_SED_STRING="s/'pocket'/#'pocket'/g"
   _POCKET_FILE=./browser/components/moz.build
@@ -61,26 +69,20 @@ ac_add_options --disable-debug
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
-ac_add_options --enable-optimize
 ac_add_options --enable-rust-simd
-# ac_add_options --enable-lto
-# export MOZ_PGO=1
-export CC='clang --target=x86_64-unknown-linux-gnu'
-export CXX='clang++ --target=x86_64-unknown-linux-gnu'
+export CC='clang'
+export CXX='clang++'
 export AR=llvm-ar
 export NM=llvm-nm
 export RANLIB=llvm-ranlib
 
 # Branding
-# ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
 ac_add_options --with-app-basename=${_pkgname}
 ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=io.gitlab.${pkgname}
 ac_add_options --with-unsigned-addon-scopes=app,system
-# export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
-# export MOZ_TELEMETRY_REPORTING=0
 export MOZ_REQUIRE_SIGNING=0
 
 # System libraries
@@ -107,10 +109,31 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # ac_add_options --enable-linker=gold
 END
 
+if [[ $CARCH == 'aarch64' ]]; then
+cat >>../mozconfig <<END
+# taken from manjaro build:
+ac_add_options --enable-lto
+ac_add_options --enable-optimize="-g0 -O2"
+export MOZ_DEBUG_FLAGS=" "
+export CFLAGS+=" -g0"
+export CXXFLAGS+=" -g0"
+export RUSTFLAGS="-Cdebuginfo=0"
+
+# from ALARM
+ac_add_options --disable-webrtc
+
+END
+
+# ac_add_options --enable-optimize  <- ?
+
+  LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+  patch -p1 -i ../arm.patch
+  patch -p1 -i ../build-arm-libopus.patch
+
+fi
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
-
 
   # Disabling Pocket
   sed -i $_POCKET_SED_STRING $_POCKET_FILE
@@ -127,6 +150,7 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
+if [[ $CARCH != 'aarch64' ]]; then
   # -fno-plt with cross-LTO causes obscure LLVM errors
   # LLVM ERROR: Function Import: link error
   CFLAGS="${CFLAGS/-fno-plt/}"
@@ -143,7 +167,7 @@ END
   ./mach package
   LLVM_PROFDATA=llvm-profdata \
     JARLOG_FILE="$PWD/jarlog" \
-    xvfb-run -a -n 92 -s "-screen 0 1600x1200x24" \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
     ./mach python build/pgo/profileserver.py
 
   if [[ ! -s merged.profdata ]]; then
@@ -160,13 +184,16 @@ END
   ./mach clobber
 
   echo "Building optimized browser..."
-  # xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
+else
+  cat >.mozconfig ../mozconfig
+fi
+
   ./mach build
 
   echo "Building symbol archive..."
@@ -176,7 +203,6 @@ END
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
-  # find . -name '*crashreporter-symbols-full.zip' -exec cp -fvt "$startdir" {} +
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
   install -Dvm644 /dev/stdin "$vendorjs" <<END
@@ -189,9 +215,8 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // Disable default browser checking.
 pref("browser.shell.checkDefaultBrowser", false);
 
-// Don't disable our bundled extensions in the application directory
+// Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
-pref("extensions.shownSelectionUI", true);
 END
 
   cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
