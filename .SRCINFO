@@ -1,0 +1,16 @@
+pkgbase = lets-bin
+	pkgdesc = CLI task runner - a better alternative to make
+	pkgver = 0.0.14
+	pkgrel = 1
+	url = https://github.com/lets-cli/lets/
+	arch = x86_64
+	arch = i686
+	license = APACHE
+	provides = lets
+	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.14/lets_Linux_x86_64.tar.gz
+	md5sums_x86_64 = cf2ff14a4874d9d9d716de841c5be5a0
+	source_i686 = https://github.com/lets-cli/lets/releases/download/v0.0.14/lets_Linux_i386.tar.gz
+	md5sums_i686 = b2e84ebc94b1da2dfdf4801442e39508
+
+pkgname = lets-bin
+
