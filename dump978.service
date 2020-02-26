@@ -1,0 +1,14 @@
+[Unit]
+Description=RtlSdr mode S decoder
+Wants=network-online.target
+After=syslog.target network-online.target
+
+[Service]
+Restart=always
+RestartSec=30
+RuntimeDirectory=dump978
+ExecStart=/usr/bin/dump978
+
+[Install]
+Alias=dump978-fa.service
+WantedBy=multi-user.target
