@@ -1,0 +1,14 @@
+pkgbase = pagure
+	pkgdesc = A git-centered forge based on python using pygit2
+	pkgver = 5.8.1
+	pkgrel = 0.1
+	url = https://pagure.io/pagure
+	arch = any
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	source = https://pagure.io/pagure/archive/5.8.1/pagure-5.8.1.tar.gz
+	sha256sums = e19c609894c42e850c25af1ca9082753f76f231450f70a70c46344bec45c1a66
+
+pkgname = pagure
+
