@@ -2,39 +2,27 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=firefox-ubuntu-bin
-_pkgname=firefox
-pkgver=73.0
+pkgver=73.0.1
 pkgrel=1
-_ubuntuver="$pkgver+build3-0ubuntu0.19.10.1_amd64"
+_ubuntuver="$pkgver+build1-0ubuntu0.19.10.1_amd64"
 pkgdesc="Standalone web browser from mozilla.org with Ubuntu patches (binary)"
 arch=("x86_64")
 url="https://www.mozilla.org/firefox/"
-license=('GPL' 'LGPL' 'MPL')
-depends=('mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'hicolor-icon-theme'
-	 'libvpx' 'icu'  'libevent' 'nss>=3.28.3' 'nspr>=4.10.6' 'hunspell'
-	 'sqlite' 'libnotify' 'ffmpeg' 'gtk3'
-         # system av1
-         'dav1d' 'aom'
-         # system harfbuzz
-         'harfbuzz'
-         # system graphite
-         'graphite'
-         # system webp
-         'libwebp'
-         # system libevent
-         'libevent'
-        )
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'speech-dispatcher: Text-to-Speech'
+license=(MPL GPL LGPL)
+depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
+         ttf-font libpulse)
+optdepends=('appmenu-gtk-module: for KDE global menu'
+            'libdbusmenu-gtk3: for KDE global menu'
+            'networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
             'pulseaudio: Audio support'
-			'appmenu-gtk-module: for KDE global menu'
-			'libdbusmenu-gtk3: for KDE global menu')
-provides=('firefox' 'firefox-ubuntu')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
+provides=('firefox')
 conflicts=('firefox' 'firefox-ubuntu')
 
 source=("http://security.ubuntu.com/ubuntu/pool/main/f/firefox/firefox_$_ubuntuver.deb")
-md5sums=('01b7323c4b52b05c46768963a720cd9f')
+md5sums=('513355f3d10de6c9495e2262cfff3f7a')
 
 prepare() {
 	# Don't extract copyright files, which are included in the licenses package
