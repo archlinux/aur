@@ -1,6 +1,6 @@
 pkgbase = matrixcli-git
         pkgdesc = simple matrix client based on the matrix-python-sdk
-        pkgver = 2019.08.06
+        pkgver = 2020.02.26
         pkgrel = 1
         url = https://github.com/saadnpq/matrixcli.git
         arch = any

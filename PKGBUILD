@@ -2,7 +2,7 @@
 
 _name=matrixcli
 pkgname=matrixcli-git
-pkgver=2019.08.06
+pkgver=2020.02.26
 pkgrel=1
 pkgdesc='simple matrix client based on the matrix-python-sdk'
 arch=('any')
@@ -30,7 +30,8 @@ build() {
 package() {
 	cd "${_name}"
 	python setup.py install --root="$pkgdir"
-	cd "${srcdir}/${_name}/matrix-python-sdk/"
+	cd "${srcdir}/${_name}/python-sdk/"
 	python setup.py install --root="$pkgdir"
+	install -Dm644 "${srcdir}"/"${_name}"/LICENSE -t "${pkgdir}"/usr/share/licenses/"${_name}"/
 }
 
