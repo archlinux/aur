@@ -1,12 +1,6 @@
 #!/bin/bash
 
-echo "Current version:"
-grep "pkgver=" PKGBUILD
-grep "pkgver2=" PKGBUILD
-grep "pkgver3=" PKGBUILD
-
 echo "Searching for updates..."
-
 REPO='http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/'
 PACKAGE=$(wget -qO- $REPO | perl -ne '/(?<=href=")(chromium-codecs-ffmpeg-extra_(\d*\.\d*\.\d*\.\d*)-(\dubuntu\d).(\d{2}\.\d{2}(?:\.\d)?)_amd64.deb)(?=").*\d*\.\d*M/ and print "$1#$2#$3#$4\n";' | sort --version-sort | tail -n 1)
 
@@ -15,29 +9,25 @@ ver1=$(echo $PACKAGE | cut -d# -f2)
 ver2=$(echo $PACKAGE | cut -d# -f3)
 ver3=$(echo $PACKAGE | cut -d# -f4)
 
-echo "Available version:"
-echo "pkgver=$ver1"
-echo "pkgver2=$ver2"
-echo "pkgver3=$ver3"
+pkgver=$(grep "pkgver=" PKGBUILD | cut -d "=" -f 2-)
+_ubuver=$(grep "_ubuver=" PKGBUILD | cut -d "=" -f 2-)
+_ubudist=$(grep "_ubudist=" PKGBUILD | cut -d "=" -f 2-)
 
-echo "Downloading updates..."
+echo "Current version:   $pkgver-$_ubuver-$_ubudist"
+echo "Available version: $ver1-$ver2-$ver3"
 
-cur=$(pwd)
-tmp=$(mktemp -d)
-cd $tmp
-wget -q "$REPO$deb"
-md5=$(md5sum $deb | cut -d\  -f1)
-rm $deb
-cd $cur
-rmdir $tmp
+if [[ "$pkgver" == "$ver1" ]]; then
+	echo "Nothing to do."
+	exit 0
+fi
 
-echo "Updating package..."
-
+echo "Updating PKGBUILD..."
 sed -i "s|^pkgver=.*$|pkgver=${ver1}|" PKGBUILD
-sed -i "s|^pkgver2=.*$|pkgver2=${ver2}|" PKGBUILD
-sed -i "s|^pkgver3=.*$|pkgver3=${ver3}|" PKGBUILD
-sed -i "s|^md5sums.*$|md5sums=(\"${md5}\")|" PKGBUILD
+sed -i "s|^_ubuver=.*$|_ubuver=${ver2}|" PKGBUILD
+sed -i "s|^_ubudist=.*$|_ubudist=${ver3}|" PKGBUILD
 
+echo "Updating checksums..."
+updpkgsums
+
+echo "Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
-
-echo "Done."
