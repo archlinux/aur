@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=anydesk
-pkgver=5.5.3
+pkgver=5.5.4
 pkgrel=1
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source_i686=(https://download.anydesk.com/linux/${pkgname}_${pkgver}-1_i386.deb)
 source_x86_64=(https://download.anydesk.com/linux/${pkgname}_${pkgver}-1_amd64.deb)
 source=('anydesk.sh')
 
-sha256sums_i686=('20d93691c8191a2997adf10c06262c1e16778012b383742b90d53e1b6b52a096')
-sha256sums_x86_64=('bcd7df64a74bd446eabccc07a6d9246709f4d49f7d98dcf2e7990d81476d670e')
+sha256sums_i686=('1bbecb117ccd092defd04df3fcd2412247dd3a020fc49cbb99ae74395007e8ed')
+sha256sums_x86_64=('4253a0b738b1af17d74b7e5d69ad0af794f98da7c8cc1e636d6f093dc5b6da40')
 sha256sums=('2368b0011fc52cbb4cf8013436628d25db3a86b35ae9a04868e221656a0f77a3')
 
 package() {
@@ -29,7 +29,7 @@ package() {
     install "${pkgdir}/usr/bin/anydesk" "${pkgdir}/usr/bin/anydesk.bin"
     install "${srcdir}/anydesk.sh" "${pkgdir}/usr/bin/anydesk"
     #
-    msg2 "\e[1;32mAnyDesk now has a systemd file for unattendant access: anydesk.service \e[0m"
+    msg2 "\e[1;32mAnyDesk now has a systemd file for unattended access: anydesk.service \e[0m"
     install -D -m 644 "${pkgdir}/usr/share/anydesk/files/systemd/anydesk.service" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
     sed -i "s/PIDFile=\/tm\/ad.pid/PIDFile=\/run\/anydesk.pid/" "${pkgdir}/usr/lib/systemd/system/anydesk.service"
 }
