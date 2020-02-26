@@ -1,6 +1,6 @@
 pkgbase = rmatrix
 	pkgdesc = Rust port of a curses-based 'Matrix'-like screen
-	pkgver = e820392
+	pkgver = 6f83adf
 	pkgrel = 1
 	url = https://github.com/Fierthraix/rmatrix
 	arch = any
