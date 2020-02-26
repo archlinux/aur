@@ -3,7 +3,7 @@
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r8.0.gec6da15
+pkgver=r8.1.g170bf24
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -27,6 +27,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  # rename models folder
+  sed "s|models/|${_plug}-models/|g" -i "${_plug}/Waifu2x-w2xc/Waifu2x-w2xc.cpp"
 }
 
 build() {
@@ -39,6 +42,9 @@ build() {
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
+
+  mv "${pkgdir}/usr/lib/vapoursynth/models" "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
+  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
