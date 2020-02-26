@@ -22,9 +22,9 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.6pre37
+pkgver=18.6pre41
 _major=18.5
-pkgrel=4
+pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
 license=('GPL2')
@@ -115,6 +115,10 @@ source=(
   035-PR17303.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17303.patch
   036-PR17305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17305.patch
   037-PR17356.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17356.patch
+  038-PR17383.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17383.patch
+  039-PR17384.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17384.patch
+  040-PR17395.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17395.patch
+  041-PR17406.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17406.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -173,7 +177,11 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             '63bd10c32bb7d9017b129cd009dfb0743b7b692c7e9018dd8ea0de347143ee15'
             '3f85e64a2ff1c4b4dbb0ab82c7fbfd29e14b5e006af1f1e8ea5ebfe18b8d2b2b'
             '23d618941c2532127487f42df21ca588fa0f4196fe028810ecc032bb0c402374'
-            'dbb69414b3cae1bd9bcf379a415413a63510b0ba4825aafd9e163014dd620db4')
+            'dbb69414b3cae1bd9bcf379a415413a63510b0ba4825aafd9e163014dd620db4'
+            'e2a3065c88714b9ebc1b2213188cb3cbb7c1605c2df38bd35a9e07a4979c1dee'
+            'e16bad884afc201cf51d714e9a0ab717a4ec32487a803d9895eedf18ae34e275'
+            '800cf39cee346f9a6ca23a35f9f4cfd2fe8c30ae6373901d4f11cb1a12747100'
+            '36e3afa3b09adea1156bba16d2bd5fadd38f904801a3e79e811e2fde51c107bf')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
