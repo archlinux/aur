@@ -2,11 +2,12 @@
 
 pkgname=jpegdupes
 pkgver=2.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Image duplicate finder that ignores JPEG metadata'
 arch=('any')
 url='https://github.com/jesjimher/imgdupes'
 depends=('libgexiv2' 'python-texttable' 'python-jpegtran-cffi' 'python-pillow' 'python-gobject')
+optdepends=('jpeginfo: smarter JPEG file integrity detection')
 conflicts=('jpegdupes-git' 'imgdupes' 'imgdupes-git')
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/d7/bc/a80d5f90fa1ca5b2188b90f3addcf853c420897f8b8db854addace7e34ee/$pkgname-$pkgver.tar.gz")
