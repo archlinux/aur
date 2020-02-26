@@ -1,6 +1,6 @@
 # Maintainer: foldex <foldex (a) pm |dot| me>
 pkgname=reflex-curses
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="A TUI/CLI twitch.tv streamlink wrapper. Fork of twitch-curses."
 arch=('any')
