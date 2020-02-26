@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
@@ -13,8 +13,7 @@ optdepends=('python-flask' 'python-blinker' 'python-bottle' 'python-falcon' 'pyt
             'python-sanic' 'python-celery' 'python-beam' 'python-rq' 'python-aiohttp'
             'python-tornado' 'python-sqlalchemy' 'python-pyspark')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-#source=("https://github.com/getsentry/sentry-python/archive/$pkgver.tar.gz")
-sha256sums=('e023da07cfbead3868e1e2ba994160517885a32dfd994fc455b118e37989479b')
+sha256sums=('480eee754e60bcae983787a9a13bc8f155a111aef199afaa4f289d6a76aa622a')
 
 build() {
 	cd "$_name-$pkgver"
