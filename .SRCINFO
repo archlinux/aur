@@ -1,0 +1,19 @@
+pkgbase = openminer-web-git
+	pkgdesc = OpenMiner website
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://git.unarelith.net/Unarelith/openminer-web
+	install = openminer-web-git.install
+	arch = i686
+	arch = x86_64
+	depends = apache
+	depends = mod_wsgi
+	depends = python
+	depends = python-pip
+	depends = python-virtualenv
+	provides = openminer
+	source = openminer-web::git+https://git.unarelith.net/Unarelith/openminer-web.git
+	md5sums = SKIP
+
+pkgname = openminer-web-git
+
