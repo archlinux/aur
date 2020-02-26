@@ -14,4 +14,4 @@ package () {
 	make install srcdir=$srcdir pkgdir=$pkgdir
 }
 md5sums=('23c78cb76dc3aebd7f45efce417c9830'
-         'ade16df76b02ce1da65fc01c3ead5570')
+         '8348486f4c23d9987ed97f161cf50e79')
