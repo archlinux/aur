@@ -1,6 +1,6 @@
 pkgbase = openocd-git
 	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)
-	pkgver = 0.10.0.r523.g2a3b709aa
+	pkgver = 0.10.0.r1089.g3bfe49266
 	pkgrel = 1
 	url = http://openocd.org
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = openocd-git
 	provides = openocd
 	conflicts = openocd
 	options = !strip
-	source = openocd-git::git+http://repo.or.cz/openocd.git
+	source = openocd-git::git+https://repo.or.cz/openocd.git
 	md5sums = SKIP
 	sha1sums = SKIP
 

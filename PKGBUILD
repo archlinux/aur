@@ -9,7 +9,7 @@
 
 _pkgbase=openocd
 pkgname=openocd-git
-pkgver=0.10.0.r523.g2a3b709aa
+pkgver=0.10.0.r1089.g3bfe49266
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -22,7 +22,7 @@ provides=('openocd')
 conflicts=('openocd')
 
 source=(
-  "${pkgname}::git+http://repo.or.cz/openocd.git"
+  "${pkgname}::git+https://repo.or.cz/openocd.git"
 )
 #	"git+http://repo.or.cz/r/git2cl.git"
 #	"git+http://repo.or.cz/r/jimtcl.git"
@@ -64,6 +64,7 @@ _features=(
     usb_blaster_libftdi
     usbprog
     vsllink
+    xlnx_pcie_xvc
     #parport-giveio
     #zy1000
     #zy1000-master
