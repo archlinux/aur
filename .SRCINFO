@@ -1,0 +1,17 @@
+pkgbase = oui-blendish-git
+	pkgdesc = Platform agnostic UI, NanoVG imitating the Blender 2.5, single C header file.
+	pkgver = r1.8704539
+	pkgrel = 1
+	url = https://bitbucket.org/duangle/oui-blendish/src/default/
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = premake
+	makedepends = patch
+	provides = oui-blendish
+	conflicts = oui-blendish
+	source = git+https://github.com/alexesDev/oui-blendish
+	md5sums = SKIP
+
+pkgname = oui-blendish-git
+
