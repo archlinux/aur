@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-
+depends=('bat')
 pkgver() {
   cd "${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
