@@ -1,4 +1,4 @@
-pkgbase = eolie-stable
+pkgbase = eolie-next
 	pkgdesc = Simple web browser for GNOME
 	pkgver = 0.9.97.r34.g369520f7
 	pkgrel = 1
@@ -22,9 +22,9 @@ pkgbase = eolie-stable
 	provides = eolie=0.9.97.r34.g369520f7
 	conflicts = eolie
 	conflicts = eolie-git
-	conflicts = eolie-next
+	conflicts = eolie-stable
 	source = git+https://gitlab.gnome.org/World/eolie.git
 	sha256sums = SKIP
 
-pkgname = eolie-stable
+pkgname = eolie-next
 

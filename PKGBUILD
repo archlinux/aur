@@ -1,4 +1,4 @@
-pkgname=eolie-stable
+pkgname=eolie-next
 _gitname=eolie
 pkgver=0.9.97.r34.g369520f7
 pkgrel=1
@@ -15,7 +15,7 @@ optdepends=('python-beautifulsoup4: Import html bookmarks'
             'python-requests-hawk: Firefox Sync support')
 source=("git+https://gitlab.gnome.org/World/eolie.git")
 sha256sums=('SKIP')
-conflicts=('eolie' 'eolie-git' 'eolie-next')
+conflicts=('eolie' 'eolie-git' 'eolie-stable')
 provides=("eolie=$pkgver")
 
 pkgver() {
