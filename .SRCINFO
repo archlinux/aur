@@ -1,0 +1,13 @@
+pkgbase = aur-audit-git
+	pkgdesc = Audit AUR packages more easily
+	pkgver = r2.e7e053c
+	pkgrel = 1
+	url = https://github.com/alxpettit/aur-audit
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = aur-audit-git::git+https://github.com/alxpettit/aur-audit.git
+	sha256sums = SKIP
+
+pkgname = aur-audit-git
+
