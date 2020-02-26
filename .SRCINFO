@@ -1,12 +1,14 @@
 pkgbase = lxqt-kcm-integration-git
 	pkgdesc = LXQt KCM Integration
-	pkgver = 0.0.1
+	pkgver = r31.f5995a0
 	pkgrel = 1
 	url = http://lxqt.org
+	arch = i686
 	arch = x86_64
 	license = LGPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = lxqt-build-tools-git
 	depends = kde-cli-tools
 	depends = kglobalaccel
 	depends = kwin
