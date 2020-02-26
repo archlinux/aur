@@ -14,7 +14,7 @@ install=$pkgname.install
 source=("https://github.com/dominiksalvet/$pkgname/archive/$pkgver.tar.gz")
 #_commit=5f8413164a65c590dad8bac31399d0908275de0a
 #source=("$pkgname::git+https://github.com/dominiksalvet/asus-fan-control.git#commit=$_commit")
-md5sums=('50ceb4a389b8e98c62cac82dbc9bd4e3')
+md5sums=('51bb763a9ac6fe17de29f0661f631d24')
 
 #pkgver() {
 #    cd $pkgname

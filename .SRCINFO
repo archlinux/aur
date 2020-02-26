@@ -12,7 +12,7 @@ pkgbase = asus-fan-control
 	optdepends = acpi_call-lts: for the linux-lts kernel
 	optdepends = acpi_call-dkms: for other non-standard kernels
 	source = https://github.com/dominiksalvet/asus-fan-control/archive/3.1.0.tar.gz
-	md5sums = 50ceb4a389b8e98c62cac82dbc9bd4e3
+	md5sums = 51bb763a9ac6fe17de29f0661f631d24
 
 pkgname = asus-fan-control
 
