@@ -3,7 +3,7 @@
 pkgname=naiveproxy-git
 _pkgname=naiveproxy
 pkgdesc='Make a fortune quietly'
-pkgver=80.0.3987.87.r52.f7ce95358
+pkgver=80.0.3987.87.r53.5d84bf9f1
 pkgrel=1
 arch=('x86_64' 'amd64' 'i386' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/klzgrad/naiveproxy'
