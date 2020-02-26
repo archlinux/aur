@@ -1,0 +1,3 @@
+#!/bin/sh
+
+java -jar /usr/share/apgdiff/apgdiff-2.4.jar "$@"

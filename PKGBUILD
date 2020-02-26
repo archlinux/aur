@@ -1,28 +1,36 @@
-# Maintainer: Marti Raudsepp <marti@juffo.org>
+# Contributor: Marti Raudsepp <marti@juffo.org>
+# Maintainer: Maxwell Pray <synthead@gmail.com>
 
 pkgname=apgdiff
 pkgver=2.4
-pkgrel=2
-pkgdesc="Another PostgreSQL Diff Tool for schema comparison and migration"
+pkgrel=3
+pkgdesc="A free PostgreSQL diff tool that is useful for comparison/diffing of database schemas"
 url="http://www.apgdiff.com/"
-depends=('java-environment' 'bash')
+depends=('jre11-openjdk-headless')
+makedepends=('maven')
 arch=('any')
-license=('MIT')
-source=(http://www.apgdiff.com/download/$pkgname-$pkgver-bin.zip)
+source=(
+  'apgdiff'
+  "https://www.apgdiff.com/download/$pkgname-$pkgver-src.zip"
+)
+sha256sums=(
+  '83a43b2759e0dc7ec3c4433ec09aef3aae83bdb3f88321d2578bd35b2ab1119f'
+  '8551a3e10c7aae3a04efc5dad655575484b63a3323f07db5e81c50b42d88129c'
+)
 
 build() {
-  mkdir -p $pkgdir/usr/bin $pkgdir/usr/share/$pkgname \
-    $pkgdir/usr/share/licenses/$pkgname
+  cd "$pkgname-$pkgver"
 
-  cd $srcdir/$pkgname-$pkgver
-  install -m644 $pkgname-$pkgver.jar $pkgdir/usr/share/$pkgname/$pkgname.jar
-  install -m644 license.txt $pkgdir/usr/share/licenses/$pkgname/
+  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+  export MAVEN_OPTS="-Dmaven.repo.local=$srcdir/.m2"
 
-  # Script to invoke apgdiff
-  echo "#!/bin/sh" > $pkgdir/usr/bin/$pkgname
-  echo "exec \$JAVA_HOME/bin/java -jar /usr/share/$pkgname/$pkgname.jar \$@" >> $pkgdir/usr/bin/$pkgname
-  chmod 755 $pkgdir/usr/bin/$pkgname
+  mvn package
 }
 
-# vim:set ts=2 sw=2 et:
-md5sums=('4e4c248fd041b6e58cc5d1e2e3d9ce37')
+package() {
+  install -Dm 644 \
+    "$pkgname-$pkgver/target/apgdiff-$pkgver.jar" \
+    "$pkgdir/usr/share/apgdiff/apgdiff-$pkgver.jar"
+
+  install -Dm 755 apgdiff "$pkgdir/usr/bin/apgdiff"
+}
