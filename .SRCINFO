@@ -1,6 +1,6 @@
 pkgbase = cameracontrol-bin
-	pkgdesc = Camera Control for Linux / Audio Control - Έλεγχος camera / μικροφώνου για Linux
-	pkgver = 1.3
+	pkgdesc = Έλεγχος webcam και camera και μικροφώνου για Linux - Webcam, camera and microphone control for Linux
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://gitlab.com/psposito/camera-control-webcam-switch-indicator
 	arch = any
@@ -9,9 +9,10 @@ pkgbase = cameracontrol-bin
 	optdepends = qt5gtk2
 	optdepends = qt5ct
 	optdepends = qt5-style-plugins
-	replaces = cameracontrol-bin
-	source = https://gitlab.com/psposito/camera-control-webcam-switch-indicator/uploads/cb6034746b37b7f18cd6e7bdad5e47eb/CameraControl-1.3-1.tar.bz2
-	sha256sums = 6b81394e2ac429e71085b676525755df4a9964dfa30a61e6c9b917ac635b35db
+	conflicts = cameramonitor
+	replaces = cameracontrol
+	source = https://gitlab.com/psposito/camera-control-webcam-switch-indicator/uploads/336bf082967d9dc1785aae993a8091cb/CameraControl-2.0-1.tar.bz2
+	sha256sums = 9541716c916d4eae5f411d7aa8911e8c5d073b2464751b52a3a8c08eb6e60b1a
 
 pkgname = cameracontrol-bin
 
