@@ -1,5 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _target='compass-isolated'
+_edition=' Isolated Edition'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
 pkgver='1.21.0.r3236.dd8caa98'
@@ -72,7 +73,7 @@ build() {
 }
 
 package() {
-	local _distFolder="$srcdir/$_sourcedirectory/dist/MongoDB Compass Isolated Edition-linux"
+	local _distFolder="$srcdir/$_sourcedirectory/dist/MongoDB Compass$_edition-linux"
 	case "$CARCH" in
 		i686)
 			_distFolder="$_distFolder-ia32"
@@ -102,7 +103,7 @@ EOF
 	install -dm755 "$pkgdir/usr/share/applications/"
 	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname.desktop"
 [Desktop Entry]
-Name=MongoDB Compass Isolated Edition
+Name=MongoDB Compass$_edition
 Comment=The official GUI for MongoDB
 Exec=$_pkgname %U
 Icon=$_pkgname
