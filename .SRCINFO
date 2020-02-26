@@ -1,0 +1,23 @@
+pkgbase = mongodb-compass-community-git
+	pkgdesc = The official GUI for MongoDB - Community Edition - git version
+	pkgver = 1.21.0.r3236.dd8caa98
+	pkgrel = 1
+	url = https://www.mongodb.com/products/compass
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = custom:SSPL
+	makedepends = git
+	makedepends = npm
+	depends = electron6
+	depends = krb5
+	depends = libsecret
+	provides = mongodb-compass-community
+	conflicts = mongodb-compass-community
+	source = mongodb-compass-community-git::git+https://github.com/mongodb-js/compass
+	source = hadron-build-packaging.diff
+	sha256sums = SKIP
+	sha256sums = 87ec3245af05788c1c0d7070fcd4e425a0a22dbf7a4ae194a5dce8ade88d519a
+
+pkgname = mongodb-compass-community-git
