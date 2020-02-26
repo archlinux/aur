@@ -1,14 +1,14 @@
 # Maintainer: Nicholas Schlabach <Techcable@techcable.net>
 pkgname=rr-bin
-pkgver=5.1.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Binary record and Replay framework: lightweight recording and deterministic debugging"
 arch=('x86_64')
 url='http://rr-project.org/'
 license=('custom')
 depends=('gdb')
-source=("https://github.com/mozilla/rr/releases/download/$pkgver/rr-$pkgver-Linux-x86_64.tar.gz" "https://raw.githubusercontent.com/mozilla/rr/5.1.0/LICENSE")
-sha256sums=('d75ccde2e207bf2f7f166c526dfcdc7f2de2899099ca5495ff7cb97db6446795' 'fa03106ff7c9018337f1b489bdec8763a1a19b857466055f77637a0af7181f32')
+source=("https://github.com/mozilla/rr/releases/download/$pkgver/rr-$pkgver-Linux-x86_64.tar.gz" "https://raw.githubusercontent.com/mozilla/rr/$pkgver/LICENSE")
+sha256sums=('b7ce8115f6d496a864f9c6d9e9c6cd133034e9d4aca2e343ad841bc4621374de' 'fa03106ff7c9018337f1b489bdec8763a1a19b857466055f77637a0af7181f32')
 provides=('rr')
 conflicts=('rr' 'rr-git')
 
