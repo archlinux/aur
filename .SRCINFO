@@ -1,6 +1,6 @@
 pkgbase = nocomprendo
 	pkgdesc = Voice command application for X.org
-	pkgver = 1.0.17
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = http://be.root.free.fr/?soft=nocomprendo
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nocomprendo
 	depends = espeak
 	depends = xdotool
 	depends = pocketsphinx
-	source = http://be.root.free.fr/soft/nocomprendo/nocomprendo-1.0.17.tar.gz
+	source = http://be.root.free.fr/soft/nocomprendo/nocomprendo-1.1.0.tar.gz
 	source = unbundle_pocketsphinx.patch
-	sha256sums = 1b8abfbccbdbd5a0b917242507eae2001f417aea967a37dcce85cf44b74bac2d
+	sha256sums = 83c46697ea50d6fc99fd97e893aeff8702169efaa8d8aeb6394e773db3f2ce79
 	sha256sums = SKIP
 
 pkgname = nocomprendo
