@@ -1,0 +1,23 @@
+pkgbase = maddy
+	pkgdesc = Simple, fast, secure all-in-one mail server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/foxcpp/maddy
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	makedepends = git
+	makedepends = scdoc
+	depends = glibc
+	provides = maddy
+	conflicts = maddy
+	backup = etc/maddy/maddy.conf
+	source = maddy-0.1.0::https://github.com/foxcpp/maddy/archive/v0.1.0.tar.gz
+	source = maddy.sysusers
+	source = maddy.tmpfiles
+	sha512sums = c511aa0f028556b8e6c2d8fcb549a771b01d6b45642a0e34d68b09643186d006af87ee74e2fa8883d1ff3105c88f0d424073d2e1f47dc5968fcb2405e37d0f0a
+	sha512sums = 750346110adb8caa61f537560018497f73543dc01ff26aceed2f052f281a35fdc659c9c478cc55775eadf8a3d17b511d5bed86334d1c455732dcb9a273120589
+	sha512sums = f33135b81129d6ef3006d8e9f410ec0d7e44226ae640dea77d756268d0e97828d8965ac75d0d9b49604a19b8b9e0384d15007d33c4b813f359108d28a10702b5
+
+pkgname = maddy
+
