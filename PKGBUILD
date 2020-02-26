@@ -2,17 +2,55 @@
 
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.1
+pkgrel=0.2
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
 license=("GPL2")
-depends=('python')
+_pydeps=('alembic'
+         'arrow'
+         'bcrypt'
+         'binaryornot'
+         'bleach'
+         'blinker'
+         'celery'
+         'chardet'
+         'cryptography'
+         'docutils'
+         'flask'
+         'flask-wtf'
+         'kitchen'
+         'markdown'
+         'munch'
+         'pillow'
+         'psutil'
+         'pygit2'
+         'openid'
+         'openid-cla'
+         'openid-teams'
+         'redis'
+         'requests'
+         'six'
+         'sqlalchemy'
+         # 'straight-plugin' py2?
+         'wtforms')
+depends=('git'
+         'libffi'
+         'libgit2'
+         'libjpeg'
+         'python'
+         "${_pydeps[@]/#/python-}"
+         'redis')
 makedepends=('python-setuptools')
-source=("$url/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('e19c609894c42e850c25af1ca9082753f76f231450f70a70c46344bec45c1a66')
+source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687')
+
+build() {
+    cd "$pkgname-$pkgver"
+    python setup.py build
+}
 
 package() {
     cd "$pkgname-$pkgver"
-    ls -al
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
