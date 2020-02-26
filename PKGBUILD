@@ -2,7 +2,7 @@
 
 pkgname=anydesk-debian
 pkgver=5.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (Debian based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.de"
@@ -12,8 +12,8 @@ optdepends=('libpulse')
 conflicts=('anydesk-test' 'anydesk-bin')
 replaces=('anydesk')
 
-source_i686=(https://download.anydesk.com/linux/${pkgname}_${pkgver}-1_i386.deb)
-source_x86_64=(https://download.anydesk.com/linux/${pkgname}_${pkgver}-1_amd64.deb)
+source_i686=(https://download.anydesk.com/linux/${pkgname%-debian}_${pkgver}-1_i386.deb)
+source_x86_64=(https://download.anydesk.com/linux/${pkgname%-debian}_${pkgver}-1_amd64.deb)
 source=('anydesk.sh')
 
 sha256sums_i686=('1bbecb117ccd092defd04df3fcd2412247dd3a020fc49cbb99ae74395007e8ed')
