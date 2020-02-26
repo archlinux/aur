@@ -1,10 +1,13 @@
 pkgbase = pilot-link
 	pkgdesc = A suite of tools for connecting to PalmOS handheld devices
 	pkgver = 0.12.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pilot-link.org/
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = GPL
 	license = LGPL
 	depends = readline>=6.0
@@ -15,8 +18,12 @@ pkgbase = pilot-link
 	options = !libtool
 	source = https://mirrors.slackware.com/slackware/slackware-14.1/source/l/pilot-link/pilot-link-0.12.5.tar.bz2
 	source = pilot-link-png14.patch
+	source = config.guess
+	source = config.sub
 	md5sums = 568c55bf504b044f6fbd50baa407c990
 	md5sums = a21a2eeb01544a8a261a75e64a3120c3
+	md5sums = 56c8530a22f26cdae7c9b5e946c06429
+	md5sums = 190c5eaf225abd14513d768efc5073eb
 
 pkgname = pilot-link
 
