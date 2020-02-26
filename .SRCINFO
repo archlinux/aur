@@ -1,18 +1,23 @@
 pkgbase = perl-prometheus-tiny-shared
 	pkgdesc = A tiny Prometheus client backed by a shared memory region
-	pkgver = 0.002
-	pkgrel = 2
+	pkgver = 0.010
+	pkgrel = 1
 	url = http://search.cpan.org/dist/Prometheus-Tiny-Shared
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	checkdepends = perl-data-random
 	checkdepends = perl-plack
+	checkdepends = perl-test-exception
 	depends = perl
 	depends = perl-cache-fastmmap
+	depends = perl-dbd-sqlite
+	depends = perl-dbi
 	depends = perl-prometheus-tiny
+	depends = perl-sereal
 	options = !emptydirs
-	source = http://cpan.perl.org/modules/by-module/Prometheus/Prometheus-Tiny-Shared-0.002.tar.gz
-	sha256sums = 8064b189c89ebad791279835b83c5128717383c79225442c5d4cce0ede6afd88
+	source = http://cpan.perl.org/modules/by-module/Prometheus/Prometheus-Tiny-Shared-0.010.tar.gz
+	sha256sums = 1f4630c282f2f3b44e5796e54004360a33a795a2f0f30f5fb55682c482b3edc5
 
 pkgname = perl-prometheus-tiny-shared
 
