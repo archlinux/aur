@@ -1,0 +1,16 @@
+pkgbase = gingarage
+	pkgdesc = Gin server to manage garage door
+	pkgver = 0.0.1
+	pkgrel = 4
+	url = https://github.com/Chipsterjulien/gingarage
+	install = gingarage.install
+	arch = any
+	license = WTFPL
+	makedepends = go
+	options = !strip
+	backup = etc/gincamalarm/gingarage.toml
+	source = gingarage-0.0.1.tar.gz
+	sha512sums = 4e219b7094d436ae63499f401a666205b73719f1c8504c10eacbe4cc487a43cbf4c49dbafda8274a5265b2f7d74a4cf5241ea83d1804b23f64cf2b89c92c5256
+
+pkgname = gingarage
+
