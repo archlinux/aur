@@ -4,7 +4,8 @@
 pkgname=dupliseek-git
 pkgver() { git -C "${pkgname%-git}" describe | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
 pkgver=0.0.2alpha.r57.3bac8b6
-pkgrel=2
+pkgrel=1
+epoch=1
 
 pkgdesc='Duplicate image finder written in Python/Qt5'
 arch=('x86_64')
@@ -17,7 +18,7 @@ conflicts=("${pkgname%-git}")
 depends=('python-pyqt5' 'python-numpy' 'python-imutils')
 makedepends=('git' 'python-setuptools')
 
-source=("git+$url.git"
+source=("git+$url.git#commit=3bac8b69585cb9f0d1cced6cf6f7324bc2426120"
         'setup.patch')
 sha256sums=('SKIP'
             'ba6a53fe0cc67d4a2c3b64836b59d853b34713a566945e79af376a92d5f2a86f')
