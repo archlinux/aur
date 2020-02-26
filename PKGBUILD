@@ -5,7 +5,7 @@ _name="${pkgname#python-}"
 pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
-pkgver=0.2
+pkgver=0.4.1
 pkgrel=0
 
 arch=("x86_64" "i686")
@@ -16,12 +16,13 @@ makedepends=(
 )
 depends=(
     "python"
-    "python-requests"
     "python-geocoder"
+    "python-pyaml"
+    "python-requests"
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("1e8cc7316e239976ef44cab6f5c6e24c090b0e7867cec044480b8581f1623895")
+sha256sums=("5df289cd2ff4205d03327cc511720e1a0c2774ef7de61c921204c71303df276c")
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
