@@ -1,6 +1,6 @@
 pkgbase = vcvrack
 	pkgdesc = Open-source virtual modular synthesizer
-	pkgver = 1.1.1
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://vcvrack.com/
 	arch = x86_64
@@ -25,14 +25,14 @@ pkgbase = vcvrack
 	depends = rtaudio
 	depends = rtmidi
 	depends = speexdsp
-	source = vcvrack-1.1.1::git+https://github.com/vcvrack/Rack.git#tag=v1.1.1
-	source = git+https://github.com/AndrewBelt/osdialog.git
-	source = git+https://github.com/AndrewBelt/oui-blendish.git
-	source = git+https://github.com/glfw/glfw.git
-	source = git+https://github.com/memononen/nanosvg.git
-	source = git+https://github.com/memononen/nanovg.git
-	source = git+https://github.com/thestk/rtaudio.git
-	source = vcvrack-use_system_libs.patch::https://github.com/cvcrack/Rack/commit/6f4988b951fdc4585aea4e213102cbf94ce2306d.patch
+	source = vcvrack-1.1.6::git+https://github.com/vcvrack/Rack.git#tag=v1.1.6
+	source = git+https://github.com/glfw/glfw.git#commit=0fb001c
+	source = git+https://github.com/memononen/nanosvg.git#commit=25241c5
+	source = git+https://github.com/memononen/nanovg.git#commit=1f9c886
+	source = git+https://github.com/AndrewBelt/osdialog.git#commit=e5db5de
+	source = git+https://github.com/AndrewBelt/oui-blendish.git#commit=79ec59e
+	source = git+https://github.com/thestk/rtaudio.git#commit=d27f257
+	source = vcvrack-use_system_libs.patch::https://github.com/flying-sheep/Rack/commit/c74ada5fa42de4947eb0d65886f21528b8e65be7.patch
 	source = vcvrack.sh
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -41,7 +41,7 @@ pkgbase = vcvrack
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = 2cc74a866312f477f6b357cde34f7ce02cbe953715bf5f691299883c7199f2a3798be5c64a5c37d64fdcae419bea8a1f5385dbdecbfc43b750aaa15172352d4d
+	sha512sums = f44f4f2850ec481b648a06256eeb6632b4a98cd59822d1d8d8da38f8368ee065c6c2251a5a401bc7beef719a66ac43ca6bf063f1c10c267ec892024aa86f4fa2
 	sha512sums = 8ca3fbc790fa5d311ce41b5b9e84a79fe51db73cbf0f56f04d0429b28f0c4c0646e2d0c081b584161356ec24b06cc0181b115b865d564ff1452c64a57135acf6
 
 pkgname = vcvrack

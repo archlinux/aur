@@ -1,0 +1,13 @@
+/src/
+/pkg/
+
+/vcvrack-*/
+/glfw/
+/nanosvg/
+/nanovg/
+/osdialog/
+/oui-blendish/
+/rtaudio/
+
+/*.pkg.tar.xz
+/*.patch
