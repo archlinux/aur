@@ -1,0 +1,35 @@
+pkgbase = anydesk-bin
+	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support
+	pkgver = 5.5.4
+	pkgrel = 1
+	url = https://anydesk.com
+	arch = i686
+	arch = x86_64
+	license = custom:Freeware
+	depends = fakeroot
+	depends = python-shiboken2
+	depends = gtkglext
+	depends = libglvnd
+	depends = gtk2
+	depends = libx11
+	depends = glibc
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = libxcb
+	depends = cairo
+	depends = pango
+	depends = libxi
+	depends = libxrandr
+	depends = libxtst
+	depends = libxext
+	depends = libxfixes
+	depends = libxdamage
+	depends = gcc-libs
+	optdepends = libpulse
+	source_i686 = https://download.anydesk.com/linux/anydesk-5.5.4-i386.tar.gz
+	sha256sums_i686 = 79be3846fc51088bc5461752a6f66dae4bb5b9772c84fdd2cb8ece1b8965ba27
+	source_x86_64 = https://download.anydesk.com/linux/anydesk-5.5.4-amd64.tar.gz
+	sha256sums_x86_64 = 7a96be4d607b4115999610d324913d57bd7c2fad7137d465276ac157f80fc2e7
+
+pkgname = anydesk-bin
+
