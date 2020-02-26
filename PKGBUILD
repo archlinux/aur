@@ -1,14 +1,14 @@
 # Maintainer: s3lph <account-arch-aur-gzxkqqna@kernelpanic.lol>
 _name=pdf-diff
 pkgname="${_name}-git"
-pkgver=0.9.0.r55.f3a8e48
-pkgrel=2
+pkgver=0.9.1.r57.a0d8230
+pkgrel=1
 pkgdesc="Finds differences between two PDF documents"
 arch=('any')
 url="https://github.com/JoshData/pdf-diff/"
 license=('custom:CC0')
 groups=()
-depends=('python-lxml' 'python-diff-match-patch-cpp' 'poppler')
+depends=('python-lxml' 'python-diff-match-patch-cpp' 'poppler' 'python-pillow')
 makedepends=('git' 'python-setuptools')
 provides=("${_name}")
 conflicts=("${_name}")
