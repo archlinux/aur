@@ -6,7 +6,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.0.2.r1024.g0784b7657
+pkgver=3.1.0.r242.gcebfaa778
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -15,8 +15,7 @@ url="http://fishshell.com"
 license=("GPL2")
 depends=('ncurses')
 optdepends=('python: fish_update_completions and other tools' 
-			'xsel: clipboard integration'
-			'jq: bower and yarn completions')
+            'xsel: clipboard integration')
 makedepends=('cmake' 'python-sphinx' 'git')
 provides=('fish' 'fish-shell')
 conflicts=('fish' 'fish-shell')

@@ -1,6 +1,6 @@
 pkgbase = fish-git
 	pkgdesc = User friendly shell intended mostly for interactive use.
-	pkgver = 3.0.2.r1024.g0784b7657
+	pkgver = 3.1.0.r242.gcebfaa778
 	pkgrel = 1
 	epoch = 2
 	url = http://fishshell.com
@@ -15,7 +15,6 @@ pkgbase = fish-git
 	depends = ncurses
 	optdepends = python: fish_update_completions and other tools
 	optdepends = xsel: clipboard integration
-	optdepends = jq: bower and yarn completions
 	provides = fish
 	provides = fish-shell
 	conflicts = fish
