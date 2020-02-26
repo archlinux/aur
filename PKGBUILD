@@ -18,7 +18,7 @@ source=('readsb::git+git://github.com/Mictronics/readsb'
 	'readsb.service')
 
 sha256sums=('SKIP'
-            '561069dcfb4fb370327430ddb509c18b598311426143b614261f5a05143e42ee'
+            '890a39ad0a51c05e3ce328109f713dcaf133991552a8c4e597a8f05b3b9d2ba4'
             '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
             'a99005c2103187615af3d6acf79ffb6507848aef91bb936af5a0bc8a6ac696ea')
 
