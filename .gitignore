@@ -1,0 +1,7 @@
+# Ignored folders
+src/
+fluent-bit-git/
+
+# Ignored files
+*.pkg.tar.xz
+
