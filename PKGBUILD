@@ -1,10 +1,10 @@
 # Maintainer: milkii on freenode
 pkgname=oui-blendish-git
-pkgver=r1.8704539
+pkgver=r152.79ec59e
 pkgrel=1
 pkgdesc="Platform agnostic UI, NanoVG imitating the Blender 2.5, single C header file."
 arch=("x86_64")
-url="https://bitbucket.org/duangle/oui-blendish/src/default/"
+url="https://github.com/AndrewBelt/oui-blendish"
 license=('ZLIB')
 groups=()
 depends=()
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=('git+https://github.com/alexesDev/oui-blendish')
+source=('git+https://github.com/AndrewBelt/oui-blendish')
 noextract=()
 md5sums=('SKIP')
 
