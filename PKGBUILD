@@ -5,7 +5,7 @@ _name="${pkgname#python-}"
 pkgdesc="Remind you to pack your rain gear when it’s forecast to rain"
 url="https://gitlab.com/christophfink/wolkenbruch/"
 
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=0
 
 arch=("x86_64" "i686")
@@ -22,7 +22,7 @@ depends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("5df289cd2ff4205d03327cc511720e1a0c2774ef7de61c921204c71303df276c")
+sha256sums=("5488709f4b62f20d62561a6f496e4097acce9c48c3440359c9e9d12c402022ef")
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
