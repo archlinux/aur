@@ -2,7 +2,7 @@
 
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.2
+pkgrel=0.3
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
@@ -53,4 +53,5 @@ build() {
 package() {
     cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" {README,UPGRADING}.rst
 }
