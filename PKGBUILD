@@ -18,10 +18,18 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell)
 conflicts=(gnome-shell)
-source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=$pkgver")
+source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd $_pkgname
+  git describe --abbrev=0
+}
+
 build() {
+  cd $_pkgname
+  git checkout tags/$pkgver
+  cd ..
   arch-meson "$_pkgname" build -D gtk_doc=true
   ninja -C build
 }

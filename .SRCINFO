@@ -38,7 +38,7 @@ pkgbase = gnome-shell-dev
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#tag=3.35.91
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-dev
