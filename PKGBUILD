@@ -2,8 +2,8 @@
 # Maintainer: Patrick Klein <patrick@libklein.com>
 
 pkgname=gurobi
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.0.1
+pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="http://www.gurobi.com/products/gurobi-optimizer"
@@ -16,11 +16,11 @@ optdepends=(
   'matlab: MATLAB programming interface support, versions 2008b onwards'
 )
 source=(
-  "https://packages.gurobi.com/9.0/gurobi9.0.0_linux64.tar.gz"
+  "https://packages.gurobi.com/9.0/gurobi9.0.1_linux64.tar.gz"
   "gurobi.sh"
   "gurobi_setup.m"
 )
-sha256sums=('07c48fe0f18097ddca6ddc6f5a276e1548a37b31016d0b8575bb12ec8f44546e'
+sha256sums=('17e2facda111180eee61eeded0b8716230bbe09faa7c61356dc79f002ff86cb7'
             '30d535f7100627195dbe8d1c9a5ce603ed645b93eb8869984eb8a15e8db6d1c8'
             'fd328dc00b276258e7828b301c93574f9aa8e6f143caf5428a648851a6ecf93c')
 
@@ -70,8 +70,8 @@ package_gurobi() {
   # Programming interfaces
   install -Dt "${pkgdir}/usr/lib/" lib/*.so*
   install -Dm644 -t "${pkgdir}/usr/lib/" lib/*.a
-  ln -sf ./libgurobi.so.9.0.0 "${pkgdir}/usr/lib/libgurobi900.so"
-  ln -sf ./libgurobi.so.9.0.0 "${pkgdir}/usr/lib/libgurobi.so"
+  ln -sf ./libgurobi.so.9.0.1 "${pkgdir}/usr/lib/libgurobi.so"
+  ln -sf ./libgurobi.so.9.0.1 "${pkgdir}/usr/lib/libgurobi901.so"
   ln -sf ./libgurobi_g++5.2.a "${pkgdir}/usr/lib/libgurobi_c++.a"
 
   python setup.py install --root="$pkgdir" --optimize=1
