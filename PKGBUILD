@@ -87,6 +87,9 @@ namespace caffe{
       -i Waifu2x-caffe/cNet.cpp \
       -i Waifu2x-caffe/waifu2x.cpp \
       -i Waifu2x-caffe/Waifu2x-caffe.cpp
+
+  # rename models folder
+  sed "s|models/|${_plug}-models/|g" -i Waifu2x-caffe/Waifu2x-caffe.cpp
 }
 
 build() {
@@ -114,7 +117,8 @@ build() {
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
-  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/models"
+  mv "${pkgdir}/usr/lib/vapoursynth/models" "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
+  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
