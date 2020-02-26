@@ -10,20 +10,18 @@ arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-    'hunspell' 'ttf-font' 'hicolor-icon-theme')
+         'hunspell' 'ttf-font' 'hicolor-icon-theme')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-    'libnotify: Notification integration'
-    'pulseaudio: Audio support'
-    'alsa-lib: Audio support'
-    'speech-dispatcher: Text-to-Speech')
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'alsa-lib: Audio support'
+            'speech-dispatcher: Text-to-Speech')
 provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-classic-git')
 replaces=('waterfox-bin')
 
-source=(
-    'waterfox-classic.desktop'
-    'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2'
-)
+source=('waterfox-classic.desktop'
+        'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
 
 package() {
     # Create the directories.
