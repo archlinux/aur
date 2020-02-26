@@ -24,8 +24,6 @@ pkgbase = i2p
 	source = i2prouter.bash
 	source = i2prouter.sh
 	source = chromium-i2p.sh
-	source = upstream-fixes.patch::https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch
-	validpgpkeys = 2D3D2D03910C6504C1210C65EE60C0C8EE7256A8
 	sha256sums = e65c7dbbf464b6bc64afb228306fbfed0f1e67ffec74f96852b82acade53921c
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -36,7 +34,6 @@ pkgbase = i2p
 	sha256sums = 7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a
 	sha256sums = 8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5
 	sha256sums = 77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0
-	sha256sums = d911ef26b3b4c8e20c194befa900eb31d2fc0327e1f88fd7ae45506f6b414b83
 
 pkgname = i2p
 

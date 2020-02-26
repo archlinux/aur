@@ -31,7 +31,8 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         #"https://download.db-ip.com/free/dbip-country-lite-$(date +%Y-%m).mmdb.gz"
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh'
-        upstream-fixes.patch::'https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch')
+        #upstream.patch::'https://github.com/i2p/i2p.i2p/compare/f2f29d6...cad3c46.patch'
+)
 
 sha256sums=('e65c7dbbf464b6bc64afb228306fbfed0f1e67ffec74f96852b82acade53921c'
             'SKIP'
@@ -43,14 +44,11 @@ sha256sums=('e65c7dbbf464b6bc64afb228306fbfed0f1e67ffec74f96852b82acade53921c'
             '90f202e5b66d5a5b425522b409e71fb892d34c534e32ce2d6fe5284015cacf94'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
             '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
-            '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0'
-            'd911ef26b3b4c8e20c194befa900eb31d2fc0327e1f88fd7ae45506f6b414b83')
+            '77e359cf880ccc09f504372ef85c8ad3ab7d1186106a4ae92c4ff4f37ae650e0')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    sed -i ../upstream-fixes.patch \
-        -e 's|BUILD = 1|BUILD = 0|'
-    patch -Np1 -i ../upstream-fixes.patch
+    #patch -Np1 -i ../upstream.patch
     #cp -f ../dbip-country-lite-$(date +%Y-%m).mmdb.gz installer/resources/GeoLite2-Country.mmdb.gz
 }
 
