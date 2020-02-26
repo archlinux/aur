@@ -1,0 +1,15 @@
+[Unit]
+Description=ADSBexchange Stats
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/adsbexchange-stats
+WorkingDirectory=/var/run
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+RestartSec=30
+User=readsb
+
+[Install]
+WantedBy=multi-user.target

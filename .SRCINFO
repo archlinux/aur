@@ -1,0 +1,23 @@
+pkgbase = adsbexchange-stats-git
+	pkgdesc = ADSBexchange.com Statistics.
+	pkgver = r80.0e2b267
+	pkgrel = 1
+	url = https://github.com/adsbxchange/adsbexchange-stats
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = git
+	depends = readsb
+	depends = curl
+	depends = jq
+	depends = inotify-tools
+	depends = gzip
+	source = adsbexchange-stats::git+git://github.com/adsbxchange/adsbexchange-stats
+	source = adsbexchange-stats.service
+	sha256sums = SKIP
+	sha256sums = 3161db1fdff029439604d59f492f3854953398ab9640ca72046dc429c33ae816
+
+pkgname = adsbexchange-stats-git
+
