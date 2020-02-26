@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _pkgname=python-pyqis
-pkgname=${_pkgname}-git
+pkgname=${_pkgname}
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Python QIS client for German university information servers"

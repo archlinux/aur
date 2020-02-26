@@ -1,4 +1,4 @@
-pkgbase = python-pyqis-git
+pkgbase = python-pyqis
 	pkgdesc = Python QIS client for German university information servers
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -13,5 +13,5 @@ pkgbase = python-pyqis-git
 	source = python-pyqis::git+https://gitlab.com/Scrumplex/pyqis.git#tag=0.0.1
 	sha512sums = SKIP
 
-pkgname = python-pyqis-git
+pkgname = python-pyqis
 
