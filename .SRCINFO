@@ -1,5 +1,5 @@
 pkgbase = eolie-stable
-	pkgdesc = Simple web browser for GNOME
+	pkgdesc = Simple web browser for GNOME (stable branch: last release + fixes)
 	pkgver = 0.9.97.r26.geb9ed8af
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Eolie
