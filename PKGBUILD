@@ -10,11 +10,15 @@ url="https://github.com/Mictronics/readsb"
 license=('BSD')
 depends=('bladerf' 'libiio' 'libad9361' 'rtl-sdr')
 makedepends=('git')
+backup=('etc/default/readsb')
+
 source=('readsb::git+git://github.com/Mictronics/readsb'
+        'readsb.default'
 	'readsb.service')
 
 sha256sums=('SKIP'
-            '105ec41d815ce6b7b33e7c8d309e8fc19b65847663be86774944bf7c18f912db')
+            '561069dcfb4fb370327430ddb509c18b598311426143b614261f5a05143e42ee'
+            'a99005c2103187615af3d6acf79ffb6507848aef91bb936af5a0bc8a6ac696ea')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
@@ -27,11 +31,8 @@ build() {
 }
 
 package() {
-  # mkdir -p "${pkgdir}/usr/bin"
-  install -D -m755 "${srcdir}/${_gitname}/readsb" "${pkgdir}/usr/bin/readsb"
-  install -D -m755 "${srcdir}/${_gitname}/viewadsb" "${pkgdir}/usr/bin/viewadsb"
-  #install -d -m755 "${pkgdir}/usr/share/readsb/html"
-  install -D -m644 readsb.service "${pkgdir}/usr/lib/systemd/system/readsb.service"
-  #cp -r "${srcdir}"/"${_gitname}"/public_html/* "${pkgdir}/usr/share/readsb/html"
-  #install -D -m644 "${srcdir}"/lighttpd.conf "${pkgdir}/usr/share/readsb/lighttpd.conf"
+  install -D -m 755 "${srcdir}/${_gitname}/readsb" "${pkgdir}/usr/bin/readsb"
+  install -D -m 755 "${srcdir}/${_gitname}/viewadsb" "${pkgdir}/usr/bin/viewadsb"
+  install -D -m 644 readsb.default "${pkgdir}/etc/default/readsb"
+  install -D -m 644 readsb.service "${pkgdir}/usr/lib/systemd/system/readsb.service"
 }

@@ -13,10 +13,13 @@ pkgbase = readsb-git
 	depends = libiio
 	depends = libad9361
 	depends = rtl-sdr
+	backup = etc/default/readsb
 	source = readsb::git+git://github.com/Mictronics/readsb
+	source = readsb.default
 	source = readsb.service
 	sha256sums = SKIP
-	sha256sums = 105ec41d815ce6b7b33e7c8d309e8fc19b65847663be86774944bf7c18f912db
+	sha256sums = 561069dcfb4fb370327430ddb509c18b598311426143b614261f5a05143e42ee
+	sha256sums = a99005c2103187615af3d6acf79ffb6507848aef91bb936af5a0bc8a6ac696ea
 
 pkgname = readsb-git
 

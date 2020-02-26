@@ -26,7 +26,9 @@ ExecStart=/usr/bin/readsb --device 0 \
                           --net-bi-port 30004,30104 \
                           --net-bo-port 30005 \
                           --json-location-accuracy 1 \
-                          --write-json /run/readsb
+                          --write-json /run/readsb \
+                          $USER_OPTIONS
+
 Type=simple
 Restart=on-failure
 RestartSec=30
