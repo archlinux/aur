@@ -1,7 +1,7 @@
 # Maintainer: Alex Agura <agura@tfwno.gf>
 pkgname=asus-fan-control
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Fan control for ASUS devices running Linux."
 arch=('any')
 url="https://github.com/dominiksalvet/asus-fan-control"
