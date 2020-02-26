@@ -16,7 +16,7 @@ source=('dump978::git+git://github.com/flightaware/dump978'
 	'dump978.service')
 
 sha256sums=('SKIP'
-            '935798e1a09ea86ce7d25078b3dff400fd09ef9f0fec5e0e94636597f57f91b2')
+            '186575be1fb5c4203d85cd991cee764170570e4c804ed8376a95dc378b6af018')
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long --tags --match=v* | sed 's/dev.//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
