@@ -1,16 +1,15 @@
-pkgbase = miniserve-bin
-	pkgdesc = Tool to serve files via HTTP
-	pkgver = 0.5.0
+pkgbase = wasmtime-bin
+	pkgdesc = Standalone JIT-style runtime for WebAssembly, using Cranelift
+	pkgver = 0.8.0
 	pkgrel = 0
-	url = https://github.com/svenstaro/miniserve
+	url = https://wasmtime.dev/
 	arch = x86_64
 	license = MIT
-	provides = miniserve
-	conflicts = miniserve
-	source = https://github.com/svenstaro/miniserve/releases/download/v0.5.0/miniserve-linux-x86_64
-	source = https://github.com/svenstaro/miniserve/raw/v0.5.0/LICENSE
-	sha512sums = SKIP
+	provides = wasmtime
+	provides = wasm2obj
+	conflicts = wasmtime
+	source = https://github.com/bytecodealliance/wasmtime/releases/download/v0.8.0/wasmtime-v0.8.0-x86_64-linux.tar.xz
 	sha512sums = SKIP
 
-pkgname = miniserve-bin
+pkgname = wasmtime-bin
 

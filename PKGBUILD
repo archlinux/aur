@@ -1,25 +1,26 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
-pkgname=miniserve-bin
-_pkgname=miniserve
-pkgver=0.5.0
+pkgname=wasmtime-bin
+pkgver=0.8.0
 pkgrel=0
-pkgdesc="Tool to serve files via HTTP"
-provides=('miniserve')
-conflicts=('miniserve')
+pkgdesc='Standalone JIT-style runtime for WebAssembly, using Cranelift'
+provides=('wasmtime' 'wasm2obj')
+conflicts=('wasmtime')
 arch=('x86_64')
-url="https://github.com/svenstaro/miniserve"
+url="https://wasmtime.dev/"
 license=(MIT)
+_pkgname=wasmtime
+_repo=https://github.com/bytecodealliance/$_pkgname
+_download=${_repo}/releases/download/v${pkgver}
 source=(
-  ${url}/releases/download/v${pkgver}/miniserve-linux-x86_64
-  ${url}/raw/v${pkgver}/LICENSE
+  ${_download}/wasmtime-v${pkgver}-x86_64-linux.tar.xz
 )
 sha512sums=(
-  SKIP
   SKIP
 )
 
 package() {
-  install -Dm755 miniserve-linux-x86_64 "$pkgdir"/usr/bin/miniserve
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  cd "$srcdir"/wasmtime-v${pkgver}-x86_64-linux
+  install -Dm755 wasmtime "$pkgdir"/usr/bin/wasmtime
+  install -Dm755 wasm2obj "$pkgdir"/usr/bin/wasm2obj
 }
