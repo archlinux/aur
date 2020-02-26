@@ -1,0 +1,14 @@
+pkgbase = aloevera
+	pkgdesc = Graphical asset processing pipeline for the Commander X16
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/yeastplume/aloevera
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	depends = gcc-libs
+	source = aloevera-0.2.0.tar.gz::https://github.com/yeastplume/aloevera/archive/v0.2.0.tar.gz
+	md5sums = 2bfda79f95d01654749003d2b3f8eb3e
+
+pkgname = aloevera
+
