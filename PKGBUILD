@@ -2,7 +2,7 @@
 
 _plug=vmaf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.0.g44bbaf7
+pkgver=r6.0.gf1b7159
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -26,6 +26,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  # rename models path
+  sed "s|model/|${_plug}-models/|g" -i "${_plug}/VMAF/VMAF.cpp"
 }
 
 build() {
@@ -38,6 +41,9 @@ build() {
 
 package(){
   DESTDIR="${pkgdir}" ninja -C build install
+
+  mv "${pkgdir}/usr/lib/vapoursynth/model" "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
+  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
