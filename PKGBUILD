@@ -5,7 +5,7 @@
 # Contributor: Daniel Plaza <daniel.plaza.espi@gmail.com>
 pkgname=pcsclite-nopy
 _pkgname=pcsclite
-pkgver=1.8.25
+pkgver=1.8.26
 pkgrel=1
 pkgdesc="PC/SC Architecture smartcard middleware library (no python)"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ optdepends=('python: to use pcsc-spy tool')
 options=('!docs')
 validpgpkeys=('F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E') # Ludovic Rousseau <rousseau@debian.org>
 source=("https://pcsclite.apdu.fr/files/pcsc-lite-${pkgver}.tar.bz2")
-sha256sums=('d76d79edc31cf76e782b9f697420d3defbcc91778c3c650658086a1b748e8792')
+sha256sums=('3eb7be7d6ef618c0a444316cf5c1f2f9d7227aedba7a192f389fe3e7c0dfbbd9')
 provides=($_pkgname=$pkgver-$pkgrel)
 conflicts=($_pkgname)
 
