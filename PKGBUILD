@@ -6,7 +6,7 @@ pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
 pkgver=4.3.1
-pkgrel=6
+pkgrel=7
 _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
@@ -33,7 +33,7 @@ md5sums=('1c0df5fa42e7f7b89c7e704fdc1b5154'
          'b0d6917f83dea640bfabeeedb4e10fe1'
          'ca844c23699ba64777571253bc7ccb21'
          '68e78907dc2a0c89421d02377e76d353'
-         'f6c4319adee31fd507485d25601bd400'
+         '20e51cfc70846858d2729c4d5e95d6d5'
          '0495c002b7d5dce303d451e4cd2fede5'
          'a9c8de83f02d36bfe96db57975984bbb')
 
