@@ -23,4 +23,5 @@ package() {
   cd "$srcdir"/wasmtime-v${pkgver}-x86_64-linux
   install -Dm755 wasmtime "$pkgdir"/usr/bin/wasmtime
   install -Dm755 wasm2obj "$pkgdir"/usr/bin/wasm2obj
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
