@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.4.21
+_pkgver=5.4.22
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -28,11 +28,8 @@ _kernsrc=$(pacman -Sp "${_pkgname}" 2> /dev/null)
 _headerssrc=$(pacman -Sp "${_pkgname}-headers" 2> /dev/null) 
 _docssrc=$(pacman -Sp "${_pkgname}-docs" 2> /dev/null) 
 
-_arch_archive=https://archive.archlinux.org/packages/.all
-
 # If not, then use the Arch Linux archive:
-_kernsrc_basename=$(basename "${_kernsrc}" 2> /dev/null)
-if [ "${_kernsrc_basename}" != "${_kernpkg}" ]; then
+if [ "$(basename "${_kernsrc}" 2> /dev/null)" != "${_kernpkg}" ]; then
   _arch_archive=https://archive.archlinux.org/packages/.all
   _kernsrc=${_arch_archive}/${_kernpkg}
   _headerssrc=${_arch_archive}/${_headerspkg}
@@ -43,9 +40,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('f091a9d9c025c21e4faec649421c205971132d0f234e8c8b094d704876a7d24f'
-            'b37f2d610e709df46bf1e988956a662b1fc4430f6020f6373ce6ad70ccfd220f'
-            '218e8cabf8f5fdd999ea05b6171f5210f7670cc0a9e871b3324f2c3f9c4cc54e')
+sha256sums=('9baa73a15f3e41f4a778c04791d7690059fdb913979e385634a6e36cd80fe75d'
+            '0fdd11b2b38356e09147289dd4d92cd3fb818fed10567595d49eaafa5c4d2846'
+            '212e44727bd9cb6652d4b42b1edf9905dd9d4801c1690c9861eb3468a854a264')
 
 package_linux-lts-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -63,7 +60,7 @@ package_linux-lts-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.4.21-1-lts-bin() {
+package_linux5.4.22-1-lts-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -74,7 +71,7 @@ package_linux5.4.21-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.4.21-1-lts-headers-bin() {
+package_linux5.4.22-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -82,7 +79,7 @@ package_linux5.4.21-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.4.21-1-lts-docs-bin() {
+package_linux5.4.22-1-lts-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"

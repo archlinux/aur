@@ -21,7 +21,7 @@ if (pkgver, pkgrel) != (latest_pkgver, latest_pkgrel):
         pkgbuild = f.read()
 
     replacements = (
-        (f'_kernver={pkgver}', f'_kernver={latest_pkgver}'),
+        (f'_pkgver={pkgver}', f'_pkgver={latest_pkgver}'),
         (f'_pkgrel={pkgrel}', f'_pkgrel={latest_pkgrel}'),
         (
             f'{pkgver}-{pkgrel}',
