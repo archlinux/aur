@@ -27,7 +27,7 @@ validpgpkeys=('2D1D5B0588357787DE9EE225EC94D18F7F05997E'  # Jonathan Riddell <jr
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
-  mkdir ${_pkgname}-$pkgver/build
+  mkdir -p ${_pkgname}-$pkgver/build
 }
 
 build() {
@@ -42,6 +42,6 @@ build() {
 }
 
 package() {
-  cd build
+  cd ${_pkgname}-$pkgver/build
   make DESTDIR="$pkgdir" install
 }
