@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -30,21 +30,12 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	sed -i '39 i\
 			path.Join("/etc/cheat/conf.yml"),' internal/config/paths.go
-
-	# create gopath
-	mkdir -p "$srcdir/gopath"
-	export GOPATH="$srcdir/gopath"
-
-	# fetch dependencies
-	msg "Fetching Go dependencies"
-	cd "$srcdir/$pkgname-$pkgver"
-	go get -d ./...
 }
 
 build() {
 	cd "$pkgname-$pkgver"
 	GOOS=linux \
-	GOARCH=amd64 \
+	GOARCH=$(go env GOHOSTARCH) \
 	go build \
 		-v \
 		-trimpath \
