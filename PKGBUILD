@@ -16,7 +16,7 @@ makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspe
 optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
-provides=(gnome-shell)
+provides=(gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git")
 sha256sums=('SKIP')
