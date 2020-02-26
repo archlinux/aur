@@ -1,4 +1,4 @@
-pkgname=eolie-next
+pkgname=eolie-stable
 _gitname=eolie
 pkgver=0.9.97.r26.geb9ed8af
 pkgrel=1
@@ -15,7 +15,7 @@ optdepends=('python-beautifulsoup4: Import html bookmarks'
             'python-requests-hawk: Firefox Sync support')
 source=("git+https://gitlab.gnome.org/World/lollypop#branch=next")
 sha256sums=('SKIP')
-conflicts=('eolie' 'eolie-git' 'eolie-stable')
+conflicts=('eolie' 'eolie-git' 'eolie-next')
 provides=("eolie=$pkgver")
 
 pkgver() {
