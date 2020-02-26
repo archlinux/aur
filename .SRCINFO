@@ -30,7 +30,6 @@ pkgbase = asterisk
 	optdepends = libss7
 	optdepends = openr2
 	optdepends = iksemel
-	optdepends = radiusclient-ng
 	optdepends = dahdi
 	backup = etc/asterisk/acl.conf
 	backup = etc/asterisk/adsi.conf
