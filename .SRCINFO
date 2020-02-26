@@ -13,7 +13,6 @@ pkgbase = r-manipulatewidget
 	depends = r-htmlwidgets
 	depends = r-knitr
 	depends = r-base64enc
-	depends = r-codetools
 	depends = r-webshot
 	optdepends = r-dygraphs
 	optdepends = r-leaflet

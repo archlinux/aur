@@ -9,7 +9,7 @@ pkgdesc="Add Even More Interactivity to Interactive Charts"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=(r 'r-shiny>=1.0.3' r-miniui r-htmltools r-htmlwidgets r-knitr r-base64enc r-codetools r-webshot)
+depends=(r 'r-shiny>=1.0.3' r-miniui r-htmltools r-htmlwidgets r-knitr r-base64enc r-webshot)
 optdepends=(r-dygraphs r-leaflet r-plotly r-xts r-rmarkdown r-testthat r-covr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('d46a717e774527ae0e59a64c3222ef2a')
