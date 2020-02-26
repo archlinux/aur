@@ -1,6 +1,6 @@
 pkgbase = dupliseek-git
 	pkgdesc = Duplicate image finder written in Python/Qt5
-	pkgver = 0.0.2alpha.r57.3bac8b6
+	pkgver = 0.0.3.r2.6cc6923
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.com/dupliseek-group/dupliseek
@@ -8,15 +8,15 @@ pkgbase = dupliseek-git
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-pip
 	depends = python-pyqt5
 	depends = python-numpy
 	depends = python-imutils
+	depends = python-opencv-python
 	provides = dupliseek
 	conflicts = dupliseek
-	source = git+https://gitlab.com/dupliseek-group/dupliseek.git#commit=3bac8b69585cb9f0d1cced6cf6f7324bc2426120
-	source = setup.patch
+	source = git+https://gitlab.com/dupliseek-group/dupliseek.git
 	sha256sums = SKIP
-	sha256sums = ba6a53fe0cc67d4a2c3b64836b59d853b34713a566945e79af376a92d5f2a86f
 
 pkgname = dupliseek-git
 
