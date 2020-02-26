@@ -1,0 +1,19 @@
+pkgbase = aloevera-git
+	pkgdesc = Graphical asset processing pipeline for the Commander X16
+	pkgver = 0.2.0.r0.g6dcc324
+	pkgrel = 1
+	url = https://github.com/yeastplume/aloevera
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	optdepends = cc65: compile assembly and header files
+	optdepends = x16-emulator: run BASIC and bin files
+	provides = aloevera
+	conflicts = aloevera
+	source = git+https://github.com/yeastplume/aloevera.git
+	md5sums = SKIP
+
+pkgname = aloevera-git
+
