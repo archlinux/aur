@@ -5,12 +5,12 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-bin"
 pkgver='5.4.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
 arch=('x86_64')
 url="https://get$_pkgname.com"
 license=('Apache')
-depends=('alsa-lib' 'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2' 'libsecret' 'libxslt' 'libxss' 'libxtst' 'minizip' 'nss' 're2' 'snappy')
+depends=('alsa-lib' 'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2' 'libsecret' 'libxkbfile' 'libxslt' 'libxss' 'libxtst' 'minizip' 'nss' 're2' 'snappy')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/get$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.x86_64.rpm")
