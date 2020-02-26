@@ -1,22 +1,22 @@
-diff -crB libsvm-320/Makefile libsvm-320-openmp/Makefile
-*** libsvm-320/Makefile	2014-11-14 21:02:18.000000000 -0200
---- libsvm-320-openmp/Makefile	2015-11-11 17:42:10.797139235 -0200
+diff -crB libsvm-324/Makefile libsvm-324-openmp/Makefile
+*** libsvm-324/Makefile	2019-09-10 21:05:26.000000000 +0200
+--- libsvm-324-openmp/Makefile	2020-02-26 19:47:32.436432315 +0100
 ***************
 *** 1,5 ****
   CXX ?= g++
 ! CFLAGS = -Wall -Wconversion -O3 -fPIC
   SHVER = 2
   OS = $(shell uname)
-  
+
 --- 1,5 ----
   CXX ?= g++
 ! CFLAGS = -Wall -Wconversion -O3 -fPIC -fopenmp
   SHVER = 2
   OS = $(shell uname)
-  
-diff -crB libsvm-320/svm.cpp libsvm-320-openmp/svm.cpp
-*** libsvm-320/svm.cpp	2014-11-14 21:02:18.000000000 -0200
---- libsvm-320-openmp/svm.cpp	2015-11-11 17:49:04.329189485 -0200
+
+diff -crB libsvm-324/svm.cpp libsvm-324-openmp/svm.cpp
+*** libsvm-324/svm.cpp	2019-09-10 21:05:26.000000000 +0200
+--- libsvm-324-openmp/svm.cpp	2020-02-26 19:51:54.833093991 +0100
 ***************
 *** 1282,1287 ****
 --- 1282,1288 ----
@@ -51,9 +51,9 @@ diff -crB libsvm-320/svm.cpp libsvm-320-openmp/svm.cpp
 *** 2523,2528 ****
 --- 2526,2532 ----
   		int l = model->l;
-  		
+
   		double *kvalue = Malloc(double,l);
 + 		#pragma omp parallel for private(i) schedule(guided)
   		for(i=0;i<l;i++)
   			kvalue[i] = Kernel::k_function(x,model->SV[i],model->param);
-  
+
