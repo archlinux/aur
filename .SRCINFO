@@ -1,6 +1,6 @@
 pkgbase = anydesk-rpi
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support
-	pkgver = 5.5.3
+	pkgver = 5.5.4
 	pkgrel = 1
 	url = https://anydesk.de
 	arch = armv7h
@@ -25,8 +25,8 @@ pkgbase = anydesk-rpi
 	depends = libxdamage
 	depends = gcc-libs
 	optdepends = libpulse
-	source = https://download.anydesk.com/rpi/anydesk_5.5.3-1_armhf.deb
-	sha256sums = ba4c8e8c55c3d0b0077c1d9e000491e29db902952ff3f73fd8ee3ca3e94ff33c
+	source = https://download.anydesk.com/rpi/anydesk_5.5.4-1_armhf.deb
+	sha256sums = 5065aa347ed873cae25c83ab91ef3944bee04ff05b5855aafe7bc972442af6c9
 
 pkgname = anydesk-rpi
 
