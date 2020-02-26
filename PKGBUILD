@@ -11,10 +11,13 @@ _github_url="https://github.com/balena-io/balena-cli"
 license=('APACHE')
 depends=('nodejs>=8.0.0' 'nodejs<13.0.0' 'gawk' 'sed' 'make')
 makedepends=('npm' 'python2' 'jq' 'coffeescript' 'git' 'node-gyp')
+optdepends=('python2: balena preload'
+    'openssh: balena ssh'
+    'linux-aufs: balena preload/build/deploy --build'
+    'avahi: balena scan')
+optdepends_x86_64=('lib32-glibc: emulated builds')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
-optdepends=('python2: balena preload' 'openssh: balena ssh')
-optdepends_x86_64=('lib32-glibc: emulated builds')
 options=(!strip)
 replaces=('resin-cli')
 sha256sums=('636c57f97015e5989a5142131d71527e3022badb6dce2807fc543e7a0625c7b2')
