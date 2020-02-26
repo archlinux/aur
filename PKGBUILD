@@ -1,4 +1,4 @@
-# Maintainer: fryfrog@gmail.com
+# Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=adsbexchange-stats-git
 _gitname=adsbexchange-stats
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="ADSBexchange.com Statistics."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/adsbxchange/adsbexchange-stats"
-license=('BSD')
+license=('GPL3')
 depends=('readsb' 'curl' 'jq' 'inotify-tools' 'gzip')
 makedepends=('git')
 
