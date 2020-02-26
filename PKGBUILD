@@ -79,7 +79,7 @@ package() {
 	#msg2 'Cleaning build folder'
 	#rm -rf "${srcdir}/build"
 
-	msg2 'Prevent automatical ${pkgname}.desktop file replacement by not functional one'
+	msg2 'Prevent automatical '${pkgname}'.desktop file replacement by not functional one'
 	rm ${pkgdir}/opt/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.ide_*/resources/project_importer/linux/mimetype/stm32cubeide.desktop.template
 }
 
