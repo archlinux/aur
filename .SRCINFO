@@ -1,14 +1,14 @@
 pkgbase = nextcloud-app-phonetrack
 	pkgdesc = Phone tracker and location sharer for Nextcloud
-	pkgver = 0.5.11
-	pkgrel = 2
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://gitlab.com/eneiluj/phonetrack-oc/
 	arch = any
 	license = AGPL
 	depends = nextcloud>=17.0
 	depends = nextcloud<19.0
-	source = https://gitlab.com/eneiluj/phonetrack-oc/wikis/uploads/a1517d4a406a2fd609f869f54cc88f85/phonetrack-0.5.11.tar.gz
-	sha256sums = cd219e9424880e8575d403660f8a8bac377d764ec3a7fed154119d089995ec24
+	source = https://gitlab.com/eneiluj/phonetrack-oc/wikis/uploads/7c0da5d24e4f0a358d1ac951d84f9bff/phonetrack-0.6.2.tar.gz
+	sha256sums = 920fcab005bb09c45321f5a1731144b338d5a93b96b402057e9eec277870be4c
 
 pkgname = nextcloud-app-phonetrack
 
