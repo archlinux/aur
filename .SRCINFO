@@ -1,0 +1,32 @@
+pkgbase = straw-viewer-git
+	pkgdesc = Application for searching and streaming videos from YouTube, using the API of invidio.us (fork of youtube-viewer).
+	pkgver = 677e336
+	pkgrel = 1
+	url = https://github.com/trizen/straw-viewer
+	arch = any
+	license = Artistic2.0
+	makedepends = git
+	makedepends = perl-module-build
+	depends = perl
+	depends = perl-data-dump
+	depends = perl-json
+	depends = perl-lwp-protocol-https
+	depends = perl-gtk3
+	depends = perl-libwww
+	depends = perl-file-sharedir
+	optdepends = ffmpeg: conversions and MKV merging
+	optdepends = gnome-icon-theme: icons in menus
+	optdepends = perl-json-xs: faster JSON parsing
+	optdepends = perl-lwp-useragent-cached: local cache support
+	optdepends = perl-term-readline-gnu: better STDIN support
+	optdepends = perl-unicode-linebreak: print results in a fixed-width format (-W)
+	optdepends = mpv: play videos with MPV (recommended)
+	optdepends = mplayer: play videos with MPlayer
+	optdepends = vlc: play videos with VLC
+	optdepends = wget: download videos with wget
+	optdepends = youtube-dl: play videos with encrypted signatures
+	source = git+https://github.com/trizen/straw-viewer.git
+	sha256sums = SKIP
+
+pkgname = straw-viewer-git
+
