@@ -1,7 +1,7 @@
-# Maintainer: Oleg Rakhmanov <oleg [at] archlinuxarm [dot] org>
+# Maintainer: Kalani Helekunihi <i [at] am [dot] guru>
 
 pkgname=xteve
-pkgver=2.0.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="IPTV Proxy for Plex DVR"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_aarch64=('https://xteve.de/download/xteve_2_linux_arm64.zip')
 md5sums=('d7f09bca696e34173dcc3fa4dba81650'
          '8ad3c1b952d0b4a722439c60c8f6ceec'
          '7991e718cab0bf566f22f499c720b325')
-md5sums_x86_64=('9ac5502fc4861c9774bcfc3bbfd038bb')
-md5sums_aarch64=('da4d80c26853b4fdb7bb00ad8a6748e8')
+md5sums_x86_64=('2910fac6f39f471513be693ef52c2228')
+md5sums_aarch64=('e5194e71791be007ad590bea3d5eb096')
 
 package() {
 	install -Dm755 ${srcdir}/xteve $pkgdir/usr/bin/${pkgname}
