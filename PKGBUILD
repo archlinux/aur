@@ -2,16 +2,20 @@
 pkgbase=python-sncosmo
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Python library for supernova cosmology"
 arch=('i686' 'x86_64')
 url="https://sncosmo.readthedocs.io/"
 license=('BSD')
 makedepends=('cython' 'python-numpy')
-checkdepends=('python-pytest-astropy' 'python-astropy' 'python2-astropy' 'python-extinction' 'python-iminuit')
+checkdepends=('python-pytest-astropy' 'python-astropy' 'python-extinction' 'python-iminuit')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('55dc7e2d5bbfe1da50dd334a5e128cf4')
+md5sums=('9b82f54cef1ffb45c3114e09b6af9b91')
+
+prepare() {
+    export _pyver=$(python -V | cut -c 8-10)
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -22,7 +26,9 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    python setup.py test
+#   python setup.py test
+    cp "build/lib.linux-x86_64-${_pyver}/${_pyname}/salt2utils.cpython-${_pyver/./}-x86_64-linux-gnu.so" "${_pyname}"
+    pytest
 }
 
 package() {
