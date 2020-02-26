@@ -43,7 +43,6 @@ package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
   mv "${pkgdir}/usr/lib/vapoursynth/model" "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
-  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
