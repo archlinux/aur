@@ -7,7 +7,7 @@ post_install() {
 	chown http:http . db.sqlite3
 	chown http:http -R static myenv
 
-	sed -i "s/^DEBUG = .*$/DEBUG = False/" openminer/settings.py
+	sed -i "s/^DEBUG = .*$/DEBUG = False/" openminer_web/settings.py
 
 	echo "==>"
 	echo "==>"
@@ -21,7 +21,7 @@ post_upgrade() {
 
 	bash scripts/update_prod.sh
 
-	sed -i "s/^DEBUG = .*$/DEBUG = False/" openminer/settings.py
+	sed -i "s/^DEBUG = .*$/DEBUG = False/" openminer_web/settings.py
 
 	sudo systemctl restart httpd
 }
