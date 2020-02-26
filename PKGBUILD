@@ -5,17 +5,18 @@
 pkgname=waterfox-classic-bin
 pkgver=2020.02.1
 pkgrel=2
-pkgdesc="Customizable privacy conscious web browser with primary support for legacy extensions"
+pkgdesc="Customizable privacy-conscious web browser with primary support for legacy extensions"
 arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'hunspell' 'ttf-font' 'hicolor-icon-theme')
+         'ttf-font' 'hicolor-icon-theme')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'alsa-lib: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-classic-git')
 replaces=('waterfox-bin')
@@ -70,4 +71,4 @@ END
 }
 
 sha256sums=('67bcd2aed38969553130872652946ddd00a804ba2046c14a554e9bb99de54b24'
-    'fdb29a5504f378165a8c126772f419472ff3e4e058abe901f29068ff12ff521e')
+            'fdb29a5504f378165a8c126772f419472ff3e4e058abe901f29068ff12ff521e')
