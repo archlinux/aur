@@ -46,6 +46,7 @@ depends=('bzip2'
 		 'qt5-quickcontrols2'
 		 'qt5-location'
 		 'qt5-svg'
+		 'qt5-graphicaleffects'
 )
 
 makedepends=('git' 'qt5-base')
@@ -56,6 +57,7 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
 		"aossl-qgc${pkgver}.zip::https://github.com/Auterion/android_openssl/archive/${pkgver_aossl}.zip"
 		"gps-drivers-qgc${pkgver}.zip::https://github.com/PX4/GpsDrivers/archive/${pkgver_gps}.zip"
 		'libcudata-qgc.patch'
+		'mavlink-warn-qgc.patch'
 )
 
 sha256sums=('2eb84acdf451d5152537516a43dae93ac52f9e48fefb3df16e6709f1a9989e4e'
@@ -63,6 +65,7 @@ sha256sums=('2eb84acdf451d5152537516a43dae93ac52f9e48fefb3df16e6709f1a9989e4e'
             '51b2d5af91e16d6009e73690c62a289dff9004c170e626dc8c322dd49a745c8b'
             'ad96ca7c11864d26047637dc02a0278bbf33997a6f6be37ef1b7ca44669f1149'
             '1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -94,6 +97,7 @@ prepare() {
 
 	cd "${srcdir}/${pkgname}-${pkgver}/"
 	patch --strip=1 < "${srcdir}/libcudata-qgc.patch"
+	patch --strip=1 < "${srcdir}/mavlink-warn-qgc.patch"
 }
 
 build() {
