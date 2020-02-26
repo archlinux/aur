@@ -2,7 +2,7 @@
 
 pkgname=whatsapp-nativefier-dark
 pkgver=0.20200221002211
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp desktop built with nativefier (electron) using dark theme"
 arch=("armv7l" "i686" "x86_64")
 url="https://web.whatsapp.com"
@@ -30,6 +30,7 @@ build() {
     --icon "${pkgname}.png" \
     --width "800px" \
     --height "600px" \
+    --background-color "#1f232a" \
     --inject "${pkgname}-inject.js" \
     --verbose \
     --single-instance \
