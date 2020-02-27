@@ -7,7 +7,7 @@ _plugin_ext="-fx"
 pkgdesc="Browser plugin to containerize Amazon and its affiliates."
 license=('MPL')
 
-pkgname=firefox-extension-$_plugin_name
+pkgname=firefox-extension-amazon-container
 pkgver=$_plugin_version
 pkgrel=1
 arch=('any')
