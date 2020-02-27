@@ -3,7 +3,7 @@ pkgname=vimix-cursors
 _pkgname=Vimix-cursors
 pkgver=2020.02.24
 _pkgver=2020-02-24
-pkgrel=1
+pkgrel=2
 pkgdesc="An X Cursor theme inspired by Material design and based on capitaine-cursors"
 arch=('any')
 url="https://github.com/vinceliuice/Vimix-cursors"
@@ -16,7 +16,7 @@ prepare() {
 	cd "$_pkgname-$_pkgver"
 
 	# Remove prebuilt assets
-	rm -rf dist/
+	rm -rf {dist,dist-white}
 }
 
 build() {
@@ -26,6 +26,7 @@ build() {
 
 package() {
 	cd "$_pkgname-$_pkgver"
-	install -dm755 "$pkgdir/usr/share/icons/$pkgname"
+	install -dm755 "$pkgdir"/usr/share/icons/{"$pkgname","$pkgname"-white}
 	cp -dr --no-preserve=ownership dist/* "$pkgdir/usr/share/icons/$pkgname"
+	cp -dr --no-preserve=ownership dist-white/* "$pkgdir/usr/share/icons/$pkgname-white"
 }
