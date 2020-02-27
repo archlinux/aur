@@ -21,13 +21,15 @@ build() {
   #       they contain references to $srcdir, I tried a bunch of things but nothing helps
 
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm/hip" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
         "$srcdir/HIP-roc-$pkgver"
   make
 }
 
 package() {
-  make -C "$srcdir/build" install
+  cd "$srcdir/build"
+
+  make DESTDIR="$pkgdir" install
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/hip.conf"
