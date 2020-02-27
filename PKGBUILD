@@ -8,7 +8,7 @@ _pkgver=7.0.0
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-crt-git
-pkgver=7.0.0.20191109
+pkgver=7.0.0.20200224
 pkgrel=1
 pkgdesc="MinGW-w64 CRT for Windows (git version)"
 arch=('any')
