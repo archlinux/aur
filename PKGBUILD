@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg0.10
 pkgver=0.10.16
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
@@ -33,8 +33,8 @@ sha256sums=('e77823cbd58dfdb61f88059476070bc432d80e3821c14abcf804ef709d2f3fd1'
 
 prepare() {
   cd ffmpeg-${pkgver}
-
   patch -Np1 -i ../ffmpeg-0.10-libvpx-1.5.patch
+  sed -i 's/x264_bit_depth/X264_BIT_DEPTH/' libavcodec/libx264.c
 }
 
 build() {
@@ -72,7 +72,8 @@ build() {
     --enable-shared \
     --enable-vdpau \
     --enable-version3 \
-    --enable-x11grab
+    --enable-x11grab \
+    --enable-libx264
   make
 }
 
