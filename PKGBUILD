@@ -1,6 +1,7 @@
+# Maintainer: Ting-Wei Lan <lantw44 at gmail dot com>
+# Contributor: Thomas Koller-Cherek <tk120 at protonmail dot com>
 # Contributor: holos
 # Contributor: tantalum
-# Maintainer: Thomas Koller-Cherek <tk120 at protonmail dot com>
 
 pkgname=guile-json
 pkgrel=2
