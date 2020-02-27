@@ -5,7 +5,6 @@ pkgbase = vim-colorscheme-forest-night-git
 	url = https://github.com/sainnhe/forest-night
 	arch = any
 	license = MIT
-	license = Anti-996
 	makedepends = git
 	depends = vim
 	source = git+https://github.com/sainnhe/forest-night.git
