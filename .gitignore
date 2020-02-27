@@ -2,4 +2,5 @@
 *.zip
 pkg/
 src/
+.idea/
 
