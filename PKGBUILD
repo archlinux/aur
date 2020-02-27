@@ -1,12 +1,10 @@
-# Maintainer: Thaodan <theodorstormgrade@gmail.com>
-# Submitter: Christos Nouskas <nous at archlinux dot us>
-# PKGBUILD assembled from kernel26
-# Some lines from  kernel26-bfs and kernel26-ck
-# Credits to respective maintainers
+# Maintainer: Yurii Kolesykov <root@yurikoles.com>
+# Credits: Thaodan <theodorstormgrade@gmail.com>
+# Credits: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.5.3.r0.g5b966c77963f
+pkgver=5.5.5.r0.g163f033345ba
 _basekernel=5.5
 pkgrel=1
 arch=(x86_64)
@@ -22,6 +20,12 @@ source=("${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf
 	      'config'
         'pf_defconfig'
        )
+md5sums=('SKIP'
+         '8b43b84a35febae81317fed00fdd17b5'
+         '86fb6ffdacf9f882b2e0439a01273569')
+sha256sums=('SKIP'
+            'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
+            '41bafedbcd2788508f998782cb0ef870948dbdd9827c75e93cbae7613f743c55')
 
 pkgver() {
   cd "${_srcname}"
@@ -34,7 +38,7 @@ export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  cd "${pkgbase}"
+  cd $_srcname
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -43,35 +47,17 @@ prepare() {
 
   _pfrel=`git describe --abbrev=0 --tags| cut -d'-' -f2|sed 's/pf//g'`
 
-  cat "${startdir}/config" >| .config
+  echo "Setting config..."
+  cp ../config .config
+  make olddefconfig
 
   sed -ri "s|SUBLEVEL = 0|SUBLEVEL = $_pfrel|" Makefile
 
   # Set EXTRAVERSION to -pf
   sed -ri "s|^(EXTRAVERSION =).*|\1|" Makefile
-    
-  # disable NUMA since 99.9% of users do not have multiple CPUs but do have multiple cores in one CPU
-  # see, https://bugs.archlinux.org/task/31187
-  if [ -n "$_NUMA_off" ]; then
-    sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
-        -i -e '/CONFIG_AMD_NUMA=y/d' \
-        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
-        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
-        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
-        -i -e '/CONFIG_NODES_SHIFT=6/d' \
-        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
-        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
-        -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
-  fi
-
-  # If the following is set, stop right there. We only need the headers for
-  # dependent drivers' compiling (nvidia, virtualbox etc)
 
   # merge our changes to arches kernel config
   ./scripts/kconfig/merge_config.sh .config "$srcdir"/pf_defconfig
-
-  # get kernel version
-  #make prepare
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -217,6 +203,3 @@ for _p in "${pkgname[@]}"; do
     _package${_p#$pkgbase}
   }"
 done
-md5sums=('SKIP'
-         '919a6919bdc919fe77146a6119ff1b0d'
-         'b38b3974219260e06d48b7c432474758')
