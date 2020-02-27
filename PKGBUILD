@@ -1,8 +1,9 @@
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-tcp'
-pkgver='2.17'
+pkgver='2.22'
 pkgrel='1'
 pkgdesc="testing TCP program"
 arch=('any')
@@ -11,10 +12,9 @@ options=('!emptydirs')
 depends=('perl-test-sharedfork>=0.29' 'perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Test-TCP'
-source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Test-TCP-2.17.tar.gz')
-md5sums=('587ecdd5593be06d57216c6dc2eab12f')
-sha512sums=('41795ae4287d43b28f8892ef9e545d155cb61bb7daf35a937a5c9bfd5f480b8714b7c07f393e540ff6bc3711eebb8fc8380833e6163bf66d09e9c1d28b5a30c9')
-_distdir="Test-TCP-2.17"
+source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Test-TCP-2.22.tar.gz')
+sha512sums=('2e0c8cf710f9702eee9b00422d7133efe87575805361d72becd2c3de671c765baf84827b601d26091e8a6b8595e6d9f168f90b7cfda402d668deb6fc277e37ad')
+_distdir="Test-TCP-2.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
