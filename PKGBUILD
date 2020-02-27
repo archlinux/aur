@@ -1,5 +1,5 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Richard Neumann (schard) <mail at richard dash neumann period de>
+# Maintainer: Richard Neumann (schard) <mail at richard dash neumann period de>
+# Original PKGBUILD by: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-sfh
 pkgver=5.5.6.arch1
