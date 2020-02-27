@@ -1,5 +1,5 @@
 # Maintainer: graysky <graysky AT archlinux DOT us>
-# Contributorr: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
 pkgrel=1
@@ -7,7 +7,7 @@ _srcname=linux-5.5
 _major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=5
+_minor=6
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -33,9 +33,7 @@ source=(
 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
 0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
-0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
 0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
 0007-drm-i915-Serialise-i915_active_acquire-with-__active.patch
 0008-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
 0009-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
@@ -48,17 +46,15 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('30637520cf19e0b341aaa1c91b9bb641259590c94a2fdc876d80b7ec035070e6'
+sha256sums=('88b16b299e43da680bbadaef3e50cfde344b67f70fd5588a44574c4cd9f73c02'
             'SKIP'
-            '7ac07bc03f2d159f924d25a79df07d1a115a13f44f67455511d3c84c15ac5087'
+            '54cc88ab9d7517267d8592905b277424ae441f3d7209c7ad1236533c2be6ee35'
             'SKIP'
-            'e967ac8bd663509cc0ca6451a95a9965eb59832e316eec77484960dcedec8c1c'
+            'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
             '2be34867fcb55a5ab7ee0f25b3fbe4da1b4c55fd118053c9510a9b1e87ed0960'
             '39e2bd569c5efe83c2facddd9e0b846a6c35937b1280a9ddead5c150fa8ca10d'
             '07d60156eb70be84adc1376a3d7434811f1373282c0b5198c4cd580c8bfcaa7e'
-            '853403b019a9495c72df52cabe85653590b9a4021343c09e2438c25b96aae163'
             '8385a3771e4d747a8c6d06bb9a3dd73870fc378ded8d0d0f2b1388b89813719b'
-            '9556c74b7744ad863da61384d2b2b9e996be4652dd4d93d3fcab7f256b224f06'
             'fe4a15e4e85e0a1ab2e6e3ab790ba53eb5cf538b9a16b6e2327cb3c89f66fc75'
             'f0177eb3395c910064a9bbd7ae5849f0e6e0094227d2b01367978ca6553fc10c'
             '51d6e34f69be927600edb3fddbd0dda75773fb28818bcc35f540cf14501e1ef6'
