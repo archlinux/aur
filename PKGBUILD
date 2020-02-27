@@ -7,8 +7,13 @@ pkgdesc="a bible study software focussing on topical study based on keywords/tag
 arch=('x86_64')
 url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
-depends=('electron' 'nodejs' 'sqlite' 'curl' 'icu')
-makedepends=('npm' 'sword' 'cmake')
+depends=('biblesync'
+         'curl'
+         'electron'
+         'icu'
+         'nodejs'
+         'sqlite')
+makedepends=('cmake' 'npm' 'sword')
 conflicts=("$pkgname-git")
 source=("https://github.com/tobias-klein/$pkgname/archive/$pkgver.tar.gz"
         'ezra-project.sh'
@@ -26,8 +31,12 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-    # npm run rebuild-linux
+    npm run compile-pug
+    npm run install-node-prune
     "$(npm bin)"/electron-rebuild -f -w node-sword-interface -v "$_electron"
+    npm run prune-node-modules
+    npm run purge-build-artifacts
+    npm run cleanup-gyp-shebang
 }
 
 package() {
