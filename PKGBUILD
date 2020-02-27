@@ -1,7 +1,7 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=hyperspace-appimage
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc='The new beautiful, fluffy client for Mastodon'
 arch=('x86_64')
 url='https://hyperspace.marquiskurt.net'
@@ -19,7 +19,7 @@ source=(
     )
 noextract=("${_appimage}")
 sha256sums=(
-    'aeeae9d7a5a92f33f53aa045359a9e56da93682cdb68f8e512cc56aa325e45c8'
+    '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
     '3dee0d29eba904aaaa8e9b4b66daba48cde5f9c42c872475f8a0ae94fe2bc2b8'
     'SKIP'
     'SKIP'
