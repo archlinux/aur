@@ -4,7 +4,7 @@
 pkgname=pulumi-bin
 _pkgname=pulumi
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-language, multi-cloud development platform"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -21,4 +21,14 @@ package() {
   install -m755 "${srcdir}/${_pkgname}/${_pkgname}-language-python" "${pkgdir}/usr/bin/${_pkgname}-language-python"
   install -m755 "${srcdir}/${_pkgname}/${_pkgname}-language-python-exec" "${pkgdir}/usr/bin/${_pkgname}-language-python-exec"
   install -m755 "${srcdir}/${_pkgname}/${_pkgname}-resource-pulumi-nodejs" "${pkgdir}/usr/bin/${_pkgname}-resource-pulumi-nodejs"
+
+  # Generate Bash completion
+  mkdir -p "${pkgdir}/etc/bash_completion.d"
+  "${pkgdir}/usr/bin/${_pkgname}" gen-completion bash |\
+    install -m644 /dev/stdin "${pkgdir}/etc/bash_completion.d/${_pkgname}"
+
+  # Generate ZSH completion
+  mkdir -p "${pkgdir}/usr/local/share/zsh/site-functions"
+  "${pkgdir}/usr/bin/${_pkgname}" gen-completion zsh |\
+    install -m644 /dev/stdin "${pkgdir}/usr/local/share/zsh/site-functions/_${_pkgname}"
 }
