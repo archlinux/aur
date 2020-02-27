@@ -15,6 +15,7 @@ pkgbase = dump978-fa-git
 	depends = bladerf>=2.0.2
 	depends = soapyrtlsdr
 	depends = boost-libs
+	backup = etc/default/dump978
 	source = dump978::git+git://github.com/flightaware/dump978
 	source = dump978.default
 	source = dump978.sysusers
@@ -22,7 +23,7 @@ pkgbase = dump978-fa-git
 	sha256sums = SKIP
 	sha256sums = 95b98905c6dc330392244aee324c13900392a09088d3075b69fb08df150f6930
 	sha256sums = 722bd9ee0bb6dad3f15e0e8c0d92c6fe405e6670ee150f6d799f124417ea30d7
-	sha256sums = b6fedf9ec2e14c068f0cf45c10e2035bfee4d7fccdeb62fcd92259e66f274c52
+	sha256sums = c95d8557432900d49bfa6f366419e9df22a5629a3c1f86135c15a8c28a6d4335
 
 pkgname = dump978-fa-git
 

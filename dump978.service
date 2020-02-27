@@ -12,5 +12,4 @@ RuntimeDirectory=dump978
 ExecStart=/usr/bin/dump978-fa $USER_OPTIONS
 
 [Install]
-Alias=dump978-fa.service
 WantedBy=multi-user.target

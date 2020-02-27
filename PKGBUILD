@@ -12,6 +12,7 @@ url="https://github.com/flightaware/dump978"
 license=('BSD')
 depends=('rtl-sdr' 'bladerf>=2.0.2' 'soapyrtlsdr' 'boost-libs')
 makedepends=('git' 'boost')
+backup=('etc/default/dump978')
 source=('dump978::git+git://github.com/flightaware/dump978'
         'dump978.default'
         'dump978.sysusers'
@@ -20,7 +21,7 @@ source=('dump978::git+git://github.com/flightaware/dump978'
 sha256sums=('SKIP'
             '95b98905c6dc330392244aee324c13900392a09088d3075b69fb08df150f6930'
             '722bd9ee0bb6dad3f15e0e8c0d92c6fe405e6670ee150f6d799f124417ea30d7'
-            'b6fedf9ec2e14c068f0cf45c10e2035bfee4d7fccdeb62fcd92259e66f274c52')
+            'c95d8557432900d49bfa6f366419e9df22a5629a3c1f86135c15a8c28a6d4335')
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long --tags --match=v* | sed 's/dev.//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
