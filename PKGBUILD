@@ -8,7 +8,7 @@ _pkgver=7.0.0
 _targets="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-headers-git
-pkgver=7.0.0.20191109
+pkgver=7.0.0.20200224
 pkgrel=1
 pkgdesc="MinGW-w64 headers for Windows (git version)"
 arch=('any')
@@ -55,8 +55,6 @@ package() {
   install -Dm644 "${srcdir}/mingw-w64/COPYING.MinGW-w64/COPYING.MinGW-w64.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.MinGW-w64.txt"
   install -Dm644 "${srcdir}/mingw-w64/COPYING.MinGW-w64-runtime/COPYING.MinGW-w64-runtime.txt" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING.MinGW-w64-runtime.txt"
   install -Dm644 "${srcdir}/mingw-w64/mingw-w64-headers/ddk/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ddk-readme.txt"
-  install -Dm644 "${srcdir}/mingw-w64/mingw-w64-headers/direct-x/COPYING.LIB" "${pkgdir}/usr/share/licenses/${pkgname}/direct-x-COPYING.LIB"
-  install -Dm644 "${srcdir}/mingw-w64/mingw-w64-headers/direct-x/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/direct-x-readme.txt"
 }
 
 # vim:set ts=2 sw=2 et:
