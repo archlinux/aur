@@ -2,11 +2,11 @@
 
 _plug=pvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.0.6.r30.2948854
+pkgver=v2.0.6.r42.a0036b3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
-url='https://forum.doom9.org/showthread.php?t=171956'
+url='https://forum.doom9.org/showthread.php?t=180426'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'python-pymediainfo'

@@ -1,8 +1,8 @@
 pkgbase = vapoursynth-plugin-pvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: pvsfunc (GIT version)
-	pkgver = v2.0.6.r30.2948854
+	pkgver = v2.0.6.r42.a0036b3
 	pkgrel = 1
-	url = https://forum.doom9.org/showthread.php?t=171956
+	url = https://forum.doom9.org/showthread.php?t=180426
 	arch = any
 	license = GPL
 	makedepends = git
