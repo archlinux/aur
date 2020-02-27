@@ -1,7 +1,7 @@
 pkgbase = java-openjdk-bin
 	pkgdesc = Java OpenJDK 14 Oracle Build.
 	pkgver = 14b36
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jdk.java.net/14
 	arch = x86_64
 	license = GPL2

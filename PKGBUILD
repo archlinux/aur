@@ -1,9 +1,10 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: M A <morealaz at gmail dot com>
+
 pkgname=java-openjdk-bin
 _majorver=14
 _buildver=36
 pkgver=${_majorver}b${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJDK ${_majorver} Oracle Build."
 arch=('x86_64')
 url="http://jdk.java.net/${_majorver}"
