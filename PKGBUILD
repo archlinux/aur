@@ -2,7 +2,7 @@
 
 pkgname=osmo-fl2k-git
 _pkgname=${pkgname%-git}
-pkgver=0.1.1.r11.0fb8849
+pkgver=0.1.1.r22.f05c961
 pkgrel=1
 pkgdesc='Library to use cheap (FL2000 based) USB3.0 to VGA converters as SDR'
 arch=('x86_64')
@@ -37,7 +37,5 @@ package() {
   cd $_pkgname/build
 
   make DESTDIR="$pkgdir" install
-
-  mv "$pkgdir"/usr/lib64 "$pkgdir"/usr/lib
 }
 
