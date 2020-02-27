@@ -2,16 +2,16 @@
 pkgname=gruvbox-material-git
 pkgdesc="gruvbox-material theme for vim"
 pkgrel=1
-pkgver=v1.0.1.r4.gd680676
+pkgver=v1.0.1.r23.g3287311
 arch=('any')
-url="https://github.com/gruvbox-material/vim"
+url="https://github.com/sainnhe/gruvbox-material"
 license=('MIT')
 md5sums=('SKIP')
 makedepends=('git')
 depends=('vim')
 optdepends=('vim-airline-git' 'vim-lightline-git')
-_pkgname=vim
-source=("git+https://github.com/gruvbox-material/vim.git")
+_pkgname=gruvbox-material
+source=("git+https://github.com/sainnhe/gruvbox-material.git")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
