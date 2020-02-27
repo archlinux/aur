@@ -1,7 +1,7 @@
 pkgbase = intel-power-gadget
 	pkgdesc = Intel Power Gadget Linux Version
 	pkgver = 2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://software.intel.com/en-us/articles/intel-power-gadget-20
 	arch = x86_64
 	arch = x86
