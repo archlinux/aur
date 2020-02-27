@@ -1,16 +1,14 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-# https://wiki.archlinux.org/index.php/Electron_package_guidelines
-
 pkgname=ezra-project
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
 url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
-depends=('electron' 'nodejs')
-makedepends=('npm' 'sword')
+depends=('electron' 'nodejs' 'sqlite' 'curl' 'icu')
+makedepends=('npm' 'sword' 'cmake')
 conflicts=("$pkgname-git")
 source=("https://github.com/tobias-klein/$pkgname/archive/$pkgver.tar.gz"
         'ezra-project.sh'
