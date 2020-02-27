@@ -1,7 +1,7 @@
 pkgbase = ttf-twemoji
 	pkgdesc = Twitter Emoji for everyone.
 	pkgver = 12.1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/twitter/twemoji
 	install = ttf-twemoji.install
 	arch = any

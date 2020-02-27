@@ -1,7 +1,8 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: M A <morealaz at gmail dot com>
+
 pkgname=ttf-twemoji
 pkgver=12.1.5
-pkgrel=2
+pkgrel=3
 _fedrel=3.fc32
 pkgdesc="Twitter Emoji for everyone."
 url="https://github.com/twitter/twemoji"
