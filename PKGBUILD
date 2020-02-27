@@ -1,10 +1,11 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: M A <morealaz at gmail dot com>
 # Contributer: Jamie Magee <jamie dot magee at gmail dot com>
+
 pkgname=java-openjfx-ea-bin
 _majorver=15
 _buildver=1
 pkgver=${_majorver}rc${_buildver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
 arch=('x86_64')
 url='https://openjfx.io/'
