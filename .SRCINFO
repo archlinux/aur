@@ -1,0 +1,15 @@
+pkgbase = perl-storable
+	pkgdesc = Storable - persistence for Perl data structures
+	pkgver = 3.14
+	pkgrel = 1
+	url = https://metacpan.org/pod/Storable
+	arch = any
+	license = PerlArtistic
+	license = GPL2
+	depends = perl
+	options = !emptydirs
+	source = https://github.com/rurban/Storable/archive/3.14_04.tar.gz
+	md5sums = SKIP
+
+pkgname = perl-storable
+
