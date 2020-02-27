@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb
 pkgname=gtirb-git
-pkgver=v0.1.1.r344.gde2e2e0
+pkgver=v0.2.0.r734.gf57e6cb9
 pkgrel=1
 pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
@@ -25,11 +25,8 @@ pkgver() {
 
 build() {
     cd "$_srcname/"
-    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr
-    make -Cbuild
-    # Build Docs
-    cmake doc/doxy/ -Bbuild-doc
-    cmake --build build-doc --target doc
+    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++
+    cmake --build build --target all doc
 }
 
 package() {
