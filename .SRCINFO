@@ -1,6 +1,6 @@
 pkgbase = pipewire-git
 	pkgdesc = Multimedia processing graphs. (GIT version)
-	pkgver = 0.2.7.1782.gc63f0ed5
+	pkgver = 0.3.0.42.gb7dbf4bb
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pipewire-git
 	depends = sbc
 	depends = vulkan-icd-loader
 	depends = bluez-libs
-	depends = jack
+	depends = jack2
 	provides = pipewire
 	conflicts = pipewire
 	backup = etc/pipewire/pipewire.conf

@@ -1,5 +1,5 @@
 pkgname=pipewire-git
-pkgver=0.2.7.1782.gc63f0ed5
+pkgver=0.3.0.42.gb7dbf4bb
 pkgrel=1
 pkgdesc="Multimedia processing graphs. (GIT version)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('ffmpeg'
          'sbc'
          'vulkan-icd-loader'
          'bluez-libs'
-         'jack'
+         'jack2'
          )
 makedepends=('graphviz'
              'doxygen'
@@ -34,7 +34,6 @@ prepare() {
   mkdir -p build
 
   cd pipewire
-
 
   # Reduce docs size
   printf '%s\n' >> doc/Doxyfile.in \
