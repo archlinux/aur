@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.2.1.r372.ed5da9c
+pkgver=0.2.1.r380.1c5c7b1
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -14,11 +14,12 @@ optdepends=('adplug: for OPL formats support'
             'alsa-lib: for ALSA output'
             'flac: for FLAC audio support'
             'libmad: for MPEG audio support'
-            'libsidplay: for SID music support'
             'libvorbis: for Vorbis audio support'
             'sdl: for SDL user interface support'
             'sdl2: for SDL2 user interface support')
-makedepends=('git')
+makedepends=('git'
+             'libsidplayfp'
+             'xa')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
 install=$pkgname.install
@@ -35,9 +36,6 @@ build() {
     cd "${srcdir}/${_name}"
     git submodule init
     git submodule update
-
-    # Adding support for new version of GCC
-    sed -i.orig 's/\*|4\.\*|5\.\*|6\.\*|7\*/&|8*|9*/' configure
 
     # If both SDL and SDL2 are installed, then disable SDL.
     # Otherwise there are functions with similar names and linking fails.

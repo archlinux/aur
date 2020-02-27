@@ -1,6 +1,6 @@
 pkgbase = ocp-git
 	pkgdesc = Open Cubic Player (GIT Version)
-	pkgver = 0.2.1.r372.ed5da9c
+	pkgver = 0.2.1.r380.1c5c7b1
 	pkgrel = 1
 	url = http://stian.cubic.org/project-ocp.php
 	install = ocp-git.install
@@ -8,6 +8,8 @@ pkgbase = ocp-git
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = libsidplayfp
+	makedepends = xa
 	depends = hicolor-icon-theme
 	depends = libxpm
 	depends = libxxf86vm
@@ -15,11 +17,10 @@ pkgbase = ocp-git
 	optdepends = alsa-lib: for ALSA output
 	optdepends = flac: for FLAC audio support
 	optdepends = libmad: for MPEG audio support
-	optdepends = libsidplay: for SID music support
 	optdepends = libvorbis: for Vorbis audio support
 	optdepends = sdl: for SDL user interface support
 	optdepends = sdl2: for SDL2 user interface support
-	provides = ocp=0.2.1.r372.ed5da9c
+	provides = ocp=0.2.1.r380.1c5c7b1
 	conflicts = ocp
 	source = ocp::git://github.com/mywave82/opencubicplayer.git
 	md5sums = SKIP
