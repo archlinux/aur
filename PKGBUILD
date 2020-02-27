@@ -3,7 +3,7 @@
 # Contributor: Jesus Alvarez <jeezusjr at gmail dot com>
 
 pkgname="zfs-utils-head-git"
-pkgver=0.8.0.r270.gd66620681
+pkgver=0.8.0.r645.g3d5ba1cf2
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 makedepends=("python" "python-setuptools" "python-cffi" "git")
@@ -24,7 +24,7 @@ provides=("zfs-utils-git" "zfs-utils" "spl-utils")
 install=zfs-utils.install
 conflicts=("zfs-utils-git" "zfs-utils" "spl-utils")
 replaces=("spl-utils-common-git" "zfs-utils-common-git")
-backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs' 'etc/modules-load.d/zfs.conf')
+backup=('etc/zfs/zed.d/zed.rc' 'etc/default/zfs' 'etc/modules-load.d/zfs.conf' 'etc/sudoers.d/zfs')
 
 pkgver() {
   cd "${srcdir}/zfs"
@@ -56,6 +56,7 @@ package() {
     printf "%s\n" "zfs" > "${pkgdir}/etc/modules-load.d/zfs.conf"
     # fix permissions
     chmod 750 ${pkgdir}/etc/sudoers.d
+    chmod 440 ${pkgdir}/etc/sudoers.d/zfs
     # Install the support files
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
