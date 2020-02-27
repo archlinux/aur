@@ -1,11 +1,11 @@
 pkgbase = hipcpu-git
 	pkgdesc = Implementation of AMD HIP for CPUs
-	pkgver = r18.d5b28e3
+	pkgver = latest
 	pkgrel = 1
 	url = http://github.com/illuhad/hipCPU
 	arch = i686
 	arch = x86_64
-	license = BSD 2-Clause
+	license = BSD
 	makedepends = git
 	makedepends = cmake
 	depends = openmp
