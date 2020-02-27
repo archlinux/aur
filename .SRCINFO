@@ -7,7 +7,6 @@ pkgbase = hip
 	makedepends = hcc>=2.5.0
 	makedepends = git
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = python2
 	source = https://github.com/ROCm-Developer-Tools/HIP/archive/roc-2.5.0.tar.gz
 	sha256sums = 604aaa200ea72e7d02ec0371ea4a7e29ca31d6a49a9075c6c6cf0aa8ef04c2bd
