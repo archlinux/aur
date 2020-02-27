@@ -1,4 +1,4 @@
-pkgbase = firefox-extension-amazon_container
+pkgbase = firefox-extension-amazon-container
 	pkgdesc = Browser plugin to containerize Amazon and its affiliates.
 	pkgver = 2.0.0
 	pkgrel = 1
@@ -7,9 +7,9 @@ pkgbase = firefox-extension-amazon_container
 	license = MPL
 	depends = firefox>=52
 	optdepends = firefox-extension-multi-account-containers
-	noextract = ${_plugin_name}-${pkgver}${_plugin_ext}.xpi
+	noextract = amazon_container-${pkgver}${_plugin_ext}.xpi
 	source = https://addons.mozilla.org/firefox/downloads/file/3455930/amazon_container-2.0.0-fx.xpi
 	sha256sums = 0e61c08586f51852824962f9ca2f4d8fc9e4286f3e2a44111aede9644234b1c0
 
-pkgname = firefox-extension-amazon_container
+pkgname = firefox-extension-amazon-container
 
