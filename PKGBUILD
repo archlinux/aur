@@ -5,10 +5,12 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=lando-git
-pkgver=3.0.0.rc.20.r17.g30f59404
+pkgver=3.0.0.rc.23.r262.gd078ddc4
 
 # Transform git tag into target version string
 _target_version=${pkgver: 0:-10}
+_target_version=${_target_version%%[[:digit:]]}
+_target_version=${_target_version%%[[:digit:]]}
 _target_version=${_target_version%%[[:digit:]]}
 _target_version=${_target_version%%[[:digit:]]}
 _target_version=${_target_version%%.r}
