@@ -10,6 +10,8 @@ pkgbase = bubblejail-git
 	depends = python
 	depends = python-xdg
 	depends = bubblewrap
+	depends = python-toml
+	depends = xdg-dbus-proxy
 	source = bubblejail-git::git+https://github.com/igo95862/bubblejail
 	md5sums = SKIP
 
