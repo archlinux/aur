@@ -1,0 +1,15 @@
+pkgbase = lazystream-git
+	pkgdesc = Easily get LazyMan stream links, output directly or to m3u / xmltv formats. Streams can also be recorded or casted.
+	pkgver = 1.9.4.20200226
+	pkgrel = 1
+	url = https://github.com/tarkah/lazystream
+	arch = any
+	license = GPL2
+	depends = rust
+	depends = streamlink
+	optdepends = vlc
+	source = git+https://github.com/tarkah/lazystream.git
+	md5sums = SKIP
+
+pkgname = lazystream-git
+

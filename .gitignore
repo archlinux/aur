@@ -1,0 +1,4 @@
+pkg/
+src/
+lazystream
+*pkg.tar.xz
