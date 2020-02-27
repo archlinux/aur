@@ -4,11 +4,11 @@ pkgname=hip
 pkgver=2.5.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
+arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
-arch=(x86_64)
-makedepends=("hcc>=2.5.0" git cmake ninja python2)
+makedepends=('hcc>=2.5.0' 'git' 'cmake' 'python2')
 source=("https://github.com/ROCm-Developer-Tools/HIP/archive/roc-$pkgver.tar.gz")
-sha256sums=("604aaa200ea72e7d02ec0371ea4a7e29ca31d6a49a9075c6c6cf0aa8ef04c2bd")
+sha256sums=('604aaa200ea72e7d02ec0371ea4a7e29ca31d6a49a9075c6c6cf0aa8ef04c2bd')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -22,19 +22,17 @@ build() {
 
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm/hip" \
-        -G Ninja \
         "$srcdir/HIP-roc-$pkgver"
-
-  ninja
+  make
 }
 
 package() {
-  ninja -C "$srcdir/build" install
+  make -C "$srcdir/build" install
 
-  mkdir -p $pkgdir/etc/ld.so.conf.d
-  cat <<-EOF > $pkgdir/etc/ld.so.conf.d/hip.conf
-    /opt/rocm/hip/lib/
-		EOF
+  install -d "$pkgdir/etc/ld.so.conf.d"
+  cat << EOF > "$pkgdir/etc/ld.so.conf.d/hip.conf"
+/opt/rocm/hip/lib
+EOF
 
   # Remove one source of references to $srcdir
   sed -i "s+$pkgdir/opt+/opt+g" \
@@ -42,7 +40,7 @@ package() {
     "$pkgdir/opt/rocm/hip/lib/cmake/hip/hip-targets.cmake"
 
   # Nobody wants your source code, AMD..
-  rm -r "${pkgdir}/opt/rocm/hip/src"
+  rm -rf "$pkgdir/opt/rocm/hip/src"
 
   # Jakub: these two things below don't seem useful anymore, rest of the ecosystem
   #        looks in /opt/rocm for CMake finders, libraries etc.
