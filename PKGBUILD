@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=bottom-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=0
 pkgdesc='Yet another cross-platform graphical process/system monitor.'
 provides=('bottom')
