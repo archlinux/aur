@@ -1,7 +1,7 @@
 pkgbase = cecilia-git
 	pkgdesc = Audio signal processing environment aimed at sound designers - git version
 	pkgver = 5.4.0.r2.gf8d35ad
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ajaxsoundstudio.com/software/cecilia
 	arch = any
 	license = GPL3
@@ -13,10 +13,6 @@ pkgbase = cecilia-git
 	provides = cecilia
 	conflicts = cecilia
 	source = cecilia-git::git+https://github.com/belangeo/cecilia5
-	source = cecilia.sh
-	source = cecilia.desktop
 	sha256sums = SKIP
-	sha256sums = 0a17c0f9d4eb7195faaa99975628b610c821185f3ad712894029e5a135a54d4b
-	sha256sums = eea84108fe4117b0ac6841f3f22247c270373a0d825fedcf56e6626a734d1a8d
 
 pkgname = cecilia-git
