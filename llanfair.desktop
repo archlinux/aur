@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Llanfair
+Comment=Java speedrun/split timer
+Exec=llanfair
+Icon=llanfair
+Terminal=false
+StartupNotify=false
+Categories=Utility;

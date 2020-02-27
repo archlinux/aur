@@ -1,38 +1,23 @@
-# Mantainer: MCMic <come@chilliet.eu>
-
+# Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
+# Contributor: MCMic <come@chilliet.eu>
 pkgname=llanfair
-pkgver=1.4.3
+pkgver=1.5.4
 pkgrel=1
-pkgdesc="Split software for speedrunners"
-arch=('any')
-url="http://jenmaarai.com/llanfair/"
-license=('custom')
-depends=('java-runtime')
-makedepends=('gendesk')
-source=("http://share.jenmaarai.com/llanfair/llanfair_${pkgver}_any.zip")
-md5sums=('5aa80ac43a038b338403105e911a0546')
-_name='Llanfair'
-_categories='Utility'
-
-prepare() {
-  gendesk -n -f ../PKGBUILD
-}
-
-build() {
-  cd ${srcdir}/
-  unzip -o Llanfair.jar res/Llanfair.png
-}
+pkgdesc='Java speedrun/split timer (Gered’s fork)'
+arch=(any)
+url='https://github.com/gered/Llanfair'
+license=(CCPL:by-nc-sa)
+depends=('java-runtime>=7' 'sh' 'hicolor-icon-theme')
+source=("$url/releases/download/$pkgver/llanfair-$pkgver.jar"
+        "$pkgname.desktop"
+        run.sh)
+sha256sums=('03237ca9847750843946861a65aea0ef1965d64715b08000ae1c9ce09ce5b00c'
+            '39acff31a4eab5021465f00186d3be9fd2a1b0a5c8dfca3813ea90cd75f4826f'
+            '346f23f2a590a210f9e4c74643bfd65b02a024e9fd4e01feac362e0ffb35bb46')
 
 package() {
-  cd ${srcdir}/
-  mkdir -p ${pkgdir}/usr/share/java/${pkgname}
-  mkdir -p ${pkgdir}/usr/bin/
-  mkdir -p ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
-
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  cp res/Llanfair.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/${pkgname}.png
-  cp -a lib Llanfair.jar ${pkgdir}/usr/share/java/${pkgname}/
-  
-  echo -e "#!/bin/sh\nmkdir -p ~/.config/llanfair\ncd ~/.config/llanfair\nexec /usr/bin/java -jar '/usr/share/java/${pkgname}/Llanfair.jar' \$@" > ${pkgdir}/usr/bin/${pkgname}
-  chmod +x ${pkgdir}/usr/bin/${pkgname}
+	install -Dm644 "llanfair-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/llanfair.jar"
+	install -Dm755 run.sh "$pkgdir/usr/bin/llanfair"
+	install -Dm644 img/Llanfair.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/llanfair.png"
+	install -Dm644 -t "$pkgdir/usr/share/applications" "$pkgname.desktop"
 }
