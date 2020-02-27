@@ -1,0 +1,15 @@
+pkgbase = qlogger-git
+	pkgdesc = Thread-safe logger for Qt applications
+	pkgver = r22.c3fe836
+	pkgrel = 1
+	url = https://github.com/francescmm/QLogger
+	arch = x86_64
+	license = LGPL
+	depends = qt5-base
+	provides = qlogger
+	conflicts = qlogger
+	source = qlogger-git::git+https://github.com/francescmm/QLogger.git#branch=master
+	sha256sums = SKIP
+
+pkgname = qlogger-git
+
