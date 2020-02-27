@@ -1,7 +1,7 @@
 pkgbase = kuyen-icon-theme-git
 	pkgdesc = A colourful flat theme designed for Plasma desktop
-	pkgver = r7.6ae6611
-	pkgrel = 2
+	pkgver = r5.d01af6f
+	pkgrel = 1
 	url = https://www.opencode.net/fabianalexis/kuyen-icons
 	arch = any
 	license = CC BY-NC-SA 3.0
