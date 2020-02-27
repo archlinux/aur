@@ -1,0 +1,27 @@
+pkgbase = electron-ssr-preview
+	pkgdesc = Shadowsocksr client using electron (Preview).
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/shadowsocksrr/electron-ssr
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = yarn
+	makedepends = hicolor-icon-theme
+	depends = electron
+	optdepends = libsodium: sodium crypto support
+	provides = electron-ssr
+	conflicts = electron-ssr-git
+	conflicts = electron-ssr
+	options = !strip
+	source = electron-ssr-preview-0.3.0.tar.gz::https://github.com/shadowsocksrr/electron-ssr/archive/v0.3.0-preview.tar.gz
+	source = https://raw.githubusercontent.com/shadowsocksrr/electron-ssr/master/LICENSE
+	source = electron-ssr.desktop
+	source = electron-ssr.sh
+	sha256sums = 97a4995f6c5934c750f1ff2759beafefb501fdac79ffd5ecd342586280993ae8
+	sha256sums = 87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735
+	sha256sums = f96b27d2f826bf4e1c96f0154516c1e2cf07536f745128a9c2e5ec113cea6446
+	sha256sums = ae121e8a6995358b7e23881102e22b011a520f859b62675c129b5f99800bea0e
+
+pkgname = electron-ssr-preview
+
