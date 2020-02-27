@@ -3,7 +3,7 @@
 # Contributor: Jamie <dyscoria@googlemail.com>
 
 pkgname=nethack-x11
-pkgver=3.6.4
+pkgver=3.6.5
 pkgrel=1
 pkgdesc='Single-player roguelike dungeon exploration game (X11 version)'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ backup=('etc/nethackrc'
 source=("https://nethack.org/download/${pkgver}/nethack-${pkgver//./}-src.tgz"
         'nethack-x11.patch'
         'nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458')
-sha256sums=('0531ab8466032611d61f702cb71fb3ceca78a7a4918885c1b4f2f17cb57dbd59'
+sha256sums=('bb6aef2b7a4cf9463c5c4b506b80645379125c0f8de57ad7acd639872fd22e76'
             '685d68cbbd2c9854b52d71e53ca2c73c95adef43b79e7d36b6c244dc86f796e5'
             'e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295')
 

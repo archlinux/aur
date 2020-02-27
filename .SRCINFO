@@ -1,6 +1,6 @@
 pkgbase = nethack-x11
 	pkgdesc = Single-player roguelike dungeon exploration game (X11 version)
-	pkgver = 3.6.4
+	pkgver = 3.6.5
 	pkgrel = 1
 	url = http://nethack.org/
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = nethack-x11
 	backup = var/games/nethack/perm
 	backup = var/games/nethack/record
 	backup = usr/games/nethack/sysconf
-	source = https://nethack.org/download/3.6.4/nethack-364-src.tgz
+	source = https://nethack.org/download/3.6.5/nethack-365-src.tgz
 	source = nethack-x11.patch
 	source = nethack-x11.png::http://bugs.gentoo.org/attachment.cgi?id=86458
-	sha256sums = 0531ab8466032611d61f702cb71fb3ceca78a7a4918885c1b4f2f17cb57dbd59
+	sha256sums = bb6aef2b7a4cf9463c5c4b506b80645379125c0f8de57ad7acd639872fd22e76
 	sha256sums = 685d68cbbd2c9854b52d71e53ca2c73c95adef43b79e7d36b6c244dc86f796e5
 	sha256sums = e1e0b059c617af04ee88bed4b03b73c02f022663e001c5485fe9900ca2d76295
 
