@@ -1,0 +1,8 @@
+*
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./asterisk.install
+!./asterisk.logrotated
+!./asterisk.sysusers
+!./asterisk.tmpfile
