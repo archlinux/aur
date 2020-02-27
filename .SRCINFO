@@ -1,13 +1,11 @@
 pkgbase = otf-genome-git
 	pkgdesc = Thin sans-serif display font by Alfredo Marco Pradil
 	pkgver = r4.e991e65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcologous/genome
 	arch = any
 	license = OFL
 	makedepends = git
-	depends = fontconfig
-	depends = xorg-font-utils
 	provides = otf-genome
 	conflicts = otf-genome
 	source = git+https://github.com/marcologous/genome
