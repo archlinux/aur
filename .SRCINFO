@@ -1,0 +1,47 @@
+pkgbase = linux-aarch64-rc-32bits
+	pkgver = 5.6.rc3
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = aarch64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = uboot-tools
+	makedepends = vboot-utils
+	makedepends = dtc
+	options = !strip
+	source = https://git.kernel.org/torvalds/t/linux-5.6-rc3.tar.gz
+	source = 0001-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch
+	source = 0002-arm64-dts-rockchip-disable-pwm0-on-rk3399-firefly.patch
+	source = 0003-arm64-dts-rockchip-add-usb3-controller-node-for-RK33.patch
+	source = 0004-arm64-dts-rockchip-enable-usb3-nodes-on-rk3328-rock6.patch
+	source = config
+	source = kernel.its
+	source = kernel.keyblock
+	source = kernel_data_key.vbprivk
+	source = linux.preset
+	source = 60-linux.hook
+	source = 90-linux.hook
+	md5sums = 475eb9dbb2b41677e0eccd43305d9367
+	md5sums = 8f50ae936659ff174e292e1164d279c1
+	md5sums = e85e2b7aa3bc42d7dd6b36c325d29e3f
+	md5sums = 2c36fb143c27ed46f498c4d4633ea0c6
+	md5sums = 2e3fe5b9053d6a2c5327113836409d13
+	md5sums = 046e61050a758f63d3482c875b63036d
+	md5sums = 7f1a96e24f5150f790df94398e9525a3
+	md5sums = 61c5ff73c136ed07a7aadbf58db3d96a
+	md5sums = 584777ae88bce2c5659960151b64c7d8
+	md5sums = 41cb5fef62715ead2dd109dbea8413d6
+	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
+	md5sums = 3dc88030a8f2f5a5f97266d99b149f77
+
+pkgname = linux-aarch64-rc-32bits
+
+pkgname = linux-aarch64-rc-32bits-headers
+
+pkgname = linux-aarch64-rc-32bits-chromebook
+
