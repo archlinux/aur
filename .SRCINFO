@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-proxy-switcher-git
 	pkgdesc = Extension for GNOME shell to switch between the system proxy settings.
 	pkgver = 1.2.r6.g549d1aa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomflannaghan/proxy-switcher
 	install = gnome-shell-extension.install
 	arch = any
