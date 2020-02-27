@@ -96,7 +96,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
 #!/bin/sh
-NODE_ENV=production electron6 /usr/lib/$_pkgname/app.asar "\$@"
+NODE_ENV=production exec electron6 '/usr/lib/$_pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
