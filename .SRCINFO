@@ -1,6 +1,6 @@
 pkgbase = lando-git
 	pkgdesc = A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology
-	pkgver = 3.0.0.rc.20.r17.g30f59404
+	pkgver = 3.0.0.rc.23.r262.gd078ddc4
 	pkgrel = 1
 	url = https://docs.devwithlando.io
 	arch = x86_64
