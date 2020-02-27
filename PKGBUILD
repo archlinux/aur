@@ -1,11 +1,11 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=ai-dungeon-cli-git
-pkgver=r13.1bd650d
+pkgver=r46.f253c37
 pkgrel=1
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
-url="https://github.com/idangur/ai-dungeon-cli"
+url="https://github.com/Eigenbahn/ai-dungeon-cli"
 license=('MIT')
 groups=()
 depends=("python-requests" "python-yaml")
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+$url.git#branch=create-user-if-not-configured")
+source=("$pkgname::git+$url.git")
 noextract=()
 sha256sums=("SKIP")
 
