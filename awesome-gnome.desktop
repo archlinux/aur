@@ -2,5 +2,5 @@
 Name=Awesome GNOME
 Comment=Dynamic window manager
 TryExec=awesome
-Exec=gnome-session --session=awesome
+Exec=gnome-session --builtin --session=awesome
 Type=Application
