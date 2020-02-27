@@ -1,15 +1,29 @@
 pkgbase = gotop-bin
 	pkgdesc = A terminal based graphical activity monitor inspired by gtop and vtop
-	pkgver = 3.0.0
-	pkgrel = 2
-	url = https://github.com/cjbassi/gotop
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://github.com/xxxserxxx/gotop
 	arch = x86_64
 	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = AGPL3
 	provides = gotop
 	conflicts = gotop
-	source = https://github.com/cjbassi/gotop/releases/download/3.0.0/gotop_3.0.0_linux_amd64.tgz
-	sha256sums = 7fd4c34398a63dcf3189db91ba2dbe9c1d8b96a0a04814ef56b8e764b145e608
+	source_x86_64 = https://github.com/xxxserxxx/gotop/releases/download/v3.3.2/gotop_3.3.2_linux_amd64.tgz
+	sha256sums_x86_64 = 768766ed3a366f48412498314bbe1b341629dde09de18121f787b52d5f52775b
+	source_i686 = https://github.com/xxxserxxx/gotop/releases/download/v3.3.2/gotop_3.3.2_linux_386.tgz
+	sha256sums_i686 = 51cd6fd3dc68c64881e6484d7019044ac743e9d24a6c604934a4e1bff5814c2a
+	source_arm = https://github.com/xxxserxxx/gotop/releases/download/v3.3.2/gotop_3.3.2_linux_arm_v5.tgz
+	sha256sums_arm = 7bbeef4ade43366f9295e95f84856533a878c198353369ad9ab2bfd0ec172969
+	source_armv6h = https://github.com/xxxserxxx/gotop/releases/download/v3.3.2/gotop_3.3.2_linux_arm_v6.tgz
+	sha256sums_armv6h = 5aa81644698143e073efabf5c4e5b7127593f6f31007864d1a6bbee3a50e6310
+	source_armv7h = https://github.com/xxxserxxx/gotop/releases/download/v3.3.2/gotop_3.3.2_linux_arm_v7.tgz
+	sha256sums_armv7h = 0cf5ff900043157a0f9f0bcd781a6a2a34c2574903ab2fa9bd0b46f7b5387f8f
+	source_aarch64 = https://github.com/xxxserxxx/gotop/releases/download/v3.3.2/gotop_3.3.2_linux_arm64.tgz
+	sha256sums_aarch64 = c35dda56d49ea785b596952d1ea9f1102366c97d05fbb1cf2087709f27a25839
 
 pkgname = gotop-bin
 
