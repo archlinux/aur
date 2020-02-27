@@ -1,7 +1,7 @@
 # Maintainer: Thibaut Sautereau (thithib) <thibaut.sautereau@clip-os.org>
 
 pkgname=swtpm
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface"
 arch=('x86_64')
@@ -10,21 +10,17 @@ license=('BSD')
 depends=('glib2' 'fuse2' 'libtpms' 'gnutls' 'net-tools' 'tpm-tools' 'expect')
 makedepends=('socat' 'python')
 source=("https://codeload.github.com/stefanberger/swtpm/tar.gz/v${pkgver}"
-        'tmpfiles.conf'
-        'https://github.com/stefanberger/swtpm/commit/39673a0139b0ee14a0109aba50a0635592c672c4.patch')
-sha256sums=('977477e341f8b5db0820c8d3cc9946652ef8d7a93403c4dcf88667f9a84ae999'
-            'eb408adb3e40df1cbea7898426fd89c9a2774a970fd3e18a052a530f49c32336'
-            '3ed1166141e4841e011d00d2c84bf4b691eba79321d399fb5ab3a17d9a324d8e')
+        'tmpfiles.conf')
+sha256sums=('d5c52fbc49ddcc0b75c0f672bd6d32d4fb88d7329167274419f17163141d18fe'
+            'eb408adb3e40df1cbea7898426fd89c9a2774a970fd3e18a052a530f49c32336')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  # See https://github.com/stefanberger/swtpm/issues/166
-  patch --strip=1 --input="$srcdir/39673a0139b0ee14a0109aba50a0635592c672c4.patch"
+  autoreconf --verbose --force --install
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
-  ./autogen.sh
   # The 'tss' user and group are already created by trousers, on which we
   # indirectly depend via tpm-tools
   ./configure \

@@ -1,6 +1,6 @@
 pkgbase = swtpm
 	pkgdesc = Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/stefanberger/swtpm
 	arch = x86_64
@@ -14,12 +14,10 @@ pkgbase = swtpm
 	depends = net-tools
 	depends = tpm-tools
 	depends = expect
-	source = https://codeload.github.com/stefanberger/swtpm/tar.gz/v0.2.0
+	source = https://codeload.github.com/stefanberger/swtpm/tar.gz/v0.3.0
 	source = tmpfiles.conf
-	source = https://github.com/stefanberger/swtpm/commit/39673a0139b0ee14a0109aba50a0635592c672c4.patch
-	sha256sums = 977477e341f8b5db0820c8d3cc9946652ef8d7a93403c4dcf88667f9a84ae999
+	sha256sums = d5c52fbc49ddcc0b75c0f672bd6d32d4fb88d7329167274419f17163141d18fe
 	sha256sums = eb408adb3e40df1cbea7898426fd89c9a2774a970fd3e18a052a530f49c32336
-	sha256sums = 3ed1166141e4841e011d00d2c84bf4b691eba79321d399fb5ab3a17d9a324d8e
 
 pkgname = swtpm
 
