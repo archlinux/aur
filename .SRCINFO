@@ -1,6 +1,6 @@
 pkgbase = bubblejail-git
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = r31.79a4b25
+	pkgver = r114.b7ea75c
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = any

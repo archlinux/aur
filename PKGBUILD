@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r31.79a4b25
+pkgver=r114.b7ea75c
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -14,6 +14,11 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+check () {
+	cd "$srcdir/$pkgname"
+	python setup.py test
 }
 
 build () {
