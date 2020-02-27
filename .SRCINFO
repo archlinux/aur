@@ -6,6 +6,7 @@ pkgbase = ai-dungeon-cli-git
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python-requests
 	depends = python-yaml
 	provides = ai-dungeon-cli
