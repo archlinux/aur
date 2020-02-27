@@ -1,0 +1,20 @@
+pkgbase = kubenav
+	pkgdesc = kubenav is the navigator for your Kubernetes clusters right in your pocket
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://kubenav.io
+	arch = x86_64
+	license = custom
+	makedepends = imagemagick
+	options = !strip
+	source = kubenav.png
+	source = kubenav.desktop
+	source = https://raw.githubusercontent.com/kubenav/kubenav/master/LICENSE
+	source = kubenav::https://github.com/kubenav/kubenav/releases/download/1.2.0/kubenav-1.2.0-linux-amd64.AppImage
+	sha256sums = 517ed89a60aff62e88728a7dde46aa379dc13298ba8d9603b22e0f7c2d7acf44
+	sha256sums = d3237a646a381281e7b34fea6098b95a1ce44c22f08659e74d18b47af645b1e3
+	sha256sums = 0bfdaf7208f7267c5ff99d52d5ee69a2edf2c3ff677a7dba80a18a230645dbbe
+	sha256sums = 736d6737bc3371198c699b6eedd31b39b2ba3f34bd932188523a91ad2e7a2e01
+
+pkgname = kubenav
+

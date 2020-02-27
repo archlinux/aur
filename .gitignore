@@ -1,0 +1,7 @@
+kubenav
+kubenav-*.pkg.tar.xz
+kubenav-*.log
+LICENSE
+PKGBUILD-namcap.log
+pkg/
+src/

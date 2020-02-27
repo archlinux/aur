@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=kubenav
+Comment=kubenav is the navigator for your Kubernetes clusters right in your pocket
+Exec=kubenav
+Icon=kubenav
+Encoding=UTF-8
+StartupWMClass=kubenav
+Terminal=false
+StartupNotify=true
+Type=Application
+Categories=Development;Application;
