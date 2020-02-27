@@ -1,7 +1,7 @@
 pkgbase = cecilia
 	pkgdesc = Audio signal processing environment aimed at sound designers
 	pkgver = 5.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ajaxsoundstudio.com/software/cecilia
 	arch = any
 	license = GPL3
@@ -9,11 +9,7 @@ pkgbase = cecilia
 	depends = python-pyo>=1.0.1
 	depends = python-numpy>=1.18
 	depends = python-wxpython>=4.0.7
-	source = cecilia-5.4.0-2.tar.gz::https://github.com/belangeo/cecilia5/archive/5.4.0.tar.gz
-	source = cecilia.sh
-	source = cecilia.desktop
+	source = cecilia-5.4.0-3.tar.gz::https://github.com/belangeo/cecilia5/archive/5.4.0.tar.gz
 	sha256sums = 00c43539da73af982b136ab5ea6809ac9bb74188b05eb40d13428d13fe2ebef0
-	sha256sums = 0a17c0f9d4eb7195faaa99975628b610c821185f3ad712894029e5a135a54d4b
-	sha256sums = eea84108fe4117b0ac6841f3f22247c270373a0d825fedcf56e6626a734d1a8d
 
 pkgname = cecilia
