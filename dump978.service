@@ -4,10 +4,12 @@ Wants=network-online.target
 After=syslog.target network-online.target
 
 [Service]
+User=dump978
+EnvironmentFile=/etc/default/dump978
 Restart=always
 RestartSec=30
 RuntimeDirectory=dump978
-ExecStart=/usr/bin/dump978
+ExecStart=/usr/bin/dump978-fa $USER_OPTIONS
 
 [Install]
 Alias=dump978-fa.service

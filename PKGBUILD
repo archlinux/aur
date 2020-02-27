@@ -13,12 +13,14 @@ license=('BSD')
 depends=('rtl-sdr' 'bladerf>=2.0.2' 'soapyrtlsdr' 'boost-libs')
 makedepends=('git' 'boost')
 source=('dump978::git+git://github.com/flightaware/dump978'
+        'dump978.default'
         'dump978.sysusers'
 	'dump978.service')
 
 sha256sums=('SKIP'
+            '95b98905c6dc330392244aee324c13900392a09088d3075b69fb08df150f6930'
             '722bd9ee0bb6dad3f15e0e8c0d92c6fe405e6670ee150f6d799f124417ea30d7'
-            '186575be1fb5c4203d85cd991cee764170570e4c804ed8376a95dc378b6af018')
+            'b6fedf9ec2e14c068f0cf45c10e2035bfee4d7fccdeb62fcd92259e66f274c52')
 pkgver() {
   cd "${srcdir}/${_gitname}"
   git describe --long --tags --match=v* | sed 's/dev.//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -33,6 +35,7 @@ package() {
   install -D -m 755 "${srcdir}/${_gitname}/dump978-fa" "${pkgdir}/usr/bin/dump978-fa"
   install -D -m 755 "${srcdir}/${_gitname}/skyaware978" "${pkgdir}/usr/bin/skyaware978"
   install -D -m 755 "${srcdir}/${_gitname}/faup978" "${pkgdir}/usr/lib/piaware/helpers/faup978"
+  install -D -m 644 dump978.default "${pkgdir}/etc/default/dump978"
   install -D -m 644 dump978.sysusers "${pkgdir}/usr/lib/sysusers.d/dump978.conf"
   install -D -m 644 dump978.service "${pkgdir}/usr/lib/systemd/system/dump978.service"
 }

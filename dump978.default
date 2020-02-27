@@ -1,0 +1,1 @@
+#USER_OPTIONS="--sdr driver=rtlsdr,serial=00000123 --sdr-auto-gain --raw-port 30978 --json-port 30979"
