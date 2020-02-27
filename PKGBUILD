@@ -28,15 +28,18 @@ prepare() {
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
+
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm/hcc" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hcc \
         -DLLVM_INSTALL_UTILS=TRUE \
         "$srcdir/hcc-roc-hcc-$pkgver"
   make
 }
 
 package() {
-  make -C "$srcdir/build" install
+  cd "$srcdir/build"
+
+  make DESTDIR="$pkgdir" install
 
   # add links
   install -d "$pkgdir/usr/bin"
