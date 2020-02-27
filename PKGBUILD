@@ -2,7 +2,7 @@
 
 pkgname=bitcoin-cash-node-qt
 pkgver=0.21.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Bitcoin Cash Node with bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-seeder and bitcoin-qt"
 arch=('i686' 'x86_64')
 url="https://bitcoincashnode.org"
@@ -20,7 +20,7 @@ sha256sums=('9b7000f0e6cea1ae32b020e8c7dcdab7c7476b8aa9c953c1de7d0f6240d57269'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '9643eed2c20d78a9c7347df64099765773615f79d3b8a95693d871c933516880'
             '35ff9331d7df8b90adfc7d82752cca4f8b7ff23a29e5d10b07e4e3fc78050679'
-            '97f00c95bb428943ef3bae5e6116633a4528bc07ecdb71a4db3f0ae3eef07778')
+            'abef8a36e4990b85b3a556f546ea8f8349bb7c9d10dbbd7ff8013ae0b931a849')
 backup=('etc/bitcoin/bitcoin.conf'
         'etc/logrotate.d/bitcoin')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-qt' 'bitcoin-seeder')
