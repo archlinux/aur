@@ -1,3 +1,4 @@
 pkg/
 src/
-qasync/
+*.tar.gz
+*.pkg*
