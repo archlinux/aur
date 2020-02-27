@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
 	makedepends = ncnn-git
 	depends = vapoursynth
 	depends = vulkan-icd-loader
+	depends = glslang
 	provides = vapoursynth-plugin-waifu2x-ncnn-vulkan
 	conflicts = vapoursynth-plugin-waifu2x-ncnn-vulkan
 	source = waifu2x-ncnn-vulkan::git+https://github.com/Nlzy/VapourSynth-waifu2x-ncnn-vulkan.git

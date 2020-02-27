@@ -10,6 +10,7 @@ url='https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan'
 license=('MIT')
 depends=('vapoursynth'
          'vulkan-icd-loader'
+         'glslang'
          )
 makedepends=('git'
              'cmake'
@@ -34,6 +35,7 @@ prepare() {
 
   # rename models path
   sed "s|models-|${_plug}-models/models-|g" -i "${_plug}/src/vsw2xnvk.cpp"
+
 }
 
 build() {
