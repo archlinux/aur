@@ -1,7 +1,7 @@
 # Maintainer: Sean Anderson <seanga2@gmail.com>
 pkgname=('ocaml-atd' 'ocaml-atdgen')
 _oname=atd
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc=""
 arch=('i686' 'x86_64')
@@ -11,21 +11,28 @@ depends=('ocaml>=3.11'
 	 'ocaml-menhir'
 	 'ocaml-easy-format'
 	 'ocaml-biniou'
-	 'ocaml-yojson')
-makedepends=('ocaml-findlib' 'jbuilder' 'opam')
+	 'ocaml-yojson'
+	 'ocaml-re')
+makedepends=('ocaml-findlib' 'dune' 'opam' 'scala')
 options=(!strip)
 source=("https://github.com/mjambon/${_oname}/archive/${pkgver}.tar.gz")
-md5sums=('063e2d3074888307379d87f157a3a5b9')
-_jbuilder="jbuilder $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
+md5sums=('2ab871bf6c6dc9fa6f8f4f02dba763a8')
+_dune="dune $(getopt "j::" $MAKEOPTS 2>/dev/null | sed 's/--/\n/g' | head -n 1)"
+
+prepare() {
+	cd $srcdir/$_oname-$pkgver
+	truncate -s 0 atds/test/run_test.sh
+	echo "#!/bin/sh" >> atds/test/run_test.sh
+}
 
 build() {
 	cd $srcdir/$_oname-$pkgver
-	$_jbuilder build 
+	$_dune build 
 }
 
 check() {
 	cd $srcdir/$_oname-$pkgver
-	$_jbuilder runtest
+	$_dune runtest
 }
 
 package_ocaml-atd() {
