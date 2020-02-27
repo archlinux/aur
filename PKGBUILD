@@ -9,11 +9,11 @@ pkgname=asterisk-g729
 pkgdesc="G.729 codec for Asterisk open source PBX"
 epoch=1
 pkgver=1.4.3.r2.${_shortrev}
-pkgrel=4
+pkgrel=5
 arch=(x86_64)
 url="http://asterisk.hosting.lv/"
 license=(IPP)
-depends=(asterisk bcg729)
+depends=('asterisk<18.0.0' 'bcg729')
 source=("${_reponame}-${pkgver}.tar.bz2"::"https://bitbucket.org/${_repouser}/${_reponame}/get/${_rev}.tar.bz2")
 sha256sums=('0951cdcc6144908ebc52f8a596c6d2ad8cb35aa7eff51bf264b97003d73d3737')
 
