@@ -9,7 +9,7 @@ pkgname=asterisk-g729
 pkgdesc="G.729 codec for Asterisk open source PBX"
 epoch=1
 pkgver=1.4.3.r2.${_shortrev}
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="http://asterisk.hosting.lv/"
 license=(IPP)
@@ -25,7 +25,7 @@ build() {
 		--prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin \
 		--with-bcg729 --with-asterisk160
 
-	make -j$(nproc)
+	make
 }
 
 package() {
