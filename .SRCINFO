@@ -1,7 +1,7 @@
 pkgbase = deepin.com.wechat2
 	pkgdesc = Deepin Wine WeChat 2.6.8.65
 	pkgver = 2.6.8.65deepin0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pc.weixin.qq.com/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = deepin.com.wechat2
 	makedepends = tar
 	depends = deepin-wine
 	optdepends = noto-fonts-cjk
+	optdepends = deepin-wine-apps-kde-fix
 	conflicts = deepin-wine-wechat
 	conflicts = deepin.com.wechat
 	noextract = deepin.com.wechat_2.6.8.65deepin0_i386.deb
