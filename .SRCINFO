@@ -1,0 +1,18 @@
+pkgbase = python-signify
+	pkgdesc = Module to generate and verify PE signatures
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/signify/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyasn1
+	depends = python-asn1crypto
+	depends = python-oscrypto
+	depends = python-certvalidator
+	source = https://files.pythonhosted.org/packages/source/s/signify/signify-0.1.5.tar.gz
+	sha256sums = f00ecff9dd166f7216ea14598ec7c97bd3676ff2e99223b424d5cf8ee86c5fb9
+
+pkgname = python-signify
+
