@@ -1,7 +1,4 @@
-From a7c04e60d28a0ad0420bb7a1943479a08a923d07 Mon Sep 17 00:00:00 2001
-Message-Id: <a7c04e60d28a0ad0420bb7a1943479a08a923d07.1552648361.git.jan.steffens@gmail.com>
-In-Reply-To: <b609203df7333beea20dbfd604262a9486f01497.1552648361.git.jan.steffens@gmail.com>
-References: <b609203df7333beea20dbfd604262a9486f01497.1552648361.git.jan.steffens@gmail.com>
+From 889a7d2febe8ef1a710af578913763ee49cba3aa Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Sun, 14 May 2017 18:09:31 +0200
 Subject: [PATCH 3/4] Enable long PCF family names
@@ -24,5 +21,5 @@ index 1d4469a99..4ff4e7821 100644
  
    /*************************************************************************/
 -- 
-2.21.0
+2.25.1
 
