@@ -59,12 +59,8 @@ prepare() {
 
   cp "${srcdir}"/mingw-config.toml config.toml
   sed -i "s|\@PREFIX\@|/${_prefix}|" config.toml
-  # use xz source
-  sed -i "s|tar.gz|tar.xz|" "src/bootstrap/bootstrap.py"
-  # fix path
-  sed -i "s|lld_install_root.join|lld_install_root.join(\"build\").join|" "src/bootstrap/compile.rs"
   # use level 0 to speed up xz packaging
-  sed -i 's|XzEncoder::new(create_new_file(tar_xz)?, 6)|XzEncoder::new(create_new_file(tar_xz)?, 0)|' "src/tools/rust-installer/src/tarballer.rs"
+  sed -i 's|.preset(6)|.preset(0)|' "src/tools/rust-installer/src/tarballer.rs"
 
   cd "${srcdir}"
   mkdir -p "${srcdir}/rustc-${pkgver}-src/build/cache/${_date}"
@@ -88,7 +84,7 @@ package() {
   export CFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   export CXXFLAGS="-O2 -pipe -fno-plt -Wall -D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
   # TODO: find a way to disable packaging
-  DESTDIR="${pkgdir}" python ./x.py install --keep-stage 0 --keep-stage 1
+  DESTDIR="${pkgdir}" python ./x.py install
 
   # license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"{rust,cargo}
