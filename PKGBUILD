@@ -23,7 +23,7 @@ build() {
   cd "$srcdir/$_pkgname/build"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
         ..
   make
 }
