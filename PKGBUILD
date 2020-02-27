@@ -3,7 +3,7 @@
 _pkgname=htmllistparse
 pkgname=python-htmllistparse
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python parser for Apache/nginx-style HTML directory listing"
 url="https://github.com/gumblex/htmllisting-parser"
 depends=('python'
