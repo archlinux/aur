@@ -29,6 +29,7 @@ prepare() {
 build() {
   cd build
   cmake ../yabause/mini18n \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
