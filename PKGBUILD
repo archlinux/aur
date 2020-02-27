@@ -1,17 +1,17 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-binary-memcached
-pkgver=0.28.0
-pkgrel=3
+pkgver=0.29.0
+pkgrel=1
 arch=('any')
 pkgdesc='A pure python module to access memcached via its binary protocol with SASL auth support'
 url='https://github.com/jaysonsantos/python-binary-memcached'
 license=('MIT')
 depends=('python-six' 'python-uhashring')
 makedepends=('python-setuptools' 'python-uhashring')
-checkdepends=('memcached' 'python-pytest-runner')
+checkdepends=('memcached' 'python-pytest' 'python-trustme')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jaysonsantos/python-binary-memcached/archive/v$pkgver.tar.gz")
-sha512sums=('8edd603c8ee67826ab7f2d064d2cad67c2a4b695e09d763cbefc988a0576f6d06730358983f77a903e64b7aec3ac511dbb3e58cfcb51030b604a2524e482d6fa')
+sha512sums=('cc0dfd1a22a6b0d6d2c39d2039173d97764d4800f940e533bb46cdfeb6a05591caa0251f8ebe2203dcd76f5bdc7cd111b37d4680b4fe0f39e7657df6e9942a80')
 
 prepare() {
   sed -i '/typing/d' python-binary-memcached-$pkgver/setup.py
@@ -24,7 +24,7 @@ build() {
 
 check() {
   cd python-binary-memcached-$pkgver
-  python setup.py pytest
+  python -m pytest
 }
 
 package() {
