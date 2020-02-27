@@ -1,14 +1,14 @@
 pkgbase = vim-colorscheme-forest-night-git
 	pkgdesc = Comfortable & Pleasant VIM Color Scheme
-	pkgver = v1.0.r0.g4e5ff87
+	pkgver = v0.1.0.r7.g5d964ff
 	pkgrel = 1
-	url = https://github.com/sainnhe/vim-color-forest-night
+	url = https://github.com/sainnhe/forest-night
 	arch = any
 	license = MIT
 	license = Anti-996
 	makedepends = git
 	depends = vim
-	source = git+https://github.com/sainnhe/vim-color-forest-night.git
+	source = git+https://github.com/sainnhe/forest-night.git
 	md5sums = SKIP
 
 pkgname = vim-colorscheme-forest-night-git
