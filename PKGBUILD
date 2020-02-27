@@ -3,7 +3,7 @@
 
 pkgname=swift-bin
 pkgver=5.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://swift.org"
@@ -20,8 +20,8 @@ source=(
   "$_urlbase/swift-lang-$_fullver.rpm"
   "$_urlbase/swift-lang-runtime-$_fullver.rpm"
 )
-sha256sums=('6f7fc4f51c20a9ad52a79615bdeeef5c5425bc199345bfa41a864b343b750f4c'
-            '8a553da367a49c799798f69eb45c94737b2570f37e379d04cac02c6f94a5d283')
+sha256sums=('858bcad3c321177effe24d5b22fa7b682f86203830d040b37d477dfee0ca0199'
+            '078fbeaf1fa2be86ad943725d44da1e1cbbc5ca72674ced307bdbb1c845c532e')
 
 package() {
   cp -Ppr "${srcdir}"/{etc,usr} "${pkgdir}"
