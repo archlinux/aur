@@ -16,7 +16,7 @@ depends=(python
          python-requests
          python-scipy
          python-networkx)
-makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme)
+makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme python-matplotlib)
 source=(https://github.com/ProjectQ-Framework/ProjectQ/archive/v$pkgver.tar.gz)
 sha512sums=('63264d69c89d327ff451786d35719d0500ecc0ca1cb0c93e3a8f6d0c17674f9f68412feccf0f4c2876f8202c0d89ebd9af290d3405361473f4e99afc14ac8b41')
 

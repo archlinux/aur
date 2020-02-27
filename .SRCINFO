@@ -9,6 +9,7 @@ pkgbase = python-projectq
 	makedepends = python-setuptools
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = python-matplotlib
 	depends = python
 	depends = python-numpy
 	depends = python-future
