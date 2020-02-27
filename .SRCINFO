@@ -1,0 +1,19 @@
+pkgbase = triton-git
+	pkgdesc = Dynamic binary analysis framework
+	pkgver = v0.7.r102.gfb3241e9
+	pkgrel = 1
+	url = https://triton.quarkslab.com/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = boost
+	depends = capstone
+	depends = z3
+	depends = python
+	provides = triton
+	conflicts = triton
+	source = triton-git::git+https://github.com/JonathanSalwan/Triton.git
+	sha256sums = SKIP
+
+pkgname = triton-git
+
