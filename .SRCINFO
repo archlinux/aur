@@ -1,0 +1,17 @@
+pkgbase = i3lock-multimonitor
+	pkgdesc = Custom image lock screen for i3lock with multimonitor support
+	pkgver = b6aca0b4079c2771df8ceb5965d02b19e5ec5fa9
+	pkgrel = 1
+	url = https://github.com/ShikherVerma/i3lock-multimonitor
+	arch = any
+	license = MIT
+	depends = coreutils
+	depends = bash
+	depends = imagemagick
+	depends = i3lock
+	provides = i3lock-multimonitor
+	source = https://github.com/ShikherVerma/i3lock-multimonitor/archive/b6aca0b4079c2771df8ceb5965d02b19e5ec5fa9.tar.gz
+	md5sums = SKIP
+
+pkgname = i3lock-multimonitor
+
