@@ -1,6 +1,6 @@
 pkgbase = wasmer
 	pkgdesc = Universal Binaries Powered by WebAssembly
-	pkgver = 0.8.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/wasmerio/wasmer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wasmer
 	makedepends = cmake
 	makedepends = python
 	makedepends = git
-	source = git+https://github.com/wasmerio/wasmer.git#tag=0.8.0
+	source = git+https://github.com/wasmerio/wasmer.git#tag=0.14.1
 	sha512sums = SKIP
 
 pkgname = wasmer
