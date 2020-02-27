@@ -1,12 +1,10 @@
 pkgbase = ttf-fenix
 	pkgdesc = Serif font designed for display and long texts
 	pkgver = 1.001
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tipotype.com/underground/fenix/
 	arch = any
 	license = OFL
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = ttf-fenix-1.001.zip::https://fonts.google.com/download?family=Fenix
 	sha256sums = 7dc101548d385cbf51a5c6103e431f3e81deb57b790ea443abc75c1b4b7c37b0
 
