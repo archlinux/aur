@@ -1,12 +1,10 @@
 pkgbase = otf-glacial-indifference
 	pkgdesc = Geometric sans-serif font in 3 cuts
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cargocollective.com/hanken/Glacial-Indifference-Open-Source-Font
 	arch = any
 	license = OFL
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = otf-glacial-indifference-1.0.zip::https://www.fontsquirrel.com/fonts/download/glacial-indifference
 	sha256sums = bdc8ec56da57a2324cd67bd942727eee048c106cfcbf9427b47e59366fbeeac4
 
