@@ -5,6 +5,7 @@ pkgbase = r8125
 	url = https://www.realtek.com/
 	arch = x86_64
 	license = GPL2
+	makedepends = linux-headers
 	source = https://github.com/ibmibmibm/r8125/archive/9.003.02.tar.gz
 	source = dkms.conf
 	sha256sums = 1531cc3d9649ea45fa324354adc22bdf75966db033da1385bc6f86fc398b7b9d
