@@ -1,7 +1,7 @@
 pkgbase = cozy-audiobooks
 	pkgdesc = A modern audio book player for Linux using GTK+ 3.
-	pkgver = 0.6.12
-	pkgrel = 1
+	pkgver = 0.6.13
+	pkgrel = 2
 	url = https://github.com/geigi/cozy
 	arch = i686
 	arch = x86_64
