@@ -1,8 +1,8 @@
 # Maintainer: Filip Matzner <filip.matzner@iterait.com>
 
 pkgname=libedgetpu-std
-pkgver=12.1
-pkgrel=4
+pkgver=13.0
+pkgrel=1
 pkgdesc='Google Coral Edge TPU library and headers (standard speed).'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='https://coral.withgoogle.com/'
@@ -12,33 +12,35 @@ depends=('gcc' 'libusb')
 makedepends=('binutils')
 provides=('libedgetpu')
 conflicts=('libedgetpu' 'libedgetpu-max')
+# The links to the files are taken from:
+# https://packages.cloud.google.com/apt/dists/coral-edgetpu-stable/main
 source_x86_64=(
-    'libedgetpu-dev_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_12-1_amd64_9d235ea1e53aee2f8ea05f68410c63234c766b8f821e5d1a91d7ed62f96ffdd2.deb'
-    'libedgetpu1-std_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_12-1_amd64_46a4f29eb4ac6f862c3d68b37c1eceec62e24c7d7c741aed81cca05cbccf9e2e.deb'
+    'libedgetpu-dev_13-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_13.0_amd64_9bcb5b54ee56c4909c0d7d8dc444df6674c81d164be94c759832c0b78f7db458.deb'
+    'libedgetpu1-std_13-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_13.0_amd64_0a3fdab7d8236d15c980940532d497aa68570a891b33d7a77c15390e1bd8a494.deb'
 )
 source_armv7h=(
-    'libedgetpu-dev_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_12-1_armhf_baddaad9895ea1efe3393b04ad5b6b9a9d3febec748b1d583450e3b29feda1b1.deb'
-    'libedgetpu1-std_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_12-1_armhf_99b783b7a9ec7879e010727c92ee92d96f2e6f16d0999099ea05e61fef23d297.deb'
+    'libedgetpu-dev_13-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_13.0_armhf_2f0b37cab8dffa19a4cda548660cfa4c23ac9f6c314178c1a2ad2cce529e26ef.deb'
+    'libedgetpu1-std_13-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_13.0_armhf_7fa1ac96091b317a173b429f2f3d9e0bf28e02f9771192546739d63903e78855.deb'
 )
 source_aarch64=(
-    'libedgetpu-dev_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_12-1_arm64_8abbe6722603e10f138d1ce5776276be1bb11eed0bc9507cee77f09919392522.deb'
-    'libedgetpu1-std_12-1.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_12-1_arm64_be5a2b324841afdacb20c0f2bb23b69d3e8e278b740e59a9b6c13046a6ab3ea6.deb'
+    'libedgetpu-dev_13-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu-dev_13.0_arm64_1c5d3c1799d1409e46496627141f52fdc3a944eb7b643e830de4d1512bbbb43e.deb'
+    'libedgetpu1-std_13-0.deb::https://packages.cloud.google.com/apt/pool/libedgetpu1-std_13.0_arm64_9d7eb2df5b03d3ab4b73ebfb5d7406ce9a5281d7470b64530a85e99df6348811.deb'
 )
 sha256sums_x86_64=(
-    '9d235ea1e53aee2f8ea05f68410c63234c766b8f821e5d1a91d7ed62f96ffdd2'
-    '46a4f29eb4ac6f862c3d68b37c1eceec62e24c7d7c741aed81cca05cbccf9e2e'
+    '9bcb5b54ee56c4909c0d7d8dc444df6674c81d164be94c759832c0b78f7db458'
+    '0a3fdab7d8236d15c980940532d497aa68570a891b33d7a77c15390e1bd8a494'
 )
 sha256sums_armv7h=(
-    'baddaad9895ea1efe3393b04ad5b6b9a9d3febec748b1d583450e3b29feda1b1'
-    '99b783b7a9ec7879e010727c92ee92d96f2e6f16d0999099ea05e61fef23d297'
+    '2f0b37cab8dffa19a4cda548660cfa4c23ac9f6c314178c1a2ad2cce529e26ef'
+    '7fa1ac96091b317a173b429f2f3d9e0bf28e02f9771192546739d63903e78855'
 )
 sha256sums_aarch64=(
-    '8abbe6722603e10f138d1ce5776276be1bb11eed0bc9507cee77f09919392522'
-    'be5a2b324841afdacb20c0f2bb23b69d3e8e278b740e59a9b6c13046a6ab3ea6'
+    '1c5d3c1799d1409e46496627141f52fdc3a944eb7b643e830de4d1512bbbb43e'
+    '9d7eb2df5b03d3ab4b73ebfb5d7406ce9a5281d7470b64530a85e99df6348811'
 )
 noextract=(
-    'libedgetpu-dev_12-1.deb'
-    'libedgetpu1-std_12-1.deb'
+    'libedgetpu-dev_13-0.deb'
+    'libedgetpu1-std_13-0.deb'
 )
 
 build() {
