@@ -4,8 +4,9 @@
 
 pkgname=rime-data
 _gitname=plum
-pkgver=2019.12.18
+pkgver=r111.397d601
 pkgrel=1
+epoch=1
 pkgdesc="Rime schema repository from plum"
 arch=('x86_64')
 url="https://github.com/rime/plum/"
@@ -15,6 +16,14 @@ provides=('librime-data' 'brise')
 conflicts=('brise')
 source=("git+https://github.com/rime/plum.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "$_gitname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
 
 build() {
   cd "$_gitname"
