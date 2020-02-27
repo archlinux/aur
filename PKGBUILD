@@ -2,6 +2,8 @@
 # Thank you inversechi and eschwartz
 # https://bbs.archlinux.org/viewtopic.php?id=235884
 
+# shellcheck disable=SC2034,SC2164
+
 pkgname=lando-git
 pkgver=3.0.0.rc.20.r17.g30f59404
 
@@ -29,17 +31,18 @@ provides=("lando")
 options=(!strip)
 
 pkgver() {
-    cd "$pkgname" || exit
+    cd "$pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/$pkgname" || exit
+  cd "${srcdir:?}/$pkgname"
 
   # Use nodejs 10 with NVM
   export npm_config_cache="$srcdir/npm_cache"
   _npm_prefix=$(npm config get prefix)
   npm config delete prefix
+  # shellcheck disable=SC1091
   source /usr/share/nvm/init-nvm.sh
   nvm install 10.16.3 && nvm use 10.16.3
 
@@ -52,6 +55,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/$pkgname" || exit
-  install -D -m 755 "dist/cli/lando-linux-x64-v${_target_version}" "${pkgdir}/usr/bin/lando"
+  cd "${srcdir}/$pkgname"
+  install -D -m 755 "dist/cli/lando-linux-x64-v${_target_version}" "${pkgdir:?}/usr/bin/lando"
 }
