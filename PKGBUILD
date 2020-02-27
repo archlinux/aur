@@ -2,13 +2,12 @@
 pkgname=('otf-yrsa' 'ttf-yrsa')
 pkgbase=yrsa-font
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Serif font for continuous reading on the web (Latin-only)'
 arch=(any)
 url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
-depends=('fontconfig' 'xorg-font-utils') # needed for pacman hooks
 provides=('ttf-font')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Yrsa-fonts-v$pkgver.zip")
 sha256sums=('60bfb3b29b050aecea66afdacb7f49b8d78001a3973b0d5faf4d0c438ae806d7')
