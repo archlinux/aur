@@ -7,7 +7,6 @@ pkgdesc='Variable font in classic college block style'
 arch=(any)
 url="https://github.com/etunni/$_pkgname"
 license=(OFL)
-depends=(fontconfig xorg-font-utils)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
