@@ -4,9 +4,9 @@
 
 pkgname=openssl-git
 pkgver=1.1.1.r2775.g30a4cda5e0
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://www.openssl.org/"
 license=('apache')
 depends=('glibc' 'perl')
@@ -37,13 +37,18 @@ pkgver() {
 build() {
   cd "openssl"
 
+  if [ "$CARCH" = "x86_64" ]; then
+    _target="linux-x86_64"
+  elif [ "$CARCH" = "i686" ]; then
+    _target="linux-x86"
+  fi
+
   ./Configure \
     --prefix="/usr" \
     --libdir="lib" \
     --openssldir="/etc/ssl" \
-    enable-ec_nistp_64_gcc_128 \
-    linux-x86_64 \
-		"-Wa,--noexecstack ${CPPFLAGS} ${CFLAGS} ${LDFLAGS}"
+    "$_target" \
+    "-Wa,--noexecstack $CPPFLAGS $CFLAGS $LDFLAGS"
   make depend
   make
 }
