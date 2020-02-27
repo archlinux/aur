@@ -1,0 +1,17 @@
+pkgbase = kimi-theme-git
+	pkgdesc = Kimi is a light Gtk3.20+ theme
+	pkgver = r74.ab2041c
+	pkgrel = 1
+	url = https://github.com/EliverLara/Kimi
+	arch = any
+	license = GPL
+	makedepends = inkscape
+	makedepends = optipng
+	optdepends = ttf-roboto: primary font face defined
+	optdepends = ttf-ubuntu-font-family: secondary font face defined
+	optdepends = cantarell-fonts: tertiary font face defined
+	source = Kimi::git+https://github.com/EliverLara/Kimi.git
+	sha256sums = SKIP
+
+pkgname = kimi-theme-git
+
