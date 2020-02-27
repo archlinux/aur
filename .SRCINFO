@@ -1,0 +1,13 @@
+pkgbase = org-protocol-emacsclient
+	pkgdesc = Register emacsclient as an org-protocol handler program
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	optdepends = emacs
+	source = org-protocol-emacsclient.desktop
+	md5sums = b7d13b0379e8dd81ce71ed407a78042a
+
+pkgname = org-protocol-emacsclient
+
