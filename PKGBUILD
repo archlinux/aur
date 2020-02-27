@@ -2,9 +2,9 @@
 
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=5.1.2-RELEASE
+_swiftver=5.1.4-RELEASE
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -29,21 +29,23 @@ source=(
     "swiftpm-glibc.patch"
     "swift-tests-glibc.patch"
     "cmark-python38.patch"
+    "sanitizer-glibc2.31.patch"
 )
-sha256sums=('ad7f569ca505f349b4e499ed781f53030afe068644c72e76a5d6fbb7b5b80b86'
-            'd045b1d42933f4d34b24f5434438bbdce4a18341964be019ff5d3f0ed56653fe'
-            '2d0919a443536161ac7e059ac3922b70f63c3e46a26efc4b5f8ac824caf09d2e'
-            '61629212db265d849db5fa2b2b770385713938a38fdfb3bb7cff120a748f946a'
-            '74e61207f4d0ac67fe5bc69d16591df1bc29cbcaeb0ccfdf480d43bfc5c5608a'
-            '47d7a4a76527258f3400c82bf6cc1166a8073817e3a048735bada02ed06c556b'
-            'a9072240be0b1f2ffcc48189fe940f8ba031182beb2acd3cd82031cec4320f80'
-            'f88b18c05b06e25108cf16e3277fee63bc057535779a9e12c544c18169a613e3'
-            'dc74061269e6b0ad83f1cfd10a1e8ddba193a6f4c4d5cb2e3e906932d5a4d457'
+sha256sums=('46765a6a604be0b11cb4660bf5adbef8a95d2b74b03aa46860ef81a5ba92d5e8'
+            '0b3606be7b542aff28210c96639ad19a4b982e999fb3e86748198d8150f5f3d3'
+            'dc02253fdc5ef4027551e5ab5cb8eef22abd7a5bb2df6a2baf02e17afdeeb5cd'
+            '537683d7f1a73b48017d7cd7cd587c4b75c55cc5584e206cc0f8f92f6f4dd3ea'
+            'b421e7e171b94521e364b6ea21ddd6300fe28bce3a0fcbc9f5ed6db496f148a6'
+            '5996eb4384c8f095d912424439c5a1b7fc9ff57529f9ac5ecbc04e82d22ebca2'
+            'f6e09efb3998d0a3d449f92ea809c86346c66e3b2d83ed19f3335bcb29401416'
+            '079cff5dd5b05381e9cf3094d445652fa9990a7d3a46e122f1e1dcdb2c54ddc1'
+            'fb6ac585d451927ab247a46fb011e56bfa838b8bb57a7500201b7b7646373771'
             '6a94de9adbdc4182b297e0011a68c9387fd25864dcb4386654218c8c530032c2'
             '0b2dcb80d9f5cd987a6750b88dc71823980c47dcc711a993e71a496fd73d4e5e'
             '957feb4002deebfebcccc558eaa0c15b6af2ba8a0e4e331ac3365d7f6ab1d707'
             'e4682caf8255d258c24dd28e3965ff4a29a3e73aa293819d6f0f32e86970ff55'
-            'd5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc')
+            'd5b5a1a76d45d25a5ff5916a87c1bad63b14c17eb4d24ecb3e9c0480a4ac5ecc'
+            '73a803d430c1c72a337a7ce079d266e40b75d8d07eae1201449db0879febff1b')
 
 prepare() {
     # Use python2 where appropriate
@@ -91,6 +93,9 @@ prepare() {
 
     # Fix Python 3.8 compatibility in unit tests
     ( cd cmark && patch -p1 -i "$srcdir/cmark-python38.patch" )
+
+    # Fix sanitizer-common build with glibc 2.31 (backport LLVM D70662)
+    ( cd compiler-rt && patch -p1 -i "$srcdir/sanitizer-glibc2.31.patch" )
 }
 
 _common_build_params=(
