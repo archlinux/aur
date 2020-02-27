@@ -1,7 +1,8 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: M A <morealaz at gmail dot com>
+
 pkgname=jakartaee-api-docs-git
 pkgver=8.0.0.r0.0104a7c
-pkgrel=1
+pkgrel=2
 pkgdesc="Jakarta EE api documentations."
 arch=('any')
 url="https://github.com/eclipse-ee4j/jakartaee-api"

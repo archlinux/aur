@@ -1,7 +1,7 @@
 pkgbase = jakartaee-api-docs-git
 	pkgdesc = Jakarta EE api documentations.
 	pkgver = 8.0.0.r0.0104a7c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eclipse-ee4j/jakartaee-api
 	arch = any
 	license = EPL
