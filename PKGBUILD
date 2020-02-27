@@ -1,9 +1,9 @@
-# $Id$
 # Maintainer:  AliReza AmirSamimi <alireza.amirsamimi at gmail dot com>
-# Co-Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Co-Maintainer: M A <morealaz at gmail dot com>
+
 pkgname='persepolis'
 pkgver=3.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A graphical front-end for aria2 download manager with lots of features."
 arch=('any')
 url="https://persepolisdm.github.io/"
@@ -15,12 +15,12 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/persepolisdm/persepolis
 sha256sums=('d27cf2a4e02b0fbe79b1903ca0ab32a6007493d51a8201443a8febb566750acd')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  gzip -k -9 ./man/persepolis.1
+    cd "${pkgname}-${pkgver}"
+    gzip -k -9 ./man/persepolis.1
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
+    cd "${pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir/" --prefix=/usr --optimize=1
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
