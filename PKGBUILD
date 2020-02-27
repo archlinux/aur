@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/hcc"
 license=('custom:NCSAOSL')
 depends=('rocr-runtime>=3.0.0' 'z3')
-makedepends=('git' 'cmake' 'z3')
+makedepends=('git' 'cmake')
 options=(!staticlibs strip)
 source=("https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-$pkgver.tar.gz"
         "https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-$pkgver.tar.gz"
