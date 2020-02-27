@@ -1,7 +1,7 @@
 pkgbase = icu4j
 	pkgdesc = International Components for Unicode for Java
 	pkgver = 65.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://site.icu-project.org/
 	arch = any
 	license = custom:icu

@@ -1,8 +1,8 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: M A <morealaz at gmail dot com>
+
 pkgname=icu4j
 pkgver=65.1
-pkgrel=5
+pkgrel=6
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
 url="http://site.icu-project.org/"
@@ -33,9 +33,9 @@ sha256sums=('041e677ddea663f219cd554ef1005ec27870207bb5420347af1d0268b3409291'
             'SKIP')
 
 package() {
-  install -d ${pkgdir}/usr/share/{doc,java,licenses}/${pkgname}
-	cp ./icu4j*.jar "${pkgdir}/usr/share/java/${pkgname}/"
-	cp -a ./{com,*.{html,css,js}} "${pkgdir}/usr/share/doc/${pkgname}/"
-	cp "./${pkgname}-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -d ${pkgdir}/usr/share/{doc,java,licenses}/${pkgname}
+    cp ./icu4j*.jar "${pkgdir}/usr/share/java/${pkgname}/"
+    cp -a ./{com,*.{html,css,js}} "${pkgdir}/usr/share/doc/${pkgname}/"
+    cp "./${pkgname}-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-# vim:set ts=2 sw=2 et:
+# vim:set ts=4 sw=4 et:
