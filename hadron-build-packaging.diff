@@ -1,0 +1,25 @@
+diff --git a/commands/release.js b/commands/release.js
+index ea6b71e..6f77a55 100644
+--- a/commands/release.js
++++ b/commands/release.js
+@@ -561,9 +561,7 @@ exports.run = (argv, done) => {
+     task('create module cache', createModuleCache),
+     task('create packaged styles', createPackagedStyles),
+     task('remove development files', removeDevelopmentFiles),
+-    task('create application asar', createApplicationAsar),
+-    task('create branded installer', createBrandedInstaller),
+-    task('create application zip', createApplicationZip)
++    task('create application asar', createApplicationAsar)
+   ]);
+
+   return async.series(tasks, (_err) => {
+@@ -577,9 +575,5 @@ exports.run = (argv, done) => {
+ exports.handler = (argv) => {
+   exports.run(argv, (_err, CONFIG) => {
+     cli.abortIfError(_err);
+-    cli.ok(`${CONFIG.assets.length} assets successfully built`);
+-    CONFIG.assets.map(function(asset) {
+-      cli.info(asset.path);
+-    });
+   });
+ };
