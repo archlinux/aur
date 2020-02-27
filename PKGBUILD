@@ -3,8 +3,8 @@
 pkgname='eruption-roccat-vulcan-git'
 _pkgname='eruption-roccat-vulcan'
 pkgdesc='Linux user-mode driver for the ROCCAT Vulcan 100/12x series keyboards'
-pkgver='0.1.0'
-pkgrel='2'
+pkgver='0.1.1'
+pkgrel='0'
 epoch=
 arch=('i686' 'x86_64')
 url='https://x3n0m0rph59.gitlab.io/eruption-roccat-vulcan/'
@@ -56,7 +56,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/bash-completion/completions"
     mkdir -p "$pkgdir/usr/share/zsh/site-functions"
     mkdir -p "$pkgdir/usr/share/eruption/i18n"
-    #mkdir -p "$pkgdir/usr/share/eruption/sfx"
+    mkdir -p "$pkgdir/usr/share/eruption/sfx"
 
     install -m 755 "target/release/eruption" "$pkgdir/usr/bin/"
     install -m 644 "support/config/eruption.conf" "$pkgdir/etc/eruption/"
@@ -71,6 +71,8 @@ package() {
     install -m 644 "support/man/eruption.8" "$pkgdir/usr/share/man/man8/"
     install -m 644 "support/man/eruption.conf.5" "$pkgdir/usr/share/man/man5/"
 
+    install -m 644 "src/scripts/macros.lua" "$pkgdir/usr/share/eruption/scripts/"
+    install -m 644 "src/scripts/macros.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/afterglow.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/afterglow.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/afterhue.lua" "$pkgdir/usr/share/eruption/scripts/"
@@ -128,9 +130,11 @@ package() {
     install -m 644 "src/scripts/water.lua" "$pkgdir/usr/share/eruption/scripts/"
     install -m 644 "src/scripts/water.lua.manifest" "$pkgdir/usr/share/eruption/scripts/"
 
-    #install -m 644 "support/sfx/typewriter1.wav" "$pkgdir/usr/share/eruption/sfx/"
-    #install -m 644 "support/sfx/phaser1.wav" "$pkgdir/usr/share/eruption/sfx/"
-    #install -m 644 "support/sfx/phaser2.wav" "$pkgdir/usr/share/eruption/sfx/"
+    install -m 644 "support/sfx/typewriter1.wav" "$pkgdir/usr/share/eruption/sfx/"
+    install -m 644 "support/sfx/phaser1.wav" "$pkgdir/usr/share/eruption/sfx/"
+    install -m 644 "support/sfx/phaser2.wav" "$pkgdir/usr/share/eruption/sfx/"
+    ln -s "phaser1.wav" "$pkgdir/usr/share/eruption/sfx/key-down.wav"
+    ln -s "phaser2.wav" "$pkgdir/usr/share/eruption/sfx/key-up.wav"
 
     install -m 644 "support/profiles/default.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/fx1.profile" "$pkgdir/var/lib/eruption/profiles/"
@@ -138,6 +142,7 @@ package() {
     install -m 644 "support/profiles/gaming.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile2.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/profile3.profile" "$pkgdir/var/lib/eruption/profiles/"
+    install -m 644 "support/profiles/profile4.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-red-yellow.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/preset-blue-red.profile" "$pkgdir/var/lib/eruption/profiles/"
     install -m 644 "support/profiles/spectrum-analyzer.profile" "$pkgdir/var/lib/eruption/profiles/"
