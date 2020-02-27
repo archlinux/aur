@@ -1,12 +1,10 @@
 pkgbase = ttf-bangers
 	pkgdesc = Comic books font with capital letters
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Bangers
 	arch = any
 	license = OFL
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = ttf-bangers-1.0.zip::https://fonts.google.com/download?family=Bangers
 	sha256sums = 76f27ee3b9f2a9f28236ef05d867c141b2574e1b23c2ae568e7c05a06e0634a3
 
