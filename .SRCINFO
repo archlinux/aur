@@ -6,7 +6,6 @@ pkgbase = yrsa-font
 	arch = any
 	groups = yrsa-rasa-fonts
 	license = OFL
-	provides = ttf-font
 	source = yrsa-font-1.002.zip::https://github.com/rosettatype/yrsa-rasa/releases/download/v1.002/Yrsa-fonts-v1.002.zip
 	sha256sums = 60bfb3b29b050aecea66afdacb7f49b8d78001a3973b0d5faf4d0c438ae806d7
 
