@@ -1,7 +1,7 @@
 # Maintainer: Marvin Kreis <MarvinKreis@web.de>
 
 pkgname=rofi-json-dict-git
-pkgver=0.1.0
+pkgver=0.1.0.r2.gce4806b
 pkgrel=1
 pkgdesc="A plugin to use rofi as a dictionary"
 arch=("x86_64")
