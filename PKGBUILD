@@ -1,25 +1,40 @@
 # Maintainer: aksr <aksr at t-com dot me>
-pkgname=ttf-crimson-pro-git
-pkgver=r233.f1f686d
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+
+pkgbase=ttf-crimson-pro-git
+pkgname=("$pkgbase" "${pkgbase%-git}-variable-git")
+_pkgname=CrimsonPro
+pkgver=1.002.r0.g04168bb
 pkgrel=1
-pkgdesc='The Crimson Text typeface'
+pkgdesc="A professionally produced redesign of Crimson by Jacques Le Bailly"
 arch=('any')
-url='https://github.com/Fonthausen/CrimsonPro'
+url="https://github.com/Fonthausen/$_pkgname"
 license=('OFL')
-depends=('fontconfig' 'xorg-font-utils')
-source=("$pkgname::git+https://github.com/Fonthausen/CrimsonPro")
-md5sums=('SKIP')
+source=("$pkgbase::git+$url")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgbase"
+    # Upstream release commits are not always tagged, do it manually here so
+    # that the number of commits since the stable release is clear.
+    git tag | grep -Fq '1.002' || git tag '1.002' 04168bb
+    git describe --long --tags --abbrev=7 --match='[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-package() {
-  cd "$srcdir/$pkgname"
-  install -D -m644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/OFL.txt"
-  mkdir -p "$pkgdir/usr/share/fonts/TTF/"
-  cd fonts/ttfs
-  install -m644 CrimsonPro*.ttf "$pkgdir/usr/share/fonts/TTF/"
+package_ttf-crimson-pro-git () {
+    pkgdesc+=" (8 fixed weights)"
+    provides+=("${pkgname%-git}")
+    conflicts+=("${pkgname%-git}")
+    cd "$pkgbase"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "fonts/ttfs/$_pkgname"*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" {OFL,AUTHORS,CONTRIBUTORS}.txt
 }
 
+package_ttf-crimson-pro-variable-git () {
+    pkgdesc+=" (variable weight)"
+    provides+=("${pkgname%-git}")
+    conflicts+=("${pkgname%-git}")
+    cd "$pkgbase"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" "fonts/variable/$_pkgname"*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" {OFL,AUTHORS,CONTRIBUTORS}.txt
+}
