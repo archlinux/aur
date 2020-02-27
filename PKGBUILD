@@ -4,13 +4,13 @@
 pkgname=libdri2-git
 _gitname=libdri2
 pkgver=11.4f1eef3
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for the DRI2 extension to the X Window System"
 arch=('any')
 url="https://github.com/robclark/libdri2"
 license=('MIT')
 depends=('libdrm' 'libxext')
-makedepends=('git' 'xextproto' 'xorg-server-devel')
+makedepends=('git' 'xorgproto' 'xorg-server-devel')
 options=('!libtool')
 provides=('libdri2')
 source=('git+https://github.com/robclark/libdri2.git')
