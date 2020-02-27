@@ -2,7 +2,7 @@
 # Contributor: Richard Neumann (schard) <mail at richard dash neumann period de>
 
 pkgbase=linux-sfh
-pkgver=5.5.4.arch1
+pkgver=5.5.6.arch1
 pkgrel=1
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,7 +18,7 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
-  "amd-sfh-v3.patch::https://patchwork.kernel.org/series/240125/mbox/"
+  "amd-sfh-v4.patch::https://patchwork.kernel.org/series/248043/mbox/"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -27,8 +27,8 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '37c9f1d81d504ff78a0759723020341aa87367bb7cdc98550c67923b10f7823f'
-            '64013428da9a5fafff29f29250789d6fac17faaa3137ef924ed6c7583cad6ccd')
+            '5c471a82d01b6ada8c1250607cdb0166141ac3524dbec0a246ec1cf0bc888798'
+            '17467a88c2f624586ac9038c8ac347420e79af72617268709534613bc6b83232')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -64,7 +64,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {

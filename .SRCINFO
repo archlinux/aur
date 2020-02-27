@@ -1,8 +1,8 @@
 pkgbase = linux-sfh
 	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
-	pkgver = 5.5.4.arch1
+	pkgver = 5.5.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.4-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.6-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,15 +15,15 @@ pkgbase = linux-sfh
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.4-arch1
-	source = amd-sfh-v3.patch::https://patchwork.kernel.org/series/240125/mbox/
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.6-arch1
+	source = amd-sfh-v4.patch::https://patchwork.kernel.org/series/248043/mbox/
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 37c9f1d81d504ff78a0759723020341aa87367bb7cdc98550c67923b10f7823f
-	sha256sums = 64013428da9a5fafff29f29250789d6fac17faaa3137ef924ed6c7583cad6ccd
+	sha256sums = 5c471a82d01b6ada8c1250607cdb0166141ac3524dbec0a246ec1cf0bc888798
+	sha256sums = 17467a88c2f624586ac9038c8ac347420e79af72617268709534613bc6b83232
 
 pkgname = linux-sfh
 	pkgdesc = The Linux with experimental AMD Sensor Fusion Hub (SFH) drivers kernel and modules
