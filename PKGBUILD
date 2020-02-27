@@ -1,4 +1,5 @@
 # Maintainer: rawkode <rawkode@pm.me>
+# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
 pkgname=pulumi-bin
 _pkgname=pulumi
