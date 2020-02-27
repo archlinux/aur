@@ -2,7 +2,7 @@
 
 pkgname=tt-rss-theme-feedly-git
 _gitname=tt-rss-feedly-theme
-pkgver=v2.3.1.r5.g14e6e45
+pkgver=v2.4.0.r5.g0fa45d4
 pkgrel=1
 pkgdesc="Feedly theme for Tiny Tiny RSS"
 arch=('any')
@@ -26,10 +26,6 @@ package() {
   _instdir="$pkgdir/usr/share/webapps/tt-rss/themes.local/"
 
   install -d -m755 "$_instdir"
-
-  for f in *.css; do
-    install -m644 $f "$_instdir"
-  done
-
+  install -m644 *.css "$_instdir"
   cp -r feedly/ "$_instdir"
 }
