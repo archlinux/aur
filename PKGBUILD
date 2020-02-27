@@ -1,4 +1,5 @@
-# Maintainer: Joe Hillenbrand <joehillen@gmail.com>
+# Maintainer: Ting-Wei Lan <lantw44@gmail.com>
+# Contributor: Joe Hillenbrand <joehillen@gmail.com>
 
 pkgname=guile-gcrypt
 pkgver=0.2.0
