@@ -33,7 +33,7 @@ prepare() {
   mkdir -p build
 
   # rename models path
-  sed "s|models-|${_plug}-models/|g" -i "${_plug}/src/vsw2xnvk.cpp"
+  sed "s|models-|${_plug}-models/models-|g" -i "${_plug}/src/vsw2xnvk.cpp"
 }
 
 build() {
@@ -48,14 +48,7 @@ build() {
 package(){
   install -Dm755 "build/libvsw2xnvk.so" "${pkgdir}/usr/lib/vapoursynth/libvsw2xnvk.so"
 
-  install -dm777 "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
-  install -dm777 "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/cunet"
-  install -dm777 "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/upconv_7_anime_style_art_rgb"
-  install -dm777 "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/upconv_7_photo"
-
-  install -Dm644 models-cunet/*  "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/cunet"
-  install -Dm644 models-upconv_7_anime_style_art_rgb/*  "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/upconv_7_anime_style_art_rgb"
-  install -Dm644 models-upconv_7_photo/*  "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/upconv_7_photo"
+  for i in $(find models* -type f); do install -Dm644 "${i}"  "${pkgdir}/usr/lib/vapoursynth/${_plug}-models/${i}"; done
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
