@@ -4,7 +4,7 @@
 
 pkgname=bluecurve-icon-theme
 pkgver=8.0.2
-pkgrel=25
+pkgrel=26
 _md5=3a3ecac0922f964bb1c4be617e8dec37
 
 pkgdesc="Red Hat Icons from Fedora 10"
@@ -99,15 +99,16 @@ build() {
     echo "$size/apps/multimedia-volume-control.png gnome-grecord.png" >> symlink.manifest
     echo "$size/apps/mate-power-manager.png ../status/gpm-primary-100-charging.png" >> symlink.manifest
     echo "$size/apps/preferences-system-windows.png gnome-ccwindowmanager.png" >> symlink.manifest
+    echo "$size/apps/preferences-system-time.png gnome-clock.png" >> symlink.manifest
     echo "$size/apps/mate-preferences-desktop-display.png display-capplet.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-screensaver.png icon-xscreensaver.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-display.png display-capplet.png" >> symlink.manifest
-    echo "$size/apps/display.png display-capplet.png" >> symlink.manifest
-    echo "$size/apps/mate-run.png gnome-run.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-peripherals.png gnome-ccperiph.png" >> symlink.manifest
-    echo "$size/apps/mate-notification-properties.png gaim.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-keyboard-shortcuts.png gnome-settings-keybindings.png" >> symlink.manifest
     echo "$size/apps/preferences-desktop-default-applications.png 500_setup.png" >> symlink.manifest
+    echo "$size/apps/display.png display-capplet.png" >> symlink.manifest
+    echo "$size/apps/mate-run.png gnome-run.png" >> symlink.manifest
+    echo "$size/apps/mate-notification-properties.png gaim.png" >> symlink.manifest
     echo "$size/apps/applications-other.png 500_setup.png" >> symlink.manifest
     echo "$size/apps/mozo.png gnome-panel.png" >> symlink.manifest
     echo "$size/apps/alacarte.png gnome-panel.png" >> symlink.manifest
