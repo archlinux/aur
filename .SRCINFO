@@ -1,7 +1,7 @@
 pkgbase = ex-impression-icon-theme
 	pkgdesc = This icon theme got inspired on Mac OS icons and mimics those for the Linux OS
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 4
 	url = https://github.com/balasakthi88/EX-Impression
 	arch = any
 	license = GPL3
