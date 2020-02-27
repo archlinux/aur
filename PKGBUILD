@@ -1,17 +1,17 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=vim-lightline-forest-night-git
-pkgver=v0.2.r16.g5ae9029
+pkgver=v0.1.0.r7.g5d964ff
 pkgrel=1
 pkgdesc="forest-night color scheme for vim-lightline"
 arch=('any')
-url="https://github.com/sainnhe/vim-color-forest-night"
-license=('MIT' 'Anti-996')
+url="https://github.com/sainnhe/forest-night"
+license=('MIT')
 depends=('vim')
 optdepends=('vim-colorscheme-forest-night-git' 'vim-lightline-git')
 makedepends=('git')
-source=("git+https://github.com/sainnhe/vim-color-forest-night.git")
+source=("git+https://github.com/sainnhe/forest-night.git")
 md5sums=('SKIP')
-_pkgname=vim-color-forest-night
+_pkgname=forest-night
 
 pkgver() {
   cd "$srcdir/$_pkgname"
