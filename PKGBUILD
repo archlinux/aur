@@ -5,8 +5,9 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 _oname='javalib'
-pkgname="ocaml-$_oname"
-pkgver='2.3.4'
+pkgname=ocaml-$_oname
+pkgver=3.2.1
+_pkgver=2.3.4
 pkgrel=3
 pkgdesc="Parses Java .class files into OCaml data structures"
 arch=('i686' 'x86_64')
@@ -20,14 +21,14 @@ source=("https://gforge.inria.fr/frs/download.php/file/37154/$_oname-$pkgver.tar
 md5sums=('4707eda130e41d1d7f0506cc0c77eff1')
 
 prepare() {
-	cd "$_oname-$pkgver"
-	sed -i 's,OCAMLPATH=$(LOCALDEST)'",OCAMLPATH=$srcdir/$_oname-$pkgver,g" Makefile.config.example
+	cd "$_oname-$_pkgver"
+	sed -i 's,OCAMLPATH=$(LOCALDEST)'",OCAMLPATH=$srcdir/$_oname-$_pkgver,g" Makefile.config.example
 	sed -i 's,INSTALL = $(FINDER) install,INSTALL = $(FINDER) install'" -destdir $pkgdir/usr/lib/ocaml," Makefile.config.example
-	sed -i "s,^OCAMLPATH=,export OCAMLPATH=$srcdir/$_oname-$pkgver," configure.sh
+	sed -i "s,^OCAMLPATH=,export OCAMLPATH=$srcdir/$_oname-$_pkgver," configure.sh
 }
 
 build() {
-	cd "$_oname-$pkgver"
+	cd "$_oname-$_pkgver"
 	DESTDIR=/usr ./configure.sh
 	make ptrees
 	DESTDIR=/usr ./configure.sh
@@ -35,7 +36,7 @@ build() {
 }
 
 package() {
-	cd "$_oname-$pkgver"
+	cd "$_oname-$_pkgver"
 	mkdir -p $pkgdir/usr/lib/ocaml
 	make installptrees
 	make install
