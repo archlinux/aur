@@ -36,7 +36,7 @@ build() {
   cd "$srcdir/$_pkgname/build"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm/hcc" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/hcc \
         -DLLVM_INSTALL_UTILS=TRUE \
         ..
   make
