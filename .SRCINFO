@@ -15,14 +15,16 @@ pkgbase = cozy-audiobooks
 	depends = gtk3
 	depends = python-dbus
 	depends = python-distro
+	depends = python-requests
+	depends = python-pytz
 	depends = python-gobject
 	depends = python-mutagen
 	depends = python-cairo
 	depends = python-peewee
 	depends = file
 	depends = gst-plugins-good
-	source = https://github.com/geigi/cozy/archive/0.6.12.tar.gz
-	sha256sums = ec868e20784bfc31d8d3ae28c0249bd4b60932d9c74979d6780344a60fd709c7
+	source = https://github.com/geigi/cozy/archive/0.6.13.tar.gz
+	sha256sums = 663fa675d309e147d1eeb341693797435ddab57aad0e1ed260569d8aab6d95aa
 
 pkgname = cozy-audiobooks
 
