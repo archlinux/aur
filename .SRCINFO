@@ -1,0 +1,16 @@
+pkgbase = k9s-git
+	pkgdesc = Kubernetes TUI for managing clusters and pods
+	pkgver = v0.17.0.r5.ge936b17
+	pkgrel = 1
+	url = https://github.com/derailed/k9s
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = go-pie
+	provides = k9s
+	conflicts = k9s
+	source = git+https://github.com/derailed/k9s
+	sha256sums = SKIP
+
+pkgname = k9s-git
+
