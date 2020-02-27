@@ -1,6 +1,6 @@
 pkgbase = verdaccio
 	pkgdesc = Private npm repository server
-	pkgver = 4.4.2
+	pkgver = 4.4.3
 	pkgrel = 1
 	url = https://github.com/verdaccio/verdaccio
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = verdaccio
 	depends = nodejs
 	depends = npm
 	backup = etc/verdaccio/config.yaml
-	source = https://registry.npmjs.org/verdaccio/-/verdaccio-4.4.2.tgz
+	source = https://registry.npmjs.org/verdaccio/-/verdaccio-4.4.3.tgz
 	source = verdaccio.sysusers
 	source = verdaccio.tmpfiles
-	sha256sums = 18dacfeb6eb6c80b8874df8c5bbe5208fc89ff5466788c46a26e43d103f2559e
+	sha256sums = bf502ca91375d3dce6330d3b227e3ec2164de51a862a5031bdfc2fa0f2b9bf07
 	sha256sums = 75d544a5f25ca4c18743b1c879a8db0b9d9ae72ac41043a922733f19df394235
 	sha256sums = 833b7223a643a4e1550c8b85b23b7c9e7337c46bc9bf9daa0a0b33a627ddc990
 
