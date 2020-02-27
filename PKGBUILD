@@ -6,7 +6,7 @@
 _pkgname='ferdi'
 pkgname="$_pkgname-git"
 pkgver='5.4.1.beta.5.r345.g8a6c744f'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$_pkgname.com"
@@ -19,15 +19,11 @@ source=(
 	"$pkgname::git+https://github.com/get$_pkgname/$_pkgname"
 	"$pkgname-recipes::git+https://github.com/get$_pkgname/recipes"
 	"$pkgname-internal-server::git+https://github.com/get$_pkgname/internal-server"
-	"$_pkgname.desktop"
-	"$_pkgname.sh"
 	'fix-autostart-path.diff'
 )
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53'
-            '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 _sourcedirectory="$pkgname"
@@ -100,9 +96,27 @@ package() {
 	install -dm755 "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/"
 	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$_pkgname/app.asar.unpacked/recipes/"
 
-	install -Dm755 "../$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+	install -dm755 "$pkgdir/usr/bin/"
+	cat << EOF > "$pkgdir/usr/bin/$_pkgname"
+#!/bin/sh
+NODE_ENV=production exec electron '/usr/lib/$_pkgname/app.asar' "\$@"
+EOF
+	chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-	install -Dm644 "../$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+	install -dm755 "$pkgdir/usr/share/applications/"
+	cat << EOF > "$pkgdir/usr/share/applications/$_pkgname.desktop"
+[Desktop Entry]
+Name=${_pkgname^}
+Exec=/usr/bin/$_pkgname %U
+Terminal=false
+Type=Application
+Icon=$_pkgname
+StartupWMClass=${_pkgname^}
+Comment=Ferdi is your messaging app / former Emperor of Austria and combines chat & messaging services into one application. Ferdi currently supports Slack, WhatsApp, WeChat, HipChat, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdi for free for Mac & Windows.
+MimeType=x-scheme-handler/ferdi;
+Categories=Network;InstantMessaging;
+EOF
+
 	for _size in 16 24 32 48 64 96 128 256 512 1024; do
 		install -Dm644 "build-helpers/images/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
 	done
