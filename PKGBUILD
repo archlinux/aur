@@ -1,7 +1,8 @@
-# Maintainer: Mohammadreza Abdollahzadeh < morealaz at gmail dot com >
+# Maintainer: M A < morealaz at gmail dot com >
+
 pkgname=gnome-shell-extension-arc-menu-git
 pkgver=41.Stable.r0.g5557736
-pkgrel=1
+pkgrel=2
 pkgdesc='A GNOME shell extension designed to replace the standard menu found in GNOME 3.'
 arch=(any)
 url="https://gitlab.com/LinxGem33/Arc-Menu"
