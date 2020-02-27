@@ -1,0 +1,17 @@
+pkgbase = python-ipfs-api-mount
+	pkgdesc = Mount IPFS directory as local FS
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/SupraSummus/ipfs-api-mount
+	arch = any
+	license = MIT
+	depends = python
+	depends = flake8
+	depends = python-fusepy>=3.0
+	depends = python-ipfshttpclient>=0.4
+	depends = python-protobuf>=3.6
+	source = ipfs-api-mount-0.2.0.tar.gz::https://github.com/SupraSummus/ipfs-api-mount/archive/0.2.0.tar.gz
+	b2sums = f18f0492c61a75bf32d9db25afedc6597d0e9fd04f417378b5eb9cc2c100849a38feddea1da52a160687ed0749b02210c14d662ed12e9ed85fc07ed2de72dc02
+
+pkgname = python-ipfs-api-mount
+
