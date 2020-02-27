@@ -9,6 +9,7 @@ pkgdesc="r8125 kernel driver for linux"
 arch=('x86_64')
 url="https://www.realtek.com/"
 license=('GPL2')
+makedepends=(linux-headers)
 source=("https://github.com/ibmibmibm/r8125/archive/${pkgver}.tar.gz"
         'dkms.conf')
 sha256sums=('1531cc3d9649ea45fa324354adc22bdf75966db033da1385bc6f86fc398b7b9d'
