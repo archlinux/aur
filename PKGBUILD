@@ -1,7 +1,7 @@
 # Maintainer: Philipp A. <flying-sheep@web.de>
 
 pkgname=scanpy
-pkgver=1.4.5.post3
+pkgver=1.4.5.1
 pkgrel=1
 pkgdesc='Single-Cell Analysis in Python'
 arch=(any)
@@ -39,7 +39,7 @@ optdepends=(
 makedepends=(install-wheel-scripts)
 _wheel="$pkgname-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${pkgname::1}/$pkgname/$_wheel")
-sha256sums=('61b7f59fc0037dc653ca4da0c4ff1c5bc763aa894579ce38f04db3eb08376283')
+sha256sums=('568cc79bc85a2ce5fc348d04df6057e3992257ae3eb65103565fbd3d03f3efe7')
 noextract=("$_wheel")
 
 package() {
