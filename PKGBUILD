@@ -2,13 +2,12 @@
 pkgname=('otf-rasa' 'ttf-rasa')
 pkgbase=rasa-font
 pkgver=1.002
-pkgrel=1
+pkgrel=2
 pkgdesc='Serif font for continuous reading on the web (Gujarati included)'
 arch=(any)
 url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
-depends=('fontconfig' 'xorg-font-utils') # needed for pacman hooks
 provides=('ttf-font')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Rasa-fonts-v$pkgver.zip")
 sha256sums=('5a2e68bb130ad062ad2dc90be43b4c7c66e51a2d890f2372adbed290c271dd41')
