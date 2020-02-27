@@ -7,7 +7,7 @@ pkgname='ferdi'
 pkgver='5.4.3'
 _recipescommit='3dcb305ffb706a7604cdfbadf7f2d2e236cb223d'
 _internalservercommit='c39e8b45a51387f24d30e62a170681fc3422ad08'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://get$pkgname.com"
@@ -18,15 +18,11 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/get$pkgname/$pkgname/archive/v$pkgver.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-recipes.tar.gz::https://github.com/get$pkgname/recipes/archive/$_recipescommit.tar.gz"
 	"$pkgname-$pkgver-$pkgrel-internal-server.tar.gz::https://github.com/get$pkgname/internal-server/archive/$_internalservercommit.tar.gz"
-	"$pkgname.desktop"
-	"$pkgname.sh"
 	'fix-autostart-path.diff'
 )
 sha256sums=('5b76514a103a46c9c3c578a474de28b9d5ba4140122cd0950cfe02b9b8e2c84f'
             '1061b711f465d886997db989bcb24b7746f19c9a18215a4e7576d05aa911575a'
             'afdc9d2783f6d4be8cc143bf866848781d3a28479c9bcfb7edade61bde1883a8'
-            '5013233fc508f16b6782efa72da2ac242996f8555b3135aa0d2d98029c2bbc53'
-            '3a21a67cc821892f9ae1b53b9108ec1859aa42b301fa6523c6c7accf6bc2a6c5'
             '91cc72f00db20e1bded69d08578e6ae9fdc89a4582ee8f6d29697b0233d7d095')
 
 _sourcedirectory="$pkgname-$pkgver"
@@ -93,9 +89,27 @@ package() {
 	install -dm755 "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/"
 	cp -r --no-preserve=ownership --preserve=mode 'out/linux-unpacked/resources/app.asar.unpacked/recipes/' "$pkgdir/usr/lib/$pkgname/app.asar.unpacked/recipes/"
 
-	install -Dm755 "../$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -dm755 "$pkgdir/usr/bin/"
+	cat << EOF > "$pkgdir/usr/bin/$pkgname"
+#!/bin/sh
+NODE_ENV=production exec electron '/usr/lib/$pkgname/app.asar' "\$@"
+EOF
+	chmod +x "$pkgdir/usr/bin/$pkgname"
 
-	install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+	install -dm755 "$pkgdir/usr/share/applications/"
+	cat << EOF > "$pkgdir/usr/share/applications/$pkgname.desktop"
+[Desktop Entry]
+Name=${pkgname^}
+Exec=/usr/bin/$pkgname %U
+Terminal=false
+Type=Application
+Icon=$pkgname
+StartupWMClass=${pkgname^}
+Comment=Ferdi is your messaging app / former Emperor of Austria and combines chat & messaging services into one application. Ferdi currently supports Slack, WhatsApp, WeChat, HipChat, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdi for free for Mac & Windows.
+MimeType=x-scheme-handler/ferdi;
+Categories=Network;InstantMessaging;
+EOF
+
 	for _size in 16 24 32 48 64 96 128 256 512 1024; do
 		install -Dm644 "build-helpers/images/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$pkgname.png"
 	done
