@@ -3,7 +3,7 @@
 
 _gemname=bindata
 pkgname=ruby-$_gemname
-pkgver=2.4.5
+pkgver=2.4.6
 pkgrel=1
 pkgdesc="Declarative way to read and write structured binary data"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('ruby')
 makedepends=('ruby-rdoc' 'ruby-rake' 'git')
 options=(!emptydirs)
 source=("${_gemname}-${pkgver}.tar.gz"::"https://github.com/dmendel/bindata/archive/v${pkgver}.tar.gz")
-sha256sums=('c18e4dfc38964570129e4338ac413fdd80209870279096ba0d2db09d2f7007bb')
+sha256sums=('b02e71865f3b61f9864e4627bcbcaa995e0fa840facc418522fcf28ab8f70a53')
 
 build() {
   cd "${srcdir}/${_gemname}-${pkgver}"
