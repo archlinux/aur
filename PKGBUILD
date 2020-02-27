@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=cilium-git
-pkgver=1.6.1.r546.gfc44651ca
+pkgver=1.7.0rc4.r490.gb676c4c6c7
 pkgrel=1
 pkgdesc="API-aware Networking and Security for Containers based on BPF"
 arch=('x86_64')
@@ -24,27 +24,19 @@ pkgver() {
 	echo "${version}.${release}" | sed -re 's/-//g' # strip hyphen
 }
 
-build() {
+
+prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	mkdir -p src/github.com/cilium
-	ln -s ../../../ src/github.com/cilium/cilium
+	install -m755 -d "${srcdir}/go/src/github.com/cilium/"
+	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/cilium/cilium"
+}
 
-	mkdir -p vendor/src
-	for v in vendor/*; do
-		test -z "$v" -o "$v" = "vendor/src" && continue
-		if test -d "$v"; then
-			mv -fv "$v" vendor/src/
-		fi
-	done
-
-	export GOPATH="$(pwd):$(pwd)/vendor"
-	export CC="/usr/bin/gcc"
-	export CXX="/usr/bin/g++"
+build() {
+	cd "${srcdir}/go/src/github.com/cilium/cilium"
+	export GOPATH="${srcdir}/go"
 
 	echo "${pkgver}" > VERSION
-
-	make PKG_BUILD=1 V=1 -C daemon apply-bindata
 	make PKG_BUILD=1 V=1 build
 }
 
@@ -52,12 +44,9 @@ package() {
 	cd "${srcdir}/${pkgname}"
 
 	make DESTDIR="${pkgdir}" PKG_BUILD=1 V=1 -i install
-
 	install -Dm644 "$srcdir/cilium.sysusers" \
 		"$pkgdir/usr/lib/sysusers.d/cilium.conf"
-
 	install -m755 -d "${pkgdir}/usr/lib/systemd/system/"
-
 	install -Dm644 "${srcdir}/${pkgname}/contrib/systemd/"*.{service,mount} \
 		"${pkgdir}/usr/lib/systemd/system/"
 }
