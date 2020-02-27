@@ -5,35 +5,25 @@
 
 pkgname=jpilot
 pkgver=1.8.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop organizer application for the Palm Pilot"
-arch=('i686' 'x86_64')
-url="http://www.jpilot.org/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="http://github.com/juddmon/jpilot/"
 license=('GPL2')
 depends=('openssl' 'gtk2' 'pilot-link')
 makedepends=('intltool')
-source=(http://jpilot.org/tarballs/$pkgname-$pkgver.tar.gz)
-sha256sums=('2c28ed7acea27ae3d541036f2e2ca5ed7e0121badf477e3cfa5ec8d282337e23')
-
-prepare() {
-	cd "${srcdir}"/$pkgname-$pkgver
-	patch jpilot-merge.c <<-EOF
-		290c290
-		<    if (argc != 3) {
-		---
-		>    if (argc != 4) {
-	EOF
-}
+source=(https://codeload.github.com/juddmon/jpilot/legacy.tar.gz/6aaded5)
+sha256sums=('44d3022ca02659954acb28296034b6845af3e91750b758f7bb1288b228be079f')
 
 build() {
-	cd "${srcdir}"/$pkgname-$pkgver
+	cd "${srcdir}"/juddmon-$pkgname-6aaded5
 
-	./configure --prefix=/usr --disable-pl-test --disable-gtktest
+	./autogen.sh --prefix=/usr --disable-pl-test --disable-gtktest
 	make
 }
 
 package() {
-	cd "${srcdir}"/$pkgname-$pkgver
+	cd "${srcdir}"/juddmon-$pkgname-6aaded5
 
 	make DESTDIR="${pkgdir}" install
 
