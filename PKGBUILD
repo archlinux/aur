@@ -4,13 +4,14 @@
 # Contributor: tantalum
 
 pkgname=guile-json
-pkgrel=2
 pkgver=3.3.0
+pkgrel=3
 pkgdesc='JSON module for Guile'
-url="https://github.com/aconchillo/guile-json"
-arch=('any')
-license=('LGPL')
-source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
+arch=('x86_64' 'i686' 'armv7h')
+url='https://savannah.nongnu.org/projects/guile-json'
+license=('GPL3')
+depends=('guile')
+source=("https://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('ceb7357308d75a9c49dabbddaecf60c9731eda3512b9275a79bb508f628c783d')
 
 build() {
@@ -20,8 +21,8 @@ build() {
 }
 
 check(){
-    cd "$pkgname-$pkgver"
-    make check
+  cd "$pkgname-$pkgver"
+  make check
 }
 
 package() {
