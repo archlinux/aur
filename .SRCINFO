@@ -1,7 +1,7 @@
 pkgbase = binfmt-qemu-static-all-arch
 	pkgdesc = Register qemu-static interpreters for various binary formats - all archetectures, intelligently removing the current archetecture
 	pkgver = 20190813
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.freedesktop.org/software/systemd/man/binfmt.d.html
 	arch = armv5
 	arch = armv6h
