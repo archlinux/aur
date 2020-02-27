@@ -8,7 +8,6 @@ arch=(any)
 url="https://github.com/rosettatype/yrsa-rasa"
 license=('OFL')
 groups=('yrsa-rasa-fonts')
-provides=('ttf-font')
 source=("$pkgbase-$pkgver.zip::$url/releases/download/v$pkgver/Rasa-fonts-v$pkgver.zip")
 sha256sums=('5a2e68bb130ad062ad2dc90be43b4c7c66e51a2d890f2372adbed290c271dd41')
 
