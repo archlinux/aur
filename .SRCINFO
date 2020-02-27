@@ -1,0 +1,16 @@
+pkgbase = python-certvalidator
+	pkgdesc = Validates X.509 certificates and paths
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/certvalidator/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-asn1crypto
+	depends = python-oscrypto
+	source = https://files.pythonhosted.org/packages/source/c/certvalidator/certvalidator-0.11.1.tar.gz
+	sha256sums = 922d141c94393ab285ca34338e18dd4093e3ae330b1f278e96c837cb62cffaad
+
+pkgname = python-certvalidator
+
