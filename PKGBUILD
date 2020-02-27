@@ -1,7 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+
 pkgname=adwaita-qt-git
 pkgver=1.1.1.r1.gd1e7619
-pkgrel=1
+pkgrel=2
 pkgdesc='A style to bend Qt applications to look like they belong into GNOME Shell (Qt5).'
 arch=('x86_64')
 url="https://github.com/FedoraQt/adwaita-qt"
