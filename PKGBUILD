@@ -1,14 +1,15 @@
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: M A <morealaz at gmail dot com>
+
 pkgname=java-openjfx-bin
 _majorver=14
 _buildver=8
 pkgver=${_majorver}rc${_buildver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJFX ${_majorver} client application platform (Gluon build)."
 arch=('x86_64')
 url='https://openjfx.io/'
 license=('GPL2')
-depends=('ffmpeg' 'gstreamer' "java-environment>=${_majorver}" 'libxtst' 'qt5-base' 'webkit2gtk')
+depends=('ffmpeg' 'gstreamer' 'java-openjdk-bin' 'libxtst' 'qt5-base' 'webkit2gtk')
 provides=("java-openjfx=${_majorver}")
 conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
