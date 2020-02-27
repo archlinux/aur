@@ -1,3 +1,4 @@
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
@@ -5,7 +6,7 @@ pkgname='perl-javascript-minifier-xs'
 pkgver='0.11'
 pkgrel='1'
 pkgdesc="XS based JavaScript minifier"
-arch=('i686' 'x86_64')
+arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
