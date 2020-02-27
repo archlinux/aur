@@ -1,6 +1,6 @@
 pkgbase = cin-git
 	pkgdesc = Cinelerra maintained by Good Guy (git version)
-	pkgver = 5.1.20190430
+	pkgver = 5.1.20200131
 	pkgrel = 1
 	url = https://www.cinelerra-gg.org
 	arch = x86_64
@@ -52,9 +52,7 @@ pkgbase = cin-git
 	depends = xorg-server
 	depends = xorg-fonts-misc
 	source = cinelerra-gg::git+git://git.cinelerra-gg.org/goodguy/cinelerra.git
-	source = dep.patch
 	sha256sums = SKIP
-	sha256sums = ef8e25d0bee3b495c4dda3add81090731932d35ab60eca4f744a2e885ad1ce37
 
 pkgname = cin-git
 
