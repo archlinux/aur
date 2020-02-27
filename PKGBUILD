@@ -1,8 +1,8 @@
 # Maintainer: Betül Ünlü < betulunlu0018 ~at~ gmail ~dot~ com >
 
 pkgname="emojicode"
-pkgver=1.0.beta.1
-pkgrel=5
+pkgver=1.0.beta.2
+pkgrel=1
 pkgdesc="An open-source, full-blown programming language consisting of emojis"
 arch=('i686' 'x86_64')
 url="https://emojicode.org"
@@ -27,12 +27,12 @@ optdepends=(
 )
 
 # FIXME: versioning after stable
-source=("${pkgname}-${pkgver}::https://github.com/emojicode/emojicode/archive/v1.0-beta.1.tar.gz")
-sha1sums=('7618540dcb6af03604fb6afce24fa4ad7248888b')
+source=("${pkgname}-${pkgver}::https://github.com/emojicode/emojicode/archive/v1.0-beta.2.tar.gz")
+sha256sums=('835b1b62a52fb2b7fdcba31e00ec1f6ef19ee3be65f03b97e0dc2944c9288143')
 
 build() {
     # e
-    cd "${srcdir}/${pkgname}-1.0-beta.1"
+    cd "${srcdir}/${pkgname}-1.0-beta.2"
 
     # ugh
     sed -i 's/8.0/9.0/' Compiler/CMakeLists.txt
@@ -51,18 +51,18 @@ check() {
 
     if [[ "$runchecks" == y* ]] || [[ "$runchecks" == Y* ]]; then
         # e
-        cd "${srcdir}/${pkgname}-1.0-beta.1/build"
+        cd "${srcdir}/${pkgname}-1.0-beta.2/build"
         ninja tests
     fi
 }
 
 package() {
     # e
-    cd "${srcdir}/${pkgname}-1.0-beta.1/build"
-    ninja dist
+    cd "${srcdir}/${pkgname}-1.0-beta.2/build"
+    python ../dist.py .. archive
 
     # FIXME: versioning ugh
-    cd "Emojicode-1.0-beta.1-Linux-${CARCH}"
+    cd "${srcdir}/${pkgname}-1.0-beta.2/build/Emojicode-1.0-beta.2-Linux-$CARCH"
 
     install -Dm755 "emojicodec" "${pkgdir}/usr/bin/emojicodec"
 
@@ -70,11 +70,12 @@ package() {
     install -Dm644 "include/s/Data.h" "${pkgdir}/usr/include/emojicode/s/Data.h"
     install -Dm644 "include/s/String.h" "${pkgdir}/usr/include/emojicode/s/String.h"
 
-    install -Dm755 "packages/files/interface.emojii" "${pkgdir}/usr/lib/emojicode/files/interface.emojii"
-    install -Dm644 "packages/files/libfiles.a" "${pkgdir}/usr/lib/emojicode/files/libfiles.a"
-    install -Dm644 "packages/runtime/libruntime.a" "${pkgdir}/usr/lib/emojicode/runtime/libruntime.a"
-    install -Dm755 "packages/s/interface.emojii" "${pkgdir}/usr/lib/emojicode/s/interface.emojii"
-    install -Dm644 "packages/s/libs.a" "${pkgdir}/usr/lib/emojicode/s/libs.a"
-    install -Dm755 "packages/sockets/interface.emojii" "${pkgdir}/usr/lib/emojicode/sockets/interface.emojii"
-    install -Dm644 "packages/sockets/libsockets.a" "${pkgdir}/usr/lib/emojicode/sockets/libsockets.a"
+    cd packages
+
+    for pkg in *; do
+        if [ -f "${pkg}/🏛" ]; then
+            install -Dm755 "${pkg}/🏛" "${pkgdir}/usr/lib/emojicode/${pkg}/🏛"
+        fi
+        install -Dm644 "${pkg}/lib${pkg}.a" "${pkgdir}/usr/lib/emojicode/${pkg}/lib${pkg}.a"
+    done
 }
