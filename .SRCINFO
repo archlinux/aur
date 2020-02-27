@@ -1,12 +1,10 @@
 pkgbase = ttf-hanken
 	pkgdesc = Geometric and rounded sans-serif font
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fontlibrary.org/en/font/hanken
 	arch = any
 	license = OFL
-	depends = fontconfig
-	depends = xorg-font-utils
 	source = ttf-hanken-1.0.zip::https://fontlibrary.org/assets/downloads/hanken/855de8cbbcb144bc29cdd2927821141f/hanken.zip
 	sha256sums = 2362cf1b55acc527755e81214e08f12cb409ebf4ce9e76a6a5f822ef73216d4a
 
