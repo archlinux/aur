@@ -23,7 +23,7 @@ pkgbase = eolie-stable-git
 	conflicts = eolie
 	conflicts = eolie-git
 	conflicts = eolie-next
-	source = git+https://gitlab.gnome.org/World/lollypop#branch=next
+	source = git+https://gitlab.gnome.org/World/lollypop
 	sha256sums = SKIP
 
 pkgname = eolie-stable-git
