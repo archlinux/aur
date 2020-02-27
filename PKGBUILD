@@ -1,31 +1,35 @@
-# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Anthony C <kurodroid.1@gmail.com>
 
 pkgname=psad
 pkgver=2.4.5
-pkgrel=1
-pkgdesc="A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic"
-arch=(i686 x86_64)
-url="http://cipherdyne.org/psad/"
+pkgrel=2
+pkgdesc='A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic'
+arch=('i686' 'x86_64')
+url='http://cipherdyne.org/psad/'
 license=('GPL')
-depends=('perl-bit-vector' 'perl-date-calc' 'perl-iptables-chainmgr' 'perl-iptables-parse' 'perl-net-ipv4addr' 'perl-storable' 'perl-unix-syslog' 'net-tools')
-source=("http://cipherdyne.org/psad/download/$pkgname-$pkgver.tar.gz"{,.asc}
-        "responses"
-        "psad-systemdinit.archlinux"
-        "psad.patch")
+depends=('perl-bit-vector'
+         'perl-date-calc' 
+         'perl-iptables-chainmgr' 
+         'perl-iptables-parse' 
+         'perl-net-ipv4addr' 
+         'perl-storable' 
+         'perl-unix-syslog' 
+         'net-tools')
+
+source=("http://cipherdyne.org/psad/download/${pkgname}-${pkgver}.tar.gz"
+        'responses'
+        'psad-systemdinit.archlinux'
+        'psad.patch')
 sha256sums=('c61bd5c7766798dbaf2cd5e11d4b07b941e8188be4e0176423fe7bcabc676147'
-            'SKIP'
             '0092963c506769f0bc1895ede687975dae0c3d256aaa1891f7e354b7c4a19958'
             '9db280ba745205b188333267f05cf7cf1a75300789c92c48075625e64f37ff34'
             '9137ea481f1cad79d62d3a7cf1ac22bbc85cccc7e18d49e1c092b38beec36170')
-
-# 0D3E7410: Michael Rash (Signing key for cipherdyne.org projects) <mbr@cipherdyne.org>
-validpgpkeys=('4D6644A9DA036904BDA2CB90E6C9E3350D3E7410')
-
 prepare() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
   if [ ! -e responses ]; then
-    ln "$srcdir/responses" responses -s;
+    ln "${srcdir}/responses" responses -s;
   fi
 
   #Set the config dirs
@@ -56,7 +60,7 @@ prepare() {
 }
 
 package () {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
   mkdir -p "$pkgdir/etc/psad" \
            "$pkgdir/etc/rc.d" \
            "$pkgdir/usr/bin/" \
@@ -81,5 +85,4 @@ package () {
   sed -e "s|$pkgdir||g" "$pkgdir/etc/psad/psad.conf" -i
   sed -e "s|$pkgdir||g" "$pkgdir/var/log/psad/install.log" -i
 }
-
 # vim:set ts=2 sw=2 et:
