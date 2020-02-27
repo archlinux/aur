@@ -36,7 +36,7 @@ optdepends=('dahdi'
             'postgresql'
             'unixodbc')
 install=$pkgname.install
-source=("https://downloads.asterisk.org/pub/telephony/asterisk/releases/$pkgname-$pkgver.tar.gz"
+source=("https://downloads.asterisk.org/pub/telephony/$pkgname/releases/$pkgname-$pkgver.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.logrotated"
         "$pkgname.tmpfile")
@@ -59,14 +59,15 @@ build() {
 }
 
 package(){
-  backup+=($(cd "$pkgdir" && find "etc/$pkgname" -type f | sort))
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-headers
   make DESTDIR="$pkgdir" samples
 
-  sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
+  # Note you must build the package before you can update meta data!
+  backup+=($(cd "$pkgdir" && echo "etc/$pkgname/"*))
 
+  sed -i -e 's,/var/run,/run,' "$pkgdir/etc/asterisk/asterisk.conf"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/asterisk/"*
 
   mv "$pkgdir/var/run" "$pkgdir"
