@@ -1,6 +1,6 @@
 pkgbase = persepolis-git
 	pkgdesc = A graphical front-end for aria2 download manager with lots of features (Github version).
-	pkgver = 3.2.0.r0.g36d72b9
+	pkgver = 3.2.0.r50.gee8c781
 	pkgrel = 1
 	url = https://persepolisdm.github.io/
 	arch = any
