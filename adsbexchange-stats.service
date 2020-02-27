@@ -1,3 +1,10 @@
+# The script creates a file with  uuid in /boot, but that is
+# not a good reason to run as root. A new uuid will be used
+# every time the script runs and that has little impact. But
+# you can use the below command to create the file and make it
+# persist.
+# uuidgen -t | sudo tee /boot/adsbx-uuid
+
 [Unit]
 Description=ADSBexchange Stats
 Wants=network.target readsb.service
