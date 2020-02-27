@@ -7,7 +7,7 @@ _majorver=${_jdkver}.0.2
 _buildvershort=8
 _buildver=${_buildvershort}_openj9-${_openj9ver}
 pkgver=${_majorver}b${_buildver//-/_}
-pkgrel=3
+pkgrel=4
 pkgdesc="Eclipse (former IBM) OpenJ9 with latest GA release of openjdk (jdk${_jdkver})"
 arch=('x86_64')
 url="https://adoptopenjdk.net/index.html?variant=openjdk${_jdkver}&jvmVariant=openj9"
