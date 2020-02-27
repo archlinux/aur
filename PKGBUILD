@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyswip
-pkgver=0.2.7
-pkgrel=3
+pkgver=0.2.9
+pkgrel=1
 pkgdesc='Python wrapper for SWI-Prolog'
-arch=('any')
+arch=(any)
 url='https://github.com/yuce/pyswip'
-license=('MIT')
-depends=('python' 'swi-prolog')
-makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/yuce/pyswip#tag=v$pkgver")
+license=(MIT)
+depends=(python swi-prolog)
+makedepends=(git python-setuptools)
+source=("git+$url#commit=bd44ff794d4b940439649875e54c8c5c2bcd5933") # tag: v0.2.9
 sha256sums=('SKIP')
 
 build() {
