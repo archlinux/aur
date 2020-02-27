@@ -12,7 +12,7 @@ depends=(
   'python'
 )
 optdepends=(
-  'firmware-raspberrypi: Use this on an armv7h (32bit) system.'
+  'raspberrypi-firmware: Use this on an armv7h (32bit) system.'
   'raspberrypi-userland-aarch64-git: Use this on an aarch64 (64bit) system.'
 )
 
