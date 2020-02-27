@@ -9,9 +9,13 @@ arch=('any')
 url='http://github.com/raspberrypi/rpi-eeprom'
 license=('custom')
 depends=(
-  'raspberrypi-firmware'
   'python'
 )
+optdepends=(
+  'raspberrypi-firmware: Use this on an armv7h (32bit) system.'
+  'raspberrypi-userland-aarch64-git: Use this on an aarch64 (64bit) system.'
+)
+
 backup=('etc/default/rpi-eeprom-update')
 source=('rpi-eeprom::git+https://github.com/raspberrypi/rpi-eeprom.git'
         'rpi-eeprom-update.patch')
