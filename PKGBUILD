@@ -1,7 +1,7 @@
 # Maintainer: Parker Reed <parker.l.reed@gmail.com>
 pkgname=aasdk-git
 _pkgname=aasdk
-pkgver=r77.95617c2
+pkgver=r80.1d91dec
 pkgrel=1
 pkgdesc="Library to build AndroidAuto headunit"
 arch=('x86_64')
@@ -14,9 +14,11 @@ makedepends=('cmake' 'boost' 'git')
 source=(
   "$pkgname::git+https://github.com/opencardev/aasdk#branch=development"
   promise.patch
+  boost_1.70_fixes.patch
 )
 md5sums=('SKIP'
-         'SKIP')
+         '51f3434c41fde193fa7b6d7137bda150'
+         '8cf4611220f7144872ba1967f328e414')
 
 pkgver() {
   cd $pkgname
@@ -26,6 +28,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   patch --forward --strip=1 --input="${srcdir}/promise.patch"
+  patch -N -p 1 -i "${srcdir}/boost_1.70_fixes.patch"
 }
 
 build() {

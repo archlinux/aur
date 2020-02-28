@@ -1,0 +1,24 @@
+diff --unified --recursive --text aasdk-git/src/Channel/ServiceChannel.cpp aasdk-git.new/src/Channel/ServiceChannel.cpp
+--- aasdk-git/src/Channel/ServiceChannel.cpp
++++ aasdk-git.new/src/Channel/ServiceChannel.cpp
+@@ -38,7 +38,7 @@
+
+ void ServiceChannel::send(messenger::Message::Pointer message, SendPromise::Pointer promise)
+ {
+-    auto sendPromise = messenger::SendPromise::defer(strand_.get_io_service());
++    auto sendPromise = messenger::SendPromise::defer(strand_.context());
+     io::PromiseLink<>::forward(*sendPromise, std::move(promise));
+     messenger_->enqueueSend(std::move(message), std::move(sendPromise));
+ }
+diff --unified --recursive --text aasdk-git/src/USB/AccessoryModeQueryChain.cpp aasdk-git.new/src/USB/AccessoryModeQueryChain.cpp
+--- aasdk-git/src/USB/AccessoryModeQueryChain.cpp
++++ aasdk-git.new/src/USB/AccessoryModeQueryChain.cpp
+@@ -58,7 +58,7 @@
+                 });
+
+             this->startQuery(AccessoryModeQueryType::PROTOCOL_VERSION,
+-                             std::make_shared<USBEndpoint>(usbWrapper_, strand_.get_io_service(), std::move(handle)),
++                             std::make_shared<USBEndpoint>(usbWrapper_, strand_.context(), std::move(handle)),
+                              std::move(queryPromise));
+         }
+     });
