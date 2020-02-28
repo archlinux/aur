@@ -1,8 +1,9 @@
 pre_install() {
   echo "Checking Hardware Model..."
   if [[ $(grep "Raspberry Pi 3" /proc/device-tree/model) || $(grep "Raspberry Pi 4" /proc/device-tree/model) ]] ; then
-    echo "Installing Python dependencies..."
-    pip install pysmbus RPi.GPIO
+    echo "Building New Virtual Environment in /opt/argonone..."
+    python -m venv --clear /opt/argonone
+    /opt/argonone/bin/python3 -m pip install pysmbus RPi.GPIO
 
     echo "Enabling i2C..."
     BOOT_CFG="/boot/config.txt"
@@ -36,8 +37,7 @@ post_install() {
   echo "Please reboot before first use."
   echo "Configuration file: /etc/argononed.conf"
   echo "Enable power button and fan control service with:"
-  echo "  sudo systemctl enable argononed-powerbutton.service"
-  echo "  sudo systemctl enable argononed-fan.service"
+  echo "  sudo systemctl enable argononed.service"
 }
 
 pre_remove() {
@@ -45,7 +45,7 @@ pre_remove() {
 }
 
 post_remove() {
+  echo "Removing Virtual Environment in /opt/argonone..."
+  rm -rf /opt/argonone
   echo "Software removed. Please remember to disable I2C if not needed any more."
-  echo "Please execute following commands if pysmbus and RPi.GPIO are not needed any more:"
-  echo "  pip uninstall pysmbus RPi.GPIO"
 }
