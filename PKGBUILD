@@ -8,30 +8,31 @@ pkgname=(buildbot buildbot-worker buildbot-docs
          python-buildbot-www python-buildbot-waterfall-view
          python-buildbot-console-view python-buildbot-grid-view
          python-buildbot-wsgi-dashboards python-buildbot-badges)
-pkgver=2.6.0
+pkgver=2.7.0
 _bb_contrib_commit=ada3c8f30ca7e1b6bb260e2e5971053fbd254333
-pkgrel=4
+pkgrel=1
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
 checkdepends=(python-boto3 python-lz4 python-treq python-txrequests
-              python-moto python-parameterized
+              python-moto python-parameterized python-mock
               openssh chromium)
 makedepends=(python-twisted python-jinja python-zope-interface
              python-sqlalchemy-migrate python-dateutil python-txaio
              python-autobahn python-pyjwt python-yaml
-             python-setuptools python-mock python-future
+             python-setuptools python-future
              python-sphinx-jinja python-sphinxcontrib-blockdiag
+             python-sphinx_rtd_theme
              git yarn)
-source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.sig}
+source=("https://github.com/buildbot/buildbot/releases/download/v$pkgver/buildbot-v$pkgver.gitarchive.tar.gz"{,.asc}
         "git+https://github.com/buildbot/buildbot-contrib.git#commit=$_bb_contrib_commit"
-        "https://github.com/yan12125/buildbot/commit/26af545b3f8cbf97f2335e61b08dcf30f447c17b.patch"
-        "pygments-2.5.diff")
-sha256sums=('0ac835b58db309bebcf00fa77687385551833b3dac1c66aa671d271776050c19'
+        "pygments-2.5.diff"
+        "sphinx-issue7139.diff")
+sha256sums=('8b0ce7d332c5013517bf3bbcc70638d16c8ded8c099770bfbc8126332ff3016a'
             'SKIP'
             'SKIP'
-            '4bf518b614aa208152fb88e39325a8f5b5a681ee91e9033728f2bb20a7704611'
-            '01cb9351a05cf2523e9c6c14561b2024508798902258d3b3f5caa9a6486bfc82')
+            'aab7437b4db78fd07971b875db0cdb9af4e4807ae8c0b7d5d4bae5ae03074ec2'
+            '44753dd07bef78105528d371a053594fd7a24922e23a2841d67ff44c764224b6')
 validpgpkeys=(
   '390EB159056ED56F66AB1092AECD456B4D2531FC'  # Pierre Tardy <tardyp@gmail.com> (@tardyp on GitHub)
   'FD0004A26EADFE43A4C3F249C6F7AE200374452D'  # Povilas Kanapickas <povilas@radix.lt> (@p12tic on GitHub)
@@ -40,7 +41,7 @@ validpgpkeys=(
 prepare() {
   cd buildbot-$pkgver
   patch -Np1 -i ../pygments-2.5.diff
-  patch -Np1 -i ../26af545b3f8cbf97f2335e61b08dcf30f447c17b.patch
+  patch -Np1 -i ../sphinx-issue7139.diff
 
   # HACK: do not use virtualenv
   sed -i -e 's#frontend_deps:.*#frontend_deps:#' Makefile
