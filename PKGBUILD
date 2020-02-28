@@ -9,8 +9,10 @@ url="https://github.com/karx1/haur"
 license=('LGPLv3')
 depends=('bash' 'git')
 source=("haur" "Makefile")
-package () {
+prepare () {
 	make clean
+}
+package () {
 	make install srcdir=$srcdir pkgdir=$pkgdir
 }
 md5sums=('23c78cb76dc3aebd7f45efce417c9830'
