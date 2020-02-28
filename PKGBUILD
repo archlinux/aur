@@ -7,10 +7,11 @@
 
 pkgbase=thunderbird-beta-i18n
 pkgver=74.0b1
-pkgrel=1
+pkgrel=2
 url='http://www.mozilla.com/'
 arch=('any')
 license=('MPL' 'GPL')
+depends=("thunderbird>=$pkgver")
 
 pkgname=(
   'thunderbird-beta-i18n-ar'
@@ -72,7 +73,7 @@ pkgname=(
   'thunderbird-beta-i18n-zh-cn'
   'thunderbird-beta-i18n-zh-tw'
 )
-_url=https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/linux-x86_64/xpi
+_url=https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/xpi
 source=(
   "thunderbird-beta-i18n-$pkgver-ar.xpi::$_url/ar.xpi"
   "thunderbird-beta-i18n-$pkgver-ast.xpi::$_url/ast.xpi"

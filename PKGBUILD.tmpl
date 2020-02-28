@@ -11,11 +11,12 @@ pkgrel=1
 url='http://www.mozilla.com/'
 arch=('any')
 license=('MPL' 'GPL')
+depends=("thunderbird>=$pkgver")
 
 pkgname=({% for lang_iso639 in languages.keys() %}
   'thunderbird-beta-i18n-{{ lang_iso639.lower() }}'{% end %}
 )
-_url=https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/linux-x86_64/xpi
+_url=https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x86_64/xpi
 source=({% for lang_iso639 in languages.keys() %}
   "thunderbird-beta-i18n-$pkgver-{{ lang_iso639 }}.xpi::$_url/{{ lang_iso639 }}.xpi"{% end %}
 )
