@@ -1,14 +1,14 @@
 pkgbase = sccache-bin
 	pkgdesc = ccache-like tool with experimental rust support
-	pkgver = 0.2.12
+	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/mozilla/sccache
 	arch = x86_64
 	license = Apache
 	provides = sccache
 	conflicts = sccache
-	source = https://github.com/mozilla/sccache/releases/download/0.2.12/sccache-0.2.12-x86_64-unknown-linux-musl.tar.gz
-	md5sums = 4dd55a1603642494d28fc5f1f66e7221
+	source = https://github.com/mozilla/sccache/releases/download/0.2.13/sccache-0.2.13-x86_64-unknown-linux-musl.tar.gz
+	md5sums = e668ba324a0d279d377c5f23dc06fd39
 
 pkgname = sccache-bin
 
