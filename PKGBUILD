@@ -1,9 +1,13 @@
-# Original Author: Johannes Sauer <joh.sauer(at)gmail(dot)com>
-# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+#!/hint/bash
+# Maintainer : bartus <arch-user-repo(at)bartus.33mail.com>
+# Contributor : Danilo Bargen <aur at dbrgn dot ch>
+# Contributor : Johannes Sauer <joh.sauer(at)gmail(dot)com>
+# shellcheck disable=SC2034,SC2154
 
 name=cloudcompare
+#_fragment="#branch="
 pkgname=${name}-git
-pkgver=2.10.2.r261.gadd17ce2
+pkgver=2.10.2.r561.gd15c435b
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
@@ -14,7 +18,7 @@ makedepends=('git' 'cmake' 'ninja' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'la
 optdepends=('pcl')
 conflicts=('cloudcompare')
 provides=('cloudcompare')
-source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git"
+source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         CloudCompare.desktop
         ccViewer.desktop
         constexpr.patch
@@ -25,22 +29,18 @@ md5sums=('SKIP'
          '456526b717c1b47d52990df8f06a04e0')
 
 prepare() {
-  cd ${srcdir}/${name}
-  git submodule update --init --recursive
-  git apply ${srcdir}/constexpr.patch
+  git -C "${name}" submodule update --init --recursive
+  git -C "${name}" apply -v "${srcdir}"/constexpr.patch
 }
 
 pkgver() {
-  cd ${srcdir}/${name}
-  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git -C "${name}" describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${name}
-  
-  mkdir -p build && cd build
- 
-  cmake .. \
+  mkdir -p build
+
+  cmake -S "${name}" -B build \
         -G Ninja \
         -Wno-dev \
         -DCMAKE_CXX_FLAGS=-fpermissive \
@@ -82,15 +82,16 @@ package() {
   DESTDIR="$pkgdir" ninja -C build install
 
   # install *.desktop files
-  install -D -m 644 ${srcdir}/*.desktop -t ${pkgdir}/usr/share/applications/
+  install -D -m 644 "${srcdir}"/*.desktop -t "${pkgdir}"/usr/share/applications/
 
   # copy icons for *.desktop files
-  cd ${srcdir}/${name}
+  # shellcheck disable=SC2164
+  cd "${name}"
   for size in 16 32 64 256; do
-    install -D -m 644 qCC/images/icon/cc_icon_${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cc_icon.png
-    install -D -m 644 qCC/images/icon/cc_viewer_icon_${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cc_viewer_icon.png
+    install -D -m 644 qCC/images/icon/cc_icon_${size}.png "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/cc_icon.png
+    install -D -m 644 qCC/images/icon/cc_viewer_icon_${size}.png "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/cc_viewer_icon.png
   done 
-  install -D -m 644 qCC/images/icon/cc_icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/cc_icon.svg
-  install -D -m 644 qCC/images/icon/cc_viewer_icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/cc_viewer_icon.svg
+  install -D -m 644 qCC/images/icon/cc_icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/cc_icon.svg
+  install -D -m 644 qCC/images/icon/cc_viewer_icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/cc_viewer_icon.svg
 }
 # vim:set sw=2 ts=2 et:
