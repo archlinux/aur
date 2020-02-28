@@ -1,0 +1,18 @@
+pkgbase = jdk11-graalvm-ee-bin
+	pkgdesc = (Enterprise Edition) Universal virtual machine for running applications written in a variety of languages (JVM-based, LLVM-based, or other), Java 11 version
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://www.graalvm.org/
+	install = jdk11-graalvm-ee-bin.install
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common
+	depends = java-environment-common
+	provides = java-runtime=11
+	provides = java-environment=11
+	options = staticlibs
+	source_x86_64 = graalvm-ee-java11-20.0.0.tar.gz::https://web.archive.org/web/20200228064159/https%3A%2F%2Fdownload.oracle.com%2Fotn%2Futilities_drivers%2Foracle-labs%2Fgraalvm-ee-java11-linux-amd64-20.0.0.tar.gz%3FAuthParam%3D1582872216_1c709e264459fe8f38146174374aa6b8
+	sha256sums_x86_64 = b704fd27b5993584a1ad659b41f42ff0ae8893c066b64a6f6a1719fbee382536
+
+pkgname = jdk11-graalvm-ee-bin
+
