@@ -7,13 +7,13 @@
 
 pkgname=byobu
 pkgver=5.133
-pkgrel=1
+pkgrel=2
 pkgdesc='Enhanced tmux'
 arch=(any)
 url='https://byobu.org/'
 license=(GPL3)
-depends=(python tmux)
-makedepends=(gettext libnewt setconf)
+depends=(libnewt python tmux)
+makedepends=(gettext setconf)
 source=("$pkgname-$pkgver.tar.gz::https://launchpad.net/byobu/trunk/$pkgver/+download/byobu_$pkgver.orig.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://launchpad.net/byobu/trunk/$pkgver/+download/..-byobu_$pkgver.orig.tar.gz.asc")
 sha256sums=('4d8ea48f8c059e56f7174df89b04a08c32286bae5a21562c5c6f61be6dab7563'
