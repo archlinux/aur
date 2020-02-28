@@ -1,6 +1,6 @@
 pkgbase = arch-audit-git
 	pkgdesc = A utility like pkg-audit based on Arch Security Team data
-	pkgver = 0.1.13.r0.ga91f095
+	pkgver = 0.1.13.r1.g74a490c
 	pkgrel = 1
 	url = https://gitlab.com/ilpianista/arch-audit
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=arch-audit-git
-pkgver=0.1.13.r0.ga91f095
+pkgver=0.1.13.r1.g74a490c
 pkgrel=1
 pkgdesc='A utility like pkg-audit based on Arch Security Team data'
 url='https://gitlab.com/ilpianista/arch-audit'
@@ -41,5 +41,5 @@ package() {
     "${pkgdir}"/usr/share/zsh/site-functions/_arch-audit
 
   install -Dm644 hooks/arch-audit.hook \
-    "${pkgdir}"/usr/share/libalpm/hooks/arch-audit.hook
+    "${pkgdir}"/usr/share/${pkgname}/arch-audit.hook
 }
