@@ -1,0 +1,15 @@
+pkgbase = firefox-extension-available-goodreads
+	pkgdesc = Browser plugin to make Goodreads display Overdrive availability.
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/available-reads/
+	arch = any
+	license = GPL
+	depends = firefox>=42
+	optdepends = firefox-extension-amazon-container
+	noextract = ${_plugin_name}-${pkgver}${_plugin_ext}.xpi
+	source = https://addons.mozilla.org/firefox/downloads/file/1108779/available_reads-3.7.0-an+fx.xpi
+	sha256sums = d060876863a52307a527e04d5ff322bf2ef99e1fbc7f309fe2cde1e28a398b10
+
+pkgname = firefox-extension-available-goodreads
+
