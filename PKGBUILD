@@ -1,34 +1,35 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=roct-thunk-interface
-pkgver=3.0.0
+_pkgname=ROCT-Thunk-Interface-roc
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Radeon Open Compute Thunk Interface"
+arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface"
-arch=(x86_64)
 license=('MIT')
-makedepends=(cmake gcc)
-depends=(numactl pciutils)
-_name=ROCT-Thunk-Interface-roc
+depends=('numactl' 'pciutils')
+makedepends=('cmake')
 source=("https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/roc-$pkgver.tar.gz")
-sha256sums=("d6d91397fcd926bd90fae8dfe81d69653273e8b68cd47f822576838f2ac96729")
+sha256sums=('b08176b5f4af39d0160990f9f1dea5d27974f9282f544140b4a41d19446fe570')
 
 build() {
-  mkdir -p "$srcdir/${_name}-${pkgver}/build"
-  cd "$srcdir/${_name}-${pkgver}/build"
-  cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm" \
-        ..
+  mkdir -p "$srcdir/$_pkgname-$pkgver/build"
+  cd "$srcdir/$_pkgname-$pkgver/build"
 
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        ..
   make all build-dev
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}/build"
-  make DESDIR=${pkgdir} install install-dev
+  cd "$srcdir/$_pkgname-$pkgver/build"
 
-  mkdir -p "$pkgdir/etc/ld.so.conf.d"
-  cat <<-EOF > $pkgdir/etc/ld.so.conf.d/roct-thunk-interface.conf
-		/opt/rocm/lib
-		EOF
+  make DESDIR="$pkgdir" install install-dev
+
+  install -d "$pkgdir/etc/ld.so.conf.d"
+  cat << EOF > "$pkgdir/etc/ld.so.conf.d/roct-thunk-interface.conf"
+/opt/rocm/lib
+EOF
 }
