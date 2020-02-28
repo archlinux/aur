@@ -1,24 +1,27 @@
 pkgbase = meshroom-bin
 	pkgdesc = Meshroom is a free, open-source 3D Reconstruction Software based on the AliceVision framework.
 	pkgver = 2019.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alicevision/meshroom
 	arch = i686
 	arch = x86_64
 	license = MPL2
 	depends = libgl
 	provides = meshroom
+	conflicts = meshroom
 	options = !strip
 	source = https://github.com/alicevision/meshroom/releases/download/v2019.2.0/Meshroom-2019.2.0-linux.tar.gz
 	source = Meshroom
 	source = meshroom_photogrammetry
 	source = Meshroom.png
 	source = Meshroom.desktop
+	source = meshroom_compute
 	sha256sums = bdd741692161c234d27b3a8ce7109071c99bbe6c30b04d8108675a19f160a93a
-	sha256sums = ccfc665d6df6bb1b1d3f0490d7e83297c0ae2b7f7a90fb4cb28fdecd85a03feb
-	sha256sums = a80575135fa438321dc743c95f64defb2c0ed664e30e76d43d42c14366e15eca
+	sha256sums = 5efd9924e4b0cea03ec24c797bd909fc20abcf6fb9449b2e4305d8b416372df0
+	sha256sums = 6b8826602092d3c7d28fd1762b23b30aa4cd1c12826440168ddf003a32b6b805
 	sha256sums = a24e45c707c8e0689f2f1b7952f652e824b7c55e159f4c4a0421fabd428cdf5e
 	sha256sums = b3c1a11f6fa397a0f7303272692999809df69e9c1d83ddac95d88243b3eff6a3
+	sha256sums = 4eb1b55dac5c9d276383ea1fdd8580fc611184937b845da20d25b67610039fa8
 
 pkgname = meshroom-bin
 
