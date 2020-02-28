@@ -1,10 +1,10 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.6.7.1
+pkgver=0.6.7.2
 pkgrel=1
 install=.INSTALL
-pkgdesc="一个支持全局透明代理且兼容 SS、SSR 的 V2Ray Linux GUI Client"
+pkgdesc="V2Ray Linux client with web GUI, compatible with SS and SSR, supporting transparent proxy"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/mzz2017/V2RayA"
 license=('GPL')
@@ -23,9 +23,9 @@ build() {
 package() {
     cd "V2RayA-$pkgver"
     
-    install -Dm644 "install/v2raya.service" "$pkgdir/usr/lib/systemd/system/v2raya.service"
+    install -Dm644 "install/universal/v2raya.service" "$pkgdir/usr/lib/systemd/system/v2raya.service"
     install -Dm755 "service/v2raya" -t "$pkgdir/usr/bin/"
 
     install -Dm644 "gui/public/img/icons/android-chrome-512x512.png" "$pkgdir/usr/share/icons/v2raya.png"
-    install -Dm755 "install/v2raya.desktop" -t "$pkgdir/usr/share/applications/"
+    install -Dm755 "install/universal/v2raya.desktop" -t "$pkgdir/usr/share/applications/"
 }
