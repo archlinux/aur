@@ -9,7 +9,7 @@ arch=('any')
 url="https://teedy.io/"
 license=('GPL2')
 replaces=('teedy')
-depends=('java-runtime=8' 'jre8-openjdk' 'tomcat9' 'tesseract' 'ffmpeg' 'mediainfo')
+depends=('jre8-openjdk' 'tomcat9' 'tesseract' 'ffmpeg' 'mediainfo')
 makedepends=('maven' 'jdk8-openjdk' 'npm' 'grunt-cli')
 source=("https://github.com/sismics/docs/archive/v${pkgver}.tar.gz")
 md5sums=('cd86ac250eca77120098cda2a3218d87')
