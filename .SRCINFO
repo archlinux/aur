@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.8.1
-	pkgrel = 0.18
+	pkgrel = 0.19
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL2
@@ -47,7 +47,7 @@ pkgbase = pagure
 	sha256sums = c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854
 
 pkgname = pagure
-	depends = pagure-backend=5.8.1
+	depends = pagure-database=5.8.1
 	optdepends = pagure-apache: Apache host configuration files
 	backup = etc/pagure/alembic.ini
 	backup = etc/pagure/pagure.cfg
@@ -60,31 +60,34 @@ pkgname = pagure-apache
 	backup = etc/httpd/conf/extra/pagure.conf
 
 pkgname = pagure-mariadb
-	pkgdesc = A git-centered forge based on python using pygit2 (MariaDB backend configuration)
+	pkgdesc = A git-centered forge based on python using pygit2 (MariaDB database configuration)
 	install = pagure-mariadb.install
 	depends = pagure=5.8.1
 	depends = mariadb
 	depends = python-mysqlclient
-	provides = pagure-backend
+	provides = pagure-database
 	conflicts = pagure-postgresql
 	conflicts = pagure-sqlite
+	backup = etc/pagure/pagure_database.cfg
 
 pkgname = pagure-postgresql
-	pkgdesc = A git-centered forge based on python using pygit2 (PostgreSQL backend configuration)
+	pkgdesc = A git-centered forge based on python using pygit2 (PostgreSQL database configuration)
 	install = pagure-postgresql.install
 	depends = pagure=5.8.1
 	depends = postgresql
 	depends = python-psycopg2
-	provides = pagure-backend
+	provides = pagure-database
 	conflicts = pagure-mariadb
 	conflicts = pagure-sqlite
+	backup = etc/pagure/pagure_database.cfg
 
 pkgname = pagure-sqlite
-	pkgdesc = A git-centered forge based on python using pygit2 (SQLite backend configuration)
+	pkgdesc = A git-centered forge based on python using pygit2 (SQLite database configuration)
 	install = pagure-sqlite.install
 	depends = pagure=5.8.1
 	depends = sqlite
-	provides = pagure-backend
+	provides = pagure-database
 	conflicts = pagure-mariadb
 	conflicts = pagure-postgresql
+	backup = etc/pagure/pagure_database.cfg
 

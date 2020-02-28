@@ -7,7 +7,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
 pkgver=5.8.1
-pkgrel=0.18
+pkgrel=0.19
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -54,6 +54,7 @@ source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
 sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
             'c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854')
 _homedir="/var/lib/$pkgbase"
+_user=$pkgbase
 
 prepare() {
     cd "$pkgbase-$pkgver"
@@ -64,7 +65,10 @@ prepare() {
            -e '/!mod_authz/,+4d' \
            -e '/# Apache 2.4/d' \
            -e "s#/path/to/git/repositorios#$_homedir#g" \
+           -e "s/=git/=$_user/g" \
         files/pagure.conf
+    sed -i -e "/^#DB_URL/d;/^DB_URL/s/^.*$/execdir('pagure_database.cfg')/" \
+        files/pagure.cfg.sample
 }
 
 build() {
@@ -78,7 +82,7 @@ check() {
 }
 
 package_pagure() {
-    depends=("$pkgbase-backend=$pkgver")
+    depends=("$pkgbase-database=$pkgver")
     optdepends=("$pkgbase-apache: Apache host configuration files")
     backup=("etc/$pkgbase/alembic.ini"
              "etc/$pkgbase/pagure.cfg")
@@ -103,25 +107,34 @@ package_pagure-apache() {
 }
 
 package_pagure-mariadb() {
-    pkgdesc+=" (MariaDB backend configuration)"
+    pkgdesc+=" (MariaDB database configuration)"
     depends=("$pkgbase=$pkgver" 'mariadb' 'python-mysqlclient') # alternative: python-pymysql
-    provides=("$pkgbase-backend")
+    provides=("$pkgbase-database")
     conflicts=("$pkgbase-postgresql" "$pkgbase-sqlite")
+    backup=("etc/$pkgbase/pagure_database.cfg")
     install="$pkgbase-mariadb.install"
+    install -Dm600 <(echo "DB_URL = 'mysql://$_user:<password>@localhost/$pkgbase'") \
+        "$pkgdir/etc/$pkgbase/pagure_database.cfg"
 }
 
 package_pagure-postgresql() {
-    pkgdesc+=" (PostgreSQL backend configuration)"
+    pkgdesc+=" (PostgreSQL database configuration)"
     depends=("$pkgbase=$pkgver" 'postgresql' 'python-psycopg2') # alternative: python-pg8000
-    provides=("$pkgbase-backend")
+    provides=("$pkgbase-database")
     conflicts=("$pkgbase-mariadb" "$pkgbase-sqlite")
+    backup=("etc/$pkgbase/pagure_database.cfg")
     install="$pkgbase-postgresql.install"
+    install -Dm600 <(echo "DB_URL = 'postgres://$_user:<password>@localhost/$pkgbase'") \
+        "$pkgdir/etc/$pkgbase/pagure_database.cfg"
 }
 
 package_pagure-sqlite() {
-    pkgdesc+=" (SQLite backend configuration)"
+    pkgdesc+=" (SQLite database configuration)"
     depends=("$pkgbase=$pkgver" 'sqlite')
-    provides=("$pkgbase-backend")
+    provides=("$pkgbase-database")
     conflicts=("$pkgbase-mariadb" "$pkgbase-postgresql")
+    backup=("etc/$pkgbase/pagure_database.cfg")
     install="$pkgbase-sqlite.install"
+    install -Dm600 <(echo "DB_URL = 'sqlite:///var/tmp/$pkgbase.sqlite'") \
+        "$pkgdir/etc/$pkgbase/pagure_database.cfg"
 }
