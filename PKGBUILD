@@ -17,6 +17,6 @@ package() {
   install -Dt "$pkgdir/usr/bin/" "$srcdir/kmon"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
-  install -Dm 644 kmon.man "$pkgdir/usr/local/man/man8/${pkgname%-bin}.8"
+  install -Dm 644 kmon.man -t "$pkgdir/usr/local/man/man8/${pkgname%-bin}.8"
   gzip "$pkgdir/usr/local/man/man8/${pkgname%-bin}.8"
 }
