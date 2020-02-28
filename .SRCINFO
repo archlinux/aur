@@ -1,6 +1,6 @@
 pkgbase = folly
 	pkgdesc = An open-source C++ library developed and used at Facebook
-	pkgver = 2020.02.03.00
+	pkgver = 2020.02.24.00
 	pkgrel = 1
 	url = https://github.com/facebook/folly
 	arch = x86_64
@@ -24,8 +24,8 @@ pkgbase = folly
 	depends = lz4
 	depends = zstd
 	depends = libsodium
-	source = https://github.com/facebook/folly/archive/v2020.02.03.00.tar.gz
-	sha256sums = f9935abe4038229125e8d23e9b243b3a4cd2e674d91cb6e1aebe9ab4123c8cbf
+	source = https://github.com/facebook/folly/archive/v2020.02.24.00.tar.gz
+	sha256sums = 9703c3e2ceab3518fe1795aabfbf3f378ccbbf46fb9ad70084b6aa842e4d86ab
 
 pkgname = folly
 
