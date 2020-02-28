@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /opt/Blizcord
-/usr/lib/jvm/java-11-openjdk/bin/java -jar Blizcord.exe --disable-update-checker "$@"
+/usr/bin/java -jar Blizcord.exe --disable-update-checker "$@"
