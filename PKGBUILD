@@ -4,12 +4,17 @@ _edition=' Beta'
 pkgname="$_pkgname-bin"
 _pkgver='1.20.0-beta.9'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='4'
+pkgrel='5'
 pkgdesc='The official GUI for MongoDB - beta version - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-depends=('krb5' 'libsecret')
+depends=(
+	# electron
+	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy'
+	# compass
+	'krb5' 'libsecret' 'lsb-release'
+)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
