@@ -3,7 +3,7 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
@@ -31,6 +31,9 @@ prepare() {
       -i build.sh
   sed 's|mkv-extractor-qt5|mkv-extractor-qt|g' \
       -i mkv-extractor-qt5.desktop
+
+  # https://forum.ubuntu-fr.org/viewtopic.php?id=1508741&p=7 c#166
+  sed -i "s/QActionGroup(self, exclusive=True)/QActionGroup(self)/" MKVExtractorQt5.py
 
   export IFS=$'\n'
   for i in $(find . -name '*.png' -type f); do
