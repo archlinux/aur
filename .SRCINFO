@@ -1,0 +1,26 @@
+pkgbase = passbook-next-git
+	pkgdesc = Password manager for GNOME (dev branch)
+	pkgver = 0.8.r5.gf41ed60
+	pkgrel = 1
+	url = https://gitlab.gnome.org/gnumdk/passbook
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = meson
+	depends = appstream-glib
+	depends = gtk3
+	depends = python-cairo
+	depends = python-gobject
+	optdepends = python-pykeepass: Support for keepass files
+	provides = passbook
+	conflicts = passbook
+	conflicts = passbook-git
+	conflicts = passbook-stable-git
+	source = git+https://gitlab.gnome.org/gnumdk/passbook#branch=next
+	md5sums = SKIP
+
+pkgname = passbook-next-git
+
