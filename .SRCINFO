@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.8.1
-	pkgrel = 0.19
+	pkgrel = 0.20
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL2
@@ -41,6 +41,7 @@ pkgbase = pagure
 	depends = python-straight.plugin
 	depends = python-wtforms
 	depends = redis
+	optdepends = clamav: Scan uploaded attachments
 	source = https://releases.pagure.org/pagure/pagure-5.8.1.tar.gz
 	source = https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch
 	sha256sums = 5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687

@@ -8,7 +8,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
 pkgver=5.8.1
-pkgrel=0.19
+pkgrel=0.20
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -48,6 +48,7 @@ depends=('git'
          'python'
          "${_pydeps[@]/#/python-}"
          'redis')
+optdepends=('clamav: Scan uploaded attachments')
 makedepends=('python-setuptools')
 checkdepends=('python-tox')
 source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
@@ -92,10 +93,11 @@ package_pagure() {
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgbase/" {README,UPGRADING}.rst
     install -Dm644 -T "files/pagure.cfg.sample" "$pkgdir/etc/$pkgbase/pagure.cfg"
     install -Dm644 -t "$pkgdir/etc/$pkgbase/" "files/alembic.ini"
-    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
+    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/pagure_createdb.py" createdb.py
     install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" files/{api_key_expire_mail,mirror_project_in}.py
     install -Dm755 -t "$pkgdir/usr/lib/$pkgbase/" files/{aclchecker,keyhelper}.py
     cp -r alembic "$pkgdir/usr/share/$pkgbase/"
+    # TODO: package stuff in doc folder, needs building
 }
 
 package_pagure-apache() {
