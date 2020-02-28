@@ -1,0 +1,13 @@
+pkgbase = shlide-git
+	pkgdesc = A slide deck presentation tool written in pure bash.
+	pkgver = r45.2e825ef
+	pkgrel = 1
+	url = https://github.com/icyphox/shlide
+	arch = any
+	license = MIT
+	makedepends = scdoc
+	source = shlide-git::git+https://github.com/icyphox/shlide.git#branch=master
+	sha256sums = SKIP
+
+pkgname = shlide-git
+
