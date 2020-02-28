@@ -26,8 +26,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
   git submodule init
-  git config submodule.llvm-project.git.url "$srcdir/llvm-project"
-  git config submodule.ROCm-Device-Libs.git.url "$srcdir/rocdl"
+  git config submodule.llvm-project.url "$srcdir/llvm-project"
+  git config submodule.rocdl.url "$srcdir/ROCm-Device-Libs"
   git submodule update
 }
 
