@@ -7,7 +7,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-postgresql" "$pkgbase-mariadb")
 pkgver=5.8.1
-pkgrel=0.14
+pkgrel=0.15
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -97,6 +97,8 @@ package_pagure-postgresql() {
     provides=("$pkgbase-backend")
     conflicts=("$pkgbase-mariadb")
     install="$pkgbase-postgresql.install"
+    cd "$pkgbase-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
 
 package_pagure-mariadb() {
@@ -105,4 +107,6 @@ package_pagure-mariadb() {
     provides=("$pkgbase-backend")
     conflicts=("$pkgbase-postgresql")
     install="$pkgbase-mariadb.install"
+    cd "$pkgbase-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
