@@ -34,7 +34,7 @@ pkgbase = cloudcompare-git
 	md5sums = SKIP
 	md5sums = 379e09f6996b2b397429c0661c409bd0
 	md5sums = b6dcb0dee15cc67011166a2fc774c5ef
-	md5sums = c1ea23f8a38cf1326196bb42de07e020
+	md5sums = 456526b717c1b47d52990df8f06a04e0
 
 pkgname = cloudcompare-git
 
