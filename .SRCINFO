@@ -11,6 +11,7 @@ pkgbase = hawck-git
 	makedepends = pkg-config
 	makedepends = catch2
 	makedepends = ninja
+	makedepends = git
 	depends = libnotify
 	depends = lua
 	depends = ruby
