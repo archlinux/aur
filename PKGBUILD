@@ -1,6 +1,6 @@
 # Maintainer: Amir Zarrinkafsh <nightah at me dot com>
 pkgname=authelia
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -21,7 +21,7 @@ backup=('etc/authelia/configuration.yml')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('450fa28bebc1ba46fa37ba2b2b752f21226c9fbb036b81b5211948827298baca')
+sha256sums=('d4bbf60af460e0b3047f31cb46e0ef66e47ef257db1e0675140f58b253fa0be8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
