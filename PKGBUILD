@@ -3,7 +3,7 @@
 # Contributor: sysrq
 
 pkgname=picard
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc='Official MusicBrainz tagger'
 url='https://picard.musicbrainz.org/'
