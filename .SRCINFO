@@ -1,0 +1,20 @@
+pkgbase = ecosim-git
+	pkgdesc = An interactive ecosystem and evolution simulator written in C and OpenGL, for GNU/Linux.
+	pkgver = r194.a2c2d33
+	pkgrel = 1
+	url = http://connor-brooks.com/ecosim
+	arch = x86_64
+	makedepends = make
+	makedepends = gcc
+	depends = glfw-x11
+	depends = glew
+	optdepends = python
+	optdepends = ffmpeg
+	optdepends = matplotlib
+	provides = ecosim=r194.a2c2d33
+	conflicts = ecosim
+	source = ecosim-git::git://github.com/connor-brooks/ecosim.git
+	sha256sums = SKIP
+
+pkgname = ecosim-git
+
