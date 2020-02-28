@@ -3,7 +3,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=java-openjdk-ea-bin
 _majorver=15
-_buildver=11
+_buildver=12
 pkgver=${_majorver}b${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJDK ${_majorver} Early-Access Build"
@@ -11,8 +11,9 @@ arch=('x86_64')
 url="https://jdk.java.net/${_majorver}"
 license=('GPL2')
 depends=(
-  'java-environment-common>=3' 'ca-certificates-utils'
-  'nss' 'libxrender' 'libxtst' 'alsa-lib' 'freetype2'
+  'java-environment-common>=3' 'java-runtime-common>=3'
+  'ca-certificates-utils' 'nss' 'libxrender' 'libxtst'
+  'alsa-lib' 'freetype2'
 )
 provides=(
   "java-environment=${_majorver}"
@@ -23,7 +24,7 @@ provides=(
   "java-runtime-headless-openjdk=${_majorver}"
 )
 source=("https://download.java.net/java/early_access/jdk${_majorver}/${_buildver}/GPL/openjdk-${_majorver}-ea+${_buildver}_linux-x64_bin.tar.gz")
-sha256sums=('dbaed2c9b6a3158494de3a5d87e772a9950535f9053a239c5dcbc1baee5b967d')
+sha256sums=('ff430463b92de38a39224ada330253f9d6381621d99a0822a40e6c6b81d68bb1')
 
 _eaname=java-${_majorver}-openjdk
 _jvmdir=usr/lib/jvm/${_eaname}
