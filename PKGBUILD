@@ -1,4 +1,6 @@
 # Maintainer: Austin Haedicke (austin.haedicke@gmail.com)
+# Telegram:  @savagezen / @savagezen_aur
+# Github: https://github.com/savagezen/pkgbuild
 
 # If you find errors or have suggestions feel free to file an issue
 # or submit a pull request @ https://github.com/savagezen/pkgbuild
