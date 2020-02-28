@@ -1,7 +1,7 @@
 # Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=cpp-taskflow
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/cpp-taskflow/cpp-taskflow"
 license=('MIT')
 makedepends=('cmake')
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=('60b2340ff029a241a3371d88c26b778ba7fccdf1a95995a716d9220575771689')
+sha256sums=('ab4cbe9230877225bc95d89c8efe29bf35886ef91dc8d59e4244576230141385')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -37,5 +37,4 @@ package() {
     cd "${pkgname}-${pkgver}"
     cmake --build build -- DESTDIR="${pkgdir}" install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    cp -a example "${pkgdir}/usr/share/${pkgname}/"
 }
