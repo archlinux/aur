@@ -3,8 +3,8 @@
 pkgname=tealdeer-bin
 _pkgname=tealdeer
 _binname=tldr
-pkgver=1.2.0
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="A fast tldr client in Rust. Static binaries from GitHub."
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/dbrgn/tealdeer/"
@@ -15,6 +15,7 @@ validpgpkeys=('EA456E8BAF0109429583EED83578F667F2F3A5FA')
 source=(
   "https://github.com/dbrgn/${_pkgname}/releases/download/v${pkgver}/completions_bash"
   "https://github.com/dbrgn/${_pkgname}/releases/download/v${pkgver}/completions_fish"
+  "https://github.com/dbrgn/${_pkgname}/releases/download/v${pkgver}/completions_zsh"
   "https://github.com/dbrgn/${_pkgname}/releases/download/v${pkgver}/LICENSE-MIT"
 )
 source_x86_64=(
@@ -38,15 +39,16 @@ source_armv7h=(
   "${pkgname}-armv7h.sig::https://github.com/dbrgn/${_pkgname}/releases/download/v${pkgver}/tldr-linux-armv7-musleabihf.sig"
 )
 sha256sums=(
-  'd364816b0a9540684f0d7010a256b21675fac6a597b7839bac09b08f8fdb6758'
-  'a2390bbd6af37a4731ce0a83b29e5e51838df93552f4615fbb414bb0783ddf76'
-  'e3a3f0f44838492b3f0303aad7d929424517467ff82d2db5a3038639422e0db0'
+  '34eafba569227165f63ae3f3f4752ec90838dcf4676c8f22593c8f9d420d1cfe'
+  '3dc648783449ad976fcd13627f520dacf3ec03dc54e7145eee9157df42a2584a'
+  'ca60e5bd42c9e4ff6830ecbaa3c8f3bdd6b0596aa37395d282dcfeacaeb1196e'
+  'e1a85727599c145ad026ff8b41c49c55b9bc98e859569535814a70980e6ba709'
 )
-sha256sums_x86_64=('65d74fb346969017993bef969d4193576ef0f94daae050d6f2bb9d5d6b98d33c' 'SKIP')
-sha256sums_i686=('c86b1b481496df67b43e181e2701edd5c821a2130bad4a96b7c472119c84f7a4' 'SKIP')
-sha256sums_arm=('1bdaa21b82528363d1c1be9f1ad2ec971d34e063f0fb6488e65c685041f78ea9' 'SKIP')
-sha256sums_armv6h=('2f0a6bc24cdc83ceafc1c09cc5cae4bf189deac7074be5eb34365d9ca5490484' 'SKIP')
-sha256sums_armv7h=('023ee6650cf132300320251a254346806e6cb7c01d695f0f881122ba9acd0cb6' 'SKIP')
+sha256sums_x86_64=('cbc0c946efa4c05244169f2b099dafcc941bf6d7870d041a6c7c3edd60405e72' 'SKIP')
+sha256sums_i686=('7f114e912fa827a97b4a58997e3083e42754912ca6e62ca736fed4c8a26cfba4' 'SKIP')
+sha256sums_arm=('664f4154dc892ecda90e5af2b499735678763668b9d7d31c1ec8543ef4ed8d7d' 'SKIP')
+sha256sums_armv6h=('491981197da8169f98dac261ef1f84373effada8b13c14fc35b8f6122e818d1b' 'SKIP')
+sha256sums_armv7h=('036d55b25eb5a4320a1c8890ba34fc95fa370e89541751249e9a0a07d5372790' 'SKIP')
 
 package() {
   # Install binary
@@ -58,6 +60,7 @@ package() {
   # Install shell completions
   install -Dm644 completions_bash "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
   install -Dm644 completions_fish "${pkgdir}/usr/share/fish/completions/${_binname}.fish"
+  install -Dm644 completions_zsh "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
 }
 
 # vim:set ts=2 sw=2 et:
