@@ -10,8 +10,8 @@ license=("MIT")
 arch=("any")
 
 # Dependencies
-depends=("git")
-makedepends=("scdoc")
+depends=()
+makedepends=("git" "scdoc")
 
 # Download information
 source=("${pkgname}::git+${url}.git#branch=master")
