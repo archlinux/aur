@@ -26,7 +26,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver/build"
 
-  make DESDIR="$pkgdir" install install-dev
+  make DESTDIR="$pkgdir" install install-dev
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/roct-thunk-interface.conf"
