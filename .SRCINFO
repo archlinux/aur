@@ -1,16 +1,16 @@
 pkgbase = lets-bin
 	pkgdesc = CLI task runner - a better alternative to make
-	pkgver = 0.0.15
+	pkgver = 0.0.16
 	pkgrel = 1
 	url = https://github.com/lets-cli/lets/
 	arch = x86_64
 	arch = i686
 	license = APACHE
 	provides = lets
-	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.15/lets_Linux_x86_64.tar.gz
+	source_x86_64 = https://github.com/lets-cli/lets/releases/download/v0.0.16/lets_Linux_x86_64.tar.gz
 	md5sums_x86_64 = 96232539bd1feeb24867a01174711712
-	source_i686 = https://github.com/lets-cli/lets/releases/download/v0.0.15/lets_Linux_i386.tar.gz
-	md5sums_i686 = a7e99720d209cb2e2c0c83915635fcee
+	source_i686 = https://github.com/lets-cli/lets/releases/download/v0.0.16/lets_Linux_i386.tar.gz
+	md5sums_i686 = fae08b9906b5cca13771cbb9f6dbed9e
 
 pkgname = lets-bin
 
