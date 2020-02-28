@@ -4,7 +4,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=bochs-svn
-pkgver=2.6.11.r13816
+pkgver=2.6.11.r13817
 pkgrel=1
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger (SVN Snapshot)"
 arch=('x86_64')

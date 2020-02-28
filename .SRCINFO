@@ -1,6 +1,6 @@
 pkgbase = bochs-svn
 	pkgdesc = A portable x86 PC emulation software package, including GUI debugger (SVN Snapshot)
-	pkgver = 2.6.11.r13816
+	pkgver = 2.6.11.r13817
 	pkgrel = 1
 	url = http://bochs.sourceforge.net/
 	arch = x86_64
