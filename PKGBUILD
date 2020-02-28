@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Neal Gompa <ngompa13@gmail.com>
 
 # Fedora spec: https://src.fedoraproject.org/rpms/pagure/blob/master/f/pagure.spec
 # OpenSUSE spec: https://build.opensuse.org/package/view_file/openSUSE:Factory/pagure/pagure.spec?expand=1
