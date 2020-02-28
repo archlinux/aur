@@ -1,21 +1,21 @@
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-changenotify'
-pkgver='0.27'
+pkgver='0.31'
 pkgrel='1'
 pkgdesc="Watch for changes to files, cross-platform style"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-class-load' 'perl-module-pluggable' 'perl-module-runtime' 'perl-moo>=1.006' 'perl-type-tiny' 'perl-namespace-autoclean')
-makedepends=()
+makedepends=('perl-test2')
 checkdepends=('perl-test-exception' 'perl-test-requires' 'perl-test-without-module')
 url='https://metacpan.org/release/File-ChangeNotify'
-source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/File-ChangeNotify-0.27.tar.gz')
-md5sums=('90af25499b9b41193957f8e9d9ea1107')
-sha512sums=('aabdac4e32765df6828aa1cc72301ccfdd4c0547189234111f970eea0564cf0c691b3b9261fa32a298e599a3d20734488274ba88e6c25f76cfe64d58e83da426')
-_distdir="File-ChangeNotify-0.27"
+source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/File-ChangeNotify-0.31.tar.gz')
+sha512sums=('0dc7c1c2a3887c09f59465a89f52c4c8a9426e96574fa4764fe90a5f1500541ddbcb233bfcd206c76e0b7dfedf2980b3dc54fab6b45608a5b6fb82143172b25b')
+_distdir="File-ChangeNotify-0.31"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
