@@ -14,9 +14,10 @@ source=("https://github.com/orhun/${pkgname%-bin}/releases/download/$pkgver/${pk
 sha256sums=('6ba0cab6a47b11da0be909bad26289e553fb8f7ea4d663e6d4c0c7411ea6a207')
 
 package() {
+  mv "${pkgname%-bin}.man" "${pkgname%-bin}.8"
   install -Dt "$pkgdir/usr/bin/" "$srcdir/kmon"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-bin}"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-bin}"
-  install -Dm 644 kmon.man -t "$pkgdir/usr/local/man/man8/${pkgname%-bin}.8"
+  install -Dm 644 "${pkgname%-bin}.8" -t "$pkgdir/usr/local/man/man8"
   gzip "$pkgdir/usr/local/man/man8/${pkgname%-bin}.8"
 }
