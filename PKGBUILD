@@ -2,13 +2,13 @@
 pkgname=tealdeer-git
 _name=tealdeer
 _binname=tldr
-pkgver=r204.7a3a565
+pkgver=r213.3a5c0ce
 pkgrel=1
-pkgdesc="A fast TLDR client written in Rust."
-arch=('x86_64' 'i686')
+pkgdesc="A fast tldr client in Rust."
+arch=('any')
 url="https://github.com/dbrgn/tealdeer"
 license=('MIT' 'Apache')
-depends=()
+depends=('openssl')
 makedepends=('git' 'rust' 'cargo')
 provides=('tldr')
 conflicts=('tldr')
@@ -33,9 +33,12 @@ package() {
   install -D -o root -g root -m 755 target/release/tldr "$pkgdir/usr/bin/${_binname}"
 
   # Install shell completions
-  install -D -o root -g root -m 644 bash_tealdeer "$pkgdir/usr/share/bash-completion/completions/${_binname}"
+  install -D -o root -g root -m 644 bash_tealdeer "${pkgdir}/usr/share/bash-completion/completions/${_binname}"
   install -D -o root -g root -m 644 fish_tealdeer "${pkgdir}/usr/share/fish/completions/${_binname}.fish"
   install -D -o root -g root -m 644 zsh_tealdeer "${pkgdir}/usr/share/zsh/site-functions/_${_binname}"
+
+  # Install MIT license
+  install -Dm 644 "${srcdir}/tealdeer/LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
 }
 
 pkgver() {
