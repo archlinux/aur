@@ -1,0 +1,26 @@
+--- Makefile.old	2020-01-18 08:44:37.000000000 +0800
++++ Makefile	2020-02-28 16:46:05.026171385 +0800
+@@ -129,6 +129,12 @@
+ 	prefetch = yes
+ endif
+ 
++ifeq ($(ARCH),aarch64)
++	arch = any
++	bits = 64
++	prefetch = yes
++endif
++
+ ifeq ($(ARCH),ppc-32)
+ 	arch = ppc
+ endif
+@@ -166,8 +172,10 @@
+ 			LDFLAGS += -m$(bits)
+ 		endif
+ 	else
++	    ifneq ($(ARCH),aarch64)
+ 		CXXFLAGS += -m$(bits)
+ 		LDFLAGS += -m$(bits)
++		endif
+ 	endif
+ 
+ 	ifneq ($(KERNEL),Darwin)

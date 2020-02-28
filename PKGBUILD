@@ -1,40 +1,32 @@
-# Maintainer: Tod Jackson <tod.jackson@gmail.com>
-# Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
-# Contributor: user6553591 <Message on Reddit>
-# Contributor: P. Badredin <p dot badredin at gmail dot com>
-# Contributor: Justin Blanchard <UncombedCoconut at gmail dot com>
-# Contributor: Auguste Pop < auguste [at] gmail [dot] com >
+# Maintainer: Jerry Xiao <aur at mail.jerryxiao.cc>
+# Contributor: Tod Jackson <tod.jackson@gmail.com>
 
-pkgname=stockfish
+_pkgname=stockfish
+pkgname=stockfish-aarch64
 pkgver=11
-pkgrel=2
-epoch=1
+pkgrel=1
 pkgdesc="A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski"
-arch=('i686' 'x86_64' 'armv7')
+arch=('aarch64')
 url="https://stockfishchess.org/"
 license=('GPL3')
 depends=('glibc')
-source=("https://stockfishchess.org/files/$pkgname-$pkgver-linux.zip")
-sha512sums=('f1505814d143e319a748ff7a0abe58ca37481aefdfaaab762b3efeff216294201e085b015b614e44369c7a55de1bbf6e18a0183230c02bdd2fd4945719aeca3d')
+source=("aarch64.patch"
+        "https://stockfishchess.org/files/$_pkgname-$pkgver-linux.zip")
+sha256sums=('fb501f68a71453ca8a2bda0867552a31ddb2bf22b2cd096e086afda7bca1238f'
+            '96712b8c1d3eb8acd542eb7aecd8594a0c07f71ed4aca3a9d82fef84534ca576')
 
+prepare() {
+    cd "$_pkgname-$pkgver-linux/src"
+    patch -p0 Makefile < "${srcdir}/aarch64.patch"
+}
 build() {
-    cd "$pkgname-$pkgver-linux/src"
-    if [[ "$CARCH" == "i686" ]]; then
-        _arch=x86-32
-    elif grep bmi2 /proc/cpuinfo 2>&1; then
-        _arch=x86-64-bmi2
-    elif grep popcnt /proc/cpuinfo 2>&1; then
-        _arch=x86-64-modern
-    elif [[ "$CARCH" == "armv7h" ]]; then
-    _arch=armv7
-    else
-	_arch=x86-64
-    fi
-    
-    make build ARCH="$_arch" COMP=gcc
+    cd "$_pkgname-$pkgver-linux/src"
+    export CFLAGS="$CFLAGS -fstack-protector -fplt"
+    export CXXFLAGS="$CXXFLAGS -fstack-protector -fplt"
+    make build ARCH=aarch64 COMP=gcc
 }
 
 package() {
-    cd "$pkgname-$pkgver-linux/src"
+    cd "$_pkgname-$pkgver-linux/src"
     make PREFIX="$pkgdir/usr" install
 }

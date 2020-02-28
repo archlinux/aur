@@ -1,16 +1,15 @@
-pkgbase = stockfish
+pkgbase = stockfish-aarch64
 	pkgdesc = A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski
 	pkgver = 11
-	pkgrel = 2
-	epoch = 1
+	pkgrel = 1
 	url = https://stockfishchess.org/
-	arch = i686
-	arch = x86_64
-	arch = armv7
+	arch = aarch64
 	license = GPL3
 	depends = glibc
+	source = aarch64.patch
 	source = https://stockfishchess.org/files/stockfish-11-linux.zip
-	sha512sums = f1505814d143e319a748ff7a0abe58ca37481aefdfaaab762b3efeff216294201e085b015b614e44369c7a55de1bbf6e18a0183230c02bdd2fd4945719aeca3d
+	sha256sums = fb501f68a71453ca8a2bda0867552a31ddb2bf22b2cd096e086afda7bca1238f
+	sha256sums = 96712b8c1d3eb8acd542eb7aecd8594a0c07f71ed4aca3a9d82fef84534ca576
 
-pkgname = stockfish
+pkgname = stockfish-aarch64
 
