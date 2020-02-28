@@ -59,8 +59,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=19
-_rtpatchver=11
+_minor=22
+_rtpatchver=13
 _clr=${_major}.19-56
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -100,7 +100,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-preempt-rt/linux-preempt-rt.spec |\
-          grep -Ev '^Patch0000|^Patch0123' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0000|^Patch0123|^Patch0051' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-preempt-rt/${i}"
         done
@@ -317,9 +317,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('9584b971153e46a4a07573ca8f0ed78d7ca17b1eee25ff52f8b844b5d1fb77b8'
+sha256sums=('661bcb8d7e390dcc28e53795485e648f2bdc9b697b731459cc2bcc9ceb4a7d1a'
             'SKIP'
-            '8fd8726f213ce70a9d4b9cb10f6c51aaf1470bf33bc76579631c75b0a1d319d4'
+            'f5d353e405aefad1e174104631e24f34ece03cf64f02b41f6a6e7a10811fe5f5'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
