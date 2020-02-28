@@ -4,12 +4,13 @@
 # OpenSUSE spec: https://build.opensuse.org/package/view_file/openSUSE:Factory/pagure/pagure.spec?expand=1
 # Mageia spec: http://svnweb.mageia.org/packages/cauldron/pagure/current/SPECS/pagure.spec?view=markup
 
-pkgname=pagure
+pkgbase=pagure
+pkgname=("$pkgbase")
 pkgver=5.8.1
-pkgrel=0.1O
+pkgrel=0.11
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
-url="https://pagure.io/$pkgname"
+url="https://pagure.io/$pkgbase"
 license=("GPL2")
 _pydeps=('alembic'
          'arrow'
@@ -54,35 +55,35 @@ optdepends=('mariadb: MariaDB backend'
             'python-psycopg2: Python driver for PostgreSQL'
             'python-mysqlclient: Python driver for MariaDB'
             'python-pymysql: Python driver for MariaDB')
-backup=("etc/$pkgname/alembic.ini"
-        "etc/$pkgname/pagure.cfg")
-source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.gz"
+backup=("etc/$pkgbase/alembic.ini"
+        "etc/$pkgbase/pagure.cfg")
+source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
-install="$pkgname.install"
+install="$pkgbase.install"
 sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
             'c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     patch -p1 < "../${source[1]##*/}"
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
     sed -i -e "s#/usr/lib/pythonX.Y/site-packages#$site_packages#" files/pagure.conf
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     python setup.py build
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgbase-$pkgver"
     tox
 }
 
-package() {
-    cd "$pkgname-$pkgver"
+package_pagure() {
+    cd "$pkgbase-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" {README,UPGRADING}.rst
-    install -Dm644 -T files/pagure.cfg.sample "$pkgdir"/etc/pagure/pagure.cfg
-    install -Dm644 -t "$pkgdir"/etc/pagure/ files/alembic.ini
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgbase/" {README,UPGRADING}.rst
+    install -Dm644 -T files/pagure.cfg.sample "$pkgdir"/etc/$pkgbase/pagure.cfg
+    install -Dm644 -t "$pkgdir/etc/$pkgbase/" files/alembic.ini
 }
