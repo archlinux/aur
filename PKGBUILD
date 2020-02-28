@@ -8,7 +8,7 @@
 
 _pkgname=babl
 pkgname="${_pkgname}-git"
-pkgver=0.1.75.r1613.c0219d3
+pkgver=0.1.75.r1615.34aef49
 pkgrel=1
 pkgdesc="Dynamic, any to any, pixel format translation library."
 arch=('x86_64')
@@ -36,10 +36,8 @@ prepare() {
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  printf "%d.%d.%d.r%s.%s" \
-    $(grep -Po '^#define BABL_MAJOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
-    $(grep -Po '^#define BABL_MINOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
-    $(grep -Po '^#define BABL_MICRO_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
+  printf "%s.r%s.%s" \
+    $(grep -ozP "(?s)^project\('babl'.*?version: *'\K[\d.]*" meson.build) \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }
