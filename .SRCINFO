@@ -1,0 +1,23 @@
+pkgbase = teedy
+	pkgdesc = Documents management made simple
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://teedy.io/
+	arch = any
+	license = GPL2
+	makedepends = maven
+	makedepends = jdk8-openjdk
+	makedepends = npm
+	makedepends = grunt-cli
+	depends = java-runtime=8
+	depends = jre8-openjdk
+	depends = tomcat9
+	depends = tesseract
+	depends = ffmpeg
+	depends = mediainfo
+	replaces = teedy
+	source = https://github.com/sismics/docs/archive/v1.7.tar.gz
+	md5sums = cd86ac250eca77120098cda2a3218d87
+
+pkgname = teedy
+
