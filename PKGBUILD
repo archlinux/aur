@@ -1,7 +1,7 @@
 # Maintainer: anon at sansorgan.es
 pkgname=madagascar
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url=http://ahay.org/
 license=('GPL2')
@@ -29,5 +29,10 @@ build() {
 
 package() {
     make install
+    sed -i "s.${pkgdir}..g" ${pkgdir}/usr/share/madagascar/etc/env.sh
+    sed -i "s.${pkgdir}..g" ${pkgdir}/usr/share/madagascar/etc/env.csh
+    #echo "#!/bin/sh\nexport RSFROOT=/usr/" > ${pkgdir}/usr/share/madagascar/etc/env.sh
+    #echo "#!/bin/sh\nsetenv RSFROOT /usr/:" > ${pkgdir}/usr/share/madagascar/etc/env.csh
+
 }
 md5sums=('a87a6f7f5ba552cd251b1588048844bf')
