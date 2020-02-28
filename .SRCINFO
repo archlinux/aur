@@ -62,7 +62,7 @@ pkgname = pagure-postgresql
 	pkgdesc = A git-centered forge based on python using pygit2 (PostgreSQL backend configuration)
 	install = pagure-postgresql.install
 	depends = pagure=5.8.1
-	depends = postresql
+	depends = postgresql
 	depends = python-psycopg2
 	provides = pagure-backend
 	conflicts = pagure-mariadb

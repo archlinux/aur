@@ -96,7 +96,7 @@ package_pagure-apache() {
 
 package_pagure-postgresql() {
     pkgdesc+=" (PostgreSQL backend configuration)"
-    depends=("$pkgbase=$pkgver" 'postresql' 'python-psycopg2') # alternative: python-pg8000
+    depends=("$pkgbase=$pkgver" 'postgresql' 'python-psycopg2') # alternative: python-pg8000
     provides=("$pkgbase-backend")
     conflicts=("$pkgbase-mariadb")
     install="$pkgbase-postgresql.install"
