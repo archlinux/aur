@@ -1,6 +1,6 @@
 pkgbase = doomsday-tetris-2-git
 	pkgdesc = A Tetris copy with randomly generated blocks. Made with C++.
-	pkgver = 1.1.r6.g5b35303
+	pkgver = 1.2
 	pkgrel = 1
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = doomsday-tetris-2-git
 	depends = postgresql-libs
 	provides = doomsday-tetris-2
 	conflicts = doomsday-tetris-2
-	source = git+git://github.com/VisaJE/doomsday-tetris-2#commit=5b353031dedff88362f56ab7008df375cb126f6d
+	source = git+git://github.com/VisaJE/doomsday-tetris-2#commit=f62e8bcf2ced224dbbd80dc2647f364473e32e4e
 	md5sums = SKIP
 
 pkgname = doomsday-tetris-2-git
