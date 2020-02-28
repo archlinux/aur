@@ -3,7 +3,7 @@
 
 _pkgname=multidict
 pkgname=python-"$_pkgname"-gns3
-pkgver=4.7.4
+pkgver=4.7.5
 pkgrel=1
 pkgdesc='Asyncio-based multidict implementation for Python (GNS3)'
 url='https://github.com/aio-libs/multidict'
@@ -15,7 +15,7 @@ makedepends=('cython' 'python-setuptools')
 provides=("python-$_pkgname")
 conflicts=("python-$_pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aio-libs/multidict/archive/v$pkgver.tar.gz")
-sha256sums=('aedb9c1a44c500a14610d67d6d30864e6b5aa34c209161fde00fa7e93de98308')
+sha256sums=('eeba234e943f645ca94de5c5b41be1d81b7fbfdaa2c30dd13e2323cae0cb8c4e')
 
 build() {
   cd "$_pkgname-$pkgver"
