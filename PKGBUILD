@@ -9,7 +9,7 @@
 
 _pkgname=gegl
 pkgname="${_pkgname}-git"
-pkgver=0.4.23.r9856.e73cddb51
+pkgver=0.4.23.r9860.6f2a60b92
 pkgrel=1
 pkgdesc="Graph based image processing framework"
 arch=('i686' 'x86_64')
@@ -51,10 +51,8 @@ prepare() {
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  printf "%d.%d.%d.r%s.%s" \
-    $(grep -Po '^#define GEGL_MAJOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
-    $(grep -Po '^#define GEGL_MINOR_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
-    $(grep -Po '^#define GEGL_MICRO_VERSION \K[0-9]*$' ${srcdir}/build/config.h) \
+  printf "%s.r%s.%s" \
+    $(grep -ozP "(?s)^project\('gegl'.*?version: *'\K[\d.]*" meson.build) \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }
@@ -68,3 +66,4 @@ package() {
     DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
 }
 
+# vim: tabstop=2 expandtab
