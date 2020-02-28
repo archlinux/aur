@@ -1,6 +1,6 @@
 pkgbase = openpose
-	pkgdesc = OpenPose represents the first real-time multi-person system to jointly detect human body, hand, and facial keypoints (in total 135 keypoints) on single images.
-	pkgver = 1.3.0
+	pkgdesc = OpenPose: Real-time multi-person keypoint detection library for body, face, hands, and foot estimation
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/CMU-Perceptual-Computing-Lab/openpose
 	arch = any
@@ -15,12 +15,8 @@ pkgbase = openpose
 	depends = glu
 	depends = lilv
 	depends = boost
-	source = https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v1.3.0.tar.gz
-	source = GLU.patch
-	source = models.patch
-	sha256sums = 5ef834e603dc207c249f49ba672c8bd1895e5a2ffc0ff5548037402a80398bd0
-	sha256sums = d2e3ad3dd350e494d1e90d595f6b0d4daa76ed9744f7730c22b1803390f1f021
-	sha256sums = 6dfa55f1876778950ed04cbf98f032c4b4129c56c396209837403398e9815f31
+	source = https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v1.5.1.tar.gz
+	md5sums = ac27f8102c1e8c2e5b51532a46c10181
 
 pkgname = openpose
 
