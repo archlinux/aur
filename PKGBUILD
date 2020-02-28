@@ -7,7 +7,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-postgresql" "$pkgbase-mariadb")
 pkgver=5.8.1
-pkgrel=0.15
+pkgrel=0.16
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -81,6 +81,9 @@ package_pagure() {
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgbase/" {README,UPGRADING}.rst
     install -Dm644 -T "files/pagure.cfg.sample" "$pkgdir/etc/$pkgbase/pagure.cfg"
     install -Dm644 -t "$pkgdir/etc/$pkgbase/" "files/alembic.ini"
+    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" files/{api_key_expire_mail,mirror_project_in}.py
+    install -Dm755 -t "$pkgdir/usr/lib/$pkgbase/" files/{aclchecker,keyhelper}.py
+    cp -r alembic "$pkgdir/usr/share/$pkgbase/"
 }
 
 package_pagure-apache() {
