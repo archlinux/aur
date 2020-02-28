@@ -1,5 +1,5 @@
 pkgname=qcomix
-pkgver=1.0.0b2
+pkgver=1.0.0b3
 pkgrel=1
 pkgdesc="Qt-based comic viewer."
 arch=('i686' 'x86_64')

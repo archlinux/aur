@@ -1,6 +1,6 @@
 pkgbase = qcomix
 	pkgdesc = Qt-based comic viewer.
-	pkgver = 1.0.0b2
+	pkgver = 1.0.0b3
 	pkgrel = 1
 	url = https://gitgud.io/qcomix/qcomix.git#1.0b3
 	arch = i686
