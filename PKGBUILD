@@ -39,7 +39,7 @@ optdepends=(
 	'python-pylast: Last.FM support'
 	'youtube-dl: Youtube support'
 )
-conflicts=("lollypop" "lollypop-git" "lollypop-stable")
+conflicts=("lollypop" "lollypop-git" "lollypop-stable-git")
 provides=("lollypop")
 source=("git+https://gitlab.gnome.org/World/lollypop#branch=next")
 

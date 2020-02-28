@@ -31,7 +31,7 @@ pkgbase = lollypop-next-git
 	provides = lollypop
 	conflicts = lollypop
 	conflicts = lollypop-git
-	conflicts = lollypop-stable
+	conflicts = lollypop-stable-git
 	source = git+https://gitlab.gnome.org/World/lollypop#branch=next
 	md5sums = SKIP
 
