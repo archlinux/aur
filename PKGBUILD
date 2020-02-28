@@ -18,7 +18,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   local ver="$(svnversion)"
-  local rel="$(grep -e "^VERSION=" configure | sed -e 's/.svn//' -e 's/VERSION=//' -e 's/"//g')"
+  local rel="$(grep -e "^VERSION=" configure | sed -e 's/.svn//' -e 's/VERSION=//' -e 's/\"//g')"
   printf "%s.r%s" "$rel" "${ver//[[:alpha:]]}"
 }
 
