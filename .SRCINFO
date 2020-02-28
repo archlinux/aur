@@ -1,11 +1,12 @@
 pkgbase = cardpeek
 	pkgdesc = A tool to read-only the contents of smartcards
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pannetrat.com/Cardpeek
+	arch = armv7h
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = gtk3
 	depends = lua52
 	depends = pcsclite

@@ -3,11 +3,11 @@
 
 pkgname=cardpeek
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to read-only the contents of smartcards"
-arch=(i686 x86_64)
+arch=('armv7h' 'i686' 'x86_64')
 url="http://pannetrat.com/Cardpeek"
-license=('GPL')
+license=('GPL3')
 depends=('gtk3' 'lua52' 'pcsclite' 'curl')
 
 source=("http://downloads.pannetrat.com/install/${pkgname}-${pkgver}.tar.gz")
@@ -23,3 +23,4 @@ package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="$pkgdir/" install
 }
+
