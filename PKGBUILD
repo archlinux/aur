@@ -1,14 +1,14 @@
 # Submitter: Chris Kitching
 # Maintainer: Jakub Okoński <jakub@okonski.org>
 pkgname=hip
-pkgver=2.5.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
 makedepends=('hcc>=2.5.0' 'git' 'cmake' 'python2')
 source=("https://github.com/ROCm-Developer-Tools/HIP/archive/roc-$pkgver.tar.gz")
-sha256sums=('604aaa200ea72e7d02ec0371ea4a7e29ca31d6a49a9075c6c6cf0aa8ef04c2bd')
+sha256sums=('3e7b7ef508f4c0d34756104936bc25eaffe419415013c93da72244aac199ae91')
 
 build() {
   mkdir -p "$srcdir/build"
