@@ -1,5 +1,5 @@
 function post_install {
   echo "
-You need to setup your config structure in \$HOME/.config first. Run cp -r "/usr/share/doc/proji/example-config/" "~/.config/proji"
+You need to setup your config structure in \$HOME/.config first. Run "proji init"
 "
 }
