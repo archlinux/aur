@@ -11,6 +11,7 @@
 #
 # NOTES:
 #
+# 20191009: Apply cmake list hack to work around harfbuzz hb.h inclusion problem
 # 20190409: Mariadb patch applied from https://aur.archlinux.org/packages/codelite/
 # 20151027: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
 # 20151027: -DENABLE_LLDB=0: ArchLinux clang/llvm-3.7: CommandLine Error: Option 'aarch64-reserve-x18' registered more than once
@@ -18,7 +19,7 @@
 #
 
 pkgname=codelite
-pkgver=13.0
+pkgver=14.0
 pkgrel=1
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
@@ -51,7 +52,7 @@ source=(
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('2f5251a0b5d6e1bc0d1bdc6ea7aa830b'
+md5sums=('e9d2519fa8077ca9f86b6b8fa9adf332'
          '20f3428eb831c3ff2539a7228afaa3b4')
 
 
@@ -69,7 +70,7 @@ pkg_name_ver="${pkgname}-${pkgver//_/-}"
 prepare()
 {
   cd "${srcdir}/${pkg_name_ver}"
-  patch -p0 < "${startdir}/CMakeLists.txt.patch"
+  #patch -p0 < "${startdir}/CMakeLists.txt.patch"
 }
 
 
