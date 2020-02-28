@@ -6,7 +6,7 @@
 
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.5
+pkgrel=0.6
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
@@ -39,6 +39,7 @@ _pydeps=('alembic'
          'straight.plugin'
          'wtforms')
 depends=('git'
+         'gitolite' # This is technically optional, but our packaging assumes it
          'libffi'
          'libgit2'
          'libjpeg'
@@ -46,6 +47,12 @@ depends=('git'
          "${_pydeps[@]/#/python-}"
          'redis')
 makedepends=('python-setuptools')
+optdepends=('mariadb: MariaDB backend'
+            'postgresql: PostgreSQL backend'
+            'python-pg8000: Python driver for PostgreSQL'
+            'python-psycopg2: Python driver for PostgreSQL'
+            'python-mysqlclient: Python driver for MariaDB'
+            'python-pymysql: Python driver for MariaDB')
 source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
 sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
