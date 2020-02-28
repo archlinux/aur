@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.8.1
-	pkgrel = 0.3
+	pkgrel = 0.4
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL2
@@ -36,6 +36,7 @@ pkgbase = pagure
 	depends = python-requests
 	depends = python-six
 	depends = python-sqlalchemy
+	depends = python-straight.plugin
 	depends = python-wtforms
 	depends = redis
 	source = https://releases.pagure.org/pagure/pagure-5.8.1.tar.gz

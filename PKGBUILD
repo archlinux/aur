@@ -1,8 +1,12 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
+# Fedora spec: https://src.fedoraproject.org/rpms/pagure/blob/master/f/pagure.spec
+# OpenSUSE spec: https://build.opensuse.org/package/view_file/openSUSE:Factory/pagure/pagure.spec?expand=1
+# Mageia spec: http://svnweb.mageia.org/packages/cauldron/pagure/current/SPECS/pagure.spec?view=markup
+
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.3
+pkgrel=0.4
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
@@ -32,7 +36,7 @@ _pydeps=('alembic'
          'requests'
          'six'
          'sqlalchemy'
-         # 'straight-plugin' py2?
+         'straight.plugin'
          'wtforms')
 depends=('git'
          'libffi'
