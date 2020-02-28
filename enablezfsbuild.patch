@@ -1,0 +1,22 @@
+diff -Naur a/kernel/rcu/tree_plugin.h b/kernel/rcu/tree_plugin.h
+--- a/kernel/rcu/tree_plugin.h  2020-01-06 00:23:27.000000000 +0100
++++ b/kernel/rcu/tree_plugin.h  2020-01-08 23:28:45.969788708 +0100
+@@ -360,7 +360,7 @@
+                WARN_ON_ONCE(current->rcu_read_lock_nesting > RCU_NEST_PM
+        barrier();  /* critical section after entry code. */
+ }
+-EXPORT_SYMBOL_GPL(__rcu_read_lock);
++EXPORT_SYMBOL(__rcu_read_lock);
+
+ /*
+  * Preemptible RCU implementation for rcu_read_unlock().
+@@ -390,7 +390,7 @@
+                WARN_ON_ONCE(rrln < 0 && rrln > RCU_NEST_NMAX);
+        }
+ }
+-EXPORT_SYMBOL_GPL(__rcu_read_unlock);
++EXPORT_SYMBOL(__rcu_read_unlock);
+
+ /*
+  * Advance a ->blkd_tasks-list pointer to the next entry, instead
+

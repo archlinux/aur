@@ -1,0 +1,41 @@
+pkgbase = linux-enablezfsbuild
+	pkgdesc = Linux kernel patched for compiling with zfs
+	pkgver = 5.5.6.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.6-arch1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	options = !strip
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.6-arch1
+	source = enablezfsbuild.patch
+	source = config
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868
+
+pkgname = linux-enablezfsbuild
+	pkgdesc = The Linux kernel patched for compiling with zfs kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+
+pkgname = linux-enablezfsbuild-headers
+	pkgdesc = Headers and scripts for building modules for the Linux kernel patched for compiling with zfs kernel
+
+pkgname = linux-enablezfsbuild-docs
+	pkgdesc = Documentation for the Linux kernel patched for compiling with zfs kernel
+
