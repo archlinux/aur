@@ -1,0 +1,74 @@
+#! /usr/bin/python
+from subprocess import run
+import sys
+import os
+
+MODULES = '/usr/lib/modules'
+
+
+def get_output(*cmd):
+    return run(cmd, capture_output=True).stdout.decode('utf8').strip()
+
+
+def yn_choice(message, default='y'):
+    try:
+        choices = 'Y/n' if default.lower() in ('y', 'yes') else 'y/N'
+        choice = input("%s\n(%s): " % (message, choices))
+        values = ('y', 'yes', '') if default == 'y' else ('y', 'yes')
+        return choice.strip().lower() in values
+    except (KeyboardInterrupt, EOFError):
+        sys.exit(1)
+
+
+running_kernel = get_output('uname', '-r')
+running_pkgs = get_output('pacman', '-Qoq', f'{MODULES}/{running_kernel}')
+all_kernels = [f'{MODULES}/{k}' for k in os.listdir(MODULES)]
+all_pkgs = get_output('pacman', '-Qoq', *all_kernels).split()
+orphaned_packages = get_output('pacman', '-Qdtq', *all_pkgs).split()
+
+non_orphaned = []
+orphaned_not_running = []
+orphaned_running = []
+
+for pkg in sorted(all_pkgs):
+    orphaned = pkg in orphaned_packages
+    running = pkg in running_pkgs
+
+    if orphaned and not running:
+        orphaned_not_running.append(pkg)
+    elif orphaned:
+        orphaned_running.append(pkg)
+    else:
+        non_orphaned.append(pkg)
+
+if non_orphaned:
+    print(
+        "The following required or explicitly-installed kernel packages will be kept:"
+    )
+    for pkg in non_orphaned:
+        print('    ', pkg)
+
+    print()
+
+if orphaned_running:
+    print(
+        "The following orphaned packages for the currently running kernel will be kept:"
+    )
+    for pkg in orphaned_running:
+        print('    ', pkg)
+
+    print()
+
+if orphaned_not_running:
+    print("The following orphaned kernel packages will be removed:")
+    for pkg in orphaned_not_running:
+        print('    ', pkg)
+
+    print()
+
+if not orphaned_not_running:
+    print("Nothing to do")
+    sys.exit(0)
+
+if yn_choice("Continue?"):
+    sys.exit(run(['sudo', 'pacman', '-Rs'] + orphaned_not_running).returncode)
