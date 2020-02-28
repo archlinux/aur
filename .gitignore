@@ -1,0 +1,5 @@
+*.xpi
+*.pkg.*
+src
+pkg
+venv
