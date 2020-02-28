@@ -1,12 +1,18 @@
 pkgbase = python-tgs
 	pkgdesc = Telegram Animated Stickers Tools
 	pkgver = 0.3.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.org/project/tgs
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	optdepends = python-pillow
+	optdepends = python-pypotrace>=0.2
+	optdepends = python-numpy
+	optdepends = python-scipy
+	optdepends = python-cairosvg
+	optdepends = python-fonttools
 	source = https://files.pythonhosted.org/packages/source/t/tgs/tgs-0.3.6.tar.gz
 	source = LICENSE::https://gitlab.com/mattia.basaglia/tgs/raw/master/COPYING
 	md5sums = dacf23a870cc033816f920b806c86406
