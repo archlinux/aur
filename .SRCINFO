@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-readonly-git
 	pkgdesc = The official GUI for MongoDB - Readonly Edition - git version
 	pkgver = 1.21.0.r3236.dd8caa98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = mongodb-compass-readonly-git
 	depends = electron6
 	depends = krb5
 	depends = libsecret
+	depends = lsb-release
 	provides = mongodb-compass-readonly
 	conflicts = mongodb-compass-readonly
 	source = mongodb-compass-readonly-git::git+https://github.com/mongodb-js/compass
