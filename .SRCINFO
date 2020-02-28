@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.8.1
-	pkgrel = 0.17
+	pkgrel = 0.18
 	url = https://pagure.io/pagure
 	arch = any
 	license = GPL2
@@ -56,6 +56,7 @@ pkgname = pagure-apache
 	pkgdesc = A git-centered forge based on python using pygit2 (Apache host configuration)
 	depends = pagure=5.8.1
 	depends = apache
+	depends = mod_wsgi
 	backup = etc/httpd/conf/extra/pagure.conf
 
 pkgname = pagure-mariadb

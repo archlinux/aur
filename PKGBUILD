@@ -7,7 +7,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
 pkgver=5.8.1
-pkgrel=0.17
+pkgrel=0.18
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -53,12 +53,18 @@ source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
 sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
             'c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854')
+_homedir="/var/lib/$pkgbase"
 
 prepare() {
     cd "$pkgbase-$pkgver"
     patch -p1 < "../${source[1]##*/}"
     local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-    sed -i -e "s#/usr/lib/pythonX.Y/site-packages#$site_packages#" files/pagure.conf
+    sed -i -e "s#/usr/lib/pythonX.Y/site-packages#$site_packages#" \
+           -e 's/#//' \
+           -e '/!mod_authz/,+4d' \
+           -e '/# Apache 2.4/d' \
+           -e "s#/path/to/git/repositorios#$_homedir#g" \
+        files/pagure.conf
 }
 
 build() {
@@ -81,6 +87,7 @@ package_pagure() {
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgbase/" {README,UPGRADING}.rst
     install -Dm644 -T "files/pagure.cfg.sample" "$pkgdir/etc/$pkgbase/pagure.cfg"
     install -Dm644 -t "$pkgdir/etc/$pkgbase/" "files/alembic.ini"
+    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
     install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" files/{api_key_expire_mail,mirror_project_in}.py
     install -Dm755 -t "$pkgdir/usr/lib/$pkgbase/" files/{aclchecker,keyhelper}.py
     cp -r alembic "$pkgdir/usr/share/$pkgbase/"
@@ -88,10 +95,11 @@ package_pagure() {
 
 package_pagure-apache() {
     pkgdesc+=" (Apache host configuration)"
-    depends=("$pkgbase=$pkgver" 'apache')
+    depends=("$pkgbase=$pkgver" 'apache' 'mod_wsgi')
     backup=("etc/httpd/conf/extra/$pkgbase.conf")
     cd "$pkgbase-$pkgver"
     install -Dm644 -t "$pkgdir/etc/httpd/conf/extra/" files/pagure.conf
+    install -Dm644 -t "$pkgdir/usr/lib/$pkgbase/" files/{doc_,}pagure.wsgi
 }
 
 package_pagure-mariadb() {
@@ -100,8 +108,6 @@ package_pagure-mariadb() {
     provides=("$pkgbase-backend")
     conflicts=("$pkgbase-postgresql" "$pkgbase-sqlite")
     install="$pkgbase-mariadb.install"
-    cd "$pkgbase-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
 
 package_pagure-postgresql() {
@@ -110,8 +116,6 @@ package_pagure-postgresql() {
     provides=("$pkgbase-backend")
     conflicts=("$pkgbase-mariadb" "$pkgbase-sqlite")
     install="$pkgbase-postgresql.install"
-    cd "$pkgbase-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
 
 package_pagure-sqlite() {
@@ -120,6 +124,4 @@ package_pagure-sqlite() {
     provides=("$pkgbase-backend")
     conflicts=("$pkgbase-mariadb" "$pkgbase-postgresql")
     install="$pkgbase-sqlite.install"
-    cd "$pkgbase-$pkgver"
-    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
