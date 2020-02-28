@@ -8,6 +8,7 @@ pkgbase = minipro-git
 	license = GPL
 	makedepends = git
 	depends = libusb
+	depends = srecord
 	provides = minipro
 	conflicts = minipro
 	source = minipro-git::git+https://gitlab.com/DavidGriffith/minipro.git
