@@ -32,10 +32,8 @@ pkgbase = onivim2-git
 	makedepends = libxt
 	makedepends = libxxf86vm
 	makedepends = m4
-	makedepends = nodejs
-	makedepends = ragel
-	makedepends = wget
-	makedepends = fuse2
+	makedepends = nasm
+	makedepends = python2
 	options = !strip
 	source = onivim2-git::git+https://github.com/onivim/oni2.git#branch=master
 	source = onivim2.install
