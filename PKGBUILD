@@ -30,9 +30,10 @@ check() {
 
 package() {
   cd "${pkgname%-git}"
+  mv "${pkgname%-git}.man" "${pkgname%-git}.8"
   install -Dm 755 "target/release/${pkgname%-git}" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
-  install -Dm 644 kmon.man -t "$pkgdir/usr/local/man/man8/${pkgname%-git}.8"
+  install -Dm 644 "${pkgname%-git}.8" -t "$pkgdir/usr/local/man/man8"
   gzip "$pkgdir/usr/local/man/man8/${pkgname%-git}.8"
 }
