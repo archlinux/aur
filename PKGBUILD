@@ -1,8 +1,8 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="gr-framework"
-pkgver="0.46.0"
-pkgrel="3"
+pkgver="0.47.0"
+pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
@@ -12,16 +12,8 @@ depends=("bzip2" "cairo" "fontconfig" "freetype2" "ghostscript" "glfw-x11" \
          "qhull" "qt5-base" "zlib")
 makedepends=("cmake")
 optdepends=("ffmpeg: video support")
-source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz"
-        "${pkgname}-${pkgver}.patch")
-sha256sums=("c466ae98fd26ac8a30d1b35a899201eaf0ede593b0a3f61f806c49261acb6982"
-            "6e5a7e0997170c6df5b86ad5629a0750e9b5fe17749b279d4aaf27d845d1cb6a")
-
-prepare() {
-    cd "${srcdir}/gr-${pkgver}" || return
-    patch -Np1 -i "${srcdir}/${pkgname}-${pkgver}.patch" && \
-    echo "${pkgver}" > version.txt
-}
+source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz")
+sha256sums=("aa501ed6e516d06382e6734c86d86d1363d81e9a6451cbcc1750ec80066c8a91")
 
 build() {
     cd "${srcdir}/gr-${pkgver}" || return
