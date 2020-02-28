@@ -4,12 +4,12 @@ _edition=' Community'
 pkgname="mongodb-$_target"
 _pkgver='1.20.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='1'
+pkgrel='2'
 pkgdesc='The official GUI for MongoDB - Community Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-depends=('electron3-bin' 'krb5' 'libsecret')
+depends=('electron3-bin' 'krb5' 'libsecret' 'lsb-release')
 makedepends=('npm')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
