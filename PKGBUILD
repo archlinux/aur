@@ -7,7 +7,7 @@
 pkgbase=pagure
 pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-postgresql" "$pkgbase-mariadb")
 pkgver=5.8.1
-pkgrel=0.13
+pkgrel=0.14
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -51,7 +51,6 @@ makedepends=('python-setuptools')
 checkdepends=('python-tox')
 source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
-install="$pkgbase.install"
 sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
             'c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854')
 
@@ -96,12 +95,14 @@ package_pagure-postgresql() {
     pkgdesc+=" (PostgreSQL backend configuration)"
     depends=("$pkgbase=$pkgver" 'postresql' 'python-psycopg2') # alternative: python-pg8000
     provides=("$pkgbase-backend")
-    cd "$pkgbase-$pkgver"
+    conflicts=("$pkgbase-mariadb")
+    install="$pkgbase-postgresql.install"
 }
 
 package_pagure-mariadb() {
     pkgdesc+=" (MariaDB backend configuration)"
     depends=("$pkgbase=$pkgver" 'mariadb' 'python-mysqlclient') # alternative: python-pymysql
     provides=("$pkgbase-backend")
-    cd "$pkgbase-$pkgver"
+    conflicts=("$pkgbase-postgresql")
+    install="$pkgbase-mariadb.install"
 }

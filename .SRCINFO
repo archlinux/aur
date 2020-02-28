@@ -1,9 +1,8 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.8.1
-	pkgrel = 0.13
+	pkgrel = 0.14
 	url = https://pagure.io/pagure
-	install = pagure.install
 	arch = any
 	license = GPL2
 	checkdepends = python-tox
@@ -61,15 +60,19 @@ pkgname = pagure-apache
 
 pkgname = pagure-postgresql
 	pkgdesc = A git-centered forge based on python using pygit2 (PostgreSQL backend configuration)
+	install = pagure-postgresql.install
 	depends = pagure=5.8.1
 	depends = postresql
 	depends = python-psycopg2
 	provides = pagure-backend
+	conflicts = pagure-mariadb
 
 pkgname = pagure-mariadb
 	pkgdesc = A git-centered forge based on python using pygit2 (MariaDB backend configuration)
+	install = pagure-mariadb.install
 	depends = pagure=5.8.1
 	depends = mariadb
 	depends = python-mysqlclient
 	provides = pagure-backend
+	conflicts = pagure-postgresql
 

@@ -1,0 +1,27 @@
+post_install() {
+	cat <<- EOF
+		Te setup using MariaDB use:
+		
+		\$ sudo mysql -u root -p
+		mysql> create database pagure;
+		mysql> grant all privileges on pagure.* to pagure identified by '--PagureDBUserPW--';
+		mysql> flush privileges;
+		mysql> exit
+		
+		Configure Pagure in /etc/pagure/pagure.cfg and /etc/pagure/alembic.ini
+		
+		Once configured, populate the database:
+		
+		\$ python /usr/share/pagure/pagure_createdb.py -c /etc/pagure/pagure.cfg -i /etc/pagure/alembic.ini
+	EOF
+}
+
+post_upgrade() {
+	cat <<- EOF
+		Update Pagure database format using:
+		
+		\$ python /usr/share/pagure/pagure_createdb.py -c /etc/pagure/pagure.cfg
+	EOF
+}
+
+# vim : ts=4 sw=4 noet

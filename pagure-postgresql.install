@@ -1,6 +1,5 @@
 post_install() {
 	cat <<- EOF
-		Either MariaDB or PostgreSQL must be configured and running.
 		To setup using PostreSQL, use:
 		
 		\$ sudo -u postgres psql
@@ -12,19 +11,11 @@ post_install() {
 		GRANT ALL PRIVILEGES ON ALL sequences IN SCHEMA public TO pagure;
 		\\q
 		
-		Te setup using MariaDB use:
+		Configure Pagure in /etc/pagure/pagure.cfg and /etc/pagure/alembic.ini
 		
-		\$ sudo mysql -u root -p
-		mysql> create database pagure;
-		mysql> grant all privileges on pagure.* to pagure identified by '--PagureDBUserPW--';
-		mysql> flush privileges;
-		mysql> exit
+		Once configured, populate the database:
 		
-		Configure Pagure is /etc/pagure/pagure.cfg and /etc/pagure/alembic.ini
-		
-		Once configured with the correct backend, populate the database:
-		
-		python /usr/share/pagure/pagure_createdb.py -c /etc/pagure/pagure.cfg -i /etc/pagure/alembic.ini
+		\$ python /usr/share/pagure/pagure_createdb.py -c /etc/pagure/pagure.cfg -i /etc/pagure/alembic.ini
 	EOF
 }
 
