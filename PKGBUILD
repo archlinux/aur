@@ -6,7 +6,7 @@
 
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.9
+pkgrel=0.1O
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
@@ -65,6 +65,8 @@ sha256sums=('5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687'
 prepare() {
     cd "$pkgname-$pkgver"
     patch -p1 < "../${source[1]##*/}"
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    sed -i -e "s#/usr/lib/pythonX.Y/site-packages#$site_packages#" files/pagure.conf
 }
 
 build() {
