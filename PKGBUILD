@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=liblo-ipv6
-pkgver=0.30
+pkgver=0.31
 pkgrel=1
 epoch=1
 pkgdesc="A lightweight OSC (Open Sound Control) implementation (with IPv6 support)"
@@ -13,7 +13,7 @@ makedepends=('doxygen')
 provides=('liblo' "liblo=$pkgver" 'liblo.so')
 conflicts=('liblo')
 source=("http://downloads.sourceforge.net/liblo/liblo-$pkgver.tar.gz")
-md5sums=('fa1a9d45f86fc18fb54019f670ff2262')
+md5sums=('14378c1e74c58e777fbb4fcf33ac5315')
 
 
 build() {
