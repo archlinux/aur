@@ -6,7 +6,7 @@
 
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.6
+pkgrel=0.7
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
@@ -47,6 +47,7 @@ depends=('git'
          "${_pydeps[@]/#/python-}"
          'redis')
 makedepends=('python-setuptools')
+checkdepends=('python-tox')
 optdepends=('mariadb: MariaDB backend'
             'postgresql: PostgreSQL backend'
             'python-pg8000: Python driver for PostgreSQL'
@@ -66,6 +67,11 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     python setup.py build
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    tox
 }
 
 package() {
