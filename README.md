@@ -1,7 +1,10 @@
 
-AUR package location: <https://aur.archlinux.org/packages/sanskrit-fonts/>
+- AUR package location: <https://aur.archlinux.org/packages/sanskrit-fonts/>
+- Package source code locations:
+    - git clone git@github.com:sanskrit-coders/sanskrit-fonts-aur.git
+    - git clone ssh://aur@aur.archlinux.org/sanskrit-fonts.git
 
-# Creating a new Arch Linux package release
+## Creating a new Arch Linux package release
 - Create a github release at <https://github.com/sanskrit-coders/sanskrit-fonts/releases>.
 - Update PKGBUILD.
   - Fix the version numbers.
