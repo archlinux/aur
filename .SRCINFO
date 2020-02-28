@@ -8,9 +8,9 @@ pkgbase = ecosim-git
 	makedepends = gcc
 	depends = glfw-x11
 	depends = glew
-	optdepends = python
 	optdepends = ffmpeg
-	optdepends = matplotlib
+	optdepends = python
+	optdepends = python-matplotlib
 	provides = ecosim=r194.a2c2d33
 	conflicts = ecosim
 	source = ecosim-git::git://github.com/connor-brooks/ecosim.git

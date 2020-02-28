@@ -7,7 +7,7 @@ pkgdesc="An interactive ecosystem and evolution simulator written in C and OpenG
 arch=('x86_64')
 url="http://connor-brooks.com/ecosim"
 depends=('glfw-x11' 'glew')
-optdepends=('python' 'ffmpeg' 'matplotlib')
+optdepends=('ffmpeg' 'python' 'python-matplotlib')
 makedepends=('make' 'gcc')
 provides=("ecosim=$pkgver")
 conflicts=("ecosim")
