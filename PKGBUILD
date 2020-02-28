@@ -7,7 +7,7 @@ pkgname=('lib32-wxbase-light'
          'lib32-wxcommon-light'
          )
 pkgver=3.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="wxWidgets suite for Base and GTK2 and GTK3 toolkits (GNOME/GStreamer free!) (32 bits)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -25,31 +25,28 @@ makedepends=('lib32-gcc-libs'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'lib32-make-abicheck-non-fatal.patch'
-        'lib32-wxwidgets-collision.patch'
         )
 sha256sums=('SKIP'
             'd4c2d070a06eb63f0a018c8cf687589e5ffdec601225b4d16a268ffe390fb58b'
-            'c73c51f4b65a779462a4e0923a7e3bc7fe28457258fc8bfb5d843d87df119364'
             )
 
 prepare() {
   mkdir -p build-{base,gtk{2,3}}
 
-  cd wxwidgets
-
-  patch -p1 -i "${srcdir}/lib32-wxwidgets-collision.patch"
+  patch -d wxwidgets -p1 -i "${srcdir}/lib32-wxwidgets-collision.patch"
 
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
-  patch -p1 -i "${srcdir}/lib32-make-abicheck-non-fatal.patch"
+  patch -d wxwidgets -p1 -i "${srcdir}/lib32-make-abicheck-non-fatal.patch"
 }
 
 build() {
+
   export CC="gcc -m32"
   export CXX="g++ -m32"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
-  msg2 "Build WxBASE"
+  msg2 "Configure WxBASE"
   cd "${srcdir}/build-base"
   ../wxwidgets/configure \
       --prefix=/usr \
@@ -58,10 +55,7 @@ build() {
       --enable-unicode \
       --disable-{precomp-headers,gui}
 
-  make
-  make -C ../wxwidgets/locale allmo
-
-  msg2 "Build WxGTK2"
+  msg2 "Configure WxGTK2"
   cd "${srcdir}/build-gtk2"
   ../wxwidgets/configure \
       --prefix=/usr \
@@ -72,12 +66,10 @@ build() {
       --with-{opengl,sdl} \
       --enable-graphics_ctx \
       --without-gnomevfs \
-      --disable-{precomp-headers,mediactrl,webview}
+      --disable-{precomp-headers,mediactrl,webview} \
 
-  make
-  make -C ../wxwidgets/locale allmo
 
-  msg2 "Build WxGTK3"
+  msg2 "Configure WxGTK3"
   cd "${srcdir}/build-gtk3"
   ../wxwidgets/configure \
       --prefix=/usr \
@@ -90,8 +82,19 @@ build() {
       --without-gnomevfs \
       --disable-{precomp-headers,mediactrl,webview}
 
-  make
-  make -C ../wxwidgets/locale allmo
+  cd "${srcdir}"
+
+  msg2 "Build WxBASE"
+  make -C build-base
+  make -C wxwidgets/locale allmo
+
+  msg2 "Build WxGTK2"
+  make -C build-gtk2
+  make -C wxwidgets/locale allmo
+
+  msg2 "Build WxGTK3"
+  make -C build-gtk3
+  make -C wxwidgets/locale allmo
 }
 
 package_lib32-wxbase-light() {
@@ -108,9 +111,7 @@ package_lib32-wxbase-light() {
 
   make -C build-base DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin/wx-config32"
-  mv "${pkgdir}/usr/bin/wx-config32-3.0" "${pkgdir}/usr/bin/wx-config32-3.0-base"
-  (cd "${pkgdir}/usr/bin"; ln -s wx-config32-3.0-base wx-config32-base)
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config32-base"
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/share"
 
@@ -136,9 +137,10 @@ package_lib32-wxgtk2-light() {
 
   make -C build-gtk2 DESTDIR="${pkgdir}" install
 
-  cp -P "${pkgdir}/usr/bin/wx-config32" "${pkgdir}/usr/bin/wx-config32-gtk2"
-  cp -P "${pkgdir}/usr/bin/wx-config32-3.0" "${pkgdir}/usr/bin/wx-config32-3.0-gtk2"
-  rm -fr "${pkgdir}/usr/bin/"wxrc32{,-3.0}
+  cp -P "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config32"
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config32-gtk2"
+
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3.0}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib32/"*baseu*
   rm -fr "${pkgdir}/usr/share"
@@ -161,10 +163,9 @@ package_lib32-wxgtk3-light() {
 
   make -C build-gtk3 DESTDIR="${pkgdir}" install
 
-  rm -fr "${pkgdir}/usr/bin/wx-config32"
-  mv "${pkgdir}/usr/bin/wx-config32-3.0" "${pkgdir}/usr/bin/wx-config32-3.0-gtk3"
-  (cd "${pkgdir}/usr/bin"; ln -s wx-config32-3.0-gtk3 wx-config32-gtk3)
-  rm -fr "${pkgdir}/usr/bin/"wxrc32{,-3.0}
+  mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config32-gtk3"
+
+  rm -fr "${pkgdir}/usr/bin/"wxrc{,-3.0}
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib32/"*baseu*
   rm -fr "${pkgdir}/usr/share"
@@ -188,10 +189,13 @@ package_lib32-wxcommon-light() {
   make -C build-gtk2 DESTDIR="${pkgdir}" install
   rm -fr "${pkgdir}/usr/bin"
   make -C build-gtk3 DESTDIR="${pkgdir}" install
-  rm -fr "${pkgdir}/usr/bin/"wx-config32{,-3.0}
+  rm -fr "${pkgdir}/usr/bin/wx-config"
   make -C build-base DESTDIR="${pkgdir}" install
+  rm -fr "${pkgdir}/usr/bin/wx-config"
 
-  rm -fr "${pkgdir}/usr/bin/"wx-config32{,-3.0}
+  mv "${pkgdir}/usr/bin/wxrc" "${pkgdir}/usr/bin/wxrc32"
+  mv "${pkgdir}/usr/bin/wxrc-3.0" "${pkgdir}/usr/bin/wxrc32-3.0"
+
   rm -fr "${pkgdir}/usr/include"
   rm -fr "${pkgdir}/usr/lib32"
   rm -fr "${pkgdir}/usr/share"

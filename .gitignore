@@ -5,4 +5,3 @@
 !config32.conf
 !wx-config32.sh
 !lib32-make-abicheck-non-fatal.patch
-!lib32-wxwidgets-collision.patch
