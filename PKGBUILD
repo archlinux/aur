@@ -10,7 +10,7 @@ license=("MIT")
 arch=("any")
 
 # Dependencies
-depends=()
+depends=("git")
 makedepends=("scdoc")
 
 # Download information
