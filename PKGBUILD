@@ -2,7 +2,7 @@
 # Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 
 pkgname=fizz
-pkgver=2020.02.03.00
+pkgver=2020.02.24.00
 pkgrel=1
 pkgdesc="C++14 implementation of the TLS-1.3 standard"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('boost' 'boost-libs' 'google-glog' 'folly' 'libevent' 'openssl' 'libsodium' 'fmt' 'double-conversion')
 makedepends=('cmake' 'gtest' 'gmock')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7ac2bdb2283f157b6a04ec82b2aa662f4ccc7811d4cc7374e70c3c4b632e4ffe')
+sha256sums=('b3309da5d414b917c8002b46852de22666741c6070b046b00c101bedf57c77ff')
 
 build() {
     cd "$pkgname-$pkgver/$pkgname"
