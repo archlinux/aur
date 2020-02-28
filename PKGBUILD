@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
+license=('MIT')
 makedepends=('hcc>=2.5.0' 'git' 'cmake' 'python2')
 source=("https://github.com/ROCm-Developer-Tools/HIP/archive/roc-$pkgver.tar.gz")
 sha256sums=('3e7b7ef508f4c0d34756104936bc25eaffe419415013c93da72244aac199ae91')

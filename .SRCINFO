@@ -4,6 +4,7 @@ pkgbase = hip
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/HIP
 	arch = x86_64
+	license = MIT
 	makedepends = hcc>=2.5.0
 	makedepends = git
 	makedepends = cmake
