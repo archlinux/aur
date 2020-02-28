@@ -1,13 +1,13 @@
 pkgbase = xmake
 	pkgdesc = A make-like build utility based on Lua
 	pkgver = 2.3.1
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/xmake-io/xmake
 	arch = i686
 	arch = x86_64
 	license = Apache
 	source = xmake.tar.gz::https://github.com/xmake-io/xmake/releases/download/v2.3.1/xmake-v2.3.1.tar.gz
-	sha256sums = 4b1b46233d84259a66bc112d05513feae2507f1b30b4c2a494c4bdf84e5845dd
+	sha256sums = c927efad5412c3bdb8bad1be5b1b2ea40a998dff2a252edb443782865b7472b9
 
 pkgname = xmake
 
