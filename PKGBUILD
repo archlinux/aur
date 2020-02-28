@@ -7,21 +7,17 @@
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 # Contributor: Eric Forgeot <http://esclinux.tk>
 
-# Globe Plugin and Map Server are disabled in cmake by default.
-# Uncomment them in the build() portion if you'd like them enabled.
-# You will also need to install osgearth-qt4 or fcgi, respectively, before building.
-
 _pkgname=qgis
 pkgname="$_pkgname"-ltr
-pkgver=3.4.15
+pkgver=3.10.3
 pkgrel=1
 pkgdesc='Geographic Information System (GIS); Long Term Release'
 url='https://qgis.org/'
 license=(GPL)
 arch=(x86_64)
-depends=(desktop-file-utils gdal hicolor-icon-theme libzip python-qscintilla-qt5 qca qt5-3d
-         qt5-serialport qt5-webkit qt5-xmlpatterns qtkeychain qwtpolar spatialindex python-sip)
-makedepends=(cmake fcgi gsl python-setuptools python-six qt5-tools txt2tags sip)
+depends=(desktop-file-utils exiv2 gdal hicolor-icon-theme libzip python-qscintilla-qt5 qca qt5-3d
+         qt5-serialport qt5-webkit qtkeychain qwtpolar spatialindex python-sip)
+makedepends=(cmake fcgi gsl python-six qt5-tools txt2tags sip python-setuptools)
 optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin'
             'gsl: Georeferencer plugin'
@@ -35,8 +31,8 @@ optdepends=('fcgi: Map server'
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2")
-# curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.md5
-md5sums=('fa934484202c0901ce839da43ae95b88')
+# curl https://qgis.org/downloads/qgis-latest-ltr.tar.bz2.sha256
+sha256sums=('0869704df9120dd642996ff1ed50213ac8247650aa0640b62f8c9c581c05d7a7')
 
 prepare() {
   mkdir -p build
