@@ -1,7 +1,7 @@
 # Maintainer: Your Name <syr.chloe@gmail.com>
 pkgname=libbitcoin-system-3.6.0
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('aarch64' 'x86_64')
 license=('AGPLv3')
@@ -23,7 +23,7 @@ makedepends=('autoconf'
              'pkg-config')
 conflicts=("libbitcoin<$pkgver"
 	       "libbitcoin-system-git<$pkgver")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/libbitcoin/libbitcoin-system/archive/v$pkgver.tar.gz"
+source=("$pkgname.tar.gz::https://github.com/libbitcoin/libbitcoin-system/archive/v$pkgver.tar.gz"
         "git+https://github.com/libbitcoin/libbitcoin-system.wiki")
 sha256sums=('5bcc4c31b53acbc9c0d151ace95d684909db4bf946f8d724f76c711934c6775c'
             'SKIP')
@@ -31,8 +31,7 @@ sha256sums=('5bcc4c31b53acbc9c0d151ace95d684909db4bf946f8d724f76c711934c6775c'
 threads=$(nproc)
 
 prepare() {
-	echo pkgdir is $pkgdir
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	msg2 'Preparing...'
 	# Bug fix, ref: https://github.com/libbitcoin/libbitcoin-system/pull/1136
 	cd src/chain
@@ -42,7 +41,7 @@ prepare() {
 
 build() {
 	msg2 'Building...'
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	./autogen.sh
 	./configure \
         --prefix=/usr \
@@ -61,12 +60,12 @@ build() {
 
 check() {
 	msg2 'Testing...'
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make -j$threads check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 
     msg2 'Installing license...'
     install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/libbitcoin"
