@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=lemon-lime
-pkgver=v.0.1.0120
+pkgver=v0.1.2a
 pkgrel=1
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -20,7 +20,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/iotang/Project_LemonLime/archive/${pkgver}-beta.tar.gz"
+source=("https://github.com/iotang/Project_LemonLime/archive/${pkgver}.tar.gz"
 		"lemon-lime.desktop"
 		)
 noextract=()
@@ -30,12 +30,12 @@ md5sums=('SKIP'
 validpgpkeys=()
 
 prepare() {
-	cd "Project_LemonLime-$pkgver-beta"
+	cd "Project_LemonLime-$pkgver"
 
 }
 
 build() {
-	cd "Project_LemonLime-$pkgver-beta"
+	cd "Project_LemonLime-$pkgver"
 	#./configure --prefix=/usr
 	g++ watcher_unix.cpp -o watcher_unix -O2
 	qmake lemon.pro
@@ -44,12 +44,12 @@ build() {
 }
 
 check() {
-	cd "Project_LemonLime-$pkgver-beta"
+	cd "Project_LemonLime-$pkgver"
 	make -k check
 }
 
 package() {
-	cd "Project_LemonLime-$pkgver-beta"
+	cd "Project_LemonLime-$pkgver"
 	install -D -m755 lemon "$pkgdir/usr/bin/$pkgname"
 	
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
