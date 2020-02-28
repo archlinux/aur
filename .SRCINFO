@@ -1,0 +1,15 @@
+pkgbase = icsdrone
+	pkgdesc = An interface between a chess server and a chess engine
+	pkgver = 0.29
+	pkgrel = 1
+	url = https://sourceforge.net/projects/icsdrone/
+	arch = i686
+	arch = x86_64
+	arch = armv7l
+	arch = aarch64
+	license = BSD
+	source = https://master.dl.sourceforge.net/project/icsdrone/icsdroneng-0.29.tar.gz
+	sha256sums = 33f4bfe07c15ae6c6e8c4756468630cec71008d4d12f62fc474461c4deed203a
+
+pkgname = icsdrone
+
