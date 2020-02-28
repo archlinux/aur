@@ -15,7 +15,7 @@ optdepends=('python-beautifulsoup4: Import html bookmarks'
             'python-requests-hawk: Firefox Sync support')
 source=("git+https://gitlab.gnome.org/World/lollypop")
 sha256sums=('SKIP')
-conflicts=('eolie' 'eolie-git' 'eolie-next')
+conflicts=('eolie' 'eolie-git' 'eolie-next-git')
 provides=("eolie=$pkgver")
 
 pkgver() {
