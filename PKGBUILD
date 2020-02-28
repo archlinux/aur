@@ -1,8 +1,8 @@
-# Maintainer: Piotr Rogoża <piotr dot r dot public at gmail dot com>
+# Maintainer: René Wagner <rwagner at rw-net dot de>
 # Contributor: Piotr Rogoża <piotr dot r dot public at gmail dot com>
 
 pkgname=perl-file-find-object
-pkgver=v0.2.12
+pkgver=0.3.5
 pkgrel=1
 _author="S/SH/SHLOMIF"
 _perlmod="File-Find-Object"
@@ -22,7 +22,7 @@ perl-file-find-object-toppath
 )
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha256sums=('c11275cbc4456956bbe2b39630ed2be1bfa4da46e467babfd3e048f23ad1c9f2')
+sha256sums=('dc4124abe64dc1274e8e8a5e5bf9e17a2a9269debace458115b57469f1e16a91')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
