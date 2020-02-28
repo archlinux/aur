@@ -3,11 +3,12 @@ pkgbase = python-smbprotocol
 	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/jborean93/smbprotocol
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-gssapi
+	depends = python-ntlm-auth
 	source = https://github.com/jborean93/smbprotocol/archive/v1.0.1.tar.gz
 	sha256sums = e03296995e89f82524f20654113e531f7133d113382e6078c418bbc0edd80fb4
 
