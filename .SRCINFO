@@ -1,7 +1,7 @@
 pkgbase = python-mypy_protobuf-git
 	pkgdesc = Generate mypy stub files from protobuf specs
 	pkgver = v1.13.r32.gf2a078b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dropbox/mypy-protobuf
 	arch = any
 	license = Apache
@@ -9,6 +9,7 @@ pkgbase = python-mypy_protobuf-git
 	makedepends = git
 	depends = python-setuptools
 	depends = python-protobuf
+	depends = python-six
 	source = git+https://github.com/dropbox/mypy-protobuf
 	sha256sums = SKIP
 
