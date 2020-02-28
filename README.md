@@ -11,9 +11,9 @@
   - Get the sha256sum by:
     - Downloading the github release package.
     - running something like `sha256sum sanskrit-fonts-1.0.tar.gz`
-- Verify package by running `makepkg`.
+- Verify package by running `makepkg -si`.
 - Update AUR repository.
-  - Clone or update the AUR repo working directory: aur
-    - Example: `git clone ssh://aur@aur.archlinux.org/sanskrit-fonts.git`
-  - Generate or update .SRCINFO with `makepkg --printsrcinfo > aur/.SRCINFO`
-  - Push to the AUR repo.
+  - Set remote: `git remote add ssh://aur@aur.archlinux.org/dyuganga.git .`
+  - Generate or update .SRCINFO with `makepkg --printsrcinfo > .SRCINFO`
+  - Push to the AUR repo. (Even a single invalid commit will cause rejection.)
+
