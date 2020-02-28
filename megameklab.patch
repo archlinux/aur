@@ -1,0 +1,92 @@
+From 4b8c23714401e1d807d8c5646f9a0634a57736be Mon Sep 17 00:00:00 2001
+From: f43nd1r <lukas.morawietz@gmail.com>
+Date: Fri, 28 Feb 2020 03:48:19 +0100
+Subject: [PATCH] patch
+
+---
+ build.gradle                         |  2 +-
+ mmconf/log4j.xml                     |  2 +-
+ src/megameklab/com/MegaMekLab.java   |  4 ++--
+ src/megameklab/com/util/CConfig.java | 11 +++++++----
+ 4 files changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/build.gradle b/build.gradle
+index 174fa991..fd3ec200 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -31,7 +31,7 @@ ext {
+     mmlBranchTag = mmlBranch.equals('master')? '' : '-' + mmlBranch
+     
+     // Allows setting a dependency on a different MM branch.
+-    mmBranch = 'stable'
++    mmBranch = 'master'
+     mmBranchTag = mmBranch.equals('master')? '' : '-' + mmBranch
+     
+     mmDir = '../megamek'
+diff --git a/mmconf/log4j.xml b/mmconf/log4j.xml
+index 3e7b221b..3021859c 100644
+--- a/mmconf/log4j.xml
++++ b/mmconf/log4j.xml
+@@ -5,7 +5,7 @@
+ 
+     <!-- log to a file and roll over if the file size reaches 10 megabytes. -->
+     <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+-        <param name="File" value="logs/megameklablog.txt"/>
++        <param name="File" value="/var/log/megameklab/megameklab.log"/>
+         <param name="Append" value="true"/>
+         <param name="MaxFileSize" value="10MB"/>
+         <param name="MaxBackupIndex" value="5"/>
+diff --git a/src/megameklab/com/MegaMekLab.java b/src/megameklab/com/MegaMekLab.java
+index 636ed977..01d11e6d 100644
+--- a/src/megameklab/com/MegaMekLab.java
++++ b/src/megameklab/com/MegaMekLab.java
+@@ -45,7 +45,7 @@ public class MegaMekLab {
+     	System.setProperty("apple.laf.useScreenMenuBar", "true");
+         System.setProperty("com.apple.mrj.application.apple.menu.about.name","MegaMekLab");
+ 
+-        String logFileName = "./logs/megameklablog.txt";
++        String logFileName = "/var/log/megameklab/megameklab.log";
+         Locale.setDefault(Locale.US);
+ 
+         //Taharqa: I am not sure why this is here, so I am commenting it
+@@ -162,7 +162,7 @@ public class MegaMekLab {
+                                      final String logFileName) {
+         if (logs) {
+             try {
+-                File logPath = new File("./logs/");
++                File logPath = new File("/var/log/megameklab/");
+                 if (!logPath.exists()) {
+                     logPath.mkdir();
+                 }
+diff --git a/src/megameklab/com/util/CConfig.java b/src/megameklab/com/util/CConfig.java
+index 283b0a8d..70f9d045 100644
+--- a/src/megameklab/com/util/CConfig.java
++++ b/src/megameklab/com/util/CConfig.java
+@@ -31,9 +31,10 @@ import java.util.Properties;
+ public class CConfig {
+ 
+     // VARIABLES
+-    public static final String CONFIG_DIR = "./mmconf";
+-    public static final String CONFIG_FILE = "./mmconf/megameklab.properties";
+-    public static final String CONFIG_BACKUP_FILE = "./mmconf/megameklab.properties.bak";
++    public static final String USER_DIR = System.getProperty("user.home");
++    public static final String CONFIG_DIR = USER_DIR + "/.config/megameklab";
++    public static final String CONFIG_FILE = USER_DIR + "/.config/megameklab/megameklab.properties";
++    public static final String CONFIG_BACKUP_FILE = USER_DIR + "/.config/megameklab/megameklab.properties.bak";
+ 
+     public static final String CONFIG_WEAPONS = "Weapons";
+     public static final String CONFIG_AMMO = "Ammo";
+@@ -84,7 +85,9 @@ public class CConfig {
+     public CConfig() {
+         
+         if(!new File(CONFIG_DIR).exists()) {
+-            new File(CONFIG_DIR).mkdir();
++            if(!new File(CONFIG_DIR).mkdirs()) {
++              throw new RuntimeException("Failed to create directory "+ CONFIG_DIR);
++            }
+         }
+         
+         config = setDefaults();
+-- 
+2.25.1
+

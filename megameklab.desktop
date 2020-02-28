@@ -1,0 +1,9 @@
+ [Desktop Entry]
+Name=MegaMekLab
+GenericName=BattleTech Unit Editor
+Exec=megameklab
+Terminal=false
+Type=Application
+Icon=megamek
+Categories=Games;Java;
+StartupWMClass=SWT
