@@ -1,0 +1,13 @@
+pkgbase = native-image-jdk11-ee-bin
+	pkgdesc = (Enterprise Edition) Plugin to turn GraalVM-based applications into native binary images (Java 11 version)
+	pkgver = 20.0.0
+	pkgrel = 1
+	url = https://github.com/oracle/graal
+	arch = x86_64
+	license = custom
+	depends = jdk11-graalvm-ee-bin
+	source_x86_64 = native-image-installable-svmee-java11-linux-amd64-20.0.0.jar::https://web.archive.org/web/20200228083230/https%3A%2F%2Fdownload.oracle.com%2Fotn%2Futilities_drivers%2Foracle-labs%2Fnative-image-installable-svm-svmee-java11-linux-amd64-20.0.0.jar%3FAuthParam%3D1582878853_656f39126124eddc70c07568cddaf024
+	sha256sums_x86_64 = 57086123a95f1e9d4e67b92f830bad9325431908c69a40ef10f28ed586d8bd35
+
+pkgname = native-image-jdk11-ee-bin
+
