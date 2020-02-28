@@ -1,0 +1,15 @@
+pkgbase = nodejs-tget
+	pkgdesc = Tget is wget for torrents
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/jeffjose/tget
+	arch = any
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	source = http://registry.npmjs.org/t-get/-/t-get-2.2.0.tgz
+	md5sums = 1e1a9c4023b8f11d82f186eeeecf2517
+
+pkgname = nodejs-tget
+
