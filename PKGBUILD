@@ -3,8 +3,8 @@
 
 pkgname=libdri2-git
 _gitname=libdri2
-pkgver=11.4f1eef3
-pkgrel=2
+pkgver=r11.4f1eef3
+pkgrel=1
 pkgdesc="Library for the DRI2 extension to the X Window System"
 arch=('any')
 url="https://github.com/robclark/libdri2"
@@ -18,7 +18,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${SRCDEST}/${_gitname}"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  (
+   set -o pipefail
+   git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
