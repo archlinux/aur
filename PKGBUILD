@@ -6,7 +6,7 @@
 
 pkgname=pagure
 pkgver=5.8.1
-pkgrel=0.8
+pkgrel=0.9
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgname"
@@ -54,6 +54,8 @@ optdepends=('mariadb: MariaDB backend'
             'python-psycopg2: Python driver for PostgreSQL'
             'python-mysqlclient: Python driver for MariaDB'
             'python-pymysql: Python driver for MariaDB')
+backup=("etc/$pkgname/alembic.ini"
+        "etc/$pkgname/pagure.cfg")
 source=("https://releases.pagure.org/$pkgname/$pkgname-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
 install="$pkgname.install"
@@ -79,5 +81,6 @@ package() {
     cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" {README,UPGRADING}.rst
-    ls -al
+    install -Dm644 -T files/pagure.cfg.sample "$pkgdir"/etc/pagure/pagure.cfg
+    install -Dm644 -t "$pkgdir"/etc/pagure/ files/alembic.ini
 }
