@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=201.5616.16
+pkgver=201.5985.36
 _pkgname=RubyMine
 _pkgver=2020.1
 pkgrel=1
