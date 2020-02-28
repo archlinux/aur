@@ -1,0 +1,18 @@
+pkgbase = dyuganga
+	pkgdesc = A dummy package which pulls some software useful for sanskrit/ saMskRtam / संस्कृतम् users. Curated by the dyuganga team - https://sanskrit.github.io/groups/dyuganga/ .
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/sanskrit-coders/dyuganga-aur
+	arch = any
+	depends = sanskrit-fonts
+	depends = atom
+	depends = fcitx
+	depends = fcitx-m17n
+	depends = m17n-db
+	depends = autokey
+	optdepends = firefox
+	optdepends = intellij-idea-ce
+	optdepends = intellij-idea-ultimate-edition
+
+pkgname = dyuganga
+
