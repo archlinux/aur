@@ -1,7 +1,7 @@
 pkgbase = bitw-git
 	pkgdesc = Minimalist BitWarden client with Secret Service API implementation - git version
-	pkgver = r46.17ac675
-	pkgrel = 3
+	pkgver = r47.58fe31f
+	pkgrel = 1
 	url = https://github.com/mvdan/bitw
 	arch = x86_64
 	arch = i686
@@ -10,8 +10,14 @@ pkgbase = bitw-git
 	arch = armv7h
 	arch = aarch64
 	license = BSD
+	checkdepends = golang-github-rogpeppe-go-internal>=1.5.0
 	makedepends = git
-	makedepends = go-pie
+	makedepends = go-pie>=1.13
+	makedepends = golang-golang-x-crypto
+	makedepends = golang-github-google-uuid>=1.1.1
+	makedepends = golang-github-knq-ini
+	makedepends = golang-rsc-2fa>=1.1.0
+	makedepends = golang-github-godbus-dbus>=5.0.3
 	provides = bitw
 	provides = org.freedesktop.secrets
 	conflicts = bitw
