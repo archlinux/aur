@@ -43,7 +43,6 @@ doc
 debugger-ui-commandline
 shell-command
 library-make
-Linenoise
 perl6-file-which
 tap-harness6
 p6-io-string
@@ -52,7 +51,8 @@ datetime-parse # dependency for http-useragent
 io-capture-simple
 test-util-serverport
 http-useragent
-jsonrpc"
+jsonrpc
+readline"
 
 post_install() {
   /usr/share/perl6/vendor/bin/zef install --force-install $MODULES
