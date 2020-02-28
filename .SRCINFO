@@ -1,11 +1,12 @@
 pkgbase = fcitx5-icons
 	pkgdesc = Icons from fcitx4 for fcitx5
 	pkgver = 4.2.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fcitx-im.org
 	arch = any
 	license = GPL
 	license = LGPL
+	makedepends = cmake
 	depends = fcitx5
 	source = https://download.fcitx-im.org/fcitx/fcitx-4.2.9.7_dict.tar.xz
 	source = https://download.fcitx-im.org/fcitx/fcitx-4.2.9.7_dict.tar.xz.sig
