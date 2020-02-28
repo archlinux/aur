@@ -1,6 +1,8 @@
 # Maintainer: Stefan Zobel <stefan dot zobel at gmail dot com>
 #
 # Project Loom virtual threads and continuations for the JVM (early access)
+# see https://wiki.openjdk.java.net/display/loom/Main
+# (source code: https://github.com/openjdk/loom)
 #
 pkgname=java-openjdk-loom-ea-bin
 
@@ -8,14 +10,14 @@ pkgname=java-openjdk-loom-ea-bin
 _majorver=15
 
 # upstream release identifier
-_commit="59049adf3bc8e0969c08"
+_commit="0185450b77907f817b28"
 # use the first 7 digits for the Arch build version 
 _buildver=$(echo ${_commit} | cut -c1-7)
 
 pkgver=${_majorver}_${_buildver}
 pkgrel=1
 # must use epoch as upstream breaks version comparisons
-epoch=4
+epoch=5
 
 # Virtual threads (fibers) and continuations for the JVM
 # Earyl-Access JVM prototype - don't use in production
@@ -28,8 +30,9 @@ url="https://github.com/forax/java-next"
 license=('GPL2')
 # use namcap to identify dependencies
 depends=(
-  'java-environment-common>=3' 'ca-certificates-utils'
-  'nss' 'libxrender' 'libxtst' 'alsa-lib' 'freetype2'
+  'java-environment-common>=3' 'java-runtime-common>=3'
+  'ca-certificates-utils' 'nss' 'libxrender' 'libxtst'
+  'alsa-lib' 'freetype2'
 )
 provides=(
   "java-environment=${_majorver}"
@@ -43,7 +46,7 @@ provides=(
 _prefix=untagged-
 source=("https://github.com/forax/java-next/releases/download/${_prefix}${_commit}/jdk-${_majorver}-loom-linux.tar.gz")
 
-sha256sums=('073a9cdf3a50dcaff81b0355196d351b322c906571ceb65d5508f7d79bc71889')
+sha256sums=('840fa6e67edbd651a3ffdc8d17efb31341a7b32f5f9c85c9964577af17dbaddc')
 
 _eaname=java-openjdk-loom-ea
 _jvmdir=usr/lib/jvm/${_eaname}
