@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.2.1.r380.1c5c7b1
+pkgver=0.2.1.r384.6f2e3f9
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,6 @@ optdepends=('adplug: for OPL formats support'
             'sdl: for SDL user interface support'
             'sdl2: for SDL2 user interface support')
 makedepends=('git'
-             'libsidplayfp'
              'xa')
 provides=("${_name}=${pkgver}")
 conflicts=("${_name}")
