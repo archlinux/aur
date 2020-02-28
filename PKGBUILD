@@ -5,9 +5,9 @@
 # Mageia spec: http://svnweb.mageia.org/packages/cauldron/pagure/current/SPECS/pagure.spec?view=markup
 
 pkgbase=pagure
-pkgname=("$pkgbase" "$pkgbase-apache")
+pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-postgresql" "$pkgbase-mariadb")
 pkgver=5.8.1
-pkgrel=0.12
+pkgrel=0.13
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -49,12 +49,6 @@ depends=('git'
          'redis')
 makedepends=('python-setuptools')
 checkdepends=('python-tox')
-optdepends=('mariadb: MariaDB backend'
-            'postgresql: PostgreSQL backend'
-            'python-pg8000: Python driver for PostgreSQL'
-            'python-psycopg2: Python driver for PostgreSQL'
-            'python-mysqlclient: Python driver for MariaDB'
-            'python-pymysql: Python driver for MariaDB')
 source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
 install="$pkgbase.install"
@@ -79,6 +73,7 @@ check() {
 }
 
 package_pagure() {
+    depends=("$pkgbase-backend=$pkgver")
     optdepends=("$pkgbase-apache: Apache host configuration files")
     backup=("etc/$pkgbase/alembic.ini"
              "etc/$pkgbase/pagure.cfg")
@@ -95,4 +90,18 @@ package_pagure-apache() {
     backup=("etc/httpd/conf/extra/$pkgbase.conf")
     cd "$pkgbase-$pkgver"
     install -Dm644 -t "$pkgdir/etc/httpd/conf/extra/" files/pagure.conf
+}
+
+package_pagure-postgresql() {
+    pkgdesc+=" (PostgreSQL backend configuration)"
+    depends=("$pkgbase=$pkgver" 'postresql' 'python-psycopg2') # alternative: python-pg8000
+    provides=("$pkgbase-backend")
+    cd "$pkgbase-$pkgver"
+}
+
+package_pagure-mariadb() {
+    pkgdesc+=" (MariaDB backend configuration)"
+    depends=("$pkgbase=$pkgver" 'mariadb' 'python-mysqlclient') # alternative: python-pymysql
+    provides=("$pkgbase-backend")
+    cd "$pkgbase-$pkgver"
 }
