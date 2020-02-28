@@ -1,0 +1,19 @@
+post_install() {
+	cat <<- EOF
+		Te setup using SQLite use:
+
+		Configure Pagure in /etc/pagure/pagure.cfg and /etc/pagure/alembic.ini
+		
+		\$ python /usr/share/pagure/createdb.py --initial -c /etc/pagure/pagure.cfg -i /etc/pagure/alembic.ini
+	EOF
+}
+
+post_upgrade() {
+	cat <<- EOF
+		Update Pagure database format using:
+		
+		\$ python /usr/share/pagure/createdb.py -c /etc/pagure/pagure.cfg
+	EOF
+}
+
+# vim : ts=4 sw=4 noet

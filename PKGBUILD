@@ -5,9 +5,9 @@
 # Mageia spec: http://svnweb.mageia.org/packages/cauldron/pagure/current/SPECS/pagure.spec?view=markup
 
 pkgbase=pagure
-pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-postgresql" "$pkgbase-mariadb")
+pkgname=("$pkgbase" "$pkgbase-apache" "$pkgbase-mariadb" "$pkgbase-postgresql" "$pkgbase-sqlite")
 pkgver=5.8.1
-pkgrel=0.16
+pkgrel=0.17
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -94,22 +94,32 @@ package_pagure-apache() {
     install -Dm644 -t "$pkgdir/etc/httpd/conf/extra/" files/pagure.conf
 }
 
+package_pagure-mariadb() {
+    pkgdesc+=" (MariaDB backend configuration)"
+    depends=("$pkgbase=$pkgver" 'mariadb' 'python-mysqlclient') # alternative: python-pymysql
+    provides=("$pkgbase-backend")
+    conflicts=("$pkgbase-postgresql" "$pkgbase-sqlite")
+    install="$pkgbase-mariadb.install"
+    cd "$pkgbase-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
+}
+
 package_pagure-postgresql() {
     pkgdesc+=" (PostgreSQL backend configuration)"
     depends=("$pkgbase=$pkgver" 'postgresql' 'python-psycopg2') # alternative: python-pg8000
     provides=("$pkgbase-backend")
-    conflicts=("$pkgbase-mariadb")
+    conflicts=("$pkgbase-mariadb" "$pkgbase-sqlite")
     install="$pkgbase-postgresql.install"
     cd "$pkgbase-$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
 
-package_pagure-mariadb() {
-    pkgdesc+=" (MariaDB backend configuration)"
-    depends=("$pkgbase=$pkgver" 'mariadb' 'python-mysqlclient') # alternative: python-pymysql
+package_pagure-sqlite() {
+    pkgdesc+=" (SQLite backend configuration)"
+    depends=("$pkgbase=$pkgver" 'sqlite')
     provides=("$pkgbase-backend")
-    conflicts=("$pkgbase-postgresql")
-    install="$pkgbase-mariadb.install"
+    conflicts=("$pkgbase-mariadb" "$pkgbase-postgresql")
+    install="$pkgbase-sqlite.install"
     cd "$pkgbase-$pkgver"
     install -Dm644 -t "$pkgdir/usr/share/$pkgbase/" createdb.py
 }
