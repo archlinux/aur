@@ -2,13 +2,12 @@
 
 pkgname=ezra-project
 pkgver=0.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
 url="https://github.com/tobias-klein/ezra-project"
 license=('GPL3')
-depends=('biblesync'
-         'curl'
+depends=('curl'
          'electron'
          'icu'
          'nodejs'
@@ -36,7 +35,6 @@ build() {
     "$(npm bin)"/electron-rebuild -f -w node-sword-interface -v "$_electron"
     npm run prune-node-modules
     npm run purge-build-artifacts
-    npm run cleanup-gyp-shebang
 }
 
 package() {

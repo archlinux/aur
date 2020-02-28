@@ -1,14 +1,13 @@
 pkgbase = ezra-project
 	pkgdesc = a bible study software focussing on topical study based on keywords/tags
 	pkgver = 0.11.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tobias-klein/ezra-project
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = npm
 	makedepends = sword
-	depends = biblesync
 	depends = curl
 	depends = electron
 	depends = icu
