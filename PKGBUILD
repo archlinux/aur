@@ -5,9 +5,9 @@
 
 pkgname=xu4-svn
 _pkgname=xu4
-pkgver=0.9.r3092
+pkgver=0.9.r3093
 _pkgver=0.9
-pkgrel=2
+pkgrel=1
 pkgdesc='Remake of the computer game Ultima IV'
 arch=('i686' 'x86_64')
 url='http://xu4.sourceforge.net/'
@@ -24,7 +24,7 @@ provides=("${pkgname%-svn}")
 conflicts=("${pkgname%-svn}")
 
 source=("${_pkgname}::svn+https://svn.code.sf.net/p/xu4/code/trunk"
-        'https://www.thatfleminggent.com/ultima/ultima4.zip'
+        'http://ultima.thatfleminggent.com/ultima4.zip'
         'https://sourceforge.net/projects/xu4/files/Ultima%204%20VGA%20Upgrade/1.3/u4upgrad.zip')
 sha256sums=('SKIP'
             '94aa748cfa1d0e7aa2e518abebb994f3c18acf7edb78c3bd37cd0a4404e6ba74'
