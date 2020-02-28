@@ -15,7 +15,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('57145151b1e427faffd467ee4782ffaa64c7f0dbf9d9ea332670071a8992e609'
+sha256sums=('642faba55f0c7d31a7d342e5f63c5d78a851f8f15516330f9d44194f79477eff'
             '3daf0808e001e780bf610e4c9726a0ed190ab6293a30d0ed13aa63d88209c954'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
