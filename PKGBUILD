@@ -29,6 +29,6 @@ package() {
   install -Dm 755 "target/release/$pkgname" -t "${pkgdir}/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 kmon.8 -t "$pkgdir/usr/local/man/man8"
+  install -Dm 644 "$pkgname.8" -t "$pkgdir/usr/local/man/man8"
   gzip "$pkgdir/usr/local/man/man8/$pkgname.8"
 }
