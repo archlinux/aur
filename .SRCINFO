@@ -1,7 +1,7 @@
 pkgbase = perl-test-tcp
 	pkgdesc = testing TCP program
 	pkgver = 2.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-TCP
 	arch = any
 	license = PerlArtistic

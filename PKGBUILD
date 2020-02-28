@@ -4,7 +4,7 @@
 
 pkgname='perl-test-tcp'
 pkgver='2.22'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="testing TCP program"
 arch=('any')
 license=('PerlArtistic' 'GPL')
