@@ -1,17 +1,17 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=arch-audit-git
-pkgver=0.1.8.r0.gc078e16
+pkgver=0.1.13.r0.ga91f095
 pkgrel=1
-pkgdesc='An utility like pkg-audit based on Arch CVE Monitoring Team data'
-url='https://github.com/ilpianista/arch-audit'
+pkgdesc='A utility like pkg-audit based on Arch Security Team data'
+url='https://gitlab.com/ilpianista/arch-audit'
 depends=('curl')
 makedepends=('cargo' 'pkg-config' 'git')
 provides=('arch-audit')
 conflicts=('arch-audit')
 arch=('i686' 'x86_64')
 license=('MIT')
-source=('git://github.com/ilpianista/arch-audit.git')
+source=('git://gitlab.com/ilpianista/arch-audit.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -39,4 +39,7 @@ package() {
 
   install -Dm644 completions/zsh/_arch-audit \
     "${pkgdir}"/usr/share/zsh/site-functions/_arch-audit
+
+  install -Dm644 hooks/arch-audit.hook \
+    "${pkgdir}"/usr/share/libalpm/hooks/arch-audit.hook
 }
