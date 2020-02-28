@@ -1,0 +1,6 @@
+*
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
+!./pagure-mariadb.install
+!./pagure-postgresql.install
