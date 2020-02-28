@@ -9,7 +9,7 @@ pkgdesc='The official GUI for MongoDB - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-depends=('electron3-bin' 'krb5' 'libsecret' 'lsb_release')
+depends=('electron3-bin' 'krb5' 'libsecret' 'lsb-release')
 makedepends=('npm')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
