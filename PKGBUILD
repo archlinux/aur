@@ -3,7 +3,7 @@
 # Maintainer: Rigo Reddig <rigo.reddig@gmail.com> ;)
 # Maintainer: Markus Näther <naetherm@cs.uni-freiburg.de>
 pkgname=hcc
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="HCC is an Open Source, Optimizing C++ Compiler for Heterogeneous Compute"
 arch=('x86_64')
@@ -12,12 +12,12 @@ license=('custom:NCSAOSL')
 depends=('rocr-runtime>=3.0.0' 'z3')
 makedepends=('git' 'cmake')
 options=(!staticlibs strip)
-source=("https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-$pkgver.tar.gz"
-        "https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-$pkgver.tar.gz"
-        "https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-$pkgver.tar.gz")
-sha256sums=('0eb296710278a2abb72e6875a45fed7c2772e744827f3e04a2ef34d8978a03b7'
-            '5b91197eeb724e1c6a042658aa314b60073ec6f6af9a0551409164d9d15287cd'
-            'ba8d40ed8b39f3285e00a27716905edff3792929168735bd4b19eb4f1f15aff8')
+source=("hcc-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-$pkgver.tar.gz"
+        "llvm-project-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-$pkgver.tar.gz"
+        "ROCm-Device-Libs-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-$pkgver.tar.gz")
+sha256sums=('c9274230aa282e6ae90be5885e3f5b71b02153ca60980fc2122d61a5870bf2a2'
+            'f76648116a2771a520545b9b5b3c931a8eb391f6f711f232924d92e8d1b43fc1'
+            '42bd4f910dd44d6f0dd7bab7ebdadcf2e7cd4449ed7160dacc4471039584402c')
 
 prepare() {
   cd "$srcdir"
