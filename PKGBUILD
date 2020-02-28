@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-test-sharedfork>=0.29' 'perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Test-TCP'
-source=('http://search.cpan.org/CPAN/authors/id/S/SY/SYOHEX/Test-TCP-2.22.tar.gz')
+source=('https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/Test-TCP-2.22.tar.gz')
 sha512sums=('2e0c8cf710f9702eee9b00422d7133efe87575805361d72becd2c3de671c765baf84827b601d26091e8a6b8595e6d9f168f90b7cfda402d668deb6fc277e37ad')
 _distdir="Test-TCP-2.22"
 
