@@ -15,7 +15,7 @@ optdepends=('python-beautifulsoup4: Import html bookmarks'
             'python-requests-hawk: Firefox Sync support')
 source=("git+https://gitlab.gnome.org/World/eolie.git")
 sha256sums=('SKIP')
-conflicts=('eolie' 'eolie-git' 'eolie-stable')
+conflicts=('eolie' 'eolie-git' 'eolie-stable-git')
 provides=("eolie=$pkgver")
 
 pkgver() {
