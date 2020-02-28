@@ -1,7 +1,7 @@
 pkgbase = pagure
 	pkgdesc = A git-centered forge based on python using pygit2
 	pkgver = 5.8.1
-	pkgrel = 0.11
+	pkgrel = 0.12
 	url = https://pagure.io/pagure
 	install = pagure.install
 	arch = any
@@ -48,12 +48,19 @@ pkgbase = pagure
 	optdepends = python-psycopg2: Python driver for PostgreSQL
 	optdepends = python-mysqlclient: Python driver for MariaDB
 	optdepends = python-pymysql: Python driver for MariaDB
-	backup = etc/pagure/alembic.ini
-	backup = etc/pagure/pagure.cfg
 	source = https://releases.pagure.org/pagure/pagure-5.8.1.tar.gz
 	source = https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch
 	sha256sums = 5e150bad0a3f932d265cb59d46c8b6a532be0f757aab695a8c37df3f5f4db687
 	sha256sums = c1da9e6ae2255f7896920ecb261f18c59f8ad6ba5726a8484f6287ae3962c854
 
 pkgname = pagure
+	optdepends = pagure-apache: Apache host configuration files
+	backup = etc/pagure/alembic.ini
+	backup = etc/pagure/pagure.cfg
+
+pkgname = pagure-apache
+	pkgdesc = A git-centered forge based on python using pygit2 (Apache host configuration)
+	depends = pagure=5.8.1
+	depends = apache
+	backup = etc/httpd/conf/extra/pagure.conf
 

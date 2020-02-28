@@ -5,9 +5,9 @@
 # Mageia spec: http://svnweb.mageia.org/packages/cauldron/pagure/current/SPECS/pagure.spec?view=markup
 
 pkgbase=pagure
-pkgname=("$pkgbase")
+pkgname=("$pkgbase" "$pkgbase-apache")
 pkgver=5.8.1
-pkgrel=0.11
+pkgrel=0.12
 pkgdesc="A git-centered forge based on python using pygit2"
 arch=("any")
 url="https://pagure.io/$pkgbase"
@@ -55,8 +55,6 @@ optdepends=('mariadb: MariaDB backend'
             'python-psycopg2: Python driver for PostgreSQL'
             'python-mysqlclient: Python driver for MariaDB'
             'python-pymysql: Python driver for MariaDB')
-backup=("etc/$pkgbase/alembic.ini"
-        "etc/$pkgbase/pagure.cfg")
 source=("https://releases.pagure.org/$pkgbase/$pkgbase-$pkgver.tar.gz"
         "https://src.fedoraproject.org/rpms/pagure/raw/master/f/0501-Revert-Add-a-upper-limit-to-sqlalchemy.patch")
 install="$pkgbase.install"
@@ -81,9 +79,20 @@ check() {
 }
 
 package_pagure() {
+    optdepends=("$pkgbase-apache: Apache host configuration files")
+    backup=("etc/$pkgbase/alembic.ini"
+             "etc/$pkgbase/pagure.cfg")
     cd "$pkgbase-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgbase/" {README,UPGRADING}.rst
-    install -Dm644 -T files/pagure.cfg.sample "$pkgdir"/etc/$pkgbase/pagure.cfg
-    install -Dm644 -t "$pkgdir/etc/$pkgbase/" files/alembic.ini
+    install -Dm644 -T "files/pagure.cfg.sample" "$pkgdir/etc/$pkgbase/pagure.cfg"
+    install -Dm644 -t "$pkgdir/etc/$pkgbase/" "files/alembic.ini"
+}
+
+package_pagure-apache() {
+    pkgdesc+=" (Apache host configuration)"
+    depends=("$pkgbase=$pkgver" 'apache')
+    backup=("etc/httpd/conf/extra/$pkgbase.conf")
+    cd "$pkgbase-$pkgver"
+    install -Dm644 -t "$pkgdir/etc/httpd/conf/extra/" files/pagure.conf
 }
