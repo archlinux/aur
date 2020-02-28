@@ -3,8 +3,8 @@
 # Based on PKGBUILD from dashcore maintained by pizzaman
 
 pkgname='axecore'
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.5.0.1
+pkgrel=1
 pkgdesc="Axe Core (AXE) is an open source cryptocurrency."
 arch=('x86_64')
 url="https://axerunners.com/"
@@ -16,12 +16,12 @@ source=('axe256.png'
   'axe-qt.desktop'
   'COPYING'
   "https://github.com/axerunners/axe/releases/download/v${pkgver}/${pkgname}-${pkgver}-$CARCH-linux-gnu.tar.gz"{,.asc})
-sha256sums=('06b658f3da983270852b305326042ad563e58aa9ef7fb02002996e8bf6b57130'
+sha256sums=('595802457042857d57d3437d4c904b524c250a06b8fa9c1f7f857ad3775bafab'
             'c6971f66cbbc7acb74885d35d5f7a9b42ada9a95e864f9c71e67d6f9e8264900'
             '9277abe7d3462deb49df07221f13643c2aa55ebc10725c0b9d6d82df8dd7b457'
-            '9817ad9d4de78b7651d158c2b2b9d5f449d9688cb128d5a8cf3da72707956845'
+            '7669039c7370c88d6f38e20838e9ab20ae9b3fefca0b658e3e65f3517bd8dd2d'
             'SKIP')
-validpgpkeys=('A9F09620C26999E08EF8F21238E34B740A0E29B7')
+validpgpkeys=('04B29AF0DA5F8EBD019C74BA278F2A095AC27140')
 
 package() {
   install -D -m755 "$srcdir/$pkgname-${pkgver}/bin/axe-qt" "$pkgdir/usr/bin/axe-qt"
