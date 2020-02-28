@@ -1,7 +1,7 @@
 # Maintainer: fzerorubigd <fzero@rubi.gd>
 pkgname=protobuf-go
-pkgver=1.3.3
-pkgrel=3
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
 url="https://github.com/golang/protobuf"
@@ -24,4 +24,4 @@ package() {
   install -m755 $srcdir/bin/protoc-gen-go $pkgdir/usr/bin/protoc-gen-go
 }
 
-sha256sums=('b3a1440808d6ed4dc0d194c482de029f6c116b1de7f7a3bf927324d965ff3853')
+sha256sums=('5e4279eb197ff7271cb06ae97a16f721d0fd6962ff2d2560831309c0900e72c4')
