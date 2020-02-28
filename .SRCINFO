@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-community-git
 	pkgdesc = The official GUI for MongoDB - Community Edition - git version
 	pkgver = 1.21.0.r3236.dd8caa98
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,7 @@ pkgbase = mongodb-compass-community-git
 	depends = electron6
 	depends = krb5
 	depends = libsecret
+	depends = lsb-release
 	provides = mongodb-compass-community
 	conflicts = mongodb-compass-community
 	source = mongodb-compass-community-git::git+https://github.com/mongodb-js/compass
