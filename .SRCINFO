@@ -8,6 +8,7 @@ pkgbase = cloudcompare-git
 	license = GPL2
 	makedepends = git
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = pcl
 	makedepends = libharu
 	makedepends = proj

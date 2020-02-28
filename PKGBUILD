@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
 depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
-makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
+makedepends=('git' 'cmake' 'ninja' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
 optdepends=('pcl')
 conflicts=('cloudcompare')
 provides=('cloudcompare')
@@ -41,6 +41,7 @@ build() {
   mkdir -p build && cd build
  
   cmake .. \
+        -G Ninja \
         -Wno-dev \
         -DCMAKE_CXX_FLAGS=-fpermissive \
         -DOPTION_PDAL_LAS=ON \
@@ -74,12 +75,11 @@ build() {
         -DINSTALL_QBROOM_PLUGIN=true \
         -DINSTALL_QHOUGH_NORMALS_PLUGIN=true \
         -DEIGEN_ROOT_DIR=/usr/include/eigen3 
-  make
+  ninja -C build "${MAKEFLAGS:--j1}"
 }
 
 package() {
-  cd ${srcdir}/${name}/build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 
   # install *.desktop files
   install -D -m 644 ${srcdir}/*.desktop -t ${pkgdir}/usr/share/applications/
