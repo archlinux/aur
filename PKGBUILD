@@ -27,6 +27,10 @@ build() {
 	ninja -C build
 }
 
+check() {
+	ninja -C build test
+}
+
 package() {
 	DESTDIR="${pkgdir}" ninja -C build install
 }
