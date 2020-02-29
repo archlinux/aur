@@ -1,6 +1,6 @@
 pkgbase = archsysback
 	pkgdesc = Archiso config for building Arch Linux Live Backup iso from your installed system
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/toxin265/archsysback
 	arch = any
@@ -17,10 +17,11 @@ pkgbase = archsysback
 	depends = memtest86+
 	depends = xdg-user-dirs
 	depends = xterm
+	depends = mkinitcpio-nfs-utils
 	provides = archsysback
 	conflicts = archsysback
-	source = https://raw.githubusercontent.com/toxin265/archsysback/master/archsysback-0.2.tar.xz
-	md5sums = 205a4953a57b1d66893e5cd993d8bdbd
+	source = https://raw.githubusercontent.com/toxin265/archsysback/master/archsysback-0.3.tar.xz
+	md5sums = 4566532f456dfedd4f48ad7fa03080e3
 
 pkgname = archsysback
 
