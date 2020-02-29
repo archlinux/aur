@@ -1,8 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mame-git
-_srcname=mame
-pkgver=0.218.r0.g0e2a252d309
+pkgver=0.219.r0.g221f0064426
 pkgrel=1
 pkgdesc='A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support (git version)'
 url='https://www.mamedev.org/'
@@ -22,23 +21,20 @@ sha256sums=('SKIP'
             '17c442c933d764175e4ce1de50a80c0c2ddd5d733caf09c3cd5e6ba697ac43f4')
 
 prepare() {
-    cd "$_srcname"
-    
     # use system libraries
-    sed -e 's|\# USE_SYSTEM_LIB|USE_SYSTEM_LIB|g' -i makefile
+    sed -e 's|\# USE_SYSTEM_LIB|USE_SYSTEM_LIB|g' -i mame/makefile
+    
+    # except for asio
+    sed -e 's|USE_SYSTEM_LIB_ASIO|\# USE_SYSTEM_LIB_ASIO|g' -i mame/makefile
 }
 
 pkgver() {
-    cd "$_srcname"
-    
-    # git, tags available
+    cd mame
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^\(mame\)\([0-9]\)/\2./'
 }
 
 build() {
-    cd "$_srcname"
-    
-    make \
+    make -C mame \
         NOWERROR='1' \
         OPTIMIZE='2' \
         TOOLS='1' \
@@ -46,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "$_srcname"
+    cd mame
     
     # mame script
     install -D -m755 "${srcdir}/mame.sh" "${pkgdir}/usr/bin/mame"
