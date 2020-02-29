@@ -1,16 +1,22 @@
 pkgbase = mbrola-voices-af1
 	pkgdesc = An Afrikaans male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 5
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-af
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/af1/af1.zip
-	md5sums = 1391c7745585f12f423e0d9bb04fcc5a
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/af1/af1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/af1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/af1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/af1/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/af1/test/telefoonnommer1.pho
+	sha256sums = 9760046e3f2b007f8c0279d321e5e934afaa8cfb7ec075241108a0e8f3730c7c
+	sha256sums = 567baf5274075109201f08b24355fcf64d6f7f3d4b33e5b6010cbc2cd849a6f2
+	sha256sums = 18ffabda17523165f6560d6fd52509934701c1dbb2796c8110abb29832faf6ef
+	sha256sums = 35b7b5d5fec8c24d6987a6a201aefc66ae26cae605e674e82b9956e31d79f19d
+	sha256sums = ae15376c272062f9855b239b8013af412c7dd13c89b3111e0796358fa218111b
 
 pkgname = mbrola-voices-af1
 
