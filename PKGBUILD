@@ -2,13 +2,13 @@
 # Contributor: Muhammad Yahya Harlan <muhammad.harlan@binus.ac.id>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 
-_downloadid='a0340cfa110a4a9ebe2f0730ff30abcc'
-_referid='d7c7c56fde714ba3a0757e99d07735d5'
+_downloadid='daf30cc6513c4f4a94af71204b2b6778'
+_referid='8ba75e7093b94407bf5f804d6de39f8d'
 _siteurl="https://www.blackmagicdesign.com/api/register/us/download/${_downloadid}"
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/78.0.3904.108 \
+                        Chrome/80.0.3987.122 \
                         Safari/537.36"
 _reqjson="{ \
     \"platform\": \"Linux\", \
@@ -55,7 +55,7 @@ DLAGENTS=("https::/usr/bin/curl \
               %u")
 
 pkgname=decklink-sdk
-pkgver=11.4
+pkgver=11.5
 pkgrel=1
 epoch=1
 pkgdesc='Blackmagic DeckLink SDK'
@@ -67,7 +67,7 @@ conflicts=('blackmagic-decklink-sdk')
 replaces=('blackmagic-decklink-sdk')
 source=("Blackmagic_DeckLink_SDK_${pkgver}.zip"::"$_srcurl"
         'LICENSE')
-sha256sums=('9cfab8b1681303ba882a562b888241e32592fe1f4c172e1e7ff65b7f74e73825'
+sha256sums=('67d7ce9fbf893b6d3150f70117d1a5142633216b20f1abb10898e468d017a589'
             'cc90e53ac2ef2442d2d0adfe9214119baa31ec080e75c3b087365efdbccc23df')
 
 package() {
