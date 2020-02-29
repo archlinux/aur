@@ -1,4 +1,4 @@
-pkgbase = qt6-declarative
+pkgbase = qt6-declarative-git
 	pkgdesc = Classes for QML and JavaScript languages
 	pkgver = 5.15.0.alpha1.r248.g48deaf9a3e
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = qt6-declarative
 	source = git+https://code.qt.io/qt/qtdeclarative.git#branch=dev
 	sha256sums = SKIP
 
-pkgname = qt6-declarative
+pkgname = qt6-declarative-git
 
