@@ -3,7 +3,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgname=opencv-cuda
-pkgver=4.1.2
+pkgver=4.2.0
 pkgrel=1
 provides=(opencv opencv-samples)
 conflicts=(opencv opencv-samples)
