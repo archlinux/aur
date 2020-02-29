@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-serialbus-git
-pkgver=5.13.0_rc3.r60.g9f5b8ba
+pkgver=5.15.0_beta1.r5.g8b1a6de
 pkgrel=1
 pkgdesc="Qt5 serial bus module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-serialport')
 makedepends=('git')
 provides=('qt5-serialbus')
 conflicts=('qt5-serialbus')
-source=("git+https://code.qt.io/qt/qtserialbus.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtserialbus.git#branch=5.15")
 sha256sums=('SKIP')
 
 

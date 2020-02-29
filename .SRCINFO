@@ -1,6 +1,6 @@
 pkgbase = qt5-serialbus-git
 	pkgdesc = Qt5 serial bus module
-	pkgver = 5.13.0_rc3.r60.g9f5b8ba
+	pkgver = 5.15.0_beta1.r5.g8b1a6de
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = qt5-serialbus-git
 	depends = qt5-serialport
 	provides = qt5-serialbus
 	conflicts = qt5-serialbus
-	source = git+https://code.qt.io/qt/qtserialbus.git#branch=dev
+	source = git+https://code.qt.io/qt/qtserialbus.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-serialbus-git
