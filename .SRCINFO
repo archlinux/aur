@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-decklink
 	pkgdesc = Complete solution to record, convert and stream audio and video (decklink enabled)
 	pkgver = 4.2.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.ffmpeg.org/
 	arch = x86_64
@@ -74,6 +74,7 @@ pkgbase = ffmpeg-decklink
 	conflicts = ffmpeg
 	source = https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
 	source = https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz.asc
+	source = ffmpeg-full-add-decklink-11.5-support.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/f32f9231dd4f74d9f95eef575b838bdc3e06a234
 	source = LICENSE
 	validpgpkeys = FCF986EA15E6E293A5644F10B4322F04D67658D8
 	sha256sums = cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
