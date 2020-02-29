@@ -4,7 +4,7 @@
 
 pkgname='axecore'
 pkgver=1.5.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Axe Core (AXE) is an open source cryptocurrency."
 arch=('x86_64')
 url="https://axerunners.com/"
@@ -24,10 +24,10 @@ sha256sums=('595802457042857d57d3437d4c904b524c250a06b8fa9c1f7f857ad3775bafab'
 validpgpkeys=('04B29AF0DA5F8EBD019C74BA278F2A095AC27140')
 
 package() {
-  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/src/qt/axe-qt" "$pkgdir/usr/bin/axe-qt"
-  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/src/axed" "$pkgdir/usr/bin/axed"
-  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/src/axe-cli" "$pkgdir/usr/bin/axe-cli"
-  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/src/axe-tx" "$pkgdir/usr/bin/axe-tx"
+  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/axe-qt" "$pkgdir/usr/bin/axe-qt"
+  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/axed" "$pkgdir/usr/bin/axed"
+  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/axe-cli" "$pkgdir/usr/bin/axe-cli"
+  install -D -m755 "$srcdir/$pkgname-${pkgver%.*}/bin/axe-tx" "$pkgdir/usr/bin/axe-tx"
   install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "axe256.png" "$pkgdir/usr/share/pixmaps/axe256.png"
   install -D -m644 "axe-qt.desktop" "$pkgdir/usr/share/applications/axe-qt.desktop"
