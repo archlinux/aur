@@ -1,6 +1,6 @@
 pkgbase = qt5-declarative-git
 	pkgdesc = Qt5 declarative module
-	pkgver = 5.13.0_rc3.r442.g93619c821
+	pkgver = 5.15.0_beta1.r20.gd8f6f41c33
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = qt5-declarative-git
 	depends = qt5-base
 	provides = qt5-declarative
 	conflicts = qt5-declarative
-	source = git+https://code.qt.io/qt/qtdeclarative.git#branch=dev
+	source = git+https://code.qt.io/qt/qtdeclarative.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-declarative-git
