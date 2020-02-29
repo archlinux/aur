@@ -1,4 +1,4 @@
-# Maintainer: Muflone <webreg@vbsimple.net>
+# Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=mbrola-voices-ar2
 pkgver=15.6fa9693
