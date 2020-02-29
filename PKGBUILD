@@ -1,34 +1,24 @@
 # Maintainer: syui <syui@users.noreply.github.com>
 pkgname=xq
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="xml to json convert parser"
 arch=('x86_64' 'i686')
 url="https://github.com/syui/xq"
-options=('!strip' '!emptydirs')
+makedepends=('go-pie')
 license=('MIT')
-source=("$url/releases/download/$pkgver/linux_386_$pkgname"
-  "$url/releases/download/$pkgver/linux_amd64_$pkgname")
-noextract=(${source[@]%%::*})
-sha1sums=('c47fa451d0f9f24a174f152a927d095b0cd3dde6'
-  'a92b5523373e8d2f0ca8da1974f7be8eb0fb75e1')
-
+source=("${pkgname}-${pkgver}::${url}/archive/$pkgver.tar.gz")
+sha256sums=('6dc017cf06a598f8bc781a508ff0e63bbc5d7828026b8e7733dc387aec280ceb')
+build(){
+  cd "${pkgname}-${pkgver}"
+  go build \
+    -trimpath \
+    -ldflags "-extldflags ${LDFLAGS}" \
+    -o $pkgname .
+}
 package() {
-  mkdir -p ${srcdir}/${pkgname}-${pkgver}
-  cd "${srcdir}/${pkgname}-${pkgver}"
- 
-  if [ "`uname -m`" = "x86_64" ];then
-    mv ../linux_amd64_$pkgname $pkgname 
-    chmod +x $pkgname
-  fi
-
-  if [ "`uname -m`" = "i684" ];then
-    mv ../linux_386_$pkgname $pkgname 
-    chmod +x $pkgname
-  fi
-
+  cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  #sudo install -Dm755 "$pkgdir/usr/bin/$pkgname" /usr/bin
 }
 
 # vim:set ts=2 sw=2 et:
