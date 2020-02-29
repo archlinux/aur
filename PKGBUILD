@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-gamepad-git
-pkgver=5.13.0_rc3.r30.gea0457b
+pkgver=5.15.0_beta1.r1.g1967137
 pkgrel=1
 pkgdesc="Qt5 gamepad module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-declarative')
 makedepends=('git')
 provides=('qt5-gamepad')
 conflicts=('qt5-gamepad')
-source=("git+https://code.qt.io/qt/qtgamepad.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtgamepad.git#branch=5.15")
 sha256sums=('SKIP')
 
 
