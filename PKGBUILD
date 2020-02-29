@@ -3,7 +3,7 @@
 
 pkgname=termplay
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Play an image/video in your terminal!"
 arch=("x86_64")
 url="https://github.com/jD91mZM2/termplay"
@@ -19,7 +19,7 @@ sha512sums=('c81d1324a4b33148f011af6b6eb6379b0f9b6c53f6f646d16502f73138c3f4ab37d
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --features bin
+  cargo build --release --locked --features bin
 }
 
 check() {
