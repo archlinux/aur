@@ -1,18 +1,22 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab2
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
 url="http://www.openhab.org/"
 license=('EPL')
 depends=('java-runtime-headless=8')
 
-conflicts=('openhab-runtime' 'openhab-addons')
+conflicts=('openhab-runtime' 'openhab-addons' 'openhab-beta')
 
 backup=('etc/openhab2/services/addons.cfg'
 		'etc/openhab2/services/runtime.cfg'
-		'etc/default/openhab2')
+		'etc/default/openhab2'
+		'var/lib/openhab2/etc/keystore'
+		'var/lib/openhab2/etc/users.properties'
+		'var/lib/openhab2/etc/keys.properties')
+
 install="${pkgname}.install"
 
 source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F${pkgver}%2Fopenhab-${pkgver}.tar.gz"
@@ -30,7 +34,9 @@ sha256sums=('b5a3241708eacd59d76226dd105561108fb3ec57eb23620e6d6bd2595471a1a4'
 	'500118875b0a9f3a4a511bebea3aebaebaa1e8fb5fc1e5c9222e3a287530a5ab')
 
 prepare() {
-	mkdir ${srcdir}/openhab2
+	if [[ ! -d ${srcdir}/openhab2 ]]; then
+		mkdir ${srcdir}/openhab2
+	fi
 	cd ${srcdir}/openhab2
 	tar xzf ${srcdir}/openhab-${pkgver}.tar.gz
 	patch -p1 < ../openhab2.patch

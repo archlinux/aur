@@ -1,7 +1,7 @@
 pkgbase = openhab2
 	pkgdesc = openHAB2 open source home automation software
 	pkgver = 2.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openhab.org/
 	install = openhab2.install
 	arch = any
@@ -9,10 +9,14 @@ pkgbase = openhab2
 	depends = java-runtime-headless=8
 	conflicts = openhab-runtime
 	conflicts = openhab-addons
+	conflicts = openhab-beta
 	noextract = openhab-2.5.2.tar.gz
 	backup = etc/openhab2/services/addons.cfg
 	backup = etc/openhab2/services/runtime.cfg
 	backup = etc/default/openhab2
+	backup = var/lib/openhab2/etc/keystore
+	backup = var/lib/openhab2/etc/users.properties
+	backup = var/lib/openhab2/etc/keys.properties
 	source = openhab-2.5.2.tar.gz::https://bintray.com/openhab/mvn/download_file?file_path=org%2Fopenhab%2Fdistro%2Fopenhab%2F2.5.2%2Fopenhab-2.5.2.tar.gz
 	source = openhab2.service
 	source = openhab2.default
