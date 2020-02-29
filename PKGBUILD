@@ -5,7 +5,7 @@
 pkgname='axecore'
 _pkgname='axe'
 pkgver=1.5.0.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Axe Core (AXE) is an open source cryptocurrency."
 arch=('x86_64')
 url="https://axerunners.com/"
@@ -22,8 +22,8 @@ source=('axe256.png'
 sha256sums=('595802457042857d57d3437d4c904b524c250a06b8fa9c1f7f857ad3775bafab'
             'c6971f66cbbc7acb74885d35d5f7a9b42ada9a95e864f9c71e67d6f9e8264900'
             'ded0b32ec96d8cbe996557d57c1c31583d30567377d3e9a0c3168f0aec3c817e'
-            '828c49a2a7f37e81efd8e6f2a40f073f05f391e6d8d7e3a23910b220ae0809eb'
-            '7669039c7370c88d6f38e20838e9ab20ae9b3fefca0b658e3e65f3517bd8dd2d')
+            'acda80199188113b714b8954994f6b1650e2ee175e146f846e02c169f7dc56d5'
+            '19b84e3b863146b3acbed4b366c2afc94ae73b11b3b52dc7fd03fb489618bfb5')
 
 prepare () {
   cd "$_pkgname-$pkgver"
