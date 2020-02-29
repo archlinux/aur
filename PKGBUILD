@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-serialport-git
-pkgver=5.13.0_rc3.r25.gad26283
+pkgver=5.15.0_beta1.r0.gb30052f
 pkgrel=1
 pkgdesc="Qt5 serial port module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base')
 makedepends=('git')
 provides=('qt5-serialport')
 conflicts=('qt5-serialport')
-source=("git+https://code.qt.io/qt/qtserialport.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtserialport.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -47,5 +47,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtserialport"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-serialport/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-serialport"
 }
