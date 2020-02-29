@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Krebs <sebastian[at]krebs[dot]one>
 
 pkgname=dephpend
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Detect flaws in your architecture, before they drag you down into the depths of dependency hell ..."
 arch=('any')
