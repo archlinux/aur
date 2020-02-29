@@ -6,6 +6,6 @@ Type = Package
 Target = *
 
 [Action]
-Description = Keep the last cache and the currently installed.
+Description = Removing unnecessary cached files (keeping the latest two)…
 When = PostTransaction
 Exec = /usr/bin/paccache -rvk2

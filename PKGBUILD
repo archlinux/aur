@@ -2,7 +2,7 @@
 
 pkgname=pacman-cleanup-hook
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Pacman hook to cleanup pacman cache, keeps only the latest cache and the currently installed package. No configuration necessary, just install it.'
 arch=('any')
 depends=('pacman-contrib')
