@@ -2,12 +2,13 @@
 
 pkgname=4kslideshowmaker
 pkgver=1.8.1.1029
-pkgrel=1
+pkgrel=2
 pkgdesc="A straightforward and easy-to-use app to create slideshows from music and photos, with Instagram support."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-slideshowmaker"
 license=('custom:eula')
-depends=('qt5-script' 'qt5-quickcontrols' 'libexif' 'portaudio' 'ffmpeg2.8' 'libjpeg9')
+depends=('qt5-script' 'qt5-quickcontrols' 'libexif' 'portaudio' 'ffmpeg2.8'
+         'libjpeg9' 'openssl-1.0')
 makedepends=('chrpath')
 source=("${pkgname}_${pkgver}_amd64.tar.bz2"::"https://dl.4kdownload.com/app/${pkgname}_${pkgver%.*}_amd64.tar.bz2"
         "${pkgname}.desktop"
