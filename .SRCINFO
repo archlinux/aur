@@ -1,0 +1,25 @@
+pkgbase = haskell-monad-memo
+	pkgdesc = Memoization monad transformer
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/monad-memo
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	depends = haskell-array
+	depends = haskell-containers
+	depends = haskell-criterion
+	depends = haskell-primitive
+	depends = haskell-random
+	depends = haskell-test-framework
+	depends = haskell-test-framework-quickcheck2
+	depends = haskell-transformers
+	depends = haskell-transformers-compat
+	depends = haskell-vector
+	source = https://hackage.haskell.org/packages/archive/monad-memo/0.5.1/monad-memo-0.5.1.tar.gz
+	sha512sums = 5365069c0fd86fd3f5c080896f05c405be0e702d72dad105975ca4000b87626c63a7d6e1b147f7fa5eb292982562b107477f2fe62e0cea06cae616f6869e4932
+
+pkgname = haskell-monad-memo
+
