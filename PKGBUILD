@@ -1,6 +1,6 @@
 # Maintainer: Parker Johansen <johansen.parker@gmail.com>
 pkgname=ballerina
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _pkg=${pkgname}-${pkgver}
 pkgdesc="an open source programming language and platform for cloud-era application programmers to easily write software that just works"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('jre8-openjdk')
 optdepends=('docker' 'bash' 'kubectl' 'helm')
 source=(${_pkg}.zip::https://product-dist.ballerina.io/downloads/${pkgver}/ballerina-${pkgver}.zip)
-sha256sums=('801ca6c9d1db44156ad724a9ea10ecab97bb35c641faf3fc35afc97bb68f7855')
+sha256sums=('bdfa55bd121063a21d9a50eefb725d5a2f74d591078739884c55cd34ca87182d')
 
 _licensedir=usr/share/licenses/${pkgname}
 _docdir=usr/share/doc/${pkgname}
@@ -27,6 +27,6 @@ package() {
     cp -ar ${srcdir}/${_pkg}/* ${pkgdir}/${_appdir}/
     chmod -R a+r ${pkgdir}/${_appdir}/distributions/jballerina-${pkgver}/lib
     ln -sf /${_appdir}/bin/ballerina ${pkgdir}/usr/bin/ballerina
-    ln -sf /usr/lib/jvm/java-8-openjdk ${pkgdir}/${_appdir}/dependencies/jdk8u202-b08-jre
+    ln -sf /usr/lib/jvm/java-8-openjdk/jre ${pkgdir}/${_appdir}/dependencies/jdk8u202-b08-jre
 }
 

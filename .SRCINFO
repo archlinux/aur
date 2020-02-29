@@ -1,6 +1,6 @@
 pkgbase = ballerina
 	pkgdesc = an open source programming language and platform for cloud-era application programmers to easily write software that just works
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://ballerina.io/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ballerina
 	optdepends = bash
 	optdepends = kubectl
 	optdepends = helm
-	source = ballerina-1.1.0.zip::https://product-dist.ballerina.io/downloads/1.1.0/ballerina-1.1.0.zip
-	sha256sums = 801ca6c9d1db44156ad724a9ea10ecab97bb35c641faf3fc35afc97bb68f7855
+	source = ballerina-1.1.1.zip::https://product-dist.ballerina.io/downloads/1.1.1/ballerina-1.1.1.zip
+	sha256sums = bdfa55bd121063a21d9a50eefb725d5a2f74d591078739884c55cd34ca87182d
 
 pkgname = ballerina
 
