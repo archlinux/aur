@@ -1,0 +1,16 @@
+pkgbase = haskell-czipwith
+	pkgdesc = CZipWith class and deriving via TH
+	pkgver = 1.0.1.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/czipwith
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-template-haskell
+	depends = haskell-transformers
+	source = https://hackage.haskell.org/packages/archive/czipwith/1.0.1.2/czipwith-1.0.1.2.tar.gz
+	sha512sums = 8902c1a3486b46d8dc7fdd7e2b5a62396d9e6f98e10c4b8872eb8fb4c3201decd54a201b30d48a7fcada7638872bc3ee018ebe9e44eeacad1871d7338337ed4d
+
+pkgname = haskell-czipwith
+
