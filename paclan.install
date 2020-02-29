@@ -4,12 +4,27 @@ post_install()
   systemctl start paclan.service
 
   echo "Don't forget to edit /etc/pacman.conf and include
-    Include = /etc/pacman.d/paclan.conf
+    Include = /etc/pacman.d/mirrorlist.paclan
 to each repo where you would like to see paclan being used (that would be at least [core], [extra] and [community])"
+}
+
+post_update()
+{
+  echo "Attempting to automatically migrate pacman.conf to mirrorlist.paclan"
+  sed -i 's|/etc/pacman.d/paclan.conf|/etc/pacman.d/mirrorlist.paclan|g' /etc/pacman.conf
+
+  echo "Please check that the repos in /etc/pacman.conf has been updated to use the line
+    Include = /etc/pacman.d/mirrorlist.paclan
+in each repo where you would like paclan used (suggested: at least [core], [extra] and [community])"
 }
 
 pre_remove()
 {
+  echo "Attempting to automatically update pacman.conf"
+
+  sed -i 's|Include\s*=\s*/etc/pacman.d/paclan.conf|# \0|g' /etc/pacman.conf
+  sed -i 's|Include\s*=\s*/etc/pacman.d/mirrorlist.paclan|# \0|g' /etc/pacman.conf
+
   systemctl stop paclan.service
   systemctl disable paclan.service
 }
@@ -17,6 +32,6 @@ pre_remove()
 post_remove()
 {
   echo "Don't forget to remove the additional Include lines from /etc/pacman.conf. They should look like:
-    Include = /etc/pacman.d/paclan.conf"
+    Include = /etc/pacman.d/mirrorlist.paclan"
   systemctl daemon-reload
 }

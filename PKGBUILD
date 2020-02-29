@@ -1,32 +1,36 @@
-# Maintainer: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
+# Maintainer: Chad Kunde <Kunde21@gmail.com>
+# Contributor: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
 
 pkgname=paclan
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 epoch=
 pkgdesc='Share pacman packages on the LAN. A replacement for pacserve'
-arch=('i686' 'x86_64')
-url='https://github.com/rakoo/paclan'
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv7l')
+url='https://github.com/Kunde21/paclan'
 license=('CC0')
 groups=()
 makedepends=('go')
-source=("https://github.com/rakoo/paclan/archive/v${pkgver}.zip")
-sha256sums=(29efca936520d4e8458ffbc758cdbb7992e944a7a7dbcfccce54c13229a8c997)
+source=('${pkgname}::https://github.com/Kunde21/paclan/archive/v${pkgver}.tar.gz')
+sha256sums=('b43d34a62618d0c3ed9027a5bb5d3434c864348ddd08a716eb1ee4fcf0d0c73a')
 install=paclan.install
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  go build -o paclan
+  cd "${pkgname}-${pkgver}"
+  go build --trimpath -o paclan
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
   # systemctl service file
   install -D -m644  'paclan.service' "$pkgdir/usr/lib/systemd/system/paclan.service"
 
   # paclan binary
   install -D -m755 'paclan' "$pkgdir/usr/bin/$pkgname"
+
+  # mirrorlist.paclan
+  install -D -m644 'mirrorlist.paclan' "$pkgdir/etc/pacman.d/mirrorlist.paclan"
 
   # paclan.conf
   install -D -m644 'paclan.conf' "$pkgdir/etc/pacman.d/paclan.conf"
