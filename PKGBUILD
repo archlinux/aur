@@ -2,7 +2,7 @@
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=play.it
-pkgver=2.11.2
+pkgver=2.11.3
 pkgrel=1
 pkgdesc="Easy way to install games on Linux"
 arch=('any')
@@ -17,16 +17,16 @@ optdepends=(
   'innoextract: to extract some Windows installers'
   'unzip: to extract some archives'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://framagit.org/vv221/play.it/-/archive/${pkgver}/play.it-${pkgver}.tar.gz")
-sha1sums=('b5a2dba4d61ea5b77e87714d3e862d48991facba')
+source=("${pkgname}-${pkgver}.tar.gz::https://forge.dotslashplay.it/play.it/scripts/-/archive/${pkgver}/scripts-${pkgver}.tar.gz")
+sha1sums=('dac37b94774426bc36e93976e185e3fe44d1102d')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd scripts-$pkgver
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd scripts-$pkgver
   make DESTDIR="$pkgdir" prefix="/usr" bindir="/usr/bin" install
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
