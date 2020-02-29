@@ -1,0 +1,15 @@
+pkgbase = python-autoapi
+	pkgdesc = Automatic Python API reference documentation generator for Sphinx, inspired by Doxygen
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/autoapi
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-sphinx
+	source = https://pypi.python.org/packages/source/a/autoapi/autoapi-2.0.0.tar.gz
+	sha256sums = 418907b9953a92b2e5732e04a09952369f7983fcbb3ba47f40e05f6bdd9c4154
+
+pkgname = python-autoapi
+
