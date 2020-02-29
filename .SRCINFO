@@ -7,6 +7,7 @@ pkgbase = clblas
 	arch = x86_64
 	license = APACHE
 	makedepends = boost
+	makedepends = cmake
 	depends = opencl-headers
 	depends = ocl-icd
 	provides = clblas
