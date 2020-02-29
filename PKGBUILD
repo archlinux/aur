@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-websockets-git
-pkgver=5.13.0_rc3.r33.ge108b1f
+pkgver=5.15.0_beta1.r6.g87c9513
 pkgrel=1
 pkgdesc="Qt5 WebSockets module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base')
 makedepends=('git' 'qt5-declarative')
 provides=('qt5-websockets')
 conflicts=('qt5-websockets')
-source=("git+https://code.qt.io/qt/qtwebsockets.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtwebsockets.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -47,5 +47,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtwebsockets"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-websockets/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-websockets"
 }

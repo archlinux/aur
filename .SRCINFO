@@ -1,6 +1,6 @@
 pkgbase = qt5-websockets-git
 	pkgdesc = Qt5 WebSockets module
-	pkgver = 5.13.0_rc3.r33.ge108b1f
+	pkgver = 5.15.0_beta1.r6.g87c9513
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = qt5-websockets-git
 	depends = qt5-base
 	provides = qt5-websockets
 	conflicts = qt5-websockets
-	source = git+https://code.qt.io/qt/qtwebsockets.git#branch=dev
+	source = git+https://code.qt.io/qt/qtwebsockets.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-websockets-git
