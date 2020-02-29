@@ -1,4 +1,5 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Kim Nordmo <kim.nordmo@gmail.com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=edx-dl
 pkgver=0.1.13
