@@ -1,10 +1,11 @@
 pkgbase = cura-binary-data-git
 	pkgdesc = Binary data (firmwares) for cura
-	pkgver = 4.0.0.5.g3279e44
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://github.com/Ultimaker/cura-binary-data-git
 	arch = any
 	license = AGPLv3
+	makedepends = git
 	source = git+https://github.com/Ultimaker/cura-binary-data.git
 	sha1sums = SKIP
 

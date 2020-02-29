@@ -3,10 +3,11 @@
 
 pkgname=cura-binary-data-git
 _pkgname=cura-binary-data
-pkgver=4.0.0.5.g3279e44
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="Binary data (firmwares) for cura"
 depends=()
+makedepends=('git')
 url="https://github.com/Ultimaker/${pkgname}"
 license=('AGPLv3')
 arch=('any')
