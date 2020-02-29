@@ -1,0 +1,14 @@
+pkgbase = yaml-language-server
+	pkgdesc = Language Server for Yaml Files
+	pkgver = 0.7.2
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = yaml-language-server-0.7.2.tgz
+	source = https://registry.npmjs.org/yaml-language-server/-/yaml-language-server-0.7.2.tgz
+	sha256sums = e9adb54dfef2562a67a20608b51e5976c0c4b3894a9de42259435fee8a459b73
+
+pkgname = yaml-language-server
+
