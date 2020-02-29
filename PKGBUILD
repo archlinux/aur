@@ -2,7 +2,7 @@
 # Previous maintainer: Jonathan Liu <net147@gmail.com>
 
 pkgname=qt5-virtualkeyboard-git
-pkgver=5.13.0_rc3.r37.g6837538
+pkgver=5.15.0_beta1.r0.g39a3c50
 pkgrel=1
 pkgdesc="Qt5 virtual keyboard module"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-declarative' 'qt5-svg' 'hunspell')
 makedepends=('git')
 provides=('qt5-virtualkeyboard')
 conflicts=('qt5-virtualkeyboard')
-source=("git+https://code.qt.io/qt/qtvirtualkeyboard.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtvirtualkeyboard.git#branch=5.15")
 sha256sums=('SKIP')
 
 
