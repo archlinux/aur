@@ -1,9 +1,9 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Alireza Ayinmehr <alireza.darksun@gmail.com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=borna-fonts
 pkgver=20011225
-pkgrel=2
+pkgrel=3
 pkgdesc="Borna Rayaneh Co. Persian B font series."
 url="http://www.bornaray.com/products/font.html"
 arch=(any)
