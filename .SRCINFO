@@ -1,6 +1,6 @@
 pkgbase = scopes-hg
 	pkgdesc = Scopes is a retargetable programming language & infrastructure
-	pkgver = r1776+.ebedc1a48c95+
+	pkgver = r2066+.2ebf65df42a1+
 	pkgrel = 1
 	url = https://scopes.rocks
 	arch = x86_64

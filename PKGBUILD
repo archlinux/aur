@@ -2,7 +2,7 @@
 
 _pkgname=scopes
 pkgname=${_pkgname}-hg
-pkgver=r1776+.ebedc1a48c95+
+pkgver=r2066+.2ebf65df42a1+
 pkgrel=1
 pkgdesc="Scopes is a retargetable programming language & infrastructure"
 url="https://scopes.rocks"
