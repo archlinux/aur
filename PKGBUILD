@@ -4,7 +4,7 @@
 
 pkgname='axecore'
 pkgver=1.5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Axe Core (AXE) is an open source cryptocurrency."
 arch=('x86_64')
 url="https://axerunners.com/"
@@ -24,7 +24,7 @@ sha256sums=('595802457042857d57d3437d4c904b524c250a06b8fa9c1f7f857ad3775bafab'
 validpgpkeys=('04B29AF0DA5F8EBD019C74BA278F2A095AC27140')
 
 prepare () {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
  #deque patch 2020-02-12
  #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when axe fixes/commits this.
@@ -33,7 +33,7 @@ prepare () {
 
 build() {
   CXXFLAGS+=" -fPIC -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   CPPFLAGS="${CPPFLAGS} -I$PWD/depends/built/$CARCH-pc-linux-gnu/include"
   LDFLAGS="${LDFLAGS} -L${PWD}/depends/built/$CARCH-pc-linux-gnu/lib -L${PWD}/depends/built/$CARCH-pc-linux-gnu/lib64"
   ./autogen.sh
@@ -42,10 +42,10 @@ build() {
 }
 
 package() {
-  install -D -m755 "$srcdir/$_pkgname-${pkgver}/src/qt/axe-qt" "$pkgdir/usr/bin/axe-qt"
-  install -D -m755 "$srcdir/$_pkgname-${pkgver}/src/axed" "$pkgdir/usr/bin/axed"
-  install -D -m755 "$srcdir/$_pkgname-${pkgver}/src/axe-cli" "$pkgdir/usr/bin/axe-cli"
-  install -D -m755 "$srcdir/$_pkgname-${pkgver}/src/axe-tx" "$pkgdir/usr/bin/axe-tx"
+  install -D -m755 "$srcdir/$pkgname-${pkgver}/src/qt/axe-qt" "$pkgdir/usr/bin/axe-qt"
+  install -D -m755 "$srcdir/$pkgname-${pkgver}/src/axed" "$pkgdir/usr/bin/axed"
+  install -D -m755 "$srcdir/$pkgname-${pkgver}/src/axe-cli" "$pkgdir/usr/bin/axe-cli"
+  install -D -m755 "$srcdir/$pkgname-${pkgver}/src/axe-tx" "$pkgdir/usr/bin/axe-tx"
   install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 "axe256.png" "$pkgdir/usr/share/pixmaps/axe256.png"
   install -D -m644 "axe-qt.desktop" "$pkgdir/usr/share/applications/axe-qt.desktop"
