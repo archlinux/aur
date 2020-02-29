@@ -1,8 +1,8 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 _pkgbase=smbmap
 pkgname=python-smbmap-git
-pkgver=1.1.0.r20.g8196f3a
-pkgrel=2
+pkgver=v1.8.r0.g146a5d8
+pkgrel=1
 pkgdesc="SMBMap allows users to enumerate samba share drives across an entire domain"
 arch=(any)
 url="https://github.com/ShawnDEvans/smbmap"
