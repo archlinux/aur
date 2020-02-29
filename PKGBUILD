@@ -2,18 +2,18 @@
 # Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=transifex-client
-pkgver=0.13.6
+pkgver=0.13.7
 pkgrel=1
 pkgdesc="The Transifex command-line tool to download and upload translations from Transifex"
 arch=('any')
 url="http://pypi.python.org/pypi/transifex-client"
 license=('GPL2')
 depends=('python-distribute' 'python-urllib3' 'python-six' 'python-requests'
-         'python-slugify>=1.2.6')
+         'python-slugify')
 source=("https://pypi.io/packages/source/t/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "python_requirements.patch")
-sha256sums=('88072f466627aabc55ae058314c70547e111d2d2e0cc91b1e327d65969bed778'
-            '5eb90fe23f82da6ee9b92f596cba6f5d80c300696f9f0606e2ac093c897d8dd8')
+sha256sums=('5570830f40a9436f0a279fe7ab72a636dc0f2efc66fc424b82b7fd6b3f6b260e'
+            '532fa165eab30bd0d9c6bd500ca9413b8730828a59a0adb0d201f4b385b37ea1')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
