@@ -2,7 +2,7 @@
 # Previous maintainer: Jonathan Liu <net147@gmail.com>
 
 pkgname=qt5-datavis3d-git
-pkgver=5.13.0_rc3.r34.g422856bb
+pkgver=5.15.0_beta1.r0.g9ba8b807
 pkgrel=1
 pkgdesc="Qt5 data visualization module"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-declarative')
 makedepends=('git')
 provides=('qt5-datavis3d')
 conflicts=('qt5-datavis3d')
-source=("git+https://code.qt.io/qt/qtdatavis3d.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtdatavis3d.git#branch=5.15")
 sha256sums=('SKIP')
 
 
