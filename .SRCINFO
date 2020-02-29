@@ -6,6 +6,7 @@ pkgbase = dyuganga
 	arch = any
 	depends = sanskrit-fonts
 	depends = atom
+	depends = hugo
 	depends = fcitx
 	depends = fcitx-m17n
 	depends = m17n-db

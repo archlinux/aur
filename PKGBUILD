@@ -10,12 +10,12 @@ arch=(any)
 depends=(
 'sanskrit-fonts'
 'atom'
+'hugo'
 # IME
 'fcitx'
 'fcitx-m17n'
 'm17n-db'
 'autokey'
-
 )
 
 optdepends=(

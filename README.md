@@ -1,5 +1,5 @@
 
-AUR package location: <https://aur.archlinux.org/packages/dyuganga/>
+- AUR package location: <https://aur.archlinux.org/packages/dyuganga/>
 - Package source code locations:
     - git clone git@github.com:sanskrit-coders/dyuganga-aur.git
     - git clone ssh://aur@aur.archlinux.org/dyuganga.git
