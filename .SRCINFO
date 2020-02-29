@@ -1,6 +1,6 @@
 pkgbase = nodejs-is-up-cli
 	pkgdesc = Check whether a website is up or down using the isitup.org API
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/sindresorhus/is-up-cli
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = nodejs-is-up-cli
 	makedepends = npm
 	depends = nodejs
 	conflicts = nodejs-is-up
-	noextract = is-up-cli-2.0.0.tgz
-	source = http://registry.npmjs.org/is-up-cli/-/is-up-cli-2.0.0.tgz
-	sha256sums = 8fd91aecb28da6b1b83edf5e59834c4c10a7187f88f5e8003c2d8779910cf014
+	noextract = is-up-cli-3.0.0.tgz
+	source = http://registry.npmjs.org/is-up-cli/-/is-up-cli-3.0.0.tgz
+	sha256sums = 04ebc7bb7363f07a452463263d1c92ffd52fcd469af30bd45dbe860d4c4b932e
 
 pkgname = nodejs-is-up-cli
 
