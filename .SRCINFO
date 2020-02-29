@@ -6,8 +6,8 @@ pkgbase = elixir-ls
 	arch = any
 	depends = elixir>=1.7.0
 	depends = erlang-nox>=20.0
-	source = https://github.com/elixir-lsp/elixir-ls/releases/download/v0.3.0/elixir-ls.zip
-	sha256sums = ab21b131bd203a6b461ad77f8177ee0000981920f6b86e2319fde70320b52d60
+	source = elixir-ls.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v0.3.0.tar.gz
+	sha256sums = d2f0c2be0ed5bcdaa8d00a96c193e6684fd69bf20597f1d8ae9133558e7dab22
 
 pkgname = elixir-ls
 

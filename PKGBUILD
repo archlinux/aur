@@ -6,14 +6,23 @@ pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 arch=('any')
 url='https://github.com/elixir-lsp/elixir-ls'
 depends=('elixir>=1.7.0' 'erlang-nox>=20.0')
-source=("https://github.com/elixir-lsp/elixir-ls/releases/download/v${pkgver}/elixir-ls.zip")
-sha256sums=('ab21b131bd203a6b461ad77f8177ee0000981920f6b86e2319fde70320b52d60')
+source=("elixir-ls.tar.gz::https://github.com/elixir-lsp/elixir-ls/archive/v${pkgver}.tar.gz")
+sha256sums=('d2f0c2be0ed5bcdaa8d00a96c193e6684fd69bf20597f1d8ae9133558e7dab22')
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  mix deps.get
+  mix compile
+}
 
 package() {
-    install -Dm0644 -t "${pkgdir}"/usr/lib/elixir-ls *.ez
-    install -Dm0755 -t "${pkgdir}"/usr/lib/elixir-ls *.sh
+  cd "${pkgname}-${pkgver}"
 
-    install -dm0755 "${pkgdir}"/usr/bin
-    ln -sf /usr/lib/elixir-ls/language_server.sh "${pkgdir}"/usr/bin/elixir-ls
-    ln -sf /usr/lib/elixir-ls/debugger.sh "${pkgdir}"/usr/bin/elixir-ls-debugger
+  install -dm0644 "${pkgdir}"/usr/lib/elixir-ls
+  mix elixir_ls.release -o "${pkgdir}"/usr/lib/elixir-ls
+
+  install -dm0755 "${pkgdir}"/usr/bin
+  ln -sf /usr/lib/elixir-ls/language_server.sh "${pkgdir}"/usr/bin/elixir-ls
+  ln -sf /usr/lib/elixir-ls/debugger.sh "${pkgdir}"/usr/bin/elixir-ls-debugger
 }
