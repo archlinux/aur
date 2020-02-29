@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
-pkgver=3.68.0
+pkgver=3.67.5
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
