@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
 pkgname=elixir-ls
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 arch=('any')
 url='https://github.com/elixir-lsp/elixir-ls'
@@ -20,7 +20,7 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -dm0644 "${pkgdir}"/usr/lib/elixir-ls
+  install -dm0755 "${pkgdir}"/usr/lib/elixir-ls
   MIX_ENV=prod mix elixir_ls.release -o "${pkgdir}"/usr/lib/elixir-ls
 
   install -dm0755 "${pkgdir}"/usr/bin
