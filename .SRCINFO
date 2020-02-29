@@ -1,6 +1,6 @@
 pkgbase = yle-dl
 	pkgdesc = Download video and audio from YLE Areena.
-	pkgver = 20191231
+	pkgver = 20200222
 	pkgrel = 1
 	url = http://aajanki.github.io/yle-dl/
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = yle-dl
 	optdepends = rtmpdump: for downloading some Elävä Arkisto streams
 	optdepends = youtube-dl: an alternative downloader backend to AdobeHDS.php
 	optdepends = wget: for some rare streams
-	source = yle-dl-20191231.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-20191231.tar.gz
-	sha256sums = 7bd9206b58d6864b2b416549276523a03927e80a8ca460bdb07f2b71dd04d6ac
+	source = yle-dl-20200222.tar.gz::https://files.pythonhosted.org/packages/source/y/yle-dl/yle-dl-20200222.tar.gz
+	sha256sums = 70214f77bc063da2e78e47e496811af663e8cfa214f51dd2a012c173c3d2d963
 
 pkgname = yle-dl
 
