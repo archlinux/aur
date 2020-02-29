@@ -2,7 +2,7 @@
 _pkgbase=impacket
 pkgname=python-impacket-git
 pkgver=impacket_0_9_20.r90.g13cfc72a
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of classes for working with network protocols"
 arch=('any')
 conflicts=('impacket')
