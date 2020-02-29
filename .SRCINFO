@@ -1,6 +1,6 @@
 pkgbase = qwikaccess-git
 	pkgdesc = A point and click Qt GUI for scripts we use frequently.
-	pkgver = 2.8.0.r1.a796070
+	pkgver = 0.0.1.r0.02d5835
 	pkgrel = 1
 	url = https://github.com/librewish/qwikaccess
 	arch = any
