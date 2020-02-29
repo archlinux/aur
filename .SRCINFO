@@ -1,0 +1,20 @@
+pkgbase = qt6-declarative
+	pkgdesc = Classes for QML and JavaScript languages
+	pkgver = 5.15.0.alpha1.r248.g48deaf9a3e
+	pkgrel = 1
+	url = https://www.qt.io
+	arch = x86_64
+	groups = qt6
+	license = GPL3
+	license = LGPL3
+	license = FDL
+	license = custom
+	makedepends = python
+	makedepends = vulkan-headers
+	makedepends = git
+	depends = qt6-base-git
+	source = git+https://code.qt.io/qt/qtdeclarative.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = qt6-declarative
+
