@@ -1,7 +1,7 @@
 pkgbase = epson-inkjet-printer-l805
 	pkgdesc = Epson printer driver (L805)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = epson-inkjet-printer-l805
 	depends = cups
 	depends = ghostscript
 	source = https://download3.ebz.epson.net/dsc/f/03/00/05/30/95/61e3ce77e3c2fcdbea81efde2fa6dfb93446686b/epson-inkjet-printer-l805-1.0.0-1lsb3.2.src.rpm
-	sha512sums = d24d1d53532320900e35d518311c17c7ae4fb891594b52e66ef4646dae957affeb2d29ba95b654c69d335b6a534e194d397a38a5b2af2ed36bbdaa64e7de9fd1
+	sha512sums = 9bd0378e74a760d68db31c2382486a0d5697fc267384b7f6aed77dd381b42395770718a605061725d834dd2d2245cd5507b92bc9884273076b405beda8d2f198
 
 pkgname = epson-inkjet-printer-l805
 
