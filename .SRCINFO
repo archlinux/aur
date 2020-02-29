@@ -1,0 +1,20 @@
+pkgbase = haskell-multistate
+	pkgdesc = like mtl's ReaderT / WriterT / StateT, but more than one contained value/type.
+	pkgver = 0.8.0.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/multistate
+	arch = x86_64
+	license = BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-hspec
+	depends = haskell-monad-control
+	depends = haskell-mtl
+	depends = haskell-tagged
+	depends = haskell-transformers
+	depends = haskell-transformers-base
+	source = https://hackage.haskell.org/packages/archive/multistate/0.8.0.2/multistate-0.8.0.2.tar.gz
+	sha512sums = 5e8e41a5a0de3973e097b388dca95f2ca6e0b1155d2b34021a448c68e52c29e0c4b49c5211c1ced2c1c679b06753daccca2d69740b0efae277e5a09196f4ec6c
+
+pkgname = haskell-multistate
+
