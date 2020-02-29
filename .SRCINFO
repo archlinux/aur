@@ -1,0 +1,15 @@
+pkgbase = python-pygments-github-lexers
+	pkgdesc = This entrypoint is used for adding Github Custom Lexers to the Pygments core
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/pygments-github-lexers
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygments
+	source = https://pypi.python.org/packages/source/p/pygments-github-lexers/pygments-github-lexers-0.0.5.tar.gz
+	sha256sums = aaca57e77cd6fcfce8d6ee97a998962eebf7fbb810519a8ebde427c62823e133
+
+pkgname = python-pygments-github-lexers
+
