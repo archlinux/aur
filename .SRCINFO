@@ -1,0 +1,16 @@
+pkgbase = haskell-data-tree-print
+	pkgdesc = Print Data instances as a nested tree
+	pkgver = 0.1.0.2
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/data-tree-print
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-pretty
+	depends = haskell-syb
+	source = https://hackage.haskell.org/packages/archive/data-tree-print/0.1.0.2/data-tree-print-0.1.0.2.tar.gz
+	sha512sums = b2cbab62a00b78cb4b105502b75b06b3b39e23d57bf269b1fece7449041742176e49bafd4806d05001d21c1abc0dbc06c4dbd03dbe8801b4ced3311a37b29320
+
+pkgname = haskell-data-tree-print
+
