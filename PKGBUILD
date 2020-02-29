@@ -1,5 +1,5 @@
 pkgname=qolibri
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A QT-based EPWING dictionary viewer"
 url="https://github.com/ludios/qolibri/"
@@ -10,7 +10,7 @@ makedepends=('cmake')
 source=("https://github.com/ludios/qolibri/archive/${pkgver}.tar.gz"
         'qolibri.desktop'
         'qolibri-128.png')
-md5sums=('94c58051989d05ed3d1e1393a79bff2a'
+md5sums=('e287a5c29c85bc55a6a2adccf6787e11'
          '9c68770443635f3718d8d291f260de10'
          '85bd387834f16a9ee92824acfcdfd5f2')
 
