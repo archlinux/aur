@@ -1,6 +1,6 @@
 pkgname=qolibri
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A QT-based EPWING dictionary viewer"
 url="https://github.com/ludios/qolibri/"
 arch=('x86_64' 'i686')
@@ -21,6 +21,7 @@ prepare () {
 build() {
   cd build
   cmake "../${pkgname}-${pkgver}" \
+    -DPROJECT_VERSION=$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
