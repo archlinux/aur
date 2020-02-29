@@ -5,6 +5,7 @@ pkgbase = yay
 	url = https://github.com/Jguer/yay
 	arch = i686
 	arch = x86_64
+	arch = arm
 	arch = armv7h
 	arch = armv6h
 	arch = aarch64
