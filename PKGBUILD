@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=pingo
-pkgver=0.99.beta63
+pkgver=0.99.rc1.95
 pkgrel=1
 pkgdesc='An experimental, fast Web PNG/JPG optimizer with visually lossless or lossy compression (uses wine)'
 arch=('any')
@@ -12,12 +12,12 @@ makedepends=('git')
 source=("pingo-win64-${pkgver}.zip"::'https://css-ig.net/bin/pingo-win64.zip'
         'git+https://github.com/dbermond/shellutils.git')
 noextract=("pingo-win64-${pkgver}.zip")
-sha256sums=('9d7b91b9471209dfb79996bb55bb083cd861548cd91a8658aa228a57b14b4de8'
+sha256sums=('a0b78576d227d45dfb7014122d0af260e13a6eb52fd31c3817416c41d979c69c'
             'SKIP')
 
 _useragent="User-Agent: Mozilla/5.0 (X11; Linux ${CARCH}) \
                         AppleWebKit/537.36 (KHTML, like Gecko) \
-                        Chrome/77.0.3865.120 \
+                        Chrome/80.0.3987.122 \
                         Safari/537.36"
 
 _useragent="$(printf '%s' "$_useragent" | sed 's/[[:space:]]\+/\\ /g')"
@@ -38,8 +38,7 @@ DLAGENTS=("https::/usr/bin/curl \
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
-    cd "${pkgname}-${pkgver}"
-    bsdtar -xf "../pingo-win64-${pkgver}.zip"
+    bsdtar -xf "pingo-win64-${pkgver}.zip" -C "${pkgname}-${pkgver}"
 }
 
 package() {
