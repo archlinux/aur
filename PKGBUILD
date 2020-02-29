@@ -2,7 +2,7 @@
 # Contributor: andmars <andreas.marschall @ unitybox.de>
 # Contributor: SaThaRiel <sathariel74[at] gmail[dot]com>
 pkgname=angband-git
-pkgver=4.2.0.r149.g84decf165
+pkgver=4.2.0.r179.g35534125a
 pkgrel=1
 pkgdesc="A roguelike dungeon-exploration game based on Tolkien's books"
 arch=('i686' 'x86_64')
