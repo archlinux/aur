@@ -1,6 +1,6 @@
 pkgbase = qt5-xmlpatterns-git
 	pkgdesc = Qt5 XML patterns module
-	pkgver = 5.13.0_rc3.r42.g9da0881
+	pkgver = 5.15.0_beta1.r2.g33378afd
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = qt5-xmlpatterns-git
 	depends = qt5-declarative
 	provides = qt5-xmlpatterns
 	conflicts = qt5-xmlpatterns
-	source = git+https://code.qt.io/qt/qtxmlpatterns.git#branch=dev
+	source = git+https://code.qt.io/qt/qtxmlpatterns.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-xmlpatterns-git

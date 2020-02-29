@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-xmlpatterns-git
-pkgver=5.13.0_rc3.r42.g9da0881
+pkgver=5.15.0_beta1.r2.g33378afd
 pkgrel=1
 pkgdesc="Qt5 XML patterns module"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('qt5-declarative')
 makedepends=('git')
 provides=('qt5-xmlpatterns')
 conflicts=('qt5-xmlpatterns')
-source=("git+https://code.qt.io/qt/qtxmlpatterns.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtxmlpatterns.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -51,5 +51,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtxmlpatterns"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-xmlpatterns/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-xmlpatterns"
 }
