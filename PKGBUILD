@@ -1,12 +1,12 @@
 # Maintainer: KokaKiwi <kokakiwi@kokakiwi.net>
 pkgname=elixir-ls
-pkgver=0.2.25
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 arch=('any')
-url='https://github.com/JakeBecker/elixir-ls'
-depends=('elixir>=1.7.0')
-source=("https://github.com/JakeBecker/elixir-ls/releases/download/v${pkgver}/elixir-ls.zip")
+url='https://github.com/elixir-lsp/elixir-ls'
+depends=('elixir>=1.7.0' 'erlang-nox>=20.0')
+source=("https://github.com/elixir-lsp/elixir-ls/releases/download/v${pkgver}/elixir-ls.zip")
 sha256sums=('ab21b131bd203a6b461ad77f8177ee0000981920f6b86e2319fde70320b52d60')
 
 package() {
