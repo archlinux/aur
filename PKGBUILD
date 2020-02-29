@@ -2,7 +2,7 @@
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
 url="http://qgroundcontrol.org/"
@@ -60,7 +60,7 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
 		'mavlink-warn-qgc.patch'
 )
 
-sha256sums=('2eb84acdf451d5152537516a43dae93ac52f9e48fefb3df16e6709f1a9989e4e'
+sha256sums=('401a86e593a5e27120bd3040547f340abb04b2dd2c7fffb26e42e52bbcf68742'
             'f3aa1ae178cfa22c4d0bf8c46edc28902ed626a970f0164bd2eba031c9d76432'
             '51b2d5af91e16d6009e73690c62a289dff9004c170e626dc8c322dd49a745c8b'
             'ad96ca7c11864d26047637dc02a0278bbf33997a6f6be37ef1b7ca44669f1149'
