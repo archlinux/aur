@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 # supported ghc versions: 8.4.{2,3,4} 8.6.{4,5} 8.8.{1,2}
 
-_enabled_ghc_versions=('8.6.5')
+_enabled_ghc_versions=('8.6.5' '8.8.2')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
