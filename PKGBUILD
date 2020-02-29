@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_glslang_commit='a4af7676feb011d61b1dfa8915bd41d9c5aaf22a'
-_spirv_tools_commit='e82a428605f6ce0a07337b36f8ba3935c9f165ac'
-_spirv_headers_commit='204cd131c42b90d129073719f2766293ce35c081'
+_glslang_commit='c008fcb8cc0f6a413162fb5236d0c548cc1e0ef6'
+_spirv_tools_commit='79f8caf9154a0328a87424354bd10ab69e811185'
+_spirv_headers_commit='5dbc1c32182e17b8ab8e8158a802ecabaf35aad3'
 
 pkgname=spirv-cross
-pkgver=2020.01.16
+pkgver=2020.02.26
 pkgrel=1
 pkgdesc='A tool and library for parsing and converting SPIR-V to other shader languages'
 arch=('x86_64')
@@ -32,6 +32,9 @@ prepare() {
 
 build() {
     # NOTE: test suite fails when using 'None' build type
+    
+    export CFLAGS+=" ${CPPFLAGS}"
+    export CXXFLAGS+=" ${CPPFLAGS}"
     
     # glslang (required for tests)
     printf '%s\n' '  -> Building glslang...'
