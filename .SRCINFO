@@ -1,8 +1,8 @@
 pkgbase = linux-selinux
 	pkgdesc = Linux SELinux
-	pkgver = 5.4.6.arch3
+	pkgver = 5.5.6.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.4.6-arch3
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.6-arch1
 	arch = x86_64
 	groups = selinux
 	license = GPL2
@@ -16,13 +16,13 @@ pkgbase = linux-selinux
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.4.6-arch3
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.6-arch1
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 5d58a2115892839997ae7dcca226697c34b656de7685cb3eb8696451dc5100a0
+	sha256sums = a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868
 
 pkgname = linux-selinux
 	pkgdesc = The Linux SELinux kernel and modules
