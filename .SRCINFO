@@ -1,6 +1,6 @@
 pkgbase = qt5-charts-git
 	pkgdesc = Qt5 charts module
-	pkgver = 5.13.0_rc3.r49.g9a052d7a
+	pkgver = 5.15.0_beta1.r1.gf93fc856
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = qt5-charts-git
 	depends = qt5-base
 	provides = qt5-charts
 	conflicts = qt5-charts
-	source = git+https://code.qt.io/qt/qtcharts.git#branch=dev
+	source = git+https://code.qt.io/qt/qtcharts.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-charts-git

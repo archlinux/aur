@@ -2,7 +2,7 @@
 # Previous maintainer: Jonathan Liu <net147@gmail.com>
 
 pkgname=qt5-charts-git
-pkgver=5.13.0_rc3.r49.g9a052d7a
+pkgver=5.15.0_beta1.r1.gf93fc856
 pkgrel=1
 pkgdesc="Qt5 charts module"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('qt5-base')
 makedepends=('git' 'qt5-declarative')
 provides=('qt5-charts')
 conflicts=('qt5-charts')
-source=("git+https://code.qt.io/qt/qtcharts.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtcharts.git#branch=5.15")
 sha256sums=('SKIP')
 
 
