@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-networkauth-git
-pkgver=5.13.0_rc3.r32.g272ea7f
+pkgver=5.15.0_beta1.r1.g1afc993
 pkgrel=1
 pkgdesc="Qt5 network authentication module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base')
 makedepends=('git')
 provides=('qt5-networkauth')
 conflicts=('qt5-networkauth')
-source=("git+https://code.qt.io/qt/qtnetworkauth.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtnetworkauth.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -47,5 +47,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtnetworkauth"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-networkauth/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-networkauth"
 }

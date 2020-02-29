@@ -1,6 +1,6 @@
 pkgbase = qt5-networkauth-git
 	pkgdesc = Qt5 network authentication module
-	pkgver = 5.13.0_rc3.r32.g272ea7f
+	pkgver = 5.15.0_beta1.r1.g1afc993
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = qt5-networkauth-git
 	depends = qt5-base
 	provides = qt5-networkauth
 	conflicts = qt5-networkauth
-	source = git+https://code.qt.io/qt/qtnetworkauth.git#branch=dev
+	source = git+https://code.qt.io/qt/qtnetworkauth.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-networkauth-git
