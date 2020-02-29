@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-svg-git
-pkgver=5.13.0_rc3.r40.gb80a167
+pkgver=5.15.0_beta1.r3.gae1e354
 pkgrel=1
 pkgdesc="Qt5 SVG module"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('qt5-base')
 makedepends=('git')
 provides=('qt5-svg')
 conflicts=('qt5-svg')
-source=("git+https://code.qt.io/qt/qtsvg.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtsvg.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -51,5 +51,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtsvg"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-svg/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-svg"
 }

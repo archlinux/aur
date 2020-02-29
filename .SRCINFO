@@ -1,6 +1,6 @@
 pkgbase = qt5-svg-git
 	pkgdesc = Qt5 SVG module
-	pkgver = 5.13.0_rc3.r40.gb80a167
+	pkgver = 5.15.0_beta1.r3.gae1e354
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = qt5-svg-git
 	depends = qt5-base
 	provides = qt5-svg
 	conflicts = qt5-svg
-	source = git+https://code.qt.io/qt/qtsvg.git#branch=dev
+	source = git+https://code.qt.io/qt/qtsvg.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-svg-git
