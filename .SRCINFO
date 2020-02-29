@@ -1,5 +1,5 @@
 pkgbase = python-blake3
-	pkgdesc = Python bindings for the Rust blake3 crate, based on PyO3.
+	pkgdesc = Python bindings for the Rust blake3 crate, based on PyO3. This a proof of concept, not yet fully-featured or production-ready.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/oconnor663/blake3-py
