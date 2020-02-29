@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-quickcontrols-git
-pkgver=5.13.0_rc3.r44.gb74071e6
+pkgver=5.15.0_beta1.r1.gd286adc5
 pkgrel=1
 pkgdesc="Qt5 Quick Controls module"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('qt5-declarative')
 makedepends=('git')
 provides=('qt5-quickcontrols')
 conflicts=('qt5-quickcontrols')
-source=("git+https://code.qt.io/qt/qtquickcontrols.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtquickcontrols.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -51,5 +51,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtquickcontrols"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-quickcontrols/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-quickcontrols"
 }

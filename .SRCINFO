@@ -1,6 +1,6 @@
 pkgbase = qt5-quickcontrols-git
 	pkgdesc = Qt5 Quick Controls module
-	pkgver = 5.13.0_rc3.r44.gb74071e6
+	pkgver = 5.15.0_beta1.r1.gd286adc5
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = qt5-quickcontrols-git
 	depends = qt5-declarative
 	provides = qt5-quickcontrols
 	conflicts = qt5-quickcontrols
-	source = git+https://code.qt.io/qt/qtquickcontrols.git#branch=dev
+	source = git+https://code.qt.io/qt/qtquickcontrols.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-quickcontrols-git
