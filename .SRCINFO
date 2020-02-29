@@ -1,7 +1,7 @@
 pkgbase = ir-standard-fonts
 	pkgdesc = Iran Supreme Council of Information and Communication Technology (SCICT) standard Persian fonts.
 	pkgver = 20170121
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/molaeiali/ir-standard-fonts
 	arch = any
 	license = unknown
