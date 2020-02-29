@@ -1,7 +1,7 @@
 # Maintainer: Shiv Upadhyay <shivnupadhyay@gmail.com>
 pkgname=rigetti-qvm-git
 _pkgname=qvm
-pkgver=r414.639e42f
+pkgver=r410.5f78341
 pkgrel=1
 pkgdesc="The @rigetti high-performance quantum virtual machine. "
 arch=('x86_64' 'i686')
@@ -24,6 +24,7 @@ pkgver() {
 
 prepare() {
 	cd "$_pkgname"
+    git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
     sed -i "s/SBCL=\$(SBCL_BIN) --dynamic-space-size \$(QVM_WORKSPACE) --noinform --non-interactive --no-userinit --no-sysinit/SBCL=\$(SBCL_BIN) --dynamic-space-size \$(QVM_WORKSPACE) --noinform --non-interactive #--no-userinit --no-sysinit/" Makefile
     sed -i "s/(:version #:cl-quil \"1.16.0\")/(:version #:cl-quil \"1.15.0\")/" qvm-app.asd
     sed -i "s/(:version #:cl-quil \"1.16.0\")/(:version #:cl-quil \"1.15.0\")/" qvm.asd
