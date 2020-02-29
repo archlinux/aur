@@ -1,7 +1,7 @@
 pkgbase = yay-git
 	pkgdesc = Yet another yogurt. Pacman wrapper and AUR helper written in go. (development version)
 	pkgver = 9.4.6.r0.g352667f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Jguer/yay
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = yay-git
 	conflicts = yay
 	options = !strip
 	options = !emptydirs
-	source = yay::git+https://github.com/Jguer/yay.git#branch=master
+	source = yay::git+https://github.com/Jguer/yay.git
 	md5sums = SKIP
 
 pkgname = yay-git
