@@ -1,0 +1,11 @@
+pkgbase = pacman-arch-audit-hook
+	pkgdesc = Pacman hook to output arch-audit after each pacman operation. No configuration necessary, just install it.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = arch-audit
+	source = arch-audit.hook
+	sha256sums = 468be36ee35a7ae116612fc748d656f3139a75c92cb5ac96581b9c2f21f95e53
+
+pkgname = pacman-arch-audit-hook
+
