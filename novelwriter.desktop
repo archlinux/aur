@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=novelwriter
+Type=Application
+Categories=Office
+Exec=/usr/bin/novelWriter
+Name=novelWriter
+Comment=Multi-document markdown-like editor for writing novels.
+StartupNotify=true
