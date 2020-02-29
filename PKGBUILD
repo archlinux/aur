@@ -17,9 +17,9 @@
 #
 pkgbase="zfs-linux-zen-git"
 pkgname=("zfs-linux-zen-git" "zfs-linux-zen-git-headers")
-_commit='948f0c44196d2fa254399ec0d716c2ba0bb9ffad'
-_zfsver="2020.02.11.r5717.g948f0c441"
-_kernelver="5.5.3.zen1-1"
+_commit='d32eff3a27d2a57fa280b7e461883fed2a4cec16'
+_zfsver="2020.02.28.r5785.gd32eff3a2"
+_kernelver="5.5.6.zen1-1"
 _extramodules="${_kernelver/.zen/-zen}-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -27,8 +27,10 @@ pkgrel=1
 makedepends=("linux-zen-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
-sha256sums=("SKIP")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
+        "linux-5.5-compat-blkg_tryget.patch")
+sha256sums=("SKIP"
+            "daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da")
 license=("CDDL")
 depends=("kmod" "zfs-utils-git=${_zfsver}" "linux-zen=${_kernelver}")
 
