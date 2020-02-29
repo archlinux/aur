@@ -1,6 +1,6 @@
 # Maintainer: Flat <flat@imo.uto.moe>
 pkgname=imgbrd-grabber-git
-pkgver=v7.1.1.r3.1254e59f
+pkgver=v7.2.1.r0.b042288c
 pkgrel=1
 pkgdesc="Very customizable imageboard/booru downloader with powerful filenaming features."
 arch=('i686' 'x86_64')
@@ -10,13 +10,31 @@ depends=('qt5-multimedia' 'qt5-declarative' 'nodejs')
 makedepends=('git' 'cmake' 'qt5-tools' 'npm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/Bionus/imgbrd-grabber.git')
-md5sums=('SKIP')
+source=('git+https://github.com/Bionus/imgbrd-grabber.git'
+        'git+https://github.com/LaurentGomila/qt-android-cmake.git'
+        'git+https://github.com/sakra/cotire.git'
+        'git+https://github.com/catchorg/Catch2.git')
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
     printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+    cd "$srcdir/${pkgname%-git}"
+    git submodule init
+    git config submodule.qt-android-cmake.url "$srcdir/qt-android-cmake"
+    git config submodule.qt-android-cmake.path "$srcdir/${pkgname%-git}/cmake/qt-android-cmake"
+    git config submodule.cotire.url "$srcdir/cotire"
+    git config submodule.cotire.path "$srcdir/${pkgname%-git}/cmake/cotire"
+    git config submodule.Catch2.url $srcdir/Catch2
+    git config submodule.Catch2.path "$srcdir/${pkgname%-git}/tests/src/vendor/catch"
+    git submodule update
 }
 
 build() {
