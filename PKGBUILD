@@ -6,7 +6,7 @@
 
 _pkgname=qt5-base
 pkgname=$_pkgname-git
-pkgver=5.13.1.r1450.g139240ac67
+pkgver=5.15.0.beta1.r69.gfbebc93617
 pkgrel=1
 arch=("i686" "x86_64")
 url='https://qt-project.org/'
@@ -27,7 +27,7 @@ optdepends=('qt5-svg: to use SVG icon themes'
             'gtk3: GTK platform plugin')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "qtchooser")
-source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=dev")
+source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=5.15")
 
 sha256sums=('SKIP')
 
