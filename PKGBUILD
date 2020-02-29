@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-webview-git
-pkgver=5.13.0_rc3.r33.gfb2a200
+pkgver=5.15.0_beta1.r0.g3de65bf
 pkgrel=1
 pkgdesc="Qt5 WebView module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-webengine')
 makedepends=('git')
 provides=('qt5-webview')
 conflicts=('qt5-webview')
-source=("git+https://code.qt.io/qt/qtwebview.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtwebview.git#branch=5.15")
 sha256sums=('SKIP')
 
 
