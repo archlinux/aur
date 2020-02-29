@@ -1,0 +1,22 @@
+pkgbase = haskell-strict-list
+	pkgdesc = Strict linked list
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/strict-list
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-hashable
+	depends = haskell-semigroupoids
+	depends = haskell-quickcheck
+	depends = haskell-quickcheck-instances
+	depends = haskell-rerebase
+	depends = haskell-tasty
+	depends = haskell-tasty-hunit
+	depends = haskell-tasty-quickcheck
+	source = https://hackage.haskell.org/packages/archive/strict-list/0.1.5/strict-list-0.1.5.tar.gz
+	sha512sums = 05482a8472641883c810dcaf154cc0ff435f40933d80674f162238b74208801dee8b6ba24a82765308683081e402db6d331b9e57aa5dd02853e67ad8c263f02a
+
+pkgname = haskell-strict-list
+
