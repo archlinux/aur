@@ -1,0 +1,15 @@
+pkgbase = python-poku
+	pkgdesc = Symmetrical sync between pocket and buku
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/shanedabes/poku
+	arch = any
+	license = APACHE
+	depends = bukuserver
+	depends = python-configargparse
+	depends = python-requests
+	source = python-poku-0.1.3.tar.gz::https://github.com/shanedabes/poku/archive/0.1.3.tar.gz
+	sha256sums = 510cfaf304e566bcff4490d2fa8b247b2fd1ed6fe43813bfd59cf3724a9d0c31
+
+pkgname = python-poku
+
