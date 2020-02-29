@@ -5,7 +5,7 @@
 # Contributor: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-graphicaleffects-git
-pkgver=5.13.0_rc3.r30.gc76eb21
+pkgver=5.15.0_beta1.r1.g617bb58
 pkgrel=1
 pkgdesc="Qt5 graphical effects module"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('qt5-declarative')
 makedepends=('git')
 provides=('qt5-graphicaleffects')
 conflicts=('qt5-graphicaleffects')
-source=("git+https://code.qt.io/qt/qtgraphicaleffects.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtgraphicaleffects.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -51,5 +51,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtgraphicaleffects"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-graphicaleffects/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-graphicaleffects"
 }
