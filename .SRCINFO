@@ -1,10 +1,9 @@
 pkgbase = sublime-text-4-dev
 	pkgdesc = Sophisticated text editor for code, html and prose - dev build
-	pkgver = 4.4067
+	pkgver = 4.4068
 	pkgrel = 1
 	url = http://www.sublimetext.com/
 	install = sublime-text.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libpng
@@ -13,10 +12,10 @@ pkgbase = sublime-text-4-dev
 	conflicts = sublime-text
 	source = sublime-text.install
 	source = sublime_text.desktop
-	source = https://download.sublimetext.com/sublime_text_build_4067_x64.tar.xz
+	source = https://download.sublimetext.com/sublime_text_build_4068_x64.tar.xz
 	sha256sums = 388d1fe620727bd3e6bdda7b60150734616d8ba86ef1001478d0a41d1718c018
 	sha256sums = a400ae041bd8b3ed08bf04129e1d7ddc9df9edf5610532bd7b321a43e28c7ca9
-	sha256sums = 0039a4b217787e8736dfc62d7df28362995054ed5d35e8187925cb5d221442c4
+	sha256sums = 26399f2fc7042436f6087d6f3fbbdaef4ca5661752b323ddda478e0940966ca7
 
 pkgname = sublime-text-4-dev
 
