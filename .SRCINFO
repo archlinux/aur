@@ -1,14 +1,13 @@
 pkgbase = mbrola
 	pkgdesc = A phoneme-to-audio converter used by many TTS (Text-to-speech) programs
-	pkgver = 3.01h
+	pkgver = 3.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/numediart/MBROLA
 	arch = x86_64
-	license = custom:Mbrola
-	depends = lib32-glibc
-	source = http://url.muflone.com/mbrola-3.01h.zip
-	sha256sums = df402fad97c823206fce68837c1d716b9c0466a4cfb554dfb244df7da5589d6e
+	license = AGPL3
+	source = mbrola-3.3.tar.gz::https://github.com/numediart/MBROLA/archive/3.3.tar.gz
+	sha256sums = c01ded2c0a05667e6df2439c1c02b011a5df2bfdf49e24a524630686aea2b558
 
 pkgname = mbrola
 
