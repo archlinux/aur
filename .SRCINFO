@@ -1,7 +1,7 @@
 pkgbase = dfhack
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it
-	pkgver = 0.44.12
-	pkgrel = 5
+	pkgver = 0.47.03
+	pkgrel = 1
 	url = https://dfhack.readthedocs.io/en/stable/
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = dfhack
 	makedepends = python-sphinx
 	makedepends = perl-xml-libxml
 	makedepends = perl-xml-libxslt
-	depends = dwarffortress=0.44.12
+	depends = dwarffortress=0.47.03
 	depends = lua
 	depends = protobuf
 	depends = libpng12
@@ -23,7 +23,7 @@ pkgbase = dfhack
 	depends = libxinerama
 	conflicts = dfhack-bin
 	conflicts = dfhack-git
-	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.44.12-r3
+	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.03-beta1
 	source = dfhack.sh
 	source = dfhack-run.sh
 	md5sums = SKIP
