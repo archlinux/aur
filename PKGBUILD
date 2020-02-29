@@ -11,10 +11,8 @@ license=('GPL3')
 depends=('sdl>=1.2' 'sdl_image>=1.2' 'sdl_ttf>=2.0' 'sdl_mixer>=1.2')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/simenheg/zatackax.git"
-        "${_pkgname}.png"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
-            'b6feb8f64b918f637cb0a5e4989d1bd242ee3aee1a9d05d952b77812bdb41545'
             '424c0e5e693efc269fdeddcf46351724b8e95dedff57390fda96d3f79f623e1b')
 
 pkgver() {
@@ -32,4 +30,6 @@ build() {
 package() {
     cd "${_pkgname}"
     make prefix="$pkgdir/usr/" install
+    install -Dm644 "data/gfx/logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }

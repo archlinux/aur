@@ -12,10 +12,8 @@ pkgbase = zatackax-git
 	depends = sdl_ttf>=2.0
 	depends = sdl_mixer>=1.2
 	source = zatackax::git+https://github.com/simenheg/zatackax.git
-	source = zatackax.png
 	source = zatackax.desktop
 	sha256sums = SKIP
-	sha256sums = b6feb8f64b918f637cb0a5e4989d1bd242ee3aee1a9d05d952b77812bdb41545
 	sha256sums = 424c0e5e693efc269fdeddcf46351724b8e95dedff57390fda96d3f79f623e1b
 
 pkgname = zatackax-git
