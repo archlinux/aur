@@ -5,7 +5,7 @@
 
 # Maintainer: Kuklin István <kuklinistvan@zoho.com>
 pkgname=anki-official-binary-bundle
-pkgver=2.1.19
+pkgver=2.1.20
 pkgrel=1
 epoch=
 pkgdesc="The official binary shipped with the tested versions of the dependent libraries."
@@ -32,7 +32,7 @@ source=(
 )
 noextract=()
 md5sums=(
-    '4a6f18ff83eef746be9588b2734c7af6'
+    '3240a13557abc8b94cd90e5d38fb28ee'
     '0eb542757f6b15d9904a53496627c76b'
     '82a5d4f63bbc29e6a80043dd95973b4f'
 )
