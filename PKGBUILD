@@ -1,7 +1,7 @@
 # Maintainer: David Baum <david.baum@naraesk.eu>
 pkgname=plasma5-applets-docker
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Start and stop docker images"
 arch=('i686' 'x86_64')
 url="https://github.com/naraesk/plasma-docker"

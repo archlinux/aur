@@ -1,7 +1,7 @@
 pkgbase = plasma5-applets-docker
 	pkgdesc = Start and stop docker images
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/naraesk/plasma-docker
 	arch = i686
 	arch = x86_64
