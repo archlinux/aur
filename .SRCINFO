@@ -1,17 +1,17 @@
 pkgbase = festival-italian-voice-mbrola
 	pkgdesc = Italian MBROLA voices for Festival
 	pkgver = 3.0.1h
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pd.istc.cnr.it/FESTIVAL/home/default.htm
 	arch = any
 	license = custom:Mbrola
 	depends = mbrola
 	depends = festival-italian
 	conflicts = mbrola-italian
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/it3/it3-010304.zip
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/it4/it4-010926.zip
-	md5sums = fed63cdf4da274966646bdac1bd6e630
-	md5sums = d70ddbda1085990290e98bf745db1536
+	source = https://web.archive.org/web/20160324200907if_/http://tcts.fpms.ac.be/synthesis/mbrola/dba/it3/it3-010304.zip
+	source = https://web.archive.org/web/20160324200757if_/http://tcts.fpms.ac.be/synthesis/mbrola/dba/it4/it4-010926.zip
+	sha256sums = d134b522d0aa68dbece9144e395246396cff9ff5e91d1c7b6a24d5a061e6ade5
+	sha256sums = 8ec74af698fdd9bebf37cbf0877bc2f0382df60ff6cbe7c4c72186ba5b809a69
 
 pkgname = festival-italian-voice-mbrola
 
