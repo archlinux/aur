@@ -38,8 +38,8 @@ pkgbase = opencv-cuda
 	source = opencv_contrib-4.2.0.tar.gz::https://github.com/opencv/opencv_contrib/archive/4.2.0.tar.gz
 	source = fix-cuda-10.1.patch
 	source = fix-build-error.patch::https://github.com/opencv/opencv_contrib/commit/00e60f0d578651540b709730aa284af54055ae97.patch
-	sha256sums = 546d7d19388f2eea709a1951c7bfd56943241e41649473278950f4cbef656661
-	sha256sums = 0f6c3d30baa39e3e7611afb481ee86dea45dafb182cac87d570c95dccd83eb8b
+	sha256sums = 55bd939079d141a50fca74bde5b61b339dd0f0ece6320ec76859aaff03c90d9f
+	sha256sums = 8a6b5661611d89baa59a26eb7ccf4abb3e55d73f99bb52d8f7c32265c8a43020
 	sha256sums = 4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef
 	sha256sums = 805166b77b0c38e9e9f69b5b285d2b5313e54f0419a71155f4d9f2d5e6b5d2cc
 
