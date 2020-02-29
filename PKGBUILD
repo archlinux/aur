@@ -1,5 +1,4 @@
-# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
-# Contributor: Thorsten Toepper <atsutane@freethoughts.de>
+# Maintainer: takiz <tacidd@gmail.com>
 
 pkgname=newsbeuter-git
 pkgver=2278.96e9506
@@ -24,6 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/newsbeuter"
   ./config.sh
+  export CXXFLAGS="-Wno-error=stringop-truncation -Wno-error=sign-compare"
   make
   make doc
 }
@@ -37,5 +37,4 @@ package() {
 
 }
 
-# vim:set ts=2 sw=2 et:
 
