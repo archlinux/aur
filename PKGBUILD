@@ -17,15 +17,9 @@ makedepends=('python-pip' 'rust')
 source=("orjson-$pkgver.tar.gz"::"https://github.com/ijl/orjson/archive/$pkgver.tar.gz")
 sha512sums=('6e95ea4fb18515785b24065f3bf3b5b4bef97c24d7abeb76a9052c755132d67954051619cdabdf943e89efaf5f7891ef01436d8557caaa040fd0bcbf543753cb')
 
-build() {
-	cd "$_pkgname-$pkgver"
-    rm -f "./*.whl" # remove old wheels
-
-	PIP_CONFIG_FILE=/dev/null pip wheel --isolated --no-binary=orjson .
-}
-
 package() {
-	cd "$_pkgname-$pkgver"
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ./*.whl
+    cd "$_pkgname-$pkgver"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+
+    PIP_CONFIG_FILE=/dev/null pip install --root="$pkgdir" --isolated --ignore-installed --no-deps --no-binary=orjson --use-pep517 .
 }
