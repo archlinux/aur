@@ -24,6 +24,7 @@ optdepends=(
 	'util-linux: for airplane mode'
 	'xdg-utils: for lock screen (xdg-screensaver lock)'
 	'systemd: for leave commands and gps services'
+	'libnotify: for notification'
 	'grep: used in scripts'
 )
 makedepends=('git')

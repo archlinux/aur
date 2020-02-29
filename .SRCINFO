@@ -24,6 +24,7 @@ pkgbase = qwikaccess-git
 	optdepends = util-linux: for airplane mode
 	optdepends = xdg-utils: for lock screen (xdg-screensaver lock)
 	optdepends = systemd: for leave commands and gps services
+	optdepends = libnotify: for notification
 	optdepends = grep: used in scripts
 	provides = qwikaccess
 	conflicts = qwikaccess
