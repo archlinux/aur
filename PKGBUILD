@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=3.0
+pkgver=3.2
 pkgrel=1
 pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
@@ -24,4 +24,4 @@ package() {
 	rm -rf "${pkgdir}/usr/sbin"
 }
 
-md5sums=('e1df6041ca61e78284254e183741f51d')
+md5sums=('03cc0bc7488b6a498711e5d19a677a1b')
