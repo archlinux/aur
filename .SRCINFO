@@ -1,0 +1,15 @@
+pkgbase = libspnav-git
+	pkgdesc = Alternative to the proprietary 3Dconnexion device driver and SDK for their 3D input devices
+	pkgver = r39.79ad169
+	pkgrel = 1
+	url = https://spacenav.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	depends = libx11
+	provides = libspnav
+	conflicts = libspnav
+	source = git+https://github.com/FreeSpacenav/libspnav.git
+	sha256sums = SKIP
+
+pkgname = libspnav-git
+
