@@ -1,0 +1,17 @@
+pkgbase = python-plantweb
+	pkgdesc = Command line interface to render powerful plain text UML diagrams, ASCII diagrams and complex graphs
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = http://pypi.python.org/pypi/plantweb
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-requests
+	depends = python-docutils
+	source = https://pypi.python.org/packages/source/p/plantweb/plantweb-1.2.1.tar.gz
+	sha256sums = 148e5b7eaac464d76adcbdb98dcc192ef824d721b16ce82b2fcb1e84e17ae3db
+
+pkgname = python-plantweb
+
