@@ -2,7 +2,7 @@
 _pkgname=elixir-ls
 pkgname=elixir-ls-git
 pkgver=0.3.0.r12.g5c0166c
-pkgrel=1
+pkgrel=2
 pkgdesc='A frontend-independent Language Server Protocol for Elixir'
 arch=('any')
 url='https://github.com/elixir-lsp/elixir-ls'
@@ -27,7 +27,7 @@ build() {
 package() {
   cd "${_pkgname}"
 
-  install -dm0644 "${pkgdir}"/usr/lib/elixir-ls
+  install -dm0755 "${pkgdir}"/usr/lib/elixir-ls
   MIX_ENV=prod mix elixir_ls.release -o "${pkgdir}"/usr/lib/elixir-ls
 
   install -dm0755 "${pkgdir}"/usr/bin
