@@ -11,7 +11,7 @@ provides=('arch-audit')
 conflicts=('arch-audit')
 arch=('i686' 'x86_64')
 license=('MIT')
-source=('git://gitlab.com/ilpianista/arch-audit.git')
+source=('https://gitlab.com/ilpianista/arch-audit.git')
 md5sums=('SKIP')
 
 pkgver() {

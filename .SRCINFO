@@ -12,7 +12,7 @@ pkgbase = arch-audit-git
 	depends = curl
 	provides = arch-audit
 	conflicts = arch-audit
-	source = git://gitlab.com/ilpianista/arch-audit.git
+	source = https://gitlab.com/ilpianista/arch-audit.git
 	md5sums = SKIP
 
 pkgname = arch-audit-git
