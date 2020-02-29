@@ -24,8 +24,8 @@ source=("opencv-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver
         "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz"
         "fix-cuda-10.1.patch"
         "fix-build-error.patch::https://github.com/opencv/opencv_contrib/commit/00e60f0d578651540b709730aa284af54055ae97.patch")
-sha256sums=('546d7d19388f2eea709a1951c7bfd56943241e41649473278950f4cbef656661'
-            '0f6c3d30baa39e3e7611afb481ee86dea45dafb182cac87d570c95dccd83eb8b'
+sha256sums=('55bd939079d141a50fca74bde5b61b339dd0f0ece6320ec76859aaff03c90d9f'
+            '8a6b5661611d89baa59a26eb7ccf4abb3e55d73f99bb52d8f7c32265c8a43020'
             '4e1640f37ee357d38551a65d3dbfc03a5d7589bffaa3cde92a64c5ea62f55aef'
             '805166b77b0c38e9e9f69b5b285d2b5313e54f0419a71155f4d9f2d5e6b5d2cc')
 
