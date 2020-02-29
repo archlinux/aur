@@ -1,19 +1,19 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 pkgname=radian
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="A 21 century R console"
 url="https://github.com/randy3k/radian"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('r>=3.4.0' 'python-six'
-         'python-lineedit>=0.1.3' 'python-lineedit<0.2.0'
-         'python-rchitect>=0.3.12' 'python-rchitect<0.4.0')
+         'python-lineedit>=0.1.4' 'python-lineedit<0.2.0'
+         'python-rchitect>=0.3.17' 'python-rchitect<0.4.0')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pyte' 'python-pexpect' 'python-ptyprocess')
 replaces=('rtichoke')
 source=($pkgname-$pkgver.tar.gz::https://github.com/randy3k/radian/archive/v$pkgver.tar.gz)
-sha256sums=('273b0c63c7e5cda2a1f37b167f5273ba1a5f165b460ca11d265b2d2714ab2c53')
+sha256sums=('1dbbf0eb6b5ea79ea032fe32145b74a2191560640e93bd55d3efc7dc7923aaad')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
