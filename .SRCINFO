@@ -1,15 +1,28 @@
 pkgbase = mbrola-voices-ar2
 	pkgdesc = An Arabic male voice for the MBROLA synthesizer
-	pkgver = 001015
+	pkgver = 15.6fa9693
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-ar
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ar2/ar2-001015.zip
-	md5sums = e6fe45cdeb1539f3ca882edc8e7915d3
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/ar2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/Test/Ahlan.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/Test/Sadiqi.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/Test/Sadiqi.wav
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/Test/Welcome.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ar2/Test/Yaqum.pho
+	sha256sums = 8791680f98b78392b1dd282bf59a240144dd0262e77453461ee284f344a382c0
+	sha256sums = 4f46b9a558310bbe2afe9fb789912f6332c056739f874c3ab987eb7ccf8191ef
+	sha256sums = e311a499255d130a7f78d8c581fea9c4cf4d0eede2972ca5793e8d3b18dd9748
+	sha256sums = c89300b8d4f1ff1f4f92a4dc55b3333ae7e27e0b1bc5f0aeb79487bf0ca26583
+	sha256sums = e7c8a4e40d4518484430a6baa2ca578086ddf3baeb7e09c09174928957741daf
+	sha256sums = 494b6040a181ea2776b1d4b0d5dd3b0caba0b3144257324cfe9e1c3b25db0e6c
+	sha256sums = 3150f4220538e55b5e5bc055af79594cfa1f03ef2143342210835e894f033072
+	sha256sums = 8aa3d9856221239d6587ca32b773388a8a16c2ef9920f268ee8ad4594c7ba29d
 
 pkgname = mbrola-voices-ar2
 
