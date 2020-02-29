@@ -12,19 +12,21 @@ arch=("i686" "x86_64")
 url='https://qt-project.org/'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 pkgdesc="A cross-platform application and UI framework"
-depends=('libjpeg-turbo' 'xcb-util-keysyms' 'libgl' 'fontconfig'
-         'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'xcb-util-image' 'icu'
-         'tslib' 'libinput' 'libsm' 'libxkbcommon-x11' 'libproxy')
-makedepends=('mtdev' 'libfbclient' 'libmariadbclient' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
-             'gtk3' 'libpulse' 'cups' 'freetds' 'git' 'vulkan-headers')
+depends=('libjpeg-turbo' 'xcb-util-keysyms' 'xcb-util-renderutil' 'libgl' 'fontconfig' 'xdg-utils'
+         'shared-mime-info' 'xcb-util-wm' 'libxrender' 'libxi' 'sqlite' 'xcb-util-image' 'mesa'
+         'tslib' 'libinput' 'libxkbcommon-x11' 'libproxy' 'libcups' 'double-conversion' 'md4c')
+makedepends=('libfbclient' 'mariadb-libs' 'sqlite' 'unixodbc' 'postgresql-libs' 'alsa-lib' 'gst-plugins-base-libs'
+             'gtk3' 'libpulse' 'cups' 'freetds' 'vulkan-headers' 'git')
 optdepends=('qt5-svg: to use SVG icon themes'
+            'qt5-wayland: to run Qt applications in a Wayland session'
+            'qt5-translations: for some native UI translations'
             'postgresql-libs: PostgreSQL driver'
-            'libmariadbclient: MariaDB driver'
+            'mariadb-libs: MariaDB driver'
             'unixodbc: ODBC driver'
             'libfbclient: Firebird/iBase driver'
             'freetds: MS SQL driver'
-            'mtdev: evdev plugin'
-            'gtk3: GTK platform plugin')
+            'gtk3: GTK platform plugin'
+            'perl: for fixqt4headers and syncqt')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "qtchooser")
 source=("$_pkgname::git://code.qt.io/qt/qtbase.git#branch=5.15")
@@ -56,7 +58,7 @@ prepare() {
 build() {
   cd "$srcdir/$_pkgname"
 
-  PYTHON=/usr/bin/python2 ./configure -I/usr/include/mysql -confirm-license -opensource -v \
+  ./configure -confirm-license -opensource -v \
     -prefix /usr \
     -docdir /usr/share/doc/qt \
     -headerdir /usr/include/qt \
@@ -74,8 +76,7 @@ build() {
     -system-harfbuzz \
     -journald \
     -no-use-gold-linker \
-    -reduce-relocations
-
+    -reduce-relocations # -no-mimetype-database
   make
 }
 
