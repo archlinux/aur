@@ -3,8 +3,8 @@
 pkgbase=python2-x2go
 pkgname=(python-x2go python2-x2go python-x2go-docs)
 _pkgbase=python-x2go
-pkgver=0.6.0.2
-pkgrel=3
+pkgver=0.6.1.3
+pkgrel=1
 pkgdesc="Python module providing X2Go client API"
 url="http://www.x2go.org/"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL')
 makedepends=('python-setuptools' 'python2-setuptools' 'epydoc'
              'python2-paramiko' 'python2-xlib' 'python2-gevent')
 source=("http://code.x2go.org/releases/source/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('83899a749b1c0f3c0c9acbb11bafc8b1711cb5142b4a013385dd47b0bb293908')
+sha256sums=('08b951b434ba3b0e232fc5d01ab07c4b1d9c0e8d16af9722f78f52dd271a09f8')
 
 prepare() {
   rm -rf "python2-x2go-${pkgver}"
