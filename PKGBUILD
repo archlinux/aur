@@ -1,7 +1,7 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
 
 pkgname=edx-dl
-pkgver=0.1.11
+pkgver=0.1.13
 pkgrel=1
 pkgdesc='Tool to download videos and lecture materials from Open edX-based sites'
 arch=(any)
@@ -16,7 +16,7 @@ depends=(
 )
 conflicts=(edx-downloader-git)
 source=(edx-dl-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('50b6902f131a99dfba2b41a140989d2d519cd02d25b9184e320454be282912638833c04fb36962c17fc7633c6c48331c00e524cc1908c4c0bc857e00f0200672')
+sha512sums=('63641018f282111d4213d924228589eb801ab27aa30e41af2d6c74e4f962500af88947c25a45d50723a49eb458bc0f9047b2ee82e3a979ea4dba762693f08fb3')
 
 package() {
   cd edx-dl-$pkgver
