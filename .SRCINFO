@@ -1,0 +1,34 @@
+pkgbase = qwikaccess-git
+	pkgdesc = A point and click Qt GUI for scripts we use frequently.
+	pkgver = 2.8.0.r1.a796070
+	pkgrel = 1
+	url = https://github.com/librewish/qwikaccess
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = qt5-base
+	depends = polkit
+	optdepends = ffmpeg: for screenshot & audio,screen,screencam recording
+	optdepends = v4l-utils: for camera
+	optdepends = libpulse: for audio/mic mute/unmute vol+/-
+	optdepends = brightnessctl: for brightness up and down
+	optdepends = xorg-xrdb: for autohidpi
+	optdepends = xorg-xrandr: for screen rotation
+	optdepends = xorg-xinput: for autorotation
+	optdepends = inotify-tools: for autorotation
+	optdepends = iio-sensor-proxy: for autorotation
+	optdepends = redshift: for night mode
+	optdepends = bluez-tools: for bluetooth
+	optdepends = networkmanager: for wifi and hotspot
+	optdepends = connman: for wifi and hotspot
+	optdepends = util-linux: for airplane mode
+	optdepends = xdg-utils: for lock screen (xdg-screensaver lock)
+	optdepends = systemd: for leave commands and gps services
+	optdepends = grep: used in scripts
+	provides = qwikaccess
+	conflicts = qwikaccess
+	source = git+https://github.com/librewish/qwikaccess.git
+	md5sums = SKIP
+
+pkgname = qwikaccess-git
+
