@@ -1,0 +1,14 @@
+pkgbase = awesome-quicklaunch-git
+	pkgdesc = Quicklauncher widget for awesome WM
+	pkgver = 2020.02.22.g2156e42
+	pkgrel = 1
+	url = https://github.com/deficient/quicklaunch
+	arch = any
+	license = Public Domain
+	makedepends = git
+	depends = awesome
+	source = git+https://github.com/deficient/quicklaunch.git
+	md5sums = SKIP
+
+pkgname = awesome-quicklaunch-git
+
