@@ -1,6 +1,6 @@
 pkgbase = qt5-connectivity-git
 	pkgdesc = Qt5 connectivity module
-	pkgver = 5.13.0_rc3.r72.gf2f9da65
+	pkgver = 5.15.0_beta1.r4.g531443d1
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = qt5-connectivity-git
 	depends = bluez-libs
 	provides = qt5-connectivity
 	conflicts = qt5-connectivity
-	source = git+https://code.qt.io/qt/qtconnectivity.git#branch=dev
+	source = git+https://code.qt.io/qt/qtconnectivity.git#branch=5.15
 	sha256sums = SKIP
 
 pkgname = qt5-connectivity-git

@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=qt5-connectivity-git
-pkgver=5.13.0_rc3.r72.gf2f9da65
+pkgver=5.15.0_beta1.r4.g531443d1
 pkgrel=1
 pkgdesc="Qt5 connectivity module"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-declarative' 'bluez-libs')
 makedepends=('git')
 provides=('qt5-connectivity')
 conflicts=('qt5-connectivity')
-source=("git+https://code.qt.io/qt/qtconnectivity.git#branch=dev")
+source=("git+https://code.qt.io/qt/qtconnectivity.git#branch=5.15")
 sha256sums=('SKIP')
 
 
@@ -47,5 +47,5 @@ package() {
     -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
   cd "$srcdir/qtconnectivity"
-  install -Dm644 "LICENSE.GPL3-EXCEPT" "$pkgdir/usr/share/licenses/qt5-connectivity/LICENSE.GPL3-EXCEPT"
+  install -Dm644 "LICENSE.GPL3-EXCEPT" -t "$pkgdir/usr/share/licenses/qt5-connectivity"
 }
