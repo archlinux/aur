@@ -9,7 +9,9 @@ pkgbase = zfs-linux-lts
 	depends = zfs-utils=0.8.3
 	depends = linux-lts=5.4.22-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz
+	source = linux-5.5-compat-blkg_tryget.patch
 	sha256sums = 545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd
+	sha256sums = daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da
 
 pkgname = zfs-linux-lts
 	pkgdesc = Kernel modules for the Zettabyte File System.
