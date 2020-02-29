@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
-pkgname=qt6-declarative
+pkgname=qt6-declarative-git
 pkgver=5.15.0.alpha1.r248.g48deaf9a3e
 pkgrel=1
 arch=(x86_64)
