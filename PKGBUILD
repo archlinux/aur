@@ -3,12 +3,12 @@
 _hkgname=brittany
 pkgname=haskell-brittany
 pkgver=0.12.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Haskell source code formatter (dynamic link)"
 url='https://hackage.haskell.org/package/brittany'
 license=('AGPL3')
 arch=('x86_64')
-depends=('ghc-libs' 'haskell-aeson' 'haskell-butcher' 'haskell-bytestring' 'haskell-cmdargs' 'haskell-containers' 'haskell-czipwith' 'haskell-data-tree-print' 'haskell-deepseq' 'haskell-directory' 'haskell-extra' 'haskell-filepath' 'haskell-ghc-boot-th' 'haskell-ghc-exactprint' 'haskell-ghc-paths' 'haskell-hspec' 'haskell-monad-memo' 'haskell-mtl' 'haskell-multistate' 'haskell-neat-interpolation' 'haskell-parsec' 'haskell-pretty' 'haskell-random' 'haskell-safe' 'haskell-semigroups' 'haskell-strict' 'haskell-syb' 'haskell-text' 'haskell-transformers' 'haskell-uniplate' 'haskell-unsafe' 'haskell-yaml')
+depends=('ghc-libs' 'haskell-aeson' 'haskell-butcher' 'haskell-cmdargs' 'haskell-czipwith' 'haskell-data-tree-print' 'haskell-extra' 'haskell-ghc-exactprint' 'haskell-ghc-paths' 'haskell-hspec' 'haskell-monad-memo' 'haskell-multistate' 'haskell-neat-interpolation' 'haskell-random' 'haskell-safe' 'haskell-semigroups' 'haskell-strict' 'haskell-syb' 'haskell-uniplate' 'haskell-unsafe' 'haskell-yaml')
 makedepends=('ghc')
 source=("https://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz")
 sha512sums=('ac471ab778efd1a007e76594a54fe3bea8f96afc3f0714c7b0ec66273788a6c9d8e0d0b9d5e36c2a10d547d10a6ad2327ea540d836b9a12549a918b5c83a9425')
