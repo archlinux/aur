@@ -3,9 +3,9 @@
 pkgname=gotify-server
 pkgver=2.0.14
 _commit=e56f7bc4c7efdb61fea88a0b65d501277604cefa
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
-arch=(x86_64)
+arch=('x86_64' 'i686' 'aarch64' 'armv7')
 url='https://gotify.net/'
 license=('MIT')
 makedepends=('git' 'go')
@@ -24,7 +24,6 @@ sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
 
 build() {
   cd "server-$pkgver"
-  export GOPATH="$srcdir"
   local build_date=$(date "+%F-%T" -d "@${SOURCE_DATE_EPOCH}")
   go build \
     -o "$pkgname" \
@@ -39,7 +38,6 @@ build() {
 
 check() {
   cd "server-$pkgver"
-  export GOPATH="$srcdir"
   go test -v ./...
 }
 
