@@ -1,7 +1,7 @@
 # Maintainer: Martin Franc <me@martinfranc.eu>
 
 pkgname=wob
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc='A lightweight overlay volume/backlight/progress/anything bar for Wayland'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 validpgpkeys=('5C6DA024DDE27178073EA103F4B432D5D67990E3')
 sha512sums=(
-	'56e40ee37ae9931aab82e24a48563a2226ec785cc72c3497b3c4c2e3ff91ae00a06335b2444ab3ac1cc25cebc4d92bc7262af4621b389d53893e0d8ae007a2f9'
+	'7f1f639fd3013772424ef2b540d3a3bbb60ecd1fd5a6bd8df840c2380ac93bc6a3d6f8e2b855fa322940b6cb2927e4c7175946756b9b165961d50b69e6b1f6e4'
 	'SKIP'
 )
 
