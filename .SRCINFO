@@ -1,0 +1,23 @@
+pkgbase = haskell-deque
+	pkgdesc = Double-ended queues
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/deque
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-hashable
+	depends = haskell-mtl
+	depends = haskell-strict-list
+	depends = haskell-quickcheck
+	depends = haskell-quickcheck-instances
+	depends = haskell-rerebase
+	depends = haskell-tasty
+	depends = haskell-tasty-hunit
+	depends = haskell-tasty-quickcheck
+	source = https://hackage.haskell.org/packages/archive/deque/0.4.3/deque-0.4.3.tar.gz
+	sha512sums = 640e46766c443f1fac3819ace611f762f78613c457a0aeaed7cc439f0c9e41f5126d06dec7867bc3d2b0ddc3fc030dda3e30a3b01c79cce65142e884987f21cd
+
+pkgname = haskell-deque
+
