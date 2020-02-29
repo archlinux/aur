@@ -1,5 +1,5 @@
 pkgbase = zfs-linux-hardened-git
-	pkgver = 2020.02.27.r5777.g2ce90dca9_5.4.22.a.1
+	pkgver = 2020.02.28.r5785.gd32eff3a2_5.4.22.a.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
@@ -7,10 +7,12 @@ pkgbase = zfs-linux-hardened-git
 	makedepends = linux-hardened-headers=5.4.22.a-1
 	makedepends = git
 	depends = kmod
-	depends = zfs-utils-git=2020.02.27.r5777.g2ce90dca9
+	depends = zfs-utils-git=2020.02.28.r5785.gd32eff3a2
 	depends = linux-hardened=5.4.22.a-1
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=2ce90dca91a991592da48c52332326ae4bb25b69
+	source = git+https://github.com/zfsonlinux/zfs.git#commit=d32eff3a27d2a57fa280b7e461883fed2a4cec16
+	source = linux-5.5-compat-blkg_tryget.patch
 	sha256sums = SKIP
+	sha256sums = daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da
 
 pkgname = zfs-linux-hardened-git
 	pkgdesc = Kernel modules for the Zettabyte File System.

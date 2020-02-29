@@ -17,8 +17,8 @@
 #
 pkgbase="zfs-linux-hardened-git"
 pkgname=("zfs-linux-hardened-git" "zfs-linux-hardened-git-headers")
-_commit='2ce90dca91a991592da48c52332326ae4bb25b69'
-_zfsver="2020.02.27.r5777.g2ce90dca9"
+_commit='d32eff3a27d2a57fa280b7e461883fed2a4cec16'
+_zfsver="2020.02.28.r5785.gd32eff3a2"
 _kernelver="5.4.22.a-1"
 _extramodules="5.4.22.a-1-hardened"
 
@@ -27,8 +27,10 @@ pkgrel=1
 makedepends=("linux-hardened-headers=${_kernelver}" "git")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}")
-sha256sums=("SKIP")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=${_commit}"
+        "linux-5.5-compat-blkg_tryget.patch")
+sha256sums=("SKIP"
+            "daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da")
 license=("CDDL")
 depends=("kmod" "zfs-utils-git=${_zfsver}" "linux-hardened=${_kernelver}")
 
