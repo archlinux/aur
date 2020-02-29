@@ -1,6 +1,6 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 pkgname=dr14_t.meter-git
-pkgver=v1.0.15.r162.g7516e5c
+pkgver=v1.0.15.r175.gecb431d
 pkgrel=1
 pkgdesc="DR14 T.meter is a command line tool for computing the Dynamic Range of your music"
 arch=(any)
