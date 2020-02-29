@@ -2,7 +2,7 @@
 # Maintainer:  skydrome <skydrome@protonmail.com>
 
 pkgname=i2p-bin
-pkgver=0.9.44
+pkgver=0.9.45
 pkgrel=1
 pkgdesc="A distributed anonymous network (pre-compiled binary)"
 url="https://geti2p.net"
@@ -25,11 +25,11 @@ validpgpkeys=('2D3D2D03910C6504C1210C65EE60C0C8EE7256A8')
 _url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
 
 source=("${_url}/i2pinstall_${pkgver}.jar"{,.sig}
-        'https://raw.githubusercontent.com/i2p/i2p.i2p/master/installer/resources/bash-completion/eepget'
+        eepget.bash::'https://raw.githubusercontent.com/i2p/i2p.i2p/master/installer/resources/bash-completion/eepget'
         'i2prouter.service' 'i2p.tmpfiles' 'wrapper.config' 'router.config'
         'i2prouter.bash' 'i2prouter.sh' 'chromium-i2p.sh')
 
-sha256sums=('265729c1d676939bc81f96689b72c5f413083f4bbd849393f7629db05523d238'
+sha256sums=('3032022952a4028d6fd0ffc0bc72433aeefa3224748e143002b376b5b3760f79'
             'SKIP'
             '925d931aae2bd03c08555536b1c836654a72cc4acfd9f440f1ad43958ba2108d'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
@@ -64,7 +64,7 @@ package() {
     install -Dm755 "$srcdir/chromium-i2p.sh"   "opt/i2p/scripts/chromium-i2p"
 
     install -Dm644 "$srcdir/i2prouter.bash"    "usr/share/bash-completion/completions/i2prouter"
-    install -Dm644 "$srcdir/eepget"            "usr/share/bash-completion/completions/eepget"
+    install -Dm644 "$srcdir/eepget.bash"       "usr/share/bash-completion/completions/eepget"
 
     install -Dm644 "opt/i2p/man/eepget.1"      "usr/share/man/man1/eepget.1"
     install -Dm644 "opt/i2p/LICENSE.txt"       "usr/share/licenses/i2p/LICENSE"
