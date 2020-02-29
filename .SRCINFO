@@ -1,0 +1,16 @@
+pkgbase = aucatctl
+	pkgdesc = Control aucat and/or sndiod volume through MIDI
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://www.sndio.org/
+	arch = i686
+	arch = x86_64
+	license = ISC
+	depends = alsa-lib
+	depends = libbsd
+	depends = sndio
+	source = http://www.sndio.org/aucatctl-0.1.tar.gz
+	sha256sums = 524f2fae47db785234f166551520d9605b9a27551ca438bd807e3509ce246cf0
+
+pkgname = aucatctl
+
