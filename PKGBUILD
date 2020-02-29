@@ -7,7 +7,7 @@
 
 pkgname=openclonk-git
 pkgrel=1
-pkgver=r10778.5c45d7a08
+pkgver=r11397.c13bc33d7
 pkgdesc='Multiplayer-action-tactic-skill game'
 arch=('i686' 'x86_64')
 url='http://openclonk.org'
