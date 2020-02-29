@@ -1,9 +1,9 @@
-# $Id$
-# Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
+# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 
 pkgname=iran-nastaliq-fonts
 pkgver=20150704
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Unicode calligraphic Persian font."
 url="https://github.com/font-store/font-IranNastaliq"
 arch=(any)
