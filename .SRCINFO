@@ -1,6 +1,6 @@
 pkgbase = openra-vs-git
 	pkgdesc = A Command & Conquer: Red Alert 2-inspired mod of OpenRA
-	pkgver = 2029.git.06668d1
+	pkgver = 2033.git.d547f26
 	pkgrel = 1
 	url = https://github.com/AttacqueSuperior/ValiantShades
 	install = openra-vs.install
