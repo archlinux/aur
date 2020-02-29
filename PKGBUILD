@@ -2,7 +2,7 @@
 _pkgbase=python-netfilterqueue
 pkgname=python-netfilterqueue-git
 pkgver=r68.ec2ae29
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3.x for libnetfilter_queue."
 arch=('any')
 url="https://github.com/kti/python-netfilterqueue"
