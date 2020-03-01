@@ -1,7 +1,7 @@
 pkgbase = jellyfin-bin
 	pkgdesc = The Free Software Media System
 	pkgver = 10.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jellyfin/jellyfin
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,7 @@ pkgbase = jellyfin-bin
 	license = GPL2
 	depends = ffmpeg
 	depends = sqlite
+	optdepends = ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis
 	provides = jellyfin
 	conflicts = jellyfin
 	conflicts = jellyfin-git

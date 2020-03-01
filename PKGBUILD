@@ -3,7 +3,7 @@
 pkgname=jellyfin-bin
 pkgver=10.4.3
 _pkgver="$pkgver-1"
-pkgrel=1
+pkgrel=2
 pkgdesc='The Free Software Media System'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/jellyfin/jellyfin'
@@ -11,6 +11,7 @@ license=('GPL2')
 provides=('jellyfin')
 conflicts=('jellyfin' 'jellyfin-git')
 depends=('ffmpeg' 'sqlite')
+optdepends=('ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis')
 source=('jellyfin.conf'
         'jellyfin.service'
         'jellyfin.sysusers'
