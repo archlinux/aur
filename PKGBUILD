@@ -1,4 +1,5 @@
-# Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
+# Maintainer: spider-mario <spidermario@free.fr>
+# Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Brandon Andrews <bsa@bsa.isa-geek.com>
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
