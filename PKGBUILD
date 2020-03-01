@@ -1,5 +1,5 @@
 # Maintainer: Julian Gwywitz <aur@geigi.de>+
-# Maintainer: Pavel Finkelshteyn <pavel.finkelshtein+AUR@gmail.com> 
+# Maintainer: Pavel Finkelshteyn <pavel.finkelshtein+AUR@gmail.com>
 
 pkgname=cozy-audiobooks
 _gitname=cozy
