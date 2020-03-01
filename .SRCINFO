@@ -61,6 +61,9 @@ pkgbase = gtk3-classic
 	provides = gtk3=3.24.14
 	provides = gtk3-mushrooms=3.24.14
 	provides = gtk3-print-backends
+	provides = libgtk-3.so
+	provides = libgdk-3.so
+	provides = libgailutil-3.so
 	conflicts = gtk3
 	conflicts = gtk3-print-backends
 	source = series
