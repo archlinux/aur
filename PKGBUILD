@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=r48.22.g85bfa65
+pkgver=R49.RC1.1.ga67b9f7
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,6 @@ depends=('libzimg.so'
          )
 makedepends=('git'
              'cython'
-             'nasm'
              'python-sphinx'
              'imagemagick'
              'libass.so'
@@ -48,7 +47,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd vapoursynth
-  echo "$(git describe --long --tags | tr - . | tr R r)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 prepare() {

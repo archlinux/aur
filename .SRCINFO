@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-git
 	pkgdesc = A video processing framework with simplicity in mind. (GIT version)
-	pkgver = r48.22.g85bfa65
+	pkgver = R49.RC1.1.ga67b9f7
 	pkgrel = 1
 	url = http://www.vapoursynth.com
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = vapoursynth-git
 	license = custom:WFTPL
 	makedepends = git
 	makedepends = cython
-	makedepends = nasm
 	makedepends = python-sphinx
 	makedepends = imagemagick
 	makedepends = libass.so
