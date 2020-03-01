@@ -74,11 +74,6 @@ check() {
 	cmake $CMAKE_FLAGS -DBUILD_TESTS=ON ..
 	make
 
-	# Run unit_tests test separately to exclude DNS tests which often fail with
-	# DNS nameservers configured on some systems (#2172). TODO: check if #4464 fixes.
-	EXCLUDED_UNIT_TESTS+='DNSResolver.IPv4Failure'
-	EXCLUDED_UNIT_TESTS+=':DNSResolver.DNSSECSuccess'
-	EXCLUDED_UNIT_TESTS+=':AddressFromURL.Failure'
 	EXCLUDED_UNIT_TESTS+=':is_hdd.linux_os_root' # fails on SSD (PR#4474)
 	tests/unit_tests/unit_tests --gtest_filter="-$EXCLUDED_UNIT_TESTS" \
             --data-dir ../tests/data
