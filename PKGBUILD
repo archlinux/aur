@@ -1,7 +1,7 @@
 # Maintainer: Ian Emnace <igemnace@gmail.com>
 
 pkgname=babel-eslint
-pkgver=10.0.3
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="A wrapper for Babel's parser used for ESLint"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'eslint>=4.12.1')
 makedepends=('npm')
 source=("http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('2e4f2e5db12dd3b303c758c1429036ec')
+md5sums=('2fb05e5a615ecad1486d3dba1ad9e404')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
