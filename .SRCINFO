@@ -1,0 +1,22 @@
+pkgbase = swaylay-git
+	pkgdesc = Keyboard layouts monitoring utility for Sway WM
+	pkgver = r7.d29a93a
+	pkgrel = 1
+	url = https://hexawolf.dev/posts/swaylay/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = json-c
+	depends = sway
+	provides = swaylay
+	conflicts = swaylay
+	conflicts = swaylayout
+	options = strip
+	source = swaylay::git+https://github.com/Hexawolf/swaylay.git
+	sha512sums = SKIP
+
+pkgname = swaylay-git
+
