@@ -4,11 +4,11 @@ pkgbase=pluma-python3
 _srcname=pluma
 _tag=v1.24.0
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/mate-desktop/pluma"
 license=('GNU GENERAL PUBLIC LICENSE Version 2')
-makedepends=('mate-common' 'yelp-tools')
+makedepends=('mate-common' 'yelp-tools' 'autoconf-archive')
 
 # We all love colors. Stop pretending you don't.
 BRED="\033[1;31m"
