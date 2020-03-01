@@ -1,16 +1,24 @@
 pkgbase = mbrola-voices-ee1
 	pkgdesc = An Estonian male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 4
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-ee
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ee1/ee1.zip
-	md5sums = 38377e171c4a3d3d30e9b214798d3d8c
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ee1/ee1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ee1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ee1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ee1/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ee1/TEST/example.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ee1/TEST/tere.pho
+	sha256sums = 94e6aefe1706ed6303d13514ae7fac9669eda121e0d060d76429fe7c43f95258
+	sha256sums = 665b1bd4cd55642e0434257cd8ca076c4e3416ee24b76f76c58d74cf43dd9b8d
+	sha256sums = ad8bc98f015dc548a1db5b423bffd0c09c590d03914a939b5f08da9db7e16b33
+	sha256sums = c9806246f308e77be0a280902918d2000c98c3ac956baa754b23911968120917
+	sha256sums = 0918512904ff00659184c7f23035412238ffae342146a70dca3eb4dd1d3d8f00
+	sha256sums = 5fae0edb42310cb09196a368bdcf37de313c27cee90d68ac1679ddefc55ed0d7
 
 pkgname = mbrola-voices-ee1
 
