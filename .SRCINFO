@@ -1,16 +1,23 @@
 pkgbase = mbrola-voices-cz2
 	pkgdesc = A Czech male voice for the MBROLA synthesizer
-	pkgver = 001009
+	pkgver = 15.6fa9693
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-cz
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/cz2/cz2-001009.zip
-	md5sums = e9d28a9ec9ff4e6e43fa8bb3bc1577c3
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cz2/cz2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cz2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cz2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cz2/Test/jednach_niz.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cz2/Test/musimrict_niz.pho
+	sha256sums = 23f78d232781ce0785fbe1a7549efabc44b92fe7a64f8f2bff0d9aa743455d1f
+	sha256sums = 10c60ab223752776e41e9dac1817f8bb791a0454ed83de76b6544033371446ea
+	sha256sums = d63b1b1e6ef5f251c3044410fc2aa46f8fa7372a60c8f49092cd73785f0380dd
+	sha256sums = b2dbb9531b3aa5eafd112b4a32b7887c87ec46a3918c56f9363c108424f79f51
+	sha256sums = 9006d041e71b922b947ce84b0fea01e2ffe80d1c86b4d9f1c7913b74f49a5e54
 
 pkgname = mbrola-voices-cz2
 
