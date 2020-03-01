@@ -21,6 +21,7 @@ source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
 sha256sums=('6c0c4336bed6e2f79c91ace6d6914145ee03d0bd5025473b5918aec2b0657f7a')
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
+  export CPPFLAGS="$CPPFLAGS -DHAVE_BOOST_COROUTINE"  # workaround for bug in boost 1.72
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname"
 }
 
