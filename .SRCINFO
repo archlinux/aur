@@ -1,15 +1,22 @@
 pkgbase = mbrola-voices-de8
 	pkgdesc = A German Bavarian male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-de
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/de8/de8.zip
-	md5sums = 4033d4063919d0c6d98620293ff31c7c
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de8/de8
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de8/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de8/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de8/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de8/test/traum.pho
+	sha256sums = 77f826f8ff4fb5289b80617f160c5943b7096262b1e80988b8794864fb6e0e95
+	sha256sums = cf1257541489ee683aef23418239d5c26a692c59436e37f25ae2683904344c8a
+	sha256sums = bcec37a5581ed06ea24f7e21459646209f31d2b7a6f68c68b87888190452f773
+	sha256sums = 3d583718dd1c57a163f492cd06c08b913587c1ab646560487651211345a19005
+	sha256sums = 445becd7471ef3936e44ef09e6df772788bf57374ed283950c42da33a5d72e4b
 
 pkgname = mbrola-voices-de8
 
