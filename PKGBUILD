@@ -8,7 +8,7 @@ url="https://anydesk.com"
 license=('custom:Freeware')
 depends=('fakeroot' 'python-shiboken2' 'gtkglext' 'libglvnd' 'gtk2' 'libx11' 'glibc' 'glib2' 'gdk-pixbuf2' 'libxcb' 'cairo' 'pango' 'libxi' 'libxrandr' 'libxtst' 'libxext' 'libxfixes' 'libxdamage' 'gcc-libs')
 optdepends=('libpulse')
-conflicts=('anydesk-test' 'anydesk-debian')
+conflicts=('anydesk' 'anydesk-test' 'anydesk-debian')
 
 source_i686=(https://download.anydesk.com/linux/anydesk-${pkgver}-i386.tar.gz)
 source_x86_64=(https://download.anydesk.com/linux/anydesk-${pkgver}-amd64.tar.gz)

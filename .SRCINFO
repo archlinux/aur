@@ -26,6 +26,7 @@ pkgbase = anydesk-bin
 	depends = libxdamage
 	depends = gcc-libs
 	optdepends = libpulse
+	conflicts = anydesk
 	conflicts = anydesk-test
 	conflicts = anydesk-debian
 	source_i686 = https://download.anydesk.com/linux/anydesk-5.5.4-i386.tar.gz
