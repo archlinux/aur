@@ -1,5 +1,5 @@
 pkgbase = emulationstation-git
-	pkgdesc = A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems.
+	pkgdesc = Emulation Station is a flexible emulator front-end supporting keyboardless navigation and custom system themes. Active fork by the RetroPie project.
 	pkgver = 2.4.1.r503.gc9b3f5b6
 	pkgrel = 1
 	epoch = 1
