@@ -1,0 +1,22 @@
+1. Patch the include path for SDL2
+2. No testsprite.c because the build script doesn't seem to add the -lm
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1987b27..86f0bae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(sdl12_compat)
+ 
+ add_library(SDL SHARED "src/SDL12_compat.c")
+ 
+-target_include_directories(SDL PUBLIC "/usr/local/include/SDL2")  # !!! FIXME
++target_include_directories(SDL PUBLIC "/usr/include/SDL2")  # !!! FIXME
+ target_include_directories(SDL PUBLIC "/usr/X11/include")  # !!! FIXME
+ add_definitions("-D_THREAD_SAFE")  # !!! FIXME
+ 
+@@ -40,4 +40,4 @@ macro(test_program _NAME _SRCS)
+     target_link_libraries(${_NAME} SDL)
+ endmacro()
+ 
+-test_program(testsprite "test/testsprite.c")
++#test_program(testsprite "test/testsprite.c")
