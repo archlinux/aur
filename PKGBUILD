@@ -2,8 +2,8 @@
 # Contributor: Kai Geißdörfer <kai.s.geissdoerfer at campus.tu-berlin.de>
 
 pkgname=ccstudio
-_semver=9.2.0
-_bldver=00013
+_semver=9.3.0
+_bldver=00012
 pkgver=$_semver.$_bldver
 pkgrel=1
 pkgdesc="Texas Instruments Code Composer Studio IDE"
@@ -97,7 +97,7 @@ package() {
     install -D -m0644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('2ab872dc456d7ea08bf53ae81ff5c6ebebddef66d5bec157e41eaeb127655572'
+sha256sums=('0a6c9b093de9a96f36942ecdfd4b4f765278b329091d60826ae9f493cfc4e5a9'
             'adc0dd74f5b95e373db4b45c74b034ec3d45e2df462b3a1a35f6d56aa8181076'
             '97061c190d86ac2de195e54070d86d8bde34774ea35261942ee44626ca3c23db'
             'ad63fd5e8a11e1ddcbe1d0d56a739f1c2f573a2781e46f4d52b5a93dd5810d1a')
