@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=EasyTax 2020 AG
+Comment=EasyTax Applikation zur Steuererklärung 2020 für den Kanton Aargau
+Exec=EasyTax2020_AG %U
+StartupWMClass=ch-hwis-et-ag-ETApp
+Icon=easytaxag
+Categories=Office;
