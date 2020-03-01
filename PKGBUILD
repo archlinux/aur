@@ -1,6 +1,6 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 pkgname=nng-git
-pkgver=v1.0.1.55.g1c3350f6
+pkgver=v1.3.0
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
     mkdir -p "$srcdir/${pkgname%-git}/build"
     cd "$srcdir/${pkgname%-git}/build"
-    cmake -G Ninja -DBUILD_SHARED_LIBS=ON ..
+    cmake -G Ninja -DNNG_ENABLE_TLS=ON -DNNG_STATIC_LIB=OFF -DBUILD_SHARED_LIBS=ON ..
 }
 
 build() {
@@ -56,12 +56,10 @@ generate_man() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    install -d "$pkgdir/usr/lib"
+    install -d "$pkgdir/usr/include" "$pkgdir/usr/lib"
+    cp -a include/* "$pkgdir/usr/include"
     cp -a build/libnng* "$pkgdir/usr/lib"
     install -Dm755 build/tools/nngcat/nngcat "$pkgdir/usr/bin/nngcat"
-    for i in `find src -name "*.h"` ; do
-        install -Dm644 $i "$pkgdir/usr/include/${pkgname%-git}/${i#*/}"
-    done
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     for i in docs/man/*.adoc ; do
         generate_man $i
