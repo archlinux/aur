@@ -1,0 +1,12 @@
+pkgbase = jj-bin
+	pkgdesc = JSON Stream Editor
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/tidwall/jj
+	arch = x86_64
+	license = MIT
+	source = https://github.com/tidwall/jj/releases/download/v1.2.3/jj-1.2.3-linux-amd64.tar.gz
+	sha256sums = ea05a4e1373f5c8cdf66f11c30215ce1441b2ca9c128f5e0ee23338aad4937a7
+
+pkgname = jj-bin
+
