@@ -1,16 +1,22 @@
 pkgbase = mbrola-voices-de5
 	pkgdesc = A German female voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 4
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-de
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/de5/de5.zip
-	md5sums = 5f7910b8c41ada49b737875322668049
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de5/de5
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de5/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de5/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de5/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de5/test/de5test.pho
+	sha256sums = 9df792dc04dbf199c041ec60a1e2264c222bb53e40c577cbdbadd4b4b64eeda0
+	sha256sums = 0f7ee1fe007b5e2ed6ff07200b90a3a04e28e3ffef55a40eaa62874fa44dbd0e
+	sha256sums = 821b31279550e789a61b6b943c7d550d49ca371d4cc42154ab3c169faccf5c34
+	sha256sums = f89db98111ab5a2acaf7f2324efd83292490a3d7e07773b12638b34ceab225e0
+	sha256sums = 831c9719ee879f93a1683c5df564882fe2e0a01554dc0f87659ed654663381de
 
 pkgname = mbrola-voices-de5
 
