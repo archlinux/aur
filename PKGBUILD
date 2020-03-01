@@ -11,7 +11,7 @@ depends=(libxml2 libzip)
 optdepends=('libxlsxwriter: export to xlsx. Requires rebuild of sc-im')
 license=('BSD')
 conflicts=('scim-spreadsheet' 'sc-im-git')
-source=("https://github.com/andmarti1424/$pkgname/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/andmarti1424/$pkgname/archive/v${pkgver}.tar.gz"
         'arch.patch'
         'https://patch-diff.githubusercontent.com/raw/andmarti1424/sc-im/pull/258.patch')
 sha256sums=('87225918cb6f52bbc068ee6b12eaf176c7c55ba9739b29ca08cb9b6699141cad'
