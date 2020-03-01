@@ -15,7 +15,7 @@ optdepends=('vim>=8.0.0: either vim or neovim'
 conflicts=('vim-r' 'r-vimcom')
 replaces=('vim-r')
 install='nvim-r.install'
-source=("https://github.com/jalvesaq/Nvim-R/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jalvesaq/Nvim-R/archive/v${pkgver}.tar.gz")
 sha256sums=('62d945111e36d80607ee351864f220925397385e9f6e1736948e2460f843828b')
 
 package() {
