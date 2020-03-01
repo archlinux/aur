@@ -1,0 +1,17 @@
+pkgbase = nerd-fonts-profont-windows
+	pkgdesc = Patched font ProFontWindows from nerd-fonts library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	license = MIT
+	makedepends = fontconfig
+	makedepends = xorg-mkfontscale
+	makedepends = xorg-mkfontdir
+	source = https://github.com/mater11234/pro-font-win/releases/download/2.1.0/ProFontWindows-2.1.0.tar.gz
+	source = https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/LICENSE
+	md5sums = 9fcb9168aaf64e7c68e9a2fdfdff4a18
+	md5sums = 1b95f7668f3a4440b0d404e8dc3ccd9c
+
+pkgname = nerd-fonts-profont-windows
+
