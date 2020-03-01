@@ -14,7 +14,7 @@ pkgbase = sysprof-dev
 	depends = libdazzle
 	provides = sysprof
 	conflicts = sysprof
-	source = git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-3.35.92
+	source = git+https://gitlab.gnome.org/GNOME/sysprof.git
 	sha256sums = SKIP
 
 pkgname = sysprof-dev

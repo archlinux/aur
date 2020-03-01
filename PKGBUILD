@@ -11,14 +11,14 @@ arch=(x86_64)
 depends=(gtk3 polkit libdazzle)
 makedepends=(yelp-tools git meson)
 groups=(gnome-extra)
-source=("git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-$pkgver")
+source=("git+https://gitlab.gnome.org/GNOME/sysprof.git")
 sha256sums=('SKIP')
 provides=(sysprof)
 conflicts=(sysprof)
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/^sysprof-//;s/-/+/g'
+  git describe --abbrev=0
 }
 
 prepare() {
@@ -26,6 +26,9 @@ prepare() {
 }
 
 build() {
+  cd $_pkgname
+  git checkout tags/$pkgver
+  cd ..
   CFLAGS+=" -ffat-lto-objects"
 
   arch-meson sysprof build
