@@ -1,0 +1,10 @@
+pkgbase = stardict-indic-update
+	pkgdesc = Stardict dictionaries (see url for details): Sanskrit, Pali, Malayalam, Kannada, Tamil, Telugu, Bengali, Oriya, Hindi, Nepali, Gujarati, Marathi, Punjabi, Sinhala, Assamese, English, Latin...
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/indic-dict/stardict-indic-update-aur
+	arch = any
+	depends = goldendict
+
+pkgname = stardict-indic-update
+
