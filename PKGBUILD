@@ -21,6 +21,8 @@ prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	sed -i'' -e 's#stylesheet/nwalsh#xsl-stylesheets-$(shell pacman -Q docbook-xsl | cut -d " " -f 2 | cut -d "-" -f 1)#g' Makefile
+
+	sed -i -e "s/PROG_VERSION = '\*\*\*UNKNOWN\*\*\*'/PROG_VERSION = '${pkgver}'/" grml2usb
 }
 
 build() {
