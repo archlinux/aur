@@ -2,8 +2,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.19
-_rtpatchver=11
+_pkgver=5.4.22
+_rtpatchver=13
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -23,7 +23,6 @@ source=(
   0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
   0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
   0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-  0005-ACPI-PM-s2idle-Rework-ACPI-events-synchronization.patch
   0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
   0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
   0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
@@ -39,16 +38,15 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('9584b971153e46a4a07573ca8f0ed78d7ca17b1eee25ff52f8b844b5d1fb77b8'
+sha256sums=('661bcb8d7e390dcc28e53795485e648f2bdc9b697b731459cc2bcc9ceb4a7d1a'
             'SKIP'
-            '8fd8726f213ce70a9d4b9cb10f6c51aaf1470bf33bc76579631c75b0a1d319d4'
+            'f5d353e405aefad1e174104631e24f34ece03cf64f02b41f6a6e7a10811fe5f5'
             'SKIP'
-            'c601f45d4903622c8d7a71d8e5dd827de3e37747907f7d61c7effbe6f70d034d'
+            '7586abc5e898afccc3103143d94dc610a7f1a3a28284dbdfff712eed5963c86c'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
             'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
             '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
             '6055025e53d87087774f7497088bf1a2ba43404c6629fd8601302496c226896d'
-            'f48c9a8a286901ce12eefe11fbd830fdede08afac8911ab887f7d89c687421f0'
             '194b893c18118be08c5d42762f5f1926953fc7a5903f06f1d39f893542d377a9'
             '2234444ae52bf3810e13bdb4c0ab6d808eb9fe6cb003c2b78be04a987ef12388'
             '5a1584d26c7d046fa0398b56980f628b4194dff95d0916e9527dbea7299e7765'
