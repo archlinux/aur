@@ -5,22 +5,17 @@
 # Original Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-macbook
-pkgver=5.5.6.arch1
+_srcver=5.4.13-arch1
+pkgver=${_srcver//-/.}
 pkgrel=1
-pkgdesc='Linux Macbook'
-_srctag=v${pkgver%.*}-${pkgver##*.}
-url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
 arch=(x86_64)
+url="https://git.archlinux.org/linux.git/log/?h=v$_srcver"
 license=(GPL2)
-makedepends=(
-  bc kmod libelf
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
-)
+makedepends=(xmlto kmod inetutils bc libelf git)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
-  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
+  "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=v$_srcver"
   config         # the main kernel config file
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
@@ -34,58 +29,51 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
+            '8470e238fcecbb03fdbadb35e6bfea5d09413f3f5ba38fa50ea600fd8f01abd1'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
             'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
             'c5a714823c3418692bc5c212dd5d094a0e2ae6147d6726822911f1c26e3a1d1b'
             'a4e044fb954f035aa70af4c7d79f8a6076933bdbbf9efee749304829621d77ed')
 
-
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
-
+_kernelname=${pkgbase#linux}
+: ${_kernelname:=-ARCH}
 
 prepare() {
   cd $_srcname
 
-  echo "Setting version..."
+  msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "$_kernelname" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
+    msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  echo "Setting config..."
+  msg2 "Setting config..."
   cp ../config .config
   make olddefconfig
 
-  make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+  make -s kernelrelease > ../version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
 }
-
 
 build() {
   cd $_srcname
   make bzImage modules
 }
 
-
 _package() {
-  pkgdesc="The $pkgdesc kernel and modules"
-  depends=(coreutils kmod initramfs)
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
   [[ $pkgbase = linux ]] && groups=(base)
-
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+  depends=(coreutils linux-firmware kmod mkinitcpio)
+  optdepends=('crda: to set the correct wireless channels of your country')
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
@@ -94,15 +82,13 @@ _package() {
 
   cd $_srcname
 
-  echo "Installing boot image..."
+  msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-
-  # Used by mkinitcpio to name the kernel
   install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
 
-  echo "Installing modules..."
+  msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
   # a place for external modules,
@@ -119,7 +105,7 @@ _package() {
   mkdir -p "${pkgdir}/usr/lib/systemd/system"
   cp "${srcdir}/macbook-wakeup.service" "${pkgdir}/usr/lib/systemd/system"
 
-  echo "Installing hooks..."
+  msg2 "Installing hooks..."
   # sed expression for following substitutions
   local subst="
     s|%PKGBASE%|$pkgbase|g
@@ -139,20 +125,19 @@ _package() {
   sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
     "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
-  echo "Fixing permissions..."
+  msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-
 _package-headers() {
-  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux
+  cd $_srcname
+
+  msg2 "Installing build files..."
+  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -166,7 +151,7 @@ _package-headers() {
   # ???
   mkdir "$builddir/.tmp_versions"
 
-  echo "Installing headers..."
+  msg2 "Installing headers..."
   cp -t "$builddir" -a include
   cp -t "$builddir/arch/x86" -a arch/x86/include
   install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
@@ -182,10 +167,10 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  echo "Installing KConfig files..."
+  msg2 "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Removing unneeded architectures..."
+  msg2 "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
     [[ $arch = */x86/ ]] && continue
@@ -193,16 +178,16 @@ _package-headers() {
     rm -r "$arch"
   done
 
-  echo "Removing documentation..."
+  msg2 "Removing documentation..."
   rm -r "$builddir/Documentation"
 
-  echo "Removing broken symlinks..."
+  msg2 "Removing broken symlinks..."
   find -L "$builddir" -type l -printf 'Removing %P\n' -delete
 
-  echo "Removing loose objects..."
+  msg2 "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  echo "Stripping build tools..."
+  msg2 "Stripping build tools..."
   local file
   while read -rd '' file; do
     case "$(file -bi "$file")" in
@@ -217,30 +202,30 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
-  echo "Adding symlink..."
+  msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
 
-
-  echo "Fixing permissions..."
+  msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-  pkgdesc="Documentation for the $pkgdesc kernel"
+  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  echo "Installing documentation..."
+  cd $_srcname
+
+  msg2 "Installing documentation..."
   mkdir -p "$builddir"
   cp -t "$builddir" -a Documentation
 
-  echo "Adding symlink..."
+  msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-  echo "Fixing permissions..."
+  msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
