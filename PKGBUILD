@@ -10,8 +10,8 @@ arch=(any)
 url="https://github.com/jorgebucaran/fisher"
 license=("MIT")
 depends=("fish>=2.3.0" "curl" "git")
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/jorgebucaran/fisher/archive/${pkgver}.tar.gz")
 sha512sums=('3ef7f21b947020521e317fe5996d04e6b730735ab843ce21d0bd0f23884900a036b8996249ea8d187c521067ad8bafbdbba140357bb6d83a85a60e4834590fc0')
