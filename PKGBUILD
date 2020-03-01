@@ -3,7 +3,7 @@
 _pkgbase=Nordic
 pkgbase=nordic-kde-git
 pkgname=(nordic-kde-git kvantum-theme-nordic-git)
-pkgver=1.6.5.r38.g1315a16
+pkgver=1.8.1.r1.gdad6343
 pkgrel=1
 pkgdesc="Theme for KDE Plasma 5 using the awesome Nord color pallete"
 arch=(any)
@@ -16,7 +16,7 @@ sha256sums=(SKIP SKIP)
 
 pkgver() {
     cd ${_pkgbase}
-    git describe --long --tags | sed 's/^[v-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/^[vV-]//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
