@@ -3,12 +3,13 @@
 
 pkgname=wakatime
 pkgver=13.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('any')
 url="https://github.com/wakatime/wakatime"
 license=('BSD-3-Clause')
 depends=('python')
+makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('07a6d07e1227e3bd45242a2a4861d105bddc6220174a9b739c551bd2d45ce0fd')
