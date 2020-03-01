@@ -1,8 +1,8 @@
-_gittag=v2.80
-# _gitcommit=054dbb833e15275e0e991e2c15e754a3e7583716
+_gittag=v2.82
+# _gitcommit=rB5b416ffb848e66238d9646a239840499f98121a9
 
 pkgname=blender-as-py-module
-pkgver=2.80
+pkgver=2.82
 [[ -n $_gitcommit ]] && pkgver=${pkgver}.git1.${_gitcommit:0:8}
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite, to be used as Python module. Useful for programmatic/batch rendering."
