@@ -1,6 +1,6 @@
 pkgbase = monero-wallet-qt-git
 	pkgdesc = Official QT GUI wallet for Monero, a private, secure, untraceable peer-to-peer currency
-	pkgver = 0.15.0.1
+	pkgver = 0.15.0.4
 	pkgrel = 1
 	url = https://getmonero.org/
 	arch = x86_64
@@ -30,7 +30,9 @@ pkgbase = monero-wallet-qt-git
 	depends = qt5-xmlpatterns
 	depends = qt5-svg
 	provides = monero-wallet-qt
+	provides = monero-gui
 	conflicts = monero-wallet-qt
+	conflicts = monero-gui
 	source = git+https://github.com/monero-project/monero-gui
 	sha256sums = SKIP
 
