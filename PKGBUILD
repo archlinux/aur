@@ -10,7 +10,7 @@ url='http://www.vim.org/scripts/script.php?script_id=3304'
 license=('GPL2')
 depends=('vim>=7.3')
 groups=('vim-plugins')
-source=("https://github.com/sjl/${pkgname#vim-}.vim/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sjl/${pkgname#vim-}.vim/archive/v$pkgver.tar.gz")
 sha256sums=('eeb279f41ea3651bccced8a3f609d40e8cf914eb8ebdf403acac21af68e1b4a0')
 
 package() {
