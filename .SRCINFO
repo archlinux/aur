@@ -1,17 +1,17 @@
 pkgbase = fisher-git
 	pkgdesc = A package manager for the fish shell
-	pkgver = 3.2.7.r0.gb2cd7ae
+	pkgver = 3.2.10.r0.gc142f61
 	pkgrel = 1
 	url = https://github.com/jorgebucaran/fisher
 	install = fisher-git.install
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = fish>=2.3.0
 	depends = curl
 	depends = git
+	provides = fisher
 	conflicts = fisher
-	source = git+https://github.com/jorgebucaran/fisher.git#branch=master
+	source = fisher::git+https://github.com/jorgebucaran/fisher.git
 	sha512sums = SKIP
 
 pkgname = fisher-git

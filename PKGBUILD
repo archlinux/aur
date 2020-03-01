@@ -1,38 +1,34 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
-_branch=master
-pkgname=fisher-git
-pkgver=3.2.7.r0.gb2cd7ae
+_pkgname=fisher
+pkgname=${_pkgname}-git
+pkgver=3.2.10.r0.gc142f61
 pkgrel=1
 pkgdesc="A package manager for the fish shell"
-arch=("any")
+arch=(any)
 url="https://github.com/jorgebucaran/fisher"
 license=("MIT")
-
 depends=("fish>=2.3.0" "curl" "git")
-makedepends=("git")
-conflicts=("fisher")
-
-install=fisher-git.install
-source=("git+https://github.com/jorgebucaran/fisher.git#branch=${_branch}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+install=${pkgname}.install
+source=("${_pkgname}::git+https://github.com/jorgebucaran/fisher.git")
 sha512sums=('SKIP')
 
 
 pkgver() {
-    cd "fisher"
+    cd "$_pkgname"
 
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "fisher"
+    cd "$_pkgname"
 
     # install fisher into the global fish directory
-    sharepath="${pkgdir}/usr/share"
-    fishpath="${sharepath}/fish"
-    install -Dm 644 fisher.fish "${fishpath}/vendor_functions.d/fisher.fish"
+    install -Dm 644 fisher.fish "${pkgdir}/usr/share/fish/vendor_functions.d/fisher.fish"
     # README and LICENSE
-    install -Dm 644 LICENSE.md "${sharepath}/licenses/${pkgname}/LICENSE.md"
-    install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
+    install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+    install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
