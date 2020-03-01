@@ -1,0 +1,41 @@
+pkgbase = pulseaudio-bluedio
+	pkgdesc = Fixup Pulseaudio module for my Bluedio headset
+	pkgver = 13.0
+	pkgrel = 3
+	url = https://www.freedesktop.org/wiki/Software/PulseAudio/
+	arch = x86_64
+	license = GPL
+	makedepends = libasyncns
+	makedepends = libcap
+	makedepends = attr
+	makedepends = libxtst
+	makedepends = libsm
+	makedepends = libsndfile
+	makedepends = rtkit
+	makedepends = libsoxr
+	makedepends = speexdsp
+	makedepends = tdb
+	makedepends = systemd
+	makedepends = dbus
+	makedepends = avahi
+	makedepends = bluez
+	makedepends = bluez-libs
+	makedepends = jack2
+	makedepends = sbc
+	makedepends = lirc
+	makedepends = openssl
+	makedepends = fftw
+	makedepends = orc
+	makedepends = gtk3
+	makedepends = webrtc-audio-processing
+	makedepends = check
+	makedepends = git
+	makedepends = meson
+	makedepends = xmltoman
+	source = git+https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git#commit=200618b32f0964a479d69c9b6e5073e6931c370a
+	source = 0001-bluetooth-new-module-bluedio-fixup.patch
+	sha256sums = SKIP
+	sha256sums = bc83a8075decebf7b18efd165593ad0f658dd97881c21804dae3699c1df8bc2f
+
+pkgname = pulseaudio-bluedio
+

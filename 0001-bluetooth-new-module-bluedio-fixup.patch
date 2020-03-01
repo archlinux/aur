@@ -1,0 +1,276 @@
+From 4bf7d1ccab86a4b23dea2c8be8e0debef8998a40 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?C=C3=A9dric=20Schieli?= <cschieli@gmail.com>
+Date: Sun, 12 Jan 2020 11:34:33 +0100
+Subject: [PATCH] bluetooth: new module-bluedio-fixup
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Cédric Schieli <cschieli@gmail.com>
+---
+ src/Makefile.am                              |   6 +
+ src/modules/bluetooth/module-bluedio-fixup.c | 215 +++++++++++++++++++
+ src/modules/meson.build                      |   1 +
+ 3 files changed, 222 insertions(+)
+ create mode 100644 src/modules/bluetooth/module-bluedio-fixup.c
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 437311de6..37c817898 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1491,6 +1491,7 @@ endif
+ if HAVE_BLUEZ_5
+ modlibexec_LTLIBRARIES += \
+ 		libbluez5-util.la \
++		module-bluedio-fixup.la \
+ 		module-bluez5-discover.la \
+ 		module-bluez5-device.la
+ endif
+@@ -2174,6 +2175,11 @@ module_bluez5_device_la_LDFLAGS = $(MODULE_LDFLAGS)
+ module_bluez5_device_la_LIBADD = $(MODULE_LIBADD) libbluez5-util.la
+ module_bluez5_device_la_CFLAGS = $(AM_CFLAGS) -DPA_MODULE_NAME=module_bluez5_device
+ 
++module_bluedio_fixup_la_SOURCES = modules/bluetooth/module-bluedio-fixup.c
++module_bluedio_fixup_la_LDFLAGS = $(MODULE_LDFLAGS)
++module_bluedio_fixup_la_LIBADD = $(MODULE_LIBADD) libbluez5-util.la
++module_bluedio_fixup_la_CFLAGS = $(AM_CFLAGS) -DPA_MODULE_NAME=module_bluedio_fixup
++
+ # Apple Airtunes/RAOP
+ module_raop_sink_la_SOURCES = modules/raop/module-raop-sink.c
+ module_raop_sink_la_LDFLAGS = $(MODULE_LDFLAGS)
+diff --git a/src/modules/bluetooth/module-bluedio-fixup.c b/src/modules/bluetooth/module-bluedio-fixup.c
+new file mode 100644
+index 000000000..7f82be281
+--- /dev/null
++++ b/src/modules/bluetooth/module-bluedio-fixup.c
+@@ -0,0 +1,215 @@
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++
++#include <pulse/xmalloc.h>
++#include <pulse/mainloop-api.h>
++
++#include <pulsecore/core.h>
++#include <pulsecore/core-util.h>
++#include <pulsecore/core-scache.h>
++#include <pulsecore/i18n.h>
++#include <pulsecore/sink.h>
++#include <pulsecore/modargs.h>
++#include <pulsecore/namereg.h>
++#include <pulsecore/log.h>
++
++PA_MODULE_AUTHOR("Cédric Schieli");
++PA_MODULE_DESCRIPTION(_("Load an equalizer to fix the Bluedio sink."));
++PA_MODULE_VERSION(PACKAGE_VERSION);
++PA_MODULE_LOAD_ONCE(true);
++PA_MODULE_USAGE(
++        "control=<ladspa control values> "
++	"sample=<sample to play on load>");
++
++#define BLUEDIO_ALIAS "Bluedio"
++#define EQ_SINK_NAME "bluedio_eq"
++#define DEFAULT_CONTROL_VALUES "-16,-14,-12,-10,-8,-6,-4,-2,0,2,4,6,8,10,12"
++#define DEFAULT_SAMPLE "service-login.oga"
++#define BLUEDIO_PORT "headset-output"
++
++static const char* const valid_modargs[] = {
++    "control",
++    "sample",
++    NULL,
++};
++
++struct userdata {
++    pa_hook_slot *put_slot;
++    pa_hook_slot *unlink_slot;
++    uint32_t bluedio_sink;
++    uint32_t ladspa_module;
++    char *control;
++    char *sample;
++    pa_core *core;
++};
++
++static bool is_bluedio_sink(pa_sink *sink) {
++    const char *prop;
++
++    pa_assert(sink);
++
++    prop = pa_proplist_gets(sink->proplist, "bluez.alias");
++    if (!prop || !pa_streq(prop, BLUEDIO_ALIAS))
++        return false;
++    prop = pa_proplist_gets(sink->proplist, "bluetooth.protocol");
++    if (!prop || !pa_streq(prop, "a2dp_sink"))
++        return false;
++    return true;
++}
++
++static void play_sample(pa_mainloop_api *api PA_GCC_UNUSED, void *userdata) {
++    struct userdata *u = userdata;
++
++    pa_assert(u);
++
++    if (pa_namereg_is_valid_name(EQ_SINK_NAME)) {
++        if (pa_scache_play_item_by_name(u->core, u->sample, EQ_SINK_NAME, 65536, NULL, NULL) < 0)
++            pa_log_warn("Error playing sample");
++        pa_core_set_configured_default_sink(u->core, EQ_SINK_NAME);
++    }
++}
++
++static void load_ladspa_sink(pa_core *c, pa_sink *sink, struct userdata* u) {
++    char *t;
++    pa_module *m = NULL;
++
++    pa_assert(c);
++    pa_assert(sink);
++    pa_assert(u);
++    pa_assert(u->ladspa_module == PA_INVALID_INDEX);
++
++    pa_log_debug("Autoloading module-ladspa-sink");
++
++    t = pa_sprintf_malloc("sink_name=" EQ_SINK_NAME " sink_master=%s plugin=mbeq_1197 label=mbeq control=%s", sink->name, u->control);
++    if (!pa_module_load(&m, c, "module-ladspa-sink", t))
++        u->ladspa_module = m ? m->index : PA_INVALID_INDEX;
++    pa_xfree(t);
++
++    if (!m)
++        pa_log_warn("Unable to load module-ladspa-sink");
++}
++
++static pa_hook_result_t put_hook_callback(pa_core *c, pa_sink *sink, void* userdata) {
++    struct userdata *u = userdata;
++
++    pa_assert(c);
++    pa_assert(sink);
++    pa_assert(u);
++
++    /* There's no point in doing anything if the core is shut down anyway */
++    if (c->state == PA_CORE_SHUTDOWN)
++        return PA_HOOK_OK;
++
++    if (pa_streq(sink->name, EQ_SINK_NAME)) {
++        pa_mainloop_api_once(c->mainloop, play_sample, u);
++        return PA_HOOK_OK;
++    }
++
++    if (!is_bluedio_sink(sink))
++        return PA_HOOK_OK;
++
++    u->bluedio_sink = sink->index;
++
++    load_ladspa_sink(c, sink, u);
++
++    return PA_HOOK_OK;
++}
++
++static pa_hook_result_t unlink_hook_callback(pa_core *c, pa_sink *sink, void* userdata) {
++    struct userdata *u = userdata;
++
++    pa_assert(c);
++    pa_assert(sink);
++    pa_assert(u);
++
++    /* First check to see if it's our own ladspa-sink that's been removed... */
++    if (u->ladspa_module != PA_INVALID_INDEX && sink->module && sink->module->index == u->ladspa_module) {
++        pa_log_debug("Autoloaded ladspa-sink removed");
++        u->ladspa_module = PA_INVALID_INDEX;
++        return PA_HOOK_OK;
++    }
++
++    /* There's no point in doing anything if the core is shut down anyway */
++    if (c->state == PA_CORE_SHUTDOWN)
++        return PA_HOOK_OK;
++
++    if (u->bluedio_sink == PA_INVALID_INDEX)
++        return PA_HOOK_OK;
++
++    if (sink->index != u->bluedio_sink)
++        return PA_HOOK_OK;
++
++    u->bluedio_sink = PA_INVALID_INDEX;
++
++    pa_module_unload_request_by_index(c, u->ladspa_module, true);
++
++    return PA_HOOK_OK;
++}
++
++int pa__init(pa_module*m) {
++    pa_modargs *ma = NULL;
++    struct userdata *u;
++    pa_sink *sink;
++    uint32_t idx;
++
++    pa_assert(m);
++
++    if (!(ma = pa_modargs_new(m->argument, valid_modargs))) {
++        pa_log("Failed to parse module arguments");
++        return -1;
++    }
++
++    m->userdata = u = pa_xnew(struct userdata, 1);
++    u->core = m->core;
++    u->control = pa_xstrdup(pa_modargs_get_value(ma, "control", DEFAULT_CONTROL_VALUES));
++    u->sample = pa_xstrdup(pa_modargs_get_value(ma, "sample", DEFAULT_SAMPLE));
++    u->put_slot = pa_hook_connect(&m->core->hooks[PA_CORE_HOOK_SINK_PUT], PA_HOOK_LATE, (pa_hook_cb_t) put_hook_callback, u);
++    u->unlink_slot = pa_hook_connect(&m->core->hooks[PA_CORE_HOOK_SINK_UNLINK], PA_HOOK_EARLY, (pa_hook_cb_t) unlink_hook_callback, u);
++    u->ladspa_module = PA_INVALID_INDEX;
++    u->bluedio_sink = PA_INVALID_INDEX;
++
++    PA_IDXSET_FOREACH(sink, m->core->sinks, idx) {
++        if (is_bluedio_sink(sink))
++	    u->bluedio_sink = idx;
++	if (sink->module && sink->name && pa_streq(sink->name, EQ_SINK_NAME))
++	    u->ladspa_module = sink->module->index;
++    }
++
++    if (u->bluedio_sink == PA_INVALID_INDEX) {
++        if (u->ladspa_module != PA_INVALID_INDEX) {
++            pa_module_unload_request_by_index(m->core, u->ladspa_module, true);
++	    u->ladspa_module = PA_INVALID_INDEX;
++	    pa_log_warn("Orphaned ladspa-sink removal requested");
++	}
++    } else {
++        if (u->ladspa_module == PA_INVALID_INDEX) {
++	    sink = pa_idxset_get_by_index(m->core->sinks, u->bluedio_sink);
++	    load_ladspa_sink(m->core, sink, u);
++	}
++    }
++
++    pa_modargs_free(ma);
++
++    return 0;
++}
++
++void pa__done(pa_module*m) {
++    struct userdata *u;
++
++    pa_assert(m);
++
++    if (!(u = m->userdata))
++        return;
++
++    if (u->put_slot)
++        pa_hook_slot_free(u->put_slot);
++    if (u->unlink_slot)
++        pa_hook_slot_free(u->unlink_slot);
++    if (u->ladspa_module != PA_INVALID_INDEX && m->core->state != PA_CORE_SHUTDOWN)
++        pa_module_unload_request_by_index(m->core, u->ladspa_module, true);
++
++    pa_xfree(u->control);
++    pa_xfree(u->sample);
++    pa_xfree(u);
++}
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 92d5871f9..2abf255d5 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -113,6 +113,7 @@ if get_option('bluez5')
+     [ 'module-bluetooth-policy', 'bluetooth/module-bluetooth-policy.c', [], [], [dbus_dep] ],
+     [ 'module-bluez5-device', 'bluetooth/module-bluez5-device.c', [], [], [], libbluez5_util ],
+     [ 'module-bluez5-discover', 'bluetooth/module-bluez5-discover.c', [], [], [dbus_dep], libbluez5_util ],
++    [ 'module-bluedio-fixup', 'bluetooth/module-bluedio-fixup.c', [], [], [], libbluez5_util ],
+   ]
+ endif
+ 
+-- 
+2.25.0
+
