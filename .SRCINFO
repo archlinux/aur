@@ -1,6 +1,6 @@
 pkgbase = protracker-git
 	pkgdesc = Rewrite of ProTracker v2.3D (Amiga)
-	pkgver = e537ab6
+	pkgver = v1.06.r0.g4beea68
 	pkgrel = 1
 	epoch = 1
 	url = https://16-bits.org/pt2.php
@@ -9,6 +9,7 @@ pkgbase = protracker-git
 	license = PD
 	makedepends = git
 	depends = sdl2
+	conflicts = protracker-svn
 	source = protracker::git://github.com/8bitbubsy/pt2-clone.git
 	source = protracker.png
 	source = protracker.desktop
