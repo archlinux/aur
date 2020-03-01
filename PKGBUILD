@@ -31,7 +31,6 @@ pkgver() {
 
 _package_helper() {
     cd "$_pkgbase"
-        ls -al
     luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
         make --deps-mode=none --no-manifest "$_pkgbase-git-$_rockrel.rockspec"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
