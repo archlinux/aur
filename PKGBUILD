@@ -1,12 +1,12 @@
 # Maintainer: stiglers-eponym
 pkgname=beamerpresenter
-pkgver=r208.77ea84b
+pkgver=0.1.1_249.d630bc1
 pkgrel=1
 pkgdesc="Simple dual screen pdf presentation software"
 arch=('x86_64')
 url="https://github.com/stiglers-eponym/BeamerPresenter"
 license=('GPL3')
-depends=('poppler-qt5>=0.41.0' 'qt5-multimedia>=5.5.1')
+depends=('poppler-qt5>=0.41.0' 'qt5-multimedia>=5.5.1' 'hicolor-icon-theme')
 optdepends=('mupdf-tools: external rendering'
     'gst-libav: video support'
     'gst-plugins-good: multimedia support')
@@ -14,10 +14,14 @@ makedepends=('git')
 source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
 md5sums=('SKIP')
 backup=("etc/${pkgname}/${pkgname}.conf" "etc/${pkgname}/pid2wid.sh")
+install=beamerpresenter.install
 
 pkgver() {
   cd "${srcdir}/BeamerPresenter"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s_%s.%s" \
+	  "$(sed -n 's/^VERSION *= *\([^ ]\+\)$/\1/p' beamerpresenter.pro)" \
+	  "$(git rev-list --count HEAD)" \
+	  "$(git rev-parse --short HEAD)"
 }
 
 build() {

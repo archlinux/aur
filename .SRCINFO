@@ -1,8 +1,9 @@
 pkgbase = beamerpresenter
 	pkgdesc = Simple dual screen pdf presentation software
-	pkgver = r208.77ea84b
+	pkgver = 0.1.1_249.d630bc1
 	pkgrel = 1
 	url = https://github.com/stiglers-eponym/BeamerPresenter
+	install = beamerpresenter.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
