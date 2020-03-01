@@ -1,23 +1,29 @@
 # Maintainer: Sergey Malkin <adresatt@gmail.com>
-pkgname=python-neo
-pkgver=0.5.2
-pkgrel=1
-pkgdesc="Neo is a Python package for working with electrophysiology data in Python"
-arch=("i686" "x86_64")
-url="http://neuralensemble.org/neo"
-license=("custom")
-depends=("python" "python-numpy" "python-quantities")
-makedepends=('python-setuptools')
-source=("https://github.com/NeuralEnsemble/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("ba857329e6d4859cd9ea8eb8f63c8ade")
+# Contributor: mcgyver <newsletter.sergio@gmail.com>
 
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py build
+pkgbase=python-neo
+pkgname=('python-neo' 'python2-neo')
+_name=${pkgbase#python-}
+pkgver=0.7.1
+pkgrel=2
+pkgdesc="Neo is a package for representing electrophysiology data in Python, together with support for reading a wide range of neurophysiology file formats"
+arch=('any')
+url="https://pypi.org/project/neo/#files"
+license=("custom")
+depends=("python-quantities" "python-setuptools" "python2-setuptools")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+package_python-neo() {
+  depends+=('python' 'python-numpy')
+
+  cd "${srcdir}/${_name}-${pkgver}"
+  python setup.py install --root="${pkgdir}"
 }
 
-package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --prefix=/usr --root=${pkgdir}
+package_python2-neo() {
+  depends+=('python2' 'python2-numpy')
+
+  cd "${srcdir}/${_name}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}"
 }
