@@ -21,7 +21,7 @@ depends=(
 'fcitx'
 'fcitx-m17n'
 'fcitx-qt4'
-'m17n-db'
+'m17n-db-indic'
 'autokey'
 'parcellite'
 # Data
