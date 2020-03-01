@@ -1,16 +1,27 @@
 pkgbase = mbrola-voices-de2
 	pkgdesc = A German male voice for the MBROLA synthesizer
-	pkgver = 990106
-	pkgrel = 4
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-de
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/de2/de2-990106.zip
-	md5sums = b493d8b258d424ee9159c284b5f00c21
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/de2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/TEST/lautern.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/TEST/tts.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de2/TEST/wetter.pho
+	sha256sums = 5fb968f9b5a8fe594958d4a8b77c388c38c39f9a855d08aba4d500c62f899be1
+	sha256sums = 909da902c3ce5bf10aaa252842760105c9696b095679fc075614da5c9a95a882
+	sha256sums = 36e9dbfdfc3f222e138b1c1d10283f26d6738a4dcf38d0ffb0a0d8997eedc271
+	sha256sums = 0f6bc801c50d93fa1c8def8dd490bd38ab2e8b565c22b39a86505dfaea60f0de
+	sha256sums = 4e6a5c6cfcbe68b91b3123ebe6dacd00ed5b48ebf7da055a106e93fe8fd83eef
+	sha256sums = 7d8e1bcbf891698f87133e16b56705452dab4217705906066eeb6cbb1e273fda
+	sha256sums = afe585da7cee42d94eb7eb446c12720377d2e95f808418de0d51f87fb40a471b
 
 pkgname = mbrola-voices-de2
 
