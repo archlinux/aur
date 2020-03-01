@@ -1,7 +1,7 @@
 pkgbase = prime
 	pkgdesc = Nvidia:PRIME Render Offload Launcher
 	pkgver = 1.0
-	pkgrel = 13
+	pkgrel = 14
 	url = https://download.nvidia.com/XFree86/Linux-x86_64/435.21/README/primerenderoffload.html
 	install = prime.install
 	arch = any
@@ -13,6 +13,7 @@ pkgbase = prime
 	provides = nvidia-prime
 	conflicts = bumblebee
 	replaces = nvidia-prime
+	options = !strip
 	source = prime
 	source = prime.install
 	source = 10-nvidia.conf

@@ -6,7 +6,7 @@ pkgdesc="Nvidia:PRIME Render Offload Launcher"
 # namcap -i =>> PKGBUILD (prime) W: Reference to x86_64 should be changed to $CARCH
 url="https://download.nvidia.com/XFree86/Linux-${CARCH}/435.21/README/primerenderoffload.html"
 pkgver=1.0
-pkgrel=13
+pkgrel=14
 arch=('any')
 license=("custom")
 conflicts=(bumblebee)
@@ -17,7 +17,7 @@ optdepends=(
 	"vulkan-intel: for vulkan support"
 	"lib32-vulkan-intel: for vulkan support"
 	"zsh: zsh completion")
-
+options=(!strip)
 source=(prime
 		prime.install
 		10-nvidia.conf
