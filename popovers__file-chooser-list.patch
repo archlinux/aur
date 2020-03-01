@@ -1,7 +1,7 @@
-Index: src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
+Index: b/gtk+-3.24.14/gtk/gtkfilechooserwidget.c
 ===================================================================
---- src.orig/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
-+++ src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
+--- a/gtk+-3.24.14/gtk/gtkfilechooserwidget.c
++++ b/gtk+-3.24.14/gtk/gtkfilechooserwidget.c
 @@ -29,6 +29,7 @@
  #include "gtkcellrendererpixbuf.h"
  #include "gtkcellrenderertext.h"
@@ -29,7 +29,7 @@ Index: src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
  
    return separator;
  }
-@@ -2289,12 +2294,14 @@ add_button (GtkWidget   *box,
+@@ -2289,12 +2284,14 @@ add_button (GtkWidget   *box,
  {
    GtkWidget *item;
  
@@ -50,7 +50,7 @@ Index: src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
  
    return item;
  }
-@@ -2308,11 +2315,9 @@ file_list_build_popover (GtkFileChooserW
+@@ -2308,11 +2305,9 @@ file_list_build_popover (GtkFileChooserW
    if (priv->browse_files_popover)
      return;
  
@@ -65,7 +65,7 @@ Index: src/gtk+-3.24.13/gtk/gtkfilechooserwidget.c
  
    priv->visit_file_item = add_button (box, _("_Visit File"), "item.visit");
    priv->open_folder_item = add_button (box, _("_Open With File Manager"), "item.open");
-@@ -2329,6 +2334,12 @@ file_list_build_popover (GtkFileChooserW
+@@ -2329,6 +2324,12 @@ file_list_build_popover (GtkFileChooserW
    priv->type_column_item = add_button (box, _("Show T_ype Column"), "item.toggle-show-type");
    priv->show_time_item = add_button (box, _("Show _Time"), "item.toggle-show-time");
    priv->sort_directories_item = add_button (box, _("Sort _Folders before Files"), "item.toggle-sort-dirs-first");
