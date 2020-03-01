@@ -1,0 +1,18 @@
+pkgbase = lets-git
+	pkgdesc = CLI task runner - a better alternative to make
+	pkgver = v0.0.16.r2.g7e24f36
+	pkgrel = 1
+	url = https://github.com/lets-cli/lets
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = git
+	makedepends = go
+	provides = lets
+	conflicts = lets-bin
+	conflicts = lets-git
+	source = git+https://github.com/lets-cli/lets.git
+	md5sums = SKIP
+
+pkgname = lets-git
+
