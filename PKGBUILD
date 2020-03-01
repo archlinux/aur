@@ -8,6 +8,7 @@ url="http://github.com/sanskrit-coders/dyuganga-aur"
 arch=(any)
 
 depends=(
+# Editing and publishing
 'sanskrit-fonts'
 'atom'
 'hugo'
@@ -16,6 +17,8 @@ depends=(
 'fcitx-m17n'
 'm17n-db'
 'autokey'
+# Data
+'stardict-indic-update'
 )
 
 optdepends=(
