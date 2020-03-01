@@ -13,11 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
 makedepends=('git' 'cmake' 'rapidjson')
-
 depends=('freeimage' 'vlc' 'curl')
-if [ "$CARCH" = "armv6h" ]; then
-    depends+=('raspberrypi-firmware')
-fi
 source=('git://github.com/RetroPie/EmulationStation.git')
 md5sums=('SKIP')
 provides=('emulationstation')
