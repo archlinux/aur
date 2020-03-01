@@ -1,0 +1,43 @@
+--- setup.sh	2020-02-29 21:30:32.862816400 -0500
++++ setup.sh	2020-02-29 21:36:28.300273309 -0500
+@@ -7,7 +7,7 @@
+ target_sdk_dir=""
+ post_install_cleanup=1
+ confirm=0
+-rc_confirm=0
++rc_confirm=""
+ 
+ usage () {
+   cat << EOF
+@@ -24,6 +24,9 @@
+   -y
+         Automatic yes to prompts; assume "yes" as answer to all prompts.
+ 
++  -[no]rc
++	Whether to create/update the ~/.zerphyrc file (prompt if not given)
++
+ EOF
+ }
+ 
+@@ -70,6 +73,12 @@
+ 			confirm="y";
+ 			rc_confirm="y";
+ 			;;
++		-rc )
++			rc_confirm="y";
++			;;
++		-norc )
++			rc_confirm="n";
++			;;
+ 		* )
+ 			echo "Error: Invalid argument \"$1\""
+ 			usage
+@@ -120,7 +129,7 @@
+ 	echo "     export ZEPHYR_TOOLCHAIN_VARIANT=zephyr"
+ 	echo "     export ZEPHYR_SDK_INSTALL_DIR=$target_sdk_dir"
+ 	echo
+-	if [ "$rc_confirm" != "y" ]; then
++	if [ -z "$rc_confirm" ]; then
+ 		echo "Update/Create $HOME/.zephyrrc with environment variables setup for you (y/n)? "
+ 		while read rc_confirm; do
+ 			[ "$rc_confirm" = "Y" -o "$rc_confirm" = "y" \

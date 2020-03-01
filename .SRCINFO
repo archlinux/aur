@@ -1,6 +1,6 @@
 pkgbase = zephyr-sdk
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 0.10.3
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	install = zephyr-sdk.install
@@ -18,11 +18,22 @@ pkgbase = zephyr-sdk
 	depends = python-pyelftools
 	depends = python-pyserial
 	depends = python-pykwalify
+	depends = python-pillow
+	depends = python-anytree
+	depends = python-intelhex
+	depends = python-packaging
+	depends = pyocd
+	depends = python-pyserial
+	depends = python-pytest
+	depends = python-sphinx_rtd_theme
+	depends = python-sphinxcontrib-svg2pdfconverter
+	depends = python-tabulate
 	depends = python-west
 	depends = git-spindle
 	depends = gitlint
 	depends = ninja
 	depends = gperf
+	depends = gcovr
 	depends = ccache
 	depends = doxygen
 	depends = dfu-util
@@ -30,11 +41,12 @@ pkgbase = zephyr-sdk
 	depends = cmake>=3.8.2
 	optdepends = pyocd: programming and debugging ARM MCUs
 	options = !strip
-	backup = etc/zephyrrc
-	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.10.3/zephyr-sdk-0.10.3-setup.run
+	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.11.2/zephyr-sdk-0.11.2-setup.run
 	source = zephyrrc
-	sha256sums = 3af6de7432e02730ca11cb92d7a473d8391c80d1cc233f1a4d6d7496475cff13
+	source = setup-unattended.patch
+	sha256sums = 0f620b7bb03e951cb3c57bde6c2f2449e0fb0ae876828d832eff843d6d72f789
 	sha256sums = 7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05
+	sha256sums = e4ed1da3cb5a64e99f2d0f2b3b83dba44b36c778c80ef0de57bd70a708ed3d5e
 
 pkgname = zephyr-sdk
 
