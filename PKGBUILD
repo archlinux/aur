@@ -2,7 +2,7 @@
 
 pkgname=python-multiaddr
 _name=multiaddr
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc="Python implementation of jbenet's multiaddr"
 arch=('any')
@@ -34,4 +34,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
-sha256sums=('2faec68b479945fe6b48dd2dc1f8bcccf939aa148836e3a1ab806d6c75db1238')
+sha256sums=('30b2695189edc3d5b90f1c303abb8f02d963a3a4edf2e7178b975eb417ab0ecf')
