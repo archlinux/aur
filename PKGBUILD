@@ -6,7 +6,7 @@
 
 pkgbase=bind-rl
 pkgname=(bind-rl bind-rl-tools)
-_pkgver=9.14.9
+_pkgver=9.16.0
 pkgver=${_pkgver//-/.}
 pkgrel=1
 url='https://www.isc.org/software/bind/'
@@ -15,9 +15,9 @@ arch=('x86_64')
 options=('!emptydirs')
 makedepends=('libcap' 'libxml2' 'zlib' 'krb5' 'e2fsprogs' 'openssl' 'readline'
   'libidn2' 'dnssec-anchors' 'python' 'json-c' 'python-ply' 'lmdb' 'zlib' 'icu'
-  'xz' 'libmaxminddb')
+  'xz' 'libmaxminddb' 'libnsl' 'libuv')
 validpgpkeys=('AE3FAC796711EC59FC007AA474BB6B9A4CBB3D38') #ISC Code Signing Key 2019 – 2020 (codesign@isc.org)
-source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
+source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.xz"{,.asc}
         'tmpfiles.conf'
         'sysusers.conf'
         'named.conf'
@@ -25,7 +25,7 @@ source=("https://ftp.isc.org/isc/bind9/${_pkgver}/bind-${_pkgver}.tar.gz"{,.asc}
         'localhost.zone'
         'localhost.ip6.zone'
         '127.0.0.zone')
-sha1sums=('a45f4c8b44755d8c4019181d0787e4e72d836661'
+sha1sums=('01678973598db55dfb03cd12a004d3d75a8ab2bf'
           'SKIP'
           'c5a2bcd9b0f009ae71f3a03fbdbe012196962a11'
           '9537f4835a1f736788d0733c7996a10db2d4eee4'
@@ -77,7 +77,7 @@ package_bind-rl() {
   pkgdesc='The ISC DNS Server, with Response Rate Limit (RRL) enabled'
   provides=('dns-server' "bind=$pkgver")
   depends=('glibc' 'libxml2' 'libcap' 'libseccomp' 'openssl' 'geoip' 'json-c'
-           'bind-tools' 'zlib' 'lmdb' 'libmaxminddb')
+           'bind-tools' 'zlib' 'lmdb' 'libmaxminddb' 'libnsl' 'libuv')
   conflicts=('bind')
   replaces=('bind')
   backup=('etc/named.conf'
