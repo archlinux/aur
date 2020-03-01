@@ -6,8 +6,8 @@
 # Contributor: Christian Neukirchen <chneukirchen@gmail.com>
 
 pkgname=autotrace
-_date=20190624
-_revision=59
+_date=20200219
+_revision=65
 pkgver=0.40.0.${_date}.${_revision}
 pkgrel=1
 pkgdesc='An utility to trace bitmaps: convert bitmaps to vector graphics'
@@ -18,7 +18,7 @@ depends=('libpng' 'pstoedit' 'libmagick6')
 makedepends=('intltool')
 options=('!libtool')
 source=("https://github.com/autotrace/autotrace/archive/travis-${_date}.${_revision}.tar.gz")
-sha512sums=('ded8a0b7b0728b2a3315b40161e43327cee42b6d1e2210b0e0aac0418fd3b57dc60859c4d0aa00faee85a627edf38d1e40f0f6fa04c111ca51698fb5e0449b00')
+sha512sums=('a431168a2da231436f9cf301c6d286a9104f5ad0e8053047539b4784522d2982100afe823d6c3e6492adc84d83fcd3196cee91dec6728c99647800d9dc383a4d')
 
 
 build() {
