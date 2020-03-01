@@ -1,15 +1,26 @@
 pkgbase = mbrola-voices-ca1
 	pkgdesc = A Canadian French male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-ca
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ca1/ca1.zip
-	md5sums = 98c31362757892aca7940ad4d8db7873
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/ca1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/licence.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/test/bottine.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/test/ginette.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ca1/test/merci.pho
+	sha256sums = dd2d1ecb4e8a08a1bedfc9429e91aa50b9352772ad35de86acf495fbf03db69a
+	sha256sums = b3644eb2e456009db2c302e6bae3434db292dcc08bfa350ec8efe6ae277b8a89
+	sha256sums = f1a1e19fe41b69a10085318704f32a96baf80cd806d4f0fbd25a05765979d9f8
+	sha256sums = 452ea450a79e596520faea3defe5090c9d4bf65c3994e025d88f5f1770a35765
+	sha256sums = f9ca49e57274618d9d2a6ecc09848d23b1a019210caed805bcaed6ed22b72335
+	sha256sums = ba955e1f4f24091250868f60456a795582b1f48b9f8cd3b02c1e8d606666a85d
+	sha256sums = 04b12af831e08d5e05aa489b3b2aa7050770afc6fa743a79211ad6f98c68b944
 
 pkgname = mbrola-voices-ca1
 
