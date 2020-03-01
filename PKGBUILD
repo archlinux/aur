@@ -5,7 +5,7 @@ _gituser="magnars"
 _gitrepo="dash.el"
 
 pkgname=emacs-dash-git
-pkgver=2.16.0.r2.g77f3bf4
+pkgver=2.17.0
 pkgrel=1
 pkgdesc='A modern list API for Emacs, checked out from git master'
 arch=('any')
