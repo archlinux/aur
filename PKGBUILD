@@ -5,7 +5,7 @@ _gamepkg=RimWorld1-1-${_pkg_subver}Linux.zip
 
 pkgname=rimworld
 pkgver=1.1.${_pkg_subver}
-pkgrel=1
+pkgrel=2
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
@@ -44,17 +44,7 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" \
-        -x 'RimWorld1-1-2552Linux/Data/Core/Languages/ChineseSimplified*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/ChineseTraditional*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Greek*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Japanese*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Korean*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Romanian*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Russian*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Slovak*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Ukrainian*' \
-           'RimWorld1-1-2552Linux/Data/Core/Languages/Czech*'
+  unzip -UU -u "${pkgpath}/${_gamepkg}" -d "${srcdir}"
 }
 
 package() {
