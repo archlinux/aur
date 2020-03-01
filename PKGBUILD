@@ -24,25 +24,29 @@ md5sums=('SKIP')
 provides=('emulationstation')
 
 pkgver() {
-  cd $srcdir/$_gitname
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd $srcdir/$_gitname
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/$_gitname"
-	git submodule update --init
+    cd "$srcdir/$_gitname"
+    git submodule update --init
 }
 
 build() {
     cd "$srcdir/$_gitname"
     mkdir -p "$srcdir/$_gitname/build"
     cd "$srcdir/$_gitname/build"
-    cmake ..
+    cmake ..\
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=RELEASE
     make
 }
 
 package() {
     cd $_gitname
+    # No install target..., should be fixed upstream
+    # make DESTDIR="$pkgdir" install
     install -Dm755 "$srcdir/$_gitname/emulationstation" "$pkgdir/usr/bin/emulationstation"
     install -Dm644 "$srcdir/$_gitname/LICENSE.md" "$pkgdir/usr/share/licenses/emulationstation-git/LICENSE"
 }
