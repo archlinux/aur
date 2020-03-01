@@ -1,10 +1,10 @@
 # Maintainer: Sebastien Duthil <duthils@duthils.net>
 
-_pkg_subver=2282  # see ${srcdir}/Version.txt
-_gamepkg=RimWorld1-0-${_pkg_subver}Linux.zip
+_pkg_subver=2552  # see ${srcdir}/Version.txt
+_gamepkg=RimWorld1-1-${_pkg_subver}Linux.zip
 
 pkgname=rimworld
-pkgver=1.0.${_pkg_subver}
+pkgver=1.1.${_pkg_subver}
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
@@ -15,12 +15,8 @@ makedepends=('unzip')
 source=(rimworld.desktop
         rimworld.sh)
 sha256sums=('2cae10532b040e6766daf8fc33ecbd123ce2085acb921e30e57216da573879ce'
-            'b43669fb221beda0927781b2572861ba50af08d0dcd8abf6011d27dd894f564e')
-if test "$CARCH" == i686; then
-  _rimworld_arch=x86
-elif test "$CARCH" == x86_64; then
-  _rimworld_arch=x86_64
-fi
+            '7f46d32b4ebb3e442b471797005cde6a1fdb7d923d1b7860dee6a9b1779248bf')
+
 _pkgpaths_tries=("$startdir"
                  "$HOME/Downloads")
 
@@ -48,19 +44,35 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}"
+  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}" \
+        -x 'RimWorld1-1-2552Linux/Data/Core/Languages/ChineseSimplified*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/ChineseTraditional*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Greek*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Japanese*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Korean*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Romanian*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Russian*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Slovak*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Ukrainian*' \
+           'RimWorld1-1-2552Linux/Data/Core/Languages/Czech*'
 }
 
 package() {
-  cd "$srcdir"/RimWorld1-0-${_pkg_subver}Linux
+  cd "$srcdir"
+  install -Dm755 "rimworld.sh" "$pkgdir/usr/bin/rimworld"
+  install -Dm644 "rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
 
-  install -Dm755 "$srcdir/rimworld.sh" "$pkgdir/usr/bin/rimworld"
-  install -Dm755 RimWorldLinux.${_rimworld_arch} "$pkgdir/opt/rimworld/rimworld"
-  cp -r RimWorldLinux_Data "$pkgdir/opt/rimworld/Data"
-  cp -r Mods Source "$pkgdir/opt/rimworld"
+  cd "$srcdir/RimWorld1-1-${_pkg_subver}Linux"
+  install -dm755 "$pkgdir/opt/rimworld"
+  cp -r * "$pkgdir/opt/rimworld"
+  chmod 755 "$pkgdir/opt/rimworld/RimWorldLinux"
   chgrp games "$pkgdir/opt/rimworld/Mods"
   chmod g+w "$pkgdir/opt/rimworld/Mods"
-  install -Dm644 EULA.txt Readme.txt Version.txt "$pkgdir/opt/rimworld"
-  install -Dm644 "${srcdir}/rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
-  install -Dm644 EULA.txt "${pkgdir}/usr/share/licenses/rimworld/LICENSE"
+
+  # remove non-ascii characters in filename causing warnings
+  for file in "$pkgdir/opt/rimworld/Data/Core/Languages/"*.tar ; do
+    mv "$file" "${file/ */}.tar"
+  done
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/rimworld" EULA.txt Licenses.txt
 }

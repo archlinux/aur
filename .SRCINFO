@@ -1,6 +1,6 @@
 pkgbase = rimworld
 	pkgdesc = A sci-fi colony simulation game driven by an intelligent AI storyteller.
-	pkgver = 1.0.2282
+	pkgver = 1.1.2552
 	pkgrel = 1
 	url = http://rimworldgame.com/
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = rimworld
 	source = rimworld.desktop
 	source = rimworld.sh
 	sha256sums = 2cae10532b040e6766daf8fc33ecbd123ce2085acb921e30e57216da573879ce
-	sha256sums = b43669fb221beda0927781b2572861ba50af08d0dcd8abf6011d27dd894f564e
+	sha256sums = 7f46d32b4ebb3e442b471797005cde6a1fdb7d923d1b7860dee6a9b1779248bf
 
 pkgname = rimworld
 
