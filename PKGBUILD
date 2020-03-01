@@ -1,6 +1,6 @@
 # Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
 pkgname=libarcus-git
-pkgver=r367.cfb4921
+pkgver=r389.d0f1ac1
 pkgrel=1
 pkgdesc="A library designed to facilitate the communication between Cura and its backend and similar code."
 arch=('i686' 'x86_64')
