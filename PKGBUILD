@@ -1,5 +1,5 @@
 pkgname=qtbitcointrader
-pkgver=1.40.43
+pkgver=1.40.50
 pkgrel=1
 pkgdesc='Secure Multi Trading Client'
 arch=(x86_64)
@@ -7,7 +7,7 @@ url=https://centrabit.com/
 license=(GPL3)
 depends=(qt5-multimedia qt5-script)
 source=("https://downloads.sourceforge.net/bitcointrader/SRC/QtBitcoinTrader-$pkgver.tar.gz")
-sha1sums=(4db576593ec37e4d8c3f06eaf41d57ad8cd3d23d)
+sha1sums=('d92cc1b5e1dfd03ab23d36a3c5864f5368ce2628')
 
 build() {
   cd QtBitcoinTrader-$pkgver/src
