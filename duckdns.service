@@ -1,9 +1,11 @@
 [Unit]
 Description=Update DuckDNS domain addresses
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/duckdns
 
 [Install]
-WantedBy=network-online.target
+WantedBy=multi-user.target
