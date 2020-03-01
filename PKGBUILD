@@ -1,6 +1,6 @@
 # Maintainer: liminggui <372884399@qq.com>
 pkgname=vls
-pkgver=0.2
+pkgver=0.21
 pkgrel=1
 epoch=
 pkgdesc="slow list subdirectories and files and check file expire"
