@@ -9,7 +9,7 @@ pkgbase = spicetify-themes-git
 	depends = spicetify-cli
 	provides = spicetify-themes
 	conflicts = spicetify-themes
-	source = ${pkgname}-${pkgver}.tar.gz::https://github.com/morpheusthewhite/spicetify-themes/archive/master.tar.gz
+	source = spicetify-themes-git-r1.385d0c6.tar.gz::https://github.com/morpheusthewhite/spicetify-themes/archive/master.tar.gz
 	md5sums = SKIP
 
 pkgname = spicetify-themes-git

@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=''
-source=('${pkgname}-${pkgver}.tar.gz::https://github.com/morpheusthewhite/spicetify-themes/archive/master.tar.gz')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/morpheusthewhite/spicetify-themes/archive/master.tar.gz")
 noextract=()
 md5sums=('SKIP')
 
