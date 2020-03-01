@@ -15,7 +15,7 @@ pkgbase = electronplayer
 	depends = libcups
 	optdepends = libpulse: For pulseaudio support
 	provides = electronplayer
-	conflicts = electronplayer-git
+	conflicts = electronplayer
 	source = electronplayer::git+https://github.com/oscartbeaumont/ElectronPlayer.git#tag=v2.0.8
 	source = electronplayer.desktop
 	sha512sums = SKIP

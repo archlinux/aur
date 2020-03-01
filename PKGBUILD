@@ -8,13 +8,11 @@ pkgdesc="An Electron-based web video player, supporting multiple services"
 arch=(x86_64)
 url="https://github.com/oscartbeaumont/ElectronPlayer"
 license=("custom:MIT")
-
 depends=("gtk3" "libxss" "nss" "alsa-lib" "libcups")
 makedepends=("yarn" "npm" "git")
 optdepends=("libpulse: For pulseaudio support")
 provides=("$_pkgname")
-conflicts=("$_pkgname-git")
-
+conflicts=("$_pkgname")
 source=("${_pkgname}::git+https://github.com/oscartbeaumont/ElectronPlayer.git#tag=v${pkgver}"
         "${_pkgname}.desktop")
 sha512sums=('SKIP'
