@@ -15,7 +15,7 @@ ftp://ftp.invisible-island.net/dialog/dialog-$_pkgver.tgz.asc
 )
 sha256sums=('9ff8c41d1eee9e15d14fde3109d4612b1fe6dbe71fe2c3e743bcfff5e25c1fd9'
             'SKIP')
-# ftp://invisible-island.net/dialog/
+# ftp://ftp.invisible-island.net/dialog/
 validpgpkeys=(C52048C0C0748FEE227D47A2702353E0F7E48EDB) #Thomas Dickey <dickey@invisible-island.net>
 package() {
   cd "${srcdir}"/dialog-${_pkgver}/samples/
