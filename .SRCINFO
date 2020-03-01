@@ -1,6 +1,6 @@
 pkgbase = ipget
 	pkgdesc = wget for IPFS: retrieve files over IPFS and save them locally.
-	pkgver = 0.3.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ipfs/ipget
 	arch = x86_64
@@ -11,22 +11,8 @@ pkgbase = ipget
 	makedepends = git
 	optdepends = go-ipfs: to use full potential of IPFS network
 	optdepends = go-pie: PIE enabled compilation (makedepend)
-	source = https://github.com/ipfs/ipget/archive/v0.3.1.tar.gz
-	source = ipget_aur.patch
-	source = go-floodsub.tar.gz::https://github.com/libp2p/go-floodsub/archive/4e84ab6c81c4093552130a69fecfc5afe7c8dbf3.tar.gz
-	source = go-libp2p-peer.tar.gz::https://github.com/libp2p/go-libp2p-peer/archive/aa0e03e559bde9d4749ad8e38595e15a6fe808fa.tar.gz
-	source = go-multiaddr.tar.gz::https://github.com/multiformats/go-multiaddr/archive/123a717755e0559ec8fda308019cd24e0a37bb07.tar.gz
-	source = go-multiaddr-net.tar.gz::https://github.com/multiformats/go-multiaddr-net/archive/97d80565f68c5df715e6ba59c2f6a03d1fc33aaf.tar.gz
-	source = go-multipart-files.tar.gz::https://github.com/whyrusleeping/go-multipart-files/archive/3be93d9f6b618f2b8564bfb1d22f1e744eabbae2.tar.gz
-	source = tar-utils.tar.gz::https://github.com/whyrusleeping/tar-utils/archive/8c6c8ba81d5c71fd69c0f48dbde4b2fb422b6dfc.tar.gz
-	sha256sums = 0c557abbeadc713fb13892fed498696ec72a6bc9d067beecc80e07c13a0999e4
-	sha256sums = dc7e1b74f786d1d13461635cc269a1a00acd13dbb530b07823ed82bd31bd8bd8
-	sha256sums = 55766c39cbf9f41e1288df82e25919efe3bdcec236182f9fe28209ae8f1b960c
-	sha256sums = 116f5f6a0e3e5694c862bfa7b3f500e22839ca043bb6622e5d202e36905c88e1
-	sha256sums = dc7821f8b749e46f8bb8c08faf36e7079866ad7d0f9de711ed3dab5ad38118f4
-	sha256sums = 6f4f5989fac82b8bf25a0a5efa6dc36fba7904c8746fb8679205a8f0c73dbb7e
-	sha256sums = a702f4481aab593650dd5fb4dd11709c7bc536fb57f392925ed22a154ebd5b10
-	sha256sums = 07373f1fa402af88ee1bcc461694a9fc96f29bd0619d54410f32e5fb783a6ff4
+	source = https://github.com/ipfs/ipget/archive/v0.5.0.tar.gz
+	sha256sums = a2a5ec2f78cfc1ce739821c6493bffe0f4adac4d283a3cb55391a4c74a5ca41a
 
 pkgname = ipget
 
