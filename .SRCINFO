@@ -1,7 +1,7 @@
 pkgbase = iflyime
 	pkgdesc = XunFei for Linux (iflyime)
 	pkgver = 0.9.972
-	pkgrel = 1
+	pkgrel = 2
 	url = http://srf.xunfei.cn/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = iflyime
 	depends = fcitx
 	depends = dtkwidget
 	source = iflyime_0.9.972_amd64.deb::http://packages.deepin.com/deepin/pool/non-free/i/iflyime/iflyime_0.9.972_amd64.deb
+	source = https://srf.xunfei.cn/linux/help/agreement.html
 	md5sums = ff2bf9d1852b94faa19825eaae83475d
+	md5sums = SKIP
 
 pkgname = iflyime
 
