@@ -1,0 +1,23 @@
+pkgbase = zxtune-bin
+	pkgdesc = Portable toolkit for ZX-Spectrum music playing (pre-compiled)
+	pkgver = r4880
+	pkgrel = 1
+	url = http://zxtune.bitbucket.io
+	arch = x86_64
+	license = GPL3
+	depends = boost-libs
+	depends = gcc-libs
+	depends = qt4
+	depends = zlib
+	optdepends = alsa-lib: for ALSA output support
+	optdepends = lame: for conversion to .mp3 format
+	optdepends = libvorbis: for conversion to .ogg format
+	optdepends = flac: for conversion to .flac format
+	optdepends = curl: for accessing data via network schemes
+	provides = zxtune
+	conflicts = zxtune-git
+	source = https://bitbucket.org/zxtune/zxtune/downloads/zxtune_r4880_linux_x86_64.tar.gz
+	md5sums = 4f4dc4843e7e9204c3e2b326f4de0e1b
+
+pkgname = zxtune-bin
+
