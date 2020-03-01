@@ -1,21 +1,30 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: Gabriel Magno <gabrielmagno1@gmail.com>
 
-_pkgname=dbfread
-pkgname=python-$_pkgname
-pkgver=2.0.6
+_pipname=dbfread
+pkgname=python-$_pipname
+pkgver=2.0.7
 pkgrel=1
-pkgdesc="Read DBF Files with Python"
+pkgdesc='Read DBF Files with Python'
 arch=('any')
-url="https://dbfread.readthedocs.io"
+url='https://dbfread.readthedocs.io'
 license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://github.com/olemb/$_pipname/archive/$pkgver.tar.gz")
+sha256sums=('7772db69a32beb87027356cb04dd7775bbc2e36581e76df6ba33c0eb8d1c49ad')
 
-source=("https://pypi.python.org/packages/92/8b/b7b5d0b9971f4ef8c9f5b4db157a104104a904927c5eecfe5016baf6d356/$_pkgname-$pkgver.tar.gz")
-
-package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+	cd "$_pipname-$pkgver"
+  python setup.py build
 }
 
-sha256sums=('e2e30e0cee4b640a7bcea01de2eae383be9840c4a04028032fdd2ddcd5b86e12')
+check() {
+  cd "$_pipname-$pkgver"
+  python setup.py test
+}
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "$_pipname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+}
