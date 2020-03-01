@@ -7,12 +7,12 @@ conflicts=('sdl')
 pkgver=latest
 pkgrel=1
 pkgdesc="Provides a binary-compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes."
-url='https://github.com/SDL-mirror/sdl12-compat.git'
+url=https://hg.libsdl.org/sdl12-compat/
 arch=('i686' 'x86_64')
 license=('ZLIB')
 depends=('sdl2')
 makedepends=('cmake')
-source=('git+https://github.com/SDL-mirror/sdl12-compat.git' 'fix-cmakelists.patch' 'fix-srcdir-reference.patch')
+source=('hg+https://hg.libsdl.org/sdl12-compat/' 'fix-cmakelists.patch' 'fix-srcdir-reference.patch')
 sha256sums=('SKIP'
             '6b89938e36ceafbe0e5fec87aa03606c20166890ea73320e5fabf4fd2c3ff4b5'
             'e59519698276b34277a76746b84c06afe5f21037e3c4a5a8e8f913306f0bd812')
