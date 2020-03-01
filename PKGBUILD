@@ -13,7 +13,7 @@ license=('MIT')
 depends=()
 makedepends=(python-setuptools python2-setuptools)
 checkdepends=(python python2 python-nose python-coverage python-mock python2-nose python2-coverage python2-mock)
-source=("https://github.com/ValvePython/vdf/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ValvePython/vdf/archive/v$pkgver.tar.gz")
 sha256sums=('ad790a34a20d9c5f36b8bd9e93658f85a9e90be7c84bb3a24f893b531a94e3ca')
 
 check() {
