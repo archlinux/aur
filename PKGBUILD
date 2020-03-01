@@ -1,19 +1,19 @@
-# Maintainer: Ricardo Liang (rliang) <ricardoliang@gmail.com>
+# Maintainer: Simon Gardling <titaniumtown@gmail.com>
 
+pkgname=mutter-git
 _pkgname=mutter
-pkgname="$_pkgname"-git
-pkgver=3.31.2+194+gfb38738fe
+pkgver=3.35.91+97+gf27de9620
 pkgrel=1
-pkgdesc="A window manager for GNOME"
+pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
-provides=(mutter)
-conflicts=(mutter mutter-dev)
-depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas-git libcanberra
+depends=(dconf js68 gjs-dev gobject-introspection-runtime gsettings-desktop-schemas libcanberra sysprof-dev
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
-         gnome-settings-daemon libgudev libinput pipewire)
-makedepends=(gtk-doc gobject-introspection git egl-wayland meson)
+         gnome-settings-daemon libgudev libinput pipewire-git jack2)
+makedepends=(intltool gobject-introspection git egl-wayland)
+provides=(mutter)
+conflicts=(mutter)
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
 sha256sums=('SKIP')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build -D gtk_doc=true
+  arch-meson "$_pkgname" build
   ninja -C build
 }
 
