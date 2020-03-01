@@ -1,7 +1,7 @@
 # Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=dialog-doc
-pkgver=1.3_20160209
+pkgver=1.3_20200228
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Samples for the dialog, a tool to display dialog boxes from shell scripts"
@@ -10,10 +10,10 @@ url="http://invisible-island.net/dialog/"
 license=('GPL')
 depends=(sh bash dialog)
 source=(
-ftp://invisible-island.net/dialog/dialog-$_pkgver.tgz
-ftp://invisible-island.net/dialog/dialog-$_pkgver.tgz.asc
+ftp://ftp.invisible-island.net/dialog/dialog-$_pkgver.tgz
+ftp://ftp.invisible-island.net/dialog/dialog-$_pkgver.tgz.asc
 )
-sha256sums=('0314f7f2195edc58e7567a024dc1d658c2f8ea732796d8fa4b4927df49803f87'
+sha256sums=('9ff8c41d1eee9e15d14fde3109d4612b1fe6dbe71fe2c3e743bcfff5e25c1fd9'
             'SKIP')
 # ftp://invisible-island.net/dialog/
 validpgpkeys=(C52048C0C0748FEE227D47A2702353E0F7E48EDB) #Thomas Dickey <dickey@invisible-island.net>
