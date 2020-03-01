@@ -106,8 +106,6 @@ package ()
 
   ######### NOTE: we are in $_installdir after this point
 
-  echo PWD $PWD
-  echo patch ./$_setupsh $srcdir/setup-unattended.patch
   patch ./$_setupsh $srcdir/setup-unattended.patch
   ./$_setupsh -d $pkgdir/$_installdir -norc
 
