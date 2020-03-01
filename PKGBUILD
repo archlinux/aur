@@ -1,60 +1,44 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-_srcname=autotrace
 pkgname=autotrace-nomagick
-pkgver=0.31.1
-pkgrel=8
+_date=20200219
+_build=65
+pkgver="0.40.0.${_date}.${_build}"
+pkgrel=1
 pkgdesc='A program for converting bitmap to vector graphics (no ImageMagick dependency)'
 arch=('x86_64')
-url='http://autotrace.sourceforge.net/'
+url='https://github.com/autotrace/autotrace/'
 license=('GPL' 'LGPL')
-depends=('libpng' 'ming' 'pstoedit-nomagick')
+depends=('glib2' 'libpng' 'ming' 'pstoedit-nomagick')
+makedepends=('intltool')
 provides=('autotrace')
 conflicts=('autotrace')
-source=("http://sourceforge.net/projects/autotrace/files/AutoTrace/${pkgver}/${_srcname}-${pkgver}.tar.gz"
-        'autotrace-0.31.1-CVE-2013-1953.patch'
-        'autotrace-0.31.1-CVE-2016-7392.patch'
-        'autotrace-0.31.1-libpng-1.5.patch'
-        'autotrace-0.31.1-pstoedit-detection-fix.patch'
-        'autotrace-0.31.1-swf-output.patch'
-        'autotrace-0002-Fixed-underquoted-AM_PATH_AUTOTRACE-definition.patch')
-sha256sums=('5a1a923c3335dfd7cbcccb2bbd4cc3d68cafe7713686a2f46a1591ed8a92aff6'
-            'abf827ece23ace1074ca9408e52b0e9d3a3c24a25bc35ebdf25f46edad29a961'
-            '2b997a9647250c3e1be2cd03d0bb4d8ac7b2788ca9af7bc901e40d187848c254'
-            '3e6140014ba1c3d3bb4bd2474a3f95c148ee68192b5c22ab7f6928761d3e4eba'
-            '962f9968b95321c2238e9a7aa59106b74c7345d860fe987038e48997381e7a7a'
-            'd4089185e2a89d75a897012cde91bd88953914cc52ce545999999114da2cb485'
-            '666193c7b9d8d085de6c774d90262f9df2f5f2f75a4acdc7ae2167b4fc179bad')
+source=("autotrace-${pkgver}.tar.gz"::"https://github.com/autotrace/autotrace/archive/travis-${_date}.${_build}.tar.gz"
+        '010-autotrace-fix-swf-output.patch')
+sha256sums=('74ca2555aff1a968290f13602a90f836872e08d37ecaf80c5296ad223f6cd69a'
+            'd4089185e2a89d75a897012cde91bd88953914cc52ce545999999114da2cb485')
 
 prepare() {
-    cd "${_srcname}-${pkgver}"
-    
-    patch -Np1 -i "${srcdir}/autotrace-0.31.1-CVE-2013-1953.patch"
-    patch -Np1 -i "${srcdir}/autotrace-0.31.1-CVE-2016-7392.patch"
-    patch -Np0 -i "${srcdir}/autotrace-0.31.1-libpng-1.5.patch"
-    patch -Np1 -i "${srcdir}/autotrace-0.31.1-pstoedit-detection-fix.patch"
-    patch -Np0 -i "${srcdir}/autotrace-0.31.1-swf-output.patch"
-    patch -Np1 -i "${srcdir}/autotrace-0002-Fixed-underquoted-AM_PATH_AUTOTRACE-definition.patch"
-    
-    autoreconf -fis
+    cd "autotrace-travis-${_date}.${_build}"
+    patch -d src -Np0 -i "${srcdir}/010-autotrace-fix-swf-output.patch"
+    ./autogen.sh
 }
 
 build() {
-    cd "${_srcname}-${pkgver}"
-    
+    cd "autotrace-travis-${_date}.${_build}"
     ./configure \
         --prefix='/usr' \
-        --mandir='/usr/share' \
-        --enable-static='no' \
-        --enable-shared='yes' \
+        --disable-static \
         --without-magick \
+        --with-png \
         --with-pstoedit
-        
     make
 }
 
+check() {
+    make -C "autotrace-travis-${_date}.${_build}" check
+}
+
 package() {
-    cd "${_srcname}-${pkgver}"
-    
-    make DESTDIR="$pkgdir" install
+    make -C "autotrace-travis-${_date}.${_build}" DESTDIR="$pkgdir" install
 }
