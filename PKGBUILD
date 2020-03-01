@@ -1,8 +1,8 @@
 pkgname=ghdl
-pkgver=0.36
+pkgver=0.37
 pkgrel=1
-_gccver=8.3.0
-_islver=0.20
+_gccver=9.2.0
+_islver=0.22.1
 arch=('aarch64' 'x86_64')
 pkgdesc='VHDL simulator'
 url='https://github.com/ghdl/ghdl'
@@ -18,8 +18,8 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c'
-  'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
+  'ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+  '1a668ef92eb181a7c021e8531a3ca89fd71aa1b3744db56f68365ab0a224c5cd'
 )
 
 prepare() {
