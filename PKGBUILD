@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.81.28109
+pkgver=2.21.r28776
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -36,7 +36,8 @@ options=('!makeflags')
 
 pkgver() {
   cd lilypond/
-  printf %s.%s $(grep VERSION_DEVEL VERSION | cut -d= -f2) $(git rev-list --count HEAD)
+  printf %s.%s.r%s $(grep MAJOR VERSION | cut -d= -f2) \
+	 $(grep MINOR VERSION | cut -d= -f2) $(git rev-list --count HEAD)
 }
 
 prepare() {
