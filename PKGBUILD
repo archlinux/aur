@@ -4,7 +4,7 @@
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
 url="http://pfstools.sourceforge.net/"
@@ -12,18 +12,20 @@ license=('LGPL2.1')
 depends=('gcc-libs')
 provides=('pfscalibration' 'pfstmo')
 conflicts=('pfscalibration' 'pfstmo')
-optdepends=('freeglut: OpenGL image viewer pfsglview' 'glu: OpenGL image viewer pfsglview' \
-            'opencv: pfsalign' 'gtk3: pfsalign' \
-            'openexr: OpenEXR support' \
-            'imagemagick: ImageMagick support' \
-            'netpbm: PBM support' \
-            'dcraw: RAW support' \
-            'gsl: mantiuk08 tone mapping operator' \
-            'fftw: durand02,fattal02,ferradans11 tone mapping operators')
-makedepends=('cmake' 'qt5-base' \
-             'openexr' 'libmagick6' 'libtiff' 'netpbm' \
+optdepends=('dcraw: RAW support'
+            'fftw: durand02,fattal02,ferradans11 tone mapping operators'
+            'freeglut: OpenGL image viewer pfsglview'
+            'glu: OpenGL image viewer pfsglview'
+            'gsl: mantiuk08 tone mapping operator'
+            'imagemagick: ImageMagick support'
+            'netpbm: PBM support'
+            'opencv: pfsalign'
+            'openexr: OpenEXR support'
+            'qt5-base: pfsalign, pfsview')
+makedepends=('cmake' 'qt5-base'
+             'openexr' 'libmagick6' 'libtiff' 'netpbm'
              'gsl' 'fftw' 'libexif' 'opencv'
-             'freeglut' 'glu' 'gtkglext' 'gtk3')
+             'freeglut' 'glu')
 options=(!libtool)
 source=("http://downloads.sourceforge.net/pfstools/$pkgname-$pkgver.tgz"
         "opencv3.patch" "force_imagemagick6.patch")
