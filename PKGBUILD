@@ -2,7 +2,7 @@
 
 pkgname=sysprof-dev
 _pkgname=sysprof
-pkgver=3.35.3
+pkgver=3.35.92
 pkgrel=1
 pkgdesc="Kernel based performance profiler"
 url="https://wiki.gnome.org/Apps/Sysprof"
@@ -15,7 +15,6 @@ source=("git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-$pkgver")
 sha256sums=('SKIP')
 provides=(sysprof)
 conflicts=(sysprof)
-
 
 pkgver() {
   cd $_pkgname

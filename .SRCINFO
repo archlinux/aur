@@ -1,6 +1,6 @@
 pkgbase = sysprof-dev
 	pkgdesc = Kernel based performance profiler
-	pkgver = 3.35.3
+	pkgver = 3.35.92
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Sysprof
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sysprof-dev
 	depends = libdazzle
 	provides = sysprof
 	conflicts = sysprof
-	source = git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-3.35.3
+	source = git+https://gitlab.gnome.org/GNOME/sysprof.git#tag=sysprof-3.35.92
 	sha256sums = SKIP
 
 pkgname = sysprof-dev
