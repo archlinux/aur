@@ -2,7 +2,7 @@
 
 pkgname=ai-dungeon-cli
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Play ai dungeon on your terminal"
 arch=('any')
 url="https://github.com/Eigenbahn/ai-dungeon-cli"
@@ -33,4 +33,6 @@ package() {
 	cd "$pkgname-$pkgver"
 
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
