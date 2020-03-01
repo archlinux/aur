@@ -1,20 +1,24 @@
-# Maintainer: asyncial <asyncial [dot] posteo [dot] de>
+# Maintainer: asyncial <asyncial [at] posteo [dot] de>
 
 pkgname=midna-theme
-pkgver=3.0.2
+pkgver=5.0.4
 pkgrel=1
 pkgdesc='KaOS Plasma 5 Look & Feel theme files'
 url='http://kaosx.us'
 arch=('x86_64')
 license=('LGPL')
-depends=('plasma-framework' 'qtcurve-qt5' 'ttf-raleway')
+depends=('plasma-framework' 'qtcurve-kde' 'ttf-raleway' 'kvantum-qt5')
 makedepends=('extra-cmake-modules')
 conflicts=('kde-kdm-themes-midna'
            'kde-ksplash-themes-midna'
-           'kde-plasma-themes-midna' )
+           'kde-plasma-themes-midna'
+           'midna-colors'
+           'wallpapers-midna')
 replaces=('kde-kdm-themes-midna'
           'kde-ksplash-themes-midna'
-          'kde-plasma-themes-midna' )
+          'kde-plasma-themes-midna'
+          'midna-colors'
+          'wallpapers-midna')
 source=("git://github.com/KaOSx/midna.git")
 md5sums=('SKIP')
 
