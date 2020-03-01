@@ -21,4 +21,5 @@ package() {
 
 depends=(
 'goldendict'
+'stardict-tools'
 )
