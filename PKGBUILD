@@ -1,6 +1,6 @@
 # Maintainer: Samuel Lando samuel.lando@aol.com
 pkgname=pomodoro
-pkgver=r13.a7c9aea
+pkgver=r16.6a7cbb5
 pkgrel=1
 pkgdesc="Time tool."
 arch=('any')
@@ -24,8 +24,12 @@ pkgver() {
 package() {
   config=${pkgdir}/usr/share/doc/pomodoro
   bin=${pkgdir}/usr/bin
+  man=${pkgdir}/usr/local/man/man1
   mkdir -p $config
   mkdir -p $bin
+  mkdir -p $man
   cp ${srcdir}/$pkgname/pomodoro $bin
   cp ${srcdir}/$pkgname/config.def $config
+  cp ${srcdir}/$pkgname/man/pomodoro.1 $man
+  gzip $man/pomodoro.1 
 }

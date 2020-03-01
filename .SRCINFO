@@ -1,6 +1,6 @@
 pkgbase = pomodoro
 	pkgdesc = Time tool.
-	pkgver = r13.a7c9aea
+	pkgver = r16.6a7cbb5
 	pkgrel = 1
 	url = http://samuellando.com
 	arch = any
