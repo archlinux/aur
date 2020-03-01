@@ -3,7 +3,7 @@
 _name=jfrog
 _upstream_name=jfrog-cli
 pkgname=jfrog-cli-go
-pkgver=1.33.2
+pkgver=1.34.0
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -12,15 +12,13 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go-pie')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${_upstream_name}/archive/${pkgver}.tar.gz")
-sha512sums=('60619b6936a2960555d310ce039020ed528a8520183df2d768020c47bad24ab269bb017af616629bbb160c61db7b87759faea727666b555029106b2398c2f107')
+sha512sums=('1e9092e38cc08a5b11dd43aceb991c36ea47c9ac3bdffcd1606693c522eebaff947db2b80ab74d4bf7669b5d1a22198d7d68fcff7d86da38002d768912219a46')
 
 prepare() {
   mv -v "${_upstream_name}-${pkgver}" "${pkgname}-${pkgver}"
   (
     cd "$pkgname-$pkgver/"
     go mod vendor
-    # adding random resources: https://github.com/jfrog/jfrog-cli/issues/445
-    go run ./python/addresources.go
     rm -v go.mod
   )
   export GOPATH="${srcdir}"
