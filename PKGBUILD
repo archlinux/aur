@@ -2,8 +2,8 @@
 # Maintainer: Alexei Colin <ac at alexeicolin dot com>
 
 pkgname=ti-msp430ware
-pkgver=3.80.07.00
-_upver=3_80_07_00
+pkgver=3.80.09.03
+_upver=3_80_09_03
 pkgrel=1
 pkgdesc="Texas Instruments MSP430Ware library for MSP430 microcontrollers"
 arch=('x86_64')
@@ -28,7 +28,7 @@ prepare() {
 
 package() {
     echo ">>> To save time, you can build uncompressed package:"
-    echo ">>>   PKGEXT=.tar makepkg"
+    echo ">>>   PKGEXT=.pkg.tar makepkg"
 
     echo ">>> Running installer..."
     echo ">>> Errors about acl like below are harmless (please ignore):"
@@ -41,4 +41,4 @@ package() {
     install -D -m0644 $pkgdir/${_installdir}/${_name}/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
-sha256sums=('383e3f932e6e93a96ce899f164e5102d2060a1b598bd7ae0526a61312fbe5e99')
+sha256sums=('b3adefb73822bea298159f77a172519e8fad95e0c89e703b7d52c537da9776d9')
