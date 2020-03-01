@@ -1,7 +1,7 @@
 # Maintainer: solaraquarion <shlomochoina@gmail.com>
 
 pkgname=domterm-git
-pkgver=1.0.r496.g4bf07c7
+pkgver=2.1.r78.gbaa2623
 pkgrel=1
 pkgdesc="Terminal emulator capable of display html and images from command output"
 arch=('x86_64')
@@ -21,7 +21,7 @@ pkgver(){
 build() {
     cd "$srcdir"/DomTerm
     autoreconf -vfi
-    ./configure --with-qtwebengine --with-libwebsockets --prefix=/usr
+    ./configure --with-qtwebengine --with-libwebsockets --with-javafx --prefix=/usr
     make
 }
 
