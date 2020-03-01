@@ -1,7 +1,7 @@
 pkgbase = mpv-thin
 	pkgdesc = a free, open source, and cross-platform media player
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://mpv.io/
 	arch = x86_64

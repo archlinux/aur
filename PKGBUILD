@@ -7,7 +7,7 @@ _pkgname=mpv
 pkgname=$_pkgname-thin
 epoch=1
 pkgver=0.32.0
-pkgrel=1
+pkgrel=2
 _waf_version=2.0.9
 pkgdesc='a free, open source, and cross-platform media player'
 arch=(x86_64)
@@ -45,7 +45,6 @@ build() {
     --enable-dvdnav \
     --enable-libarchive \
     --enable-libmpv-shared \
-    --enable-zsh-comp \
 
   ./waf build
 }
