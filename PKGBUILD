@@ -1,3 +1,9 @@
+# Maintainer: Stefanos Carlström <stefanos.carlstrom@gmail.com>
+
+# This PKGBUILD is based on that for the full application found in the
+# main package repo, but customized to compile a standalone Python
+# module.
+
 _gittag=v2.82
 # _gitcommit=rB5b416ffb848e66238d9646a239840499f98121a9
 
@@ -21,7 +27,8 @@ options=(!strip)
 source=("git://git.blender.org/blender-addons.git"
         "git://git.blender.org/blender-addons-contrib.git"
         "git://git.blender.org/blender-translations.git"
-        "git://git.blender.org/blender-dev-tools.git")
+        "git://git.blender.org/blender-dev-tools.git"
+        https://developer.download.nvidia.com/redist/optix/v7.0/OptiX-7.0.0-include.zip)
 if [[ -n $_gittag ]]; then
     source+=("${pkgname}-${pkgver}::git://git.blender.org/blender.git#tag=${_gittag}")
 elif [[ -n $_gitcommit ]]; then
@@ -31,6 +38,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'b2cff73def3757d4259f4b4d318a8ccfe166bf7c215cbb2124f1c81bd6e742f96207285b24eb4d99b527b7b97dc6d5e8fdf2f16d78d5d1e2684c26d681328491'
             'SKIP')
 
 prepare() {
@@ -50,6 +58,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"/build
 
   cmake -GNinja -C../build_files/cmake/config/bpy_module.cmake .. \
+    -DOPTIX_ROOT_DIR="$srcdir"/include \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DPYTHON_VERSION=3.8 \
