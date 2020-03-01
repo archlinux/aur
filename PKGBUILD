@@ -10,7 +10,7 @@ url='https://github.com/vimwiki/vimwiki'
 license=('MIT')
 groups=('vim-plugins')
 depends=('vim')
-source=("https://github.com/vimwiki/vimwiki/archive/v${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/vimwiki/vimwiki/archive/v${pkgver}.tar.gz")
 sha256sums=('ccae0b8865bd3aea5f0834e888af294c654238f1d472390c1606f0588f01213a')
 
 package () {
