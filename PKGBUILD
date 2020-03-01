@@ -1,4 +1,5 @@
-# Maintainer : Johnathan Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Lubosz Sarnecki <lubosz at gmail dot com>
+# Contributor : Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Drew Liszewski <drew dot liszewski at gmail dot com>
 # Contributor: Daniel Varga <varga dot daniel at gmx dot de>
 
