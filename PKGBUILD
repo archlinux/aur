@@ -1,7 +1,7 @@
 # Maintainer: redfish <redfish at galactica dot pw>
 # Co-maintainer: Onishin <onishin at onishin dot org>
 
-pkgbase=('monero-git')
+pkgbase='monero-git'
 pkgname=('monero-git' 'libmonero-wallet-git')
 _gitname='monero'
 pkgver=0.14.1.2
