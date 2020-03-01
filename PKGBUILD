@@ -12,7 +12,8 @@ pkgdesc="A graphical front-end for emulators with controller navigation. Develop
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/RetroPie/EmulationStation"
 license=('MIT')
-makedepends=('git' 'boost' 'freetype2' 'eigen' 'cmake' 'mesa' 'libsm' 'rapidjson')
+makedepends=('git' 'cmake' 'rapidjson')
+
 depends=('freeimage' 'vlc' 'curl')
 if [ "$CARCH" = "armv6h" ]; then
     depends+=('raspberrypi-firmware')
