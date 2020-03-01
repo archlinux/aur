@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 # NOTE (1):
 # DPS (Display PostScript) feature is obsolete and thus not enabled.
@@ -14,13 +14,13 @@
 #   - deJaVu and GhostScript font directories are the default ones
 #   - Windows font directory is set according to a Wiki example
 
-_commit='05387d48686ba57fcd4bcc0c0bf32073110a5db3'
+_commit='b3b29bb139d5766388c2abfb90ddb9222edf5d40'
 _qdepth='32'
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
 _srcname=ImageMagick
-pkgver=7.0.9.25
+pkgver=7.0.9.27
 pkgrel=1
 arch=('x86_64')
 pkgdesc="An image viewing/manipulation program (Q${_qdepth} HDRI with all features)"
