@@ -1,13 +1,13 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=23c0ada511901b3becddc7f20ba9db6fa8507ebd
-_gitsha256='a5220f60d3fc26a25dea12fdcfe25e09d6e33f9f2f3a6e711f732603dbd812c1'
+_gitcommit=99f737e3cc92b8269da085ab2539bdba80833e49
+_gitsha256='7a7a76cd5dc35f42b0e06ec214c6e04562c07f05185ab077295ca17d710360c9'
 
 pkgbase=octopi-notifier-frameworks
 pkgname=('octopi-notifier-frameworks')
 pkgver=0.9.0
-pkgrel=20
+pkgrel=21
 pkgdesc="Notifier for Octopi with Knotifications support"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
