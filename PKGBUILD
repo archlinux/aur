@@ -5,7 +5,7 @@
 # Original Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-macbook
-pkgver=5.5.7.arch1
+pkgver=5.5.6.arch1
 pkgrel=1
 pkgdesc='Linux Macbook'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -75,8 +75,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make bzImage modules
 }
 
 
@@ -90,7 +89,6 @@ _package() {
   backup=("etc/mkinitcpio.d/$pkgbase.preset")
   install=linux.install
 
-  cd $_srcname
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
