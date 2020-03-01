@@ -4,7 +4,7 @@
 # Contributor: Mael Kerbiriou <mael.kerbiriouATfreeDOTfr>
 pkgname=pfstools
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Set of command line programs for reading, writing and manipulating high-dynamic range (HDR) images"
 arch=('i686' 'x86_64')
 url="http://pfstools.sourceforge.net/"
@@ -19,10 +19,11 @@ optdepends=('dcraw: RAW support'
             'gsl: mantiuk08 tone mapping operator'
             'imagemagick: ImageMagick support'
             'netpbm: PBM support'
+            'octave: Octave support, pfsstat'
             'opencv: pfsalign'
             'openexr: OpenEXR support'
             'qt5-base: pfsalign, pfsview')
-makedepends=('cmake' 'qt5-base'
+makedepends=('cmake' 'qt5-base' 'octave'
              'openexr' 'libmagick6' 'libtiff' 'netpbm'
              'gsl' 'fftw' 'libexif' 'opencv'
              'freeglut' 'glu')
@@ -46,8 +47,7 @@ build() {
 
   cmake "$srcdir/$pkgname-$pkgver" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_Octave=OFF # disable octave, as it breaks build
+    -DCMAKE_BUILD_TYPE=Release
 
   make
 }
