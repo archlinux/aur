@@ -8,7 +8,7 @@ url="http://github.com/sanskrit-coders/dyuganga-aur"
 arch=(any)
 
 depends=(
-'gtk-redshift'
+'redshift'
 # Browsing
 'firefox'
 # Editing and publishing
@@ -16,7 +16,6 @@ depends=(
 'atom'
 'hugo'
 'git'
-'git-gui'
 # IME
 'fcitx'
 'fcitx-m17n'
