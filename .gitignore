@@ -1,8 +1,4 @@
-# makepkg files
-pkg/
-src/
-*.xz
-
-# source files
-lua-posix/
-
+*
+!./.SRCINFO
+!./.gitignore
+!./PKGBUILD
