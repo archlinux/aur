@@ -1,16 +1,27 @@
 pkgbase = mbrola-voices-us3
 	pkgdesc = An American English male voice for the MBROLA synthesizer
-	pkgver = 990208
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-us
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/us3/us3-990208.zip
-	md5sums = 544840204a6e120cef67176769629ecb
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/us3
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/TEST/cslu.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/TEST/diphone.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us3/TEST/mike.pho
+	sha256sums = 7cc5c49e098f80091e34ed0bd50f0af3908ac2427fbbe7d2b16c57defb7611ec
+	sha256sums = bb8bfe001e96f1215c941b064d3db0956d24c5804d3717a4dbaea5bdd33135c5
+	sha256sums = 2c90316819d7769168d33371232feb2a6f48099bcbb2ca4e9e052d6d82786f65
+	sha256sums = 78e1bdd56ad94fa6d24eb653da5625c90a02fa88703c6130bfb865d9b0a6e69d
+	sha256sums = 285f4ed0fe5dd4ce4b966885e6dce2f6766c9213366209d4a9fbb274fa288cf6
+	sha256sums = 781c29813d557a920b2b75ca6e1238b747a5df14b300fd602eacc706ffc36333
+	sha256sums = de865bffa8f9b86bb7301713aa9bcea93e7bb8b06d765977347d8d7ccc66ffeb
 
 pkgname = mbrola-voices-us3
 
