@@ -2,7 +2,7 @@
 # Maintainer: LinkTed <link.ted@mailbox.org>
 
 pkgname=doh-client
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="doh-client is a DNS over HTTPS client"
 arch=("x86_64")
@@ -16,7 +16,7 @@ md5sums=("SKIP")
 build() {
   cd $pkgname
 
-  cargo build --release
+  cargo build --release --bin doh-client
   strip "target/release/doh-client"
 }
 
