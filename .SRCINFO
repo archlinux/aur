@@ -1,16 +1,27 @@
 pkgbase = mbrola-voices-us2
 	pkgdesc = An American English male voice for the MBROLA synthesizer
-	pkgver = 980812
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-us
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/us2/us2-980812.zip
-	md5sums = 185045d55456694f4f104173e43bbb89
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/us2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/TEST/alice.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/TEST/babel.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/us2/TEST/mbrola.pho
+	sha256sums = 75f7f6b605945f4b65713c3ad1fba5be38fb720cde01bdc3d2facf988634c0d5
+	sha256sums = 6faf2ba98c85bad28ebc33bfd1c65368c4bdc99ecea40b8e7bc1f7e891ce5b78
+	sha256sums = 3f902481587fa2c83837935dc8112081b4520ef245c34e773b4ffb1663212cfb
+	sha256sums = 46dba6c94b8c2d812703f65dc8f94385bc404010442e98b10dd18b4f030a2fc6
+	sha256sums = 37dd7c6fb5b8fbbfa80fb95e3a21dbfb555f4231e2772b3aa9fc05c43a9e31b5
+	sha256sums = ad62fa19308735e21e1dad411b286001f3d359684f4c1dbc3e54c547cc9b7702
+	sha256sums = b7b94eba1e0d947095ac2daa9b1e21664169714814f9bb4cabbd724b9c7580f4
 
 pkgname = mbrola-voices-us2
 
