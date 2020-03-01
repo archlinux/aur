@@ -3,3 +3,4 @@
 *.xz
 *.zst
 *.log
+*.patch
