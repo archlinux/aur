@@ -5,10 +5,9 @@ pkgname=('libmega-git'
          'megasync-daemon-git'
          'megasync-cli-git'
          'python-megasync-git'
-         'python2-megasync-git'
          'fuse-megasync-git'
          )
-pkgver=v3.6.2a.778.g03224b659
+pkgver=v3.6.6a.314.gd808462b0
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. (GIT Version)"
 arch=('x86_64')
@@ -27,8 +26,6 @@ makedepends=('qt5-svg'
              'qt5-tools'
              'cython'
              'python'
-             'cython2'
-             'python2'
              'swig'
              'fuse2'
              'libraw'
@@ -50,7 +47,6 @@ pkgver() {
 prepare() {
   (git clone "${srcdir}/sdk" build; cd build; ./autogen.sh)
   (git clone "${srcdir}/sdk" build-python; cd build-python; ./autogen.sh)
-  (git clone "${srcdir}/sdk" build-python2; cd build-python2; ./autogen.sh)
 }
 
 build() {
@@ -78,20 +74,6 @@ build() {
   cd bindings/python
   python setup.py build
 
-  msg2 "Build Python2 bindings"
-  cd "${srcdir}/build-python2"
-  PYTHON=python2 \
-  PYTHON_VERSION="$(python2 -c "import platform; print('.'.join(platform.python_version_tuple()[:2]))")" \
-  ./configure \
-    --prefix=/usr \
-    --without-freeimage \
-    --disable-examples \
-    --enable-python
-
-  make
-
-  cd bindings/python
-  python2 setup.py build
 }
 
 package_libmega-git() {
@@ -178,25 +160,6 @@ package_python-megasync-git() {
   python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 
   _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
-  rm -fr ${pkgdir}${_sites_packages}/mega/libmega.so
-  chrpath -d ${pkgdir}${_sites_packages}/mega/_mega.so
-
-  install -Dm644 "${srcdir}/sdk/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-megasync-git() {
-  pkgdesc="Python2 Bindings for MEGASync. (GIT Version)"
-  conflicts=('python2-megasync')
-  provides=('python2-megasync')
-  depends=('libmega-git'
-           'python2')
-
-#   make -C build-python2 DESTDIR="${pkgdir}" install-pkgpythonPYTHON install-pkgpyexecLTLIBRARIES install-nodist_pkgpythonPYTHON
-
-  cd build-python/bindings/python
-  python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
-  _sites_packages="$(python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
   rm -fr ${pkgdir}${_sites_packages}/mega/libmega.so
   chrpath -d ${pkgdir}${_sites_packages}/mega/_mega.so
 

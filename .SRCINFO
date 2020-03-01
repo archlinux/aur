@@ -1,6 +1,6 @@
 pkgbase = libmega-git
 	pkgdesc = Sync your files to your Mega account. (GIT Version)
-	pkgver = v3.6.2a.778.g03224b659
+	pkgver = v3.6.6a.314.gd808462b0
 	pkgrel = 1
 	url = https://mega.co.nz/#sync
 	arch = x86_64
@@ -14,8 +14,6 @@ pkgbase = libmega-git
 	makedepends = qt5-tools
 	makedepends = cython
 	makedepends = python
-	makedepends = cython2
-	makedepends = python2
 	makedepends = swig
 	makedepends = fuse2
 	makedepends = libraw
@@ -65,13 +63,6 @@ pkgname = python-megasync-git
 	depends = python
 	provides = python-megasync
 	conflicts = python-megasync
-
-pkgname = python2-megasync-git
-	pkgdesc = Python2 Bindings for MEGASync. (GIT Version)
-	depends = libmega-git
-	depends = python2
-	provides = python2-megasync
-	conflicts = python2-megasync
 
 pkgname = fuse-megasync-git
 	pkgdesc = MEGASync client based on FUSE (GIT Version)
