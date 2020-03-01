@@ -1,22 +1,21 @@
-# Maintainer : Ste74 <capitani74atgmaildotcom>
+# Maintainer : Stefano Capitani <stefanoatmanjarodotorg>
 # Maintainer : lemovice <lemovice-at-ancestris-dot-org> 
 
 pkgname=ancestris
-pkgver=0.9
+pkgver=10
 pkgrel=1
-_date=20161221
+_date=20200208
 pkgdesc='Ancestris is a genealogy program written in Java'
 arch=('any')
 url='http://ancestris.org/'
 license=('CDDL' 'GPL')
 
-depends=('java-environment' 'ttf-font' 'libxtst' 'giflib' 'atk')
-#options=('!strip')
-source=("$url/mw/mw-base/compteur_dl.php?/dl/pub/$pkgname/releases/${pkgname}_${pkgver}-0-${_date}.zip"
+depends=('jdk11-openjdk' 'ttf-font' 'libxtst' 'giflib' 'atk')
+source=("$url/mw/mw-base/compteur_dl.php?/dl/pub/$pkgname/releases/${pkgname}_${pkgver}-${_date}.zip"
 'ancestris.desktop'
 'ancestris.png')
 
-md5sums=('b0e31a340bebb676f6f6679a055c1185'
+md5sums=('4805afbf67ab738eb06ffd5ccff7bba8'
          '2d23096eea04659d55dc6d45fb57cc37'
          'bae346ed409e57d174386cd7db583ff5')
 DLAGENTS=('ftp::/usr/bin/curl -fC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
