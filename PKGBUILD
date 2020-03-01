@@ -1,22 +1,23 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=nordselect
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Select the ideal NordVPN server"
 arch=('any')
 url="https://github.com/editicalu/nordselect"
 license=('MIT')
 depends=('curl')
-makedepends=('cargo')
+makedepends=('rustup')
 provides=('nordselect')
 source=("https://github.com/editicalu/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=("c860a44afd3949c151bdee855e39b2e5575ae73ddc8b7a5640be4b937b22c69bf9fd2c710edf65b2cc801a515f43f76951d131c13c163fa05fa1f6c851bc7916")
+sha512sums=("6b41f39ac4f62b75b123ea6d4516a788983cee856e6fd036c63763c6c0fb53208d1887d3f4f789a733c8fb2792228b5c9c8c3766ad7fb8c5ed2b902fe57d6626")
 validpgpkeys=("CC0B7CE9604A8A91F0D70B778489DB248465FDD7")
 
 build() {
 	cd "$pkgname-$pkgver"
-	cargo build --release
+	rustup override set 1.41.1
+	cargo build --release --locked
 }
 
 package() {
