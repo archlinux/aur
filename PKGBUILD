@@ -4,7 +4,7 @@ _pkgname=sdl2_compat12
 pkgname=sdl2_compat12-git
 provides=('sdl')
 conflicts=('sdl')
-pkgver=latest
+pkgver=8102943c
 pkgrel=1
 pkgdesc="Provides a binary-compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes."
 url=https://hg.libsdl.org/sdl12-compat/
@@ -39,6 +39,6 @@ package() {
   mkdir -p "$pkgdir/usr/lib"
   mkdir -p "$pkgdir/usr/share/licenses/$_pkgname/"
   
-  cp libSDL-1.2.so* "$pkgdir/usr/lib"
-  cp COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  cp -a libSDL-1.2.so* "$pkgdir/usr/lib"
+  cp -a COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
