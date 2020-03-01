@@ -1,7 +1,7 @@
 pkgbase = swaylay-git
 	pkgdesc = Keyboard layouts monitoring utility for Sway WM
-	pkgver = r7.d29a93a
-	pkgrel = 2
+	pkgver = r8.df1fff2
+	pkgrel = 1
 	url = https://github.com/Hexawolf/swaylay
 	arch = i686
 	arch = x86_64
