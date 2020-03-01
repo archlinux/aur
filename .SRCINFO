@@ -1,8 +1,8 @@
-pkgbase = discimagechef-git
+pkgbase = aaru-git
 	pkgdesc = Disc image management and creation tool for disks, tapes, optical and solid state media
 	pkgver = v4.5.1.1692.r811.g16849ea2
-	pkgrel = 1
-	url = http://www.discimagechef.app
+	pkgrel = 2
+	url = http://www.aaru.app
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
@@ -15,15 +15,15 @@ pkgbase = discimagechef-git
 	depends = libunwind
 	depends = openssl-1.0
 	depends = zlib
-	provides = discimagechef
-	conflicts = discimagechef
+	provides = aaru
+	conflicts = aaru
 	options = !strip
 	options = staticlibs
-	source = git://github.com/DiscImageChef/discimagechef
+	source = git://github.com/aaru-dps/Aaru
 	sha256sums = SKIP
 
-pkgname = discimagechef-git
+pkgname = aaru-git
 
-pkgname = discimagechef-gtk-git
+pkgname = aaru-gtk-git
 	depends = gtk3
 
