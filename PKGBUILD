@@ -1,8 +1,8 @@
 # Maintainer:  Joakim Hernberg <jbh@alchemy.lu>
 # Contributor: David Runge <dvzrv@archlinux.org>
 
-_pkgver=4.19.103
-_rtpatchver=42
+_pkgver=4.19.106
+_rtpatchver=44
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -29,11 +29,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('b4784571bd7f3dc10ae3dc4414876dbd73fc6750401299b206670ce3e5c4bb43'
+sha256sums=('63c8bd76a9b282e18112f8ff9e3fd41e3d1df9f9b7248ea1a370b05a827e9cda'
             'SKIP'
-            'ba5c6d8400b51d64fe5fa0974d18b513c0df32eecac1ceee1d8a88f19782bb25'
+            'c722504f4f53958a4de67d824d88a8a956acd76cd885b3f7d92c23714041cb9d'
             'SKIP'
-            '87ef721ab2743c784e820b46f9a820f00108e3213671dad907a75962b0e17847'
+            'd04025863fbdc54918e7df9061a4832e9b3a8533967c2e2c50b11e2736ae91b9'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
