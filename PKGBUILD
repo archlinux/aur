@@ -3,8 +3,8 @@
 # Contributor: Austin Keller
 
 pkgname=todoist
-pkgver=0.14.0
-pkgrel=2
+pkgver=0.15.0
+pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
 url="https://github.com/sachaos/todoist"
@@ -13,7 +13,7 @@ makedepends=('go' 'git' 'dep')
 optdepends=('peco: for zsh functions script')
 options=('!strip' '!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sachaos/todoist/archive/v$pkgver.tar.gz")
-md5sums=('1a46cc1fff8389aa0c60666ff6f252b6')
+sha256sums=('b7ffa14574bd241ab9e21a28f3d40c17b1a12250e89cfbc8ad708cfbfcdd84b3')
 
 prepare() {
  mkdir -p "$srcdir/go/src/github.com/sachaos"
@@ -26,6 +26,7 @@ build() {
  export GO111MODULE="on"
  cd "$srcdir/go/src/github.com/sachaos/$pkgname"
  make install
+ chmod u+w -R "$GOPATH"
 }
 
 package() {
