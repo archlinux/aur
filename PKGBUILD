@@ -9,7 +9,7 @@ url='https://github.com/rhysd/vim-grammarous'
 license=('MIT')
 groups=('vim-plugins')
 depends=('vim' 'vim-vital' 'java-runtime=8' 'languagetool')
-source=(https://github.com/rhysd/vim-grammarous/archive/master.zip)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/rhysd/vim-grammarous/archive/master.zip")
 sha256sums=('02dd5faac6c651f57fd0e2229c69a6dd6dfd10cf0a73571908faf1088b905ad8')
 
 package () {
