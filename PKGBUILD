@@ -5,7 +5,7 @@
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 pkgname=brscan3
 pkgver=0.2.13_1
-pkgrel=8
+pkgrel=9
 pkgdesc="Brother SANE drivers for $pkgname-compatible models"
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en'
@@ -20,7 +20,7 @@ source_x86_64=("http://download.brother.com/welcome/dlf006644/${pkgname}-${pkgve
 sha256sums_x86_64=('b462dbded2d0f7ae511057bd3cb6f8379042b75d996eef2675998a4559cc5556')
 
 source=('50-brscan3.rules' 'LICENSE.html')
-sha256sums=('fd90617ad8483447f1559114b64acce26ac32c3a6001bf98c19cb89d685cf95f'
+sha256sums=('3cb026dbffb59bde8f5317de21bd6bb84d88af2c0697ed3a520805fe65e0da85'
             '3434bca1936d6a5fd6afd810cde7e1876dd4d1496722b09af180278480f464f2')
 
 package() {
