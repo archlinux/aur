@@ -1,10 +1,11 @@
+# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
 # Maintainer: Rob Cornish <jrmcornish AT gmail DOT com>
 # Contributer: Peter Jackson <pete@peteonrails.com>
 # Contributor: Mikolaj Pastuszko <deluminathor@gmail.com>
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 pkgname=brscan3
 pkgver=0.2.13_1
-pkgrel=6
+pkgrel=7
 pkgdesc="Brother SANE drivers for $pkgname-compatible models"
 arch=('i686' 'x86_64')
 url='http://support.brother.com/g/s/id/linux/en'
