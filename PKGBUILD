@@ -1,24 +1,23 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
-# Contributor: Jameson Pugh <imntreal@gmail.com>
-# Contributor: Sebastien Binet <binet@lblbox>
+# Maintainer: Sergio Davies <sergio dot newsletter at gmail dot com>
 
-pkgname=python2-quantities
-pkgver=0.11.1
+pkgbase=python-quantities
+pkgname=('python2-quantities')
+_name=${pkgbase#python-}
+pkgver=0.12.3
 pkgrel=1
 pkgdesc="Support for physical quantities with units, based on numpy"
-url="http://packages.python.org/quantities"
 arch=('any')
+url="https://pypi.org/project/quantities/#files"
 license=('BSD')
-depends=('python2-numpy' 'python2-nose')
-source=("https://pypi.python.org/packages/e4/73/23dbd5482d16e6e7bac98e3998c22cbcbecf92dda447bfe1b9ea4ae1509a/quantities-0.11.1.zip")
-sha256sums=('4382098a501b55bf0fdb3dba2061a161041253697d78811ecfd7c55449836660')
+makedepends=('python2-setuptools'
+             'python2-numpy')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
-build() {
-  cd "${srcdir}/quantities-${pkgver}"
-  python2 setup.py build
+package_python2-quantities() {
+  depends+=('python2')
+
+  cd "${srcdir}/${_name}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}"
 }
 
-package() {
-  cd "${srcdir}/quantities-${pkgver}"
-  python2 setup.py install --prefix=/usr --root=${pkgdir}
-}
