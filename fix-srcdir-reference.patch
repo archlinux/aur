@@ -1,0 +1,17 @@
+This reference to __FILE__ would include the whole $srcdir - hence triggering the
+> ==> WARNING: Package contains reference to $srcdir
+and preventing reproducible builds.
+
+diff --git a/src/SDL12_compat.c b/src/SDL12_compat.c
+index 2fb0d2c..f89e1c3 100644
+--- a/src/SDL12_compat.c
++++ b/src/SDL12_compat.c
+@@ -104,7 +104,7 @@
+     do { \
+         static SDL_bool seen = SDL_FALSE; \
+         if (!seen) { \
+-            fprintf(stderr, "FIXME: %s (%s, %s:%d)\n", x, __FUNCTION__, __FILE__, __LINE__); \
++            fprintf(stderr, "FIXME: %s (%s, SDL12_compat.c:%d)\n", x, __FUNCTION__, __LINE__); \
+             seen = SDL_TRUE; \
+         } \
+     } while (0)
