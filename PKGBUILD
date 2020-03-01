@@ -8,21 +8,47 @@ url="http://github.com/sanskrit-coders/dyuganga-aur"
 arch=(any)
 
 depends=(
+'gtk-redshift'
+# Browsing
+'firefox'
 # Editing and publishing
 'sanskrit-fonts'
 'atom'
 'hugo'
+'git'
+'git-gui'
 # IME
 'fcitx'
 'fcitx-m17n'
+'fcitx-qt4'
 'm17n-db'
 'autokey'
+'parcellite'
 # Data
 'stardict-indic-update'
+# Image editing
+'gimp'
+# Video editing
+'peek'
+'obs-studio'
+'obs-qtwebkit-git'
+'obs-gphoto'
+# Audio editing
+'vlc'
+'audacity'
+'easytag'
+'soundconverter'
+# Communication
+'telegram-desktop'
+'zoom'
+# File sharing
+'nemo-dropbox'
 )
 
 optdepends=(
-'firefox'
 'intellij-idea-ce'
 'intellij-idea-ultimate-edition'
+'stellarium'
+'skychart-bin'
+'geogebra'
 )
