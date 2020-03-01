@@ -43,6 +43,6 @@ package() {
   mkdir -p "$pkgdir/usr/lib32"
   mkdir -p "$pkgdir/usr/share/licenses/$_pkgname/"
   
-  cp libSDL-1.2.so* "$pkgdir/usr/lib32"
-  cp COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  cp -a libSDL-1.2.so* "$pkgdir/usr/lib32"
+  cp -a COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
