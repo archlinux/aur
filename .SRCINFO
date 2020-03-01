@@ -1,0 +1,15 @@
+pkgbase = python2-sortedcollections
+	pkgdesc = A python library for sorted collections.
+	pkgver = 1.1.2
+	pkgrel = 2
+	url = https://pypi.org/project/sortedcollections/#files
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	makedepends = python2-sortedcontainers>=2.0.0
+	source = https://files.pythonhosted.org/packages/source/s/sortedcollections/sortedcollections-1.1.2.tar.gz
+	sha256sums = b93e0decbd7f8f19e40c320709e70e4845b6c8b3a0e96c3c4f707b4b93e1d38a
+
+pkgname = python2-sortedcollections
+	depends = python2
+
