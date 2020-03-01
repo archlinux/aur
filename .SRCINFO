@@ -1,0 +1,15 @@
+pkgbase = m17n-db-indic
+	pkgdesc = A library to type in a variety of scripts. This is a fork of m17n-db modified with files from m17n-db-indic-aur (see url) for convenience of Indian (esp. sanskrit, kannada) users.
+	pkgver = 1.8.0
+	pkgrel = 2
+	url = http://github.com/sanskrit-coders/m17n-db-indic-aur
+	arch = any
+	license = GPL
+	depends = glibc
+	provides = m17n-db
+	conflicts = m17n-db
+	source = https://download.savannah.gnu.org/releases/m17n/m17n-db-1.8.0.tar.gz
+	sha256sums = 657f23835b6655e7a63a362bac66260454ee356da4855eadb9366911d33fdc6d
+
+pkgname = m17n-db-indic
+
