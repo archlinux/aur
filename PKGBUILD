@@ -6,7 +6,7 @@
 
 pkgname=flexget
 _pkgname=Flexget
-pkgver=3.0.16
+pkgver=3.1.30
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -44,6 +44,7 @@ depends=('python'
          'python-pyparsing>=2.0.3'
          'python-zxcvbn'
          'python-progressbar>=2.5'
+         'python-loguru>=0.4'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#
@@ -74,6 +75,9 @@ prepare() {
   sed -i 's/<=.*//g' requirements.txt
   sed -i 's/~=.*//g' requirements.txt
 
+  # Relax loguru requirement (AUR out-of-date right now)
+  sed -i 's/loguru>=0.4.1/loguru>=0.4/g' requirements.txt
+
   ## zxcvbn-python has been renamed zxcvbn
   sed -i 's/zxcvbn-python/zxcvbn/' requirements.txt
 
@@ -97,7 +101,7 @@ package() {
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
 }
 
-sha256sums=('23fba92cd18f3c43b1e43ae87f4066708c6da5948a957666a028577d39222354'
+sha256sums=('c9e68108652a136d045bd61a868712e36539fc4b1009dd05ff4b2b9a126d92c0'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'aceecee5496a34c14c12ed5ad8b97197de32896f358b5aef63a84bf4a419756a'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
