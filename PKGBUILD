@@ -4,7 +4,7 @@
 
 pkgname=endless-sky
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
 depends=(openal libpng glew hicolor-icon-theme libjpeg-turbo sdl2 libmad)
@@ -18,7 +18,8 @@ sha512sums=('8e56795fb327fbdc977af056929478e16243b3a4ea8d96feecb59c1c4c0265d5414
 
 build() {
   cd $pkgname-$pkgver
-  scons
+  # remove -jnproc for reproducible builds
+  scons -j "$(nproc)"
 }
 
 
