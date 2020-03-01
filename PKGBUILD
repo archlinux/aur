@@ -1,6 +1,6 @@
 # Maintainer: frichtlm <frichtlm@gmail.com>
 _cranname=broom
-_cranver=0.5.4
+_cranver=0.5.5
 pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=1
@@ -11,7 +11,8 @@ license=('MIT')
 depends=('r>=3.1' 'r-backports' 'r-dplyr' 'r-generics>=0.0.2' 'r-purrr' 'r-reshape2' 'r-stringr' 'r-tibble' 'r-tidyr')
 optdepends=('r-aer' 'r-akima' 'r-auc' 'r-bbmle' 'r-betareg' 'r-biglm' 'r-bingroup' 'r-boot' 'r-brms' 'r-btergm' 'r-car' 'r-caret' 'r-coda' 'r-covr' 'r-e1071' 'r-emmeans' 'r-ergm' 'r-gam' 'r-gamlss' 'r-gamlss.data' 'r-gamlss.dist' 'r-geepack' 'r-ggplot2' 'r-glmnet' 'r-gmm' 'r-hmisc' 'r-irlba' 'r-joinerml' 'r-kendall' 'r-knitr' 'r-ks' 'r-lahman' 'r-lavaan' 'r-lfe' 'r-lme4' 'r-lmodel2' 'r-lmtest' 'r-lsmeans' 'r-maps' 'r-maptools' 'r-matrix' 'r-mclust' 'r-mgcv' 'r-muhaz' 'r-multcomp' 'r-network' 'r-nnet' 'r-orcutt' 'r-ordinal' 'r-plm' 'r-plyr' 'r-polca' 'r-psych' 'r-quantreg' 'r-rgeos' 'r-rmarkdown' 'r-robust' 'r-rsample' 'r-rstan' 'r-rstanarm' 'r-sp' 'r-speedglm' 'r-statnet.common' 'r-survey' 'r-testthat' 'r-tseries' 'r-xergm' 'r-zoo')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('a7e83f90299ea6a4157b2667d497e095')
+#source=("http://cran.r-project.org/src/contrib/Archive/${_cranname}/${_cranname}_${cranver}.tar.gz # Uncomment if 404 Error
+md5sums=('0c9ed3c2beb3a812712ccd7a5ae45ac6')
 
 build() {
     cd "${srcdir}"
