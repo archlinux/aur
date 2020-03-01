@@ -7,7 +7,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=2.20.19.r13605.ab13d57bf
+pkgver=3.1.31
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -19,35 +19,33 @@ license=('MIT')
 depends=('python'
          # documented in requirements.in
          'python-feedparser>=5.2.1'
-         'python-sqlalchemy>=1.0.9'
-         'python-sqlalchemy<1.999'
-         'python-yaml'
+         'python-sqlalchemy>=1.3.10'
+         'python-yaml>=4.2b1'
          'python-beautifulsoup4>=4.5'
          'python-html5lib>=0.11'
          'python-pyrss2gen'
          'python-pynzb'
          'python-rpyc>=4.0'
-         'python-jinja'
-         'python-requests>=2.16.3'
+         'python-jinja>=2.10'
+         'python-requests>=2.20.0'
          'python-dateutil>=2.5.3'
          'python-jsonschema>=2.0'
-         'python-path.py>=10.6'
-         'python-guessit'
-         'python-rebulk'
+         'python-guessit>=3.1.0'
+         'python-rebulk>=2.0.0'
          'python-apscheduler>=3.2.0'
          'python-terminaltables>=3.1.0'
          'python-colorclass>=2.2.0'
-         'python-cherrypy>=3.7.0'
+         'python-cherrypy>=18.0.0'
          'python-flask>=0.7'
          'python-flask-restful>=0.3.3'
-         'python-flask-restplus=0.11.0'
+         'python-flask-restplus>=0.10.1'
          'python-flask-compress>=1.2.1'
          'python-flask-login>=0.4.0'
          'python-flask-cors>=2.1.2'
          'python-pyparsing>=2.0.3'
          'python-zxcvbn'
-         'python-future>=0.15.2'
-         'python-progressbar'
+         'python-progressbar>=2.5'
+         'python-loguru>=0.4'
          )
 optdepends=('python-guppy: for memusage plugin' #AUR#
             'python-transmissionrpc: Transmission support' #AUR#
@@ -93,6 +91,9 @@ prepare() {
   sed -i 's/<=.*//g' requirements.txt
   sed -i 's/~=.*//g' requirements.txt
 
+  # Relax loguru requirement (AUR out-of-date right now)
+  sed -i 's/loguru>=0.4.1/loguru>=0.4/g' requirements.txt
+
   #zxcvbn-python has been renamed zxcvbn
   sed -i 's!zxcvbn-python!zxcvbn!' requirements.txt
 
@@ -120,9 +121,6 @@ package() {
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
-
-  # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python3.7/site-packages/FlexGet-*-py3.*.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
