@@ -1,6 +1,6 @@
 pkgbase = todoist-git
 	pkgdesc = Todoist CLI Client, written in Golang.
-	pkgver = r267.49fb10b
+	pkgver = r281.8633222
 	pkgrel = 1
 	url = https://github.com/sachaos/todoist
 	arch = x86_64

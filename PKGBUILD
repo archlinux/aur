@@ -1,10 +1,11 @@
 # Maintainer: Maksim Novikov <mnovikov.work@gmail.com>
 # Contributor: David Roizenman <david@hmnd.io>
 # Contributor: Thor K. Høgås <thor at roht no>
+# Contributor: Austin Keller
 
 _pkgname=todoist
 pkgname=${_pkgname}-git
-pkgver=r267.49fb10b
+pkgver=r281.8633222
 pkgrel=1
 pkgdesc="Todoist CLI Client, written in Golang."
 arch=('x86_64' 'i686')
@@ -37,12 +38,14 @@ build() {
  export GO111MODULE="on"
  cd "$srcdir/go/src/github.com/sachaos/$_pkgname"
  make install
+ chmod u+w -R "$GOPATH"
 }
 
 package() {
   install -Dm755 "$srcdir/go/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
   cd "$srcdir/go/src/github.com/sachaos/$_pkgname"
   install -Dm644 todoist_functions.sh "${pkgdir}/usr/share/todoist/todoist_functions.sh"
+  install -Dm644 todoist_functions_fzf.sh "${pkgdir}/usr/share/todoist/todoist_functions_fzf.sh"
   mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
   install -m 0644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/"
 }
