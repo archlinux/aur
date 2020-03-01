@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-gnu-efi
+	pkgdesc = Library for building UEFI Applications using GNU toolchain (mingw-w64)
+	pkgver = 3.0.11
+	pkgrel = 3
+	url = https://sourceforge.net/projects/gnu-efi/
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = make
+	options = !strip
+	options = staticlibs
+	options = !buildflags
+	source = https://downloads.sourceforge.net/project/gnu-efi/gnu-efi-3.0.11.tar.bz2
+	sha256sums = f28da792a2532e91e18e0101468811739a22cde9eee5eacfd0efb9bf3a61d6b9
+
+pkgname = mingw-w64-gnu-efi
+
