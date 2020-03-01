@@ -1,24 +1,24 @@
 # Maintainer: Vincent Bernardoff <vb AT luminar.eu.org>
 pkgname=nng
-pkgver=1.1.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Rewrite of the SP protocol library known as libnanomsg"
 arch=(arm armv6h armv7h aarch64 x86_64 i686)
 url="https://nanomsg.github.io/nng/"
 license=('MIT')
 depends=()
-makedepends=('git' 'cmake' 'ninja' 'asciidoctor')
+makedepends=('git' 'cmake' 'ninja' 'asciidoctor' 'mbedtls')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
 source=("https://github.com/nanomsg/nng/archive/v${pkgver}.tar.gz")
-sha256sums=('cec54ed40c8feb5c0c66f81cfd200e9b243639a75d1b6093c95ee55885273205')
+sha256sums=('e8fe50d0f79ec3243733f8b4c25099c88b2597ed1bb0d94a27c4385a2a24ecac')
 noextract=()
 
 prepare() {
     mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
     cd "$srcdir/${pkgname}-${pkgver}/build"
-    cmake -G Ninja -DBUILD_SHARED_LIBS=ON ..
+    cmake -G Ninja -DNNG_ENABLE_TLS=ON -DNNG_STATIC_LIB=OFF -DBUILD_SHARED_LIBS=ON ..
 }
 
 build() {
@@ -51,12 +51,11 @@ generate_man() {
 
 package() {
     cd "$srcdir/${pkgname}-${pkgver}"
+    install -d "$pkgdir/usr/include"
     install -d "$pkgdir/usr/lib"
+    cp -a include/* "$pkgdir/usr/include"
     cp -a build/libnng* "$pkgdir/usr/lib"
     install -Dm755 build/tools/nngcat/nngcat "$pkgdir/usr/bin/nngcat"
-    for i in `find src -name "*.h"` ; do
-        install -Dm644 $i "$pkgdir/usr/include/${pkgname%-git}/${i#*/}"
-    done
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     for i in docs/man/*.adoc ; do
         generate_man $i
