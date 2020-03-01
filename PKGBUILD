@@ -1,6 +1,6 @@
 # Maintainer: Nick Webster <nick@nick.geek.nz>
 pkgname=micropad
-pkgver=3.21.6
+pkgver=3.21.9
 pkgrel=1
 pkgdesc="A powerful note-taking app that helps you organise + take notes without restrictions."
 arch=('x86_64')
@@ -14,16 +14,20 @@ source=(
     "micropad-bin"
 )
 md5sums=(
-    '98b0fe7dd8721806212993d0e6d16b09'
-    '52be1867031e5fad9428138cdb6d027e'
+    '7129d2f35e42ac0bb6dfefc6499c337c'
+    'f763f23b4887a15000b3aeac8d6c3439'
 )
 install="micropad.install"
 
 package() {
-    # Replace bundled binary to use the community electron package
-    chmod +x "${srcdir}/micropad-bin"
-    cp "${srcdir}/micropad-bin" opt/µPad/micropad
+    install -dm755 "$pkgdir/opt/µPad"
+    cp -a opt/µPad/resources "$pkgdir/opt/µPad/"
+    cp -a usr "$pkgdir/usr"
 
-    mv opt "${pkgdir}/opt"
-    mv usr "${pkgdir}/usr"
+    # Use system electron
+    install -Dm755 "$pkgname-bin" "$pkgdir/opt/µPad/$pkgname"
+
+    # Link to the binary
+    install -dm755 "$pkgdir/usr/bin"
+    ln -sf /opt/µPad/micropad "$pkgdir/usr/bin/$pkgname"
 }
