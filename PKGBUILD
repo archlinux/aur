@@ -1,7 +1,7 @@
 # Maintainer: Guilhem Saurel <saurel@laas.fr>
 
 pkgname=gepetto-viewer-corba
-pkgver=5.2.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc="Graphical Interface for Pinocchio and HPP."
 arch=('i686' 'x86_64')
