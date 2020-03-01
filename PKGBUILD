@@ -4,6 +4,7 @@
 pkgname=classifier-git
 pkgver=20200206.r129.09e958b
 pkgrel=1
+url="https://github.com/bhrigu123/classifier"
 pkgdesc="Organize files in your directory instantly, by classifying them into different folders (git-version)"
 
 arch=("any")
