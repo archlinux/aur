@@ -1,0 +1,20 @@
+pkgbase = gleam-git
+	pkgdesc = A statically typed language for the Erlang VM
+	pkgver = 0.7.0.r0.ga89f777
+	pkgrel = 1
+	url = https://github.com/gleam-lang/gleam
+	arch = x86_64
+	license = Apache
+	makedepends = rust
+	depends = erlang-nox
+	provides = gleam
+	conflicts = gleam
+	options = strip
+	options = !docs
+	options = !libtool
+	options = !staticlibs
+	source = gleam::git://github.com/gleam-lang/gleam.git
+	sha256sums = SKIP
+
+pkgname = gleam-git
+
