@@ -1,0 +1,53 @@
+pkgbase = gdm-plymouth-nox
+	pkgdesc = Display manager and login screen with plymouth support but without X
+	pkgver = 3.34.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GDM
+	install = gdm.install
+	arch = x86_64
+	license = GPL
+	checkdepends = check
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = plymouth
+	depends = gnome-shell
+	depends = gnome-session
+	depends = upower
+	source = git+https://gitlab.gnome.org/GNOME/gdm.git#commit=80e010198217284d3cf52e8b334862a80b00cbd1
+	source = 0001-Xsession-Don-t-start-ssh-agent-by-default.patch
+	source = 0002-pam-arch-Don-t-check-greeter-account-for-expiry.patch
+	source = 0003-pam-arch-Restrict-greeter-service-to-the-gdm-user.patch
+	sha256sums = SKIP
+	sha256sums = 7a9a60ac3ec2a7ba8625ebd8974ac19469412e596d823d889628c971d3a27463
+	sha256sums = 15c8d7e0a0e03cb45f6bb33b3d91e0332d5d1b835b4aee726118085a35f3b046
+	sha256sums = 58105ba0634279e00729180831f82e85342167c6ac324a26e6f8b16483fb4018
+
+pkgname = gdm-plymouth-nox
+	groups = gnome
+	depends = plymouth
+	depends = gnome-shell
+	depends = gnome-session
+	depends = upower
+	depends = libgdm-plymouth-nox
+	optdepends = fprintd: fingerprint authentication
+	provides = gdm
+	conflicts = gdm
+	backup = etc/pam.d/gdm-autologin
+	backup = etc/pam.d/gdm-fingerprint
+	backup = etc/pam.d/gdm-launch-environment
+	backup = etc/pam.d/gdm-password
+	backup = etc/pam.d/gdm-smartcard
+	backup = etc/gdm/custom.conf
+	backup = etc/gdm/Xsession
+	backup = etc/gdm/PostSession/Default
+	backup = etc/gdm/PreSession/Default
+
+pkgname = libgdm-plymouth-nox
+	pkgdesc = GDM support library with plymouth support
+	depends = systemd
+	depends = glib2
+	depends = dconf
+	provides = libgdm
+	conflicts = libgdm
+
