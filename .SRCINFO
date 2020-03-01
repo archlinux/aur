@@ -1,15 +1,29 @@
 pkgbase = mbrola-voices-de3
 	pkgdesc = A German female voice for the MBROLA synthesizer
-	pkgver = 000307
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-de
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/de3/de3-000307.zip
-	md5sums = 05cd5d9da3c3fd97bba02a2f3954d133
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/de3
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/TEST/de3test.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/TEST/de3tts.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/TEST/demo.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/de3/TEST/wetter.pho
+	sha256sums = 480ed66b78b22aebdfe9cc82af078edbd53525efe793bfc22ef6d1047fa48f61
+	sha256sums = 745570e7944a242171c41b24680eedb7457fdd66e91a7065ce9f3f5fd24a368c
+	sha256sums = 0354efc104aa2a33a6417554e69d02c5153d8469552c277a04bf7de65402f090
+	sha256sums = e476b21a0a8a73c92be0df386dc061430bd3c11d3433ca18a9d530e7a25e5bb0
+	sha256sums = 6175cf96e73740dfcc01b3ec7c13591a9f6e476d3420204d86af3a355cf1db81
+	sha256sums = 68777df2e446df8d6890fc1109ce606c03b09280494321353a4ad7c7d8aae670
+	sha256sums = 06ae8b5cc9a2e635ad7a8e9b70af7468705028fb45fb9a0607becc606704fd12
+	sha256sums = bb9608be492f4f2e819b76bf1f15708d8ece75a114e754039149279e6b3af7ab
 
 pkgname = mbrola-voices-de3
 
