@@ -17,7 +17,7 @@ source=("https://github.com/$pkgname/$pkgname/archive/v${pkgver//_/-}.tar.gz"
         'pgmodeler.desktop'
         'mimetype.xml'
         'patch_no_check_update.diff')
-sha1sums=('35c783c5dc50fd26db17063083f25bfa2ae6ce99'
+sha1sums=('500d87bbcb5beff7bfaf35f86a5b3791b1e19af2'
           'c5bb090a1cbb784cd2ec9e1449cac02af2ba6538'
           '4c4e4260f4b2d2d4c154a8fb5cd7060a6585c83a'
           '92b7b52f601de1b2b6cfd4a3fde87746befc95b0'
