@@ -4,7 +4,7 @@
 
 _pkgname=libdazzle
 pkgname=libdazzle-unstable
-pkgver=3.32.0
+pkgver=3.35.3
 pkgrel=0
 pkgdesc="A library to delight your users with fancy features"
 url="https://gitlab.gnome.org/GNOME/libdazzle"
@@ -13,7 +13,7 @@ license=(LGPL)
 depends=(gtk3)
 makedepends=(git meson vala gobject-introspection gtk-doc)
 checkdepends=(xorg-server-xvfb)
-_commit=26172d8068a916efc1d6df35027bc6ae99ffacac  # tags/3.32.0^0
+_commit=78559e0ccc3fee4cf1465639db446088fe9a25b0 # tags/3.35.3^0
 source=("git+https://gitlab.gnome.org/GNOME/libdazzle.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(libdazzle libdazzle-git)

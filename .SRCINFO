@@ -1,6 +1,6 @@
 pkgbase = libdazzle-unstable
 	pkgdesc = A library to delight your users with fancy features
-	pkgver = 3.32.0
+	pkgver = 3.35.3
 	pkgrel = 0
 	url = https://gitlab.gnome.org/GNOME/libdazzle
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = libdazzle-unstable
 	provides = libdazzle
 	conflicts = libdazzle
 	conflicts = libdazzle-git
-	source = git+https://gitlab.gnome.org/GNOME/libdazzle.git#commit=26172d8068a916efc1d6df35027bc6ae99ffacac
+	source = git+https://gitlab.gnome.org/GNOME/libdazzle.git#commit=78559e0ccc3fee4cf1465639db446088fe9a25b0
 	sha256sums = SKIP
 
 pkgname = libdazzle-unstable
