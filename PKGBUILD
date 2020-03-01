@@ -4,7 +4,7 @@
 
 pkgname=python2-graph-tool
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
