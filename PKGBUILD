@@ -52,11 +52,11 @@ build() {
   cmake -GNinja -C../build_files/cmake/config/bpy_module.cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DPYTHON_VERSION=3.7 \
+    -DPYTHON_VERSION=3.8 \
     -DWITH_MEM_JEMALLOC=OFF \
     -DPYTHON_LIBPATH=/usr/lib \
-    -DPYTHON_LIBRARY=python3.7m \
-    -DPYTHON_INCLUDE_DIRS=/usr/include/python3.7m
+    -DPYTHON_LIBRARY=python3.8 \
+    -DPYTHON_INCLUDE_DIRS=/usr/include/python3.8
   ninja -j2
 }
 
