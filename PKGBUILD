@@ -4,14 +4,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libctl
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://ab-initio.mit.edu/wiki/index.php/Libctl"
 pkgdesc="A free Guile-based library implementing flexible control files for scientific simulations."
 depends=('bash')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stevengj/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('eb34dce67c3456d9b0222962dfb6bf7ee9d2cfcfe2110a6db60591a4aa333258')
+sha256sums=('5124551b3c9ed9a0ca599179f5e78318b5a7a1daa06220329a3b2963c848ba03')
 license=('LGPL')
 options=('!libtool')
 
