@@ -11,5 +11,9 @@ post_install() {
 
 post_upgrade() {
     post_install
-    printf "%sWARNING%s: This update changes the format of the /var/cache/informant.dat file, you will need to re-read all news items.\n" "$YELLOW" "$CLEAR"
+    #new_ver=$1
+    old_ver=$2
+    if [[ $old_ver =~ ^0\.[01]\.* ]]; then
+        printf "%sWARNING%s: This update changes the format of the /var/cache/informant.dat file, you will need to re-read all news items.\n" "$YELLOW" "$CLEAR"
+    fi
 }
