@@ -1,0 +1,18 @@
+pkgbase = python-desec-dns-api
+	pkgdesc = Python library wrapper for deSEC DNS API used by desec-dns-cli and ansible-desec-dns
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://gitlab.com/xengi/desec-dns-api
+	arch = any
+	license = MIT
+	checkdepends = python-responses
+	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
+	checkdepends = python-pytest-flake8
+	makedepends = python-setuptools
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/d/desec-dns-api/desec-dns-api-0.0.2.tar.gz
+	sha256sums = a40389972594433c9175285c95055fbbefaab4a4d0bf3ef0fc937e521bb44799
+
+pkgname = python-desec-dns-api
+
