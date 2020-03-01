@@ -2,9 +2,9 @@
 
 pkgname=your-freedom-network
 _pkgname=${pkgname%-network}
-pkgver=20180405
+pkgver=20190221
 _subver=01
-pkgrel=2
+pkgrel=1
 pkgdesc="A service to bypass Firewalls, Proxies and content Filters and stay anonymous while surfing, playing and downloading"
 arch=('any')
 url="https://www.your-freedom.net/"
@@ -28,8 +28,8 @@ package() {
     install -D "ACCEPTABLE_USE_POLICY" "$pkgdir/usr/share/licenses/${_pkgname}/ACCEPTABLE USE POLICY"
 }
 
-md5sums=('3d793fc912bae717032c1e65e7859c48'
-    '9ab24f759c04f123e5367395fa0f43d8'
-    'fe4ab41f26652258ea5fa4c309869972'
-    'b8017cf56973d10dba097e83917f0f78'
-'e71ac5216e24c68db28abc1d92fba5d5')
+md5sums=('d40bcc95c907651b85b7484b6e9d1b53'
+         '9ab24f759c04f123e5367395fa0f43d8'
+         'fe4ab41f26652258ea5fa4c309869972'
+         'b8017cf56973d10dba097e83917f0f78'
+         'e71ac5216e24c68db28abc1d92fba5d5')
