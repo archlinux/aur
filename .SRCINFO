@@ -1,6 +1,6 @@
 pkgbase = emulationstation-git
 	pkgdesc = A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems.
-	pkgver = 2.4.1.r392.gb7bec0eb
+	pkgver = 2.4.1.r503.gc9b3f5b6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/RetroPie/EmulationStation
