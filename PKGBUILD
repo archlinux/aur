@@ -1,8 +1,8 @@
 # Maintainer: X3n0m0rph59 <x3n0m0rph59@gmail.com>
 pkgname=precached-git
 _pkgname=precached
-pkgver=1.7.1
-pkgrel=5
+pkgver=1.7.2
+pkgrel=0
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -20,7 +20,7 @@ install=${_pkgname}.install
 changelog=
 source=("precached::git+https://gitlab.com/X3n0m0rph59/precached.git/#branch=master")
 noextract=()
-md5sums=('SKIP') 
+md5sums=('SKIP')
 
 build() {
   cd "$_pkgname"
