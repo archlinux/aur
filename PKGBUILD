@@ -15,7 +15,7 @@ conflicts=(precached)
 replaces=()
 backup=()
 options=()
-install=${_pkgname}.install
+install=${pkgname}.install
 changelog=
 source=("precached::git+https://gitlab.com/X3n0m0rph59/precached.git/#branch=v1.7")
 noextract=()
