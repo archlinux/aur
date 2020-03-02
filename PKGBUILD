@@ -1,23 +1,32 @@
+# Maintainer: haha662 <haha662 at outlook dot com>
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
-_cranver=0.8
-pkgname=r-tinytex
+
+_cranname=tinytex
+_cranver=0.20
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents'
-arch=('any')
-url='https://cran.r-project.org/package=tinytex'
-license=('MIT')
-depends=('r' 'r-xfun>=0.3')
-optdepends=('r-testit' 'r-rstudioapi')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
-md5sums=('d0dacfe98b6d0e06cbcb5b22216f0469')
+pkgdesc="Helper Functions to Install and Maintain 'TeX Live', and Compile 'LaTeX' Documents"
+arch=("any")
+url="https://cran.r-project.org/package=${_cranname}"
+license=("MIT" "custom")
+depends=("r" "r-xfun>=0.5")
+# makedepends=()
+optdepends=("r-textit" "r-rstudioapi")
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz" "https://cran.r-project.org/web/packages/tinytex/LICENSE")
+sha256sums=("6f6e57d41d8057c17a864004ae6587a95ac3288672e16d35c829317d6d441b59" "f58c2f5b0f10b231d9cea9bc4ea0d849cd4279a21d03257be8dc9fd9452fad37")
 
-build(){
-    R CMD INSTALL tinytex_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership tinytex "$pkgdir"/usr/lib/R/library
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
