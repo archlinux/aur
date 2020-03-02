@@ -1,7 +1,7 @@
 # Maintainer: osch <oliver@luced.de>
 pkgname=surge-synthesizer-bin
-pkgver=1.6.5
-debver=1.6.5
+pkgver=1.6.6
+debver=1.6.6
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin"
 arch=('x86_64')
@@ -24,4 +24,4 @@ package() {
 	tar xf data.tar
 	cp -r usr "$pkgdir/"
 }
-md5sums=('75b2033cca3cbde1c223925407bea08f')
+md5sums=('10d9e14a4af17d8352195a772ce7ffe0')
