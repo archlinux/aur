@@ -5,7 +5,6 @@ pkgbase = tpm2-pkcs11-git
 	url = https://github.com/tpm2-software/tpm2-pkcs11
 	arch = x86_64
 	license = BSD
-	license = custom:IPR
 	checkdepends = cmocka
 	checkdepends = ibm-sw-tpm2
 	checkdepends = expect
