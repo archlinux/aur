@@ -1,7 +1,7 @@
 # Maintainer: orhun <github.com/orhun>
 pkgname=k3rmit-git
 pkgdesc="A VTE-based terminal emulator that aims to be simple, fast and effective."
-pkgver=2.2.r0.g7967322
+pkgver=2.3.r0.gf66b863
 pkgrel=1
 arch=('any')
 url="https://github.com/orhun/k3rmit"
