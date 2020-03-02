@@ -3,7 +3,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=glib2-patched-thumbnailer
-pkgver=2.62.5
+pkgver=2.64.0
 pkgrel=1
 pkgdesc="GLib2 patched with ahodesuka's thumbnailer patch."
 url="https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5"
@@ -19,14 +19,16 @@ optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-repor
             'libelf: gresource inspection tool')
 options=('!docs')
 license=(LGPL2.1)
-_commit=86c2832f950c389e230ec09c8bf0b92b475f0ee3  # tags/2.62.5^0
+_commit=369626e3105d688afaa316d89d34e8927a8a0171  # tags/2.64.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
         noisy-glib-compile-schemas.diff
+        0001-tests-Move-memory_monitor_tests-under-installed_test.patch
         glib-compile-schemas.hook
         gio-querymodules.hook
         glib-thumbnailer.patch)
 sha256sums=('SKIP'
             '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
+            '3f7f20c817ef970f9d1bc6606023eca44df5c31dd2334847bc8df2dbcf8e0e43'
             '64ae5597dda3cc160fc74be038dbe6267d41b525c0c35da9125fbf0de27f9b25'
             '557c88177f011ced17bdeac1af3f882b2ca33b386a866fdf900b35f927a2bbe8'
             '9f055d2a4f3fa08a7f0ca9f233a0ca6925247f572fb6873af7ac1e1f43f23d74')
@@ -41,6 +43,9 @@ prepare() {
 
   # Suppress noise from glib-compile-schemas.hook
   git apply -3 ../noisy-glib-compile-schemas.diff
+
+  # Clean installed tests
+  git apply -3 ../0001-tests-Move-memory_monitor_tests-under-installed_test.patch
 
   # Apply patch to generate thumbnails
   patch -Np1 -i ../glib-thumbnailer.patch
