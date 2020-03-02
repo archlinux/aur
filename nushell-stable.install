@@ -1,0 +1,12 @@
+post_install() {
+  grep -qe '^/usr/bin/nu$' etc/shells || echo '/usr/bin/nu' >> etc/shells
+  grep -qe '^/bin/nu$' etc/shells || echo '/bin/nu' >> etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  sed -ri -e '\|^/usr/bin/nu$|d' -e '\|^/bin/nu$|d' etc/shells
+}
