@@ -2,11 +2,11 @@
 
 
 pkgname=git-delta
-_name=${pkgname#*-}
+_name="${pkgname#*-}"
 pkgver=0.0.16
 pkgrel=3
 
-pkgdesc="A syntax-highlighting pager for git"
+pkgdesc='A syntax-highlighting pager for git and diff output'
 arch=('x86_64')
 url="https://github.com/dandavison/$_name"
 license=('MIT')

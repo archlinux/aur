@@ -1,5 +1,5 @@
 pkgbase = git-delta
-	pkgdesc = A syntax-highlighting pager for git
+	pkgdesc = A syntax-highlighting pager for git and diff output
 	pkgver = 0.0.16
 	pkgrel = 3
 	url = https://github.com/dandavison/delta
