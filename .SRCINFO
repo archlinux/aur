@@ -1,0 +1,16 @@
+pkgbase = perl-cam-pdf
+	pkgdesc = PDF manipulation library
+	pkgver = 1.60
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Algorithm-CheckDigits/
+	arch = any
+	license = PerlArtistic
+	makedepends = perl-module-build
+	depends = perl-crypt-rc4
+	depends = perl-text-pdf
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/C/CD/CDOLAN/CAM-PDF-1.60.tar.gz
+	sha512sums = 75218c23f79f501b2fbaa2222598a1105c8729daaf4572f13949daf9bb46a983654cdd78f3434711b84b786d2ef36c5af5cfba4eae052537a11aa9857b665b79
+
+pkgname = perl-cam-pdf
+
