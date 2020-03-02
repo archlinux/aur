@@ -1,7 +1,7 @@
 # Maintainer: Oliver Rümpelein <arch@pheerai.de>
 pkgname=studiolink-standalone-bin
-pkgver=v20.02.1
-_pkgver=${pkgver}-rc1
+pkgver=v20.03.0
+_pkgver=${pkgver}-rc2
 pkgrel=1
 pkgdesc="A SIP application to create high quality Audio over IP (AoIP) connections."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=("https://download.studio.link/releases/${_pkgver}/linux/studio-link-stan
     "LICENSE"
     "studiolink.desktop"
     "studiolink.svg")
-sha512sums=('cf026040854644b5bbb59c5b888a2af92fee60d96c96fdb9c37997e9eaa06bcf5983d87c0564d4d87950520ba61e408626af1790eb7665892287b2706605947d'
+sha512sums=('fc0670050ec2c94438e3c1a4a1b05bf860162dc7f3ace81efb18fdb560de998f1632b4ffbfa5c845297f256794f85ad57e937ff9418f1682d87e86702151a0fd'
             'a3c168d3605190b7de36707a42d1450a22bd0d0b50b52bb4e0a8b169c1035f04f58dca8227d8557f9f0cc574d18323780efa035fd6cd57c3bb35d69a3c517937'
             '2e80376c6ac640da556fa7861d54b44378c18d19a20257e5eef03d72e9c4554d4894c8e6b6168e672bd43e9272071859bcdcf65c75f5006c20c0d689b8080133'
             '3aae487ecddedf17f83f0719c33770f9cb3998681ea3fb39b5c304245c73fdfd7604aee3fff1f54c11ad93256ab778eb3f3467e71c870e8dba8eab43cc2ceef6')
