@@ -1,3 +1,4 @@
 pkg/
 repotool*
 src/
+*.tar.gz
