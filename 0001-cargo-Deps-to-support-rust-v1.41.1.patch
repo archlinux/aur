@@ -1,0 +1,69 @@
+From d3314d273ec8d25e1e5524bf3318f25b54b5ee75 Mon Sep 17 00:00:00 2001
+From: Kyle Manna <kyle@kylemanna.com>
+Date: Sun, 1 Mar 2020 18:33:05 -0800
+Subject: [PATCH] cargo: Deps to support rust v1.41.1
+
+---
+ rust/cmsis-update/Cargo.toml | 2 +-
+ rust/pack-index/Cargo.toml   | 4 ++--
+ rust/pdsc/Cargo.toml         | 2 +-
+ rust/utils/Cargo.toml        | 4 ++--
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/rust/cmsis-update/Cargo.toml b/rust/cmsis-update/Cargo.toml
+index 91dd9b4..3946e0a 100644
+--- a/rust/cmsis-update/Cargo.toml
++++ b/rust/cmsis-update/Cargo.toml
+@@ -5,7 +5,7 @@ authors = ["Jimmy Brisson <theotherjimmy@gmail.com>"]
+ 
+ [dependencies]
+ futures = "0.1.25"
+-minidom = "0.5.0"
++minidom = "^0.6.0"
+ slog = "^2"
+ slog-term = "^2"
+ slog-async = "^2"
+diff --git a/rust/pack-index/Cargo.toml b/rust/pack-index/Cargo.toml
+index f38d419..54cd223 100644
+--- a/rust/pack-index/Cargo.toml
++++ b/rust/pack-index/Cargo.toml
+@@ -4,8 +4,8 @@ version = "0.1.0"
+ authors = ["Jimmy Brisson <theotherjimmy@gmail.com>"]
+ 
+ [dependencies]
+-minidom = "0.5.0"
+-quick-xml = "0.7.3"
++minidom = "^0.6.0"
++quick-xml = "^0.9.0"
+ slog = "^2"
+ failure = "0.1.1"
+ utils = { path = "../utils" }
+diff --git a/rust/pdsc/Cargo.toml b/rust/pdsc/Cargo.toml
+index 0e6861f..c55f6c3 100644
+--- a/rust/pdsc/Cargo.toml
++++ b/rust/pdsc/Cargo.toml
+@@ -4,7 +4,7 @@ version = "0.1.0"
+ authors = ["Jimmy Brisson <theotherjimmy@gmail.com>"]
+ 
+ [dependencies]
+-minidom = "0.5.0"
++minidom = "^0.6.0"
+ slog = "^2"
+ serde = "^1.0.89"
+ serde_derive = "^1.0.89"
+diff --git a/rust/utils/Cargo.toml b/rust/utils/Cargo.toml
+index 041fa88..00b30be 100644
+--- a/rust/utils/Cargo.toml
++++ b/rust/utils/Cargo.toml
+@@ -4,6 +4,6 @@ version = "0.1.0"
+ authors = ["Jimmy Brisson <theotherjimmy@gmail.com>"]
+ 
+ [dependencies]
+-minidom = "0.5.0"
+-quick-xml = "0.7.3"
++minidom = "^0.6.0"
++quick-xml = "^0.9.0"
+ slog = "^2"
+-- 
+2.25.1
+

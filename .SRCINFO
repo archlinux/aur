@@ -1,0 +1,20 @@
+pkgbase = python-cmsis-pack-manager
+	pkgdesc = A Python module for handling CMSIS Pack files
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/ARMmbed/cmsis-pack-manager
+	arch = any
+	license = Apache
+	depends = python
+	depends = python-appdirs
+	depends = python-milksnake
+	depends = python-pyaml
+	depends = python-wheel
+	depends = rust
+	source = https://github.com/ARMmbed/cmsis-pack-manager/archive/v0.2.9.tar.gz
+	source = 0001-cargo-Deps-to-support-rust-v1.41.1.patch
+	sha256sums = 34aad5aa198d1c5844f747e484420925789d62eaf0164064193c3a821a1c562a
+	sha256sums = bbf4cae10043f66642f4b56db91407ae238873d36be6db46bc573b0e91381407
+
+pkgname = python-cmsis-pack-manager
+
