@@ -5,6 +5,7 @@ pkgbase = stardict-indic-update
 	url = http://github.com/indic-dict/stardict-indic-update-aur
 	arch = any
 	depends = goldendict
+	optdepends = stardict-tools
 
 pkgname = stardict-indic-update
 
