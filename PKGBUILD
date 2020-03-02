@@ -6,7 +6,7 @@
 # Contributor: ledti <antergist at gmail dot com>
 pkgname=obs-studio-git-with-browser
 pkgver=24.0.3.570.g57b47ca90
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
@@ -37,6 +37,7 @@ pkgver() {
 prepare() {
   cd $pkgname
   git config submodule.plugins/obs-outputs/ftl-sdk.url $srcdir/ftl-sdk
+  git submodule init plugins/obs-browser
   git submodule update
 }
 
