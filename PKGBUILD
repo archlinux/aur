@@ -7,7 +7,7 @@
 
 pkgbase=sagemath-git
 pkgname=(sagemath-git sagemath-jupyter-git)
-pkgver=9.1.beta2.r0.g2cbd93e0b7
+pkgver=9.1.beta6.r0.gcdb4c0b073
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(x86_64)
@@ -42,16 +42,18 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-singular-4.1.2.patch
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
-        sagemath-python-3.8.patch)
+        sagemath-python-3.8.patch
+        sagemath-pexpect-4.8.patch)
 sha256sums=('SKIP'
             '9cbb72a1422416152cedd6849944d3c02a1639642758b470931f9fc5ddf42d22'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            '1eedb88304df38e5c147c1943bc2a44faa724048f789fe0124518b3222836c66'
+            'a52ee71d29817517d50bb948c49fb1a8e37f2d971a20266ee2d248a5cf37e604'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '0b79606ce932d12ce4e2baebd660bf42faebca3138511987faf5569a5f3adbbf'
-            'dee296f311ee295c007d48ba45efdad1a8ab4cea7e8872312d304f0683c72cf7')
+            '71ab0f48c2184ddbac5303ba266fe21c0071c8fa605af036fe2cf9ac660341a7'
+            '6ffeef6d53ee827d2c241480792f0318ad835e1ab3b7a9431bbe73133d965a8d'
+            '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07')
 
 pkgver() {
   cd sage
@@ -70,6 +72,8 @@ prepare(){
   patch -p1 -i ../latte-count.patch
 # Python 3.8 support
   patch -p1 -i ../sagemath-python-3.8.patch
+# Fix expect_peek with pexpect 4.8
+  patch -p1 -i ../sagemath-pexpect-4.8.patch
 # Support IPython 7
   patch -p1 -i ../sagemath-ipython7.patch
 # Fix mathjax path
@@ -105,8 +109,7 @@ package_sagemath-git() {
   cd sage/src
 
   export SAGE_ROOT="$PWD" \
-         SAGE_LOCAL="/usr" \
-         SAGE_EXTCODE="$PWD"/ext
+         SAGE_LOCAL="/usr"
 
   python setup.py install --root="$pkgdir" --optimize=1
 
@@ -118,9 +121,6 @@ package_sagemath-git() {
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done
-  
-  mkdir -p "$pkgdir"/usr/share/sage
-  cp -r ext "$pkgdir"/usr/share/sage
   
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
 # Remove sage_setup
@@ -145,8 +145,9 @@ package_sagemath-jupyter-git() {
          MATHJAX_DIR="/usr/share/mathjax2"
   python -c "from sage.repl.ipython_kernel.install import SageKernelSpec; SageKernelSpec.update(prefix='$pkgdir/usr')"
 # fix symlinks to assets
+  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   for _i in $(ls ext/notebook-ipython); do
     rm "$pkgdir"/usr/share/jupyter/kernels/sagemath/$_i
-    ln -s /usr/share/sage/ext/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
+    ln -s $_pythonpath/sage/ext_data/notebook-ipython/$_i "$pkgdir"/usr/share/jupyter/kernels/sagemath/
   done
 }

@@ -626,7 +626,7 @@ index 45f15cdb5c..0a85bf72e8 100644
          """
          return self.state(state)._epsilon_successors_(self)
  
-@@ -15056,7 +15055,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15055,7 +15054,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
      This class has the additional attribute ``visited_states``::
  
          sage: it.visited_states
@@ -635,7 +635,7 @@ index 45f15cdb5c..0a85bf72e8 100644
  
      This means the following (let us skip the state `0` for a moment):
      State `1` can be reached by a epsilon path which write ``'bc'`` as
-@@ -15083,7 +15082,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15082,7 +15081,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['c']]
          process (0 branches)
          sage: it.visited_states
@@ -644,7 +644,7 @@ index 45f15cdb5c..0a85bf72e8 100644
  
      TESTS::
  
-@@ -15111,7 +15110,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15110,7 +15109,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [[]]
          process (0 branches)
          sage: it.visited_states
@@ -653,7 +653,7 @@ index 45f15cdb5c..0a85bf72e8 100644
  
      At this point note that in the previous output, state `1` (from
      which we started) was also reached by a non-trivial
-@@ -15135,7 +15134,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15134,7 +15133,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [[]]
          process (0 branches)
          sage: it.visited_states
@@ -662,7 +662,7 @@ index 45f15cdb5c..0a85bf72e8 100644
          sage: it = _FSMProcessIteratorEpsilon_(A, initial_state=A.state(3))
          sage: for current in it:
          ....:     print(current)
-@@ -15151,7 +15150,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15150,7 +15149,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [[]]
          process (0 branches)
          sage: it.visited_states
@@ -671,7 +671,7 @@ index 45f15cdb5c..0a85bf72e8 100644
          sage: it = _FSMProcessIteratorEpsilon_(A, initial_state=A.state(4))
          sage: for current in it:
          ....:     print(current)
-@@ -15188,8 +15187,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15187,8 +15186,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['b', 'c', 'e']]
          process (0 branches)
          sage: it.visited_states
@@ -681,7 +681,7 @@ index 45f15cdb5c..0a85bf72e8 100644
          sage: it = _FSMProcessIteratorEpsilon_(T, initial_state=T.state(2),
          ....:                                  format_output=lambda o: ''.join(o))
          sage: for current in it:
-@@ -15207,8 +15205,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15206,8 +15204,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['c', 'd', 'f']]
          process (0 branches)
          sage: it.visited_states
@@ -691,7 +691,7 @@ index 45f15cdb5c..0a85bf72e8 100644
          sage: it = _FSMProcessIteratorEpsilon_(T, initial_state=T.state(3),
          ....:                                  format_output=lambda o: ''.join(o))
          sage: for current in it:
-@@ -15225,8 +15222,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15224,8 +15221,7 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
          +-- tape at 0, [['d', 'f']]
          process (0 branches)
          sage: it.visited_states
@@ -701,7 +701,7 @@ index 45f15cdb5c..0a85bf72e8 100644
          sage: it = _FSMProcessIteratorEpsilon_(T, initial_state=T.state(4),
          ....:                                  format_output=lambda o: ''.join(o))
          sage: for current in it:
-@@ -15373,9 +15369,9 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
+@@ -15372,9 +15368,9 @@ class _FSMProcessIteratorEpsilon_(FSMProcessIterator):
              sage: T.state(0)._epsilon_successors_(T)  # indirect doctest
              {0: [['a', 'b', 'c']], 1: [['a']], 2: [['a', 'b']]}
              sage: T.state(1)._epsilon_successors_(T)  # indirect doctest
@@ -2068,7 +2068,7 @@ diff --git a/src/sage/graphs/generic_graph.py b/src/sage/graphs/generic_graph.py
 index 8b8c98cb15..6823e13b26 100644
 --- a/src/sage/graphs/generic_graph.py
 +++ b/src/sage/graphs/generic_graph.py
-@@ -5212,7 +5212,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5211,7 +5211,7 @@ class GenericGraph(GenericGraph_pyx):
          This method is deprecated since Sage-4.4.1.alpha2. Please use instead:
  
              sage: g.layout(layout = "planar", save_pos = True)
@@ -2077,7 +2077,7 @@ index 8b8c98cb15..6823e13b26 100644
          """
          deprecation(24494, 'This method is replaced by the method layout. '
                             'Please use layout(layout="planar", save_pos=True) '
-@@ -5266,16 +5266,16 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5265,16 +5265,16 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.PathGraph(10)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -2104,7 +2104,7 @@ index 8b8c98cb15..6823e13b26 100644
              sage: g = graphs.BalancedTree(3, 4)
              sage: pos = g.layout(layout='planar', save_pos=True, test=True)
              sage: pos[0]
-@@ -5284,7 +5284,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5283,7 +5283,7 @@ class GenericGraph(GenericGraph_pyx):
              [93, 14]
              sage: g = graphs.CycleGraph(7)
              sage: g.layout(layout='planar', save_pos=True, test=True)
@@ -2113,7 +2113,7 @@ index 8b8c98cb15..6823e13b26 100644
              sage: g = graphs.CompleteGraph(5)
              sage: g.layout(layout='planar', save_pos=True, test=True, set_embedding=True)
              Traceback (most recent call last):
-@@ -5295,9 +5295,9 @@ class GenericGraph(GenericGraph_pyx):
+@@ -5294,9 +5294,9 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g = graphs.CompleteGraph(4)
              sage: g.layout(layout='planar', external_face=(0,1))
@@ -2125,7 +2125,7 @@ index 8b8c98cb15..6823e13b26 100644
  
          TESTS::
  
-@@ -16515,7 +16515,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16514,7 +16514,7 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_paths(0)
@@ -2134,7 +2134,7 @@ index 8b8c98cb15..6823e13b26 100644
  
          All these paths are obviously induced graphs::
  
-@@ -16525,7 +16525,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16524,7 +16524,7 @@ class GenericGraph(GenericGraph_pyx):
          ::
  
              sage: D.shortest_paths(0, cutoff=2)
@@ -2143,7 +2143,7 @@ index 8b8c98cb15..6823e13b26 100644
              sage: G = Graph( { 0: {1: 1}, 1: {2: 1}, 2: {3: 1}, 3: {4: 2}, 4: {0: 2} }, sparse=True)
              sage: G.plot(edge_labels=True).show() # long time
              sage: G.shortest_paths(0, by_weight=True)
-@@ -16535,7 +16535,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16534,7 +16534,7 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = DiGraph([(0,1,1),(1,2,3),(0,2,5)])
              sage: D.shortest_paths(0)
@@ -2152,7 +2152,7 @@ index 8b8c98cb15..6823e13b26 100644
              sage: D.shortest_paths(0, by_weight=True)
              {0: [0], 1: [0, 1], 2: [0, 1, 2]}
  
-@@ -16784,7 +16784,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -16783,7 +16783,7 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: D = graphs.DodecahedralGraph()
              sage: D.shortest_path_lengths(0)
@@ -2161,7 +2161,7 @@ index 8b8c98cb15..6823e13b26 100644
  
          Weighted case::
  
-@@ -18868,18 +18868,18 @@ class GenericGraph(GenericGraph_pyx):
+@@ -18867,18 +18867,18 @@ class GenericGraph(GenericGraph_pyx):
               '#00ff00': [((1,3,2,4), (1,4)(2,3), 3), ...],
               '#ff0000': [((1,3,2,4), (1,3)(2,4), 1), ...]}
              sage: G._color_by_label()  # py3
@@ -2186,7 +2186,7 @@ index 8b8c98cb15..6823e13b26 100644
  
          TESTS:
  
-@@ -19024,8 +19024,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19023,8 +19023,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: g.layout(layout="acyclic_dummy", save_pos=True)
              {('0', 0): [0.3..., 0],
@@ -2196,7 +2196,7 @@ index 8b8c98cb15..6823e13b26 100644
               ('1', 1): [0.6..., 1]}
  
              sage: D3 = g.layout(dim=3); D3  # random
-@@ -19161,10 +19161,10 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19160,10 +19160,10 @@ class GenericGraph(GenericGraph_pyx):
              sage: g = graphs.LadderGraph(3)
              sage: g.layout_ranked(heights={i: (i, i+3) for i in range(3)})
              {0: [0.668..., 0],
@@ -2209,7 +2209,7 @@ index 8b8c98cb15..6823e13b26 100644
               5: [1.33..., 2]}
              sage: g = graphs.LadderGraph(7)
              sage: g.plot(layout="ranked", heights={i: (i, i+7) for i in range(7)})
-@@ -19348,13 +19348,13 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19347,13 +19347,13 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = graphs.BalancedTree(2, 2)
              sage: G.layout_tree(tree_root=0)
@@ -2228,7 +2228,7 @@ index 8b8c98cb15..6823e13b26 100644
  
              sage: G = graphs.BalancedTree(2, 4)
              sage: G.plot(layout="tree", tree_root=0, tree_orientation="up")
-@@ -19366,15 +19366,15 @@ class GenericGraph(GenericGraph_pyx):
+@@ -19365,15 +19365,15 @@ class GenericGraph(GenericGraph_pyx):
              sage: T.set_embedding({0: [1, 6, 3], 1: [2, 5, 0], 2: [1], 3: [4, 7, 8, 0],
              ....:     4: [3], 5: [1], 6: [0], 7: [3], 8: [3]})
              sage: T.layout_tree()
@@ -2251,7 +2251,7 @@ index 8b8c98cb15..6823e13b26 100644
              sage: T.plot(layout="tree", tree_root=3)
              Graphics object consisting of 18 graphics primitives
  
-@@ -23534,7 +23534,8 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23532,7 +23532,8 @@ class GenericGraph(GenericGraph_pyx):
  
              sage: G = DiGraph({1: [10], 2:[10,11], 3:[10,11], 4:[], 5:[11, 4], 6:[11], 7:[10,11], 8:[10,11], 9:[10], 10:[11, 5, 8], 11:[6]})
              sage: G.katz_centrality(.85)
@@ -2261,7 +2261,7 @@ index 8b8c98cb15..6823e13b26 100644
               2: 0.000000000000000,
               3: 0.000000000000000,
               4: 16.7319819819820,
-@@ -23543,7 +23543,6 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23541,7 +23542,6 @@ class GenericGraph(GenericGraph_pyx):
               7: 0.000000000000000,
               8: 18.6846846846847,
               9: 0.000000000000000,
@@ -2269,7 +2269,7 @@ index 8b8c98cb15..6823e13b26 100644
               11: 202.778914049184}
  
  
-@@ -23563,7 +23563,7 @@ class GenericGraph(GenericGraph_pyx):
+@@ -23561,7 +23561,7 @@ class GenericGraph(GenericGraph_pyx):
              sage: graphs.PathGraph(4).katz_centrality(1/20,3)
              21/379
              sage: (graphs.PathGraph(3) + graphs.PathGraph(4)).katz_centrality(1/20)
@@ -3811,7 +3811,7 @@ diff --git a/src/sage/rings/polynomial/multi_polynomial_ideal.py b/src/sage/ring
 index 22f29ee596..5f445d2a3b 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_ideal.py
 +++ b/src/sage/rings/polynomial/multi_polynomial_ideal.py
-@@ -3567,11 +3567,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
+@@ -3577,11 +3577,11 @@ class MPolynomialIdeal( MPolynomialIdeal_singular_repr, \
  
              sage: loads(dumps(I)).__getstate__()
              (Monoid of ideals of Multivariate Polynomial Ring in x, y over Finite Field of size 32003,
@@ -3830,7 +3830,7 @@ diff --git a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx b/src/sa
 index 0311cd71bb..4f26f35011 100644
 --- a/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
 +++ b/src/sage/rings/polynomial/multi_polynomial_libsingular.pyx
-@@ -2990,7 +2990,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
+@@ -3018,7 +3018,7 @@ cdef class MPolynomial_libsingular(MPolynomial):
              sage: R.<x,y,z> = QQ[]
              sage: f=2*x*y^3*z^2 + 1/7*x^2 + 2/3
              sage: f.dict()
@@ -3895,7 +3895,7 @@ diff --git a/src/sage/rings/qqbar.py b/src/sage/rings/qqbar.py
 index 9c6ec027d0..4d3521c3e8 100644
 --- a/src/sage/rings/qqbar.py
 +++ b/src/sage/rings/qqbar.py
-@@ -8053,13 +8053,13 @@ class ANBinaryExpr(ANDescr):
+@@ -8061,13 +8061,13 @@ class ANBinaryExpr(ANDescr):
          decrease it before we return::
  
              sage: import sys; sys.getrecursionlimit()
@@ -3911,6 +3911,30 @@ index 9c6ec027d0..4d3521c3e8 100644
  
          """
          import sys
+diff --git a/src/sage/rings/ring_extension.pyx b/src/sage/rings/ring_extension.pyx
+index 754b8c2ca6..291ae46fe6 100644
+--- a/src/sage/rings/ring_extension.pyx
++++ b/src/sage/rings/ring_extension.pyx
+@@ -379,8 +379,8 @@ class RingExtensionFactory(UniqueFactory):
+                 To:   Rational Field
+                 Defn: 1 |--> 1, (), ()),
+              {'constructors': [(<type 'sage.rings.ring_extension.RingExtension_generic'>,
+-                {'is_backend_exposed': True,
+-                 'print_options': {'print_elements_as': None, 'print_parent_as': None}})]})
++                {'print_options': {'print_elements_as': None, 'print_parent_as': None},
++                 'is_backend_exposed': True})]})
+ 
+             sage: RingExtension.create_key_and_extra_args(GF(5^4), GF(5^2), names=('a',))
+             ((Ring morphism:
+@@ -388,7 +388,7 @@ class RingExtensionFactory(UniqueFactory):
+                 To:   Finite Field in z4 of size 5^4
+                 Defn: z2 |--> z4^3 + z4^2 + z4 + 3, (z4,), ('a',)),
+              {'constructors': [(<type 'sage.rings.ring_extension.RingExtensionWithGen'>,
+-                {'gen': z4, 'is_backend_exposed': True, 'names': ('a',)})]})
++                {'gen': z4, 'names': ('a',), 'is_backend_exposed': True})]})
+         """
+         use_generic_constructor = True
+         is_backend_exposed = True
 diff --git a/src/sage/rings/tate_algebra_element.pyx b/src/sage/rings/tate_algebra_element.pyx
 index 64ba29c77f..353ba7a950 100644
 --- a/src/sage/rings/tate_algebra_element.pyx
