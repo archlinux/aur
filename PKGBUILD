@@ -3,8 +3,8 @@
 # Maintainer: Hansruedi Patzen <hp@revy.ch>
 
 pkgname=cevelop
-pkgver=1.13.0
-_srctimestamp=201910070714
+pkgver=1.14.1
+_srctimestamp=202002280945
 pkgrel=1
 pkgdesc="The C++ IDE for professional developers"
 license=('custom')
@@ -27,7 +27,7 @@ sha256sums=('65b469797c38ca09bc16bcb940138091def2d30079fa09028b8756c1040c5c85'
             '98ab055ecde507b6603743ab40db3dfdb6d6b3b24cb5fff244982ae641d865a0'
             'd99f2f3b58aef682fcab7d1cedf20fc4fc44152c6b964af49212a9e7f4d35def'
             'ebd2b54d0487de845093cabda98d5e0977f436fc10d40f15d2cb1598084222e4')
-sha256sums_x86_64=('8f28f67cf7e91fac76ce3ae50bd621378bec1455a0a6b0ff84ee6f06a6333c7b')
+sha256sums_x86_64=('add937d0d72ef35a37e0fd146e608f587b218186b80f1f74cbd409c242f55ab3')
 
 prepare() {
   gendesk -n --pkgname "$pkgname" \
@@ -38,13 +38,13 @@ package() {
   cd $srcdir
   install -m755 -d $pkgdir/usr/{bin,share/applications,share/licences/,lib/$pkgname}
   install -m755 -d $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,256x256,scalable}/apps
-  bsdtar cf - --cd $pkgname-$pkgver \
+  bsdtar cf - --cd $pkgname \
     --exclude ./icon.xpm \
     --exclude ./cevelop.desktop \
     --exclude ./cevelop.sh . | bsdtar xf - --cd $pkgdir/usr/lib/$pkgname/
   install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$pkgname-$pkgver/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
+  install -Dm644 "$pkgname/icon.xpm" "$pkgdir/usr/share/pixmaps/$pkgname.xpm"
   # OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=512m; support was removed in 8.0
   sed -i '/MaxPermSize/ d' "$pkgdir/usr/lib/$pkgname/cevelop.ini"
   for _i in 16 32 48 256; do
