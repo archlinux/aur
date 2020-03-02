@@ -1,7 +1,7 @@
 pkgbase = kotatogram-desktop-bin
 	pkgdesc = Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries
 	pkgver = 1.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kotatogram/kotatogram-desktop
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = kotatogram-desktop-bin
 	provides = kotatogram-desktop
 	conflicts = kotatogram-desktop
 	conflicts = kotatogram-desktop-dynamic-bin
-	source = kotatogram-desktop-bin-1.1.8-2::https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.1.8/1.1.8.tar.xz
+	source = kotatogram-desktop-bin-1.1.8-3::https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.1.8/1.1.8.tar.xz
 	source = https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k1.1.8/lib/xdg/kotatogramdesktop.desktop
 	source = https://github.com/kotatogram/kotatogram-desktop/raw/dev/Telegram/Resources/art/icon16.png
 	source = https://github.com/kotatogram/kotatogram-desktop/raw/dev/Telegram/Resources/art/icon32.png

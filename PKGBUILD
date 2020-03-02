@@ -2,26 +2,26 @@
 
 pkgname=kotatogram-desktop-bin
 pkgver=1.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
 license=(GPL3)
 
 depends=(
-	fontconfig
-	hicolor-icon-theme
-	libdbus
-	libglvnd
-	libsm
+    fontconfig
+    hicolor-icon-theme
+    libdbus
+    libglvnd
+    libsm
     desktop-file-utils
 )
 makedepends=(
-	chrpath
+    chrpath
 )
 optdepends=(
-	'xdg-desktop-portal: for native file dialogs, do not forget to install one of backends'
-	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
+    'xdg-desktop-portal: for native file dialogs, do not forget to install one of backends'
+    'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
 
 conflicts=('kotatogram-desktop' 'kotatogram-desktop-dynamic-bin')
