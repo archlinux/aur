@@ -8,7 +8,7 @@ url='https://github.com/nashaofu/dingtalk'
 license=('MIT')
 provides=('dingtalk')
 conflicts=('dingtalk-electron' 'dingtalk-git')
-depends=('electron')
+depends=('electron4')
 makedepends=('jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/nashaofu/dingtalk/archive/v$pkgver.tar.gz")
 sha256sums=('3dbfcd82867a983b3585e370209bc790652372046a32eb8c140644fc1b336ada')
@@ -38,7 +38,7 @@ package() {
 
     # Install start script
     echo "#!/usr/bin/env sh
-exec electron /usr/share/dingtalk/app.asar
+exec electron4 /usr/share/dingtalk/app.asar
     " > "$srcdir/dingtalk.sh"
     install -Dm755 "$srcdir/dingtalk.sh" "$pkgdir/usr/bin/dingtalk"
 
