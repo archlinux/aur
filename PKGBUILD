@@ -96,7 +96,7 @@ pkgver() {
 # Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/$pkgname"
-
+  rustup show
   [[ -x configure ]] || ./autogen.sh
 }
 
