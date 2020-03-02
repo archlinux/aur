@@ -2,7 +2,7 @@
 pkgname=precached-git
 _pkgname=precached
 pkgver=1.7.2
-pkgrel=0
+pkgrel=1
 pkgdesc="A Linux process monitor and pre-caching daemon"
 arch=('i686' 'x86_64')
 url="https://x3n0m0rph59.gitlab.io/precached/"
@@ -51,7 +51,7 @@ package() {
   mkdir -p "$pkgdir/etc/xdg/autostart/"
 
   # chown -R precached:precached "$pkgdir/var/lib/precached"
-  
+
   install -m 755 "target/release/precached" "$pkgdir/usr/bin/"
   install -m 755 "target/release/precachedctl" "$pkgdir/usr/bin/"
   install -m 755 "target/release/iotracectl" "$pkgdir/usr/bin/"
@@ -73,7 +73,7 @@ package() {
   install -m 644 "support/systemd/precached.preset" "$pkgdir/usr/lib/systemd/system-preset/50-precached.preset"
   install -m 644 "support/systemd/precached-user.preset" "$pkgdir/usr/lib/systemd/user-preset/50-precached.preset"
   install -m 644 "support/desktop/precached-trigger.desktop" "$pkgdir/etc/xdg/autostart/precached-trigger.desktop"
-  
+
   install -m 644 "support/man/precachedtop.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-trigger.1" "$pkgdir/usr/share/man/man1/"
   install -m 644 "support/man/precached-debug.8" "$pkgdir/usr/share/man/man8/"
