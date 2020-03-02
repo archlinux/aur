@@ -10,7 +10,7 @@ url='https://github.com/Kunde21/paclan'
 license=('CC0')
 makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Kunde21/paclan/archive/v${pkgver}.tar.gz")
-sha256sums=('bb190ed268261983230e3c0586bcd40e972900741767a67a60fe549b639c1ed6')
+sha256sums=('6a15dd398cd6a2f28419850b46cae19b9e06b21b96793fa90188dc8af7dc5d02')
 install=paclan.install
 
 build() {
