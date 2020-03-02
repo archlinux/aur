@@ -1,0 +1,18 @@
+pkgbase = nushell-stable-git
+	pkgdesc = A new type of shell.
+	pkgver = 0.10.0.r13.ged7d3fed
+	pkgrel = 1
+	url = https://www.nushell.sh
+	install = nushell-stable-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = openssl
+	optdepends = libxcb
+	optdepends = libx11
+	source = nushell::git://github.com/nushell/nushell.git
+	sha256sums = SKIP
+
+pkgname = nushell-stable-git
+
