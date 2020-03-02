@@ -20,7 +20,7 @@ makedepends=(
 	chrpath
 )
 optdepends=(
-	'xdg-desktop-portal: for native file dialogs, just don't forget to install one of it's backend'
+	'xdg-desktop-portal: for native file dialogs, do not forget to install one of backends'
 	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
 
