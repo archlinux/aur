@@ -9,9 +9,11 @@ license=('custom')
 makedepends=('git' 'cmake' 'ed')
 provides=('raspberrypi-firmware' 'raspberrypi-userland-aarch64')
 source=('git+https://github.com/raspberrypi/userland.git'
-        'raspberrypi-userland.conf')
+        'raspberrypi-userland.conf'
+        'raspberrypi-userland.sh')
 md5sums=('SKIP'
-         '72e0d5818fc513ece1b964f25f7e7882')
+         '72e0d5818fc513ece1b964f25f7e7882'
+         '734f220923521411450b7cb48333c142')
 
 pkgver() {
 	cd "$srcdir/userland"
@@ -31,8 +33,12 @@ build() {
 
 package() {
 	cd "$srcdir/userland"
-        install -Dm755 -t "$pkgdir/opt/vc/bin" build/bin/*
-        install -Dm644 -t "$pkgdir/opt/vc/lib" build/lib/*
+	install -Dm755 -t "$pkgdir/opt/vc/bin" build/bin/*
+	install -Dm644 -t "$pkgdir/opt/vc/lib" build/lib/*
+	cd build/inc
+        find . -type f -printf "install -Dm644 -t \"$pkgdir/opt/vc/include/%h\" %h/%f\n" | sh
+	cd "$srcdir/userland"
 	install -Dm644 -t "$pkgdir/etc/ld.so.conf.d" "$srcdir/raspberrypi-userland.conf"
+        install -Dm644 -t "$pkgdir/etc/profile.d" "$srcdir/raspberrypi-userland.sh"
         install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"    
 }

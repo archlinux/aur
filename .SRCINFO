@@ -12,8 +12,10 @@ pkgbase = raspberrypi-userland-aarch64-git
 	provides = raspberrypi-userland-aarch64
 	source = git+https://github.com/raspberrypi/userland.git
 	source = raspberrypi-userland.conf
+	source = raspberrypi-userland.sh
 	md5sums = SKIP
 	md5sums = 72e0d5818fc513ece1b964f25f7e7882
+	md5sums = 734f220923521411450b7cb48333c142
 
 pkgname = raspberrypi-userland-aarch64-git
 
