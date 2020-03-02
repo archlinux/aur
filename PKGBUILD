@@ -15,5 +15,5 @@ prepare () {
 package () {
 	make install srcdir=$srcdir pkgdir=$pkgdir
 }
-md5sums=('23c78cb76dc3aebd7f45efce417c9830'
+md5sums=('7f7fba89eb830a32415f4e57b2425e66'
          '8348486f4c23d9987ed97f161cf50e79')
