@@ -12,22 +12,21 @@ set AOCL_TEXT "AMD Optimizing CPU Libraries (AOCL)"
 conflict aocl-gcc
 
 prepend-path CPATH           ${AOCL_ROOT}/amd-securerng/include
-prepend-path CPATH           ${AOCL_ROOT}/amd-scalapack/include
-prepend-path CPATH           ${AOCL_ROOT}/amd-rng/include
+prepend-path CPATH           ${AOCL_ROOT}/amd-rng/rng/include
 prepend-path CPATH           ${AOCL_ROOT}/amd-libm/include
 prepend-path CPATH           ${AOCL_ROOT}/amd-libflame/include
 prepend-path CPATH           ${AOCL_ROOT}/amd-fftw/include
 prepend-path CPATH           ${AOCL_ROOT}/amd-blis/include
 prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-securerng/lib
 prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-scalapack/lib
-prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-rng/lib
+prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-rng/rng/lib
 prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-libm/lib
 prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-libflame/lib
 prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-fftw/lib
 prepend-path LIBRARY_PATH    ${AOCL_ROOT}/amd-blis/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-securerng/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-scalapack/lib
-prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-rng/lib
+prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-rng/rng/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-libm/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-libflame/lib
 prepend-path LD_LIBRARY_PATH ${AOCL_ROOT}/amd-fftw/lib
