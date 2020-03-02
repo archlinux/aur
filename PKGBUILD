@@ -2,12 +2,12 @@
 pkgname=desec-dns-cli
 _name=${pkgname//-/_}
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="CLI tool for the desec.io DNS service"
 arch=("any")
 url=https://gitlab.com/XenGi/desec-dns-cli
 license=("MIT")
-depends=("python>=3.6" "python-click")
+depends=("python>=3.6" "python-click" "python-desec-dns-api")
 makedepends=("python-setuptools")
 #checkdepends=("python-pytest" "python-pytest-xdist" "python-pytest-flake8")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_name-$pkgver.tar.gz")

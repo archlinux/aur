@@ -1,13 +1,14 @@
 pkgbase = desec-dns-cli
 	pkgdesc = CLI tool for the desec.io DNS service
 	pkgver = 0.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/XenGi/desec-dns-cli
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.6
 	depends = python-click
+	depends = python-desec-dns-api
 	source = https://files.pythonhosted.org/packages/source/d/desec-dns-cli/desec_dns_cli-0.0.2.tar.gz
 	sha256sums = d61d8133403e0303af4180041858b659effcfc944980a788fcaccd7b51eee1c2
 
