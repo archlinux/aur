@@ -1,6 +1,6 @@
 pkgbase = python-hkp4py-git
 	pkgdesc = A Library for the hkp|hkps protocol on gpg|pgp keyservers.
-	pkgver = r38.802ac36
+	pkgver = r45.7529485
 	pkgrel = 1
 	url = https://github.com/Selfnet/hkp4py/
 	arch = any
