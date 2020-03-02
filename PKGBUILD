@@ -11,7 +11,7 @@ url='https://electronjs.org/'
 license=('MIT' 'custom')
 depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libnghttp2'
          'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
-makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'jsoncpp' 'libnotify'
+makedepends=('clang' 'git' 'gn-m76' 'gperf' 'harfbuzz-icu' 'jsoncpp' 'libnotify'
              'lld' 'llvm' 'ninja' 'npm' 'pciutils' 'python2' 'wget' 'yasm')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'trash-cli: file deletion support (trash-put)'
@@ -164,7 +164,7 @@ build() {
     use_gnome_keyring = false
     use_sysroot = false
   '
-  gn gen out/Release \
+  gn-m76 gen out/Release \
       --args="import(\"//electron/build/args/release.gn\") ${GN_EXTRA_ARGS}"
   ninja -C out/Release electron_dist_zip
   # ninja -C out/Release third_party/electron_node:headers
