@@ -5,15 +5,14 @@ pkgbase = android-messages-desktop
 	url = https://github.com/chrisknepper/android-messages-desktop
 	arch = x86_64
 	license = MIT
+	makedepends = npm
 	depends = electron
 	depends = libnotify
 	depends = libappindicator-gtk3
-	source = https://github.com/chrisknepper/android-messages-desktop/releases/download/v3.1.0/android-messages-desktop-3.1.0.pacman
-	source = https://raw.githubusercontent.com/chrisknepper/android-messages-desktop/master/LICENSE
+	source = android-messages-desktop-3.1.0.tar.gz::https://github.com/chrisknepper/android-messages-desktop/archive/v3.1.0.tar.gz
 	source = android-messages-desktop
-	sha256sums = 97d5e7997ced8635e8fe46cefb0d95c979900e733570562d020d167ca348349a
-	sha256sums = 3a0332a1a4cbd1db232d73b032c3450c978e48759a3dbcfeddfb874e93bc0b3c
-	sha256sums = 006d50c067e21c9978890a2e8f27b86ba121e48992ef6814864188d704fca860
+	sha256sums = e744e805a96a833b8b6fb59c8407dbc2b91d72eae7de9586d0bb42db87839ba8
+	sha256sums = ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69
 
 pkgname = android-messages-desktop
 

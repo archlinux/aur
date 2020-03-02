@@ -9,32 +9,50 @@ arch=('x86_64')
 url="https://github.com/chrisknepper/android-messages-desktop"
 license=('MIT')
 depends=('electron' 'libnotify' 'libappindicator-gtk3')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.pacman"
-		"https://raw.githubusercontent.com/chrisknepper/$pkgname/master/LICENSE"
-		"$pkgname")
-sha256sums=('97d5e7997ced8635e8fe46cefb0d95c979900e733570562d020d167ca348349a'
-            '3a0332a1a4cbd1db232d73b032c3450c978e48759a3dbcfeddfb874e93bc0b3c'
-            '006d50c067e21c9978890a2e8f27b86ba121e48992ef6814864188d704fca860')
+makedepends=('npm')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname")
+sha256sums=('e744e805a96a833b8b6fb59c8407dbc2b91d72eae7de9586d0bb42db87839ba8'
+            'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69')
 
 prepare() {
-	sed -i 's|"/opt/Android Messages/android-messages-desktop" %U|android-messages-desktop|g' \
-		"usr/share/applications/$pkgname.desktop"
+	cd "$pkgname-$pkgver"
+
+	# Disable building of deb, AppImage and snap
+	sed -i '65,67d' package.json
+
+	# Use system electron
+	electronVer=$(tail /usr/lib/electron/version)
+	sed -i 's/"electron": "7.0.1"/"electron": "'$electronVer'"/g' package.json
+}
+
+build() {
+	cd "$pkgname-$pkgver"
+	HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
+	npm run build
 }
 
 package() {
+	cd "$pkgname-$pkgver"
 	install -d "$pkgdir/usr/lib/$pkgname"
-	cp -r "opt/Android Messages/resources" "$pkgdir/usr/lib/$pkgname"
+	cp -r dist/linux-unpacked/resources "$pkgdir/usr/lib/$pkgname"
 
-	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
-
-	install -Dm644 "usr/share/applications/$pkgname.desktop" -t \
-		"$pkgdir/usr/share/applications"
+	install -Dm755 "$srcdir/$pkgname" -t "$pkgdir/usr/bin"
 
 	for icon_size in 16 24 32 48 64 128 256 512 1024; do
 		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
 		install -d $pkgdir$icons_dir
-		install -m644 $srcdir$icons_dir/$pkgname.png -t $pkgdir$icons_dir
+		install -m644 resources/icons/${icon_size}x${icon_size}.png \
+			$pkgdir$icons_dir/$pkgname.png
 	done
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+	# Install desktop file from .pacman
+	cd dist
+	tar -xf "$pkgname-$pkgver.pacman"
+	sed -i 's|"/opt/Android Messages/'$pkgname'" %U|'$pkgname'|g' \
+		"usr/share/applications/$pkgname.desktop"
+	install -Dm644 "usr/share/applications/$pkgname.desktop" -t \
+		"$pkgdir/usr/share/applications"
 }
