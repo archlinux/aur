@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-vtk-git
-pkgver=r73116.e29c40ca2b
+pkgver=r73422.534e983ce2
 pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization (mingw-w64)'
 arch=('any')
@@ -21,6 +21,7 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
+  sed -i "s|Psapi|psapi|g" Utilities/KWSys/vtksys/CMakeLists.txt
 }
 
 build() {
