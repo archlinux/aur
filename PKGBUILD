@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=dingtalk
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS'
 arch=('x86_64' 'i686')
 url='https://github.com/nashaofu/dingtalk'
@@ -38,7 +38,7 @@ package() {
 
     # Install start script
     echo "#!/usr/bin/env sh
-exec electron4 /usr/share/dingtalk/app.asar
+exec electron /usr/share/dingtalk/app.asar
     " > "$srcdir/dingtalk.sh"
     install -Dm755 "$srcdir/dingtalk.sh" "$pkgdir/usr/bin/dingtalk"
 
