@@ -1,0 +1,21 @@
+pkgbase = r-servr
+	pkgdesc = A Simple HTTP Server to Serve Static Files or Dynamic Documents
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://cran.r-project.org/package=servr
+	arch = any
+	license = GPL
+	depends = r
+	depends = r-mime>=0.2
+	depends = r-httpuv>=1.4.0
+	depends = r-xfun
+	depends = r-jsonlite
+	optdepends = r-later
+	optdepends = r-rstudioapi
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	source = https://cran.r-project.org/src/contrib/servr_0.15.tar.gz
+	sha256sums = b13753018d3d06e95a81a908f559119c63a63a304f5e547370394d0e9f4a33a5
+
+pkgname = r-servr
+
