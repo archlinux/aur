@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=arch-audit-git
-pkgver=0.1.13.r1.g74a490c
+pkgver=0.1.14.r9.g857fd36
 pkgrel=1
 pkgdesc='A utility like pkg-audit based on Arch Security Team data'
 url='https://gitlab.com/ilpianista/arch-audit'
@@ -11,7 +11,7 @@ provides=('arch-audit')
 conflicts=('arch-audit')
 arch=('i686' 'x86_64')
 license=('MIT')
-source=('https://gitlab.com/ilpianista/arch-audit.git')
+source=('git+https://gitlab.com/ilpianista/arch-audit.git')
 md5sums=('SKIP')
 
 pkgver() {
