@@ -1,0 +1,14 @@
+pkgbase = ztags-git
+	pkgdesc = ctags support for zig, built with zig
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/isaachier/ztags
+	arch = x86_64
+	license = Apache
+	provides = ztags
+	conflicts = ztags
+	source = git://github.com/watzon/ztags.git
+	md5sums = SKIP
+
+pkgname = ztags-git
+
