@@ -28,6 +28,7 @@ UPDATE=false
 for arg in "$@"; do
   shift
   case "$arg" in
+  	"--update") set -- "$@" "-u" ;;
     "--remove") set -- "$@" "-r" ;;
     "--clear-cache") set -- "$@" "-c" ;;
     "--help")   set -- "$@" "-h" ;;
@@ -49,7 +50,7 @@ while getopts ":urch" opt; do
       CLEAR_CACHE=true
       ;;
     h )
-      echo "Usage: haur [--remove | -r] | [--clear-cache | -c] <package names>"
+      echo "Usage: haur [--remove | -r] | [--clear-cache | -c] [--update | -u] <package names>"
       exit 0
       ;;
     \?)
