@@ -2,7 +2,7 @@
 # Contributor: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname=rpi-eeprom
-pkgver=r119.3e1200e
+pkgver=r123.c77267e
 pkgrel=1
 pkgdesc='Raspberry Pi4 boot EEPROM updater'
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
 )
 optdepends=(
   'raspberrypi-firmware: Use this on an armv7h (32bit) system.'
-  'raspberrypi-userland-aarch64-git: Use this on an aarch64 (64bit) system.'
+  'raspberrypi-userland-aarch64: Use this on an aarch64 (64bit) system.'
 )
 
 backup=('etc/default/rpi-eeprom-update')
