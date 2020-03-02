@@ -1,10 +1,11 @@
 pkgbase = skycoin-font
 	pkgdesc = Skycoin sans font. Skycoin.com
 	pkgver = 1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://skycoin.com
 	arch = any
 	makedepends = unzip
+	makedepends = skycoin-keyring
 	source = https://downloads.skycoin.net/branding/Skycoin-Sans.zip
 	source = https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key
 	source = PKGBUILD.sig

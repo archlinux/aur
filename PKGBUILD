@@ -2,11 +2,11 @@
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skycoin-font
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="Skycoin sans font. Skycoin.com"
 url="https://skycoin.com"
 arch=(any)
-makedepends=('unzip')
+makedepends=('unzip' 'skycoin-keyring')
 source=("https://downloads.skycoin.net/branding/Skycoin-Sans.zip"
 "https://raw.githubusercontent.com/0pcom/skycoin_archlinux_packages/master/key"
 "PKGBUILD.sig")
