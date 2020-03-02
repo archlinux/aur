@@ -2,17 +2,20 @@
 # based on brother-hll2300d by Mykola Bespaliuk (kolkabes [at] gmail [dot] com)
 pkgname=brother-hll2310d
 pkgver=4.0.0
-pkgrel=1
+_pkgrel=1
+pkgrel=2
 pkgdesc="Brother HL-L2310D CUPS driver"
 url="http://www.brother.com"
 arch=('x86_64' 'i686')
 depends=('perl' 'bash' 'ghostscript')
 license=('custom:Brother')
 source=(
-	https://download.brother.com/welcome/dlf103531/hll2310dpdrv-${pkgver}-${pkgrel}.i386.rpm
+	"https://download.brother.com/welcome/dlf103531/hll2310dpdrv-${pkgver}-${_pkgrel}.i386.rpm"
+	"wrapper.patch"
 )
 md5sums=(
 	'786ededd9b19d559dcb49160bb81c8a2'
+	'7e4c0e3834def252fc58f0dcdad7cbb2'
 )
 
 if [[ "$CARCH" == "x86_64" ]]; then
@@ -22,6 +25,10 @@ fi
 package() {
 	mkdir -p "${pkgdir}/opt"
 	cp -R "${srcdir}/opt/brother" "${pkgdir}/opt/brother"
+
+	cd ${pkgdir}
+	patch -Np0 -i "${srcdir}/wrapper.patch"
+	cd - 
 
 	cd ${pkgdir}/opt/brother/Printers/HLL2310D/lpd
 	for i in brprintconflsr3 rawtobr3; do ln -s ${CARCH}/$i .; done
