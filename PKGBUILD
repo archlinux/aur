@@ -2,9 +2,9 @@
 # Co-maintainer: Hans Goor <me at eyedevelop dot org>
 
 pkgname=verona
-pkgver=6
+pkgver=7
 pkgrel=1
-commit_hash=c656f50eaca2de8a0d515d50f3cd71ba9d024df0
+commit_hash=39d60e935403682ee66879d19fa93347b1df6210
 pkgdesc="Microsoft's Verona programming language interpreter and compiler"
 arch=('x86_64')
 url='https://github.com/microsoft/verona'
