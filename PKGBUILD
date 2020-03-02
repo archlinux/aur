@@ -9,7 +9,7 @@ url='https://madmurphy.github.io/libconfini'
 license=('GPL')
 conflicts=("${pkgname}-git" "${pkgname}-bin")
 source=("https://github.com/madmurphy/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}-with-configure.tar.gz")
-sha256sums=('4ba305c08c4f51851003c7628ed6a30c8c5b78dc7d66446213273bb153ffea45')
+sha256sums=('9812e5a4eab0bf5adf8c15e1048d57c40772a2c3ea53932064963c06d33e0d1f')
 
 build() {
 
