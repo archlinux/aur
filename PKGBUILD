@@ -1,7 +1,7 @@
 # Maintainer: Ingo Heimbach <i.heimbach@fz-juelich.de>
 
 pkgname="gr-framework"
-pkgver="0.47.0"
+pkgver="0.47.2"
 pkgrel="1"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
@@ -13,7 +13,7 @@ depends=("bzip2" "cairo" "fontconfig" "freetype2" "ghostscript" "glfw-x11" \
 makedepends=("cmake")
 optdepends=("ffmpeg: video support")
 source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz")
-sha256sums=("aa501ed6e516d06382e6734c86d86d1363d81e9a6451cbcc1750ec80066c8a91")
+sha256sums=("f7390496ee3f4255346535cfcdf2da102a81c035a5931413fa5da1e2141cba09")
 
 build() {
     cd "${srcdir}/gr-${pkgver}" || return
