@@ -3,7 +3,7 @@
 _pkgname=janet
 _pkgver=1.7.0
 pkgname=janet-lang-git
-pkgver=1.7.0.r1819.8cb63ce
+pkgver=1.7.0.r1823.2349ea9
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -34,7 +34,7 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -dm 644 "${pkgdir}/usr/lib/janet"
+    install -dm 755 "${pkgdir}/usr/lib/janet"
     install -Dm 755 "build/janet" "${pkgdir}/usr/bin/janet"
     install -Dm 755 "auxbin/jpm" "${pkgdir}/usr/bin/jpm"
     install -Dm 644 "src/include/janet.h" "${pkgdir}/usr/include/janet/janet.h"
