@@ -1,7 +1,6 @@
 
 pkgname=mingw-w64-intel-tbb
-pkgver=2019.8
-_pkgver=${pkgver/./_U}
+pkgver=2020.1
 pkgrel=1
 pkgdesc='High level abstract threading library (mingw-w64)'
 depends=('mingw-w64-crt')
@@ -10,19 +9,22 @@ options=('!buildflags' '!strip' 'staticlibs')
 arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('APACHE')
-source=("https://github.com/01org/tbb/archive/${_pkgver}.tar.gz")
-sha256sums=('7b1fd8caea14be72ae4175896510bf99c809cd7031306a1917565e6de7382fba')
+source=(https://github.com/intel/tbb/archive/v$pkgver.tar.gz)
+sha256sums=('48d51c63b16787af54e1ee4aaf30042087f20564b4eecf9a032d5568bc2f0bf8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "$srcdir"/tbb-${_pkgver}
+  cd "$srcdir"/tbb-${pkgver}
   curl -L https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt -o CMakeLists.txt
   curl -L https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in -o build/version_string.ver.in
+
+  # https://github.com/wjakob/tbb/pull/62
+  sed -i "57ilist(REMOVE_ITEM tbb_src \${CMAKE_CURRENT_SOURCE_DIR}/src/tbb/tbb_bind.cpp)" CMakeLists.txt
 }
 
 build() {
-  cd "$srcdir"/tbb-${_pkgver}
+  cd "$srcdir"/tbb-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DTBB_BUILD_TESTS=OFF ..
@@ -33,7 +35,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/tbb-${_pkgver}/build-${_arch}
+    cd "$srcdir"/tbb-${pkgver}/build-${_arch}
     make install DESTDIR="${pkgdir}"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
