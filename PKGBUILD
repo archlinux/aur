@@ -1,20 +1,21 @@
-# $Id$
-# Maintainer: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
+# Mantainer: DUS462002 <daniurdi46@gmail.com>
+# Contributor: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: Fabien Wang <fabien(dot)wang(at)gmail(dot)com>
 
-pkgname=qt4pas
+pkgname=qt4pas-git
+pkbase=qt4pas
 pkgver=2.5
 pkgrel=8
-pkgdesc="Free Pascal Qt4 Binding Library"
+pkgdesc="Free Pascal Qt4 Binding Library, working in 2020"
 arch=('x86_64')
-url="http://users.telenet.be/Jan.Van.hijfte/qtforfpc/fpcqt4.html"
 license=('LGPL')
 depends=('qt4' 'xdg-utils')
+provides=('qt4pas')
 source=(
-    'http://users.telenet.be/Jan.Van.hijfte/qtforfpc/V2.5/qt4pas-V2.5_Qt4.5.3.tar.gz'
+    'http://master.us.finkmirrors.net/distfiles/md5/8249bc17e4167e077d22c7f5fb118bb2/qt4pas-V2.5_Qt4.5.3.tar.gz'
     'qtwebkit.patch'
 )
-sha256sums=('825423db80da4df5c21816c0392b3394cddfe2f3293dfd08ace84941726affea'
+sha256sums=('SKIP'
             'af1721fbf6706931d0b82dd28b3540f56a65e1585b75873c4ac9eaddecf9c921')
 
 prepare() {
