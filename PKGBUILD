@@ -3,7 +3,7 @@
 # Packager: Chris Knepper <chris82thekid at gmail dot com>
 pkgname=android-messages-desktop
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/chrisknepper/android-messages-desktop"
@@ -23,7 +23,7 @@ prepare() {
 
 package() {
 	install -d "$pkgdir/usr/lib/$pkgname"
-	cp -a "opt/Android Messages/resources"/* "$pkgdir/usr/lib/$pkgname"
+	cp -r "opt/Android Messages/resources" "$pkgdir/usr/lib/$pkgname"
 
 	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
 
@@ -32,8 +32,8 @@ package() {
 
 	for icon_size in 16 24 32 48 64 128 256 512 1024; do
 		icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-		install -d $pkgdir/$icons_dir
-		install -m644 $srcdir$icons_dir/$pkgname.png $pkgdir$icons_dir/$pkgname.png
+		install -d $pkgdir$icons_dir
+		install -m644 $srcdir$icons_dir/$pkgname.png -t $pkgdir$icons_dir
 	done
 
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
