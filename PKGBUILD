@@ -36,7 +36,7 @@ package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
 
-    install -dm 644 "${pkgdir}/usr/lib/janet"
+    install -dm 755 "${pkgdir}/usr/lib/janet"
     install -Dm 755 "build/janet" "${pkgdir}/usr/bin/janet"
     install -Dm 755 "auxbin/jpm" "${pkgdir}/usr/bin/jpm"
     install -Dm 644 "src/include/janet.h" "${pkgdir}/usr/include/janet/janet.h"
