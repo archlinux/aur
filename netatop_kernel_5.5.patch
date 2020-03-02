@@ -1,0 +1,18 @@
+diff -ur netatop-2.0/module/netatop.c netatop-2.0.new/module/netatop.c
+--- netatop-2.0/module/netatop.c	2017-09-30 12:06:32.000000000 +0200
++++ netatop-2.0.new/module/netatop.c	2020-02-28 15:04:43.902624927 +0100
+@@ -965,7 +965,12 @@
+ 	tip->id    	= id;
+ 	tip->type    	= type;
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 17, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 5, 0)
++	// real_start_time was renamed to start_boottime (https://github.com/torvalds/linux/commit/cf25e24db6)
++	tip->btime	= div_u64((current->start_boottime +
++				(boottime.tv_sec * NSEC_PER_SEC +
++					boottime.tv_sec)), NSEC_PER_SEC);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(3, 17, 0)
+ 	tip->btime	= div_u64((current->real_start_time +
+ 				(boottime.tv_sec * NSEC_PER_SEC +
+ 					boottime.tv_sec)), NSEC_PER_SEC);
+Tylko w netatop-2.0.new/module: .netatop.o.d
