@@ -12,16 +12,18 @@ makedepends=('gobject-introspection' 'git' 'autoconf-archive' 'sysprof' 'meson')
 checkdepends=('valgrind' 'xorg-server-xvfb')
 provides=('gjs')
 conflicts=('gjs')
-_commit=016300e9a2fda5a310b4a42a487355e68491a1fa # tags/1.63.91^0
-source=("git+https://gitlab.gnome.org/GNOME/gjs.git#commit=$_commit")
+source=("git+https://gitlab.gnome.org/GNOME/gjs.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --abbrev=0
 }
 
 build() {
+  cd $_pkgname
+  git checkout tags/$pkgver
+  cd ..
   arch-meson $_pkgname build
   ninja -C build
 }
