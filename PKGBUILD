@@ -1,7 +1,7 @@
 # Maintainer: Bill Kaguru Wanjohi <bill@ka.guru>
 
 pkgname=k6
-pkgver=0.21.1
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
@@ -13,6 +13,7 @@ options=('!strip' '!emptydirs')
 _gourl=github.com/loadimpact/k6
 
 build() {
+  GOPATH="$srcdir" go get -v -x ${_gourl}/...
   GOPATH="$srcdir" go get -fix -v -x ${_gourl}/...
 }
 
