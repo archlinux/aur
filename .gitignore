@@ -1,5 +1,5 @@
 *.tar
-obs-studio-git/
+obs-studio-git-with-browser/
 ftl-sdk
 pkg/
 src/
