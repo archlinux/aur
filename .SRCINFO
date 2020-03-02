@@ -1,13 +1,15 @@
-pkgbase = python-browserid
-	pkgdesc = Python client library for the BrowserID protocol
-	pkgver = 0.14.0
-	pkgrel = 3
-	url = https://github.com/mozilla/PyBrowserID
+pkgbase = python-icalevents
+	pkgdesc = Python module for iCal URL/file parsing and querying.
+	pkgver = 0.1.24
+	pkgrel = 0
+	url = https://github.com/irgangla/icalevents
 	arch = any
-	license = MPL2
-	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/P/PyBrowserID/PyBrowserID-0.14.0.tar.gz
-	md5sums = fdfd2b65fbd3939332b90b6d2089ce59
+	license = MIT
+	depends = python-httplib2
+	depends = python-icalendar
+	depends = python-pytz
+	source = https://files.pythonhosted.org/packages/source/i/icalevents/icalevents-0.1.24.tar.gz
+	sha256sums = 242d79860eae55eeeb4906ecac6b486f35f22e36ab8f60c8142e911c16f2d27b
 
-pkgname = python-browserid
+pkgname = python-icalevents
 
