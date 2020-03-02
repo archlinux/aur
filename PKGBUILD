@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=mynes
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Rolling minesweeper with islands and sonars"
 url='https://www.efanomars.com/games/mynes'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("mynes")
 #conflicts=("mynes")
 
-source=('https://efanomars.com/sources/mynes-0.5.tar.gz')
-sha256sums=('69dc47bb5a9cd9e4b9c6bc29175ae2e471b9fc23d41ac6ec7e5cd49414114e0c')
+source=('https://efanomars.com/sources/mynes-0.6.tar.gz')
+sha256sums=('173bd3bacb94e541aca3868c98819f50739599399ce977d7e2f0bd5abb574556')
 
 build() {
   cd "${srcdir}/mynes"

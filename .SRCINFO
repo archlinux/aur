@@ -1,6 +1,6 @@
 pkgbase = mynes
 	pkgdesc = Rolling minesweeper with islands and sonars
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://www.efanomars.com/games/mynes
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = mynes
 	depends = stmm-games
 	depends = stmm-input
 	depends = gtkmm3
-	source = https://efanomars.com/sources/mynes-0.5.tar.gz
-	sha256sums = 69dc47bb5a9cd9e4b9c6bc29175ae2e471b9fc23d41ac6ec7e5cd49414114e0c
+	source = https://efanomars.com/sources/mynes-0.6.tar.gz
+	sha256sums = 173bd3bacb94e541aca3868c98819f50739599399ce977d7e2f0bd5abb574556
 
 pkgname = mynes
 
