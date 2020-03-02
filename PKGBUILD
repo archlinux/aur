@@ -1,25 +1,23 @@
+# Maintainer: Kevin Baxmann <kvbx+aur@kvbx.de>
 # Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Andreas Pieber <anpieber@gmail.com>
 
 set -u
 pkgname='liquibase'
-pkgver='3.8.0'
+pkgver='3.8.7'
 pkgrel='1'
 pkgdesc='VCS source control tailored for database management'
 arch=('any')
 url="http://www.liquibase.org/"
 license=('Apache')
-depends=('java-environment' 'slf4j')
+depends=('java-environment')
 _giturl="https://github.com/liquibase/${pkgname}"
 _verwatch=("${_giturl}/releases.atom" '\s\+<link rel="alternate" type="text/html" href="http.*/releases/tag/liquibase-parent-\([^"]\+\)"/>.*' 'f') # RSS
 options=('!strip')
-source=("https://github.com/liquibase/${pkgname}/releases/download/liquibase-parent-${pkgver}/liquibase-${pkgver}-bin.tar.gz"
+source=("https://github.com/liquibase/liquibase/releases/download/v${pkgver}/liquibase-${pkgver}.tar.gz"
         "liquibase.profile")
-md5sums=('d3dcf6d3cf0f62286056384ac3819790'
-         'b3268584574dcd61a552e7cb7a968bae')
-sha256sums=('d6d940dd924b0acdb2a57203578182e42d72ffdb375526c6f6b70354acc40f76'
+sha256sums=('8f87be4f33f2be55e47650bd4b0c576e8fa187a2b264279c327f89ee7fbd433f'
             '7c1939e5b1aee63db199c86989726bbdf81102784512ed69f8595fddf80c30c0')
-
 package() {
   set -u
   # install profile file
@@ -43,9 +41,6 @@ package() {
 
   # remove files for other platforms
   rm -f "${pkgdir}/opt/liquibase"/{liquibase.bat,liquibase.spec}
-
-  # Supply API
-  ln -s '/usr/share/java/slf4j/slf4j-api.jar' -t "${pkgdir}/opt/liquibase/lib/"
 
   install -d "${pkgdir}/usr/share/licenses/${pkgbase}/"
   ln -s '/opt/liquibase/LICENSE.txt' -t "${pkgdir}/usr/share/licenses/${pkgbase}/"
