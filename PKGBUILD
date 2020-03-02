@@ -5,9 +5,9 @@
 # Contributor: yosh64 <yosh64.at.gmail.dot.com>
 
 pkgname=mtpaint-wjaguar
-pkgver=3.49.21
+pkgver=3.49.22
 pkgrel=1
-_commit="deb347c5df910d52b874c480da3234d1bbe78838"
+_commit="3bd786af01d1d7eed28be5c4b8ba599f58d359da"
 pkgdesc='Simple paint program for creating icons and pixel based artwork (Dmitry Groshev''s fork)'
 arch=('x86_64')
 url='https://github.com/wjaguar/mtPaint'
@@ -17,7 +17,7 @@ optdepends=('gifsicle: for exporting GIF files from mtPaint')
 provides=('mtpaint')
 conflicts=('mtpaint')
 source=("mtpaint-$pkgver.zip::https://github.com/wjaguar/mtPaint/archive/$_commit.zip")
-sha256sums=('fdc64526f6a342ba6c65336aaf08b070ad0aac6ced81ca623ed8c3152ae01a9a')
+sha256sums=('5b6aac998db0e6dc28b3ff9f6276281cc7df324f3123a731484c4b4efd709811')
 
 prepare() {
   cd "mtPaint-$_commit"
