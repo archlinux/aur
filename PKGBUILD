@@ -2,12 +2,12 @@
 
 pkgname=neovide
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='No Nonsense Neovim Client in Rust'
 arch=('x86_64')
 url='https://github.com/Kethku/neovide'
 license=('MIT')
-depends=('fontconfig' 'freetype2' 'gcc-libs' 'libglvnd' 'glibc')
+depends=('neovim' 'fontconfig' 'freetype2' 'libglvnd')
 makedepends=('rust' 'gtk3')
 provides=("neovide")
 conflicts=("neovide-git")
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  # install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/neovide/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/neovide/LICENSE"
   install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/neovide" "${pkgdir}/usr/bin/neovide"
 }
 
