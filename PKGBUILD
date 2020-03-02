@@ -1,6 +1,7 @@
 # Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=desec-dns-cli
-pkgver=0.0.1
+_name=${pkgname//-/_}
+pkgver=0.0.2
 pkgrel=2
 pkgdesc="CLI tool for the desec.io DNS service"
 arch=("any")
@@ -8,22 +9,22 @@ url=https://gitlab.com/XenGi/desec-dns-cli
 license=("MIT")
 depends=("python>=3.6" "python-click")
 makedepends=("python-setuptools")
-checkdepends=("python-pytest" "python-pytest-xdist" "python-pytest-flake8")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('ed6ecd486f13a707ce19baffd964392ba1a086052c682cc518cb34dd4a5c5ebb')
+#checkdepends=("python-pytest" "python-pytest-xdist" "python-pytest-flake8")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_name-$pkgver.tar.gz")
+sha256sums=('d61d8133403e0303af4180041858b659effcfc944980a788fcaccd7b51eee1c2')
 
-check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    pytest --flake8 tests/
-}
+#check() {
+#    cd "$srcdir/$_name-$pkgver"
+#    pytest --flake8 tests/
+#}
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_name-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$_name-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
