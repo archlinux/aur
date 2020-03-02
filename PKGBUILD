@@ -6,7 +6,7 @@
 # Maintainer: Martin Kaffanke <martin@kaffanke.at>
 pkgname=b2fuse-git
 _reponame="b2_fuse"
-pkgver=v1.3.r60.gcba91ab
+pkgver=v1.3.r63.g7dd6f21
 pkgrel=1
 pkgdesc="FUSE integration for Backblaze B2 Cloud storage"
 arch=('any')
@@ -15,7 +15,7 @@ license=('MIT')
 groups=('linux-tools')
 depends=('python-fusepy' 'python-b2sdk' 'python-pyaml')
 makedepends=('git')
-source=('git://github.com/sondree/b2_fuse.git')
+source=('git://github.com/grauschnabel/b2_fuse.git')
 sha256sums=('SKIP')
 
 pkgver() {

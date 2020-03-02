@@ -1,6 +1,6 @@
 pkgbase = b2fuse-git
 	pkgdesc = FUSE integration for Backblaze B2 Cloud storage
-	pkgver = v1.3.r60.gcba91ab
+	pkgver = v1.3.r63.g7dd6f21
 	pkgrel = 1
 	url = https://github.com/sondree/b2_fuse
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = b2fuse-git
 	depends = python-fusepy
 	depends = python-b2sdk
 	depends = python-pyaml
-	source = git://github.com/sondree/b2_fuse.git
+	source = git://github.com/grauschnabel/b2_fuse.git
 	sha256sums = SKIP
 
 pkgname = b2fuse-git
