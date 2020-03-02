@@ -1,30 +1,24 @@
-# Contributor: henning mueller <henning@orgizm.net>
+# Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=thunar-vcs-plugin
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="SVN and GIT integration for Thunar."
-arch=(i686 x86_64)
-license=(GPL)
-url=http://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin
-depends=(thunar git subversion apr)
-makedepends=(intltool)
-source=(
-  http://archive.xfce.org/src/thunar-plugins/thunar-vcs-plugin/0.1/$pkgname-$pkgver.tar.bz2
-  $pkgname.install
-)
-install=$pkgname.install
+arch=('i686' 'x86_64')
+license=('GPL')
+url="https://goodies.xfce.org/projects/thunar-plugins/thunar-vcs-plugin"
+depends=('thunar>=1.7.0' 'git' 'subversion')
+makedepends=('intltool')
+source=("https://archive.xfce.org/src/thunar-plugins/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('SKIP')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib/xfce4
   make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${pkgname}-${pkgver}"
   make DESTDIR=$pkgdir install
 }
-
-sha256sums=('7094f576865957397eefcdb1b05ba9be020a396c12949077507ea1573b1ef451'
-            '9236743ff2218aa974f15227a57a1f364744c3459a1ed94ac9a087aa2b1be3c4')
