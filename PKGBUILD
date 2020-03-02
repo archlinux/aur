@@ -2,7 +2,7 @@
 
 _gemname=XSpear
 pkgname=ruby-xspear
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Powerfull XSS Scanning and Parameter Analysis tool&gem'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby-colorize ruby-selenium-webdriver ruby-terminal-table ruby-progress
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('5fd9b571ab1509dab9628c1e38e884157effef8bd590cce048bdeed7296f3c4f')
+sha256sums=('84ac863a8c07b3520e0324338efb00c293d6ee166fac8d1c69755cc35c7e2186')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
