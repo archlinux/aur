@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /usr/bin/java -cp '/usr/share/java/msgfplus/MSGFPlus.jar' "edu.ucsd.msjava.ui.ScoringParamGen" "$@"
