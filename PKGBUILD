@@ -5,11 +5,11 @@
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 
 pkgname=ungoogled-chromium-ozone
-pkgver=80.0.3987.106
-pkgrel=2
+pkgver=80.0.3987.122
+pkgrel=1
 _pkgname=ungoogled-chromium
 _launcher_ver=6
-_ungoogled_ver=80.0.3987.106-1
+_ungoogled_ver=80.0.3987.122-1
 pkgdesc="A lightweight approach to removing Google web service dependency with patches for wayland support via Ozone"
 arch=('x86_64')
 url="https://ungoogled-software.github.io/"
@@ -50,7 +50,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         vaapi-fix-wayland-init.patch
         0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
         fix-vaapi-ozone-build.patch)
-sha256sums=('2ead924b4414a8a5f085fa0e0df56563ef41bd4290cc403c05d5beec238cbe82'
+sha256sums=('48ebcbdcc20fa5864f1b0f0bf8163f8801ed59f82d13744f0303b497db412473'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
             '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
@@ -64,7 +64,7 @@ sha256sums=('2ead924b4414a8a5f085fa0e0df56563ef41bd4290cc403c05d5beec238cbe82'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
             # -----------
-            '27bc03aeabfed83f5d2009a8ac4a7576f4d60af648ef4472ef500040da2100d7'
+            '332d49481304ccf9091920cc1aaaac1e4c5752badc3641a7bf87482d5609a197'
             '53e8a314da1f33b99d4286cc3c2e4cb2d43132b75af8a282414fda950bd493e9'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a'
