@@ -1,11 +1,11 @@
 pkgbase = anydesk-bin
 	pkgdesc = 'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)
 	pkgver = 5.5.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://anydesk.com
 	arch = i686
 	arch = x86_64
-	license = custom:Freeware
+	license = custom
 	depends = fakeroot
 	depends = python-shiboken2
 	depends = gtkglext
