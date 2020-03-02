@@ -29,9 +29,6 @@ depends=(
 'gimp'
 # Video editing
 'peek'
-'obs-studio'
-'obs-qtwebkit-git'
-'obs-gphoto'
 # Audio editing
 'vlc'
 'audacity'
@@ -45,6 +42,9 @@ depends=(
 )
 
 optdepends=(
+'obs-studio'
+'obs-qtwebkit-git'
+'obs-gphoto'
 'intellij-idea-ce'
 'intellij-idea-ultimate-edition'
 'stellarium'
