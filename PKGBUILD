@@ -2,7 +2,7 @@
 
 _pkgname=fastapi
 pkgname=python-fastapi
-pkgver=0.49.0
+pkgver=0.52.0
 pkgrel=1
 pkgdesc="FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints."
 arch=('any')
