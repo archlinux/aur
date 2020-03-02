@@ -46,7 +46,7 @@ DOCS_INFO="NO"    # Generate and install GNU info documentation.
 #######################################################################
 
 pkgname=remacs-git
-pkgver=26.2.90.135232
+pkgver=26.2.90.135291
 pkgrel=1
 pkgdesc="Development branch of REmacs, a fork of GNU Emacs with components rewritten in Rust"
 arch=('i686' 'x86_64' 'aarch64')
