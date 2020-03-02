@@ -1,8 +1,15 @@
+post_install() {
+  groupadd -r precached
+  useradd -r -s /usr/bin/nologin -d /tmp -g precached precached
+
+  chown -R precached:precached /var/lib/precached
+}
+
 pre_remove() {
-	systemctl stop precached.service
+  systemctl stop precached.service
 }
 
 post_remove() {
-	rm -fr "/var/lib/precached/"
+  rm -fr "/var/lib/precached/"
 }
 
