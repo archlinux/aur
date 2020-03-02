@@ -22,13 +22,13 @@ noextract=()
 md5sums=('SKIP')
 
 build() {
-  cd "$_pkgname"
+  cd "$pkgname"
 
   CARGO_INCREMENTAL=0 cargo build --all --release
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$pkgname"
 
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/etc/precached"
