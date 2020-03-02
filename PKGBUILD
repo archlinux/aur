@@ -1,7 +1,7 @@
 # Maintainer: Evilandi666 <evilandi.aur(at)googlemail.com>
 # Contributor:   Chase <sky[no_spam]<AT>[no_spam]skystrife<DOT>com>
 
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8h' 'armv6l' 'armv7l' 'armv8l')
 pkgname=aacgain-cvs
 pkgver=20130814
 pkgrel=4
