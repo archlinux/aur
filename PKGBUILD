@@ -2,17 +2,15 @@
 # Contributor: Matthieu Rakotojaona <matthieu.rakotojaona@gmail.com>
 
 pkgname=paclan
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
-epoch=
 pkgdesc='Share pacman packages on the LAN. A replacement for pacserve'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv7l')
 url='https://github.com/Kunde21/paclan'
 license=('CC0')
-groups=()
-makedepends=('go')
+makedepends=('git' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Kunde21/paclan/archive/v${pkgver}.tar.gz")
-sha256sums=('b43d34a62618d0c3ed9027a5bb5d3434c864348ddd08a716eb1ee4fcf0d0c73a')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
 install=paclan.install
 
 build() {
