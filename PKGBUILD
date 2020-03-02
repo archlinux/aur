@@ -2,14 +2,14 @@
 # Contributor : ackalker
 pkgname=openwatcom-v2
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="The Open Watcom Fortran/C/C++ compiler, binary distribution -V2 fork"
 arch=('x86_64')
 #url="http://www.openwatcom.org"
 url="https://github.com/open-watcom"
 license=('custom:OWPL-1')
 source=(
-'https://github.com/open-watcom/travis-ci-ow-builds/archive/master.zip'
+'https://github.com/open-watcom/open-watcom-v2/releases/download/Current-build/ow-snapshot.tar.gz'
 'owsetenv.sh'
 )
 #md5sums change frequently since it is a snapshot. If it fails, download manually and check md5sum
@@ -22,11 +22,13 @@ build() {
 
 package() {
 	mkdir -p "${pkgdir}/opt"
-	mv -f "${srcdir}/travis-ci-ow-builds-master" "${pkgdir}/opt/watcom" 
+	cp -r "${srcdir}/" "${pkgdir}/opt/watcom"
+	rm -rf "${pkgdir}/opt/watcom/binw"
+	rm -rf "${pkgdir}/opt/watcom/binnt"
+	rm -rf "${pkgdir}/opt/watcom/binp"
+	rm -rf "${pkgdir}/opt/watcom/binnt64"
 	install -d "${pkgdir}/usr/share/licenses/watcom"
 	install -Dm644 "$pkgdir/opt/watcom/license.txt" "$pkgdir/usr/share/licenses/watcom/license.txt"
-	
-	cp "${srcdir}/owsetenv.sh" ${pkgdir}/opt/watcom/
 
 	msg "correct permissions for header directories"
 	chmod -R 755 $pkgdir/opt/watcom/{h,lh}
