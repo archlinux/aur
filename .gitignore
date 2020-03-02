@@ -1,5 +1,6 @@
 *.pkg.tar.xz*
 *.log
-dynwg
+dynwg*
 src
 pkg
+*.tar.gz
