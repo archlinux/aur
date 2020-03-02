@@ -50,7 +50,7 @@ pkgver=26.2.90.135232
 pkgrel=1
 pkgdesc="Development branch of REmacs, a fork of GNU Emacs with components rewritten in Rust"
 arch=('i686' 'x86_64' 'aarch64')
-url="https://github.com/Wilfred/remacs.git"
+url="https://github.com/remacs/remacs.git"
 license=('GPL')
 depends=('gpm' 'm17n-lib' 'alsa-lib' 'imagemagick')
 makedepends=('git' 'clang' 'rustup')
@@ -80,7 +80,7 @@ fi
 if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
 #######################################################################
-source=("$pkgname::git+https://github.com/Wilfred/remacs.git")
+source=("$pkgname::git+https://github.com/remacs/remacs.git")
 md5sums=('SKIP')
 
 pkgver() {
