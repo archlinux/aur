@@ -1,7 +1,7 @@
 pkgbase = velero-bin
 	pkgdesc = Backup client for Kubernetes
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.3.0
+	pkgrel = 1
 	url = https://github.com/heptio/velero
 	install = velero-bin.install
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = velero-bin
 	optdepends = kubectl: To connect to Kubernetes
 	optdepends = kubectl-bin: To connect to Kubernetes
 	replaces = ark-bin
-	source = https://github.com/heptio/velero/releases/download/v1.2.0/velero-v1.2.0-linux-amd64.tar.gz
-	sha256sums = 4080a37b487a859b5bba8391e965267cd0fe29cd67fd070b6f695fed45619e2c
+	source = https://github.com/heptio/velero/releases/download/v1.3.0/velero-v1.3.0-linux-amd64.tar.gz
+	sha256sums = 9d1f1a9983b33ae541db4c3ba9bfe3f3ad4685c8885ae71b91d8fb9048cd6008
 
 pkgname = velero-bin
 
