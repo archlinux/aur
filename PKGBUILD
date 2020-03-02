@@ -30,10 +30,7 @@ prepare() {
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
-  #python setup.py build
   python setup.py build
-
-  #python -m pip wheel $PWD
 }
 
 package() {
