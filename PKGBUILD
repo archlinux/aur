@@ -3,15 +3,12 @@
 _pkgname='azerothcore-wotlk'
 pkgname='azeroth-core'
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore"
 url="http://www.azerothcore.org"
 license=('AGPL3')
-depends=('cmake' 'clang' 'readline' 'lib32-readline' 'mariadb')
-optdepends=(
-  'ace: you need install this library from AUR'
-)
+depends=('cmake' 'clang' 'readline' 'lib32-readline' 'mariadb' 'git')
 
 source=("git+https://github.com/azerothcore/${_pkgname}.git")
 sha512sums=('SKIP')
