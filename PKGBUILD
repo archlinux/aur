@@ -1,7 +1,7 @@
 # Maintainer: Nico <desoxhd@gmail.com>
 pkgname=anydesk-bin
 pkgver=5.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support (Generic based package)"
 arch=('i686' 'x86_64')
 url="https://anydesk.com"
