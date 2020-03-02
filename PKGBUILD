@@ -1,7 +1,7 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
-pkgname=lm-warp-git
+pkgname=warpinator
 pkgver=r39.53989e7
 pkgrel=1
 pkgdesc="Share files across the LAN by Linux Mint"
@@ -13,7 +13,7 @@ license=("GPL")
 depends=("pygobject-devel" "python-setproctitle" "python-zeroconf" "python-xapp" "xapps")
 makedepends=("git" "meson")
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "haskell-wai-app-static" "lm-warp-git" "warp-git")
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
@@ -22,8 +22,15 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "$srcdir/warp"
+
+    # Fix hard-coded libexec dir in main warp script
+    sed -i 's/libexec/lib/g' bin/warp
+}
+
 build() {
-    meson --prefix /usr --buildtype=plain warp build
+    arch-meson warp build
     ninja -C build
 }
 
