@@ -1,0 +1,9 @@
+post_upgrade() {
+  if (($(vercmp $2 11.5-2) < 0)); then
+    echo ':: In order to work the DesktopVideoHelper.service has to be started.'
+  fi
+}
+
+post_install() {
+  echo ':: In order to work the DesktopVideoHelper.service has to be started.'
+}
