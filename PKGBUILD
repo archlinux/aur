@@ -1,23 +1,25 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phosh-git
-pkgver=0.1.7.r0.g20ea13b
+pkgver=0.2.0.r3.g1e65b98
 pkgrel=1
 pkgdesc="A pure Wayland shell prototype for GNOME on mobile devices"
 url="https://source.puri.sm/Librem5/phosh"
 license=("GPL3")
 arch=(i686 x86_64 armv6h armv7h)
-depends=(gcr
-         libhandy
-         libnm
-         libsecret
-         phoc
-         upower
-         virtboard)
-makedepends=(ctags
-             git
-             meson
-             vala)
+depends=('feedbackd'
+         'gcr'
+         'gnome-desktop'
+         'libhandy'
+         'libnm'
+         'libpulse'
+         'libsecret'
+         'phoc'
+         'upower')
+makedepends=('ctags'
+             'git'
+             'meson'
+             'vala')
 provides=(phosh)
 conflicts=(phosh)
 source=("git+https://source.puri.sm/Librem5/phosh.git"
