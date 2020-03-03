@@ -1,6 +1,6 @@
 pkgbase = glib2-static
 	pkgdesc = Low level core library: Static library
-	pkgver = 2.62.5
+	pkgver = 2.64.0
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
 	arch = x86_64
@@ -21,8 +21,10 @@ pkgbase = glib2-static
 	options = !emptydirs
 	options = !strip
 	options = staticlibs
-	source = https://gitlab.gnome.org/GNOME/glib/-/archive/2.62.5/glib-2.62.5.tar.gz
-	sha256sums = 479ae4d3e37123765c4e850a99bf4846008e7141446118250f5f017d988e7a81
+	source = http://ftp.gnome.org/pub/gnome/sources/glib/2.64/glib-2.64.0.tar.xz
+	source = disable_mem_overflow_warnings.patch
+	sha256sums = e5e514e47d169cdb4111c3ea4af0300e1b1a5f428a474d2d7ddadf38dd061280
+	sha256sums = e2342457c9b59406e8aee14af0e2d267a43c62c12ba851d452d2916cbb94cdf6
 
 pkgname = glib2-static
 

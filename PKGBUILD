@@ -1,7 +1,7 @@
 # Maintainer: nightuser <nightuser.android@gmail.com>
 
 pkgname=glib2-static
-pkgver=2.62.5
+pkgver=2.64.0
 pkgrel=1
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
@@ -11,14 +11,19 @@ depends=()
 makedepends=(gettext zlib libffi shared-mime-info python libelf git util-linux meson dbus)
 checkdepends=(desktop-file-utils)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
-source=(https://gitlab.gnome.org/GNOME/glib/-/archive/$pkgver/glib-$pkgver.tar.gz)
-sha256sums=('8f877a0455e5446cdf2453c107c398583193a5a3f2132b9aa26279f5a0549797')
+source=("http://ftp.gnome.org/pub/gnome/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz"
+        'disable_mem_overflow_warnings.patch')
+sha256sums=('e5e514e47d169cdb4111c3ea4af0300e1b1a5f428a474d2d7ddadf38dd061280'
+            'e2342457c9b59406e8aee14af0e2d267a43c62c12ba851d452d2916cbb94cdf6')
 
-#prepare() {
-#  cd "glib-$pkgver"
-#}
+prepare() {
+  cd "glib-$pkgver"
+
+  patch -Np1 -i "$srcdir/disable_mem_overflow_warnings.patch"
+}
 
 build() {
+  CFLAGS+=' -Wno-unused-result'
   arch-meson "glib-$pkgver" _build \
     --default-library static \
     --buildtype release \
