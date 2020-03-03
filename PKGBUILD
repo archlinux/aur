@@ -1,7 +1,7 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: David Arroyo <droyo@aqwari.us>
 pkgname=s6-portable-utils
-pkgver=2.2.2.1
+pkgver=2.2.2.2
 pkgrel=1
 pkgdesc="Tiny portable generic utilities"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.skarnet.org/software/s6-portable-utils"
 license=('custom:ISC')
 makedepends=(skalibs glibc)
 source=(${url}/${pkgname}-$pkgver.tar.gz)
-sha256sums=('1e473224350c6ebedd7adf162b68303e2e0a32ca2e99d7afee7573d9e78f931c')
+sha256sums=('63df4ad24c126fd0f0006e90fd3135ff204eaa4f95a7c9e51ec91a82cf5074cc')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
