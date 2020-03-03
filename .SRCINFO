@@ -1,0 +1,17 @@
+pkgbase = venn
+	pkgdesc = Mix and match virtual environments.
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/paysonwallach/venn
+	arch = any
+	license = custom:
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cleo
+	depends = python-env
+	depends = python-virtualenvwrapper
+	source = https://github.com/paysonwallach/venn/releases/download/0.4.0/venn-0.4.0.tar.gz
+	md5sums = c64679cb229012b6545cfaf6e76af95d
+
+pkgname = venn
+
