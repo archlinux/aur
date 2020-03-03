@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=81.0.4021.2
+pkgver=82.0.4068.4
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 #          'libsrtp'
          'libxslt'
          'libxss'
-         'minizip'
+#          'minizip'
          'nss'
          'pciutils'
 #          're2'
@@ -34,19 +34,21 @@ depends=(
 #          'protobuf'
 #          'libevent'
 #          'ffmpeg'
-#          'icu'    # https://crbug.com/678661.
+#          'icu'       # https://crbug.com/678661.
          'gtk3'
          'openh264'
          'vulkan-icd-loader'
          'libpulse'
-#          'libwebp'
+         'libwebp'
+         'libvpx'
          'opus'
-         'libva'
          )
+if [ "${_use_wayland}" = "1" ]; then
+  depends+=('pipewire')
+fi
 makedepends=(
              'gperf'
              'ninja'
-             'python2'
              'python2-protobuf'
              'python'
              'yasm'
@@ -76,7 +78,7 @@ source=(
         'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'misc_r0.patch'
+        'clang-format.zip::https://chromium-review.googlesource.com/changes/chromium%2Ftools%2Fbuild~2071716/revisions/4/files/scripts%2Fslave%2Frecipe_modules%2Fchromium%2Fresources%2Fclang-format/download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -89,7 +91,7 @@ sha256sums=(
             '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            'da2a72752ca1ec39161264bf76f3a008c0c44c9ceadd1cc357316c1364e5c64c'
+            '743eb4f5b1396c0e56323b67917e16aa458fa9ea7bccc7eb58fa5675dcc4b0c3'
             )
 install=chromium-dev.install
 
@@ -196,6 +198,7 @@ _keeplibs=(
            'third_party/google_input_tools/third_party/closure_library'
            'third_party/google_input_tools/third_party/closure_library/third_party/closure'
            'third_party/googletest'
+           'third_party/harfbuzz-ng/utils'
            'third_party/hunspell'
            'third_party/iccjpeg'
            'third_party/inspector_protocol'
@@ -216,15 +219,13 @@ _keeplibs=(
            'third_party/libsrtp'
            'third_party/libsync'
            'third_party/libudev'
-           'third_party/libvpx'
-           'third_party/libvpx/source/libvpx/third_party/x86inc'
            'third_party/libwebm'
-           'third_party/libwebp'
-           'third_party/libxml' #/chromium'
+           'third_party/libxml/chromium'
            'third_party/libyuv'
            'third_party/llvm'
            'third_party/lss'
            'third_party/lzma_sdk'
+           'third_party/mako'
            'third_party/markupsafe'
            'third_party/mesa'
            'third_party/metrics_proto'
@@ -258,7 +259,6 @@ _keeplibs=(
            'third_party/re2'
            'third_party/rnnoise'
            'third_party/s2cellid'
-           'third_party/sfntly'
            'third_party/simplejson'
            'third_party/shaderc'
            'third_party/skia'
@@ -271,9 +271,9 @@ _keeplibs=(
            'third_party/SPIRV-Tools'
            'third_party/sqlite'
            'third_party/swiftshader'
-           'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/llvm-7.0'
            'third_party/swiftshader/third_party/llvm-subzero'
+           'third_party/swiftshader/third_party/marl'
            'third_party/swiftshader/third_party/subzero'
            'third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1'
            'third_party/tcmalloc'
@@ -293,7 +293,7 @@ _keeplibs=(
            'third_party/widevine'
            'third_party/woff2'
            'third_party/wuffs'
-           'third_party/zlib/google'
+           'third_party/zlib' # /google'
            'tools/grit/third_party/six'
            'url/third_party/mozilla'
            'v8/src/third_party/siphash'
@@ -317,9 +317,9 @@ _keeplibs+=(
 
 if [ "${_use_wayland}" = "1" ]; then
   _keeplibs+=(
-           'third_party/minigbm'
-           'third_party/wayland'
-           )
+              'third_party/minigbm'
+              'third_party/wayland'
+             )
 fi
 
 # Set build flags.
@@ -365,7 +365,10 @@ if [ "${_use_wayland}" = "1" ]; then
            'use_xkbcommon=true'
            'use_system_libdrm=true'
            'use_system_libwayland=true'
+           'use_v4l2_codec=true'
            "ozone_platform=\"x11\""
+           'rtc_use_pipewire=true'
+           'rtc_link_pipewire=true'
            )
 fi
 
@@ -382,16 +385,16 @@ _use_system=(
 #              'libevent'     # Get segfaults and other problems https://bugs.gentoo.org/593458.
              'libjpeg'
              'libpng'
-#              'libvpx'       # Needs update.
-#              'libwebp'      # Needs update.
-#              'libxml'       # Needs fix
+             'libvpx'
+             'libwebp'
+             'libxml'
              'libxslt'
              'openh264'
              'opus'
 #              're2'
              'snappy'
              'yasm'
-             'zlib'
+#              'zlib'         # NaCL needs it
              )
 
 # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn).
@@ -432,14 +435,15 @@ prepare() {
   cd "${srcdir}/chromium-${pkgver}"
 
   # Force script incompatible with Python 3 to use /usr/bin/python2.
-   sed -i '1s|python$|&2|' \
+   sed -e '1s|python$|&2|' \
      -i third_party/ffmpeg/chromium/scripts/build_ffmpeg.py \
      -i third_party/ffmpeg/chromium/scripts/generate_gn.py \
      -i third_party/dom_distiller_js/protoc_plugins/json_values_converter.py \
      -i third_party/dom_distiller_js/protoc_plugins/json_values_converter_tests.py
 
-  export PNACLPYTHON=/usr/bin/python2
-  sed 's|iteritems|items|g' -i build/linux/unbundle/remove_bundled_libraries.py
+  # Py3toniced.
+  sed 's|iteritems|items|g' \
+    -i build/linux/unbundle/remove_bundled_libraries.py \
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save disk space."
@@ -451,7 +455,7 @@ prepare() {
   msg2 "Setup NaCl/PNaCl SDK: Download and install toolchains"
   build/download_nacl_toolchains.py --packages nacl_x86_newlib,pnacl_newlib,pnacl_translator sync --extract
 
-  msg2 "Download external build components from google"
+  msg2 "Download prebuild clang from Google"
   tools/clang/scripts/update.py
 
   # Use chromium-dev as brand name.
@@ -466,7 +470,7 @@ prepare() {
       -i chrome/common/chrome_constants.cc
   sed -e 's|chromium-browser|chromium-dev|g' \
       -i chrome/browser/shell_integration_linux.cc \
-      -i chrome/browser/ui/libgtkui/gtk_util.cc
+      -i chrome/browser/ui/gtk/gtk_util.cc
   sed -e 's|chromium|&-dev|' \
       -i chrome/common/chrome_paths_linux.cc
   sed -e 's|/etc/chromium|&-dev|' \
@@ -503,14 +507,8 @@ prepare() {
       -i third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
       -i third_party/libxml/chromium/libxml_utils.cc
 
-  # Unbundle zlib
-  sed 's|zlib:zlib_config|zlib:system_zlib|g' -i third_party/perfetto/gn/BUILD.gn
-
   # Attemp to fix build with wayland
   patch -p1 -i "${srcdir}/fix_vaapi_wayland.patch"
-
-  # some misc (from misc) patches
-  patch -p1 -i "${srcdir}/misc_r0.patch"
 
   # # Patch from Gentoo
 
@@ -519,6 +517,9 @@ prepare() {
 
   # https://crbug.com/skia/6663#c10.
   patch -p0 -i "${srcdir}/chromium-skia-harmony-r2.patch"
+
+  # https://crbug.com/1052503.
+  install -Dm755 "${srcdir}/clang-format_new-fd3b94d6928fa15be2c01854f52bda3c" buildtools/linux64/clang-format
 
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
@@ -539,6 +540,9 @@ prepare() {
 }
 
 build() {
+  # set python 2 for buiuld pnacl.
+  export PNACLPYTHON=/usr/bin/python2
+
   msg2 "Build the Launcher"
   make -C chromium-launcher \
     CHROMIUM_SUFFIX="-dev"
@@ -572,7 +576,6 @@ build() {
   LC_ALL=C gn gen out/Release -v --args="${_flags[*]}" --script-executable=/usr/bin/python2
 
   # Build all.
-  # Work around broken deps.
   LC_ALL=C ninja -C out/Release -v chrome chrome_sandbox chromedriver
 }
 
