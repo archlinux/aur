@@ -16,7 +16,7 @@ makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 provides=("nheko")
 conflicts=("nheko")
 
-source=($pkgname::git://github.com/Nheko-Reborn/nheko.git#branch=0.7.0-dev)
+source=($pkgname::git://github.com/Nheko-Reborn/nheko.git#branch=master)
 md5sums=("SKIP")
 
 prepare() {

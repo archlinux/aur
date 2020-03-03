@@ -22,7 +22,7 @@ pkgbase = nheko-git
 	depends = cmark
 	provides = nheko
 	conflicts = nheko
-	source = nheko-git::git://github.com/Nheko-Reborn/nheko.git#branch=0.7.0-dev
+	source = nheko-git::git://github.com/Nheko-Reborn/nheko.git#branch=master
 	md5sums = SKIP
 
 pkgname = nheko-git
