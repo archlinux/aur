@@ -1,15 +1,16 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: mrxx <mrxx at cyberhome dot at>
+# Contributor: rmanne <rahul_manne@hotmail.com>
 
 pkgname=praat-bin
 pkgver=6.1.09
 _debver=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Doing Phonetics by computer (speech analysis)'
 url='http://www.praat.org/'
 arch=('x86_64' 'i686')
 license=('GPL')
-depends=('alsa-lib' 'gtk2' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
+depends=('alsa-lib' 'gtk2' 'libpulse' 'jack' 'ttf-charis-sil' 'ttf-sil-doulos')
 optdepends=('ttf-sil-fonts')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")

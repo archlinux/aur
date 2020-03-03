@@ -1,7 +1,7 @@
 pkgbase = praat-bin
 	pkgdesc = Doing Phonetics by computer (speech analysis)
 	pkgver = 6.1.09
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.praat.org/
 	arch = x86_64
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = praat-bin
 	depends = alsa-lib
 	depends = gtk2
 	depends = libpulse
+	depends = jack
 	depends = ttf-charis-sil
 	depends = ttf-sil-doulos
 	optdepends = ttf-sil-fonts
