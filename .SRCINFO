@@ -1,0 +1,17 @@
+pkgbase = python-pysensors
+	pkgdesc = Python bindings to libsensors (via ctypes)
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://bitbucket.org/blackjack/pysensors/
+	arch = any
+	license = Apache
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = lm_sensors
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/P/PySensors/PySensors-0.0.4.tar.gz
+	sha256sums = beb0def410d29ee46fe196a7811124772abf84cbe3a0d8b01d80b81fba31dae5
+
+pkgname = python-pysensors
+
