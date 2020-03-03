@@ -3,7 +3,7 @@
 
 pkgname=warpinator-git
 pkgver=r42.6f44410
-pkgrel=1
+pkgrel=2
 pkgdesc="Share files across the LAN by Linux Mint"
 arch=("x86_64")
 url="https://github.com/linuxmint/warp"
@@ -33,6 +33,7 @@ prepare() {
 
     # Fix hard-coded libexec dir in main warp script
     sed -i 's/libexec/lib/g' bin/warp
+    sed -i 's/libexec/lib/g' install-scripts/meson_generate_and_install_protobuf_files.py
 }
 
 build() {

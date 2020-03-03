@@ -1,7 +1,7 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN by Linux Mint
 	pkgver = r42.6f44410
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/linuxmint/warp
 	arch = x86_64
 	license = GPL
