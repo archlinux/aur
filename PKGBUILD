@@ -3,20 +3,21 @@
 _perlmod='Mail-Milter-Authentication'
 _modnamespace=Mail
 pkgname=perl-mail-milter-authentication
-pkgver=2.20200206
-pkgrel=2
+pkgver=2.20200302
+pkgrel=1
 pkgdesc="A Perl Mail Authentication Milter"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('GPL' 'PerlArtistic')
-depends=('perl' 'perl-json' 'perl-list-moreutils' 'perl-clone' 'perl-email-date-format' 'perl-email-simple' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-test-file-contents' 'perl-toml' 'perl-prometheus-tiny-shared')
+depends=('perl' 'perl-app-cmd' 'perl-clone' 'perl-date-manip' 'perl-email-date-format' 'perl-email-sender' 'perl-email-simple' 'perl-import-into' 'perl-json' 'perl-list-moreutils' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-prometheus-tiny-shared>=0.011' 'perl-test-file-contents' 'perl-test-perl-critic' 'perl-text-table' 'perl-toml')
 makedepends=('perl-crypt-openssl-rsa' 'perl-file-sharedir-install' 'perl-test-exception')
 checkdepends=('perl-eval-closure' 'perl-namespace-autoclean' 'perl-params-validationcompiler' 'perl-specio')
+replaces=('perl-mail-milter-authentication-handler-arc')
 backup=('etc/authentication_milter.json')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz"
         'authentication_milter.service')
-sha256sums=('9626880d7a3bf6b8c1cbb765a3e574cec00f64464716c4d8531a23c418b49576'
+sha256sums=('7a804a043e357153da14e257707a272fd262123cdf633771a2438a286a94f526'
             '8715d45d62859fb3838d0fd31878d59b47da2cb62d55675f828f8b812845526d')
 
 build() {
