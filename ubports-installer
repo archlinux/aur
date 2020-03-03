@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron4 /usr/share/ubports-installer/app.asar "$@"
+exec electron6 /usr/share/ubports-installer/app.asar "$@"
