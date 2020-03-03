@@ -4,10 +4,12 @@ pkgver=0.8.2.r29.g5fb4e32
 pkgrel=1
 pkgdesc="A vim plugin that interfaces with purs ide"
 arch=('any')
-url="https://github.com/idris-hackers/idris-vim"
-license=('MIT')
+url="https://github.com/FrigoEU/psc-ide-vim"
 depends=('vim')
-optdepends=('purescript: the purescript compiler')
+optdepends=(
+  'purescript: the purescript compiler'
+  'syntastic'
+)
 makedepends=('git')
 provides=('vim-psc-ide')
 conflicts=('vim-psc-ide')
