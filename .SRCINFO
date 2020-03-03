@@ -1,6 +1,6 @@
 pkgbase = dbus-x11
 	pkgdesc = Freedesktop.org message bus system (with x11 autolaunch)
-	pkgver = 1.12.14
+	pkgver = 1.12.16
 	pkgrel = 1
 	url = https://wiki.freedesktop.org/www/Software/dbus/
 	arch = x86_64
@@ -14,18 +14,27 @@ pkgbase = dbus-x11
 	makedepends = doxygen
 	makedepends = git
 	makedepends = autoconf-archive
-	makedepends = graphviz
 	makedepends = libx11
 	depends = systemd-libs
 	depends = expat
-	source = git+https://anongit.freedesktop.org/git/dbus/dbus#commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7
+	depends = audit
+	source = git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=23cc709db8fab94f11fa48772bff396b20aea8b0
+	source = dbus-reload.hook
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
 	sha256sums = SKIP
+	sha256sums = d636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3
 
 pkgname = dbus-x11
+	depends = systemd-libs
+	depends = expat
+	depends = audit
+	depends = libsystemd.so
+	depends = libaudit.so
 	provides = dbus
 	provides = libdbus
+	provides = libdbus-1.so
+	conflicts = dbus
 	conflicts = libdbus
 	replaces = libdbus
 
