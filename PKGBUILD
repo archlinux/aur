@@ -3,8 +3,8 @@
 # Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=networkmanager-libreswan-git
-pkgver=1.2.13.dev.r1.ga7366e3
-pkgrel=2
+pkgver=1.2.13.dev.r4.g7b80074
+pkgrel=1
 pkgdesc="NetworkManager IPSec VPN plugin for Libreswan"
 arch=('i686' 'x86_64')
 license=('GPL')
