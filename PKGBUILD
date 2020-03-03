@@ -2,7 +2,7 @@
 
 pkgname=libjpeg-xl-git
 pkgver=r3.g0709f3a
-pkgrel=2
+pkgrel=3
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
             'f75738bb1041e1bf9104ca6156b2269f73e4503508803de183e57110b232bbfd'
             'ac5e30fb0a9034a935a463a3eaaec4b369fef6cf6e270cc85cce09e1f26f67c0'
             '5d7df9a9cfc15183915b522bfa1360e0c9034c24c7630c0da43df35326b53c3c'
-            '74497628c1f689ab511aceb1ffb13480a1a55552a45f794fcbe3b209b91ebd28')
+            'cd56a234f5ba5916c4b2df3472d4beb81accea12717b8e131019c3ab1736e0f2')
 
 prepare() {
     cd jpeg-xl
