@@ -3,10 +3,10 @@
 pkgname=('python-spotpris2')
 _module='SpotPRIS2'
 pkgver='0.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="Control Spotify Connect devices using MPRIS2"
 url="https://github.com/freundTech/SpotPRIS2"
-depends=('python')
+depends=('python' 'python-pydbus' 'python-spotipy' 'python-appdirs' 'python-gobject' 'glib2')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
