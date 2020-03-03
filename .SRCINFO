@@ -1,6 +1,6 @@
 pkgbase = nougat-git
 	pkgdesc = Screenshot wrapper
-	pkgver = r84.9d27cb8
+	pkgver = r100.a67aaac
 	pkgrel = 1
 	url = https://github.com/Sweets/nougat
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = nougat-git
 	optdepends = maim: Maim backend support
 	optdepends = imagemagick: ImageMagick backend support
 	optdepends = slop: ImageMagick backend support
+	optdepends = scrot: Scrot backend support
 	optdepends = xclip: Clipboard support
 	optdepends = xorg-xrandr: Screenshot focused monitor
 	optdepends = xdotool: Screenshot focused monitor

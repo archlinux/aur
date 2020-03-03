@@ -1,8 +1,9 @@
-# Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
+# Maintainer: 4679kun <admin@libnull.com>
+# Contributor: ahrs <Forward dot to at hotmail dot co dot uk>
 
 pkgname=nougat-git
 _pkgname=nougat
-pkgver=r84.9d27cb8
+pkgver=r100.a67aaac
 pkgrel=1
 pkgdesc='Screenshot wrapper'
 arch=(any)
@@ -12,6 +13,7 @@ optdepends=(
   'maim: Maim backend support'
   'imagemagick: ImageMagick backend support'
   'slop: ImageMagick backend support'
+  'scrot: Scrot backend support'
   'xclip: Clipboard support'
   'xorg-xrandr: Screenshot focused monitor'
   'xdotool: Screenshot focused monitor'
@@ -33,8 +35,13 @@ pkgver() {
   )
 }
 
+build() {
+    cd "$srcdir/${_pkgname}"
+    make
+}
+
 package() {
-  install -Dm755 "$srcdir"/$_pkgname/${_pkgname}.sh "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "$srcdir"/$_pkgname/build/${_pkgname} "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 "$srcdir"/$_pkgname/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$srcdir"/$_pkgname/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
