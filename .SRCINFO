@@ -1,6 +1,6 @@
 pkgbase = hunspell-id
 	pkgdesc = Indonesian hunspell dictionary
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/shuLhan/hunspell-id
 	arch = any
