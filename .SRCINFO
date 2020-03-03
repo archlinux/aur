@@ -1,6 +1,6 @@
 pkgbase = holland
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hollandbackup.org
 	arch = any
 	license = BSD
@@ -11,8 +11,8 @@ pkgbase = holland
 	source = holland-1.2.1.tar.gz::https://github.com/holland-backup/holland/archive/v1.2.1.tar.gz
 	source = holland-backup.github.com-1.2.1.tar.gz::https://github.com/holland-backup/holland-backup.github.com/archive/v1.2.1.tar.gz
 	source = holland.logrotate
-	sha256sums = 88350191414df3c855aadb4798eacef266be12fadf0b7230587c9e0c1f6874d1
-	sha256sums = ee6c5c58ccab4eda6d85518ba9b0f97d84b246ccf2313d75072422354ca183cf
+	sha256sums = 932197f5cbeac3414ef673b295d75b20df83950b3a1be411a08281c7c11a06a0
+	sha256sums = 2eb05e408e39ee6b5d882011e2cdf9cd9ddd8c9af1df7c9e917c44efad4ffd49
 	sha256sums = 6b0240375e5cafe24a4e0c6fd078e42eaff4f5b2030f7fba4202d052d9a54995
 
 pkgname = holland
@@ -24,6 +24,7 @@ pkgname = holland
 	depends = python-future
 	depends = python-configobj
 	depends = python-sphinx
+	depends = python-pymysql
 	backup = etc/holland/holland.conf
 	backup = etc/holland/backupsets/default.conf
 
