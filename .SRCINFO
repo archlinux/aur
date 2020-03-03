@@ -1,6 +1,6 @@
 pkgbase = anki-sync-server-git
 	pkgdesc = A sync server for anki using a forked version from github.com/tsudoko (orig:dsnopek)
-	pkgver = r258.b9a1203
+	pkgver = r259.7ef3d4f
 	pkgrel = 1
 	url = https://github.com/tsudoko/anki-sync-server
 	install = anki-sync-server.install
@@ -9,6 +9,7 @@ pkgbase = anki-sync-server-git
 	makedepends = portaudio
 	depends = python
 	depends = python-pip
+	depends = git
 	optdepends = python-pyqt5: dependency of bundled anki client
 	optdepends = python-pyqtwebengine: dependency of bundled anki client
 	optdepends = libvpx>=1.8.0-1: dependency of bundled anki client
@@ -18,6 +19,8 @@ pkgbase = anki-sync-server-git
 	optdepends = qt5-svg>=5.12.2-1: dependency of bundled anki client
 	optdepends = portaudio: dependency of pyaudio which is a dependency of bundled anki
 	optdepends = mpv: optional dependency of bundled anki client
+	optdepends = python2-webob: if you want to run the server as a user other than the supplied anki-sync-server user
+	optdepends = python2-decorator: if you want to run the server as a user other than the supplied anki-sync-server user
 	provides = anki-sync-server
 	conflicts = anki-sync-server
 	source = git+https://github.com/tsudoko/anki-sync-server
