@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r54.03bb25c
+pkgver=r61.5495fa0
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
@@ -14,6 +14,9 @@ makedepends=(
     'git'
     'qt5-tools'
     'cmake'
+)
+optdepends=(
+    'kimageformats: XCF, EXR, PSD and other extra image format support'
 )
 source=(
     'git+https://github.com/BLumia/PineapplePictures.git'
