@@ -3,7 +3,7 @@
 
 _pkgname=man-pages
 pkgname=man-pages-posix-hyphens-fixed
-pkgver=5.03
+pkgver=5.05
 _posixver=2013-a
 pkgrel=1
 pkgdesc="Linux man pages"
@@ -15,11 +15,11 @@ url="http://man7.org/linux/man-pages/index.html"
 source=(https://www.kernel.org/pub/linux/docs/man-pages/$_pkgname-$pkgver.tar.{xz,sign}
         https://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/$_pkgname-posix-${_posixver}.tar.{xz,sign})
 # https://www.kernel.org/pub/linux/docs/man-pages/sha256sums.asc
-sha256sums=('7fe13aeaf9081f4c134c711270a66e264dce24dae3df7e9fec3dd18c8a485120'
+sha256sums=('d5b135b1196d9258138610dbc47190d8b9ac9dee7f8ee6d9196f7fc6a036eb47'
             'SKIP'
             '19633a5c75ff7deab35b1d2c3d5b7748e7bd4ef4ab598b647bb7e7f60b90a808'
             'SKIP')
-validpgpkeys=('E522595B52EDA4E6BFCCCB5E856199113A35CE5E') #Michael Kerrisk (Linux man-pages maintainer) <mtk.manpages@gmail.com>
+validpgpkeys=('E522595B52EDA4E6BFCCCB5E856199113A35CE5E') # Michael Kerrisk (Linux man-pages maintainer) <mtk.manpages@gmail.com>
 
 prepare() {
     cd "${srcdir}"/$_pkgname-posix-$_posixver
@@ -67,4 +67,6 @@ package() {
   rm -f man7/{keyrings.7,persistent-keyring.7,process-keyring.7,session-keyring.7,thread-keyring.7,user-keyring.7,user-session-keyring.7}
   # included in tzdata
   rm -f man5/tzfile.5 man8/{tzselect,zdump,zic}.8
+  # included in bpf
+  rm -f man7/bpf-helpers.7
 }
