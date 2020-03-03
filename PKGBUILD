@@ -2,7 +2,7 @@
 
 pkgname=dpt-rp1-py
 _name=${pkgname}
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Python package to manage a Sony DPT-RP1'
 url='https://github.com/janten/dpt-rp1-py'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-httpsig' 'python-requests' 'python-pbkdf2' 'python-urllib3' 'python-yaml' 'python-anytree' 'python-fusepy' 'python-zeroconf')
 makedepends=('python-setuptools')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/janten/dpt-rp1-py/archive/v$pkgver.tar.gz")
-md5sums=('301cd2a1606c50aff3e9141e96d2ba7f')
+md5sums=('d0641a06e4937cea901e94584a7d55db')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
