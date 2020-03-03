@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.7.28" />
+  <title>rpmrebuild changelog</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="Author" content="Gerbier" />
+  <meta name="generator" content="vim" />
+  <link rel="stylesheet" type="text/css" href="project.css" />
+</head>
+<body>
+  <div>
+    <h1>CHANGELOG</h1><!-- AS-TOC_BEGIN{ -->
+    <h2>Table of Contents</h2>
+    <ol>
+      <li><a href="#v2.15-1">2.15-1</a></li>
+      <li><a href="#v2.14-1">2.14-1</a></li>
+      <li><a href="#v2.13-1">2.13-1</a></li>
+      <li><a href="#v2.12-1">2.12-1</a></li>
+      <li><a href="#v2.11-3">2.11-3</a></li>
+      <li><a href="#v2.11-2">2.11-2</a></li>
+      <li><a href="#v2.11">2.11</a></li>
+      <li><a href="#v2.10-2">2.10-2</a></li>
+      <li><a href="#v2.10">2.10</a></li>
+      <li><a href="#v2.9">2.9</a></li>
+      <li><a href="#v2.8">2.8</a></li>
+      <li><a href="#v2.7">2.7</a></li>
+      <li><a href="#v2.6">2.6</a></li>
+      <li><a href="#v2.5">2.5</a></li>
+      <li><a href="#v2.4">2.4</a></li>
+      <li><a href="#v2.3-1">2.3-1</a></li>
+      <li><a href="#v2.2.3-1">2.2.3-1</a></li>
+      <li><a href="#v2.2.2-1">2.2.2-1</a></li>
+      <li><a href="#v2.2.1-1">2.2.1-1</a></li>
+      <li><a href="#v2.2.0-1">2.2.0-1</a></li>
+      <li><a href="#v2.1.1-1">2.1.1-1</a></li>
+      <li><a href="#v2.1.0-1">2.1.0-1</a></li>
+      <li><a href="#v2.0.4-1">2.0.4-1</a></li>
+      <li><a href="#v2.0.3-1">2.0.3-1</a></li>
+      <li><a href="#v2.0.2-1">2.0.2-1</a></li>
+      <li><a href="#v2.0.1-1">2.0.1-1</a></li>
+      <li><a href="#v2.0.0-1">2.0.0-1</a></li>
+      <li><a href="#v1.4.7-3">1.4.7-3</a></li>
+      <li><a href="#v1.4.7-1">1.4.7-1</a></li>
+      <li><a href="#v1.4.6-4">1.4.6-4</a></li>
+      <li><a href="#v1.4.6-3">1.4.6-3</a></li>
+      <li><a href="#v1.4.6-2">1.4.6-2</a></li>
+      <li><a href="#v1.4.6-1">1.4.6-1</a></li>
+      <li><a href="#v1.4.5-2">1.4.5-2</a></li>
+      <li><a href="#v1.4.5-1">1.4.5-1</a></li>
+      <li><a href="#v1.4.4-1">1.4.4-1</a></li>
+      <li><a href="#v1.4.3-1">1.4.3-1</a></li>
+      <li><a href="#v1.4.2-1">1.4.2-1</a></li>
+      <li><a href="#v1.4.1-1">1.4.1-1</a></li>
+      <li><a href="#v1.4.0-1">1.4.0-1</a></li>
+      <li><a href="#v1.2-0">1.2-0</a></li>
+      <li><a href="#v1.1-1">1.1-1</a></li>
+      <li><a href="#v1.1-0">1.1-0</a></li>
+      <li><a href="#v1.0-0">1.0-0</a></li>
+      <li><a href="#v0.7.1">0.7.1</a></li>
+      <li><a href="#v0.7.0">0.7.0</a></li>
+      <li><a href="#v0.6.0">0.6.0</a></li>
+      <li><a href="#v0.5.0">0.5.0</a></li>
+      <li><a href="#v0.4.2">0.4.2</a></li>
+      <li><a href="#v0.4.1">0.4.1</a></li>
+      <li><a href="#v0.4">0.4</a></li>
+      <li><a href="#v0.3">0.3</a></li>
+      <li><a href="#v0.2">0.2</a></li>
+      <li><a href="#v0.1">0.1</a></li>
+    </ol><!-- AS-TOC_END} -->
+    <hr />
+    Fri Feb 21 2020 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.15-1" id="v2.15-1">2.15-1</a>
+    <ul>
+      <li>fix error on rpmrebuild_files.sh line 204 (verify tag)</li>
+      <li>use env in shebang to avoid path problemes (/bin versus /usr/bin)</li>
+      <li>updated html doc (features, usage)</li>
+      <li>avoid shebang translation for rpmrebuild packages (__brp_mangle_shebangs macro)</li>
+      <li>fix bug on change-spec-preamble (move processing_init before CommandLineParsing) thanks Nerijus</li>
+      <li>fix cpio problem : add --no-absolute-filenames option</li>
+      <li>better diagnostic on internal error</li>
+      <li>fix bug on conditional requires (with space)</li>
+    </ul>
+
+    <hr />
+    Fri Oct 19 2018 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.14-1" id="v2.14-1">2.14-1</a>
+    <ul>
+      <li>add list of optional tags, to allow rpmrebuild work with old rpm versions</li>
+      <li>add dependency on setarch</li>
+      <li>add debug code (calls on functions)</li>
+      <li>use local variables to avoid conflicts</li>
+      <li>rewrite html target in Makefile</li>
+      <li>suppress VERSION (use Version)</li>
+      <li>add comments in rpmrebuild_rpmqf.src to avoid bad syntax after GenRpmQf</li>
+      <li>test if awk support non-posix lshift (qf_spec_requires_raw)</li>
+      <li>workaround for redhat 6.x / rpm 3.x, merci Francesco</li>
+    </ul>
+    <hr />
+    Wed Sep 12 2018 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.13-1" id="v2.13-1">2.13-1</a>
+    <ul>
+      <li>can handle recommends / supplements rpm tags</li>
+    </ul>
+    <hr />
+    Fri Jul 20 2018 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.12-1" id="v2.12-1">2.12-1</a>
+    <ul>
+      <li>apply patch on requires from Bruce Jerrick : Handle Requires(pre,post,preun,postun)</li>
+      <li>add new requires syntax with if ( redhat-rpm-config )</li>
+    </ul>
+    <hr />
+    Sun Jun 10 2018 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.11-3" id="v2.11-3">2.11-3</a>
+    <ul>
+      <li>Made minor grammatical fixes to English language translations (patch from beroset)</li>
+    </ul>
+    <hr />
+    Sun Sep 10 2017 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.11-2" id="v2.11-2">2.11-2</a>
+    <ul>
+      <li>fix bad day of week in changelog (rpmbuild warning)</li>
+      <li>add dependency to rpm-build package instead rpmbuild binary</li>
+    </ul>
+    <hr />
+    Wed Nov 22 2013 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.11" id="v2.11">2.11</a>
+    <ul>
+      <li>add install option</li>
+    </ul>
+    <hr />
+    Sun Aug 11 2013 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.10-2" id="v2.10-2">2.10-2</a>
+    <ul>
+      <li>bugfix from 2.10: the test install was inverted (applied on rpm files instead installed rpm)</li>
+    </ul>
+    <hr />
+    Tue Aug 01 2013 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v2.10" id="v2.10">2.10</a>
+    <ul>
+      <li>add tag DISTTAG (feature request)</li>
+      <li>do not test install if work on rpm files</li>
+      <li>applied patch from Olivier Bourdon for pretrans and postrans</li>
+    </ul>
+    <hr />
+    Sun Jan 18 2013 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v2.9" id="v2.9">2.9</a>
+    <ul>
+      <li>fix to work with rpm 4.10 (Fedora 18) - error: incorrect format: invalid field width</li>
+    </ul>
+    <hr />
+    Thu Jul 11 2012 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.8" id="v2.8">2.8</a>
+    <ul>
+      <li>can handle SUGGESTS/ENHANCES rpm tag</li>
+      <li>add --cap-from-fs/cap-from-db options</li>
+      <li>change tar.gz to allow build rpm package with rpmbuild -tb</li>
+    </ul>
+    <hr />
+    Thu June 06 2012 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.7" id="v2.7">2.7</a>
+    <ul>
+      <li>patch from Andreas Kainz for package file checking</li>
+      <li>add new unset_tag plugin</li>
+      <li>add support for rpm version 5 (mandriva)</li>
+      <li>fix -l / --list-plugin option</li>
+      <li>add support of posix capability</li>
+      <li>add new un_prelink plugin (suggest from Han Holl)</li>
+      <li>add RPMREBUILD_OPTS environment variable</li>
+      <li>fix problem with different architecture (build 32bit on 64bits)</li>
+      <li>fix bad arch on gpg-pubkey packages</li>
+    </ul>
+    <hr />
+    Tue Jul 12 2011 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.6" id="v2.6">2.6</a>
+    <ul>
+      <li>fix bug when working on source packages, ghost files</li>
+    </ul>
+    <hr />
+    Tue Apr 19 2011 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.5" id="v2.5">2.5</a>
+    <ul>
+      <li>add -5/-l options in man pages</li>
+      <li>Added support for obsolete version and flags (bugfix by Valery Reznic)</li>
+      <li>shell compatibility (mkdir) for AIX : use -p option instead --parents</li>
+      <li>new Mkdir_p function to check for mkdir result</li>
+      <li>apply patch from ndyankov : support for broken symlinks</li>
+      <li>specfile will allow build package for rpm version 4 or 3</li>
+    </ul>
+    <hr />
+    Fri Dec 11 2009 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.4" id="v2.4">2.4</a>
+    <ul>
+      <li>add -l / --list-plugin option</li>
+    </ul>Tue Nov 12 2009 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt;
+    <ul>
+      <li>add -5 / --md5-compat-digest option</li>
+    </ul>
+    <hr />
+    Wed Jan 09 2009 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.3" id="v2.3">2.3</a>
+    <ul>
+      <li>release version 2.3</li>
+    </ul>Tue Dec 16 2008 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt;
+    <ul>
+      <li>fix a problem: installation test failed when repackaged rpm file (with -p)</li>
+    </ul>Tue Dec 16 2008 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt;
+    <ul>
+      <li>fix for rpm 4.6 (fedora 10), that ignore BuildRoot in the spec file flag</li>
+    </ul>Wed Dec 05 2008 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt;
+    <ul>
+      <li>do not use popt any more</li>
+    </ul>
+    <hr />
+    Wed Aug 06 2008 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.2.3-1" id="v2.2.3-1">2.2.3-1</a>
+    <ul>
+      <li>fix a problem with new rpm security on mandriva (defaultbuildroot)</li>
+    </ul>
+    <hr />
+    Mon Apr 28 2008 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.2.2-1" id="v2.2.2-1">2.2.2-1</a>
+    <ul>
+      <li>fix a bug when working on package file with path</li>
+    </ul>
+    <hr />
+    Wed Apr 2 2008 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.2.1-1" id="v2.2.1-1">2.2.1-1</a>
+    <ul>
+      <li>fix bug on uid/gid with --pug-from-fs option</li>
+      <li>demo plugin : better error message</li>
+      <li>do not remove /etc/popt : it does not belong our package</li>
+      <li>add new set_tag plugin</li>
+      <li>new demofiles plugin</li>
+      <li>add utf-8 for french localisation</li>
+    </ul>
+    <hr />
+    Mon Oct 22 2007 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.2.0-1" id="v2.2.0-1">2.2.0-1</a>
+    <ul>
+      <li>add translation system (english and french) with new locale and man directory</li>
+      <li>fix a bug with rpm localisation in PackageInstalled function ( rpm message are localized, so the grep filter does not work everywhere )</li>
+      <li>fix bug : include file are also search in plugin directory</li>
+      <li>fix help : do not show path any more (fedora bug 328641)</li>
+      <li>add tests for --package option (if file exists, if it is an rpm)</li>
+    </ul>
+    <hr />
+    Mon Jun 18 2007 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.1.1-1" id="v2.1.1-1">2.1.1-1</a>
+    <ul>
+      <li>remove commented tags (PAYLOAD*, INSTALLTID, OPTFLAGS, PLATFORM, SIGSIZE) to solve bug for rpm 3.x</li>
+      <li>add more info to bugreport (issues, warnings)</li>
+      <li>add choice of email addresse for bug report</li>
+      <li>send bug report to new rpmrebuild-bugreport list</li>
+    </ul>
+    <hr />
+    Tue May 15 2007 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.1.0-1" id="v2.1.0-1">2.1.0-1</a>
+    <ul>
+      <li>remove old deprecated tags ICON and SERIAL</li>
+      <li>comment missing localisation file (lang)</li>
+      <li>remove commnented tag XPM and GIF</li>
+      <li>allow concurrent use : random working directory</li>
+      <li>add new long option --debug</li>
+      <li>check if rpm tags exists (CheckTags)</li>
+      <li>add code to send bug report by mail (SendBugReport)</li>
+    </ul>
+    <hr />
+    Tue May 31 2005 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.0.4-1" id="v2.0.4-1">2.0.4-1</a>
+    <ul>
+      <li>force tmpdir to be empty (Christopher Faylor)</li>
+      <li>fix bug with testinstall return</li>
+      <li>fix bug with short options -r -n</li>
+      <li>improved nodoc plugin</li>
+    </ul>
+    <hr />
+    Fri May 20 2005 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.0.3-1" id="v2.0.3-1">2.0.3-1</a>
+    <ul>
+      <li>add --notest-install option (Christopher Faylor)</li>
+      <li>add --release option (Christopher Faylor)</li>
+      <li>add nodoc plugin</li>
+    </ul>
+    <hr />
+    Wed Mar 2 2005 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v2.0.2-1" id="v2.0.2-1">2.0.2-1</a>
+    <ul>
+      <li>fix bug with BuildArch tag (rpmrebuild_popt) (gerbier)</li>
+      <li>Change script from /usr/local/bin to /usr/bin (reznic)</li>
+      <li>change man pages from /usr/local/man to /usr/share/man (reznic)</li>
+      <li>now build man page with good release (reznic)</li>
+      <li>plugins moved to the plugins/ directory in the source tree (reznic)</li>
+    </ul>
+    <hr />
+    Tue Feb 22 2005 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v2.0.1-1" id="v2.0.1-1">2.0.1-1</a>
+    <ul>
+      <li>fix for rpm-4.3.[12] queries</li>
+    </ul>
+    <hr />
+    Mon Feb 21 2005 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v2.0.0-1" id="v2.0.0-1">2.0.0-1</a>
+    <ul>
+      <li>add demo, uniq, file2pacDep plugins (exemples)</li>
+      <li>add commented tags (PAYLOAD*, PATCH, SIZE, INSTALLTID, OPTFLAGS, PLATFORM, ARCHIVESIZE,SIGSIZE, SERIAL)</li>
+      <li>rpmrebuild_parser.src - added '--help-plugins' option</li>
+      <li>processing of /change/modify/edit was moved to the processng_func.src</li>
+      <li>changes to support --change-spec-* and --edit-*</li>
+      <li>added '--include' option</li>
+      <li>changed all env variables' names to be prefixed with RPMREBUILD_</li>
+      <li>change different variables values from empty/non-empty to yes/no</li>
+      <li>Added support for arbitrary execution order for change/edit/modify</li>
+      <li>CommandLineParsing functionality moved to the new file rpmrebuild_parser.src</li>
+    </ul>
+    <hr />
+    <p>Mon Aug 16 2004 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.4.7-3" id="v1.4.7-3">1.4.7-3</a></p>
+    <ul>
+      <li>change dependency from rpm-build package to rpmbuild file for suses distrib</li>
+      <li>some fixes from rmlint</li>
+      <li>fixed problem with manpages compression (Valery)</li>
+      <li>fixed problem with repackaging rpm with ghost files (Valery)</li>
+    </ul>
+    <hr />
+    <p>Mon Jul 12 2004 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.4.7-1" id="v1.4.7-1">1.4.7-1</a></p>
+    <ul>
+      <li>rpmrebuild.sh can be now run from local directory, without need install package (add rpmrebuild_buildroot.sh file).</li>
+      <li>Fix a bug: --comment-missing=yes was work only when --verify=no</li>
+      <li>fix a bug on sed for redhat 7.2</li>
+      <li>change SpecFile to generate rpm according autorequire/autoprovide (avoid post sed)</li>
+      <li>add rpmrebuild file (avoid symbolic link to rpmrebuild.sh)</li>
+    </ul>
+    <hr />
+    <p>Mon May 24 2004 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.4.6-4" id="v1.4.6-4">1.4.6-4</a></p>
+    <ul>
+      <li>eliminate 'expr' usage</li>
+      <li>add RPMREBUILD_TMDDIR environment variable. With default ~/.tmp/rpmrebuild (used instead of /tmp)</li>
+      <li>fixed bug with parsing --long-option=</li>
+      <li>buildroot was changed not to use /tmp directory</li>
+      <li>fix a bug on --autoprovide/--autorequire</li>
+    </ul>
+    <hr />
+    <p>Wed May 19 2004 Valery Reznic &lt;<a href="mailto:valery_treznic@users.sourceforge.net">valery_treznic@users.sourceforge.net</a>&gt; <a name="v1.4.6-3" id="v1.4.6-3">1.4.6-3</a></p>
+    <ul>
+      <li>added long option abbreviation</li>
+      <li>dir option changed to directory</li>
+      <li>add all remaining dependencies (bash, sed, grep ...) to package</li>
+    </ul>
+    <hr />
+    <p>Thu May 6 2004 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.4.6-2" id="v1.4.6-2">1.4.6-2</a></p>
+    <ul>
+      <li>split in 2 packages for rpm &lt; 4 and rpm &gt; 4 (add rpm-build dependency)</li>
+    </ul>
+    <hr />
+    <p>2004-01-01 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.4.6-1" id="v1.4.6-1">1.4.6-1</a></p>
+    <ul>
+      <li>added -P/--autoprovide flag</li>
+      <li>added -R/--autorequire flag</li>
+    </ul>
+    <hr />
+    <p>2003-11-14 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.4.5-2" id="v1.4.5-2">1.4.5-2</a></p>
+    <ul>
+      <li>change filter behavior to be more robust</li>
+      <li>read -r on /etc/popt to keep backslash</li>
+      <li>fix comment-missing option</li>
+      <li>remove rpmlib dependencies from specfile</li>
+      <li>remove gpg key from provide list</li>
+      <li>fix wildcard problem in file list (guile) (Han Holl)</li>
+    </ul>
+    <hr />
+    <p>2003-07-03 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.4.5-1" id="v1.4.5-1">1.4.5-1</a></p>
+    <ul>
+      <li>switch from 'case' to usinf AskYesNo function</li>
+      <li>added -y/--verify flag</li>
+      <li>added -c/--comment-missing flag</li>
+      <li>added missing -w/--warning to the Usage message</li>
+    </ul>
+    <hr />
+    <p>2003-06-18 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.4.4-1" id="v1.4.4-1">1.4.4-1</a></p>
+    <ul>
+      <li>added -m/--modify option - invoke script after rpm's file unpackaging</li>
+      <li>added -a/--additional option - pass additional flags to rpmbuild</li>
+      <li>added -D/--define option - set defines for rpmbuild</li>
+      <li>after specfile editing (with -e option) is possible now abort rpm build</li>
+    </ul>
+    <hr />
+    <p>2003-06-09 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.4.3-1" id="v1.4.3-1">1.4.3-1</a></p>
+    <ul>
+      <li>fixed problem with (none) in the FILELANG query</li>
+      <li>rpmrebuild now working with rpm-4.2</li>
+      <li>Makefile now can work with both rpmbuild and rpm as package builder</li>
+    </ul>
+    <hr />
+    <p>2003-06-02 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.4.2-1" id="v1.4.2-1">1.4.2-1</a></p>
+    <ul>
+      <li>fixed problem with specspo (now query package and not specspo information)</li>
+    </ul>
+    <hr />
+    <p>2003-02-04 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.4.1-1" id="v1.4.1-1">1.4.1-1</a></p>
+    <ul>
+      <li>add warning flag (-w/--warning)</li>
+    </ul>
+    <hr />
+    <p>2003-01-17 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.4.0-1" id="v1.4.0-1">1.4.0-1</a></p>
+    <ul>
+      <li>added long options (Reznic)</li>
+      <li>added support for %%lang (Reznic)</li>
+      <li>add man page (Gerbier)</li>
+      <li>fix bug with % in changelog (Gerbier)</li>
+      <li>add French translation in specfile (Gerbier)</li>
+      <li>add filter option for "pluggins" (Gerbier/Reznic)</li>
+      <li>add '-p' option to run rpm file too (useful with -e or filters) (Reznic)</li>
+      <li>demo pluggin : file2pacDep (change file dependencies into package dependencies) (Gerbier)</li>
+    </ul>
+    <hr />
+    <p>2002-12-02 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.2-0" id="v1.2-0">1.2-0</a></p>
+    <ul>
+      <li>now rpmrebuild can be run as 'rpm --rpmrebuild'</li>
+    </ul>
+    <hr />
+    <p>2002-11-26 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v1.1-1" id="v1.1-1">1.1-1</a></p>
+    <ul>
+      <li>rewrite the filter to remove empty answer (none) from rpm queries in a more general way</li>
+    </ul>
+    <hr />
+    <p>2002-11-23 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.1-0" id="v1.1-0">1.1-0</a></p>
+    <ul>
+      <li>add a filter to remove empty answer (none) from rpm queries</li>
+    </ul>
+    <hr />
+    <p>2002-10-23 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v1.0-0" id="v1.0-0">1.0-0</a></p>
+    <ul>
+      <li>replace vi specfile by a %define to change release</li>
+      <li>add command lines options (-h : help, -v : verbose, -V: version)</li>
+      <li>add lsm description</li>
+      <li>move .popt to /usr/lib/rpmrebuild to avoid conflicts</li>
+      <li>fix some .popt problems with rpm 4.1 (Han Holl)</li>
+      <li>have a link from rpmrebuild.sh to rpmrebuild</li>
+      <li>add option -b for batch processing</li>
+      <li>add option -k to keep installed files perm</li>
+      <li>fix a buggy test for non-installed packages (Han Holl)</li>
+      <li>remove dirname and move code to /usr/lib/rpmrebuild</li>
+      <li>use rpmbuild if it exists (rpm 4.1) (Han Holl)</li>
+      <li>add -d option to change working directory</li>
+      <li>add -e option to edit spec file</li>
+      <li>add generation verify directive to the spec file</li>
+      <li>add build testing and install testing</li>
+      <li>fix a bug if release change</li>
+      <li>specfile now temporary (Valery Reznic)</li>
+      <li>added -s flag to generate spec file only (Valery Reznic)</li>
+      <li>default directory for rpm now not current directory, but native rpm directory (Valery Reznic)</li>
+      <li>fix a bug for Redhat 6.2 package name</li>
+      <li>fix a bug for package providing</li>
+      <li>and full code rewrite (Valery Reznic)</li>
+    </ul>
+    <hr />
+    <p>2002-10-07 Valery Reznic &lt;<a href="mailto:valery_reznic@users.sourceforge.net">valery_reznic@users.sourceforge.net</a>&gt; <a name="v0.7.1" id="v0.7.1">0.7.1</a></p>
+    <ul>
+      <li>split the script for a more modular way</li>
+      <li>recode the %file section with all new tags (missingok, noreplace ...)</li>
+    </ul>
+    <hr />
+    <p>2002-09-27 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.7.0" id="v0.7.0">0.7.0</a></p>
+    <ul>
+      <li>to have better portability, work now only on local directory (thanks to <a href="mailto:valery_reznic@users.sourceforge.net">Valery Reznic</a>)</li>
+      <li>a complete rewrite for performances</li>
+    </ul>
+    <hr />
+    <p>2002-09-23 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.6.0" id="v0.6.0">0.6.0</a></p>
+    <ul>
+      <li>add triggers (thanks to Han Holl)</li>
+      <li>add many other spec tags (icon, exclude*, serial, provides, conflicts ...)</li>
+    </ul>
+    <hr />
+    <p>2002-09-20 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.5.0" id="v0.5.0">0.5.0</a></p>
+    <ul>
+      <li>try to have it work on any distribution (not only Redhat)</li>
+      <li>the rpm package is now signed with my gpg key</li>
+    </ul>
+    <hr />
+    <p>2002-09-18 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.4.2" id="v0.4.2">0.4.2</a></p>
+    <ul>
+      <li>add architecture (thanks to Han Holl &lt;HAN.HOLL@PRISMANT.NL&gt;)</li>
+      <li>add require, obsolete</li>
+      <li>force time format with LC_TIME (changelog)</li>
+      <li>change shell name to match project name</li>
+      <li>try to have full English messages</li>
+    </ul>
+    <hr />
+    <p>2002-09-18 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.4.1" id="v0.4.1">0.4.1</a></p>
+    <ul>
+      <li>suppress a useless exit</li>
+      <li>shell cosmetic changes</li>
+    </ul>
+    <hr />
+    <p>2002-07-18 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.4" id="v0.4">0.4</a></p>
+    <ul>
+      <li>first rpm package</li>
+      <li>check changes (rpm -V)</li>
+      <li>check for multiples rpm</li>
+      <li>simplify pre post tag</li>
+      <li>add type doc and config files</li>
+    </ul>
+    <hr />
+    <p>2002-07-12 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.3" id="v0.3">0.3</a></p>
+    <ul>
+      <li>fix bug on Redhat 6.x with pre /post install script</li>
+      <li>first public release, as a single shell</li>
+    </ul>
+    <hr />
+    <p>2000-02-01 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.2" id="v0.2">0.2</a></p>
+    <ul>
+      <li>add changelog</li>
+      <li>add pre post install scripts</li>
+    </ul>
+    <hr />
+    <p>2000-01-01 Eric Gerbier &lt;<a href="mailto:gerbier@users.sourceforge.net">gerbier@users.sourceforge.net</a>&gt; <a name="v0.1" id="v0.1">0.1</a></p>
+    <ul>
+      <li>initial and minimal version</li>
+    </ul>
+    <hr />
+    <a href="index.html">back to main page</a>
+  </div>
+</body>
+</html>
