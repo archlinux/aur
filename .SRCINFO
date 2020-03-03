@@ -1,17 +1,15 @@
 pkgbase = python-quandl
-	pkgdesc = Wrapper for quandl-python
-	pkgver = v3.1.0.r0.g1d06fe5
+	pkgdesc = Quandl's Python Package
+	pkgver = 3.4.8
 	pkgrel = 1
 	url = https://github.com/quandl/quandl-python
-	arch = x86_64
+	arch = any
 	license = MIT
-	makedepends = python>=3.6
-	makedepends = git
 	depends = python-numpy
 	depends = python-more-itertools
-	provides = python-quandl
-	source = python-quandl::git+https://github.com/quandl/quandl-python.git
-	md5sums = SKIP
+	depends = python-inflection
+	source = https://github.com/quandl/quandl-python/archive/v3.4.8.tar.gz
+	sha256sums = d885a269ccea7f4e6c6965fb31277f003c4d00bcdf947e6fe9c4f3b6e09d116e
 
 pkgname = python-quandl
 
