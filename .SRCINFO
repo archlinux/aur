@@ -1,12 +1,12 @@
 pkgbase = snapgene
 	pkgdesc = Software for plasmid mapping, primer design, and restriction site analysis
-	pkgver = 4.3.6
+	pkgver = 5.0.7
 	pkgrel = 1
 	url = http://www.snapgene.com/products/snapgene/
 	arch = x86_64
 	license = custom
-	source = local://snapgene_4.3.6_linux.rpm
-	md5sums = 25e7449a07743a331be0932cee569d77
+	source = local://snapgene_5.0.7_linux.rpm
+	md5sums = 02a2b7868db03fdd7eea1201862e8ad4
 
 pkgname = snapgene
 

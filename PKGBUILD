@@ -2,7 +2,7 @@
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at gmail dot com>
 # Co-Maintainer: Lorenzo Gaifas <brisvag at gmail dot com>
 pkgname=snapgene
-pkgver=4.3.6
+pkgver=5.0.7
 pkgrel=1
 pkgdesc='Software for plasmid mapping, primer design, and restriction site analysis'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 # You must download the file yourself using your snapgene account
 # A valid licence is required to use the full version of snapgene
 source=("local://${pkgname}_${pkgver}_linux.rpm")
-md5sums=('25e7449a07743a331be0932cee569d77')
+md5sums=('02a2b7868db03fdd7eea1201862e8ad4')
 conflicts=()
 options=()
 
