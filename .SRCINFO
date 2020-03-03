@@ -1,0 +1,12 @@
+pkgbase = glitter-git
+	pkgdesc = Git repositories management tool written in bash
+	pkgver = master
+	pkgrel = 1
+	url = https://gitlab.com/lordinvader/glitter
+	arch = any
+	depends = bash
+	source = git+https://gitlab.com/lordinvader/glitter
+	sha256sums = SKIP
+
+pkgname = glitter-git
+
