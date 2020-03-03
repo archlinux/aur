@@ -2,6 +2,9 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: rmanne <rahul_manne@hotmail.com>
 
+# See Debian packaging for details, rules and control files linked here:
+# https://tracker.debian.org/pkg/praat
+
 pkgname=praat-bin
 pkgver=6.1.09
 _debver=1
