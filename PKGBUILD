@@ -6,7 +6,7 @@
 # Maintainer: Martin Kaffanke <martin@kaffanke.at>
 pkgname=b2fuse-git
 _reponame="b2_fuse"
-pkgver=v1.3.r64.g80675e8
+pkgver=v1.3.r65.gd30011a
 pkgrel=1
 pkgdesc="FUSE integration for Backblaze B2 Cloud storage"
 arch=('any')
