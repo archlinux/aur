@@ -2,7 +2,7 @@
 # Contributor: SpotlightKid
 pkgname=libgig-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r2835
+pkgver=r3751
 pkgrel=1
 pkgdesc="Gigasampler file access library"
 arch=("i686" "x86_64")
@@ -12,7 +12,7 @@ depends=("libsndfile"
          "util-linux")
 makedepends=("subversion")
 optdepends=()
-provides=("libgig")
+provides=("libgig" "libgig.so")
 conflicts=("libgig")
 source=("$pkgname"::"svn+https://svn.linuxsampler.org/svn/$_pkgname/trunk")
 md5sums=('SKIP')

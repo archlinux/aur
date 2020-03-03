@@ -1,6 +1,6 @@
 pkgbase = libgig-svn
 	pkgdesc = Gigasampler file access library
-	pkgver = r2658
+	pkgver = r3751
 	pkgrel = 1
 	url = http://www.linuxsampler.org/
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = libgig-svn
 	depends = libsndfile
 	depends = util-linux
 	provides = libgig
+	provides = libgig.so
 	conflicts = libgig
 	source = libgig-svn::svn+https://svn.linuxsampler.org/svn/libgig/trunk
 	md5sums = SKIP
