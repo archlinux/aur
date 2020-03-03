@@ -2,18 +2,18 @@
 
 pkgname=ezra-project
 pkgver=0.11.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Bible study software focussing on topical study based on keywords/tags"
 arch=('x86_64')
-url="https://github.com/tobias-klein/ezra-project"
+url="https://github.com/tobias-klein/$pkgname"
 license=('GPL3')
 depends=('curl'
          'electron'
          'icu'
          'nodejs'
+         'python2'
          'sqlite')
 makedepends=('cmake' 'gendesk' 'npm' 'sword')
-conflicts=("$pkgname-git")
 source=("https://github.com/tobias-klein/$pkgname/archive/$pkgver.tar.gz"
         'ezra-project.sh')
 sha256sums=('cf662fc55d658d5e03ed95025428b81b1d12cb6d3f0aed9b6e41278f80b65ecd'
@@ -34,6 +34,7 @@ build() {
     "$(npm bin)"/electron-rebuild -f -w node-sword-interface -v "$_electron"
     npm run prune-node-modules
     npm run purge-build-artifacts
+    npm run cleanup-gyp-shebang
 }
 
 package() {
@@ -42,6 +43,6 @@ package() {
     install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     "$(npm bin)"/electron-packager . "$pkgname" --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release --electron-version="$_electron"
     rm release/ezra-project-linux-x64/"$pkgname"
-    mkdir "$pkgdir/usr/lib/"
+    mkdir -p "$pkgdir/usr/lib/"
     cp -a release/ezra-project-linux-x64 "$pkgdir/usr/lib/$pkgname"
 }
