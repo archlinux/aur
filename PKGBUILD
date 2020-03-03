@@ -61,10 +61,10 @@ _localmodcfg=
 _major=4.14
 _minor=172
 _srcname=linux-${_major}
-_clr=${_major}.170-93
+_clr=${_major}.171-97
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2017'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
@@ -115,8 +115,7 @@ prepare() {
                        --undefine RT_GROUP_SCHED
 
         # Power management and ACPI options
-        scripts/config --enable HIBERNATION \
-                       --enable ACPI_REV_OVERRIDE_POSSIBLE \
+        scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
                        --enable ACPI_TABLE_UPGRADE
 
         # Enable loadable module support
