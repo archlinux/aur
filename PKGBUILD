@@ -1,21 +1,22 @@
-# Maintainer: mrxx <mrxx at cyberhome dot at>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: mrxx <mrxx at cyberhome dot at>
 
 pkgname=praat-bin
-_debpkg=praat
-_debver=2
-pkgver=6.0.52
+pkgver=6.1.09
+_debver=1
 pkgrel=1
-pkgdesc="Doing Phonetics by computer (speech analysis)"
-url="http://www.praat.org/"
-arch=('i686' 'x86_64')
+pkgdesc='Doing Phonetics by computer (speech analysis)'
+url='http://www.praat.org/'
+arch=('x86_64' 'i686')
 license=('GPL')
-depends=('gtk2' 'alsa-lib' 'libpulse')
+depends=('alsa-lib' 'gtk2' 'libpulse' 'ttf-charis-sil' 'ttf-sil-doulos')
 optdepends=('ttf-sil-fonts')
-conflicts=('praat' 'praat-git')
-source_i686=(http://http.at.debian.org/debian/pool/main/p/${_debpkg}/${_debpkg}_${pkgver}-${_debver}_i386.deb)
-source_x86_64=(http://http.at.debian.org/debian/pool/main/p/${_debpkg}/${_debpkg}_${pkgver}-${_debver}_amd64.deb)
-sha256sums_i686=('caff99337c9ecfb8476ef3d6da9cb2df6907bd406a63081736f33a63e0b1b950')
-sha256sums_x86_64=('6ea02ecb32eee6f6346cc40a9cf36a08f41f885e2144769ff2ed0b3351778f32')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_i686=("http://http.at.debian.org/debian/pool/main/p/${pkgname%-bin}/${pkgname%-bin}_${pkgver}-${_debver}_i386.deb")
+source_x86_64=("http://http.at.debian.org/debian/pool/main/p/${pkgname%-bin}/${pkgname%-bin}_${pkgver}-${_debver}_amd64.deb")
+sha256sums_x86_64=('2882b371c3fce0263ad46f5f4517a9475a2d7a211b6494ad81a85e04a278ee6e')
+sha256sums_i686=('df82e4e672c6d782b92ae6181b6893d0722b58be709a600f0d887ebff09074f8')
 
 prepare() {
   bsdtar -xf data.tar.xz
