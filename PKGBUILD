@@ -3,16 +3,16 @@
 
 pkgname=pg_activity
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Is a top like application for PostgreSQL server activity monitoring"
 arch=('any')
-url="https://github.com/julmon/pg_activity/"
+url="https://github.com/dalibo/pg_activity/"
 license=('BSD')
 depends=('python' 'python-psutil' 'python-psycopg2')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("https://github.com/julmon/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('1e4b0da782e8fd58c7a49e6dbb88c2cb')
+source=("${url}/archive/v${pkgver}.zip")
+md5sums=('7d7775efec164df39431d6597f512d2f')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
