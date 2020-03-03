@@ -2,7 +2,7 @@
 
 pkgname=msktutil
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Msktutil creates user or computer accounts in Active Directory, creates Kerberos keytabs on Unix/Linux systems, adds and removes principals to and from keytabs and changes the user or computer account´s password.'
 arch=('x86_64')
 url="https://github.com/msktutil/$pkgname"
