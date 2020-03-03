@@ -15,7 +15,7 @@ arch=('i686' 'x86_64' 'armv6h')
 url='http://userspace.selinuxproject.org'
 license=('custom')
 groups=('selinux')
-makedepends=('python' 'ruby' 'xz' 'swig')
+makedepends=('pkgconf' 'python' 'ruby' 'xz' 'swig')
 depends=('libsepol>=3.0' 'pcre')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')

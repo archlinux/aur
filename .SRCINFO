@@ -8,6 +8,7 @@ pkgbase = libselinux
 	arch = armv6h
 	groups = selinux
 	license = custom
+	makedepends = pkgconf
 	makedepends = python
 	makedepends = ruby
 	makedepends = xz
