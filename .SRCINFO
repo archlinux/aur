@@ -1,0 +1,16 @@
+pkgbase = msktutil
+	pkgdesc = Msktutil creates user or computer accounts in Active Directory, creates Kerberos keytabs on Unix/Linux systems, adds and removes principals to and from keytabs and changes the user or computer accounts password.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/msktutil/msktutil
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = autoconf
+	depends = krb5
+	depends = cyrus-sasl-gssapi
+	source = https://github.com/msktutil/msktutil/releases/download/v1.1/msktutil-1.1.tar.bz2
+	sha256sums = 56bf4af8f74d8be6a8d94b90a527acf1508cd58212886fcfe54daa9799dcaf6f
+
+pkgname = msktutil
+
