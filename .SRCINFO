@@ -1,6 +1,6 @@
 pkgbase = sftpgo-git
 	pkgdesc = Full featured and highly configurable SFTP server
-	pkgver = r280.7f1946d
+	pkgver = r282.016abda
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo-git.install
