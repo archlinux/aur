@@ -1,0 +1,18 @@
+pkgbase = ropium-git
+	pkgdesc = A tool to makes ROP-exploits easy
+	pkgver = v3.1.r7.g41085d3
+	pkgrel = 1
+	url = https://github.com/Boyan-MILANOV/ropium
+	arch = x86_64
+	makedepends = git
+	depends = python
+	depends = capstone
+	depends = ropgadget
+	depends = python-prompt_toolkit
+	provides = ropium
+	conflicts = ropium
+	source = ropium-git::git+https://github.com/Boyan-MILANOV/ropium.git
+	sha256sums = SKIP
+
+pkgname = ropium-git
+
