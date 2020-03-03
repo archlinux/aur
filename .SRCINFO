@@ -1,0 +1,16 @@
+pkgbase = python-pygccxml-castxml
+	pkgdesc = Python package for easy C++ declarations navigation (w/ CastXML and python3)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/gccxml/pygccxml
+	arch = any
+	license = custom
+	depends = castxml
+	depends = python
+	provides = python-gccxml
+	provides = pygccxml
+	source = https://github.com/gccxml/pygccxml/archive/v1.9.1.zip
+	sha512sums = f1f68596a8c93472d551a656befe3a3dffdbef80b307291d64314433ca55c0db0fb6f686be795210e3c372926799f0e4f4a3e8d8511cd41040ff81d7bd1e144b
+
+pkgname = python-pygccxml-castxml
+
