@@ -1,7 +1,7 @@
 pkgbase = praat-git
 	pkgdesc = Doing Phonetics by computer (speech analysis)
 	pkgver = 6.1.09.r104.g9db902f
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.praat.org/
 	arch = x86_64
 	arch = i686

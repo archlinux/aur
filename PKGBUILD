@@ -4,7 +4,7 @@
 
 pkgname=praat-git
 pkgver=6.1.09.r104.g9db902f
-pkgrel=2
+pkgrel=3
 pkgdesc='Doing Phonetics by computer (speech analysis)'
 arch=('x86_64' 'i686')
 url='http://www.praat.org/'
@@ -42,7 +42,7 @@ build() {
 
 package() {
     cd "${pkgname%-git}"
-    install -Dm755 -t "$pkgdir/usr/bin/praat" "${pkgname%-git}"
+    install -Dm755 -t "$pkgdir/usr/bin" "${pkgname%-git}"
     install -Dm644 -t "$pkgdir/usr/share/applications/" "../${pkgname%-git}.desktop"
     install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" "../${pkgname%-git}.svg"
     install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "../${pkgname%-git}.xpm"
