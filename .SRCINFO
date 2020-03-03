@@ -5,6 +5,7 @@ pkgbase = castxml-git
 	url = https://github.com/CastXML/CastXML
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = git
 	makedepends = cmake
