@@ -3,7 +3,7 @@
 _perlmod='Prometheus-Tiny-Shared'
 _modnamespace=Prometheus
 pkgname=perl-prometheus-tiny-shared
-pkgver=0.010
+pkgver=0.011
 pkgrel=1
 pkgdesc="A tiny Prometheus client backed by a shared memory region"
 arch=("any")
@@ -13,7 +13,7 @@ depends=('perl' 'perl-cache-fastmmap' 'perl-dbd-sqlite' 'perl-dbi' 'perl-prometh
 checkdepends=('perl-data-random' 'perl-plack' 'perl-test-exception')
 options=('!emptydirs')
 source=("http://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('1f4630c282f2f3b44e5796e54004360a33a795a2f0f30f5fb55682c482b3edc5')
+sha256sums=('55e717b2077c767d41f52577e76bad0b4cfa7cac7c387e3faedadc31d0fee277')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
