@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.5.6
+pkgver=5.5.7
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver}-arch1
@@ -34,7 +34,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$_srctag
-_bmqversion=5.5-r1
+_bmqversion=5.5-r2
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20191217'
 source=(
@@ -48,9 +48,9 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('ea49df501304070ae0bb40e2c22a388ada0c78a2dbf243f620a6b0fd3f7bb075'
+sha256sums=('a51ca855eae57fc4c4e335a09965a3e8b53b10b75f34824127ad14c974a2ae9a'
             '9cd23b970ae575c9abaf2c51fb6df4240ad8a94fac239810ef9e826b02d137cd'
-            '2382fecb1572a309d710d465ca6e66cc718d389246b80158868d1814891ff71a'
+            'e503e2e13072b7de5a26b478c30d16cb68399c5b0b0af360245d3359e5cc74b1'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
 _kernelname=${pkgbase#linux}
