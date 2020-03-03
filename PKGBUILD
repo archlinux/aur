@@ -15,7 +15,7 @@ _EXTRAOPTS+=( -DWITH_ALEMBIC_HDF5=ON
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.83.r93560.e2722aec6bc
+pkgver=2.83.r93804.4b2b5fe4b8d
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -43,6 +43,7 @@ source=("git://git.blender.org/blender.git${_fragment}"
         blender-2.8.desktop
         SelectCudaComputeArch.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
+        embree.patch #add missing embree link.
         )
 sha256sums=('SKIP'
             'SKIP'
@@ -51,7 +52,8 @@ sha256sums=('SKIP'
             'SKIP'
             '9d7bd988939f4e8d06adc3166bacd76cc87a488b40f042f033863af35eadfc43'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
-            '893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849')
+            '893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849'
+            '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
 
 pkgver() {
   cd "$srcdir/blender"
@@ -66,6 +68,7 @@ prepare() {
     git apply -v ${srcdir}/SelectCudaComputeArch.patch
   fi
   git apply -v ${srcdir}/usd_python.patch
+  git apply -v ${srcdir}/embree.patch
 }
 
 build() {

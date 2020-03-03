@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.83.r93560.e2722aec6bc
+	pkgver = 2.83.r93804.4b2b5fe4b8d
 	pkgrel = 1
 	url = https://blender.org/
 	install = blender.install
@@ -47,6 +47,7 @@ pkgbase = blender-2.8-git
 	source = blender-2.8.desktop
 	source = SelectCudaComputeArch.patch
 	source = usd_python.patch
+	source = embree.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -55,6 +56,7 @@ pkgbase = blender-2.8-git
 	sha256sums = 9d7bd988939f4e8d06adc3166bacd76cc87a488b40f042f033863af35eadfc43
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
 	sha256sums = 893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849
+	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 
 pkgname = blender-2.8-git
 
