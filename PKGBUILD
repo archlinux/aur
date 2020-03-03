@@ -5,14 +5,14 @@
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 
 pkgname=gtkwave-svn
-pkgver=1145
+pkgver=1553
 pkgrel=1
 pkgdesc='A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files (experimental version from svn)'
 arch=('i686' 'x86_64')
 url='http://gtkwave.sourceforge.net'
 license=('GPL' 'MIT')
 depends=('bzip2' 'xz' 'gtk2' 'desktop-file-utils')
-makedepends=('gperf')
+makedepends=('gperf' 'subversion')
 conflicts=('gtkwave')
 install='gtkwave.install'
 source=("$srcdir/gtkwave::svn://svn.code.sf.net/p/gtkwave/code/")
