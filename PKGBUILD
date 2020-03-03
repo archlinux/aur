@@ -6,19 +6,19 @@ _fragment="#tag=$_ver"
 
 pkgname=usd
 pkgver=${_ver#v}
-pkgrel=1
+pkgrel=2
 pkgdesc="3D VFX pipeline interchange file format."
 arch=('x86_64')
 url="https://www.openusd.org"
 license=('Apache')
-eval depends=('boost-libs' 'glew' 'openexr' 'opensubdiv' 'pyside2' "python2{,-opengl}")
+eval depends=('boost-libs' 'glew' 'openexr' 'opensubdiv' "python2{,-opengl,-pyside}")
 eval makedepends=('boost' 'cmake' 'git' 'intel-tbb' 'ninja' "python2-{jinja,pyside-tools}")
 provides=("usd=${pkgver}")
 source=("git+https://github.com/PixarAnimationStudios/USD.git${_fragment}"
         "boost_python2.patch"
         "blender.patch")
 sha256sums=('SKIP'
-            '92ff2922bf2a615e3279f1fb834dd1f0a356f843ce511efbeaf9797578409d49'
+            '39b52f008bcebbd2bb57e165e85622b3452de9f10342b82f38e305d934486f46'
             'a4b92e59eb6330109f65d1b168ad0c4b1292c5317f579dcbf0594df22ffbc587')
 
 prepare() {
