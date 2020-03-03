@@ -1,7 +1,7 @@
 # Maintainer: birdsnotberries <pkg@wodeland.monster>
 pkgname=byuu
-pkgver=1.4
-_zipver=1r4
+pkgver=2
+_zipver=${pkgver}
 pkgrel=1
 pkgdesc="a new multi-system emulator, which shares emulation cores with higan"
 arch=(x86_64)
@@ -11,7 +11,7 @@ groups=()
 depends=(sdl2 libao libxv libpulse gtksourceview2 openal
 		perl-net-dbus perl-x11-protocol)
 source=("https://byuu.org/download/byuu/${pkgname}_v${_zipver}-source.zip")
-md5sums=(fdf467be05c66cf06ac2df08d41c93ed)
+md5sums=(d5a27eafb45c07ae325e07aa186d8edc)
 
 build() {
 	cd "${srcdir}/${pkgname}_v${_zipver}-source"
