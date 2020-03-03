@@ -2,13 +2,13 @@
 pkgbase=transmission-cmake
 pkgname=(transmission-cmake-cli transmission-cmake-gtk transmission-cmake-qt libtransmission)
 pkgver=2.94
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 url="http://www.transmissionbt.com/"
 license=(MIT)
 options=(!buildflags)
-makedepends=(gtk3 ido intltool curl qt5-base libevent systemd qt5-tools dht libutp libnatpmp)
-source=("git+https://github.com/transmission/transmission#tag=2.93"
+makedepends=(cmake git gtk3 intltool curl qt5-base libevent systemd qt5-tools dht libutp libnatpmp)
+source=("git+https://github.com/transmission/transmission#tag=$pkgver"
         transmission-cmake-cli.sysusers
         transmission-cmake-cli.tmpfiles)
 sha256sums=('SKIP'
@@ -34,7 +34,7 @@ build() {
 
 package_transmission-cmake-cli() {
   pkgdesc='Fast, easy, and free BitTorrent client (CLI tools, daemon and web client)'
-  depends=(curl libevent systemd)
+  depends=(curl libevent systemd libnatpmp)
   conflicts=(transmission-cli)
   provides=(transmission-cli)
 
@@ -56,7 +56,7 @@ package_transmission-cmake-cli() {
 
 package_transmission-cmake-gtk() {
   pkgdesc="Fast, easy, and free BitTorrent client (GTK+ GUI)"
-  depends=(curl libevent ido-thanos gtk3 desktop-file-utils hicolor-icon-theme)
+  depends=(curl libevent libnatpmp gtk3 desktop-file-utils hicolor-icon-theme)
   optdepends=('notification-daemon: Desktop notification support'
   	      'transmission-cmake-cli: daemon and web support')
   provides=(transmission-gtk)
@@ -71,7 +71,7 @@ package_transmission-cmake-gtk() {
 
 package_transmission-cmake-qt() {
   pkgdesc="Fast, easy, and free BitTorrent client (Qt GUI)"
-  depends=(curl qt5-base libevent)
+  depends=(curl qt5-base libevent libnatpmp)
   optdepends=('transmission-cmake-cli: daemon and web support')
   provides=(transmission-qt)
   conflicts=(transmission-qt)
@@ -92,9 +92,6 @@ package_libtransmission(){
 
   cd build
   make -C libtransmission DESTDIR="$pkgdir" install
-  mkdir -p $pkgdir/usr/lib/
-  mv $pkgdir/usr/lib64/libtransmission.a  $pkgdir/usr/lib/
-  rmdir $pkgdir/usr/lib64 
   install -Dm644 $srcdir/transmission/COPYING "$pkgdir/usr/share/licenses/libtransmission/COPYING"
 
 }
