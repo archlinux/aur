@@ -1,0 +1,25 @@
+pkgbase = perl-mail-bimi
+	pkgdesc = BIMI object
+	pkgver = 1.20200226
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Mail-BIMI
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-mail-spf
+	makedepends = perl-net-dns-resolver-mock
+	makedepends = perl-test-class
+	makedepends = perl-test-exception
+	makedepends = perl-test-simple
+	depends = perl
+	depends = perl-mail-authenticationresults
+	depends = perl-mail-dmarc
+	depends = perl-moo
+	depends = perl-net-dns
+	depends = perl-type-tiny
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Mail/Mail-BIMI-1.20200226.tar.gz
+	sha256sums = 0fb3a3c77afa986618c3c926bfb4fb5131b4e5595466959c41cdcf5d89f383f9
+
+pkgname = perl-mail-bimi
+
