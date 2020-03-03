@@ -6,7 +6,7 @@
 # Maintainer: Martin Kaffanke <martin@kaffanke.at>
 pkgname=b2fuse-git
 _reponame="b2_fuse"
-pkgver=v1.3.r63.g7dd6f21
+pkgver=v1.3.r64.g80675e8
 pkgrel=1
 pkgdesc="FUSE integration for Backblaze B2 Cloud storage"
 arch=('any')
@@ -30,9 +30,12 @@ pkgver() {
 #  python setup.py build
 #}
 
+build () {
+  cd "$srcdir/${_reponame}"
+  python setup.py build
+}
 
 package() {
   cd "$srcdir/${_reponame}"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-
+  python setup.py install --root="${pkgdir}" --optimize=1
 }

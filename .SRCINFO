@@ -1,6 +1,6 @@
 pkgbase = b2fuse-git
 	pkgdesc = FUSE integration for Backblaze B2 Cloud storage
-	pkgver = v1.3.r63.g7dd6f21
+	pkgver = v1.3.r64.g80675e8
 	pkgrel = 1
 	url = https://github.com/sondree/b2_fuse
 	arch = any
