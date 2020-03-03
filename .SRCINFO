@@ -1,0 +1,16 @@
+pkgbase = fish-humanize-duration-git
+	pkgdesc = Make a time interval human readable
+	pkgver = r7.245e38f
+	pkgrel = 1
+	url = https://github.com/fishpkg/fish-humanize-duration
+	arch = any
+	license = Unlicense
+	makedepends = git
+	depends = fish
+	provides = fish-humanize-duration
+	conflicts = fish-humanize-duration
+	source = git+https://github.com/fishpkg/fish-humanize-duration
+	sha256sums = SKIP
+
+pkgname = fish-humanize-duration-git
+
