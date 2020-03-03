@@ -15,7 +15,7 @@ _EXTRAOPTS+=( -DWITH_ALEMBIC_HDF5=ON
 
 pkgname=blender-2.8-git
 _fragment="#branch=master"
-pkgver=2.83.r93804.4b2b5fe4b8d
+pkgver=2.83.r93807.g78383f7a9f9
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -56,8 +56,12 @@ sha256sums=('SKIP'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
 
 pkgver() {
-  cd "$srcdir/blender"
-  printf "%s.r%s.%s" "$(grep -Po "BLENDER_VERSION \K[0-9]{3}" source/blender/blenkernel/BKE_blender_version.h|sed 's/./&./1')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  blender_version=$(grep -Po "BLENDER_VERSION \K[0-9]{3}" "$srcdir"/blender/source/blender/blenkernel/BKE_blender_version.h)
+  printf "%d.%d.r%s.g%s" \
+    $((blender_version/100)) \
+    $((blender_version%100)) \
+    "$(git -C "$srcdir/blender" rev-list --count HEAD)" \
+    "$(git -C "$srcdir/blender" rev-parse --short HEAD)"
 }
 
 prepare() {
