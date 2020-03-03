@@ -22,7 +22,6 @@ pkgbase = efl-git
 	makedepends = binutils
 	makedepends = fakeroot
 	makedepends = procps-ng
-	depends = avahi
 	depends = curl
 	depends = fontconfig
 	depends = fribidi
