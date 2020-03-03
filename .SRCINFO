@@ -1,0 +1,14 @@
+pkgbase = lolcate
+	pkgdesc = Lolcate -- A comically fast way of indexing and querying your filesystem. Replaces locate / mlocate / updatedb. Written in Rust.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/ngirard/lolcate-rs
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	source = lolcate-0.5.0.tar.gz::https://github.com/ngirard/lolcate-rs/archive/v0.5.0.tar.gz
+	sha512sums = 2efab87cb323648f05adcf25e252d8a72b9bd0f502b815d9dcc4ac5cba678c2609f6f4b18f9a7b4a6bf5f649784a572be665c1d70b85dbbb210798456710e396
+
+pkgname = lolcate
+
