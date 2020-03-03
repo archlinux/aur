@@ -2,6 +2,11 @@
 # Contributor: mrxx <mrxx at cyberhome dot at>
 # Contributor: rmanne <rahul_manne@hotmail.com>
 
+# See Debian packaging for details, rules and control files linked here:
+# https://tracker.debian.org/pkg/praat
+
+# TODO: Build and package praat-nogui and sendpraat, as in Debian.
+
 pkgname=praat-git
 pkgver=6.1.09.r104.g9db902f
 pkgrel=3
