@@ -1,6 +1,6 @@
 pkgbase = mpv-mpris-git
 	pkgdesc = MPRIS plugin for mpv. (GIT version)
-	pkgver = 0.2.4.ga9fe25c
+	pkgver = 0.4.5.g6945b58
 	pkgrel = 1
 	url = https://github.com/hoyon/mpv-mpris
 	install = mpv-mpris-git.install
