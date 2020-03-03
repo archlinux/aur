@@ -7,6 +7,7 @@ pkgbase = restorecond
 	arch = x86_64
 	groups = selinux
 	license = GPL2
+	makedepends = pkgconf
 	depends = dbus-glib
 	depends = libselinux>=2.7
 	conflicts = policycoreutils<2.7
