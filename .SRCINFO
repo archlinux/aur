@@ -1,7 +1,7 @@
 pkgbase = openfx-arena
 	pkgdesc = Extra OpenFX plugins for Natron
 	pkgver = 2.3.15_rc16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NatronGitHub/openfx-arena
 	arch = i686
 	arch = pentium4
@@ -14,6 +14,7 @@ pkgbase = openfx-arena
 	depends = libxt
 	depends = libzip
 	depends = opencolorio
+	depends = pango
 	depends = poppler-glib
 	depends = sox
 	source = openfx-arena_e6672bc.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/e6672bc

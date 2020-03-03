@@ -12,13 +12,13 @@ _tinydir_commit=3aae922
 
 pkgname=openfx-arena
 pkgver=2.3.15_rc16
-pkgrel=1
+pkgrel=2
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc="Extra OpenFX plugins for Natron"
 url="https://github.com/NatronGitHub/openfx-arena"
 license=('GPL')
 depends=('libcdr' 'libgl' 'libmagick' 'librsvg' 'libxt' 'libzip' \
-        'opencolorio' 'poppler-glib' 'sox')
+        'opencolorio' 'pango' 'poppler-glib' 'sox')
 source=("openfx-arena_$_openfx_arena_commit.tar.gz::https://github.com/NatronGitHub/openfx-arena/tarball/$_openfx_arena_commit"
         "lodepng_$_lodepng_commit.tar.gz::https://github.com/lvandeve/lodepng/tarball/$_lodepng_commit"
         "openfx_$_openfx_commit.tar.gz::https://github.com/NatronGitHub/openfx/tarball/$_openfx_commit"
@@ -60,8 +60,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make CONFIG=release \
-       AUDIO=ON
+  make CONFIG=release
 }
 
 package() {
