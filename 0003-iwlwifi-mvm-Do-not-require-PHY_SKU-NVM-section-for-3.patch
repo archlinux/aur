@@ -1,7 +1,7 @@
-From b0dbc3d2f076fa5acee310b34534b44f15ae4836 Mon Sep 17 00:00:00 2001
+From 6ba9e64f96ff87b42e77e6deacaa793f5f0e0ce3 Mon Sep 17 00:00:00 2001
 From: Dan Moulding <dmoulding@me.com>
 Date: Tue, 28 Jan 2020 02:31:07 -0700
-Subject: [PATCH 03/14] iwlwifi: mvm: Do not require PHY_SKU NVM section for
+Subject: [PATCH 03/12] iwlwifi: mvm: Do not require PHY_SKU NVM section for
  3168 devices
 
 The logic for checking required NVM sections was recently fixed in
@@ -36,5 +36,5 @@ index 46128a2a9c6e..e98ce380c7b9 100644
  				"Can't parse phy_sku in B0, empty sections\n");
  			return NULL;
 -- 
-2.25.0
+2.25.1
 
