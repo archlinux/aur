@@ -3,7 +3,7 @@
 
 pkgname=dynalist-desktop
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynalist lets you organize your ideas and tasks in simple lists. It's powerful, yet easy to use."
 arch=("any")
 url="https://dynalist.io"
@@ -23,10 +23,10 @@ sha512sums=(
 
 package() {
   mkdir -p "${pkgdir}/usr/bin" "${pkgdir}/opt"
-  cp -a "dynalist-${pkgver}" "${pkgdir}/opt/dynalist" 
+  cp -a "dynalist-${pkgver}" "${pkgdir}/opt/dynalist"
   install -Dm755 "icon.png" "${pkgdir}/opt/dynalist/icon.png"
   install -Dm755 "dynalist.desktop" "${pkgdir}/usr/share/applications/dynalist.desktop"
-  ln -sf "${pkgdir}/opt/dynalist/dynalist" "${pkgdir}/usr/bin/dynalist"
+  ln -sf "/opt/dynalist/dynalist" "${pkgdir}/usr/bin/dynalist"
 }
 
 # vim:set ts=2 sw=2 et:
