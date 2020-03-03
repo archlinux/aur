@@ -51,5 +51,5 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/applications/" "../${pkgname%-git}.desktop"
     install -Dm644 -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/" "../${pkgname%-git}.svg"
     install -Dm644 -t "$pkgdir/usr/share/pixmaps/" "../${pkgname%-git}.xpm"
-    install -Dm644 -t "${pkgdir}/usr/share/man/man1/" "../${pkgname%-git}.1"
+    install -Dm644 -t "$pkgdir/usr/share/man/man1/" "../${pkgname%-git}.1"
 }
