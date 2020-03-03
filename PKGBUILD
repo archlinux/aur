@@ -23,7 +23,7 @@ sha256sums_x86_64=('3c95f5815c451db3a401916c3962d2fd306ac6a4aab2f9295b681ce92dbc
 sha256sums_i686=('2c0d1f282aa1161114381c3cdff3d265c73069d2108bb372f998700af218065b')
 
 prepare() {
-    cd "${pkgname%-bin}-${pkgver}-linux-generic-${CARCH}"
+    cd "${pkgname%-bin}-$pkgver-linux-generic-$CARCH"
     mkdir -p "etc/${pkgname%-bin}"
     mv lib/prince/license/license.dat "etc/${pkgname%-bin}/"
     ln -sf "../../../../etc/${pkgname%-bin}/license.dat" lib/prince/license
@@ -31,11 +31,11 @@ prepare() {
 }
 
 package() {
-    cd "${pkgname%-bin}-${pkgver}-linux-generic-${CARCH}"
+    cd "${pkgname%-bin}-$pkgver-linux-generic-$CARCH"
     install -Dm755 "../${source[0]}" "$pkgdir/usr/bin/${pkgname%-bin}"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}" LICENSE CREDITS
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname%-bin}" README
-    install -Dm644 -t "${pkgdir}/etc/${pkgname%-bin}/" "etc/${pkgname%-bin}/license.dat"
-    mkdir -p "${pkgdir}/usr/lib/"
-    cp -a lib/prince "${pkgdir}/usr/lib/"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/${pkgname%-bin}" LICENSE CREDITS
+    install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-bin}" README
+    install -Dm644 -t "$pkgdir/etc/${pkgname%-bin}/" "etc/${pkgname%-bin}/license.dat"
+    mkdir -p "$pkgdir/usr/lib/"
+    cp -a lib/prince "$pkgdir/usr/lib/"
 }
