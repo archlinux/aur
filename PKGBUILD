@@ -2,23 +2,27 @@
 pkgname='extrae'
 pkgdesc='Instrumentation framework to generate execution traces of the most used parallel runtimes (from BSC).'
 pkgver='3.7.1.20200129'
-pkgrel='2'
+pkgrel='3'
 arch=('i686' 'x86_64')
 url='https://www.bsc.es/discover-bsc/organisation/scientific-structure/performance-tools'
 license=('LGPL2.1')
 depends=(openmpi libunwind papi libxml2 zlib python)
 source=("https://ftp.tools.bsc.es/$pkgname/$pkgname-${pkgver%.*}-src.tar.bz2"
         extrae-issue-27-fix-pie-address-translation.patch
-        extrae-Fix-references-to-the-build-directory.patch)
+        extrae-Fix-references-to-the-build-directory.patch
+        extrae-Fix-up-bfd_get_section_-macros-due-to-binutils-2.34.patch)
 sha512sums=(b1a72a0a813de179946b83cea0a64c918654e6a6a2211e097b306dda13d69b4a8707d0390c225418fe4e92750cc7822a258c247e2472aab2415deecb50a4f53c
             3b0fae157fcc6e85be3a5565c2ea3abe8bf35e130de96435a93ba7b3f4b6c30df8982823d36c494633a2c16671664112558393faeead05226b96aa521bb14fba
-            1f4e5ab8b375cd456c3f4d0356e33f99d3fd49152b3147a0fdc5317368b1df11bdbda809720c38959c698e885615e961d37a87d3ad6b6b85a3a2caf0c1117db1)
+            1f4e5ab8b375cd456c3f4d0356e33f99d3fd49152b3147a0fdc5317368b1df11bdbda809720c38959c698e885615e961d37a87d3ad6b6b85a3a2caf0c1117db1
+            0f622819dd204fb77f9dc6f5ca612b44296b783c347d37e845d09b5c447214e2537fa6608367dba4c8e928c81e640b88daf019ea15c7ca83bb9308899e997b8c)
 
 prepare() {
 	cd "$srcdir/$pkgname-${pkgver%.*}"
 
+	# Upstream issue: https://github.com/bsc-performance-tools/extrae/issues/27
 	patch -Np1 -i "$srcdir/extrae-issue-27-fix-pie-address-translation.patch"
 	patch -Np1 -i "$srcdir/extrae-Fix-references-to-the-build-directory.patch"
+	patch -Np1 -i "$srcdir/extrae-Fix-up-bfd_get_section_-macros-due-to-binutils-2.34.patch"
 
 	autoreconf -i -f
 }
