@@ -1,16 +1,19 @@
-# Maintainre: Yoan Blanc <yoan@dosimple.ch>
-# Previous Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
-# Previous Maintainer: Chris Morgan <me@chrismorgan.info>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Yoan Blanc <yoan@dosimple.ch>
+# Contributor: Harry Jeffery <harry|@|exec64|.|co|.|uk>
+# Contributor: Chris Morgan <me@chrismorgan.info>
 
-pkgname=princexml
+pkgname=prince-bin
 pkgver=13.3
 pkgrel=1
 pkgdesc="Convert HTML documents to PDF with CSS"
-arch=(i686 x86_64)
-url="http://www.princexml.com/"
-depends=(fontconfig libidn libxml2 ca-certificates-utils)
-conflicts=(sdlpop)
-license=(custom)
+arch=(x86_64 i686)
+url='http://www.princexml.com/'
+depends=('ca-certificates-utils' 'fontconfig' 'libidn' 'libxml2')
+provides=('princexml')
+conflicts=('sdlpop' 'princexml')
+replaces=('princexml')
+license=('custom')
 
 source_i686=(http://www.princexml.com/download/prince-${pkgver}-linux-generic-i686.tar.gz)
 source_x86_64=(http://www.princexml.com/download/prince-${pkgver}-linux-generic-x86_64.tar.gz)
