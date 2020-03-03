@@ -1,7 +1,7 @@
 pkgbase = prince-bin
 	pkgdesc = Convert HTML documents to PDF with CSS
 	pkgver = 13.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.princexml.com/
 	arch = x86_64
 	arch = i686

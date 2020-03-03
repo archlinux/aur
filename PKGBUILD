@@ -5,7 +5,7 @@
 
 pkgname=prince-bin
 pkgver=13.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Convert HTML documents to PDF with CSS"
 arch=(x86_64 i686)
 url='http://www.princexml.com/'
@@ -32,8 +32,9 @@ prepare() {
 
 package() {
     cd "${pkgname%-bin}-${pkgver}-linux-generic-${CARCH}"
-    install -Dm755 ../prince.sh "$pkgdir/usr/bin/prince"
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}" LICENSE
+    install -Dm755 "../${source[0]}" "$pkgdir/usr/bin/${pkgname%-bin}"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname%-bin}" LICENSE CREDITS
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname%-bin}" README
     install -Dm644 -t "${pkgdir}/etc/${pkgname%-bin}/" "etc/${pkgname%-bin}/license.dat"
     mkdir -p "${pkgdir}/usr/lib/"
     cp -a lib/prince "${pkgdir}/usr/lib/"
