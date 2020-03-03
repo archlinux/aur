@@ -2,7 +2,7 @@
 
 pkgname=sweet-folders-icons-git
 _pkgname=Sweet-folders
-pkgver=r11.8fe64a7
+pkgver=r12.d50fbe3
 pkgrel=1
 arch=("any")
 pkgdesc="Folder icons from the Sweet GTK Theme for Linux desktop environments"
