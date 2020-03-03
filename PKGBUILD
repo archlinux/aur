@@ -4,7 +4,7 @@
 
 pkgname=praat-git
 pkgver=6.1.09.r104.g9db902f
-pkgrel=1
+pkgrel=2
 pkgdesc='Doing Phonetics by computer (speech analysis)'
 arch=('x86_64' 'i686')
 url='http://www.praat.org/'
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    cp makefiles/makefile.defs.linux.alsa makefile.defs
+    cp makefiles/makefile.defs.linux.pulse makefile.defs
 }
 
 build() {
