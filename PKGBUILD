@@ -10,23 +10,23 @@
 # vercheck-gnome: name=${pkgname%-*}, majorver=3.27
 
 pkgname=gsettings-desktop-schemas-ubuntu
-_ubuntu_ver=3.27.90
+_ubuntu_ver=3.34.0
 _ubuntu_rel=1ubuntu1
-pkgver=3.27.90
+pkgver=3.34.0
 pkgrel=1
 pkgdesc="Shared GSettings schemas for the desktop"
 arch=(any)
 url="https://git.gnome.org/browse/gsettings-desktop-schemas"
 license=(GPL)
 depends=(glib2 dconf)
-makedepends=(git gobject-introspection intltool)
-provides=(gsettings-desktop-schemas)
+makedepends=(git gobject-introspection meson)
+provides=(gsettings-desktop-schemas=$pkgver)
 conflicts=(gsettings-desktop-schemas)
-_commit=b452abef71429f92e43a9ce2fb14d50c9edce964  # 3.27.90
-source=("git+https://git.gnome.org/browse/gsettings-desktop-schemas#commit=$_commit"
+_commit=56d24d47b9699ac6c877b93ae0e863f178c17dab  # 3.34.0
+source=("git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas#commit=$_commit"
         "https://launchpad.net/ubuntu/+archive/primary/+files/gsettings-desktop-schemas_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 sha512sums=('SKIP'
-            'a2a2799409be1098f5abe852affbc1cc28b1716c18f38cad7cf4dcf0bb2c97910ec4eb8969298b8f7dab86f093bb527198807ca48f5e2db4c8d7b765829a199d')
+            'e88e03a47ec9bbd176c96f701e4ad2a40eee9ac6bc32f87891f0ad6e5a5c84041af4f3211f1b28fcb203832faba3569b8477bad5cebd9ecd00ba0a0423b12940')
 
 pkgver(){
   cd ${pkgname%-*}
@@ -42,22 +42,15 @@ prepare() {
         msg "Applying ${i} ..."
         patch -p1 -i "../debian/patches/${i}"
     done
-
-  intltoolize
-  autoreconf -fvi
 }
 
 build() {
-    cd ${pkgname%-*}
+    arch-meson ${pkgname%-*} build
+    ninja -C build
 
-    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-        --disable-schemas-compile
-    make
 }
-
 package() {
-    cd ${pkgname%-*}
 
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja -C build install
 }
 
