@@ -1,11 +1,12 @@
 # Maintainer: Christopher Snowhill <kode54 at gmail dot com>
+# Contributor: ipha <ipha00 at gmail dot com>
 # Contributor: johnnybash <georgpfahler at wachenzell dot org>
 # Contributor: grmat <grmat at sub dot red>
 
 pkgname=opencl-amd
 pkgdesc="OpenCL userspace driver as provided in the amdgpu-pro driver stack. This package is intended to work along with the free amdgpu stack."
 pkgver=19.50.967956
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='http://www.amd.com'
 license=('custom:AMD')
@@ -33,8 +34,12 @@ pkgver() {
 package() {
 	mkdir -p "${srcdir}/opencl"
 	cd "${srcdir}/opencl"
+	# pal
 	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/opencl-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
+	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/opencl-amdgpu-pro-comgr_${major}-${minor}_amd64.deb"
+	tar xJf data.tar.xz
+	# orca
 	ar x "${srcdir}/${prefix}${major}-${minor}${postfix}/opencl-orca-amdgpu-pro-icd_${major}-${minor}_amd64.deb"
 	tar xJf data.tar.xz
 	cd ${shared}
@@ -51,7 +56,10 @@ package() {
 
 	mv "${srcdir}/opencl/etc" "${pkgdir}/"
 	mkdir -p ${pkgdir}/usr/lib
+	# pal
 	mv "${srcdir}/opencl/${shared}/libamdocl64.so" "${pkgdir}/usr/lib/"
+	mv "${srcdir}/opencl/${shared}/libamd_comgr.so" "${pkgdir}/usr/lib/"
+	# orca
 	mv "${srcdir}/opencl/${shared}/libamdocl-orca64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/opencl/${shared}/libamdocl12cl64.so" "${pkgdir}/usr/lib/"
 	mv "${srcdir}/libdrm/${shared/amdgpu-pro/amdgpu}/libdrm_amdgpo.so.1.0.0" "${pkgdir}/usr/lib/"
@@ -64,4 +72,3 @@ package() {
 	rm -r "${srcdir}/opencl"
 	rm -r "${srcdir}/libdrm"
 }
-
