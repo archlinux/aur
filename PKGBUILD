@@ -20,7 +20,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/gtkwave"
-  echo $(svn info | grep -o -P '(?<=Last Changed Rev: ).*')
+  svnversion
 }
 
 build() {
