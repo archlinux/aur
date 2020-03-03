@@ -4,7 +4,7 @@
 
 pkgname=bcache-tools
 pkgver=1.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Userspace tools for bcache until bcache merges with either dm or md"
 changelog=bcache-tools.changelog
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("https://github.com/g2p/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.g
         'initcpio-arch.patch')
 sha256sums=('d56923936f37287efc57a46315679102ef2c86cd0be5874590320acd48c1201c'
             '2536e1ea76b32b4ee4543524c64f488ccc0fe037256ce9d5c5029e873161de7e'
-            '70c14ef1b5fd41f6a34afc888c5e478bd7bea296b49643f59714c518c6e4f831')
+            'bbde2580952b60e061d335a867219146348e8c7208bdebade463675a6585a87e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
