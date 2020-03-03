@@ -20,7 +20,7 @@ pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
 url="https://blender.org/"
-depends=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg' 'desktop-file-utils' 'hicolor-icon-theme'
+depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg'
          'ffmpeg' 'fftw' 'openal' 'freetype2' 'libxi' 'openimageio' 'opencolorio' 'openimagedenoise'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng' 'embree' 'usd=19.11')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
@@ -29,7 +29,6 @@ makedepends=('git' 'cmake' 'boost' 'mesa' 'llvm')
 provides=("blender-${pkgver%%.r*}")
 conflicts=("blender-${pkgver%%.r*}")
 license=('GPL')
-install=blender.install
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
 # the path in .gitmodules.
@@ -40,7 +39,6 @@ source=("git://git.blender.org/blender.git${_fragment}"
         'blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git'
         'blender-translations.git::git://git.blender.org/blender-translations.git'
         'blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git'
-        blender-2.8.desktop
         SelectCudaComputeArch.patch
         usd_python.patch #add missing python headers when building against python enabled usd.
         embree.patch #add missing embree link.
@@ -50,7 +48,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '9d7bd988939f4e8d06adc3166bacd76cc87a488b40f042f033863af35eadfc43'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
             '893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
