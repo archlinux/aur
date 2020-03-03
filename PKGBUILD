@@ -6,17 +6,19 @@
 
 pkgbase=dbus-x11
 pkgname=(dbus-x11 dbus-x11-docs)
-pkgver=1.12.14
+pkgver=1.12.16
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
 license=(GPL custom)
-depends=(systemd-libs expat)
-makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive graphviz libx11)
-_commit=a330c6184fe9c7f67495f8d4563b11d51a6dccc7  # tags/dbus-1.12.14^0
-source=("git+https://anongit.freedesktop.org/git/dbus/dbus#commit=$_commit")
-sha256sums=('SKIP')
+depends=(systemd-libs expat audit)
+makedepends=(systemd xmlto docbook-xsl python yelp-tools doxygen git autoconf-archive libx11)
+_commit=23cc709db8fab94f11fa48772bff396b20aea8b0  # tags/dbus-1.12.16^0
+source=("git+https://gitlab.freedesktop.org/dbus/dbus.git#commit=$_commit"
+        dbus-reload.hook)
+sha256sums=('SKIP'
+            'd636205622d0ee3b0734360225739ef0c7ad2468a09489e6ef773d88252960f3')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 
@@ -27,10 +29,6 @@ pkgver() {
 
 prepare() {
   cd dbus
-  # Reduce docs size
-  printf '%s\n' >>Doxyfile.in \
-    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
-
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -63,19 +61,21 @@ check() {
 }
 
 package_dbus-x11() {
-  provides=({,lib}dbus)
-  conflicts=(libdbus)
+  depends+=(libsystemd.so libaudit.so)
+  provides=({,lib}dbus libdbus-1.so)
+  conflicts=({,lib}dbus)
   replaces=(libdbus)
 
   DESTDIR="$pkgdir" make -C dbus install
 
-  rm -r "$pkgdir/var/run"
-
-  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
+  rm -r "$pkgdir"/{etc,var}
 
   # We have a pre-assigned uid (81)
   echo 'u dbus 81 "System Message Bus"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/dbus.conf"
+
+  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
 
   # Split docs
   mv "$pkgdir/usr/share/doc" "$srcdir"
@@ -88,6 +88,5 @@ package_dbus-x11-docs() {
   depends=()
 
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 dbus/COPYING
-
   mv doc "$pkgdir/usr/share"
 }
