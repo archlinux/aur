@@ -5,13 +5,13 @@
 
 pkgname=prince-bin
 pkgver=13.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert HTML documents to PDF with CSS"
 arch=(x86_64 i686)
 url='http://www.princexml.com/'
 license=('custom')
 depends=('ca-certificates-utils' 'fontconfig' 'libidn' 'libxml2')
-provides=('princexml')
+provides=("${pkgname%-bin}" 'princexml')
 conflicts=('sdlpop' 'princexml')
 replaces=('princexml')
 backup=("etc/${pkgname%-bin}/license.dat")
