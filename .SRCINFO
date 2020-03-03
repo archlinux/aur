@@ -6,14 +6,13 @@ pkgbase = trilinos
 	arch = x86_64
 	license = LGPL3
 	checkdepends = cmake
-	makedepends = python2-numpy
 	makedepends = gcc-fortran
 	makedepends = perl
 	makedepends = blas
 	makedepends = cmake
 	makedepends = doxygen
+	depends = python
 	depends = lapack
-	depends = python2
 	depends = boost
 	depends = netcdf
 	depends = libmatio
@@ -21,7 +20,9 @@ pkgbase = trilinos
 	depends = hdf5-openmpi
 	conflicts = gtest
 	source = https://github.com/trilinos/Trilinos/archive/trilinos-release-12-18-1.tar.gz
+	source = Makefile.kokkos.patch
 	sha256sums = 7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf
+	sha256sums = 64130011dd70f3be1133c0943be458a7d4f6fa799e6bd47a6294300ced6d827a
 
 pkgname = trilinos
 

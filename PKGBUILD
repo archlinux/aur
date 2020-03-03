@@ -15,8 +15,16 @@ depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
 makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen')
 conflicts=('gtest')
 checkdepends=('cmake')
-source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz")
-sha256sums=('7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf')
+source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
+        "Makefile.kokkos.patch")
+sha256sums=('7d2e1a1a3e2d2ce78bb248c63411fed5007c827b87cadee3d13c1a45c09a89cf'
+            '64130011dd70f3be1133c0943be458a7d4f6fa799e6bd47a6294300ced6d827a')
+
+prepare() {
+    cd Trilinos-trilinos-release-12-18-1
+    patch --forward --strip=1 --input="${srcdir}/Makefile.kokkos.patch"
+}
+
 
 build() {
     cd Trilinos-trilinos-release-"$_pkgver"
