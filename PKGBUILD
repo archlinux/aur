@@ -16,7 +16,7 @@ options=(!strip)
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${package}"
 )
-sha512sums_x86_64=(7d60c23810f4d0e09d570491b802b8874b87e952052922d670ac182a4406dee79f1d4ded9bdd53ee57f32af15ce73d5276a7db7d6d7437188633421f0c3d383a)
+sha512sums_x86_64=(a305a62791b03a5925354da423c444e28617adad3ff60b069a80f267afea45ba52e32100cc6f764e3ad719793c8eef665e1208aa599069f7634fee1dffb34143)
 
 prepare() {
 	gendesk -f -n \
