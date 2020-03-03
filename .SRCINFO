@@ -1,0 +1,13 @@
+pkgbase = hunspell-id
+	pkgdesc = Indonesian hunspell dictionary
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/shuLhan/hunspell-id
+	arch = any
+	license = LGPL3
+	makedepends = git
+	source = git+https://github.com/shuLhan/hunspell-id.git
+	sha256sums = SKIP
+
+pkgname = hunspell-id
+
