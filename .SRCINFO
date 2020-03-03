@@ -6,6 +6,7 @@ pkgbase = libigl
 	arch = any
 	license = GPL3
 	makedepends = cmake
+	depends = eigen
 	source = https://github.com/libigl/libigl/archive/v2.1.0.tar.gz
 	sha512sums = 3e25bb5d7d6ba037d2afbb9b7ca5072216b8c68a6181b05be9adb56038e3f4abb73e8755d57984a2bef64a1df833f49246ac643dc7c39ff301d5b719b2eff278
 

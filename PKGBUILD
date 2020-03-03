@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Simple C++ geometry processing library."
 arch=('any')
 url="https://github.com/libigl/libigl"
+depends=('eigen')
 makedepends=('cmake')
 license=('GPL3')
 source=("$url/archive/v$pkgver.tar.gz")
