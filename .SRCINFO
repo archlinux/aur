@@ -1,15 +1,17 @@
 pkgbase = lib32-libdrm-git
 	pkgdesc = Userspace interface to kernel DRM services, git 32-bit version
-	pkgver = 2.4.100.r42.gc70bd7b7
-	pkgrel = 1
+	pkgver = 2.4.100.r68.g8a73372e
+	pkgrel = 2
 	url = http://dri.freedesktop.org/
 	arch = x86_64
 	license = custom
 	checkdepends = lib32-cairo
-	makedepends = gcc-multilib
 	makedepends = meson
+	makedepends = git
+	makedepends = ninja
 	depends = libdrm-git
 	depends = lib32-libpciaccess
+	depends = lib32-gcc-libs
 	provides = lib32-libdrm
 	conflicts = lib32-libdrm
 	source = libdrm::git://anongit.freedesktop.org/mesa/drm#branch=master
