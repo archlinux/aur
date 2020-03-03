@@ -8,7 +8,7 @@ url="https://github.com/FrigoEU/psc-ide-vim"
 depends=('vim')
 optdepends=(
   'purescript: the purescript compiler'
-  'syntastic'
+  'vim-syntastic'
 )
 makedepends=('git')
 provides=('vim-psc-ide')
