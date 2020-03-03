@@ -2,8 +2,8 @@
 
 pkgbase=python-picos
 pkgname=('python-picos' 'python2-picos')
-pkgver=1.2.0
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 pkgdesc='A Python interface to conic optimization solvers.'
 arch=('any')
 url='https://gitlab.com/picos-api/picos'
@@ -29,4 +29,4 @@ package_python2-picos() {
 	python2 setup.py install --root=${pkgdir}
 }
 
-md5sums=('486dd2f41832d85dc9d2fd6618e32caa')
+md5sums=('3317dc2fd98202a413acae19efdc844e')
