@@ -1,6 +1,6 @@
 pkgbase = pastel
 	pkgdesc = A command-line tool to generate, analyze, convert and manipulate colors
-	pkgver = 0.6.1
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/sharkdp/pastel
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = pastel
 	makedepends = rust
 	makedepends = cargo
 	conflicts = pastel-git
-	source = 0.6.1.tar.gz::https://github.com/sharkdp/pastel/archive/v0.6.1.tar.gz
-	sha256sums = ece0004d725133bcf552bbfe5508c087513eb52f6c363fbad6eeb9c74769a932
+	source = 0.7.1.tar.gz::https://github.com/sharkdp/pastel/archive/v0.7.1.tar.gz
+	sha256sums = 38ae098610aceb876fd29cfcd3b0bed6c9f1237a65e691ef7cbd670c27aa59b2
 
 pkgname = pastel
 
