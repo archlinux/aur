@@ -23,7 +23,7 @@ deps:
 ## Update (automatic)
 update: deps
 	nvchecker source.ini
-	./update.sh Versent/saml2aws
+	./update.sh
 	makepkg --printsrcinfo  > .SRCINFO
 
 clean:
