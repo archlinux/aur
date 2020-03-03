@@ -12,4 +12,5 @@ package() {
 	  mkdir -p $pkgdir/usr/bin
 	  printf "#!/bin/bash\n\nconfdir=$HOME/.config/glitter\n" > $pkgdir/usr/bin/glitter
 	  cat $srcdir/glitter/glitter.sh >> $pkgdir/usr/bin/glitter
+	  chmod +x $pkgdir/usr/bin/glitter
 }
