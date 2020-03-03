@@ -19,8 +19,7 @@ optdepends=("libfdk-aac: FDK AAC codec support"
             "vlc: VLC Media Source"
             "swig: Scripting"
             "luajit: Lua scripting"
-            "python: Python scripting"
-            "cef-minimal: OBS Browser Source")
+            "python: Python scripting")
 provides=("obs-studio=$pkgver")
 conflicts=("obs-studio")
 source=("$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
