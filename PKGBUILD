@@ -8,7 +8,7 @@ pkgdesc="Finally something"
 arch=('x86_64')
 url="https://github.com/tsoding/something"
 license=('MIT')
-depends=('sdl2' 'libpng')
+depends=('sdl2' 'libpng' 'sdl2_ttf')
 makedepends=('gcc')
 provides=('something')
 conflicts=('something')
@@ -26,13 +26,11 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    # No patches needed for now
+    sed -i 's/^CXXFLAGS=.*$/CXXFLAGS=-std=c++17 -fno-exceptions -flto -Ofast -s -march=native $(shell pkg-config --cflags $(PKGS))/' Makefile
 }
 
 build() {
     cd "$srcdir/$_pkgname"
-    export CFLAGS="$CFLAGS -flto -Ofast"
-    export CC="cc"
     make
 
     cat > "something-with-dir" <<EOF
@@ -50,7 +48,7 @@ package() {
     cd "$srcdir/$_pkgname"
 
     install -Dm755 -d "$pkgdir/usr/share/games/something"
-    cp *.png "$pkgdir/usr/share/games/something"
+    cp -r assets/     "$pkgdir/usr/share/games/something"
 
     install -Dm755 "something" "$pkgdir/usr/lib/games/something/something"
     install -Dm755 "something-with-dir" "$pkgdir/usr/bin/something"

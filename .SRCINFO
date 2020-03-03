@@ -8,6 +8,7 @@ pkgbase = something
 	makedepends = gcc
 	depends = sdl2
 	depends = libpng
+	depends = sdl2_ttf
 	provides = something
 	conflicts = something
 	source = something::git+https://github.com/tsoding/something
