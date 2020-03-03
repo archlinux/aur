@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url='http://userspace.selinuxproject.org'
 license=('LGPL2.1')
 groups=('selinux')
-makedepends=('flex' 'python' 'ruby' 'swig')
+makedepends=('flex' 'pkgconf' 'python' 'ruby' 'swig')
 depends=('libselinux>=3.0' 'audit')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')

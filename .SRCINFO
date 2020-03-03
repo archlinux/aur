@@ -9,6 +9,7 @@ pkgbase = libsemanage
 	groups = selinux
 	license = LGPL2.1
 	makedepends = flex
+	makedepends = pkgconf
 	makedepends = python
 	makedepends = ruby
 	makedepends = swig
