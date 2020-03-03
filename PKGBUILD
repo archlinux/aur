@@ -29,7 +29,8 @@ build() {
   ./configure \
     --prefix=/usr \
     --disable-tcl \
-    --disable-mime-update
+    --disable-mime-update \
+    --with-gsettings
 
   make CFLAGS="-D_LARGEFILE64_SOURCE -O"
 }
