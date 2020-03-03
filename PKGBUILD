@@ -4,12 +4,13 @@ _android_arch=x86-64
 
 pkgname=android-${_android_arch}-ffmpeg
 pkgver=4.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Complete solution to record, convert and stream audio and video (android)"
 arch=('any')
 url="http://ffmpeg.org/"
 license=('GPL3')
 depends=("android-${_android_arch}-bzip2"
+         "android-${_android_arch}-fribidi"
          "android-${_android_arch}-lame"
          "android-${_android_arch}-libssh"
          "android-${_android_arch}-libtheora"
@@ -93,6 +94,7 @@ build() {
         --disable-v4l2-m2m
         --disable-indev=v4l2
         --disable-outdev=v4l2
+        --enable-libfribidi
         --enable-libmp3lame
         --enable-libopus
         --enable-libspeex
