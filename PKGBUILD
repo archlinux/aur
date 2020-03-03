@@ -3,13 +3,16 @@
 
 pkgname=makepkg-optimize
 pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
 url='https://wiki.archlinux.org/index.php/Makepkg-optimize'
 depends=('pacman')
-optdepends=('upx' 'optipng' 'nodejs-svgo' 'openmp')
+optdepends=("upx: Compress executables"
+            "optipng: Optimize PNG files"
+            "svgo: Optimize SVG files"
+            "openmp: Parallelize loops")
 backup=(etc/makepkg-optimize.conf)
 _buildenv=({pgo,ZZ-lto,graphite,rice}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
