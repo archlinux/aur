@@ -1,0 +1,13 @@
+Author: Sven Karsten Greiner
+
+--- hptalx-1.3.1a/src/kermit.c	2007-09-29 23:21:01.000000000 +0200
++++ hptalx-1.3.1a_patched/src/kermit.c	2020-03-03 20:05:25.887400124 +0100
+@@ -157,7 +157,7 @@
+ 	if (g_child == -1)
+ 		return k_errno = K_FORKPTY;
+ 	if (g_child == 0) {			/* child */
+-		if (execlp ("kermit", "kermit", "-z", "-Y", NULL) < 0)
++		if (execlp ("ckermit", "ckermit", "-z", "-Y", NULL) < 0)
+ 			exit (2);
+ 		exit (0);
+ 	} else {					/* parent */

@@ -1,0 +1,14 @@
+Author: Stefan Achatz
+https://sourceforge.net/p/hptalx/patches/2/
+
+--- a/src/io.c
++++ b/src/io.c
+@@ -212,7 +212,7 @@
+ 		break;
+ 	default:
+ 		gtk_list_store_set (list, iter, FLC_TYPE, unknown_pixbuf, -1);
+-		gtk_list_store_set (list, iter, FLC_TYPESTR, ROW_DATA_FILE);
++		gtk_list_store_set (list, iter, FLC_TYPESTR, ROW_DATA_FILE, -1);
+ 		break;
+ 	}
+ }

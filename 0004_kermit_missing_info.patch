@@ -1,0 +1,39 @@
+Author: Stefan Achatz
+https://sourceforge.net/p/hptalx/patches/5/
+
+--- a/src/kermit.c
++++ b/src/kermit.c
+@@ -96,6 +96,8 @@ static k_status     _k_parent (const k_params * params);
+ static              k_status
+ _k_parent (const k_params * params)
+ {
++	pid_t pid;
++	int status;
+ 
+ 	if (fcntl (g_master_fld, F_SETFL, O_NONBLOCK) == -1)
+ 		return K_FCNTL;
+@@ -107,6 +109,16 @@ _k_parent (const k_params * params)
+ 	 */
+ 	k_errno = k_discard_output ();
+ 
++	/*
++	 * _k_parent() gets called only and immediately after forking child.
++	 * All file descriptor parameters are set and the first read took place.
++	 * If child exited already with an error kermit might not have been found.
++	 */
++	pid = waitpid(g_child, &status, WNOHANG);
++	if (pid && WIFEXITED(status) && WEXITSTATUS(status) == 2) {
++		return k_errno = K_EXECKERMIT;
++	}
++
+ 	k_errno = k_send_command (K_CMD_SET_PROMPT);
+ 	k_errno = k_discard_output ();
+ 
+@@ -165,7 +177,6 @@ k_connect (const k_params * params)
+ 		tcsetattr (g_master_fld, TCSANOW, &term_cap);
+ 		return _k_parent (params);
+ 	}
+-	return k_errno = K_UNKNOWN;
+ }
+ 
+ k_status

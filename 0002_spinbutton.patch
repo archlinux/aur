@@ -1,0 +1,14 @@
+Author: Stefan Achatz
+https://sourceforge.net/p/hptalx/patches/3/
+
+--- a/src/setup.c
++++ b/src/setup.c
+@@ -310,7 +310,7 @@ _create_setttyusbport_box (GtkWidget * box)
+     /*
+      * The spin button for choosing the port number 
+      */
+-    interval = GTK_ADJUSTMENT (gtk_adjustment_new (0, 0, 20, 1, 1, 1));
++    interval = GTK_ADJUSTMENT (gtk_adjustment_new (0, 0, 20, 1, 1, 0));
+     button = gtk_spin_button_new (interval, 1, 0);
+     g_signal_connect (GTK_OBJECT (button), "changed",
+ 		      G_CALLBACK (_set_ttyusb_port), NULL);

@@ -1,0 +1,88 @@
+Author: Stefan Achatz
+https://sourceforge.net/p/hptalx/patches/4/
+
+--- a/src/kermit.c
++++ b/src/kermit.c
+@@ -52,6 +52,7 @@
+ #include <pty.h>
+ #include <termios.h>
+ #include <signal.h>
++#include <errno.h>
+ 
+ /*
+  * Global variable that holds the last Kermit status 
+@@ -297,44 +298,22 @@ k_wait_ready (char **o, size_t * size)
+ 		 * has arrived 
+ 		 */
+ 		if (br > 0) {
+-			if (*size == 0) {
+-				/*
+-				 * First time we read into *o 
+-				 */
+-				*o = (char *) malloc (br);
+-				if (*o == NULL) {
+-					return k_errno = K_MALLOC;
+-				}
+-
+-				/*
+-				 * Zero out everthing in *o
+-				 */
+-				memset ((void *) *o, 0, br);
+-				memcpy ((void *) *o, (void *) buff, br);
+-				*size = br;
++
++			*size += br;
++			
++			if (*size == br) {
++				*o = (char *) malloc (*size);
+ 			} else {
+-				/*
+-				 * Previous reads took place 
+-				 */
+-
+-				/*
+-				 * New size of *o 
+-				 */
+-				*size += br;
+ 				*o = (char *) realloc (*o, *size);
++			}
++			
++			if (*o == NULL) {
++				return k_errno = K_MALLOC;
++			}
+ 
+-				if (*o == NULL) {
+-					return k_errno = K_MALLOC;
+-				}
++			memcpy ((void *) (*o + (*size - br)), (void *) buff, br);
+ 
+-				memset ((void *) (*o + (*size - br)), 0, br);
+-				/*
+-				 * Copy content from buff to *o
+-				 * at old pos in *o -> (size-br) 
+-				 */
+-				memcpy ((void *) (*o + (*size - br)), (void *) buff, br);
+-			}
+-		} else {
++		} else if (br == 0 || errno == EAGAIN) {
+ 			/*
+ 			 * Wait nicely for new data
+ 			 */
+@@ -343,6 +322,8 @@ k_wait_ready (char **o, size_t * size)
+ 				return k_errno = K_TIMEOUT;
+ 			}
+ 
++		} else {
++			return k_errno = K_READ;
+ 		}
+ 
+ 		/*
+@@ -352,7 +333,7 @@ k_wait_ready (char **o, size_t * size)
+ 		tv.tv_usec = 0;
+ 
+ 	}
+-	while ((strstr (*o, K_KERMIT_PROMPT) == NULL)
++	while ((*o != 0 && strstr (*o, K_KERMIT_PROMPT) == NULL)
+ 		   || (select (FD_SETSIZE, &rset, NULL, NULL, &tv) != 0));
+ 	return k_errno = K_OK;
+ }
