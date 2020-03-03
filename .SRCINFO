@@ -31,7 +31,6 @@ pkgbase = obs-studio-git
 	optdepends = swig: Scripting
 	optdepends = luajit: Lua scripting
 	optdepends = python: Python scripting
-	optdepends = cef-minimal: OBS Browser Source
 	provides = obs-studio=25.0.0.rc1.r1.g9aedc7e5b
 	conflicts = obs-studio
 	source = obs-studio-git::git+https://github.com/obsproject/obs-studio.git#branch=master
