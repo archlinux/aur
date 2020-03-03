@@ -1,6 +1,6 @@
 # Maintainer: Víctor González <mrvikxd@gmail.com>
 pkgname=goautolock
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Killable autolocker for X11"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ provides=("goautolock")
 depends=("libx11" "libxss" "libnotify")
 makedepends=("go")
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha512sums=('8c2f7188808e4206a50a9c2b9e52cb935c14ffd74e5082be9b408a018decacf2f5bd2d8a424b9f11305cecb648aa5c167945eafaa334e9c1415a3c79bd0035b7')
+sha512sums=('7238ce89680b51a6d31cf587cc7308598f91a2b3212140b495c6d18623f08454b6939ed719a5ec437c1f27c454d0173dec5a87b1e3b99b53f34d9fbc1b91bec9')
 
 build(){
     cd "$pkgname-v$pkgver"

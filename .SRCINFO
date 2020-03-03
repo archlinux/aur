@@ -1,6 +1,6 @@
 pkgbase = goautolock
 	pkgdesc = Killable autolocker for X11
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://gitlab.com/mrvik/goautolock
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = goautolock
 	depends = libxss
 	depends = libnotify
 	provides = goautolock
-	source = https://gitlab.com/mrvik/goautolock/-/archive/v1.4.2/goautolock-v1.4.2.tar.gz
-	sha512sums = 8c2f7188808e4206a50a9c2b9e52cb935c14ffd74e5082be9b408a018decacf2f5bd2d8a424b9f11305cecb648aa5c167945eafaa334e9c1415a3c79bd0035b7
+	source = https://gitlab.com/mrvik/goautolock/-/archive/v1.4.3/goautolock-v1.4.3.tar.gz
+	sha512sums = 7238ce89680b51a6d31cf587cc7308598f91a2b3212140b495c6d18623f08454b6939ed719a5ec437c1f27c454d0173dec5a87b1e3b99b53f34d9fbc1b91bec9
 
 pkgname = goautolock
 
