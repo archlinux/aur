@@ -1,7 +1,7 @@
 # Maintainer: Gary Wang <wzc782970009@gmail.com>
 
 pkgname=pineapple-pictures-git
-pkgver=r61.5495fa0
+pkgver=r63.e3dfc9c
 pkgrel=1
 pkgdesc='Yet another lightweight image viewer'
 arch=('x86_64')
