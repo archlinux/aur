@@ -2,9 +2,9 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='https://wiki.ros.org/python_qt_binding'
 
 pkgname='ros-melodic-python-qt-binding'
-pkgver='0.3.6'
+pkgver='0.4.1'
 arch=('any')
-pkgrel=4
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -30,15 +30,12 @@ depends=(
 
 _dir="python_qt_binding-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/python_qt_binding/archive/${pkgver}.tar.gz"
-        "69-shiboken-cmake.patch"::"https://github.com/ros-visualization/python_qt_binding/commit/274b1c775daa97ac040d01779d7bd89f5d4ee771.diff"
-	"sip_path.patch")
-sha256sums=('b56b8b35f72b8543aab7903eb4e9d456991994a06032a08ba72ba627c6652e12'
-            '0aff7f07a1cdb9b09bbf792c4d79e431c8f4a5ccdd2d5a34168dd0a81ad4beb7'
+        "sip_path.patch")
+sha256sums=('1a153e400bb7def3751fffaba379c8689af60553950351eb6ec358e191725fc1'
             'd60d8edfc7dec99700fd66076d6fd01963a26e7623562c1ef289abc041e8d2ef')
 
 prepare() {
 	cd ${srcdir}/${_dir}
-	patch -p1 < "../69-shiboken-cmake.patch"
 	patch --strip=1 --input="${srcdir}/sip_path.patch"
 }
 
