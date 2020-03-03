@@ -1,6 +1,6 @@
 pkgbase = opensmtpd-table-passwd
 	pkgdesc = table-passwd for using a passwd file with OpenSMTPd
-	pkgver = 6.4.0
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://opensmtpd.org
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = opensmtpd-table-passwd
 	makedepends = openssl
 	depends = opensmtpd
 	conflicts = opensmtpd-extras
-	source = https://www.opensmtpd.org/archives/opensmtpd-extras-6.4.0.tar.gz
-	sha256sums = cb66986b7c0d0113210f4fb9ca1447b7f50ca088165e6ca61b9015ff0f2d6226
+	source = https://www.opensmtpd.org/archives/opensmtpd-extras-6.6.0.tar.gz
+	sha256sums = 126b023602e8bb222bf24543a056ee0a548343dc86d184669ff9d82dfca1fbdf
 
 pkgname = opensmtpd-table-passwd
 

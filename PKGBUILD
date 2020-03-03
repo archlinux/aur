@@ -1,9 +1,15 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
-# Contributor: parchd <parchd@archlinux.info>
+# Maintainer: Deposite Pirate <dpirate at metalpunks dot info>
+#
+# Former maintainer:
+#   Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Contributor:
+#   parchd <parchd@archlinux.info>
+#
+# Upstream: https://git.metalpunks.info/arch-ports
 
 _pkg=opensmtpd-extras
 pkgname=opensmtpd-table-passwd
-pkgver=6.4.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="table-passwd for using a passwd file with OpenSMTPd"
 arch=('i686' 'x86_64')
@@ -13,10 +19,11 @@ depends=('opensmtpd')
 conflicts=("${_pkg}")
 makedepends=('openssl')
 source=("https://www.opensmtpd.org/archives/${_pkg}-${pkgver}.tar.gz")
-sha256sums=('cb66986b7c0d0113210f4fb9ca1447b7f50ca088165e6ca61b9015ff0f2d6226')
+sha256sums=('126b023602e8bb222bf24543a056ee0a548343dc86d184669ff9d82dfca1fbdf')
 
 build() {
-  cd ${_pkg}-${pkgver}
+  cd OpenSMTPD-extras-${pkgver}
+  ./bootstrap
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/smtpd \
@@ -26,11 +33,11 @@ build() {
 }
 
 check() {
-  cd ${_pkg}-${pkgver}
+  cd OpenSMTPD-extras-${pkgver}
   make -k check
 }
 
 package() {
-  cd ${_pkg}-${pkgver}
+  cd OpenSMTPD-extras-${pkgver}
   make DESTDIR="${pkgdir}" install
 }
