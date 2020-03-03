@@ -1,7 +1,7 @@
 pkgbase = netatop
 	pkgdesc = Atop network kernel module, enables network statistics in atop
-	pkgver = 2.0
-	pkgrel = 2
+	pkgver = 3.0
+	pkgrel = 1
 	url = http://www.atoptool.nl/
 	install = depmod.install
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = netatop
 	license = GPL
 	makedepends = linux-headers
 	depends = atop
-	source = http://atoptool.nl/download/netatop-2.0.tar.gz
-	sha256sums = c66d7ca094d667428924f2faff2afb816b17565e8c3628e43bfa0e1a2e22c20e
+	source = http://atoptool.nl/download/netatop-3.0.tar.gz
+	sha256sums = 0b259b59ee187d83258be3131f1e5842143ca4d2ba05efe7b76e9724a0e4a46b
 
 pkgname = netatop
 
