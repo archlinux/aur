@@ -2,7 +2,7 @@
 
 pkgname=casile-git
 pkgdesc="Caleb's SILE publishing toolkit"
-pkgver=0.1.0.r52.g90058aa
+pkgver=0.1.0.r59.g7ea80e7
 _branch='master'
 pkgrel=1
 arch=(any)
@@ -14,6 +14,7 @@ source=("git://github.com/sile-typesetter/${pkgname%-git}.git#branch=$_branch")
 sha512sums=('SKIP')
 makedepends=('git')
 depends=('bc'
+         'bcprov' # pdftk optdepend is required
          'cpdf'
          'entr'
          'epubcheck'
@@ -21,6 +22,7 @@ depends=('bc'
          'imagemagick'
          'inetutils'
          'inkscape'
+         'java-commons-lang' # pdftk optdepend is required
          'jq'
          'kindlegen'
          'lua-colors'
@@ -43,7 +45,6 @@ depends=('bc'
          'python-pandocfilters'
          'python-pantable'
          'python-ruamel-yaml'
-         'python-setuptools' # Make up for yq missing this dep in [community]
          'python-usfm2osis-cw-git'
          'rsync'
          'sile'
