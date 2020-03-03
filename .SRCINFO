@@ -1,0 +1,14 @@
+pkgbase = python-env
+	pkgdesc = Mix and match virtual environments.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/paysonwallach/env
+	arch = any
+	license = BSD-2
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/paysonwallach/env/archive/0.1.2.tar.gz
+	md5sums = 38e007a644263856e4718b62926d0288
+
+pkgname = python-env
+
