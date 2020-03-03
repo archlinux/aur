@@ -1,7 +1,7 @@
 # Maintainer: Jean-Francois Chevrette <jfchevrette@gmail.com>
 
 pkgname=sowm
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='An itsy bitsy floating window manager'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libx11')
 url=https://github.com/dylanaraps/sowm
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/dylanaraps/$pkgname/archive/$pkgver.tar.gz)
-sha256sums=('7962983811c16f9fa35b28331e658a30613bd437ef75a9298e931e33b56d326a')
+sha256sums=('7e1d1391f8cf8d1b04458d0b4bb3b61684b535dddcc1dd7d37266e81efd57e02')
 
 _sourcedir=$pkgname-$pkgver
 _makeopts=""
