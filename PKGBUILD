@@ -1,4 +1,5 @@
-# Maintainer: Sergey Malkin <adresatt@gmail.com>
+# Maintainer: Sergio Davies <newsletter dot sergio at gmail dot com>
+
 pkgbase=python-quantities
 pkgname=('python-quantities' 'python2-quantities')
 _name=${pkgbase#python-}
