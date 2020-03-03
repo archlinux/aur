@@ -1,6 +1,6 @@
 pkgbase = gtkwave-svn
 	pkgdesc = A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files (experimental version from svn)
-	pkgver = 1145
+	pkgver = 1553
 	pkgrel = 1
 	url = http://gtkwave.sourceforge.net
 	install = gtkwave.install
@@ -9,6 +9,7 @@ pkgbase = gtkwave-svn
 	license = GPL
 	license = MIT
 	makedepends = gperf
+	makedepends = subversion
 	depends = bzip2
 	depends = xz
 	depends = gtk2
