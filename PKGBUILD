@@ -3,7 +3,7 @@
 pkgname=wmderland-git
 _pkgname=wmderland
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='X11 tiling window manager using space partitioning trees'
 arch=('x86_64')
 url="https://github.com/aesophor/wmderland"
@@ -31,5 +31,7 @@ package() {
   # Install example config file.
   cd ../../
   mkdir -p "${pkgdir}/etc/xdg/wmderland/"
-  install -D -m644 example/* "${pkgdir}/etc/xdg/wmderland/"
+  mkdir -p "${pkgdir}/usr/share/xsessions/"
+  install -D -m644 example/config "${pkgdir}/etc/xdg/wmderland/"
+  install -D -m644 example/wmderland.desktop "${pkgdir}/usr/share/xsessions/"
 }
