@@ -6,7 +6,7 @@
 
 pkgname=linuxsampler-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r3099
+pkgver=r3751
 pkgrel=1
 pkgdesc="Sampler backend, including sampler engine, audio and MIDI drivers, network layer (LSCP) API and native C++ API"
 arch=("i686" "x86_64")
