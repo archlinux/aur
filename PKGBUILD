@@ -1,4 +1,5 @@
-# Maintainer: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
+# Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 pkgname=raleigh-reloaded-git
 pkgver=v1.1.r4.89ce481
 pkgrel=1
