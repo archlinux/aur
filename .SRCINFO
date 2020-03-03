@@ -1,6 +1,6 @@
-pkgbase = warpinator
+pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN by Linux Mint
-	pkgver = r39.53989e7
+	pkgver = r42.6f44410
 	pkgrel = 1
 	url = https://github.com/linuxmint/warp
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = warpinator
 	depends = python-zeroconf
 	depends = python-xapp
 	depends = xapps
+	depends = python-grpcio
+	depends = python-grpcio-tools
 	provides = warpinator
 	conflicts = warpinator
 	conflicts = haskell-wai-app-static
@@ -20,5 +22,5 @@ pkgbase = warpinator
 	source = git+https://github.com/linuxmint/warp.git
 	sha512sums = SKIP
 
-pkgname = warpinator
+pkgname = warpinator-git
 

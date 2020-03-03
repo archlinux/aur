@@ -1,8 +1,8 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 
-pkgname=warpinator
-pkgver=r39.53989e7
+pkgname=warpinator-git
+pkgver=r42.6f44410
 pkgrel=1
 pkgdesc="Share files across the LAN by Linux Mint"
 arch=("x86_64")
@@ -10,7 +10,13 @@ url="https://github.com/linuxmint/warp"
 # License file is missing from the root of the repository; however, GPL-2+ is given in the
 # debian/control file: https://github.com/linuxmint/warp/blob/master/debian/copyright
 license=("GPL")
-depends=("pygobject-devel" "python-setproctitle" "python-zeroconf" "python-xapp" "xapps")
+depends=("pygobject-devel" \
+         "python-setproctitle" \
+         "python-zeroconf" \
+         "python-xapp" \
+         "xapps" \
+         "python-grpcio" \
+         "python-grpcio-tools")
 makedepends=("git" "meson")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "haskell-wai-app-static" "lm-warp-git" "warp-git")
