@@ -1,32 +1,27 @@
 # Maintainer: zlowly <zlowly@gmail.com>
 pkgname=smartdns-git
 _pkgname=${pkgname%-git}
-pkgver=r288.d6c3465
+pkgver=r319.3ad7cd7
 pkgrel=1
 pkgdesc="Local DNS server that accepts DNS query requests from local clients, obtains DNS query results from multiple upstream DNS servers, and returns the fastest access results to clients."
 arch=("x86_64")
 url="https://github.com/pymumu/smartdns"
 license=("GPL3")
-depends=('openssl-1.0')
+depends=('openssl')
 makedepends=('git') 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("smartdns::git+https://github.com/pymumu/smartdns.git" "${_pkgname}.patch")
+source=("smartdns::git+https://github.com/pymumu/smartdns.git")
 backup=("etc/smartdns/smartdns.conf")
-md5sums=('SKIP'
-         '2481e2bdb5bf5c140107fef66f13151f')
+md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-prepare() {
-	cd "$srcdir"
-  patch -p1 "${_pkgname}/systemd/smartdns.service" < "${_pkgname}.patch"
-}
 build() {
 	cd "$srcdir/${_pkgname}"
-  make -C ./src clean 
-  make -C ./src all VER=$pkgver
+  make clean 
+  make VER=$pkgver SBINDIR=/usr/bin RUNSTATEDIR=/run
 }
 package() {
 	cd "$srcdir/${_pkgname}"
