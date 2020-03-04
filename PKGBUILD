@@ -4,7 +4,7 @@
 pkgname=perl-gtk2-notify
 _cpanname=Gtk2-Notify
 pkgver=0.05
-pkgrel=22
+pkgrel=23
 pkgdesc="Perl interface to libnotify"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/${_cpanname}"
@@ -15,7 +15,7 @@ makedepends=('perl-extutils-pkgconfig' 'perl-extutils-depends'
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/$_cpanname-$pkgver.tar.gz"
 	"libnotify.patch")
-md5sums=('071144ad4a5670b8b2451baf358c4a88'
+sha512sums=('071144ad4a5670b8b2451baf358c4a88'
          'c54d841861c9adfaa77b80bdf9cb0f98')
 
 prepare() {
@@ -43,3 +43,5 @@ package() {
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
   _perl_depends
 }
+sha512sums=('e6242c21f6a3345d990830798744c8dd3abf648c0110d395197fc74b185b68189f9fc90e0fc14717cc09505d67fbaf8f45c1b3fae65c873275537e55c9e35434'
+            '036b5c0f1ca045efc97d28eea5f805b0d7ba91e74a3171aca2f66a65ef4591e486781f46940da78e3ff6c5dbc71ea100d1cab6de5dd31339c88f421b5ab5ed70')

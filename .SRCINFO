@@ -1,7 +1,7 @@
 pkgbase = perl-gtk2-notify
 	pkgdesc = Perl interface to libnotify
 	pkgver = 0.05
-	pkgrel = 22
+	pkgrel = 23
 	url = http://metacpan.org/release/Gtk2-Notify
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = perl-gtk2-notify
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Gtk2-Notify-0.05.tar.gz
 	source = libnotify.patch
-	md5sums = 071144ad4a5670b8b2451baf358c4a88
-	md5sums = c54d841861c9adfaa77b80bdf9cb0f98
+	sha512sums = e6242c21f6a3345d990830798744c8dd3abf648c0110d395197fc74b185b68189f9fc90e0fc14717cc09505d67fbaf8f45c1b3fae65c873275537e55c9e35434
+	sha512sums = 036b5c0f1ca045efc97d28eea5f805b0d7ba91e74a3171aca2f66a65ef4591e486781f46940da78e3ff6c5dbc71ea100d1cab6de5dd31339c88f421b5ab5ed70
 
 pkgname = perl-gtk2-notify
 
