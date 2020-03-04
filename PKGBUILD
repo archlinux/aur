@@ -2,7 +2,7 @@
 
 pkgname=python-rich
 _pkgname=rich
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Python library for rich text and beautiful formatting in the terminal"
 arch=("any")
@@ -14,7 +14,7 @@ depends=("python-colorama"
          "python-typing_extensions")
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e3183c96ebf7b5bf82191c272999b0d5310e177c15c5a707911aa91c5cef9ce9')
+sha256sums=('5a7c30702a8a77cf9c219e0a54ec73e6aa0f63220b2cb95b115014da24f1fd6d')
 
 build() {
     cd ${_pkgname}-${pkgver}
