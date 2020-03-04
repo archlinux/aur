@@ -1,9 +1,9 @@
 # Maintainer: lsf
-# Contributor: Mark Wagie <mark.wagie@tutanota.com>
+# Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=r514.db22e83
+pkgver=1.0.0.rc5.r16.db22e83
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
@@ -15,12 +15,13 @@ depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
          'python-libconfigparser')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+install="${pkgname%-git}.install"
 source=('git+https://github.com/gustavo-iniguez-goya/opensnitch.git')
 sha256sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
