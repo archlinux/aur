@@ -2,14 +2,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=torbrowser-launcher-git
 pkgver=0.3.2.r24.fc2073d
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely and easily download, verify, install and launch Tor Browser"
 arch=('any')
 url="https://github.com/micahflee/torbrowser-launcher"
 license=('MIT')
-depends=('tor' 'gnupg' 'pygtk' 'python-gnupg' 'python-gpgme' 'python-pyqt5'
-         'python-twisted' 'python-distro')
-makedepends=('git' 'python-setuptools')
+depends=('tor' 'gnupg' 'python-gnupg' 'python-gpgme' 'python-pyqt5' 'python-pysocks'
+         'python-requests')
+makedepends=('git' 'python-setuptools' 'python-distro')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop'

@@ -1,20 +1,20 @@
 pkgbase = torbrowser-launcher-git
 	pkgdesc = Securely and easily download, verify, install and launch Tor Browser
 	pkgver = 0.3.2.r24.fc2073d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/micahflee/torbrowser-launcher
 	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-distro
 	depends = tor
 	depends = gnupg
-	depends = pygtk
 	depends = python-gnupg
 	depends = python-gpgme
 	depends = python-pyqt5
-	depends = python-twisted
-	depends = python-distro
+	depends = python-pysocks
+	depends = python-requests
 	provides = torbrowser-launcher
 	conflicts = torbrowser-launcher
 	source = git+https://github.com/micahflee/torbrowser-launcher.git#branch=develop
