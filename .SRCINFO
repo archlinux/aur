@@ -1,21 +1,18 @@
 pkgbase = rocprim
 	pkgdesc = ROCm Parallel Primitives
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/rocPRIM
 	arch = x86_64
-	license = NCSAOSL
-	makedepends = git
+	license = custom:NCSAOSL
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = make
 	makedepends = hcc
 	makedepends = python2
 	makedepends = rocminfo
 	depends = hcc
 	depends = hip
-	source = https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/3.0.0.tar.gz
-	sha256sums = cf3b14b700795c238cf0a0ab4dedca092cdc83f797e4c6331fba33a9f6358526
+	source = https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/3.1.0.tar.gz
+	sha256sums = ef93668ce6b740e9e01688937846b406407a893c2effc0719e876acce5998b3a
 
 pkgname = rocprim
 
