@@ -1,0 +1,16 @@
+pkgbase = one_gadget
+	pkgver = 1.7.3
+	pkgrel = 1
+	url = https://github.com/david942j/one_gadget
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-elftools
+	noextract = one_gadget-1.7.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/one_gadget-1.7.3.gem
+	sha256sums = 3069a7b9cef708ea0cf505281a3f00add11f0dcdf02e30e0851ced0bc21efaf0
+
+pkgname = one_gadget
+
