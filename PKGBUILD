@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=flashy
-pkgver=1.4.4
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Java tool to handle firmware and logic flashing for iniVation devices."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -16,7 +16,7 @@ replaces=()
 options=()
 source=("http://release.inivation.com/$pkgname/$pkgname-linux-$pkgver.tar.gz")
 noextract=()
-sha256sums=('5deeb11c5fec25d747dc1772204addf35b599f4ad0f521ea0614400f59ecaa8d')
+sha256sums=('9c44268e2171dfb842eafc3ee4272afbd26c2c6397deb7f5d276984ad094e064')
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
