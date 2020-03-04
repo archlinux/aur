@@ -1,10 +1,13 @@
 pkgbase = xeus
 	pkgdesc = C++ implementation of the Jupyter kernel protocol
 	pkgver = 0.23.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/QuantStack/xeus
 	arch = x86_64
 	license = BSD
+	makedepends = cmake
+	makedepends = zeromq
+	makedepends = cppzmq
 	depends = crypto++
 	depends = nlohmann-json
 	depends = xtl
