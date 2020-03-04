@@ -28,7 +28,7 @@
 pkgname=vivado
 pkgver=2019.2
 _more_ver=1106_2127
-pkgrel=1
+pkgrel=2
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -48,6 +48,8 @@ source=("file:///Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
         'Xilinx-SDK.desktop'
         'Xilinx-DocNav.desktop')
 
+noextract=("Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz")
+
 # checksum from https://www.xilinx.com/support/download.html
 md5sums=('e2b2762964ef5f014591b13d77d823ab'
          '69d14ad64f6ec44e041eaa8ffcb6f87c'
@@ -59,6 +61,10 @@ options=('!strip')
 PKGEXT=".pkg.tar"
 
 prepare() {
+	# https://git.archlinux.org/pacman.git/commit/?id=349c22d043290ccd0cce9f30981f5415e295442a
+	echo "Manually extracting archive..."
+	bsdtar -xf "Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
+
 	mkdir -p "$srcdir/installer_temp"
 
 	sed -i "s/%VERSION%/$pkgver/g" *.desktop
