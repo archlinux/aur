@@ -13,19 +13,19 @@ source=("https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/roc-$pkgver.t
 sha256sums=('b162464ef87ce39518e59ef8406d6b897aa7a930795c586829614ed87aa1c2ce')
 
 build() {
-  mkdir -p "$srcdir/$_pkgname-$pkgver/src/build"
-  cd "$srcdir/$_pkgname-$pkgver/src/build"
+  mkdir -p "$srcdir/build"
+  cd "$srcdir/build"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DHSAKMT_INC_PATH=/opt/rocm/include \
         -DHSAKMT_LIB_PATH=/opt/rocm/lib \
-        ..
+        "$srcdir/$_pkgname-$pkgver/src"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver/src/build"
+  cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
 
