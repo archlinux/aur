@@ -5,10 +5,9 @@ pkgbase = hcc
 	url = https://github.com/RadeonOpenCompute/hcc
 	arch = x86_64
 	license = custom:NCSAOSL
-	makedepends = git
 	makedepends = cmake
 	makedepends = python
-	depends = rocr-runtime>=3.0.0
+	depends = rocr-runtime>=3.1.0
 	depends = z3
 	options = !staticlibs
 	options = strip
