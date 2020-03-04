@@ -3,11 +3,11 @@
 _name='flake8-polyfill'
 pkgname="python-${_name}"
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Polyfill package for Flake8 plugins"
 url="https://gitlab.com/pycqa/${_name}"
 depends=('flake8')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
