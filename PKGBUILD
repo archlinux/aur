@@ -5,7 +5,7 @@ pkgdesc="Geocoding tool using OpenStreetmap data"
 url="https://nominatim.org"
 
 pkgver=3.4.1
-pkgrel=9
+pkgrel=10
 
 arch=("x86_64")
 license=("GPL2")
@@ -175,6 +175,8 @@ package() {
     # link settings from /etc/webapps
     install -Ddm755 "${pkgdir}/etc/webapps/${pkgname}/"
     ln -s "/etc/webapps/${pkgname}/settings/" "${pkgdir}/var/lib/${pkgname}/bin/settings"
+    # and from /usr/share/webapps/
+    ln -s "/usr/share/webapps/${pkgname}/settings/" "${pkgdir}/var/lib/${pkgname}/bin/settings"
 
     # install package settings
     install -Dm644 "${srcdir}/settings-local.php" "${pkgdir}/etc/webapps/${pkgname}/settings/local.php"
