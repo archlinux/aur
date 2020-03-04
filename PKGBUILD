@@ -1,7 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=roct-thunk-interface
-_pkgname=ROCT-Thunk-Interface
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="Radeon Open Compute Thunk Interface"
@@ -19,7 +18,7 @@ build() {
 
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        "$srcdir/$_pkgname-roc-$pkgver"
+        "$srcdir/ROCT-Thunk-Interface-roc-$pkgver"
   make all build-dev
 }
 
