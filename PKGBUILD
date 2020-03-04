@@ -4,8 +4,8 @@
 # Contributor: Asa Marco <marcoasa90[at]gmail[.]com>
 
 pkgname=openshot
-pkgver=2.5.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="An award-winning free and open-source video editor"
 arch=('any')
 url="https://www.openshot.org/"
@@ -15,7 +15,7 @@ depends=('ffmpeg' 'mlt' 'python-pyqt5' 'python-requests' 'libopenshot'
 optdepends=('faac: for exporting audio using AAC')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OpenShot/openshot-qt/archive/v$pkgver.tar.gz")
-sha512sums=('0944bff48c8957a4a3c5a37428b4d3e45e8ad6e1664812ea90b7c16d014a3c355daf2fe183ce855586114ccfa36c419b6baacc42c4bf871de29bda4c24f2a814')
+sha512sums=('8254a45254bbe523b6485b9598022de2c46ec30818e606ac4665790d29486693c4efe9f5bc55ee43d6342de6782cf0090e4bc880e831c08e3b1218bca555af14')
 
 prepare() {
   mv -v "${pkgname}-qt-${pkgver}" "${pkgname}-${pkgver}"
