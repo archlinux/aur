@@ -5,7 +5,7 @@
 #
 # 1. Log in to xilinx.com
 # 2. Go to https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html
-# 3. Download "All OS installer Single-File Download" (.tar.gz) - WARNING: This file is about 19GB in size
+# 3. Download "All OS installer Single-File Download (TAR/GZIP)" - WARNING: This file is >25GB in size
 # 4. Place the .tar.gz in the same directory as the PKGBUILD
 # 5. Build!
 #
@@ -13,8 +13,8 @@
 #
 # SOME MORE NOTES:
 #
-# This package is huge. The download alone is a 19GB .tar.gz, which decompresses to 20GB,
-# and the final package (with compression disabled) is 28GB. Reserve at least 60GB when using makechrootpkg.
+# This package is huge. The download alone is a ~27GB .tar.gz, which decompresses to ~30GB,
+# thus the final package with compression disabled is another 30GB. Reserve 150GB in total for building.
 #
 # It can also take about an hour to build, being mostly limited by I/O and single-thread
 # performance. `namcap` takes another 30 minutes, make sure you're not running that automatically.
@@ -26,9 +26,9 @@
 # wrap the `getpwuid()` function and modify the original return value for uid==0.
 
 pkgname=vivado
-pkgver=2019.1
-_more_ver=0524_1430
-pkgrel=2
+pkgver=2019.2
+_more_ver=1106_2127
+pkgrel=1
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -42,14 +42,14 @@ depends=('ncurses5-compat-libs'
          'digilent.adept.utilities'
          'xterm')
 
-source=("file:///Xilinx_Vivado_SDK_${pkgver}_${_more_ver}.tar.gz"
+source=("file:///Xilinx_Vivado_${pkgver}_${_more_ver}.tar.gz"
         'spoof_homedir.c'
         'Xilinx-VivadoIDE.desktop'
         'Xilinx-SDK.desktop'
         'Xilinx-DocNav.desktop')
 
 # checksum from https://www.xilinx.com/support/download.html
-md5sums=('47388a71dc5962a4b8d76e752928616e'
+md5sums=('e2b2762964ef5f014591b13d77d823ab'
          '69d14ad64f6ec44e041eaa8ffcb6f87c'
          'b7cad6d39ef5293d4f433b8c9959f486'
          '44bb51e1c8832f001cb7d21b90cb5796'
@@ -70,7 +70,7 @@ build() {
 }
 
 package() {
-	cd "Xilinx_Vivado_SDK_${pkgver}_${_more_ver}"
+	cd "Xilinx_Vivado_${pkgver}_${_more_ver}"
 
 	# LD_PRELOAD already contains libfakeroot.so, add our own library before that
 	LD_PRELOAD="$srcdir/spoof_homedir.so:$LD_PRELOAD" ./xsetup \
@@ -80,9 +80,9 @@ package() {
 		--location "$pkgdir/opt/Xilinx"
 
 	# install udev rules
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
-	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/2019.1/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-digilent-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-ftdi-usb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
+	install -Dm644 "$pkgdir/opt/Xilinx/Vivado/${pkgver}/data/xicom/cable_drivers/lin64/install_script/install_drivers/52-xilinx-pcusb.rules" -t "$pkgdir/usr/lib/udev/rules.d/"
 
 	install -Dm644 "$srcdir/Xilinx-VivadoIDE.desktop" -t "$pkgdir/usr/share/applications/"
 	install -Dm644 "$srcdir/Xilinx-SDK.desktop" -t "$pkgdir/usr/share/applications/"
@@ -90,6 +90,6 @@ package() {
 
 	# clean up artefacts, remove leading $pkgdir from paths
 	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
-	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -ie "s|$pkgdir||g" '{}' \+
+	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
 }
 
