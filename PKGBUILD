@@ -1,6 +1,6 @@
 _pkgname=qwikaccess
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r0.02d5835
+pkgver=0.0.1.r13.c48c158
 pkgrel=1
 pkgdesc="A point and click Qt GUI for scripts we use frequently."
 arch=('any')
@@ -25,6 +25,8 @@ optdepends=(
 	'xdg-utils: for lock screen (xdg-screensaver lock)'
 	'systemd: for leave commands and gps services'
 	'libnotify: for notification'
+	'wmctrl: for screencam ffplay to be on above all windows'
+	'playerctl: media player controls'
 	'grep: used in scripts'
 )
 makedepends=('git')
