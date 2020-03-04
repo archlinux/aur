@@ -14,7 +14,7 @@
 
 pkgname=cassandra
 pkgver=3.11.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache Cassandra NoSQL database'
 arch=('any')
 url='http://cassandra.apache.org/'
@@ -35,7 +35,7 @@ source=(https://www.apache.org/dist/${pkgname}/${pkgver}/apache-${pkgname}-${pkg
         'cassandra.service'
         'cassandra-tmpfile.conf'
         'cassandra-user.conf')
-validpgpkeys=('A26E528B271F19B9E5D8E19EA278B781FE4B2BDA') # Michael Shuler <michael@pbandjelly.org>
+validpgpkeys=('A4C465FEA0C552561A392A61E91335D77E3E87CB') # Mick Semb Wever <mick@semb.wever.org>
 sha256sums=('ce34edebd1b6bb35216ae97bd06d3efc338c05b273b78267556a99f85d30e45b'
             'SKIP'
             'bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657'

@@ -1,7 +1,7 @@
 pkgbase = cassandra
 	pkgdesc = Apache Cassandra NoSQL database
 	pkgver = 3.11.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cassandra.apache.org/
 	install = cassandra.install
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = cassandra
 	source = cassandra.service
 	source = cassandra-tmpfile.conf
 	source = cassandra-user.conf
-	validpgpkeys = A26E528B271F19B9E5D8E19EA278B781FE4B2BDA
+	validpgpkeys = A4C465FEA0C552561A392A61E91335D77E3E87CB
 	sha256sums = ce34edebd1b6bb35216ae97bd06d3efc338c05b273b78267556a99f85d30e45b
 	sha256sums = SKIP
 	sha256sums = bbb5dcc19cac4e19c506210da901280c3063a6a241480bf12bc874e6a5c02657
