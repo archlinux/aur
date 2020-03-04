@@ -1,10 +1,10 @@
-# Maintainer: Martin Diehl <m.diehl@mpie.de>
+# Maintainer: Martin Diehl <https://martin-diehl.net>
 # Contributor: Michele Mocciola <mickele>
 # Contributor: Guillaume Dollé < dolle dot guillaume at gmail dot com >
 # Contributor: Lucas H. Gabrielli
 pkgname=mumps
 pkgver=5.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Sparse solver library using Gaussian elimination'
 url='http://mumps.enseeiht.fr'
 license=('custom')
