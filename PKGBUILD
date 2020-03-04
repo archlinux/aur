@@ -3,7 +3,7 @@
 
 pkgname=makepkg-optimize
 pkgver=18
-pkgrel=2
+pkgrel=3
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -91,7 +91,8 @@ package() {
   install -m644 -D -t ${pkgdir}/usr/share/makepkg/buildenv/ ${_buildenv[@]%.in}
 
   # Executable finding scripts
-  install -m644 -D -t ${pkgdir}/usr/share/makepkg/executable/ ${_executable[@]//-exec.sh.in/.sh}
+  for i in ${_executable[@]%.in}; do
+    install -m644 -D -T ${i} ${pkgdir}/usr/share/makepkg/executable/${i//-exec.sh/.sh}; done
 
   # Supplemental Tidy scripts
   install -m644 -D -t ${pkgdir}/usr/share/makepkg/tidy/ ${_tidy[@]%.in}
