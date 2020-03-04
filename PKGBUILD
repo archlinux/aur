@@ -4,7 +4,7 @@
 
 pkgname=bcache-tools
 pkgver=1.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Userspace tools for bcache until bcache merges with either dm or md"
 changelog=bcache-tools.changelog
 arch=('i686' 'x86_64')
