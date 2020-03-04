@@ -1,6 +1,6 @@
 pkgbase = python-pymisp
 	pkgdesc = Python library to access MISP platforms via their REST API
-	pkgver = 2.4.121.1
+	pkgver = 2.4.122
 	pkgrel = 1
 	url = https://github.com/MISP/PyMISP/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-pymisp
 	depends = python-deprecated
 	depends = python-cachetools
 	optdepends = lief
-	source = PyMISP-2.4.121.1.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.121.1.tar.gz
-	sha512sums = 9f9a237a8bff4ca663bfe5a3d71cb63a42186a1124ae5a5da25de17c1919c29f4fb85ef946858042390eb3cefc946c979d16742d87362187039875122d8ea86b
+	source = PyMISP-2.4.122.tar.gz::https://github.com/MISP/PyMISP/archive/v2.4.122.tar.gz
+	sha512sums = 666c378b25b61803f601d470686e359fc0957ecea9d2c9c14ec732f62e7bcae34c1d8f1efcc131ea6be3d38f5a91c8910ab438e5be272563d92bb2819cb1526c
 
 pkgname = python-pymisp
 
