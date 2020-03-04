@@ -15,14 +15,14 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r344273.831fe8dc4c7
+pkgver=11.0.0_r344356.e60c28746b0
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=(   'git' 'cmake' 'ninja' 'libffi' 'libedit' 'ncurses' 'libxml2' 'python-sphinx'
                             'ocaml' 'ocaml-ctypes' 'ocaml-findlib'
-                            'python-sphinx' 'python-recommonmark' 'swig' 'python')
+                            'python-sphinx' 'python-recommonmark' 'swig' 'python' 'python-six')
 checkdepends=('python-psutil')
 source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
               'llvm-config.h'
@@ -72,7 +72,7 @@ prepare() {
     
     cd llvm-project
     # llvm-project contains a lot of stuff, remove parts that aren't used by this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind llgo openmp parallel-libs pstl libc mlir
     
     cd clang
     # patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
@@ -105,6 +105,7 @@ build() {
         -D LLVM_VERSION_SUFFIX="" \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D CMAKE_POLICY_DEFAULT_CMP0075=NEW \
+        -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang" \
 
     ninja $NINJAFLAGS all ocaml_doc
@@ -115,15 +116,14 @@ check() {
     ninja $NINJAFLAGS check
     ninja $NINJAFLAGS check-polly
     ninja $NINJAFLAGS check-lld
-    # lldb tests fail very often, skipping them
-    # ninja $NINJAFLAGS check-lldb
+    ninja $NINJAFLAGS check-lldb
     ninja $NINJAFLAGS check-clang
     ninja $NINJAFLAGS check-clang-tools
 }
 
 package_llvm-git() {
     pkgdesc="LLVM development version. includes clang and many other tools"
-    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl')
+    depends=("llvm-libs-git=$pkgver-$pkgrel" 'perl' 'python-six')
     optdepends=('python: for scripts'
                            'python-setuptools: for using lit = LLVM Integrated Tester'
     )
@@ -138,11 +138,6 @@ package_llvm-git() {
     pushd _build
         DESTDIR="$pkgdir" ninja $NINJAFLAGS install
     popd
-
-    _py="3.8"
-    # Clean up conflicting files
-    # TODO: This should probably be discussed with upstream.
-    rm -rf "${pkgdir}/usr/lib/python$_py/site-packages/six.py"
 
     # Include lit for running lit-based tests in other projects
     pushd llvm-project/llvm/utils/lit
@@ -171,6 +166,7 @@ package_llvm-git() {
         cp "$srcdir"/llvm-config.h "$pkgdir"/usr/include/llvm/Config/llvm-config.h
     fi
 
+    _py="3.8"
     cd llvm-project
     # Install Python bindings and optimize them
     cp -a llvm/bindings/python/llvm  "$pkgdir"/usr/lib/python$_py/site-packages/
