@@ -1,7 +1,7 @@
 pkgbase = ruby-elftools
 	pkgdesc = ELF parser library implemented in pure Ruby
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/david942j/rbelftools/
 	arch = any
 	license = MIT

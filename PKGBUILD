@@ -3,7 +3,7 @@
 _gemname=elftools
 pkgname=ruby-$_gemname
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ELF parser library implemented in pure Ruby"
 arch=(any)
 url='https://github.com/david942j/rbelftools/'
