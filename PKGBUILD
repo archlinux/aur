@@ -1,6 +1,6 @@
 # Maintainer: jerry73204 <jerry73204@gmail.com>
 
-pkgname='python-detectron2'
+pkgname='python-detectron2-git'
 _reponame='detectron2'
 pkgver='r304.5e2a1ec'
 pkgrel='1'
@@ -8,6 +8,7 @@ pkgdesc="Detectron2 is Facebook AI Research's next generation software system th
 arch=('any')
 url='https://github.com/facebookresearch/detectron2'
 license=('Apache-2.0')
+conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 depends=(
   'python'

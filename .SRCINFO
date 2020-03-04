@@ -1,4 +1,4 @@
-pkgbase = python-detectron2
+pkgbase = python-detectron2-git
 	pkgdesc = Detectron2 is Facebook AI Research's next generation software system that implements state-of-the-art object detection algorithms.
 	pkgver = r304.5e2a1ec
 	pkgrel = 1
@@ -12,8 +12,9 @@ pkgbase = python-detectron2
 	depends = python-cocoapi
 	optdepends = opencv
 	provides = python-detectron2
+	conflicts = python-detectron2
 	source = detectron2::git+https://github.com/facebookresearch/detectron2.git
 	sha256sums = SKIP
 
-pkgname = python-detectron2
+pkgname = python-detectron2-git
 
