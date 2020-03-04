@@ -1,0 +1,15 @@
+pkgbase = hpipm
+	pkgdesc = High-performance interior-point-method QP solvers
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/giaf/hpipm
+	arch = i686
+	arch = x86_64
+	license = BSD 2-Clause
+	makedepends = cmake
+	depends = blasfeo
+	source = https://github.com/giaf/hpipm/archive/0.1.1.tar.gz
+	sha256sums = 2e9142ade463159a098f523d1292eb1171dabbf6a2fddfd656d16d132c3eb595
+
+pkgname = hpipm
+
