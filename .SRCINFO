@@ -1,0 +1,16 @@
+pkgbase = wasi-sdk-bin
+	pkgdesc = WASI-enabled WebAssembly C/C++ toolchain
+	pkgver = 8.0
+	pkgrel = 1
+	url = https://github.com/WebAssembly/wasi-sdk
+	arch = x86_64
+	license = Apache-2.0
+	depends = clang
+	options = !strip
+	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-8/wasi-sysroot-8.0.tar.gz
+	source = https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-8/libclang_rt.builtins-wasm32-wasi-8.0.tar.gz
+	sha512sums = 6e4d1a23635c569777d2f36d5b06afcfe23fc215b3f0ec563fc7a42b18d576a3e97e526e18c7ec38e0931032b86defcddf45a60934551933c0d418a015757324
+	sha512sums = b31224946023d8afb0a194514dc5229dbb39417ddb015decf978f891938123948c042dfa7727d983ff07cc8fd1146a7e2a5144deb5dd4cae6f2491d0bc581787
+
+pkgname = wasi-sdk-bin
+
