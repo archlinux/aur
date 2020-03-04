@@ -1,7 +1,7 @@
 pkgbase = perl-gnome2-wnck+
 	pkgdesc = Perl interface to the Window Navigator Construction Kit (improved)
 	pkgver = 0.16
-	pkgrel = 14
+	pkgrel = 15
 	url = http://search.cpan.org/dist/Gnome2-Wnck
 	arch = i686
 	arch = x86_64
@@ -26,6 +26,8 @@ pkgbase = perl-gnome2-wnck+
 	source = libwnck+.patch
 	md5sums = 439f4569ffd7af96ef1d3feaab23760e
 	md5sums = ae7baf7c409334354d2aaa244ff316f7
+	sha512sums = d8ed39cd19ccaeb5995d97b392d1cc97fe0c9bb66781efb70d6160f50a212e263be3bb89c33ca1ff0ed3da3c55fd9968fa4026abcf8593996760831164acd00a
+	sha512sums = 5af5b5c421e8ad2f9b8138bd9fd6b4c746bf14ace2aec0f632c388143bf3bf2b799f5b396fb28eed6f1476e3d46afff993db156b0bac9b624e6ed4911438e1ad
 
 pkgname = perl-gnome2-wnck+
 
