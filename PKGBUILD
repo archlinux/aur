@@ -1,4 +1,4 @@
-# Contributor: Martin Diehl <m.diehl@mpie.de>
+# Maintainer: Martin Diehl <https://martin-diehl.net>
 # Contributor: Alad Wenter <alad@archlinux.org>
 # Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Simon Pintarelli <simon.pintarelli@gmail.com>
@@ -6,13 +6,13 @@
 pkgname=trilinos
 pkgver=12.18.1
 _pkgver=${pkgver//./-}
-pkgrel=1
+pkgrel=2
 pkgdesc="algorithms for the solution of large-scale scientific problems"
 arch=('x86_64')
 url="http://trilinos.org"
 license=('LGPL3')
 depends=('python' 'lapack' 'boost' 'netcdf' 'libmatio' 'libx11' 'hdf5-openmpi')
-makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen')
+makedepends=('gcc-fortran' 'perl' 'blas' 'cmake' 'doxygen' 'bc')
 conflicts=('gtest')
 checkdepends=('cmake')
 source=("https://github.com/trilinos/Trilinos/archive/trilinos-release-$_pkgver.tar.gz"
