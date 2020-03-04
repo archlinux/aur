@@ -20,17 +20,17 @@ pkgver() {
 }
 
 build() {
-  mkdir -p "$srcdir/$_pkgname/build"
-  cd "$srcdir/$_pkgname/build"
+  mkdir -p "$srcdir/build"
+  cd "$srcdir/build"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        ..
+        "$srcdir/$_pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$_pkgname/build"
+  cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
 }
