@@ -1,7 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=rocr-runtime
-_pkgname=ROCR-Runtime-roc
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime"
@@ -20,7 +19,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DHSAKMT_INC_PATH=/opt/rocm/include \
         -DHSAKMT_LIB_PATH=/opt/rocm/lib \
-        "$srcdir/$_pkgname-$pkgver/src"
+        "$srcdir/ROCR-Runtime-roc-$pkgver/src"
   make
 }
 
