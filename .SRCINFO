@@ -1,0 +1,14 @@
+pkgbase = gruvbox-dark-icons-gtk
+	pkgdesc = Gruvbox dark icon theme
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jmattheis/gruvbox-dark-icons-gtk
+	arch = any
+	license = GPL3
+	optdepends = gruvbox-dark-gtk: matching gtk theme.
+	options = !strip
+	source = gruvbox-dark-icons-gtk-1.0.0.tar.gz::https://github.com/jmattheis/gruvbox-dark-icons-gtk/archive/v1.0.0.tar.gz
+	sha256sums = 777d1defdb7a6d9977e1cf417dfbe297b5861bc81ceaa7772cef4fff1362813d
+
+pkgname = gruvbox-dark-icons-gtk
+
