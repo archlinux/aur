@@ -2,7 +2,7 @@
 # Contributor: Alexander Oleynichenko <alexvoleynichenko@gmail.com>
 
 pkgname=bader
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 epoch=
 pkgdesc="Quantum chemistry - Bader population analysis"
@@ -22,13 +22,13 @@ options=()
 install=
 changelog=
 source=('http://theory.cm.utexas.edu/henkelman/code/bader/download/bader.tar.gz')
+md5sums=('c736d9d3cb216951a57ca51e73e6280a')
 noextract=()
-md5sums=('ec66f494740b1cb9c59b506d4eaef9eb')
 validpgpkeys=()
 
 build() {
   cd "$srcdir/$pkgname"
-  make -f makefile.osx_gfortran
+  make -f makefile.lnx_ifort FC="gfortran" LINK=""
 }
 
 package() {
