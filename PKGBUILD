@@ -2,7 +2,7 @@
 # Maintainer: lilac <lilac@build.archlinuxcn.org>
 
 pkgname=kicad-i18n-git
-pkgver=r1637.a59bbd2
+pkgver=r1784.adb9ea2
 pkgrel=1
 pkgdesc="Translations for KiCad source code."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://kicad-pcb.org/"
 license=('GPL')
 depends=('kicad')
 makedepends=('cmake' 'git' 'gettext')
-source=("${pkgname}"'::git+https://github.com/kicad/kicad-i18n')
+source=("${pkgname}"'::git+https://gitlab.com/kicad/code/kicad-i18n.git')
 md5sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = kicad-i18n-git
 	pkgdesc = Translations for KiCad source code.
-	pkgver = r1637.a59bbd2
+	pkgver = r1784.adb9ea2
 	pkgrel = 1
 	url = http://kicad-pcb.org/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = kicad-i18n-git
 	makedepends = git
 	makedepends = gettext
 	depends = kicad
-	source = kicad-i18n-git::git+https://github.com/kicad/kicad-i18n
+	source = kicad-i18n-git::git+https://gitlab.com/kicad/code/kicad-i18n.git
 	md5sums = SKIP
 
 pkgname = kicad-i18n-git
