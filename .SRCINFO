@@ -1,6 +1,6 @@
 pkgbase = python-music21
 	pkgdesc = A toolkit for computer-aided musical analysis
-	pkgver = 5.7.1
+	pkgver = 5.7.2
 	pkgrel = 1
 	url = http://web.mit.edu/music21
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-music21
 	optdepends = python-pygame: allows for realtime MIDI performance
 	optdepends = python-pillow: resources for transforming and editing graphics files
 	optdepends = lilypond: automatically generate PDF or PNG files
-	source = https://github.com/cuthbertLab/music21/archive/v5.7.1.tar.gz
-	sha256sums = 714e2abbefce271864528e07fff17a0b632e1f4eba0d92ee1333cb8e1e59ffe7
+	source = https://github.com/cuthbertLab/music21/archive/v5.7.2.tar.gz
+	sha256sums = ba15f82f3a543e538d369b54ef431905f5a446787779529a4e0ba65e60d52159
 
 pkgname = python-music21
 
