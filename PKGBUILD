@@ -1,3 +1,4 @@
+# Maintainer: Soma Zambelly <zambelly dot soma at gmail dot com>
 pkgname=docker-credential-secretservice-bin
 pkgver=0.6.3
 pkgrel=1
