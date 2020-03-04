@@ -3,8 +3,8 @@
 _gemname=one_gadget
 pkgname=$_gemname
 pkgver=1.7.3
-pkgrel=1
-kgdesc=" The best tool for finding one gadget RCE in libc.so.6"
+pkgrel=2
+pkgdesc="The best tool for finding one gadget RCE in libc.so.6"
 arch=(any)
 url='https://github.com/david942j/one_gadget'
 license=(MIT)
