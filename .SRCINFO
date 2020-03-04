@@ -1,6 +1,6 @@
 pkgbase = lammps
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = 20190807
+	pkgver = 20200303
 	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lammps
 	makedepends = cmake
 	depends = fftw
 	depends = openmpi
-	source = lammps-7Aug2019.tar.gz::https://github.com/lammps/lammps/archive/stable_7Aug2019.tar.gz
-	sha512sums = b7ec1dfb57cfdbbcc49e4ef9cae472aeda60e8850501cab211444bb16ee20b7b8906ffaafb4c8ca710d761f0386e9e590a19401cff9f566b496b9f3cb2f71194
+	source = lammps-3Mar2020.tar.gz::https://github.com/lammps/lammps/archive/stable_3Mar2020.tar.gz
+	sha512sums = 6608cd9f6ea18d8acb55d611a560cb4b329043b41aca23fafd91fac0dfbde5a5286e1a6563bd16b2414bb3bf95929e3a2f270a0b023ce5ede515eb3353d56f04
 
 pkgname = lammps
 
