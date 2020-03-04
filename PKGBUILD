@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/stable/linu
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('ada1af412b8a4e57951034ad51e0d289'
+md5sums=('dd2d0fe960b2ec2765b20a32d6a51a59'
          'cf3416572bcd3e3528958f36306e6e7c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
