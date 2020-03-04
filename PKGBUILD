@@ -2,7 +2,7 @@
 
 pkgname=perl-io-interface
 pkgver=1.09
-pkgrel=7
+pkgrel=8
 pkgdesc="Perl extension for access to network card configuration information"
 arch=('i686' 'x86_64')
 url='http://search.cpan.org/perldoc?IO::Interface'
@@ -12,6 +12,7 @@ source=("http://search.cpan.org/CPAN/authors/id/L/LD/LDS/IO-Interface-${pkgver}.
 depends=('glibc')
 makedepends=('perl-module-build')
 md5sums=('806f97aff5a7361b6f54cd494f4cc9fd')
+sha512sums=('a23a4793e23ba0fbb0583c6692d7138e4a9b0a6959c9fa81489954090fa51ca6edfe79841a8f69ab7f7a52aec31a477cb01705f6d66d5c7e8b69f76301360cd5')
 
 build() {
 	cd "$srcdir/IO-Interface-$pkgver"
