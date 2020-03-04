@@ -8,14 +8,14 @@ pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/${pkgname%-git}"
 license=('custom')
-_py_deps=('booleanoperations' 'cu2qu' 'fontparts' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor')
+# Note many of these are actually python-fonttools deps, but [community] package has them marked as optional
+_py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor' 'zopfli')
 depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
-depends_x86_64=('lib32-glibc')
 makedepends=('git' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git+https://github.com/adobe-type-tools/${pkgname%-git}.git")
+conflicts=($provides)
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -30,7 +30,7 @@ prepare () {
 
 build() {
     cd "${pkgname%-git}"
-    python setup.py -q build
+    python setup.py build
 }
 
 check() {
@@ -40,6 +40,6 @@ check() {
 
 package() {
     cd "${pkgname%-git}"
-    python setup.py -q install --root="$pkgdir" --optimize=1
-    install -D -m644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    python setup.py -q install --root="$pkgdir" --optimize=1 --skip-build
+    install -D -m644  -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }

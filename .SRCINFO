@@ -12,17 +12,20 @@ pkgbase = afdko-git
 	depends = python
 	depends = psautohint
 	depends = python-booleanoperations
+	depends = python-brotli
 	depends = python-cu2qu
+	depends = python-fontmath
 	depends = python-fontparts
+	depends = python-fontpens
 	depends = python-lxml
 	depends = python-mutatormath
 	depends = python-ufonormalizer
 	depends = python-ufoprocessor
+	depends = python-zopfli
 	provides = afdko
 	conflicts = afdko
 	source = git+https://github.com/adobe-type-tools/afdko.git
 	sha256sums = SKIP
-	depends_x86_64 = lib32-glibc
 
 pkgname = afdko-git
 
