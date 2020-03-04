@@ -2,7 +2,7 @@
 
 pkgname="gr-framework"
 pkgver="0.47.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A universal framework for cross-platform visualization applications."
 arch=("i686" "x86_64" "armv6h" "armv7h" "aarch64")
 url="https://gr-framework.org"
@@ -14,6 +14,11 @@ makedepends=("cmake")
 optdepends=("ffmpeg: video support")
 source=("https://github.com/sciapp/gr/archive/v${pkgver}.tar.gz")
 sha256sums=("f7390496ee3f4255346535cfcdf2da102a81c035a5931413fa5da1e2141cba09")
+
+prepare() {
+    cd "${srcdir}/gr-${pkgver}" || return
+    echo "${pkgver}" > version.txt
+}
 
 build() {
     cd "${srcdir}/gr-${pkgver}" || return
