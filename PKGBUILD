@@ -1,12 +1,12 @@
 _pkgname=Shell
 pkgname=desq-shell-git
-pkgver=r18.ed9914a
+pkgver=r42.1d4014d
 pkgrel=1
 pkgdesc="The Desktop Shell for Desq"
 arch=('any')
 url="https://gitlab.com/DesQ"
 license=('none')
-depends=('libdesq-git' 'pam')
+depends=('libdesq-git' 'pam' 'qt5-svg')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
