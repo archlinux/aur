@@ -15,7 +15,8 @@ index 8e38d9a..2db4c82 100644
  	$(INSTALL) -m0644 -- *.8 $(DESTDIR)${PREFIX}/share/man/man8/
 -	$(INSTALL) -D -m0755 initramfs/hook	$(DESTDIR)/usr/share/initramfs-tools/hooks/bcache
  	$(INSTALL) -D -m0755 initcpio/install	$(DESTDIR)/usr/lib/initcpio/install/bcache
- 	$(INSTALL) -D -m0755 dracut/module-setup.sh $(DESTDIR)$(DRACUTLIBDIR)/modules.d/90bcache/module-setup.sh
+-	$(INSTALL) -D -m0755 dracut/module-setup.sh $(DESTDIR)$(DRACUTLIBDIR)/modules.d/90bcache/module-setup.sh
++	$(INSTALL) -D -m0755 dracut/module-setup.sh $(DESTDIR)${PREFIX}$(DRACUTLIBDIR)/modules.d/90bcache/module-setup.sh
  #	$(INSTALL) -m0755 bcache-test $(DESTDIR)${PREFIX}/sbin/
  
  clean:

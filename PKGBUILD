@@ -17,7 +17,7 @@ source=("https://github.com/g2p/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.g
         'initcpio-arch.patch')
 sha256sums=('d56923936f37287efc57a46315679102ef2c86cd0be5874590320acd48c1201c'
             '2536e1ea76b32b4ee4543524c64f488ccc0fe037256ce9d5c5029e873161de7e'
-            'a905ac4daa69ced9aa9422c9d7f20f40f6226510998be2a890d105aa22ab60de')
+            '29f0825272e58f092307b6bfa1d472a12e7a8c4e0f8ae8584a4492d7bed3e07d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
