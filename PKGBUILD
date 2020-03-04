@@ -1,4 +1,4 @@
-# Maintainer: Ainola <ainola@archlinux.org>
+# Maintainer: Brett Cornwall <ainola@archlinux.org>
 # Contributor: Andrey Solomatin
 # Contributor: carstene1ns
 # Contributor: Lukas Fleischer
@@ -8,7 +8,7 @@
 # Contributor: Mattias Andrée
 
 pkgname=redshift-wayland-git
-pkgver=1.12.r25.g7da875d
+pkgver=1.12.r25.g39c162c
 pkgrel=1
 pkgdesc='Adjusts the color temperature of your screen according to your surroundings.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=('python-gobject: for redshift-gtk'
             'python-xdg: for redshift-gtk'
             'gtk3: for redshift-gtk')
 makedepends=('intltool' 'python')
-source=(redshift::"git+https://github.com/minus7/redshift.git#branch=wayland")
+source=(redshift::"git+https://github.com/CameronNemo/redshift.git#branch=wlroots-nemo")
 md5sums=('SKIP')
 
 pkgver() {
