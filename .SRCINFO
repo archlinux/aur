@@ -1,0 +1,16 @@
+pkgbase = vapoursynth-plugin-tonemap-git
+	pkgdesc = Plugin for Vapoursynth: tonemap (GIT version)
+	pkgver = r6.5a037ae
+	pkgrel = 1
+	url = https://github.com/ifb/vapoursynth-tonemap
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	provides = vapoursynth-plugin-tonemap
+	conflicts = vapoursynth-plugin-tonemap
+	source = tonemap::git+https://github.com/ifb/vapoursynth-tonemap.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-tonemap-git
+
