@@ -2,12 +2,12 @@
 
 pkgname=supersm
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Super Symlink Manager"
 arch=("any")
 url="https://github.com/peeweep/supersm"
 license=('MIT')
-makedepends=('boost' 'cmake' 'make')
+makedepends=('boost' 'cmake')
 provides=('supersm')
 conflicts=('supersm-git')
 source=("${pkgname}-${pkgver}.tar.gz"::${url}/archive/${pkgver}.tar.gz)

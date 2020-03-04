@@ -1,13 +1,12 @@
 pkgbase = supersm
 	pkgdesc = A Super Symlink Manager
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/peeweep/supersm
 	arch = any
 	license = MIT
 	makedepends = boost
 	makedepends = cmake
-	makedepends = make
 	provides = supersm
 	conflicts = supersm-git
 	source = supersm-0.4.tar.gz::https://github.com/peeweep/supersm/archive/0.4.tar.gz
