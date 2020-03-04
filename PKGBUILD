@@ -2,7 +2,7 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=alpha4.1.r315.g1b058468
+pkgver=alpha4.1.r319.ga0a98071
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
