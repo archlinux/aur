@@ -1,7 +1,7 @@
 # Maintainer: Boris Momčilović <boris.momcilovic@gmail.com>
 
 pkgname=php-decimal-git
-pkgver=v1.3.0.r2.g7fc3af8
+pkgver=v1.3.0.r65.g91b2b21
 pkgrel=1
 pkgdesc="Correctly-rounded, arbitrary precision decimal floating-point arithmetic in PHP 7"
 arch=('i686' 'x86_64')
