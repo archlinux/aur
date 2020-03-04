@@ -3,8 +3,8 @@
 pkgname=gromacs-plumed
 pkgver=2019.4
 _gromacsver=2019.4
-_plumedver=2.5.3
-pkgrel=1
+_plumedver=2.6.0
+pkgrel=2
 pkgdesc='GROMACS is a versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles. (Plumed patched)'
 url='http://www.gromacs.org/'
 license=("LGPL")
@@ -52,13 +52,8 @@ build() {
   make
 }
 
-#check () {
-#  cd ${srcdir}/single
-#  make check
-#}
-
 package() {
-  msg2 "Making the single precision executables"
+  msg2 "Making the single precision mdrun_plumed executable"
   cd ${srcdir}/single
   make DESTDIR=${pkgdir} install
   rm -rf ${pkgdir}/usr/share
