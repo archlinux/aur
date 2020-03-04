@@ -5,26 +5,26 @@ pkgrel=1
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
-license=('custom')
-makedepends=('libelf' 'git' 'cmake' 'clang')
+license=('MIT')
+makedepends=('libelf' 'cmake' 'clang')
 provides=('hip')
 conflicts=('hip')
-_dir="HIP-roc-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ROCm-Developer-Tools/HIP/archive/roc-${pkgver}.tar.gz")
+source=("https://github.com/ROCm-Developer-Tools/HIP/archive/roc-$pkgver.tar.gz")
 sha256sums=('3e7b7ef508f4c0d34756104936bc25eaffe419415013c93da72244aac199ae91')
 
 build() {
-  mkdir -p "${_dir}/build"
-  cd "${_dir}/build"
+  mkdir -p "$srcdir/build"
+  cd "$srcdir/build"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
-        ..
+        -DHIP_COMPILER=clang \
+        "$srcdir/HIP-roc-$pkgver"
   make
 }
 
 package() {
-  cd "${_dir}/build"
+  cd "$srcdir/build"
 
   make DESTDIR="$pkgdir" install
 
