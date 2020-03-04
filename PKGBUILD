@@ -2,8 +2,8 @@
 
 pkgname=perl-xs-object-magic
 _cpanname=XS-Object-Magic
-pkgver=0.04
-pkgrel=13
+pkgver=0.05
+pkgrel=1
 pkgdesc="Opaque, extensible XS pointer backed objects using sv_magic"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
@@ -11,7 +11,9 @@ license=('PerlArtistic')
 options=('!emptydirs')
 makedepends=('perl-extutils-depends' 'perl-module-install')
 source=("http://cpan.metacpan.org/authors/id/F/FL/FLORA/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('ce2e38addab1c7e541ca842019cba4a4')
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/${_cpanname}-${pkgver}.tar.gz")
+md5sums=('762eacb3d6ab1227cc8711cb6369fd79')
+sha512sums=('8927ab903f95d4f14a1602b3b4040dc9351f3348249a37e93dbf5cc2417bbde3b5c9a7512436e58b6a16fa48f6f4b55a300951560971d457814e8ef5044e6469')
 
 build() {
   cd  "$srcdir/$_cpanname-$pkgver"
