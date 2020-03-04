@@ -3,7 +3,7 @@
 
 pkgbase=linux-sfh
 pkgver=5.5.7.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -18,7 +18,10 @@ options=('!strip')
 _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://git.archlinux.org/linux.git?signed#tag=$_srctag"
-  "amd-sfh-v4.patch::https://patchwork.kernel.org/series/248043/mbox/"
+  #"amd-sfh-v4.1.patch::https://patchwork.kernel.org/patch/11407741/raw/" # Formatting is currently broken
+  "amd-sfh-v4.2.patch::https://patchwork.kernel.org/patch/11407747/raw/"
+  "amd-sfh-v4.3.patch::https://patchwork.kernel.org/patch/11407749/raw/"
+  "amd-sfh-v4.4.patch::https://patchwork.kernel.org/patch/11407753/raw/"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -27,7 +30,9 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '5c471a82d01b6ada8c1250607cdb0166141ac3524dbec0a246ec1cf0bc888798'
+            '0ebe2bd3ef3a61827551fe08914b1a0ecc1416362390c2396843a9861d9077f5'
+            '88b95a3d8d4ea1a994bb00ec8e00064d3b3b4924cd2149396793aeba05072ab4'
+            '885e81ac84179117aa1d1ade566f91e19424c0475136b770bfc39c98c83bb945'
             '17467a88c2f624586ac9038c8ac347420e79af72617268709534613bc6b83232')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -50,9 +55,6 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
-
-  # Remove malformed SFH documentation.
-  rm -f Documentation/hid/amd-sfh-hid.rst
 
   echo "Setting config..."
   cp ../config .config
