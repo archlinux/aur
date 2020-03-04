@@ -1,0 +1,17 @@
+pkgbase = terracognita-git
+	pkgdesc = Reads from existing Cloud Providers (reverse Terraform) and generates your infrastructure as code on Terraform configuration
+	pkgver = v0.3.0.r27.gdfc5a99
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/cycloidio/terracognita
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go>=2:1.11
+	provides = terracognita
+	conflicts = terracognita
+	source = terracognita-git::git+https://github.com/cycloidio/terracognita.git
+	md5sums = SKIP
+
+pkgname = terracognita-git
+
