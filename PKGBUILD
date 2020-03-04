@@ -1,4 +1,5 @@
-# Maintainer:  Chris Severance aur.severach AatT spamgourmet.com
+# Maintainer: Chris Severance aur.severach AatT spamgourmet.com
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Alexander Kurilo <alex@kurilo.me>
 # Contributor: Mariusz Szczepańczyk <mszczepanczyk@gmail.com>
 # Contributor: Thor K. H. <thor alfakrøll roht dott no>
