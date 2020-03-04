@@ -1,7 +1,7 @@
 pkgbase = spotify-qt
 	pkgdesc = Lightweight Spotify client using Qt
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kraxarn/spotify-qt
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = spotify-qt
 	makedepends = gcc
 	makedepends = make
 	depends = qt5-base
+	depends = qt5-svg
 	source = https://github.com/kraxarn/spotify-qt/archive/v0.12.tar.gz
 	sha256sums = 0c99a7301b10386feeeb1b1c742b0028f0fa3433d9fb6865e55792961ad2dedb
 
