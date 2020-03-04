@@ -3,11 +3,11 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=r379.2b49871
+pkgver=r514.db22e83
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
-url="https://github.com/evilsocket/opensnitch"
+url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
 makedepends=('git' 'dep' 'go-pie' 'python-setuptools')
 depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
@@ -15,7 +15,7 @@ depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
          'python-libconfigparser')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/evilsocket/opensnitch.git')
+source=('git+https://github.com/gustavo-iniguez-goya/opensnitch.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,12 +24,12 @@ pkgver() {
 }
 
 prepare() {
-        mkdir -p gopath/src/github.com/evilsocket
+        mkdir -p gopath/src/github.com/gustavo-iniguez-goya
         ln -rTsf "$srcdir/${pkgname%-git}" \
-                "gopath/src/github.com/evilsocket/${pkgname%-git}"
+                "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}"
         export GOPATH="$srcdir"/gopath
 
-        cd "gopath/src/github.com/evilsocket/${pkgname%-git}/daemon"
+        cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
         dep ensure
 
         cd "$srcdir/${pkgname%-git}"
@@ -39,7 +39,7 @@ prepare() {
 build() {
         export GOPATH="$srcdir"/gopath
 
-        cd "gopath/src/github.com/evilsocket/${pkgname%-git}/daemon"
+        cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
         go build \
         -trimpath \
         -ldflags "-extldflags $LDFLAGS" \
