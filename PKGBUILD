@@ -1,5 +1,5 @@
-# Maintainer: TankMissile <alecfeldman at disroot dot org>
-# Contributor: ahrs <forward dot to at hotmail dot co dot uk>
+# Maintainer: TankMissile <alecfeldman@disroot.org>
+# Contributor: ahrs <forward.to@hotmail.co.uk>
 
 _pkgname="python-pulse-control-git"
 _pkgname2="python2-pulse-control-git"
