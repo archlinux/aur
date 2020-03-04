@@ -1,5 +1,5 @@
 pkgdesc="ROS - image_pipeline fills the gap between getting raw images from a camera driver and higher-level vision processing."
-url='https://www.wiki.ros.org/image_pipeline'
+url='https://wiki.ros.org/image_pipeline'
 
 pkgname='ros-melodic-image-pipeline'
 pkgver='1.14.0'
