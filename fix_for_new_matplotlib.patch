@@ -1,4 +1,3 @@
-diff -ura a/pyspeckit/spectrum/fitters.py b/pyspeckit/spectrum/fitters.py
 --- a/pyspeckit/spectrum/fitters.py	2018-07-12 23:37:07.000000000 +0800
 +++ b/pyspeckit/spectrum/fitters.py	2019-06-09 14:36:20.587282658 +0800
 @@ -1367,7 +1367,7 @@
