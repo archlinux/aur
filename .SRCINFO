@@ -1,6 +1,6 @@
 pkgbase = afdko-git
 	pkgdesc = Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files
-	pkgver = 3.0.2a5.r47.323bebca
+	pkgver = 3.2.0.r23.gbbedb0e
 	pkgrel = 1
 	url = https://github.com/adobe-type-tools/afdko
 	arch = x86_64

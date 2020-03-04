@@ -2,7 +2,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko-git
-pkgver=3.0.2a5.r47.323bebca
+pkgver=3.2.0.r23.gbbedb0e
 pkgrel=1
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('x86_64')
@@ -20,7 +20,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+    # Upstream develop branch doesn't reparent to master with tags :(
+    git tag -f 3.2.0 7fe7398 2>&1 >/dev/null ||:
+    git describe --tags --abbrev=7 --match="[0-9]*" HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare () {
