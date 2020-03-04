@@ -1,20 +1,19 @@
 # Maintainer: ple <ple21108@gmail.com>
 # Contributor: Atte Virtanen <aten.email@gmail.com>
 pkgname=vrk-mpollux-digisign-client
-pkgver=4.0.20e_7247
+pkgver=4.1.0_7399
 pkgrel=1
 epoch=1
 pkgdesc="Client program for Finnish chip ID cards"
 arch=('x86_64')
-url="https://vrk.fi/linux-versiot"
+url="https://dvv.fi/linux-versiot"
 license=('custom')
-depends=('pcsclite' 'qt4')
+depends=('pcsclite' 'qt5-base')
 
-_eevertti_id='15399194'
-_uuid='179590f0-398c-5785-7115-d71566eb4848'
-source_x86_64=("https://vrk.fi/documents/2252790/$_eevertti_id/Ubuntu_16.04.3_LTS_mpollux-digisign-client-for-vrk_${pkgver//_/-}_amd64.deb/$_uuid")
+_eevertti_id='17632618'
+source_x86_64=("https://dvv.fi/documents/16079645/$_eevertti_id/Ubuntu_16.04.3_LTS_mpollux-digisign-client-for-vrk_${pkgver//_/-}_amd64.deb")
 
-sha256sums_x86_64=('3b98c486075f55c70dbaac5b603919e336f85dcd1e652f3e6d5fd9ca807b4806')
+sha256sums_x86_64=('3df24a1cd9515987c6a480b9928710c08b666b0ec2dbe1b4603091b9159bb34d')
 
 package() {
 	tar xvfJ data.tar.xz -C "$pkgdir/"
@@ -23,5 +22,4 @@ package() {
 	mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 	mv "$pkgdir/usr/share/doc/mpollux-digisign-client-for-vrk" "$pkgdir/usr/share/doc/$pkgname"
 	install -Dt "$pkgdir/usr/share/licenses/$pkgname/" "$pkgdir/usr/share/doc/$pkgname/"{copyright,Legal_Notice_*.html}
-
 }
