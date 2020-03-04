@@ -1,8 +1,8 @@
-# Maintainer: Martin Diehl <m.diehl@mpie.de>
+# Maintainer: Martin Diehl <https://martin-diehl.net>
 pkgname=dream3d
 pkgver=6.5.137
-pkgrel=1
-pkgdesc='analysis tool for microstructure data'
+pkgrel=2
+pkgdesc='Analysis tool for microstructure data'
 arch=('x86_64')
 license=('custom: DREAM.3D License')
 depends=('libpng12')
