@@ -1,17 +1,14 @@
 pkgbase = rocm-profiler
 	pkgdesc = ROC profiler library. Profiling with perf-counters and derived metrics for GFX8/GFX9.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/rocprofiler
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = ninja
-	depends = rocr-runtime>=3.0.0
-	source = https://github.com/ROCm-Developer-Tools/rocprofiler/archive/roc-3.0.0.tar.gz
-	sha256sums = SKIP
+	depends = rocr-runtime>=3.1.0
+	source = https://github.com/ROCm-Developer-Tools/rocprofiler/archive/roc-3.1.0.tar.gz
+	sha256sums = 5157d975563e04a207615811c611ee67253a1e02f2be2ecc369dc7dcfff60750
 
 pkgname = rocm-profiler
 
