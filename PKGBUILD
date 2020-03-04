@@ -8,8 +8,8 @@ arch=('any')
 url="https://www.simutrans.com/"
 license=('CC-BY-NC-SA 4.0')
 depends=('simutrans-extended')
-source=(https://github.com/Phystam/pak256-release/archive/2.0.1.0.zip)
-sha256sums=('c79d2e3c80eb59fda1c5c4007a721953b62a483d1a45dd91870d3ae26243fdf9')
+source=(https://github.com/Phystam/pak256-release/archive/2.0.2.2.zip)
+sha256sums=('e1cc46d356cede377956e93a66ec070a1e9b45b701db6bf188ad4ffeeb47d9d3')
 
 package() {
   #data
