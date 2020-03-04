@@ -2,8 +2,8 @@
 # Contributor: TBK <aur@jjtc.eu>
 
 pkgname=termius-beta
-pkgver=5.5,1
-pkgrel=1
+pkgver=5.5.2
+pkgrel=2
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
 arch=('x86_64')
