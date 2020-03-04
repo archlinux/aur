@@ -3,7 +3,7 @@
 pkgname=perl-x11-xcb
 _cpanname=X11-XCB
 pkgver=0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl bindings for libxcb"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
@@ -17,6 +17,7 @@ checkdepends=('perl-test-more' 'perl-test-deep' 'perl-test-exception')
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/${_cpanname}-${pkgver}.tar.gz")
 md5sums=('9cbd5f2ac12b62e649881f6282a93786')
+sha512sums=('eeecd8fbf080a6ca2f28b8fe4b64c97339f27b27c9c70d1a8e7c0f56af193243295aa1fc65039d24c81396126befc27ca114ca4cd1641139a788c46fe600f3ba')
 
 build() {
   cd ${_cpanname}-${pkgver}
