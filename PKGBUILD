@@ -11,7 +11,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-pkgver=r2066.cc850163
+pkgver=r2093.5451d287
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
@@ -30,6 +30,5 @@ sha256sums=('SKIP')
 package() {
   install -d "$pkgdir/usr/share/php/$_pkgname/" "$pkgdir/usr/bin/"
   cp -a $_pkgname/* "$pkgdir/usr/share/php/$_pkgname/"
-  install -Dm644 "$_pkgname/resources/shell/bash-completion" "$pkgdir/usr/share/bash-completion/completions/arc"
   ln -s "../share/php/$_pkgname/bin/arc" "$pkgdir/usr/bin/arc"
 }
