@@ -2,23 +2,22 @@
 # Contributor: csicar
 
 pkgname=fx_cast
-pkgver=0.0.5
-pkgrel=2
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Implementation of the Chrome Sender API (Chromecast) within Firefox"
 arch=('x86_64')
 url="https://hensm.github.io/fx_cast/"
 license=('MIT')
-depends=('nodejs')
 makedepends=('npm')
 conflicts=('fx_cast-bin')
 options=('!strip')
 source=("https://github.com/hensm/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5636939846247bee0c7c14689a2daed717ac700f72d85e71ae152a5e44543ea4')
+sha256sums=('b7044abfd46f9ccbe2a0a79632d5e0e10154a0cd23e4712f97efe58013dd7cdc')
 
 build() {
 	cd "${pkgname}-${pkgver}"
 
-	npm install
+	npm install --cache "${srcdir}/npm-cache"
 	npm run build:app
 	sed -i 's#"path":.*$#"path": "/usr/bin/fx_cast_bridge"#' dist/app/fx_cast_bridge.json
 }
