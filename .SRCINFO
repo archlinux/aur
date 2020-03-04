@@ -3,7 +3,6 @@ pkgbase = grub-hook
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Pacman#Hooks
-	install = grub-hook.install
 	arch = any
 	license = GPL
 	depends = grub

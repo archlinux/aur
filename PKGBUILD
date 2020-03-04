@@ -8,7 +8,6 @@ arch=('any')
 url="https://wiki.archlinux.org/index.php/Pacman#Hooks"
 license=('GPL')
 depends=('grub')
-install=${pkgname}.install
 source=(grub.hook)
 sha512sums=('7619f00afda5d061130d87ceb6f44196131a40d077a22ee67176098e7c1bcab2bec6732c6ed6b45d2f7bc29033fbbab8139521550b47595311ff7f6049073ce3')
 
