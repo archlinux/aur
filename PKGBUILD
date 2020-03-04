@@ -1,5 +1,5 @@
-# Maintainer: TankMissile <alecfeldman at disroot dot org>
-# Contributor: portaloffreedom <matteo dot dek at gmail dot com>
+# Maintainer: TankMissile <alecfeldman@disroot.org>
+# Contributor: portaloffreedom <matteo.dek@gmail.com>
 
 _pkgsrcname="pulsectl"
 _pkgname="python-pulse-control"
