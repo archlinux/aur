@@ -1,7 +1,7 @@
 pkgbase = blender-2.7-bin
 	pkgdesc = A fully integrated 3D graphics creation suite (2.7 branch)
 	pkgver = 2.79.190729.e045fe53f1b0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blender.org
 	arch = i686
 	arch = x86_64

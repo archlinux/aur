@@ -2,7 +2,7 @@
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-2.7-bin
 pkgver=2.79.190729.e045fe53f1b0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fully integrated 3D graphics creation suite (2.7 branch)"
 arch=('i686' 'x86_64')
 url="https://www.blender.org"
@@ -52,8 +52,8 @@ Exec=blender-2.7-thumbnailer.py %u %o
 MimeType=application/x-blender;
 ' > blender.thumbnailer
 	sed -i '1s;^;#!/usr/share/blender/'"$_upstreamversion"'/python/bin/python3.7m\n;' blender-thumbnailer.py
-	echo -e '#!/bin/bash\nexec /usr/share/blender/blender-2.7 $@' > blender-2.7
-	echo -e '#!/bin/bash\nexec /usr/share/blender/blender-2.7-softwaregl $@' > blender-2.7-softwaregl
+	echo -e '#!/bin/bash\nexec /usr/share/blender/blender-2.7 "$@"' > blender-2.7
+	echo -e '#!/bin/bash\nexec /usr/share/blender/blender-2.7-softwaregl "$@"' > blender-2.7-softwaregl
 }
 
 package() {
