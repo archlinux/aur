@@ -1,5 +1,5 @@
-pkgbase = qt4pas-git
-	pkgdesc = Free Pascal Qt4 Binding Library, working in 2020
+pkgbase = qt4pas-mirror
+	pkgdesc = Free Pascal Qt4 Binding Library, with sources picked from a mirror
 	pkgver = 2.5
 	pkgrel = 8
 	arch = x86_64
@@ -12,5 +12,5 @@ pkgbase = qt4pas-git
 	sha256sums = SKIP
 	sha256sums = af1721fbf6706931d0b82dd28b3540f56a65e1585b75873c4ac9eaddecf9c921
 
-pkgname = qt4pas-git
+pkgname = qt4pas-mirror
 

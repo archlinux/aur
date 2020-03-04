@@ -2,11 +2,11 @@
 # Contributor: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
 # Contributor: Fabien Wang <fabien(dot)wang(at)gmail(dot)com>
 
-pkgname=qt4pas-git
+pkgname=qt4pas-mirror
 pkbase=qt4pas
 pkgver=2.5
 pkgrel=8
-pkgdesc="Free Pascal Qt4 Binding Library, working in 2020"
+pkgdesc="Free Pascal Qt4 Binding Library, with sources picked from a mirror"
 arch=('x86_64')
 license=('LGPL')
 depends=('qt4' 'xdg-utils')
