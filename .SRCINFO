@@ -1,6 +1,6 @@
 pkgbase = qgroundcontrol-bin
 	pkgdesc = Ground control for unmanned vehicles.
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = http://qgroundcontrol.org/
 	arch = x86_64
@@ -29,8 +29,8 @@ pkgbase = qgroundcontrol-bin
 	depends = xz
 	depends = zlib
 	depends = icu
-	source = qgroundcontrol-4.0.0-1.tar.bz2::https://github.com/mavlink/qgroundcontrol/releases/download/v4.0.0/qgroundcontrol.tar.bz2
-	sha256sums = ed9c0f969b00edc4b20a15a8688627efe5c33ec916fa5034e8553e3bb1669956
+	source = qgroundcontrol-4.0.1-1.tar.bz2::https://github.com/mavlink/qgroundcontrol/releases/download/v4.0.1/qgroundcontrol.tar.bz2
+	sha256sums = d9a1ed67213a74b2569d32f4002fa9fa7e67757a5ed328cd3cac165bc1d1df9a
 
 pkgname = qgroundcontrol-bin
 
