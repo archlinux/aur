@@ -1,7 +1,7 @@
 # Originator: wagnerflo <florian@wagner-flo.net>
 # Maintainer: Matt Frichtl <frichtlm@gmail.com>
 _cranname=plyr
-_cranver=1.8.5
+_cranver=1.8.6
 pkgname=r-$_cranname
 pkgver=${_cranver}
 pkgrel=1
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('r>=3.1.0' 'r-rcpp>=0.11.0')
 source=("http://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('f06cb24b1d0e87e914b94a2de0fccc60')
+md5sums=('2f4b1a4d42e0b6e4d18918c703eb1926')
 
 build() {
     cd "${srcdir}"
