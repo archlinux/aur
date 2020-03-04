@@ -1,6 +1,6 @@
 pkgname=ruri
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A CRC32 checker with file name checking."
 arch=(any)
 url="https://gitlab.com/Timmy1e/ruri"
