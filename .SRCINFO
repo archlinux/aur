@@ -4,11 +4,8 @@ pkgbase = hipsparse
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/hipSPARSE
 	arch = x86_64
-	license = NCSAOSL
-	makedepends = git
+	license = custom:NCSAOSL
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = ninja
 	makedepends = hcc>=3.0.0
 	makedepends = hip>=3.0.0
 	makedepends = python2
@@ -21,7 +18,7 @@ pkgbase = hipsparse
 	source = https://github.com/ROCmSoftwarePlatform/hipSPARSE/archive/rocm-3.0.tar.gz
 	source = hipsparse_hsa.patch
 	sha256sums = 389de1d151436acdaa89c33530e7b86f6c4dc4aecbf3466131ec0972d8d1c33e
-	sha256sums = SKIP
+	sha256sums = d3a926958b84c660f273d6b3a644e8a775e9ed779a7d81baa8f4c4981cee076b
 
 pkgname = hipsparse
 
