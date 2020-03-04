@@ -1,14 +1,14 @@
 pkgbase = nextdns
 	pkgdesc = NextDNS DNS-over-HTTPS client
-	pkgver = 1.4.32
+	pkgver = 1.4.34
 	pkgrel = 1
 	url = https://github.com/nextdns/nextdns
 	install = nextdns.install
 	arch = x86_64
 	license = MIT
 	makedepends = go-pie
-	source = https://github.com/nextdns/nextdns/archive/v1.4.32.tar.gz
-	sha256sums = ae99dc1b2e1f6326c9350b8706e93d7172427ebacf6d779886897e6d955ac5a3
+	source = https://github.com/nextdns/nextdns/archive/v1.4.34.tar.gz
+	sha256sums = 2101ab63df607843528533860e4b7865a9d13bf45c609833764e026e95d80201
 
 pkgname = nextdns
 
