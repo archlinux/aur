@@ -5,23 +5,23 @@
 
 pkgname=gdrivefs-git
 _gitname=GDriveFS
-pkgver=0.14.12.r17.ge6d9028
+pkgver=0.14.12.r21.gc504de1
 pkgrel=1
 pkgdesc='A complete FUSE adapter for Google Drive'
 url='https://github.com/dsoprea/GDriveFS'
 depends=(
-  'python2'
-  'python2-dateutil'
-  'python2-fusepy'
-  'python2-gevent'
-  'python2-google-api-python-client'
-  'python2-greenlet'
-  'python2-httplib2'
-  'python2-oauth2client'
-  'python2-six'
-  'python2-wsgiref'
+  'python'
+  'python-google-api-python-client'
+  'python-six'
+  'python-fusepy'
+  'python-greenlet'
+  'python-httplib2'
+  'python-dateutil'
+  'python-oauth2client'
 )
-makedepends=('python2-distribute')
+makedepends=(
+  'python-setuptools'
+)
 license=('GPL2')
 arch=('any')
 source=("git://github.com/dsoprea/${_gitname}")
@@ -34,12 +34,12 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "${_gitname}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 # vim:set ft=sh ts=2 sw=2 et:
