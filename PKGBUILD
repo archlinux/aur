@@ -3,15 +3,22 @@
 pkgname=perl-alpm
 _cpanname=ALPM
 pkgver=3.06
-pkgrel=11
+pkgrel=12
 pkgdesc='ArchLinux Package Manager backend library.'
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0' 'pacman')
 url="https://metacpan.org/release/$_cpanname"
-source=("https://cpan.metacpan.org/authors/id/A/AP/APG/$_cpanname-$pkgver.tar.gz")
-md5sums=('6463afd95e292f3a9040e2c722663f05')
+source=("https://cpan.metacpan.org/authors/id/A/AP/APG/$_cpanname-$pkgver.tar.gz"
+	"pacman521.patch")
+sha512sums=('9a32f251775a1214b756f6de09eaec5b3aa9c2b7c349f5d9ef4bc1040053e8102a8017a45bc6071d39d0ecca67ab708cfb6232f18e64658327e7662d2cf9c0ee'
+            'a79aee079f50128103e7e42186ff10a112212139bbd0af988c6f52438b9c68d116fbe3fb3adb080a7dce924b6c969afaddf1d40117505953ad787ece98a2e952')
+
+prepare() {
+  cd $_cpanname-$pkgver
+  patch -Np1 -b -z .orig -i ../pacman521.patch
+}
 
 build() (
   cd $_cpanname-$pkgver

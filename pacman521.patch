@@ -1,0 +1,88 @@
+diff -up ALPM-3.06/lib/ALPM/Conf.pm.orig ALPM-3.06/lib/ALPM/Conf.pm
+--- ALPM-3.06/lib/ALPM/Conf.pm.orig	2015-06-12 01:42:44.000000000 -0600
++++ ALPM-3.06/lib/ALPM/Conf.pm	2020-03-04 02:16:18.390000000 -0700
+@@ -111,7 +111,6 @@ my %CFGOPTS = (
+ 	'GPGDir' => 'gpgdir',
+ 	'LogFile' => 'logfile',
+ 	'UseSyslog' => 'usesyslog',
+-	'UseDelta' => 'usedelta',
+ 	'CheckSpace' => 'checkspace',
+ 	'IgnorePkg' => 'ignorepkgs',
+ 	'IgnoreGroup' => 'ignoregrps',
+diff -up ALPM-3.06/lib/ALPM/Package.pod.orig ALPM-3.06/lib/ALPM/Package.pod
+--- ALPM-3.06/lib/ALPM/Package.pod.orig	2015-07-08 03:01:21.000000000 -0600
++++ ALPM-3.06/lib/ALPM/Package.pod	2020-03-04 02:16:28.510000000 -0700
+@@ -81,8 +81,6 @@ anyways.
+ 
+ =item * provides
+ 
+-=item * deltas
+-
+ =item * replaces
+ 
+ =item * files
+diff -up ALPM-3.06/lib/ALPM.pod.orig ALPM-3.06/lib/ALPM.pod
+--- ALPM-3.06/lib/ALPM.pod.orig	2015-07-08 03:01:21.000000000 -0600
++++ ALPM-3.06/lib/ALPM.pod	2020-03-04 02:16:37.200000000 -0700
+@@ -377,8 +377,6 @@ a dependency.  The accessor returns a li
+ 
+ =item B<usesyslog> - if true, log to the system log as well
+ 
+-=item B<deltaratio> - accepts a decimal from 0 to 1
+-
+ =item B<checkspace> - check for available diskspace
+ 
+ =item B<defsiglvl> - the default signature level. See L</Signature Level>.
+diff -up ALPM-3.06/t/00-ALPM.t.orig ALPM-3.06/t/00-ALPM.t
+--- ALPM-3.06/t/00-ALPM.t.orig	2015-03-14 08:26:04.000000000 -0600
++++ ALPM-3.06/t/00-ALPM.t	2020-03-04 02:15:35.830000000 -0700
+@@ -35,7 +35,6 @@ ok $alpm->version; # just checks it work
+ 	'ignorepkgs' => [ 'baz' ],
+ 	'ignoregroups' => [ 'core' ],
+ 	'usesyslog' => 0,
+-	'deltaratio' => 0.5,
+ 	'checkspace' => 1,
+ );
+ 
+diff -up ALPM-3.06/t/03-Package.t.orig ALPM-3.06/t/03-Package.t
+--- ALPM-3.06/t/03-Package.t.orig	2015-03-14 08:26:04.000000000 -0600
++++ ALPM-3.06/t/03-Package.t	2020-03-04 02:15:52.490000000 -0700
+@@ -29,7 +29,7 @@ my @methnames = qw{ requiredby name vers
+                     url builddate installdate packager
+                     arch arch size isize reason
+                     licenses groups depends optdepends
+-                    conflicts provides deltas replaces
++                    conflicts provides replaces
+                     files backup };
+ 
+ for my $mname (@methnames) {
+diff -up ALPM-3.06/xs/Options.xs.orig ALPM-3.06/xs/Options.xs
+--- ALPM-3.06/xs/Options.xs.orig	2015-07-08 03:01:21.000000000 -0600
++++ ALPM-3.06/xs/Options.xs	2020-03-04 02:15:06.400000000 -0700
+@@ -238,15 +238,6 @@ INTERFACE:
+ 	alpm_option_set_usesyslog
+ 	alpm_option_set_checkspace
+ 
+-double
+-alpm_option_get_deltaratio(self)
+-	ALPM_Handle self
+-
+-SetOption
+-alpm_option_set_deltaratio(self, ratio)
+-	ALPM_Handle self
+-	double ratio
+-
+ SetOption
+ alpm_option_add_assumeinstalled(self, dep)
+ 	 ALPM_Handle self
+diff -up ALPM-3.06/xs/Package.xs.orig ALPM-3.06/xs/Package.xs
+--- ALPM-3.06/xs/Package.xs.orig	2015-06-10 09:17:33.000000000 -0600
++++ ALPM-3.06/xs/Package.xs	2020-03-04 02:15:19.700000000 -0700
+@@ -104,7 +104,6 @@ INTERFACE:
+ 	alpm_pkg_get_optdepends
+ 	alpm_pkg_get_conflicts
+ 	alpm_pkg_get_provides
+-	alpm_pkg_get_deltas
+ 	alpm_pkg_get_replaces
+ 	alpm_pkg_get_backup
+ 
