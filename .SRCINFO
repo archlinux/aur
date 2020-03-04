@@ -1,21 +1,18 @@
 pkgbase = rocsparse
 	pkgdesc = Next generation SPARSE implementation for ROCm platform.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/ROCmSoftwarePlatform/rocSPARSE
 	arch = x86_64
-	license = NCSAOSL
-	makedepends = git
+	license = custom:NCSAOSL
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = ninja
 	makedepends = hcc
 	makedepends = python2
 	makedepends = rocminfo
 	depends = hcc
 	depends = hip
-	source = https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-3.0.tar.gz
-	sha256sums = 4a982f40733052b4c07b77f8e6fa494abd878be11041fe6b75ab702a58887ba6
+	source = https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-3.1.tar.gz
+	sha256sums = a180765be1e381570d6720b1ea452c71aa21a77bbcb907504d38c9ba2bbf5210
 
 pkgname = rocsparse
 
