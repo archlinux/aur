@@ -1,55 +1,44 @@
-#Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Lubosz <lubosz at gmail dot com>
 pkgname=planner-git
-pkgver=20110408
+pkgver=0.14.6.r159.d8906b1
 pkgrel=1
-pkgdesc="Project management application"
-arch=(i686 x86_64)
-url="http://live.gnome.org/Planner/"
+pkgdesc="A project management tool for planning, scheduling and tracking projects."
+arch=('i686' 'x86_64')
+url="https://wiki.gnome.org/Apps/Planner"
 license=('GPL')
-depends=('gtk-doc' 'libgnomecanvas' 'libgnomeui' 'pygobject-git')
-makedepends=('git' 'gnome-common' 'intltool')
-conflicts=('planner')
-provides=('planner')
-options=(makeflags !emptydirs)
-_gitroot="git://git.gnome.org/planner"
-_gitname="planner"
-install=planner-git.install
+depends=('libgnomecanvas' 'gnome-vfs' 'libxslt' 'pygtk')
+makedepends=('git' 'gnome-common' 'rarian')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=('git+https://gitlab.gnome.org/GNOME/planner.git')
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long | sed 's/^PLANNER_//;s/\([^-]*-\)g/r\1/;s/_/./;s/_/./;s/-/./g'
+}
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+	sed -i 's/python/python2/g' tests/python/task-test.py
+}
 
 build() {
-  cd ${srcdir}/
-    
-    msg "Connecting to the GNOME GIT server...."
-    if [[ -d ${srcdir}/${_gitname} ]] ; then
-    	cd ${_gitname}
-    	git pull origin
-    	msg "The local files are updated..."
-    else
-    	git clone ${_gitroot}
-    fi
-    
-    msg "GIT checkout done."
+	cd "$srcdir/${pkgname%-git}"
+	export PYTHON=/usr/bin/python2
+	export CFLAGS=-Wno-error
 
-    msg "Starting make for: ${pkgname}"
-    
-    if [[ -d ${srcdir}/${_gitname}-build ]]; then
-       msg "Cleaning the previous build directory..." 
-       rm -rf ${srcdir}/${_gitname}-build
-    fi
-
-    git clone ${srcdir}/${_gitname} ${srcdir}/${_gitname}-build
-    
-    cd ${srcdir}/${_gitname}-build
-    sed -i -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" tests/python/task-test.py
-    msg "Starting build"
-    export PYTHON=/usr/bin/python2
-    export CFLAGS=-Wno-error
-   ./autogen.sh --disable-update-mimedb --prefix=/usr || return 1
-   make || return 1
+	./autogen.sh --prefix=/usr --disable-update-mimedb
+	./configure
+	make prefix=/usr
 }
 
 package() {
-  cd ${srcdir}/${_gitname}-build
-  make DESTDIR="${pkgdir}" install || return 1
-  msg "Updating mime database...."
+	cd "$srcdir/${pkgname%-git}"
+	make DESTDIR="$pkgdir/" prefix=/usr install
+
+	# Remove conflicting files
+	cd "$pkgdir/usr/share/mime"
+	find . -maxdepth 1 -type f -exec rm "{}" \;
 }
