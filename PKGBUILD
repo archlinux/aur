@@ -2,13 +2,13 @@
 
 pkgname=wyrmsun
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
 url="http://andrettin.github.io/"
 license=('GPL' 'CC-BY-SA')
-depends=('sdl' 'tolua++')
-makedepends=('cmake')
+depends=('sdl' 'tolua++' 'libvorbis')
+makedepends=('cmake' 'boost')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz" 
         "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz"
         "oaml-1.0.tar.gz::https://github.com/marcelofg55/oaml/archive/v1.0.tar.gz")
