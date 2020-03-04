@@ -1,6 +1,6 @@
 pkgbase = r-nlme
 	pkgdesc = Linear and Nonlinear Mixed Effects Models
-	pkgver = 3.1.144
+	pkgver = 3.1.145
 	pkgrel = 1
 	url = https://cran.r-project.org/package=nlme
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = r-nlme
 	makedepends = gcc
 	depends = r>=3.4.0
 	optdepends = r-hmisc
-	source = https://cran.r-project.org/src/contrib/nlme_3.1-144.tar.gz
-	md5sums = 1438f6b71c9aa06d8208992a2cfe27b9
+	source = https://cran.r-project.org/src/contrib/nlme_3.1-145.tar.gz
+	md5sums = 1abeaac975f02d12e3b76d2ff192c679
 
 pkgname = r-nlme
 
