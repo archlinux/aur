@@ -5,9 +5,7 @@ pkgbase = rocm-cmake
 	url = https://github.com/RadeonOpenCompute/rocm-cmake
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cmake
-	conflicts = rocm-cmake-git
 	source = https://github.com/RadeonOpenCompute/rocm-cmake/archive/roc-3.0.0.tar.gz
 	sha256sums = 9393fd534a100e8da55f44d0625337d76f3c7890e0297fe690c9e7d384b205ef
 
