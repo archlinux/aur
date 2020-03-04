@@ -18,7 +18,8 @@ conflicts=(sysprof)
 
 pkgver() {
   cd $_pkgname
-  git describe --abbrev=0
+  ver=$(git describe --abbrev=0)
+  echo ${ver#"sysprof-"}
 }
 
 prepare() {
@@ -27,7 +28,7 @@ prepare() {
 
 build() {
   cd $_pkgname
-  git checkout tags/$pkgver
+  git checkout tags/sysprof-$pkgver
   cd ..
   CFLAGS+=" -ffat-lto-objects"
 
