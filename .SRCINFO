@@ -1,14 +1,14 @@
 pkgbase = python-leather
-	pkgdesc = Python charting for 80% of humans.
+	pkgdesc = Python charting for 80% of humans
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://leather.readthedocs.io/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
 	depends = python-six
-	source = https://github.com/wireservice/leather/archive/0.3.3.tar.gz
+	source = leather-0.3.3.tar.gz::https://github.com/wireservice/leather/archive/0.3.3.tar.gz
 	sha256sums = 70f621f7c5ddac6bc3261850134c0187cb200844243eb878a29f8a8f15a8db46
 
 pkgname = python-leather
