@@ -2,7 +2,7 @@
 pkgname=gaiasky
 pkgver=2.2.5.af37ad3be
 pkgrel=1
-epoch=
+epoch=2
 pkgdesc="Interactive 3D Universe software focused on ESA's Gaia mission"
 arch=(x86_64)
 url="https://zah.uni-heidelberg.de/gaia/outreach/gaiasky"
