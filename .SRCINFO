@@ -1,26 +1,26 @@
 pkgbase = csvkit
-	pkgdesc = A suite of utilities for converting to and working with CSV.
+	pkgdesc = A suite of utilities for converting to and working with CSV
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://csvkit.readthedocs.org
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	makedepends = python-sphinx>=1.2.2
 	depends = python
-	depends = python-agate>=1.6.1
 	depends = python-agate-dbf>=0.2.0
 	depends = python-agate-excel>=0.2.2
 	depends = python-agate-sql>=0.5.3
+	depends = python-agate>=1.6.1
 	depends = python-babel
 	depends = python-dateutil
 	depends = python-openpyxl
 	depends = python-six>=1.6.1
+	depends = python-sphinx_rtd_theme>=0.1.6
 	depends = python-sqlalchemy
 	depends = python-xlrd
-	depends = python-sphinx_rtd_theme>=0.1.6
 	optdepends = ipython: nicer command-line for csvpy utility
-	source = https://github.com/wireservice/csvkit/archive/1.0.5.tar.gz
+	source = csvkit-1.0.5.tar.gz::https://github.com/wireservice/csvkit/archive/1.0.5.tar.gz
 	sha256sums = dc9ca3f05d26ddf8a1243b91354a7e7e1b43bb602bdf98e2c90980b1921f7813
 
 pkgname = csvkit
