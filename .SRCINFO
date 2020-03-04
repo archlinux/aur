@@ -1,0 +1,17 @@
+pkgbase = nymphcast-server-git
+	pkgdesc = Audio and video casting system with support for custom applications.
+	pkgver = 128
+	pkgrel = 1
+	url = https://github.com/MayaPosch/NymphCast
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	depends = nymphrpc
+	depends = sdl2_image
+	depends = ffmpeg
+	source = git+https://github.com/MayaPosch/NymphCast.git
+	md5sums = SKIP
+
+pkgname = nymphcast-server-git
+	provides = nymphcast-server
+
