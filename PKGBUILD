@@ -1,4 +1,5 @@
-# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
+# Maintainer: mutantmonkey <aur@mutantmonkey.mx>
+# Contributor: Kyle Sferrazza <kyle.sferrazza@gmail.com>
 # Contributor: Dimitrios Vogiatzis <me@dimtree.net>
 
 pkgname=python-plexapi
