@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.8.r424.df1813b4e
+pkgver=0.0.9.r22.8d847d6f1
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -9,40 +9,34 @@ url=https://github.com/RPCS3/rpcs3
 license=(GPL2)
 depends=(
   alsa-lib
-  faudio
   glew
   glu
+  libavcodec.so
+  libavutil.so
   libevdev
   libgl
   libice
+  libncursesw.so
   libpng
   libpulse
   libsm
+  libswscale.so
   libx11
   libxext
   openal
   qt5-base
   qt5-declarative
+  sdl2
   vulkan-icd-loader
   zlib
-  libavcodec.so
-  libavformat.so
-  libavutil.so
-  libncursesw.so
-  libswscale.so
-  libudev.so
-  libz3.so
 )
 makedepends=(
-  boost
   cereal
   cmake
-  ffmpeg
   git
   libglvnd
   python
   vulkan-validation-layers
-  xorgproto
 )
 provides=(rpcs3)
 conflicts=(rpcs3)
@@ -52,7 +46,7 @@ source=(
   rpcs3-common::git+https://github.com/RPCS3/common.git
   rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
   rpcs3-libusb::git+https://github.com/RPCS3/libusb.git
-  rpcs3-llvm::git+https://github.com/RPCS3/llvm.git
+  rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
   git+https://github.com/kobalicek/asmjit.git
   git+https://github.com/FNA-XNA/FAudio.git
   git+https://github.com/KhronosGroup/glslang.git
@@ -83,7 +77,7 @@ pkgver() {
 }
 
 prepare() {
-  pushd rpcs3
+  cd rpcs3
 
   git submodule init 3rdparty/{FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
@@ -97,26 +91,18 @@ prepare() {
   git config submodule.xxHash ../xxHash
   git config submodule.yaml-cpp ../yaml-cpp
   git submodule update 3rdparty/{FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
-
-  popd
-
-  if [[ -d build ]]; then
-    rm -rf build
-  fi
-  mkdir build
 }
 
 build() {
-  cd build
-
-  cmake ../rpcs3 \
-    -DCMAKE_BUILD_TYPE='Release' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_SKIP_RPATH='ON' \
-    -DUSE_SYSTEM_FFMPEG='ON' \
-    -DUSE_SYSTEM_LIBPNG='ON' \
-    -DUSE_NATIVE_INSTRUCTIONS='OFF'
-  make
+  cmake -S rpcs3 -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DUSE_NATIVE_INSTRUCTIONS=OFF \
+    -DUSE_SYSTEM_FFMPEG=ON \
+    -DUSE_SYSTEM_LIBPNG=ON \
+    -DUSE_SYSTEM_ZLIB=ON
+  make -C build
 }
 
 package() {
