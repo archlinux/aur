@@ -1,6 +1,6 @@
 pkgbase = elementary-planner-git
 	pkgdesc = Personal task manager designed for elementary OS
-	pkgver = 2.1.1.r45.gc4b6e4c6
+	pkgver = 2.2.14.r0.gbf2181dd
 	pkgrel = 1
 	url = https://planner-todo.web.app
 	arch = x86_64
@@ -17,7 +17,9 @@ pkgbase = elementary-planner-git
 	depends = gtk-theme-elementary
 	depends = elementary-icon-theme
 	provides = elementary-planner
+	provides = planner
 	conflicts = elementary-planner
+	conflicts = planner
 	source = git+https://github.com/alainm23/planner.git
 	sha256sums = SKIP
 
