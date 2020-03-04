@@ -1,0 +1,14 @@
+pkgbase = primesum
+	pkgdesc = Sum of the primes below x
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/kimwalisch/primesum
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = gcc-libs
+	source = primesum-1.7.tar.gz::https://github.com/kimwalisch/primesum/archive/v1.7.tar.gz
+	sha1sums = 84f50b96070a96e59b5208eef1e1463d985a7087
+
+pkgname = primesum
+
