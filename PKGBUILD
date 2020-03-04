@@ -3,65 +3,61 @@
 # Contributor: Mariusz Szczepańczyk <mszczepanczyk@gmail.com>
 # Contributor: Thor K. H. <thor alfakrøll roht dott no>
 
-set -u
-_pkgname='csvkit'
-pkgname="${_pkgname}-git"
-pkgver=1.0.3.r35.g6d280f5
+pkgname=csvkit-git
+pkgver=1.0.4.r29.g9b76055
 pkgrel=1
-pkgdesc="A suite of utilities for converting to and working with CSV."
+pkgdesc='A suite of utilities for converting to and working with CSV'
 arch=('any')
 url='http://csvkit.readthedocs.org'
 license=('MIT')
 depends=(
-  'python'
-  'python-agate' # >= 1.2.2
-  'python-agate-dbf' # >= 0.1.0
-  'python-agate-excel' # >= 0.1.0
-  'python-agate-sql'
-  'python-dateutil' # >=2.2
-  'python-six' # >=1.6.1
-  'python-sqlalchemy' # >=0.9.3
-)
+    'python'
+    'python-agate-dbf>=0.2.0'
+    'python-agate-excel>=0.2.2'
+    'python-agate-sql>=0.5.3'
+    'python-agate>=1.6.1'
+    'python-babel'
+    'python-dateutil'
+    'python-openpyxl'
+    'python-six>=1.6.1'
+    'python-sphinx_rtd_theme>=0.1.6'
+    'python-sqlalchemy'
+    'python-xlrd'
+  )
+optdepends=(
+    'ipython: nicer command-line for csvpy utility'
+  )
 makedepends=(
-  'git'
-  'python-setuptools'
-  'python-pip'
-)
-provides=("${_pkgname}=${pkgver%%.r*}")
-conflicts=("${_pkgname}")
-_srcdir='csvkit'
-source=('csvkit::git://github.com/wireservice/csvkit.git')
-md5sums=('SKIP')
+    'python-setuptools'
+    'python-sphinx>=1.2.2'
+  )
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git://github.com/wireservice/${pkgname/-/.}")
 sha256sums=('SKIP')
 
 pkgver() {
-  set -u
-  cd "${_srcdir}"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-  set +u
-}
-
-prepare() {
-  set -u
-  cd "${_srcdir}"
-  # Quick and dirty fix until the author officially supports dateutil>=2.2
-  # (see https://github.com/onyxfish/csvkit/issues/370)
-  #sed -i 's/python-dateutil==2.2/python-dateutil>=2.2/' setup.py
-  #sed -i 's/openpyxl==2.2.0-b1/openpyxl>=2.2.0-b1/' setup.py
-  set +u
+    cd "$pkgname"
+    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  set -u
-  cd "${_srcdir}"
-  python setup.py build
-  set +u
+    cd "$pkgname"
+    python setup.py build
+    python setup.py build_sphinx
+    _rtd_theme_path="$(python -c 'import sphinx_rtd_theme; print(sphinx_rtd_theme.get_html_theme_path())')"
+    rm -rvf "build/sphinx/html/_static"
+    ln -svf "$_rtd_theme_path/sphinx_rtd_theme/static" "build/sphinx/html/_static"
+}
+
+check() {
+    cd "$pkgname"
+    python setup.py test
 }
 
 package() {
-  set -u
-  cd "${_srcdir}"
-  python setup.py install --root="${pkgdir}" --optimize=1
-  set +u
+    cd "$pkgname"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    mkdir -p "$pkgdir/usr/share/doc"
+    cp -rv "build/sphinx/html" "$pkgdir/usr/share/doc/$pkgname"
 }
-set +u
