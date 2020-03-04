@@ -3,7 +3,7 @@
 # PKGBUILD adapted from Simutrans https://www.archlinux.org/packages/community/x86_64/simutrans/
 
 pkgname=simutrans-nightly
-pkgver=20200227
+pkgver=20200305
 pkgrel=1
 pkgdesc="Transportation simulation game - Nightly build"
 arch=('x86_64')
