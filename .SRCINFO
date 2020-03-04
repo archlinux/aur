@@ -3,6 +3,7 @@ pkgbase = rock-dkms
 	pkgver = 1.8.151
 	pkgrel = 2
 	arch = any
+	groups = 
 	license = GPL
 	depends = dkms>=1.95
 	options = !strip
