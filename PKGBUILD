@@ -1,8 +1,8 @@
 # Maintainer: Térence Clastres <t dot clastres at gmail dot com>
 
 pkgname=gnome-shell-extension-gsconnect-git
-pkgver=21.r11.g40335f70
-pkgrel=2
+pkgver=32.r0.g15e6fe98
+pkgrel=1
 pkgdesc="KDE Connect implementation with GNOME Shell integration"
 arch=('any')
 url="https://github.com/andyholmes/gnome-shell-extension-gsconnect"
@@ -15,7 +15,7 @@ optdepends=(
   'python-nautilus: Nautilus integration'
   'gsound: Themed sound effects'
 )
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'eslint')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=()
