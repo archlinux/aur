@@ -1,26 +1,28 @@
 # Maintainer: Jakub Okoński <jakub@okonski.org>
 pkgname=clang-ocl
-pkgver=2.6.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="OpenCL compilation with clang compiler."
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/clang-ocl"
 license=('unknown')
-makedepends=(git cmake ninja hcc)
-source=("git+https://github.com/RadeonOpenCompute/clang-ocl.git#tag=roc-$pkgver")
-md5sums=('SKIP')
+makedepends=('cmake' 'hcc')
+source=("https://github.com/RadeonOpenCompute/clang-ocl/archive/roc-$pkgver.tar.gz")
+sha256sums=('af93e626564cee2b3f6f5c2da0b5b95a9894f7357d895b259a706d38a57f1ef6')
 
 build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
+
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DOPENCL_ROOT=/opt/rocm/hcc \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm" \
-        -G Ninja \
-        "$srcdir/clang-ocl"
-  ninja
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        "$srcdir/$pkgname-roc-$pkgver"
+  make
 }
 
 package() {
-  ninja -C "$srcdir/build" install
+  cd "$srcdir/build"
+
+  make DESTDIR="$pkgdir" install
 }
