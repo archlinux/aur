@@ -1,0 +1,15 @@
+pkgbase = avisynthplus-git
+	pkgdesc = Avisynth+
+	pkgver = v3.5.0.0.ge17f4f80
+	pkgrel = 1
+	url = http://avs-plus.net
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	source = avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git
+	sha256sums = SKIP
+
+pkgname = avisynthplus-git
+
