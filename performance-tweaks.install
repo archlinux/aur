@@ -97,8 +97,3 @@ post_install() {
 }
 
 # vim: ts=2 sw=2 et:
-  msg "Reboot your system, so changes will take effect.."
-  echo ""
-}
-
-# vim: ts=2 sw=2 et:
