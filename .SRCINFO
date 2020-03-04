@@ -1,17 +1,17 @@
 pkgbase = nginx-mainline-mod-vod-git
 	pkgdesc = NGINX-based MP4 Repackager
 	pkgver = r1252.f453ef8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kaltura/nginx-vod-module
 	arch = i686
 	arch = x86_64
 	license = CUSTOM
 	makedepends = git
-	depends = nginx-mainline=1.17.8
+	depends = nginx-mainline=1.17.9
 	provides = nginx-mainline-mod-vod
 	conflicts = nginx-mainline-mod-vod
-	source = https://nginx.org/download/nginx-1.17.8.tar.gz
-	source = https://nginx.org/download/nginx-1.17.8.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.17.9.tar.gz
+	source = https://nginx.org/download/nginx-1.17.9.tar.gz.asc
 	source = ngx_vod::git+https://github.com/kaltura/nginx-vod-module.git
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = 97d23ecf6d5150b30e284b40e8a6f7e3bb5be6b601e373a4d013768d5a25965b
