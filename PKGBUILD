@@ -19,6 +19,5 @@ package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
 
