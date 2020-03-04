@@ -1,6 +1,6 @@
 pkgbase = fimfic2epub
 	pkgdesc = Tool to generate improved EPUB ebooks from Fimfiction stories
-	pkgver = 1.7.41
+	pkgver = 1.7.42
 	pkgrel = 1
 	url = https://github.com/daniel-j/fimfic2epub
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = fimfic2epub
 	makedepends = npm
 	depends = nodejs
 	options = !strip
-	source = https://github.com/daniel-j/fimfic2epub/archive/v1.7.41.tar.gz
-	sha256sums = 57e1f9210d97c1e7e4b1c308275ec9aa619c306c8bdec04062a924ec8ce8adc9
+	source = https://github.com/daniel-j/fimfic2epub/archive/v1.7.42.tar.gz
+	sha256sums = 508c404cf683941ecedacdf5587974eaa2a5dc2bba5425d30d002b6f4eb0f328
 
 pkgname = fimfic2epub
 
