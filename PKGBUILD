@@ -10,6 +10,7 @@ license=('GPL')
 depends=()
 makedepends=()
 md5sums=('7e5a330aed9dfbe69c79589911db29d9')
+options=(!strip)
 
 source=("$pkgname-v$pkgver::https://releases.linaro.org/components/toolchain/binaries/latest-7/arm-linux-gnueabihf/gcc-linaro-7.5.0-2019.12-x86_64_arm-linux-gnueabihf.tar.xz")
 
