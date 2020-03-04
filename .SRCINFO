@@ -1,7 +1,7 @@
 pkgbase = nginx-mainline-mod-secure-token-git
 	pkgdesc = Generates CDN tokens, either as a cookie or as a query string parameter.
 	pkgver = r153.596ed5f
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/kaltura/nginx-secure-token-module
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = nginx-mainline-mod-secure-token-git
 	source = https://nginx.org/download/nginx-1.17.9.tar.gz.asc
 	source = ngx_secure_token::git+https://github.com/kaltura/nginx-secure-token-module.git
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = 97d23ecf6d5150b30e284b40e8a6f7e3bb5be6b601e373a4d013768d5a25965b
+	sha256sums = 7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689
 	sha256sums = SKIP
 	sha256sums = SKIP
 
