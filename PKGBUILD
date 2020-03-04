@@ -9,8 +9,8 @@ url="http://bb.osmocom.org/trac/wiki/libosmocore"
 license=('GPL')
 groups=()
 provides=()
-depends=('pcsclite')
-makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config' 'talloc')
+depends=('pcsclite' 'lksctp-tools' 'talloc' 'gnutls')
+makedepends=('autoconf' 'automake' 'make' 'gcc' 'libtool' 'git' 'pkg-config')
 
 source=("git://git.osmocom.org/libosmocore.git#tag=$pkgver")
 md5sums=('SKIP')
