@@ -1,4 +1,5 @@
-# Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: TankMissile <alecfeldman@disroot.org>
+# Contributor: kpcyrd <git@rxv.cc>
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Mikeserv
 
