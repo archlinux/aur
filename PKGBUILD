@@ -1,16 +1,15 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocthrust
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Port of the Thrust parallel algorithm library atop HIP/ROCm."
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocThrust"
-license=('NCSAOSL')
-depends=(hcc hip)
-makedepends=(git cmake gcc ninja hcc python2 rocminfo)
-srcver="3.0.0"
-source=("https://github.com/ROCmSoftwarePlatform/rocThrust/archive/$srcver.tar.gz")
-sha256sums=("42fc7953e1b230a387851918cfd2490ac3d520f43f068d45fc348015196cabd8")
+license=('custom:NCSAOSL')
+depends=('hcc' 'hip')
+makedepends=('cmake' 'hcc' 'python2' 'rocminfo')
+source=("https://github.com/ROCmSoftwarePlatform/rocThrust/archive/$pkgver.tar.gz")
+sha256sums=('87f6809b74422aed09f21a63eff09d4328791d6f622aa8040f104b55dbe5ae00')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -21,27 +20,28 @@ build() {
   [[ -e "$srcdir/python" ]] || ln -s /usr/bin/python2 "$srcdir/python"
 
   # fix broken build with stack protection
-  export CXXFLAGS=$(echo $CXXFLAGS | sed -e 's/-fstack-protector-strong//')
-  export CFLAGS=$(echo $CFLAGS | sed -e 's/-fstack-protector-strong//')
-  export CPPFLAGS=$(echo $CPPFLAGS | sed -e 's/-fstack-protector-strong//')
+  export CFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CFLAGS")"
+  export CXXFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CXXFLAGS")"
+  export CPPFLAGS="$(sed -e 's/-fstack-protector-strong//' <<< "$CPPFLAGS")"
 
   # compile with HCC
-  export CXX=/opt/rocm/hcc/bin/hcc
+  export CXX="/opt/rocm/hcc/bin/hcc"
 
   # TODO: fix librocthrust.so, it contains references to $srcdir
   cmake -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/opt/rocm/rocthrust" \
+        -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocthrust \
         -DBUILD_TEST=OFF \
-        -G Ninja \
-        "$srcdir/rocThrust-$srcver"
-  ninja
+        "$srcdir/rocThrust-$pkgver"
+  make
 }
 
 package() {
-  ninja -C "$srcdir/build" install
+  cd "$srcdir/build"
 
-  mkdir -p $pkgdir/etc/ld.so.conf.d
-  cat <<-EOF > $pkgdir/etc/ld.so.conf.d/rocthrust.conf
-    /opt/rocm/rocthrust/lib/
-		EOF
+  make DESTDIR="$pkgdir" install
+
+  intsall -d "$pkgdir/etc/ld.so.conf.d"
+  cat << EOF > "$pkgdir/etc/ld.so.conf.d/rocthrust.conf"
+/opt/rocm/rocthrust/lib
+EOF
 }
