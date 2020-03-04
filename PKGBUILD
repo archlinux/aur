@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=gitleaks
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 url=https://github.com/zricethezav/gitleaks
@@ -11,11 +11,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('4bdbfa641afa9b9a55806dbd679add832f1b12f936623da6bba81addda5f7c6b')
+sha256sums=('477d02a367f36396b4df97f463b8f81db37160570233d231def52ecabd4a9dd4')
 
 build() {
   cd "$pkgname-$pkgver"
-  go build
+  go build -trimpath -ldflags "-extldflags ${LDFLAGS}" .
 }
 
 package() {
