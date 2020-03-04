@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer : Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Ng Oon-Ee
 # Contributor: Dan Vratil
@@ -8,7 +8,7 @@
 
 pkgbase=lib32-nvidia-utils-beta
 pkgname=('lib32-nvidia-utils-beta' 'lib32-opencl-nvidia-beta')
-pkgver=440.59
+pkgver=440.64
 pkgrel=1
 pkgdesc='NVIDIA drivers utilities (32-bit, beta version)'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=("nvidia-utils-beta>=${pkgver}") # to avoid conflict during installa
 options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run")
-sha256sums=('61cb1a6c1017087d431c8cec4fc0450030d469cb825a4cac7d1a5142b8c14f98')
+sha256sums=('e13c9f1ba13262bb7a9c4bb8180f7beb09be2b17145f611a81e8cf92600b7575')
 
 # create soname links
 _create_links() {
