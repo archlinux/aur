@@ -1,7 +1,7 @@
 # Maintainer: Adrian Petrescu <adrian@apetre.sc>
 
 pkgname=cf-tool
-pkgver=0.8.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A command-line tool for Codeforces contests"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/xalanq/cf-tool/archive/v$pkgver.tar.gz")
-sha512sums=('19e616fd702928323adfffb840521f6d0828278c79d6ee9fe3af1f666f754545c2865bb10afc0487c03d5c87d0ff7b23c3f9a7d68085ede6bfc8b780da8d439a')
+sha512sums=('5800f79c391d82a8cfd1649c1833d1e1d89f4113beefc6bbbd97e8c4bff48add427b4038d9113cb287d5549c61609e10ee4c06c6e3d3d38ad2b8eea59a903bb3')
 
 prepare() {
   cd $pkgname-$pkgver
