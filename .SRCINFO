@@ -1,14 +1,14 @@
 pkgbase = artwork-maia
-	pkgver = r219
+	pkgver = r218
 	pkgrel = 1
-	url = https://github.com/manjaro/artwork-maia
+	url = https://gitlab.manjaro.org/artwork/themes/maia
 	arch = any
 	license = GPL2
 	makedepends = phonon-qt5-gstreamer
 	makedepends = extra-cmake-modules
 	makedepends = plasma-framework
 	makedepends = git
-	source = git+https://github.com/manjaro/artwork-maia.git
+	source = git+https://gitlab.manjaro.org/artwork/themes/maia.git
 	sha256sums = SKIP
 
 pkgname = artwork-maia

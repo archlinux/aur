@@ -2,10 +2,11 @@
 # Contributor: Ramon Buldó <ramon@manjaro.org>
 
 pkgbase=artwork-maia
+_pkgname=maia
 pkgname=('artwork-maia' 'maia-icon-theme' 'plasma5-themes-maia' 'sddm-maia-theme' 'maia-wallpaper')
 pkgrel=1
-pkgver=r219
-url='https://github.com/manjaro/artwork-maia'
+pkgver=r218
+url='https://gitlab.manjaro.org/artwork/themes/maia'
 arch=('any')
 license=('GPL2')
 makedepends=('phonon-qt5-gstreamer' 'extra-cmake-modules' 'plasma-framework' 'git')
@@ -13,7 +14,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${pkgbase}
+  cd ${srcdir}/${_pkgname}
   _REV=$(git rev-list --count master)
   printf "r${_REV}"
 }
@@ -24,7 +25,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgbase \
+  cmake ../${_pkgname} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
