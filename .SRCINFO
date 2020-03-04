@@ -14,7 +14,7 @@ pkgbase = bcache-tools
 	source = initcpio-arch.patch
 	sha256sums = d56923936f37287efc57a46315679102ef2c86cd0be5874590320acd48c1201c
 	sha256sums = 2536e1ea76b32b4ee4543524c64f488ccc0fe037256ce9d5c5029e873161de7e
-	sha256sums = bbde2580952b60e061d335a867219146348e8c7208bdebade463675a6585a87e
+	sha256sums = a905ac4daa69ced9aa9422c9d7f20f40f6226510998be2a890d105aa22ab60de
 
 pkgname = bcache-tools
 
