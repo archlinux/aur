@@ -1,7 +1,7 @@
 pkgbase = supersm
 	pkgdesc = A Super Symlink Manager
 	pkgver = 0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/peeweep/supersm
 	arch = any
 	license = MIT

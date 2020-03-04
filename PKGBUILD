@@ -2,7 +2,7 @@
 
 pkgname=supersm
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A Super Symlink Manager"
 arch=("any")
 url="https://github.com/peeweep/supersm"
@@ -15,7 +15,7 @@ sha256sums=('52f8e73ef28480232d3372c9f508c433e1ff28bb403f895e2a969dcfef75494b')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  cmake -Bbuild && make -C build
+  cmake -Bbuild && cmake --build build
 }
 
 package() {
