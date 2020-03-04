@@ -1,15 +1,16 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgname=avisynthplus-git
+pkgbase=avisynthplus-git
+pkgname=('avisynthplus-git' 'avisynthplus-docs-git')
 pkgver=v3.5.0.0.ge17f4f80
 pkgrel=1
-pkgdesc="Avisynth+"
+pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
 url='http://avs-plus.net'
 license=('GPL')
-depends=('gcc-libs')
 makedepends=('git'
              'cmake'
+             'python-sphinx'
              )
 source=('avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git')
 sha256sums=('SKIP')
@@ -21,6 +22,8 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  mkdir -p avisynthplus/distrib/docs/english/source/_static
 }
 
 build() {
@@ -32,8 +35,21 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
 
   make
+
+  make -C "${srcdir}/avisynthplus/distrib/docs/english" html man
 }
 
-package() {
+package_avisynthplus-git() {
+  depends=('gcc-libs')
+
   make -C build DESTDIR="${pkgdir}" install
+
+  install -Dm644 avisynthplus/distrib/docs/english/build/man/avisynth.1 "${pkgdir}/usr/share/man/man1/avisynth.1"
+}
+
+package_avisynthplus-docs-git() {
+   pkgdesc='AviSynth+ Documentation'
+   arch=('any')
+
+  (cd avisynthplus/distrib/docs/english/build/html; for i in $(find . -type f); do install -Dm644 ${i} "${pkgdir}/usr/share/doc/vapoursynth/${i}"; done)
 }
