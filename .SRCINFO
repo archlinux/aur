@@ -1,0 +1,13 @@
+pkgbase = gromacs-2019-complete-charmm36
+	pkgdesc = CHARMM36 force field in GROMACS format.
+	pkgver = 201903
+	pkgrel = 2
+	url = http://mackerell.umaryland.edu/charmm_ff.shtml#gromacs
+	arch = any
+	license = GPL
+	depends = gromacs-2019-complete=2019.6
+	source = http://mackerell.umaryland.edu/download.php?filename=CHARMM_ff_params_files/charmm36-mar2019.ff.tgz
+	sha256sums = 93659165386d7b9eaf5888b3aad1f672e711409545433bae9a3dc6e82cfa72c6
+
+pkgname = gromacs-2019-complete-charmm36
+
