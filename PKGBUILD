@@ -1,10 +1,10 @@
-# Maintainer: Martin Diehl  <m dot diehl at mpie dot de>
+# Maintainer: Martin Diehl <https://martin-diehl.net>
 # Contributor: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
 # Contributor: Myles English <myles at rockhead dot biz>
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.12.4
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -37,16 +37,6 @@ sha256sums=('800a965dd01adac099a186588cda68e4fcb224af326d8aaf55978361c019258f'
 _install_dir=/opt/petsc/${_config}
 _petsc_arch="arch-${_config}"
 
-# to avoid: "make[2]: *** No rule to make target `libptesmumps.a', needed by `main_esmumps'.  Stop."
-export MAKEFLAGS="-j1"
-
-prepare() {
-  _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
-
-  # install external libraries in _build_dir instead of the prefix
-  sed -i 's/self.publicInstall    = 1/self.publicInstall    = 0/' ${_build_dir}/config/BuildSystem/config/package.py
-}
-
 build() {
   _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
 
@@ -55,13 +45,8 @@ build() {
   unset PETSC_ARCH
   export PETSC_DIR=${_build_dir}
 
-  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3"
-
-  # test for the optional dependencies for petsc
+  CONFOPTS="--with-shared-libraries=1 --COPTFLAGS=-O3 --CXXOPTFLAGS=-O3 --FOPTFLAGS=-O3"
   CONFOPTS="${CONFOPTS} $(sh ${srcdir}/test_optdepends.sh)"
-
-  # to enable use of type()
-  #CONFOPTS="${CONFOPTS} --with-fortran-datatypes --FOPTFLAGS=-O2"
 
   echo ${CONFOPTS}
   python ./configure \
@@ -101,6 +86,5 @@ package() {
   echo "${_install_dir}/lib" > "${pkgdir}"/etc/ld.so.conf.d/petsc.conf
 
   # install pkgconfig settings
-  #mkdir -p "${pkgdir}"/usr/share/pkgconfig
   install -Dm 644 "${_build_dir}/${_petsc_arch}"/lib/pkgconfig/PETSc.pc "${pkgdir}"/usr/share/pkgconfig/PETSc.pc
 }
