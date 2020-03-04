@@ -1,0 +1,17 @@
+pkgbase = ruby-elftools
+	pkgdesc = ELF parser library implemented in pure Ruby
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/david942j/rbelftools/
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-bindata
+	noextract = elftools-1.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/elftools-1.1.2.gem
+	sha256sums = 7caf1e0535600fdb73063e8a96f440cd6fb2514ec39e82e8c4d767a934ab3f80
+
+pkgname = ruby-elftools
+
