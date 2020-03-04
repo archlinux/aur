@@ -1,0 +1,27 @@
+pkgbase = owon-vds
+	pkgdesc = OWON VDS1022(I)/VDS2052 oscilloscope application
+	pkgver = 1.0.30.cf9.r0.gdf0e1f8
+	pkgrel = 1
+	url = https://github.com/florentbr/OWON-VDS1022
+	install = owon-vds.install
+	arch = x86_64
+	arch = i386
+	arch = aarch64
+	license = unknown
+	makedepends = git
+	depends = libusb-compat
+	depends = java-runtime>=8
+	provides = owon-vds
+	source = git+https://github.com/florentbr/OWON-VDS1022.git
+	source = owon-vds
+	source = 70-owon-vds.rules
+	source = owon-vds.desktop
+	source = owon-vds.appdata.xml
+	sha256sums = SKIP
+	sha256sums = 82e720a3009c04fa557f99736f766bf0d7affba01295727e74ffa5ffa460c91f
+	sha256sums = 9ccda99bdeeb8c5f1406f57d16e7c20acc4649acce9abf09a9028319172e6fef
+	sha256sums = 259ebefb9a9dd282ab519460bdd860e2ba232a11054f3e0826652c99c472e886
+	sha256sums = c1d851c032629a7a7ef66d05a18c778f6a66ae09bd81030d5f68f6d72803b4f3
+
+pkgname = owon-vds
+

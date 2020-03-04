@@ -1,0 +1,24 @@
+pre_install() {
+	rm -f "/etc/udev/rules.d/70-${pkgname}.rules"
+	rm -f "$HOME/.$pkgname/preferences*"
+}
+
+post_install() {
+	udevadm control --reload-rules
+	udevadm trigger
+}
+
+pre_upgrade() {
+	rm -f "/etc/udev/rules.d/70-${pkgname}.rules"
+	rm -f "$HOME/.$pkgname/preferences*"
+}
+
+post_upgrade() {
+	udevadm control --reload-rules
+	udevadm trigger
+}
+
+post_remove() {
+	rm -f "/etc/udev/rules.d/70-${pkgname}.rules"
+	rm -f "$HOME/.$pkgname"
+}
