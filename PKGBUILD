@@ -3,8 +3,8 @@
 # Contributor: Xander van der Goot <xandervandergoot@gmail.com>
 
 pkgname=hledger-git
-pkgver=20191117
-pkgrel=1
+pkgver=20191113
+pkgrel=2
 pkgdesc="The hledger command-line and web-based accounting tool"
 arch=('i686' 'x86_64')
 depends=('ncurses')
