@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/mfontanini/cppkafka"
 license=('BSD')
 depends=('librdkafka-git')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'boost')
 source=("git+https://github.com/mfontanini/cppkafka")
 sha256sums=('SKIP')
 
