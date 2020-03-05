@@ -1,8 +1,8 @@
 # Maintainer: Kevin Williams <kw@outlook.com>
 
 pkgname=wavebox
-_pkgver=10.0.104-2
-pkgver=10.0.104-2
+_pkgver=10.0.104_2
+pkgver=10.0.104_2
 pkgrel=1
 pkgdesc="The next generation of web-desktop communication"
 arch=(x86_64)

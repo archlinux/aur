@@ -1,6 +1,6 @@
 pkgbase = wavebox
 	pkgdesc = The next generation of web-desktop communication
-	pkgver = 10.0.104-2
+	pkgver = 10.0.104_2
 	pkgrel = 1
 	url = https://wavebox.io
 	arch = x86_64
