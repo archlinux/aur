@@ -1,21 +1,6 @@
-From bc90511c1eb333e26e0bc0eaee62375d0e788db6 Mon Sep 17 00:00:00 2001
-From: Erik van Pienbroek <epienbro@fedoraproject.org>
-Date: Tue, 16 Apr 2013 11:42:11 +0200
-Subject: [PATCH] win32: Prefer the use of constructors over DllMain
-
-This prevents having to depend on DllMain in static libraries
-
-Constructors are available in both the GCC build (GCC 2.7 and later)
-and the MSVC build (MSVC 2008 and later using _Pragma, earlier
-versions using #pragma)
----
- glib/glib-init.c | 27 ++++++++++++++++-----------
- 1 file changed, 16 insertions(+), 11 deletions(-)
-
-diff --git a/glib/glib-init.c b/glib/glib-init.c
-index ed800dc..f760bf1 100644
---- a/glib/glib-init.c
-+++ b/glib/glib-init.c
+diff -rupN --no-dereference glib-2.63.5/glib/glib-init.c glib-2.63.5-new/glib/glib-init.c
+--- glib-2.63.5/glib/glib-init.c	2020-02-03 15:28:28.000000000 +0100
++++ glib-2.63.5-new/glib/glib-init.c	2020-02-11 10:12:24.070832245 +0100
 @@ -271,12 +271,14 @@ glib_init (void)
  
  #if defined (G_OS_WIN32)
