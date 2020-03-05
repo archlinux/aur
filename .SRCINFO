@@ -1,0 +1,19 @@
+pkgbase = libaperture-git
+	pkgdesc = A camera library for GTK3
+	pkgver = 10f7a18
+	pkgrel = 1
+	url = https://gitlab.gnome.org/jwestman/libaperture
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = vala
+	depends = gtk3
+	depends = gobject-introspection
+	provides = libaperture
+	conflicts = libaperture
+	source = libaperture::git+https://gitlab.gnome.org/jwestman/libaperture
+	sha256sums = SKIP
+
+pkgname = libaperture-git
+
