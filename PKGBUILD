@@ -63,8 +63,8 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-pkgver=5.5.6
-xanmod=5
+pkgver=5.5.8
+xanmod=6
 pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
@@ -89,7 +89,7 @@ for _patch in $_commits; do
 done
     
 
-sha256sums=('21ecd7632c5ef4046405efc575b7c965453b2a59bd2673cb4d660fc15c4b7d9e'
+sha256sums=('5e43f89ea85beaed40c91a74cdc29b4122ecb1aac84bed640f26286557d402ab'
             '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
