@@ -3,7 +3,7 @@
 _pkgname=proji
 
 pkgname=${_pkgname}
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="A powerful cross-platform CLI project templating tool"
 arch=("x86_64")
