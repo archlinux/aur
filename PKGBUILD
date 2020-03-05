@@ -22,7 +22,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_gemname}-${pkgver}"
-  local _gemdir="$(gem env gemdir)"
+  local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
   install -Dm644 README.md ChangeLog.rdoc -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
