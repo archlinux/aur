@@ -3,9 +3,10 @@
 
 pkgname=electron-ssr-preview
 _name=electron-ssr
-pkgver=0.3.0
+pkgver=0.3.0a3
+_pkgver=${pkgver/a/-alpha.}
 pkgrel=1
-pkgdesc='Shadowsocksr client using electron (Preview).'
+pkgdesc='Shadowsocksr client using electron (Pre-release).'
 arch=('x86_64' 'i686')
 conflicts=("electron-ssr-git" "electron-ssr")
 provides=("electron-ssr")
@@ -16,18 +17,18 @@ makedepends=('yarn' 'hicolor-icon-theme')
 optdepends=('libsodium: sodium crypto support')
 options=('!strip')
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocksrr/electron-ssr/archive/v$pkgver-preview.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/shadowsocksrr/electron-ssr/archive/$_pkgver.tar.gz"
         'https://raw.githubusercontent.com/shadowsocksrr/electron-ssr/master/LICENSE'
         'electron-ssr.desktop'
         'electron-ssr.sh')
 
-sha256sums=('97a4995f6c5934c750f1ff2759beafefb501fdac79ffd5ecd342586280993ae8'
+sha256sums=('55fa9908df8e87e617024d4072f801f2f69afa16e4d11ef4170f56270041d330'
             '87561b47486c2485c76136172c87f0df16ee9dc4cb85be7d77ce274328f92735'
             'f96b27d2f826bf4e1c96f0154516c1e2cf07536f745128a9c2e5ec113cea6446'
             'ae121e8a6995358b7e23881102e22b011a520f859b62675c129b5f99800bea0e')
 
 build() {
-    cd "$srcdir/$_name-$pkgver-preview"
+    cd "$srcdir/$_name-$_pkgver"
 
     # Build Package
     yarn
@@ -43,7 +44,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/icons/hicolor"
 
     # Install
-    cd "$srcdir/$_name-$pkgver-preview/dist_electron/linux-unpacked/resources"
+    cd "$srcdir/$_name-$_pkgver/dist_electron/linux-unpacked/resources"
     install -Dm644 app.asar "$pkgdir/usr/share/electron-ssr/app.asar"
     install -Dm755 "$srcdir/electron-ssr.sh" "$pkgdir/usr/bin/electron-ssr"
 
@@ -53,6 +54,6 @@ package() {
 
     # Install icons
     for i in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256; do
-        install -Dm644 "$srcdir/$_name-$pkgver-preview/build/icons/$i.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/$_name.png"
+        install -Dm644 "$srcdir/$_name-$_pkgver/build/icons/$i.png" "$pkgdir/usr/share/icons/hicolor/$i/apps/$_name.png"
     done
 }
