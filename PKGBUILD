@@ -4,15 +4,15 @@
 pkgbase=python2-langdetect
 _name=langdetect
 pkgname=('python2-langdetect')
-pkgver=1.0.7
-pkgrel=4
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="Language detection library ported from Google's language-detection"
 arch=('any')
 url="https://github.com/Mimino666/langdetect"
 license=('Apache')
 makedepends=('python2-setuptools')
-source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name}-${pkgver}.zip")
-sha512sums=('7740bc8e5ea581bed69de9744a934f3e9c72910175933acb266bf25b0cb8797da6041b3d35e7c5d622a037b4c9e3d264828c2ba31bd2866fa7c36cf189e4767a')
+source=("https://files.pythonhosted.org/packages/source/l/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('beade4e33abd25364ead64c30b3631615526effa7788c50e0b2bfac454e7b69a33742780f838ddf5df5292dadf0449ea8f3a4197214d84a164cbecee76020a4d')
 
 build() {
   cd "${_name}-${pkgver}"
