@@ -1,6 +1,6 @@
 pkgbase = rvgl-music
 	pkgdesc = Extra music for RVGL additional community tracks.
-	pkgver = 19.0415
+	pkgver = 20.0302
 	pkgrel = 1
 	url = https://rvgl.re-volt.io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = rvgl-music
 	depends = rvgl-bin
 	optdepends = rvgl-tracks: actual tracks music is used for
 	optdepends = rvgl-tracks-bonus: actual tracks music is used for
-	source = rvgl-music-19.0415.zip::https://distribute.re-volt.io/packs/io_music.zip
-	sha256sums = bd65b82e6a9f18464a2a0310d606a4b59166c1d6c210b1f648c2c5cd1cda8d89
+	source = rvgl-music-20.0302.zip::https://distribute.re-volt.io/packs/io_music.zip
+	sha256sums = 63edebb2fc5a02569d4b46601cc8cdd223ef7c5179fbf4c43f36b51ac6d46796
 
 pkgname = rvgl-music
 
