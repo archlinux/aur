@@ -11,7 +11,6 @@ licence=('MIT')
 depends=('sox' 'svox-pico-bin')
 makedepends=('qt5-base' 'qt5-multimedia')
 optdepends=()
-provides=('qpicospeaker')
 backup=("")
 install=
 source=("git+https://github.com/Shadowsith/qpicospeaker")
