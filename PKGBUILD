@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r282.016abda
+pkgver=r288.ea74aca
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -23,9 +23,11 @@ backup=("etc/${_pkgname}/sftpgo.json")
 install=${pkgname}.install
 
 source=("git+https://github.com/drakkan/${_pkgname}.git"
-  "sftpgo.json")
+  "sftpgo.json"
+  "README")
 sha256sums=('SKIP'
-  'bed410a931cde9d8e73ba7db3affeb67fcebee66996db8b5dd02ddfad2c4f61e')
+  'c1defd385855fc88a780a611b9076f24c61663123480ba14eee5f37f0396df86'
+  '9c6c5a49b4605fe83beb895c5f31b1f85afb317fc1d16c875a9ae5af23313d23')
 
 pkgver() {
   cd "${_pkgname}"
@@ -46,8 +48,7 @@ package() {
   install -d "${pkgdir}/var/lib/${_pkgname}"
   cp -r templates "${pkgdir}/var/lib/${_pkgname}/"
   cp -r static "${pkgdir}/var/lib/${_pkgname}/"
-  install -Dm 644 README.md "${pkgdir}"/usr/share/doc/${_pkgname}/README.md
-  install -Dm 644 scripts/README.md "${pkgdir}"/usr/share/doc/${_pkgname}/README_API_CLI.md
+  install -Dm 644 "$srcdir/README" "${pkgdir}"/usr/share/doc/${_pkgname}/README
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
 }
 
