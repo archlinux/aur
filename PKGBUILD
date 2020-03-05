@@ -11,7 +11,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.1.0_devel.120096.286141197da
+pkgver=20.1.0_devel.120682.2d32248f49e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -20,7 +20,7 @@ makedepends=('git' 'python-mako' 'xorgproto'
 depends=('libdrm' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
          'libomxil-bellagio' 'libunwind' 'libglvnd' 'wayland' 'lm_sensors' 'libclc' 'glslang' 'vulkan-icd-loader' 'zstd')
 optdepends=('opengl-man-pages: for the OpenGL API man pages')
-provides=(mesa=$pkgver-$pkgrel vulkan-intel=$pkgver-$pkgrel vulkan-radeon=$pkgver-$pkgrel vulkan-mesa-layer=$pkgver-$pkgrel  libva-mesa-driver=$pkgver-$pkgrel mesa-vdpau=$pkgver-$pkgrel vulkan-driver opencl- opengl-driver opencl-driver)
+provides=(mesa=$pkgver-$pkgrel vulkan-intel=$pkgver-$pkgrel vulkan-radeon=$pkgver-$pkgrel vulkan-mesa-layer=$pkgver-$pkgrel libva-mesa-driver=$pkgver-$pkgrel mesa-vdpau=$pkgver-$pkgrel vulkan-driver opengl-driver opencl-driver)
 conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-layer' 'libva-mesa-driver' 'mesa-vdpau')
 url="https://www.mesa3d.org"
 license=('custom')
@@ -34,10 +34,10 @@ sha512sums=('SKIP'
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
 
-# MESA_WHICH_LLVM is an environment variable used to determine which llvm package tree is used to built mesa-git against.
+# MESA_WHICH_LLVM is an environment variable that determines which llvm package tree is used to built mesa-git against.
 # Adding a line to ~/.bashrc  that sets this value is the simplest way to ensure a specific choice.
 #
-# NOTE: Aur helpers have trouble with this method, check the sticky comments on mesa-git aur page .
+# NOTE: Aur helpers don't handle this method well, check the sticky comments on mesa-git aur page .
 #
 # 1: llvm-minimal-git (aur) preferred value
 # 2: AUR llvm-git
