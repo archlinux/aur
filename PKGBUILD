@@ -3,8 +3,8 @@
 # Contributor: David Moore <davidm@sjsoft.com>
 
 pkgname=slib
-pkgver=3b5
-pkgrel=4
+pkgver=3b6
+pkgrel=1
 pkgdesc='Library of functions for Scheme implementations'
 arch=(any)
 url='https://people.csail.mit.edu/jaffer/SLIB.html'
@@ -12,7 +12,7 @@ license=(custom)
 depends=(guile)
 options=(emptydirs)
 source=("https://groups.csail.mit.edu/mac/ftpdir/scm/$pkgname-$pkgver.zip")
-sha256sums=('f8b64a9820c2ccbdb263a0cb7bcf4caadce0857fdf4e2f52111ca33b4a131760')
+sha256sums=('2e8cb4843b5400b2e39fe9ddcc8040a412f9a19cccf5e7e2c2e071ceb9b0ed8c')
 
 prepare() {
   cd $pkgname
