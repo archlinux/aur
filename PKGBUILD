@@ -2,7 +2,7 @@
 
 pkgname=plantuml-markdown
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PlantUML plugin for Python-Markdown"
 arch=('any')
 url="https://github.com/mikitex70/${pkgname}"

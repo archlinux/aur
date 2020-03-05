@@ -1,6 +1,13 @@
 # Changelog
 
 
+## development (2020-03-04)
+
+### Fix
+
+* Removed forgotten log level set to debug (fixes #41) [Michele Tessaro]
+
+
 ## 3.2.1 (2019-12-13)
 
 ### New
