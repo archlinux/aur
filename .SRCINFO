@@ -1,0 +1,19 @@
+pkgbase = ams-mod-lv2-git
+	pkgdesc = Alsa Modular modules in LV2 form, MOD fork (0-10V range).
+	pkgver = 142
+	pkgrel = 1
+	url = https://github.com/moddevices/ams-lv2
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtkmm
+	depends = gtk2
+	depends = lvtk
+	depends = fftw
+	depends = cairo
+	depends = lv2
+	source = git+https://github.com/moddevices/ams-lv2#branch=change_uri
+	md5sums = SKIP
+
+pkgname = ams-mod-lv2-git
+
