@@ -1,0 +1,3 @@
+post_install() {
+    printf "To enable systemd-ssh-agent, use systemctl --user enable ssh-agent.service.\n"
+}
