@@ -1,0 +1,24 @@
+pkgbase = ffms2-qyot27-git
+	pkgdesc = An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version) (Qyot27 fork)
+	pkgver = 2.18.742.g67d5ca7
+	pkgrel = 1
+	url = https://github.com/FFMS/ffms2
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libavformat.so
+	depends = libavcodec.so
+	depends = libswscale.so
+	depends = libavutil.so
+	depends = avisynthplus
+	depends = vapoursynth
+	provides = ffms2
+	provides = libffms2.so
+	provides = vapoursynth-plugin-ffms2
+	provides = avisynth-plugin-ffms2
+	conflicts = ffms2
+	source = git+https://github.com/qyot27/ffms2_cplugin.git#branch=patches_plusvp9av1
+	sha256sums = SKIP
+
+pkgname = ffms2-qyot27-git
+
