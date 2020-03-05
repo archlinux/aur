@@ -24,12 +24,10 @@ depends=('accountsservice'
 #        "mintlocale_apt_check.patch")
 source=("${pkgname}-${pkgver}.tar.xz::${url}/${pkgname}_${pkgver}.tar.xz"
         "im_apt_check.patch"
-        "install_remove_apt_check.patch"
-        "mintlocale_apt_check.patch")
+        "install_remove_apt_check.patch")
 sha256sums=('04e289e5f57fe916385171b264ba99c41c1dc9466afa26965dbb92ace4376995'
-            '3f59e0144e906e2e1b75ba429a1eeb0bc12986fdccf98d2da4692bed80741c8e'
-            '5ab364fc1756e0e91b97de81d48316ba6df77a938f5eee3ea7deaefb093e72e7'
-            'd3861405dcac12bf0637f47ef22c910f3f06e0d9545022191ecafbac818b9fd2')
+            '21778d62b28e677cfb8d7784c5b486ff373534de6e6fb5603e2c8bd268abef7b'
+            '4b8bc562521564022ae657ce1db7c3170d4184f955150bd9e51b871c73f4a996')
 
 ## Packaging via Linuxmint repository
 prepare() {
@@ -46,7 +44,7 @@ prepare() {
   #Patching "install_remove.py" file
   patch -Np1 -i ../install_remove_apt_check.patch
   #Patching "mintlocale.py" file
-  patch -Np1 -i ../mintlocale_apt_check.patch
+  #patch -Np1 -i ../mintlocale_apt_check.patch
 
 }
 
