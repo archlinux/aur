@@ -1,11 +1,12 @@
 pkgbase = android-aarch64-libiconv
 	pkgdesc = Provides libiconv.so and libcharset.so (Android aarch64)
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/libiconv/
 	arch = any
 	license = LGPL
 	makedepends = android-ndk
+	makedepends = android-configure
 	conflicts = android-libiconv-arm64-v8a
 	replaces = android-libiconv-arm64-v8a
 	options = !libtool
