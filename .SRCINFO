@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-alter-logo-git
+	pkgdesc = AlterLinux用のplymouthテーマ
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yamad-linuxer/plymouth-theme-alter
+	arch = any
+	license = GPL
+	depends = plymouth
+	conflicts = plymouth-theme-alter-logo
+	source = git+https://github.com/yamad-linuxer/plymouth-theme-alter.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-alter-logo-git
+
