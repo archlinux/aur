@@ -1,6 +1,6 @@
 # Maintainer: Naoki Kanazawa <nk dot naoki912 at gmail dot com>
 pkgname=usacloud-bin
-pkgver=0.32.1
+pkgver=0.32.2
 pkgrel=1
 pkgdesc="CLI client for the Sakura Cloud"
 arch=('i686' 'x86_64')
