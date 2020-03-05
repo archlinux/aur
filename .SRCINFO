@@ -1,14 +1,14 @@
 pkgbase = stoplight-studio-appimage
 	pkgdesc = The modern editor for API Architects and Technical Writers.
-	pkgver = 1.9.2
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://stoplight.io/studio/
 	arch = x86_64
 	license = custom
 	options = !strip
-	source = stoplight-studio-linux-x86_64-1.9.2.AppImage::https://github.com/stoplightio/studio/releases/download/v1.9.2/stoplight-studio-linux-x86_64.AppImage
+	source = stoplight-studio-linux-x86_64-1.10.0.AppImage::https://github.com/stoplightio/studio/releases/download/v1.10.0/stoplight-studio-linux-x86_64.AppImage
 	source = stoplight-studio.desktop
-	sha256sums = 95fd32410f0d1c3e173f3e50f0422b52b765459c0603eaecec712fdb9f8e36e2
+	sha256sums = 69d2a3c7dc89f2ebca378f1d86dcbf4ea5cff7d750411500cde313a04f2a323a
 	sha256sums = 5a45f03ec544bfdf2c75391a68d29302e7f721348ba530a8f365697c799f84a2
 
 pkgname = stoplight-studio-appimage
