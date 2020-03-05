@@ -1,0 +1,15 @@
+pkgbase = lightdm-webkit2-theme-alter
+	pkgdesc = AlterLinux webkit2 greeter theme
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/SereneTeam/lightdm-webkit2-theme-alter
+	arch = any
+	license = MIT
+	depends = lightdm
+	depends = lightdm-webkit2-greeter
+	conflicts = lightdm-webkit2-theme-alter-git
+	source = https://github.com/SereneTeam/lightdm-webkit2-theme-alter/archive/v1.0.zip
+	md5sums = SKIP
+
+pkgname = lightdm-webkit2-theme-alter
+
