@@ -3,14 +3,13 @@
 
 pkgname=nheko
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop client for the Matrix protocol"
 arch=('x86_64' 'i686')
 url="https://github.com/Nheko-Reborn/nheko"
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-svg' 'hicolor-icon-theme' 'lmdb' 'cmark' 'mtxclient')
-makedepends=('cmake' 'boost' 'qt5-tools' 'nlohmann-json' 'lmdbxx' 'spdlog' 'tweeny'
-             'fmt') # https://bugs.archlinux.org/task/63907
+depends=('qt5-multimedia' 'qt5-svg' 'hicolor-icon-theme' 'lmdb' 'cmark' 'mtxclient' 'spdlog')
+makedepends=('cmake' 'boost' 'qt5-tools' 'nlohmann-json' 'lmdbxx' 'tweeny')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Nheko-Reborn/nheko/archive/v$pkgver.tar.gz"
         "0001-Fix-deprecated-function-call-issues-with-Qt-5.13.patch"
         "spdlog_fix.patch")
