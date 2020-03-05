@@ -4,7 +4,7 @@
 # Contributor: itsme <mymail@ishere.ru>
 
 pkgname=debops
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Your Debian-based data center in a box"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 makedepends=('python-setuptools')
 conflicts=('depops-git')
 source=(https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz)
-sha512sums=('b1e8f8dfa416361dd5c44a53ed71bf056c3d99e1aff4701541714e539e5947a4522fe5b617e2af61ff740b1eccb1febbd80be53535f350a261806cfa0cad07f8')
+sha512sums=('bee849a162606efce600b77ac56c754f6b5d9b473d6459f9070c224c78cc7b8b3733125bc1d5318d446d1bed19c0f503a8972f191b1dc2b66e56c61f55a086c8')
 
 build() {
   cd "$pkgname-$pkgver"
