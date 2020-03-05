@@ -36,7 +36,7 @@ build() {
 
   make
 
-  make -C "${srcdir}/avisynthplus/distrib/docs/english" html man
+  make -C "${srcdir}/avisynthplus/distrib/docs/english" html # man
 }
 
 package_avisynthplus-git() {
@@ -46,7 +46,7 @@ package_avisynthplus-git() {
 
   make -C build DESTDIR="${pkgdir}" install
 
-  install -Dm644 avisynthplus/distrib/docs/english/build/man/avisynth.1 "${pkgdir}/usr/share/man/man1/avisynth.1"
+  #install -Dm644 avisynthplus/distrib/docs/english/build/man/avisynth.1 "${pkgdir}/usr/share/man/man1/avisynth.1"
 
   (cd avisynthplus/distrib/Examples; find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/vapoursynth/Examples/{}" \;)
 }
