@@ -1,0 +1,19 @@
+pkgbase = gnome-camera-git
+	pkgdesc = A candidate for the proposed GNOME Camera app
+	pkgver = 193513a
+	pkgrel = 1
+	url = https://gitlab.gnome.org/jwestman/gnome-camera
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	depends = vala
+	depends = gtk3
+	depends = gobject-introspection
+	provides = gnome-camera
+	conflicts = gnome-camera
+	source = gnome-camera::git+https://gitlab.gnome.org/jwestman/gnome-camera
+	sha256sums = SKIP
+
+pkgname = gnome-camera-git
+
