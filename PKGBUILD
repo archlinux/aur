@@ -2,9 +2,9 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.5.7
-pkgver=5.5.v.7
-pkgrel=2
+gitver=v5.5.8
+pkgver=5.5.v.8
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -27,7 +27,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
 	#config.x86_64
-            '95172f61bf8573c491bd2d065a4d3743dd42839d13a06268fb5b7698d917dd2f'
+            'a51149dce0e246917b17469a04a5f693e464e450d00fdcbd138bcd21f0316377'
 	#.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
 	#patch gentoo
