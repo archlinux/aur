@@ -1,0 +1,15 @@
+pkgbase = mpv-autoload
+	pkgdesc = Autoload all other media files in directory to mpv playlist.
+	pkgver = 0.29.0
+	pkgrel = 2
+	url = https://github.com/mpv-player/mpv
+	install = mpv-autoload.install
+	arch = any
+	license = GPL
+	depends = mpv
+	depends = bash
+	source = https://raw.githubusercontent.com/mpv-player/mpv/master/TOOLS/lua/autoload.lua
+	sha256sums = SKIP
+
+pkgname = mpv-autoload
+
