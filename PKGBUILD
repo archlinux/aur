@@ -41,8 +41,7 @@ build() {
   ../ffms2/configure \
     --prefix=/usr \
     --enable-shared=yes \
-    --enable-static=no \
-    --enable-avisynth-cpp
+    --enable-static=no
 
   make
 }
