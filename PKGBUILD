@@ -2,23 +2,27 @@
 
 pkgname=qpicospeaker-git
 pkgsrc=qpicospeaker
-pkgver=r59.8c1ea53
+pkgver=r60.7429077
 pkgrel=1
-pkgdesc='Qt GUI for the svox-pico text-to-speech engine'
+pkgdesc="Qt GUI for the svox-pico text-to-speech engine"
 arch=('i686' 'x86_64' 'aarch64' 'arm')
-url='https://github.com/Shadowsith/qpicospeaker'
+url="https://github.com/Shadowsith/qpicospeaker"
 licence=('MIT')
-depends=('sox' 'svox-pico-bin')
-makedepends=('qt5-base' 'qt5-multimedia')
-optdepends=()
+depends=(
+    'sox'
+    'svox-pico-bin'
+)
+makedepends=(
+    'qt5-base'
+    'qt5-multimedia'
+)
 backup=("")
-install=
 source=("git+https://github.com/Shadowsith/qpicospeaker")
 sha256sums=('SKIP')
 
 prepare() {
     build=build
-    if [ -d "$build"]; then
+    if [ -d "$build" ]; then
         rm -r build
     fi
     if [ ! -d "$build" ]; then
