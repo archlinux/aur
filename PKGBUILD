@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=19.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url="https://kde.org/applications/graphics/okular/"
@@ -21,7 +21,7 @@ sha256sums=('c5de22cc4292e3b7adae3f6ef6566dcba33a1dd5995fb0b968ea3e705a4c04e0'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
-options=(!zipman debug !strip)
+options=(!zipman)
 
 prepare() {
   mkdir -p build
