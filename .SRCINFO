@@ -1,6 +1,6 @@
 pkgbase = nbdkit
 	pkgdesc = NBD server toolkit
-	pkgver = 1.16.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/libguestfs/nbdkit
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = nbdkit
 	optdepends = tcl
 	optdepends = perl
 	optdepends = rust
-	source = http://download.libguestfs.org/nbdkit/1.16-stable/nbdkit-1.16.2.tar.gz
-	source = http://download.libguestfs.org/nbdkit/1.16-stable/nbdkit-1.16.2.tar.gz.sig
+	source = http://download.libguestfs.org/nbdkit/1.18-stable/nbdkit-1.18.0.tar.gz
+	source = http://download.libguestfs.org/nbdkit/1.18-stable/nbdkit-1.18.0.tar.gz.sig
 	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
-	sha256sums = 0267e3a3dbf1b2eff343c0cef16697db8e8777bd869eb6c75e60842516a5aa01
+	sha256sums = 5f6cba06eaf38d05064618d4a11c98f816f221ace65f46a2d0efe2cfbe0ab8fa
 	sha256sums = SKIP
 
 pkgname = nbdkit
