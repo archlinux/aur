@@ -1,0 +1,135 @@
+Index: ddd-3.3.12/ddd/Ddd.in.m4
+===================================================================
+--- ddd-3.3.12.orig/ddd/Ddd.in.m4	2014-10-10 23:13:16.569640891 +0200
++++ ddd-3.3.12/ddd/Ddd.in.m4	2014-10-10 23:13:16.561640891 +0200
+@@ -109,7 +109,7 @@
+ Ddd*openDebuggerConsole: on
+ Ddd*openSourceWindow:    on
+ Ddd*openDataWindow:      off
+-
++Ddd*displayPlacement: XmHORIZONTAL
+ 
+ ! On if programs are to be run in a separate top-level window.
+ ! If this is off, input/output is sent to the debugger console.
+@@ -122,7 +122,7 @@
+ 
+ ! On if DDD windows are to be iconified/uniconified as a whole.
+ ! If this is off, every DDD window can be iconified on its own.
+-Ddd*groupIconify: off
++Ddd*groupIconify: on
+ 
+ 
+ ! On if DDD windows are to be uniconified when GDB becomes ready.
+@@ -145,7 +145,7 @@
+ !
+ ! In this release, the default is still Motif, but this may change to KDE 
+ ! in some future version.
+-Ddd*cutCopyPasteBindings: Motif
++Ddd*cutCopyPasteBindings: KDE
+ 
+ 
+ ! The key bindings to use for Ctrl+A (Select All):
+@@ -474,9 +474,46 @@
+ ! Ddd*sourceButtons:	    \
+ ! run\nstep\nnext\nstepi\nnexti\ncont\nfinish\nkill\n\
+ ! up\ndown\nBack\nForward\nEdit\ninterrupt^C
++Ddd*sourceButtons: \
++Reload\n\
++run\n\
++interrupt\n\
++step\n\
++next\n\
++stepi\n\
++nexti\n\
++cont\n\
++kill
+ 
+ ! The data window buttons (none: no buttons)
+-Ddd*dataButtons:
++! Ddd*dataButtons:
++Ddd*dataButtons: \
++graph display `x /1sb &()` //String\n\
++graph display `x /1cb &()` //Char\n\
++graph display `x /1db &()` //ByteD\n\
++graph display `x /1xb &()` //ByteH\n\
++graph display `x /1ub &()` //ByteU\n\
++graph display `x /1dh &()` //WordD\n\
++graph display `x /1xh &()` //WordH\n\
++graph display `x /1uh &()` //WordU\n\
++graph display `x /20xw ($esp)` //Stack\n\
++graph display ($eflags & 1) != 0 // c\n\
++graph display ($eflags & 64) != 0 // z\n\
++graph display ($eflags & 128) != 0 // s\n\
++graph display ($eflags & 1024) != 0 // d\n\
++graph display ($eflags & 2048) != 0 // o\n\
++graph display $eax & 255 // al\n\
++graph display $eax >> 8 & 255 // ah\n\
++graph display $eax & 65535 // ax\n\
++graph display $ebx & 255 // bl\n\
++graph display $ebx >> 8 & 255 // bh\n\
++graph display $ebx & 65535 // bx\n\
++graph display $ecx & 255 // cl\n\
++graph display $ecx >> 8 & 255 // ch\n\
++graph display $ecx & 65535 // cx\n\
++graph display $edx & 255 // dl\n\
++graph display $edx >> 8 & 255 // dh\n\
++graph display $edx & 65535 // dx
+ 
+ ! The command tool buttons, as of DDD 2.0 and later.
+ Ddd*toolButtons: \
+@@ -833,7 +870,7 @@
+ ! Ddd*cacheGlyphImages: on
+ 
+ ! Do we wish to display line numbers? (Default in DDD 2.1.1 and earlier)
+-Ddd*displayLineNumbers: off
++Ddd*displayLineNumbers: on
+ 
+ ! Do we wish to cache source files in memory?
+ Ddd*cacheSourceFiles: on
+@@ -946,11 +983,11 @@
+ 
+ ! Focus Policy
+ ! POINTER means point-and-type, EXPLICIT means click-and-type.
+-Ddd*keyboardFocusPolicy: POINTER
++Ddd*keyboardFocusPolicy: EXPLICIT
+ 
+ ! Warnings
+ ! Do we wish to suppress X warnings?
+-Ddd*suppressWarnings: off
++Ddd*suppressWarnings: on
+ 
+ ! Do we wish to warn if multiple DDD instances are running?
+ Ddd*warnIfLocked: off
+Index: ddd-3.3.12/ddd/examine.C
+===================================================================
+--- ddd-3.3.12.orig/ddd/examine.C	2014-10-10 23:13:16.569640891 +0200
++++ ddd-3.3.12/ddd/examine.C	2014-10-10 23:13:16.561640891 +0200
+@@ -196,7 +196,7 @@
+     strip_space(repeat);
+     strip_space(address);
+ 
+-    if (GDB == gdb->type() && gdb->cpu == cpu_intel) {
++    if (GDB == gdb->type()) {
+       
+       /* Intel x86 8 and 16-bit handling: 
+ 	 When you have an assembly line like this:
+Index: ddd-3.3.12/ddd/fonts.C
+===================================================================
+--- ddd-3.3.12.orig/ddd/fonts.C	2014-10-10 23:13:16.569640891 +0200
++++ ddd-3.3.12/ddd/fonts.C	2014-10-10 23:13:16.561640891 +0200
+@@ -162,12 +162,12 @@
+     switch (font) 
+     {
+     case DefaultDDDFont:
+- 	return "-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*";
++ 	return "-*-helvetica-bold-r-*-*-*-120-*-*-*-*-*-*";
+     case VariableWidthDDDFont:
+- 	return "-*-helvetica-medium-r-*-*-*-120-*-*-*-*-iso8859-*";
++ 	return "-*-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*";
+     case FixedWidthDDDFont:
+     case DataDDDFont:
+- 	return "-*-lucidatypewriter-medium-r-*-*-*-120-*-*-*-*-iso8859-*";
++ 	return "-*-lucidatypewriter-medium-r-*-*-*-120-*-*-*-*-*-*";
+     case SymbolDDDFont:
+  	return "-*-symbol-*-*-*-*-*-120-*-*-*-*-adobe-*";
+     }
