@@ -1,5 +1,5 @@
 pkgname=mingw-w64-paraview-git
-pkgver=r72716.cd3aea28f8
+pkgver=r73088.deade123e6
 pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK (mingw-w64)'
 arch=('any')
@@ -33,6 +33,7 @@ prepare() {
   git config submodule.ThirdParty/QtTesting/vtkqttesting.git "$srcdir"/qttesting
   git submodule update -f --init
   cd VTK
+  sed -i "s|Psapi|psapi|g" Utilities/KWSys/vtksys/CMakeLists.txt
 }
 
 build() {
