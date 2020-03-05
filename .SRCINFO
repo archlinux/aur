@@ -13,8 +13,8 @@ pkgbase = avisynthplus-git
 
 pkgname = avisynthplus-git
 	depends = gcc-libs
-	provides = avisynth
-	conflicts = avisynth
+	provides = avisynthplus
+	conflicts = avisynthplus
 
 pkgname = avisynthplus-docs-git
 	pkgdesc = AviSynth+ Documentation

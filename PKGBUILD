@@ -41,8 +41,8 @@ build() {
 
 package_avisynthplus-git() {
   depends=('gcc-libs')
-  provides=('avisynth')
-  conflicts=('avisynth')
+  provides=('avisynthplus')
+  conflicts=('avisynthplus')
 
   make -C build DESTDIR="${pkgdir}" install
 
