@@ -1,12 +1,13 @@
 pkgbase = pfetch-git
 	pkgdesc = A pretty system information tool written in POSIX sh.
-	pkgver = r142.6218551
+	pkgver = r292.9f55ffb
 	pkgrel = 1
 	url = https://github.com/dylanaraps/pfetch
 	arch = any
 	license = GPL3
 	makedepends = git
 	provides = pfetch
+	conflicts = pfetch
 	source = pfetch::git+https://github.com/dylanaraps/pfetch.git
 	md5sums = SKIP
 
