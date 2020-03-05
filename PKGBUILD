@@ -19,7 +19,7 @@ sha256sums=('0493ff54a38d24e21f7460eca6db33c6fe590a6280863a6475d72bb6b0c863be')
 build() {
   cd "tools-${pkgname}-${pkgver}/${pkgname}"
 
-  GO111MODULE=on go build -o "../../$pkgname" -trimpath
+  GOPATH="${srcdir}" GO111MODULE=on go build -o "../../$pkgname" -trimpath
   mv ../LICENSE ../../LICENSE
 }
 
