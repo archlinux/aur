@@ -6,6 +6,7 @@ pkgbase = gula-plugins-git
 	arch = x86_64
 	groups = lv2-plugins
 	license = GPL
+	makedepends = faust
 	depends = lv2
 	source = git+https://github.com/steveb/gula-plugins
 	md5sums = SKIP
