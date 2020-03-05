@@ -1,7 +1,7 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -11,11 +11,11 @@ pkgbase = python-torchvision
 	makedepends = cuda
 	makedepends = ffmpeg
 	makedepends = python-av
+	makedepends = python-pytorch-cuda
 	makedepends = python-setuptools
 	makedepends = qt5-base
 	depends = python-numpy
 	depends = python-pillow
-	depends = python-pytorch-cuda
 	depends = python-scipy
 	depends = python-six
 	depends = python-tqdm
@@ -25,16 +25,21 @@ pkgbase = python-torchvision
 	sha512sums = 2b76f7a0f20b7225f6310be358bf4c6fb8cdbc1fa324f53dac3bf6518276755861bd09a91da6cf6a0ff1b466104826b4094e82c796c83b9b4963ca3c0b94d93a
 
 pkgname = python-torchvision
+	depends = python-numpy
+	depends = python-pillow
+	depends = python-scipy
+	depends = python-six
+	depends = python-tqdm
+	depends = python-pytorch
 
 pkgname = python-torchvision-cuda
 	pkgdesc = Datasets, transforms, and models specific to computer vision (with GPU support)
 	depends = python-numpy
 	depends = python-pillow
-	depends = python-pytorch-cuda
 	depends = python-scipy
 	depends = python-six
 	depends = python-tqdm
-	depends = cuda
+	depends = python-pytorch-cuda
 	provides = python-torchvision=0.5.0
 	conflicts = python-torchvision=0.5.0
 
