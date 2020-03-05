@@ -1,14 +1,14 @@
 pkgbase = plasma5-applets-tiledmenu
 	pkgdesc = A menu based on Windows 10's Start Menu.
-	pkgver = 31
+	pkgver = 32
 	pkgrel = 1
 	url = https://store.kde.org/p/1160672/
 	arch = any
 	license = GPL
 	depends = plasma-workspace
 	depends = qt5-graphicaleffects
-	source = https://github.com/Zren/plasma-applet-tiledmenu/archive/v31.tar.gz
-	md5sums = 6cdec5d385f43faea49fdad382c0e673
+	source = https://github.com/Zren/plasma-applet-tiledmenu/archive/v32.tar.gz
+	md5sums = c3ebaf30f614191632d7526d99a77b74
 
 pkgname = plasma5-applets-tiledmenu
 
