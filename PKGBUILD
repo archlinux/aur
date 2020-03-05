@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r344356.e60c28746b0
+pkgver=11.0.0_r344468.c6a38957a7e
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -38,6 +38,7 @@ options=('staticlibs')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
+# NINJAFLAGS="-j20"
 
 _python_optimize() {
   python -m compileall "$@"
@@ -104,7 +105,6 @@ build() {
         -D LLVM_BINUTILS_INCDIR=/usr/include \
         -D LLVM_VERSION_SUFFIX="" \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
-        -D CMAKE_POLICY_DEFAULT_CMP0075=NEW \
         -D LLDB_USE_SYSTEM_SIX=1 \
         -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang" \
 
