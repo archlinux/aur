@@ -1,0 +1,23 @@
+pkgbase = python-textract
+	pkgdesc = Extract text from any document. No muss. No fuss.
+	pkgver = 1.6.3
+	pkgrel = 1
+	url = https://github.com/deanmalmgren/textract
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-argcomplete
+	optdepends = antiword: .doc support
+	optdepends = docx2txt: .docx support
+	optdepends = python-beautifulsoup4: .html and .htm support
+	optdepends = python-xlrd: .xls and .xlsx support
+	optdepends = unrtf: .rtf support
+	optdepends = python-pptx: .pptx support
+	optdepends = python-pdfminer: .pdf support
+	source = https://files.pythonhosted.org/packages/6e/39/b62302c738d872ca9cfb39ebc03b6b565c562289e0941d7379b61d2f147a/textract-1.6.3.tar.gz
+	sha1sums = 5ea5b7b5c5b029ed1d8d95c29f92b79cff6b4ca8
+	sha256sums = 6213b2f923b85af8e5e380241db9361e3f5dbd444a74108745fd4121ae151310
+
+pkgname = python-textract
+
