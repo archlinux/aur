@@ -1,23 +1,26 @@
-# Maintainer: Attenuation <ouyangjun1999@gmail.com>
+# Maintainer: Filipe Nascimento <flipee at tuta dot io>
+# Contributor: Attenuation <ouyangjun1999@gmail.com>
+
 pkgname=procs
-pkgver=0.8.3
+pkgver=0.9.16
 pkgrel=1
-pkgdesc='A modern replacement for ps written by Rust '
+pkgdesc="A modern replacement for ps written in Rust"
 arch=('x86_64')
-url='https://github.com/dalance/procs'
+url="https://github.com/dalance/procs"
 license=('MIT')
-makedepends=('rust')
-depends=()
+makedepends=('rustup')
+depends=('gcc-libs')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f4faa0a4b25dd3304344c75cf8ed4d909fd19e365c5312b6edac0984276ad978')
+sha256sums=('98a32872bf710a5d821a9764d3ab5863109646937b0205edc1bdca71425195e3')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  cargo build --release
+    cd "$pkgname-$pkgver"
+    rustup override set 1.41.1
+    cargo build --release --locked
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
