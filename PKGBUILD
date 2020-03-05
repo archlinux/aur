@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ffms2-git
-pkgver=2.23.187.gc3fc445
+pkgver=2.23.203.gbda9eeb
 pkgrel=1
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
@@ -30,18 +30,21 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  (cd ffms2; mkdir -p src/config; autoreconf -vfi)
-
-  cd build
-  ../ffms2/configure \
-    --prefix=/usr \
-    --enable-shared=yes \
-    --enable-static=no
+  cd ffms2
+  mkdir -p src/config
+  autoreconf -vfi
 
 }
 
 build() {
-  make -C build
+  cd build
+  ../ffms2/configure \
+    --prefix=/usr \
+    --enable-shared=yes \
+    --enable-static=no \
+    --enable-avisynth-cpp
+
+  make
 }
 
 package() {
