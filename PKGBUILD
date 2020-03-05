@@ -48,7 +48,7 @@ package_avisynthplus-git() {
 
   #install -Dm644 avisynthplus/distrib/docs/english/build/man/avisynth.1 "${pkgdir}/usr/share/man/man1/avisynth.1"
 
-  (cd avisynthplus/distrib/Examples; find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/vapoursynth/Examples/{}" \;)
+  (cd avisynthplus/distrib/Examples; find . -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/avisynth/Examples/{}" \;)
 }
 
 package_avisynthplus-docs-git() {
