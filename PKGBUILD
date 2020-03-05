@@ -11,9 +11,9 @@
 ##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 38
+## Valid numbers between: 0 to 39
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 38 => native
+## Good option if your package is for one machine: 39 => native
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
@@ -90,7 +90,7 @@ done
     
 
 sha256sums=('5e43f89ea85beaed40c91a74cdc29b4122ecb1aac84bed640f26286557d402ab'
-            '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
+            'e515f5f1d204d54a11e0b0c294f78b3274b3e1842da3fdcd309dec0f53af543c'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
 export KBUILD_BUILD_HOST=archlinux
