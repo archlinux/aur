@@ -1,13 +1,13 @@
 pkgbase = hledger-git
 	pkgdesc = The hledger command-line and web-based accounting tool
-	pkgver = 20160907
-	pkgrel = 1
+	pkgver = 20191113
+	pkgrel = 2
 	url = http://hledger.org
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = haskell-stack
+	makedepends = stack
 	depends = ncurses
 	provides = hledger
 	provides = hledger-ui
