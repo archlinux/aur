@@ -1,7 +1,7 @@
 # Maintainer: Edoardo Morassutto <edoardo.morassutto@gmail.com>
 
 pkgname=task-maker-rust
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="The new cmsMake! (this time in Rust)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -10,16 +10,26 @@ license=('MPL2')
 makedepends=('cargo')
 optdepends=('texlive-core: booklet compilations')
 source=("https://github.com/edomora97/task-maker-rust/archive/v${pkgver}.tar.gz")
-sha256sums=('4bef5878933fc34c1c75d9a425af0ebc10ac1096f43036dd60f5c68a4587ad46')
+sha256sums=('2615ac7ed11436dfcea08f05135d12e394d584efb3d88ae8f09cc7c82ce6de4a')
 
 build() {
     cd "$srcdir/task-maker-rust-${pkgver}"
     TM_DATA_DIR=/usr/share/task-maker-rust cargo build --release
+    cargo run --release --bin task-maker-gen-autocompletion
 }
 
 package() {
     cd "$srcdir/task-maker-rust-${pkgver}"
+    # main binary
     install -Dm755 "target/release/task-maker" "$pkgdir/usr/bin/task-maker-rust"
+    # runtime data
     install -dDm755 "$pkgdir/usr/share/task-maker-rust"
     cp -rT data "$pkgdir/usr/share/task-maker-rust"
+    # autocompletion files
+    install -Dm644 "target/autocompletion/task-maker-rust.bash" "$pkgdir/usr/share/bash-completion/completions/task-maker-rust"
+    install -Dm644 "target/autocompletion/_task-maker-rust" "$pkgdir/usr/share/zsh/site-functions/_task-maker-rust"
+    install -Dm644 "target/autocompletion/task-maker-rust.fish" "$pkgdir/usr/share/fish/completions/task-maker-rust.fish"
+    # vim syntax highlight
+    install -Dm644 "tools/vim/ftdetect/cases_gen.vim" "$pkgdir/usr/share/vim/vimfiles/ftdetect/cases_gen.vim"
+    install -Dm644 "tools/vim/syntax/cases_gen.vim" "$pkgdir/usr/share/vim/vimfiles/syntax/cases_gen.vim"
 }
