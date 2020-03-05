@@ -1,0 +1,18 @@
+pkgbase = clipmenu-git
+	pkgdesc = Clipboard management using dmenu
+	pkgver = 5.6.0.r9.ga495bcc
+	pkgrel = 1
+	url = http://github.com/cdown/clipmenu
+	arch = any
+	license = Public Domain
+	makedepends = git
+	depends = dmenu
+	depends = xsel
+	depends = clipnotify
+	provides = clipmenu
+	conflicts = clipmenu
+	source = git://github.com/cdown/clipmenu.git
+	md5sums = SKIP
+
+pkgname = clipmenu-git
+
