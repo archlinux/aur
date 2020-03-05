@@ -3,7 +3,7 @@
 pkgname=motionbox
 _pkgname=motionbox
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
 url="http://omega.gg/MotionBox/"
@@ -17,7 +17,7 @@ source=(
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
     https://github.com/G-P-L/AUR/raw/master/MotionBox/libdouble-conversion.so.1
 )
-sha256sums=('7d5f8a1e509ff98d74c7e081820ea5ad46b7b9e5304e3712f08ed37aa29a7c05'
+sha256sums=('eda8dccce45866ecba3b8dc657b05b98363ec3af8d79d024a46e4b66ab607d62'
             'c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7'
             '7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72'
             '4306f334766de8c464f232504614f3511161a4705dc7a7820dc2644e9c4741d2')
