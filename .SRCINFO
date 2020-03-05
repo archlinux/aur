@@ -1,6 +1,6 @@
 pkgbase = python-identify
 	pkgdesc = File identification library for Python.
-	pkgver = 1.4.3
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/chriskuehl/identify
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-identify
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/chriskuehl/identify/archive/v1.4.3.tar.gz
-	sha256sums = 44cb90e9e59a9c27db63136d659efb9d85c39408bd8e00c0fb2f77ed98b05d25
+	source = https://github.com/chriskuehl/identify/archive/v1.4.11.tar.gz
+	sha256sums = c7f721750ea07a1d94fd0d4bfd505c04a8c39bbbc459504f92fa65c3272dd00f
 
 pkgname = python-identify
 	pkgdesc = File identification library for Python. (python3 version)
