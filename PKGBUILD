@@ -4,8 +4,8 @@ pkgname=(
 	python-rotate-backups
 )
 pkgbase=rotate-backups
-pkgver=6.0
-pkgrel=2
+pkgver=8.0
+pkgrel=1
 pkgdesc="Simple command line interface for backup rotation"
 arch=(any)
 url="https://github.com/xolox/python-rotate-backups"
@@ -29,9 +29,7 @@ makedepends=(
 source=(
 	"https://files.pythonhosted.org/packages/source/${pkgbase::1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz"
 )
-sha256sums=(
-	f342d87ed7e13df132110011985eb781a83ab4a4649c99de4cbd4573950dcc58
-)
+sha256sums=('74468b2d0eb693918931cb92a63a3246479520b949a7ea37e029f08103fd07ee')
 
 prepare() {
 	cd "${pkgbase}-${pkgver}"
