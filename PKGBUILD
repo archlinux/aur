@@ -1,6 +1,6 @@
 maintainer="Milk Brewster (milkii on Freenode)"
 pkgname=mod-cv-plugins-git
-pkgver=r143.8dee8b7
+pkgver=r189.1fa2d2b
 pkgrel=1
 pkgdesc="CV (audio-rate control) LV2 plugins from MOD Devices."
 #epoch=0
@@ -18,7 +18,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/moddevices/mod-cv-plugins")
+source=("git+https://github.com/mxmilkb/mod-cv-plugins")
 noextract=()
 md5sums=('SKIP')
 #sha1sums=()
@@ -37,6 +37,7 @@ pkgver() {
 prepare()
 {
   cd "$srcdir/mod-cv-plugins"
+  git submodule update --init --recursive
 
 }
 
