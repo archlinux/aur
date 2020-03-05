@@ -1,0 +1,15 @@
+pkgbase = ropium
+	pkgdesc = A tool to makes ROP-exploits easy
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/Boyan-MILANOV/ropium
+	arch = x86_64
+	depends = python
+	depends = capstone
+	depends = ropgadget
+	depends = python-prompt_toolkit
+	source = ropium-3.2.tar.gz::https://github.com/Boyan-MILANOV/ropium/archive/v3.2.tar.gz
+	sha256sums = 03650ab4b58e8bc11362d31c4162b7c212920d4936bb8b05ec2ea4cdde95da64
+
+pkgname = ropium
+
