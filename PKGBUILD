@@ -2,7 +2,7 @@
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=libplacebo-git
-pkgver=v1.18.0.20.g22a9919
+pkgver=v1.29.1.7.gcf6d9ab
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
 url='https://github.com/haasn/libplacebo'
@@ -14,7 +14,6 @@ depends=('vulkan-icd-loader'
          )
 makedepends=('git'
              'meson'
-             'ninja'
              'vulkan-headers'
              )
 provides=('libplacebo'
