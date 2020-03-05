@@ -7,7 +7,7 @@
 _name=cx_Oracle
 pkgname=python-cx_oracle
 pkgver=7.3.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Python extension module that allows access to Oracle databases"
 arch=('i686' 'x86_64')
 url='https://oracle.github.io/python-cx_Oracle/'
