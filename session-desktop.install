@@ -1,0 +1,7 @@
+post_install() {
+	sudo ln -sf /opt/Session/session-messenger-desktop /usr/bin/session-messenger-desktop
+}
+
+post_remove() {
+	sudo rm /usr/bin/session-messenger-desktop
+}

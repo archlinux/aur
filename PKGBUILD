@@ -14,6 +14,8 @@ source_x86_64=("https://github.com/loki-project/session-desktop/releases/downloa
 
 depends=("libnotify" "libappindicator-gtk3" "libxtst" "nss" "alsa-lib" "libxss")
 
+install=${pkgname}.install
+
 package() {
           cd ${srcdir}
           tar xf data.tar.xz -C ${pkgdir} --exclude='./control'
