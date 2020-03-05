@@ -2,7 +2,7 @@
 
 pkgbase=avisynthplus-git
 pkgname=('avisynthplus-git' 'avisynthplus-docs-git')
-pkgver=v3.5.0.0.ge17f4f80
+pkgver=v3.5.0.1.g2fd4156e
 pkgrel=1
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
@@ -41,6 +41,8 @@ build() {
 
 package_avisynthplus-git() {
   depends=('gcc-libs')
+  provides=('avisynth')
+  conflicts=('avisynth')
 
   make -C build DESTDIR="${pkgdir}" install
 
@@ -50,8 +52,8 @@ package_avisynthplus-git() {
 }
 
 package_avisynthplus-docs-git() {
-   pkgdesc='AviSynth+ Documentation'
-   arch=('any')
+  pkgdesc='AviSynth+ Documentation'
+  arch=('any')
 
   (cd avisynthplus/distrib/docs/english/build/html; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/${i}"; done)
 }

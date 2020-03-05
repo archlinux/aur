@@ -1,6 +1,6 @@
 pkgbase = avisynthplus-git
 	pkgdesc = Avisynth+. (GIT Version)
-	pkgver = v3.5.0.0.ge17f4f80
+	pkgver = v3.5.0.1.g2fd4156e
 	pkgrel = 1
 	url = http://avs-plus.net
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = avisynthplus-git
 
 pkgname = avisynthplus-git
 	depends = gcc-libs
+	provides = avisynth
+	conflicts = avisynth
 
 pkgname = avisynthplus-docs-git
 	pkgdesc = AviSynth+ Documentation
