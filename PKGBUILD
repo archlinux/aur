@@ -1,10 +1,10 @@
 # Maintainer: Max Jöhnk <maxjoehnk@gmail.com>
 pkgname=colorex-git
-pkgver=r8.d06d766
+pkgver=r10.292a6e1
 pkgrel=1
 pkgdesc='colorex (colorize + regular expression) colorize input lines that match given patterns.'
 arch=('x86_64')
-url="https://github.com/aereal/colorex"
+url="https://github.com/maxjoehnk/colorex"
 license=('unknown')
 groups=()
 depends=('glibc')
