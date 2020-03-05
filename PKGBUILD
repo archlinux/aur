@@ -1,4 +1,5 @@
 # Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Pig Monkey <pm@pig-monkey.com>
 
 pkgname=monolith
 pkgver=2.1.1
