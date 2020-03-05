@@ -52,9 +52,7 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd vapoursynth
-  mkdir -p doc/_static
+  mkdir -p vapoursynth/doc/_static
 }
 
 build() {
@@ -66,8 +64,7 @@ build() {
 
   make
 
-  make -C "${srcdir}/vapoursynth/doc" html
-  make -C "${srcdir}/vapoursynth/doc" man
+  make -C "${srcdir}/vapoursynth/doc" html man
 }
 
 package() {
