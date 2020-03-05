@@ -1,6 +1,6 @@
 # Maintainer: Svitozar Cherepii <razotivs@gmail.com>
 pkgname=rvgl-skins
-pkgver=20.0120
+pkgver=20.0302
 pkgrel=1
 pkgdesc="Additional RVGL skins for default and pack cars."
 url='https://rvgl.re-volt.io'
@@ -10,9 +10,10 @@ depends=('rvgl-bin')
 optdepends=('rvgl-cars: additional cars skins provided for'
             'rvgl-cars-bonus: additional cars skins provided for')
 source=("$pkgname-$pkgver.zip::https://distribute.re-volt.io/packs/io_skins.zip")
-sha256sums=('b867b2f54e81dbce022a7390af577441f10320d0a505feb47119b278bc4bfc10')
+sha256sums=('20749cf4c146329d2ef4916a42f1822d2318b9aec196d744692e874616d53fea')
 
 package() {
+    rm cars/selsia/carcelicapp.bmp
     find cars -type f -exec \
         install -Dm644 {} "$pkgdir/opt/rvgl/{}" \;
 }

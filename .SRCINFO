@@ -1,6 +1,6 @@
 pkgbase = rvgl-skins
 	pkgdesc = Additional RVGL skins for default and pack cars.
-	pkgver = 20.0120
+	pkgver = 20.0302
 	pkgrel = 1
 	url = https://rvgl.re-volt.io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = rvgl-skins
 	depends = rvgl-bin
 	optdepends = rvgl-cars: additional cars skins provided for
 	optdepends = rvgl-cars-bonus: additional cars skins provided for
-	source = rvgl-skins-20.0120.zip::https://distribute.re-volt.io/packs/io_skins.zip
-	sha256sums = b867b2f54e81dbce022a7390af577441f10320d0a505feb47119b278bc4bfc10
+	source = rvgl-skins-20.0302.zip::https://distribute.re-volt.io/packs/io_skins.zip
+	sha256sums = 20749cf4c146329d2ef4916a42f1822d2318b9aec196d744692e874616d53fea
 
 pkgname = rvgl-skins
 
