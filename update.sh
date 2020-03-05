@@ -32,3 +32,6 @@ package() {
   install -m644 systemd/tailscaled.service "\$pkgdir/usr/lib/systemd/system"
 }
 EOF
+
+makepkg --printsrcinfo >.SRCINFO
+git commit -a -m "Update to version $version"
