@@ -55,5 +55,5 @@ package_avisynthplus-docs-git() {
   pkgdesc='AviSynth+ Documentation'
   arch=('any')
 
-  (cd avisynthplus/distrib/docs/english/build/html; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/${i}"; done)
+  (cd avisynthplus/distrib/docs/english/build/html; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/avisynth/${i}"; done)
 }
