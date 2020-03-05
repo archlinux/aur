@@ -48,7 +48,7 @@ build() {
 
 package() {
   install -Dm644 "${srcdir}/tsmuxer.desktop" "${pkgdir}/usr/share/applications/tsmuxergui.desktop"
-  install -Dm644 tsMuxer/tsMuxerGUI/images/icon.png "${pkgdir}/usr/share/pixmaps/tsmuxer.png"
+  install -Dm644 tsMuxer/tsMuxerGUI/images/icon.png "${pkgdir}/usr/share/pixmaps/tsmuxergui.png"
   install -Dm644 tsMuxer/LICENSE "${pkgdir}/usr/share/licenses/tsmuxer/LICENSE"
   install -Dm644 tsMuxer/README.md "${pkgdir}/usr/share/doc/tsmuxer/README.md"
   install -Dm644 tsMuxer/CHANGELOG.md "${pkgdir}/usr/share/doc/tsmuxer/CHANGELOG.md"
