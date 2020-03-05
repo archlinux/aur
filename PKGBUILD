@@ -46,7 +46,7 @@ package() {
     cd $srcdir/raclassic
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/openra-raclassic,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-raclassic
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA*.exe,*.dll*,VERSION} $pkgdir/usr/lib/openra-raclassic
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,'global mix database.dat',launch-dedicated.sh,launch-game.sh,OpenRA*.exe,*.dll*,VERSION} $pkgdir/usr/lib/openra-raclassic
     cp -r mods/raclassic $pkgdir/usr/lib/${_pkgname}/mods
     cp -r engine/mods/{common,modcontent,ra} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/openra-raclassic $pkgdir/usr/bin/openra-raclassic
