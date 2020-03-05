@@ -1,12 +1,13 @@
 pkgbase = i2c-tools-git
 	pkgdesc = Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors.
 	pkgver = r332.4b28579
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.kernel.org/pub/scm/utils/i2c-tools/i2c-tools.git/about/
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	makedepends = git
 	optdepends = read-edid: for decode-edid script
