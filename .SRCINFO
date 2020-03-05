@@ -11,6 +11,8 @@ pkgbase = qpicospeaker-git
 	makedepends = qt5-multimedia
 	depends = sox
 	depends = svox-pico-bin
+	provides = qpicospeaker
+	backup = 
 	source = git+https://github.com/Shadowsith/qpicospeaker
 	sha256sums = SKIP
 
