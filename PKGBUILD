@@ -2,7 +2,7 @@
 
 pkgname=session-desktop
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 license=('GPL-3.0')
