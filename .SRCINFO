@@ -1,0 +1,14 @@
+pkgbase = gula-plugins-git
+	pkgdesc = https://github.com/steveb/gula-plugins
+	pkgver = r45.fbc3c1a
+	pkgrel = 1
+	url = https://github.com/steveb/gula-plugins
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	depends = lv2
+	source = git+https://github.com/steveb/gula-plugins
+	md5sums = SKIP
+
+pkgname = gula-plugins-git
+
