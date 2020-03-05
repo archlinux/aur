@@ -1,6 +1,6 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=gula-plugins-git
-pkgdesc="https://github.com/steveb/gula-plugins"
+pkgdesc="A collection of guitar effect LV2 plugins originally for MOD Devices."
 pkgver=r45.fbc3c1a
 pkgrel=1
 epoch=
