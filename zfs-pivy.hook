@@ -40,11 +40,13 @@ zfs_decrypt_fs() {
     # get the encryption root
     encryptionroot=$(zfs get -H -o value encryptionroot "${dataset}")
 
+    msg "ZFS: unlocking ${encryptionroot}"
+
     # export encription root to be used by other hooks (SSH)
     echo "${encryptionroot}" > /.encryptionroot
 
     # if the dataset has an ebox, use pivy-zfs to unlock it
-    if [ "$(zfs get -H -o source rfd77:ebox "${dataset}")" == "local" ]; then
+    if [ "$(zfs get -H -o source rfd77:ebox "${encryptionroot}")" == "local" ]; then
         # loop until pivy-zfs unlock succeeds
         while [ "$(zfs get -H -o value keystatus "${encryptionroot}")" != "available" ] &&
           ! eval pivy-zfs unlock "${encryptionroot}"; do
