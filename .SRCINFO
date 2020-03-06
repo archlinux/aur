@@ -1,7 +1,7 @@
 pkgbase = supersm
 	pkgdesc = A Super Symlink Manager
-	pkgver = 0.4
-	pkgrel = 4
+	pkgver = 0.5
+	pkgrel = 1
 	url = https://github.com/peeweep/supersm
 	arch = any
 	license = MIT
@@ -9,8 +9,8 @@ pkgbase = supersm
 	makedepends = cmake
 	provides = supersm
 	conflicts = supersm-git
-	source = supersm-0.4.tar.gz::https://github.com/peeweep/supersm/archive/0.4.tar.gz
-	sha256sums = 52f8e73ef28480232d3372c9f508c433e1ff28bb403f895e2a969dcfef75494b
+	source = supersm-0.5.tar.gz::https://github.com/peeweep/supersm/archive/0.5.tar.gz
+	sha256sums = 95543fefc390a8447811a6e57060e4c58954064297a6e02921a2cf49a6bf5c8f
 
 pkgname = supersm
 
