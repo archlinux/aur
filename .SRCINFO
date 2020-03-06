@@ -1,6 +1,6 @@
 pkgbase = gogetdoc-git
 	pkgdesc = Gets documentation for items in Go source code.
-	pkgver = 61.20171215
+	pkgver = 91.20190227
 	pkgrel = 1
 	url = https://github.com/zmb3/gogetdoc
 	arch = i686
