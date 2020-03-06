@@ -3,7 +3,7 @@
 _pkgname=ydotool
 pkgname=$_pkgname-git
 pkgver=v0.1.8.r29.g7764122
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64')
 depends=('libevdevplus' 'libuinputplus' 'boost-libs')
@@ -28,7 +28,8 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DSTATIC_BUILD=0
   make
 }
 
