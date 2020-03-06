@@ -5,7 +5,7 @@ pkgbase = r-desc
 	url = https://cran.r-project.org/package=desc
 	arch = any
 	license = MIT
-	depends = r
+	depends = r>=3.1.0
 	depends = r-assertthat
 	depends = r-r6
 	depends = r-crayon
