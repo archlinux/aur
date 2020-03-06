@@ -1,27 +1,32 @@
-# Maintainer: Rafał Kozdrój <kozeid2+aur@gmail.com>
-# Contributor: kikadf <kikadf.01@gmail.com>
-# Contributor: Daniel Henry <d at hackr dot pl>
-# Contributor: Miguel Revilla <yo at  miguelrevilla dot com>
-# Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
-# Contributor: Hexchain Tong <i at hexchain dot org>
+# Maintainer : bartus <arch-local-repo(at).bartus.33mail.com>
+# Contributor : Rafał Kozdrój <kozeid2+aur@gmail.com>
+# Contributor : kikadf <kikadf.01@gmail.com>
+# Contributor : Daniel Henry <d at hackr dot pl>
+# Contributor : Miguel Revilla <yo at  miguelrevilla dot com>
+# Contributor : Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
+# Contributor : Hexchain Tong <i at hexchain dot org>
+# shellcheck disable=SC2034,SC2154 # unused/uninitialized variables
+# shellcheck disable=SC2164 # cd safe
 
-pkgname=megasync
+pkgname=megasync-nopdfium
 pkgver=4.3.0.8
 pkgrel=1
-pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
+pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
+provides=(megasync)
+conflicts=(megasync)
 url="https://github.com/meganz/MEGAsync"
 license=('custom:MEGA LIMITED CODE REVIEW LICENCE')
 depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
-         'qt5-svg' 'libmediainfo' 'libraw' 'qt5-base' 'ffmpeg' 'libpdfium')
+         'qt5-svg' 'libmediainfo' 'libraw' 'qt5-base' 'ffmpeg')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
 _extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
-        "pdfium.patch")
+        )
 sha256sums=('SKIP'
             'SKIP'
-            'f913ff490771e170610829f42f9285412ed8f4e7343f5dd7cb33e3bda4175aba')
+            )
 
 prepare() {
     cd "MEGAsync"
@@ -29,8 +34,9 @@ prepare() {
     git config submodule.src/MEGASync/mega.url "../meganz-sdk"
     git submodule update
 
-    cd "src/MEGASync/mega"
-    patch -Np1 -i "../../../../pdfium.patch"
+    cd "src/MEGASync"
+    sed -i '/DEFINES += REQUIRE_HAVE_PDFIUM/d' MEGASync.pro
+    sed -i '/CONFIG += USE_PDFIUM/d' MEGASync.pro
 }
 
 build() {
@@ -71,7 +77,7 @@ package () {
     install -Dm 644 src/MEGASync/mega/LICENSE "${pkgdir}/usr/share/licenses/megasync/SDK-LICENCE"
     
     cd "src"
-    mkdir -pm 755 "${pkgdir}/usr/bin"
+    install -dm 755 "${pkgdir}/usr/bin"
     make INSTALL_ROOT="${pkgdir}" TARGET="${pkgdir}/usr/bin/megasync" install
 
     install -Dm 755 "MEGASync/megasync" "${pkgdir}/usr/bin/megasync"
