@@ -24,32 +24,36 @@ cat << EOF
    11) AMD Family 15h (Steamroller)
    12) AMD Family 15h (Excavator)
    13) AMD Family 17h (Zen)
-   14) Transmeta Crusoe
-   15) Transmeta Efficeon
-   16) IDT Winchip C6
-   17) Winchip-2/Winchip-2A/Winchip-3
-   18) AMD Elan
-   19) Geode GX1 (Cyrix MediaGX)
-   20) AMD Geode GX and LX
-   21) Cyrix III or C3
-   22) VIA C3 "Nehemiah"
-   23) VIA C7
-   24) Intel Pentium 4, Pentium D and older Nocona/Dempsey Xeon CPUs with Intel 64bit
-   25) Intel Atom
-   26) Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and 53xx)
-   27) Intel 1st Gen Core i3/i5/i7-family (Nehalem)
-   28) Intel 1.5 Gen Core i3/i5/i7-family (Westmere)
-   29) Intel Silvermont
-   30) Intel 2nd Gen Core i3/i5/i7-family (Sandybridge)
-   31) Intel 3rd Gen Core i3/i5/i7-family (Ivybridge)
-   32) Intel 4th Gen Core i3/i5/i7-family (Haswell)
-   33) Intel 5th Gen Core i3/i5/i7-family (Broadwell)
-   34) Intel 6th Gen Core i3/i5/i7-family (Skylake)
-   35) Intel 6th Gen Core i7/i9-family (Skylake X)
-   36) Intel 8th Gen Core i3/i5/i7-family (Cannon Lake)
-   37) Intel 8th Gen Core i7/i9-family (Ice Lake)
+   14) AMD Family 17h (Zen 2)
+   15) Transmeta Crusoe
+   16) Transmeta Efficeon
+   17) IDT Winchip C6
+   18) Winchip-2/Winchip-2A/Winchip-3
+   19) AMD Elan
+   20) Geode GX1 (Cyrix MediaGX)
+   21) AMD Geode GX and LX
+   22) Cyrix III or C3
+   23) VIA C3 "Nehemiah"
+   24) VIA C7
+   25) Intel Pentium 4, Pentium D and older Nocona/Dempsey Xeon CPUs with Intel 64bit
+   26) Intel Atom
+   27) Intel Core 2 and newer Core 2 Xeons (Xeon 51xx and 53xx)
+   28) Intel 1st Gen Core i3/i5/i7-family (Nehalem)
+   29) Intel 1.5 Gen Core i3/i5/i7-family (Westmere)
+   30) Intel Silvermont
+   31) Intel Goldmont (Apollo Lake and Denverton)
+   32) Intel Goldmont Plus (Gemini Lake)
+   33) Intel 2nd Gen Core i3/i5/i7-family (Sandybridge)
+   34) Intel 3rd Gen Core i3/i5/i7-family (Ivybridge)
+   35) Intel 4th Gen Core i3/i5/i7-family (Haswell)
+   36) Intel 5th Gen Core i3/i5/i7-family (Broadwell)
+   37) Intel 6th Gen Core i3/i5/i7-family (Skylake)
+   38) Intel 6th Gen Core i7/i9-family (Skylake X)
+   39) Intel 8th Gen Core i3/i5/i7-family (Cannon Lake)
+   40) Intel 8th Gen Core i7/i9-family (Ice Lake)
+   41) Xeon processors in the Cascade Lake family
 
-   38) Native optimizations autodetected by GCC
+   42) Native optimizations autodetected by GCC
 
     0) Generic (default)
     
@@ -89,15 +93,18 @@ case $answer in
    28) Microarchitecture=CONFIG_MNEHALEM ;;
    29) Microarchitecture=CONFIG_MWESTMERE ;;
    30) Microarchitecture=CONFIG_MSILVERMONT ;;
-   31) Microarchitecture=CONFIG_MSANDYBRIDGE ;;
-   32) Microarchitecture=CONFIG_MIVYBRIDGE ;;
-   33) Microarchitecture=CONFIG_MHASWELL ;;
-   34) Microarchitecture=CONFIG_MBROADWELL ;;
-   35) Microarchitecture=CONFIG_MSKYLAKE ;;
-   36) Microarchitecture=CONFIG_MSKYLAKEX ;;
-   37) Microarchitecture=CONFIG_MCANNONLAKE ;;
-   38) Microarchitecture=CONFIG_MICELAKE ;;
-   39) Microarchitecture=CONFIG_MNATIVE ;;
+   31) Microarchitecture=CONFIG_MGOLDMONT ;;
+   32) Microarchitecture=CONFIG_MGOLDMONTPLUS ;;
+   33) Microarchitecture=CONFIG_MSANDYBRIDGE ;;
+   34) Microarchitecture=CONFIG_MIVYBRIDGE ;;
+   35) Microarchitecture=CONFIG_MHASWELL ;;
+   36) Microarchitecture=CONFIG_MBROADWELL ;;
+   37) Microarchitecture=CONFIG_MSKYLAKE ;;
+   38) Microarchitecture=CONFIG_MSKYLAKEX ;;
+   39) Microarchitecture=CONFIG_MCANNONLAKE ;;
+   40) Microarchitecture=CONFIG_MICELAKE ;;
+   41) Microarchitecture=CONFIG_MCASCADELAKE ;;
+   42) Microarchitecture=CONFIG_MNATIVE ;;
     *) default=CONFIG_GENERIC_CPU ;;
 esac
 
