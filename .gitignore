@@ -1,6 +1,0 @@
-*
-!/PKGBUILD
-!/.SRCINFO
-!/.gitignore
-!/private-build-plans.toml.example
-!/toothless-G.patch

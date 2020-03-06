@@ -2,7 +2,7 @@
 # Contributor: Markus Weimar <mail@markusweimar.de>
 pkgname=ttf-iosevka-custom-git
 pkgver=r1397.d5dd611b
-pkgrel=2
+pkgrel=1
 pkgdesc='A slender monospace sans-serif and slab-serif typeface inspired by Pragmata Pro, M+ and PF DIN Mono.'
 arch=('any')
 url='https://be5invis.github.io/Iosevka/'
@@ -12,13 +12,13 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 provides=()
 source=(
-  "git+https://github.com/be5invis/Iosevka"
-  "private-build-plans.toml.example"
-  "toothless-G.patch"
+  'git+https://github.com/be5invis/Iosevka'
+  'private-build-plans.toml.example'
+  'toothless-G.patch'
 )
 sha256sums=(
   'SKIP'
-  '930cc4b63f9076e6cb40599ef7d51fc7fdab2eaac6a76bf344eb2d79ee4a950e'
+  '6004e471b9188445cc8c6c371384a42bedeecb1935765db1d82b4677b1342bc2'
   '56d1d97b421ab462d71875ecadf57d65ee45fe26edee50922ae9ae96350cff52'
 )
 
@@ -33,10 +33,11 @@ prepare() {
     cp "$buildplans" Iosevka/
   else
     echo ">>> $buildplans not found, using private-build-plans.toml.example"
-    cp private-build-plans.toml.example Iosevka/
+    cp private-build-plans.toml.example Iosevka/private-build-plans.toml
   fi
 
   cd Iosevka
+
   # patch -p1 < ../toothless-G.patch
 
   # Uncomment the above line to get back the smoother capital G,
@@ -47,6 +48,7 @@ prepare() {
 build() {
   cd Iosevka
   npm install
+  npm update
   npm run build -- ttf::iosevka-custom
 }
 
