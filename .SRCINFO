@@ -1,7 +1,8 @@
 pkgbase = mingw-w64-portaudio
 	pkgdesc = A free, cross-platform, open source, audio I/O library. (mingw-w64)
-	pkgver = 190600_20161030
-	pkgrel = 2
+	pkgver = 19.6.0
+	pkgrel = 1
+	epoch = 1
 	url = http://www.portaudio.com
 	arch = any
 	license = custom
@@ -15,9 +16,11 @@ pkgbase = mingw-w64-portaudio
 	source = http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz
 	source = fix-build.patch
 	source = wdmks-wasapi-dsound.patch.tar.gz
+	source = fix-memmove-chk-error.patch
 	sha256sums = f5a21d7dcd6ee84397446fa1fa1a0675bb2e8a4a6dceb4305a8404698d8d1513
 	sha256sums = 77e8438d482ad03baa5c23afbe293e8cbdb95287ff6a489515bde61231e78525
 	sha256sums = e0d2c619323e81e2b9539bb6f061289f08f2a01b6c7edd6228f7e750b0421166
+	sha256sums = d1d83ed329b43f3ac89c653b7a01d0ba57eb94020c640490fbb1572b3b638273
 
 pkgname = mingw-w64-portaudio
 
