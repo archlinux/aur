@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=3945.r2.5dccce5c7d
+pkgver=3987.r3.b84f5d0308
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -14,14 +14,12 @@ makedepends=('git' 'python2' 'gn' 'ninja')
 
 source=("git+https://pdfium.googlesource.com/pdfium"
 	"git+https://chromium.googlesource.com/chromium/src/build.git"
-	"git+https://chromium.googlesource.com/chromium/src/buildtools.git"
 	"libpdfium.pc"
 	)
 
 md5sums=('SKIP'
          'SKIP'
-         'SKIP'
-         '7fbbe2baf9a1fed80ad74278e901fa0e')
+         'feb270967925a0844b1b9a9e15288eb3')
 
 pkgver() {
 
@@ -39,7 +37,6 @@ prepare() {
   cd "$srcdir/pdfium"
 
   ln -sf $srcdir/build build
-  ln -sf $srcdir/buildtools buildtools
 
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
@@ -55,10 +52,6 @@ prepare() {
   cd "$srcdir/pdfium/build"
   git checkout $(awk '/build_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
   
-  # Extract buildtools repo revision needed from DEPS file and do a checkout
-  cd "$srcdir/pdfium/buildtools"
-  git checkout $(awk '/buildtools_revision/ {print substr($2,2,40)}' $srcdir/pdfium/DEPS) -q
-
   # Use system provided icu library (unbundling)
   mkdir -p "$srcdir/pdfium/third_party/icu"
   ln -sf "$srcdir/build/linux/unbundle/icu.gn" "$srcdir/pdfium/third_party/icu/BUILD.gn"
@@ -70,7 +63,7 @@ prepare() {
     | base64 --decode > "$srcdir/pdfium/tools/generate_shim_headers/generate_shim_headers.py"
   echo "Done."
 
-}
+} 
 
 build() {
 
