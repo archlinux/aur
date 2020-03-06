@@ -7,9 +7,10 @@ pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 license=('GPL-3.0')
 url="https://getsession.org"
+conflicts=("session-desktop-bin")
 
 source=()
-sha256sums_x86_64=("5bf7cc6ff54239064c7a8d9b4cf6c25ad577fde7013a289f58eff9be41a9b9c0")
+sha256sums_x86_64=("792352d0862ecba075c785832a6dec7b9aa99e2da8a43de848bed6754d0f64e1")
 source_x86_64=("https://github.com/loki-project/session-desktop/releases/download/v${pkgver}/session-messenger-desktop-linux-amd64-${pkgver}.deb")
 
 depends=("libnotify" "libappindicator-gtk3" "libxtst" "nss" "alsa-lib" "libxss")

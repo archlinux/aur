@@ -12,8 +12,9 @@ pkgbase = session-desktop
 	depends = nss
 	depends = alsa-lib
 	depends = libxss
+	conflicts = session-desktop-bin
 	source_x86_64 = https://github.com/loki-project/session-desktop/releases/download/v1.0.4/session-messenger-desktop-linux-amd64-1.0.4.deb
-	sha256sums_x86_64 = 5bf7cc6ff54239064c7a8d9b4cf6c25ad577fde7013a289f58eff9be41a9b9c0
+	sha256sums_x86_64 = 792352d0862ecba075c785832a6dec7b9aa99e2da8a43de848bed6754d0f64e1
 
 pkgname = session-desktop
 
