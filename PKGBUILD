@@ -1,8 +1,8 @@
 # Maintainer: Yash Karandikar <nerdstep710@gmail.com>
 
 pkgname=haur
-pkgver=2.2
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="Helper for the Arch User Repository"
 arch=('any')
 url="https://github.com/karx1/haur"
