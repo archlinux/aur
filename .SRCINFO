@@ -1,8 +1,8 @@
 pkgbase = ignition-cmake-0
 	pkgdesc = Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against.
 	pkgver = 0.6.1
-	pkgrel = 2
-	url = http://ignitionrobotics.org/libs/cmake
+	pkgrel = 3
+	url = https://ignitionrobotics.org/libs/cmake
 	arch = any
 	groups = development
 	license = Apache
