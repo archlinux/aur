@@ -1,7 +1,7 @@
 # Maintainer: Michał Przybyś <michal@przybys.eu>
 pkgname=roslynpad
 pkgver=14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform C# editor based on Roslyn and AvalonEdit'
 arch=(any)
 url='https://roslynpad.net/'
@@ -23,7 +23,7 @@ package() {
     install -dm755 "${pkgdir}"/opt/roslynpad
     cp -aR "${srcdir}"/* "${pkgdir}"/opt/roslynpad/
 
-    install -Dm777 roslynpad "${pkgdir}"/usr/bin/roslynpad
+    install -Dm755 roslynpad "${pkgdir}"/usr/bin/roslynpad
     install -Dm644 RoslynPad.png "${pkgdir}"/usr/share/pixmaps/roslynpad.png
     install -Dm644 roslynpad.desktop "${pkgdir}"/usr/share/applications/roslynpad.desktop
 }

@@ -1,7 +1,7 @@
 pkgbase = roslynpad
 	pkgdesc = A cross-platform C# editor based on Roslyn and AvalonEdit
 	pkgver = 14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://roslynpad.net/
 	arch = any
 	license = Apache
