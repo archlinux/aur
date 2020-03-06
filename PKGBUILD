@@ -1,32 +1,31 @@
 # Maintainer: Ilaï Deutel
 
 pkgname=scc
-pkgver=2.11.0
+pkgver=2.12.0
 pkgrel=1
 pkgdesc='Sloc, Cloc and Code: a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go'
 arch=('x86_64' 'i386')
 url="https://github.com/boyter/scc"
 license=('MIT' 'Unlicense')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$pkgname-$pkgver::https://github.com/boyter/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('04fbfebc92180a72413b68e4475fac590309a7f2fb365ea5105cc36301155300')
+sha256sums=('48baba45e76ef02bb23ded3d1d904fed7e19297066a47b7e6b46baadc50c1eb1')
 
 prepare(){
   mkdir -p gopath/src/github.com/boyter
   ln -rTsf $pkgname-$pkgver gopath/src/github.com/boyter/$pkgname
   export GOPATH="$srcdir"/gopath
 
-  # the dependencies can be fetched here if needed
-  cd gopath/src/github.com/boyter/$pkgname
   # dep ensure fails because it updates vendor/github.com/monochromegane/go-gitignore
+  # cd gopath/src/github.com/boyter/$pkgname
   # dep ensure
 }
 
 build() {
   export GOPATH="$srcdir"/gopath
   cd "$GOPATH/src/github.com/boyter/$pkgname"
-  go build \
+  go install \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
     -v ./...
