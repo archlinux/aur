@@ -3,7 +3,7 @@
 # Contributor: Kazuo Teramoto <kaz.rag at gmail.com>
 
 pkgname=afew-git
-pkgver=1.3.0.r57.g3bb53db
+pkgver=2.0.0.r38.gf581330
 pkgrel=1
 epoch=1
 pkgdesc='Initial tagging script for notmuch mail'
@@ -11,7 +11,7 @@ arch=(any)
 url=https://github.com/afewmail/afew
 license=('custom:BSD')
 depends=('notmuch' 'python-chardet' 'python-dkim' 'python-setuptools')
-makedepends=('git' 'python-setuptools-scm' 'python-sphinx')
+makedepends=('git' 'python-freezegun' 'python-setuptools-scm' 'python-sphinx')
 provides=('afew')
 conflicts=('afew')
 source=("git+$url.git")
