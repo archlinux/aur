@@ -7,7 +7,7 @@
 pkgname=grafana-bin
 _pkgname=grafana
 pkgver=6.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version"
 url="http://grafana.org"
 conflicts=('grafana')
@@ -32,11 +32,11 @@ package() {
   install -Dm644 "${srcdir}/grafana.service" "$pkgdir/usr/lib/systemd/system/grafana.service"
   cd "${srcdir}/${_pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/var/lib/grafana"
-  install -dm755 "${pkgdir}/var/logs/grafana"
+  install -dm755 "${pkgdir}/var/log/grafana"
   install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
   install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
   sed -i '/^;data = /c\data = /var/lib/grafana' conf/sample.ini
-  sed -i '/^;logs = /c\logs = /var/logs/grafana' conf/sample.ini
+  sed -i '/^;logs = /c\logs = /var/log/grafana' conf/sample.ini
   install -Dm644 conf/sample.ini "$pkgdir/etc/${_pkgname}/${_pkgname}.ini"
   install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
   cp -r public scripts tools "$pkgdir/usr/share/grafana/"
