@@ -1,11 +1,12 @@
 [Desktop Entry]
-Name=Clonk Rage
+Name=LegacyClonk
 Type=Application
 Comment=An entertaining, action-packed game of strategy, tactics, and skill.
-Icon=clonk_rage
+Icon=legacyclonk
 Categories=Game;ActionGame;
 MimeType=application/x-vnd.clonk.c4key;application/vnd.clonk.c4group
 StartupNotify=true
-StartupWMClass=Clonk Rage
-Exec=clonk_rage
+StartupWMClass=LegacyClonk
+Exec=legacyclonk
+Path=/usr/share/legacyclonk
 Terminal=false

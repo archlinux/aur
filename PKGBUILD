@@ -1,24 +1,31 @@
 # Maintainer: George Tokmaji <tokmajigeorge@gmail.com>
 # Contributor:
-pkgname=clonk_rage-git
-pkgver=r66.aeee02d
+pkgbase=clonk_rage-git
+pkgname=legacyclonk-git
+pkgver=r433.e70d3d3
 pkgrel=1
 pkgdesc="An entertaining, action-packed game of strategy, tactics, and skill."
 arch=('i686' 'x86_64')
 url="http://clonk.de"
 license=('ISC' 'CCPL:by-nc' 'custom:trademark')
 groups=('games')
-provides=('clonk_rage-git', 'clonk_rage')
-conflicts=('clonk_rage', 'openclonk')
+provides=('clonk_rage-git' 'clonk_rage' 'legacyclonk')
+replaces=('clonk_rage-git')
+conflicts=('clonk_rage' 'legacyclonk')
 
-depends=('glu' 'libxpm' 'sdl_mixer' 'gtk2' 'libpng12'
+depends=('libxpm' 'sdl_mixer' 'gtk2' 'libpng12'
          'libjpeg-turbo' 'desktop-file-utils' 'timidity++' 'glew')
 
-makedepends=('git' 'cmake' 'make')
+makedepends=('git' 'cmake' 'make' 'zip')
 
-source=("$pkgname::git+https://git.maxmitti.tk/lc#branch=master")
+source=(
+    "$pkgname::git+https://github.com/legacyclonk/LegacyClonk#branch=master"
+    'https://github.com/legacyclonk/content/releases/download/continuous-master/LC_Content.zip'
+    )
 
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
+options=('!strip')
+_directory='legacyclonk'
 
 pkgver() {
   cd "$pkgname"
@@ -33,57 +40,43 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  cmake .
+  cmake . -DCMAKE_PREFIX_PATH='/usr' -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWITH_DEVELOPER_MODE=ON
   make
 }
 package() {
   cd "$pkgname"
+  
+  C4GROUP='./c4group' tools/make_System.c4g.sh
+  C4GROUP='./c4group' tools/make_Graphics.c4g.sh
+  
   # create directories
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   install -d "$pkgdir"/usr/share/icons/hicolor/48x48/mimetypes
 
   # install licenses
   install -Dm644 licenses/clonk_{trademark,source}_license.txt "$pkgdir/usr/share/licenses/$pkgname/"
-  rm licenses/clonk_{trademark,source}_license.txt
   
-  mkdir --parents $pkgdir/usr/share/$pkgname || true
+  mkdir --parents $pkgdir/usr/share/$_directory || true
   
-  mv -f clonk $pkgdir/usr/share/$pkgname/clonk
-  mv -f c4group $pkgdir/usr/share/$pkgname/c4group
+  install -Dm774 clonk $pkgdir/usr/share/$_directory/clonk
+  install -Dm774 c4group $pkgdir/usr/share/$_directory/c4group
   
-  cd planet
-  #mv * "$pkgdir"/usr/share/$pkgname
-  cd ..
+  install -Dm644 {System,Graphics}.c4g "$pkgdir"/usr/share/$_directory
   
-  # load game data
-  if [ ! -e cr_full_linux.tar.bz2 ]
-  then
-    curl -O "http://www.clonkx.de/rage/cr_full_linux.tar.bz2"
-  fi
-  tar -xjvf cr_full_linux.tar.bz2
-  cd cr_full_linux
-  # rm System.c4g -- commented for now
-  mv *.c4? "$pkgdir"/usr/share/$pkgname
+  unzip -o ../../LC_Content.zip -d .
+  install -Dm644 *.c4? "$pkgdir"/usr/share/$_directory
   
   # install icons
-  install -Dm644 icons/cr.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/clonk_rage.png
-  install -Dm644 icons/c4{d,f,g,k,p,s,u}.png "$pkgdir"/usr/share/icons/hicolor/48x48/mimetypes/
+  install -dm644 /usr/share/icons/hicolor/48x48/apps
+  install -Dm644 src/res/lc.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps
   
-  chgrp -R games "$pkgdir"/usr/share/$pkgname
-  chmod -R g+w "$pkgdir"/usr/share/$pkgname
-  
-  # chmod exec's
-  chmod 774 "$pkgdir"/usr/share/$pkgname/clonk
-  chown root:root "$pkgdir"/usr/share/$pkgname/clonk
-  
-  chmod 774 "$pkgdir"/usr/share/$pkgname/c4group
-  chown root:root "$pkgdir"/usr/share/$pkgname/c4group
+  install -dm644 /usr/share/icons/hicolor/scalable/mimetypes
+  install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/scalable/mimetypes src/res/c4{d,f,g,k,p,s,u}.ico 
   
   # desktop launcher
-  mkdir --parents $pkgdir/usr/share/applications || true
-  install -Dm644 "$srcdir"/../clonk_rage.desktop "$pkgdir"/usr/share/applications/clonk_rage.desktop
+  #mkdir --parents $pkgdir/usr/share/applications || true
+  install -Dm644 "$srcdir"/../legacyclonk.desktop "$pkgdir"/usr/share/applications/legacyclonk.desktop
   
   # mime types
-  install -Dm644 "$srcdir"/../de_clonk.xml "$pkgdir"/usr/share/mime/packages/clonk_rage.xml
-
+  install -Dm644 "$srcdir"/../legacyclonk.xml "$pkgdir"/usr/share/mime/packages/legacyclonk.xml
 }
