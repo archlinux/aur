@@ -1,0 +1,57 @@
+diff -u10 -r classdesc-3.37/Makefile classdesc-3.37-patched/Makefile
+--- classdesc-3.37/Makefile	2020-01-31 04:48:20.000000000 +0100
++++ classdesc-3.37-patched/Makefile	2020-03-06 16:04:40.128764581 +0100
+@@ -11,21 +11,21 @@
+ endif
+ 
+ ifdef AEGIS
+ TRAVIS=1
+ endif
+ 
+ ifdef TRAVIS
+ FLAGS+=-Werror -Wall -Wno-unused-variable -std=c++98
+ endif
+ 
+-XDR=1
++#XDR=1
+ 
+ PREFIX=${HOME}/usr
+ 
+ OS=$(shell uname)
+ 
+ ifdef AEGIS  #keep a cached copy of sysincludes in home directory for AEGIS
+ SYSINCLUDES=${HOME}/usr/ecolab/sysincludes
+ else
+ SYSINCLUDES=sysincludes
+ endif
+@@ -134,28 +134,28 @@
+ 	cd doc && rm -f *~ *.aux *.dvi *.log *.blg *.toc *.lof
+ 	rm -rf ii_files */ii_files
+ 
+ # test compile Latex docs, if latex is on system
+ latex-docs:
+ 	if which latex; then cd doc; rm -f *.out *.aux *.dvi *.log *.blg *.toc *.lof; latex -interaction=batchmode classdesc; fi
+ 
+ install: build
+ 	-mkdir $(PREFIX)
+ 	-mkdir $(PREFIX)/bin
+-	-mkdir $(PREFIX)/include
++	-mkdir -p $(PREFIX)/include/classdesc
+ ifeq ($(OS),CYGWIN)
+ 	cp -f $(EXES:%=%.exe)  $(PREFIX)/bin
+ else
+ 	cp -f $(EXES)  $(PREFIX)/bin
+ endif
+ 	cp -f fix-privates $(PREFIX)/bin
+-	cp -f $(INCLUDES) $(PREFIX)/include
++	cp -f $(INCLUDES) $(PREFIX)/include/classdesc
+ #	-ln -s $(PREFIX)/include/pack_base.h $(PREFIX)/include/unpack_base.h
+ #	cp -r $(SYSINCLUDES) $(PREFIX)
+ 
+ sure: aegis-all
+ 	-ln -s pack_base.h unpack_base.h
+ 	-cd mpi-examples && $(MAKE) clean && $(MAKE) NOGUI=1
+ 	-cd examples && $(MAKE) clean && $(MAKE) NOGUI=1
+ #	-cd objc-examples && $(MAKE)
+ 	sh runtests "$(CPLUSPLUS) $(GCOV_FLAGS)" test/00/*.sh
+ 
