@@ -2,7 +2,7 @@
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=lib32-libcap
-pkgver=2.32
+pkgver=2.33
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=('lib32-glibc' 'lib32-attr' 'libcap')
 makedepends=('linux-api-headers')
 provides=('libcap.so')
 source=(https://kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-$pkgver.tar.{xz,sign})
-sha256sums=('1005e3d227f2340ad1e3360ef8b69d15e3c72a29c09f4894d7aac038bd26e2be'
+sha256sums=('08edeaba2757021aeec45c4eeec52566675e0e0f5d4f057284d729e04f2643d6'
             'SKIP')
 validpgpkeys=('38A644698C69787344E954CE29EE848AE2CCF3F4') # Andrew G. Morgan <morgan@kernel.org>
 
@@ -24,13 +24,22 @@ prepare() {
   sed -i "s/LDFLAGS :=/LDFLAGS +=/" Make.Rules
 }
 
+_makeargs=(
+  CC="gcc -m32"
+  KERNEL_HEADERS=/usr/include
+  RAISE_SETFCAP=no
+  SBINDIR=/usr/bin
+  lib=lib32
+  prefix=/usr
+)
+
 build() {
-  make -C libcap-$pkgver/libcap KERNEL_HEADERS=/usr/include CC="gcc -m32"
+  make -C libcap-$pkgver/libcap "${_makeargs[@]}"
 }
 
 package() {
-  cd libcap-$pkgver
-  make -C libcap prefix=/usr lib=lib32 DESTDIR="$pkgdir" RAISE_SETFCAP=no install
+  cd libcap-$pkgver/libcap
+  make DESTDIR="$pkgdir" "${_makeargs[@]}" install
 
   rm -r "$pkgdir"/usr/include
 }
