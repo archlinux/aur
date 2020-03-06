@@ -3,7 +3,7 @@
 
 pkgname=dupliseek-git
 pkgver() { git -C "${pkgname%-git}" describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'; }
-pkgver=0.0.3.r2.6cc6923
+pkgver=0.0.3.r3.340563c
 pkgrel=1
 epoch=1
 
@@ -34,8 +34,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  pip install --root="$pkgdir" --prefix=/usr --compile --no-deps \
-              --no-warn-script-location opencv-python
   python setup.py install --skip-build --optimize=1 --root="$pkgdir"
   install -Dm644 dupliseek_pkg/icons/compare.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   install -Dm644 "${pkgname%-git}.desktop" -t"$pkgdir/usr/share/applications/"
