@@ -4,33 +4,35 @@
 _pkgname=exaile
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=4.0.0rc5+0+g449775a8
+pkgver=4.0.2+205+gcf9b3e59
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('any')
-url="http://www.exaile.org"
+url="https://www.exaile.org"
 license=('GPL')
-depends=('gtk3' 'python2-mutagen' 'python2-dbus' 'python2-gobject' 
-         'python2-cairo' 'udisks2' 'librsvg' 'gst-plugins-good')
-makedepends=('git')
-optdepends=('python2-feedparser: podcasts plugin'
+depends=('gtk3' 'python-bsddb' 'python-mutagen' 'python-dbus' 'python-gobject' 
+         'python-cairo' 'udisks2' 'librsvg' 'gst-plugins-good')
+makedepends=('git' 'help2man')
+optdepends=('python-feedparser: podcasts plugin'
             'webkit2gtk: wikipedia plugin'
-            'python2-lxml: LyricsMania plugin'
-            'cddb-py: look up CD tags'
+            'python-lxml: LyricsMania plugin'
+#           'cddb-py: look up CD tags' #from DEPS: (TODO: This is currently broken on python3, see #608 and #652)
             'libkeybinder3: Multimedia keys plugin'
-            'python2-beautifulsoup4: Lyrics Wiki plugin'
+            'python-beautifulsoup4: Lyrics Wiki plugin'
             'libnotify: Notify plugin'
             'streamripper: Streamripper plugin'
             'gnome-screensaver: Pause on screensaver plugin'
             'mate-screensaver: Pause on screensaver plugin'
             'cinnamon-screensaver: Pause on screensaver plugin'
-            'python2-musicbrainzngs: Musicbrainz cover search plugin'
-            'ipython2: Ipython console plugin'
-            'python2-pylast: Last.fm loved tracks plugin'
+            'moodbar: Moodbar plugin'
+            'python-musicbrainzngs: Musicbrainz cover search plugin'
+            'ipython: Ipython console plugin'
+            'python-pylast: Last.fm loved tracks plugin'
             'gst-plugins-bad: Additional audio codecs'
             'gst-plugins-ugly: Additional audio codecs'
             'spydaap-git: DAAP server/client')
-
+checkdepends=('python-mox3'
+              'python-pytest')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::git+https://github.com/exaile/exaile.git)
@@ -43,11 +45,16 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  make
+  make PREFIX="/usr"
+
+}
+
+check() {
+  cd "${_pkgname}"
+  make PYTEST="py.test" test
 }
 
 package() {
   cd "${_pkgname}"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
-  make clean
 }
