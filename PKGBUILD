@@ -26,6 +26,8 @@ depends=(
 	'python-aiohttp'
 	'python-pycares'
 	'python-dnspython'
+	'python-uvloop'
+	'python-aiosqlite'
 )
 makedepends=('git' 'bash')
 provides=("${pkgname}")
