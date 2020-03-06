@@ -15,6 +15,7 @@ pkgbase = linux-xanmod-rt
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	conflicts = linux-xanmod-rt
 	options = !strip
 	source = https://github.com/xanmod/linux/archive/5.4.17-rt9-xanmod.tar.gz
 	source = choose-gcc-optimization.sh

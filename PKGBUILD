@@ -1,4 +1,5 @@
-# Maintainer: Joan Figueras <ffigue at gmail dot com>
+# Mantainer: DUS2002 <daniurdi46@gmail.com>
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Yoshi2889 <rick.2889 at gmail dot com>
@@ -15,7 +16,7 @@
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 38 => native
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=0
+  _microarchitecture=38
 fi
 ##
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -72,6 +73,7 @@ pkgdesc='Linux Xanmod real-time version'
 arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
+conflicts=(linux-xanmod-rt)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
   python-sphinx python-sphinx_rtd_theme graphviz imagemagick
