@@ -15,7 +15,9 @@ pkgbase = ttf-iosevka-git
 	provides = ttf-iosevka
 	conflicts = ttf-iosevka
 	source = git+https://github.com/be5invis/Iosevka
-	md5sums = SKIP
+	source = toothless-G.patch
+	sha256sums = SKIP
+	sha256sums = 56d1d97b421ab462d71875ecadf57d65ee45fe26edee50922ae9ae96350cff52
 
 pkgname = ttf-iosevka-git
 

@@ -11,17 +11,34 @@ makedepends=('git' 'nodejs' 'npm' 'ttfautohint' 'otfcc')
 depends=('fontconfig' 'xorg-font-utils')
 conflicts=('ttf-iosevka')
 provides=('ttf-iosevka')
-source=("git+https://github.com/be5invis/Iosevka")
-md5sums=('SKIP')
+source=(
+  'git+https://github.com/be5invis/Iosevka'
+  'toothless-G.patch'
+)
+sha256sums=(
+  'SKIP'
+  '56d1d97b421ab462d71875ecadf57d65ee45fe26edee50922ae9ae96350cff52'
+)
 
 pkgver() {
   cd Iosevka
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd Iosevka
+
+  # patch -p1 < ../toothless-G.patch
+
+  # Uncomment the above line to get back the smoother capital G,
+  # as seen in this image (look for "LIGHT"):
+  # https://raw.githubusercontent.com/be5invis/Iosevka/47023ab4058987f58844f6308d8175e735106b8a/images/preview-all.png
+}
+
 build() {
   cd Iosevka
   npm install
+  npm update
   npm run build -- ttf::iosevka
 }
 
