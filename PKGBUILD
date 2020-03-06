@@ -1,8 +1,8 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _pkgname=stegify
-pkgname=${_pkgname}
-pkgver=1.2
+pkgname=${_pkgname}-git
+pkgver=1.2.r1.gde74f17
 pkgrel=1
 pkgdesc="Tool for LSB steganography written in Go"
 arch=(x86_64)
@@ -10,9 +10,15 @@ url="https://github.com/DimitarPetrov/stegify"
 license=("custom:MIT")
 depends=("glibc")
 makedepends=("git" "go-pie" "golang-golang-x-tools")
-source=("${_pkgname}::git+https://github.com/DimitarPetrov/stegify.git#tag=v${pkgver}")
+source=("${_pkgname}::git+https://github.com/DimitarPetrov/stegify.git")
 sha512sums=('SKIP')
 
+
+pkgver() {
+    cd "$_pkgname"
+
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-
+}
 
 prepare() {
     cd "$_pkgname"
