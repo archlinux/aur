@@ -49,6 +49,7 @@ build() {
     ./build_scripts/purge_build_artifacts.sh
     npx electron-packager ./ "${pkgname%-git}" \
         --electron-version="$_electron" \
+        --overwrite \
         --asar \
         --platform=linux \
         --arch=x64
