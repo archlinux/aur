@@ -12,12 +12,14 @@ depends=('fontconfig' 'xorg-font-utils')
 conflicts=()
 provides=()
 source=(
-  "git+https://github.com/be5invis/Iosevka"
-  "private-build-plans.toml.example"
+  'git+https://github.com/be5invis/Iosevka'
+  'private-build-plans.toml.example'
+  'toothless-G.patch'
 )
 sha256sums=(
   'SKIP'
-  '930cc4b63f9076e6cb40599ef7d51fc7fdab2eaac6a76bf344eb2d79ee4a950e'
+  '6004e471b9188445cc8c6c371384a42bedeecb1935765db1d82b4677b1342bc2'
+  '56d1d97b421ab462d71875ecadf57d65ee45fe26edee50922ae9ae96350cff52'
 )
 
 pkgver() {
@@ -31,13 +33,22 @@ prepare() {
     cp "$buildplans" Iosevka/
   else
     echo ">>> $buildplans not found, using private-build-plans.toml.example"
-    cp ../private-build-plans.toml.example Iosevka/
+    cp private-build-plans.toml.example Iosevka/private-build-plans.toml
   fi
+
+  cd Iosevka
+
+  # patch -p1 < ../toothless-G.patch
+
+  # Uncomment the above line to get back the smoother capital G,
+  # as seen in this image (look for "LIGHT"):
+  # https://raw.githubusercontent.com/be5invis/Iosevka/47023ab4058987f58844f6308d8175e735106b8a/images/preview-all.png
 }
 
 build() {
   cd Iosevka
   npm install
+  npm update
   npm run build -- ttf::iosevka-term-custom
 }
 
