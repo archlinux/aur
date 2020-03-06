@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Mobile robot simulator https://rtvhub.com/Stage."
-url='https://rtvhub.com/Stage'
+pkgdesc="ROS - Mobile robot simulator http://rtvhub.com/Stage."
+url='https://wiki.ros.org/stage'
 
 pkgname='ros-melodic-stage'
 pkgver='4.3.0'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('GPL')
 
 ros_makedepends=()
@@ -26,13 +26,6 @@ depends=(${ros_depends[@]}
   fltk
   gtk2)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/stage/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/stage-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="Stage-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/rtv/Stage/archive/v${pkgver}.tar.gz")
 sha256sums=('f32cb6887146441fd34671975fa81ea76438ce447bc68a0a6a1b62b5233ad2d6')
@@ -55,9 +48,6 @@ build() {
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
         -DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
         -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-        -DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-        -DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-        -DPYTHON_BASENAME=.cpython-37m \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }

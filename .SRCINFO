@@ -1,8 +1,8 @@
 pkgbase = ros-melodic-stage
-	pkgdesc = ROS - Mobile robot simulator https://rtvhub.com/Stage.
+	pkgdesc = ROS - Mobile robot simulator http://rtvhub.com/Stage.
 	pkgver = 4.3.0
-	pkgrel = 2
-	url = https://rtvhub.com/Stage
+	pkgrel = 3
+	url = https://wiki.ros.org/stage
 	arch = any
 	license = GPL
 	makedepends = cmake
