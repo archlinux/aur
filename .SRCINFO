@@ -9,6 +9,8 @@ pkgbase = stegify-git
 	makedepends = go-pie
 	makedepends = golang-golang-x-tools
 	depends = glibc
+	provides = stegify
+	conflicts = stegify
 	source = stegify::git+https://github.com/DimitarPetrov/stegify.git
 	sha512sums = SKIP
 

@@ -10,6 +10,8 @@ url="https://github.com/DimitarPetrov/stegify"
 license=("custom:MIT")
 depends=("glibc")
 makedepends=("git" "go-pie" "golang-golang-x-tools")
+provides=($_pkgname)
+conflicts=($_pkgname)
 source=("${_pkgname}::git+https://github.com/DimitarPetrov/stegify.git")
 sha512sums=('SKIP')
 
