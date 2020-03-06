@@ -2,11 +2,11 @@
 
 pkgname=emacs-nasm-mode
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Emacs NASM mode'
 arch=('any')
 url='https://github.com/skeeto/nasm-mode'
-license=('GPL3')
+license=('Unlicense')
 depends=('emacs')
 install="${pkgname}.install"
 source=("https://github.com/skeeto/nasm-mode/archive/${pkgver}.tar.gz")
