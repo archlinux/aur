@@ -8,7 +8,7 @@ depends=('gtk3')
 pkgdesc="A program to find files with a nice gtk interface"
 url="http://www.kornelix.net/findwild/findwild.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('c8fb09dca04aeb4f8dac1a8483c71518a5957dccb1749d35874b91d3be8f8e1f')
+sha256sums=('3be1ba6ea79ffe9c7bdbdab98adcc15ed6ee47cacb7a22bdaf9758722b62aacb')
 options=('!emptydirs')
 
 build() {
@@ -21,3 +21,4 @@ package() {
   make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
   sed -i 's+/usr/share/findwild/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
+pkgrel=2
