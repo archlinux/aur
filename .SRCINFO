@@ -1,10 +1,12 @@
 pkgbase = r-pkgload
 	pkgdesc = Simulate Package Installation and Attach
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=pkgload
+	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = gcc
 	depends = r
 	depends = r-desc
 	depends = r-pkgbuild
@@ -16,8 +18,8 @@ pkgbase = r-pkgload
 	optdepends = r-covr
 	optdepends = r-rcpp
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/pkgload_1.0.1.tar.gz
-	md5sums = 800ae9d55b138128c2e71d9be8a833d4
+	source = https://cran.r-project.org/src/contrib/pkgload_1.0.2.tar.gz
+	md5sums = 922a6338a03ba5ae42f9883117d916ba
 
 pkgname = r-pkgload
 
