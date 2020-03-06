@@ -1,4 +1,4 @@
-pkgbase = linux-xanmod-rt
+pkgbase = linux-xanmod-rt-mnative
 	pkgdesc = Linux Xanmod real-time version
 	pkgver = 5.4.17
 	pkgrel = 1
@@ -24,7 +24,7 @@ pkgbase = linux-xanmod-rt
 	sha256sums = 8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748
 	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
 
-pkgname = linux-xanmod-rt
+pkgname = linux-xanmod-rt-mnative
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
 	depends = kmod
@@ -32,6 +32,6 @@ pkgname = linux-xanmod-rt
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 
-pkgname = linux-xanmod-rt-headers
+pkgname = linux-xanmod-rt-mnative-headers
 	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
 
