@@ -55,13 +55,13 @@ package() {
     install -Dm755 $srcdir/openra-rv $pkgdir/usr/bin/openra-rv
     cp -r $srcdir/openra-rv.appdata.xml $pkgdir/usr/share/appdata/openra-rv.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-rv/README.md
-    cp -r mods/rv/logo.png $pkgdir/usr/share/pixmaps/openra-rv.png
     install -Dm644 $srcdir/openra-rv.desktop $pkgdir/usr/share/applications/openra-rv.desktop
-    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
+    mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256,512x512}/apps
     for size in 16 32 48 64 128 256; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${pkgname}.png"
     done
+    install -Dm644 packaging/artwork/icon_512x512.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
     rm -rf $pkgdir/usr/lib/openra-rv/*{.txt,nunit,.yml,.xslt,.cmd,.md,Mono,.sh,Makefile,sln.*,Test,.mdb,.pdb,.ps1,.AS,packaging,thirdparty,engines,OpenRA.Mods}*
     rm -rf $pkgdir/usr/lib/openra-rv/{mods/{all,cnc,d2k,ra,ts},OpenRA.Mods.*,OpenRA.Platforms.Default,OpenRA.Server,OpenRA.Game,OpenRA.Utility,Settings.StyleCop}
 }
