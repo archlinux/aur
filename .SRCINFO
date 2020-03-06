@@ -1,0 +1,17 @@
+pkgbase = python-cbeams-git
+	pkgdesc = A command-line program which draws pretty animated colored circles in the terminal.
+	pkgver = r122.da823c2
+	pkgrel = 1
+	url = https://github.com/tartley/cbeams
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-docopt
+	depends = python-blessings
+	source = cbeams::git+https://github.com/tartley/cbeams
+	sha256sums = SKIP
+
+pkgname = python-cbeams-git
+
