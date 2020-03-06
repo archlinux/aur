@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+HAUR_ALWAYS_CLEAR_CACHE="n"
+HAUR_NO_COLORS="n"
