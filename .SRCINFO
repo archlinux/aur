@@ -15,5 +15,5 @@ pkgbase = xwingridselect
 	md5sums = SKIP
 	sha256sums = SKIP
 
-pkgname = xwingridselect-git
+pkgname = xwingridselect
 
