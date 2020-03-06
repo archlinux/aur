@@ -1,7 +1,7 @@
 # Maintainer: crian <crian84 at gmail dot com>
 
 pkgname=auto-cpufreq-git
-pkgver=r61.0fa7d42
+pkgver=r63.e6de421
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer'
 arch=('any')
@@ -23,8 +23,8 @@ pkgver() {
 package() {
 	cd "$srcdir/auto-cpufreq"
 	install -Dm755 auto-cpufreq.py "$pkgdir/usr/bin/auto-cpufreq"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/auto-cpufreq/LICENSE.md"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/auto-cpufreq/README.md"
 	cd "$srcdir/auto-cpufreq/scripts"
 	install -Dm755 cpufreqctl.sh "$pkgdir/usr/bin/cpufreqctl"
 	install -Dm644 auto-cpufreq.service "$pkgdir/etc/systemd/system/auto-cpufreq.service"
