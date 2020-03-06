@@ -2,7 +2,7 @@
 
 pkgname=('python-aigpy' 'python2-aigpy')
 _pkgname=aigpy
-pkgver=2020.2.14.0
+pkgver=2020.2.28.0
 pkgrel=1
 pkgdesc="Python Common Lib"
 arch=('any')
@@ -12,9 +12,9 @@ makedepends=(
   'python-setuptools'
   'python2-setuptools'
 )
-source=("https://files.pythonhosted.org/packages/7c/81/13cc277b28d4bd6360828052e67b86dc7d415a8454fdb79f016b87f6e4a7/${_pkgname}-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/c5/ff/36b3631cd90302e9df7af39e62d416fb4bfa5f03328258418de9abddf42a/${_pkgname}-${pkgver}.tar.gz"
   "LICENSE")
-sha256sums=('785262f400dd7e7cfb27da791a84428381f675d52f800877471e9c6d1ea78c6c'
+sha256sums=('c471ef93a342410648dd8656d6024fba8bb7f0a3e600d790363e901abc1780c5'
             '83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c')
 
 prepare() {
