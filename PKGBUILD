@@ -14,15 +14,20 @@ makedepends=('cmake' 'python')
 options=(!staticlibs strip)
 source=("hcc-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-$pkgver.tar.gz"
         "llvm-project-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-$pkgver.tar.gz"
-        "ROCm-Device-Libs-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-$pkgver.tar.gz")
+        "ROCm-Device-Libs-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-$pkgver.tar.gz"
+        "Fix-sanitizer-common-build-with-glibc-2.31.patch")
 sha256sums=('c9274230aa282e6ae90be5885e3f5b71b02153ca60980fc2122d61a5870bf2a2'
             'f76648116a2771a520545b9b5b3c931a8eb391f6f711f232924d92e8d1b43fc1'
-            '42bd4f910dd44d6f0dd7bab7ebdadcf2e7cd4449ed7160dacc4471039584402c')
+            '42bd4f910dd44d6f0dd7bab7ebdadcf2e7cd4449ed7160dacc4471039584402c'
+            '3d3e623d394d00b412735aa7c76e5971b605c0c9792f240b0500385caf9d5d47')
 
 prepare() {
   cd "$srcdir"
   mv -T "llvm-project-roc-hcc-$pkgver" "hcc-roc-hcc-$pkgver/llvm-project"
   mv -T "ROCm-Device-Libs-roc-hcc-$pkgver" "hcc-roc-hcc-$pkgver/rocdl"
+
+  cd "$srcdir/hcc-roc-hcc-$pkgver/llvm-project"
+  patch -Np1 -i "$srcdir/Fix-sanitizer-common-build-with-glibc-2.31.patch"
 }
 
 build() {
