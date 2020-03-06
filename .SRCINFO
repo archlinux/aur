@@ -1,14 +1,14 @@
 pkgbase = libvarlink
 	pkgdesc = Varlink C library and command line tool
-	pkgver = 18
+	pkgver = 19
 	pkgrel = 1
 	url = https://github.com/varlink/libvarlink
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = python
-	source = https://github.com/varlink/libvarlink/archive/18.tar.gz
-	sha256sums = 7a32543643116ad105da4ddb2f8030de7dcad1cdb3feb1a214ae5e7b65a6a198
+	source = https://github.com/varlink/libvarlink/archive/19.tar.gz
+	sha256sums = 0e316138ef6abc34363b05d0caf6df2e389a93b832e8d971e3ae64b48ba96133
 
 pkgname = libvarlink
 
