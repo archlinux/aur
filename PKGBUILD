@@ -3,7 +3,7 @@
 pkgname=waterfox-current-kpe
 pkgver=2020.02
 pkgrel=0
-pkgdesc="Free, open and private browser with patches for better integration with KDE"
+pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfox.net/"
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
             '346b791515d05645be86e0f3404187e6397a22460ad54eb27aaf3054d81c2cd8'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             'ff84e0de0332974b536ba42d4e16d911e489f6d7cbc2e51c57680c3d94ca5f7a'
-            'a49c774f3077b0882d0a9672fadf1637894014ec916ead700375163f33672f9c'
+            '415328df67733f54f5bf4d68335c7457264f67175d3ee258c8a392c3c273b572'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             'b473c4f2ed189d9fe3accb35bb1fff9b45b5d6ecd8c5612f9cc783a91e10b257'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
