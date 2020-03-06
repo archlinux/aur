@@ -1,7 +1,7 @@
 pkgbase = skaffold
 	pkgdesc = A command line tool that facilitates continuous development for Kubernetes applications
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GoogleContainerTools/skaffold
 	arch = x86_64
 	license = Apache

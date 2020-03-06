@@ -4,7 +4,7 @@
 
 pkgname=skaffold
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool that facilitates continuous development for Kubernetes applications"
 arch=("x86_64")
 url="https://github.com/GoogleContainerTools/${pkgname}"
@@ -37,6 +37,9 @@ prepare() {
 build() {
   cd "${srcdir}/gopath/src/github.com/GoogleContainerTools/${pkgname}"
   GOPATH="${srcdir}/gopath" PATH="${PATH}:${GOPATH}/bin" VERSION="v${pkgver}" COMMIT="${_commit}" TREE_STATE="clean" make install
+
+  # To avoid issues deleting directories next time
+  GOPATH="${srcdir}" go clean --modcache
 }
 
 package() {
