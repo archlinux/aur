@@ -1,0 +1,20 @@
+pkgbase = qt-rest-git
+	pkgdesc = Qt REST Client
+	pkgver = r79.eb808b6
+	pkgrel = 1
+	url = https://github.com/qtrest/qtrest
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-declarative
+	conflicts = qt-rest
+	source = git+https://github.com/qtrest/qtrest#branch=aa13q-add-pkgconfig
+	md5sums = SKIP
+
+pkgname = qt-rest-git
+
