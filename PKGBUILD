@@ -1,15 +1,15 @@
 # Maintainer: Kyle Laker <kyle@laker.email>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=warpinator-git
-pkgver=r58.32feb06
+pkgver=r70.58851f0
 pkgrel=1
 pkgdesc="Share files across the LAN"
 arch=('x86_64')
 url="https://github.com/linuxmint/warp"
 license=('GPL2')
-depends=('gtk3' 'python-gobject' 'python-grpcio' 'python-protobuf' 'python-setproctitle'
+depends=('gtk3' 'python-gobject' 'python-grpcio' 'python-setproctitle'
          'python-zeroconf' 'python-xapp' 'xapps')
-makedepends=('git' 'meson' 'python-grpcio-tools')
+makedepends=('git' 'meson' 'python-grpcio-tools' 'python-protobuf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" 'lm-warp')
 replaces=('lm-warp')
