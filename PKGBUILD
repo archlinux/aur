@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.4.23
+_pkgver=5.4.24
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -40,9 +40,9 @@ source=("${_kernsrc}"
         "${_headerssrc}"
         "${_docssrc}")
 
-sha256sums=('932c4934ac83103bda86c79247dd4b80f063935b727b80663ff369f65ec0a978'
-            '6139285e3a0a0521d72e859d88a9c1aa1190d84abb354328c1c933ee0869d7ff'
-            'df06549397661f33aee67e92a14e5a62642cdbd2278908e06b2040a5ae7924f7')
+sha256sums=('30746913fb15bfb02ff10ecd01d3b66767c86785a12bc0b7a1d725ba16cb6a98'
+            '7ca75ab2ded196ba6580a2c01efed423c925903661ad16488bb93e76cc0055d7'
+            '608edf95b553e295e909d0b70205b5da92f686ce5b4dd368b597c3c8b7ef0139')
 
 package_linux-lts-versioned-bin() {
     pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -60,7 +60,7 @@ package_linux-lts-versioned-docs-bin() {
     depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.4.23-1-lts-bin() {
+package_linux5.4.24-1-lts-bin() {
   pkgdesc="The Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils kmod initramfs)
   conflicts=("${_pkgname}")
@@ -71,7 +71,7 @@ package_linux5.4.23-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.4.23-1-lts-headers-bin() {
+package_linux5.4.24-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-headers")
   tar -xf "${_headerspkg}" -C "${pkgdir}"
@@ -79,7 +79,7 @@ package_linux5.4.23-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.4.23-1-lts-docs-bin() {
+package_linux5.4.24-1-lts-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
