@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://github.com/adobe-type-tools/${pkgname%-git}"
 license=('custom')
 # Note many of these are actually python-fonttools deps, but [community] package has them marked as optional
-_py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor' 'zopfli')
+_py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens' 'fs' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor' 'zopfli')
 depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
 makedepends=('git' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
