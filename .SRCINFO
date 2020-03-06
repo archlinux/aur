@@ -12,6 +12,7 @@ pkgbase = openblas-cblas-git
 	provides = blas=3.5.0
 	provides = openblas
 	provides = cblas
+	provides = openblas-cblas
 	conflicts = blas
 	conflicts = openblas
 	conflicts = cblas
