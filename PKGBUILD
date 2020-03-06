@@ -1,12 +1,13 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
 pkgname=virtualfish
 pkgver=1.0.6
-pkgrel=8
+pkgrel=9
 pkgdesc="A virtualenv wrapper for the Fish shell"
 arch=(any)
 url="https://github.com/adambrenecki/virtualfish"
 license=('MIT')
 install=virtualfish.install
+provides=('python-virtualfish')
 makedepends=('python-setuptools' 'python-setuptools-scm>=1.11.1')
 #checkdepends=('python-pytest>=3.1.3' 'python-pytest-xdist>=1.22.2')
 depends=('python-virtualenv' 'python-pkgconfig>=1.2.2' 'python-psutil>=5.2.2' 'python-xdg')  # >=1.0.5')
