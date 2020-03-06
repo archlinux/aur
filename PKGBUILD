@@ -1,7 +1,7 @@
 # Maintainer: Sven Lechner <sven[dot]lechner[at]rwth-aachen[dot]de>
 
 pkgname=act
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc='Run your GitHub Actions locally'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('act')
 conflicts=('act')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/nektos/act/releases/download/v$pkgver/act_Linux_x86_64.tar.gz")
-sha256sums=('901ec8f2fff04f8564e31323486c4027eb5f1a4075612ad667609d87fac1455f')
+sha256sums=('92d0ed1b1611fc43ed1c8785e963b09f585c12703ec535d192b63c84cb452273')
 
 package() {
     # Install binary.
