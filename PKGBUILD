@@ -3,13 +3,13 @@
 
 pkgname=afdko
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/$pkgname"
 license=('custom')
 # Note many of these are actually python-fonttools deps, but [community] package has them marked as optional
-_py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor' 'zopfli')
+_py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens' 'fs' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor' 'zopfli')
 depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
@@ -34,5 +34,5 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     python setup.py -q install --root="$pkgdir" --optimize=1 --skip-build
-    install -D -m644  -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+    install -Dm644  -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 }
