@@ -1,8 +1,9 @@
 # Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
 # Contributor: jedbrown
+# Maintainer: wuxb <wuxb45@gmail.com>
 
 pkgname=papi
-pkgver=5.7.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Performance Application Programming Interface"
 arch=('x86_64' 'i686')
@@ -10,7 +11,7 @@ url="http://icl.cs.utk.edu/papi/"
 license=('BSD')
 depends=('glibc' 'gcc-fortran')
 source=(http://icl.cs.utk.edu/projects/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('d1a3bb848e292c805bc9f29e09c27870e2ff4cda6c2fba3b7da8b4bba6547589')
+sha256sums=('3442709dae3405c2845b304c06a8b15395ecf4f3899a89ceb4d715103cb4055f')
 conflicts=('libpfm4')
 
 build() {
@@ -35,6 +36,7 @@ check(){
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/src"
 
+  mkdir -p $pkgdir/usr/bin
   make DESTDIR="${pkgdir}" install
 
   chmod 644 $pkgdir/usr/share/papi/papi_events.csv
