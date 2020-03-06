@@ -1,7 +1,7 @@
 # Maintainer: peeweep <peeweep at 0x0 dot ee>
 
 pkgname=sigma
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Generic Signature Format for SIEM Systems"
 arch=('any')
@@ -13,7 +13,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
   "pymisp.patch"
 )
-sha256sums=('c98d586af5c44e4f3d882564bb2e58da1e67e764c835a70fa6fe621546b8615c'
+sha256sums=('32325c7653096fd7b6e75ca950b9f4ea78c98f5e566ed7cbdd9dac11e18b0601'
             'f6489322336e0e72d967fd22be157365676626a27e1f7da19df88d9efeff2eb7')
 
 prepare() {
