@@ -1,5 +1,5 @@
 pkgbase = linux-xanmod-rt-mnative
-	pkgdesc = Linux Xanmod real-time version
+	pkgdesc = Linux Xanmod real-time version optimized for your real architecture
 	pkgver = 5.4.17
 	pkgrel = 1
 	url = http://www.xanmod.org/
