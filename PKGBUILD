@@ -1,6 +1,6 @@
 # Maintainer: Magnus Bergmark <magnus.bergmark@gmail.com>
 pkgname=tydra
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Shortcut menu-based task runner, inspired by Emacs Hydra"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/Mange/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('80a75dd40b6b5f88abf23c9c1db7be2988bfd640bb8889b0870da113e8af0f1a7f91696a4b836b0d13dfa41f927f36c84f7d72d797369b72c59739bd3b2fa233')
+sha512sums=('a10b1f40c0cc7bf61e912717f980ad0b4d98a24f0bc5821668edcdf5fe710c30042491dd22dff6779b726d03cb2eb2b1044565c0c69084a91e8839eb358faa4c')
 
 build() {
   cd "$pkgname-$pkgver"
