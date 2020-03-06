@@ -1,15 +1,15 @@
 pkgbase = gotop-git
 	pkgdesc = A terminal based graphical activity monitor inspired by gtop and vtop
-	pkgver = 3.0.0.r44.g755037d
+	pkgver = v3.5.0.r0.gbe42ba5
 	pkgrel = 1
-	url = https://github.com/cjbassi/gotop
+	url = https://github.com/xxxserxxx/gotop
 	arch = x86_64
 	license = AGPL3
 	makedepends = go
 	makedepends = git
 	provides = gotop
 	conflicts = gotop
-	source = gotop-git::git+https://github.com/cjbassi/gotop
+	source = gotop-git::git+https://github.com/xxxserxxx/gotop
 	sha256sums = SKIP
 
 pkgname = gotop-git
