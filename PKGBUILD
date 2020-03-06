@@ -3,13 +3,13 @@
 _pkgname=spydaap
 pkgname=${_pkgname}-git
 pkgver=r178+0af5ac4
-pkgrel=1
+pkgrel=2
 pkgdesc="DAAP server"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/egh/spydaap"
 license=('GPL3')
-depends=('python2-mutagen' 'avahi')
-makedepends=('python2-setuptools' 'git')
+depends=('python-mutagen' 'avahi')
+makedepends=('python-setuptools' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}"::git+https://gitlab.com/egh/spydaap)

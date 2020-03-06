@@ -1,14 +1,14 @@
 pkgbase = spydaap-git
 	pkgdesc = DAAP server
 	pkgver = r178+0af5ac4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/egh/spydaap
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	makedepends = python2-setuptools
+	makedepends = python-setuptools
 	makedepends = git
-	depends = python2-mutagen
+	depends = python-mutagen
 	depends = avahi
 	provides = spydaap
 	conflicts = spydaap
