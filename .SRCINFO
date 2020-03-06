@@ -1,0 +1,24 @@
+pkgbase = openblas-cblas-git
+	pkgdesc = An optimized BLAS library based on GotoBLAS2 1.13 BSD
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.openblas.net/
+	arch = any
+	license = BSD
+	makedepends = perl
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = gcc-libs
+	provides = blas=3.5.0
+	provides = openblas
+	provides = cblas
+	conflicts = blas
+	conflicts = openblas
+	conflicts = cblas
+	options = !makeflags
+	options = !emptydirs
+	source = OpenBLAS::git+https://github.com/xianyi/OpenBLAS.git
+	md5sums = SKIP
+
+pkgname = openblas-cblas-git
+
