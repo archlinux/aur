@@ -1,31 +1,30 @@
 # Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
-pkgbase=virtualfish
-pkgname=('python-virtualfish' 'python2-virtualfish')
+pkgname=virtualfish
 pkgver=1.0.6
-pkgrel=6
+pkgrel=8
 pkgdesc="A virtualenv wrapper for the Fish shell"
 arch=(any)
 url="https://github.com/adambrenecki/virtualfish"
 license=('MIT')
-options=(!emptydirs)
 install=virtualfish.install
-_deps=('setuptools' 'setuptools-scm' 'virtualenv' 'pkgconfig' 'psutil' 'xdg')
-makedepends=("${_deps[@]/#/python-}" "${_deps[@]/#/python2-}")
-source=("${pkgbase}::git+https://github.com/adambrenecki/${pkgbase}.git#tag=${pkgver}")
+makedepends=('python-setuptools' 'python-setuptools-scm>=1.11.1')
+#checkdepends=('python-pytest>=3.1.3' 'python-pytest-xdist>=1.22.2')
+depends=('python-virtualenv' 'python-pkgconfig>=1.2.2' 'python-psutil>=5.2.2' 'python-xdg')  # >=1.0.5')
+source=("${pkgname}::git+https://github.com/adambrenecki/${pkgname}.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
-prepare() {
-    cp -a "$srcdir/$pkgbase"{,-py2}
+#check() {
+#    cd "${srcdir}/${pkgname}"
+#    pytest .
+#}
+
+build() {
+    cd "${srcdir}/${pkgname}"
+    python setup.py build
 }
 
-package_python-virtualfish() {
-    depends=("${_deps[@]/#/python-}")
-    cd "${srcdir}/${pkgbase}"
-    python setup.py install --root="$pkgdir/" --optimize=1
+package() {
+    cd "${srcdir}/${pkgname}"
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
-package_python2-virtualfish() {
-    depends=("${_deps[@]/#/python2-}")
-    cd "${srcdir}/${pkgbase}-py2"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-}
