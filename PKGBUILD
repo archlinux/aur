@@ -3,7 +3,7 @@
 pkgbase=python-doitlive
 pkgname=(python-doitlive python2-doitlive)
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Because sometimes you need to do it live"
 arch=("any")
 url="https://github.com/sloria/doitlive"
@@ -29,7 +29,7 @@ build() {
 
 # package for python 3
 package_python-doitlive() {
-  depends=('python' 'python-click-didyoumean' 'python-click-completion' 'python-shellingham')
+  depends=('python' 'python-click-didyoumean' 'python-click-completion')
   pkgdesc+=" for Python 3"
 
   cd doitlive-$pkgver
@@ -40,7 +40,7 @@ package_python-doitlive() {
 
 # package for python 2
 package_python2-doitlive() {
-  depends=('python2' 'python2-click-didyoumean' 'python2-click-completion' 'python2-shellingham')
+  depends=('python2' 'python-click-didyoumean' 'python-click-completion')
   pkgdesc+=" for Python 2"
 
   cd py2doitlive-$pkgver
