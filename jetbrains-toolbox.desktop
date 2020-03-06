@@ -1,6 +1,6 @@
 [Desktop Entry]
 Exec=/opt/jetbrains-toolbox/jetbrains-toolbox %u
-Icon=/opt/jetbrains-toolbox/jetbrains-toolbox.svg
+Icon=/opt/jetbrains-toolbox/jetbrains-toolbox
 MimeType=x-scheme-handler/jetbrains;
 Name=JetBrains Toolbox
 StartupNotify=false
