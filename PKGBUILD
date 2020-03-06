@@ -22,7 +22,7 @@ package() {
 
   mkdir -p $appdir $bindir
 
+  chmod 755 $srcdir/$pkgname/XssMap.py
   cp -r $srcdir/$pkgname/* "${appdir}"
-  chmod 755 /opt/$pkgname/XssMap.py
   ln -s /opt/$pkgname/XssMap.py "${bindir}"/xssmap
 }
