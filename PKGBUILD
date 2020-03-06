@@ -1,8 +1,8 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 
 pkgname=session-desktop
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
 license=('GPL-3.0')
@@ -17,6 +17,5 @@ depends=("libnotify" "libappindicator-gtk3" "libxtst" "nss" "alsa-lib" "libxss")
 install=${pkgname}.install
 
 package() {
-          cd ${srcdir}
           tar xf data.tar.xz -C ${pkgdir} --exclude='./control'
 }

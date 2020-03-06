@@ -1,7 +1,7 @@
 pkgbase = session-desktop
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://getsession.org
 	install = session-desktop.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = session-desktop
 	depends = nss
 	depends = alsa-lib
 	depends = libxss
-	source_x86_64 = https://github.com/loki-project/session-desktop/releases/download/v1.0.3/session-messenger-desktop-linux-amd64-1.0.3.deb
+	source_x86_64 = https://github.com/loki-project/session-desktop/releases/download/v1.0.4/session-messenger-desktop-linux-amd64-1.0.4.deb
 	sha256sums_x86_64 = 5bf7cc6ff54239064c7a8d9b4cf6c25ad577fde7013a289f58eff9be41a9b9c0
 
 pkgname = session-desktop
