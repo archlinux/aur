@@ -1,6 +1,6 @@
 pkgbase = z88dk
 	pkgdesc = Developement kit for Z80 computers
-	pkgver = 1.99C
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://z88dk.org
 	arch = i686
@@ -9,11 +9,11 @@ pkgbase = z88dk
 	depends = perl
 	depends = libxml2
 	backup = etc/profile.d/z88dk.sh
-	source = http://downloads.sourceforge.net/project/z88dk/z88dk/1.99C/z88dk-src-1.99C.tgz
-	source = fix-makefile.patch
+	source = http://downloads.sourceforge.net/project/z88dk/z88dk/2.0/z88dk-src-2.0.tgz
+	source = fix-makefile-v2.0.patch
 	source = z88dk.sh
-	sha256sums = f60932517116195993236cf28668522a3cbd19409cb430030754c7f0c0cb3a77
-	sha256sums = 78aaeb862a714c632e7ed16872ada2c4e246291be716ddb1e7613a2d28405e5c
+	sha256sums = 285fb55858b3860fb7a152d6090eedd355a33863812d94ef56368825547d5506
+	sha256sums = 8a275f9240cbc89e7d7443cfe35875c3f1ffc2c57bd95375dee250d8031ba509
 	sha256sums = 4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156
 
 pkgname = z88dk

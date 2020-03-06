@@ -1,7 +1,7 @@
 # Maintainer: Ábel Futó <lebaotuf+arch at gmail dot com>
 # Contributor: John Schug <xtr.xtrnet@gmail.com>
 pkgname=z88dk
-pkgver=1.99C
+pkgver=2.0
 pkgrel=1
 pkgdesc="Developement kit for Z80 computers"
 arch=('i686' 'x86_64')
@@ -10,16 +10,16 @@ license=('custom:The Clarified Artistic License')
 depends=('perl' 'libxml2')
 backup=(etc/profile.d/z88dk.sh)
 source=(http://downloads.sourceforge.net/project/z88dk/z88dk/${pkgver}/${pkgname}-src-${pkgver}.tgz
-        fix-makefile.patch
+        fix-makefile-v2.0.patch
         z88dk.sh)
-sha256sums=('f60932517116195993236cf28668522a3cbd19409cb430030754c7f0c0cb3a77'
-            '78aaeb862a714c632e7ed16872ada2c4e246291be716ddb1e7613a2d28405e5c'
+sha256sums=('285fb55858b3860fb7a152d6090eedd355a33863812d94ef56368825547d5506'
+            '8a275f9240cbc89e7d7443cfe35875c3f1ffc2c57bd95375dee250d8031ba509'
             '4eef7c67e5b142db3006a4076876cdae9f386a7b94a66841a5a8fac869bea156')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
 
-  patch -Np1 < ../fix-makefile.patch
+  patch -Np0 < ../fix-makefile-v2.0.patch
 
 }
 
