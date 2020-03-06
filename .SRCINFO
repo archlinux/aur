@@ -7,11 +7,11 @@ pkgbase = ruby-bindata
 	license = custom
 	makedepends = ruby-rdoc
 	makedepends = ruby-rake
-	makedepends = git
 	depends = ruby
+	noextract = bindata-2.4.6.gem
 	options = !emptydirs
-	source = bindata-2.4.6.tar.gz::https://github.com/dmendel/bindata/archive/v2.4.6.tar.gz
-	sha256sums = b02e71865f3b61f9864e4627bcbcaa995e0fa840facc418522fcf28ab8f70a53
+	source = https://rubygems.org/downloads/bindata-2.4.6.gem
+	sha256sums = a536f0ca5e935cd5c14e635a52f030240940c206571af1ff1df08c3838e29630
 
 pkgname = ruby-bindata
 

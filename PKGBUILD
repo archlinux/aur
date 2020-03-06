@@ -10,21 +10,15 @@ arch=('any')
 url="https://github.com/dmendel/bindata"
 license=('custom')
 depends=('ruby')
-makedepends=('ruby-rdoc' 'ruby-rake' 'git')
+makedepends=('ruby-rdoc' 'ruby-rake')
 options=(!emptydirs)
-source=("${_gemname}-${pkgver}.tar.gz"::"https://github.com/dmendel/bindata/archive/v${pkgver}.tar.gz")
-sha256sums=('b02e71865f3b61f9864e4627bcbcaa995e0fa840facc418522fcf28ab8f70a53')
-
-build() {
-  cd "${srcdir}/${_gemname}-${pkgver}"
-  gem build ${_gemname}.gemspec
-}
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=($_gemname-$pkgver.gem)
+sha256sums=('a536f0ca5e935cd5c14e635a52f030240940c206571af1ff1df08c3838e29630')
 
 package() {
-  cd "${srcdir}/${_gemname}-${pkgver}"
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "${pkgdir}${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
-  install -Dm644 README.md ChangeLog.rdoc -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
