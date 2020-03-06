@@ -2,7 +2,7 @@
 
 _pkgname=ydotool
 pkgname=$_pkgname-git
-pkgver=v0.1.8.r13.gfb6ee1f
+pkgver=v0.1.8.r29.g7764122
 pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64')
@@ -35,4 +35,5 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   make DESTDIR="$pkgdir" install -C build/
+  install -Dm644 Daemon/ydotool.service "$pkgdir/usr/lib/systemd/ydotool.service"
 }
