@@ -2,51 +2,49 @@
 # Contributor: David Vogt <d@408.ch>
 
 pkgname=git-bug
-pkgver=0.6.0
-pkgrel=1.3
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
-arch=('x86_64' 'i686')
-url="https://github.com/MichaelMure/${pkgname}"
+arch=('x86_64')
+url="https://github.com/MichaelMure/${pkgname%-git}"
 license=('GPL3')
 depends=('git')
-makedepends=('go-pie' 'dep')
+makedepends=('go-pie' 'git')
 optdepends=('xdg-utils: open bugs in browser')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('074543bfab9d2a94572342cbbbe030de96041f4c25804f14fb83d64438b9c52e')
-
-_gitbugsrc="gopath/src/${url#*://}"
+source=("git+${url}.git#commit=71580c41a931a1ad2c04682e0fd701661b716c95")
+sha256sums=('SKIP')
 
 prepare() {
-    mkdir -p "${srcdir}/${_gitbugsrc%/*}"
-    ln -rTsf "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${_gitbugsrc}"
-
-    export GOPATH="${srcdir}/gopath"
-    cd "${srcdir}/${_gitbugsrc}"
-    dep ensure
+    cd "${srcdir}/${pkgname%-git}"
+    export GOPATH=${srcdir}
+    go mod vendor -v
 }
 
 build() {
-    export GOPATH="${srcdir}/gopath"
-    cd "${srcdir}/${_gitbugsrc}"
-    go generate .
-    go install \
-        -gcflags "all=-trimpath=${PWD}" \
-        -asmflags "all=-trimpath=${PWD}" \
-        -ldflags "-extldflags ${LDFLAGS}" \
-        ./...
+    cd "${srcdir}/${pkgname%-git}"
+    export GOPATH=${srcdir}
+    commands_path='github.com/MichaelMure/git-bug/commands'
+    go generate
+    go build \
+        -mod=vendor \
+        -trimpath \
+        -ldflags "-X ${commands_path}.GitCommit=$(git rev-list -1 HEAD) \
+                  -X ${commands_path}.GitLastTag=$(git describe --abbrev=0 --tags) \
+                  -X ${commands_path}.GitExactTag=$(git name-rev --name-only --tags HEAD) \
+                  -extldflags ${LDFLAGS}"
     }
 
 check() {
-    export GOPATH="${srcdir}/gopath"
-    cd "${srcdir}/${_gitbugsrc}"
-    go test -bench=. ./...
+    cd "${srcdir}/${pkgname%-git}"
+    export GOPATH=${srcdir}
+    go test -mod=vendor -bench=. ./...
 }
 
 package() {
-    install -Dm755 "${srcdir}/gopath/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
-    cd "${srcdir}/${_gitbugsrc}"
-    install -Dm644 doc/man/*.1                  -t "${pkgdir}/usr/share/man/man1"
-    install -Dm644 README.md doc/*.md           -t "${pkgdir}/usr/share/doc/${pkgname}"
-    install -Dm644 misc/bash_completion/git-bug -t "${pkgdir}/usr/share/bash-completion/completions"
-    install -Dm644 misc/zsh_completion/git-bug  -T "${pkgdir}/usr/share/zsh/site-functions/_git-bug"
+    cd "${srcdir}/${pkgname%-git}"
+    install -Dm755 "${pkgname%-git}"               -t "${pkgdir}/usr/bin"
+    install -Dm644 doc/man/*.1                     -t "${pkgdir}/usr/share/man/man1"
+    install -Dm644 README.md doc/*.md              -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 misc/bash_completion/git-bug    -t "${pkgdir}/usr/share/bash-completion/completions"
+    install -Dm644 misc/zsh_completion/git-bug     -T "${pkgdir}/usr/share/zsh/site-functions/_git-bug"
 }
