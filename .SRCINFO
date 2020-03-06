@@ -1,0 +1,16 @@
+pkgbase = bsed
+	pkgdesc = a text processing tool similar to sed/grep/AWK/Perl but with SQL-like syntax
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://pypi.org/project/bsed/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = perl
+	depends = python-argcomplete
+	source = bsed-0.2.5.tar.gz::https://github.com/andrewbihl/bsed/archive/0.2.5.tar.gz
+	sha256sums = dee2c66a2b4bc7c4033602374167022139a02f85122e06a75bdf28143d96a68c
+
+pkgname = bsed
+
