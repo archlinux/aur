@@ -1,7 +1,7 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 # Maintainer: Sorah Fukumori <her@sorah.jp>
 pkgname=mitamae
-pkgver=1.11.0
+pkgver=1.11.5
 pkgrel=1
 pkgdesc="Configuration management tool embedding mruby"
 arch=('i686' 'x86_64' 'aarch64')
@@ -37,6 +37,6 @@ package() {
   install -m755 mruby/build/host/bin/mitamae-secrets "$pkgdir/usr/bin/"
   install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
-sha512sums=('3b440302521d26ec1cdf0707c1048380eacc5af5e6ec7ea38e73b1b1aea075d3056a01d9d54eef478ffa43caa7b4c7da80189db52456ea3438ee6c2d81e55b92'
+sha512sums=('69867ef9b3ace12ac12f1488201294fbcaeeb51124dda1c57b4a06b5dff0a8a180b19b87434c7a8a32651e9303e48b0c1312443c326e5182115bae0bf12f9973'
             '74403f928c5af52c615ee2490b0aa685b4d62238f3da3778b3e44748e523e1916f110b42f2e73729be24d561b89a9ae498ff32f549ebe241e97a70d83cf39ded'
             'a6168fc5931699842db003f7f3ad2b06c90eb465712709fd12b02f17ec24c9900cc70711fdb8086025318db97b32890e0771082b4c88afc8d867144e035d9512')
