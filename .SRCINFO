@@ -1,10 +1,14 @@
 pkgbase = premid
-	pkgdesc = PreMiD adds Discord Rich Presence support to a lot of services you use and love.
-	pkgver = 2.0.1.2
+	pkgdesc = Discord Rich Presence for web services
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://premid.app
 	arch = x86_64
-	license = MIT
+	license = MPL2
+	optdepends = discord: Proper Rich Presence support
+	conflicts = premid-git
+	source = https://github.com/doomlerd/PreMiD-Linux/releases/download/v2.1.5/PreMiD.zip
+	sha512sums = SKIP
 
 pkgname = premid
 
