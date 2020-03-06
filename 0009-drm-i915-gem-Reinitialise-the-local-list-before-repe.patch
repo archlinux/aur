@@ -1,4 +1,4 @@
-From 6d98cb966611949e5c98b5a7cee4da0cab594d5f Mon Sep 17 00:00:00 2001
+From b2efbf0494f21b9abe4d247b4e0794358845ec10 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Thu, 5 Dec 2019 13:29:12 +0000
 Subject: [PATCH 09/12] drm/i915/gem: Reinitialise the local list before

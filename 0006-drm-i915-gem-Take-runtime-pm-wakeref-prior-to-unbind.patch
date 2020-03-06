@@ -1,4 +1,4 @@
-From 92294ec84e60045e4ab3613a2b6a597b35eb48e7 Mon Sep 17 00:00:00 2001
+From f60874b8617090cef976c8f266681050e0126f0d Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Tue, 3 Dec 2019 10:13:46 +0000
 Subject: [PATCH 06/12] drm/i915/gem: Take runtime-pm wakeref prior to

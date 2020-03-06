@@ -1,4 +1,4 @@
-From 5ab82a437113456735093bcfe709a71a9a5c7ea6 Mon Sep 17 00:00:00 2001
+From 37cd2cfd87752fd61a5b4995da2e418ffd903212 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 24 Dec 2019 06:16:39 +0100
 Subject: [PATCH 02/12] iwlwifi: pcie: restore support for Killer Qu C0 NICs

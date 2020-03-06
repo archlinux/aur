@@ -1,4 +1,4 @@
-From 291a8a531808a32b25a7649495e835f7b0257fd3 Mon Sep 17 00:00:00 2001
+From 7a274ee4422f80da951ebb4339b653509a1bf80f Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 22 Dec 2019 21:02:54 +0000
 Subject: [PATCH 10/12] drm/i915: Add a simple is-bound check before unbinding
