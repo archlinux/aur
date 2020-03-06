@@ -1,0 +1,14 @@
+pkgbase = python-huepy
+	pkgdesc = Python module to help with printing awesomely in terminals
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/s0md3v/huepy
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/d6/4e/2dae447d8858a31158ca6c313f5d1902bc83b8542bb5f10c0307de2973bc/huepy-1.2.1.tar.gz
+	sha256sums = 5b29beef797312fb7606188bc5cd98f78ab8f7e01576427a9312f1c9b20b759d
+
+pkgname = python-huepy
+
