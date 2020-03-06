@@ -2,7 +2,7 @@
 
 pkgname='dhall-json-bin'
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dhall to JSON compiler and a Dhall to YAML compiler"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
@@ -18,5 +18,6 @@ sha256sums=("SKIP"
 function package {
 	install -Dt "$pkgdir/usr/bin/" "$srcdir/bin/dhall-to-json"
 	install -Dt "$pkgdir/usr/bin/" "$srcdir/bin/dhall-to-yaml"
+	install -Dt "$pkgdir/usr/bin/" "$srcdir/bin/json-to-dhall"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

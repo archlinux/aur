@@ -1,7 +1,7 @@
 pkgbase = dhall-json-bin
 	pkgdesc = Dhall to JSON compiler and a Dhall to YAML compiler
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = BSD
