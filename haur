@@ -54,8 +54,8 @@ shift $((OPTIND -1))
 while getopts ":urch" opt; do
   case $opt in
   	u )
-	   UPDATE=true
-	    ;;
+      $UPDATE=true
+      ;;
     r )
       REMOVE=true
       ;;
