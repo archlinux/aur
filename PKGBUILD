@@ -64,7 +64,7 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-xanmod-rt
+pkgbase=linux-xanmod-rt-mnative
 pkgver=5.4.17
 xanmod=9
 pkgrel=1
