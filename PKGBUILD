@@ -11,7 +11,7 @@ _pkgname=scidavis
 pkgname=scidavis-qt5
 pkgver=2.0.10
 _commit=2.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -47,6 +47,10 @@ build() {
 package() {
   cd "${_pkgname}-${_commit}"
   make INSTALL_ROOT="${pkgdir}" DESTDIR="${pkgdir}" install
+
+  python -m py_compile "${pkgdir}/etc/scidavisrc.py"
+  mv ${pkgdir}/etc/__pycache__/scidavisrc*.pyc "${pkgdir}/etc/scidavisrc.pyc"
+  rm -rf ${pkgdir}/etc/__pycache__
 
   # remove liborigin files since it uses static library
   rm -rf "${pkgdir}/usr/local"
