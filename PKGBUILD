@@ -2,7 +2,7 @@
 # Python package author: Hauke Rehfeld <pypi.org@haukerehfeld.de>
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=python-keepassxc-browser
-pkgver=0.0.1
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Access the KeepassXC Browser API from python"
 arch=(any)
@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=("python-libnacl" "python")
 makedepends=("python" "python-pip")
 build() {
-  pip install --no-deps --target="keepassxc-browser" keepassxc-browser==0.0.1
+  pip install --no-deps --target="keepassxc-browser" keepassxc-browser==${pkgver}
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
