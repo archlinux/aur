@@ -1,9 +1,9 @@
 # Maintainer: Crestwave <crest.wave@yahoo.com>
 
 pkgname=birch-git
-pkgver=r32.c46909f
+pkgver=r312.954d015
 pkgrel=1
-pkgdesc="An IRC client written in pure bash"
+pkgdesc="An IRC client written in bash"
 arch=('any')
 url="https://github.com/dylanaraps/birch"
 license=('MIT')
@@ -18,6 +18,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/birch"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+  install -Dm755 -t "$pkgdir/usr/bin" birch
+  install -Dm644 -t "$pkgdir/usr/share/doc/birch" README.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/birch" LICENSE.md
 }

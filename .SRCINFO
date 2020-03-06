@@ -1,6 +1,6 @@
 pkgbase = birch-git
-	pkgdesc = An IRC client written in pure bash
-	pkgver = r32.c46909f
+	pkgdesc = An IRC client written in bash
+	pkgver = r312.954d015
 	pkgrel = 1
 	url = https://github.com/dylanaraps/birch
 	arch = any
