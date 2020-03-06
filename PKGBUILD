@@ -4,8 +4,6 @@ pkgver=1.2.0
 pkgrel=1
 arch=('x86_64')
 url=https://codeberg.org/dnkl/foot
-conflicts=('foot' 'foot-terminfo')
-provides=('foot' 'foot-terminfo')
 license=(mit)
 makedepends=('meson' 'ninja' 'scdoc' 'python' 'ncurses' 'wayland-protocols')
 depends=('libxkbcommon' 'wayland' 'pixman')
@@ -55,6 +53,8 @@ check() {
 package_foot-git() {
   pkgdesc="A wayland native terminal emulator"
   optdepends=('foot-terminfo: terminfo for foot')
+  conflicts=('foot')
+  provides=('foot')
 
   cd foot
   DESTDIR="${pkgdir}/" ninja -C build install
@@ -64,6 +64,8 @@ package_foot-git() {
 package_foot-terminfo-git() {
   pkgdesc="Terminfo files for the foot terminal emulator"
   depends=('ncurses')
+  conflicts=('foot-terminfo')
+  provides=('foot-terminfo')
 
   cd foot
   install -dm 755 "${pkgdir}/usr/share/terminfo/f/"
