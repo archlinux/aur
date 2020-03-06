@@ -2,7 +2,7 @@
 # Python package author: Stefan Marsiske <s@ctrlc.hu>
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
 pkgname=python-pysodium
-pkgver=0.7.1
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="python libsodium wrapper"
 arch=(any)
@@ -11,7 +11,7 @@ license=(BSD)
 makedepends=("python" "python-pip")
 depends=("libsodium" "python")
 build() {
-  pip install --no-deps --target="pysodium" pysodium==0.7.1
+  pip install --no-deps --target="pysodium" pysodium==${pkgver}
 }
 package() {
   sitepackages=$(python -c "import site; print(site.getsitepackages()[0])")
