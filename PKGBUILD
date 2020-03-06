@@ -11,7 +11,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=20.1.0_devel.120371.ae7bda27a06
+pkgver=20.1.0_devel.120873.70349a2252a
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -134,9 +134,14 @@ build () {
         -D valgrind=false \
         -D tools=[] \
         -D zstd=true
-        # disabling zstd because of  a problem with lib32-zstd . 
-        # https://bugs.archlinux.org/task/65439
+
     meson configure _build
+    
+    # quoted from https://www.mesa3d.org/meson.html
+    # Note: autotools automatically updated translation files (used by the DRI configuration tool) as part of the build process, Meson does not do this. 
+    # Instead, you will need do this: 
+    ninja $NINJAFLAGS -C _build xmlpool-pot xmlpool-update-po xmlpool-gmo
+    #
     ninja  $NINJAFLAGS -C _build
 }
 
