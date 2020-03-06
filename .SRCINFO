@@ -13,10 +13,6 @@ pkgbase = foot-git
 	depends = libxkbcommon
 	depends = wayland
 	depends = pixman
-	provides = foot
-	provides = foot-terminfo
-	conflicts = foot
-	conflicts = foot-terminfo
 	source = git+https://codeberg.org/dnkl/foot.git
 	source = git+https://codeberg.org/dnkl/tllist.git
 	source = git+https://codeberg.org/dnkl/fcft.git
@@ -27,8 +23,12 @@ pkgbase = foot-git
 pkgname = foot-git
 	pkgdesc = A wayland native terminal emulator
 	optdepends = foot-terminfo: terminfo for foot
+	provides = foot
+	conflicts = foot
 
 pkgname = foot-terminfo-git
 	pkgdesc = Terminfo files for the foot terminal emulator
 	depends = ncurses
+	provides = foot-terminfo
+	conflicts = foot-terminfo
 
