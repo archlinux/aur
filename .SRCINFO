@@ -1,0 +1,22 @@
+pkgbase = roslynpad
+	pkgdesc = A cross-platform C# editor based on Roslyn and AvalonEdit
+	pkgver = 14.1
+	pkgrel = 1
+	url = https://roslynpad.net/
+	arch = any
+	license = Apache
+	depends = dotnet-runtime-2.2
+	depends = desktop-file-utils
+	source = https://github.com/aelij/RoslynPad/releases/download/14.1/RoslynPadNetCore.zip
+	source = https://github.com/aelij/RoslynPad/raw/master/src/RoslynPad/Resources/RoslynPad.png
+	source = roslynpad
+	source = roslynpad.desktop
+	source = roslynpad.install
+	md5sums = 6a9a8acc16eee0e4aeea291e6a90dd2e
+	md5sums = 8d0506a92294de1a4d26bec0f009d015
+	md5sums = 2bbafbadd0b5f3d088ce8a248058a06f
+	md5sums = d6788321c8bf62a8b5198039dbbee2d3
+	md5sums = a91349cbede88402f0b44728ad9b443f
+
+pkgname = roslynpad
+
