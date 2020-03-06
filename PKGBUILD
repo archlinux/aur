@@ -15,7 +15,7 @@ install=paclan.install
 
 build() {
   cd "${pkgname}-${pkgver}"
-  go build --trimpath -o paclan
+  GOPATH="${srcdir}" GO111MODULE=on go build --trimpath -o paclan
 }
 
 package() {
