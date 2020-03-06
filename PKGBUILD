@@ -7,7 +7,7 @@
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0.beta.17.g44fdfa7ea9
+pkgver=5.0.r38.g3d24714deb
 pkgrel=1
 epoch=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's+-alpha-+alpha.r+'|cut -c2-|tr - .
+  git describe --tags |cut -c2-|sed 's+-+.r+'|sed 's+-+.+'
 }
 
 prepare() {
