@@ -1,5 +1,5 @@
-pkgbase = xwingridselect
-	pkgdesc = X11 window switcher with fancy look
+pkgbase = xwingridselect-git
+	pkgdesc = X11 window switcher with a fancy look
 	pkgver = v0.1
 	pkgrel = 1
 	url = http://github.com/TheCynicalTeam/xwingridselect
