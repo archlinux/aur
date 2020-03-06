@@ -2,8 +2,8 @@
 # Contributor: Arnaud Durand-Favreau <biginoz at FREE point FR>
 # Previous maintainer: Bjoern Franke <bjo at nord-west.org>
 pkgname=stapler
-pkgver=1.0.0b1
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A small utility making use of the pypdf library to provide a (somewhat) lighter alternative to pdftk"
 arch=('any')
 url="https://github.com/hellerbarde/stapler"
@@ -12,7 +12,7 @@ depends=('python' 'python-pypdf2')
 conflicts=('stapler-git')
 
 source=("https://github.com/hellerbarde/stapler/archive/$pkgver.tar.gz")
-sha256sums=('e272cf4117dff4ce01892d346111476fad67239a20ba4b9dd163c49e8ebbd67e')
+sha256sums=('011f0d82a1c7a20a600a8dbe4fb3076129ec1df3a2214054ae7954ab3a85ed51')
 
 package() {
   install -d "${pkgdir}/opt/${pkgname}"
