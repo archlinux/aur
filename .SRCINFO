@@ -1,6 +1,6 @@
 pkgbase = pycharm-edu
 	pkgdesc = Free, Easy & Professional Tool to Learn Programming with Python
-	pkgver = 2019.3.2
+	pkgver = 2019.3.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/pycharm-edu/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = pycharm-edu
 	optdepends = ipython: For enhanced interactive Python shell v3
 	provides = pycharm-edu
 	options = !strip
-	source = https://download.jetbrains.com/python/pycharm-edu-2019.3.2.tar.gz
+	source = https://download.jetbrains.com/python/pycharm-edu-2019.3.3.tar.gz
 	source = pycharm-edu.desktop
-	sha256sums = e2fe28612a5148645074de9f52186678bfc331d89011ed01eac5ab5ecae52e10
+	sha256sums = 133b6f6be91dd439194a2a767509414351155b417cfe095b6ebd82823bbb2e9e
 	sha256sums = 2934fbe579bcc3d6e9d66f9ee80286e36773fe59aafaef9d15bbb45a0a59c58b
 
 pkgname = pycharm-edu
