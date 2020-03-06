@@ -1,6 +1,6 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
 pkgname=python-fafclient
-pkgver=0.18.4
+pkgver=0.18.8
 pkgrel=1
 epoch=0
 pkgdesc="Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance."
@@ -12,16 +12,14 @@ depends=('python-pyqt5' 'python-ipaddress' 'python-jsonschema' 'python-semantic-
 makedepends=('python-setuptools')
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=('')
 replaces=('python-fafclient-icetest' 'python2-fafclient-icetest' 'python2-fafclient')
 backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/FAForever/client.git#branch=develop" 'FAForeverPy37.desktop')
+source=("git+https://github.com/FAForever/client.git#branch=develop" 'FAForeverPy38.desktop')
 sha256sums=('SKIP'
-            '87177026bbb6dd8ed41718abde2d56811e5dd00ab8e4a77d1b97e94c2ef132e7')
+            '2396777ba17ff972db17d458f4ec20e5b2916490ebfff24bbfba169094319dbd')
 noextract=()
 validpgpkeys=()
 
@@ -45,7 +43,7 @@ build() {
 package() {
   cd "client"
   FAFCLIENT_VERSION=$pkgver python setup.py install --root="$pkgdir" --optimize=1 
-  install -D "$srcdir/FAForeverPy37.desktop" "$pkgdir/usr/share/applications/FAForeverPy37.desktop"
-  cp -r "res" "$pkgdir/usr/lib/python3.7/site-packages/fafclient/res"
-  echo `expr "$pkgver" : '^\([0-9]\.[0-9][0-9]\.[0-9]*\).*'` > "$pkgdir/usr/lib/python3.7/site-packages/fafclient/res/RELEASE-VERSION"
+  install -D "$srcdir/FAForeverPy38.desktop" "$pkgdir/usr/share/applications/FAForeverPy38.desktop"
+  cp -r "res" "$pkgdir/usr/lib/python3.8/site-packages/fafclient/res"
+  echo `expr "$pkgver" : '^\([0-9]\.[0-9][0-9]\.[0-9]*\).*'` > "$pkgdir/usr/lib/python3.8/site-packages/fafclient/res/RELEASE-VERSION"
 }
