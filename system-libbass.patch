@@ -1,0 +1,12 @@
+diff --unified --recursive --text emoon-rocket/CMakeLists.txt emoon-rocket.new/CMakeLists.txt
+--- emoon-rocket/CMakeLists.txt	2020-03-06 23:03:08.686223948 +0100
++++ emoon-rocket.new/CMakeLists.txt	2020-03-06 23:03:57.585225212 +0100
+@@ -76,7 +76,7 @@
+ if (APPLE)
+ 	set(RKT_PROJECT_LIBS ${RKT_PROJECT_LIBS} ${CMAKE_SOURCE_DIR}/external/bass/mac/libbass.dylib)
+ elseif (UNIX)
+-	set(RKT_PROJECT_LIBS ${RKT_PROJECT_LIBS} ${CMAKE_SOURCE_DIR}/external/bass/linux/libbass.so)
++	set(RKT_PROJECT_LIBS ${RKT_PROJECT_LIBS} /usr/lib/libbass.so)
+ elseif (MSVC)
+ 	set(RKT_PROJECT_LIBS ${RKT_PROJECT_LIBS} ${CMAKE_SOURCE_DIR}/external/bass/win32/bass.lib)
+ endif ()
