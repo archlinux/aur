@@ -1,4 +1,4 @@
-pkgbase = xwingridselect-git
+pkgbase = xwingridselect
 	pkgdesc = X11 window switcher with fancy look
 	pkgver = v0.1
 	pkgrel = 1
