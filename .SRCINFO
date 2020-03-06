@@ -1,6 +1,6 @@
 pkgbase = plpgsql_check
 	pkgdesc = linter for PostgreSQL's procedural language
-	pkgver = 6a8074e
+	pkgver = 1.8.2.5.g5bd23ea
 	pkgrel = 1
 	url = https://github.com/okbob/plpgsql_check
 	arch = i686

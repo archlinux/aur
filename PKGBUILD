@@ -2,7 +2,7 @@
 pkgname=plpgsql_check-git
 pkgbase=plpgsql_check
 _gitname=plpgsql_check
-pkgver=6a8074e
+pkgver=1.8.2.5.g5bd23ea
 pkgrel=1
 pkgdesc="linter for PostgreSQL's procedural language"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,8 +18,7 @@ install=''
 
 pkgver() {
   cd $_gitname
-  tag=`git tag | grep REL | tail -1`
-  commit=`git log --format="%h" -n 1`
+  git describe | sed 's/^v//;s/-/./g;s/_/./g;'
   echo "$tag_$commit"
 }
 
