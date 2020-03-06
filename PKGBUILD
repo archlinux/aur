@@ -1,13 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=psautohint
 pkgver=2.0.0
-pkgrel=2
-epoch=2
+pkgrel=3
 pkgdesc="A standalone version of AFDKO’s autohinter"
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/psautohint"
 license=('Apache')
-depends=('python-lxml' 'python-fonttools')
+depends=('python-lxml' 'python-fonttools' 'python-fs')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-pytest-cov' 'python-pytest-xdist' 'python-pytest-randomly')
 source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.zip")
