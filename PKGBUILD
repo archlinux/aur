@@ -3,10 +3,10 @@
 
 pkgname=ignition-cmake
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides modules that are used to find dependencies of ignition projects and generate cmake targets for consumers of ignition projects to link against."
 arch=('any')
-url="http://ignitionrobotics.org/libs/cmake"
+url="https://ignitionrobotics.org/libs/cmake"
 license=('Apache')
 groups=('development')
 depends=('cmake' 'pkg-config' 'ruby-ronn' 'doxygen')
