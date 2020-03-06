@@ -24,4 +24,3 @@ package() {
   make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install 
   sed -i 's+/usr/share/dkopp/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
-pkgrel=3
