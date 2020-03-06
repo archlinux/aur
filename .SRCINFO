@@ -1,6 +1,6 @@
 pkgbase = rancid
 	pkgdesc = Really Awesome New Cisco confIg Differ
-	pkgver = 3.8
+	pkgver = 3.11
 	pkgrel = 1
 	url = http://www.shrubbery.net/rancid/
 	arch = i686
@@ -9,9 +9,13 @@ pkgbase = rancid
 	license = BSD
 	depends = expect
 	backup = etc/rancid.conf
-	source = ftp://ftp.shrubbery.net/pub/rancid/rancid-3.8.tar.gz
-	md5sums = 5d05c257f984fb987e3a56f0402a66e7
-	sha256sums = cecdeed2379c832fb5988f4dc8c45fbbbb382723882a9ffea577e54f5ab8cc5f
+	source = https://shrubbery.net/pub/rancid/rancid-3.11.tar.gz
+	source = https://shrubbery.net/pub/rancid/rancid-3.11.tar.gz.asc
+	validpgpkeys = 321D8166DE7230F9241C06ADFC860A57C2B34FCB
+	md5sums = 1e382f8ebe1c91f6508df56b43727744
+	md5sums = 4e7fd29c835c7b7c581be1ddf32fb21e
+	sha256sums = 0678a1bad101d48d30308a8df7140eef02698b3a72b5368ff3318bd10394d21a
+	sha256sums = bcbebea9245265f00eb4c0aeb89d68d676e96e470f8d049fc28d8093584737eb
 
 pkgname = rancid
 
