@@ -1,7 +1,7 @@
 pkgbase = ddd-ftn
 	pkgdesc = A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger adapted for use at Faculty of Technical Sciences, University of Novi Sad
 	pkgver = 3.3.12
-	pkgrel = 12
+	pkgrel = 13
 	url = http://www.gnu.org/software/ddd/
 	arch = x86_64
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = ddd-ftn
 	sha1sums = b91d2dfb1145af409138bd34517a898341724e56
 	sha1sums = 3d43c9d56347f248732b1d72f29c7bf799f03864
 	sha1sums = 4fcb220ed3f2b84b9f6a9090a7e147341ed98ee2
-	sha1sums = 951627de48d73ec85c8270b781374adba25fc4c0
+	sha1sums = 8b05f6f2ec483792ca9e910840e36ad2e0ef1c79
 
 pkgname = ddd-ftn
 

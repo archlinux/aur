@@ -29,7 +29,7 @@ Index: ddd-3.3.12/ddd/Ddd.in.m4
  
  
  ! The key bindings to use for Ctrl+A (Select All):
-@@ -474,9 +474,46 @@
+@@ -474,9 +474,49 @@
  ! Ddd*sourceButtons:	    \
  ! run\nstep\nnext\nstepi\nnexti\ncont\nfinish\nkill\n\
  ! up\ndown\nBack\nForward\nEdit\ninterrupt^C
@@ -56,6 +56,9 @@ Index: ddd-3.3.12/ddd/Ddd.in.m4
 +graph display `x /1dh &()` //WordD\n\
 +graph display `x /1xh &()` //WordH\n\
 +graph display `x /1uh &()` //WordU\n\
++graph display `x /1dw &()` //LongD\n\
++graph display `x /1xw &()` //LongH\n\
++graph display `x /1uw &()` //LongU\n\
 +graph display `x /20xw ($esp)` //Stack\n\
 +graph display ($eflags & 1) != 0 // c\n\
 +graph display ($eflags & 64) != 0 // z\n\

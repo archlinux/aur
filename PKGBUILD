@@ -3,7 +3,7 @@
 
 pkgname=ddd-ftn
 pkgver=3.3.12
-pkgrel=12
+pkgrel=13
 pkgdesc="A graphical front-end for command-line debuggers such as GDB, JDB, pydb, perl debugger adapted for use at Faculty of Technical Sciences, University of Novi Sad"
 arch=('x86_64')
 url="http://www.gnu.org/software/ddd/"
@@ -17,7 +17,7 @@ source=(http://ftp.gnu.org/gnu/ddd/ddd-${pkgver}.tar.gz ddd-3.3.12-gcc44.patch f
 sha1sums=('b91d2dfb1145af409138bd34517a898341724e56'
           '3d43c9d56347f248732b1d72f29c7bf799f03864'
           '4fcb220ed3f2b84b9f6a9090a7e147341ed98ee2'
-          '951627de48d73ec85c8270b781374adba25fc4c0')
+          '8b05f6f2ec483792ca9e910840e36ad2e0ef1c79')
 
 prepare() {
   cd ddd-${pkgver}
