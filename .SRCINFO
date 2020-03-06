@@ -1,0 +1,20 @@
+pkgbase = python-uvicorn
+	pkgdesc = The lightning-fast ASGI server.
+	pkgver = 0.11.3
+	pkgrel = 1
+	url = https://www.uvicorn.org
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-h11
+	depends = python-websockets
+	depends = python-httptools
+	depends = python-uvloop
+	source = python-uvicorn-0.11.3::https://github.com/encode/uvicorn/archive/0.11.3.tar.gz
+	sha256sums = b19934169d8e032c06f372883d941c324f10187b147c6b33a12f464a3f63eeae
+
+pkgname = python-uvicorn
+
