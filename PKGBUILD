@@ -1,4 +1,4 @@
-# Maintainer: Tom Richards <tom@tomrichards.net>
+# Contributor: Tom Richards <tom@tomrichards.net>
 # Contributor: Sebastiaan Lokhorst <sebastiaanlokhorst@gmail.com>
 # Contributor: Aerion (emile [at] aerion [dot] co [dot] uk
 # Contributor: Jaroslaw Rosiek <jaroslaw.rosiek@interia.pl>
