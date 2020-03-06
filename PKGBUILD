@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-2.8-git
-pkgver=2.83.r93810.g2841b2be394
+pkgver=2.83.r93950.gafe6df1487f
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c'
-            '893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849'
+            '12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a'
             '42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4')
 
 pkgver() {
@@ -102,6 +102,7 @@ build() {
   fi
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
+  CXXFLAGS+=" -fpermissive"
   cmake -G "$generator" -S "$srcdir/blender" -B "$srcdir/build" \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \

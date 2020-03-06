@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.83.r93810.g2841b2be394
+	pkgver = 2.83.r93950.gafe6df1487f
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -49,7 +49,7 @@ pkgbase = blender-2.8-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 66b9bf3db441f35119ef0eb5f855142f2e773e8002ac0216e056bcc6f8ac409c
-	sha256sums = 893b127c9e0ea1a67905434f729b45a993c58a7ea954f9f89480ad1cc0578849
+	sha256sums = 12bd6db5c1fe14244fd7321e3d740941a36aa545ec21b02325e7553c9214778a
 	sha256sums = 42afe119529a5350034a489225958112bf4b84bdee38757a932e5caaa9bd5ed4
 
 pkgname = blender-2.8-git
