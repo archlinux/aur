@@ -22,8 +22,8 @@ pkgname=(
   "$pkgbase" kodi-bin-devel kodi-wayland-devel kodi-gbm-devel
   kodi-eventclients-devel kodi-tools-texturepacker-devel kodi-dev-devel
 )
-pkgver=18.6pre43
-_major=18.5
+pkgver=18.7pre01
+_major=18.6
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -46,6 +46,7 @@ makedepends=(
 _codename=Leia
 #_tag="$pkgver-$_codename"
 _tag="$_major-$_codename"
+
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
 # $CHROOT/build/kodi-devel/src/kodi-build/build/download
@@ -78,49 +79,7 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   cpuinfo
   000-PR17300.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17300.patch
-  001-PR16955.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16955.patch
-  002-PR16969.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16969.patch
-  003-PR16977.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16977.patch
-  004-PR16988.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16988.patch
-  005-PR16989.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/16989.patch
-  006-PR17024.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17024.patch
-  007-PR17050.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17050.patch
-  008-PR17068.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17068.patch
-  009-PR17070.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17070.patch
-  010-PR17075.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17075.patch
-  011-PR17084.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17084.patch
-  012-PR17097.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17097.patch
-  013-PR17098.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17098.patch
-  014-PR17099.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17099.patch
-  015-PR17100.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17100.patch
-  016-PR17101.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17101.patch
-  017-PR17103.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17103.patch
-  018-PR17111.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17111.patch
-  019-PR17112.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17112.patch
-  020-PR17128.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17128.patch
-  021-PR17141.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17141.patch
-  022-PR17171.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17171.patch
-  023-PR17189.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17189.patch
-  024-PR17205.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17205.patch
-  025-PR17213.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17213.patch
-  026-PR17215.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17215.patch
-  027-PR17236.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17236.patch
-  028-PR17237.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17237.patch
-  029-PR17246.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17246.patch
-  030-PR17276.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17276.patch
-  031-PR17283.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17283.patch
-  032-PR17295.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17295.patch
-  033-PR17297.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17297.patch
-  034-PR17299.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17299.patch
-  035-PR17303.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17303.patch
-  036-PR17305.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17305.patch
-  037-PR17356.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17356.patch
-  038-PR17383.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17383.patch
-  039-PR17384.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17384.patch
-  040-PR17395.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17395.patch
-  041-PR17406.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17406.patch
-  042-PR17407.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17407.patch
-  043-PR17419.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17419.patch
+  001-PR17439.patch::https://patch-diff.githubusercontent.com/raw/xbmc/xbmc/pull/17439.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -132,7 +91,7 @@ noextract=(
   "fstrcmp-$_fstrcmp_version.tar.gz"
   "flatbuffers-$_flatbuffers_version.tar.gz"
 )
-sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
+sha256sums=('47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c'
             '38816f8373e243bc5950449b4f3b18938c4e1c59348e3411e23f31db4072e40d'
             '071e414e61b795f2ff9015b21a85fc009dde967f27780d23092643916538a57a'
             'a30b6aa0aad0f2c505bc77948af2d5531a80b6e68112addb4c123fca24d5d3bf'
@@ -143,49 +102,7 @@ sha256sums=('108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29'
             '5ca5491e4260cacae30f1a5786d109230db3f3a6e5a0eb45d0d0608293d247e3'
             '27387e49043127f09c5ef0a931fffb864f5730e79629100a6e210b68a1b9f2c1'
             '3aaca3630689b76e7a7f35656a4ada3fb18ecd7e3fe199634264ccf76b96c0f0'
-            'a3c5e7b4f8b31744d8c8a72a87739fcabf1df883f0d250b4a460f645c9bbb6ab'
-            'e1aabf601fb8871782a8b29e679829e9589e2a423368c2b0b7a66f8d48e91cb1'
-            '431476776ae38a4eea1d18de913374ffb186411fe7958d1cd08971fdcc6e19f3'
-            '8e98093ff3eb30f46575d0bd594fdd14817278c14c370933435fb74b5fffe6b8'
-            'd938169e9efaeba439e8f69237ab6bf4a625462b3d16772c21785a97ab1811c2'
-            '0f6492a63be113aac81faa5963d2bad122c3256e9e9fa9ea85ee2390c8c34ce8'
-            'f0f36152c991233d5a2778185aaf851b506846d4cf7203f4a654e768e2f1abde'
-            '15da19309d420da1bd6c135fed442e3db878fbf594b44b50de0dc7bfbb05606d'
-            '4f7c735d4116a3de19ac2d7bfa733bdebbe0fe5eaefa69e390d5cfacabbe2b9b'
-            '3363b14eaf4925a74ba2c93e52902c9e364a106f38fb8fb809451ebede06e89a'
-            '0308b607d92994b995f7c1bd8b3853f72fc3d9012d6b9269f82e8627eb7a6d0c'
-            'e3fae917683686c48ce3750e94b1235847060c76babece4d7197fb869a414889'
-            '2e9d85eb9a27a7905f784bbfbe6ce17acf08fe097e752f7e89dd8d5fa3a13768'
-            'b0aefc3a103a581a436bf5bd8e5deaff013793a7661a4273e6d35a90c120da56'
-            '8925ab7e022d6c565d37d7ed6abdaca1bdace12dfcb4c9808f6b7a6ac7e056a7'
-            'f3d6132e63f9749227977cab9160c562fb542c261e4fa661ecb1424ad24cf82b'
-            '46e634aa701369b89e657ffdff739b7e81ce2e6c8675b6b226e72715a56baabf'
-            '51626f8ea673350ecde304fec37ae79339387954f7f22b1c6a032d74bbc8c95c'
-            '499d7f293ec3e868d473324e895470dd4752c6d888075add8e5cf302670aea1e'
-            'edec117ace5bdda36729027af077d83fa0342b68d8d260c7d81a9722958b5d01'
-            'bafe2ca7437fd2af8993d25ee715cfaf78478e61338c173168e4ea4cc7c628a3'
-            '484ac891c4271497c6208447cbf544e5eb23bc1fe95aec3b7e0d07a21d442acb'
-            'e9739ef53b1449c254278e585d1014169254a7efaae18cf02a65d9066537d0df'
-            '1344a9cf469431bd7f04b3dacae0ab3dbfceae7b216a16b58b8b7cd4716a5d64'
-            '56e1cd8e3ccca43dc2d73b10888efdc25cfee6932b3efeb13ad3495dd6e26b51'
-            '8b5021bbb52b3e083113d88e444f66ec93463d8be76415107509dba4245d8dd1'
-            '087d03b9c7d89c7e130c0a1e174803bae83b3c47ec24c70d94257d581f0c7f45'
-            '2e769b867fbd46cdaaa333e89546c98060d8c0692d3b2462e0078446cab4e306'
-            '7212ebb7e4e0c3519e20cc22c0e48e67d545f0f1bd1d81da4259a880c07887ad'
-            '2063547a76936be129bffe292a1fc915c9f53595ef4774004860c9c3cc7c89fe'
-            '657045d9837e17f618d40707cb5127e50f25480430a62a11543976ce66cadbca'
-            '78e1391e41831fe416de370ebaff408dda78a1b3a9ef1864e05c9e136f390870'
-            '345cc33bbb9a55368f3a051588887f7b64fecabe49d59c3bd9bcbca2cecd2630'
-            '63bd10c32bb7d9017b129cd009dfb0743b7b692c7e9018dd8ea0de347143ee15'
-            '3f85e64a2ff1c4b4dbb0ab82c7fbfd29e14b5e006af1f1e8ea5ebfe18b8d2b2b'
-            '23d618941c2532127487f42df21ca588fa0f4196fe028810ecc032bb0c402374'
-            'dbb69414b3cae1bd9bcf379a415413a63510b0ba4825aafd9e163014dd620db4'
-            'e2a3065c88714b9ebc1b2213188cb3cbb7c1605c2df38bd35a9e07a4979c1dee'
-            'e16bad884afc201cf51d714e9a0ab717a4ec32487a803d9895eedf18ae34e275'
-            '800cf39cee346f9a6ca23a35f9f4cfd2fe8c30ae6373901d4f11cb1a12747100'
-            '36e3afa3b09adea1156bba16d2bd5fadd38f904801a3e79e811e2fde51c107bf'
-            '680cd6a0670024050e5099adb8fcb99c9aa83838844290ee2b715b4d769f7883'
-            '3e06919f9c5edb00b9ed138d93ef28fe7e223f9d234fd9051735889f0009c68b')
+            '9507a8c4f3a8f0ab9a4988672596e0251c086975c04fa5e43935dc059b2c5a0f')
 prepare() {
   # force python 'binary' as python2
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
