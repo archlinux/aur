@@ -1,6 +1,6 @@
 # Maintainer: emersion <contact emersion fr>
 pkgname=libvarlink
-pkgver=18
+pkgver=19
 pkgrel=1
 license=('MIT')
 pkgdesc='Varlink C library and command line tool'
@@ -8,7 +8,7 @@ makedepends=("meson" "python")
 arch=('x86_64')
 url='https://github.com/varlink/libvarlink'
 source=("https://github.com/varlink/libvarlink/archive/${pkgver}.tar.gz")
-sha256sums=('7a32543643116ad105da4ddb2f8030de7dcad1cdb3feb1a214ae5e7b65a6a198')
+sha256sums=('0e316138ef6abc34363b05d0caf6df2e389a93b832e8d971e3ae64b48ba96133')
 
 build() {
 	cd "$pkgname-$pkgver"
