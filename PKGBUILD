@@ -1,7 +1,7 @@
 # Maintainer: Daniel Plaza <daniel.plaza.espi at gmail dot com>
 
 pkgname=mcuxpresso-ide
-pkgver=11.1.0_3209
+pkgver=11.1.1_3241
 pkgrel=1
 epoch=
 pkgdesc="An easy-to-use integrated development environment (IDE) for creating, building, debugging, and optimizing your application. From BIN package distributed by NXP."
@@ -10,10 +10,10 @@ url="http://www.nxp.com/MCUXPresso"
 license=('custom:"NXP"')
 depends=('dfu-util' 'libusb' 'ncurses' 'glibc' 'lib32-glibc' 'jlink-software-and-documentation')
 
-source=("https://freescaleesd.flexnetoperations.com/337170/827/15347827/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
+source=("https://freescaleesd.flexnetoperations.com/337170/17/15604017/mcuxpressoide-${pkgver}.${arch}.deb.bin" "LICENSE")
 noextract=("mcuxpressoide-${pkgver}.${arch}.deb.bin")
-sha256sums=('190465a5ea22c159819a735c7d0ce48bf0e1cbaccf5d64dbf7fc3c8e0077a63e'
-            'ef741c2a9597bafb10f4d921d7b6c59b8cdcae2658aae8e3f1f3ddc6d4d04e68')
+sha256sums=('e062d31a45cb5ebf1e12cb560bb151d8227ffdf435b0c338e712c361e322aba7'
+            '5b5270f67599c666fabf3fac2d7cb65572a4cc07fd21efe26d990d9baa19f2a1')
 options=('!strip')
 
 prepare() {
