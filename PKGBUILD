@@ -9,7 +9,7 @@ url="http://www.openblas.net/"
 license=('BSD')
 depends=('gcc-libs')
 makedepends=('perl' 'gcc-fortran' 'git')
-provides=('blas=3.5.0' 'openblas' 'cblas' 'openblas-cblas')
+provides=('blas=3.5.0' 'openblas' 'cblas')
 conflicts=('blas' 'openblas' 'cblas')
 options=(!makeflags !emptydirs)
 source=($_pkgname::git+https://github.com/xianyi/OpenBLAS.git)
