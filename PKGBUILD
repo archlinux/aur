@@ -2,7 +2,7 @@
 
 pkgname=spotify-qt
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Work-in-progress Spotify client using Qt"
 arch=(x86_64)
 url="https://github.com/kraxarn/spotify-qt"
@@ -29,6 +29,7 @@ package() {
 	do
 		install -Dm644 "res/app/${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/spotify-qt.png"
 	done
+	install -Dm644 "res/logo/spotify-qt.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/spotify-qt.svg"
 	# Install desktop shortcut
 	install -Dm644 "res/app/spotify-qt.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
