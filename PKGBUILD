@@ -45,7 +45,7 @@ build() {
     npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
     npx electron-rebuild --version="$_electron"
     node-prune node_modules
-    "$(npm bin)"/electron-packager ./ ${pkgname%-git} --electron-version="$_electron"
+    npx electron-packager ./ ${pkgname%-git} --electron-version="$_electron"
     ./build_scripts/purge_build_artifacts.sh
     npx electron-packager ./ "${pkgname%-git}" \
         --electron-version="$_electron" \
