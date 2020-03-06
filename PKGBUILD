@@ -2,7 +2,7 @@
 
 pkgname=('python-minieigen-git')
 pkgdesc="Boost::Python wrapper for parts of the Eigen c++ library"
-pkgver=20200217.b2182a0
+pkgver=20200217.1e992b1
 pkgrel=1
 license=('LGPL3')
 url='https://github.com/eudoxos/minieigen'
