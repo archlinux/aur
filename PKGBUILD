@@ -17,7 +17,7 @@ package() {
     local file eq permissions mode name target
 
     mkdir -p "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/"
-    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ lib/ LICENSE_GRAALPYTHON.txt 3rd_party_licenses_graalpython.txt THIRD_PARTY_LICENSE_GRAALPYTHON.txt
+    cp -a -t "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/" jre/ lib/ LICENSE_GRAALPYTHON.txt THIRD_PARTY_LICENSE_GRAALPYTHON.txt
 
     printf '\n' >> META-INF/permissions
     while read -r file eq permissions; do
