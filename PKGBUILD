@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    cargo build --release --locked --target-dir=target
+    cargo build --release --locked --target-dir=target --all-features
 }
 
 package() {
