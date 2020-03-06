@@ -2,20 +2,27 @@
 
 pkgname=ezra-project-git
 pkgver=0.11.1.r93.g93f5777
-pkgrel=1
-pkgdesc="Bible study software focussing on topical study based on keywords/tags"
+pkgrel=2
+pkgdesc='Bible study software focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/tobias-klein/${pkgname%-git}"
 license=('GPL3')
-depends=('curl'
-         'electron'
+depends=('electron'
          'icu'
          'nodejs'
-         'python2'
-         'sqlite')
-makedepends=('cmake' 'gendesk' 'git' 'npm' 'sword')
-conflicts=("${pkgname%-git}")
+         'nodejs-addon-api'
+         'nodejs-sword-interface'
+         'sqlite'
+         'sword')
+makedepends=('gendesk'
+             'git'
+             'jq'
+             'moreutils'
+             'node-gyp'
+             'node-prune'
+             'npm')
 provides=("${pkgname%-git}")
+conflicts=($provides)
 source=("git+$url.git"
         'ezra-project.sh')
 sha256sums=('SKIP'
@@ -29,27 +36,25 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    npm uninstall --no-audit -D electron
-    npm install --no-audit electron@"$_electron"
+    jq 'del(.scripts[], .dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "node-gyp"])' package.json |
+        sponge package.json
     gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "${pkgname%-git}" --name "Ezra Project"
 }
 
 build() {
     cd "${pkgname%-git}"
-    npm run compile-pug
-    npm run install-node-prune
-    "$(npm bin)"/electron-rebuild -f -w node-sword-interface -v "$_electron"
-    npm run prune-node-modules
-    npm run purge-build-artifacts
-    npm run cleanup-gyp-shebang
+    npm install --cache "$srcdir/npm-cache"
+    "$(npm bin)"/electron-rebuild --version="$_electron"
+    node-prune node_modules
+    "$(npm bin)"/electron-packager ./ ${pkgname%-git} --electron-version="$_electron"
+    ./build_scripts/purge_build_artifacts.sh
+    "$(npm bin)"/electron-packager ./ ${pkgname%-git} --electron-version="$_electron" --overwrite --asar --platform=linux --arch=x64 --prune=true
 }
 
 package() {
     cd "${pkgname%-git}"
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "$pkgname.desktop"
+    install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-git}.desktop"
     install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    "$(npm bin)"/electron-packager . "${pkgname%-git}" --overwrite --asar --platform=linux --arch=x64 --prune=true --out=release --electron-version="$_electron"
-    rm release/ezra-project-linux-x64/"${pkgname%-git}"
-    mkdir -p "$pkgdir/usr/lib/"
-    cp -a release/ezra-project-linux-x64 "$pkgdir/usr/lib/${pkgname%-git}"
+    install -Dm644 -t "$pkgdir/usr/lib/${pkgname%-git}/resources/" ${pkgname%-git}-linux-x64/resources/app.asar
+    install -Dm644 -t "$pkgdir/usr/share/licences/${pkgname%-git}/" LICENSE
 }
