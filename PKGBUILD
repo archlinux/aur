@@ -21,7 +21,7 @@ package() {
   appdir="${pkgdir}/opt/${pkgname}"
 
   mkdir -p $appdir $bindir
-
+  awk -i inplace 'BEGINFILE{print "#!/usr/bin/env python"}{print}' $srcdir/$pkgname/XssMap.py
   chmod 755 $srcdir/$pkgname/XssMap.py
   cp -r $srcdir/$pkgname/* "${appdir}"
   ln -s /opt/$pkgname/XssMap.py "${bindir}"/xssmap
