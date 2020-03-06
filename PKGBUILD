@@ -1,17 +1,13 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.32.0.109.g36ca0e0030
+pkgver=v0.32.0.218.gc032db6185
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
 depends=(
-         'desktop-file-utils'
          'fribidi'
-         'hicolor-icon-theme'
-         'jack'
          'lcms2'
-         'libarchive'
          'libbluray.so'
          'libbs2b'
          'libcaca'
@@ -21,7 +17,6 @@ depends=(
          'libgme'
          'libmysofa'
          'libplacebo.so'
-         'libpulse'
          'libshaderc_shared.so'
          'libsoxr'
          'libssh'
@@ -34,16 +29,15 @@ depends=(
          'libxv'
          'luajit'
          'mujs'
-         'openal'
          'rsound'
          'rubberband'
          'sdl2'
          'sndio'
-         'smbclient'
          'uchardet'
+         'gnutls'
+         'libarchive'
          'v4l-utils'
          'vulkan-icd-loader'
-         'xdg-utils'
          )
 license=('GPL2' 'GPL3' 'LGPL3' 'LGPL2.1' 'BSD')
 url='http://mpv.io'
@@ -73,7 +67,7 @@ conflicts=('mpv'
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
-        'git+https://github.com/ffmpeg/ffmpeg.git'
+        'git+https://github.com/qyot27/ffmpeg.git#branch=avsplus_linux'
         'git+https://github.com/libass/libass.git'
         )
 sha256sums=('SKIP'
@@ -112,6 +106,7 @@ prepare() {
     '--enable-libpulse'
     '--enable-nonfree'
     '--enable-cuda'
+    '--enable-avisynth'
     )
   _mpv_options=(
     '--prefix=/usr'
@@ -126,7 +121,6 @@ prepare() {
     '--enable-html-build'
     '--enable-libarchive'
     '--enable-libmpv-shared'
-    '--enable-libsmbclient'
     '--enable-openal'
     '--enable-sdl2'
     )
