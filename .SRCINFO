@@ -1,6 +1,6 @@
 pkgbase = openclonk-git
 	pkgdesc = Multiplayer-action-tactic-skill game
-	pkgver = r10778.5c45d7a08
+	pkgver = r11397.c13bc33d7
 	pkgrel = 1
 	url = http://openclonk.org
 	install = openclonk.install
@@ -10,6 +10,7 @@ pkgbase = openclonk-git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = mesa
+	makedepends = git
 	depends = glew
 	depends = freealut
 	depends = miniupnpc
@@ -23,7 +24,7 @@ pkgbase = openclonk-git
 	conflicts = clonk_rage
 	conflicts = openclonk
 	conflicts = openclonk-music
-	source = openclonk-git::git+https://git.openclonk.org/openclonk.git#branch=master
+	source = openclonk-git::git+https://github.com/openclonk/openclonk#branch=master
 	md5sums = SKIP
 
 pkgname = openclonk-git
