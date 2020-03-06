@@ -3,7 +3,7 @@
 # Maintainer: Teteros <teteros at teknik dot io>
 
 pkgname=radium
-pkgver=5.9.96
+pkgver=5.9.98
 pkgrel=1
 pkgdesc='A graphical music editor. A next generation tracker.'
 arch=(i686 x86_64)
@@ -28,7 +28,6 @@ depends=(
 )
 makedepends=(
   boost
-  clang
   cmake
   ladspa
   libxcursor
@@ -41,15 +40,21 @@ makedepends=(
 )
 optdepends=(
   'calf-ladspa: Default chorus plugin'
-  'ladspa-plugins: Package group for default radium plugins incl in binary releases'
+  'ladspa-plugins: Package group for default radium plugins included in binary releases'
 )
 options=(!strip)
 source=(https://github.com/kmatheussen/radium/archive/$pkgver.tar.gz
+        0001-Internal-Various-compilation-fixes-plus-assert-that-.patch
+        0002-Sequencer-Fix-program-sometimes-crashing-in-debug-mo.patch
+        0003-Linux-Macosx-Fix-compiling-with-newer-bdf.h.patch
         use-system-libxcb.patch
         use-system-vstsdk.patch)
-sha256sums=('932c4091cd8d77a18dc042675447bfc6ccac1c04f945846b5ec6d45107663169'
+sha256sums=('3b1b5b9f72536d79561f602f278611979fbc9a8720cd3064c001998a22de9e90'
+            'c658253e13eb5e5dbe44d5e968634da4ea474885bd4ea33b4d7c586b8aa58cc2'
+            'eb6641f77506799eab7f3fadccd5e129fc3a5f1a4cefd099d97dd1918aaa26d8'
+            'b0841d5979936a87b179a5ac8a61f326493b50ddcdb79b10da27870af1b204ab'
             '6c29e825e06d1c3aec4afd915718b8c46da705d1411a94f7c0f777b888a9b50d'
-            '045e4b4c444d1a37dffdcecb87e5245188fadf68444f9a4b14207a5b98671344')
+            'a1ee3635dd9338e2ea2fc76cddf670fcb046afeba553a12b73158cf0b51a52f6')
 
 prepare() {
   cd radium-$pkgver
@@ -60,6 +65,9 @@ prepare() {
   # Set VST SDK location to steinberg-vst36 rather than look for it in user's home folder
   patch -p1 < "$srcdir/use-system-vstsdk.patch"
 
+  # Compile fix for gdb9 https://github.com/kmatheussen/radium/issues/1246
+  for commit in "$srcdir"/000?-*.patch; do patch -p1 < "$commit"; done
+
   # Edit new file template and demo songs to be compatible with chorus plugin from calf-ladspa
   for file in bin/sounds/*.rad; do sed -i -e 's/Calf MultiChorus LADSPA/Calf Multi Chorus LADSPA/g' "$file"; done
 }
@@ -67,8 +75,8 @@ prepare() {
 build() {
   cd radium-$pkgver
 
-  RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 make packages
-  RADIUM_USE_CLANG=1 RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
+  RADIUM_QT_VERSION=5 make packages
+  RADIUM_QT_VERSION=5 BUILDTYPE=RELEASE ./build_linux.sh
 }
 
 package() {
