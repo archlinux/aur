@@ -7,6 +7,7 @@ pkgdesc="Helper for the Arch User Repository"
 arch=('any')
 url="https://github.com/karx1/haur"
 license=('LGPLv3')
+provides=("haur")
 depends=('bash' 'git')
 source=("haur" "haurrc" "Makefile")
 prepare () {
