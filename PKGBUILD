@@ -7,8 +7,8 @@ pkgdesc="BLAS version of Leela Chess Zero."
 arch=('any')
 url="https://lczero.org/"
 license=('GPLv3')
-depends=('openblas-cblas' 'protobuf')
-makedepends=('git' 'meson>=0.46' 'ninja' 'clang')
+depends=('openblas' 'protobuf')
+makedepends=('git' 'meson>=0.46' 'ninja' 'clang' 'openblas-cblas-git')
 source=("${_pkgname}::git+https://github.com/LeelaChessZero/lc0.git#branch=master")
 md5sums=('SKIP')
 
