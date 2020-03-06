@@ -1,18 +1,12 @@
 pkgbase = ttf-averia-libre
 	pkgdesc = Averia Libre Font
-	pkgver = 20181017
+	pkgver = 20200306
 	pkgrel = 1
 	url = http://iotic.com/averia/
-	install = install
 	arch = any
 	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-averia-libre-20181017::http://www.ffonts.net/Averia-Libre-Regular.font.zip
-	source = install
+	source = ttf-averia-libre-20200306::http://www.ffonts.net/Averia-Libre-Regular.font.zip
 	md5sums = fbc998528812612855e1e512916c82cc
-	md5sums = b9b03309f730947d472a63b0e5ca3bb1
 
 pkgname = ttf-averia-libre
 
