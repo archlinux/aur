@@ -6,9 +6,8 @@ After=network.target
 User=octoprint
 Group=octoprint
 Type=simple
-ExecStart=/usr/bin/octoprint serve
+ExecStart=/opt/octoprint-venv/bin/python -m octoprint serve
 Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-
