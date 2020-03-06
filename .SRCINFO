@@ -5,7 +5,7 @@ pkgbase = r-rprojroot
 	url = https://cran.r-project.org/package=rprojroot
 	arch = any
 	license = GPL3
-	depends = r
+	depends = r>=3.0.0
 	depends = r-backports
 	optdepends = r-testthat
 	optdepends = r-mockr
