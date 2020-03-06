@@ -3,7 +3,7 @@
 . /usr/share/makepkg/util/message.sh
 colorize
 
-Detect_CPU=$(gcc -c -Q -march=native --help=target | grep march | awk '{print $2}')
+Detect_CPU=$(gcc -c -Q -march=native --help=target | grep march | awk '{print $2}' | head -1)
 
 msg "Detected CPU architecture: $Detect_CPU"
 
