@@ -2,7 +2,7 @@
 
 pkgname=lightdm-webkit2-theme-alter
 _pkgname=lightdm-webkit2-theme-alter
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 pkgdesc="AlterLinux webkit2 greeter theme"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('lightdm' 'lightdm-webkit2-greeter')
 optdepends=()
 source=("https://github.com/SereneTeam/${_pkgname}/archive/v${pkgver}.zip")
-md5sums=('SKIP')
+md5sums=('8abab01108fac28825a0304105722364')
 conflicts=('lightdm-webkit2-theme-alter-git')
 
 build () {
