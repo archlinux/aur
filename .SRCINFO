@@ -1,7 +1,7 @@
 pkgbase = python-doitlive
 	pkgdesc = Because sometimes you need to do it live
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sloria/doitlive
 	arch = any
 	license = MIT
@@ -15,12 +15,10 @@ pkgname = python-doitlive
 	depends = python
 	depends = python-click-didyoumean
 	depends = python-click-completion
-	depends = python-shellingham
 
 pkgname = python2-doitlive
 	pkgdesc = Because sometimes you need to do it live for Python 2
 	depends = python2
-	depends = python2-click-didyoumean
-	depends = python2-click-completion
-	depends = python2-shellingham
+	depends = python-click-didyoumean
+	depends = python-click-completion
 
