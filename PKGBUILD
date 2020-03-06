@@ -1,7 +1,7 @@
 # Contributor, Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=findwild
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
@@ -21,4 +21,3 @@ package() {
   make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
   sed -i 's+/usr/share/findwild/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
-pkgrel=2
