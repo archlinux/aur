@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-r997.4df0260
+r1002.258d907
 ------------
 
 Fix
@@ -17,6 +17,22 @@ Fix
 
 Other
 ~~~~~
+- Merge pull request #233 from Cypher1/master. [emil-e]
+
+  Fix type error detected by GCC-9.1.0
+- Don't werror (temporary fix to ensure that builds succeed on GCC-9)
+  [Joshua Pratt]
+- Ignore build output. [Joshua Pratt]
+- Merge pull request #248 from arekfu/cmake-rtti. [emil-e]
+- CMake: use `target_compile_definitions()` for the `RC_USE_RTTI`
+  symbol. [Davide Mancusi]
+
+  The code that prints the type name lives in a header file, and therefore
+  it is separately included by each translation unit using Rapidcheck.
+  This commit make sure that any test suite linking with Rapidcheck will
+  use the same compile definitions. Otherwise, Rapidcheck will just print
+  `"[unknown type]"`, if the test suite has not been compiled with
+  `-DRC_USE_RTTI'`
 - Merge pull request #241 from
   hanst99/fix/missing_includes_and_signed_unsigned_comparison. [emil-e]
 
