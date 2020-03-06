@@ -1,0 +1,20 @@
+post_install() {
+    cat <<EOF
+==> Add this code to your Emacs init to use nasm-mode:
+
+(autoload 'nasm-mode "nasm-mode.el"
+   "Major mode for editing Markdown files" t)
+
+==> Add this code to your Emacs init if you want nasm-mode be autoloaded
+when finding a file with .asm extension:
+
+(setq auto-mode-alist
+   (cons '("\.asm" . nasm-mode) auto-mode-alist))
+
+EOF
+}
+
+
+post_upgrade() {
+	post_install $1
+}

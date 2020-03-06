@@ -1,0 +1,14 @@
+pkgbase = emacs-nasm-mode
+	pkgdesc = Emacs NASM mode
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/skeeto/nasm-mode
+	install = emacs-nasm-mode.install
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = https://github.com/skeeto/nasm-mode/archive/1.1.1.tar.gz
+	sha256sums = f2d11652a671268256564b00eb7f198e0a2f8d3ac5bfbeb3ab1422185a9abd72
+
+pkgname = emacs-nasm-mode
+
