@@ -1,7 +1,7 @@
 # Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
 # Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
 
-pkgname=xwingridselect-git
+pkgname=xwingridselect
 _gitname=xwingridselect
 pkgver=v0.1
 pkgrel=1
