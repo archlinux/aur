@@ -2,7 +2,7 @@
 
 pkgname=ezra-project-git
 pkgver=0.11.1.r93.g93f5777
-pkgrel=2
+pkgrel=3
 pkgdesc='Bible study software focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/tobias-klein/${pkgname%-git}"
@@ -20,6 +20,7 @@ makedepends=('gendesk'
              'moreutils'
              'node-gyp'
              'node-prune'
+             'nodejs-pug-cli'
              'npm')
 provides=("${pkgname%-git}")
 conflicts=($provides)
@@ -36,7 +37,7 @@ pkgver() {
 
 prepare() {
     cd "${pkgname%-git}"
-    jq 'del(.scripts[], .dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "node-gyp"])' package.json |
+    jq 'del(.scripts[], .dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "node-gyp", "pug-cli"])' package.json |
         sponge package.json
     gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "${pkgname%-git}" --name "Ezra Project"
 }
@@ -44,6 +45,8 @@ prepare() {
 build() {
     cd "${pkgname%-git}"
     npm install --cache "$srcdir/npm-cache"
+    pug --client --no-debug --pretty -n verseListTemplate templates/verse_list.pug
+    pug --client --no-debug --pretty -n tagListTemplate templates/tag_list.pug
     "$(npm bin)"/electron-rebuild --version="$_electron"
     node-prune node_modules
     "$(npm bin)"/electron-packager ./ ${pkgname%-git} --electron-version="$_electron"
