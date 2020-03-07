@@ -85,6 +85,9 @@
     Reduced code duplication
 
 1.4.0 (March 06, 2020)
-    Add initial localization for German/Deutsch and Spanish/Español (user contributed translations welcome!)
+    Added initial localization for German/Deutsch and Spanish/Español (user contributed translations welcome!)
     Dramatically sped up many features
     Code cleanup
+
+1.4.1 (March 07, 2020)
+    Fixed an issue where sometimes a streamer returned by the Twitch API would be null
