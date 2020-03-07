@@ -1,0 +1,19 @@
+pkgbase = gnome-getting-started-docs-git
+	pkgdesc = Help a new user get started in GNOME
+	pkgver = 3.35.92
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-getting-started-docs
+	arch = any
+	license = CCPL:by-sa
+	makedepends = yelp-tools
+	makedepends = git
+	depends = yelp
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	provides = gnome-getting-started-docs
+	conflicts = gnome-getting-started-docs
+	source = git+https://gitlab.gnome.org/GNOME/gnome-getting-started-docs.git
+	sha512sums = SKIP
+
+pkgname = gnome-getting-started-docs-git
+
