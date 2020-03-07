@@ -8,7 +8,7 @@ pkgdesc='A simple server for sending and receiving messages in real-time per Web
 arch=('x86_64' 'i686' 'aarch64' 'armv7')
 url='https://gotify.net/'
 license=('MIT')
-makedepends=('git' 'go')
+makedepends=('git' 'go' 'yarn')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gotify/server/archive/v${pkgver}.tar.gz"
   'sysusers.d'
@@ -24,6 +24,12 @@ sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
 
 build() {
   cd "server-$pkgver"
+  (
+    cd ui
+    yarn --non-interactive --frozen-lockfile
+    yarn --non-interactive --frozen-lockfile build
+  )
+  go run github.com/gobuffalo/packr/packr
   local build_date=$(date "+%F-%T" -d "@${SOURCE_DATE_EPOCH}")
   go build \
     -o "$pkgname" \

@@ -10,6 +10,7 @@ pkgbase = gotify-server
 	license = MIT
 	makedepends = git
 	makedepends = go
+	makedepends = yarn
 	source = gotify-server-2.0.14.tar.gz::https://github.com/gotify/server/archive/v2.0.14.tar.gz
 	source = sysusers.d
 	source = tmpfiles.d
