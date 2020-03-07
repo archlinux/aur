@@ -8,11 +8,14 @@ pkgbase = gplaycli
 	license = AGPL
 	depends = python
 	depends = python-pyaxmlparser
-	depends = python-gpapi
+	depends = python-setuptools
 	optdepends = java-runtime: needed for autogeneration of a new AndroiID
+	conflicts = python-gpapi
 	source = gplaycli-3.29.tar.gz::https://github.com/matlink/gplaycli/archive/3.29.tar.gz
+	source = gpapi_for_gplaycli-0.4.4.4.tar.gz::https://github.com/matlink/googleplay-api/archive/0.4.4.4.tar.gz
 	source = gplaycli.install
 	md5sums = a8be0fda33673f6992a7612313cd670c
+	md5sums = 0ff99d96280fbbb90aec3f9ce0dcde0f
 	md5sums = e993658f9913493bb4336d73f23a3195
 
 pkgname = gplaycli
