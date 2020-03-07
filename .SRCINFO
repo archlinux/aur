@@ -1,8 +1,9 @@
 pkgbase = lib32-jasper
 	pkgdesc = A software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard (32-bit)
 	pkgver = 2.0.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ece.uvic.ca/~mdadams/jasper/
+	install = jasper.install
 	arch = x86_64
 	license = custom:JasPer2.0
 	makedepends = lib32-freeglut
