@@ -1,0 +1,16 @@
+pkgbase = sear-git
+	pkgdesc = Signed/Encrypted ARchive
+	pkgver = 0.0.0.r38.g1b262d8
+	pkgrel = 1
+	url = https://github.com/iqlusioninc/sear
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	provides = sear
+	conflicts = sear
+	source = sear-git::git+https://github.com/iqlusioninc/sear.git
+	sha256sums = SKIP
+
+pkgname = sear-git
+
