@@ -11,7 +11,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=("GPL")
 depends=("r" "r-mime>=0.2" "r-httpuv>=1.4.0" "r-xfun" "r-jsonlite")
 # makedepends=()
-optdepends=("r-later" "r-rstudioapi" "r-knitr" "r-rmarkdown")
+optdepends=("r-later" "r-rstudioapi" "r-knitr>=1.9" "r-rmarkdown")
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 sha256sums=("cc950bedbd52f2d93c54157dc5b261113be6baee2d9e90e99a8de048c09fda80")
 
