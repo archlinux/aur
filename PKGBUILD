@@ -95,10 +95,10 @@ fi
 
 # vars
 _local_qt5_repo="${local_qt5_repo}"
-_pkgvermajmin="5.14"
-_pkgverpatch=".1"
+_pkgvermajmin="5.15"
+_pkgverpatch=".0"
 # {alpha/beta/beta2/rc}
-_dev_suffix=""
+_dev_suffix="beta1"
 pkgrel=0
 pkgver="${_pkgvermajmin}${_pkgverpatch}"
 $_build_from_local_src_tree && pkgver=6.6.6
@@ -260,7 +260,6 @@ if $_uber_minimal; then
     _additional_configure_flags="$_additional_configure_flags \
         -no-direct2d \
         -no-directfb \
-        -no-mirclient \
         -no-cups \
         -no-iconv \
         -no-gif \
@@ -291,7 +290,6 @@ _core_configure_options=" \
                  -prefix ${_installprefix} \
                  -opengl ${_opengl_variant} \
                  -qt-sqlite \
-                 -optimized-qmake \
                  -optimized-tools \
                  -confirm-license \
                  -opensource \
@@ -306,7 +304,7 @@ _core_configure_options=" \
                  -reduce-exports \
         "
 
-_tar_xz_sha256="6f17f488f512b39c2feb57d83a5e0a13dcef32999bea2e2a8f832f54a29badb8"
+_tar_xz_sha256="94a02e3e1879f7492340de675b65b9b98a671698063d28c97e91b78098724548"
 #_tar_xz_sha256="356f42d9087718f22f03d13d0c2cdfb308f91dc3cf0c6318bed33f2094cd9d6c"
 
 source=("git://github.com/sirspudd/mkspecs.git")

@@ -1,6 +1,6 @@
-pkgbase = qt-sdk
+pkgbase = qt-sdk-raspberry-pi
 	pkgdesc = Qt SDK for the Raspberry Pi 1/2/3
-	pkgver = 5.14.1
+	pkgver = 5.15.0
 	pkgrel = 0
 	url = http://www.chaos-reins.com/qpi/
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = qt-sdk
 	provides = qt-sdk
 	options = !strip
 	source = git://github.com/sirspudd/mkspecs.git
-	source = https://download.qt.io/official_releases/qt/5.14/5.14.1/single/qt-everywhere-src-5.14.1.tar.xz
+	source = https://download.qt.io/development_releases/qt/5.15/5.15.0-beta1/single/qt-everywhere-src-5.15.0-beta1.tar.xz
 	sha256sums = SKIP
-	sha256sums = 6f17f488f512b39c2feb57d83a5e0a13dcef32999bea2e2a8f832f54a29badb8
+	sha256sums = 94a02e3e1879f7492340de675b65b9b98a671698063d28c97e91b78098724548
 
-pkgname = qt-sdk
+pkgname = qt-sdk-raspberry-pi
 
