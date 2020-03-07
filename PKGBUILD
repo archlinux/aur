@@ -1,7 +1,7 @@
-# Maintainer: Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=4.20.r4.ga9639c41+wine.4.20.r74.ga9c4b309f6
+pkgver=5.3.r14.g5213d551+wine.5.3.r139.g4f53be1a6e
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -22,6 +22,7 @@ _depends=(
     'libsm'                 'lib32-libsm'
     'gcc-libs'              'lib32-gcc-libs'
     'libpcap'               'lib32-libpcap'
+    'faudio'                'lib32-faudio'
     'desktop-file-utils'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
@@ -146,10 +147,10 @@ prepare() {
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
     
-    # apply all wine-staging patches
+    # apply wine-staging patches (exclude xactengine-initial due to build error)
     printf '%s\n' '  -> Applying wine-staging patches...'
     cd "${srcdir}/wine-staging/patches"
-    ./patchinstall.sh DESTDIR="${srcdir}/wine" --all
+    ./patchinstall.sh DESTDIR="${srcdir}/wine" --all -W xactengine-initial
 }
 
 pkgver() {
