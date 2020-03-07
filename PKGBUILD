@@ -19,6 +19,6 @@ md5sums=(
 
 package() {
     install -D -m755 "${srcdir}/Godot_v${pkgver}-stable_linux_headless.64" "${pkgdir}/usr/bin/godot"
-    install -d -m644 "${pkgdir}/usr/share/godot/templates/${pkgver}.stable"
+    install -d -m755 "${pkgdir}/usr/share/godot/templates/${pkgver}.stable"
     cp "${srcdir}/templates/"* "${pkgdir}/usr/share/godot/templates/${pkgver}.stable"
 }
