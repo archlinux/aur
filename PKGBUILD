@@ -1,8 +1,8 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 _pkgname=feeluown
 pkgname=feeluown
-pkgver=3.3.9
-pkgrel=3
+pkgver=3.4a0
+pkgrel=1
 pkgdesc="FeelUOwn Music Player"
 arch=('any')
 url="https://github.com/cosven/FeelUOwn"
@@ -14,8 +14,8 @@ source=(
 	"https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
 	"feeluown.desktop"
 )
-sha256sums=('e4edc97dca4d79b54d59230f33161151346a6d945de84b0ec010e5dc825ef9df'
-            '2b2716ee280c1eeba6d20227173e1325c64a4a3fcb200e038e7777de5cddaebb')
+sha256sums=('6b0b2d9145a513a109a64953cf9e45cf735e2fb37e2353f56c7c78dc1c7f6c9a'
+            'f093cccd74e29115782b30fcda28fb0c3b935091673b50882b332c934ed56065')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -33,5 +33,5 @@ package() {
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps fuo-qqmusic
 
 	install -D -m644 "$srcdir/$pkgname-$pkgver/feeluown/feeluown.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/feeluown.png"
-	install -D -m644 "$srcdir/feeluown.desktop" "$pkgdir/usr/share/applications/feeluown.desktop"
+	install -D -m644 "$srcdir/feeluown.desktop" "$pkgdir/usr/share/applications/FeelUOwn.desktop"
 }
