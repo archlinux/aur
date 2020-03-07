@@ -38,7 +38,7 @@ pkgbase = r-ggplot2
 	optdepends = r-testthat
 	optdepends = r-vdiffr
 	source = http://cran.r-project.org/src/contrib/ggplot2_3.3.0.tar.gz
-	md5sums = 25941cbd03f34549c60c7e40780bef0
+	md5sums = a25941cbd03f34549c60c7e40780bef0
 
 pkgname = r-ggplot2
 
