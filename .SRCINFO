@@ -1,0 +1,18 @@
+pkgbase = aptpac
+	pkgdesc = a pacman wrapper with syntax from debian's apt
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Hayao0819/aptpac
+	arch = i686
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	depends = sudo
+	conflicts = apt
+	conflicts = apt-git
+	conflicts = aptpac-git
+	source = https://github.com/Hayao0819/aptpac/archive/v2.0.0.zip
+	md5sums = SKIP
+
+pkgname = aptpac
+
