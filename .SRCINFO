@@ -5,11 +5,10 @@ pkgbase = python-asttokens
 	url = https://github.com/gristlabs/asttokens
 	arch = any
 	license = Apache 2.0
-	makedepends = python
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/2f/8c/d15158f453c9b06d4ba284650b8e4a9df3cbb5f34b8f692f2cfe4c9dcbdb/asttokens-1.1.11.tar.gz
-	md5sums = d3f76d88ba925a69c20bcc4f69c81fdd
+	source = https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-2.0.3.tar.gz
+	md5sums = 8a9211d70cb5630207b74c1e40b2134d
 
 pkgname = python-asttokens
 
