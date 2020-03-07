@@ -8,6 +8,7 @@ pkgdesc='A simple server for sending and receiving messages in real-time per Web
 arch=('x86_64' 'i686' 'aarch64' 'armv7')
 url='https://gotify.net/'
 license=('MIT')
+depends=('glibc')
 makedepends=('git' 'go' 'yarn')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gotify/server/archive/v${pkgver}.tar.gz"
