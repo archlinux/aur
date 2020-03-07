@@ -2,8 +2,8 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.22
-_rtpatchver=13
+_pkgver=5.4.24
+_rtpatchver=14
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
 arch=('x86_64')
@@ -38,11 +38,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('661bcb8d7e390dcc28e53795485e648f2bdc9b697b731459cc2bcc9ceb4a7d1a'
+sha256sums=('7fa0ac784c78129beed43260a7a22a077f1041ac0e8e88647284d2cf7b1d7eb3'
             'SKIP'
-            'f5d353e405aefad1e174104631e24f34ece03cf64f02b41f6a6e7a10811fe5f5'
+            '8374a232a6f6459aa5055ece65f689121debc8ec329ebfcd0377499511fa19d3'
             'SKIP'
-            '7586abc5e898afccc3103143d94dc610a7f1a3a28284dbdfff712eed5963c86c'
+            '8445270d29c2382922e9373ff8d6810b3d3ecc164a71a36393f9e1bdb74fb03c'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
             'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
             '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
