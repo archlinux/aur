@@ -2,7 +2,7 @@
 
 pkgname=writefreely
 pkgver=0.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
@@ -42,7 +42,7 @@ build() {
   make all
 
   cd ../
-  GO111MODULE=on make build
+  GO111MODULE=on make GOLDFLAGS="-ldflags=\"-X 'github.com/writeas/writefreely.softwareVer=${pkgver}-arch-${pkgrel}' -extldflags '\$(LDFLAGS)'\"" build
 }
 
 package() {
