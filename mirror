@@ -1,0 +1,17 @@
+#!/bin/bash
+
+PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
+SCRIPT_DIRECTORY=/usr/share/java/mirror
+MAIN=mirror.Mirror
+JAR=mirror-all.jar
+OPTS="-Xmx2G -XX:+HeapDumpOnOutOfMemoryError"
+
+if [ -e ${SCRIPT_DIRECTORY}/${JAR} ]; then
+  java $OPTS -cp ${SCRIPT_DIRECTORY}/${JAR} $MAIN "$@"
+# elif [ -e ${SCRIPT_DIRECTORY}/build/libs/${JAR} ]; then
+#   java $OPTS -cp ${SCRIPT_DIRECTORY}/build/libs/${JAR} $MAIN "$@"
+else
+  echo "${JAR} not found in ${SCRIPT_DIRECTORY}"
+  exit 1
+fi
+

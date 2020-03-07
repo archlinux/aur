@@ -1,0 +1,5 @@
+/pkg
+/src
+/*.tar.xz
+/mirror-all.jar
+/mirror-sync
