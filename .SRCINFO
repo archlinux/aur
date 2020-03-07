@@ -1,7 +1,7 @@
 pkgbase = aptpac-git
 	pkgdesc = a pacman wrapper with syntax from debian's apt
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Hayao0819/aptpac
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = aptpac-git
 	depends = sudo
 	conflicts = apt
 	conflicts = apt-git
+	conflicts = aptpac
 	source = git://github.com/Hayao0819/aptpac.git
 	md5sums = SKIP
 
