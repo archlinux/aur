@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-git
 _pkgname=sftpgo
-pkgver=r288.ea74aca
+pkgver=r295.6b70f0b
 pkgrel=1
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('i686' 'x86_64')
@@ -41,7 +41,7 @@ build() {
 
 package() {
   cd "${_pkgname}"
-  install -Dm755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
+  install -Dm 755 sftpgo "$pkgdir/usr/bin/${_pkgname}"
   install -Dm 755 scripts/sftpgo_api_cli.py "${pkgdir}"/usr/bin/sftpgo_api_cli
   install -Dm 644 init/${_pkgname}.service -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm 644 "$srcdir/sftpgo.json" -t "${pkgdir}/etc/${_pkgname}"
@@ -49,7 +49,7 @@ package() {
   cp -r templates "${pkgdir}/var/lib/${_pkgname}/"
   cp -r static "${pkgdir}/var/lib/${_pkgname}/"
   install -Dm 644 "$srcdir/README" "${pkgdir}"/usr/share/doc/${_pkgname}/README
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
+  install -Dm 644 LICENSE "$pkgdir"/usr/share/licenses/${_pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
