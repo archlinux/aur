@@ -1,4 +1,4 @@
-# Maintainer: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
+# Maintainer: holishing <holishingtest@gmail.com>
 # Contributor: Yenting Chen <coolcyt@gmail.com>
 # Contributor: Lyman Li <lymanrb@gmail.com>
 
