@@ -3,13 +3,11 @@
 
 pkgname=sile-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.10.3.r14.gc4e040c
-pkgrel=2
+pkgver=0.10.3.r18.gbcf8c8a
+pkgrel=1
 arch=('x86_64')
 url='https://www.sile-typesetter.org'
 license=('MIT')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
 _lua_deps=('cassowary'
            'cosmo'
            'cliargs'
@@ -35,7 +33,8 @@ depends=('fontconfig'
 makedepends=('git'
              'poppler')
 checkdepends=('lua-busted')
-provides=('libtexpdf.so')
+provides=('libtexpdf.so' "${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git://github.com/sile-typesetter/${pkgname%-git}.git"
         "git://github.com/sile-typesetter/libtexpdf.git")
 sha256sums=('SKIP' 'SKIP')
