@@ -21,10 +21,10 @@ pkgbase = gotop-bin
 	md5sums_arm = 809804d43afb3383c5d75d786192caea
 	source_armv6h = https://github.com/xxxserxxx/gotop/releases/download/v3.5.0/gotop_v3.5.0_linux_arm6.tgz
 	md5sums_armv6h = ee7f3b073db3981d2cb918d741082b71
-	source_armv7h = https://github.com/xxxserxxx/gotop/releases/download/v3.5.0/gotop_v3.5.0_linux_arm7.tgz
-	md5sums_armv7h = aaab397b69635a2598ced6aaccf00960
 	source_aarch64 = https://github.com/xxxserxxx/gotop/releases/download/v3.5.0/gotop_v3.5.0_linux_arm64.tgz
 	md5sums_aarch64 = 481df2435edcf7304edda9af942c284c
+	source_armv7h = https://github.com/xxxserxxx/gotop/releases/download/v3.5.0/gotop_v3.5.0_linux_arm7.tgz
+	md5sums_armv7h = aaab397b69635a2598ced6aaccf00960
 
 pkgname = gotop-bin
 
