@@ -2,12 +2,12 @@
 
 pkgname=linvst2x
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="enables Windows vst's to be used as Linux vst's in Linux vst capable DAW's (single wineserver instance variant)"
 arch=('x86_64')
 url="https://github.com/osxmidi/LinVst"
 depends=('wine' 'python>=3.8')
-conflicts=('linvst' 'linvst-stable' 'linvst2')
+conflicts=('linvst' 'linvst-stable')
 source=("$pkgname::git+https://github.com/osxmidi/LinVst-X.git#tag=$pkgver"
         "git+https://github.com/usrmusicman/ArchStudioUtils.git")
 sha256sums=('SKIP'
