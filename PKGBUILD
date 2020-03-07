@@ -1,20 +1,31 @@
-# Maintainer: Jannick Hemelhof <mister dot jannick at gmail dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Jannick Hemelhof <mister dot jannick at gmail dot com>
 
 pkgname=node-prune
-pkgver=1.0.1
-pkgrel=2
-pkgdesc="Remove unnecessary files from node_modules"
+pkgver=1.1.0
+pkgrel=1
+pkgdesc='Remove unnecessary files from node_modules'
 arch=('x86_64')
-url="https://github.com/tj/node-prune"
+url="https://github.com/tj/$pkgname"
 license=('MIT')
-source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/tj/node-prune/releases/download/v1.0.1/node-prune_1.0.1_linux_amd64.tar.gz"
-    )
-sha512sums=('db14ed6605a5c300064fe3c1339b8370dd430d3367169e8dba12f75a0b4e309ec4b0dff8abe7eeec3ae1abc1f58c2e97613ae3cf9394736ee04b4a7147cc5ffd')
+makedepends=('go-pie')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('77739f945de5157efc3bafa7affb7b88dcc64bae42495158dabc2673c417192c')
+
+prepare() {
+    # Patch because some AUR projects that use this actually _use_ the images (electron stuff)
+    cd "$pkgname-$pkgver"
+    sed -i -e '/"images",/d' internal/prune/prune.go
+}
+
+build() {
+    cd "$pkgname-$pkgver"
+    go build -trimpath .
+}
 
 package() {
-    cd "${srcdir}"
-
-    install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    cd "$pkgname-$pkgver"
+    install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" {History,Readme}.md
 }
