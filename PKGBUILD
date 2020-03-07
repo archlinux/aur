@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=82.0.4068.4
+pkgver=82.0.4077.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -42,6 +42,8 @@ depends=(
          'libwebp'
          'libvpx'
          'opus'
+         'bluez-libs'
+         'libnet'
          )
 if [ "${_use_wayland}" = "1" ]; then
   depends+=('pipewire')
@@ -78,7 +80,6 @@ source=(
         'fix_vaapi_wayland.patch::https://patch-diff.githubusercontent.com/raw/Igalia/chromium/pull/517.patch' # Attemp to fix build if enable wayland
         # Patch from crbug.com (chromium bugtracker), chromium-review.googlesource.com / Gerrit or Arch chromium package.
         'chromium-skia-harmony-r2.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium'
-        'clang-format.zip::https://chromium-review.googlesource.com/changes/chromium%2Ftools%2Fbuild~2071716/revisions/4/files/scripts%2Fslave%2Frecipe_modules%2Fchromium%2Fresources%2Fclang-format/download'
         )
 sha256sums=(
             #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha256 | cut -d ' ' -f3)"
@@ -91,7 +92,6 @@ sha256sums=(
             '1b93388254c9d780365e4639d494bfa337a7924426c12f7362a1f7e8e7fad014'
             # Patch from crbug (chromium bugtracker) or Arch chromium package
             '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
-            '743eb4f5b1396c0e56323b67917e16aa458fa9ea7bccc7eb58fa5675dcc4b0c3'
             )
 install=chromium-dev.install
 
@@ -187,6 +187,7 @@ _keeplibs=(
            'third_party/devscripts'
            'third_party/devtools-frontend'
            'third_party/devtools-frontend/src/front_end/third_party/fabricjs'
+           'third_party/devtools-frontend/src/front_end/third_party/lighthouse'
            'third_party/devtools-frontend/src/front_end/third_party/wasmparser'
            'third_party/devtools-frontend/src/third_party'
            'third_party/dom_distiller_js'
@@ -271,6 +272,7 @@ _keeplibs=(
            'third_party/SPIRV-Tools'
            'third_party/sqlite'
            'third_party/swiftshader'
+           'third_party/swiftshader/third_party/astc-encoder'
            'third_party/swiftshader/third_party/llvm-7.0'
            'third_party/swiftshader/third_party/llvm-subzero'
            'third_party/swiftshader/third_party/marl'
@@ -327,7 +329,8 @@ _flags=(
         "custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
         "host_toolchain=\"//build/toolchain/linux/unbundle:default\""
         'is_debug=false'
-        'is_official_build=true'
+        'is_official_build=false'
+        'is_component_build=true'
         'enable_widevine=true'
         'enable_hangout_services_extension=true'
         "ffmpeg_branding=\"ChromeOS\""
@@ -518,9 +521,6 @@ prepare() {
   # https://crbug.com/skia/6663#c10.
   patch -p0 -i "${srcdir}/chromium-skia-harmony-r2.patch"
 
-  # https://crbug.com/1052503.
-  install -Dm755 "${srcdir}/clang-format_new-fd3b94d6928fa15be2c01854f52bda3c" buildtools/linux64/clang-format
-
   # Setup nodejs dependency.
   mkdir -p third_party/node/linux/node-linux-x64/bin/
   ln -sf /usr/bin/node third_party/node/linux/node-linux-x64/bin/node
@@ -615,24 +615,7 @@ package() {
   ln -sf /usr/lib/chromium-dev/chromedriver "${pkgdir}/usr/bin/chromedriver-dev"
 
   # Install libs.
-  _libs=(
-         'swiftshader/libEGL.so'
-         'swiftshader/libGLESv2.so'
-         'libvk_swiftshader.so'
-         )
-  if [ "${_use_wayland}" = "1" ]; then
-    _libs+=(
-            'libminigbm.so'
-            )
-  elif [ "${_use_wayland}" = "0" ]; then
-    _libs+=(
-            'libEGL.so'
-            'libGLESv2.so'
-            'libVkICD_mock_icd.so'
-            )
-  fi
-
-  for i in "${_libs[@]}"; do
+  for i in lib*.so swiftshader/lib*.so; do
     install -Dm755 "${i}" "${pkgdir}/usr/lib/chromium-dev/${i}"
     strip $STRIP_SHARED "${pkgdir}/usr/lib/chromium-dev/${i}"
   done
@@ -707,9 +690,7 @@ package() {
       *) _branding="${srcdir}/chromium-${pkgver}/chrome/app/theme/chromium" ;;
     esac
     install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/chromium-dev.png"
-    install -Dm644 "${_branding}/product_logo_${_size}.png" "${pkgdir}/usr/lib/chromium-dev/product_logo_${_size}.png"
   done
-  install -Dm644 "${srcdir}/chromium-${pkgver}/chrome/app/theme/chromium/linux/product_logo_32.xpm" "${pkgdir}/usr/lib/chromium-dev/product_logo_32.xpm"
   install -Dm644 "${srcdir}/chromium-dev.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
 
   popd &> /dev/null
