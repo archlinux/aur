@@ -1,8 +1,8 @@
 pkgbase = ignition-msgs
 	pkgdesc = Standard set of message definitions, used by Ignition Transport, and other applications.
 	pkgver = 5.1.0
-	pkgrel = 3
-	url = http://ignitionrobotics.org
+	pkgrel = 4
+	url = https://ignitionrobotics.org/libs/msgs
 	arch = i686
 	arch = x86_64
 	groups = development
