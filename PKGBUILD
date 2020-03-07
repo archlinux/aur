@@ -1,6 +1,6 @@
 pkgname=tea4cups-py3-git
 _pkgname=tea4cups-py3
-pkgver=3.14alpha_unofficial+r129.5ea2f1a
+pkgver=3.15+r130.edae902
 
 pkgrel=1
 pkgdesc="Tea4cups with Python3"
@@ -30,12 +30,10 @@ source=(
   "doc_debianwiki.html::${_doc_debianwiki_url}"
   "${install}"
 )
-sha256sums=(
-  'SKIP'                                                             # svn+http://svn.pykota.com/tea4cups/trunk
-  '47524f08e3f3e261a7d4c0e0e57b487a6bcba3497435d45d6d3b0d4c5f9f3e05' # tea4cups-spool-directory.patch
-  'SKIP'                                                             # doc_debianwiki.html
-  '315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0' # "${install}"
-)
+sha256sums=('SKIP'
+            '47524f08e3f3e261a7d4c0e0e57b487a6bcba3497435d45d6d3b0d4c5f9f3e05'
+            '86248a453eacec27ac9491599b7264bfef261ba3fee5b039d4620a260b444370'
+            '315c82e6e9d352ecb32d511c9290790ac2a52e60e82d4727bff350fcf03aacf0')
 
 _tea4cups_spool='/var/spool/tea4cups' # Should match that which get's defined by applying "${srcdir}/tea4cups-spool-directory.patch".
 

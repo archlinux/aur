@@ -1,6 +1,6 @@
 pkgbase = tea4cups-py3-git
 	pkgdesc = Tea4cups with Python3
-	pkgver = 3.14alpha_unofficial+r129.5ea2f1a
+	pkgver = 3.15+r130.edae902
 	pkgrel = 1
 	url = https://codeberg.org/dadosch/tea4cups
 	install = tea4cups.install
@@ -9,9 +9,9 @@ pkgbase = tea4cups-py3-git
 	depends = cups
 	depends = python
 	depends = python-requests
-	provides = tea4cups=3.14alpha_unofficial+r129.5ea2f1a
-	provides = tea4cups-py3=3.14alpha_unofficial+r129.5ea2f1a
-	provides = tea4cups-py3-doc=3.14alpha_unofficial+r129.5ea2f1a
+	provides = tea4cups=3.15+r130.edae902
+	provides = tea4cups-py3=3.15+r130.edae902
+	provides = tea4cups-py3-doc=3.15+r130.edae902
 	conflicts = tea4cups-svn
 	backup = etc/cups/tea4cups.conf
 	source = tea4cups-py3::git+https://codeberg.org/dadosch/tea4cups
