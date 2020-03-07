@@ -12,7 +12,7 @@ url="https://github.com/oconnor663/blake3-py"
 license=('Apache' 'custom:CC0-1.0')
 
 depends=('python')
-makedepends=('python-pip' 'rust')
+makedepends=('python-pip' 'rustup')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz"
         'LICENSE-CC0-1.0')
