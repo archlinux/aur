@@ -4,8 +4,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-ical'
-pkgver='0.22'
-pkgrel='5'
+pkgver='0.24'
+pkgrel='1'
 pkgdesc="Perl/CPAN Module Data::ICal: Generates iCalendar (RFC 2445) calendar files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,9 +14,9 @@ depends=('perl>=5.12' 'perl-class-accessor' 'perl-class-returnvalue' 'perl-text-
 makedepends=()
 checkdepends=('perl-test-longstring' 'perl-test-nowarnings' 'perl-test-warn')
 url='https://metacpan.org/release/Data-ICal'
-source=("http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/Data-ICal-$pkgver.tar.gz")
-md5sums=('7ba398c22481d8de8e2bb317173b3483')
-sha512sums=('a02364dfb0a1e24efcf2efdb7240bb6c47ad5ed3a99ada51ddb9817b4e433038d57113699c6875f7d592cd3af46f5b074a1ac50cf951b7af449bde1765ed5d55')
+source=("https://cpan.metacpan.org/authors/id/B/BP/BPS/Data-ICal-$pkgver.tar.gz");
+md5sums=('f90c55d07a03172f5f5ef516e8d45d3d')
+sha512sums=('592cc76dd8dd00d8ce365a7105c6b732ecb94838876d6b430f1f3078e8674f9584c5a6248c5ec5ebbee9d35f3758d9709d45e70728899c528d030424abe81d9e')
 _distdir="Data-ICal-$pkgver"
 
 prepare() {
