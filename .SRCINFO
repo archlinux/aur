@@ -1,0 +1,13 @@
+pkgbase = linmath
+	pkgdesc = lean linear math library, aimed at graphics programming
+	pkgver = 1.70d7f11
+	pkgrel = 1
+	url = https://github.com/datenwolf/linmath.h
+	arch = any
+	license = custom:WTFPL
+	provides = linmath.h
+	source = git://github.com/datenwolf/linmath.h#commit=70d7f11
+	md5sums = SKIP
+
+pkgname = linmath
+
