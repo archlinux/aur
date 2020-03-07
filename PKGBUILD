@@ -1,16 +1,15 @@
 _pkgname=qwikaccess
 pkgname=${_pkgname}-git
-pkgver=0.0.1.r33.f6a7fed
+pkgver=0.0.1.r35.67f65ca
 pkgrel=1
 pkgdesc="A point and click Qt GUI for scripts we use frequently."
 arch=('any')
 url="https://github.com/librewish/qwikaccess"
 license=('GPL3')
-depends=('qt5-base' 'polkit' 'libnotify' 'bluez-utils' 'playerctl' 'libpulse')
+depends=('qt5-base' 'polkit' 'libnotify' 'bluez-utils' 'playerctl' 'libpulse' 'brightnessctl')
 optdepends=(
 	'ffmpeg: for screenshot & audio,screen,screencam recording'
 	'v4l-utils: for camera'
-	'brightnessctl: for brightness up and down'
 	'xorg-xrdb: for autohidpi'
 	'xorg-xrandr: for screen rotation'
 	'xorg-xinput: for autorotation'
@@ -23,6 +22,8 @@ optdepends=(
 	'xdg-utils: for lock screen (xdg-screensaver lock)'
 	'systemd: for leave commands and gps services'
 	'wmctrl: for screencam ffplay to be on above all windows'
+	'grim: for wayland screenshot'
+	'wf-recorder: for wayland screencapture'
 	'grep: used in scripts'
 	'gawk: used in scripts'
 )
@@ -31,7 +32,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+https://github.com/librewish/${_pkgname}.git")
 md5sums=('SKIP')
-
+install=qwikaccess.install
 pkgver() {
 	cd "$srcdir/${_pkgname}"
 	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
