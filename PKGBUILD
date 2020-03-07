@@ -1,7 +1,7 @@
 # Maintainer: <olegfink@gmail.com>
 
 pkgname=irccloud
-pkgver=0.12.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Chat on IRC from anywhere, and never miss a message"
 
@@ -12,7 +12,7 @@ depends=('electron')
 makedepends=('yarn')
 source=("irccloud-${pkgver}.tar.gz::https://github.com/irccloud/irccloud-desktop/archive/v${pkgver}.tar.gz"
         "irccloud")
-sha256sums=('bbcf0c1889dc52b5f89623090969cdb7d877b92212a2a276dc27abc89587f650'
+sha256sums=('49fddfb26e9071529d2c93473fa2c422965846eb948f1dc700dbcf0782d47958'
             '20d71c6232b4479bbb33fa4eca96aed8202a75d28c2325906253150c66888a63')
 
 build(){
@@ -38,7 +38,7 @@ package(){
 		;;
 	esac
 
-	bsdcpio -i -m --quiet data.tar.gz < "./dist/irccloud-desktop_${pkgver}_${_deb_arch}.deb"
+	bsdcpio -i -m --quiet data.tar.gz < "./dist/irccloud-desktop_${pkgver}_linux_${_deb_arch}.deb"
 	tar -xzf ./data.tar.gz -C "${pkgdir}" ./{usr,opt/IRCCloud/resources/app.asar}
 	install -Dm644 "${pkgdir}/opt/IRCCloud/resources/app.asar" "${pkgdir}/usr/lib/irccloud/app.asar"
 	rm -rf "${pkgdir}/opt"
