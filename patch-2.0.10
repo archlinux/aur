@@ -1,8 +1,7 @@
-diff --git a/config.pri b/config.pri
-index 48273f9e..28d46105 100644
---- a/config.pri
-+++ b/config.pri
-@@ -327,23 +327,21 @@ contains(PRESET, linux_package) {
+diff -u10 -r scidavis-2.0.10-original/config.pri scidavis-2.0.10/config.pri
+--- scidavis-2.0.10-original/config.pri	2020-02-17 07:54:00.000000000 +0100
++++ scidavis-2.0.10/config.pri	2020-03-07 11:25:37.598054844 +0100
+@@ -327,23 +327,21 @@
             }
          }
  
@@ -27,11 +26,10 @@ index 48273f9e..28d46105 100644
    # disable this warning because StringList has a user defined constructor, but hasn't bother to declare an assignment operator
    QMAKE_CXXFLAGS+="-Wno-deprecated-copy"
  
-diff --git a/libscidavis/src/ApplicationWindow.cpp b/libscidavis/src/ApplicationWindow.cpp
-index ccb84a07..4b60716b 100644
---- a/libscidavis/src/ApplicationWindow.cpp
-+++ b/libscidavis/src/ApplicationWindow.cpp
-@@ -2648,21 +2648,21 @@ TableStatistics *ApplicationWindow::newTableStatistics(Table *base, int type, QL
+diff -u10 -r scidavis-2.0.10-original/libscidavis/src/ApplicationWindow.cpp scidavis-2.0.10/libscidavis/src/ApplicationWindow.cpp
+--- scidavis-2.0.10-original/libscidavis/src/ApplicationWindow.cpp	2020-02-17 07:54:00.000000000 +0100
++++ scidavis-2.0.10/libscidavis/src/ApplicationWindow.cpp	2020-03-07 11:25:37.602054850 +0100
+@@ -2648,21 +2648,21 @@
  	connect(base, SIGNAL(modifiedData(Table*,const QString&)), s, SLOT(update(Table*,const QString&)));
  	connect(base, SIGNAL(changedColHeader(const QString&, const QString&)), s, SLOT(renameCol(const QString&, const QString&)));
  	connect(base, SIGNAL(removedCol(const QString&)), s, SLOT(removeCol(const QString&)));
@@ -54,7 +52,7 @@ index ccb84a07..4b60716b 100644
  		if (!table) continue;
  		if (table_stat->base() == table)
  			d_project->removeChild(table_stat->d_future_table);
-@@ -13977,44 +13977,44 @@ void ApplicationWindow::selectPlotType(int type)
+@@ -13977,44 +13977,44 @@
  	if (ml) {
  		Graph *g = ml->activeGraph();
  		if(g->curves() > 0)
@@ -103,7 +101,7 @@ index ccb84a07..4b60716b 100644
  void ApplicationWindow::showHistory()
  {
  	if (!d_project->undoStack()) return;
-@@ -14035,16 +14035,16 @@ void ApplicationWindow::showHistory()
+@@ -14035,16 +14035,16 @@
  
  	dialog.setWindowTitle(tr("Undo/Redo History"));
  	if (dialog.exec() == QDialog::Accepted)
@@ -115,16 +113,15 @@ index ccb84a07..4b60716b 100644
  QStringList ApplicationWindow::tableWindows()
  {
 -	QList<AbstractAspect *> tables = d_project->descendantsThatInherit("future::Table");
-+	QList<AbstractAspect *> tables = d_project->descendantsThatInherit("::future::Table");
++	QList<AbstractAspect *> tables = d_project->descendantsThatInherit("future::Table");
  	QStringList result;
  	foreach(AbstractAspect *aspect, tables)
            result.append(aspect->name().c_str());
  	return result;
  }
-diff --git a/libscidavis/src/future/core/Project.h b/libscidavis/src/future/core/Project.h
-index 985e8c37..d0ef2e68 100644
---- a/libscidavis/src/future/core/Project.h
-+++ b/libscidavis/src/future/core/Project.h
+diff -u10 -r scidavis-2.0.10-original/libscidavis/src/future/core/Project.h scidavis-2.0.10/libscidavis/src/future/core/Project.h
+--- scidavis-2.0.10-original/libscidavis/src/future/core/Project.h	2020-02-17 07:54:00.000000000 +0100
++++ scidavis-2.0.10/libscidavis/src/future/core/Project.h	2020-03-07 11:25:37.602054850 +0100
 @@ -36,21 +36,21 @@
  class QString;
  class ProjectWindow;
@@ -148,7 +145,7 @@ index 985e8c37..d0ef2e68 100644
  			folderOnly,
  			folderAndSubfolders,
  			allMdiWindows
-@@ -66,21 +66,21 @@ class Project : public future::Folder
+@@ -66,21 +66,21 @@
  		virtual Project *project() { return this; }
  		virtual QUndoStack *undoStack() const;
  		virtual QString path() const { return ""; }
@@ -171,11 +168,10 @@ index 985e8c37..d0ef2e68 100644
  	
  		static ConfigPageWidget * makeConfigPage();
  		static QString configPageLabel();
-diff --git a/scidavis/scidavis.pro b/scidavis/scidavis.pro
-index 2e642cab..abfbef17 100644
---- a/scidavis/scidavis.pro
-+++ b/scidavis/scidavis.pro
-@@ -10,21 +10,21 @@ POST_TARGETDEPS=../libscidavis/libscidavis.a
+diff -u10 -r scidavis-2.0.10-original/scidavis/scidavis.pro scidavis-2.0.10/scidavis/scidavis.pro
+--- scidavis-2.0.10-original/scidavis/scidavis.pro	2020-02-17 07:54:00.000000000 +0100
++++ scidavis-2.0.10/scidavis/scidavis.pro	2020-03-07 11:27:31.630929748 +0100
+@@ -10,21 +10,25 @@
  
  include(../config.pri)
  include( basic.pri )
@@ -187,7 +183,11 @@ index 2e642cab..abfbef17 100644
    unix: {
          LIBS+=$$system($$PYTHONBIN findBoostPythonLib.py)
 -        LIBS+=$$system($$PYTHONBIN-config --ldflags)
-+        LIBS+=$$system($$PYTHONBIN-config --libs --embed)
++        system($$PYTHONBIN-config --embed) {
++            LIBS+=$$system($$PYTHONBIN-config --libs --embed)
++        } else {
++            LIBS+=$$system($$PYTHONBIN-config --libs)
++        }
        }
    message($$LIBS)
             

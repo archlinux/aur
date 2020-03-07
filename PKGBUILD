@@ -11,7 +11,7 @@ _pkgname=scidavis
 pkgname=scidavis-qt5
 pkgver=2.0.10
 _commit=2.0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of QtiPlot. Qt5 port"
 arch=('x86_64')
 url="http://scidavis.sourceforge.net/"
@@ -19,13 +19,13 @@ license=('GPL')
 makedepends=('boost' 'cmake' 'qt5-tools' 'classdesc>=3.37')
 depends=('gsl' 'glu' 'mesa' 'muparser' 'shared-mime-info'
          'desktop-file-utils' 'hicolor-icon-theme'
-         'qwt5-qt5' 'qwtplot3d-qt5'
-         'python-pyqt5')
+         'qwt5-qt5' 'qwtplot3d-qt5' 'boost-libs'
+         'python' 'python-scipy')
 conflicts=('scidavis')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/highperformancecoder/scidavis/archive/${_commit}.zip"
 'patch-2.0.10')
 sha512sums=('b2f9c86c079ac72585f95ae1ced93b9e6be9e8fd0e84a43106b1a4f1138335d1f04424131fb8bf58585d4645b76e3b919da2221ec039385ad6a0ccce56c02db1'
-            'f9ae2f099cdead27f73222a5e6d72217e36d10fcd1f4edb6f23f9844b1a962d25ec873d1d676165ad4e45a550d0b65511246f4302c70a28ac2d3d12760df9eb4')
+            '06709b1c5f6e9e30098f1dc5471bd4276e547bd7d1b05c73a08603fd56b5b1c0b63914e51190267ce33339e025575660f6b1dc01a9536a6744f1f13bc375884a')
 
 prepare() {
   cd "${_pkgname}-${_commit}"
