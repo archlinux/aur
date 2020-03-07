@@ -27,6 +27,7 @@ prepare() {
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
+    mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/share/icons/hicolor"
 
