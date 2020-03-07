@@ -1,15 +1,15 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=dooble
-pkgver=2020.02.02
+pkgver=2020.03.03
 pkgrel=1
-pkgdesc="Dooble is the weather bug browser."
+pkgdesc="Colorful Web browser"
 arch=(x86_64)
 url="https://textbrowser.github.io/dooble/"
 license=('BSD')
 depends=('qt5-webengine')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/textbrowser/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('18d1c1f78fa3f10cb4942e4d9d0369affccb1229135c97302041450dc5407c45')
+sha256sums=('e2006c685c39c0ce20a54aef9b4051a6d33920b369360419ce5c65d5e2b7061d')
 
 prepare() {
 	cd $pkgname-$pkgver/2.x
