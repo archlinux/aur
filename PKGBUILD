@@ -2,7 +2,7 @@
 # Contributor: Atnanasi <ys2000pro at gmail.com>
 
 pkgname='editaro'
-pkgver='1.5.1'
+pkgver='1.6.1'
 pkgrel='1'
 pkgdesc='Simple text editor for draft'
 url='https://github.com/kkosuge/editaro'
@@ -13,7 +13,7 @@ makedepends=('yarn' 'nodejs-lts-dubnium')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}")
-md5sums=('684074548e9a08cc831742ac75f51dc1'
+md5sums=('fcf2f6a8f16b6d92b6dea7e258705c82'
          '1ef1ba8c15bfd1e05784eef4bcbc1fef'
          'b9f9eb8ee4f95edb973a6b18499dd97a')
 
