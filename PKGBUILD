@@ -2,10 +2,10 @@
 # Contributor: Mykola Dolhyi <0xb000@gmail.com>
 pkgname=ignition-math
 pkgver=6.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Math classes and functions for robot applications"
 arch=('i686' 'x86_64')
-url="http://ignitionrobotics.org/"
+url="https://ignitionrobotics.org/libs/math"
 license=('Apache')
 groups=('development')
 depends=('gcc-libs')
@@ -32,18 +32,6 @@ build() {
   # Compile
   make
 }
-
-#check() {
-#  cd "$srcdir/$_dir/build"
-#
-#  cmake .. -DCMAKE_BUILD_TYPE="Release" \
-#           -DCMAKE_INSTALL_PREFIX="/usr" \
-#           -DCMAKE_INSTALL_LIBDIR="lib" \
-#           -DBUILD_TESTING:BOOL=True
-#
-#  make
-#  make test
-#}
 
 package() {
   cd "$srcdir/$_dir/build"
