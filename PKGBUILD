@@ -19,7 +19,7 @@ source_armv7h=("https://github.com/xxxserxxx/gotop/releases/download/v$pkgver/go
 source_aarch64=("https://github.com/xxxserxxx/gotop/releases/download/v$pkgver/gotop_v${pkgver}_linux_arm64.tgz")
 
 package() {
-  rm "$srcdir/*.tgz"
+  rm -f "$srcdir/*.tgz"
   install -Dm755 "$srcdir/gotop_v${pkgver}_linux_*" "$pkgdir/usr/bin/gotop"
 }
 md5sums_x86_64=('96872219938627d1507d6266195133c2')
