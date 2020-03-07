@@ -1,0 +1,16 @@
+pkgbase = f1viewer
+	pkgdesc = TUI client for F1TV
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/SoMuchForSubtlety/f1viewer
+	arch = x86_64
+	license = GPL3
+	makedepends = go-pie
+	depends = mpv
+	depends = libsecret
+	optdepends = xclip: copying URLs to clipboard
+	source = f1viewer-1.0.0.tar.gz::https://github.com/SoMuchForSubtlety/f1viewer/archive/v1.0.0.tar.gz
+	sha256sums = 40986b7ed358adf2299882318d9ca81ef7f1bf730ed30b3c5da362518987d6af
+
+pkgname = f1viewer
+
