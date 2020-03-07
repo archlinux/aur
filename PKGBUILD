@@ -19,13 +19,18 @@ sha256sums=('SKIP'
             '99088f640a8ae89521eb5c5bfbdd96be348b1ccd6ba5072e4727247a04462782')
 
 pkgver() {
- cd "$_gitname"
- printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_gitname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$_gitname"
+  patch --forward --strip=2 --input="${srcdir}/clean.patch"
 }
 
 build() {
- cd "$_gitname"
- sbt "bfg/assembly"
+  cd "$_gitname"
+  sbt "bfg/assembly"
 }
 
 package() {
