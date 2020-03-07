@@ -3,22 +3,22 @@
 # Contributor: Rikles <style.boubou@gmail.com>
 # Contributor: N30N <archlinux@alunamation.com>
 
-pkgname="lightzone"
-pkgver=4.1.9
-pkgrel=2
+pkgname=lightzone
+pkgver=4.2.0
+pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
 arch=("x86_64")
 conflicts=('lightzone-git')
 provides=('lightzone')
-depends=('java-runtime=8'
+depends=('java-runtime=11'
     'javahelp2'
     'lcms2'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
-makedepends=('java-environment=8'
+makedepends=('java-environment=11'
     'ant'
     'autoconf'
     'gcc'
@@ -33,17 +33,17 @@ makedepends=('java-environment=8'
     'libtiff')
 
 source=("https://github.com/ktgw0316/LightZone/archive/${pkgver}.zip")
-md5sums=('e95d9afbe7fc517d1bc79d6d2264b1b7')
+md5sums=('f24698649389915d8f48d5079d4d933b')
 
 # https://github.com/Aries85/LightZone/issues/218#issuecomment-357868376
 MAKEFLAGS="-j1"
 
 build() {
   cd "${srcdir}/LightZone-${pkgver}/"
-  if [ -d /usr/lib/jvm/java-8-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-8-jdk
+  if [ -d /usr/lib/jvm/java-11-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-11-jdk
   else
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+    export JAVA_HOME=/usr/lib/jvm/default
   fi
 
   sed -i 's|http://repo2|https://repo1|' lightcrafts/build.xml
