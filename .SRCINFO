@@ -1,12 +1,9 @@
 pkgbase = sanskrit-fonts
-	pkgdesc = Various unicode fonts for Sanskrit (with particular emphasis on Devanagari). Fonts provided include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari.
-	pkgver = 1.0
+	pkgdesc = Various unicode fonts for Sanskrit (Scripts: Devanagari, Kannada, Tamil, Telugu, Malayalam, Oriya). Fonts include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari.
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://github.com/sanskrit-coders/sanskrit-fonts
 	arch = any
-	license = custom:OFL
-	source = https://github.com/sanskrit-coders/sanskrit-fonts/archive/v1.0.tar.gz
-	sha256sums = 004bcd3ead35844d98f629e9b466044fb91e3983c45e903fd63ef91843cc0c3f
 
 pkgname = sanskrit-fonts
 

@@ -1,39 +1,20 @@
 #Maintainer: Sanskrit Coders <sanskrit-programmers@googlegroups.com>
 pkgname=sanskrit-fonts
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-pkgdesc="Various unicode fonts for Sanskrit (with particular emphasis on Devanagari). Fonts provided include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari."
+pkgdesc="Various unicode fonts for Sanskrit (Scripts: Devanagari, Kannada, Tamil, Telugu, Malayalam, Oriya). Fonts include: Siddhanta, Chandas, Uttara, Sanskrit2003, Noto Sans Devanagari."
 url="http://github.com/sanskrit-coders/sanskrit-fonts"
 # license=('custom:OFL')
 arch=(any)
-source=("https://github.com/sanskrit-coders/sanskrit-fonts/archive/v$pkgver.tar.gz")
-sha256sums=('004bcd3ead35844d98f629e9b466044fb91e3983c45e903fd63ef91843cc0c3f')
+
+build() {
+  rm -rf "$srcdir/sanskrit-fonts/"
+  git clone https://github.com/sanskrit-coders/sanskrit-fonts.git
+}
 
 package() {
-	install -d "$pkgdir/usr/share/fonts/TTF/devanagari"
-  cd $srcdir/sanskrit-fonts-$pkgver/fonts/ttf-devanagari-fonts/
-	install -t "$pkgdir/usr/share/fonts/TTF/devanagari" -m644 *.ttf
-
-	install -d "$pkgdir/usr/share/fonts/TTF/kannada"
-  cd $srcdir/sanskrit-fonts-$pkgver/fonts/ttf-kannada-fonts/
-	install -t "$pkgdir/usr/share/fonts/TTF/kannada" -m644 *.ttf
-
-	install -d "$pkgdir/usr/share/fonts/TTF/telugu"
-  cd $srcdir/sanskrit-fonts-$pkgver/fonts/ttf-telugu-fonts/
-	install -t "$pkgdir/usr/share/fonts/TTF/telugu" -m644 *.ttf
-
-	install -d "$pkgdir/usr/share/fonts/TTF/oriya"
-  cd $srcdir/sanskrit-fonts-$pkgver/fonts/ttf-oriya-fonts/
-	install -t "$pkgdir/usr/share/fonts/TTF/oriya" -m644 *.ttf
-
-	install -d "$pkgdir/usr/share/fonts/TTF/tamil"
-  cd $srcdir/sanskrit-fonts-$pkgver/fonts/ttf-tamil-fonts/
-	install -t "$pkgdir/usr/share/fonts/TTF/tamil" -m644 *.ttf
-
-	install -d "$pkgdir/usr/share/fonts/TTF/malayalam"
-  cd $srcdir/sanskrit-fonts-$pkgver/fonts/ttf-malayalam-fonts/
-	install -t "$pkgdir/usr/share/fonts/TTF/malayalam" -m644 *.ttf
-#	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -d "$pkgdir/usr/share/fonts/sanskrit-fonts/"
+  cp -rf "$srcdir/sanskrit-fonts/fonts"/* "$pkgdir/usr/share/fonts/sanskrit-fonts/"
 }
 
 # Explicitly calling mkfontscale and mkfontdir with post_install or post_upgrade, as in https://aur.archlinux.org/cgit/aur.git/tree/?h=ttf-siddhanta doesn't seem to be needed as those programs run automatically anyway. Same is assumed to be true of `fc-cache -fs >/dev/null`
