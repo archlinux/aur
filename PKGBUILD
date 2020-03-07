@@ -1,7 +1,7 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=pmy-bin
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="General purpose context-aware zsh completion engine powered by fuzzy finder."
 arch=('i386' 'x86_64')
@@ -17,5 +17,5 @@ sha256sums_x86_64=('9c5e44f6a1f3ba53df5f439351a12eacc52ee0dc480459e43cb242a246d4
 package() {
     install -Dm755 "pmy" "$pkgdir/usr/bin/pmy"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/pmy/LICENSE"
-    install -Dm644 "README.md" "$pkgdir/usr/share/docs/pmy/READNE.md"
+    install -Dm644 "README.md" "$pkgdir/usr/share/docs/pmy/README.md"
 }
