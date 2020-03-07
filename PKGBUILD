@@ -2,8 +2,8 @@
 
 pkgbase=wps-office-mui
 
-pkgver=11.1.0.9080
-pkgrel=2
+pkgver=11.1.0.9126
+pkgrel=1
 pkgdesc="WPS Office MUI packages"
 depends=(wps-office)
 
