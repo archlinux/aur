@@ -1,6 +1,6 @@
 # Maintainer: Joaquim Monteiro <joaquim.monteiro at protonmail dot com>
 pkgname=sigen
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Tool that generates standalone EFI executables from Linux kernel images"
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ makedepends=('rust')
 optdepends=('sbsigntools: signing support')
 
 source=("sigen-${pkgver}.tar.gz"::"https://github.com/gmes78/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('4f5c57b83fa63b3eb4caa120f1087c2586fa6595955d1c1c4219c5d2e8fe5054881706ee46473fa0fc5c6610abbb3941e1c3edbff233d68f467af230a167b1eb')
+sha512sums=('0f0fe3f5ef79c982118f80435ed2e0831520a55b36a3be55f0059b5373297b98e71428e5c603c85249ccd734484c3281c0a8dd22c3cbf534c9944f1d9598e346')
 
 build() {
 	cd "$pkgname-$pkgver"
