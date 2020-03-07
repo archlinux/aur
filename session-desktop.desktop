@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Session
+Comment=Private messaging from your desktop
+Exec=/usr/bin/session-desktop
+Icon=/opt/session-desktop/session-desktop.png
+Terminal=false
+Type=Application
+Categories=Utility
+#MimeType=application/x-vnd.cryptomator-vault-metadata
