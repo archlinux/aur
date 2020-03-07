@@ -21,6 +21,7 @@ optdepends=('dbus:          To control picom via D-Bus'
 provides=('compton' 'compton-git' 'picom' 'picom-git')
 conflicts=('compton' 'compton-git' 'picom' 'picom-git')
 replaces=('compton-git' 'picom-git')
+options=('!strip')
 source=(git+"https://github.com/tryone144/${_gitname}.git#branch=feature/dual_kawase")
 md5sums=("SKIP")
 
@@ -34,7 +35,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  meson --buildtype=release . build --prefix=/usr -Dwith_docs=true
+  meson --buildtype=debug . build --prefix=/usr -Dwith_docs=true
   ninja -C build
 }
 
