@@ -1,6 +1,6 @@
 pkgbase = sftpgo
 	pkgdesc = Full featured and highly configurable SFTP server
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/drakkan/sftpgo
 	install = sftpgo.install
@@ -17,8 +17,12 @@ pkgbase = sftpgo
 	optdepends = python-requests: REST API CLI
 	optdepends = python-pygments: REST API CLI colors highlight
 	backup = etc/sftpgo/sftpgo.json
-	source = git+https://github.com/drakkan/sftpgo#tag=0.9.5
+	source = git+https://github.com/drakkan/sftpgo#tag=0.9.6
+	source = sftpgo.json
+	source = README
 	sha256sums = SKIP
+	sha256sums = c1defd385855fc88a780a611b9076f24c61663123480ba14eee5f37f0396df86
+	sha256sums = 444c3e192a9d75be7d7d15bd75f598df8a400e5431855a787cd8dc5a87187309
 
 pkgname = sftpgo
 
