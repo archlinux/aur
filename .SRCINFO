@@ -1,6 +1,6 @@
 pkgbase = vimiv-qt
 	pkgdesc = An image viewer with vim-like keybindings
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/karlch/vimiv-qt
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = vimiv-qt
 	conflicts = vimiv
 	conflicts = vimiv-git
 	conflicts = vimiv-qt-git
-	source = https://github.com/karlch/vimiv-qt/archive/v0.6.0.tar.gz
-	sha256sums = 0cd5354001c605e0243f797105be9a9033d9b6e4326698fcadcfb94155e2af03
+	source = https://github.com/karlch/vimiv-qt/archive/v0.6.1.tar.gz
+	sha256sums = fc2ff23ec1d3bd06f8a10a41d0ca0fe8105fa7a23cd0499e0af0d82810713b68
 
 pkgname = vimiv-qt
 
