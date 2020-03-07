@@ -1,0 +1,28 @@
+pkgbase = gnome-online-accounts-git
+	pkgdesc = Single sign-on framework for GNOME
+	pkgver = 3.35.90+2+g72028173
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/GnomeOnlineAccounts
+	arch = x86_64
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = gtk-doc
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	depends = webkit2gtk
+	depends = json-glib
+	depends = libnotify
+	depends = rest
+	depends = libsecret
+	depends = krb5
+	depends = gcr
+	optdepends = gvfs-goa: Virtual file systems, e.g. OwnCloud
+	optdepends = gvfs-google: Google Drive
+	provides = gnome-online-accounts
+	conflicts = gnome-online-accounts
+	source = git+https://gitlab.gnome.org/GNOME/gnome-online-accounts.git
+	sha256sums = SKIP
+
+pkgname = gnome-online-accounts-git
+
