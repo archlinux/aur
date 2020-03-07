@@ -10,6 +10,7 @@ license=('MIT')
 depends=('openssl' 'boost-libs')
 makedepends=('boost' 'cmake')
 replaces=("libtgbot-cpp")
+provides=("libtgbot-cpp")
 source=('tgbot-cpp::git+https://github.com/reo7sp/tgbot-cpp.git#branch=master'
 	'shared.patch')
 md5sums=('SKIP'
