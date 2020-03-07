@@ -3,7 +3,7 @@
 pkgname=gotify-server
 pkgver=2.0.14
 _commit=e56f7bc4c7efdb61fea88a0b65d501277604cefa
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
 arch=('x86_64' 'i686' 'aarch64' 'armv7')
 url='https://gotify.net/'
