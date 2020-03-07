@@ -1,7 +1,7 @@
 pkgbase = xcruiser
-	pkgdesc = xcruiser aims to provide 3D VR-like interface to UN*X filesystem. It displays directories as galaxies, files as planets and symlinks as wormholes. You can fly through cyberspace created from these.
+	pkgdesc = Fly about 3D-formed file system
 	pkgver = 0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xcruiser.sourceforge.net/
 	arch = i686
 	arch = x86_64

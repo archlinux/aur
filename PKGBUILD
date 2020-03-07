@@ -1,8 +1,8 @@
 # Maintainer: Taiki Sugawara <buzz.taiki@gmail.com>
 pkgname=xcruiser
 pkgver=0.30
-pkgrel=1
-pkgdesc="xcruiser aims to provide 3D VR-like interface to UN*X filesystem. It displays directories as galaxies, files as planets and symlinks as wormholes. You can fly through cyberspace created from these."
+pkgrel=2
+pkgdesc="Fly about 3D-formed file system"
 arch=('i686' 'x86_64')
 url="http://xcruiser.sourceforge.net/"
 license=('GPL')
