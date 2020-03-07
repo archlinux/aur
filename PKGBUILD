@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.4.23
+pkgver=5.4.24
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -16,6 +16,7 @@ _srcname=linux-$pkgver
 source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   config         # the main kernel config file
+  0001-add-sysctl-and-CONFIG-for-unprivileged_userns_clone.patch
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -24,9 +25,10 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('3f28aacdf5deddfdf80bb949884699b96053a3548dc3434552d30dc0bc781eca'
+sha256sums=('7fa0ac784c78129beed43260a7a22a077f1041ac0e8e88647284d2cf7b1d7eb3'
             'SKIP'
-            'c827e48f874470a5a76c73947ebe6ea4382ced4ce36272a166c2df8842d5d7de'
+            '7a58467b4cf628306a0048993f43508e5da39d8495801602b25b035372651697'
+            'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2'
             '4073312646af8ba01c000f258041b2dc8634a8d9a4a4be8dc0bf12a9b4041cb1'
             '50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336')
 
