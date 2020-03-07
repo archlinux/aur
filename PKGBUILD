@@ -5,7 +5,7 @@
 
 pkgname=picom-tryone-git
 _gitname=compton
-pkgver=1298_0.1_beta2.949.gf92eb6b_2019.12.21
+pkgver=1325_Next.44.g7e31e28_2020.03.07
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
@@ -31,6 +31,13 @@ pkgver() {
     _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
     _date=$(git log -1 --date=short --pretty=format:%cd)
     printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+  git remote add yshui https://github.com/yshui/picom.git
+  git fetch yshui
+  git rebase yshui/next
 }
 
 build() {
