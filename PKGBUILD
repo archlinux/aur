@@ -1,7 +1,7 @@
 # Maintainer: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
@@ -60,7 +60,7 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
 		'mavlink-warn-qgc.patch'
 )
 
-sha256sums=('ff714c2a09fbad362db5ea66d30e0265050ee8ab0770f80112a9386e1d82633a'
+sha256sums=('e65bcaf83335b4537105b7acd6aceb9604475921b489e3a86e934019f6dd4dbc'
             'f3aa1ae178cfa22c4d0bf8c46edc28902ed626a970f0164bd2eba031c9d76432'
             '51b2d5af91e16d6009e73690c62a289dff9004c170e626dc8c322dd49a745c8b'
             'ad96ca7c11864d26047637dc02a0278bbf33997a6f6be37ef1b7ca44669f1149'
@@ -102,7 +102,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}/build"
-	qmake ../qgroundcontrol.pro
+	qmake ../qgroundcontrol.pro \
+		QMAKE_CXXFLAGS="-Wno-deprecated-declarations"
 	make
 
 	echo "[Desktop Entry]
