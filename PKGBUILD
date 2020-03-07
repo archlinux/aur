@@ -102,7 +102,6 @@ build() {
   fi
 
   ((DISABLE_NINJA)) && generator="Unix Makefiles" || generator="Ninja"
-  CXXFLAGS+=" -fpermissive"
   cmake -G "$generator" -S "$srcdir/blender" -B "$srcdir/build" \
         -C "${srcdir}/blender/build_files/cmake/config/blender_release.cmake" \
         -DCMAKE_INSTALL_PREFIX=/usr \
