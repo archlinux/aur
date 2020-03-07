@@ -1,7 +1,7 @@
 # Maintainer: Jamie Nadeau <james2432 at gmail dot com>
 pkgname=tippecanoe
-pkgver=1.34.3
-pkgrel=2
+pkgver=1.35.0
+pkgrel=1
 pkgdesc="Builds vector tilesets from large (or small) collections of GeoJSON features"
 arch=('i686' 'x86_64')
 url="https://github.com/mapbox/tippecanoe"
@@ -16,7 +16,7 @@ backup=()
 options=()
 install=''
 source=("https://github.com/mapbox/tippecanoe/archive/${pkgver}.tar.gz")
-md5sums=('fdd138c45946985d0cf1126e0fb9e8b4')
+md5sums=('eab9f2e46e15adc17b9e0927571db00a')
 
 check() {
   cd "$pkgname-$pkgver"
