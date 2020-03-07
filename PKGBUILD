@@ -1,6 +1,7 @@
 # Maintainer: Matthias Lisin <ml@visu.li
-pkgname=vt-cli pkgver=0.7.0
-pkgrel=2
+pkgname=vt-cli
+pkgver=0.7.0
+pkgrel=3
 pkgdesc='VirusTotal Command Line Interface'
 arch=('i686' 'x86_64')
 url='https://github.com/VirusTotal/vt-cli'
