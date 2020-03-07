@@ -1,3 +1,16 @@
+4.5.21 (2020-02-05 16:46:57)
+
+    More ELF relocation fixes.
+
+4.5.20 (2020-02-04 17:02:09)
+
+    Fixes issues with relocations when loading Linux kernel modules,
+    Adds methods to create or remove segments from Python scripts.
+
+4.5.19 (2019-11-19 17:15:44)
+
+    Adds a way to add new segments for representing memory mapped area.
+
 4.5.18 (2019-11-04 15:18:40)
 
     Fixes a loading issue of iOS 12+ binaries using threaded binding.
