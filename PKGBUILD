@@ -2,8 +2,8 @@
 
 pkgname=ezra-project-git
 pkgver=0.11.1.r93.g93f5777
-pkgrel=4
-pkgdesc='Bible study software focussing on topical study based on keywords/tags'
+pkgrel=5
+pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/tobias-klein/${pkgname%-git}"
 license=('GPL3')
@@ -33,10 +33,15 @@ pkgver() {
 }
 
 prepare() {
+    # TODO: use of gendesk will probably be obsolete in the next release, see:
+    # https://github.com/tobias-klein/ezra-project/pull/25
+    gendesk -f -n \
+        --name "Ezra Project" \
+        --categories="Education;Spirituality;DataVisualization;Literature" \
+        --genericname="Bible Study Tool"
     cd "${pkgname%-git}"
     jq 'del(.dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "electron-osx-sign", "node-abi", "node-gyp", "pug-cli", "sequelize-cli"])' package.json |
         sponge package.json
-    gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "${pkgname%-git}" --name "Ezra Project"
 }
 
 build() {
@@ -58,7 +63,7 @@ build() {
 package() {
     cd "${pkgname%-git}"
     install -Dm755 "../${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-git}.desktop"
+    install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname%-git}.desktop"
     install -Dm644 -t "$pkgdir/usr/lib/${pkgname%-git}/resources/" "${pkgname%-git}-linux-x64/resources/app.asar"
     install -Dm644 -t "$pkgdir/usr/share/licences/${pkgname%-git}/" LICENSE
 }
