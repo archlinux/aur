@@ -3,9 +3,9 @@
 
 pkgname=epsxe-plugin-padjoy
 pkgver=0.82
-pkgrel=3
+pkgrel=4
 pkgdesc="Joy-device plugin"
-url="http://www.ammoq.com"
+url="http://members.chello.at/erich.kitzmueller/ammoq/main.html"
 depends=('epsxe')
 arch=(i686 x86_64)
 license=(GPL2)

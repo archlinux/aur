@@ -1,8 +1,8 @@
 pkgbase = epsxe-plugin-padjoy
 	pkgdesc = Joy-device plugin
 	pkgver = 0.82
-	pkgrel = 3
-	url = http://www.ammoq.com
+	pkgrel = 4
+	url = http://members.chello.at/erich.kitzmueller/ammoq/main.html
 	arch = i686
 	arch = x86_64
 	license = GPL2
