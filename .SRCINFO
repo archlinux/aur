@@ -1,6 +1,6 @@
 pkgbase = mojave-gtk-theme
 	pkgdesc = A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.
-	pkgver = 2019_09_09
+	pkgver = 2020_02_20
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Mojave-gtk-theme
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = mojave-gtk-theme
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	conflicts = mojave-gtk-theme-git
-	source = https://github.com/vinceliuice/Mojave-gtk-theme/archive/2019-09-09.tar.gz
-	md5sums = 679802bf43cf061dddd63dc5fea3c936
+	source = https://github.com/vinceliuice/Mojave-gtk-theme/archive/2020-02-20.tar.gz
+	md5sums = 5fb90ac9bd7155f8f51f5814012691bf
 
 pkgname = mojave-gtk-theme
 
