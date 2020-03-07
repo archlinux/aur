@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
 pkgver=2020.1.4
-pkgrel=3
+pkgrel=4
 license=('custom')
  
 arch=(any)
