@@ -4,7 +4,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
  
 pkgname=irpf
 pkgver=2020.1.4
-pkgrel=2
+pkgrel=3
 license=('custom')
  
 arch=(any)
@@ -23,7 +23,7 @@ md5sums=('2552e17c3f7937c1cc8c82cce6428a37'
          '56a8372f7b4e1e1e51a6fff6255365d4'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
-         '268c8018f98be22e77d8ca711140292a'
+         '5a345787a125c1c3f656c90d63344ee7'
          'a56e7e3e4a53dd027224e32b46cf3c7b')
  
 depends=('java-environment' 'hicolor-icon-theme' 'desktop-file-utils')
