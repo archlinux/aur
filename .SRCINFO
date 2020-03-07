@@ -1,6 +1,6 @@
 pkgbase = desq-shell-git
 	pkgdesc = The Desktop Shell for Desq
-	pkgver = r42.1d4014d
+	pkgver = r44.46c4cf9
 	pkgrel = 1
 	url = https://gitlab.com/DesQ
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = desq-shell-git
 	depends = libdesq-git
 	depends = pam
 	depends = qt5-svg
+	depends = libcsys-git
 	provides = desq-shell
 	conflicts = desq-shell
 	source = git+https://gitlab.com/Desq/Shell.git
