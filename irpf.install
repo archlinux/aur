@@ -4,7 +4,7 @@ post_install() {
 	echo&&cat /usr/share/licenses/irpf/Copyright&&echo
 	
 	echo " "
-	echo " >>> ATENCAO! <<< " echo
+	echo " >>> ATENCAO! <<< "
 	echo " "
 	echo " Alguns usuarios tiveram problemas ao enviar a declaracao"
 	echo " quando a versao do java do sistema era a 13."
