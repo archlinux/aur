@@ -1,6 +1,6 @@
 pkgbase = vit-git
 	pkgdesc = Visual Interactive Taskwarrior full-screen terminal interface (GIT version)
-	pkgver = r602.811c480
+	pkgver = r607.41d046e
 	pkgrel = 1
 	url = https://github.com/scottkosty/vit
 	arch = any
