@@ -16,7 +16,7 @@ pkgbase = ttf-iosevka-fixed-custom-git
 	source = private-build-plans.toml.example
 	source = toothless-G.patch
 	sha256sums = SKIP
-	sha256sums = 6004e471b9188445cc8c6c371384a42bedeecb1935765db1d82b4677b1342bc2
+	sha256sums = 287ecd7b677d384bcc2e29f6bf789328e5da5789d2e179d4bc516a0ca1cad0d8
 	sha256sums = 56d1d97b421ab462d71875ecadf57d65ee45fe26edee50922ae9ae96350cff52
 
 pkgname = ttf-iosevka-fixed-custom-git
