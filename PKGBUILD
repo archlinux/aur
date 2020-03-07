@@ -1,7 +1,7 @@
 # Maintainer: Isaac Freund <ifreund@ifreund.xyz>
 
 pkgname=cozette-ttf
-pkgver=1.5.1
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='A bitmap programming font optimized for coziness'
 arch=('any')
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 source=("https://github.com/slavfox/Cozette/releases/download/v.${pkgver}/CozetteVector.ttf"
         "https://github.com/slavfox/Cozette/archive/v.${pkgver}.tar.gz")
-sha256sums=('9ed5f3d7078e44b6f1cc60cd7ee4385a24bad7e6ce41be0cf395a60d35a295e0'
-            'aead54e75fcd5ec4e688e6962b0185297dbfbafb1b6e31413c3cf9f25b0fe0aa')
+sha256sums=('93158b322ae694ec115f1fa8986dfce682c7ad81650bbe50de565982844d76a6'
+            'f4f7d7ea6cd0a636436b82c4643a302c8b6be327a1344d7ce51d1aea9894d28e')
 
 package() {
     cd "${srcdir}"
