@@ -1,0 +1,15 @@
+pkgbase = python-gpib-ctypes
+	pkgdesc = Cross-platform Python bindings for the NI GPIB and linux-gpib C interfaces.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tivek/gpib_ctypes
+	arch = x86_64
+	license = GPL2
+	makedepends = python-setuptools
+	depends = python
+	depends = linux-gpib
+	source = https://github.com/tivek/gpib_ctypes/archive/0.3.0.tar.gz
+	sha256sums = 549b532418e11dceeef1e694b2bb6c88734d382583b999c572cee61b610a70f7
+
+pkgname = python-gpib-ctypes
+
