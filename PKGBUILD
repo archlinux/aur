@@ -2,7 +2,7 @@
 
 pkgname=openra-vs-git
 _pkgname=openra-vs
-pkgver=2073.git.6cb3c83
+pkgver=2074.git.cff8fdd
 pkgrel=1
 pkgdesc="A Command & Conquer: Red Alert 2-inspired mod of OpenRA"
 arch=('any')
