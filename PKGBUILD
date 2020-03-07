@@ -14,8 +14,8 @@ source=('git://github.com/cboxdoerfer/fsearch.git')
 md5sums=('SKIP')
 
 pkgver() {
-    cd $_gitname
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/${pkgname%-git}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' 
 }
 
 build() {
