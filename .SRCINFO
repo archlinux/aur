@@ -1,0 +1,14 @@
+pkgbase = whatstyle-git
+	pkgdesc = whatstyle finds a code format style that fits given source files.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/mikr/whatstyle
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://github.com/mikr/whatstyle.git
+	sha256sums = SKIP
+
+pkgname = whatstyle-git
+
