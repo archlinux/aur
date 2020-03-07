@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-project-git
-pkgver=0.11.1.r93.g93f5777
-pkgrel=6
+pkgver=0.11.1.r97.g1f3b5fc
+pkgrel=1
 pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/tobias-klein/${pkgname%-git}"
@@ -10,10 +10,10 @@ license=('GPL3')
 depends=('electron'
          'icu'
          'nodejs')
-makedepends=('gendesk'
-             'git'
+makedepends=('git'
              'jq'
              'moreutils'
+             'node-gyp'
              'node-prune'
              'nodejs-addon-api' # run time dep but gets baked into electron asar
              'nodejs-pug-cli'
@@ -32,12 +32,6 @@ pkgver() {
 }
 
 prepare() {
-    # TODO: use of gendesk will probably be obsolete in the next release, see:
-    # https://github.com/tobias-klein/ezra-project/pull/25
-    gendesk -f -n \
-        --name "Ezra Project" \
-        --categories="Education;Spirituality;DataVisualization;Literature" \
-        --genericname="Bible Study Tool"
     cd "${pkgname%-git}"
     jq 'del(.dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "electron-osx-sign", "node-abi", "node-gyp", "pug-cli", "sequelize-cli"])' package.json |
         sponge package.json
@@ -50,9 +44,9 @@ build() {
     npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
     npx electron-rebuild --version="$_electron"
     node-prune node_modules
-    npm link node-addon-api node-sword-interface
     npx electron-packager ./ ${pkgname%-git} --electron-version="$_electron"
     ./build_scripts/purge_build_artifacts.sh
+    npm link node-addon-api node-sword-interface
     npx electron-packager ./ "${pkgname%-git}" \
         --electron-version="$_electron" \
         --overwrite \
@@ -64,7 +58,8 @@ build() {
 package() {
     cd "${pkgname%-git}"
     install -Dm755 "../${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname%-git}.desktop"
+    install -Dm644 -t "$pkgdir/usr/share/applications/" "${pkgname%-git}.desktop"
     install -Dm644 -t "$pkgdir/usr/lib/${pkgname%-git}/resources/" "${pkgname%-git}-linux-x64/resources/app.asar"
     install -Dm644 -t "$pkgdir/usr/share/licences/${pkgname%-git}/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-git}/" {CHANGELOG,README,TECH,LOC_METRICS}.md
 }
