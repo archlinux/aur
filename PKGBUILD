@@ -1,7 +1,7 @@
 pkgname=gtkcord3-git
 _pkgname=gtkcord3
-pkgver=indev
-pkgrel=3
+pkgver=r103.b60f45b
+pkgrel=1
 pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
@@ -9,6 +9,11 @@ license=('GPL3')
 makedepends=('git' 'go')
 source=('git+https://github.com/diamondburned/gtkcord3')
 sha1sums=('SKIP')
+
+pkgver() {
+	cd "$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd $_pkgname
