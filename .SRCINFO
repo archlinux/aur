@@ -8,6 +8,8 @@ pkgbase = aptpac-git
 	license = WTFPL
 	makedepends = git
 	depends = sudo
+	conflicts = apt
+	conflicts = apt-git
 	source = git://github.com/Hayao0819/aptpac.git
 	md5sums = SKIP
 

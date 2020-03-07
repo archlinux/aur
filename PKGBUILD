@@ -13,15 +13,17 @@ makedepends=('git')
 source=('git://github.com/Hayao0819/aptpac.git')
 md5sums=('SKIP')
 _gitname='aptpac'
-conflicts=()
+conflicts=('apt' 'apt-git')
 
 pkgver() {
-        cd "$_gitname" &&
+        cd "${_gitname}" &&
         printf '%s.%s\n' "$(git rev-list --count HEAD)" \
                          "$(git rev-parse --short HEAD)"
 }
 
 package() {
-        cd "$_gitname" &&
-        install -m 755 -D aptpac "$pkgdir/usr/bin/aptpac"
+        cd "${_gitname}" &&
+        install -m 755 -D aptpac "${pkgdir}/usr/bin/aptpac"
+        ln -s "${pkgdir}/usr/bin/aptpac" "${pkgdir}/usr/bin/apt"
+        ln -s "${pkgdir}/usr/bin/aptpac" "${pkgdir}/usr/bin/apt-get"
 }
