@@ -36,7 +36,7 @@ export NWCHEM_MODULES="all nwxc python"
 export NWCHEM_TOP=$(pwd)
 
 export PYTHONHOME=/usr
-export PYTHONVERSION=2.7
+export PYTHONVERSION=3.8
 export PYTHONLIBTYPE=so
 
 export LARGE_FILES=TRUE
