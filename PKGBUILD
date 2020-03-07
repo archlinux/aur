@@ -1,7 +1,7 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 
 pkgname=zettlr
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
 source=($pkgname::git+https://github.com/Zettlr/Zettlr.git#tag=v$pkgver)
-sha1sums=(SKIP)
+sha1sums=('SKIP')
 
 prepare() {
     cd $srcdir/$pkgname
@@ -28,7 +28,7 @@ prepare() {
 
 build() {
     cd $srcdir/$pkgname
-    yarn install --pure-lockfile --no-bin-links --cache-folder $srcdir/cache --link-folder $srcdir/link
+    NODE_ENV= yarn install --pure-lockfile --no-bin-links --cache-folder $srcdir/cache --link-folder $srcdir/link
     yarn less
     yarn handlebars
     yarn lang:refresh
@@ -77,7 +77,7 @@ END
 [Desktop Entry]
 Name=Zettlr
 Comment=A powerful Markdown Editor with integrated tree view
-Exec="$pkgname" %U
+Exec=$pkgname %U
 Terminal=false
 Type=Application
 Icon=$pkgname
