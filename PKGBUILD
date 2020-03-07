@@ -3,7 +3,7 @@
 
 pkgname=python-mlxtend
 _name=${pkgname#python-}
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="A library of Python tools and extensions for data science."
 arch=(any)
@@ -19,8 +19,8 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2e60c89d3826bb29abfbb3c512dd9981e4111d133a21f49d6410188e5e2cd06c')
-sha512sums=('920c23011efeaa7b51a9a4678f3510443df258135997440599cc43c18c9237f23fb66013d22999a76c964641a200e2a0c7d8e53ec8cb4304b0812aaaf6751353')
+sha256sums=('de12751e980f11927a460556876d6e4e552f3de916a99372d7ba7572784ed4a0')
+sha512sums=('c20b9b1c16c1798aea12b505739f46f0d29366f23a1ff2a994bceeb63dcba4865ed126af811984a7fc9a7076231519170662c1c7dcc9c72156a1a662dc1866f2')
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
