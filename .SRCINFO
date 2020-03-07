@@ -1,6 +1,6 @@
 pkgbase = molecule
 	pkgdesc = aids in the development and testing of Ansible roles.
-	pkgver = 3.0a5
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/ansible/molecule
 	arch = any
@@ -39,7 +39,7 @@ pkgbase = molecule
 	optdepends = python-boto: EC2 driver
 	optdepends = python-vagrant: vagrant driver
 	optdepends = python-shade: openstack driver
-	source = molecule-3.0a5.tar.gz::https://github.com/ansible/molecule/archive/3.0a5.tar.gz
+	source = molecule-3.0.2.tar.gz::https://github.com/ansible/molecule/archive/3.0.2.tar.gz
 	sha256sums = a78050a00f51d806215e5cc5420dcb5c1403340fd25155b42f3b26d7cd10d97d
 
 pkgname = molecule

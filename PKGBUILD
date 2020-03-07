@@ -1,7 +1,7 @@
 # Maintainer: dncrash <dncrash at gmail dot com>
 
 pkgname="molecule"
-pkgver=3.0a5
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='aids in the development and testing of Ansible roles.'
 url='https://github.com/ansible/molecule'
