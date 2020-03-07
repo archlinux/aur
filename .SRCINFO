@@ -1,7 +1,7 @@
 pkgbase = sftpgo-bin
 	pkgdesc = Full featured and highly configurable SFTP server
 	pkgver = 0.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drakkan/sftpgo
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = sftpgo-bin
 	provides = sftpgo
 	conflicts = sftpgo
 	backup = etc/sftpgo/sftpgo.json
+	backup = etc/sftpgo/sftpgo.db
 	backup = var/lib/sftpgo/sftpgo.db
 	source = https://github.com/drakkan/sftpgo/releases/download/0.9.6/sftpgo_0.9.6_linux_x86_64.tar.xz
 	source = sftpgo.json

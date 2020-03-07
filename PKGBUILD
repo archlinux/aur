@@ -3,7 +3,7 @@
 pkgname=sftpgo-bin
 _pkgname=sftpgo
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Full featured and highly configurable SFTP server'
 arch=('x86_64')
 url="https://github.com/drakkan/${_pkgname}"
@@ -20,6 +20,7 @@ conflicts=('sftpgo')
 provides=('sftpgo')
 backup=(
   "etc/${_pkgname}/sftpgo.json"
+  "etc/${_pkgname}/sftpgo.db"
   "var/lib/${_pkgname}/sftpgo.db"
 )
 
