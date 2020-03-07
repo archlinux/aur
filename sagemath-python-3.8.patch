@@ -118,7 +118,7 @@ diff --git a/src/sage/combinat/growth.py b/src/sage/combinat/growth.py
 index cb9efbbb22..48eee6b42e 100644
 --- a/src/sage/combinat/growth.py
 +++ b/src/sage/combinat/growth.py
-@@ -1707,7 +1707,7 @@ class Rule(UniqueRepresentation):
+@@ -1706,7 +1706,7 @@ class Rule(UniqueRepresentation):
          EXAMPLES::
  
              sage: from sage.combinat.growth import Rule
@@ -342,7 +342,7 @@ diff --git a/src/sage/data_structures/mutable_poset.py b/src/sage/data_structure
 index 530b423bb5..f2eb8ca8c2 100644
 --- a/src/sage/data_structures/mutable_poset.py
 +++ b/src/sage/data_structures/mutable_poset.py
-@@ -3318,7 +3318,7 @@ class MutablePoset(SageObject):
+@@ -3316,7 +3316,7 @@ class MutablePoset(SageObject):
              sage: P = MP([T((1, 1)), T((1, 3)), T((2, 1)),
              ....:         T((1, 2)), T((2, 2))])
              sage: list(P.maximal_elements())
@@ -378,7 +378,7 @@ diff --git a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py b/src/sage/d
 index 99ad85b695..4d2642366a 100644
 --- a/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
 +++ b/src/sage/dynamics/arithmetic_dynamics/projective_ds.py
-@@ -3146,8 +3146,8 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3147,8 +3147,8 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: D6 = DynamicalSystem_projective([y^2,x^2])
              sage: D6.automorphism_group()
              [
@@ -389,7 +389,7 @@ index 99ad85b695..4d2642366a 100644
              ]
          """
          alg = kwds.get('algorithm', None)
-@@ -3671,13 +3671,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3672,13 +3672,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y,z> = ProjectiveSpace(K,2)
              sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
              sage: f.preperiodic_points(0,1)
@@ -410,7 +410,7 @@ index 99ad85b695..4d2642366a 100644
  
          ::
  
-@@ -3892,13 +3892,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
+@@ -3893,13 +3893,13 @@ class DynamicalSystem_projective(SchemeMorphism_polynomial_projective_space,
              sage: P.<x,y,z> = ProjectiveSpace(K,2)
              sage: f = DynamicalSystem_projective([x^2+z^2, y^2+x^2, z^2+y^2])
              sage: f.periodic_points(1)
@@ -429,7 +429,7 @@ index 99ad85b695..4d2642366a 100644
  
          ::
  
-@@ -5496,7 +5496,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5497,7 +5497,7 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: f.rational_periodic_points()
              doctest:warning
              ...
@@ -438,7 +438,7 @@ index 99ad85b695..4d2642366a 100644
          """
          from sage.misc.superseded import deprecation
          deprecation(28109, "use sage.dynamics.arithmetic_dynamics.projective_ds.all_periodic_points instead")
-@@ -5940,8 +5940,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -5941,8 +5941,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
               (w^2 + w - 25/16 : 1),
               (-w : 1),
               (-w^2 + 29/16 : 1),
@@ -448,7 +448,7 @@ index 99ad85b695..4d2642366a 100644
               (-w^2 + 21/16 : 1),
               (w^2 - 21/16 : 1),
               (w^2 + w - 33/16 : 1),
-@@ -6069,8 +6069,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
+@@ -6070,8 +6070,8 @@ class DynamicalSystem_projective_field(DynamicalSystem_projective,
              sage: g = f.conjugate(m)
              sage: f.conjugating_set(g) # long time
              [
@@ -463,7 +463,7 @@ diff --git a/src/sage/geometry/cone.py b/src/sage/geometry/cone.py
 index 942ffa37a2..a9ded05a74 100644
 --- a/src/sage/geometry/cone.py
 +++ b/src/sage/geometry/cone.py
-@@ -2274,8 +2274,7 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection,
+@@ -2281,8 +2281,7 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection,
              sage: face = L.level_sets()[1][0]
              sage: D = L.hasse_diagram()
              sage: D.neighbors(face)
@@ -473,7 +473,7 @@ index 942ffa37a2..a9ded05a74 100644
  
          However, you can achieve some of this functionality using
          :meth:`facets`, :meth:`facet_of`, and :meth:`adjacent` methods::
-@@ -4047,7 +4046,7 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection,
+@@ -4056,7 +4055,7 @@ class ConvexRationalPolyhedralCone(IntegralRayCollection,
              (N(0, 1), N(1, 0), N(-1, 0))
              sage: line = Cone([(1,1,1),(-1,-1,-1)])
              sage: line.semigroup_generators()
@@ -791,7 +791,7 @@ diff --git a/src/sage/graphs/graph.py b/src/sage/graphs/graph.py
 index cab8faa833..9f00d87eb4 100644
 --- a/src/sage/graphs/graph.py
 +++ b/src/sage/graphs/graph.py
-@@ -6767,7 +6767,7 @@ class Graph(GenericGraph):
+@@ -6770,7 +6770,7 @@ class Graph(GenericGraph):
              sage: all(F.degree(u) == len(cliques) for u,cliques in d.items())
              True
              sage: F.cliques_containing_vertex(vertices=[(0, 1)])
@@ -800,7 +800,7 @@ index cab8faa833..9f00d87eb4 100644
  
          """
          import networkx
-@@ -7104,7 +7104,7 @@ class Graph(GenericGraph):
+@@ -7107,7 +7107,7 @@ class Graph(GenericGraph):
          Vertices may be arbitrary --- check that :trac:`24898` is fixed::
  
              sage: Graph({(1,2):[(2,3)],(2,3):[(1,2)]}).modular_decomposition()
@@ -1672,3 +1672,25 @@ index 40a196b964..b66795fa55 100644
  """
  
  from sage.symbolic.ring import SymbolicRing, SR
+diff --git a/src/sage/repl/preparse.py b/src/sage/repl/preparse.py
+index 529c341833..25223123d1 100644
+--- a/src/sage/repl/preparse.py
++++ b/src/sage/repl/preparse.py
+@@ -791,7 +791,7 @@ def preparse_numeric_literals(code, extract=False):
+         sage: 123__45 # py3
+         Traceback (most recent call last):
+         ...
+-        SyntaxError: invalid token
++        SyntaxError: invalid decimal literal
+ 
+         sage: preparse_numeric_literals('3040_1_')
+         '3040_1_'
+@@ -802,7 +802,7 @@ def preparse_numeric_literals(code, extract=False):
+         sage: 3040_1_ # py3
+         Traceback (most recent call last):
+         ...
+-        SyntaxError: invalid token
++        SyntaxError: invalid decimal literal
+     """
+     literals = {}
+     last = 0

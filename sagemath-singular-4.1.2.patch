@@ -433,7 +433,7 @@ diff --git a/src/sage/combinat/root_system/hecke_algebra_representation.py b/src
 index 7c4f64a..24750be 100644
 --- a/src/sage/combinat/root_system/hecke_algebra_representation.py
 +++ b/src/sage/combinat/root_system/hecke_algebra_representation.py
-@@ -745,7 +745,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
+@@ -746,7 +746,7 @@ class HeckeAlgebraRepresentation(WithEqualityById, SageObject):
               -2121 + 212,
               (q2/(q1-q2))*2121 + (q2/(-q1+q2))*121 + (q2/(-q1+q2))*212 - 12 + ((-q2)/(-q1+q2))*21 + 2,
               ((-q2^2)/(-q1^2+q1*q2-q2^2))*2121 - 121 + (q2^2/(-q1^2+q1*q2-q2^2))*212 + 21,

@@ -43,17 +43,23 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-ecl-sigfpe.patch
         sagemath-ipython7.patch
         sagemath-python-3.8.patch
-        sagemath-pexpect-4.8.patch)
+        sagemath-pexpect-4.8.patch
+        sagemath-gap-4.11.patch
+        sagemath-matplotlib-3.2.patch
+        sagemath-pari-2.11.3.patch)
 sha256sums=('SKIP'
             '9cbb72a1422416152cedd6849944d3c02a1639642758b470931f9fc5ddf42d22'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
             '876fd1c0fc3471b56e54d960d79e5ce1d5fc49cebf6eed27043a7380854c792c'
             '937074fa7a8a4e2aba9ea77ec622fe937985a1a9176c48460d51325ee877a4f5'
-            'a52ee71d29817517d50bb948c49fb1a8e37f2d971a20266ee2d248a5cf37e604'
+            'ab7f6db1245add08447a95c6bbdda84dbab49b043d01c2f288460bc10515c8fd'
             'e44bbde87f3312548faad75b7383ef21fade55be251ab5804de41cd3842ca8a0'
-            '71ab0f48c2184ddbac5303ba266fe21c0071c8fa605af036fe2cf9ac660341a7'
-            '6ffeef6d53ee827d2c241480792f0318ad835e1ab3b7a9431bbe73133d965a8d'
-            '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07')
+            'e0b970a5914b8221c33f2018f5da2e5a3661f1b45068bc7635517135155275fd'
+            'f812e32718eab0292d726bed386217524dcdae3d4078ce82c66c20d00b9806f7'
+            '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
+            'd75f551fd942963b0158f5b25cefbecb213c37549375dd2e0f88e1856555fa1e'
+            'f7f3f914437f714427748f1fda1355e7f32ad98b76b89c54855efadd6e731c7a'
+            '3f73cb49cb17865c2e50ddab0d43a21c5450190bb193c62d19cb86a6a99dacbc')
 
 pkgver() {
   cd sage
@@ -78,6 +84,12 @@ prepare(){
   patch -p1 -i ../sagemath-ipython7.patch
 # Fix mathjax path
   sed -e 's|mathjax|mathjax2|g' -i src/sage/env.py
+# Fix gap.version() and doctests with GAP 4.11
+  patch -p1 -i ../sagemath-gap-4.11.patch
+# Fix warnings with matplotlib 3.2
+  patch -p1 -i ../sagemath-matplotlib-3.2.patch
+# Fix doctests with pari 2.11.3
+  patch -p1 -i ../sagemath-pari-2.11.3.patch
 
 # Upstream patches  
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825
