@@ -11,7 +11,7 @@ depends=('binutils' 'systemd')
 makedepends=('rust')
 optdepends=('sbsigntools: signing support')
 
-source=("https://github.com/gmes78/${pkgname}/archive/v${pkgver}.tar.gz")
+source=("sigen-${pkgver}.tar.gz"::"https://github.com/gmes78/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('4f5c57b83fa63b3eb4caa120f1087c2586fa6595955d1c1c4219c5d2e8fe5054881706ee46473fa0fc5c6610abbb3941e1c3edbff233d68f467af230a167b1eb')
 
 build() {
