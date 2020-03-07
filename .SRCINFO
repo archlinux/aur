@@ -7,6 +7,7 @@ pkgbase = gtkcord3-git
 	license = GPL3
 	makedepends = git
 	makedepends = go
+	depends = gtk
 	source = git+https://github.com/diamondburned/gtkcord3
 	sha1sums = SKIP
 

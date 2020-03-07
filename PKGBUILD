@@ -6,6 +6,7 @@ pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
 license=('GPL3')
+depends=('gtk')
 makedepends=('git' 'go')
 source=('git+https://github.com/diamondburned/gtkcord3')
 sha1sums=('SKIP')
