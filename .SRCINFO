@@ -1,29 +1,29 @@
 pkgbase = rocketchat-desktop
 	pkgdesc = Rocket.Chat Native Cross-Platform Desktop Application via Electron.
 	pkgver = 2.17.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RocketChat/Rocket.Chat.Electron
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = gulp
-	makedepends = nodejs
+	makedepends = nodejs-lts-erbium
 	makedepends = node-gyp
 	makedepends = python
 	makedepends = yarn
-	depends = electron
 	optdepends = hunspell-en_US: spell checking
 	conflicts = rocketchat-client-bin
 	source = rocketchat-desktop-2.17.7.tar.gz::https://github.com/RocketChat/Rocket.Chat.Electron/archive/2.17.7.tar.gz
 	source = rocketchat-desktop
 	source = rocketchat-desktop.desktop
-	source = fix-build.patch
+	source = no-multiarch-build.patch
 	source = use-system-dictionaries.patch
+	source = linux-target-dir.patch
 	sha512sums = 49514e0cce8e19f2dee6bfc44777065ae5d557d1cb4c3034988d5e1b13dd6a6b3e444eaec4d52ea647b7d04cbd7b1422eb31b0b8113d2f98ec32c7d5b62ad142
 	sha512sums = 1f0f7197012421ff42d2936f73e697e35eef8c57fb9fed59ee022f9d170d6496407f89e426526fba8451fe304b3a8de1724d1cd14bd85d781bbf6aa9ca078d7d
 	sha512sums = d87664b9bdf30eac3011393d094962e0d568a94b5eaf4c8e5f17529442dcba905cea7341527066102a97a07a981acd6ce045b8737eb78a7d81a2a2d05023fe26
-	sha512sums = ae924a722734962432c795f051dc35771c0347b655845fcb614c3424674e23aca071708ae0b84b19794b6f532af7a409ca078ff0f60db0ee88a8bcb09f78c1ab
+	sha512sums = 0fdce645784b9b0ccbe203ecc61f10840514e79748dc10adc98924e34682ce8d8f024aeb03fed318f915ed52cd2abf97da3cae21f4bf45354e08194638a7e34e
 	sha512sums = 88361c770163c4c1d692128a4c8848d2f9700382394dbbe1391b2d0c22268dee1be850d391eece22ee51d9c119971337884dfd7a4c58c29e384b652592c4df9b
+	sha512sums = 07a54cc257a1d231b42339f9f1389ad7948e621e11d695498fb6e04f4f1aa07972faf6b34e83aaca94515252c7645d16d7f7da9e59c3d836426222c9e2c2c1fd
 
 pkgname = rocketchat-desktop
 

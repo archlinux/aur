@@ -1,21 +1,3 @@
-diff -ura package.orig/electron-builder.json package.new/electron-builder.json
---- package.orig/electron-builder.json	2020-02-11 13:55:00.000000000 +0100
-+++ package.new/electron-builder.json	2020-02-11 15:44:30.577329034 +0100
-@@ -83,12 +83,10 @@
- 		],
- 		"artifactName": "rocketchat-${version}-${arch}.${ext}"
- 	},
-+	"electronDist": "/usr/lib/electron",
- 	"linux": {
- 		"target": [
--			"tar.gz",
--			"deb",
--			"rpm",
--			"snap"
-+			"dir"
- 		],
- 		"executableName": "rocketchat-desktop",
- 		"category": "GNOME;GTK;Network;InstantMessaging",
 diff -ura package.orig/gulpfile.js package.new/gulpfile.js
 --- package.orig/gulpfile.js	2020-02-11 13:55:00.000000000 +0100
 +++ package.new/gulpfile.js	2020-02-11 15:43:14.856730664 +0100
