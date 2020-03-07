@@ -1,28 +1,24 @@
-# Maintainer: Paul Staab <develop(at)paulstaab(dot)de>
+# Maintainer:  Dimitris Kiziridis <ragourl at outlook dot com>
+# Contributor: Paul Staab <develop(at)paulstaab(dot)de>
 
 pkgname=scrm
-pkgver=1.6.0
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="A Coalescent Simulator for Genome-Scale Biological Sequences"
-arch=('i686' 'x86_64' 'armv7h')
+arch=('x86_64')
 url="https://scrm.github.io"
 license=('GPL3')
-depends=('gcc-libs')
 makedepends=('gcc>=4.8.1')
-checkdepends=('cppunit')
-source=("https://github.com/scrm/scrm/releases/download/v$pkgver/scrm-src.tar.gz")
-sha256sums=('f7ab5cea3c722ba2a25b53526447c4f3b7968bd675afe4bdbed692abf8cd7075')
-md5sums=('6dbb8ead1d7d0374a4c5c439d2538a23')
+source=("https://github.com/scrm/scrm/archive/v${pkgver}.tar.gz")
+md5sums=('89c69e32e42fd494690ee938298a916b')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
+	aclocal
+	autoconf
+	automake -a
+	CXX='g++' CXXFLAGS='-O3 -march=native' ./configure --prefix=/usr
 	make
-}
-
-check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make -k unittests
 }
 
 package() {
