@@ -1,0 +1,14 @@
+pkgbase = sear
+	pkgdesc = Signed/Encrypted ARchive
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/iqlusioninc/sear
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	source = sear-0.0.0.zip::https://github.com/iqlusioninc/sear/archive/ba1f37f5dd1a32c5de2a20e8c385678d95d403a8.zip
+	sha256sums = 391e5fd18fa7ca14eb866b448f8e5efe355c276cf4b78814c97bdaffb25f8811
+
+pkgname = sear
+
