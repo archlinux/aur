@@ -3,7 +3,7 @@
 # Contributor: kounch (https://github.com/kounch)
 
 pkgname=argonone
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Argon One Service and Control Scripts"
 arch=('any')
@@ -12,8 +12,8 @@ license=('GPL3')
 depends=('i2c-tools' 'lm_sensors' 'python>=3.3')
 provides=('argonone')
 install=argonone.install
-source=("https://tonyfettes.tk/download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('30629598c578bb3b7de58ae2edfc6ad7')
+source=("https://files.tonyfettes.tk/argonone/${pkgname}-${pkgver}.tar.gz")
+md5sums=('bc76b22b074dcd09df0925fa16e0de34')
 
 package() {
   install -Dm755 "${srcdir}"/"${pkgname}"/argonone-config "${pkgdir}"/usr/bin/argonone-config
