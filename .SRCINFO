@@ -1,6 +1,6 @@
 pkgbase = jsonapiunit
 	pkgdesc = TypeScript like unit testing framework for testing REST JSON APIs.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/whizsid/jsonapiunit
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = jsonapiunit
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = jsonapiunit::git+https://github.com/whizsid/jsonapiunit#tag=0.1.0
+	source = jsonapiunit::git+https://github.com/whizsid/jsonapiunit#tag=0.1.1
 	md5sums = SKIP
 
 pkgname = jsonapiunit
