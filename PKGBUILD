@@ -4,7 +4,7 @@
 # Contributor: Uwe Koloska <kolewu@koloro.de>
 
 pkgname=mma
-pkgver=19.08
+pkgver=20.02
 pkgrel=1
 pkgdesc="Musical MIDI Accompaniment (MMA) is an accompaniment generator"
 url="http://www.mellowood.ca/mma/"
@@ -16,7 +16,7 @@ install=mma.install
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --user-agent Mozilla/4.0 -o %o %u')
 source=("http://www.mellowood.ca/mma/mma-bin-$pkgver.tar.gz"
   mmarc)
-sha1sums=('30592c7bee836b81982d9534738d086af7769587'
+sha1sums=('51e261941b610b529aba8a1e3c7e3917d52db4bd'
           '3c03107c2a1b380f66ed68458d9b9def8371c0f6')
 options=(!strip)
 backup=(etc/mmarc)
