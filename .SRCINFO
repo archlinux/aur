@@ -1,6 +1,6 @@
 pkgbase = future-fetch
 	pkgdesc = Simple fetch script
-	pkgver = 0.7.92
+	pkgver = 0.8
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/futureFetch
 	arch = x86_64
@@ -11,9 +11,10 @@ pkgbase = future-fetch
 	depends = pacman
 	depends = pacman-contrib
 	depends = procps-ng
+	depends = util-linux
 	depends = yay
-	source = future-fetch-0.7.92-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.7.92/future-fetch
-	sha512sums = 6aeee449ab3d3da0b25af34b8dab21e23f4cb456b411110db9e3ee57a96a2e0c1904a034f0784acc016367ece04ec23c36c8aa663f73239ca9dc85c116dab772
+	source = future-fetch-0.8-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.8/future-fetch
+	sha512sums = b8ea1d84b5696c36d99509059f4d3a97f4e2e6c7d9954f13e56269340b4a204f589cdf705d46d64ce6e230cfdc117c60c54494194819b0f098e57412febd099b
 
 pkgname = future-fetch
 
