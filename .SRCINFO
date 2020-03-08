@@ -1,7 +1,8 @@
 pkgbase = perl-travel-status-de-deutschebahn-git
 	pkgdesc = Interface to the DeutscheBahn online departure monitor
-	pkgver = 2.02+gc8185a7
-	pkgrel = 2
+	pkgver = latest
+	pkgrel = 1
+	epoch = 1
 	url = http://finalrewind.org/projects/Travel-Status-DE-DeutscheBahn/
 	arch = any
 	license = PerlArtistic
@@ -14,9 +15,9 @@ pkgbase = perl-travel-status-de-deutschebahn-git
 	depends = perl-class-accessor
 	depends = perl-libwww
 	depends = perl-xml-libxml
-	provides = perl-travel-status-de-deutschebahn=2.02+gc8185a7
+	provides = perl-travel-status-de-deutschebahn=latest
 	conflicts = perl-travel-status-de-deutschebahn
-	replaces = perl-travel-status-de-deutschebahn<=2.02+gc8185a7
+	replaces = perl-travel-status-de-deutschebahn<=latest
 	options = !emptydirs
 	source = Travel-Status-DE-DeutscheBahn::git+http://git.finalrewind.org/Travel-Status-DE-DeutscheBahn
 	md5sums = SKIP
