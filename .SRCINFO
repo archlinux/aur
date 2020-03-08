@@ -1,0 +1,14 @@
+pkgbase = firefox-china-extra-extensions-tabtweak
+	pkgdesc = 火狐中国版浏览器的“标签页优化”插件
+	pkgver = 5.68
+	pkgrel = 1
+	arch = any
+	license = MPL
+	depends = firefox
+	conflicts = firefox-chinese
+	conflicts = firefox-china-extra
+	source = https://download-ssl.firefox.com.cn/releases/firefox/73.0/zh-CN/Firefox-latest-x86_64.tar.bz2
+	sha256sums = 89369fd22f38e6027d74dc8d00839bf4b72046a078f593370c097d275c235c52
+
+pkgname = firefox-china-extra-extensions-tabtweak
+
