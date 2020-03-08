@@ -24,15 +24,9 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-	cd orjson
-    rm -f "./*.whl" # remove old wheels
-
-	PIP_CONFIG_FILE=/dev/null pip wheel --isolated --no-binary=orjson .
-}
-
 package() {
 	cd orjson
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ./*.whl
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+
+	PIP_CONFIG_FILE=/dev/null pip install --root="$pkgdir" --isolated --ignore-installed --no-deps --no-binary=orjson --use-pep517 .
 }
