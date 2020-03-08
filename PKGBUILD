@@ -3,13 +3,12 @@
 _plug=vstaambk
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=0.8.0.r105.b1938f6
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HomeOfVapourSynthEvolution/vsTAAmbk'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-awarpsharp2-git'
+depends=('vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-fmtconv-git'
