@@ -2,23 +2,24 @@
 
 _pkgname=mir-core
 pkgname=d-$_pkgname
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Base software building blocks and conventions for libmir'
 arch=('x86_64')
 url='https://github.com/libmir/mir-core'
 license=('custom:BSL')
 depends=('liblphobos')
 makedepends=('meson' 'ldc')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-        "meson-fixes.patch::https://patch-diff.githubusercontent.com/raw/libmir/mir-core/pull/14.patch")
-sha512sums=('fb5d03cbec11927faa4a04e3a6ee70c986813aa259d76cbac8647a3044bb370d3192c7b44e823425e9047b27a556fda8858834be6c0fb3152aac7f72b181205f'
-            'f2f3067fb7e4edda492c4d2aed4e10ecd0d028cb332e314684d9d8cd301f37488d081806b4e7119d094fb03b00e29207b3798c27c9b03786fd012673f63928b5')
+source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha512sums=('86695f0c5be38027d12bfc619e51bc091b7e2357f871a428ad4ad9060f80d8e4e44613303103e3753ab6178330ac9ea126dd86ffb19e3b6f3ea97cba8f12eb3a')
 
 prepare() {
   cd $_pkgname-$pkgver
 
-  sed "s/dc.get_id() == 'llvm'/false/" "$srcdir"/meson-fixes.patch | patch -p1
+  # Fix version in buildfile
+  sed -i "s/1.0.2/$pkgver/" meson.build
+  # Fix soname
+  sed -i "s/dc.get_id() == 'llvm'/false/" meson.build
 }
 
 build() {
