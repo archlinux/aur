@@ -3,13 +3,12 @@
 _plug=nnedi3_resample
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=13.0983895
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/mawen1250/VapourSynth-script'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-fmtconv-git'
+depends=('vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-nnedi3-git'
          )
