@@ -1,0 +1,12 @@
+pkgbase = uhhyou.lv2-git
+	pkgdesc = LV2 synths and effects plugins.
+	pkgver = r163.a445da1
+	pkgrel = 1
+	url = https://github.com/ryukau/LV2Plugins
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/ryukau/LV2Plugins
+	md5sums = SKIP
+
+pkgname = uhhyou.lv2-git
+
