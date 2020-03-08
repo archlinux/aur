@@ -19,8 +19,8 @@ optdepends=('iverilog: for simulating verilog designs' 'ghdl: for simulating VHD
 #options=()
 install=${pkgname}.install
 #changelog=
-source=("https://github.com/potentialventures/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('94483fb042f9b645acecdfab20d460a4')
+source=("https://github.com/cocotb/$pkgname/archive/v$pkgver.$pkgrel.tar.gz")
+md5sums=('4db3d270943da293cf4dd7ce22594307')
 #validpgpkeys=()
 
 
