@@ -11,7 +11,7 @@ arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=2.2.0')
-makedepends=(gcc)
+makedepends=(gcc gcc-fortran)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('baf4a66a61ab3193c81a130e202cba8d')
 
