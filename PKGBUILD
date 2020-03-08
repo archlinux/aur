@@ -3,10 +3,10 @@
 # NOTE: building this package requires a nightly build of the Rust compiler.
 
 pkgname=python-orjson-git
-pkgver=2.2.0.r0.g95a03b0
+pkgver=2.5.2.r1.gd31e37b
 pkgrel=1
 pkgdesc="Fast, correct Python JSON library supporting dataclasses and datetimes (Git version)"
-arch=(x86_64 i686)
+arch=(x86_64 i686 aarch64 armv7h)
 url="https://github.com/ijl/orjson"
 license=('Apache' 'MIT')
 
