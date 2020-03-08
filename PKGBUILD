@@ -1,11 +1,10 @@
-# Maintainer: Timon Engelke <aur@timonengelke.de>
 pkgdesc="ROS - This package provides a recovery behavior for the navigation stack that attempts to clear space by performing a 360 degree rotation of the robot."
 url='https://wiki.ros.org/rotate_recovery'
 
 pkgname='ros-melodic-rotate-recovery'
 pkgver='1.16.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(ros-melodic-nav-core
@@ -24,17 +23,11 @@ ros_depends=(ros-melodic-nav-core
   ros-melodic-tf
   ros-melodic-pluginlib
   ros-melodic-roscpp
-  ros-melodic-costmap-2d)
+  ros-melodic-costmap-2d
+  ros-melodic-tf2-geometry-msgs)
 depends=(${ros_depends[@]}
   eigen3)
 
-# Git version (e.g. for debugging)
-# _tag=release/melodic/rotate_recovery/${pkgver}-${_pkgver_patch}
-# _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
-# sha256sums=('SKIP')
-
-# Tarball version (faster download)
 _dir="navigation-${pkgver}/rotate_recovery"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/navigation/archive/${pkgver}.tar.gz")
 sha256sums=('d83201296e773e2789635fddf39ac18e9465219b18707e53bd2361de4762d205')
