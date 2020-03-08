@@ -21,8 +21,6 @@ pkgbase = pipewire-gstfree
 	makedepends = libsndfile
 	makedepends = bluez-libs
 	makedepends = vulkan-headers
-	provides = pipewire
-	conflicts = pipewire
 	source = git+https://github.com/PipeWire/pipewire#commit=74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac
 	sha256sums = SKIP
 
@@ -37,7 +35,9 @@ pkgname = pipewire-gstfree
 	optdepends = pipewire-docs: Documentation
 	optdepends = pipewire-jack: JACK support
 	optdepends = pipewire-pulse: PulseAudio support
+	provides = pipewire
 	provides = libpipewire-0.3.so
+	conflicts = pipewire
 	backup = etc/pipewire/pipewire.conf
 
 pkgname = pipewire-gstfree-docs

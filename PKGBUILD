@@ -16,8 +16,6 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers)
-conflicts=(pipewire)
-provides=(pipewire)
 _commit=74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac  # tags/0.3.1
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
@@ -63,7 +61,8 @@ package_pipewire-gstfree() {
   optdepends=('pipewire-docs: Documentation'
               'pipewire-jack: JACK support'
               'pipewire-pulse: PulseAudio support')
-  provides=(libpipewire-${pkgver:0:3}.so)
+  conflicts=(pipewire)
+  provides=(pipewire libpipewire-${pkgver:0:3}.so)
   backup=(etc/pipewire/pipewire.conf)
   install=pipewire.install
 
