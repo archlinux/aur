@@ -10,7 +10,7 @@ pkgdesc="Improved Predictors"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(gpl2 gpl3)
-depends=('r>=2.10' 'r-rpart>=3.1.8' r-survival r-nnet r-class r-prodlim)
+depends=('r>=2.10' r-prodlim)
 makedepends=(gcc)
 optdepends=(r-mvtnorm r-mlbench r-th.data)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")

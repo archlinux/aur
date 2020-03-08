@@ -9,10 +9,6 @@ pkgbase = r-ipred
 	license = gpl3
 	makedepends = gcc
 	depends = r>=2.10
-	depends = r-rpart>=3.1.8
-	depends = r-survival
-	depends = r-nnet
-	depends = r-class
 	depends = r-prodlim
 	optdepends = r-mvtnorm
 	optdepends = r-mlbench
