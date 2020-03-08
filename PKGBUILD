@@ -6,8 +6,8 @@
 
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
-pkgver=0.58.3
-pkgrel=2
+pkgver=0.60.0
+pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
@@ -18,9 +18,9 @@ options=('!emptydirs')
 
 # Fedora patches: https://pkgs.fedoraproject.org/cgit/rpms/vte291.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/vte291'
-_frepobranch='f31'
+_frepobranch='f32'
 _fpatchfile='vte291-cntnr-precmd-preexec-scroll.patch'
-_fcommit='b067afd77f6dbc789b9844dbe4b455ed77540464'
+_fcommit='c2f2db14c1a858d79c69f344650c38987a675d09'
 
 # VTE source ref
 _vtetag=${pkgver}
@@ -30,7 +30,7 @@ source=(
 	"${_fpatchfile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile}"
 )
 sha256sums=('SKIP'
-            '9e2f27aad738d11226161f066c0eefc831a3aa1ec6f043d53104382a8e752d2d')
+            '714470357ea008de821d62f60e551351d2379a4ef723410909fba3f68e7b57b0')
 
 prepare () {
 	cd "vte"
@@ -39,7 +39,7 @@ prepare () {
 }
 
 build() {
-	arch-meson vte build -D docs=true
+	arch-meson vte build -Db_lto=false -D docs=true
 	ninja -C build
 }
 
