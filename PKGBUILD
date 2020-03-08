@@ -1,15 +1,15 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=gkrellm-fchart
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="general-purpose plugin for gkrellm"
 url="https://www.cs.hmc.edu/~geoff/gkrellm-fchart.html"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gkrellm')
 source=("http://www.cs.hmc.edu/~geoff/tars/gkrellm-fchart-${pkgver}.tgz")
-md5sums=('a33540d4b681ee4b042ae19176e3e6fa')
+md5sums=('7c8a11bd724019b4f8886c2a3c111521')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
