@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/olofk/fusesoc"
 license=('GPLv3')
 conflicts=('python-fusesoc')
-provides=('python-fusesoc-git')
+provides=('python-fusesoc')
 depends=('python' 'python-edalize-git')
 
 makedepends=('git' 'python-setuptools')
