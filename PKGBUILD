@@ -1,40 +1,65 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Maintainer: peippo <christoph+aur@christophfink.com>
 
 pkgname=gnome-shell-extension-cast-to-tv
-pkgver=9
-pkgrel=1
 pkgdesc="Cast files to your Chromecast or other devices over local network"
-arch=('any')
+_gnomeextensionname="cast-to-tv@rafostar.github.com"
+
 url="https://github.com/Rafostar/$pkgname"
-license=('GPL')
-depends=('gnome-shell' 'ffmpeg')
-optdepends=(
-  'python-nautilus: Nautilus integration'
+arch=("x86_64")
+license=("GPL")
+
+pkgver=12
+pkgrel=0
+
+depends=(
+    "gnome-shell"
+    "ffmpeg"
+    "nodejs"
 )
-makedepends=('npm' 'gettext')
-source=("https://github.com/Rafostar/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b67df23d85de7feb779cda4872e54a59b521e789a7183f60f5fdd297dcc746db')
+optdepends=(
+  "python-nautilus: Nautilus integration"
+)
+makedepends=(
+    "npm"
+)
 
-build() {
-  cd "$pkgname-$pkgver"
+source=(
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/Rafostar/$pkgname/archive/v$pkgver.tar.gz"
+    "install_node_modules.patch"
+)
+sha256sums=(
+    "163f749ddf79b9d6a578644bfaaf6436f18c3711cd943c39f3358c5fc5bd615f"
+    "b24fa4e6b04cae500ec267345ac48f9c92452e0d9ad798ac28132984387b98cc"
+)
 
-  make compilemo
-  npm install
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    patch --forward --strip=1 --input "${srcdir}/install_node_modules.patch"
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  uuid="cast-to-tv@rafostar.github.com"
+    cd "${pkgname}-${pkgver}"
 
-  install -dm755 "$pkgdir/usr/share/gnome-shell/extensions/$uuid"
-  install -dm777 "$pkgdir/usr/share/gnome-shell/extensions/$uuid/config"
-  cp -r *.js *.json appIcon node_scripts webplayer "$pkgdir/usr/share/gnome-shell/extensions/$uuid/"
+    npm install --cache "${srcdir}/npm-cache"
 
-  install -dm755 "$pkgdir/usr/share/locale"
-  cp -r locale/* "$pkgdir/usr/share/locale/"
+    make install PKGDIR="${pkgdir}"
 
-  install -Dm644 "schemas/org.gnome.shell.extensions.cast-to-tv.gschema.xml" \
-    "$pkgdir/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.cast-to-tv.gschema.xml"
+    install \
+        -Ddm755 \
+        "${pkgdir}/usr/share/locale"
+    cp \
+        -aR \
+        locale/* \
+        "${pkgdir}/usr/share/locale/"
 
-  install -Dm644 nautilus/nautilus-cast-to-tv.py -t "$pkgdir/usr/share/nautilus-python/extensions/"
+    install \
+        -Dm644 \
+        "schemas/org.gnome.shell.extensions.cast-to-tv.gschema.xml" \
+        "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.cast-to-tv.gschema.xml"
+
+    install \
+        -Dm644 \
+        nautilus/nautilus-cast-to-tv.py \
+        "$pkgdir/usr/share/nautilus-python/extensions/nautilus-cast-to-tv.py"
 }
