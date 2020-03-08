@@ -47,7 +47,6 @@ build() {
     --prefix=/usr \
     --enable-shared \
     --enable-pic \
-    --enable-avresample \
     --enable-avisynth-cpp \
     --enable-vapoursynth
 
