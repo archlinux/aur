@@ -1,7 +1,7 @@
 # Maintainer: Dadoum <contact@dadoum.ml>
 pkgname=checkra1n
-pkgver=0.9.8.1
-pkgrel=3
+pkgver=0.9.8.2
+pkgrel=0
 pkgdesc="A community project to provide a high-quality semi-tethered jailbreak to all, based on the ‘checkm8’ bootrom exploit. "
 arch=('x86_64')
 url="https://checkra.in/"
@@ -29,14 +29,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://assets.checkra.in/debian/checkra1n_"$pkgver"-"$pkgrel"_amd64.deb")
-noextract=('checkra1n_"$pkgver"-"$pkgrel"_amd64.deb')
-sha256sums=('8723dd54778c6b5b8e8b17b638ef2530cd0c4c20f1c187ef8ad19ebfa2e98b11')
+source=("https://assets.checkra.in/debian/checkra1n_"$pkgver"_amd64.deb")
+noextract=('checkra1n_"$pkgver"_amd64.deb')
+sha256sums=('6fbd2f31730786200427c38dc354e727467582b48bbb772794284016fbdfa8a2')
 validpgpkeys=()
 options=('!strip')
 
 prepare() {
-	ar xf checkra1n_"$pkgver"-"$pkgrel"_amd64.deb
+	ar xf checkra1n_"$pkgver"_amd64.deb
 	rm debian-binary control.tar.gz
 }
 

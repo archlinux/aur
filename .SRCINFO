@@ -1,7 +1,7 @@
 pkgbase = checkra1n
 	pkgdesc = A community project to provide a high-quality semi-tethered jailbreak to all, based on the ‘checkm8’ bootrom exploit.
-	pkgver = 0.9.8.1
-	pkgrel = 3
+	pkgver = 0.9.8.2
+	pkgrel = 0
 	url = https://checkra.in/
 	arch = x86_64
 	license = unknown
@@ -22,10 +22,10 @@ pkgbase = checkra1n
 	depends = libirecovery-git>=1.0.0
 	depends = usbmuxd>=1.1.0
 	replaces = checkra1n-ubuntu-bin
-	noextract = checkra1n_"$pkgver"-"$pkgrel"_amd64.deb
+	noextract = checkra1n_"$pkgver"_amd64.deb
 	options = !strip
-	source = https://assets.checkra.in/debian/checkra1n_0.9.8.1-3_amd64.deb
-	sha256sums = 8723dd54778c6b5b8e8b17b638ef2530cd0c4c20f1c187ef8ad19ebfa2e98b11
+	source = https://assets.checkra.in/debian/checkra1n_0.9.8.2_amd64.deb
+	sha256sums = 6fbd2f31730786200427c38dc354e727467582b48bbb772794284016fbdfa8a2
 
 pkgname = checkra1n
 
