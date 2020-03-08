@@ -1,6 +1,6 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN
-	pkgver = r73.10a969f
+	pkgver = r78.8e3d9f9
 	pkgrel = 1
 	url = https://github.com/linuxmint/warp
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = warpinator-git
 	makedepends = git
 	makedepends = meson
 	makedepends = python-grpcio-tools
+	makedepends = gobject-introspection
 	depends = gtk3
 	depends = python-gobject
 	depends = python-grpcio
