@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rviz
 	pkgdesc = ROS - 3D visualization tool for ROS.
 	pkgver = 1.13.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rviz
 	arch = i686
 	arch = x86_64
@@ -42,8 +42,6 @@ pkgbase = ros-melodic-rviz
 	makedepends = tinyxml2
 	makedepends = urdfdom-headers
 	makedepends = qt5-base
-	makedepends = python2-pyqt5
-	makedepends = python2-sip-pyqt5
 	depends = ros-melodic-std-srvs
 	depends = ros-melodic-rosbag
 	depends = ros-melodic-tf

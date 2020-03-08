@@ -1,12 +1,10 @@
-# Script generated with import_catkin_packages.py.
-# For more information: https://github.com/bchretien/arch-ros-stacks.
 pkgdesc="ROS - 3D visualization tool for ROS."
 url='https://wiki.ros.org/rviz'
 
 pkgname='ros-melodic-rviz'
 pkgver='1.13.7'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -47,8 +45,6 @@ makedepends=(
 	tinyxml2
 	urdfdom-headers
 	qt5-base
-        python2-pyqt5
-        python2-sip-pyqt5
 )
 
 ros_depends=(
