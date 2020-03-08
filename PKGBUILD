@@ -11,7 +11,7 @@ checkdepends=()
 install=
 changelog=
 source=("https://raw.githubusercontent.com/AlexVIM1/sequoia/master/${_pkgname}-${pkgver}-${arch}.tar.gz")
-md5sums=('80d7634027a7054c0e82857bd31c1d7a')
+md5sums=('1a7acf454f9582cf2ebef30b985e8b79')
 build() {
     cd ${srcdir}/build
     qmake
@@ -29,6 +29,3 @@ package() {
 	install -Dm755 seuqoia-icon-opened.png "${pkgdir}/usr/share/pixmaps"
 	install -Dm755 sequoia-redactor.desktop "${pkgdir}/usr/share/applications"
 }
-md5sums=('8ddf8c16c86e4c13ed7442d7f7a00cf8')
-md5sums=('8ddf8c16c86e4c13ed7442d7f7a00cf8')
-md5sums=('1a7acf454f9582cf2ebef30b985e8b79')
