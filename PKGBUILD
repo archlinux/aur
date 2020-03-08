@@ -47,6 +47,8 @@ makedepends=(
 	tinyxml2
 	urdfdom-headers
 	qt5-base
+        python2-pyqt5
+        python2-sip-pyqt5
 )
 
 ros_depends=(
