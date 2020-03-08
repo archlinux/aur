@@ -22,8 +22,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/hercules"
-  mkdir -p "${srcdir}/go"
-  GOPATH="${srcdir}/go" make
+  make
 }
 
 package() {
