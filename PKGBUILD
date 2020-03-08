@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erikdubois@gmail.com>
 pkgname=gitfiend
 _pkgname=GitFiend
-pkgver=0.21.3
+pkgver=0.21.4
 pkgrel=1
 pkgdesc='A Git client designed for humans'
 arch=('x86_64')
