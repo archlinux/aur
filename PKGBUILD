@@ -8,7 +8,7 @@
 # Contributor:  Gordin <9ordin @t gmail.com>
 
 pkgname=nautilus-dropbox
-pkgver=2019.02.14
+pkgver=2020.03.04
 pkgrel=4
 pkgdesc="Dropbox for Linux - Nautilus extension"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=('nautilus' 'dropbox' 'libnotify' 'hicolor-icon-theme')
 makedepends=('python' 'python-docutils' 'python-gobject' 'gdk-pixbuf2')
 options=('!libtool' '!emptydirs')
 source=("https://linux.dropbox.com/packages/$pkgname-$pkgver.tar.bz2")
-sha256sums=('ae0c4979f2cae9b86dfc7a645047efdacca4c8f70b603e284294795d083ecf27')
+sha256sums=('f3704103e8c646ec48cd9daf9af2183c6b492c59edf93d8768c14861cb404cca')
 
 build() {
     cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = nautilus-dropbox
 	pkgdesc = Dropbox for Linux - Nautilus extension
-	pkgver = 2019.02.14
+	pkgver = 2020.03.04
 	pkgrel = 4
 	url = https://www.dropbox.com/
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = nautilus-dropbox
 	depends = hicolor-icon-theme
 	options = !libtool
 	options = !emptydirs
-	source = https://linux.dropbox.com/packages/nautilus-dropbox-2019.02.14.tar.bz2
-	sha256sums = ae0c4979f2cae9b86dfc7a645047efdacca4c8f70b603e284294795d083ecf27
+	source = https://linux.dropbox.com/packages/nautilus-dropbox-2020.03.04.tar.bz2
+	sha256sums = f3704103e8c646ec48cd9daf9af2183c6b492c59edf93d8768c14861cb404cca
 
 pkgname = nautilus-dropbox
 
