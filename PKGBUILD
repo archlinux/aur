@@ -34,7 +34,7 @@ url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
 md5sums=('457c948807ecd47c4c4e692485513064'
-         'c6c8f30db2279e0e76c8ae0482081438')
+         'de6e765583be1d89345a2b9c796ccbb0')
 
 prepare() {
 ## unpack wine
@@ -45,7 +45,7 @@ rm ${_srcdir}/proton_dist.tar.gz
 patch ${_srcdir}/proton patches/distlock-extract-defaultpfx.patch >/dev/null
 ## setup paths
 #sed -i "s|self.path(\"user_settings.py\")|\"/${_configfile}\"|" ${_srcdir}/proton
-sed -i "s|_proton=CHANGEME|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
+sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
 sed -i "s|self.path(\"dist/share/default_pfx/\")|\"/${_pfxdir}/\"|" ${_srcdir}/proton
 }
 
