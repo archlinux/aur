@@ -3,7 +3,7 @@
 pkgname=lets-bin
 _pkgname=lets
 
-pkgver=0.0.16
+pkgver=0.0.17
 pkgrel=1
 arch=("x86_64" "i686")
 pkgdesc="CLI task runner - a better alternative to make"
@@ -15,8 +15,8 @@ source_x86_64=("https://github.com/lets-cli/$_pkgname/releases/download/v$pkgver
 source_i686=("https://github.com/lets-cli/$_pkgname/releases/download/v$pkgver/lets_Linux_i386.tar.gz")
 provides=('lets')
 
-md5sums_x86_64=('96232539bd1feeb24867a01174711712')
-md5sums_i686=('fae08b9906b5cca13771cbb9f6dbed9e')
+md5sums_x86_64=('0f4e56ce9faa19244d2a6d022e1185cd')
+md5sums_i686=('0d4501e701028e314bdb0b55d6d63bfc')
 
 package() {
     install -Dm755 "$_pkgname" "$pkgdir/usr/local/bin/$_pkgname"
