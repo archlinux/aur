@@ -4,13 +4,12 @@
 _plug=kagefunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r47.8d3f377
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/Irrational-Encoding-Wizardry/kagefunc'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-mvsfunc-git'
+depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-fvsfunc-git'
          'vapoursynth-plugin-retinex-git'
          'vapoursynth-plugin-vsutil-git'
