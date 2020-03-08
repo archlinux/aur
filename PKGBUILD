@@ -1,27 +1,32 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Taekyung Kim <Taekyung.Kim.Maths@gmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=caret
-_cranver=6.0-80
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-caret
+_cranver=6.0-85
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Classification and Regression Training"
-arch=('x86_64')
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' 'r-ggplot2' 'r-foreach' 'r-plyr' 'r-modelmetrics>=1.1.0' 'r-reshape2' 'r-recipes>=0.0.1' 'r-withr>=2.0.0')
+license=(GPL2 GPL3)
+depends=('r>=3.2.0' r-ggplot2 r-foreach r-plyr 'r-modelmetrics>=1.1.0' r-reshape2 'r-recipes>=0.1.4' 'r-withr>=2.0.0' r-proc)
+makedepends=(gcc)
+optdepends=(r-bradleyterry2 r-e1071 r-earth r-fastica r-gam r-ipred r-kernlab r-knitr r-klaR r-ellipse r-mda r-mlbench r-mlmetrics r-nnet r-party r-pls r-proxy r-randomforest r-rann r-spls r-pamr r-superpc r-cubist r-testthat r-rpart r-dplyr)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('2326a6bcc90ce1b43528cc414f3becb6')
 
-optdepends=('r-bradleyterry2' 'r-e1071' 'r-earth' 'r-fastica' 'r-gam' 'r-ipred' 'r-kernlab' 'r-knitr' 'r-klar' 'r-ellipse' 'r-mda' 'r-mlbench' 'r-mlmetrics' 'r-party' 'r-pls' 'r-proc' 'r-proxy' 'r-randomforest' 'r-rann' 'r-spls' 'r-subselect' 'r-pamr' 'r-superpc' 'r-cubist' 'r-testthat' 'r-dplyr')
+build() {
+  cd "${srcdir}"
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('997df8c6400ef477f83a905977e40a1b')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
