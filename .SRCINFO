@@ -1,0 +1,38 @@
+pkgbase = r-usethis
+	pkgdesc = Automate Package and Project Setup
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=usethis
+	arch = any
+	license = GPL3
+	depends = r>=3.2
+	depends = r-clipr>=0.3.0
+	depends = r-clisymbols
+	depends = r-crayon
+	depends = r-curl>=2.7
+	depends = r-desc
+	depends = r-fs>=1.3.0
+	depends = r-gh
+	depends = r-git2r>=0.23
+	depends = r-glue>=1.3.0
+	depends = r-purrr
+	depends = r-rlang
+	depends = r-rprojroot>=1.2
+	depends = r-rstudioapi
+	depends = r-whisker
+	depends = r-withr
+	depends = r-yaml
+	optdepends = r-covr
+	optdepends = r-knitr
+	optdepends = r-magick
+	optdepends = r-pkgdown
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-spelling
+	optdepends = r-styler
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/usethis_1.5.1.tar.gz
+	md5sums = 105ca47d3738ffa63f676ce97593a356
+
+pkgname = r-usethis
+
