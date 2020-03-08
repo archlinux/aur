@@ -6,13 +6,13 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.34.2
+pkgver=3.36.0.1
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.58.0' 'gsettings-desktop-schemas' 'dconf')
+depends=('vte3-notification>=0.60.0' 'gsettings-desktop-schemas' 'dconf')
 makedepends=('intltool' 'itstool' 'docbook-xsl' 'libnautilus-extension' 
              'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 optdepends=('gconf: for gnome-terminal-migration'
@@ -23,8 +23,8 @@ options=('!emptydirs')
 groups=('gnome')
 # Fedora patches: http://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='http://src.fedoraproject.org/rpms/gnome-terminal'
-_frepobranch='f31'
-_fcommit='c64c5b74e173e7c00fa742273e1f03398b8abb74'
+_frepobranch='f32'
+_fcommit='0a92aafeb1c4d1148e3ff98484edbba63832c4bb'
 _fpatchfile1='0001-build-Don-t-treat-warnings-as-errors.patch'
 _fpatchfile2='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
@@ -34,9 +34,9 @@ source=(
 	"${_fpatchfile2}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile2}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
 )
-sha256sums=('3bd723f4058ec014da4715db4181b7d73eccc797b85ad5e6236996951c01803d'
+sha256sums=('8b31c1ce622031b860aef6dd9295e1cac89edcc58c27b925543c9a17dffb40e2'
             '672615edf1f8e5ede72bdfa2e671ad35d355a1df64f349762899ad7bc7254769'
-            'e0f021894063cc4e0eb667079c03a848c95e9584fc43a05077e827f7c34a3b03'
+            '320adda8d4d2fde25168b3b9bbfe281f42d9015b1ce528fb735fcb3cdf358ceb'
             'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9')
 
 prepare () {
