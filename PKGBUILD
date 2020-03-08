@@ -3,7 +3,7 @@
 pkgbase=arc-gtk-theme-jnsh-git
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme-jnsh-git' 'arc-solid-gtk-theme-jnsh-git')
-pkgver=r988.7991991
+pkgver=r1022.c1f2175
 pkgrel=1
 pkgdesc="A flat theme suite with transparent elements. Fork maintained by jnsh."
 arch=('any')
@@ -24,7 +24,7 @@ build() {
   cd "${_pkgname}"
   ./autogen.sh --prefix=/usr \
     --with-cinnamon=4.4 \
-    --with-gnome-shell=3.34 \
+    --with-gnome-shell=3.36 \
     --with-gtk3=3.24
   make
 
@@ -34,7 +34,7 @@ build() {
   cd "${_pkgname}-solid"
   ./autogen.sh --prefix=/usr \
     --with-cinnamon=4.4 \
-    --with-gnome-shell=3.34 \
+    --with-gnome-shell=3.36 \
     --with-gtk3=3.24 \
     --disable-transparency
   make
