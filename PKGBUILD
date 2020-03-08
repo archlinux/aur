@@ -5,7 +5,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=logrotate-selinux
-pkgver=3.15.1
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="Rotates system logs automatically with SELinux support"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
 backup=('etc/logrotate.conf')
 source=("https://github.com/logrotate/logrotate/releases/download/${pkgver}/${pkgname/-selinux}-${pkgver}.tar.xz"{,.asc}
         'logrotate.conf')
-md5sums=('afe109afea749c306ff489203fde6beb'
+md5sums=('faf729e0e24bfaafaa677bc6deb46ed8'
          'SKIP'
          '94dae4d3eded2fab9ae879533d3680db')
 validpgpkeys=('992A96E075056E79CD8214F9873DB37572A37B36')
