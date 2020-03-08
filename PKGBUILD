@@ -14,7 +14,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
 depends=('r>=3.2.0' r-ggplot2 r-foreach r-plyr 'r-modelmetrics>=1.1.0' r-reshape2 'r-recipes>=0.1.4' 'r-withr>=2.0.0' r-proc)
 makedepends=(gcc)
-optdepends=(r-bradleyterry2 r-e1071 r-earth r-fastica r-gam r-ipred r-kernlab r-knitr r-klaR r-ellipse r-mda r-mlbench r-mlmetrics r-nnet r-party r-pls r-proxy r-randomforest r-rann r-spls r-pamr r-superpc r-cubist r-testthat r-rpart r-dplyr)
+optdepends=(r-bradleyterry2 r-e1071 r-earth r-fastica r-gam r-ipred r-kernlab r-knitr r-klaR r-ellipse r-mda r-mlbench r-mlmetrics r-party r-pls r-proxy r-randomforest r-rann r-spls r-pamr r-superpc r-cubist r-testthat r-rpart r-dplyr)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('2326a6bcc90ce1b43528cc414f3becb6')
 

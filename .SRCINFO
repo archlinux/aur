@@ -30,7 +30,6 @@ pkgbase = r-caret
 	optdepends = r-mda
 	optdepends = r-mlbench
 	optdepends = r-mlmetrics
-	optdepends = r-nnet
 	optdepends = r-party
 	optdepends = r-pls
 	optdepends = r-proxy
