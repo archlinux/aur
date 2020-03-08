@@ -1,17 +1,8 @@
 #Maintainer: laomocode <3344907598@qq.com>
-pkgname=firefox-china-extra-extensions-tabtweak
-pkgver=5.68
-_downpkgver=73.0
-_firefoxname=firefox
+pkgname=firefox-china-extra-extensions-meta
+pkgver=1.0
 pkgrel=1
-pkgdesc="火狐中国版浏览器的“标签页优化”插件"
+pkgdesc="火狐中国版浏览器的插件元包"
 license=('MPL')
-depends=('firefox')
+depends=('firefox-china-extra-extensions-cehomepage' 'firefox-china-extra-extensions-china-newtab' 'firefox-china-extra-extensions-cpmanager' 'firefox-china-extra-extensions-easyscreenshot' 'firefox-china-extra-extensions-tabtweak')
 arch=('any')
-conflicts=('firefox-chinese' 'firefox-china-extra')
-source=("https://download-ssl.firefox.com.cn/releases/firefox/${_downpkgver}/zh-CN/Firefox-latest-x86_64.tar.bz2")
-sha256sums=("89369fd22f38e6027d74dc8d00839bf4b72046a078f593370c097d275c235c52")
-package(){
-    mkdir -p ${pkgdir}/usr/lib/${_firefoxname}/distribution/extensions/
-    cp ${srcdir}/firefox/distribution/extensions/tabtweak@mozillaonline.com.xpi ${pkgdir}/usr/lib/${_firefoxname}/distribution/extensions/tabtweak@mozillaonline.com.xpi
-}
