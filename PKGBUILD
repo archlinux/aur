@@ -2,16 +2,17 @@
 # Maintainer: Patrick Schratz <patrick.schratz@gmail.com
 # Contributor: Kaiting Chen <kaitocracy@gmail.com>
 # Contributor: tocer <tocer.deng@gmail.com>
+# Contributor: Paul Hentschel (hpmachining) <aur at hpminc dot com>
 
 pkgname=v8-3.14
 pkgver=3.14.5
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast and modern javascript engine (old 3.14 version required R package 'V8')'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/v8'
 license=('BSD')
 depends=('gcc-libs')
-makedepends=('python2' 'gyp-git')
+makedepends=('python2' 'gyp')
 source=("http://commondatastorage.googleapis.com/chromium-browser-official/v8-$pkgver.tar.bz2"
 '0001_kfreebsd.patch'
 '0002_mips.patch'
@@ -69,7 +70,7 @@ build() {
 
    # keep old ABI to prevent symbol changes due to GCC5 transition
    # https://wiki.debian.org/GCC5
-   export CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=c++98 -Wno-class-memaccess -Wno-cast-function-type"
+   export CXXFLAGS="${CXXFLAGS} -fno-delete-null-pointer-checks -std=c++98 -Wno-class-memaccess -Wno-cast-function-type -Wno-error=stringop-truncation -Wno-error=array-bounds"
 
    export GYPFLAGS="-Dhost_arch=$ARCH -DOS=linux"
 

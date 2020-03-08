@@ -1,13 +1,13 @@
 pkgbase = v8-3.14
 	pkgdesc = A fast and modern javascript engine (old 3.14 version required R package V8)
 	pkgver = 3.14.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://code.google.com/p/v8
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python2
-	makedepends = gyp-git
+	makedepends = gyp
 	depends = gcc-libs
 	provides = v8
 	conflicts = v8
