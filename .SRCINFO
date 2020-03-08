@@ -1,14 +1,50 @@
-pkgbase = r-cardata
-	pkgdesc = Datasets to Accompany J. Fox and S. Weisberg, An R Companion to Applied Regression, Third Edition, Sage (forthcoming).
-	pkgver = 3.0.2
+pkgbase = r-caret
+	pkgdesc = Classification and Regression Training
+	pkgver = 6.0.85
 	pkgrel = 1
-	url = https://cran.r-project.org/package=${_cranname}
+	url = https://cran.r-project.org/package=caret
+	arch = i686
 	arch = x86_64
 	license = GPL2
 	license = GPL3
-	depends = r>=3.0
-	source = https://cran.r-project.org/src/contrib/carData_3.0-2.tar.gz
-	md5sums = c21eb4fe8866bae243899294abd851b1
+	makedepends = gcc
+	depends = r>=3.2.0
+	depends = r-ggplot2
+	depends = r-foreach
+	depends = r-plyr
+	depends = r-modelmetrics>=1.1.0
+	depends = r-reshape2
+	depends = r-recipes>=0.1.4
+	depends = r-withr>=2.0.0
+	depends = r-proc
+	optdepends = r-bradleyterry2
+	optdepends = r-e1071
+	optdepends = r-earth
+	optdepends = r-fastica
+	optdepends = r-gam
+	optdepends = r-ipred
+	optdepends = r-kernlab
+	optdepends = r-knitr
+	optdepends = r-klaR
+	optdepends = r-ellipse
+	optdepends = r-mda
+	optdepends = r-mlbench
+	optdepends = r-mlmetrics
+	optdepends = r-nnet
+	optdepends = r-party
+	optdepends = r-pls
+	optdepends = r-proxy
+	optdepends = r-randomforest
+	optdepends = r-rann
+	optdepends = r-spls
+	optdepends = r-pamr
+	optdepends = r-superpc
+	optdepends = r-cubist
+	optdepends = r-testthat
+	optdepends = r-rpart
+	optdepends = r-dplyr
+	source = https://cran.r-project.org/src/contrib/caret_6.0-85.tar.gz
+	md5sums = 2326a6bcc90ce1b43528cc414f3becb6
 
-pkgname = r-cardata
+pkgname = r-caret
 
