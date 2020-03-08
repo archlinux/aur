@@ -1,13 +1,13 @@
 # Maintainer: Tyler Johnson <tejohnso2 at popular google mail domain>
 pkgname=slitherling
-pkgver=9ef3e72
-pkgrel=3
+pkgver=d85671f
+pkgrel=1
 pkgdesc="A simple snake game. Feed your snake with fruit. Arrow keys, VIM keys, or spacebar (easy mode)."
 arch=('i686' 'x86_64')
 license=('GPL-3.0')
 depends=('sfml')
 makedepends=('gcc>=9.0.0' 'cmake>=3.11' 'ninja>=1.10')
-epoch=1583631779
+epoch=1583638467
 build() {
         cd ..
 	mkdir -p build
