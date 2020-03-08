@@ -11,70 +11,70 @@ pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support for non systemd setups"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 
-arch=('i686' 'x86_64')
-license=('GPL')
+arch=("i686" "x86_64")
+license=("GPL")
 
-depends=('libdrm' 'pango' 'elogind')
-makedepends=('docbook-xsl')
-optdepends=('ttf-dejavu')
+depends=("libdrm" "pang" "elogind")
+makedepends=("docbook-xsl")
+optdepends=("ttf-dejavu")
 
-options=('!libtool' '!emptydirs')
+options=("!libtool" "!emptydirs")
 
-provides=('plymouth')
-conflicts=('plymouth' 'plymouth-git')
-replaces=('plymouth' 'plymouth-git')
-backup=('etc/plymouth/plymouthd.conf')
+provides=("plymouth")
+conflicts=("plymouth" "plymouth-git")
+replaces=("plymouth" "plymouth-git")
+backup=("etc/plymouth/plymouthd.conf")
 
 source=("http://www.freedesktop.org/software/${_pkgname}/releases/${_pkgname}-${pkgver}.tar.xz"
-        'arch-logo.png'
-	'plymouth.encrypt_hook'
-	'plymouth.encrypt_install'
-	'plymouth-start.path'
-	'plymouth.initcpio_hook'
-	'plymouth.initcpio_install'
-	'plymouth-quit.service.in.patch'
-	'plymouth-update-initrd.patch')
+        "arch-logo.png"
+	"plymouth.encrypt_hook"
+	"plymouth.encrypt_install"
+	"plymouth-start.path"
+	"plymouth.initcpio_hook"
+	"plymouth.initcpio_install"
+	"plymouth-quit.service.in.patch"
+	"plymouth-update-initrd.patch")
 
-md5sums=('4efa5551d230165981b105e7c6a50aa7'
-         '65fa2763d5c9bb9f80973ea5e6e3db3e'
-         'fbdd5d04e3089a214b9056357434df86'
-         '65eb269910f1b81e3f0970af456394ca'
-         '672ad913e2383483bcb4599a0a6bee48'
-         '32f04fdbd1eb94ade30d1e63fdcdd9b5'
-         'a6dca3d57fd38b875d0520ec033dbf66'
-         '165a39dbedcc6e123c8ca05d5b4b2e25'
-         '0357775c16b5f90f1af485e6a4c80a9e')
+md5sums=("4efa5551d230165981b105e7c6a50aa7"
+         "65fa2763d5c9bb9f80973ea5e6e3db3e"
+         "fbdd5d04e3089a214b9056357434df86"
+         "65eb269910f1b81e3f0970af456394ca"
+         "672ad913e2383483bcb4599a0a6bee48"
+         "32f04fdbd1eb94ade30d1e63fdcdd9b5"
+         "a6dca3d57fd38b875d0520ec033dbf66"
+         "165a39dbedcc6e123c8ca05d5b4b2e25"
+         "0357775c16b5f90f1af485e6a4c80a9e")
 
 prepare() {
-	cd "$srcdir"/${_pkgname}-${pkgver}
-	patch -p1 -i $srcdir/plymouth-update-initrd.patch
-	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
+  cd "$srcdir"/${_pkgname}-${pkgver}
+  patch -p1 -i $srcdir/plymouth-update-initrd.patch
+  patch -p1 -i $srcdir/plymouth-quit.service.in.patch
 }
 
 build() {
-	cd "$srcdir"/${_pkgname}-${pkgver}
+  cd "$srcdir"/${_pkgname}-${pkgver}
 
-	LDFLAGS="$LDFLAGS -ludev" ./configure --prefix=/usr \
-		--exec-prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--libdir=/usr/lib \
-		--libexecdir=/usr/lib \
-		--sbindir=/usr/bin \
-		--enable-drm \
-		--enable-tracing \
-		--enable-pango \
-		--enable-gtk=no \
-		--with-release-file=/etc/os-release \
-		--with-logo=/usr/share/plymouth/arch-logo.png \
-		--with-background-color=0x000000 \
-		--with-background-start-color-stop=0x000000 \
-		--with-background-end-color-stop=0x4D4D4D \
-		--without-rhgb-compat-link \
-		--without-system-root-install \
-		--disable-systemd-integration
+  LDFLAGS="$LDFLAGS -ludev" ./configure --prefix=/usr \
+      --exec-prefix=/usr \
+      --sysconfdir=/etc \
+      --localstatedir=/var \
+      --libdir=/usr/lib \
+      --libexecdir=/usr/lib \
+      --sbindir=/usr/bin \
+      --enable-drm \
+      --enable-tracing \
+      --enable-pango \
+      --enable-gtk=no \
+      --with-release-file=/etc/os-release \
+      --with-logo=/usr/share/plymouth/arch-logo.png \
+      --with-background-color=0x000000 \
+      --with-background-start-color-stop=0x000000 \
+      --with-background-end-color-stop=0x4D4D4D \
+      --without-rhgb-compat-link \
+      --without-system-root-install \
+      --disable-systemd-integration
 
-	make
+  make
 }
 
 package() {
