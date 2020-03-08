@@ -1,21 +1,20 @@
 pkgbase = octopus
 	pkgdesc = Real-space Time-Dependent Density Functional Theory code
-	pkgver = 9.1
+	pkgver = 9.2
 	pkgrel = 1
 	url = https://octopus-code.org
 	arch = x86_64
 	license = LGPL
 	checkdepends = procps-ng
 	makedepends = gcc-fortran
-	makedepends = sed
-	depends = scalapack
+	depends = elpa
 	depends = gd
 	depends = gsl
 	depends = libxc
 	depends = libvdwxc
 	depends = perl
-	source = https://gitlab.com/octopus-code/octopus/-/archive/9.1/octopus-9.1.tar.bz2
-	sha256sums = 2d3322855d38ec417418b7293df87469c7c85a428f2de46238008f0d1c07ee32
+	source = https://gitlab.com/octopus-code/octopus/-/archive/9.2/octopus-9.2.tar.bz2
+	sha256sums = 20bed6d1450205373e1500a38110d911bca4f38aa154c26ed877821d9eae0d1e
 
 pkgname = octopus
 
