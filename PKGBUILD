@@ -4,7 +4,7 @@ url='https://wiki.ros.org/turtlebot3_teleop'
 pkgname='ros-melodic-turtlebot3-teleop'
 pkgver='1.2.2'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('Apache-2.0')
 
 ros_makedepends=(
@@ -27,8 +27,15 @@ depends=(
 )
 
 _dir="turtlebot3-${pkgver}/turtlebot3_teleop"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3/archive/${pkgver}.tar.gz")
-sha256sums=('c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ROBOTIS-GIT/turtlebot3/archive/${pkgver}.tar.gz"
+	"python3-compatibility.patch"::"https://github.com/ROBOTIS-GIT/turtlebot3/commit/ddca617172a3549a3077682cd2cf7dc377616e01.diff")
+sha256sums=('c652438109ea99008f6d2e950e6cb7f6e67653b8daa1079c825b77d9f52a4e1d'
+            '67678a5af67a9cc2753235fbc78cc2cb57841b63884b5b35599ea32f382fcc89')
+
+prepare() {
+	cd ${srcdir}/turtlebot3-${pkgver}
+	patch -p1 --input="${srcdir}/python3-compatibility.patch"
+}
 
 build() {
 	# Use ROS environment variables.
@@ -48,9 +55,6 @@ build() {
 		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
 		-DCMAKE_INSTALL_PREFIX=/opt/ros/melodic \
 		-DPYTHON_EXECUTABLE=/usr/bin/python3 \
-		-DPYTHON_INCLUDE_DIR=/usr/include/python3.7m \
-		-DPYTHON_LIBRARY=/usr/lib/libpython3.7m.so \
-		-DPYTHON_BASENAME=.cpython-37m \
 		-DSETUPTOOLS_DEB_LAYOUT=OFF
 	make
 }
