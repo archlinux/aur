@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.4
-_minor=22
-_rtver=13
+_minor=24
+_rtver=15
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -64,6 +64,9 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+# Some patches for BFQ conflict with patches for BFQ-dev.
+# To use linux-rt-bfq smoothly apply bfq-reverts before bfq-dev patch. 
+# Otherwise the kernel will not compile.
 _bfq_rev_path="bfq-reverts-sep"
 _bfq_rev_patch="0001-Revert-block-bfq-do-not-plug-I-O-for-bfq_queues-with.patch"
 _bfq_path="bfq-dev-lucjan"
@@ -342,9 +345,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('7003f1f2d57baa9aabc52fdcfaac9456fb4e3fe1e6edc46a4016e561a1d7be4440ce10d2d45366125f950dfd8147e51d9bbabdcf34701f95528a4f8f68a32c81'
+sha512sums=('1d30040ee4992156cc0436e1782fee1c1b2fbb50462ac29429be141eac5f6c7e0a124db335fcd42c5d73f03b564a5903c3de73afd867e0c923a9f1cb88273200'
             'SKIP'
-            'b06cb2994866d96715a42cede439cf4fd8cc5ab5d145d67f5ba2d080f43d11c5f2f0a8e95f21aa3e4ace36213aeff5aed24b6fc1084bbac0ddacb0f0f40eea50'
+            'db20d208aaec2b564ea5319fcdb99924c79c50b12d29bbafd9595155b6af7629838597ae657f6ffb6637bd8852bd500ae471d0b05065d14bb6cab25edc8445d4'
             'SKIP'
             '3e5a8fed7befb0932256a5b3c8c67c91ed1fd0873bd332b39886be6d1fd0b350fa8ac3c6e71df838f4a8d4014262c800f7731f0c314272ff9ee11e6933a04583'
             '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
