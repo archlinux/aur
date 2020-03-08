@@ -15,7 +15,9 @@ pkgbase = ffms2-qyot27-git
 	provides = ffms2
 	provides = libffms2.so
 	provides = vapoursynth-plugin-ffms2
+	provides = vapoursynth-plugin-ffms2-git
 	provides = avisynth-plugin-ffms2
+	provides = avisynth-plugin-ffms2-git
 	conflicts = ffms2
 	source = git+https://github.com/qyot27/ffms2_cplugin.git#branch=patches_plusvp9av1
 	sha256sums = SKIP

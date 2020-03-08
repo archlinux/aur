@@ -16,7 +16,9 @@ makedepends=('git')
 provides=('ffms2'
           'libffms2.so'
           'vapoursynth-plugin-ffms2'
+          'vapoursynth-plugin-ffms2-git'
           'avisynth-plugin-ffms2'
+          'avisynth-plugin-ffms2-git'
           )
 conflicts=('ffms2')
 source=('git+https://github.com/qyot27/ffms2_cplugin.git#branch=patches_plusvp9av1')
