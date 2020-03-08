@@ -1,4 +1,37 @@
 
+uuu_1.3.134 / 2020-02-17
+========================
+
+  * fix spl qxp\qm download failure
+  * Fix for arguments order for script ( -b option )
+
+uuu_1.3.130 / 2020-01-27
+========================
+
+  * 8DXL can download image
+  * print extra line for no verbose mode
+  * sd support burn difference uboot
+
+uuu_1.3.126 / 2020-01-15
+========================
+
+  * Added i.MX8DXL PID/VID
+
+1.3.124 / 2019-12-12
+====================
+
+  * Add i.MX865 PID information
+  * fix show 99% when complete download
+  * libuuu: usb hotplug: configurable usb polling period (-pp)
+  * sdp: bootcmd: add support for --dcdaddr
+  * sdp: clear dcd flag (jump/boot on close devices)
+  * Fix miss ucmd in nand built script
+  * change the nand lst for nandbcb support
+  * use system time instead of tick as timesample
+  * add missed copyright for http.cpp
+  * fix build error with openssl 1.1
+  * Add support for fastboot Continue feature
+
 uuu_1.3.102 / 2019-10-28
 ========================
 
