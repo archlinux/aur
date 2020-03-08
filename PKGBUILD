@@ -4,8 +4,8 @@
 
 pkgname=('pamac-aur-git' 'pamac-aur-tray-appindicator-git')
 _pkgname=pamac
-pkgver=9.4.0rc2.r6.g7d8d397
-_pkgver=9.3.0
+pkgver=9.4.0rc3.r0.g6adea8f
+_pkgver=9.4.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -26,7 +26,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -c2-48
 }
 
 prepare() {
