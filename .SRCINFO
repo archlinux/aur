@@ -1,11 +1,12 @@
 pkgbase = r-tidyselect
-	pkgdesc = Select from a set of strings.
+	pkgdesc = Select from a Set of Strings
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/tidyselect/index.html
+	url = https://cran.r-project.org/package=tidyselect
 	arch = i686
 	arch = x86_64
-	license = GPL-3
+	license = GPL3
+	makedepends = gcc
 	depends = r>=3.2
 	depends = r-ellipsis
 	depends = r-glue>=1.3.0
@@ -21,7 +22,7 @@ pkgbase = r-tidyselect
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-withr
-	source = http://cran.r-project.org/src/contrib/tidyselect_1.0.0.tar.gz
+	source = https://cran.r-project.org/src/contrib/tidyselect_1.0.0.tar.gz
 	md5sums = dfb73f5fc014d8ea96a66d4c3776ae0b
 
 pkgname = r-tidyselect
