@@ -1,0 +1,12 @@
+pkgbase = pipeline
+	pkgdesc = A utility to make building up a pipeline of shell commands easier, especially when doing data exploration.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://github.com/codekitchen/pipeline
+	arch = x86_64
+	license = MIT
+	source = pipeline-1.5.tar.gz::https://github.com/codekitchen/pipeline/archive/v1.5.tar.gz
+	md5sums = 30591873fb101b940f5058390388b1df
+
+pkgname = pipeline
+
