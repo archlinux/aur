@@ -2,41 +2,41 @@
 
 pkgname=zettlr
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
-url="https://www.zettlr.com"
+url='https://www.zettlr.com'
 license=('GPL')
 depends=(electron ttf-webhostinghub-glyphs otf-crimson-text)
 makedepends=(yarn git)
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-source=($pkgname::git+https://github.com/Zettlr/Zettlr.git#tag=v$pkgver)
+source=("$pkgname"::git+https://github.com/Zettlr/Zettlr.git#tag=v"$pkgver")
 sha1sums=('SKIP')
 
 prepare() {
-    cd $srcdir/$pkgname
+    cd "$srcdir/$pkgname"
     
     # We don't build electron, and doesn't depends on postinstall script
     sed '/"electron"/d;/postinstall/d' -i package.json
 
     # Add some close-to-complete translations
-    cd $srcdir/$pkgname/scripts
+    cd "$srcdir/$pkgname"/scripts
     sed "s/'fr-FR'/'fr-FR','ja-JP','zh-CN','es-ES','ru-RU'/" -i refresh-language.js
 }
 
 build() {
-    cd $srcdir/$pkgname
-    NODE_ENV= yarn install --pure-lockfile --no-bin-links --cache-folder $srcdir/cache --link-folder $srcdir/link
+    cd "$srcdir/$pkgname"
+    NODE_ENV='' yarn install --pure-lockfile --no-bin-links --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
     yarn less
     yarn handlebars
     yarn lang:refresh
     NODE_ENV=production node node_modules/webpack/bin/webpack.js
     yarn reveal:build
 
-    cd $srcdir/$pkgname/source
-    yarn install --pure-lockfile --cache-folder $srcdir/cache
+    cd "$srcdir/$pkgname/source"
+    yarn install --pure-lockfile --cache-folder "$srcdir/cache"
 
     # Aggressively remove binary and addins in node_modules
     find . -type d -name "fonts" -exec rm -rfv {} +
@@ -56,24 +56,24 @@ build() {
 }
 
 package() {
-    local _destdir=usr/lib/$pkgname
+    local _destdir=usr/lib/"$pkgname"
     install -dm755 "$pkgdir/$_destdir"
 
-    cd $srcdir/$pkgname/source
+    cd "$srcdir/$pkgname/source"
     sed "s,$srcdir/$pkgname/source,$_destdir,g" -i renderer/assets/vue/vue-sidebar.js
-    cp -r --no-preserve=ownership --preserve=mode * "$pkgdir/$_destdir/"
+    cp -r --no-preserve=ownership --preserve=mode ./* "$pkgdir/$_destdir/"
 
-    install -Dm755 /dev/stdin $pkgdir/usr/bin/$pkgname <<END
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
 exec electron /$_destdir "\$@"
 END
 
-    for px in 16 24 32 48 64 96 128 256; do
-        install -Dm644 $srcdir/$pkgname/resources/icons/png/"$px"x"$px".png \
-        $pkgdir/usr/share/icons/hicolor/"$px"x"$px"/apps/$pkgname.png
+    for px in 16 24 32 48 64 96 128 256 512; do
+        install -Dm644 "$srcdir/$pkgname/"resources/icons/png/"$px"x"$px".png \
+        "$pkgdir"/usr/share/icons/hicolor/"$px"x"$px"/apps/"$pkgname".png
     done
 
-    install -Dm644 /dev/stdin $pkgdir/usr/share/applications/$pkgname.desktop <<END
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<END
 [Desktop Entry]
 Name=Zettlr
 Comment=A powerful Markdown Editor with integrated tree view
