@@ -2,8 +2,8 @@
 
 _pkgname=minitube
 pkgname="${_pkgname}-bin"
-pkgver=3.2
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="A native YouTube client in Qt. Watch YouTube videos without Flash Player. Prebuilt binary with included Google API key."
 arch=('x86_64')
 url='https://flavio.tordini.org/minitube'
@@ -31,7 +31,7 @@ source=(
   "${install}"
 )
 sha256sums=(
-  'b4c3e2a9dabef5a0acbc7aebbfb21da4bc9e777baf2e403b701b262cf92def9c' # minitube.deb
+  'f517018cdbc006412c988ae49a07f3fde0916521fa2d6ae6c1acee0bb8601a24' # minitube.deb
   'c7f4dd1ce7968635a0dbc44908a94e817e8ed6ab12d9443866ad28781038a25b' # minitube.install
 )
 noextract=(
