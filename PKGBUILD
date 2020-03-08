@@ -1,24 +1,26 @@
 # Maintainer: tinywrkb <tinywrkb@gmail.com>
 #
-# pipewire package maintainer: Jan de Groot <jgc@archlinux.org>
+# pipewire package maintainers:
+#   Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+#   Jan de Groot <jgc@archlinux.org>
 
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
-pkgname=(pipewire-gstfree pipewire-gstfree-docs)
-pkgver=0.2.7
+pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse)
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
 license=(LGPL2.1)
 arch=(x86_64)
-depends=(sbc ffmpeg rtkit)
-makedepends=(git meson doxygen graphviz xmltoman valgrind)
+makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
+             alsa-lib sbc rtkit vulkan-icd-loader
+             dbus libsndfile bluez-libs vulkan-headers)
 conflicts=(pipewire)
 provides=(pipewire)
-_commit=14c11c0fe4d366bad4cfecdee97b6652ff9ed63d  # tags/0.2.7
+_commit=74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac  # tags/0.3.1
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
-
 
 pkgver() {
   cd $_pkgbase
@@ -27,17 +29,17 @@ pkgver() {
 
 prepare() {
   cd $_pkgbase
-
-  # Reduce docs size
-  printf '%s\n' >>doc/Doxyfile.in \
-    HAVE_DOT=yes DOT_IMAGE_FORMAT=svg INTERACTIVE_SVG=yes
 }
 
 build() {
+  # warning: ‘-Wformat-security’ ignored without ‘-Wformat’ [-Wformat-security]
+  CFLAGS+=" -Wformat"
+
   arch-meson $_pkgbase build \
-    -D gstreamer=disabled \
+    -D gstreamer=false \
     -D docs=true \
     -D man=true
+
   ninja -C build
 }
 
@@ -45,19 +47,53 @@ check() {
   meson test -C build --print-errorlogs
 }
 
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
 package_pipewire-gstfree() {
+  depends=(sbc rtkit vulkan-icd-loader bluez-libs
+           libdbus-1.so libsndfile.so)
+  optdepends=('pipewire-docs: Documentation'
+              'pipewire-jack: JACK support'
+              'pipewire-pulse: PulseAudio support')
+  provides=(libpipewire-${pkgver:0:3}.so)
+  backup=(etc/pipewire/pipewire.conf)
   install=pipewire.install
 
   DESTDIR="$pkgdir" meson install -C build
 
-  # Split pipewire-docs
-  mkdir -p docs/share
-  mv "$pkgdir/usr/share/doc" docs/share/
+  cd "$pkgdir"
+
+  _pick docs usr/share/doc
+
+  _pick pulse usr/lib/libpulse*
+
+  _pick jack usr/lib/spa-0.2/jack
+  _pick jack usr/lib/libjack*
 }
 
 package_pipewire-gstfree-docs() {
   pkgdesc+=" (documentation)"
-  depends=()
+  mv docs/* "$pkgdir"
+}
 
-  mv docs "$pkgdir/usr"
+package_pipewire-gstfree-jack() {
+  pkgdesc+=" (JACK support)"
+  depends=(libpipewire-${pkgver:0:3}.so libjack.so)
+  provides=(libjack-pw.so)
+  mv jack/* "$pkgdir"
+}
+
+package_pipewire-gstfree-pulse() {
+  pkgdesc+=" (PulseAudio support)"
+  depends=(libpipewire-${pkgver:0:3}.so libpulse.so libglib-2.0.so)
+  provides=(libpulse{,-simple,-mainloop-glib}-pw.so)
+  mv pulse/* "$pkgdir"
 }

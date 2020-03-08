@@ -1,6 +1,6 @@
 pkgbase = pipewire-gstfree
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
-	pkgver = 0.2.7
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -11,18 +11,50 @@ pkgbase = pipewire-gstfree
 	makedepends = graphviz
 	makedepends = xmltoman
 	makedepends = valgrind
-	depends = sbc
-	depends = ffmpeg
-	depends = rtkit
+	makedepends = jack2
+	makedepends = libpulse
+	makedepends = alsa-lib
+	makedepends = sbc
+	makedepends = rtkit
+	makedepends = vulkan-icd-loader
+	makedepends = dbus
+	makedepends = libsndfile
+	makedepends = bluez-libs
+	makedepends = vulkan-headers
 	provides = pipewire
 	conflicts = pipewire
-	source = git+https://github.com/PipeWire/pipewire#commit=14c11c0fe4d366bad4cfecdee97b6652ff9ed63d
+	source = git+https://github.com/PipeWire/pipewire#commit=74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac
 	sha256sums = SKIP
 
 pkgname = pipewire-gstfree
 	install = pipewire.install
+	depends = sbc
+	depends = rtkit
+	depends = vulkan-icd-loader
+	depends = bluez-libs
+	depends = libdbus-1.so
+	depends = libsndfile.so
+	optdepends = pipewire-docs: Documentation
+	optdepends = pipewire-jack: JACK support
+	optdepends = pipewire-pulse: PulseAudio support
+	provides = libpipewire-0.3.so
+	backup = etc/pipewire/pipewire.conf
 
 pkgname = pipewire-gstfree-docs
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (documentation)
-	depends = 
+
+pkgname = pipewire-gstfree-jack
+	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (JACK support)
+	depends = libpipewire-0.3.so
+	depends = libjack.so
+	provides = libjack-pw.so
+
+pkgname = pipewire-gstfree-pulse
+	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (PulseAudio support)
+	depends = libpipewire-0.3.so
+	depends = libpulse.so
+	depends = libglib-2.0.so
+	provides = libpulse-pw.so
+	provides = libpulse-simple-pw.so
+	provides = libpulse-mainloop-glib-pw.so
 
