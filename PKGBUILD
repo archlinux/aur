@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=future-fetch
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 pkgdesc="Simple fetch script"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(
 	$pkgname-$pkgver-$pkgrel::$url/raw/v$pkgver/future-fetch
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('6c5a49d3b3f15c49a8cb447cfbdf555fbee3d2bd5c3f43302d73267b822ae5afd13f4388ce003d0d6b5dd66b3fe74217f08774f0fe31c8791da4464f8b6402b0')
+sha512sums=('dd205914ae988dd543b5bb24b1bf7138448afc2caae95104999b2b6a93c2470c46142fb515d8ce221f5b8dfb30c36723e6ba4dfb0146e4597688f6b818f1d5fe')
 
 package() {
 
