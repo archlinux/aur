@@ -15,11 +15,11 @@ options=(!staticlibs strip)
 source=("hcc-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-$pkgver.tar.gz"
         "llvm-project-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-$pkgver.tar.gz"
         "ROCm-Device-Libs-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-$pkgver.tar.gz"
-        "Fix-sanitizer-common-build-with-glibc-2.31.patch")
+        "Fix-sanitizer-common-build-with-glibc-2.31.patch::https://github.com/llvm/llvm-project/commit/947f9692440836dcb8d88b74b69dd379d85974ce.patch")
 sha256sums=('c9274230aa282e6ae90be5885e3f5b71b02153ca60980fc2122d61a5870bf2a2'
             'f76648116a2771a520545b9b5b3c931a8eb391f6f711f232924d92e8d1b43fc1'
             '42bd4f910dd44d6f0dd7bab7ebdadcf2e7cd4449ed7160dacc4471039584402c'
-            '3d3e623d394d00b412735aa7c76e5971b605c0c9792f240b0500385caf9d5d47')
+            'e08bc5ef423cb0df19df907dcfee84bf12a8a4211c7ea49afee33b70212fd40b')
 
 prepare() {
   cd "$srcdir"
