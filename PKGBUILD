@@ -2,15 +2,16 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=libcryptui
-pkgver=3.12.2+41+gf29d1d37
-pkgrel=2
+pkgver=3.12.2+55+ged3b12af
+pkgrel=1
 pkgdesc="Library for OpenPGP prompts"
 url="https://gitlab.gnome.org/GNOME/libcryptui"
 arch=(x86_64)
 license=(GPL)
 depends=(gtk3 gpgme dbus-glib libnotify gcr dconf libsm)
 makedepends=(intltool gobject-introspection gnome-common git)
-_commit=f29d1d37cb4553ecd82a67e63aa0f0888de9acc8  # master
+provides=(libcryptui.so)
+_commit=ed3b12af71643d5f6d29fc6a5092123624faff6e  # master
 source=("git+https://gitlab.gnome.org/GNOME/libcryptui.git#commit=$_commit")
 sha256sums=('SKIP')
 
