@@ -2,7 +2,7 @@
 # Contributor: Michael Wendland <dev at michiwend dot com>
 
 pkgname=gnome-shell-extension-arch-update
-pkgver=33
+pkgver=34
 pkgrel=1
 pkgdesc="Convenient indicator for Arch Linux updates in GNOME Shell."
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('fakeroot' 'gnome-shell>=3.18' 'pacman-contrib')
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('0b42a203462275060b13e11be8eebfa57d1a84aca3e012b5fa932b5dcf7715c0be9d0875a8b4839617a7530d4c2d022e569c98c64ced387beb1133e71958358e')
+sha512sums=('3376670fc40de532a629b3047b3ca702922654e77e518c9050d14adac8955219cf70dfd449135b74b1da0591526ddb523e430e745ea3315fc28ad87c439fde72')
 
 
 package() {
