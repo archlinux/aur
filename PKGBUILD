@@ -3,13 +3,12 @@
 _plug=fvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r19.83f5705
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-muvsfunc-git'
+depends=('vapoursynth-plugin-muvsfunc-git'
          'vapoursynth-plugin-edi_rpow2-git'
          )
 makedepends=('git')
