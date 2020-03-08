@@ -3,14 +3,12 @@
 _plug=averagehist
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=r0
-pkgrel=5
+pkgrel=6
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=168521'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-histogram-git'
-         )
+depends=('vapoursynth-plugin-histogram-git')
 source=('averagehist.py')
 sha256sums=('728334aa284a87c123c1d4a91b6ec826c07c46d56754532743d6e18cc60d01de')
 
