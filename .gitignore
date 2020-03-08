@@ -1,0 +1,8 @@
+# Generic PKGBUILD files
+*.pkg.tar.xz
+*.tar.gz
+pkg/
+src/
+
+# git source code
+hercules/
