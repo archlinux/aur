@@ -1,15 +1,19 @@
 pkgbase = r-prodlim
 	pkgdesc = Product-Limit Estimation for Censored Event History Analysis
-	pkgver = 2018.04.18
+	pkgver = 2019.11.13
 	pkgrel = 1
 	url = https://cran.r-project.org/package=prodlim
+	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = GPL2
+	license = GPL3
+	makedepends = gcc
+	depends = r>=2.9.0
 	depends = r-rcpp>=0.11.5
+	depends = r-kernsmooth
 	depends = r-lava
-	source = https://cran.r-project.org/src/contrib/prodlim_2018.04.18.tar.gz
-	md5sums = 897e215d6029fc29dcbd9f1c2b757343
+	source = https://cran.r-project.org/src/contrib/prodlim_2019.11.13.tar.gz
+	md5sums = 4439266060d24ffef32a5e6bec3c01ef
 
 pkgname = r-prodlim
 

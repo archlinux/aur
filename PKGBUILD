@@ -1,26 +1,29 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=prodlim
-_cranver=2018.04.18
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-prodlim
+_cranver=2019.11.13
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Product-Limit Estimation for Censored Event History Analysis"
-arch=('x86_64')
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' 'r-rcpp>=0.11.5' 'r-lava')
+license=(GPL2 GPL3)
+depends=('r>=2.9.0' 'r-rcpp>=0.11.5' r-kernsmooth r-lava)
+makedepends=(gcc)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('4439266060d24ffef32a5e6bec3c01ef')
 
+build() {
+  cd "${srcdir}"
 
-
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('897e215d6029fc29dcbd9f1c2b757343')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
