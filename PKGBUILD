@@ -2,7 +2,7 @@
 
 pkgname=ffms2-git
 pkgver=2.23.203.gbda9eeb
-pkgrel=1
+pkgrel=2
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)"
 url='https://github.com/FFMS/ffms2'
 arch=('x86_64')
@@ -41,6 +41,7 @@ build() {
   cd build
   ../ffms2/configure \
     --prefix=/usr \
+    --enable-avresample \
     --enable-shared=yes \
     --enable-static=no
 

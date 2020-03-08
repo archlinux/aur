@@ -1,7 +1,7 @@
 pkgbase = ffms2-git
 	pkgdesc = An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version)
 	pkgver = 2.23.203.gbda9eeb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FFMS/ffms2
 	arch = x86_64
 	license = GPL
