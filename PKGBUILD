@@ -1,6 +1,6 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
-pkgdesc="LV2 synths and effects plugins."
+pkgdesc="Version synth and effect LV2 plugins."
 pkgver=r163.a445da1
 pkgrel=1
 epoch=
@@ -9,7 +9,7 @@ url="https://github.com/ryukau/LV2Plugins"
 license=(GPL)
 groups=()
 depends=()
-makedepends=()
+makedepends=('jack' 'mesa' 'liblo')
 checkdepends=()
 optdepends=()
 provides=()
@@ -43,6 +43,7 @@ build() {
 }
 
 package() {
-  cd LV2Plugins
-
+  cd LV2Plugins/bin
+  mkdir -p "$pkgdir"/usr/lib/lv2
+  mv *.lv2 "$pkgdir"/usr/lib/lv2
 }
