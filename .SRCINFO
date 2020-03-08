@@ -1,13 +1,13 @@
 pkgbase = r-plogr
-	pkgdesc = A simple header-only logging library for C++.
+	pkgdesc = The 'plog' C++ Logging Library
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/plogr/index.html
-	arch = i686
-	arch = x86_64
+	url = https://cran.r-project.org/package=plogr
+	arch = any
 	license = MIT
 	depends = r
-	source = http://cran.r-project.org/src/contrib/plogr_0.2.0.tar.gz
+	optdepends = r-rcpp
+	source = https://cran.r-project.org/src/contrib/plogr_0.2.0.tar.gz
 	md5sums = 655c301276dac0098568248e47602851
 
 pkgname = r-plogr
