@@ -1,0 +1,20 @@
+diff --git a/src/classes/window/presenter.vala b/src/classes/window/presenter.vala
+index f1b7fe7..2971da9 100644
+--- a/src/classes/window/presenter.vala
++++ b/src/classes/window/presenter.vala
+@@ -883,14 +883,8 @@ namespace pdfpc.Window {
+             int current_user_slide_number = this.controller.current_user_slide_number;
+ 
+             this.current_view.display(current_slide_number);
+-            int next_view_slide_offset = 0;
+-            if (   !Options.final_slide_overlay
+-                || (Options.final_slide_overlay && current_slide_number == this.metadata.user_slide_to_real_slide(current_user_slide_number))
+-               ){
+-                next_view_slide_offset = 1;
+-            }
+             this.next_view.display(
+-                this.metadata.user_slide_to_real_slide(current_user_slide_number + next_view_slide_offset)
++                this.metadata.user_slide_to_real_slide(current_user_slide_number)
+             );
+             if (this.controller.skip_next()) {
+                 this.strict_next_view.disabled = false;

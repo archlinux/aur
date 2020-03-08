@@ -1,0 +1,24 @@
+pkgbase = pdfpc-notes-current-slide
+	pkgdesc = PDFPC with a patch to show the current slide with notes and the next one.
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://pdfpc.github.io/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = vala
+	depends = gtk3
+	depends = poppler-glib
+	depends = libgee
+	depends = gstreamer
+	depends = gst-plugins-base
+	optdepends = gst-plugins-good: more codecs for video playback support
+	optdepends = gst-libav: more codecs for video playback support
+	conflicts = pdfpc
+	source = pdfpc-4.4.0.tar.gz::https://github.com/pdfpc/pdfpc/archive/v4.4.0.tar.gz
+	source = notes_current_page.patch
+	sha256sums = 5fc457b081cdf02708436bb708940fd6b689e03fc336d3faab652f0b85592c00
+	sha256sums = 24c36f9caf736749d186b9a9027b855c5ddd1b5ee083e62dbc5b29198a1c7606
+
+pkgname = pdfpc-notes-current-slide
+
