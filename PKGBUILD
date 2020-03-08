@@ -4,26 +4,23 @@
 # Contributor: Mikeserv
 
 pkgname=bcache-tools
-pkgver=1.0.8
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="Userspace tools for bcache until bcache merges with either dm or md"
 changelog=bcache-tools.changelog
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="http://bcache.evilpiepirate.org/"
-license=('GPL')
-depends=('util-linux')
+license=("GPL")
+depends=("util-linux")
 install="${pkgname}.install"
-source=("https://github.com/g2p/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
-        'crc64.patch'
-        'initcpio-arch.patch')
-sha256sums=('d56923936f37287efc57a46315679102ef2c86cd0be5874590320acd48c1201c'
-            '2536e1ea76b32b4ee4543524c64f488ccc0fe037256ce9d5c5029e873161de7e'
-            '29f0825272e58f092307b6bfa1d472a12e7a8c4e0f8ae8584a4492d7bed3e07d')
+source=("https://git.kernel.org/pub/scm/linux/kernel/git/colyli/$pkgname.git/snapshot/$pkgname-$pkgver.tar.gz"
+        "initcpio-dracut-arch.patch")
+sha256sums=("d1c92274ae03b414dd1a05277bf89dd2a8395496c692e3b143d9e6112d3421f8"
+            "fea3ddfcef7aaac6cc6dd0c5497bc5f69f799d4f9f286e978ebd4b9326347f9c")
 
 prepare() {
   cd "${pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/initcpio-arch.patch"
-  patch -Np1 -i "${srcdir}/crc64.patch"
+  patch -Np1 -i "${srcdir}/initcpio-dracut-arch.patch"
 }
 
 build() {

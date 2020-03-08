@@ -6,3 +6,5 @@
 
 2014-01-06
 	* Initial version based off of bcache-tools-git package
+2020-03-07
+	* Removed crc64.patch as it is no longer needed.

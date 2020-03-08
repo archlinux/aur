@@ -1,12 +1,12 @@
 diff --git a/Makefile b/Makefile
-index 8e38d9a..2db4c82 100644
+index 4359866..854a473 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -8,13 +8,12 @@ CFLAGS+=-O2 -Wall -g
- all: make-bcache probe-bcache bcache-super-show bcache-register
+ all: make-bcache probe-bcache bcache-super-show bcache-register bcache
  
  install: make-bcache probe-bcache bcache-super-show
--	$(INSTALL) -m0755 make-bcache bcache-super-show	$(DESTDIR)${PREFIX}/sbin/
+-	$(INSTALL) -m0755 make-bcache bcache-super-show	bcache $(DESTDIR)${PREFIX}/sbin/
 -	$(INSTALL) -m0755 probe-bcache bcache-register		$(DESTDIR)$(UDEVLIBDIR)/
 -	$(INSTALL) -m0644 69-bcache.rules	$(DESTDIR)$(UDEVLIBDIR)/rules.d/
 +	$(INSTALL) -m0755 make-bcache bcache-super-show $(DESTDIR)${PREFIX}/bin/
