@@ -9,6 +9,8 @@ arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/rocm-cmake"
 license=('MIT')
 makedepends=('git' 'cmake')
+provides=('rocm-cmake')
+conflicts=('rocm-cmake')
 source=('git+https://github.com/RadeonOpenCompute/rocm-cmake.git')
 sha256sums=('SKIP')
 
