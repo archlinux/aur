@@ -41,6 +41,9 @@ prepare() {
 install -d ${_srcdir}/dist
 bsdtar -xf ${_srcdir}/proton_dist.tar.gz -C ${_srcdir}/dist/
 rm ${_srcdir}/proton_dist.tar.gz
+}
+
+build() {
 ## remove unused: dist_lock, extract_tarball(), make_default_prefix()
 patch ${_srcdir}/proton patches/distlock-extract-defaultpfx.patch >/dev/null
 ## setup paths
