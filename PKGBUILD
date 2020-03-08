@@ -1,26 +1,29 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=recipes
-_cranver=0.1.3
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-recipes
+_cranver=0.1.9
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Preprocessing Tools to Create Design Matrices"
-arch=('any')
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL2')
-depends=('r' 'r-dplyr' 'r-broom' 'r-tibble' 'r-ipred' 'r-dimred>=0.1.0' 'r-lubridate' 'r-timedate' 'r-ddalpha' 'r-purrr>=0.2.3' 'r-rlang>=0.1.1' 'r-gower' 'r-rcpproll' 'r-tidyselect>=0.1.1' 'r-magrittr' 'r-tidyr' 'r-pls')
+license=(GPL2)
+depends=('r>=3.1' r-dplyr r-generics r-glue r-gower r-ipred r-lubridate r-magrittr 'r-purrr>=0.2.3' 'r-rlang>=0.4.0' r-tibble 'r-tidyr>=0.8.3' 'r-tidyselect>=0.2.5' r-timedate r-withr)
+optdepends=(r-covr r-ddalpha r-dimred r-fastica r-ggplot2 r-igraph r-kernlab r-knitr r-modeldata r-pls r-rann r-rcpproll r-rmarkdown r-rpart r-rsample r-rspectra r-testthat r-xml2)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('68bf20830e13fae4364e9e8e8c9927e4')
 
-optdepends=('r-testthat' 'r-kernlab' 'r-fastica' 'r-rann' 'r-igraph' 'r-knitr' 'r-rsample' 'r-ggplot2' 'r-rmarkdown' 'r-covr')
+build() {
+  cd "${srcdir}"
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('0f4a31f7222e7a1bab550ae2d9ea125c')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}

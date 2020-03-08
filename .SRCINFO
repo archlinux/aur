@@ -1,39 +1,45 @@
 pkgbase = r-recipes
 	pkgdesc = Preprocessing Tools to Create Design Matrices
-	pkgver = 0.1.3
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=recipes
 	arch = any
 	license = GPL2
-	depends = r
+	depends = r>=3.1
 	depends = r-dplyr
-	depends = r-broom
-	depends = r-tibble
-	depends = r-ipred
-	depends = r-dimred>=0.1.0
-	depends = r-lubridate
-	depends = r-timedate
-	depends = r-ddalpha
-	depends = r-purrr>=0.2.3
-	depends = r-rlang>=0.1.1
+	depends = r-generics
+	depends = r-glue
 	depends = r-gower
-	depends = r-rcpproll
-	depends = r-tidyselect>=0.1.1
+	depends = r-ipred
+	depends = r-lubridate
 	depends = r-magrittr
-	depends = r-tidyr
-	depends = r-pls
-	optdepends = r-testthat
-	optdepends = r-kernlab
-	optdepends = r-fastica
-	optdepends = r-rann
-	optdepends = r-igraph
-	optdepends = r-knitr
-	optdepends = r-rsample
-	optdepends = r-ggplot2
-	optdepends = r-rmarkdown
+	depends = r-purrr>=0.2.3
+	depends = r-rlang>=0.4.0
+	depends = r-tibble
+	depends = r-tidyr>=0.8.3
+	depends = r-tidyselect>=0.2.5
+	depends = r-timedate
+	depends = r-withr
 	optdepends = r-covr
-	source = https://cran.r-project.org/src/contrib/recipes_0.1.3.tar.gz
-	md5sums = 0f4a31f7222e7a1bab550ae2d9ea125c
+	optdepends = r-ddalpha
+	optdepends = r-dimred
+	optdepends = r-fastica
+	optdepends = r-ggplot2
+	optdepends = r-igraph
+	optdepends = r-kernlab
+	optdepends = r-knitr
+	optdepends = r-modeldata
+	optdepends = r-pls
+	optdepends = r-rann
+	optdepends = r-rcpproll
+	optdepends = r-rmarkdown
+	optdepends = r-rpart
+	optdepends = r-rsample
+	optdepends = r-rspectra
+	optdepends = r-testthat
+	optdepends = r-xml2
+	source = https://cran.r-project.org/src/contrib/recipes_0.1.9.tar.gz
+	md5sums = 68bf20830e13fae4364e9e8e8c9927e4
 
 pkgname = r-recipes
 
