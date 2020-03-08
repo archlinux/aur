@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-libgit2
 pkgver=0.99.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
 arch=(i686 x86_64)
 depends=(mingw-w64-{crt,curl,libssh2,openssl,zlib})
@@ -19,10 +19,6 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
     cd "${srcdir}/libgit2-${pkgver}"
-
-    patch -Rsfp1 --dry-run < "$srcdir/aclapi-include-case.patch" \
-        || patch -p1 < "$srcdir/aclapi-include-case.patch"
-
     # unset LDFLAGS
     for _arch in ${_architectures}; do
         mkdir -p build-${_arch} && pushd build-${_arch}
