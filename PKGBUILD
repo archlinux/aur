@@ -1,6 +1,6 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=hipsparse
-_pkgver=3.0
+_pkgver=3.1
 pkgver="$_pkgver.0"
 pkgrel=1
 pkgdesc="ROCm SPARSE marshalling library."
@@ -11,7 +11,7 @@ depends=('hcc' 'hip')
 makedepends=('cmake' "hcc>=$pkgver" "hip>=$pkgver" 'python2' "rocprim>=$pkgver" "rocsparse>=$pkgver" "rocm-comgr>=$pkgver" 'rocminfo')
 source=("https://github.com/ROCmSoftwarePlatform/hipSPARSE/archive/rocm-$_pkgver.tar.gz"
         "hipsparse_hsa.patch")
-sha256sums=('389de1d151436acdaa89c33530e7b86f6c4dc4aecbf3466131ec0972d8d1c33e'
+sha256sums=('df210c1dd18a23b8013558ea82058601a75d8572ad54d13d59beb6746759ced6'
             'd3a926958b84c660f273d6b3a644e8a775e9ed779a7d81baa8f4c4981cee076b')
 
 prepare() {
