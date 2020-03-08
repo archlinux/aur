@@ -54,7 +54,8 @@ prepare() {
 build() {
   cd "$srcdir"/${_pkgname}-${pkgver}
 
-  LDFLAGS="$LDFLAGS -ludev" ./configure --prefix=/usr \
+  LDFLAGS="$LDFLAGS -ludev" ./configure \
+      --prefix=/usr \
       --exec-prefix=/usr \
       --sysconfdir=/etc \
       --localstatedir=/var \
