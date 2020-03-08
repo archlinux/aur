@@ -1,14 +1,16 @@
 pkgbase = r-catools
-	pkgdesc = Moving (rolling, running) window statistic functions, read/write for GIF and ENVI binary files, fast calculation of AUC, LogitBoost classifier, base64 encoder/decoder, round-off-error-free sum and cumsum, etc.
-	pkgver = 1.17.1
+	pkgdesc = Tools: Moving Window Statistics, GIF, Base64, ROC AUC, etc
+	pkgver = 1.18.0
 	pkgrel = 1
-	url = http://cran.r-project.org/web/packages/caTools/index.html
+	url = https://cran.r-project.org/package=caTools
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/caTools_1.17.1.tar.gz
-	md5sums = 5c872bbc78b177b306f36709deb44498
+	makedepends = gcc
+	depends = r>=3.6.0
+	depends = r-bitops
+	source = https://cran.r-project.org/src/contrib/caTools_1.18.0.tar.gz
+	md5sums = 3327465ba016d4f85f69d652021c9355
 
 pkgname = r-catools
 
