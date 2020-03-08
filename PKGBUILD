@@ -4,7 +4,7 @@
 
 pkgname=mimic
 _pkgname=mimic1
-pkgver=1.3.0.0
+pkgver=1.3.0.1
 pkgrel=1
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
@@ -31,4 +31,4 @@ package() {
     install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-md5sums=('696b0030ebf18382db8eb23f0b535150')
+md5sums=('c6b60570fdbbd5fc2a92ddee385f4a20')
