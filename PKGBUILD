@@ -6,10 +6,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20200304
+pkgver=4.0.0v20200307
 _pkgver=4.0.0
-_snapshot_=20200304
-_snapver_=0231
+_snapshot_=20200307
+_snapver_=0230
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -25,7 +25,7 @@ depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'a52dec' 'libdvbpsi'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols' 'aribb24' 'libfdk-aac')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3'
+             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3' 'lua' 
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libmicrodns'  'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
@@ -112,6 +112,7 @@ options=('!emptydirs')
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
         '0001-lua-Fix-build-using-lua-5.3.patch'
+        '0001-I444-is-the-answer.patch'
         'find-deps.py')
 
 pkgver() {
@@ -124,6 +125,7 @@ prepare() {
   ./bootstrap
 
   patch -Np1 -i "${srcdir}/0001-lua-Fix-build-using-lua-5.3.patch"
+  patch -Np1 -i "${srcdir}/0001-I444-is-the-answer.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
   sed 's|whoami|echo builduser|g' -i configure
@@ -266,7 +268,8 @@ package() {
   #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('15636dc8f9043fade157c35f7cbbfea7c8de8c163b0cdcae9d6e63e9527f9e99'
+sha256sums=('1acc72f15a5f236f530ac00058eec237118748e8af23fdcac60661b9e494f08a'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
             '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
+            'd6b3c0ce4853e952ef33a08b29dae65335fc5b9d8d66e37304ffa0257b50693a'
             '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
