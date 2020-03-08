@@ -6,7 +6,7 @@ _gitname=NordVPN-NetworkManager
 _basename=nordnm
 provides=("$_basename")
 conflicts=("$_basename")
-pkgver=0.7.1_r29_g6f77aff
+pkgver=0.7.1.r29.g6f77aff
 pkgrel=1
 pkgdesc="A CLI tool for automating the importing, securing and usage of NordVPN OpenVPN servers through NetworkManager."
 url="https://github.com/Chadsr/NordVPN-NetworkManager"
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
-    git describe  --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/_/g'
+    git describe  --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

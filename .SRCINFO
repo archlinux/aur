@@ -1,6 +1,6 @@
 pkgbase = nordnm-git
 	pkgdesc = A CLI tool for automating the importing, securing and usage of NordVPN OpenVPN servers through NetworkManager.
-	pkgver = 0.7.1_r29_g6f77aff
+	pkgver = 0.7.1.r29.g6f77aff
 	pkgrel = 1
 	url = https://github.com/Chadsr/NordVPN-NetworkManager
 	arch = any
