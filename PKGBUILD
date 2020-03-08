@@ -2,14 +2,13 @@
 
 _plug=astdr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.0.gf55e270
-pkgrel=2
+pkgver=v2.1.g30d2750
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-awarpsharp2-git'
+depends=('vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-decross-git'
          'vapoursynth-plugin-fluxsmooth-git'
          'vapoursynth-plugin-hqdn3d-git'
