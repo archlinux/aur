@@ -1,5 +1,5 @@
 pkgbase = r-abind
-	pkgdesc = Combine multidimensional arrays into a single array, a generalization of 'cbind' and 'rbind'.
+	pkgdesc = Combine Multidimensional Arrays
 	pkgver = 1.4.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=abind
