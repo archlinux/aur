@@ -9,7 +9,6 @@ pkgbase = r-broom
 	depends = r-backports
 	depends = r-dplyr
 	depends = r-generics>=0.0.2
-	depends = r-nlme
 	depends = r-purrr
 	depends = r-reshape2
 	depends = r-stringr
