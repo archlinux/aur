@@ -1,15 +1,14 @@
 pkgbase = r-lava
 	pkgdesc = Latent Variable Models
-	pkgver = 1.6.3
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lava
 	arch = any
 	license = GPL3
-	depends = r
+	depends = r>=3.0
 	depends = r-numderiv
 	depends = r-squarem
 	optdepends = r-rgraphviz
-	optdepends = r-ascii
 	optdepends = r-data.table
 	optdepends = r-ellipse
 	optdepends = r-fields
@@ -28,8 +27,8 @@ pkgbase = r-lava
 	optdepends = r-testthat
 	optdepends = r-visnetwork
 	optdepends = r-zoo
-	source = https://cran.r-project.org/src/contrib/lava_1.6.3.tar.gz
-	md5sums = 4bc25864b5ed98880376786b4f76594d
+	source = https://cran.r-project.org/src/contrib/lava_1.6.7.tar.gz
+	md5sums = 3b1b88d532e7b80db5ab326d6785a269
 
 pkgname = r-lava
 
