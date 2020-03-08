@@ -1,7 +1,7 @@
 # Maintainer: Hans-Nikolai Viessmann <hand AT viess.mn>
 
 pkgname='xmrig-proxy'
-pkgver=5.8.1
+pkgver=5.9.0
 pkgrel=1
 pkgdesc='Stratum protocol proxy for Monero; HTTP API disabled, donation percentage is 0.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 install="${pkgname}.install"
 changelog=CHANGELOG.md
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1cbe3fc26567676ebe6fbdb43b6849706a91f417c504302b3a16f6dcbb8a7992')
+sha256sums=('67770e2249e9ed2081ea97ecf3dcb0be099cd04c384ccf05faa4d4828bdccebc')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
