@@ -10,7 +10,7 @@ pkgdesc="Provides Foreach Looping Construct"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(Apache2.0)
-depends=('r>=2.5.0' r-codetools r-iterators)
+depends=('r>=2.5.0' r-iterators)
 optdepends=(r-randomforest r-domc r-doparallel r-testthat r-knitr r-rmarkdown)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('cbe4ac21d8dea0a51f34e83f4d91acad')

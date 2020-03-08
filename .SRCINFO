@@ -6,7 +6,6 @@ pkgbase = r-foreach
 	arch = any
 	license = Apache2.0
 	depends = r>=2.5.0
-	depends = r-codetools
 	depends = r-iterators
 	optdepends = r-randomforest
 	optdepends = r-domc
