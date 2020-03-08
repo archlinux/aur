@@ -11,7 +11,8 @@ provides=('cocotb')
 depends=('python')
 makedepends=('git' 'python-setuptools')
 optdepends=('iverilog: for simulating verilog designs'
-	    'ghdl: for simulating VHDL designs')
+	    'ghdl: for simulating VHDL designs'
+	    'gtkwave: for visualizing waveforms')
 
 options=(!emptydirs)
 source=('git+https://github.com/cocotb/cocotb')
