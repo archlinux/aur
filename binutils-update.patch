@@ -1,0 +1,22 @@
+--- src/libs/common/MuleDebug.cpp	2020-03-08 12:28:52.588068625 +0900
++++ src/libs/common/MuleDebug.cpp	2020-03-08 12:29:18.837068569 +0900
+@@ -264,7 +264,7 @@
+                 return;
+         }
+ 
+-        bfd_vma vma = bfd_get_section_vma(abfd, section);
++        bfd_vma vma = bfd_section_vma(section);
+ 
+         unsigned long address = (unsigned long)_address;
+         if (address < vma) {
+--- src/libs/common/MuleDebug.cpp	2020-03-08 12:32:13.913068190 +0900
++++ src/libs/common/MuleDebug.cpp	2020-03-08 12:33:43.956067995 +0900
+@@ -271,7 +271,7 @@
+                 return;
+         }
+ 
+-        bfd_size_type size = bfd_section_size(abfd, section);
++        bfd_size_type size = bfd_section_size(section);
+         if (address > (vma + size)) {
+                 return;
+         }
