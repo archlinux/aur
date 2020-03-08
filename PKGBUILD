@@ -4,7 +4,7 @@
 pkgname=php73-imagick
 _name=imagick
 pkgver=3.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP 7.3 extension to create and modify images using the ImageMagick library"
 arch=('x86_64')
 url="https://github.com/mkoppanen/imagick"
