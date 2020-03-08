@@ -3,8 +3,8 @@
 # Contributor: Andrew67 (.desktop file, icon, 64bit compatibility)
 
 pkgname=energia
-pkgver=1.8.7E21
-pkgrel=5
+pkgver=1.8.10E23
+pkgrel=1
 pkgdesc="Energia is a Arduino IDE clone for use with the MSP430 launchpad"
 arch=('x86_64')
 url="http://energia.nu/"
@@ -20,7 +20,7 @@ source=('energia.desktop'
         "${pkgname}-${pkgver}.tar.xz::http://energia.nu/downloads/downloadv4.php?file=energia-${pkgver}-linux64.tar.xz")
 md5sums=('a7ce061d9fc0f9530e058204e532b40b'
          '8633ff7228aed033d9c9befb82581af9'
-         '74c5721079981e93ee74d09b3fda3c2d')
+         'ae84c41c9087a49007ca31842e1638e3')
 
 # Don't compress, takes too long
 PKGEXT='.pkg.tar'
