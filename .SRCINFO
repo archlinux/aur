@@ -5,8 +5,9 @@ pkgbase = r-rcpp
 	url = https://cran.r-project.org/package=Rcpp
 	arch = i686
 	arch = x86_64
-	license = GPL-2
-	license = GPL-3
+	license = GPL2
+	license = GPL3
+	makedepends = gcc
 	depends = r>=3.0.0
 	optdepends = r-runit
 	optdepends = r-inline
@@ -15,7 +16,7 @@ pkgbase = r-rcpp
 	optdepends = r-rmarkdown
 	optdepends = r-pinp
 	optdepends = r-pkgkitten
-	source = http://cran.r-project.org/src/contrib/Rcpp_1.0.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/Rcpp_1.0.3.tar.gz
 	md5sums = 0171ac73ab1635df72395dcc5450d48d
 
 pkgname = r-rcpp
