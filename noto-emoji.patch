@@ -9,19 +9,19 @@ index 00000000..b1692606
 +set -e
 +exec git diff origin/master origin/noto-emoji > ${1:-'noto-emoji.patch'}
 diff --git a/package.json b/package.json
-index ccdd03ff..c0bc7c78 100644
+index 58eb8a2b..8ff9492e 100644
 --- a/package.json
 +++ b/package.json
-@@ -79,7 +79,7 @@
+@@ -80,7 +80,7 @@
      "electron-mocha": "8.1.1",
      "electron-notarize": "0.1.1",
      "emoji-datasource": "5.0.1",
 -    "emoji-datasource-apple": "5.0.1",
 +    "emoji-datasource-google": "5.0.1",
      "emoji-regex": "8.0.0",
+     "fast-glob": "3.2.1",
      "filesize": "3.6.1",
-     "firstline": "1.2.1",
-@@ -366,8 +366,8 @@
+@@ -362,8 +362,8 @@
        "sticker-creator/dist/**",
        "!node_modules/emoji-datasource/emoji_pretty.json",
        "!node_modules/emoji-datasource/**/*.png",
@@ -55,10 +55,10 @@ index 47b7f0b0..60996d4b 100644
  
  const imageQueue = new PQueue({ concurrency: 10 });
 diff --git a/yarn.lock b/yarn.lock
-index 288d92c5..ccc02523 100644
+index c6be457f..4de4cf7b 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -6107,10 +6107,10 @@ elliptic@^6.0.0:
+@@ -6309,10 +6309,10 @@ elliptic@^6.0.0:
      minimalistic-assert "^1.0.0"
      minimalistic-crypto-utils "^1.0.0"
  
