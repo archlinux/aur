@@ -7,7 +7,8 @@
 
 pkgname=dolphin-root-git
 _pkgname=${pkgname%-root-git}
-pkgver=raf45eb0af5219819f76b624162c75da83d763657
+commit=af45eb0af5219819f76b624162c75da83d763657
+pkgver=r$commit
 pkgrel=1
 pkgdesc="KDE File Manager, patched to be able to run as root, based on dolphin-git sources"
 arch=(armv7h i686 x86_64)
@@ -30,6 +31,7 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
 pkgver() {
   cd dolphin
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git reset --hard $commit
 }
 
 prepare() {
