@@ -61,6 +61,9 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
+# Some patches for BFQ conflict with patches for BFQ-dev.
+# To use linux-bfq smoothly apply bfq-reverts before bfq-dev patch. 
+# Otherwise the kernel will not compile.
 _bfq_rev_path="bfq-reverts-sep"
 _bfq_rev_patch="0001-Revert-block-bfq-do-not-plug-I-O-for-bfq_queues-with.patch"
 _bfq_path="bfq-dev-lucjan"
