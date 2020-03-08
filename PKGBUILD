@@ -3,14 +3,12 @@
 _plug=psharpen
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r4
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-fmtconv-git'
-         )
+depends=('vapoursynth-plugin-fmtconv-git')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
