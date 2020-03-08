@@ -5,13 +5,14 @@
 
 pkgname=alice-bin
 pkgver=3.5
-pkgrel=1
+pkgrel=2
 pkgdesc='An educational software that teaches students computer programming in a 3D environment'
 arch=('i686' 'x86_64')
 url="http://www.alice.org/"
 license=('custom')
-depends=('java-environment' 'mesa')
+depends=('java-environment=8' 'mesa')
 provides=('alice3')
+install=post_install
 source=("http://www.alice.org/wp-content/uploads/2019/04/Alice3_unix_3_5.sh")
 noextract=('Alice3_unix_3_5.sh')
 sha512sums=('8c1d17e95bc08b38a9615607be9c47dc96c0e374118364377a197e12026e6b26a0058e75a4f7d0f9c81ad1153734012a6796eaa44247c00d19c8e4a114f0c836')
