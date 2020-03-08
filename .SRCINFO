@@ -1,6 +1,6 @@
 pkgbase = pext
 	pkgdesc = Python-based extendable tool
-	pkgver = 0.28
+	pkgver = 0.29
 	pkgrel = 1
 	url = https://pext.io/
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = pext
 	optdepends = ffmpeg: radiobrowser music support
 	provides = pext
 	conflicts = pext
-	source = https://github.com/Pext/Pext/archive/v0.28.tar.gz
-	sha256sums = d61ac09e440116945025341115e0dda7d2eec0cd30ba5414a55f7a1bf700324f
+	source = https://github.com/Pext/Pext/archive/v0.29.tar.gz
+	sha256sums = 94b88b9dd578d38db1596b872f329c4b993fb8adee4289b9461b5cee366bfb48
 
 pkgname = pext
 
