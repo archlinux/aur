@@ -3,13 +3,12 @@
 _plug=finedehalo
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r3
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=173672'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-mvsfunc-git'
+depends=('vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-havsfunc-git'
          )
 makedepends=('git')
