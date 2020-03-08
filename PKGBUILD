@@ -1,14 +1,14 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=future-fetch
-pkgver=0.7.1
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Simple fetch script"
 arch=(x86_64)
 url="https://git.auteiy.me/dmitry/futureFetch"
 license=(MIT)
-optdepends=(
-    'pacman-contrib: Check updates'
+depends=(
+    pacman-contrib
 )
 
 # Sources
