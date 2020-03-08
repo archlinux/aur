@@ -2,9 +2,9 @@
 
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-softhddevice
-pkgver=0.7.0_36_g9872176
+pkgver=0.7.0_56_g12b571b
 epoch=1
-_gitver=987217671a19742a34a670668cbe0f278c44e977
+_gitver=12b571bf74635843be590366010ff315a61dfc23
 _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
@@ -14,17 +14,17 @@ license=('AGPL3')
 depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server')
 optdepends=('nvidia: Required for VDPAU decoding',
             'vdr-xorg: Recommended way to start X.org server together with VDR')
-makedepends=('git' 'glm' 'glu' 'patchutils')
+makedepends=('git' 'glm' 'glu' 'ffnvcodec-headers')
 _plugname=${pkgname//vdr-/}
 source=("git+https://github.com/ua0lnj/vdr-plugin-softhddevice.git#commit=$_gitver"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-md5sums=('SKIP'
-         'f6ef6cb0bf17c5a28f858e5306776d27')
+sha256sums=('SKIP'
+            '67bb0c168042b27ead3f62a98f9b434d0164da5fe334a76ccc5dd061932d1952')
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  git tag 0.7.0 282c346a74b3c9e4ad73843f0759b4701a6d030e
+  git tag -f 0.7.0 282c346a74b3c9e4ad73843f0759b4701a6d030e
   git describe --tags | sed 's/-/_/g;s/v//'
 }
 
