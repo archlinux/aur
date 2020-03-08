@@ -1,6 +1,6 @@
 pkgbase = future-fetch
 	pkgdesc = Simple fetch script
-	pkgver = 0.8.2.2
+	pkgver = 0.8.2.3
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/futureFetch
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = future-fetch
 	depends = procps-ng
 	depends = util-linux
 	optdepends = yay: for counting AUR updates
-	source = future-fetch-0.8.2.2-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.8.2.2/future-fetch
-	sha512sums = 5048dba6be364ee4993d27c64e5c2f663d47fa584d11639a2ec18c08ebe2d720c1afb4ab75646b4000f7fe7ddb554e6c4e35d63ab8546ff604bb54fa64e2f5b4
+	source = future-fetch-0.8.2.3-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.8.2.3/future-fetch
+	sha512sums = 7ab08f6bc2572ec9315c8e17b8e2053188c9c9c1397cf3f197c8168c8c7b9a2678c2fd6aa45a4c41b2df75773bcb01d6259b90d5c46bf2222484dc98a81527dc
 
 pkgname = future-fetch
 
