@@ -6,7 +6,7 @@
 ## Contributor: sowieso <sowieso@dukun.de>
 
 _ver="1.5.2_7.8.1.737-8"
-_minecraft_ver_latest="1.14.4"
+_minecraft_ver_latest="1.15.2"
 
 IFS="-" read -ra _ver_temp <<< "$_ver"
 IFS="_" read -ra _pkgver_temp <<< "${_ver_temp[0]}"
@@ -116,7 +116,7 @@ fi
 
 prepare() {
 	[ "$_minecraft_ver_minor" = 10 ] && mkdir mods
-	[ "$_minecraft_ver_minor" = 5 ] && unzip fml_libs15.zip -d lib
+	[ "$_minecraft_ver_minor" = 5 ] && unzip -o fml_libs15.zip -d lib
 	java -jar "forge-${_pkgver}-installer.jar" --installServer
 }
 
