@@ -11,10 +11,9 @@ pkgbase = python-edalize
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	provides = python-edalize
-	conflicts = python-edalize-git
+	conflicts = python-edalize
 	options = !emptydirs
 	source = https://github.com/olofk/edalize/archive/v0.1.7.tar.gz
 	md5sums = 46ebc35971187ace236418edff6455b7
 
 pkgname = python-edalize
-
