@@ -3,10 +3,10 @@ pkgbase = r-haven
 	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=haven
+	arch = i686
 	arch = x86_64
 	license = MIT
-	license = custom
-	makedepends = make
+	makedepends = gcc
 	depends = r>=3.2
 	depends = r-forcats>=0.2.0
 	depends = r-hms
@@ -20,7 +20,7 @@ pkgbase = r-haven
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	optdepends = r-pillar>=1.1.1
+	optdepends = r-pillar
 	optdepends = r-cli
 	optdepends = r-crayon
 	source = https://cran.r-project.org/src/contrib/haven_2.2.0.tar.gz
