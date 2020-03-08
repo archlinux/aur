@@ -42,6 +42,7 @@ prepare() {
 }
 
 build() {
+    export GOPATH="$srcdir"/gopath
     cd "$srcdir/$_pkgname"
     make
 }
