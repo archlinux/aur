@@ -3,13 +3,12 @@
 _plug=knlm
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r3
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-knlmeanscl-git'
+depends=('vapoursynth-plugin-knlmeanscl-git'
          'vapoursynth-plugin-fmtconv-git'
          )
 makedepends=('git')
