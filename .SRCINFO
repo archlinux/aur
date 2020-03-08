@@ -1,0 +1,15 @@
+pkgbase = python-typer
+	pkgdesc = Typer is library to build CLI applications that users will love using and developers will love creating. Based on Python 3.6+ type hints.
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://typer.tiangolo.com/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-setuptools
+	depends = python-click
+	source = https://files.pythonhosted.org/packages/source/t/typer/typer-0.0.9.tar.gz
+	md5sums = d6adbf44efba87872b21421c8daef490
+
+pkgname = python-typer
+
