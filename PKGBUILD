@@ -2,10 +2,10 @@
 
 _plug=fvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r17.edb4ed9
-pkgrel=2
+pkgver=r19.83f5705
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
-arch=('x86_64')
+arch=('any')
 url='https://github.com/Irrational-Encoding-Wizardry/fvsfunc'
 license=('GPL')
 depends=('vapoursynth'
