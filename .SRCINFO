@@ -1,11 +1,10 @@
 pkgbase = r-dbplyr
-	pkgdesc = A dplyr Back End for Databases
+	pkgdesc = A 'dplyr' Back End for Databases
 	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=dbplyr
 	arch = any
 	license = MIT
-	license = custom
 	depends = r>=3.1
 	depends = r-assertthat>=0.2.0
 	depends = r-dbi>=1.0.0
