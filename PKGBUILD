@@ -3,7 +3,7 @@
 
 pkgname=xdg-desktop-portal
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
@@ -24,6 +24,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  # pipewire 0.3
+  git cherry-pick -n a38901e5e7f835efe7b7a06c55790c8c20bc91a2
 
   # Make tests pass
   # https://github.com/flatpak/xdg-desktop-portal/issues/394
