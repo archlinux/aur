@@ -1,3 +1,0 @@
-post_install() {
-    cp ${pkgdir}/opt/${_pkgname}/bin/SequoiaRedactor /usr/bin
-}
