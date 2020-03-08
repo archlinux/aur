@@ -1,0 +1,12 @@
+[Unit]
+Description=Portainer
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=3
+Environment=BIND=:9000
+ExecStart=/usr/bin/portainer --bind $BIND --data /var/lib/portainer --template-file /etc/portainer/templates.json --assets /usr/lib/portainer
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,17 @@
+pkgbase = portainer-bin
+	pkgdesc = A lightweight docker management UI
+	pkgver = 1.23.1
+	pkgrel = 1
+	url = https://github.com/portainer/portainer
+	arch = x86_64
+	license = custom:zlib
+	provides = portainer
+	conflicts = portainer
+	source = portainer.service
+	source = portainer-1.23.1-src.tar.gz::https://github.com/portainer/portainer/archive/1.23.1.tar.gz
+	source = https://github.com/portainer/portainer/releases/download/1.23.1/portainer-1.23.1-linux-amd64.tar.gz
+	sha256sums = 968c0ce3d182e7daad58b02d2fd640a6944b2a2367ee5b3e3fc9f8139cdfc2bf
+	sha256sums = a2b2942e3c5a079822a9d88d611f3789d312c2f673f4554fca0be486fe4aff70
+	sha256sums = e161fdc6c54a2feb73ced0ef8369aaf216531b807f30269ec1a28e13a8ff9397
+
+pkgname = portainer-bin
