@@ -2,8 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.34.0
-pkgrel=2
+pkgver=3.34.0+23+gcac6d3a1
+pkgrel=1
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(gtk3 gstreamer gst-plugins-bad gst-plugins-base gst-plugins-good clutte
 makedepends=(gobject-introspection vala git appstream-glib meson yelp-tools)
 checkdepends=(xorg-server-xvfb)
 groups=(gnome)
-_commit=61ff7a2c26b618cb24be7ca3c050530671055602  # master
+_commit=cac6d3a11be0ea913afaef339e9ed8539acd95b7  # master
 source=("git+https://gitlab.gnome.org/GNOME/cheese.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -24,7 +24,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  git tag -f 3.34.0 61ff7a2c26b618cb24be7ca3c050530671055602  # Fixup missing tag
 }
 
 build() {
@@ -36,7 +35,9 @@ check() (
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/$pkgname/data}"
   export GSETTINGS_SCHEMA_DIR
 
-  xvfb-run meson test -C build --print-errorlogs
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local' \
+    meson test -C build --print-errorlogs
 )
 
 package() {
