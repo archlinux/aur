@@ -5,26 +5,22 @@ pkgbase = usd
 	url = https://www.openusd.org
 	arch = x86_64
 	license = Apache
+	makedepends = python2
 	makedepends = boost
 	makedepends = cmake
 	makedepends = git
 	makedepends = intel-tbb
 	makedepends = ninja
-	makedepends = python2-jinja
-	makedepends = python2-pyside-tools
 	depends = boost-libs
 	depends = glew
 	depends = openexr
 	depends = opensubdiv
-	depends = python2
-	depends = python2-opengl
-	depends = python2-pyside
 	provides = usd=19.11
 	source = git+https://github.com/PixarAnimationStudios/USD.git#tag=v19.11
 	source = boost_python2.patch
 	source = blender.patch
 	sha256sums = SKIP
-	sha256sums = 39b52f008bcebbd2bb57e165e85622b3452de9f10342b82f38e305d934486f46
+	sha256sums = dec16bd0270c9d682f34c555e38812ea010bee88907a02d6ce60f3f319b21425
 	sha256sums = a4b92e59eb6330109f65d1b168ad0c4b1292c5317f579dcbf0594df22ffbc587
 
 pkgname = usd

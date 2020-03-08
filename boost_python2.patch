@@ -15,7 +15,7 @@ index 9be215b36..031c64ab0 100644
 +            python27
          REQUIRED
      )
-+    # fix rest of code expecting 'Boost_PYTHON_LIBRAR'
++    # fix rest of code expecting 'Boost_PYTHON_LIBRARY'
 +    set(Boost_PYTHON_LIBRARY "${Boost_PYTHON27_LIBRARY}")
  
      # --Jinja2
