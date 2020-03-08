@@ -1,6 +1,6 @@
 pkgbase = dolphin-root-git
 	pkgdesc = KDE File Manager, patched to be able to run as root, based on dolphin-git sources
-	pkgver = r4888.8b12612
+	pkgver = raf45eb0af5219819f76b624162c75da83d763657
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = armv7h
