@@ -6,7 +6,7 @@ pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testb
 arch=('any')
 url="http://github.com/olofk/fusesoc/"
 license=('GPLv3')
-conflicts=('python-fusesoc-git')
+conflicts=('python-fusesoc')
 provides=('python-fusesoc')
 depends=('python' 'python-edalize')
 
