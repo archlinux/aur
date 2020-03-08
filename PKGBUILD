@@ -1,23 +1,30 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
+
 _cranname=askpass
 _cranver=1.1
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-askpass
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
-pkgdesc='Cross-platform utilities for prompting the user for credentials or a passphrase.'
-arch=('x86_64')
+pkgrel=1
+pkgdesc="Safe Password Entry for R, Git, and SSH"
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('MIT')
-depends=('r' 'r-sys')
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
+license=(MIT)
+depends=(r 'r-sys>=2.1')
+makedepends=(gcc)
+optdepends=(r-testthat)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('a00d6599ff99f501534c1d965a1fd3b4')
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir        
-}
-package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
 
+package() {
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
