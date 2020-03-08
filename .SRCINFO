@@ -33,7 +33,6 @@ pkgbase = r-recipes
 	optdepends = r-rann
 	optdepends = r-rcpproll
 	optdepends = r-rmarkdown
-	optdepends = r-rpart
 	optdepends = r-rsample
 	optdepends = r-rspectra
 	optdepends = r-testthat
