@@ -5,6 +5,7 @@ _perlmod=Travel-Routing-DE-VRR
 _pkgname=perl-travel-routing-de-vrr
 pkgname="${_pkgname}-git"
 _pkgver='latest'
+epoch=1
 pkgver=2.16+gdb888ca
 pkgrel=1
 pkgdesc='Unofficial efa.vrr.de command line client and Perl module'
@@ -31,9 +32,11 @@ sha256sums=(
 pkgver() {
   cd "${srcdir}/${_perlmod}"
   _descr="$(git describe --tags --long)"
-  _ver="$(echo "${_descr}" | awk -F '-' '{print $1}')"
-  _rev="$(echo "${_descr}" | awk -F '-' '{print $3}')"
-  echo "${_ver}+${_rev}"
+  _ver="$(printf '%s' "${_descr}" | awk -F '-' '{print $1}')"
+  _rev="r$(git rev-list --count HEAD)"
+  _hash="$(printf '%s' "${_descr}" | awk -F '-' '{print $3}')"
+  _date="$(git log -n 1 --format=tformat:%ci | awk '{print $1}' | tr -d '-')"
+  printf '%s\n' "${_ver}+${_rev}.${_date}.${_hash}"
 }
 
 build() {
