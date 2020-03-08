@@ -1,7 +1,7 @@
 # Maintainer: Ilya Kurin <4uf04eG@gmail.com>
 
 pkgname='music-overlay'
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('any')
 provides=('music-overlay')
