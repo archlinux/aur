@@ -3,13 +3,12 @@
 _plug=ediresample
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r19.0f209b6
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=171741'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-nnedi3-git'
+depends=('vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-dither-git'
          )
 makedepends=('git')
