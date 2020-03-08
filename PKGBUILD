@@ -1,7 +1,7 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server-git
-pkgver=r264.881da9e8
+pkgver=0.0.1.r0.881da9e8
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
  
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
  
 #prepare() {

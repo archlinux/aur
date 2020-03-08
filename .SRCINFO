@@ -1,6 +1,6 @@
 pkgbase = vala-language-server-git
 	pkgdesc = Language Server for Vala
-	pkgver = VERSION
+	pkgver = 0.0.1.r0.881da9e8
 	pkgrel = 1
 	url = https://github.com/benwaffle/vala-language-server
 	arch = x86_64
