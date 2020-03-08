@@ -4,7 +4,7 @@
 pkgname=ruby-tomlrb
 pkgver=1.2.9
 _gemname=${pkgname#ruby-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A racc based toml parser"
 arch=(any)
 url="https://rubygems.org/gems/${_gemname}"
