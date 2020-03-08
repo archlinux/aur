@@ -1,14 +1,14 @@
 # Maintainer: ProFfeSsoRr <evvsoft at gmail dot com>
 
 pkgname=cni-plugins-bin
-pkgver=0.8.1
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="Some CNI network plugins, maintained by the containernetworking team"
 arch=(x86_64)
 url="https://github.com/containernetworking/plugins"
 license=('Apache')
 source=("https://github.com/containernetworking/plugins/releases/download/v${pkgver}/cni-plugins-linux-amd64-v${pkgver}.tgz")
-sha256sums=('e9bfc78acd3ae71be77eb8f3e890cc9078a33cc3797703b8ff2fc3077a232252')
+sha256sums=('bd682ffcf701e8f83283cdff7281aad0c83b02a56084d6e601216210732833f9')
 
 package() {
   cd "$srcdir"
