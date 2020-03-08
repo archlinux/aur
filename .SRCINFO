@@ -10,7 +10,6 @@ pkgbase = r-prodlim
 	makedepends = gcc
 	depends = r>=2.9.0
 	depends = r-rcpp>=0.11.5
-	depends = r-kernsmooth
 	depends = r-lava
 	source = https://cran.r-project.org/src/contrib/prodlim_2019.11.13.tar.gz
 	md5sums = 4439266060d24ffef32a5e6bec3c01ef

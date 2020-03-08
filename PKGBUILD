@@ -10,7 +10,7 @@ pkgdesc="Product-Limit Estimation for Censored Event History Analysis"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2 GPL3)
-depends=('r>=2.9.0' 'r-rcpp>=0.11.5' r-kernsmooth r-lava)
+depends=('r>=2.9.0' 'r-rcpp>=0.11.5' r-lava)
 makedepends=(gcc)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
 md5sums=('4439266060d24ffef32a5e6bec3c01ef')
