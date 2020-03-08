@@ -1,14 +1,15 @@
 pkgbase = r-broom
-	pkgdesc = Convert statistical analysis objects into tidy tibbles.
+	pkgdesc = Convert Statistical Analysis Objects into Tidy Tibbles
 	pkgver = 0.5.5
 	pkgrel = 1
-	url = https://CRAN.R-project.org/package=broom
+	url = https://cran.r-project.org/package=broom
 	arch = any
 	license = MIT
 	depends = r>=3.1
 	depends = r-backports
 	depends = r-dplyr
 	depends = r-generics>=0.0.2
+	depends = r-nlme
 	depends = r-purrr
 	depends = r-reshape2
 	depends = r-stringr
@@ -23,7 +24,6 @@ pkgbase = r-broom
 	optdepends = r-bingroup
 	optdepends = r-boot
 	optdepends = r-brms
-	optdepends = r-btergm
 	optdepends = r-car
 	optdepends = r-caret
 	optdepends = r-coda
@@ -41,7 +41,6 @@ pkgbase = r-broom
 	optdepends = r-gmm
 	optdepends = r-hmisc
 	optdepends = r-irlba
-	optdepends = r-joinerml
 	optdepends = r-kendall
 	optdepends = r-knitr
 	optdepends = r-ks
@@ -54,7 +53,6 @@ pkgbase = r-broom
 	optdepends = r-lsmeans
 	optdepends = r-maps
 	optdepends = r-maptools
-	optdepends = r-matrix
 	optdepends = r-mclust
 	optdepends = r-mgcv
 	optdepends = r-muhaz
@@ -70,7 +68,6 @@ pkgbase = r-broom
 	optdepends = r-quantreg
 	optdepends = r-rgeos
 	optdepends = r-rmarkdown
-	optdepends = r-robust
 	optdepends = r-rsample
 	optdepends = r-rstan
 	optdepends = r-rstanarm
@@ -78,11 +75,11 @@ pkgbase = r-broom
 	optdepends = r-speedglm
 	optdepends = r-statnet.common
 	optdepends = r-survey
+	optdepends = r-survival
 	optdepends = r-testthat
 	optdepends = r-tseries
-	optdepends = r-xergm
 	optdepends = r-zoo
-	source = http://cran.r-project.org/src/contrib/broom_0.5.5.tar.gz
+	source = https://cran.r-project.org/src/contrib/broom_0.5.5.tar.gz
 	md5sums = 0c9ed3c2beb3a812712ccd7a5ae45ac6
 
 pkgname = r-broom
