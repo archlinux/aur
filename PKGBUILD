@@ -1,7 +1,7 @@
 # Maintainer: Doug Davis <ddavis at ddavis dot io>
 
 pkgname=python-pygram11
-pkgver=0.7.3
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="histogramming in python accelerated with OpenMP"
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://pypi.io/packages/source/p/pygram11/pygram11-$pkgver.tar.gz")
-sha256sums=('72ac1a62461c6bcba08e8b7ec81098ca266c5d44c84e3fe61ce07d52fe95e1d8')
+sha256sums=('d14a5b792ff17b6f6dea66d045d3033c670d77f81754a17f22f5b0899da77464')
 
 build() {
   cd "${srcdir}/pygram11-${pkgver}"
