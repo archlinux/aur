@@ -6,6 +6,8 @@ pkgbase = rock-dkms-git
 	arch = any
 	license = GPL
 	depends = dkms>=1.95
+	provides = rock-dkms
+	conflicts = rock-dkms
 	options = !strip
 	options = !emptydirs
 	backup = etc/modprobe.d/blacklist-radeon.conf

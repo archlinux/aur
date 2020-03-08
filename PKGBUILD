@@ -9,6 +9,8 @@ arch=('any')
 url="https://github.com/RadeonOpenCompute/ROCK-Kernel-Driver"
 license=('GPL')
 depends=('dkms>=1.95')
+provides=('rock-dkms')
+conflicts=('rock-dkms')
 backup=('etc/modprobe.d/blacklist-radeon.conf')
 options=('!strip' '!emptydirs')
 source=("http://repo.radeon.com/rocm/apt/debian/pool/main/r/rock-dkms/rock-dkms_${_pkgver}_all.deb")
