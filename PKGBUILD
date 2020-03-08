@@ -1,14 +1,14 @@
-# Maintainer: peippo <christoph.fink@gmail.com>
+# Maintainer: peippo <christoph+aur@christophfink.com>
 
-pkgname="fasttext-langid-models"
-pkgdesc="Library for fast text representation and classification – pre-trained models for language identification"
+pkgname=fasttext-langid-models
+pkgdesc="Pre-trained models for language identification for fasttext"
 url="https://fasttext.cc/docs/en/language-identification.html"
 
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 
 arch=("any")
-license=("custom:CC-BY-SA")
+license=("CCPL:by-sa")
 
 source=(
     "https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.bin"
