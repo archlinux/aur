@@ -18,7 +18,6 @@ build() {
     make
 }
 package() {
-    mkdir ${startdir}/${_pkgname}
     cd ${srcdir}/build
-    cp SequoiaRedactor ${startdir}/${_pkgname}
+	make INSTALL_ROOT="$pkgdir" install
 }
