@@ -2,7 +2,7 @@
 pkgname=python-fangfrisch
 _name=${pkgname#python-}
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Freshclam like utility that allows downloading unofficial virus definition files"
 arch=('any')
 license=('GPL')
@@ -12,13 +12,12 @@ provides=('clamav-unofficial-sigs')
 replaces=('clamav-unofficial-sigs')
 depends=('clamav' 'python' 'python-sqlalchemy')
 makedepends=('python-setuptools')
-#checkdepends=('python-pytest-runner')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rseichter/fangfrisch/archive/${pkgver}.tar.gz"
         "${_name}.conf"
         "${_name}.service"
         "${_name}.timer"
         "${_name}.tmpfiles")
-sha512sums=('eba0e8860ac6bd3e8ae30eac2f78594aaf59b26639de23956ff05d14e0eb90fc13b4741a49002265047ca44d6ab97b0defad993b9538b9b37cdab78be7e950b7'
+sha512sums=('c1ec85f58a24ccbce701cd7695a94ed0fadadae8cd384590fa801003b6f77417f95e9656a51c59f09ca30589f855c2a5a03f8445e689c3ba8b39a044b0c38d98'
             '695f6e9520e6742bd0b5f4124af8c1ee58adc8317c1fdd28eadd31c23cf984e36c49e71acba3c82441f550661e6b12c5a7d47932d1f02d001f7420f52dabbb87'
             '810fd48296fdac2b141ac8a9da02a9c133f3ae0b62177c62e72b03aab0c86b2c062f53ab070d4c5e8cbb7a6bfa6f9879225c46f604d9a0914deb0f0798a86f03'
             '5f17b94c2a86ed468ac12f84bd258b915cfaa1858cada3e59293489447c634c6401921d654000d87f8eca970bfba8a9506aced100902771d98efc7d4cdb27cb5'
@@ -31,10 +30,13 @@ build() {
     python setup.py build
 }
 
-#check() {
-#    cd $_name-$pkgver
-#    python setup.py pytest
-#}
+check() {
+    cd $_name-$pkgver
+    mkdir -p /tmp/fangfrisch/unittest
+    sqlite3 /tmp/fangfrisch/unittest/db.sqlite < tests/tests.sql
+    python -m unittest discover tests/
+    rm -rf /tmp/fangfrisch
+}
 
 package() {
     cd $_name-$pkgver
