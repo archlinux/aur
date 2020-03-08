@@ -1,7 +1,7 @@
 # Maintainer: Vanya Sergeev <v@sergeev.io>
 pkgname=luaradio
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A lightweight, embeddable software-defined radio framework built on LuaJIT"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://luaradio.io"
