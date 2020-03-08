@@ -11,7 +11,7 @@ depends=('libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk'
 url="https://gitfiend.com"
 options=('!strip')
 source=("https://gitfiend.com/resources/${_pkgname}_${pkgver}_amd64.deb")
-md5sums=('0c88beca8ec217579ea0c2937156c662')
+md5sums=('43a38daf10900fee56075277465db074')
 package() {
     tar -xvf data.tar.xz -C ${pkgdir}
     chmod 4755 ${pkgdir}/opt/GitFiend/chrome-sandbox
