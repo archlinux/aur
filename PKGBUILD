@@ -14,7 +14,7 @@ options=('!strip' '!emptydirs')
 source=("http://repo.radeon.com/rocm/apt/debian/pool/main/r/rock-dkms/rock-dkms_${_pkgver}_all.deb")
 sha256sums=('21f6caf7ffc4ef29a6cde7353fd9e2d0fc97d9e9755c62bc6af7a736126925c2')
 
-package(){
+package() {
   cd "$srcdir"
 
   tar xf data.tar.xz -C "$pkgdir"
