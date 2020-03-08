@@ -1,0 +1,41 @@
+diff --git a/requirements/python b/requirements/python
+index 01b7610..583a56e 100644
+--- a/requirements/python
++++ b/requirements/python
+@@ -1,14 +1,6 @@
+ # This file contains all python dependencies that are required by the textract
+ # package in order for it to properly work.
+ 
+-argcomplete==1.10.0
+-beautifulsoup4==4.8.0
+-chardet==3.0.4
+-docx2txt==0.8
+-EbookLib==0.17.1
+-extract-msg==0.23.1
+-pdfminer.six==20181108
+-python-pptx==0.6.18
+-six==1.12.0
+-SpeechRecognition==3.8.1
+-xlrd==1.2.0
++argcomplete
++chardet
++six
+diff --git a/setup.py b/setup.py
+index 2a8dbb9..362e39a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -57,7 +57,13 @@ setup(
+     ],
+     install_requires=dependencies,
+     extras_require={
+-        "pocketsphinx": ["pocketsphinx==0.1.15"]
++        "pocketsphinx": ["pocketsphinx"],
++        "beautifulsoup4": ["beautifulsoup4"],
++        "docx2txt": ["docx2txt"],
++        "pdfminer.six": ["pdfminer.six"],
++        "python-pptx": ["python-pptx"],
++        "SpeechRecognition": ["SpeechRecognition"],
++        "xlrd": ["xlrd"],
+     },
+     dependency_links=dependency_links,
+     zip_safe=False,
