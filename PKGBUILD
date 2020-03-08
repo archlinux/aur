@@ -3,13 +3,12 @@
 _plug=vshelpers
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('ffms2'
-         'vapoursynth'
+depends=('vapoursynth-plugin-ffms2-git'
          'vapoursynth-plugin-lsmashsource-git'
          'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-removedirtvs-git'
