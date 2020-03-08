@@ -32,13 +32,16 @@ prepare() {
   mkdir -p build
 
   cd ffms2
+
   mkdir -p src/config
-  autoreconf -vfi
 
 }
 
 build() {
-  cd build
+  cd ffms2
+  autoreconf -vfi
+  cd "${srcdir}/build"
+
   ../ffms2/configure \
     --prefix=/usr \
     --enable-avresample \
