@@ -3,14 +3,14 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=jellyfin
-pkgver=10.4.3
-pkgrel=2
+pkgver=10.5.0
+pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://github.com/jellyfin/jellyfin'
 license=('GPL2')
-depends=('dotnet-runtime-2.2' 'ffmpeg' 'sqlite')
-makedepends=('dotnet-sdk-2.2' 'yarn')
+depends=('dotnet-runtime>=3' 'aspnet-runtime>=3' 'ffmpeg' 'sqlite')
+makedepends=('dotnet-sdk>=3' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v$pkgver.tar.gz"
         "jellyfin-web-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin-web/archive/v$pkgver.tar.gz"
         'jellyfin.conf'
@@ -18,8 +18,8 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jellyfin/jellyfin/archive/v
         'jellyfin.sysusers'
         'jellyfin.tmpfiles')
 backup=('etc/conf.d/jellyfin')
-sha512sums=('3ba90df6f4eadeb0acc357c66e2f72e1c859068f6a300652df25ded1c1fe95149c2af81583cd0082f6e6a359b7b165e6b36f27e76b1cee5b3e0b5f63afc6d0e8'
-            'ed4bf44d1be78d2ef5d7771589fbfbd5071ebc9239a17ce72e6cade6124365cc5a3ed6ad70115bf405cf6ad12cec0c6d9004925f485210b9cf9f91ea97db7445'
+sha512sums=('49d0487ebfca3de2904b70010254914a0c2fd7c489d631ee60b94f5a14e6558120ff5676158cb6bde2c90a354673ccbcf5fd5d8b968ecb352b6a6bb775a8ad80'
+            'bd5a1e05dc06545d33cb34eddc0441495abe43de85b172d1c9d2d40069068641b592b4fb6104082fad9ccb44c807b92da08410ddfe86ac293cfa79f66aa74088'
             '2aa97a1a7a8a447171b59be3e93183e09cbbc32c816843cc47c6777b9aec48bd9c1d9d354f166e0b000ad8d2e94e6e4b0559aa52e5c159abbc103ed2c5afa3f0'
             '99d02080b1b92e731250f39ddd13ceca7129d69d0c05e0939620cbc3f499a9574668c63fa889704a4905560888131e980d7ab1fbcc5837b04d33ce26daa9d42b'
             '6fc2638e6ec4b1ee0240e17815c91107b694e5fde72c1bc7956c83067bbeacb632de899b86837e47a0ec04288131b15c20746373b45e0669c8976069a55d627a'
