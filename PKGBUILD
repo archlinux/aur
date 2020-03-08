@@ -20,12 +20,13 @@ sha256sums=('ac1f26ac5ea10d43b300675189c49437dcae7a9fca7e51f615058ab0550d27e5')
 
 prepare() {
   # Assist chroot builds with a persistent cargo cache (hat tip @ccorn for this patch)
-  msg2   "NOTE : If you're building in a (clean) chroot and want a persistant"
-  plain "        cargo cache folder specific for this package, you can create"
-  plain "        an empty '.cargo' directory next to the 'PKGBUILD'. This will"
-  plain "        be recognized and used as CARGO_HOME."
   if [ -d "$startdir/.cargo" ]; then
     export CARGO_HOME="${CARGO_HOME:-$startdir/.cargo}"
+  else
+    msg2 "NOTE : If you're building in a (clean) chroot and want a persistant
+            cargo cache folder specific for this package, you can create
+            an empty '.cargo' directory next to the 'PKGBUILD'. This will
+            be recognized and used as CARGO_HOME."
   fi
 }
 
