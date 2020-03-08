@@ -40,4 +40,7 @@ package() {
     mkdir -p ${pkgdir}/usr/share/pixmaps
     install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
     install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps
+    ##missing file fix
+    install -m 644 mudlet-lua/lua/geyser/GeyserUserWindow.lua ${pkgdir}/usr/share/mudlet/lua/geyser
+    
 }
