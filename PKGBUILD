@@ -3,13 +3,12 @@
 _plug=scoll
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-vshelpers-git'
+depends=('vapoursynth-plugin-vshelpers-git'
          'vapoursynth-plugin-nnedi3-git'
          'vapoursynth-plugin-sangnom'
          'vapoursynth-plugin-msmoosh-git'
