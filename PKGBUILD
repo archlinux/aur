@@ -1,6 +1,6 @@
 # Maintainer: Armin Fisslthaler <armin@fisslthaler.net>
 pkgname=syncany-git
-pkgver=0.4.8.alpha.g194955d
+pkgver=0.4.9.alpha.gd6c67419
 pkgrel=1
 pkgdesc="Cloud storage and filesharing application with a focus on security and abstraction of storage."
 arch=(any)
@@ -20,7 +20,7 @@ pkgver(){
 
 build(){
     cd "$srcdir/$pkgname"
-    ./gradlew installApp
+    ./gradlew installDist
 }
 
 package(){
