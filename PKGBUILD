@@ -1,6 +1,6 @@
 # Maintainer: Oliver Papst <opapst at ikp dot tu-darmstadt dot de>
 pkgname=python-rootpy-git
-pkgver=r3965.457e0740
+pkgver=r4020.3926935e
 pkgrel=1
 pkgdesc="Pythonic interface with ROOT on top of the existing PyROOT bindings"
 arch=('any')
@@ -12,7 +12,6 @@ depends=('python'
          'root')
 makedepends=('git' 'python-setuptools')
 optdepends=('python-numpy: Increase speed'
-            'python-root_numpy: Increase speed'
             'python-matplotlib: Plotting'
             'python-pytables: HDF5 IO in rootpy.root2hdf5'
             'readline: Roosh (interactive root shell)'
