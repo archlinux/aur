@@ -1,0 +1,33 @@
+pkgbase = nordnm-git
+	pkgdesc = A CLI tool for automating the importing, securing and usage of NordVPN OpenVPN servers through NetworkManager.
+	pkgver = 0.7.1_r29_g6f77aff
+	pkgrel = 1
+	url = https://github.com/Chadsr/NordVPN-NetworkManager
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = iputils
+	depends = sudo
+	depends = networkmanager
+	depends = openvpn
+	depends = networkmanager-openvpn
+	depends = python-requests
+	depends = python-numpy
+	depends = systemd
+	provides = nordnm
+	conflicts = nordnm
+	source = git+https://github.com/Chadsr/NordVPN-NetworkManager.git
+	md5sums = SKIP
+
+pkgname = nordnm-git
+	depends = python
+	depends = iputils
+	depends = sudo
+	depends = networkmanager
+	depends = openvpn
+	depends = networkmanager-openvpn
+	depends = python-requests
+	depends = python-numpy
+	depends = systemd
+
