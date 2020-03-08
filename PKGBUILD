@@ -5,7 +5,7 @@
 # or submit a pull request @ https://gtbjj.com/savagezen/pkgbuild 
 
 pkgname=phoronix-test-suite-git
-pkgver=9.4.0m2.r0.g4d080c55c
+pkgver=9.4.1.r12.geb863e596
 pkgrel=1
 pkgdesc="The most comprehensive testing and benchmarking platform available for Linux"
 arch=('any')
