@@ -1,7 +1,7 @@
 # Maintainer: mox <demox@lavabit.com>
 pkgname=cocotb
-pkgver=1.1
-pkgrel=1
+pkgver=1.3
+pkgrel=0
 epoch=0
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('x86_64') # Can probably support other architectures as well, try your luck?
