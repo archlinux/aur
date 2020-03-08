@@ -1,17 +1,24 @@
 pkgbase = r-ipred
 	pkgdesc = Improved Predictors
-	pkgver = 0.9.7
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ipred
+	arch = i686
 	arch = x86_64
-	license = GPL
-	depends = r
+	license = gpl2
+	license = gpl3
+	makedepends = gcc
+	depends = r>=2.10
+	depends = r-rpart>=3.1.8
+	depends = r-survival
+	depends = r-nnet
+	depends = r-class
 	depends = r-prodlim
 	optdepends = r-mvtnorm
 	optdepends = r-mlbench
 	optdepends = r-th.data
-	source = https://cran.r-project.org/src/contrib/ipred_0.9-7.tar.gz
-	md5sums = 99613c15d6ff4c4fd42644de48c05c20
+	source = https://cran.r-project.org/src/contrib/ipred_0.9-9.tar.gz
+	md5sums = 4587bddb82ce8bd16871f4f0e6bfd87a
 
 pkgname = r-ipred
 
