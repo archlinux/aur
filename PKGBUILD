@@ -2,14 +2,13 @@
 
 _plug=xaa
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v2.0.ga7766a0
-pkgrel=1
+pkgver=v3.0.g104f39e
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-eedi2-git'
+depends=('vapoursynth-plugin-eedi2-git'
          'vapoursynth-plugin-eedi3cl-git'
          'vapoursynth-plugin-nnedi3cl-git'
          'vapoursynth-plugin-sangnom'
