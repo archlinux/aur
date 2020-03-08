@@ -19,15 +19,15 @@ pkgver() {
 }
 
 build() {
-  cd $_gitname/
+    cd $_gitname/
 
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd $_gitname/
+    cd $_gitname/
 
-  make PREFIX=/usr DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" install
 }
