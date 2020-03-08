@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=vivaldi-snapshot-ffmpeg-codecs
-pkgver=80.0.3987.122
+pkgver=81.0.4044.42
 _vivaldi_major_version=2.12
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for vivaldi"
@@ -18,13 +18,13 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('3a022c55f5745f2cfb7e28efb113f78ff686da638cd02f0585ef1ae8620f81ece864bc27b4e0a88daf3f409ff565a9b80b8859d1fd7d62c8b1d26cb8b311acc5')
+sha512sums=('de8b48f47143a0757b2bd6d4a0e0d946a43c33627b83f144439783d26db921d20a64bfa229993c9d368babda9e4d01db18c56bf3cb682c656e310ffd6c38d293')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
-  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
+  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i || true
 
   # force some 'older' binaries in the path
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
