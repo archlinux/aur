@@ -26,9 +26,10 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-2.8-git
-pkgver=2.83.r93950.gafe6df1487f
+pkgver=2.83.r93958.g946d39f6883
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
+changelog=blender.changelog
 arch=('i686' 'x86_64')
 url="https://blender.org/"
 depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg'
