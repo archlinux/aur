@@ -1,7 +1,7 @@
 pkgbase = kbd-tapper
 	pkgdesc = A keyboard layout selector for Gnome Shell, X Window System and Wayland
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://kbd-tapper.sourceforge.net/en.html
 	arch = x86_64
 	license = GPL
