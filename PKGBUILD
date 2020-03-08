@@ -1,26 +1,30 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=gower
-_cranver=0.1.2
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-gower
+_cranver=0.2.1
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Gowers Distance"
-arch=('x86_64')
+pkgdesc="Gower's Distance"
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL3')
-depends=('r' )
+license=(GPL3)
+depends=(r)
+makedepends=(gcc)
+optdepends=(r-tinytest)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('e264a32ea2b7f74fac4094973eb5875a')
 
-optdepends=('r-testthat' 'r-knitr' 'r-rmarkdown')
+build() {
+  cd "${srcdir}"
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('015edef1ad21557bbb18751dd827fde4')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
