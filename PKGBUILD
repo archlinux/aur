@@ -3,13 +3,12 @@
 _plug=mcdegrainsharp
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r5
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-tcanny-git'
+depends=('vapoursynth-plugin-tcanny-git'
          'vapoursynth-plugin-mvtools-git'
          )
 makedepends=('git')
