@@ -1,13 +1,13 @@
 pkgbase = future-fetch
 	pkgdesc = Simple fetch script
-	pkgver = 0.7.4
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/futureFetch
 	arch = x86_64
 	license = MIT
 	depends = pacman-contrib
-	source = future-fetch-0.7.4-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.7.4/future-fetch
-	sha512sums = 408159bd2a1ae39760b90549ea0fd751d9b1341bbfa64aa0062b78c7f94bea5e65e624518795176df9f640cae72709cc8c4d0959e7bcd3f0faedb9c8b45e0596
+	source = future-fetch-0.7.5-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.7.5/future-fetch
+	sha512sums = 6c5a49d3b3f15c49a8cb447cfbdf555fbee3d2bd5c3f43302d73267b822ae5afd13f4388ce003d0d6b5dd66b3fe74217f08774f0fe31c8791da4464f8b6402b0
 
 pkgname = future-fetch
 
