@@ -2,14 +2,13 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r31.0.g771ef4b
-pkgrel=2
+pkgver=r32.5.g57699dd
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-addgrain-git'
+depends=('vapoursynth-plugin-addgrain-git'
          'vapoursynth-plugin-adjust-git'
          'vapoursynth-plugin-awarpsharp2-git'
          'vapoursynth-plugin-bilateral-git'
@@ -24,7 +23,7 @@ depends=('vapoursynth'
          'vapoursynth-plugin-fft3dfilter-git'
          'vapoursynth-plugin-fmtconv-git'
          'vapoursynth-plugin-hqdn3d-git'
-         'vapoursynth-plugin-knlmeanscl'
+         'vapoursynth-plugin-knlmeanscl-git'
          'vapoursynth-plugin-mvsfunc-git'
          'vapoursynth-plugin-mvtools-git'
          'vapoursynth-plugin-nnedi3_resample-git'
