@@ -1,0 +1,18 @@
+pkgbase = color-filters-reconstruction-git
+	pkgdesc = Very accurate color filters reconstruction tools based on 3D color LUTs
+	pkgver = r53.a01b174
+	pkgrel = 1
+	url = https://github.com/homm/color-filters-reconstruction
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python-numpy
+	depends = python-pillow>=4.0
+	depends = python-scipy
+	provides = color-filters-reconstruction
+	conflicts = color-filters-reconstruction
+	source = color-filters-reconstruction::git+https://github.com/homm/color-filters-reconstruction.git
+	md5sums = SKIP
+
+pkgname = color-filters-reconstruction-git
+
