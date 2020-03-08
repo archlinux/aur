@@ -1,8 +1,8 @@
-pkgbase = cocotb
+pkgbase = cocotb-git
 	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
 	pkgver = r2445.e9490fab
 	pkgrel = 1
-	url = https://github.com/cocotb
+	url = https://github.com/cocotb/cocotb
 	arch = any
 	license = BSD
 	makedepends = git
@@ -13,6 +13,7 @@ pkgbase = cocotb
 	conflicts = cocotb
 	options = !emptydirs
 	source = git+https://github.com/cocotb/cocotb
-	md5sums = SKIP
+	sha256sums = SKIP
 
-pkgname = cocotb
+pkgname = cocotb-git
+
