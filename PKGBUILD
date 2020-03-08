@@ -1,28 +1,31 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=devtools
-_cranver=1.13.6
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-devtools
+_cranver=2.2.2
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
 pkgdesc="Tools to Make Developing R Packages Easier"
-arch=('any')
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL')
-depends=('r' 'r-httr>=0.4' 'r-memoise>=1.0.0' 'r-whisker' 'r-digest' 'r-rstudioapi>=0.2.0' 'r-jsonlite' 'r-git2r>=0.11.0' 'r-withr')
+license=(GPL2 GPL3)
+depends=('r>=3.0.2' 'r-usethis>=1.5.0' r-callr r-cli 'r-covr>=3.2.0' r-crayon r-desc r-digest r-dt 'r-ellipsis>=0.3.0' r-glue 'r-git2r>=0.23.0' 'r-httr>=0.4' r-jsonlite 'r-memoise>=1.0.0' 'r-pkgbuild>=1.0.3' 'r-pkgload>=1.0.2' 'r-rcmdcheck>=1.3.3' 'r-remotes>=2.1.1' r-rlang 'r-roxygen2>=6.1.1' 'r-rstudioapi>=0.7' r-rversions 'r-sessioninfo>=1.1.1' 'r-testthat>=2.1.1' r-withr)
+optdepends=(r-biocmanager r-bitops r-curl r-evaluate r-foghorn r-gmailr r-knitr r-lintr r-mockery r-pingr r-pkgdown r-rcpp r-rhub r-rmarkdown r-spelling r-whisker)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('b520d1cd069f6926a9f4afd7c495ca51')
 
-optdepends=('r-curl' 'r-crayon' 'r-testthat' 'r-biocinstaller' 'r-rcpp' 'r-rmarkdown' 'r-knitr' 'r-hunspell' 'r-lintr' 'r-bitops' 'r-roxygen2' 'r-evaluate' 'r-rversions' 'r-covr' 'r-gmailr')
+build() {
+  cd "${srcdir}"
 
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
-md5sums=('c63960650be0465e9f36b009f53fb620')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}

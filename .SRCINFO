@@ -1,36 +1,55 @@
 pkgbase = r-devtools
 	pkgdesc = Tools to Make Developing R Packages Easier
-	pkgver = 1.13.6
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=devtools
 	arch = any
-	license = GPL
-	depends = r
-	depends = r-httr>=0.4
-	depends = r-memoise>=1.0.0
-	depends = r-whisker
+	license = GPL2
+	license = GPL3
+	depends = r>=3.0.2
+	depends = r-usethis>=1.5.0
+	depends = r-callr
+	depends = r-cli
+	depends = r-covr>=3.2.0
+	depends = r-crayon
+	depends = r-desc
 	depends = r-digest
-	depends = r-rstudioapi>=0.2.0
+	depends = r-dt
+	depends = r-ellipsis>=0.3.0
+	depends = r-glue
+	depends = r-git2r>=0.23.0
+	depends = r-httr>=0.4
 	depends = r-jsonlite
-	depends = r-git2r>=0.11.0
+	depends = r-memoise>=1.0.0
+	depends = r-pkgbuild>=1.0.3
+	depends = r-pkgload>=1.0.2
+	depends = r-rcmdcheck>=1.3.3
+	depends = r-remotes>=2.1.1
+	depends = r-rlang
+	depends = r-roxygen2>=6.1.1
+	depends = r-rstudioapi>=0.7
+	depends = r-rversions
+	depends = r-sessioninfo>=1.1.1
+	depends = r-testthat>=2.1.1
 	depends = r-withr
-	optdepends = r-curl
-	optdepends = r-crayon
-	optdepends = r-testthat
-	optdepends = r-biocinstaller
-	optdepends = r-rcpp
-	optdepends = r-rmarkdown
-	optdepends = r-knitr
-	optdepends = r-hunspell
-	optdepends = r-lintr
+	optdepends = r-biocmanager
 	optdepends = r-bitops
-	optdepends = r-roxygen2
+	optdepends = r-curl
 	optdepends = r-evaluate
-	optdepends = r-rversions
-	optdepends = r-covr
+	optdepends = r-foghorn
 	optdepends = r-gmailr
-	source = https://cran.r-project.org/src/contrib/Archive/devtools/devtools_1.13.6.tar.gz
-	md5sums = c63960650be0465e9f36b009f53fb620
+	optdepends = r-knitr
+	optdepends = r-lintr
+	optdepends = r-mockery
+	optdepends = r-pingr
+	optdepends = r-pkgdown
+	optdepends = r-rcpp
+	optdepends = r-rhub
+	optdepends = r-rmarkdown
+	optdepends = r-spelling
+	optdepends = r-whisker
+	source = https://cran.r-project.org/src/contrib/devtools_2.2.2.tar.gz
+	md5sums = b520d1cd069f6926a9f4afd7c495ca51
 
 pkgname = r-devtools
 
