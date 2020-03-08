@@ -5,21 +5,21 @@
 
 pkgname=lightzone-git
 _pkgname=lightzone
-pkgver=4.1.9
+pkgver=4.2.0.r0.g1521dcca
 pkgrel=1
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom (latest git version)"
 url="http://lightzoneproject.org/"
 license=('custom:BSD-3-Clause')
 arch=('i686' 'x86_64')
-depends=('java-runtime=8' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
-makedepends=('java-environment=8' 'ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
+depends=('java-runtime=11' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff' 'libxml2')
+makedepends=('java-environment=11' 'ant' 'autoconf' 'gcc' 'make' 'git' 'libx11' 'pkg-config' 'rsync' 'javahelp2' 'lcms2' 'libjpeg-turbo' 'libtiff')
 conflicts=('lightzone')
 source=('git+https://github.com/Aries85/LightZone.git')
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/LightZone"
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
@@ -28,10 +28,10 @@ MAKEFLAGS="-j1"
 
 build() { 
   cd "${srcdir}/LightZone/"
-  if [ -d /usr/lib/jvm/java-8-jdk ]; then
-    export JAVA_HOME=/usr/lib/jvm/java-8-jdk
+  if [ -d /usr/lib/jvm/java-11-jdk ]; then
+    export JAVA_HOME=/usr/lib/jvm/java-11-jdk
   else
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
   fi
 
   ant -f linux/build.xml jar
