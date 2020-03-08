@@ -31,6 +31,6 @@ md5sums=('4db3d270943da293cf4dd7ce22594307')
 
 package() {
     cd "${srcdir}/cocotb"
-    python setup.py install --root="${pkgdir}/" --optimize=1
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+    install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
