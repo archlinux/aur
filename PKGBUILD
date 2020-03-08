@@ -3,13 +3,12 @@
 _plug=dfmderainbow
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v2.0.g22faeb5
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/dubhater/vapoursynth-${_plug}"
 license=('GPL')
-depends=('vapoursynth'
-         'vapoursynth-plugin-temporalmedian-git'
+depends=('vapoursynth-plugin-temporalmedian-git'
          'vapoursynth-plugin-temporalsoften2-git'
          'vapoursynth-plugin-fluxsmooth-git'
          'vapoursynth-plugin-msmoosh-git'
