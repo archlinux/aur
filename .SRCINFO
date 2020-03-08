@@ -1,0 +1,11 @@
+pkgbase = firefox-china-extra-searchplus-meta
+	pkgdesc = 火狐中国版浏览器的搜索增强元包
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MPL
+	depends = firefox-china-extra-searchplugins-baidu
+	depends = firefox-china-extra-searchplugins-amazondotcn
+
+pkgname = firefox-china-extra-searchplus-meta
+
