@@ -3,10 +3,13 @@ pkgbase = r-backports
 	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=backports
+	arch = i686
 	arch = x86_64
+	license = GPL2
 	license = GPL3
-	depends = r
-	source = http://cran.r-project.org/src/contrib/backports_1.1.5.tar.gz
+	makedepends = gcc
+	depends = r>=3.0.0
+	source = https://cran.r-project.org/src/contrib/backports_1.1.5.tar.gz
 	md5sums = 3e22dd9c53fa5822c14b2d476f86a0ea
 
 pkgname = r-backports
