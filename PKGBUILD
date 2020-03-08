@@ -16,25 +16,25 @@ source=("https://pypi.io/packages/source/${_pkgsrcname::1}/$_pkgsrcname/$_pkgsrc
 md5sums=("b6ec1fd903e8bbaebc06e0c257c9dc53")
 
 prepare() {
-	mv $_pkgsrcname-$pkgver $_pkgname-$pkgver
-	cp -r $_pkgname-$pkgver $_pkgname2-$pkgver
+  mv $_pkgsrcname-$pkgver $_pkgname-$pkgver
+  cp -r $_pkgname-$pkgver $_pkgname2-$pkgver
 }
 
 build() {
-	cd $_pkgname-$pkgver
-	python setup.py build
-	cd ../$_pkgname2-$pkgver
-	python2 setup.py build
+  cd $_pkgname-$pkgver
+  python setup.py build
+  cd ../$_pkgname2-$pkgver
+  python2 setup.py build
 }
 
 package_python-pulse-control() {
-	depends=("python" "pulseaudio")
-	cd $_pkgname-$pkgver
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  depends=("python" "pulseaudio")
+  cd $_pkgname-$pkgver
+  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
 package_python2-pulse-control() {
-	depends=("python2" "pulseaudio")
-	cd $_pkgname2-$pkgver
-	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  depends=("python2" "pulseaudio")
+  cd $_pkgname2-$pkgver
+  python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
