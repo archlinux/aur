@@ -3,9 +3,10 @@
 pkgname=otf-inter
 _pkgname=Inter
 pkgver=3.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Inter is a typeface carefully crafted & designed for computer screens."
 arch=('any')
+conflicts=('inter-font')
 url="https://github.com/rsms/inter"
 license=('custom:OFL')
 depends=(fontconfig xorg-font-utils)
