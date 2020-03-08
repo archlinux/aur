@@ -10,7 +10,7 @@ license=('GPL3' 'LGPL3')
 depends=('qt5-base' 'patchelf')
 makedepends=('git' 'cmake')
 provides=('linuxdeployqt')
-_commit="8b484dabec41c40b6553e965c1928d5c94f961e6"
+_commit="37631e5640d8f7c31182fa72b31266bbdf6939fc"
 source=("git+https://github.com/probonopd/linuxdeployqt.git#commit=${_commit}")
 md5sums=('SKIP')
 
