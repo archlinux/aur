@@ -1,6 +1,6 @@
 pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 3.0.0
+	pkgver = 3.0.0.r0.g94be622
 	pkgrel = 1
 	url = https://github.com/shuLhan/rescached-go
 	arch = i686
@@ -14,6 +14,8 @@ pkgbase = rescached-git
 	provides = rescached
 	backup = etc/rescached/rescached.cfg
 	backup = etc/rescached/hosts.d/hosts.block
+	backup = etc/rescached/localhost.cert.pem
+	backup = etc/rescached/localhost.key.pem
 	source = rescached-git::git+https://github.com/shuLhan/rescached-go.git
 	sha1sums = SKIP
 

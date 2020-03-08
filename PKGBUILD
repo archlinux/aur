@@ -1,6 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=3.0.0
+pkgver=3.0.0.r0.g94be622
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -21,6 +21,8 @@ sha1sums=(
 backup=(
 	'etc/rescached/rescached.cfg'
 	'etc/rescached/hosts.d/hosts.block'
+	'etc/rescached/localhost.cert.pem'
+	'etc/rescached/localhost.key.pem'
 )
 
 pkgver() {
