@@ -1,11 +1,12 @@
 pkgbase = vkbasalt
 	pkgdesc = A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.
 	pkgver = 0.3.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/DadSchoorse/vkBasalt
 	install = vkbasalt.install
 	arch = x86_64
 	license = zlib
+	makedepends = git
 	depends = glslang
 	depends = vulkan-headers
 	depends = vulkan-tools
