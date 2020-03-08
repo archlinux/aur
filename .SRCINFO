@@ -1,0 +1,19 @@
+pkgbase = ruby-faraday-0.17
+	pkgdesc = HTTP/REST API client library.
+	pkgver = 0.17.3
+	pkgrel = 1
+	url = https://github.com/lostisland/faraday
+	arch = any
+	license = MIT
+	makedepends = ruby-rdoc
+	depends = ruby
+	depends = ruby-multipart-post>=1.2
+	depends = ruby-multipart-post<3
+	provides = ruby-faraday=0.17.3
+	noextract = faraday-0.17.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/faraday-0.17.3.gem
+	sha512sums = 5e950a01181692224767b598924fd3892696f7d56688e33281b031af7b047ca3e7ccdedbd486f82fd1fed6779b24517523d3177407435aa50cccb9cb95b43143
+
+pkgname = ruby-faraday-0.17
+
