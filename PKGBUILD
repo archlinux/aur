@@ -24,5 +24,5 @@ check() {
 
 package() {
     cd "${pkgname}-${pkgver}"
-    install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/motd
+    install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}
 }
