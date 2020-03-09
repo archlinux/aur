@@ -34,7 +34,7 @@ build() {
   chmod 755 "${srcdir}"/azurespheresdk/Tools/azsphere_slattach
   chmod 755 "${srcdir}"/azurespheresdk/Tools/azsphere_connect.sh
 
-  for sysroot in 3 3+Beta1909; do
+  for sysroot in 3 3+Beta1909 4+Beta2001; do
     chmod 755 "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh
     "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh -d "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/ -y
   done
