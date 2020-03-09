@@ -8,15 +8,15 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!493' '!575' '!579' '!719' '!724' '!762' '!983' '!1000')
-_merge_requests_to_use=('!493' '!575' '!579' '!719' '!724' '!762' '!983' '!1000') # Saren's pick
-# _merge_requests_to_use=('!575' '!983' '!1000')
+# available MR: ('!493' '!575' '!579' '!719' '!983' '!1000')
+_merge_requests_to_use=('!493' '!575' '!579' '!719' '!724' '!983' '!1000') # Saren's pick
+# _merge_requests_to_use=('!575' '!719' '!724' '!983' '!1000')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.34.3+1+g78a45e181
-pkgrel=4
+pkgver=3.36.0
+pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -26,22 +26,16 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanber
          gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server "sysprof>=3.34")
 checkdepends=(xorg-server-xvfb)
-provides=(mutter mutter-781835-workaround)
+provides=(mutter mutter-781835-workaround libmutter-6.so)
 conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=78a45e18133bd4c789ec5a24828ffcda372743d3  # gnome-3-34
+_commit=6b852e6cb30559b2ab56bb29ccc2e8f95aa89f89  # tags/3.36.0^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        0001-EGL-Include-EGL-eglmesaext.h.patch
-	0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
-	0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch
         https://gitlab.gnome.org/GNOME/mutter/merge_requests/724.diff)
 sha256sums=('SKIP'
-            '8440403c1862187b648e3ddd20056666f1a9fea38d0511d7bdf4422ce70b4139'
-            '9f6881cd9fe2031b7119288972d3b921358f387b8cbfbd4c624a0dc33abce8e2'
-            '0ad4084834b6314873d2dc0a9c8bb3b30f0a6106fa44aac98a54129ec0fc0b2c'
-            '7bcb46429e27b92c15cfe820b7079bf6e4cd4f2f67b4f3226f0d40879f779f9f')
+            'c8cf39ce12e325a955f9cd41731da3a419dfe196efacedd587ddf4e354f43b17')
 
 pkgver() {
   cd $pkgname
@@ -154,11 +148,11 @@ prepare() {
   # Title: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
   # Type: 1
-  # Status: 4
+  # Status: 1
   # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/commit/97140ab6346bd29208e99c9c9aab892c2eec0e52
   #          Use together with !762 to fix one of its issues.
-  pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
-  pick_mr '!762' 'renderer-native: Check that frame_info != NULL'
+  # pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
+  # pick_mr '!762' 'renderer-native: Check that frame_info != NULL'
 
   # Title: clutter/text: Check if attributes are equal before applying
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/983
@@ -170,33 +164,26 @@ prepare() {
   # Title: clutter-actor: Add detail to captured-event
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/1000
   # Type: 1
-  # Status: 2
+  # Status: 1
   # Comment:
-  pick_mr '!1000' 'clutter-actor: Add detail to captured-event'
+  # pick_mr '!1000' 'clutter-actor: Add detail to captured-event'
 
   # Title: Sync timelines to hardware vsync
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
   # Type: 1
   # Status: 2
   # Comment: Stolen from AUR comments
-  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition -fno-strict-aliasing" LDFLAGS+=" -Wl,-Bsymbolic"
   pick_mr '!724' '../724.diff' 'patch'
-
-  # fix build with libglvnd's EGL headers
-  git apply -3 ../0001-EGL-Include-EGL-eglmesaext.h.patch
-
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/918
-  git apply -3 ../0002-surface-actor-wayland-Do-not-send-frame-callbacks-if.patch
-
-  # https://gitlab.gnome.org/GNOME/mutter/merge_requests/956
-  git apply -3 ../0003-xwayland-Do-not-queue-frame-callbacks-unconditionall.patch
 
 }
 
 build() {
+  CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
+  LDFLAGS+=" -Wl,-Bsymbolic-functions"
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
+    -D xwayland_initfd=disabled \
     -D installed_tests=false
   ninja -C build
 }
@@ -208,8 +195,9 @@ check() (
 
   # Unexpected passes in conform test
   # Stacking test flaky
-  dbus-run-session xvfb-run -s '+iglx -noreset' meson test -C build --print-errorlogs || :
-)
+  dbus-run-session xvfb-run \
+    -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
+    meson test -C build --print-errorlogs || :)
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
