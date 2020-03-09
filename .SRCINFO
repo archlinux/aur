@@ -1,0 +1,12 @@
+pkgbase = sooperlooper.lv2-git
+	pkgdesc = A LV2 version of the old LADSPA SooperLooper plugin.
+	pkgver = r54.d3e8002
+	pkgrel = 1
+	url = https://github.com/moddevices/sooperlooper-lv2-plugin
+	arch = x86_64
+	license = GPL
+	source = sooperlooper.lv2-git::git+https://github.com/moddevices/sooperlooper-lv2-plugin
+	md5sums = SKIP
+
+pkgname = sooperlooper.lv2-git
+
