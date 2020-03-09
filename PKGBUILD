@@ -4,8 +4,8 @@
 # Maintainer: Rafael Fontenelle <rafaelff@gnome.org>
 
 pkgname=jhbuild
-pkgver=3.35.2+23+g75b39363
-pkgrel=2
+pkgver=3.36.0
+pkgrel=1
 pkgdesc='Tool to build the whole GNOME desktop from sources'
 arch=('any')
 url='https://wiki.gnome.org/Projects/Jhbuild'
@@ -17,11 +17,11 @@ optdepends=('subversion: fetch subversion repositories'
             'bzr: fetch Bazaar repositories'
             'mercurial: fetch Mercurial repositories'
             'darcs: fetch Darcs repositories')
-_commit=75b39363
+_commit=a05fc06b
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/jhbuild.git#commit=$_commit"
         "module_args.patch")
 sha256sums=('SKIP'
-            '75f1d28a3b52f7889476f17c985a3c82d07c488283f591448dac6732be3db693')
+            'eca850a9cfd80295d6b748838578218829fd63ef885630d507d095542626bd93')
 
 pkgver() {
   cd $pkgname
@@ -42,7 +42,7 @@ build() {
 
 check() {
   cd $pkgname
-  make -k check || true
+  make -k check
 }
 
 package() {
@@ -52,9 +52,6 @@ package() {
   install -Dm644 examples/wayland.jhbuildrc "$pkgdir/usr/share/jhbuild/examples/wayland.jhbuildrc"
   install -Dm644 contrib/jhbuild_completion.bash "$pkgdir/usr/share/bash-completion/completions/jhbuild"
   sed -i "s|$srcdir/$pkgname|$HOME/jhbuild|g" "$pkgdir"/usr/bin/jhbuild
-
-  # https://gitlab.gnome.org/GNOME/jhbuild/issues/51
-  rm "$pkgdir/usr/bin/python2"
 }
 
 # 'jhbuild sysdeps --install' should install all extra dependencies,
@@ -64,16 +61,12 @@ depends+=(
 
      # at AUR, required by 'jhbuild sysdeps'
     plymouth
-    fwupdate
 
-     # from official repositories, but not found by 'jhbuild sysdeps'
+     # from official repositories, but not installed by 'jhbuild sysdeps'
     spice-protocol
-    libmypaint
-    gobject-introspection
     gtk-sharp-2
+    libevent
 
      # other reasons
-    perl-sgmls # required by gnome-color-manager
-    docbook-sgml # required by gnome-color-manager
     unicode-character-database # required by ibus
 )

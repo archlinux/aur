@@ -1,25 +1,22 @@
 Arguments needed to smoothly build modules without further config by the user
 
 Details:
- - ibus: fails due to wrong UCD directory
- - gst-plugins-bad: might try to enable vulkan extension when some very common
-                    packages are installed, but vulkan-headers is not.
+ - gst-plugins-bad: might try to enable vulkan extension when
+                    some very common packages are installed,
+                    but vulkan-headers is not.
 
 diff --git a/jhbuild/defaults.jhbuildrc b/jhbuild/defaults.jhbuildrc
-index bb211464..c94d8f04 100644
+index 6820d994..a41f4ba5 100644
 --- a/jhbuild/defaults.jhbuildrc
 +++ b/jhbuild/defaults.jhbuildrc
-@@ -91,7 +91,11 @@ repos = {}
- cvsroots = {}
- svnroots = {}
+@@ -93,7 +93,9 @@ svnroots = {}
  branches = {}
--module_autogenargs = {}
-+module_autogenargs = {
-+    'ibus': '--with-ucd-dir=/usr/share/unicode/',
-+}
+ module_autogenargs = {}
  module_cmakeargs = {}
 -module_mesonargs = {}
 +module_mesonargs = {
 +    'gst-plugins-bad': '-D vulkan=disabled',
 +}
  module_makeargs = {}
+ module_ninjaargs = {}
+ module_extra_env = {}
