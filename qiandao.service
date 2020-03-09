@@ -1,0 +1,14 @@
+[Unit]
+Description=Qiandao - An automatic check-in framework base on an HAR editor
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=qiandao
+Group=qiandao
+DynamicUser=yes
+ReadWritePaths=/var/lib/qiandao
+ExecStart=/usr/bin/qiandao
+
+[Install]
+WantedBy=multi-user.target
