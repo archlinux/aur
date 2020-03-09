@@ -1,3 +1,7 @@
+# First commit by yw662
+# Manteined by katoitalia
+# Thanks to aorth for his check-firmware-version.sh
+
 contenturl=https://cdn.download.clearlinux.org/update
 manifest_file=Manifest.linux-firmware
 
