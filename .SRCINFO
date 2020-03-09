@@ -5,6 +5,7 @@ pkgbase = guiscrcpy
 	url = https://srevinsaju.github.io/guiscrcpy
 	arch = any
 	license = GPL3
+	makedepends = git
 	makedepends = python-setuptools
 	depends = scrcpy
 	depends = python-gitpython

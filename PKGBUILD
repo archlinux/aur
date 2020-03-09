@@ -7,7 +7,7 @@ arch=('any')
 url="https://srevinsaju.github.io/guiscrcpy"
 license=('GPL3')
 depends=('scrcpy' 'python-gitpython' 'python-pyqt5' 'python-psutil' 'python-pynput')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=('python-pystray: for Notification Auditor'
             'usbaudio: AOA audio, deprecated since Android 8.0')
 source=("git+https://github.com/srevinsaju/guiscrcpy.git#tag=$pkgver"
