@@ -1,0 +1,14 @@
+pkgbase = r-ini
+	pkgdesc = Read and Write '.ini' Files
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=ini
+	arch = any
+	license = GPL3
+	depends = r
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/ini_0.3.1.tar.gz
+	md5sums = b0e2d7388fc69327d3c4bbaab9067f3d
+
+pkgname = r-ini
+
