@@ -1,24 +1,22 @@
 diff --git a/src/sage/lfunctions/dokchitser.py b/src/sage/lfunctions/dokchitser.py
-index 680ac17dfd..1fe0671c10 100644
+index 680ac17dfd..1bf8953a77 100644
 --- a/src/sage/lfunctions/dokchitser.py
 +++ b/src/sage/lfunctions/dokchitser.py
-@@ -110,8 +110,7 @@ class Dokchitser(SageObject):
-         sage: L.taylor_series(1,4)
+@@ -111,7 +111,7 @@ class Dokchitser(SageObject):
          0.000000000000000 + 0.305999773834052*z + 0.186547797268162*z^2 - 0.136791463097188*z^3 + O(z^4)
          sage: L.check_functional_equation()
--        6.11218974700000e-18                            # 32-bit
+         6.11218974700000e-18                            # 32-bit
 -        6.04442711160669e-18                            # 64-bit
-+        6.11218974700000e-18
++        6.11218974738703e-18                            # 64-bit
  
      RANK 2 ELLIPTIC CURVE:
  
-@@ -669,8 +668,7 @@ class Dokchitser(SageObject):
- 
+@@ -670,7 +670,7 @@ class Dokchitser(SageObject):
              sage: L = Dokchitser(conductor=1, gammaV=[0], weight=1, eps=1, poles=[1], residues=[-1], init='1')
              sage: L.check_functional_equation()
--            -1.35525271600000e-20                        # 32-bit
+             -1.35525271600000e-20                        # 32-bit
 -            -2.71050543121376e-20                        # 64-bit
-+            -1.35525271600000e-20
++            -1.35525271560688e-20                        # 64-bit
  
          If we choose the sign in functional equation for the
          `\zeta` function incorrectly, the functional equation
@@ -39,6 +37,16 @@ diff --git a/src/sage/schemes/elliptic_curves/ell_number_field.py b/src/sage/sch
 index 2967f085ca..b423c2b7ed 100644
 --- a/src/sage/schemes/elliptic_curves/ell_number_field.py
 +++ b/src/sage/schemes/elliptic_curves/ell_number_field.py
+@@ -302,7 +302,8 @@ class EllipticCurve_number_field(EllipticCurve_field):
+             (3,
+              3,
+              [(0 : 0 : 1),
+-              (-1/2*zeta43_0^2 - 1/2*zeta43_0 + 7 : -3/2*zeta43_0^2 - 5/2*zeta43_0 + 18 : 1)])
++              (-1/2*zeta43_0^2 - 1/2*zeta43_0 + 7 : -3/2*zeta43_0^2 - 5/2*zeta43_0 + 18 : 1),
++              (5/8*zeta43_0^2 + 17/8*zeta43_0 - 9/4 : -27/16*zeta43_0^2 - 103/16*zeta43_0 + 39/8 : 1)])
+         """
+         verbose = int(verbose)
+         if known_points is None:
 @@ -810,7 +810,7 @@ class EllipticCurve_number_field(EllipticCurve_field):
              sage: K.<v> = NumberField(x^2 + 161*x - 150)
              sage: E = EllipticCurve([25105/216*v - 3839/36, 634768555/7776*v - 98002625/1296, 634768555/7776*v - 98002625/1296, 0, 0])
