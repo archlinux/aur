@@ -1,14 +1,17 @@
 pkgbase = python2-pycrypto
 	pkgdesc = Cryptographic primitives and algorithms for Python
-	pkgver = 2.6.1
+	pkgver = 2.7a1
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pycrypto
-	arch = any
-	license = Public domain
-	makedepends = python2-distribute
+	arch = x86_64
+	license = custom:Public domain
+	makedepends = python2-setuptools
 	depends = python2-flask
-	source = http://pypi.python.org/packages/source/p/pycrypto/pycrypto-2.6.1.tar.gz
-	md5sums = 55a61a054aa66812daf5161a0d5d7eda
+	depends = gmp
+	provides = python2-pycryptodome
+	provides = python2-crypto
+	source = python2-pycrypto-2.7a1.tar.gz::https://github.com/dlitz/pycrypto/archive/v2.7a1.tar.gz
+	sha512sums = 4b6ba9f6c0226ea9c3abc08ebf8331a65da39e8f84cbb643302ef337faf46b4de4b3b3ab6358796cef3da271f81d14f7ad0e3b9353d7c913351674efb21a71d6
 
 pkgname = python2-pycrypto
 
