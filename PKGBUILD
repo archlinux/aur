@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgbase=reactphysics3d
-pkgname=($pkgbase $pkgbase-docs)
+pkgname=(reactphysics3d reactphysics3d-docs)
 pkgver=0.7.1
 pkgrel=1
 pkgdesc='Physics engine'
