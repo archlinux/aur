@@ -1,7 +1,7 @@
 pkgname=yup-bin
 _pkgname=yup
-pkgver="1.0.3"
-_pkgver="1.0.3"
+pkgver="1.1.0"
+_pkgver="1.1.0"
 pkgrel=1
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('x86_64')
@@ -9,6 +9,7 @@ url="https://github.com/ericm/yup"
 license=('GPL3')
 source=("https://github.com/ericm/yup/releases/download/v${_pkgver}/yup")
 sha256sums=('SKIP')
+conflicts=('yup')
 
 depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
 
