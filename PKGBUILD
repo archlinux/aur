@@ -3,13 +3,15 @@
 _plug=warpsharpsupport
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=R1.0.g42f3b5e
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/myrsloik/WarpSharpSupport.git'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/myrsloik/WarpSharpSupport.git")
 sha256sums=('SKIP')
 
