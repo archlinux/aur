@@ -3,9 +3,11 @@ pkgbase = r-lme4
 	pkgver = 1.1.21
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lme4
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL2
 	license = GPL3
+	makedepends = gcc
 	depends = r>=3.2.0
 	depends = r-minqa>=1.1.15
 	depends = r-nloptr>=1.0.4
@@ -15,10 +17,10 @@ pkgbase = r-lme4
 	optdepends = r-rmarkdown
 	optdepends = r-pkpdmodels
 	optdepends = r-memss
-	optdepends = r-testthat>=0.8.1
+	optdepends = r-testthat
 	optdepends = r-ggplot2
 	optdepends = r-mlmrev
-	optdepends = r-optimx>=2013.8.6
+	optdepends = r-optimx
 	optdepends = r-gamm4
 	optdepends = r-pbkrtest
 	optdepends = r-hsaur2
