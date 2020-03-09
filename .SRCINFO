@@ -1,0 +1,17 @@
+pkgbase = lighthouse-ethereum
+	pkgdesc = Ethereum 2.0 client
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://lighthouse.sigmaprime.io/
+	arch = x86_64
+	license = Apache License 2.0
+	makedepends = cargo
+	depends = openssl
+	provides = lighthouse
+	conflicts = lighthouse
+	replaces = lighthouse
+	source = git+https://github.com/sigp/lighthouse.git#commit=314c077870896fef98f3a16f4cea0adebbb4a2a7
+	sha256sums = SKIP
+
+pkgname = lighthouse-ethereum
+
