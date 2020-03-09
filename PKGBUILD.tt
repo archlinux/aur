@@ -15,7 +15,7 @@ depends=(
 	'perl-file-policy'
 	'perl-html-tagset'
 	'perl-html-tokeparser-simple>=3.15'
-	'perl-mime-types'
+	'perl-mime-types>=2.17'
 	'perl-libwww'
 	'perl-uri')
 checkdepends=(
@@ -50,5 +50,5 @@ package() {
 	cd [% distdir %]
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
