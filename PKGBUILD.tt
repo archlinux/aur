@@ -9,7 +9,7 @@ pkgdesc='Perl module providing simple interface to F77 libraries'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-depends=('perl' 'gcc-fortran')
+depends=('perl-file-which' 'gcc-fortran')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
@@ -29,12 +29,12 @@ build() {
 check() {
 	cd [% distdir %]
 	sanitize
-	F77LIBS='-lgfortran -lm' make test
+	make test
 }
 
 package() {
 	cd [% distdir %]
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
