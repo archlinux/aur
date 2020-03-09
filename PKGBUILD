@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/LightArrowsEXE/modfunc'
-license=('MIT')
+license=('GPL')
 depends=('vapoursynth-plugin-vsutil-git'
          'vapoursynth-plugin-fvsfunc-git'
          'vapoursynth-plugin-nnedi3cl-git'
