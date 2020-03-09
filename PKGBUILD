@@ -1,5 +1,5 @@
 pkgname=ffms2-qyot27-git
-pkgver=2.31.0.r1443.67d5ca7
+pkgver=2.31.0.r1445.70779f9
 pkgrel=1
 pkgdesc="An FFmpeg/Libav based source library and Avisynth/Vapoursynth plugin for easy frame accurate access. (GIT version) (Qyot27 fork)"
 url='https://github.com/FFMS/ffms2'
@@ -33,7 +33,7 @@ pkgver() {
 }
 
 prepare() {
-
+  # unbundle
   rm -fr ffms2_cplugin/src/vapoursynth/{VapourSynth,VSHelper}.h
 
   sed -e 's|"VapourSynth.h"|<vapoursynth/VapourSynth.h>|g' \
@@ -50,15 +50,16 @@ build() {
     --enable-shared \
     --enable-pic \
     --enable-avisynth-cpp \
-    --enable-vapoursynth \
-    --enable-avresample \
-#     --enable-avxsynth
+    --enable-vapoursynth
 
   make
 }
 
 package() {
-  make -C ffms2_cplugin DESTDIR="${pkgdir}" install
+  cd ffms2_cplugin
+  make DESTDIR="${pkgdir}" install
 
-  install -Dm644 ffms2_cplugin/include/ffmscompat.h "${pkgdir}/usr/include/ffmscompat.h"
+  install -Dm644 doc/ffms2-api.md "${pkgdir}/usr/share/doc/ffms2/ffms2-api.md"
+  install -Dm644 doc/ffms2-avisynth.md "${pkgdir}/usr/share/doc/avisynth/plugins/ffms2-avisynth.md"
+  install -Dm644 doc/ffms2-vapoursynth.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/ffms2-vapoursynth.md"
 }
