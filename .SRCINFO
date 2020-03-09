@@ -1,0 +1,12 @@
+pkgbase = gator.lv2-git
+	pkgdesc = A programmable gate plugin using DPF.
+	pkgver = r5.80b7a43
+	pkgrel = 1
+	url = https://github.com/rghvdberg/gator
+	arch = x86_64
+	license = GPL
+	source = git+https://github.com/rghvdberg/gator
+	md5sums = SKIP
+
+pkgname = gator.lv2-git
+
