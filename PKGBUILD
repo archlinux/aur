@@ -3,7 +3,7 @@
 
 _pkgname=devilutionX
 pkgname=devilutionx
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Diablo devolved for linux"
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ license=('custom:unlicense')
 depends=('freetype2' 'graphite' 'libpng' 'libsodium' 'pcre' 'sdl2_mixer'
 'sdl2_ttf' 'sdl2_ttf' 'sdl2_ttf')
 makedepends=('cmake' 'gcc-libs')
-optdepends=('ttf-charis-sil: CharisSILB.ttf')
 install="$pkgname".install
 source=("https://github.com/diasurgical/devilutionX/archive/$pkgver.tar.gz"
 "$pkgname.png")
@@ -44,5 +43,5 @@ package() {
     "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
 
-md5sums=('2cc387a742aa124941e418c552ae3e0e'
+md5sums=('bc25aaad76cedf37e0eac9549ba8f408'
          'c593b446c07608ce2ab2eddac6ce7304')
