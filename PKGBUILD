@@ -3,13 +3,15 @@
 _plug=dotkill
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=R1.1.g84a0e13
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173029'
 license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/myrsloik/DotKill.git")
 sha256sums=('SKIP')
 
