@@ -12,6 +12,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(gtk3 cogl libinput)
 makedepends=(gobject-introspection gtk-doc git)
+checkdepends=(xorg-server-xvfb)
 _commit=fd85623d34a54b3f5607011086cf19cb2c756a6a  # tags/1.26.4^0
 source=("git+https://gitlab.gnome.org/GNOME/clutter.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -42,6 +43,11 @@ build() {
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 
   make
+}
+
+check() {
+  cd $pkgname
+  xvfb-run -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' make check
 }
 
 package() {
