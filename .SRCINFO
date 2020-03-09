@@ -7,6 +7,8 @@ pkgbase = vapoursynth-plugin-tcolormask-git
 	license = MIT
 	makedepends = git
 	depends = vapoursynth
+	provides = vapoursynth-plugin-tcolormask
+	conflicts = vapoursynth-plugin-tcolormask
 	source = tcolormask::git+https://github.com/Beatrice-Raws/VapourSynth-TColorMask.git
 	sha256sums = SKIP
 

@@ -10,6 +10,8 @@ url='https://github.com/Beatrice-Raws/VapourSynth-TColorMask'
 license=('MIT')
 depends=('vapoursynth')
 makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/Beatrice-Raws/VapourSynth-TColorMask.git")
 sha256sums=('SKIP')
 
