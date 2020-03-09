@@ -2,7 +2,7 @@
 # URL: https://github.com/lightningnetwork/lnd
 # Upstream: https://github.com/lightningnetwork/lnd
 
-pkgname=('lnd')
+pkgname='lnd'
 pkgver=0.9.1_beta
 _pkgver="${pkgver//_/-}"
 pkgrel=1
