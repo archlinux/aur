@@ -2,10 +2,10 @@
 
 pkgname=nginx-mainline-mod-redis
 pkgver=0.3.8
-pkgrel=36
+pkgrel=37
 
 _modname="${pkgname#nginx-mainline-mod-}"
-_nginxver=1.17.8
+_nginxver=1.17.9
 
 pkgdesc='Redis caching module for mainline nginx'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ validpgpkeys=(
 	'B0F4253373F8F6F510D42178520A9993A1C052F8' # Maxim Dounin <mdounin@mdounin.ru>
 )
 
-sha256sums=('97d23ecf6d5150b30e284b40e8a6f7e3bb5be6b601e373a4d013768d5a25965b'
+sha256sums=('7dd65d405c753c41b7fdab9415cfb4bdbaf093ec6d9f7432072d52cb7bcbb689'
             'SKIP'
             '95d0ed7be40da2efc88883d72e52e5e272d2c34463583b7078e8fd6d55004934')
 
