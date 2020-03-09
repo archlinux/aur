@@ -16,7 +16,7 @@ makedepends=('libsasl' 'icu' 'jansson' 'libical' 'libxml2' 'krb5' 'sqlite'
              'mariadb-libs' 'postgresql-libs' 'libnghttp2' 'brotli' 'shapelib'
              'libldap' 'libcap' 'net-snmp' 'xapian-core' 'perl' 'clamav' 'rsync'
              'python-sphinx' 'perl-pod-pom-view-restructured')
-source=("https://www.cyrusimap.org/releases/${pkgbase}-${pkgver}.tar.gz"{,.sig}
+source=("https://github.com/cyrusimap/cyrus-imapd/releases/download/${pkgbase}-${pkgver}/${pkgbase}-${pkgver}.tar.gz"{,.sig}
         "libcap.patch::https://github.com/cyrusimap/cyrus-imapd/pull/2991.patch"
         "perl-libs.patch"
         "vzic-flags.patch"
