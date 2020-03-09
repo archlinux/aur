@@ -1,8 +1,8 @@
 pkgbase = perl-email-localdelivery
 	pkgdesc = Perl module to deliver an email to a list of mailboxes
 	pkgver = 1.200
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Email-LocalDelivery
+	pkgrel = 2
+	url = https://metacpan.org/release/Email-LocalDelivery
 	arch = any
 	license = PerlArtistic
 	license = GPL
