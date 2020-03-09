@@ -1,18 +1,22 @@
 pkgbase = r-stanheaders
 	pkgdesc = C++ Header Files for Stan
-	pkgver = 2.18.0
+	pkgver = 2.19.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=StanHeaders
+	arch = i686
 	arch = x86_64
-	license = BSD
-	depends = r
+	license = BSD3
+	makedepends = gcc
+	depends = r>=3.4.0
+	depends = pandoc
 	optdepends = r-rcpp
 	optdepends = r-rcppeigen
 	optdepends = r-bh
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/StanHeaders_2.18.0.tar.gz
-	md5sums = e785eda4045fc9ebbe82564fb84deeab
+	optdepends = r-rstan
+	source = https://cran.r-project.org/src/contrib/StanHeaders_2.19.2.tar.gz
+	md5sums = 92eb7202921d002f0433c6f539b0ecc4
 
 pkgname = r-stanheaders
 

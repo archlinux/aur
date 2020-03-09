@@ -1,22 +1,30 @@
-# Maintainer: Alex Branham <alex.branham@gmail.com>
-_cranver=2.18.0
-pkgname=r-stanheaders
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <alex.branham@gmail.com>
+
+_cranname=StanHeaders
+_cranver=2.19.2
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='C++ Header Files for Stan'
-arch=('x86_64')
-url='https://cran.r-project.org/package=StanHeaders'
-license=('BSD')
-depends=('r' )
-optdepends=('r-rcpp' 'r-rcppeigen' 'r-bh' 'r-knitr' 'r-rmarkdown')
-source=("https://cran.r-project.org/src/contrib/StanHeaders_"$_cranver".tar.gz")
-md5sums=('e785eda4045fc9ebbe82564fb84deeab')
+pkgdesc="C++ Header Files for Stan"
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(BSD3)
+depends=('r>=3.4.0' pandoc)
+makedepends=(gcc)
+optdepends=(r-rcpp r-rcppeigen r-bh r-knitr r-rmarkdown r-rstan)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('92eb7202921d002f0433c6f539b0ecc4')
 
-build(){
-    R CMD INSTALL StanHeaders_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership StanHeaders "$pkgdir"/usr/lib/R/library
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
