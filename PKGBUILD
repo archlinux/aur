@@ -1,8 +1,8 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=9
-pkgdesc="An inofficial EVE Online Launcher Setup Tool. "
+pkgrel=10
+pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
 license=('custom')
