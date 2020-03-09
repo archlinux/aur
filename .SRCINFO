@@ -1,8 +1,8 @@
 pkgbase = perl-email-foldertype
 	pkgdesc = Perl module to determine the type of a mail folder
 	pkgver = 0.814
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Email-FolderType
+	pkgrel = 3
+	url = https://metacpan.org/release/Email-FolderType
 	arch = any
 	license = PerlArtistic
 	license = GPL

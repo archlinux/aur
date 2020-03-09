@@ -1,13 +1,13 @@
 # CPAN Name  : Email::FolderType
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-email-foldertype
 pkgver=0.814
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl module to determine the type of a mail folder'
 arch=('any')
-url='http://search.cpan.org/dist/Email-FolderType'
+url='https://metacpan.org/release/Email-FolderType'
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.8.9' 'perl-module-pluggable')
 checkdepends=('perl>=5.13.4' 'perl-capture-tiny')
@@ -29,5 +29,5 @@ check() {
 package() {
   cd Email-FolderType-0.814
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
