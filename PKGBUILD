@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-modsecurity-git
 pkgver=v1.0.1.4.ge50e43e
-pkgrel=1
+pkgrel=2
 
 _modname=ModSecurity-nginx
 _nginxver=1.17.9
