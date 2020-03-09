@@ -29,9 +29,9 @@ pkgver() {
 
 package(){
   cd "${_plug}"
-  install -Dm644 insaneAA.py "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
+  install -Dm644 insaneAA.py "${pkgdir}${_site_packages}/insaneAA.py"
+  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/insaneAA.py"
+  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/insaneAA.py"
 
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
