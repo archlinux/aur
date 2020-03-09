@@ -1,6 +1,6 @@
 pkgbase = ngs-lang
 	pkgdesc = Next Generation Shell (NGS)
-	pkgver = 0.2.4
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/ngs-lang/ngs
 	arch = x86_64
@@ -10,8 +10,9 @@ pkgbase = ngs-lang
 	makedepends = pandoc
 	makedepends = peg
 	makedepends = uthash
-	source = ngs-lang.tar.xz::https://github.com/ngs-lang/ngs/archive/v0.2.4.tar.gz
-	sha256sums = 748a4b44ddb727930ebf8d2280cb18bed7d5f63a3afbc778cca1d29ba891e4bb
+	provides = ngs
+	source = ngs-lang-0.2.7.tar.xz::https://github.com/ngs-lang/ngs/archive/v0.2.7.tar.gz
+	sha256sums = edc842fcf8ced6ff9ef8ddfe6470ac4f94b7ba79415c41d5ed7a4fc93339f2f2
 
 pkgname = ngs-lang
 
