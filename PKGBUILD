@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-njs
 pkgver=0.3.6 # http://hg.nginx.org/njs/tags
-pkgrel=6
+pkgrel=7
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.9
