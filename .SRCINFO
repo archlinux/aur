@@ -6,7 +6,6 @@ pkgbase = lnd
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = go
 	depends = glibc
 	provides = lnd
