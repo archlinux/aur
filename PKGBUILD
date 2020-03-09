@@ -1,6 +1,6 @@
 # Maintainer: Florent Ch. <florentc@tutanota.com>
 pkgname=xob
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A lightweight volume (or anything) bar for the X Window System"
 arch=('x86_64')
