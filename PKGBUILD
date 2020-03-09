@@ -1,9 +1,9 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-au
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="Device input event library - sound over openal"
+pkgdesc="Device input event library - sound playback"
 url='https://www.efanomars.com/libraries/stmm-input-au'
 arch=('x86_64')
 license=('LGPL3')
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("stmm-input-au")
 #conflicts=("stmm-input-au")
 
-source=('https://efanomars.com/sources/stmm-input-au-0.1.tar.gz')
-sha256sums=('a3a09e3fd945a4a3c06df977d5a63c0b3a56e231ae85a368ce7355d42567a897')
+source=('https://efanomars.com/sources/stmm-input-au-0.2.tar.gz')
+sha256sums=('16ce2e342b96a0b94efca78ce65740f65709a58be11029fb116af8c21862d5b4')
 
 build() {
   cd "${srcdir}/stmm-input-au"
