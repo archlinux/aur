@@ -5,8 +5,8 @@
 # Contributor: danyf90
 # Contributor: hermes14
 pkgname=superbeam
-pkgver=5.0.3
-pkgrel=3
+pkgver=5.1.1
+pkgrel=1
 pkgdesc="The easiest and fastest way to share files with Android"
 arch=('any')
 url="http://superbe.am/"
@@ -21,10 +21,10 @@ prepare(){
 
 package() {
 mkdir -p "$pkgdir/usr/bin"
-install -Dm755 "$srcdir/SuperBeam-5.0.3-linux.sh" "$pkgdir/usr/bin/superbeam"
+install -Dm755 "$srcdir/SuperBeam-${pkgver}-linux.sh" "$pkgdir/usr/bin/superbeam"
 install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 install -Dm644 "$srcdir/SuperBeam.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 install -Dm644 "$srcdir/README" "$pkgdir/usr/share/doc/$pkgname/README"
 }
 
-md5sums=('ab48dd63bb2c0a0b7a7e4d06bb2dfec5')
+md5sums=('4f1bb012294dc6b999d8d0dacb472240')
