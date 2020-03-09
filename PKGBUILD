@@ -10,7 +10,7 @@
 
 pkgname=vagrant
 pkgver=2.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Build and distribute virtualized development environments"
 arch=('x86_64')
 url="https://vagrantup.com"
@@ -22,15 +22,20 @@ makedepends=('git' 'go-pie')
 conflicts=('vagrant-substrate')
 replaces=('vagrant-substrate')
 source=($pkgname-$pkgver.tar.gz::https://github.com/mitchellh/$pkgname/archive/v$pkgver.tar.gz
-        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86")
+        "git+https://github.com/mitchellh/vagrant-installers.git#commit=7b7fb86"
+	ruby-2.7-fixes.patch
+	)
 md5sums=('45147c55d560f3c91654e2c5535e7f58'
-         'SKIP')
+         'SKIP'
+         '2e987a1d46a4c36e3d33d9f5aec21424')
 
 prepare() {
   cd $pkgname-$pkgver
 
   # relax ruby version requirements so this package can be built with the latest ruby
   sed 's/s.required_ruby_version     = "~> 2.4", "< 2.7"//' -i vagrant.gemspec
+
+  patch -p1 < ../ruby-2.7-fixes.patch
 }
 
 build() {
