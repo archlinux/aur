@@ -1,8 +1,8 @@
 pkgbase = perl-file-policy
 	pkgdesc = Perl module providing site policy for file I/O functions
 	pkgver = 1.005
-	pkgrel = 1
-	url = http://search.cpan.org/dist/File-Policy
+	pkgrel = 2
+	url = https://metacpan.org/release/File-Policy
 	arch = any
 	license = GPL
 	checkdepends = perl-log-trace

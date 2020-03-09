@@ -1,13 +1,13 @@
 # CPAN Name  : File::Policy
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.13
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-file-policy
 pkgver=1.005
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module providing site policy for file I/O functions"
 arch=("any")
-url="http://search.cpan.org/dist/File-Policy"
+url="https://metacpan.org/release/File-Policy"
 license=("GPL")
 depends=("perl" "perl-file-slurp")
 checkdepends=("perl-log-trace" "perl-test-assertions")
@@ -29,5 +29,5 @@ check() {
 package() {
   cd "$srcdir/File-Policy-1.005"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
