@@ -1,13 +1,13 @@
 # CPAN Name  : CSS::Squish
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-css-squish
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package to compact many CSS files into one big file'
 arch=('any')
-url='http://search.cpan.org/dist/CSS-Squish'
+url='https://metacpan.org/release/CSS-Squish'
 license=('PerlArtistic' 'GPL')
 depends=("perl" "perl-uri")
 checkdepends=("perl-test-longstring")
@@ -31,5 +31,5 @@ check() {
 package() {
 	cd CSS-Squish-0.10
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

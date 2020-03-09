@@ -1,8 +1,8 @@
 pkgbase = perl-css-squish
 	pkgdesc = Perl package to compact many CSS files into one big file
 	pkgver = 0.10
-	pkgrel = 1
-	url = http://search.cpan.org/dist/CSS-Squish
+	pkgrel = 2
+	url = https://metacpan.org/release/CSS-Squish
 	arch = any
 	license = PerlArtistic
 	license = GPL
