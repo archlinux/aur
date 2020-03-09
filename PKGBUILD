@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-naxsi
 pkgver=0.56
-pkgrel=18
+pkgrel=19
 
 _modname=naxsi
 _nginxver=1.17.9
