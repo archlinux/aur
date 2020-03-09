@@ -1,10 +1,10 @@
 # CPAN Name  : DBIx::DBSchema
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-dbix-dbschema
 pkgver=0.45
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl modile providing database-independent schema objects'
 arch=('any')
 url='https://metacpan.org/release/DBIx-DBSchema'
@@ -36,5 +36,5 @@ package() {
 	cd DBIx-DBSchema-0.45
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
