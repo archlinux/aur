@@ -1,0 +1,19 @@
+pkgbase = vapoursynth-plugin-modfunc-git
+	pkgdesc = Plugin for Vapoursynth: modfunc (GIT version)
+	pkgver = r6
+	pkgrel = 1
+	url = https://github.com/LightArrowsEXE/modfunc
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vapoursynth-plugin-vsutil-git
+	depends = vapoursynth-plugin-fvsfunc-git
+	depends = vapoursynth-plugin-nnedi3cl-git
+	depends = vapoursynth-plugin-mvsfunc-git
+	provides = vapoursynth-plugin-modfunc
+	conflicts = vapoursynth-plugin-modfunc
+	source = modfunc::git+https://github.com/LightArrowsEXE/modfunc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-modfunc-git
+
