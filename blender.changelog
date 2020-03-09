@@ -1,19 +1,28 @@
 # Version 2.83 upcoming.
-- Adaptive Sampling - Locally convergent sampling strategy for  [Cycles](https://wiki.blender.org/wiki/Reference/Release_Notes/2.83/Cycles#Adaptive_Sampling).
-- Cloth Sculpting - Physically simulated cloth [brush](https://developer.blender.org/D6715).
-- Viewport Optix Denoiser.
+- Cycles: Adaptive sampling [diff](https://developer.blender.org/D4686).
+- Cycles: Optix viewport denoiser [diff](https://developer.blender.org/D6554).
+- Shading: Vector rotate node [diff](https://developer.blender.org/D3789).
+- Sculpting: Cloth brush [diff](https://developer.blender.org/D6715).
+- Sculpting: Clay Thumb brush [diff](https://developer.blender.org/D6238).
+- Sculpting: New face sets feature [diff](https://developer.blender.org/D6070).
+- Eevee: New render passes [task](https://developer.blender.org/T72007).
+- Eevee: Blurred background [diff](https://developer.blender.org/D6895).
+- Physics: New hair collisions [diff](https://developer.blender.org/D6545)
+- Physics: Cloth self collisions improvement [diff](https://developer.blender.org/D6474).
+- Grease Pencil: New draw engine.
+- Render: Freestyle render pass.
 
 # Version 2.82 stable.
 [release notes](https://wiki.blender.org/wiki/Reference/Release_Notes/2.82)
 - Smoke and Liquid: new, particle based solver [Mantaflow](http://mantaflow.com/).
 - Cloth: internal air pressure.
-- Cloth: internal [springs](https://developer.blender.org/D5788).
+- Cloth: internal springs [diff](https://developer.blender.org/D5788).
 - Cycles: Optix denoiser.
 - Cycles: custom render passes.
-- Eevee: viewport render [passes](https://developer.blender.org/D6331).
-- Texturing: [UDIM](https://developer.blender.org/T72390)
-- Sculpt: [Slide,Relex](https://developer.blender.org/D6059).
-- Sculpt: [Multiplane Scrape](https://developer.blender.org/D6174).
+- Eevee: viewport render passes [diff](https://developer.blender.org/D6331).
+- Texturing: UDIM [task](https://developer.blender.org/T72390).
+- Sculpt: Slide,Relex [diff](https://developer.blender.org/D6059).
+- Sculpt: Multiplane Scrape [diff](https://developer.blender.org/D6174).
 - Sculpt: Slice mesh with mask tool.
 - Grease Pencil: Multiple Stroke Modifier.
 - Mesh: Custom Bevel Profile.
@@ -24,18 +33,18 @@
 
 # Version 2.81
 [release notes](https://wiki.blender.org/wiki/Reference/Release_Notes/2.81)
-- Cycles: Nvidia [Optix](https://developer.blender.org/T69800)
-- Cycles: Intel [Oidn](https://developer.blender.org/D4304)
+- Cycles: Nvidia Optix [task](https://developer.blender.org/T69800)
+- Cycles: Intel Oidn [diff](https://developer.blender.org/D4304)
 - Cycles: Osd edge stitching.
 - Cycles: Viewport render passes.
 - Shading: 4D noises.
 - Shading: vertex color.
 - Shading: volume info.
-- Eevee: Shadow [refactor](https://developer.blender.org/D5659).
+- Eevee: Shadow refactor [diff](https://developer.blender.org/D5659).
 - Eevee: Transparent BSDF congruent to Cycles.
 - Eevee: Holdout shader.
 - Viewport: HDRI studio light.
-- Viewport: per viewport visibility [selection](https://developer.blender.org/T61327).
+- Viewport: per viewport visibility selection [task](https://developer.blender.org/T61327).
 - Viewport: OpenEXR matcaps with separate diffuse/specular layers.
 - Grease Pencil: Self overlapping material.
 - Grease Pencil: Smooth stroke endings.
@@ -44,7 +53,7 @@
 - Grease Pencil: New stroke form curve.
 - Grease Pencil: New merge by distance.
 - Grease Pencil: New simplify sample.
-- Sculpting: Pose [brush](https://developer.blender.org/D5647).
+- Sculpting: Pose brush [diff](https://developer.blender.org/D5647).
 - Sculpting: Transform around pivot with symmetry.
 - Sculpting: Draw sharp brush.
 - Sculpting: Cursor follow normal and shows symmetry.
@@ -55,15 +64,15 @@
 - Sculpting: Dirty Mask.
 - Sculpting: Mask expand with curvature limits.
 - Sculpting: Mask to object.
-- Sculpting: Voxel [remesher](https://developer.blender.org/D5407).
-- Sculpting: QuadriFlow [remesher](https://github.com/hjwdzh/QuadriFlow).
+- Sculpting: Voxel remesher [diff](https://developer.blender.org/D5407).
+- Sculpting: [QuadriFlow](https://github.com/hjwdzh/QuadriFlow) remesher.
 - UI: <f2> - rename active element.
 - UI: <c-f2> - Batch rename.
 - UI: Parent dnd for multiple objects.
 - UI: Selection sync.
 - UI: New pop-up file browser.
 - UI: Industry compatible key map.
-- Blenlib: New library [override](https://developer.blender.org/T53500).
+- Blenlib: New library override [task](https://developer.blender.org/T53500).
 - Animation: Copy as new driver.
 
 # Version 2.80
@@ -99,8 +108,8 @@
 - Viewport: Look dev - material preview.
 - Viewport: Volume preview.
 - Grease Pencil: New 2d Animation.
-- Cycles: Principled hair [BSDF](https://docs.blender.org/manual/en/2.80/render/shader_nodes/shader/hair_principled.html).
-- Cycles: Principled [volume](https://docs.blender.org/manual/en/2.80/render/shader_nodes/shader/volume_principled.html).
+- Cycles: Principled hair BSDF [doc](https://docs.blender.org/manual/en/2.80/render/shader_nodes/shader/hair_principled.html).
+- Cycles: Principled volume [doc](https://docs.blender.org/manual/en/2.80/render/shader_nodes/shader/volume_principled.html).
 - Cycles: Cryptomate.
 - Cycles: Random walk SSS.
 - Cycles: Vector Displacement.
