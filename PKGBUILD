@@ -16,7 +16,7 @@ provides=('nodejs-ungit' 'ungit')
 conflicts=('ungit')
 options=('!emptydirs' '!strip')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/ungit/-/ungit-${pkgver}.tgz")
-sha512sums=('78f70c6575d48c0b7719ebe7fe20735e3962b66ae0390b0d4e7db0d1dd7ffa31a10dcafc3310c5442239b6e6162ac0415d7e3f71c4ac88123469a1ddd92cd06d')
+sha512sums=('da83f5df7ca7288669fb0f5da88f65400abc5bc50f592177ccb9703c2b51113c5edcccfc8c7c3f3c2733b31c233feae8314fce7fca3d1901787249339c04a2c9')
 
 package() {
   cd ${srcdir}
