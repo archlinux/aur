@@ -1,0 +1,13 @@
+pkgbase = license-detector
+	pkgdesc = Reliable project licenses detector
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/src-d/go-license-detector
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	source = license-detector-3.1.0.tar.gz::https://github.com/src-d/go-license-detector/archive/v3.1.0.tar.gz
+	sha256sums = bb12da726fa39e62f8547c86db13a919ad7f0bdf229be158e68e8aff382b6575
+
+pkgname = license-detector
+
