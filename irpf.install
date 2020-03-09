@@ -3,24 +3,12 @@ post_install() {
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 	echo&&cat /usr/share/licenses/irpf/Copyright&&echo
 	
-	echo " "
-	echo " >>> ATENCAO! <<< "
-	echo " "
-	echo " Alguns usuarios tiveram problemas ao enviar a declaracao"
-	echo " quando a versao do java do sistema era a 13."
-	echo " Houve relato do problam sessar com a versao 8."
-	echo " Assim, caso tenha problema no envio da delcaracao tente"
-	echo " alterar a versao do Java atraves do comando:"
-	echo " "
-	echo " # archlinux-java set java-8-openjdk"
-	echo " "
-	echo " Ou outras versoes caso necessario."
-
 }
 
 post_upgrade() {
 	update-desktop-database -q
 	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	echo&&cat /usr/share/licenses/irpf/Copyright&&echo
 }
 
 post_remove() {
