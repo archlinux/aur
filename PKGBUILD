@@ -6,7 +6,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=8.0.426.18
+pkgver=8.0.426.26
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
@@ -25,8 +25,6 @@ sha256sums=('SKIP'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
-
-
 
 #
 # Custom configuration for V8
