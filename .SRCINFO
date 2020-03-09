@@ -3,12 +3,13 @@ pkgbase = r-minqa
 	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://cran.r-project.org/package=minqa
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL2
+	makedepends = gcc
 	makedepends = make
-	makedepends = gcc-fortran
 	depends = r
-	depends = r-rcpp
+	depends = r-rcpp>=0.9.10
 	source = https://cran.r-project.org/src/contrib/minqa_1.2.4.tar.gz
 	md5sums = bcaae4fdba60a33528f2116e2fd51105
 
