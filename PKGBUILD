@@ -44,7 +44,6 @@ build() {
 
   ../ffms2/configure \
     --prefix=/usr \
-    --enable-avresample \
     --enable-shared=yes \
     --enable-static=no
 
