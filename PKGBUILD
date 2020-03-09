@@ -1,34 +1,33 @@
-# Maintainer: John Jenkins <twodopeshaggy@gmail.com>
+# Maintainer: Terin Stock <terinjokes@gmail.com>
 
 pkgname=archiver
-pkgver=2.0
-pkgrel=0
-pkgdesc="Easily create and extract .zip, .tar, .tar.gz, .tar.bz2, .tar.xz, and .rar (extract-only) files with Go"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="A multi-format archive utility written in Go"
+arch=("x86_64")
 url="https://github.com/mholt/archiver"
-license=('MIT')
-makedepends=('go' 'git')
-options=('!strip' '!emptydirs')
-source=("https://github.com/mholt/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('bf11f62964299cef1f5acf982e12b628dd1d7ec9842689ff8f8f59cc37b3b669')
+license=("MIT")
+makedepends=("go-pie")
+depends=("glibc")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mholt/archiver/archive/v${pkgver}.tar.gz")
+sha256sums=('919182c8a2ae8095b12f059a1b2826107629bd13bdba6a429cb3d97eac6ae065')
 
-prepare() {
- mkdir -p "$srcdir/go"
- export GOPATH="$srcdir/go"
- go get github.com/ulikunitz/xz
- go get github.com/dsnet/compress/bzip2
- go get github.com/nwaples/rardecode
- go get github.com/mholt/archiver
- cd $srcdir/$pkgname-$pkgver/cmd/$pkgname
- go build
+build() {
+  cd "${pkgname}-${pkgver}"
+  go build \
+    -trimpath \
+    -ldflags "-extldflags ${LDFLAGS}" \
+    -o . ./cmd/arc/...
+}
+
+check() {
+  cd "${pkgname}-${pkgver}"
+  go test ./...
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver/cmd/$pkgname 
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  cd "$srcdir/$pkgname-$pkgver"
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 0644 LICENSE $pkgdir/usr/share/licenses/$pkgname/
-  rm -r  "$srcdir/go"
+  cd "${pkgname}-${pkgver}"
+
+  install -Dm755 arc -t "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-# vim:set ts=2 sw=2 et:
