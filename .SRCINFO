@@ -1,0 +1,20 @@
+pkgbase = librespeed-cli-bin
+	pkgdesc = Command line interface for LibreSpeed speed test backends
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/librespeed/speedtest-cli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = LGPL3
+	provides = librespeed-cli
+	conflicts = librespeed-cli
+	source_x86_64 = https://github.com/librespeed/speedtest-cli/releases/download/v1.0.0/librespeed-cli-linux-amd64.tar.gz
+	sha256sums_x86_64 = 573983a5a565a6f06739c78a7e5b8b953a0ef391ba56824f5e69a6044195aaf9
+	source_aarch64 = https://github.com/librespeed/speedtest-cli/releases/download/v1.0.0/librespeed-cli-linux-arm64.tar.gz
+	sha256sums_aarch64 = 805b74ad4ea88c2df21f111e53bce9dd6f67e4e4807488af2cbe2e59ba6a7a13
+	source_armv7h = https://github.com/librespeed/speedtest-cli/releases/download/v1.0.0/librespeed-cli-linux-armv7.tar.gz
+	sha256sums_armv7h = eb13996627f904cc795f7bcf1f55d0a4f631c5118bb210a09c5bb2bdb201b4df
+
+pkgname = librespeed-cli-bin
+
