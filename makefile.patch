@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 0c075e06..2c3e5e9e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -834,7 +834,6 @@ host_tools: utils futil tests
+ 
+ .PHONY: host_stuff
+ host_stuff: utillib hostlib \
+-	$(if $(filter x86_64,${ARCH}),fuzzers) \
+ 	$(if ${NO_BUILD_TOOLS},,cgpt host_tools)
+ 
+ .PHONY: clean

@@ -3,7 +3,7 @@
 
 pkgname=vboot-utils
 pkgdesc='Chromium OS verified boot utilities'
-pkgver=67.10575
+pkgver=81.12871
 _tag=release-R${pkgver/\./-}.B
 pkgrel=1
 arch=(i686 x86_64)
@@ -12,12 +12,12 @@ license=('custom:chromiumos')
 depends=(libutil-linux openssl)
 makedepends=(libyaml trousers)
 source=(https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/$_tag.tar.gz
-        no_static.patch)
-sha1sums=('SKIP'
-          'b45016e2f1a9833d24d68a3d35a043258cab9405')
+        makefile.patch)
+sha256sums=('88ff2e28bf0af3d1e5d5fb9fab2ed8f67644d4ffff6ffe4be07407141a1b8727'
+            '7804878ce24b2ca9bd8858bfffcf97b12627b2c7524879240a958cec244afdcb')
 
 prepare() {
-  patch -p1 < ./no_static.patch
+  patch -p1 < makefile.patch
 }
 
 build() {
@@ -25,13 +25,11 @@ build() {
 }
 
 check() {
-  #fails because https://chromium-review.googlesource.com/c/chromiumos/platform/vboot_reference/+/349670/3/tests/futility/expect_output/show.tests_devkeys_root_key.vbpubk#1
-  #make runtests
-  true
+  make runtests
 }
 
 package() {
-  make DESTDIR="$pkgdir" MINIMAL=1 install
+  make install DESTDIR="$pkgdir" MINIMAL=1
   install -d "$pkgdir"/usr/share/vboot/
   cp -r tests/devkeys "$pkgdir"/usr/share/vboot/devkeys
   install -m 644 -D LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
