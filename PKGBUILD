@@ -2,6 +2,8 @@
 # URL: https://github.com/lightningnetwork/lnd
 # Upstream: https://github.com/lightningnetwork/lnd
 
+#shellcheck disable=SC2034
+
 pkgname='lnd'
 pkgver=0.9.1_beta
 _pkgver="${pkgver//_/-}"
@@ -33,7 +35,7 @@ _fake_gopath_popd() {
 
 prepare() {
   # Create GOPATH
-  mkdir -p "$srcdir/GOPATH"
+  mkdir -p "${srcdir:?}/GOPATH"
   mv "$srcdir/$pkgname-$_pkgver" "$srcdir/lnd"
 }
 
@@ -46,7 +48,7 @@ build() {
 
 package() {
   for _bin in lnd lncli; do
-    install -Dm 755 "$srcdir/GOPATH/bin/$_bin" -t "$pkgdir/usr/bin";
+    install -Dm 755 "$srcdir/GOPATH/bin/$_bin" -t "${pkgdir:?}/usr/bin";
   done
 
   install -D -m644 "$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
