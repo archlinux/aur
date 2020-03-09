@@ -28,7 +28,7 @@ validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aac
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 
 pkgver() {
-  echo Nothing to do here
+  echo $pkgver
 }
 
 prepare() {
