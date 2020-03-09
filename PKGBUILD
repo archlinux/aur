@@ -3,17 +3,17 @@
 
 pkgname=sshcommand
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Turn SSH into a thin client specifically for your app'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/dokku/sshcommand'
-license=('mit')
+license=('MIT')
 
-source=("https://github.com/dokku/sshcommand/archive/v$pkgver.tar.gz")
-sha256sums=('0ec533a04248c59e4cd48d69d5c1143ec1ec747f7acd6e8c4728dd4ad062dd2c')
+source=("https://github.com/dokku/sshcommand/releases/download/v${pkgver}/sshcommand_${pkgver}_linux_x86_64.tgz")
+sha256sums=('a617253143c6d0d023a50b0489aa5fb266bd1b3a3ff661aa1424f6826bebbd4e')
 
-package(){
-  cd sshcommand-$pkgver
-
-  install -Dm 755 sshcommand "$pkgdir"/usr/bin/sshcommand
+package() {
+  wget -q "https://raw.githubusercontent.com/dokku/sshcommand/master/LICENSE"
+  install -Dm 755 sshcommand "${pkgdir}/usr/bin/sshcommand"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/sshcommand/LICENSE"
 }
