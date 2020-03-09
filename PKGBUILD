@@ -1,3 +1,5 @@
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: peeweep
 pkgname=python-configparser
 _name=${pkgname#python-}
 pkgver=4.0.2
