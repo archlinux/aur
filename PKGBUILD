@@ -11,7 +11,7 @@ license=("MIT")
 depends=('php>=7.1.3' 'php-gd')
 optdepends=('php-apcu' 'xdebug')
 source=("https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip")
-sha256sums=("SKIP")
+sha256sums=("0ce1f1b5cb976fc475c3d5fffa33a4f4c882bd431dfc0fb524e59329e88dd148")
 
 package() {
     dirs=("assets" "backup" "cache" "images" "user")
