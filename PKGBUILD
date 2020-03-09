@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-cache_purge
 pkgver=2.5
-pkgrel=18
+pkgrel=19
 
 _modname="${pkgname#nginx-mainline-mod-}"
 _nginxver=1.17.9
