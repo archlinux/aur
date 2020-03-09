@@ -1,0 +1,13 @@
+diff --git CMakeLists.txt CMakeLists.txt
+index 10969c2..dd28028 100644
+--- e4rat-lite/CMakeLists.txt
++++ e4rat-lite/CMakeLists.txt
+@@ -20,7 +20,7 @@ IF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+ ENDIF(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+
+ set(Boost_USE_STATIC_LIBS   OFF)
+-set(Boost_USE_MULTITHREADED OFF)
++set(Boost_USE_MULTITHREADED ON)
+ find_package(Boost 1.41 COMPONENTS system filesystem regex REQUIRED)
+ set(${PROJECT_NAME}_LIBRARIES   ${${PROJECT_NAME}_LIBRARIES}
+     ${Boost_LIBRARIES})
