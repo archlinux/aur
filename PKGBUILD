@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=deSolve
-_cranver=1.27.1
+_cranver=1.28
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.3.0' gcc-fortran)
 makedepends=(gcc)
 optdepends=(r-scatterplot3d r-fme)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('e1ec7e982ac8598b9807904fce5bf289')
+md5sums=('449d198be2d638a224a8509ad4db533f')
 
 build() {
   cd "${srcdir}"
