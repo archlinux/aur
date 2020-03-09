@@ -1,7 +1,7 @@
 pkgbase = java-language-server
 	pkgdesc = Java language server using the Java compiler API
 	pkgver = 0.2.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/georgewfraser/java-language-server
 	arch = any
 	license = MIT
