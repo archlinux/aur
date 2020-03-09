@@ -3,10 +3,10 @@
 _plug=minideen
 pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
-         "vapoursynth-plugin-${_plug}_new-git"
+         "vapoursynth-plugin-${_plug}-git"
          )
 pkgver=r5.0.gaeb7275
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=176554'
@@ -57,14 +57,11 @@ package_avisynth-plugin-minideen-git() {
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_vapoursynth-plugin-minideen_new-git() {
+package_vapoursynth-plugin-minideen-git() {
   pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
   depends=('vapoursynth')
-  provides=("vapoursynth-plugin-${_plug}"
-            "vapoursynth-plugin-${_plug}-git")
-  conflicts=("vapoursynth-plugin-${_plug}"
-             "vapoursynth-plugin-${_plug}-git"
-             )
+  provides=("vapoursynth-plugin-${_plug}")
+  conflicts=("vapoursynth-plugin-${_plug}")
 
   install -Dm644 "${_plug}/build/libMiniDeen.so" "${pkgdir}/usr/lib/vapoursynth/libMiniDeen.so"
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
