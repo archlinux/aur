@@ -1,11 +1,10 @@
 pkgbase = r-islr
-	pkgdesc = Collection of data-sets used in the book 'An Introduction to Statistical Learning with Applications in R'
+	pkgdesc = Data for an Introduction to Statistical Learning with Applications in R
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=ISLR
-	arch = i686
-	arch = x86_64
-	license = GPL-2
+	arch = any
+	license = GPL2
 	depends = r>=2.10
 	source = https://cran.r-project.org/src/contrib/ISLR_1.2.tar.gz
 	md5sums = 3d2e50066c9fd712ebe9a7d6559c3194
