@@ -1,5 +1,6 @@
 pkgbase = alacritty-git
-	pkgver = 0.4.2.1465.g8abca441
+	pkgdesc = A cross-platform, GPU-accelerated terminal emulator
+	pkgver = 0.4.2.1487.g64a31156
 	pkgrel = 1
 	url = https://github.com/jwilm/alacritty
 	arch = x86_64
