@@ -1,0 +1,13 @@
+pkgbase = r-extrafontdb
+	pkgdesc = Package for holding the database for the extrafont package
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=extrafontdb
+	arch = any
+	license = GPL2
+	depends = r>=2.14
+	source = https://cran.r-project.org/src/contrib/extrafontdb_1.0.tar.gz
+	md5sums = 69f3ce30cdd568e31369bdea7583943c
+
+pkgname = r-extrafontdb
+
