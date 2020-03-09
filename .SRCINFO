@@ -1,22 +1,24 @@
 pkgbase = r-raster
-	pkgdesc = Reading, writing, manipulating, analyzing and modeling of gridded spatial data.
-	pkgver = 2.8
+	pkgdesc = Geographic Data Analysis and Modeling
+	pkgver = 3.0.12
 	pkgrel = 1
 	url = https://cran.r-project.org/package=raster
-	arch = x86_64
 	arch = i686
+	arch = x86_64
 	license = GPL3
-	depends = r>=3.0
-	depends = r-sp>=1.2-0
+	makedepends = gcc>=4.3
+	depends = r>=3.0.0
+	depends = r-sp>=1.2.0
 	depends = r-rcpp
-	optdepends = r-gdal>=0.9
-	optdepends = r-geos>=0.3
+	optdepends = r-rgdal
+	optdepends = r-rgeos
 	optdepends = r-ncdf4
 	optdepends = r-igraph
+	optdepends = r-rastervis
 	optdepends = r-sf
-	provides = r-raster
-	source = https://cran.r-project.org/src/contrib/raster_2.8-4.tar.gz
-	sha256sums = 4ae7d25982cee248c1cf7ca2c633ed1f021a76cab32b0452e36d96daed77ec92
+	optdepends = r-testthat
+	source = https://cran.r-project.org/src/contrib/raster_3.0-12.tar.gz
+	md5sums = cf9ff78ee794f8f58aa04f105daf4ed5
 
 pkgname = r-raster
 

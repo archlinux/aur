@@ -1,25 +1,30 @@
-# Maintainer: Jooa <aur at (name) dot xyz>
-pkgname=r-raster
-pkgver=2.8
-pkgrel=1
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Jooa <aur at (name) dot xyz>
+
 _cranname=raster
-_cranrel=4
-_pkgfile=${_cranname}_${pkgver}-${_cranrel}.tar.gz
-pkgdesc="Reading, writing, manipulating, analyzing and modeling of gridded spatial data."
+_cranver=3.0-12
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
+pkgrel=1
+pkgdesc="Geographic Data Analysis and Modeling"
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-arch=('x86_64' 'i686')
-license=('GPL3')
-depends=('r>=3.0' 'r-sp>=1.2-0' 'r-rcpp')
-optdepends=('r-gdal>=0.9' 'r-geos>=0.3' 'r-ncdf4' 'r-igraph' 'r-sf')
-provides=('r-raster')
-source=(https://cran.r-project.org/src/contrib/${_pkgfile})
-sha256sums=('4ae7d25982cee248c1cf7ca2c633ed1f021a76cab32b0452e36d96daed77ec92')
+license=(GPL3)
+depends=('r>=3.0.0' 'r-sp>=1.2.0' r-rcpp)
+makedepends=('gcc>=4.3')
+optdepends=(r-rgdal r-rgeos r-ncdf4 r-igraph r-rastervis r-sf r-testthat)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('cf9ff78ee794f8f58aa04f105daf4ed5')
 
 build() {
-	R CMD INSTALL ${_pkgfile} -l ${srcdir}
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
 
 package() {
-	install -d ${pkgdir}/usr/lib/R/library
-	cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
