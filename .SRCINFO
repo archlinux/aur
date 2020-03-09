@@ -1,0 +1,37 @@
+pkgbase = gnome-boxes-git
+	pkgdesc = Simple GNOME application to access remote or virtual systems
+	pkgver = 3.35.90+56+gcd589137
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Boxes
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = meson
+	makedepends = spice-protocol
+	makedepends = vala
+	depends = cdrtools
+	depends = gtk-vnc
+	depends = libarchive
+	depends = libgudev
+	depends = libosinfo
+	depends = libsecret
+	depends = libvirt-glib
+	depends = mtools
+	depends = qemu
+	depends = spice-gtk
+	depends = tracker
+	depends = webkit2gtk
+	depends = freerdp
+	provides = gnome-boxes
+	conflicts = gnome-boxes
+	source = git+https://gitlab.gnome.org/GNOME/gnome-boxes.git
+	source = git+https://gitlab.gnome.org/GNOME/gtk-frdp.git
+	source = git+https://gitlab.gnome.org/felipeborges/libovf-glib.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = gnome-boxes-git
+
