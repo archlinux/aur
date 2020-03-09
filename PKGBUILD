@@ -6,7 +6,7 @@
 
 pkgname=ungoogled-chromium-ozone
 pkgver=80.0.3987.132
-pkgrel=2
+pkgrel=3
 _pkgname=ungoogled-chromium
 _launcher_ver=6
 _ungoogled_ver=80.0.3987.132-1
@@ -50,7 +50,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         vaapi-fix-wayland-init.patch
         0001-Add-missing-algorithm-header-in-bitmap_cursor_factor.patch
         fix-vaapi-ozone-build.patch)
-sha256sums=('48ebcbdcc20fa5864f1b0f0bf8163f8801ed59f82d13744f0303b497db412473'
+sha256sums=('2c0012059046a5a7e2bf6e9502f1898f1953226d63b724b82fc18226e285c201'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
             '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
