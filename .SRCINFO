@@ -1,30 +1,33 @@
 pkgbase = r-rstan
 	pkgdesc = R Interface to Stan
-	pkgver = 2.17.4
+	pkgver = 2.19.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=rstan
+	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = r
+	makedepends = gcc
+	makedepends = make
+	depends = r>=3.4.0
+	depends = r-stanheaders>=2.18.1
 	depends = r-ggplot2>=2.0.0
-	depends = r-stanheaders>=2.17.2
 	depends = r-inline
 	depends = r-gridextra>=2.0.0
 	depends = r-rcpp>=0.12.0
+	depends = r-loo>=2.0.0
+	depends = r-pkgbuild
 	depends = r-rcppeigen>=0.3.3.3.0
-	depends = r-bh>=1.65
-	optdepends = pandoc
+	depends = r-bh>=1.72.0.2
+	depends = pandoc
 	optdepends = r-runit
-	optdepends = r-rcppeigen
-	optdepends = r-bh
-	optdepends = r-loo
 	optdepends = r-shinystan
 	optdepends = r-bayesplot
+	optdepends = r-rmarkdown
 	optdepends = r-rstantools
 	optdepends = r-rstudioapi
 	optdepends = r-knitr
-	source = https://cran.r-project.org/src/contrib/rstan_2.17.4.tar.gz
-	md5sums = f76498305af16b0a899092f9d03c09d1
+	source = https://cran.r-project.org/src/contrib/rstan_2.19.3.tar.gz
+	md5sums = d2bf7e68548600c8c1c6f454dc6203dd
 
 pkgname = r-rstan
 
