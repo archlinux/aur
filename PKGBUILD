@@ -4,7 +4,7 @@
 #%define tar_version snapshot-20180305-2245-stable
 
 #pkgname=x264
-pkgname=x264
+pkgname=x264_152
 #pkgver=0.159.r2991.1771b55
 #pkgver="${soname}"
 pkgver=152
