@@ -7,18 +7,7 @@ pkgdesc='ffDiaporama'
 arch=(x86_64)
 url=http://ffdiaporama.tuxfamily.org
 license=(GPL2)
-depends=(
-  ffmpeg21
-  sdl
-  sdl_mixer
-  qt5-base
-  qt5-tools
-  qt5-svg
-  sqlite
-  qt5-imageformats
-  exiv2
-  taglib
-)
+depends=('ffmpeg21' 'sdl' 'sdl_mixer' 'qt5-base' 'qt5-tools' 'qt5-svg' 'sqlite' 'qt5-imageformats' 'exiv2' 'taglib')
 provides=(
 
 )
