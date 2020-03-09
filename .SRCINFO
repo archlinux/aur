@@ -1,6 +1,6 @@
 pkgbase = wofi
 	pkgdesc = Rofi-like wlroots launcher
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://hg.sr.ht/~scoopta/wofi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wofi
 	depends = wayland
 	depends = gtk3
 	conflicts = wofi-hg
-	source = wofi-v1.1.tar.gz::https://hg.sr.ht/~scoopta/wofi/archive/v1.1.tar.gz
+	source = wofi-v1.1.1.tar.gz::https://hg.sr.ht/~scoopta/wofi/archive/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = wofi
