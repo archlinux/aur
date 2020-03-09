@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-auth_pam
 pkgver=1.5.1
-pkgrel=34
+pkgrel=35
 
 _modname=ngx_http_auth_pam_module
 _nginxver=1.17.9
