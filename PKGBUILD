@@ -32,10 +32,12 @@ build() {
 
 check() {
     cd $_name-$pkgver
-    mkdir -p /tmp/fangfrisch/unittest
-    sqlite3 /tmp/fangfrisch/unittest/db.sqlite < tests/tests.sql
+    rm -rf tmp_unittest
+    mkdir -p tmp_unittest
+    sed -i -e "s,/tmp/fangfrisch/unittest,$srcdir/$_name-$pkgver/tmp_unittest," tests/tests.conf tests/__init__.py
+    sqlite3 tmp_unittest/db.sqlite < tests/tests.sql
     python -m unittest discover tests/
-    rm -rf /tmp/fangfrisch
+    rm -rf tmp_unittest
 }
 
 package() {
