@@ -3,7 +3,7 @@
 _plug=imagine
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r41.73be955
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173633'
@@ -17,6 +17,9 @@ depends=('vapoursynth'
          'libavutil.so'
          'libswscale.so'
          )
+makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/sekrit-twc/imagine.git"
         'git+https://github.com/sekrit-twc/libp2p.git'
         'git+https://github.com/sekrit-twc/vsxx.git'
