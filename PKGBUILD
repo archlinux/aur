@@ -33,7 +33,7 @@ build() {
 package() {
   cd "$srcdir/build"
 
-  make DESDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/rocm-runtime.conf"
