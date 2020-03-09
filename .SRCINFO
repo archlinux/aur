@@ -10,6 +10,7 @@ pkgbase = r-git2r
 	depends = r>=3.1
 	depends = libgit2
 	depends = zlib
+	depends = openssl
 	optdepends = r-getpass
 	optdepends = libssh2: SSH transport support
 	source = https://cran.r-project.org/src/contrib/git2r_0.26.1.tar.gz

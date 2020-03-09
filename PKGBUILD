@@ -12,7 +12,7 @@ pkgdesc="Provides Access to Git Repositories"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL2)
-depends=('r>=3.1' libgit2 zlib)
+depends=('r>=3.1' libgit2 zlib openssl)
 makedepends=(gcc)
 optdepends=(r-getpass
             'libssh2: SSH transport support')
