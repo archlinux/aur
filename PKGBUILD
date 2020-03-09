@@ -4,13 +4,13 @@
 
 pkgname=opensnitch-git
 pkgver=1.0.0rc6.r0.27778c1
-pkgrel=2
+pkgrel=3
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
-makedepends=('git' 'dep' 'go-pie' 'python-setuptools')
-depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
+makedepends=('git' 'dep' 'go-pie' 'python-setuptools' 'python-grpcio-tools')
+depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
          'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5'
          'python-libconfigparser' 'logrotate')
 optdepends=('logrotate: for logfile rotation support')
@@ -33,7 +33,7 @@ prepare() {
     export GOPATH="$srcdir"/gopath
 
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
-    dep ensure
+    dep ensure -update -v
 
     cd "$srcdir/${pkgname%-git}"
     sed -i 's|local/bin|bin|g' daemon/opensnitchd.service
@@ -44,6 +44,7 @@ build() {
 
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
     go build \
+    -v \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
     -o opensnitchd .
