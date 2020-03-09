@@ -1,24 +1,13 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=8
+pkgrel=9
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
 license=('custom')
 
-depends=('icu'
-         'openssl'
-         'openssl-1.0'
-         'p7zip'
-         'qt5-base'
-         'qt5-declarative'
-         'qt5-translations'
-         'qt5-location'
-         'qt5-webchannel'
-         'qt5-webengine'
-         'qt5-websockets'
-         'wine')
+depends=('p7zip' 'wine')
 
 optdepends=('libnotify' 'winetricks')
 
@@ -26,7 +15,6 @@ conflicts=('evelauncher' 'evesetup_dev')
 
 source=("evelauncher.desktop"
         "evelauncher.sh"
-        "evelauncher.sh.in"
         "evelauncher.sh.real"
         "evesetup.shlib"
         "everegedit.desktop"
@@ -40,9 +28,7 @@ source=("evelauncher.desktop"
         "evelauncher.kwinrule"
         "evelauncher.lua"
         "build_installer.sh"
-        "build_small_installer.sh"
         "setup.sh.in"
-        "setup_small.sh.in"
         "eve-icons.tar.gz"
         "eve-icons_large.tar.gz"
         "eve-transl5.11-de.tar.gz"
@@ -94,14 +80,20 @@ package() {
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
-        rm -rf ${srcdir}/evelauncher/resources/ ${srcdir}/evelauncher/plugins/
-        rm -f ${srcdir}/evelauncher/*[Qq]t* ${srcdir}/evelauncher/libcrypto*
-        rm -f ${srcdir}/evelauncher/libicu* ${srcdir}/evelauncher/libssl*
-        rm -f ${srcdir}/evelauncher/libpng* ${srcdir}/evelauncher/libxcb*
         cp -f ${srcdir}/evelauncher.sh.real ${srcdir}/evelauncher/evelauncher.sh
+        rm -f ${srcdir}/evelauncher/*.a ${srcdir}/evelauncher/*.la
+        rm -f ${srcdir}/evelauncher/*.prl ${srcdir}/evelauncher/libxcb*
         chmod 0755 ${srcdir}/evelauncher/*
-        chmod 0644 ${srcdir}/evelauncher/*.qm ${srcdir}/evelauncher/errorpage/*
+        chmod 0644 ${srcdir}/evelauncher/*.qm
+        chmod 0644 ${srcdir}/evelauncher/qt.conf
+        chmod 0644 ${srcdir}/evelauncher/errorpage/*
         ln -sf evelauncher.sh ${srcdir}/evelauncher/LogLite.sh
+        ln -sf libicudata.so.55.1 ${srcdir}/evelauncher/libicudata.so
+        ln -sf libicudata.so.55.1 ${srcdir}/evelauncher/libicudata.so.55
+        ln -sf libicui18n.so.55.1 ${srcdir}/evelauncher/libicui18n.so
+        ln -sf libicui18n.so.55.1 ${srcdir}/evelauncher/libicui18n.so.55
+        ln -sf libicuuc.so.55.1 ${srcdir}/evelauncher/libicuuc.so
+        ln -sf libicuuc.so.55.1 ${srcdir}/evelauncher/libicuuc.so.55
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so
         ln -sf libgpr.so.6.0.0 ${srcdir}/evelauncher/libgpr.so.6
         ln -sf libgrpc++.so.1.12.0 ${srcdir}/evelauncher/libgrpc++.so
@@ -109,14 +101,14 @@ package() {
         ln -sf libgrpc++.so.1.12.0 ${srcdir}/evelauncher/libgrpc++.so.6
         ln -sf libgrpc.so.6.0.0 ${srcdir}/evelauncher/libgrpc.so
         ln -sf libgrpc.so.6.0.0 ${srcdir}/evelauncher/libgrpc.so.6
+        ln -sf libpng12.so.0.54.0 ${srcdir}/evelauncher/libpng12.so.0
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/evelauncher/libprotobuf.so
         ln -sf libprotobuf.so.16.0.0 ${srcdir}/evelauncher/libprotobuf.so.16
         find ${srcdir}/evelauncher/ -type f -exec strip -s {} 2>/dev/null \;
-        tar cJf ${pkgdir}/opt/${pkgname}/lib/evelauncher-${pkgver}.tar.xz evelauncher/
+        tar czf ${pkgdir}/opt/${pkgname}/lib/evelauncher-${pkgver}.tar.gz evelauncher/
 }
 
 sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
-            'e9c2145865e425a13fa38f433f2aec0574c44950442dffb900ae41085bfe7566'
             'b1faa042a96746fe80ea5d85a0c26e80b29353394897774f45b9e48e0639a1d8'
             '80fceef0e28c2291cd4ba3924410211edd188717be093ffc329d18697583bd21'
             '4eaceb0661dd38354c3738411bdbe48e29bab103bb09b8f959d16f1073904625'
@@ -126,14 +118,12 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             'c83beba543663b926d28d0eda98f1035cd73327da50f718a487763d300415a24'
             '56929a0129540140ed7c85c04b83a163b4977bcc9d5555f760af871fc5ccbd17'
             '30b6440b842c19df64892cc560c274a7cc4f5de910a9f81e12dd0d76da561474'
-            '9faa37aaf682e0951cc03120d4cc0b68d71f445752f34628e9bb906bdced0ec9'
+            '3c4aedb6e3ea37cf041abb2ac15decb25d5a1852c1eac344943645fd954466cf'
             '261da84107168979d241c60cd7adbfee0f6675464675faaefd5f6140009d54d8'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
-            'c2a2397077286d0eb4341ad6aff1db89386dd4530861de769de531f31d071a8b'
-            'a68456ca5b7abb1741bea96e8d6a24d78d111f14388312446d7bd130f06dfce2'
-            '424e72f83e84f985febe55eb4364f30a55ae75be20c9d3d639539009ce0fe15f'
-            '10393631d8bcc1cb15bec7a24e9ad033a927fd8d466b23f3d5aea9ab8f567e21'
+            '481e70f5ddba4f2d811534ab5b341a0911a836ab08a2631e648cae36b58fd0e0'
+            '67faa8a947c5b662f7fcc32f6e426278a673de44430edfd0c7e0b65315a3cfb8'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'

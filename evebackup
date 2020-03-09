@@ -42,10 +42,13 @@ done
 }
 
 SHAREDIR=$(getval SharedCacheFolder)
+SETTINGSDIR="${SHAREDIR}wineenv/drive_c/users/$(whoami)/Local Settings/Application Data/CCP/EVE"
 BACKUPDIR=$(xdg-user-dir DOCUMENTS)/EVE
 CMDSTR=$(basename $0)
 
-cd "${SHAREDIR}wineenv/drive_c/users/$(whoami)/Local Settings/Application Data/CCP/EVE"
+[ -d "$SETTINGSDIR" ] || mkdir -p "$SETTINGSDIR"
+
+cd "$SETTINGSDIR"
 
 case $CMDSTR in
     evebackup)  backup_settings ;;
