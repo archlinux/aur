@@ -1,34 +1,27 @@
-# Maintainer: N.E. Neal <contact at [part of name before neal without dots] dog com>
-pkgname='bonsai.sh-git'
-pkgver=r43.0c43085
-pkgrel=1
-pkgdesc="A randomly generated bonsai tree in your terminal!"
+# Maintainer: Isaac Freund <ifreund@ifreund.xyz>
+# Contributor: N.E. Neal <contact at [part of name before neal without dots] dog com>
+
+_pkgname='bonsai.sh'
+pkgname="${_pkgname}-git"
+pkgver=r84.6c3812b
+pkgrel=2
+pkgdesc='bonsai tree generator written in bash'
 arch=('any')
-url="https://gitlab.com/jallbrit/bonsai.sh"
+url="https://gitlab.com/jallbrit/${_pkgname}"
 license=('GPL3')
-groups=()
-depends=("bash")
-makedepends=("git")
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("${pkgname}::git+https://gitlab.com/jallbrit/bonsai.sh.git")
-noextract=()
+depends=('bash' 'bc')
+makedepends=('git')
+provides=('bonsai.sh')
+conflicts=('bonsai.sh')
+source=("${_pkgname}::git+${url}.git")
 md5sums=(SKIP)
 
 pkgver() {
-	cd $startdir/$pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-        cd ${srcdir}/${pkgname}
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm755 bonsai.sh "$pkgdir/usr/bin/bonsai.sh"
-	sudo ln -s /bin/bonsai.sh /bin/bonsai
+    cd "${srcdir}/${_pkgname}"
+    install -vDm 755 bonsai.sh -t "${pkgdir}/usr/bin/"
 }

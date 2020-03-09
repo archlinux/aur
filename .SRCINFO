@@ -1,13 +1,16 @@
 pkgbase = bonsai.sh-git
-	pkgdesc = A randomly generated bonsai tree in your terminal!
-	pkgver = r43.0c43085
-	pkgrel = 1
+	pkgdesc = bonsai tree generator written in bash
+	pkgver = r84.6c3812b
+	pkgrel = 2
 	url = https://gitlab.com/jallbrit/bonsai.sh
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = bash
-	source = bonsai.sh-git::git+https://gitlab.com/jallbrit/bonsai.sh.git
+	depends = bc
+	provides = bonsai.sh
+	conflicts = bonsai.sh
+	source = bonsai.sh::git+https://gitlab.com/jallbrit/bonsai.sh.git
 	md5sums = SKIP
 
 pkgname = bonsai.sh-git
