@@ -1,6 +1,6 @@
 pkgbase = mosh-git
 	pkgdesc = Mobile shell, surviving disconnects with local echo and line editing, development version
-	pkgver = 20150728
+	pkgver = 20191002
 	pkgrel = 1
 	url = http://mosh.mit.edu/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = mosh-git
 	depends = libutempter
 	optdepends = perl-io-socket-ip: for IPv6 support
 	conflicts = mosh
-	source = git+https://github.com/keithw/mosh.git
+	source = git+https://github.com/mobile-shell/mosh.git
 	md5sums = SKIP
 
 pkgname = mosh-git
