@@ -1,7 +1,7 @@
 pkgbase = storm
 	pkgdesc = Apache Storm is a free and open source distributed realtime computation system
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://storm.apache.org/
 	install = install_storm.sh
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = storm
 	backup = etc/storm/storm.yaml
 	backup = etc/zookeeper/zookeeper-storm/zoo.cfg
 	backup = etc/zookeeper/zookeeper-storm/log4j.properties
-	source = http://apache.otenet.gr/dist/storm/apache-storm-2.1.0/apache-storm-2.1.0.tar.gz
+	source = http://ftp.cc.uoc.gr/mirrors/apache/storm/apache-storm-2.1.0/apache-storm-2.1.0.tar.gz
 	source = zookeeper_zoo.cfg
 	source = zookeeper_log4j.properties
 	source = systemd_storm-nimbus.service
