@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index f09169f..d42c486 100644
+--- a/setup.py
++++ b/setup.py
+@@ -120,7 +120,7 @@ if (platform.python_implementation() == 'CPython' and
+         # Certifi is also optional on 2.7.9+, although making our dependencies
+         # conditional on micro version numbers seems like a bad idea
+         # until we have more declarative metadata.
+-        install_requires.append('certifi')
++        pass
+     if sys.version_info < (3, 5):
+         install_requires.append('backports_abc>=0.4')
+ kwargs['install_requires'] = install_requires
