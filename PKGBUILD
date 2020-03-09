@@ -1,23 +1,27 @@
-# Maintainer: Gregoire Lodi <gregoire.lodi@gmail.com>
+# Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=wafw00f
-pkgver=0.9.4
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Web Application Firewall Detection Tool"
-arch=("i686" "x86_64")
+pkgdesc="The Web Application Firewall Fingerprinting Tool"
+arch=("any")
 url="https://github.com/EnableSecurity/wafw00f"
-license=("GPL")
-makedepends=("python3")
-source=("$pkgname"::"git+${url}.git")
-noextract=()
-md5sums=("SKIP")
+license=('BSD')
+provides=('wafw00f')
+conflicts=('wafw00f')
+depends=("python-pluginbase"
+         "python-requests")
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('611efa7e21f5acd40681eb1ed83af3500bccd4764201bd3b76c23ab7a74d6a45')
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd $pkgname-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
