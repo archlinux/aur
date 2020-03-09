@@ -1,0 +1,16 @@
+pkgbase = luxtorpeda
+	pkgdesc = Steam Play compatibility tool to run adventure games using native Linux ScummVM
+	pkgver = 20191003
+	pkgrel = 1
+	url = https://github.com/dreamer/luxtorpeda
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = rust
+	optdepends = steam: The Steam client
+	source = git+https://github.com/dreamer/luxtorpeda.git#commit=e770a4fe38577668b23ccbaadbcb54978fdd1026
+	sha512sums = SKIP
+
+pkgname = luxtorpeda
+
