@@ -3,7 +3,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vkd3d-valve-git
-pkgver=1.1.r695.g40e4a74
+pkgver=1.1.r708.gf548d81
 pkgrel=1
 pkgdesc="D3D12 to Vulkan translation library (Valve version)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ makedepends=( # Prevent out-of-date SPIRV headers error
             )
 conflicts=('vkd3d' 'vkd3d-git')
 provides=('vkd3d')
-source=('git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_4.11')
+source=('git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_5.0')
 sha256sums=('SKIP')
 
 pkgver() {

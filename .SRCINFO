@@ -15,7 +15,7 @@ pkgbase = vkd3d-valve-git
 	provides = vkd3d
 	conflicts = vkd3d
 	conflicts = vkd3d-git
-	source = git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_4.11
+	source = git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_5.0
 	sha256sums = SKIP
 
 pkgname = vkd3d-valve-git
