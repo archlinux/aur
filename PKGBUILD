@@ -1,7 +1,7 @@
 pkgname=yup
 _pkgname=yup
-pkgver="1.0.3"
-_pkgver="1.0.3"
+pkgver="1.1.0"
+_pkgver="1.1.0"
 pkgrel=1
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('any')
@@ -11,7 +11,7 @@ source=("${_pkgname}::git+https://github.com/ericm/yup.git#tag=v${_pkgver}")
 sha256sums=('SKIP')
 
 depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
-makedepends=('go>=1.12' 'make')
+makedepends=('go>=1.12' 'make' 'pkgconf' 'gcc')
 
 prepare() {
     cd "${_pkgname}"
