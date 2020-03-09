@@ -1,7 +1,7 @@
 pkgbase = grav-admin
 	pkgdesc = Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)
 	pkgver = 1.6.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getgrav.org
 	arch = any
 	license = MIT
