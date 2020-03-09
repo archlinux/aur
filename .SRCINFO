@@ -1,6 +1,6 @@
 pkgbase = phonesim
 	pkgdesc = Phone Simulator for modem testing
-	pkgver = 1.21.r0.g7664fdc
+	pkgver = 1.21.r16.gadf231a
 	pkgrel = 1
 	url = https://git.kernel.org/pub/scm/network/ofono/phonesim.git/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = phonesim
 	license = GPLv2
 	makedepends = git
 	makedepends = gcc
-	depends = qt4
+	depends = qt5-base
 	depends = libpng
 	depends = freetype2
 	depends = libsm

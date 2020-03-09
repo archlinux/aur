@@ -2,12 +2,12 @@
 
 pkgname=phonesim
 pkgdesc="Phone Simulator for modem testing"
-pkgver=1.21.r0.g7664fdc
+pkgver=1.21.r16.gadf231a
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://git.kernel.org/pub/scm/network/ofono/phonesim.git/"
 license=('GPLv2')
-depends=('qt4' 'libpng' 'freetype2' 'libsm' 'libice' 'libxrender' 'fontconfig' 'libxext' 'libx11' 'harfbuzz' 'libxcb' 'graphite' 'libxau' 'libxdmcp')
+depends=('qt5-base' 'libpng' 'freetype2' 'libsm' 'libice' 'libxrender' 'fontconfig' 'libxext' 'libx11' 'harfbuzz' 'libxcb' 'graphite' 'libxau' 'libxdmcp')
 makedepends=('git' 'gcc')
 source=('phonesim::git+https://git.kernel.org/pub/scm/network/ofono/phonesim.git')
 sha512sums=('SKIP')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
     cd "$srcdir/phonesim"
     echo "--- Starting PKGBUILD logs ---"
-    git checkout $(git describe --abbrev=0 --tags)
+    git checkout $(git describe) # --abbrev=0 --tags)
     echo "[BUILD] Checking-out master->$(git describe --abbrev=0 --tags)"
     ./bootstrap-configure
     make
