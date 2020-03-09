@@ -12,6 +12,7 @@ optdepends=('kvantum-theme-vimix-git: Matching Kvantum theme'
             'vimix-icon-theme: Matching icon theme'
             'vimix-cursors: Matching cursor theme'
             'tela-icon-theme: Recommended icon theme')
+conflicts=('vimix-gtk-themes-git')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vinceliuice/$pkgname/archive/$_pkgver.tar.gz")
 sha256sums=('5630d7bfb09820978459b2ce2f7db6cacbb2a34a4c8f73ca3b706301310927bd')
