@@ -1,0 +1,5 @@
+*.pkg.tar
+katago-opencl
+weights-b20.bin.gz
+weights-b30.bin.gz
+weights-b40.bin.gz
