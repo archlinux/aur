@@ -1,7 +1,7 @@
 pkgbase = perl-email-folder
 	pkgdesc = Perl module to read all messages from a folder as Email::Simple objects
 	pkgver = 0.860
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Email-Folder
 	arch = any
 	license = PerlArtistic

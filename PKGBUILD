@@ -4,7 +4,7 @@
 
 pkgname=perl-email-folder
 pkgver=0.860
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to read all messages from a folder as Email::Simple objects'
 arch=('any')
 url='https://metacpan.org/release/Email-Folder'
@@ -36,5 +36,5 @@ package() {
 	cd Email-Folder-0.860
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
