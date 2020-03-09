@@ -77,6 +77,7 @@ package() {
             fi
         done
         cp ${srcdir}/evesetup.shlib ${pkgdir}/opt/${pkgname}/lib
+        cp ${srcdir}/eve-transl5.11* ${pkgdir}/opt/${pkgname}/lib
         cp ${srcdir}/evelauncher.lua ${pkgdir}/opt/${pkgname}/doc
         cp ${srcdir}/evelauncher.kwinrule ${pkgdir}/opt/${pkgname}/doc
         cp -r ${srcdir}/icons ${pkgdir}/usr/share/
