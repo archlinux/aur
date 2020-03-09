@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=pacfetch
-pkgver=1.0.4
+pkgver=1.0.4.1
 pkgrel=1
 pkgdesc="Simple fetch script for pacman based distros"
 arch=(x86_64)
@@ -28,7 +28,7 @@ source=(
 	$pkgname-$pkgver-$pkgrel::$url/raw/v$pkgver/pacfetch
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('c23cf943152048c3a7ac7282bb7e4e0aba6e44def69cd7ba06e2ce426f874f2278049b13040e78881e1673d0fb0027d8b876fdf1e715d67f23008cdf953f0d5c')
+sha512sums=('8522e4117fc3c70f04ae350394ea1cfec98cef0c0a0e6846b84dc091e7967388b4503f70bff3e78968f0eb4fa476844a370e33960b0094b67307543cdab18b98')
 
 package() {
 
