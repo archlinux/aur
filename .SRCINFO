@@ -1,6 +1,6 @@
 pkgbase = future-fetch
 	pkgdesc = Simple fetch script
-	pkgver = 0.9.7.4
+	pkgver = 0.9.7.5
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/futureFetch
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = future-fetch
 	depends = util-linux
 	optdepends = yay: for counting AUR updates
 	optdepends = wmctrl: for displaying window manager
-	source = future-fetch-0.9.7.4-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.9.7.4/future-fetch
-	sha512sums = d2a813ca387f03ea3b437ed2bacc7fbd21df47266f11abaeefcc7a4e2a034c17d79eb37d3bec2fd75ed244c7ad004fa29709915a4494225b5eccd2c236476dcc
+	source = future-fetch-0.9.7.5-1::https://git.auteiy.me/dmitry/futureFetch/raw/v0.9.7.5/future-fetch
+	sha512sums = c3e1825a4ce7158212e45bdd7f2b0fce518fbee8c733bde6c90162857a77d63f4140d7d78f35567f201b522c52bd3ca8301034960463c786d55784d2c991c2ea
 
 pkgname = future-fetch
 
