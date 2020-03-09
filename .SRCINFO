@@ -1,0 +1,18 @@
+pkgbase = glorious-man-pages-git
+	pkgdesc = Man pages for the computer peripherals from Glorious PC Gaming Race
+	pkgver = cef6a2e
+	pkgrel = 1
+	url = https://gitlab.com/gabmus/glorious-man-pages
+	arch = any
+	license = CC0
+	makedepends = git
+	makedepends = make
+	makedepends = pandoc
+	depends = man-pages
+	provides = glorious-man-pages
+	conflicts = glorious-man-pages
+	source = gmp::git+https://gitlab.com/gabmus/glorious-man-pages
+	sha256sums = SKIP
+
+pkgname = glorious-man-pages-git
+
