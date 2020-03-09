@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r109.g36ca0e0030
+pkgver=0.32.0.r241.gc05e5d9d78
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -83,7 +83,6 @@ depends=(
          'rubberband'
          'sdl2'
          'shaderc'
-         'smbclient'
          'snappy'
          'sndio'
          'speex'
@@ -146,9 +145,9 @@ optdepends=(
             'youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
             )
-provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
+provides=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 conflicts=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
-replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git')
+replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 options=('!emptydirs')
 source=('mpv-build::git+https://github.com/mpv-player/mpv-build.git'
         'mpv::git+https://github.com/mpv-player/mpv.git'
@@ -269,6 +268,7 @@ prepare() {
     '--enable-libfdk-aac'
     '--enable-libfreetype'
     '--enable-libfribidi'
+    '--enable-libglslang'
     '--enable-libgme'
     '--enable-libgsm'
     '--enable-libiec61883'
@@ -326,6 +326,7 @@ prepare() {
     '--enable-vapoursynth'
     '--enable-vdpau'
     '--enable-version3'
+    '--enable-vulkan'
     '--enable-xlib'
     '--enable-zlib'
   )
@@ -361,7 +362,6 @@ prepare() {
     '--enable-libbluray'
     '--enable-libmpv-shared'
     '--enable-libplacebo'
-    '--enable-libsmbclient'
     '--enable-lua'
     '--enable-manpage-build'
     '--enable-openal'
