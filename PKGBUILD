@@ -1,24 +1,33 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Ward Segers <w@rdsegers.be>
 # Contributor: Alex Branham <branham@utexas.edu>
-_cranver=0.23.0
-pkgname=r-git2r
+
+_cranname=git2r
+_cranver=0.26.1
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Provides Access to Git Repositories'
-arch=('x86_64')
-url='https://cran.r-project.org/package=git2r'
-license=('GPL2')
-depends=('r' )
-optdepends=('r-getpass')
-source=("https://cran.r-project.org/src/contrib/Archive/git2r/git2r_"$_cranver".tar.gz")
-md5sums=('81d1d98a00d111807471e43513599939')
+pkgdesc="Provides Access to Git Repositories"
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL2)
+depends=('r>=3.1' libgit2 zlib)
+makedepends=(gcc)
+optdepends=(r-getpass
+            'libssh2: SSH transport support')
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('f4632239798a84680ddcab650caaa1df')
 
-build(){
-    R CMD INSTALL git2r_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership git2r "$pkgdir"/usr/lib/R/library
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
