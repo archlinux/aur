@@ -1,0 +1,22 @@
+pkgbase = r-gh
+	pkgdesc = 'GitHub' 'API'
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://cran.r-project.org/package=gh
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-cli
+	depends = r-ini
+	depends = r-jsonlite
+	depends = r-httr>=1.2
+	optdepends = r-covr
+	optdepends = r-keyring
+	optdepends = r-pingr
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/gh_1.1.0.tar.gz
+	md5sums = f34485dab3283fbadba9d61b651359e7
+
+pkgname = r-gh
+
