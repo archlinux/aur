@@ -78,9 +78,8 @@ package_nautilus-typeahead() {
 
 package_libnautilus-extension-typeahead() {
   pkgdesc="Library for extending the $pkgdesc"
-  conflicts=(libnautilus-extension)
-  provides=(libnautilus-extension)
-  provides=(libnautilus-extension.so)
   depends=(gtk3)
+  conflicts=(libnautilus-extension libnautilus-extension.so)
+  provides=(libnautilus-extension libnautilus-extension.so)
   mv libne/* "$pkgdir"
 }
