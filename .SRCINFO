@@ -1,9 +1,9 @@
 pkgbase = r-spelling
-	pkgdesc = Spell checking common document formats including latex, markdown, manual pages, and description files.
+	pkgdesc = Tools for Spell Checking in R
 	pkgver = 2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=spelling
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = r
 	depends = r-commonmark
