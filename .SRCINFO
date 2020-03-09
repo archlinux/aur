@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-velodyne-description
-	pkgdesc = ROS - Base dependencies and support libraries for ROS.
+	pkgdesc = ROS - URDF and meshes describing Velodyne laser scanners.
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/velodyne_description
 	arch = i686
 	arch = x86_64
