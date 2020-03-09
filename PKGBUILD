@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
 pkgdesc="Version synth and effect LV2 plugins."
-pkgver=r163.a445da1
+pkgver=r166.c4e0ab7
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd LV2Plugins
-	make
+	make JACK=false VST2=false
 }
 
 package() {
