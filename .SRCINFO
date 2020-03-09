@@ -1,6 +1,6 @@
 pkgbase = pacfetch
 	pkgdesc = Simple fetch script
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/pacFetch
 	arch = x86_64
@@ -15,8 +15,8 @@ pkgbase = pacfetch
 	depends = util-linux
 	optdepends = yay: for counting AUR updates
 	optdepends = wmctrl: for displaying window manager in Xorg
-	source = pacfetch-1.0.1-1::https://git.auteiy.me/dmitry/pacFetch/raw/v1.0.1/pacfetch
-	sha512sums = b429dee3a792e114c67fcc4c6a65bc03eb142375fc12dc451163da26d738acd434fd898fbb4504c912e57e6a5d8ab623fbd91e37fb1b1049316bd7de3e18a8dd
+	source = pacfetch-1.0.2-1::https://git.auteiy.me/dmitry/pacFetch/raw/v1.0.2/pacfetch
+	sha512sums = 0273f4366419558481d2cab396b83188e7d2e46555e6a7a51eb5da7ac71a473ae8517855fee50dc77494d96a5442b827b09928f88c01795d752414e23207016e
 
 pkgname = pacfetch
 
