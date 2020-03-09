@@ -2,8 +2,8 @@
 
 _pkgname=coolq-pro
 pkgname=${_pkgname}-bin
-pkgver=5.14.10
-pkgrel=3
+pkgver=5.14.14
+pkgrel=2
 pkgdesc="一款智能机器人软件，由应用提供群管理、智能对话、好友互动、生活助理等智能功能。"
 arch=(any)
 url="https://cqp.cc/t/14901"
@@ -14,7 +14,7 @@ groups=('eqs')
 install=coolq-pro.install
 provides=('coolq')
 source=("$pkgname-$pkgver.zip::https://dlsec.cqp.me/cqp-full"
-        "LICENSE.html::https://help.cqp.im/tos"
+        "LICENSE.html::https://docs.cqp.im/about/tos/"
         dll.tar.xz
         coolq-wine.reg
         coolq-vncserver.service
@@ -24,7 +24,7 @@ source=("$pkgname-$pkgver.zip::https://dlsec.cqp.me/cqp-full"
         coolq@.service
         coolq-wrapper)
 sha512sums=('a63dbaeed73f98e4ae44641838c27536bd9cfdaec8b0bb2c7ec3da20633954b7b27ab1726d26d33ca7c953dacd2df484e6652e191822a38a3ac37ec30ba86d57'
-            '743605b77af5c835141c3a0a94b5f40339a05751913a57610423f1b33ed0a90d9af4fe2ae6a20228290867dfe9ae876c52ac5c243582d0ac25c9f002503a0226'
+            '9470f692d5b257eff200dd28109467223302f1a8d8d16e0c172607643244917f2592a48d638dc3f95da26174a7e9bddfdaa004c4be3ad4d2b00897103c73137e'
             '0ac185656fa96d186270f6e99347a1895098377938f20efca5f8fa7b7cf77f0b842fb13569b3f77e610906d3dd4eb46a4715c5cdee409d589b211f30fbb2b92f'
             'a6614806ce2a976dcdbcc3534cd60e6270629fd89e84dc965188fa2df9ada5a3fbf9211950e8221cd044cf2f95720db1d62e5a371bc8c9fd2ebfbc64f4ca4428'
             '0a4e9babd15138f928337649bd30a60d429202255e5516a030f34662caa98adb7db6db64765ff506f8b00106007b48b9714f75836d4d4ea48a91e69d50baa86b'
