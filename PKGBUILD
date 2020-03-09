@@ -62,8 +62,7 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm755 daemon/opensnitchd -t "$pkgdir/usr/bin"
-    install -Dm644 daemon/opensnitchd.service -t \
-        "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 daemon/opensnitchd.service -t "$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/etc/opensnitchd/rules"
     install -Dm644 daemon/default-config.json -t "$pkgdir/etc/opensnitchd"
     install -Dm644 debian/opensnitch.logrotate "$pkgdir/etc/logrotate.d/opensnitch"
