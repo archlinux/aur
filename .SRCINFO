@@ -1,0 +1,33 @@
+pkgbase = ros-melodic-velodyne-gazebo-plugins
+	pkgdesc = ROS - Base dependencies and support libraries for ROS.
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = http://wiki.ros.org/velodyne_gazebo_plugins
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = git
+	makedepends = ros-melodic-rospack
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-sensor-msgs
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-gazebo-ros
+	depends = ros-melodic-ros-environment
+	depends = ros-melodic-rospack
+	depends = ros-melodic-catkin
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-tf
+	depends = ros-melodic-gazebo-ros
+	depends = python-rospkg
+	source = ros-melodic-velodyne-gazebo-plugins::git+https://bitbucket.org/DataspeedInc/velodyne_simulator.git#tag=1.0.9
+	sha256sums = SKIP
+
+pkgname = ros-melodic-velodyne-gazebo-plugins
+
