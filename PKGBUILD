@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libx11' 'libconfig')
 makedepends=('git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('78e06280504ff21213bc947c97fb0604c42addc0d8dc4a18c239bfd8f0aa1614')
+sha256sums=('06fb0d9a081546b6b9d1785f6d6fa36f905516eec5df3a567b5d22bd1f8df33a')
 backup=("etc/${pkgname}/styles.cfg")
 
 build() {
