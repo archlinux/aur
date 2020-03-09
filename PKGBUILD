@@ -3,7 +3,7 @@
 _plug=inpaint
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2.dafa5b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/invisiblearts/VapourSynth-Inpaint'
@@ -12,6 +12,8 @@ depends=('vapoursynth'
          'opencv'
          )
 makedepends=('git')
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/invisiblearts/VapourSynth-Inpaint.git")
 sha256sums=('SKIP')
 
