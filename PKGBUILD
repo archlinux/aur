@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-mod-pagespeed
 pkgver=1.13.35.2
-pkgrel=27
+pkgrel=28
 
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
