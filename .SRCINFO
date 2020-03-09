@@ -1,7 +1,7 @@
 pkgbase = storm
 	pkgdesc = Apache Storm is a free and open source distributed realtime computation system
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://storm.apache.org/
 	install = install_storm.sh
 	arch = any

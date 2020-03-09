@@ -11,7 +11,7 @@
 
 pkgname=storm
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Apache Storm is a free and open source distributed realtime computation system'
 arch=('any')
 url='https://storm.apache.org/'
