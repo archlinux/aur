@@ -1,7 +1,7 @@
 pkgbase = dracut-colors-git
 	pkgdesc = dracut hook to set VT console colors during early userspace
-	pkgver = 1.a3b7f98
-	pkgrel = 3
+	pkgver = 2.a3b7f98
+	pkgrel = 1
 	url = https://github.com/mxfm/dracut-colors
 	arch = any
 	license = MIT

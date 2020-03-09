@@ -5,8 +5,8 @@ pkgname=${_pkgname}-git
 pkgdesc="dracut hook to set VT console colors during early userspace"
 license=('MIT')
 url="https://github.com/mxfm/${_pkgname}"
-pkgver=1.a3b7f98
-pkgrel=3
+pkgver=2.a3b7f98
+pkgrel=1
 
 source=("$pkgname::git://github.com/mxfm/${_pkgname}")
 md5sums=('SKIP')
