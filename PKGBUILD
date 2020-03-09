@@ -1,10 +1,10 @@
-# Maintainer: Marco Pompili <aur (at) mg.odd.red>
+# Maintainer: Marco Pompili <aur@mg.odd.red>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 _npmname=ungit
-_npmver=1.5.1
+_npmver=1.5.5
 pkgname=nodejs-ungit
-pkgver=1.5.1
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="Git made easy"
 arch=('i686' 'x86_64')
