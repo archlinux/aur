@@ -3,7 +3,7 @@
 pkgname=motionbox
 _pkgname=motionbox
 pkgver=1.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="MotionBox is a Video Browser for Motion Freedom"
 arch=("x86_64")
 url="http://omega.gg/MotionBox/"
@@ -15,12 +15,10 @@ source=(
     http://omega.gg/get/MotionBox/MotionBox-1.6.0-linux64.tar.gz
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.desktop
     https://github.com/G-P-L/AUR/raw/master/MotionBox/MotionBox.png
-    https://github.com/G-P-L/AUR/raw/master/MotionBox/libdouble-conversion.so.1
 )
-sha256sums=('eda8dccce45866ecba3b8dc657b05b98363ec3af8d79d024a46e4b66ab607d62'
+sha256sums=('a8ff852acc3fbb4711926840bab195cfb888c7c1710d4f1fbfedbafd88cf9e03'
             'c531f06e8777a2f6327ead793b6dc16c2b4780fdb16be354f8e68ddbe32138e7'
-            '7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72'
-            '4306f334766de8c464f232504614f3511161a4705dc7a7820dc2644e9c4741d2')
+            '7b0f4fb92e7bc5d23fbef1a0bb9381a63fa979f28a36b2f0b4b4619b13039b72')
 
 package() {
     install -d "$pkgdir/opt/MotionBox"
