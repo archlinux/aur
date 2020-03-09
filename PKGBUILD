@@ -29,6 +29,7 @@ pkgver() {
 prepare() {
   cd "${_plug}"
 
+  # unbundle
   rm -fr include
 
   mkdir -p build
