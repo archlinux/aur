@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=future-fetch
-pkgver=0.9.7.5
+pkgver=0.9.7.6
 pkgrel=1
 pkgdesc="Simple fetch script"
 arch=(x86_64)
@@ -19,7 +19,7 @@ depends=(
 
 optdepends=(
     'yay: for counting AUR updates'
-    'wmctrl: for displaying window manager'
+    'wmctrl: for displaying window manager in Xorg'
 )
 
 # Sources
@@ -27,7 +27,7 @@ source=(
 	$pkgname-$pkgver-$pkgrel::$url/raw/v$pkgver/future-fetch
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('c3e1825a4ce7158212e45bdd7f2b0fce518fbee8c733bde6c90162857a77d63f4140d7d78f35567f201b522c52bd3ca8301034960463c786d55784d2c991c2ea')
+sha512sums=('816af3f2dab7482b1152addd7273b5edbf179df92cc6f21842116101526bd5ea00d873859f988a8534a8b7b289a64a64b996beb1fcc19eb3338c0fb7ff856855')
 
 package() {
 
