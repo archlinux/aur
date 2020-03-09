@@ -1,0 +1,15 @@
+pkgbase = u++
+	pkgdesc = uC++ from the University of Waterloo
+	pkgver = 7.0.0
+	pkgrel = 1
+	url = https://plg.uwaterloo.ca/~usystem/pub/uSystem/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	source = https://plg.uwaterloo.ca/~usystem/pub/uSystem/u++-7.0.0.sh
+	md5sums = df976558a5505c8e59e37e60ac09a09f
+	sha256sums = 45addb9e42113e55c7d990d7c8a12c78cc7b0108b7d35059b21554dc5e78ab4c
+	sha512sums = 4210b2bfd47c040c14a087d7bcd7f3195d2241151dcc9576c7f8028bbbf0e467d4d91a56eb6f58ab583ac9eadc4ee6d7b2a25d81f5a1d4f7284ed74ab5480e7a
+
+pkgname = u++
+
