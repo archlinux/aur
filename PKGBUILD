@@ -1,33 +1,33 @@
 # Maintainer: Alexander Sulfrian <asulfrian at zedat dot fu-berlin dot de>
 
-pkgname="printer-driver-ptouch"
+pkgname=printer-driver-ptouch
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
+_commit=5fe72de0577215eb04a6fcbe49b24bcf5e228dec
 pkgdesc='printer driver Brother P-touch label printers'
 arch=('i686' 'x86_64')
-url='https://bitbucket.org/philpem/printer-driver-ptouch'
+url='https://github.com/philpem/printer-driver-ptouch'
 license=('GPL')
 
 depends=('ghostscript' 'foomatic-db')
 makedepends=('autoconf' 'libcups' 'foomatic-db-engine')
 
-source=("$pkgname-$pkgver.tar.bz2::https://bitbucket.org/philpem/$pkgname/get/$pkgver.tar.bz2"
+source=("https://github.com/philpem/printer-driver-ptouch/archive/5fe72de0577215eb04a6fcbe49b24bcf5e228dec.tar.gz"
         'Add-include-cups-ppd.h.patch'
         'Add-PT-2430PC.patch')
-sha256sums=('588b6ef0d10a693a8e8fc3e6e01dcbe31d502410a2a37ff99db3198ffe0516a2'
+sha256sums=('d12c4cdd57013536e2803a8d9579cb2260c29a225ac23c7868016549c3d6b06b'
             '22721f6f371114f8725b70cc2877276bce1a38eb9680dcaa7d268eba990e8b4c'
             '363313b9cce5a223ab4a72e7423f32d73b17bafc334454a99da8c0c1363983ca')
 
 prepare() {
-    ln -sf --no-dereference "philpem-$pkgname-"*/ "$pkgname-$pkgver"
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$_commit"
 
     patch -p1 < ../Add-include-cups-ppd.h.patch
     patch -p1 < ../Add-PT-2430PC.patch
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$_commit"
 
     autoreconf --force
     ./configure --prefix=/usr
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$_commit"
 
     make DESTDIR="$pkgdir/" install
 
