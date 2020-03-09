@@ -1,20 +1,48 @@
 # Maintainer: Alexander Paetzelt <techge+arch [ät] posteo [do] net>
+# parts are based on [extra] packet 'kismet' -> https://www.archlinux.org/packages/extra/x86_64/kismet/
+
 pkgname=kismet-git
-pkgver=r8139.8baa2896
+pkgver=r9339.de354712
 pkgrel=1
-pkgdesc="Current development version based on git repo"
-arch=('x86_64')
+pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system"
 url="https://www.kismetwireless.net/"
+arch=('x86_64')
 license=('GPL')
-depends=('libelf' 'libmicrohttpd' 'libnm' 'libpcap' 'pkg-config' 'protobuf-c' 'lm_sensors')
-optdepends=('hackrf: use with HackRF compatible software defined radio (SDR)')
+depends=('libmicrohttpd'
+         'libnm'
+         'libusb'
+         'libusb-1.0.so'
+         'lm_sensors'
+         'protobuf-c'
+         'python')
+makedepends=('git' 'python-setuptools')
+optdepends=('festival: text-to-speech support'
+            'flite:  alternative/lightweight text-to-speech support'
+            'gpsd: log coordinates of detected networks'
+            'hackrf: use with HackRF compatible software defined radio (SDR)'
+            'python-numpy: needed by some captures/plugins'
+            'python-protobuf: needed by some captures/plugins'
+            'python-pyserial: needed by some captures/plugins'
+            'sox: provide the default kismet sound playback binary'
+            'wireshark-cli: provide OUI files used to determine device manufacturer'
+            'wireshark-cli: mergecap, to merge multiple capture files')
+backup=(etc/kismet/kismet.conf
+        etc/kismet/kismet_80211.conf
+        etc/kismet/kismet_alerts.conf
+        etc/kismet/kismet_filter.conf
+        etc/kismet/kismet_httpd.conf
+        etc/kismet/kismet_logging.conf
+        etc/kismet/kismet_memory.conf
+        etc/kismet/kismet_storage.conf
+        etc/kismet/kismet_uav.conf)
 conflicts=('kismet')
-backup=('etc/kismet/kismet.conf' 'etc/kismet/kismet_alerts.conf' 'etc/kismet/kismet_httpd.conf' 'etc/kismet/kismet_logging.conf' 'etc/kismet/kismet_memory.conf' 'etc/kismet/kismet_storage.conf')
 install=${pkgname}.install
 source=("git+https://github.com/kismetwireless/kismet"
-        "${pkgname}-sysusers.conf")
+        "${pkgname}-sysusers.conf"
+        "python-install-flags.patch")
 sha256sums=('SKIP'
-            '8b5b25bb6d9c611589ce0200da3cfeed2194bfa45aeed88e10c980c668383806')
+            'fbc444b9973795c105eff41e914c3fcc24ba07e4f309838828622d7a65201d2f'
+            '3155f457bdc762202f28f56f55c61352332a639cddd5948c0879ed4ba79a7ed5')
 
 pkgver() {
   cd "$srcdir/kismet"
@@ -23,6 +51,8 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/kismet"
+    patch -Np0 < ../python-install-flags.patch
+    autoreconf -fiv
     # include submodule for docs
     git submodule update --init docs
 }
@@ -30,19 +60,19 @@ prepare() {
 build() {
     cd "$srcdir/kismet"
     ./configure --prefix=/usr \
-                --sysconfdir=/etc/kismet \
-                --disable-python-tools
-    make
+                --localstatedir=/var \
+                --sysconfdir=/etc/kismet
+    make all plugins
 }
 
 package() {
     cd "$srcdir/kismet"
     make DESTDIR="$pkgdir/" install
     
-    # install capture_tools setuid so that kismet can started as user and
-    # network device can get handled by capture tools
-    install -o root -g 315 -m 4550 capture_linux_wifi/kismet_cap_linux_wifi "${pkgdir}/usr/bin/"
-    install -o root -g 315 -m 4550 capture_linux_bluetooth/kismet_cap_linux_bluetooth "${pkgdir}/usr/bin/"
+    # Makepkg strip bug #43600
+    chmod u+w "${pkgdir}"/usr/bin/kismet*
+    chmod o-x "${pkgdir}"/usr/bin/kismet_cap*
+    chown 0:315 "${pkgdir}"/usr/bin/kismet_cap*
 
     # include docs in /usr/share/doc/
     mkdir -p ${pkgdir}/usr/share/doc/$pkgname
