@@ -60,6 +60,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -Dm644 doc/ffms2-api.md "${pkgdir}/usr/share/doc/ffms2/ffms2-api.md"
+  install -Dm644 doc/ffms2-changelog.md "${pkgdir}/usr/share/doc/ffms2/ffms2-changelog.md"
   install -Dm644 doc/ffms2-avisynth.md "${pkgdir}/usr/share/doc/avisynth/plugins/ffms2-avisynth.md"
   install -Dm644 doc/ffms2-vapoursynth.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/ffms2-vapoursynth.md"
 }
