@@ -4,15 +4,15 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=clutter
-pkgver=1.26.2
-pkgrel=2
+pkgver=1.26.4
+pkgrel=1
 pkgdesc="A toolkit for creating fast, portable, compelling dynamic UIs"
 url="https://blogs.gnome.org/clutter/"
 arch=(x86_64)
 license=(LGPL)
 depends=(gtk3 cogl libinput)
 makedepends=(gobject-introspection gtk-doc git)
-_commit=2faa83baf3ce9b9c94635311ad79944ab2a73c84  # tags/1.26.2^0
+_commit=fd85623d34a54b3f5607011086cf19cb2c756a6a  # tags/1.26.4^0
 source=("git+https://gitlab.gnome.org/GNOME/clutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname"
+  cd $pkgname
   ./configure --prefix=/usr \
     --enable-introspection \
     --enable-egl-backend \
@@ -45,6 +45,9 @@ build() {
 }
 
 package() {
+  depends+=(libcogl{,-pango,-path}.so)
+  provides+=(libclutter-1.0.so)
+
   cd "$pkgname"
   make DESTDIR="$pkgdir" install
 }
