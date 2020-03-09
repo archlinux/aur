@@ -1,13 +1,14 @@
 pkgbase = java-language-server-git
 	pkgdesc = Java language server using the Java compiler API
-	pkgver = 0.2.30.r1589.2f2a9d4c
+	pkgver = 0.2.32.r1613.b7567130
 	pkgrel = 1
 	url = https://github.com/georgewfraser/java-language-server.git
 	arch = any
 	license = MIT
-	makedepends = git
+	makedepends = java-environment=13
 	makedepends = maven
-	depends = java-runtime
+	makedepends = git
+	depends = java-runtime=13
 	provides = java-language-server
 	conflicts = java-language-server
 	source = java-language-server::git+https://github.com/georgewfraser/java-language-server.git

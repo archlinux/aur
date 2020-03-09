@@ -2,7 +2,7 @@
 
 pkgname=java-language-server-git
 _pkgname=java-language-server
-pkgver=0.2.30.r1589.2f2a9d4c
+pkgver=0.2.32.r1613.b7567130
 pkgrel=1
 pkgdesc="Java language server using the Java compiler API"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/georgewfraser/java-language-server.git"
 license=('MIT')
 conflicts=('java-language-server')
 provides=('java-language-server')
-depends=('java-runtime')
-makedepends=('git' 'maven')
+depends=('java-runtime=13')
+makedepends=('java-environment=13' 'maven' 'git')
 source=("${_pkgname}::git+${url}"
         "launcher.sh")
 sha256sums=('SKIP'
@@ -27,6 +27,7 @@ pkgver() {
 }
 
 build() {
+    export JAVA_HOME="/usr/lib/jvm/java-13-openjdk"
     cd "${srcdir}/${_pkgname}"
     ./scripts/link_linux.sh
     mvn package -DskipTests
