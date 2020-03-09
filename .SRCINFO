@@ -1,5 +1,5 @@
 pkgbase = intel-ucode-clear
-	pkgver = 32480
+	pkgver = 32560
 	pkgrel = 0
 	arch = x86_64
 
