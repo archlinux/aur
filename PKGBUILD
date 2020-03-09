@@ -1,7 +1,7 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=pmy-bin
-pkgver=0.5.4
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="General purpose context-aware zsh completion engine powered by fuzzy finder."
 arch=('i386' 'x86_64')
