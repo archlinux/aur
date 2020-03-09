@@ -1,6 +1,6 @@
 pkgbase = wasm-bindgen-git
 	pkgdesc = Interoperating JS and Rust code
-	pkgver = 0.2.4.359
+	pkgver = 0.2.59.3029
 	pkgrel = 1
 	url = https://github.com/rustwasm/wasm-bindgen
 	arch = i686

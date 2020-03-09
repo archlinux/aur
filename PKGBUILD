@@ -2,7 +2,7 @@ pkgname=wasm-bindgen-git
 _pkgname=wasm-bindgen
 pkgdesc="Interoperating JS and Rust code"
 pkgrel=1
-pkgver=0.2.4.359
+pkgver=0.2.59.3029
 arch=('i686' 'x86_64')
 conflicts=("wasm-bindgen")
 provides=("wasm-bindgen")
@@ -26,5 +26,6 @@ build() {
 package() {
 	cd $_pkgname
 	install -D -m755 "$srcdir/$_pkgname/target/release/wasm-bindgen" "$pkgdir/usr/bin/wasm-bindgen"
+	install -D -m755 "$srcdir/$_pkgname/target/release/wasm-bindgen-test-runner" "$pkgdir/usr/bin/wasm-bindgen-test-runner"
 	install -D -m755 "$srcdir/$_pkgname/target/release/wasm2es6js" "$pkgdir/usr/bin/wasm2es6js"
 }
