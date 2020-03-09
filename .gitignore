@@ -1,8 +1,4 @@
-*
-!.gitignore
-!PKGBUILD
-!*.install
-!*.sysusers
-!.SRCINFO
-!LICENSE
-!README.md
+src/
+pkg/
+*.tar.xz
+mint-*.*.*-linux
