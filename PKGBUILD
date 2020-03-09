@@ -14,8 +14,8 @@ depends=('glibc')
 makedepends=('git' 'go')
 provides=('lnd' 'lncli')
 conflicts=('lnd-git')
-source_x86_64=("$pkgname::git+https://github.com/lightningnetwork/lnd.git#tag=v${_pkgver}")
-sha512sums_x86_64=('SKIP')
+source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/lightningnetwork/lnd/archive/v${_pkgver}.tar.gz")
+sha512sums_x86_64=('00d8e1512b93b36f091b16d76d8ca2a604854213f8a7e91b778767438571ad98bfb492b63c8c535a59dc95325dfa026cc631a60e79e7a944bfe7a96b2c1bbe61')
 
 # create a fake go path directory and pushd into it
 # $1 real directory
@@ -34,6 +34,7 @@ _fake_gopath_popd() {
 prepare() {
   # Create GOPATH
   mkdir -p "$srcdir/GOPATH"
+  mv "$srcdir/$pkgname-$_pkgver" "$srcdir/lnd"
 }
 
 build() {
