@@ -10,7 +10,7 @@ arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
-cheackdepends=('perl-test-deep' 'perl-test-warn' 'perl-test-exception')
+checkdepends=('perl-test-deep' 'perl-test-warn' 'perl-test-exception')
 makedepends=('perl-module-build>=0.42')
 source=([% source %])
 options=(!emptydirs)
@@ -38,5 +38,5 @@ package() {
 	cd [% distdir %]
 	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
