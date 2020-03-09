@@ -5,7 +5,7 @@
 
 pkgname=osu-lazer
 pkgver=2020.306.0
-pkgrel=1
+pkgrel=2
 
 dotnet_version=3.1
 
@@ -21,7 +21,7 @@ provides=(osu-lazer)
 conflicts=(osu-lazer-git)
 
 source=(
-    "osu-$pkgver::git+https://github.com/ppy/osu.git#tag=$pkgver"
+    "osu-lazer::git+https://github.com/ppy/osu.git#tag=$pkgver"
     "CC-BY-NC-4.0"::https://github.com/ppy/osu-resources/raw/master/LICENCE.md
     'osu-launcher'
     'osu-lazer.desktop'
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
 
 build()
 {
-    cd "osu-$pkgver"
+    cd "osu-lazer"
     output="./osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
 
     dotnet publish          osu.Desktop                 \
@@ -70,14 +70,14 @@ package()
     install -m644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
     # Compiled binaries
-    cd "$srcdir/osu-$pkgver/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
+    cd "$srcdir/osu-lazer/osu.Desktop/bin/Release/netcoreapp$dotnet_version/linux-x64"
     mkdir -p "$pkgdir/usr/lib/$pkgname"
     for binary in *.so *.dll *.json *.pdb; do
         install -m755 "$binary" "$pkgdir/usr/lib/$pkgname/$binary"
     done
 
     # osu-lazer licence
-    cd "$srcdir/osu-$pkgver/"
+    cd "$srcdir/osu-lazer/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
     mkdir -p "$pkgdir/usr/share/licenses/$pkgname/osu-lazer/"
     install -m644 "LICENCE" "$pkgdir/usr/share/licenses/$pkgname/osu-lazer/MIT"
