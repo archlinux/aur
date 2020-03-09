@@ -3,7 +3,7 @@
 
 pkgname=go-bindata
 pkgver=3.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A small utility which generates Go code from any file"
 arch=('x86_64')
 url='https://github.com/shuLhan/go-bindata'
