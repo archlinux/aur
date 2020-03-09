@@ -8,7 +8,7 @@ arch=('i586' 'x86_64')
 url='https://ffmpeg.org/'
 license=('GPL2')
 depends=(
-  libx264.so.152
+  x264_152
 )
 provides=(
 
