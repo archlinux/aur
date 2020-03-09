@@ -5,15 +5,15 @@
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.34.3
-pkgrel=4
+pkgver=3.36.0
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL2)
 depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gnome-settings-daemon
-         gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libcroco libgdm libsecret
+         gnome-themes-extra gsettings-desktop-schemas libcanberra-pulse libgdm libsecret
          mutter nm-connection-editor unzip gstreamer libibus gnome-autoar)
 makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspection git meson
              sassc asciidoc)
@@ -23,7 +23,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=f7fe7bc676b0cae37405b941822ba9f2b989add6   # gnome-3-34
+_commit=4baa091bc54856b191394c70bcedcd3fb4d1a2b5  # tags/3.36.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -146,7 +146,7 @@ prepare() {
   git_cp_by_msg '!948' "overviewControls: Use ClutterActor's translation-x"
 
   git submodule init
-  git config --local submodule.subprojects/gvc.url "$srcdir/libgnome-volume-control"
+  git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
 }
 
@@ -156,5 +156,6 @@ build() {
 }
 
 package() {
+  depends+=(libmutter-6.so)
   DESTDIR="$pkgdir" meson install -C build
 }
