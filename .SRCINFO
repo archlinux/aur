@@ -13,7 +13,6 @@ pkgbase = balena-cli
 	makedepends = git
 	makedepends = node-gyp
 	depends = nodejs>=8.0.0
-	depends = nodejs<13.0.0
 	depends = gawk
 	depends = sed
 	depends = make
