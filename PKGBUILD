@@ -4,7 +4,7 @@
 # Contributor: Ilkka Laukkanen <ilkka.s.laukkanen@gmail.com>
 
 pkgname=stgit
-pkgver=0.21
+pkgver=0.22
 pkgrel=1
 pkgdesc="Pushing/popping patches to/from a stack on top of Git, similar to Quilt"
 url="http://www.procode.org/stgit/"
@@ -15,7 +15,7 @@ makedepends=('xmlto' 'asciidoc')
 source=(
   "https://github.com/ctmarinas/stgit/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('0f67a3c0ed3e0408aa8e9be6ff6c7be0a2981ca43639bc94bda7b6124717e71f')
+sha256sums=('394438e7f7de9fac2532632bd3e202137f9f8b6b91ad3667e467766571551bd0')
 
 build() {
   cd "${pkgname}-${pkgver}"
