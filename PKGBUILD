@@ -6,7 +6,7 @@
 
 pkgname=ungoogled-chromium-ozone
 pkgver=80.0.3987.132
-pkgrel=1
+pkgrel=2
 _pkgname=ungoogled-chromium
 _launcher_ver=6
 _ungoogled_ver=80.0.3987.132-1
