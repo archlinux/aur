@@ -41,7 +41,8 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}"/azurespheresdk/LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 "${srcdir}"/azurespheresdk/LICENSE_en-US.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE_en-US
+  install -Dm644 "${srcdir}"/azurespheresdk/LICENSE_fr-FR.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE_fr-FR
   install -Dm644 "${srcdir}"/"${pkgname}".udev "${pkgdir}"/etc/udev/rules.d/75-mt3620.rules
   install -Dm644 "${srcdir}"/"${pkgname}".sysusers "${pkgdir}"/usr/lib/sysusers.d/"${pkgname}".conf
 
