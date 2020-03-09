@@ -1,25 +1,19 @@
 # Maintainer: Your Name <TheRetikGM@gmail.com>
 pkgname=2048-curses
-pkgver=1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=0
 pkgdesc="Curses based popular game 2048 written in C"
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/theretikgm/2048-curses"
 license=('GPL')
 depends=('ncurses>=6.0-0')
-source=("https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/2048-curses.c"
-        "https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/dialog.c"
-	"https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/dialog.h"
-	"https://raw.githubusercontent.com/TheRetikGM/2048-curses/master/src/Makefile")
+source=("git+https://github.com/theretikgm/2048-curses.git")
+sha256sums=('SKIP')
 build() {
-	cd "${srcdir}"
+	cd "${srcdir}/${pkgname}/src"
 	make
 }
 
 package() {
-	install "${srcdir}/${pkgname}" -D "${pkgdir}/usr/bin/${pkgname}"
+	install "${srcdir}/${pkgname}/src/${pkgname}" -D "${pkgdir}/usr/bin/${pkgname}"
 }
-md5sums=('c5ed3c4e3ab3b97fda8f5471d45f216d'
-         'a1d9f8f1e1f46ae809cd356fa8c6fe00'
-         '666c1d0f43be2dd2e92a759ece3dfb5a'
-         'e277d0071243798818031dfe915bdf1b')
