@@ -7,7 +7,6 @@
 
 pkgname=dolphin-root-git
 _pkgname=${pkgname%-root-git}
-commit=af45eb0af5219819f76b624162c75da83d763657
 pkgver=af45eb0af5219819f76b624162c75da83d763657
 pkgrel=1
 pkgdesc="KDE File Manager, patched to be able to run as root, based on dolphin-git sources"
@@ -27,16 +26,11 @@ sha512sums=('SKIP'
             'SKIP')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
-			  
-pkgver() {
-  cd dolphin
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  git reset --hard $commit
-}
 
 prepare() {
   mkdir -p build
   cd dolphin
+  git reset --hard $pkgver
   patch -p1 -i $srcdir/0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
 }
 
