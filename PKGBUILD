@@ -1,7 +1,7 @@
 # Maintainer: Stefano Marsili <efanomars@gmx.ch>
 
 pkgname=stmm-input-bt
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 pkgdesc="Device input event library - keyboards over bluetooth"
 url='https://www.efanomars.com/libraries/stmm-input-bt'
@@ -16,8 +16,8 @@ optdepends=()
 #replaces=("stmm-input-bt")
 #conflicts=("stmm-input-bt")
 
-source=('https://efanomars.com/sources/stmm-input-bt-0.10.tar.gz')
-sha256sums=('9572ff3bb4921527992ccddb7cc84ee5535e76b8c8d3b75992b2e60db636f09f')
+source=('https://efanomars.com/sources/stmm-input-bt-0.11.tar.gz')
+sha256sums=('20c818d83ee0c1e68067c434309939b9102f9c0433597a4e64eca65c9fb64ae9')
 
 build() {
   cd "${srcdir}/stmm-input-bt"
