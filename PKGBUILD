@@ -1,12 +1,12 @@
 # Script generated with import_catkin_packages.py.
 # For more information: https://github.com/bchretien/arch-ros-stacks.
-pkgdesc="ROS - Base dependencies and support libraries for ROS."
+pkgdesc="Gazebo plugin to provide simulated data from Velodyne laser scanners."
 url='http://wiki.ros.org/velodyne_gazebo_plugins'
 
 pkgname='ros-melodic-velodyne-gazebo-plugins'
 pkgver='1.0.9'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-velodyne-gazebo-plugins
-	pkgdesc = ROS - Base dependencies and support libraries for ROS.
+	pkgdesc = Gazebo plugin to provide simulated data from Velodyne laser scanners.
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://wiki.ros.org/velodyne_gazebo_plugins
 	arch = i686
 	arch = x86_64
