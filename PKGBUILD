@@ -41,7 +41,7 @@ package_reactphysics3d() {
 }
 
 package_reactphysics3d-docs() {
-  arch=(any)
+  #arch=(any)
   pkgdesc='Pystics engine (user manual)'
   install -Dm 644 "ReactPhysics3D-UserManual.pdf" \
     "$pkgdir/usr/share/doc/$pkgname/UserManual.pdf"
