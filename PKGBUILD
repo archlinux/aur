@@ -2,8 +2,8 @@
 # Co-Maintainer: Songtronix <contact@songtronix.com>
 
 pkgname=airshipper-git
-pkgver=0.3.0.r0.e31e3b2
-pkgrel=1
+pkgver=0.3.1.r0.7569541
+pkgrel=2
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
 url='https://www.songtronix.com/'
