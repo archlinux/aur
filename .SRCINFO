@@ -16,7 +16,7 @@ pkgbase = lib32-vkd3d-valve-git
 	provides = lib32-vkd3d
 	conflicts = lib32-vkd3d
 	conflicts = lib32-vkd3d-git
-	source = git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_4.11
+	source = git+https://github.com/ValveSoftware/vkd3d.git#branch=proton_5.0
 	sha256sums = SKIP
 
 pkgname = lib32-vkd3d-valve-git
