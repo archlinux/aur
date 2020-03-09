@@ -1,22 +1,29 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
-_cranver=1.0.2
-pkgname=r-xmlparsedata
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
+_cranname=xmlparsedata
+_cranver=1.0.3
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Parse Data of R Code as an XML Tree'
-arch=('any')
-url='https://cran.r-project.org/package=xmlparsedata'
-license=('MIT')
-depends=('r' )
-optdepends=('r-covr' 'r-testthat' 'r-xml2')
-source=("https://cran.r-project.org/src/contrib/xmlparsedata_"$_cranver".tar.gz")
-md5sums=('e33ffa10cbcbc592a6ba683e233e1631')
+pkgdesc="Parse Data of 'R' Code as an 'XML' Tree"
+arch=(any)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(MIT)
+depends=('r>=3.0.0')
+optdepends=(r-covr r-testthat r-xml2)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('f3b53dd5ffe01292ea795a3185263a3a')
 
-build(){
-    R CMD INSTALL xmlparsedata_"$_cranver".tar.gz -l "$srcdir"
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -dm0755 "$pkgdir"/usr/lib/R/library
-    cp -a --no-preserve=ownership xmlparsedata "$pkgdir"/usr/lib/R/library
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
