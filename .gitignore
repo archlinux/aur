@@ -2,4 +2,5 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-
+!c++11_fix.patch
+!qt5.patch
