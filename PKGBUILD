@@ -24,7 +24,7 @@ sha256sums=('c7a8fabdada37e5a4d3b46aa236ddf7612b9fd8e1d90409d2169f085af9fc201'
 	    '323c5e51b6bcf92c7e024cfd6bd6843cb57531317c6ef887b1bced81e920d43e')
 
 prepare() {
-  tar -zxf "Azure_Sphere_SDK_Preview.tar.gz"
+  tar -zxf "Azure_Sphere_SDK.tar.gz"
 }
 
 build() {
