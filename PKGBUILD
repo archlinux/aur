@@ -4,7 +4,7 @@
 pkgname=openfaas-cli
 pkgdesc="Official CLI for OpenFaaS"
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'arm64')
 url="https://github.com/openfaas/faas-cli"
 license=('MIT')
