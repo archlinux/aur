@@ -4,8 +4,9 @@
 
 pkgname=opendds
 _pkgname=OpenDDS
-pkgver=3.13.3
-pkgrel=3
+pkgver=3.14.0
+pkgrel=1
+_opendds_version=$(echo $pkgver | sed -e 's/\.0$//g')
 _ace_tao_version=6.5.8
 pkgdesc="Open source C++ implementation of OMG Data Distribution Service (DDS)"
 arch=('i686' 'x86_64')
@@ -16,16 +17,16 @@ provides=('ace' 'tao')
 options=('!buildflags')
 source=(
   "https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-$(echo $_ace_tao_version | sed -e 's/\./_/g')/ACE+TAO-$_ace_tao_version.tar.gz"
-  "https://github.com/objectcomputing/OpenDDS/releases/download/DDS-$pkgver/OpenDDS-$pkgver.tar.gz"
+  "https://github.com/objectcomputing/OpenDDS/releases/download/DDS-$_opendds_version/OpenDDS-$_opendds_version.tar.gz"
   build.patch
 )
 md5sums=('456034b884332f68ecaabbbfac4b0b64'
-         '35a0907fd6d6b9c29a5c4718e8c35624'
-         'e0e1e325285a4b3e81a87673a43b4194')
+         '604aca1898673a7ce5af0f72a0fda8cf'
+         'c44b0c8d7ebccc2b9be0a040ec9f8c2b')
 
 prepare() {
   cd "$srcdir"
-  mv "OpenDDS-$pkgver" OpenDDS
+  mv "OpenDDS-$_opendds_version" OpenDDS
   patch --strip=1 -i ../build.patch
 }
 
