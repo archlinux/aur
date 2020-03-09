@@ -1,6 +1,6 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
-pkgdesc="Version synth and effect LV2 plugins."
+pkgdesc="Vaious synth and effect LV2 plugins."
 pkgver=r166.c4e0ab7
 pkgrel=1
 epoch=
