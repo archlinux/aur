@@ -38,7 +38,6 @@ prepare() {
 }
 
 build() {
-  pwd && ls
   export GOPATH="$srcdir/GOPATH"
   _fake_gopath_pushd "$pkgname" github.com/lightningnetwork/lnd
   make && make install
