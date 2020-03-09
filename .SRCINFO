@@ -1,7 +1,7 @@
 pkgbase = perl-clipboard
 	pkgdesc = Perl clipboard module
 	pkgver = 0.13
-	pkgrel = 4
+	pkgrel = 5
 	url = https://metacpan.org/release/Clipboard
 	arch = any
 	license = PerlArtistic

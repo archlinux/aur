@@ -4,7 +4,7 @@
 
 pkgname=perl-clipboard
 pkgver=0.13
-pkgrel=4
+pkgrel=5
 pkgdesc='Perl clipboard module'
 arch=('any')
 url='https://metacpan.org/release/Clipboard'
@@ -37,5 +37,5 @@ package() {
 	cd Clipboard-0.13
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
