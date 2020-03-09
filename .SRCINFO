@@ -1,18 +1,14 @@
 pkgbase = python-mergedict
 	pkgdesc = A Python dict with a merge() method
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://pypi.org/pypi/mergedict
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://pypi.org/packages/source/m/mergedict/mergedict-0.2.0.tar.gz
-	md5sums = 0a52ba99f7e56f5c88670ecfe422c5f7
+	source = https://pypi.org/packages/source/m/mergedict/mergedict-1.0.0.tar.gz
+	sha256sums = e1992b36a54229014fbcbc7a9c8c28d1f4ae131ea1d8d345c93973f9f0dc6fdc
 
 pkgname = python-mergedict
 	depends = python
-
-pkgname = python2-mergedict
-	depends = python2
 
