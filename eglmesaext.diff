@@ -1,0 +1,26 @@
+diff --git i/cogl/winsys/cogl-winsys-egl-kms.c w/cogl/winsys/cogl-winsys-egl-kms.c
+index 4da1f141..1ad9f5e8 100644
+--- i/cogl/winsys/cogl-winsys-egl-kms.c
++++ w/cogl/winsys/cogl-winsys-egl-kms.c
+@@ -40,6 +40,7 @@
+ 
+ #include <EGL/egl.h>
+ #include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>
+ #include <errno.h>
+ #include <stddef.h>
+ #include <drm.h>
+diff --git i/configure.ac w/configure.ac
+index a9a81c9d..0cf84a87 100644
+--- i/configure.ac
++++ w/configure.ac
+@@ -1226,7 +1226,8 @@ AS_IF([test "x$NEED_EGL" = "xyes" && test "x$EGL_CHECKED" != "xyes"],
+           )
+ 
+         COGL_EGL_INCLUDES="#include <EGL/egl.h>
+-#include <EGL/eglext.h>"
++#include <EGL/eglext.h>
++#include <EGL/eglmesaext.h>"
+         AC_SUBST([COGL_EGL_INCLUDES])
+       ])
+ 

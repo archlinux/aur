@@ -2,17 +2,21 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.22.4
+pkgver=1.22.6
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 url="https://blogs.gnome.org/clutter/"
 arch=(x86_64)
 license=(GPL2)
-depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango libxrandr)
+depends=(mesa libdrm libxext libxdamage libxcomposite gdk-pixbuf2 pango
+         libxrandr)
 makedepends=(gobject-introspection git gtk-doc)
-_commit=60015d7d9756a89fb608887b52fa6b6a5a7db18d  # tags/1.22.4^0
-source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit")
-sha256sums=('SKIP')
+provides=(libcogl.so libcogl-{gles2,pango,path}.so)
+_commit=dd104794b0d5e477e4ac2dbf3382f873fb40e5e1  # tags/1.22.6^0
+source=("git+https://gitlab.gnome.org/GNOME/cogl.git#commit=$_commit"
+        eglmesaext.diff)
+sha256sums=('SKIP'
+            '1d8909cbeea87964f1218bc545b17fa6d4369aadb63e9c2926ce7b17f76e6883')
 
 pkgver() {
   cd $pkgname
@@ -21,13 +25,17 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  # Fix building with libglvnd headers
+  patch -Np1 -i ../eglmesaext.diff
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd $pkgname
   ./configure --prefix=/usr \
-    --enable-gles{1,2} \
+    --enable-gles2 \
     --enable-{kms,wayland}-egl-platform \
     --enable-wayland-egl-server
 
