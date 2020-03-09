@@ -9,7 +9,7 @@ pkgbase = xob
 	depends = libx11
 	depends = libconfig
 	backup = etc/xob/styles.cfg
-	source = https://github.com/florentc/xob/archive/v0.1.1.tar.gz
+	source = https://github.com/florentc/xob/archive/v0.2.tar.gz
 	sha256sums = 06fb0d9a081546b6b9d1785f6d6fa36f905516eec5df3a567b5d22bd1f8df33a
 
 pkgname = xob
