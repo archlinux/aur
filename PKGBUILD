@@ -1,13 +1,13 @@
 # CPAN Name  : Games::Poker::HandEvaluator
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-games-poker-handevaluator
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl package for evaluating of poker hands'
 arch=('i686' 'x86_64')
-url='http://search.cpan.org/dist/Games-Poker-HandEvaluator'
+url='https://metacpan.org/release/Games-Poker-HandEvaluator'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'poker-eval')
 source=(http://search.cpan.org/CPAN/authors/id/S/SI/SIMON/Games-Poker-HandEvaluator-1.1.tar.gz makefile.patch)
@@ -29,5 +29,5 @@ check() {
 package() {
 	cd Games-Poker-HandEvaluator-1.1
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
