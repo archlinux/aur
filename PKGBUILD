@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=pacfetch
-pkgver=1.0.4.3
+pkgver=1.0.4.4
 pkgrel=1
 pkgdesc="Simple fetch script for pacman based distros"
 arch=(x86_64)
