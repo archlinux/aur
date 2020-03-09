@@ -4,7 +4,7 @@
 
 pkgname=opensnitch-git
 pkgver=1.0.0rc6.r0.27778c1
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
@@ -12,7 +12,8 @@ license=('GPL3')
 makedepends=('git' 'dep' 'go-pie' 'python-setuptools')
 depends=('libnetfilter_queue' 'libpcap' 'python-protobuf-compiler'
          'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5'
-         'python-libconfigparser')
+         'python-libconfigparser' 'logrotate')
+optdepends=('logrotate: for logfile rotation support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/opensnitchd/default-config.json')
@@ -65,6 +66,7 @@ package() {
         "$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/etc/opensnitchd/rules"
     install -Dm644 daemon/default-config.json -t "$pkgdir/etc/opensnitchd"
+    install -Dm644 debian/opensnitch.logrotate "$pkgdir/etc/logrotate.d/opensnitch"
 
     cd "$srcdir/${pkgname%-git}/ui"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
