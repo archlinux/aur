@@ -5,7 +5,7 @@
 
 pkgname=lightzone
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A professional photo browser and editor, like Aperture or Lightroom"
 url="http://lightzoneproject.org/"
 license=("custom:BSD-3-Clause")
@@ -15,6 +15,7 @@ provides=('lightzone')
 depends=('java-runtime=11'
     'javahelp2'
     'lcms2'
+    'lensfun'
     'libjpeg-turbo'
     'libtiff'
     'libxml2')
