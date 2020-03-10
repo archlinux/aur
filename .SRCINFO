@@ -1,7 +1,7 @@
 pkgbase = tizonia-all
 	pkgdesc = Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, TuneIn, Plex servers and Chromecast devices.
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tizonia.org
 	arch = x86_64
 	license = LGPL
