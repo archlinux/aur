@@ -2,9 +2,11 @@
 
 pkgname=remarkable-client
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 arch=("any")
 license=("unknown")
+url="https://remarkable.engineering"
+pkgdesc="This is a Linux version of the reMarkable Desktop Client. As far as I know, the development has been discontinued, but it still works. Adding files is as simple as dragging them onto the window."
 
 depends=('qt5-websockets' 'karchive' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects')
 source=("https://remarkable.engineering/remarkable-linux-client-0.0.5-16-1408-g7eca2b66.tgz")
