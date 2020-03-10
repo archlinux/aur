@@ -2,14 +2,14 @@
 
 pkgname=('handbrake-nvenc' 'handbrake-nvenc-cli')
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
 makedepends=('intltool' 'python2' 'nasm' 'wget' 'cmake' 'bzip2' 'gcc-libs' 'xz'
              'zlib' 'libnotify' 'gst-plugins-base' 'gtk3' 'dbus-glib' 'libass'
              'lame' 'libxml2' 'opus' 'libvorbis' 'libtheora' 'libsamplerate'
-             'speex' 'x264' 'jansson' 'librsvg' 'libgudev' 'numactl')
+             'speex' 'x264' 'jansson' 'librsvg' 'libgudev' 'numactl' 'meson')
 source=(https://download.handbrake.fr/releases/$pkgver/HandBrake-$pkgver-source.tar.bz2
         https://github.com/HandBrake/HandBrake/releases/download/$pkgver/HandBrake-$pkgver-source.tar.bz2.sig)
 sha256sums=('c005de993af4123babbb60f7d12f6ff46fb7eea26ff0a3556034683901ce2c27'
