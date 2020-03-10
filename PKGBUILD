@@ -1,24 +1,29 @@
-# Maintainer: giulio <destrezza@insiberia.net> 
-# Adapted from brother-hl5470dw by Pascal Potvin
+# Maintainer: bytesize <david at bytesizebits dot net> 
+# Contributor: giulio <destrezza@insiberia.net> 
+# Contributor: Adapted from brother-hl5470dw by Pascal Potvin
+
 pkgname="brother-hl8350cdw"
-pkgver="1.1.2"
+pkgver="1.1.3"
 pkgrel=1
-pkgdesc="LPR and CUPS driver for the Brother HL8350CDW"
+pkgdesc="LPR and CUPS driver for the Brother HL-L8350CDW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
 depends=('cups')
 install='brother-hl8350cdw.install'
+
 source=(
-  "http://download.brother.com/welcome/dlf101040/hll8350cdwlpr-$pkgver-$pkgrel.i386.rpm"
-  "http://download.brother.com/welcome/dlf101038/hll8350cdwcupswrapper-$pkgver-$pkgrel.i386.rpm"
+  "http://download.brother.com/welcome/dlf101040/hll8350cdwlpr-1.1.2-1.i386.rpm"
+  "http://download.brother.com/welcome/dlf101038/hll8350cdwcupswrapper-1.1.3-1.i386.rpm"
   'cupswrapper-license.txt'
   'lpr-license.txt'
 )
+
 md5sums=('43142f40fc37b0b33c5fd0fdaa64cda5'
-         '3509ba14233f134b40a38c911c1d9861'
+         'e1a130bd4d9156a1dd6241f712b81a69'
          '97ad0cffd216059e9d1d3121899d8646'
          '5e87a3dc0f3e3438c088eda0f3565f0d')
+
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
 fi
