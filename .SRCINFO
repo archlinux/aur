@@ -1,0 +1,16 @@
+pkgbase = immer-git
+	pkgdesc = Postmodern immutable and persistent data structures for C++
+	pkgver = 0.6.2.r51.b8e39a0
+	pkgrel = 1
+	url = https://github.com/arximboldi/immer
+	arch = any
+	license = Boost
+	makedepends = git
+	makedepends = cmake
+	provides = utfcpp
+	conflicts = utfcpp
+	source = immer-git::git+https://github.com/arximboldi/immer.git
+	md5sums = SKIP
+
+pkgname = immer-git
+
