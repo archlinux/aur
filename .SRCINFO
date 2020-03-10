@@ -1,0 +1,20 @@
+pkgbase = lager-git
+	pkgdesc = C++ library for value-oriented design using the unidirectional data-flow architecture
+	pkgver = r314.852ca11
+	pkgrel = 1
+	url = https://github.com/arximboldi/lager
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = boost
+	depends = cereal
+	depends = immer-git
+	depends = libhttpserver-git
+	provides = lager
+	conflicts = lager
+	source = lager-git::git+https://github.com/arximboldi/lager.git
+	md5sums = SKIP
+
+pkgname = lager-git
+
