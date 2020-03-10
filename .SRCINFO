@@ -1,23 +1,7 @@
 pkgbase = python-messytables
 	pkgdesc = Parse messy tabular data in various formats
 	pkgver = 0.15.2
-	pkgrel = 0
-	url = https://messytables.readthedocs.io/
-	arch = any
-	license = MIT
-	makedepends = python-setuptools
-	depends = python
-	source = https://files.pythonhosted.org/packages/source/m/messytables/messytables-0.15.2.tar.gz
-	source = LICENSE
-	sha256sums = 227a5aac364919a7d3faa6ce04027fcbd03e041efcd3d57fabb1d1067591a2cd
-	sha256sums = ec2a81b15d8ddae532b9e5b9bd325130758a77568869294a1450e0c11c5f24a6
-
-pkgname = python-messytables
-
-pkgbase = python-messytables
-	pkgdesc = Parse messy tabular data in various formats
-	pkgver = 0.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://messytables.readthedocs.io/
 	arch = any
 	license = MIT
@@ -32,8 +16,10 @@ pkgbase = python-messytables
 	depends = python-xlrd
 	source = https://files.pythonhosted.org/packages/source/m/messytables/messytables-0.15.2.tar.gz
 	source = LICENSE
+	source = tableschema.patch
 	sha256sums = 227a5aac364919a7d3faa6ce04027fcbd03e041efcd3d57fabb1d1067591a2cd
 	sha256sums = ec2a81b15d8ddae532b9e5b9bd325130758a77568869294a1450e0c11c5f24a6
+	sha256sums = db238c07ae7944d9243f78f9e6137a32562fd8c807fb1e313cc9ea0c751f7abd
 
 pkgname = python-messytables
 
