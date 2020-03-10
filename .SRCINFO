@@ -1,0 +1,32 @@
+pkgbase = agisoft-metashape-pro
+	pkgdesc = Phtogrammetric processing of digital images and 3D spatial data generation software. Professional edition
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://www.agisoft.com/
+	install = agisoft-metashape-pro.install
+	arch = x86_64
+	license = custom:Agisoft EULA
+	license = custom
+	makedepends = imagemagick
+	provides = agisoft-metashape-pro
+	provides = agisoft-network-monitor
+	provides = agisoft-viewer
+        replaces = metashape-pro
+	options = !strip
+	source = http://download.agisoft.com/metashape-pro_1_6_2_amd64.tar.gz
+	source = agisoft-metashape-pro-icon-encoded.txt
+	source = agisoft-network-monitor-icon-encoded.txt
+	source = agisoft-viewer-icon-encoded.txt
+	source = agisoft-psx-mime-icon-encoded.txt
+	source = agisoft-psz-mime-icon-encoded.txt
+	source = agisoft-3dv-mime-icon-encoded.txt
+	sha256sums = 0a5fa7814cd7988fb5eae457943cc88d6c6f3541aa973a4fdcd0156affff0554
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = agisoft-metashape-pro
+
