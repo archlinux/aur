@@ -4,8 +4,9 @@ pkgbase = r-timedate
 	pkgrel = 1
 	url = https://cran.r-project.org/package=timeDate
 	arch = any
-	license = GPL
-	depends = r
+	license = GPL2
+	license = GPL3
+	depends = r>=2.15.1
 	optdepends = r-date
 	optdepends = r-runit
 	source = https://cran.r-project.org/src/contrib/timeDate_3043.102.tar.gz
