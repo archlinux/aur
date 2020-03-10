@@ -7,7 +7,7 @@
 pkgbase='vte3-notification'
 pkgname=("${pkgbase}" 'vte-notification-common')
 pkgver=0.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
 url='https://wiki.gnome.org/Apps/Terminal/VTE'
@@ -51,6 +51,7 @@ package_vte3-notification(){
 	DESTDIR="${pkgdir}" meson install -C build
 
 	mv "$pkgdir/etc/profile.d/vte.sh" "$srcdir"
+	mv "$pkgdir/etc/profile.d/vte.csh" "$srcdir"
 }
 
 package_vte-notification-common() {
@@ -61,4 +62,5 @@ package_vte-notification-common() {
 	conflicts=('vte-common')
 
 	install -Dt "$pkgdir/etc/profile.d" -m644 vte.sh
+	install -Dt "$pkgdir/etc/profile.d" -m644 vte.csh
 }
