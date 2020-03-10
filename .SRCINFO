@@ -1,0 +1,22 @@
+pkgbase = python-tableschema
+	pkgdesc = Parse messy tabular data in various formats
+	pkgver = 1.15.0
+	pkgrel = 0
+	url = https://github.com/frictionlessdata/tableschema-py
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-click
+	depends = python-dateutil
+	depends = python-isodate
+	depends = python-jsonschema
+	depends = python-requests
+	depends = python-rfc3986
+	depends = python-six
+	depends = python-tabulator
+	source = https://files.pythonhosted.org/packages/source/t/tableschema/tableschema-1.15.0.tar.gz
+	sha256sums = 3b5668a8a73e215967220e3ed7df31135ccf9041d5f94df5c8eebabddecc66ba
+
+pkgname = python-tableschema
+
