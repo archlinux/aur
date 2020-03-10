@@ -2,7 +2,7 @@
 
 pkgname=tagspaces-bin
 _pkgname=tagspaces
-pkgver=3.3.2
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
 arch=("x86_64")
@@ -10,7 +10,7 @@ url="http://tagspaces.org"
 license=("AGPL")
 provides=("tagspaces")
 conflicts=("tagspaces")
-sha256sums=('6b0d1423551a419d2b62a2fb09077139796102b980a3b963da9d8d89cdf1866f')
+sha256sums=('472cccbd022ad63d0fc7ad632c33bc51d20389504368d28049bee1630be4dddd')
 source=("${_pkgname}-${pkgver}.deb::https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-linux-amd64-${pkgver}.deb")
 
 package() {
