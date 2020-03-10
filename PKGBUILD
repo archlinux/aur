@@ -4,7 +4,7 @@ _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
 _pkgver='1.20.5'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='2'
+pkgrel='3'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -98,7 +98,7 @@ StartupNotify=true
 Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
 EOF
 
-	install -Dm644 "$srcdir/$_sourcedirectory/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/icons/pixmaps/$pkgname.png"
+	install -Dm644 "$srcdir/$_sourcedirectory/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
