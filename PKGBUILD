@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=v0.18.1.r20975
+pkgver=v0.19.1.r23091
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
@@ -28,12 +28,12 @@ build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
   ./configure --with-gui=qt5 --with-zmq --with-qrencode
-   make -j$(nproc)
+   make
 }
 
 check() {
    cd "$srcdir/$_gitname"
-   make check -j$(nproc)
+   make check
 }
 
 package() {
