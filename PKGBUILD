@@ -1,54 +1,25 @@
 # PACKAGER: wolftankk <wolftankk@gmail.com>
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
+
 pkgname=php-phalcon
-pkgver=4.0.4
+_pkgname=cphalcon
+pkgver=4.0.5
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
 arch=('x86_64' 'i686')
 [[ $CARCH == 'i686' ]] && cd _arch=32bits || _arch=64bits
 license=('PHP')
-depends=('php>=5.5')
+depends=('php>=7.0')
 makedepends=('gcc')
 backup=('etc/php/conf.d/phalcon.ini')
 source=("https://github.com/phalcon/cphalcon/archive/v$pkgver.zip")
-sha256sums=('64672a608647dd372a0dbe384b5da42f9307215e48294273f2d80d4d3d753750')
+sha256sums=('7214974d78fcde7b3c3ebc59f89d5a52b33a842cc1a388aeaa5ab03346438ba9')
 
-#get php version
-PHP_FULL_VERSION=`php-config --version`
-if [ "${PHP_FULL_VERSION:0:1}" == "5" ]; then
-    PHP_VERSION="php5"
-else
-    PHP_VERSION="php7"
-fi
-
-build() {
-  cd "$srcdir/cphalcon-$pkgver"
-  #Check best compilation flags for GCC
-  export CC="gcc"
-  export CFLAGS="-march=native -mtune=native -O2 -fomit-frame-pointer"
+build() {  
+  cd "$srcdir/$_pkgname-$pkgver/build/php7/$_arch"
   export CPPFLAGS="-DPHALCON_RELEASE"
-  echo "int main() {}" > t.c
-  $CC $CFLAGS t.c -o t 2> t.t
-  if [ $? != 0 ]; then
-    chmod +x gcccpuopt
-    BFLAGS=`./gcccpuopt`
-    export CFLAGS="-O2 -fomit-frame-pointer $BFLAGS"
-    $CC $CFLAGS t.c -o t 2> t.t
-    if [ $? != 0 ]; then
-      export CFLAGS="-O2"
-    fi
-  fi
 
-  if [ $($CC -dumpversion | cut -f1 -d.) -ge 4 ]; then
-    $CC $CFLAGS -fvisibility=hidden t.c -o t 2> t.t && export CFLAGS="$CFLAGS -fvisibility=hidden"
-  fi
-
-  rm -f t.t t.c t
-
-  cd "$srcdir/cphalcon-$pkgver/build/$PHP_VERSION/$_arch"
-
-  #Clean current compilation
   if [ -f Makefile ]; then
     make clean
     phpize --clean
@@ -59,15 +30,10 @@ build() {
   make
 }
 
-# check() {
-#   cd "$srcdir/cphalcon-$pkgver"
-#   make test
-# }
-
 package() {
-  cd "$srcdir/cphalcon-$pkgver/build/$PHP_VERSION/$_arch"
+  cd "$srcdir/$_pkgname-$pkgver/build/php7/$_arch"
 
   make INSTALL_ROOT="$pkgdir" install
-  echo 'extension=phalcon.so' > phalcon.ini 
+  echo 'extension=phalcon.so' > phalcon.ini
   install -Dm644 phalcon.ini "$pkgdir/etc/php/conf.d/phalcon.ini"
 }
