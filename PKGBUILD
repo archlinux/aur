@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=python-lmfit
-pkgver=0.9.14
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Non-Linear Least Squares Minimization, with flexible Parameter settings, based on scipy.optimize.leastsq, and with many additional classes and methods for curve fitting"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD-3')
 depends=('python' 'python-numpy' 'python-scipy' 'python-asteval' 'python-uncertainties')
 makedepends=(python-setuptools)
 source=(https://github.com/lmfit/lmfit-py/archive/${pkgver}.tar.gz)
-sha256sums=('4a175d4967fae218695178a750119bbabaec2a7b1dc66201b14ecb830c937f30')
+sha256sums=('a97f3ea280eed161c59fbb59362c6320120e3aaf2b24a07421b3c69f9c4dfdf7')
 
 build() {
   cd "$srcdir/lmfit-py-$pkgver"
