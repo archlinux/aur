@@ -16,7 +16,8 @@ sha256sums=('dba1943c8ba79b9eb8fa5549aadbb3ae1096cf722e0f183457dcc9c9c850cb3d')
 
 build() {
   cd ${_pkgname}-${_pkgver}
-  mkdir _build && cd _build
+  [ ! -d _build ] && mkdir _build
+  cd _build
   ../configure --prefix=/usr --disable-rpm
   make
 }
@@ -26,5 +27,3 @@ package() {
   cd _build
   make DESTDIR="${pkgdir}" install
 }
-
-#arch=('i686' 'x86_64')
