@@ -1,16 +1,17 @@
 pkgbase = tagspaces
-	pkgdesc = open source personal data manager. It helps you organize files with tags on every platform.
-	pkgver = 3.3.2
+	pkgdesc = TagSpaces is an offline, open source, document manager with tagging support
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = http://tagspaces.org
 	arch = i686
 	arch = x86_64
 	license = AGPL
-	makedepends = bower
+	makedepends = yarn
 	makedepends = gendesk
-	depends = electron
-	source = tagspaces-3.3.2.tar.gz::https://github.com/tagspaces/tagspaces/archive/v3.3.2.tar.gz
-	sha256sums = c8de3f9e53e548c23623414fd0aee79f93c118f330800ec876bb2308515c4975
+	source = tagspaces-3.4.2.tar.gz::https://github.com/tagspaces/tagspaces/archive/v3.4.2.tar.gz
+	source = tagspaces.sh
+	sha256sums = 2be6087cebcd351564c58327784d2e200da370a2b48b9d8d801fd2f493176559
+	sha256sums = be5ec9eaae470217223eb016b6a2d752f478abebd1e1daca4ab48a59353913fc
 
 pkgname = tagspaces
 
