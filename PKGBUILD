@@ -2,23 +2,23 @@
 _pkgname='mongodb-compass-community-beta'
 _edition=' Community Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.20.0-beta.9'
+_pkgver='1.21.0-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='5'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Community Edition - beta version - binary version'
 arch=('x86_64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
 depends=(
 	# electron
-	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy'
+	'c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libxslt' 'libxss' 'minizip' 'nss' 'snappy' 'libnghttp2' 're2'
 	# compass
 	'krb5' 'libsecret' 'lsb-release'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://github.com/mongodb-js/compass/releases/download/v$_pkgver/$_pkgname-$_pkgver.x86_64.rpm")
-sha256sums=('6c375ea88d42084724cd491d3d81e1cb4a01b180cb86f89df8eb057cb21f5a98')
+sha256sums=('263fc47db59ffcc67d4e76bce150c50e54cc8b977badc2628296779da552f3c3')
 
 package() {
 	cd "$srcdir/"
