@@ -50,7 +50,7 @@ package() {
   install -d "$pkgdir/usr/bin"
   local _fn
   for _fn in hcc hcc-config; do
-    ln -s "/opt/rocm/hcc/bin/$fn" "$pkgdir/usr/bin/$fn"
+    ln -s "/opt/rocm/hcc/bin/$_fn" "$pkgdir/usr/bin/$_fn"
   done
 
   # additional link to make hcc demos happy
