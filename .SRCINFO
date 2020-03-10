@@ -1,0 +1,16 @@
+pkgbase = python-tpm2-pytss
+	pkgdesc = Python bindings for tpm2-tss
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/tpm2-software/tpm2-pytss
+	arch = x86_64
+	license = BSD
+	checkdepends = ibm-sw-tpm2
+	makedepends = swig
+	depends = python-setuptools
+	depends = tpm2-tss
+	source = https://files.pythonhosted.org/packages/source/t/tpm2-pytss/tpm2-pytss-0.0.5.tar.gz
+	sha256sums = ab32ef147a963a56d6c6b60414b55ff86a6853c24ca5692e145bbea7ae5cc218
+
+pkgname = python-tpm2-pytss
+
