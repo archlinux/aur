@@ -1,7 +1,7 @@
 # Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 
 _npmname=markdownlint-cli
-_npmver=0.18.0
+_npmver=0.22.0
 pkgname=nodejs-$_npmname
 pkgver=$_npmver
 pkgrel=1
@@ -23,4 +23,4 @@ package() {
   npm install -g --user root --prefix "$pkgdir/usr" --cache "$srcdir/npm-cache" $_npmname@$_npmver
   chmod -R 755 $_npmdir$_npmname
 }
-sha512sums=('990db3be330ba32d0fda46fd634dd2a82db858f1f87d344dd3f0b20a8ac1d76d9ce02860f6f5892a050a073dca47bb30a73aa6948d1262affb0656ea7b891bda')
+sha512sums=('a9183ab4ae5d5d6aa4685bc4b2dcfd61241a975102320a1fad266074139a3d61bc703e74a64f07b3466904227a4821cf285ef5a4276db922f6bbcdac231d9758')
