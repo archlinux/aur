@@ -1,29 +1,33 @@
 pkgbase = r-covr
 	pkgdesc = Test Coverage for Packages
-	pkgver = 3.2.0
+	pkgver = 3.5.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=covr
+	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = r
+	makedepends = gcc
+	depends = r>=3.1.0
 	depends = r-digest
 	depends = r-jsonlite
 	depends = r-rex
 	depends = r-httr
 	depends = r-crayon
 	depends = r-withr>=1.0.2
+	depends = r-yaml
 	optdepends = r-r6
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-htmltools
 	optdepends = r-dt
 	optdepends = r-testthat
+	optdepends = r-rlang
 	optdepends = r-rstudioapi
 	optdepends = r-xml2
 	optdepends = r-memoise
 	optdepends = r-mockery
-	source = https://cran.r-project.org/src/contrib/covr_3.2.0.tar.gz
-	md5sums = b34429ae68b0caee13a562ab47537b43
+	source = https://cran.r-project.org/src/contrib/covr_3.5.0.tar.gz
+	md5sums = 92894c27065d11b3967cbb6f9d54f247
 
 pkgname = r-covr
 
