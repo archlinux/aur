@@ -1,16 +1,13 @@
 pkgbase = obs-build
-	pkgdesc = Building part of the OpenSUSE Build Service, osc-build
-	pkgver = 20200122
+	pkgdesc = Build packages in a sandboxed environment
+	pkgver = 20200210
 	pkgrel = 1
 	url = https://github.com/openSUSE/obs-build
 	arch = any
 	license = GPL
-	depends = bash
 	depends = perl
-	depends = rpmextract
-	depends = xz
-	source = https://github.com/openSUSE/obs-build/archive/20200122.tar.gz
-	sha256sums = b7dc00e0fd7579b917d1ebfef372a99af69b46e064cbefc3cb99ab88f820f59e
+	source = https://github.com/openSUSE/obs-build/archive/20200210.tar.gz
+	sha256sums = b914f7be7ee368358535ea50c1da06dda8db1ac8edba3690a49d38a6dfcd387a
 
 pkgname = obs-build
 
