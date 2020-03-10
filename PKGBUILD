@@ -1,10 +1,11 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.8.0
+pkgver=1.9.0
 # commit of bitwarden/jslib
-_jslibcommit='e16cb9b801bec1cf1744d8b48f39421ad37e1644'
-pkgrel=2
+_jslibcommit='44b86f5dd028271059b70a00d7878fbb1a06023f'
+_nodeversion='10.19.0'
+pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
 arch=('x86_64')
 url="https://github.com/bitwarden/cli"
@@ -15,8 +16,8 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('b16089073e984da5c441b98c93cf733763805df439df49b40d11de9e718d51b9d64cc538a4c6cc29190c895e2b9ab519bc6d68e61efbf83949a37d5c248b1b27'
-            '3555499b66968bbc96063f9bec5a4e7d68235360dea2da21c0cc10a55f7a24e1a899c036a7a244a18d4ab0bf16f49e6a7cbb6ce80bd94800b5e3a3fa68ef92b8')
+sha512sums=('304ebe05a035848251cfc339b36eb9152f7d72628f4d7898e95525b351653e784f2f60bdb4659bca84162b098703ce1e701d5d6b6da6e90ad0eb560fb93d2694'
+            '3b0f10311a2032fedf6c36a7271180abe6578f945dccfde476c06ec311d235cf5a9d2bfed4b07b3bb2637ddd980961ef4d588e06b20f29d8a4489ae8f6758000')
 
 prepare() {
   rmdir "${srcdir}/cli-${pkgver}/jslib"
@@ -25,12 +26,11 @@ prepare() {
 }
 
 build() {
-  # Use nodejs 10 with NVM
   export npm_config_cache="$srcdir/npm_cache"
   _npm_prefix=$(npm config get prefix)
   npm config delete prefix
   source /usr/share/nvm/init-nvm.sh
-  nvm install 10.16.0 && nvm use 10.16.0
+  nvm install ${_nodeversion} && nvm use ${_nodeversion}
 
   cd "${srcdir}/cli-${pkgver}/jslib"
   npm install
