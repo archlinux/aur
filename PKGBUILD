@@ -2,7 +2,7 @@
 
 pkgname=myipd
 _pkgname=myip
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Small http server returning your public ip"
 arch=('x86_64')
