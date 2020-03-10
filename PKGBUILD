@@ -7,6 +7,7 @@ pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
+depends=('glibc')
 makedepends=('go-pie')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('eaf164afa2a32d7851127f917c2a1d692961821ce0dd9118266c662fd67b119c')
