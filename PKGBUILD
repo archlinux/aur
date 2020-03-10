@@ -3,16 +3,15 @@
 # Contributor: Adam Hose <adis@blad.is>
 
 pkgname=opensnitch-git
-pkgver=1.0.0rc6.r0.27778c1
-pkgrel=5
+pkgver=1.0.0rc6.r4.0c68365
+pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
 license=('GPL3')
 makedepends=('git' 'dep' 'go-pie' 'python-setuptools' 'python-grpcio-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
-         'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5'
-         'python-configparser')
+         'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5')
 optdepends=('logrotate: for logfile rotation support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -33,7 +32,7 @@ prepare() {
     export GOPATH="$srcdir"/gopath
 
     cd "gopath/src/github.com/gustavo-iniguez-goya/${pkgname%-git}/daemon"
-    dep ensure -update -v
+    dep ensure -v
 
     cd "$srcdir/${pkgname%-git}"
     sed -i 's|local/bin|bin|g' daemon/opensnitchd.service
@@ -63,10 +62,12 @@ build() {
 package() {
     cd "$srcdir/${pkgname%-git}"
     install -Dm755 daemon/opensnitchd -t "$pkgdir/usr/bin"
-    install -Dm644 daemon/opensnitchd.service -t "$pkgdir/usr/lib/systemd/system"
+    install -Dm644 daemon/opensnitchd.service -t \
+    	"$pkgdir/usr/lib/systemd/system"
     install -dm755 "$pkgdir/etc/opensnitchd/rules"
     install -Dm644 daemon/default-config.json -t "$pkgdir/etc/opensnitchd"
-    install -Dm644 debian/opensnitch.logrotate "$pkgdir/etc/logrotate.d/opensnitch"
+    install -Dm644 debian/opensnitch.logrotate \
+    	"$pkgdir/etc/logrotate.d/opensnitch"
 
     cd "$srcdir/${pkgname%-git}/ui"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
