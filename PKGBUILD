@@ -3,27 +3,27 @@
 # Contributor: Michael Spencer <sonrisesoftware@gmail.com>
 
 pkgname=liri-text
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Material Design text editor'
 arch=('x86_64')
 url='https://github.com/lirios/text'
 license=('GPL')
 depends=('fluid')
-makedepends=('liri-qbs-shared' 'qt5-tools')
+makedepends=('liri-cmake-shared' 'qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/text/archive/v$pkgver.tar.gz")
-sha256sums=('0c0a0482a5bc8fe9f5c69dd6b5c94d5987da7f6966acd65b13366167780206bb')
+sha512sums=('a4c374ce79b06fea312e407a9062217be1eec42851a7cdb1a5ea927d7164c33fd9310fcf750f70dc1637b5c8b9b2037327742b32f6c26c58c15bc89b482454d9')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd text-$pkgver
-  qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-  qbs setup-qt /usr/bin/qmake-qt5 qt5
-  qbs config profiles.qt5.baseProfile gcc
-  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr \
-                                              modules.lirideployment.qmlDir:/usr/lib/qt/qml
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ../text-$pkgver
 }
 
 package() {
-  cd text-$pkgver
-  qbs install -d build --no-build -v --install-root "$pkgdir" profile:qt5
+  cd build
+  make DESTDIR="$pkgdir" install
 }
