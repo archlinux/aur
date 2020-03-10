@@ -1,7 +1,7 @@
 # Maintainer: Dario Giovannetti <info@dariogiovannetti.net>
 
 pkgname=report-todo
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Parse and report TODO, FIXME, BUG etc. comments in source code."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('b66bc4fda397ebcb694efc8208dfa2f4ad4f2a31869d3a2a560b9251f6610c23')
+sha256sums=('99e3799da521cd307bb02f4dd3767ecdec4409ef8ddce7f16c6af63f1ee7a4a5')
 
 package() {
   npm install -g --only=production --user root --prefix "${pkgdir}/usr" \
