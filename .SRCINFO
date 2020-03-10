@@ -1,13 +1,13 @@
 pkgbase = ccalc
 	pkgdesc = Scientific calculator in which you can define new functions and constants
 	pkgver = 1.5.0
-	pkgrel = 1
-	url = https://github.com/PhilippHochmann/Calculator
+	pkgrel = 2
+	url = https://github.com/PhilippHochmann/ccalc
 	arch = x86_64
 	license = GPL3
 	depends = readline
 	source = ccalc-1.5.0.tar.gz
-	md5sums = ca56a7612da5fa50ff5b69e0569a4b78
+	md5sums = 51c7f0e14a254c45ba54422d6de86805
 
 pkgname = ccalc
 
