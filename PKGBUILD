@@ -1,6 +1,6 @@
 # Maintainer: asm0dey <pavel.finkelshtein+AUR@gmail.com>
 pkgname=feedreader-git
-pkgver=2.10.0.r2894
+pkgver=2.10.0.r2908
 pkgrel=1
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
@@ -25,7 +25,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/FeedReader"
   git submodule init; git submodule update
-  git cherry-pick 056d1ac485643a528ed9b4bf84940b9165369a2a
 }
 
 build() {
