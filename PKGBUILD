@@ -5,12 +5,12 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=73.0.1
-pkgrel=1
-pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
+pkgver=74.0
+pkgrel=2
+pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://LibreWolf.gitlab.io"
+url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
          ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
@@ -24,12 +24,10 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 options=(!emptydirs !makeflags !strip)
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
         $pkgname.desktop
-        $pkgname.cfg.patch
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('53415180e74da60fc91700ce1ff33bf5b6f51e65353017a98270899a08e0c3d2'
+sha256sums=('74589c2836d7c30134636823c3caefbcaed0ea7c3abb2def9e3ddd9f86d9440a'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
-            'e03332f0e865949df5af9c231a364e9e1068fca0439621b98c2d4160d93e674f'
             'SKIP'
             'SKIP')
 
@@ -41,23 +39,8 @@ if [[ $CARCH == 'aarch64' ]]; then
 fi
 
 prepare() {
-  _POCKET_SED_STRING="s/'pocket'/#'pocket'/g"
-  _POCKET_FILE=./browser/components/moz.build
-
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # NOTE:
-  # unlock some prefs I deem worthy of keeping unlocked or slightly less restricted
-  # (with librewolf installed systemwide, you'd otherwise always have to sudo around in /usr/lib)
-  # it mainly keeps addon update / install settings / urls unlocked
-  # as well as form fill settings
-  # uncomment it if you are OK with a slight potential decrease in privacy,
-  # or even better: check what I'm doing there.
-
-  # cd ${srcdir}/${pkgname}
-  # patch -Np1 -i ${srcdir}/${pkgname}.cfg.patch
-  # cd ${srcdir}/firefox-$pkgver
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -105,7 +88,7 @@ mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
 
 # options for ci / weaker build systems
-# mk_add_options MOZ_MAKE_FLAGS="-j2"
+# mk_add_options MOZ_MAKE_FLAGS="-j4"
 # ac_add_options --enable-linker=gold
 END
 
@@ -124,7 +107,7 @@ ac_add_options --disable-webrtc
 
 END
 
-# ac_add_options --enable-optimize  <- ?
+  # ac_add_options --enable-optimize  <- ?
 
   LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
   patch -p1 -i ../arm.patch
@@ -132,11 +115,13 @@ END
 
 fi
 
+  # Disabling Pocket
+  sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
+  # this one only to remove an annoying error message:
+  sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
-
-  # Disabling Pocket
-  sed -i $_POCKET_SED_STRING $_POCKET_FILE
 }
 
 
@@ -189,6 +174,8 @@ ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+# seems to break on arm
+ac_add_options --enable-linker=gold
 END
 else
   cat >.mozconfig ../mozconfig
@@ -203,6 +190,9 @@ fi
 package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
+
+  # also create regular tarball for non-distro-specific packaging
+  # ./mach package
 
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
   install -Dvm644 /dev/stdin "$vendorjs" <<END
