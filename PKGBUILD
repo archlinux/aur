@@ -1,4 +1,4 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: S Leduc <sebastien@sleduc.fr>
 # Contributor: Martin Villagra <mvillagra0@gmail.com>
 # Contributor: William Rea <sillywilly@gmail.com>
