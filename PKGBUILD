@@ -2,7 +2,7 @@
 
 pkgname=glib2-static
 pkgver=2.64.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Low level core library: Static library"
 url="https://wiki.gnome.org/Projects/GLib"
 license=(LGPL2.1)
@@ -39,7 +39,7 @@ build() {
 }
 
 check() {
-  meson test -C _build --no-suite flaky --timeout-multiplier 2 --print-errorlogs
+  LC_ALL=C meson test -C _build --no-suite flaky --timeout-multiplier 2 --print-errorlogs
 }
 
 package() {
