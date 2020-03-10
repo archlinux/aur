@@ -1,6 +1,6 @@
 pkgbase = linenoise-git
 	pkgdesc = A small self-contained alternative to readline and libedit
-	pkgver = r126.4a961c0
+	pkgver = r131.fc9667a
 	pkgrel = 1
 	url = https://github.com/antirez/linenoise
 	arch = i686
