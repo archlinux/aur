@@ -1,6 +1,6 @@
 pkgbase = proji
 	pkgdesc = A powerful cross-platform CLI project templating tool
-	pkgver = 0.19.1
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://github.com/nikoksr/proji
 	install = proji.install
@@ -12,7 +12,7 @@ pkgbase = proji
 	makedepends = golang-github-stretchr-testify
 	makedepends = git
 	depends = glibc
-	source = proji::git+https://github.com/nikoksr/proji.git#tag=v0.19.1
+	source = proji::git+https://github.com/nikoksr/proji.git#tag=v0.19.2
 	sha512sums = SKIP
 
 pkgname = proji
