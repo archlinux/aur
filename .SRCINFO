@@ -1,7 +1,7 @@
 pkgbase = mongodb-compass-community-beta
 	pkgdesc = The official GUI for MongoDB - Community Edition - beta version
-	pkgver = 1.20.0.beta.9
-	pkgrel = 4
+	pkgver = 1.21.0.beta.0
+	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
 	arch = i686
@@ -9,13 +9,13 @@ pkgbase = mongodb-compass-community-beta
 	arch = aarch64
 	license = custom:SSPL
 	makedepends = npm
-	depends = electron3-bin
+	depends = electron6
 	depends = krb5
 	depends = libsecret
 	depends = lsb-release
-	source = mongodb-compass-community-beta-1.20.0.beta.9-4.tar.gz::https://github.com/mongodb-js/compass/archive/v1.20.0-beta.9.tar.gz
+	source = mongodb-compass-community-beta-1.21.0.beta.0-1.tar.gz::https://github.com/mongodb-js/compass/archive/v1.21.0-beta.0.tar.gz
 	source = hadron-build-packaging.diff
-	sha256sums = 152471d72eb716787bad9511c87b3524a61643e3861ecd384deef9d3fe96e315
+	sha256sums = 373168f06f4bf96c11cfe188bc8113714698b08485f8118a967d48669de3bd13
 	sha256sums = 3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2
 
 pkgname = mongodb-compass-community-beta
