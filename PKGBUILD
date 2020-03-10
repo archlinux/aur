@@ -2,20 +2,20 @@
 _target='compass-isolated-beta'
 _edition=' Isolated Edition Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.20.0-beta.9'
+_pkgver='1.21.0-beta.0'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
-pkgrel='4'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition - beta version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
 license=('custom:SSPL')
-depends=('electron3-bin' 'krb5' 'libsecret' 'lsb-release')
+depends=('electron6' 'krb5' 'libsecret' 'lsb-release')
 makedepends=('npm')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-packaging.diff'
 )
-sha256sums=('152471d72eb716787bad9511c87b3524a61643e3861ecd384deef9d3fe96e315'
+sha256sums=('373168f06f4bf96c11cfe188bc8113714698b08485f8118a967d48669de3bd13'
             '3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2')
 
 _sourcedirectory="compass-$_pkgver"
@@ -27,12 +27,7 @@ prepare() {
 	sed -E -i 's|("node": ").*"|\1'"$(node -v | sed 's/^v//')"'"|' 'package.json'
 
 	# Set system Electron version for ABI compatibility
-	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron3/version' | sed 's/^v//')"'"|' 'package.json'
-
-	# Fix various build failures in beta releases, this can be removed when a new
-	# beta is released, as this has been fixed in master and in stable releases
-	sed -E -i 's|"kerberos": "\^1.1.2"|"kerberos": "^1.1.3"|' 'package.json'
-	sed -E -i 's|"keytar": "\^4.4.1"|"keytar": "^4.13.0"|' 'package.json'
+	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron6/version' | sed 's/^v//')"'"|' 'package.json'
 
 	# Prepare dependencies
 	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
@@ -87,7 +82,7 @@ package() {
 	install -dm755 "$pkgdir/usr/bin/"
 	cat << EOF > "$pkgdir/usr/bin/$pkgname"
 #!/bin/sh
-NODE_ENV=production exec electron3 '/usr/lib/$pkgname/app.asar' "\$@"
+NODE_ENV=production exec electron6 '/usr/lib/$pkgname/app.asar' "\$@"
 EOF
 	chmod +x "$pkgdir/usr/bin/$pkgname"
 
