@@ -1,32 +1,34 @@
-# $Id$
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
-# Submitter: <kalterfx@gmail.com>
-
 pkgname=gnome-screenshot-git
-pkgver=3.18.0
+_pkgname=gnome-screenshot
+pkgver=3.34.0+14+g67ac52e
 pkgrel=1
 pkgdesc="Take pictures of your screen"
-arch=(i686 x86_64)
-conflicts=(gnome-screenshot)
-url="http://gnome.org"
-license=('GPL2')
-depends=('dconf' 'gtk3' 'libcanberra')
-makedepends=('intltool')
-groups=('gnome')
-install=gnome-screenshot.install
-source=('git+https://github.com/gnome/gnome-screenshot#branch=master')
-sha256sums=('SKIP')
+url="https://gitlab.gnome.org/GNOME/gnome-screenshot"
+arch=(x86_64)
+license=(GPL2)
+depends=('gtk3' 'libcanberra')
+makedepends=('git' 'meson' 'appstream-glib')
+provides=('gnome-screenshot')
+conflicts=('gnome-screenshot')
+source=("git+https://gitlab.gnome.org/GNOME/gnome-screenshot.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/-/+/g'
+}
 
 build() {
-  cd "gnome-screenshot"
-  ./autogen.sh --prefix=/usr
-  make
+  arch-meson $_pkgname build
+  ninja -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "gnome-screenshot"
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
 
 # vim:set ts=2 sw=2 et:
-
