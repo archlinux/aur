@@ -1,0 +1,16 @@
+pkgbase = utfcpp-git
+	pkgdesc = C++17 zero-overhead syntactic sugar for "variant" and "optional"
+	pkgver = 3.1.r13.dc2442c
+	pkgrel = 1
+	url = https://github.com/nemtrif/utfcpp
+	arch = any
+	license = BSL-1.0
+	makedepends = git
+	makedepends = cmake
+	provides = utfcpp
+	conflicts = utfcpp
+	source = utfcpp-git::git+https://github.com/nemtrif/utfcpp.git
+	md5sums = SKIP
+
+pkgname = utfcpp-git
+
