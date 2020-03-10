@@ -4,12 +4,12 @@ pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
 _pkgname=LibreWolf
-pkgver=73.0.1
-pkgrel=1
-pkgdesc="Community-maintained fork of Librefox: a privacy and security-focused browser"
+pkgver=74.0
+pkgrel=2
+pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://LibreWolf.gitlab.io"
+url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss ttf-font libpulse)
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -18,23 +18,21 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs)
-install=librewolf-bin.install
 
 case "$CARCH" in
-        aarch64) _uploadh='450964267'
-                _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/-/jobs/${_uploadh}/artifacts/raw/ci/${pkgname//-bin/""}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst"
-                sha256sums+=('dc933479b0ddd4b26695ddd851e168d3e5a6f57789989070961337c66f17e7f3')
+        aarch64) _uploadh='6aa66ba3483dbe62890c3c966c5555bb'
+                _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/linux/uploads/${_uploadh}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst"
+                sha256sums+=('ce281ea36365b95805b3e8d2a0c21c3b9fc7964b974aa46363836ea7228fec19')
                 ;;
-        x86_64) _uploadh='8f0174726c60c895d643ec7533a41858'
-                sha256sums+=('84a82009d3aa727c3655c866980cf40a1b6338305f29307800bdacf44bbc9d9f')
-                _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/arch/uploads/${_uploadh}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz"
+        x86_64) _uploadh='123be141eb11d11a8ce650fa48aa96e0'
+                sha256sums+=('aed40991a0a0531c78399c559d641d0412166467eca367060e94cfa11c8a3f1a')
+                _uploadpath="https://gitlab.com/${pkgname//-bin/""}-community/browser/linux/uploads/${_uploadh}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.xz"
                 ;;
 esac
 
 source=(${_uploadpath})
 
 package() {
-  # Yep, that's somewhat stupid.
-  # Will hopefully be improved once the main librewolf-ci works properly.
+  # Yep, that's somewhat redundant. But it works.
   cp -r $srcdir/usr $pkgdir/
 }
