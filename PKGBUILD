@@ -6,7 +6,7 @@
 # Contributor: Tomas A. Schertel <tschertel@gmail.com>
 
 pkgname=cherrytree
-pkgver=0.38.11
+pkgver=0.39.0
 pkgrel=1
 pkgdesc='Hierarchical note taking application featuring rich text and syntax highlighting'
 arch=('any')
@@ -27,4 +27,4 @@ package() {
   cd $pkgname-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
-md5sums=('f35ebbfdf86bf238d12247f458a3f381')
+md5sums=('37e9ab1ea7f42a8a98d123ba01fbf47f')
