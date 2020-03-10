@@ -1,5 +1,6 @@
 {
   "BindAddress": ":53",
+  "DebugHTTPAddress": "127.0.0.1:5555",
   "PrimaryDNS": [
     {
       "Name": "114DNS",
@@ -52,6 +53,9 @@
   ],
   "OnlyPrimaryDNS": false,
   "IPv6UseAlternativeDNS": false,
+  "AlternativeDNSConcurrent": false,
+  "PoolIdleTimeout": 15,
+  "PoolMaxCapacity": 15,
   "WhenPrimaryDNSAnswerNoneUse": "PrimaryDNS",
   "IPNetworkFile": {
 	  "Primary": "/etc/overture/china_ip_list.txt",
@@ -59,9 +63,13 @@
   },
   "DomainFile": {
 	  "Primary": "",
-	  "Alternative": "/etc/overture/gfwlist.txt"
+	  "Alternative": "/etc/overture/gfwlist.txt",
+	  "Matcher": "full-map"
   },
-  "HostsFile": "/etc/overture/hosts",
+  "HostsFile": {
+	  "HostsFile": "/etc/overture/hosts",
+	  "Finder": "full-map"
+  },
   "MinimumTTL": 0,
   "DomainTTLFile": "/etc/overture/domain_ttl.txt",
   "CacheSize": 4096,
