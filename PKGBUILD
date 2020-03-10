@@ -22,9 +22,5 @@ package() {
     cd $_tarname
     install -Dm644 LICENSE.md $pkgdir/usr/share/licenses/renderdoc-bin/LICENSE.md
     cp -rt $pkgdir etc
-    cp -rt $pkgdir/usr bin lib share
-
-    cd $pkgdir/usr
-    find share/ -type f -exec chmod 644 {} \;
-    find lib/ bin/ -type f -exec chmod 755 {} \;
+    cp -rt $pkgdir/usr bin include lib share
 }
