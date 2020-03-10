@@ -3,7 +3,7 @@
 
 pkgname=srb2kart-data
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Data files for Sonic Robo Blast 2 Kart"
 arch=('any')
 license=('custom')
@@ -14,5 +14,6 @@ sha256sums=('3af7d005082c2d08a0494a5bb9137b335009ff311cb5bfec215ed07d8ab2185b')
 
 package() {
   install -d "$pkgdir"/usr/share/games/SRB2Kart
-  install -m644 {music,textures,gfx,maps,sounds,chars,bonuschars}.kart srb2.srb "$pkgdir"/usr/share/games/SRB2Kart
+  install -m644 {music,textures,gfx,maps,sounds,chars,bonuschars,patch}.kart srb2.srb mdls.dat "$pkgdir"/usr/share/games/SRB2Kart
+  cp -dr --no-preserve=ownership mdls "$pkgdir"/usr/share/games/SRB2Kart
 }
