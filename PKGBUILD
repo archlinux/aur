@@ -16,12 +16,8 @@ md5sums=('SKIP'
          '5b44b5397c93531b7faa6431591fbeca')
 
 prepare() {
-    ar vx kplex_1.4-1_amd64.deb --output "${srcdir}"
-    cd "${srcdir}"
-    rm "debian-binary"
-    rm "control.tar.gz"
-    mkdir -p data
-    tar -xf "data.tar.gz" -C data
+    mkdir -p "${srcdir}/deb"
+    ar p kplex_1.4-1_amd64.deb data.tar.gz | tar xz -C "${srcdir}/deb"
 }
 
 pkgver() {
@@ -37,11 +33,11 @@ build() {
 package() {
     # copy service file from deb package
     mkdir -p "${pkgdir}/usr/lib/systemd/system/"
-    cp "${srcdir}/data/usr/share/kplex/kplex.service" "${pkgdir}/usr/lib/systemd/system/kplex.service"
+    cp "${srcdir}/deb/usr/share/kplex/kplex.service" "${pkgdir}/usr/lib/systemd/system/kplex.service"
 
-    # copy example conf file from deb package
+    # copy example conf from deb package
     mkdir -p "${pkgdir}/etc/"
-    cp "${srcdir}/data/etc/kplex.conf" "${pkgdir}/etc/kplex.conf"
+    cp "${srcdir}/deb/etc/kplex.conf" "${pkgdir}/etc/kplex.conf"
 
     # create dest dir and build
     mkdir -p "${pkgdir}/usr/share/man/man1"
