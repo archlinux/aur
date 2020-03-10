@@ -26,7 +26,7 @@ _CMAKE_FLAGS+=( -DWITH_ALEMBIC_HDF5=ON )
 ((DISABLE_CUDA)) && optdepends+=('cuda: CUDA support in Cycles') || { makedepends+=('cuda') ; ((DISABLE_OPTIX)) || makedepends+=('optix>=7.0'); }
 
 pkgname=blender-2.8-git
-pkgver=2.83.r93980.g598ab525da3
+pkgver=2.83.r94036.g7b8ac04d86e
 pkgrel=1
 pkgdesc="Development version of Blender 2.8 branch"
 changelog=blender.changelog
@@ -37,8 +37,8 @@ depends+=('alembic' 'libgl' 'python' 'python-numpy' 'openjpeg'
          'openvdb' 'opencollada' 'opensubdiv' 'openshadinglanguage' 'libtiff' 'libpng')
 depends+=('openimagedenoise')
 makedepends+=('git' 'cmake' 'boost' 'mesa' 'llvm')
-provides=("blender-${pkgver%%.r*}")
-conflicts=("blender-${pkgver%%.r*}")
+provides=("blender=${pkgver%%.r*}")
+conflicts=("blender=${pkgver%%.r*}")
 license=('GPL')
 # NOTE: the source array has to be kept in sync with .gitmodules
 # the submodules has to be stored in path ending with git to match
