@@ -2,7 +2,7 @@
 
 pkgname=linenoise-git
 _pkgname=linenoise
-pkgver=r126.4a961c0
+pkgver=r131.fc9667a
 pkgrel=1
 pkgdesc="A small self-contained alternative to readline and libedit"
 arch=('i686' 'x86_64')
