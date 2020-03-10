@@ -1,0 +1,15 @@
+pkgbase = python-mouselog
+	pkgdesc = Log mouse movement
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xyproto/mouselog
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/xyproto/mouselog#commit=28eae03f7d813358d37b0b9224f5ae809dc359da
+	md5sums = SKIP
+
+pkgname = python-mouselog
+
