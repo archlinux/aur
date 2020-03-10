@@ -1,14 +1,14 @@
 pkgbase = mkdocs-bootswatch
 	pkgdesc = Bootswatch themes for MkDocs
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = http://www.mkdocs.org
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/m/mkdocs-bootswatch/mkdocs-bootswatch-1.0.tar.gz
-	source = https://raw.githubusercontent.com/mkdocs/mkdocs-bootswatch/1.0/LICENSE
-	sha256sums = 6be56764675814036a507d32828710e93dbe3e7aced2cdd820b946a3ebf2308e
+	source = https://pypi.python.org/packages/source/m/mkdocs-bootswatch/mkdocs-bootswatch-1.1.tar.gz
+	source = https://raw.githubusercontent.com/mkdocs/mkdocs-bootswatch/1.1/LICENSE
+	sha256sums = cc999ba15a3ce2a46eab35fcaabea9907f5c74bc49e79d9c866b51d4b0fa7f33
 	sha256sums = ecb1ed9b8c4dea275c07c3ab541835926e83cb46e9815d029b6a171781a0980c
 
 pkgname = mkdocs-bootswatch
