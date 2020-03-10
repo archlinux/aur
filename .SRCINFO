@@ -1,29 +1,19 @@
 pkgbase = python-aigpy
 	pkgdesc = Python Common Lib
 	pkgver = 2020.2.28.0
-	pkgrel = 1
-	url = https://pypi.org/project/aigpy
+	pkgrel = 2
+	url = https://github.com/yaronzz/AIGPY
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/c5/ff/36b3631cd90302e9df7af39e62d416fb4bfa5f03328258418de9abddf42a/aigpy-2020.2.28.0.tar.gz
-	source = LICENSE
+	depends = python
+	depends = python-requests
+	depends = python-colorama
+	depends = python-mutagen
+	source = https://pypi.org/packages/source/a/aigpy/aigpy-2020.2.28.0.tar.gz
+	source = https://raw.githubusercontent.com/yaronzz/AIGPY/master/LICENSE
 	sha256sums = c471ef93a342410648dd8656d6024fba8bb7f0a3e600d790363e901abc1780c5
 	sha256sums = 83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c
 
 pkgname = python-aigpy
-	depends = python
-	depends = python-requests
-	depends = python-libconfigparser
-	depends = python-colorama
-	depends = python-mutagen
-
-pkgname = python2-aigpy
-	depends = python2
-	depends = python2-requests
-	depends = python2-libconfigparser
-	depends = python2-colorama
-	depends = python2-mutagen
-	depends = python2-futures
 
