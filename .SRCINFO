@@ -1,7 +1,7 @@
 pkgbase = utfcpp-git
-	pkgdesc = C++17 zero-overhead syntactic sugar for "variant" and "optional"
+	pkgdesc = UTF-8 with C++ in a Portable Way
 	pkgver = 3.1.r13.dc2442c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nemtrif/utfcpp
 	arch = any
 	license = BSL-1.0
