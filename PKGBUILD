@@ -11,7 +11,7 @@ arch=(x86_64)
 url="https://github.com/baldurk/renderdoc"
 license=('MIT')
 conflicts=('renderdoc')
-depends=("libgl" "libxcb" "libx11" "fontconfig" "freetype2" "libproxy" "python" "desktop-file-utils" "hicolor-icon-theme")
+depends=("libgl" "libxcb" "libx11" "fontconfig" "freetype2" "glu" "libproxy" "python" "desktop-file-utils" "hicolor-icon-theme")
 source=("https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz"
         "https://renderdoc.org/stable/$pkgver/$_tarname.tar.gz.sig")
 sha256sums=('7a104d20926049ec0935eeed3c64bb63e1c97f07fa1e22f7bda04037af9a2e89'

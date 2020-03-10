@@ -10,6 +10,7 @@ pkgbase = renderdoc-bin
 	depends = libx11
 	depends = fontconfig
 	depends = freetype2
+	depends = glu
 	depends = libproxy
 	depends = python
 	depends = desktop-file-utils
