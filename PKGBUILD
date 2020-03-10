@@ -29,11 +29,6 @@ prepare() {
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat '/usr/lib/electron3/version' | sed 's/^v//')"'"|' 'package.json'
 
-	# Fix various build failures in beta releases, this can be removed when a new
-	# beta is released, as this has been fixed in master and in stable releases
-	sed -E -i 's|"kerberos": "\^1.1.2"|"kerberos": "^1.1.3"|' 'package.json'
-	sed -E -i 's|"keytar": "\^4.4.1"|"keytar": "^4.13.0"|' 'package.json'
-
 	# Prepare dependencies
 	export HOME="$srcdir/$pkgname-$pkgver-$pkgrel-home"
 	export XDG_CACHE_HOME="$srcdir/$pkgname-$pkgver-$pkgrel-cache"
