@@ -1,13 +1,14 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=feedbackd-git
-pkgver=0.0.0+git20200214.r12.g4839853
+pkgver=0.0.0+git20200304.r0.gd80b97a
 pkgrel=1
 pkgdesc="A daemon to provide haptic, visual, and audio feedback on events"
 url="https://source.puri.sm/Librem5/feedbackd"
 license=("GPL3")
-arch=(i686 x86_64 armv6h armv7h)
-provides=(feedbackd)
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+provides=('feedbackd')
+conflicts=('feedbackd')
 depends=('json-glib'
          'libgudev'
          'dconf'
