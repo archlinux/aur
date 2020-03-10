@@ -1,0 +1,12 @@
+diff -ura package.orig/config.example.yml package.new/config.example.yml
+--- package.orig/config.example.yml	2020-03-08 14:59:02.828681120 +0100
++++ package.new/config.example.yml	2020-03-08 15:00:09.321068531 +0100
+@@ -3,7 +3,7 @@
+ 
+ server:
+   listenaddr: "" # the address to bind on, leave empty to bind on all addresses
+-  port: 80 # the port the HTTP server will listen on
++  port: 8080 # the port the HTTP server will listen on
+ 
+   ssl:
+     enabled: false # if https should be enabled
