@@ -1,7 +1,7 @@
 pkgbase = upwork
 	pkgdesc = Desktop App 64-bit Standard version
 	pkgver = 5.3.3.871
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.upwork.com/downloads?source=Footer
 	install = upwork.install
 	arch = x86_64

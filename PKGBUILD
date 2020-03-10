@@ -5,7 +5,7 @@ pkgname=upwork
 pkgver=5.3.3.871
 _rawver=${pkgver//./_}
 _hashver='51d563431f844aff'
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop App 64-bit Standard version'
 arch=(x86_64)
 url='https://www.upwork.com/downloads?source=Footer'
@@ -26,6 +26,7 @@ prepare() {
 package() {
     cd $srcdir
     cp -rp usr $pkgdir/usr
+    cp -rp opt $pkgdir/opt
 
     install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
