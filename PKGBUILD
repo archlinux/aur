@@ -6,7 +6,7 @@ pkgdesc="Parse messy tabular data in various formats"
 url="https://messytables.readthedocs.io/"
 
 pkgver=0.15.2
-pkgrel=0
+pkgrel=1
 
 arch=("any")
 license=("MIT")
@@ -16,6 +16,13 @@ makedepends=(
 )
 depends=(
     "python"
+    "python-chardet"
+    "python-dateutil"
+    "python-html5lib"
+    "python-lxml"
+    "python-requests"
+    "python-tableschema"
+    "python-xlrd"
 )
 
 source=(
