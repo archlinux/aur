@@ -1,0 +1,4 @@
+/libhangul/
+/pkg/
+/src/
+*.pkg.*

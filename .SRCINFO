@@ -1,0 +1,18 @@
+pkgbase = libhangul-git
+	pkgdesc = A library to support hangul input method logic
+	pkgver = 0.1.0.r51.2ddc547f014a
+	pkgrel = 1
+	url = https://github.com/libhangul/libhangul
+	arch = x86_64
+	license = LGPL-2.1
+	makedepends = binutils
+	makedepends = intltool
+	makedepends = automake
+	makedepends = autoconf
+	provides = libhangul
+	conflicts = libhangul
+	source = git+https://github.com/libhangul/libhangul.git
+	md5sums = SKIP
+
+pkgname = libhangul-git
+
