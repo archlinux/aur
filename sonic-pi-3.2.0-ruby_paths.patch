@@ -12,7 +12,7 @@ diff -ruN a/app/server/ruby/core.rb d/app/server/ruby/core.rb
          {:sonic_pi_spider_random_gen_seed => seed,
 diff -ruN a/app/server/ruby/lib/sonicpi/util.rb d/app/server/ruby/lib/sonicpi/util.rb
 --- a/app/server/ruby/lib/sonicpi/util.rb	2020-02-25 01:23:45.000000000 +0100
-+++ d/app/server/ruby/lib/sonicpi/util.rb	2020-03-08 21:39:53.485189513 +0100
++++ d/app/server/ruby/lib/sonicpi/util.rb	2020-03-09 19:16:54.479452971 +0100
 @@ -252,11 +252,11 @@
      end
  
@@ -78,6 +78,25 @@ diff -ruN a/app/server/ruby/lib/sonicpi/util.rb d/app/server/ruby/lib/sonicpi/ut
      end
  
      def native_path
+@@ -320,15 +321,15 @@
+     end
+ 
+     def sox_path
+-      File.join(native_path, "sox", __exe_fix("sox"))
++      File.absolute_path("/usr/bin/sox")
+     end
+ 
+     def osmid_o2m_path
+-      File.join(native_path, "osmid", __exe_fix("o2m"))
++      File.absolute_path("/usr/bin/o2m")
+     end
+ 
+     def osmid_m2o_path
+-      File.join(native_path, "osmid", __exe_fix("m2o"))
++      File.absolute_path("/usr/bin/m2o")
+     end
+ 
+     def scsynth_log_path
 @@ -373,7 +374,7 @@
      end
  
