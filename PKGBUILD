@@ -2,7 +2,7 @@
 
 _pkgname=espanso
 pkgname=${_pkgname}
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://espanso.org/"
 license=("GPL3")
 depends=("xdotool" "xclip" "libxtst" "libnotify")
 makedepends=("rust" "git" "cmake")
-install="${pkgname}.install"
+install="${pkgname}.install" 
 source=("${_pkgname}::git+https://github.com/federico-terzi/espanso.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
