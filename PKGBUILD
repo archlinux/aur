@@ -6,7 +6,7 @@
 # Conttributor: xiretza <xiretza+aur@gmail.com>
 
 pkgname=wine-valve-git
-pkgver=4.11.r415.g08a1b1024f
+pkgver=5.0
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (Valve version)'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ _depends=(
     'libpcap'               'lib32-libpcap'
     'desktop-file-utils'
     'libgphoto2'
-    'vkd3d'
+    'vkd3d-valve-git'
 )
 makedepends=('git' 'autoconf' 'ncurses' 'bison' 'perl' 'fontforge' 'flex'
     'gcc>=4.5.0-2'
@@ -79,9 +79,9 @@ optdepends=(
     'samba'
     'dosbox'
 )
-options=('staticlibs' '!buildflags')
+options=('staticlibs')
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/ValveSoftware/wine.git#branch=proton_4.11"
+source=("$pkgname::git+https://github.com/ValveSoftware/wine.git#branch=proton_5.0"
         '30-win32-aliases.conf'
         'wine-binfmt.conf')
 

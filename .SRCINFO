@@ -1,6 +1,6 @@
 pkgbase = wine-valve-git
 	pkgdesc = A compatibility layer for running Windows programs (Valve version)
-	pkgver = 4.11.r415.g08a1b1024f
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/wine.git
 	install = wine-valve-git.install
@@ -88,7 +88,7 @@ pkgbase = wine-valve-git
 	makedepends = lib32-libpcap
 	makedepends = desktop-file-utils
 	makedepends = libgphoto2
-	makedepends = vkd3d
+	makedepends = vkd3d-valve-git
 	optdepends = giflib
 	optdepends = lib32-giflib
 	optdepends = libpng
@@ -128,10 +128,10 @@ pkgbase = wine-valve-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=4.11.r415.g08a1b1024f
-	provides = bin32-wine=4.11.r415.g08a1b1024f
-	provides = wine-wow64=4.11.r415.g08a1b1024f
-	provides = wine-valve=4.11.r415.g08a1b1024f
+	provides = wine=5.0
+	provides = bin32-wine=5.0
+	provides = wine-wow64=5.0
+	provides = wine-valve=5.0
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-staging-git
@@ -139,8 +139,7 @@ pkgbase = wine-valve-git
 	conflicts = wine-wow64
 	replaces = bin32-wine
 	options = staticlibs
-	options = !buildflags
-	source = wine-valve-git::git+https://github.com/ValveSoftware/wine.git#branch=proton_4.11
+	source = wine-valve-git::git+https://github.com/ValveSoftware/wine.git#branch=proton_5.0
 	source = 30-win32-aliases.conf
 	source = wine-binfmt.conf
 	sha256sums = SKIP
@@ -178,5 +177,5 @@ pkgname = wine-valve-git
 	depends = lib32-libpcap
 	depends = desktop-file-utils
 	depends = libgphoto2
-	depends = vkd3d
+	depends = vkd3d-valve-git
 
