@@ -1,0 +1,24 @@
+pkgbase = gnome-dictionary-git
+	pkgdesc = Look up words in dictionary sources
+	pkgver = 3.26.1+94+g6d7f21e
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Dictionary
+	arch = x86_64
+	license = GPL2
+	makedepends = itstool
+	makedepends = docbook-xsl
+	makedepends = gtk-doc
+	makedepends = yelp-tools
+	makedepends = git
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = appstream-glib
+	depends = dconf
+	depends = gtk3
+	provides = gnome-dictionary
+	conflicts = gnome-dictionary
+	source = git+https://gitlab.gnome.org/GNOME/gnome-dictionary.git
+	sha512sums = SKIP
+
+pkgname = gnome-dictionary-git
+
