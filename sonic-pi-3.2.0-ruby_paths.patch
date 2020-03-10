@@ -1,0 +1,130 @@
+diff -ruN a/app/server/ruby/core.rb d/app/server/ruby/core.rb
+--- a/app/server/ruby/core.rb	2020-02-25 01:23:45.000000000 +0100
++++ d/app/server/ruby/core.rb	2020-03-08 21:29:51.417948839 +0100
+@@ -146,7 +146,7 @@
+   module Core
+     module SPRand
+       # Read in same random numbers as server for random stream sync
+-      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("../../../../etc/buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
++      @@random_numbers = ::WaveFile::Reader.new(File.expand_path("/usr/share/sonic-pi/buffers/rand-stream.wav", __FILE__), ::WaveFile::Format.new(:mono, :float, 44100)).read(441000).samples.freeze
+ 
+       def self.tl_seed_map(seed, idx=0)
+         {:sonic_pi_spider_random_gen_seed => seed,
+diff -ruN a/app/server/ruby/lib/sonicpi/util.rb d/app/server/ruby/lib/sonicpi/util.rb
+--- a/app/server/ruby/lib/sonicpi/util.rb	2020-02-25 01:23:45.000000000 +0100
++++ d/app/server/ruby/lib/sonicpi/util.rb	2020-03-09 19:16:54.479452971 +0100
+@@ -252,11 +252,11 @@
+     end
+ 
+     def root_path
+-      File.absolute_path("#{File.dirname(__FILE__)}/../../../../../")
++      File.absolute_path("/usr/share/sonic-pi")
+     end
+ 
+     def etc_path
+-      File.absolute_path("#{root_path}/etc")
++      File.absolute_path("#{root_path}")
+     end
+ 
+     def snippets_path
+@@ -264,7 +264,7 @@
+     end
+ 
+     def doc_path
+-      File.absolute_path("#{etc_path}/doc")
++      File.absolute_path("/usr/share/doc/sonic-pi")
+     end
+ 
+     def cheatsheets_path
+@@ -276,7 +276,7 @@
+     end
+ 
+     def tmp_path
+-      File.absolute_path("#{root_path}/tmp")
++      File.absolute_path("/tmp")
+     end
+ 
+     def synthdef_path
+@@ -292,19 +292,20 @@
+     end
+ 
+     def app_path
+-      File.absolute_path("#{root_path}/app")
++      File.absolute_path("/usr/lib/sonic-pi")
+     end
+ 
+     def html_public_path
+-      File.absolute_path("#{app_path}/gui/html/public")
++      File.absolute_path("#{doc_path}/gui/html/public")
+     end
+ 
++    # this path is only relevant during build time
+     def qt_gui_path
+       File.absolute_path("#{app_path}/gui/qt")
+     end
+ 
+     def examples_path
+-      File.absolute_path("#{etc_path}/examples")
++      File.absolute_path("#{doc_path}/examples")
+     end
+ 
+     def server_path
+@@ -312,7 +313,7 @@
+     end
+ 
+     def server_bin_path
+-      File.absolute_path("#{server_path}/ruby/bin")
++      File.absolute_path("#{server_path}/bin")
+     end
+ 
+     def native_path
+@@ -320,15 +321,15 @@
+     end
+ 
+     def sox_path
+-      File.join(native_path, "sox", __exe_fix("sox"))
++      File.absolute_path("/usr/bin/sox")
+     end
+ 
+     def osmid_o2m_path
+-      File.join(native_path, "osmid", __exe_fix("o2m"))
++      File.absolute_path("/usr/bin/o2m")
+     end
+ 
+     def osmid_m2o_path
+-      File.join(native_path, "osmid", __exe_fix("m2o"))
++      File.absolute_path("/usr/bin/m2o")
+     end
+ 
+     def scsynth_log_path
+@@ -373,7 +374,7 @@
+     end
+ 
+     def erlang_server_path
+-      File.join(server_path, "erlang")
++      File.absolute_path("/usr/lib/sonic-pi")
+     end
+ 
+     def user_settings_path
+diff -ruN a/app/server/ruby/util.rb d/app/server/ruby/util.rb
+--- a/app/server/ruby/util.rb	2020-02-25 01:23:45.000000000 +0100
++++ d/app/server/ruby/util.rb	2020-03-08 21:43:42.229538721 +0100
+@@ -12,15 +12,15 @@
+ #++
+ 
+ def sp_sonic_pi_path()
+-  File.absolute_path("#{File.dirname(__FILE__)}/../../")
++  File.absolute_path("#{File.dirname(__FILE__)}/..")
+ end
+ 
+ def sp_scripts_path()
+-  File.absolute_path("#{sp_sonic_pi_path}/app/scripts")
++  File.absolute_path("#{sp_sonic_pi_path}/scripts")
+ end
+ 
+ def sp_synthdefs_path()
+-  File.absolute_path("#{sp_sonic_pi_path}/app/etc/synthdefs/compiled")
++  File.absolute_path("#{sp_sonic_pi_path}/synthdefs/compiled")
+ end
+ 
+ def spider_log(message)

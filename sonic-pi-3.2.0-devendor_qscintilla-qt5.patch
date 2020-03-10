@@ -1,0 +1,23 @@
+diff -ruN a/app/gui/qt/CMakeLists.txt c/app/gui/qt/CMakeLists.txt
+--- a/app/gui/qt/CMakeLists.txt	2020-02-25 01:23:45.000000000 +0100
++++ c/app/gui/qt/CMakeLists.txt	2020-03-08 16:54:34.158555996 +0100
+@@ -38,9 +38,7 @@
+ 
+ find_package(Qt5 COMPONENTS Core Widgets Gui Concurrent Network OpenGL PrintSupport Xml Svg REQUIRED)
+ find_package(Threads REQUIRED)
+-
+-# We build scintilla as part of the main project to make it easy to debug/fix
+-add_subdirectory(external/QScintilla-2.11.4)
++find_library(QSCINTILLA_QT5 qscintilla2_qt5)
+ 
+ set(APP_NAME sonic-pi)
+ 
+@@ -129,7 +127,7 @@
+ 
+ target_link_libraries(${APP_NAME}
+     PRIVATE
+-    QScintilla
++    ${QSCINTILLA_QT5}
+     Qt5::Core 
+     Qt5::Gui 
+     Qt5::Widgets
