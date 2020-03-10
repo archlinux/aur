@@ -1,6 +1,6 @@
 pkgbase = python-spotpris2
 	pkgdesc = Control Spotify Connect devices using MPRIS2
-	pkgver = 0.3.1
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/freundTech/SpotPRIS2
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = python-spotpris2
 	depends = python-appdirs
 	depends = python-gobject
 	depends = glib2
-	source = https://github.com/freundTech/SpotPRIS2/archive/v0.3.1.tar.gz
-	sha256sums = 53fe40789ca649472874df35b27b915ba8ec89dde80609e98293e7d3ed2b4eb9
+	source = https://github.com/freundTech/SpotPRIS2/archive/v0.4.1.tar.gz
+	sha256sums = c2d621c28404a28067e119c79ca38b1a4afb174f3ff432243eff36406c475f5f
 
 pkgname = python-spotpris2
 
