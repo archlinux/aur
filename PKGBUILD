@@ -4,7 +4,7 @@
 buildarch=4
 
 pkgname=uboot-imx53qsb
-pkgver=2019.10
+pkgver=2020.01
 pkgrel=1
 pkgdesc="U-Boot for i.MX53 Quick Start Board"
 arch=('armv7h')
@@ -17,7 +17,7 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
         '0001-arch-linux-arm-modifications.patch'
         'boot.txt'
         'mkscr')
-md5sums=('216b68925ab4cf3af6a2e3aeb2c47a58'
+md5sums=('b6b2e0787b6874e6b57da0a065a84f5a'
          '5451faf0c9c1039d6ab3e66bd47c0ca2'
          '23a08cb6a356d5dc7ddaf124ebb5a5d7'
          '021623a04afd29ac3f368977140cfbfd')
