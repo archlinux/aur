@@ -2,7 +2,7 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 # shellcheck disable=SC2034,SC2154 # unused/uninitialized variables.
 # shellcheck disable=SC2191
-((TRAVIS)) && DISABLE_PYTHON=1
+[[ -v TRAVIS ]] && DISABLE_PYTHON=1
 
 # Configuration.
 _ver="v19.11" #switch to last blender supported version, latest is "v20.02"
