@@ -1,4 +1,9 @@
+#!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
+# shellcheck disable=SC2034,SC2154 # unused/uninitialized variables.
+# shellcheck disable=SC2164 # unsafe cd.
+# shellcheck disable=SC2191 # unsafe array asignment.
+
 ####to disable cuda kernel comment out this line
 _BUILD_CUDA="on"
 
@@ -6,7 +11,7 @@ name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 fragment="#branch=dev"
 pkgname=${name}-git
-pkgver=3.6.dev.3.r6.g9012bb0
+pkgver=3.6.dev.3.r22.gad7bd93
 pkgrel=1
 pkgdesc="COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
@@ -14,7 +19,7 @@ url="https://colmap.github.io/"
 license=('GPL')
 groups=()
 depends=('cgal' 'ceres-solver' 'gflags' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base')
-makedepends=('boost' 'git' 'cmake' 'eigen' )
+makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "on" ] ; then 
   makedepends+=('cuda-sdk')
   optdepends=('cuda-toolkit: for cuda sfm/mvs acceleration')
@@ -34,45 +39,49 @@ sha256sums=('SKIP'
             'fb60f7ba8081ee5c278f03c62329a374d1b24136b374a49393b453db1529a8c6')
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git -C "$pkgname" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${srcdir}/${pkgname}
-  git apply ${srcdir}/*.patch
+  git -C "$pkgname" apply -v "$srcdir"/*.patch
+  mkdir -p build
 }
 
 
 build() {
-  cd ${srcdir}
-
   export CFLAGS=${CFLAGS/-fno-plt/}
   export CXXFLAGS=${CFLAGS/-fno-plt/}
 
   # determine whether we can precompile CUDA kernels
-    _CUDA_PKG=`pacman -Qsq cuda 2>/dev/null` || true
-    if [ -n "$_CUDA_PKG" -a "$_BUILD_CUDA"=="on" ]; then
-      _EXTRAOPTS="-DCUDA_ENABLED=ON -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda"
+    _CUDA_PKG=$(pacman -Qsq cuda 2>/dev/null) || true
+    if [[ -n "$_CUDA_PKG" && "$_BUILD_CUDA" == "on" ]]; then
+      _CMAKE_FLAGS+=( -DCUDA_ENABLED=ON
+                      -DCUDA_HOST_COMPILER=/opt/cuda/bin/gcc
+                      -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda )
     else
-      _EXTRAOPTS="-DCUDA_ENABLED=OFF"
+      _CMAKE_FLAGS+=( -DCUDA_ENABLED=OFF )
     fi
 
-  mkdir -p build
-  cd build
-  cmake -DTESTS_ENABLED=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ${_EXTRAOPTS} ../${pkgname}
-  make
+  _CMAKE_FLAGS+=( -DTESTS_ENABLED=OFF
+                  -DCMAKE_BUILD_TYPE=Release
+                  -DCMAKE_INSTALL_PREFIX=/usr )
+  cmake "${_CMAKE_FLAGS[@]}" -G Ninja -S "$pkgname" -B build
+# shellcheck disable=SC2086 # allow MAKEFLAGS to carry multiple flags.
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
 
 package() {
-  cd ${srcdir}/build
-  make DESTDIR=${pkgdir} install
+  DESTDIR="${pkgdir}" ninja -C build install
+
+# build manpage
+  make -C "${pkgname}/doc" man BUILDDIR="$PWD" && \
+  install -Dm644 man/colmap.1 -t "${pkgdir}/usr/share/man/man1"
 
   # install vocabulary trees for sequential,vocabulary matching
-  install -d -m755 ${pkgdir}/usr/share/${name}
-  for vocab_tree in ${srcdir}/vocabulary-tree-*.bin ; do
-    install -m644 ${vocab_tree} ${pkgdir}/usr/share/${name}/${vocab_tree##*/}
+  install -d -m755 "${pkgdir}/usr/share/${name}"
+  for vocab_tree in "${srcdir}"/vocabulary-tree-*.bin ; do
+    install -m644 "${vocab_tree}" "${pkgdir}/usr/share/${name}/${vocab_tree##*/}"
   done
 }
 # vim:set ts=2 sw=2 et:
