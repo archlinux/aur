@@ -1,11 +1,11 @@
 # Maintainer: Yuki Takagi <takagiy.4dev@gmail.com>
 pkgname=utfcpp-git
 pkgver=3.1.r13.dc2442c
-pkgrel=2
+pkgrel=3
 pkgdesc="UTF-8 with C++ in a Portable Way"
 arch=('any')
 url="https://github.com/nemtrif/utfcpp"
-license=('BSL-1.0')
+license=('Boost')
 depends=()
 makedepends=('git' 'cmake')
 provides=('utfcpp')
