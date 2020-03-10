@@ -1,8 +1,8 @@
 # Maintainer: Can Celasun <can[at]dcc[dot]im>
 
 pkgname=basemark
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Basemark GPU - Graphics performance evaluation tool"
 arch=('x86_64')
 url="https://www.basemark.com/products/basemark-gpu/"
@@ -11,7 +11,7 @@ depends=("libxinerama" "libxi" "xdg-utils" "hicolor-icon-theme" "freetype2" "lib
 optdepends=("vulkan-icd-loader")
 source=(https://cdn.downloads.basemark.com/BasemarkGPU-linux-${pkgver}.tar.gz
         ${pkgname} ${pkgname}.desktop ${pkgname}.png license.txt)
-sha256sums=('4c6267b53a30845ec89b8d658c55a7f9b2238486b96197f66eaed4b73ee3bd33'
+sha256sums=('50f4031b028b4d403526e0be6a26cb5f83dd4c6dbd3bb274f7128aeac22df473'
             'e45b53aec5d376cc2b26af49f640242251300a3b354661851c49094c520b3265'
             '99b4e6df0c45fd3ed71bd38c7de041d08bab45daf1e8cee183ccc070ae4b686f'
             '0f49324d4e1c761d1ef92e350a1ca667262659ecf98909c8b1d902f67dbad72b'
@@ -19,7 +19,7 @@ sha256sums=('4c6267b53a30845ec89b8d658c55a7f9b2238486b96197f66eaed4b73ee3bd33'
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  mv "${srcdir}/BasemarkGPU-linux-Free/"* "${pkgdir}/opt/${pkgname}"
+  mv "${srcdir}/basemarkgpu-${pkgver}/"* "${pkgdir}/opt/${pkgname}"
 
   chmod +x "${pkgdir}/opt/${pkgname}/basemarkgpu"
 
