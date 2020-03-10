@@ -1,27 +1,27 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=liri-calculator
-pkgver=1.1.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="More than a simple cross-platform Material Design calculator"
 arch=("x86_64")
 url="https://github.com/lirios/calculator"
 license=("GPL")
 depends=('fluid')
-makedepends=('liri-qbs-shared')
+makedepends=('liri-cmake-shared' 'qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lirios/calculator/archive/v$pkgver.tar.gz")
-sha512sums=('26f45a1aebb2f83e8e1db17b0cdb8fad4d470b3db4cbcd20406cdd541c2e15b6556d95a0de9a63607180398ac59a9d0b4a85a8c9ca25f468dc109580f19e87be')
+sha512sums=('9b5a28a5b95894983027bac8feda3359b29cf5fda96722b586c550210b6bab4ea15bfd5146c8be12d88807d3b08bf2de6e1178c1b27fa6d9e4aa905d0e8646ef')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd calculator-$pkgver
-  qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-  qbs setup-qt /usr/bin/qmake-qt5 qt5
-  qbs config procalculator.qt5.baseProfile gcc
-  qbs build --no-install -d build profile:qt5 modules.lirideployment.prefix:/usr \
-                                              modules.lirideployment.qmlDir:/usr/lib/qt/qml
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ../calculator-$pkgver
 }
 
 package() {
-  cd calculator-$pkgver
-  qbs install -d build --no-build -v --install-root "$pkgdir" profile:qt5
+  cd build
+  make DESTDIR="$pkgdir" install
 }
