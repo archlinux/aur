@@ -3,7 +3,7 @@
 pkgname=pulumi
 pkgver=1.11.1
 pkgrel=1
-pkgdesc='Pulumi - Modern Infrastructure as Code'
+pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')

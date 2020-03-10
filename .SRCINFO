@@ -1,5 +1,5 @@
 pkgbase = pulumi
-	pkgdesc = Pulumi - Modern Infrastructure as Code
+	pkgdesc = Modern Infrastructure as Code
 	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://github.com/pulumi/pulumi
