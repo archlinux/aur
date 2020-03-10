@@ -1,7 +1,7 @@
 pkgbase = opensnitch-git
 	pkgdesc = A GNU/Linux port of the Little Snitch application firewall.
 	pkgver = 1.0.0rc6.r0.27778c1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gustavo-iniguez-goya/opensnitch
 	install = opensnitch.install
 	arch = i686
@@ -20,7 +20,6 @@ pkgbase = opensnitch-git
 	depends = python-unicode-slugify
 	depends = python-pyqt5
 	depends = python-configparser
-	depends = logrotate
 	optdepends = logrotate: for logfile rotation support
 	provides = opensnitch
 	conflicts = opensnitch

@@ -4,7 +4,7 @@
 
 pkgname=opensnitch-git
 pkgver=1.0.0rc6.r0.27778c1
-pkgrel=4
+pkgrel=5
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall."
 arch=('i686' 'x86_64')
 url="https://github.com/gustavo-iniguez-goya/opensnitch"
@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('git' 'dep' 'go-pie' 'python-setuptools' 'python-grpcio-tools')
 depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
          'python-pyinotify' 'python-unicode-slugify' 'python-pyqt5'
-         'python-configparser' 'logrotate')
+         'python-configparser')
 optdepends=('logrotate: for logfile rotation support')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
