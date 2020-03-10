@@ -2,7 +2,7 @@
 # Maintainer: BlackEagle < ike DOT devolder AT gmail DOT com >
 
 pkgname=opera-beta-ffmpeg-codecs
-pkgver=80.0.3987.100
+pkgver=81.0.4044.17
 pkgrel=1
 pkgdesc="additional support for proprietary codecs for opera-beta"
 arch=('x86_64')
@@ -17,13 +17,13 @@ options=('!strip')
 source=(
   "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz"
 )
-sha512sums=('b8612693158f9a497723391ed80dd06b152ed71b29e2722a751f94b297e184f09f786405d2c5b460aff6f62c9c6292c673b36019ff72f1fb662cc418cc26127d')
+sha512sums=('bbcfddd5d44dfa940d40846dc66daaf394f079cd3d238ec57889c0b4cf137f7d4245873fba3e4fb9797f145084ca92d75b594f5d9653103b554d34154a1d3e61')
 
 prepare() {
   cd "$srcdir/chromium-$pkgver"
 
   # Use Python 2
-  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i
+  find -name '*.py' | xargs sed -e 's|env python|&2|g' -e 's|bin/python|&2|g' -i || true
 
   # force some 'older' binaries in the path
   [[ -d "$srcdir/path" ]] && rm -rf "$srcdir/path"
