@@ -1,6 +1,6 @@
 pkgbase = python-py_cui
 	pkgdesc = Python library for creating all-ascii CUI/TUI interfaces with pre-built widgets
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/jwlodek/py_cui
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-py_cui
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python>=3.2
-	source = python-py_cui-0.0.2-1.tar.gz::https://github.com/jwlodek/py_cui/archive/v0.0.2.tar.gz
-	sha256sums = 0cc9f8b620c04df483234f45b7184670835a7e707374bf5c96b6701b20d66dab
+	source = python-py_cui-0.0.3-1.tar.gz::https://github.com/jwlodek/py_cui/archive/v0.0.3.tar.gz
+	sha256sums = 1146f5e2facec3413490c1630d8b229d1fc5bff111402f5030f41963c063622c
 
 pkgname = python-py_cui
