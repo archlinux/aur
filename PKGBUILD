@@ -3,14 +3,14 @@
 
 pkgname=otf-libertinus
 _pkgname="${pkgname#*-}"
-pkgver=6.10
-pkgrel=3
+pkgver=6.11
+pkgrel=1
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
 license=('OFL')
 url="https://github.com/alif-type/$_pkgname"
-source=("https://github.com/alif-type/$_pkgname/releases/download/v$pkgver/$_pkgname-$pkgver.zip")
-sha256sums=('54cd1eedb95c67a4679a00ad2e2144c82395fc39cbcbf0ca88ea6dd1da4d5498')
+source=("$url/releases/download/v$pkgver/$_pkgname-$pkgver.zip")
+sha256sums=('e15bc12f64aaed74dc1762cbeb9c9cecf3ee0a3265e4816f1c36feb926043266')
 
 package() {
 	cd "${_pkgname^}-$pkgver"
