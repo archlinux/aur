@@ -5,7 +5,7 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
@@ -19,11 +19,19 @@ optdepends=('python-h5py:  HDF5 support'
             'python-iminuit: improved fitting'
             'python-astropy: VO table import and FITS import'
             'ghostscript: for EPS/PS output')
-source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz")
-sha256sums=('c2e2c1bd6891c21fc05484f3b87db52274378e9bf8d4cfa44ea689e56b22f77e')
+       # patch from https://github.com/veusz/veusz/issues/307
+source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz"
+        "veusz-${pkgver}-sip_dir.patch")
+sha256sums=('67d4adcc83b33098f4740ac036e54b3078c596b67363b674ef167ac3a812b018'
+            '526cf71bfa70e4a400e46054cb0e73254b45d1b930c36c5c2afd2cf8e0c59938')
+
+prepare() {
+  patch -Np1 -i "veusz-${pkgver}-sip_dir.patch"
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
+  python setup.py build_ext --sip-dir=/usr/lib/python3.8/site-packages/PyQt5/bindings/
   python setup.py build
 }
 
@@ -38,3 +46,4 @@ package() {
   install -D -m644 "support/veusz.desktop" \
       "${pkgdir}/usr/share/applications/veusz.desktop"
 }
+
