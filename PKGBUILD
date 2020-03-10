@@ -9,7 +9,6 @@ _opt_features=(
 
   #dvd
   #cd
-  #smb
   #sdl2
 
   # Lua is automatically detected, so you don't need to enable these if you
@@ -45,7 +44,7 @@ _opt_features=(
 
 pkgname=mpv-git
 _gitname=mpv
-pkgver=0.30.0_102_g8a0929973d
+pkgver=0.32.0_241_gc05e5d9d78
 pkgrel=1
 _waf_version=2.0.9
 pkgdesc='Video player based on MPlayer/mplayer2 (git version)'
@@ -78,10 +77,6 @@ for feature in "${_opt_features[@]}"; do
     cd)
       depends+=('libcdio-paranoia')
       _opt_extra_flags+=('--enable-cdda')
-      ;;
-    smb)
-      depends+=('smbclient')
-      _opt_extra_flags+=('--enable-libsmbclient')
       ;;
     sdl2)
       depends+=("$feature")
