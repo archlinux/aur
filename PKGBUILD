@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-geopandas
 _pkgname=geopandas
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Geographic pandas extension"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-fiona' 'python-numpy' 'python-pandas' 'python-pyproj' 
 optdepends=('python-descartes' 'python-geopy' 'python-psycopg2')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/geopandas/geopandas/archive/v$pkgver.tar.gz")
-sha256sums=('2097f9661b8f04ce49592dcb523a861829c1bd6ad747454355c93cc341cd366b')
+sha256sums=('7a59954a66b7ab6bf7ff84ee4bed712183286d54d2008a02b0b757ec248e0c75')
 
 check() {
     cd "$srcdir/$_pkgname-$pkgver"
