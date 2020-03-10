@@ -2,7 +2,7 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r506.5bbdd02
+pkgver=r639.4038f9d
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('xcb-util-image' 'xcb-util-xrm' 'pam' 'libev' 'cairo' 'libxkbcommon-x11
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
 makedepends=('git')
-source=("git+https://github.com/PandorasFox/$_gitname.git")
+source=("git+https://github.com/Raymo111/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
