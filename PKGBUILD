@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=pkgoutofdate-git
-pkgver=r11.8725288
+pkgver=r15.068d899
 pkgrel=1
 pkgdesc='Checks whether Arch packages are out-of-date'
 arch=(any)
@@ -9,7 +9,6 @@ url='https://github.com/anatol/pkgoutofdate'
 license=(GPL3)
 depends=(ruby)
 makedepends=(git)
-optdepends=('abs: If you want to check ABS packages')
 source=(git://github.com/anatol/pkgoutofdate)
 sha1sums=('SKIP')
 
@@ -21,7 +20,7 @@ pkgver() {
 
 prepare() {
   cd pkgoutofdate
-  sed -i 's|./parse_pkgbuild.sh|/usr/share/pkgoutofdate/parse_pkgbuild.sh|' pkgoutofdate.rb
+  sed -i 's|#{CURRENT_DIR}/parse_pkgbuild.sh|/usr/share/pkgoutofdate/parse_pkgbuild.sh|' pkgoutofdate.rb
 }
 
 package() {
