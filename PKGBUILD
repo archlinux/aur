@@ -1,12 +1,12 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-pytss-git
-pkgver=r13.7bcd808
+pkgver=0.0.4.r0.21bac4c
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
-depends=('python-setuptools' 'tpm2-tss-git')
+depends=('python-setuptools' 'tpm2-tss')
 makedepends=('git' 'swig')
 checkdepends=('ibm-sw-tpm2')
 provides=("${pkgname%-git}")
@@ -16,7 +16,7 @@ sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -38,6 +38,6 @@ check() {
 
 package() {
 	cd "${pkgname%-git}"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python setup.py install --root="$pkgdir" --optimize=1
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
