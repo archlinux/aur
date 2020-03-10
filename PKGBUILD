@@ -10,7 +10,7 @@ url="https://espanso.org/"
 license=("GPL3")
 depends=("xdotool" "xclip" "libxtst" "libnotify")
 makedepends=("rust" "git" "cmake")
-install="${pkgname}.install" 
+install="${pkgname}.install"
 source=("${_pkgname}::git+https://github.com/federico-terzi/espanso.git#tag=v${pkgver}")
 sha512sums=('SKIP')
 
