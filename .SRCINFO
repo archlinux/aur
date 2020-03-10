@@ -1,6 +1,6 @@
 pkgbase = pict-git
 	pkgdesc = Tool for pairwise automation: Pairwise Independent Combinatorial Testing
-	pkgver = 56.b740910
+	pkgver = 61.096352f
 	pkgrel = 1
 	url = https://github.com/Microsoft/pict
 	arch = x86_64
