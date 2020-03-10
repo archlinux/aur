@@ -1,0 +1,35 @@
+pkgbase = gnome-documents-git
+	pkgdesc = A document manager application for GNOME
+	pkgver = 3.34.0+7+g1baebf09
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Documents
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	makedepends = inkscape
+	depends = evince
+	depends = gjs
+	depends = gtk3
+	depends = gnome-desktop
+	depends = gnome-online-accounts
+	depends = libgdata
+	depends = tracker-miners
+	depends = libzapojit
+	depends = webkit2gtk
+	depends = gnome-online-miners
+	depends = librsvg
+	depends = libgepub
+	depends = gnome-epub-thumbnailer
+	optdepends = libreoffice-fresh: Support for Libreoffice document types
+	provides = gnome-documents
+	conflicts = gnome-documents
+	source = git+https://gitlab.gnome.org/GNOME/gnome-documents.git
+	source = git+https://gitlab.gnome.org/GNOME/libgd.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = gnome-documents-git
+
