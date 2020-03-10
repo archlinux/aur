@@ -11,6 +11,8 @@ url="https://github.com/nikoksr/proji"
 license=("custom:MIT")
 depends=("glibc")
 makedepends=("go-pie" "golang-golang-x-sys" "golang-golang-x-text" "golang-github-stretchr-testify" "git")
+provides=($_pkgname)
+conflicts=($_pkgname)
 install="${pkgname}.install"
 source=("${_pkgname}::git+https://github.com/nikoksr/proji.git#tag=v${pkgver}")
 sha512sums=('SKIP')

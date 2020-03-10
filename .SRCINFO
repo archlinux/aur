@@ -12,6 +12,8 @@ pkgbase = proji
 	makedepends = golang-github-stretchr-testify
 	makedepends = git
 	depends = glibc
+	provides = proji
+	conflicts = proji
 	source = proji::git+https://github.com/nikoksr/proji.git#tag=v0.19.2
 	sha512sums = SKIP
 
