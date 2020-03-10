@@ -1,31 +1,42 @@
-# Maintainer: David Parrish <daveparrish@tutanota.com>
+# Maintainer: Luis Aranguren <pizzaman@hotmail.com>
+# Contributor: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bitcoin-gold-git
 _gitname=BTCGPU
-pkgver=0.15.0.2
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A peer-to-peer network based digital currency. This package provides bitcoin-gold-core binaries: bgoldd, bgold-qt, bgold-tx, and bgold-cli"
 arch=('any')
 url="https://bitcoingold.org/"
 license=('MIT')
-depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf')
-makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automoc4' 'automake' 'autoconf' 'libtool' 'libsodium')
+depends=('gcc-libs' 'miniupnpc' 'openssl' 'db4.8' 'protobuf' 'libb2')
+makedepends=('qt5-base' 'qt5-tools' 'pkg-config' 'git' 'boost-libs' 'boost' 'gcc' 'qrencode' 'make' 'automake' 'autoconf' 'libtool' 'libsodium')
 provides=('bgold' 'bgold-qt' 'bgoldd' 'bgold-tx' 'bgold-cli')
 
 # Use the 0.15 branch because master is the staging branch according to h4x3rotab on Slack channel.
-source=('git://github.com/BTCGPU/BTCGPU.git#branch=0.15')
-sha256sums=('SKIP')
+source=('git://github.com/BTCGPU/BTCGPU.git#branch=0.17'
+        'deque.patch')
+sha256sums=('SKIP'
+            '45e0f557f46ba5769e3aaaf91599b8190e5844bba65a3a83b40e3a8cf411b62d')
 
 pkgver() {
   cd "$srcdir/$_gitname"
   git describe --tags $(git rev-list --tags --max-count=1) | sed "s/-/./g;s/^v//g"
 }
 
+prepare() {
+  cd "$srcdir/$_gitname"
+ #deque patch 2020-02-12
+ #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
+ #will delete when upstream fixes/commits this.
+  patch --forward --strip=1 --input="../../deque.patch"
+}
+
 build() {
   cd "$srcdir/$_gitname"
   ./autogen.sh
   ./configure --with-gui=qt5
-   make -j$(nproc)
+   make
 }
 
 package() {
