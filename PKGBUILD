@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=windowmaker-crm-git
-pkgver=0.95.8.r99.g4477ae4d
+pkgver=0.95.8.r109.ge82d8681
 pkgrel=1
 pkgdesc="An X11 window manager with a NEXTSTEP look and feel"
 arch=('i686' 'x86_64')
@@ -45,6 +45,8 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc --enable-xinerama \
     --localedir=/usr/share/locale --with-gnustepdir=/usr/lib/GNUstep \
     --enable-usermenu --enable-modelock --enable-randr
+  # Fight unused direct deps
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
   make V=0
 }
 
