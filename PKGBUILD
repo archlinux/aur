@@ -10,7 +10,7 @@ url='https://git.sr.ht/~rumpelsepp/myip'
 license=('GPL')
 makedepends=('go-pie')
 source=("$_pkgname-v$pkgver.tar.gz::https://git.sr.ht/~rumpelsepp/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('04d634d1458411553593b51e9ed36fcd4fb0483239114d801f0377192b60eef8')
+sha256sums=('3872c5ed83ca534a57102a3439fff62d99596cbb180262ec5d7bc3fa02fc581e')
 
 build() {
     cd "$srcdir/$_pkgname-v$pkgver"
