@@ -1,4 +1,4 @@
-From 16c34ccad8d99ded933daa3d0875369e5b9459bf Mon Sep 17 00:00:00 2001
+From 586c5c40f592f5fe650494a3946e42195881fd40 Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -74,10 +74,10 @@ index 78d24bb5..d482ceb5 100644
          g_timer_stop (timer);
  
 diff --git a/glib/poppler-page.cc b/glib/poppler-page.cc
-index 319edc50..71752304 100644
+index 322f2d48..9218e90d 100644
 --- a/glib/poppler-page.cc
 +++ b/glib/poppler-page.cc
-@@ -2438,3 +2438,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
+@@ -2495,3 +2495,13 @@ poppler_page_get_text_attributes_for_area (PopplerPage      *page,
  
    return g_list_reverse(attributes);
  }
@@ -257,10 +257,10 @@ index e8ff605f..f615d789 100644
  
    void drawForm(Object *str, Dict *resDict, const double *matrix, const double *bbox,
 diff --git a/poppler/Page.cc b/poppler/Page.cc
-index 87621ca2..87039190 100644
+index 024fe3da..fb3b9459 100644
 --- a/poppler/Page.cc
 +++ b/poppler/Page.cc
-@@ -336,6 +336,19 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
+@@ -337,6 +337,19 @@ Dict *Page::getResourceDictCopy(XRef *xrefA) {
    return dict ? dict->copy(xrefA) : nullptr;
  }
  
@@ -281,10 +281,10 @@ index 87621ca2..87039190 100644
    Dict *pageDict = pageObj.getDict()->copy(xrefA);
    xref = xrefA;
 diff --git a/poppler/Page.h b/poppler/Page.h
-index 01f056f9..d6547a79 100644
+index 3e4b341a..51f21928 100644
 --- a/poppler/Page.h
 +++ b/poppler/Page.h
-@@ -183,6 +183,9 @@ public:
+@@ -185,6 +185,9 @@ public:
    Object *getResourceDictObject();
    Dict *getResourceDictCopy(XRef *xrefA);
  
@@ -295,5 +295,5 @@ index 01f056f9..d6547a79 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.25.0
+2.25.1
 
