@@ -1,0 +1,17 @@
+pkgbase = cnijfilter-mx520series
+	pkgdesc = Canon InkJet printer driver (MX520 series, binary)
+	pkgver = 3.90
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/mx525.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	optdepends = gtk2: Canon maintenance GUI support
+	provides = cnijfilter-common=3.90
+	conflicts = cnijfilter-common
+	source = http://gdlp01.c-wss.com/gds/5/0100005155/01/cnijfilter-mx520series-3.90-1-deb.tar.gz
+	md5sums = a58da1834d275590193cd91b018053fa
+
+pkgname = cnijfilter-mx520series
+
