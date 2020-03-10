@@ -1,3 +1,4 @@
+# Maintainer: 5donuts <5donuts@protonmail.com>
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=ttf-mplus
