@@ -1,0 +1,16 @@
+pkgbase = scelta-git
+	pkgdesc = C++17 zero-overhead syntactic sugar for "variant" and "optional"
+	pkgver = 0.1.r44.a0f4f70
+	pkgrel = 1
+	url = https://github.com/SuperV1234/scelta
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = scelta
+	conflicts = scelta
+	source = scelta-git::git+https://github.com/SuperV1234/scelta.git
+	md5sums = SKIP
+
+pkgname = scelta-git
+
