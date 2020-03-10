@@ -34,7 +34,7 @@ build() {
 package() {
   cd "$srcdir/build"
 
-  make DESTDIR="$pkgdir"
+  make DESTDIR="$pkgdir" install
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/rocprim.conf"
