@@ -1,0 +1,18 @@
+pkgbase = zeroskip-git
+	pkgdesc = A key-value database library
+	pkgver = r354.1945d64
+	pkgrel = 1
+	url = https://github.com/cyrusimap/zeroskip
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = check
+	depends = zlib
+	depends = libutil-linux
+	provides = zeroskip=r354.1945d64
+	conflicts = zeroskip
+	source = git+https://github.com/cyrusimap/zeroskip.git
+	sha512sums = SKIP
+
+pkgname = zeroskip-git
+
