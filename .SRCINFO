@@ -1,14 +1,12 @@
 pkgbase = gnome-shell-extension-background-logo-git
 	pkgdesc = GNOME Shell extension to overlay a logo over the default background
-	pkgver = 3.32.0.r0.g26fce06
+	pkgver = 3.36.0
 	pkgrel = 1
 	url = https://pagure.io/background-logo-extension
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = autoconf
-	makedepends = make
-	makedepends = gnome-common
+	makedepends = meson
 	depends = gnome-shell
 	depends = gnome-backgrounds
 	depends = meson
