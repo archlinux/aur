@@ -93,9 +93,9 @@ sha256sums=('5e43f89ea85beaed40c91a74cdc29b4122ecb1aac84bed640f26286557d402ab'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
+export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
+export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
   cd $_srcname
