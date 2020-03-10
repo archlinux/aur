@@ -3,8 +3,8 @@ _target='compass-readonly'
 _edition=' Readonly'
 _pkgname="mongodb-$_target"
 pkgname="$_pkgname-git"
-pkgver='1.21.0.r3236.dd8caa98'
-pkgrel='2'
+pkgver='1.22.0.r3250.4083bce9'
+pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Readonly Edition - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://www.mongodb.com/products/compass'
@@ -112,7 +112,7 @@ StartupNotify=true
 Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
 EOF
 
-	install -Dm644 "$srcdir/$_sourcedirectory/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/icons/pixmaps/$_pkgname.png"
+	install -Dm644 "$srcdir/$_sourcedirectory/src/app/images/linux/mongodb-compass.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	for _license in 'LICENSE' 'LICENSES.chromium.html'; do
