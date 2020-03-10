@@ -2,7 +2,7 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 _pkgver=4.19.106
-_rtpatchver=44
+_rtpatchver=45
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
 pkgrel=1
@@ -31,7 +31,7 @@ validpgpkeys=(
 )
 sha256sums=('63c8bd76a9b282e18112f8ff9e3fd41e3d1df9f9b7248ea1a370b05a827e9cda'
             'SKIP'
-            'c722504f4f53958a4de67d824d88a8a956acd76cd885b3f7d92c23714041cb9d'
+            'fd91ed56a99009a45541a81e8d2d93780ac84b3ffa80a2d1615006d5e33be184'
             'SKIP'
             'd04025863fbdc54918e7df9061a4832e9b3a8533967c2e2c50b11e2736ae91b9'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
