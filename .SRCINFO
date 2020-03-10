@@ -1,0 +1,15 @@
+pkgbase = ellidri
+	pkgdesc = Your kawaii IRC server
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://git.sr.ht/~taiite/ellidri
+	arch = x86_64
+	license = ISC
+	makedepends = rust
+	makedepends = cargo
+	depends = openssl
+	source = ellidri-2.2.0.tar.gz::https://git.sr.ht/~taiite/ellidri/archive/2.2.0.tar.gz
+	sha512sums = 8f47717f216304fe61714f4e19c2c302ac80b7d1a694972d890c7fd5bcfcd6096ae3b8416898d28ac8c13855369a3e06fdf239a64e348fbc2ad8344fe2c70549
+
+pkgname = ellidri
+
