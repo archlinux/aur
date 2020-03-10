@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=tpm2-pytss-git
 pkgver=0.0.4.r0.21bac4c
-pkgrel=1
+pkgrel=2
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-pytss'
@@ -39,5 +39,6 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	python setup.py install --root="$pkgdir" --optimize=1
+	rm -r "$pkgdir"/usr/lib/python*/site-packages/tests
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
