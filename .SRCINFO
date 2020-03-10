@@ -1,0 +1,106 @@
+pkgbase = gvfs-git
+	pkgdesc = Virtual filesystem implementation for GIO
+	pkgver = 1.44.0+4+g15330448
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/gvfs
+	arch = x86_64
+	license = LGPL
+	makedepends = dbus
+	makedepends = libgphoto2
+	makedepends = libimobiledevice
+	makedepends = smbclient
+	makedepends = docbook-xsl
+	makedepends = gtk3
+	makedepends = libmtp
+	makedepends = gnome-online-accounts
+	makedepends = libnfs
+	makedepends = libgdata
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = python
+	makedepends = meson
+	makedepends = openssh
+	depends = avahi
+	depends = dconf
+	depends = fuse3
+	depends = libarchive
+	depends = libcdio-paranoia
+	depends = libsoup
+	depends = udisks2
+	depends = libsecret
+	depends = libbluray
+	depends = libgudev
+	depends = gcr
+	depends = psmisc
+	depends = gsettings-desktop-schemas>=3.34.0
+	source = git+https://gitlab.gnome.org/GNOME/gvfs.git
+	source = gvfsd.hook
+	sha512sums = SKIP
+	sha512sums = eb54f22e7d06f226160a2a8cac613f6e761d3f059f98e29c9cf49f0c2afa9126841338812000c402046e8373e56a01f958ecdd169161706a0e0dc09bc6112917
+
+pkgname = gvfs-git
+	optdepends = gvfs-afc: AFC (mobile devices) support
+	optdepends = gvfs-smb: SMB/CIFS (Windows client) support
+	optdepends = gvfs-gphoto2: gphoto2 (PTP camera/MTP media player) support
+	optdepends = gvfs-mtp: MTP device support
+	optdepends = gvfs-goa: gnome-online-accounts (e.g. OwnCloud) support
+	optdepends = gvfs-nfs: NFS support
+	optdepends = gvfs-google: Google Drive support
+	optdepends = gtk3: Recent files support
+	provides = gvfs
+	conflicts = gvfs
+	replaces = gvfs-obexftp
+	replaces = gvfs-afp
+	options = !emptydirs
+
+pkgname = gvfs-smb-git
+	pkgdesc = Virtual filesystem implementation for GIO (SMB/CIFS backend; Windows client)
+	depends = gvfs
+	depends = smbclient
+	provides = gvfs-smb
+	conflicts = gvfs-smb
+
+pkgname = gvfs-afc-git
+	pkgdesc = Virtual filesystem implementation for GIO (AFC backend; Apple mobile devices)
+	depends = gvfs
+	depends = libimobiledevice
+	depends = usbmuxd
+	provides = gvfs-afc
+	conflicts = gvfs-afc
+
+pkgname = gvfs-gphoto2-git
+	pkgdesc = Virtual filesystem implementation for GIO (gphoto2 backend; PTP camera, MTP media player)
+	depends = gvfs
+	depends = libgphoto2
+	provides = gvfs-gphoto2
+	conflicts = gvfs-gphoto2
+
+pkgname = gvfs-goa-git
+	pkgdesc = Virtual filesystem implementation for GIO (Gnome Online Accounts backend; cloud storage)
+	depends = gvfs
+	depends = gnome-online-accounts
+	provides = gvfs-goa
+	conflicts = gvfs-goa
+
+pkgname = gvfs-mtp-git
+	pkgdesc = Virtual filesystem implementation for GIO (MTP backend; Android, media player)
+	depends = gvfs
+	depends = libmtp
+	provides = gvfs-mtp
+	conflicts = gvfs-mtp
+
+pkgname = gvfs-nfs-git
+	pkgdesc = Virtual filesystem implementation for GIO (NFS backend)
+	install = gvfs-nfs.install
+	depends = gvfs
+	depends = libnfs
+	provides = gvfs-nfs
+	conflicts = gvfs-nfs
+
+pkgname = gvfs-google-git
+	pkgdesc = Virtual filesystem implementation for GIO (Google Drive backend)
+	depends = gvfs-goa
+	depends = libgdata
+	provides = gvfs-google
+	conflicts = gvfs-google
+
