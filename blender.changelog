@@ -9,7 +9,7 @@
 - Eevee: Blurred background [diff](https://developer.blender.org/D6895).
 - Physics: New hair collisions [diff](https://developer.blender.org/D6545)
 - Physics: Cloth self collisions improvement [diff](https://developer.blender.org/D6474).
-- Grease Pencil: New draw engine.
+- Grease Pencil: New draw engine [diff](https://developer.blender.org/D6293).
 - Render: Freestyle render pass.
 
 # Version 2.82 stable.
