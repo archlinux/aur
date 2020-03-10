@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reposurgeon
-pkgver=4.4
+pkgver=4.5
 pkgrel=1
 pkgdesc="Performs surgery on version control repositories."
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=('bitkeeper'
             'src'
             'subversion')
 source=("https://gitlab.com/esr/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('a84929b4f6b09423a35deb3890467810715e8f4f32fbbcdf675aa9f9d24fb071eed25feac4b5878414eaec9aa1a2e688e5e42ed1a132206a8c6f966a8a85fa28')
+sha512sums=('7a65db7e7674e52b123d5fc91e714d5d09a39b9f86831e91af9c2a6746f2fd242f072b81aaf19bb6a6c113d4b56609665abd65fd580eccfe2fc8481a1f4dc216')
 
 prepare() {
   cd "$pkgbase-$pkgver"
@@ -31,17 +31,15 @@ prepare() {
       patch -p1 -i "$patch"
     fi
   done
-
-  GOPATH="$srcdir/go" go get -d -u all
 }
 
 build() {
   cd "$pkgbase-$pkgver"
 
   if [ "$(go version | grep gccgo)" ]; then
-    make GOPATH="$srcdir/go" GOFLAGS=""
+    make GOFLAGS=""
   else
-    make GOPATH="$srcdir/go"
+    make
   fi
 }
 
@@ -49,9 +47,9 @@ package_reposurgeon() {
   cd "$pkgbase-$pkgver"
 
   if [ "$(go version | grep gccgo)" ]; then
-    make GOPATH="$srcdir/go" GOFLAGS="" DESTDIR="$pkgdir" prefix=/usr install
+    make GOFLAGS="" DESTDIR="$pkgdir" prefix=/usr install
   else
-    make GOPATH="$srcdir/go" DESTDIR="$pkgdir" prefix=/usr install
+    make DESTDIR="$pkgdir" prefix=/usr install
   fi
 
   install -dm755 "$pkgdir/usr/share/emacs/site-lisp"
