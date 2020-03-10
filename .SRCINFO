@@ -1,12 +1,12 @@
 pkgbase = storcli
 	pkgdesc = CLI program for LSI MegaRAID cards
-	pkgver = 007.1108.0000.0000
+	pkgver = 007.1211.0000.0000
 	pkgrel = 1
 	url = https://www.broadcom.com/
 	arch = any
 	license = custom
-	source = storcli-007.1108.0000.0000.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MR_SAS_Unified_StorCLI_007.1108.0000.0000.zip
-	sha512sums = 74c6dedef30e8c4a49a3167e2378cd196429d5c76c840696163faebe4726ca788bf0cab52b69676c5db319e9b76cb34e626684ae71bec5915ea0b663d6f4172b
+	source = storcli-007.1211.0000.0000.zip::https://docs.broadcom.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/007.1211.0000.0000_Unified_StorCLI.zip
+	sha512sums = f28ae41adf2286153ecd57f7d022940069356c9636e45aaae4ae45215487bbb8e3dea51fa4aa00b9e9340069036c1be21b186ce177e0fd0a6a0bb786cb58181f
 
 pkgname = storcli
 
