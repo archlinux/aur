@@ -5,13 +5,13 @@
 _pkgname="Shortwave"
 pkgname="shortwave"
 pkgver="0.0.3"
-pkgrel="1"
+pkgrel="2"
 epoch="1"
 pkgdesc="Find and listen to internet radio stations."
 arch=('any')
 url="https://gitlab.gnome.org/World/${_pkgname}"
 license=('GPL3')
-depends=('gstreamer' 'libhandy' 'libsoup' 'gtk3')
+depends=('gst-plugins-bad' 'libhandy' 'libsoup' 'gtk3')
 makedepends=('cargo' 'git' 'gobject-introspection' 'gst-plugins-base-libs' 'libdazzle' 'meson' 'rust')
 options=('!emptydirs')
 conflicts=("${pkgname}"-git)
