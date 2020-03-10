@@ -4,7 +4,7 @@
 pkgbase=python-cfgv
 pkgname=python-cfgv
 pypi_name=cfgv
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Validate configuration and produce human readable error messages."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 url="https://pypi.org/project/cfgv/"
 makedepends=('python' 'python-setuptools')
 source=("https://pypi.io/packages/source/c/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('25dfe5f7a55914666e0da155592cd92b')
+md5sums=('bb29b3a129e8a103630bd54fa1905b79')
 
 build() {
   cd "${srcdir}/${pypi_name}-${pkgver}"
