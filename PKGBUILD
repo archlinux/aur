@@ -3,15 +3,18 @@
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=v0.3.0.37.gbb44453
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=171956'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-mvsfunc-git'
-         'python-numpy'
          )
+optdepends=('python-numpy: For use muvsdunc_numpy'
+            'python-tensorflow: For use super_resolution function with TensorFlow as backend (muvsdunc_numpy)'
+            'mxnet: For use super_resolution function with MxNET as backend (muvsdunc_numpy)'
+            )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -27,13 +30,23 @@ pkgver() {
 
 package(){
   cd "${_plug}"
-  install -Dm644 "${_plug}.py" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
-  install -Dm644 "Collections/${_plug}_numpy.py" "${pkgdir}${_site_packages}/${_plug}_numpy.py"
-  python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}_numpy.py"
-  python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}_numpy.py"
+  _scripts=("${_plug}.py"
+            "Collections/${_plug}_numpy.py"
+            "Collections/${_plug}_misc.py"
+            "Collections/net_interp.py"
+            'Collections/resize.py'
+            'Collections/LUM.py'
+            'Collections/SuperRes.py'
+            )
+
+  for i in "${_scripts[@]}"; do
+    install -Dm644 "${i}" "${pkgdir}${_site_packages}/${i/Collections/}"
+    python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${i/Collections/}"
+    python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${i/Collections/}"
+  done
+
+  (cd Collections; for i in $(find examples -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/${i}"; done)
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
