@@ -1,41 +1,35 @@
-# Maintainer: whoami <whoami@systemli.org>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: whoami <whoami@systemli.org>
 # Contributor: Jefferson González <jgmdev@gmail.com>
 # Contributor: Chloe Kudryavtsev <toast@toastin.space>
 
 pkgname=vlang-git
-pkgver=r620.810e855
+pkgver=r3390.876b73f9
 pkgrel=1
-pkgdesc='Simple, fast, safe language created for developing maintainable software'
+pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
 url='https://vlang.io'
 license=('MIT')
-makedepends=('git')
-depends=('glibc')
-optdepends=('glfw' 'libfreetype.so' 'libcurl.so')
+makedepends=('git' 'gcc')
+optdepends=('glfw-x11: Needed for graphics support'
+			'freetype2: Needed for graphics support'
+			'openssl: Needed for http support')
 conflicts=('v' 'vlang')
-source=('git+https://github.com/vlang/v.git'
-        'git+https://github.com/vlang/vc.git')
-sha256sums=('SKIP' 'SKIP')
+source=('git+https://github.com/vlang/v')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd v
+    cd "${srcdir}/v"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cp vc/v.c v/
-}
-
 build() {
-    cd v
-    cc -std=gnu11 -w -o v v.c -lm
-    ./v -prod -o v compiler
-    # -fPIC -pie required for examples/hot_code_reloading
-    make CFLAGS+="-fPIC -pie" thirdparty
+    cd "${srcdir}/v"
+    make
 }
 
 package() {
-    cd v
+    cd "${srcdir}/v"
     install -d "$pkgdir/usr/lib/vlang" "$pkgdir/usr/share/vlang" "$pkgdir/usr/bin"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 v "$pkgdir/usr/lib/vlang"
