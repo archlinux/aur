@@ -1,11 +1,13 @@
 pkgbase = salome-meca-bin
 	pkgdesc = Integration of the Code_Aster solver in the Salome platform
 	pkgver = 2019.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.code-aster.org/spip.php?article303
 	arch = x86_64
 	license = LGPL
 	makedepends = python2
+	makedepends = tcl
+	makedepends = tk
 	depends = coreutils
 	depends = openblas
 	provides = salome-meca

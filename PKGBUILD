@@ -1,13 +1,17 @@
 # Maintainer of this PKBGUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=salome-meca-bin
 pkgver=2019.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Integration of the Code_Aster solver in the Salome platform'
 arch=('x86_64')
 url='https://www.code-aster.org/spip.php?article303'
 license=('LGPL')
 depends=('coreutils' 'openblas')
-makedepends=('python2')
+makedepends=(
+	'python2'
+	'tcl'
+	'tk'
+)
 optdepends=()
 provides=('salome-meca')
 source=("https://www.code-aster.org/FICHIERS/salome_meca-2019.0.3-1-universal.tgz")
@@ -25,6 +29,9 @@ prepare() {
 	./salome_meca-2019.0.3-1-universal.run &> /dev/null <<-EOF
 	${srcdir}/salome_meca
 	EOF
+
+	# do not set configuration variables with gconftool-2 during package creation
+	sed -i '5,10d' "${srcdir}/salome_meca/V${pkgver}_universal/salome_prerequisites_root.sh"
 }
 
 package() {
@@ -110,4 +117,8 @@ package() {
 	install -D -m644 \
 		"${srcdir}/salome_meca.desktop" \
 		"${pkgdir}/usr/share/applications/salome_meca.desktop"
+
+	# remove unnecessary installation script with refs to $srcdir
+	# to avoid namcap warning
+	rm "${pkgdir}/opt/salome_meca/${_pkgver}/modules/KERNEL_V9_3_0/bin/salome/virtual_salome.pyc"
 }
