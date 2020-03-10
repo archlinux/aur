@@ -1,11 +1,11 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=mpv-full-git
-pkgver=0.32.0.r110.g0df0a847f4
+pkgver=0.32.0.r241.gc05e5d9d78
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (git version with all possible libs)'
 arch=('x86_64')
-license=('GPL3')
+license=('GPL')
 url='https://mpv.io/'
 depends=(
     # official repositories:
@@ -13,8 +13,8 @@ depends=(
         'libxinerama' 'libxv' 'libxkbcommon' 'libva' 'wayland' 'libcaca'
         'desktop-file-utils' 'hicolor-icon-theme' 'xdg-utils' 'lua52' 'mujs'
         'libdvdnav' 'libxrandr' 'jack' 'rubberband' 'uchardet' 'libarchive'
-        'smbclient' 'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader'
-        'shaderc' 'libplacebo' 'zimg'
+        'zlib' 'vapoursynth' 'sndio' 'openal' 'vulkan-icd-loader' 'shaderc'
+        'libplacebo' 'zimg'
     # AUR:
         'rsound' 'spirv-cross'
 )
@@ -73,7 +73,6 @@ build() {
         '--disable-uwp'
         '--disable-win32-internal-pthreads'
         '--enable-iconv'
-        '--enable-libsmbclient'
         '--enable-lua'
         '--enable-javascript'
         '--enable-libass'
