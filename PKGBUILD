@@ -6,13 +6,13 @@ pkgver=r639.4038f9d
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
-url="https://github.com/PandorasFox/i3lock-color"
+url="https://github.com/Raymo111/i3lock-color"
 license=('MIT')
 depends=('xcb-util-image' 'xcb-util-xrm' 'pam' 'libev' 'cairo' 'libxkbcommon-x11' 'libjpeg-turbo')
 provides=('i3lock' 'i3lock-color')
 conflicts=('i3lock')
 makedepends=('git')
-source=("git+https://github.com/Raymo111/$_gitname.git")
+source=("git+https://github.com/raymo111/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
