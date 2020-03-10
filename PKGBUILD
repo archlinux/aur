@@ -19,13 +19,13 @@ pkgver=0.3.10
 pkgrel=7
 pkgdesc="Stream movies and TV shows from torrents (stable builds)"
 arch=('x86_64')
-url="https://popcorntime.sh"
+url="https://popcorntime.app"
 license=('GPL3')
 depends=('nss' 'ttf-font' 'libxss' 'gconf' 'gtk2' 'gtk3')
 provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-stable-bin')
 conflicts=('popcorntime')
 options=('!strip')
-source=("${_pkgname}.desktop" "https://get.popcorntime.sh/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
+source=("${_pkgname}.desktop" "https://get.popcorntime.app/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
 sha512sums=('7e6538a7b39465439a62cb089510b6d85a65ad4bfa74d21b692363d1176ee94165ab7b5fef5f3470bf821cfc9f3b3a23763b8e3d8530420d7fa97c66083c3adb'
             '0fe3c1be064231134eacfb0be74266361ba5d521f0cda2848cad5357fe03d6603284e80ed3bdacdf0a012b415949b9603ff3dcf95b03693e2f7704d500ee9516')
 
