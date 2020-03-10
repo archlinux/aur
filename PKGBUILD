@@ -3,7 +3,7 @@
 _gemname=solargraph
 pkgname=ruby-solargraph
 pkgver=0.38.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Ruby language server"
 arch=("any")
 depends=(
@@ -17,7 +17,7 @@ depends=(
   ruby-nokogiri
   ruby-mini_portile2
   ruby-parser
-  ruby-progressbar
+  ruby-ruby-progressbar
   ruby-reverse_markdown
   ruby-rubocop
   ruby-thor
