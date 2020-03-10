@@ -1,15 +1,14 @@
 pkgbase = r-testit
-	pkgdesc = Provides two convenience functions assert() and test_pkg() to facilitate testing R packages.
-	pkgver = 0.9
+	pkgdesc = A Simple Package for Testing R Packages
+	pkgver = 0.11
 	pkgrel = 1
 	url = https://cran.r-project.org/package=testit
-	arch = x86_64
-	license = GPL-2
-	license = GPL-3
+	arch = any
+	license = GPL3
 	depends = r
 	optdepends = r-rstudioapi
-	source = https://cran.r-project.org/src/contrib/Archive/testit/testit_0.9.tar.gz
-	md5sums = e19c52232a32060e86d8bef6f76b7d79
+	source = https://cran.r-project.org/src/contrib/testit_0.11.tar.gz
+	md5sums = 1b6fc5492bc69de5f7832c735d5132fd
 
 pkgname = r-testit
 

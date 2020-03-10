@@ -1,25 +1,30 @@
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Kibouo <csonka.mihaly@hotmail.com>
 # Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=testit
-_cranver=0.9
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-testit
+_cranver=0.11
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc='Provides two convenience functions assert() and test_pkg() to facilitate testing R packages.'
-arch=('x86_64')
+pkgdesc="A Simple Package for Testing R Packages"
+arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('GPL-2' 'GPL-3')
-depends=('r')
-optdepends=('r-rstudioapi')
-source=("https://cran.r-project.org/src/contrib/Archive/${_cranname}/${_pkgtar}")
-md5sums=('e19c52232a32060e86d8bef6f76b7d79')
+license=(GPL3)
+depends=(r)
+optdepends=(r-rstudioapi)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('1b6fc5492bc69de5f7832c735d5132fd')
 
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+build() {
+  cd "${srcdir}"
+
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
+  cd "${srcdir}"
+
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
-        
