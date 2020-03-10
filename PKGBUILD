@@ -12,13 +12,13 @@
 ##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 38
+## Valid numbers between: 0 to 42
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 38 => native
+## Good option if your package is for one machine: 42 => native
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=38
+  _microarchitecture=42
 fi
-##
+
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
@@ -26,7 +26,7 @@ fi
 if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
-##
+
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
@@ -34,21 +34,20 @@ fi
 if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
-##
+
 ## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
 ## Set variable "use_pds" to: n to disable (stock Xanmod)
 ##                            y to enable
 if [ -z ${use_pds+x} ]; then
   use_pds=n
 fi
-##
+
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
 ## Set variable "use_ns" to: n to disable (stock Xanmod)
 ##                           y to enable (stock Archlinux)
 if [ -z ${use_ns+x} ]; then
   use_ns=n
 fi
-##
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -64,12 +63,13 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgbase=linux-xanmod-rt-mnative
-pkgver=5.4.17
-xanmod=9
-pkgrel=1
-_rev=
 pkgdesc='Linux Xanmod real-time version optimized for your real architecture'
+pkgbase=linux-xanmod-rt-mnative
+pkgver=5.4.24
+xanmod=15
+pkgrel=1
+_rev=1
+#_commit=129d48ad37bce913f6f5d6c767f997afc6be4c7d
 arch=(x86_64)
 url="http://www.xanmod.org/"
 license=(GPL2)
@@ -81,21 +81,23 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-rt${xanmod}-xanmod${_rev}"
 
+#source=(https://github.com/xanmod/linux/archive/${_commit}.zip
 source=(https://github.com/xanmod/linux/archive/${pkgver}-rt${xanmod}-xanmod${_rev}.tar.gz
        choose-gcc-optimization.sh
        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b'
 )
 
-sha256sums=('5b7591a7a8b0f453ffa4e4077b09bc7d423059a0496e6f3985456b908ace6fef'
-            '8b2629f6340d4807c113cd9fa308f50f0a8d85df5698bef083e151f06d58f748'
+sha256sums=('16777c5954140bb7a97d203a824b0ee846b8ff7d6d8b02ee1d8d2322ae472d94'
+            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
+export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
+export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
+export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  cd $_srcname
+  #cd linux-${_commit}
+  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -141,11 +143,6 @@ prepare() {
     scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
   fi
 
-  if [ "$use_ns" = "n" ]; then
-    msg2 "Disabling CONFIG_USER_NS_UNPRIVILEGED"
-    scripts/config --disable CONFIG_USER_NS_UNPRIVILEGED
-  fi
-
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
@@ -175,8 +172,9 @@ prepare() {
 }
 
 build() {
-  cd $_srcname
-  make bzImage modules
+  #cd linux-${_commit}
+  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
+  make all
 }
 
 _package() {
@@ -185,7 +183,8 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
-  cd $_srcname
+  #cd linux-${_commit}
+  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -210,7 +209,8 @@ _package() {
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
 
-  cd $_srcname
+  #cd linux-${_commit}
+  cd linux-${pkgver}-rt${xanmod}-xanmod${_rev}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
