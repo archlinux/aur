@@ -1,13 +1,12 @@
 pkgbase = goverlay-git
 	pkgdesc = An opensource project that aims to create a Graphical UI to help manage Linux overlays.
 	pkgver = 0.1.3.r11.g1f00701
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = lazarus
-	makedepends = imagemagick
 	depends = gtk2
 	optdepends = mangohud
 	provides = goverlay
