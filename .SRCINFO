@@ -1,16 +1,20 @@
 pkgbase = vapoursynth-plugin-muvsfunc-git
 	pkgdesc = Plugin for Vapoursynth: muvsfunc (GIT version)
 	pkgver = v0.3.0.37.gbb44453
-	pkgrel = 2
+	pkgrel = 3
 	url = https://forum.doom9.org/showthread.php?t=171956
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = vapoursynth-plugin-havsfunc-git
 	depends = vapoursynth-plugin-mvsfunc-git
+	depends = vapoursynth-plugin-tcanny-git
+	depends = vapoursynth-plugin-median-git
+	depends = vapoursynth-plugin-histogram
 	optdepends = python-numpy: For use muvsdunc_numpy
-	optdepends = python-tensorflow: For use super_resolution function with TensorFlow as backend (muvsdunc_numpy)
-	optdepends = mxnet: For use super_resolution function with MxNET as backend (muvsdunc_numpy)
+	optdepends = python-tensorflow: For use super_resolution function with TensorFlow as backend (muvsfunc_numpy)
+	optdepends = mxnet: For use super_resolution function with MxNET as backend (muvsfunc_numpy)
+	optdepends = vapoursynth-plugin-vcfreq: For use with GPS function (muvsfunc_misc)
 	provides = vapoursynth-plugin-muvsfunc
 	conflicts = vapoursynth-plugin-muvsfunc
 	source = muvsfunc::git+https://github.com/WolframRhodium/muvsfunc.git
