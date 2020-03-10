@@ -1,0 +1,23 @@
+pkgbase = gnome-user-share-git
+	pkgdesc = Easy to use user-level file sharing for GNOME
+	pkgver = 3.34.0+8+g94ff55d
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-user-share
+	arch = x86_64
+	license = GPL
+	makedepends = libnautilus-extension
+	makedepends = git
+	makedepends = meson
+	makedepends = yelp-tools
+	depends = mod_dnssd
+	depends = dconf
+	depends = gtk3
+	depends = libnotify
+	depends = libcanberra
+	provides = gnome-user-share
+	conflicts = gnome-user-share
+	source = git+https://gitlab.gnome.org/GNOME/gnome-user-share.git
+	sha512sums = SKIP
+
+pkgname = gnome-user-share-git
+
