@@ -1,0 +1,17 @@
+pkgbase = gnome-user-docs-git
+	pkgdesc = User documentation for GNOME
+	pkgver = 3.35.92+16+ga7bd575c
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/gnome-user-docs
+	arch = any
+	license = FDL
+	makedepends = yelp-tools
+	makedepends = git
+	depends = yelp
+	provides = gnome-user-docs
+	conflicts = gnome-user-docs
+	source = git+https://gitlab.gnome.org/GNOME/gnome-user-docs.git
+	sha256sums = SKIP
+
+pkgname = gnome-user-docs-git
+
