@@ -1,0 +1,17 @@
+pkgbase = drm_monitor-git
+	pkgdesc = A CLI tool to monitor DRM/KMS state.
+	pkgver = r1.9865e3e
+	pkgrel = 1
+	url = https://github.com/emersion/drm_monitor
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	depends = libdrm
+	provides = drm_monitor
+	conflicts = drm_monitor
+	source = drm_monitor::git+https://github.com/emersion/drm_monitor.git
+	sha1sums = SKIP
+
+pkgname = drm_monitor-git
+
