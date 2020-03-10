@@ -7,6 +7,7 @@ pkgdesc="Pythonless package of a a tool for defining and running multi-container
 depends=('docker')
 arch=('x86_64')
 conflicts=('docker-compose')
+provides=('docker-compose')
 options=(!strip)
 source=(
   "docker-compose-$pkgver::https://github.com/docker/compose/releases/download/$pkgver/docker-compose-Linux-x86_64"

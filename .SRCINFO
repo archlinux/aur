@@ -6,6 +6,7 @@ pkgbase = docker-compose-bin
 	arch = x86_64
 	license = Apache
 	depends = docker
+	provides = docker-compose
 	conflicts = docker-compose
 	options = !strip
 	source = docker-compose-1.25.3::https://github.com/docker/compose/releases/download/1.25.3/docker-compose-Linux-x86_64
