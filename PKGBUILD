@@ -40,6 +40,10 @@ prepare() {
 build() {
   cd LV2Plugins
 	make JACK=false VST2=false
+  # cd ${srcdir}/LV2Plugins
+  pwd
+  ls -la
+  ./generate-ttl.sh
 }
 
 package() {
