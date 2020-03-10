@@ -12,7 +12,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/GeertJohan/$pkgname/archive
 sha256sums=('540cb64258fc2422664c73454b5dbaac5487a45906c935d25285a2a60085d877')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
   cd "$srcdir/$pkgname-$pkgver/rice"
   go build -a
 }
