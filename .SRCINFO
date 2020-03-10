@@ -1,6 +1,6 @@
 pkgbase = seaweedfs
 	pkgdesc = SeaweedFS is a simple and highly scalable distributed file system
-	pkgver = 1.59
+	pkgver = 1.60
 	pkgrel = 1
 	url = https://github.com/chrislusf/seaweedfs
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = seaweedfs
 	arch = arm
 	license = APACHE
 	makedepends = go-pie
-	source = seaweedfs-1.59.tar.gz::https://github.com/chrislusf/seaweedfs/archive/1.59.tar.gz
-	sha256sums = 89fa60513c3c0c5d2c3cf52405f33b42438e20e7aa2a1e903a4d2f3540b0fced
+	source = seaweedfs-1.60.tar.gz::https://github.com/chrislusf/seaweedfs/archive/1.60.tar.gz
+	sha256sums = 4d7c6c01c86f1080cf74573094f55fab398d50f992ab71302f35ecda97ab973e
 
 pkgname = seaweedfs
 
