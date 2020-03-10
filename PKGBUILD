@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/hipCUB"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
-makedepends=('cmake' 'python2' 'rocminfo')
+makedepends=('cmake' 'python2' 'rocminfo' 'rocm-comgr')
 source=("https://github.com/ROCmSoftwarePlatform/hipCUB/archive/$pkgver.tar.gz")
 sha256sums=('9fa41d9b25d5347ea6446ef32777dbe447257ccb494d82cb134529f4b45064a0')
 
@@ -30,6 +30,7 @@ build() {
   # TODO: fix libhipcub.so, it contains references to $srcdir
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hipcub \
+        -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
         "$srcdir/hipCUB-$pkgver"
   make
 }
