@@ -1,0 +1,16 @@
+pkgbase = ruby-linux_input
+	pkgdesc = FFI structs and constants for linux's input subsystem
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/christopheraue/ruby-linux_input
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-ffi
+	noextract = linux_input-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/linux_input-1.0.0.gem
+	sha1sums = 35e7684af89854d3d70e70054674ffd7866deeac
+
+pkgname = ruby-linux_input
+
