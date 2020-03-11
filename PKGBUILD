@@ -1,5 +1,5 @@
 # Maintainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-pfennig-ibx
 pkgver=20120410
 pkgrel=5
