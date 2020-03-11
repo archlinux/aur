@@ -1,0 +1,22 @@
+pkgbase = android-sdk-cmdline-tools-latest-dummy
+	pkgdesc = Android SDK Command-line Tools (latest), dummy package
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://developer.android.com/studio
+	install = android-sdk-cmdline-tools-latest-dummy.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = glibc
+	depends = java-environment
+	optdepends = android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx
+	optdepends = android-udev: udev rules for Android devices
+	provides = android-sdk-cmdline-tools-latest
+	conflicts = android-sdk-cmdline-tools-latest
+	source = android-sdk-cmdline-tools-latest.sh::https://aur.archlinux.org/cgit/aur.git/plain/android-sdk-cmdline-tools-latest.sh?h=android-sdk-cmdline-tools-latest
+	source = android-sdk-cmdline-tools-latest.csh::https://aur.archlinux.org/cgit/aur.git/plain/android-sdk-cmdline-tools-latest.csh?h=android-sdk-cmdline-tools-latest
+	sha1sums = d16076f0a7cbc78605b5669d0928963a9866e7f4
+	sha1sums = 3e844b22bfcbc159280c5f9e8dfb07ff9559dde5
+
+pkgname = android-sdk-cmdline-tools-latest-dummy
+
