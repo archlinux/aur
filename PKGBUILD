@@ -28,11 +28,6 @@ sha256sums=('SKIP'
 
 _sourcedirectory="$pkgname"
 
-pkgver() {
-	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
@@ -59,6 +54,11 @@ prepare() {
 	export npm_config_cache="$srcdir/$pkgname-npm-cache"
 
 	npx lerna bootstrap
+}
+
+pkgver() {
+	cd "$srcdir/$_sourcedirectory/"
+	git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
