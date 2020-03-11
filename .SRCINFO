@@ -1,0 +1,17 @@
+pkgbase = plex-mpv-shim-git
+	pkgdesc = Cast media from Plex Mobile and Web apps to MPV
+	pkgver = v1.7.13.r1.g6326765
+	pkgrel = 1
+	url = https://github.com/iwalton3/plex-mpv-shim
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = mpv
+	optdepends = python-pystray
+	optdepends = tk
+	source = git+https://github.com/iwalton3/plex-mpv-shim.git
+	sha256sums = SKIP
+
+pkgname = plex-mpv-shim-git
+
