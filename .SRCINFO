@@ -1,6 +1,6 @@
 pkgbase = ufc2-hpc-git
 	pkgdesc = Unified form language. HPC version
-	pkgver = 2.1.1_20200126
+	pkgver = 2.2.0_20200311
 	pkgrel = 1
 	url = https://bitbucket.org/adaptivesimulations/ufc2-hpc/
 	arch = i686
