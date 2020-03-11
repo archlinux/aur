@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kauth-git
-pkgver=r79.6dcb8d0
-pkgrel=2
+pkgver=v4.100.0.rc1.r293.ge6877df
+pkgrel=1
 pkgdesc='KAuth'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kauth'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kauth.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kauth
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
