@@ -1,6 +1,6 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=fanctl-git
-pkgver=r20.5080e76
+pkgver=0.3.1.r12.63ec4df
 pkgrel=1
 pkgdesc=""
 arch=('x86_64')
@@ -15,14 +15,15 @@ replaces=()
 backup=()
 options=()
 install=
-source=('fanctl::git+https://gitlab.com/mcoffin/fanctl.git#branch=master')
+source=('fanctl::git+https://gitlab.com/mcoffin/fanctl.git#branch=master'
+        fanctl.service)
 noextract=()
-sha256sums=('SKIP')
+sha512sums=('SKIP'
+            '7aab4bdec106c131f20f78bb150e4f6b2875fede6cef3ffbe164279f2f2b35aeabc0c81b7375e4eee4513acb9a0cc7ce43edb1492b27275dd63d520de26a6d69')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-	# printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git get-version -a -v || git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
@@ -33,8 +34,12 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	cargo install --path . --root "$pkgdir/usr" --bins
-	if [ -e "$pkgdir/usr/.crates.toml" ]; then
-		rm "$pkgdir/usr/.crates.toml"
-	fi
+	for f in "$pkgdir/usr/"{.crates.toml,.crates2.json}; do
+		if [ -e $f ]; then
+			rm $f
+		fi
+	done
 	install -D -m 644 -t "$pkgdir/usr/share/licenses/$pkgname" ./COPYING
+	install -D -m 644 fanctl.yml "$pkgdir/usr/share/fanctl.example.yml"
+	install -D -m 644 -t "$pkgdir/usr/lib/systemd/system" "$srcdir/fanctl.service"
 }
