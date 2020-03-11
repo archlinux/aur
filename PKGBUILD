@@ -1,30 +1,23 @@
 # Maintainer: David Anderson <dave@natulte.net>
 
 pkgname="tailscale"
-_version="0.94-236"
-pkgver="0.94_236"
-pkgrel="2"
+_version="0.96-0"
+pkgver="0.96_0"
+pkgrel="1"
 pkgdesc="A mesh VPN that makes it easy to connect your devices, wherever they are."
 arch=("x86_64")
 url="https://tailscale.com"
-license=("custom")
+license=("MIT")
 depends=("glibc")
-backup=("etc/default/tailscale-relay" "etc/tailscale/acl.json")
-makedepends=("rpmextract")
-source=("$pkgname-$pkgver.rpm::https://tailscale.com/files/dist/tailscale-relay-$_version.$arch.rpm")
-sha256sums=('b8e7505debba715f1a7c444715fbbbca5a6e3dd6515f35756006fa0daab3b9ea')
-noextract=("$pkgname-$pkgver.rpm")
+backup=("etc/default/tailscaled")
+source=("$pkgname-$pkgver.tgz::https://pkgs.tailscale.com/stable/tailscale_${_version}_amd64.tgz")
+sha256sums=('66ea842942bc78a57d707608af6c1e0c37b6f7a7912ad0a3821697689f416da7')
 install="tailscale.install"
 
-prepare() {
-  mkdir -p "$pkgname-$pkgver"
-  (cd "$pkgname-$pkgver" && rpmextract.sh "../$pkgname-$pkgver.rpm")
-}
-
 package() {
-  cd "$pkgname-$pkgver"
-  mkdir -p "$pkgdir/usr"
-  cp -r etc "$pkgdir"
-  cp -r lib "$pkgdir/usr"
-  cp -r usr/sbin "$pkgdir/usr/bin"
+    cd tailscale_${_version}_amd64
+  mkdir -p "$pkgdir/usr/bin" "$pkgdir/etc/default" "$pkgdir/usr/lib/systemd/system"
+  install -m755 tailscale tailscaled "$pkgdir/usr/bin"
+  install -m644 systemd/tailscaled.defaults "$pkgdir/etc/default/tailscaled"
+  install -m644 systemd/tailscaled.service "$pkgdir/usr/lib/systemd/system"
 }
