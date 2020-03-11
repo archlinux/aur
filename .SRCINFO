@@ -1,0 +1,13 @@
+pkgbase = pm-graph
+	pkgdesc = A tool for system developers to visualize the activity between suspend and resume
+	pkgver = 5.5
+	pkgrel = 1
+	url = https://01.org/pm-graph
+	arch = any
+	license = GPL2
+	depends = python
+	source = pm-graph-5.5.zip::https://github.com/intel/pm-graph/archive/5.5.zip
+	sha256sums = 7bc209c5f843e7c7c1194489adda4cce7352849eb18f31786447fc3eca177c66
+
+pkgname = pm-graph
+
