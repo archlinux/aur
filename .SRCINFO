@@ -1,6 +1,6 @@
 pkgbase = kvantum-theme-qogir-git
 	pkgdesc = Qogir theme for Kvantum
-	pkgver = r38.3a631ec
+	pkgver = r44.56c228f
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Qogir-kde
 	arch = any
@@ -9,8 +9,9 @@ pkgbase = kvantum-theme-qogir-git
 	depends = kvantum-qt5
 	provides = kvantum-theme-qogir
 	conflicts = kvantum-theme-qogir
+	conflicts = qogir-kde-theme
 	conflicts = qogir-kde-theme-git
-	source = git+https://github.com/vinceliuice/Qogir-kde.git#commit=3a631ec628ec942d644fe27d5ea208069d1c8b89
+	source = git+https://github.com/vinceliuice/Qogir-kde.git#commit=56c228fcde64aa22ea7139fe3e516ebb97973d3f
 	sha256sums = SKIP
 
 pkgname = kvantum-theme-qogir-git
