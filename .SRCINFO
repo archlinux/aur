@@ -12,7 +12,7 @@ pkgbase = vboot-utils
 	depends = openssl
 	source = https://chromium.googlesource.com/chromiumos/platform/vboot_reference/+archive/release-R81-12871.B.tar.gz
 	source = makefile.patch
-	sha256sums = 88ff2e28bf0af3d1e5d5fb9fab2ed8f67644d4ffff6ffe4be07407141a1b8727
+	sha256sums = SKIP
 	sha256sums = 7804878ce24b2ca9bd8858bfffcf97b12627b2c7524879240a958cec244afdcb
 
 pkgname = vboot-utils
