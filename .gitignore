@@ -1,0 +1,7 @@
+liquidsfz/
+pkg/
+src/
+.AURINFO
+liquidsfz-git-*.tar.xz
+liquidsfz-git-*.tar.zst
+liquidsfz-git-*.src.tar.gz
