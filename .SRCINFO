@@ -1,0 +1,23 @@
+pkgbase = agisoft-metashape
+	pkgdesc = Phtogrammetric processing of digital images and 3D spatial data generation software. Standard edition
+	pkgver = 1.6.2
+	pkgrel = 1
+	url = https://www.agisoft.com/
+	install = agisoft-metashape.install
+	arch = x86_64
+	license = custom:Agisoft EULA
+	license = custom
+	makedepends = imagemagick
+	provides = agisoft-metashape
+	options = !strip
+	source = http://download.agisoft.com/metashape_1_6_2_amd64.tar.gz
+	source = agisoft-metashape-icon-encoded.txt
+	source = agisoft-psx-mime-icon-encoded.txt
+	source = agisoft-psz-mime-icon-encoded.txt
+	sha256sums = f6d4f677e614ce5fb73333da0b29e470c2d1b4909ed3e87ef0e78b96accfe28e
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = agisoft-metashape
+

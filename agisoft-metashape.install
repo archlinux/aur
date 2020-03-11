@@ -1,0 +1,36 @@
+post_install() {
+    # Set the correct permission
+    chmod -R g=u /opt/agisoft/metashape
+    chmod -R o=u /opt/agisoft/metashape
+    chmod -R g-w /opt/agisoft/metashape
+    chmod -R o-w /opt/agisoft/metashape
+    chmod -R g=u /usr/share/licenses/agisoft-metashape/licenses
+    chmod -R o=u /usr/share/licenses/agisoft-metashape/licenses
+    chmod -R g-w /usr/share/licenses/agisoft-metashape/licenses
+    chmod -R o-w /usr/share/licenses/agisoft-metashape/licenses
+    echo
+    echo "The launcher is called agisoft-metashape"
+    echo
+    echo "Run the following command to activate the product"
+    echo
+    echo "sudo agisoft-metashape --activate 11111-22222-33333-44444-55555"
+    echo
+    echo "NOTE: the number after "--activate" is your node-locked license"
+    echo
+}
+
+pre_remove() {
+    echo "Deactivating the product..."
+    agisoft-metashape --deactivate 2>/dev/null
+}
+
+post_remove() {
+    rm -rf /opt/agisoft/metashape
+    rm -d /opt/agisoft 2>/dev/null
+    echo
+    echo "The users data were kept at the below locations"
+    echo "\$HOME/.agisoft"
+    echo "\$HOME/.config/Agisoft"
+    echo "\$HOME/.local/share/Agisoft"
+    echo
+}
