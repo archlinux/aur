@@ -1,0 +1,15 @@
+pkgbase = ruby-callbacks_attachable-2.3
+	pkgdesc = Attach callbacks to ruby objects. Then, trigger and detach them.
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/christopheraue/m-ruby-callbacks_attachable
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = callbacks_attachable-2.3.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/callbacks_attachable-2.3.1.gem
+	sha1sums = 8321824ce9d2ae23c1c97e37ee1c19f70dcc28e8
+
+pkgname = ruby-callbacks_attachable-2.3
+
