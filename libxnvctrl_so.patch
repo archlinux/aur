@@ -1,0 +1,67 @@
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -106,6 +106,8 @@
+ XNVCTRL_DIR             ?= libXNVCtrl
+ XNVCTRL_MAKEFILE        ?= Makefile
+ XNVCTRL_ARCHIVE         ?= $(XNVCTRL_DIR)/libXNVCtrl.a
++XNVCTRL_SHARED          ?= $(XNVCTRL_DIR)/libXNVCtrl.so.0
++XNVCTRL_LIB             ?= $(XNVCTRL_SHARED)
+ XCONFIG_PARSER_DIR      ?= XF86Config-parser
+ COMMON_UTILS_DIR        ?= common-utils
+ COMMON_UNIX_DIR         ?= common-unix
+@@ -280,15 +282,18 @@
+ 	$(MKDIR) $(BINDIR)
+ 	$(INSTALL) $(INSTALL_BIN_ARGS) $< $(BINDIR)/$(notdir $<)
+ 
++$(XNVCTRL_ARCHIVE) $(XNVCTRL_SHARED):
++	$(MAKE) -C $(XNVCTRL_DIR)
++
+ $(eval $(call DEBUG_INFO_RULES, $(NVIDIA_SETTINGS)))
+-$(NVIDIA_SETTINGS).unstripped: $(OBJS) $(XNVCTRL_ARCHIVE)
++$(NVIDIA_SETTINGS).unstripped: $(OBJS) $(XNVCTRL_LIB)
+ 	$(call quiet_cmd,LINK) $(CFLAGS) $(LDFLAGS) $(BIN_LDFLAGS) \
+-	    -rdynamic -o $@ $(OBJS) $(XNVCTRL_ARCHIVE) $(LIBS)
++	    -rdynamic -o $@ $(OBJS) $(XNVCTRL_LIB) $(LIBS)
+ 
+ $(eval $(call DEBUG_INFO_RULES, $(GTK2LIB)))
+ $(GTK2LIB).unstripped: $(GTK2_OBJS) $(XCP_OBJS) $(IMAGE_OBJS) $(VERSION_MK)
+ 	$(call quiet_cmd,LINK) -shared $(CFLAGS) $(LDFLAGS) $(BIN_LDFLAGS) \
+-	    $(XNVCTRL_ARCHIVE) $(LIBS) $(GTK2_LIBS) \
++	    $(XNVCTRL_LIB) $(LIBS) $(GTK2_LIBS) \
+ 	    -Wl,--unresolved-symbols=ignore-all -o $@ \
+ 	    -Wl,-soname -Wl,$(GTK2LIB_SONAME) \
+ 	    $(GTK2_OBJS) $(XCP_OBJS)
+@@ -297,7 +302,7 @@
+ $(eval $(call DEBUG_INFO_RULES, $(GTK3LIB)))
+ $(GTK3LIB).unstripped: $(GTK3_OBJS) $(XCP_OBJS) $(VERSION_MK)
+ 	$(call quiet_cmd,LINK) -shared $(CFLAGS) $(LDFLAGS)  $(BIN_LDFLAGS) \
+-	    $(XNVCTRL_ARCHIVE) $(LIBS) $(GTK3_LIBS) \
++	    $(XNVCTRL_LIB) $(LIBS) $(GTK3_LIBS) \
+ 	    -Wl,--unresolved-symbols=ignore-all -o $@ \
+ 	    -Wl,-soname -Wl,$(GTK3LIB_SONAME) \
+ 	    $(GTK3_OBJS) $(XCP_OBJS)
+--- a/src/libXNVCtrl/Makefile
++++ b/src/libXNVCtrl/Makefile
+@@ -55,10 +55,17 @@
+ .PHONY: clean
+ 
+ all: $(LIBXNVCTRL)
++all: libXNVCtrl.so
+ 
+ $(LIBXNVCTRL) : $(OBJS)
+ 	$(AR) ru $@ $(OBJS)
+ 
++libXNVCtrl.so: $(OBJS)
++	$(RM) $@ $@.*
++	$(CC) -shared -Wl,-soname=$@.0 -o $@.0.0.0 $(LDFLAGS) $^ -lXext -lX11
++	ln -s $@.0.0.0 $@.0
++	ln -s $@.0 $@
++
+ # define the rule to build each object file
+ $(foreach src,$(SRC),$(eval $(call DEFINE_OBJECT_RULE,TARGET,$(src))))
+ 
+@@ -68,3 +75,4 @@
+ clean:
+ 	rm -rf $(LIBXNVCTRL) *~ $(STAMP_C) \
+ 		$(OUTPUTDIR)/*.o $(OUTPUTDIR)/*.d
++	rm -f libXNVCtrl.so libXNVCtrl.so.*
