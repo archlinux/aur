@@ -1,0 +1,36 @@
+pkgbase = nvidia-390xx
+	pkgdesc = NVIDIA drivers for linux, 390xx legacy branch
+	pkgver = 390.132
+	pkgrel = 32
+	url = https://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	makedepends = nvidia-390xx-utils=390.132
+	makedepends = libglvnd
+	makedepends = linux-headers
+	conflicts = nvidia
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/390.132/NVIDIA-Linux-x86_64-390.132-no-compat32.run
+	source = kernel-4.16.patch
+	source = kernel-5.5.patch
+	sha256sums = b6b4b8af37e78e026c9ebdf4a5c64ea412dfcb710931dd028c22dac228de659d
+	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
+	sha256sums = 93efb4bd03c9617d6030dd4966d7350ec7a4e09f71e0566586454f5366385fff
+
+pkgname = nvidia-390xx
+	pkgdesc = NVIDIA drivers for linux, 390xx legacy branch
+	depends = linux
+	depends = nvidia-390xx-utils=390.132
+	depends = libglvnd
+
+pkgname = nvidia-390xx-dkms
+	pkgdesc = NVIDIA driver sources for linux, 390xx legacy branch
+	depends = dkms
+	depends = nvidia-390xx-utils=390.132
+	depends = libglvnd
+	optdepends = linux-headers: Build the module for Arch kernel
+	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
+	provides = nvidia-390xx=390.132
+	conflicts = nvidia
+	conflicts = nvidia-390xx
+
