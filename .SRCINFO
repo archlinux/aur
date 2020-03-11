@@ -9,9 +9,7 @@ pkgbase = kplex-git
 	depends = glibc
 	provides = kplex=v1.4.r0.g715b18c
 	source = kplex-git::git://github.com/stripydog/kplex
-	source = http://www.stripydog.com/download/kplex_1.4-1_amd64.deb
 	md5sums = SKIP
-	md5sums = 5b44b5397c93531b7faa6431591fbeca
 
 pkgname = kplex-git
 
