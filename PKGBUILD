@@ -3,7 +3,7 @@
 pkgbase=ibus-clean
 pkgname=(ibus-clean libibus-clean)
 pkgver=1.5.22
-pkgrel=1
+pkgrel=2
 pkgdesc="ibus without gtk2 nor python2"
 arch=('x86_64')
 url="https://github.com/ibus/ibus/wiki"
@@ -42,7 +42,7 @@ build() {
 
 package_ibus-clean() {
   depends+=("libibus-clean=$pkgver")
-  provides+=('ibus=$pkgver')
+  provides+=("ibus=$pkgver")
   conflicts+=('ibus')
   replaces+=('ibus')
   install=ibus.install
@@ -57,7 +57,7 @@ package_ibus-clean() {
 package_libibus-clean() {
   pkgdesc="IBus support library"
   depends=('glib2')
-  provides+=('libibus=$pkgver')
+  provides+=("libibus=$pkgver")
   conflicts+=('libibus')
   replaces+=('libibus')
 

@@ -1,7 +1,7 @@
 pkgbase = ibus-clean
 	pkgdesc = ibus without gtk2 nor python2
 	pkgver = 1.5.22
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ibus/ibus/wiki
 	arch = x86_64
 	license = LGPL
@@ -37,14 +37,14 @@ pkgname = ibus-clean
 	depends = iso-codes
 	depends = librsvg
 	depends = libibus-clean=1.5.22
-	provides = ibus=$pkgver
+	provides = ibus=1.5.22
 	conflicts = ibus
 	replaces = ibus
 
 pkgname = libibus-clean
 	pkgdesc = IBus support library
 	depends = glib2
-	provides = libibus=$pkgver
+	provides = libibus=1.5.22
 	conflicts = libibus
 	replaces = libibus
 
