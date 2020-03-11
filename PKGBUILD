@@ -1,5 +1,5 @@
 # Maintainer: Martin Müllenhaupt <mm+aur.archlinux.org@netlair.de>
-pkgname=faf-ice-adapter-java
+pkgname=faf-ice-adapter-java-bin
 pkgver=2.4.1
 pkgrel=1
 epoch=0
@@ -8,10 +8,7 @@ url="http://www.faforever.com/"
 arch=('any')
 license=('GPL3')
 groups=()
-#depends=('java-openjfx')
-depends=('java8-openjfx')
-#makedepends=('jdk-openjdk' 'gradle')
-makedepends=('jdk8-openjdk' 'gradle')
+depends=('java-openjfx')
 checkdepends=()
 optdepends=()
 provides=('faf-ice-adapter')
