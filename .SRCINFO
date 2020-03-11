@@ -1,0 +1,18 @@
+pkgbase = waftools-git
+	pkgdesc = collections of tools for the WAF meta build system
+	pkgver = r516.fc2576d
+	pkgrel = 1
+	url = https://bitbucket.org/Moo7/waftools
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = waf
+	depends = python
+	provides = waftools
+	conflicts = waftools
+	source = waftools::git+https://bitbucket.org/Moo7/waftools.git
+	md5sums = SKIP
+
+pkgname = waftools-git
+
