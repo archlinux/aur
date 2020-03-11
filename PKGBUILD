@@ -14,7 +14,7 @@ license=('custom')
 depends=('glibc' 'java-environment')
 optdepends=('android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx'
             'android-udev: udev rules for Android devices')
-provides=("${_pkgname}")
+provides=('android-sdk' "${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
 source=("${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"

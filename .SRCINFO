@@ -11,6 +11,7 @@ pkgbase = android-sdk-cmdline-tools-latest-dummy
 	depends = java-environment
 	optdepends = android-sdk-platform-tools: adb, aapt, aidl, dexdump and dx
 	optdepends = android-udev: udev rules for Android devices
+	provides = android-sdk
 	provides = android-sdk-cmdline-tools-latest
 	conflicts = android-sdk-cmdline-tools-latest
 	source = android-sdk-cmdline-tools-latest.sh::https://aur.archlinux.org/cgit/aur.git/plain/android-sdk-cmdline-tools-latest.sh?h=android-sdk-cmdline-tools-latest
