@@ -1,7 +1,7 @@
 # Maintainer: Radoslaw Mejer <radmen @ radmen.info>
 
 pkgname=stoplight-studio-appimage
-pkgver=1.10.1
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="The modern editor for API Architects and Technical Writers."
 arch=('x86_64')
@@ -12,7 +12,7 @@ source=(
   "stoplight-studio.desktop"
 )
 sha256sums=(
-  "78da4581233f1f6963e2180fa29d6e6ef942d7c55834b194a64a56523a32c593"
+  "b527e19ad3d2a5d08a26b34c0bab0626cd23f9403c4823a6df823efc16983af9"
   "5a45f03ec544bfdf2c75391a68d29302e7f721348ba530a8f365697c799f84a2"
 )
 options=(!strip)
