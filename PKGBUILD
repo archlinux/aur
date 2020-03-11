@@ -4,44 +4,56 @@
 _pkgname=devilutionX
 pkgname=devilutionx
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo devolved for linux"
 arch=('i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-depends=('freetype2' 'graphite' 'libpng' 'libsodium' 'pcre' 'sdl2_mixer'
-'sdl2_ttf' 'sdl2_ttf' 'sdl2_ttf')
+depends=('graphite' 'libsodium' 'sdl2_mixer' 'sdl2_ttf')
 makedepends=('cmake' 'gcc-libs')
 install="$pkgname".install
-source=("https://github.com/diasurgical/devilutionX/archive/$pkgver.tar.gz"
-"$pkgname.png")
+source=("https://github.com/diasurgical/devilutionX/archive/$pkgver.tar.gz")
 
 prepare() {
     cd "$srcdir/${_pkgname}-$pkgver"
     if [ ! -d build ]; then
         mkdir build
     fi
-    cd build
-    cmake  .. -DCMAKE_BUILD_TYPE=Release
 }
 
 build() {
-    cd "$srcdir/${_pkgname}-$pkgver"
-    cd build
-    make
+    cd "$srcdir/${_pkgname}-$pkgver/build"
+    cmake .. \
+    -DPIE=ON \
+    -DBINARY_RELEASE=ON \
+    -DTTF_FONT_PATH=\"/usr/share/fonts/truetype/CharisSILB.ttf\" \
+    -DGIT_TAG="$pkgver"
+    make INSTALL_ROOT="$pkgdir"
 }
 package() {
     cd "$srcdir/${_pkgname}-$pkgver"
     
+    # Install and link binary
     install -vDm755 build/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
-    install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
     
-    # Installing Icons
-    install -Dm644 ../$pkgname.png \
-    $pkgdir/usr/share/pixmaps/${pkgname}.png
-    install -Dm644 Packaging/fedora/$pkgname.desktop \
-    "$pkgdir"/usr/share/applications/$pkgname.desktop
+    # Install font
+    install -Dm644 Packaging/resources/CharisSILB.ttf \
+    "$pkgdir/usr/share/fonts/truetype/CharisSILB.ttf"
+    
+    # Install icons
+    install -Dm644 Packaging/cpi-gamesh/Devilution.png \
+    "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    
+    # Install desktop file
+    install -Dm664 Packaging/fedora/$pkgname.desktop -t \
+    "$pkgdir/usr/share/applications"
+    
+    # Install license
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    
+    # Install font license
+    install -Dm644 Packaging/resources/LICENSE.CharisSILB.txt -t \
+    "$pkgdir/usr/share/licenses/$pkgname"
 }
 
-md5sums=('bc25aaad76cedf37e0eac9549ba8f408'
-         'c593b446c07608ce2ab2eddac6ce7304')
+md5sums=('bc25aaad76cedf37e0eac9549ba8f408')
