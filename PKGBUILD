@@ -17,7 +17,7 @@ sha256sums=('da82293234a36293f320a13feb59ab968ca1aabdbb9797c112114eaf836249e1')
  
 build() {
     cd "$pkgname-$pkgver"
-    meson build --buildtype=release
+    arch-meson build
     ninja -C build
 }
  
