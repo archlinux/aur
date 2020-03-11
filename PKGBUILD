@@ -11,11 +11,6 @@ license=(GPLv3)
 source=(apricity-icons-$pkgver::https://github.com/dvorapa/$pkgbase/archive/3.36-pre.tar.gz)
 sha256sums=(68b214aa841ae600fff06362f307ef38b345d96d656a4bc5df4fce982e480e7c)
 
-prepare() {
-  cd "$srcdir"
-  cp -a apricity-icons-$pkgver
-}
-
 package_apricity-icons() {
   optdepends=("gnome-tweaks: simple switch")
 
