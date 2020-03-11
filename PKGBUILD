@@ -4,8 +4,8 @@
 pkgname=pulumi-bin
 _pkgname=pulumi
 pkgver=1.12.0
-pkgrel=1
-pkgdesc="A multi-language, multi-cloud development platform"
+pkgrel=2
+pkgdesc="Modern Infrastructure as Code"
 arch=('x86_64')
 license=('Apache-2.0')
 url="https://github.com/pulumi/pulumi"
