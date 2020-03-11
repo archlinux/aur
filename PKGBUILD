@@ -1,21 +1,21 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=gnumicr
+_pkgname=GnuMICR
+pkgname=${_pkgname,,}
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source licensed Type 1 MICR E13-B font'
 arch=('any')
-url='https://github.com/alerque/gnumicr'
-license=('GPL')
-depends=('fontconfig' 'xorg-font-utils')
-source=("https://github.com/alerque/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e087b0a85d1e5aa1ed4b11ae8f5716ec74e48ab4ca1b10b7fbba0dff6784b39b')
+url="https://sandeen.net/$_pkgname/"
+license=('GPL2')
+source=("https://sandeen.net/$_pkgname/download/$_pkgname-$pkgver.tar.gz")
+sha256sums=('4c485361e07e1eb0e09524726bf3d08a0e268dc41c6810dba49a5b45cbe432db')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm644 GnuMICR.ttf -t "$pkgdir/usr/share/fonts/TTF/"
-    install -Dm644 GnuMICR.pfb -t "$pkgdir/usr/share/fonts/Type1/"
-    install -Dm644 GnuMICR.pfm -t "$pkgdir/usr/share/fonts/Type1/"
-    install -Dm644 GnuMICR.afm -t "$pkgdir/usr/share/fonts/Type1/"
-    install -Dm644 GnuMICR.otf -t "$pkgdir/usr/share/fonts/OTF/"
+    cd "$_pkgname-$pkgver"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" $_pkgname.ttf
+    install -Dm644 -t "$pkgdir/usr/share/fonts/Type1/" $_pkgname.pfb $_pkgname.pfm $_pkgname.afm
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" $_pkgname.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" COPYING AUTHORS
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" CHANGELOG README NEWS
 }

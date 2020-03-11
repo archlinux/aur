@@ -1,14 +1,12 @@
 pkgbase = gnumicr
 	pkgdesc = An open-source licensed Type 1 MICR E13-B font
 	pkgver = 0.30
-	pkgrel = 1
-	url = https://github.com/alerque/gnumicr
+	pkgrel = 2
+	url = https://sandeen.net/GnuMICR/
 	arch = any
-	license = GPL
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = https://github.com/alerque/gnumicr/archive/v0.30.tar.gz
-	sha256sums = e087b0a85d1e5aa1ed4b11ae8f5716ec74e48ab4ca1b10b7fbba0dff6784b39b
+	license = GPL2
+	source = https://sandeen.net/GnuMICR/download/GnuMICR-0.30.tar.gz
+	sha256sums = 4c485361e07e1eb0e09524726bf3d08a0e268dc41c6810dba49a5b45cbe432db
 
 pkgname = gnumicr
 
