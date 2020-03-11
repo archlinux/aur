@@ -1,4 +1,4 @@
-pkgbase = cocotb-git
+pkgbase = python-cocotb-git
 	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
 	pkgver = r2445.e9490fab
 	pkgrel = 1
@@ -11,11 +11,10 @@ pkgbase = cocotb-git
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
-	provides = cocotb
-	conflicts = cocotb
+	provides = python-cocotb
+	conflicts = python-cocotb
 	options = !emptydirs
 	source = git+https://github.com/cocotb/cocotb
 	sha256sums = SKIP
 
-pkgname = cocotb-git
-
+pkgname = python-cocotb-git
