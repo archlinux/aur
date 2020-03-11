@@ -4,20 +4,28 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=basilisk
-pkgver=2020.02.18
+pkgver=2020.03.11
 pkgrel=1
-pkgdesc="Standalone web browser forked from mozilla.org, UXP version"
+pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org"
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
-source=("https://github.com/MoonchildProductions/UXP/archive/v$pkgver.tar.gz")
-sha256sums=('08406ab8804f2bc16f79d40a3f50fbea9ce1121b1d4dc0248e79dd04ba72060c')
+_commit=88da01c294175f81091e1499374415404e27a57a
+source=("https://github.com/MoonchildProductions/Basilisk/archive/v$pkgver.tar.gz"
+        "https://github.com/MoonchildProductions/UXP/archive/$_commit.tar.gz"
+        "https://raw.githubusercontent.com/MoonchildProductions/Pale-Moon/27.9.4_Release/browser/branding/official/palemoon.desktop")
+sha256sums=('76fa7a6cd9fef9660ceb6a61822be9bd7400f1bf52a3642de8d8b039b72a80c9'
+            '95e8d8db7f091f42829e314f4e6d46010e93976430ba08f72ed45fe118a0f8b3'
+            '99fc56d62ff18d473aecc4d686abc1ae75b29b36d11b6810d56e78c956389886')
 
 prepare() {
-  cd "$srcdir/UXP-$pkgver"
+  cd "$srcdir/Basilisk-$pkgver"
+
+  mv -T "$srcdir/UXP-$_commit" platform
+  ln -s basilisk browser
 
   cat > .mozconfig << EOF
 # Uncomment build flags as needed
@@ -91,31 +99,31 @@ EOF
 }
 
 build() {
-  cd "$srcdir/UXP-$pkgver"
+  cd "$srcdir/Basilisk-$pkgver"
 
-  ./mach build
+  make -f client.mk build
 }
 
 package() {
-  cd "$srcdir/UXP-$pkgver"
+  cd "$srcdir/Basilisk-$pkgver"
 
-  DESTDIR="$pkgdir" ./mach install
+  make -f client.mk DESTDIR="$pkgdir" install
 
   # Install icons and .desktop for menu entry
   local _i
   for _i in 16 22 24 32 64 48 256; do
-    install -Dm644 "application/basilisk/branding/official/default${_i}.png" \
+    install -Dm644 "basilisk/branding/official/default${_i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/basilisk.png"
   done
   # The 128x128, 192x192, and 384x384 icons have different names
-  install -Dm644 application/basilisk/branding/official/mozicon128.png \
+  install -Dm644 basilisk/branding/official/mozicon128.png \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/basilisk.png"
-  install -Dm644 application/basilisk/branding/official/content/about-logo.png \
+  install -Dm644 basilisk/branding/official/content/about-logo.png \
     "$pkgdir/usr/share/icons/hicolor/192x192/apps/basilisk.png"
-  install -Dm644 application/basilisk/branding/official/content/about-logo@2x.png \
+  install -Dm644 basilisk/branding/official/content/about-logo@2x.png \
     "$pkgdir/usr/share/icons/hicolor/384x384/apps/basilisk.png"
 
-  install -Dm644 "application/palemoon/branding/official/palemoon.desktop" \
+  install -Dm644 "$srcdir/palemoon.desktop" \
     "$pkgdir/usr/share/applications/basilisk.desktop"
   sed -i -e "s:Pale Moon:Basilisk:" -e "s:palemoon:basilisk:" \
     -e "s@https://start.palemoon.org@about:newtab@" \
@@ -123,6 +131,6 @@ package() {
 
   # Replace duplicate binary with symlink
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  local _mozhome="$pkgdir/usr/lib/basilisk-$(< application/basilisk/config/version.txt)"
+  local _mozhome="$pkgdir/usr/lib/basilisk-$(< basilisk/config/version.txt)"
   ln -sf basilisk "$_mozhome/basilisk-bin"
 }

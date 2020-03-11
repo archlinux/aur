@@ -1,6 +1,6 @@
 pkgbase = basilisk
-	pkgdesc = Standalone web browser forked from mozilla.org, UXP version
-	pkgver = 2020.02.18
+	pkgdesc = Standalone web browser forked from mozilla.org
+	pkgver = 2020.03.11
 	pkgrel = 1
 	url = https://www.basilisk-browser.org
 	arch = x86_64
@@ -20,8 +20,12 @@ pkgbase = basilisk
 	depends = ffmpeg
 	depends = ttf-font
 	options = !emptydirs
-	source = https://github.com/MoonchildProductions/UXP/archive/v2020.02.18.tar.gz
-	sha256sums = 08406ab8804f2bc16f79d40a3f50fbea9ce1121b1d4dc0248e79dd04ba72060c
+	source = https://github.com/MoonchildProductions/Basilisk/archive/v2020.03.11.tar.gz
+	source = https://github.com/MoonchildProductions/UXP/archive/88da01c294175f81091e1499374415404e27a57a.tar.gz
+	source = https://raw.githubusercontent.com/MoonchildProductions/Pale-Moon/27.9.4_Release/browser/branding/official/palemoon.desktop
+	sha256sums = 76fa7a6cd9fef9660ceb6a61822be9bd7400f1bf52a3642de8d8b039b72a80c9
+	sha256sums = 95e8d8db7f091f42829e314f4e6d46010e93976430ba08f72ed45fe118a0f8b3
+	sha256sums = 99fc56d62ff18d473aecc4d686abc1ae75b29b36d11b6810d56e78c956389886
 
 pkgname = basilisk
 
