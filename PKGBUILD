@@ -1,5 +1,5 @@
 # Maintainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-sansation-ibx
 pkgver=1.31
 pkgrel=5
