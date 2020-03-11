@@ -9,7 +9,7 @@
 
 pkgname=acroread
 pkgver=9.5.5
-pkgrel=13
+pkgrel=14
 pkgdesc="Adobe Acrobat Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
@@ -18,9 +18,8 @@ optdepends=('acroread-fonts: CJK and extended font packs'
             'libcanberra: XDG sound support'
             'gtk-engine-murrine: fix ugly buttons and scrollbars'
             )
-depends=('desktop-file-utils' lib32-{mesa,glu})
+depends=('desktop-file-utils' lib32-{atk,at-spi2-atk,libcanberra,cairo,libxinerama,libxi,libxrandr,libxcursor,libxcomposite,fribidi,libthai,mesa,glu})
 optdepends=('acroread-fonts: CJK and extended font packs'
-            'lib32-libcanberra: XDG sound support'
             'lib32-gtk-engine-murrine: fix ugly buttons and scrollbars')
 options=(!strip)
 install=$pkgname.install
