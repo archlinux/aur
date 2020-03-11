@@ -9,9 +9,11 @@ pkgbase = xr-hardware-git
 	provides = oculus-udev
 	provides = osvr-udev
 	provides = vive-udev
+	provides = psvr-udev
 	conflicts = oculus-udev
 	conflicts = osvr-udev
 	conflicts = vive-udev
+	conflicts = psvr-udev
 	source = git+https://gitlab.freedesktop.org/monado/utilities/xr-hardware.git
 	sha256sums = SKIP
 
