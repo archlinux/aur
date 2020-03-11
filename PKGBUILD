@@ -1,21 +1,21 @@
 # Maintainer: Adam Goldsmith <adam@adamgoldsmith.name>
 pkgname=python2-sarge-git
-pkgver=r133.b624f40f62a9
+pkgver=0.1.5.r33.gc5aff8b
 pkgrel=1
 pkgdesc="The sarge package provides a wrapper for subprocess which provides command pipeline functionality."
 arch=('any')
 url="https://bitbucket.org/vinay.sajip/sarge"
 license=('GPL')
-makedepends=('mercurial')
+makedepends=(git)
 depends=(python2)
 provides=(python2-sarge)
 conflicts=(python2-sarge)
-source=('hg+https://bitbucket.org/vinay.sajip/sarge')
+source=('git+https://bitbucket.org/vinay.sajip/sarge')
 md5sums=('SKIP')
 
 pkgver() {
   cd sarge
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
