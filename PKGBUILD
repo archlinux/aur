@@ -6,14 +6,24 @@
 pkgbase=pjproject-git
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.10.r38.g98f70c2
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source SIP stack and media stack'
 arch=('x86_64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
 license=('GPL')
-makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
-             'openssl' 'opus' 'portaudio' 'speex' 'swig' 'util-linux'
-             'python' 'python-setuptools')
+makedepends=('alsa-lib'
+             'e2fsprogs'
+             'ffmpeg'
+             'libsamplerate'
+             'libsrtp'
+             'openssl'
+             'opus'
+             'portaudio'
+             'python'
+             'python-setuptools'
+             'speex'
+             'swig'
+             'util-linux')
 source=("$pkgbase::git+https://github.com/pjsip/${pkgbase/-/.}"
         'config_site.h')
 sha256sums=('SKIP'
@@ -46,10 +56,8 @@ build() {
     --enable-shared \
     --disable-opencore-amr \
     "${arch_opts[@]}"
-
   make dep
   make
-
   pushd pjsip-apps/src/swig
   make python
   pushd python
@@ -57,9 +65,17 @@ build() {
 }
 
 package_pjproject-git() {
-  depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux'
-           'ffmpeg' 'libsrtp' 'opus')
-  optdepends=('e2fsprogs' 'python-pjproject: Python bindings')
+  depends=('alsa-lib'
+           'ffmpeg'
+           'libsamplerate'
+           'libsrtp'
+           'openssl'
+           'opus'
+           'portaudio'
+           'speex'
+           'util-linux')
+  optdepends=('e2fsprogs'
+              'python-pjproject: Python bindings')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
   cd "$pkgbase"
@@ -68,7 +84,8 @@ package_pjproject-git() {
 }
 
 package_python-pjproject-git() {
-  depends=('pjproject' 'python')
+  depends=('pjproject'
+           'python')
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
   cd "$pkgbase/pjsip-apps/src/swig/python"
