@@ -16,12 +16,12 @@ pkgbase = gotify-server
 	source = sysusers.d
 	source = tmpfiles.d
 	source = gotify-server.service
-	source = default-port.patch
+	source = config.patch
 	sha256sums = 986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0
 	sha256sums = 2052ac82ceb607701bd505c9df4170bb65c14601a4c8dda3c4ee36fd399c3dfa
-	sha256sums = 6993561f2c31860e7a59850ba5c3aac9a061420f72961fd6488e7608d3e68ff5
-	sha256sums = 6220ae0a14147401785c54737f75bd90627cb51cea272e7662d65a63ef5399ca
-	sha256sums = 7366c858a766b926c3d698bd31194ef1bab32de2668c9279a56c445f810a5984
+	sha256sums = 181258b6ee9ee9b52b37c9dbf0c17faa786a90a3ea45299819173d5df32f95b0
+	sha256sums = 05b3edff049ad5600c2515279a6e1167dd8e62c2525e3916d807aba35a33362f
+	sha256sums = 6bc218da0fbcf06819f9635b91ae19674d31e9cbf6aafb62c0327d68bdd0dcd3
 
 pkgname = gotify-server
 

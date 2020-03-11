@@ -15,16 +15,16 @@ source=(
   'sysusers.d'
   'tmpfiles.d'
   'gotify-server.service'
-  'default-port.patch'
+  'config.patch'
 )
 sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
             '2052ac82ceb607701bd505c9df4170bb65c14601a4c8dda3c4ee36fd399c3dfa'
-            '6993561f2c31860e7a59850ba5c3aac9a061420f72961fd6488e7608d3e68ff5'
+            '181258b6ee9ee9b52b37c9dbf0c17faa786a90a3ea45299819173d5df32f95b0'
             '05b3edff049ad5600c2515279a6e1167dd8e62c2525e3916d807aba35a33362f'
-            '7366c858a766b926c3d698bd31194ef1bab32de2668c9279a56c445f810a5984')
+            '6bc218da0fbcf06819f9635b91ae19674d31e9cbf6aafb62c0327d68bdd0dcd3')
 
 prepare() {
-  patch -N -p1 -d "server-$pkgver" <default-port.patch
+  patch -N -p1 -d "server-$pkgver" <config.patch
 }
 
 build() {
