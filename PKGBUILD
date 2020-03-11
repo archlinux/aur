@@ -5,7 +5,9 @@
 
 pkgname=etcher-git
 _pkgname=etcher
-pkgver=1.5.79.r0.g166b30bb
+_pkgver=1.5.80
+_branch=updates-"${_pkgver}"
+pkgver=1.5.79.r4.g65d0cf5d
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=(x86_64)
@@ -20,7 +22,7 @@ conflicts=("${_pkgname}"
   "${_pkgname}-bin"
 )
 options=('!strip')
-source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git"
+source=("${_pkgname}::git+https://github.com/balena-io/${_pkgname}.git#branch=${_branch}"
         "${pkgname}-electron.sh"
         "${pkgname}-electron.desktop"
         )
