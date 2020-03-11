@@ -1,7 +1,7 @@
 pkgbase = tagspaces
 	pkgdesc = TagSpaces is an offline, open source, document manager with tagging support
 	pkgver = 3.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tagspaces.org
 	arch = i686
 	arch = x86_64
@@ -9,9 +9,7 @@ pkgbase = tagspaces
 	makedepends = yarn
 	makedepends = gendesk
 	source = tagspaces-3.4.2.tar.gz::https://github.com/tagspaces/tagspaces/archive/v3.4.2.tar.gz
-	source = tagspaces.sh
 	sha256sums = 2be6087cebcd351564c58327784d2e200da370a2b48b9d8d801fd2f493176559
-	sha256sums = 8a7d7cb7fca742454faeef0b3333335832567b24b3a788c7e090a90e28406e06
 
 pkgname = tagspaces
 
