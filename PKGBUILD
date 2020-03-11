@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=vctrs
-_cranver=0.2.3
+_cranver=0.2.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,11 +10,11 @@ pkgdesc="Vector Helpers"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL3)
-depends=('r>=3.2' 'r-ellipsis>=0.2.0' r-digest r-glue 'r-rlang>=0.4.2')
+depends=('r>=3.2' 'r-ellipsis>=0.2.0' r-digest r-glue 'r-rlang>=0.4.5')
 makedepends=(gcc)
 optdepends=(r-bit64 r-covr r-crayon r-generics r-knitr r-pillar r-pkgdown r-rmarkdown r-testthat r-tibble r-xml2 r-zeallot)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('309921a667c8d675da85dedf9ae43cd7')
+md5sums=('d7c5601f4e4cf0a9722f76bdaf4c777a')
 
 build() {
   cd "${srcdir}"
