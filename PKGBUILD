@@ -2,12 +2,12 @@
 
 pkgname=python-rtmixer
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reliable low-latency audio playback and recording with Python"
 arch=(any)
 url="https://github.com/spatialaudio/python-rtmixer"
 license=('MIT')
-makedepends=('python-cffi' 'python-setuptools')
+makedepends=('python-cffi' 'python-setuptools' 'portaudio')
 source=("https://github.com/spatialaudio/python-rtmixer/archive/$pkgver.tar.gz"
     "pa_ringbuffer.c::https://app.assembla.com/spaces/portaudio/git/source/master/src/common/pa_ringbuffer.c?_format=raw"
     "pa_ringbuffer.h::https://app.assembla.com/spaces/portaudio/git/source/master/src/common/pa_ringbuffer.h?_format=raw"
