@@ -2,9 +2,9 @@
 
 pkgname=kbd-tapper
 _pkgname=tapper
-pkgver=0.4.2
-_pkgver=0.4.2-0.vdb.1
-pkgrel=2
+pkgver=0.4.3
+_pkgver=0.4.3-0.vdb.1
+pkgrel=1
 pkgdesc='A keyboard layout selector for Gnome Shell, X Window System and Wayland'
 # 'Tapper selects specified keyboard layout when user *taps* specified key. It always *selects* layouts and never *toggles* them.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ url='http://kbd-tapper.sourceforge.net/en.html'
 license=('GPL')
 depends=('dconf' 'glibmm' 'libinput' 'libxtst' 'json-glib')
 source=(https://sourceforge.net/projects/${pkgname}/files/${pkgver}/${_pkgname}-${_pkgver}.tar.gz)
-sha256sums=('dba1943c8ba79b9eb8fa5549aadbb3ae1096cf722e0f183457dcc9c9c850cb3d')
+sha256sums=('ad2800652190d46c8427012392718931348d6c30871df1082f6bf8d62adb7d25')
 
 build() {
   cd ${_pkgname}-${_pkgver}
