@@ -17,5 +17,5 @@ package() {
 
   cd "$srcdir/apricity-icons-$_pkgver"
   install -dm644 "$pkgdir/usr/share/icons"
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "Apricity Icons/LICENSE"
 }
