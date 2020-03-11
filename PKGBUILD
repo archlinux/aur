@@ -2,7 +2,7 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-git
 _pkgname=xrdp
-pkgver=0.9.12.r0.g1ce50849
+pkgver=0.9.13.r0.g0a669c5b
 pkgrel=1
 epoch=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"

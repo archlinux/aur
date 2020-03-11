@@ -1,6 +1,6 @@
 pkgbase = xrdp-git
 	pkgdesc = An open source remote desktop protocol (RDP) server - GIT version
-	pkgver = 0.9.12.r0.g1ce50849
+	pkgver = 0.9.13.r0.g0a669c5b
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/neutrinolabs/xrdp
@@ -16,7 +16,7 @@ pkgbase = xrdp-git
 	depends = lame
 	depends = opus
 	depends = fuse
-	provides = xrdp=0.9.12-1
+	provides = xrdp=0.9.13-1
 	conflicts = xrdp
 	backup = etc/xrdp/sesman.ini
 	backup = etc/xrdp/xrdp.ini
