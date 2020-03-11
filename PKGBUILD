@@ -3,7 +3,7 @@
 pkgname=heval-git
 pkgver=v0.0.5.r7.g0aa8c1b
 pkgrel=1
-pkgdesc="Heval - a human evaluator"
+pkgdesc="Medical calculator for intensive care unit (ICU)"
 arch=('any')
 url="https://github.com/radioxoma/heval"
 license=('GPLv3')
