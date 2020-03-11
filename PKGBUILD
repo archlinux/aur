@@ -1,16 +1,15 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tss-git
-pkgver=2.4.0rc0.r0.a808e737
+pkgver=2.4.0.r1.e808993b
 pkgrel=1
 pkgdesc='Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)'
 arch=('x86_64')
 url='https://github.com/tpm2-software/tpm2-tss'
 license=('BSD')
-depends=('openssl')
+depends=('curl' 'openssl')
 makedepends=('git' 'autoconf-archive' 'doxygen')
-checkdepends=('cmocka' # for unit test suite
-              'ibm-sw-tpm2' 'iproute2' 'procps-ng' 'uthash') # for integration test suite
+checkdepends=('cmocka' 'ibm-sw-tpm2' 'iproute2' 'procps-ng' 'uthash')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=('etc/tpm2-tss/fapi-config.json'
