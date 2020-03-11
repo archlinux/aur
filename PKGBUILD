@@ -2,18 +2,19 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=3.2.4.r55.g2c44e34
-pkgrel=1
+pkgver=3.2.4.r90.g6af5049
+pkgrel=2
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
 url="http://X0rg.github.io/CPU-X/"
 license=('GPL3')
-depends=('gtk3' 'ncurses' 'curl' 'json-c' 'libcpuid' 'pciutils' 'procps-ng')
+depends=('gtk3' 'ncurses' 'json-c' 'libcpuid' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
 provides=('cpu-x')
 conflicts=('cpu-x')
 source=("git+https://github.com/X0rg/CPU-X.git")
 md5sums=('SKIP')
+options=('!strip' 'debug')
 
 pkgver() {
 	cd "$_realname"
@@ -26,9 +27,10 @@ prepare() {
 }
 
 build() {
+	export CFLAGS="$CFLAGS -Wno-implicit-function-declaration" # To avoid warning about 'check_new_version()' caused by 'WITH_LIBCURL=0'
 	cd "$_realname/build"
 	msg2 "Run 'cmake'..."
-	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/cpu-x ..
+	cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib/cpu-x -DWITH_LIBCURL=0 ..
 
 	msg2 "Run 'make'..."
 	make
