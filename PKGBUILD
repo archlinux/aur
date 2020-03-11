@@ -4,7 +4,7 @@
 #               Lara Maia, Padfoot, Jorge Barroso, carstene1ns, Sebastian Lau
 
 pkgname=plymouth-git
-pkgver=0.9.4.r205.geae3768
+pkgver=0.9.4.r247.gae2fedb
 pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support (Development version)"
 url="https://www.freedesktop.org/wiki/Software/Plymouth/"
@@ -38,7 +38,13 @@ source=("git+https://gitlab.freedesktop.org/plymouth/plymouth.git"
 	'plymouth.initcpio_install'
 	'sd-plymouth.initcpio_install'
 	'plymouth-quit.service.in.patch'
-	'plymouth-update-initrd.patch')
+	'plymouth-update-initrd.patch'
+	'plymouth-halt.service.in.patch'
+	'plymouth-kexec.service.in.patch'
+	'plymouth-poweroff.service.in.patch'
+	'plymouth-quit-wait.service.in.patch'
+	'plymouth-read-write.service.in.patch'
+	'plymouth-reboot.service.in.patch')
 
 md5sums=('SKIP'
          '65fa2763d5c9bb9f80973ea5e6e3db3e'
@@ -49,14 +55,20 @@ md5sums=('SKIP'
          '870ea3e63c6989e2badf79d1fbafa914'
          'a3cfc30df846b2d7057a29e7fbe8733a'
          'b95f6979dc2f373045b2ab88a36d6771'
-         '006847d16b852c7a50ee2f241fd9647e'
-         '606cd558141551a1ce0d80150a045d83'
+         '3a76ce67fb178d4be4bf6338327e7d6d'
+         '3b6bec8424b638571086ac7828302e6d'
          '672ad913e2383483bcb4599a0a6bee48'
          '32f04fdbd1eb94ade30d1e63fdcdd9b5'
          '1979a4d9a1f496b52be9c29a7adb698b'
          'a08c422b67314e21100207f61caef095'
-         '69f16be8d44b25c199eb53c436884b07'
-         '98c20619291ee7c5a1c5f24b50e92db8')
+         'e6ce28022af7caa872458ae8b7f06b0d'
+         '98c20619291ee7c5a1c5f24b50e92db8'
+         '334a55f71244617c9f373321d1617adf'
+         'a8435dd758448c72c04204bdad4f023e'
+         '6307cab7344da3a5fb5863a0d8f731ba'
+         'af259bcb7b1e529b62d911eeb89186d2'
+         'eb4a15c1505f063509a9a5a296e806c8'
+         '0e234b738194033eb45c0106dd5f6438')
 
 pkgver() {
   cd plymouth
@@ -68,6 +80,12 @@ prepare() {
 	cd plymouth
 	patch -p1 -i $srcdir/plymouth-update-initrd.patch
 	patch -p1 -i $srcdir/plymouth-quit.service.in.patch
+	patch -p1 -i $srcdir/plymouth-halt.service.in.patch
+	patch -p1 -i $srcdir/plymouth-kexec.service.in.patch
+	patch -p1 -i $srcdir/plymouth-poweroff.service.in.patch
+	patch -p1 -i $srcdir/plymouth-quit-wait.service.in.patch
+	patch -p1 -i $srcdir/plymouth-read-write.service.in.patch
+	patch -p1 -i $srcdir/plymouth-reboot.service.in.patch
 }
 
 build() {
