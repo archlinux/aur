@@ -1,0 +1,19 @@
+pkgbase = faf-ice-adapter-java
+	pkgdesc = A P2P connection proxy for Supreme Commander: Forged Alliance using ICE
+	pkgver = 2.4.1
+	pkgrel = 1
+	epoch = 0
+	url = http://www.faforever.com/
+	arch = any
+	license = GPL3
+	makedepends = jdk8-openjdk
+	makedepends = gradle
+	depends = java8-openjfx
+	provides = faf-ice-adapter
+	source = https://github.com/FAForever/java-ice-adapter/releases/download/v2.4.1/faf-ice-adapter.jar
+	source = faf-ice-adapter
+	sha256sums = cb8f078541fc99895fdfa00bd6ce723a77a3cf4c9946c8f6884d53b16f2a9711
+	sha256sums = 6b5e2809751a7bb230a2f338398178c53acbf8df884efc57717d9c4e1e842175
+
+pkgname = faf-ice-adapter-java
+
