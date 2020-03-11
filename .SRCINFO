@@ -1,7 +1,7 @@
 pkgbase = python-onnxruntime
 	pkgdesc = Cross-platform, high performance scoring engine for ML models
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 2
 	url = https://github.com/microsoft/onnxruntime
 	arch = x86_64
 	license = MIT
@@ -15,25 +15,24 @@ pkgbase = python-onnxruntime
 	makedepends = python-setuptools
 	makedepends = cub
 	makedepends = nlohmann-json
+	makedepends = chrono-date
 	depends = protobuf
 	depends = re2
 	depends = python-numpy
-	source = git+https://github.com/microsoft/onnxruntime#tag=v1.1.2
-	source = git+https://github.com/HowardHinnant/date.git
-	source = eigen::git+https://github.com/eigenteam/eigen-git-mirror.git
+	source = git+https://github.com/microsoft/onnxruntime#tag=v1.2.0
+	source = git+https://gitlab.com/libeigen/eigen.git
 	source = git+https://github.com/google/gemmlowp.git
 	source = git+https://github.com/google/nsync.git
 	source = git+https://github.com/onnx/onnx.git
+	source = git+https://github.com/dcleblanc/SafeInt.git
 	source = build-fixes.patch
-	source = nlohmann-json.diff
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = da8e27ff0011fb207ee8a6f8675160eb85cb8711f01050fa7454234242af141951cb5bba52fa50b98cf8567b8faa973565dfef37f4daa2219a42cf26e03c86b5
-	sha512sums = 1c70cf6ae50e1aba97e4eec3da40b076c4cf1e6a48a92d189045fe700d71bfbcbef937183f917e6c37f4271ce39fef68d9d01e9630f3f928a0bb35df248f63a4
+	sha512sums = 4457e19e3e91195ea2976a70e31a70d07b1b5e2279f1493a537c7d128aef5695e317cfdb84a87a0ca8d2d53ba15d72edf0f95905ecff7fbfb250e3a97944313c
 
 pkgname = python-onnxruntime
 
@@ -43,6 +42,6 @@ pkgname = python-onnxruntime-cuda
 	depends = python-numpy
 	depends = cuda
 	depends = cudnn
-	provides = python-onnxruntime=1.1.2
+	provides = python-onnxruntime=1.2.0
 	conflicts = python-onnxruntime
 
