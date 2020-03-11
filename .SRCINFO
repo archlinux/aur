@@ -1,0 +1,14 @@
+pkgbase = python2-e3-core
+	pkgdesc = Python2 e3-core library
+	pkgver = 21.0.0
+	pkgrel = 1
+	url = https://github.com/AdaCore/e3-core
+	arch = any
+	license = GPL
+	makedepends = python2-pip
+	depends = python2
+	source = python2-e3-core-21.0.0::https://github.com/AdaCore/e3-core/archive/v21.0.0.tar.gz
+	sha1sums = f4ad3415045c5a052f66a66c141cb854b24b291d
+
+pkgname = python2-e3-core
+
