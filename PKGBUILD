@@ -1,7 +1,7 @@
 # Maintainer: Matt Coffin <mcoffin13@gmail.com>
 pkgname=fanctl-git
 pkgver=0.3.1.r12.63ec4df
-pkgrel=1
+pkgrel=2
 pkgdesc=""
 arch=('x86_64')
 url="https://gitlab.com/mcoffin/fanctl"
@@ -23,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git get-version -a -v || git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$((git get-version -a -v || git describe --long) | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {

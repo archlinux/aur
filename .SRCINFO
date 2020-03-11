@@ -1,6 +1,6 @@
 pkgbase = fanctl-git
 	pkgver = 0.3.1.r12.63ec4df
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/mcoffin/fanctl
 	arch = x86_64
 	license = GPL
