@@ -1,6 +1,6 @@
 pkgbase = vkd3d-valve-git
 	pkgdesc = D3D12 to Vulkan translation library (Valve version)
-	pkgver = 1.1.r695.g40e4a74
+	pkgver = 1.1.r708.gf548d81
 	pkgrel = 1
 	url = https://github.com/ValveSoftware/vkd3d
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = vkd3d-valve-git
 	makedepends = vulkan-headers
 	makedepends = xcb-proto
 	makedepends = wine
+	makedepends = git
 	depends = spirv-tools
 	depends = vulkan-icd-loader
 	depends = libxcb
