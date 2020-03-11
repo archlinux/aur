@@ -2,7 +2,7 @@
 # Contributor: jfperini <@jfperini>
 
 pkgname=veusz-git
-pkgver=3.1.r17.ge7700bfd
+pkgver=3.2.r2.g1f461161
 pkgrel=1
 pkgdesc="A scientific plotting and graphing package, designed to create publication-ready Postscript or PDF output."
 url="https://github.com/veusz/veusz"
@@ -16,9 +16,8 @@ optdepends=('ghostscript: for EPS/PS output'
             'python-astropy: for VO table import')
 conflicts=('veusz')
 provides=('veusz')
-source=('git+https://github.com/veusz/veusz' 'veusz.desktop')
-sha256sums=('SKIP'
-            '2697db4170f4f98b8498185dbaf408a9f8aa4c0bcaa6a117dae1a464f73ea379')
+source=('git+https://github.com/veusz/veusz')
+sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
@@ -27,8 +26,8 @@ pkgver() {
 
 build() {
   cd ${pkgname%-git}
-  [[ -d NEW/PyQt5 ]] || mkdir -p NEW/PyQt5
-  [[ -d NEW/PyQt5/bindings ]] && rm -rf NEW/PyQt5/bindings
+  [[ -d NEW ]] || mkdir -p NEW
+  [[ -d NEW/PyQt5 ]] && rm -rf NEW/PyQt5
   ln -s /usr/lib/python3.8/site-packages/PyQt5/bindings/ NEW/PyQt5
   export SIP_DIR=NEW/
   python setup.py build
@@ -40,5 +39,5 @@ package() {
   for _i in 16 32 48 64 128; do
     install -Dm644 "icons/veusz_${_i}.png" "$pkgdir"/usr/share/icons/hicolor/${_i}x${_i}/apps/veusz.png
   done
-  install -Dm644 "$srcdir/veusz.desktop" "$pkgdir"/usr/share/applications/veusz.desktop
+  install -D -m644 "support/veusz.desktop"  "${pkgdir}/usr/share/applications/veusz.desktop"
 }
