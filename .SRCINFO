@@ -1,18 +1,18 @@
 pkgbase = ttf-hack-ibx
-	pkgdesc = A typeface designed for source code.
+	pkgdesc = A typeface designed for source code
 	pkgver = 3.003
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourcefoundry.org/hack/
 	arch = any
 	groups = infinality-bundle-fonts
-	license = custom:OFL,custom:Other
-	depends = fontconfig
-	source = https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
-	source = 45-hack.conf
+	license = MIT,
+	license = custom
+	provides = ttf-hack
+	conflicts = ttf-hack
+	source = ttf-hack-ibx-3.003.tar.gz::https://github.com/source-foundry/Hack/archive/v3.003.tar.gz
 	source = 90-tt-hack.conf
-	sha512sums = 7f6a2353711c9da17ff6ce648a28ff038462fbb6f3be91eb5b7f797a7182bb21224942ea5964cc8add3912e18c7e6267d311c7674f45f4295edfe1a1f69f46d3
-	sha512sums = a7ba7a0a396a5bf39c38ea815740c8648db576d403e13f23bf10e3da76bcd82db5f8e63806008f7dc387d99f61e29dfaf5a41ca9f12c4e62ad9e8f389d64166e
-	sha512sums = 48e62483ca484ce1e57ac45f2c98de3a8d628913adc701665359015d610fefecf1e585ea3cac1a6c9bb6dd2f76b03d8a25989992005e4f6033f0c3139e1c3089
+	sha256sums = 3c6f1a20e86744077e83c9bacf879a5b13f659f1c07e9c5c57d6efc3cbe66c07
+	sha256sums = 9535ddbef1e641a48621c7514970cc3a96a4ea54f1528aa6daea49ae69db9f4d
 
 pkgname = ttf-hack-ibx
 
