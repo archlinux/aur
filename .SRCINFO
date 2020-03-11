@@ -1,7 +1,7 @@
 pkgbase = srb2kart-data
 	pkgdesc = Data files for Sonic Robo Blast 2 Kart
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = any
 	license = custom
