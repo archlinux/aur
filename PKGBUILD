@@ -18,14 +18,10 @@ conflicts=("${_pkgname}")
 install="${pkgname}.install"
 source=("${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}")
-sha1sums=('4537a7ce30bedf87cedafc2020822219ad58310d'
-          '2fb371b5774b67143f0610dfbec4963a4e2f11cc')
+sha1sums=('80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad'
+          'e1485ef14463f275005cae43a0a1e43ce52354ca')
 
 package() {
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
   install -Dm755 "${_pkgname}.csh" "${pkgdir}/etc/profile.d/${_pkgname}.csh"
 }
-
-# getver: https://developer.android.com/studio/releases/emulator.html
-# see https://dl.google.com/android/repository/repository2-1.xml for new versions
-# vim:set ts=2 sw=2 et:
