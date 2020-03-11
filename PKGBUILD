@@ -3,11 +3,11 @@
 
 pkgname=linx-server
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'
-license=('GPL')
+license=('GPL3')
 install=linx-server.install
 options=('!strip')
 noextract=('linx-server')
