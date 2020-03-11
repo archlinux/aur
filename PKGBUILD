@@ -16,6 +16,6 @@ package() {
   optdepends=("gnome-tweaks: simple switch")
 
   cd "$srcdir/apricity-icons-$_pkgver"
-  install -dm644 "$pkgdir/usr/share/icons"
+  mv "Apricity Icons" "$pkgdir/usr/share/icons"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "Apricity Icons/LICENSE"
 }
