@@ -1,6 +1,6 @@
 # Maintainer: Maddie Zhan <maddie at zzz dot cat>
 pkgname=librespeed-cli-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Command line interface for LibreSpeed speed test backends"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -13,9 +13,9 @@ source_x86_64=("https://github.com/librespeed/speedtest-cli/releases/download/v$
 source_aarch64=("https://github.com/librespeed/speedtest-cli/releases/download/v${pkgver}/${pkgname/-bin/}-linux-arm64.tar.gz")
 source_armv7h=("https://github.com/librespeed/speedtest-cli/releases/download/v${pkgver}/${pkgname/-bin/}-linux-armv7.tar.gz")
 
-sha256sums_x86_64=('573983a5a565a6f06739c78a7e5b8b953a0ef391ba56824f5e69a6044195aaf9')
-sha256sums_aarch64=('805b74ad4ea88c2df21f111e53bce9dd6f67e4e4807488af2cbe2e59ba6a7a13')
-sha256sums_armv7h=('eb13996627f904cc795f7bcf1f55d0a4f631c5118bb210a09c5bb2bdb201b4df')
+sha256sums_x86_64=('3010df704bb66c3d649b67a935a6333c4d391a89466f64ea30f1f43308ec0812')
+sha256sums_aarch64=('3e9c99756df559940560e4a51d116558c9db296fff40b1a45050c08bc313c309')
+sha256sums_armv7h=('84795e33946d2cd1f7ee231df5be1506414ac9b3d2d11d2f870c9ad72a25a114')
 
 package() {
   install -Dm755 "${srcdir}/${pkgname/-bin}" "${pkgdir}/usr/bin/${pkgname/-bin}"
