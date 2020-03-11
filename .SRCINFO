@@ -12,7 +12,7 @@ pkgbase = fiat-hpc-git
 	provides = fiat-hpc
 	conflicts = fiat
 	options = !emptydirs
-	source = fiat::git+https://bitbucket.org/adaptivesimulations/fiat-hpc.git#branch=feature/python3
+	source = fiat::git+https://bitbucket.org/adaptivesimulations/fiat-hpc.git#branch=fmaster
 	md5sums = SKIP
 
 pkgname = fiat-hpc-git
