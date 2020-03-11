@@ -2,7 +2,7 @@
 # Contributor: Dennis Kempin <mail@dennis-kempin.de>
 
 pkgname=boost-build
-pkgver=4.1.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Boost.Build makes it easy to build C++ projects, everywhere."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gcc' 'boost' 'python')
 conflicts=('boost-build-nightly')
 source=("https://github.com/boostorg/build/archive/${pkgver}.tar.gz"
         "http://www.boost.org/LICENSE_1_0.txt")
-sha256sums=('e1513cf8ad83e7343f8c21207b3f4cb6c2e4561685d66fe80c4fc612a1c5a55a'
+sha256sums=('9ea9edb115fa0b0a82eaf4f00a4e348df9c3b1b891c3db32823ae5e27f284c07'
             'c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566')
 
 prepare() {
