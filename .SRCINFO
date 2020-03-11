@@ -1,7 +1,7 @@
 pkgbase = cpu-x
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://X0rg.github.io/CPU-X/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = cpu-x
 	makedepends = nasm
 	depends = gtk3
 	depends = ncurses
-	depends = curl
 	depends = json-c
 	depends = libcpuid
 	depends = pciutils
