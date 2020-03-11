@@ -1,7 +1,7 @@
 # Maintainer: Julian Hornich <hornich at kth dot se>
 pkgname=ufl-hpc-git
 pkgdesc="Unified form language. HPC version"
-pkgver=1.0.1_20200110
+pkgver=1.1.0_20200311
 pkgrel=1
 _branch=master
 arch=('i686' 'x86_64')
