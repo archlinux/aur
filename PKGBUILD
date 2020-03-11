@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/rocPRIM"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
-makedepends=('cmake' 'hcc' 'python2' 'rocminfo')
+makedepends=('cmake' 'hcc' 'python2' 'rocminfo' 'rocm-comgr')
 source=("https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/$pkgver.tar.gz")
 sha256sums=('ef93668ce6b740e9e01688937846b406407a893c2effc0719e876acce5998b3a')
 
@@ -27,6 +27,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocprim \
         -DBUILD_TEST=OFF \
+        -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr
         "$srcdir/rocPRIM-$pkgver"
   make
 }
