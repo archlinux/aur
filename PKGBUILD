@@ -1,7 +1,7 @@
 # Maintainer Cédric Bellegarde
 
 pkgname=passbook-next-git
-pkgver=0.8.r5.gf41ed60
+pkgver=0.8.r6.gd894395
 pkgrel=1
 pkgdesc='Password manager for GNOME (dev branch)'
 arch=(any)
