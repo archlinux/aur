@@ -1,12 +1,13 @@
 # Maintainer: Guillaume Dolle  <dev at gdolle.com>
 pkgname=spack
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers."
 arch=('i686' 'x86_64')
 url="https://spack.io/"
 license=('MIT')
 depends=('python' 'polkit')
+optdepends=( 'env-modules-tcl' 'lmod' ) 
 source=(https://github.com/spack/spack/archive/v${pkgver}.tar.gz
         spack.sysusers
         spack.tmpfiles

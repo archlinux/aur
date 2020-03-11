@@ -1,13 +1,15 @@
 pkgbase = spack
 	pkgdesc = A flexible package manager for supercomputer that supports multiple versions, configurations, platforms, and compilers.
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spack.io/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = python
 	depends = polkit
+	optdepends = env-modules-tcl
+	optdepends = lmod
 	source = https://github.com/spack/spack/archive/v0.14.0.tar.gz
 	source = spack.sysusers
 	source = spack.tmpfiles
