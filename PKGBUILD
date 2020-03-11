@@ -3,7 +3,7 @@
 pkgdesc="Flexible Collision Library."
 url='https://github.com/flexible-collision-library/fcl'
 pkgname=fcl
-pkgver=0.6.0
+pkgver=0.6.1
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
@@ -14,7 +14,7 @@ optdepends=('octomap: collision detection with octrees'
             'flann: support for fast approximate nearest neighbor searches')
 _dir=fcl-${pkgver}
 source=(https://github.com/flexible-collision-library/fcl/archive/v${pkgver}.tar.gz)
-sha256sums=('6891abac5cc26d64f5ef8894bc6c2a30174558c5c83a3ed63cf65a21cb619b2b')
+sha256sums=('c8a68de8d35a4a5cd563411e7577c0dc2c626aba1eef288cb1ca88561f8d8019')
 
 build() {
   mkdir -p ${srcdir}/build
