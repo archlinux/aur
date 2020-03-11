@@ -1,8 +1,9 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=karchive-git
-pkgver=r72.d11c808
-pkgrel=2
+epoch=2
+pkgver=v5.68.0.rc1.r1.g17d4092
+pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/karchive'
@@ -16,8 +17,8 @@ source=('git://anongit.kde.org/karchive.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd karchive
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
