@@ -3,7 +3,7 @@
 pkgname=apricity-icons
 pkgver=3.36.pre
 _pkgver=3.36-pre
-pkgrel=1
+pkgrel=2
 pkgdesc="Apricity OS icon theme for Gnome or Cinnamon"
 arch=(any)
 url=https://github.com/dvorapa/apricity-icons/
@@ -17,6 +17,6 @@ package() {
 
   cd "$srcdir/apricity-icons-$_pkgver"
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" "Apricity Icons/LICENSE"
-  install -dm644 "$pkgdir/usr/share/icons"
+  install -dm755 "$pkgdir/usr/share/icons"
   mv "Apricity Icons" "$pkgdir/usr/share/icons"
 }
