@@ -9,7 +9,7 @@ pkgname=(yaru-sound-theme-git
          yaru-unity-theme-git
          yaru-icon-theme-git
          yaru-session-git)
-pkgver=20.04.1.r118.g59b2e216
+pkgver=20.04.1.r136.gd9ce7145
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -38,7 +38,7 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/themes/Yaru{-light,{,-dark}/{gtk-*,index.theme}}
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru/gnome-shell
+        rm "${pkgdir}"/usr/share/themes/Yaru{,-dark}/gnome-shell
         rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-dark}
     fi
     if [[ "$1" != "unity-theme" ]]; then
@@ -95,7 +95,7 @@ package_yaru-unity-theme-git() {
 
 package_yaru-icon-theme-git() {
     pkgdesc="Yaru default ubuntu icon theme"  
-    depends=(hicolor-icon-theme gtk-update-icon-cache librsvg)
+    depends=(hicolor-icon-theme gtk-update-icon-cache librsvg humanity-icon-theme)
     provides=(yaru-icon-theme)
     conflicts=(yaru-icon-theme)
 

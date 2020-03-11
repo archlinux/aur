@@ -1,6 +1,6 @@
 pkgbase = yaru-git
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 20.04.1.r118.g59b2e216
+	pkgver = 20.04.1.r136.gd9ce7145
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -44,6 +44,7 @@ pkgname = yaru-icon-theme-git
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = librsvg
+	depends = humanity-icon-theme
 	provides = yaru-icon-theme
 	conflicts = yaru-icon-theme
 
