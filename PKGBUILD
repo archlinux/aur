@@ -2,7 +2,7 @@
 
 pkgname=ttf-signika-family-ib
 pkgver=1.0001
-pkgrel=8
+pkgrel=9
 depends=('fontconfig')
 pkgdesc="Signika is a sans-serif with a gentle character, developed for wayfinding, signage, and other media where clarity of information is required. TrueType version."
 groups=('infinality-bundle-fonts-extra')
@@ -11,20 +11,20 @@ replaces=('otf-signika-family-ib' 'ttf-signika-family-ibx')
 url="http://fontfabric.com/signika-font/"
 arch=('any')
 license=('custom:OFL')
-#http://www.google.com/fonts
-source=(http://dl.1001fonts.com/signika.zip
+#http://fonts.google.com/speciemen/Signika
+source=('Signika.zip::https://fonts.google.com/download?family=Signika'
         45-signika.conf
         90-tt-signika.conf)
-sha1sums=('f56c70f97924ffef70b793ccc94df015d231b7b0'
-          '16aff1bcdddfaa1c64ecc56c3d370953dffe8e46'
-          '107bcfd30759580b9dd213c329dc735f26f87fc3')
+sha256sums=('e9f6c1722d7df7f5d6e5802df08f01130b8683d5dc7e6fd61262cf6be906f183'
+            'd2425f0d723f72db90e00f323aaa83610a067fe244bcaf13b9dde58a902f0e39'
+            'b5aa77899c9b3511adcb6a8cdd4b09c654913a9d3266207c0d8de381d4e7ea8a')
 
 package(){
   cd $srcdir
-  install -D -m644 Signika/OFL.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
+  install -D -m644 OFL.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
 
   install -m755 -d "${pkgdir}"/usr/share/fonts/"${pkgname}"
-  install -m644 */*.ttf "${pkgdir}"/usr/share/fonts/"${pkgname}"
+  install -m644 *.ttf "${pkgdir}"/usr/share/fonts/"${pkgname}"
 
   install -D -m644 45-signika.conf \
     "${pkgdir}"/etc/fonts/conf.avail/45-signika.conf
