@@ -6,7 +6,7 @@
 pkgbase=pjproject-git
 pkgname=("$pkgbase" "python-$pkgbase")
 pkgver=2.10.r38.g98f70c2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source SIP stack and media stack'
 arch=('x86_64' 'armv7h' 'i686')
 url='https://www.pjsip.org/'
@@ -15,21 +15,18 @@ makedepends=('alsa-lib' 'e2fsprogs' 'ffmpeg' 'libsamplerate' 'libsrtp'
              'openssl' 'opus' 'portaudio' 'speex' 'swig' 'util-linux'
              'python' 'python-setuptools')
 source=("$pkgbase::git+https://github.com/pjsip/${pkgbase/-/.}"
-        '0001-Don-t-build-Java-bindings.patch'
         'config_site.h')
 sha256sums=('SKIP'
-            'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
 pkgver() {
-    cd "$pkgbase"
-    git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgbase"
+  git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$pkgbase"
-  patch -Np1 < "../${source[1]}"
-  cp "../${source[2]}" 'pjlib/include/pj/config_site.h'
+  install -Dm644 -t pjlib/include/pj/ ../config_site.h
 }
 
 build() {
@@ -50,12 +47,12 @@ build() {
     --disable-opencore-amr \
     "${arch_opts[@]}"
 
-  make -j1 dep
-  make -j1
+  make dep
+  make
 
-  make -j1 -C pjsip-apps/src/swig
-
-  cd 'pjsip-apps/src/swig/python'
+  pushd pjsip-apps/src/swig
+  make python
+  pushd python
   python setup.py build
 }
 
@@ -66,8 +63,8 @@ package_pjproject-git() {
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
   cd "$pkgbase"
-  make -j1 DESTDIR="$pkgdir" install
-  install -D -m755 pjsip-apps/bin/pjsua-*gnu* "$pkgdir/usr/bin/pjsua"
+  make DESTDIR="$pkgdir" install
+  install -Dm755 pjsip-apps/bin/pjsua-*gnu* "$pkgdir/usr/bin/pjsua"
 }
 
 package_python-pjproject-git() {
@@ -75,5 +72,5 @@ package_python-pjproject-git() {
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")
   cd "$pkgbase/pjsip-apps/src/swig/python"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
