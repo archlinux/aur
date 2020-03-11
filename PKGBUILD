@@ -5,7 +5,7 @@
 _fname=hack
 pkgname=ttf-$_fname-ibx
 pkgver=3.003
-pkgrel=3
+pkgrel=4
 pkgdesc='A typeface designed for source code'
 url="http://sourcefoundry.org/$_fname/"
 arch=('any')
@@ -24,9 +24,9 @@ package() {
     build/ttf/*.ttf
   install -Dm644 -t "$pkgdir/etc/fonts/conf.avail/" \
     config/fontconfig/*.conf "../90-tt-$_fname.conf"
+  install -Dm644 -t "$pkgdir/usr/share/licences/" LICENSE.md docs/CONTRIBUTORS.md
+  install -Dm644 -t "$pkgdir/usr/share/doc/" CHANGELOG.md FAQ.md README.md
   install -m755 -d "$pkgdir/etc/fonts/conf.d"
   cd "$pkgdir"/etc/fonts/conf.d
   ln -s ../conf.avail/*.conf ./
-  install -Dm644 -t "$pkgdir/usr/share/licences/" LICENSE.md docs/CONTRIBUTORS.md
-  install -Dm644 -t "$pkgdir/usr/share/doc/" CHANGELOG.md FAQ.md README.md
 }
