@@ -19,15 +19,16 @@ md5sums=('a6efcf60b863339151b84d8a902f4919'
 
 prepare() {
   mkdir -p build
-}
-
-build() {
   cd build
   cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSERVICE_USER=biboumi \
     -DSERVICE_GROUP=jabber
+}
+
+build() {
+  cd build
   make biboumi
 }
 
