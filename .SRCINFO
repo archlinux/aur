@@ -1,5 +1,5 @@
 pkgbase = fanctl-git
-	pkgver = r20.5080e76
+	pkgver = 0.3.1.r12.63ec4df
 	pkgrel = 1
 	url = https://gitlab.com/mcoffin/fanctl
 	arch = x86_64
@@ -9,7 +9,9 @@ pkgbase = fanctl-git
 	provides = fanctl
 	conflicts = fanctl
 	source = fanctl::git+https://gitlab.com/mcoffin/fanctl.git#branch=master
-	sha256sums = SKIP
+	source = fanctl.service
+	sha512sums = SKIP
+	sha512sums = 7aab4bdec106c131f20f78bb150e4f6b2875fede6cef3ffbe164279f2f2b35aeabc0c81b7375e4eee4513acb9a0cc7ce43edb1492b27275dd63d520de26a6d69
 
 pkgname = fanctl-git
 
