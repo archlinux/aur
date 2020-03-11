@@ -2,7 +2,7 @@
 # Contributor: Tau Tsao <realturner at gmail.com>
 pkgname=xrdp-devel-git
 _pkgname=xrdp
-pkgver=0.9.12.r25.g6d7cce3d
+pkgver=0.9.13.r0.g0a669c5b
 pkgrel=1
 pkgdesc="An open source remote desktop protocol (RDP) server - GIT version"
 url="https://github.com/neutrinolabs/$_pkgname"
@@ -21,7 +21,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  printf "0.9.12.r%s.g%s" "$(git rev-list --count v0.9.12..HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.9.13.r%s.g%s" "$(git rev-list --count v0.9.13..HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
