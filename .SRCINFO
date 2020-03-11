@@ -1,13 +1,13 @@
 pkgbase = zoxide
 	pkgdesc = A fast cd command that learns your habits
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	source = zoxide-0.1.1.tar.gz::https://github.com/ajeetdsouza/zoxide/archive/v0.1.1.tar.gz
-	sha512sums = 9e9372b395e774cba4750df291205299faffba6a805729dda518f12a6176f4c1ea3521aa6481ba3e8f8985088d48d2fe16f30836fdb9a6d0d8a49b32b00e2e4b
+	source = zoxide-0.2.0.tar.gz::https://github.com/ajeetdsouza/zoxide/archive/v0.2.0.tar.gz
+	sha512sums = 830b07104ad20f3f8e18b22366100d1c8ad5ae3af8f56c0d55584c823c60e082cdbaeb8f5d575049fa34b6cb0a670f7392b5106405e248a8887d74544a96be45
 
 pkgname = zoxide
 

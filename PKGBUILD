@@ -1,6 +1,6 @@
 # Maintainer: desbma
 pkgname=zoxide
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/ajeetdsouza/${pkgname}"
 license=('MIT')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ajeetdsouza/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('9e9372b395e774cba4750df291205299faffba6a805729dda518f12a6176f4c1ea3521aa6481ba3e8f8985088d48d2fe16f30836fdb9a6d0d8a49b32b00e2e4b')
+sha512sums=('830b07104ad20f3f8e18b22366100d1c8ad5ae3af8f56c0d55584c823c60e082cdbaeb8f5d575049fa34b6cb0a670f7392b5106405e248a8887d74544a96be45')
 
 build() {
     cd "${pkgname}-${pkgver}"
