@@ -1,0 +1,15 @@
+diff --git a/src/main/java/cz/cvut/fit/ostrajava/Compile.java b/src/main/java/cz/cvut/fit/ostrajava/Compile.java
+index 65ba19e..bb9f821 100644
+--- a/src/main/java/cz/cvut/fit/ostrajava/Compile.java
++++ b/src/main/java/cz/cvut/fit/ostrajava/Compile.java
+@@ -22,8 +22,8 @@ import cz.cvut.fit.ostrajava.Compiler.Class;
+ 
+ public class Compile {
+ 
+-    public final static String COMPILED_LIBRARIES_DIRECTORY = "ostrajava_lib/out/";
+-    public final static String SOURCE_LIBRARIES_DIRECTORY = "ostrajava_lib/src/";
++    public final static String COMPILED_LIBRARIES_DIRECTORY = "/usr/share/ostrajava/out/";
++    public final static String SOURCE_LIBRARIES_DIRECTORY = "/usr/share/ostrajava/src/";
+ 
+     final static String CLASS_TYPE_EXTENSION = "tryda";
+ 

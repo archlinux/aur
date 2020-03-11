@@ -1,0 +1,21 @@
+pkgbase = ostrajava
+	pkgdesc = Bo neni cas pyco
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/tkohout/OSTRAJava
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	source = ostrajava-1.1-1.tar.gz::https://github.com/tkohout/OSTRAJava/archive/1.1.tar.gz
+	source = fix-lib-paths.diff
+	sha256sums = 62fa69d5c0c9f1f9b4a742316b190e20dff72f4b87b36dff95c7e3260679f2e7
+	sha256sums = 409f5b9d171d278aa50386e79f58b0f0a5370659999549b86c985fe1421bb026
+
+pkgname = ostrajava
