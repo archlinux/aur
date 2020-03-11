@@ -16,6 +16,7 @@ pkgbase = ffc-hpc-git
 	depends = ufc2-hpc-git
 	depends = python-numpy
 	depends = python-six
+	depends = python-sympy
 	provides = ffc-hpc
 	conflicts = ffc-hpc
 	options = !emptydirs
