@@ -1,6 +1,6 @@
 pkgbase = libime-git
 	pkgdesc = A library to support generic input method implementation
-	pkgver = r148.14f5855
+	pkgver = r150.fdce632
 	pkgrel = 1
 	url = https://github.com/fcitx/libime
 	arch = i686
