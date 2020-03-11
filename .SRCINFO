@@ -1,11 +1,11 @@
 pkgbase = ttf-hack-ibx
 	pkgdesc = A typeface designed for source code
 	pkgver = 3.003
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourcefoundry.org/hack/
 	arch = any
 	groups = infinality-bundle-fonts
-	license = MIT,
+	license = MIT
 	license = custom
 	provides = ttf-hack
 	conflicts = ttf-hack

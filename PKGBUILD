@@ -5,14 +5,14 @@
 _fname=hack
 pkgname=ttf-$_fname-ibx
 pkgver=3.003
-pkgrel=2
+pkgrel=3
 pkgdesc='A typeface designed for source code'
 url="http://sourcefoundry.org/$_fname/"
 arch=('any')
 groups=('infinality-bundle-fonts')
 provides=('ttf-hack')
 conflicts=('ttf-hack')
-license=('MIT', 'custom')
+license=('MIT' 'custom')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/source-foundry/${_fname^}/archive/v$pkgver.tar.gz"
         "90-tt-$_fname.conf")
 sha256sums=('3c6f1a20e86744077e83c9bacf879a5b13f659f1c07e9c5c57d6efc3cbe66c07'
