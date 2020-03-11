@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=langkit-git
-pkgver=r6135.442192c9
+pkgver=r6608.7e98ba83
 pkgrel=1
 
 pkgdesc='Compiler for syntactic and semantic language analysis libraries'
@@ -11,8 +11,8 @@ license=('GPL')
 
 depends=('gcc-ada' 'gprbuild' 'gnatcoll-core' 'gnatcoll-iconv'
          'autopep8' 'python-psutil' 'python-sphinx' 'python-yaml'
-         'python2-docutils' 'python2-enum34' 'python2-funcy' 'python2-mako'
-         'yapf')
+         'python2-docutils' 'python2-e3-core' 'python2-enum34' 'python2-funcy'
+         'python2-mako' 'yapf')
 makedepends=('git')
 
 provides=('langkit')
@@ -62,5 +62,5 @@ package()
 
     python2 scripts/build-langkit_support.py \
         --library-types relocatable \
-        install "$pkgdir/usr"
+        install --build-mode=prod "$pkgdir/usr"
 }
