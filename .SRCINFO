@@ -18,7 +18,7 @@ pkgbase = godot-pulse
 	depends = libglvnd
 	conflicts = godot-git
 	conflicts = godot
-	source = https://github.com/godotengine/godot/archive/3.2-stable.tar.gz
+	source = https://github.com/godotengine/godot/archive/3.2.1-stable.tar.gz
 	sha256sums = 0f9635e5c014713340160d8bd0cbfc6d34a36d39402a84eaa0d8c5dee4d1c6f0
 
 pkgname = godot-pulse
