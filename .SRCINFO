@@ -1,0 +1,31 @@
+pkgbase = lib32-nvidia-390xx-utils
+	pkgver = 390.132
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86/390.132/NVIDIA-Linux-x86-390.132.run
+	sha512sums = 12b0f80b4bbaebc984c7dbacd365795646c7697606242b05095ac61d69d89ab89fded47d583b4b99793ebcea9e38ec1e7b63dda1c2fdce53ab697cafcdbb3a85
+
+pkgname = lib32-nvidia-390xx-utils
+	pkgdesc = NVIDIA drivers utilities (32-bit), 390xx legacy branch
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libglvnd
+	depends = nvidia-390xx-utils
+	optdepends = lib32-opencl-nvidia-390xx: OpenCL support
+	provides = lib32-vulkan-driver
+	provides = lib32-opengl-driver
+	provides = lib32-nvidia-390xx-libgl
+	provides = lib32-nvidia-utils
+	conflicts = lib32-nvidia-utils
+
+pkgname = lib32-opencl-nvidia-390xx
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit), 390xx legacy branch
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-driver
+	conflicts = lib32-opencl-nvidia
+
