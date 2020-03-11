@@ -1,8 +1,0 @@
-post_install() {
-	echo "    -->> To save changes to MangoHud, you will need a configuration file."
-	echo "    -->> See https://github.com/flightlessmango/MangoHud#hud-configuration"
-}
-
-post_upgrade() {
-	post_install
-}
