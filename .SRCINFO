@@ -1,0 +1,16 @@
+pkgbase = omap-usb-boot
+	pkgdesc = Tool to communicate with OMAP bootroms to execute code, change boot media, etc
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://git.replicant.us/contrib/PaulK/omap-usb-boot/
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libusb
+	source = git://git.replicant.us/PaulK/omap-usb-boot#commit=15ea4dcaecdf2e65a79d78a3fd4fd500addfc7cc
+	sha256sums = SKIP
+
+pkgname = omap-usb-boot
+
