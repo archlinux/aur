@@ -1,12 +1,10 @@
 pkgbase = otf-raleway
 	pkgdesc = An elegant sans-serif font, originally designed in a single thin weight
 	pkgver = 3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.theleagueofmoveabletype.com/raleway
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
+	license = OFL
 	conflicts = ttf-raleway
 	source = https://raw.githubusercontent.com/google/fonts/master/ofl/raleway/OFL.txt
 	source = https://raw.githubusercontent.com/impallari/Raleway/master/fonts/v3.000%20Fontlab/OTF/Raleway-Black-Italic-Original.otf
