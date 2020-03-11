@@ -6,16 +6,25 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libtirpc
-pkgver=1.1.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc='Transport Independent RPC library (SunRPC replacement)'
-arch=('x86_64')
-url='http://libtirpc.sourceforge.net/'
-license=('BSD')
-depends=('lib32-krb5' 'libtirpc')
-makedepends=('git')
-source=("git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=libtirpc-${pkgver//./-}")
-sha256sums=('SKIP')
+arch=(x86_64)
+url=http://libtirpc.sourceforge.net/
+license=(BSD)
+depends=(
+  lib32-krb5
+  libtirpc
+)
+makedepends=(git)
+source=(git://git.linux-nfs.org/projects/steved/libtirpc.git#tag=3642f9f6692bd8c0f4ac40561a27ef63502d80a4)
+sha256sums=(SKIP)
+
+pkgver() {
+  cd libtirpc
+
+  git describe --tags | sed 's/^libtirpc-//; s/-/./g'
+}
 
 prepare() {
   cd libtirpc
@@ -28,12 +37,12 @@ build() {
   cd libtirpc
 
   export CC='gcc -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --sysconfdir='/etc'
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --sysconfdir=/etc
   make
 }
 
@@ -44,7 +53,7 @@ package() {
   rm -rf "${pkgdir}"/{etc,usr/{include,share}}
 
   install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s libtirpc "${pkgdir}"/usr/share/licenses/${pkgname}
+  ln -s libtirpc "${pkgdir}"/usr/share/licenses/lib32-libtirpc
 }
 
 # vim: ts=2 sw=2 et:
