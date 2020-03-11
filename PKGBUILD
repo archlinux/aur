@@ -1,16 +1,16 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=mlite
-pkgver=0.2.28
+pkgver=0.2.28+git1
 pkgrel=1
 pkgdesc="Useful classes originating from MeeGo Touch"
 arch=('x86_64')
-url="https://github.com/nemomobile/mlite"
+url="https://git.sailfishos.org/mer-core/mlite"
 license=('LGPL')
 depends=('qt5-base' 'dconf')
 makedepends=('git' 'qt5-tools')
-source=("git+https://git.merproject.org/mer-core/mlite.git#tag=$pkgver")
-sha256sums=('SKIP')
+source=("git+https://git.sailfishos.org/mer-core/mlite.git#tag=$pkgver")
+sha512sums=('SKIP')
 
 prepare() {
   cd mlite
@@ -30,7 +30,7 @@ build() {
 package() {
   cd mlite
 
-  make INSTALL_ROOT="${pkgdir}" install
+  make INSTALL_ROOT="$pkgdir" install
 
   # Remove tests
   rm -r "$pkgdir/opt"
