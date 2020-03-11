@@ -1,7 +1,8 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com> 
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-stdio
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Standard IO library for OCaml"
 arch=('x86_64')
@@ -10,19 +11,16 @@ license=('MIT')
 depends=('ocaml' 'ocaml-base')
 makedepends=('dune')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/stdio-v${pkgver}.tar.gz")
-sha512sums=('53a8cef84964a2c8c47d5f0572897079cbc5c4983a923f069c6d0ca4558d1c87662eb13b630501815bc2448772312b93735c70813638a786f5213a09b63e03e8')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('d778d37b5dfca42f585afaea344649145b0d0b15202646eeba01b43ad14319361f577542382e1209e3720072a19494b2f23b74e91796df3eb0c2d8613b0e0f12')
 
 build() {
-  cd "${srcdir}/stdio-v${pkgver}"
-
+  cd "${srcdir}/stdio-${pkgver}"
   dune build
 }
 
-
 package() {
-  cd "${srcdir}/stdio-v${pkgver}"
-
+  cd "${srcdir}/stdio-${pkgver}"
   mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
   dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
