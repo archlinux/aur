@@ -1,7 +1,7 @@
 # Maintainer: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
 
 pkgname=libadalang-git
-pkgver=r3538.96dd59ff
+pkgver=r4023.71caaabc
 pkgrel=1
 
 pkgdesc='High performance syntactic and semantic engine for the Ada programming language'
@@ -59,7 +59,7 @@ package()
     # Install the Ada library with its C binding
     python2 ada/manage.py \
         --library-types relocatable --no-langkit-support \
-        install "$pkgdir/usr"
+        install --build-mode=prod "$pkgdir/usr"
 
     # Install the Python binding
     cd build/python
