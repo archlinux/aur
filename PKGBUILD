@@ -1,8 +1,8 @@
 # Maintainer: kraxarn <me@kraxarn.com>
 
 pkgname=spotify-qt
-pkgver=0.14
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc="Work-in-progress Spotify client using Qt"
 arch=(x86_64)
 url="https://github.com/kraxarn/spotify-qt"
@@ -10,7 +10,7 @@ license=("GPL3")
 depends=(qt5-base qt5-svg hicolor-icon-theme)
 makedepends=(git cmake gcc make)
 source=("$url/archive/v${pkgver}.tar.gz")
-sha256sums=("6afb94ee3b1e16defe3f58c2eb47bdea6230a0dc5bdc73a7fb5cbb5e18323e90")
+sha256sums=("847b8af3ba1e972e336e5e4c63d9e2c9a578b83133123a573ef397c9c2c69c2a")
 
 build() {
 	cd "$pkgname-$pkgver"
