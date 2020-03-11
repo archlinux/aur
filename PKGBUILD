@@ -1,5 +1,6 @@
 # Maintainer: robertfoster
 # Contributor: LIN Rs <LinRs[d]users.noreply.github.com>
+# Contributor: yochananmarqos <mark.wagie at tutanota dot com>
 
 _pkgname=devilutionX
 pkgname=devilutionx
@@ -30,6 +31,7 @@ build() {
     -DGIT_TAG="$pkgver"
     make INSTALL_ROOT="$pkgdir"
 }
+
 package() {
     cd "$srcdir/${_pkgname}-$pkgver"
     
