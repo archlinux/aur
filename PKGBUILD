@@ -5,11 +5,10 @@ _imgui_commit='6c1a73774dabd2be64f85543b1286e44632d1905'
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud')
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-depends=('gcc-libs' 'libx11')
 makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader')
 source=("https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz"
@@ -44,6 +43,7 @@ package_mangohud() {
     mv "$pkgdir/usr/share/vulkan/implicit_layer.d/"mangohud{,64}.json
     sed -i -e 's|libMangoHud.so|/usr/lib/&|g' "$pkgdir/usr/share/vulkan/implicit_layer.d/mangohud64.json"
 
+    install -Dm644 "$_srcdir/bin/MangoHud.conf" "$pkgdir/usr/share/doc/$pkgname/MangoHud.conf"
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -55,5 +55,6 @@ package_lib32-mangohud() {
     mv "$pkgdir/usr/share/vulkan/implicit_layer.d/"mangohud{,32}.json
     sed -i -e 's|libMangoHud.so|/usr/lib32/&|g' -e 's|64bit|32bit|g' "$pkgdir/usr/share/vulkan/implicit_layer.d/mangohud32.json"
 
+    install -Dm644 "$_srcdir/bin/MangoHud.conf" "$pkgdir/usr/share/doc/$pkgname/MangoHud.conf"
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

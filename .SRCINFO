@@ -1,6 +1,6 @@
 pkgbase = mangohud
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,6 @@ pkgbase = mangohud
 	makedepends = vulkan-headers
 	makedepends = vulkan-icd-loader
 	makedepends = lib32-vulkan-icd-loader
-	depends = gcc-libs
-	depends = libx11
 	source = https://github.com/flightlessmango/MangoHud/archive/v0.2.0.tar.gz
 	source = https://github.com/flightlessmango/imgui/archive/6c1a73774dabd2be64f85543b1286e44632d1905.tar.gz
 	sha256sums = 61ec5cb9c9e61eec89a68af305ceb99f16487f85e25127f21b8ecd66a67d12c0
