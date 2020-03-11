@@ -1,5 +1,5 @@
 # Maintainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-signika-family-ib
 pkgver=1.0001
 pkgrel=9
