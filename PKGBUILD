@@ -1,7 +1,7 @@
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Urs Wolfer <uwolfer @ fwo.ch>
 # Mainainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgbase=ttf-droid-family-ib
 pkgname=('ttf-droid-ib' 'ttf-droid-nonlatin-ib')
 pkgver=20121017
