@@ -2,7 +2,6 @@ pkgbase = apricity-icons
 	pkgdesc = Apricity OS icon theme for Gnome or Cinnamon
 	pkgver = 3.36.pre
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/dvorapa/apricity-icons/
 	arch = any
 	license = GPLv3
