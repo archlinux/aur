@@ -15,13 +15,11 @@ pkgbase = ffc-hpc-git
 	depends = ufl-hpc-git
 	depends = ufc2-hpc-git
 	depends = python-numpy
-	depends = instant-hpc-git
-	depends = swig
 	depends = python-six
 	provides = ffc-hpc
 	conflicts = ffc-hpc
 	options = !emptydirs
-	source = ffc-hpc::git+https://bitbucket.org/adaptivesimulations/ffc-hpc.git#branch=feature/python3
+	source = ffc-hpc::git+https://bitbucket.org/adaptivesimulations/ffc-hpc.git#branch=master
 	md5sums = SKIP
 
 pkgname = ffc-hpc-git
