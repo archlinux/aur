@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
 pkgdesc="Vaious synth and effect LV2 plugins."
-pkgver=r166.c4e0ab7
+pkgver=r168.1efb7e5
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -40,10 +40,6 @@ prepare() {
 build() {
   cd LV2Plugins
 	make JACK=false VST2=false
-  # cd ${srcdir}/LV2Plugins
-  pwd
-  ls -la
-  ./generate-ttl.sh
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = uhhyou.lv2-git
 	pkgdesc = Vaious synth and effect LV2 plugins.
-	pkgver = r166.c4e0ab7
+	pkgver = r168.1efb7e5
 	pkgrel = 1
 	url = https://github.com/ryukau/LV2Plugins
 	arch = x86_64
