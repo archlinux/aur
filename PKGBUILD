@@ -7,7 +7,7 @@ pkgdesc="Keyboard macro/rebinding daemon"
 arch=("x86_64")
 url="https://github.com/snyball/Hawck"
 license=('BSD')
-depends=("libnotify" "lua" "ruby" "python" "kbd")
+depends=("libnotify" "lua" "ruby" "python" "kbd" "hicolor-icon-theme")
 makedepends=("meson" "gcc" "pkg-config" "catch2" "ninja" "git")
 optdepends=("doxygen" "zenity" "polkit-gnome")
 install=$pkgname.install
@@ -33,5 +33,6 @@ build() {
 
 package() {
     cd "$_pkgname/build"
+    meson configure -Dprefix=/usr
     DESTDIR="$(realpath "$pkgdir")" ninja install
 }

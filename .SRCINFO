@@ -17,6 +17,7 @@ pkgbase = hawck-git
 	depends = ruby
 	depends = python
 	depends = kbd
+	depends = hicolor-icon-theme
 	optdepends = doxygen
 	optdepends = zenity
 	optdepends = polkit-gnome
