@@ -9,6 +9,7 @@ pkgbase = jupyterlab-git
 	makedepends = nodejs
 	makedepends = python-recommonmark
 	makedepends = jsx-lexer
+	makedepends = git
 	depends = jupyterlab_server
 	source = git+https://github.com/jupyterlab/jupyterlab.git
 	source = jupyterlab-git.install
