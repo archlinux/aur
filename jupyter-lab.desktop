@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=JupyterLab
+Type=Application
+Version=1.0
+Categories=Development;Science;Math;
+Comment=An extensible environment for interactive and reproducible computing, based on the Jupyter Notebook and Architecture
+Icon=jupyter
+Exec=jupyter-lab
+Terminal=true
+MimeType=application/x-ipynb+json;
