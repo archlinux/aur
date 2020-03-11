@@ -22,12 +22,6 @@ sha256sums=('SKIP'
 
 _sourcedirectory="$pkgname"
 
-pkgver() {
-	cd "$srcdir/$_sourcedirectory/"
-	# pkgver() gets run after prepare(), so we can just get the _aurversion field from package.json
-	sed -nE 's|.*"_aurversion": "(.*)".*|\1|p' 'package.json'
-}
-
 prepare() {
 	cd "$srcdir/$_sourcedirectory/"
 
@@ -53,6 +47,11 @@ prepare() {
 
 	# Disable hadron-build packaging
 	patch -d 'node_modules/hadron-build/' --forward -p1 < '../hadron-build-packaging.diff'
+}
+
+pkgver() {
+	cd "$srcdir/$_sourcedirectory/"
+	sed -nE 's|.*"_aurversion": "(.*)".*|\1|p' 'package.json'
 }
 
 build() {
