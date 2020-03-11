@@ -1,6 +1,6 @@
 pkgbase = git-trim
 	pkgdesc = Trims your git remote tracking branches
-	pkgver = 0.2.1
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/foriequal0/git-trim
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = git-trim
 	makedepends = cargo
 	depends = libgit2
 	conflicts = git-trim-git
-	source = git-trim-0.2.1.tar.gz::https://github.com/foriequal0/git-trim/archive/v0.2.1.tar.gz
-	sha256sums = b12e78405748eeba784842cf77b4c2d460927dafbd44c7acbb032fd82afde1e5
+	source = git-trim-0.2.4.tar.gz::https://github.com/foriequal0/git-trim/archive/v0.2.4.tar.gz
+	sha256sums = 7c3c386cdca7eeec8a8a3d959e80ec088be9db5300d9db21d639878b725cf64f
 
 pkgname = git-trim
 
