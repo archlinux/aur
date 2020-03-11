@@ -1,6 +1,6 @@
 pkgbase = python-cloudscraper
 	pkgdesc = A Python module to bypass Cloudflares anti-bot page. (Release version)
-	pkgver = 1.2.26
+	pkgver = 1.2.28
 	pkgrel = 1
 	url = https://github.com/VeNoMouS/cloudscraper.git
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = python-cloudscraper
 	depends = python-requests
 	depends = python-js2py
 	depends = python-requests-toolbelt
-	depends = nodejs
+	optdepends = nodejs: use Node.js Javascript Interpreter/Engine
 	provides = python-cloudscraper
-	source = cloudscraper-1.2.26.tar.gz::https://www.github.com/VeNoMouS/cloudscraper/archive/1.2.26.tar.gz
-	sha256sums = 9b9aa6a6ef7cf68d2dda02f6bb045a60ccb06ca709d81a5776dcfbbaeea76196
+	source = cloudscraper-1.2.28.tar.gz::https://www.github.com/VeNoMouS/cloudscraper/archive/1.2.28.tar.gz
+	sha256sums = 9575ef9c5c12372b5f756f59db1ca1c0350eb55adf7a026b9a2117aae7ee004a
 
 pkgname = python-cloudscraper
 
