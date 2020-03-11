@@ -1,0 +1,17 @@
+pkgbase = qogir-cursors-git
+	pkgdesc = An X Cursor theme inspired by Qogir theme and based on capitaine-cursors
+	pkgver = 2020.02.21.r10.gf76c584c
+	pkgrel = 1
+	url = https://www.pling.com/p/1366182
+	arch = any
+	license = GPL3
+	makedepends = inkscape
+	makedepends = xorg-xcursorgen
+	provides = qogir-cursors
+	conflicts = qogir-cursors
+	options = !strip
+	source = git+https://github.com/vinceliuice/Qogir-icon-theme.git#commit=f76c584ca4e682a721b69cc2f689cb07213b4554
+	sha256sums = SKIP
+
+pkgname = qogir-cursors-git
+
