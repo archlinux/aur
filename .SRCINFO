@@ -1,7 +1,8 @@
 pkgbase = attica-git
 	pkgdesc = Qt5 library that implements the Open Collaboration Services API
-	pkgver = r743.4db348a
+	pkgver = v5.68.0.rc1.r0.g5a49f34
 	pkgrel = 1
+	epoch = 2
 	url = https://projects.kde.org/projects/frameworks/attica
 	arch = i686
 	arch = x86_64

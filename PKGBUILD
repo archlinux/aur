@@ -1,5 +1,6 @@
 pkgname=attica-git
-pkgver=r743.4db348a
+epoch=2
+pkgver=v5.68.0.rc1.r0.g5a49f34
 pkgrel=1
 pkgdesc='Qt5 library that implements the Open Collaboration Services API'
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/attica"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
