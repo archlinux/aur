@@ -19,8 +19,8 @@ pkgbase = android-emulator
 	source = android-emulator.csh
 	source = package.xml
 	sha1sums = 356cac370c03460ca82166464de7ecd7da1f4a49
-	sha1sums = 4537a7ce30bedf87cedafc2020822219ad58310d
-	sha1sums = 2fb371b5774b67143f0610dfbec4963a4e2f11cc
+	sha1sums = 80c9b3ffc8865b5f8e55b1ffed36c08ee7a9d8ad
+	sha1sums = e1485ef14463f275005cae43a0a1e43ce52354ca
 	sha1sums = 7d79e318c74db59affb6ab339743f1133324b6ab
 
 pkgname = android-emulator
