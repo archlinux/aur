@@ -1,11 +1,11 @@
 # Maintainer: thepasto <thepasto@gmail.com>
 pkgname=kodi-addon-pvr-iptvsimple
-pkgver=3.8.8
+pkgver=3.9.8
 pkgrel=1
 pkgdesc='IPTV Simple PVR client addon for Kodi'
 _koditarget=Leia
 _gitname=pvr.iptvsimple
-_kodiver=18.5
+_kodiver=18.6
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/kodi-pvr/${_gitname}"
 license=('GPL')
@@ -16,8 +16,8 @@ depends=('kodi' 'git')
 source=("https://github.com/kodi-pvr/${_gitname}/archive/${pkgver}-${_koditarget}.tar.gz"
         "https://github.com/xbmc/xbmc/archive/${_kodiver}-${_koditarget}.tar.gz"
 )
-sha256sums=('25eff252ad748e0cf166cd01b0f08e8fb3977c98a1b04cad9ef6509ea30c5fa9'
-            '108979df8b41ab4168f5cdc0233f46e38767eda5921f4ccae16584e98d0d6b29')
+sha256sums=('0812e359a943f4ffb763b47fc0440768a8aa09f12172ef8dff4440b0a48f9c96'
+            '47e6d7d4e01dbda92ff83a3e141ac43003e918133e78b3a4b79faff65184711c')
 
 prepare() {
         cd xbmc-${_kodiver}-${_koditarget}
