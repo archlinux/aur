@@ -1,0 +1,19 @@
+pkgbase = new-ospgl-git
+	pkgdesc = Open Space Program
+	pkgver = 1
+	pkgrel = 1
+	epoch = 1
+	url = https://www.openspaceprogram.org/
+	arch = x86_64
+	groups = gnome
+	license = GPL2
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	provides = gnome-shell
+	conflicts = gnome-shell
+	source = git+https://github.com/TheOpenSpaceProgram/new-ospgl.git
+	sha256sums = SKIP
+
+pkgname = new-ospgl-git
+
