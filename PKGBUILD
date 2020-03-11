@@ -9,12 +9,8 @@ pkgdesc="Open Space Program"
 url="https://www.openspaceprogram.org/"
 arch=(x86_64)
 license=(GPL2)
-depends=()
 makedepends=(cmake make gcc)
-optdepends=()
-groups=(gnome)
-provides=(gnome-shell)
-conflicts=(gnome-shell)
+provides=(new-ospgl)
 source=("git+https://github.com/TheOpenSpaceProgram/new-ospgl.git")
 sha256sums=('SKIP')
 
