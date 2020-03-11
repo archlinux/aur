@@ -1,8 +1,9 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kactivities-git
-pkgver=r819.d5d8770
-pkgrel=2
+epoch=2
+pkgver=v5.68.0.rc1.r0.g0983cf12
+pkgrel=1
 pkgdesc="Core components for the KDE's Activities"
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kactivities'
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd kactivities
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
