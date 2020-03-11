@@ -1,0 +1,24 @@
+pkgbase = ostrajava-git
+	pkgdesc = Bo neni cas pyco - git version
+	pkgver = 1.1.r16.g0637b60
+	pkgrel = 1
+	url = https://github.com/tkohout/OSTRAJava
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = unknown
+	makedepends = git
+	makedepends = java-environment
+	makedepends = maven
+	depends = java-runtime
+	provides = ostrajava
+	conflicts = ostrajava
+	source = ostrajava-git::git+https://github.com/tkohout/OSTRAJava
+	source = fix-lib-paths.diff
+	sha256sums = SKIP
+	sha256sums = 409f5b9d171d278aa50386e79f58b0f0a5370659999549b86c985fe1421bb026
+
+pkgname = ostrajava-git
