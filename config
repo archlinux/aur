@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 5.6.0-rc3-1 Kernel Configuration
+# Linux/arm64 5.6.0-rc5-1 Kernel Configuration
 #
 
 #
@@ -5938,6 +5938,7 @@ CONFIG_BACKLIGHT_GPIO=m
 # CONFIG_BACKLIGHT_LV5207LP is not set
 # CONFIG_BACKLIGHT_BD6107 is not set
 # CONFIG_BACKLIGHT_ARCXCNN is not set
+# CONFIG_BACKLIGHT_LED is not set
 # end of Backlight & LCD device support
 
 CONFIG_VIDEOMODE_HELPERS=y
@@ -8460,7 +8461,7 @@ CONFIG_PWM_CROS_EC=m
 # CONFIG_PWM_IMX1 is not set
 # CONFIG_PWM_IMX27 is not set
 # CONFIG_PWM_IMX_TPM is not set
-CONFIG_PWM_MESON=m
+CONFIG_PWM_MESON=y
 CONFIG_PWM_MTK_DISP=m
 CONFIG_PWM_MEDIATEK=m
 # CONFIG_PWM_PCA9685 is not set
