@@ -1,7 +1,7 @@
 pkgbase = zoxide
 	pkgdesc = A fast cd command that learns your habits
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ajeetdsouza/zoxide
 	arch = x86_64
 	license = MIT

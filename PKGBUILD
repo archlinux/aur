@@ -1,7 +1,7 @@
 # Maintainer: desbma
 pkgname=zoxide
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast cd command that learns your habits'
 arch=('x86_64')
 url="https://github.com/ajeetdsouza/${pkgname}"
@@ -23,6 +23,5 @@ check() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm 755 -t "${pkgdir}/usr/bin" ./target/release/${pkgname}
-    install -Dm 644 zoxide.plugin.zsh "${pkgdir}/usr/share/${pkgname}/${pkgname}.zsh"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
