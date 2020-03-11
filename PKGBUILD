@@ -2,7 +2,7 @@
 
 pkgname=sidequest-git
 _pkgname=SideQuest
-pkgver=v0.8.3.12.ga441b2b
+pkgver=v0.8.7.67.g57b97b7
 pkgrel=1
 pkgdesc="A tool to help simplify getting content onto Oculus Quest, Go, and other VR headsets."
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+https://github.com/the-expanse/SideQuest"
         "SideQuest.desktop")
 md5sums=('SKIP'
          'ef9bbe8b6707d3f195c6982a289f142a'
-         'cefa9ad5ea39b1e5082f2e2b82ae0e4a'
+         '8412856865e2253c13f257f73bfe7e75'
          'aa393219b320d8b96c83714882de8b32')
 
 pkgver() {

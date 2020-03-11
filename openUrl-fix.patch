@@ -1,6 +1,6 @@
---- a/app.js
-+++ b/app.js
-@@ -137,8 +137,8 @@ function setupMenu() {
+--- a/electron/app.ts
++++ b/electron/app.ts
+@@ -146,8 +146,8 @@ function setupMenu() {
  const gotTheLock = app.requestSingleInstanceLock ? app.requestSingleInstanceLock() : true;
  let parseOpenUrl = argv => {
      //fs.writeFileSync(path.join(app.getPath('appData'), 'SideQuest', 'test_output_loaded.txt'), JSON.stringify(argv));
