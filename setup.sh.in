@@ -92,16 +92,22 @@ build_lib() {
     echo "done."
     printf "\nReplace identical files with symbolic links..."
     ln -sf evelauncher.sh LogLite.sh
-    libb=/dev/zero
-    for lib in $(find ./ -maxdepth 1 -type f -name 'lib*' -printf '%s-%f\n'|sort -r)
-    do
-	liba=${lib#*-}
-	if [ "$(cmp -s $liba $libb; echo $?)" = "0" ] ;then
-	    ln -sf $libb $liba
-	else
-	    libb=$liba
-	fi
-    done
+    ln -sf libicudata.so.55.1 libicudata.so
+    ln -sf libicudata.so.55.1 libicudata.so.55
+    ln -sf libicui18n.so.55.1 libicui18n.so
+    ln -sf libicui18n.so.55.1 libicui18n.so.55
+    ln -sf libicuuc.so.55.1 libicuuc.so
+    ln -sf libicuuc.so.55.1 libicuuc.so.55
+    ln -sf libgpr.so.6.0.0 libgpr.so
+    ln -sf libgpr.so.6.0.0 libgpr.so.6
+    ln -sf libgrpc++.so.1.12.0 libgrpc++.so
+    ln -sf libgrpc++.so.1.12.0 libgrpc++.so.1
+    ln -sf libgrpc++.so.1.12.0 libgrpc++.so.6
+    ln -sf libgrpc.so.6.0.0 libgrpc.so
+    ln -sf libgrpc.so.6.0.0 libgrpc.so.6
+    ln -sf libpng12.so.0.54.0 libpng12.so.0
+    ln -sf libprotobuf.so.16.0.0 libprotobuf.so
+    ln -sf libprotobuf.so.16.0.0 libprotobuf.so.16
     echo "done."
     printf "\nRemove unneeded symbols from files..."
     find ./ -maxdepth 1 -type f -exec strip -s {} 2>/dev/null \;

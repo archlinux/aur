@@ -1,7 +1,7 @@
 #Maintainer: Gharim Turen <gharim@turen.de>
 pkgname=evesetup
 pkgver=1548102
-pkgrel=10
+pkgrel=11
 pkgdesc="An inofficial EVE Online Launcher Setup Tool."
 arch=(x86_64)
 url="https://forums.eveonline.com/t/eve-installing/71494"
@@ -57,6 +57,7 @@ package() {
         install -d "${pkgdir}/usr/share/icons"
         sed -i s,ELVER=\"\",ELVER=\"${pkgver}\", "${srcdir}/evelauncher.sh"
         sed -i s,SETUPDIR=\"\",SETUPDIR=\"/opt/${pkgname}\", "${srcdir}/evelauncher.sh"
+        sed -i s,./eve-transl,/opt/${pkgname}/lib/eve-transl, "${srcdir}/evelauncher.sh"
         for cmd in backup launcher.sh regedit restore wine winecfg winetricks ;do
             cmd=eve$cmd
             if [ -f "${srcdir}/$cmd" ] ;then
@@ -124,7 +125,7 @@ sha256sums=('ce85defa2698ea72e88221d72424fb953f86836494ecc0e4006f41ec89682af4'
             '528fc6627e8893db5d7092194e9f3320067f2f1f4593a206aee8a5207956e563'
             'd4610df883778f91e0ea5feba84720dfe814af0b9960677e3861809d70de24b2'
             '481e70f5ddba4f2d811534ab5b341a0911a836ab08a2631e648cae36b58fd0e0'
-            '67faa8a947c5b662f7fcc32f6e426278a673de44430edfd0c7e0b65315a3cfb8'
+            '85e36c8fbb51b20aa55eb56c773cacae21c508c1725b02d876fa177294f4ec44'
             '69b98d923c08c6fb035c0c6905ec5e9c73273b694f8f3497777d44597dbe63e3'
             '762db1df07dfcf526fe634b4b589a08e8affefb2f79f02cff2624c70e0820422'
             '47accd49b64d624c6a6dee42952f8627aaabdd315fad85ef037507745d393f1a'
