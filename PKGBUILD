@@ -2,8 +2,8 @@
 
 pkgname=python-minitree
 pkgver=0.4.1
-pkgrel=1
-pkgdesc='Log mouse movement'
+pkgrel=2
+pkgdesc='List files in columns'
 arch=(any)
 url='https://github.com/xyproto/minitree'
 license=(MIT)
