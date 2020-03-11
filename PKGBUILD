@@ -2,7 +2,7 @@
 
 pkgname=gotify-server-bin
 _pkgname=gotify-server
-pkgver=2.0.13
+pkgver=2.0.14
 pkgrel=1
 pkgdesc='A simple server for sending and receiving messages'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("$url/releases/download/v${pkgver}/gotify-linux-amd64.zip"
         'gotify-server.tmpfiles'
         'gotify-server.sysusers'
         'gotify-server.service')
-sha256sums=('f66b3405272eff0a3ae74f83006de91edd51babeedae09528141b6a9c7b7566b'
+sha256sums=('edf1650467ab20ddd827c824171e80d9c2f010eacedc9dfae0b967e981e78854'
             '02bc36fd509843d33efe801561141fe7ea0b0b7fb5275163c3777c09cac2524b'
             'eface4b7901b849cf97fb62c691e37b0bf1dd80e947a3da193379bcf7e92c7b0'
             '14bd1a9270b089b99d9bbe8ebdd0c208c3f74c7347a792d508ffce75b0e1c641'
