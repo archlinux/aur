@@ -3,7 +3,7 @@
 # Release Code Name: Love Lace
 
 pkgname=lbry-app-bin
-pkgver=0.43.3
+pkgver=0.43.4
 pkgrel=1
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('MIT')
 # gconf deprecated: https://github.com/electron/electron/issues/2727
 # gnome-keyring still required: https://github.com/lbryio/lbry-desktop/issues/386
 depends=('libnotify' 'libappindicator' 'libxtst' 'nss' 'libsecret' 'gnome-keyring')
-source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.43.3/LBRY_0.43.3.deb')
-sha256sums=('bbc06600c6f18a7722992a1a147baaa082b933d1f1ef24bc9d3781eff08c059d')
+source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.43.4/LBRY_0.43.4.deb')
+sha256sums=('172e3ffc3698888d668128732cff078b0eef24fdcb75350ef17c4cb473f21310')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
