@@ -18,6 +18,7 @@ makedepends=( # Prevent out-of-date SPIRV headers error
              'vulkan-headers'
              'xcb-proto'
              'wine'
+             'git'
             )
 conflicts=('vkd3d' 'vkd3d-git')
 provides=('vkd3d')
