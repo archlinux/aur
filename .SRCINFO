@@ -1,6 +1,6 @@
 pkgbase = ffc-hpc-git
 	pkgdesc = A compiler for finite element variational forms. HPC version
-	pkgver = 1.0.2_20200128
+	pkgver = 1.1.0_20200311
 	pkgrel = 1
 	url = https://bitbucket.org/fenics-project/ffc-hpc
 	arch = i686
