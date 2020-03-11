@@ -11,7 +11,7 @@ pkgbase = ufc2-hpc-git
 	makedepends = cmake
 	provides = ufc2-hpc
 	options = !emptydirs
-	source = ufc2-hpc::git+https://bitbucket.org/adaptivesimulations/ufc2-hpc.git#branch=python3
+	source = ufc2-hpc::git+https://bitbucket.org/adaptivesimulations/ufc2-hpc.git#branch=master
 	md5sums = SKIP
 
 pkgname = ufc2-hpc-git
