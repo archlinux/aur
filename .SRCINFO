@@ -1,0 +1,21 @@
+pkgbase = ros-melodic-move-base-flex
+	pkgdesc = ROS - Move Base Flex (MBF) is a backwards-compatible replacement for move_base.
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = http://wiki.ros.org/move_base_flex
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-mbf-costmap-nav
+	depends = ros-melodic-mbf-msgs
+	depends = ros-melodic-mbf-costmap-core
+	depends = ros-melodic-mbf-abstract-core
+	depends = ros-melodic-mbf-abstract-nav
+	depends = ros-melodic-mbf-simple-nav
+	source = ros-melodic-move-base-flex-0.2.5.tar.gz::https://github.com/uos-gbp/move_base_flex-release/archive/release/melodic/move_base_flex/0.2.5.tar.gz
+	sha256sums = fc73fa9140760f6f07648762b894e2dd563edd14673fb5fce77770c41baf8dad
+
+pkgname = ros-melodic-move-base-flex
+
