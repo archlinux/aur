@@ -6,8 +6,8 @@ pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
 url="https://github.com/igo95862/bubblejail"
 license=('GPL3+')
-depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy')
-makedepends=('python-setuptools' 'git')
+depends=('python' 'python-xdg' 'bubblewrap' 'python-toml' 'xdg-dbus-proxy' 'python-setuptools')
+makedepends=('git')
 source=("$pkgname"::"git+https://github.com/igo95862/bubblejail")
 md5sums=('SKIP')
 
@@ -18,7 +18,7 @@ pkgver() {
 
 check () {
 	cd "$srcdir/$pkgname"
-	python setup.py test
+	python -m unittest
 }
 
 build () {

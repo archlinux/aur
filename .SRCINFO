@@ -5,13 +5,13 @@ pkgbase = bubblejail-git
 	url = https://github.com/igo95862/bubblejail
 	arch = any
 	license = GPL3+
-	makedepends = python-setuptools
 	makedepends = git
 	depends = python
 	depends = python-xdg
 	depends = bubblewrap
 	depends = python-toml
 	depends = xdg-dbus-proxy
+	depends = python-setuptools
 	source = bubblejail-git::git+https://github.com/igo95862/bubblejail
 	md5sums = SKIP
 
