@@ -1,6 +1,6 @@
 # Maintainer: Julian Hornich <hornich at kth dot se>
 pkgname=ffc-hpc-git
-pkgver=1.0.2_20200128
+pkgver=1.1.0_20200311
 pkgrel=1
 pkgdesc="A compiler for finite element variational forms. HPC version"
 _branch=master
