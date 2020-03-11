@@ -9,7 +9,7 @@ pkgname=koreader-appimage
 pkgver=2020.03
 pkgrel=1
 
-pkgdesc="An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats"
+pkgdesc="An ebook reader supporting PDF, DjVu, EPUB, FB2 and many more formats"
 arch=('x86_64')
 depends=('zlib')
 makedepends=('p7zip')
