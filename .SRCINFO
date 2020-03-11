@@ -1,0 +1,17 @@
+pkgbase = ruby-libevdev
+	pkgdesc = A 1:1 FFI wrapper around libevdev
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/christopheraue/ruby-libevdev
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-linux_input
+	depends = ruby-bundler
+	noextract = libevdev-1.0.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/libevdev-1.0.0.gem
+	sha1sums = f64abe8459abcf904d80b848fb753f435b7a95ad
+
+pkgname = ruby-libevdev
+
