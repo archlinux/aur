@@ -3,7 +3,7 @@
 
 pkgname=tagspaces
 pkgver=3.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='TagSpaces is an offline, open source, document manager with tagging support'
 arch=('i686' 'x86_64')
 url='http://tagspaces.org'
@@ -28,6 +28,7 @@ package() {
   mkdir -p ${pkgdir}/opt/${pkgname}
   mkdir -p ${pkgdir}/usr/bin/
   cp -R ${srcdir}/builds/linux-unpacked/* ${pkgdir}/opt/${pkgname}
+  chmod 755 ${pkgdir}/opt/${pkgname}/tagspaces
   ln -s ${pkgdir}/opt/${pkgname}/tagspaces ${pkgdir}/usr/bin/tagspaces
   install -Dm644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
   install -Dm644 ${srcdir}/${pkgname}-${pkgver}/app/assets/images/icon100x100.svg ${pkgdir}/usr/share/pixmaps/${pkgname}.svg
