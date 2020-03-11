@@ -1,11 +1,10 @@
 pkgbase = otf-erewhon
-	pkgdesc = Erewhon is a font family based on Heuristica, which is based in turn on Utopia
+	pkgdesc = a font family based on Heuristica, which is based in turn on Utopia
 	pkgver = 1.102
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ctan.org/tex-archive/fonts/erewhon
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
+	license = OFL
 	conflicts = otf-erewhon-ibx
 	source = http://mirrors.ctan.org/fonts/erewhon.zip
 	sha256sums = c5785f1729593185b3eed46d8ff8a8c4f3b2145df76926d2d1e324fa15a7e66a
