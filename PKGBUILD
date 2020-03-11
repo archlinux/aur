@@ -1,9 +1,9 @@
 # Maintainer: Julian Hornich <hornich at kth dot se>
 pkgname=fiat-hpc-git
 pkgdesc="Supports generation of arbitrary order instances of the Lagrange elements on lines, triangles, and tetrahedra. HPC version"
-pkgver=1.4.0_20200109
+pkgver=1.5.0_20200311
 pkgrel=1
-_branch=fmaster
+_branch=master
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/adaptivesimulations/fiat-hpc"
 license=('LGPL')
