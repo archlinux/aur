@@ -1,4 +1,7 @@
-sqldeveloper*.zip
-pkg
-src
-*.pkg.tar*
+oracle-sqldeveloper-*.pkg.tar.zst
+oracle-sqldeveloper-*.pkg.tar.xz
+oracle-sqldeveloper-*.log
+PKGBUILD-namcap.log
+sqldeveloper-*.zip
+pkg/
+src/

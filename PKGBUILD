@@ -1,4 +1,5 @@
-# Maintainer:  Yan Doroshenko <yandoroshenko@protonmail.com>
+# Maintainer: Fredy García <frealgagu at gmail dot com>
+# Contributor: Yan Doroshenko <yandoroshenko@protonmail.com>
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: ptk042 <ptk042@gmail.com>
@@ -6,44 +7,56 @@
 # Contributor: xduugu <xduugu@gmx.com>
 # Contributor: Evangelos Foutras <foutrelis@gmail.com>
 # Contributor: David Fuhr <david.fuhr@web.de>
-# what the heck
 
 pkgname=oracle-sqldeveloper
-pkgver=19.2.1.247.2212
+pkgver=19.4.0.354.1759
 pkgrel=1
 pkgdesc="A graphical tool for database development"
-arch=('any')
-url="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
-license=('custom:OTN')
-depends=('java-environment>=8' 'java-environment<=11' 'bash' 'perl')
-optdepends=('ksh'
-  'java8-openjfx: Required to run the application with JDK8'
-  'java11-openjfx: Required to run the application with JDK11')
-source=(manual://sqldeveloper-$pkgver-no-jre.zip
-        oracle-sqldeveloper.desktop
-        oracle-sqldeveloper.sh
-        LICENSE
-        java_home.patch)
-md5sums=('ec986f454d747b742830284e6cd46fb0'
-         '1d17d18e10ab85dead0770e8840273b3'
-         '26c1dc933a9ab58a4245f4f351717645'
-         '71a4092467209c160d0f34abbc08e049'
-         'fe446201cc0d5326ecb757c384c67232')
+arch=("any")
+url="https://www.oracle.com/tools/downloads/sqldev-downloads.html"
+license=("custom:OTN")
+depends=("bash" "java-environment>=8" "java-environment<=11")
+optdepends=(
+  "ksh"
+  "java8-openjfx: Required to run the application with JDK8"
+  "java11-openjfx: Required to run the application with JDK11"
+)
+install="${pkgname}.install"
+source=(
+  "manual://${pkgname#oracle-}-${pkgver}-no-jre.zip"
+  "${pkgname}.desktop"
+  "${pkgname}.sh"
+  "LICENSE"
+  "java_home.patch"
+)
+md5sums=(
+  "b86f1f520b7ea5a4681371c79fe0ad28"
+  "1d17d18e10ab85dead0770e8840273b3"
+  "26c1dc933a9ab58a4245f4f351717645"
+  "71a4092467209c160d0f34abbc08e049"
+  "26037c8c9c7a285896397c058188eed4"
+)
+sha256sums=(
+  "db1927abcd85d7af442053d4eabc2aa658b5a8fbaf261a36b93e1beabb8363c2"
+  "bd028a137c83ab3698a562e9a7ec4006fb396178ab4a6ebdbaa60c75b5c0974c"
+  "43b16049fbf85740767c45f0387a7c5e6118b8876509a8f0bb621ed0b5576a25"
+  "7b3a6fd8a1ade4427382ee36dc28432655902a0a68547b29c5ce089bd85fe3de"
+  "c3409397f49dbf7021ef6912ddac51d5aeddc5a5b748d9524b568d60f5ed6c6a"
+)
 
-package() {
-  cd "$srcdir/sqldeveloper"
-
-  patch -Np1 < "$srcdir/java_home.patch"
-  find . \( -iname "*.exe" -o -iname "*.dll" \) -exec rm -f "{}" +
-  find . -type f -exec install -Dm644 "{}" "$pkgdir/opt/oracle-sqldeveloper/{}" \;
-  chmod +x "$pkgdir/opt/$pkgname/sqldeveloper.sh"
-
-  install -Dm755 "$srcdir/$pkgname.sh"      "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "$srcdir/LICENSE"          "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  msg "To run the application you need to have java8-openjfx or java11-openjfx depending on the JDK version you will be using."
-  msg "You will need to set JAVA_HOME or run this package for the first time from the console to set the jdk path."
+prepare() {
+  cd "${srcdir}/${pkgname#oracle-}"
+  patch -Np1 -i "${srcdir}/java_home.patch"
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd "${srcdir}/${pkgname#oracle-}"
+
+  find . \( -iname "*.exe" -o -iname "*.dll" \) -exec rm -f "{}" +
+  find . -type f -exec install -Dm644 "{}" "${pkgdir}/opt/${pkgname}/{}" \;
+  chmod +x "${pkgdir}/opt/${pkgname}/${pkgname#oracle-}.sh"
+
+  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
