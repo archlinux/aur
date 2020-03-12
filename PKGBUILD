@@ -13,7 +13,7 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=(kio)
 provides=(kio)
-source=('git://anongit.kde.org/kio.git')
+source=('git+https://anongit.kde.org/kio.git')
 md5sums=('SKIP')
 
 pkgver() {
