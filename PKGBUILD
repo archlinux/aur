@@ -33,9 +33,9 @@ export MOZ_SERVICES_HEALTHREPORT=0
 
 ac_add_options --disable-updater
 ac_add_options --disable-maintenance-service
-#ac_add_options --disable-stylo
-#ac_add_options --disable-servo
-#ac_add_options --disable-webextensions
+ac_add_options --disable-stylo
+ac_add_options --disable-servo
+ac_add_options --disable-webextensions
 
 ac_add_options --prefix=/usr
 ac_add_options --enable-strip
@@ -50,14 +50,14 @@ ac_add_options --enable-optimize="-O2 -msse -msse2 -msse3 -mmmx -mfpmath=sse"
 ac_add_options --enable-default-toolkit=cairo-gtk2
 
 ac_add_options --enable-alsa
-#ac_add_options --disable-pulseaudio
-#ac_add_options --disable-jack
+ac_add_options --disable-pulseaudio
+ac_add_options --disable-jack
 
-#ac_add_options --disable-dbus
-#ac_add_options --disable-gconf
-#ac_add_options --disable-gio
+ac_add_options --disable-dbus
+ac_add_options --disable-gconf
+ac_add_options --disable-gio
 ac_add_options --disable-necko-wifi
-#ac_add_options --disable-startup-notification
+ac_add_options --disable-startup-notification
 
 ac_add_options --enable-devtools
 
