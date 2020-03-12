@@ -1,14 +1,14 @@
 pkgbase = python-fangfrisch
 	pkgdesc = Freshclam like utility that allows downloading unofficial virus definition files
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rseichter.github.io/fangfrisch/
 	install = fangfrisch.install
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
 	depends = clamav
-	depends = python
+	depends = python-requests
 	depends = python-sqlalchemy
 	provides = clamav-unofficial-sigs
 	conflicts = clamav-unofficial-sigs
