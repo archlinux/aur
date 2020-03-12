@@ -3,13 +3,16 @@
 
 pkgname=grav-admin
 pkgver=1.6.22
-pkgrel=5
+pkgrel=6
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)"
 arch=("any")
 url="https://getgrav.org"
 license=("MIT")
 depends=('php>=7.1.3' 'php-gd' 'php-fpm')
-optdepends=('php-apcu' 'xdebug')
+optdepends=('php-apcu: A userland caching module for PHP' 
+			'xdebug: PHP debugging extension' 
+			'apache: A high performance Unix-based HTTP server' 
+			'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
 install=post_install
 source=("https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip"
 		'post_install')
