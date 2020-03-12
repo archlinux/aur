@@ -1,16 +1,13 @@
 pkgbase = ttf-sorts-mill-goudy
-	pkgdesc = A ‘revival’ of Goudy Oldstyle and Italic.
+	pkgdesc = A ‘revival’ of Goudy Oldstyle and Italic
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/sorts-mill-goudy
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-sorts-mill-goudy-20160215.zip::https://github.com/theleagueof/sorts-mill-goudy/archive/master.zip
-	md5sums = c256686900b7d5ebf75d94d507859d5d
+	license = OFL
+	source = ttf-sorts-mill-goudy-20160215.zip::https://github.com/theleagueof/sorts-mill-goudy/archive/06072890c7b05f274215a24f17449655ccb2c8af.zip
+	sha256sums = 87dbc21855dbe145a56bcbf12f9897aa578ace73e9dcd960ec268d1140009809
 
 pkgname = ttf-sorts-mill-goudy
 
