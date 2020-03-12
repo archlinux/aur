@@ -1,7 +1,7 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at pm dot me>
 pkgname=esperantilo-bin
 pkgver=0.993
-pkgrel=2
+pkgrel=3
 license=('GPL')
 pkgdesc="A text editor with particular Esperanto functions, spell and grammar checking and machine translation"
 url="http://www.esperantilo.org"
