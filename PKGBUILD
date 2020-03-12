@@ -2,8 +2,8 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
 
 pkgname=pycharm-edu
-pkgver=2019.3.3
-_pkgver=2019.3.3
+pkgver=2019.3.4
+_pkgver=2019.3.4
 pkgrel=1
 pkgdesc="Free, Easy & Professional Tool to Learn Programming with Python"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(https://download.jetbrains.com/python/$pkgname-$_pkgver.tar.gz
         'pycharm-edu.desktop')
 optdepends=('ipython2: For enhanced interactive Python shell v2'
             'ipython: For enhanced interactive Python shell v3')
-sha256sums=('133b6f6be91dd439194a2a767509414351155b417cfe095b6ebd82823bbb2e9e'
+sha256sums=('50e73d1b172a85b8af65ee9617a5d3461dda738ed6c975912178dbc6d1660984'
             '2934fbe579bcc3d6e9d66f9ee80286e36773fe59aafaef9d15bbb45a0a59c58b')
 
 build() {
