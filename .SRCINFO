@@ -1,5 +1,6 @@
 pkgbase = r-rcppparallel
-	pkgver = 4.4.4
+	pkgdesc = Parallel Programming Tools for 'Rcpp'
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppParallel
 	arch = i686
@@ -12,8 +13,8 @@ pkgbase = r-rcppparallel
 	optdepends = r-runit
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/RcppParallel_4.4.4.tar.gz
-	md5sums = 44d1379503c68b20f3506af023b7599d
+	source = https://cran.r-project.org/src/contrib/RcppParallel_5.0.0.tar.gz
+	md5sums = 79a4ac496dc59cf7227d46dd2c4b0519
 
 pkgname = r-rcppparallel
 
