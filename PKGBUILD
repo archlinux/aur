@@ -34,6 +34,7 @@ package() {
   # executable commands
   install -Dm755 bin/wasmer "$pkgdir"/usr/bin/wasmer
   install -Dm755 bin/wapm "$pkgdir"/usr/bin/wapm
+  ln -s wapm "$pkgdir"/usr/bin/wax
 
   # wapm completions
   install -Dm644 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
