@@ -1,0 +1,18 @@
+pkgbase = python-jmbase-git
+	pkgdesc = Base JoinMarket library including commands defining client-server (daemon) messaging protocol
+	pkgver = 0.6.1.r91.ga050a89
+	pkgrel = 1
+	url = https://github.com/JoinMarket-Org/joinmarket-clientserver/tree/master/jmbase
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-future
+	depends = python-twisted
+	depends = python-service-identity
+	depends = python-chromalog
+	source = python-jmbase-git::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git
+	sha256sums = SKIP
+
+pkgname = python-jmbase-git
+
