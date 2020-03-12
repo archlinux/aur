@@ -18,6 +18,7 @@ pkgbase = gnome-software-git
 	makedepends = gtk-doc
 	makedepends = meson
 	makedepends = valgrind
+	makedepends = malcontent
 	source = git+https://gitlab.gnome.org/GNOME/gnome-software.git
 	sha256sums = SKIP
 

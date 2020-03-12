@@ -9,7 +9,7 @@ url="https://wiki.gnome.org/Apps/Software/"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(appstream-glib gnome-desktop libpackagekit-glib flatpak fwupd ostree
-             docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind)
+             docbook-xsl git gobject-introspection gspell gtk-doc meson valgrind malcontent)
 source=("git+https://gitlab.gnome.org/GNOME/gnome-software.git")
 sha256sums=('SKIP')
 
