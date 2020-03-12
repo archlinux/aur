@@ -3,32 +3,32 @@
 
 pkgname=linx-server
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'
 license=('GPL3')
 install=linx-server.install
 options=('!strip')
+makedepends=('go')
 noextract=('linx-server')
 backup=('etc/webapps/linx-server/config.ini')
 
-source=('linx-server.service' 'config.ini')
-md5sums=('ff2e46fa6491fb58f24294e037092799'
-         '8c2fe5caef5e0477d0da15cc0d947337')
-md5sums_i686=('558cb4c08a89cf2ec8e223d2bbdf3924')
-md5sums_x86_64=('5ea957c64a3312c9a2b0ff0e435afddd')
-md5sums_arm=('3f49adb6d2f215628c8058d080d5c3c6')
+source=("https://github.com/andreimarcu/linx-server/archive/v${pkgver}.tar.gz" 'linx-server.service' 'config.ini')
+sha256sums=('9d99b456650641bd8b668677e19e8dfb5c5cddde1c90c3254adb197f7d0e8236'
+            '96dda375b90c57e137b95442b8d4a24a5b763915eb1b8359e893f53af5db9630'
+            'e7bbd0e1c16447665b5ef8bfa0855760e758921d936e1981e15537dc9e8f3035')
 
-source_i686=("linx-server::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-386")
-source_x86_64=("linx-server::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-amd64")
-source_arm=("linx-server::https://github.com/andreimarcu/linx-server/releases/download/v$pkgver/linx-server-v${pkgver}_linux-arm")
-
+build() {
+  cd "$pkgname-$pkgver"
+  go build .
+}
 
 package() {
-  cd $srcdir
-  install -Dm755 linx-server "$pkgdir/usr/bin/linx-server"
+  cd "$srcdir"
   install -Dm644 config.ini "$pkgdir/etc/webapps/linx-server/config.ini"
   install -Dm644 linx-server.service "$pkgdir/usr/lib/systemd/system/linx-server.service"
+  cd "$pkgname-$pkgver"
   install -d "$pkgdir/usr/share/webapps/linx-server/"
+  install -Dm755 linx-server "$pkgdir/usr/bin/linx-server"
 }

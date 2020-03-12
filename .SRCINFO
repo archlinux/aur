@@ -1,26 +1,23 @@
 pkgbase = linx-server
 	pkgdesc = Self-hosted file/code/media sharing website
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andreimarcu/linx-server
 	install = linx-server.install
 	arch = i686
 	arch = x86_64
 	arch = arm
 	license = GPL3
+	makedepends = go
 	noextract = linx-server
 	options = !strip
 	backup = etc/webapps/linx-server/config.ini
+	source = https://github.com/andreimarcu/linx-server/archive/v2.2.3.tar.gz
 	source = linx-server.service
 	source = config.ini
-	md5sums = ff2e46fa6491fb58f24294e037092799
-	md5sums = 8c2fe5caef5e0477d0da15cc0d947337
-	source_i686 = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.2.3/linx-server-v2.2.3_linux-386
-	md5sums_i686 = 558cb4c08a89cf2ec8e223d2bbdf3924
-	source_x86_64 = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.2.3/linx-server-v2.2.3_linux-amd64
-	md5sums_x86_64 = 5ea957c64a3312c9a2b0ff0e435afddd
-	source_arm = linx-server::https://github.com/andreimarcu/linx-server/releases/download/v2.2.3/linx-server-v2.2.3_linux-arm
-	md5sums_arm = 3f49adb6d2f215628c8058d080d5c3c6
+	sha256sums = 9d99b456650641bd8b668677e19e8dfb5c5cddde1c90c3254adb197f7d0e8236
+	sha256sums = 96dda375b90c57e137b95442b8d4a24a5b763915eb1b8359e893f53af5db9630
+	sha256sums = e7bbd0e1c16447665b5ef8bfa0855760e758921d936e1981e15537dc9e8f3035
 
 pkgname = linx-server
 
