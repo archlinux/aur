@@ -1,7 +1,7 @@
 # Maintainer: Callum Parsey <neoninteger@protonmail.com>
 pkgname=turtl-core-rs
 pkgver=0.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Turtl's logic core, built in Rust"
 arch=("i686" "x86_64")
 url="https://github.com/turtl/core-rs"
@@ -18,18 +18,28 @@ _commithash="774fa361d021d9ef5237d32d09515ab7b2a32ad2"
 source=("https://github.com/turtl/core-rs/archive/${_commithash}.tar.gz"
         "config-client.yaml"
         "config-server.yaml"
-        "rusqlite.patch")
+        "rusqlite.patch"
+        "url.patch")
 sha256sums=("71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68"
             "31791752feae4d5b0a19272bbb15df827bf67bb9df237e45431dc4b15b212c2e"
             "f3c974201d4d7b8bc00e51595cb0738d3772fd3bbd73624abc32536838465308"
-            "cd784b2b1de7bb0dba4d92623a525fc970627fd60b44b41d6f2d8e520770fce4")
+            "bbe83ed13302a40db4589966aad01539c1165327dc74ff999a32350fb3c05e92"
+            "a5985c5a5af81e59a6caf8eb4046dc7a4f581b50abe0fce7cffb1b3a07bd0d94")
 
 prepare() {
-	# This version of Turtl depends on an old version of rusqlite (v0.13.0)
+	# This version of core-rs depends on an old version of rusqlite (v0.13.0)
 	# which can't be built on current versions of Rust. This patch updates the
 	# version of rusqlite used to v0.14.0, the first release to contain the
 	# fix that allows it to compile again.
 	patch -Np0 -i rusqlite.patch
+
+	# Same with url - it needs to be updated from v1.6.0 to v1.7.2 in order to
+	# fix build issues. For now, I chose not to go with the latest version due
+	# to the potential for API-breaking changes that would require actual
+	# patching on the core-rs source code. The correct fix would be for me to
+	# learn Rust, update all of the dependencies for core-rs and then send that
+	# as a pull request to its repository.
+	patch -Np0 -i url.patch
 }
 
 build() {

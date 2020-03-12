@@ -1,7 +1,7 @@
 pkgbase = turtl-core-rs
 	pkgdesc = Turtl's logic core, built in Rust
 	pkgver = 0.1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/turtl/core-rs
 	arch = i686
 	arch = x86_64
@@ -14,10 +14,12 @@ pkgbase = turtl-core-rs
 	source = config-client.yaml
 	source = config-server.yaml
 	source = rusqlite.patch
+	source = url.patch
 	sha256sums = 71c1caf3aeb6245040abb0ee063b574dd6ece6314c60edabbe4299a11df49b68
 	sha256sums = 31791752feae4d5b0a19272bbb15df827bf67bb9df237e45431dc4b15b212c2e
 	sha256sums = f3c974201d4d7b8bc00e51595cb0738d3772fd3bbd73624abc32536838465308
-	sha256sums = cd784b2b1de7bb0dba4d92623a525fc970627fd60b44b41d6f2d8e520770fce4
+	sha256sums = bbe83ed13302a40db4589966aad01539c1165327dc74ff999a32350fb3c05e92
+	sha256sums = a5985c5a5af81e59a6caf8eb4046dc7a4f581b50abe0fce7cffb1b3a07bd0d94
 
 pkgname = turtl-core-rs
 

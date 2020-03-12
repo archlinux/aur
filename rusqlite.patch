@@ -1,6 +1,54 @@
+diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.lock core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.lock
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.lock	2020-03-12 18:58:45.235115772 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.lock	2020-03-12 20:34:05.860148346 +1030
+@@ -105,7 +105,7 @@ name = "clouseau"
+ version = "0.1.0"
+ dependencies = [
+  "quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+- "rusqlite 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "rusqlite 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+ 
+ [[package]]
+@@ -176,7 +176,7 @@ dependencies = [
+  "jedi 0.1.0",
+  "libc 0.2.36 (registry+https://github.com/rust-lang/crates.io-index)",
+  "quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+- "rusqlite 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "rusqlite 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
+  "serde_json 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
+ ]
+@@ -781,7 +781,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "rusqlite"
+-version = "0.13.0"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ dependencies = [
+  "bitflags 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -1050,7 +1050,7 @@ dependencies = [
+  "protected_derive 0.1.0",
+  "quick-error 1.2.2 (registry+https://github.com/rust-lang/crates.io-index)",
+  "regex 0.1.80 (registry+https://github.com/rust-lang/crates.io-index)",
+- "rusqlite 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)",
++ "rusqlite 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)",
+  "serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
+  "serde_derive 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
+  "serde_json 1.0.9 (registry+https://github.com/rust-lang/crates.io-index)",
+@@ -1290,7 +1290,7 @@ dependencies = [
+ "checksum regex 0.1.80 (registry+https://github.com/rust-lang/crates.io-index)" = "4fd4ace6a8cf7860714a2c2280d6c1f7e6a413486c13298bbc86fd3da019402f"
+ "checksum regex-syntax 0.3.9 (registry+https://github.com/rust-lang/crates.io-index)" = "f9ec002c35e86791825ed294b50008eea9ddfc8def4420124fbc6b08db834957"
+ "checksum remove_dir_all 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b5d2f806b0fcdabd98acd380dc8daef485e22bcb7cddc811d1337967f2528cf5"
+-"checksum rusqlite 0.13.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d9409d78a5a9646685688266e1833df8f08b71ffcae1b5db6c1bfb5970d8a80f"
++"checksum rusqlite 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c9d9118f1ce84d8d0b67f9779936432fb42bb620cef2122409d786892cce9a3c"
+ "checksum rustc-demangle 0.1.8 (registry+https://github.com/rust-lang/crates.io-index)" = "76d7ba1feafada44f2d38eed812bd2489a03c0f5abb975799251518b68848649"
+ "checksum rustc-serialize 0.3.24 (registry+https://github.com/rust-lang/crates.io-index)" = "dcf128d1287d2ea9d80910b5f1120d0b8eede3fbf1abe91c40d39ea7d51e6fda"
+ "checksum safemem 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)" = "8dca453248a96cb0749e36ccdfe2b0b4e54a61bfef89fb97ec621eb8e0a93dd9"
 diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.toml core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.toml
---- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.toml	2019-11-14 15:41:30.353803437 +1030
-+++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.toml	2019-11-14 12:42:07.004160374 +1030
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.toml	2018-10-09 13:44:29.000000000 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/Cargo.toml	2020-03-12 20:33:49.308388783 +1030
 @@ -45,7 +45,7 @@ num_cpus = "1.8.0"
  protected_derive = { path = "protected_derive" }
  quick-error = "1.2.2"
@@ -11,8 +59,8 @@ diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/Cargo.toml core
  serde_derive = "1.0.8"
  serde_json = "1.0.2"
 diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/clouseau/Cargo.toml core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/clouseau/Cargo.toml
---- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/clouseau/Cargo.toml	2019-11-14 15:41:30.357136770 +1030
-+++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/clouseau/Cargo.toml	2019-11-14 12:42:30.750826254 +1030
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/clouseau/Cargo.toml	2018-10-09 13:44:29.000000000 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/clouseau/Cargo.toml	2020-03-12 20:33:14.672420698 +1030
 @@ -5,5 +5,5 @@ authors = ["Andrew Danger Lyon <orthecre
  
  [dependencies]
@@ -21,8 +69,8 @@ diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/clouseau/Cargo.
 +rusqlite = "0.14.0"
  
 diff -rupN core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/dumpy/Cargo.toml core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/dumpy/Cargo.toml
---- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/dumpy/Cargo.toml	2019-11-14 15:41:30.357136770 +1030
-+++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/dumpy/Cargo.toml	2019-11-14 12:42:57.057492048 +1030
+--- core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2.orig/dumpy/Cargo.toml	2018-10-09 13:44:29.000000000 +1030
++++ core-rs-774fa361d021d9ef5237d32d09515ab7b2a32ad2/dumpy/Cargo.toml	2020-03-12 20:33:29.377228920 +1030
 @@ -6,7 +6,7 @@ authors = ["Andrew Danger Lyon <orthecre
  [dependencies]
  jedi = { path = "../jedi" }
