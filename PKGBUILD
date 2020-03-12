@@ -1,11 +1,11 @@
-# Maintainer : Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer : Lone_Wolf <lonewolf@klaas-de-kat.nl>
 # Contributor : Eric Engestrom <eric@engestrom.ch>
 # Contributor: Laurent Carlier <lordheavym@gmail.com>
 # Contributor : Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libdrm-git
-pkgver=2.4.100.r68.g8a73372e
-pkgrel=2
+pkgver=2.4.100.r69.gfe06ee20
+pkgrel=1
 pkgdesc="Userspace interface to kernel DRM services, git 32-bit version"
 arch=(x86_64)
 license=('custom')
