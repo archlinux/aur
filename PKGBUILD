@@ -13,6 +13,7 @@ depends=(
   'mpv'
 )
 optdepends=(
+  'git'
   'python-pystray'
   'tk'
 )
@@ -28,12 +29,12 @@ pkgver() {
 }
 
 build() {
-    cd $_name 
+    cd $_name
     python setup.py build
 }
 
 package() {
-    cd $_name 
+    cd $_name
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

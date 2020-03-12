@@ -8,6 +8,7 @@ pkgbase = plex-mpv-shim-git
 	makedepends = python-setuptools
 	depends = python
 	depends = mpv
+	optdepends = git
 	optdepends = python-pystray
 	optdepends = tk
 	source = git+https://github.com/iwalton3/plex-mpv-shim.git
