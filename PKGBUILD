@@ -1,16 +1,26 @@
 # Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
+# Contributor: hawkeye116477 <hawkeye116477@gmail.com>
+
 pkgname=waterfox-current-bin
-pkgver=2020.01.1
+pkgver=2020.03
 pkgrel=1
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
-url="https://www.waterfoxproject.org/"
+url="https://www.waterfox.net"
 license=('MPL')
-depends=('libxt' 'libnotify' 'mime-types' 'nss' 'gtk2' 'gtk3' 'sqlite' 'dbus-glib')
-optdepends=('alsa-lib' 'pulseaudio')
-provides=("${pkgname%-bin}")
-conflicts=("${pkgname%-bin}")
-source=('waterfox-current.desktop' 'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
+depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
+         'libpulse' 'nss' 'hunspell' 'ttf-font')
+optdepends=('networkmanager: Location detection via available WiFi networks'
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'alsa-lib: Audio support'
+            'speech-dispatcher: Text-to-Speech')
+provides=("waterfox-current=${pkgver}")
+conflicts=('waterfox-current')
+replaces=('waterfox-alpha-bin')
+
+source=('waterfox-current.desktop'
+        'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
 
 package() {
 	# Create the necessary directories.
@@ -28,4 +38,4 @@ package() {
 }
 
 sha256sums=('4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d'
-            '53ad9853f403887cb7d7bd051e008b2beebbf45fdc84f0fd24ad4b7024629f82')
+            '0aa372a14790cf79840d31864a49e01ae07396b7b28b103844780865e5b2feb5') #
