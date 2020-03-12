@@ -1,0 +1,16 @@
+pkgbase = python-jmbitcoin-git
+	pkgdesc = JoinMarket library for bitcoin protocol
+	pkgver = 0.6.1.r91.ga050a89
+	pkgrel = 1
+	url = https://github.com/JoinMarket-Org/joinmarket-clientserver/tree/master/jmbitcoin
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-future
+	depends = python-coincurve
+	source = python-jmbitcoin-git::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git
+	sha256sums = SKIP
+
+pkgname = python-jmbitcoin-git
+
