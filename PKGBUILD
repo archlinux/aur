@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knotifications-git
-pkgver=r182.50c0a31
-pkgrel=2
+pkgver=v4.100.0.rc1.r426.g1b93a36
+pkgrel=1
 pkgdesc='KNotifications'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/knotifications'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/knotifications.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd knotifications
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
