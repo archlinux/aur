@@ -1,16 +1,13 @@
 pkgbase = ttf-league-spartan
-	pkgdesc = A new classic, this is a bold, modern, geometric sans-serif font that has no problem kicking its enemies in the chest.
+	pkgdesc = A geometric sans-serif revival of ATF's classic Spartan
 	pkgver = 20160215
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.theleagueofmoveabletype.com/league-spartan
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-league-spartan-20160215.zip::https://github.com/theleagueof/league-spartan/archive/master.zip
-	md5sums = 6eae098f805bfbb382077eaa84529748
+	license = OFL
+	source = ttf-league-spartan-20160215.zip::https://github.com/theleagueof/league-spartan/archive/c350408b07ca284b6c097b7194f2f14f428013f5.zip
+	sha256sums = ddac4b049281424adfefec1cc7b2bca3e1f64897cb4edc421f6b2c217aa3c141
 
 pkgname = ttf-league-spartan
 

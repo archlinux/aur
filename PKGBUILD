@@ -4,19 +4,20 @@
 _fnt_name=league-spartan
 pkgname=ttf-$_fnt_name
 pkgver=20160215
-pkgrel=3
-pkgdesc="A new classic, this is a bold, modern, geometric sans-serif font that has no problem kicking its enemies in the chest."
+# 20140922
+_sha=c350408b07ca284b6c097b7194f2f14f428013f5
+pkgrel=4
+pkgdesc="A geometric sans-serif revival of ATF's classic Spartan"
 arch=('any')
 url="https://www.theleagueofmoveabletype.com/$_fnt_name"
-license=('custom:OFL')
+license=('OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/league-spartan/archive/master.zip")
-md5sums=('6eae098f805bfbb382077eaa84529748')
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/league-spartan/archive/$_sha.zip")
+sha256sums=('ddac4b049281424adfefec1cc7b2bca3e1f64897cb4edc421f6b2c217aa3c141')
 
 package() {
-  install -Dm644 "$srcdir/$_fnt_name"-master/LeagueSpartan-Bold.otf           "$pkgdir"/usr/share/fonts/OTF/LeagueSpartan-Bold.otf
-  install -Dm644 "$srcdir/$_fnt_name"-master/_webfonts/leaguespartan-bold.ttf "$pkgdir"/usr/share/fonts/TTF/LeagueSpartan-Bold.ttf
-
-  install -Dm644 "$srcdir/$_fnt_name"-master/ofl.markdown "$pkgdir/usr/share/licenses/$pkgname"/OFL.txt
+    cd "$_fnt_name-$_sha"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" _webfonts/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl*.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
