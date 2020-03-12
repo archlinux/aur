@@ -3,13 +3,13 @@
 pkgname=newsflash-git
 _pkgname=news_flash_gtk
 pkgver=402.510b8c6
-pkgrel=1
+pkgrel=2
 pkgdesc="The spiritual successor to FeedReader"
 arch=(any)
 url="https://gitlab.com/news-flash/news_flash_gtk"
 license=(GPL3)
 depends=()
-makedepends=(rust cargo meson)
+makedepends=(cargo libhandy meson rust webkit2gtk)
 conflicts=(newsflash)
 source=("git+https://gitlab.com/news-flash/news_flash_gtk.git")
 sha512sums=("SKIP")
