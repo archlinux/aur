@@ -1,11 +1,12 @@
 # Maintainer: Stefan Biereigel <$(base64 --decode <<<'c3RlZmFuQGJpZXJlaWdlbC5kZQo=')>
+# Contributor: xiretza <xiretza+aur@gmail.com>
 # Contributor: Patrick Lloyd <$(base64 --decode <<<'cGF0cmlja0BsbG95ZC5zaAo=')>
 # Contributor: Sebastian Bøe <$(base64 --decode <<<'c2ViYXN0aWFuYm9vZUBnbWFpbC5jb20K')>
 # Contributor: Darren Wu <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
 
 pkgname=yosys-git
 pkgrel=1
-pkgver=r8603.2ce7a0d3
+pkgver=r8895.af84e5ac
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
@@ -15,32 +16,47 @@ conflicts=("yosys")
 depends=('tcl' 'libffi' 'python' 'boost-libs')
 optdepends=('graphviz: Schematics display support' 'xdot: Design netlist display support')
 makedepends=('git' 'mercurial' 'boost')
+checkdepends=('iverilog' 'clang')
 source=('git+https://github.com/cliffordwolf/yosys.git'
-        'git+https://github.com/berkeley-abc/abc.git'
-        'LICENSE')
-sha512sums=('SKIP'
-            'SKIP'
-            'a3202289ff7828c55d3ec3e22d23ed78a34fcae165a7c666d71d3cedd9abe06f638a09750d8c2d43dfca5781f1b32a616f439c3713a12265c02473f88c0f426d')
+        'git+https://github.com/berkeley-abc/abc.git')
 
-build(){
-    cd ${srcdir}/yosys
-    mv ../abc ./
+sha512sums=('SKIP'
+            'SKIP')
+
+pkgver() {
+    cd "${srcdir}/yosys"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/abc"
+    git checkout "$(make --silent -C "${srcdir}/yosys" echo-abc-rev)"
+}
+
+build() {
+    cd "${srcdir}/yosys"
+
+    ln -s "${srcdir}/abc/" .
+
     make config-gcc
     echo "ENABLE_LIBYOSYS=1" >> Makefile.conf
     echo "ENABLE_PYOSYS=1" >> Makefile.conf
+    echo "ABCPULL=0" >> Makefile.conf
+
     make PREFIX="/usr"
 }
 
-pkgver() {
-	cd "$srcdir/${pkgname%-git}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+check() {
+    cd "${srcdir}/yosys"
+
+    make test
 }
 
 package() {
-    cd ${srcdir}/yosys
-    make PREFIX="/usr" PYTHON_PREFIX="$pkgdir/usr" DESTDIR="$pkgdir" install
+    cd "${srcdir}/yosys"
 
-    install -D -m 644 \
-    "${srcdir}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # disable stripping in the makefile - duplicated effort and makes debug packages impossible
+    make STRIP=':' PREFIX="/usr" PYTHON_PREFIX="${pkgdir}/usr" DESTDIR="${pkgdir}" install
+
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
