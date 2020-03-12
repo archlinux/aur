@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kbookmarks-git
-pkgver=r67.39f8d2a
+pkgver=v4.100.0.rc1.r271.g8dea7ca
 pkgrel=1
 pkgdesc='KBookmarks'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kbookmarks.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kbookmarks
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

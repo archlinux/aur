@@ -1,6 +1,6 @@
 pkgbase = kbookmarks-git
 	pkgdesc = KBookmarks
-	pkgver = r67.39f8d2a
+	pkgver = v4.100.0.rc1.r271.g8dea7ca
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kbookmarks
 	arch = i686
