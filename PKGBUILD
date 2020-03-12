@@ -3,7 +3,7 @@
 pkgbase=python-pre-commit
 pkgname=(python-pre-commit)
 pypi_name=pre_commit
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A framework for managing and maintaining multi-language pre-commit hooks."
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
   'python-cached-property' 'python-cfgv' 'python-toml'
 )
 source=("https://pypi.io/packages/source/p/${pypi_name}/${pypi_name}-${pkgver}.tar.gz")
-md5sums=('5ce231e54c7e229890d8ce449e07a487')
+md5sums=('6d4001ef6ed4c90176f4ff97fa1f27b4')
 
 build() {
   cd "${srcdir}/${pypi_name}-${pkgver}"
