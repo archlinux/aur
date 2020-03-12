@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdoctools-git
-pkgver=r186.05ca8f4
-pkgrel=2
+pkgver=v5.2.0.r370.g70832b7
+pkgrel=1
 pkgdesc='KDocTools'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kdoctools'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kdoctools.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kdoctools
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
