@@ -1,7 +1,7 @@
 pkgbase = linx-server-bin
 	pkgdesc = Self-hosted file/code/media sharing website
 	pkgver = 2.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andreimarcu/linx-server
 	install = linx-server.install
 	arch = i686
