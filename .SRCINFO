@@ -1,16 +1,13 @@
 pkgbase = ttf-blackout
 	pkgdesc = Eats holes for breakfast lunch and dinner. Inspired by filling in sans-serif newspaper headlines. Continually updated with coffee and music. Makes your work louder than the next person’s.
 	pkgver = 20160215
-	pkgrel = 3
+	pkgrel = 4
 	url = http://theleagueofmoveabletype.com/blackout
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	license = OFL
 	source = ttf-blackout-20160215.zip::https://github.com/theleagueof/blackout/archive/master.zip
-	md5sums = 23ec5900abd2b9f9196cec94ae505315
+	sha256sums = cfc75d15b72e558a3e87bf2cb9f69f09756b5179254e8131ac3d59437f41143b
 
 pkgname = ttf-blackout
 
