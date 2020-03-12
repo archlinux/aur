@@ -1,4 +1,4 @@
-# Maintainer: Rodrigo Gryzinski <rogryza@gmail.com>
+# Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname='spotify-tui-bin'
 pkgver=0.16.0
