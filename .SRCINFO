@@ -25,4 +25,5 @@ pkgname = performance-tweaks
 	optdepends = systemd-guest-user: for guest user support
 	provides = performance-tweaks
 	conflicts = performance-tweaks
+	conflicts = tlp
 

@@ -62,7 +62,7 @@ package_performance-tweaks() {
         )    
     install=performance-tweaks.install
     provides=('performance-tweaks')
-    conflicts=('performance-tweaks')
+    conflicts=('performance-tweaks' 'tlp')
 
     _install ''
 }
