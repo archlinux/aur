@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.02.1
+pkgver=2020.03
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -24,7 +24,7 @@ replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=b09d5851a2bce79c96a66602ea527ad28a672660
+_commit=2d0183738d057ac2dff87eb50ccd98aa4edef1d1
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
@@ -32,10 +32,11 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.1"
         jack-system-ports.patch
         no-plt.diff
-        "waterfox-classic-kde-2019.12.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/waterfox-classic-kde-2019.12.patch"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
-        "Bug1387912.patch::https://github.com/mozilla/gecko-dev/commit/8e8d4fdf49032bbd235cc745be2eece2ddfe4141.patch")
+        "classic-kde-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-2020.03.patch"
+        "classic-kde-xul-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-xul-2020.03.patch"
+        "dark-mode.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dark-mode.patch")
 sha256sums=('SKIP'
             '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -43,10 +44,11 @@ sha256sums=('SKIP'
             '7aaf95e46c50a2f0e1df097c9cb867e73f82d0d7fdd8aa75153c1bdafbaebb20'
             'be19426cd658ea0ff0dedbdd80da6bf84580c80d92f9b3753da107011dfdd85c'
             'ea8e1b871c0f1dd29cdea1b1a2e7f47bf4713e2ae7b947ec832dba7dfcc67daa'
-            '0ec569e42cc6e6dab4bbb2d078210acf57bcbe6f16afb2dbeb5b6ff9d0809c87'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
-            '4e94ecbd0903218ed8603e1979f8a405b7c4eebd684f20dfba7c249288136d8d')
+            '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
+            'ac853e8cbc376b2f40622b88bce52631fc373d31421243a4f28506488dfe3323'
+            '8adb921550c88ff5bae7b9661f4003f4e1e431c34febc949c3e8439f8cfe3ca0')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -63,6 +65,11 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1382942
   patch -Np1 -i ../no-plt.diff
 
+  patch -Np1 -i ../classic-kde-2020.03.patch
+  patch -Np1 -i ../classic-kde-xul-2020.03.patch
+  patch -Np1 -i ../pgo_fix_missing_kdejs.patch
+
+  patch -Np1 -i ../dark-mode.patch
 
   cat >.mozconfig <<END
 export CC=clang
@@ -156,21 +163,9 @@ export MOZ_PROFILING=
 export MOZ_INCLUDE_SOURCE_INFO=1
 END
 
-  echo "Patching for KDE"
-  #patch -Np1 -i "../mozilla-kde-$_patchrev.patch"
-  #patch -Np1 -i "../waterfoxproject-kde-56.2.0.patch"
-  #patch -Np1 -i "../firefox-kde-$_patchrev.patch"
-  #patch -Np1 -i "../fix_waterfox_browser-kde_xul.patch"
-  #patch -Np1 -i "../fix_crash_e10s_upload_cancel.patch"
-  patch -Np1 -i "../waterfox-classic-kde-2019.12.patch"
-  patch -Np1 -i "../pgo_fix_missing_kdejs.patch"
-
   # https://bugs.archlinux.org/task/52183
   echo "Patching for Jack"
   patch -Np1 -i ../jack-system-ports.patch
-
-  patch -Np1 -i ../Bug1387912.patch
-
 }
 
 build() {
