@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcoreaddons-git
-pkgver=r229.d5802ea
-pkgrel=2
+pkgver=v5.58.0.rc2.r133.gb8a4402
+pkgrel=1
 pkgdesc='KCoreAddons'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcoreaddons'
@@ -17,8 +17,8 @@ source=('git://anongit.kde.org/kcoreaddons.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kcoreaddons
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
