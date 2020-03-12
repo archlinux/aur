@@ -1,16 +1,13 @@
 pkgbase = ttf-orbitron
-	pkgdesc = A geometric sans-serif font from the future.
+	pkgdesc = A geometric sans-serif font from the future
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/orbitron
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-orbitron-20160215.zip::https://github.com/theleagueof/orbitron/archive/master.zip
-	md5sums = 43c6818cfd1ddcdb845c32d0cdfa3b4f
+	license = OFL
+	source = ttf-orbitron-20160215.zip::https://github.com/theleagueof/orbitron/archive/13e6a5222aa6818d81c9acd27edd701a2d744152.zip
+	sha256sums = 770d923c2d84204ca75b9831f767b463ac618c93f168c6d136d63f5a4ac247c1
 
 pkgname = ttf-orbitron
 
