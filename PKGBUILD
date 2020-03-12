@@ -3,18 +3,15 @@
 
 pkgname=kubernetes-helm2
 pkgver=2.16.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to manage Kubernetes charts"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://github.com/helm/helm"
 makedepends=('git' 'glide' 'go')
 depends=('kubectl' 'socat')
 install="kubernetes-helm2.install"
-conflicts=(
-  'kubernetes-helm-bin'
-  'kubernetes-helm'
-  'kubernetes-helm-git'
-)
+provides=('kubernetes-helm')
+conflicts=('helm' 'kubernetes-helm')
 license=('Apache')
 source=("git+https://github.com/helm/helm#tag=v${pkgver}")
 md5sums=('SKIP')
