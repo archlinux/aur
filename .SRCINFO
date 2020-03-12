@@ -1,0 +1,15 @@
+pkgbase = navi-bin
+	pkgdesc = An interactive cheatsheet tool for the command-line
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/denisidoro/navi
+	arch = x86_64
+	license = Apache 2.0
+	depends = fzf
+	provides = navi
+	conflicts = navi
+	source = navi-bin-v2.0.4.tar.gz::https://github.com/denisidoro/navi/releases/download/v2.0.4/navi-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 06895d88ddc144ec3d55fc80340b4fd68446697c513e5a4d68f8bff05965247c
+
+pkgname = navi-bin
+
