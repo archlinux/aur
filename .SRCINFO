@@ -1,10 +1,11 @@
 pkgbase = xwingridselect
-	pkgdesc = X11 window switcher with a fancy look
-	pkgver = v0.1
+	pkgdesc = X11 window switcher with fancy look
+	pkgver = v0.4.2
 	pkgrel = 1
 	url = http://github.com/TheCynicalTeam/xwingridselect
-	arch = any
-	license = GPLv3
+	arch = i686
+	arch = x86_64
+	license = BSD
 	makedepends = cmake
 	makedepends = git
 	makedepends = make
@@ -13,7 +14,6 @@ pkgbase = xwingridselect
 	options = strip
 	source = git://github.com/TheCynicalTeam/xwingridselect.git
 	md5sums = SKIP
-	sha256sums = SKIP
 
 pkgname = xwingridselect
 
