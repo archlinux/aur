@@ -1,5 +1,5 @@
 pkgbase = mt76-git
-	pkgver = r1619.gf2be00b
+	pkgver = r1802.g89bd719
 	pkgrel = 1
 	url = https://github.com/openwrt/mt76
 	arch = x86_64

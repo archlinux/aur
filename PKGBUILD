@@ -4,7 +4,7 @@
 
 pkgbase=mt76-git
 pkgname=('mt76-dkms-git' 'mt76-firmware-git')
-pkgver=r1619.gf2be00b
+pkgver=r1802.g89bd719
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/openwrt/mt76'
@@ -38,5 +38,5 @@ package_mt76-firmware-git() {
 	install -dm755 ${pkgdir}/usr/lib/firmware/mediatek
 	cp ${srcdir}/mt76/firmware/* ${pkgdir}/usr/lib/firmware/mediatek/
 	# remove firmwares present in linux-firmware package
-	rm -f ${pkgdir}/usr/lib/firmware/mediatek/{mt7610e,mt7615_cr4,mt7615_n9,mt7615_rom_patch}.bin
+	rm -f ${pkgdir}/usr/lib/firmware/mediatek/{mt7610e,mt7615_cr4,mt7615_n9,mt7615_rom_patch,mt7622_n9,mt7622_rom_patch}.bin
 }
