@@ -1,0 +1,31 @@
+pkgbase = ros-melodic-velodyne-driver
+	pkgdesc = ROS - ROS device driver for Velodyne 3D LIDARs.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = h
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-pluginlib
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-diagnostic-updater
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-nodelet
+	makedepends = ros-melodic-tf
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-velodyne-msgs
+	makedepends = libpcap
+	depends = ros-melodic-pluginlib
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-diagnostic-updater
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-nodelet
+	depends = ros-melodic-tf
+	depends = ros-melodic-velodyne-msgs
+	depends = libpcap
+	source = ros-melodic-velodyne-driver-1.5.2.tar.gz::https://github.com/ros-drivers-gbp/velodyne-release/archive/release/melodic/velodyne_driver/1.5.2.tar.gz
+	sha256sums = f511e5be3ff01e56f20e950373921dfc9b7e225aac7ee83ff67b4aee9c4c73f8
+
+pkgname = ros-melodic-velodyne-driver
+
