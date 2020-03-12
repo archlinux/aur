@@ -1,10 +1,10 @@
 # Maintainer: BrLi <brli at chakralinux dot org>
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
-pkgname=zettlr
+pkgname=zettlr-git
 _name=Zettlr
 pkgver=1.6.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A Markdown Editor for the 21st century'
 arch=('x86_64')
 url='https://www.zettlr.com'
@@ -13,22 +13,29 @@ depends=('electron'
          'otf-crimson-text'
          'ttf-webhostinghub-glyphs')
 makedepends=('gendesk'
+             'git'
              'node-prune'
              'yarn')
 optdepends=('pandoc: For exporting to various format'
             'texlive-bin: For Latex support'
             'ttf-lato: Display output in a more comfortable way')
-source=("$pkgname-$pkgver::https://github.com/$_name/$_name/archive/v$pkgver.tar.gz"
-        "$pkgname")
-sha256sums=('765c9d74a7d9a6a35df88cb6ca23db7e88409e32d0c9cbf4b234cc47d8d69b39'
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+https://github.com/$_name/$_name"
+        "${pkgname%-git}.sh")
+sha256sums=('SKIP'
             '5e89480043eedfbc85696d078663e6dae834e23b215e2ea41ad6e1af9427e0ab')
 _mimetype=text/markdown
 _categories=Office
 
+pkgver() {
+    cd "$pkgname"
+    git describe --tags --abbrev=7 --match="v*" HEAD | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 prepare() {
     gendesk -f -n --custom StartupWMClass="$_name"
-    cd "$_name-$pkgver"
-
+    cd "$pkgname"
     # We don't build electron, and doesn't depends on postinstall script
     sed -i -e '/"electron"/d;/postinstall/d' package.json
 
@@ -37,7 +44,7 @@ prepare() {
 }
 
 build() {
-    cd "$_name-$pkgver"
+    cd "$pkgname"
     NODE_ENV= yarn install --pure-lockfile --no-bin-links --cache-folder "$srcdir/cache" --link-folder "$srcdir/link"
     yarn less
     yarn handlebars
@@ -52,11 +59,11 @@ build() {
 }
 
 package() {
-    cd "$_name-$pkgver"
+    cd "$pkgname"
 
-    local _destdir="usr/lib/$pkgname"
+    local _destdir="usr/lib/${pkgname%-git}"
 
-    install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/$pkgname"
+    install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
     sed -i -e "s,$srcdir/$_name-$pkgver/source,$_destdir,g" source/renderer/assets/vue/vue-sidebar.js
 
     install -dm755 "$pkgdir/$_destdir"
@@ -64,9 +71,9 @@ package() {
 
     for px in 16 24 32 48 64 96 128 256 512; do
         install -Dm644 "resources/icons/png/${px}x$px.png" \
-            "$pkgdir/usr/share/icons/hicolor/${px}x$px/apps/$pkgname.png"
+            "$pkgdir/usr/share/icons/hicolor/${px}x$px/apps/${pkgname%-git}.png"
     done
 
-    install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/$pkgname.desktop"
-    install -Dm644 "source/renderer/assets/img/zettlr-official-logo.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
+    install -Dm644 -t "$pkgdir/usr/share/applications/" "$srcdir/${pkgname%-git}.desktop"
+    install -Dm644 "source/renderer/assets/img/zettlr-official-logo.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }

@@ -1,11 +1,12 @@
-pkgbase = zettlr
+pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
 	makedepends = gendesk
+	makedepends = git
 	makedepends = node-prune
 	makedepends = yarn
 	depends = electron
@@ -14,10 +15,12 @@ pkgbase = zettlr
 	optdepends = pandoc: For exporting to various format
 	optdepends = texlive-bin: For Latex support
 	optdepends = ttf-lato: Display output in a more comfortable way
-	source = zettlr-1.6.0::https://github.com/Zettlr/Zettlr/archive/v1.6.0.tar.gz
-	source = zettlr
-	sha256sums = 765c9d74a7d9a6a35df88cb6ca23db7e88409e32d0c9cbf4b234cc47d8d69b39
+	provides = zettlr
+	conflicts = zettlr
+	source = zettlr-git::git+https://github.com/Zettlr/Zettlr
+	source = zettlr.sh
+	sha256sums = SKIP
 	sha256sums = 5e89480043eedfbc85696d078663e6dae834e23b215e2ea41ad6e1af9427e0ab
 
-pkgname = zettlr
+pkgname = zettlr-git
 
