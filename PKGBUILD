@@ -1,7 +1,7 @@
 # Maintainer: Matthijs Tadema <M dot J dot Tadema at pm dot me>
 pkgname=hole2-git
 pkgver=v2.004pre.r24.ba82cfc
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyzes the pore dimensions of ion channels"
 arch=('x86_64')
 url='https://github.com/osmart/hole2'
@@ -36,8 +36,8 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	bash tarball.sh
-	mkdir -p $pkgdir/usr/
-	cd $pkgdir/usr/
+	mkdir -p $pkgdir/opt/
+	cd $pkgdir/opt/
 	tar -xf ${srcdir}/${pkgname%-git}/"${pkgname%-git}-`uname`-`uname -m`.tar.gz"
 	rm ${srcdir}/${pkgname%-git}/"${pkgname%-git}-`uname`-`uname -m`.tar.gz"
 }
