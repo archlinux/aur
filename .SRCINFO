@@ -1,7 +1,7 @@
 pkgbase = grav-admin
 	pkgdesc = Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)
 	pkgver = 1.6.22
-	pkgrel = 4
+	pkgrel = 5
 	url = https://getgrav.org
 	install = post_install
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = grav-admin
 	optdepends = php-apcu
 	optdepends = xdebug
 	source = https://github.com/getgrav/grav/releases/download/1.6.22/grav-admin-v1.6.22.zip
+	source = post_install
 	sha256sums = 0ce1f1b5cb976fc475c3d5fffa33a4f4c882bd431dfc0fb524e59329e88dd148
 	sha256sums = 5024bdefa6ce54a133962b40c5e142fb1d7a80dd76cf23f756f4ceb9d6576dc0
 
