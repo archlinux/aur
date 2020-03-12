@@ -1,14 +1,10 @@
 pkgbase = ttf-cheapskate
 	pkgdesc = TTF Fonts by Dustin Norlander
 	pkgver = 2.0
-	pkgrel = 13
+	pkgrel = 14
 	url = https://www.fontspace.com/cheapskate-fonts
 	arch = any
 	license = GPL
-	depends = xorg-fonts-encodings
-	depends = xorg-fonts-alias
-	depends = xorg-font-utils
-	depends = fontconfig
 	source = flatline.zip::http://dl1.fontspace.com/download.ashx?guid=737c92701c004c299434e9aa9fef66d6&name=cheapskate-fonts_flatline.zip
 	source = wargames.zip::http://dl1.fontspace.com/download.ashx?guid=a67b4a43c3574b1f8e57037a86c2c586&name=cheapskate-fonts_wargames.zip
 	source = dustismo-roman.zip::http://dl1.fontspace.com/download.ashx?guid=c6cfddf7450b4ea0a9693d662d0cf4f8&name=cheapskate-fonts_dustismo-roman.zip

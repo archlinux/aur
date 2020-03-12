@@ -3,12 +3,11 @@
 
 pkgname=ttf-cheapskate
 pkgver=2.0
-pkgrel=13
-pkgdesc="TTF Fonts by Dustin Norlander"
+pkgrel=14
+pkgdesc='TTF Fonts by Dustin Norlander'
 arch=('any')
-url="https://www.fontspace.com/cheapskate-fonts"
+url='https://www.fontspace.com/cheapskate-fonts'
 license=('GPL')
-depends=('xorg-fonts-encodings' 'xorg-fonts-alias' 'xorg-font-utils' 'fontconfig')
 source=("flatline.zip::http://dl1.fontspace.com/download.ashx?guid=737c92701c004c299434e9aa9fef66d6&name=cheapskate-fonts_flatline.zip"
         "wargames.zip::http://dl1.fontspace.com/download.ashx?guid=a67b4a43c3574b1f8e57037a86c2c586&name=cheapskate-fonts_wargames.zip"
         "dustismo-roman.zip::http://dl1.fontspace.com/download.ashx?guid=c6cfddf7450b4ea0a9693d662d0cf4f8&name=cheapskate-fonts_dustismo-roman.zip"
@@ -39,9 +38,6 @@ sha256sums=('29b3c243d50590a4af614a433cbf99f67538042f31278ce6fa8828ae53c62657'
             '323d3cec2984f7792afaac87234d161b75e14ebacc7529a182c4c287d26b27be')
 
 package() {
-    for zip in "${source[@]//::*}"; do
-        bsdtar -xf "$zip"
-    done
-    install -d "$pkgdir/usr/share/fonts/TTF"
-    install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF/"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname/" license.txt
 }
