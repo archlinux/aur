@@ -3,7 +3,7 @@
 
 pkgname=grav-admin
 pkgver=1.6.22
-pkgrel=7
+pkgrel=8
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)"
 arch=("any")
 url="https://getgrav.org"
@@ -17,7 +17,7 @@ install=post_install
 source=("https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip"
 		'post_install')
 sha256sums=('0ce1f1b5cb976fc475c3d5fffa33a4f4c882bd431dfc0fb524e59329e88dd148'
-			'5024bdefa6ce54a133962b40c5e142fb1d7a80dd76cf23f756f4ceb9d6576dc0')
+			'96ae16816f0032c12d45e7fa912ec275e8ca6735aef6e0d7e7fe5e30d36181ab')
 
 package() {
     cd "${pkgdir}"
