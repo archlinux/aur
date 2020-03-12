@@ -1,13 +1,13 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.3.0
+	pkgver = 9.4.0rc3
 	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
 	makedepends = gettext
 	makedepends = meson
-	makedepends = vala>=0.36.6
+	makedepends = vala>=0.47.0
 	makedepends = libappindicator-gtk3
 	makedepends = gobject-introspection
 	makedepends = gtk3>=3.22
@@ -26,12 +26,14 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.3.0-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/f55eb3d5a20b4aca305a60aca4763c6eae2c79b5/pamac-common-f55eb3d5a20b4aca305a60aca4763c6eae2c79b5.tar.gz
-	sha256sums = 366614977e3b90ff2b1c18f6b3acd7e2834c642fcbff3677a8206bd7fa6c36ec
+	source = pamac-9.4.0rc3-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v9.4.0rc3/pamac-v9.4.0rc3.tar.gz
+	sha256sums = ea20dd6c3bfef85c57497736cc432ffee552d89a3ec0287dc17bf24c4bbb6017
 
 pkgname = pamac-common
 	install = pamac-common.install
-	optdepends = 
+	optdepends = pamac-snap-plugin
+	optdepends = pamac-flatpak-plugin
+	provides = pamac-common=9.4.0rc3-1
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-common-dev
@@ -39,6 +41,7 @@ pkgname = pamac-common
 
 pkgname = pamac-cli-src
 	depends = pamac-common
+	provides = pamac-cli=9.4.0rc3-1
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-cli-dev
@@ -47,7 +50,8 @@ pkgname = pamac-gtk
 	install = pamac-gtk.install
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
-	provides = pamac=9.3.0-1
+	provides = pamac=9.4.0rc3-1
+	provides = pamac-gtk=9.4.0rc3-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
@@ -57,5 +61,6 @@ pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon for better integration of pamac-gtk in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
+	provides = pamac-tray-appindicator-src=9.4.0rc3-1
 	conflicts = pamac-tray-appindicator-dev
 
