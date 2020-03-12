@@ -1,5 +1,5 @@
 pkgname=mwoffliner
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Mediawiki/Parsoid HTML snapshot utility and ZIM file builder"
 arch=(any)
@@ -9,7 +9,7 @@ depends=('zimwriterfs>=1.3.7' 'nodejs' 'npm' 'jpegoptim' 'advancecomp' 'gifsicle
 optdepends=()
 source=(https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=(44f7e6b95e774c53a527917a5a120de7a46f4895abfdeaf6199553b0d498bc80)
+sha256sums=(1d406260236832aff20b80c51fa72e05b003558399aee9205d9ebeb3c2212f8e)
 
 package() {
   cd $srcdir
