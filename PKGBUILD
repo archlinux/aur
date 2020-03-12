@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcrash-git
-pkgver=r73.36b7c1f
-pkgrel=2
+pkgver=v5.68.0.rc1.r0.g4035afe
+pkgrel=1
 pkgdesc='KCrash'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcrash'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kcrash.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kcrash
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
