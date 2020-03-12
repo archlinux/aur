@@ -70,6 +70,7 @@ EOF
 
 cat > etc/systemd/network/any.network <<EOF
 [Match]
+Name=en* eth* usb* wl*
 
 [Network]
 DHCP=yes
