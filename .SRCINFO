@@ -1,12 +1,12 @@
 pkgbase = pamac-classic
 	pkgdesc = A Gtk3 frontend for libalpm - classic version
 	pkgver = 7.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.cromer.cl/cromer/pamac-classic
 	install = pamac-classic.install
 	arch = x86_64
 	license = GPL3
-	makedepends = vala
+	makedepends = vala<0.48
 	makedepends = meson
 	makedepends = gettext
 	makedepends = gobject-introspection
