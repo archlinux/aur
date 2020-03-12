@@ -1,24 +1,24 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: samæ <samæ at marvid dot fr>
 
 _fnt_name=prociono
 pkgname=ttf-$_fnt_name
 pkgver=20160215
-pkgrel=2
-pkgdesc="A roman serif with blackletter elements."
+# 20110526
+_sha=f9d9680de6d6f0c13939f23c9dd14cd7853cf844
+pkgrel=3
+pkgdesc='A roman serif with blackletter elements'
 arch=('any')
 url="http://theleagueofmoveabletype.com/$_fnt_name"
-license=('custom:OFL')
+license=('OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/master.zip")
-md5sums=('e92f54c9db1047927d9c26e8fc069cf1')
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
+sha256sums=('a7fe1b607cfb871f20d38cf08b2d56689d787de5dcac80660c4e158545dab161')
 
 package() {
-  install -d "$pkgdir"/usr/share/fonts/OTF
-  install -d "$pkgdir"/usr/share/fonts/TTF
-  install -Dm644 "$srcdir/$_fnt_name"-master/*.otf  "$pkgdir"/usr/share/fonts/OTF/
-  install -Dm644 "$srcdir/$_fnt_name"-master/*.ttf  "$pkgdir"/usr/share/fonts/TTF/
-
-  install -Dm644 "$srcdir/$_fnt_name"-master/Open\ Font\ License.markdown "$pkgdir/usr/share/licenses/$pkgname"/OFL.txt
+    cd "$_fnt_name-$_sha"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" *.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Open\ Font\ License*.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }

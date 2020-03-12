@@ -1,16 +1,13 @@
 pkgbase = ttf-prociono
-	pkgdesc = A roman serif with blackletter elements.
+	pkgdesc = A roman serif with blackletter elements
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/prociono
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-prociono-20160215.zip::https://github.com/theleagueof/prociono/archive/master.zip
-	md5sums = e92f54c9db1047927d9c26e8fc069cf1
+	license = OFL
+	source = ttf-prociono-20160215.zip::https://github.com/theleagueof/prociono/archive/f9d9680de6d6f0c13939f23c9dd14cd7853cf844.zip
+	sha256sums = a7fe1b607cfb871f20d38cf08b2d56689d787de5dcac80660c4e158545dab161
 
 pkgname = ttf-prociono
 
