@@ -5,13 +5,13 @@
 pkgname=plasma-pass-git
 _pkgname=${pkgname%-git}
 pkgver=1.1.0.r5.9a52f2a
-pkgrel=1
+pkgrel=2
 pkgdesc="Plasma applet for the Pass password manager"
 url="https://cgit.kde.org/plasma-pass.git"
 arch=(x86_64)
 license=(GPL)
 depends=(plasma-workspace kitemmodels)
-makedepends=(extra-cmake-modules)
+makedepends=(extra-cmake-modules git)
 provides=(plasma-pass)
 conflicts=(plasma-pass)
 source=("git+https://anongit.kde.org/plasma-pass.git")
