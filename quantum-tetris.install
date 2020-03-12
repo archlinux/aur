@@ -1,0 +1,13 @@
+post_install() {
+    sudo cp /opt/quantum-tetris/quantum-tetris /usr/bin
+    sudo xdg-desktop-menu install /opt/quantum-tetris/quantum-tetris.desktop
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    sudo rm /usr/bin/quantum-tetris
+    sudo xdg-desktop-menu uninstall /usr/share/applications/quantum-tetris.desktop
+}

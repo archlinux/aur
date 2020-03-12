@@ -1,0 +1,13 @@
+pkgbase = quantum-tetris
+	pkgdesc = Quantum Tetris is your traditional tetris game which has several twists based on the concepts of quantum computing.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://quantumtetris.com/
+	install = quantum-tetris.install
+	arch = x86_64
+	license = MIT
+	source = https://gitlab.com/xXR01I1Xx/quantumtetrisaur/-/archive/v1.0/quantumtetrisaur-v1.0.tar.gz
+	sha512sums = a879c54c455b8758cf31ae39d5536ea851a38f9a5982bdaedd8fe5ece2e84fe3c2eb12917cda2b98325cef9e24cc017312f3b478f5662811718a2f8ec8cde5b4
+
+pkgname = quantum-tetris
+
