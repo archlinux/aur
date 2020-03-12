@@ -1,0 +1,18 @@
+pkgbase = python-syncthingmanager-git
+	pkgdesc = Command line tool for the Syncthing API
+	pkgver = 0.2.0dev2
+	pkgrel = 0
+	url = https://github.com/classicsc/syncthingmanager
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-syncthing
+	provides = python-syncthingmanager
+	conflicts = python-syncthingmanager
+	source = python-syncthingmanager-git::git+https://github.com/classicsc/syncthingmanager.git
+	sha256sums = SKIP
+
+pkgname = python-syncthingmanager-git
+
