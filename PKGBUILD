@@ -1,7 +1,6 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kactivities-git
-epoch=2
 pkgver=v5.68.0.rc1.r0.g0983cf12
 pkgrel=1
 pkgdesc="Core components for the KDE's Activities"

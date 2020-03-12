@@ -2,7 +2,6 @@ pkgbase = kactivities-git
 	pkgdesc = Core components for the KDE's Activities
 	pkgver = v5.68.0.rc1.r0.g0983cf12
 	pkgrel = 1
-	epoch = 2
 	url = https://projects.kde.org/projects/frameworks/kactivities
 	arch = i686
 	arch = x86_64
