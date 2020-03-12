@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf  <lonewolf at xs4all dot nl >
+# Maintainer: Lone_Wolf  <lone_wolf@klaas-de-kat.nl>
 # Contributor: speps <speps dot archlinux dot org>
 
 pkgname=qxmledit
