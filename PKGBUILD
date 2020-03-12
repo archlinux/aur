@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ktextwidgets-git
-pkgver=r62.a71ccac
-pkgrel=2
+pkgver=v4.100.0.rc1.r259.g598e8bf
+pkgrel=1
 pkgdesc='KTextWidgets'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/ktextwidgets'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/ktextwidgets.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd ktextwidgets
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
