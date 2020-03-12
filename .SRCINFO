@@ -1,5 +1,5 @@
 pkgbase = linux-ck
-	pkgver = 5.5.8
+	pkgver = 5.5.9
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.8.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.8.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.9.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.9.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.5/5.5-ck1/patch-5.5-ck1.xz
@@ -26,7 +26,7 @@ pkgbase = linux-ck
 	source = 0011-drm-i915-Introduce-a-vma.kref.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = e5b6f6938e99a39fb359618e92349ca4e2cd9db31e1b81b7d14d2fa7dc03fc06
+	sha256sums = a435e16950bbe80362495383c2b5e8b78a4b3879c894e2b3c38ecba6fe7ca878
 	sha256sums = SKIP
 	sha256sums = a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
@@ -50,11 +50,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.5.8
+	provides = linux-ck=5.5.9
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.5.8
-	provides = linux-headers=5.5.8
+	provides = linux-ck-headers=5.5.9
+	provides = linux-headers=5.5.9
 
