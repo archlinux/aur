@@ -1,17 +1,14 @@
 pkgbase = ttf-sniglet
-	pkgdesc = A fun rounded display face that’s great for headlines.
+	pkgdesc = A fun rounded display face that’s great for headlines
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/sniglet
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
+	license = OFL
 	conflicts = ttf-impallari-sniglet
-	source = ttf-sniglet-20160215.zip::https://github.com/theleagueof/sniglet/archive/master.zip
-	md5sums = f649d483683a4f5de8051dc23fe7ac2c
+	source = ttf-sniglet-20160215.zip::https://github.com/theleagueof/sniglet/archive/5c6b0860bdd0d8c4f16222e4de3918c384db17c4.zip
+	sha256sums = 706c2aecf861f101e01dcadb2dc0b2e6da573d949f77bfcec639ef2cbbc11948
 
 pkgname = ttf-sniglet
 
