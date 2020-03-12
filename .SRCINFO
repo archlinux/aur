@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-velodyne
+	pkgdesc = ROS - Basic ROS support for the Velodyne 3D LIDARs.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = h
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-velodyne-msgs
+	depends = ros-melodic-velodyne-driver
+	depends = ros-melodic-velodyne-laserscan
+	depends = ros-melodic-velodyne-pointcloud
+	source = ros-melodic-velodyne-1.5.2.tar.gz::https://github.com/ros-drivers-gbp/velodyne-release/archive/release/melodic/velodyne/1.5.2.tar.gz
+	sha256sums = 439295c760704e0db29117fa55c9d20c2a43eb866542895460730e84a66e272c
+
+pkgname = ros-melodic-velodyne
+
