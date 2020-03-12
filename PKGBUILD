@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kio-git
-pkgver=r1598.8b43a9e
+pkgver=v4.100.0.rc1.r2525.g4b4ed81c
 pkgrel=1
 pkgdesc='Resource and network access abstraction'
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ source=('git+https://anongit.kde.org/kio.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kio
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
