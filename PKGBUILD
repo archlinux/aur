@@ -3,19 +3,18 @@
 
 pkgname=xwingridselect
 _gitname=xwingridselect
-pkgver=v0.1
+pkgver=v0.4.2
 pkgrel=1
-pkgdesc="X11 window switcher with a fancy look"
-url="http://github.com/TheCynicalTeam/$_gitname"
-arch=('any')
-license=('GPLv3')
+pkgdesc="X11 window switcher with fancy look"
+url="http://github.com/TheCynicalTeam/xwingridselect"
+arch=('i686' 'x86_64')
+license=('BSD')
 depends=('gtk2')
 makedepends=('cmake' 'git' 'make')
 options=(!libtool strip)
 
-source=("git://github.com/TheCynicalTeam/$_gitname.git")
+source=('git://github.com/TheCynicalTeam/xwingridselect.git')
 md5sums=('SKIP')
-sha256sums=("SKIP")
 
 pkgver() {
   cd $_gitname
