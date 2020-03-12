@@ -1,13 +1,13 @@
 pkgbase = ttf-chunk
 	pkgdesc = An ultra-bold, ultra-awesome slab serif typeface
 	pkgver = 20180627
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/chunk
 	arch = any
 	groups = lmt-fonts
 	license = OFL
-	source = ttf-chunk-20180627.zip::https://github.com/theleagueof/chunk/archive/master.zip
-	sha256sums = f38062c4b6ecf42e0cc0b4ec3c8d6976c040ac2e87777f44cec6b1047470d949
+	source = ttf-chunk-20180627.zip::https://github.com/theleagueof/chunk/archive/957d5ddfdaf35368822ec5fcb07e0a118fa63391.zip
+	sha256sums = b68946c684bb2b1224a3d0adee105a85ff5194c088bb4f95677a47549ccfe979
 
 pkgname = ttf-chunk
 
