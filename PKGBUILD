@@ -1,7 +1,7 @@
 # Maintainer: Markus Pesch <markus.pesch@cryptic.systems>
 
 pkgname=rpm-builder
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Build rpms without a spec file. Pure Rust. No dependencies to librpm'
 arch=('x86_64')
