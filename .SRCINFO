@@ -1,16 +1,13 @@
 pkgbase = ttf-league-mono
-	pkgdesc = A mashup of sorts, inspired by some beautiful forms found in both Fira Mono, Libertinus Mono, and Courier.
+	pkgdesc = a monospace typeface inspired by Fira Mono, Libertinus Mono, and Courier
 	pkgver = 20171115
-	pkgrel = 1
+	pkgrel = 2
 	url = http://theleagueofmoveabletype.com/league-mono
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-league-mono-20171115.zip::https://github.com/theleagueof/league-mono/archive/master.zip
-	md5sums = 0e9214b72309aa04cfee76f5f8bb76cb
+	license = OFL
+	source = ttf-league-mono-20171115.zip::https://github.com/theleagueof/league-mono/archive/3536b38d1baee171787ba0fe6194a13e18e540bd.zip
+	sha256sums = cbb244ea4dcab23c5c810b62b51bb095b444738d7590cd44d2192867f005e4bd
 
 pkgname = ttf-league-mono
 

@@ -1,23 +1,22 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _fnt_name=league-mono
 pkgname=ttf-$_fnt_name
 pkgver=20171115
-pkgrel=1
-pkgdesc="A mashup of sorts, inspired by some beautiful forms found in both Fira Mono, Libertinus Mono, and Courier."
+_sha=3536b38d1baee171787ba0fe6194a13e18e540bd
+pkgrel=2
+pkgdesc="a monospace typeface inspired by Fira Mono, Libertinus Mono, and Courier"
 arch=('any')
 url="http://theleagueofmoveabletype.com/$_fnt_name"
-license=('custom:OFL')
+license=('OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/master.zip")
-md5sums=('0e9214b72309aa04cfee76f5f8bb76cb')
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
+sha256sums=('cbb244ea4dcab23c5c810b62b51bb095b444738d7590cd44d2192867f005e4bd')
 
 package() {
-  install -d "$pkgdir"/usr/share/fonts/OTF
-  install -d "$pkgdir"/usr/share/fonts/TTF
-  install -Dm644 "$srcdir/$_fnt_name"-master/otf/*.otf  "$pkgdir"/usr/share/fonts/OTF/
-  install -Dm644 "$srcdir/$_fnt_name"-master/ttf/*.ttf  "$pkgdir"/usr/share/fonts/TTF/
-
-  install -Dm644 "$srcdir/$_fnt_name"-master/ofl.markdown "$pkgdir/usr/share/licenses/$pkgname"/OFL.txt
+    cd "$_fnt_name-$_sha"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" ttf/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ofl*.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
