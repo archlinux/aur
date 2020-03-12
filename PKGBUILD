@@ -13,7 +13,7 @@ url="http://theleagueofmoveabletype.com/$_fnt_name"
 license=('OFL')
 groups=('lmt-fonts')
 source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
-sha256sums=('f38062c4b6ecf42e0cc0b4ec3c8d6976c040ac2e87777f44cec6b1047470d949')
+sha256sums=('b68946c684bb2b1224a3d0adee105a85ff5194c088bb4f95677a47549ccfe979')
 
 package() {
   cd "$_fnt_name-$_sha"
