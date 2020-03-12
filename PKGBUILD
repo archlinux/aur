@@ -13,10 +13,9 @@ provides=(wasmer wapm)
 source=(
   "wasmer-linux-amd64-${pkgver}.tar.gz"::"https://github.com/wasmerio/wasmer/releases/download/${pkgver}/wasmer-linux-amd64.tar.gz"
   "https://raw.githubusercontent.com/wasmerio/wasmer/${pkgver}/LICENSE"
-  wapm.sh
   logo.sh
 )
-sha512sums=(SKIP SKIP SKIP SKIP)
+sha512sums=(SKIP SKIP SKIP)
 
 build() {
   cd "$srcdir"
@@ -34,9 +33,7 @@ package() {
 
   # executable commands
   install -Dm755 bin/wasmer "$pkgdir"/usr/bin/wasmer
-  install -Dm755 wapm.sh "$pkgdir"/usr/bin/wapm.sh
-  install -Dm755 bin/wapm "$pkgdir"/usr/bin/wapm.bin
-  ln -s wapm.sh "$pkgdir"/usr/bin/wapm
+  install -Dm755 bin/wapm "$pkgdir"/usr/bin/wapm
 
   # wapm completions
   install -Dm644 wapm-bash-completions "$pkgdir"/usr/share/bash-completion/completions/wapm
