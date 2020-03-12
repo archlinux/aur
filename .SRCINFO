@@ -8,6 +8,7 @@ pkgbase = plex-mpv-shim-git
 	makedepends = python-setuptools
 	depends = python
 	depends = mpv
+	depends = python-mpv-jsonipc
 	optdepends = git
 	optdepends = python-pystray
 	optdepends = tk

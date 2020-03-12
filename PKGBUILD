@@ -11,6 +11,7 @@ license=('MIT')
 depends=(
   'python'
   'mpv'
+  'python-mpv-jsonipc'
 )
 optdepends=(
   'git'
