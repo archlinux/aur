@@ -1,5 +1,4 @@
 pkgname=attica-git
-epoch=2
 pkgver=v5.68.0.rc1.r0.g5a49f34
 pkgrel=1
 pkgdesc='Qt5 library that implements the Open Collaboration Services API'
