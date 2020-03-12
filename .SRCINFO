@@ -21,18 +21,4 @@ pkgbase = joinmarket-qt-git
 	sha256sums = f97ea99c2d74db9b966213206925464f2a9a83ab75937e922b206559fa89486d
 
 pkgname = joinmarket-qt-git
-	depends = python-pyqt5
-	depends = pyside2
-	depends = python-qt5reactor
-	depends = python-jmbase-git
-	depends = python-jmclient-git
-	depends = python-jmbitcoin-git
-	depends = python-jmdaemon-git
-	depends = python-pyqt5
-	depends = pyside2
-	depends = python-qt5reactor
-	depends = python-jmbase-git
-	depends = python-jmclient-git
-	depends = python-jmbitcoin-git
-	depends = python-jmdaemon-git
 

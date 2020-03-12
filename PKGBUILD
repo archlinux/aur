@@ -26,10 +26,6 @@ pkgver() {
 
 # GUI and other scripts
 package_joinmarket-qt-git() {
-    depends+=( 'python-pyqt5' 'pyside2' 'python-qt5reactor'
-               'python-jmbase-git' 'python-jmclient-git' 'python-jmbitcoin-git' 'python-jmdaemon-git'
-             )
-
     # Dump scripts into /opt/joinmarket
     mkdir -p "${pkgdir:?}/opt/$pkgname"
     cp -r "${srcdir:?}/${pkgname}/scripts/"* "${pkgdir}/opt/$pkgname"
