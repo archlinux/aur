@@ -1,0 +1,20 @@
+pkgbase = python-jmdaemon-git
+	pkgdesc = JoinMarket library for deamon protocol
+	pkgver = 0.6.1.r91.ga050a89
+	pkgrel = 1
+	url = https://github.com/JoinMarket-Org/joinmarket-clientserver/tree/master/jmdeamon
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = libsodium
+	depends = python-future
+	depends = python-txtorcon
+	depends = python-pyopenssl
+	depends = python-libnacl
+	depends = python-jmbase-git
+	source = python-jmdaemon-git::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git
+	sha256sums = SKIP
+
+pkgname = python-jmdaemon-git
+
