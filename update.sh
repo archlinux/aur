@@ -3,7 +3,7 @@
 set -e
 
 echo "Fetching latest release..."
-LATEST=$(hub api repos/Rigellute/spotify-tui/releases/latest | jq '.tag_name' -r)
+LATEST=$(hub api repos/Rigellute/spotify-tui/releases/latest | jq '.tag_name' -r | cut -c 2-)
 
 CURRENT=$(grep '^pkgver=' PKGBUILD | grep -oEi '[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+')
 if [ "$CURRENT" = "$LATEST" ]; then
@@ -15,7 +15,4 @@ else
 
   updpkgsums
   makepkg --printsrcinfo > .SRCINFO
-
-  git add PKGBUILD .SRCINFO
-  git commit -m "Update to $LATEST"
 fi
