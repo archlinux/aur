@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcompletion-git
-pkgver=r100.3bff831
-pkgrel=2
+pkgver=v4.100.0.rc1.r267.g897e77e
+pkgrel=1
 pkgdesc='KCompletion'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcompletion'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kcompletion.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kcompletion
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
