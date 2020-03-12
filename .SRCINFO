@@ -1,16 +1,13 @@
 pkgbase = ttf-knewave
-	pkgdesc = A bold, painted face font for the rocker within.
+	pkgdesc = A bold, painted face font for the rocker within
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/knewave
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-knewave-20160215.zip::https://github.com/theleagueof/knewave/archive/master.zip
-	md5sums = ec880e36c11c0a16b06be6cd5884e3b8
+	license = OFL
+	source = ttf-knewave-20160215.zip::https://github.com/theleagueof/knewave/archive/f335d5ff1f12e4acf97d4208e1c37b4d386e57fb.zip
+	sha256sums = e5fc9f85d929f2ddb678a55786a65cd63435d75e9f146e09aff07ca68eda52d9
 
 pkgname = ttf-knewave
 
