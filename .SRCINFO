@@ -1,16 +1,13 @@
 pkgbase = ttf-ostrich-sans
-	pkgdesc = A gorgeous modern sans-serif with a very long neck.
+	pkgdesc = A gorgeous modern sans-serif with a very long neck
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/ostrich-sans
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-ostrich-sans-20160215.zip::https://github.com/theleagueof/ostrich-sans/archive/master.zip
-	md5sums = a30ecf58162f9c40040fcf74fcaef916
+	license = OFL
+	source = ttf-ostrich-sans-20160215.zip::https://github.com/theleagueof/ostrich-sans/archive/a949d40d0576d12ba26e2a45e19c91fd0228c964.zip
+	sha256sums = 962953c33c87ae9c5d6de678b3bc416504a5b2df92c12fd0389d1f5092a9127c
 
 pkgname = ttf-ostrich-sans
 
