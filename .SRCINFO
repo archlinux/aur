@@ -8,6 +8,7 @@ pkgbase = python-mpv-jsonipc-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python
+	provides = python-mpv-jsonipc
 	source = git+https://github.com/iwalton3/python-mpv-jsonipc.git
 	sha256sums = SKIP
 
