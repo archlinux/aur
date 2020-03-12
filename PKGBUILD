@@ -5,7 +5,7 @@ pkgver=8.6.0
 pkgrel=1
 pkgdesc="Marpa parse engine C library"
 arch=('i686' 'x86_64')
-makedepends=('autoconf' 'automake' 'libtool' 'make' 'perl' 'texlive-bin')
+makedepends=('autoconf' 'automake' 'libtool' 'make' 'perl' 'cwebx')
 url="https://github.com/jeffreykegler/libmarpa"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/jeffreykegler/libmarpa)
@@ -15,14 +15,14 @@ prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Preparing distribution...'
-  make dist
+  make dists
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/dist"
 
   msg2 'Building...'
-  ./configure \
+    ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
     --libexecdir=/usr/lib/libmarpa \
