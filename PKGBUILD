@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kguiaddons-git
-pkgver=r54.9625907
+pkgver=v5.68.0.rc1.r0.g6c5ee03
 pkgrel=1
 pkgdesc='KGuiAddons'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kguiaddons.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kguiaddons
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

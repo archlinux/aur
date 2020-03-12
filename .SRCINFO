@@ -1,6 +1,6 @@
 pkgbase = kguiaddons-git
 	pkgdesc = KGuiAddons
-	pkgver = r54.9625907
+	pkgver = v5.68.0.rc1.r0.g6c5ee03
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kguiaddons
 	arch = i686
