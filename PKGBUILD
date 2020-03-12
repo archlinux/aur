@@ -4,7 +4,7 @@
 # Contributor: Max Mazurov <fox.cpp at disroot dot org>
 pkgname='maddy'
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Composable all-in-one mail server'
 arch=('x86_64')
 url='https://github.com/foxcpp/maddy'
