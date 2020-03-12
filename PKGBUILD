@@ -3,37 +3,26 @@
 
 pkgname=grav-admin
 pkgver=1.6.22
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File CMS (with Admin plugin)"
 arch=("any")
 url="https://getgrav.org"
 license=("MIT")
-depends=('php>=7.1.3' 'php-gd')
+depends=('php>=7.1.3' 'php-gd' 'php-fpm')
 optdepends=('php-apcu' 'xdebug')
 source=("https://github.com/getgrav/grav/releases/download/${pkgver}/${pkgname}-v${pkgver}.zip")
 sha256sums=("0ce1f1b5cb976fc475c3d5fffa33a4f4c882bd431dfc0fb524e59329e88dd148")
 
 package() {
-    dirs=("assets" "backup" "cache" "images" "user")
-
     cd "${pkgdir}"
-    install -dm0755 usr/share/webapps/${pkgname}/
-    install -dm0755 var/log/${pkgname}/
-    install -dm0755 var/lib/${pkgname}/
-
-    for dir in "${dirs[@]}"; do
-        mv ${srcdir}/${pkgname}/${dir}/ var/lib/${pkgname}/${dir}/
-        ln -s ../../../../var/lib/${pkgname}/${dir}/ usr/share/webapps/${pkgname}/${dir}
-    done
-
-    rm -Rf ${srcdir}/${pkgname}/logs/
-    ln -s ../../../../var/log/${pkgname}/ usr/share/webapps/${pkgname}/logs
-    chown http: -R var/lib/${pkgname}/ var/log/${pkgname}/
-    chmod o-rwx -R var/lib/${pkgname}/ var/log/${pkgname}/
-
-    cp -a $srcdir/${pkgname}/* usr/share/webapps/${pkgname}/
-
+    install -dm0755 usr/share/webapps/${pkgname}
+    mv ${srcdir}/${pkgname} ${pkgdir}/usr/share/webapps/
     cd ${pkgdir}/usr/share/webapps/${pkgname}
-    rm -Rf *.md composer.json composer.lock 
-    chown http: tmp/
+    chgrp -R http .
+	find . -type f | xargs chmod 664
+	find ./bin -type f | xargs chmod 775
+	find . -type d | xargs chmod 775
+	find . -type d | xargs chmod +s
+	umask 0002
+    rm -Rf *.md composer.json composer.lock
 }
