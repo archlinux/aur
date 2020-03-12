@@ -5,8 +5,8 @@
 
 pkgname=firefox-appmenu
 _pkgname=firefox
-pkgver=73.0.1
-pkgrel=1
+pkgver=74.0
+pkgrel=2
 pkgdesc="Firefox from extra with appmenu patch"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -14,8 +14,8 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib ffmpeg nss
          ttf-font libpulse)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
-             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm)
+             xorg-server-xvfb autoconf2.13 rust clang llvm jack gtk2 python
+             nodejs python2-psutil cbindgen nasm)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -28,11 +28,11 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         0001-Use-remoting-name-for-GDK-application-names.patch
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('53415180e74da60fc91700ce1ff33bf5b6f51e65353017a98270899a08e0c3d2'
+sha256sums=('74589c2836d7c30134636823c3caefbcaed0ea7c3abb2def9e3ddd9f86d9440a'
             'SKIP'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c'
             'e466789015e15be9409b7a7044353674ca6aa0f392e882217f90c79821fe2630'
-            'd158e8559a8f683cf4e3eb8cd2c0b1ccfd307ca48d6f3fa9b00dcfc6f951a310')
+            '364e5c59a5a55d0be43bcb090dec51476580d0c35b63c0974a25bfeba212a1fc')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -79,6 +79,7 @@ ac_add_options --enable-official-branding
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
 export MOZ_TELEMETRY_REPORTING=1
