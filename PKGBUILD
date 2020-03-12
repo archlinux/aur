@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdeclarative-git
-pkgver=r313.d27b914
-pkgrel=3
+pkgver=v4.100.0.rc1.r568.g0dad857
+pkgrel=1
 pkgdesc='KDeclarative'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kdeclarative'
@@ -15,8 +15,8 @@ source=('git://anongit.kde.org/kdeclarative.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kdeclarative
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
