@@ -1,55 +1,20 @@
 # Maintainer: Florian Walsh
 
 pkgname=cocoa
-pkgver=0.99601
-pkgrel=2
-pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
+pkgver=5.3.0
+pkgrel=1
+pkgdesc="A computer algebra system for doing computations in commutative algebra."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
 license=('GPL')
-depends=('cddlib' 'gsl' 'boost-libs' 'normaliz' 'cblas' 'lapack' 'readline')
-makedepends=('frobby' 'boost')
-source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "cocoa5")
-sha256sums=('caf37f71398b9715be262e434f04a218db05cfa58e08bce954626d7f4ffd6b75'
-            'e9cc79cb1e35f28399afe8c2fd8f521da7566a996363e9789ed76d55093511b3')
-
-build() {
-  cd "$srcdir/CoCoALib-$pkgver"
-  ./configure
-  make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' library
-  cd src/CoCoA-5
-  make -s CXXFLAGS='-Wno-deprecated-declarations -fPIC' cocoa5
-}
+depends=()
+source=("http://cocoa.dima.unige.it/download/bin/cocoa-5.3.0-linux.tgz" "cocoa5")
+sha256sums=('d6a2bc18b333e9afda311bc8229c519684f5ae3b22d6dd8d1b8f7790a2dd7222'
+            'a1752090a5afb150543ada48a046d23d4ba80cb56bc15713a27dd4036e7c964c')
 
 package() {
-  cd "$srcdir/CoCoALib-$pkgver"
-  install -d "$pkgdir/usr/include/CoCoA"
-  for file in include/CoCoA/*.H; do
-      install "$file" "$pkgdir/usr/$file"
-  done
-  install -d "$pkgdir/usr/lib"
-  install -m 644 lib/libcocoa.a "$pkgdir/usr/lib/libcocoa.a"
-  install -d "$pkgdir/usr/lib/CoCoA/bin"
-  install src/CoCoA-5/CoCoAInterpreter "$pkgdir/usr/lib/CoCoA/bin/CoCoAInterpreter"
-  install -d "$pkgdir/usr/lib/CoCoA/packages"
-  for file in src/CoCoA-5/packages/*; do
-      install "$file" "$pkgdir/usr/lib/CoCoA/packages"
-  done
-  install -d "$pkgdir/usr/lib/CoCoA/examples"
-  for file in examples/*; do
-      install "$file" "$pkgdir/usr/lib/CoCoA/examples"
-  done
-  install -d "$pkgdir/usr/lib/CoCoA/doc"
-  for file in doc/*.html; do
-      install "$file" "$pkgdir/usr/lib/CoCoA/doc"
-  done
-  install -d "$pkgdir/usr/lib/CoCoA/doc/html"
-  for file in doc/html/*.html; do
-      install "$file" "$pkgdir/usr/lib/CoCoA/doc/html"
-  done
-  install "doc/CoCoALib.pdf" "$pkgdir/usr/lib/CoCoA/doc"
-  install "doc/COPYING" "$pkgdir/usr/lib/CoCoA/doc"
-  install "COPYING-GPLv3" "$pkgdir/usr/lib/CoCoA"
-  install -d "$pkgdir/usr/bin"
-  install ../cocoa5 "$pkgdir/usr/bin/cocoa5"
+    install -d "$pkgdir/opt/cocoa"
+    cp -r $srcdir/cocoa-5.3/. $pkgdir/opt/cocoa
+    install -d "$pkgdir/usr/bin"
+    install $srcdir/cocoa5 "$pkgdir/usr/bin/cocoa5"
 }
