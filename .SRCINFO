@@ -1,0 +1,20 @@
+pkgbase = sollya-git
+	pkgdesc = A tool environment and a library for safe floating-point code development
+	pkgver = svn_legacy_branch_optimLists.r1204.g4dde1139
+	pkgrel = 1
+	url = http://sollya.gforge.inria.fr/
+	arch = any
+	license = CeCILL-C
+	depends = gmp
+	depends = mpfr
+	depends = mpfi
+	depends = libxml2
+	depends = libfplll
+	optdepends = gnuplot: for using the plot and externalplot commands
+	provides = sollya
+	conflicts = sollya
+	source = git+https://scm.gforge.inria.fr/anonscm/git/sollya/sollya.git
+	md5sums = SKIP
+
+pkgname = sollya-git
+
