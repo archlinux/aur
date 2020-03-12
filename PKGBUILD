@@ -4,21 +4,20 @@
 _fnt_name=league-script-number-one
 pkgname=ttf-$_fnt_name
 pkgver=20160215
-pkgrel=2
-pkgdesc='A coquettish script font somewhere between a high school girl’s love notes and handwritten letters from the ’20s'
+_sha=225add0b37cf8268759ba4572e02630d9fb54ecf
+pkgrel=3
+pkgdesc='A script font between a girl’s love notes and handwritten letters from the ’21s'
 arch=('any')
-url="https://www.theleagueofmoveabletype.com/league-script"
-license=('custom:OFL')
+url="https://www.theleagueofmoveabletype.com/${_fnt_name%-number-one}"
+license=('OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-font-utils')
-source=("https://github.com/theleagueof/$_fnt_name/archive/master.zip")
-sha256sums=('fd28ca03e64c85c210fa3f9f729912080ed75b3f12c37228c2ae679109597398')
+provides=("${pkgname%-number-one}")
+source=("https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
+sha256sums=('44fbe4de63d64e5bb97c8872e197cc8138e681a1bdbbc66fdf0cde17ccd6369e')
 
 package() {
-    cd "$_fnt_name"-master
-
-    install -d "$pkgdir"/usr/share/fonts/OTF
-
-    install -Dm644 Open\ Font\ License.markdown "$pkgdir/usr/share/licenses/$pkgname"/LICENSCE
-    install -Dm644 *.otf  "$pkgdir"/usr/share/fonts/OTF/
+    cd "$_fnt_name-$_sha"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" webfonts/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Open\ Font\ License*.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
