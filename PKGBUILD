@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ki18n-git
-pkgver=r80.8848a56
+pkgver=v4.100.0.rc1.r325.gb3a39a9
 pkgrel=1
 pkgdesc='Ki18n'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/ki18n.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd ki18n
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
