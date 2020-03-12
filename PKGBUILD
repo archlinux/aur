@@ -2,13 +2,13 @@
 
 _githubname=tizonia-openmax-il
 pkgname=tizonia-all-git
-pkgver=0.20.0.r9.g857021ab
+pkgver=0.21.0.r4.g920246f5
 pkgrel=1
 pkgdesc="Command-line cloud music player for Linux with support for Spotify, Google Play Music, YouTube, SoundCloud, Plex servers and Chromecast devices."
 arch=('x86_64')
 url="https://www.tizonia.org"
 license=('LGPL')
-makedepends=('git' 'boost' 'check' 'meson')
+makedepends=('git' 'boost' 'check' 'meson' 'samurai')
 depends=(
     # official repositories:
     'libmad'
@@ -68,10 +68,11 @@ pkgver() {
 build() {
         CFLAGS='-O2 -s -DNDEBUG' \
         CXXFLAGS='-O2 -s -DNDEBUG -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security' \
+        export SAMUFLAGS=-j4
         arch-meson "$pkgname" build
-        ninja -C build
+        samu -v -C build
 }
 
 package() {
-    DESTDIR=$pkgdir ninja -C build install
+    DESTDIR=$pkgdir samu -C build install
 }
