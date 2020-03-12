@@ -6,7 +6,7 @@ url='http://ros.org/wiki/gps_common'
 pkgname='ros-melodic-gps-common'
 pkgver='0.3.1'
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
@@ -31,7 +31,7 @@ ros_depends=(ros-melodic-rospy
 depends=(${ros_depends[@]}
     )
 _dir=gps_umd-release-release-melodic-gps_common
-source=("${pkgname}-${pkgver}.tar.gz""::""https://github.com/swri-robotics-gbp/gps_umd-release/archive/release/melodic/gps_common/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/swri-robotics-gbp/gps_umd-release/archive/release/melodic/gps_common/${pkgver}.tar.gz")
 sha256sums=('1d9813e1627fe1954b52a4ebeda1df840e8ca48c22cce267e55fb3674b603f6c')
 build() {
     # Use ROS environment variables

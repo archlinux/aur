@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-gps-common
 	pkgdesc = ROS - GPS messages and common routines for use in GPS drivers.
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ros.org/wiki/gps_common
 	arch = any
 	license = BSD
