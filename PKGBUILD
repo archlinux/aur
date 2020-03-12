@@ -4,9 +4,10 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-beta
-pkgver=4.4.0.23
+pkgver=4.4.0.24
 pkgrel=1
-_ffmpeg_ver=2019_11_09
+_ffmpeg_ver=2020_02_24
+_ffdetect_ver=2019_11_09
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('x86_64')
 url='https://emby.media'
@@ -46,7 +47,7 @@ provides=('emby-server')
 conflicts=('emby-server')
 source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgver}/embyserver-netcore_${pkgver}.zip"
         "https://mediabrowser.github.io/embytools/ffmpeg-${_ffmpeg_ver}.tar.gz"
-        "https://mediabrowser.github.io/embytools/ffdetect-${_ffmpeg_ver}-x64.tar.xz"
+        "https://mediabrowser.github.io/embytools/ffdetect-${_ffdetect_ver}-x64.tar.xz"
         'emby-server'
         'emby-server.conf'
         'emby-server.service'
@@ -55,8 +56,8 @@ source=("https://github.com/MediaBrowser/Emby.Releases/releases/download/${pkgve
         'license.docx')
 noextract=(license.docx)
 backup=('etc/conf.d/emby-server')
-sha256sums=('dce99f1fbf33d501cb278328cc7409fbf523f579e2fa2f3de0d82b310f397ad4'
-            '4afade7a1870d1f3a90de688b8706718e2592cbb281b24ba569982aac667266f'
+sha256sums=('c751dbcd5ba5a4c277711366b6884f388646e5ec603001db9378b6338c2bc2f9'
+            '6d115633eeb1d48a80f07f53c2e8c43093bd56a4a3d7d8b3d6207c4f473a61e0'
             '3fbee0c712c01e37953293da6d3aa4ae7a608fb5801a3eb3d9f99c1274da44db'
             'e2185a5f4810726cb57fcc6d9bdbde1854069f08f163be58cb3cef1154b8e2a7'
             '5e3470f834808babe7d60b8d86f462e7945c3617499539e5af45eb55d7b87b23'
