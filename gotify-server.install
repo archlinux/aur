@@ -1,0 +1,4 @@
+post_install() {
+  echo 'Default login is admin:admin'
+  echo 'Change it in /etc/gotify/config.yml or the web ui before exposing the service!'
+}

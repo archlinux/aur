@@ -1,6 +1,6 @@
 diff -ura package.orig/config.example.yml package.new/config.example.yml
 --- package.orig/config.example.yml	2020-03-08 14:59:02.828681120 +0100
-+++ package.new/config.example.yml	2020-03-11 12:51:58.314895932 +0100
++++ package.new/config.example.yml	2020-03-12 02:30:06.273495477 +0100
 @@ -3,7 +3,7 @@
  
  server:
@@ -15,7 +15,7 @@ diff -ura package.orig/config.example.yml package.new/config.example.yml
        enabled: false # if the certificate should be requested from letsencrypt
        accepttos: false # if you accept the tos from letsencrypt
 -      cache: data/certs # the directory of the cache from letsencrypt
-+      cache: certs # the directory of the cache from letsencrypt
++      cache: /var/lib/gotify/certs # the directory of the cache from letsencrypt
        hosts: # the hosts for which letsencrypt should request certificates
  #      - mydomain.tld
  #      - myotherdomain.tld
@@ -24,7 +24,7 @@ diff -ura package.orig/config.example.yml package.new/config.example.yml
  database: # for database see (configure database section)
    dialect: sqlite3
 -  connection: data/gotify.db
-+  connection: gotify.db
++  connection: /var/lib/gotify/gotify.db
  
  defaultuser: # on database creation, gotify creates an admin user
    name: admin # the username of the default user
@@ -32,5 +32,5 @@ diff -ura package.orig/config.example.yml package.new/config.example.yml
  passstrength: 10 # the bcrypt password strength (higher = better but also slower)
 -uploadedimagesdir: data/images # the directory for storing uploaded images
 -pluginsdir: data/plugins # the directory where plugin resides
-+uploadedimagesdir: images # the directory for storing uploaded images
-+pluginsdir: plugins # the directory where plugin resides
++uploadedimagesdir: /var/lib/gotify/images # the directory for storing uploaded images
++pluginsdir: /var/lib/gotify/plugins # the directory where plugin resides

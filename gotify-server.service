@@ -1,17 +1,23 @@
 [Unit]
 Description=Gotify Server
 After=network.target
+ConditionPathIsDirectory=%L/gotify
 
 [Service]
 Type=simple
 User=gotify
 Group=gotify
 ExecStart=/usr/bin/gotify-server
-WorkingDirectory=~
-ReadOnlyPaths=/etc/gotify/config.yml
-ReadWritePaths=/var/lib/gotify
-UMask=0077
+
+ConfigurationDirectory=gotify
+LogsDirectory=gotify
+StateDirectory=gotify
+StateDirectoryMode=0700
+StandardOutput=append:%L/gotify/server.log
+
+UMask=0027
 CapabilityBoundingSet=
+AmbientCapabilities=
 LockPersonality=true
 MemoryDenyWriteExecute=true
 NoNewPrivileges=true

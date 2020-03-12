@@ -1,2 +1,2 @@
-u gotify - - /var/lib/gotify
+u gotify - -
 g gotify - -

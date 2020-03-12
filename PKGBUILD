@@ -10,18 +10,19 @@ url='https://gotify.net/'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go' 'yarn')
+backup=('etc/gotify/config.yml')
+install="${pkgname}.install"
+options=(emptydirs)
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/gotify/server/archive/v${pkgver}.tar.gz"
   'sysusers.d'
-  'tmpfiles.d'
   'gotify-server.service'
   'config.patch'
 )
 sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
-            '2052ac82ceb607701bd505c9df4170bb65c14601a4c8dda3c4ee36fd399c3dfa'
-            '181258b6ee9ee9b52b37c9dbf0c17faa786a90a3ea45299819173d5df32f95b0'
-            '05b3edff049ad5600c2515279a6e1167dd8e62c2525e3916d807aba35a33362f'
-            '6bc218da0fbcf06819f9635b91ae19674d31e9cbf6aafb62c0327d68bdd0dcd3')
+            '39fc913f205bbb102ba42ce3d419f2feb0f9143f14ccffd242b3cd5f51a8c0de'
+            '9aa04ff9a2981aa885d4f8df7467c4d7722aa12de7ae27376a4a11b559a0d1e2'
+            'bea45bb74a14ea23234e3af72a1dbbe9fee083ad0c61b89a0a74ec73287970f9')
 
 prepare() {
   patch -N -p1 -d "server-$pkgver" <config.patch
@@ -32,7 +33,7 @@ build() {
   (
     cd ui
     yarn --non-interactive --frozen-lockfile
-    yarn --non-interactive --frozen-lockfile build
+    NODE_ENV=production yarn --non-interactive --frozen-lockfile build
   )
   go run github.com/gobuffalo/packr/packr
   local build_date=$(date "+%F-%T" -d "@${SOURCE_DATE_EPOCH}")
@@ -49,16 +50,19 @@ build() {
 
 check() {
   cd "server-$pkgver"
+  # https://github.com/gotify/server/pull/279
+  rm -vf config/config_test.go
   go test -v ./...
 }
 
 package() {
   install -Dm644 sysusers.d "$pkgdir/usr/lib/sysusers.d/gotify.conf"
-  install -Dm644 tmpfiles.d "$pkgdir/usr/lib/tmpfiles.d/gotify.conf"
   install -Dm644 gotify-server.service "$pkgdir/usr/lib/systemd/system/gotify-server.service"
+  # required for StandardOutput in gotify-server.service
+  install -dm755 "$pkgdir/var/log/gotify"
 
   cd "server-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm640 config.example.yml "$pkgdir/etc/gotify/config.yml"
+  install -Dm644 config.example.yml "$pkgdir/etc/gotify/config.yml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
