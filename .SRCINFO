@@ -1,0 +1,19 @@
+pkgbase = sugar-artwork-git
+	pkgdesc = Sugar icons and themes
+	pkgver = 0.116.g
+	pkgrel = 5
+	url = https://sugarlabs.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = icon-naming-utils
+	makedepends = python
+	makedepends = xorg-xcursorgen
+	optdepends = gtk2: GTK+ 2 theme
+	optdepends = gtk3: GTK+ 3 theme
+	source = git+https://github.com/sugarlabs/sugar-artwork.git
+	sha256sums = SKIP
+
+pkgname = sugar-artwork-git
+
