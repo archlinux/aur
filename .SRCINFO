@@ -1,0 +1,16 @@
+pkgbase = sugar-runner-git
+	pkgdesc = Scripts to run Sugar
+	pkgver = 0.110.0.g
+	pkgrel = 5
+	url = https://sugarlabs.org/
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	depends = xorg-xinit
+	depends = xorg-server-xephyr
+	depends = xorg-xrandr
+	source = https://github.com/sugarlabs/sugar-runner/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = sugar-runner-git
+
