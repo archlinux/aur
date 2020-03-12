@@ -1,7 +1,7 @@
 pkgbase = ttf-blackout
-	pkgdesc = Eats holes for breakfast lunch and dinner. Inspired by filling in sans-serif newspaper headlines. Continually updated with coffee and music. Makes your work louder than the next person’s.
+	pkgdesc = A bad-ass, unholy-mother-shut-your-mouth stencil sans-serif
 	pkgver = 20160215
-	pkgrel = 4
+	pkgrel = 5
 	url = http://theleagueofmoveabletype.com/blackout
 	arch = any
 	groups = lmt-fonts

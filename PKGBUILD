@@ -5,8 +5,8 @@
 _fnt_name=blackout
 pkgname=ttf-$_fnt_name
 pkgver=20160215
-pkgrel=4
-pkgdesc="Eats holes for breakfast lunch and dinner. Inspired by filling in sans-serif newspaper headlines. Continually updated with coffee and music. Makes your work louder than the next person’s."
+pkgrel=5
+pkgdesc="A bad-ass, unholy-mother-shut-your-mouth stencil sans-serif"
 arch=('any')
 url="http://theleagueofmoveabletype.com/$_fnt_name"
 license=('OFL')
