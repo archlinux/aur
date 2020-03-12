@@ -3,9 +3,9 @@
 pkgname=anbox-image-houdini-rooted
 pkgver=2018.07.19
 pkgrel=5
-pkgdesc='Android image for running in Anbox with Houdini and SuperSU'
+pkgdesc="Android image for running in Anbox with Houdini and SuperSU"
 arch=('x86_64')
-url='https://anbox.io/'
+url="https://anbox.io/"
 license=('custom')
 makedepends=(
     'unzip'
@@ -18,14 +18,14 @@ conflicts=(
     'anbox-image'
 )
 source=(
-    'http://build.anbox.io/android-images/'${pkgver//./\/}'/android_amd64.img'
-    'houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs'
-    'houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs'
-    'http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip'
-    'media_codecs.xml'
-    'media_codecs_google_video.xml'
-    'media_codecs_google_audio.xml'
-    'media_codecs_google_telephony.xml'
+    "http://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
+    "houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
+    "houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs"
+    "http://supersuroot.org/downloads/SuperSU-v2.82-201705271822.zip"
+    "media_codecs.xml"
+    "media_codecs_google_video.xml"
+    "media_codecs_google_audio.xml"
+    "media_codecs_google_telephony.xml"
 )
 md5sums=(
     '26874452a6521ec2e37400670d438e33'
@@ -39,7 +39,7 @@ md5sums=(
 )
 
 build () {
-    cd ${srcdir}
+    cd "$srcdir"
 
     # unpack anbox image
     mkdir -p squashfs-root
@@ -135,10 +135,10 @@ build () {
 }
 
 package() {
-    cd ${srcdir}
+    cd "$srcdir"
 
     # repack image
     mksquashfs ./squashfs-root ./android.img -noappend -b 131072 -comp xz -Xbcj x86
 
-    install -Dm 644 ./android.img ${pkgdir}/var/lib/anbox/android.img
+    install -Dm 644 ./android.img "$pkgdir/var/lib/anbox/android.img"
 }
