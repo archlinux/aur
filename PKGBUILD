@@ -2,7 +2,7 @@
 
 _pkgname=dotdrop
 pkgname="${_pkgname}-git"
-pkgver=0.29.5
+pkgver=0.31.0.r7.gd860c07
 pkgrel=1
 pkgdesc="Save your dotfiles once, deploy them everywhere "
 arch=('any')
@@ -24,12 +24,7 @@ pkgver() {
 package() {
   cd "${_pkgname}"
   python setup.py install --root="${pkgdir}/" --optimize=1
-
-  install -Dm644 completion/dotdrop-completion.bash "${pkgdir}/usr/share/bash-completion/completions/dotdrop"
-  install -Dm644 completion/dotdrop.sh-completion.bash "${pkgdir}/usr/share/bash-completion/completions/dotdrop.sh"
-
-  install -Dm644 completion/_dotdrop-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_dotdrop"
-  install -Dm644 completion/_dotdrop.sh-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/_dotdrop.sh"
-
+  install -Dm644 ${srcdir}/${_pkgname}/completion/dotdrop-completion.bash "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm644 ${srcdir}/${_pkgname}/completion/_dotdrop-completion.zsh "${pkgdir}/usr/share/zsh/site-functions/${_pkgname}"
 }
 
