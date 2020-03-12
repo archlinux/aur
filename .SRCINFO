@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-swri-nodelet
+	pkgdesc = ROS - This package provides a simple script to write simple launch files that can easily switch between running nodelets together or as standalone nodes.
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-nodelet
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-nodelet
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-rosbash
+	source = ros-melodic-swri-nodelet-2.11.0.tar.gz::https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_nodelet/2.11.0.tar.gz
+	sha256sums = 53018c3484a9d55d9153e56aa9ba2fc33abcdb23db12808055f41696b8301449
+
+pkgname = ros-melodic-swri-nodelet
+
