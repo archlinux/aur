@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kglobalaccel-git
-pkgver=r69.504446f
-pkgrel=2
+pkgver=v4.100.0.rc1.r308.g16d6708
+pkgrel=1
 pkgdesc='KGlobalAccel'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kglobalaccel'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kglobalaccel.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kglobalaccel
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
