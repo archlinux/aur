@@ -1,6 +1,6 @@
 pkgbase = goland-eap
 	pkgdesc = Capable and Ergonomic Go IDE
-	pkgver = 201.5616.29
+	pkgver = 201.6073.28
 	pkgrel = 1
 	url = https://www.jetbrains.com/go/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = goland-eap
 	license = commercial
 	depends = glib2
 	options = !strip
-	source = https://download.jetbrains.com/go/goland-201.5616.29.tar.gz
+	source = https://download.jetbrains.com/go/goland-201.6073.28.tar.gz
 	source = jetbrains-goland-eap.desktop
 	source = LICENSE
-	sha512sums = b1118ba5d05c1235c92b273306a247defc9780a6d379378ccbee2cd2cd8d518a6db9fb04437d4a1a95e9eabe8ea5f59f07676581900d994a90217ffc30fc1280
-	sha512sums = 23048f7fe57ff86e45ff62f047903f0ad976382084b93c86ba5d5991813f62771e901c365101471a6f42d4cd55f33532175223fce3f1c152edcadd0d3404e0ef
+	sha512sums = 704b6ba56521b8cc6ccf26d8351d0093355984c2018a5c886d26506b6ff4e5aabf600db554cf95ed2c4d73ac17e9bc12456d1175047e1c97acb4976060c365f0
+	sha512sums = 93582edff94de48a874cb8b6dde99627666e1b7199c7c10fa5477c7b3f3067d0dfd010a7d6453edf9f8602b4a8443d8744c1fd235b70746ffa3a1b6dd20d6a12
 	sha512sums = e2aaaa75571f368f85bcc4baef27cc502781ce382bf04737763b07244716918fc2f0eb0b78b02631e242c9a5c246b27d720bb28556fc64bbde213403b7bf57f6
 
 pkgname = goland-eap
