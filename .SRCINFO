@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-velodyne-msgs
+	pkgdesc = ROS - ROS message definitions for Velodyne 3D LIDARs.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = h
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-message-generation
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-velodyne-msgs-1.5.2.tar.gz::https://github.com/ros-drivers-gbp/velodyne-release/archive/release/melodic/velodyne_msgs/1.5.2.tar.gz
+	sha256sums = 914c1ba9bb916abd7462bc2539417ed7924ed1a504270ffc001375d57c103c21
+
+pkgname = ros-melodic-velodyne-msgs
+
