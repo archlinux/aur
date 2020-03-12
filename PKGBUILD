@@ -1,4 +1,4 @@
-# Maintainer: Lone_Wolf <lonewolf at xs4all dot nl>
+# Maintainer: Lone_Wolf <lonewolf@klaas-de-kat.nl>
 # Contributor: Kevin Whitaker <eyecreate at gmail dot com>
 
 pkgbase=seventhsense
