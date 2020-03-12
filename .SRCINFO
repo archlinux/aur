@@ -1,7 +1,7 @@
 pkgbase = hole2-git
 	pkgdesc = Analyzes the pore dimensions of ion channels
 	pkgver = v2.004pre.r24.ba82cfc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/osmart/hole2
 	arch = x86_64
 	license = Apache
