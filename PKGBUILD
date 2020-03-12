@@ -1,5 +1,5 @@
 # Maintainer: Simon Kronberg <Simon.Kronberg@gmail.com>
-# Contributor: hawkeye116477 <hawkeye116477@gmail.com>
+# Contributor: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-bin
 pkgver=2020.03
@@ -25,18 +25,39 @@ source=('waterfox-current.desktop'
 
 package() {
 	# Create the necessary directories.
-	install -d "${pkgdir}"/{usr/{bin,share/{applications,pixmaps}},opt}
+	install -d "${pkgdir}"/{usr/{bin,share/applications},opt}
 
-	# Move the .desktop file and the icon.
+	# Install the desktop files.
 	install -m644 "${srcdir}"/waterfox-current.desktop "${pkgdir}"/usr/share/applications/
-	install -m644 "${srcdir}"/waterfox/browser/chrome/icons/default/default128.png "${pkgdir}"/usr/share/pixmaps/waterfox-current-icon.png
 
 	# Copy the extracted directory to /opt/.
 	cp -r waterfox "${pkgdir}"/opt/waterfox-current
+
+	# Install icons
+    for i in 16 32 48 64 128; do
+        install -d "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
+        ln -Ts /opt/waterfox-current/browser/chrome/icons/default/default$i.png \
+            "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/waterfox-current.png"
+    done
+
+    # Add additional useful settings
+    install -Dm644 /dev/stdin "$pkgdir/opt/waterfox-current/browser/defaults/preferences/vendor.js" <<END
+// Disable default browser checking
+pref("browser.shell.checkDefaultBrowser", false);
+
+// Use LANG environment variable to choose locale
+pref("intl.locale.requested", "");
+
+// Automatic installation of updates won't work on root, so disable this
+pref("app.update.auto", false);
+
+// Use system-provided dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
+END
 
 	# Symlink the binary to /usr/bin/.
 	ln -s /opt/waterfox-current/waterfox "${pkgdir}"/usr/bin/waterfox-current
 }
 
-sha256sums=('4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d'
-            '0aa372a14790cf79840d31864a49e01ae07396b7b28b103844780865e5b2feb5') #
+sha256sums=('b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548'
+            '0aa372a14790cf79840d31864a49e01ae07396b7b28b103844780865e5b2feb5')

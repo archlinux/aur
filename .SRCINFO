@@ -26,7 +26,7 @@ pkgbase = waterfox-current-bin
 	replaces = waterfox-alpha-bin
 	source = waterfox-current.desktop
 	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-2020.03.en-US.linux-x86_64.tar.bz2
-	sha256sums = 4935fc30e327cbb665b6a98ed21a3f0d27b5a1407bbb9988bb7b607a85e0065d
+	sha256sums = b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548
 	sha256sums = 0aa372a14790cf79840d31864a49e01ae07396b7b28b103844780865e5b2feb5
 
 pkgname = waterfox-current-bin
