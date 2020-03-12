@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kjobwidgets-git
-pkgver=r63.fe7f90f
-pkgrel=2
+pkgver=v4.100.0.rc1.r237.gc8b284d
+pkgrel=1
 pkgdesc='KJobWidgets'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kjobwidgets'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kjobwidgets.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kjobwidgets
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
