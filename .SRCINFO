@@ -1,6 +1,6 @@
 pkgbase = spotify-tui
 	pkgdesc = Spotify client for the terminal written in Rust
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/Rigellute/spotify-tui
 	arch = x86_64
