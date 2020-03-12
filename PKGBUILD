@@ -1,7 +1,7 @@
 # Maintainer: Kalle Lindqvist <kalle.lindqvist@mykolab.com>
 pkgname=gnome-shell-extension-sound-output-device-chooser
 pkgver=28
-pkgrel=1
+pkgrel=2
 pkgdesc="Sound Input & Output Device Chooser."
 arch=('any')
 url="https://github.com/kgshank/gse-sound-output-device-chooser"
