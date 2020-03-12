@@ -1,14 +1,12 @@
 pkgbase = otf-russkopis
 	pkgdesc = A Free Cyrillic cursive font for Russian, Ukrainian, Belarusian, and Bulgarian
 	pkgver = 0.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MihailJP/Russkopis
 	arch = any
 	license = X11
 	makedepends = fontforge
-	depends = fontconfig
-	depends = xorg-font-utils
-	source = https://github.com/MihailJP/Russkopis/archive/0.0.1.tar.gz
+	source = otf-russkopis-0.0.1.tar.gz::https://github.com/MihailJP/Russkopis/archive/0.0.1.tar.gz
 	sha256sums = 1ac0338ea957b553cdcb427fdab0ccbeb66685c45fd2852fa7371407605b577b
 
 pkgname = otf-russkopis
