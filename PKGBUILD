@@ -6,7 +6,7 @@
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered-git
-pkgver=1.3.0_441.b0195f0
+pkgver=1.3.0_477.e103c8c
 pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
@@ -14,11 +14,14 @@ url="https://github.com/dfranx/SHADERed"
 license=("MIT")
 depends=(assimp glew glm gtk3 sdl2 sfml)
 makedepends=(cmake git)
+provides=('shadered')
 
 source=("git+https://github.com/dfranx/SHADERed.git"
-        "SHADERed-git.desktop")
+        "SHADERed-git.desktop"
+        "SHADERed-git.sh")
 sha256sums=('SKIP'
-            'f4a70a686bf9c017ce0454322e27aeceb6d9fcf57bbd7011f7678bebcc1fb866')
+            '9468e6cdf0097616def7415ef0d47abcd9f9c444fa5f6b23a5a4832d62209ea4'
+            '8180864b00b0d413cc7306496ba184b9c1d2ca2e19e1164d6f16dd710c2c2097')
 
 pkgver() {
     cd "$srcdir/SHADERed"
@@ -34,8 +37,9 @@ build() {
 
 package() {
   cd "$srcdir/SHADERed"
-  #install -Dm644 "$srcdir/SHADERed/bin/icon.png" "$pkgdir/usr/share/pixmap/shadered.png"
-  install -Dm644 "$srcdir/SHADERed-git.desktop" "$pkgdir/usr/share/applications/shadered-git.desktop"
+  install -Dm644 "$srcdir/SHADERed/Misc/Icon/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -Dm644 "$srcdir/SHADERed-git.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm755 "$srcdir/SHADERed-git.sh" "$pkgdir/usr/bin/$pkgname"
   mkdir -p "$pkgdir/opt/$pkgname"
   mv $srcdir/SHADERed/bin/* "$pkgdir/opt/$pkgname"
 }
