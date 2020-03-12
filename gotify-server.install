@@ -2,3 +2,11 @@ post_install() {
   echo 'Default login is admin:admin'
   echo 'Change it in /etc/gotify/config.yml or the web ui before exposing the service!'
 }
+
+post_upgrade() {
+  if [[ $(vercmp '2.0.14-4' "$2") -eq 1 ]]; then
+    echo 'Default port for gotify-server has changed with version "2.0.14-4"'
+    echo 'old port: 8080'
+    echo 'new port: 9071'
+  fi
+}

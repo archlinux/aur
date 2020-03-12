@@ -22,7 +22,7 @@ source=(
 sha256sums=('986125b92192e404a2f3af5db510d2d651c6301d218cbb66edd6013f8e8153b0'
             '39fc913f205bbb102ba42ce3d419f2feb0f9143f14ccffd242b3cd5f51a8c0de'
             '9aa04ff9a2981aa885d4f8df7467c4d7722aa12de7ae27376a4a11b559a0d1e2'
-            'bea45bb74a14ea23234e3af72a1dbbe9fee083ad0c61b89a0a74ec73287970f9')
+            '8009ba82fa98bfeeb8c51732d8506afdef4ccfdcd4071be5fcf64af06ae2b1f4')
 
 prepare() {
   patch -N -p1 -d "server-$pkgver" <config.patch
