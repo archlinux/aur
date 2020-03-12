@@ -1,7 +1,7 @@
 pkgbase = maddy
 	pkgdesc = Composable all-in-one mail server
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/foxcpp/maddy
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = maddy
 	makedepends = git
 	makedepends = scdoc
 	depends = glibc
+	optdepends = bash: For rspamd-hook script
 	backup = etc/maddy/maddy.conf
 	source = maddy-0.1.1.tar.zst::https://github.com/foxcpp/maddy/releases/download/v0.1.1/maddy-v0.1.1-src.tar.zst
 	source = maddy-0.1.1.tar.zst.asc::https://github.com/foxcpp/maddy/releases/download/v0.1.1/maddy-v0.1.1-src.tar.zst.asc

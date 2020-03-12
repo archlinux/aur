@@ -4,13 +4,16 @@
 # Contributor: Max Mazurov <fox.cpp at disroot dot org>
 pkgname='maddy'
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Composable all-in-one mail server'
 arch=('x86_64')
 url='https://github.com/foxcpp/maddy'
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git' 'scdoc')
+optdepends=(
+    "bash: For rspamd-hook script"
+)
 source=(
     "${pkgname}-${pkgver}.tar.zst::https://github.com/foxcpp/maddy/releases/download/v${pkgver}/maddy-v${pkgver}-src.tar.zst"
     "${pkgname}-${pkgver}.tar.zst.asc::https://github.com/foxcpp/maddy/releases/download/v${pkgver}/maddy-v${pkgver}-src.tar.zst.asc"
@@ -67,6 +70,7 @@ package() {
         --destdir "${pkgdir}" \
         install_pkg
 
+    install -Dm 0644 "${srcdir}/maddy-v${pkgver}-src/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm 0644 "${srcdir}/maddy.sysusers" "${pkgdir}/usr/lib/sysusers.d/maddy.conf"
     install -Dm 0644 "${srcdir}/maddy.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/maddy.conf"
 }
