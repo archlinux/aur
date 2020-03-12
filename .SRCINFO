@@ -1,0 +1,23 @@
+pkgbase = ros-melodic-velodyne-laserscan
+	pkgdesc = ROS - Extract a single ring of a Velodyne PointCloud2 and publish it as a LaserScan message.
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = h
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-nodelet
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-sensor-msgs
+	depends = ros-melodic-nodelet
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-sensor-msgs
+	depends = ros-melodic-roscpp
+	source = ros-melodic-velodyne-laserscan-1.5.2.tar.gz::https://github.com/ros-drivers-gbp/velodyne-release/archive/release/melodic/velodyne_laserscan/1.5.2.tar.gz
+	sha256sums = d65cbd7cf5e48438ec123593723388fb4fb95dd2c70cafca986dc6f79b256655
+
+pkgname = ros-melodic-velodyne-laserscan
+
