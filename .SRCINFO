@@ -1,6 +1,6 @@
 pkgbase = chisel
 	pkgdesc = Constructing Hardware in a Scala Embedded Language
-	pkgver = 3.2.3
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://chisel.eecs.berkeley.edu/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = chisel
 	makedepends = graphviz
 	depends = java-environment
 	depends = verilator
-	source = https://github.com/freechipsproject/chisel3/archive/v3.2.3.tar.gz
-	sha512sums = 9dc2ad30d9c3133dea6a745b8ec52103b0a1a5ea42d5dd085e6d41dded65c2108b0b9b3845d398c2bdd07ed1c540612d453c9a7829393fdfef24b08547858615
+	source = https://github.com/freechipsproject/chisel3/archive/v3.2.4.tar.gz
+	sha512sums = 8725142d2f36ae9f3eb8dbe1f2813a7eb1eebbde20a5af80ca726551a68cf4d8f3b728359a25ea19bc8492868ddc5305a070a53b56efe05ef2e5a30efd3d371e
 
 pkgname = chisel
 
