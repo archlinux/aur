@@ -1,22 +1,21 @@
 # Maintainer: Kalle Lindqvist <kalle.lindqvist@mykolab.com>
 pkgname=gnome-shell-extension-sound-output-device-chooser
-pkgver=25
+pkgver=28
 pkgrel=1
 pkgdesc="Sound Input & Output Device Chooser."
 arch=('any')
 url="https://github.com/kgshank/gse-sound-output-device-chooser"
 license=('GPL')
 depends=('gnome-shell')
-source=("${pkgname}-${pkgver}.zip::https://extensions.gnome.org/extension-data/sound-output-device-chooserkgshank.net.v25.shell-extension.zip")
-md5sums=("c92eb48bf836f2b01a1ed66a867ac688")
+optdepends=('python: for new profile identification')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kgshank/gse-sound-output-device-chooser/archive/${pkgver}.tar.gz")
+md5sums=("50dd52975f973a976aeee75e95d1206b")
 
 package() {
     _uuid="sound-output-device-chooser@kgshank.net"
 
-    cd "${srcdir}"
-    rm "${pkgname}-${pkgver}.zip"
-    chmod -R 755 *
+    cd "${srcdir}/gse-sound-output-device-chooser-${pkgver}"
 
     install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-    cp -r * "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
+    cp -r "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
 }
