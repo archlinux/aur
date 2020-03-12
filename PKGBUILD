@@ -5,8 +5,8 @@
 pkgbase="python-testinfra"
 pkgname="python-testinfra"
 _pkgname='testinfra'
-pkgver=4.0.0
-pkgrel=2
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='Testinfra test your infrastructures'
 url='https://github.com/philpep/testinfra'
 arch=('any')

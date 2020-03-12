@@ -1,7 +1,7 @@
 pkgbase = python-testinfra
 	pkgdesc = Testinfra test your infrastructures
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://github.com/philpep/testinfra
 	arch = any
 	license = Apache
@@ -11,7 +11,7 @@ pkgbase = python-testinfra
 	makedepends = python-pbr
 	makedepends = python-sphinx
 	depends = python-six
-	source = git+https://github.com/philpep/testinfra.git#tag=4.0.0
+	source = git+https://github.com/philpep/testinfra.git#tag=5.0.0
 	sha256sums = SKIP
 
 pkgname = python-testinfra
