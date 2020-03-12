@@ -8,6 +8,7 @@ pkgdesc="Modern, Crazy Fast, Ridiculously Easy and Amazingly Powerful Flat-File 
 arch=("any")
 url="https://getgrav.org"
 license=("MIT")
+provides=('grav')
 depends=('php>=7.1.3' 'php-gd' 'php-fpm')
 optdepends=('php-apcu: A userland caching module for PHP' 
 			'xdebug: PHP debugging extension' 

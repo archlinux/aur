@@ -13,6 +13,7 @@ pkgbase = grav-admin
 	optdepends = xdebug: PHP debugging extension
 	optdepends = apache: A high performance Unix-based HTTP server
 	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
+	provides = grav
 	source = https://github.com/getgrav/grav/releases/download/1.6.22/grav-admin-v1.6.22.zip
 	source = post_install
 	sha256sums = 0ce1f1b5cb976fc475c3d5fffa33a4f4c882bd431dfc0fb524e59329e88dd148
