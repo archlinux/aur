@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kcmutils-git
-pkgver=r103.f3e45a3
-pkgrel=3
+pkgver=v4.100.0.rc1.r321.gcce381b
+pkgrel=1
 pkgdesc='Utilities for interacting with KCModules'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kcmutils'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kcmutils.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kcmutils
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
