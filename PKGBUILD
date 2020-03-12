@@ -12,6 +12,7 @@ depends=(
   'python'
 )
 makedepends=(
+  'git'
   'python-setuptools'
 )
 source=("git+https://github.com/iwalton3/$_name.git")
