@@ -1,7 +1,7 @@
 pkgbase = python-chromalog
 	pkgdesc = Eases the use of colors in Python logging
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freelan-developers/chromalog
 	arch = any
 	license = MIT
