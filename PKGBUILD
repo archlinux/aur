@@ -1,11 +1,11 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname=spotify-tui-git
 _pkgname=spotify-tui
-pkgver=0.11.0+r14+g0493910
+pkgver=0.16.0+r2+gdf3b6c3
 pkgrel=1
 pkgdesc='Spotify client for the terminal written in Rust (git)'
-arch=(i686 x86_64)
+arch=(x86_64)
 url=https://github.com/Rigellute/spotify-tui
 license=(MIT)
 depends=(openssl libxcb)
