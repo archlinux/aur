@@ -1,7 +1,7 @@
 pkgbase = n-ipv4ll-git
 	pkgdesc = IPv4 Link-Local Address Selection
 	pkgver = 2.12.g3325d12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nettools/n-ipv4ll
 	arch = x86_64
 	license = LGPL2.1
@@ -9,6 +9,8 @@ pkgbase = n-ipv4ll-git
 	makedepends = meson
 	makedepends = pkgconf
 	depends = glibc
+	provides = n-ipv4ll
+	conflicts = n-ipv4ll
 	source = git+https://github.com/nettools/n-ipv4ll.git
 	sha256sums = SKIP
 
