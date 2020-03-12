@@ -3,20 +3,20 @@
 pkgname=ecal
 _pkgver_major=5
 _pkgver_minor=5
-_pkgver_patch=3
+_pkgver_patch=4
 pkgver=$_pkgver_major.$_pkgver_minor.$_pkgver_patch
-pkgrel=4
+pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64' 'armv7h')
 url="https://github.com/continental/ecal"
 license=('Apache')
 depends=('protobuf' 'qt5-base' 'hdf5')
-makedepends=('asio' 'cmake' 'doxygen' 'graphviz' 'simpleini' 'spdlog' 'tclap')
+makedepends=('asio' 'cmake' 'doxygen' 'git' 'graphviz' 'simpleini' 'spdlog' 'tclap')
 optdepends=()
 source=(https://github.com/continental/ecal/archive/v$pkgver.tar.gz
         arch-linux-compat.diff)
-sha256sums=('ba95e707c69a0eb4b65f897bd34fc1d9c3c2d342d7685450960cc61435c3e613'
-            'c01b56b234f3e2b105e10e3850ee568dc33f728efebedc768a3b0dc0e4b6e835')
+sha256sums=('445a864c9dcf43af098cea42cc604a2c3315e8d6de659cfb24872a966194315a'
+            '9607c3b853fa07f7d5fe987438f5d9776b52f0472994b94557771c9c40d4f2f9')
 backup=('etc/ecal/ecal.ini' 'etc/ecal/ecaltime.ini')
 
 prepare() {

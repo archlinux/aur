@@ -1,7 +1,7 @@
-diff --git a/app/play/eCALPlay/src/EcalPlayCli.cpp b/app/play/eCALPlay/src/EcalPlayCli.cpp
-index 05d0524..21c5fed 100644
---- a/app/play/eCALPlay/src/EcalPlayCli.cpp
-+++ b/app/play/eCALPlay/src/EcalPlayCli.cpp
+diff --git a/app/play/play_cli/src/ecal_play_cli.cpp b/app/play/play_cli/src/ecal_play_cli.cpp
+index c42ef7b..25c9e8d 100644
+--- a/app/play/play_cli/src/ecal_play_cli.cpp
++++ b/app/play/play_cli/src/ecal_play_cli.cpp
 @@ -54,7 +54,6 @@
  #include <sys/ioctl.h>
  #include <termios.h>
@@ -10,10 +10,10 @@ index 05d0524..21c5fed 100644
  #include <sys/types.h>
  #include <sys/stat.h>
  #include <unistd.h>
-diff --git a/app/play/eCALPlayCore/include/EcalPlayLogger.h b/app/play/eCALPlayCore/include/EcalPlayLogger.h
-index eaa971c..6672431 100644
---- a/app/play/eCALPlayCore/include/EcalPlayLogger.h
-+++ b/app/play/eCALPlayCore/include/EcalPlayLogger.h
+diff --git a/app/play/play_core/include/ecal_play_logger.h b/app/play/play_core/include/ecal_play_logger.h
+index 2541ce3..9fc4a9a 100644
+--- a/app/play/play_core/include/ecal_play_logger.h
++++ b/app/play/play_core/include/ecal_play_logger.h
 @@ -21,6 +21,8 @@
  
  #include <string>
