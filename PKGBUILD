@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-kpe
-pkgver=2020.02
+pkgver=2020.03
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' '
          'hunspell' 'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python2-setuptools'
-             'nodejs' 'python2-psutil' 'ccache' 'nss' 'nspr' 'binutils')
+             'nodejs' 'python2-psutil' 'nss' 'nspr' 'binutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
              'libnotify: Notification integration'
              'pulseaudio: Audio support'
@@ -21,35 +21,35 @@ provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
-_commit=6bce12d08d55de605a41c66ea540108ec25418a8
+_commit=f4430b861ce4a06834ba4a676bb2214c0d4eba36
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.desktop"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/distribution.ini"
         "vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/vendor.js"
         "waterfox-current.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.1"
         "syspref.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/syspref.js"
-        "waterfox-current-kde-2020.01.1.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/waterfox-current-kde-2020.01.1.patch"
         "mozilla-nongnome-proxies.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/mozilla-nongnome-proxies.patch"
-        "icon_mish_mash.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/patches/icon_mish_mash.patch"
+        "current-kde-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde-2020.03.patch"
+        "current-kde-xul-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/master/waterfox-current-kpe/patches/current-kde-xul-2020.03.patch"
         )
 sha256sums=('SKIP'
-            '346b791515d05645be86e0f3404187e6397a22460ad54eb27aaf3054d81c2cd8'
+            'ca152a5d24a59aa5552cc49915b13eef5181aac4ac6d2efa02c705efaeaed97b'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
-            'ff84e0de0332974b536ba42d4e16d911e489f6d7cbc2e51c57680c3d94ca5f7a'
+            'ec0bb9b7e4968b69fac34a0f8570c1d026253087a7d967a0903b62ea9397a862'
             '415328df67733f54f5bf4d68335c7457264f67175d3ee258c8a392c3c273b572'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
-            'b473c4f2ed189d9fe3accb35bb1fff9b45b5d6ecd8c5612f9cc783a91e10b257'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
-            'ffb7e8a1191276f95faa321672b45f5b5b79c5452d2a8c8f921a30ac8843096a'
+            '547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5'
+            '6f3333e1201c02c0569d81b0e73dc84c717b1ac37a9a502f664135c670833f53'
             )
 
 prepare() {
 
   cd Waterfox
 
-  patch -Np1 -i ../waterfox-current-kde-2020.01.1.patch
+  patch -Np1 -i ../current-kde-2020.03.patch
+  patch -Np1 -i ../current-kde-2020.03-xul.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
-  patch -Np1 -i ../icon_mish_mash.patch
 
   cat >.mozconfig <<END
 export CC=clang
@@ -96,7 +96,6 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-hardening
 ac_add_options --enable-lto
 ac_add_options --enable-linker=gold
-ac_add_options --enable-ccache=ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 
 # System libraries
