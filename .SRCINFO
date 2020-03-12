@@ -1,0 +1,35 @@
+pkgbase = sugar-git
+	pkgdesc = Sugar GTK shell
+	pkgver = 0.116.g
+	pkgrel = 5
+	url = https://sugarlabs.org/
+	arch = any
+	license = GPL
+	makedepends = intltool
+	depends = gst-plugins-espeak
+	depends = gtksourceview3
+	depends = gvfs
+	depends = libwnck3
+	depends = libxklavier
+	depends = metacity
+	depends = mobile-broadband-provider-info
+	depends = openssh
+	depends = telepathy-mission-control
+	depends = python-cairo
+	depends = python-xapian
+	depends = python-gobject
+	depends = python-dbus
+	depends = gtk2
+	depends = python-dateutil
+	depends = icon-naming-utils
+	depends = python-decorator
+	depends = telepathy-gabble
+	depends = telepathy-salut
+	depends = upower
+	depends = webkit2gtk
+	depends = xdg-user-dirs
+	source = git+https://github.com/sugarlabs/sugar.git
+	sha256sums = SKIP
+
+pkgname = sugar-git
+
