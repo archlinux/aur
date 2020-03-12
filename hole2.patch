@@ -1,0 +1,30 @@
+diff --git a/src/Makefile b/src/Makefile
+index 7f8e5ce..604baeb 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -14,9 +14,9 @@ FFLAGS = -fd-lines-as-comments -fbackslash -std=legacy
+ # for linux we need -static, OSX does not
+ UNAME := $(shell uname)
+ # linux needs -static but OSX needs -static-libgfortran
+-ifeq ($(UNAME), Linux)
+-   FFLAGS +=  -static
+-endif
++#ifeq ($(UNAME), Linux)
++#   FFLAGS +=  -static
++#endif
+ ifeq ($(UNAME), Darwin)
+    FFLAGS +=  -static-libgfortran
+ endif
+diff --git a/tarball.sh b/tarball.sh
+index c1a087b..d6649ab 100755
+--- a/tarball.sh
++++ b/tarball.sh
+@@ -2,8 +2,6 @@
+ # command used to packup distribution tar ball
+ UNAME=`uname`-`uname -m` # for instance Linux-x86_64
+ FNAME=hole2/hole2
+-FNAME+=-$HoleBuild # for instance NotForProfit
+-FNAME+=-$HoleVersion # for instance 2.004
+ FNAME+=-$UNAME  # for instance Linux-x86_64
+ FNAME+=.tar.gz 
+ echo "tarball name $FNAME"
