@@ -1,0 +1,29 @@
+pkgbase = ros-melodic-swri-roscpp
+	pkgdesc = ROS - swri_roscpp.
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-nav-msgs
+	makedepends = ros-melodic-dynamic-reconfigure
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-marti-common-msgs
+	makedepends = ros-melodic-std-srvs
+	makedepends = ros-melodic-roscpp
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-diagnostic-updater
+	depends = ros-melodic-nav-msgs
+	depends = ros-melodic-dynamic-reconfigure
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-marti-common-msgs
+	depends = ros-melodic-std-srvs
+	depends = ros-melodic-roscpp
+	depends = ros-melodic-diagnostic-updater
+	source = ros-melodic-swri-roscpp-2.11.0.tar.gz::https://github.com/swri-robotics-gbp/marti_common-release/archive/release/melodic/swri_roscpp/2.11.0.tar.gz
+	sha256sums = 2fca22980b77828c4c7a4ce024123a82ebc4b3f513ca147c384751a03e6396a3
+
+pkgname = ros-melodic-swri-roscpp
+
