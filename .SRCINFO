@@ -1,6 +1,6 @@
 pkgbase = gnome-software-git
 	pkgdesc = GNOME Software Tools
-	pkgver = 3.31.1+155+g18c9764d
+	pkgver = 3.36.0+1+ge5f3d50f
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Software/
 	arch = x86_64

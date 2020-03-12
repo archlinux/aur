@@ -2,7 +2,7 @@
 
 pkgbase=gnome-software-git
 pkgname=(gnome-software-git gnome-software-packagekit-plugin-git)
-pkgver=3.31.1+155+g18c9764d
+pkgver=3.36.0+1+ge5f3d50f
 pkgrel=1
 pkgdesc="GNOME Software Tools"
 url="https://wiki.gnome.org/Apps/Software/"
