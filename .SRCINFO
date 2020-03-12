@@ -1,0 +1,15 @@
+pkgbase = sugar-datastore-git
+	pkgdesc = Sugar datastore service
+	pkgver = 0.116.g
+	pkgrel = 5
+	url = https://sugarlabs.org/
+	arch = x86_64
+	license = GPL
+	depends = python-dbus
+	depends = python-gobject
+	depends = python-xapian
+	source = git+https://github.com/sugarlabs/sugar-datastore.git
+	sha256sums = SKIP
+
+pkgname = sugar-datastore-git
+
