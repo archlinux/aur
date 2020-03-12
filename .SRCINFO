@@ -1,0 +1,25 @@
+pkgbase = sugar-toolkit2-gtk3-git
+	pkgdesc = Sugar GTK library
+	pkgver = 0.116.g
+	pkgrel = 1
+	url = https://sugarlabs.org/
+	arch = x86_64
+	license = LGPL
+	makedepends = intltool
+	makedepends = gobject-introspection
+	depends = sugar-toolkit-gtk3
+	depends = alsa-lib
+	depends = gtk3
+	depends = libsm
+	depends = python2-cairo
+	depends = python2-dateutil
+	depends = python2-decorator
+	depends = python2-six
+	depends = python2-telepathy
+	depends = telepathy-mission-control
+	depends = unzip
+	source = git+https://github.com/sugarlabs/sugar-toolkit-gtk3.git
+	sha256sums = SKIP
+
+pkgname = sugar-toolkit2-gtk3-git
+
