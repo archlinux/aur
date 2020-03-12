@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfig-git
-pkgver=r219.da717e6
-pkgrel=2
+pkgver=v4.100.0.rc1.r500.gec20733
+pkgrel=1
 pkgdesc='KConfig'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kconfig'
