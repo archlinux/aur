@@ -4,7 +4,7 @@ pkgname=komikku
 _author=valos
 _gitname=Komikku
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Online/offline Manga reader for GNOME, built for the Librem 5'
 arch=(any)
 url=https://gitlab.com/valos/Komikku
@@ -12,13 +12,13 @@ license=(GPL3)
 depends=(
   gtk3
   libhandy
+  libsecret
   python
   python-beautifulsoup4
   python-cairo
-  python-gobject
-  python-beautifulsoup4
   python-cloudscraper
   python-dateparser
+  python-gobject
   python-lxml
   python-magic-ahupp
   python-pillow
