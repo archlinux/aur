@@ -19,7 +19,7 @@ pkgbase = kio-git
 	depends = desktop-file-utils
 	provides = kio
 	conflicts = kio
-	source = git+https://anongit.kde.org/kio.git
+	source = git://anongit.kde.org/kio.git
 	md5sums = SKIP
 
 pkgname = kio-git
