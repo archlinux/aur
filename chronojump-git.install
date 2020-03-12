@@ -1,5 +1,7 @@
 post_install() {
-    echo "NOTE: To run Chronojump with Chronopic as normal user make sure to add yourself into 'dialout' group"
+    echo "NOTE: In order to run Chronojump with Chronopic as normal user"
+    echo "      make sure to add your user to the 'dialout' group"
+    echo ""
 }
 
 post_upgrade() {

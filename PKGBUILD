@@ -2,19 +2,19 @@
 
 _name=chronojump
 pkgname=$_name-git
-pkgver=1.7.1.187.g58dc443d
+pkgver=1.9.0.803.g8807c0ee
 pkgrel=1
 pkgdesc="Measurement, management and statistics of sport short-time tests"
 arch=('x86_64')
 url="http://chronojump.org/"
-license=('GPL')
-depends=('gstreamer0.10-base' 'python' 'gtk2')
-makedepends=('gtk-sharp-2' 'mono' 'intltool' 'git')
+license=('GPL2')
+depends=(python gtk2)
+makedepends=(gtk-sharp-2 mono intltool git)
 provides=($_name)
 conflicts=($_name)
 options=(!libtool)
 install=$pkgname.install
-source=("git+https://git.gnome.org/browse/$_name")
+source=("git+https://gitlab.gnome.org/GNOME/$_name.git")
 md5sums=('SKIP')
 
 pkgver() {
@@ -25,9 +25,8 @@ pkgver() {
 prepare() {
     cd "$_name"
     NOCONFIGURE=1 ./autogen.sh
-     # fix path for mono 4.6.1.3-1
-    sed -i 's|/mono/4.0/|/mono/4.5/|' configure
-    
+    # Fix path to Mono 4.0 GAC (/usr/lib/mono/4.0-api/)
+    sed -i 's|/mono/4.0/|/mono/4.0-api/|' configure
 }
 
 build() {
@@ -36,6 +35,7 @@ build() {
     make
 }
 
+# Error in https://bugzilla.gnome.org/show_bug.cgi?id=774404
 check() {
     cd "$_name"
     make -k check || true
