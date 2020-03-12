@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=solid-git
-pkgver=r196.25657e3
-pkgrel=2
+pkgver=v4.100.0.rc1.r389.g8dfb727
+pkgrel=1
 pkgdesc='Solid'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/solid'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/solid.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd solid
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
