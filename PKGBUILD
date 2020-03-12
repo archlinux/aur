@@ -6,7 +6,7 @@ url='http://ros.org/wiki/gps_common'
 pkgname='ros-melodic-gps-common'
 pkgver='0.3.1'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-melodic-catkin
