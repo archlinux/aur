@@ -1,7 +1,7 @@
 pkgbase = waterfox-current-bin
 	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
 	pkgver = 2020.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.waterfox.net
 	arch = x86_64
 	license = MPL
@@ -12,15 +12,15 @@ pkgbase = waterfox-current-bin
 	depends = mime-types
 	depends = dbus-glib
 	depends = ffmpeg
-	depends = libpulse
-	depends = nss
-	depends = hunspell
 	depends = ttf-font
+	depends = hicolor-icon-theme
+	depends = nss
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
 	provides = waterfox-current=2020.03
 	conflicts = waterfox-current
 	replaces = waterfox-alpha-bin

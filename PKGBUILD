@@ -3,18 +3,19 @@
 
 pkgname=waterfox-current-bin
 pkgver=2020.03
-pkgrel=1
+pkgrel=2
 pkgdesc="64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons."
 arch=('x86_64')
 url="https://www.waterfox.net"
 license=('MPL')
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'libpulse' 'nss' 'hunspell' 'ttf-font')
+         'ttf-font' 'hicolor-icon-theme' 'nss')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'alsa-lib: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 replaces=('waterfox-alpha-bin')
