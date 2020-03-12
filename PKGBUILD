@@ -2,7 +2,7 @@
 _target='compass-beta'
 _edition=' Beta'
 pkgname="mongodb-$_target"
-_pkgver='1.21.0-beta.1'
+_pkgver='1.21.0-beta.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version'
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-packaging.diff'
 )
-sha256sums=('0124a3b01e281eaabea349d59232ef719d0bb77e8a828a0bf606c085514e084c'
+sha256sums=('17e05e157c995fc9c81ad0051156cd92c6ddf9aa9a6086b5f5637c4346a401df'
             '3f438dc5b2eb99a4831f83d753cb3dc86fc8b3217499310fe03469570f300ff2')
 
 _sourcedirectory="compass-$_pkgver"
