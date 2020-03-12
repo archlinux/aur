@@ -1,0 +1,19 @@
+pkgbase = ros-melodic-marti-common-msgs
+	pkgdesc = ROS - marti_common_msgs.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/swri-robotics/marti_messages
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-catkin
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	depends = ros-melodic-std-msgs
+	source = ros-melodic-marti-common-msgs-0.8.0.tar.gz::https://github.com/swri-robotics-gbp/marti_messages-release/archive/release/melodic/marti_common_msgs/0.8.0.tar.gz
+	sha256sums = f55b0fa995a1e790ab27710ae2731eafa5ce43683fc9731e89674dd0542a58cb
+
+pkgname = ros-melodic-marti-common-msgs
+
