@@ -1,7 +1,6 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=karchive-git
-epoch=2
 pkgver=v5.68.0.rc1.r1.g17d4092
 pkgrel=1
 pkgdesc='Qt 5 addon providing access to numerous types of archives'

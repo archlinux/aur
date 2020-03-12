@@ -2,7 +2,6 @@ pkgbase = karchive-git
 	pkgdesc = Qt 5 addon providing access to numerous types of archives
 	pkgver = v5.68.0.rc1.r1.g17d4092
 	pkgrel = 1
-	epoch = 2
 	url = https://projects.kde.org/projects/frameworks/karchive
 	arch = i686
 	arch = x86_64
