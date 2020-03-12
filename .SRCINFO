@@ -1,0 +1,16 @@
+pkgbase = ruby-jekyll-theme-leap-day
+	pkgdesc = Leap Day is a Jekyll theme for GitHub Pages
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/pages-themes/leap-day
+	arch = any
+	license = CC0
+	depends = ruby
+	depends = jekyll
+	noextract = jekyll-theme-leap-day-0.1.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jekyll-theme-leap-day-0.1.1.gem
+	sha1sums = 68eac35495c0a0fd6ed11f28d8309aaa16d4bf65
+
+pkgname = ruby-jekyll-theme-leap-day
+
