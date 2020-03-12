@@ -1,12 +1,13 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: AI5C <ai5c@ai5c.com>
 # Contributor: kaptoxic <kaptoxic at yahoo dot com>
 # Contributor: Matthew Avant <matthew dot avant at gmail dot com>
 # Contributor: Rose Ames <rose at happyspork dot com>
 
 pkgname=zulip-desktop
-pkgver=4.0.0
-pkgrel=3
+pkgver=4.0.3
+pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
 url=https://zulipchat.com
@@ -15,7 +16,7 @@ depends=(libxkbfile gtk3 libxss nss)
 makedepends=(npm python2)
 source=($pkgname-$pkgver.tar.gz::https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.desktop)
-sha512sums=('4cbdbc73d09ac50599cba460eccd0b72c901b68a00d4995b9bc16f0f980715155cafc1f14a5d1ab5a97672c5413679ce96f38212f7e0935df85b1c0f1e3465ec'
+sha512sums=('edce6f4ed470e29cc22f493c67e4898ecd1f660f664403b8be33de3036b89323ec4a6528c2e4a34175ec6866a6d37f79d962ba09054c6e47aaf6ad3de2efa475'
             '7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5')
 
 build() {
