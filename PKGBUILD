@@ -2,8 +2,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kdbusaddons-git
-pkgver=r90.e9c8580
-pkgrel=2
+pkgver=v4.100.0.rc1.r233.gde0c9db
+pkgrel=1
 pkgdesc='Addons to QtDBus'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kdbusaddons'
@@ -17,8 +17,8 @@ source=('git://anongit.kde.org/kdbusaddons.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kdbusaddons
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
