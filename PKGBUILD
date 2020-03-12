@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kconfig.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kconfig
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
