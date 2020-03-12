@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=r286.e2cc82a
-pkgrel=2
+pkgver=v4.100.0.rc1.r482.g7209b45
+pkgrel=1
 pkgdesc='KXmlGUI'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kxmlgui'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kxmlgui.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kxmlgui
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
