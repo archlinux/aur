@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 # Contributor: Hexchain Tong <i at hexchain dot org>
 pkgname=tpm2-tools-git
-pkgver=4.1.1.r83.0561d94d
+pkgver=4.2rc0.r0.eb855d1c
 pkgrel=1
 pkgdesc='Trusted Platform Module 2.0 tools based on tpm2-tss'
 arch=('x86_64')
@@ -41,5 +41,5 @@ check() {
 package() {
 	cd "${pkgname%-git}"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+	install -Dm644 doc/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
