@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kitemviews-git
-pkgver=r54.3157bc9
-pkgrel=2
+pkgver=v4.100.0.rc1.r220.g1de1402
+pkgrel=1
 pkgdesc='KItemViews'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kitemviews'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kitemviews.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kitemviews
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
