@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
   rm -rf build
-  arch-meson $_realname build --libdir=lib --buildtype release
+  arch-meson $_realname build --libdir=lib --buildtype release -Dapi_doc=true
   ninja -C build
 }
 
