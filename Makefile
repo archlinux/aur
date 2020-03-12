@@ -2,7 +2,8 @@ build:
 	makepkg -cCsirfi
 
 
-update: shasums srcinfo
+update: shasums 
+	${MAKE} srcinfo
 
 shasums:
 	checksums=$$(makepkg --noprogressbar -g | grep -E '^sha.*sums') && \
