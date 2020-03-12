@@ -2,13 +2,14 @@
 _gemname=jekyll-theme-leap-day
 pkgname="ruby-${_gemname}"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Leap Day is a Jekyll theme for GitHub Pages'
 arch=(any)
 url='https://github.com/pages-themes/leap-day'
 license=(CC0)
 depends=(ruby
-    jekyll)
+    jekyll
+    ruby-jekyll-seo-tag)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=("${_gemname}-${pkgver}.gem")
