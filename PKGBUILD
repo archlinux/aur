@@ -5,17 +5,23 @@ url='https://wiki.ros.org/realtime_tools'
 pkgname='ros-melodic-realtime-tools'
 pkgver='1.15.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
-ros_makedepends=(ros-melodic-roscpp
+ros_makedepends=(
   ros-melodic-catkin
-  ros-melodic-rospy)
-makedepends=('cmake' 'ros-build-tools'
+  ros-melodic-roscpp
+  ros-melodic-actionlib)
+makedepends=(
+  cmake
+  ros-build-tools
   ${ros_makedepends[@]})
 
-ros_depends=(ros-melodic-roscpp
-  ros-melodic-rospy)
+ros_depends=(
+  ros-melodic-roscpp
+  ros-melodic-rosunit
+  ros-melodic-rostest
+  ros-melodic-actionlib)
 depends=(${ros_depends[@]})
 
 _dir="${srcdir}/realtime_tools-${pkgver}"
