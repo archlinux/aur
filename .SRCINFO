@@ -1,16 +1,13 @@
 pkgbase = ttf-linden-hill
-	pkgdesc = A digital version of Frederic Goudy’s font Deepdene.
+	pkgdesc = A digital version of Frederic Goudy’s font Deepdene
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/linden-hill
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = ttf-linden-hill-20160215.zip::https://github.com/theleagueof/linden-hill/archive/master.zip
-	md5sums = 7803c1e2b05f607320535042e976ab11
+	license = OFL
+	source = ttf-linden-hill-20160215.zip::https://github.com/theleagueof/linden-hill/archive/a3f7ae6c4cac1b7e5ce5269e1fcc6a2fbb9e31ee.zip
+	sha256sums = b683e6e25d16d321f6a91c00fb4fd3d62136c4e503a49a8107f5d8ad68ed6ef9
 
 pkgname = ttf-linden-hill
 
