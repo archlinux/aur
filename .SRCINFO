@@ -1,17 +1,13 @@
 pkgbase = ttf-junction
-	pkgdesc = Junction is a a humanist sans-serif, and the first open-source type project started by The League of Moveable Type.
+	pkgdesc = expanding a humanist sans-serif typeface, Junction
 	pkgver = 20160215
-	pkgrel = 2
+	pkgrel = 3
 	url = http://theleagueofmoveabletype.com/junction
 	arch = any
 	groups = lmt-fonts
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	conflicts = otf-junction
-	source = ttf-junction-20160215.zip::https://github.com/theleagueof/junction/archive/master.zip
-	md5sums = e35636a6a9075db4f1bc09df69b8d0d3
+	license = OFL
+	source = ttf-junction-20160215.zip::https://github.com/theleagueof/junction/archive/fb73260e86dd301b383cf6cc9ca8e726ef806535.zip
+	sha256sums = 303e27b8f8f40fb4f7a0b13e1e4fb019f23d49fbe05d9e608f2c9627db43d2f3
 
 pkgname = ttf-junction
 

@@ -1,28 +1,24 @@
 # Maintainer: LightDot <lightdot -a-t- g m a i l>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: samæ <samæ at marvid dot fr>
 
 _fnt_name=junction
 pkgname=ttf-$_fnt_name
 pkgver=20160215
-pkgrel=2
-pkgdesc="Junction is a a humanist sans-serif, and the first open-source type project started by The League of Moveable Type."
+# 20140329
+_sha=fb73260e86dd301b383cf6cc9ca8e726ef806535
+pkgrel=3
+pkgdesc='expanding a humanist sans-serif typeface, Junction'
 arch=('any')
 url="http://theleagueofmoveabletype.com/$_fnt_name"
-license=('custom:OFL')
+license=('OFL')
 groups=('lmt-fonts')
-depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('otf-junction')
-source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/master.zip")
-md5sums=('e35636a6a9075db4f1bc09df69b8d0d3')
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
+sha256sums=('303e27b8f8f40fb4f7a0b13e1e4fb019f23d49fbe05d9e608f2c9627db43d2f3')
 
 package() {
-  install -Dm644 "$srcdir/$_fnt_name"-master/Junction-bold.otf    "$pkgdir"/usr/share/fonts/OTF/JunctionBold.otf
-  install -Dm644 "$srcdir/$_fnt_name"-master/Junction-light.otf   "$pkgdir"/usr/share/fonts/OTF/JunctionLight.otf
-  install -Dm644 "$srcdir/$_fnt_name"-master/Junction-regular.otf "$pkgdir"/usr/share/fonts/OTF/JunctionRegular.otf
-
-  install -Dm644 "$srcdir/$_fnt_name"-master/webfonts/junction-bold.ttf    "$pkgdir"/usr/share/fonts/TTF/JunctionBold.ttf
-  install -Dm644 "$srcdir/$_fnt_name"-master/webfonts/junction-light.ttf   "$pkgdir"/usr/share/fonts/TTF/JunctionLight.ttf
-  install -Dm644 "$srcdir/$_fnt_name"-master/webfonts/junction-regular.ttf "$pkgdir"/usr/share/fonts/TTF/JunctionRegular.ttf
-
-  install -Dm644 "$srcdir/$_fnt_name"-master/Open\ Font\ License.markdown "$pkgdir/usr/share/licenses/$pkgname"/OFL.txt
+  cd "$_fnt_name-$_sha"
+  install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" webfonts/*.ttf
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Open\ Font\ License*.markdown
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
