@@ -1,0 +1,16 @@
+pkgbase = n-dhcp4-git
+	pkgdesc = Dynamic Host Configuration Protocol for IPv4
+	pkgver = 1.9.g9ba143a
+	pkgrel = 1
+	url = https://github.com/nettools/n-dhcp4
+	arch = x86_64
+	license = LGPL2.1
+	license = Apache
+	makedepends = meson
+	makedepends = pkgconf
+	depends = glibc
+	source = git+https://github.com/nettools/n-dhcp4.git
+	sha256sums = SKIP
+
+pkgname = n-dhcp4-git
+
