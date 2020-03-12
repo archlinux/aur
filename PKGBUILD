@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kconfigwidgets-git
-pkgver=r119.e6e1945
+pkgver=v4.100.0.rc1.r397.g9cc9e17
 pkgrel=1
 pkgdesc='Widgets for KConfig'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=('git://anongit.kde.org/kconfigwidgets.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kconfigwidgets
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

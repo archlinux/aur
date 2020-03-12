@@ -1,6 +1,6 @@
 pkgbase = kconfigwidgets-git
 	pkgdesc = Widgets for KConfig
-	pkgver = r119.e6e1945
+	pkgver = v4.100.0.rc1.r397.g9cc9e17
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kconfigwidgets
 	arch = i686
