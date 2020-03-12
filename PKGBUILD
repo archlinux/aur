@@ -37,7 +37,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         pgo_fix_missing_kdejs.patch
         "Bug1387912.patch::https://github.com/mozilla/gecko-dev/commit/8e8d4fdf49032bbd235cc745be2eece2ddfe4141.patch")
 sha256sums=('SKIP'
-            '2b6438946169935ec87fc2e5f3377f6d92a00ba7ad6ef5ab2e60340588dc74ea'
+            '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
             '7aaf95e46c50a2f0e1df097c9cb867e73f82d0d7fdd8aa75153c1bdafbaebb20'
