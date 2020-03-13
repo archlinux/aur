@@ -10,9 +10,9 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='b7ed902b2394f94e7f1fbe6c3194b5cd9a9429e6' # git rev-parse v${pkgver}
-pkgver=244.3
-pkgrel=1
+_tag='68fef5d635424a60224cce610d30a9041124c204' # git rev-parse v${pkgver}
+pkgver=245
+pkgrel=3
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -21,7 +21,7 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam-selinux' '
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow-selinux' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'libselinux')
+             'bash-completion' 'p11-kit' 'libselinux')
 options=('strip')
 validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <lennart@poettering.net>
               '5C251B5FC54EB2F80F407AAAC54CA336CFEB557E') # Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl>
@@ -76,8 +76,11 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # units: Split modprobing out into a separate service unit
-  '625077264ba01a108386eeea733ee244e6b7ff14'
+  # core: Fix resolution of nested DM devices for cgroups
+  'b7cf4b4ef5d0336443f21809b1506bc4a8aa75a9'
+
+  # analyze: fix table time output
+  '084df9c616fdfbcbf3d7fbe7dc6b975f1fa359d2'
 )
 
 _reverts=(
@@ -170,7 +173,7 @@ package_systemd-selinux() {
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'cryptsetup' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'systemd-libs-selinux' 'libidn2' 'libidn2.so' 'lz4' 'pam-selinux' 'libelf'
-           'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit')
+           'libseccomp' 'util-linux-selinux' 'xz' 'pcre2' 'audit' 'libp11-kit')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver"
             "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   conflicts=('nss-myhostname' 'systemd-tools' 'udev'

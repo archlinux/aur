@@ -1,6 +1,6 @@
 pkgbase = systemd-selinux
-	pkgver = 244.3
-	pkgrel = 1
+	pkgver = 245
+	pkgrel = 3
 	url = https://www.github.com/systemd/systemd
 	arch = x86_64
 	groups = selinux
@@ -34,10 +34,11 @@ pkgbase = systemd-selinux
 	makedepends = kexec-tools
 	makedepends = libxkbcommon
 	makedepends = bash-completion
+	makedepends = p11-kit
 	makedepends = libselinux
 	options = strip
-	source = git+https://github.com/systemd/systemd-stable#tag=b7ed902b2394f94e7f1fbe6c3194b5cd9a9429e6?signed
-	source = git+https://github.com/systemd/systemd#tag=v244?signed
+	source = git+https://github.com/systemd/systemd-stable#tag=68fef5d635424a60224cce610d30a9041124c204?signed
+	source = git+https://github.com/systemd/systemd#tag=v245?signed
 	source = 0001-Use-Arch-Linux-device-access-groups.patch
 	source = initcpio-hook-udev
 	source = initcpio-install-systemd
@@ -105,15 +106,16 @@ pkgname = systemd-selinux
 	depends = xz
 	depends = pcre2
 	depends = audit
+	depends = libp11-kit
 	optdepends = libmicrohttpd: remote journald capabilities
 	optdepends = quota-tools: kernel-level quota management
 	optdepends = systemd-sysvcompat: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	optdepends = curl: machinectl pull-tar and pull-raw
 	provides = nss-myhostname
-	provides = systemd-tools=244.3
-	provides = udev=244.3
-	provides = systemd=244.3-1
+	provides = systemd-tools=245
+	provides = udev=245
+	provides = systemd=245-3
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -146,7 +148,7 @@ pkgname = systemd-libs-selinux
 	provides = libsystemd.so
 	provides = libudev.so
 	provides = libsystemd-selinux
-	provides = systemd-libs=244.3-1
+	provides = systemd-libs=245-3
 	conflicts = libsystemd
 	conflicts = libsystemd-selinux
 	conflicts = systemd-libs
@@ -158,16 +160,16 @@ pkgname = systemd-resolvconf-selinux
 	depends = systemd-selinux
 	provides = openresolv
 	provides = resolvconf
-	provides = systemd-resolvconf=244.3-1
+	provides = systemd-resolvconf=245-3
 	conflicts = openresolv
-	conflicts = systemd-resolvconf=244.3-1
+	conflicts = systemd-resolvconf=245-3
 
 pkgname = systemd-sysvcompat-selinux
 	pkgdesc = sysvinit compat for systemd with SELinux support
 	license = GPL2
 	depends = systemd-selinux
-	provides = systemd-sysvcompat=244.3-1
-	provides = selinux-systemd-sysvcompat=244.3-1
+	provides = systemd-sysvcompat=245-3
+	provides = selinux-systemd-sysvcompat=245-3
 	conflicts = sysvinit
 	conflicts = systemd-sysvcompat
 	conflicts = selinux-systemd-sysvcompat
