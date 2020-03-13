@@ -1,9 +1,8 @@
 # Maintainer: libertylocked <libertylocked@disroot.org>
 # Contributor: Stephen Brown II <Stephen [dot] Brown2 [at] gmail.com>
 pkgname=bitwarden-cli
-pkgver=1.9.0
-# commit of bitwarden/jslib
-_jslibcommit='44b86f5dd028271059b70a00d7878fbb1a06023f'
+pkgver=1.9.1
+_jslibcommit='0a30c7eb1ecbac500e6c55a7d4024d98efa982bc'
 _nodeversion='10.19.0'
 pkgrel=1
 pkgdesc="The command line vault (Windows, macOS, & Linux). bitwarden.com"
@@ -16,8 +15,8 @@ conflicts=('bitwarden-cli-git')
 options=('!strip')
 source=("bitwarden-cli-${pkgver}.tar.gz::https://github.com/bitwarden/cli/archive/v${pkgver}.tar.gz"
         "jslib-${_jslibcommit}.tar.gz::https://github.com/bitwarden/jslib/archive/${_jslibcommit}.tar.gz")
-sha512sums=('304ebe05a035848251cfc339b36eb9152f7d72628f4d7898e95525b351653e784f2f60bdb4659bca84162b098703ce1e701d5d6b6da6e90ad0eb560fb93d2694'
-            '3b0f10311a2032fedf6c36a7271180abe6578f945dccfde476c06ec311d235cf5a9d2bfed4b07b3bb2637ddd980961ef4d588e06b20f29d8a4489ae8f6758000')
+sha512sums=('730736277f31d3102d717cf524ea55852fd89776cca20e23840b19e45ab94994448d09b3e294aab04d51355b8415ab265b229198c259b81198d07a9611268abc'
+            'c6ce73345e59b77689aca8a59da539ddb9efc8f7ed77e2172397e8fe959a68448bb576d1ff0bbe1615de45e45113210e1ef94cd632a0111559dd7f125a622c52')
 
 prepare() {
   rmdir "${srcdir}/cli-${pkgver}/jslib"
@@ -36,8 +35,8 @@ build() {
   npm install
   cd "${srcdir}/cli-${pkgver}"
   npm install
-  # Due to some jsdom dependency complications we'll have to use bundled nodejs in the final 
-  # build for now.
+  # Due to some jsdom dependency complications we'll have to use bundled nodejs
+  # in the final build for now.
   npm run dist:lin
 
   # Restore node config from nvm
