@@ -4,7 +4,7 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=201.6073.24
+_buildver=201.6251.24
 _pkgver=2020.1
 _eap=y
 pkgver="$_pkgver.$_buildver"
@@ -13,14 +13,14 @@ epoch=5
 
 pkgdesc='Powerful Python and Django IDE, Early Access Program (EAP) build. Community edition.'
 arch=('any')
-url='http://www.jetbrains.com/pycharm/'
+url=http://www.jetbrains.com/pycharm/
 license=('Apache')
 
 provides=('pycharm-community-edition')
 conflicts=('pycharm-community-edition')
 
-depends=('libdbusmenu-glib')
 makedepends=('python-setuptools' 'python2-setuptools')
+depends=('libdbusmenu-glib')
 
 options=('!strip')
 
@@ -30,7 +30,10 @@ else
     _filever="$_pkgver"
 fi
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
-sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
+# The website doesn't provide the checksum atm, so we hard code it in the PKGBUILD for the time being
+#sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
+sha256sums=('8b6d2990d3fc03b9aea2e4ca121ec2a2629e9f0f2b404b603d47eb43c7c6a0de')
+
 
 prepare() {
 	if [ -d "pycharm-community-$_pkgver" ]; then
