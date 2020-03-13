@@ -1,24 +1,29 @@
 #!/usr/bin/env bash
 
+die () {
+  echo "$1"
+  exit 1
+}
+
 if [ -f "$HOME"/.config/haurrc ]; then
-  # shellcheck source=src/.config/haurrc
+  # shellcheck source=/dev/null
   source "$HOME"/.config/haurrc
 else
   if [ -f /etc/haurrc ]; then
+    # shellcheck source=/dev/null
     source /etc/haurrc
   else
-    echo "fatal: No configuration file found"
-    exit 1
+    die "fatal: No configuration file found"
   fi
 fi
 
-if [ ! $HAUR_NO_COLORS == "y" ]; then
+if [ ! "$HAUR_NO_COLORS" == "y" ]; then
   if test -t 1; then
 
     # see if it supports colors...
     ncolors=$(tput colors 2>/dev/null)
 
-    if test -n "$ncolors" && test $ncolors -ge 8; then
+    if test -n "$ncolors" && test "$ncolors" -ge 8; then
       # bold="$(tput bold 2>/dev/null)"
       # underline="$(tput smul 2>/dev/null)"
       # standout="$(tput smso 2>/dev/null)"
@@ -46,7 +51,7 @@ for arg in "$@"; do
     "--remove") set -- "$@" "-r" ;;
     "--clear-cache") set -- "$@" "-c" ;;
     "--help") set -- "$@" "-h" ;;
-    "--"*) echo "Invalid Option: ${arg}" ; exit 1 ;;
+    "--"*) die "Invalid Option: ${arg}" ;;
     *) set -- "$@" "$arg"
   esac
 done
@@ -68,29 +73,28 @@ while getopts ":urch" opt; do
       exit 0
       ;;
     \?)
-      echo "${red}Invalid Option: -$OPTARG${normal}" 1>&2
-      exit 1
+      die "${red}Invalid Option: -$OPTARG${normal}" 1>&2
       ;;
     esac
 done
 shift $((OPTIND -1))
 
-if [ $HAUR_ALWAYS_CLEAR_CACHE == "y" ]; then
+if [ "$HAUR_ALWAYS_CLEAR_CACHE" == "y" ]; then
   CLEAR_CACHE=true
 fi
 
 if [ $REMOVE == true ]; then
   for PACKAGE_NAME in "$@"; do
     echo "${blue}Removing $PACKAGE_NAME...${normal}"
-    sudo pacman -Rns $PACKAGE_NAME
-    echo $PACKAGE_NAME > ~/.haur_cache
+    sudo pacman -Rns "$PACKAGE_NAME"
+    echo "$PACKAGE_NAME" > ~/.haur_cache
   done
   if [ $CLEAR_CACHE == true ]; then
     if test -f "$HOME/.haur_cache"; then
       echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
         echo "${blue}Removing $line${normal}"
-        rm -rf $HOME/.haur/$line
+        rm -rf "$HOME"/.haur/"$line"
       done < "$HOME/.haur_cache"
       rm ~/.haur_cache
     else
@@ -100,11 +104,11 @@ if [ $REMOVE == true ]; then
 elif [ $UPDATE == true ]; then
   for PACKAGE_NAME in "$@"; do
     echo "${blue}Updating $PACKAGE_NAME...${normal}"
-    cd ~/.haur
-    cd $PACKAGE_NAME
+    cd ~/.haur || die "Could not navigate to ~/.haur"
+    cd "$PACKAGE_NAME" || die "Could not navigate to $PACKAGE_NAME"
     git pull origin master
     rm -rf pkg src
-    rm -f *.pkg.tar.gz
+    rm -f ./*.pkg.tar.gz
     makepkg -si
   done
   if [ $CLEAR_CACHE == true ]; then
@@ -112,7 +116,7 @@ elif [ $UPDATE == true ]; then
       echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
         echo "${blue}Removing $line${normal}"
-        rm -rf $HOME/.haur/$line
+        rm -rf "$HOME/.haur/$line"
       done < "$HOME/.haur_cache"
       rm ~/.haur_cache
     else
@@ -125,7 +129,7 @@ else
       echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
         echo "${blue}Removing $line${normal}"
-        rm -rf $HOME/.haur/$line
+        rm -rf "$HOME/.haur/$line"
       done < "$HOME/.haur_cache"
       rm ~/.haur_cache
     else
@@ -135,9 +139,9 @@ else
   for PACKAGE_NAME in "$@"; do
     echo "${blue}Installing $PACKAGE_NAME...${normal}"
     mkdir -p ~/.haur
-    cd ~/.haur
-    git clone https://aur.archlinux.org/$PACKAGE_NAME.git
-    cd $PACKAGE_NAME
+    cd ~/.haur || die "Could not navigate to ~/.haur"
+    git clone https://aur.archlinux.org/"$PACKAGE_NAME".git
+    cd "$PACKAGE_NAME" || die "Could not navigate to $PACKAGE_NAME"
     makepkg -si
   done
 fi
