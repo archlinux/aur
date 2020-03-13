@@ -5,7 +5,7 @@ pkgbase = backdrop
 	url = https://backdropcms.org/
 	install = post_install
 	arch = any
-	license = MIT
+	license = GPL2
 	depends = php>=5.3.2
 	depends = mariadb>=5.0.15
 	depends = php-gd
