@@ -1,5 +1,5 @@
 # Maintainer: bohoomil <@zoho.com>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=ttf-source-sans-pro-ibx
 pkgver=3.006
 pkgrel=1
