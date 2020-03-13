@@ -2,7 +2,7 @@
 # Contributor: Danny Bautista <pyrolagus@gmail.com>
 
 pkgname=ghidra-git
-pkgver=9.1+r383+g59e88c6c
+pkgver=9.1.2+r831+gd9701df6d
 _d2j=2.0
 _yajsw=12.12
 _hfsx=0.21
