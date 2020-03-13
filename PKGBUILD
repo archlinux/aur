@@ -1,7 +1,7 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
 pkgver=0.28.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
 url='https://criptext.com/'
@@ -24,7 +24,7 @@ prepare() {
 
   # Update .desktop file
   sed -i 's|Exec=AppRun|Exec=/usr/bin/criptext|g' \
-	"squashfs-root/${pkgname%-bin}.desktop"
+	"${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
 }
 
 package() {
