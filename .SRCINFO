@@ -1,7 +1,7 @@
 pkgbase = tailscale-unstable-bin
 	pkgdesc = A mesh VPN that makes it easy to connect your devices, wherever they are.
 	pkgver = 0.96_16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tailscale.com
 	install = tailscale.install
 	arch = x86_64
