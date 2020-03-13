@@ -1,6 +1,6 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=beaker-browser-bin
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Peer-to-peer browser with tools to create and host websites"
 arch=('x86_64')
@@ -11,11 +11,11 @@ depends=('libxss' 'libxtst' 'libnotify' 'gconf' 'electron')
 backup=()
 
 options=(!strip)
-source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-}/beaker.browser.${pkgver//_/-}.AppImage"
+source=("https://github.com/beakerbrowser/beaker/releases/download/${pkgver//_/-}/Beaker.Browser-${pkgver//_/-}.AppImage"
         "beaker-browser.desktop"
         "beaker-browser"
         "LICENSE")
-md5sums=('7ce2110b853535404a8a65e4a762045e'
+md5sums=('1d67c93a67e2298628c3c12f279c2671'
          '34b48b022c6c71212f0adb3981f2925d'
          '09aa78a4ebb98e0c71aeaaf46fd6b11b'
          '3862c029863f42c81265a712f9c17c4c')
@@ -23,8 +23,8 @@ md5sums=('7ce2110b853535404a8a65e4a762045e'
 install='beaker-browser-bin.install'
 
 prepare() {
-    chmod u+x ${srcdir}/beaker.browser.${pkgver//_/-}.AppImage
-    ${srcdir}/beaker.browser.${pkgver//_/-}.AppImage --appimage-extract
+    chmod u+x ${srcdir}/Beaker.Browser-${pkgver//_/-}.AppImage
+    ${srcdir}/Beaker.Browser-${pkgver//_/-}.AppImage --appimage-extract
 }
 
 package() {
