@@ -135,16 +135,18 @@ prepare() {
   chmod u=rwx,g=rx,o=rx --verbose gn
   mv --verbose gn skia/bin/gn
   cp --verbose skia/bin/gn skia/buildtools/linux64/gn
+
+  mkdir --verbose binsub
+  ln --symbolic /usr/bin/python2 binsub/python
 }
 
 build() {
   cd "${srcdir}"
 
   # Build skia
-  _skiapath="${srcdir}/depot_tools:${PATH}"
+  _skiapath="${srcdir}/binsub:${srcdir}/depot_tools:${PATH}"
   cd skia
-  # Bypass the gn script, which uses `python` and expects Python 2
-  PATH="${_skiapath}" PYTHONDONTWRITEBYTECODE=1 python2 "$(which gn.py)" gen out/Release-x64 \
+  PATH="${_skiapath}" gn gen out/Release-x64 \
     --args="is_debug=false is_official_build=true skia_use_system_expat=false \
     skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false \
     skia_use_system_libwebp=false skia_use_system_zlib=false"
