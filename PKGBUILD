@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=knewstuff-git
-pkgver=r72.2923dda
-pkgrel=2
+pkgver=v4.100.0.rc1.r737.g707ef317
+pkgrel=1
 pkgdesc='KNewStuff'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/knewstuff'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/knewstuff.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd knewstuff
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
