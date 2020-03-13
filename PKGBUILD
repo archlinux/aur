@@ -7,7 +7,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8-r
-pkgver=8.2.270
+pkgver=8.2.308
 pkgrel=1
 pkgdesc="Google's open source JavaScript and WebAssembly engine"
 arch=('x86_64')
@@ -22,14 +22,12 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8.pc"
         "v8_libbase.pc"
         "v8_libplatform.pc"
-        "d8"
-        "revert.diff")
+        "d8")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
-            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            '323dc1f4754056aaa53215333b212a4533579fb084776d0438615b3c8e725b5a')
+            '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0')
 
 OUTFLD=out.gn/Release
 
@@ -45,7 +43,6 @@ prepare() {
   msg2 "Using: `which python`"
 
   export PATH=${srcdir}/bin:`pwd`/depot_tools:"$PATH"
-  # export PATH=${srcdir}/depot_tools:"$PATH"
   export GYP_GENERATORS=ninja
 
   if [ ! -d "v8" ]; then
@@ -70,9 +67,6 @@ prepare() {
 
   msg2 "Using system libraries for ICU"
   $srcdir/v8/build/linux/unbundle/replace_gn_files.py --system-libraries icu
-
-  # fix build: comment -fintegrated-cc1
-  patch -p2 < ../revert.diff
 
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8.pc"
   sed "s/@VERSION@/${pkgver}/g" -i "${srcdir}/v8_libbase.pc"
