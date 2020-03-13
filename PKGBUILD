@@ -8,7 +8,7 @@ license=('BSD')
 depends=('zeromq')
 makedepends=('cmake')
 source=("https://github.com/melissa-sa/melissa/archive/V${pkgver//./_}.tar.gz")
-sha1sums=('SKIP')
+sha256sums=('508a873c7efde2d06d63377e525b285fbee9334746fe3d0f77ce6e6d70825dd6')
 
 prepare() {
   cd "${srcdir}/melissa-${pkgver//./_}"
