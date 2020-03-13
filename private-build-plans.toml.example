@@ -34,6 +34,7 @@ design = [                         # Common styles
   "cv79",                          # curly y
   "cv81",                          # curly Y
   "cv83",                          # curly R
+  "cv92",                          # toothless G
 
 ]
 # upright = []                     # Upright-only styles
@@ -64,6 +65,7 @@ design = [                         # Common styles
   "cv79",                          # curly y
   "cv81",                          # curly Y
   "cv83",                          # curly R
+  "cv92",                          # toothless G
 
 ]
 # upright = []                     # Upright-only styles
@@ -94,6 +96,7 @@ design = [                         # Common styles
   "cv79",                          # curly y
   "cv81",                          # curly Y
   "cv83",                          # curly R
+  "cv92",                          # toothless G
 
 ]
 # upright = []                     # Upright-only styles
