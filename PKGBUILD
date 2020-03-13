@@ -5,7 +5,7 @@
 
 set -u
 pkgname='evdi-git'
-pkgver=1.6.2.r18.g3df5f9f
+pkgver=1.6.2.r29.gb5c5791
 _pkgver="${pkgver%%.r*}"
 pkgrel=1
 pkgdesc='kernel module that enables management of multiple screens, primarily for DisplayLink USB VGA DVI HDMI DisplayPort video'
@@ -67,7 +67,7 @@ package() {
   cd "${_srcdir}"
   install -Dpm755 "library/lib${pkgname%-git}.so"* -t "${pkgdir}/usr/lib/"
   pushd "${pkgdir}/usr/lib/" > /dev/null
-  local _libs=(*.so*)
+  local _libs=(*.so.*)
   if [ "${#_libs[@]}" -ne 1 ]; then
     set +u
     echo "Too many libs"
@@ -75,8 +75,8 @@ package() {
   fi
   _libs="${_libs[0]}"
   local _libase="${_libs%.so*}.so"
-  ln -s "${_libs}" "${_libase}"
-  ln -s "${_libs}" "${_libase}.0" # bad soname
+  ln -sf "${_libs}" "${_libase}"
+  ln -sf "${_libs}" "${_libase}.0" # bad soname
   popd > /dev/null
 
   local _DKMS="${pkgdir}/usr/src/${pkgname%-git}-${_pkgver}"
