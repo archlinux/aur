@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 5.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
@@ -88,8 +88,10 @@ pkgname = vmware-horizon-tsdr
 pkgname = vmware-horizon-mmr
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - multimedia redirection
 	depends = vmware-horizon-client
-	depends = gstreamer0.10-base
+	depends = gst-plugins-base
 	depends = libpulse
 	depends = libxml2
 	depends = glib2
+	optdepends = gstreamer-vaapi: MMR with Intel VAAPI
+	optdepends = gst-plugins-bad: MMR with NVIDIA VDPAU
 
