@@ -1,0 +1,19 @@
+pkgbase = python-pandasvault-git
+	pkgdesc = Advanced Pandas Vault — Utilities, Functions and Snippets.
+	pkgver = 0.r74.53e7077
+	pkgrel = 1
+	url = https://github.com/firmai/pandasvault
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-scikit-learn
+	depends = python-setuptools
+	provides = python-pandasvault
+	conflicts = python-pandasvault
+	source = pandasvault::git+https://github.com/firmai/pandasvault.git
+	sha256sums = SKIP
+
+pkgname = python-pandasvault-git
+
