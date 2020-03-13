@@ -177,6 +177,15 @@
     r = APICR_TO_ADDR(r, APICR_VERSION);
     ret = HostIF_CopyFromUser(&dummy, r, sizeof dummy);
     set_fs(old_fs);
+@@ -2197,7 +2240,7 @@
+    volatile void *hostapic;
+ 
+    ASSERT_ON_COMPILE(APICR_SIZE <= PAGE_SIZE);
+-   hostapic = (volatile void *) ioremap_nocache(ma, PAGE_SIZE);
++   hostapic = (volatile void *) ioremap(ma, PAGE_SIZE);
+    if (hostapic) {
+       if ((APIC_VERSIONREG(hostapic) & 0xF0) == 0x10) {
+          vm->hostAPIC.base = (volatile uint32 (*)[4]) hostapic;
 @@ -2365,7 +2408,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
     }
  
