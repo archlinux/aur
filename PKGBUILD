@@ -8,12 +8,12 @@
 
 pkgname=aseprite
 pkgver=1.2.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="http://www.aseprite.org/"
 license=('custom')
-depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2'
+depends=('cmark' 'curl' 'giflib' 'zlib' 'libpng' 'tinyxml' 'freetype2'
          'harfbuzz' 'nettle' 'fontconfig' 'libxcursor' 'hicolor-icon-theme')
 makedepends=('cmake' 'ninja' 'git' 'python2')
 conflicts=("aseprite-git" "aseprite-gpl" "skia-git")
@@ -135,22 +135,19 @@ prepare() {
   chmod u=rwx,g=rx,o=rx --verbose gn
   mv --verbose gn skia/bin/gn
   cp --verbose skia/bin/gn skia/buildtools/linux64/gn
-
-  # Skia assumes python is linked to python2, not python3
-  mkdir --parents --verbose binsub
-  cd binsub
-  ln --force --symbolic --verbose /usr/bin/python2 python
 }
 
 build() {
   cd "${srcdir}"
 
   # Build skia
-  _skiapath="${srcdir}/binsub:${srcdir}/depot_tools:${PATH}"
+  _skiapath="${srcdir}/depot_tools:${PATH}"
   cd skia
-  PATH="${_skiapath}" gn gen out/Release-x64 --args="is_debug=false is_official_build=true \
-    skia_use_system_expat=false skia_use_system_icu=false skia_use_system_libjpeg_turbo=false \
-    skia_use_system_libpng=false skia_use_system_libwebp=false skia_use_system_zlib=false"
+  # Bypass the gn script, which uses `python` and expects Python 2
+  PATH="${_skiapath}" PYTHONDONTWRITEBYTECODE=1 python2 "$(which gn.py)" gen out/Release-x64 \
+    --args="is_debug=false is_official_build=true skia_use_system_expat=false \
+    skia_use_system_icu=false skia_use_system_libjpeg_turbo=false skia_use_system_libpng=false \
+    skia_use_system_libwebp=false skia_use_system_zlib=false"
   PATH="${_skiapath}" ninja -C out/Release-x64 skia modules
 
   # Build aseprite
@@ -161,7 +158,6 @@ build() {
     -DWITH_WEBP_SUPPORT=ON \
     -DUSE_SHARED_CURL=ON \
     -DUSE_SHARED_GIFLIB=ON \
-    -DUSE_SHARED_JPEGLIB=ON \
     -DUSE_SHARED_HARFBUZZ=ON \
     -DUSE_SHARED_ZLIB=ON \
     -DUSE_SHARED_LIBPNG=ON \
