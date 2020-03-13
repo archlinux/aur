@@ -12,9 +12,13 @@ provides=('opencl-headers')
 conflicts=('opencl-headers')
 source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git'
         'git+https://github.com/KhronosGroup/OpenCL-CLHPP.git'
+        '47.diff'
+#         'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-Headers/pull/47.diff'
         )
 sha256sums=('SKIP'
             'SKIP'
+            'd6e1dc689579cdb4508a3d40bab03eeb5d5c122a6fa615fcf25204ba9b0fb991'
+#             '2c30d8d34ae8f7583bca45cb829dc45f31a73c9d8ef9a4755d4e9c316250324b'
             )
 
 pkgver() {
@@ -22,14 +26,28 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
+prepare() {
+  mkdir -p build
+
+  cd OpenCL-Headers
+  patch -p1 -i "${srcdir}/47.diff"
+}
+
+build() {
+  cd build
+
+  cmake ../OpenCL-Headers \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
+
+  make
+}
+
 package() {
-  cd "${srcdir}/OpenCL-Headers"
 
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  make -C build DESTDIR="${pkgdir}" install
 
-  for i in $(find CL -type f); do
-    install -Dm644 ${i} "${pkgdir}/usr/include/${i}"
-  done
+  install -D -m644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # remove useless headers
   rm "${pkgdir}/usr/include/CL/"{cl_d3d,cl_dx9}*.h

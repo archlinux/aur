@@ -11,8 +11,10 @@ pkgbase = opencl-headers-git
 	conflicts = opencl-headers
 	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
 	source = git+https://github.com/KhronosGroup/OpenCL-CLHPP.git
+	source = 47.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = d6e1dc689579cdb4508a3d40bab03eeb5d5c122a6fa615fcf25204ba9b0fb991
 
 pkgname = opencl-headers-git
 
