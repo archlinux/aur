@@ -16,6 +16,11 @@ sha512sums=('e4d64b856f4bae035df471f58ce4373b8abd7b612b5899d154561ad8c401008b77e
 options=('!strip')
 PKGEXT='.tar.gz'
 
+prepare() {
+  bsdtar -xf 'control.tar.gz'
+  sed -e 's:/opt/:opt/:g' 'postinst' > 'postinst.Arch'
+}
+
 package() {
   bsdtar --no-same-owner --no-same-permissions -xf 'data.tar.gz' -C "${pkgdir}"
   cd "${pkgdir}"
@@ -25,11 +30,7 @@ package() {
   find -type 'f' '(' -name '.DS_Store' -o -iname '*.bat' ')' -delete
 
   # fix permissions
-  #find "${pkgdir}" -type 'd' -exec chmod 755 '{}' ';'
-  #find "${pkgdir}" -type 'f' -exec chmod 644 '{}' ';'
-  #chmod 755 'opt/sejda-desktop/resources/vendor/desktop-launcher/bin/desktop-launcher'
-  ## chmod 755 'opt/sejda-desktop/resources/vendor/java-linux/bin/java'
-  #chmod 755 'opt/sejda-desktop/sejda-desktop'
+  bash "${srcdir}/postinst.Arch"
 
   # symlink licenses
   install -d "usr/share/licenses/${pkgname}"
