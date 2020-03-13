@@ -1,7 +1,8 @@
 # Maintainer: Barry Smith <brrtsm at gmmal dot com>
 # Contributor: johnnybash <jb at wachenzell dot org> PGP D126E2910543DE2D
 # Contributor: jrdemasi <jrdemasi@gmai.com>
-# Contributor: Fernando Manfredi <contact at acidhub.click> Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
+# Contributor: Fernando Manfredi <contact at acidhub.click>
+# Contributor: Evan Teitelman <teitelmanevan at gmail dot com>
 # Contributor: Ari Mizrahi <codemunchies@gmail.com>
 # Contributor: CRT <cirkit@kode.email>
 validpgpkeys=('EFD9413B17293AFDFE6EA6F1402A088DEDF104CB')
