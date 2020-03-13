@@ -3,14 +3,14 @@
 
 pkgname=linx-server
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted file/code/media sharing website '
 arch=('i686' 'x86_64' 'arm')
 url='https://github.com/andreimarcu/linx-server'
 license=('GPL3')
 install=linx-server.install
 options=('!strip')
-makedepends=('go')
+makedepends=('go' 'go.rice')
 backup=('etc/webapps/linx-server/config.ini')
 
 source=("https://github.com/andreimarcu/linx-server/archive/v${pkgver}.tar.gz" 'linx-server.service' 'config.ini')
@@ -21,6 +21,7 @@ sha256sums=('e3513dd977001d71b7db3799ec85426cd6317fa51f69ca9d72ed0f3a8ab56a4e'
 build() {
   cd "$pkgname-$pkgver"
   go build .
+  rice append --exec $pkgname
 }
 
 package() {
