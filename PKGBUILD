@@ -1,8 +1,8 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kinit-git
-pkgver=r101.b2009bf
-pkgrel=2
+pkgver=v4.100.0.rc1.r256.g7601ffd
+pkgrel=1
 pkgdesc='KInit'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kinit'
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kinit.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kinit
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
