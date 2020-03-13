@@ -1,7 +1,7 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kidletime-git
-pkgver=r43.852f6c7
+pkgver=v5.68.0.rc1.r3.gabb8f91
 pkgrel=1
 pkgdesc='KIdleTime'
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ source=('git://anongit.kde.org/kidletime.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kidletime
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

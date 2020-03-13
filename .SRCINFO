@@ -1,6 +1,6 @@
 pkgbase = kidletime-git
 	pkgdesc = KIdleTime
-	pkgver = r43.852f6c7
+	pkgver = v5.68.0.rc1.r3.gabb8f91
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/kidletime
 	arch = i686
