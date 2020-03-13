@@ -3,7 +3,7 @@
 # Contributors:
 
 pkgname=iridium-rpm
-pkgver=78.0
+pkgver=80.0
 pkgrel=1
 pkgdesc='Iridium browser - rhel/centos build altered for arch'
 arch=('x86_64')
@@ -12,10 +12,9 @@ license=('BSD')
 conflicts=('iridium-deb')
 options=('!emptydirs' '!strip')
 
-source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2019.11.78-1.el8.x86_64.rpm')
+source=('https://downloads.iridiumbrowser.de/epel8/iridium-browser-2020.02.80-1.el8.x86_64.rpm')
 
-sha256sums=('8dc0231b5854223f96f94cccce73ea476f6029075b5bd6c4fd0356c24401d0c9')
-
+sha256sums=('bfcb4f792cd933e8357771af6a73d35691b16037e610131822ad75f625d04ec9')
 
 package() (
     mkdir -p "${pkgdir}/usr/share/"
@@ -26,5 +25,3 @@ package() (
     cp -r "${srcdir}/usr/bin/." "${pkgdir}/usr/bin/"
     cp -r "${srcdir}/etc" "${pkgdir}/etc"
 )
-
-
