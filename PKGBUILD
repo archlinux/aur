@@ -17,5 +17,5 @@ package() {
     cd "$_ctan"
     install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" opentype/*.otf
     install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" doc/OFL.txt
-    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" doc/{FontLog.txt,$_ctan-doc.pdf}
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" doc/{FontLog.txt,"$_ctan"-doc.pdf}
 }
