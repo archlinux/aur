@@ -1,6 +1,6 @@
 pkgbase = python-pandarallel
 	pkgdesc = A simple and efficient tool to parallelize Pandas operations on all available CPUs
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/nalepae/pandarallel
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-pandarallel
 	depends = python-pandas
 	depends = python-dill
 	depends = python-setuptools
-	source = pandarallel-1.4.5.tar.gz::https://github.com/nalepae/pandarallel/archive/v1.4.5.tar.gz
-	sha256sums = df732f788679887ce8c741a76da95580906484025a09e40075d71d9f84994f27
+	source = pandarallel-1.4.6.tar.gz::https://github.com/nalepae/pandarallel/archive/v1.4.6.tar.gz
+	sha256sums = 1eb44d50cf6d2d6b500d07143707711413e5cf02d1ec73f34c086ce22d725b60
 
 pkgname = python-pandarallel
 
