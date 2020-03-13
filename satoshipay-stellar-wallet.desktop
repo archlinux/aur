@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Solar Wallet
-Exec="/opt/Solar Wallet/satoshipay-stellar-wallet" %U
+Exec="/opt/Solar Wallet/io.solarwallet.app" %U
 Terminal=false
 Type=Application
 Icon=satoshipay-stellar-wallet
