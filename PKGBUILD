@@ -32,7 +32,7 @@ options=(!zipman)
 prepare() {
   mkdir -p build
   
-  patch -d $pkgname-$pkgver -p1 -i "$srcdir"/CVE-2020-9359.patch
+  patch -d $pkgname-$pkgver -p1 -i "$_pkgname-$pkgver"/CVE-2020-9359.patch
 }
 
 build() {
