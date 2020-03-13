@@ -2,12 +2,12 @@
 
 pkgname=ispc-bin
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SPMD program compiler"
 arch=('x86_64')
 url="https://ispc.github.io/"
 license=('BSD')
-source=("ispc-v$pkgver-bin.tar.gz::https://sourceforge.net/projects/ispcmirror/files/v$pkgver/ispc-v$pkgver-linux.tar.gz/download")
+source=("ispc-v$pkgver-linux.tar.gz::https://sourceforge.net/projects/ispcmirror/files/v$pkgver/ispc-v$pkgver-linux.tar.gz/download")
 sha256sums=('79decaef42bc5433ab30f5879eb91af14473a42e8b51ec727a97f61ee918497e')
 
 
