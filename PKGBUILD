@@ -1,7 +1,7 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kscreenlocker-git
-pkgver=r764.dee0f32
+pkgver=v5.17.90.r14.g98da04c
 pkgrel=1
 pkgdesc='Library and components for secure lock screen architecture'
 arch=(i686 x86_64)
@@ -15,8 +15,8 @@ source=('git://anongit.kde.org/kscreenlocker.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kscreenlocker
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
