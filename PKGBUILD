@@ -4,8 +4,8 @@
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
-pkgname='bin32-openjk-git'
-pkgver=r3643.eed60925a
+pkgname=bin32-openjk-git
+pkgver=r3645.52030235f
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine (32-bit version)"
 arch=('i686' 'x86_64')
@@ -46,13 +46,16 @@ build() {
 
   mkdir -p build
   cd build
+
   cmake .. \
     -DCMAKE_TOOLCHAIN_FILE=CMakeModules/Toolchains/linux-i686.cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/opt/openjk" \
     -DBuildJK2SPEngine=on \
     -DBuildJK2SPGame=on \
-    -DBuildJK2SPRdVanilla=on
+    -DBuildJK2SPRdVanilla=on \
+    -DSDL2_INCLUDE_DIRS=/usr/include/SDL2 \
+    -DSDL2_LIBRARIES=/usr/lib32/libSDL2.so #/SDL2
   make
 }
 
