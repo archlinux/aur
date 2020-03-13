@@ -1,0 +1,312 @@
+WARNING: Do NOT copy over the d_init.txt from an earlier version of DF.
+Always read the file carefully, including the comments.
+
+In general, you can copy savegames and tilesets from older DF
+versions, but you should not copy anything else.  You should not, under any
+circumstances, unpack a new DF on top of an older one.
+
+
+Use these to control the automatic saving behavior in the dwarf fortress mode of game.  AUTOSAVE can be set to NONE, SEASONAL or YEARLY.  This updates your save at these intervals, so that some of your progress will be saved in case of system instability.  You can set AUTOBACKUP to YES if you want the updated save to be copied to another folder so that you'll have several copies of your world at different times.  Set AUTOSAVE_PAUSE to YES if you want the game to pause every time it autosaves.
+
+[AUTOSAVE:SEASONAL]
+[AUTOBACKUP:NO]
+[AUTOSAVE_PAUSE:NO]
+
+Set this to YES if you want it to save the game when you start a new fortress.  If AUTOBACKUP above is set to YES, it will also create a copy of this new save.
+
+[INITIAL_SAVE:NO]
+
+Set this to NO to make Dwarf Fortress remain in the saved pause state when you load an active game.
+
+[PAUSE_ON_LOAD:YES]
+
+Set this to YES if you want Dwarf Fortress to show the warning window for embark site selection even if there are no issues (as a way of confirming your choice).
+
+[EMBARK_WARNING_ALWAYS:NO]
+
+This option controls whether or not your choice to embark has a confirmation window after you have selected any dwarves and equipment.  Valid choices are ALWAYS, IF_POINTS_REMAIN and NO.
+
+[POST_PREPARE_EMBARK_CONFIRMATION:IF_POINTS_REMAIN]
+
+You can change the option below to ALWAYS and NO.  More restrictive world parameter settings override these.  ALWAYS lets you see the features in the Local view during embark, and NO stops you from looking for features in the site finder (though if you really want to stop the finder, it might be better for you to generate worlds that restrict the use of this feature completely, in which case you don't need to change the settings here).
+
+[SHOW_EMBARK_TUNNEL:FINDER]
+
+Use these options to remove features from the game.  Permitted values are YES and NO.  Removal might speed the game up in the case of temperature and weather.
+
+[TEMPERATURE:YES]
+[WEATHER:YES]
+[ECONOMY:YES]
+[INVADERS:YES]
+[CAVEINS:YES]
+[ARTIFACTS:YES]
+[ZERO_RENT:NO]
+[TESTING_ARENA:YES]
+[WALKING_SPREADS_SPATTER_DWF:NO]
+[WALKING_SPREADS_SPATTER_ADV:YES]
+
+Change this to YES to output the reasons for world map rejection into a file.
+
+[LOG_MAP_REJECTS:NO]
+
+Change these numbers to make the embark rectangle start at a different size.  The format is (EMBARK_RECTANGLE:<width>:<height>).  Numbers may run from 2 to 16.  The map size warning message will go by these numbers.
+
+[EMBARK_RECTANGLE:4:4]
+
+Change these numbers to set the default weights for traffic designations.  If you make the last numbers too large, pathfinding might lag.
+The format is (PATH_COST:<high>:<normal>:<low>:<restricted>).
+
+[PATH_COST:1:2:5:25]
+
+Alter these options to control how aggressively your dwarves place objects in a container with like items (rather than an empty container).  The default options are very aggressive.  STORE_DIST_ITEM_DECREASE controls the cap on objects it will consider -- for each object it finds in a container, one tile is removed from its apparent distance to the dwarf, up to this cap.  The others control how many tiles are removed for each combination type for any match at all.  For instance, if ITEM_DECREASE is set to 20, and SEED_COMBINE is set to 100, a dwarf carrying seeds will see a seed bag with 15 seeds as 115 tiles closer than it actually is (and thus pass up any empties within that distance), whereas a seed bag with 30 seeds would be treated as 120 tiles closer (because it hits the ITEM_DECREASE cap).  Values from 2 to 1000 are permitted.  Before these init options, the behavior was roughly ITEM_DECREASE 2, SEED_COMBINE 2 and the rest at 1000.
+
+[STORE_DIST_ITEM_DECREASE:20]
+[STORE_DIST_SEED_COMBINE:1000]
+[STORE_DIST_BUCKET_COMBINE:1000]
+[STORE_DIST_BARREL_COMBINE:1000]
+[STORE_DIST_BIN_COMBINE:1000]
+
+Change this to YES to disallow pets from coffin burial as the default option.
+
+[COFFIN_NO_PETS_DEFAULT:YES]
+
+Use these to set the color of wounded body parts.  The format is <foreground color>:<background color>:<brightness>.
+
+[WOUND_COLOR_NONE:7:0:1]  No recorded active wounds on the part.  Default = white
+[WOUND_COLOR_MINOR:6:0:0]  Any damage that doesn't have functional/structural consequences (might be heavy bleeding though).  Default = brown
+[WOUND_COLOR_INHIBITED:6:0:1]  Any muscular, structural or functional damage without total loss.  Default = yellow
+[WOUND_COLOR_FUNCTION_LOSS:3:0:1]  An important function of the part is completely lost, but the part is structurally sound (or at least partially intact).  Default = bright cyan
+[WOUND_COLOR_BROKEN:4:0:1]  The part has lost all structural integrity or muscular ability.  Default = bright red
+[WOUND_COLOR_MISSING:0:0:1]  The part is completely gone.  Default = dark gray
+
+This controls the display of areas that are far below outside.  The format is SKY:<character>:<foreground color>:<background color>:<brightness>.  The <character> can be either an ASCII tile number or a character in quotes, like '#'.
+
+[SKY:178:3:0:0]
+
+As above, for inside/subterranean areas.
+
+[CHASM:250:0:0:1]
+
+Pillar tile, <character> as above.
+
+[PILLAR_TILE:'O']
+
+Track tiles.  I at the end inverts the material colors.
+
+[TRACK_N:208I]
+[TRACK_S:210I]
+[TRACK_E:198I]
+[TRACK_W:181I]
+[TRACK_NS:186I]
+[TRACK_NE:200I]
+[TRACK_NW:188I]
+[TRACK_SE:201I]
+[TRACK_SW:187I]
+[TRACK_EW:205I]
+[TRACK_NSE:204I]
+[TRACK_NSW:185I]
+[TRACK_NEW:202I]
+[TRACK_SEW:203I]
+[TRACK_NSEW:206I]
+[TRACK_RAMP_N:30I]
+[TRACK_RAMP_S:30I]
+[TRACK_RAMP_E:30I]
+[TRACK_RAMP_W:30I]
+[TRACK_RAMP_NS:30I]
+[TRACK_RAMP_NE:30I]
+[TRACK_RAMP_NW:30I]
+[TRACK_RAMP_SE:30I]
+[TRACK_RAMP_SW:30I]
+[TRACK_RAMP_EW:30I]
+[TRACK_RAMP_NSE:30I]
+[TRACK_RAMP_NSW:30I]
+[TRACK_RAMP_NEW:30I]
+[TRACK_RAMP_SEW:30I]
+[TRACK_RAMP_NSEW:30I]
+
+Tiles for the parts of trees.
+
+[TREE_ROOT_SLOPING:127]
+[TREE_TRUNK_SLOPING:127]
+[TREE_ROOT_SLOPING_DEAD:127]
+[TREE_TRUNK_SLOPING_DEAD:127]
+[TREE_ROOTS:172]
+[TREE_ROOTS_DEAD:172]
+[TREE_BRANCHES:172]
+[TREE_BRANCHES_DEAD:172]
+[TREE_SMOOTH_BRANCHES:'#']
+[TREE_SMOOTH_BRANCHES_DEAD:'#']
+[TREE_TRUNK_PILLAR:'O']
+[TREE_TRUNK_PILLAR_DEAD:'O']
+[TREE_CAP_PILLAR:'O']
+[TREE_CAP_PILLAR_DEAD:'O']
+[TREE_TRUNK_N:205]
+[TREE_TRUNK_S:205]
+[TREE_TRUNK_N_DEAD:205]
+[TREE_TRUNK_S_DEAD:205]
+[TREE_TRUNK_EW:205]
+[TREE_TRUNK_EW_DEAD:205]
+[TREE_CAP_WALL_N:205]
+[TREE_CAP_WALL_S:205]
+[TREE_CAP_WALL_N_DEAD:205]
+[TREE_CAP_WALL_S_DEAD:205]
+[TREE_TRUNK_E:186]
+[TREE_TRUNK_W:186]
+[TREE_TRUNK_E_DEAD:186]
+[TREE_TRUNK_W_DEAD:186]
+[TREE_TRUNK_NS:186]
+[TREE_TRUNK_NS_DEAD:186]
+[TREE_CAP_WALL_E:186]
+[TREE_CAP_WALL_W:186]
+[TREE_CAP_WALL_E_DEAD:186]
+[TREE_CAP_WALL_W_DEAD:186]
+[TREE_TRUNK_NW:201]
+[TREE_CAP_WALL_NW:201]
+[TREE_TRUNK_NW_DEAD:201]
+[TREE_CAP_WALL_NW_DEAD:201]
+[TREE_TRUNK_NE:187]
+[TREE_CAP_WALL_NE:187]
+[TREE_TRUNK_NE_DEAD:187]
+[TREE_CAP_WALL_NE_DEAD:187]
+[TREE_TRUNK_SW:200]
+[TREE_CAP_WALL_SW:200]
+[TREE_TRUNK_SW_DEAD:200]
+[TREE_CAP_WALL_SW_DEAD:200]
+[TREE_TRUNK_SE:188]
+[TREE_CAP_WALL_SE:188]
+[TREE_TRUNK_SE_DEAD:188]
+[TREE_CAP_WALL_SE_DEAD:188]
+[TREE_TRUNK_NSE:204]
+[TREE_TRUNK_NSE_DEAD:204]
+[TREE_TRUNK_NSW:185]
+[TREE_TRUNK_NSW_DEAD:185]
+[TREE_TRUNK_NEW:202]
+[TREE_TRUNK_NEW_DEAD:202]
+[TREE_TRUNK_SEW:203]
+[TREE_TRUNK_SEW_DEAD:203]
+[TREE_TRUNK_NSEW:206]
+[TREE_TRUNK_NSEW_DEAD:206]
+[TREE_TRUNK_BRANCH_N:207]
+[TREE_TRUNK_BRANCH_N_DEAD:207]
+[TREE_TRUNK_BRANCH_S:209]
+[TREE_TRUNK_BRANCH_S_DEAD:209]
+[TREE_TRUNK_BRANCH_E:199]
+[TREE_TRUNK_BRANCH_E_DEAD:199]
+[TREE_TRUNK_BRANCH_W:182]
+[TREE_TRUNK_BRANCH_W_DEAD:182]
+[TREE_BRANCH_NS:179]
+[TREE_BRANCH_NS_DEAD:179]
+[TREE_BRANCH_EW:196]
+[TREE_BRANCH_EW_DEAD:196]
+[TREE_BRANCH_NW:217]
+[TREE_BRANCH_NW_DEAD:217]
+[TREE_BRANCH_NE:192]
+[TREE_BRANCH_NE_DEAD:192]
+[TREE_BRANCH_SW:191]
+[TREE_BRANCH_SW_DEAD:191]
+[TREE_BRANCH_SE:218]
+[TREE_BRANCH_SE_DEAD:218]
+[TREE_BRANCH_NSE:195]
+[TREE_BRANCH_NSE_DEAD:195]
+[TREE_BRANCH_NSW:180]
+[TREE_BRANCH_NSW_DEAD:180]
+[TREE_BRANCH_NEW:193]
+[TREE_BRANCH_NEW_DEAD:193]
+[TREE_BRANCH_SEW:194]
+[TREE_BRANCH_SEW_DEAD:194]
+[TREE_BRANCH_NSEW:197]
+[TREE_BRANCH_NSEW_DEAD:197]
+[TREE_TWIGS:';']
+[TREE_TWIGS_DEAD:';']
+[TREE_CAP_RAMP:30]
+[TREE_CAP_RAMP_DEAD:30]
+[TREE_CAP_FLOOR1:249]
+[TREE_CAP_FLOOR2:249]
+[TREE_CAP_FLOOR1_DEAD:249]
+[TREE_CAP_FLOOR2_DEAD:249]
+[TREE_CAP_FLOOR3:249]
+[TREE_CAP_FLOOR4:249]
+[TREE_CAP_FLOOR3_DEAD:249]
+[TREE_CAP_FLOOR4_DEAD:249]
+[TREE_TRUNK_INTERIOR:10]
+[TREE_TRUNK_INTERIOR_DEAD:10]
+
+This controls the "IDLERS: <number>" that is displayed in dwarf mode.  You can set it to TOP, BOTTOM or OFF.
+
+[IDLERS:TOP]
+
+You can have your dwarves start/arrive without any labor types enabled here by setting this to NO.  You can also set it to SKILLS to make the labor list set by skill, or BY_UNIT_TYPE to have it done by overall unit type.
+
+[SET_LABOR_LISTS:SKILLS]
+
+You can set the maximum population of your fortress here.  Keep in mind that your population must be at least 80 to get a king and 100 to obtain the current game features.  The strict cap also stops fort births.  Both caps can be violated by a few special cases, like the arrival of the monarch if you qualify.
+
+[POPULATION_CAP:20]
+[STRICT_POPULATION_CAP:21]
+
+This allows you to control the number of babies+children in your fortress.  The first number is an absolute cap on the number of babies+children.  The second is a percentage of the current number of adults in your fortress (the default is the essentially meaningless 1000% here).  The lower number is used as the cap.  The cap only prevents further pregnancies, so migrant children, multiple births and existing pregnancies from old saves can still push you over the cap.  Setting either number to zero will disallow pregnancies in the fortress.
+
+[BABY_CHILD_CAP:5:10]
+
+You can set the maximum number of visitors to your fort here.  This does not include merchants, diplomats, animals or invaders, but only those either dropping by for a temporary visit to a tavern, library or temple, or those seeking permanent employment.  Once you accept a petition from a visitor to stay at your fort, they no longer count against the cap, even if they never become a full citizen.  Certain traveling groups (e.g. quester parties) may also push slightly over the cap.
+
+[VISITOR_CAP:5]
+
+You can set the maximum number of soldiers allowed to invade in serious invasions with these numbers.  This doesn't affect smaller raids or mounts, and ambushers and other special units will also ignore the cap.  Set INVADERS to NO above if you don't want invaders -- a cap of zero will be ignored here.
+
+[INVASION_SOLDIER_CAP:12]
+[INVASION_MONSTER_CAP:4]
+
+Use the specific seed cap to set the maximum number of seeds of each kind generally allowed in the fortress.  Use the fortress seed cap to control the overall number of seeds allowed.  Seeds over the global cap will be periodically removed, starting with the oldest and most worthless seeds.
+
+[SPECIFIC_SEED_CAP:200]
+[FORTRESS_SEED_CAP:3000]
+
+If you don't like the ,.`' ground, try setting this to NO.  The ground will turn into periods only.
+
+[VARIED_GROUND_TILES:YES]
+
+If you'd like your engravings to start off looking the same (you can toggle them on individual later), set this to YES.
+
+[ENGRAVINGS_START_OBSCURED:YES]
+
+If you get annoyed by seeing items like *<*sword*>* you can
+get rid of the outside ** by setting this to NO.
+
+[SHOW_IMP_QUALITY:YES]
+
+Set this to YES to display fluids as numbers indicating depth.
+
+[SHOW_FLOW_AMOUNTS:NO]
+
+If you'd prefer to leave the history behind every engraving for your adventurers to discover, then set this to NO.
+
+[SHOW_ALL_HISTORY_IN_DWARF_MODE:YES]
+
+This controls "more" in adventure mode.  If MORE is set to NO, all announcements will be skipped.  DISPLAY_LENGTH controls how many lines are printed before it gives you the "more" prompt.
+
+[MORE:YES]
+[DISPLAY_LENGTH:23]
+
+Set this to NO if you do not want traps to affect you in adventure mode.  Cage traps are always disabled for now.
+
+[ADVENTURER_TRAPS:YES]
+
+Set this to NO if you want the game to recenter on your adventurer only when you've gotten close to the edge of the view.
+
+[ADVENTURER_ALWAYS_CENTER:YES]
+
+This controls the up/down views in adventure mode.  The first parameter can be OFF, UNHIDDEN, CREATURE or ON.  UNHIDDEN makes the view appear when it contains any unhidden square.  CREATURE makes the view appear when it contains a creature.  The second parameter is the size of the view.  It can be 3, 5, 7 or 9.  A smaller view lets it stack more of them in the column (3 at size 5, and 5 at size 3).
+
+[ADVENTURER_Z_VIEWS:UNHIDDEN:9]
+
+You can use these to say how nicknames are displayed in each mode
+Options are REPLACE_FIRST, CENTRALIZE (between first and last), REPLACE_ALL
+
+[NICKNAME_DWARF:CENTRALIZE]
+[NICKNAME_ADVENTURE:CENTRALIZE]
+[NICKNAME_LEGENDS:CENTRALIZE]
+
+Set this number to scale how often grazing animals need to eat.  Larger numbers mean less food is necessary.  Metabolism is always set according to the 3/4ths power of size.
+
+[GRAZE_COEFFICIENT:100]
