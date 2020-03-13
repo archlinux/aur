@@ -18,7 +18,7 @@ pkgbase = joinmarket-qt-git
 	source = joinmarket-qt-git::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git
 	source = joinmarket-qt
 	sha256sums = SKIP
-	sha256sums = f97ea99c2d74db9b966213206925464f2a9a83ab75937e922b206559fa89486d
+	sha256sums = 5a4b5f36706f6de0b7c360871e2bbdc5ecf33505b8565365363fdecf1c10e051
 
 pkgname = joinmarket-qt-git
 

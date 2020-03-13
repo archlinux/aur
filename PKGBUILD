@@ -16,7 +16,7 @@ license=('GPL3')
 source=("$pkgname::git+https://github.com/JoinMarket-Org/joinmarket-clientserver.git"
        "joinmarket-qt")
 sha256sums=('SKIP'
-            'f97ea99c2d74db9b966213206925464f2a9a83ab75937e922b206559fa89486d')
+            '5a4b5f36706f6de0b7c360871e2bbdc5ecf33505b8565365363fdecf1c10e051')
 options=(!strip)
 
 pkgver() {
