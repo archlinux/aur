@@ -1,21 +1,15 @@
 pkgbase = python-cachey
 	pkgdesc = Caching based on computation time and storage space
-	pkgver = 0.1.1
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/dask/cachey
 	arch = any
 	license = BSD
 	checkdepends = python-nose
-	checkdepends = python2-nose
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	makedepends = git
-	source = git+https://github.com/dask/cachey.git#commit=6d4aca7
-	sha256sums = SKIP
+	depends = python-heapdict
+	source = python-cachey-0.2.1.tar.gz::https://github.com/dask/cachey/archive/0.2.1.tar.gz
+	sha256sums = 27242020785aec748c24428cb2f6ee30bbe116fb1a5ac18b3e64784f683dd1d4
 
 pkgname = python-cachey
-	depends = python-heapdict
-
-pkgname = python2-cachey
-	depends = python2-heapdict
 
