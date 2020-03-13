@@ -104,9 +104,10 @@ set -u
 pkgname='dgrp'
 #_pkgver='1.9-36'; _dl='81000137_X.tgz'
 #_pkgver='1.9-38'; _dl='81000137_Y.tgz'
-_pkgver='1.9-39'; _dl='40002086_Z.tgz'
+#_pkgver='1.9-39'; _dl='40002086_Z.tgz'
+_pkgver='1.9-40'; _dl='40002086_AA.tgz'
 pkgver="${_pkgver//-/.}"
-pkgrel='2'
+pkgrel='1'
 pkgdesc="tty driver for Digi ${_opt_RealPort} ConnectPort EtherLite Flex One CM PortServer TS IBM RAN serial console terminal servers"
 #_pkgdescshort="Digi ${_opt_RealPort} driver for Ethernet serial servers" # For when we used to generate the autorebuild from here
 arch=('i686' 'x86_64')
@@ -191,7 +192,7 @@ unset _mibsrc
 #source_i686=('http://ftp1.digi.com/support/utilities/40002890_A.tgz')
 #source_x86_64=('http://ftp1.digi.com/support/utilities/40002889_A.tgz') # compiled i686 therefore worthless
 # addp and sddp are incomplete. I replaced them with addp.pl
-sha256sums=('0db5204cc7d7806fde39b5ea7b6a465b4310739c380d7330131956e63af0f137'
+sha256sums=('2044715efa7a56fccad5ac76cdca9f71bca430e8c53ce31fa5c9563da3e7906a'
             '42898b9d24262de27e9b1f3067d51d01373810b7c9e4991403a7f0a5dd7a26cf'
             '66f8b106a052b4807513ace92978e5e6347cef08eee39e4b4ae31c60284cc0a3'
             '9d79df8617e2bb1042a4b7d34311e73dc4afcdfe4dfa66703455ff54512427f5'
@@ -294,19 +295,23 @@ prepare() {
   cd "${_srcdir}"
 
   # Version check
-  if [ "${_pkgver}" != "$(grep -e 'TRUE_VERSION=' ./Makefile.inc | cut -d'"' -f2)" ]; then
+  local _tv
+  _tv="$(grep -e 'TRUE_VERSION=' ./Makefile.inc | cut -d'"' -f2)"
+  _tv="${_tv%_*}"
+  if [ "${_pkgver}" != "${_tv}" ]; then
     set +u
     echo 'Version mismatch'
     false
   fi
 
+  set -x
   #cp -p driver/2.6.27/dgrp_mon_ops.c{,.orig}; false
   #diff -pNau5 driver/2.6.27/dgrp_mon_ops.c{.orig,} > '0002-kernel-5.0.0-do_gettimeofday.patch'
-  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
+#  patch -Nbup0 -i "${srcdir}/0002-kernel-5.0.0-do_gettimeofday.patch"
 
   #cp -pr driver/2.6.27{,.orig}
   #diff -pNaru5 driver/2.6.27{.orig,} > '0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch'
-  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
+#  patch -Nbup0 -i "${srcdir}/0003-kernel-5.0.0-dgrp_mon_ops-access_ok.patch"
 
   # Standardize name of RealPort
   sed -e "s/RealPort/${_opt_RealPort}/gI" -i $(grep -lrF $'RealPort\nRealport' .)
@@ -316,7 +321,7 @@ prepare() {
 
   # Fix configure
   sed -e '# Cosmetic fix for newer gcc compilers' \
-      -e 's:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*|8.*):g' \
+      -e 's:\(3.9\*|4.\*\))$:\1|5.*|6.*|7.*|8.*|9.*):g' \
       -e "# I can't find any other way to fix the modules dir" \
       -e 's:/lib/modules/:/usr&:g' \
       -e '# Kill a harmless mkdir error. They mkdir the folder then dont use it.' \
