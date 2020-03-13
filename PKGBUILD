@@ -8,7 +8,7 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 pkgname=python37
-pkgver=3.7.6
+pkgver=3.7.7
 pkgrel=1
 _pybasever=${pkgver%.*}
 _pymajver=3
@@ -27,7 +27,7 @@ source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz
         0001-compileall-Fix-ddir-when-recursing.patch
         0002-smaller-pgo-test-suite.patch
         )
-sha512sums=('5be022c384728b0c6709d165486f66226d126c521b466ed24d0c4c3c5910ec786a734f4c2c916ac409213c54a492b9fb230fb721c41e3de281676a7e9d8f3171'
+sha512sums=('ddc838a7b0c442c2e465616f20231f2b703ed6b69ed2dc17858aac8760814fdf7cff43d350d359300e47b6bb1f0bd38c31126b855e423a3a65ed06a8fa16d136'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
             'ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff'
