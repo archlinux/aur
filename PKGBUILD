@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.1.4.r0.g12af6a4
+pkgver=0.2.r1.ge16fbcb
 pkgrel=1
 pkgdesc="An opensource project that aims to create a Graphical UI to help manage Linux overlays."
 arch=('x86_64')
@@ -31,4 +31,5 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -Dm755 "${pkgname%-git}" -t "$pkgdir/usr/bin"
 	install -Dm644 "${pkgname%-git}.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "${pkgname%-git}3t256.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
 }
