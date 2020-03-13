@@ -20,10 +20,11 @@ set -u
 #_ubver='18.8'; _libgee='libgee>=0.18.0'
 #_ubver='18.9.1'; _libgee='libgee>=0.18.0'
 #_ubver='19.01'; _libgee='libgee>=0.18.0'
-_ubver='19.08.1'; _libgee='libgee>=0.18.0'
+#_ubver='19.08.1'; _libgee='libgee>=0.18.0'
+_ubver='20.03'; _libgee='libgee>=0.18.0'
 pkgname='timeshift'
 pkgver="${_ubver}"
-pkgrel='2'
+pkgrel='1'
 pkgdesc='A system restore utility for Linux'
 arch=('i686' 'x86_64')
 #url='https://launchpad.net/~teejee2008/+archive/ubuntu/ppa'
@@ -53,9 +54,9 @@ source=(
   "${pkgname}_v${pkgver}.tgz::https://github.com/${_github}/${pkgname}/archive/v${pkgver}.tar.gz"
   'pr476.patch'
 )
-md5sums=('ca8f06acac4225a6f1f48fba0c1eac72'
+md5sums=('5d1022c1466bb093b0a4562b6f0e11ea'
          '84164d8ff50bd28cc8d534272d363ef4')
-sha256sums=('ab56331f97c1616b889e69adccedeca06f0150e964eea631b52c9bd399f77604'
+sha256sums=('6516150481fc3e69c090ff25426e85d99d10035949446368918076b19335b391'
             '6a4889a8923c0752e024eea2a30416185ebfe236231cf387a5576810b6ad6de0')
 #sha256sums[0]='SKIP'
 
@@ -67,7 +68,7 @@ prepare() {
 
   #cp -p src/Utility/AsyncTask.vala{,.orig}
   #diff -pNau5 src/Utility/AsyncTask.vala{.orig,} > 'pr476.patch'
-  patch -Nbup0 -i "${srcdir}/pr476.patch"
+  #patch -Nbup0 -i "${srcdir}/pr476.patch"
   set +u
 }
 
