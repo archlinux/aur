@@ -1,0 +1,18 @@
+pkgbase = python-pypistats
+	pkgdesc = Python interface to PyPI Stats API
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/hugovk/pypistats
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-appdirs
+	depends = python-pytablewriter
+	depends = python-dateutil
+	depends = python-slugify
+	depends = python-requests
+	source = https://pypi.io/packages/source/p/pypistats/pypistats-0.10.1.tar.gz
+	sha256sums = 572d0778a52415c2aa67fc729c5a61a36e082a1885758bb77b83cf274d00b4a3
+
+pkgname = python-pypistats
+
