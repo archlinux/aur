@@ -3,7 +3,7 @@
 # Contributor: Simon Kronberg <Simon.Kronberg at gmail dot com>
 
 pkgname=waterfox-classic-bin
-pkgver=2020.03
+pkgver=2020.03.1
 pkgrel=1
 pkgdesc="Customizable privacy-conscious web browser with primary support for legacy extensions"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('waterfox-classic' 'waterfox-classic-git')
 replaces=('waterfox-bin')
 
 source=('waterfox-classic.desktop'
-        'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-'"${pkgver}"'.en-US.linux-x86_64.tar.bz2')
+        'https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-'"${pkgver}"'.en-US.linux-'$arch'.tar.bz2')
 
 package() {
     # Create the directories.
@@ -71,4 +71,4 @@ END
 }
 
 sha256sums=('a364e830e980417095a5a45fb2c9c635fa8d248884816c26e3f31ce993130537'
-            'adf089bc2e663daf79e77e8ef3f9a15ec6ece1d9b11c61f5d8a880b0c9974372')
+            'd67a12dd331e67f089143e831047cdf27706c53b4f58fb0658f708183458a41e')
