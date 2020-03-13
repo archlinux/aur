@@ -1,0 +1,14 @@
+pkgbase = pandemic2
+	pkgdesc = Infect everyone in the world with your disease! Classic game played with flashplayerdebugger
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.pandemic2.org/
+	arch = any
+	license = PROP
+	depends = flashplayer-standalone
+	provides = pandemic2
+	source = http://www.pandemic2.org//pandemic2.swf
+	md5sums = 265c1143e8d40cbdd86afad7045dc18f
+
+pkgname = pandemic2
+
