@@ -1,0 +1,15 @@
+pkgbase = electron-markdownify
+	pkgdesc = A minimal Markdown Editor desktop app built on top of Electron.
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/amitmerchant1990/electron-markdownify
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = yarn
+	depends = electron4
+	source = electron-markdownify::git+https://github.com/amitmerchant1990/electron-markdownify.git
+	sha256sums = SKIP
+
+pkgname = electron-markdownify
+
