@@ -3,7 +3,7 @@ post_install() {
 	echo "Trying to automatically reconfigure bitwarden_rs by patching /etc/bitwarden_rs.env ..."
 	echo '--- /etc/bitwarden_rs.env       2018-07-12 12:10:14.679534090 +0200
 +++ /etc/bitwarden_rs.env       2018-07-12 12:21:34.165391938 +0200
-@@ -13,4 +13,4 @@
+@@ -35,4 +35,4 @@
  ## Web vault settings
 -# WEB_VAULT_FOLDER=web-vault/
 +WEB_VAULT_FOLDER=/usr/share/bitwarden_rs/vault/
@@ -28,7 +28,7 @@ post_remove() {
 	echo "Trying to automatically reconfigure bitwarden_rs by patching /etc/bitwarden_rs.env ..."
 	echo '--- /etc/bitwarden_rs.env       2018-07-12 12:10:14.679534090 +0200
 +++ /etc/bitwarden_rs.env       2018-07-12 12:21:34.165391938 +0200
-@@ -13,4 +13,4 @@
+@@ -35,4 +35,4 @@
  ## Web vault settings
 -WEB_VAULT_FOLDER=/usr/share/bitwarden_rs/vault/
 +# WEB_VAULT_FOLDER=web-vault/
