@@ -14,10 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=15.5.1
-_buildver=15018445
+pkgver=15.5.2
+_buildver=15785246
 _pkgver=${pkgver}_${_buildver}
-pkgrel=4
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -92,7 +92,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  '490f8fe8d874c27601c155c1b2c0055ad0d4f14feb32fa9f18643659a147d3c6'
+  'd3a1358dad46ba0d52f25b5b721b6fa7a9f57b47eb82e972607e53e3c6733967'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -116,8 +116,8 @@ sha256sums=(
 
   '05e26d8b21d190ebabb7f693998114d9d5991d9dfb71acb4d990293a65b6b487'
   '6ce902b1dab8fc69be253abd8e79017011985eca850ff7acc7282f9ab668e35d'
-  '9745f7628932fb74d7eec36cfd40fd268d1df4bbdcdb7e858726a25881905f06'
-  '02baa12b97e58be0b820d1a6c5a120c5b523dea35456a7e0fd25a33cb75d30c4'
+  '1060b5d45caeda5119b220fab4e1ece398af34d75131139a5dc6f74ee06672c3'
+  '7c3b6a7871b19e31fafdcc2631751dd9569196740d8e7c2026653d155c0c8da0'
 )
 options=(!strip emptydirs)
 
@@ -133,7 +133,7 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=11.5.1_15018442
+_vmware_fusion_ver=11.5.2_15794494
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.3
@@ -151,7 +151,7 @@ source+=(
   "efi-unlocker-patch-${_efi_unlocker_ver}.txt"
 )
 sha256sums+=(
-  'c36048a42c03988068aab7474b6c48ebc5054b8c6324cb93f009aec45aa899f0'
+  '2d425804fa0c4ec21664497ad6769d8c9db5f165f16bcf5360f1e01e41dd6a37'
   '1c27547dcf6fb2f436c96ee62ae8c7f5cfd14b40d8bbd35dc385e247c4fb7e0f'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )

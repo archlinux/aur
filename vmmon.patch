@@ -12,30 +12,3 @@
  
  # Header directory for the running kernel
  ifdef LINUXINCLUDE
-From d74ce8b7b4e734140235f219ccd87eff3c6fedae Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Tue, 28 Jan 2020 07:16:30 +0100
-Subject: [PATCH] vmmon: replace ioremap_nocache() with ioremap()
-
-Mainline commit 4bdc0d676a64 ("remove ioremap_nocache and
-devm_ioremap_nocache") in v5.6-rc1 removes ioremap_nocache() and replaces
-all uses with ioremap(). As the commit message says that "ioremap has
-provided non-cached semantics by default since the Linux 2.6", do the same
-unconditionally.
----
- vmmon-only/linux/hostif.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/vmmon-only/linux/hostif.c b/vmmon-only/linux/hostif.c
-index 1e1be1a..6f51cad 100644
---- a/vmmon-only/linux/hostif.c
-+++ b/vmmon-only/linux/hostif.c
-@@ -2323,7 +2323,7 @@ SetVMAPICAddr(VMDriver *vm, // IN/OUT: driver state
-    volatile void *hostapic;
- 
-    ASSERT_ON_COMPILE(APICR_SIZE <= PAGE_SIZE);
--   hostapic = (volatile void *) ioremap_nocache(ma, PAGE_SIZE);
-+   hostapic = (volatile void *) ioremap(ma, PAGE_SIZE);
-    if (hostapic) {
-       if ((APIC_VERSIONREG(hostapic) & 0xF0) == 0x10) {
-          vm->hostAPIC.base = (volatile uint32 (*)[4]) hostapic;
