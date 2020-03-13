@@ -1,15 +1,15 @@
 pkgbase = create-react-app
 	pkgdesc = Bootstrapping tool for React
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/facebook/create-react-app
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = create-react-app-3.3.0.tgz
-	source = https://registry.npmjs.org/create-react-app/-/create-react-app-3.3.0.tgz
-	sha512sums = ca17976faf1890b0870fe20d0870787fcff78727ade29b15a52ca27a23c77a621b19b6d8974f399f6daf102211723a05d38deac8fef40a0e16581892231d665b
+	noextract = create-react-app-3.4.0.tgz
+	source = https://registry.npmjs.org/create-react-app/-/create-react-app-3.4.0.tgz
+	sha512sums = 051e635e3247e81cf4bc7008a05d291f62be857f85addf775066638c2501d64d4924365b33e4328a04d7674f1d749d36010fa261f37233bed6803c0a401974d2
 
 pkgname = create-react-app
 
