@@ -1,7 +1,7 @@
 pkgbase = python-dicomweb-client
 	pkgdesc = Python client for DICOMweb RESTful services
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MGHComputationalPathology/dicomweb-client
 	arch = any
 	license = MIT
