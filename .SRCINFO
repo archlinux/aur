@@ -1,16 +1,16 @@
 pkgbase = ttf-iosevka-ibx
 	pkgdesc = A programmer's typeface.
-	pkgver = 2.1.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/be5invis/Iosevka
 	arch = any
 	groups = infinality-bundle-fonts-extra
 	license = custom:OFL
 	depends = fontconfig
-	source = https://github.com/be5invis/Iosevka/releases/download/v2.1.0/01-iosevka-2.1.0.zip
+	source = https://github.com/be5invis/Iosevka/releases/download/v3.0.0-rc.1/01-iosevka-3.0.0-rc.1.zip
 	source = 45-iosevka.conf
 	source = 90-tt-iosevka.conf
-	sha1sums = af06bc289e770020215bed6bd665c48afcb3bf2a
+	sha1sums = ad5d9c090a7ef2ec77343eca7d171ba5356c5895
 	sha1sums = 56b9b68799d3945428c5d30958b03898c878eb18
 	sha1sums = 83159b5d820db037c81d10eb75e61f927f4f6fe1
 
