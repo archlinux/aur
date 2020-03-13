@@ -5,7 +5,7 @@ _svt_av1_ver='0.8.0'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r96529.gd89f69e142
+pkgver=4.3.r96956.g675bb1f4f9
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -16,14 +16,15 @@ depends=(
         'alsa-lib' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass'
         'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt' 'libcdio-paranoia' 'codec2'
         'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac' 'fontconfig' 'freetype2' 'fribidi'
-        'libgme' 'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun' 'libmodplug'
-        'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librsvg' 'rubberband'
-        'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh' 'svt-hevc' 'svt-av1' 'svt-vp9'
-        'tensorflow' 'tesseract' 'libtheora' 'twolame' 'v4l-utils' 'vid.stab' 'vmaf'
-        'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264' 'x265' 'libxcb' 'xvidcore'
-        'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd'
-        'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
-        'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
+        'glslang' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'jack' 'kvazaar' 'lensfun'
+        'libmodplug' 'lame' 'opencore-amr' 'openjpeg2' 'opus' 'pulseaudio' 'librabbitmq-c'
+        'librsvg' 'rubberband' 'rtmpdump' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
+        'svt-hevc' 'svt-av1' 'svt-vp9' 'tensorflow' 'tesseract' 'libtheora' 'twolame'
+        'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'x264'
+        'x265' 'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
+        'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
+        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio'
+        'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
@@ -31,7 +32,7 @@ depends=(
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'opencl-headers' 'ffnvcodec-headers' 'clang'
+        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'ffnvcodec-headers' 'clang'
     # AUR:
         'decklink-sdk' 'amf-headers-git'
 )
@@ -132,6 +133,7 @@ build() {
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libiec61883 \
@@ -150,6 +152,7 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
+        --enable-librabbitmq \
         --enable-librav1e \
         --enable-librsvg \
         --enable-librubberband \
@@ -203,6 +206,7 @@ build() {
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
+        --enable-vulkan \
         --enable-xlib \
         --enable-zlib \
         \
