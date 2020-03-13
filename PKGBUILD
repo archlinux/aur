@@ -13,7 +13,7 @@ _neovim="n"
 
 _name='deoplete'
 pkgname="${_name}-git"
-pkgver=r1843.c5d0efb
+pkgver=r1848.494fcd8
 pkgrel=1
 pkgdesc="deoplete completion plugin for neovim"
 # i.e. seems to build and work fine on raspberrypi
@@ -21,7 +21,9 @@ arch=('any')
 url="https://github.com/Shougo/deoplete.nvim"
 license=('MIT')
 groups=()
-depends=('python-neovim' 'python-msgpack>=1.0.0')
+# python-msgpack>=1.0.0 apparently no longer needed
+# depends=('python-pynvim' 'python-msgpack>=1.0.0')
+depends=('python-pynvim')
 optdepends=('vim: vim support' 
             'neovim: neovim support' 
             'nvim-yarp: vim support' 
