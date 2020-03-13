@@ -1,14 +1,15 @@
 pkgbase = hunspell-ie
 	pkgdesc = Interlingue hunspell dictionary
-	pkgver = 0.6
-	pkgrel = 2
+	pkgver = 1.0
+	pkgrel = 1
 	url = http://github.com/Carmina16/hunspell-ie
 	changelog = ChangeLog
 	arch = any
 	license = Apache
 	optdepends = hunspell: the spell checking libraries and apps
-	source = https://github.com/Carmina16/hunspell-ie/archive/v0.6.tar.gz
-	md5sums = 94929cf2bdbed5ad5aaac932550d34ad
+	source = https://github.com/Carmina16/hunspell-ie/archive/v1.0.tar.gz
+	md5sums = d54cd51fd96a74350997fc0bc77ec123
+	sha256sums = f1d7271c6e1da24d084fbbcb4871f25e7ab7614c33606eb1a51b07de4948aa22
 
 pkgname = hunspell-ie
 
