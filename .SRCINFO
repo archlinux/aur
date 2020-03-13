@@ -1,0 +1,18 @@
+pkgbase = opencl-headers-git
+	pkgdesc = OpenCL (Open Computing Language) header files
+	pkgver = v2020.03.13.0.g9824efd
+	pkgrel = 1
+	url = https://www.khronos.org/registry/cl/
+	arch = any
+	license = custom:Khronos
+	makedepends = git
+	makedepends = python
+	provides = opencl-headers
+	conflicts = opencl-headers
+	source = git+https://github.com/KhronosGroup/OpenCL-Headers.git
+	source = git+https://github.com/KhronosGroup/OpenCL-CLHPP.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = opencl-headers-git
+
