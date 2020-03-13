@@ -3,14 +3,14 @@
 # Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname=bitwarden-bin
-pkgver=1.16.6
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="A secure and free password manager for all of your devices."
 arch=('x86_64')
 url="https://bitwarden.com"
 license=('GPL')
 groups=('')
-depends=('alsa-lib' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
+depends=('alsa-lib' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nspr' 'nss')
 conflicts=('bitwarden')
 provides=('bitwarden')
 options=('!strip' '!emptydirs')
@@ -29,4 +29,4 @@ package(){
 	chmod 4755 $pkgdir/opt/Bitwarden/chrome-sandbox
 }
 
-sha512sums=('9df0d8003ce886b4b4015e3b4ef1a3f78ef087c663db4751852adb9353e11e9e732cbf56da586344dd681d3353b602606dff4d4652f8efee1a20626bf9c136dc')
+sha512sums=('8117fcf086e8a704388ce6d28c6f752a311889d0b1980f0f13a0b71584bbfea836dcfbce8998451fc8a8d58558e4d19fc55f5b27ab1c69c040e3b1684f93f915')
