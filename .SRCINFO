@@ -1,14 +1,14 @@
 pkgbase = python-sphinx-copybutton
 	pkgdesc = Sphinx extension to add a "copy" button to code blocks
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://sphinx-copybutton.readthedocs.io/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-sphinx
-	source = https://files.pythonhosted.org/packages/source/s/sphinx-copybutton/sphinx-copybutton-0.2.8.tar.gz
-	sha256sums = 48aec91c44af057e4a59fba962493e09dd992b13d2555d5776e8a701420a5308
+	source = https://files.pythonhosted.org/packages/source/s/sphinx-copybutton/sphinx-copybutton-0.2.9.tar.gz
+	sha256sums = 26d1f8e17a5290966179ec72536ee5224cc06e43325ffcb302b124ba20e93863
 
 pkgname = python-sphinx-copybutton
 

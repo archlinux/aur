@@ -1,7 +1,7 @@
 # Maintainer: Blair Bonnett <blair dot bonnett at gmail dot com>
 
 pkgname=python-sphinx-copybutton
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Sphinx extension to add a \"copy\" button to code blocks"
 url="https://sphinx-copybutton.readthedocs.io/"
@@ -13,7 +13,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/s/sphinx-copybutton/sphinx-copybutton-$pkgver.tar.gz"
 )
 sha256sums=(
-  '48aec91c44af057e4a59fba962493e09dd992b13d2555d5776e8a701420a5308'
+  '26d1f8e17a5290966179ec72536ee5224cc06e43325ffcb302b124ba20e93863'
 )
 
 build() {
