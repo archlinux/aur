@@ -1,8 +1,8 @@
 # Maintainer: T. Baumann <arch AT nnamuab DOT de>
 pkgname=usgs-phast
 _pkgname=phast
-pkgver=3.5.0
-_pkgsvn=14000
+pkgver=3.6.2
+_pkgsvn=15100
 pkgrel=1
 pkgdesc="A Computer Program for Simulating Groundwater Flow, Solute Transport, and Multicomponent Geochemical Reactions (no MPI)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('gmp' 'boost-libs' 'gcc-fortran' 'hdf5' 'zlib')
 makedepends=('boost')
 source=("http://water.usgs.gov/water-resources/software/PHAST/${_pkgname}-${pkgver}-${_pkgsvn}.tar.gz")
-md5sums=('2490530f47e0d6dfee77e5cdbcf8f065')
+md5sums=('7853354b5ac80f87a3b0b2ece6b95fdd')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver-$_pkgsvn"
