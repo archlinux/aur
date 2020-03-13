@@ -1,7 +1,7 @@
 pkgbase = cloudflared-bin
 	pkgdesc = An Argo Tunnel client which proxies any local webserver through the Cloudflare network
 	pkgver = 2020.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.cloudflare.com/argo-tunnel/
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = cloudflared-bin
 	source = sysusers.d
 	sha256sums = 6a486a0f6c00e87cce1caf0aa8db45ea9fefd0bf91d9be6fc44460160dc0dbda
 	sha256sums = e769786afdfbd486a4d7ca99495dbe955c25e41b5e012b722b018ca17f269dac
-	sha256sums = 791ec5bebea5863544f5e0db0d9184a5bbb75e66725f7505e83e252f51d84376
+	sha256sums = 83234a52452dce5497dd04e27323b2f83c702d4435a2687d1be4f829451fb061
 	sha256sums = bc40e3f7e1b21b93a949a1b1c05639584943d9ce9cc7ccb96612688eeb9fd206
 	sha256sums = bfda935c07b8e49821ee13e19433b1ed475ebb651e3008a32950734afbaef813
 	source_x86_64 = https://bin.equinox.io/a/f7GT5zdSqCJ/cloudflared-2020.2.1-linux-amd64.tar.gz
