@@ -2,7 +2,7 @@
 # Maintainer: gardar <aur@gardar.net>
 
 pkgname=arduino-pro-ide
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="The Arduino Pro IDE bring features that address the needs of advanced users whilst retaining continuity with the simple "classic" Arduino IDE."
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('EPLv2')
 install="$pkgname.install"
 source=("https://downloads.arduino.cc/$pkgname/$pkgname-$pkgver-alpha.preview-linux64.zip" "git+git://github.com/arduino/$pkgname.git")
 noextract=("$pkgname-$pkgver-alpha.preview-linux64.zip")
-sha256sums=('c92bb727a8a8b2b25c39bce1e7e3ddce49f9e04e7f8db3a7c01b051a72304572' 'SKIP')
+sha256sums=('f9b5f4aaece459de7eace360b4b71f08da87231202f0206aace600433e144c35' 'SKIP')
 
 prepare() {
 	mkdir "Arduino Pro IDE-v$pkgver-linux"
