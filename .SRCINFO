@@ -1,6 +1,6 @@
 pkgbase = r-shiny
 	pkgdesc = Web Application Framework for R
-	pkgver = 1.4.0.1
+	pkgver = 1.4.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shiny
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = r-shiny
 	optdepends = r-reactlog
 	optdepends = r-magrittr
 	optdepends = r-yaml
-	source = https://cran.r-project.org/src/contrib/shiny_1.4.0.1.tar.gz
-	md5sums = f3013de588f3e84d3bc0252be1f4c7a3
+	source = https://cran.r-project.org/src/contrib/shiny_1.4.0.2.tar.gz
+	md5sums = b9f24697906a59e3e3e6bddede129105
 
 pkgname = r-shiny
 
