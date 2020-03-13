@@ -97,3 +97,45 @@ index d385088..aab9478 100644
        }
     }
  
+From d8e6c50b735f95af01ddfe8b9d2775ed68aaa625 Mon Sep 17 00:00:00 2001
+From: Michal Kubecek <mkubecek@suse.cz>
+Date: Wed, 5 Feb 2020 07:29:14 +0100
+Subject: [PATCH] vmnet: convert from file_operations to proc_ops
+
+Manline commit 97a32539b956 ("proc: convert everything to "struct
+proc_ops"") in v5.6-rc1 introduces struct proc_ops and converts procfs file
+operations to it. Convert vmnet to do the same.
+
+As the same commit also introduces DEFINE_PROC_SHOW_ATTRIBUTE macro, we can
+use it for detection rather than rely on version comparison.
+---
+ vmnet-only/procfs.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/vmnet-only/procfs.c b/vmnet-only/procfs.c
+index 165cda0..58e1c4e 100644
+--- a/vmnet-only/procfs.c
++++ b/vmnet-only/procfs.c
+@@ -161,6 +161,14 @@ VNetProcOpen(struct inode *inode,   // IN:
+ }
+ 
+ /* Our procfs callbacks.  We only need to specialize open. */
++#ifdef DEFINE_PROC_SHOW_ATTRIBUTE
++static const struct proc_ops fops = {
++   .proc_open    = VNetProcOpen,
++   .proc_read    = seq_read,
++   .proc_lseek   = seq_lseek,
++   .proc_release = single_release,
++};
++#else
+ static struct file_operations fops = {
+    .open    = VNetProcOpen,
+    .read    = seq_read,
+@@ -168,6 +176,7 @@ static struct file_operations fops = {
+    .release = single_release,
+ };
+ #endif
++#endif
+ 
+ 
+ /*
