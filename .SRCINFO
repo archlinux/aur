@@ -1,0 +1,25 @@
+pkgbase = khronos-ocl-icd-git
+	pkgdesc = Khronos Group OpenCL 1.2 installable client driver (ICD) loader
+	pkgver = v2020.03.13.0.gc7fda8b
+	pkgrel = 1
+	url = http://www.khronos.org/registry/cl
+	arch = x86_64
+	license = custom:Khronos
+	makedepends = git
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = opencl-headers-git
+	depends = glibc
+	provides = libcl
+	provides = opencl-icd-loader
+	provides = ocl-icd
+	conflicts = libcl
+	conflicts = opencl-icd-loader
+	conflicts = ocl-icd
+	source = ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git
+	source = 66.diff
+	sha256sums = SKIP
+	sha256sums = eeff2a8cb94d3ce7a5cc6e4440c28e6ea8359201d8fa8dcdbc1c28cea6f39045
+
+pkgname = khronos-ocl-icd-git
+
