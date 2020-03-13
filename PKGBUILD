@@ -16,7 +16,7 @@
 pkgname=uuid
 _pkgname=ossp-uuid
 pkgver=1.6.2
-pkgrel=18
+pkgrel=19
 pkgdesc="OSSP Universally Unique Identifier"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.ossp.org/pkg/lib/uuid"
@@ -33,6 +33,7 @@ sha512sums=('SKIP'
 )
 
 build() {
+  unset PERL_MM_OPT
   cd "${srcdir}/${_pkgname}"
   # Rename because conflicts with util-linux
   patch -p1 -i "${srcdir}"/ossp.patch
