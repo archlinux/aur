@@ -3,7 +3,7 @@
 
 pkgname=balena-cli
 pkgdesc='balena.io command line interface'
-pkgver=11.29.0
+pkgver=11.29.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://balena.io/'
@@ -20,7 +20,7 @@ source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz)
 noextract=(${pkgname}-${pkgver}.tgz)
 options=(!strip)
 replaces=('resin-cli')
-sha256sums=('1268d24c6a573302019fba7273f7b11caf0c0859c3da6237085e88d16cf3603f')
+sha256sums=('9fb41ad0de45df26588b696f08f8ec28cc354418d6ae9eadafe85c0e23109aa8')
 
 package() {
   npm install --global --production --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
