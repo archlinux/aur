@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kwin-git
-pkgver=r14246.6a19f50
-pkgrel=2
+pkgver=v5.18.2.r117.ga97d4e099
+pkgrel=1
 pkgdesc='KDE Window Manager'
 arch=(i686 x86_64)
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -18,8 +18,8 @@ groups=('plasma')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kwin
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
