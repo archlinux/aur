@@ -2,7 +2,7 @@
 
 pkgname=proxmark3-iceman-git
 pkgver=8199.6c77d85c
-pkgrel=1
+pkgrel=2
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
@@ -22,13 +22,11 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
+build() {
   export DESTDIR="build"
   export PREFIX="/usr"
   export UDEV_PREFIX="/usr/lib/udev/rules.d"
-}
-
-build() {
+  
   cd "${srcdir}/${pkgname}"
 
   mkdir "$DESTDIR"
@@ -77,6 +75,7 @@ build() {
 }
 
 package() {
+  export DESTDIR="build"
   cd "${srcdir}/${pkgname}"
   mv "$DESTDIR"/* "${pkgdir}/"
 }
