@@ -1,6 +1,6 @@
 pkgbase = r-glue
 	pkgdesc = Interpreted String Literals
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=glue
 	arch = i686
@@ -24,8 +24,9 @@ pkgbase = r-glue
 	optdepends = r-ggplot2
 	optdepends = r-dplyr
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/glue_1.3.1.tar.gz
-	md5sums = 242edf3ba74c928b434c8cee138aa16e
+	optdepends = r-vctrs
+	source = https://cran.r-project.org/src/contrib/glue_1.3.2.tar.gz
+	md5sums = e79368182ed4328bd3b36c8b0ce34312
 
 pkgname = r-glue
 

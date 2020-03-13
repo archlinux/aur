@@ -2,7 +2,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=glue
-_cranver=1.3.1
+_cranver=1.3.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,9 +12,9 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
 depends=('r>=3.1')
 makedepends=(gcc)
-optdepends=(r-testthat r-covr r-magrittr r-crayon r-knitr r-rmarkdown r-dbi r-rsqlite r-r.utils r-forcats r-microbenchmark r-rprintf r-stringr r-ggplot2 r-dplyr r-withr)
+optdepends=(r-testthat r-covr r-magrittr r-crayon r-knitr r-rmarkdown r-dbi r-rsqlite r-r.utils r-forcats r-microbenchmark r-rprintf r-stringr r-ggplot2 r-dplyr r-withr r-vctrs)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('242edf3ba74c928b434c8cee138aa16e')
+md5sums=('e79368182ed4328bd3b36c8b0ce34312')
 
 build() {
   cd "${srcdir}"
