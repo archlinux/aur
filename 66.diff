@@ -196,9 +196,9 @@ index 0000000..10e0b96
 +endif()
 +
 +install (TARGETS OpenCL EXPORT OpenCLTargets
-+    RUNTIME DESTINATION bin
-+    ARCHIVE DESTINATION lib
-+    LIBRARY DESTINATION lib)
++    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
++    ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
++    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 +
 +if (UNIX)
 +    configure_file(
@@ -208,7 +208,7 @@ index 0000000..10e0b96
 +    file(GENERATE
 +      OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc
 +      INPUT ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc.configured)
-+    install (FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc DESTINATION lib/pkgconfig)
++    install (FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 +endif()
 \ No newline at end of file
 diff --git a/loader/OpenCL.pc.in b/loader/OpenCL.pc.in
@@ -234,8 +234,8 @@ index 0000000..e4ef0cd
 +++ b/loader/linux/CMakeLists.txt
 @@ -0,0 +1,12 @@
 +target_sources(OpenCL PRIVATE
-+    linux/icd_linux.c
-+    linux/icd_exports.map
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_linux.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_exports.map
 +)
 +
 +target_compile_definitions(OpenCL PRIVATE _DEFAULT_SOURCE)
