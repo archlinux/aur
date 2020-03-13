@@ -1,6 +1,7 @@
 # Contributor: ianux <ianux@free.fr>
+# Maintainer: Baytars <feicuihuangfeng@qq.com>
 pkgname=animata-svn
-pkgver=63
+pkgver=6
 pkgrel=1
 pkgdesc="an open source real-time animation software"
 arch=('i686' 'x86_64')
@@ -14,7 +15,7 @@ install=${pkgname}.install
 source=('animata.desktop')
 sha256sums=('0e12f6321f95080209b95223d9471aea37e20e8b78430ff95eba47a86a3e593a')
 
-_svntrunk=http://animata.googlecode.com/svn/trunk/
+_svntrunk=svn://svn.code.sf.net/p/animata/svn/trunk/
 _svnmod=animata
 
 build() {
