@@ -4,7 +4,7 @@
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost
-pkgver=5.20.1
+pkgver=5.20.2
 pkgrel=1
 pkgdesc='Open source Slack-alternative in Golang and React'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,8 +30,8 @@ source=(
     "$pkgname.sysusers"
     "$pkgname.tmpfiles"
 )
-sha512sums=('216d06c8242720c17a64f4b52e291dee069a002dce3979f1fad407404f03d57e7e880fee7e0a5b16711e1352defadfb94a73e091e4b87b480df073dcaa20f1af'
-            '1dd5d60c4b2601f1c70994f0cf0ff4d763af6f7a305c5acffbf76e4f0db945024a11a1ae3d540bb396d02cf5cc5a781bf52fe600a77917b5cc29633bcc34dfd0'
+sha512sums=('78f0461439fbfb29ea73275017b0a4390fd75fe190274c95cef5eb3cb089d01aaaa8f77c551488a04a6eb57384af8bf833dae58725d3862363981129ea5afa0c'
+            'a80b37b2c8d9e881ffdddf242e84fbf4b4bb25b5df511d15d79d5a06d989725c6bcf03e59e4ca3cae45440fa86adeecc9abcce61c95f836db12a0347db5d4078'
             '48181d4c06d5e2486c5445ae56f56bb766283954f0a480e59440a98138487d291df59bd366c16ea58ecc5cdf758bad09c1db5b4523709f3aa4f356c7bc9e5e00'
             '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
             'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
