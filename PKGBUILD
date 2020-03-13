@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kdecoration-git
-pkgver=r100.31bb399
-pkgrel=2
+pkgver=v5.17.90.r6.g9c14f69
+pkgrel=1
 pkgdesc='Plugin based library to create window decorations'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/kde/kde-workspace'
@@ -15,8 +15,8 @@ source=('git://anongit.kde.org/kdecoration.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kdecoration
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
