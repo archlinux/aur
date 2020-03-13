@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-drop-down-terminal-x
 	pkgdesc = Drop Down Terminal X extension for the Gnome Shell
-	pkgver = 0.4.3
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/bigbn/drop-down-terminal-x
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = gnome-shell-extension-drop-down-terminal-x
 	conflicts = gnome-shell-extension-drop-down-terminal
 	conflicts = gnome-shell-extension-drop-down-terminal-git
 	conflicts = gnome-shell-extension-drop-down-terminal-x-git
-	source = https://github.com/bigbn/drop-down-terminal-x/archive/0.4.3.tar.gz
-	sha256sums = 402934125e897b54ef5c2e6527eb22e0deb7375f885bf6581095cbcb11ae30f8
+	source = https://github.com/bigbn/drop-down-terminal-x/archive/1.4.4.tar.gz
+	sha256sums = d22a37aab1eb677355052d568cfb5c9021aa9ecfc1ba5ab6e426901828e424bc
 
 pkgname = gnome-shell-extension-drop-down-terminal-x
 
