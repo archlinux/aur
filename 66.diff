@@ -133,7 +133,7 @@ index 4bafa86..091c695 100644
 +  "${PROJECT_BINARY_DIR}/OpenCL/OpenCLConfig.cmake"
 +  COPYONLY)
 +
-+set(config_package_location lib/cmake/OpenCL)
++set(config_package_location ${CMAKE_INSTALL_LIBDIR}/cmake/OpenCL)
 +install(EXPORT OpenCLTargets
 +  FILE OpenCLTargets.cmake
 +  NAMESPACE OpenCL::

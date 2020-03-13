@@ -19,7 +19,7 @@ pkgbase = khronos-ocl-icd-git
 	source = ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git
 	source = 66.diff
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 18fb90cb98e01761b0720e3ff3c251c49192849b14094d824c609fb390efd306
 
 pkgname = khronos-ocl-icd-git
 

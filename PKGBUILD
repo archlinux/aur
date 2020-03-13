@@ -25,7 +25,7 @@ source=('ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
 #         'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-ICD-Loader/pull/66.diff'
          )
 sha256sums=('SKIP'
-            'SKIP'
+            '18fb90cb98e01761b0720e3ff3c251c49192849b14094d824c609fb390efd306'
 #             'c8001f51719e0d12d2f9c7f1c760a35d0920e81d05f119da813e0fb2be07f10a'
             )
 
