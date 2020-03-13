@@ -2,7 +2,7 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.03
+pkgver=2020.03.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -18,13 +18,13 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'alsa-lib: Audio support'
             'jack: Audio support'
             'speech-dispatcher: Text-to-Speech')
-provides=("waterfox-classic=${pkgver}" "waterfox-classic-kde=${pkgver}")
+provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=2d0183738d057ac2dff87eb50ccd98aa4edef1d1
+_commit=3d16cde6ab44fdb52b0355974c0f6b4496387640
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
