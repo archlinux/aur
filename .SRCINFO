@@ -1,14 +1,14 @@
 pkgbase = python-pyevmasm
 	pkgdesc = Assembler and disassembler library for the Ethereum Virtual Machine (EVM)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/trailofbits/pyevmasm
 	arch = x86_64
 	license = Apache
 	depends = python
 	depends = python-future
-	source = python-pyevmasm-0.2.1.tar.gz::https://github.com/trailofbits/pyevmasm/archive/0.2.1.tar.gz
-	sha256sums = 057bc4731fbc751e8658c5702746b55abb42f612dba315e1ade264c5999ce55d
+	source = python-pyevmasm-0.2.2.tar.gz::https://github.com/trailofbits/pyevmasm/archive/0.2.2.tar.gz
+	sha256sums = bb68241feeebea07fb7cccef35caf1fa932219587ed84ee6fb2fe035750da66d
 
 pkgname = python-pyevmasm
 
