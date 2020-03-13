@@ -1,0 +1,18 @@
+pkgbase = dirble
+	pkgdesc = Fast directory scanning and scraping tool
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/nccgroup/dirble
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = curl
+	source = https://github.com/nccgroup/dirble/archive/v1.4.2.tar.gz
+	sha512sums = ea7e1c3b0af29fb32a42b2860c38bc319d3542b87af97f3c0b3f02d18c6d728b0b19e1578424d9121b4ed99053b0938f3c23e85fb75fd95c570ed6e779aab163
+
+pkgname = dirble
+
