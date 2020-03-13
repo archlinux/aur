@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-if [ -f $HOME/.config/haurrc ]; then
-  source $HOME/.config/haurrc
+if [ -f "$HOME"/.config/haurrc ]; then
+  # shellcheck source=src/.config/haurrc
+  source "$HOME"/.config/haurrc
 else
   if [ -f /etc/haurrc ]; then
     source /etc/haurrc
@@ -18,18 +19,18 @@ if [ ! $HAUR_NO_COLORS == "y" ]; then
     ncolors=$(tput colors 2>/dev/null)
 
     if test -n "$ncolors" && test $ncolors -ge 8; then
-      bold="$(tput bold 2>/dev/null)"
-      underline="$(tput smul 2>/dev/null)"
-      standout="$(tput smso 2>/dev/null)"
+      # bold="$(tput bold 2>/dev/null)"
+      # underline="$(tput smul 2>/dev/null)"
+      # standout="$(tput smso 2>/dev/null)"
       normal="$(tput sgr0 2>/dev/null)"
-      black="$(tput setaf 0 2>/dev/null)"
+      # black="$(tput setaf 0 2>/dev/null)"
       red="$(tput setaf 1 2>/dev/null)"
-      green="$(tput setaf 2 2>/dev/null)"
-      yellow="$(tput setaf 3 2>/dev/null)"
+      # green="$(tput setaf 2 2>/dev/null)"
+      # yellow="$(tput setaf 3 2>/dev/null)"
       blue="$(tput setaf 4 2>/dev/null)"
-      magenta="$(tput setaf 5 2>/dev/null)"
-      cyan="$(tput setaf 6 2>/dev/null)"
-      white="$(tput setaf 7 2>/dev/null)"
+      # magenta="$(tput setaf 5 2>/dev/null)"
+      # cyan="$(tput setaf 6 2>/dev/null)"
+      # white="$(tput setaf 7 2>/dev/null)"
     fi
   fi
 fi
@@ -41,20 +42,20 @@ UPDATE=false
 for arg in "$@"; do
   shift
   case "$arg" in
-  	"--update") set -- "$@" "-u" ;;
+    "--update") set -- "$@" "-u" ;;
     "--remove") set -- "$@" "-r" ;;
     "--clear-cache") set -- "$@" "-c" ;;
-    "--help")   set -- "$@" "-h" ;;
+    "--help") set -- "$@" "-h" ;;
     "--"*) echo "Invalid Option: ${arg}" ; exit 1 ;;
-    *)        set -- "$@" "$arg"
+    *) set -- "$@" "$arg"
   esac
 done
 shift $((OPTIND -1))
 
 while getopts ":urch" opt; do
   case $opt in
-  	u )
-      $UPDATE=true
+    u )
+      UPDATE=true
       ;;
     r )
       REMOVE=true
@@ -97,15 +98,15 @@ if [ $REMOVE == true ]; then
     fi
   fi
 elif [ $UPDATE == true ]; then
-	for PACKAGE_NAME in "$@"; do
-		echo "${blue}Updating $PACKAGE_NAME...${normal}"
-		cd ~/.haur
-		cd $PACKAGE_NAME
-		git pull origin master
-		rm -rf pkg src
-		rm -f *.pkg.tar.gz
-		makepkg -si
-	done
+  for PACKAGE_NAME in "$@"; do
+    echo "${blue}Updating $PACKAGE_NAME...${normal}"
+    cd ~/.haur
+    cd $PACKAGE_NAME
+    git pull origin master
+    rm -rf pkg src
+    rm -f *.pkg.tar.gz
+    makepkg -si
+  done
   if [ $CLEAR_CACHE == true ]; then
     if test -f "$HOME/.haur_cache"; then
       echo "${blue}Clearing cache...${normal}"
