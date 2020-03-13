@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas
 
 pkgname=kwayland-git
-pkgver=r238.0eca1f7
-pkgrel=2
+pkgver=v5.68.0.rc1.r1.g8db4570
+pkgrel=1
 pkgdesc='Qt-style Client and Server library wrapper for the Wayland libraries'
 arch=('i686' 'x86_64')
 url='http://www.kde.org'
@@ -15,8 +15,8 @@ source=('git://anongit.kde.org/kwayland.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd kwayland
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
