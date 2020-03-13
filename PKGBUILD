@@ -9,7 +9,7 @@
 
 pkgname=python37
 pkgver=3.7.7
-pkgrel=1
+pkgrel=2
 _pybasever=${pkgver%.*}
 _pymajver=3
 pkgdesc="Major release 3.7 of the Python high-level programming language"
@@ -24,13 +24,11 @@ optdepends=('sqlite'
             'tk: for tkinter')
 source=("https://www.python.org/ftp/python/${pkgver%rc*}/Python-${pkgver}.tar.xz"{,.asc}
         dont-make-libpython-readonly.patch
-        0001-compileall-Fix-ddir-when-recursing.patch
         0002-smaller-pgo-test-suite.patch
         )
 sha512sums=('ddc838a7b0c442c2e465616f20231f2b703ed6b69ed2dc17858aac8760814fdf7cff43d350d359300e47b6bb1f0bd38c31126b855e423a3a65ed06a8fa16d136'
             'SKIP'
             '2ef96708d5b13ae2a3d2cc62c87b4780e60ecfce914e190564492def3a11d5e56977659f41c7f9d12266e58050c766bce4e2b5d50b708eb792794fa8357920c4'
-            'ebd04c3b6d41321b1f0d439d356e0ce463760db55dc64109854c70d017cf56608aa19de9fc4a21bf840795ff202b4703444f9af8074b661780798c17e03089ff'
             '10db463924402b6f1d9631424397495e8be0419bc7f9ca6cd7325216433b2dfe512b6f6669626ff05a8e05a6013613660abee59fcb86e5483558b014687bfaa1')
 validpgpkeys=('0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D')  # Ned Deily (Python release signing key) <nad@python.org>
 
@@ -39,9 +37,6 @@ prepare() {
 
   # FS#45809
   patch -p1 -i ../dont-make-libpython-readonly.patch
-
-  # FS#59997
-  patch -p1 -i ../0001-compileall-Fix-ddir-when-recursing.patch
 
   # Backport https://bugs.python.org/issue36044 to 3.7
   patch -p1 -i ../0002-smaller-pgo-test-suite.patch
