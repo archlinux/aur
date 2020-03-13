@@ -13,7 +13,7 @@ url="https://dfhack.readthedocs.io/en/stable/"
 license=('custom')
 depends=("dwarffortress=$pkgver" lua protobuf libpng12 libxrandr libjpeg6 freetype2 libglvnd libxcursor libxinerama)
 makedepends=('cmake' 'git' 'python-sphinx' 'perl-xml-libxml' 'perl-xml-libxslt')
-conflicts=('dfhack-bin' 'dfhack-git' 'dfhack-twbt-bin')
+conflicts=('dfhack-bin' 'dfhack-git' 'dfhack-twbt-bin' 'dfhack')
 
 source=("dfhack::git+https://github.com/DFHack/dfhack#tag=$_pkgver"
         "twbt::git+https://github.com/thurin/df-twbt#branch=04704"

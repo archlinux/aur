@@ -1,7 +1,7 @@
-pkgbase = dfhack
+pkgbase = dfhack-twbt
 	pkgdesc = memory hacking library for Dwarf Fortress and a set of tools that use it
-	pkgver = 0.47.03
-	pkgrel = 1
+	pkgver = 0.47.04
+	pkgrel = 7
 	url = https://dfhack.readthedocs.io/en/stable/
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = dfhack
 	makedepends = python-sphinx
 	makedepends = perl-xml-libxml
 	makedepends = perl-xml-libxslt
-	depends = dwarffortress=0.47.03
+	depends = dwarffortress=0.47.04
 	depends = lua
 	depends = protobuf
 	depends = libpng12
@@ -23,12 +23,36 @@ pkgbase = dfhack
 	depends = libxinerama
 	conflicts = dfhack-bin
 	conflicts = dfhack-git
-	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.03-beta1
+	conflicts = dfhack-twbt-bin
+	conflicts = dfhack
+	source = dfhack::git+https://github.com/DFHack/dfhack#tag=0.47.04-alpha0
+	source = twbt::git+https://github.com/thurin/df-twbt#branch=04704
 	source = dfhack.sh
 	source = dfhack-run.sh
+	source = colors.txt
+	source = colors_spring.txt
+	source = colors_summer.txt
+	source = colors_autumn.txt
+	source = colors_winter.txt
+	source = init.txt
+	source = d_init.txt
+	source = dfhack.init
+	source = graphics.png::https://dwarffortresswiki.org/images/1/11/Bisasam_20x20_mod_T.png
+	source = text.png::https://dwarffortresswiki.org/images/a/a6/Cooz_curses_square_16x16.png
 	md5sums = SKIP
-	md5sums = 81f5909c1a32391679f968e40f24d5ca
-	md5sums = 3853c6f890d3541f710f2c4833a9e696
+	md5sums = SKIP
+	md5sums = e74365253ca67a65c49999e5897faa84
+	md5sums = 0dcc9284c4e52e02e249df23a79c9349
+	md5sums = ea2a6ea0f4bfc479fc19d4cc5e27647b
+	md5sums = 676417a93ddb35ca31d430f69066285c
+	md5sums = bd3c49d125291f9658ca409d9db2d49e
+	md5sums = 8e039b9ab32a687572c417a13661ae3d
+	md5sums = 677edee445fc58036064f11c4294b91f
+	md5sums = e8bfabc5fe1810fd3a1c91504dce7ee6
+	md5sums = 872b709e986d831713812d83f41e1664
+	md5sums = b72dd69e286287daebb02d748d9c171d
+	md5sums = f205514b69112b8e69cef8984b3eb886
+	md5sums = f87b8aab62ecb7edf4fd6f2b1c008a3d
 
-pkgname = dfhack
+pkgname = dfhack-twbt
 
