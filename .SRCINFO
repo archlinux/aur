@@ -1,7 +1,7 @@
 pkgbase = kdocker
 	pkgdesc = An application to help you dock any application into the system tray
-	pkgver = 5.2
-	pkgrel = 2
+	pkgver = 5.3
+	pkgrel = 1
 	url = https://github.com/user-none/KDocker
 	arch = i686
 	arch = x86_64
@@ -10,10 +10,8 @@ pkgbase = kdocker
 	depends = qt5-x11extras
 	depends = libxpm
 	depends = libxmu
-	source = https://github.com/user-none/KDocker/archive/5.2.tar.gz
-	source = qt_514_build_fix.patch
-	sha256sums = ffcb11ac0cf50ae80a35e000b7a7470259e624511d1281579386a9cb68935cba
-	sha256sums = f05d163f67dd81aa6be97e8904258c108a0dd3451b667949c9c7657f6a965f0e
+	source = https://github.com/user-none/KDocker/archive/5.3.tar.gz
+	sha256sums = c49eea33d46a626b2a59c8ddc923ce9a027f0b9bd2125f4f6c264e888997e663
 
 pkgname = kdocker
 
