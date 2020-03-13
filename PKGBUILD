@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=gnome-wallpaper-changer-git
 pkgver=r27.5ea3237
-pkgrel=1
+pkgrel=2
 pkgdesc='Set Gnome Desktop wallpaper to an image from a provided directory.'
 arch=('any')
 url='https://github.com/Kibouo/gnome-wallpaper-changer'
@@ -10,17 +10,20 @@ depends=('bash')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}::git+https://github.com/Kibouo/gnome-wallpaper-changer.git")
-md5sums=('SKIP')
+install='gnome-wallpaper-changer.install'
+source=("${pkgname}::git+https://github.com/Kibouo/gnome-wallpaper-changer.git"
+        "gnome-wallpaper-changer.install")
+md5sums=('SKIP'
+        9036d9749ce5940fcb3ee6eb56179efd)
 pkgver() {
 	cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}${HOME}/.config/autostart"
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}${HOME}/.config/autostart"
 
-  cd "${pkgname}"
-  cp ./gnome-wallpaper-changer "${pkgdir}/usr/bin"
-  cp ./gnome-wallpaper-changer.desktop "${pkgdir}${HOME}/.config/autostart"
+    cd "${pkgname}"
+    cp ./gnome-wallpaper-changer "${pkgdir}/usr/bin"
+    cp ./gnome-wallpaper-changer.desktop "${pkgdir}${HOME}/.config/autostart"
 }
