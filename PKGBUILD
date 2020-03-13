@@ -1,5 +1,6 @@
 # Maintainer: mehalter <micah at mehalter.com>
 # Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: Luke Street <luke@street.dev>
 
 pkgname=ghidra-bin
 pkgver=9.1.2
