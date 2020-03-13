@@ -1,1 +1,6 @@
 *.pkg.tar*
+/text.png
+/graphics.png
+/twbt/
+/dfhack/
+/*.log
