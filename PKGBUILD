@@ -40,15 +40,14 @@ sha256sums=('SKIP'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             'ffa9d71bd6dd60eaaef70ba67444c75b6ce0313a107b5b086fd3d30df865ccbf'
             '547233b3a9143f0b03d39655cb705b55cb6df6a2e97e4423f07c38386638ade5'
-            '6f3333e1201c02c0569d81b0e73dc84c717b1ac37a9a502f664135c670833f53'
-            )
+            '6f3333e1201c02c0569d81b0e73dc84c717b1ac37a9a502f664135c670833f53')
 
 prepare() {
 
   cd Waterfox
 
   patch -Np1 -i ../current-kde-2020.03.patch
-  patch -Np1 -i ../current-kde-2020.03-xul.patch
+  patch -Np1 -i ../current-kde-xul-2020.03.patch
   patch -Np1 -i ../mozilla-nongnome-proxies.patch
 
   cat >.mozconfig <<END
