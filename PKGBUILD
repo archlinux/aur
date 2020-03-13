@@ -112,7 +112,7 @@ sha256sums=('698fb3f667f643869995f2a2d615561ec23cf03c1362895f90ebcc29ed8c1fc1'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c482981e91b5591ff85e055f3026956d6178aae3560ed984ff60b22e99351312')
+            'c8c2d617f1a33d6eb27f25ebcc30bd8ba1e6a0aa980cada21dda2ad1401fa4a2')
 
 prepare() {
   cd "${srcdir}"
