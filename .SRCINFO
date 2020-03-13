@@ -1,7 +1,7 @@
 pkgbase = ispc-git
 	pkgdesc = Intel SPMD program compiler
 	pkgver = 1.12.0.r162.g938a478f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ispc.github.io/
 	arch = i686
 	arch = x86_64

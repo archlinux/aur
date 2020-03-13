@@ -2,7 +2,7 @@
 
 pkgname=ispc-git
 pkgver=1.12.0.r162.g938a478f
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SPMD program compiler"
 arch=('i686' 'x86_64')
 url="https://ispc.github.io/"
@@ -44,5 +44,6 @@ package() {
   cd "ispc"
 
   make -C "_build" DESTDIR="$pkgdir" install
+  install -Dm644 "contrib/ispc.vim" -t "$pkgdir/usr/share/vim/vimfiles/syntax"
   install -Dm644 "LICENSE.txt" -t "$pkgdir/usr/share/licenses/ispc"
 }
