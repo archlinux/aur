@@ -2,13 +2,12 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.69.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
 license=('GPL3')
 depends=('nss' 'libxss' 'libxtst' 'libappindicator-gtk3' 'libnotify')
-makedepends=('asar')
 source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${pkgname%-bin}-linux.AppImage"
         "linux-sig-$pkgver.bin::https://mail.tutanota.com/desktop/linux-sig.bin"
         'https://raw.githubusercontent.com/tutao/tutanota/master/tutao-pub.pem'
@@ -31,15 +30,6 @@ prepare() {
 
 	# Correct path for .desktop file
 	sed -i 's|Exec=AppRun|Exec=/opt/tutanota-desktop/tutanota-desktop|g' "squashfs-root/${pkgname%-bin}.desktop"
-
-	# Disable auto-update
-	cd "$srcdir/squashfs-root/resources"
-	mkdir -p app-asar
-	asar extract app.asar app-asar
-	rm app.asar
-	sed -i 's|"enableAutoUpdate": true|"enableAutoUpdate": false|g' app-asar/package.json
-	asar pack app-asar app.asar
-	rm -rf app-asar
 }
 
 package() {
