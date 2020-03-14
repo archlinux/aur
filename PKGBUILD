@@ -2,19 +2,18 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Link Dupont <link@subpop.net>
-
 pkgname=libdbus-minimal
 pkgver=1.12.16
 pkgrel=2
 pkgdesc="DBus library"
-url="http://www.freedesktop.org/Software/dbus"
 arch=('x86_64')
+url="http://www.freedesktop.org/Software/dbus"
 license=('GPL' 'custom')
 provides=('libdbus' 'libdbus-1.so')
 conflicts=('libdbus')
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz"{,.asc})
-md5sums=('2dbeae80dfc9e3632320c6a53d5e8890'
-         'SKIP')
+sha256sums=('54a22d2fa42f2eb2a871f32811c6005b531b9613b1b93a0d269b05e7549fec80'
+            'SKIP')
 validpgpkeys=('DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90'  # Simon McVittie <simon.mcvittie@collabora.co.uk>
               '3C8672A0F49637FE064AC30F52A43A1E4B77B059') # Simon McVittie <simon.mcvittie@collabora.co.uk>
 

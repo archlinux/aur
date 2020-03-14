@@ -13,8 +13,8 @@ pkgbase = libdbus-minimal
 	source = http://dbus.freedesktop.org/releases/dbus/dbus-1.12.16.tar.gz.asc
 	validpgpkeys = DA98F25C0871C49A59EAFF2C4DE8FF2A63C7CC90
 	validpgpkeys = 3C8672A0F49637FE064AC30F52A43A1E4B77B059
-	md5sums = 2dbeae80dfc9e3632320c6a53d5e8890
-	md5sums = SKIP
+	sha256sums = 54a22d2fa42f2eb2a871f32811c6005b531b9613b1b93a0d269b05e7549fec80
+	sha256sums = SKIP
 
 pkgname = libdbus-minimal
 
