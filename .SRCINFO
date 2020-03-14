@@ -1,26 +1,31 @@
 pkgbase = ocaml-lwt
 	pkgdesc = A library for cooperative threads in OCaml
-	pkgver = 4.3.0
+	pkgver = 5.2.0
 	pkgrel = 1
-	url = http://ocsigen.org/lwt/
-	arch = i686
+	url = https://github.com/ocsigen/lwt
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	makedepends = cppo
-	depends = ocaml
-	depends = ocaml-mmap
+	makedepends = cppo>=1.1.0
+	makedepends = dune>=1.7.0
+	makedepends = ocaml-findlib
+	depends = libev
+	depends = ocaml>=4.02.0
+	depends = ocaml-mmap>=1.1.0
 	depends = ocaml-ocplib-endian
 	depends = ocaml-result
 	depends = ocaml-seq
-	depends = ocaml-migrate-parsetree
-	depends = ocaml-ppx_tools_versioned
-	depends = ocaml-react
-	depends = libev
+	depends = ocaml-migrate-parsetree>=1.5.0
+	depends = ocaml-ppx_tools_versioned>=5.3.0
+	depends = ocaml-react>=1.0.0
 	options = !strip
-	options = staticlibs
-	source = https://github.com/ocsigen/lwt/archive/4.3.0.tar.gz
-	sha512sums = 8e66f5b2443b2cc2889cd3f425db6e7261165603f1c31f8800540900d944dc6ae99b5cf02a29244cfd40fa4b077f238a7a788ba970734faa47deec98b55ac252
+	source = ocaml-lwt-5.2.0-1.tar.gz::https://github.com/ocsigen/lwt/archive/5.2.0.tar.gz
+	source = no-bisect_ppx.diff
+	sha256sums = 97c12b3da3d0db019dbdb97950b72f6fd1226ded7519c36ebfe2787574a9b132
+	sha256sums = 23de90bf80e7985b5749043c2dddd913bf9a1c3f08fe7a8a86b5e542aa46e279
 
 pkgname = ocaml-lwt
-

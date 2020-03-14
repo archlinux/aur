@@ -1,0 +1,10 @@
+diff --git a/src/react/dune b/src/react/dune
+index 318cb3c75..7d1680b6c 100644
+--- a/src/react/dune
++++ b/src/react/dune
+@@ -10,5 +10,4 @@
+  (synopsis "Reactive programming helpers for Lwt")
+  (wrapped false)
+  (libraries lwt react)
+- (preprocess (pps bisect_ppx --conditional))
+  (flags (:standard -w +A)))
