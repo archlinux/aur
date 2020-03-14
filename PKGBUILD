@@ -1,29 +1,34 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-sexplib0
-pkgver=0.13.0
-pkgrel=1
-pkgdesc="Library containing the definition of S-expressions and some base converters"
-arch=('x86_64')
-url='https://github.com/janestreet/sexplib0'
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='sexplib0'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='2'
+pkgdesc='Library containing the definition of S-expressions and some base converters'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('glibc' 'ocaml')
-makedepends=('dune')
+depends=('glibc' 'ocaml>=4.04.2')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/sexplib0-v${pkgver}.tar.gz")
-sha512sums=('cf9dc665919a06fdddcecdfbf5fcd1b41c20acad5d18f31302f248df4c55b6cb4cf734b73f786a9169a316d0024fe243b83868ad7d881f4ccff5a8ad746a28ca')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f98c6693e3067b816f8a21a648a2481fa49b792fb6146ec701adf9ec41affa51')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/sexplib0-v${pkgver}"
-
-  dune build --profile release
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
-
 package() {
-  cd "${srcdir}/sexplib0-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -Dm755 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
