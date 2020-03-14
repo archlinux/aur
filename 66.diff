@@ -272,7 +272,7 @@ new file mode 100644
 index 0000000..5724c26
 --- /dev/null
 +++ b/loader/windows/CMakeLists.txt
-@@ -0,0 +1,21 @@
+@@ -0,0 +1,43 @@
 +target_sources(OpenCL PRIVATE
 +    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows.c
 +    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows.h
@@ -293,6 +293,28 @@ index 0000000..5724c26
 +endif ()
 +
 +target_link_libraries(OpenCL PUBLIC cfgmgr32)
++
++option (OPENCL_ICD_LOADER_REQUIRE_WDK "Build with D3DKMT support, which requires the Windows WDK." ON)
++    if (OPENCL_ICD_LOADER_REQUIRE_WDK)
++        if(DEFINED ENV{WDKContentRoot})
++            file(GLOB D3DKMT_HEADER "$ENV{WDKContentRoot}/Include/*/km/d3dkmthk.h")
++        else()
++            file(GLOB D3DKMT_HEADER "$ENV{HOMEDRIVE}/Program Files */Windows Kits/10/Include/*/km/d3dkmthk.h")
++        endif()
++
++        if(D3DKMT_HEADER)
++            list(GET D3DKMT_HEADER -1 LATEST_D3DKMT_HEADER)
++            get_filename_component(WDK_DIRECTORY ${LATEST_D3DKMT_HEADER} DIRECTORY)
++            get_filename_component(WDK_DIRECTORY ${WDK_DIRECTORY} DIRECTORY)
++            message(STATUS "Found the Windows WDK in: ${WDK_DIRECTORY}")
++            target_compile_definitions(OpenCL PRIVATE OPENCL_ICD_LOADER_REQUIRE_WDK)
++            target_include_directories(OpenCL PRIVATE ${WDK_DIRECTORY}/um)
++            target_include_directories(OpenCL PRIVATE ${WDK_DIRECTORY}/km)
++            target_include_directories(OpenCL PRIVATE ${WDK_DIRECTORY}/shared)
++        else()
++            message(FATAL_ERROR "The Windows WDK was not found. Consider disabling OPENCL_ICD_LOADER_REQUIRE_WDK. Aborting.")
++        endif()
++    endif()
 +
 diff --git a/loader/windows/icd_windows.c b/loader/windows/icd_windows.c
 index 1350f11..a7da7c1 100644
