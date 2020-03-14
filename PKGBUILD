@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=navi-git
 pkgver=r238.8d0c82c
-pkgrel=1
+pkgrel=2
 pkgdesc='An interactive cheatsheet tool for the command-line.'
 arch=('any')
 url='https://github.com/denisidoro/navi'
@@ -16,17 +16,18 @@ source=("${pkgname}::git+${url}"
         navi.install)
 md5sums=('SKIP'
         43cf44f1cd5b9a7bb8f247735a59ba91
-        27308a8ca0e77387464dbd7f1e0bcdd4
-        )
+        27308a8ca0e77387464dbd7f1e0bcdd4)
 pkgver() {
     cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check() {
-    cd "${pkgname}"
-    cargo test --release --locked
-}
+# Don't make rustc torture us even longer by re-compiling everything from scratch...
+# CI pipelines are a thing anyways.
+# check() {
+#     cd "${pkgname}"
+#     cargo test --release --locked
+# }
 
 build() {
     cd "${pkgname}"

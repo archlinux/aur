@@ -1,8 +1,9 @@
 pkgbase = navi-git
 	pkgdesc = An interactive cheatsheet tool for the command-line.
 	pkgver = r238.8d0c82c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/denisidoro/navi
+	install = navi.install
 	arch = any
 	license = Apache 2.0
 	makedepends = git
@@ -13,8 +14,10 @@ pkgbase = navi-git
 	conflicts = navi
 	source = navi-git::git+https://github.com/denisidoro/navi
 	source = navi.sh
+	source = navi.install
 	md5sums = SKIP
 	md5sums = 43cf44f1cd5b9a7bb8f247735a59ba91
+	md5sums = 27308a8ca0e77387464dbd7f1e0bcdd4
 
 pkgname = navi-git
 
