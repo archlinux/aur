@@ -1,0 +1,17 @@
+pkgbase = nicotine+
+	pkgdesc = Soulseek music-sharing client, written in python
+	pkgver = 1.4.1
+	pkgrel = 4
+	url = https://github.com/Nicotine-Plus/nicotine-plus
+	arch = any
+	license = GPL
+	depends = python2-mutagen
+	depends = pygtk
+	optdepends = python2-geoip: to enable Geographical blocker
+	conflicts = nicotine
+	replaces = nicotine
+	source = nicotine+-1.4.1::https://github.com/Nicotine-Plus/nicotine-plus/archive/1.4.1.tar.gz
+	sha256sums = 1b38ef196d981e4eb96fa990cc463143289784f988f559c4400b1d461497b7d6
+
+pkgname = nicotine+
+
