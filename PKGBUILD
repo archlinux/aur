@@ -1,28 +1,34 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-ppx_derivers
-pkgver=1.2.1
-pkgrel=1
-pkgdesc="Deriving plugin registry"
-arch=('x86_64')
-url="https://github.com/ocaml-ppx/ppx_derivers"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='ppx_derivers'
+pkgname="ocaml-$_projectname"
+pkgver='1.2.1'
+pkgrel='2'
+pkgdesc='Shared deriving plugin registry'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ocaml-ppx/$_projectname"
 license=('BSD')
 depends=('ocaml')
-makedepends=('dune')
-source=("https://github.com/ocaml-ppx/ppx_derivers/archive/${pkgver}.tar.gz")
-sha512sums=('ef0796fe2592e653d34ba01d206d4b507429882a2aaadcb89c7f807c33a417f2871b0c94ade5c92aefd9487daa582e19d88ad5a5eaa631e8162ae12f4a0756c6')
+makedepends=('dune' 'ocaml-findlib')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('b6595ee187dea792b31fc54a0e1524ab1e48bc6068d3066c45215a138cc73b95')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/ppx_derivers-${pkgver}"
-
-  dune build
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
 package() {
-  cd "${srcdir}/ppx_derivers-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
-  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }

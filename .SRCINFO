@@ -1,14 +1,20 @@
 pkgbase = ocaml-ppx_derivers
-	pkgdesc = Deriving plugin registry
+	pkgdesc = Shared deriving plugin registry
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ppx_derivers
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = BSD
 	makedepends = dune
+	makedepends = ocaml-findlib
 	depends = ocaml
-	source = https://github.com/ocaml-ppx/ppx_derivers/archive/1.2.1.tar.gz
-	sha512sums = ef0796fe2592e653d34ba01d206d4b507429882a2aaadcb89c7f807c33a417f2871b0c94ade5c92aefd9487daa582e19d88ad5a5eaa631e8162ae12f4a0756c6
+	options = !strip
+	source = ocaml-ppx_derivers-1.2.1-2.tar.gz::https://github.com/ocaml-ppx/ppx_derivers/archive/1.2.1.tar.gz
+	sha256sums = b6595ee187dea792b31fc54a0e1524ab1e48bc6068d3066c45215a138cc73b95
 
 pkgname = ocaml-ppx_derivers
-
