@@ -7,8 +7,8 @@ pkgbase = miniserve-bin
 	license = MIT
 	provides = miniserve
 	conflicts = miniserve
-	source = miniserve-0.6.0::https://github.com/svenstaro/miniserve/releases/download/0.6.0/miniserve-linux-x86_64
-	source = https://github.com/svenstaro/miniserve/raw/0.6.0/LICENSE
+	source = miniserve-0.6.0::https://github.com/svenstaro/miniserve/releases/download/v0.6.0/miniserve-linux-x86_64
+	source = https://github.com/svenstaro/miniserve/raw/v0.6.0/LICENSE
 	sha512sums = SKIP
 	sha512sums = SKIP
 
