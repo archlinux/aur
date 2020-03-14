@@ -1,7 +1,7 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=amdvlk-bin
-pkgver=2020.Q1.2
+pkgver=2020.Q1.3
 pkgrel=1
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader')
 conflicts=('amdvlk' 'amdvlk-git')
 provides=('amdvlk' 'vulkan-driver')
 source=(https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${pkgver}/amdvlk_${pkgver}_amd64.deb)
-sha256sums=('10413217c3602e48b4f51ba084514329b0107052beda31bd9f853bde94248ff1')
+sha256sums=('1064f4b8745572f8afaa3a27cacb047607e51188018621f36a90cb48f442d942')
 
 build() {
   ar -x ${srcdir}/amdvlk_${pkgver}_amd64.deb
