@@ -26,7 +26,7 @@ makedepends=('appstream-glib'
              'libxml2'
              'python')
 provides=('gnomesword' "${pkgname%-git}")
-conflicts=(${provides[@]})
+conflicts=("${provides[@]}")
 source=("git+https://github.com/crosswire/xiphos.git")
 sha256sums=('SKIP')
 
