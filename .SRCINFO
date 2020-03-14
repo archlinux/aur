@@ -18,6 +18,7 @@ pkgbase = kshare
         provides = kshare=$pkgver
         conflicts = kshare-git
         source = git+https://github.com/Gurkengewuerz/KShare.git
+        source = KShare.desktop
         sha1sums = SKIP
 
 pkgname = kshare
