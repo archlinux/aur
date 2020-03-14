@@ -1,0 +1,28 @@
+pkgbase = jicofo-bin
+	pkgdesc = JItsi Meet COnference FOcus
+	pkgver = 1.0.508
+	pkgrel = 1
+	url = https://jitsi.org/jitsi-meet/
+	arch = x86_64
+	license = Apache
+	makedepends = tar
+	depends = java-runtime-headless
+	provides = jicofo
+	conflicts = jicofo
+	options = !strip
+	backup = etc/jitsi/jicofo/config
+	backup = etc/jitsi/jicofo/sip-communicator.properties
+	backup = etc/jitsi/jicofo/logging.properties
+	source = https://download.jitsi.org/stable/jicofo_1.0-508-1_amd64.deb
+	source = jicofo.service
+	source = sysusers.conf
+	source = tmpfiles.conf
+	source = config
+	sha256sums = b521cc10e405c7a68b0d42147c27151a46e02f76ff85445e7f1e5d3482921c9b
+	sha256sums = c814d2bf3ea08fd9f64aae8f8821a63a156301e4d902f9a098c01f0f32675f8b
+	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
+	sha256sums = 1d19c303780f4640bc0cae6f40d8203b119bb81b74f50d61dbe72c548fa37372
+	sha256sums = b36f987ce17388260fd6f6bcfb8372bf1aa1458959a996a44d073182414ba298
+
+pkgname = jicofo-bin
+
