@@ -5,16 +5,6 @@ die () {
   exit 1
 }
 
-search () {
-  search_term=$1
-  mapfile -t name < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Name")
-  mapfile -t version < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Version")
-  mapfile -t description < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Description")
-  for (( i=0; i<${#name[@]}; i++ )); do
-    echo "${name[i]} ${version[i]}: ${description[i]}"
-  done
-}
-
 if [ -f "$HOME"/.config/haurrc ]; then
   # shellcheck source=/dev/null
   source "$HOME"/.config/haurrc
@@ -34,13 +24,13 @@ if [ ! "$HAUR_NO_COLORS" == "y" ]; then
     ncolors=$(tput colors 2>/dev/null)
 
     if test -n "$ncolors" && test "$ncolors" -ge 8; then
-      # bold="$(tput bold 2>/dev/null)"
+      bold="$(tput bold 2>/dev/null)"
       # underline="$(tput smul 2>/dev/null)"
       # standout="$(tput smso 2>/dev/null)"
       normal="$(tput sgr0 2>/dev/null)"
       # black="$(tput setaf 0 2>/dev/null)"
       red="$(tput setaf 1 2>/dev/null)"
-      # green="$(tput setaf 2 2>/dev/null)"
+      green="$(tput setaf 2 2>/dev/null)"
       # yellow="$(tput setaf 3 2>/dev/null)"
       blue="$(tput setaf 4 2>/dev/null)"
       # magenta="$(tput setaf 5 2>/dev/null)"
@@ -49,6 +39,16 @@ if [ ! "$HAUR_NO_COLORS" == "y" ]; then
     fi
   fi
 fi
+
+search () {
+  search_term=$1
+  mapfile -t name < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Name")
+  mapfile -t version < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Version")
+  mapfile -t description < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Description")
+  for (( i=0; i<${#name[@]}; i++ )); do
+    echo "${bold}${blue}${name[i]} ${green}${version[i]}${normal}: ${description[i]}"
+  done
+}
 
 REMOVE=false
 CLEAR_CACHE=false
