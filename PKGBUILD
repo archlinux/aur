@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=navi-git
 pkgver=r238.8d0c82c
-pkgrel=2
+pkgrel=3
 pkgdesc='An interactive cheatsheet tool for the command-line.'
 arch=('any')
 url='https://github.com/denisidoro/navi'
@@ -16,7 +16,7 @@ source=("${pkgname}::git+${url}"
         navi.install)
 md5sums=('SKIP'
         43cf44f1cd5b9a7bb8f247735a59ba91
-        27308a8ca0e77387464dbd7f1e0bcdd4)
+        290f28d90270113f32bf2ca64565eb7a)
 pkgver() {
     cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
