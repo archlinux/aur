@@ -1,25 +1,22 @@
 pkgbase = skype
 	pkgdesc = P2P software for high-quality voice communication
-	pkgver = 8.18.0.6
+	pkgver = 8.57.0.116
 	pkgrel = 1
-	url = http://www.skype.com
+	url = https://www.skype.com
 	arch = x86_64
 	license = custom
-	depends = gtk2
+	depends = gtk3
 	depends = libxss
-	depends = gconf
 	depends = alsa-lib
 	depends = libxtst
 	depends = libsecret
 	depends = nss
-	optdepends = gnome-keyring: for credentials storage
-	conflicts = skypeforlinux
-	conflicts = skypeforlinux-stable
-	conflicts = skypeforlinux-preview
-	conflicts = skypeforlinux-stable-bin
-	conflicts = skypeforlinux-preview-bin
-	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.18.0.6_amd64.deb
-	sha256sums = 2fc2138c7c6118c3c70576ab593977905463202a7d97fa7111ada0a1c36771a4
+	optdepends = org.freedesktop.secrets
+	source = https://repo.skype.com/deb/pool/main/s/skypeforlinux/skypeforlinux_8.57.0.116_amd64.deb
+	source = skype
+	validpgpkeys = D4040146BE3972509FD57FC71F3045A5DF7587C3
+	sha512sums = 672f818a52e6876c1460eb9f9fde3ada945934f98d912cad958ce18c2b45ea04ffb359d11223ace10c2ff81f8914eb8c1595cee501901de8cad9eb1e6ec6f4d8
+	sha512sums = b0ac170b31c442006d2b3860cc4b5b43265369aa52de925c5e2ca30ea57767b8496c23626556922e8391cca1bf8e6b47b5759fd2e1f45a9dc41c13e30856a0ae
 
 pkgname = skype
 

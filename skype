@@ -1,0 +1,9 @@
+#!/bin/sh
+
+SKYPE_PATH="/opt/skype/skype"
+SKYPE_LOGS="$HOME/.config/skype/logs"
+
+mkdir -p $SKYPE_LOGS
+
+nohup "$SKYPE_PATH" --executed-from="$(pwd)" --pid=$$ "$@" > "$SKYPE_LOGS/skype-startup.log" 2>&1 &
+
