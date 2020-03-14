@@ -1,6 +1,6 @@
 pkgbase = python-pywpsrpc
 	pkgdesc = Python bindings for WPS Office RPC
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/timxx/pywpsrpc
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = python-pywpsrpc
 	makedepends = qt5-base
 	depends = qt5-base
 	depends = wps-office
-	source = https://pypi.python.org/packages/source/p/pywpsrpc/pywpsrpc-1.0.1.tar.gz
-	sha256sums = 4f2197cbd908c075f6bac5ce4fe6346b55d9c411f3d1f2d757c3aa059efff7ff
+	source = https://pypi.python.org/packages/source/p/pywpsrpc/pywpsrpc-1.0.2.tar.gz
+	sha256sums = a7819a8a2b18a9a8d60344b01d384acc7af257395205d6f53902611181d3c29d
 
 pkgname = python-pywpsrpc
 
