@@ -1,0 +1,14 @@
+pkgbase = pb-go
+	pkgdesc = A golang-based simple and powerful pastebin server named pb-go
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/pb-go/pb-go
+	arch = x86_64
+	license = AGPL3
+	makedepends = xz
+	options = !strip
+	source = https://github.com/pb-go/pb-go/releases/download/v1.0.5/pb-go-linux-amd64.xz
+	sha256sums = 7efbc440c6fafa078a24a40c52341e1481a7a01af8573d576483d6ffd3418032
+
+pkgname = pb-go
+
