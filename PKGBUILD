@@ -1,25 +1,23 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vgrive
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Google Drive client made in Vala"
 arch=('x86_64')
 url="https://github.com/bcedu/VGrive"
 license=('GPL3')
-depends=('gtk3' 'granite' 'json-glib' 'libsoup')
-makedepends=('meson' 'vala' 'cmake')
+depends=('gtk3' 'granite' 'libsoup')
+makedepends=('meson' 'vala' 'cmake' 'appstream-glib')
 optdepends=('libunity' 'libappindicator-gtk3')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/bcedu/VGrive/archive/$pkgver.tar.gz")
-sha256sums=('7630e1e706fb0932c0ebf1e2a7b8c051914a1ec3ea970d8b5c19b5b39a93e82a')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/bcedu/VGrive/archive/v$pkgver.tar.gz")
+sha256sums=('7d4316d12047c556f53d0d3a05db9a31c5947fd2038f70d234f3bfc748b6755b')
 
 build() {
-	cd "VGrive-$pkgver"
-	arch-meson build
+	arch-meson "VGrive-$pkgver" build
 	ninja -C build
 }
 
 package() {
-	cd "VGrive-$pkgver"
 	DESTDIR="$pkgdir" ninja -C build install
 	ln -s /usr/bin/com.github.bcedu.vgrive "$pkgdir/usr/bin/$pkgname"
 }
