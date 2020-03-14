@@ -45,6 +45,8 @@ package() {
   _wdir
 
   make DESTDIR="$pkgdir" PREFIX=/usr install
+  
+  ln -s "/usr/bin/DSView" "${pkgdir}/usr/bin/${pkgname}"
 
   install -Dm644 "$srcdir/dsview.desktop" "$pkgdir/usr/share/applications/dsview.desktop"
   install -Dm644 "$srcdir/udev.rules" "$pkgdir/usr/lib/udev/rules.d/20-dsview.rules"
