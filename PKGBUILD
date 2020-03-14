@@ -3,13 +3,12 @@
 
 pkgname='perl-asa'
 pkgver='1.04'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Lets your class/object say it works like something else"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.006')
-makedepends=()
 url='https://metacpan.org/release/asa'
 source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/asa-1.04.tar.gz')
 md5sums=('cbe6d1db505eb4eaa2bf35a637fc0451')
