@@ -1,0 +1,13 @@
+pkgbase = jitsi-videobridge
+	pkgdesc = Videobridge for Jitsi Meet
+	pkgver = 0.0.1132
+	pkgrel = 1
+	url = https://github.com/jitsi/jitsi-videobridge
+	arch = any
+	license = Apache
+	depends = jdk8-openjdk
+	source = https://download.jitsi.org/jitsi-videobridge/linux/jitsi-videobridge-linux-x64-1132.zip
+	sha256sums = 2157d3872747ddae2360f47588327dbd4ed48e93a5b7f21cfccdd67341516077
+
+pkgname = jitsi-videobridge
+
