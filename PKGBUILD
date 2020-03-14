@@ -3,7 +3,7 @@
 
 pkgname=biblesync-git
 pkgver=2.0.1.r1.gb16df42
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc='multicast shared co-navigation library for Bible programs'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p build
+  [[ -d ${pkgname%-git}/build ]] || mkdir -p ${pkgname%-git}/build
 }
 
 build() {
