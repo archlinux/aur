@@ -3,12 +3,17 @@ _author='atotto'
 _projectname='clipboard'
 pkgname="golang-github-$_author-$_projectname"
 pkgver='0.1.2'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Clipboard for Go'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/$_author/$_projectname"
 license=('BSD')
 depends=('go-pie')
+optdepends=(
+	'wl-clipboard: Clipboard utility for Wayland'
+	'xclip: Clipboard utility for X11'
+	'xsel: Clipboard utility for X11'
+)
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('84704a60eb4de90eaebe6e8cbfab30bb53d103c26c25560d67d13469fd17934e')
 
