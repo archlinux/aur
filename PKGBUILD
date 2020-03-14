@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=6.6.0.161.r1685.ff6294d2311
+pkgver=6.10.0.95.r761.8248c906564
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('custom=MITX11' 'custom=MSPL' 'BSD' 'GPL' 'LGPL2.1' 'MPL')
 depends=('ca-certificates' 'libgdiplus' 'python' 'zlib')
 makedepends=('cmake' 'git' 'mono')
-provides=('mono' 'monodoc')
+provides=('mono=${pkgver}' 'monodoc')
 conflicts=('mono' 'monodoc')
 install="${_gitname}.install"
 source=(
