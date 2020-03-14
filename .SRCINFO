@@ -1,6 +1,6 @@
 pkgbase = xidlehook
 	pkgdesc = xautolock rewrite in Rust, with a few extra features
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 2
 	url = https://gitlab.com/jD91mZM2/xidlehook
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = xidlehook
 	makedepends = libxss
 	makedepends = python
 	depends = libpulse
-	source = https://gitlab.com/jD91mZM2/xidlehook/-/archive/0.8.1/xidlehook-0.8.1.tar.gz
-	sha256sums = 8b9baeb0feee95b6b4ad8cfcd089f2ec672f89e0ab94d09ba2f00e3a611d70b7
+	source = https://gitlab.com/jD91mZM2/xidlehook/-/archive/0.8.2/xidlehook-0.8.2.tar.gz
+	sha256sums = de078de1618c21f430bfdd6dfbb55e6f66222efb0ba2ebc718cdb06b464d45f0
 
 pkgname = xidlehook
 
