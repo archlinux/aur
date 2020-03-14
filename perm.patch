@@ -1,5 +1,5 @@
---- /tmp/conky-manager2-git/src/conky-manager2-git/src/b/makefile
-+++ /tmp/conky-manager2-git/src/conky-manager2-git/src/a/makefile
+--- src/makefile
++++ src/makefile
 @@ -29,20 +29,19 @@
  	
  	#binary

@@ -4,7 +4,7 @@
 _pkgname=conky-manager2
 pkgname=${_pkgname}-git
 pkgver=2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of GUI for managing Conky widgets. Support added for latest conky config version - git"
 arch=('x86_64')
 license=('GPL3')
@@ -17,7 +17,7 @@ source=("${pkgname}"::"git+https://github.com/zcot/${_pkgname}.git"
         "perm.patch")
 sha1sums=('SKIP'
           'f561b7f63b83f98b83f06e7434b6720ff0235e68'
-          '4f2112027547ab8b6a70c8618360f7598ba64aa3')
+          '077cffe7814882efba5bcd5b8e1b16018913e120')
 install=${pkgname}.install
 
 pkgver() {
