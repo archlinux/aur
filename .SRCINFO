@@ -1,0 +1,14 @@
+pkgbase = ripme
+	pkgdesc = Downloads albums in bulk
+	pkgver = 1.7.91
+	pkgrel = 1
+	url = https://github.com/RipMeApp/ripme
+	arch = any
+	license = MIT
+	makedepends = maven
+	depends = java-runtime
+	source = https://github.com/RipMeApp/ripme/archive/1.7.91.tar.gz
+	sha256sums = 24e56ea40e939d636935e69ffb16200d587444f1603f1962eb5878c9a025654a
+
+pkgname = ripme
+
