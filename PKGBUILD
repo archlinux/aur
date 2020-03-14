@@ -13,7 +13,7 @@ arch=('x86_64')
 license=('GPL' 'LGPL2.1' 'MPL')
 depends=('zlib' 'libgdiplus>=4.2' 'sh' 'python' 'ca-certificates')
 makedepends=('cmake' 'git')
-provides=('monodoc' 'mono')
+provides=('monodoc' "mono=${pkgver}")
 conflicts=('monodoc' 'mono')
 replaces=('mono')
 install=mono.install

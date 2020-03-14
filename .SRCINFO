@@ -16,7 +16,7 @@ pkgbase = mono-alt-csc
 	depends = python
 	depends = ca-certificates
 	provides = monodoc
-	provides = mono
+	provides = mono=6.4.0.198
 	conflicts = monodoc
 	conflicts = mono
 	replaces = mono
