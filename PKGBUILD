@@ -3,13 +3,13 @@
 # Contributor: csslayer <wengxt AT gmail com>
 
 pkgname=fcitx5-rime-git
-pkgver=r115.0a702da
+pkgver=r116.bd08374
 pkgrel=2
 pkgdesc="RIME input method for fcitx5"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx5-rime"
 license=('LGPL')
-depends=('boost-libs' 'curl' 'fcitx5-git' 'librime' 'opencc' 'brise')
+depends=('boost-libs' 'curl' 'fcitx5-git' 'librime' 'opencc' 'librime-data')
 makedepends=('boost' 'extra-cmake-modules' 'git')
 conflicts=('fcitx-rime')
 provides=('fcitx5-rime')

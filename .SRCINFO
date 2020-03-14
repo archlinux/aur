@@ -1,6 +1,6 @@
 pkgbase = fcitx5-rime-git
 	pkgdesc = RIME input method for fcitx5
-	pkgver = r115.0a702da
+	pkgver = r116.bd08374
 	pkgrel = 2
 	url = https://github.com/fcitx/fcitx5-rime
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = fcitx5-rime-git
 	depends = fcitx5-git
 	depends = librime
 	depends = opencc
-	depends = brise
+	depends = librime-data
 	provides = fcitx5-rime
 	conflicts = fcitx-rime
 	source = git+https://github.com/fcitx/fcitx5-rime.git
