@@ -1,3 +1,4 @@
+# Maintainer: Alonso Rodriguez <alonsorodi20 (at) gmail (dot) com>
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
@@ -5,7 +6,7 @@
 pkgbase=nvidia-390xx
 pkgname=(nvidia-390xx nvidia-390xx-dkms)
 pkgver=390.132
-pkgrel=32
+pkgrel=33
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
