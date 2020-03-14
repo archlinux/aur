@@ -1,0 +1,25 @@
+pkgbase = jitsi-meet-bin
+	pkgdesc = WebRTC JavaScript video conferences
+	pkgver = 1.0.3729
+	pkgrel = 1
+	url = https://jitsi.org/jitsi-meet/
+	arch = any
+	license = Apache
+	makedepends = tar
+	optdepends = jicofo
+	optdepends = jitsi-videobridge
+	optdepends = nginx
+	optdepends = prosody
+	provides = jitsi-meet
+	conflicts = jitsi-meet
+	options = !strip
+	backup = etc/jitsi/meet/config.js
+	source = https://download.jitsi.org/stable/jitsi-meet-web_1.0.3729-1_all.deb
+	source = config.js
+	source = nginx.conf
+	sha256sums = 067ff38ef484063db6756a1f06e3e55226a9a01b9ad60f4a2cbe7021423eece4
+	sha256sums = 47831877ef0045e343b85857a6c14fb5ec04dcc937bd6fd789fffbbf98c7a205
+	sha256sums = 45e519d1a0c92c9a1d14ae48edb2d99920e8eb9c99bee977a29719807afc12ca
+
+pkgname = jitsi-meet-bin
+
