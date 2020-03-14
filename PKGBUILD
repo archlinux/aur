@@ -1,5 +1,4 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-
 pkgname=legacyfox
 pkgver=2.0
 pkgrel=1
