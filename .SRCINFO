@@ -1,12 +1,12 @@
 pkgbase = marktext-git
 	pkgdesc = Next generation markdown editor
-	pkgver = r1356.23435ce6
+	pkgver = r1380.65f1bef3
 	pkgrel = 1
-	url = https://marktext.github.io/website/
+	url = https://marktext.app/
 	arch = x86_64
 	license = MIT
 	makedepends = python
-	makedepends = nodejs
+	makedepends = nodejs>=12
 	makedepends = npm
 	makedepends = yarn
 	depends = electron
