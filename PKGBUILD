@@ -1,5 +1,4 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-
 _pkgname=terminus-font
 pkgname="$_pkgname-italic"
 pkgver=4.48
