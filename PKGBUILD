@@ -3,12 +3,12 @@
 pkgname=kiwivm-ga-systemd
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="KiwiVM guest agent systemd unit file."
+pkgdesc="KiwiVM Guest Agent systemd unit file."
 arch=('any')
 url="https://github.com/unknowndev233/KiwiVM-GA-systemd"
 license=('Apache')
 depends=('systemd' 'kiwivm-ga')
-#conflicts=('kiwivm-ga-sysv')
+conflicts=('kiwivm-ga-sysvinit')
 source=("https://github.com/unknowndev233/KiwiVM-GA-systemd/archive/v$pkgver.tar.gz")
 sha512sums=('7a17cd7ecdd969b04480609edfc98df26ed4d71414f6b16fc9c7fb1ed51facf7339d0d7f6be59cdaf0baf1d323383ac9ddc4a2cf336b6716382aa7dfe8dfbb0b')
 
