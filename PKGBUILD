@@ -9,7 +9,7 @@
 
 pkgname=ace
 pkgver=6.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 url="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 license=('custom')
@@ -19,7 +19,7 @@ options=(!libtool)
 conflicts=('libace')
 source=("http://download.dre.vanderbilt.edu/previous_versions/ACE-${pkgver}.tar.gz"
         "license.txt")
-sha256sums=('410b6cfeb8697488e98b262c9c88ce1cb8d0ad305313651df05fb2ec8cf6e761'
+sha256sums=('7c77034deee027ebc91041fae3711fe141c034d768bfb13259c40441cc0b5197'
             '4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954')
 
 build() {
