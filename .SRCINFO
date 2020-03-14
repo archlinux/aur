@@ -1,7 +1,7 @@
 pkgbase = linux-zencjk
 	pkgdesc = Linux ZEN with CJK Patch
 	pkgver = 5.5.9.zen1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zen-kernel/zen-kernel/commits/v5.5.9-zen1
 	arch = x86_64
 	license = GPL2
