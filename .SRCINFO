@@ -1,0 +1,17 @@
+pkgbase = azerothcore
+    pkgdesc = AzerothCore - MMORPG Server. Based on MaNGOS -> TrinityCore -> SunwellCore
+    pkgver = 3.0
+    pkgrel = 3
+    url = http://www.azerothcore.org
+    arch = i686
+    arch = x86_64
+    depends = cmake
+    depends = clang
+    depends = readline
+    depends = lib32-readline
+    depends = mariadb
+    depends = git
+    license = AGPL3
+    source = git+https://github.com/azerothcore/azerothcore-wotlk.git
+    sha512sums = SKIP
+pkgname = azerothcore
