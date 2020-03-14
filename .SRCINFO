@@ -1,6 +1,6 @@
 pkgbase = perl-tree-binary
 	pkgdesc = Perl package for OO binary tree
-	pkgver = 1.06
+	pkgver = 1.08
 	pkgrel = 1
 	url = https://metacpan.org/release/Tree-Binary
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-tree-binary
 	checkdepends = perl-test-exception
 	depends = perl
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Tree-Binary-1.06.tgz
-	md5sums = 3e7d5dc33b14ddf218bac30861093e12
+	source = http://search.cpan.org/CPAN/authors/id/R/RS/RSAVAGE/Tree-Binary-1.08.tgz
+	md5sums = 76ac414085486e9104f3ada832c231db
 
 pkgname = perl-tree-binary
 
