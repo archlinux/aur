@@ -1,13 +1,13 @@
 pkgbase = python-keyring-minimal-git
 	pkgdesc = A minimal libsecret keyring in python that works with keepassxc.
 	pkgver = r8.3cebb2a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrehfeld/python-keyring-minimal
 	arch = x86_64
 	arch = i686
 	makedepends = git
-	makedepends = python
-	makedepends = libsecret
+	depends = python
+	depends = libsecret
 	provides = python-keyring-minimal
 	conflicts = python-keyring-minimal
 	source = git+https://github.com/hrehfeld/python-keyring-minimal.git
