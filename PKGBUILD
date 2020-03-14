@@ -1,7 +1,7 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=rumur
-pkgver=2020.02.17
+pkgver=2020.03.12
 pkgrel=1
 pkgdesc="Yet another Murphi model checker"
 arch=('x86_64')
@@ -13,7 +13,7 @@ checkdepends=('valgrind' 'z3')
 optdepends=('z3: Preferred SMT solver'
             'cvc4: Alternative SMT solver')
 source=("https://github.com/Smattr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('9ecc983cccf5db87db77e0e4a3e1ee6ab81f48b2d4a8734203ef401aef85a79c')
+sha256sums=('f9641ce11b19c48348da08513d3bbca01c6c1b03b1b547d38181c275de35500b')
 
 prepare() {
   rm -rf build/CMakeCache.txt
@@ -31,7 +31,7 @@ build() {
 check() {
   cd build
   # The test needs about 1 hour
-  #env PATH="${PWD}/murphi2xml:${PWD}/rumur${PATH:+:$PATH}" "../$pkgname-$pkgver/tests/run-tests.py"
+  #env PATH="${PWD}/murphi2c:${PWD}/murphi2xml:${PWD}/rumur${PATH:+:$PATH}" "../$pkgname-$pkgver/tests/run-tests.py"
 }
 
 package() {
