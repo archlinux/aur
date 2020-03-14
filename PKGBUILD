@@ -1,5 +1,4 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-
 pkgname=mem-suspend
 pkgver=1
 pkgrel=2
