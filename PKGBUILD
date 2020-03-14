@@ -2,40 +2,15 @@
 
 pkgname=tony
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tony: a tool for melody transcription"
 arch=('x86_64')
 url="https://www.sonicvisualiser.org/tony/"
 license=('GPL2')
-depends=(
-  'fftw'
-  'jack2'
-  'libfishsound'
-  'libid3tag'
-  'liblo'
-  'liblrdf'
-  'libmad'
-  'liboggz'
-  'libpulse'
-  'libsamplerate'
-  'libsndfile'
-  'libx11'
-  'opus'
-  'opusfile'
-  'portaudio'
-  'qt5-base'
-  'qt5-base'
-  'qt5-tools'
-  'rubberband'
-  'serd'
-  'sord'
-)
-makedepends=(
-  'gcc'
-  'make'
-)
 source=("${pkgname}-${pkgver}.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2616/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('c00d70f7ce7ec8168cb2b380913467a33a35bcc9')
+depends=('jack2' 'libfishsound' 'libid3tag' 'liblo' 'liblrdf' 'libmad' 'liboggz' 'libpulse' 'opusfile' 'portaudio' 'qt5-svg' 'rubberband' 'serd' 'sord' 'hicolor-icon-theme')
+makedepends=('boost')
+sha256sums=('d79d85be738b00aef7859473f2c0385632d6cb30cd3752e07e952220695de20d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
