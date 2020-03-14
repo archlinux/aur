@@ -1,7 +1,7 @@
 pkgbase = network-manager-applet-indicator
-	pkgdesc = Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab
-	pkgver = 1.8.24
-	pkgrel = 2
+	pkgdesc = Applet for managing network connections with AppIndicator/StatusNotifierItem
+	pkgver = 1.16.0
+	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/NetworkManager/
 	arch = x86_64
 	license = GPL
@@ -9,46 +9,31 @@ pkgbase = network-manager-applet-indicator
 	makedepends = libsecret
 	makedepends = libnotify
 	makedepends = libmm-glib
-	makedepends = intltool
 	makedepends = gobject-introspection
 	makedepends = git
 	makedepends = gtk-doc
 	makedepends = meson
-	makedepends = libnm
-	makedepends = gcr
-	makedepends = gtk3
-	makedepends = iso-codes
-	makedepends = mobile-broadband-provider-info
+	makedepends = libnma-indicator
 	depends = libappindicator-gtk3
-	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=ce203dd7e99c9c943cb24756d25968781fb1dbd3
+	source = git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=daded73d8a1283004768125a110e088106528a90
 	sha256sums = SKIP
 
 pkgname = network-manager-applet-indicator
-	depends = nm-connection-editor
+	depends = nm-connection-editor-indicator
 	depends = libmm-glib
 	depends = libnotify
 	depends = libsecret
 	depends = networkmanager
 	depends = libappindicator-gtk3
-	provides = network-manager-applet=1.8.24-2
+	provides = network-manager-applet=1.16.0-1
 	conflicts = network-manager-applet
 
 pkgname = nm-connection-editor-indicator
-	pkgdesc = NetworkManager GUI connection editor and widgets, with AppIndicator
+	pkgdesc = NetworkManager GUI connection editor and widgets with AppIndicator/StatusNotifierItem
 	depends = libnma-indicator
-	provides = nm-connection-editor=1.8.24-2
+	depends = libappindicator-gtk3
+	provides = nm-connection-editor=1.16.0-1
 	conflicts = nm-connection-editor
 	conflicts = libnm-gtk<1.8.18-1
 	replaces = libnm-gtk<1.8.18-1
-
-pkgname = libnma-indicator
-	pkgdesc = NetworkManager GUI client library, with AppIndicator
-	depends = libnm
-	depends = gcr
-	depends = gtk3
-	depends = iso-codes
-	depends = mobile-broadband-provider-info
-	depends = libappindicator-gtk3
-	provides = libnma=1.8.24-2
-	conflicts = libnma
 

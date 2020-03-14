@@ -4,21 +4,19 @@
 # Contributor: Wael Nasreddine <gandalf@siemens-mobiles.org>
 # Contributor: Tor Krill <tor@krill.nu>
 # Contributor: Will Rea <sillywilly@gmail.com>
-# Contributor: Nikita Tarasov <nikatar@disroot.org>
+# AUR: Nikita Tarasov <nikatar@disroot.org>
 
 pkgbase=network-manager-applet-indicator
-pkgname=(network-manager-applet-indicator nm-connection-editor-indicator libnma-indicator)
-pkgdesc="Applet for managing network connections, with Appindicator/StatusNotifierItem support from GNOME GitLab"
+pkgname=(network-manager-applet-indicator nm-connection-editor-indicator)
+pkgdesc="Applet for managing network connections with AppIndicator/StatusNotifierItem"
 url="https://wiki.gnome.org/Projects/NetworkManager/"
-pkgver=1.8.24
-pkgrel=2
+pkgver=1.16.0
+pkgrel=1
 arch=(x86_64)
 license=(GPL LGPL)
 depends=(libappindicator-gtk3)
-makedepends=(libsecret libnotify libmm-glib intltool gobject-introspection git gtk-doc meson
-             libnm gcr gtk3 iso-codes mobile-broadband-provider-info)
-#source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git")
-_commit=ce203dd7e99c9c943cb24756d25968781fb1dbd3  # tags/1.8.24^0
+makedepends=(libsecret libnotify libmm-glib gobject-introspection git gtk-doc meson libnma-indicator)
+_commit=daded73d8a1283004768125a110e088106528a90  # tags/1.16.0^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -29,17 +27,16 @@ pkgver() {
 
 prepare() {
   cd ${pkgbase%-indicator}
-  sed -i -e 's/Exec=nm-applet/Exec=nm-applet --indicator/' nm-applet.desktop.in
 }
 
 build() {
-  arch-meson ${pkgbase%-indicator} build -Dselinux=false -Dappindicator=yes
+  arch-meson ${pkgbase%-indicator} build -D selinux=false -Dappindicator=yes
   ninja -C build
 }
 
-#~ check() {
-  #~ meson test -C build --print-errorlogs
-#~ }
+check() {
+  meson test -C build --print-errorlogs
+}
 
 _pick() {
   local p="$1" f d; shift
@@ -52,20 +49,11 @@ _pick() {
 }
 
 package_network-manager-applet-indicator() {
-  depends=(nm-connection-editor libmm-glib libnotify libsecret networkmanager libappindicator-gtk3)
+  depends=(nm-connection-editor-indicator libmm-glib libnotify libsecret networkmanager libappindicator-gtk3)
   provides=(network-manager-applet=$pkgver-$pkgrel)
   conflicts=(network-manager-applet)
 
   DESTDIR="$pkgdir" meson install -C build
-
-### Split libnma
-  _pick libnma "$pkgdir"/usr/include/libnma
-  _pick libnma "$pkgdir"/usr/lib/girepository-1.0/NMA-*
-  _pick libnma "$pkgdir"/usr/lib/libnma.*
-  _pick libnma "$pkgdir"/usr/lib/pkgconfig/libnma.pc
-  _pick libnma "$pkgdir"/usr/share/gir-1.0/NMA-*
-  _pick libnma "$pkgdir"/usr/share/glib-2.0/schemas
-  _pick libnma "$pkgdir"/usr/share/gtk-doc/html/libnma
 
 ### Split nm-connection-editor
   _pick nm-connection-editor "$pkgdir"/usr/bin/nm-connection-editor
@@ -77,19 +65,10 @@ package_network-manager-applet-indicator() {
 }
 
 package_nm-connection-editor-indicator() {
-  pkgdesc="NetworkManager GUI connection editor and widgets, with AppIndicator"
-  depends=(libnma-indicator)
+  pkgdesc="NetworkManager GUI connection editor and widgets with AppIndicator/StatusNotifierItem"
+  depends=(libnma-indicator libappindicator-gtk3)
   provides=("nm-connection-editor=${pkgver}-${pkgrel}")
   conflicts=('nm-connection-editor' 'libnm-gtk<1.8.18-1')
   replaces=('libnm-gtk<1.8.18-1')
-
   mv nm-connection-editor/* "$pkgdir"
-}
-
-package_libnma-indicator() {
-  pkgdesc="NetworkManager GUI client library, with AppIndicator"
-  depends=(libnm gcr gtk3 iso-codes mobile-broadband-provider-info libappindicator-gtk3)
-  provides=(libnma=${pkgver}-${pkgrel})
-  conflicts=(libnma)
-  mv libnma/* "$pkgdir"
 }
