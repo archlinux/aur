@@ -1,7 +1,7 @@
 pkgbase = dsview
 	pkgdesc = Client software that supports the DreamSourceLab logic analyzer
-	pkgver = 1.01
-	pkgrel = 2
+	pkgver = 1.10
+	pkgrel = 1
 	url = http://www.dreamsourcelab.com/
 	arch = i686
 	arch = x86_64
@@ -9,19 +9,15 @@ pkgbase = dsview
 	makedepends = boost
 	depends = boost-libs
 	depends = qt5-base
-	depends = libsigrokdecode4dsl=1.01
-	depends = libsigrok4dsl=1.01
+	depends = libsigrokdecode4dsl=1.10
+	depends = libsigrok4dsl=1.10
 	depends = fftw
-	source = DSView-1.01.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v1.01.tar.gz
+	source = DSView-1.10.tar.gz::https://github.com/DreamSourceLab/DSView/archive/v1.10.tar.gz
 	source = udev.rules
 	source = dsview.desktop
-	source = 0001-workaround-configure-failure-due-to-boost-cmake.patch
-	source = 0002-cmake-python-link.patch
-	sha384sums = b8bf646f8c599cb8adfa2ab1363f36592a1ecb10b819617cecc970ac7a30b8d5ef912e9af5c1d55a9282478d8a55b80e
+	sha384sums = 6cd82ee9c729db48f86aa00c492eb7e18a8b444d3bd7a384fbd7433e24758d7190ef88082457111b752d28c28145d9a5
 	sha384sums = 4f7c463e0723e3cfd6ed146e0db6b44627065af077aaca9765b60c9347752e32032752f04883da89b9f65523ca5c28e8
 	sha384sums = 6c47f8b81858cfccc96a0e18dd56dbb23c72baa165650d145898eea8d8f3493a9179f7c8c9afd651ed99e713c9106238
-	sha384sums = 338763e008464bebb1f11e62d3a4839d7af43c800f772be6d51a345f6e1e83fa4d5929c1e4b363dd9af2073dda420821
-	sha384sums = b3c355692709a1d9f4a1712f963ab87b1437e8d40fe0bb43dbc433f29ff9b06cc630bff357d33e5da6a351bee9dbd98f
 
 pkgname = dsview
 
