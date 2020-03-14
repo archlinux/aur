@@ -2,14 +2,13 @@
 # Contributor: Figue <ffigue@gmail.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
-
 pkgname=basilisk
 pkgver=2020.03.11
 pkgrel=1
 pkgdesc="Standalone web browser forked from mozilla.org"
 arch=('x86_64')
-license=('MPL' 'GPL' 'LGPL')
 url="https://www.basilisk-browser.org"
+license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'libxt' 'mime-types' 'alsa-lib' 'ffmpeg' 'ttf-font')
 makedepends=('unzip' 'zip' 'python2' 'yasm' 'mesa' 'autoconf2.13')
 options=('!emptydirs')
