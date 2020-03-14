@@ -1,6 +1,6 @@
 pkgbase = kame-editor-git
 	pkgdesc = A 3DS theme editor made with Qt5
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://gitlab.com/beelzy/kame-editor
 	arch = i686
