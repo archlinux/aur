@@ -1,19 +1,19 @@
-# Maintainer: TheCynicalTeam <TheCynicalTeam@github.com>
-# Contributor: TheCynicalTeam <TheCynicalTeam@github.com>
+# Maintainer: TheCynicalTeam <TheCynicalTeam@gitlab.com>
+# Contributor: TheCynicalTeam <TheCynicalTeam@gitlab.com>
 
 pkgname=xwingridselect
 _gitname=xwingridselect
 pkgver=v0.4.2
 pkgrel=1
 pkgdesc="X11 window switcher with fancy look"
-url="http://github.com/TheCynicalTeam/xwingridselect"
+url="https://gitlab.com/TheCynicalLiger/xwingridselect"
 arch=('i686' 'x86_64')
 license=('GNU General Public License v3.0')
 depends=('gtk2')
 makedepends=('cmake' 'git' 'make')
 options=(!libtool strip)
 
-source=('git://github.com/TheCynicalTeam/xwingridselect.git')
+source=('git://gitlab.com/TheCynicalLiger/xwingridselect.git')
 md5sums=('SKIP')
 
 pkgver() {
