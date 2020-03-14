@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=navi-git
 pkgver=r238.8d0c82c
-pkgrel=3
+pkgrel=4
 pkgdesc='An interactive cheatsheet tool for the command-line.'
 arch=('any')
 url='https://github.com/denisidoro/navi'
@@ -37,10 +37,8 @@ build() {
 package() {
     cd "${pkgname}"
 
-    mkdir -p "${pkgdir}/etc/profile.d/"
     install -Dm755 "${srcdir}/navi.sh" "${pkgdir}/etc/profile.d/navi.sh"
 
-    mkdir -p "${pkgdir}/usr/bin/"
     install -Dm755 "./target/release/navi" "${pkgdir}/usr/bin/navi"
 
     mkdir -p "${pkgdir}/${HOME}/.navi"
