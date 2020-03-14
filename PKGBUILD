@@ -10,7 +10,7 @@
 
 _pkgname=hyper
 pkgname=${_pkgname}-git
-pkgver=3.1.0.canary.4.r28.g039b90aa
+pkgver=3.1.0.canary.4.r48.gb0002bbe
 pkgrel=1
 pkgdesc="A terminal built on web technologies"
 arch=('any')
@@ -68,15 +68,15 @@ build() {
 package() {
     cd "$pkgname"
 
-    _appdir="/usr/lib/$pkgname"
-    _libinstall="${pkgdir}${_appdir}"
+    _appdir="/usr/lib/$_pkgname"
+    _libinstall="$pkgdir$_appdir"
 
     mkdir -p "$pkgdir/usr/bin" "$_libinstall"
     cp -R dist/linux-unpacked/* "$_libinstall"
 
     # link the binary to /usr/bin
     cd $pkgdir/usr/bin
-    ln -s "../lib/$pkgname/resources/bin/hyper" hyper
+    ln -s "../lib/$_pkgname/resources/bin/hyper" hyper
 
     install -Dm644 "$srcdir/Hyper.desktop" "$pkgdir/usr/share/applications/Hyper.desktop"
     install -Dm644 "$srcdir/Hyper-Mark-120@3x.png" "$pkgdir/usr/share/pixmaps/hyper.png"
