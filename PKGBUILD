@@ -1,7 +1,7 @@
 
 pkgname=khronos-ocl-icd-git
 pkgver=v2020.03.13.0.gc7fda8b
-pkgrel=1
+pkgrel=2
 pkgdesc="Khronos Group OpenCL 1.2 installable client driver (ICD) loader"
 arch=('x86_64')
 url="http://www.khronos.org/registry/cl"
@@ -25,7 +25,7 @@ source=('ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
 #         'https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-ICD-Loader/pull/66.diff'
          )
 sha256sums=('SKIP'
-            '18fb90cb98e01761b0720e3ff3c251c49192849b14094d824c609fb390efd306'
+            'dd1fe65856e5f5e3c4a71473ecb99444f2f9388ce96a21a86926e6c8fb1a3790'
 #             'c8001f51719e0d12d2f9c7f1c760a35d0920e81d05f119da813e0fb2be07f10a'
             )
 
@@ -42,9 +42,8 @@ prepare() {
 build() {
   cd build
   cmake ../ocl \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBUILD_TESTING=OFF
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   make
 }

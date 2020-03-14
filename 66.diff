@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 4bafa86..091c695 100644
+index 4bafa86..2312e57 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,8 +1,6 @@
@@ -13,7 +13,7 @@ index 4bafa86..091c695 100644
  
  # The option below allows building the ICD Loader library as a shared library
  # (ON, default) or a static library (OFF).
-@@ -40,99 +40,52 @@ check_function_exists(__secure_getenv HAVE___SECURE_GETENV)
+@@ -40,99 +38,53 @@ check_function_exists(__secure_getenv HAVE___SECURE_GETENV)
  configure_file(${CMAKE_CURRENT_SOURCE_DIR}/loader/icd_cmake_config.h.in
      ${CMAKE_CURRENT_BINARY_DIR}/icd_cmake_config.h)
  
@@ -48,10 +48,10 @@ index 4bafa86..091c695 100644
 -        loader/linux/icd_linux_envvars.c
 -        loader/linux/icd_exports.map)
 -endif ()
--
 +set (CMAKE_C_STANDARD 99)
 +set (CMAKE_C_STANDARD_REQUIRED ON)
 +set (CMAKE_C_EXTENSIONS OFF)
+ 
  set (OPENCL_ICD_LOADER_HEADERS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/inc CACHE PATH "Path to OpenCL Headers")
  
 -add_library (OpenCL ${OPENCL_ICD_LOADER_SOURCES})
@@ -152,7 +152,6 @@ index 4bafa86..091c695 100644
 +  FILES "${CMAKE_CURRENT_BINARY_DIR}/OpenCL/OpenCLConfigVersion.cmake"
 +  DESTINATION ${config_package_location}
 +  COMPONENT Devel)
- 
 diff --git a/cmake/OpenCLConfig.cmake b/cmake/OpenCLConfig.cmake
 new file mode 100644
 index 0000000..0a4e4a7
@@ -168,16 +167,20 @@ index 0000000..0a4e4a7
 +include("${CMAKE_CURRENT_LIST_DIR}/OpenCLTargets.cmake")
 diff --git a/loader/CMakeLists.txt b/loader/CMakeLists.txt
 new file mode 100644
-index 0000000..10e0b96
+index 0000000..68f3777
 --- /dev/null
 +++ b/loader/CMakeLists.txt
-@@ -0,0 +1,38 @@
+@@ -0,0 +1,43 @@
 +find_package (Threads REQUIRED)
 +find_package (OpenCLHeaders REQUIRED)
 +
 +add_library(OpenCL
-+    icd.h icd.c
-+    icd_dispatch.h icd_dispatch.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd.h
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_dispatch.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_dispatch.h
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_envvars.h
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_platform.h
 +)
 +
 +set_target_properties(OpenCL PROPERTIES
@@ -196,9 +199,9 @@ index 0000000..10e0b96
 +endif()
 +
 +install (TARGETS OpenCL EXPORT OpenCLTargets
-+    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
-+    ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-+    LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
++    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
++    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 +
 +if (UNIX)
 +    configure_file(
@@ -210,7 +213,7 @@ index 0000000..10e0b96
 +      INPUT ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc.configured)
 +    install (FILES ${CMAKE_CURRENT_BINARY_DIR}/OpenCL.pc DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 +endif()
-\ No newline at end of file
++
 diff --git a/loader/OpenCL.pc.in b/loader/OpenCL.pc.in
 new file mode 100644
 index 0000000..b4e94d9
@@ -229,14 +232,17 @@ index 0000000..b4e94d9
 +Cflags: -I$<JOIN:$<TARGET_PROPERTY:OpenCL,INTERFACE_INCLUDE_DIRECTORIES>, -I>
 diff --git a/loader/linux/CMakeLists.txt b/loader/linux/CMakeLists.txt
 new file mode 100644
-index 0000000..e4ef0cd
+index 0000000..5198803
 --- /dev/null
 +++ b/loader/linux/CMakeLists.txt
-@@ -0,0 +1,12 @@
+@@ -0,0 +1,16 @@
 +target_sources(OpenCL PRIVATE
 +    ${CMAKE_CURRENT_SOURCE_DIR}/icd_linux.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_linux_envvars.c
 +    ${CMAKE_CURRENT_SOURCE_DIR}/icd_exports.map
 +)
++
++target_include_directories (OpenCL PRIVATE ${PROJECT_BINARY_DIR})
 +
 +target_compile_definitions(OpenCL PRIVATE _DEFAULT_SOURCE)
 +set_property(TARGET OpenCL APPEND PROPERTY
@@ -245,9 +251,9 @@ index 0000000..e4ef0cd
 +set_property(TARGET OpenCL APPEND PROPERTY
 +    LINK_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/icd_exports.map"
 +)
-\ No newline at end of file
++
 diff --git a/loader/linux/icd_linux.c b/loader/linux/icd_linux.c
-index f6bb7b6..c87dadc 100644
+index 809f095..ae16051 100644
 --- a/loader/linux/icd_linux.c
 +++ b/loader/linux/icd_linux.c
 @@ -16,8 +16,8 @@
@@ -263,15 +269,20 @@ index f6bb7b6..c87dadc 100644
  #include <stdio.h>
 diff --git a/loader/windows/CMakeLists.txt b/loader/windows/CMakeLists.txt
 new file mode 100644
-index 0000000..754cc39
+index 0000000..5724c26
 --- /dev/null
 +++ b/loader/windows/CMakeLists.txt
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,21 @@
 +target_sources(OpenCL PRIVATE
-+    windows/icd_windows.c
-+    windows/icd_windows_hkr.c
-+    windows/OpenCL.def
-+    windows/OpenCL.rc
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows.h
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows_dxgk.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows_dxgk.h
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows_envvars.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows_hkr.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_windows_hkr.h
++    ${CMAKE_CURRENT_SOURCE_DIR}/OpenCL.def
++    ${CMAKE_CURRENT_SOURCE_DIR}/OpenCL.rc
 +)
 +
 +# Only add the DXSDK include directory if the environment variable is
@@ -282,9 +293,9 @@ index 0000000..754cc39
 +endif ()
 +
 +target_link_libraries(OpenCL PUBLIC cfgmgr32)
-\ No newline at end of file
++
 diff --git a/loader/windows/icd_windows.c b/loader/windows/icd_windows.c
-index 5f89085..cba2cb8 100644
+index 1350f11..a7da7c1 100644
 --- a/loader/windows/icd_windows.c
 +++ b/loader/windows/icd_windows.c
 @@ -16,7 +16,7 @@
@@ -297,7 +308,7 @@ index 5f89085..cba2cb8 100644
  #include "icd_windows_hkr.h"
  #include "icd_windows_dxgk.h"
 diff --git a/loader/windows/icd_windows_hkr.c b/loader/windows/icd_windows_hkr.c
-index 6003f2c..0bdf790 100644
+index aa55939..2ded002 100644
 --- a/loader/windows/icd_windows_hkr.c
 +++ b/loader/windows/icd_windows_hkr.c
 @@ -16,7 +16,7 @@
@@ -309,3 +320,75 @@ index 6003f2c..0bdf790 100644
  #include "icd_windows_hkr.h"
  #include <windows.h>
  #include "icd_windows_dxgk.h"
+diff --git a/test/driver_stub/CMakeLists.txt b/test/driver_stub/CMakeLists.txt
+index 47b3bd2..e726f38 100644
+--- a/test/driver_stub/CMakeLists.txt
++++ b/test/driver_stub/CMakeLists.txt
+@@ -1,5 +1,9 @@
+-
+-set (OPENCL_DRIVER_STUB_SOURCES cl.c cl_ext.c cl_gl.c icd.c)
++set (OPENCL_DRIVER_STUB_SOURCES
++    ${CMAKE_CURRENT_SOURCE_DIR}/cl.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/cl_ext.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/cl_gl.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd.c
++    )
+ 
+ if (NOT "${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+     list (APPEND OPENCL_DRIVER_STUB_SOURCES driver_stub.def)
+@@ -8,3 +12,5 @@ endif ()
+ add_library (OpenCLDriverStub ${OPENCL_DRIVER_STUB_SOURCES})
+ 
+ target_link_libraries (OpenCLDriverStub IcdLog)
++
++target_compile_definitions(OpenCLDriverStub PRIVATE CL_TARGET_OPENCL_VERSION=220)
+diff --git a/test/loader_test/CMakeLists.txt b/test/loader_test/CMakeLists.txt
+index ddc675b..88d91ef 100644
+--- a/test/loader_test/CMakeLists.txt
++++ b/test/loader_test/CMakeLists.txt
+@@ -1,15 +1,18 @@
+ add_executable (icd_loader_test
+-    test_kernel.c
+-    main.c
+-    test_platforms.c
+-    icd_test_match.c
+-    test_program_objects.c
+-    test_sampler_objects.c
+-    test_buffer_object.c
+-    test_cl_runtime.c
+-    callbacks.c
+-    test_create_calls.c
+-    test_clgl.c
+-    test_image_objects.c )
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_kernel.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/main.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_platforms.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_test_match.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_program_objects.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_sampler_objects.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_buffer_object.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_cl_runtime.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/callbacks.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_create_calls.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_clgl.c
++    ${CMAKE_CURRENT_SOURCE_DIR}/test_image_objects.c
++    )
+ 
+ target_link_libraries (icd_loader_test OpenCL IcdLog)
++
++target_compile_definitions(icd_loader_test PRIVATE CL_TARGET_OPENCL_VERSION=220)
+diff --git a/test/log/CMakeLists.txt b/test/log/CMakeLists.txt
+index 93dea6c..addfdaf 100644
+--- a/test/log/CMakeLists.txt
++++ b/test/log/CMakeLists.txt
+@@ -1,4 +1,9 @@
+-add_library (IcdLog icd_test_log.c)
++add_library (IcdLog
++    ${CMAKE_CURRENT_SOURCE_DIR}/icd_test_log.c
++)
++
+ if (WIN32)
+     target_compile_definitions (IcdLog PRIVATE _CRT_SECURE_NO_WARNINGS)
+ endif()
++
++target_compile_definitions(IcdLog PRIVATE CL_TARGET_OPENCL_VERSION=220)
