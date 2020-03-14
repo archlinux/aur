@@ -6,9 +6,9 @@ pkgbase = gdrive
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = dep
 	makedepends = git
 	makedepends = go
-	makedepends = godep
 	options = !strip
 	options = !emptydirs
 	source = gdrive-2.1.0::git+https://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269
