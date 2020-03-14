@@ -1,6 +1,6 @@
 pkgbase = bitw-git
 	pkgdesc = Minimalist BitWarden client with Secret Service API implementation - git version
-	pkgver = r47.58fe31f
+	pkgver = r48.781f226
 	pkgrel = 1
 	url = https://github.com/mvdan/bitw
 	arch = x86_64
@@ -18,6 +18,9 @@ pkgbase = bitw-git
 	makedepends = golang-github-knq-ini
 	makedepends = golang-rsc-2fa>=1.1.0
 	makedepends = golang-github-godbus-dbus>=5.0.3
+	optdepends = wl-clipboard: Clipboard utility for Wayland
+	optdepends = xclip: Clipboard utility for X11
+	optdepends = xsel: Clipboard utility for X11
 	provides = bitw
 	provides = org.freedesktop.secrets
 	conflicts = bitw

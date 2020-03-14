@@ -1,12 +1,17 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 _pkgname='bitw'
 pkgname="$_pkgname-git"
-pkgver='r47.58fe31f'
+pkgver='r48.781f226'
 pkgrel='1'
 pkgdesc='Minimalist BitWarden client with Secret Service API implementation - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mvdan/$_pkgname"
 license=('BSD')
+optdepends=(
+	'wl-clipboard: Clipboard utility for Wayland'
+	'xclip: Clipboard utility for X11'
+	'xsel: Clipboard utility for X11'
+)
 makedepends=('git' 'go-pie>=1.13' 'golang-golang-x-crypto' 'golang-github-google-uuid>=1.1.1' 'golang-github-knq-ini' 'golang-rsc-2fa>=1.1.0' 'golang-github-godbus-dbus>=5.0.3')
 checkdepends=('golang-github-rogpeppe-go-internal>=1.5.0')
 provides=("$_pkgname" 'org.freedesktop.secrets')
