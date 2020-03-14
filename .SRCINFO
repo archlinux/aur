@@ -14,9 +14,9 @@ pkgbase = bdf-unifont-extra
 	source = https://ftp.gnu.org/gnu/unifont/unifont-12.1.04/unifont-12.1.04.bdf.gz.sig
 	source = http://unifoundry.com/LICENSE.txt
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 6067bda8daa1f3c49d8876107992e19fc9ab905ad54c01c3131b9649977c3746
+	sha256sums = bab15252ad82d20d5b107965f3b31de9efbce82f0a3f0b7bbf6dd142e42b0710
 	sha256sums = SKIP
-	sha256sums = b301a70ea554b471ca22f9654d8fe0573a93c1ecae3f59f17026f12e58f31e3a
+	sha256sums = 95d93c1634f6982250d51940ff5c81b93a657c295b5c24dfa4214a13c6100495
 
 pkgname = bdf-unifont-extra
 
