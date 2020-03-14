@@ -1,4 +1,7 @@
 post_install() {
-	echo "\n\
-	Source the appropriate file from '~/.navi/shell' in your shell's dotfile. This enables proper populating of shell history and editting commands before executing them.\n"
+	echo "
+
+Source the appropriate file from '/etc/navi/shell' in your shell's dotfile. This enables proper populating of shell history and editting commands before executing them.
+	
+"
 }

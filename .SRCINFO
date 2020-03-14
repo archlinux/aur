@@ -1,7 +1,7 @@
 pkgbase = navi-git
 	pkgdesc = An interactive cheatsheet tool for the command-line.
 	pkgver = r238.8d0c82c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/denisidoro/navi
 	install = navi.install
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = navi-git
 	source = navi.sh
 	source = navi.install
 	md5sums = SKIP
-	md5sums = 43cf44f1cd5b9a7bb8f247735a59ba91
-	md5sums = 290f28d90270113f32bf2ca64565eb7a
+	md5sums = 28d8acf7ed7a1387172526e91e7cb998
+	md5sums = b21f1310f720472b20cbd15a8c67ccf9
 
 pkgname = navi-git
 

@@ -1,7 +1,7 @@
 # Maintainer: Kibouo <csonka.mihaly@hotmail.com>
 pkgname=navi-git
 pkgver=r238.8d0c82c
-pkgrel=4
+pkgrel=5
 pkgdesc='An interactive cheatsheet tool for the command-line.'
 arch=('any')
 url='https://github.com/denisidoro/navi'
@@ -15,8 +15,8 @@ source=("${pkgname}::git+${url}"
         navi.sh
         navi.install)
 md5sums=('SKIP'
-        43cf44f1cd5b9a7bb8f247735a59ba91
-        290f28d90270113f32bf2ca64565eb7a)
+        28d8acf7ed7a1387172526e91e7cb998
+        b7c360616920dc118ef2bca1d1bfc263)
 pkgver() {
     cd "${pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -38,10 +38,9 @@ package() {
     cd "${pkgname}"
 
     install -Dm755 "${srcdir}/navi.sh" "${pkgdir}/etc/profile.d/navi.sh"
-
     install -Dm755 "./target/release/navi" "${pkgdir}/usr/bin/navi"
 
-    mkdir -p "${pkgdir}/${HOME}/.navi"
-    cp -r "./cheats" "${pkgdir}/${HOME}/.navi/cheats"
-    cp -r "./shell" "${pkgdir}/${HOME}/.navi/shell"
+    mkdir -p "${pkgdir}/etc/navi"
+    cp -r "./cheats" "${pkgdir}/etc/navi/cheats"
+    cp -r "./shell" "${pkgdir}/etc/navi/shell"
 }

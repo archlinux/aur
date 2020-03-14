@@ -1,1 +1,1 @@
-export NAVI_PATH="~/.navi"
+export NAVI_PATH="/etc/navi/cheats"
