@@ -1,0 +1,15 @@
+pkgbase = nucleon-git
+	pkgdesc = Dynamic load balancer written in Rust
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/NicolasLM/nucleon
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	provides = nucleon
+	source = git+https://github.com/NicolasLM/nucleon
+	md5sums = SKIP
+
+pkgname = nucleon-git
+
