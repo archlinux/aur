@@ -3,12 +3,12 @@
 
 pkgname=biblesync-git
 pkgver=2.0.1.r1.gb16df42
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='multicast shared co-navigation library for Bible programs'
 arch=('x86_64' 'i686')
 url='https://github.com/karlkleinpaste/biblesync'
-license=('GPL')
+license=('custom')
 makedepends=('cmake' 'git')
 provides=("${pkgname%-git}=$pkgver" "libbiblesync.so=${pkgver%.r*}")
 conflicts=("${pkgname%-git}")
@@ -33,6 +33,9 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}/build"
+  cd "${pkgname%-git}"
+  install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname/" AUTHORS COPYING LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" ChangeLog README.md man/specification.txt WIRESHARK
+  cd build
   make DESTDIR="$pkgdir/" install
 }
