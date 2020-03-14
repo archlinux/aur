@@ -1,7 +1,7 @@
 pkgbase = biblesync-git
 	pkgdesc = multicast shared co-navigation library for Bible programs
 	pkgver = 2.0.1.r1.gb16df42
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 1
 	url = https://github.com/karlkleinpaste/biblesync
 	arch = x86_64
