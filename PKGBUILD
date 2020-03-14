@@ -3,14 +3,14 @@
 # Contributor: dpeukert
 _gitname=marktext
 pkgname=marktext-git
-pkgver=r1356.23435ce6
+pkgver=r1380.65f1bef3
 pkgrel=1
 pkgdesc='Next generation markdown editor'
 arch=('x86_64')
-url='https://marktext.github.io/website/'
+url='https://marktext.app/'
 license=('MIT')
 depends=('electron')
-makedepends=('python' 'nodejs' 'npm' 'yarn')
+makedepends=('python' 'nodejs>=12' 'npm' 'yarn')
 conflicts=('marktext')
 provides=('marktext')
 source=("git+https://github.com/${_gitname}/${_gitname}"
