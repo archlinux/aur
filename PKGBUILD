@@ -2,7 +2,7 @@
 
 pkgname=miniserve-bin
 _pkgname=miniserve
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=0
 pkgdesc="Tool to serve files via HTTP"
 provides=('miniserve')
@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/svenstaro/miniserve"
 license=(MIT)
 source=(
-  ${url}/releases/download/v${pkgver}/miniserve-linux-x86_64
+  miniserve-${pkgver}::${url}/releases/download/${pkgver}/miniserve-linux-x86_64
   ${url}/raw/v${pkgver}/LICENSE
 )
 sha512sums=(
@@ -20,6 +20,6 @@ sha512sums=(
 )
 
 package() {
-  install -Dm755 miniserve-linux-x86_64 "$pkgdir"/usr/bin/miniserve
+  install -Dm755 miniserve-${pkgver} "$pkgdir"/usr/bin/miniserve
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
