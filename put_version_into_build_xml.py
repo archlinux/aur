@@ -17,7 +17,7 @@ def main():
 
     try:
         git_version = subprocess.check_output(
-            ['git', 'describe', '--long', '--tags'])
+            ['git', 'describe', '--long', '--tags', '--match', 'version*'])
     except subprocess.CalledProcessError:
         print('Call to git failed. Skipping...', file=sys.stderr)
         return
@@ -25,10 +25,9 @@ def main():
     mobj = re.match(
         r'''(?x)
             version
-            (?P<major>\d)\.
-            (?P<minor>\d)\.
-            (?P<release>\d)-
-            (?P<build>\d+)-.*''',
+            (?P<version>[^-]+)-
+            (?P<revcount>\d+)-
+            g(?P<hash>[0-9a-f]+)''',
         git_version.decode('utf-8'))
 
     if not mobj:
@@ -36,19 +35,18 @@ def main():
         return
 
     versions = {
-        'major': mobj.group('major'),
-        'minor': mobj.group('minor'),
-        'release': mobj.group('release'),
-        'build': mobj.group('build'),
+        'version': mobj.group('version'),
+        'revcount': mobj.group('revcount'),
+        'hash': mobj.group('hash'),
     }
 
-    print('Set version to %s.%s.%s' % (
-        versions['major'], versions['minor'], versions['release']))
+    print('Set version to %s.r%s (commit %s)' % (
+        versions['version'], versions['revcount'], versions['hash']))
 
-    for version_type in versions.keys():
-        path = './target/property[@name="version.%s"]' % version_type
+    for version_key, value in zip(['major', 'minor', 'release', 'build'], versions['version'].split('.')):
+        path = './target/property[@name="version.%s"]' % version_key
         for element in tree.findall(path):
-            element.set('value', str(versions[version_type]))
+            element.set('value', value)
 
     tree.write(build_xml_filename, encoding='UTF-8', xml_declaration=True)
 

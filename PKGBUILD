@@ -4,7 +4,7 @@ _pkgname=jpexs-decompiler
 pkgname=$_pkgname-git
 pkgver=11.2.0.r29.g5df2728a9
 epoch=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Opensource flash SWF decompiler and editor"
 arch=("any")
 url="https://github.com/jindrapetrik/jpexs-decompiler"
@@ -16,7 +16,7 @@ source=(
     'put_version_into_build_xml.py'
 )
 b2sums=('SKIP'
-        '3932fd50ec25304a351af8c60c462c097556e7529f7e063560700c340fbb4a98e9f0af76328b73cb754e8184198c15d79c7d4d8e7f417730b11dbb05a632041e')
+        '2325e42b27731c9bbc64e6edc1f7632f8138838b1b6fcee9c1b68ad837f3f607610206cdbaf18585187746ef630cbef348b67b9cf165c247b77e8be29fa7ebb0')
 
 java_8_home() {
     cd /usr/lib/jvm
