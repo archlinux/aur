@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=0.13.r0.g19c7175
+pkgver=0.13.1.r0.g327545d
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
