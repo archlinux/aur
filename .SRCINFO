@@ -1,6 +1,6 @@
 pkgbase = perl-xml-compile-soap
 	pkgdesc = Perl package for SOAP implementations
-	pkgver = 3.22
+	pkgver = 3.26
 	pkgrel = 1
 	url = https://metacpan.org/release/XML-Compile-SOAP
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = perl-xml-compile-soap
 	depends = perl-log-report>=1.05
 	depends = perl-libwww>=6.08
 	depends = perl-net-http>=6.16
-	depends = perl-file-slurp-tiny
+	depends = perl-file-slurper
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.22.tar.gz
-	md5sums = d6ead08c6574c62a38bd969ea2475a74
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-SOAP-3.26.tar.gz
+	md5sums = 638f534aeffe29521d4b42e6fd2d4ea9
 
 pkgname = perl-xml-compile-soap
 

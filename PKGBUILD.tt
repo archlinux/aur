@@ -16,7 +16,7 @@ depends=(
 	'perl-log-report>=1.05'
 	'perl-libwww>=6.08'
 	'perl-net-http>=6.16'
-	'perl-file-slurp-tiny')
+	'perl-file-slurper')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
