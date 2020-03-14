@@ -1,8 +1,8 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: Andy Weidenbaum <archbaum at gmail dot com>
 
 pkgname=remarshal
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Convert between TOML, YAML and JSON"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-dateutil' 'python-pytoml' 'python-yaml' 'python-u-msgpack' 'pyt
 makedepends=('python-setuptools')
 options=('!emptydirs')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/dbohdan/remarshal/archive/v${pkgver}.tar.gz")
-sha256sums=('3f383e48f59722a4d93ef2b5e417b6a8c152f382a1faad416099ffcde5c87a66')
+sha256sums=('39d46501894fd9e8a8af3126ea99d988967aff25209a30ac038ec37fcf522983')
 
 build() {
   cd "${srcdir}/${pkgname#python-}-${pkgver}"
