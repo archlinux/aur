@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/karx1/haur"
 license=('LGPLv3')
 provides=("haur")
-depends=('bash' 'git')
+depends=('bash' 'git' 'jq')
 source=("haur" "haurrc" "Makefile")
 prepare () {
 	make clean
