@@ -14,12 +14,12 @@ sha512sums=('57447c63a6ca46b7d2313e281638d86b90245f1d5c17b61ae810de733e52e195e43
 
 build() {
     cd "${pkgname}-${pkgver}"
-    cargo build --release
+    cargo build --release --locked
 }
 
 check() {
     cd "${pkgname}-${pkgver}"
-    cargo test --release
+    cargo test --release --locked
 }
 
 package() {
