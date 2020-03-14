@@ -1,6 +1,6 @@
 pkgbase = perl-object-declare
 	pkgdesc = Perl package providing a declarative object constructor
-	pkgver = 0.23
+	pkgver = 0.24
 	pkgrel = 1
 	url = https://metacpan.org/release/Object-Declare
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-object-declare
 	makedepends = perl-module-build>=0.28
 	depends = perl-sub-override
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Object-Declare-0.23.tar.gz
-	md5sums = b91262eb8c0c1d6450e0e584a005ad8f
+	source = http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/Object-Declare-0.24.tar.gz
+	md5sums = cc25b758ff287b33b6d6db21e4ce976f
 
 pkgname = perl-object-declare
 
