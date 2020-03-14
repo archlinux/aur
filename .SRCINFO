@@ -1,0 +1,17 @@
+pkgbase = python-condastats
+	pkgdesc = Conda package stats CLI
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/sophiamyang/condastats
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-fastparquet
+	depends = python-snappy
+	depends = python-s3fs
+	depends = python-dask
+	source = https://pypi.io/packages/source/c/condastats/condastats-0.1.3.tar.gz
+	sha256sums = 504a41ecb9edf0bd7798847b61839954e50508c5235ec7ee48c539ce46b4fa18
+
+pkgname = python-condastats
+
