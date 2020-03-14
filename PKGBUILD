@@ -5,7 +5,7 @@ pkgname=srb2kart
 pkgver=1.1
 _dataver=1.1
 _patchver=1.1
-pkgrel=6
+pkgrel=7
 pkgdesc='A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.'
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -26,6 +26,12 @@ sha256sums=('SKIP'
 'fe154805cea950fc792faa266ef7d303cbccab893f802c2a85a2afdd0af51bc6'
             
 '8082c8bad5bdf102d111d4e4d2eb8c73e9f30c1e54935091cd83f4928b3fc3dd')
+
+prepare() {
+  # Remove mdls directory or it will fail to be removed later on
+  find "$srcdir"/mdls -type d -exec chmod 755 {} \;
+  rm -r "$srcdir"/mdls
+}
 
 build() {
   cd "$srcdir"/Kart-Public/src

@@ -1,7 +1,7 @@
 pkgbase = srb2kart
 	pkgdesc = A kart racing mod based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, based on a modified version of Doom Legacy.
 	pkgver = 1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = https://mb.srb2.org/showthread.php?t=43708
 	arch = i686
 	arch = x86_64
