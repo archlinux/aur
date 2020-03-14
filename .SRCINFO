@@ -1,0 +1,16 @@
+pkgbase = apache-commons-lang
+	pkgdesc = Apache Commons Lang
+	pkgver = 3.9
+	pkgrel = 1
+	url = https://commons.apache.org/proper/commons-lang/index.html
+	arch = any
+	license = Apache
+	depends = java-environment
+	source = https://downloads.apache.org/commons/lang/binaries/commons-lang3-3.9-bin.tar.gz
+	source = https://downloads.apache.org/commons/lang/binaries/commons-lang3-3.9-bin.tar.gz.asc
+	validpgpkeys = B6E73D84EA4FCC47166087253FAAD2CD5ECBB314
+	sha512sums = f9c76b0848e28bd230cd034aff9f632da0548659461dcf5c7d34a7fcab15f031b6fece1f5096661336362b1a23b8bd899a2b14a32e91b2ac5fa27e4e7a489288
+	sha512sums = SKIP
+
+pkgname = apache-commons-lang
+
