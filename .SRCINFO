@@ -1,0 +1,22 @@
+pkgbase = showq-git
+	pkgdesc = ShowQ is a cue-player for theater productions
+	pkgver = r50.a8dce78
+	pkgrel = 1
+	url = https://github.com/evandelisle/showq
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	depends = gtkmm
+	depends = alsa-lib
+	depends = libsndfile
+	depends = jack
+	depends = libxml++2.6
+	depends = libsamplerate
+	depends = libutil-linux
+	source = git+https://github.com/evandelisle/showq
+	md5sums = SKIP
+
+pkgname = showq-git
+
