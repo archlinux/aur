@@ -1,18 +1,18 @@
 # Maintainer: bcareil <baptiste.careil@gmail.com>
 
-pkgname='path-of-building-git'
+pkgname='path-of-building-community-git'
 pkgrel=1
-pkgdesc='An offline build planner for Path of Exile using PoBFrontent'
+pkgdesc="An offline build planner for Path of Exile using PoBFrontent, LocalIdentity's fork"
 arch=('x86_64')
-url='https://github.com/Openarl/PathOfBuilding'
+url='https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 license=('MIT')
-pkgver=1.4.157.r1012.37.479
+pkgver=1.4.159.1.r1187.37.479
 
 depends=('zlib' 'qt5-base' 'luajit' 'libgl' 'curl')
 makedepends=('meson' 'ninja' 'unzip' 'rsync')
 
 source=(
-	'git+https://github.com/Openarl/PathOfBuilding'
+	'git+https://github.com/PathOfBuildingCommunity/PathOfBuilding'
 	'git+https://github.com/philroberts/pobfrontend'
 	'git+https://github.com/Lua-cURL/Lua-cURLv3'
 	'https://github.com/Openarl/PathOfBuilding/files/1167199/PathOfBuilding-runtime-src.zip'
@@ -26,7 +26,7 @@ sha256sums=(
 	'SKIP'
 	'SKIP'
 	'6d21872a2b2bdbfaebb20de5cac28ac402316e5314c97a89049320ff13c2f622'
-	'02b44b44872bae4725bc6de600f4592ce33b26e90fa0f392922004ee15898446'
+	'70b5a7d869b7993531fcf5d87bd6ebaaa9de6e8910b9f871ec64809c3c5bd9ed'
 	'9dbc8802b74ceed78f1a6ba1d5b90251f5ae7f9a8cf5497426e4a35001112fcd'
 	'4b37acb9f25f6841726d6b73e6b893d1376c858e879dd6daf35a1bbae8bc2faf'
 	'87cbc36ace84ebd746a5b8ec5a88ffde5b03cea7c633a4d437d46b5434ae86da'
@@ -78,13 +78,13 @@ build() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/share/"
-	rsync -a '--exclude=.git*' "${srcdir}/PathOfBuilding" "${pkgdir}/usr/share/"
-	dst_dir="${pkgdir}/usr/share/PathOfBuilding"
+	dst_dir="${pkgdir}/opt/PathOfBuildingCommunity"
+	mkdir -p "${dst_dir}"
+	rsync -a '--exclude=.git*' "${srcdir}/PathOfBuilding/" "${dst_dir}"
 	cd "$dst_dir"
 	# extract skill tree assets
 	for f in tree*.zip; do
-		unzip "$f"
+		unzip -u "$f"
 		rm "$f"
 	done
 	# extract lua libs
@@ -99,9 +99,9 @@ package() {
 	install -s -m755 "${srcdir}/Lua-cURLv3/lcurl.so" -t "${dst_dir}"
 	install -s -m755 "${srcdir}/pobfrontend/build/pobfrontend" -t "${dst_dir}"
 	# install shell script
-	install -D -m755 "${srcdir}/PathOfBuilding.sh" "${pkgdir}/usr/bin/PathOfBuilding"
+	install -D -m755 "${srcdir}/PathOfBuilding.sh" "${pkgdir}/usr/bin/PathOfBuildingCommunity"
 	# licenses
 	install -D -m644 "${srcdir}/Lua-cURLv3/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/Lua-cURLv3-LICENSE"
 	install -D -m644 "${srcdir}/pobfrontend/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/pobfrontend-LICENSE"
-	install -D -m644 "${srcdir}/PathOfBuilding/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/PathOfBuilding-LICENSE.md"
+	install -D -m644 "${srcdir}/PathOfBuilding/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/PathOfBuildingCommunity-LICENSE.md"
 }
