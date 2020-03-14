@@ -1,5 +1,4 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-
 _pkgname=infinityctl
 pkgname="$_pkgname-git"
 pkgver=latest
