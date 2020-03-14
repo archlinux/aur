@@ -20,8 +20,6 @@ md5sums=('dad98a1cdb2b7deb3301ecf46181d258'
 package() {
   mkdir -p "$pkgdir/usr/share/fonts/TTF"
   install -m644 $srcdir/*/*.ttf $pkgdir/usr/share/fonts/TTF/
-  
+
   install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
-
