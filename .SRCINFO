@@ -1,16 +1,21 @@
 pkgbase = ocaml-ppx_tools_versioned
 	pkgdesc = Tools for authors of ppx rewriters and other syntactic tools (with ocaml-migrate-parsetree support)
-	pkgver = 5.2.3
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = https://github.com/ocaml-ppx/ppx_tools_versioned
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-migrate-parsetree
+	makedepends = dune>=1.0.0
+	makedepends = ocaml-findlib
+	depends = ocaml>=4.02.0
+	depends = ocaml-migrate-parsetree>=1.5.0
 	options = !strip
-	source = https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.2.3.tar.gz
-	sha512sums = af20aa0031b9c638537bcdb52c75de95f316ae8fd455a38672a60da5c7c6895cca9dbecd5d56a88c3c40979c6a673a047d986b5b41e1e84b528b7df5d905b9b1
+	source = ocaml-ppx_tools_versioned-5.3.0-1.tar.gz::https://github.com/ocaml-ppx/ppx_tools_versioned/archive/5.3.0.tar.gz
+	sha256sums = 70ed66efaf09feafc9aaad392d38d2330f64e69045412ef5398a8cc52134cdfe
 
 pkgname = ocaml-ppx_tools_versioned
-
