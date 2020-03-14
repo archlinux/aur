@@ -23,7 +23,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-
   mvn clean compile assembly:single
   cat << EOF > "$_pkgname.sh"
 #!/bin/sh
@@ -33,7 +32,6 @@ EOF
 
 package() {
   cd "$srcdir/$_pkgname"
-
   install -Dm644 "target/$_pkgname-$(git describe --tags --abbrev=0)-jar-with-dependencies.jar" \
     "$pkgdir/usr/share/java/$_pkgname.jar"
   install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
