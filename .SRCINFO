@@ -1,7 +1,7 @@
 pkgbase = gfeeds
 	pkgdesc = An RSS/Atom feed reader for GNOME
-	pkgver = 0.12
-	pkgrel = 4
+	pkgver = 0.13.1
+	pkgrel = 1
 	url = https://gabmus.gitlab.io/gnome-feeds
 	changelog = CHANGELOG
 	arch = x86_64
@@ -19,11 +19,12 @@ pkgbase = gfeeds
 	depends = libhandy
 	depends = python-dateutil
 	depends = python-pytz
+	depends = python-beautifulsoup4
 	provides = gnome-feeds
 	conflicts = gnome-feeds
 	conflicts = gnome-feeds-git
 	conflicts = gfeeds-git
-	source = git+https://gitlab.gnome.org/World/gfeeds.git#tag=0.12
+	source = git+https://gitlab.gnome.org/World/gfeeds.git#tag=0.13.1
 	sha256sums = SKIP
 
 pkgname = gfeeds
