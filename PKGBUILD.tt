@@ -5,29 +5,37 @@
 pkgname=[% pkgname %]
 pkgver=[% pkgver %]
 pkgrel=[% pkgrel %]
-pkgdesc="Perl module with functions for working with IO::Handle like objects"
-arch=("any")
-url="[% url %]"
-license=("PerlArtistic" "GPL")
-depends=("perl" "perl-asa" "perl-io-string" "perl-sub-exporter")
-checkdepends=("perl-test-use-ok")
+pkgdesc='Perl module with functions for working with IO::Handle like objects'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+makedepends=('perl-module-build-tiny>=0.034')
+depends=('perl-asa' 'perl-io-string' 'perl-sub-exporter')
 source=([% source %])
 options=(!emptydirs)
-md5sums=("[% md5sums %]")
+md5sums=('[% md5sums %]')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
+}
 
 build() {
-  cd "$srcdir/[% distdir %]"
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+	cd [% distdir %]
+	sanitize
+	perl Makefile.PL INSTALLDIRS=vendor
+	make
 }
 
 check() {
-  cd "$srcdir/[% distdir %]"
-  make test
+	cd [% distdir %]
+	sanitize
+	make test
 }
 
 package() {
-  cd "$srcdir/[% distdir %]"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	cd [% distdir %]
+	sanitize
+	make install DESTDIR="$pkgdir"
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
