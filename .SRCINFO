@@ -1,0 +1,20 @@
+pkgbase = rpi-imager
+	pkgdesc = Raspberry Pi Imaging Utility
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/raspberrypi/rpi-imager
+	arch = x86_64
+	license = Apache
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	depends = curl
+	depends = libarchive
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols2
+	source = rpi-imager-1.2.tar.gz::https://github.com/raspberrypi/rpi-imager/archive/v1.2.tar.gz
+	sha256sums = 69c67d6a92629d6c701c0ffe29b3033032e9b808fe9948c8abcc83409fec93d8
+
+pkgname = rpi-imager
+
