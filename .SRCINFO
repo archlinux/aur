@@ -1,6 +1,6 @@
 pkgbase = perl-math-counting
 	pkgdesc = Perl module for combinatorial counting operations
-	pkgver = 0.1305
+	pkgver = 0.1307
 	pkgrel = 1
 	url = https://metacpan.org/release/Math-Counting
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = perl-math-counting
 	license = PerlArtistic
 	depends = perl>5.10.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/G/GE/GENE/Math-Counting-0.1305.tar.gz
-	md5sums = 31dfbac290fad197148d4877f7c9d6fa
+	source = http://search.cpan.org/CPAN/authors/id/G/GE/GENE/Math-Counting-0.1307.tar.gz
+	md5sums = e135814bdccf7a193994ff4ca97aded0
 
 pkgname = perl-math-counting
 
