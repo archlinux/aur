@@ -5,6 +5,16 @@ die () {
   exit 1
 }
 
+search () {
+  search_term=$1
+  mapfile -t name < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Name")
+  mapfile -t version < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Version")
+  mapfile -t description < <(curl -s "https://aur.archlinux.org/rpc/?v=5&type=search&arg=$search_term" | jq -r ".results" | jq -r ".[] | .Description")
+  for (( i=0; i<${#name[@]}; i++ )); do
+    echo "${name[i]} ${version[i]}: ${description[i]}"
+  done
+}
+
 if [ -f "$HOME"/.config/haurrc ]; then
   # shellcheck source=/dev/null
   source "$HOME"/.config/haurrc
@@ -57,8 +67,11 @@ for arg in "$@"; do
 done
 shift $((OPTIND -1))
 
-while getopts ":urch" opt; do
+while getopts ":surch" opt; do
   case $opt in
+    s )
+      SEARCH=true
+      ;;
     u )
       UPDATE=true
       ;;
@@ -81,6 +94,13 @@ shift $((OPTIND -1))
 
 if [ "$HAUR_ALWAYS_CLEAR_CACHE" == "y" ]; then
   CLEAR_CACHE=true
+fi
+
+if [ $SEARCH == true ]; then
+  for PACKAGE_NAME in "$@"; do
+    search "${PACKAGE_NAME}" || die "Something went wrong while searching for that package."
+  done
+  exit 0
 fi
 
 if [ $REMOVE == true ]; then
