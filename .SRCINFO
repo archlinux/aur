@@ -1,13 +1,14 @@
 pkgbase = python-uqbar
 	pkgdesc = Tools for building documentation with Sphinx, Graphviz and LaTeX
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/josiah-wolf-oberholtzer/uqbar
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-sphinx
 	depends = python-unidecode
+	depends = python-black
 	depends = python-sphinx_rtd_theme
 	depends = python-sphinx-autodoc-typehints
 	source = https://github.com/josiah-wolf-oberholtzer/uqbar/archive/v0.4.3.tar.gz
