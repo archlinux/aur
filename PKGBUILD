@@ -4,7 +4,7 @@
 
 pkgname='mono-git'
 _gitname='mono'
-pkgver=5.18.0.225.r1530.d1a5fa3783b
+pkgver=6.6.0.161.r1685.ff6294d2311
 pkgrel=1
 pkgdesc='Free implementation of the .NET platform including runtime and compiler'
 url='http://www.mono-project.com/'
@@ -36,13 +36,14 @@ source=(
   'git+https://github.com/mono/xunit-binaries.git'
   'git+https://github.com/mono/api-doc-tools.git'
   'git+https://github.com/mono/api-snapshot.git'
-  'git+https://github.com/mono/llvm.git#branch=release_60'
+  'git+https://github.com/dotnet/llvm-project.git'
   'git+https://github.com/mono/helix-binaries.git'
+  'git+https://github.com/Unity-Technologies/bdwgc.git'
   'mono.binfmt.d'
 )
 sha256sums=(
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+  'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
   '9a657fc153ef4ce23bf5fc369a26bf4a124e9304bde3744d04c583c54ca47425'
 )
 
@@ -80,8 +81,9 @@ prepare() {
     'xunit-binaries'
     'api-doc-tools'
     'api-snapshot'
-    'llvm'
+    'llvm-project'
     'helix-binaries'
+    'bdwgc'
   )
 
   for module in "${submodules[@]}"; do
@@ -139,12 +141,12 @@ package() {
 
   # Fix .pc file to be able to request mono on what it depends, fixes
   # go-oo build:
-  sed -i -e           \
-    "s:/2.0/:/4.5/:g" \
-    "${pkgdir}/usr/lib/pkgconfig/mono-nunit.pc"
-  sed -i -e                 \
-    "s:#Requires:Requires:" \
-    "${pkgdir}/usr/lib/pkgconfig/mono.pc"
+  #sed -i -e           \
+    #"s:/2.0/:/4.5/:g" \
+    #"${pkgdir}/usr/lib/pkgconfig/mono-nunit.pc"
+  #sed -i -e                 \
+    #"s:#Requires:Requires:" \
+    #"${pkgdir}/usr/lib/pkgconfig/mono.pc"
 }
 
 # vim: ts=2 sw=2 et:
