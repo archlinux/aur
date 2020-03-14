@@ -1,8 +1,8 @@
 # This PKGBUILD is part of the VDR4Arch project [https://github.com/vdr4arch]
 pkgbase=vdr-softhdcuvid
 pkgname=(vdr-softhdcuvid vdr-softhdvaapi vdr-softhddrm)
-pkgver=3.0.1.r20.g4dbf2dc
-_gitver=4dbf2dcc84245f66e7aff94e2080a52d8cb38cfa
+pkgver=3.0.1.r23.gec09dbf
+_gitver=ec09dbfb2547e8b2521ade99d802fbc76c4e1849
 _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="VDR output plugin with CUDA and Opengl"
@@ -26,18 +26,15 @@ prepare() {
 
   # Disable OSS. Arch Linux doesn't ship OSS
   sed -i '/OSS /d' Makefile
-
-  # Enable libplacebo
-  sed -i 's/LIBPLACEBO=0/LIBPLACEBO=1/' Makefile
 }
 
 build() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  make CUVID=1 clean
+  make clean
   make CUVID=1
-  make VAAPI=1 clean
+  make clean
   make VAAPI=1
-  make DRM=1 clean
+  make clean
   make DRM=1
 }
 
@@ -65,7 +62,7 @@ package_vdr-softhdvaapi() {
 }
 
 package_vdr-softhddrm() {
-  depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server' 'libplacebo>=1.7.0')
+  depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm')
   backup=("etc/vdr/conf.avail/50-softhddrm.conf")
 
   cd "${srcdir}/vdr-plugin-${_plugname}"
