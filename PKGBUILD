@@ -1,5 +1,4 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-
 _pkgname=arch-rcscripts
 pkgname="$_pkgname-git"
 pkgver=latest
