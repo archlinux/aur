@@ -1,24 +1,22 @@
 pkgbase = geeqie-git
-	pkgdesc = A lightweight image browser and viewer (fork of GQview)
-	pkgver = 20140927
-	pkgrel = 2
+	pkgdesc = Lightweight image viewer
+	pkgver = 20200203
+	pkgrel = 1
 	url = http://www.geeqie.org/
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = GPL2
 	makedepends = git
 	makedepends = intltool
+	makedepends = python
 	depends = gtk3
 	depends = exiv2
-	depends = lcms2
-	optdepends = lirc: remote control support
-	optdepends = lua: uses it somehow if detected
-	optdepends = doxygen: waste some hdd space on documentation
+	depends = ffmpegthumbnailer
+	optdepends = librsvg: SVG rendering
+	optdepends = fbida: for jpeg rotation
 	provides = geeqie
 	conflicts = geeqie
-	conflicts = gqview-devel
-	source = git+http://www.geeqie.org/git/geeqie.git
-	md5sums = SKIP
+	source = git+https://github.com/BestImageViewer/geeqie.git
+	sha256sums = SKIP
 
 pkgname = geeqie-git
 
