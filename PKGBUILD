@@ -27,7 +27,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocprim \
         -DBUILD_TEST=OFF \
-        -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr
+        -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
         "$srcdir/rocPRIM-$pkgver"
   make
 }
