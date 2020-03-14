@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=xdg-desktop-portal-liri-git
-pkgver=r13.118aecd
+pkgver=r45.cc60c4d
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

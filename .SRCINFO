@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-liri-git
 	pkgdesc = A backend implementation for xdg-desktop-portal for Liri
-	pkgver = r13.118aecd
+	pkgver = r45.cc60c4d
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
