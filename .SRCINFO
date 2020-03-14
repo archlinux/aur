@@ -1,0 +1,12 @@
+pkgbase = jitsi-meet-git
+	pkgver = r1.9a162c2
+	pkgrel = 1
+	url = https://github.com/jitsi/jitsi-meet
+	arch = x86_64
+	license = Apache
+	depends = npm
+	source = jitsi-meet-git::git+https://github.com/jitsi/jitsi-meet
+	sha256sums = SKIP
+
+pkgname = jitsi-meet-git
+
