@@ -1,5 +1,4 @@
 # Maintainer: neeshy <neeshy@tfwno.gf>
-
 _pkgname=imbpy
 pkgname="$_pkgname-git"
 pkgver=latest
