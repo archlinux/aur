@@ -1,6 +1,6 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=lariza-git
-pkgver=18.03.2.g504162f
+pkgver=19.05.12.g3d3fcd7
 pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
@@ -30,7 +30,5 @@ package() {
 
   make DESTDIR="$pkgdir" prefix="/usr" install
 
-  install -Dm755 we_adblock.so \
-    "$pkgdir"/usr/lib/"${pkgname%-git}"/web_extensions/we_adblock.so
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
