@@ -1,6 +1,6 @@
 # Maintainer: Nicole Watterson <poisonimy at protonmail dot com>
 pkgname=liboqs-git
-pkgver=0.2.0.r18.gb4b26228
+pkgver=0.2.0.r74.g795c1b79
 pkgrel=1
 pkgdesc="C library for quantum-safe cryptography."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/open-quantum-safe/liboqs"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('git' 'autoconf' 'automake' 'libtool' 'gcc' 'openssl' 'python-pytest' 'unzip' 'libxslt' 'doxygen' 'graphviz')
+makedepends=('cmake' 'gcc' 'ninja' 'openssl' 'python-pytest' 'python-pytest-xdist' 'unzip' 'libxslt' 'doxygen' 'graphviz')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -29,13 +29,13 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    autoreconf -i
-    ./configure
-    make clean
-    make -j
+    echo "$pkgdir"
+    mkdir build && cd build
+    cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -GNinja ..
+    ninja
 }
 
 package() {
-    cd "$srcdir/${pkgname%-git}"
-    make DESTDIR="$pkgdir/" install
+    cd "$srcdir/${pkgname%-git}/build"
+    ninja install
 }
