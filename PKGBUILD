@@ -7,7 +7,7 @@ pkgname=mono-alt-csc
 _gitcommit=fe64a4765e6d1dbb41d5c86708fcb02aa519247a
 pkgver=6.4.0.198
 pkgrel=1
-pkgdesc='Free implementation of the .NET platform including runtime and compiler. "csc" is renamed to "mono-csc".'
+pkgdesc='Free implementation of the .NET platform including runtime and compiler. "csc" is renamed to "mono-csc". "csi" is renamed to "mono-csi".'
 url='https://www.mono-project.com/'
 arch=('x86_64')
 license=('GPL' 'LGPL2.1' 'MPL')
@@ -105,6 +105,7 @@ package() {
   make DESTDIR="${pkgdir}" install
   make -C mcs/jay DESTDIR="${pkgdir}" prefix=/usr INSTALL=../../install-sh install
   mv "${pkgdir}/usr/bin/csc" "${pkgdir}/usr/bin/mono-csc"
+  mv "${pkgdir}/usr/bin/csi" "${pkgdir}/usr/bin/mono-csi"
   install -Dm 644 "${srcdir}/mono.binfmt.d" "${pkgdir}/usr/lib/binfmt.d/mono.conf"
 }
 
