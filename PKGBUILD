@@ -1,28 +1,39 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-migrate-parsetree
-pkgver=1.5.0
-pkgrel=1
-pkgdesc="Convert OCaml parsetrees between different versions"
-arch=('i686' 'x86_64')
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='migrate-parsetree'
+pkgname="ocaml-$_projectname"
+pkgver='1.6.0'
+pkgrel='1'
+pkgdesc='Convert OCaml parsetrees between different major versions'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ocaml-ppx/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
-url="https://github.com/ocaml-ppx/ocaml-migrate-parsetree"
-depends=('glibc' 'ocaml' 'ocaml-result' 'ocaml-ppx_derivers')
-makedepends=('dune')
+depends=('glibc' 'ocaml>=4.02.3' 'ocaml-ppx_derivers' 'ocaml-result')
+makedepends=('dune>=1.9.0' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/ocaml-ppx/ocaml-migrate-parsetree/releases/download/v${pkgver}/ocaml-migrate-parsetree-v${pkgver}.tbz")
-sha512sums=('87fdccafae83b0437f1ccd4f3cfbc49e699bc0804596480e0df88510ba33410f31d48c7f677fe72800ed3f442a3a586d82d86aee1d12a964f79892833847b16a')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('032f6f8033b547ff1636238f78b7e8b8b02481497806d4bb0b379ff56a9ac3ff')
+
+_sourcedirectory="$pkgname-$pkgver"
 
 build() {
-  cd "${srcdir}/ocaml-migrate-parsetree-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$pkgname" --verbose
+}
 
-  dune build -p ocaml-migrate-parsetree
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest -p "$pkgname" --verbose
 }
 
 package() {
-  cd "${srcdir}/ocaml-migrate-parsetree-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$pkgname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
