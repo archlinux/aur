@@ -1,16 +1,26 @@
 pkgbase = ocaml-seq
 	pkgdesc = Dummy backward-compatibility package for iterators
 	pkgver = base
-	pkgrel = 1
-	url = https://github.com/ocaml/opam-repository
-	arch = any
+	pkgrel = 2
+	url = https://github.com/ocaml/opam-repository/tree/master/packages/seq/seq.base
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = custom:CC0
-	makedepends = git
 	makedepends = ocaml-findlib
 	makedepends = opam
-	depends = ocaml
-	source = git+https://github.com/ocaml/opam-repository.git
-	sha512sums = SKIP
+	depends = ocaml>=4.07.0
+	options = !strip
+	source = ocaml-seq-base-2-opam::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/opam
+	source = ocaml-seq-base-2-META.seq::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/files/META.seq
+	source = ocaml-seq-base-2-seq.install::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/packages/seq/seq.base/files/seq.install
+	source = ocaml-seq-base-2-COPYING::https://raw.githubusercontent.com/ocaml/opam-repository/cbb37092ecf7d4b3a5ff43a69aacbed19a4668e5/COPYING
+	sha256sums = 4524608ea1de87fe2058d7eb39bd82cb001095bea65865254ec50fefad399d5c
+	sha256sums = e95062b4d0519ef8335c02f7d0f1952d11b814c7ab7e6d566a206116162fa2be
+	sha256sums = fff926c2c4d5a82b6c94c60c4c35eb06e3d39975893ebe6b1f0e6557cbe34904
+	sha256sums = 6d489af6292662d9e36d34ce49423784984a5f6e41d7b58f49b01264df59fa03
 
 pkgname = ocaml-seq
-
