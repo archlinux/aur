@@ -3,7 +3,6 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 # Contributor: Mariusz Libera <mariusz.libera@gmail.com>
 # Contributor: Jakob Nixdorf <flocke [swirly thing] shadowice [dot] org>
-
 pkgname=conspy
 pkgver=1.14
 pkgrel=1
