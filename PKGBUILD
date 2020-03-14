@@ -1,40 +1,60 @@
-# Maintainer: Youngbin Han <sukso96100@gmail.com>
-# Submitter: Youngbin Han <sukso96100@gmail.com>
-# Contributor: Changjoo Lee <icj7061@gmail.com>
-# Contributor: ywen407 <ywen407@naver.com>
-
+# Maintainer: Whemoon Jang <palindrom615@gmail.com>
 pkgname=nimf-git
-_pkgname=nimf
-pkgver=2017.01.28.aa61961
+pkgver=1.1.r51.317da32
 pkgrel=1
-pkgdesc="Nimf is an input method framework"
-arch=('any')
-url="https://cogniti.github.io/${_pkgname}"
-license=('GNU LGPL v3')
-depends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'libxkbcommon' 'glib2' 
-'libappindicator-gtk3' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 'libchewing' 'librime' 'brise')
-makedepends=('gtk2' 'gtk3' 'qt4' 'qt5-base' 'intltool' 
-'gobject-introspection' 'glib2' 'libappindicator-gtk3' 'git' 'librsvg' 
-'noto-fonts-cjk' 'libhangul' 'sunpinyin' 'sunpinyin-data' 'anthy' 
-'libchewing' 'librime' 'brise' 'audit')
+pkgdesc='Nimf is a lightweight, fast and extensible input method framework.'
+arch=('i386' 'x86_64')
+url="https://github.com/hamonikr/nimf"
+license=('LGPL3')
+groups=()
+depends=(
+	'glib2'
+	'gtk3'
+	'libxklavier'
+	'libxkbcommon>=0.5.0'
+	'libappindicator-gtk3'
+)
+makedepends=(
+	'git'
+	'meson'
+	'ninja'
+	'gcc'
+	'gtk2'
+	'gtk-doc'
+	'gtk-update-icon-cache'
+	'librsvg'
+	'anthy'
+	'libhangul>=0.0.12'
+	'm17n-db>=1.7.0'
+	'm17n-lib>=1.7.0'
+	'librime>=1.2.9'
+	'libx11'
+	'wayland-protocols'
+	'wayland'
+	'qt5-base'
+)
+optdepends=('qt4: qt4 support')
+provides=("nimf")
 conflicts=("nimf")
-source=("${_pkgname}"::"git+https://github.com/cogniti/${_pkgname}.git")
+options=()
+install=
+source=("${pkgname%-git}::git+https://github.com/palindrom615/nimf.git#branch=meson")
+noextract=()
 md5sums=('SKIP')
-options=(!buildflags)
-install=$pkgname.install
-groups=('nimf')
 
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
-	echo "$(git tag | sort -V | tail -1).$(git rev-parse --short HEAD)"
+	cd "$srcdir/${pkgname%-git}"
+# Git, tags available
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}"
-	./autogen.sh --prefix=/usr
-	make
+	cd "$srcdir/${pkgname%-git}"
+	meson setup build --buildtype=release --prefix="/usr"
+	ninja -C build
 }
+
 package() {
-	cd "${srcdir}/${_pkgname}"
-	make DESTDIR="${pkgdir}/" install
+	cd "$srcdir/${pkgname%-git}"
+	DESTDIR="$pkgdir/" ninja -C build install
 }
