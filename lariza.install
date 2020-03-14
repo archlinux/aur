@@ -1,6 +1,12 @@
 # arg 1:  the new package version
 post_install() {
   cat <<EOM
+If you wish to use any JS user scripts, please create appropriate
+symlinks in your ~/.config/lariza/user-scripts/. For example:
+
+  $ cd ~/.config/lariza/user-scripts
+  $ ln -s /usr/share/lariza/user-scripts/hints.js
+
 If you wish to use any web extensions, please create appropriate
 symlinks in your ~/.config/lariza/web_extensions/. For example:
 
