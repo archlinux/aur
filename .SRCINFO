@@ -12,8 +12,7 @@ pkgbase = xwingridselect
 	depends = gtk2
 	options = !libtool
 	options = strip
-	source = git://gitlab.com/TheCynicalLiger/xwingridselect.git
+	source = git+https://gitlab.com/TheCynicalLiger/xwingridselect.git
 	md5sums = SKIP
 
 pkgname = xwingridselect
-

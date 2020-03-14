@@ -13,7 +13,7 @@ depends=('gtk2')
 makedepends=('cmake' 'git' 'make')
 options=(!libtool strip)
 
-source=('git://gitlab.com/TheCynicalLiger/xwingridselect.git')
+source=('git+https://gitlab.com/TheCynicalLiger/xwingridselect.git')
 md5sums=('SKIP')
 
 pkgver() {
