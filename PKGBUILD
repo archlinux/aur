@@ -3,14 +3,14 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.3r20181209.10646
-_majorver=5.3
+pkgver=5.5r20200313.11107
+_majorver=5.5
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
 license=('custom')
-depends=('gd' 'emacs' 'texlive-core' 'texlive-latexextra' 'lua' 'qt5-svg' 'pango')
+depends=('gd'  'lua' 'qt5-svg' 'pango')
 makedepends=('git' 'qt5-tools')
 provides=('gnuplot=5.3')
 conflicts=('gnuplot')
@@ -28,13 +28,6 @@ pkgver() {
 prepare() {
   cd ${pkgname%-git}
   patch -p1 < "$srcdir"/lua53_compat.patch
-  sed -i 's+-fPIE+-fPIC+' configure.ac
-  # fix default source location; use the GDFONTPATH variable 
-  # to modify at runtime 
-  sed -i 's|/usr/X11R6/lib/X11/fonts/truetype|/usr/share/fonts/TTF|' \
-    src/variable.c
-  sed -i 's|/X11R6/lib/X11/fonts/Type1|/usr/share/fonts/Type1|' \
-    src/variable.c
 }  
 
 build() {
@@ -48,10 +41,7 @@ build() {
 	  --disable-wxwidgets \
 	  --without-libcerf \
 	  --with-qt=qt5 
-	  
   make pkglibexecdir=/usr/bin
-  cd docs
-  make info
 }
 
 package() {
