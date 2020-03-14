@@ -16,10 +16,8 @@ noextract=("srb2kart-v${pkgver//./}-Installer.exe")
 
 prepare() {
 	# Fix broken permissions
-	echo "Extracting srb2kart-v${pkgver//./}-assets.7z"
-	7z x srb2kart-v${pkgver//./}-assets.7z
-	echo "Extracting srb2kart-v${pkgver//./}-optional-assets.7z"
-	7z x srb2kart-v${pkgver//./}-optional-assets.7z
+	echo "Extracting srb2kart-v${pkgver//./}-Installer.exe"
+	7z x srb2kart-v${pkgver//./}-Installer.exe
 	find "$srcdir"/mdls -type d -exec chmod 755 {} \;
 }
 
