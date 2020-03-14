@@ -1,35 +1,38 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=biblesync-git
-epoch=1
-pkgver=2.0.1.1.gb16df42
+pkgver=2.0.1.r1.gb16df42
 pkgrel=1
-pkgdesc="multicast shared co-navigation library for Bible programs"
-arch=('i686' 'x86_64')
-url=https://github.com/karlkleinpaste/biblesync""
+epoch=1
+pkgdesc='multicast shared co-navigation library for Bible programs'
+arch=('x86_64' 'i686')
+url='https://github.com/karlkleinpaste/biblesync'
 license=('GPL')
-depends=('gcc-libs' 'libutil-linux')
-makedepends=('git')
-provides=("biblesync=$pkgver")
-conflicts=("biblesync")
-source=("git+https://github.com/karlkleinpaste/biblesync.git")
-md5sums=('SKIP')
-_gitname="biblesync"
+makedepends=('cmake' 'git')
+provides=("${pkgname%-git}=$pkgver" "libbiblesync.so=${pkgver%.r*}")
+conflicts=("${pkgname%-git}")
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git describe --long --tags | tr - .
+  cd "${pkgname%-git}"
+  git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${pkgname%-git}
-  [[ -d build ]] || mkdir build
+  cd "${pkgname%-git}"
+  mkdir -p build
   cd build
-  cmake -DBUILD_SHARED_LIBS=TRUE -DCMAKE_INSTALL_PREFIX=/usr -DLIBDIR=/usr/lib ..
+  cmake \
+    -DBUILD_SHARED_LIBS=TRUE \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIBDIR=/usr/lib \
+    ../
   make
 }
 
 package() {
-  cd ${pkgname%-git}/build
+  cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir/" install
 }
