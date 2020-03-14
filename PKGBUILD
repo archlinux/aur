@@ -1,4 +1,5 @@
-# Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
+# Maintainer: Mitch Bigelow <mitch.bigelow at gmail.com>
+# Contributer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=geeqie-git
 pkgver=20200203
@@ -9,7 +10,6 @@ url="http://www.geeqie.org/"
 license=('GPL2')
 depends=('gtk3' 'exiv2' 'ffmpegthumbnailer')
 makedepends=('git' 'intltool' 'python')
-#makedepends=('git' 'intltool' 'doxygen' 'yelp-tools' 'python')
 optdepends=('librsvg: SVG rendering'
             'fbida: for jpeg rotation')
 provides=('geeqie')
