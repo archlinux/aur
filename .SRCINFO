@@ -1,16 +1,21 @@
 pkgbase = ocaml-ocplib-endian
 	pkgdesc = Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 	pkgver = 1.0
-	pkgrel = 1
-	url = https://www.typerex.org/ocplib-endian.html
+	pkgrel = 2
+	url = https://github.com/OCamlPro/ocplib-endian
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
-	makedepends = ocaml-findlib
-	makedepends = ocamlbuild
 	makedepends = cppo
+	makedepends = ocamlbuild
+	makedepends = ocaml-findlib
 	depends = ocaml
-	source = https://github.com/OCamlPro/ocplib-endian/archive/1.0.tar.gz
-	sha512sums = a08fd58ec5e72510c40e8b75e0ee8327ee658f479e45dd4632bc04e3907d04aaa3684df3b993ab63fc2a6c1f1a4fb32784e9b5258730d3b89a716300522d8d7f
+	options = !strip
+	source = ocaml-ocplib-endian-1.0-2.tar.gz::https://github.com/OCamlPro/ocplib-endian/archive/1.0.tar.gz
+	sha256sums = 76f268e1aff8dbac8b6a0ca9473f90255da35f15b0fcaf26a840cb6f73029243
 
 pkgname = ocaml-ocplib-endian
-
