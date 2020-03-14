@@ -1,7 +1,7 @@
 nftables-geoip-db
 =================
 
-nftables-geoip-db makes use of the new GeoLite2 MaxMind GeoIP data.
+nftables-geoip-db makes use of @@@DBSOURCE@@@ GeoIP data.
 
 It creates country specific database files which can be used by nft command via an include statement.
 
@@ -12,7 +12,7 @@ Country specific files are stored in /usr/share/nft_geoip directory and are name
 For IPv4: CC.ipv4
 For IPv6: CC.ipv6
 
-Each country specific file defines a variable which holds IP addresses specific to that country as per MaxMind GeoIP data.
+Each country specific file defines a variable which holds IP addresses specific to that country as per @@@DBSOURCE@@@ GeoIP data.
 
 Variable names are of the following form.
 
