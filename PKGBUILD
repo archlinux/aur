@@ -1,29 +1,34 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-base
-pkgver=0.13.0
-pkgrel=1
-pkgdesc="Full standard library replacement for OCaml"
-arch=('x86_64')
-url='https://github.com/janestreet/base'
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='base'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.1'
+pkgrel='1'
+pkgdesc='Full standard library replacement for OCaml'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml' 'ocaml-sexplib0')
-makedepends=('dune')
+depends=('ocaml>=4.07.0' 'ocaml-sexplib0')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/janestreet/base/archive/v${pkgver}.tar.gz")
-sha512sums=('f753057ed5bda069c5ab535ad98e7277c8326923000dc9f164602973861fb00340d1976d48777f193bc8c0d5bd56a6c47d5b760d4833244047bff1304083e4e8')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f2dc50c724669b278428cc4c9c742f754049ebe59537b984377b0a777e677b50')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/base-${pkgver}"
-
-  dune build --profile release
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
-
 package() {
-  cd "${srcdir}/base-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -Dm755 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
