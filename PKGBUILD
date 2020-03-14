@@ -2,12 +2,13 @@
 
 pkgname=sonic-lineup
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Sonic Lineup is a free, open-source application for Windows, Linux, and Mac, designed for rapid visualisation of multiple audio files containing versions of the same source material"
 arch=('x86_64')
 url="https://www.sonicvisualiser.org/sonic-lineup/"
 license=('GPL2')
 depends=(
+  'capnproto'
   'boost-libs'
   'fftw'
   'jack2'
@@ -25,19 +26,17 @@ depends=(
   'opusfile'
   'portaudio'
   'qt5-base'
-  'qt5-base'
+  'qt5-svg'
   'qt5-tools'
   'rubberband'
   'serd'
   'sord'
 )
 makedepends=(
-  'gcc'
-  'make'
   'boost'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://code.soundsoftware.ac.uk/attachments/download/2610/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('426bdc3a6e9f702659f0338b6e471c013d74128a')
+sha256sums=('278675925e2a4242bd6dd3c1fdf80474e51ce4061908e44f820eb580f22f9b70')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
