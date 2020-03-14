@@ -1,5 +1,8 @@
 post_install() {
-	echo "\n\
-	A config file has been written to '~/.config/autostart/'. Settings such as change interval and source images can be changed there as application parameters.\n"
+	echo "
+	
+A config file has been written to '~/.config/autostart/'. Settings such as change interval and source images can be changed there as application parameters.
+
+"
 }
 
