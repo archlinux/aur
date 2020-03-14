@@ -1,0 +1,19 @@
+# Maintainer: Patrick Young <16604643+kmahyyg@users.noreply.github.com>
+pkgname=pb-go-cli
+pkgver=1.0.5
+pkgrel=1
+pkgdesc="A golang-based simple and powerful pastebin client tools for pb-go"
+arch=('x86_64')
+url="https://github.com/pb-go/pb-go"
+license=('AGPL3')
+makedepends=('xz')
+options=("!strip")
+source=(
+    "https://github.com/pb-go/pb-go/releases/download/v${pkgver}/pb-cli-linux-amd64.xz"
+)
+sha256sums=(
+    'a62a363e7d6173c311dbe77a46115f2e73bd277674f18471f664e255f305b13d'
+)
+package() {
+    install -Dm755 "pb-cli-linux-amd64" "${pkgdir}/usr/bin/pb-cli"
+}
