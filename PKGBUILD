@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=82.0.4077.0
+pkgver=82.0.4083.0
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -446,7 +446,9 @@ prepare() {
 
   # Py3toniced.
   sed 's|iteritems|items|g' \
-    -i build/linux/unbundle/remove_bundled_libraries.py \
+    -i build/linux/unbundle/remove_bundled_libraries.py
+#   sed 's|iterkeys|keys|g' \
+#     -i mojo/public/tools/bindings/validate_typemap_config.py
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save disk space."
