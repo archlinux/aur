@@ -20,10 +20,12 @@ pkgver() {
   git describe --tags --abbrev=7 HEAD | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd "${pkgname%-git}"
+prepare() {
   mkdir -p build
-  cd build
+}
+
+build() {
+  cd "${pkgname%-git}/build"
   cmake \
     -DBUILD_SHARED_LIBS=TRUE \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -33,9 +35,11 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
-  install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname/" AUTHORS COPYING LICENSE
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" ChangeLog README.md man/specification.txt WIRESHARK
-  cd build
+  cd "${pkgname%-git}/build"
   make DESTDIR="$pkgdir/" install
+  pushd ..
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+    ChangeLog README.md man/specification.txt WIRESHARK
+  install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname/" \
+    AUTHORS COPYING LICENSE
 }
