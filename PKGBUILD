@@ -1,41 +1,49 @@
+# Maintainer: vonpupp <>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Christopher Bayliss <christopher.j.bayliss@gmail.com>
-# co-Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Albert De La Fuente Vigliotti <>
 
 pkgname=xiphos
 pkgver=4.1.0
-pkgrel=5
-pkgdesc="A Bible study tool for GTK3"
-arch=('i686' 'x86_64')
-url="http://xiphos.org"
-pkgdesc="Bible study tool for GTK+"
-url="http://xiphos.org/"
-depends=('sword>=1.8.1' 'webkit2gtk' 'libgsf' 'gtkhtml4' 'biblesync<=2.0.0' 'dbus-glib')
-makedepends=('gnome-common' 'gnome-doc-utils' 'intltool' 'python2' 'docbook-utils')
-license=('GPL')
+pkgrel=7
+pkgdesc='A Bible study tool for GTK3'
+arch=('x86_64' 'i686')
+url='http://xiphos.org'
+depends=('libbiblesync.so<2.0.0'
+         'dbus-glib'
+         'gtkhtml4'
+         'libgsf'
+         'sword>=1.8.1'
+         'webkit2gtk')
+makedepends=('docbook-utils'
+             'gnome-common'
+             'gnome-doc-utils'
+             'intltool'
+             'python2')
+license=('GPL2')
 provides=('gnomesword')
-conflicts=('gnomesword')
-source=("xiphos-${pkgver}.tar.gz::https://github.com/crosswire/xiphos/archive/${pkgver}.tar.gz" \
-	"http://deb.debian.org/debian/pool/main/x/xiphos/xiphos_4.1.0.1+dfsg1-1.debian.tar.xz")
-sha512sums=('f2da65a0cf10cda5ca471a09d351be8e2e5601857b4cb363ba45865e4595bebbc9b8cfa47660a1106b1521b4059d341c7e8c04c0c712387b913bdf994d1c6400'
-            '7438bc523b8a6d50a2474e43d9057081667436b8292eef9164a5478471e8dc3380f75a84c736ff95ce4ba29bc99588f1a48cf9dfbf5c7c431dd0d53374bfeeb6')
+conflicts=("${provides[@]}")
+replaces=("${provides[@]}")
+source=("xiphos-$pkgver.tar.gz::https://github.com/crosswire/xiphos/archive/$pkgver.tar.gz"
+	    "http://deb.debian.org/debian/pool/main/x/xiphos/xiphos_$pkgver.1+dfsg1-1.debian.tar.xz")
+sha256sums=('52e2f415339b6ccef7049f5812707c617b4dbdb6ba40bf0f5a5210e04f75f849'
+            'f0cd9a894dce646dcd3de81e5020cfa2c931f3341a3eaf4f5990d79b0618fa8b')
 
 prepare () {
   cd "$pkgname-$pkgver"
   sed -i '0,/python/s//python2/' waf
-  patch -Np1 < "$srcdir"/debian/patches/0016*
-  patch -Np1 < "$srcdir"/debian/patches/0017*
+  patch -Np1 < ../debian/patches/0016*
+  patch -Np1 < ../debian/patches/0017*
 }
 
 build() {
   cd "$pkgname-$pkgver"
-
-
-  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure 
-  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 build 
+  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 configure
+  python2 ./waf --prefix=/usr --gtk=3 --enable-webkit2 build
 }
 
 package() {
-  cd "xiphos-${pkgver}"
-  python2 ./waf --destdir=$pkgdir --no-post-install install 
+  cd "$pkgname-$pkgver"
+  python2 ./waf --destdir="$pkgdir" --no-post-install install
 }
-
