@@ -1,2 +1,2 @@
 #!/bin/bash
-cd /usr/share/PathOfBuilding/ && ./pobfrontend
+cd /opt/PathOfBuilding/ && ./pobfrontend
