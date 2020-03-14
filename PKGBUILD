@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_gitname}/check-broken-packages"
-    cargo build --release
+    cargo build --release --locked
 }
 
 package() {
