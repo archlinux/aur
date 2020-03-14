@@ -1,19 +1,21 @@
 # Maintainer: Kyle Manna <kyle[at]kylemanna[d0t]com>
 pkgname=kipart
-pkgver=0.1.33
+pkgver=0.1.40
 pkgrel=1
 pkgdesc="Python package for generating multi-unit schematic symbols for KiCad from a CSV file"
 url="https://github.com/xesscorp/KiPart"
 depends=('python'
-         'python-setuptools'
          'python-affine'
          'python-future'
+         'python-openpyxl'
+         'python-pyparsing'
+         'python-setuptools'
 )
 optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/k/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7414e03749b214e9cb5fb32a5c4c2d205d9ebba345db8ab5bed9b385f4ba67c5')
+sha256sums=('2027cde4a98a636272ebcf2d8033add4efe02c95036c1162a1660d9143ab457a')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
