@@ -1,6 +1,6 @@
 pkgbase = borg-bin
 	pkgdesc = Borg backup - prebuilt standalone binary
-	pkgver = 1.1.10
+	pkgver = 1.1.11
 	pkgrel = 1
 	url = https://borgbackup.readthedocs.io/en/stable/installation.html#standalone-binary
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = borg-bin
 	conflicts = borg
 	conflicts = borgbackup
 	conflicts = borg-arm-bin
-	source = borg-bin-1.1.10-README.txt::https://github.com/borgbackup/borg/releases/download/1.1.10/README.txt
-	sha256sums = e694697cd7b7ccc6330ab16eb91046150f5950ecb0598e125cadaac0ebd4dada
-	source_x86_64 = borg-bin-1.1.10-x86_64::https://github.com/borgbackup/borg/releases/download/1.1.10/borg-linux64
-	sha256sums_x86_64 = 6338d67aad4b5cd327b25ea363e30f0ed4abc425ce2d6a597c75a67a876ef9af
-	source_i686 = borg-bin-1.1.10-i686::https://github.com/borgbackup/borg/releases/download/1.1.10/borg-linux32
-	sha256sums_i686 = a55d3c85d45bf4965476a542e11731457621d39031f55f104f389277ec950187
+	source = borg-bin-1.1.11-README.txt::https://github.com/borgbackup/borg/releases/download/1.1.11/README.txt
+	sha256sums = 5ccff5fa1ba183447a9de47cba6cea95bb25905ebd39edc30371cac761ffaf12
+	source_x86_64 = borg-bin-1.1.11-x86_64::https://github.com/borgbackup/borg/releases/download/1.1.11/borg-linux64
+	sha256sums_x86_64 = 7848d1788b5d7f2ae99a599a87992cab4f01584fe5eb393819fceaecf076433b
+	source_i686 = borg-bin-1.1.11-i686::https://github.com/borgbackup/borg/releases/download/1.1.11/borg-linux32
+	sha256sums_i686 = 3626501dc9715324c70a20b5140a8993b70f0f8530066ab18fb8b75eb4250a72
 
 pkgname = borg-bin
 
