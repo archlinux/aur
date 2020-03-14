@@ -1,28 +1,39 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-mmap
-pkgver=1.1.0
-pkgrel=1
-pkgdesc="Provides a Mmap.map_file functions for mapping files in memory"
-arch=('x86_64')
-url="https://github.com/mirage/mmap"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='mmap'
+pkgname="ocaml-$_projectname"
+pkgver='1.1.0'
+pkgrel='2'
+pkgdesc='Provides a Mmap.map_file function for mapping files in memory'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/mirage/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml')
-makedepends=('dune')
-source=("https://github.com/mirage/mmap/releases/download/v${pkgver}/mmap-v${pkgver}.tbz")
-sha512sums=('15e4ec2634998f321f495de5372dc75a3f4059ab7512115603ae8fd99a619c91299d34c8a12a697aa36df4ce14c90c66746b873eddf004b7bbbeaef8ec7858f5')
+depends=('ocaml>=4.02.3')
+makedepends=('dune>=1.6.0' 'ocaml-findlib')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('28db2e3cc92e3cba800860a117b6bda40a00a3a7a1c138e5532eedf0b822001b')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/mmap-v${pkgver}"
-
-  dune build --profile release
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest -p "$_projectname" --verbose
+}
 
 package() {
-  cd "${srcdir}/mmap-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
