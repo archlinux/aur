@@ -1,6 +1,6 @@
 pkgbase = perl-string-print
 	pkgdesc = Perl package providing printf() alternative
-	pkgver = 0.92
+	pkgver = 0.94
 	pkgrel = 1
 	url = https://metacpan.org/release/String-Print
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = perl-string-print
 	depends = perl-timedate>=2.30
 	depends = perl-unicode-linebreak
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/String-Print-0.92.tar.gz
-	md5sums = 665d6dc656e81c933dd1040832969de2
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/String-Print-0.94.tar.gz
+	md5sums = 88b77b22f688823e22d4ec3908a87822
 
 pkgname = perl-string-print
 
