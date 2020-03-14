@@ -1,6 +1,7 @@
+# This PKGBUILD is hereby dedicated to the public domain.
 # Maintainer: Carson Black <uhhadd AT gmail DOT com>
 pkgname=ikona
-pkgver=0.7.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="Icon preview designed for Plasma"
 arch=(any)
@@ -10,22 +11,33 @@ license=("GPL")
 
 depends=(
     "kirigami2" "plasma-framework" "qt5-base" "qt5-quickcontrols2" "qt5-declarative"
-    "qt5-webengine"
+    "qt5-webengine" "ki18n"
 )
 makedepends=(
-    "cmake"
+    "cmake" "extra-cmake-modules" "rust" "patchelf"
 )
 
-source=("https://invent.kde.org/kde/ikona/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-md5sums=('71643037824ded39cac9cdc6ab6b0217')
+source=("https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz"{,.sig}
+        "https://download.kde.org/stable/$pkgname/$pkgver/$pkgname-$pkgver.cargo.vendor.tar.xz"{,.sig})
+noextract=("$pkgname-$pkgver.cargo.vendor.tar.xz")
+md5sums=("a971ea585b6c506e1d31099778e9beac"
+         "SKIP"
+         "c08391d5f14d314dc06a0c8cb2408f2e"
+         "SKIP")
+validpgpkeys=("072508A8631C101D1049EE3C6872C7CED8B46ABE") # Carson Black <uhhadd@gmail.com>
+
+ikona_sourcedir=""
 
 prepare() {
-    mkdir -p build && cd build
+    ikona_sourcedir="$PWD"
+    cp "$ikona_sourcedir/$pkgname-$pkgver.cargo.vendor.tar.xz" "ikona-1.0/$pkgname.cargo.vendor.tar.xz"
 }
 
 build() {
     cd build
-    cmake ../$pkgname-v$pkgver \
+    cmake ../$pkgname-$pkgver \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBEXECDIR=lib
     make
 }
@@ -33,4 +45,6 @@ build() {
 package() {
     cd build
     make DESTDIR="$pkgdir" install
+    patchelf --remove-rpath "$pkgdir/usr/bin/ikona-cli"
+    patchelf --remove-rpath "$pkgdir/usr/lib/libikonars.so"
 }
