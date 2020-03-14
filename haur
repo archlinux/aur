@@ -57,6 +57,7 @@ UPDATE=false
 for arg in "$@"; do
   shift
   case "$arg" in
+    "--search") set -- "$@" "-s" ;;
     "--update") set -- "$@" "-u" ;;
     "--remove") set -- "$@" "-r" ;;
     "--clear-cache") set -- "$@" "-c" ;;
