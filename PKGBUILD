@@ -2,7 +2,7 @@
 
 _pkgname=jpexs-decompiler
 pkgname=$_pkgname-git
-pkgver=10.0.0.r44.g79495fd0f
+pkgver=11.2.0.r29.g5df2728a9
 epoch=1
 pkgrel=1
 pkgdesc="Opensource flash SWF decompiler and editor"
@@ -27,7 +27,7 @@ java_8_home() {
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     ( set -o pipefail
-      git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version//' ||
+      git describe --long --tag --match='version*' 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version//' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }

@@ -1,6 +1,6 @@
 pkgbase = jpexs-decompiler-git
 	pkgdesc = Opensource flash SWF decompiler and editor
-	pkgver = 10.0.0.r44.g79495fd0f
+	pkgver = 11.2.0.r29.g5df2728a9
 	pkgrel = 1
 	epoch = 1
 	url = https://www.free-decompiler.com/flash/
