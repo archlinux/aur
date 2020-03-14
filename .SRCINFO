@@ -1,6 +1,6 @@
 pkgbase = eolie-next-git
 	pkgdesc = Simple web browser for GNOME (dev branch)
-	pkgver = 0.9.98.1.r4.gbd2a6c23
+	pkgver = 0.9.98.1.r7.g33895abf
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Eolie
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = eolie-next-git
 	optdepends = python-fxa: Firefox Sync support
 	optdepends = python-pyopenssl: Show SSL certificates
 	optdepends = python-requests-hawk: Firefox Sync support
-	provides = eolie=0.9.98.1.r4.gbd2a6c23
+	provides = eolie=0.9.98.1.r7.g33895abf
 	conflicts = eolie
 	conflicts = eolie-git
 	conflicts = eolie-stable-git
