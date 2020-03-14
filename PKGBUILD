@@ -3,7 +3,7 @@
 
 pkgname=srb2kart-data
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Data files for Sonic Robo Blast 2 Kart"
 arch=('any')
 license=('custom')
@@ -12,8 +12,8 @@ optdepends=('srb2kart: "Sonic Robo Blast 2 Kart" game')
 makedepends=('p7zip')
 source=("https://github.com/STJr/Kart-Public/releases/download/v$pkgver/srb2kart-v${pkgver//./}-Installer.exe")
 sha256sums=('3af7d005082c2d08a0494a5bb9137b335009ff311cb5bfec215ed07d8ab2185b')
-noextract=("srb2kart-v${pkgver//./}-assets.7z"
-           "srb2kart-v${pkgver//./}-optional-assets.7z")
+noextract=("srb2kart-v${pkgver//./}-Installer.exe")
+
 prepare() {
 	# Fix broken permissions
 	echo "Extracting srb2kart-v${pkgver//./}-assets.7z"
