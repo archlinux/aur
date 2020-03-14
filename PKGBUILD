@@ -2,7 +2,7 @@
 
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
-pkgver=2.6.13
+pkgver=2.6.15
 pkgrel=1
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ install=wireshark-gtk2.install
 source=(https://www.wireshark.org/download/src/${_pkgbase}-${pkgver}.tar.xz
         wireshark.sysusers
         do_not_use_svn_version.patch)
-sha512sums=('688ccdefdb3e6f86446a35c1dd9d6600da8ede3d4534895fe66ef788cfa2de6a2f07e6c608cede5c6ebb64f560b52f639dd38f34ab0bec3ac816bfd632d867da'
+sha512sums=('b9a0c7e69d3a36e7685cae10466b4bef1005becd567b955a2f6353ebc5456a56eda577866d9c7ee52e35612f6834ecd4f231ec5ee9475b698f57b6bbaf7eeca4'
             '3956c1226e64f0ce4df463f80b55b15eed06ecd9b8703b3e8309d4236a6e1ca84e43007336f3987bc862d8a5e7cfcaaf6653125d2a34999a0f1357c52e7c4990'
             '847eac73c789b02f57f0ec378d086aea5a103cf0c6525c227d168ad67db08703686d4df37ed2ac95f47125cfcd5cafd472e2988f7f743428b291dc2aebe0f435')
 
