@@ -15,6 +15,7 @@ pkgbase = ulauncher-git
 	depends = webkit2gtk
 	depends = python-dbus
 	depends = python-gobject
+	depends = python-cairo
 	depends = python-pyinotify
 	depends = python-levenshtein
 	depends = python-xdg

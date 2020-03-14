@@ -10,7 +10,7 @@ arch=('any')
 url="http://ulauncher.io"
 license=('GPL3')
 depends=('gobject-introspection-runtime' 'libappindicator-gtk3' 'libkeybinder3' 'webkit2gtk'
-         "python-"{dbus,gobject,pyinotify,levenshtein,xdg,websocket-client})
+         "python-"{dbus,gobject,cairo,pyinotify,levenshtein,xdg,websocket-client})
 makedepends=('git' 'yarn' "python-"{distutils-extra,setuptools})
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
