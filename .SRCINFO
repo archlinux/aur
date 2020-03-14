@@ -4,7 +4,7 @@ pkgbase = tal-reverb4
 	pkgrel = 1
 	url = https://tal-software.com
 	arch = x86_64
-	license = GPL2
+	license = EULA
 	source = https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip
 	md5sums = 3d71c01260ea3329d6c6e88807fb710c
 

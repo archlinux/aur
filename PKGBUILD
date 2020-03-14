@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A Simple Algorithmic Reverb By TAL Software."
 arch=('x86_64')
 url="https://tal-software.com"
-license=('GPL2')
+license=('EULA')
 source=('https://tal-software.com/downloads/plugins/TAL-Reverb-4_64_linux.zip')
 md5sums=('3d71c01260ea3329d6c6e88807fb710c')
 
