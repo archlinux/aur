@@ -83,7 +83,7 @@ while getopts ":surch" opt; do
       CLEAR_CACHE=true
       ;;
     h )
-      echo "Usage: haur [--remove | -r] | [--clear-cache | -c] [--update | -u] <package names>"
+      echo "Usage: haur [--remove | -r] | [--clear-cache | -c] [--update | -u] [--search | -s]<package names>"
       exit 0
       ;;
     \?)
