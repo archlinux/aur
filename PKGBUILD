@@ -17,6 +17,12 @@ build() {
   cargo build --release --locked
 }
 
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  cargo test --release --locked
+}
+
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
