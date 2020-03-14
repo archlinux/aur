@@ -75,4 +75,9 @@ package() {
   install -D -m 644 "${srcdir}/one-release-${pkgver}/src/cli/command_parser.rb" "${pkgdir}/usr/lib/one/ruby/cli/command_parser.rb"
   install -D -m 644 "${srcdir}/one-release-${pkgver}/src/cli/one_helper.rb" "${pkgdir}/usr/lib/one/ruby/cli/one_helper.rb"
   find "${srcdir}/one-release-${pkgver}/src/cli/one_helper" -mindepth 1 -maxdepth 1 -type f -exec install -m644 "{}" "${pkgdir}/usr/lib/one/ruby/cli/one_helper/" \;
+
+  # Install opennebula
+  install -m 0755 -d "${pkgdir}/usr/lib/one/ruby/opennebula"
+  install -D -m 644 "${srcdir}/one-release-${pkgver}/src/oca/ruby/opennebula.rb" "${pkgdir}/usr/lib/one/ruby/opennebula.rb"
+  find "${srcdir}/one-release-${pkgver}/src/oca/ruby/opennebula/" -mindepth 1 -maxdepth 1 -type f -exec install -m644 "{}" "${pkgdir}/usr/lib/one/ruby/opennebula/" \;
 }
