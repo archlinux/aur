@@ -1,7 +1,7 @@
 pkgbase = hipsycl-cuda
 	pkgdesc = Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illuhad/hipSYCL
 	arch = x86_64
 	license = BSD
@@ -13,7 +13,7 @@ pkgbase = hipsycl-cuda
 	depends = hipcpu
 	depends = openmp
 	depends = hip-nvcc
-	depends = cuda
+	depends = cuda-10.0
 	provides = hipsycl
 	provides = sycl
 	source = hipsycl-cuda-0.8.0::https://github.com/illuhad/hipSYCL/archive/v0.8.0.tar.gz
