@@ -3,12 +3,12 @@
 
 pkgname=pagmo
 pkgver=2.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model"
 arch=('i686' 'x86_64')
 url="https://github.com/esa/pagmo2"
 license=('GPLv3')
-depends=('boost')
+depends=('boost' 'intel-tbb')
 optdepends=('coin-or-ipopt: Ipopt optimizer support'
             'eigen: library for matrix math'
             'nlopt: NLopt optimizer support')

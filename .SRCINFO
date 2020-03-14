@@ -1,13 +1,14 @@
 pkgbase = pagmo
 	pkgdesc = Perform parallel computations of optimisation tasks (global and local) via the asynchronous generalized island model
 	pkgver = 2.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esa/pagmo2
 	arch = i686
 	arch = x86_64
 	license = GPLv3
 	makedepends = cmake
 	depends = boost
+	depends = intel-tbb
 	optdepends = coin-or-ipopt: Ipopt optimizer support
 	optdepends = eigen: library for matrix math
 	optdepends = nlopt: NLopt optimizer support
