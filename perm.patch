@@ -1,13 +1,10 @@
---- src/makefile
-+++ src/makefile
-@@ -28,21 +28,21 @@
- 	mkdir -p $(DESTDIR)$(sharedir)/appdata
+--- /tmp/conky-manager2-git/src/conky-manager2-git/src/b/makefile
++++ /tmp/conky-manager2-git/src/conky-manager2-git/src/a/makefile
+@@ -29,20 +29,19 @@
  	
  	#binary
--	install -m 0755 ${app_name} "$(DESTDIR)$(bindir)"
+ 	install -m 0755 ${app_name} "$(DESTDIR)$(bindir)"
 -	install -m 0755 ${app_name}-uninstall "$(DESTDIR)$(bindir)"
-+	install -m 0644 ${app_name} "$(DESTDIR)$(bindir)"
-+	install -m 0644 ${app_name}-uninstall "$(DESTDIR)$(bindir)"
  	
  	#launcher
 -	install -m 0755 ${app_name}.desktop "$(DESTDIR)$(launcherdir)"
