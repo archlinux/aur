@@ -48,7 +48,9 @@ build() {
 package() {
   cd "$srcdir/build"
 
-  make DESTDIR="$pkgdir" install
+  make install
+
+  cp -r "$srcdir/build/opt" "$pkgdir/"
 
   install -d "$pkgdir/etc/ld.so.conf.d"
   cat << EOF > "$pkgdir/etc/ld.so.conf.d/hipsparse.conf"
