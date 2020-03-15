@@ -3,7 +3,7 @@
 pkgbase=gtest-py3
 pkgname=('gtest-py3' 'gmock-py3')
 pkgver=1.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Test - C++ testing utility'
 url='https://github.com/google/googletest'
 arch=('x86_64')
@@ -52,19 +52,18 @@ package_gtest-py3() {
   # Shouldn't be present
   find "${pkgdir}" -name '*.pump' -printf 'Removing %P\n' -delete
 
-  # Split gmock
-  mkdir -p gmock/{include,lib/pkgconfig}
-  mv "${pkgdir}"/usr/include/gmock gmock/include/
-  mv "${pkgdir}"/usr/lib/libgmock* gmock/lib/
-  mv "${pkgdir}"/usr/lib/pkgconfig/gmock* gmock/lib/pkgconfig/
-
   cd ${_srcname}/googletest
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 755 scripts/gtest-config.in -t "${pkgdir}/usr/bin"
-  install -Dm 644 cmake/* -t "${pkgdir}/usr/src/googletest/cmake"
-  install -Dm 644 src/* -t "${pkgdir}/usr/src/googletest/src"
-  install -Dm 644 CMakeLists.txt -t "${pkgdir}/usr/src/googletest"
+
+  mkdir -p "${pkgdir}/usr/include"
+  cp -r include/* "${pkgdir}/usr/include"
+
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/googletest"
+  install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/googletest"
+
+  cd ${srcdir}
+  mkdir -p "${pkgdir}/usr/src/googletest"
+  cp -r ${_srcname}/. "${pkgdir}/usr/src/googletest"
+
 }
 
 package_gmock-py3() {
@@ -73,19 +72,15 @@ package_gmock-py3() {
   provides=('gmock')
   conflicts=('gmock')
 
-  mv gmock "${pkgdir}/usr"
-
   cd ${_srcname}/googlemock
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm 755 scripts/gmock-config.in -t "${pkgdir}/usr/bin"
-  install -Dm 644 cmake/* -t "${pkgdir}/usr/src/gmock/cmake"
-  install -Dm 644 src/* -t "${pkgdir}/usr/src/gmock/src"
-  install -Dm 644 CMakeLists.txt -t "${pkgdir}/usr/src/gmock"
-  install -Dm 644 scripts/generator/{*.py,LICENSE,README*} -t "${pkgdir}/usr/share/gmock/generator"
-  install -Dm 644 scripts/generator/cpp/* -t "${pkgdir}/usr/share/gmock/generator/cpp"
 
-  sed -i 's|src/||' "${pkgdir}/usr/src/gmock/src/gmock-all.cc"
+  mkdir -p "${pkgdir}/usr/share/gmock/cpp"
+  cp -r scripts/generator/cpp/. "${pkgdir}/usr/share/gmock/cpp"
+
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/googlemock"
+  install -Dm 644 README.md CONTRIBUTORS -t "${pkgdir}/usr/share/doc/googlemock"
+
+  sed -i 's|src/||' "${pkgdir}/../gtest-py3/usr/src/googletest/googlemock/src/gmock-all.cc"
 
   python -m compileall -d /usr/share/gmock "${pkgdir}/usr/share/gmock"
   python -O -m compileall -d /usr/share/gmock "${pkgdir}/usr/share/gmock"

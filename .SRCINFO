@@ -1,7 +1,7 @@
 pkgbase = gtest-py3
 	pkgdesc = Google Test - C++ testing utility
 	pkgver = 1.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/googletest
 	arch = x86_64
 	license = BSD
