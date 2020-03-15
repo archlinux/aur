@@ -4,7 +4,7 @@
 
 pkgname=perl-log-report
 pkgver=1.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package to log/report a problem with exceptions, pluggable handlers and translation support'
 arch=('any')
 url='https://metacpan.org/release/Log-Report'
@@ -36,5 +36,5 @@ package() {
 	cd Log-Report-1.29
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

@@ -1,7 +1,7 @@
 pkgbase = perl-log-report
 	pkgdesc = Perl package to log/report a problem with exceptions, pluggable handlers and translation support
 	pkgver = 1.29
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Log-Report
 	arch = any
 	license = PerlArtistic
