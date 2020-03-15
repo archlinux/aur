@@ -11,7 +11,6 @@ pkgbase = ocaml-ppx_derivers
 	arch = aarch64
 	license = BSD
 	makedepends = dune
-	makedepends = ocaml-findlib
 	depends = ocaml
 	options = !strip
 	source = ocaml-ppx_derivers-1.2.1-2.tar.gz::https://github.com/ocaml-ppx/ppx_derivers/archive/1.2.1.tar.gz
