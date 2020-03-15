@@ -1,7 +1,7 @@
 pkgbase = perl-xml-compile-cache
 	pkgdesc = Perl package providing cache for compiled XML translators
 	pkgver = 1.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-Compile-Cache
 	arch = any
 	license = PerlArtistic

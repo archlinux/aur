@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile-cache
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package providing cache for compiled XML translators'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-Cache'
@@ -40,5 +40,5 @@ package() {
 	cd XML-Compile-Cache-1.06
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
