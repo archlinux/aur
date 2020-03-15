@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=nucleon-git
-pkgver=1
-pkgrel=1
+pkgver=r13.48750fe
+pkgrel=2
 pkgdesc='Dynamic load balancer written in Rust'
 arch=('i686' 'x86_64')
 url='https://github.com/NicolasLM/nucleon'
@@ -11,6 +11,11 @@ provides=('nucleon')
 makedepends=('rust')
 source=("git+${url}")
 md5sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/nucleon"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 build() {
   cd "${srcdir}/nucleon"
