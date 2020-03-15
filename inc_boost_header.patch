@@ -1,0 +1,57 @@
+diff -ruN old/src/mbase/project/table.cpp new/src/mbase/project/table.cpp
+--- old/src/mbase/project/table.cpp	2020-03-15 21:42:06.873029453 +0330
++++ new/src/mbase/project/table.cpp	2020-03-15 21:45:19.241211612 +0330
+@@ -29,6 +29,7 @@
+ #include "theme.h"
+ 
+ #include <mbase/resources.h>
++#include <boost/filesystem/directory.hpp>
+ 
+ 
+ const char* APROJECT_VERSION = "1.2.4";
+diff -ruN old/src/mgui/editor/toolbar.cpp new/src/mgui/editor/toolbar.cpp
+--- old/src/mgui/editor/toolbar.cpp	2020-03-15 21:43:22.593461317 +0330
++++ new/src/mgui/editor/toolbar.cpp	2020-03-15 21:42:16.569751981 +0330
+@@ -45,6 +45,8 @@
+ #include <mlib/sdk/logger.h>
+ #include <mlib/range/enumerate.h>
+ 
++#include <boost/filesystem/directory.hpp>
++
+ namespace Editor
+ {
+ 
+diff -ruN old/src/mgui/project/mconstructor.cpp new/src/mgui/project/mconstructor.cpp
+--- old/src/mgui/project/mconstructor.cpp	2020-03-15 21:43:22.596794669 +0330
++++ new/src/mgui/project/mconstructor.cpp	2020-03-15 21:42:16.569751981 +0330
+@@ -52,6 +52,8 @@
+ // COPY_N_PASTE_ETALON из go-file.c, проект Gnumeric, http://projects.gnome.org/gnumeric/
+ //
+ 
++#include <boost/filesystem/directory.hpp>
++
+ #ifndef GOFFICE_WITH_GNOME
+ static char *
+ check_program (char const *prog)
+diff -ruN old/src/mlib/filesystem.cpp new/src/mlib/filesystem.cpp
+--- old/src/mlib/filesystem.cpp	2020-03-15 21:42:06.876362806 +0330
++++ new/src/mlib/filesystem.cpp	2020-03-15 21:54:14.022647682 +0330
+@@ -30,6 +30,7 @@
+ #if BOOST_MINOR_VERSION >= 51
+ #define BOOST_FS_3 boost::filesystem
+ #include <boost/filesystem/path_traits.hpp> // boost::filesystem::convert()
++#include <boost/filesystem/directory.hpp>
+ #else
+ #define BOOST_FS_3 boost::filesystem3
+ #include <boost/filesystem/v3/path_traits.hpp>
+diff -ruN old/src/mlib/sdk/bfs.h new/src/mlib/sdk/bfs.h
+--- old/src/mlib/sdk/bfs.h	2020-03-15 21:43:22.596794669 +0330
++++ new/src/mlib/sdk/bfs.h	2020-03-15 21:42:16.569751981 +0330
+@@ -7,6 +7,7 @@
+ //#define BOOST_FILESYSTEM_NO_DEPRECATED
+ 
+ #include <boost/filesystem/path.hpp>
++#include <boost/filesystem/exception.hpp>
+ #include <boost/filesystem/operations.hpp>
+ #include <boost/filesystem/convenience.hpp> // fs::create_directories()
+ 
