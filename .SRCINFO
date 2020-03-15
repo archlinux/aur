@@ -1,7 +1,7 @@
 pkgbase = perl-test-www-mechanize-psgi
 	pkgdesc = Perl module to test PSGI programs using WWW::Mechanize
 	pkgver = 0.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Test-WWW-Mechanize-PSGI
 	arch = any
 	license = PerlArtistic

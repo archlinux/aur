@@ -4,7 +4,7 @@
 
 pkgname=perl-test-www-mechanize-psgi
 pkgver=0.39
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to test PSGI programs using WWW::Mechanize'
 arch=('any')
 url='https://metacpan.org/release/Test-WWW-Mechanize-PSGI'
@@ -37,5 +37,5 @@ package() {
 	cd Test-WWW-Mechanize-PSGI-0.39
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
