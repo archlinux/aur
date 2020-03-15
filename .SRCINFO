@@ -1,6 +1,6 @@
 pkgbase = yetanotherbar-git
 	pkgdesc = YetAnotherBar is simple gtk based statusbar for i3 with support for CSS
-	pkgver = 0.0.1
+	pkgver = 0.0.1.r0.g80feb5e
 	pkgrel = 1
 	url = https://github.com/PolyMeilex/YetAnotherBar.git
 	arch = i686
