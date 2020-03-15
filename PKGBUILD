@@ -1,13 +1,13 @@
 # Maintainer: MatMoul <matmoul@gmail.com>
 
 _pkggit=octopi
-_gitcommit=99f737e3cc92b8269da085ab2539bdba80833e49
-_gitsha256='7a7a76cd5dc35f42b0e06ec214c6e04562c07f05185ab077295ca17d710360c9'
+_gitcommit=292506e02006be89f02fe6ccb10f8e3ceefbf7e8
+_gitsha256='9ce5ccca003bb738f707801ad70aef9ae45de1662f7bd2c53e7ec4dc41efdc77'
 
 pkgbase=octopi-dev
 pkgname='octopi-dev'
 pkgver=0.9.0
-pkgrel=21
+pkgrel=22
 pkgdesc="A powerful Pacman frontend using Qt5 libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
