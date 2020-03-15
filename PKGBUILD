@@ -8,14 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!493' '!575' '!579' '!719' '!983' '!1000')
-_merge_requests_to_use=('!493' '!575' '!579' '!719' '!724' '!983' '!1000') # Saren's pick
-# _merge_requests_to_use=('!575' '!719' '!724' '!983' '!1000')
+# available MR: ('!429' '!493' '!579' '!724' '!983')
+_merge_requests_to_use=('!724' '!983') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.0
+pkgver=3.36.0+26+g0700f3749
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -24,7 +23,7 @@ license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas libcanberra
          startup-notification zenity libsm gnome-desktop upower libxkbcommon-x11
          gnome-settings-daemon libgudev libinput pipewire xorg-server-xwayland)
-makedepends=(gobject-introspection git egl-wayland meson xorg-server "sysprof>=3.34")
+makedepends=(gobject-introspection git egl-wayland meson xorg-server sysprof)
 checkdepends=(xorg-server-xvfb)
 provides=(mutter mutter-781835-workaround libmutter-6.so)
 conflicts=(mutter)
@@ -32,10 +31,8 @@ replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
 _commit=6b852e6cb30559b2ab56bb29ccc2e8f95aa89f89  # tags/3.36.0^0
-source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        https://gitlab.gnome.org/GNOME/mutter/merge_requests/724.diff)
-sha256sums=('SKIP'
-            'c8cf39ce12e325a955f9cd41731da3a419dfe196efacedd587ddf4e354f43b17')
+source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -125,12 +122,6 @@ prepare() {
   # Comment: Not picked by default because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/merge_requests/493#note_549833
   pick_mr '!493' 3aa449af^..1017ce44 'merge'
 
-  # Title: Honour `CLUTTER_ACTOR_NO_LAYOUT` more efficiently
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/575
-  # Type: 1
-  # Status: 2
-  pick_mr '!575' 'clutter/stage: Add an API for shallow relayouts' 'clutter/actor: Use the new shallow relayout API'
-
   # Title: clutter/stage: Update input devices right after doing a relayout
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
   # Type: 1
@@ -145,15 +136,6 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '!579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
-  # Title: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/719
-  # Type: 1
-  # Status: 1
-  # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/commit/97140ab6346bd29208e99c9c9aab892c2eec0e52
-  #          Use together with !762 to fix one of its issues.
-  # pick_mr '!719' 97140ab6346bd29208e99c9c9aab892c2eec0e52 'revert'
-  # pick_mr '!762' 'renderer-native: Check that frame_info != NULL'
-
   # Title: clutter/text: Check if attributes are equal before applying
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/983
   # Type: 1
@@ -161,19 +143,11 @@ prepare() {
   # Comment:
   pick_mr '!983' 'clutter/text: Check if attributes are equal before applying'
 
-  # Title: clutter-actor: Add detail to captured-event
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/1000
-  # Type: 1
-  # Status: 1
-  # Comment:
-  # pick_mr '!1000' 'clutter-actor: Add detail to captured-event'
-
   # Title: Sync timelines to hardware vsync
   # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
   # Type: 1
   # Status: 2
-  # Comment: Stolen from AUR comments
-  pick_mr '!724' '../724.diff' 'patch'
+  pick_mr '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
 
 }
 
@@ -193,11 +167,11 @@ check() (
   glib-compile-schemas "${GSETTINGS_SCHEMA_DIR:=$PWD/build/data}"
   export XDG_RUNTIME_DIR GSETTINGS_SCHEMA_DIR
 
-  # Unexpected passes in conform test
   # Stacking test flaky
   dbus-run-session xvfb-run \
     -s '-screen 0 1920x1080x24 -nolisten local +iglx -noreset' \
-    meson test -C build --print-errorlogs || :)
+    meson test -C build --print-errorlogs || :
+)
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
