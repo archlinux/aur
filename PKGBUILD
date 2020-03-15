@@ -10,6 +10,7 @@ license=('MIT')
 arch=('any')
 depends=('python')
 makedepends=('python' 'python-setuptools')
+#checkdepends=('vagrant')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/todddeluca/python-vagrant/archive/${pkgver}.tar.gz")
 sha512sums=('3763b479fc0c540aec841f38d513d1f836eb17236703ee3490199cd22dde06585b362570ffb823ec63ef0dbdf94f1b38f68928b4be95557fad7137edc7410dd1')
 
@@ -19,10 +20,11 @@ build() {
   python setup.py build
 }
 
-check() {
-  cd "${srcdir}/${pkgbase}-${pkgver}"
-  python setup.py test
-}
+# Disabled, because they need Vagrant. Systemd-nspawn doesn't support this.
+#check() {
+#  cd "${srcdir}/${pkgbase}-${pkgver}"
+#  python setup.py test
+#}
 
 package() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
