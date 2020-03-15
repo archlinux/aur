@@ -22,10 +22,16 @@ depends=(
     pango
     sdl2
 )
-source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
-        "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
-source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
-               "${pkgname}_${pkgver}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages")
+# 2020-03-16 grawity: The main binary has been missing from the .deb for two weeks.
+#                     Temporarily use old package until Jagex's build system is fixed.
+#source=("${pkgname}_${pkgver}_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release"
+#        "${pkgname}_${pkgver}_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg")
+#source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb"
+#               "${pkgname}_${pkgver}_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages")
+source=("${pkgname}_${pkgver}_Release::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_Release"
+        "${pkgname}_${pkgver}_Release.gpg::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_Release.gpg")
+source_x86_64=("${pkgname}_${pkgver}_amd64.deb::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_amd64.deb"
+               "${pkgname}_${pkgver}_Packages::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_Packages")
 sha256sums=('SKIP'
             'SKIP')
 sha256sums_x86_64=('SKIP'

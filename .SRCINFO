@@ -17,13 +17,13 @@ pkgbase = runescape-launcher
 	depends = openssl
 	depends = pango
 	depends = sdl2
-	source = runescape-launcher_2.2.6_Release::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release
-	source = runescape-launcher_2.2.6_Release.gpg::https://content.runescape.com/downloads/ubuntu/dists/trusty/Release.gpg
+	source = runescape-launcher_2.2.6_Release::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_Release
+	source = runescape-launcher_2.2.6_Release.gpg::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_Release.gpg
 	validpgpkeys = AAC9264309E4D717441DB9527373B12CE03BEB4B
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = runescape-launcher_2.2.6_amd64.deb::https://content.runescape.com/downloads/ubuntu/pool/non-free/r/runescape-launcher/runescape-launcher_2.2.6_amd64.deb
-	source_x86_64 = runescape-launcher_2.2.6_Packages::https://content.runescape.com/downloads/ubuntu/dists/trusty/non-free/binary-amd64/Packages
+	source_x86_64 = runescape-launcher_2.2.6_amd64.deb::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_amd64.deb
+	source_x86_64 = runescape-launcher_2.2.6_Packages::https://nullroute.eu.org/tmp/2020/rs20191226/runescape-launcher_2.2.6_Packages
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
 
