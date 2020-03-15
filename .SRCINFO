@@ -1,7 +1,7 @@
 pkgbase = vesta
 	pkgdesc = 3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies.
 	pkgver = 3.4.8
-	pkgrel = 2
+	pkgrel = 3
 	url = http://jp-minerals.org/vesta
 	install = vesta.install
 	arch = x86_64
