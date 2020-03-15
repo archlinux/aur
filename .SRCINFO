@@ -1,14 +1,14 @@
 pkgbase = libx11-threadsafe
 	pkgdesc = X11 client-side library - threadsafe patches by Jacek Caban
 	pkgver = 1.6.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://xorg.freedesktop.org/
 	arch = x86_64
 	license = custom:XFREE86
 	makedepends = xorg-util-macros
 	makedepends = xtrans
-	makedepends = xorgproto
 	depends = libxcb
+	depends = xorgproto
 	provides = libx11=1.6.9
 	conflicts = libx11=1.6.9
 	source = https://xorg.freedesktop.org//releases/individual/lib/libX11-1.6.9.tar.bz2

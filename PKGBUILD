@@ -4,12 +4,14 @@
 
 pkgname=libx11-threadsafe
 pkgver=1.6.9
-pkgrel=2
+pkgrel=3
 pkgdesc="X11 client-side library - threadsafe patches by Jacek Caban"
 arch=(x86_64)
 url="https://xorg.freedesktop.org/"
-depends=('libxcb')
-makedepends=('xorg-util-macros' 'xtrans' 'xorgproto')
+# keep xorgproto runtime dependency
+# https://lists.archlinux.org/pipermail/arch-dev-public/2019-December/029767.html
+depends=('libxcb' 'xorgproto')
+makedepends=('xorg-util-macros' 'xtrans')
 provides=("libx11=${pkgver}")
 conflicts=("libx11=${pkgver}")
 license=('custom:XFREE86')
