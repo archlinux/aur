@@ -13,7 +13,6 @@ pkgbase = ocaml-ppx_deriving
 	checkdepends = ocaml-ounit
 	makedepends = cppo
 	makedepends = dune>=1.6.3
-	makedepends = ocaml-findlib
 	makedepends = ocaml-ppxfind
 	depends = ocaml>=4.02.2
 	depends = ocaml-migrate-parsetree

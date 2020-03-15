@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.02.2' 'ocaml-migrate-parsetree' 'ocaml-ppx_derivers' 'ocaml-ppx_tools' 'ocaml-result')
-makedepends=('cppo' 'dune>=1.6.3' 'ocaml-findlib' 'ocaml-ppxfind')
+makedepends=('cppo' 'dune>=1.6.3' 'ocaml-ppxfind')
 checkdepends=('ocaml-ounit')
 options=('!strip')
 source=(
