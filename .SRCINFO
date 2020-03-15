@@ -1,0 +1,15 @@
+pkgbase = jicofo-git
+	pkgdesc = JItsi Meet COnference FOcus
+	pkgver = r1.938738f
+	pkgrel = 1
+	url = https://github.com/jitsi/jicofo
+	arch = x86_64
+	license = Apache
+	depends = java-runtime-headless
+	depends = maven
+	depends = unzip
+	source = jicofo-git::git+https://github.com/jitsi/jicofo
+	sha256sums = SKIP
+
+pkgname = jicofo-git
+
