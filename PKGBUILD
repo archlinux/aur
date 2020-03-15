@@ -1,12 +1,12 @@
 pkgname=createrepo
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Create rpm-metadata formatted package repositories"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
-license=('GPL')
-depends=('deltarpm' 'libxml2' 'python2' 'python2-pyliblzma' 'rpm-org'
-         'yum' 'yum-metadata-parser')
+license=('GPL2')
+depends=('deltarpm' 'python2' 'python2-pyliblzma' 'python2-rpm'
+         'urlgrabber' 'yum' 'yum-metadata-parser')
 makedepends=('bash-completion')
 checkdepends=('pychecker')
 source=("$url/archive/$pkgname-${pkgver//./-}.tar.gz")
