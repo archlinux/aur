@@ -1,0 +1,20 @@
+pkgbase = aur-thumbsup
+	pkgdesc = A tool to manage voting for favorite AUR packages (including systemd service for auto vote)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bpetlert/aur-thumbsup
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gawk
+	depends = grep
+	depends = pacman
+	depends = systemd
+	provides = aur-thumbsup
+	conflicts = aur-thumbsup
+	source = aur-thumbsup-0.3.0.tar.gz::https://github.com/bpetlert/aur-thumbsup/archive/0.3.0.tar.gz
+	sha256sums = 4148d6d601c09dfa3203034a655e990db9e522189496437139c5f576ec3044c5
+
+pkgname = aur-thumbsup
+

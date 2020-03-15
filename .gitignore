@@ -1,0 +1,5 @@
+*.pkg.*
+*.tar.gz
+/pkg
+/src
+/aur-thumbsup
