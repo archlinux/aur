@@ -2,14 +2,14 @@
 
 pkgname=zrepl
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
 license=('MIT')
 provides=('zrepl')
 conflicts=('zrepl-bin')
-depends=('go-pie')
+depends=('go')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('df474e70f5a51d84816ee8a06038ded167a7548e547e2d2822c313f088eeeafd')
 
@@ -20,7 +20,10 @@ build() {
     cd "${pkgname}-${pkgver}"
     go build \
         -trimpath \
+        -buildmode=pie \
+        -mod=vendor \
         -mod=readonly \
+        -modcacherw \
         -ldflags "${GO_LDFLAGS} -extldflags ${LDFLAGS}" \
         -o "${pkgname}" .
 }

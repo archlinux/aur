@@ -1,11 +1,11 @@
 pkgbase = zrepl
 	pkgdesc = One-stop ZFS backup & replication solution
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zrepl.github.io/
 	arch = x86_64
 	license = MIT
-	depends = go-pie
+	depends = go
 	provides = zrepl
 	conflicts = zrepl-bin
 	source = https://github.com/zrepl/zrepl/archive/v0.2.1.tar.gz
