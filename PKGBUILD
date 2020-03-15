@@ -1,9 +1,9 @@
 # Maintainer: Mniak <861c8ee6-f09e-40ea-bfb9-507a14ecc636 at anonaddy dot me>
 _pkgname="git-credential-manager"
 _reponame="Git-Credential-Manager-for-Mac-and-Linux"
-_tagname="${pkgname}-${pkgver}"
 pkgname="${_pkgname}-bin"
 pkgver="2.0.4"
+_tagname="${_pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="Git Credential Manager for Mac and Linux stores credentials for Git version control securely. Provides secure logon for Visual Studio Team Services (visualstudio.com)."
 arch=("x86_64")
@@ -21,5 +21,10 @@ sha256sums=(
 )
 
 prepare() {
-    sed -i 's/${version}/${pkgver}/g' ${_pkgname}
+    sed -i s/'${version}'/${pkgver}/g ${_pkgname}
+}
+
+package() {
+    install -D "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -D "${srcdir}/${_pkgname}-${pkgver}.jar" "${pkgdir}/usr/lib/${_pkgname}-${pkgver}.jar"
 }
