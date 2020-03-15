@@ -1,13 +1,13 @@
 # CPAN Name  : List::Permutor
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-list-permutor
 pkgver=0.022
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl package to process all possible permutations of a list'
 arch=('any')
-url='http://search.cpan.org/dist/List-Permutor'
+url='https://metacpan.org/release/List-Permutor'
 license=('unknown')
 depends=('perl')
 source=(http://search.cpan.org/CPAN/authors/id/P/PH/PHOENIX/List-Permutor-0.022.tar.gz)
@@ -28,5 +28,5 @@ check() {
 package() {
 	cd List-Permutor-0.022
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

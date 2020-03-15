@@ -1,8 +1,8 @@
 pkgbase = perl-list-permutor
 	pkgdesc = Perl package to process all possible permutations of a list
 	pkgver = 0.022
-	pkgrel = 2
-	url = http://search.cpan.org/dist/List-Permutor
+	pkgrel = 3
+	url = https://metacpan.org/release/List-Permutor
 	arch = any
 	license = unknown
 	depends = perl
