@@ -1,5 +1,5 @@
 # Lokalise AUR Package
-[![Build Status](https://travis-ci.org/famoser/symfony-cli-aur.svg?branch=master)](https://travis-ci.org/famoser/symfony-cli-aur)
+[![Build Status](https://travis-ci.com/famoser/symfony-cli-aur.svg?branch=master)](https://travis-ci.com/famoser/symfony-cli-aur)
 
 ## Update package
 
