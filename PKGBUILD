@@ -1,7 +1,7 @@
 # Maintainer: Marco von Rosenberg <codingmarco@gmail.com>
 
 pkgname=glrpt
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 pkgdesc="Interactive GUI application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites"
 arch=('x86_64')
@@ -12,9 +12,11 @@ depends=('gtk3'
          'soapysdr')
 optdepends=('soapyrtlsdr: RTL-SDR support'
             'soapyairspy: Airspy support')
+provides=(glrpt)
+conflicts=(glrpt-git)
 makedepends=('make' 'automake' 'autoconf' 'xorgproto')
 source=("http://www.5b4az.org/pkg/lrpt/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('18e99a729722d0dc16b44a66d316d579')
+md5sums=('5aee4d813cd3a00e5c09ed5ee39be758')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
