@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile-tester
 pkgver=0.91
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package that supports XML::Compile-related regression testing'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-Tester'
@@ -29,5 +29,5 @@ check() {
 package() {
 	cd XML-Compile-Tester-0.91
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

@@ -1,7 +1,7 @@
 pkgbase = perl-xml-compile-tester
 	pkgdesc = Perl package that supports XML::Compile-related regression testing
 	pkgver = 0.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-Compile-Tester
 	arch = any
 	license = PerlArtistic
