@@ -3,14 +3,14 @@
 _pkgname=janet
 _pkgver=1.7.0
 pkgname=janet-lang-git
-pkgver=1.7.0.r1823.2349ea9
+pkgver=1.7.0.r1858.4a05b45
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
 license=('MIT')
 depends=()
-makedepends=('git' 'clang')
+makedepends=('git')
 provides=('janet')
 conflicts=('janet-lang')
 source=("git+https://github.com/janet-lang/janet.git")
@@ -25,8 +25,8 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    # janet_build=$(printf "JANET_BUILD=\"%s\"" "$(git rev-parse --short HEAD)")
-    make PREFIX="/usr" CC=clang -j7
+
+    make PREFIX="/usr" $janet_build
     make PREFIX="/usr" build/janet.pc
     make PREFIX="/usr" docs
 }
@@ -34,18 +34,18 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -dm 755 "${pkgdir}/usr/lib/janet"
-    install -Dm 755 "build/janet" "${pkgdir}/usr/bin/janet"
-    install -Dm 755 "auxbin/jpm" "${pkgdir}/usr/bin/jpm"
-    install -Dm 644 "src/include/janet.h" "${pkgdir}/usr/include/janet/janet.h"
-    install -Dm 644 "src/conf/janetconf.h" "${pkgdir}/usr/include/janet/janetconf.h"
-    install -Dm 644 "build/libjanet.so" "${pkgdir}/usr/lib/libjanet.so.${_pkgver}"
-    install -Dm 644 "build/libjanet.a" "${pkgdir}/usr/lib/libjanet.a"
-    install -Dm 644 "janet.1" "${pkgdir}/usr/share/man/janet.1"
-    install -Dm 644 "jpm.1" "${pkgdir}/usr/share/man/jpm.1"
-    install -Dm 644 "build/janet.pc" "${pkgdir}/usr/lib/pkgconfig/janet.pc"
+    install -Dt       "${pkgdir}"/usr/bin build/janet auxbin/jpm
+    install -Dm644 -t "${pkgdir}"/usr/include/janet src/include/janet.h src/conf/janetconf.h
 
-    install -dm 644 "${pkgdir}/usr/share/janet"
-    cp -a examples "${pkgdir}/usr/share/janet"
-    cp -a build/doc.html "${pkgdir}/usr/share/janet"
+    install -Dm644 -t "${pkgdir}"/usr/lib build/libjanet.a build/libjanet.so
+    ln -s libjanet.so "${pkgdir}"/usr/lib/libjanet.so.$pkgver
+
+    install -Dm644 "build/janet.pc" "${pkgdir}"/usr/lib/pkgconfig/janet.pc
+
+    install -Dm644 -t "${pkgdir}"/usr/share/man janet.1 jpm.1
+
+    install -dm644 "${pkgdir}"/usr/share/janet
+    cp -a examples "${pkgdir}"/usr/share/janet
+
+    install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
 }
