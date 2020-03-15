@@ -1,10 +1,10 @@
 # CPAN Name  : Test::Class
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-test-class
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to easily create test classes in an xUnit/JUnit style'
 arch=('any')
 url='https://metacpan.org/release/Test-Class'
@@ -42,5 +42,5 @@ package() {
 	cd Test-Class-0.50
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
