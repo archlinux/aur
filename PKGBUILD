@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile-c14n
 pkgver=0.95
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package for XML canonicalization'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-C14N'
@@ -33,5 +33,5 @@ check() {
 package() {
 	cd XML-Compile-C14N-0.95
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

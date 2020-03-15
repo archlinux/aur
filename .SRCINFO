@@ -1,7 +1,7 @@
 pkgbase = perl-xml-compile-c14n
 	pkgdesc = Perl package for XML canonicalization
 	pkgver = 0.95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-Compile-C14N
 	arch = any
 	license = PerlArtistic
