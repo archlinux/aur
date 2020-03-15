@@ -4,7 +4,7 @@
 
 pkgname=perl-log-report-optional
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package providing Log::Report or ::Minimal'
 arch=('any')
 url='https://metacpan.org/release/Log-Report-Optional'
@@ -36,5 +36,5 @@ package() {
 	cd Log-Report-Optional-1.06
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

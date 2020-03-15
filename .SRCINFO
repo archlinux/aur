@@ -1,7 +1,7 @@
 pkgbase = perl-log-report-optional
 	pkgdesc = Perl package providing Log::Report or ::Minimal
 	pkgver = 1.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Log-Report-Optional
 	arch = any
 	license = PerlArtistic
