@@ -10,31 +10,35 @@ url='https://www.skype.com'
 license=('custom')
 depends=('gtk3' 'libxss' 'alsa-lib' 'libxtst' 'libsecret' 'nss')
 optdepends=('org.freedesktop.secrets')
-source=("https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb"
-        'skype')
+source=('skype'
+        "$pkgname-$pkgver-Release::https://repo.skype.com/deb/dists/stable/Release"
+        "$pkgname-$pkgver-Release.sig::https://repo.skype.com/deb/dists/stable/Release.gpg")
+source_x86_64=("https://repo.skype.com/deb/pool/main/s/$_pkgname/${_pkgname}_${pkgver}_amd64.deb"
+               "$pkgname-$pkgver-x86_64-Packages::https://repo.skype.com/deb/dists/stable/main/binary-amd64/Packages")
 validpgpkeys=('D4040146BE3972509FD57FC71F3045A5DF7587C3')
-sha512sums=('672f818a52e6876c1460eb9f9fde3ada945934f98d912cad958ce18c2b45ea04ffb359d11223ace10c2ff81f8914eb8c1595cee501901de8cad9eb1e6ec6f4d8'
-            'b0ac170b31c442006d2b3860cc4b5b43265369aa52de925c5e2ca30ea57767b8496c23626556922e8391cca1bf8e6b47b5759fd2e1f45a9dc41c13e30856a0ae')
+sha512sums=('b0ac170b31c442006d2b3860cc4b5b43265369aa52de925c5e2ca30ea57767b8496c23626556922e8391cca1bf8e6b47b5759fd2e1f45a9dc41c13e30856a0ae'
+            'SKIP'
+            'SKIP')
+sha512sums_x86_64=('672f818a52e6876c1460eb9f9fde3ada945934f98d912cad958ce18c2b45ea04ffb359d11223ace10c2ff81f8914eb8c1595cee501901de8cad9eb1e6ec6f4d8'
+                   'd110780192796e13f5ff14bf2f3c3dc747a703ce21636827bb7ee9bb9eeb85b3ca19baca1669f9208f2eed36f13e488a4ea2877b942407dd9429485fcb9510a1')
+
 
 prepare() {
-	## Check the signature
-	gpg --verify _gpgbuilder &> gpg-results || (cat gpg-results && echo "Make sure to download" \
-		"the key with: 'gpg --receive-keys ${validpgpkeys[*]}'" && exit 1)
+	## Skype uses different names for the arch
+	if [ "${CARCH}" = "x86_64" ]; then
+		_SKYPE_ARCH=amd64
+	else
+		exit 1
+	fi
 
-	sigkey=$(grep "Primary key fingerprint:" gpg-results | cut -c25- | sed 's| ||g')
-	validsig=false
-	for key in ${validpgpkeys[*]} ; do
-		if [ "$sigkey" = "$key" ] ; then
-			validsig=true
-			break
-		fi
-	done
-	if ! $validsig ; then echo "Not a trusted key"; exit 1 ; fi
+	## Validate hashes from the PGP signed "Release" file
+	echo "$(grep SHA512 -A9 $pkgname-$pkgver-Release | grep -Pe main/binary-${_SKYPE_ARCH}/Packages | tail -n1 | awk '{print $1}') $pkgname-$pkgver-${CARCH}-Packages" \
+		> "$pkgname-$pkgver-${CARCH}-Packages.sha512"
+	sha512sum -c "$pkgname-$pkgver-${CARCH}-Packages.sha512"
 
-	## Check the hashes
-	dataSHA1=$(grep "data.tar.xz" _gpgbuilder | cut -d ' ' -f2)
-	dataSHA1curr=$(sha1sum data.tar.xz | cut -d ' ' -f1)
-	if [ "$dataSHA1" != "$dataSHA1curr" ] ; then echo "Wrong hash"; exit 1 ; fi
+	echo "$(grep "Version: $pkgver" -A10 $pkgname-$pkgver-${CARCH}-Packages | grep SHA512 | awk '{print $2}') ${_pkgname}_${pkgver}_${_SKYPE_ARCH}.deb" \
+		> "$pkgname-$pkgver-${CARCH}.deb.sha512"
+	sha512sum -c "$pkgname-$pkgver-${CARCH}.deb.sha512"
 
 	## Extract archive
 	install -dm755 $pkgname-$pkgver
