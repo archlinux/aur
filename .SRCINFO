@@ -1,14 +1,14 @@
 pkgbase = surgescript
 	pkgdesc = SurgeScript is a scripting language for games.
-	pkgver = 0.5.4.2
+	pkgver = 0.5.4.3
 	pkgrel = 1
 	url = https://github.com/alemart/surgescript
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
-	source = surgescript-0.5.4.2.tar.gz::https://github.com/alemart/surgescript/archive/v0.5.4.2.tar.gz
-	sha256sums = e0918000682a6db4b6db008fa4c674abb0a8cd34867164a7e6058f8ce304c172
+	source = surgescript-0.5.4.3.tar.gz::https://github.com/alemart/surgescript/archive/v0.5.4.3.tar.gz
+	sha256sums = 52bb460b3a882788cc1001610d35f56a9c206b4f565db593a507f69862d6270c
 
 pkgname = surgescript
 
