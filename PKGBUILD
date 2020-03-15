@@ -1,13 +1,13 @@
 # CPAN Name  : Test::Script::Run
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-test-script-run
 pkgver=0.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module helping with scripts testing in your module'
 arch=('any')
-url='http://search.cpan.org/dist/Test-Script-Run'
+url='https://metacpan.org/release/Test-Script-Run'
 license=('PerlArtistic' 'GPL')
 depends=('perl' 'perl-ipc-run3' 'perl-test-exception')
 optdepends=('perl-string-shellquote: quote arguments in test names')
@@ -29,5 +29,5 @@ check() {
 package() {
 	cd Test-Script-Run-0.08
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

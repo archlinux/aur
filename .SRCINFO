@@ -1,8 +1,8 @@
 pkgbase = perl-test-script-run
 	pkgdesc = Perl module helping with scripts testing in your module
 	pkgver = 0.08
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Test-Script-Run
+	pkgrel = 2
+	url = https://metacpan.org/release/Test-Script-Run
 	arch = any
 	license = PerlArtistic
 	license = GPL
