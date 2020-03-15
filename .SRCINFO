@@ -1,8 +1,8 @@
 pkgbase = perl-string-koremutake
 	pkgdesc = Perl module that converts to and from Koremutake Memorable Random Strings
 	pkgver = 0.30
-	pkgrel = 1
-	url = http://search.cpan.org/dist/String-Koremutake
+	pkgrel = 2
+	url = https://metacpan.org/release/String-Koremutake
 	arch = any
 	license = PerlArtistic
 	license = GPL
