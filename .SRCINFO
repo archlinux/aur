@@ -1,7 +1,7 @@
 pkgbase = geph-client-git
 	pkgdesc = A command-line Geph client
 	pkgver = r144.f29acd3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geph-official/geph2
 	arch = x86_64
 	groups = geph2-git
@@ -12,7 +12,9 @@ pkgbase = geph-client-git
 	provides = geph-client
 	conflicts = geph-client
 	source = git+https://github.com/geph-official/geph2.git
+	source = geph-client.service
 	sha512sums = SKIP
+	sha512sums = d23b669396f8bd6c99d78a478de233b211f4202812348dc2c78050ad2646870027a766a0bca51ead70b06947fb6dc49d646e462682e0d3fb685b3a00840d104a
 
 pkgname = geph-client-git
 
