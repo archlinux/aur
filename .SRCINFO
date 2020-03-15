@@ -1,7 +1,7 @@
 pkgbase = perl-set-intersection
 	pkgdesc = Perl package to get intersection (of set theory) of ARRAYs.
 	pkgver = 0.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Set-Intersection
 	arch = any
 	license = PerlArtistic

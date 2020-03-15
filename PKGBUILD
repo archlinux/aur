@@ -1,10 +1,10 @@
 # CPAN Name  : Set::Intersection
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-set-intersection
 pkgver=0.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package to get intersection (of set theory) of ARRAYs.'
 arch=('any')
 url='https://metacpan.org/release/Set-Intersection'
@@ -36,5 +36,5 @@ package() {
 	cd Set-Intersection-0.04
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
