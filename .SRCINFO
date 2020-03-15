@@ -1,0 +1,17 @@
+pkgbase = goxygen
+	pkgdesc = Generate a modern Web project with Go, Angular/React/Vue, and MongoDB in secondsrocket
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/Shpota/goxygen
+	arch = x86_64
+	license = Apache2
+	makedepends = go
+	depends = docker
+	depends = docker-compose
+	depends = nodejs
+	depends = npm
+	source = goxygen-0.2.1.tar.gz::https://github.com/Shpota/goxygen/archive/v0.2.1.tar.gz
+	md5sums = 70f88b6df485aaadbf780d0ce4c5d23e
+
+pkgname = goxygen
+
