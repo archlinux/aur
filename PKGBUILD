@@ -20,5 +20,5 @@ build() {
 
 package() {
     cd "geph2-$pkgver/cmd/$pkgname"
-    install -Dm 755 geph-client "$pkgdir/usr/bin/geph-client"
+    install -Dm 755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
