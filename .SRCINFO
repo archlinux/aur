@@ -1,5 +1,5 @@
 pkgbase = ocaml-cinaps
-	pkgdesc = Base library and tools for ppx rewriters
+	pkgdesc = Trivial Metaprogramming tool using the OCaml toplevel
 	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/ocaml-ppx/cinaps
