@@ -1,6 +1,6 @@
 pkgbase = kokua-secondlife
 	pkgdesc = An Open Source third party viewer for Second Life® (secondlife), only.
-	pkgver = 6.3.6.46311
+	pkgver = 6.3.7.46402
 	pkgrel = 1
 	url = http://www.kokuaviewer.org
 	arch = x86_64
@@ -34,10 +34,10 @@ pkgbase = kokua-secondlife
 	optdepends = lib32-freealut: for OpenAL support
 	optdepends = lib32-libidn11: for voice support
 	conflicts = kokua-opensim
-	source = https://liquidtelecom.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_6_3_6_46311_x86_64.tar.bz2
+	source = https://liquidtelecom.dl.sourceforge.net/project/kokua.team-purple.p/Kokua-SL/Linux64Bit/Kokua_RLV_6_3_7_46402_x86_64.tar.bz2
 	source = kokua-secondlife.desktop
 	source = kokua-secondlife.launcher
-	md5sums = eeb1dbf04f372c65692d27ed9e25bf8c
+	md5sums = bee93904b886982fdab43d16fdece75a
 	md5sums = 3893a2c8ae9cb8e2adb4d7c47750029b
 	md5sums = e12fd7bd333f4f810dec66f1be17c71c
 
