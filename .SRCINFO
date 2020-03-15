@@ -1,0 +1,14 @@
+pkgbase = gocity-bin
+	pkgdesc = Code City metaphor for visualizing Go source code in 3D
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://go-city.github.io
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	provides = gocity
+	source = gocity-1.0.0.tar.gz::https://github.com/rodrigo-brito/gocity/archive/v1.0.0.tar.gz
+	md5sums = 7387d4727740f49f374d91aea14d7b43
+
+pkgname = gocity-bin
+
