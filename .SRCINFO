@@ -8,7 +8,7 @@ pkgbase = nautilus-open-any-terminal
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-nautilus
-	source = git+https://github.com/Stunkymonkey/nautilus-open-any-terminal#commit=d17dbc679c07c6dd6ca8b33cc8726bfdcaddd9e2
+	source = git+https://github.com/Stunkymonkey/nautilus-open-any-terminal#commit=a5343d0b37c19039932affc58706638930cb2d5e
 	sha512sums = SKIP
 
 pkgname = nautilus-open-any-terminal
