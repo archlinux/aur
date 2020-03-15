@@ -1,6 +1,6 @@
 pkgbase = createrepo_c
 	pkgdesc = A C implementation of createrepo, a tool to create yum repositories
-	pkgver = 0.15.8
+	pkgver = 0.15.9
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/createrepo_c
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = createrepo_c
 	depends = zchunk
 	depends = zlib
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/createrepo_c/archive/0.15.8/createrepo_c-0.15.8.tar.gz
-	md5sums = 510e0816b935b1b1060f34b4995448ca
+	source = https://github.com/rpm-software-management/createrepo_c/archive/0.15.9/createrepo_c-0.15.9.tar.gz
+	md5sums = 6bec7171ef3072e8f04899ed8ca52fab
 
 pkgname = createrepo_c
 
