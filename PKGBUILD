@@ -11,6 +11,9 @@ arch=('x86_64')
 url='https://github.com/darealshinji/delaycut'
 license=('GPL3')
 depends=('qt5-base')
+makedepends=('git'
+             'qt5-tools'
+             )
 conflicts=('delaycut')
 provides=('delaycut')
 source=('git+https://github.com/darealshinji/delaycut.git')
@@ -21,16 +24,20 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-build() {
-  cd delaycut
-  qmake-qt5 CONFIG+=Linux
+prepare() {
+  mkdir -p build
+}
 
+build() {
+  cd build
+
+  qmake-qt5 ../delaycut CONFIG+=Linux
   make
 }
 
 package () {
-  cd delaycut
-  make INSTALL_ROOT="${pkgdir}" install
-  install -Dm644 misc/delaycut.desktop "${pkgdir}/usr/share/applications/delaycut.desktop"
-  install -Dm644 misc/icon.svg "${pkgdir}/usr/share/pixmaps/delaycut.svg"
+  make -C build INSTALL_ROOT="${pkgdir}" install
+
+  install -Dm644 delaycut/misc/delaycut.desktop "${pkgdir}/usr/share/applications/delaycut.desktop"
+  install -Dm644 delaycut/misc/icon.svg "${pkgdir}/usr/share/pixmaps/delaycut.svg"
 }
