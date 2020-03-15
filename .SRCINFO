@@ -13,6 +13,8 @@ pkgbase = kindd-git
 	depends = qt5-quickcontrols
 	depends = qt5-graphicaleffects
 	depends = qt5-svg
+	provides = kindd
+	conflicts = kindd
 	source = kindd-git::git+https://github.com/LinArcX/kindd.git
 	sha256sums = SKIP
 

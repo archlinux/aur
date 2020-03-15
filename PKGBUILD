@@ -9,6 +9,8 @@ url="https://github.com/LinArcX/kindd"
 license=('GPL-3.0')
 depends=('polkit' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg')
 makedepends=('git' 'cmake' 'qt5-base')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+https://github.com/LinArcX/kindd.git")
 sha256sums=('SKIP')
 
