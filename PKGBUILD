@@ -8,8 +8,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '724' '983')
-_merge_requests_to_use=('724' '983' '1124') # safe pick
+# available MR: ('429' '493' '579' '724' '983' '256')
+_merge_requests_to_use=('724' '983' '1124' '256') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -145,6 +145,10 @@ prepare() {
   # Status: 2
   # Comment: Impacts Wayland only, fixes https://gitlab.gnome.org/GNOME/mutter/issues/804
   pick_mr '1124'
+
+  # causes a crash: https://gitlab.gnome.org/GNOME/mutter/issues/1121
+  pick_mr '256' '0487e6f11fc9231214c03bd8eb5050a7e04a621d' 'revert'
+  pick_mr '256' '0700f3749f7d469bd229866b1cd6b8acb7346f4c' 'revert'
 
 }
 
