@@ -1,6 +1,6 @@
 pkgbase = kleiner-brauhelfer
 	pkgdesc = A Qt-based tool for hobby brewer to calculate and manage the beer brewing process.
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = kleiner-brauhelfer
 	depends = qt5-webengine
 	depends = qt5-charts
 	depends = qt5-svg
-	source = kleiner-brauhelfer-2.1.0.tar.gz::https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/archive/v2.1.0.tar.gz
+	source = kleiner-brauhelfer-2.1.1.tar.gz::https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/archive/v2.1.1.tar.gz
 	source = kleiner-brauhelfer.desktop
-	sha256sums = 3fd0eeacf28af78b04b13b8a9c79342b5ede0d6c2cd195b118f8703c65a1fbfe
+	sha256sums = 8f18407e969c792a0eed0dc68318e21835824a5960c812f339f1f1fe87f8da7e
 	sha256sums = 688d4ca1c70d19bbfdcd2b1f546f52e7ef585d5ed0b3566a4fb5f0c29317a11a
 
 pkgname = kleiner-brauhelfer
