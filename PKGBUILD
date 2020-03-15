@@ -6,9 +6,11 @@
 # https://github.com/michaellass/AUR
 
 pkgname=fritzing
-pkgver=0.9.4b
-pkgrel=2
-_tagver=CD-415
+pkgver=0.9.4b.CD498
+pkgrel=1
+# Tag version can be obtained from github release page. CAUTION: There may be multiple releases per version.
+_tagver=CD-498
+# Partsrev can only be determined by downloading release build, unpacking and using `git show` on the parts folder.
 _partsrev=e79a69765026f3fda8aab1b3e7a4952c28047a62
 pkgdesc='PCB layout prototyping application'
 arch=('i686' 'x86_64')
@@ -21,7 +23,7 @@ source=(https://github.com/fritzing/fritzing-app/archive/${_tagver}.tar.gz
         0001-don-t-scan-filesystem-for-application-directory-if-i.patch
         0002-allow-user-and-administrator-to-install-parts-librar.patch
         0003-provide-script-for-user-to-clone-parts-library.patch)
-sha256sums=('4502bcdf262d5fa3897342a787b201f6fc27fa071242ecbc79f6515b845339fc'
+sha256sums=('b8af09b44a1d79fc3ff86f4e0c6793cd4473baf052420b7e1f127f0aaa968167'
             'SKIP'
             '52b20ee77723f805c905dea49177931cfe681689e71b941ee35e2e302a83cf4c'
             '1e59cd5db471b60cd12b8d63510de442c883b3fa0f8d27532aa29bc81838fec1'
@@ -36,7 +38,7 @@ prepare() {
   # Disable broken font scaling (#3221)
   sed -i 's/Exec=Fritzing/Exec=env QT_AUTO_SCREEN_SCALE_FACTOR=0 Fritzing/' org.fritzing.Fritzing.desktop
 
-  # Allow users to have their own updatable parts library. See #3238, #3454 on this topic.
+  # Allow users to have their own updatable parts library. See #3238 and #3454 on this topic.
   patch -p1 < "${srcdir}"/0001-don-t-scan-filesystem-for-application-directory-if-i.patch
   patch -p1 < "${srcdir}"/0002-allow-user-and-administrator-to-install-parts-librar.patch
   patch -p1 < "${srcdir}"/0003-provide-script-for-user-to-clone-parts-library.patch

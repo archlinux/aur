@@ -1,7 +1,7 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 0.9.4b
-	pkgrel = 2
+	pkgver = 0.9.4b.CD498
+	pkgrel = 1
 	url = http://fritzing.org
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = fritzing
 	depends = libgit2
 	depends = qt5-serialport
 	depends = qt5-svg
-	source = https://github.com/fritzing/fritzing-app/archive/CD-415.tar.gz
+	source = https://github.com/fritzing/fritzing-app/archive/CD-498.tar.gz
 	source = git+https://github.com/fritzing/fritzing-parts.git#commit=e79a69765026f3fda8aab1b3e7a4952c28047a62
 	source = 0001-don-t-scan-filesystem-for-application-directory-if-i.patch
 	source = 0002-allow-user-and-administrator-to-install-parts-librar.patch
 	source = 0003-provide-script-for-user-to-clone-parts-library.patch
-	sha256sums = 4502bcdf262d5fa3897342a787b201f6fc27fa071242ecbc79f6515b845339fc
+	sha256sums = b8af09b44a1d79fc3ff86f4e0c6793cd4473baf052420b7e1f127f0aaa968167
 	sha256sums = SKIP
 	sha256sums = 52b20ee77723f805c905dea49177931cfe681689e71b941ee35e2e302a83cf4c
 	sha256sums = 1e59cd5db471b60cd12b8d63510de442c883b3fa0f8d27532aa29bc81838fec1
