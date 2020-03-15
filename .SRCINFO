@@ -1,7 +1,7 @@
 pkgbase = perl-text-ngram
 	pkgdesc = Perl package for Ngram analysis of text
 	pkgver = 0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Text-Ngram
 	arch = i686
 	arch = x86_64

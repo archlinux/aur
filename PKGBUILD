@@ -1,10 +1,10 @@
 # CPAN Name  : Text::Ngram
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-text-ngram
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package for Ngram analysis of text'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Text-Ngram'
@@ -36,5 +36,5 @@ package() {
 	cd Text-Ngram-0.15
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
