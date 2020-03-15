@@ -4,10 +4,11 @@
 # Contributor: Johannes <maeulen@awp-shop.de>
 # Contributor: Heiko Baums <heiko@baums-on-web.de>
 # Contributor: wido <widomaker2k7@gmail.com>
+# Contributor: Tudor Georgescu <icnl@home.nl>
 
 pkgname=bitdefender
-pkgver=7.7.1
-dist_build='7.7-1' # Build number for upstream .run package.
+pkgver=7.6.3
+dist_build='7.6-3' # Build number for upstream .run package.
 pkgrel=44
 rpm_rel=1809
 pkgdesc="BitDefender's Personal UNIX Workstation Antivirus"
@@ -16,42 +17,50 @@ url="http://www.bitdefender.com/"
 depends=('gtk2' 'libstdc++5' 'atk' 'fontconfig' 'libxext' 'libxrender' 'libxrandr' 'libxi' 'libxcursor' 'libxfixes' 'pango' 'glib2' 'libxinerama' 'libsm')
 install=bitdefender.install
 license=('custom')
-source=('http://download.bitdefender.com/SMB/Workstation_Security_and_Management/BitDefender_Antivirus_Scanner_for_Unices/Unix/Current/EN_FR_BR_RO/Linux/BitDefender-Antivirus-Scanner-'$dist_build'-linux-i586.rpm.run'
+source=('http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-scanner-7.6-3.i586.rpm'
+        'http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-scanner-gui-1.0-3.i586.rpm'
+        'http://download.bitdefender.com/repos/rpm/bitdefender/i586/BitDefender-common-3.1.2-1.i586.rpm'
         'bitdefender.sh'
         'bitdefender.conf'
         'unpack.sh'
         'http://download.bitdefender.com/updates/update_av32bit/cumulative.zip')
-md5sums=('6b20f789d057a37491eee3e429d351d3'
-         'f74775c74b44ceabafcc0dbab0ff2318'
-         '6df89a673aec1ad103745da47c50dc46'
-         '25e860fbd392db85da993ffeb9a0133c'
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
          'SKIP')
 
-[ "$CARCH" = "x86_64" ] && source=('http://download.bitdefender.com/SMB/Workstation_Security_and_Management/BitDefender_Antivirus_Scanner_for_Unices/Unix/Current/EN_FR_BR_RO/Linux/BitDefender-Antivirus-Scanner-'$dist_build'-linux-amd64.rpm.run'
+[ "$CARCH" = "x86_64" ] && source=('http://download.bitdefender.com/repos/rpm/bitdefender/x86_64/bitdefender-scanner-7.6-3.x86_64.rpm'
+				   'http://download.bitdefender.com/repos/rpm/bitdefender/x86_64/bitdefender-scanner-gui-1.0-3.x86_64.rpm'
+				   'http://download.bitdefender.com/repos/rpm/bitdefender/x86_64/BitDefender-common-3.1.2-1.x86_64.rpm'
                                    'bitdefender.sh'
                                    'bitdefender.conf'
                                    'unpack.sh'
                                    'http://download.bitdefender.com/updates/update_av64bit/cumulative.zip')
 
-[ "$CARCH" = "x86_64" ] && md5sums=('1aebcf5798499b8b8c22eb86045a4a7f'
-                                    'f74775c74b44ceabafcc0dbab0ff2318'
-                                    '6df89a673aec1ad103745da47c50dc46'
-                                    '25e860fbd392db85da993ffeb9a0133c'
+[ "$CARCH" = "x86_64" ] && md5sums=('SKIP'
+                                    'SKIP'
+                                    'SKIP'
+                                    'SKIP'
+                                    'SKIP'
+                                    'SKIP'
                                     'SKIP')
 
 package() {
-    rpm_base='./bitdefender-scanner-'$pkgver'-'$rpm_rel'.i586.rpm'
-    rpm_gui='./bitdefender-scanner-gui-'$pkgver'-'$rpm_rel'.i586.rpm'
-    rpm_pkg='BitDefender-Antivirus-Scanner-'$dist_build'-linux-i586.rpm.run'
+    rpm_base='./bitdefender-scanner-7.6-3.i586.rpm'
+    rpm_gui='./bitdefender-scanner-gui-1.0-3.i586.rpm'
+    rpm_pkg='./BitDefender-common-3.1.2-1.i586.rpm'
 
     if [ "$CARCH" == "x86_64" ]; then
-      rpm_base='./bitdefender-scanner-'$pkgver'-'$rpm_rel'.x86_64.rpm'
-      rpm_gui='./bitdefender-scanner-gui-'$pkgver'-'$rpm_rel'.x86_64.rpm'
-      rpm_pkg='BitDefender-Antivirus-Scanner-'$dist_build'-linux-amd64.rpm.run'
+      rpm_base='./bitdefender-scanner-7.6-3.x86_64.rpm'
+      rpm_gui='./bitdefender-scanner-gui-1.0-3.x86_64.rpm'
+      rpm_pkg='./BitDefender-common-3.1.2-1.x86_64.rpm'
     fi
 
     cd $srcdir
-    bash -c './unpack.sh '$rpm_pkg
+    bash -c './unpack.sh $rpm_pkg'
     bsdtar -x -f $rpm_base
     bsdtar -x -f $rpm_gui
     cp -r $srcdir/opt $pkgdir
