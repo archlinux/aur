@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('glibc' 'ocaml>=4.02.3' 'ocaml-ppx_derivers' 'ocaml-result')
-makedepends=('dune>=1.9.0' 'ocaml-findlib')
+makedepends=('dune>=1.9.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('032f6f8033b547ff1636238f78b7e8b8b02481497806d4bb0b379ff56a9ac3ff')

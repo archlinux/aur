@@ -11,7 +11,6 @@ pkgbase = ocaml-migrate-parsetree
 	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
 	makedepends = dune>=1.9.0
-	makedepends = ocaml-findlib
 	depends = glibc
 	depends = ocaml>=4.02.3
 	depends = ocaml-ppx_derivers
