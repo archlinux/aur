@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.12.0_dev_37_gf69f5a9f1
+pkgver=v1.12.0_dev_15_g28b934b3a
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -52,8 +52,6 @@ prepare() {
   # Change default repos path for ArchLinux and some additional settings
   patch -Np1 -i ../gitea-arch-defaults.patch
 
-  # Workaround for https://github.com/golang/go/issues/33326
-  export GOPATH="${srcdir}/gopath"
   # Make sure we rebuild the mod file from Gopkg.toml to pick up any changes.
   rm -f go.mod
   go mod init || true
@@ -64,9 +62,10 @@ build() {
   # Be nice to people with read-only ~
   export GOCACHE="${srcdir}/cache"
   cd ${srcdir}/${_pkgname}
-  make generate
   LDFLAGS="-linkmode external -extldflags \"${LDFLAGS}\" -X \"code.gitea.io/gitea/modules/setting.AppWorkPath=/var/lib/gitea/\""
-  make EXTRA_GOFLAGS="-trimpath" TAGS="bindata sqlite pam" build
+  export TAGS="bindata sqlite pam"
+  make generate
+  make EXTRA_GOFLAGS="-trimpath" build
 }
 
 package() {
