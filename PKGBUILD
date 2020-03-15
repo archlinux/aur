@@ -3,17 +3,17 @@
 
 pkgname=emacs-pkgbuild-mode-git
 pkgver=0.14.1.r8.gd237beb
-pkgrel=2
+pkgrel=3
 pkgdesc="A major mode for creating packages with emacs"
 arch=('any')
-url="https://github.com/stefanhusmann/pkgbuild-mode"
+url="https://gitlab.com/stefanhusmann/pkgbuild-mode"
 license=('GPL')
 depends=('emacs') 
 makedepends=('git')
 provides=('emacs-pkgbuild-mode')
 conflicts=('emacs-pkgbuild-mode')
 install=emacs-pkgbuild-mode.install
-source=('git+https://github.com/stefanhusmann/pkgbuild-mode.git')
+source=("git+$url.git")
 md5sums=('SKIP')
 _gitname="pkgbuild-mode"
 

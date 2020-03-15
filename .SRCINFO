@@ -1,8 +1,8 @@
 pkgbase = emacs-pkgbuild-mode-git
 	pkgdesc = A major mode for creating packages with emacs
 	pkgver = 0.14.1.r8.gd237beb
-	pkgrel = 2
-	url = https://github.com/stefanhusmann/pkgbuild-mode
+	pkgrel = 3
+	url = https://gitlab.com/stefanhusmann/pkgbuild-mode
 	install = emacs-pkgbuild-mode.install
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = emacs-pkgbuild-mode-git
 	depends = emacs
 	provides = emacs-pkgbuild-mode
 	conflicts = emacs-pkgbuild-mode
-	source = git+https://github.com/stefanhusmann/pkgbuild-mode.git
+	source = git+https://gitlab.com/stefanhusmann/pkgbuild-mode.git
 	md5sums = SKIP
 
 pkgname = emacs-pkgbuild-mode-git
