@@ -1,0 +1,13 @@
+pkgbase = fabio-bin
+	pkgdesc = Consul Load-Balancing made simple
+	pkgver = 1.5.13
+	pkgrel = 1
+	url = https://fabiolb.net
+	arch = x86_64
+	license = MIT
+	provides = fabio
+	source = https://github.com/fabiolb/fabio/releases/download/v1.5.13/fabio-1.5.13-go1.13.4-linux_amd64
+	md5sums = 0ebff3ca17d1d5a43fc39b72b6502b64
+
+pkgname = fabio-bin
+
