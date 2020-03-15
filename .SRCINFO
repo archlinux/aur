@@ -20,6 +20,7 @@ pkgbase = vtk-git
 	depends = hdf5
 	depends = python
 	depends = proj
+	depends = pugixml
 	provides = vtk
 	conflicts = vtk
 	source = git+https://gitlab.kitware.com/vtk/vtk.git
