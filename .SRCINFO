@@ -1,0 +1,17 @@
+pkgbase = teleport-share-git
+	pkgdesc = Send files on the local network
+	pkgver = 0.0.1.r231.3610dff
+	pkgrel = 1
+	url = https://github.com/frac-tion/teleport
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = meson
+	depends = libsoup
+	depends = avahi
+	depends = gtk3
+	source = git+https://github.com/frac-tion/teleport
+	md5sums = SKIP
+
+pkgname = teleport-share-git
+
