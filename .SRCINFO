@@ -1,0 +1,13 @@
+pkgbase = creep2
+	pkgdesc = A pretty sweet version of the creep pixel font for terminals without negative spacing support.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/akuma-dev/creep2
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/akuma-dev/creep2.git
+	md5sums = SKIP
+
+pkgname = creep2
+
