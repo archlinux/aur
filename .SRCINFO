@@ -1,7 +1,7 @@
 pkgbase = nagircbot
 	pkgdesc = IRC bot announcing Nagios status
 	pkgver = 0.0.33
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.vanheusden.com/nagircbot/
 	arch = i686
 	arch = pentium4

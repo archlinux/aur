@@ -1,7 +1,7 @@
 # Maintainer: Erich Eckner <arch at eckner dot net>
 pkgname=nagircbot
 pkgver=0.0.33
-pkgrel=3
+pkgrel=4
 arch=('i686' 'pentium4' 'x86_64')
 pkgdesc='IRC bot announcing Nagios status'
 url='https://www.vanheusden.com/nagircbot/'
