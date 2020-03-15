@@ -1,7 +1,7 @@
 # Maintainer: Martynas Mickevičius <self at 2m dot lt>
 pkgname=ucm-bin
-pkgver=M1h
-pkgrel=3
+pkgver=M1i
+pkgrel=1
 pkgdesc='Unison language code manager'
 arch=('x86_64')
 url='https://www.unisonweb.org'
