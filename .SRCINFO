@@ -1,11 +1,12 @@
 pkgbase = git-credential-manager-bin
 	pkgdesc = Git Credential Manager for Mac and Linux stores credentials for Git version control securely. Provides secure logon for Visual Studio Team Services (visualstudio.com).
 	pkgver = 2.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/microsoft/Git-Credential-Manager-for-Mac-and-Linux
 	arch = x86_64
 	license = MIT
 	depends = java-environment>=6
+	depends = git>=1.9
 	provides = git-credential-manager
 	conflicts = git-credential-manager
 	conflicts = git-credential-manager-bin
