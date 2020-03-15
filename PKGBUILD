@@ -20,7 +20,7 @@ sha512sums=('b0ac170b31c442006d2b3860cc4b5b43265369aa52de925c5e2ca30ea57767b8496
             'SKIP'
             'SKIP')
 sha512sums_x86_64=('672f818a52e6876c1460eb9f9fde3ada945934f98d912cad958ce18c2b45ea04ffb359d11223ace10c2ff81f8914eb8c1595cee501901de8cad9eb1e6ec6f4d8'
-                   'd110780192796e13f5ff14bf2f3c3dc747a703ce21636827bb7ee9bb9eeb85b3ca19baca1669f9208f2eed36f13e488a4ea2877b942407dd9429485fcb9510a1')
+                   'SKIP')
 
 
 prepare() {
