@@ -1,0 +1,15 @@
+pkgbase = gutenpy
+	pkgdesc = A text reader and catalog browser for Project Gutenberg
+	pkgver = 0.3.0
+	pkgrel = 11
+	url = http://gutenpy.sourceforge.net
+	arch = any
+	license = GPL
+	depends = pygtk
+	source = https://downloads.sourceforge.net/sourceforge/gutenpy/gutenpy-0.3.0.zip
+	source = gutenpy.desktop
+	sha1sums = f9f7fd7823447266eabacd0befda4e52bd97c79c
+	sha1sums = f741244fef917bd64cf337bbffb3c7cd91e6b12e
+
+pkgname = gutenpy
+
