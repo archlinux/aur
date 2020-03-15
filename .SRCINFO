@@ -1,7 +1,7 @@
 pkgbase = perl-xml-compile-soap12
 	pkgdesc = Perl package that handles SOAP v1.2 protocol
 	pkgver = 3.06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-Compile-SOAP12
 	arch = any
 	license = PerlArtistic
