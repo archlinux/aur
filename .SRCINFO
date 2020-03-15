@@ -1,0 +1,25 @@
+pkgbase = glrpt-git
+	pkgdesc = Interactive GUI application for receiving, decoding and displaying LRPT images from the Russian Meteor-M type of weather satellites
+	pkgver = r7.f98a90f
+	pkgrel = 1
+	url = https://github.com/dvdesolve/glrpt
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	depends = gtk3>=3.22.0
+	depends = glibc
+	depends = glib2
+	depends = soapysdr
+	optdepends = soapyrtlsdr: RTL-SDR support
+	optdepends = soapyairspy: Airspy support
+	provides = glrpt
+	conflicts = glrpt
+	source = glrpt-git::git+https://github.com/dvdesolve/glrpt.git
+	sha256sums = SKIP
+
+pkgname = glrpt-git
+
