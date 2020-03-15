@@ -2,7 +2,7 @@
 
 pkgname=dkopp
 pkgver=7.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A backup program using DVDs"
 url="https://kornelix.net/dkopp/dkopp.html"
 arch=('i686' 'x86_64')
