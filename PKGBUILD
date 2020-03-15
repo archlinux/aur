@@ -4,7 +4,7 @@
 
 pkgname=perl-ouch
 pkgver=0.0501
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module for exceptions that don't hurt"
 arch=('any')
 url='https://metacpan.org/release/Ouch'
@@ -37,5 +37,5 @@ package() {
 	cd Ouch-0.0501
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

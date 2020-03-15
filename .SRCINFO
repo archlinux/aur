@@ -1,7 +1,7 @@
 pkgbase = perl-ouch
 	pkgdesc = Perl module for exceptions that don't hurt
 	pkgver = 0.0501
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Ouch
 	arch = any
 	license = PerlArtistic
