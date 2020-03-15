@@ -1,8 +1,8 @@
 pkgbase = perl-sql-reservedwords
 	pkgdesc = Perl module that prodives list of SQL reserved words
 	pkgver = 0.8
-	pkgrel = 1
-	url = http://search.cpan.org/dist/SQL-ReservedWords
+	pkgrel = 2
+	url = https://metacpan.org/release/SQL-ReservedWords
 	arch = any
 	license = PerlArtistic
 	license = GPL
