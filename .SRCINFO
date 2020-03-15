@@ -10,9 +10,8 @@ pkgbase = ocaml-wtf8
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dune
-	makedepends = ocaml-findlib
-	depends = ocaml
+	makedepends = dune>=1.0.0
+	depends = ocaml>=4.01.0
 	options = !strip
 	source = ocaml-wtf8-1.0.2-2.tar.gz::https://github.com/flowtype/ocaml-wtf8/archive/v1.0.2.tar.gz
 	sha256sums = 269afc56f4a9591cbcbf965aaa2d028df82071cac9117ecc4bf19ef11e1cfc65
