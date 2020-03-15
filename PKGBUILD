@@ -17,6 +17,11 @@ source=("git+https://github.com/geph-official/gephgui.git"
 sha512sums=('SKIP'
             '94e30f293a7c7ac232bdcfb9549bab8d4aeacd91a48e249b37a996b3876776760650ff3fe7684029d544dd6806f32e72476bfca2cb9ec91d2bea7cd24bc162d0')
 
+pkgver() {
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
     cd "$_pkgname"
     npm install --devDependencies
