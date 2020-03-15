@@ -1,8 +1,8 @@
 pkgbase = perl-math-interpolate
 	pkgdesc = Perl module providing routines for interpolating data sets
 	pkgver = 1.06
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Math-Interpolate
+	pkgrel = 2
+	url = https://metacpan.org/release/Math-Interpolate
 	arch = any
 	license = PerlArtistic
 	license = GPL
