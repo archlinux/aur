@@ -1,5 +1,5 @@
 pkgname=libmodulemd
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ depends=('file' 'glib2' 'libyaml' 'rpm-tools')
 makedepends=('gobject-introspection' 'gtk-doc' 'help2man' 'meson>=0.47' 'python-gobject')
 optdepends=('python-gobject: for python bindings')
 source=("$url/releases/download/$pkgname-$pkgver/${pkgname#lib}-$pkgver.tar.xz")
-md5sums=('f7696db08afa26ca067051ba8e5f2f5b')
+md5sums=('885869b62909bf87b7e3714b815fe0ae')
 
 prepare() {
 	mv "${pkgname#lib}-$pkgver" "$pkgname-$pkgver"

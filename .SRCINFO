@@ -1,6 +1,6 @@
 pkgbase = libmodulemd
 	pkgdesc = C Library for manipulating module metadata files
-	pkgver = 2.9.1
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/fedora-modularity/libmodulemd
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = libmodulemd
 	depends = libyaml
 	depends = rpm-tools
 	optdepends = python-gobject: for python bindings
-	source = https://github.com/fedora-modularity/libmodulemd/releases/download/libmodulemd-2.9.1/modulemd-2.9.1.tar.xz
-	md5sums = f7696db08afa26ca067051ba8e5f2f5b
+	source = https://github.com/fedora-modularity/libmodulemd/releases/download/libmodulemd-2.9.2/modulemd-2.9.2.tar.xz
+	md5sums = 885869b62909bf87b7e3714b815fe0ae
 
 pkgname = libmodulemd
 
