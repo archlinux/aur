@@ -5,6 +5,11 @@ pkgbase = shiru.lv2-git
 	url = https://github.com/linuxmao-org/shiru-plugins
 	arch = x86_64
 	license = GPL
+	makedepends = lv2
+	makedepends = cairo
+	makedepends = pango
+	makedepends = jack
+	makedepends = mesa
 	source = shiru.lv2-git::git+https://github.com/linuxmao-org/shiru-plugins
 	md5sums = SKIP
 
