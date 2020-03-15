@@ -1,14 +1,15 @@
+# Maintainer: Thor77 <thor77 at thor77 dot org>
 # Maintainer: Clar Charr <clar@charr.xyz>
 
 pkgname=miniflux
 pkgver=2.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist Feed Reader'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://miniflux.app'
 license=('Apache')
 optdepends=("postgresql: unless the database is on another machine, this machine needs it")
-makedepends=('go' 'godep' 'git')
+makedepends=('go' 'git')
 conflicts=('miniflux-git')
 backup=('etc/miniflux.conf')
 source=(

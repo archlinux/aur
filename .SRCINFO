@@ -1,7 +1,7 @@
 pkgbase = miniflux
 	pkgdesc = Minimalist Feed Reader
 	pkgver = 2.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://miniflux.app
 	arch = x86_64
 	arch = arm
@@ -10,7 +10,6 @@ pkgbase = miniflux
 	arch = aarch64
 	license = Apache
 	makedepends = go
-	makedepends = godep
 	makedepends = git
 	optdepends = postgresql: unless the database is on another machine, this machine needs it
 	conflicts = miniflux-git
