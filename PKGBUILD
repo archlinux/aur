@@ -1,5 +1,4 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
-# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppxfind'
 pkgname="ocaml-$_projectname"
 pkgver='1.4'
