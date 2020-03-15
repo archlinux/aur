@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-unblank-git
 	pkgdesc = Unblank screen when screen saver becomes active.
-	pkgver = 7a9a146
+	pkgver = r49.02c0920
 	pkgrel = 1
 	url = https://github.com/sunwxg/gnome-shell-extension-unblank
 	arch = any
