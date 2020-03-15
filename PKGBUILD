@@ -8,13 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('!429' '!493' '!579' '!724' '!983')
-_merge_requests_to_use=('!724' '!983') # safe pick
+# available MR: ('429' '493' '579' '724' '983')
+_merge_requests_to_use=('724' '983' '1124') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.0+26+g0700f3749
+pkgver=3.36.0
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -39,38 +39,21 @@ pkgver() {
   git describe --tags | sed 's/-/+/g'
 }
 
-hash_of() {
-  git log --oneline --all | grep "$1" | tail -n 1 | awk '{print $1}'
-}
-
-git_cp_by_msg() {
-  # Comment: Saren found a way to fetch hash based on commit name. It's controversial but might be interesting to create a function to call for each MR to not have to update the hash at each rebase.
-  h_first=$(hash_of "$2")
-  if [[ -n "$3" ]]; then
-    h_last=$(hash_of "$3")
-    echo "Found $h_first^$h_last for $1"
-    git cherry-pick -n -Xtheirs $h_first^..$h_last
-  else
-    echo "Found $h_first for $1"
-    git cherry-pick -n -Xtheirs $h_first
-  fi
-}
-
 pick_mr() {
   for mr in "${_merge_requests_to_use[@]}"; do
     if [ "$1" = "$mr" ]; then
-      if [ "$3" = "merge" ]; then
-        echo "Merging $1..."
-        git cherry-pick -n $2
+      if [ "$2" = "merge" ] || [ -z "$2" ]; then
+        echo "Downloading then Merging $1..."
+        curl -O "https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/$mr.diff"
+        git apply "$mr.diff"
       elif [ "$3" = "revert" ]; then
         echo "Reverting $1..."
         git revert "$2" --no-commit
-      elif [ "$3" = "patch" ]; then
+      elif [ "$2" = "patch" ]; then
         echo "Patching $1..."
         patch -Np1 -i "$2"
       else
-        echo "Merging latest commits for $1..."
-        git_cp_by_msg "$1" "$2" "$3"
+        echo "ERROR: wrong argument given: $2"
       fi
       break
     fi
@@ -81,15 +64,19 @@ prepare() {
   cd $pkgname
 
   ### Adding and fetching remotes providing the selected merge-requests
+  ### Only needed when there is no MR opened
+
   git reset --hard
   git cherry-pick --abort || true
-  git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
-  # git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true # !429
-  git remote add 3v1no https://gitlab.gnome.org/3v1n0/mutter.git || true
 
-  git fetch vanvugt
-  # git fetch verdre
-  git fetch 3v1no
+  #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
+  #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
+  #git remote add 3v1no https://gitlab.gnome.org/3v1n0/mutter.git || true
+
+  #git fetch vanvugt
+  #git fetch verdre
+  #git fetch 3v1no
+
 
   ### Merge Requests
 
@@ -101,6 +88,12 @@ prepare() {
   # Comment:
   # git cherry-pick -n first_commit^..last_commit
   #
+  # Possible Type:
+  #   1. Improvement: Makes an already existing feature behave better, more efficiently/reliably.
+  #   2. Feature: Adds a new functionality.
+  #   3. Fix: Regression/bug fix only available in master (not backported).
+  #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
+  #
   # Possible Status:
   #   1. Needs rebase: Conflicts with master branch.
   #   2. Needs review: Mutter maintainers needs to review the new/updated MR and provide feedback.
@@ -108,46 +101,50 @@ prepare() {
   #   4. Merged: MR approved and it changes commited to master.
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
-  #
-  # Possible Type:
-  #   1. Improvement: Makes an already existing feature behave better, more efficiently/reliably.
-  #   2. Feature: Adds a new functionality.
-  #   3. Fix: Regression/bug fix only available in master (not backported).
-  #   4. Cleanup: Code styling improvement, function deprecation, rearrangement...
+
+
+
 
   # Title: Resource scale computation optimizations
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/493
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/493
   # Type: 1
   # Status: 3
-  # Comment: Not picked by default because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/merge_requests/493#note_549833
-  pick_mr '!493' 3aa449af^..1017ce44 'merge'
+  # Comment: Not picked by default because breaks the overview on Wayland. https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/493#note_549833
+  pick_mr '493'
 
   # Title: clutter/stage: Update input devices right after doing a relayout
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/429
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/429
   # Type: 1
   # Status: 1
-  pick_mr '!429' 'clutter/stage-cogl: Add method to check if ongoing repaint is clipped' 'clutter/stage: Use a device-manager method to update input devices'
+  pick_mr '429'
 
   # Title: backends: Do not reload keymap on new keyboard notifications
-  # URL:  https://gitlab.gnome.org/GNOME/mutter/merge_requests/579
+  # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/579
   # Type: 1
   # Status: 4
-  # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/merge_requests/833
+  # Comment: Was reverted: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/833
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
-  pick_mr '!579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
+  pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
   # Title: clutter/text: Check if attributes are equal before applying
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/983
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/983
   # Type: 1
   # Status: 2
   # Comment:
-  pick_mr '!983' 'clutter/text: Check if attributes are equal before applying'
+  pick_mr '983'
 
   # Title: Sync timelines to hardware vsync
-  # URL: https://gitlab.gnome.org/GNOME/mutter/merge_requests/724
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/724
   # Type: 1
   # Status: 2
-  pick_mr '!724' 'clutter/stage: Add API to get_next_presentation_time' 'clutter/master-clock-default: Sync timelines to hardware vsync'
+  pick_mr '724'
+
+  # Title: Use correct shaped texture filtering
+  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1124
+  # Type: 1
+  # Status: 2
+  # Comment: Impacts Wayland only, fixes https://gitlab.gnome.org/GNOME/mutter/issues/804
+  pick_mr '1124'
 
 }
 
