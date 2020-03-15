@@ -9,33 +9,33 @@ pkgdesc='Perl clipboard module'
 arch=('any')
 url='[% url %]'
 license=('PerlArtistic' 'GPL')
-makedepends=('perl-module-install')
-depends=('perl>=5.6.0' 'xclip')
+makedepends=('perl-module-build>=0.28')
+depends=('perl-cgi' 'perl-uri' 'xclip')
 source=([% source %])
 options=(!emptydirs)
 md5sums=('[% md5sums %]')
 
 sanitize() {
 	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1
+	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" MODULEBUILDRC=/dev/null
 }
 
 build() {
 	cd [% distdir %]
 	sanitize
-	perl Makefile.PL INSTALLDIRS=vendor
-	make
+	/usr/bin/perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	/usr/bin/perl Build
 }
 
 check() {
 	cd [% distdir %]
 	sanitize
-	make test
+	/usr/bin/perl Build test
 }
 
 package() {
 	cd [% distdir %]
 	sanitize
-	make install DESTDIR="$pkgdir"
+	/usr/bin/perl Build install
 	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
