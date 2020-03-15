@@ -14,6 +14,12 @@
 # =============================================================================
 [llvm]
 
+# Indicates whether LLVM rebuild should be skipped when running bootstrap. If
+# this is `false` then the compiler's LLVM will be rebuilt whenever the built
+# version doesn't have the correct hash. If it is `true` then LLVM will never
+# be rebuilt. The default value is `false`.
+skip-rebuild = false
+
 # Indicates whether the LLVM build is a Release or Debug build
 optimize = true
 
@@ -132,6 +138,10 @@ target = ["x86_64-unknown-linux-gnu", "i686-pc-windows-gnu", "x86_64-pc-windows-
 # specified, use this rustc binary instead as the stage0 snapshot compiler.
 #rustc = "/path/to/bin/rustc"
 
+# Instead of download the src/stage0.txt version of rustfmt specified,
+# use this rustfmt binary instead as the stage0 snapshot rustfmt.
+#rustfmt = "/path/to/bin/rustfmt"
+
 # Flag to specify whether any documentation is built. If false, rustdoc and
 # friends will still be compiled but they will not be used to generate any
 # documentation.
@@ -171,21 +181,23 @@ locked-deps = false
 # Indicate whether the vendored sources are used for Rust dependencies or not
 vendor = true
 
-# Typically the build system will build the rust compiler twice. The second
+# Typically the build system will build the Rust compiler twice. The second
 # compiler, however, will simply use its own libraries to link against. If you
 # would rather to perform a full bootstrap, compiling the compiler three times,
 # then you can set this option to true. You shouldn't ever need to set this
 # option to true.
 full-bootstrap = false
 
-# Enable a build of the extended rust tool set which is not only the compiler
+# Enable a build of the extended Rust tool set which is not only the compiler
 # but also tools such as Cargo. This will also produce "combined installers"
 # which are used to install Rust and Cargo together. This is disabled by
-# default.
+# default. The `tools` option (immediately below) specifies which tools should
+# be built if `extended = true`.
 extended = true
 
-# Installs chosen set of extended tools if enabled. By default builds all.
-# If chosen tool failed to build the installation fails.
+# Installs chosen set of extended tools if `extended = true`. By default builds all.
+# If chosen tool failed to build the installation fails. If `extended = false`, this
+# option is ignored.
 tools = ["cargo"]
 
 # Verbosity level: 0 == not verbose, 1 == verbose, 2 == very verbose
@@ -399,6 +411,13 @@ backtrace-on-ice = false
 
 # Whether to verify generated LLVM IR
 verify-llvm-ir = false
+
+# Compile the compiler with a non-default ThinLTO import limit. This import
+# limit controls the maximum size of functions imported by ThinLTO. Decreasing
+# will make code compile faster at the expense of lower runtime performance.
+# If `incremental` is set to true above, the import limit will default to 10
+# instead of LLVM's default of 100.
+#thin-lto-import-instr-limit = 100
 
 # Map all debuginfo paths for libstd and crates to `/rust/$sha/$crate/...`,
 # generally only set for releases
