@@ -1,0 +1,13 @@
+pkgbase = toxiproxy-server-bin
+	pkgdesc = A TCP proxy to simulate network and system conditions for chaos and resiliency testing
+	pkgver = 2.1.4
+	pkgrel = 1
+	url = http://toxiproxy.io
+	arch = x86_64
+	license = MIT
+	provides = toxiproxy-server
+	source = https://github.com/Shopify/toxiproxy/releases/download/v2.1.4/toxiproxy-server-linux-amd64
+	md5sums = SKIP
+
+pkgname = toxiproxy-server-bin
+
