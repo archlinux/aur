@@ -1,8 +1,8 @@
 pkgbase = slitherling
 	pkgdesc = A simple snake game. Feed your snake with fruit. Arrow keys, VIM keys, or spacebar (easy mode).
-	pkgver = 90ad00d
+	pkgver = 21a329f
 	pkgrel = 1
-	epoch = 1583638953
+	epoch = 1584243336
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0
