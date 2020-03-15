@@ -1,0 +1,15 @@
+pkgbase = werf-bin
+	pkgdesc = GitOps delivery tool
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://werf.io
+	arch = x86_64
+	license = Apache2
+	depends = docker
+	depends = git
+	provides = werf
+	source = https://dl.bintray.com/flant/werf/v1.1.2/werf-linux-amd64-v1.1.2
+	md5sums = 6f3c929127ac38629f5a1d4e9420540e
+
+pkgname = werf-bin
+
