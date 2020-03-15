@@ -1,0 +1,12 @@
+pkgbase = shiru.lv2-git
+	pkgdesc = A set of music plugins created by Shiru, unofficial DPF ports
+	pkgver = r46.08853f9
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/shiru-plugins
+	arch = x86_64
+	license = GPL
+	source = shiru.lv2-git::git+https://github.com/linuxmao-org/shiru-plugins
+	md5sums = SKIP
+
+pkgname = shiru.lv2-git
+
