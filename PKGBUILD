@@ -1,10 +1,10 @@
 # CPAN Name  : Test::Identity
-# Contributor: Anonymous
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-test-identity
 pkgver=0.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to test the referential identity of a reference'
 arch=('any')
 url='https://metacpan.org/release/Test-Identity'
@@ -36,5 +36,5 @@ package() {
 	cd Test-Identity-0.01
 	sanitize
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
