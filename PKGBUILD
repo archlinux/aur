@@ -1,11 +1,11 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
 #_cudaarch="3.7;5.0;5.2;5.2+PTX;5.3;5.3+PTX;6.0;6.0+PTX;6.1;6.1+PTX;6.2;6.2+PTX;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX"
-_cudaarch="6.0;6.1;6.2;7.0;7.2;7.5"
+_cudaarch="6.0;6.1;7.0;7.5"
 _pkgname=mxnet
 pkgname=('mxnet-git' 'mxnet-cuda-git')
-_pkgver=1.6.0
-pkgver=1.6.0.r10763.2abd2255cf
+_pkgver=2.0.0
+pkgver=2.0.0.r10796.d495f228eb
 pkgrel=1
 pkgdesc='A flexible and efficient library for deep learning'
 arch=('x86_64')
@@ -72,8 +72,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
     -DINSTALL_DOCUMENTATION:BOOL=OFF
+    -DMKL_USE_SINGLE_DYNAMIC_LIBRARY:BOOL=ON
     -DUSE_BLAS=mkl
     -DUSE_CPP_PACKAGE:BOOL=ON
+    -DUSE_CXX14_IF_AVAILABLE:BOOL=ON
     -DUSE_DIST_KVSTORE:BOOL=ON
     -DUSE_GPERFTOOLS:BOOL=OFF
     -DUSE_JEMALLOC:BOOL=OFF
@@ -83,22 +85,6 @@ build() {
     -DUSE_OPENMP:BOOL=ON
     -DUSE_S3:BOOL=ON
 )
-
-  export CC=gcc
-  export CXX=g++
-
-  # building without CUDA
-  cd "${srcdir}/mxnet-git/build"
-  cmake \
-    ${cmake_opts[@]} \
-    -DUSE_CUDA:BOOL=OFF \
-    -DUSE_CUDNN:BOOL=OFF \
-    -DUSE_NCCL:BOOL=OFF \
-    -DUSE_OPENCV:BOOL=ON \
-    ..
-  make
-  cd ../python
-  python setup.py build --with-cython
 
   # use gcc version compatible with CUDA
   export CC=/opt/cuda/bin/gcc
@@ -113,6 +99,22 @@ build() {
     -DUSE_CUDNN:BOOL=ON \
     -DUSE_NCCL:BOOL=ON \
     -DUSE_OPENCV:BOOL=OFF \
+    ..
+  make
+  cd ../python
+  python setup.py build --with-cython
+  
+  export CC=gcc
+  export CXX=g++
+
+  # building without CUDA
+  cd "${srcdir}/mxnet-git/build"
+  cmake \
+    ${cmake_opts[@]} \
+    -DUSE_CUDA:BOOL=OFF \
+    -DUSE_CUDNN:BOOL=OFF \
+    -DUSE_NCCL:BOOL=OFF \
+    -DUSE_OPENCV:BOOL=ON \
     ..
   make
   cd ../python
