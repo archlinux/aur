@@ -35,6 +35,9 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+  export GIT_CONFIG_NOSYSTEM=1
+  git config --local user.name makepkg
+  git config --local user.email picom@makepkg.aur
   git remote add yshui https://github.com/yshui/picom.git
   git fetch yshui
   git rebase yshui/next
