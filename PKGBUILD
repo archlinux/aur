@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocsigen/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
 depends=('ocaml' 'ocaml-lwt>=4.0.0')
-makedepends=('dune' 'ocaml-findlib')
+makedepends=('dune')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('14fb19ec61e555e32c8bb026a591c0ce5b0a153663d17b0876178ab92d625f3f')
