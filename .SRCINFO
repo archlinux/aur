@@ -1,7 +1,7 @@
 pkgbase = weechat-notify-send
 	pkgdesc = A WeeChat script that sends highlight and message notifications through notify-send
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/s3rvac/weechat-notify-send
 	arch = any
 	license = MIT

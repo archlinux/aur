@@ -1,8 +1,20 @@
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
+# POST-INSTALLATION INSTRUCTIONS
+#
+# WeeChat is unable to source files from outside of a user's home directory.
+# Because of this limitation, this package *DOES NOT* make this plugin available
+# to WeeChat without end user interaction.
+#
+# Each user who wants to enable this plugin needs to create symlinks in the
+# WeeChat configuration directory for their user (by default, ~/.weechat). The
+# following command(s) will accomplish this:
+#
+#     $ ln -s /usr/lib/weechat/python/notify_send.py ~/.weechat/python/autoload/notify_send.py
+
 pkgname=weechat-notify-send
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A WeeChat script that sends highlight and message notifications through notify-send"
 url='https://github.com/s3rvac/weechat-notify-send'
 arch=('any')
@@ -18,16 +30,9 @@ sha512sums=('108c094ab9080581284255bd7c9aa8f4d9dcb836b91a082c21370810b60eabbc882
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 "Installing the notify_send.py plugin"
+  # Install the plugin script
   install -Dm644 notify_send.py ${pkgdir}/usr/lib/weechat/python/notify_send.py
 
-  msg2 "Installing license"
+  # Install the plugin license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  msg2 "Since WeeChat does not yet load plugins in the system path, you need"
-  msg2 "to load the script from your user path. Use symlnks so that you can"
-  msg2 "benefit from package upgrades via pacman."
-  msg2 "    $ ln -s /usr/lib/weechat/python/notify_send.py $HOME/.weechat/python/notify_send.py"
 }
-
-# vim:set ts=2 sw=2 et:
