@@ -1,0 +1,9 @@
+[Unit]
+Description=Clean up saved kernel modules
+
+[Timer]
+OnBootSec=5min
+Unit=saved-kernel-modules.service
+
+[Install]
+WantedBy=timers.target

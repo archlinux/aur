@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# set -o xtrace
+set -o errexit -o nounset -o pipefail -o errtrace
+IFS=$'\n\t'
+
+cd /usr/lib/modules/saved-kernel-modules
+
+running_kernel=$(uname -r)
+
+if [ -e modules/"$running_kernel" ] \
+    && [ ! -e /usr/lib/modules/"$running_kernel" ] ; then
+    ln -s $PWD/modules/"$running_kernel" /usr/lib/modules/"$running_kernel"
+fi

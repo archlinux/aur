@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#set -o xtrace
+set -o errexit -o nounset -o pipefail -o errtrace
+IFS=$'\n\t'
+
+# clean up the saved modules
+
+cd /usr/lib/modules/saved-kernel-modules
+
+(
+    cd modules
+    for i in * ; do
+        if [ -L /usr/lib/modules/"$i" ] ; then
+            rm -f /usr/lib/modules/"$i"
+        fi
+    done
+)
+
+rm -rf modules/*

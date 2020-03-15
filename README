@@ -1,0 +1,31 @@
+This is a set of pacman hooks and systemd units to preserve the running
+kernel's modules during upgrades.  If one upgrades the kernel but
+doesn't reboot right away, any modules that were not loaded yet are
+lost.  Modules are often loaded dynamically due to hardware being
+hotplugged at runtime (e.g. a USB device).  While it's recommended to
+reboot immediately after an upgrade, sometimes it's inconvenient.  On
+the next boot, any saved kernels are purged.
+
+* /usr/share/libalpm/hooks/50-save-kernel-modules-pre.hook
+  PreTransaction hook.  Should be before 60 because of mkinitcpio-remove and dkms-remove.
+
+* /usr/share/libalpm/hooks/90-save-kernel-modules-post.hook
+  PostTransaction hook.  Should be after 70 because of dkms-install.
+
+* /usr/lib/modules/saved-kernel-modules/modules/
+  Where the modules are preserved
+
+* /usr/lib/modules/saved-kernel-modules/pre-hook
+  Pacman hook to save the running kernel
+
+* /usr/lib/modules/saved-kernel-modules/pre-hook
+  Pacman hook to link the running kernel back in to /usr/lib/modules/
+
+* /usr/lib/modules/saved-kernel-modules/cleanup
+  Script to clean any saved kernels on the next boot
+
+* /usr/lib/systemd/system/saved-kernel-modules.service
+  Runs cleanup on the next boot
+
+* /usr/lib/systemd/system/saved-kernel-modules.timer
+  Schedules the clean up

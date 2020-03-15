@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/lib/modules/*/vmlinuz
+
+[Action]
+Description = Linking saved modules ...
+When = PostTransaction
+Exec = /usr/lib/modules/saved-kernel-modules/post-hook

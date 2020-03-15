@@ -1,0 +1,8 @@
+[Unit]
+Description=Remove saved kernel modules on boot
+ConditionPathExists=/usr/lib/modules/saved-kernel-modules
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/modules/saved-kernel-modules/cleanup
+IOSchedulingClass=idle
