@@ -1,0 +1,17 @@
+pkgbase = pgtcl
+	pkgdesc = Tcl client side interface to PostgreSQL (libpgtcl)
+	pkgver = 2.7.1
+	pkgrel = 1
+	url = https://flightaware.github.io/Pgtcl/
+	arch = x86_64
+	license = BSD
+	depends = postgresql>=12.2
+	depends = postgresql-libs>=12.2
+	depends = tcl>=8.6
+	depends = tcl<8.7
+	provides = libpgtcl
+	source = pgtcl-2.7.1.tar.gz::https://github.com/flightaware/Pgtcl/archive/v2.7.1.tar.gz
+	sha1sums = edf384a2bc9ae05b9ffbc69735f7e4064c51a76e
+
+pkgname = pgtcl
+
