@@ -8,7 +8,7 @@ depends=('gtk3')
 pkgdesc="A program to find files with a nice gtk interface"
 url="http://www.kornelix.net/findwild/findwild.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('3be1ba6ea79ffe9c7bdbdab98adcc15ed6ee47cacb7a22bdaf9758722b62aacb')
+sha256sums=('0f8732fbc68d34e460e6c61dcafe6da7b458dbe3c85de0fdae57326f42636f86')
 options=('!emptydirs')
 
 build() {
