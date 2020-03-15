@@ -1,7 +1,7 @@
 pkgbase = biblesync
 	pkgdesc = multicast shared co-navigation library for Bible programs
 	pkgver = 1.2.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/karlkleinpaste/biblesync
 	arch = x86_64
 	arch = i686
