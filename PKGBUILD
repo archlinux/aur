@@ -2,7 +2,7 @@
 # Contributor: j605
 
 pkgname='python-pyperf'
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Toolkit to run Python benchmarks'
 url='https://github.com/vstinner/pyperf'
@@ -10,7 +10,7 @@ arch=('any')
 license=('MIT')
 depends=('python' 'python-setuptools' 'python-six')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/vstinner/pyperf/archive/${pkgver}.tar.gz)
-sha256sums=('67caab39f99f34fd6387dd59e63bb498a941d8e2da3cd389fbfc8d4d6bf5e97e')
+sha256sums=('151b6c3950d2fb3f161aa79997f7dec0e967b00e435530373c3e7ece240e0bfd')
 
 build() {
     cd pyperf-${pkgver}
