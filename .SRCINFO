@@ -1,0 +1,18 @@
+pkgbase = geph-client-git
+	pkgdesc = A command-line Geph client
+	pkgver = r144.f29acd3
+	pkgrel = 1
+	url = https://github.com/geph-official/geph2
+	arch = x86_64
+	groups = geph2-git
+	license = GPL3
+	makedepends = go-pie
+	makedepends = git
+	depends = glibc
+	provides = geph-client
+	conflicts = geph-client
+	source = git+https://github.com/geph-official/geph2.git
+	sha512sums = SKIP
+
+pkgname = geph-client-git
+
