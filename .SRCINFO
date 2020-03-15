@@ -12,7 +12,6 @@ pkgbase = ocaml-lwt
 	license = MIT
 	makedepends = cppo>=1.1.0
 	makedepends = dune>=1.7.0
-	makedepends = ocaml-findlib
 	depends = libev
 	depends = ocaml>=4.02.0
 	depends = ocaml-mmap>=1.1.0
