@@ -11,16 +11,16 @@ sha256sums=('dcd3cb8365bacdfd01ccf8142beadc7f759139b4d7442d78eaa8e4e62ed3307d')
 
 export CGO_LDFLAGS="$LDFLAGS"
 export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
-export GOPATH="${SRCDEST:-$srcdir}"
 
 prepare() {
   cd $pkgname-$pkgver
+  export GOPATH="${SRCDEST:-$srcdir}"
   go mod vendor
 }
 
 build() {
   cd $pkgname-$pkgver
-  make
+  make GOPATH="${SRCDEST:-$srcdir}"
 }
 
 package() {
