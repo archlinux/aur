@@ -1,60 +1,32 @@
-# Maintainer:  Håvard Pettersson <mail@haavard.me>
+# Maintainer: Sagiri <i@sagiri.me>
 
+pkgname=osu-git
 _pkgname=osu
-pkgname=$_pkgname-git
-pkgver=r182.3c01f59
-pkgrel=2
+pkgver=2020.312.0
+pkgrel=1
+pkgdesc="rhythm is just a *click* away!"
+arch=('x86_64')
+url="https://osu.ppy.sh/"
+license=('MIT')
+depends=('ffmpeg')
+makedepends=("dotnet-host" "dotnet-runtime" "dotnet-sdk")
+conflicts=("osu" "osu-bin")
+source=("git://github.com/ppy/osu.git" "osu.desktop")
+sha512sums=("SKIP" "264d12f2e52478605a957ee37ba8e299bb54bc2caec72a478c60d267c6e99947e3b66d9c0b4974304d380e1bc3c71e339f25138ff21d9ed7569f7216189d9c73")
 
-pkgdesc='rhythm is just a *click* away!'
-url='https://osu.ppy.sh'
-arch=('i686' 'x86_64')
-license=('MIT' 'custom:CCPL:by-nc-4.0')
-
-depends=('mono')
-makedepends=('git' 'nuget')
-
-source=("git+https://github.com/ppy/$_pkgname.git"
-        "git+https://github.com/ppy/$_pkgname-resources.git"
-        "git+https://github.com/ppy/$_pkgname-framework.git"
-        "osu-native")
-install=$pkgname.install
-
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP'
-            'a5abea74ed95ba0469beda5d8862c60c2476d35cdc8ae0d5e94bf5fcca452e48')
-
-pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $_pkgname
-
-  git submodule init
-  git config submodule.osu-resources.url "$srcdir/$_pkgname-resources"
-  git config submodule.osu-framework.url "$srcdir/$_pkgname-framework"
-  git submodule update
-
-  nuget restore
-}
 
 build() {
-  cd $_pkgname
-  xbuild /p:Configuration=Release \
-         /p:TreatWarningsAsErrors=false
+    cd $srcdir/$_pkgname
+    dotnet build -c $pkgver $_pkgname.Desktop
 }
 
 package() {
-  cd $_pkgname
-
-  install -Dm755 "$srcdir"/osu-native "$pkgdir"/usr/bin/osu-native
-
-  install -dm755 "$pkgdir"/usr/lib/$_pkgname
-  install -Dm755 osu.Desktop/bin/Release/*.{exe,so,dll,dll.config} "$pkgdir"/usr/lib/$_pkgname
-
-  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 $_pkgname-framework/LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-framework
-  install -Dm644 $_pkgname-resources/LICENCE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-resources.md
+    mkdir -p $pkgdir/opt/
+    cp -r $srcdir/$_pkgname/$_pkgname.Desktop/bin/$pkgver/netcoreapp3.1/ $pkgdir/opt/$_pkgname/
+    
+    install -Dm644 $srcdir/$_pkgname.desktop $pkgdir/usr/share/applications/$_pkgname.desktop
+    
+    install -Dm644 $srcdir/$_pkgname/$_pkgname.Desktop/lazer.ico $pkgdir/usr/share/icons/hicolor/32x32/apps/osu.ico
+    install -Dm644 $srcdir/$_pkgname/assets/lazer-nuget.png $pkgdir/usr/share/icons/hicolor/128x128/apps/osu.png
+    install -Dm644 $srcdir/$_pkgname/assets/lazer.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/osu.png
 }

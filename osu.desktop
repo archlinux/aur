@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=osu
+comment=osu
+Exec=/opt/osu/osu! %U
+Path=/opt/osu/
+Terminal=false
+Icon=osu
+Categories=Game;Application;Music;
