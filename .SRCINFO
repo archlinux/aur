@@ -1,0 +1,23 @@
+pkgbase = wifi-radar
+	pkgdesc = A PyGTK2 utility for managing WiFi profiles
+	pkgver = 2.0.s10
+	pkgrel = 2
+	url = https://wifi-radar.tuxfamily.org/
+	arch = any
+	license = GPL
+	depends = net-tools
+	depends = pygtk
+	depends = wireless_tools
+	optdepends = polkit: needed if you launch wifi-radar from menu
+	source = https://wifi-radar.tuxfamily.org/pub/wifi-radar-2.0.s10.tar.bz2
+	source = https://wifi-radar.tuxfamily.org/pub/wifi-radar-2.0.s10.tar.bz2.asc
+	source = org.archlinux.pkexec.wifi-radar.policy
+	source = wifi-radar_polkit
+	validpgpkeys = 810867A40D3EB3C10C7781A06531A000118A449B
+	sha256sums = 87245344eaa6e4d385d88cabf2f02ee3098480506b6d1cd237068bb2c6302046
+	sha256sums = SKIP
+	sha256sums = 2993dafcd933703ec6ba844d8c5836716c08d0e3b1bec91c6c5fd0f78eb4570c
+	sha256sums = 613188206b787c6fe91c1d4cc3501bb5f26067c5b2e36702e95b9a10979f6e03
+
+pkgname = wifi-radar
+
