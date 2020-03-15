@@ -1,8 +1,8 @@
 pkgbase = bgpq3-git
 	pkgdesc = bgp filtering automation tool
 	pkgver = 0.1.35.r9.g14bff82
-	pkgrel = 1
-	url = https://github.com/snarPK/bgpq3
+	pkgrel = 2
+	url = https://github.com/snar/bgpq3
 	arch = x86_64
 	arch = i686
 	license = BSD

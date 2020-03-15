@@ -2,10 +2,10 @@
 
 pkgname=bgpq3-git
 pkgver=0.1.35.r9.g14bff82
-pkgrel=1
+pkgrel=2
 pkgdesc="bgp filtering automation tool"
 arch=("x86_64" "i686")
-url="https://github.com/snarPK/bgpq3"
+url="https://github.com/snar/bgpq3"
 license=('BSD')
 provides=('bgpq3')
 conflicts=('bgpq3')
@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd $pkgname
   ./configure --prefix=$pkgdir/usr
-  make
+  make -j $(nproc)
 }
 
 package() {
