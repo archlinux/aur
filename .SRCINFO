@@ -1,7 +1,7 @@
 pkgbase = perl-www-shorten
 	pkgdesc = Interface to URL shortening sites
 	pkgver = 3.093
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/WWW-Shorten
 	arch = any
 	license = PerlArtistic

@@ -4,7 +4,7 @@
 
 pkgname=perl-www-shorten
 pkgver=3.093
-pkgrel=1
+pkgrel=2
 pkgdesc='Interface to URL shortening sites'
 arch=('any')
 url='https://metacpan.org/release/WWW-Shorten'
@@ -37,5 +37,5 @@ package() {
 	cd WWW-Shorten-3.093
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
