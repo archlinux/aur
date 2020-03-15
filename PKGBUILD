@@ -2,7 +2,7 @@
 # Contributor : ackalker
 pkgname=openwatcom-v2
 pkgver=2.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The Open Watcom Fortran/C/C++ compiler, binary distribution -V2 fork"
 arch=('x86_64')
 #url="http://www.openwatcom.org"
