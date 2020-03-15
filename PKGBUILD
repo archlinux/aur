@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pantheon-applications-menu-git
-pkgver=2.4.2.r28.e239eb7
+pkgver=2.5.0.r152.13a9269
 pkgrel=1
 pkgdesc='The Pantheon Application Menu'
 arch=(x86_64)
@@ -25,10 +25,10 @@ depends=(
 makedepends=(
   git
   meson
-  granite-git
-  switchboard-git
+  granite
+  switchboard
   vala
-  wingpanel-git
+  wingpanel
 )
 provides=(pantheon-applications-menu)
 conflicts=(pantheon-applications-menu)
