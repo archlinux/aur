@@ -1,0 +1,15 @@
+pkgbase = dirbkm-git
+	pkgdesc = Linux Directory Bookmarking CLI
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/PolyMeilex/dirbkm.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	source = dirbkm::git+https://github.com/PolyMeilex/dirbkm.git
+	md5sums = SKIP
+
+pkgname = dirbkm-git
+
