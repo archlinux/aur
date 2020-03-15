@@ -7,8 +7,8 @@ pkgdesc='Shim to substitute `Pervasives` with `Stdlib` before 4.08'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml')
-makedepends=('dune' 'ocaml-findlib')
+depends=('ocaml>=4.02.3')
+makedepends=('dune')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('7151c71efd16d4e2a7dc1d4dcbcf6fdfbe2a07829428ffa6aac4b2586b1ce8c3')
