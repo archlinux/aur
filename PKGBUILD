@@ -2,7 +2,7 @@
 # Contributer: ArielAxionL <i at axionl dot me>
 # Contributor: DuckSoft <realducksoft@gmail.com>
 pkgname=qv2ray-dev-git
-pkgver=2.2.0.4712+grpc
+pkgver=2.2.1.4715+grpc
 pkgrel=1
 pkgdesc="Cross-platform V2ray Client written in Qt (Development Release)"
 arch=('x86_64')
@@ -60,6 +60,7 @@ build() {
         -DQV2RAY_TRANSLATION_PATH="/usr/share/qv2ray/lang" \
         -DQV2RAY_DEFAULT_VASSETS_PATH="/usr/lib/v2ray" \
         -DQV2RAY_DEFAULT_VCORE_PATH="/usr/lib/v2ray/v2ray" \
+        -DQV2RAY_DISABLE_AUTO_UPDATE=on \
         -DCMAKE_BUILD_TYPE=Release \
         -GNinja
     ninja
