@@ -1,14 +1,16 @@
 # Maintainer: Aaron J Graves <linux@ajgraves.com>
 pkgname=criptext-bin
 pkgver=0.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Official Criptext encrypted email client'
 arch=('x86_64')
 url='https://criptext.com/'
 license=('GPL2')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-depends=('electron')
+depends=('electron' 'libsecret')
+optdepends=('org.freedesktop.secrets: for storing passwords'
+            'gnome-keyring: for storing passwords in GNOME Keyring')
 options=(!strip)
 _srcimage="Criptext-${pkgver}.AppImage"
 source=("https://cdn.criptext.com/Criptext-Email-Desktop/linux/${_srcimage}"

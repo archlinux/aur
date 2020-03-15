@@ -1,11 +1,14 @@
 pkgbase = criptext-bin
 	pkgdesc = Official Criptext encrypted email client
 	pkgver = 0.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://criptext.com/
 	arch = x86_64
 	license = GPL2
 	depends = electron
+	depends = libsecret
+	optdepends = org.freedesktop.secrets: for storing passwords
+	optdepends = gnome-keyring: for storing passwords in GNOME Keyring
 	provides = criptext-bin
 	conflicts = criptext-bin
 	options = !strip
