@@ -1,6 +1,6 @@
 pkgbase = e2guardian
 	pkgdesc = Fork of dansguardian, an open source web content filter. It filters the actual content of pages based on many methods including phrase matching, request header and URL filtering, etc. It does not purely filter based on a banned list of sites.
-	pkgver = 5.3.3
+	pkgver = 5.3.4
 	pkgrel = 1
 	url = http://e2guardian.org
 	install = e2guardian.install
@@ -131,10 +131,10 @@ pkgbase = e2guardian
 	backup = etc/e2guardian/lists/bannedsitelist
 	backup = etc/e2guardian/lists/urlregexplist
 	backup = etc/e2guardian/lists/greyurllist
-	source = https://github.com/e2guardian/e2guardian/archive/5.3.3.tar.gz
+	source = https://github.com/e2guardian/e2guardian/archive/5.3.4.tar.gz
 	source = e2guardian
 	source = e2guardian.service
-	sha1sums = 8e2d59b11ed48f654dffb612e0d8e3146fe724d6
+	sha1sums = 4b2aa428418b0bd8a4aa22a0e4d15dc82e910290
 	sha1sums = 4505b1e66cc1f64b06eacb277de24c453831f215
 	sha1sums = a4179286aa0d0bf3bb71f5459075a02ceaf0d518
 

@@ -3,7 +3,7 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 # Contributor: Manolis Tzanidakis
 pkgname=e2guardian
-pkgver=5.3.3
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="Fork of dansguardian, an open source web content filter. It filters the actual content of pages based on many methods including phrase matching, request header and URL filtering, etc. It does not purely filter based on a banned list of sites."
 url="http://e2guardian.org"
@@ -15,10 +15,10 @@ url="http://e2guardian.org"
 optdepends=('squid' 'clamav' 'c-icap')
 conflicts=('dansguardian' 'dansguardian-dev')
 install=${pkgname}.install
-source=(https://github.com/e2guardian/${pkgname}/archive/${pkgver}.tar.gz
+source=(https://github.com/e2guardian/${pkgname}/archive/v${pkgver}.tar.gz
          e2guardian
         e2guardian.service)
-sha1sums=('8e2d59b11ed48f654dffb612e0d8e3146fe724d6'
+sha1sums=('4b2aa428418b0bd8a4aa22a0e4d15dc82e910290'
           '4505b1e66cc1f64b06eacb277de24c453831f215'
           'a4179286aa0d0bf3bb71f5459075a02ceaf0d518')
 
