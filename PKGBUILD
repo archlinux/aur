@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=gala-git
-pkgver=0.3.0.r238.0f0724c
+pkgver=3.2.0.r73.c49189b
 pkgrel=1
 pkgdesc='The Pantheon Window Manager'
 arch=(x86_64)
@@ -38,7 +38,7 @@ depends=(
 makedepends=(
   git
   gnome-common
-  granite-git
+  granite
   intltool
   meson
   vala
