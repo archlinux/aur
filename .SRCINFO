@@ -1,17 +1,17 @@
 pkgbase = ttf-itxe-writing
 	pkgdesc = A beautiful and elegant hand-writing fonts by ITXE Studio
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://fonts.idc.moe
 	arch = any
-	license = custom:ITXE Custom Font License v1.0
+	license = custom:ITXE Custom Font License v1.1
 	depends = fontconfig
 	depends = xorg-fonts-encodings
 	depends = xorg-font-utils
-	source = ITXEWriting-1.0.ttf::https://github.com/kmahyyg/personal_pkgbuild/releases/download/v20200314/ITXEWriting-1.0.ttf
-	source = ttf-itxe-writing-1.0-CFL.txt::https://github.com/kmahyyg/personal_pkgbuild/raw/master/ttf-itxe-writing/ttf-itxe-writing-1.0-CFL.txt
-	sha256sums = 1ec3934aedffa8f63e5260e77d0189f81b0e7e1faf0db961ee39e1efefa241f2
-	sha256sums = aaa18aff1c138548bb47ab9941a7566a1541f2d2b14f0627ece934be2cff6aa5
+	source = ITXEWriting-1.1.ttf::https://github.com/kmahyyg/personal_pkgbuild/releases/download/v20200315/ITXEWriting-1.1.ttf
+	source = ttf-itxe-writing-1.1-CFL.txt::https://github.com/kmahyyg/personal_pkgbuild/raw/master/ttf-itxe-writing/ttf-itxe-writing-1.1-CFL.txt
+	sha256sums = 2427dccaf86980f73f524fc4705f3a00b2cac6228abecae79eb513093a56f2d0
+	sha256sums = fd2df7ff9d7ffa701c9ab3db634f713ca11181e08fe6f2c113a40fabd6fce803
 
 pkgname = ttf-itxe-writing
 
