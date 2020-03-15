@@ -1,13 +1,13 @@
 # CPAN Name  : String::BufferStack
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-string-bufferstack
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module providing a framework for storing nested buffers"
 arch=("any")
-url="http://search.cpan.org/dist/String-BufferStack"
+url="https://metacpan.org/release/String-BufferStack"
 license=("PerlArtistic" "GPL")
 depends=("perl>=5.8.0")
 source=(http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/String-BufferStack-1.16.tar.gz)
@@ -28,5 +28,5 @@ check() {
 package() {
   cd "$srcdir/String-BufferStack-1.16"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
