@@ -1,3 +1,5 @@
+# Maintainer: Benjamin Denhartog <ben@sudoforge.com>
+
 pkgname=weechat-notify-send
 pkgver=0.8
 pkgrel=1
@@ -11,9 +13,7 @@ depends=(
   'weechat'
 )
 source=("${pkgname}_${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=(
-  '250814152ea6d123aa4c48fb40648fe490134121a62253c692fcddb1eba05e28bda7523182fbb1db13a41f7a38d63e2e56ea97584d0c06321c4d56f6d701a985'
-)
+sha512sums=('250814152ea6d123aa4c48fb40648fe490134121a62253c692fcddb1eba05e28bda7523182fbb1db13a41f7a38d63e2e56ea97584d0c06321c4d56f6d701a985')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
