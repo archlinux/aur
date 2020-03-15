@@ -1,7 +1,7 @@
 pkgbase = galaxy2
 	pkgdesc = Stellar Simulation
 	pkgver = 1.5
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.kornelix.net/galaxy2/galaxy2.html
 	arch = i686
 	arch = x86_64

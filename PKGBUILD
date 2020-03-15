@@ -1,7 +1,7 @@
 # Contributor: stefan husmann <stefan-husmann@t-online.de>
 pkgname=galaxy2
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Stellar Simulation"
 url="http://www.kornelix.net/galaxy2/galaxy2.html"
 arch=('i686' 'x86_64')
