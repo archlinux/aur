@@ -2,22 +2,22 @@
 
 pkgname="vstax"
 _year="2019"
-pkgver="${_year}_1.0.6"
-pkgrel="272"
+pkgver="${_year}_1.0.7"
+pkgrel="273"
 pkgdesc="Software to fill the tax forms of the canton of Valais, Switzerland"
 url="http://www.vs.ch/vstax"
 license=('unknown')
 arch=('i686' 'x86_64')
-depends=('jdk8' 'shared-mime-info' 'desktop-file-utils')
+depends=('java-runtime>7' 'shared-mime-info' 'desktop-file-utils')
 install="vstax.install"
 changelog="ChangeLog"
 [ "${CARCH}" = "i686" ] && _CARCH='i386'
 [ "${CARCH}" = "x86_64" ] && _CARCH='amd64'
 source=("https://sftp.vs.ch/${pkgname}/${_year}/${pkgname}${pkgver}-${pkgrel}_${_CARCH}.deb"
         'archlinux.patch')
-sha256sums=('514d534984bac4fdc209056030e11f69130e498167197380ca3859b1d8f8b0c1'
-            'd68eae6a3364e0215e76e04e100c05608c9a73f6e1668b0cc0403fd35fef05c1')
-[ "${CARCH}" = "x86_64" ] && sha256sums[0]='bcb48b551878d7b653fbe56cf78dc48683ad98d581a94b4f36611ab3877e215e'
+sha256sums=('f76d643af1bcd55e6eb0b1f22ae7fe6a94681ec2e1210c4445c0f1cbd70e6e92'
+            'fa4ab300445466405dae0e3ac77869518594ee9e789ae19c208d916d1151b488')
+[ "${CARCH}" = "x86_64" ] && sha256sums[0]='e8dfc49c200426adea05b7b7ba3535142b22e47a37985513b417f82110180462'
 
 prepare() {
     cd "${srcdir}/"

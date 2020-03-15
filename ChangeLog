@@ -1,3 +1,9 @@
+2020-03-15 Glassey Nicolas <nicolas@glassey.dev>:
+
+	* 2019_1.0.7-273:
+	Removed JRE8 depencency.
+	New upstream release : Fixes lottery gains calculation.
+
 2019-03-29 Fabien Dubosson <fabien.dubosson@gmail.com>:
 
 	* 2018.1.0.5-2:
