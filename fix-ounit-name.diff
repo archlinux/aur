@@ -1,0 +1,128 @@
+diff --git a/src_test/api/dune b/src_test/api/dune
+index b5e850c..5b9ff4f 100644
+--- a/src_test/api/dune
++++ b/src_test/api/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_api)
+- (libraries oUnit compiler-libs.common ppx_deriving.api)
++ (libraries ounit2 compiler-libs.common ppx_deriving.api)
+  (preprocess (action (run ppxfind -legacy ppx_tools.metaquot --as-pp %{input-file}))))
+diff --git a/src_test/create/dune b/src_test/create/dune
+index 24e8835..d06eb40 100644
+--- a/src_test/create/dune
++++ b/src_test/create/dune
+@@ -1,4 +1,4 @@
+ (test
+  (name test_deriving_create)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.create ppx_deriving.show)))
+diff --git a/src_test/deriving/dune b/src_test/deriving/dune
+index f7f91be..1f30239 100644
+--- a/src_test/deriving/dune
++++ b/src_test/deriving/dune
+@@ -1,4 +1,4 @@
+ (test
+  (name test_ppx_deriving)
+- (libraries oUnit compiler-libs.common ppx_deriving.api)
++ (libraries ounit2 compiler-libs.common ppx_deriving.api)
+  (preprocess (pps ppx_deriving.ord ppx_deriving.show ppx_deriving.eq)))
+diff --git a/src_test/enum/dune b/src_test/enum/dune
+index 3aba723..71f4a33 100644
+--- a/src_test/enum/dune
++++ b/src_test/enum/dune
+@@ -1,4 +1,4 @@
+ (test
+  (name test_deriving_enum)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.enum ppx_deriving.show)))
+diff --git a/src_test/eq/dune b/src_test/eq/dune
+index 69c0111..83710f5 100644
+--- a/src_test/eq/dune
++++ b/src_test/eq/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_deriving_eq)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.eq ppx_deriving.show)))
+diff --git a/src_test/fold/dune b/src_test/fold/dune
+index 35ba2c3..245115b 100644
+--- a/src_test/fold/dune
++++ b/src_test/fold/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_deriving_fold)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.fold)))
+diff --git a/src_test/iter/dune b/src_test/iter/dune
+index 6f21485..48f3a7a 100644
+--- a/src_test/iter/dune
++++ b/src_test/iter/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_deriving_iter)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.iter ppx_deriving.show)))
+diff --git a/src_test/make/dune b/src_test/make/dune
+index 7f5b8f4..6778c79 100644
+--- a/src_test/make/dune
++++ b/src_test/make/dune
+@@ -1,4 +1,4 @@
+ (test
+  (name test_deriving_make)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.make ppx_deriving.show)))
+diff --git a/src_test/map/dune b/src_test/map/dune
+index 0f98e7a..5d2501a 100644
+--- a/src_test/map/dune
++++ b/src_test/map/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_deriving_map)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.map ppx_deriving.show)))
+diff --git a/src_test/ord/dune b/src_test/ord/dune
+index 178df2c..0acf052 100644
+--- a/src_test/ord/dune
++++ b/src_test/ord/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_deriving_ord)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.ord)))
+diff --git a/src_test/runtime/dune b/src_test/runtime/dune
+index 3b30e8b..249fd8c 100644
+--- a/src_test/runtime/dune
++++ b/src_test/runtime/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_runtime)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.eq ppx_deriving.show)))
+diff --git a/src_test/show/dune b/src_test/show/dune
+index 0e95c5f..1f35eea 100644
+--- a/src_test/show/dune
++++ b/src_test/show/dune
+@@ -5,5 +5,5 @@
+ 
+ (test
+  (name test_deriving_show)
+- (libraries oUnit ppx_deriving.runtime)
++ (libraries ounit2 ppx_deriving.runtime)
+  (preprocess (pps ppx_deriving.show)))

@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_deriving
 	pkgdesc = Type-driven code generation for OCaml >=4.02.2
 	pkgver = 4.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ppx_deriving
 	arch = x86_64
 	arch = i686
@@ -21,7 +21,9 @@ pkgbase = ocaml-ppx_deriving
 	depends = ocaml-ppx_tools
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-ppx_deriving-4.4.1-1.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/v4.4.1.tar.gz
+	source = ocaml-ppx_deriving-4.4.1-2.tar.gz::https://github.com/ocaml-ppx/ppx_deriving/archive/v4.4.1.tar.gz
+	source = fix-ounit-name.diff
 	sha256sums = 27bc57774724fc4f48775f2011375a5ee1439570204abbf6607761c472757e2f
+	sha256sums = 3d82a6676973966f4aa5c25e7a68167d5931b42066cac4ca440a5a9a9b7012c7
 
 pkgname = ocaml-ppx_deriving
