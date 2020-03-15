@@ -11,7 +11,6 @@ pkgbase = ocaml-ppx_gen_rec
 	arch = aarch64
 	license = MIT
 	makedepends = dune
-	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = ocaml-migrate-parsetree>=1.1.0
 	options = !strip

@@ -8,7 +8,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flowtype/$pkgname"
 license=('MIT')
 depends=('ocaml' 'ocaml-migrate-parsetree>=1.1.0')
-makedepends=('dune' 'ocaml-findlib')
+makedepends=('dune')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('3aa36a8875d02a81406681fa4f38cd51be4c0f8539345bfdf052844ec982fa0e')
