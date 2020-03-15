@@ -11,21 +11,22 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor
-pkgver=1.8.1
-pkgrel=3
+pkgver=1.9.3
+pkgrel=1
 pkgdesc='Full-stack JavaScript platform for developing modern web and mobile applications'
-arch=(i686 x86_64)
+# arch=(i686 x86_64)
+arch=(x86_64)
 url=https://www.meteor.com
 license=(MIT)
 depends=(nodejs mongodb)
 options=(!strip)
 install=meteor.install
 source=(meteor.sh)
-source_i686=(meteor-$pkgver-i686.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz)
-source_x86_64=(meteor-$pkgver-x86_64.tar.gz::https://meteorinstall-4168.kxcdn.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
+# source_i686=(meteor-$pkgver-i686.tar.gz::https://static-meteor.netdna-ssl.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz)
+source_x86_64=(meteor-$pkgver-x86_64.tar.gz::https://static-meteor.netdna-ssl.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
 sha512sums=('b81f2da94d2732eacd4499be2b68e8410c334aa874907ce985fe59508a030371a37addc74f583dfdbef30c394385d2c941e565991dbbc4074908b9e4a8cb7036')
-sha512sums_i686=('e7b7f814e94b247afcb7cabdaec6a3f830fc3a421e056a0ce2118871e027f3fc2325000bf303a20c79ead47160a96b111a7708d508f9e9a72ac8d8930092c42a')
-sha512sums_x86_64=('c92d1e529741a7b8c6dccb2db50096d05546e15d80294e2cc42ae7596d54d4813415a660c3a64c741f58dadd6387bc9aa7448fc6afee5e2c81e0dd4c31bb55e1')
+# sha512sums_i686=('e7b7f814e94b247afcb7cabdaec6a3f830fc3a421e056a0ce2118871e027f3fc2325000bf303a20c79ead47160a96b111a7708d508f9e9a72ac8d8930092c42a')
+sha512sums_x86_64=('f251a373194be5933cd7213ca69e5a65908739c3f79d4a490c54c084a6746f707a60f40390048d0a4b9bb75a965dac0c18de2bd869b0ba202609a9c07628dae6')
 
 package() {
   # Copy base Meteor tree to universally-accessible location
