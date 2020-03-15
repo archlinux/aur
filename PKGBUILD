@@ -1,7 +1,7 @@
 # Maintainer: Felix Bühler <account at buehler dot de>
 
 pkgname=nautilus-open-any-terminal
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="context-menu entry for opening other terminal in nautilus"
 arch=(any)
