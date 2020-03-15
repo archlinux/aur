@@ -3,7 +3,7 @@
 
 pkgname=biblesync-git
 pkgver=2.0.1.r1.gb16df42
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc='multicast shared co-navigation library for Bible programs'
 arch=('x86_64' 'i686')
@@ -34,6 +34,6 @@ package() {
   make -C build DESTDIR="$pkgdir/" install
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     ChangeLog README.md man/specification.txt WIRESHARK
-  install -Dm644 -t "$pkgdir/usr/share/licences/$pkgname/" \
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
     AUTHORS COPYING LICENSE
 }
