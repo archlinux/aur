@@ -1,7 +1,7 @@
 pkgbase = perl-unicode-casefold
 	pkgdesc = Perl package for Unicode case-folding for case-insensitive lookups
 	pkgver = 1.01
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Unicode-CaseFold
 	arch = i686
 	arch = x86_64

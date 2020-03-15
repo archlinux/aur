@@ -4,7 +4,7 @@
 
 pkgname=perl-unicode-casefold
 pkgver=1.01
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package for Unicode case-folding for case-insensitive lookups'
 arch=('i686' 'x86_64')
 url='https://metacpan.org/release/Unicode-CaseFold'
@@ -34,5 +34,5 @@ check() {
 package() {
 	cd Unicode-CaseFold-1.01
 	/usr/bin/perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

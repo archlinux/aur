@@ -34,5 +34,5 @@ check() {
 package() {
 	cd [% distdir %]
 	/usr/bin/perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
