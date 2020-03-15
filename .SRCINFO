@@ -1,7 +1,7 @@
 pkgbase = python-torchio
 	pkgdesc = Tools for medical image processing in deep learning and PyTorch
 	pkgver = 0.13.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fepegar/torchio
 	arch = any
 	license = MIT
