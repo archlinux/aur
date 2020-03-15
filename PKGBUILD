@@ -3,12 +3,12 @@
 
 pkgname=deltarpm
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Create deltas between rpms"
 arch=('i686' 'x86_64')
 license=('custom:BSD')
 url="https://github.com/rpm-software-management/$pkgname"
-depends=('rpm-org' 'zlib' 'zstd')
+depends=('rpm-tools' 'zlib' 'zstd')
 makedepends=('python2' 'python')
 optdepends=('python2: for python2 module'
             'python: for python3 module')
