@@ -1,0 +1,49 @@
+diff -Naur pyneighborhood-0.5.4.orig/pyneighborhood/__init__.py pyneighborhood-0.5.4/pyneighborhood/__init__.py
+--- pyneighborhood-0.5.4.orig/pyneighborhood/__init__.py	2011-03-22 20:51:25.000000000 +0100
++++ pyneighborhood-0.5.4/pyneighborhood/__init__.py	2018-04-12 07:59:06.447097940 +0200
+@@ -40,7 +40,7 @@
+ loglevel = 0
+ mount_directory =
+ password = 
+-sudo = /usr/bin/gksu
++sudo = /usr/bin/pkexec --disable-internal-agent
+ username = 
+ hidden_shares = False
+ [CIFS]
+@@ -108,20 +108,9 @@
+         config.set('CIFS',utility,'/bin/%s' % ('mount' if utility == 'mount' else 'umount'))
+         push_notification(_("Using %(util)s for future operations.\n") % { "util": config.get('CIFS',utility) }, level=1)
+         
+-sudo_defaults = { "gnome":   "/usr/bin/gksu",
+-                  "kde":     "/usr/bin/kdesudo",
+-                  "lxde":    "/usr/bin/gksu",
+-                  "xfce":    "/usr/bin/gksu",
+-                  "default": "/usr/bin/gksu" }
+-        
+ if not access( config.get("Main", "sudo"), F_OK | X_OK):
+     push_notification(_("%(sudo)s isn't accessable... trying to determine correct sudo wrapper...\n") % { "sudo": config.get("Main", "sudo") }, level=2)
+-    if get_desktop_environ() in sudo_defaults.keys():
+-        push_notification(_("Detected %(de)s desktop environment... falling back to %(wrapper)s as sudo wrapper...\n") % { "de": get_desktop_environ(), "wrapper": sudo_defaults[get_desktop_environ()] } )
+-        config.set("Main", "sudo", sudo_defaults[get_desktop_environ()])
+-    else:
+-        push_notification(_("Couldn't get valid sudo wrapper for detected desktop environment %(de)s, falling back to default %(default)s...\n") % { "de": get_desktop_environ(), "default": sudo_defaults["default"]}, level=2)
+-        config.set("Main", "sudo", sudo_defaults["default"])
++    config.set("Main", "sudo", "/usr/bin/pkexec --disable-internal-agent")
+ 
+ fileman_defaults = { "gnome":   "/usr/bin/nautilus",
+                      "kde":     "/usr/bin/dolphin",
+diff -Naur pyneighborhood-0.5.4.orig/pyneighborhood/mountwindow.py pyneighborhood-0.5.4/pyneighborhood/mountwindow.py
+--- pyneighborhood-0.5.4.orig/pyneighborhood/mountwindow.py	2011-03-22 20:51:25.000000000 +0100
++++ pyneighborhood-0.5.4/pyneighborhood/mountwindow.py	2018-04-12 07:22:04.351628369 +0200
+@@ -145,10 +145,7 @@
+         options = []
+         command = []
+         if config.get("Main", "enable_sudo") == "True":
+-            for item in config.get("Main", "sudo").split(" "):
+-                command.append(item)
+-            del item
+-            command.append("--")
++            command.append(config.get("Main", "sudo"))
+         command.append(config.get("CIFS", "mount"))
+         if len(config.get("CIFS", "options")) > 0:
+             options.append(config.get("CIFS", "options"))

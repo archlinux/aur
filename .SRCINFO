@@ -1,0 +1,21 @@
+pkgbase = pyneighborhood
+	pkgdesc = A GTK+ 2 rewrite of the well-known LinNeighborhood tool
+	pkgver = 0.5.4
+	pkgrel = 4
+	url = https://launchpad.net/pyneighborhood
+	arch = any
+	license = GPL
+	depends = pygtk
+	depends = smbclient
+	optdepends = polkit: mount/unmount Samba shares
+	options = !emptydirs
+	source = https://launchpad.net/pyneighborhood/0.5/0.5.4/+download/pyneighborhood-0.5.4.tar.bz2
+	source = https://launchpad.net/pyneighborhood/0.5/0.5.4/+download/pyneighborhood-0.5.4.tar.bz2.asc
+	source = pkexec.patch
+	validpgpkeys = E188933BBC00723A9DB00CD31398E68B6F33567E
+	sha1sums = b0d899230ed0212aa50c17f406b0ee7e3d6ac17a
+	sha1sums = SKIP
+	sha1sums = c23d054b2309fcc012f98e7274e6fd2e09d2f9a6
+
+pkgname = pyneighborhood
+
