@@ -1,15 +1,15 @@
 # Maintainer: LinArcx <linarcx@gmail.com>
 
 pkgname='kindd-git'
-pkgver=2.0.1.r0.g35eb576
+pkgver=2.1.0.r0.g216e56f
 pkgrel=1
-pkgdesc=" A Kindful dd gui written in qt quick. (Github version)"
+pkgdesc="Kindful dd, written by qt-quick. (Github version)"
 arch=('any')
-url="https://github.com/LinArcX/Kindd"
+url="https://github.com/LinArcX/kindd"
 license=('GPL-3.0')
 depends=('polkit' 'qt5-quickcontrols2' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg')
-makedepends=('git' 'qt5-base')
-source=("${pkgname}::git+https://github.com/LinArcX/Kindd.git")
+makedepends=('git' 'cmake' 'qt5-base')
+source=("${pkgname}::git+https://github.com/LinArcX/kindd.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,15 +22,16 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  qmake CONFIG+=debug CONFIG+=qml_debug
+  mkdir build; cd build
+  cmake -DCMAKE_BUILD_TYPE=RELEASE ../;
   make
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm755 ./kindd ${pkgdir}/usr/bin/kindd
-  install -Dm644 ./appconf/kindd.desktop ${pkgdir}/usr/share/applications/kindd.desktop
-  install -Dm644 ./appconf/kindd.svg ${pkgdir}/usr/share/pixmaps/kindd.svg
+  install -Dm755 ./release/kindd ${pkgdir}/usr/bin/kindd
+  install -Dm644 ./assets/appconf/kindd.desktop ${pkgdir}/usr/share/applications/kindd.desktop
+  install -Dm644 ./assets/appconf/kindd.svg ${pkgdir}/usr/share/pixmaps/kindd.svg
   install -Dm644 ./LICENSE ${pkgdir}/usr/share/licenses/kindd/LICENSE
 }
 
