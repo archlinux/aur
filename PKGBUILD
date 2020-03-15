@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/tummychow/git-absorb"
 license=('BSD')
 depends=(
+  'libgit2'
 )
 makedepends=(
   'cargo'
@@ -17,13 +18,13 @@ sha256sums=('c4ef4fa28222773d695aab7711abbfac7e81c35a37eafe45f79d045516df28b1')
 build() {
   cd "${pkgname}-${pkgver}"
 
-  cargo build --release --locked
+  LIBGIT2_SYS_USE_PKG_CONFIG=1 cargo build --release --locked
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
 
-  cargo test --release --locked
+  LIBGIT2_SYS_USE_PKG_CONFIG=1 cargo test --release --locked
 }
 
 package() {
