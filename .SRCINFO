@@ -1,19 +1,19 @@
 pkgbase = gamess
 	pkgdesc = The General Atomic and Molecular Electronic Structure System
 	pkgver = 2019R2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.msg.chem.iastate.edu/gamess/gamess.html
 	install = gamess.install
 	arch = x86_64
 	license = custom
 	makedepends = python-jinja
 	depends = tcsh
-	depends = openblas-lapack
+	depends = openblas
 	depends = python
 	source = local://gamess-current.tar.gz
 	source = opt.patch
 	sha256sums = 2e12f71210249d379f196ba6a3b479f9fb962de82ae2f1130af9022aba44ddea
-	sha256sums = 145c0f1624db736e0d587ec896151a8b33d11d4fe4c6a429c824cdbfe83db4c3
+	sha256sums = dedf0158e25defd4903d0fd8d39ed26161388e2c70ccdfde1f3592ac62546494
 
 pkgname = gamess
 

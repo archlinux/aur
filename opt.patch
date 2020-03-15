@@ -1,6 +1,6 @@
 --- gamess/comp	2018-04-25 14:01:49.124308188 +0300
 +++ gamess/comp	2018-04-25 14:04:50.000000000 +0300
-@@ -2014,10 +2014,10 @@
+@@ -2484,10 +2484,10 @@
  #
  #         first, initialize OPT and EXTRAOPT
  #
@@ -9,10 +9,19 @@
        if ($MODULE == zheev)  set OPT='-O0'  # defensive compiling
  
 -      set EXTRAOPT=" "
-+      set EXTRAOPT=" -march=native -mno-fma"
++      set EXTRAOPT=" -march=native -mno-fma -ftree-vectorize"
        if (($MODULE_F:e == f90) || ($MODULE_F:e == F90)) then
           set EXTRAOPT="$EXTRAOPT -ffree-line-length-none"
        else
+@@ -2689,7 +2689,7 @@
+       if (`uname -p` == aarch64) set EXTRAOPT="-mcpu=native $EXTRAOPT"
+ #
+       set echo
+-      gfortran -c -fdefault-integer-8 -g $GMS_FPE_FLAGS $OPT $EXTRAOPT $MODULE_F
++      gfortran -c -fdefault-integer-8 $GMS_FPE_FLAGS $OPT $EXTRAOPT $MODULE_F
+       unset echo
+       breaksw
+ 
 --- gamess/ddi/compddi	2018-02-08 00:15:23.000000000 +0300
 +++ gamess/ddi/compddi	2018-04-25 17:08:10.133181272 +0300
 @@ -741,7 +741,7 @@
@@ -20,7 +29,7 @@
  
       set CC = 'gcc'
 -     set CFLAGS = "-DLINUX $ARCH -O3 -fstrict-aliasing -I./"
-+     set CFLAGS = "-DLINUX $ARCH -O3 -march=native -mno-fma -fstrict-aliasing -I./"
++     set CFLAGS = "-DLINUX $ARCH -O3 -march=native -mno-fma -ftree-vectorize -fstrict-aliasing -I./"
       set CLIBS  = "-lpthread"
  
       if ($GMS_PHI == knc) then
