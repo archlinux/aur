@@ -1,0 +1,18 @@
+pkgbase = perl-alien-gsl
+	pkgdesc = Building, finding and using GSL library
+	pkgver = 1.01
+	pkgrel = 1
+	url = https://metacpan.org/release/Alien-GSL
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build>=0.38
+	makedepends = perl-alien-base-modulebuild
+	depends = perl-alien-build
+	depends = gsl
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/J/JB/JBERGER/Alien-GSL-1.01.tar.gz
+	md5sums = 7d7aa5fc9e3e28bebdecb991fdfd5882
+
+pkgname = perl-alien-gsl
+
