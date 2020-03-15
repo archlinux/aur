@@ -1,0 +1,13 @@
+pkgbase = aminal-bin
+	pkgdesc = A modern cross-platform terminal emulator in Go
+	pkgver = Nightly.develop.2020.01.26.4033a8b
+	pkgrel = 1
+	url = https://github.com/liamg/aminal
+	arch = x86_64
+	license = GPL3
+	provides = aminal
+	source = https://github.com/liamg/aminal/releases/download/Nightly-develop-2020-01-26-4033a8b/aminal-linux-amd64
+	md5sums = 0b70ba41a242118af25ba48313b27c6b
+
+pkgname = aminal-bin
+
