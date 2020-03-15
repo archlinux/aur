@@ -4,7 +4,7 @@ pkgver=master
 pkgrel=1
 pkgdesc="Detects both normal & tablet mode, executing custom scripts/commands for each mode. See the github page for instructions."
 arch=('any')
-url=""
+url='https://github.com/alesguzik/linux_detect_tablet_mode'
 license=('GPL')
 groups=()
 depends=('ruby' 'libinput')
@@ -17,7 +17,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+https://github.com/alesguzik/linux_detect_tablet_mode")
+source=("$pkgname::git+$url")
 noextract=()
 sha256sums=('SKIP')
 #build() {

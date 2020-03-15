@@ -2,6 +2,7 @@ pkgbase = detect-tablet-mode-git
 	pkgdesc = Detects both normal & tablet mode, executing custom scripts/commands for each mode. See the github page for instructions.
 	pkgver = master
 	pkgrel = 1
+	url = https://github.com/alesguzik/linux_detect_tablet_mode
 	arch = any
 	license = GPL
 	makedepends = git
