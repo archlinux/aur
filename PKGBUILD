@@ -2,7 +2,7 @@
 pkgname=hipsparse
 _pkgver=3.1
 pkgver="$_pkgver.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCm SPARSE marshalling library."
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/hipSPARSE"

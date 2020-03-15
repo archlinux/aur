@@ -1,7 +1,7 @@
 pkgbase = hipsparse
 	pkgdesc = ROCm SPARSE marshalling library.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCmSoftwarePlatform/hipSPARSE
 	arch = x86_64
 	license = custom:NCSAOSL
