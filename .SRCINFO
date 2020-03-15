@@ -1,7 +1,7 @@
 pkgbase = fotoxx-maps
 	pkgdesc = optional map files for Fotoxx
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://kornelix.net/downloads/downloads.html
 	arch = any
 	license = GPL3

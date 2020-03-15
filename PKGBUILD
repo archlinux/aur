@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=fotoxx-maps
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="optional map files for Fotoxx"
 url="http://kornelix.net/downloads/downloads.html"
 arch=('any')
