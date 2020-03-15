@@ -2,7 +2,7 @@
 
 pkgname=opendiablo2-git
 pkgver=r484.019bb92
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source re-implementation of Diablo 2'
 arch=('i686' 'x86_64')
 url='https://opendiablo2.com/'
@@ -50,4 +50,5 @@ package() {
   install -Dm755 opendiablo2-bin "${pkgdir}/usr/bin/opendiablo2"
   install -Dm644 OpenDiablo2/d2logo.png "${pkgdir}/usr/share/pixmaps/opendiablo2.png"
   install -Dm644 OpenDiablo2/LICENSE "${pkgdir}/usr/share/licenses/opendiablo2/LICENSE"
+  go clean -modcache #Remove go libraries
 }
