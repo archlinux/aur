@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/janestreet/$_projectname"
 license=('MIT')
 depends=('glibc' 'ocaml>=4.04.2')
-makedepends=('dune' 'ocaml-findlib')
+makedepends=('dune>=1.5.1')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('f98c6693e3067b816f8a21a648a2481fa49b792fb6146ec701adf9ec41affa51')
