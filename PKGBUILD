@@ -1,13 +1,13 @@
 # CPAN Name  : WWW::Expand
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-www-expand
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to expand any shortened URL'
 arch=('any')
-url='http://search.cpan.org/dist/WWW-Expand'
+url='https://metacpan.org/release/WWW-Expand'
 license=('PerlArtistic' 'GPL')
 depends=('perl>=5.8.8'
 	'perl-http-message'
@@ -31,5 +31,5 @@ check() {
 package() {
 	cd WWW-Expand-0.1.5
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

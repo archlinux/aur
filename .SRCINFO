@@ -1,8 +1,8 @@
 pkgbase = perl-www-expand
 	pkgdesc = Perl module to expand any shortened URL
 	pkgver = 0.1.5
-	pkgrel = 1
-	url = http://search.cpan.org/dist/WWW-Expand
+	pkgrel = 2
+	url = https://metacpan.org/release/WWW-Expand
 	arch = any
 	license = PerlArtistic
 	license = GPL
