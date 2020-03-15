@@ -10,8 +10,6 @@ license=('GPLv2+')
 url="https://github.com/m0sia/${_reponame}"
 depends=('python2-pybluez' 'python2-beautifulsoup4' 'python2-dbus' 'python2-libappindicator' 'pygtk')
 makedepends=('git' 'python2-setuptools')
-provides=("")
-conflicts=("")
 source=("${_reponame}"::"git+https://github.com/m0sia/${_reponame}")
 md5sums=('SKIP')
 
