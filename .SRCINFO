@@ -1,8 +1,8 @@
 pkgbase = perl-list-gen
 	pkgdesc = Perl module providing functions for generating lists
 	pkgver = 0.974
-	pkgrel = 1
-	url = http://search.cpan.org/dist/List-Gen
+	pkgrel = 2
+	url = https://metacpan.org/release/List-Gen
 	arch = any
 	license = PerlArtistic
 	license = GPL

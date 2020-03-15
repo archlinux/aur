@@ -1,13 +1,13 @@
 # CPAN Name  : List::Gen
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-list-gen
 pkgver=0.974
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module providing functions for generating lists'
 arch=('any')
-url='http://search.cpan.org/dist/List-Gen'
+url='https://metacpan.org/release/List-Gen'
 license=('PerlArtistic' 'GPL')
 options=(!emptydirs)
 depends=('perl>=5.8.6')
@@ -28,5 +28,5 @@ check() {
 package() {
 	cd List-Gen-0.974
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
