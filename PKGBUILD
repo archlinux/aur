@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile-wsdl11
 pkgver=3.07
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl package to create SOAP messages defined by WSDL 1.1'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-WSDL11'
@@ -41,5 +41,5 @@ package() {
 	cd XML-Compile-WSDL11-3.07
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

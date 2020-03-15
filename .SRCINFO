@@ -1,7 +1,7 @@
 pkgbase = perl-xml-compile-wsdl11
 	pkgdesc = Perl package to create SOAP messages defined by WSDL 1.1
 	pkgver = 3.07
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/XML-Compile-WSDL11
 	arch = any
 	license = PerlArtistic
