@@ -4,7 +4,7 @@
 
 pkgname=perl-tree-binary
 pkgver=1.08
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package for OO binary tree'
 arch=('any')
 url='https://metacpan.org/release/Tree-Binary'
@@ -37,5 +37,5 @@ package() {
 	cd Tree-Binary-1.08
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
