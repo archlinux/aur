@@ -1,13 +1,13 @@
 # CPAN Name  : Scalar::Defer
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-scalar-defer
 pkgver=0.23
-pkgrel=2
+pkgrel=3
 pkgdesc='Perl package that provides lazy evaluation of scalars'
 arch=('any')
-url='http://search.cpan.org/dist/Scalar-Defer'
+url='https://metacpan.org/release/Scalar-Defer'
 license=('MIT')
 depends=('perl' 'perl-class-insideout' 'perl-exporter-lite')
 source=(http://search.cpan.org/CPAN/authors/id/J/JE/JESSE/Scalar-Defer-0.23.tar.gz)
@@ -28,5 +28,5 @@ check() {
 package() {
 	cd Scalar-Defer-0.23
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
