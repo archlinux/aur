@@ -2,7 +2,7 @@
 # Contributor: Thorben Guenther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
 
 pkgname=mycroft-core
-pkgver=20.2.0
+pkgver=20.2.1
 pkgrel=1
 pkgdesc="The Mycroft Artificial Intelligence platform."
 arch=('i686' 'x86_64')
@@ -76,7 +76,7 @@ package() {
 	install -D -m644 "${srcdir}/client.conf" "${pkgdir}/usr/share/mycroft-core/pulseaudio.client.conf"
 }
 
-md5sums=('d260c1e2f92eb6ce3fa75625e0a7af1d'
+md5sums=('0efada38dbb0e0f036d83135f24bf6c1'
          '39bcf2f0f30854b7b6e516d49946566a'
          '578b9531acff7b5bf96d776bbd327d15'
          '7cbcc7b8b71d00c19a11166fbbd5ed4f'
