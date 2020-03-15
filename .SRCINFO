@@ -1,0 +1,21 @@
+pkgbase = haruna-git
+	pkgdesc = A Qt/QML video player built on top of libmpv
+	pkgver = 0.1.1.r5.gd03700e
+	pkgrel = 1
+	url = https://github.com/g-fb/haruna
+	arch = x86_64
+	license = GPL3
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kfilemetadata
+	depends = kxmlgui
+	depends = mpv
+	depends = qt5-quickcontrols
+	depends = qt5-quickcontrols2
+	provides = haruna
+	conflicts = haruna
+	source = haruna::git+https://github.com/g-fb/haruna.git
+	sha256sums = SKIP
+
+pkgname = haruna-git
+
