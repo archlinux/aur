@@ -1,6 +1,6 @@
 pkgbase = godot-headless-export-templates-bin
 	pkgdesc = A headless version of the latest official release of the Godot engine and all export templates.
-	pkgver = 3.2
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = http://www.godotengine.org
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = godot-headless-export-templates-bin
 	provides = godot
 	conflicts = godot
 	conflicts = godot-git
-	source = https://downloads.tuxfamily.org/godotengine/3.2/Godot_v3.2-stable_linux_headless.64.zip
-	source = https://downloads.tuxfamily.org/godotengine/3.2/Godot_v3.2-stable_export_templates.tpz
-	md5sums = 3cb27200df9e9cef5db8e20bb115e3bb
-	md5sums = 0d4f433aea7e9b88235ccc3c26f34de6
+	source = https://downloads.tuxfamily.org/godotengine/3.2.1/Godot_v3.2.1-stable_linux_headless.64.zip
+	source = https://downloads.tuxfamily.org/godotengine/3.2.1/Godot_v3.2.1-stable_export_templates.tpz
+	md5sums = 945d500c09af9d9882c14c41f70db925
+	md5sums = 89e830e91ad8f7245d62ed724f7625fa
 
 pkgname = godot-headless-export-templates-bin
 
