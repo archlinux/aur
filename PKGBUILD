@@ -1,4 +1,5 @@
 # Maintainer: Hauke Rehfeld <aur.archlinux.org@haukerehfeld.de>
+pkgbase=mu-systemd
 pkgname=mu-systemd-git
 pkgver=r1.035d74b
 pkgrel=1

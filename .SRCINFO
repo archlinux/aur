@@ -1,4 +1,4 @@
-pkgbase = mu-systemd-git
+pkgbase = mu-systemd
 	pkgdesc = User systemd service and timer for mu mail indexing.
 	pkgver = r1.035d74b
 	pkgrel = 1
