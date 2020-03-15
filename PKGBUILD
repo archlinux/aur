@@ -5,7 +5,7 @@
 pkgbase=lib32-poppler
 _pkgbase=poppler
 pkgname=('lib32-poppler' 'lib32-poppler-glib')
-pkgver=0.85.0
+pkgver=0.86.1
 pkgrel=1
 arch=(x86_64)
 license=('GPL')
@@ -19,7 +19,7 @@ url="https://poppler.freedesktop.org/"
 source=(https://poppler.freedesktop.org/${_pkgbase}-${pkgver}.tar.xz{,.sig}
         test::git+https://anongit.freedesktop.org/git/poppler/test/#commit=72bff390035819a4ccb54c767265aba2792eaf3b
         pkgconf32)
-sha512sums=('2311bde5ae52e065c12a6129f500469860f5ebefafc3f7be581393f08c2121f3eae57394ff54c1f83ee1b926f28c61530bcd8149d42de10a16b9ba7345f2604e'
+sha512sums=('435fc1e7f3e8123e0adde9aa60c0d7dc17db367cde8908932abfef913cee6f27efeb1c4f2d6f316019a69a87f1fa5251be4216d0a81a681a24f24a70ac571670'
             'SKIP'
             'SKIP'
             'f704e11f3054312e35974194af845e00fdc795aa97e82d425fb52ff8e628702926551b583f0354f9f9e7eafeb71c7f348c288457ff19a8c4807c58f637d0d946')
@@ -30,6 +30,9 @@ prepare() {
 }
 
 build() {
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
+  export CCFLAGS="-m32 ${CCFLAGS}"
   export CFLAGS="-m32 ${CFLAGS}"
   export CXXFLAGS="-m32 ${CXXFLAGS}"
   export LDFLAGS="-m32 ${LDFLAGS}"
