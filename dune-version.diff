@@ -1,0 +1,10 @@
+diff --git a/dune-project b/dune-project
+index 9efd891..c99bd5e 100644
+--- a/dune-project
++++ b/dune-project
+@@ -1,4 +1,4 @@
+-(lang dune 2.0)
++(lang dune 1.11)
+ (name visitors)
+ (version 20200210)
+ (package
