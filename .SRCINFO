@@ -1,6 +1,6 @@
 pkgbase = nimf-git
 	pkgdesc = Nimf is a lightweight, fast and extensible input method framework.
-	pkgver = git
+	pkgver = 1.1.r19.dda08f0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/hamonikr/nimf

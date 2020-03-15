@@ -1,6 +1,6 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
 pkgname=nimf-git
-pkgver=git
+pkgver=1.1.r19.dda08f0
 pkgrel=1
 epoch=1
 pkgdesc='Nimf is a lightweight, fast and extensible input method framework.'
