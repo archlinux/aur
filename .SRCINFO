@@ -10,9 +10,9 @@ pkgbase = ocaml-ounit
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = dune
+	makedepends = dune>=1.11.0
 	makedepends = ocaml-findlib
-	depends = ocaml
+	depends = ocaml>=4.02.3
 	depends = ocaml-lwt
 	depends = ocaml-stdlib-shims
 	options = !strip

@@ -15,8 +15,8 @@ pkgdesc='Unit testing framework for OCaml'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/gildor478/$_projectname"
 license=('MIT')
-depends=('ocaml' 'ocaml-lwt' 'ocaml-stdlib-shims')
-makedepends=('dune' 'ocaml-findlib')
+depends=('ocaml>=4.02.3' 'ocaml-lwt' 'ocaml-stdlib-shims')
+makedepends=('dune>=1.11.0' 'ocaml-findlib')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('db5dbdd4fd29a9ff82dd9d75813e0391d833ba868f813e3c3349807bc9da5032')
