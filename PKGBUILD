@@ -11,7 +11,7 @@ depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' '
          'hunspell' 'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python2-setuptools'
-             'nodejs' 'python2-psutil' 'nss' 'nspr' 'binutils')
+             'nodejs' 'python2-psutil' 'nss' 'nspr' 'binutils' 'git')
 optdepends=('networkmanager: Location detection via available WiFi networks'
              'libnotify: Notification integration'
              'pulseaudio: Audio support'

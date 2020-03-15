@@ -29,6 +29,7 @@ pkgbase = waterfox-current-kpe
 	makedepends = nss
 	makedepends = nspr
 	makedepends = binutils
+	makedepends = git
 	depends = gtk3
 	depends = gtk2
 	depends = libxt
