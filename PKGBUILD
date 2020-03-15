@@ -14,7 +14,8 @@ source=(
 )
 noextract=('ow-snapshot.tar.gz')
 #md5sums change frequently since it is a snapshot. If it fails, download manually and check md5sum
-md5sums=('SKIP' 'fed7651420d74b7d89302c5ef0a9d8a8')
+md5sums=('SKIP'
+         '2abd462742068d76a5cf1753b128ac94')
 options=(!strip)
 
 build() {

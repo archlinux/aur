@@ -10,7 +10,7 @@ pkgbase = openwatcom-v2
 	source = https://github.com/open-watcom/open-watcom-v2/releases/download/Current-build/ow-snapshot.tar.gz
 	source = owsetenv.sh
 	md5sums = SKIP
-	md5sums = fed7651420d74b7d89302c5ef0a9d8a8
+	md5sums = 2abd462742068d76a5cf1753b128ac94
 
 pkgname = openwatcom-v2
 
