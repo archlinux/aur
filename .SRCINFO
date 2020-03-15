@@ -1,0 +1,15 @@
+pkgbase = cronsun-bin
+	pkgdesc = A Distributed, Fault-Tolerant Cron-Style Job System
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/shunfei/cronsun
+	arch = x86_64
+	license = Apache2
+	depends = mongodb
+	depends = etcd
+	provides = cronsun
+	source = https://github.com/shunfei/cronsun/releases/download/v0.3.5/cronsun-v0.3.5-linux-amd64.zip
+	md5sums = 2759e389ae41da8ddbd4011d7fef0a99
+
+pkgname = cronsun-bin
+
