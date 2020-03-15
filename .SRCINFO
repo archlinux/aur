@@ -1,7 +1,7 @@
 pkgbase = picpuz
 	pkgdesc = 'jigsaw puzzle' program.
 	pkgver = 3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kornelix.net/picpuz/picpuz.html
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = picpuz
 	depends = gtk3
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/picpuz-3.1.tar.gz
-	sha256sums = 8134ecd3229667f814f1376811b2b93d630cec76f9879922f2b8cdc0451af448
+	sha256sums = d9fc3d034149f01ca0ffa82007a488c3f9ba47c73670eb576fb22576d0da167d
 
 pkgname = picpuz
 
