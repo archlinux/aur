@@ -1,13 +1,13 @@
 # CPAN Name  : Text::Lorem
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-text-lorem
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package and tool to generate random Latin looking text'
 arch=('any')
-url='http://search.cpan.org/dist/Text-Lorem'
+url='https://metacpan.org/release/Text-Lorem'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 makedepends=('perl-module-build')
@@ -30,5 +30,5 @@ check() {
 package() {
 	cd Text-Lorem-0.3
 	perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
