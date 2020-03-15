@@ -1,8 +1,8 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=opendiablo2-git
-pkgver=1
-pkgrel=1
+pkgver=r484.019bb92
+pkgrel=2
 pkgdesc='An open source re-implementation of Diablo 2'
 arch=('i686' 'x86_64')
 url='https://opendiablo2.com/'
@@ -24,6 +24,11 @@ source=("git+https://github.com/OpenDiablo2/OpenDiablo2"
 		'post_install')
 md5sums=('SKIP'
 		 'f211fcc70802f4a96d081b1c19a6172e')
+
+pkgver() {
+  cd "${srcdir}/OpenDiablo2"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "${srcdir}/OpenDiablo2"

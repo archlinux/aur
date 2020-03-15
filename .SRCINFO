@@ -1,7 +1,7 @@
 pkgbase = opendiablo2-git
 	pkgdesc = An open source re-implementation of Diablo 2
-	pkgver = 1
-	pkgrel = 1
+	pkgver = r484.019bb92
+	pkgrel = 2
 	url = https://opendiablo2.com/
 	install = post_install
 	arch = i686
