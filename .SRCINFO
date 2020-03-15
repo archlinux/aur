@@ -1,8 +1,8 @@
 pkgbase = perl-shell-command
 	pkgdesc = Perl module providing cross-platform functions emulating common shell commands
 	pkgver = 0.06
-	pkgrel = 1
-	url = http://search.cpan.org/dist/Shell-Command
+	pkgrel = 2
+	url = https://metacpan.org/release/Shell-Command
 	arch = any
 	license = PerlArtistic
 	license = GPL

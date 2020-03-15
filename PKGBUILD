@@ -1,13 +1,13 @@
 # CPAN Name  : Shell::Command
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.13
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-shell-command
 pkgver=0.06
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module providing cross-platform functions emulating common shell commands"
 arch=("any")
-url="http://search.cpan.org/dist/Shell-Command"
+url="https://metacpan.org/release/Shell-Command"
 license=("PerlArtistic" "GPL")
 depends=("perl")
 source=(http://search.cpan.org/CPAN/authors/id/F/FL/FLORA/Shell-Command-0.06.tar.gz)
@@ -28,5 +28,5 @@ check() {
 package() {
   cd "$srcdir/Shell-Command-0.06"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
