@@ -1528,3 +1528,25 @@ Thu Dec 26 06:16:20 2019 +0100
     
      2019-12-26 91dcf45b actionless chore(plugins: theme: oomox): update submodule (typo in scss):
             "hotfix(gtk320): small typo which makes theme unreadable for some apps"
+
+
+Sun Mar 15 14:24:43 2020 +0100
+-------------------------------------------------
+1.12.6          Release 1.12.6
+    
+     2020-03-15 94b9be46 actionless fix(theme_file: save_colorscheme): quote theme name (fixes #287)
+     2020-02-28 a7b415ff actionless chore(plugins: icons: papirus): update submodule (v20200201 + 93 commits)
+     2020-02-28 1cb3ac47 actionless chore(plugins: icons: numix): sync submodule (Adds support for new gnome battery icons)
+     2020-02-27 834ab550 actionless chore(plugins: theme: materia): update submodule (v20191017 + 85 commits)
+     2020-02-26 e32af404 D.Z. II feat(color_list): add drop-down with "replace all instances" on color rows (#285)
+     2020-02-19 5ae2d46e actionless refactor(makefile): split make target for each plugin
+     2020-02-13 f95a4cd2 actionless feat(plugins: theme: materia): allow to configure export theme path (re: #284)
+     2020-02-13 64a285c2 actionless feat(plugins: theme: oomox): allow to configure export theme path (re: #284)
+     2020-01-14 3ef65b4d Jonathan Michalon Enhance ubuntu packaging with fakeroot usage and __pycache__ cleanup
+     2020-01-14 51b824d5 actionless chore: drop python3.4 support as centos 8 was released in september last year
+     2020-01-14 7d15d1b3 actionless chore(plugins: theme: oomox): update submodule (parallel theme build)
+     2020-01-01 0d56fa20 actionless chore(plugins: theme: oomox): update submodule (fix popover buttons' fg)
+     2019-12-27 17d7ac97 actionless feat(preview: entry): correctly show border
+     2019-12-27 ac14b2ac actionless chore(plugins: themes: oomox): update submodule (entry borders revamp)
+     2019-12-26 c1adfb54 actionless chore(plugins: theme: oomox): update submodule (more separators fixed + popovers)
+     2019-12-26 1384adfa actionless chore(plugins: theme: oomox): update submodule (nemo statusbar improvements)
