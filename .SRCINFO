@@ -1,16 +1,21 @@
 pkgbase = ocaml-lwt_log
 	pkgdesc = Lwt-friendly logger
 	pkgver = 1.1.1
-	pkgrel = 1
-	url = https://github.com/aantron/lwt_log
+	pkgrel = 2
+	url = https://github.com/ocsigen/lwt_log
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
 	makedepends = dune
+	makedepends = ocaml-findlib
 	depends = ocaml
-	depends = ocaml-lwt
+	depends = ocaml-lwt>=4.0.0
 	options = !strip
-	source = https://github.com/aantron/lwt_log/archive/1.1.1.tar.gz
-	sha512sums = df3d171a7c72f37e96b756d252ab586767df9c13e01500faf13d4b2cee936b0602fd7c725c03db488d3737d8d92300af103d395a926dc654a2c44a5d6068f24a
+	source = ocaml-lwt_log-1.1.1-2.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.1.tar.gz
+	sha256sums = 14fb19ec61e555e32c8bb026a591c0ce5b0a153663d17b0876178ab92d625f3f
 
 pkgname = ocaml-lwt_log
-

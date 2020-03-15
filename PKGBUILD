@@ -1,29 +1,37 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-lwt_log
-pkgver=1.1.1
-pkgrel=1
-pkgdesc="Lwt-friendly logger"
-arch=('x86_64')
-url='https://github.com/aantron/lwt_log'
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='lwt_log'
+pkgname="ocaml-$_projectname"
+pkgver='1.1.1'
+pkgrel='2'
+pkgdesc='Lwt-friendly logger'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ocsigen/$_projectname"
 license=('custom:LGPL2.1 with linking exception')
-depends=('ocaml' 'ocaml-lwt')
-makedepends=('dune')
+depends=('ocaml' 'ocaml-lwt>=4.0.0')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
-source=("https://github.com/aantron/lwt_log/archive/${pkgver}.tar.gz")
-sha512sums=('df3d171a7c72f37e96b756d252ab586767df9c13e01500faf13d4b2cee936b0602fd7c725c03db488d3737d8d92300af103d395a926dc654a2c44a5d6068f24a')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('14fb19ec61e555e32c8bb026a591c0ce5b0a153663d17b0876178ab92d625f3f')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/lwt_log-${pkgver}"
-
-  dune build --profile release
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
-
 package() {
-  cd "${srcdir}/lwt_log-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	# COPYING is not included in /usr/doc/$_projectname/ for some reason
+	install -Dm644 'COPYING' "$pkgdir/usr/share/doc/$pkgname/COPYING"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
