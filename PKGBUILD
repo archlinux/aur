@@ -4,13 +4,14 @@ _reponame="Git-Credential-Manager-for-Mac-and-Linux"
 pkgname="${_pkgname}-bin"
 pkgver="2.0.4"
 _tagname="${_pkgname}-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Git Credential Manager for Mac and Linux stores credentials for Git version control securely. Provides secure logon for Visual Studio Team Services (visualstudio.com)."
 arch=("x86_64")
 url="https://github.com/microsoft/${_reponame}"
 license=("MIT")
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
+depends=('java-environment>=6')
 source=(
     "${url}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}.jar"
     "https://raw.githubusercontent.com/microsoft/${_reponame}/${_tagname}/templates/${_pkgname}"
