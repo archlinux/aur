@@ -1,6 +1,6 @@
 pkgbase = qv2ray
 	pkgdesc = Cross-platform V2ray Client written in Qt (Stable Release)
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/Qv2ray/Qv2ray
 	arch = x86_64
@@ -12,12 +12,27 @@ pkgbase = qv2ray
 	makedepends = gcc
 	makedepends = qt5-declarative
 	makedepends = grpc-cli>=1.27.0
+	makedepends = cmake
+	makedepends = ninja
 	depends = hicolor-icon-theme
 	depends = qt5-base>5.11.0
 	depends = grpc>=1.27.0
-	optdepends = v2ray: use system v2ray
+	optdepends = v2ray: use system v2ray core.
 	provides = qv2ray
-	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=master
+	conflicts = qv2ray
+	source = Qv2ray::git+https://github.com/Qv2ray/Qv2ray#branch=dev
+	source = QNodeEditor::git+https://github.com/Qv2ray/QNodeEditor
+	source = SingleApplication::git+https://github.com/itay-grudev/SingleApplication
+	source = x2struct::git+https://github.com/xyz347/x2struct
+	source = qzxing::git+https://github.com/ftylitak/qzxing
+	source = qhttpserver::git+https://github.com/nikhilm/qhttpserver
+	source = cpp-httplib::git+https://github.com/yhirose/cpp-httplib
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = qv2ray
