@@ -2,7 +2,7 @@
 
 pkgname=clair
 pkgver=2.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Vulnerability Static Analysis for Containers"
 arch=('x86_64')
 url='https://github.com/coreos/clair'
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('rpm-tools' 'postgresql')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quay/clair/archive/v${pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('e948814a6067363936333665383b5623')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,4 +28,5 @@ package() {
 	install -Dm755 "build/clair" "${pkgdir}/usr/bin/clair"
 	install -Dm755 "config.example.yaml" "${pkgdir}/etc/clair/config.yaml"
 	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	go clean -modcache # clean modcache
 }
