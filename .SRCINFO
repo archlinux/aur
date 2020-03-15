@@ -1,7 +1,7 @@
 pkgbase = perl-xml-compile
 	pkgdesc = Perl package providing compilation-based XML processing
 	pkgver = 1.63
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/XML-Compile
 	arch = any
 	license = PerlArtistic

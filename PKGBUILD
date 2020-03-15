@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile
 pkgver=1.63
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package providing compilation-based XML processing'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile'
@@ -41,5 +41,5 @@ package() {
 	cd XML-Compile-1.63
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
