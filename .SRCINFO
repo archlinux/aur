@@ -1,0 +1,15 @@
+pkgbase = clair
+	pkgdesc = Vulnerability Static Analysis for Containers
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/coreos/clair
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = rpm-tools
+	depends = postgresql
+	source = clair-2.1.2.tar.gz::https://github.com/quay/clair/archive/v2.1.2.tar.gz
+	md5sums = SKIP
+
+pkgname = clair
+
