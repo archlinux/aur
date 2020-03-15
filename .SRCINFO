@@ -1,0 +1,16 @@
+pkgbase = sshfs-reconnect-git
+	pkgdesc = An easy command to mount sshfs as reconnect.
+	pkgver = r1.34ca815
+	pkgrel = 1
+	url = https://github.com/hrehfeld/sshfs-reconnect
+	arch = x86_64
+	arch = i686
+	makedepends = git
+	depends = sshfs
+	provides = sshfs-reconnect
+	conflicts = sshfs-reconnect
+	source = git+https://github.com/hrehfeld/sshfs-reconnect.git
+	md5sums = SKIP
+
+pkgname = sshfs-reconnect-git
+
