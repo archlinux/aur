@@ -16,7 +16,7 @@ pkgbase = linux-zencjk
 	makedepends = git
 	options = !strip
 	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.5.9-zen1
-	source = config
+	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen
 	source = aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
