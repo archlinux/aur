@@ -4,7 +4,7 @@
 
 pkgname=perl-object-declare
 pkgver=0.24
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package providing a declarative object constructor'
 arch=('any')
 url='https://metacpan.org/release/Object-Declare'
@@ -37,5 +37,5 @@ package() {
 	cd Object-Declare-0.24
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

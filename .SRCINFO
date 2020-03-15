@@ -1,7 +1,7 @@
 pkgbase = perl-object-declare
 	pkgdesc = Perl package providing a declarative object constructor
 	pkgver = 0.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Object-Declare
 	arch = any
 	license = MIT
