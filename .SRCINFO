@@ -1,0 +1,14 @@
+pkgbase = njl.lv2-git
+	pkgdesc = NJL plugins by Nick Lamb ported to the LV2 specification
+	pkgver = v0.0.3.r2.gb132f0d
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/njl-lv2
+	arch = x86_64
+	groups = lv2plugins
+	license = GPL
+	depends = lv2
+	source = njl.lv2-git::git+https://github.com/linuxmao-org/njl-lv2
+	md5sums = SKIP
+
+pkgname = njl.lv2-git
+
