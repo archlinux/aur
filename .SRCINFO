@@ -1,0 +1,13 @@
+pkgbase = emacs-arch-xlicense-git
+	pkgdesc = lib for handling licences in emacs
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/stefanhusmann/arch-xlicense
+	arch = any
+	license = GPL3
+	depends = emacs
+	source = git+https://gitlab.com/stefanhusmann/arch-xlicense.git
+	sha256sums = SKIP
+
+pkgname = emacs-arch-xlicense-git
+
