@@ -1,7 +1,7 @@
 pkgbase = perl-toml-parser
 	pkgdesc = Perl package providing TOML parser
 	pkgver = 0.91
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/TOML-Parser
 	arch = any
 	license = PerlArtistic

@@ -4,7 +4,7 @@
 
 pkgname=perl-toml-parser
 pkgver=0.91
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package providing TOML parser'
 arch=('any')
 url='https://metacpan.org/release/TOML-Parser'
@@ -38,5 +38,5 @@ package() {
 	cd TOML-Parser-0.91
 	sanitize
 	/usr/bin/perl Build install
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
