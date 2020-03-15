@@ -13,7 +13,7 @@ depends=(
 	'perl-xml-libxml>=1.94'
 	'perl-xml-compile>=1.30'
 	'perl-xml-compile-cache>=0.995'
-	'perl-log-report>=0.991')
+	'perl-log-report>=1.10')
 checkdepends=('perl>=5.13.11')
 source=([% source %])
 options=(!emptydirs)

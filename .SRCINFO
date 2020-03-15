@@ -1,8 +1,8 @@
 pkgbase = perl-xml-compile-c14n
 	pkgdesc = Perl package for XML canonicalization
-	pkgver = 0.94
+	pkgver = 0.95
 	pkgrel = 1
-	url = http://search.cpan.org/dist/XML-Compile-C14N
+	url = https://metacpan.org/release/XML-Compile-C14N
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -10,10 +10,10 @@ pkgbase = perl-xml-compile-c14n
 	depends = perl-xml-libxml>=1.94
 	depends = perl-xml-compile>=1.30
 	depends = perl-xml-compile-cache>=0.995
-	depends = perl-log-report>=0.991
+	depends = perl-log-report>=1.10
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-C14N-0.94.tar.gz
-	md5sums = b98e76215074866a2058414432188cc9
+	source = http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-C14N-0.95.tar.gz
+	md5sums = 98e193ffdb67c525bee084e778856db9
 
 pkgname = perl-xml-compile-c14n
 
