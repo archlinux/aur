@@ -1,0 +1,13 @@
+pkgbase = vcf.lv2-git
+	pkgdesc = VCF plugins by Matthias Nagorni ported to the LV2 specification
+	pkgver = v0.0.2.r7.gc07fb4a
+	pkgrel = 1
+	url = https://github.com/linuxmao-org/vcf-lv2
+	arch = x86_64
+	license = GPL
+	depends = lv2
+	source = vcf.lv2-git::git+https://github.com/linuxmao-org/vcf-lv2
+	md5sums = SKIP
+
+pkgname = vcf.lv2-git
+
