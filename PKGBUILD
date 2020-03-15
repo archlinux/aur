@@ -9,7 +9,7 @@ url="http://toxiproxy.io"
 license=('MIT')
 provides=('toxiproxy-server')
 source=("https://github.com/Shopify/toxiproxy/releases/download/v${pkgver}/toxiproxy-server-linux-amd64")
-md5sums=('SKIP')
+md5sums=('1e8cad07a234faccdd3f41df0ec83caf')
 
 package() {
 	cd "${srcdir}"
