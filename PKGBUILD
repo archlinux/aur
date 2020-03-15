@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=goverlay-git
-pkgver=0.2.r1.ge16fbcb
+pkgver=0.2.1.r4.gcdd3c5d
 pkgrel=1
 pkgdesc="An opensource project that aims to create a Graphical UI to help manage Linux overlays."
 arch=('x86_64')
@@ -8,7 +8,9 @@ url="https://github.com/benjamimgois/goverlay"
 license=('GPL3')
 depends=('gtk2')
 makedepends=('git' 'lazarus')
-optdepends=('mangohud')
+optdepends=('mangohud: Configure MangoHUD'
+            'mesa-demos: OpenGL preview'
+            'vulkan-tools: Vulkan preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/benjamimgois/goverlay.git')
