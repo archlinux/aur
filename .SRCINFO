@@ -1,0 +1,30 @@
+pkgbase = opendiablo2-git
+	pkgdesc = An open source re-implementation of Diablo 2
+	pkgver = 1
+	pkgrel = 1
+	url = https://opendiablo2.com/
+	install = post_install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	makedepends = git
+	makedepends = gendesk
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = mesa
+	depends = libglvnd
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = sdl2_net
+	depends = alsa-lib
+	provides = opendiablo2
+	source = git+https://github.com/OpenDiablo2/OpenDiablo2
+	source = post_install
+	md5sums = SKIP
+	md5sums = f211fcc70802f4a96d081b1c19a6172e
+
+pkgname = opendiablo2-git
+

@@ -1,0 +1,5 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+	echo -e "You must have a legally purchased copy of Diablo 2 and its expansion Lord of Destruction installed on your computer in order to run that game on this engine. If you have an original copy of the disks, those files should work fine as well."
+}
