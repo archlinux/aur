@@ -1,7 +1,7 @@
 pkgbase = perl-string-print
 	pkgdesc = Perl package providing printf() alternative
 	pkgver = 0.94
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/String-Print
 	arch = any
 	license = PerlArtistic

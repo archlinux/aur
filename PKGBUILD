@@ -4,7 +4,7 @@
 
 pkgname=perl-string-print
 pkgver=0.94
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package providing printf() alternative'
 arch=('any')
 url='https://metacpan.org/release/String-Print'
@@ -39,5 +39,5 @@ package() {
 	cd String-Print-0.94
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
