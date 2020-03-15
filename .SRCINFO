@@ -10,10 +10,9 @@ pkgbase = ocaml-dtoa
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	checkdepends = ocaml-ounit
-	makedepends = dune
-	makedepends = ocaml-findlib
-	depends = ocaml
+	checkdepends = ocaml-ounit>=2.0.0
+	makedepends = dune>=1.0.0
+	depends = ocaml>=4.01.0
 	options = !strip
 	source = ocaml-dtoa-0.3.2-2.tar.gz::https://github.com/flowtype/ocaml-dtoa/archive/v0.3.2.tar.gz
 	source = fix-ounit-name.diff

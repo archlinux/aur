@@ -7,9 +7,9 @@ pkgdesc='double-to-ascii ocaml implementation'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/flowtype/$pkgname"
 license=('MIT')
-depends=('ocaml')
-makedepends=('dune' 'ocaml-findlib')
-checkdepends=('ocaml-ounit')
+depends=('ocaml>=4.01.0')
+makedepends=('dune>=1.0.0')
+checkdepends=('ocaml-ounit>=2.0.0')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz"
