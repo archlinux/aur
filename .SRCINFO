@@ -1,7 +1,7 @@
 pkgbase = vscodium-bin
 	pkgdesc = Binary releases of VS Code without MS branding/telemetry/licensing.
 	pkgver = 1.43.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/VSCodium/vscodium
 	arch = x86_64
 	arch = aarch64
@@ -22,15 +22,15 @@ pkgbase = vscodium-bin
 	optdepends = libdbusmenu-glib: For KDE global menu
 	provides = code
 	conflicts = code
-	noextract = vscodium-bin-1.43.0-1-x86_64.tar.gz
+	noextract = vscodium-bin-1.43.0-2-x86_64.tar.gz
 	source = vscodium-bin.desktop
 	sha256sums = 5504e93bd55f2bc068c29e4fa962c1eddc6e08edb39c3255319dd5ad998a1b86
-	source_x86_64 = vscodium-bin-1.43.0-1-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-x64-1.43.0.tar.gz
-	sha256sums_x86_64 = 6ae5c32f0968d93570a7acf3262cb44fb2dd5dba6c6e6133bb1433daa3c23a8d
-	source_aarch64 = vscodium-bin-1.43.0-1-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-arm64-1.43.0.tar.gz
-	sha256sums_aarch64 = e041328109cd2dc99427437031380618ac322639b9171ef61eab6c65128752e6
-	source_armv7h = vscodium-bin-1.43.0-1-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-arm-1.43.0.tar.gz
-	sha256sums_armv7h = 8c7d4cb7c75285d028ec1edcaeee2a25b1a945064308abd0dbed6a9bf91888a6
+	source_x86_64 = vscodium-bin-1.43.0-2-x86_64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-x64-1.43.0.tar.gz
+	sha256sums_x86_64 = 3cbe41b19f7997f180e95db451b63fe28f338c67576e1d1dc022d6beea757a97
+	source_aarch64 = vscodium-bin-1.43.0-2-aarch64.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-arm64-1.43.0.tar.gz
+	sha256sums_aarch64 = 80c687c40b83ca077091b42ea8f49dcfbf58f04d397be7e4cf0281348f2230ee
+	source_armv7h = vscodium-bin-1.43.0-2-armv7h.tar.gz::https://github.com/VSCodium/vscodium/releases/download/1.43.0/VSCodium-linux-arm-1.43.0.tar.gz
+	sha256sums_armv7h = c60424348f65e091119a4248a88478b53887945b0d5a66bc86c52f3e7d881f5b
 
 pkgname = vscodium-bin
 
