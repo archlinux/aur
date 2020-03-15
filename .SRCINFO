@@ -1,6 +1,6 @@
 pkgbase = refind-efi-bin
 	pkgdesc = Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary - Built with GNU-EFI libs
-	pkgver = 0.11.5
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = http://www.rodsbooks.com/refind/index.html
 	install = refind-efi-bin.install
@@ -16,9 +16,9 @@ pkgbase = refind-efi-bin
 	optdepends = python: For refind-mkdefault script
 	conflicts = refind-efi
 	source = refind_linux.conf
-	source = https://downloads.sourceforge.net/project/refind/0.11.5/refind-bin-gnuefi-0.11.5.zip
+	source = https://downloads.sourceforge.net/project/refind/0.12.0/refind-bin-gnuefi-0.12.0.zip
 	md5sums = 12ce3e22a216e7b25c253478a34713b4
-	md5sums = dc0155f66c14af415ebaf6aafe07f266
+	md5sums = ab97fcb2c754163222191895ba2ac4bd
 
 pkgname = refind-efi-bin
 
