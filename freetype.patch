@@ -1,0 +1,11 @@
+--- a/SConstruct
++++ b/SConstruct
+@@ -284,7 +284,7 @@
+ 
+ # Get the configuration from sdl and freetype
+ env.ParseConfig("sdl-config --cflags")
+-env.ParseConfig("freetype-config --cflags --libs")
++env.ParseConfig("pkg-config --cflags freetype2")
+ 
+ env = config.Finish()
+ 

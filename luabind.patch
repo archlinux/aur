@@ -1,8 +1,6 @@
-diff --git a/vendor/luabind/include/luabind/object.hpp b/vendor/luabind/include/luabind/object.hpp
-index 5e2771c..24c140c 100644
 --- a/vendor/luabind/include/luabind/object.hpp
 +++ b/vendor/luabind/include/luabind/object.hpp
-@@ -544,6 +544,7 @@ namespace detail
+@@ -544,6 +544,7 @@
        handle m_key;
    };
  
@@ -10,7 +8,7 @@ index 5e2771c..24c140c 100644
  // Needed because of some strange ADL issues.
  
  #define LUABIND_OPERATOR_ADL_WKND(op) \
-@@ -565,6 +566,7 @@ namespace detail
+@@ -565,6 +566,7 @@
    LUABIND_OPERATOR_ADL_WKND(!=)
  
  #undef LUABIND_OPERATOR_ADL_WKND

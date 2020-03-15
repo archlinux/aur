@@ -1,9 +1,8 @@
 pkgbase = rlvm
 	pkgdesc = RealLive clone for Linux and OSX
 	pkgver = 0.14
-	pkgrel = 2
-	url = http://www.elliotglaysher.org/rlvm/
-	arch = i686
+	pkgrel = 3
+	url = http://www.rlvm.net/
 	arch = x86_64
 	license = GPL
 	makedepends = scons
@@ -11,13 +10,24 @@ pkgbase = rlvm
 	depends = boost-libs>=1.46
 	depends = glew
 	depends = libmad
+	depends = libogg
+	depends = libvorbis
+	depends = libpng
 	depends = sdl_mixer
 	depends = sdl_image
 	depends = sdl_ttf
+	depends = guichan
+	depends = gtk2
 	source = https://github.com/eglaysher/rlvm/archive/release-0.14.tar.gz
+	source = https://github.com/eglaysher/rlvm/commit/97c808194c56ba58cabdc4730270797909b7652d.patch
 	source = luabind.patch
-	md5sums = 03a7df65cf22bba83547d412fd07e941
-	md5sums = ed77bb39c013519544f16a4db7c17f3a
+	source = freetype.patch
+	source = iostream.patch
+	sha256sums = 6d1717540b8db8aca1480ebafae3354b24e3122a77dd2ee81f4b964c7b10dcc0
+	sha256sums = 8d2e8acf8bcb1f8fd5c78373dbea29036ccee1947a31ea99ae92af72b8ca84fd
+	sha256sums = 2c17ce6af4a2e176e64a2fb10add59b8d7372677fed86f949a2ea3b702f2a54d
+	sha256sums = d8977832b099a00e51f161ce97d7fa0524888f0bad7e1b6100f71f8458f16ceb
+	sha256sums = 80ee25081846981e27dcd802760a86429e9580a793bd1523e39ba99a5609c739
 
 pkgname = rlvm
 
