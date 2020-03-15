@@ -4,19 +4,19 @@
 # POST-INSTALLATION INSTRUCTIONS
 #
 # WeeChat is unable to source files from outside of a user's home directory.
-# Because of this limitation, this package *DOES NOT* make the Slack plugin
-# available to WeeChat without end user interaction.
+# Because of this limitation, this package *DOES NOT* make this plugin available
+# to WeeChat without end user interaction.
 #
-# Each user who wants to enable the Slack plugin needs to create symlinks in
-# the WeeChat configuration directory for their user (by default, ~/.weechat).
-# The following commands will accomplish this:
+# Each user who wants to enable this plugin needs to create symlinks in the
+# WeeChat configuration directory for their user (by default, ~/.weechat). The
+# following command(s) will accomplish this:
 #
 #     $ ln -s /usr/lib/weechat/weemoji.json ~/.weechat/weemoji.json
 #     $ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/autoload/wee_slack.py
 
 pkgname=wee-slack
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A WeeChat plugin for Slack.com'
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
@@ -29,13 +29,13 @@ sha512sums=('2e6d0f0555adc5eec143dd784d360e33c1a93b8cbab92931ee6778663ccc600e4d0
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  msg2 "Installing the wee-slack plugin"
+  # Install the plugin script
   install -Dm644 wee_slack.py "${pkgdir}/usr/lib/weechat/python/wee_slack.py"
 
-  msg2 "Installing the emoji tab completion dictionary"
+  # Install the emoji tab completion dictionary
   install -Dm644 weemoji.json "${pkgdir}/usr/lib/weechat/weemoji.json"
 
-  msg2 "Installing license"
+  # Install the plugin license
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
