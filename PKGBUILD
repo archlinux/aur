@@ -2,8 +2,9 @@
 # Contributor: scj <scj archlinux us>
 # Contributor: tracer <jcdenton513 gmail com>
 # Maintainer: aksr <aksr at t-com dot me>
+# Maintainer: AI5C <ai5c@ai5c.com>
 pkgname=orpie
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 epoch=
 pkgdesc="Curses-based RPN calculator"
@@ -25,7 +26,7 @@ changelog=
 source=("https://github.com/pelzlpj/orpie/archive/release-${pkgver}.tar.gz"
         "install-prefix.patch")
 noextract=()
-sha256sums=('bd0f38847a28d465a9149055e7da78cca82ec25dd91d55e51503c1b0a462c718'
+sha256sums=('1ae5a99fbbf492869664e4bd81e6bf5cf65bdaf5027908c1e9313843bb5d5749'
             '27607076408ad164f91a142eebbefa845eecec6ff9b0783b336deaaed0ed9d12')
 
 prepare() {
