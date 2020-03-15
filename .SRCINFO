@@ -1,19 +1,18 @@
 pkgbase = libxsmm
 	pkgdesc = A library for small dense and small sparse matrix-matrix multiplications
-	pkgver = 1.14
-	pkgrel = 2
+	pkgver = 1.15
+	pkgrel = 1
 	url = https://github.com/hfp/libxsmm
 	arch = x86_64
 	license = BSD
 	checkdepends = blas
 	checkdepends = lapack
-	makedepends = gcc
 	makedepends = gcc-fortran
 	makedepends = python
 	depends = gcc-libs
 	conflicts = libxsmm-git
-	source = https://github.com/hfp/libxsmm/archive/1.14.tar.gz
-	sha256sums = 9c0af4509ea341d1ee2c6c19fc6f19289318c3bd4b17844efeb9e7f9691abf76
+	source = https://github.com/hfp/libxsmm/archive/1.15.tar.gz
+	sha256sums = 499e5adfbf90cd3673309243c2b56b237d54f86db2437e1ac06c8746b55ab91c
 
 pkgname = libxsmm
 
