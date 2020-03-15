@@ -1,6 +1,6 @@
 pkgbase = openvpn-pkcs11
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-	pkgver = 2.4.5
+	pkgver = 2.4.8
 	pkgrel = 1
 	url = http://openvpn.net/index.php/open-source.html
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = openvpn-pkcs11
 	optdepends = easy-rsa: easy CA and certificate handling
 	provides = openvpn
 	conflicts = openvpn
-	source = https://swupdate.openvpn.net/community/releases/openvpn-2.4.5.tar.xz
-	sha256sums = 43c0a363a332350f620d1cd93bb431e082bedbc93d4fb872f758650d53c1d29e
+	source = https://swupdate.openvpn.net/community/releases/openvpn-2.4.8.tar.xz
+	sha256sums = fb8ca66bb7807fff595fbdf2a0afd085c02a6aa47715c9aa3171002f9f1a3f91
 
 pkgname = openvpn-pkcs11
 

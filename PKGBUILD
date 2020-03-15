@@ -5,7 +5,7 @@
 
 pkgname=openvpn-pkcs11
 _pkgname=openvpn
-pkgver=2.4.5
+pkgver=2.4.8
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('openvpn')
 optdepends=('easy-rsa: easy CA and certificate handling')
 license=('custom')
 source=("https://swupdate.openvpn.net/community/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('43c0a363a332350f620d1cd93bb431e082bedbc93d4fb872f758650d53c1d29e')
+sha256sums=('fb8ca66bb7807fff595fbdf2a0afd085c02a6aa47715c9aa3171002f9f1a3f91')
 
 build() {
   cd "${srcdir}"/${_pkgname}-${pkgver}
