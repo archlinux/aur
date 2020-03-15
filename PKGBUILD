@@ -1,10 +1,10 @@
 # CPAN Name  : Template::Declare
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname=perl-template-declare
 pkgver=0.47
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure-Perl declarative HTML/XUL/RDF/XML templating system'
 arch=('any')
 url='https://metacpan.org/release/Template-Declare'
@@ -42,5 +42,5 @@ package() {
 	cd Template-Declare-0.47
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

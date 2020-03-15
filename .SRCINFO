@@ -1,7 +1,7 @@
 pkgbase = perl-template-declare
 	pkgdesc = Pure-Perl declarative HTML/XUL/RDF/XML templating system
 	pkgver = 0.47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Template-Declare
 	arch = any
 	license = PerlArtistic
