@@ -1,0 +1,16 @@
+pkgbase = udiskie-systemd-git
+	pkgdesc = User systemd service for udiskie auto mounting.
+	pkgver = r1.7e71ca2
+	pkgrel = 1
+	url = https://github.com/hrehfeld/udiskie-systemd
+	arch = x86_64
+	arch = i686
+	makedepends = git
+	depends = udiskie
+	provides = udiskie-systemd
+	conflicts = udiskie-systemd
+	source = git+https://github.com/hrehfeld/udiskie-systemd.git
+	md5sums = SKIP
+
+pkgname = udiskie-systemd-git
+
