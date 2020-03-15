@@ -50,8 +50,8 @@ prepare() {
 }
 
 build() {
-    export _QV2RAY_BUILD_INFO_="Qv2ray for Arch Linux CN"
-    export _QV2RAY_BUILD_EXTRA_INFO_="(Official Build) $(uname -a | cut -d " " -f3,13)"
+    export _QV2RAY_BUILD_INFO_="Qv2ray for Arch Linux"
+    export _QV2RAY_BUILD_EXTRA_INFO_="(AUR Build) $(uname -a | cut -d " " -f3,13)"
 
     cd "${srcdir}/Qv2ray"
     mkdir -p build && cd build
