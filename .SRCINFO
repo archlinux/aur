@@ -11,6 +11,7 @@ pkgbase = ocaml-ppxfind
 	arch = aarch64
 	license = MIT
 	makedepends = dune
+	makedepends = ocaml-findlib
 	depends = ocaml>=4.02.3
 	depends = ocaml-findlib
 	depends = ocaml-migrate-parsetree

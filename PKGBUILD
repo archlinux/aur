@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diml/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.02.3' 'ocaml-findlib' 'ocaml-migrate-parsetree')
-makedepends=('dune')
+makedepends=('dune' 'ocaml-findlib')
 options=('!strip')
 source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
