@@ -9,7 +9,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
 depends=('ocaml>=4.08.0')
-makedepends=('dune>=1.6.0' 'ocaml-findlib')
+makedepends=('dune>=1.6.0')
 options=('!strip')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('d633d838c68ce9d01c572ea61072a524724116b8a6059c4f8b7a15010f772f8c')
