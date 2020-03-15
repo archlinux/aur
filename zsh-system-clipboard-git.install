@@ -1,0 +1,6 @@
+post_install() {
+    cat <<EOF
+To activate zsh-system-clipboard, add the following line to your zshrc:
+    source /usr/share/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh
+EOF
+}

@@ -1,0 +1,17 @@
+pkgbase = zsh-system-clipboard-git
+	pkgdesc = Synchronize system clipboard with ZLE (Zsh Line Editor) registers
+	pkgver = r99.461cbbd
+	pkgrel = 1
+	url = https://github.com/kutsan/zsh-system-clipboard
+	install = zsh-system-clipboard-git.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = zsh
+	optdepends = xclip: clipboard utility
+	optdepends = xsel: clipboard utility
+	source = zsh-system-clipboard::git+https://github.com/kutsan/zsh-system-clipboard.git
+	sha256sums = SKIP
+
+pkgname = zsh-system-clipboard-git
+
