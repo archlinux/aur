@@ -1,0 +1,12 @@
+post_install () {
+  [ ! -e /etc/brlapi.key ] && mcookie -v > /etc/brlapi.key
+  echo "Please add your user to the brlapi group."
+}
+
+post_upgrade () {
+  post_install
+}
+
+post_remove() {
+  [ -e /etc/brlapi.key ] && rm -v /etc/brlapi.key
+}
