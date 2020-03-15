@@ -1,14 +1,13 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=microsip
 pkgver=3.19.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source portable SIP softphone for Windows based on PJSIP stack"
 arch=(x86_64)
 url="https://www.microsip.org/"
-license=(GPLv2)
+license=(GPL2)
 depends=(wine lib32-libpulse xorg-xdpyinfo)
 conflicts=(wine-staging)
-install=${pkgname}.install
 
 source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file=MicroSIP-Lite-${pkgver}.zip"
 		"${pkgname}"
@@ -16,8 +15,8 @@ source=("MicroSIP-Lite-${pkgver}.zip"::"https://www.microsip.org/downloads/?file
 		"${pkgname}.png"
 		"${pkgname}.reg")
 
-sha256sums=('9eceb1e7a8c1759ceebfe8541a6218e13d490f13275031b003a3c360d5399990'
-            'caa8a653fe7396260be47d71f13b32d89365eb850ba3706f1ef017c9fb8308d3'
+sha256sums=('3f43e3b2d0a07b5d0c2e7f2b25c7dca832e432989b9b91be471c9013d855f0b0'
+            'e909ea376443dab9824f1efe7f838fe63833526c51a694c010c868e371a97ea4'
             'd588c2b2e38e12d2be3dfdd9f2a63690293b884c7df240c441e271725b9a2ca2'
             '4d33d040f772c4b1f1652b8af59342bdec600fd3de875e7ef6ee1a43fc3415cf'
             'c97cde99004dbee5cb9b05a7b6bad117e5ec63cb1032fa56efdf07a4b27e3c1d')
@@ -32,6 +31,7 @@ package() {
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringing2.wav"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "ringtone.wav"
 	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "microsip.exe"
+	install -Dt "${pkgdir}/usr/lib/${pkgname}" -m0644 "lame_enc.dll"
 
 	install -Dt "${pkgdir}/usr/bin" -m0755 "${pkgname}"
 	install -Dt "${pkgdir}/usr/share/${pkgname}" -m0644 "${pkgname}.reg"

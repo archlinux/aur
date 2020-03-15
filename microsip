@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-__REV=2
+__REV=3
 __APPNAME=$(basename $0)
 __WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local}/wine/${__APPNAME}"
 __APPDIR="${__WINEPREFIX}/dosdevices/c:/${__APPNAME}"
@@ -38,6 +38,7 @@ if [[ ! -f "${__INSTALLED}" ]]; then
 	__symlink "/usr/share/${__APPNAME}/ringing2.wav"
 	__symlink "/usr/share/${__APPNAME}/ringtone.wav"
 	__symlink "/usr/lib/${__APPNAME}/microsip.exe"
+	__symlink "/usr/lib/${__APPNAME}/lame_enc.dll"
 
 	mkdir -p "${__APPCFG}"
 	touch "${__APPCFG}/Contacts.xml"

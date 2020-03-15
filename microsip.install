@@ -1,6 +1,0 @@
-post_upgrade() {
-	echo microsip.ini and Contacts.xml are now symlinked from \~/.config/microsip.
-	echo microsip_log.txt is symlinked from \~/.cache/microsip.
-	echo Make sure you backup these files before first launch after upgrade.
-}
-
