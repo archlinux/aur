@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile-wsdl11
 pkgver=3.07
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package to create SOAP messages defined by WSDL 1.1'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-WSDL11'
@@ -14,6 +14,7 @@ depends=(
 	'perl-xml-compile-cache>=1.03'
 	'perl-xml-compile-soap>=3.23'
 	'perl-log-report>=1.05')
+checkdepends=('perl-test-deep')
 source=(http://search.cpan.org/CPAN/authors/id/M/MA/MARKOV/XML-Compile-WSDL11-3.07.tar.gz)
 options=(!emptydirs)
 md5sums=('2866c7ef1630b76182deaae36879b9f8')
