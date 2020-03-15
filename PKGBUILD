@@ -2,12 +2,12 @@
 pkgname=obs-websocket
 pkgver=4.7.0
 _obsver=24.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="WebSockets API for obs-studio"
 arch=('x86_64')
 url="https://github.com/Palakis/$pkgname"
 license=('GPL2')
-depends=("obs-studio>=$obsver" 'openssl')
+depends=("obs-studio>=$_obsver" 'openssl')
 makedepends=('asio' 'cmake' 'websocketpp-git-dev')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
