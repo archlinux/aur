@@ -10,7 +10,7 @@ url="http://tvdr.de/"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
-source=("ftp://ftp.tvdr.de/vdr/${pkgbase}-${pkgver}.tar.bz2"
+source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
         "$pkgbase-$pkgver-glibc-2.31.patch::https://patch-diff.githubusercontent.com/raw/VDR4Arch/vdr/pull/1.patch"
         'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
