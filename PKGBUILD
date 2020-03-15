@@ -1,10 +1,10 @@
 # CPAN Name  : Test::Email
-# Contributor: Anton Leontiev <bunder /at/ t-25.ru>
+# Contributor: Anton Leontiev <scileont /at/ gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname=perl-test-email
 pkgver=0.07
-pkgrel=1
+pkgrel=3
 pkgdesc='Perl package to test Email contents'
 arch=('any')
 url='http://search.cpan.org/dist/Test-Email'
@@ -28,5 +28,5 @@ check() {
 package() {
 	cd Test-Email-0.07
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
