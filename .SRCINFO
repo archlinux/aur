@@ -1,0 +1,17 @@
+pkgbase = sincon-git
+	pkgdesc = Semplice wrapper script che permette di ottenere sinonimi e contrari di una parola da www.sinonimi-contrari.it
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://git.antonionapolitano.eu/zAxny32/sincon
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-beautifulsoup4
+	provides = sincon
+	conflicts = sincon
+	source = sincon-git::git+https://git.antonionapolitano.eu/zAxny32/sincon
+	md5sums = SKIP
+
+pkgname = sincon-git
+
