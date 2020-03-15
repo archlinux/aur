@@ -2,7 +2,7 @@
 # Maintainer: Nat Lasseter <aur at 4574 dot co dot uk>
 
 pkgname="k40whisperer"
-pkgver="0.43"
+pkgver="0.45"
 pkgrel="1"
 pkgdesc="Control software for the stock K40 Laser controller"
 arch=("any")
@@ -22,7 +22,7 @@ source=(
   "k40_whisperer.py.patch"
 )
 sha256sums=(
-  "9fbd62b226b186883317135bc820b19e2fd55911a000a5befc5d55ef4100cf9d"
+  "9a45ebc739bd602b060c29dadc92d9ca2ceab41556476692c8cbe90330dc7fbf"
   "19b490100927a74a4db8c6332b8a995eb1d1dc24c31467c03e3d8ac62759b508"
   "5d32866a044ce3239881eacd01720b95285031a003a79056644d30e728fcee19"
   "b92ec53119e4cba6269e3db7cf00144659194eeee2e085bf186ca544803466bc"
