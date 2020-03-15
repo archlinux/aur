@@ -1,29 +1,34 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-_pkgname=ppx_tools
-pkgname=ocaml-${_pkgname}
-pkgver=5.1+4.06.0
-pkgrel=2
-pkgdesc="Tools for authors of ppx rewriters and other syntactic tools"
-arch=('i686' 'x86_64')
-url="https://github.com/ocaml-ppx/ppx_tools"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='ppx_tools'
+pkgname="ocaml-$_projectname"
+pkgver='6.0+4.08.0'
+pkgrel='1'
+pkgdesc='Tools for authors of ppx rewriters and other syntactic tools'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ocaml-ppx/$_projectname"
 license=('MIT')
-depends=('ocaml')
-makedepends=('ocaml-findlib')
-source=("https://github.com/ocaml-ppx/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('6ba2e9690b1f579ba562b86022d1c308')
+depends=('ocaml>=4.08.0')
+makedepends=('dune>=1.6.0' 'ocaml-findlib')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('d633d838c68ce9d01c572ea61072a524724116b8a6059c4f8b7a15010f772f8c')
+
+_sourcedirectory="$_projectname-$(printf '%s' "$pkgver" | tr '+' '-')"
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver/+/-}"
-
-  make -j1
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver/+/-}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
-  install -dm755 "${OCAMLFIND_DESTDIR}"
-  make install
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
