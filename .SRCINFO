@@ -1,7 +1,7 @@
 pkgbase = ttf-itxe-sans
 	pkgdesc = A sans fonts by ITXE Studio , optimized from Comic Sans
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.idc.moe
 	arch = any
 	license = custom:ITXE Custom Font License v1.0
@@ -11,7 +11,7 @@ pkgbase = ttf-itxe-sans
 	source = ITXESans-1.0.ttf::https://github.com/kmahyyg/personal_pkgbuild/releases/download/v20200315/ITXESans-1.0.ttf
 	source = ttf-itxe-sans-1.0-CFL.txt::https://github.com/kmahyyg/personal_pkgbuild/raw/master/ttf-itxe-sans/ttf-itxe-sans-1.0-CFL.txt
 	sha256sums = f8b3e8d39488f12fdab63e1bf15bd19c21a572f9c126f6b67dcaebe32677ccf8
-	sha256sums = 53fe3503f968274d0a605773f3b03a34fc7e42259e2974ac9cdc6a210be46aea
+	sha256sums = 66587428c17ba1a1a2eb8769bfbb4bdbb9eed0b812ac0d2cbe85bfd8060dd346
 
 pkgname = ttf-itxe-sans
 

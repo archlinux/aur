@@ -2,7 +2,7 @@
 
 pkgname=ttf-itxe-sans
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 _reltag='v20200315'
 pkgdesc='A sans fonts by ITXE Studio , optimized from Comic Sans'
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
@@ -15,7 +15,7 @@ source=(
 )
 sha256sums=(
     'f8b3e8d39488f12fdab63e1bf15bd19c21a572f9c126f6b67dcaebe32677ccf8'
-    '53fe3503f968274d0a605773f3b03a34fc7e42259e2974ac9cdc6a210be46aea'
+    '66587428c17ba1a1a2eb8769bfbb4bdbb9eed0b812ac0d2cbe85bfd8060dd346'
 )
 package() {
     install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
