@@ -1,7 +1,7 @@
 pkgbase = ttf-cheapskate
 	pkgdesc = TTF Fonts by Dustin Norlander
 	pkgver = 2.0
-	pkgrel = 14
+	pkgrel = 15
 	url = https://www.fontspace.com/cheapskate-fonts
 	arch = any
 	license = GPL
