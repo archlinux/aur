@@ -4,7 +4,7 @@
 
 pkgname=perl-xml-compile-soap
 pkgver=3.26
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl package for SOAP implementations'
 arch=('any')
 url='https://metacpan.org/release/XML-Compile-SOAP'
@@ -43,5 +43,5 @@ package() {
 	cd XML-Compile-SOAP-3.26
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }
