@@ -1,17 +1,23 @@
 pkgbase = ocaml-re
 	pkgdesc = Pure OCaml regular expressions, with support for Perl and POSIX-style strings
-	pkgver = 1.8.0
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/ocaml/ocaml-re
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = custom:LGPL2.1 with linking exception
+	checkdepends = ocaml-ounit
 	makedepends = dune
-	depends = ocaml
+	depends = ocaml>=4.02.0
 	depends = ocaml-seq
 	options = !strip
-	source = https://github.com/ocaml/ocaml-re/releases/download/1.8.0/re-1.8.0.tbz
-	sha512sums = 368c43d115b45c80c72770d2a61952f2614f4e4d1fc2a6b63691edda58b3eceac12f69f437b326cdf91b20ee62ce0e25ed3e89909e9e3c79ab56640691772085
+	source = ocaml-re-1.9.0-1.tar.gz::https://github.com/ocaml/ocaml-re/archive/1.9.0.tar.gz
+	source = fix-ounit-name.diff
+	sha256sums = 4a2408bb270e0d1aef101d6b5edfeec6753874a6bcf54eb43d9fd3a7ddd777c1
+	sha256sums = cb9109cfb78cd0c57c521fe7be23a6edee0d1e3be29f313b37093ae2848eecdc
 
 pkgname = ocaml-re
-

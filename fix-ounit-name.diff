@@ -1,0 +1,12 @@
+diff --git a/lib_test/fort_unit/dune b/lib_test/fort_unit/dune
+index 2882be8..c3defc7 100644
+--- a/lib_test/fort_unit/dune
++++ b/lib_test/fort_unit/dune
+@@ -3,4 +3,4 @@
+ (library
+  (name fort_unit)
+  (wrapped false)
+- (libraries re oUnit))
+\ No newline at end of file
++ (libraries re ounit2))
+\ No newline at end of file
