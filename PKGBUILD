@@ -1,6 +1,6 @@
 # Maintainer: Jerry Chanut <j.chanut@gmail.com>
 pkgname=gnome-shell-extension-unblank-git
-pkgver=7a9a146
+pkgver=r49.02c0920
 pkgrel=1
 pkgdesc="Unblank screen when screen saver becomes active."
 arch=(any)
@@ -15,7 +15,7 @@ _extname="unblank@sun.wxg@gmail.com"
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	git describe --always | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
