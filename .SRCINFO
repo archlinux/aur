@@ -1,7 +1,7 @@
 pkgbase = mystuff
 	pkgdesc = Create a custom menu in a popup window
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kornelix.net/mystuff/mystuff.html
 	arch = i686
 	arch = x86_64
