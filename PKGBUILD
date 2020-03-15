@@ -4,7 +4,7 @@
 
 pkgname=perl-math-counting
 pkgver=0.1307
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module for combinatorial counting operations'
 arch=('any')
 url="https://metacpan.org/release/Math-Counting"
@@ -28,5 +28,5 @@ check() {
 package() {
   cd "$srcdir/Math-Counting-0.1307"
   make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

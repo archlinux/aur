@@ -1,7 +1,7 @@
 pkgbase = perl-math-counting
 	pkgdesc = Perl module for combinatorial counting operations
 	pkgver = 0.1307
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/Math-Counting
 	arch = any
 	license = GPL
