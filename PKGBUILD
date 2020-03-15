@@ -2,7 +2,7 @@
 
 pkgname=xorgxrdp-git
 _gitname=xorgxrdp
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="Xorg drivers for xrdp"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('xrdp')
 makedepends=('nasm' 'xorg-server-devel')
 options=(!emptydirs)
 source=("https://github.com/neutrinolabs/$_gitname/releases/download/v${pkgver}/$_gitname-${pkgver}.tar.gz")
-sha256sums=('145e8c8c4cbeb8cc520bceeb5a38be25b2f99ac3c931c8babeb869161d0c0949')
+sha256sums=('3116fffc22ad0ca95972710ff5cb378d600cf1006bd7f990eb759bc015f4a840')
 
 build() {
 	cd "${_gitname}-${pkgver}"
