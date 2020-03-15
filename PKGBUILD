@@ -4,7 +4,7 @@
 
 pkgname=perl-tex-encode
 pkgver=2.007
-pkgrel=1
+pkgrel=2
 pkgdesc='Perl module to encode/decode UTF-8 strings into TeX'
 arch=('any')
 url='https://metacpan.org/release/TeX-Encode'
@@ -36,5 +36,5 @@ package() {
 	cd TeX-Encode-2.007
 	sanitize
 	make install DESTDIR="$pkgdir"
-	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
 }

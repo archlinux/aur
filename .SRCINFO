@@ -1,7 +1,7 @@
 pkgbase = perl-tex-encode
 	pkgdesc = Perl module to encode/decode UTF-8 strings into TeX
 	pkgver = 2.007
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/TeX-Encode
 	arch = any
 	license = GPL
