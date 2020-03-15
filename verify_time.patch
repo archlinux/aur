@@ -1,0 +1,13 @@
+diff --unified --recursive --text a/clr-power-tweaks-208/src/main.c b/clr-power-tweaks-208/src/main.c
+--- a/clr-power-tweaks-208/src/main.c	2020-03-14 22:18:55.000000000 -0700
++++ b/clr-power-tweaks-208/src/main.c	2020-03-15 09:05:24.157394859 -0700
+@@ -161,7 +161,8 @@
+
+ 	do_pci_pm();
+ 	do_gfx_pm();
+-	verify_time();
++	//TODO: Clear Linux Specific
++	//verify_time();
+
+ 	return EXIT_SUCCESS;
+ }
