@@ -1,6 +1,6 @@
 pkgbase = libmypaint-git
 	pkgdesc = A library for making brushstrokes which is used by MyPaint and other projects.
-	pkgver = 2.0.0.alpha.r951.8da671c
+	pkgver = 2.0.0.master.r981.c28b059
 	pkgrel = 1
 	url = http://mypaint.org/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = libmypaint-git
 	makedepends = python
 	depends = gobject-introspection
 	depends = json-c
-	provides = libmypaint=2.0.0.alpha
+	provides = libmypaint=2.0.0.master.
 	conflicts = libmypaint
 	source = git+https://github.com/mypaint/libmypaint.git
 	md5sums = SKIP
