@@ -1,0 +1,14 @@
+pkgbase = mystery.lv2-git
+	pkgdesc = MYSTERY CURVE
+	pkgver = r47.066164d
+	pkgrel = 1
+	url = https://gitlab.com/OpenMusicKontrollers/mystery.lv2
+	arch = x86_64
+	groups = lv2plugins
+	license = GPL
+	depends = lv2
+	source = mystery.lv2-git::git+https://gitlab.com/OpenMusicKontrollers/mystery.lv2
+	md5sums = SKIP
+
+pkgname = mystery.lv2-git
+
