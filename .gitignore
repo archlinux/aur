@@ -1,0 +1,4 @@
+pkg/
+src/
+*.pkg.tar.xz
+pharo64-linux-stable.zip

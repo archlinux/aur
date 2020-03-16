@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=8.0
+Type=Application
+Name=Pharo
+GenericName=Pharo
+Comment=An implementation of Smalltalk
+Icon=pharo.png
+Exec=pharo
+Categories=Development;

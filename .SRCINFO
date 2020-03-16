@@ -1,0 +1,26 @@
+pkgbase = pharo-bin
+	pkgdesc = A fork of Squeak, an implementation of the object-oriented, dynamically typed, reflective programming language Smalltalk
+	pkgver = 8.0
+	pkgrel = 1
+	url = https://pharo.org/
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = libvorbis
+	depends = pango
+	depends = mesa
+	depends = dbus
+	depends = libxml2
+	provides = pharo
+	conflicts = pharo
+	source = https://files.pharo.org/get-files/80/pharo64-linux-stable.zip
+	source = http://files.pharo.org/media/logo/icon-512x512.png
+	source = pharo.sh
+	source = pharo.desktop
+	sha256sums = 533e786c5676ed293df8fac648a38cfb54aaa1c03d40d70036313a7c0f2a6038
+	sha256sums = 5a6f40722264a2befc9aea1dace399f2491cd45a98987458660f8a39d4e6887e
+	sha256sums = b160f1303f79255148c11c5625644cd42e5aea6e51de19ef4858c925e31baff0
+	sha256sums = 68b96be66d14a9ad129016b2b59fc73a25ca92091a5869e9ae8960470b19f273
+
+pkgname = pharo-bin
+
