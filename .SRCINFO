@@ -1,6 +1,6 @@
 pkgbase = dosbox-staging
 	pkgdesc = A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems
-	pkgver = 0.75.0
+	pkgver = v0.75.0.pre
 	pkgrel = 1
 	url = https://github.com/dreamer/dosbox-staging
 	arch = any
