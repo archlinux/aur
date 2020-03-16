@@ -3,12 +3,13 @@
 
 pkgname=fwupdate
 pkgver=12
-pkgrel=1
+pkgrel=2
 pkgdesc='Tools for using the ESRT and UpdateCapsule() to apply firmware updates'
 arch=('i686' 'x86_64')
 url='https://github.com/rhinstaller/fwupdate'
 license=('GPL2')
 depends=('efivar' 'libsmbios' 'bash')
+conflicts=('fwupd')
 makedepends=('pesign' 'gnu-efi-libs')
 source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
 	"0001-Fix-uninitialized-variable.patch")
@@ -38,7 +39,7 @@ package() {
   install -d ${pkgdir}/usr/lib/fwupdate
   mv ${pkgdir}/boot/efi/EFI ${pkgdir}/usr/lib/fwupdate/EFI
   rm -rf ${pkgdir}/boot
-  rm -rf ${pkgdir}/usr/src
+  #rm -rf ${pkgdir}/usr/src
   rm -rf ${pkgdir}/usr/lib/debug
   #rmdir  ${pkgdir}/usr/share/fwupdate
 }
