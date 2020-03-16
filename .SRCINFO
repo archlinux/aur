@@ -1,7 +1,7 @@
 pkgbase = panicparse
 	pkgdesc = Crash your app in style (Golang)
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/maruel/panicparse
 	arch = x86_64
 	license = Apache2
