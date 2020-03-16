@@ -7,6 +7,7 @@ pkgbase = themix-icons-gnome-colors-git
 	arch = i686
 	license = GPL3
 	makedepends = git
+	makedepends = python
 	depends = librsvg
 	depends = sed
 	depends = findutils

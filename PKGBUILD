@@ -5,7 +5,7 @@ _pkgname=themix-icons-gnome-colors
 _reponame=gnome-colors-icon-theme
 pkgname="${_pkgname}-git"
 pkgver=5.5.5.r0.gcd8b05a
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome-Colors icons plugin for Themix GUI designer"
 arch=('x86_64' 'i686')
 url="https://github.com/themix-project/gnome-colors-icon-theme"
@@ -26,6 +26,7 @@ depends=(
 )
 makedepends=(
 	'git'
+	'python'
 )
 optdepends=(
 	'themix-gui: GUI'
@@ -57,6 +58,8 @@ package() {
 	cd "$pkg_tmp_dir"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install_icons_gnomecolors
 	rm -fr "$pkg_tmp_dir"
+
+	python -O -m compileall "${pkgdir}${_oomox_dir}/plugins/${_plugin_name}" -d "${_oomox_dir}/plugins/${_plugin_name}"
 }
 
 # vim: ft=PKGBUILD
