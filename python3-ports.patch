@@ -1,5 +1,5 @@
 diff --git a/src/scripts/scale-frames.py b/src/scripts/scale-frames.py
-index cadaeb1..f10c60b 100755
+index 38821eb..5f371e2 100755
 --- a/src/scripts/scale-frames.py
 +++ b/src/scripts/scale-frames.py
 @@ -17,8 +17,8 @@ SuffixNormalizedCSV = ".norm"
@@ -30,12 +30,3 @@ index cadaeb1..f10c60b 100755
    sys.exit(-1)
  
  InputTraces = []                      # array[ TRACE1, TRACE2 ... ]
-@@ -112,7 +112,7 @@ for Trace in sys.argv[currentArg:]:
-   CSVFile = TraceBasename + SuffixClustersData
- 
-   ### Get the number of tasks from the trace
--  Header = subprocess.Popen(["head", "-n1", Trace], shell=False, stdout=subprocess.PIPE).communicate()[0]
-+  Header = subprocess.Popen(["head", "-n1", Trace], shell=False, stdout=subprocess.PIPE).communicate()[0].decode('utf-8')
-   numTasks = float(Header.split("(")[2].split(":")[2])
-   TasksPerTrace.append(numTasks)
- 
