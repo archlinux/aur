@@ -1,0 +1,20 @@
+pkgbase = python-unitypy-git
+	pkgdesc = A unity asset extractor based on unitypack and AssetStudio.
+	pkgver = r76.0182226
+	pkgrel = 1
+	url = https://github.com/K0lb3/UnityPy
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	depends = brotli
+	depends = python-pillow
+	depends = python-fsb5
+	depends = python-tex2img
+	provides = python-unitypy
+	conflicts = python-unitypy
+	source = git+https://github.com/K0lb3/UnityPy.git
+	md5sums = SKIP
+
+pkgname = python-unitypy-git
+
