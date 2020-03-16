@@ -3,7 +3,7 @@
 
 pkgname='pop-icon-theme-bin'
 pkgver='2.1.0'
-pkgrel=4
+pkgrel=5
 pkgdesc='A free and open source SVG icon theme for Linux, based on Paper Icon Set and Papirus.'
 arch=('any')
 url='https://github.com/pop-os/icon-theme'
@@ -17,8 +17,8 @@ optdepends=(
   "ttf-roboto-slab: Recommended font for documents"
 )
 
-source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme_${pkgver}~1580335206~20.04~34ed946_all.deb")
-sha256sums=('617015c70b19b7fb1edfe20e6b74a1c0b6134a7fbaa8ac10467dfe68cb12034a')
+source=("http://ppa.launchpad.net/system76/pop/ubuntu/pool/main/p/pop-icon-theme/pop-icon-theme_${pkgver}~1583343731~20.04~11f18cb_all.deb")
+sha256sums=('85cabe604b78a88b85a60de9c5ce5ce312147db2afd59bd9af04f0d642be2b7a')
 
 package() {
   cd "${srcdir}"
