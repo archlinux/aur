@@ -6,6 +6,7 @@ pkgbase = ttf-jetbrains-mono-git
 	arch = any
 	license = Apache-2.0
 	provides = ttf-jetbrains-mono
+	conflicts = ttf-jetbrains-mono
 	source = git+https://github.com/JetBrains/JetBrainsMono.git
 	md5sums = SKIP
 

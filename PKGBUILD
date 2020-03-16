@@ -1,6 +1,6 @@
 # Maintainer: Tom Carrio <tom@carrio.dev>
 pkgname=ttf-jetbrains-mono-git
-pkgver=1.0.2
+pkgver=1.0.4
 _projectname=JetBrainsMono
 pkgrel=1
 epoch=
@@ -9,6 +9,7 @@ arch=('any')
 url="https://www.jetbrains.com/lp/mono/"
 license=('Apache-2.0')
 provides=(ttf-jetbrains-mono)
+conflicts=(ttf-jetbrains-mono)
 install=
 changelog=
 source=(git+https://github.com/JetBrains/$_projectname.git)
