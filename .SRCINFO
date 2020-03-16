@@ -1,6 +1,6 @@
 pkgbase = leftwm-git
 	pkgdesc = Leftwm - A tiling window manager for the adventurer
-	pkgver = 39b134a
+	pkgver = c886a92
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/leftwm/leftwm
