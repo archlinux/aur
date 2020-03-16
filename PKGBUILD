@@ -2,7 +2,7 @@
 
 pkgname=pulumi
 pkgver=1.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
@@ -38,11 +38,13 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm755 pulumi "$pkgdir"/usr/bin/pulumi
   for plugin in ${_plugins[*]}; do
     bin=${plugin##*/}
     install -Dm755 $bin "$pkgdir"/usr/bin/$bin
   done
+  mkdir -p "$pkgdir"/etc/bash_completion.d
+  ./pulumi gen-completion bash > "$pkgdir"/etc/bash_completion.d/pulumi
 }
 
 # vim:set ts=2 sw=2 et:
