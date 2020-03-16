@@ -1,0 +1,24 @@
+pkgbase = python2-cmd2
+	pkgdesc = A tool for building interactive command line applications in Python
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/python-cmd2/cmd2
+	arch = any
+	license = MIT
+	checkdepends = python2-pytest-runner
+	checkdepends = python2-pytest-xdist
+	checkdepends = python2-mock
+	checkdepends = vi
+	makedepends = python2-setuptools
+	depends = python2-pyparsing
+	depends = python2-pyperclip
+	depends = python2-six
+	depends = python2-wcwidth
+	depends = python2-contextlib2
+	depends = python2-enum34
+	depends = python2-subprocess32
+	source = python2-cmd2-0.8.9.tar.gz::https://github.com/python-cmd2/cmd2/archive/0.8.9.tar.gz
+	sha512sums = 1d88e98ced08760f745a426dbf7031e2f8132484e0be833fb7afbbe0b02a0d5416ef7c852dd816cba0329d10356714cfc73fb303bdc885e982223b717d4508cc
+
+pkgname = python2-cmd2
+
