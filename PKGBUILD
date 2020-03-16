@@ -2,8 +2,8 @@
 
 pkgname=zenith-bin
 pkgver=0.7.4
-pkgrel=1
-pkgdesc="Terminal system usage information written in Rust"
+pkgrel=2
+pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
 url="https://github.com/bvaisvil/zenith"
 license=('MIT')
