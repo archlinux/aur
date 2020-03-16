@@ -13,7 +13,9 @@ license=('GPL3')
 source=(
 	"git+https://github.com/themix-project/oomox.git#branch=master"
 )
-md5sums=('SKIP')
+md5sums=(
+	"SKIP"
+)
 depends=(
 	'gtk3'
 	'python-gobject'
@@ -23,6 +25,7 @@ makedepends=(
 )
 optdepends=(
 	'themix-icons-gnome-colors: Icons Style plugin'
+	'themix-theme-materia: Theme Style plugin'
 	'themix-theme-oomox: Theme Style plugin'
 	'xorg-xrdb: for the `xresources` theme'
 )
