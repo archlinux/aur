@@ -1,0 +1,13 @@
+pkgbase = asciigraph
+	pkgdesc = Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/guptarohit/asciigraph
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = asciigraph-0.4.1.tar.gz::https://github.com/guptarohit/asciigraph/archive/v0.4.1.tar.gz
+	md5sums = 6efaf8b04f7f55e4863ce3127aa2308c
+
+pkgname = asciigraph
+
