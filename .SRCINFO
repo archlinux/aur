@@ -1,0 +1,30 @@
+pkgbase = xfce4-panel-vala0.48fix
+	pkgdesc = Panel for the Xfce desktop environment
+	pkgver = 4.14.3
+	pkgrel = 1
+	url = https://www.xfce.org/
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = exo
+	depends = garcon
+	depends = libxfce4ui
+	depends = xfconf
+	depends = libwnck3
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = xfce4-panel=4.14.3
+	conflicts = xfce4-panel
+	source = https://archive.xfce.org/src/xfce/xfce4-panel/4.14/xfce4-panel-4.14.3.tar.bz2
+	source = vala0.48_fix.patch::https://bugzilla.xfce.org/attachment.cgi?id=9486
+	sha256sums = ef22324d26e5af735134bb10f85b6e16525ac9f48be8d2f6b634142fbfcabbc9
+	sha256sums = 0aba3594b0e4dce91f85187df69ef16f1dc061c82b137fe81adc8b6672444659
+
+pkgname = xfce4-panel-vala0.48fix
+
