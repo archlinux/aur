@@ -1,6 +1,6 @@
 pkgbase = mypaint-git
 	pkgdesc = Simple drawing & painting program that works well with graphics tablets (git).
-	pkgver = 2.0.0.master..r5700.425afe29
+	pkgver = 2.0.0.master.r5700.425afe29
 	pkgrel = 1
 	url = http://mypaint.org/
 	install = mypaint-git.install
@@ -21,7 +21,7 @@ pkgbase = mypaint-git
 	depends = python-gobject
 	depends = python-numpy
 	depends = mypaint-brushes-git
-	provides = mypaint=2.0.0.master.
+	provides = mypaint=2.0.0.master
 	conflicts = mypaint
 	source = git+https://github.com/mypaint/mypaint.git
 	source = mypaint-git.install
