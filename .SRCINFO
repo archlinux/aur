@@ -1,6 +1,6 @@
 pkgbase = 3dslicer-nightly-bin
 	pkgdesc = A multi-platform, free open source software package for visualization and medical image computing (nightly build)
-	pkgver = 4.11.0.r28818
+	pkgver = 4.11.0.r5266433
 	pkgrel = 1
 	url = https://www.slicer.org
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = 3dslicer-nightly-bin
 	makedepends = gendesk
 	depends = dbus
 	depends = glib2
-	provides = 3dslicer=4.11.0.r28818
+	provides = 3dslicer=4.11.0.r5266433
 	conflicts = 3dslicer
 	noextract = 3dslicer.tar.gz
 	source = 3dslicer.tar.gz::http://download.slicer.org/download?os=linux&stability=nightly
