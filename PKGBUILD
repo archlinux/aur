@@ -1,6 +1,6 @@
-# Maintainer: cylgom <cylgom@gmail.com>
+# Maintainer: Logan Magee <mageelog@gmail.com>
 pkgname=ly-git
-pkgver=v0.3.0.r0.g61fd099
+pkgver=v0.5.0.r1.geb496b0
 pkgrel=1
 pkgdesc="TUI display manager"
 arch=('i686' 'x86_64' 'aarch64')
