@@ -2,12 +2,12 @@
  
 pkgname=distccd-x86_64
 arch=(armv7h aarch64)
-_date=20191105
+_date=20200315
 # inspect source tarball under $name/share/gcc-x.y.z
-pkgver=9.2.0
-pkgrel=4
+pkgver=9.3.0
+pkgrel=1
 license=('GPL' )
-url="https://archlinuxarm.org/wiki/Distcc_Cross-Compiling"
+url="https://github.com/graysky2/crosstool-ng_for_distcc"
 pkgdesc="Toolchain for x86_64 builds on Arch ARM volunteers via distcc"
 depends=('distcc')
 options=('libtool' 'emptydirs' '!strip')
@@ -23,9 +23,9 @@ validpgpkeys=(
 )
 sha256sums=('23e791054de2b2599699482fdd880066c9d03758f9e38eb4634dc571cb90959e'
             'ea406b82e10b7084192d0a480ec24ee889a6a592ea3e339dc81cf3a6f1058bf9')
-sha256sums_armv7h=('90071322f03cabb95a2ea5e4c01fd55f5991acce02014074598097e5c06070d4'
+sha256sums_armv7h=('3427cdd0e43c4eee91025ea8827ca705f26f37de980da1b9bb346f3167f20f44'
                    'SKIP')
-sha256sums_aarch64=('95455060d212b52a805fb3da7ad3319a172c96c6e52583cd6222830220411f34'
+sha256sums_aarch64=('27b9c1bf6446c1db806592e690600bab8c02d1a16e34b9210d29b918fc6919d4'
                     'SKIP')
 
 package() {
