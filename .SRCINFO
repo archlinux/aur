@@ -1,6 +1,6 @@
 pkgbase = poezio-omemo
 	pkgdesc = OMEMO plugin for the Poezio XMPP console client
-	pkgver = v0.1.0.758b916
+	pkgver = v0.3.0.8a8591c
 	pkgrel = 1
 	url = https://lab.louiz.org/poezio/poezio-omemo
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = poezio-omemo
 	depends = python-omemo-backend-signal
 	provides = poezio-omemo
 	conflicts = poezio-omemo
-	source = poezio-omemo::git+https://lab.louiz.org/poezio/poezio-omemo#tag=v0.1.0
+	source = poezio-omemo::git+https://lab.louiz.org/poezio/poezio-omemo#tag=v0.3.0
 	sha256sums = SKIP
 
 pkgname = poezio-omemo
