@@ -1,6 +1,6 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
-	pkgver = r1158.5898845
+	pkgver = 3.2.0.r73.gc49189b
 	pkgrel = 1
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
@@ -9,34 +9,39 @@ pkgbase = pantheon-workarounds
 	license = GPL3
 	makedepends = git
 	makedepends = intltool
-	depends = gnome-settings-daemon-elementary
-	depends = gnome-settings-daemon-compat
-	optdepends = pantheon-qq-default-settings-git: Pantheon configuration and themeing for Pantheon derivatives
-	optdepends = contractor-git: A desktop-wide extension service
-	optdepends = pantheon-print-git: Print settings dialog
-	optdepends = pantheon-polkit-agent-git: Polkit Authentication Agent
-	optdepends = pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent
-	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
+	depends = cinnamon-settings-daemon
+	depends = dconf
+	depends = gnome-keyring
+	depends = gnome-session
+	depends = xdg-user-dirs-gtk
+	depends = pantheon-applications-menu
+	depends = plank
+	depends = wingpanel
+	optdepends = contractor: A desktop-wide extension service
 	optdepends = numlockx: Turn on the numlock key in X11
-	provides = gala=r1158.5898845
-	provides = gala-bzr=r1158.5898845
-	provides = gala-git=r1158.5898845
+	optdepends = pantheon-dpms-helper: Manage DPMS settigns in place of gnome-settings-daemon
+	optdepends = pantheon-default-settings: Pantheon configuration and themeing
+	optdepends = pantheon-geoclue2-agent-git: Pantheon Geoclue2 Agent
+	optdepends = pantheon-polkit-agent: Polkit Authentication Agent
+	optdepends = pantheon-print: Print settings dialog
+	optdepends = pantheon-screenshot: Screenshot utility
+	optdepends = pantheon-shortcut-overlay: OS-wide shortcut overlay
+	optdepends = simple-scan: Simple scan utility
+	optdepends = switchboard: Pluggable settings manager
+	optdepends = xscreensaver-dbus-screenlock: xscreensaver locker for gnome-derivative desktops
+	provides = gala=3.2.0.r73.gc49189b
+	provides = gala-bzr=3.2.0.r73.gc49189b
+	provides = gala-git=3.2.0.r73.gc49189b
 	conflicts = gala
 	conflicts = gala-bzr
 	conflicts = gala-git
 	source = https://raw.githubusercontent.com/elementary/gala/master/data/org.pantheon.desktop.gala.gschema.xml.in
 	source = pantheon-session-qq
-	source = gnome-fallback-media-keys-helper-pantheon.desktop
-	source = gnome-fallback-background-helper-pantheon.desktop
-	source = gnome-fallback-mount-helper-pantheon.desktop
 	source = numlockx-pantheon.desktop
 	source = gtk.css
 	source = settings.ini
 	sha512sums = 30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a90a38266de1567c4dcbf178b6919a8108fad3dd13e50573018dc2a8e9b070e
 	sha512sums = 842db1b456c96287865955741ba00c3ceeecf82691700f691d9fc45dc665230f1224ce7cdf5a1301826ab96cfe59e922c3878a5986ab3639da0cb79a2948f727
-	sha512sums = b01a18bb7829eb7a48b72c90bdf5aa5913c24247426e0bfc509cba22f49d2d8c9eb301e1937b70f3f7f01a873c987e0bdea6dd5f24f8d900b952188fa5635d39
-	sha512sums = 0df6355d85d2329e245593408a74d09281c0dcea206ed594a7312b78db4d3cd57941a5ec29be780f965128fe512532edae85ffaf11a94b57374d5906875967fc
-	sha512sums = c06e3b8c59681ebe64fa0dd724eea1d40a579956372ce0851f30ededdda3ac41d329d40e5463bd779daba0d55853faec357203b042a4de3d601eafc8b09c350e
 	sha512sums = bc5724ef255adad39e35e3fbd7beacbd3ea270c7019362ff6a8bc15cf8f503a4304c18c5e35ae2a6ddb8d1e6e7cc6973642a2ffdc8fe9e219c7f2dbacf5eab72
 	sha512sums = ee75dfaa7d887dbfe0c74b7fb6005d5aafbce22fa00b3b476b3c88628a9f786cfd3410237a2b22ca135ea85759b45b59068e5d00650f65449a19ae222e957784
 	sha512sums = 90b0927892e708b601542f317af52f42174bdcbb4e9df6f3d5667f2a8029deff42cef5459072c295f343d73a99f43b76eaeb5432b8367e69f42d5aac7f1b2f57
