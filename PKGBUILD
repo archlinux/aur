@@ -2,7 +2,7 @@
 
 pkgname=ponzu
 pkgver=0.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Headless CMS with automatic JSON API. Featuring auto-HTTPS from Let's Encrypt, HTTP/2 Server Push, and flexible server framework written in Go"
 arch=('i686' 'x86_64')
 url='https://docs.ponzu-cms.org'
@@ -11,15 +11,12 @@ makedepends=('go' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ponzu-cms/ponzu/archive/v${pkgver}.tar.gz")
 md5sums=('5303e0c7fb1d2233e5cfca595411143e')
 
-prepare() {
+build() {
   cd "$pkgname-$pkgver"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-}
-
-build() {
   cd "$pkgname-$pkgver"
   cd "cmd/ponzu"
   go build -v -o "../../$pkgname"
