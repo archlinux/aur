@@ -1,24 +1,25 @@
-pkgbase=('python-pysqlcipher3')
-pkgname=('python-pysqlcipher3')
-_module='pysqlcipher3'
-pkgver='1.0.3'
-pkgrel=1
-pkgdesc="DB-API 2.0 interface for SQLCIPHER 3.x"
-url="https://github.com/rigglemania/pysqlcipher3"
-depends=('python')
+# Contributor: RcrdBrt
+# Contributor: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+
+pkgname=python-pysqlcipher3
+_pkgname=${pkgname#python-}
+pkgver=1.0.3
+pkgrel=2
+pkgdesc='Python 3 bindings for SQLCipher'
+arch=('any')
+url='https://github.com/rigglemania/pysqlcipher3'
+depends=('python' 'sqlcipher')
 makedepends=('python-setuptools')
 license=('ZLIB')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/source/p/pysqlcipher3/pysqlcipher3-${pkgver}.tar.gz")
-md5sums=('636368cab1f64db3572255b10e3cb9e3')
+source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('694e5bbb6ece8a064bd55f261e54b9ffbb3af1784afdc4dce4948a0251a8a430')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
