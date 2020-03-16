@@ -1,13 +1,13 @@
 pkgbase = mypaint-brushes-git
 	pkgdesc = Brushes used by MyPaint and other software using libmypaint
-	pkgver = 2.0.0.master..r194.0df6d13
+	pkgver = 2.0.0.master.r194.0df6d13
 	pkgrel = 1
 	url = https://github.com/mypaint/mypaint-brushes
 	arch = any
 	license = custom:CC0
 	makedepends = git
 	depends = libmypaint-git
-	provides = mypaint-brushes=2.0.0.master.
+	provides = mypaint-brushes=2.0.0.master
 	conflicts = mypaint-brushes
 	source = git+https://github.com/mypaint/mypaint-brushes.git
 	sha256sums = SKIP
