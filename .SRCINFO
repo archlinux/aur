@@ -23,7 +23,7 @@ pkgbase = themix-theme-oomox-git
 	conflicts = themix-theme-oomox
 	options = !strip
 	source = git+https://github.com/themix-project/oomox.git#branch=master
-	source = git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master
+	source = oomox-gtk-theme::git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master
 	md5sums = SKIP
 	md5sums = SKIP
 
