@@ -1,0 +1,14 @@
+pkgbase = win10x-icon-theme-git
+	pkgdesc = A colorful Design icon theme for linux desktops
+	pkgver = r2.e79f634
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/Win10x-icon-theme
+	arch = any
+	license = GPL
+	depends = gtk-update-icon-cache
+	conflicts = win10x-icon-theme
+	source = git+https://github.com/yeyushengfan258/Win10x-icon-theme.git
+	md5sums = SKIP
+
+pkgname = win10x-icon-theme-git
+
