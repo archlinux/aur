@@ -2,7 +2,7 @@
 
 pkgname=opendiablo2-git
 pkgver=r484.019bb92
-pkgrel=3
+pkgrel=4
 pkgdesc='An open source re-implementation of Diablo 2'
 arch=('i686' 'x86_64')
 url='https://opendiablo2.com/'
@@ -30,16 +30,13 @@ pkgver() {
   echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-prepare() {
+build() {
   cd "${srcdir}/OpenDiablo2"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
   gendesk -f -n --pkgname "opendiablo2" --pkgdesc "${pkgdesc}" --exec="opendiablo2" --categories=Game --icon opendiablo2
-}
-
-build() {
   cd "${srcdir}/OpenDiablo2"
   go build -v -o "../opendiablo2-bin"
 }
