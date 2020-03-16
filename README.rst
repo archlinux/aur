@@ -1,7 +1,7 @@
 f5vpn for Linux
 ===============
 
-The F5 VPN client uses the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0.
+The F5 VPN client can be used to connect to F5Networks BIG-IP APM 13.0.
 
 Usage
 -----

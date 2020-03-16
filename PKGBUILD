@@ -2,7 +2,7 @@
 pkgname=f5vpn
 pkgver=7171.2018.0808.1
 pkgrel=4
-pkgdesc='A VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM 13.0'
+pkgdesc='VPN client used to connect to F5Networks BIG-IP APM 13.0'
 arch=('x86_64')
 source=('https://it.emory.edu/vpntools/linux_f5vpn.x86_64.rpm'
         'LICENSE')
