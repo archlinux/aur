@@ -1,3 +1,6 @@
+2.11.3-1
+  - New upstream version 2.11.3
+
 2.11.2-3
   - Other workaround for the bug in boost 1.72 now that boost 1.69 is gone from
     the Arch repos
