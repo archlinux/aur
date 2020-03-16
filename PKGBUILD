@@ -1,7 +1,7 @@
 # Maintainer: Albert Westra <odyssyewestra@gmail.com>
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
-_basever=2.0.0.master.
+_basever=2.0.0.master
 pkgname=libmypaint-git
 pkgver=2.0.0.master.r981.c28b059
 pkgrel=1

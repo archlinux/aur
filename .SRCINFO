@@ -11,7 +11,7 @@ pkgbase = libmypaint-git
 	makedepends = python
 	depends = gobject-introspection
 	depends = json-c
-	provides = libmypaint=2.0.0.master.
+	provides = libmypaint=2.0.0.master
 	conflicts = libmypaint
 	source = git+https://github.com/mypaint/libmypaint.git
 	md5sums = SKIP
