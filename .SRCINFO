@@ -1,0 +1,13 @@
+pkgbase = hero
+	pkgdesc = A handy, fast and powerful go template engine
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://shiyanhui.github.io/hero
+	arch = x86_64
+	license = Apache2
+	makedepends = go
+	source = hero-0.0.2.tar.gz::https://github.com/shiyanhui/hero/archive/v0.0.2.tar.gz
+	md5sums = de40e3da62f50e0948194823e4910fb1
+
+pkgname = hero
+
