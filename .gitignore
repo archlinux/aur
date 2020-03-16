@@ -1,5 +1,4 @@
 libmypaint-*.tar.gz
-libmypaint-1.4-gegl-version-revert.patch
 lib32-libmypaint-*.pkg.tar.xz
 src/
 pkg/
