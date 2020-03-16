@@ -8,9 +8,11 @@ archlinux:
     - bash
     - git
     - namcap
+    - shellcheck
   mount:
     - ~/.pkg-cache:/var/cache/pacman/pkg
   script:
     - "bash test.sh"
+    - "shellcheck ./haur"
     - "namcap PKGBUILD"
     - "makepkg -Ccsi --noconfirm"
