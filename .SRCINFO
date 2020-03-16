@@ -1,12 +1,12 @@
 pkgbase = podofo-git
 	pkgdesc = A C++ library to work with the PDF file format
-	pkgver = r1605.4f872fd
+	pkgver = r1999
 	pkgrel = 1
 	url = http://podofo.sourceforge.net
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	makedepends = git
+	makedepends = subversion
 	depends = lua
 	depends = openssl
 	depends = fontconfig
@@ -16,7 +16,7 @@ pkgbase = podofo-git
 	depends = libunistring
 	provides = podofo
 	conflicts = podofo
-	source = git://github.com/svn2github/podofo.git
+	source = podofo-git::svn+https://svn.code.sf.net/p/podofo/code/podofo/trunk
 	sha256sums = SKIP
 
 pkgname = podofo-git

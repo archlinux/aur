@@ -4,22 +4,23 @@
 # Contributor: Preecha Patumchareonpol <yumyai at gmail.com> 
 
 pkgname=podofo-git
-pkgver=r1605.4f872fd
+pkgver=r1999
 pkgrel=1
 pkgdesc="A C++ library to work with the PDF file format"
 arch=('x86_64')
 url="http://podofo.sourceforge.net"
 license=('GPL')
 depends=('lua' 'openssl' 'fontconfig' 'libtiff' 'libidn' 'libjpeg-turbo' 'libunistring')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'subversion')
 conflicts=('podofo')
 provides=('podofo')
-source=("git://github.com/svn2github/podofo.git")
+source=("$pkgname::svn+https://svn.code.sf.net/p/podofo/code/podofo/trunk")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/podofo"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/$pkgname"
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 prepare() {
@@ -29,7 +30,7 @@ prepare() {
 
 build() { 
   cd "${srcdir}/build"
-  cmake "${srcdir}/podofo" -DCMAKE_INSTALL_PREFIX=/usr \
+  cmake "${srcdir}/$pkgname" -DCMAKE_INSTALL_PREFIX=/usr \
         -DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
         -DPODOFO_BUILD_SHARED=1 \
         -DPODOFO_HAVE_JPEG_LIB=1 \
