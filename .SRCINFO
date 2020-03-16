@@ -1,0 +1,14 @@
+pkgbase = inverse-icon-theme-git
+	pkgdesc = A colorful Design icon theme for linux desktops
+	pkgver = r13.d6d1cb9
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/Inverse-icon-theme
+	arch = any
+	license = GPL
+	depends = gtk-update-icon-cache
+	conflicts = inverse-icon-theme
+	source = git+https://github.com/yeyushengfan258/Inverse-icon-theme.git
+	md5sums = SKIP
+
+pkgname = inverse-icon-theme-git
+
