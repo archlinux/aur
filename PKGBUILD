@@ -7,7 +7,7 @@
 pkgname=popcorntime-git
 pkgver=0.3.10+r6475+gef48d491
 pkgrel=1
-pkgdesc='Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player. Desktop ( Windows / Mac / Linux ) a Butter-Project Fork'
+pkgdesc='Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player.'
 arch=(i686 x86_64)
 url=https://popcorntime.app
 license=(GPL3)
