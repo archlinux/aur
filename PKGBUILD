@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-pkgver=5.5.4.zen1
+pkgver=5.5.9.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -27,9 +27,9 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '7a607333e6ec115cb3d1330bc9f9eaf01305fb9907b324e0c85b1458c0612286'
-            '31ae60837b90feba277b182a9015e4df6e74fd660aba1a2841f49ecd57617559'
-            '334f3472adc0280614b278ead7375d3a982dc1b9310c1fc62bc8b8e96eb2b6d4')
+            '775e62bef116136f7b258ecc32ad1071dc2c6b161176d78092e29f180136dac9'
+            '14a660a9d445ed3d1abde0338e92d7f23d94d850c3fc21634c45147d00e1ca61'
+            'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -57,12 +57,13 @@ prepare() {
   make olddefconfig
 
   make -s kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {

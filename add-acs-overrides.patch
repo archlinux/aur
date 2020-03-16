@@ -179,7 +179,7 @@ index fbeb9f73ef28..3bf409c65609 100644
  /*
   * Decoding should be disabled for a PCI device during BAR sizing to avoid
   * conflict. But doing so may cause problems on host bridge and perhaps other
-@@ -4711,6 +4811,8 @@ static const struct pci_dev_acs_enabled {
+@@ -4701,6 +4801,8 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_BROADCOM, 0xD714, pci_quirk_brcm_acs },
  	/* Amazon Annapurna Labs */
  	{ PCI_VENDOR_ID_AMAZON_ANNAPURNA_LABS, 0x0031, pci_quirk_al_acs },
@@ -189,5 +189,4 @@ index fbeb9f73ef28..3bf409c65609 100644
  };
  
 --
-2.21.0
-
+5.5.6

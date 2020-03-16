@@ -1,8 +1,8 @@
 pkgbase = linux-zen-vfio
 	pkgdesc = Linux ZEN
-	pkgver = 5.5.4.zen1
+	pkgver = 5.5.9.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.5.4-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.5.9-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-zen-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.5.4-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.5.9-zen1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -23,9 +23,9 @@ pkgbase = linux-zen-vfio
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 7a607333e6ec115cb3d1330bc9f9eaf01305fb9907b324e0c85b1458c0612286
-	sha256sums = 31ae60837b90feba277b182a9015e4df6e74fd660aba1a2841f49ecd57617559
-	sha256sums = 334f3472adc0280614b278ead7375d3a982dc1b9310c1fc62bc8b8e96eb2b6d4
+	sha256sums = 775e62bef116136f7b258ecc32ad1071dc2c6b161176d78092e29f180136dac9
+	sha256sums = 14a660a9d445ed3d1abde0338e92d7f23d94d850c3fc21634c45147d00e1ca61
+	sha256sums = fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0
 
 pkgname = linux-zen-vfio
 	pkgdesc = The Linux ZEN kernel and modules

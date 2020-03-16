@@ -182,5 +182,4 @@ index f417e0948001..6e865b86db09 100644
  unsigned int intel_fb_xy_to_linear(int x, int y,
  				   const struct intel_plane_state *state,
 --
-2.24.0
-
+5.5.5
