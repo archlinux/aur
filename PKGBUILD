@@ -2,7 +2,7 @@
 
 pkgname=python-minkowskiengine
 _pkgname=MinkowskiEngine
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Auto-diff library for generalized sparse convolutions"
 url="https://github.com/StanfordVL/MinkowskiEngine"
@@ -15,19 +15,19 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('x86_64')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('50b5b6eada91f1735eae844ac8178abf9f851e7c83de4fc0a5e33d16621d5a3e450561386f5d28e28490d3fdd975050987155738bcbd24909686db4e88a85557')
+sha512sums=('1dd25bd137a81ca00609346c8223fdc58fd19c31e34b157bfe29bb39690c48e1b3797a53f3e6f1b752da583f4d8ad1db2c18c8b5ad7c4821c5e79385f78e478d')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     export CUDA_HOME=/opt/cuda
     # Use cblas, which is included in the community package.
     # You may comment or change the following two lines to use other blas.
-    sed -i "s/BLAS := open/BLAS := cblas/g" Makefile
+    sed -i "s/openblas/cblas/g" Makefile
     sed -i "s/openblas/cblas/g" setup.py
 }
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     # Build isolation doesn't work in this library.
-    python setup.py install --root="$pkgdir/" --optimize=1
+    python setup.py install --blas=cblas --root="$pkgdir/" --optimize=1
 }
