@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 
 pkgname=bforartists-git
-pkgver=2.0.0.30beccc
+pkgver=2.0.0.99980c7
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (development)"
 arch=('i686' 'x86_64')
@@ -43,7 +43,7 @@ build() {
   mkdir -p $srcdir/bforartists-build
   cd $srcdir/bforartists-build
   cmake $srcdir/Bforartists \
-    -DPYTHON_NUMPY_PATH=/usr/lib/python3.7/site-packages \
+    -DPYTHON_NUMPY_PATH=/usr/lib/python3.8/site-packages \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE:STRING=Release \
     -DWITH_INSTALL_PORTABLE=OFF \
@@ -52,7 +52,7 @@ build() {
     -DWITH_FFTW3=ON \
     -DWITH_SYSTEM_GLEW=ON \
     -DWITH_CODEC_FFMPEG=ON \
-    -DPYTHON_VERSION=3.7m \
+    -DPYTHON_VERSION=3.8 \
     $_EXTRAOPTS
 #    -DWITH_OPENCOLLADA:BOOL=OFF \
 
