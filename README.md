@@ -21,6 +21,11 @@ To install a package:
 haur <package names>
 ```
 
+To search for a package:
+```bash
+haur <package names>
+```
+
 To upgrade a package:
 ```bash
 haur -u <package names>
