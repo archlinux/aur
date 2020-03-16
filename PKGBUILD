@@ -2,7 +2,7 @@
 
 pkgname=hero
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A handy, fast and powerful go template engine"
 arch=('x86_64')
 url='https://shiyanhui.github.io/hero'
@@ -21,7 +21,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/hero"
-  go build -v -o "${srcdir}/hero-bin"
+  go build -v -o ../../hero-bin
 }
 
 package() {
