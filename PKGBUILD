@@ -1,29 +1,30 @@
 # Maintainer: Amish <contact at via dot aur>
 pkgname=nftables-geoip-db
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GeoIP Database for nftables"
 arch=('any')
 license=('BSD' 'GPL')
 makedepends=('perl-text-csv-xs' 'perl-net-cidr-lite')
 _xtver=3.9
-_dbip_date=`date +%Y-%m`
+_geoip_date=`date +%Y-%m`
 
-# if you want to use MaxMind DB instead of DB-IP then,
+# if you want to use MaxMind DB instead of DB-IP then, get license key from
+# https://www.maxmind.com/en/geolite2/signup
 # create a file named geoip.license.key which contains MaxMind License key in following format:
-#_maxmind_key=XXXX
-source geoip.license.key
+# _maxmind_key=XXXX
 
+source geoip.license.key
 if [[ -z "${_maxmind_key}" ]]; then
     url="https://db-ip.com/db/download/ip-to-country-lite"
-    source="dbip-country-lite.csv.gz::https://download.db-ip.com/free/dbip-country-lite-${_dbip_date}.csv.gz"
+    source="dbip-country-lite-${_geoip_date}.csv.gz::https://download.db-ip.com/free/dbip-country-lite-${_geoip_date}.csv.gz"
     _dbsource="DB-IP"
 else
     url="https://dev.maxmind.com/geoip/geoip2/geolite2/"
-    source="GeoLite2-Country-CSV.zip::https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&suffix=zip&license_key=${_maxmind_key}"
+    source="GeoLite2-Country-CSV-${_geoip_date}.zip::https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&suffix=zip&license_key=${_maxmind_key}"
     _dbsource="MaxMind GeoLite2"
 fi
-source+=("xt_geoip_build::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v${_xtver}/tree/geoip/xt_geoip_build?format=raw"
+source+=("xt_geoip_build-${_xtver}::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v${_xtver}/tree/geoip/xt_geoip_build?format=raw"
         "xt_geoip_build.patch"
         "README"
         "mmcsv_geoip_build")
@@ -37,7 +38,8 @@ install=nft_geoip.install
 prepare() {
     cd "${srcdir}"
     if [[ -z "${_maxmind_key}" ]]; then
-        cp xt_geoip_build nft_geoip_build
+        ln -s dbip-country-lite-${_geoip_date}.csv dbip-country-lite.csv
+        cp xt_geoip_build-${_xtver} nft_geoip_build
         patch nft_geoip_build xt_geoip_build.patch
     else
         cp mmcsv_geoip_build nft_geoip_build
