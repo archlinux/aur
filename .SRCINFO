@@ -1,0 +1,13 @@
+pkgbase = gobetween-bin
+	pkgdesc = Modern & minimalistic load balancer for the Сloud era
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = http://gobetween.io
+	arch = x86_64
+	license = MIT
+	provides = gobetween
+	source = https://github.com/yyyar/gobetween/releases/download/0.7.0/gobetween_0.7.0_linux_amd64.tar.gz
+	md5sums = 07fc24c6e4046daae6f04553e9127646
+
+pkgname = gobetween-bin
+
