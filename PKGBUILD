@@ -1,7 +1,7 @@
 # Maintainer: Kevin Masson <hi@oktomus.com>
 _pkgname=tev
 pkgname=${_pkgname}
-pkgver=v1.14
+pkgver=v1.15
 pkgrel=1
 epoch=
 pkgdesc="High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files."

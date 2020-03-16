@@ -1,6 +1,6 @@
 pkgbase = tev
 	pkgdesc = High dynamic range (HDR) image comparison tool for graphics people. Supports primarily OpenEXR files.
-	pkgver = v1.14
+	pkgver = v1.15
 	pkgrel = 1
 	url = https://github.com/Tom94/tev
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = tev
 	depends = zlib
 	provides = tev
 	conflicts = tev
-	source = tev::git+https://github.com/Tom94/tev.git#tag=v1.14
+	source = tev::git+https://github.com/Tom94/tev.git#tag=v1.15
 	md5sums = SKIP
 
 pkgname = tev
