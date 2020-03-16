@@ -1,22 +1,13 @@
 pkgbase = pacfetch
-	pkgdesc = Simple fetch script for pacman based distros
-	pkgver = 1.0.4.5
+	pkgdesc = Simple fetch script for pacman based distros. Written in Rust.
+	pkgver = 1.0.4.10
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/pacFetch
 	arch = x86_64
-	license = MIT
-	depends = coreutils
-	depends = findutils
-	depends = gawk
-	depends = pacman
-	depends = pacman-contrib
-	depends = procps-ng
-	depends = psmisc
-	depends = util-linux
-	optdepends = yay: for counting AUR updates
-	optdepends = wmctrl: for displaying window manager in Xorg
-	source = pacfetch-1.0.4.5-1::https://git.auteiy.me/dmitry/pacFetch/raw/v1.0.4.5/pacfetch
-	sha512sums = 9d7690fbe2974205463da161cf845f401d06d0e9f476006610fb8d3b344ff29e8f0efb1e0882b1965bed07b762fcd197f4ebc35eb69bf3be8e34002037573f92
+	license = GPL3
+	depends = gcc-libs
+	source = pacfetch::https://github.com/auteiy/pacfetch/releases/download/v1.0.4.10/pacfetch-v1.0.4.10-linux-x64
+	sha512sums = 90b014b466163d4b9c5253deea72c4b23424223e4b12990a104e2644460a00a4ac9b148db72f08096007ace237a1cb684731c86f86669eff94e71ec66385bbd8
 
 pkgname = pacfetch
 

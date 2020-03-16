@@ -1,37 +1,22 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=pacfetch
-pkgver=1.0.4.5
+pkgver=1.0.4.10
 pkgrel=1
-pkgdesc="Simple fetch script for pacman based distros"
-arch=(x86_64)
+pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
 url="https://git.auteiy.me/dmitry/pacFetch"
-license=(MIT)
+license=('GPL3')
 depends=(
-    coreutils
-    findutils
-    gawk
-    pacman
-    pacman-contrib
-    procps-ng
-    psmisc
-    util-linux
+    gcc-libs
 )
 
-optdepends=(
-    'yay: for counting AUR updates'
-    'wmctrl: for displaying window manager in Xorg'
-)
+source=("pacfetch::https://github.com/auteiy/pacfetch/releases/download/v$pkgver/pacfetch-v$pkgver-linux-x64")
 
-# Sources
-source=(
-	$pkgname-$pkgver-$pkgrel::$url/raw/v$pkgver/pacfetch
-)
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('9d7690fbe2974205463da161cf845f401d06d0e9f476006610fb8d3b344ff29e8f0efb1e0882b1965bed07b762fcd197f4ebc35eb69bf3be8e34002037573f92')
+sha512sums=('90b014b466163d4b9c5253deea72c4b23424223e4b12990a104e2644460a00a4ac9b148db72f08096007ace237a1cb684731c86f86669eff94e71ec66385bbd8')
+
+arch=('x86_64')
 
 package() {
-
-	# Creating needed directories
-	install -Dm755 $srcdir/$pkgname-$pkgver-$pkgrel "$pkgdir/usr/bin/pacfetch"
+    install -D "$srcdir/pacfetch" "$pkgdir/usr/bin/pacfetch"
 }
