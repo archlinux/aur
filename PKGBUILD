@@ -1,7 +1,7 @@
 # Maintainer: Космическое П. <kosmospredanie@yandex.ru>
 
 pkgname=gpseq-git
-pkgver=0.3.1.r0.57c8321
+pkgver=0.3.3.r0.9ff7fe1
 pkgrel=1
 pkgdesc="A parallelism library for Vala and GObject"
 arch=('i686' 'x86_64' 'aarch64')
