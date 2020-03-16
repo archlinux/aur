@@ -1,0 +1,21 @@
+pkgbase = psi4-git-gccmkl
+	pkgdesc = Open-source quantum chemistry
+	pkgver = master
+	pkgrel = 1
+	url = http://psicode.org
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = cmake
+	depends = blas
+	depends = lapack
+	depends = boost
+	depends = intel-mkl
+	depends = pybind11
+	provides = psi4
+	conflicts = psi4-git
+	source = https://github.com/psi4/psi4/archive/master.zip
+	md5sums = SKIP
+
+pkgname = psi4-git-gccmkl
+
