@@ -3,7 +3,7 @@
 _gitname=CoreFreq
 pkgname=corefreq-git
 realname=corefreq
-pkgver=1.73
+pkgver=1.74
 pkgrel=1
 pkgdesc="CoreFreq, Processor monitoring software with BIOS like functionalities"
 arch=('x86_64')
