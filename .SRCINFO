@@ -1,0 +1,18 @@
+pkgbase = ibus-googlepinyin
+	pkgdesc = IBus Wrapper for libgooglepinyin
+	pkgver = 0.1.2
+	pkgrel = 7
+	url = https://code.google.com/archive/p/libgooglepinyin/
+	arch = any
+	license = APACHE
+	makedepends = cmake
+	depends = libgooglepinyin
+	depends = ibus
+	depends = iso-codes
+	depends = pygtk
+	optdepends = opencc: for simplified chinese translation to tranditional chinese
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/libgooglepinyin/ibus-googlepinyin-0.1.2.tar.bz2
+	sha512sums = 0180bd93bed03ef38e283a589fcab3074f0d9197c41e1411d015de8e30ce6cbd72c6765142a42b55227fccc111cc579830b1ad9f4c282f7ac856dd66f58293e7
+
+pkgname = ibus-googlepinyin
+
