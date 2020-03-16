@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = mesonwrap
+
+[Action]
+Description = Restarting mesonwrap uWSGI service after upgrade
+Depends = uwsgi-plugin-python
+When = PostTransaction
+Exec = /usr/bin/systemctl try-restart uwsgi@mesonwrap.service

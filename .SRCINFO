@@ -1,0 +1,29 @@
+pkgbase = mesonwrap
+	pkgdesc = Meson wraps service and tools
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/mesonbuild/mesonwrap
+	arch = x86_64
+	license = apache2
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-cachetools
+	depends = python-flask
+	depends = python-gitpython
+	depends = python-pygithub
+	depends = python-requests
+	depends = python-retrying
+	optdepends = uwsgi-plugin-python: server support
+	backup = etc/mesonwrap/mesonwrap.ini
+	backup = etc/uwsgi/mesonwrap.ini
+	source = https://github.com/mesonbuild/mesonwrap/archive/0.2.0.tar.gz
+	source = mesonwrap.ini
+	source = uwsgi.ini
+	source = mesonwrap-upgrade.hook
+	sha256sums = 58395e244437e96cd696cc468c89480fd4dd4bea439ecc09982ef36a44d11110
+	sha256sums = e6dd175e2113d9d093ad2de4c9d22b126b8c4d69400d7dbcde79960f0ca75078
+	sha256sums = d5b710008a5939608a294577169ff86226716ddaf7a6389aa7c8b89acc0422fb
+	sha256sums = 6b3a9b5574e37d8ae5fc3070f5cc662883c7794a6fb846d22a62ae370b8f08f1
+
+pkgname = mesonwrap
+
