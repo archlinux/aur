@@ -3,13 +3,14 @@
 
 _pkgbase=zenmonitor
 pkgname=zenmonitor-git
-pkgver=51.76b0752
+pkgver=52.d9f5914
 pkgrel=1
 pkgdesc="Zen monitor is monitoring software for AMD Zen-based CPUs"
 arch=('x86_64' 'i686')
 url="https://github.com/ocerman/zenmonitor"
 license=('GPL')
 depends=('zenpower' 'gtk3')
+optdepends=('polkit: support application shortcut to launch Zen monitor as root')
 makedepends=('git')
 provides=('zenmonitor')
 
@@ -35,4 +36,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgbase"
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  mkdir -p "${pkgdir}/usr/share/polkit-1/actions"
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install-polkit
 }
