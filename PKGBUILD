@@ -1,5 +1,5 @@
 pkgname=nsight-graphics
-pkgver=2019.6.1
+pkgver=2020.1.0
 _pkgver=${pkgver//\./_}
 pkgrel=1
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
@@ -12,7 +12,7 @@ depends=("libx11" "libxcb" "nvidia" "openssl" "icu" "qt5-base" "qt5-multimedia" 
 source=("NVIDIA_Nsight_Graphics_${pkgver}.run::https://developer.nvidia.com/rdp/assets/nsight-graphics-${_pkgver}-linux-installer"
         "${pkgname}.png::http://developer.download.nvidia.com/NsightVisualStudio/3.1/Documentation/UserGuide/HTML/Content/Images/NSight_256.png"
         "${pkgname}.desktop")
-sha512sums=("f8c75c61a23e5872619b7ae7b7f364c1239162bb48524cbd3b28f02cbe7fdb30683f013130692d4131c6127770683a4179a96f0316bda2ea14e2fe130fdaa4aa"
+sha512sums=("afb1779f46f04928e923705f21b42bf04ee49a6db9998e5844f801afdf9de1523aa2f04c47e0a03877327d8f938d0957a6a769ee0815ec5dca336712efb8d53d"
             "784985c2bd3a053cee4887af3b960c7fdc041dda3ca71196ec0870d5413f646d542687b16bffe85985a46d70f68ccf7df29ed5e39952d5e553a4beec485a1185"
             "f1bf5ebab9b766cba14438b0560652debe9b16f9a37bb1d606238d055cfc64f60978b6f2d64a30aced5e48ed4609bb535eb89d6606c49b927678b01c52d13546")
 replaces=('nsight')
