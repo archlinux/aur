@@ -1,0 +1,22 @@
+pkgbase = ros-melodic-view-controller-msgs
+	pkgdesc = ROS - Messages for (camera) view controllers.
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = http://ros.org/wiki/view_controller_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-melodic-std-msgs
+	makedepends = ros-melodic-geometry-msgs
+	makedepends = ros-melodic-genmsg
+	makedepends = ros-melodic-message-generation
+	makedepends = ros-melodic-catkin
+	depends = ros-melodic-geometry-msgs
+	depends = ros-melodic-std-msgs
+	depends = ros-melodic-message-runtime
+	source = ros-melodic-view-controller-msgs-0.1.3.tar.gz::https://github.com/ros-gbp/view_controller_msgs-release/archive/release/melodic/view_controller_msgs/0.1.3.tar.gz
+	sha256sums = 6e5e0b26a1a1a739011f8b278f634f3ac2c4ca3809b4e6e6c36e58cb71fed15e
+
+pkgname = ros-melodic-view-controller-msgs
+
