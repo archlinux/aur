@@ -12,6 +12,7 @@ makedepends=('git')
 optdepends=()
 provides=('qogir-icon-theme')
 conflicts=('qogir-icon-theme')
+options=('!strip')
 source=('git+https://github.com/vinceliuice/Qogir-icon-theme')
 sha256sums=('SKIP')
 
