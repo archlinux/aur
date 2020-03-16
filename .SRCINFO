@@ -1,16 +1,16 @@
 pkgbase = cozette-ttf
 	pkgdesc = A bitmap programming font optimized for coziness
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/slavfox/Cozette
 	arch = any
 	license = MIT
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = https://github.com/slavfox/Cozette/releases/download/v.1.6.2/CozetteVector.ttf
-	source = https://github.com/slavfox/Cozette/archive/v.1.6.2.tar.gz
-	sha256sums = bfcd54bd00b667a6a4bbc93fedb62ed11a061e6ed77affb9e6388945612950d6
-	sha256sums = 71f32fa78071b95bc81ea7383c1bd08be85335e9c7d97c9dd6cba5a0cda6094d
+	source = https://github.com/slavfox/Cozette/releases/download/v.1.6.3/CozetteVector.ttf
+	source = https://github.com/slavfox/Cozette/archive/v.1.6.3.tar.gz
+	sha256sums = bd7a62a888741409ba2eeff69ff52e5bdb0c60f9ddfe13e3684ee1fc7fd8807d
+	sha256sums = e76870c01e6eb6907c8cf19cbf6bfd2e9634428a332c2e719bff0754c0335e5f
 
 pkgname = cozette-ttf
 
