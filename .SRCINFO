@@ -1,0 +1,35 @@
+pkgbase = themix-theme-materia-git
+	pkgdesc = Materia theme plugin (GTK2, GTK3, Cinnamon, GNOME, Metacity, Unity, Xfwm) for Themix GUI designer. Have a hack for HiDPI in GTK2.
+	pkgver = v20191017.r149.gb6ccc2a9
+	pkgrel = 1
+	url = https://github.com/themix-project/oomox-gtk-theme
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = gtk3
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	depends = gnome-themes-extra
+	depends = sassc
+	depends = sed
+	depends = findutils
+	depends = grep
+	depends = bc
+	depends = parallel
+	depends = optipng
+	depends = resvg
+	optdepends = themix-gui: GUI
+	provides = themix-theme-materia
+	conflicts = themix-theme-materia
+	options = !strip
+	source = git+https://github.com/themix-project/oomox.git#branch=master
+	source = materia-theme::git+https://github.com/nana-4/materia-theme.git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = themix-theme-materia-git
+
