@@ -1,0 +1,16 @@
+pkgbase = python2-pyxmpp
+	pkgdesc = Python XMPP and Jabber implementation based on libxml2
+	pkgver = 1.1.2
+	pkgrel = 7
+	url = https://github.com/Jajcus/pyxmpp
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python2-dnspython
+	depends = libxml2
+	depends = python2-m2crypto
+	source = git://github.com/Jajcus/pyxmpp.git#tag=pyxmpp-1.1.2
+	md5sums = SKIP
+
+pkgname = python2-pyxmpp
+
