@@ -1,14 +1,13 @@
 pkgbase = pantheon-3d
 	pkgdesc = Pantheon 3d Session (replaces Gala with Compiz)
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
-	url = https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967
+	url = https://www.youtube.com/playlist?list=PLYkgvMpJJEaIOF5pDFk50eCPWYtkN70yC
 	arch = any
 	groups = pantheon-qq
 	license = GPL3
 	depends = compiz
 	depends = pantheon-workarounds
-	depends = pantheon-session
 	depends = wingpanel-standalone-git
 	provides = pantheon-3d
 	source = pantheon-compiz.desktop

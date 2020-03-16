@@ -3,17 +3,16 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-3d
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Pantheon 3d Session (replaces Gala with Compiz)'
 arch=('any')
-url='https://bbs.archlinux.org/viewtopic.php?pid=1401967#p1401967'
+url='https://www.youtube.com/playlist?list=PLYkgvMpJJEaIOF5pDFk50eCPWYtkN70yC'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('compiz' pantheon-{workarounds,session}
+depends=('compiz' 'pantheon-workarounds'
          'wingpanel-standalone-git')
 provides=("pantheon-3d")
-conflicts=()
 source=(pantheon-compiz.{desktop,session}
         Default.profile)
 sha512sums=('4c7518fd824a6114ea615c223bd3af87130ac948448481e15ae3ff545eb1de482e4a175a9f6f1b15969a06f16284bddca97d8da228c09ade774c47da42496695'
