@@ -1,8 +1,8 @@
 # Maintainer: Erikas Rudinskas <erikmnkl@gmail.com>
 
 pkgname=jellyfin-bin
-pkgver=10.5.0
-_pkgver="$pkgver-1"
+pkgver=10.5.1
+_pkgver="10.5.0-1"
 pkgrel=1
 pkgdesc='The Free Software Media System'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -24,9 +24,9 @@ sha256sums=('9f8dafb06676f972fca88cc1cedf5936518b5a7556628482aeea2c7f2f485678'
             '0f8511673816daf528625366b6c27bc7e6182e4ac789191c87474667398376e2'
             '9bc1ddb77c73d46cc4078356b5773e5a776ebf8b47a1c820ad5fb17591ad5228'
             'b7faa4b0c756cdb361ef5b04fddfdc416b00f1246bb3a19a34bf4d185a6a7e5a')
-sha256sums_x86_64=('79526098dcb63be0a99587dc410d8dbeb3878ed150be13bcfa497c7c9b87de11')
-sha256sums_aarch64=('f08a3fa56a39b7d0df38c3ac94f300708087634cce36f74802f0ceed304e8f53')
-sha256sums_armv7h=('4fb64fcbae114b959a71ec0b40d971f121fecb2b9e39d0596a1fcaac0f345f74')
+sha256sums_x86_64=('120a5c9ce7dab764affc1bd6b7ddfbd46c49f87d1b5240212ef9f68b6a3ac021')
+sha256sums_aarch64=('c46cf2ae2b609b193fff40bd46d816dc5ffd68657faf9c4d238bbcfe3a39de8b')
+sha256sums_armv7h=('5d3e3ff6afc0b84f3a6ffdddd0210cb500859f7410f5133d2e0fc30c38e6bd29')
 
 options=('staticlibs')
 
