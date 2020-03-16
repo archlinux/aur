@@ -1,8 +1,8 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
 pkgver=2019
-_pkgver=1.1.1-production
-pkgrel=3
+_pkgver=1.2-production
+pkgrel=4
 pkgdesc="VaudTax"
 url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2018/"
 depends=('webkitgtk2' 'jre8-openjdk' 'gnome-vfs')
@@ -34,5 +34,5 @@ package() {
 	install -m755 ${srcdir}/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('9cb9f30854f7d77c1041a541bc251ebf'
+md5sums=('0963a69228068323f19437c1446c7314'
          '58628ce238328666d4b5c749ac528138')
