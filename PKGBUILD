@@ -9,7 +9,7 @@
 pkgname=bitdefender
 pkgver=7.6.3
 dist_build='7.6-3' # Build number for upstream .run package.
-pkgrel=44
+pkgrel=45
 rpm_rel=1809
 pkgdesc="BitDefender's Personal UNIX Workstation Antivirus"
 arch=('i686' 'x86_64')
