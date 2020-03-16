@@ -1,17 +1,23 @@
 pkgname=mingw-w64-gdb
-pkgver=8.3.1
+pkgver=9.1
 pkgrel=1
 pkgdesc="The GNU Debugger (mingw-w64)"
 arch=(any)
 url="http://www.gnu.org/software/gdb/"
 license=('LGPL')
-depends=('mingw-w64-crt' 'mingw-w64-expat' 'mingw-w64-zlib' 'mingw-w64-readline')
+depends=('mingw-w64-dlfcn' 'mingw-w64-expat' 'mingw-w64-zlib' 'mingw-w64-readline')
 makedepends=('mingw-w64-configure' 'texinfo')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
-sha256sums=('1e55b4d7cdca7b34be12f4ceae651623aa73b2fd640152313f9f66a7149757c4')
+sha256sums=('699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+prepare () {
+  cd "$srcdir/gdb-$pkgver"
+  # gdbserver.exe: undefined ref to dlopen
+  sed -i "s|GDBSERVER_LIBS = @GDBSERVER_LIBS@|GDBSERVER_LIBS = -ldl @GDBSERVER_LIBS@|g" gdb/gdbserver/Makefile.in
+}
 
 build() {
   cd "$srcdir/gdb-$pkgver"
