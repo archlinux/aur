@@ -10,8 +10,8 @@ pkgdesc="Transportation simulation game - Extended Version"
 arch=('x86_64')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
-depends=('gcc-libs' 'zlib' 'sdl_mixer' 'bzip2' 'hicolor-icon-theme')
-makedepends=('dos2unix')
+depends=('gcc-libs' 'zlib' 'sdl2' 'bzip2' 'hicolor-icon-theme')
+makedepends=('dos2unix' 'git')
 optdepends=('timidity++: play MIDI music'
             'simutrans-extended-pak128.britain: High resolution graphics set for Simutrans Extended, with a British theme'
             'simutrans-extended-pak128.cs: High resolution graphics set for Simutrans Extended, with a czech theme'
