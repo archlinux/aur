@@ -1,7 +1,7 @@
 pkgbase = nvidia-390xx
 	pkgdesc = NVIDIA drivers for linux, 390xx legacy branch
 	pkgver = 390.132
-	pkgrel = 33
+	pkgrel = 34
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -15,7 +15,7 @@ pkgbase = nvidia-390xx
 	source = kernel-5.5.patch
 	sha256sums = b6b4b8af37e78e026c9ebdf4a5c64ea412dfcb710931dd028c22dac228de659d
 	sha256sums = 622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385
-	sha256sums = 93efb4bd03c9617d6030dd4966d7350ec7a4e09f71e0566586454f5366385fff
+	sha256sums = c72d89546b6dbd332e678800e48acbcdb29c1e1f23f986f77cee2c46b1a91e75
 
 pkgname = nvidia-390xx
 	pkgdesc = NVIDIA drivers for linux, 390xx legacy branch
@@ -33,4 +33,3 @@ pkgname = nvidia-390xx-dkms
 	provides = nvidia-390xx=390.132
 	conflicts = nvidia
 	conflicts = nvidia-390xx
-

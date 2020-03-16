@@ -6,7 +6,7 @@
 pkgbase=nvidia-390xx
 pkgname=(nvidia-390xx nvidia-390xx-dkms)
 pkgver=390.132
-pkgrel=33
+pkgrel=34
 pkgdesc="NVIDIA drivers for linux, 390xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -20,7 +20,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.r
         'kernel-5.5.patch')
 sha256sums=('b6b4b8af37e78e026c9ebdf4a5c64ea412dfcb710931dd028c22dac228de659d'
             '622ac792ec200b2239cb663c0010392118b78c9904973d82cd261165c16d6385'
-            '93efb4bd03c9617d6030dd4966d7350ec7a4e09f71e0566586454f5366385fff')
+            'c72d89546b6dbd332e678800e48acbcdb29c1e1f23f986f77cee2c46b1a91e75')
 
 prepare() {
     sh "${_pkg}.run" --extract-only
@@ -30,6 +30,7 @@ prepare() {
     # https://bugs.archlinux.org/task/58074
     patch -Np1 -i ../kernel-4.16.patch
 
+    # Patch to avoid screen tearing on Optimus Systems [Geeko]
     patch -Np1 -i ../kernel-5.5.patch
 
     cp -a kernel kernel-dkms
