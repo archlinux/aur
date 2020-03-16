@@ -9,6 +9,7 @@ license=('custom:WTFPL')
 makedepends=('git')
 depends=('pam' 'xorg-xauth')
 conflicts=('ly' 'python-ly-git')
+backup=('etc/ly/config.ini')
 source=('git+https://github.com/cylgom/ly.git')
 md5sums=('SKIP')
 
