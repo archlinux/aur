@@ -6,9 +6,9 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-pkgver=201.6073.85
+pkgver=201.6073.104
 eapver=2020.1
-eaprelease=3
+eaprelease=4
 _dlver="${eapver}-EAP${eaprelease}-${pkgver}.Checked"
 pkgrel=1
 epoch=1
@@ -24,7 +24,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 
 source=("https://download.jetbrains.com/rider/JetBrains.Rider-${_dlver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('d82400ed80debc889fdf152d56d491b1cdddc2df3fccc119fb2399ce7c0cc6a9'
+sha256sums=('1ec3d939d735bc8b3328ba1f8e9e785321ac6f4230ba02156885adf6d5700a2c'
             'cbb7c9b847c92c95403be237ab01183eb0516b4a9b46c8ba27c87243fed8cbb8')
 
 package() {
