@@ -11,17 +11,14 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shiyanhui/hero/archive/v${pkgver}.tar.gz")
 md5sums=('de40e3da62f50e0948194823e4910fb1')
 
-prepare() {
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-}
-
-build() {
   cd "${srcdir}/${pkgname}-${pkgver}/hero"
-  go build -v -o ../../hero-bin
+  go build -v -o "${srcdir}/hero-bin"
 }
 
 package() {
