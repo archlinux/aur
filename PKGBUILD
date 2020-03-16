@@ -3,7 +3,7 @@
 
 pkgname=themix-gui-git
 pkgver=1.12.6.r7.g7bd6e2fd
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin-based theme designer GUI for
  environments (like GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
  icons, and terminal palettes."
@@ -22,8 +22,9 @@ makedepends=(
 	'git'
 )
 optdepends=(
-	'xorg-xrdb: for the `xresources` theme'
+	'themix-icons-gnome-colors: Icons Style plugin'
 	'themix-theme-oomox: Theme Style plugin'
+	'xorg-xrdb: for the `xresources` theme'
 )
 provides=('themix-gui')
 conflicts=('themix-gui')
