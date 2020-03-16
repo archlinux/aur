@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _knm="-lts419"
-_kvd="4.19.108-2"
+_kvd="4.19.109-2"
 _kvo=""
 _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
 _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"

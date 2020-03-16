@@ -31,7 +31,7 @@ pkgbase = openss7-modules-lts419-git
 	makedepends = gawk
 	makedepends = classpath
 	makedepends = popt
-	depends = linux-lts419=4.19.108-2
+	depends = linux-lts419=4.19.109-1
 	provides = openss7-modules-lts419=1.1.8.463.g4d4da615e
 	conflicts = openss7-modules-lts419
 	options = !emptydirs
