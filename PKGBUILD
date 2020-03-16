@@ -11,7 +11,7 @@
 
 _pkgname=thunderbird
 pkgname=thunderbird-appmenu
-pkgver=68.5.0
+pkgver=68.6.0
 pkgrel=1
 pkgdesc="Thunderbird from extra with appmenu patch"
 arch=(x86_64)
@@ -28,10 +28,10 @@ options=(!emptydirs !makeflags)
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         $_pkgname.desktop
         unity-menubar.patch)
-sha256sums=('8b2c02a08c7f6e20e141461710dcd442426fd875c44d39d9b369eb82d965026d'
+sha512sums=('3502cc42b594eebf3511219ae8e7fb8a13594534abfe7a40ec32e5a3f60343cfab7c652b161a5f33af46bd5e6f096e3abd4a407c8b307ce4693089b471a42c3e'
             'SKIP'
-            '3534ea85d8e0e35dba5f40a7a07844df19f3a480e1358fc50c2502f122dab789'
-            'bcb0dab3bbe5b2ca2bcc8e2d9856bc8583b603da6573618795dae0cf236c486f')
+            'fa28ec547f87658cf72d160e9c2a7867d3e8a9b8c76ffa29d1098fddfc9331f65cc6dbf24c15da28c5d1b4ffa587d14d529d5da522a8805b073ad89986a552c9'
+            'f3aa468974780016de60fa61a61f7e67a2cc51b4f888b223d16b9afaa42e82100c3b3d7f9491dfd0de3c5667ad4ac0fc58b96d81ef448ccf6e924cdc49066ad5')
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
