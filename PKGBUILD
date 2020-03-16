@@ -9,9 +9,9 @@
 
 pkgname=ace
 pkgver=6.5.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
-url="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
+url="https://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 license=('custom')
 arch=('i686' 'x86_64')
 depends=()

@@ -1,14 +1,14 @@
 pkgbase = ace
 	pkgdesc = Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems.
 	pkgver = 6.5.8
-	pkgrel = 2
-	url = http://www.dre.vanderbilt.edu/~schmidt/ACE.html
+	pkgrel = 3
+	url = https://www.dre.vanderbilt.edu/~schmidt/ACE.html
 	arch = i686
 	arch = x86_64
 	license = custom
 	conflicts = libace
 	options = !libtool
-	source = http://download.dre.vanderbilt.edu/previous_versions/ACE-6.4.8.tar.gz
+	source = https://download.dre.vanderbilt.edu/previous_versions/ACE-6.5.8.tar.gz
 	source = license.txt
 	sha256sums = 7c77034deee027ebc91041fae3711fe141c034d768bfb13259c40441cc0b5197
 	sha256sums = 4aef434f0bc8c91488f92b25863e5dcbff857598389276718c59903cd8c8c954
