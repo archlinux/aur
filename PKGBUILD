@@ -4,7 +4,7 @@ _tagname=v0.3.0
 pkgname=poezio-omemo
 _pkgname=${pkgname}
 pkgrel=1
-pkgver=v0.3.0.8a8591c
+pkgver=${_tagname}
 pkgdesc="OMEMO plugin for the Poezio XMPP console client"
 arch=('i686' 'x86_64')
 url="https://lab.louiz.org/poezio/poezio-omemo"
@@ -21,11 +21,6 @@ depends=(
 makedepends=('git')
 
 source=("${_pkgname}::git+https://lab.louiz.org/poezio/poezio-omemo#tag=${_tagname}")
-
-pkgver() {
-  cd $srcdir/$_pkgbase
-  echo "${_tagname}.$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "$srcdir/$_pkgname"

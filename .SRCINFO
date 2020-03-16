@@ -1,6 +1,6 @@
 pkgbase = poezio-omemo
 	pkgdesc = OMEMO plugin for the Poezio XMPP console client
-	pkgver = v0.3.0.8a8591c
+	pkgver = v0.3.0
 	pkgrel = 1
 	url = https://lab.louiz.org/poezio/poezio-omemo
 	arch = i686
