@@ -1,0 +1,15 @@
+pkgbase = python2-libappindicator
+	pkgdesc = Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray
+	pkgver = 12.10.0
+	pkgrel = 14
+	url = https://launchpad.net/libappindicator
+	arch = x86_64
+	license = LGPL2.1
+	license = LGPL3
+	depends = libappindicator-gtk2
+	depends = python2
+	source = python2-libappindicator-12.10.0-13-x86_64.pkg.tar.xz
+	sha512sums = df5e7ae721439e0c2f7f816e3811d24d8c872ecb639ad4d44cb8228007bec711be23b134f7632117bc1f7f963371ec5a5e77d8c451339eb20c22b9ed326e4169
+
+pkgname = python2-libappindicator
+
