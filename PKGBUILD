@@ -13,7 +13,6 @@ url="https://github.com/Robpol86/terminaltables"
 license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
-checkdepends=('python2-pytest' 'python2-colorama' 'python2-termcolor' 'python2-colorclass')
 replaces=('python2-terminaltables<=3.1.0-5')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/Robpol86/${_pyname}/archive/v${pkgver}.tar.gz")
 sha512sums=('dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501')
@@ -26,11 +25,6 @@ prepare() {
 build() {
   cd ${_pyname}-${pkgver}
   python2 setup.py build
-}
-
-check() {
-  cd ${_pyname}-${pkgver}
-  py.test2
 }
 
 package() {
