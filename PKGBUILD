@@ -24,7 +24,7 @@ source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$
         CVE-2020-9359.patch::"https://invent.kde.org/kde/okular/-/commit/6a93a033.patch")
 sha256sums=('c5de22cc4292e3b7adae3f6ef6566dcba33a1dd5995fb0b968ea3e705a4c04e0'
             'SKIP'
-            'c9541537053041e492f129e93fe118115bdf5dbe62ba8f11d529c340903df234')
+            '7b0a8cc440fd1742ba42aeb0c9a7811a891451ac5e234ccd96dc4cc61ddefb01')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87) # Christoph Feck <cfeck@kde.org>
 options=(!zipman)
