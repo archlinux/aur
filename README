@@ -1,0 +1,19 @@
+xtables-geoip-db
+=================
+
+xtables-geoip-db makes use of @@@DBSOURCE@@@ GeoIP data.
+
+It creates country specific database files which can be used by iptables (using xt_geoip module provided by Xtables-addons) to block or allow access based on country of the IP.
+
+Country specific files are stored in /usr/share/xt_geoip directory.
+
+For more information, see:
+  man iptables-extensions
+  man xtables-addons
+  http://xtables-addons.sourceforge.net/geoip.php
+  http://xtables-addons.sourceforge.net/
+
+
+Legal Attribution:
+------------------
+This product includes @@@DBSOURCE@@@ database, available from @@@DBLINK@@@

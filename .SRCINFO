@@ -1,7 +1,7 @@
 pkgbase = xtables-geoip-db
 	pkgdesc = GeoIP Database for xtables
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://db-ip.com/db/download/ip-to-country-lite
 	arch = any
 	license = BSD
@@ -10,9 +10,11 @@ pkgbase = xtables-geoip-db
 	makedepends = perl-net-cidr-lite
 	source = dbip-country-lite-2020-03.csv.gz::https://download.db-ip.com/free/dbip-country-lite-2020-03.csv.gz
 	source = xt_geoip_build-3.9::https://sourceforge.net/p/xtables-addons/xtables-addons/ci/v3.9/tree/geoip/xt_geoip_build?format=raw
+	source = README
 	source = mmcsv_geoip_build
 	sha256sums = SKIP
 	sha256sums = 6bd72c83973a104481c1bdfb634916ca1c446924d1307e69088702dfe77b7dcf
+	sha256sums = bd1dbbacdde0c6b63b15c00a9b3cecada7c95bbd72cd2f7a336106fce53cddbd
 	sha256sums = 216cb5a8c018c9db1cbff6b8a788d71d08f1d23dbb4ae60d318fc62fab1a2b46
 
 pkgname = xtables-geoip-db
