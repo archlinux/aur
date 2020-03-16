@@ -5,7 +5,7 @@ _imgui_commit='e628122da006c0e9f7e695592765696d8253cf6f'
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
@@ -40,7 +40,6 @@ package_mangohud() {
     depends=('sh' 'gcc-libs' 'libx11')
 
     DESTDIR="$pkgdir" ninja -C build64 install
-    sed -i -e 's|libMangoHud.so|/usr/lib/&|g' "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.x86_64.json"
     # remove helper as it uses unreasonable defaults. just use env var
     rm "$pkgdir/usr/bin/mangohud"
 
@@ -53,7 +52,6 @@ package_lib32-mangohud() {
     depends=('sh' 'lib32-gcc-libs' 'lib32-libx11')
 
     DESTDIR="$pkgdir" ninja -C build32 install
-    sed -i -e 's|libMangoHud.so|/usr/lib32/&|g' -e 's|64bit|32bit|g' "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.x86.json"
     # remove helper as it uses unreasonable defaults. just use env var
     rm "$pkgdir/usr/bin/mangohud.x86"
 
