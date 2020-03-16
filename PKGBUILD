@@ -8,12 +8,13 @@
 _pkgname=Pgtcl
 pkgname=pgtcl
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tcl client side interface to PostgreSQL (libpgtcl)"
 arch=("x86_64")
 url="https://flightaware.github.io/Pgtcl/"
 license=("BSD")
-depends=("postgresql>=12.2" "postgresql-libs>=12.2" "tcl>=8.6" "tcl<8.7")
+depends=("postgresql" "postgresql-libs" "tcl>=8.6" "tcl<8.7")
+conflicts=("pgtcl-ng")
 provides=("libpgtcl")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/flightaware/Pgtcl/archive/v$pkgver.tar.gz")
 sha1sums=("edf384a2bc9ae05b9ffbc69735f7e4064c51a76e")
@@ -40,7 +41,6 @@ build() {
     --enable-64bit \
     --enable-threads \
     --enable-shared \
-    --enable-64bit \
     --disable-rpath
 
   make
