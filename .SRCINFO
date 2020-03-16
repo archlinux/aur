@@ -1,0 +1,17 @@
+pkgbase = python-tex2img-git
+	pkgdesc = a texture decompression C++-extension for Python
+	pkgver = r15.7b1aea9
+	pkgrel = 1
+	url = https://github.com/K0lb3/tex2img
+	arch = x86_64
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	depends = python
+	provides = python-tex2img
+	conflicts = python-tex2img
+	source = git+https://github.com/K0lb3/tex2img.git
+	md5sums = SKIP
+
+pkgname = python-tex2img-git
+
