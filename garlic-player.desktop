@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Garlic Player
+GenericName=SMIL Player for Digital Signage
+Comment=SMIL Player for Digital Signage
+Exec=garlic-player %f
+Icon=garlic-player
+Terminal=false
+Categories=Graphics;
+StartupNotify=true

@@ -1,0 +1,22 @@
+pkgbase = garlic-player-git
+	pkgdesc = SMIL Player for Digital Signage
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://garlic-player.com
+	install = garlic-player.install
+	arch = x86_64
+	license = AGPL3
+	makedepends = make
+	makedepends = qt5-base
+	makedepends = git
+	depends = vlc
+	depends = gcc
+	provides = garlic-player
+	conflicts = garlic-player
+	source = git+https://github.com/sagiadinos/garlic-player.git
+	source = garlic-player.desktop
+	sha256sums = SKIP
+	sha256sums = a595aff43accef379a2e3f92209a7db4230917a8a071453003494a5ba9b7b02c
+
+pkgname = garlic-player-git
+
