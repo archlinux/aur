@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.9.r22.8d847d6f1
+pkgver=0.0.9.r140.33d01fd25
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -31,7 +31,6 @@ depends=(
   zlib
 )
 makedepends=(
-  cereal
   cmake
   git
   libglvnd
@@ -43,17 +42,17 @@ conflicts=(rpcs3)
 options=(!emptydirs)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
-  rpcs3-common::git+https://github.com/RPCS3/common.git
+  rpcs3-cereal::git+https://github.com/RPCS3/cereal.git
   rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
   rpcs3-libusb::git+https://github.com/RPCS3/libusb.git
   rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
+  rpcs3-yaml-cpp::git+https://github.com/RPCS3/yaml-cpp.git
   git+https://github.com/kobalicek/asmjit.git
   git+https://github.com/FNA-XNA/FAudio.git
   git+https://github.com/KhronosGroup/glslang.git
   git+https://github.com/zeux/pugixml.git
   git+https://github.com/tcbrindle/span.git
   git+https://github.com/Cyan4973/xxHash.git
-  git+https://github.com/jbeder/yaml-cpp.git
 )
 sha256sums=(
   SKIP
@@ -79,8 +78,9 @@ pkgver() {
 prepare() {
   cd rpcs3
 
-  git submodule init 3rdparty/{FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule init 3rdparty/{cereal,FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
+  git config submodule.cereal.url ../rpcs3-cereal
   git config submodule.glslang.url ../glslang
   git config submodule.FAudio.url ../FAudio
   git config submodule.hidapi.url ../rpcs3-hidapi
@@ -89,8 +89,8 @@ prepare() {
   git config submodule.pugixml.url ../pugixml
   git config submodule.span.url ../span
   git config submodule.xxHash ../xxHash
-  git config submodule.yaml-cpp ../yaml-cpp
-  git submodule update 3rdparty/{FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git config submodule.yaml-cpp ../rpcs3-yaml-cpp
+  git submodule update 3rdparty/{cereal,FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
 }
 
 build() {
