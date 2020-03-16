@@ -1,0 +1,21 @@
+pkgbase = pgtcl-ng
+	pkgdesc = PostgreSQL Tcl Next-Generation
+	pkgver = r394
+	pkgrel = 1
+	url = http://pgtclng.sourceforge.net/
+	arch = x86_64
+	license = unknown
+	makedepends = docbook-xsl
+	makedepends = links
+	depends = postgresql
+	depends = postgresql-libs
+	depends = tcl>=8.6
+	depends = tcl<8.7
+	provides = pgtcl
+	provides = libpgtcl
+	conflicts = pgtcl
+	source = pgtclng-code-r394-trunk.zip::https://sourceforge.net/code-snapshots/svn/p/pg/pgtclng/code/pgtclng-code-r394-trunk.zip
+	sha1sums = f8aa4c0d5c478dced25d59353a9370cc2a2e35b5
+
+pkgname = pgtcl-ng
+
