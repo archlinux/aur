@@ -1,14 +1,11 @@
 pkgbase = molsketch
 	pkgdesc = A 2D molecular editing tool
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://molsketch.sourceforge.net
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = gcc
-	depends = openbabel
-	depends = qt5-base
 	depends = qt5-svg
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
