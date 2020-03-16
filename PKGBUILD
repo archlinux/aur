@@ -5,7 +5,7 @@ _imgui_commit='e628122da006c0e9f7e695592765696d8253cf6f'
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud')
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
@@ -40,10 +40,8 @@ package_mangohud() {
     depends=('sh' 'gcc-libs' 'libx11')
 
     DESTDIR="$pkgdir" ninja -C build64 install
-    # remove helper as it uses unreasonable defaults. just use env var
     rm "$pkgdir/usr/bin/mangohud"
 
-    install -Dm644 "$_srcdir/bin/MangoHud.conf" "$pkgdir/usr/share/doc/$pkgname/MangoHud.conf"
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -52,9 +50,8 @@ package_lib32-mangohud() {
     depends=('sh' 'lib32-gcc-libs' 'lib32-libx11')
 
     DESTDIR="$pkgdir" ninja -C build32 install
-    # remove helper as it uses unreasonable defaults. just use env var
     rm "$pkgdir/usr/bin/mangohud.x86"
 
-    install -Dm644 "$_srcdir/bin/MangoHud.conf" "$pkgdir/usr/share/doc/$pkgname/MangoHud.conf"
+    rename "$pkgbase" "$pkgname" "$pkgdir/usr/share/doc/$pkgbase"
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
