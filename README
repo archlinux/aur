@@ -71,3 +71,8 @@ include "/usr/share/nft_geoip/IN.ipv4"
 # flush and update the set containing IP addresses of India
 flush set ip filter geo_IN
 add element ip filter geo_IN $geoip4_iso_country_IN
+
+
+Legal Attribution:
+------------------
+This product includes @@@DBSOURCE@@@ database, available from @@@DBLINK@@@
