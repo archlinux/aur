@@ -1,7 +1,7 @@
 # Maintainer: Davide Depau <davide@depau.eu>
 
 pkgname=xdg-desktop-portal-wlr-git
-pkgver=r7.13076d0
+pkgver=r21.4569963
 pkgrel=1
 pkgdesc='xdg-desktop-portal backend for wlroots'
 url=https://github.com/emersion/xdg-desktop-portal-wlr
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(custom:MIT)
 provides=("${pkgname%-git}" "xdg-desktop-portal-impl")
 conflicts=("${pkgname%-git}")
-depends=(wlroots)
+depends=(wlroots libpipewire02)
 makedepends=(wayland-protocols meson ninja git wayland systemd-libs)
 source=("${pkgname}::git+https://github.com/emersion/xdg-desktop-portal-wlr.git")
 sha512sums=('SKIP')
