@@ -8,7 +8,7 @@ archlinux:
     - bash
     - git
     - namcap
-    - shellcheck
+    - shellcheck-static
   mount:
     - ~/.pkg-cache:/var/cache/pacman/pkg
   script:
