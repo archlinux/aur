@@ -21,7 +21,7 @@ source=(
 sha256sums=('b430a5bee30d7ad6312e6c679293a77decfc9efa513ab075319cc4f1c7796aa3')
 
 package() {
-  tar -xJC "$pkgdir" -f data.tar.xz
+  tar --no-same-owner -xJC "$pkgdir" -f data.tar.xz
   install -d "$pkgdir/usr/share/licenses/$pkgname"
   mv "$pkgdir/usr/share/$_pkgname/LICENSES.chromium.html" \
     "$pkgdir/usr/share/licenses/$pkgname/"
