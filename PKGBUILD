@@ -4,13 +4,13 @@
 
 pkgname=gretl
 pkgver=2020a
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform software package for econometric analysis, written in the C programming language'
 arch=('x86_64')
 url='http://gretl.sourceforge.net/'
 license=('GPL')
 options=('!makeflags')
-depends=('gtksourceview3' 'curl' 'lapack' 'mpfr' 'fftw' 'gnuplot' 'gmp')
+depends=('gtksourceview3' 'blas' 'curl' 'lapack' 'mpfr' 'fftw' 'gnuplot' 'gmp')
 optdepends=('readline: provides a nice editable command line in gretlcli'
             'JSON-GLib: provides for parsing of data from various websites'
             'openmpi: provides means for dividing labor among multiple nodes')

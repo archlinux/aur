@@ -1,11 +1,12 @@
 pkgbase = gretl
 	pkgdesc = A cross-platform software package for econometric analysis, written in the C programming language
 	pkgver = 2020a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gretl.sourceforge.net/
 	arch = x86_64
 	license = GPL
 	depends = gtksourceview3
+	depends = blas
 	depends = curl
 	depends = lapack
 	depends = mpfr
