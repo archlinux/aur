@@ -1,0 +1,14 @@
+pkgbase = tencent-icon-theme-git
+	pkgdesc = A colorful Design icon theme for linux desktops
+	pkgver = r7.8531bf6
+	pkgrel = 1
+	url = https://github.com/yeyushengfan258/Tencent-icon-theme
+	arch = any
+	license = GPL
+	depends = gtk-update-icon-cache
+	conflicts = tencent-icon-theme
+	source = git+https://github.com/yeyushengfan258/Tencent-icon-theme.git
+	md5sums = SKIP
+
+pkgname = tencent-icon-theme-git
+
