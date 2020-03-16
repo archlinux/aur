@@ -1,7 +1,7 @@
 # Maintainer: mox <demox@lavabit.com>
 pkgname=cocotb
 pkgver=1.3
-pkgrel=0
+pkgrel=1
 epoch=0
 pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
 arch=('x86_64') # Can probably support other architectures as well, try your luck?
@@ -16,7 +16,7 @@ optdepends=('iverilog: for simulating verilog designs'
 
 install=${pkgname}.install
 source=("https://github.com/cocotb/$pkgname/archive/v$pkgver.$pkgrel.tar.gz")
-md5sums=('4db3d270943da293cf4dd7ce22594307')
+md5sums=('0d9dd62350649c91c9a4fa202ad20dda')
 
 package() {
     cd "${srcdir}/cocotb-$pkgver.$pkgrel"
