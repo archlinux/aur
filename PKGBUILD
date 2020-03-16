@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://www.simutrans.com/"
 license=('custom:Artistic')
 depends=('gcc-libs' 'zlib' 'sdl_mixer' 'bzip2' 'hicolor-icon-theme' 'freetype2' 'miniupnpc')
-makedepends=('dos2unix')
+makedepends=('dos2unix' 'git')
 optdepends=('timidity++: play MIDI music'
             'simutrans-pak32.comic: Lowest resolution graphics set for Simutrans'
             'simutrans-pak48.excentrique: Low resolution graphics set for Simutrans, with an eccentric theme'

@@ -6,6 +6,7 @@ pkgbase = simutrans-nightly
 	arch = x86_64
 	license = custom:Artistic
 	makedepends = dos2unix
+	makedepends = git
 	depends = gcc-libs
 	depends = zlib
 	depends = sdl_mixer
