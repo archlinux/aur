@@ -2,7 +2,7 @@
 # Maintainer: stardust95
 # Contributor: stardust95
 pkgname=lebiniou-data
-pkgver=3.28
+pkgver=3.40
 pkgrel=1
 pkgdesc="Datafiles for Le Biniou. - a selection of free colormaps - a selection of images to start with Le Biniou"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://biniou.net"
 license=('GPL2+')
 groups=('')
 options=('!strip' '!emptydirs')
-source=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou-data/lebiniou-data_3.28-2_all.deb")
-sha512sums=('a9ef1c88436d13c7366f7fa2302d694fe7a1e1ffe31da5a1b044a660e104d2301c152a7a6457097a8f77e5ed44a4e113049e336fee80ffa53d48d3848870f8c0')
+source=("http://ftp.fr.debian.org/debian/pool/main/l/lebiniou-data/lebiniou-data_3.40-1_all.deb")
+sha512sums=('757e918ecc78cd54b64a319b46a912e3c37ed410f6dd18f17df27bbb5246ba52bc41485c6236b630ea742eba2e385cbc3a2cf3fe9b4f179387b176c8d87a7ec6')
 
 package(){
 
