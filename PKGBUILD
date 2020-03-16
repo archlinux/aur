@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@gmail.com>
 pkgname=graywolf-git
 pkgver=0.1.6.r184.6c5e24f
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='An opensource placement tool'
 arch=('i686' 'x86_64')
@@ -29,4 +29,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname%-git}"
     make DESTDIR="${pkgdir}" install
+    ln -s flow.noroute "${pkgdir}"/usr/lib/graywolf/bin/flow/flow
 }
