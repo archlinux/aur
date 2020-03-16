@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=pacfetch
-pkgver=1.0.5.1
+pkgver=1.0.5.2
 pkgrel=1
 pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
 url="https://git.auteiy.me/dmitry/pacFetch"
