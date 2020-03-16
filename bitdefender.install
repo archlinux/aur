@@ -2,7 +2,9 @@ post_install() {
     # Add group bitdefender
     groupadd bitdefender
     useradd -r -g bitdefender -d /opt/BitDefender-scanner bitdefender -s /bin/bash
-    chown -R bitdefender:bitdefender /opt/BitDefender-scanner /etc/BitDefender-scanner
+    mkdir /opt/BitDefender-scanner/var/log
+    mkdir /opt/BitDefender-scanner/var/quarantine
+    chown -R bitdefender:bitdefender /opt/BitDefender-scanner /etc/BitDefender-scanner /opt/BitDefender-scanner/var/log /opt/BitDefender-scanner/var/quarantine
     chmod a+r -R /opt/BitDefender-scanner/var/skins
     chmod +s /opt/BitDefender-scanner/bin/ultool
 
