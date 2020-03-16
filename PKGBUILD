@@ -5,7 +5,7 @@ pkgname=('qmc2-common-svn'
          'qmc2-sdlmame-svn'
          'qmc2-arcade-svn'
          )
-pkgver=0.218.8329
+pkgver=0.218.8331
 pkgrel=1
 pkgdesc="Qt based UNIX MAME frontend supporting SDLMAME. (SVN version)"
 url='https://qmc2.batcom-it.net'
@@ -20,6 +20,7 @@ makedepends=('subversion'
              'qt5-script'
              'qt5-xmlpatterns'
              'qt5-svg'
+             'qt5-tools'
              'sdl2'
              'java-environment'
              'wget'
