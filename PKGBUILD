@@ -1,7 +1,7 @@
 # Maintainer: Steven Huang <s@stvhuang.me>
 pkgname=libtorch
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PyTorch C++ API"
 arch=('x86_64')
 url="https://pytorch.org/cppdocs/"
@@ -11,6 +11,7 @@ optdepends=(
     "cuda: NVIDIA's GPU programming toolkit"
     'cudnn: NVIDIA CUDA Deep Neural Network library'
 )
+options=(!strip)
 source=(
     "https://download.pytorch.org/libtorch/cu101/libtorch-cxx11-abi-shared-with-deps-${pkgver}.zip"
 )
@@ -25,5 +26,5 @@ prepare () {
 
 package() {
     mkdir -p ${pkgdir}/usr
-    cp -r ${srcdir}/libtorch/* ${pkgdir}/usr
+    cp -dr ${srcdir}/libtorch/* ${pkgdir}/usr
 }
