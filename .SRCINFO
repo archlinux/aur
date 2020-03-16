@@ -1,6 +1,6 @@
 pkgbase = ram
 	pkgdesc = Rust AUR Manager – an AUR helper and pacman wrapper written in rust
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 0
 	url = https://gitlab.spline.inf.fu-berlin.de/gordon/ram
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ram
 	depends = pacman
 	depends = sudo
 	depends = bash
-	source = https://gitlab.spline.inf.fu-berlin.de/gordon/ram/-/archive/v0.4.1/ram-v0.4.1.tar.gz
-	sha512sums = a09856d692009f9d2d2e4fade5d9517350b6f4b21d1431bf7f2b497a4bf35e4d33ee6603d0e76a115f1a03a813bb00661a387cdfb6e1f693188919e8c1bc8d16
+	source = https://gitlab.spline.inf.fu-berlin.de/gordon/ram/-/archive/v0.4.2/ram-v0.4.2.tar.gz
+	sha512sums = 95383ccf10f024e41f627313162fbf3f294e5045565ce8adaf1e6ba81a766fa0051306372ca1ff824b92c99075535c8766de4bbcd1a3aa11508b1603ae51cdfe
 
 pkgname = ram
 

@@ -1,6 +1,6 @@
 # Maintainer: Jan Ole Zabel <joz@spline.de>, Philipp Fleischer <deleaf@spline.de>, Enno Strauß <roxc@spline.de>
 pkgname=ram
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=0
 pkgdesc="Rust AUR Manager – an AUR helper and pacman wrapper written in rust"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPLv3')
 makedepends=('cargo')
 depends=('pacman' 'sudo' 'bash')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha512sums=('a09856d692009f9d2d2e4fade5d9517350b6f4b21d1431bf7f2b497a4bf35e4d33ee6603d0e76a115f1a03a813bb00661a387cdfb6e1f693188919e8c1bc8d16')
+sha512sums=('95383ccf10f024e41f627313162fbf3f294e5045565ce8adaf1e6ba81a766fa0051306372ca1ff824b92c99075535c8766de4bbcd1a3aa11508b1603ae51cdfe')
 
 build() {
 	cd "$pkgname-v$pkgver"
