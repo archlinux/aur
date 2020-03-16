@@ -1,6 +1,6 @@
 pkgbase = python-fusesoc
 	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 0
 	url = http://github.com/olofk/fusesoc/
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = python-fusesoc
 	provides = python-fusesoc
 	conflicts = python-fusesoc
 	options = !emptydirs
-	source = https://github.com/olofk/fusesoc/releases/download/1.9/fusesoc-1.9.tar.gz
-	md5sums = eec2d6fd3c8c68ce00b2eae7edb8e1a7
+	source = git+https://github.com/olofk/fusesoc#tag=1.10
+	md5sums = SKIP
 
 pkgname = python-fusesoc
+
