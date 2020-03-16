@@ -45,17 +45,17 @@ package() {
     cd $srcdir/CAmod
     mkdir -p $pkgdir/usr/{lib/openra-ca/mods,bin,share/pixmaps,share/doc/packages/openra-ca,share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/openra-ca
-    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll,*.dll.config,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch*.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ca
+    cp -r engine/{glsl,lua,AUTHORS,COPYING,*.dll,*.dll.config,'global mix database.dat',launch*.sh,*.exe,VERSION} $pkgdir/usr/lib/openra-ca
     cp -r mods/ca $pkgdir/usr/lib/openra-ca/mods
     cp -r engine/mods/{common,modcontent} $pkgdir/usr/lib/openra-ca/mods
     install -Dm755 $srcdir/openra-ca $pkgdir/usr/bin/openra-ca
     cp -r $srcdir/openra-ca.appdata.xml $pkgdir/usr/share/appdata/openra-ca.appdata.xml
     cp -r README.md $pkgdir/usr/share/doc/packages/openra-ca/README.md
-    cp -r mods/ca/icon.png $pkgdir/usr/share/pixmaps/openra-ca.png
+    cp -r packaging/artwork/icon_512x512.png $pkgdir/usr/share/pixmaps/openra-ca.png
 
-    for i in 16x16 32x32 48x48 64x64 128x128 256x256
+    for i in 16x16 32x32 48x48 64x64 128x128 256x256 512x512
     do
-         install -Dm644 packaging/linux/mod_${i}.png $pkgdir/usr/share/icons/hicolor/$i/apps/%{name}.png
+         install -Dm644 packaging/artwork/icon_${i}.png $pkgdir/usr/share/icons/hicolor/$i/apps/%{name}.png
     done
 
     install -Dm644 $srcdir/openra-ca.desktop $pkgdir/usr/share/applications/openra-ca.desktop
