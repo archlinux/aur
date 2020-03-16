@@ -1,7 +1,7 @@
 pkgbase = ucm-bin
 	pkgdesc = Unison language code manager
 	pkgver = M1i
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.unisonweb.org
 	arch = x86_64
 	license = custom
