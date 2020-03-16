@@ -1,7 +1,7 @@
 # Maintainer:F43nd1r <support@faendir.com>
 
 pkgname=ts3audiobot
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 epoch=
 pkgdesc="ts3 audio bot by splamy"
@@ -23,13 +23,13 @@ sha256sums=(SKIP
             '34b20c0f1f71a454990c21f34a4016ff35337403dbc2515f0dca9256b7c88093')
 
 prepare() {
-    unzip -q "$pkgname-$pkgver.zip" -d "$srcdir/$pkgname" || true
+    unzip -q "$pkgname-$pkgver.zip" -d "$srcdir/$pkgname-$pkgver"
 }
 package() {
     cd $srcdir
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -d $pkgdir/{opt/$pkgname,usr/bin}
     cp ts3audiobot.sh $pkgdir/usr/bin/$pkgname
-    cp -a $pkgname/* $pkgdir/opt/$pkgname
+    cp -a $pkgname-$pkgver/* $pkgdir/opt/$pkgname
     chmod -R ugo+rX $pkgdir/opt
 }

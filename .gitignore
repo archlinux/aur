@@ -1,0 +1,9 @@
+ .idea/
+ .gitignore
+ 
+ update.sh
+ 
+ *.tar.gz
+ *.zip
+ src/
+ pkg/
