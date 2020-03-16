@@ -10,7 +10,7 @@ pkgdesc="Materia theme plugin
  (GTK2, GTK3, Cinnamon, GNOME, Metacity, Unity, Xfwm) for Themix GUI designer.
  Have a hack for HiDPI in GTK2."
 arch=('x86_64' 'i686')
-url="https://github.com/themix-project/oomox-gtk-theme"
+url="https://github.com/nana-4/materia-theme"
 license=('GPL3')
 source=(
        "git+https://github.com/themix-project/oomox.git#branch=master"
