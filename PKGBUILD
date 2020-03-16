@@ -17,12 +17,12 @@ source=(
 md5sums=('SKIP'
          'SKIP')
 depends=(
-	'librsvg'  # oomox, gnome-colors
-	'sed'  # oomox, materia, arc, gnome-colors, archdroid
-	'findutils'  # oomox, materia, arc, gnome-colors, arch-droid
-	'grep'  # oomoxify, oomox, materia, arc, gnome-colors
-	'bc'  # oomoxify, oomox, materia, arc, gnome-colors
-	'imagemagick'  # gnome-colors
+	'librsvg'
+	'sed'
+	'findutils'
+	'grep'
+	'bc'
+	'imagemagick'
 )
 makedepends=(
 	'git'
