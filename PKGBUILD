@@ -2,7 +2,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=pdfslicer
-pkgver=1.7.4
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Simple application to extract, merge, rotate and reorder pages of PDF documents"
 arch=(x86_64)
