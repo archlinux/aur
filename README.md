@@ -12,6 +12,8 @@ cd haur
 makepkg -si
 ```
 
+Before updating, make sure to remove the default configuration file (/etc/haurrc). You may, however, keep your personal configuration file.
+
 ## Usage
 
 Usage is pretty simple.
