@@ -3,12 +3,12 @@
 
 pkgname=python-openshift
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client for the OpenShift API"
 url="https://github.com/openshift/openshift-restclient-python"
 license=('APACHE')
 source=("https://github.com/openshift/openshift-restclient-python/archive/v${pkgver}.tar.gz")
-sha256sums=('05da5b323e1be23d6cf6f1e4eadd984021e023d5330262f79e963b500b407112')
+sha256sums=('15f3e07e79a80b5fbb83060c5a8f76578b80becff8b771ac311e2d31f4b9d258')
 arch=('any')
 makedepends=('python-setuptools')
 depends=(
