@@ -3,7 +3,7 @@
 
 pkgname=ninja-ide-git
 pkgver=20190207
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform IDE focused on Python application development"
 arch=('any')
 url="http://ninja-ide.org"
@@ -29,6 +29,13 @@ prepare() {
   ln -sf $srcdir/MANIFEST.in
 
   rm -rf ninja_tests ninja_profiling
+
+  # Work around not being prepared for python 3.8
+  sed -e "s/_ast.Num/_ast.Constant/" \
+      -e "/_ast.Str/ s/^/#/" \
+      -i ninja_ide/tools/introspection.py
+  ln -s grammar37.txt \
+    ninja_ide/intellisensei/parso/python/grammar38.txt
 }
 
 build () {
