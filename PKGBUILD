@@ -27,7 +27,7 @@ build() {
   cd ../
   ./autogen.sh
   ./configure
-  make
+  sudo make
 }
 
 package() {
