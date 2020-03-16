@@ -1,15 +1,14 @@
 pkgbase = python2-gwebsockets
-	pkgdesc = A websocket server written in python. It uses GIO for network communication and hence it easily integrates with the GLib mainloop.
+	pkgdesc = GLib based websocket server written in python
 	pkgver = 0.4
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/gwebsockets
+	pkgrel = 2
+	url = https://github.com/dnarvaez/gwebsockets
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
-	depends = python2>=2.7.9
-	depends = glib2
-	source = http://pypi.python.org/packages/source/g/gwebsockets/gwebsockets-0.4.tar.gz
-	md5sums = a0d1bd9e6e1b2aae5754e35234e3b838
+	depends = python2-gobject
+	source = python2-gwebsockets-0.4.tar.gz::https://github.com/dnarvaez/gwebsockets/archive/v0.4.tar.gz
+	sha256sums = 001d42a7d3adf2613f29e072a6488048c93800af3e3288df1c24e3e69da7e7e9
 
 pkgname = python2-gwebsockets
 

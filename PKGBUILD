@@ -1,22 +1,24 @@
-pkgname=python2-gwebsockets
-pkgver=0.4
-pkgrel=1
-pkgdesc="A websocket server written in python. It uses GIO for network communication and hence it easily integrates with the GLib mainloop."
-url="https://pypi.python.org/pypi/gwebsockets"
-license=('Apache')
-arch=('any')
-depends=('python2>=2.7.9' 'glib2')
-makedepends=('python2-setuptools')
+# Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
-source=(http://pypi.python.org/packages/source/g/gwebsockets/gwebsockets-$pkgver.tar.gz)
-md5sums=('a0d1bd9e6e1b2aae5754e35234e3b838')
+pkgname=python2-gwebsockets
+_pkgname=gwebsockets
+pkgver=0.4
+pkgrel=2
+pkgdesc="GLib based websocket server written in python"
+arch=('any')
+url="https://github.com/dnarvaez/gwebsockets"
+license=('Apache')
+depends=('python2-gobject')
+makedepends=('python2-setuptools')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dnarvaez/$_pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('001d42a7d3adf2613f29e072a6488048c93800af3e3288df1c24e3e69da7e7e9')
 
 build() {
-  cd "$srcdir/gwebsockets-$pkgver"
+  cd $_pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/gwebsockets-$pkgver"
+  cd $_pkgname-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
