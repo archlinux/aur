@@ -1,9 +1,10 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # Upstream URL: https://github.com/themix-project/oomox-gtk-theme
 
-pkgname=themix-theme-oomox-git
+_pkgname=themix-theme-oomox
+pkgname="${_pkgname}-git"
 pkgver=1.11.1.r21.g0143d5a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Oomox theme plugin
  (GTK2, GTK3, Cinnamon, Metacity, Openbox, Qt5ct, Unity, Xfwm) for Themix GUI designer.
  Have a hack for HiDPI in GTK2."
@@ -38,8 +39,8 @@ optdepends=(
 options=(
 	'!strip'
 )
-provides=('themix-theme-oomox')
-conflicts=('themix-theme-oomox')
+provides=($_pkgname)
+conflicts=($_pkgname)
 
 pkgver() {
 	cd "${srcdir}/oomox-gtk-theme"
@@ -48,13 +49,16 @@ pkgver() {
 
 package() {
 	_oomox_dir=/opt/oomox
-	_oomox_gui_dir=${_oomox_dir}/oomox_gui
-	cd "${srcdir}/oomox"
 
-	rm -fr plugins/theme_oomox/gtk-theme
-	mv "${srcdir}/oomox-gtk-theme" plugins/theme_oomox/gtk-theme
+	pkg_tmp_dir="${pkgdir}/_tmp"
+	rm -fr "$pkg_tmp_dir"
+	cp -r "${srcdir}/oomox" "$pkg_tmp_dir"
+	rm -rf "${pkg_tmp_dir}/plugins/theme_oomox/gtk-theme"
+	cp -r "${srcdir}/oomox-gtk-theme" "${pkg_tmp_dir}/plugins/theme_oomox/gtk-theme"
+
+	cd "$pkg_tmp_dir"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install_theme_oomox
-	python -O -m compileall ${pkgdir}${_oomox_gui_dir} -d ${_oomox_gui_dir}
+	rm -fr "$pkg_tmp_dir"
 }
 
 # vim: ft=PKGBUILD
