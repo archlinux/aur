@@ -1,7 +1,7 @@
 pkgbase = cegui
 	pkgdesc = A free library providing windowing and widgets for graphics APIs/engines
 	pkgver = 0.8.7
-	pkgrel = 9
+	pkgrel = 10
 	url = http://cegui.org.uk
 	arch = i686
 	arch = x86_64
@@ -33,8 +33,8 @@ pkgbase = cegui
 	optdepends = ois: running samples
 	optdepends = gtk2: gtk2 module
 	optdepends = irrlicht: irrlicht module
-	source = hg+https://bitbucket.org/cegui/cegui#tag=v0-8-7
-	md5sums = SKIP
+	source = cegui-0.8.7::https://github.com/cegui/cegui/archive/v0-8-7.tar.gz
+	sha256sums = 7be289d2d8562e7d20bd155d087d6ccb0ba62f7e99cc25d20684b8edf2ba15cd
 
 pkgname = cegui
 
