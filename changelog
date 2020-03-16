@@ -1,0 +1,4 @@
+2011-08-29 Sergej Pupykin <sergej@p5n.pp.ru>
+
+	* 1.0.22-3 :
+	add user configuration to /etc/conf.d/minidlna

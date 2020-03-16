@@ -1,0 +1,5 @@
+# systemd tmpfile settings for minidlna
+# See tmpfiles.d(5) for details
+
+d /run/minidlna 0755 minidlna minidlna -
+d /var/cache/minidlna 0755 minidlna minidlna -

@@ -1,0 +1,33 @@
+pkgbase = minidlna-listen-interface-fix
+	pkgdesc = A DLNA/UPnP-AV Media server (aka ReadyDLNA), with fixes from https://sourceforge.net/p/minidlna/bugs/297/
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/minidlna/
+	changelog = changelog
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libexif
+	depends = libjpeg
+	depends = libid3tag
+	depends = flac
+	depends = libvorbis
+	depends = ffmpeg
+	depends = sqlite
+	provides = minidlna
+	conflicts = minidlna
+	conflicts = readymedia-transcode-git
+	backup = etc/minidlna.conf
+	source = minidlna::git+https://git.code.sf.net/p/minidlna/git#tag=v1_2_1
+	source = minidlna.service
+	source = minidlna.tmpfiles
+	source = minidlna.sysusers
+	source = minidlna_listen_interface.patch
+	sha512sums = SKIP
+	sha512sums = f428710f3ad2de007ba2e4e8937a0b9262b5c6b4a63da536190e2866ae48c35be81672e3b097c8eb479d5749dd07be40c5a6a8c98e9c0a10ba08607d56b1a590
+	sha512sums = c58631c20416997c538be6258ef9c13b9304d5906b19f063157df70f672b7153b452ffb9612be267a90942bd880af8d665ebe3c53a2926ffa99acc943d875d97
+	sha512sums = e3e6c46faac768b283134a47013b77c4152840c61d3503f51fbe154bf25fe8a0e585ed9a40950212254b4a844b007f674875e4d25f55af51914694213fecc420
+	sha512sums = ce477b6967ef045398e70d5c05c586abf048722cd886e9b2b9f72495c052baec931f5cabc73c148dbd11f200d242c6c85c62ac36e883767a18d57dea7fcb2cb1
+
+pkgname = minidlna-listen-interface-fix
+

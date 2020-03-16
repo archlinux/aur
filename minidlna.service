@@ -1,0 +1,16 @@
+[Unit]
+Description=minidlna server
+After=network.target
+
+[Service]
+Type=simple
+User=minidlna
+Group=minidlna
+ExecStart=/usr/bin/minidlnad -S
+ProtectSystem=full
+ProtectHome=on
+PrivateDevices=on
+NoNewPrivileges=on
+
+[Install]
+WantedBy=multi-user.target
