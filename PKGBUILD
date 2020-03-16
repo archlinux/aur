@@ -1,21 +1,21 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jitsi-meet-git
 pkgver=r1.9a162c2
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
 url="https://github.com/jitsi/jitsi-meet"
 license=("Apache")
 groups=()
 depends=("npm")
-makedepends=()
+makedepends=("git")
 checkdepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=("jitsi-meet")
+conflicts=("jitsi-meet")
 replaces=()
-backup=()
+backup=("opt/jitsi-meet/config.js")
 options=()
 install=
 changelog=
@@ -32,9 +32,6 @@ build() {
 }
 
 package() {
-  # Workaround so we don't overwrite user's config.js
-  mv "${srcdir}/jitsi-meet-git/config.js" "${srcdir}/jitsi-meet-git/config.js.example"
-
   install -d "${pkgdir}/opt"
   cp -R "${srcdir}/jitsi-meet-git/" "${pkgdir}/opt/jitsi-meet"
 }
