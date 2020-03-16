@@ -2,7 +2,7 @@
 
 pkgname=yanc-font
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='yet another neat condensed font. based on gohufont.'
 arch=(any)
 url='https://github.com/repomaa/yanc-font'
@@ -30,7 +30,7 @@ package() {
   cd "${pkgname}"
   install -d "$pkgdir/usr/share/fonts/misc"
   install -Dm644 *.otb "$pkgdir/usr/share/fonts/misc/"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/yanc-font-git/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
