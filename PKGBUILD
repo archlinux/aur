@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne at archlinux dot org>
 pkgname=dnsdist-git
-pkgver=r17438.a1c95af86
+pkgver=r18687.148a1b87a
 pkgrel=1
 pkgdesc='Highly DNS-, DoS- and abuse-aware loadbalancer'
 arch=('x86_64')
@@ -37,9 +37,10 @@ build() {
     --enable-dns-over-tls \
     --enable-dns-over-https \
     --enable-dnscrypt \
-    --enable-systemd
+    --enable-systemd \
+    --with-service-user=dnsdist \
+    --with-service-group=dnsdist
   make
-  sed -i 's,CapabilityBoundingSet=CAP_NET_BIND_SERVICE CAP_SETGID CAP_SETUID,CapabilityBoundingSet=CAP_NET_BIND_SERVICE\nAmbientCapabilities=CAP_NET_BIND_SERVICE\nUser=dnsdist\nGroup=dnsdist,' dnsdist.service
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = dnsdist-git
 	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
-	pkgver = r17438.a1c95af86
+	pkgver = r18687.148a1b87a
 	pkgrel = 1
 	url = https://dnsdist.org/
 	arch = x86_64
