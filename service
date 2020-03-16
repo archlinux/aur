@@ -1,0 +1,13 @@
+[Unit]
+Description=Jicofo
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/jicofo/jicofo.conf
+ExecStart=/opt/jicofo/jicofo.sh ${flags}
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

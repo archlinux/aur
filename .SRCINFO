@@ -1,15 +1,23 @@
 pkgbase = jicofo-git
 	pkgdesc = JItsi Meet COnference FOcus
 	pkgver = r1.938738f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jitsi/jicofo
 	arch = x86_64
 	license = Apache
+	makedepends = git
 	depends = java-runtime-headless
 	depends = maven
 	depends = unzip
+	provides = jicofo
+	conflicts = jicofo
+	backup = etc/jicofo/jicofo.conf
 	source = jicofo-git::git+https://github.com/jitsi/jicofo
+	source = service
+	source = config
 	sha256sums = SKIP
+	sha256sums = c1e17cf1de2274d375d08afee1853e1314d74763ec600b7bba740cfb7df09258
+	sha256sums = fea884f52b5c91b7514212d989fae36fd2113967c2617fae1b686ac6c774a7f8
 
 pkgname = jicofo-git
 

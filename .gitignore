@@ -2,3 +2,5 @@
 !.SRCINFO
 !PKGBUILD
 !.gitignore
+!service
+!config
