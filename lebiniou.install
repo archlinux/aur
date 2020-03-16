@@ -1,9 +1,11 @@
 post_install() {
     ln -s /usr/lib/libMagickWand-6.Q16HDRI.so.6 /usr/lib/libMagickWand-6.Q16.so.6
     printf 'Symbolic link to /usr/lib/libMagickWand-6.Q16HDRI.so.6 to satisfy /usr/lib/libMagickWand-6.Q16.so.6 dependency.\n'
+    ln -s /usr/lib/x86_64-linux-gnu/liblebiniou.so.0 /usr/lib/liblebiniou.so.0
 }
 
 post_remove() {
 	rm /usr/lib/libMagickWand-6.Q16.so.6
+	rm /usr/lib/liblebiniou.so.0
     printf 'Removing /usr/lib/libMagickWand-6.Q16.so.6, symbolic link to /usr/lib/libMagickWand-6.Q16HDRI.so.6\n'
 }
