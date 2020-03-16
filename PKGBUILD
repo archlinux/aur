@@ -1,7 +1,7 @@
 # Maintainer: Štěpán Němec <stepnem@gmail.com>
 
 pkgname=pypinyin
-pkgver=0.35.4
+pkgver=0.37.0
 pkgrel=1
 pkgdesc='Chinese characters transliteration module and tool'
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('f4b3a97dc6cd20ad78e3c0b750b81ab79270acf5ea0b79b91f6409ed6e427271')
+sha256sums=('597b9d375bcd1a8a9c9bda7f813d58bd9e148288006f62d34ab2f3a9ff4cba33')
 
 build() {
   cd "$pkgname-$pkgver"
