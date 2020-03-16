@@ -13,6 +13,8 @@ sha256sums=('35362d1067ac5dd4d19ca6a41c43203d2aededc7b8cd77ae6b1f161cdf627535')
 package() {
     depends=('findutils' 'systemd')
 
+    cd "$pkgname-$pkgver"
+
     install -Dm644 systemd-cleanup.hook "$pkgdir/usr/share/libalpm/hooks/systemd-cleanup.hook"
     install -Dm755 systemd-cleanup "$pkgdir/usr/share/libalpm/scripts/systemd-cleanup"
 
