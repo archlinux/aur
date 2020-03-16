@@ -2,12 +2,12 @@
 
 pkgname=gst
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="System utility designed to stress and monitoring various hardware components"
 arch=('any')
 url="https://gitlab.com/leinardi/gst"
 license=('GPL3')
-depends=('dmidecode' 'gobject-introspection' 'libappindicator3' 'lm_sensors' 'python' 'python-gobject' 'python-humanfriendly' 'python-injector' 'python-peewee' 'python-psutil' 'python-requests' 'python-rx' 'python-yaml' 'python-xdg' 'stress-ng')
+depends=('dmidecode' 'gobject-introspection' 'libappindicator-gtk3' 'lm_sensors' 'python' 'python-gobject' 'python-humanfriendly' 'python-injector' 'python-peewee' 'python-psutil' 'python-requests' 'python-rx' 'python-yaml' 'python-xdg' 'stress-ng')
 makedepends=('meson' 'appstream-glib')
 provides=()
 conflicts=('smalltalk')

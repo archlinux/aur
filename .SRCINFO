@@ -1,7 +1,7 @@
 pkgbase = gst
 	pkgdesc = System utility designed to stress and monitoring various hardware components
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/leinardi/gst
 	arch = any
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = gst
 	makedepends = appstream-glib
 	depends = dmidecode
 	depends = gobject-introspection
-	depends = libappindicator3
+	depends = libappindicator-gtk3
 	depends = lm_sensors
 	depends = python
 	depends = python-gobject
