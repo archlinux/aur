@@ -1,7 +1,7 @@
 pkgbase = pantheon-lite
 	pkgdesc = Pantheon Lite Session (Gala replaced with openbox & picom)
-	pkgver = 5
-	pkgrel = 2
+	pkgver = 6
+	pkgrel = 1
 	url = https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016
 	arch = any
 	groups = pantheon-qq
@@ -9,7 +9,6 @@ pkgbase = pantheon-lite
 	depends = openbox
 	depends = picom
 	depends = pantheon-workarounds
-	depends = pantheon-session
 	depends = wingpanel-standalone-git
 	optdepends = obconf: openbox configuration utility
 	optdepends = elementary-os-openbox: Elementary theme for Openbox

@@ -3,14 +3,14 @@
 # Contributor: Ner0 <darkelfdarkelf666@yahoo.co.uk>
 
 pkgname=pantheon-lite
-pkgver=5
-pkgrel=2
+pkgver=6
+pkgrel=1
 pkgdesc='Pantheon Lite Session (Gala replaced with openbox & picom)'
 arch=('any')
 url='https://bbs.archlinux.org/viewtopic.php?pid=1402016#p1402016'
 license=('GPL3')
 groups=('pantheon-qq')
-depends=('openbox' 'picom' pantheon-{workarounds,session}
+depends=('openbox' 'picom' 'pantheon-workarounds'
          'wingpanel-standalone-git')
 optdepends=("obconf: openbox configuration utility"
             "elementary-os-openbox: Elementary theme for Openbox"
