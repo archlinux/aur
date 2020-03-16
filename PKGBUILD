@@ -2,19 +2,18 @@
 
 pkgname=yanc-font-git
 pkgver=0.r40.b690500
-pkgrel=1
+pkgrel=2
 pkgdesc='yet another neat condensed font. based on gohufont.'
 arch=(any)
 url='https://github.com/jreinert/yanc-font'
-licence=('MIT')
-depends=(fontconfig xorg-font-utils)
-makedepends=('git' 'xorg-bdftopcf')
+license=('MIT')
+depends=()
+makedepends=('git' 'fonttosfnt')
 
 source=("${pkgname}::git+https://github.com/jreinert/yanc-font.git")
 sha512sums=(SKIP)
 provides=('yanc-font')
 conflicts=('yanc-font')
-install=$pkgname.install
 
 pkgver() {
   cd "${pkgname}"
@@ -24,14 +23,15 @@ pkgver() {
 build() {
   cd "${pkgname}"
   for file in *.bdf; do
-    bdftopcf $file | gzip > ${file/%bdf/pcf.gz}
+    fonttosfnt -o "${file/%bdf/otb}" "$file"
   done
 }
 
 package() {
   cd "${pkgname}"
   install -d "$pkgdir/usr/share/fonts/misc"
-  install -m644 *.pcf.gz "$pkgdir/usr/share/fonts/misc/"
+  install -Dm644 *.otb "$pkgdir/usr/share/fonts/misc/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/yanc-font-git/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
