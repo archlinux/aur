@@ -3,9 +3,9 @@ thread, without breaking the realtime behavior."
 url='https://wiki.ros.org/realtime_tools'
 
 pkgname='ros-melodic-realtime-tools'
-pkgver='1.15.1'
+pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -26,7 +26,7 @@ depends=(${ros_depends[@]})
 
 _dir="${srcdir}/realtime_tools-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz")
-sha256sums=('3356e9df104c177bd588db133eba65a351af62e35e64c87f2a5fc72c3fd2cd5a')
+sha256sums=('690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111')
 
 build() {
   # Use ROS environment variables
