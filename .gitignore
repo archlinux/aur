@@ -3,3 +3,4 @@ pkg/
 *.pkg.tar.xz
 *.run
 *.png
+*.part
