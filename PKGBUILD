@@ -2,16 +2,16 @@
 
 _name=hickle
 pkgname="python-$_name"
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 pkgdesc='Hickle - a HDF5 based version of pickle'
 arch=('any')
 url="http://github.com/telegraphic/$_name"
 license=('MIT')
 depends=('python' 'python-h5py' 'python-numpy' 'python-dill')
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner' 'python-scipy' 'python-pandas' 'python-coveralls')
+#checkdepends=('python-pytest' 'python-pytest-cov' 'python-pytest-runner' 'python-scipy' 'python-pandas' 'python-codecov' 'check-manifest' 'twine')
 source=("https://github.com/telegraphic/$_name/archive/$pkgver.tar.gz")
-sha256sums=('e3e337e8f80516b6665fd0bcbddd812744d83779d314996af2735362c159be9c')
+sha256sums=('c9b74f50cd8cb1beecf325ae8a248ad87cdca0cab180c36e1854ba2285d09a99')
 
 build() {
   cd $_name-$pkgver
@@ -19,7 +19,9 @@ build() {
 }
 check() {
   cd $_name-$pkgver
-  python setup.py test
+  #check-manifest
+  #twine check dist/*
+  #python setup.py test
 }
 package() {
   cd $_name-$pkgver
