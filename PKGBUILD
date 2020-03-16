@@ -2,7 +2,7 @@
 
 pkgbase=wraith-master
 pkgname=("wraith-master-cli" "wraith-master-gtk")
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A Wraith Prism RGB control application built with Kotlin/Native"
 arch=("x86_64")
