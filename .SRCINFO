@@ -1,0 +1,13 @@
+pkgbase = omins.lv2-git
+	pkgdesc = Omins plugins for modular LV2 hosts
+	pkgver = r67.058f341
+	pkgrel = 1
+	url = http://git.drobilla.net/cgit.cgi/omins.lv2.git
+	arch = x86_64
+	license = GPL
+	depends = lv2
+	source = omins.lv2-git::git+http://git.drobilla.net/cgit.cgi/omins.lv2.git
+	md5sums = SKIP
+
+pkgname = omins.lv2-git
+
