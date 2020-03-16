@@ -1,0 +1,14 @@
+pkgbase = openrc-manager
+	pkgdesc = Manage OpenStack openrc files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/olivergondza/openrc-manager
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	source = git+https://github.com/olivergondza/openrc-manager.git#tag=0.1
+	md5sums = SKIP
+
+pkgname = openrc-manager
+
