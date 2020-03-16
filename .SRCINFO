@@ -1,7 +1,7 @@
 pkgbase = themix-icons-gnome-colors-git
 	pkgdesc = Gnome-Colors icons plugin for Themix GUI designer
 	pkgver = 5.5.5.r0.gcd8b05a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/themix-project/gnome-colors-icon-theme
 	arch = x86_64
 	arch = i686
