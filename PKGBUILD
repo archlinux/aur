@@ -5,7 +5,7 @@ _pkgname=themix-theme-oomox
 _reponame=oomox-gtk-theme
 pkgname="${_pkgname}-git"
 pkgver=1.11.1.r21.g0143d5a1
-pkgrel=2
+pkgrel=3
 pkgdesc="Oomox theme plugin
  (GTK2, GTK3, Cinnamon, Metacity, Openbox, Qt5ct, Unity, Xfwm) for Themix GUI designer.
  Have a hack for HiDPI in GTK2."
@@ -33,6 +33,7 @@ depends=(
 )
 makedepends=(
 	'git'
+	'python'
 )
 optdepends=(
 	'themix-gui: GUI'
@@ -62,6 +63,8 @@ package() {
 	cd "$pkg_tmp_dir"
 	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install_theme_oomox
 	rm -fr "$pkg_tmp_dir"
+
+	python -O -m compileall "${pkgdir}${_oomox_dir}/plugins/${_plugin_name}" -d "${_oomox_dir}/plugins/${_plugin_name}"
 }
 
 # vim: ft=PKGBUILD
