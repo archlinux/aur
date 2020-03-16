@@ -25,6 +25,6 @@ package() {
     cp -r * "${pkgdir}"
     cd "${pkgdir}"
     mkdir -p "${pkgdir}/usr/share/icons"
-    ${_gitname}/install.sh -d "${pkgdir}/usr/share/icons"
+    ${_gitname}/install.sh -a -d "${pkgdir}/usr/share/icons"
     rm -rf "${pkgdir}/${_gitname}"
 }
