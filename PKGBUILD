@@ -1,18 +1,40 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: Qirui Wang <wqr.prg@gmail.com>
+# Contributor: Carl George < arch at cgtx dot us >
 
 _name="sanic"
 pkgname="python-$_name"
-pkgver=0.7.0
+pkgver=19.12.2
 pkgrel=1
-pkgdesc="A microframework based on uvloop, httptools, and learnings of flask"
+pkgdesc='Async Python 3.6+ web server/framework | Build fast. Run fast.'
 arch=("any")
-url="https://github.com/channelcat/sanic"
+url='https://sanicframework.org/'
 license=("MIT")
+depends=(
+    'python-httptools'
+    'python-aiofiles'
+    'python-websockets'
+    'python-multidict'
+    'python-httpx'
+    'python-uvloop'
+    'python-ujson'
+)
 makedepends=("python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/channelcat/sanic/$pkgver/LICENSE")
-sha256sums=('22b1a6f1dc55db8a136335cb0961afa95040ca78aa8c78425a40d91e8618e60e'
-            'e7814de9a02ae20500778a5d1a4ab63c71a8f3072faf4ac669a143f2e71b72c5')
+source=(
+    "https://github.com/huge-success/${_name}/archive/v${pkgver}.tar.gz"
+    'https://github.com/huge-success/sanic/commit/5d273fe922ecd7d80ddfb88c84787a9b3ee7f4eb.patch'
+    'https://github.com/huge-success/sanic/commit/805d8f3af26fe1d40d72d71d9b58c0ba72bbd2ab.patch'
+)
+sha256sums=('baf596636ac6d2c61947d133781f53d1cee93ed94610986cc799e8c96d03a1d4'
+            '5b86c9e4cf3a8f204156cfc108a8af21bc4c4c3b490a6e7d473742707e72dafd'
+            'fd0d6e8592605c21420c36f5e8a22c97e19440ab89dcb1914d45a01a2da75076')
+
+prepare() {
+    cd "$_name-$pkgver"
+
+    # Fix compatibility with httpx
+    patch -p1 -i ../5d273fe922ecd7d80ddfb88c84787a9b3ee7f4eb.patch
+    patch -p1 -i ../805d8f3af26fe1d40d72d71d9b58c0ba72bbd2ab.patch
+}
 
 build() {
     cd "$_name-$pkgver"
@@ -20,12 +42,7 @@ build() {
 }
 
 package() {
-    depends=("python-uvloop>=0.5.3"
-             "python-httptools>=0.0.9"
-             "python-ujson>=1.35"
-             "python-aiofiles>=0.3.0"
-             "python-websockets>=3.2")
     cd "$_name-$pkgver"
     python setup.py install --skip-build --root="$pkgdir" --optimize=1
-    install -D --mode 644 --target-directory "$pkgdir/usr/share/licenses/$pkgname" "$srcdir/LICENSE"
+    install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/licence"
 }

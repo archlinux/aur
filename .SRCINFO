@@ -1,20 +1,24 @@
 pkgbase = python-sanic
-	pkgdesc = A microframework based on uvloop, httptools, and learnings of flask
-	pkgver = 0.7.0
+	pkgdesc = Async Python 3.6+ web server/framework | Build fast. Run fast.
+	pkgver = 19.12.2
 	pkgrel = 1
-	url = https://github.com/channelcat/sanic
+	url = https://sanicframework.org/
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sanic/sanic-0.7.0.tar.gz
-	source = https://raw.githubusercontent.com/channelcat/sanic/0.7.0/LICENSE
-	sha256sums = 22b1a6f1dc55db8a136335cb0961afa95040ca78aa8c78425a40d91e8618e60e
-	sha256sums = e7814de9a02ae20500778a5d1a4ab63c71a8f3072faf4ac669a143f2e71b72c5
+	depends = python-httptools
+	depends = python-aiofiles
+	depends = python-websockets
+	depends = python-multidict
+	depends = python-httpx
+	depends = python-uvloop
+	depends = python-ujson
+	source = https://github.com/huge-success/sanic/archive/v19.12.2.tar.gz
+	source = https://github.com/huge-success/sanic/commit/5d273fe922ecd7d80ddfb88c84787a9b3ee7f4eb.patch
+	source = https://github.com/huge-success/sanic/commit/805d8f3af26fe1d40d72d71d9b58c0ba72bbd2ab.patch
+	sha256sums = baf596636ac6d2c61947d133781f53d1cee93ed94610986cc799e8c96d03a1d4
+	sha256sums = 5b86c9e4cf3a8f204156cfc108a8af21bc4c4c3b490a6e7d473742707e72dafd
+	sha256sums = fd0d6e8592605c21420c36f5e8a22c97e19440ab89dcb1914d45a01a2da75076
 
 pkgname = python-sanic
-	depends = python-uvloop>=0.5.3
-	depends = python-httptools>=0.0.9
-	depends = python-ujson>=1.35
-	depends = python-aiofiles>=0.3.0
-	depends = python-websockets>=3.2
 
