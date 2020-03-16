@@ -1,7 +1,6 @@
-
 # Maintainer: Harm Müller <harm[DOT]mueller[AT]gmail[DOT]com>
 pkgname='perl-rex'
-pkgver='1.6.0'
+pkgver='1.8.2'
 pkgrel='1'
 pkgdesc="(R)?ex Deployment & Configuration Management"
 arch=('any')
@@ -10,10 +9,10 @@ options=('!emptydirs')
 depends=('perl-hash-merge' 'perl-net-ssh2' 'perl-libwww' 'perl-io-string' 'perl-json-xs' 'perl-list-allutils' 'perl-sort-naturally' 'perl-term-readkey' 'perl-text-glob' 'perl-xml-simple' 'perl-yaml' 'perl-net-openssh' 'perl-test-useallmodules' 'perl-io-tty' 'perl-net-sftp-foreign' 'perl-test-pod' 'perl-string-escape' 'perl-test-deep' 'perl-devel-caller' 'perl-padwalker' 'perl-json-maybexs' 'perl-data-validate-ip')
 makedepends=()
 url='http://www.rexify.org/'
-source=('https://cpan.metacpan.org/authors/id/J/JF/JFRIED/Rex-1.6.0.tar.gz')
-md5sums=('93b7d49e8aa76ccdc22d66031a65d72e')
-sha256sums=('1c35c5a48018205bc540d0cc1d11fc2a47579b1319262940412ba2b8372459d6')
-_distdir="Rex-1.6.0"
+source=('https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.8.2.tar.gz')
+md5sums=('1005cf6d044dc2f317dca67711107f73')
+sha256sums=('6baa0603da9589cd6b78abe4c80cf3b9fec57133198b4c66e8d28e8e63888738')
+_distdir="Rex-1.8.2"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
