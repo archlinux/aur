@@ -1,0 +1,13 @@
+pkgbase = rsngm-chat
+	pkgdesc = Чат на питоне
+	pkgver = 666
+	pkgrel = 666
+	url = https://github.com/rasongame/chat
+	arch = any
+	license = CUSTOM
+	depends = python
+	source = https://github.com/rasongame/chat/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = rsngm-chat
+
