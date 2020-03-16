@@ -2,7 +2,7 @@
 # Mon Feb 24 18:28:26 UTC 2020
 pkgbase = gpxsee-git
 	pkgdesc = GPS log file viewer and analyzer
-	pkgver = 7.23.r2.g92deaaa
+	pkgver = 7.25.r19.g9ce6e16
 	pkgrel = 1
 	url = https://www.gpxsee.org/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gpxsee-git
 	optdepends = qt5-imageformats: Support for GeoTIFF images
 	optdepends = qt5-pbfimageplugin: Support for PBF vector maps
 	optdepends = qt5-translations: for Qt5 dialog translations
-	provides = gpxsee=7.23.r2.g92deaaa
+	provides = gpxsee=7.25.r19.g9ce6e16
 	conflicts = gpxsee
 	source = https://github.com/tumic0/GPXSee/archive/master.tar.gz
 	sha256sums = SKIP
