@@ -3,7 +3,7 @@
 # Contributor: stardust95
 pkgname=lebiniou
 pkgver=3.40
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays images that evolve with sound."
 arch=('i686' 'x86_64')
 url="https://biniou.net"

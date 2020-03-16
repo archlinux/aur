@@ -1,7 +1,7 @@
 pkgbase = lebiniou
 	pkgdesc = Displays images that evolve with sound.
 	pkgver = 3.40
-	pkgrel = 1
+	pkgrel = 2
 	url = https://biniou.net
 	install = lebiniou.install
 	arch = i686
