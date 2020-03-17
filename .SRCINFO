@@ -1,6 +1,6 @@
 pkgbase = ms-tpm-20-ref-git
 	pkgdesc = Reference implementation of the TCG Trusted Platform Module 2.0 specification
-	pkgver = r134.39e7306
+	pkgver = r167.51d7b24
 	pkgrel = 1
 	url = https://github.com/Microsoft/ms-tpm-20-ref
 	arch = x86_64
