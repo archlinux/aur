@@ -1,7 +1,7 @@
 # Maintainer: itsagoodbrain <itsrottenisay@gmail.com>
 
 pkgname=zettlr-bin
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A markdown editor for writing academic texts and taking notes"
 arch=('x86_64')
