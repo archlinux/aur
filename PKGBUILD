@@ -12,7 +12,7 @@ optdepends=('pandoc: export support'
 	    'texlive-bin: pdf etc support')
 provides=(zettlr)
 source=("https://github.com/Zettlr/Zettlr/releases/download/v${pkgver}/Zettlr-${pkgver}-x86_64.rpm")
-sha256sums=(151df9eec8f55b884d301ee9c8c854ad0af9f7fe373792bc1425e8c8f46542e4)
+sha256sums=(7a580ccd50e3a507696150b83c110ebbe290ebd7c66e5613a40da49d1e3005f6)
 package() {
 	mv $srcdir/opt $pkgdir/opt
 	mv $srcdir/usr $pkgdir/usr
