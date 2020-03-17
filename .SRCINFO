@@ -1,0 +1,20 @@
+pkgbase = gsfonts-emojiless
+	pkgdesc = (URW)++ Core Font Set [Level 2] without characters listed as emoji, in order not to override color fonts
+	pkgver = 20180524
+	pkgrel = 1
+	url = https://github.com/ArtifexSoftware/urw-base35-fonts
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = fontforge
+	provides = gsfonts
+	conflicts = gsfonts
+	source = git+https://github.com/ArtifexSoftware/urw-base35-fonts#commit=b758567463df532414c520cf008e27d9448b55a4
+	source = https://github.com/iamcal/emoji-data/raw/b9924d171ef2ca818bc601ac5da3e793338dab2a/emoji.json
+	source = cleaner.py
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 6a22224c8984befe02ef48a8e194059856c0384f136f7890e72d5e3e31fa81c4
+
+pkgname = gsfonts-emojiless
+
