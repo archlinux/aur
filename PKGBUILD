@@ -2,7 +2,7 @@
 
 pkgname=macro11-git
 
-pkgver=2013.2.r6.ge35df87
+pkgver=macro11.2013.2.r6.ge35df87
 
 pkgrel=1
 

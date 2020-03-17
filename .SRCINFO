@@ -1,6 +1,6 @@
 pkgbase = macro11-git
 	pkgdesc = A MACRO-11 assembler for the PDP-11 in portable C source code.
-	pkgver = 2013.2.r6.ge35df87
+	pkgver = macro11.2013.2.r6.ge35df87
 	pkgrel = 1
 	url = https://github.com/shattered/macro11
 	arch = any
