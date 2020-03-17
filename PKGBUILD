@@ -1,6 +1,7 @@
 ﻿# Maintainer: termuellinator
+
 pkgname=ryzencontroller-bin
-_pkgver=2.0.0
+_pkgver=2.1.0
 pkgver=${_pkgver//[+-]/_}
 pkgrel=1
 pkgdesc="A minimal Electron application to use ryzenAdj through a friendly interface"
@@ -10,8 +11,8 @@ provides=('ryzencontroller')
 conflicts=('ryzencontroller')
 url="https://gitlab.com/ryzen-controller-team/ryzen-controller"
 license=('CC0 1.0 Universal')
-source=("ryzencontroller_${_pkgver}_amd64.deb::https://gitlab.com/ryzen-controller-team/ryzen-controller/-/jobs/471899904/artifacts/raw/dist/deb/ryzen-controller_${_pkgver}_amd64.deb")
-sha256sums=('7a34c10177c659e0656570a1a0c9e44e134637ff6eec41f2c71f9eb53364cd27')
+source=("ryzencontroller_${_pkgver}_amd64.deb::https://gitlab.com/ryzen-controller-team/ryzen-controller/-/jobs/475206892/artifacts/raw/dist/deb/ryzen-controller_${_pkgver}_amd64.deb")
+sha256sums=('6b3cd7eeea18f57dc902e300d55d63248db796430610125085db49d558070b18')
 
 package() {
     cd "${srcdir}"
