@@ -42,4 +42,5 @@ package() {
     mv "${pkgdir}/usr/games/" "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/licenses/$pkgname/"
     cp "$srcdir/xray-16/License.txt" "${pkgdir}/usr/share/licenses/$pkgname/"
+    rm -rf "${pkgdir}/lib" #Temporary crutch
 }
