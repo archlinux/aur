@@ -1,6 +1,6 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 pkgname=python-flask-limiter
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Rate limiting for flask applications"
 url="https://flask-limiter.readthedocs.org"
@@ -9,7 +9,8 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/f/flask-limiter/Flask-Limiter-${pkgver}.tar.gz")
-md5sums=('e96f02fa9092207eaeae96cf180f479a')
+
+sha256sums=('d984a57ef37acb6eee29edc864ff22cd4cf090845f06968c015093ffd91e96f1')
 
 build() {
     cd "${srcdir}/Flask-Limiter-${pkgver}"
