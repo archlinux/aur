@@ -1,0 +1,24 @@
+pkgbase = spectral-matrix
+	pkgdesc = Glossy cross-platform client for Matrix
+	pkgver = 817
+	pkgrel = 1
+	url = https://gitlab.com/spectral-im/spectral
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	depends = qt5-graphicaleffects
+	depends = qt5-multimedia
+	depends = qt5-quickcontrols2
+	depends = qt5-svg
+	depends = qt5-tools
+	depends = qtkeychain
+	depends = libquotient-git
+	depends = libqtolm-git
+	conflicts = spectral-matrix-git
+	source = spectral-matrix-817.tar.gz::https://gitlab.com/spectral-im/spectral/-/archive/817/spectral-817.tar.gz
+	source = SortFilterProxyModel-36befddf5d57faad990e72c88c5844794f274145.tar.gz::https://github.com/oKcerG/SortFilterProxyModel/archive/36befddf5d57faad990e72c88c5844794f274145.tar.gz
+	sha256sums = 6888ad58282eb5baab83d7037423d22b6c2d5be60f8452168b57b39b53e6ca0d
+	sha256sums = 1f5a6c64f793e7d74e8922e071392cf33baa4e7457e70f396c1e1fcb9d63b378
+
+pkgname = spectral-matrix
+
