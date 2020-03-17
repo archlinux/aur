@@ -1,7 +1,7 @@
 # Maintainer: Xingbo Wu <wuxb45 at gmail dot com>
 pkgname=spdk-git
 pkgver=r0.0   # pkgver() updates this
-pkgrel=3
+pkgrel=4
 pkgdesc='spdk-git: headers, libs, and scripts'
 arch=('x86_64')
 license=('BSD')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   git submodule update --init
-  ./configure --prefix=/usr --with-shared --disable-tests --without-isal
+  ./configure --prefix=/usr --with-shared --disable-tests --disable-unit-tests --without-isal
   make
 }
 
