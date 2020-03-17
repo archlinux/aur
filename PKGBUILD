@@ -7,10 +7,10 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2020.112.0.r96.86ae442d5
+pkgver=2020.312.0.r111.7be5ef4737
 pkgrel=1
 pkgdesc="An open source, free-to-win rhythm game"
-arch=('any')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ppy/osu"
 license=('MIT')
 groups=()
