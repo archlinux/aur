@@ -18,6 +18,7 @@ md5sums=('SKIP'
          'SKIP')
 depends=(
 	'sed'
+	'findutils'
 )
 makedepends=(
 	'git'
@@ -26,8 +27,8 @@ makedepends=(
 optdepends=(
 	'themix-gui: GUI'
 	'breeze-icons: fallback icons'
-    'gnome-icon-theme: fallback icons'
-    'gnome-icon-theme-symbolic: fallback icons'
+	'gnome-icon-theme: fallback icons'
+	'gnome-icon-theme-symbolic: fallback icons'
 	'oxygen-icons: fallback icons'
 )
 options=(
@@ -42,8 +43,6 @@ pkgver() {
 }
 
 package() {
-	_oomox_dir=/opt/oomox
-
 	_oomox_dir=/opt/oomox
 	_plugin_name=icons_archdroid
 	_plugin_subpath="/${_reponame}"

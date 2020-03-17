@@ -9,6 +9,7 @@ pkgbase = themix-icons-archdroid-git
 	makedepends = git
 	makedepends = python
 	depends = sed
+	depends = findutils
 	optdepends = themix-gui: GUI
 	optdepends = breeze-icons: fallback icons
 	optdepends = gnome-icon-theme: fallback icons
