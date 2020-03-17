@@ -40,7 +40,7 @@ install=nft_geoip.install
 prepare() {
     cd "${srcdir}"
     if [[ -z "${_maxmind_key}" ]]; then
-        ln -s dbip-country-lite-${_geoip_date}.csv dbip-country-lite.csv
+        ln -sf dbip-country-lite-${_geoip_date}.csv dbip-country-lite.csv
         cp xt_geoip_build-${_xtver} nft_geoip_build
         patch nft_geoip_build xt_geoip_build.patch
     else
