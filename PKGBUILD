@@ -13,6 +13,15 @@ depends=(
    gnupg xclip curl jq git python3
 )
 
+prepare() {
+    echo "Would you like to create a gpg key ?"
+    read -p "y/N" create
+    if [[$create == 'y']]; then
+        echo "Creating a new gpg key"
+        gpg --full-generate-key
+    fi
+}
+
 package() {
     git clone https://framagit.org/SirCipherz/julie.git $srcdir
     cd $srcdir
