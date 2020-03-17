@@ -1,12 +1,14 @@
 pkgname=zenith-git
 pkgver=r174.cbe523d
-pkgrel=1
+pkgrel=2
 pkgdesc='In terminal graphical metrics for your *nix system written in Rust'
 arch=('x86_64')
 url='https://github.com/bvaisvil/zenith'
 license=('MIT')
 depends=()
 makedepends=('rust')
+provides=('zenith')
+conflicts=('zenith' 'zenith-bin')
 
 source=("git+https://github.com/bvaisvil/zenith.git")
 md5sums=("SKIP")
