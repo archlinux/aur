@@ -1,7 +1,7 @@
 # Maintainer: Marcus Hoffmann <bubu@bubu1.eu>
 
 pkgname=matrix-registration
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 
 pkgdesc="Webapp for token based matrix registration"
@@ -15,21 +15,11 @@ depends=('python-appdirs' 'python-flask' 'python-flask-cors'
 checkdepends=('flake8' 'python-parameterized')
 
 source=("matrix-registration-$pkgver.tar.gz::https://github.com/ZerataX/matrix-registration/archive/v$pkgver.tar.gz"
-	"https://github.com/Bubu/matrix-registration/commit/0b1f172d5d5409ae83d23052b3e261562cfa2dc3.patch"
-	"https://github.com/Bubu/matrix-registration/commit/822c426d1a2015a9d383a41ef245c590abd130de.patch"
 	"matrix-registration.service")
 
-sha256sums=('77167413fdf46a2e5b6b38d6822208ee0550abd55091c2c27449555333afb9eb'
-            '13ae49f07d00ce8567422634ccc15fd4d2331ee3bb127a980b99dde0ccc64c12'
-            '315582a06dbe20778def87ca95f85fd15d16a582136c0a60ee5fbaed157b9b44'
+sha256sums=('770a5033d119f87ad61601a3df3d1abc046f2a9b5dada9ced785df99f7f660d1'
             'e6855f64adaeff6be8cdf1106f62d1fe0f66e5015ff856e6db41e05f25bcd29a')
 install=matrix-registration.install
-
-prepare() {
-        cd $pkgname-$pkgver
-	patch -p1 -i ../0b1f172d5d5409ae83d23052b3e261562cfa2dc3.patch
-	patch -p1 -i ../822c426d1a2015a9d383a41ef245c590abd130de.patch
-}
 
 build() {
 	cd $pkgname-$pkgver
