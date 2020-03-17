@@ -1,0 +1,25 @@
+pkgbase = proton-ge-custom-legacy-bin
+	pkgdesc = A fancy custom distribution of Valves Proton with various patches - legacy branch
+	pkgver = 4.21_GE_2
+	pkgrel = 1
+	url = https://github.com/GloriousEggroll/proton-ge-custom
+	arch = x86_64
+	license = BSD
+	license = LGPL
+	license = zlib
+	license = MIT
+	license = MPL
+	license = custom
+	depends = python
+	optdepends = winetricks: protonfixes backend
+	optdepends = wine-staging: 32bit prefixes
+	optdepends = python-cef: splash dialog support
+	optdepends = zenity: splash dialog support
+	optdepends = steam: use proton with steam like intended
+	source = proton-ge-custom-legacy-4.21-GE-2.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/4.21-GE-2/Proton-4.21-GE-2.tar.gz
+	source = supplementary.tar.zst
+	md5sums = 19c4163bad6d868ce7990f258369a4c6
+	md5sums = 07c5abd3c7d734661ac9d889918a5cf3
+
+pkgname = proton-ge-custom-legacy-bin
+
