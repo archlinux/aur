@@ -1550,3 +1550,14 @@ Sun Mar 15 14:24:43 2020 +0100
      2019-12-27 ac14b2ac actionless chore(plugins: themes: oomox): update submodule (entry borders revamp)
      2019-12-26 c1adfb54 actionless chore(plugins: theme: oomox): update submodule (more separators fixed + popovers)
      2019-12-26 1384adfa actionless chore(plugins: theme: oomox): update submodule (nemo statusbar improvements)
+
+
+Tue Mar 17 21:03:04 2020 +0100
+-------------------------------------------------
+1.13            Release 1.13
+    
+    * Split Arch Linux packaging
+    * Other notable changes:
+     2020-03-16 e85ab41e actionless fix(theme_file: save_colorscheme): don't save errors
+     2020-03-16 1af8308f actionless feat(preview): load preview parts for still available plugins if other plugins are not installed
+     2020-03-16 f1fe6c9d actionless feat(colors_list, main: open_theme): show error when there are no enough of needed plugins installed
