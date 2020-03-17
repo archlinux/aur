@@ -1,8 +1,8 @@
 # Maintainer: Modelmat <modelmat@outlook.com.au>
 
 pkgname=python-pynetworktables
-_gitcommit=e917bf34a5498c4bfaad6caab03658a92199bd55
-pkgver=2019.0.2
+_gitcommit=e36ca3c87b38487bc59c67160acdc2e27d56a0ac
+pkgver=2020.0.3
 pkgrel=1
 pkgdesc="Pure python implementation of the FRC NetworkTables protocol"
 arch=("x86_64")

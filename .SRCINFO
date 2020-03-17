@@ -1,12 +1,12 @@
 pkgbase = python-pynetworktables
 	pkgdesc = Pure python implementation of the FRC NetworkTables protocol
-	pkgver = 2019.0.2
+	pkgver = 2020.0.3
 	pkgrel = 1
 	url = https://github.com/robotpy/pynetworktables
 	arch = x86_64
 	license = custom:FIRST
 	depends = python
-	source = python-pynetworktables::git+https://github.com/robotpy/pynetworktables#commit=e917bf34a5498c4bfaad6caab03658a92199bd55
+	source = python-pynetworktables::git+https://github.com/robotpy/pynetworktables#commit=e36ca3c87b38487bc59c67160acdc2e27d56a0ac
 	md5sums = SKIP
 
 pkgname = python-pynetworktables
