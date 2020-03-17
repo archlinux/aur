@@ -1,3 +1,9 @@
+4.5.22 (2020-03-16 21:07:37)
+
+    Fixes a crash when one modifies a structure referenced in the assembly,
+    Fixes issues when searching hexadecimal values,
+    Various dark mode issues.
+
 4.5.21 (2020-02-05 16:46:57)
 
     More ELF relocation fixes.
