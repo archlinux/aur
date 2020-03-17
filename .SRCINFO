@@ -1,6 +1,6 @@
 pkgbase = factorio-experimental
 	pkgdesc = A 2D game about building and maintaining factories (experimental branch).
-	pkgver = 0.18.12
+	pkgver = 0.18.13
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = factorio-experimental
 	depends = libxrandr
 	depends = libxinerama
 	depends = mesa
-	provides = factorio=0.18.12
+	provides = factorio=0.18.13
 	conflicts = factorio
 	conflicts = factorio-demo
 	options = !strip
