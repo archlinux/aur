@@ -57,7 +57,7 @@ package() {
     mkdir -p $pkgdir/usr/share/icons/hicolor/{16x16,32x32,48x48,64x64,128x128,256x256}/apps
     for size in 16 32 48 64 128 256; do
       size="${size}x${size}"
-      cp packaging/linux/mod_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
+      cp packaging/artwork/icon_${size}.png "$pkgdir/usr/share/icons/hicolor/${size}/apps/${_pkgname}.png"
     done
     rm $pkgdir/usr/lib/${_pkgname}/*.sh
 }
