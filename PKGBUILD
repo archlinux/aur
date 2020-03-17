@@ -1,7 +1,7 @@
 # Maintainer: csantosb <csantosb dot inventati dot org>
 pkgname=python-edalize
-pkgver=0.1
-pkgrel=7
+pkgver=0.2
+pkgrel=0
 pkgdesc="Python Library for interacting with EDA tools."
 arch=('any')
 url="http://github.com/olofk/edalize/"
@@ -16,7 +16,7 @@ optdepends=('iverilog: for simulating verilog designs'
 
 options=(!emptydirs)
 source=("https://github.com/olofk/edalize/archive/v$pkgver.$pkgrel.tar.gz")
-md5sums=('46ebc35971187ace236418edff6455b7')
+md5sums=('e2edd17257d4660c45711bd1b1756701')
 
 package() {
     cd "${srcdir}/edalize-$pkgver.$pkgrel"
