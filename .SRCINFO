@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-etc
+	pkgdesc = mkinitcpio hook for mounting NFS share on /etc
+	pkgver = r3.4c6714f
+	pkgrel = 1
+	url = https://github.com/ReeseWang/mkinitcpio-etc
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = syslinux
+	source = git+https://github.com/ReeseWang/mkinitcpio-etc.git
+	sha512sums = SKIP
+
+pkgname = mkinitcpio-etc
+
