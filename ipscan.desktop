@@ -7,6 +7,6 @@ Exec=/usr/bin/ipscan
 Terminal=false
 Type=Application
 Icon=ipscan
-Categories=Application;Network;Internet;
+Categories=Network;Security;
 StartupWMClass=Angry IP Scanner
 StartupNotify=true
