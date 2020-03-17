@@ -1,5 +1,5 @@
 pkgname=quantum-espresso
-pkgver=6.4.1
+pkgver=6.5
 pkgrel=1
 pkgdesc="Computer codes for electronic-structure calculations and materials modeling
 at the nanoscale. It is based on density-functional theory, plane waves, and
@@ -11,7 +11,7 @@ depends=(gcc-fortran zlib openmpi lapack numactl blas fftw)
 source=("https://gitlab.com/QEF/q-e/-/archive/qe-$pkgver/q-e-qe-$pkgver.tar.gz"
 	"https://gitlab.com/QEF/q-e/uploads/edd91febdd3916ce1d527ea00f0a05f0/fox.tgz")
 noextract=("fox.tgz")
-md5sums=('bb6a1936e05d3afeea8ce494c797a229' '3e4765d44ad77f65ed70c9c2992c0b84')
+md5sums=('1af03e99261b1ae113a9ba94faacc5de' '3e4765d44ad77f65ed70c9c2992c0b84')
 
 build() {
 	cd "$srcdir/q-e-qe-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = quantum-espresso
 	pkgdesc = Computer codes for electronic-structure calculations and materials modeling at the nanoscale. It is based on density-functional theory, plane waves, and pseudopotentials.
-	pkgver = 6.4.1
+	pkgver = 6.5
 	pkgrel = 1
 	url = http://www.quantum-espresso.org
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = quantum-espresso
 	depends = blas
 	depends = fftw
 	noextract = fox.tgz
-	source = https://gitlab.com/QEF/q-e/-/archive/qe-6.4.1/q-e-qe-6.4.1.tar.gz
+	source = https://gitlab.com/QEF/q-e/-/archive/qe-6.5/q-e-qe-6.5.tar.gz
 	source = https://gitlab.com/QEF/q-e/uploads/edd91febdd3916ce1d527ea00f0a05f0/fox.tgz
-	md5sums = bb6a1936e05d3afeea8ce494c797a229
+	md5sums = 1af03e99261b1ae113a9ba94faacc5de
 	md5sums = 3e4765d44ad77f65ed70c9c2992c0b84
 
 pkgname = quantum-espresso
