@@ -12,9 +12,8 @@ makedepends=('make' 'automake' 'git' 'autoconf' 'ed' 'python2' 'python')
 provides=('AmbulantPlayer_gtk')
 conflicts=('AmbulantPlayer_gtk')
 install=AmbulantPlayer_gtk.install
-source=(git+$_git 'AmbulantPlayer_gtk.desktop')
-sha256sums=('SKIP'
-            '911a056fae3e4e403092027d3b4a56080ec1dcec23736b8c3ef45a489d2a7512')
+source=(git+$_git)
+sha256sums=('SKIP')
 
 build() {
   cd ${srcdir}/ambulant-2.6
@@ -36,6 +35,6 @@ build() {
 package() {
   install -D -m755 ${srcdir}/ambulant-2.6/src/player_gtk/AmbulantPlayer_gtk ${pkgdir}/usr/bin/AmbulantPlayer_gtk
   install -d ${pkgdir}/usr/share/AmbulantPlayer_gtk
-  install -D -m644 ${srcdir}/ambulant-2.6/src/libambulant/Ambulant.png ${pkgdir}/usr/share/pixmaps/AmbulantPlayer_gtk.png
-  install -D -m644 ${startdir}/AmbulantPlayer_gtk.desktop ${pkgdir}/usr/share/applications/AmbulantPlayer_gtk.desktop
+  install -D -m644 ${srcdir}/ambulant-2.6/src/libambulant/Ambulant.png ${pkgdir}/usr/share/ambulant/icons/Ambulant.png
+  install -D -m644 ${srctdir}/ambulant-2.6/src/player_gtk/ambulant-gtk.desktop ${pkgdir}/usr/share/applications/ambulant-gtk.desktop
 }

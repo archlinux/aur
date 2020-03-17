@@ -17,9 +17,7 @@ pkgbase = ambulant-player-gtk-git
 	provides = AmbulantPlayer_gtk
 	conflicts = AmbulantPlayer_gtk
 	source = git+https://e.coding.net/Baytars/ambulant-2.6.git
-	source = AmbulantPlayer_gtk.desktop
 	sha256sums = SKIP
-	sha256sums = 911a056fae3e4e403092027d3b4a56080ec1dcec23736b8c3ef45a489d2a7512
 
 pkgname = ambulant-player-gtk-git
 
