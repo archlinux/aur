@@ -22,6 +22,8 @@ pkgbase = themix-theme-arc-git
 	optdepends = themix-gui: GUI
 	provides = themix-theme-arc
 	conflicts = themix-theme-arc
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = arc-theme::git+https://github.com/arc-design/arc-theme.git#branch=master
