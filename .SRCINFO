@@ -1,6 +1,6 @@
 pkgbase = python-limits
 	pkgdesc = utilities to implement rate limiting
-	pkgver = 1.3
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/alisaifee/limits/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-limits
 	makedepends = python-setuptools
 	depends = python
 	depends = python-six
-	source = https://github.com/alisaifee/limits/archive/1.3.tar.gz
-	md5sums = 66563f666c0b0634105b46a8289e812e
+	source = https://github.com/alisaifee/limits/archive/1.5.1.tar.gz
+	sha256sums = e48a7134c35c05312927c9b446ca34470e5bb21081414c00b17527fdd10fe296
 
 pkgname = python-limits
 
