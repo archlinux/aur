@@ -1,0 +1,13 @@
+pkgbase = felix-bin
+	pkgdesc = Project Calico's per-host agent Felix, responsible for programming routes and security policy
+	pkgver = 3.8.7
+	pkgrel = 1
+	url = http://projectcalico.org/
+	arch = x86_64
+	license = Apache2
+	provides = felix
+	source = https://github.com/projectcalico/felix/releases/download/v3.8.7/calico-felix-amd64
+	md5sums = 2da1799e684d9a887971c5c5cae08fd7
+
+pkgname = felix-bin
+
