@@ -4,7 +4,9 @@
 buildver="1132"
 
 pkgname=jitsi-videobridge
-pkgver=0.0.${buildver}
+# JVB emits this version in the logs when launched, for example:
+# VersionService registered: JVB 0.1.1132
+pkgver=0.1.${buildver}
 pkgrel=2
 epoch=
 pkgdesc="Videobridge for Jitsi Meet"
