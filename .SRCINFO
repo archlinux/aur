@@ -1,6 +1,6 @@
 pkgbase = sspl
 pkgdesc = Bypassing SSL Pinning on Android
-pkgver = 0.2.0
+pkgver = 0.3.0
 pkgrel = 1
 url = https://github.com/weslenng/sspl
 arch = x86_64
