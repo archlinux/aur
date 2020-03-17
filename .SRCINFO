@@ -1,6 +1,6 @@
 pkgbase = appgate-sdp
 	pkgdesc = Software Defined Perimeter - GUI client
-	pkgver = 4.2.2
+	pkgver = 4.3.2
 	pkgrel = 1
 	url = https://www.cyxtera.com/essential-defense/appgate-sdp/support
 	arch = x86_64
@@ -14,10 +14,14 @@ pkgbase = appgate-sdp
 	depends = nodejs
 	depends = dnsmasq
 	conflicts = appgate-sdp-headless
-	source = https://sdpdownloads.cyxtera.com/AppGate-SDP-4.2/clients/appgate-sdp_4.2.2_amd64.deb
+	conflicts = appgate-sdp-5
+	options = staticlibs
+	source = https://sdpdownloads.cyxtera.com/AppGate-SDP-4.3/clients/appgate-sdp_4.3.2_amd64.deb
 	source = appgatedriver.service
-	md5sums = cdc1ec9ce02f95a5d826f876d9e55bc5
+	source = nm.py.patch
+	md5sums = 17101aac7623c06d5fbb95f50cf3dbdc
 	md5sums = 002644116e20b2d79fdb36b7677ab4cf
+	md5sums = c36c11d995cc341f2f1eb4c3b6afa732
 
 pkgname = appgate-sdp
 
