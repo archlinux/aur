@@ -1,7 +1,7 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
 pkgname=gzdoom-git
-pkgver=4.4pre+72+g56311b765
+pkgver=4.4pre+105+g15d4fb8fc
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (git version)'
 arch=('i686' 'x86_64')
@@ -58,7 +58,7 @@ build() {
     mkdir -p build
     cmake -B build \
           -D CMAKE_BUILD_TYPE=Release \
-          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/$_name\\\"" \
+          -D CMAKE_CXX_FLAGS="${CXXFLAGS} -ffile-prefix-map=\"$PWD\"=. -DSHARE_DIR=\\\"/usr/share/gzdoom\\\"" \
           -D DYN_GTK=OFF \
           -D DYN_OPENAL=OFF
     make -C build
