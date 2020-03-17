@@ -33,8 +33,6 @@ build() {
 }
 
 package() {
-  install -D -m755 ${srcdir}/ambulant-2.6/src/player_gtk/AmbulantPlayer_gtk ${pkgdir}/usr/bin/AmbulantPlayer_gtk
-  install -d ${pkgdir}/usr/share/AmbulantPlayer_gtk
-  install -D -m644 ${srcdir}/ambulant-2.6/src/libambulant/Ambulant.png ${pkgdir}/usr/share/ambulant/icons/Ambulant.png
-  install -D -m644 ${srcdir}/ambulant-2.6/src/player_gtk/ambulant-gtk.desktop ${pkgdir}/usr/share/applications/ambulant-gtk.desktop
+  cd ${srcdir}/ambulant-2.6
+  make install DESTDIR=${pkgdir}
 }
