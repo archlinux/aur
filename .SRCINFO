@@ -1,0 +1,21 @@
+pkgbase = themix-import-images-git
+	pkgdesc = Import plugin for Themix GUI designer to get color palettes from the images
+	pkgver = 1.12.6.r14.ge495c2c3
+	pkgrel = 1
+	url = https://github.com/themix-project/oomox
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = python-gobject
+	optdepends = colorz: additional image analyzer
+	optdepends = python-colorthief: additional image analyzer
+	optdepends = python-haishoku: additional image analyzer
+	provides = themix-gui
+	conflicts = themix-gui
+	source = git+https://github.com/themix-project/oomox.git#branch=master
+	md5sums = SKIP
+
+pkgname = themix-import-images-git
+
