@@ -1,7 +1,7 @@
 pkgbase = koji
 	pkgdesc = shared libraries and the command-line interface for building and tracking RPMS
-	pkgver = 1.19.1
-	pkgrel = 2
+	pkgver = 1.20.1
+	pkgrel = 1
 	url = https://pagure.io/koji
 	arch = any
 	license = GPL2
@@ -28,8 +28,8 @@ pkgbase = koji
 	backup = etc/kojira/kojira.conf
 	backup = etc/kojivmd/kojivmd.conf
 	backup = etc/kojiweb/web.conf
-	source = https://releases.pagure.org/koji/koji-1.19.1.tar.bz2
-	sha256sums = 29b283a3e5cd7a5010e5d14498aed437d42767262f79bd1b85f358607af00480
+	source = https://releases.pagure.org/koji/koji-1.20.1.tar.bz2
+	sha256sums = 11a22537d1672fc8ee172af7ed2560dc322395c1c23ffa6f434bc093cbe83ef9
 
 pkgname = koji
 
