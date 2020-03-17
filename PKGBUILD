@@ -17,7 +17,7 @@ source=('git+https://github.com/KhronosGroup/OpenCL-Headers.git'
         )
 sha256sums=('SKIP'
             'SKIP'
-            'd6e1dc689579cdb4508a3d40bab03eeb5d5c122a6fa615fcf25204ba9b0fb991'
+            'f95005c505669a4cd0a89fbefdfe1364f8f758d3779d8b11b709f4e63a11d01c'
 #             '2c30d8d34ae8f7583bca45cb829dc45f31a73c9d8ef9a4755d4e9c316250324b'
             )
 

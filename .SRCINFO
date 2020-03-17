@@ -14,7 +14,7 @@ pkgbase = opencl-headers-git
 	source = 47.diff
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = d6e1dc689579cdb4508a3d40bab03eeb5d5c122a6fa615fcf25204ba9b0fb991
+	sha256sums = f95005c505669a4cd0a89fbefdfe1364f8f758d3779d8b11b709f4e63a11d01c
 
 pkgname = opencl-headers-git
 
