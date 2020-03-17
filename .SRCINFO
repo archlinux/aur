@@ -22,6 +22,8 @@ pkgbase = themix-theme-oomox-git
 	optdepends = themix-gui: GUI
 	provides = themix-theme-oomox
 	conflicts = themix-theme-oomox
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = oomox-gtk-theme::git+https://github.com/themix-project/oomox-gtk-theme.git#branch=master
 	md5sums = SKIP
