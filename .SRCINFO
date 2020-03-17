@@ -1,6 +1,6 @@
 pkgbase = anaconda
 	pkgdesc = Completely free enterprise-ready Python distribution for large-scale data processing, predictive analytics, and scientific computing.
-	pkgver = 2019.10
+	pkgver = 2020.02
 	pkgrel = 1
 	url = https://www.anaconda.com/
 	install = anaconda.install
@@ -9,9 +9,9 @@ pkgbase = anaconda
 	options = !strip
 	options = libtool
 	options = staticlibs
-	source = http://repo.continuum.io/archive/Anaconda3-2019.10-Linux-x86_64.sh
+	source = http://repo.continuum.io/archive/Anaconda3-2020.02-Linux-x86_64.sh
 	source = anaconda.install
-	sha256sums = 46d762284d252e51cd58a8ca6c8adc9da2eadc82c342927b2f66ed011d1d8b53
+	sha256sums = 2b9f088b2022edb474915d9f69a803d6449d5fdb4c303041f60ac4aefcc208bb
 	sha256sums = 72e3066ba033c8e59684331f2d9ea8ea2dc1855d51a7a4ea2fa5565b7dd6cc60
 
 pkgname = anaconda
