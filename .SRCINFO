@@ -1,0 +1,17 @@
+pkgbase = libqtolm
+	pkgdesc = A Qt wrapper for libolm
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://gitlab.com/b0/libQtOlm
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt5-base
+	depends = libolm
+	conflicts = libqtolm-git
+	replaces = libqtolm-git
+	source = https://gitlab.com/b0/libQtOlm/-/archive/v3.0.0/libqtolm-v3.0.0.tar.gz
+	b2sums = 27e3bf4ea3c735358d954ac7d48e8762be91867617231ee8b2fee3774e22bb4d9381d030b9444d9a3e85c19c524a3918f9f6b1939dd0b95607d2e9aca85214d5
+
+pkgname = libqtolm
+
