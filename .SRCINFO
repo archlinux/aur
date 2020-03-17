@@ -1,0 +1,27 @@
+pkgbase = appgate-sdp-5
+	pkgdesc = Software Defined Perimeter v5 - GUI client
+	pkgver = 5.0.3
+	pkgrel = 1
+	url = https://www.cyxtera.com/essential-defense/appgate-sdp/support
+	arch = x86_64
+	license = custom
+	depends = gconf
+	depends = libsecret
+	depends = gtk3
+	depends = python
+	depends = nss
+	depends = libxss
+	depends = nodejs
+	depends = dnsmasq
+	conflicts = appgate-sdp-headless
+	conflicts = appgate-sdp
+	options = staticlibs
+	source = https://sdpdownloads.cyxtera.com/AppGate-SDP-5.0/clients/appgate-sdp_5.0.3_amd64.deb
+	source = appgatedriver.service
+	source = nm.py.patch
+	md5sums = 1ffc310a4aea80fb8574f7d3eaa611ec
+	md5sums = 002644116e20b2d79fdb36b7677ab4cf
+	md5sums = c36c11d995cc341f2f1eb4c3b6afa732
+
+pkgname = appgate-sdp-5
+
