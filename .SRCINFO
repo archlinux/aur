@@ -1,0 +1,26 @@
+pkgbase = themix-icons-archdroid-git
+	pkgdesc = Archdroid icons plugin for Themix GUI designer
+	pkgver = 1.0.2.r1.g775b8c2c0
+	pkgrel = 1
+	url = https://github.com/themix-project/archdroid-icon-theme
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = sed
+	optdepends = themix-gui: GUI
+	optdepends = breeze-icons: fallback icons
+	optdepends = gnome-icon-theme: fallback icons
+	optdepends = gnome-icon-theme-symbolic: fallback icons
+	optdepends = oxygen-icons: fallback icons
+	provides = themix-icons-archdroid
+	conflicts = themix-icons-archdroid
+	options = !strip
+	source = git+https://github.com/themix-project/oomox.git#branch=master
+	source = archdroid-icon-theme::git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = themix-icons-archdroid-git
+
