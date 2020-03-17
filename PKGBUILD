@@ -2,14 +2,14 @@
 
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
-pkgver=1.0.2.r0.g3c65335
+pkgver=1.0.2.r2.g018c54e
 pkgrel=1
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('dkms')
-makedepends=('git' 'linux-headers')
+depends=('dkms' 'linux-headers')
+makedepends=('git')
 conflicts=("${_pkgbase}-dkms")
 provides=("${_pkgbase}-dkms")
 install="${pkgname}.install"
