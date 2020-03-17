@@ -7,13 +7,13 @@ pkgbase = themix-import-images-git
 	arch = i686
 	license = GPL3
 	makedepends = git
-	depends = gtk3
-	depends = python-gobject
+	depends = themix-gui
+	depends = python-pillow
 	optdepends = colorz: additional image analyzer
 	optdepends = python-colorthief: additional image analyzer
 	optdepends = python-haishoku: additional image analyzer
-	provides = themix-gui
-	conflicts = themix-gui
+	provides = themix-import-images
+	conflicts = themix-import-images
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	md5sums = SKIP
 

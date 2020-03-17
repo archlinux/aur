@@ -1,7 +1,8 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 # Upstream URL: https://github.com/themix-project/oomox
 
-pkgname=themix-import-images-git
+_pkgname=themix-import-images
+pkgname="${_pkgname}-git"
 pkgver=1.12.6.r14.ge495c2c3
 pkgrel=1
 pkgdesc="Import plugin for Themix GUI designer to get color palettes from the images"
@@ -13,8 +14,8 @@ source=(
 )
 md5sums=('SKIP')
 depends=(
-	'gtk3'
-	'python-gobject'
+	'themix-gui'
+	'python-pillow'
 )
 makedepends=(
 	'git'
@@ -24,8 +25,8 @@ optdepends=(
 	'python-colorthief: additional image analyzer'
 	'python-haishoku: additional image analyzer'
 )
-provides=('themix-gui')
-conflicts=('themix-gui')
+provides=($_pkgname)
+conflicts=($_pkgname)
 
 pkgver() {
 	cd "${srcdir}/oomox"
