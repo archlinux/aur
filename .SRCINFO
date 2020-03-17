@@ -15,6 +15,7 @@ pkgbase = themix-icons-gnome-colors-git
 	depends = bc
 	depends = imagemagick
 	optdepends = themix-gui: GUI
+	optdepends = breeze-icons: more fallback icons
 	provides = themix-icons-gnome-colors
 	conflicts = themix-icons-gnome-colors
 	options = !strip
