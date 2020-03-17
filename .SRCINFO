@@ -5,12 +5,10 @@ pkgbase = python-bittrex
 	url = https://github.com/ericsomdahl/python-bittrex
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests
 	source = https://github.com/ericsomdahl/python-bittrex/archive/v0.3.0.tar.gz
 	md5sums = 8588f8b2d9059e113398ebc0ad0a7f31
 
 pkgname = python-bittrex
-	depends = python-requests
-
-pkgname = python2-bittrex
-	depends = python2-requests
 
