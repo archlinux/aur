@@ -1,7 +1,7 @@
 # Maintainer: James Armstrong <jm.armstrong1207@gmail.com>
 pkgname=detect-tablet-mode-git
 pkgver=master
-pkgrel=1
+pkgrel=2
 pkgdesc="Detects both normal & tablet mode, executing custom scripts/commands for each mode. See the github page for instructions."
 arch=('any')
 url='https://github.com/alesguzik/linux_detect_tablet_mode'
@@ -17,14 +17,14 @@ backup=()
 options=()
 install=
 changelog=
+source=("$pkgname::git+$url")
 noextract=()
 sha256sums=('SKIP')
-build() {
-	git clone $url
-}
+#build() {
+#}
 
 package() {
-	cd linux_detect_tablet_mode
+	cd $pkgname
 
 	install -d $pkgdir/usr/bin
 	install -d $pkgdir/home/$USER/.config/
