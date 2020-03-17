@@ -14,6 +14,8 @@ pkgbase = themix-import-images-git
 	optdepends = python-haishoku: additional image analyzer
 	provides = themix-import-images
 	conflicts = themix-import-images
+	conflicts = oomox
+	conflicts = oomox-git
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	md5sums = SKIP
 
