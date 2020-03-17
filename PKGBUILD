@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=gnome-obfuscate-git
-pkgver=0.0.2.r82.45e1e37
+pkgver=0.0.2.r5.g45e1e37
 pkgrel=1
 pkgdesc="Censor private information."
 arch=(x86_64)
@@ -20,8 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd obfuscate
-  v=$(grep -R -A3 '^project(' meson.build | grep 'version:' | cut -d\' -f2)
-  printf "$v.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
