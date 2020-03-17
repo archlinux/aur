@@ -1,7 +1,7 @@
 pkgbase = mailwizard
 	pkgdesc = Configure neomutt, isync, getmail and msmtp with pass for passwords
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/rpuntaie/mailwizard
 	install = wizard.install
 	changelog = changelog.txt
@@ -27,9 +27,9 @@ pkgbase = mailwizard
 	optdepends = pam-gnupg: automatically unlock gpg keys at session login
 	conflicts = mutt-wizard
 	options = zipman
-	source = mailwizard.tar.gz::https://github.com/rpuntaie/mailwizard/archive/v2.0.1.tar.gz
+	source = mailwizard.tar.gz::https://github.com/rpuntaie/mailwizard/archive/v2.0.2.tar.gz
 	source = migrationhelper
-	sha256sums = 9d99ab46762cbcd91b90c51cee860950720a1f8561a84c517c930209c90c6237
+	sha256sums = 1563b450255c0f13e5f56618e5be1e8abb2d809331fc074f05c8794dc550cf8a
 	sha256sums = 34682620297727b9bf93670b84592050d59181e682d3867cd56aefedbd67243f
 
 pkgname = mailwizard

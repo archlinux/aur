@@ -5,8 +5,8 @@
 
 pkgname=mailwizard
 
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 
 pkgdesc='Configure neomutt, isync, getmail and msmtp with pass for passwords'
 arch=('x86_64')
@@ -35,8 +35,9 @@ changelog=changelog.txt
 install=wizard.install
 source=("$pkgname.tar.gz::$url/archive/v$pkgver.tar.gz"
         'migrationhelper')
-sha256sums=('9d99ab46762cbcd91b90c51cee860950720a1f8561a84c517c930209c90c6237'
+sha256sums=('1563b450255c0f13e5f56618e5be1e8abb2d809331fc074f05c8794dc550cf8a'
             '34682620297727b9bf93670b84592050d59181e682d3867cd56aefedbd67243f')
+
 
 #check() {
 #  cd "$pkgname-$pkgver"
@@ -49,5 +50,6 @@ package() {
   install -m755 ../migrationhelper -t"$pkgdir/usr/share/$pkgname/"
   install -Dm644 README.rst -t"$pkgdir/usr/share/doc/$pkgname/"
 }
+
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:

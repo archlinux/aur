@@ -1,5 +1,7 @@
                 History (newest first)
 
+20200317 fixed "mailboxes" line
+
 Generate man page from readme, to avoid duplicate descriptions.
 Readme in rst instead of md.
 Separate changelog.txt.
