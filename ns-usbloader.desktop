@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=NS-USBloader
+Exec=ns-usbloader
+Comment=Awoo Installer/TinFoil/GoldLeaf NSPs (and other files) uploader and RCM tool.
+Terminal=false
+Type=Application
+Icon=ns-usbloader
+Categories=Gaming;

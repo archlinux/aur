@@ -1,0 +1,14 @@
+pkgbase = ns-usbloader
+	pkgdesc = Awoo Installer/TinFoil/GoldLeaf NSPs (and other files) uploader and RCM tool.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/developersu/ns-usbloader
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	optdepends = nx-udev: udev rules to run without root
+	source = https://github.com/developersu/ns-usbloader/releases/download/v2.1/ns-usbloader-2.1.jar
+	sha256sums = 062b27e30574e4c57cf20b0319f799915d9eb77172263d03a4b5d92a2d4b48df
+
+pkgname = ns-usbloader
+
