@@ -2,13 +2,13 @@
 
 _name=gtranslator
 pkgname=$_name-git
-pkgver=3.32.0.r4832.0bdc8aae
+pkgver=3.36.0.r5043.e98e23a6
 pkgrel=1
-pkgdesc='Translation Editor, an Enhanced gettext po file editor for the GNOME'
+pkgdesc='Translation Editor, an enhanced gettext po file editor for the GNOME'
 arch=('x86_64')
-url='http://projects.gnome.org/gtranslator/'
+url='https://wiki.gnome.org/Apps/Gtranslator'
 license=('GPL3')
-depends=(gtksourceview4 gspell gettext libgda)
+depends=(gtksourceview4 gspell gettext libgda libdazzle)
 makedepends=(meson gobject-introspection git gtk-doc itstool)
 conflicts=($_name)
 provides=($_name)
@@ -21,13 +21,8 @@ pkgver() {
   printf "$v.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  rm -rf build
-  mkdir build
-}
-
 build() {
-  meson --prefix /usr --buildtype=plain -Dgtk_doc='true' $_name build
+  arch-meson $_name build -Dgtk_doc=true
   ninja -C build
 }
 
