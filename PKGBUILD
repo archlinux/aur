@@ -4,7 +4,7 @@
 _pkgname=themix-theme-oomox
 _reponame=oomox-gtk-theme
 pkgname="${_pkgname}-git"
-pkgver=1.11.1.r23.g20658006
+pkgver=1.11.1.r26.g1a46df76
 pkgrel=1
 pkgdesc="Oomox theme plugin
  (GTK2, GTK3, Cinnamon, Metacity, Openbox, Qt5ct, Unity, Xfwm) for Themix GUI designer.
@@ -18,16 +18,16 @@ source=(
 md5sums=('SKIP')
 depends=(
 	'gtk3'
-	'glib2'  # oomox, materia, arc
-	'gdk-pixbuf2'  # oomox, materia, arc
-	'gtk-engine-murrine'  # oomox, materia, arc
-	'gtk-engines'  # oomox, materia, arc
-	'sassc'  # oomox, materia, arc
-	'librsvg'  # oomox, gnome-colors
-	'sed'  # oomox, materia, arc, gnome-colors, archdroid
-	'findutils'  # oomox, materia, arc, gnome-colors, arch-droid
-	'grep'  # oomoxify, oomox, materia, arc, gnome-colors
-	'bc'  # oomoxify, oomox, materia, arc, gnome-colors
+	'glib2'
+	'gdk-pixbuf2'
+	'gtk-engine-murrine'
+	'gtk-engines'
+	'sassc'
+	'librsvg'
+	'sed'
+	'findutils'
+	'grep'
+	'bc'
 )
 makedepends=(
 	'git'
