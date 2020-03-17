@@ -1,7 +1,7 @@
 # Maintainer: Weslen Nascimento <weslenng@outlook.com>
 
 pkgname=sspl
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Bypassing SSL Pinning on Android"
 arch=("x86_64")
