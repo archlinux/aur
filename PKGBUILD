@@ -2,7 +2,7 @@
 # Contributor: Streetwalrus <streetwalrus@codewalr.us>
 pkgname=sam-ba
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Atmel SAM Boot Assistant"
 arch=('x86_64')
 url="https://github.com/atmelcorp/sam-ba"
@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/atmelcorp/sam-ba/archive/v$
         "0003-Use-newer-qt-version.patch"
         )
 md5sums=('480f70a38b783df1e599ccc7bf2090ef'
-         'd41d8cd98f00b204e9800998ecf8427e'
+         '7115eaa32335e755fe4b17277a15ca7e'
          '1fd871ae02809fcbc3095c169f59ce01'
          '93241311e7ce90508b0af8e91fb61559')
 
