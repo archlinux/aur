@@ -40,7 +40,6 @@ package_mangohud() {
     depends=('sh' 'gcc-libs' 'libx11')
 
     DESTDIR="$pkgdir" ninja -C build64 install
-    rm "$pkgdir/usr/bin/mangohud"
 
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -50,7 +49,6 @@ package_lib32-mangohud() {
     depends=('sh' 'lib32-gcc-libs' 'lib32-libx11')
 
     DESTDIR="$pkgdir" ninja -C build32 install
-    rm "$pkgdir/usr/bin/mangohud.x86"
 
     rename "$pkgbase" "$pkgname" "$pkgdir/usr/share/doc/$pkgbase"
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
