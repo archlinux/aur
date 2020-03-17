@@ -1,19 +1,19 @@
 
 pkgname=pinegrow
-pkgver=5.9
+pkgver=5.94
 pkgrel=1
 pkgdesc='A website development tool for building responsive websites'
 arch=('x86_64')
 url="https://pinegrow.com"
-license=('Pinegrow')
-depends_x86_64+=(gtk2 gconf alsa-lib nss libxss libxtst gendesk unzip)
+license=('custom:pinegrow')
+depends_x86_64+=(gtk2 gconf-gtk2 alsa-lib nss libxss libxtst gendesk unzip)
 source=("http://download.pinegrow.com/PinegrowLinux64.${pkgver}.zip"
-        "${url}/Pinegrow_EULA.pdf"
-	"${pkgname}.ico::${url}/favicon.ico")
-noextract=("Pinegrow_EULA.pdf")
-sha512sums=('db0d626d53c858bbd04a8b1e50a316cc13c998556178e159283d049f07e069d903def418c651a248c5bbb2a66df325c39bd8967df74bc1fd8d921748343bccff'
-            '9ff47c29e011caf7344ece001ee5cf8ce4f622071b80ee7274b5c0149adbe16fe3764f8a8aa92886c81451b7f3b3af4ba06a120ebd488f62da7590097f9a318f'
-            '96f42cb4b4dfaef72b3868bbc89975a2987cbd9a1b2cb53de16409d654a77c367712eaf5bc7dceed93ea25a19a5e9df3075a166cd03c0d959ac873b941b771b8')
+	"${pkgname}.png"
+  "LICENSE")
+sha512sums=('e017fce75f69f60075290dd38da8d29b82565de465b979e51a71593881a79efe6e626bad33f4575677b283db5a6999f83f61b9b3490de2666fce1a269278f103'
+            'e71d7bfa237604fdf183cf1dc61e674c3f0ee9a33609f5c2aa6adf3b0359acd12f6ff2c1deeec52128461327c0fde013f4e1cc6fc5170e21f09b7fb01a4f334e'
+            '1f2dd46c34bac1d218176f977eec05811982f1f74ead24deadb64717bb64059122e056ee1c95de34e207dd9e90107ce2f7187a4d6781f024257a7c2d7d605967')
+
 
 options=('!strip')
 install=${pkgname}.install
@@ -29,10 +29,14 @@ prepare() {
 
 package() {
   cd ${srcdir}
-  install -D -m644 Pinegrow_EULA.pdf ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md
   install -d ${pkgdir}/usr/share/pinegrow/
   cd Pinegrow-${pkgver}
   cp -R * ${pkgdir}/usr/share/pinegrow/
+  rm ${pkgdir}/usr/share/$pkgname/{$pkgname.png,$pkgname.desktop,Pinegrow.desktop,readme.txt}
+
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 ${srcdir}/$pkgname.ico $pkgdir/usr/share/pixmaps/$pkgname.ico
+  install -Dm644 ${srcdir}/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
+  
+  # Text extracted from Pinegrow_EULA.pdf
+  install -Dm644 ${srcdir}/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

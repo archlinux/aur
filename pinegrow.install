@@ -1,3 +1,6 @@
 post_install() {
   ln -fs /usr/share/pinegrow/PinegrowLibrary /usr/bin/pinegrow
 }
+post_remove() {
+  rm /usr/bin/pinegrow
+}
