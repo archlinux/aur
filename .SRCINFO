@@ -1,0 +1,17 @@
+pkgbase = teamspeak5
+	pkgdesc = The future of gaming communication
+	pkgver = 5.0.0beta19
+	pkgrel = 1
+	url = http://www.teamspeak.com
+	arch = x86_64
+	license = custom
+	optdepends = libpulse
+	source = teamspeak5.desktop
+	source = teamspeak5.svg
+	source = https://files.teamspeak-services.com/teamspeak/teamspeak-client.tar.gz
+	sha256sums = 1a94b6735bba053e3e0a3dc26459761d8e2b64cf95f84c987cbd9486d3c42f82
+	sha256sums = 61cb18d776be69cc0c260aa578fb874dc093e9e1b874b4358d87d504b98dedfc
+	sha256sums = SKIP
+
+pkgname = teamspeak5
+
