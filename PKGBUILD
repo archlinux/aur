@@ -2,8 +2,8 @@
 # Contributor: George Eleftheriou <eleftg>
 
 pkgname=parmetis-mpich
-pkgver=4.0.3.p4
-_pkgver=4.0.3-p4
+pkgver=4.0.3.p6
+_pkgver=4.0.3-p6
 _pkgdirname=petsc-pkg-parmetis-73dab469aa36
 _prefix=/opt/mpich
 pkgrel=1
@@ -15,7 +15,7 @@ depends=(mpich metis)
 makedepends=(cmake)
 replaces=(parmetis-mpich2)
 source=(https://bitbucket.org/petsc/pkg-parmetis/get/v${_pkgver}.tar.gz)
-sha256sums=('071160d45fa588611e90534d28073319035d3650101905a9e508ed2157e155c8')
+sha256sums=('663a20f45066d94a2732e8f38742047e89cd2b159cec7b3c6a7d834ae59d8b1f')
 
 # "Upstream" is unmaintained and does not reply or apply to critical patches
 #source=(http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/parmetis-$pkgver.tar.gz)
