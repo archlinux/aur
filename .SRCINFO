@@ -22,6 +22,8 @@ pkgbase = themix-icons-gnome-colors-git
 	optdepends = oxygen-icons: fallback icons
 	provides = themix-icons-gnome-colors
 	conflicts = themix-icons-gnome-colors
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = gnome-colors-icon-theme::git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master
