@@ -36,9 +36,8 @@ build() {
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-  gendesk -f -n --pkgname "opendiablo2" --pkgdesc "${pkgdesc}" --exec="opendiablo2" --categories=Game --icon opendiablo2
-  cd "${srcdir}/OpenDiablo2"
   go build -v -o "../opendiablo2-bin"
+  gendesk -f -n --pkgname "opendiablo2" --pkgdesc "${pkgdesc}" --exec="opendiablo2" --categories=Game --icon opendiablo2
 }
 
 package() {
