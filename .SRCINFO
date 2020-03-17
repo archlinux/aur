@@ -1,7 +1,7 @@
 pkgbase = i-nex
 	pkgdesc = System information tool like hardinfo, sysinfo
 	pkgver = 7.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,9 @@ pkgbase = i-nex
 	backup = etc/i-nex/Database/Opteron.json
 	backup = etc/i-nex/Database/Xeon.json
 	source = https://github.com/i-nex/I-Nex/archive/7.6.1.tar.gz
+	source = Fix-error-if-proc-mtrr-doesn-t-exist.patch
 	sha256sums = 81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960
+	sha256sums = 72a31d2caba843508dc700b9af9f9226f13e286a9b1646c9f3d101e663c26ece
 
 pkgname = i-nex
 
