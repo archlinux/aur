@@ -23,7 +23,6 @@ makedepends=(
 	'git'
 )
 optdepends=(
-	'themix-gui: GUI'
 )
 options=(
 	'!strip'

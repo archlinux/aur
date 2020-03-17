@@ -10,7 +10,6 @@ pkgbase = themix-plugin-base16-git
 	depends = themix-gui
 	depends = python-pystache
 	depends = python-yaml
-	optdepends = themix-gui: GUI
 	provides = themix-plugin-base16
 	conflicts = themix-plugin-base16
 	options = !strip
