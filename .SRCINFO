@@ -24,6 +24,8 @@ pkgbase = themix-gui-git
 	optdepends = xorg-xrdb: for the `xresources` theme
 	provides = themix-gui
 	conflicts = themix-gui
+	conflicts = oomox
+	conflicts = oomox-git
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	md5sums = SKIP
 
