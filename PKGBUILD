@@ -30,7 +30,11 @@ makedepends=(
 )
 optdepends=(
 	'themix-gui: GUI'
-	'breeze-icons: more fallback icons'
+	'gnome-icon-theme: fallback icons'
+	'gnome-icon-theme-symbolic: fallback icons'
+	'adwaita-icon-theme: fallback icons'
+	'breeze-icons: fallback icons'
+	'oxygen-icons: fallback icons'
 )
 options=(
 	'!strip'
@@ -44,8 +48,6 @@ pkgver() {
 }
 
 package() {
-	_oomox_dir=/opt/oomox
-
 	_oomox_dir=/opt/oomox
 	_plugin_name=icons_gnomecolors
 	_plugin_subpath="/${_reponame}"
