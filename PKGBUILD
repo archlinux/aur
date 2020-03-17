@@ -31,6 +31,8 @@ ikona_sourcedir=""
 prepare() {
     ikona_sourcedir="$PWD"
     cp "$ikona_sourcedir/$pkgname-$pkgver.cargo.vendor.tar.xz" "ikona-1.0/$pkgname.cargo.vendor.tar.xz"
+    cd "$pkgname-$pkgver"
+    mkdir -p build
 }
 
 build() {
