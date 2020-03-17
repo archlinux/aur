@@ -1,0 +1,23 @@
+pkgbase = themix-icons-suru-plus-aspromauros-git
+	pkgdesc = Suru++ Aspromauros icons plugin for Themix GUI designer
+	pkgver = 3.0.r0.gd43a8ec4
+	pkgrel = 1
+	url = https://github.com/gusbemacbe/suru-plus-aspromauros/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = sed
+	depends = findutils
+	optdepends = themix-gui: GUI
+	provides = themix-icons-suru-plus-aspromauros
+	conflicts = themix-icons-suru-plus-aspromauros
+	options = !strip
+	source = git+https://github.com/themix-project/oomox.git#branch=master
+	source = suru-plus-aspromauros::git+https://github.com/gusbemacbe/suru-plus-aspromauros.git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = themix-icons-suru-plus-aspromauros-git
+
