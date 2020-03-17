@@ -3,7 +3,7 @@
 
 pkgname=foldingathome-noroot
 pkgver=7.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Folding@Home client that does not run as the root user."
 arch=('x86_64')
 url="http://foldingathome.org"
@@ -13,7 +13,7 @@ optdepends=('opencl-nvidia: for folding with an nVidia GPU'
             'cuda: for folding with an nVidia GPU'
             'opencl-mesa: for folding with an older AMD GPU'
             'opencl-amd: for folding with a newer AMD GPU')
-replaces=('foldingathome-v7' 'foldingathome')
+provides=('foldingathome-v7' 'foldingathome')
 conflicts=('foldingathome-v7' 'foldingathome')
 install=foldingathome.install
 
