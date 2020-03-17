@@ -3,8 +3,8 @@
 
 pkgname=intel-ucode-git
 _pkgname=intel-ucode
-pkgver=20190312.r0.g7febfb9
-pkgrel=1
+pkgver=20191115.r0.g33b7b2f
+pkgrel=2
 pkgdesc='Microcode update files for Intel CPUs'
 arch=('any')
 url='https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files'
@@ -27,10 +27,7 @@ build() {
 
   rm -f intel-ucode{,-with-caveats}/list
   mkdir -p kernel/x86/microcode
-  iucode_tool -w kernel/x86/microcode/GenuineIntel.bin intel-ucode{,-with-caveats}/
-  # Make intel-ucode.img reproducible
-  [ ! -z $SOURCE_DATE_EPOCH ] && touch -d @$SOURCE_DATE_EPOCH kernel/x86/microcode/GenuineIntel.bin
-  echo kernel/x86/microcode/GenuineIntel.bin | bsdcpio -o -H newc -R 0:0 > intel-ucode.img
+  iucode_tool --write-earlyfw=intel-ucode.img intel-ucode{,-with-caveats}/
 }
 
 package() {
