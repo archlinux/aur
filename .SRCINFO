@@ -16,6 +16,8 @@ pkgbase = themix-export-spotify-git
 	optdepends = gksu: for applying Spotify theme from GUI without polkit
 	provides = themix-export-spotify
 	conflicts = themix-export-spotify
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = oomoxify::git+https://github.com/themix-project/oomoxify.git#branch=master
 	md5sums = SKIP
