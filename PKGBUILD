@@ -13,5 +13,5 @@ depends=('python-requests')
 package_python-bittrex() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname[0]}"
+  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
