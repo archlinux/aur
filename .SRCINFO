@@ -1,7 +1,7 @@
 pkgbase = mcmojave-circle-icon-theme
 	pkgdesc = MacOSX Mojave like circle icon theme for linux desktops.
 	pkgver = 2019.09.23
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vinceliuice/McMojave-circle
 	arch = any
 	license = GPL3

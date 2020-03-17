@@ -5,7 +5,7 @@
 pkgname="mcmojave-circle-icon-theme"
 _pkgname="McMojave-circle"
 pkgver="2019.09.23"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
 arch=('any')
 url="https://github.com/vinceliuice/${_pkgname}"
@@ -23,6 +23,7 @@ package() {
     install -m755 -d "${pkgdir}/usr/share/icons"
     ./install.sh  \
         --all \
+	--circle \
         --dest "${pkgdir}/usr/share/icons"
 }
 
