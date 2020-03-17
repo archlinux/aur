@@ -1,7 +1,7 @@
 # Maintainer: Modelmat <modelmat@outlook.com.au>
 
 pkgname=my-study-life
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A free cross platform planner app for students, teachers and lecturers designed to make your study life easier to manage."
 arch=("armv7l" "i686" "x86_64")
@@ -16,7 +16,7 @@ sha256sums=("702fbfadf6d53cc3a83ad6c8d5031381f7ee58e7cef0228833d1addb2d7de589"
 
 build() {
   cd "${srcdir}"
-  
+
   nativefier \
     --name "My Study Life" \
     --icon "${pkgname}.png" \
@@ -29,8 +29,10 @@ build() {
 package() {
   install -dm755 "${pkgdir}/"{opt,usr/{bin,share/{applications,licenses/${pkgname}}}}
 
-  cp -rL "${srcdir}/my-study-life-"* "${pkgdir}/opt/${pkgname}"
-  ln -s "/opt/${pkgname}/my-study-life" "${pkgdir}/usr/bin/${pkgname}"
+  _folder=$(ls -l "${srcdir}" | grep "[Mm]y[-]*[Ss]tudy[-]*[Ll]ife-linux-" | awk '{print $9}')
+  _binary=$(ls -l "${srcdir}/${_folder}" | grep "[Mm]y[-]*[Ss]tudy[-]*[Ll]ife" | awk '{print $9}')
+  cp -rL "${srcdir}/${_folder}" "${pkgdir}/opt/${pkgname}"
+  ln -s "/opt/${pkgname}/${_binary}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm755 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   for _size in "256x256" "192x192" "128x128" "96x96" "72x72"    "64x64" "48x48" "32x32" "24x24" "22x22" "20x20" "16x16" "8x8"

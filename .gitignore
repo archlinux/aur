@@ -1,0 +1,6 @@
+src
+pkg
+*.tar
+*.tar.xz
+*.tar.gz
+my-study-life/
