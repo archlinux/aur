@@ -1,6 +1,6 @@
 pkgbase = apt
 	pkgdesc = Command-line package manager used on Debian-based systems
-	pkgver = 1.9.5
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://packages.debian.org
 	arch = i686
@@ -24,7 +24,7 @@ pkgbase = apt
 	provides = apt-utils
 	conflicts = apt-git
 	replaces = apt-git
-	source = git+https://salsa.debian.org/apt-team/apt.git#tag=1.9.5
+	source = git+https://salsa.debian.org/apt-team/apt.git#tag=2.0.0
 	sha256sums = SKIP
 
 pkgname = apt
