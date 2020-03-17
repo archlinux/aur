@@ -1,0 +1,16 @@
+pkgbase = i3-wk-switch-git
+	pkgdesc = Workspace switcher for i3 wm that emulates xmonad
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/tmfink/i3-wk-switch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = i3ipc-python-git
+	provides = i3-wk-switch
+	conflicts = i3-wk-switch
+	source = i3-wk-switch::git+https://github.com/tmfink/i3-wk-switch
+	md5sums = SKIP
+
+pkgname = i3-wk-switch-git
+
