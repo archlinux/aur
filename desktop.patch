@@ -1,0 +1,27 @@
+From fbb8d725c0a47a8e9d22dc8ed27b692eee50af87 Mon Sep 17 00:00:00 2001
+From: bartus <szczepaniak.bartek+github@gmail.com>
+Date: Tue, 17 Mar 2020 17:45:36 +0100
+Subject: [PATCH] Fix: make desktop shortcut path absolute.
+
+---
+ src/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 58be6f175..e1c8ed164 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -354,8 +354,8 @@ if(INSTALL_SAMPLE_RANGEMAPS)
+ endif()
+ 
+ if(NOT WIN32 AND NOT APPLE)
+-    install(FILES ../install/linux/resources/meshlab.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+-    install(FILES ../install/meshlab.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor)
++    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../install/linux/resources/default.desktop" DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications/meshlab.desktop)
++    install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/../install/meshlab.png" DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor)
+ endif()
+ 
+ if(Qt5_windeployqt_EXECUTABLE AND BUILD_WITH_WINDEPLOYQT_POST_BUILD)
+-- 
+2.25.1
+

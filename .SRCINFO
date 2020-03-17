@@ -1,9 +1,8 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2020.01.r1.g07c8855a
+	pkgver = 2020.03.r36.gd0fa7a31f
 	pkgrel = 1
 	url = https://www.meshlab.net
-	install = meshlab-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -29,11 +28,13 @@ pkgbase = meshlab-git
 	optdepends = mpir: for Constructive Solid Geometry operation filters
 	provides = meshlab
 	conflicts = meshlab
-	source = git+https://github.com/cnr-isti-vclab/meshlab.git
-	source = git+https://github.com/cnr-isti-vclab/vcglib.git#branch=devel
+	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git
+	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git
+	source = desktop.patch
 	source = meshlab.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 485cac3630d937c986f8d8c772419bed6221cedd698d9aa0314afc67c926a782
 	sha256sums = 030ab1dcafb7d793bed3bc455497208addadf1091a4619576fe7e044aed4231a
 
 pkgname = meshlab-git
