@@ -28,7 +28,9 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  pip install --prefix=/usr --root='$pkgdir' py-find-1st
+  pip install --prefix=/usr py-find-1st
+  pip install --prefix=/usr coinmarketcap
+  pip install --prefix=/usr ccxt
   python setup.py build
   python setup.py install --prefix=/usr --root="$pkgdir"
 
