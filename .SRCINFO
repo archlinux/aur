@@ -1,0 +1,20 @@
+pkgbase = gnome-doc-utils
+	pkgdesc = Documentation utilities for Gnome
+	pkgver = 0.20.10+16+gc03cc09
+	pkgrel = 2
+	url = https://www.gnome.org
+	arch = any
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = gnome-common
+	makedepends = git
+	depends = libxslt
+	depends = python2
+	depends = docbook-xml
+	depends = rarian
+	source = git+https://git.gnome.org/browse/gnome-doc-utils#commit=c03cc0963996934e03587af3e351c2bb9dab6b2a
+	sha256sums = SKIP
+
+pkgname = gnome-doc-utils
+
