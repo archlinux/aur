@@ -13,7 +13,7 @@ depends=('python-sqlalchemy' 'python-cachetools'
          'python-scipy' 'python-jsonschema' 'python-numpy' 'python-pytest'
          'python-pytest-mock' 'python-pytest-cov' 'python-networkx'
          'python-telegram-bot' 'python-tabulate' 'python-hyperopt' 'python-ta-lib'
-         'python-bittrex' 'python-questionary')
+         'python-bittrex' 'python-questionary' 'python-jinja')
          
 _branch="master"
 source=("$pkgname"::"git://github.com/gcarq/freqtrade.git#branch=${_branch}")

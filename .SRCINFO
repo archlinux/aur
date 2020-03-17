@@ -30,6 +30,7 @@ pkgbase = python-freqtrade-git
 	depends = python-ta-lib
 	depends = python-bittrex
 	depends = python-questionary
+	depends = python-jinja
 	provides = python-freqtrade
 	source = python-freqtrade-git::git://github.com/gcarq/freqtrade.git#branch=master
 	sha256sums = SKIP
