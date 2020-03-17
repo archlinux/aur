@@ -1,15 +1,15 @@
 pkgbase = mutagen.io-bin
 	pkgdesc = Code synchronization tool for remote development.
-	pkgver = 0.10.0
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://mutagen.io/
 	arch = i386
 	arch = x86_64
 	license = MIT
-	source_i386 = https://github.com/havoc-io/mutagen/releases/download/v0.10.0/mutagen_linux_386_v0.10.0.tar.gz
-	md5sums_i386 = e8f494fb057dbba42614ab073a71e57d
-	source_x86_64 = https://github.com/havoc-io/mutagen/releases/download/v0.10.0/mutagen_linux_amd64_v0.10.0.tar.gz
-	md5sums_x86_64 = 051a18bdafd4c74f102f01182e03cf69
+	source_i386 = https://github.com/havoc-io/mutagen/releases/download/v0.11.2/mutagen_linux_386_v0.11.2.tar.gz
+	md5sums_i386 = 6994e6ab21e0ea5b2c91f2d3766b8d2e
+	source_x86_64 = https://github.com/havoc-io/mutagen/releases/download/v0.11.2/mutagen_linux_amd64_v0.11.2.tar.gz
+	md5sums_x86_64 = 1a4b89cc6844a3a6a851ee6d6b67ced3
 
 pkgname = mutagen.io-bin
 
