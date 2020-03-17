@@ -1,4 +1,4 @@
-# Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
+# Maintainer: kvaps <kvapss@gmail.com>
 
 pkgname=qbec
 pkgver=0.10.5
