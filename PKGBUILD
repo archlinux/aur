@@ -5,7 +5,7 @@
 _pkgname=scala
 pkgbase=scala_2.12
 pkgname=(scala_2.12 scala-docs_2.12 scala-sources_2.12)
-pkgver=2.12.10
+pkgver=2.12.11
 pkgrel=1
 _watch="https://github.com/scala/scala/releases"
 _distdate=20181127-085200
@@ -19,8 +19,8 @@ conflicts=('scala' 'scala-docs' 'scala-sources' 'java-environment<7')
 makedepends=('git' 'sbt')
 source=("scala-${pkgver}.tar.gz::https://github.com/scala/scala/archive/v${pkgver}.tar.gz"
         "scala-docs-${pkgver}.tar.xz::http://www.scala-lang.org/files/archive/scala-docs-${pkgver}.txz")
-sha512sums=('30079ee83e89c189e84e94068f261aafe1fd7fe0cb4177e2802ac85372c4c2272c5af2b57424ab90e5236cbaca2f30936635f8f3bb4bfb2c748483e9c52ae96e'
-            '476115e85ce5f7e75613341ca6c88da1fccdf3b4e8d28d20af7ac65734c4fd970a85a1453e7c93f5ca2af12b2644942a0a08f46f0a3075604161b9fe0e957044')
+sha512sums=('57dc2e8f26fb795fababee5d831992f977ccdf6c185afb66726fe97b518b0ad0a6b880135a0ed08fd39c9423894a1f02b9a84ec99e271e70f21f74c07cc3d106'
+            '0f1211432726dca9fa8c02de66b2e5925cda2b9ba812d37c86558405c8ba3ae4393149935f35af15af472b0d24797ce9e5078c8db38061b8b319f3fa1593dec4')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -56,7 +56,7 @@ package_scala_2.12() {
 
 package_scala-docs_2.12() {
   replaces=('scala-doc' 'scala-devel-docs')
-  pkgdesc="Scala documentation"
+  pkgdesc="Scala documentation. This is the maintenance version of Scala 2.12."
   depends=()
 
   cd "${srcdir}/scala-${pkgver}"
@@ -67,7 +67,7 @@ package_scala-docs_2.12() {
 
 package_scala-sources_2.12() {
   replaces=('scala-src')
-  pkgdesc="Scala sources"
+  pkgdesc="Scala sources. This is the maintenance version of Scala 2.12."
   depends=()
 
   cd "${srcdir}/scala-${pkgver}"
