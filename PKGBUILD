@@ -2,12 +2,12 @@
 
 pkgname=timecamp-bin
 pkgver=1.4.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Client application for TimeCamp software (Binary).'
 arch=('x86_64')
 url='https://www.timecamp.com/en/desktop-app'
 license=('custom')
-depends=('libappindicator-gtk2' 'libindicator' 'libnotify' 'libsm' 'libxss')
+depends=('libappindicator-gtk2' 'libnotify' 'libsm' 'libxss')
 makedepends=('binutils' 'imagemagick')
 provides=('timecamp')
 options=('!strip' '!emptydirs')

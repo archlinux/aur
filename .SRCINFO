@@ -1,14 +1,13 @@
 pkgbase = timecamp-bin
 	pkgdesc = Client application for TimeCamp software (Binary).
 	pkgver = 1.4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.timecamp.com/en/desktop-app
 	arch = x86_64
 	license = custom
 	makedepends = binutils
 	makedepends = imagemagick
 	depends = libappindicator-gtk2
-	depends = libindicator
 	depends = libnotify
 	depends = libsm
 	depends = libxss
