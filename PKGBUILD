@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=ModelMetrics
-_cranver=1.2.2.1
+_cranver=1.2.2.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=('r>=3.2.2' r-rcpp r-data.table)
 makedepends=(gcc)
 optdepends=(r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('6dbbb0a6e4cc96b1f38a8e70b0acbd88')
+md5sums=('3f3d10e443dab1a0e8e399bcd6be6d1b')
 
 build() {
   cd "${srcdir}"
