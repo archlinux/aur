@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Kotta <jpkotta@gmail.com>
 pkgname=saved-kernel-modules
 pkgver=0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Save kernel modules of the running kernel"
 arch=('i686' 'x86_64')
 url=""
@@ -26,9 +26,9 @@ package() {
 
   local main_dir="$pkgdir"/usr/lib/modules/saved-kernel-modules
   install -d -m 755 "$main_dir"
-  install -m 644 pre-hook "$main_dir"/pre-hook
-  install -m 644 post-hook "$main_dir"/post-hook
-  install -m 644 cleanup "$main_dir"/cleanup
+  install -m 755 pre-hook "$main_dir"/pre-hook
+  install -m 755 post-hook "$main_dir"/post-hook
+  install -m 755 cleanup "$main_dir"/cleanup
   install -m 644 README "$main_dir"/README
 
   local systemd_dir="$pkgdir"/usr/lib/systemd/system

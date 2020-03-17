@@ -1,7 +1,7 @@
 pkgbase = saved-kernel-modules
 	pkgdesc = Save kernel modules of the running kernel
 	pkgver = 0.0
-	pkgrel = 1
+	pkgrel = 2
 	install = saved-kernel-modules.install
 	arch = i686
 	arch = x86_64
