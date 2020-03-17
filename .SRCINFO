@@ -1,7 +1,7 @@
 pkgbase = kcm-fcitx5-git
 	pkgdesc = KDE Config Module for Fcitx5
 	pkgver = r250.6ced9ba
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/fcitx/kcm-fcitx5
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = kcm-fcitx5-git
 	depends = fcitx5-qt5-git
 	depends = knewstuff
 	depends = kcmutils
+	provides = kcm-fcitx5
+	conflicts = kcm-fcitx5
 	source = git+https://github.com/fcitx/kcm-fcitx5.git
 	sha512sums = SKIP
 
