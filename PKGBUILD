@@ -1,6 +1,6 @@
 # Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 pkgname=('teamtalk')
-pkgver=5.3.2
+pkgver=5.4
 pkgrel=1
         pkgdesc='a software conferencing system server which enables a group of people to collaborate and share information using voice and video'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom')
 url='http://www.bearware.dk'
 source=("http://bearware.dk/${pkgname}/v${pkgver}/${pkgname}-v${pkgver}-debian9-${arch}.tgz"
         "${pkgname}.install")
-sha256sums=('a6fcb095bc8d83c10ed6b4801a6a9f2488ee804e57b3f911ff3291a1f878d986'
+sha256sums=('da42df4b0c2affc520e1744604c52d1dc71db1942b4965b2798aca7bef08b1a7'
             '621938e7a6b07988ff05a032ba098e5d7e8a10040c6dac3c1f3255ac89938a6e')
 
 package() {
