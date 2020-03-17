@@ -1,7 +1,7 @@
 pkgbase = flipper-bin
 	pkgdesc = A desktop debugging platform for mobile developers
 	pkgver = 0.33.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fbflipper.com/
 	arch = any
 	license = MIT

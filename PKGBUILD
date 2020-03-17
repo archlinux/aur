@@ -2,13 +2,16 @@
 
 pkgname=flipper-bin
 pkgver=0.33.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A desktop debugging platform for mobile developers'
 arch=('any')
 url='https://fbflipper.com/'
 license=('MIT')
 provides=('flipper')
-depends=('gtk3' 'libsecret' 'libxss' 'nss')
+depends=('gtk3'
+		 'libsecret'
+		 'libxss'
+		 'nss')
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
 			'android-sdk: Android debugging support')
 source=("https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip"
@@ -22,7 +25,7 @@ package() {
   mkdir -p "${pkgdir}/opt/flipper"
   mkdir -p "$pkgdir/usr/bin"
   cp -r ${srcdir}/* ${pkgdir}/opt/flipper
-  ln -s ${pkgdir}/opt/flipper/flipper ${pkgdir}/usr/bin
+  ln -s /opt/flipper/flipper ${pkgdir}/usr/bin
   install -Dm644 flipper.desktop ${pkgdir}/usr/share/applications/flipper.desktop
   install -Dm644 ${srcdir}/resources/app/icon.png ${pkgdir}/usr/share/pixmaps/flipper.png
   rm "${pkgdir}/opt/flipper"/flipper.desktop
