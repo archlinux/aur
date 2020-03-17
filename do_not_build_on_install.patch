@@ -1,0 +1,11 @@
+--- build.py	2020-03-15 12:21:26.000000000 +0100
++++ build.py_	2020-03-17 16:54:56.441788277 +0100
+@@ -147,7 +147,7 @@ if __name__ == "__main__":
+                 do_clean = True
+             elif arg == "install":
+                 do_install = True
+-                do_build = True
++                do_build = False
+             elif arg == "--help" or arg == "help":
+                 exit( dump_usage())
+             elif arg == "--verbose":
