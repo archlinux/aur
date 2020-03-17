@@ -13,6 +13,8 @@ pkgbase = themix-icons-suru-plus-aspromauros-git
 	optdepends = themix-gui: GUI
 	provides = themix-icons-suru-plus-aspromauros
 	conflicts = themix-icons-suru-plus-aspromauros
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = suru-plus-aspromauros::git+https://github.com/gusbemacbe/suru-plus-aspromauros.git#branch=master
