@@ -1,6 +1,6 @@
 pkgbase = minikube-bin
 	pkgdesc = A tool that makes it easy to run Kubernetes locally
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/kubernetes/minikube
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = minikube-bin
 	optdepends = docker-machine-driver-kvm2: to use --vm-driver=kvm2
 	provides = minikube
 	conflicts = minikube
-	source = minikube_1.8.1::https://storage.googleapis.com/minikube/releases/v1.8.1/minikube-linux-amd64
-	sha256sums = 028bfb3aa0e5a1d1de49b13e4550d3d2885f2d0bb572f76a72372aba93fff22c
+	source = minikube_1.8.2::https://storage.googleapis.com/minikube/releases/v1.8.2/minikube-linux-amd64
+	sha256sums = 0b21b50a8064aaea816cc7495cbbe324ab126284b0dbbb15c9f4df5ac72c22fb
 
 pkgname = minikube-bin
 
