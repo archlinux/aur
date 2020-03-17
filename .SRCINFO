@@ -17,6 +17,7 @@ pkgbase = limnoria
 	optdepends = python-pysocks: SOCKS proxy support
 	optdepends = python-mock: For testing only
 	optdepends = python-cryptography: ECDSA support
+	conflicts = limnoria-python3
 	conflicts = limnoria-git
 	conflicts = limnoria-python3-git
 	source = https://github.com/ProgVal/Limnoria/archive/master-2020-01-31.tar.gz

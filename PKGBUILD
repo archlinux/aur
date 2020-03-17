@@ -20,7 +20,7 @@ optdepends=("python-charade: Detect page's encoding"
     "python-pysocks: SOCKS proxy support"
     "python-mock: For testing only"
     "python-cryptography: ECDSA support")
-conflicts=('limnoria-git' 'limnoria-python3-git')
+conflicts=('limnoria-python3' 'limnoria-git' 'limnoria-python3-git')
 source=("https://github.com/ProgVal/Limnoria/archive/master-${_pkgver}.tar.gz")
 md5sums=('f196ca8f5aa016fe99e761c3c19d1116')
 install=".install"
