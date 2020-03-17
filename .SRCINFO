@@ -12,6 +12,8 @@ pkgbase = themix-plugin-base16-git
 	depends = python-yaml
 	provides = themix-plugin-base16
 	conflicts = themix-plugin-base16
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = themix-plugin-base16::git+https://github.com/themix-project/themix-plugin-base16.git#branch=master
 	md5sums = SKIP
