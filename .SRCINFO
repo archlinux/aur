@@ -1,6 +1,6 @@
 pkgbase = tpm2-pkcs11-git
 	pkgdesc = PKCS#11 interface for Trusted Platform Module 2.0 hardware
-	pkgver = 1.1.0rc0.r10.e4be68d
+	pkgver = 1.1.0.r78.e63b115
 	pkgrel = 1
 	url = https://github.com/tpm2-software/tpm2-pkcs11
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = tpm2-pkcs11-git
 	depends = python-pyasn1-modules
 	depends = python-yaml
 	depends = sqlite
-	depends = tpm2-tools
+	depends = tpm2-tools-git
 	source = git+https://github.com/tpm2-software/tpm2-pkcs11.git
 	sha512sums = SKIP
 
