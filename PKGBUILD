@@ -2,9 +2,9 @@
 
 pkgbase=julie
 pkgname=julie
-pkgver=1
-pkgrel=1
-pkgdesc="Tool made to help you with gpg"
+pkgver=20200318
+pkgrel=20200318
+pkgdesc="A command line tool made to simplify the usage of gpg"
 url="https://framagit.org/SirCipherz/julie"
 license=('GPL3')
 
@@ -12,15 +12,6 @@ arch=('any')
 depends=(
    gnupg xclip curl jq git python3
 )
-
-prepare() {
-    echo "Would you like to create a gpg key ?"
-    read -p "y/N" create
-    if [[$create == 'y']]; then
-        echo "Creating a new gpg key"
-        gpg --full-generate-key
-    fi
-}
 
 package() {
     git clone https://framagit.org/SirCipherz/julie.git $srcdir
@@ -59,5 +50,4 @@ package() {
 
     echo "Installation is complete !"
 }
-
 #vim: syntax=sh
