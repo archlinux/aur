@@ -30,6 +30,7 @@ build() {
 
 package() {
   cd sspl
+  rm -rf $HOME/.sspl
   mkdir $HOME/.sspl
   cp bin/debug.keystore $HOME/.sspl/
   cp bin/network_security_config.xml $HOME/.sspl/
