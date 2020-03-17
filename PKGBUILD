@@ -11,7 +11,10 @@ groups=()
 depends=("npm")
 makedepends=("git")
 checkdepends=()
-optdepends=()
+optdepends=("jicofo"
+            "jitsi-videobridge"
+            "nginx"
+            "prosody")
 provides=("jitsi-meet")
 conflicts=("jitsi-meet")
 replaces=()
