@@ -1,0 +1,32 @@
+pkgbase = themix-theme-arc-git
+	pkgdesc = Arc theme plugin (GTK2, GTK3, Cinnamon, GNOME Shell, Metacity, Openbox, Unity, Xfwm) for Themix GUI designer.
+	pkgver = 20190917.r3.g53e6188
+	pkgrel = 1
+	url = https://github.com/arc-design/arc-theme/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	depends = sassc
+	depends = sed
+	depends = findutils
+	depends = grep
+	depends = bc
+	depends = optipng
+	depends = resvg
+	optdepends = themix-gui: GUI
+	provides = themix-theme-arc
+	conflicts = themix-theme-arc
+	options = !strip
+	source = git+https://github.com/themix-project/oomox.git#branch=master
+	source = arc-theme::git+https://github.com/arc-design/arc-theme.git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = themix-theme-arc-git
+
