@@ -1,6 +1,6 @@
 pkgbase = librealsense-git
 	pkgdesc = Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300)
-	pkgver = v2.32.1
+	pkgver = v2.33.1
 	pkgrel = 1
 	url = https://github.com/IntelRealSense/librealsense
 	arch = x86_64
