@@ -16,6 +16,8 @@ pkgbase = themix-icons-suru-plus-git
 	optdepends = gnome-icon-theme-symbolic: fallback icons
 	provides = themix-icons-suru-plus
 	conflicts = themix-icons-suru-plus
+	conflicts = oomox
+	conflicts = oomox-git
 	options = !strip
 	source = git+https://github.com/themix-project/oomox.git#branch=master
 	source = suru-plus::git+https://github.com/gusbemacbe/suru-plus.git#branch=master
