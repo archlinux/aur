@@ -1,11 +1,11 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
-pkgbase="python-pytorch"
+pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-opt" "python-pytorch-cuda" "python-pytorch-opt-cuda")
 _pkgname="pytorch"
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 arch=('x86_64')
 url="https://pytorch.org"
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('google-glog' 'gflags' 'opencv' 'openmp' 'nccl' 'pybind11' 'python' 'python-yaml'
          'python-numpy' 'protobuf' 'ffmpeg' 'python-future' 'qt5-base' 'intel-dnnl' 'intel-mkl')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'cuda'
-             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig')
+             'cudnn' 'git' 'magma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$pkgver"
         fix_include_system.patch
         nccl_version.patch
@@ -43,8 +43,6 @@ prepare() {
 
   # https://github.com/pytorch/pytorch/issues/26555
   sed -i 's#^  ${CMAKE_CURRENT_SOURCE_DIR}/tensor_iterator_test.cpp##g' aten/src/ATen/test/CMakeLists.txt
-
-  sed -i "s/intel64//g" cmake/Modules/FindMKL.cmake
 
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
