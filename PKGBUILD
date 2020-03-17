@@ -1,7 +1,7 @@
 # Maintainer: Auteiy <dmitry@auteiy.me>
 
 pkgname=pacfetch
-pkgver=1.0.5.2
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
 url="https://git.auteiy.me/dmitry/pacFetch"
@@ -13,7 +13,7 @@ depends=(
 source=("pacfetch-v$pkgver::https://github.com/auteiy/pacfetch/releases/download/v$pkgver/pacfetch-v$pkgver-linux-x64")
 
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('85edcb0bb759481cc7ab2fa34053ecc2c16980b6186d9ae73c11a07f13bf57a34714051509f651737e9c1d7bcc3a924806a450228b554c5dfd63cd1bef9af41d')
+sha512sums=('17c7d2f67ded189e60013c7e3ae1140c0177e60d3164b9992c4173302393b369ded38c619d8bb415a70fc0e4b826ab119d184f11188c0f770fe256c634fe90c1')
 
 arch=('x86_64')
 
