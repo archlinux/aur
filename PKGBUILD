@@ -1,11 +1,10 @@
 # Maintainer: Cravix < dr dot neemous at gmail dot com >
 
-pkgbase=limnoria
-pkgname=("limnoria" "limnoria-python3")
+pkgname=limnoria
 _pkgname=Limnoria
 pkgver=20200131
 _pkgver=2020-01-31
-pkgrel=2
+pkgrel=3
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
@@ -24,6 +23,7 @@ optdepends=("python-charade: Detect page's encoding"
 conflicts=('limnoria-git' 'limnoria-python3-git')
 source=("https://github.com/ProgVal/Limnoria/archive/master-${_pkgver}.tar.gz")
 md5sums=('f196ca8f5aa016fe99e761c3c19d1116')
+install=".install"
 
 build() {
     cd "$srcdir/$_pkgname-master-${_pkgver}"
@@ -31,13 +31,8 @@ build() {
     python3 setup.py build
 }
 
-package_limnoria() {
+package() {
     cd "$srcdir/$_pkgname-master-${_pkgver}"
 
     python3 setup.py install --root="$pkgdir" || return 1
-}
-
-package_limnoria-python3() {
-    msg2 "This package contains nothing and is for migration only,"
-    msg2 "and will be removed in next month."
 }
