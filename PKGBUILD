@@ -7,7 +7,7 @@ _pkgbase=libindicator
 pkgbase=lib32-${_pkgbase}
 pkgname=("${pkgbase}-gtk"{2,3})
 pkgver=12.10.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Set of symbols and convenience functions for Ayatana indicators (32-bit)'
 url='https://launchpad.net/libindicator'
 arch=('x86_64')
@@ -20,13 +20,8 @@ validpgpkeys=('6FC05581A37D71FCECE165DB5BE41E162CD6358E')  # Charles Kerr <charl
 
 prepare() {
   (cd ${_pkgbase}-${pkgver}
-    sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i ${_pkgbase}/Makefile.{am,in}
-    sed 's/LIBINDICATOR_LIBS+="$LIBM"/LIBINDICATOR_LIBS+=" $LIBM"/g' -i configure
-    sed 's/LIBM="-lmw"/LIBM=" -lmw"/g' -i configure
-    sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i configure
-    sed 's/LIBS="-lm  $LIBS"/LIBS=" -lm  $LIBS"/g' -i configure
-    sed 's/LIBS="-lmw  $LIBS"/LIBS=" -lmw  $LIBS"/g' -i configure
-    sed 's/LIBM="-lm"/LIBM=" -lm"/g' -i m4/libtool.m4
+    sed -i 's/-Werror//' {libindicator,tools}/Makefile.am
+    autoreconf -fi
   )
   cp -ra ${_pkgbase}-${pkgver}{,-gtk2}
 }
@@ -47,6 +42,7 @@ build() {
       --with-gtk=3 \
       --disable-static \
       --disable-tests
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
   )
 
@@ -61,6 +57,7 @@ build() {
       --with-gtk=2 \
       --disable-static \
       --disable-tests
+    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
     make
   )
 }
@@ -68,22 +65,18 @@ build() {
 package_lib32-libindicator-gtk2() {
   pkgdesc+=" (GTK+ 2 library)"
   depends=("${_pkgbase}-gtk2" 'lib32-gtk2')
-  provides=("${pkgbase}")
-  conflicts=("${pkgbase}")
 
   cd ${_pkgbase}-${pkgver}-gtk2
-  make -j1 DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
 
 package_lib32-libindicator-gtk3() {
   pkgdesc+=" (GTK+ 3 library)"
   depends=("${_pkgbase}-gtk3" 'lib32-gtk3')
-  provides=("${pkgbase}3")
-  conflicts=("${pkgbase}3")
 
   cd ${_pkgbase}-${pkgver}
-  make -j1 DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/usr/{include,share,bin}
 }
 
