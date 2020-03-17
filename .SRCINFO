@@ -1,0 +1,13 @@
+pkgbase = flipt-bin
+	pkgdesc = A modern feature flag solution
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://flipt.io
+	arch = x86_64
+	license = GPL3
+	provides = flipt
+	source = https://github.com/markphelps/flipt/releases/download/v0.13.0/flipt_0.13.0_linux_x86_64.tar.gz
+	md5sums = deebafd785183186f271c56fa2136818
+
+pkgname = flipt-bin
+
