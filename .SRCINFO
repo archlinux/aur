@@ -1,0 +1,13 @@
+pkgbase = bee-bin
+	pkgdesc = Bee is a tool for helping develop with beego app framework
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/beego/bee
+	arch = x86_64
+	license = Apache2
+	provides = bee
+	source = https://github.com/beego/bee/releases/download/v1.10.0/bee_1.10.0_linux_amd64.tar.gz
+	md5sums = 31ae330504f2fce170164688b03e7e96
+
+pkgname = bee-bin
+
