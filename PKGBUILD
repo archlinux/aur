@@ -9,15 +9,15 @@ license=('GPL')
 depends=('python' 'scummvm' 'inotify-tools')
 makedepends=('git')
 optdepends=( 'steam: The Steam client' )
-source=("https://github.com/dreamer/roberta/releases/download/v$pkgver/roberta.tar.xz")
-sha512sums=('bf71671bc5ef109ee3bc146d203d96d4957cd9ccd48a50a156e6c5a95902795662f589dc79ec882cae30f2c03a48e473e90fbc927842300718ba82bcf318dbf2')
+source=("https://github.com/dreamer/roberta/archive/v$pkgver.tar.gz")
+sha512sums=('f28d98e814fe6feb29184fc46336e9dcd7d63ab507d7999087f5301e427a2544680a486c1b4d83a0c76acd6d9cb98cab55c8fa18b0d17f5c851308ca8e1fdbcf')
 
 check() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make test
 }
 
 package() {
-  cd "$pkgname"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" prefix=/usr install
 }
