@@ -1,26 +1,26 @@
 pkgbase = pinegrow
 	pkgdesc = A website development tool for building responsive websites
-	pkgver = 5.9
+	pkgver = 5.941
 	pkgrel = 1
 	url = https://pinegrow.com
 	install = pinegrow.install
 	arch = x86_64
-	license = Pinegrow
-	noextract = Pinegrow_EULA.pdf
+	license = custom:pinegrow
 	options = !strip
-	source = http://download.pinegrow.com/PinegrowLinux64.5.9.zip
-	source = https://pinegrow.com/Pinegrow_EULA.pdf
-	source = pinegrow.ico::https://pinegrow.com/favicon.ico
-	sha512sums = SKIP
-	sha512sums = 75b36c2e324d6ee01aa381c28a35593d861c16a551ce3b4be35cafbdcdd17e19ee9aeb56a2032d3a22206df398cbe3b9bd1e4c7bb03db00b5362440e286b3af5
-	sha512sums = 96f42cb4b4dfaef72b3868bbc89975a2987cbd9a1b2cb53de16409d654a77c367712eaf5bc7dceed93ea25a19a5e9df3075a166cd03c0d959ac873b941b771b8
+	source = http://download.pinegrow.com/PinegrowLinux64.5.941.zip
+	source = pinegrow.png
+	source = LICENSE
+	sha512sums = 53d645884c196339949103bc98dad0b73ec7d10d97a74c8a88ded21983060c0efe5b340beef9651a4f6b965e9bf6edf4d7048d0a874ec3f5de97e0b4182d15d0
+	sha512sums = e71d7bfa237604fdf183cf1dc61e674c3f0ee9a33609f5c2aa6adf3b0359acd12f6ff2c1deeec52128461327c0fde013f4e1cc6fc5170e21f09b7fb01a4f334e
+	sha512sums = 1f2dd46c34bac1d218176f977eec05811982f1f74ead24deadb64717bb64059122e056ee1c95de34e207dd9e90107ce2f7187a4d6781f024257a7c2d7d605967
 	depends_x86_64 = gtk2
-	depends_x86_64 = gconf
+	depends_x86_64 = gconf-gtk2
 	depends_x86_64 = alsa-lib
 	depends_x86_64 = nss
 	depends_x86_64 = libxss
 	depends_x86_64 = libxtst
 	depends_x86_64 = gendesk
+	depends_x86_64 = unzip
 
 pkgname = pinegrow
 
