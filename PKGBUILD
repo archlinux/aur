@@ -1,7 +1,7 @@
 # Maintainer: Yash Karandikar <nerdstep710@gmail.com>
 
 pkgname=haur
-pkgver=3.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Helper for the Arch User Repository"
 arch=('any')
@@ -16,6 +16,6 @@ prepare () {
 package () {
 	make install srcdir=$srcdir pkgdir=$pkgdir
 }
-md5sums=('1f5aeca9de0c6e25b5894c60ca8e733b'
+md5sums=('8e7e0d334d54ad388d34f88a4f3e4b84'
          '2c9bb36e3d797a6a3462bf69b6033cfe'
          '4559d231974618def3ab832ad21f9e0d')
