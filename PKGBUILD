@@ -2,7 +2,7 @@
 
 pkgname=hid-glorious-dkms
 _pkgname=hid-glorious
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="HID kernel module for Glorious PC Gaming race mice"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/sammko/hid-glorious"
 license=('GPL2')
 depends=('dkms')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/sammko/hid-glorious/archive/v${pkgver}.tar.gz")
-sha256sums=('9ce11c69eb4e5a91deb8e70b8a170d3a611d421e14def38545943b6a11c8d477')
+sha256sums=('8f4c58b02979b49ff45bc8d369b7b2dd396ce3f4b5523009599fcdd6f2b11c0a')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
