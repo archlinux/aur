@@ -1,6 +1,6 @@
 pkgbase = themix-gui-git
 	pkgdesc = Plugin-based theme designer GUI for environments (like GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm), icons and terminal palettes.
-	pkgver = 1.12.6.r11.gf461833e
+	pkgver = 1.12.6.r14.ge495c2c3
 	pkgrel = 1
 	url = https://github.com/themix-project/oomox
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = themix-gui-git
 	depends = gtk3
 	depends = python-gobject
 	optdepends = themix-icons-gnome-colors: Icons Style plugin
+	optdepends = themix-import-images: Import palettes from images
 	optdepends = themix-theme-materia: Theme Style plugin
 	optdepends = themix-theme-oomox: Theme Style plugin
 	optdepends = xorg-xrdb: for the `xresources` theme

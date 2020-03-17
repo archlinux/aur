@@ -2,7 +2,7 @@
 # Upstream URL: https://github.com/themix-project/oomox
 
 pkgname=themix-gui-git
-pkgver=1.12.6.r11.gf461833e
+pkgver=1.12.6.r14.ge495c2c3
 pkgrel=1
 pkgdesc="Plugin-based theme designer GUI for
  environments (like GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm),
@@ -23,6 +23,7 @@ makedepends=(
 )
 optdepends=(
 	'themix-icons-gnome-colors: Icons Style plugin'
+	'themix-import-images: Import palettes from images'
 	'themix-theme-materia: Theme Style plugin'
 	'themix-theme-oomox: Theme Style plugin'
 	'xorg-xrdb: for the `xresources` theme'
@@ -40,7 +41,7 @@ package() {
 	_oomox_gui_dir=${_oomox_dir}/oomox_gui
 
 	cd "${srcdir}/oomox"
-	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install_gui
+	make DESTDIR="${pkgdir}" APPDIR="${_oomox_dir}" PREFIX="/usr" install_gui install_import_random
 	python -O -m compileall ${pkgdir}${_oomox_gui_dir} -d ${_oomox_gui_dir}
 }
 
