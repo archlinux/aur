@@ -8,7 +8,6 @@ pkgbase = detect-tablet-mode-git
 	makedepends = git
 	depends = ruby
 	depends = libinput
-	provides = libinput
 	source = detect-tablet-mode-git::git+https://github.com/alesguzik/linux_detect_tablet_mode
 	sha256sums = SKIP
 
