@@ -1,0 +1,14 @@
+pkgbase = wal-g
+	pkgdesc = WAL-G is an archival restoration tool for Postgres(beta for MySQL, MongoDB, and Redis)
+	pkgver = v0.2.14
+	pkgrel = 1
+	url = https://github.com/wal-g/wal-g
+	arch = x86_64
+	license = Apache
+	makedepends = tar
+	provides = wal-g
+	source = https://www.github.com/wal-g/wal-g/releases/download/v0.2.14/wal-g.linux-amd64.tar.gz
+	md5sums = 7d81f935cbfa431ff914be696f5ca5cc
+
+pkgname = wal-g
+
