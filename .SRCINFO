@@ -1,0 +1,26 @@
+pkgbase = themix-icons-suru-plus-git
+	pkgdesc = Suru++ icons plugin for Themix GUI designer
+	pkgver = v30.0.r2.g9bd895f32
+	pkgrel = 1
+	url = https://github.com/gusbemacbe/suru-plus/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	makedepends = python
+	depends = sed
+	depends = findutils
+	optdepends = themix-gui: GUI
+	optdepends = yaru-icon-theme: fallback icons
+	optdepends = gnome-icon-theme: fallback icons
+	optdepends = gnome-icon-theme-symbolic: fallback icons
+	provides = themix-icons-suru-plus
+	conflicts = themix-icons-suru-plus
+	options = !strip
+	source = git+https://github.com/themix-project/oomox.git#branch=master
+	source = suru-plus::git+https://github.com/gusbemacbe/suru-plus.git#branch=master
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = themix-icons-suru-plus-git
+
