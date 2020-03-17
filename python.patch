@@ -54,16 +54,6 @@ index 33b50b3d0..ba1982a42 100644
  	${Boost_LIBRARIES}
 +	${PYTHON_LIBRARIES}
  	${OPENCL_LIBRARIES})
-diff --git a/tests/benchsimple/CMakeLists.txt b/tests/benchsimple/CMakeLists.txt
-index 3ac004b2b..b2abe340c 100644
---- a/tests/benchsimple/CMakeLists.txt
-+++ b/tests/benchsimple/CMakeLists.txt
-@@ -22,4 +22,4 @@ link_directories (${LuxRays_LIB_DIR})
- add_executable(benchsimple benchsimple.cpp)
- add_definitions(${VISIBILITY_FLAGS})
- remove_definitions("-DLUXCORE_DLL")
--target_link_libraries(benchsimple luxrays ${EMBREE_LIBRARY} ${TBB_LIBRARY} )
-+target_link_libraries(benchsimple luxrays ${EMBREE_LIBRARY} ${PYTHON_LIBRARIES} ${TBB_LIBRARY} )
 diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
 index de4e11ec5..2c7debda4 100644
 --- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
