@@ -1,6 +1,6 @@
 pkgbase = gsettings-desktop-schemas-git
 	pkgdesc = Shared GSettings schemas for the desktop
-	pkgver = 3.34.0.r0.g56d24d4
+	pkgver = 3.36.0.r2.g4e4bb62
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = gsettings-desktop-schemas-git
 	makedepends = meson
 	depends = glib2
 	depends = dconf
-	provides = gsettings-desktop-schemas=3.34.0.r0.g56d24d4
+	provides = gsettings-desktop-schemas=3.36.0.r2.g4e4bb62
 	conflicts = gsettings-desktop-schemas
 	replaces = gsettings-desktop-schemas
 	source = git+https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas.git
