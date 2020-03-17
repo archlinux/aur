@@ -1,0 +1,27 @@
+pkgbase = themix-full-git
+	pkgdesc = Themix: GUI for generating different color variations of Arc, Materia, Oomox themes (GTK2, GTK3, Cinnamon, GNOME, MATE, Openbox, Xfwm), ArchDroid, Gnome-Colors, Numix, Papirus, Suru++ icons, and terminal palettes. Have a hack for HiDPI in GTK2.
+	pkgver = 1.13
+	pkgrel = 1
+	url = https://github.com/themix-project/oomox
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = themix-gui-git
+	depends = themix-import-images-git
+	depends = themix-export-spotify-git
+	depends = themix-plugin-base16-git
+	depends = themix-theme-arc-git
+	depends = themix-theme-materia-git
+	depends = themix-theme-oomox-git
+	depends = themix-icons-archdroid-git
+	depends = themix-icons-gnome-colors-git
+	depends = themix-icons-numix-git
+	depends = themix-icons-papirus-git
+	depends = themix-icons-suru-plus-git
+	depends = themix-icons-suru-plus-aspromauros-git
+	provides = themix-full
+	conflicts = themix-full
+	replaces = oomox-git
+
+pkgname = themix-full-git
+
