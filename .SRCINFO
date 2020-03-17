@@ -1,0 +1,13 @@
+pkgbase = stegify-bin
+	pkgdesc = Go tool for LSB steganography, capable of hiding any file within an image
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/DimitarPetrov/stegify
+	arch = x86_64
+	license = MIT
+	provides = stegify
+	source = https://github.com/DimitarPetrov/stegify/releases/download/v1.2/stegify_linux_x86-64
+	md5sums = 9dbd74e6f52ed67bad384d57c84033a7
+
+pkgname = stegify-bin
+
