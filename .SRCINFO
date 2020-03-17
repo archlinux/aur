@@ -1,6 +1,6 @@
 pkgbase = cppadcodegen
 	pkgdesc = A C++ Algorithmic Differentiation Package
-	pkgver = 2.4.0
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://github.com/joaoleal/CppADCodeGen
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = cppadcodegen
 	optdepends = valgrind: memcheck test
 	optdepends = clang: only required for JIT compilation
 	optdepends = llvm: only required for JIT compilation
-	source = https://github.com/joaoleal/CppADCodeGen/archive/v2.4.0.tar.gz
-	sha256sums = 8bb6c7a7ef9cceb5efad65d8a547e36ac67a825025d168b9773af755a800b34b
+	source = https://github.com/joaoleal/CppADCodeGen/archive/v2.4.2.tar.gz
+	sha256sums = c9c9d25e519d3235d63cc379fc3d9b3441e1efd5c9a4e35a827c42284b289184
 
 pkgname = cppadcodegen
 
