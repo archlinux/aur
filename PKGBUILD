@@ -43,8 +43,6 @@ optdepends=(
 )
 provides=(
     'themix-full'
-    'oomox-git'
-    'oomox'
 )
 conflicts=(
     'themix-full'
