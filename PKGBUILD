@@ -18,7 +18,6 @@ sha256sums=('c3050874bfeff2c57c940dafb3dad0b96917e067ff98acad4aa73dd898c30758'
 prepare() {
      rmdir ${srcdir}/cryptg-${pkgver}/share/tiny-AES-c
      mv tiny-AES-c-f8507b9f226416ba1f5d452ecaaf37a2fae982c3/ ${srcdir}/cryptg-${pkgver}/share/tiny-AES-c
-#    unzip -d ${srcdir}/cryptg-${pkgver}/share/tiny-AES-c f8507b9f226416ba1f5d452ecaaf37a2fae982c3.zip
 }
 
 build() {
