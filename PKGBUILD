@@ -1,9 +1,9 @@
 # Maintainer: Maxime "pep" Buquet <archlinux@bouah.net>
 
-_tag=v0.5.0-beta
+_tag=v0.6.0-beta
 pkgname=python-xeddsa
-pkgver=0.5.0.beta
-pkgrel=2
+pkgver=0.6.0.beta
+pkgrel=1
 pkgdesc="A python implementation of the XEdDSA signature scheme"
 url='https://github.com/Syndace/python-xeddsa'
 license=('MIT')
@@ -11,7 +11,7 @@ arch=('x86_64')
 makedepends=('git' 'python-setuptools' 'cmake' 'libsodium')
 source=("${pkgname}::git+https://github.com/Syndace/python-xeddsa.git#tag=${_tag}")
 sha256sums=('SKIP')
-depends=('glibc' 'python-pynacl')
+depends=('glibc' 'python-libnacl')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
