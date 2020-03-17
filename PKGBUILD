@@ -21,28 +21,26 @@ source=(
 	"git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master"
 	"git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master"
 	"git+https://github.com/themix-project/oomoxify.git#branch=master"
-	"git+https://github.com/themix-project/base16_mirror.git#branch=master"
+	"git+https://github.com/themix-project/themix-plugin-base16.git#branch=master"
 	"git+https://github.com/numixproject/numix-icon-theme.git#branch=master"
 	"git+https://github.com/numixproject/numix-folders.git#branch=master"
 	"git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git#branch=master"
 	"git+https://github.com/gusbemacbe/suru-plus.git#branch=master"
 	"git+https://github.com/gusbemacbe/suru-plus-aspromauros.git#branch=master"
 )
-md5sums=(
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-	"SKIP"
-)
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP')
 depends=(
 	'gtk3'
 	'python-gobject'
@@ -114,7 +112,7 @@ prepare(){
 	git config submodule.archdroid-icon-theme.url $srcdir/archdroid-icon-theme
 	git config submodule.gnome-colors-icon-theme.url $srcdir/gnome-colors-icon-theme
 	git config submodule.oomoxify.url $srcdir/oomoxify
-	git config submodule.base16_mirror.url $srcdir/base16_mirror
+	git config submodule.plugin_base16.url $srcdir/themix-plugin-base16
 	git config submodule.numix-folders.url $srcdir/numix-folders
 	git config submodule.numix-icon-theme.url $srcdir/numix-icon-theme
 	git config submodule.papirus-icon-theme.url $srcdir/papirus-icon-theme

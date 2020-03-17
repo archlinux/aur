@@ -43,7 +43,7 @@ pkgbase = oomox-git
 	source = git+https://github.com/themix-project/archdroid-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/gnome-colors-icon-theme.git#branch=master
 	source = git+https://github.com/themix-project/oomoxify.git#branch=master
-	source = git+https://github.com/themix-project/base16_mirror.git#branch=master
+	source = git+https://github.com/themix-project/themix-plugin-base16.git#branch=master
 	source = git+https://github.com/numixproject/numix-icon-theme.git#branch=master
 	source = git+https://github.com/numixproject/numix-folders.git#branch=master
 	source = git+https://github.com/PapirusDevelopmentTeam/papirus-icon-theme.git#branch=master
