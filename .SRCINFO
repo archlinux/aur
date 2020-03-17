@@ -1,13 +1,12 @@
 pkgbase = ao
 	pkgdesc = An Electron wrapper for Microsoft To-Do
 	pkgver = 6.9.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/klaussinani/ao/
 	arch = x86_64
 	license = MIT
 	depends = gconf
 	depends = libnotify
-	depends = libappindicator
 	depends = libxtst
 	depends = nss
 	depends = libxss

@@ -3,12 +3,12 @@
 # Contributor: Paul Oppenheimer <redg3ar@airmail.cc>
 pkgname=ao
 pkgver=6.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An Electron wrapper for Microsoft To-Do"
 arch=('x86_64')
 url="https://github.com/klaussinani/ao/"
 license=('MIT')
-depends=('gconf' 'libnotify' 'libappindicator' 'libxtst' 'nss' 'libxss')
+depends=('gconf' 'libnotify' 'libxtst' 'nss' 'libxss')
 provides=('ao')
 conflicts=('ao-git')
 source=("${url}/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
