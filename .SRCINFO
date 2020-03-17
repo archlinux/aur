@@ -1,0 +1,13 @@
+pkgbase = asciicast2gif
+	pkgdesc = Generate GIF animations from asciicasts (asciinema recordings)
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/asciinema/asciicast2gif
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = gifsicle
+
+pkgname = asciicast2gif
+
