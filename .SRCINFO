@@ -1,0 +1,13 @@
+pkgbase = logkit-bin
+	pkgdesc = Very powerful server agent for collecting & sending logs & metrics with an easy-to-use web console
+	pkgver = 1.5.4
+	pkgrel = 1
+	url = https://logkit-pro.qiniu.com
+	arch = x86_64
+	license = Apache2
+	provides = logkit
+	source = https://pandora-dl.qiniu.com/logkit_v1.5.4.tar.gz
+	md5sums = 9308045b7652abb680990200aaf91dab
+
+pkgname = logkit-bin
+
