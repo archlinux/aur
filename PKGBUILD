@@ -17,18 +17,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname::git+$url")
 noextract=()
 sha256sums=('SKIP')
-#build() {
-#}
+build() {
+	git clone $url
+}
 
 package() {
-	cd $pkgname
+	cd linux_detect_tablet_mode
 
 	install -d $pkgdir/usr/bin
-	install -d $pkdir/home/$USER/.config/
+	install -d $pkgdir/home/$USER/.config/
 
 	cp watch_tablet $pkgdir/usr/bin
-	cp watch_tablet.yml $pkdir/home/$USER/.config
+	cp watch_tablet.yml $pkgdir/home/$USER/.config
 }
