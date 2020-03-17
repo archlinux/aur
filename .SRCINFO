@@ -1,4 +1,4 @@
-pkgbase = pkgbase
+pkgbase = julie
 	pkgdesc = Tool made to help you with gpg
 	pkgver = 1
 	pkgrel = 1

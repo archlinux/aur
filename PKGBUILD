@@ -1,6 +1,6 @@
 # Maintainer Léo Kauffmann <le0kauffmann@protonmail.com>
 
-pkgbase=pkgbase
+pkgbase=julie
 pkgname=julie
 pkgver=1
 pkgrel=1
