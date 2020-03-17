@@ -28,8 +28,10 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
+  pip install --prefix=/usr --root='$pkgdir' py-find-1st
   python setup.py build
   python setup.py install --prefix=/usr --root="$pkgdir"
+
 
   install -D -m644 LICENSE \
 	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
