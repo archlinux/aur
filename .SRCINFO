@@ -1,0 +1,16 @@
+pkgbase = pkgbase
+	pkgdesc = Tool made to help you with gpg
+	pkgver = 1
+	pkgrel = 1
+	url = https://framagit.org/SirCipherz/julie
+	arch = any
+	license = GPL3
+	depends = gnupg
+	depends = xclip
+	depends = curl
+	depends = jq
+	depends = git
+	depends = python3
+
+pkgname = julie
+
