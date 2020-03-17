@@ -1,14 +1,14 @@
 pkgbase = zenith-bin
 	pkgdesc = Terminal system monitor with histograms, written in Rust
-	pkgver = 0.7.4
+	pkgver = 0.7.5
 	pkgrel = 2
 	url = https://github.com/bvaisvil/zenith
 	arch = x86_64
 	license = MIT
 	provides = zenith
 	conflicts = zenith
-	source = zenith-bin-0.7.4.tar.gz::https://github.com/bvaisvil/zenith/releases/download/0.7.4/zenith.linux.tgz
-	md5sums = bf9326d39279a1c8370e70abee1faacf
+	source = zenith-bin-0.7.5.tar.gz::https://github.com/bvaisvil/zenith/releases/download/0.7.5/zenith.linux.tgz
+	md5sums = 0848c3b3723368524db7d40553a35f2c
 
 pkgname = zenith-bin
 
