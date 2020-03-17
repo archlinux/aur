@@ -1,0 +1,13 @@
+pkgbase = boilr-bin
+	pkgdesc = Boilerplate template manager that generates files or directories from template repositories
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/tmrts/boilr
+	arch = x86_64
+	license = Apache2
+	provides = boilr
+	source = https://github.com/tmrts/boilr/releases/download/0.3.0/boilr-0.3.0-linux_amd64.tgz
+	md5sums = 00bc3e24b5631870cfe1a700de0092df
+
+pkgname = boilr-bin
+
