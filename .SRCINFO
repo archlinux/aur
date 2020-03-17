@@ -1,0 +1,14 @@
+pkgbase = alicloud-vault
+	pkgdesc = A vault for securely storing and accessing Alibaba Cloud credentials in development environments
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/arafato/alicloud-vault
+	arch = x86_64
+	license = MIT
+	makedepends = go-pie
+	depends = glibc
+	source = alicloud-vault-1.1.0.tar.gz::https://github.com/arafato/alicloud-vault/archive/v1.1.0.tar.gz
+	sha512sums = dba764a90d95d444080ae2b225fe4f6042a0ae322465f526d5e4c0463d5015b28f2de83ae1d99d7abb9fcf34bfb25ca690241a78a207c3c2e2cc8ddcffe7b2bc
+
+pkgname = alicloud-vault
+
