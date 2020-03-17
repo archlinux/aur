@@ -1,19 +1,19 @@
-# Maintainer: Jeff Farthing <jeff at jfarthing dot com>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname=plymouth-theme-arch-glow
-pkgver=1.0
-pkgrel=3
+pkgver=167535
+pkgrel=1
 pkgdesc="This is a simple Plymouth theme displaying the Arch Linux logo."
 arch=('any')
-url="http://gnome-look.org/content/show.php/Arch+Linux+Glow?content=167536"
+url="https://store.kde.org/p/1000032/"
 license=('CCPL:cc-by-3.0')
 depends=('plymouth')
-source=("$pkgname-$pkgver.zip::https://dl.opendesktop.org/api/files/download?id=1460752922")
-md5sums=('1881cef05fa9be77cb88f990d70b027a')
+source=("arch-glow.tar.gz")
+sha256sums=('781e3eb6409ecde3944c1144329ae08b7de661b0ead53a6986a9d87919e1ec33')
 
 package() {
-	cd $srcdir/Arch\ Linux\ Plymouth\ theme/arch-glow
-	rm Thumbs.db
+	cd $srcdir/arch-glow
+
 	mkdir -p $pkgdir/usr/share/plymouth/themes/arch-glow
 	install -Dm644 * $pkgdir/usr/share/plymouth/themes/arch-glow
 }
