@@ -1,0 +1,13 @@
+pkgbase = goweight-bin
+	pkgdesc = A tool to analyze and troubleshoot a Go binary size
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/jondot/goweight
+	arch = x86_64
+	license = Apache2
+	provides = goweight
+	source = https://github.com/jondot/goweight/releases/download/v1.0.5/goweight_1.0.5_Linux_x86_64.tar.gz
+	md5sums = 7fee7ed7f4da52605f3fbeccf08b19a5
+
+pkgname = goweight-bin
+
