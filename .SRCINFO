@@ -1,12 +1,12 @@
 pkgbase = lbry-app-bin
 	pkgdesc = The LBRY app built using electron
 	pkgver = 0.43.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lbry.com/
 	arch = x86_64
 	license = MIT
 	depends = libnotify
-	depends = libappindicator
+	depends = libappindicator-gtk2
 	depends = libxtst
 	depends = nss
 	depends = libsecret
