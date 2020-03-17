@@ -1,6 +1,6 @@
 pkgbase = next-browser
 	pkgdesc = Keyboard-oriented, Common Lisp extensible web-browser
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 2
 	url = https://next.atlas.engineer
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = next-browser
 	optdepends = gst-plugins-ugly: for HTML5 audio/video
 	options = !strip
 	options = !makeflags
-	source = next-browser-1.4.0.tar.gz::https://github.com/atlas-engineer/next/archive/1.4.0.tar.gz
-	sha512sums = a94b81c1b417818a06ddc592aa44620704a91b4ed411c92f19a768c4f7d4f9f74d29b9ad7a320d7a27ebaf880fa356c76626c1e2a9bac2c17bfeb6838cd1f937
+	source = next-browser-1.5.0.tar.gz::https://github.com/atlas-engineer/next/archive/1.5.0.tar.gz
+	sha512sums = 743a3ad55b8e30d30e1676a7303a6ecd0df87cf28ca1a10cd5a73ecb04bfd5432aadb9d48029c99c7dde6e0dc2f1b94a9a50dc16e17efce829b9b4d3685846c9
 
 pkgname = next-browser
 
