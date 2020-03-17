@@ -1,0 +1,21 @@
+pkgbase = themix-plugin-base16-git
+	pkgdesc = Import and export plugin for Themix GUI designer to get color palettes from Base16 project
+	pkgver = 1.0.r6.g6ec2a41
+	pkgrel = 1
+	url = https://github.com/themix-project/themix-plugin-base16
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = git
+	depends = themix-gui
+	depends = python-pystache
+	depends = python-yaml
+	optdepends = themix-gui: GUI
+	provides = themix-plugin-base16
+	conflicts = themix-plugin-base16
+	options = !strip
+	source = themix-plugin-base16::git+https://github.com/themix-project/themix-plugin-base16.git#branch=master
+	md5sums = SKIP
+
+pkgname = themix-plugin-base16-git
+
