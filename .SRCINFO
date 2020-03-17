@@ -1,7 +1,7 @@
 pkgbase = cegui
 	pkgdesc = A free library providing windowing and widgets for graphics APIs/engines
 	pkgver = 0.8.7
-	pkgrel = 10
+	pkgrel = 11
 	url = http://cegui.org.uk
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cegui
 	makedepends = cmake
 	makedepends = python2
 	makedepends = doxygen
-	makedepends = ogre
+	makedepends = ogre=1.9
 	makedepends = gtk2
 	makedepends = boost
 	makedepends = graphviz
