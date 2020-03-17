@@ -1,6 +1,6 @@
 pkgbase = ahab-git
 	pkgdesc = Configure, launch, and work in Dockerized environments
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/MichaelDarr/ahab
 	arch = any

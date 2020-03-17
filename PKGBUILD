@@ -1,7 +1,7 @@
 # Maintainer: Michael Darr <michael.e.darr@gmail.com>
 _pkgname="ahab"
 pkgname="${_pkgname}-git"
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Configure, launch, and work in Dockerized environments"
 arch=('any')
