@@ -5,11 +5,11 @@ die () {
   exit 1
 }
 
-if [ -f "$HOME"/.config/haurrc ]; then
+if [[ -f "$HOME"/.config/haurrc ]]; then
   # shellcheck source=/dev/null
   source "$HOME"/.config/haurrc
 else
-  if [ -f /usr/share/haur/haurrc ]; then
+  if [[ -f /usr/share/haur/haurrc ]]; then
     # shellcheck source=/dev/null
     source /usr/share/haur/haurrc
   else
@@ -17,7 +17,7 @@ else
   fi
 fi
 
-if [ ! "$HAUR_NO_COLORS" == "y" ]; then
+if [[ ! "$HAUR_NO_COLORS" == "y" ]]; then
   if test -t 1; then
 
     # see if it supports colors...
@@ -53,6 +53,7 @@ search () {
 REMOVE=false
 CLEAR_CACHE=false
 UPDATE=false
+SEARCH=false
 
 for arg in "$@"; do
   shift
@@ -83,7 +84,7 @@ while getopts ":surch" opt; do
       CLEAR_CACHE=true
       ;;
     h )
-      echo "Usage: haur [--remove | -r] | [--clear-cache | -c] [--update | -u] [--search | -s]<package names>"
+      echo "Usage: haur [[--remove | -r]] | [[--clear-cache | -c]] [[--update | -u]] [[--search | -s]]<package names>"
       exit 0
       ;;
     \?)
@@ -93,24 +94,24 @@ while getopts ":surch" opt; do
 done
 shift $((OPTIND -1))
 
-if [ "$HAUR_ALWAYS_CLEAR_CACHE" == "y" ]; then
+if [[ "$HAUR_ALWAYS_CLEAR_CACHE" == "y" ]]; then
   CLEAR_CACHE=true
 fi
 
-if [ $SEARCH == true ]; then
+if [[ $SEARCH == true ]]; then
   for PACKAGE_NAME in "$@"; do
     search "${PACKAGE_NAME}" || die "Something went wrong while searching for that package."
   done
   exit 0
 fi
 
-if [ $REMOVE == true ]; then
+if [[ $REMOVE == true ]]; then
   for PACKAGE_NAME in "$@"; do
     echo "${blue}Removing $PACKAGE_NAME...${normal}"
     sudo pacman -Rns "$PACKAGE_NAME"
     echo "$PACKAGE_NAME" > ~/.haur_cache
   done
-  if [ $CLEAR_CACHE == true ]; then
+  if [[ $CLEAR_CACHE == true ]]; then
     if test -f "$HOME/.haur_cache"; then
       echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
@@ -122,7 +123,7 @@ if [ $REMOVE == true ]; then
       echo "${blue}Nothing to clear${normal}"
     fi
   fi
-elif [ $UPDATE == true ]; then
+elif [[ $UPDATE == true ]]; then
   for PACKAGE_NAME in "$@"; do
     echo "${blue}Updating $PACKAGE_NAME...${normal}"
     cd ~/.haur || die "Could not navigate to ~/.haur"
@@ -132,7 +133,7 @@ elif [ $UPDATE == true ]; then
     rm -f ./*.pkg.tar.gz
     makepkg -si
   done
-  if [ $CLEAR_CACHE == true ]; then
+  if [[ $CLEAR_CACHE == true ]]; then
     if test -f "$HOME/.haur_cache"; then
       echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
@@ -145,7 +146,7 @@ elif [ $UPDATE == true ]; then
     fi
   fi
 else
-  if [ $CLEAR_CACHE == true ]; then
+  if [[ $CLEAR_CACHE == true ]]; then
     if test -f "$HOME/.haur_cache"; then
       echo "${blue}Clearing cache...${normal}"
       while IFS= read -r line || [[ -n "$line" ]]; do
