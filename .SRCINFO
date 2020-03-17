@@ -7,6 +7,7 @@ pkgbase = openroad-git
 	license = BSD
 	makedepends = cmake
 	makedepends = clang
+	makedepends = git
 	depends = bison
 	depends = blas
 	depends = flex

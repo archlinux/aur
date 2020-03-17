@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://theopenroadproject.org/'
 license=('BSD')
 depends=('bison' 'blas' 'flex' 'swig' 'boost' 'tcl' 'zlib')
-makedepends=('cmake' 'clang')
+makedepends=('cmake' 'clang' 'git')
 source=(
   "git+https://github.com/The-OpenROAD-Project/OpenROAD.git"
   "git+https://github.com/The-OpenROAD-Project/OpenSTA.git"
