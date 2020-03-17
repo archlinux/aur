@@ -14,6 +14,7 @@ pkgbase = ambulant-player-gtk-git
 	makedepends = python2
 	makedepends = python
 	depends = ffmpeg
+	depends = sdl_pango
 	provides = AmbulantPlayer_gtk
 	conflicts = AmbulantPlayer_gtk
 	source = git+https://e.coding.net/Baytars/ambulant-2.6.git
