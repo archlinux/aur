@@ -1,10 +1,10 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
-pkgdesc="High performance software library for parallel computing with an easy-to-use API"
-url='https://arrayfire.com'
 pkgver=3.7.0
+pkgrel=5
+pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
-pkgrel=4
+url='https://arrayfire.com'
 license=('BSD')
 depends=('cblas' 'fftw' 'lapacke' 'forge' 'freeimage' 'glfw' 'glew' 'intel-mkl')
 makedepends=('cmake' 'graphviz' 'doxygen' 'opencl-headers' 'python' 'ocl-icd' 'cuda' 'cudnn' 'git' 'ninja' 'boost')
@@ -25,7 +25,6 @@ build() {
 
   cmake .. \
       -GNinja \
-      -DMKL_THREAD_LAYER="GNU OpenMP" \
       -DUSE_CPU_MKL=ON \
       -DGOOGLETEST_VERSION=1.9.0 \
       -DCMAKE_INSTALL_PREFIX=/usr \
