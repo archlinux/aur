@@ -3,13 +3,13 @@
 _target=msp430-elf
 pkgname="${_target}-gdb"
 pkgver=9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNU Debugger for the ${_target} target."
 arch=('x86_64' 'x86')
 url="https://www.gnu.org/software/gdb/download/"
 license=('GPL')
 groups=('devel')
-depends=("python" "readline")
+depends=("python" "readline" "ncurses" "gdb-common" "guile" "expat" "xz")
 source=("http://ftp.gnu.org/gnu/gdb/gdb-${pkgver}.tar.xz")
 sha256sums=('699e0ec832fdd2f21c8266171ea5bf44024bd05164fdf064e4d10cc4cf0d1737')
 
@@ -35,16 +35,17 @@ build() {
   # build gdb
   ../configure \
     --prefix=/usr \
-    --without-guile \
     --target=${_target} \
     --host=${CHOST} \
     --build=${CHOST} \
     --with-sysroot=/usr/${_target} \
     --disable-nls \
     --with-python=/usr/bin/python \
+    --enable-multilib \
     --with-system-readline \
     --disable-werror \
-    --disable-tui
+    --enable-tui \
+    --with-guile
 
   make
 }
@@ -54,11 +55,8 @@ package() {
   cd "$srcdir/gdb-$pkgver/gdb-build"
   make DESTDIR="$pkgdir" install
   
-  # fix conflicts
-  # rm -f ${pkgdir}/usr/lib/libiberty.a
+  # handle conflicts
   rm -r ${pkgdir}/usr/share/info
-  # rm -r ${pkgdir}/usr/{info,man}
-  
   rm -r ${pkgdir}/usr/share/man
   rm -r ${pkgdir}/usr/share/gdb/
   rm -r ${pkgdir}/usr/include/gdb
