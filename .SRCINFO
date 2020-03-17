@@ -1,0 +1,12 @@
+pkgbase = qbec-bin
+	pkgdesc = Configure Kubernetes objects on multiple clusters using Jsonnet
+	pkgver = 0.10.5
+	pkgrel = 0
+	url = https://github.com/splunk/qbec
+	arch = x86_64
+	license = Apache
+	source = https://github.com/splunk/qbec/releases/download/v0.10.5/qbec-linux-amd64.tar.gz
+	sha256sums = dc302961bb958dec0575d9f508880358a3f06565bbfcf400a109da79192d4eda
+
+pkgname = qbec-bin
+
