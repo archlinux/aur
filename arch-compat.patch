@@ -1,26 +1,25 @@
-From 8e093738cae24a30b3e11293e5b0de06a04f94c0 Mon Sep 17 00:00:00 2001
-From: SolarAquarion <shlomochoina@gmail.com>
-Date: Fri, 3 Aug 2018 13:06:58 -0400
-Subject: [PATCH] Update system_management.py
+From 933c13f72b14214c70f688bcee01ad386dc3ed46 Mon Sep 17 00:00:00 2001
+From: Solomon Choina <shlomochoina@gmail.com>
+Date: Mon, 16 Mar 2020 10:28:10 -0400
+Subject: [PATCH] arch-compat
 
 ---
- usr/lib/linuxmint/mintMenu/plugins/system_management.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ usr/lib/linuxmint/mintMenu/plugins/system_management.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/usr/lib/linuxmint/mintMenu/plugins/system_management.py b/usr/lib/linuxmint/mintMenu/plugins/system_management.py
-index 2d5e1c1..1126aab 100755
+index 5b5ef8c..c7a3c7e 100755
 --- a/usr/lib/linuxmint/mintMenu/plugins/system_management.py
 +++ b/usr/lib/linuxmint/mintMenu/plugins/system_management.py
-@@ -161,10 +161,10 @@ def do_standard_items( self ):
+@@ -152,7 +152,7 @@ class pluginclass(object):
  
-         if ( self.showPackageManager == True ):
-             Button2 = easyButton( "applications-system", self.iconsize, [_("Package Manager")], -1, -1 )
--            Button2.connect( "clicked", self.ButtonClicked, "synaptic-pkexec" )
-+            Button2.connect( "clicked", self.ButtonClicked, "pamac-manager" )
+         if self.showPackageManager:
+             Button2 = easyButton("applications-system", self.iconsize, [_("Package Manager")], -1, -1)
+-            Button2.connect("clicked", self.ButtonClicked, "synaptic-pkexec")
++            Button2.connect("clicked", self.ButtonClicked, "pamac-manager")
              Button2.show()
-             self.systemBtnHolder.pack_start( Button2, False, False, 0 )
--            self.mintMenuWin.setTooltip( Button2, _("Install, remove and upgrade software packages") )
-+            self.mintMenuWin.setTooltip( Button2, _("Install, remove, and upgrade software packages") )
- 
-         if ( self.showControlCenter == True ):
-             Button3 = easyButton( "gtk-preferences", self.iconsize, [_("Control Center")], -1, -1 )
+             self.systemBtnHolder.pack_start(Button2, False, False, 0)
+             self.mintMenuWin.setTooltip(Button2, _("Install, remove and upgrade software packages"))
+-- 
+2.25.1
+
