@@ -1,21 +1,21 @@
 pkgbase = aarchup
 	pkgdesc = Fork of archup a small and lightweight update-notifier for archlinux.
-	pkgver = 2.1.0
+	pkgver = 2.1.5
 	pkgrel = 1
-	url = https://github.com/inglor/aarchup
+	url = https://gitlab.com/artafinde/aarchup/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = libnotify
-	makedepends = cmake
+	makedepends = meson
 	makedepends = ninja
 	makedepends = gzip
 	depends = libnotify
 	depends = gtk2
 	optdepends = auracle: AUR support(--aur)
 	provides = aarchup
-	source = aarchup-2.1.0.tar.gz::https://github.com/inglor/aarchup/archive/2.1.0.tar.gz
-	sha256sums = 51adb6e1ebf500281c2874dbf624a869f83c927c7aac6e19645fdc0e64cddec7
+	source = aarchup-2.1.5.tar.gz::https://gitlab.com/artafinde/aarchup//-/archive/2.1.5/aarchup-2.1.5.tar.gz
+	sha256sums = 5e39e15a5f1106fe35f8b8644793042a47482fed7ab29ea93b56c8162267e42d
 
 pkgname = aarchup
 
