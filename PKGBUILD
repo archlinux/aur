@@ -7,8 +7,8 @@ arch=('x86_64')
 url="https://www.ambulantplayer.org/"
 _git=https://e.coding.net/Baytars/ambulant-2.6.git
 license=('LGPL')
-depends=('ed' 'python2' 'python' 'ffmpeg')
-makedepends=('make' 'automake' 'git' 'autoconf')
+depends=('ffmpeg')
+makedepends=('make' 'automake' 'git' 'autoconf' 'ed' 'python2' 'python')
 provides=('AmbulantPlayer_gtk')
 conflicts=('AmbulantPlayer_gtk')
 install=AmbulantPlayer_gtk.install
@@ -27,7 +27,10 @@ build() {
   cd ../
   ./autogen.sh
   ./configure
-  sudo make
+  cfgPath=`readlink ./libltdl/config-h.in`
+  rm ./libltdl/config-h.in
+  cp $cfgPath ./libltdl/config-h.in
+  make
 }
 
 package() {
