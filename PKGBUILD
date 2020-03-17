@@ -4,7 +4,7 @@
 
 _gemname=github-markup
 pkgname=ruby-$_gemname
-pkgver=3.0.2
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='The code GitHub uses to render README.markup'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('a9775404aebaedbd255ea915ed0dbc5eb155e435990bd01e7a83d8574d814ff7d311d5d54b8a1e8e7b0194f7d77106f899b7cfb705f76a5230c276b05345d8e3')
+sha512sums=('d6032018cd4fee933b28d980a7007b277a385f2b9e51431cb9215ce2f0dc6cb1e4983c97b159a08b2fec6363f8b222722fffb7880b7402cf3f47ad8fa03a5ab7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
