@@ -1,6 +1,6 @@
 pkgbase = my-study-life
 	pkgdesc = A free cross platform planner app for students, teachers and lecturers designed to make your study life easier to manage.
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://app.mystudylife.com
 	arch = armv7l
