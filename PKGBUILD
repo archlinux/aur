@@ -1,7 +1,7 @@
 # Maintainer: Alberto Fanjul <albertofanjul@gmail.com>
 pkgname=jsrdbg-git
 _name=jsrdbg
-pkgver=133.1fc4419
+pkgver=0.0.8.r20.g1fc4419
 pkgrel=1
 pkgdesc="JavaScript Remote Debugger for SpiderMonkey."
 arch=('i686' 'x86_64')
@@ -33,5 +33,5 @@ package() {
 
 pkgver() {
   cd "$srcdir/$_name"
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
