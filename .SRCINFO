@@ -1,6 +1,6 @@
 pkgbase = validatornu
 	pkgdesc = The Nu Html Checker, a command line tool for HTML5 markup validation
-	pkgver = 18.11.5
+	pkgver = 20.3.16
 	pkgrel = 1
 	url = https://validator.github.io/validator/
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = validatornu
 	makedepends = unzip
 	depends = java-environment
 	source = validatornu
-	source = https://github.com/validator/validator/releases/download/18.11.5/vnu.jar_18.11.5.zip
+	source = https://github.com/validator/validator/releases/download/20.3.16/vnu.jar_20.3.16.zip
 	sha256sums = 96cd47b569b8c79a60f3bea22159444919b418ef20d8beb4b223a6389aabbf25
-	sha256sums = b9785a3ab51671509c8d418cc84298b1389ca2d82107aa0537544090a7c51862
+	sha256sums = 1d5b3f0ded0a1e6f9d26a0be5c051a9590a11c8aab2e12d208120a3063e7bdcd
 
 pkgname = validatornu
 
