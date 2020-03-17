@@ -1,0 +1,13 @@
+pkgbase = vg-bin
+	pkgdesc = Virtualgo: Easy and powerful workspace based development for go
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/GetStream/vg
+	arch = x86_64
+	license = MIT
+	provides = vg
+	source = https://github.com/GetStream/vg/releases/download/v0.9.0/vg-linux-amd64
+	md5sums = dc968a20d16aca3de752a217e97094a2
+
+pkgname = vg-bin
+
