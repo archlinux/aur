@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=1.9.16.69.39205f6
+pkgver=1.10.30.70.26fa19e
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("git+https://github.com/ValveSoftware/openvr.git"
         'https://patch-diff.githubusercontent.com/raw/ValveSoftware/openvr/pull/1178.patch' # Add ability to build with system installed jsoncpp
         )
 md5sums=('SKIP'
-         '177ad5ec0b0714a522c3242fbe312fac'
+         '79543abcb2f86a8dcfcc942dc32c4090'
          'd3dc9d20967362a2e92e3fb1c7f82b57'
          'e68ff412ff73b1ca75f8b17ab6c7069a'
          'bd5a473153106325233f00b3f35c46d8')
@@ -43,10 +43,15 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/openvr"
-  git apply "../0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch"
-  git apply "../0002-samples-cmake-Remove-OpenVR-paths-check.patch"
-  git apply "../0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch"
-  git apply "../1178.patch"
+  for i in \
+    "../0001-openvr_capi-Add-pragma-pack-around-VRControllerState.patch" \
+    "../0002-samples-cmake-Remove-OpenVR-paths-check.patch" \
+    "../0003-samples-compat-Use-correct-definition-for-vsprintf_s.patch" \
+    "../1178.patch"
+  do
+    echo "Applying $i"
+    git apply "$i"
+  done
 }
 
 build() {
