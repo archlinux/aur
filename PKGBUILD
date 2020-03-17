@@ -1,6 +1,6 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=1.2
+pkgver=1.2_2_g634e12d9b
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64')
