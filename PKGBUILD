@@ -1,29 +1,28 @@
-# Maintainer: Tomáš Vyčítal <tom.vycital@gmail.com>
-
-basename=vimix-icon-theme
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Tomáš Vyčítal <tom.vycital@gmail.com>
 pkgname=vimix-icon-theme-git
-pkgdesc="Fresh and simple personality icon theme."
-pkgver=2019.05.04.r4.g83f08d39
+pkgver=2020.02.24.r9.g61901df5
 pkgrel=1
-conflicts=("$basename")
-provides=("$basename")
+pkgdesc="A Material Design icon theme based on Paper Icon Theme"
 arch=('any')
-url="https://vinceliuice.deviantart.com/art/Vimix-icon-themes-530683384"
-license=('custom:CC-BY-SA-4.0')
+url="https://github.com/vinceliuice/vimix-icon-theme"
+license=('CC BY-SA 4.0')
+depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!strip')
 source=("git+https://github.com/vinceliuice/vimix-icon-theme.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$basename"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  install -d -m 755 "$pkgdir/usr/share/icons"
-  vimix-icon-theme/install.sh --dest "$pkgdir/usr/share/icons"
+	cd "$srcdir/${pkgname%-git}"
+	install -dm755 "$pkgdir/usr/share/icons"
+	./install.sh -a -d "$pkgdir/usr/share/icons"
 
-  cd "$srcdir/$basename"
-  install -D -m 644 COPYING "$pkgdir/usr/share/licenses/$basename/LICENSE"
+	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
-
-# vim: ft=sh ts=2 sw=2 et:
