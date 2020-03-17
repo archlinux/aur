@@ -1,0 +1,16 @@
+pkgbase = libqtolm-git
+	pkgdesc = A Qt wrapper for libolm
+	pkgver = f2d8e23
+	pkgrel = 1
+	url = https://gitlab.com/b0/libQtOlm
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = libolm
+	source = libqtolm-git::git+https://gitlab.com/b0/libQtOlm.git
+	b2sums = SKIP
+
+pkgname = libqtolm-git
+
