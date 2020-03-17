@@ -12,7 +12,6 @@ cd haur
 makepkg -si
 ```
 
-Before updating, make sure to remove the default configuration file (/etc/haurrc). You may, however, keep your personal configuration file.
 
 ## Usage
 
@@ -45,7 +44,7 @@ haur -c
 
 ## Configuration file
 
-You can use the configuration file to change the behaviour of haur. By default, the configuration file is stored in `/etc/haurrc`. However, you can also copy it to `~/.config/haurrc`. These are currently the only supported options.
+You can use the configuration file to change the behaviour of haur. By default, the configuration file is stored in `/usr/share/haur/haurrc`. However, you can also copy it to `~/.config/haurrc`. These are currently the only supported options.
 
 To disable colors (even if your terminal supports them), set `HAUR_NO_COLORS="y"`
 
