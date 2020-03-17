@@ -5,7 +5,7 @@
 pkgname=python-boto
 pkgver=2.49.0.20190327
 _commit=9e1cd3bd76e738d80630f1bd9160fd87c8eab865
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python interface to Amazon Web Services (AWS)'
 arch=('any')
 url='https://github.com/boto/boto'
@@ -35,4 +35,7 @@ package() {
 
   python setup.py install -O1 --root="$pkgdir"
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  
+  # Remove (somewhat deprecated) python 2 tools.
+  rm -r "$pkgdir"/usr/bin
 }
