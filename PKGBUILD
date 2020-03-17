@@ -1,7 +1,7 @@
 # Maintainer: Roman Sommer <roman.sommer@fau.de>
 pkgname=veroroute
 _pkgvermajor=1
-_pkgverminor=79
+_pkgverminor=86
 pkgver=$_pkgvermajor.$_pkgverminor
 pkgrel=1
 epoch=
@@ -25,7 +25,7 @@ _sourcearchive="VeroRoute_V${_pkgvermajor}${_pkgverminor}_Src.zip"
 source=("https://downloads.sourceforge.net/project/$pkgname/$_sourcearchive"
 		"veroroute.desktop.in"
 		"veroroute-clib.scm")
-sha256sums=('c78189344a7b5c47e6181d7b458205fb643e94db9de6fdd1fc567cd48074c08c'
+sha256sums=('be95e383b04a8d7de8fb11852ef1feac29c152c94214e06a503b2f92e26a8f41'
             'b3dd5944f8330be2a4898d32e2ac3cbf97ea39e3a118b460a4dc313155a34f93'
             'a722805c46998bff7709357babc2e609fbc4b0021b33c59aefa4f7fa0567aeeb')
 
@@ -54,6 +54,8 @@ check() {
 package() {
   cd "$srcdir/VeroRoute"
   install -Dm755 veroroute "$pkgdir/usr/bin/veroroute"
+  mkdir -p "$pkgdir/usr/share/man/man1"
+  install -Dm644 "veroroute.1" "$pkgdir/usr/share/man/man1/"
   mkdir -p "$pkgdir/usr/share/pixmaps/"
   install -Dm644 veroroute.png "$pkgdir/usr/share/pixmaps/"
   mkdir -p "$pkgdir/usr/share/applications/"
