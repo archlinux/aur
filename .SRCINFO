@@ -1,0 +1,18 @@
+pkgbase = python-cryptg
+	pkgdesc = Cryptographic utilities for Telegram, designed to use with Telethon.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/alisaifee/limits/
+	arch = any
+	license = CC0
+	makedepends = python-setuptools
+	makedepends = libffi
+	depends = python
+	depends = python-cffi
+	source = https://github.com/cher-nov/cryptg/archive/0.2.tar.gz
+	source = https://github.com/cher-nov/tiny-AES-c/archive/f8507b9f226416ba1f5d452ecaaf37a2fae982c3.zip
+	sha256sums = c3050874bfeff2c57c940dafb3dad0b96917e067ff98acad4aa73dd898c30758
+	sha256sums = dfb0c7c2977ca018d8eff581319b959c4b72b5f59b2fc706519224edca591094
+
+pkgname = python-cryptg
+
