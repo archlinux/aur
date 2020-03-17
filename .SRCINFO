@@ -1,0 +1,15 @@
+pkgbase = control-toolbox-optcon
+	pkgdesc = The Control Toolbox - Optimal Control Components
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/ethz-adrl/control-toolbox
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cmake
+	depends = control-toolbox-core
+	source = control-toolbox-optcon-3.0.2::https://github.com/ethz-adrl/control-toolbox/archive/3.0.2.tar.gz
+	sha256sums = 086b33946d27ab64726536f0b0185c72a3ebb51e0a360f537126e3e57c499844
+
+pkgname = control-toolbox-optcon
+
