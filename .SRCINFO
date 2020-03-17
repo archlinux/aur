@@ -1,7 +1,7 @@
 pkgbase = mailwizard-git
 	pkgdesc = Configure neomutt, isync, getmail and msmtp with pass for passwords
-	pkgver = r728.b7f0532
-	pkgrel = 2
+	pkgver = r730.89f8ae6
+	pkgrel = 1
 	url = https://github.com/rpuntaie/mailwizard
 	install = wizard.install
 	changelog = changelog.txt
