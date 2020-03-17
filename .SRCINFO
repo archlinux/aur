@@ -1,0 +1,19 @@
+pkgbase = rarian
+	pkgdesc = Documentation meta-data library, designed as a replacement for Scrollkeeper.
+	pkgver = 0.8.1
+	pkgrel = 7
+	url = https://rarian.freedesktop.org/
+	arch = x86_64
+	license = GPL
+	makedepends = libxslt
+	depends = gcc-libs
+	depends = sh
+	source = https://download.gnome.org/sources/rarian/0.8/rarian-0.8.1.tar.bz2
+	source = user-segfault.patch
+	md5sums = 75091185e13da67a0ff4279de1757b94
+	md5sums = 457e9827197009cfa360911fe49a5ad7
+	sha256sums = aafe886d46e467eb3414e91fa9e42955bd4b618c3e19c42c773026b205a84577
+	sha256sums = 518b1834d4f44e92161f0cf2f72a6474f0ec687ea53562c64109df90d343fe71
+
+pkgname = rarian
+
