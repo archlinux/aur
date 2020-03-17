@@ -28,9 +28,10 @@ pkgver() {
 
 package() {
   cd "$srcdir/$pkgname"
-  pip install --prefix=/usr py-find-1st
-  pip install --prefix=/usr coinmarketcap
-  pip install --prefix=/usr ccxt
+  pip install --prefix=/usr --root="hyperopt" hyperopt
+  pip install --prefix=/usr --root="py-find-1st" py-find-1st
+  pip install --prefix=/usr --root='coinmarketcap' coinmarketcap
+  pip install --prefix=/usr --root='ccxt' ccxt
   python setup.py build
   python setup.py install --prefix=/usr --root="$pkgdir"
 
