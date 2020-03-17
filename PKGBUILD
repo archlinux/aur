@@ -1,9 +1,9 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lib32-vkd3d-git
-pkgver=1.1.406.g3b83ccc
+pkgver=1.1.689.ga59f198
 pkgrel=1
-pkgdesc="D3D12 to Vulkan translation library. 32-bits (GIT version)"
+pkgdesc='D3D12 to Vulkan translation library. 32-bits (GIT version)'
 arch=('x86_64')
 url='https://source.winehq.org/git/vkd3d.git'
 license=('LGPL')
@@ -35,9 +35,8 @@ prepare() {
 }
 
 build() {
-  export CFLAGS+=" -m32"
-  export CXXFLAGS+=" -m32"
-  export LDFLAGS+=" -m32"
+  export CC="gcc -m32"
+  export CXX="g++ -m32"
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
   cd build
@@ -45,8 +44,7 @@ build() {
     --prefix=/usr \
     --libdir=/usr/lib32 \
     --with-spirv-tools \
-    --enable-tests=no \
-    --host=i686-linux-gnu
+    --enable-tests=no
 
   make
 }
