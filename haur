@@ -9,9 +9,9 @@ if [ -f "$HOME"/.config/haurrc ]; then
   # shellcheck source=/dev/null
   source "$HOME"/.config/haurrc
 else
-  if [ -f /etc/haurrc ]; then
+  if [ -f /usr/share/haur/haurrc ]; then
     # shellcheck source=/dev/null
-    source /etc/haurrc
+    source /usr/share/haur/haurrc
   else
     die "fatal: No configuration file found"
   fi
