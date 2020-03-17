@@ -1,10 +1,9 @@
 # Maintainer: Cravix < dr dot neemous at gmail dot com >
 
-pkgbase=limnoria-git
-pkgname=("limnoria-git" "limnoria-python3-git")
+pkgname=limnoria-git
 _pkgname=Limnoria
-pkgver=20200211
-pkgrel=2
+pkgver=20200131.11218.2f493625
+pkgrel=1
 pkgdesc="An IRC bot based on Supybot, with sqlite3 support and other features (dev channel)"
 arch=('any')
 url="https://github.com/ProgVal/Limnoria"
@@ -20,14 +19,17 @@ optdepends=("python-charade: Detect page's encoding"
     "python-pysocks: SOCKS proxy support"
     "python-mock: For testing only"
     "python-cryptography: ECDSA support")
-conflicts=('limnoria' 'limnoria-python3')
+conflicts=('limnoria' 'limnoria-python3' 'limnoria-python3-git')
 source=("git://github.com/ProgVal/$_pkgname.git")
 md5sums=('SKIP')
+install=".install"
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-
-    sed -n '1s/[^[:digit:]]//gp' src/version.py
+    timestamp="$(git log -n1 --format="%at")"
+    maj="$(date +"%Y%m%d" --date="@${timestamp}" -u)"
+    min="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "${maj}.${min}"
 }
 
 build() {
@@ -36,13 +38,8 @@ build() {
     python3 setup.py build
 }
 
-package_limnoria-git() {
+package() {
     cd "$srcdir/$_pkgname"
 
     python3 setup.py install --root="$pkgdir" || return 1
-}
-
-package_limnoria-python3-git() {
-    msg "This package contains nothing and is only for migration,"
-    msg "and will be removed in next release."
 }

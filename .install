@@ -1,0 +1,11 @@
+post_install() {
+    echo "Notice: Since limnoria now only supports python3, "
+    echo "Original executive supybot3 in limnoria-python3(-git)"
+    echo "has been replaced by supybot."
+}
+
+post_upgrade() {
+    echo "Notice: Since limnoria now only supports python3, "
+    echo "    Original executive supybot3 in limnoria-python3(-git)"
+    echo "    has been replaced by supybot, same goes for other executives."
+}
