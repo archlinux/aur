@@ -1,0 +1,20 @@
+pkgbase = wf-recorder
+	pkgdesc = Screen recorder for wlroots-based compositors such as sway
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ammen99/wf-recorder
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = ninja
+	makedepends = scdoc
+	depends = ffmpeg
+	depends = ocl-icd
+	optdepends = slurp: limit recording to a part of the screen
+	source = https://github.com/ammen99/wf-recorder/releases/download/v0.2/wf-recorder-0.2.tar.xz
+	sha256sums = 0d306171a564ed955ff7a48a763ab6f3023f7f1f81f9a8012c46f46075b19b3d
+
+pkgname = wf-recorder
+
