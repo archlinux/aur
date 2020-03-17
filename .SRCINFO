@@ -1,6 +1,6 @@
 pkgbase = themix-import-images-git
 	pkgdesc = Import plugin for Themix GUI designer to get color palettes from the images
-	pkgver = 1.12.6.r14.ge495c2c3
+	pkgver = 1.12.6.r27.gb733941d
 	pkgrel = 1
 	url = https://github.com/themix-project/oomox
 	arch = x86_64
