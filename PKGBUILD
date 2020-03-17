@@ -13,7 +13,8 @@ depends=('python-sqlalchemy' 'python-cachetools'
          'python-scipy' 'python-jsonschema' 'python-numpy' 'python-pytest'
          'python-pytest-mock' 'python-pytest-cov' 'python-networkx'
          'python-telegram-bot' 'python-tabulate' 'python-hyperopt' 'python-ta-lib'
-         'python-bittrex' 'python-questionary' 'python-jinja' 'python-sdnotify' 'python-rapidjson')
+         'python-bittrex' 'python-questionary' 'python-jinja' 'python-sdnotify' 'python-rapidjson' 
+'python-hyperopt' 'python-coinmarketcap' 'python-ccxt')
          
 _branch="master"
 source=("$pkgname"::"git://github.com/gcarq/freqtrade.git#branch=${_branch}")
@@ -29,9 +30,6 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   pip install --prefix=/usr --root="hyperopt" hyperopt
-  pip install --prefix=/usr --root="py-find-1st" py-find-1st
-  pip install --prefix=/usr --root='coinmarketcap' coinmarketcap
-  pip install --prefix=/usr --root='ccxt' ccxt
   python setup.py build
   python setup.py install --prefix=/usr --root="$pkgdir"
 

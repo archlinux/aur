@@ -33,6 +33,9 @@ pkgbase = python-freqtrade-git
 	depends = python-jinja
 	depends = python-sdnotify
 	depends = python-rapidjson
+	depends = python-hyperopt
+	depends = python-coinmarketcap
+	depends = python-ccxt
 	provides = python-freqtrade
 	source = python-freqtrade-git::git://github.com/gcarq/freqtrade.git#branch=master
 	sha256sums = SKIP
