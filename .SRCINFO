@@ -20,7 +20,11 @@ pkgbase = themix-full-git
 	depends = themix-icons-suru-plus-git
 	depends = themix-icons-suru-plus-aspromauros-git
 	provides = themix-full
+	provides = oomox-git
+	provides = oomox
 	conflicts = themix-full
+	conflicts = oomox-git
+	conflicts = oomox
 	replaces = oomox-git
 
 pkgname = themix-full-git
