@@ -1,5 +1,5 @@
 pkgname=gthumb-lite
-pkgver=3.8.3
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Image browser and viewer for the GNOME Desktop. Webkit-free version."
 url="https://wiki.gnome.org/Apps/Gthumb"
@@ -14,7 +14,7 @@ makedepends=('libchamplain' 'exiv2' 'libraw' 'docbook-xsl' 'yelp-tools' 'meson' 
 optdepends=('libraw: read RAW files'
             'exiv2: metadata support'
             'libchamplain: map viewer')
-_commit=ca8f528209ab78935c30e42fe53bdf1a24f3cb44  # tags/3.8.3^0
+_commit=1752d0248290e7c93a1021de2e7837e612aff6f9  # tags/3.9.1^0
 source=("git+https://gitlab.gnome.org/GNOME/gthumb.git#commit=$_commit")
 sha256sums=('SKIP')
 

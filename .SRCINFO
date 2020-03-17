@@ -1,6 +1,6 @@
 pkgbase = gthumb-lite
 	pkgdesc = Image browser and viewer for the GNOME Desktop. Webkit-free version.
-	pkgver = 3.8.3
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Gthumb
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = gthumb-lite
 	provides = gthumb
 	conflicts = gthumb
 	replaces = gthumb
-	source = git+https://gitlab.gnome.org/GNOME/gthumb.git#commit=ca8f528209ab78935c30e42fe53bdf1a24f3cb44
+	source = git+https://gitlab.gnome.org/GNOME/gthumb.git#commit=1752d0248290e7c93a1021de2e7837e612aff6f9
 	sha256sums = SKIP
 
 pkgname = gthumb-lite
