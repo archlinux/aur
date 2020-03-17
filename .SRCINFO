@@ -1,0 +1,13 @@
+pkgbase = crane-bin
+	pkgdesc = Lift containers with ease
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://www.crane-orchestration.com
+	arch = x86_64
+	license = MIT
+	provides = crane
+	source = https://github.com/michaelsauter/crane/releases/download/v2.11.1/crane_linux_amd64
+	md5sums = c6314977da994f752713832f17b71666
+
+pkgname = crane-bin
+
