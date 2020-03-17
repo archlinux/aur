@@ -1,13 +1,13 @@
 pkgbase = fuse-overlayfs
 	pkgdesc = FUSE implementation of overlayfs
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://github.com/containers/fuse-overlayfs
 	arch = x86_64
 	license = GPL3
 	depends = fuse3
-	source = fuse-overlayfs-0.7.7.tar.gz::https://github.com/containers/fuse-overlayfs/archive/v0.7.7.tar.gz
-	sha512sums = e5e2625ec0d4c3a22f1c1b5029b60aae65c41414f754c7e4578367824befb1a30f2050ff5ceb64004d67fd639efef529b9e76827148791a8bed7627a41213dc1
+	source = fuse-overlayfs-0.7.8.tar.gz::https://github.com/containers/fuse-overlayfs/archive/v0.7.8.tar.gz
+	sha512sums = 0eb3ca179ff88ad4ba783646e51aaab147ae5fdffbc48b2121a481ff3030d35d1f3e32b838e1f41a275c08d345ef397b86ff2e4a6768ead98a1bb1d56922f689
 
 pkgname = fuse-overlayfs
 
