@@ -1,0 +1,22 @@
+pkgbase = konnect
+	pkgdesc = Konnect implements an OpenID provider (OP) with integrated web login and consent forms
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://stash.kopano.io/projects/KC/repos/konnect
+	arch = x86_64
+	license = Apache
+	makedepends = go-pie
+	makedepends = git
+	makedepends = yarn
+	makedepends = scour
+	depends = glibc
+	backup = etc/konnect/identifier-registration.yaml
+	backup = etc/konnect/scopes.yaml
+	source = git+https://github.com/Kopano-dev/konnect.git#tag=v0.30.0?signed
+	source = konnect.sysusers
+	validpgpkeys = 9DDB6CAD455D63112CAD26D8CA499C410B3C3354
+	sha256sums = SKIP
+	sha256sums = 29f9c23d317f769940537d186a30ca355e107d440047e516ff149d70b70b589f
+
+pkgname = konnect
+

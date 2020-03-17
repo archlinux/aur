@@ -1,0 +1,27 @@
+[Unit]
+Description=konnectd service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=konnectd
+Group=konnectd
+Restart=on-failure
+ExecStart=/usr/bin/konnectd serve --identifier-client-path=/etc/konnect/ --identifier-registration-conf=/etc/konnect/
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=yes
+RestrictNamespaces=yes
+MemoryDenyWriteExecute=yes
+PrivateDevices=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target
