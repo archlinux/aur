@@ -7,8 +7,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=10.1.0
-pkgrel=4
+pkgver=10.2.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -28,12 +28,12 @@ optdepends=('bullet: Bullet support'
             'ruby-ronn: Generate manpages'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'doxygen' 'ignition-cmake')
+makedepends=('cmake' 'doxygen')
 install="${pkgname}.install"
 source=("http://osrf-distributions.s3.amazonaws.com/$pkgname/releases/$pkgname-$pkgver.tar.bz2"
         "fix-moc.patch::https://bitbucket.org/osrf/gazebo/commits/9d71a6134982e2bf60ce96ca97c18c956c0cc7e0/raw"
         "fix-openal.patch::https://bitbucket.org/shrit/gazebo/commits/556354dcebd180e0f1015b96890f9906e441b551/raw")
-sha256sums=('8a1fcf8697704928c9cda610a9ce81f563f211bdfb2f1fdb458193ffb36c4287'
+sha256sums=('47d8bfe70ffcde21cbc6dec142f3aecefaac66c63562aab6114f442f7ab27392'
             'f69a8dfb3224a93a50b0e10d80a0b42f8652eb667dcbacc741b5c8a638b1e768'
             '4b386e845e94008102609a4fb666d698bee0480d2ce88b250dc1d849cfc93b72')
 
