@@ -1,0 +1,18 @@
+pkgbase = aarch64-linux-gnu-bzip2
+	pkgdesc = A high-quality data compression program (ARM64)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://sourceware.org/bzip2/
+	arch = x86_64
+	license = custom
+	makedepends = aarch64-linux-gnu-environment
+	depends = aarch64-linux-gnu-glibc
+	options = !buildflags
+	source = https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
+	source = https://sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz.sig
+	validpgpkeys = EC3CFE88F6CA0788774F5C1D1AA44BE649DE760A
+	sha256sums = ab5a03176ee106d3f0fa90e381da478ddae405918153cca248e682cd0c4a2269
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-gnu-bzip2
+
