@@ -15,7 +15,7 @@ provides=('rhvoice')
 conflicts=('rhvoice')
 backup=('etc/RHVoice/RHVoice.conf')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Olga-Yakovleva/RHVoice/archive/$pkgver.tar.gz)
-sha512sums=('4443e0d7836387eb4d45969f48263d6e53e0042f4e08f63e15655e0c875d74b5baf3a0a53ff1008177a281a8463d9f5a86ca7eb261ecf34ed9029c520f8c7b16')
+sha512sums=('b07582698dc5d26c3f573ff1690991222e06873fa024666d7741b4f8e04f509832b10a5c5c0dd4af17a86117387a6a359d17bccf1353093757316e1f8ff2fa95')
 
 build() {
 	cd "$srcdir/RHVoice-$pkgver"
