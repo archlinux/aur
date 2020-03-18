@@ -5,11 +5,12 @@ _srcname=sonobuoy
 pkgdesc="A diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests in an accessible and non-destructive manner."
 pkgver=0.16.4
 pkgrel=1
+provides=('sonobuoy')
 arch=('x86_64')
 url="https://github.com/vmware-tanzu/sonobuoy"
 license=('apache')
 source=("${_srcname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_srcname}_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('9d305a2c0eafbd549dd8467d02f654e696c2023b40cc595a86868290b90c93d2')
+sha256sums=('bf50562389bba949e9b8f1d3e0a34b4812d7ee75614501cd3b9cd0d70e12b7ec')
 
 package() {
     cd ${srcdir}
