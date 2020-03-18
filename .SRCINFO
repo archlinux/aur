@@ -1,5 +1,5 @@
 pkgbase = aarch64-linux-gnu-libxml2
-	pkgdesc = XML parsing library, version 2
+	pkgdesc = XML parsing library, version 2 (ARM64)
 	pkgver = 2.9.10
 	pkgrel = 3
 	url = http://www.xmlsoft.org/
