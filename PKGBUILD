@@ -3,7 +3,7 @@
 pkgbase=rssbridge
 pkgname=rss-bridge
 pkgver=2020_02_26
-pkgrel=2
+pkgrel=3
 pkgdesc="The RSS feed for websites missing it"
 arch=("any")
 url="https://github.com/RSS-Bridge/rss-bridge/wiki"
