@@ -1,9 +1,9 @@
 # Maintainer: Liviu Cristian Mirea-Ghiban <liviu dot mirea at wecodepixels dot com>
-heidisqlrelease=5781
-shortpkgver=10.3
+heidisqlrelease=5919
+shortpkgver=11.0
 pkgname=heidisql
 pkgver=${shortpkgver}.0.${heidisqlrelease}
-pkgrel=2
+pkgrel=1
 pkgdesc="A lightweight GUI for managing MySQL, PostgreSQL, and Microsoft SQL databases. This package uses the latest nightly build (64bit) on top of the portable version, and uses Wine."
 arch=(any)
 url="http://www.heidisql.com/"
@@ -15,8 +15,8 @@ source=("http://www.heidisql.com/downloads/releases/HeidiSQL_${shortpkgver}_64_P
         "${pkgname}.png"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-md5sums=('f68fc479a152a655e70d67ba4b4566aa'
-         '2ccb0c16fb61414b4cf2affbda9aa5fa'
+md5sums=('d6b651002caff16ea9ea08dce083c874'
+         '4a5f7853d0cd500511e1315cc7cf779f'
          'df3673bc694beceb8ed6cfeace6b6c3f'
          'ea4fc6959a315ef5c2bf8e22c479e22a'
          '9c65ae391e4980c639b34580b817962f')
