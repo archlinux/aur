@@ -4,7 +4,7 @@
 _pkgname=kyverno
 pkgname=kyverno-git
 pkgver=v1.1.4.rc1.r45.g2768574a
-pkgrel=2
+pkgrel=3
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('any')
 url="https://github.com/nirmata/kyverno"
@@ -22,5 +22,5 @@ pkgver() {
 package() {
     cd $srcdir/$_pkgname
     make cli
-    install -Dm755 "$srcdir/$_pkgname/cmd/cli/kubectl-kyverno/kyverno" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$_pkgname/cmd/cli/kubectl-kyverno/kyverno" "$pkgdir/usr/bin/$_pkgname"
 }
