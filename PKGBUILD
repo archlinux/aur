@@ -1,25 +1,13 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=typo-git
-pkgver=r16.ee3a2cb
+pkgver=r19.7cc4581
 pkgrel=1
-epoch=
 pkgdesc="A modern version of the original Unix typo command."
 arch=('i686' 'x86_64')
 url="https://github.com/robpike/typo"
 license=('BSD')
-groups=()
-depends=('')
 makedepends=('git' 'go>=1.5')
-optdepends=()
-checkdepends=()
-provides=()
 conflicts=('typo')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
 _gourl=robpike.io/cmd/typo
 
 pkgver() {
@@ -30,7 +18,7 @@ pkgver() {
 
 build() {
   GOPATH="$srcdir" go get -fix -v -d ${_gourl}
-  sed -i '91s|.*|	path := filepath.Join(string(os.PathSeparator), "usr", "share", "doc", "'"$pkgname"'", base)|g' \
+  sed -i '93s|.*|	path := filepath.Join(string(os.PathSeparator), "usr", "share", "doc", "'"$pkgname"'", base)|g' \
     "$srcdir"/src/${_gourl}/typo.go
   cd "$srcdir"/src/${_gourl}
   GOPATH="$srcdir" go build -o typo
@@ -45,7 +33,7 @@ package() {
   install -Dm755 typo "$pkgdir/usr/bin/typo"
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   install -Dm644 typo.png $pkgdir/usr/share/doc/$pkgname/typo.png
-  sed '407,487!d' typo.go > README
+  sed '409,489!d' typo.go > README
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
   install -Dm644 w2006.txt $pkgdir/usr/share/doc/$pkgname/w2006.txt
   ln -rs $pkgdir/usr/share/doc/$pkgname/w2006.txt $pkgdir/usr/share/doc/$pkgname/words
