@@ -1,7 +1,7 @@
 # Maintainer: Ronan Pigott <rpigott@berkeley.edu>
 
 pkgname=blight
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Basic general backlight utility written in python'
 url='https://github.com/RPigott/blight'
@@ -10,7 +10,7 @@ license=('custom:ISC')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 makedepends=('scdoc')
 depends=('python' 'python-gobject')
-sha256sums=('5c6e8d5fda8213cbab5c0ff319fa0f78c13fd6657d7b351e3e9a6a79dd912058')
+sha256sums=('04576d55d0448f56acb8335c7a14ca22bb06749db9b6560f85f6a14230054a52')
 
 # source+=("$pkgname-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz.asc")
 # sha256sums+=('SKIP')
