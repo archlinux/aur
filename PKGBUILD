@@ -1,26 +1,14 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=vtt2srt-git
 pkgver=r12.e0c6a9c
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Lightweight WebVTT (VTT) to SubRip Text (SRT) subtitle converter."
 arch=('i686' 'x86_64')
 url="https://github.com/rzumer/VTT2SRT"
 license=('MIT')
 categories=()
-groups=()
-depends=()
 makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=('')
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
 _gourl=github.com/rzumer/VTT2SRT
 
 pkgver() {
