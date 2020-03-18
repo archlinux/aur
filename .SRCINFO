@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
@@ -75,7 +75,6 @@ pkgname = vmware-horizon-virtual-printing
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop - virtual printing
 	install = vmware-horizon-virtual-printing.install
 	depends = vmware-horizon-client
-	depends = openssl098
 	depends = libcups
 	depends = zlib
 
