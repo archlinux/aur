@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgdesc = Linux Xanmod
-	pkgver = 5.5.8
+	pkgver = 5.5.10
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = linux-xanmod
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = https://github.com/xanmod/linux/archive/5.5.8-xanmod6.tar.gz
+	source = https://github.com/xanmod/linux/archive/5.5.10-xanmod1.tar.gz
 	source = choose-gcc-optimization.sh
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b
-	sha256sums = 5e43f89ea85beaed40c91a74cdc29b4122ecb1aac84bed640f26286557d402ab
+	sha256sums = acd01324bf6747743402b9667fbbccbc1aefb1eb14608a4870e2969338b166ec
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
 	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
 
