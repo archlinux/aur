@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Flipper
+Comment=A desktop debugging platform for mobile developers
+Icon=flipper
+Exec=flipper
+Categories=Application;Development;
+Terminal=false
+StartupNotify=false

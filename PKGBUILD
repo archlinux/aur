@@ -1,27 +1,36 @@
-# Maintainer: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.31.1
-pkgrel=2
-pkgdesc="A desktop debugging platform for mobile (iOS, Android) developers. "
+pkgver=0.34.0
+pkgrel=1
+pkgdesc="A desktop debugging platform for mobile developers"
 arch=('any')
-url="https://fbflipper.com/"
+url='https://fbflipper.com/'
 license=('MIT')
-depends=('gtk3' 'libsecret' 'libxss' 'nss')
+depends=('gtk3'
+		 'libsecret'
+		 'libxss'
+		 'nss')
+optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
+			'android-sdk: Android debugging support')
 makedepends=('git' 'yarn')
-source=("git+https://github.com/facebook/flipper.git#tag=v$pkgver")
-sha256sums=('SKIP')
+source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz"
+		'flipper.desktop')
+md5sums=('289dd67c175c660ba9704dd05eefb292'
+		 '3835f5d90a60f80dc644259c9aa713e5')
 
 build() {
-  cd "$srcdir/flipper"
+  cd "${srcdir}/${pkgname}-${pkgver}/desktop"
   yarn
   yarn build --linux --version $pkgver
 }
 
 package() {
-  tdir="$pkgdir/opt/flipper"
-  mkdir -p "$tdir"
-  cp -r "$srcdir/flipper/dist/linux-unpacked/." "$tdir"
+  mkdir -p "${pkgdir}/opt/flipper"
+  cp -aR "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/." "${pkgdir}/opt/flipper"
   mkdir -p "$pkgdir/usr/bin"
-  ln -r -s "$tdir/flipper" "$pkgdir/usr/bin/flipper"
+  ln -s "/opt/flipper/flipper" "$pkgdir/usr/bin/flipper"
+  install -Dm644 "${srcdir}/flipper.desktop" "${pkgdir}/usr/share/applications/flipper.desktop"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/flipper.png"
 }
