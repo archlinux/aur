@@ -7,7 +7,7 @@ _srcname=linux-5.5
 _major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=8
+_minor=9
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -32,7 +32,6 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
 0004-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
 0005-drm-i915-Serialise-i915_active_acquire-with-__active.patch
 0006-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
@@ -46,14 +45,13 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('4eb5b407e56b35338d621a2a59b554525275bb98ae1a1064ce6c58b7228d7b78'
+sha256sums=('b7cbe2c5ef1d471571f7aa7d382fa4de6aa4df9b5b48210fa897ee3886f657b6'
             'SKIP'
-            'e5b6f6938e99a39fb359618e92349ca4e2cd9db31e1b81b7d14d2fa7dc03fc06'
+            'a435e16950bbe80362495383c2b5e8b78a4b3879c894e2b3c38ecba6fe7ca878'
             'SKIP'
             'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
             'd4412be5c95843577937534051571d852690b01e1e21ffed36c1aeb91e728bcf'
             '83af12e6073856d1557c439c8f96fc14af3ff202e5a2bdeb3fcecb01f0db6672'
-            '0e1b524d287a1b7415eab644e4add083f3e2649175af551d0646c81e822c2bb0'
             '92404a0534c5934d73420408707f474b151e2e01e4bbf8ad7141c55274e88aef'
             '83bc4c6d7fdf8b37a3804eef8bb4a6d44302fa2cabea40512859fa956eb78769'
             '6b1d8ec648f4e37d358d369bc2e20072a6d445234580dcfe2320df0dc24087d1'
