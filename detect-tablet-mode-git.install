@@ -7,7 +7,7 @@
 ## arg 1:  the new package version
 post_install() {
 	echo "====> The config file has been placed into /etc/watch_tablet.yml.example. Copy it to your ~/.config/ folder, rename
-it to watch_tablet.yml, and modify it to your needs. Run watch_tablet to start the program and autostart when needed."
+it to watch_tablet.yml, and modify it to your needs. Run watch_tablet to start the program. Autostart when needed."
 }
 
 ## arg 1:  the new package version
