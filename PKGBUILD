@@ -1,7 +1,7 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=splunk
-basever=8.0.2
-splunkver=${basever}-a7f645ddaf91
+basever=8.0.2.1
+splunkver=${basever}-f002026bad55
 # Splunk is inconsistent with the length of their version numbers
 if [ ${#basever} -gt 5 ]; then
 	pkgver=${basever}
@@ -18,7 +18,7 @@ install="$pkgname.install"
 source=("$pkgname.service")
 source_x86_64=("https://download.splunk.com/products/splunk/releases/$basever/linux/$pkgname-$splunkver-Linux-x86_64.tgz")
 sha256sums=('ca96b85750a0592208facc747bbe1eb22b0a35b6dee841e6f51f1ad6a9157757')
-sha256sums_x86_64=('e6f8326725ee9c176ca287293be6dab6d6882e676a442965a4f44f0bfc529899')
+sha256sums_x86_64=('856e4129d6dcd273009c221db98c80e645e9b0d127ef03b2298ae0b4080d16f5')
 
 package() {
 	cd "$srcdir"
