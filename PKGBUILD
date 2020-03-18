@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('f4dd0dc07828cca0c533eb112134f2a29efe1e083d2e92f4c474e961af62b391'
             '42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020'
-            'c18b4f42a36fa8f57b4b73165bdfedd1d492e6bb7888431c0f5f260273432b41')
+            '6f9122e50e2b9164e59b1b9062663559cb5bc3ef3bd59b3ffafb7d486ec71a13')
 
 package() {
 
@@ -40,7 +40,8 @@ package() {
   install -Dm644 "$srcdir/$pkgname.tmpfiles" \
     "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
-  ln -sf /var/cache/$pkgname "$_instdir"/cache
+  rm -r "$_instdir"/cache
+  ln -s /var/cache/$pkgname "$_instdir"/cache
 
   find "$pkgdir"/usr/share/webapps/${pkgname} -type f -exec chmod 0644 {} \;
   find "$pkgdir"/usr/share/webapps/${pkgname} -type d -exec chmod 0755 {} \;
