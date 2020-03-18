@@ -1,0 +1,23 @@
+[binaries]
+c = 'aarch64-linux-gnu-gcc'
+cpp = 'aarch64-linux-gnu-g++'
+fortran = 'aarch64-linux-gnu-gfortran'
+ar = 'aarch64-linux-gnu-gcc-ar'
+pkgconfig = 'aarch64-linux-gnu-pkg-config'
+ranlib = 'aarch64-linux-gnu-gcc-ranlib'
+strip = 'aarch64-linux-gnu-strip'
+windres = 'aarch64-linux-gnu-windres'
+cmake = 'aarch64-linux-gnu-cmake'
+
+[properties]
+
+
+[host_machine]
+system = 'linux'
+cpu_family = 'aarch64'
+cpu = 'aarch64'
+endian = 'little'
+
+[paths]
+prefix = '/usr/aarch64-linux-gnu'
+libexecdir = 'lib'
