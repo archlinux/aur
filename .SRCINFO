@@ -1,6 +1,6 @@
 pkgbase = cmaptools
 	pkgdesc = The IHMC Cmap Tools for concept maps
-	pkgver = v6.03.01
+	pkgver = v6.04
 	pkgrel = 1
 	url = http://cmap.ihmc.us/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cmaptools
 	makedepends = the_silver_searcher
 	depends = java-environment>=7
 	depends = java-environment<9
-	source = http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_v6.03.01_02-07-19.bin
+	source = http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_v6.04_09-24-19.bin
 	source = installer.properties
 	source = icon.png
 	source = cmaptools.desktop
