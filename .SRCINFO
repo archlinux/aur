@@ -1,0 +1,14 @@
+pkgbase = orjail
+	pkgdesc = a more secure way to force programs to exclusively use tor network
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://orjail.github.io
+	arch = x86_64
+	license = WTFPL
+	depends = tor
+	provides = orjail
+	source = orjail-1.1.tar.gz::http://github.com/orjail/orjail/archive/v1.1.tar.gz
+	sha256sums = 85d4ae032a64d37b183f53d6d3d267b7c241f579f188d3107d6c9b160fab4e39
+
+pkgname = orjail
+
