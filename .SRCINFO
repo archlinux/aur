@@ -1,0 +1,26 @@
+pkgbase = aarch64-linux-gnu-wayland
+	pkgdesc = A computer display server protocol (ARM64)
+	pkgver = 1.18.0
+	pkgrel = 1
+	url = https://wayland.freedesktop.org/
+	arch = x86_64
+	license = MIT
+	makedepends = aarch64-linux-gnu-meson
+	makedepends = aarch64-linux-gnu-libxslt
+	makedepends = doxygen
+	makedepends = xmlto
+	depends = aarch64-linux-gnu-glibc
+	depends = aarch64-linux-gnu-libffi
+	depends = aarch64-linux-gnu-expat
+	depends = aarch64-linux-gnu-libxml2
+	options = !buildflags
+	source = https://wayland.freedesktop.org/releases/wayland-1.18.0.tar.xz
+	source = https://wayland.freedesktop.org/releases/wayland-1.18.0.tar.xz.sig
+	validpgpkeys = C7223EBE4EF66513B892598911A30156E0E67611
+	validpgpkeys = C0066D7DB8E9AC6844D728715E54498E697F11D7
+	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
+	sha256sums = 4675a79f091020817a98fd0484e7208c8762242266967f55a67776936c2e294d
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-gnu-wayland
+
