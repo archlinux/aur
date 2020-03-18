@@ -1,0 +1,3 @@
+d /var/cache/rss-bridge/pages 0750 rss-bridge rss-bridge
+d /var/cache/rss-bridge/server 0750 rss-bridge rss-bridge
+z /etc/webapps/rss-bridge/config.ini.php 640 rss-bridge rss-bridge
