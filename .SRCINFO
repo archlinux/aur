@@ -1,7 +1,7 @@
 pkgbase = joplin
 	pkgdesc = A note taking and to-do application with synchronization capabilities
 	pkgver = 1.0.193
-	pkgrel = 1
+	pkgrel = 2
 	url = https://joplinapp.org/
 	arch = x86_64
 	arch = i686
