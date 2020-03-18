@@ -23,7 +23,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	'5012_enable-cpu-optimizations-for-gcc91.patch')
 sha256sums=('SKIP'
             #config.x86_64
-            '9cc653925ac24d4b154bdd2ce4d1e7f6ee15f56d63d93abd5fd7f06c2c6e1d8b'
+            'c7be3f9f4286cf11553a694a83a758c9983b9c6b6d063748844b437069916d9b'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
