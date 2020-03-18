@@ -12,4 +12,4 @@ post_remove() {
     sudo rm -f '/usr/bin/session-messenger-desktop'
     sudo update-mime-database /usr/share/mime
     sudo update-desktop-database /usr/share/applications
-}}
+}
