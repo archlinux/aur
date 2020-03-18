@@ -3,7 +3,7 @@
 
 pkgname=biglybt
 pkgver=2.3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Feature-filled Bittorrent client based on the Azureus project"
 arch=('x86_64' 'armv7h')
 url="https://www.biglybt.com/"
@@ -27,6 +27,11 @@ package() {
   
   msg2 "Extracting GitHub_BiglyBT_Installer_$pkgver.sh..."
   export app_java_home="/usr/lib/jvm/default"
+
+  # Prevent the installer from creating files in the user's homedir
+  export HOME=$srcdir/home
+  mkdir -p $srcdir/home/{Desktop,.local/share/applications}
+
   sh GitHub_BiglyBT_Installer_$pkgver.sh -q -dir "$srcdir"/$pkgname
 
   cd "$srcdir"/$pkgname
