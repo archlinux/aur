@@ -1,23 +1,23 @@
 # Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=flipper-bin
-pkgver=0.33.1
-pkgrel=2
+pkgver=0.34.0
+pkgrel=1
 pkgdesc='A desktop debugging platform for mobile developers'
 arch=('any')
 url='https://fbflipper.com/'
 license=('MIT')
 provides=('flipper')
 depends=('gtk3'
-		 'libsecret'
-		 'libxss'
-		 'nss')
+		     'libsecret'
+		     'libxss'
+		     'nss')
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
 			'android-sdk: Android debugging support')
 source=("https://github.com/facebook/flipper/releases/download/v${pkgver}/Flipper-linux.zip"
 		'flipper.desktop')
-sha256sums=('96dc62b4c0d1816ff87f5a3d26dbf16d2167fdf9d7cba27dcc37413574f45272'
-			'38a9977cebac01bdda62dda1d1705a5e71b73e34fe3be5dc193b762b2c86bf15')
+md5sums=('69b28e928ef0a7c5da098f04e9d5994f'
+			   '3835f5d90a60f80dc644259c9aa713e5')
 
 package() {
   cd "${srcdir}"
