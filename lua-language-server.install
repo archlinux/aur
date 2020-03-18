@@ -1,6 +1,0 @@
-post_install() {
-  echo "====================================================================="
-  echo "/usr/bin/lua-language-server is a wrapper script that can be used"
-  echo "directly (without arguments) by clients."
-  echo "====================================================================="
-}

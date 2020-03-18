@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/lua-language-server
+exec /usr/lib/lua-language-server/lua-language-server -E ./main.lua
