@@ -1,7 +1,7 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 
 pkgname=nginx-amplify-agent
-pkgver=1.4.0_1
+pkgver=1.7.0_5
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="NGINX Amplify Agent"
@@ -13,11 +13,11 @@ depends=('python2-netifaces' 'python2-psutil' 'python2-gevent' 'python2-flup'
          'python2-setproctitle' 'python2-pyparsing' 'python2-requests'
          'python2-netaddr' 'python2-crossplane' 'python2-scandir' 'nginx')
 makedepends=('python2-setuptools')
-source=("https://github.com/nginxinc/$pkgname/archive/v$_pkgver/$pkgname-$pkgver.tar.gz"
+source=("https://github.com/nginxinc/nginx-amplify-agent/archive/v$_pkgver.tar.gz"
         "amplify-agent.service"
         "tmpfile.conf")
 backup=('etc/amplify-agent/agent.conf')
-sha256sums=('dd2b94e094bde5bfa7a24379e839bc9ac678e1454929771a11ec9d7cffcdf4e7'
+sha256sums=('af8792a92fa3caf20c1114d204a18261a26eb7d30baecafb5843f98e277f017a'
             'b848ed0386666a3c03b7f720ee08a40d4e434362c14145d244ef4370bb92f038'
             '3024f05029e2ca4d2565a8f9201f8d72ee29d956fd0c75cdba912607f81e0e05')
 

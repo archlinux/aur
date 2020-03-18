@@ -1,6 +1,6 @@
 pkgbase = nginx-amplify-agent
 	pkgdesc = NGINX Amplify Agent
-	pkgver = 1.4.0_1
+	pkgver = 1.7.0_5
 	pkgrel = 1
 	url = https://www.nginx.com/products/nginx-amplify/
 	arch = any
@@ -22,10 +22,10 @@ pkgbase = nginx-amplify-agent
 	depends = python2-scandir
 	depends = nginx
 	backup = etc/amplify-agent/agent.conf
-	source = https://github.com/nginxinc/nginx-amplify-agent/archive/v1.4.0-1/nginx-amplify-agent-1.4.0_1.tar.gz
+	source = https://github.com/nginxinc/nginx-amplify-agent/archive/v1.7.0-5.tar.gz
 	source = amplify-agent.service
 	source = tmpfile.conf
-	sha256sums = dd2b94e094bde5bfa7a24379e839bc9ac678e1454929771a11ec9d7cffcdf4e7
+	sha256sums = af8792a92fa3caf20c1114d204a18261a26eb7d30baecafb5843f98e277f017a
 	sha256sums = b848ed0386666a3c03b7f720ee08a40d4e434362c14145d244ef4370bb92f038
 	sha256sums = 3024f05029e2ca4d2565a8f9201f8d72ee29d956fd0c75cdba912607f81e0e05
 
