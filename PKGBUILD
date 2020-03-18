@@ -17,7 +17,7 @@ source=(
   'wrapper'
 )
 sha256sums=('SKIP'
-            '3e9585674b5f50235e87ab3fc526442a4b83aa01e949c5de8b6a5b391b45bd8c'
+            'b6e65efe359fef92dff012035833e7164627bf6787650e5da38155c34d2ef0d4'
             '6135c5424e5b87146aabf47651d3c95b6038865f26f25a8fce3a1ecd8c8f31fa')
 
 pkgver () {

@@ -25,7 +25,7 @@ index 1d1eecae..6a2a3e30 100644
  log.debug('ROOT:', ROOT:string())
  
 diff --git a/main.lua b/main.lua
-index b7c10ed5..168521f1 100644
+index b7c10ed5..bfd65013 100644
 --- a/main.lua
 +++ b/main.lua
 @@ -1,7 +1,12 @@
@@ -42,12 +42,16 @@ index b7c10ed5..168521f1 100644
  ROOT = fs.current_path() / rootPath
  LANG = LANG or 'en-US'
  
-@@ -10,12 +15,12 @@ collectgarbage("setpause", 100)
+@@ -9,13 +14,16 @@ LANG = LANG or 'en-US'
+ collectgarbage("setpause", 100)
  collectgarbage("setstepmul", 1000)
  
++_G.LOG_PATH = fs.path('/tmp/lua-lua-language-server' .. math.random(1000, 9000)) / 'log'
++print(LOG_PATH)
++
  log = require 'log'
 -log.init(ROOT, ROOT / 'log' / 'service.log')
-+log.init(ROOT, fs.path('/tmp/lua-language-server' .. math.random(1000, 9000)) / 'log' / 'service.log')
++log.init(ROOT, LOG_PATH / 'service.log')
  log.info('Lua Lsp startup, root: ', ROOT)
  log.debug('ROOT:', ROOT:string())
  ac = {}
@@ -85,6 +89,19 @@ index db62f939..b9b39768 100644
 +
 +package.path  = tostring(rootPath / script / '?.lua')
 +      .. ';' .. tostring(rootPath / script / '?' / 'init.lua')
+diff --git a/script/workspace.lua b/script/workspace.lua
+index f9b243ad..bcc5ffc7 100644
+--- a/script/workspace.lua
++++ b/script/workspace.lua
+@@ -186,7 +186,7 @@ function mt:init(rootUri)
+     end
+     log.info('Workspace inited, root: ', self.root)
+     log.info('Workspace inited, uri: ', rootUri)
+-    local logPath = ROOT / 'log' / (rootUri:gsub('[/:]+', '_') .. '.log')
++    local logPath = LOG_PATH / (rootUri:gsub('[/:]+', '_') .. '.log')
+     log.info('Log path: ', logPath)
+     log.init(ROOT, logPath)
+ 
 diff --git a/test.lua b/test.lua
 index c1ac7993..7d20a6e3 100644
 --- a/test.lua
