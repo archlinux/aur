@@ -1,6 +1,6 @@
 pkgbase = osu-lazer-git
 	pkgdesc = An open source, free-to-win rhythm game
-	pkgver = 2020.312.0.r111.7be5ef4737
+	pkgver = 2020.317.0.r26.9b029fa9e
 	pkgrel = 1
 	url = https://github.com/ppy/osu
 	arch = i686

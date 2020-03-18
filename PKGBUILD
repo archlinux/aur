@@ -7,7 +7,7 @@
 # Contributor: "donaldtrump" [AUR]
 
 pkgname=osu-lazer-git
-pkgver=2020.312.0.r111.7be5ef4737
+pkgver=2020.317.0.r26.9b029fa9e
 pkgrel=1
 pkgdesc="An open source, free-to-win rhythm game"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -41,7 +41,11 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
-	env DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet build -c Release osu.Desktop
+	rm -rf compiled
+	env DOTNET_CLI_TELEMETRY_OPTOUT=1 dotnet publish osu.Desktop \
+	--no-self-contained --configuration Release \
+	--runtime $(dotnet --info | grep 'RID' | cut -d ':' -f 2 | tr -d '[:space:]') \
+	--output compiled
 }
 
 
@@ -49,13 +53,15 @@ package() {
 	# Launcher, Desktop and MIME
 	cd "$srcdir"
 	install -Dm755 osu-lazer-git.sh "$pkgdir/usr/bin/${pkgname%-git}"
-	install -Dm644 osu-lazer-git.desktop "$pkgdir/usr/share/applications/sh.ppy.osu.${pkgname%-git}.desktop"
+	install -Dm644 osu-lazer-git.desktop \
+	"$pkgdir/usr/share/applications/sh.ppy.osu.${pkgname%-git}.desktop"
 	install -Dm644 osu-lazer-git.xml "$pkgdir/usr/share/mime/packages/${pkgname%-git}.xml"
-	
-	# Libraries
-	cd "$srcdir/$pkgname/osu.Desktop/bin/Release/netcoreapp3.1"
-	find . -maxdepth 1 -type f \! -name 'osu!' -exec install -Dm755 "{}" "$pkgdir/usr/lib/${pkgname%-git}/{}" \;
-	
+
+	# Runtime and Libraries
+	cd "$srcdir/$pkgname/compiled"
+	find . -type f -exec \
+	install -Dm644 "{}" "$pkgdir/usr/lib/${pkgname%-git}/{}" \;
+
 	# Icon and License
 	cd "$srcdir/$pkgname"
 	install -Dm644 assets/lazer.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
