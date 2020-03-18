@@ -61,8 +61,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.5.9
-pkgrel=2
+pkgver=5.5.10
+pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -80,36 +80,34 @@ source=(
   "http://ck.kolivas.org/patches/5.0/5.5/5.5-ck${_ckpatchversion}/$_ckpatch.xz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
-  0004-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-  0005-drm-i915-Serialise-i915_active_acquire-with-__active.patch
-  0006-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
-  0007-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
-  0008-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
-  0009-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
-  0010-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
-  0011-drm-i915-Introduce-a-vma.kref.patch
+  0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+  0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
+  0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
+  0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
+  0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
+  0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
+  0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
+  0010-drm-i915-Introduce-a-vma.kref.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('a435e16950bbe80362495383c2b5e8b78a4b3879c894e2b3c38ecba6fe7ca878'
+sha256sums=('e31d8e35d7d9766fa912b8cebcfaaa8fc6dd07413a467641d264fd13cf20fc23'
             'SKIP'
             'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
             '37a9d61e8a0b5a73992e1397c3a9cc947d39e715f205f3c665eb157b96d58f98'
-            '722457bc89cb4d2e5a08cef81898ebc3e28988b4c8043e5ce588a8945fae67b7'
-            '8a9d916b93813a197d20f8c59bb04f72b66bf97e309caa79f0ca53e74d04dd70'
-            '0aee67ba0a4a045d93efed61eee5c439e77e2a89c8eadd73ddd1dfc4d2822969'
-            'a2c19e161aff088d68a8f27408a476c95482e0a4eb6ac8bd26434ccf5c3daa27'
-            'c3e337ade9968786eafbcb5c6ddc0cee20246f2f2e1eb39a5c90f41147576fc7'
-            '92ee77e2e9d68257a15c7f51d5f21c118866a9737e10fb647f62b6c33ee54cc2'
-            '98fc562e6525bebfc533435668ad206b1fcd8ced1e261d2f4a6b057e057bc90b'
-            'a470eaca098b4ab32cdcbbc4a373df4c61e103073ab8d7f8f46c022c1397344a'
-            '0e51e96d6fbea118c75e2249e3921e424a48053e7c51be99ce4ae7737692a10d'
-            '4e6cb36aa15c852dd29d1034af5592c87f76e2f6f5dec2b530882b82d237c22d'
-            '334c1ddda7b98bf47ef3e0386f70b6edac21fc1efdbedd676ca3afef7f14d0f6')
+            '66a5998393dbadc770866164910f7cf5a6ea3581fc186e600eba4a38df6a6e56'
+            'f84da7259bbbd4037dd64eaad65f52c00359c1f788cd74c9967a28256a766fa1'
+            '0805b20d65e7837ae144ce6d480155ed46d94b9258e4ccc52214e339e24dd533'
+            '5f3f711df751e903dfc79941529163adb631bd44012f30c11235e0efac5f69c9'
+            '4e130e45adac5add735dd06790ec9a49a3ab3cc246e7e70415e2c6f3b82a8cd0'
+            '1d3752cacb94b4e6e98842deb52bdb4ce8aaab93996ab63c9a2ee17b931d8780'
+            '0fbf9372a817cb6792c71c304948d79f17f08f9e4eb8393f5d69ba399ef0343e'
+            '8d82f3e5940bc2dc93b1978a3825777a078af46c391a860393ef0d01e1a16f37'
+            'a3e3e9cb97c81067d5b6290e4a61514ec7f09aa7d39070a3b4f2088371459fe6'
+            '82bb562401324ee57807a573ebb9a30b8e14e74f6a82298c69fdedf9e07859e1')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
