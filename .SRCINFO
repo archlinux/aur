@@ -1,0 +1,19 @@
+pkgbase = brother-hll3230cdw
+	pkgdesc = LPR and CUPS driver for the Brother HL-L3230CDW
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = https://support.brother.com/g/b/producttop.aspx?c=au&lang=en&prod=hll3230cdw_us_eu_as
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf103944/hll3230cdwpdrv-1.0.2-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	sha256sums = 7dfbc1d2f3543e97ab7ad56b961e47df98c18347b76962408cc9b30b4e452e90
+	sha256sums = b5a4b76681eaff3083362b5bee5efde9227ae93036b304ec17a2455b919ae304
+	sha256sums = 6021c519fa4da722e7d6c3d74941c26761a4e83705db62600710ffb9ed5a6470
+
+pkgname = brother-hll3230cdw
+
