@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qtutilities
 	pkgdesc = Common Qt related C++ classes and routines used by my applications such as dialogs, widgets and models (mingw-w64)
-	pkgver = 6.0.4
+	pkgver = 6.0.5
 	pkgrel = 1
 	url = https://github.com/Martchus/qtutilities
 	arch = any
@@ -17,8 +17,8 @@ pkgbase = mingw-w64-qtutilities
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = qtutilities-6.0.4.tar.gz::https://github.com/Martchus/qtutilities/archive/v6.0.4.tar.gz
-	sha256sums = c5ffbeb96607212386077bad00818e0c21920e342e118a5f77e923d07018e20f
+	source = qtutilities-6.0.5.tar.gz::https://github.com/Martchus/qtutilities/archive/v6.0.5.tar.gz
+	sha256sums = 2b443d8fc71e30f6aac5bf686ce06d7c6021b787415c6abe73ff7e76096fd018
 
 pkgname = mingw-w64-qtutilities
 
