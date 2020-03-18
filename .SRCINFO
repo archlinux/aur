@@ -1,6 +1,6 @@
 pkgbase = scanpy
 	pkgdesc = Single-Cell Analysis in Python
-	pkgver = 1.4.5.1
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/theislab/scanpy
 	arch = any
@@ -32,9 +32,9 @@ pkgbase = scanpy
 	optdepends = python-louvain-igraph: Louvain clustering
 	provides = scanpy
 	provides = python-scanpy
-	noextract = scanpy-1.4.5.1-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.4.5.1-py3-none-any.whl
-	sha256sums = 568cc79bc85a2ce5fc348d04df6057e3992257ae3eb65103565fbd3d03f3efe7
+	noextract = scanpy-1.4.6-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/s/scanpy/scanpy-1.4.6-py3-none-any.whl
+	sha256sums = 029f52b481a5e8216dc9876670845f8db069802a0ca8721c4f1e4711a0496dd1
 
 pkgname = scanpy
 
