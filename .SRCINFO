@@ -11,6 +11,7 @@ pkgbase = julie
 	depends = jq
 	depends = git
 	depends = python3
+	depends = ffmpeg
 
 pkgname = julie
 

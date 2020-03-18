@@ -10,7 +10,7 @@ license=('GPL3')
 
 arch=('any')
 depends=(
-   gnupg xclip curl jq git python3
+   gnupg xclip curl jq git python3 ffmpeg
 )
 
 package() {
