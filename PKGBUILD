@@ -5,9 +5,9 @@
 # Contributor: yosh64 <yosh64.at.gmail.dot.com>
 
 pkgname=mtpaint-wjaguar
-pkgver=3.49.23
+pkgver=3.49.25
 pkgrel=1
-_commit="3d675d0a8fd598d6dff8cac51940fb62e14f7b59"
+_commit="298e5d72dbe0662a1b711939bbaa80a52a473d10"
 pkgdesc='Simple paint program for creating icons and pixel based artwork (Dmitry Groshev''s fork)'
 arch=('x86_64')
 url='https://github.com/wjaguar/mtPaint'
@@ -17,7 +17,7 @@ optdepends=('gifsicle: for exporting GIF files from mtPaint')
 provides=('mtpaint')
 conflicts=('mtpaint')
 source=("mtpaint-$pkgver.zip::https://github.com/wjaguar/mtPaint/archive/$_commit.zip")
-sha256sums=('fb1b5cb97997b3ec6e4fa51f56c47dad1ff0f2a19c2aaa8545f4164cc280b658')
+sha256sums=('2a0c2f6c2fcfb07dd519c8e2c3e86aff9b2f519fdcecc9cc4a050ea528a4ab0c')
 
 prepare() {
   cd "mtPaint-$_commit"
@@ -29,9 +29,6 @@ prepare() {
 build() {
   cd "mtPaint-$_commit"
 
-  # It makes problems on my end, so i commented it out:
-  #export CFLAGS="-w `pkg-config libopenjpeg --cflags` $CFLAGS"
-  
   ./configure --prefix=/usr --mandir=/usr/share/man man intl GIF jpeg tiff cflags lcms2 jp2 webp
   make
 }
