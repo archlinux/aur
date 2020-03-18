@@ -1,0 +1,16 @@
+pkgbase = vim-sandwich-git
+	pkgdesc = Set of operator and textobject plugins to search/select/edit sandwiched textobjects
+	pkgver = r412.02e3b6d1ff
+	pkgrel = 1
+	url = https://github.com/machakann/vim-sandwich
+	arch = any
+	groups = vim-plugins
+	license = custom:vim
+	depends = vim
+	provides = vim-sandwich
+	conflicts = vim-sandwich
+	source = https://github.com/machakann/vim-sandwich
+	sha256sums = SKIP
+
+pkgname = vim-sandwich-git
+
