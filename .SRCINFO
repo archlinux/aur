@@ -1,0 +1,20 @@
+pkgbase = aarch64-linux-gnu-zstd
+	pkgdesc = Zstandard - Fast real-time compression algorithm (ARM64)
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://www.zstd.net/
+	arch = x86_64
+	license = BSD
+	license = GPL2
+	makedepends = aarch64-linux-gnu-environment
+	depends = aarch64-linux-gnu-zlib
+	depends = aarch64-linux-gnu-xz
+	depends = aarch64-linux-gnu-lz4
+	options = !buildflags
+	source = https://github.com/facebook/zstd/archive/v1.4.4.tar.gz
+	source = Fix-wrong-printf-escaping.patch
+	sha256sums = a364f5162c7d1a455cc915e8e3cf5f4bd8b75d09bc0f53965b0c9ca1383c52c8
+	sha256sums = bd778b14ecb8b30406ebab04f165d274a147d58b9d1e36f207906690fd072285
+
+pkgname = aarch64-linux-gnu-zstd
+
