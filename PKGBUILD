@@ -5,13 +5,13 @@ _target=aarch64-linux-gnu
 _pkgname=libxml2
 pkgname=$_target-$_pkgname
 pkgver=2.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc='XML parsing library, version 2'
 arch=(x86_64)
 url='http://www.xmlsoft.org/'
 license=(MIT)
 depends=($_target-glibc $_target-icu $_target-xz $_target-zlib)
-makedepends=()
+makedepends=($_target-environment)
 options=(!buildflags)
 source=(
   https://gitlab.gnome.org/GNOME/$_pkgname/-/archive/v$pkgver/libxml2-v$pkgver.tar.gz
