@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@gmail.com>
 pkgname=graywolf-git
 pkgver=0.1.6.r184.6c5e24f
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='An opensource placement tool'
 arch=('i686' 'x86_64')
@@ -10,10 +10,9 @@ license=('GPL')
 provides=('graywolf')
 conflicts=('graywolf')
 depends=('bash' 'libx11')
-makedepends=('cmake' 'gsl')
+makedepends=('cmake' 'gsl' 'git')
 source=("git://github.com/rubund/graywolf")
 sha512sums=('SKIP')
-#options=('!makeflags')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
