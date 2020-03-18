@@ -1,17 +1,19 @@
 pkgbase = python-mini-amf
 	pkgdesc = Minimal AMF encoder and decoder for Python
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zackw/mini-amf
-	arch = x86_64
-	license = MIT
+	arch = any
+	license = custom:MIT
 	makedepends = python-setuptools
 	depends = python-six
 	depends = python-defusedxml
 	provides = python-mini-amf=0.9.1
 	conflicts = python-mini-amf
 	source = https://files.pythonhosted.org/packages/source/M/Mini-AMF/Mini-AMF-0.9.1.tar.gz
-	md5sums = fb6dc76e798ee76a2d58408427b2b341
+	source = fix-setup-py38.patch
+	sha256sums = 0c7839dc843b738cdcf5548e85558e7ebd89a9f6fd029751b0bb4d8b0ca4275b
+	sha256sums = 4aaf5b09e59a689487380cc8cd3052ac5cf29ed92a1eb24faa2b212dcf629fc1
 
 pkgname = python-mini-amf
 
