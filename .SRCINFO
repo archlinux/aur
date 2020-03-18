@@ -1,6 +1,6 @@
 pkgbase = rememberthemilk
 	pkgdesc = The smart to-do app for busy people.
-	pkgver = 1.1.17
+	pkgver = 1.1.18
 	pkgrel = 1
 	url = https://www.rememberthemilk.com
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = rememberthemilk
 	depends = gtk2
 	depends = gtk3
 	depends = nss
-	source = https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_1.1.17_amd64.deb
-	sha256sums = 26747c72b8d507ef86523172121a27e612519c4108f44b1286e44958e957e393
+	source = https://www.rememberthemilk.com/download/linux/debian/pool/main/r/rememberthemilk/rememberthemilk_1.1.18_amd64.deb
+	sha256sums = 083630e1a916fd55d48fe60b1c859ff0cc16bc2a1524b1448beb120c028e934b
 
 pkgname = rememberthemilk
 
