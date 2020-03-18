@@ -2,7 +2,7 @@
 # Contributor: Auteiy <dmitry@auteiy.me>
 
 pkgname=kotatogram-desktop
-pkgver=1.1.6
+pkgver=1.2
 pkgrel=1
 pkgdesc="Kotatogram – experimental Telegram Desktop fork"
 arch=(x86_64)
@@ -19,8 +19,9 @@ depends=(
 	zlib
 	minizip
 	openssl
+	libdbusmenu-qt5
+	hunspell
 	libtgvoip
-	rlottie-tdesktop
 	hicolor-icon-theme
 	desktop-file-utils
 )
@@ -29,11 +30,11 @@ makedepends=(
 	python
 	cmake
 	ninja
+	microsoft-gsl
+	tl-expected
 	range-v3
-	enchant
 )
 optdepends=(
-	'enchant: spellchecking support'
 	'ttf-opensans: default Open Sans font family'
 )
 conflicts=('kotatogram-desktop-bin' 'kotatogram-desktop-dynamic-bin')
@@ -43,6 +44,7 @@ source=(
 	"Catch2::git+https://github.com/catchorg/Catch2.git"
 	"crl::git+https://github.com/telegramdesktop/crl.git"
 	"GSL::git+https://github.com/Microsoft/GSL.git"
+	"libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
 	"libtgvoip::git+https://github.com/telegramdesktop/libtgvoip.git"
 	"lz4::git+https://github.com/lz4/lz4.git"
 	"rlottie::git+https://github.com/desktop-app/rlottie.git"
@@ -57,8 +59,6 @@ source=(
 	"lib_spellcheck::git+https://github.com/desktop-app/lib_spellcheck.git"
 	"lib_tl::git+https://github.com/desktop-app/lib_tl.git"
 	"lib_ui::git+https://github.com/kotatogram/lib_ui.git"
-
-	"system-tray-icon.patch"
 )
 sha512sums=('SKIP'
             'SKIP'
@@ -78,7 +78,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '6bdb73dd7ebd8cd50da0f09f2f1fa201e687fee949c4a05f90e62e7e6167ccca877a078021ca611ce8fbb464aab329b92270f07e0cb770c2b7a89a436d37549a')
+            'SKIP')
 
 prepare() {
 	cd "$srcdir/$pkgname"
@@ -87,6 +87,7 @@ prepare() {
 	git config submodule.Telegram/ThirdParty/Catch.url "$srcdir/Catch2"
 	git config submodule.Telegram/ThirdParty/crl.url "$srcdir/crl"
 	git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
+	git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
 	git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
 	git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
 	git config submodule.Telegram/ThirdParty/rlottie.url "$srcdir/rlottie"
@@ -105,8 +106,6 @@ prepare() {
 	git config submodule.Telegram/lib_ui.url "$srcdir/lib_ui"
 
 	git submodule update
-
-	patch -Np1 -i "$srcdir/system-tray-icon.patch"
 }
 
 build() {
@@ -116,7 +115,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DTDESKTOP_API_TEST=ON \
-		-DTDESKTOP_DISABLE_GTK_INTEGRATION=ON
+		-DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
+		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
 
 	cmake --build .
 }
