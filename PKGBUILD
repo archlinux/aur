@@ -9,7 +9,7 @@ url="https://web.whatsapp.com"
 license=("custom")
 depends=("gtk3" "libxss" "nss")
 optdepends=("libindicator-gtk3")
-makedepends=("imagemagick" "nodejs-nativefier")
+makedepends=("imagemagick" "yarn")
 source=(
   "${pkgname}.png"
   "${pkgname}.desktop"
@@ -23,9 +23,10 @@ iconsha256sum=${sha256sums[0]}
 tmpdesktopfile="/tmp/whatsapp-nativefier-dark.desktop"
 
 build() {
+  yarn
   cd "${srcdir}"
 
-  nativefier \
+  ../node_modules/.bin/nativefier \
     --name "WhatsApp" \
     --icon "${pkgname}.png" \
     --width "800px" \

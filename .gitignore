@@ -3,3 +3,4 @@ whatsapp-nativefier-*.log
 PKGBUILD-namcap.log
 pkg/
 src/
+node_modules
