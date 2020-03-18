@@ -1,0 +1,15 @@
+pkgbase = aarch64-linux-gnu-lz4
+	pkgdesc = Very fast lossless compression algorithm (ARM64)
+	pkgver = 1.9.2
+	pkgrel = 1
+	url = http://lz4.github.io/lz4/
+	arch = x86_64
+	license = GPL2
+	makedepends = aarch64-linux-gnu-environment
+	depends = aarch64-linux-gnu-glibc
+	options = !buildflags
+	source = https://github.com/lz4/lz4/archive/v1.9.2.tar.gz
+	sha256sums = 658ba6191fa44c92280d4aa2c271b0f4fbc0e34d249578dd05e50e76d0e5efcc
+
+pkgname = aarch64-linux-gnu-lz4
+
