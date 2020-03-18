@@ -1,36 +1,25 @@
 pkgbase = zfs-utils-git
-	pkgdesc = Kernel module support files for the Zettabyte File System.
-	pkgver = 2020.03.31.r5836.g0929c4de3
+	pkgdesc = Userspace utilities for the Zettabyte File System.
+	pkgver = 0.8.0.r709.g5a42ef04f
 	pkgrel = 1
-	url = http://zfsonlinux.org/
-	install = zfs-utils.install
+	epoch = 1
+	url = https://zfsonlinux.org/
+	arch = i686
 	arch = x86_64
-	groups = archzfs-linux-git
 	license = CDDL
-	makedepends = python
-	makedepends = python-setuptools
-	makedepends = python-cffi
 	makedepends = git
-	optdepends = python: pyzfs and extra utilities,
-	optdepends = python-cffi: pyzfs
-	provides = zfs-utils
-	provides = spl-utils
+	optdepends = python: for arcstat/arc_summary/dbufstat
+	provides = zfs-utils=0.8.0.r709.g5a42ef04f
 	conflicts = zfs-utils
-	conflicts = spl-utils
-	replaces = spl-utils-common-git
-	replaces = zfs-utils-common-git
-	backup = etc/zfs/zed.d/zed.rc
-	backup = etc/default/zfs
-	backup = etc/modules-load.d/zfs.conf
-	backup = etc/sudoers.d/zfs
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=0929c4de398606f8305057ca540cf577e6771c30
-	source = zfs-utils.initcpio.install
-	source = zfs-utils.initcpio.hook
-	source = zfs-utils.initcpio.zfsencryptssh.install
+	source = git+https://github.com/zfsonlinux/zfs.git
+	source = zfs.initcpio.install
+	source = zfs.initcpio.hook
 	sha256sums = SKIP
-	sha256sums = 29a8a6d76fff01b71ef1990526785405d9c9410bdea417b08b56107210d00b10
-	sha256sums = 78e038f95639c209576e7fa182afd56ac11a695af9ebfa958709839ff1e274ce
-	sha256sums = 29080a84e5d7e36e63c4412b98646043724621245b36e5288f5fed6914da5b68
+	sha256sums = da1cdc045d144d2109ec7b5d97c53a69823759d8ecff410e47c3a66b69e6518d
+	sha256sums = f95ad1a5421ccbb8b01f448373f46cfd1f718361a82c2687a597325cf9827e3e
+	b2sums = SKIP
+	b2sums = 570e995bba07ea0fb424dff191180b8017b6469501964dc0b70fd51e338a4dad260f87cc313489866cbfd1583e4aac2522cf7309c067cc5314eb83c37fe14ff3
+	b2sums = 491a7f20b0c6b4ce4fcedab617b2d7a4f2a01f1bc8f1ae57efde2fb22c2ab09a1107a8f4877b95c27576fe4216d01f181936787f51ce532bb13c5806badf7519
 
 pkgname = zfs-utils-git
 
