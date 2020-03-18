@@ -2,7 +2,7 @@
 
 pkgname=libtgvoip
 pkgver=2.4.4
-pkgrel=4
+pkgrel=5
 pkgdesc="VoIP library for Telegram clients"
 arch=(x86_64)
 url="https://github.com/telegramdesktop/libtgvoip"
@@ -12,12 +12,12 @@ optdepends=(
 	'alsa-lib: for alsa support'
 	'libpulse: for pulseaudio support'
 )
-_commit="ade4434f1c6efabecc3b548ca1f692f8d103d22a"
+_commit="e422d2a80546a32ab7166a9b1058bacfc5daeefc"
 source=(
 	"https://github.com/telegramdesktop/libtgvoip/archive/${_commit}.zip"
 )
 
-sha512sums=('b7f7175cdfd9f4a015d1b7c65bf73b8074695ac1699ee9caf420e5efa3c262f969b657a5ed482400e0ae173880b416f9ac9da76c0321b224f1f5058074474713')
+sha512sums=('798cddf2a39f6cffa47b195002a4f21e15b514b8a1aca27a4cb431d53e433cb0930885c10075ad8735bca01bec88c8d1a7c25d6eb3714b1a8d09f12dda877a9f')
 
 build() {
 	cd "$srcdir/$pkgname-${_commit}"
