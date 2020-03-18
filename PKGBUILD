@@ -1,7 +1,7 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -21,14 +21,13 @@ sha256sums=('SKIP'
 prepare() {
   cd $srcdir/session-desktop
   git checkout 9dc8160
-  source /usr/share/nvm/init-nvm.sh
-  nvm install 10.13.0
+  source /usr/share/nvm/init-nvm.sh && nvm install 10.13.0
   export SIGNAL_ENV=production
 }
 
 build() {
   cd "$srcdir/session-desktop"
-  nvm use 10.13.0
+  source /usr/share/nvm/init-nvm.sh && nvm use 10.13.0
   yarn install --frozen-lockfile
   yarn generate
   yarn lint-full
