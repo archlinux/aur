@@ -5,7 +5,7 @@
 
 pkgname=picom-tryone-git
 _gitname=compton
-pkgver=1329_Next.48.g0de3bce_2020.03.15
+pkgver=1340_Next.59.g0cc7437_2020.03.18
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
