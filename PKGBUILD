@@ -4,13 +4,13 @@
 pkgname=brother-dcpj105
 _printername=dcpj105
 pkgver=3.0.0
-pkgrel=667
+pkgrel=668
 pkgdesc="CUPS driver for Brother DCP-J105 printer"
 arch=('i686' 'x86_64')
 license=('custom:Brother Industries')
 depends=('cups' 'tcsh')
 if [ "$CARCH" == "x86_64" ]; then
-  depends+=('lib32-libstdc++5')
+  depends+=('lib32-libstdc++5' 'lib32-libcups')
 fi
 makedepends=('rpmextract')
 url="http://solutions.brother.com/linux/en_us/index.html"
