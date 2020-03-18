@@ -1,34 +1,30 @@
-# $Id$
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Maintainer: Tilmann Meyer <tilmann.meyer@gmx.net>
 
 _target=aarch64-linux-gnu
+
 _pkgname=expat
-pkgname=${_target}-expat
+pkgname=$_target-expat
 pkgver=2.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc='An XML parser library'
-arch=('any')
+arch=(x86_64)
 url='https://libexpat.github.io/'
 license=(custom)
-depends=(${_target}-glibc)
-source=(https://github.com/libexpat/libexpat/releases/download/R_${pkgver//./_}/$_pkgname-$pkgver.tar.bz2)
-sha256sums=('f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237')
+depends=($_target-glibc)
+makedepends=($_target-cmake)
+options=(!buildflags)
+source=(
+  https://github.com/libexpat/libexpat/releases/download/R_${pkgver//./_}/expat-${pkgver}.tar.bz2{,.asc}
+)
+sha256sums=(
+  'f1063084dc4302a427dabcca499c8312b3a32a29b7d2506653ecc8f950a9a237'
+  'SKIP'
+)
+validpgpkeys=(
+  3176EF7DB2367F1FCA4F306B1F9B0E909AF37285 # Sebastian Pipping
+)
 
-build() {
-  cd $_pkgname-$pkgver
-if [ n != "$RUN_PREPARE" ]; then
-  if [ 1 = "$ccache" ]; then
-    export CC=${CC:-ccache ${_target}-gcc}
-    export CXX=${CXX:-ccache ${_target}-g++}
-  fi
-  unset CFLAGS CXXFLAGS
-  ./configure --prefix=/usr/${_target} \
-    --host=${_target} \
-    --disable-static
-  make
-fi
-}
+_srcdir=$_pkgname-$pkgver
 
 strip() {
   ${_target}-strip "$@"
@@ -38,27 +34,19 @@ objcopy() {
   ${_target}-objcopy "$@"
 }
 
-check() {
-  local s readelfarch
-  readelfarch='AArch64'
-  cd $_pkgname-$pkgver
+build() {
+  cd $_srcdir
 
-  s=$(find . -type f "(" -name "*.so*" -o -name "*.a" ")" -print0 | \
-    2>/dev/null LC_ALL=C xargs -0 readelf -h | \
-    sed -n -e '/File:/h;/Machine:/{/'"$readelfarch"'/!{H;x;p}}' | head -10)
-
-  if [ -n "$s" ]; then
-    >&2 echo "some binaries have wrong architecture:"
-    >&2 echo "$s"
-    return 1
-  fi
+  mkdir -p build-$_target && pushd build-$_target
+  $_target-cmake -DCMAKE_BUILD_TYPE=Release ..
+  make
+  popd
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "-t$pkgdir/usr/${_target}/share/licenses/$_pkgname" COPYING
+  cd $_srcdir
 
-  # delete all executables
-  rm -rf "$pkgdir/usr/${_target}/bin"
+  pushd build-$_target
+  make DESTDIR="$pkgdir" install
+  popd
 }
