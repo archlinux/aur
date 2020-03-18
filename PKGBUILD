@@ -2,7 +2,7 @@
 
 pkgname=ezra-project
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bible study software focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/tobias-klein/$pkgname"
@@ -16,11 +16,11 @@ makedepends=('jq'
              'node-prune'
              'nodejs-addon-api' # run time dep but gets baked into electron asar
              'nodejs-pug-cli'
-             'nodejs-sword-interface' # run time dep but gets baked into electron asar
+             'nodejs-sword-interface>=0.119.0' # run time dep but gets baked into electron asar
              'npm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'ezra-project.sh')
-sha256sums=('cf662fc55d658d5e03ed95025428b81b1d12cb6d3f0aed9b6e41278f80b65ecd'
+sha256sums=('43a51c7ffb6a5f36b3b692a645169a77523ec305c630d84fada542745fce37ad'
             '0a36167bce248b6082045163cf60b143d02ca1e447a791cf0c88e960a7fdc618')
 _electron="$(electron --version | sed 's/^v//')"
 

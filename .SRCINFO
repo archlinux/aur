@@ -1,7 +1,7 @@
 pkgbase = ezra-project
 	pkgdesc = Bible study software focussing on topical study based on keywords/tags
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tobias-klein/ezra-project
 	arch = x86_64
 	license = GPL3
@@ -11,14 +11,14 @@ pkgbase = ezra-project
 	makedepends = node-prune
 	makedepends = nodejs-addon-api
 	makedepends = nodejs-pug-cli
-	makedepends = nodejs-sword-interface
+	makedepends = nodejs-sword-interface>=0.119.0
 	makedepends = npm
 	depends = electron
 	depends = icu
 	depends = nodejs
 	source = ezra-project-0.12.0.tar.gz::https://github.com/tobias-klein/ezra-project/archive/0.12.0.tar.gz
 	source = ezra-project.sh
-	sha256sums = cf662fc55d658d5e03ed95025428b81b1d12cb6d3f0aed9b6e41278f80b65ecd
+	sha256sums = 43a51c7ffb6a5f36b3b692a645169a77523ec305c630d84fada542745fce37ad
 	sha256sums = 0a36167bce248b6082045163cf60b143d02ca1e447a791cf0c88e960a7fdc618
 
 pkgname = ezra-project
