@@ -20,7 +20,7 @@ pkgbase = popcorntime-git
 	source = git+https://github.com/popcorn-official/popcorn-desktop#branch=development
 	source = popcorntime.desktop
 	sha512sums = SKIP
-	sha512sums = b888e5bb4197a260328e48f14496852359f08e23f7907d7fa9680c26197c35eca01c9da8fe22ab0da4d29be22251277beaf3c78897e7f9e3a416ddb33fd1e322
+	sha512sums = 81a447cd3365b439964c1b9eba14bcf31de05e62123ce032590ac2109a447c5db0306bf4c593fe30f075d2b3674a1611a81b7554e43acba152ef34652c819a33
 
 pkgname = popcorntime-git
 
