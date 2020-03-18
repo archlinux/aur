@@ -1,0 +1,13 @@
+pkgbase = aarch64-none-elf-gcc-bin
+	pkgdesc = The GNU Compiler Collection - cross compiler for ARM64 target
+	pkgver = 9.2
+	pkgrel = 1
+	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	source = https://developer.arm.com/-/media/Files/downloads/gnu-a/9.2-2019.12/binrel/gcc-arm-9.2-2019.12-x86_64-aarch64-none-elf.tar.xz
+	md5sums = a6019ac8c92be55a7253eacf13e64c2a
+
+pkgname = aarch64-none-elf-gcc-bin
+
