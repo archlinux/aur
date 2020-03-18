@@ -51,7 +51,7 @@ _major=5.5
 _minor=10
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -68,7 +68,7 @@ _bfq_rev_path="bfq-reverts-all-v2"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
-_bfq_rel="r2K200318"
+_bfq_rel="r2K200319"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
@@ -340,7 +340,7 @@ done
 sha512sums=('6420778d586a70c31dfdb4df576e935acba81a7062c288e663ee3f8530a5dedd8bf628452e08e6a3909394d29e01154f1f165835ab91c038570bbc6d9d0bf3b4'
             'SKIP'
             '4077d26b18f59ec29a92eed4e52a5747f8034bea5280a965bd2acc34f7e1b1bcbb9d7ffafd90f9d60c382d448cae8090a91e02f1a4b23887513f61b288a61bf8'
-            '5732486891d80af8e9ee9de3fb53b5cce5869a3a4b979f43a0c8e3e6b6c4a17c350d72c2ede869ab3fb490a57d4802897402e28318ab548fb0b0e9af60d40268'
+            'd653a29a845b51b0c48efb2ef08c2f3356fb1f7f1369becc37ac528d3504c6e1e0ec08a8a260d8f646c11d6a2ea815ddd5f7d7d0d7a37345c7a32f1144d22efe'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
             '362a474ce8e710fe0fc76f72b8e8c69e1232d6279896a24eef758a4ad6b0a4d8a5439f92a17d5533a5aeaa40df7a6f5e61169551179e21bcac7e6c9272a73b55'
             'a9fcae8a3b9a5f77f5d3d2d88e8a8710eb6edac6830de5258edcaca123ede16ade730916fe9cc67e1e42b0d0217d91dc6e997ef2562115de681cef78cb3675de'
