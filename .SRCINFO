@@ -1,18 +1,21 @@
 pkgbase = greetd-git
 	pkgdesc = Generic greeter daemon
-	pkgver = r146.07baaae3c3
+	pkgver = r150.b519d8a265
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/greetd
 	arch = x86_64
 	license = MIT
 	makedepends = rust
+	makedepends = scdoc
+	depends = systemd
 	depends = pam
 	optdepends = greetd-gtkgreet: Simple GTK based greeter
 	optdepends = greetd-dlm: Dumb Login Manager
 	optdepends = greetd-wlgreet: Wayland greeter
 	provides = greetd
 	conflicts = greetd
-	source = https://git.sr.ht/~kennylevinsen/greetd
+	backup = etc/greetd/config.toml
+	source = git+https://git.sr.ht/~kennylevinsen/greetd
 	sha256sums = SKIP
 
 pkgname = greetd-git
