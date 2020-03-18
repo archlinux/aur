@@ -1,5 +1,5 @@
 pkgbase = aarch64-linux-gnu-readline
-	pkgdesc = GNU readline library
+	pkgdesc = GNU readline library (ARM64)
 	pkgver = 8.0.004
 	pkgrel = 1
 	url = https://tiswww.case.edu/php/chet/readline/rltop.html
