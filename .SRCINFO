@@ -1,0 +1,13 @@
+pkgbase = aarch64-linux-gnu-environment
+	pkgdesc = A script for loading the aarch64 env
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://fedoraproject.org/wiki/MinGW
+	arch = x86_64
+	license = GPL
+	depends = aarch64-linux-gnu-gcc
+	source = environment.sh
+	sha256sums = 8412dc4e48795a0751d9b3993a6c626f39762377e501be4d71db7d827e22e74c
+
+pkgname = aarch64-linux-gnu-environment
+
