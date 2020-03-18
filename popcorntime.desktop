@@ -1,10 +1,12 @@
 [Desktop Entry]
-Version=1.0
+Version=1.1
 Type=Application
 Name=Popcorn Time
-Comment=BitTorrent client with integrated media player
-Exec=popcorntime %U
+Comment=Watch Movies and TV Shows instantly!
+Exec=/usr/bin/popcorntime %U
 Icon=popcorntime
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
-Categories=AudioVideo;Video;Player;Network;FileTransfer;P2P;
+Categories=Multimedia;AudioVideo;Video;Player;Network;FileTransfer;P2P;
 Terminal=false
+StartupNotify=true
+Keywords=movies;streaming;bittorrent;

@@ -1,6 +1,6 @@
 pkgbase = popcorntime-git
 	pkgdesc = Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player.
-	pkgver = v0.4.0+r6483+g5c68847e
+	pkgver = v0.4.0+r6485+g597a9871
 	pkgrel = 1
 	url = https://popcorntime.app
 	arch = i686
@@ -15,12 +15,12 @@ pkgbase = popcorntime-git
 	depends = nodejs
 	provides = popcorntime
 	conflicts = popcorntime
-	conflicts = popcorntime-ce
-	options = !strip
+	conflicts = popcorntime-bin
+	options = !emptydirs
 	source = git+https://github.com/popcorn-official/popcorn-desktop#branch=development
 	source = popcorntime.desktop
 	sha512sums = SKIP
-	sha512sums = abf5d406467422168944244b95eac0d2c23ca4140cd803afeea852e9a15a5176a019a5772be919234fe01ceec0d8d135158900e828144b0079018015662f7dcd
+	sha512sums = b888e5bb4197a260328e48f14496852359f08e23f7907d7fa9680c26197c35eca01c9da8fe22ab0da4d29be22251277beaf3c78897e7f9e3a416ddb33fd1e322
 
 pkgname = popcorntime-git
 
