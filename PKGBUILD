@@ -2,7 +2,7 @@
 
 pkgname=sonobuoy-bin
 _srcname=sonobuoy
-pkgdesc="Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests in an accessible and non-destructive manner."
+pkgdesc="A diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests in an accessible and non-destructive manner."
 pkgver=0.16.4
 pkgrel=1
 arch=('x86_64')
