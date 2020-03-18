@@ -19,7 +19,7 @@ source=(http://cmapdownload.ihmc.us/installs/CmapTools/Linux/Linux64CmapTools_$p
 	cmaptools
 	)
 
-md5sums=('5e7c9557f37bb3510d2fe0d168d1e847'
+md5sums=('5a0ad2197b7dfbac2722b4ea9b256a75'
 	'a6aa32dfa1a7a5bc5e6dc585e197e002'
 	'c37998dc8a4703de169283d49a49c40d'
 	'23f9a626c04321284930d6a79b2cf5b1'
