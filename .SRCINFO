@@ -1,0 +1,18 @@
+pkgbase = aarch64-linux-gnu-xz
+	pkgdesc = Library and command line tools for XZ and LZMA compressed files (ARM64)
+	pkgver = 5.2.4
+	pkgrel = 1
+	url = https://tukaani.org/xz/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = aarch64-linux-gnu-configure
+	options = !buildflags
+	source = https://tukaani.org/xz/xz-5.2.4.tar.gz
+	source = https://tukaani.org/xz/xz-5.2.4.tar.gz.sig
+	validpgpkeys = 3690C240CE51B4670D30AD1C38EE757D69184620
+	sha256sums = b512f3b726d3b37b6dc4c8570e137b9311e7552e8ccbab4d39d47ce5f4177145
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-gnu-xz
+
