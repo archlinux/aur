@@ -1,0 +1,35 @@
+pkgbase = aarch64-linux-gnu-readline
+	pkgdesc = GNU readline library
+	pkgver = 8.0.004
+	pkgrel = 1
+	url = https://tiswww.case.edu/php/chet/readline/rltop.html
+	arch = x86_64
+	license = GPL
+	makedepends = aarch64-linux-gnu-configure
+	depends = aarch64-linux-gnu-glibc
+	depends = aarch64-linux-gnu-ncurses
+	options = !buildflags
+	source = https://ftp.gnu.org/gnu/readline/readline-8.0.tar.gz
+	source = https://ftp.gnu.org/gnu/readline/readline-8.0.tar.gz.sig
+	source = readline8.0-1.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-001
+	source = readline8.0-1.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-001.sig
+	source = readline8.0-2.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-002
+	source = readline8.0-2.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-002.sig
+	source = readline8.0-3.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-003
+	source = readline8.0-3.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-003.sig
+	source = readline8.0-4.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-004
+	source = readline8.0-4.patch::https://ftp.gnu.org/gnu/readline/readline-8.0-patches/readline80-004.sig
+	validpgpkeys = 7C0135FB088AAF6C66C650B9BB5869F064EA74AB
+	sha256sums = e339f51971478d369f8a053a330a190781acb9864cf4c541060f12078948e461
+	sha256sums = SKIP
+	sha256sums = d8e5e98933cf5756f862243c0601cb69d3667bb33f2c7b751fe4e40b2c3fd069
+	sha256sums = SKIP
+	sha256sums = 36b0febff1e560091ae7476026921f31b6d1dd4c918dcb7b741aa2dad1aec8f7
+	sha256sums = SKIP
+	sha256sums = 94ddb2210b71eb5389c7756865d60e343666dfb722c85892f8226b26bb3eeaef
+	sha256sums = SKIP
+	sha256sums = b1aa3d2a40eee2dea9708229740742e649c32bb8db13535ea78f8ac15377394c
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-gnu-readline
+
