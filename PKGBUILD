@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=netgen-lvs-git
 pkgver=1.5.r359.03b241a
-pkgrel=1
+pkgrel=2
 pkgdesc="A netlist comparison (LVS) and format manipulation"
 url="http://opencircuitdesign.com/netgen/"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 provides=('netgen-lvs')
 conflicts=('netgen-lvs')
 depends=()
-makedepends=()
+makedepends=('git')
 optdepends=()
 source=("git://opencircuitdesign.com/netgen#branch=netgen-1.5")
 md5sums=('SKIP')
