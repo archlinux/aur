@@ -1,7 +1,7 @@
 pkgbase = tagspaces
 	pkgdesc = TagSpaces is an offline, open source, document manager with tagging support
 	pkgver = 3.4.2
-	pkgrel = 6
+	pkgrel = 7
 	url = http://tagspaces.org
 	arch = i686
 	arch = x86_64

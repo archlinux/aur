@@ -3,7 +3,7 @@
 
 pkgname=tagspaces
 pkgver=3.4.2
-pkgrel=6
+pkgrel=7
 pkgdesc='TagSpaces is an offline, open source, document manager with tagging support'
 arch=('i686' 'x86_64')
 url='http://tagspaces.org'
@@ -18,10 +18,11 @@ prepare() {
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  yarn install
-  yarn install-ext
-  yarn build
-  yarn package-linux
+  mkdir -p ${srcdir}/yarn_cache
+  yarn --cache-folder=${srcdir}/yarn_cache install 
+  yarn --cache-folder=${srcdir}/yarn_cache install-ext
+  yarn --cache-folder=${srcdir}/yarn_cache build
+  yarn --cache-folder=${srcdir}/yarn_cache package-linux
 }
 
 package() {
