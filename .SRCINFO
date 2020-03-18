@@ -1,5 +1,5 @@
 pkgbase = aarch64-linux-gnu-ncurses
-	pkgdesc = System V Release 4.0 curses emulation library
+	pkgdesc = System V Release 4.0 curses emulation library (ARM64)
 	pkgver = 6.2
 	pkgrel = 1
 	url = https://invisible-island.net/ncurses/ncurses.html
