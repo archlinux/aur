@@ -3,7 +3,7 @@
 _gemname=pleaserun
 pkgname=ruby-${_gemname}
 pkgver=0.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc="pleaserun"
 arch=('any')
 depends=(
@@ -16,8 +16,8 @@ license=('Apache 2.0')
 source=(
 	"https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
 )
-sha256sums=('ecb1246ab735ca04f066cf3adc734ce107b5a873ae9585e4edad8db3dc03ef22')
-
+sha256sums=('bba9c6e0ddbc00389969b79e9d49e938b3a8ee2fba0f60c51a52ab3ea6a149eb')
+																			
 prepare() {
 	cd "${srcdir}"
 	/usr/bin/tar zxf data.tar.gz
