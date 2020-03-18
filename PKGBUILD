@@ -2,7 +2,7 @@
 # Contributor: Árni Dagur <arnidg@protonmail.ch>
 
 pkgname=futhark
-pkgver=0.14.1
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="A data-parallel functional programming language."
 arch=('x86_64')
@@ -14,9 +14,9 @@ optdepends=('opencl-headers: OpenCL backend'
             'python-pyopencl: PyOpenCL backend')
 source=("https://github.com/diku-dk/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.xz")
 
-sha1sums=('4740453581d6dc2d48615db7a9c2953901603b43')
-sha256sums=('f6b92bb3f2661ce82959f3d3839ab2d22b09cd18fa4c21c2d01319a061d7fd85')
-sha512sums=('148ba96ef1a78b0df2f38b61ce87f6362fadd6ab19d9fb4625a91b9796cd09d99158293000bc2c407fc520ac54ac1805f331fb9a542d552869d489f7d1738893')
+sha1sums=('9a2a8bd82478b9ebcdc0410625fe4d6b49f94753')
+sha256sums=('d91472e7f756fcbb4a74b66910ee5b7b1ea965e9f0a8f2a35e30077e9fc3b572')
+sha512sums=('2555962ba2504239663fb099bd380a2da7690004a6a6265a3c2e64f32bfd1fda2ea18b4aad7b039239c39e8da39653e4c59eb1af19c7af95a22af919c29c8d1d')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}-linux-x86_64"
