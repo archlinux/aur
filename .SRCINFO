@@ -1,0 +1,15 @@
+pkgbase = aarch64-linux-gnu-configure
+	pkgdesc = A configure wrapper for the ARM64 target
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://fedoraproject.org/wiki/MinGW
+	arch = x86_64
+	license = GPL
+	depends = aarch64-linux-gnu-gcc
+	depends = aarch64-linux-gnu-pkg-config
+	depends = aarch64-linux-gnu-environment
+	source = configure.sh
+	sha256sums = bf13d26c868e66341770002dd3e3c6a77b10f453bc2b43dda477e2827d5172e0
+
+pkgname = aarch64-linux-gnu-configure
+
