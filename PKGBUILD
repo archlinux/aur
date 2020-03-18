@@ -6,7 +6,7 @@
 _reponame=reflective-rapidjson
 pkgname=mingw-w64-reflective-rapidjson
 _name=${pkgname#mingw-w64-}
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 arch=('any')
 pkgdesc='Code generator for serializing/deserializing C++ objects to/from JSON using Clang and RapidJSON (mingw-w64)'
@@ -18,7 +18,7 @@ checkdepends=('mingw-w64-cppunit' 'mingw-w64-wine' 'mingw-w64-boost')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('d089ac56dec5c62a55fbb7b86915475ca6e3d990f4a8d71a66b021b1eeed8266')
+sha256sums=('978c4d70862f16bb926ba6481ebfd1e650dae02fdcf3c335070748f547745db3')
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
