@@ -1,80 +1,30 @@
-# $Id$
-# Contributor: Allan McRae <allan@archlinux.org>
-# Contributor: Eric Belanger <eric@archlinux.org>
-# Contributor: John Proctor <jproctor@prium.net>
+# Maintainer: Tilmann Meyer <tilmann.meyer@gmx.net>
 
 _target=aarch64-linux-gnu
+
 _pkgname=pcre
-pkgname=${_target}-pcre
-pkgver=8.43
+pkgname=$_target-$_pkgname
+pkgver=8.44
 pkgrel=1
-pkgdesc='A library that implements Perl 5-style regular expressions'
-arch=('any')
-url='http://www.pcre.org/'
-license=('BSD')
-depends=(
-#'gcc-libs' 'readline' 
-'zlib-aarch64'
-#'bzip2'
-'bash')
-validpgpkeys=('45F68D54BBE23FB3039B46E59766E084FB0F43D8') # Philip Hazel
-source=("https://ftp.pcre.org/pub/pcre/$_pkgname-$pkgver.tar.bz2"{,.sig})
-sha512sums=('3b4ac2c7ccd77c9575d07a33c3456f40b50731029e62d01fb8f2f5871d7118e12bc9e6bc7a8079769c765e38da5ecf98c4b261b10ff0a2f14f0881b434f67af7'
-            'SKIP')
+pkgdesc='A library that implements Perl 5-style regular expressions (ARM64)'
+arch=(x86_64)
+url='https://www.pcre.org/'
+license=(BSD)
+depends=($_target-readline $_target-zlib $_target-bzip2)
+makedepends=($_target-configure)
+options=(!buildflags)
+source=(
+  https://ftp.pcre.org/pub/pcre/$_pkgname-$pkgver.tar.bz2{,.sig}
+)
+sha256sums=(
+  '19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d'
+  'SKIP'
+)
+validpgpkeys=(
+  '45F68D54BBE23FB3039B46E59766E084FB0F43D8' # Philip Hazel
+)
 
-prepare() {
-  cd $_pkgname-$pkgver
-  # apply patch from the source array (should be a pacman feature)
-  local filename
-  for filename in "${source[@]}"; do
-    if [[ "$filename" =~ \.patch$ ]]; then
-      msg2 "Applying patch ${filename##*/}"
-      patch -p1 -N -i "$srcdir/${filename##*/}"
-    fi
-  done
-  # avoid compiler default flags
-  sed -i "s,/usr/\(include\|lib\),/usr/${_target:?}/\1," pcre-config.in
-  :
-}
-
-build() {
-  cd $_pkgname-$pkgver
-if [ n != "$RUN_PREPARE" ]; then
-  if [ 1 = "$ccache" ]; then
-    export CC=${CC:-ccache ${_target}-gcc}
-    export CXX=${CXX:-ccache ${_target}-g++}
-  fi
-  unset CFLAGS CXXFLAGS
-  ./configure \
-    --host=${_target} \
-    --prefix=/usr/${_target} \
-    --enable-unicode-properties \
-    --enable-pcre16 \
-    --enable-pcre32 \
-    --enable-jit \
-    --enable-pcregrep-libz \
-    --disable-cpp \
-#    --enable-pcregrep-libbz2 \
-#    --enable-pcretest-libreadline
-fi
-  make
-}
-
-check() {
-  local s readelfarch
-  readelfarch='AArch64'
-  cd $_pkgname-$pkgver
-
-  s=$(find . -type f "(" -name "*.so*" -o -name "*.a" ")" -print0 | \
-    2>/dev/null LC_ALL=C xargs -0 readelf -h | \
-    sed -n -e '/File:/h;/Machine:/{/'"$readelfarch"'/!{H;x;p}}' | head -10)
-
-  if [ -n "$s" ]; then
-    >&2 echo "some binaries have wrong architecture:"
-    >&2 echo "$s"
-    return 1
-  fi
-}
+_srcdir=$_pkgname-$pkgver
 
 strip() {
   ${_target}-strip "$@"
@@ -84,20 +34,27 @@ objcopy() {
   ${_target}-objcopy "$@"
 }
 
-package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+build() {
+  cd $_srcdir
 
-  install -Dm644 LICENCE "$pkgdir/usr/${_target}/share/licenses/$_pkgname/LICENSE"
+  mkdir -p build-$_target && pushd build-$_target
+  $_target-configure \
+    --enable-unicode-properties \
+    --enable-pcre16 \
+    --enable-pcre32 \
+    --enable-jit \
+    --enable-pcregrep-libz \
+    --enable-pcregrep-libbz2 \
+    --enable-pcretest-libreadline
 
-  mkdir -p "$pkgdir/usr/bin"
-
-  # delete everything but the script
-  mv "$pkgdir/usr/${_target}/bin/pcre-config" "$pkgdir/usr/bin/${_target}-pcre-config"
-  rm -f "$pkgdir/usr/${_target}/bin"/*
-
-  # restore the script
-  install -Dm755 "$pkgdir/usr/bin/${_target}-pcre-config" "$pkgdir/usr/${_target}/bin/pcre-config"
+  make
+  popd
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd $_srcdir
+
+  pushd build-$_target
+  make DESTDIR="$pkgdir" install
+  popd
+}

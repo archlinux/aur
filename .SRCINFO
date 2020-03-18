@@ -1,17 +1,20 @@
 pkgbase = aarch64-linux-gnu-pcre
-	pkgdesc = A library that implements Perl 5-style regular expressions
-	pkgver = 8.43
+	pkgdesc = A library that implements Perl 5-style regular expressions (ARM64)
+	pkgver = 8.44
 	pkgrel = 1
-	url = http://www.pcre.org/
-	arch = any
+	url = https://www.pcre.org/
+	arch = x86_64
 	license = BSD
-	depends = zlib-aarch64
-	depends = bash
-	source = https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.bz2
-	source = https://ftp.pcre.org/pub/pcre/pcre-8.43.tar.bz2.sig
+	makedepends = aarch64-linux-gnu-configure
+	depends = aarch64-linux-gnu-readline
+	depends = aarch64-linux-gnu-zlib
+	depends = aarch64-linux-gnu-bzip2
+	options = !buildflags
+	source = https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2
+	source = https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.bz2.sig
 	validpgpkeys = 45F68D54BBE23FB3039B46E59766E084FB0F43D8
-	sha512sums = 3b4ac2c7ccd77c9575d07a33c3456f40b50731029e62d01fb8f2f5871d7118e12bc9e6bc7a8079769c765e38da5ecf98c4b261b10ff0a2f14f0881b434f67af7
-	sha512sums = SKIP
+	sha256sums = 19108658b23b3ec5058edc9f66ac545ea19f9537234be1ec62b714c84399366d
+	sha256sums = SKIP
 
 pkgname = aarch64-linux-gnu-pcre
 
