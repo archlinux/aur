@@ -1,11 +1,11 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
+# Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Pieter Goetschalckx <3.14.e.ter [at] gmail [dot] com>
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
-# Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=popcorntime-git
-pkgver=0.3.10+r6475+gef48d491
+pkgver=v0.4.0+r6483+g5c68847e
 pkgrel=1
 pkgdesc='Popcorn Time is a multi-platform, free software BitTorrent client that includes an integrated media player.'
 arch=(i686 x86_64)
@@ -23,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd popcorn-desktop
-  echo $(git tag)+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
+  echo $(git describe --abbrev=0)+r$(git rev-list --count HEAD)+g$(git rev-parse --short HEAD)
 }
 
 # prepare() {
