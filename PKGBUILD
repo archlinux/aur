@@ -8,7 +8,7 @@ _bldtype=Release
 
 _mozcver=2.23.2815.102
 _fcitxver=2.23.2815.102.1
-_neologddate=20200130
+_neologddate=20200315
 pkgver=${_mozcver}.${_neologddate}
 pkgrel=1
 
@@ -28,7 +28,7 @@ source=(
   add_support_new_japanese_era.patch::https://salsa.debian.org/debian/mozc/raw/master/debian/patches/add_support_new_japanese_era.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
   https://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz
-  "https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fusers%2F25%2F25426%2Fmozcdic-neologd-ut-20200130.1.tar.bz2"
+  "https://osdn.net/frs/chamber_redir.php?m=osdn&f=%2Fusers%2F25%2F25485%2Fmozcdic-neologd-ut-20200315.1.tar.bz2"
 )
 
 sha1sums=(
