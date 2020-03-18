@@ -1,7 +1,7 @@
 pkgbase = brother-dcpj105
 	pkgdesc = CUPS driver for Brother DCP-J105 printer
 	pkgver = 3.0.0
-	pkgrel = 666
+	pkgrel = 667
 	url = http://solutions.brother.com/linux/en_us/index.html
 	install = dcpj105.install
 	arch = i686

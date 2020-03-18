@@ -1,9 +1,10 @@
+# Maintainer: 1Conan <me@1conan.com>
 # Contributor: Tux Tong <huntthetux@gmail.com>
 
 pkgname=brother-dcpj105
 _printername=dcpj105
 pkgver=3.0.0
-pkgrel=666
+pkgrel=667
 pkgdesc="CUPS driver for Brother DCP-J105 printer"
 arch=('i686' 'x86_64')
 license=('custom:Brother Industries')
@@ -19,8 +20,8 @@ md5sums=('978e10976937951c3e5297117356cae3'
          '8933006312bde91ccc592be599562c9a')
 install=dcpj105.install
 package() {
-   cd "$pkgdir"
-   for n in $startdir/src/*.rpm; do
+   cd "${pkgdir}"
+   for n in $srcdir/*.rpm; do
      rpmextract.sh "$n"
    done
 
