@@ -1,11 +1,12 @@
 pkgbase = qflow-git
 	pkgdesc = Opensource physical implementation flow
-	pkgver = 1.4.r296.a2a19f1
+	pkgver = 1.4.r306.7746623
 	pkgrel = 1
 	url = http://opencircuitdesign.com/qflow/
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = magic
 	depends = qrouter
 	depends = tcsh

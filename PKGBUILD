@@ -1,6 +1,6 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=qflow-git
-pkgver=1.4.r296.a2a19f1
+pkgver=1.4.r306.7746623
 pkgrel=1
 epoch=
 pkgdesc='Opensource physical implementation flow'
@@ -10,6 +10,7 @@ conflicts=('qflow')
 url='http://opencircuitdesign.com/qflow/'
 license=('GPL')
 depends=('magic' 'qrouter' 'tcsh' 'yosys' 'netgen-lvs')
+makedepends=('git')
 optdepends=(
     'graywolf: Placement support' 
     'opensta: Alternative static timing analysis tool')
