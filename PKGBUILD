@@ -2,8 +2,8 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.456.gce55d4128
-pkgrel=3
+pkgver=1.1.8.464.g6e0f9f59d
+pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -43,15 +43,16 @@ build() {
   _cache_file=../$CARCH-config.cache
 
   _knm="-lts"
-  _kvd="4.19.98-1"
+  _kvd="5.4.25-2"
   _kvo=""
-  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
-  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
   _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 
 
+  set -x
   ./configure \
       KCC="gcc" \
       GCJ="gcj" \
@@ -88,15 +89,16 @@ build() {
       --disable-modules
   # Fight unused direct deps
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+  set +x
   make
 
   cd "$srcdir/openss7-modules-lts-git"
 
   _knm="-lts"
-  _kvd="4.19.98-1"
+  _kvd="5.4.25-2"
   _kvo=""
-  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
-  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
   _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
@@ -105,6 +107,7 @@ build() {
   _mpost_file=../$CARCH-$_kvr-modpost.cache
   _cache_file=../$CARCH-$_kvr-config.cache
 
+  set -x
   ./configure \
       KCC="gcc" \
       GCJ="gcj" \
@@ -141,15 +144,16 @@ build() {
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
+  set +x
   make -j1
 
   cd "$srcdir/openss7-modules-git"
 
   _knm=""
-  _kvd="5.4.15-arch1-1"
+  _kvd="5.5.9-arch1-2"
   _kvo=""
-  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
-  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
   _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvr="$(echo $_kvr|sed -e 's,\.arch,-arch,')"
@@ -159,6 +163,7 @@ build() {
   _mpost_file=../$CARCH-$_kvr-modpost.cache
   _cache_file=../$CARCH-$_kvr-config.cache
 
+  set -x
   ./configure \
       KCC="gcc" \
       GCJ="gcj" \
@@ -195,6 +200,7 @@ build() {
       --with-gnu-ld \
       --disable-docs \
       --disable-tools
+  set +x
   make -j1
 }
 
@@ -237,10 +243,10 @@ package_openss7-git() {
 
 package_openss7-modules-git() {
   _knm=""
-  _kvd="5.4.15-arch1-1"
+  _kvd="5.5.9-arch1-2"
   _kvo=""
-  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
-  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
   _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvr="$(echo $_kvr|sed -e 's,\.arch,-arch,')"
@@ -287,10 +293,10 @@ package_openss7-modules-git() {
 
 package_openss7-modules-lts-git() {
   _knm="-lts"
-  _kvd="4.19.98-1"
+  _kvd="5.4.25-2"
   _kvo=""
-  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3}')" || \
-  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3}')"
+  _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
+  _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
   _kvv="${_kvv:-${_kvd}}"
   _kvr="${_kvv:+${_kvv}${_knm}}"
   _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
