@@ -1,0 +1,7 @@
+#!/usr/bin/openrc-run
+start_stop_daemon_args="--chdir /var/lib/fah"
+command="/opt/fah/FAHClient"
+command_user="fah"
+command_background=1
+pidfile="/var/run/fah.pid"
+

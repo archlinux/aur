@@ -1,0 +1,14 @@
+pkgbase = foldingathome-openrc
+	pkgdesc = OpenRC script for folding@home daemon
+	pkgver = 20200319
+	pkgrel = 1
+	url = https://foldingathome.org/
+	arch = any
+	license = CUSTOM
+	provides = foldingathome-openrc
+	source = foldingathome.init
+	sha256sums = 0039215c0b7fa2fd950f966f0e832e782c629acf948915f8192feb266266fa59
+
+pkgname = foldingathome-openrc
+	install = foldingathome.install
+

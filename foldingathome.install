@@ -1,0 +1,8 @@
+post_remove() {
+
+	service_file_link=/etc/init.d/foldingathome
+	if [ -L "$service_file_link" ]; then
+		rm $service_file_link
+	fi
+
+}
