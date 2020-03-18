@@ -1,0 +1,19 @@
+pkgbase = aarch64-linux-gnu-libgpg-error
+	pkgdesc = Support library for libgcrypt (ARM64)
+	pkgver = 1.37
+	pkgrel = 1
+	url = https://www.gnupg.org
+	arch = x86_64
+	license = LGPL
+	makedepends = aarch64-linux-gnu-configure
+	depends = aarch64-linux-gnu-glibc
+	options = !buildflags
+	source = ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.37.tar.bz2
+	source = ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.37.tar.bz2.sig
+	validpgpkeys = D8692123C4065DEA5E0F3AB5249B39D24F25E3B6
+	validpgpkeys = 031EC2536E580D8EA286A9F22071B08A33BD3F06
+	sha256sums = b32d6ff72a73cf79797f7f2d039e95e9c6f92f0c1450215410840ab62aea9763
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-gnu-libgpg-error
+
