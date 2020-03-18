@@ -1,5 +1,5 @@
 pkgbase = aarch64-linux-gnu-icu
-	pkgdesc = International Components for Unicode library
+	pkgdesc = International Components for Unicode library (ARM64)
 	pkgver = 65.1
 	pkgrel = 2
 	url = http://site.icu-project.org/home
