@@ -2,6 +2,7 @@
 Description=A Matrix-Telegram hybrid puppeting/relaybot bridge
 
 [Service]
+Environment=FFMPEG_BINARY=/usr/bin/ffmpeg
 ExecStart=/usr/bin/mautrix-telegram -b /etc/mautrix-telegram/config.yaml -c /etc/mautrix-telegram/config.yaml -r /etc/mautrix-telegram/registration.yaml
 WorkingDirectory=/etc/mautrix-telegram/
 Restart=on-failure
