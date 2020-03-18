@@ -1,6 +1,6 @@
 pkgbase = vndr
 	pkgdesc = Vndr is simple vendoring tool, which is inspired by Docker vendor script.
-	pkgver = 0.0.1
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/LK4D4/vndr
 	arch = x86_64

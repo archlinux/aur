@@ -3,7 +3,7 @@
 # Maintainer: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
 
 pkgname=vndr
-pkgver=0.0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Vndr is simple vendoring tool, which is inspired by Docker vendor script.'
 arch=('x86_64')
