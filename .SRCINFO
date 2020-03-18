@@ -1,28 +1,28 @@
 pkgbase = zfs-dkms-git
 	pkgdesc = Kernel modules for the Zettabyte File System.
-	pkgver = 2020.03.31.r5836.g0929c4de3
+	pkgver = 0.8.0.r709.g5a42ef04f
 	pkgrel = 1
+	epoch = 1
 	url = https://zfsonlinux.org/
-	arch = x86_64
-	groups = archzfs-dkms-git
+	arch = any
 	license = CDDL
 	makedepends = git
-	depends = zfs-utils-git=2020.03.31.r5836.g0929c4de3
-	depends = lsb-release
-	depends = dkms
+	provides = ZFS-MODULE=0.8.0.r709.g5a42ef04f
+	provides = SPL-MODULE=0.8.0.r709.g5a42ef04f
+	provides = zfs-dkms=0.8.0.r709.g5a42ef04f
+	provides = spl-dkms
 	provides = zfs
-	provides = zfs-headers
-	provides = spl
-	provides = spl-headers
-	conflicts = zfs
-	conflicts = zfs-headers
-	conflicts = spl
-	conflicts = spl-headers
+	conflicts = zfs-dkms
+	conflicts = spl-dkms
 	replaces = spl-dkms-git
-	source = git+https://github.com/zfsonlinux/zfs.git#commit=0929c4de398606f8305057ca540cf577e6771c30
-	source = linux-5.5-compat-blkg_tryget.patch
+	source = git+https://github.com/zfsonlinux/zfs.git
+	source = 0001-only-build-the-module-in-dkms.conf.patch
 	sha256sums = SKIP
-	sha256sums = daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da
+	sha256sums = 780e590383fb00389c5e02ac15709b7a476d9e07d3c4935ed9eb67c951a88409
+	b2sums = SKIP
+	b2sums = 1fdae935043d979b9241f07f8baa25a9a0367c24c31c84a59dfe8d6b468a523d8f49b68da3c7fd3194db6638f9d7bef046fc5e2669ce25d73c65009c16bf6c50
 
 pkgname = zfs-dkms-git
+	depends = zfs-utils-git=1:0.8.0.r709.g5a42ef04f
+	depends = dkms
 
