@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=2020.02
+pkgver=2020.03
 pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
@@ -23,20 +23,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
-_archivename=2020.02-current # patch releases don't follow the same format so we can't use $pkgver
+_archivename=2020.03-current # patch releases don't follow the same format so we can't use $pkgver
 source=(Waterfox-$_archivename.tar.gz::https://github.com/MrAlex94/Waterfox/archive/$_archivename.tar.gz
-        0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop)
-sha256sums=('391b763cc6d71f419b309968cfc6fc79c4c39b8c9712f0f949b44a7a454e4ba2'
-            '891cb6fc34637cc8df7d68b9b1aa64026a65a4ef31675f370e64d9ac0258e6de'
+sha256sums=('88b02f0a4b3e60a675640df2d3f324af2c134d975963b5ac8238daf02303678a'
             '3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3')
 
 prepare() {
   mkdir -p mozbuild
   cd Waterfox-$_archivename
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser

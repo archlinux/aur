@@ -1,6 +1,6 @@
 pkgbase = waterfox
 	pkgdesc = Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch.
-	pkgver = 2020.02
+	pkgver = 2020.03
 	pkgrel = 1
 	url = https://www.watefox.net/
 	arch = x86_64
@@ -44,11 +44,9 @@ pkgbase = waterfox
 	options = !emptydirs
 	options = !makeflags
 	options = !strip
-	source = Waterfox-2020.02-current.tar.gz::https://github.com/MrAlex94/Waterfox/archive/2020.02-current.tar.gz
-	source = 0001-Use-remoting-name-for-GDK-application-names.patch
+	source = Waterfox-2020.03-current.tar.gz::https://github.com/MrAlex94/Waterfox/archive/2020.03-current.tar.gz
 	source = waterfox.desktop
-	sha256sums = 391b763cc6d71f419b309968cfc6fc79c4c39b8c9712f0f949b44a7a454e4ba2
-	sha256sums = 891cb6fc34637cc8df7d68b9b1aa64026a65a4ef31675f370e64d9ac0258e6de
+	sha256sums = 88b02f0a4b3e60a675640df2d3f324af2c134d975963b5ac8238daf02303678a
 	sha256sums = 3c8a3e73ffcb4670ca25fc7087b9c5d93ebbef2f3be8a33cf81ae424c3f27fa3
 
 pkgname = waterfox
