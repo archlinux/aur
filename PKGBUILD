@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname="mongodb-bin-4.0"
-pkgver=4.0.16
+pkgver=4.0.17
 pkgrel=1
 pkgdesc='A high-performance, open source, schema-free document-oriented database'
 arch=("x86_64")
@@ -20,9 +20,9 @@ source=("https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${pkgver%.
         mongodb.tmpfiles
         LICENSE)
 
-sha512sums=('e603a3a2936e5f1059f0211ebf9b3066c18c07e4919ff1e929a541ac34ae6d0f4c526f323cd461c0dbe93975882bb7fdbc7d8f6afc0805fbc8820a771da3d7f5'
-            '1b76a067cd2b88a4e69a7295c19352435ca1d74c4e5a90e4cafbdc8f9bf7451fd91993f620881f50e2ce2eeed5f4d6ad6f5bd49fcc1eecc30299ed9b0a351301'
-            '5cff659320d39934a5ed0eef067534a7d37de25f4580e8789c8dd9100251ef224f2db26a7460219e3568c5318a49e9cc2268b2ed4b81b30865182395c5a584c7'
+sha512sums=('bf42db11e415c3b070aef3e5ac8f5edf4435328114fc972829d6a6b06f4fa349c51e5caef35ba60e15f9d7e1184ad030f2f7bce20d99074f1b36ad93254b92fc'
+            'c47dad0a199dea49dd9afc8289aa341803a9aa847c3b48b176017df17c7ba63a29dced1bf9d04d7a800268146239ec125973a6be151feaa19f954f25bb281430'
+            'b3b4cc0bca182e07857419fd94aec8cd8bce5526a005c6c108d4a81e687aa55abf0f3da16bad98dddd4993e25b8a0d195a15c69dcc805493923281fcae3dd86a'
             '177251404b2e818ae2b546fe8b13cb76e348c99e85c7bef22a04b0f07b600fd515a309ede50214f4198594388a6d2b31f46e945b9dae84aabb4dfa13b1123bb9'
             '05dead727d3ea5fe8af1a3c3888693f6b3e2b8cb7f197a5d793352e10d2c524e96c9a5c55ad2e88c1114643a9612ec0b26a2574b48a5260a9b51ec8941461f1c'
             '889425b864c58a767aa5865c0ce9817361ad99fec78050fa600f14eaef5a56ce0bc41a03878233e99f4862596a94dafcfebebecd4d57443b742117b873ab813d'
