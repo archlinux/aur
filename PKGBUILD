@@ -1,8 +1,8 @@
 # Maintainer: pescepalla < base64 -d <<< cGVzY2VwYWxsYUBwb3N0ZW8ubWUK >
 
 pkgname=cmaptools
-pkgver=v6.03.01
-_pkgdate=02-07-19
+pkgver=v6.04
+_pkgdate=09-24-19
 pkgrel=1
 pkgdesc="The IHMC Cmap Tools for concept maps"
 arch=('x86_64')
