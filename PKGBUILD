@@ -1,7 +1,7 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -22,12 +22,12 @@ prepare() {
   cd $srcdir/session-desktop
   git checkout 9dc8160
   source /usr/share/nvm/init-nvm.sh && nvm install 10.13.0
-  export SIGNAL_ENV=production
 }
 
 build() {
   cd "$srcdir/session-desktop"
   source /usr/share/nvm/init-nvm.sh && nvm use 10.13.0
+  export SIGNAL_ENV=production
   yarn install --frozen-lockfile
   yarn generate
   yarn lint-full
@@ -37,11 +37,27 @@ build() {
 package() {
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/opt/
-  mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/16x16/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/24x24/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/32x32/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/48x48/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/64x64/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/128x128/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/256x256/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/apps/
+  mkdir -p $pkgdir/usr/share/icons/hicolor/1024x1024/apps/
+
+  cp $srcdir/session-desktop/build/icons/png/16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/24x24.png $pkgdir/usr/share/icons/hicolor/24x24/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/64x64.png $pkgdir/usr/share/icons/hicolor/64x64/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/512x512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/png/1024x1024.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/session-messenger-desktop.png
+
   tar xf $srcdir/session-desktop/release/session-messenger-desktop-linux-x64-$pkgver.tar.xz -C $pkgdir/opt/
   mv $pkgdir/opt/session-messenger-desktop-linux-x64-$pkgver $pkgdir/opt/Session
-  cp $srcdir/session-desktop/images/session/icon_256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/images/session/icon_64.png $pkgdir/usr/share/icons/hicolor/64x64/apps/session-messenger-desktop.png
   cp $srcdir/session-desktop.desktop $pkgdir/usr/share/applications/
 }
