@@ -19,6 +19,8 @@ sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8')
 
 prepare() {
+  cd $srcdir/session-desktop
+  git checkout 9dc8160
   source /usr/share/nvm/init-nvm.sh
   nvm install 10.13.0
   export SIGNAL_ENV=production
