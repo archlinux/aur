@@ -1,0 +1,16 @@
+pkgbase = blasfeo-git
+	pkgdesc = Basic linear algebra subroutines for embedded optimization
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/giaf/blasfeo
+	arch = i686
+	arch = x86_64
+	license = BSD 2-Clause
+	makedepends = cmake
+	provides = blasfeo
+	conflicts = blasfeo
+	source = blasfeo::git+https://github.com/giaf/blasfeo
+	sha256sums = SKIP
+
+pkgname = blasfeo-git
+
