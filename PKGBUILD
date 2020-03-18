@@ -7,11 +7,12 @@ pkgname=greeklayoutwithdotonnumpad
 pkgver=1.1
 pkgrel=0
 pkgdesc="Greek layout with dot on numpad instead of comma for ARCH Linux"
-instdir="/usr/share/X11/xkb/symbols/"
+instdir="/usr/share/X11/xkb/symbols"
 url="https://aur.archlinux.org/packages/greeklayoutwithdotonnumpad/" 
 license=('GPL3')
 replaces=('greeklayoutwithdotonnumpad')
 arch=('any')
+groups=()
 depends=('xkeyboard-config')
 provides=("${pkgname}")
 source=('gr')
@@ -23,7 +24,7 @@ sha256sums=('3c39bcd4e6ad45a4c44e2b346f6e8674354b1ad274da860224e3335dd2f935ae')
 #}
 
 package() {
-	install -Dm755 ${srcdir}/gr "$instdir/gr"
+	install -Dm755 ${srcdir}/gr "$pkgdir"/usr/share/X11/xkb/symbols/gr
 }
 
 
