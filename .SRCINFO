@@ -1,14 +1,14 @@
 pkgbase = rocm-clang-ocl
 	pkgdesc = OpenCL compilation with clang compiler.
-	pkgver = 0.4.0
+	pkgver = 3.1.0
 	pkgrel = 1
-	url = https://github.com/RadeonOpenCompute/ROCm
+	url = https://github.com/RadeonOpenCompute/clang-ocl
 	arch = x86_64
-	license = EULA
-	provides = rocm-clang-ocl
-	conflicts = rocm-clang-ocl
-	source = http://repo.radeon.com/rocm/apt/debian/pool/main/r/rocm-clang-ocl/rocm-clang-ocl_0.4.0-7ce124f_amd64.deb
-	sha256sums = SKIP
+	license = unknown
+	makedepends = cmake
+	makedepends = hcc
+	source = rocm-clang-ocl-3.1.0::http://github.com/RadeonOpenCompute/clang-ocl/archive/roc-3.1.0.tar.gz
+	sha256sums = af93e626564cee2b3f6f5c2da0b5b95a9894f7357d895b259a706d38a57f1ef6
 
 pkgname = rocm-clang-ocl
 
