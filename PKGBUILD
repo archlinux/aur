@@ -2,7 +2,7 @@
 
 _pkgname=skypeforlinux
 pkgname=skype
-pkgver=8.57.0.116
+pkgver=8.58.0.93
 pkgrel=1
 pkgdesc='P2P software for high-quality voice communication'
 arch=('x86_64')
@@ -19,7 +19,7 @@ validpgpkeys=('D4040146BE3972509FD57FC71F3045A5DF7587C3')
 sha512sums=('b0ac170b31c442006d2b3860cc4b5b43265369aa52de925c5e2ca30ea57767b8496c23626556922e8391cca1bf8e6b47b5759fd2e1f45a9dc41c13e30856a0ae'
             'SKIP'
             'SKIP')
-sha512sums_x86_64=('672f818a52e6876c1460eb9f9fde3ada945934f98d912cad958ce18c2b45ea04ffb359d11223ace10c2ff81f8914eb8c1595cee501901de8cad9eb1e6ec6f4d8'
+sha512sums_x86_64=('203d2804cf0abe55056c2404018024f8c5574b12c77f886e0285a0b3d838fa045bf0f46ec74f8a6524d8c71b0fb0b52a811c0b15747a10ff74bcff743456bb42'
                    'SKIP')
 
 
@@ -32,7 +32,7 @@ prepare() {
 	fi
 
 	## Validate hashes from the PGP signed "Release" file
-	echo "$(grep SHA512 -A9 $pkgname-$pkgver-Release | grep -Pe main/binary-${_SKYPE_ARCH}/Packages | tail -n1 | awk '{print $1}') $pkgname-$pkgver-${CARCH}-Packages" \
+	echo "$(grep SHA512 -A9 $pkgname-$pkgver-Release | grep -Pe "main/binary-${_SKYPE_ARCH}/Packages"'($|[^\.])' | awk '{print $1}') $pkgname-$pkgver-${CARCH}-Packages" \
 		> "$pkgname-$pkgver-${CARCH}-Packages.sha512"
 	sha512sum -c "$pkgname-$pkgver-${CARCH}-Packages.sha512"
 
