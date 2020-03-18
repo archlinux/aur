@@ -1,0 +1,19 @@
+pkgbase = bricscad-pt_br
+	pkgdesc = É uma alternativa de CAD DWG número, oferecendo um recurso completo e reconhecível, conjunto para usuários profissionais. BricsCAD lê e grava o formato DWG e oferece alta compatibilidade com o AutoCAD
+	pkgver = 19.2.15
+	pkgrel = 1
+	url = https://www.bricsys.com
+	arch = x86_64
+	license = Custon:bricscad
+	depends = lib32-glibc
+	depends = cairo
+	depends = lib32-fontconfig
+	depends = libcups
+	depends = lib32-freetype2
+	depends = lib32-gtk2
+	source = BricsCAD-V19.2.15-1-pt_BR.x86_64.rpm::https://www.bricsys.com/DownloadInstallset.download?t=b068t1cXEL&i=5693&if=17334&accept=true&ref=null
+	md5sums = 6bed041a939437b100fbcf20af21973b
+	sha512sums = ca15a5117bf631200a5852d98abf706533f2dfc469fcf4704f10714518e20a312d6d30b485c3b64dd2119e34e836925b8097a97dcb52fd0061c4cf07d06bbad5
+
+pkgname = bricscad-pt_br
+
