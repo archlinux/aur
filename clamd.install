@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add Clamav Daemon to system startup wtih 'rc-update add clamd default'"
+	echo " ==> Start ClamAv Daemon now with 'rc-service clamd start'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure to 'rc-update del clamd default'"
+}
