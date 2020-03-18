@@ -1,7 +1,7 @@
 # Maintainer: Andreas 'Segaja' Schleifer <archlinux at segaja dot de>
 
 pkgname=alicloud-vault
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A vault for securely storing and accessing Alibaba Cloud credentials in development environments'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('dba764a90d95d444080ae2b225fe4f6042a0ae322465f526d5e4c0463d5015b28f2de83ae1d99d7abb9fcf34bfb25ca690241a78a207c3c2e2cc8ddcffe7b2bc')
+sha512sums=('862082f0f1fe585923cfe8aa782f67cd10dc1752d9e9590c7f5ab6bf67ae4e112e9e310eb8c16ab516e2e0d38902ea105205f2138dfbb6a24a1061bb3f09c702')
 
 build() {
   cd "${pkgname}-${pkgver}"
