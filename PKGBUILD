@@ -5,7 +5,7 @@ url='https://wiki.ros.org/realtime_tools'
 pkgname='ros-melodic-realtime-tools'
 pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -25,8 +25,15 @@ ros_depends=(
 depends=(${ros_depends[@]})
 
 _dir="${srcdir}/realtime_tools-${pkgver}"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz")
-sha256sums=('690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-controls/realtime_tools/archive/${pkgver}.tar.gz"
+        "tests.patch")
+sha256sums=('690222fd2908cec0412d20f6e8b5d8a17132d959edb719e01695e89f7c4d8111'
+            'd40ccadd950cbd5743295639bed2d0c1b0ab8a5edfac8f9de5cbf11a48ed8300')
+
+prepare() {
+    cd "${srcdir}/${_dir}"
+    patch -uN CMakeLists.txt ../../tests.patch || return 1
+}
 
 build() {
   # Use ROS environment variables

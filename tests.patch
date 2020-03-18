@@ -1,0 +1,11 @@
+--- CMakeLists.txt.orig	2020-03-15 18:05:20.022844807 -0400
++++ CMakeLists.txt	2020-03-15 18:05:35.495900511 -0400
+@@ -19,7 +19,7 @@
+ target_include_directories(${PROJECT_NAME} PUBLIC ${catkin_INCLUDE_DIRS})
+ 
+ # Unit Tests
+-if (CATKIN_ENABLE_TESTING)
++if (CATKIN_ENABLE_TESTING AND (EXISTS ${GMOCK_MAIN_LIBRARIES}))
+   catkin_add_gmock(realtime_box_tests test/realtime_box_tests.cpp)
+   target_link_libraries(realtime_box_tests ${PROJECT_NAME} ${GMOCK_MAIN_LIBRARIES})
+ 
