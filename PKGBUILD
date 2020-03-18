@@ -4,7 +4,7 @@
 _pkgname=kyverno
 pkgname=kyverno-git
 pkgver=v1.1.4.rc1.r45.g2768574a
-pkgrel=1
+pkgrel=2
 pkgdesc="Kubernetes Native Policy Management - CLI"
 arch=('any')
 url="https://github.com/nirmata/kyverno"
@@ -12,7 +12,7 @@ source=("git+https://github.com/nirmata/kyverno")
 md5sums=('SKIP')
 license=('Apache')
 depends=()
-makedepends=('make')
+makedepends=('make' 'go')
 
 pkgver() {
   cd $srcdir/$_pkgname
