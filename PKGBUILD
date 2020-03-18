@@ -4,13 +4,13 @@ _target=aarch64-linux-gnu
 
 pkgname=$_target-zlib
 pkgver=1.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Compression library implementing the deflate compression method found in gzip and PKZIP (ARM64)'
 arch=(x86_64)
 url='https://www.zlib.net/'
 license=('custom')
 depends=($_target-glibc)
-makedepends=($_target-gcc)
+makedepends=($_target-environment)
 options=(!buildflags)
 source=(
   https://zlib.net/zlib-${pkgver}.tar.gz{,.asc}
