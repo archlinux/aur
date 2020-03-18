@@ -2,8 +2,8 @@
 # Contributor: Schrottfresse <schrottfresse at gmx dot de>
 
 pkgname=tlclient
-pkgver=4.10.0
-_buildnr=6068
+pkgver=4.11.0
+_buildnr=6323
 pkgrel=1
 pkgdesc="A remote desktop application"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,9 +16,9 @@ optdepends=('cups: required for remote printing'
 source=('tlclient.desktop' 'tlclient.png')
 sha256sums=('caa7417fa2f6a530bef2c6ca05f4c8a219ec85add7884fbb7368c0bf18be2988'
             'bb7cdf717ba1ee425be21d6bce245a17f2ba798b7202d9189fc964a408e3208a')
-sha256sums_i686=('ec5f4634de3aa58d07fb6aa136fb2ada8d3ebae62dcd0ec1cc4ca4e43aff9203')
-sha256sums_x86_64=('1a98602f8d749d4f47003bd7764253f02d478becee8be06747829479addb4aac')
-sha256sums_armv7h=('77939bc356b0091f89bff7b8bc36954f4ef74f5ab2e2e70533a4dc3569919c55')
+sha256sums_i686=('b3f2bd9394e0deeffd8d364e24adffa7f0a8160635996407180fdb1ff6bec5d6')
+sha256sums_x86_64=('6daa8f18ba66aa037d4c7ecefa957035df36857a3c9aa4497f26a8863e543e98')
+sha256sums_armv7h=('153c21a8b1e1554ccf7d6cd320e57e74ce5b1b60a673ea32b5becf26a1253f5c')
 
 source_x86_64=("https://www.cendio.com/downloads/clients/tl-$pkgver-$_buildnr-client-linux-dynamic-x86_64.tar.gz")
 
