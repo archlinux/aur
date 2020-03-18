@@ -1,4 +1,4 @@
-# Maintainer: [NAME] <some@email.com>
+# Maintainer: Tilmann Meyer <tilmann.meyer@gmx.net>
 
 _target=aarch64-linux-gnu
 
