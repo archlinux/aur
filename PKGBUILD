@@ -1,6 +1,6 @@
 pkgname='alacritty-git'
 _pkgname="alacritty"
-pkgver=0.4.2.1487.g64a31156
+pkgver=0.5.0.1500.g1a8cd172
 pkgrel=1
 arch=('x86_64' 'i686')
 url="https://github.com/jwilm/alacritty"
@@ -33,7 +33,7 @@ package_alacritty-git() {
 
 	cd $_pkgname
 
-	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/alacritty.desktop"
+	desktop-file-install -m 644 --dir "$pkgdir/usr/share/applications/" "$srcdir/$_pkgname/extra/linux/Alacritty.desktop"
 
 	install -D -m755 "target/release/alacritty" "$pkgdir/usr/bin/alacritty"
 	install -D -m644 "extra/alacritty.man" "$pkgdir/usr/share/man/man1/alacritty.1"
