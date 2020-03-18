@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-tageditor
 	pkgdesc = A tag editor with Qt GUI and command-line interface supporting MP4/M4A/AAC (iTunes), ID3, Vorbis, Opus, FLAC and Matroska
-	pkgver = 3.3.4
+	pkgver = 3.3.5
 	pkgrel = 1
 	url = https://github.com/Martchus/tageditor
 	arch = any
@@ -23,8 +23,8 @@ pkgbase = mingw-w64-tageditor
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = tageditor-3.3.4.tar.gz::https://github.com/Martchus/tageditor/archive/v3.3.4.tar.gz
-	sha256sums = 0874301bd7644a312d259d54a8b60366c0db80e5b1179c1039cad9905c95463d
+	source = tageditor-3.3.5.tar.gz::https://github.com/Martchus/tageditor/archive/v3.3.5.tar.gz
+	sha256sums = a2b9df4595ab37f902a69fc5dbf5e7f44e5bb8a970cd5128066aaff834fee285
 
 pkgname = mingw-w64-tageditor
 
