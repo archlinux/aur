@@ -1,80 +1,26 @@
-# $Id$
+# Maintainer: Tilmann Meyer <tilmann.meyer@gmx.net>
 
 _target=aarch64-linux-gnu
-_pkgbase=glib2
-pkgbase=${_target}-glib2
-pkgname=(${_target}-glib2
-#${_target}-glib2-docs
-)
-pkgver=2.62.0+52c68388
+
+_pkgname=glib2
+pkgname=$_target-$_pkgname
+pkgver=2.64.1
 pkgrel=1
-pkgdesc="Low level core library"
-url="https://wiki.gnome.org/Projects/GLib"
+pkgdesc='Low level core library (ARM64)'
+arch=(x86_64)
+url='https://wiki.gnome.org/Projects/GLib'
 license=(LGPL2.1)
-arch=('any')
-depends=(${_target}-pcre
-#libffi
-${_target}-libutil-linux
-zlib-aarch64
+depends=($_target-pcre $_target-libffi $_target-libutil-linux $_target-zlib)
+makedepends=($_target-util-linux $_target-meson)
+options=(!buildflags)
+source=(
+  https://gitlab.gnome.org/GNOME/glib/-/archive/$pkgver/glib-$pkgver.tar.gz
 )
-makedepends=(gettext gtk-doc shared-mime-info python libelf git dbus
-${_target}-util-linux # for pkgconfig/*.pc
-${_target}-pkg-config
+sha256sums=(
+  '562c7f04b39cda4d6349b06ab62377f33c6cb9055dff36cd51c04d1291ec654c'
 )
-optdepends=('python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report'
-            'libelf: gresource inspection tool')
-options=(!emptydirs)
-_commit=52c68388f53f1fbc0d25d3a437937cbc25a7f796  # glib-2-62
-source=("git+https://gitlab.gnome.org/GNOME/glib.git#commit=$_commit"
-        noisy-glib-compile-schemas.diff
-        glib-compile-schemas.hook gio-querymodules.hook)
-sha256sums=('SKIP'
-            '81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531'
-            'e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3'
-            '5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6')
 
-pkgver() {
-  cd glib
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd glib
-
-  # Suppress noise from glib-compile-schemas.hook
-  patch -Np1 -i ../noisy-glib-compile-schemas.diff
-
-  NOCONFIGURE=1 ./autogen.sh
-}
-
-build() {
-  local debug=minimum
-  check_option debug n && debug=yes
-
-  cd glib
-if [ n != "$RUN_PREPARE" ]; then
-  if [ 1 = "$ccache" ]; then
-    export CC=${CC:-ccache ${_target}-gcc}
-    export CXX=${CXX:-ccache ${_target}-g++}
-  fi
-  unset CFLAGS CXXFLAGS
-  glib_cv_stack_grows=no \
-  glib_cv_uscore=no \
-  glib_cv_compliant_posix_memalign=1 \
-  ./configure \
-    --host=${_target} \
-    --prefix=/usr/${_target} \
-    --libdir=/usr/${_target}/lib \
-    --sysconfdir=/etc \
-    --with-pcre=system \
-    --enable-debug=$debug \
-    --disable-fam
-
-#    --enable-gtk-doc \
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-fi
-  make
-}
+_srcdir=glib-$pkgver
 
 strip() {
   ${_target}-strip "$@"
@@ -84,45 +30,25 @@ objcopy() {
   ${_target}-objcopy "$@"
 }
 
-check() {
-  local s readelfarch
-  readelfarch='AArch64'
-  cd glib
+build() {
+  cd $_srcdir
 
-  s=$(find . -type f "(" -name "*.so*" -o -name "*.a" ")" -print0 | \
-    2>/dev/null LC_ALL=C xargs -0 readelf -h | \
-    sed -n -e '/File:/h;/Machine:/{/'"$readelfarch"'/!{H;x;p}}' | head -10)
+  mkdir -p build-$_target && pushd build-$_target
+  CFLAGS+=" -DG_DISABLE_CAST_CHECKS"
 
-  if [ -n "$s" ]; then
-    >&2 echo "some binaries have wrong architecture:"
-    >&2 echo "$s"
-    return 1
-  fi
+  $_target-meson \
+    -D selinux=disabled \
+    -D man=true \
+    ..
+
+  ninja
+  popd
 }
 
-package_glib2() {
-  cd glib
-  make DESTDIR="$pkgdir" install
-  #mv "$pkgdir/usr/share/gtk-doc" "$srcdir"
+package() {
+  cd $_srcdir
 
-  install -Dt "$pkgdir/usr/${_target}/share/libalpm/hooks" -m644 ../*.hook
-
-  # delete all executables
-  rm -rf "$pkgdir/usr/${_target}/bin"
+  pushd build-$_target
+  DESTDIR="$pkgdir" ninja install
+  popd
 }
-
-package_glib2-docs() {
-  pkgdesc="Documentation for GLib"
-  depends=()
-  optdepends=()
-  license+=(custom)
-
-  mkdir -p "$pkgdir/usr/share"
-  mv gtk-doc "$pkgdir/usr/share"
-
-  install -Dt "$pkgdir/usr/share/licenses/glib2-docs" -m644 glib/docs/reference/COPYING
-}
-
-for p in "${pkgname[@]}"; do
-  eval "package_${p}() { package_${p/${_target}-/} "'"$@"'"; }"
-done

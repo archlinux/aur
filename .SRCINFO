@@ -1,33 +1,19 @@
 pkgbase = aarch64-linux-gnu-glib2
-	pkgdesc = Low level core library
-	pkgver = 2.62.0+52c68388
+	pkgdesc = Low level core library (ARM64)
+	pkgver = 2.64.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/GLib
-	arch = any
+	arch = x86_64
 	license = LGPL2.1
-	makedepends = gettext
-	makedepends = gtk-doc
-	makedepends = shared-mime-info
-	makedepends = python
-	makedepends = libelf
-	makedepends = git
-	makedepends = dbus
 	makedepends = aarch64-linux-gnu-util-linux
-	makedepends = aarch64-linux-gnu-pkg-config
+	makedepends = aarch64-linux-gnu-meson
 	depends = aarch64-linux-gnu-pcre
+	depends = aarch64-linux-gnu-libffi
 	depends = aarch64-linux-gnu-libutil-linux
-	depends = zlib-aarch64
-	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
-	optdepends = libelf: gresource inspection tool
-	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git#commit=52c68388f53f1fbc0d25d3a437937cbc25a7f796
-	source = noisy-glib-compile-schemas.diff
-	source = glib-compile-schemas.hook
-	source = gio-querymodules.hook
-	sha256sums = SKIP
-	sha256sums = 81a4df0b638730cffb7fa263c04841f7ca6b9c9578ee5045db6f30ff0c3fc531
-	sha256sums = e1123a5d85d2445faac33f6dae1085fdd620d83279a4e130a83fe38db52b62b3
-	sha256sums = 5ba204a2686304b1454d401a39a9d27d09dd25e4529664e3fd565be3d439f8b6
+	depends = aarch64-linux-gnu-zlib
+	options = !buildflags
+	source = https://gitlab.gnome.org/GNOME/glib/-/archive/2.64.1/glib-2.64.1.tar.gz
+	sha256sums = 562c7f04b39cda4d6349b06ab62377f33c6cb9055dff36cd51c04d1291ec654c
 
 pkgname = aarch64-linux-gnu-glib2
 
