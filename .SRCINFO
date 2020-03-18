@@ -1,6 +1,6 @@
 pkgbase = python-standardebooks
 	pkgdesc = The toolset used to produce Standard Ebooks epub ebooks.
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 2
 	url = https://standardebooks.org
 	arch = any
