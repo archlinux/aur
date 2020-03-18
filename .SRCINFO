@@ -1,0 +1,17 @@
+pkgbase = g203-led-git
+	pkgdesc = Control the LED lighting of your G203 or G102 Prodigy Mouse.
+	pkgver = r12.04fdd49
+	pkgrel = 1
+	url = https://github.com/smasty/g203-led
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.5,
+	depends = python-pyusb>=1.0.2
+	provides = g203-led
+	conflicts = g203-led
+	source = git+https://github.com/smasty/g203-led.git
+	sha256sums = SKIP
+
+pkgname = g203-led-git
+
