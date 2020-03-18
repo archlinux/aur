@@ -5,11 +5,11 @@
 
 pkgname=libvorbis-aotuv
 pkgver=b6.03.2018
-pkgrel=1
+pkgrel=2
 _srcrel=beta6.03-2018
 pkgdesc="aoTuV is software library for encoding and decoding of OggVorbis that modified encoding part of Xiph.Org's libvorbis."
 arch=('i686' 'x86_64')
-url='http://www.geocities.jp/aoyoume/aotuv'
+url='https://ao-yumi.github.io/aotuv_web/'
 license=('BSD')
 depends=('libogg')
 conflicts=('libvorbis')
