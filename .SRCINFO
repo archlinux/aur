@@ -1,0 +1,13 @@
+pkgbase = wrangler-bin
+	pkgdesc = Cowboy wrangle your cloudflare workers
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://workers.cloudflare.com
+	arch = x86_64
+	license = Apache2
+	provides = cloudflare-wrangler
+	source = https://github.com/cloudflare/wrangler/releases/download/v1.8.2/wrangler-v1.8.2-x86_64-unknown-linux-musl.tar.gz
+	md5sums = 7250601bb967fc8ce05c29b21e0a6a29
+
+pkgname = wrangler-bin
+
