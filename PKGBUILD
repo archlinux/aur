@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=lando-git
-pkgver=3.0.0.rc.23.r262.gd078ddc4
+pkgver=3.0.0.aft.1.r10.g6f3124e7
 
 # Transform git tag into target version string
 _target_version=${pkgver: 0:-10}
@@ -15,6 +15,7 @@ _target_version=${_target_version%%[[:digit:]]}
 _target_version=${_target_version%%[[:digit:]]}
 _target_version=${_target_version%%.r}
 _target_version=${_target_version/.rc/-rc}
+_target_version=${_target_version/.aft/-aft}
 
 pkgrel=1
 pkgdesc="A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology"
