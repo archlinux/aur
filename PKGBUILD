@@ -20,6 +20,5 @@ pkgver() {
 
 package() {
     cd "${pkgname}/kde/kvantum"
-    install -Dm644 Sweet.svg "${pkgdir}/usr/share/Kvantum/Sweet/Sweet.svg"
-    install -Dm644 Sweet.kvconfig "${pkgdir}/usr/share/Kvantum/Sweet/Sweet.kvconfig"
+    install -Dm644 -t "${pkgdir}/usr/share/Kvantum/Sweet" Sweet.svg Sweet.kvconfig
 }
