@@ -1,9 +1,11 @@
 post_install() {
     echo ""
-    echo "To have gdm automatically export QT_QPA_PLATFORM=gtk where, run:"
+    echo "To have gdm automatically export QT_QPA_PLATFORM=gtk, run:"
     echo "ln -s /usr/share/qt-gtk-platform-plugin/qt-force-gtk-platform.env /usr/share/gdm/env.d/qt-force-gtk-platform.env"
-    echo "Achtung; Some Qt apps will crash with this backend in use, for example: Qt Creator, Zeal and probably swathes of KDE"
-    echo ""
+    echo "!!Achtung Bear Badger Fire Decapitation Death Skull Leprosy!!"
+    echo "Some Qt apps will crash with this backend in use, for example: Qt Creator, Zeal and probably swathes of KDE"
+    echo "If it uses qtwebengine, expect death!"
+    echo "!!Achtung Bear Badger Fire Decapitation Death Skull Leprosy!!"
 }
 
 post_upgrade() {
