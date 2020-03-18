@@ -2,7 +2,7 @@
 
 pkgname=babeltrace2
 _pkgname="${pkgname%2}"
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Command-line trace converter (V2)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'GPL2' 'LGPL2.1' 'BSD2')
 depends=('popt' 'util-linux' 'glib2' 'elfutils')
 makedepends=('popt' 'util-linux' 'glib2' 'elfutils' 'asciidoc' 'xmlto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/efficios/babeltrace/archive/v${pkgver}.tar.gz")
-sha512sums=('8a6aeb72c5f12715d8b5ace6c7643667a4c385e96aedc507490ef57482a82649df0c0253f433aae5ad4b3dc9d0557483ea3854f0c5ea94b2036656b1a877ca5d')
+sha512sums=('330f55f625225a2f11b6bd4214931225d08df416e8cff07727ba07cb78ea99856a951b8fb2d3fd28cf537e96a0ff14539bd6d60202f75088ae7821f6282db573')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
