@@ -2,19 +2,19 @@
 # Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
 
 pkgname=powershell-bin
-_pkgver=6.2.4
+_pkgver=7.0.0
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (binary package)'
 arch=('x86_64')
 url='https://github.com/Powershell/Powershell'
-depends=('libunwind' 'icu' 'openssl-1.0')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
 provides=('powershell')
 conflicts=('powershell')
 options=(staticlibs !strip)
 install=powershell.install
-md5sums=('1fef408b721bec199952fb6d2608425a')
-source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1.ubuntu.16.04_amd64.deb")
+sha256sums=('a28c95b376e6dd7ef0bf523b6bd329485948a53e27fd2e8b3dded6981471214c')
+source=("https://github.com/PowerShell/PowerShell/releases/download/v${_pkgver}/powershell_${_pkgver}-1.ubuntu.18.04_amd64.deb")
 
 package() {
   bsdtar xf data.tar.gz
@@ -26,5 +26,5 @@ package() {
   cp -r usr/local/share usr
   rm -rf usr/local
 
-  chmod 755 "opt/microsoft/powershell/6/pwsh"
+  chmod 755 "opt/microsoft/powershell/${_pkgver:0:1}/pwsh"
 }
