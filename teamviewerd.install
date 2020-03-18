@@ -1,0 +1,12 @@
+post_install() {
+	echo " ==> Add Teamviewer Daemon to system startup wtih 'sudo ln -s /etc/runit/sv/teamviewer /run/runit/service'"
+	echo " ==> Start Teamviewer Daemon now with 'sudo sv up teamviewer'"
+}
+
+post_upgrade() {
+	post_install "$1"
+}
+
+pre_remove() {
+	echo " ==> Make sure to 'sudo unlink /run/runit/service/teamviewer'"
+}
