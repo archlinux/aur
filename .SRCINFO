@@ -1,6 +1,6 @@
 pkgbase = nootka
 	pkgdesc = A crossplatform tool for learning classical score notation. Mostly for guitarists but also very good for ear training.
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = http://nootka.sourceforge.net/
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = nootka
 	optdepends = jack: for JACK
 	optdepends = qt5-translations: for other languages support
 	conflicts = nootka-hg
-	source = https://sourceforge.net/projects/nootka/files/Nootka-1.4.6/nootka-1.4.6-source.tar.bz2
-	md5sums = 06aa689a21c6734cb21acc76a6165ca6
+	source = https://sourceforge.net/projects/nootka/files/Nootka-1.4.7/nootka-1.4.7-source.tar.bz2
+	md5sums = 9193ef9ad8f3f4d54a128be931c6bb30
 
 pkgname = nootka
 
