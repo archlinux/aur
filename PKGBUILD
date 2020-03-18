@@ -17,7 +17,7 @@ optdepends=('libssh: for ssh protocol support'
 'libpulse: for pulseaudio support'
 'libtelnet: for telnet protocol support'
 'monospace: any monospace font such as terminus-font, ttf-inconsolata or ttf-fira-mono. Without it, SSH will not work'
-'libwebsocket: Support for Kubernetes'
+'libwebsockets: Support for Kubernetes'
 )
 install=$pkgname.install
 
