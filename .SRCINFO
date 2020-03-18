@@ -1,0 +1,30 @@
+pkgbase = session-desktop-git
+	pkgdesc = Private messaging from your desktop
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://getsession.org
+	install = session-desktop-git.install
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = nvm
+	makedepends = yarn
+	depends = libxtst
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libnotify
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: for tray support
+	provides = session-messenger-desktop
+	conflicts = session-desktop
+	conflicts = session-desktop-bin
+	conflicts = session-desktop-appimage
+	options = !strip
+	source = git+https://github.com/loki-project/session-desktop.git
+	source = session-desktop.desktop
+	sha256sums = SKIP
+	sha256sums = 931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8
+
+pkgname = session-desktop-git
+

@@ -1,0 +1,15 @@
+post_install() {
+    sudo ln -sf /opt/Session/session-messenger-desktop /usr/bin/session-messenger-desktop
+    sudo update-mime-database /usr/share/mime
+    sudo update-desktop-database /usr/share/applications
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    sudo rm -f '/usr/bin/session-messenger-desktop'
+    sudo update-mime-database /usr/share/mime
+    sudo update-desktop-database /usr/share/applications
+}
