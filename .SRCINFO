@@ -1,6 +1,6 @@
 pkgbase = kapp
 	pkgdesc = A simple deployment tool focused on the concept of a Kubernetes application
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/k14s/kapp
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kapp
 	makedepends = go
 	depends = kubectl
 	conflicts = kapp-git
-	source = kapp-0.21.0.tar.gz::https://github.com/k14s/kapp/archive/v0.21.0.tar.gz
-	sha256sums = e995faca6e0ee3af1a31296ba844ebfdfdb5d3e68f109cda812147133231a025
+	source = kapp-0.22.0.tar.gz::https://github.com/k14s/kapp/archive/v0.22.0.tar.gz
+	sha256sums = 272684fd3e5fbee5ff13fca9e46daed051cbe48bfcf28df86451eb9baa00d7e8
 
 pkgname = kapp
 
