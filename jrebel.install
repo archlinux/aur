@@ -16,6 +16,6 @@ post_install() {
 	# Warn about environment variables
 	echo -e "  Depending on your current shell, you should ${GR}source${NC} either"
 	echo -e "  ${CY}/etc/profile.d/jrebel.sh${NC} or ${CY}/etc/profile.d/jrebel.csh${NC} to set ${BL}\$REBEL_HOME${NC}. The"
-	echo -e "  easiest way to do this may be to log out, then  log back in."
+	echo -e "  easiest way to do this may be to log out, then log back in."
 	echo ""
 }

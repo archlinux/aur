@@ -1,7 +1,7 @@
 pkgbase = jrebel
 	pkgdesc = Reload code changes instantly
-	pkgver = 2019.2.0
-	pkgrel = 2
+	pkgver = 2020.1.1
+	pkgrel = 1
 	url = http://jrebel.com/software/jrebel/
 	install = jrebel.install
 	arch = i686
@@ -12,13 +12,13 @@ pkgbase = jrebel
 	provides = jrebel
 	backup = etc/profile.d/jrebel.sh
 	backup = etc/profile.d/jrebel.csh
-	source = https://dl.zeroturnaround.com/jrebel/releases/jrebel-2019.2.0-nosetup.zip
+	source = https://dl.zeroturnaround.com/jrebel/releases/jrebel-2020.1.1-nosetup.zip
 	source = jrebel.csh
 	source = jrebel.install
 	source = jrebel.sh
-	sha256sums = a3c81630c15e49c4021bd4c56e328f455e066d30e86a9dce84da9d41b3cf78bc
+	sha256sums = 53f768793342228ffbbb868857cd018808b9749328e02e971b9293ab6fd4a0c5
 	sha256sums = 7dbc38b6bfc45a037620bd8a21583e00308d53311285c98215b660efdb007431
-	sha256sums = 7616bc4c74f15c49c25c9db78aa0490a2cb88e37fe848c9e866c11ea16d0ad66
+	sha256sums = 6aab55f31601000e1f21ba6d42ecd363d55839a258ba5e489c7041f9b909d128
 	sha256sums = d1a5193a071eeedb4d5e96a0eb90aaa4f7daad0cdfbe54ff9c89967c50634635
 
 pkgname = jrebel
