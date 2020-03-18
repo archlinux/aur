@@ -2,8 +2,8 @@
 
 pkgname=goxygen
 pkgver=0.2.1
-pkgrel=1
-pkgdesc="Generate a modern Web project with Go, Angular/React/Vue, and MongoDB in secondsrocket"
+pkgrel=2
+pkgdesc="Generate a modern Web project with Go, Angular/React/Vue, and MongoDB in seconds"
 arch=('x86_64')
 url='https://github.com/Shpota/goxygen'
 license=('Apache2')
@@ -12,16 +12,12 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('70f88b6df485aaadbf780d0ce4c5d23e')
 
-prepare() {
+build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-}
-
-build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
   go build -v -o "../goxygen-bin"
 }
 
