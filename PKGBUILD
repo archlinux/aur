@@ -9,7 +9,7 @@ depends=('libpulse')
 url='https://github.com/duncanthrax/scream'
 license=('custom:MS-PL')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('1f24ce794d07eb77579044f3e34454315dfbf8332741c69e1f58aae6982f84f4')
+sha256sums=('3441d38b3a4c76ac4ca883a939542c9cf3701a386356feddba43b40c3a2bdb5e')
 
 build() {
   cd "${srcdir}/scream-${pkgver}/Receivers/pulseaudio"
