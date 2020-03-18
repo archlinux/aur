@@ -1,5 +1,6 @@
 # Maintainer: gilbus <aur (AT) tinkershell.eu>
 
+pkgbase=rssbridge
 pkgname=rss-bridge
 pkgver=2020_02_26
 pkgrel=1

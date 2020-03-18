@@ -1,4 +1,4 @@
-pkgbase = rss-bridge
+pkgbase = rssbridge
 	pkgdesc = The RSS feed for websites missing it
 	pkgver = 2020_02_26
 	pkgrel = 1
