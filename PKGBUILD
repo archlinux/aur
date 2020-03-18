@@ -2,7 +2,7 @@
 
 pkgname=kotatogram-desktop-bin
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -33,7 +33,7 @@ source=(
 
 	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
 	
-	$url/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
+	$url/raw/k$pkgver/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
