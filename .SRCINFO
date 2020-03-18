@@ -1,6 +1,6 @@
 pkgbase = audioprism
 	pkgdesc = A spectrogram tool for PulseAudio and WAV files
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/vsergeev/audioprism
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = audioprism
 	depends = sdl2_ttf
 	depends = libsndfile
 	depends = graphicsmagick
-	source = git+https://github.com/vsergeev/audioprism.git#tag=v1.0.1
+	source = git+https://github.com/vsergeev/audioprism.git#tag=v1.1.0
 	md5sums = SKIP
 
 pkgname = audioprism

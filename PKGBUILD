@@ -1,6 +1,6 @@
 # Maintainer: Vanya A. Sergeev <v@sergeev.io>
 pkgname=audioprism
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A spectrogram tool for PulseAudio and WAV files"
 arch=('i686' 'x86_64' 'armv7h')
