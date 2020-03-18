@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=dns-lexicon
-pkgver=3.3.17
+pkgver=3.3.18
 pkgrel=1
 pkgdesc="Manipulate DNS records on various DNS providers in a standardized/agnostic way"
 arch=('any')
@@ -13,15 +13,17 @@ depends=('python-future' 'python-tldextract' 'python-cryptography' 'python-yaml'
 optdepends=('python-softlayer: for SoftLayer support'
             'python-boto3: for Route53 support'
             'python-pynamecheap: for Namecheap support'
-            'python-zeep: for Subreg support'
+            'python-zeep: for Subreg and Gransy support'
             'python-xmltodict: for Plesk support'
-            'python-beautifulsoup4: for Henet support'
+            'python-html5lib: for Hetzner support'
+            'python-dnspython: for Hetzner support'
+            'python-beautifulsoup4: for Henet, Easyname, GratisDNS and Hetzner support'
             'python-localzone: for localzone support')
 checkdepends=('python-pytest-runner' 'python-vcrpy' 'python-softlayer' 'python-boto3' 'python-mock'
               'python-pynamecheap' 'python-zeep' 'python-xmltodict' 'python-beautifulsoup4'
-              'python-localzone' 'bind-tools')
+              'python-localzone' 'python-html5lib' 'python-dnspython' 'bind-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AnalogJ/lexicon/archive/v$pkgver.tar.gz")
-sha512sums=('170c9df5765c1471053b4ace1065f61265724149d6774033db898622b58f076e22dc9b84ed1809c7c0097c1351f3115c8c3821d0fa512e3772022f7af73af59e')
+sha512sums=('dd32ffee1284cbcb470e8570a44f15e9c84196dce8f51c7c708c26eeeeccf301df89df29d2820e0a41b67d8c90f504de34a15b7d0741b429d36f4125306a590e')
 
 build() {
   cd lexicon-$pkgver
