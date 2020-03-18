@@ -1,0 +1,16 @@
+pkgbase = ruby-minima
+	pkgdesc = A beautiful, minimal theme for Jekyll
+	pkgver = 2.5.1
+	pkgrel = 1
+	url = https://github.com/jekyll/minima
+	arch = any
+	license = MIT
+	makedepends = ruby-rake
+	depends = jekyll
+	noextract = minima-2.5.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/minima-2.5.1.gem
+	sha256sums = 520e52bc631fb16cbb8100660f6caa44f97859e2fa7e397d508deb18739567be
+
+pkgname = ruby-minima
+
