@@ -43,7 +43,7 @@ build() {
   # Electron App
   cd "${srcdir}/${pkgname}-${pkgver}/ElectronClient"
   npm install --cache "${srcdir}/npm-cache"
-  yarn dist
+  npm run dist
 
 }
 
