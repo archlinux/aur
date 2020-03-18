@@ -1,7 +1,7 @@
 # Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=rhvoice
-pkgver=1.0.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Free and open source speech synthesizer for Russian and other languages."
 arch=('x86_64')

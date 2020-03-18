@@ -1,6 +1,6 @@
 pkgbase = rhvoice
 	pkgdesc = Free and open source speech synthesizer for Russian and other languages.
-	pkgver = 1.0.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/Olga-Yakovleva/RHVoice
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rhvoice
 	provides = rhvoice
 	conflicts = rhvoice
 	backup = etc/RHVoice/RHVoice.conf
-	source = rhvoice-1.0.0.tar.gz::https://github.com/Olga-Yakovleva/RHVoice/archive/1.0.0.tar.gz
+	source = rhvoice-1.2.2.tar.gz::https://github.com/Olga-Yakovleva/RHVoice/archive/1.2.2.tar.gz
 	sha512sums = 4443e0d7836387eb4d45969f48263d6e53e0042f4e08f63e15655e0c875d74b5baf3a0a53ff1008177a281a8463d9f5a86ca7eb261ecf34ed9029c520f8c7b16
 
 pkgname = rhvoice
