@@ -4,9 +4,9 @@
 # Contributor: Jesus Jerez <jhuss@archlinux.org.ve>
 
 pkgname=eclipse-platform
-pkgver=4.14
-_pkgbuild=201912100610
-pkgrel=2
+pkgver=4.15
+_pkgbuild=202003050155
+pkgrel=1
 pkgdesc="A minimal installation suitable for complete per-user customization with the built-in Eclipse package manager"
 url="https://www.eclipse.org"
 arch=("x86_64")
@@ -24,7 +24,7 @@ source=(
 )
 
 sha512sums=(
-    "101c2733dea340cc057170e6f73dde8f75bd759ea84fc7abb268cef4aba8cec638ee0d7bdc0bdbd688972703cc61de28dc7c3b4a4b4c922ebd40cf48bc516d0b"
+    "e75d373cbbe72c5dd17a9052c73cb77dd5de799dfaa77feb57b89d72ac4316e16ee0da23bf365b2e590f1375ea728a6587ae568b8f0402e30a052ac6a7979d03"
     "71393b01c2774654e1b3348ceedd6b110c7f1b26da93da40dac653ce2103a34997ec0e9e7fd4e977d869c149d19ef39f59738717cc6762e39b0bc0e7d53df4ac"
     "0e54ccc51f21c4dc4ce047ac846a001ae6dcc5a234779b039b2154bfd3efbe63c3134622cc3acf4845ec924853a9893a9dedb7752400bc686c983a7c6c64f9ae"
 )
