@@ -7,7 +7,9 @@ arch=(any)
 url="https://github.com/EliverLara/Sweet"
 license=('CCPL')
 depends=(kvantum-qt5)
-groups=(sweet-theme)
+makedepends=(git)
+provides=(${pkgname/-git/})
+conflicts=(${pkgname/-git/})
 source=("${pkgname}::git+https://github.com/EliverLara/Sweet.git#branch=nova")
 sha256sums=(SKIP)
 
