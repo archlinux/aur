@@ -2919,7 +2919,9 @@ const regexes = [
 	// pt
 	/o whatsapp funciona com.*para utilizar o whatsapp.*atualize/i,
 	// ge
-	/whatsapp funktioniert mit.*um whatsapp zu benutzen.*aktualisiere/i
+	/whatsapp funktioniert mit.*um whatsapp zu benutzen.*aktualisiere/i,
+	// es
+	/whatsapp funciona con.*para usar whatsapp.*actualiza/i
 ]
 
 for (const regex of regexes) {
