@@ -5,13 +5,13 @@ _target=aarch64-linux-gnu
 _pkgname=icu
 pkgname=$_target-$_pkgname
 pkgver=65.1
-pkgrel=1
+pkgrel=2
 pkgdesc='International Components for Unicode library'
 arch=(x86_64)
 url='http://site.icu-project.org/home'
 license=(custom:icu)
 depends=($_target-glibc)
-makedepends=()
+makedepends=($_target-configure)
 options=(!buildflags)
 source=(
   https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${_pkgname}4c-${pkgver//./_}-src.tgz{,.asc}
