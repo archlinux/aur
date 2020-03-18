@@ -3,7 +3,7 @@
 
 pkgname=flipper
 pkgver=0.34.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('any')
 url='https://fbflipper.com/'
@@ -22,8 +22,9 @@ md5sums=('289dd67c175c660ba9704dd05eefb292'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
-  yarn
-  yarn build --linux --version $pkgver
+  mkdir -p ${srcdir}/yarn_cache
+  yarn --cache-folder=${srcdir}/yarn_cache
+  yarn build --cache-folder=${srcdir}/yarn_cache --linux --version $pkgver 
 }
 
 package() {
