@@ -1,4 +1,4 @@
-# Maintainer: alex19EP <aarnaarn2@gmail.com>
+# Maintainer: Alexander Epaneshnikov <aarnaarn2@gmail.com>
 
 pkgname=rhvoice
 pkgver=1.0.0
