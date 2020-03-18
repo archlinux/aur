@@ -1,0 +1,18 @@
+pkgbase = aarch64-linux-gnu-zlib
+	pkgdesc = Compression library implementing the deflate compression method found in gzip and PKZIP (ARM64)
+	pkgver = 1.2.11
+	pkgrel = 1
+	url = https://www.zlib.net/
+	arch = x86_64
+	license = custom
+	makedepends = aarch64-linux-gnu-gcc
+	depends = aarch64-linux-gnu-glibc
+	options = !buildflags
+	source = https://zlib.net/zlib-1.2.11.tar.gz
+	source = https://zlib.net/zlib-1.2.11.tar.gz.asc
+	validpgpkeys = 5ED46A6721D365587791E2AA783FCD8E58BCAFBA
+	sha256sums = c3e5e9fdd5004dcb542feda5ee4f0ff0744628baf8ed2dd5d66f8ca1197cb1a1
+	sha256sums = SKIP
+
+pkgname = aarch64-linux-gnu-zlib
+
