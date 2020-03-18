@@ -1,5 +1,5 @@
---- a/FreeFileSync/Source/base/ffs_paths.cpp    2019-11-19 23:52:20.000000000 +0100
-+++ b/FreeFileSync/Source/base/ffs_paths.cpp    2019-11-24 18:14:17.627328553 +0100
+--- a/FreeFileSync/Source/ffs_paths.cpp    2019-11-19 23:52:20.000000000 +0100
++++ b/FreeFileSync/Source/ffs_paths.cpp    2019-11-24 18:14:17.627328553 +0100
 @@ -80,6 +80,4 @@
  
 -        //OS standard path (XDG layout): ~/.config/FreeFileSync
