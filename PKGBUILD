@@ -2,7 +2,7 @@
 
 pkgname=whatsapp-nativefier-dark
 pkgver=0.20200221002211
-pkgrel=3
+pkgrel=4
 pkgdesc="WhatsApp desktop built with nativefier (electron) using dark theme"
 arch=("armv7l" "i686" "x86_64")
 url="https://web.whatsapp.com"

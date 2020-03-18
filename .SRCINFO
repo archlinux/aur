@@ -1,7 +1,7 @@
 pkgbase = whatsapp-nativefier-dark
 	pkgdesc = WhatsApp desktop built with nativefier (electron) using dark theme
 	pkgver = 0.20200221002211
-	pkgrel = 3
+	pkgrel = 4
 	url = https://web.whatsapp.com
 	arch = armv7l
 	arch = i686
