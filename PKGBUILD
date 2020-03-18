@@ -27,8 +27,8 @@ package() {
 	cd $pkgname
 
 	install -d $pkgdir/usr/bin
-	install -d $pkgdir/home/$USER/.config/
+	install -d $pkgdir/etc/
 
 	cp watch_tablet $pkgdir/usr/bin
-	cp watch_tablet.yml $pkgdir/home/$USER/.config
+	cp watch_tablet.yml $pkgdir/etc/watch_tablet.yml.example
 }
