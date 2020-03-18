@@ -8,7 +8,7 @@
 # Contributor: hero <erdetb at web dot de>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=llpp-git
-pkgver=30.r22.g6905dbc
+pkgver=31.r24.gc79a0b8
 pkgrel=1
 pkgdesc='A graphical PDF viewer which aims to superficially resemble less(1).'
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ optdepends=(
   'zip: llppac png and jpeg conversion'
   'djvulibre: llppac djvu conversion'
   'ghostscript: llppac postscript, dvi, and djvu conversion'
-  'princexml: llppac html conversion'
+  'prince: llppac html conversion'
   'unoconv: llppac office document conversion'
   'antiword: llppac .doc conversion (alternative)'
   'inkscape: llppac svg conversion (preferred)'
