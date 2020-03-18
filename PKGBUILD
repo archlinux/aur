@@ -3,8 +3,8 @@
 # Contributor: Tony Sokhon <tonyskn@gmail.com>
 
 pkgname=perl-par-packer
-pkgver=1.049
-pkgrel=3
+pkgver=1.050
+pkgrel=1
 pkgdesc="PAR Packager"
 _dist=PAR-Packer
 arch=('any')
@@ -17,8 +17,8 @@ depends=("perl=${_perlver}" 'perl-archive-zip>=1' 'perl-getopt-argvfile>=1.07' '
 makedepends=('perl-extutils-makemaker>=6.62')
 options=('!emptydirs' purge)
 source=("https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/${_dist}-${pkgver}.tar.gz")
-md5sums=('fafdeac34389a408ebe7658af090600c')
-sha512sums=('c573f73731d54b08f722d3153a604703a685d794f5c0623bc581cc7340f45aac13c2356d078521a2c948f99558c29640fc4ab31a72b239d5ff031359325a637a')
+md5sums=('37d60233b4c708cfd21bd146f7541b0b')
+sha512sums=('21a1d601aaf5d7c0e964e5999cc2fa7c7a9cd9dff282ad547fca0edc8d7fe6d6f72e7dbe42ba6ce057e6723b1cb783cdee0cabb283010e5f5720ba1cdd48da04')
 
 build() {
   cd "${srcdir}/${_dist}-${pkgver}"
