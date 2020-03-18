@@ -19,7 +19,7 @@ source=(
   "$pkgname.tmpfiles"
 )
 sha256sums=('f4dd0dc07828cca0c533eb112134f2a29efe1e083d2e92f4c474e961af62b391'
-            '0dfb4e2cbd0f0ddfe622c0198906ec8c38aaec9d4732e518dca3c9c0950341da'
+            '42eb933a4632ada3247341d24f967c76cf363ff50e6ed13b39963983454f8020'
             'c18b4f42a36fa8f57b4b73165bdfedd1d492e6bb7888431c0f5f260273432b41')
 
 package() {
