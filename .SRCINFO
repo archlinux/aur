@@ -1,5 +1,5 @@
 pkgbase = aarch64-linux-gnu-expat
-	pkgdesc = An XML parser library
+	pkgdesc = An XML parser library (ARM64)
 	pkgver = 2.2.9
 	pkgrel = 2
 	url = https://libexpat.github.io/
