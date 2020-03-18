@@ -16,8 +16,8 @@
 #     $ ln -s /usr/lib/weechat/python/wee_slack.py ~/.weechat/python/autoload/wee_slack.py
 
 pkgname=wee-slack-git
-pkgver=2.3.0.r105.g1af420e
-pkgrel=3
+pkgver=2.4.0.r67.g8e13b38
+pkgrel=1
 pkgdesc="A WeeChat plugin for slack"
 arch=('any')
 url="https://github.com/wee-slack/${pkgname%-git}"
