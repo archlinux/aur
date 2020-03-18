@@ -8,7 +8,7 @@ url="https://github.com/zenghongtu/PPet"
 license=('MIT')
 depends=('electron')
 conflicts=('ppet')
-source=("https://bobby285271.oss-cn-shenzhen.aliyuncs.com/PPet-${pkgver}.deb")
+source=("https://ppet-bin.oss-cn-shenzhen.aliyuncs.com/PPet-${pkgver}.deb")
 md5sums=('c160c32e53446e9d17544e44a95991c9')
 
 package() {
