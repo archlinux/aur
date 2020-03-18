@@ -6,8 +6,8 @@
 
 pkgname=home-assistant
 pkgdesc='Open source home automation that puts local control and privacy first'
-pkgver=0.105.5
-pkgrel=2
+pkgver=0.106.6
+pkgrel=1
 arch=(any)
 url=https://home-assistant.io/
 license=(APACHE)
@@ -44,17 +44,17 @@ optdepends=(
   'python-lxml: Meteo France integration'
 )
 source=(
-  git+https://github.com/home-assistant/home-assistant.git#tag=75b508e8724cb82712227082eee9abab570d2eb2
+  git+https://github.com/home-assistant/home-assistant.git#tag=2c1da182e26751cb67a6d30305d4d80e7624cae8
   home-assistant.service
   home-assistant.sysusers
   home-assistant.tmpfiles
+  home-assistant-astral2.1.patch
 )
-sha256sums=(
-  SKIP
-  2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5
-  319c7790d3cdb076bf527b1d478edbc99e00b22fbf4a884b395e46460114ee41
-  f9e43edb276e0fbbbc2273b836ef1da0ac43347b5c3e4c63774e7f7ecdf25660
-)
+sha256sums=('SKIP'
+            '2a87a3b529a1eeddfae0c02c415bed13586b002b9580226bdc749a27bbe83af5'
+            '319c7790d3cdb076bf527b1d478edbc99e00b22fbf4a884b395e46460114ee41'
+            'f9e43edb276e0fbbbc2273b836ef1da0ac43347b5c3e4c63774e7f7ecdf25660'
+            'd39e2bb003f5a2ea6a2faca003c5068b26b51883e28124f2bef0dfd5536465c4')
 
 pkgver() {
   cd home-assistant
@@ -64,6 +64,8 @@ pkgver() {
 
 prepare() {
   cd home-assistant
+
+  patch -Np1 -i ../home-assistant-astral2.1.patch
 
   # lift hard dep constraints, we'll deal with breaking changes ourselves
   sed 's/==/>=/g' -i setup.py homeassistant/package_constraints.txt
