@@ -3,7 +3,7 @@
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r2020.3e497c3
+pkgver=r2114.294164f
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
@@ -27,6 +27,8 @@ optdepends=(
   'ethtool: Utility for controlling network drivers and hardware'
   'ettercap: A network sniffer/interceptor/logger for ethernet LANs'
   'hashcat: Multithreaded advanced password recovery utility'
+  'hcxdumptool: Small tool to capture packets from wlan devices'
+  'hcxtools: Small set of tools convert packets from captures for the use with latest hashcat or John the Ripper'
   'hostapd: IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
   'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
   'john: John the Ripper password cracker'
