@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-project-git
-pkgver=0.11.1.r97.g1f3b5fc
+pkgver=0.12.0.r1.g59f3168
 pkgrel=1
 pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('git'
              'node-prune'
              'nodejs-addon-api' # run time dep but gets baked into electron asar
              'nodejs-pug-cli'
-             'nodejs-sword-interface' # run time dep but gets baked into electron asar
+             'nodejs-sword-interface>=0.119.0' # run time dep but gets baked into electron asar
              'npm')
 provides=("${pkgname%-git}")
 conflicts=(${provides[@]})
@@ -44,7 +44,7 @@ build() {
     npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
     npx electron-rebuild --version="$_electron"
     node-prune node_modules
-    npx electron-packager ./ ${pkgname%-git} --electron-version="$_electron"
+    npx electron-packager ./ "${pkgname%-git}" --electron-version="$_electron"
     ./build_scripts/purge_build_artifacts.sh
     npm link node-addon-api node-sword-interface
     npx electron-packager ./ "${pkgname%-git}" \
