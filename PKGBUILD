@@ -10,7 +10,7 @@ url='https://gabmus.gitlab.io/gnome-feeds'
 license=('GPL3')
 depends=('python-html5lib' 'webkit2gtk' 'python-gobject' 'python-pillow' 'python-feedparser'
          'python-listparser' 'python-readability-lxml' 'libhandy' 'python-dateutil' 'python-pytz'
-         'python-beautifulsoup4')
+         'python-beautifulsoup4' 'python-pygments')
 makedepends=('meson' 'git' 'gobject-introspection')
 provides=('gnome-feeds')
 conflicts=('gnome-feeds' 'gnome-feeds-git' 'gfeeds-git')

@@ -20,6 +20,7 @@ pkgbase = gfeeds
 	depends = python-dateutil
 	depends = python-pytz
 	depends = python-beautifulsoup4
+	depends = python-pygments
 	provides = gnome-feeds
 	conflicts = gnome-feeds
 	conflicts = gnome-feeds-git
