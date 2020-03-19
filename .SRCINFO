@@ -1,6 +1,6 @@
 pkgbase = python-hiyapyco
 	pkgdesc = A Hierarchical Yaml Python Config
-	pkgver = 0.4.15
+	pkgver = 0.4.16
 	pkgrel = 1
 	url = https://github.com/zerwes/hiyapyco
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-hiyapyco
 	depends = python-yaml
 	depends = python-jinja
 	options = !emptydirs
-	source = https://github.com/zerwes/hiyapyco/archive/release-0.4.15.tar.gz
-	md5sums = b832609537d075faf80ee267fc8c9060
+	source = https://github.com/zerwes/hiyapyco/archive/release-0.4.16.tar.gz
+	md5sums = e113c33291a5392b6520f571bcbf6177
 
 pkgname = python-hiyapyco
 
