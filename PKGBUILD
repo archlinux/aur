@@ -1,24 +1,18 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 
 pkgname=otf-im-fell-types
+# actually 20100625
 pkgver=20121117
-pkgrel=1
-pkgdesc="A set of free modern revival fonts, with ligatures, swash characters, and ornaments, digitalized by Igino Marini."
+pkgrel=2
+pkgdesc='A set of free modern revival fonts digitalized by Igino Marini'
 arch=('any')
-url="http://iginomarini.com/fell/"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
-source=(http://iginomarini.com/fell/wp-content/uploads/IMFellTypesClass.zip
-        OFL.txt)
-sha1sums=('dd228201eea5c24d15aa51ac058ae056a7315e20'
-          '0fdc6a354c80cc47f8025d00c2baeafa019be7a5')
+url='http://iginomarini.com/fell/'
+license=('OFL')
+source=("$pkgname-$pkgver.zip::http://iginomarini.com/fell/wp-content/uploads/IMFellTypesClass.zip")
+sha256sums=('b65189a8c165dafa5ba979092ebe967e0ad86a4d584b203eee40e16d010f5308')
 
 package() {
-  cd "$srcdir"
-  install -d "$pkgdir/usr/share/fonts/OTF"
-  install -m644 *.otf "$pkgdir/usr/share/fonts/OTF/"
-  install -Dm644 OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" *.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Fell*.txt
 }
-
-# vim:set ts=2 sw=2 et:
