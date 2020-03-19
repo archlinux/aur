@@ -14,7 +14,7 @@ optdepends=('miniupnpc: Firewall-jumping support'
  'zeromq: Allows generating ZMQ notifications')
 makedepends=('pkg-config' 'git' 'boost' 'gcc' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 source=("https://github.com/syscoin/syscoin/releases/download/v${pkgver}/syscoin-${pkgver}-x86_64-linux-gnu.tar.gz")
-md5sums=('4df07843e8bd0a1616619d22119ed19c')
+md5sums=('907d0e967fcdeae95ea9f5422dc77230')
 
 prepare() {
   wget -N -q https://raw.githubusercontent.com/syscoin-core/packaging/master/debian/syscoin-qt.desktop
