@@ -6,8 +6,8 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.12
-pkgrel=2
+pkgver=4.0.13
+pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
 license=('MIT')
@@ -33,6 +33,7 @@ depends=(
   'python-qrcode'
   'python-requests'
   'python-six'
+  'python-stem'
   'qt5-base'
   'qt5-svg'
   'ttf-bitstream-vera'
@@ -52,7 +53,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "tox.ini.patch")
-sha256sums=('8b5b7dcc7b1420659f6d5b1fa38e0c631a9b8abf4e8451c4dca6d8381bbfdb14'
+sha256sums=('c7b5c9445bf27ec0e0b2b8f67da4cf5a90b36e89051651c363e2d88ab8d810f8'
             '39c85a1eec8fcdc7fa80d47ff464e023b092cc623dce7fd6f42abe547c017ecb')
 
 prepare() {
