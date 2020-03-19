@@ -1,7 +1,7 @@
 pkgbase = core
 	pkgdesc = Common Open Research Emulator
-	pkgver = 6.1.0
-	pkgrel = 2
+	pkgver = 6.2.0
+	pkgrel = 1
 	url = https://github.com/coreemu/core/
 	arch = i686
 	arch = x86_64
@@ -26,14 +26,15 @@ pkgbase = core
 	depends = python-mako
 	depends = python-netaddr
 	depends = python-pillow
+	depends = python-pyproj
 	depends = python-yaml
 	depends = tkimg
 	depends = util-linux
 	depends = xterm
 	optdepends = openvswitch: Open vSwitch support
 	backup = etc/core/core.conf
-	source = https://github.com/coreemu/core/archive/release-6.1.0.tar.gz
-	md5sums = 0c7a30066bb0847022a38286521d3717
+	source = https://github.com/coreemu/core/archive/release-6.2.0.tar.gz
+	md5sums = 0330ed87897d11fa96b1f37754f7ee7f
 
 pkgname = core
 
