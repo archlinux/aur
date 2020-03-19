@@ -1,26 +1,27 @@
 # Maintainer Augusto Modanese <modanese@kit.edu>
 
 pkgname=latex-template-lipics
-pkgver=2019
+veryear=2019
+pkgver=${veryear}.1
 pkgrel=1
 pkgdesc="LaTeX template for LIPIcs (Leibniz International Proceedings in Informatics)"
 url="https://www.dagstuhl.de/en/publications/lipics"
 license=('CCPL:by')
 source=(
-  "http://drops.dagstuhl.de/styles/lipics-v${pkgver}/lipics-v${pkgver}-authors.zip"
+  "https://submission.dagstuhl.de/styles/download-tag/lipics/v${pkgver}/authors/tgz"
 )
 arch=('any')
 sha256sums=(
-  'd95c8de2b8525db7375fd8263aafd2aa04a1aa87016ee2a6c75e0ca0a158bfc9'
+  '1ef4c8ad966460dad3deb72269b97b721972033e63c220bd637d760080a07f06'
 )
-makedepends=('unzip')
+makedepends=('tar')
 depends=('texlive-latex3')
 install=texlive.install
 
 package() {
   mkdir -p ${pkgdir}/usr/share/texmf-dist/tex/latex/lipics
-  cd ${srcdir}/lipics-v${pkgver}-authors
-  for _LIPICS in CHANGELOG cc-by.pdf lipics-logo-bw.pdf lipics-v${pkgver}.cls lipics-v${pkgver}-authors-guidelines.pdf orcid.pdf; do
+  cd ${srcdir}/authors
+  for _LIPICS in CHANGELOG.md LICENSE.md cc-by.pdf lipics-logo-bw.pdf lipics-v${veryear}.cls lipics-v${veryear}-authors-guidelines.pdf orcid.pdf; do
     install -m 0644 -D ${_LIPICS} ${pkgdir}/usr/share/texmf-dist/tex/latex/lipics/${_LIPICS}
   done
 }
