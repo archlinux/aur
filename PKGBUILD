@@ -1,8 +1,8 @@
 # Maintainer: Kevin Rauwolf <sweetpea-aur@tentacle.net>
 pkgname=prometheus-statsd-exporter
 pkgver=0.15.0
-pkgrel=1
-pkgdesc="Allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP"
+pkgrel=2
+pkgdesc="StatsD to Prometheus metrics exporter"
 arch=('x86_64')
 url="https://github.com/prometheus/statsd_exporter"
 license=('Apache')

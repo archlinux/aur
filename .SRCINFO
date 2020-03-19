@@ -1,7 +1,7 @@
 pkgbase = prometheus-statsd-exporter
-	pkgdesc = Allows blackbox probing of endpoints over HTTP, HTTPS, DNS, TCP and ICMP
+	pkgdesc = StatsD to Prometheus metrics exporter
 	pkgver = 0.15.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus/statsd_exporter
 	arch = x86_64
 	license = Apache
