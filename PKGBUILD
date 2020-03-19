@@ -9,9 +9,10 @@ arch=('any')
 url="https://github.com/AzraelNewtype/${_plug}"
 license=('GPL')
 depends=('vapoursynth'
-         'mkvtoolnix'
+         'mkvtoolnix-cli'
          )
 makedepends=('git')
+optdepends=('mkvtoolnix-gui: Graphical interface for Mkvtoolnix')
 provides=("vapoursynth-tools-${_plug}")
 conflicts=("vapoursynth-tools-${_plug}")
 source=("${_plug}::git+https://github.com/AzraelNewtype/${_plug}.git")
