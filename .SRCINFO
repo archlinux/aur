@@ -1,0 +1,11 @@
+pkgbase = asciinema-edit
+	pkgdesc = asciinema casts post-production tools.
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/cirocosta/asciinema-edit
+	arch = any
+	license = MIT
+	source = https://github.com/cirocosta/asciinema-edit/releases/download/0.0.6/asciinema-edit_0.0.6_linux_amd64.tar.gz
+	sha512sums = d99dac29a22532b3558ae59d8dfcfe08a227d64f10de4dda3be7cd17052ff303c12745d5a46fac269a9df143feb67c28b015bbadaa6f87d6f03b39193deca9a5
+
+pkgname = asciinema-edit
