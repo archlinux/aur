@@ -28,7 +28,7 @@ pkgbase = syscoin
 	optdepends = zeromq: Allows generating ZMQ notifications
 	provides = syscoin4
 	source = https://github.com/syscoin/syscoin/releases/download/v4.1.3/syscoin-4.1.3-x86_64-linux-gnu.tar.gz
-	md5sums = 4df07843e8bd0a1616619d22119ed19c
+	md5sums = 907d0e967fcdeae95ea9f5422dc77230
 
 pkgname = syscoin
 
