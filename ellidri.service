@@ -1,0 +1,13 @@
+[Unit]
+Description=ellidri IRC daemon
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+Type=simple
+SyslogIdentifier=synapse
+#WorkingDirectory=/var/lib/ellidri
+ExecStart=/usr/bin/ellidri /etc/ellidri.conf
+
+[Install]
+WantedBy=multi-user.target
