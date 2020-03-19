@@ -2,7 +2,7 @@
  
 _realname='gulkan'
 pkgname="$_realname-git"
-pkgver=0.13.99.221.74c9a98
+pkgver=0.13.99.258.fd0e813
 pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
