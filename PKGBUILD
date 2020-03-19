@@ -30,8 +30,8 @@ prepare() {
 
 build() {
   cd $pkgname
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
-  DOTNET_CLI_TELEMETRY_OPTOUT=true
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
   ## Restore
   dotnet restore src/powershell-unix
