@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-neo_f3kdb-git
 	pkgdesc = Plugin for Vapoursynth: neo_f3kdb (GIT version)
 	pkgver = r2.0.gf805e0f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git
 	arch = x86_64
 	license = GPL3

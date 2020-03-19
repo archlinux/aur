@@ -3,7 +3,7 @@
 _plug=neo_f3kdb
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=r2.0.gf805e0f
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git'
@@ -14,8 +14,7 @@ makedepends=('git'
              'clang'
              )
 provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}"
-           )
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git"
         'esee.patch'
         )
