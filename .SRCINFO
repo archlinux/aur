@@ -1,6 +1,6 @@
 pkgbase = josm-svn
 	pkgdesc = An editor for OpenStreetMap written in Java
-	pkgver = 14419
+	pkgver = 16176
 	pkgrel = 1
 	url = http://josm.openstreetmap.de/
 	arch = any

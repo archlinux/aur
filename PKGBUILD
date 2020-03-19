@@ -1,7 +1,7 @@
 # Maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=josm-svn
-pkgver=14419
+pkgver=16176
 pkgrel=1
 pkgdesc="An editor for OpenStreetMap written in Java"
 arch=('any')
@@ -39,11 +39,11 @@ package() {
   install -Dm644 josm.conf "$pkgdir/etc/conf.d/josm"
 
   # desktop integration
-  install -Dm644 "$pkgname/linux/tested/usr/share/applications/org.openstreetmap.josm.desktop" "$pkgdir/usr/share/applications/org.openstreetmap.josm.desktop"
-  install -Dm644 "$pkgname/linux/tested/usr/share/metainfo/org.openstreetmap.josm.appdata.xml" "$pkgdir/usr/share/metainfo/org.openstreetmap.josm.appdata.xml"
-  install -Dm644 "$pkgname/linux/tested/usr/share/pixmaps/org.openstreetmap.josm.png" "$pkgdir/usr/share/pixmaps/org.openstreetmap.josm.png"
-  cp -dr --preserve=mode,timestamp "$pkgname/linux/tested/usr/share/icons" "$pkgdir/usr/share/icons"
+  install -Dm644 "$pkgname/native/linux/tested/usr/share/applications/org.openstreetmap.josm.desktop" "$pkgdir/usr/share/applications/org.openstreetmap.josm.desktop"
+  install -Dm644 "$pkgname/native/linux/tested/usr/share/metainfo/org.openstreetmap.josm.appdata.xml" "$pkgdir/usr/share/metainfo/org.openstreetmap.josm.appdata.xml"
+  install -Dm644 "$pkgname/native/linux/tested/usr/share/pixmaps/org.openstreetmap.josm.png" "$pkgdir/usr/share/pixmaps/org.openstreetmap.josm.png"
+  cp -dr --preserve=mode,timestamp "$pkgname/native/linux/tested/usr/share/icons" "$pkgdir/usr/share/icons"
 
   # man page
-  install -Dm644 "$pkgname/linux/tested/usr/share/man/man1/josm.1" "$pkgdir/usr/share/man/man1/josm.1"
+  install -Dm644 "$pkgname/native/linux/tested/usr/share/man/man1/josm.1" "$pkgdir/usr/share/man/man1/josm.1"
 }
