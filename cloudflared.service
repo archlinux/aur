@@ -1,0 +1,22 @@
+[Unit]
+Description=Argo Tunnel client daemon for Cloudflared
+After=network.target
+Wants=network.target
+
+[Service]
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+User=cloudflared
+Group=cloudflared
+Type=simple
+ExecStart=/usr/bin/cloudflared --config /etc/cloudflared/cloudflared.yml --no-autoupdate
+Restart=on-failure
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
