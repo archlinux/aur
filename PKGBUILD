@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=emos
 pkgver=4.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="ECMWF Interpolation Library"
 arch=(i686 x86_64)
 url="https://software.ecmwf.int/wiki/display/EMOS/Emoslib"
@@ -18,9 +18,12 @@ build() {
   sed -i CMakeLists.txt -e 's/ecbuild_add_option\(.*\)INSTALL_TOOLS\(.*\)DEFAULT ON )/ecbuild_add_option\1INSTALL_TOOLS\2DEFAULT OFF )/'
   mkdir -p build
   cd build
-  cmake -DGRIB_API_PATH=/usr \
+  cmake -DENABLE_ECCODES=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=production ..
+  find . -name link.txt -exec sed -i {} \
+            -e 's/-lfftw3/-lfftw3 -leccodes/' \
+            -e 's!/usr/lib/libfftw3.so!/usr/lib/libfftw3.so -leccodes!' \;
   make
 }
 
