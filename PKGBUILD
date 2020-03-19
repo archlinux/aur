@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-tendo
-pkgver=0.2.13
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="Adds basic functionality that is not (yet) provided by Python"
 arch=('any')
