@@ -1,7 +1,7 @@
 # Maintainer: ahbnr <anton dot haubner at outlook dot de>
 
 pkgname=yt-bin
-pkgver=r41.383d456
+pkgver=r55.a0ddb13
 pkgrel=1
 pkgdesc="Youtube Terminal UI for music streaming. WIP."
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('yt')
 backup=()
 options=()
 install=
-source=('https://ahbnr.de/jenkins/job/yt/22/artifact/yt')
+source=('https://ahbnr.de/jenkins/job/yt/24/artifact/yt')
 noextract=()
 md5sums=('SKIP')
 
