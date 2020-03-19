@@ -2,14 +2,13 @@
 
 pkgname=lxdui
 pkgver=2.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Web UI for the native Linux container technology LXD/LXC"
 arch=(x86_64)
 url="https://github.com/AdaptiveScale/lxdui"
 license=('AGPL3')
 depends=(lxd
 	python-click
-	python-jsonschema
 	python-netaddr
 	python-psutil
 	python-ptyprocess
