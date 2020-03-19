@@ -1,14 +1,14 @@
 # Maintainer: Aetf <aetf at unlimitedcodeworks dor xyz>
 pkgname=libtsm-patched-git
 _gitname=libtsm
-pkgver=4.0.1.r1.g502ff6e
+pkgver=4.0.1.r3.g8d299ab
 pkgrel=1
 pkgdesc="Terminal-emulator State Machine. Patched flavor (using patches from http://github.com/Aetf/libtsm)"
 arch=('x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/kmscon/$_gitname"
 license=('MIT')
 depends=(glibc)
-makedepends=('git' 'libxkbcommon')
+makedepends=('cmake' 'git' 'libxkbcommon')
 provides=('libtsm-patched' 'libtsm')
 conflicts=('libtsm' 'libtsm-patched')
 options=(!libtool)
@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname"
 
-  mkdir build && cd build
+  mkdir -p build && cd build
 
   cmake \
     -DBUILD_TESTING=OFF \
