@@ -1,8 +1,8 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 pkgname=getax
 pkgver=2019
-_update=1.03
-pkgrel=4
+_update=1.04
+pkgrel=5
 pkgdesc="Application for the tax reporting of physical people in the canton of Geneva, Switzerland."
 url="http://www.getax.ch/support/"
 depends=(
@@ -37,7 +37,7 @@ package() {
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
 sha256sums=(
-	'0ae1b0678e59fc5a2c6a4f2aa9d8a60ab67d4e29605e704d0813ecf1bd633f49'
+	'47afc6e9faca47081c400850526d610fc050931231491ca3ac0446f33c6f1b10'
 	'a474ed38201b0abc1459ff0ffa37a1fb0e947a135a18e08cb00acadad23488be'
 )
 validgpgkeys=(
