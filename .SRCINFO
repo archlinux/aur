@@ -1,7 +1,7 @@
 pkgbase = semantik
 	pkgdesc = mindmapping-like tool for document generation (reports, thesis, etc)
 	pkgver = 1.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://waf.io/semantik.html
 	arch = x86_64
 	license = GPL3
@@ -10,6 +10,7 @@ pkgbase = semantik
 	depends = python
 	depends = qt5-webengine
 	depends = qt5-svg
+	depends = qt5-tools
 	depends = kdelibs4support
 	depends = kio
 	depends = python-pygments
