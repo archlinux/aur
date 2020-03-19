@@ -1,7 +1,7 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 # Maintainer:  Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nco
-pkgver=4.8.1
+pkgver=4.9.2
 pkgrel=2
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
@@ -11,7 +11,7 @@ makedepends=('antlr2')
 arch=('i686' 'x86_64')
 options=('!libtool')
 source=(https://github.com/nco/nco/archive/$pkgver.tar.gz)
-md5sums=('547209b355cc20b87f6e093fbf810557')
+md5sums=('366a949084d404b0380af7426ed94648')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -23,7 +23,7 @@ build() {
       --enable-ncoxx \
       --enable-udunits2 \
       --enable-optimize-custom
-  make CXXFLAGS+="-fpermissive -fPIC" CFLAGS+="-fPIC"
+  make CXXFLAGS+="-fpermissive -fPIC" CFLAGS+="-fPIC -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H"
   # make check || return 1
 }
 
