@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-tools-audiocutter-git
+	pkgdesc = Tools for Vapoursynth: audiocutter (GIT version)
+	pkgver = r26.c518e30
+	pkgrel = 1
+	url = https://github.com/AzraelNewtype/audiocutter
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = mkvtoolnix
+	provides = vapoursynth-tools-audiocutter
+	conflicts = vapoursynth-tools-audiocutter
+	source = audiocutter::git+https://github.com/AzraelNewtype/audiocutter.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-tools-audiocutter-git
+
