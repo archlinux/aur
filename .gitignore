@@ -1,0 +1,9 @@
+*
+*/
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!A4PaperSize.patch
+!brother-dcp110c.install
+!cupswrapper-license.txt
+!lpr-license.txt
