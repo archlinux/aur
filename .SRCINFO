@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-xvs-git
+	pkgdesc = Plugin for Vapoursynth: xvs (GIT version)
+	pkgver = r4.75877c8
+	pkgrel = 1
+	url = https://github.com/xyx98/my-vapoursynth-script
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth-plugin-muvsfunc-git
+	depends = vapoursynth-plugin-tdeintmod-git
+	depends = vapoursynth-plugin-dpid-git
+	depends = vapoursynth-plugin-tonemap-git
+	depends = vapoursynth-plugin-ffms2-git
+	depends = vapoursynth-plugin-lsmashsource-git
+	provides = vapoursynth-plugin-xvs
+	conflicts = vapoursynth-plugin-xvs
+	source = xvs::git+https://github.com/xyx98/my-vapoursynth-script.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-xvs-git
+
