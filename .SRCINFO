@@ -1,12 +1,12 @@
 pkgbase = vapoursynth-tools-ocsuite-git
 	pkgdesc = Tools for Vapoursynth: ocsuite (GIT version)
 	pkgver = r2.132d838
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrangeChannel/ocsuite
 	arch = any
 	license = GPL
 	makedepends = git
-	depends = vapoursynth-plugin-acsuite-git
+	depends = vapoursynth-tools-acsuite-git
 	provides = vapoursynth-tools-ocsuite
 	conflicts = vapoursynth-tools-ocsuite
 	source = ocsuite::git+https://github.com/OrangeChannel/ocsuite.git
