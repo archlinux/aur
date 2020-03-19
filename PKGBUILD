@@ -7,9 +7,9 @@ arch=("i686" "x86_64")
 url="https://www.ngs.noaa.gov/PUBS_LIB/GeneralCartographicTransformationPackage_v2_TR_NOS124_CGS9.pdf"
 options=('staticlibs')
 license=('custom')
-source=(http://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz.v2.0.6c
+source=(http://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/wgrib2.tgz.v2.0.8
         Makefile)
-md5sums=('a6c5a71b9a5b3837b0c9d82ae965b274'
+md5sums=('3d56cbed5de8c460d304bf2206abc8d3'
          'baa2859f793a797b6e22525b0a74091c')
 
 build() {
