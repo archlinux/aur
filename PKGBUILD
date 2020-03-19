@@ -1,8 +1,8 @@
 # Maintainer: Sam Rose <hello@samwho.dev>
 
 pkgname='hmm'
-pkgdesc='A small command-line note taking app written in Rust. Notes are written in plain text and indexed by the time they were written.'
-pkgver='0.1.3'
+pkgdesc='A small command-line note taking app written in Rust.'
+pkgver='0.2'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/samwho/hmm'
@@ -13,7 +13,7 @@ makedepends=('rust' 'gcc')
 checkdepends=('rust' 'git')
 provides=(hmm hmmq)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samwho/hmm/archive/v${pkgver}.tar.gz")
-sha256sums=('74661f93dcef38451bd5017327545349b5608ae36cfdc8d448a20317363f3c54')
+sha256sums=('4e2d474d2eb70f313ef6a97a5f392310e0317be9f7d88d46ddf5fe9b9e6a1910')
 
 build() {
     cd "$pkgname-$pkgver"

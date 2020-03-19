@@ -1,6 +1,6 @@
 pkgbase = hmm
-	pkgdesc = A small command-line note taking app written in Rust. Notes are written in plain text and indexed by the time they were written.
-	pkgver = 0.1.3
+	pkgdesc = A small command-line note taking app written in Rust.
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/samwho/hmm
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = hmm
 	depends = gcc-libs
 	provides = hmm
 	provides = hmmq
-	source = hmm-0.1.3.tar.gz::https://github.com/samwho/hmm/archive/v0.1.3.tar.gz
-	sha256sums = 74661f93dcef38451bd5017327545349b5608ae36cfdc8d448a20317363f3c54
+	source = hmm-0.2.tar.gz::https://github.com/samwho/hmm/archive/v0.2.tar.gz
+	sha256sums = 4e2d474d2eb70f313ef6a97a5f392310e0317be9f7d88d46ddf5fe9b9e6a1910
 
 pkgname = hmm
 
