@@ -7,22 +7,22 @@
 pkgname=ttf-sil-fonts
 pkgver=8
 pkgrel=3
-pkgdesc="Metapackage depending on all OFL-licensed font packages from SIL"
+pkgdesc='Metapackage depending on all OFL-licensed font packages from SIL'
 arch=('any')
 url='https://software.sil.org/fonts'
 license=('OFL')
 _silfonts=('abyssinica>=2.000-5'
            'alkalami'
-           # 'andika' Has different name in AUR
+           # 'andika' Has different pkgname format in AUR
            'annapurna'
            'apparatus'
            'awami-nastaliq'
-           # 'charis' Has different name in AUR
+           # 'charis' Has different pkgname format in AUR
            'dai-banna'
            'doulos'
            'ezra'
            'galatia'
-           # 'gentium-plus' Has different name in [community]
+           # 'gentium-plus' Has pkgname format in [community]
            'harmattan'
            'lateef>=1.200-7'
            'mingzat'
