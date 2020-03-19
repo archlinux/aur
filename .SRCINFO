@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-nnedi3_resamplecl-git
+	pkgdesc = Plugin for Vapoursynth: nnedi3_resamplecl (GIT version)
+	pkgver = r4.75877c8
+	pkgrel = 1
+	url = https://github.com/xyx98/my-vapoursynth-script
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth-plugin-mvsfunc-git
+	depends = vapoursynth-plugin-nnedi3cl-git
+	provides = vapoursynth-plugin-nnedi3_resamplecl
+	conflicts = vapoursynth-plugin-nnedi3_resamplecl
+	source = nnedi3_resamplecl::git+https://github.com/xyx98/my-vapoursynth-script.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-nnedi3_resamplecl-git
+
