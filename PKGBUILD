@@ -4,7 +4,8 @@
 
 _fnt_name=league-gothic
 pkgbase=$_fnt_name-font
-pkgname=(ttf-$_fnt_name otf-$_fnt_name)
+pkgname=$pkgbase
+# pkgname=(ttf-$_fnt_name otf-$_fnt_name)
 pkgver=20160215
 # 20140319
 _sha=e6dce2137410648b2229d5d4717de8c1cd5f9b97

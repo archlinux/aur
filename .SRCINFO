@@ -7,10 +7,8 @@ pkgbase = league-gothic-font
 	groups = lmt-fonts
 	license = OFL
 	provides = league-gothic-font
-	source = ttf-league-gothic-20160215.zip::https://github.com/theleagueof/league-gothic/archive/e6dce2137410648b2229d5d4717de8c1cd5f9b97.zip
+	source = league-gothic-font-20160215.zip::https://github.com/theleagueof/league-gothic/archive/e6dce2137410648b2229d5d4717de8c1cd5f9b97.zip
 	sha256sums = f4cc4f754568c4d2b70c3b52a6663677656ee88277901efcdf079b40e8158ab1
 
-pkgname = ttf-league-gothic
-
-pkgname = otf-league-gothic
+pkgname = league-gothic-font
 
