@@ -1,6 +1,6 @@
 pkgbase = cura-git
 	pkgdesc = A full software solution for 3D printing aimed at RepRaps and the Ultimaker.
-	pkgver = 4.5.0.r82.g7c70ace8f
+	pkgver = 4.5.0.r192.g44b61d370
 	pkgrel = 1
 	url = https://github.com/Ultimaker/Cura
 	arch = any
@@ -26,6 +26,7 @@ pkgbase = cura-git
 	optdepends = python-pyserial: USB printing
 	optdepends = cura-fdm-materials-git: Default Materials
 	optdepends = python-trimesh: Reading AMF files
+	optdepends = python-libcharon: UFPWriter/UFPReader
 	provides = cura
 	conflicts = cura
 	source = git+https://github.com/Ultimaker/Cura.git
