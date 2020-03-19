@@ -19,5 +19,5 @@ sha512sums=("ca6a52d1dd69ce681dcb61610822a2bb13690e9a320587bb8054d6baafb560b8d47
 package() {
     cd "asyncqt-${pkgver}"
     python setup.py install --root="$pkgdir/" --optimize=1
-    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
