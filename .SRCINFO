@@ -1,6 +1,6 @@
 pkgbase = python-asyncqt-git
 	pkgdesc = Implementation of the PEP 3156 Event-Loop with Qt (with PySide2 support) (Git version)
-	pkgver = v0.7.0.r7.g66ccce1
+	pkgver = v0.8.0.r2.gb483490
 	pkgrel = 1
 	url = https://github.com/gmarull/asyncqt
 	arch = any

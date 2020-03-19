@@ -1,7 +1,7 @@
 # Maintainer: gmes78 <gmes.078 at gmail dot com>
 
 pkgname=python-asyncqt-git
-pkgver=v0.7.0.r7.g66ccce1
+pkgver=v0.8.0.r2.gb483490
 pkgrel=1
 pkgdesc="Implementation of the PEP 3156 Event-Loop with Qt (with PySide2 support) (Git version)"
 arch=(any)
