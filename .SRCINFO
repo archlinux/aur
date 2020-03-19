@@ -1,0 +1,21 @@
+pkgbase = vapoursynth-plugin-g41fun-git
+	pkgdesc = Plugin for Vapoursynth: g41fun (GIT version)
+	pkgver = v0.5.alpha.0.g6074ced
+	pkgrel = 1
+	url = https://github.com/dubhater/vapoursynth-g41fun
+	arch = any
+	license = apache
+	makedepends = git
+	depends = vapoursynth-plugin-havsfunc-git
+	depends = vapoursynth-plugin-muvsfunc-git
+	depends = vapoursynth-plugin-nnedi3_resample-git
+	depends = vapoursynth-plugin-mvtools_sf-git
+	depends = vapoursynth-plugin-rgsf-git
+	depends = vapoursynth-plugin-vcmod
+	provides = vapoursynth-plugin-g41fun
+	conflicts = vapoursynth-plugin-g41fun
+	source = g41fun::git+https://github.com/groucho86/G41Fun.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-g41fun-git
+
