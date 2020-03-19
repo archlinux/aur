@@ -22,7 +22,7 @@ fi
 
 _reponame=brave-browser
 pkgname=brave
-pkgver=1.4.96
+pkgver=1.5.112
 pkgrel=1
 pkgdesc='A web browser that stops ads and trackers by default'
 arch=('x86_64')
@@ -32,6 +32,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'ttf-font' 'libva')
 makedepends=('git' 'npm' 'python2' 'icu' 'glibc' 'gperf' 'java-runtime-headless' 'clang')
 optdepends=('cups: Printer support'
             'pepper-flash: Adobe Flash support'
+            'libpipewire02: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops'
             'sccache: For faster builds')
