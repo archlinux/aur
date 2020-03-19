@@ -15,6 +15,9 @@ pkgbase = gulkan-git
 	depends = vulkan-icd-loader
 	depends = graphene
 	depends = cairo
+	depends = shaderc
+	depends = json-glib
+	depends = glfw
 	provides = gulkan=0.13.99.258.fd0e813
 	conflicts = gulkan
 	source = git+https://gitlab.freedesktop.org/xrdesktop/gulkan.git

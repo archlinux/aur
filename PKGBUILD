@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='A GLib library for Vulkan abstraction.'
 arch=('i686' 'x86_64')
 url='https://gitlab.freedesktop.org/xrdesktop/gulkan'
-depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo')
+depends=('gdk-pixbuf2' 'vulkan-icd-loader' 'graphene' 'cairo' 'shaderc' 'json-glib' 'glfw')
 provides=("$_realname="$pkgver)
 conflicts=("$_realname")
 makedepends=('meson' 'git' 'glslang' 'vulkan-headers' 'gtk-doc')
