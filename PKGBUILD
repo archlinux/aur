@@ -34,7 +34,7 @@ prepare() {
 package() {
       # reduce the number of chars by setting variables
     GWDIR=opt/novell/groupwise/client
-    JAVA_RUNTIME=/usr/lib/jvm/default-runtime/lib/i386/client/
+    JAVA_RUNTIME=/usr/lib32/jvm/java32-6-jre/jre/lib/i386/client/
     MOZ_PLUGIN_PATH=/usr/lib/mozilla
     GWLIBDIR=/usr/lib/gwclient
     
