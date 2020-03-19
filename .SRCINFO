@@ -1,14 +1,14 @@
 pkgbase = squaw
 	pkgdesc = Simplistic quiet user agent for the Web
-	pkgver = 3.2
+	pkgver = 3.3
 	pkgrel = 1
 	url = http://fenua.org/gaetan/src/
 	arch = i686
 	arch = x86_64
 	license = ISC
 	depends = webkit2gtk
-	source = http://fenua.org/gaetan/src//squaw-3.2.c
-	sha256sums = 1995e265d13aba21ff78b0640e56a255c15de3e84f0ca12bb0699367700eb0f3
+	source = http://fenua.org/gaetan/src//squaw-3.3.c
+	sha256sums = e64a996c82d06a4a73ce676404e10aa6767c4ec2c9946aa57ad44ef8f1606189
 
 pkgname = squaw
 
