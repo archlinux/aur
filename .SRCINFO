@@ -1,0 +1,17 @@
+pkgbase = ibus-daemon
+	pkgdesc = SystemD user service for IBus
+	pkgver = 0.0.0
+	pkgrel = 0
+	url = https://github.com/KSXGitHub/ibus-daemon.pkgbuild.git
+	arch = any
+	license = MIT
+	makedepends = pkgconf
+	depends = systemd
+	depends = ibus
+	source = ibus.service
+	source = LICENSE.md
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ibus-daemon
+
