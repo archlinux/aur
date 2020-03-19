@@ -1,0 +1,22 @@
+pkgbase = jdk14-openj9-bin
+	pkgdesc = Eclipse (former IBM) OpenJ9 with openjdk14
+	pkgver = 14b36_openj9_0.19.0
+	pkgrel = 1
+	url = https://adoptopenjdk.net/index.html?variant=openjdk14&jvmVariant=openj9
+	arch = x86_64
+	license = GPL2
+	depends = java-environment-common
+	depends = ca-certificates-utils
+	depends = nss
+	provides = java-environment=14
+	provides = java-environment-openjdk=14
+	provides = java-runtime=14
+	provides = java-runtime-openjdk=14
+	provides = java-runtime-headless=14
+	provides = java-runtime-headless-openjdk=14
+	options = !strip
+	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14%2B36_openj9-0.19.0/OpenJDK14U-jdk_x64_linux_openj9_14_36_openj9-0.19.0.tar.gz
+	sha256sums = e5536df914af2a36f3612658827a3ed9fa041ea747ae9ea48c7c91da218dbc6a
+
+pkgname = jdk14-openj9-bin
+
