@@ -1,0 +1,44 @@
+pkgbase = thunderbird-localized-beta-bin
+	pkgdesc = Standalone mail and news reader from mozilla.org
+	pkgver = 75.0b1
+	pkgrel = 1
+	url = https://www.mozilla.org/thunderbird
+	install = thunderbird-localized-beta-bin.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = MPL
+	depends = gtk3
+	depends = mozilla-common
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+	depends = nss
+	depends = hunspell
+	depends = sqlite
+	depends = ttf-font
+	depends = icu
+	optdepends = hunspell: Spell checking
+	optdepends = hyphen: Hyphenation
+	optdepends = libcanberra: Sound support
+	provides = thunderbird=75.0b1
+	provides = thunderbird-beta=75.0b1
+	conflicts = thunderbird-beta
+	conflicts = thunderbird-beta-bin
+	source = thunderbird-localized-beta-bin.desktop
+	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
+	sha256sums = e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/75.0b1/linux-i686/uk/thunderbird-75.0b1.tar.bz2
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/75.0b1/linux-i686/uk/thunderbird-75.0b1.tar.bz2.asc
+	sha256sums_i686 = aa512fc24aa309bf77ecfe5c66435dfcd432ed900478871e13f3e0f978eb84bd
+	sha256sums_i686 = SKIP
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/75.0b1/linux-x86_64/uk/thunderbird-75.0b1.tar.bz2
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/75.0b1/linux-x86_64/uk/thunderbird-75.0b1.tar.bz2.asc
+	sha256sums_x86_64 = aa512fc24aa309bf77ecfe5c66435dfcd432ed900478871e13f3e0f978eb84bd
+	sha256sums_x86_64 = SKIP
+
+pkgname = thunderbird-localized-beta-bin
+
