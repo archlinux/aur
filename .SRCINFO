@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-tools-ocsuite-git
 	pkgdesc = Tools for Vapoursynth: ocsuite (GIT version)
-	pkgver = r2.132d838
-	pkgrel = 2
+	pkgver = r2.74757c3
+	pkgrel = 1
 	url = https://github.com/OrangeChannel/ocsuite
 	arch = any
 	license = GPL

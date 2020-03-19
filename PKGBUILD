@@ -2,8 +2,8 @@
 
 _plug=ocsuite
 pkgname=vapoursynth-tools-${_plug}-git
-pkgver=r2.132d838
-pkgrel=2
+pkgver=r2.74757c3
+pkgrel=1
 pkgdesc="Tools for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/OrangeChannel/${_plug}"
