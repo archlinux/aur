@@ -1,11 +1,11 @@
-diff -rupN oci-python-sdk-2.10.6/setup.py oci-python-sdk-2.10.6b/setup.py
---- oci-python-sdk-2.10.6/setup.py	2020-02-25 13:17:34.000000000 -0500
-+++ oci-python-sdk-2.10.6b/setup.py	2020-02-25 21:01:45.529865106 -0500
+diff -rupN oci-python-sdk-2.12.0/setup.py oci-python-sdk-2.12.0b/setup.py
+--- oci-python-sdk-2.12.0/setup.py	2020-03-17 17:32:14.000000000 -0400
++++ oci-python-sdk-2.12.0b/setup.py	2020-03-19 19:01:49.616322214 -0400
 @@ -30,11 +30,10 @@ with open_relative("README.rst") as f:
  
  requires = [
      "certifi",
--    "configparser>=3.5.0b1",
+-    "configparser==4.0.2",
 -    "cryptography==2.8",
 -    "pyOpenSSL>=17.5.0",
 -    "python-dateutil>=2.5.3,<3.0.0",
