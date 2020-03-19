@@ -12,7 +12,9 @@ depends=('vapoursynth'
          'mkvtoolnix-cli'
          )
 makedepends=('git')
-provides=("vapoursynth-tools-${_plug}")
+provides=("vapoursynth-tools-${_plug}"
+          "vapoursynth-tools-${_plug}"
+          )
 conflicts=("vapoursynth-tools-${_plug}"
            "vapoursynth-plugin-${_plug}"
            )
