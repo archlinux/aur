@@ -1,0 +1,21 @@
+pkgbase = f32c-tools
+	pkgdesc = ULX2S / ULX3S FPGA JTAG programmer & tools (Lattice XP2 / ECP5)
+	pkgver = 0698352
+	pkgrel = 1
+	url = https://github.com/f32c/tools
+	arch = any
+	license = NONE
+	depends = python
+	provides = ujprog
+	provides = f32cup
+	provides = ft232r_flash
+	options = !strip
+	source = git+https://github.com/f32c/tools
+	source = 80-fpga-ulx3s.rules
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = 8ca346c65ca04f8b06e6877180b2f1eed7b7dbd8ce3ee5ad2d80da7158175686
+	sha256sums = df040cc999654bb8357a66df4bf4fb4d8335716b2a728a0edeecb7918be00a0a
+
+pkgname = f32c-tools
+
