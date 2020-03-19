@@ -1,8 +1,8 @@
 pkgbase = linux-pds
 	pkgdesc = Linux
-	pkgver = 5.5.9.arch1
+	pkgver = 5.5.10.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.9-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.10-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-pds
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = git+https://git.archlinux.org/linux?signed#tag=v5.5.9-arch1
+	source = git+https://git.archlinux.org/linux?signed#tag=v5.5.10-arch1
 	source = git+https://github.com/graysky2/kernel_gcc_patch
 	source = config
 	source = 0005-v5.5_undead-pds099o.patch
@@ -37,13 +37,13 @@ pkgname = linux-pds
 	depends = thrash-protect
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-pds=5.5.9.arch1
+	provides = linux-pds=5.5.10.arch1
 
 pkgname = linux-pds-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
-	depends = linux-pds=5.5.9.arch1
-	provides = linux-pds-headers=5.5.9.arch1
-	provides = linux-headers=5.5.9.arch1
+	depends = linux-pds=5.5.10.arch1
+	provides = linux-pds-headers=5.5.10.arch1
+	provides = linux-headers=5.5.10.arch1
 
 pkgname = linux-pds-docs
 	pkgdesc = Documentation for the Linux kernel ~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG
