@@ -1,8 +1,8 @@
 # Maintainer: einalex <einalex@aegir.space>
 
 pkgname=syscoin
-pkgver=4.1.2.1
-pkgrel=5
+pkgver=4.1.3
+pkgrel=1
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
 url="https://syscoin.org"
