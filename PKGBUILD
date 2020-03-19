@@ -1,7 +1,7 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=4.18.60
+pkgver=4.18.70
 pkgrel=1
 pkgdesc="A proprietary music streaming service"
 arch=('any')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
         menu-bar.patch
         quit.patch
         0001-MPRIS-interface.patch)
-sha256sums=('7d31da5d5f38383a2ccd84f8027b906a8b64f83745ed5b0d22d4b61f744956ef'
+sha256sums=('fe8b01ac68e8deb1dba47fc4020661622428ceb12172af5d22b7a87a24874fc1'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
             'f7df7ba3dd91d8d327c3bfe69c65d3969b3f7a80ca253c29bad316e09f65ab8b'
             '8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0'
