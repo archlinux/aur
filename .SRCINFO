@@ -1,0 +1,15 @@
+pkgbase = aurelia-cli
+	pkgdesc = The Aurelia 1 command line tool. Use the CLI to create projects, scaffold components, and bundle your app for release
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/aurelia/cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = perl
+	noextract = 1.3.0.tar.gz
+	source = https://github.com/aurelia/cli/archive/1.3.0.tar.gz
+	md5sums = SKIP
+
+pkgname = aurelia-cli
+
