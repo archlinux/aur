@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-xrdesktop-git
 	pkgdesc = The next generation GNOME Shell - with patches for xrdesktop.
-	pkgver = 3.34.3
+	pkgver = 3.36.0
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = gnome-shell-xrdesktop-git
 	depends = evolution-data-server
 	depends = python
 	optdepends = gnome-control-center: System settings
-	provides = gnome-shell=3.34.3
+	provides = gnome-shell=3.36.0
 	conflicts = gnome-shell
-	source = gnome-shell::git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.34.3-xrdesktop
+	source = gnome-shell::git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.36.0-xrdesktop
 	source = git+https://git.gnome.org/browse/libgnome-volume-control
 	sha256sums = SKIP
 	sha256sums = SKIP

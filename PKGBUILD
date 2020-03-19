@@ -5,7 +5,7 @@
 
 basename=gnome-shell
 pkgname=$basename-xrdesktop-git
-pkgver=3.34.3
+pkgver=3.36.0
 pkgrel=1
 conflicts=($basename)
 pkgdesc="The next generation GNOME Shell - with patches for xrdesktop."
@@ -19,7 +19,7 @@ makedepends=(gtk-doc gnome-control-center evolution-data-server gobject-introspe
 optdepends=('gnome-control-center: System settings')
 groups=(gnome)
 provides=(gnome-shell=$pkgver)
-source=($basename::"git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.34.3-xrdesktop"
+source=($basename::"git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=3.36.0-xrdesktop"
         "git+https://git.gnome.org/browse/libgnome-volume-control")
 
 sha256sums=('SKIP'
