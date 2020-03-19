@@ -1,6 +1,6 @@
 pkgbase = jdk-adoptopenjdk
-	pkgdesc = OpenJDK Java 13 development kit (AdoptOpenJDK build)
-	pkgver = 13.0.2.u8
+	pkgdesc = OpenJDK Java 14 development kit (AdoptOpenJDK build)
+	pkgver = 14.u36
 	pkgrel = 1
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
@@ -14,20 +14,20 @@ pkgbase = jdk-adoptopenjdk
 	depends = alsa-lib
 	optdepends = gtk2: for the Gtk+ 2 look and feel
 	optdepends = gtk3: for the Gtk+ 3 look and feel
-	provides = java-runtime-headless=13
-	provides = java-runtime-headless-openjdk=13
-	provides = jre13-openjdk-headless=13.0.2.u8
-	provides = jre-openjdk-headless=13.0.2.u8
-	provides = java-runtime=13
-	provides = java-runtime-openjdk=13
-	provides = jre13-openjdk=13.0.2.u8
-	provides = jre-openjdk=13.0.2.u8
-	provides = java-environment=13
-	provides = java-environment-openjdk=13
-	provides = jdk13-openjdk=13.0.2.u8
-	provides = jdk-openjdk=13.0.2.u8
-	provides = openjdk13-src=13.0.2.u8
-	provides = openjdk-src=13.0.2.u8
+	provides = java-runtime-headless=14
+	provides = java-runtime-headless-openjdk=14
+	provides = jre14-openjdk-headless=14.u36
+	provides = jre-openjdk-headless=14.u36
+	provides = java-runtime=14
+	provides = java-runtime-openjdk=14
+	provides = jre14-openjdk=14.u36
+	provides = jre-openjdk=14.u36
+	provides = java-environment=14
+	provides = java-environment-openjdk=14
+	provides = jdk14-openjdk=14.u36
+	provides = jdk-openjdk=14.u36
+	provides = openjdk14-src=14.u36
+	provides = openjdk-src=14.u36
 	backup = etc/jdk-adoptopenjdk/logging.properties
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.access
 	backup = etc/jdk-adoptopenjdk/management/jmxremote.password.template
@@ -43,11 +43,11 @@ pkgbase = jdk-adoptopenjdk
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_local.policy
 	backup = etc/jdk-adoptopenjdk/security/policy/unlimited/default_US_export.policy
 	backup = etc/jdk-adoptopenjdk/sound.properties
-	source = https://github.com/AdoptOpenJDK/openjdk13-binaries/releases/download/jdk-13.0.2%2B8/OpenJDK13U-jdk_x64_linux_hotspot_13.0.2_8.tar.gz
+	source = https://github.com/AdoptOpenJDK/openjdk14-binaries/releases/download/jdk-14%2B36/OpenJDK14U-jdk_x64_linux_hotspot_14_36.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 9ccc063569f19899fd08e41466f8c4cd4e05058abdb5178fa374cb365dcf5998
+	sha256sums = 6c06853332585ab58834d9e8a02774b388e6e062ef6c4084b4f058c67f2e81b5
 	sha256sums = 9b11bbaf5834748fc9a30cb887c129b32f34a81535dc512ff47b26ae72c91927
 	sha256sums = 16551b98abbd5cbb9da14157df60afd2a608602c6e3734e979d9574e0780f8da
 	sha256sums = 7d46b5ffcb2528f039b4534dddeab4b87de92106c25ff17e175570edde52f1c9
