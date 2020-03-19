@@ -4,6 +4,7 @@ pkgbase = python2-gtkglext
 	pkgrel = 8
 	url = https://projects.gnome.org/gtkglext/
 	arch = x86_64
+	arch = i686
 	license = LGPL
 	makedepends = libxmu
 	depends = gtkglext
