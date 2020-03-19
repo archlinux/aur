@@ -1,6 +1,6 @@
 pkgbase = mprime-bin
 	pkgdesc = A GIMPS, distributed computing project client, dedicated to finding Mersenne primes. Precompiled binary version.
-	pkgver = 298b6
+	pkgver = 298b7
 	pkgrel = 1
 	url = http://www.mersenne.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = mprime-bin
 	depends = gcc-libs
 	provides = mprime
 	conflicts = mprime
-	source = ftp://mersenne.org/gimps/p95v298b6.linux64.tar.gz
-	sha256sums = 9234a572807fdddc4bde1a0a93a90b80ade6b6c2a541b98ddb668ff64084e63f
+	source = ftp://mersenne.org/gimps/p95v298b7.linux64.tar.gz
+	sha256sums = 643c547748d437a83900ecb02d6ff3bd8d38f3f2563647b7776788c2f7586e84
 
 pkgname = mprime-bin
 
