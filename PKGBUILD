@@ -1,7 +1,7 @@
 # Maintainer: Erik Dubois <erikdubois@gmail.com>
 pkgname=gitfiend
 _pkgname=GitFiend
-pkgver=0.22.6
+pkgver=0.22.8
 pkgrel=1
 pkgdesc='A Git client designed for humans'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk'
 url="https://gitfiend.com"
 options=('!strip')
 source=("https://gitfiend.com/resources/${_pkgname}_${pkgver}_amd64.deb")
-md5sums=('3c818ac78a76d98ab28d178463dbb8b5')
+md5sums=('8dc38499c3ced7db57463c597ba446c3')
 package() {
     tar -xvf data.tar.xz -C ${pkgdir}
     chmod 4755 ${pkgdir}/opt/GitFiend/chrome-sandbox
