@@ -1,0 +1,29 @@
+pkgbase = python-napalm-git
+	pkgdesc = Network Automation and Programmability Abstraction Layer with Multivendor support
+	pkgver = r4257.08e41b8f
+	pkgrel = 2
+	url = https://github.com/napalm-automation/napalm
+	arch = any
+	license = Apache
+	checkdepends = python-tox
+	makedepends = python-setuptools
+	depends = python
+	depends = python-cffi
+	depends = python-paramiko
+	depends = python-future
+	depends = python-textfsm
+	depends = python-jinja
+	depends = python-netaddr
+	depends = python-pyaml
+	depends = python-netmiko
+	depends = python-junos-eznc
+	depends = python-scp
+	depends = python-lxml
+	depends = python-ciscoconfparse
+	provides = python-napalm
+	conflicts = python-napalm
+	source = git+https://github.com/napalm-automation/napalm.git
+	sha256sums = SKIP
+
+pkgname = python-napalm-git
+
