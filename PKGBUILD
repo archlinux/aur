@@ -2,7 +2,7 @@
 
 pkgname=whatsapp-nativefier-dark
 pkgver=0.20200221002211
-pkgrel=4
+pkgrel=5
 pkgdesc="WhatsApp desktop built with nativefier (electron) using dark theme"
 arch=("armv7l" "i686" "x86_64")
 url="https://web.whatsapp.com"
@@ -13,20 +13,22 @@ makedepends=("imagemagick" "yarn")
 source=(
   "${pkgname}.png"
   "${pkgname}.desktop"
-  "${pkgname}-inject.js")
+  "${pkgname}-inject.js"
+  "package.json"
+  "yarn.lock")
 sha256sums=(
   "f79228902c35740ba202fc74494b3fa851911e466955298b231d7fcfebc63b37"
   "12b72fd82fff48dc8c5a08f7bc070259b9929cf408bf6738133a08508e4d3d09"
   "75bfb9191f68551cdcf9a48871ed69edbab4a503ccde25609123552e9095c0c7"
+  "6b214b951ff556fe2b87bb66bf8d3eb7b8ae7ed1dd0ceef0fa9d2c4ca86e0fff"
+  "77c85afca5dcea2a041a9461ead9700067556f95dc3702602c074260c4d3f047"
 )
 iconsha256sum=${sha256sums[0]}
 tmpdesktopfile="/tmp/whatsapp-nativefier-dark.desktop"
 
 build() {
-  yarn
   cd "${srcdir}"
-
-  ../node_modules/.bin/nativefier \
+  yarn && yarn nativefier \
     --name "WhatsApp" \
     --icon "${pkgname}.png" \
     --width "800px" \
