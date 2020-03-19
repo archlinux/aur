@@ -1,0 +1,16 @@
+pkgbase = microblocks
+	pkgdesc = MicroBlocks is a new programming language inspired by Scratch that runs inside microcontroller boards such as the micro:bit, the NodeMCU and many Arduino boards.
+	pkgver = 0.3.7
+	pkgrel = 1
+	url = http://microblocks.fun
+	install = microblocks.install
+	arch = x86_64
+	groups = 
+	license = MPL2
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/bromagosa/microblocks-site/releases/download/v0.3.7/ublocks-amd64.deb
+	sha512sums = 176a947222568d0d5c4cbadd67a57cd3662ed4db22c9c397fa976693f6fe0b7915faf35bd7d6295f90545a9cbf40d43d152a8970770f316a7438af360bbba540
+
+pkgname = microblocks
+
