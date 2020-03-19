@@ -1,14 +1,14 @@
 pkgbase = php73-xdebug
 	pkgdesc = Xdebug is an extension for PHP to assist with debugging and development
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://xdebug.org/
 	arch = x86_64
 	license = Xdebug
 	depends = php73
 	backup = etc/php73/conf.d/xdebug.ini
-	source = http://pecl.php.net/get/xdebug-2.9.2.tgz
-	sha256sums = 158cce5ff44411128701227ada80933cbd4b03c241a3d0695a309098b3eecc69
+	source = http://pecl.php.net/get/xdebug-2.9.3.tgz
+	sha256sums = a63f567f2238d75a2244c2a4bd6f5abee817280b3567f9006c99481488dc977c
 
 pkgname = php73-xdebug
 
