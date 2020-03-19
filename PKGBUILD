@@ -4,7 +4,7 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=201.6251.24
+_buildver=201.6487.18
 _pkgver=2020.1
 _eap=y
 pkgver="$_pkgver.$_buildver"
@@ -31,8 +31,7 @@ else
 fi
 source=("https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz")
 # The website doesn't provide the checksum atm, so we hard code it in the PKGBUILD for the time being
-#sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
-sha256sums=('8b6d2990d3fc03b9aea2e4ca121ec2a2629e9f0f2b404b603d47eb43c7c6a0de')
+sha256sums=($(curl -s "https://download.jetbrains.com/python/pycharm-community-$_filever.tar.gz.sha256" | cut -d' ' -f1))
 
 
 prepare() {
