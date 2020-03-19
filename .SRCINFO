@@ -1,0 +1,17 @@
+pkgbase = mavlink
+	pkgdesc = Marshalling / communication library for drones.
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://mavlink.io
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	depends = python
+	depends = python-future
+	depends = python-pymavlink
+	source = mavlink-1.0.12::https://github.com/mavlink/mavlink/archive/1.0.12.tar.gz
+	sha256sums = 940ac31416d826f959d7f62fd4696ce6f23cf3e8c71c80a678a33ad93b4bf66d
+
+pkgname = mavlink
+
