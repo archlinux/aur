@@ -1,0 +1,19 @@
+pkgbase = uefitool-bin
+	pkgdesc = UEFI firmware image viewer and editor
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/LongSoft/UEFITool
+	arch = x86_64
+	license = BSD2
+	provides = uefitool=0.27.0
+	provides = uefipatch=0.27.0
+	provides = uefireplace=0.27.0
+	source = https://github.com/LongSoft/UEFITool/releases/download/0.27.0/UEFIPatch_0.27.0_linux_x86_64.zip
+	source = https://github.com/LongSoft/UEFITool/releases/download/0.27.0/UEFIReplace_0.27.0_linux_x86_64.zip
+	source = https://github.com/LongSoft/UEFITool/releases/download/0.27.0/UEFITool_0.27.0_linux_x86_64.zip
+	md5sums = 32b2ec425adbf95896a529c7cf22cc52
+	md5sums = da175c902bf98aab78a79f96036a2057
+	md5sums = 31cc44b9f9bfd28e4ace3d2d752449de
+
+pkgname = uefitool-bin
+
