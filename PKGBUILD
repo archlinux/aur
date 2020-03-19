@@ -3,7 +3,7 @@
 
 pkgname=python-projectq
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Open-source framework for quantum computing'
 arch=('i686' 'x86_64')
 url=https://projectq.ch
@@ -18,7 +18,7 @@ depends=(python
          python-networkx)
 makedepends=(python-setuptools python-sphinx python-sphinx_rtd_theme python-matplotlib)
 source=(https://github.com/ProjectQ-Framework/ProjectQ/archive/v$pkgver.tar.gz)
-sha512sums=('51f4cd220d5769051d807531a544ef15539d91ba5d82274c6ddbc754c6b33419464bb12d845d4a5f2f9d01a4baef53b82f1cde380452c9a70f11b148d96e9d44')
+sha512sums=('2760f75e8adbe788de33ac84f7194cf438c6353ec754dab237a104e98c0b45ee8548f8d2f83a9c68f3e9e1ec82ddd29faeab68d6b71672aa9383f7331969efa5')
 
 build() {
   cd "$srcdir"/ProjectQ-$pkgver/docs
