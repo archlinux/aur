@@ -2,16 +2,14 @@
 
 pkgname=srain
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern IRC client written in GTK."
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://srain.im"
-makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'python-sphinx')
-depends=('glib2' 'gtk3' 'libconfig' 'libsoup' 'libsecret')
-optdepends=(
-    'glib-networking: TLS connection support'
-    )
+makedepends=('python-sphinx')
+depends=('gtk3' 'libconfig' 'libsoup' 'libsecret')
+optdepends=()
 conflicts=('srain')
 provides=('srain')
 source=("https://github.com/SrainApp/${pkgname}/archive/${pkgver}.tar.gz")
