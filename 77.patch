@@ -1,0 +1,407 @@
+From 75da5c38c0f753269d23a30d599da598b5779b86 Mon Sep 17 00:00:00 2001
+From: Konstantin Shalygin <k0ste@k0ste.ru>
+Date: Tue, 8 Oct 2019 11:25:02 +0700
+Subject: [PATCH] Added TLSRequireCert option: when disabled,
+ LDAP_OPT_X_TLS_REQUIRE_CERT policy is setted to 'never'.
+
+---
+ auth-ldap.conf                            |  3 +++
+ src/TRAuthLDAPConfig.h                    |  8 ++++--
+ src/TRAuthLDAPConfig.m                    | 23 +++++++++++++++--
+ src/TRLDAPConnection.h                    |  7 +++---
+ src/TRLDAPConnection.m                    | 30 ++++++++++++++++++-----
+ src/auth-ldap.m                           | 11 ++++++---
+ tests/TRLDAPConnectionTests.m             |  2 +-
+ tests/data/auth-ldap-mismatched.conf      |  3 +++
+ tests/data/auth-ldap-missing-newline.conf |  3 +++
+ tests/data/auth-ldap-multikey.conf        |  3 +++
+ tests/data/auth-ldap-named.conf           |  4 +++
+ tests/data/auth-ldap-pf.conf              |  3 +++
+ tests/data/auth-ldap-required.conf        |  3 +++
+ tests/data/auth-ldap.conf                 |  3 +++
+ 14 files changed, 89 insertions(+), 17 deletions(-)
+
+diff --git a/auth-ldap.conf b/auth-ldap.conf
+index 300f9c4..a04a882 100644
+--- a/auth-ldap.conf
++++ b/auth-ldap.conf
+@@ -28,6 +28,9 @@
+ 	TLSCertFile	/usr/local/etc/ssl/client-cert.pem
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++	# Validate Certificate
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	# The defaults are usually fine here
+ 	# TLSCipherSuite	ALL:!ADH:@STRENGTH
+diff --git a/src/TRAuthLDAPConfig.h b/src/TRAuthLDAPConfig.h
+index 4aa2c88..e38bbbb 100644
+--- a/src/TRAuthLDAPConfig.h
++++ b/src/TRAuthLDAPConfig.h
+@@ -16,7 +16,7 @@
+  * 3. Neither the name of Landon Fuller nor the names of any contributors
+  *    may be used to endorse or promote products derived from this
+  *    software without specific prior written permission.
+- * 
++ *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+@@ -43,6 +43,7 @@
+     /* LDAP Settings */
+     TRString *_url;
+     BOOL _tlsEnabled;
++    BOOL _tlsReqCertEnabled;
+     BOOL _referralEnabled;
+     int _timeout;
+     TRString *_tlsCACertFile;
+@@ -60,7 +61,7 @@
+     TRString *_pfTable;
+     TRArray *_ldapGroups;
+     BOOL _pfEnabled;
+-	BOOL _passwordISCR;
++    BOOL _passwordISCR;
+ 
+     /* Parser State */
+     TRString *_configFileName;
+@@ -86,6 +87,9 @@
+ - (BOOL) tlsEnabled;
+ - (void) setTLSEnabled: (BOOL) newTLSSetting;
+ 
++- (BOOL) tlsReqCertEnabled;
++- (void) setTLSReqCertEnabled: (BOOL) newTLSReqCertSetting;
++
+ - (TRString *) tlsCACertFile;
+ - (void) setTLSCACertFile: (TRString *) fileName;
+ 
+diff --git a/src/TRAuthLDAPConfig.m b/src/TRAuthLDAPConfig.m
+index ed1a461..4c74214 100644
+--- a/src/TRAuthLDAPConfig.m
++++ b/src/TRAuthLDAPConfig.m
+@@ -17,7 +17,7 @@
+  * 3. Neither the name of Landon Fuller nor the names of any contributors
+  *    may be used to endorse or promote products derived from this
+  *    software without specific prior written permission.
+- * 
++ *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+@@ -65,6 +65,7 @@
+     LF_LDAP_PASSWORD,           /* Associated Password */
+     LF_LDAP_REFERRAL,           /* Enable Referrals */
+     LF_LDAP_TLS,                /* Enable TLS */
++    LF_LDAP_TLS_REQCERT,        /* Enable TLS Require Cert */
+     LF_LDAP_TLS_CA_CERTFILE,    /* TLS CA Certificate File */
+     LF_LDAP_TLS_CA_CERTDIR,     /* TLS CA Certificate Dir */
+     LF_LDAP_TLS_CERTFILE,       /* TLS Client Certificate File */
+@@ -137,6 +138,7 @@
+     { "Password",           LF_LDAP_PASSWORD,           NO,     NO },
+     { "FollowReferrals",    LF_LDAP_REFERRAL,           NO,     NO },
+     { "TLSEnable",          LF_LDAP_TLS,                NO,     NO },
++    { "TLSRequireCert",     LF_LDAP_TLS_REQCERT,        NO,     NO },
+     { "TLSCACertFile",      LF_LDAP_TLS_CA_CERTFILE,    NO,     NO },
+     { "TLSCACertDir",       LF_LDAP_TLS_CA_CERTDIR,     NO,     NO },
+     { "TLSCertFile",        LF_LDAP_TLS_CERTFILE,       NO,     NO },
+@@ -613,6 +615,7 @@ - (void) setKey: (TRConfigToken *) key value: (TRConfigToken *) value {
+             switch (opcodeEntry->opcode) {
+                 int timeout;
+                 BOOL enableTLS;
++                BOOL enableTLSReqCert;
+                 BOOL enableReferral;
+ 
+                 /* LDAP URL */
+@@ -657,6 +660,15 @@ - (void) setKey: (TRConfigToken *) key value: (TRConfigToken *) value {
+                     [self setTLSEnabled: enableTLS];
+                     break;
+ 
++                /* LDAP TLS Require Cert */
++                case LF_LDAP_TLS_REQCERT:
++                    if (![value boolValue: &enableTLSReqCert]) {
++                        [self errorBoolValue: value];
++                        return;
++                    }
++                    [self setTLSReqCertEnabled: enableTLSReqCert];
++                    break;
++
+                 /* LDAP CA Certificate */
+                 case LF_LDAP_TLS_CA_CERTFILE:
+                     [self setTLSCACertFile: [value string]];
+@@ -865,6 +877,14 @@ - (void) setTLSEnabled: (BOOL) newTLSSetting {
+     _tlsEnabled = newTLSSetting;
+ }
+ 
++- (BOOL) tlsReqCertEnabled {
++    return (_tlsReqCertEnabled);
++}
++
++- (void) setTLSReqCertEnabled: (BOOL) newTLSReqCertSetting {
++    _tlsReqCertEnabled = newTLSReqCertSetting;
++}
++
+ - (TRString *) url {
+     return (_url);
+ }
+@@ -999,7 +1019,6 @@ - (TRString *) pfTable {
+     return (_pfTable);
+ }
+ 
+-
+ - (BOOL) pfEnabled {
+     return (_pfEnabled);
+ }
+diff --git a/src/TRLDAPConnection.h b/src/TRLDAPConnection.h
+index 24f0b2f..a0153b0 100644
+--- a/src/TRLDAPConnection.h
++++ b/src/TRLDAPConnection.h
+@@ -16,14 +16,14 @@
+  * 3. Neither the name of Landon Fuller nor the names of any contributors
+  *    may be used to endorse or promote products derived from this
+  *    software without specific prior written permission.
+- * 
++ *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++ * SUBSTITUTE GOODS OR SEfRVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+@@ -47,6 +47,8 @@
+ 
+ - (id) initWithURL: (TRString *) url timeout: (int) timeout;
+ - (BOOL) startTLS;
++- (BOOL) TLSReqCert;
++
+ 
+ - (BOOL) bindWithDN: (TRString *) bindDN password: (TRString *) password;
+ 
+@@ -64,4 +66,3 @@
+ - (BOOL) setTLSCipherSuite: (TRString *) cipherSuite;
+ 
+ @end
+-
+diff --git a/src/TRLDAPConnection.m b/src/TRLDAPConnection.m
+index 42c782f..7785d54 100644
+--- a/src/TRLDAPConnection.m
++++ b/src/TRLDAPConnection.m
+@@ -16,7 +16,7 @@
+  * 3. Neither the name of Landon Fuller nor the names of any contributors
+  *    may be used to endorse or promote products derived from this
+  *    software without specific prior written permission.
+- * 
++ *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+@@ -91,17 +91,18 @@ - (BOOL) setLDAPOption: (int) opt value: (const char *) value connection: (LDAP
+     return true;
+ }
+ 
+-/** 
+- * Always require a valid certificate
+- */    
++/**
++ * Always require a valid certificate.
++ */
+ - (BOOL) setTLSRequireCert {
+     int err;
+     int arg;
+     arg = LDAP_OPT_X_TLS_HARD;
+     if ((err = ldap_set_option(NULL, LDAP_OPT_X_TLS_REQUIRE_CERT, &arg)) != LDAP_SUCCESS) {
+-        [TRLog debug: "Unable to set LDAP_OPT_X_TLS_HARD to %d: %d: %s", arg, err, ldap_err2string(err)];
++        [TRLog debug: "Unable to set LDAP_OPT_X_TLS_REQUIRE_CERT to %d: %d: %s", arg, err, ldap_err2string(err)];
+         return (false);
+     }
++
+     return (true);
+ }
+ 
+@@ -155,6 +156,23 @@ - (void) dealloc {
+     [super dealloc];
+ }
+ 
++/**
++ * Do not require a valid certificate.
++ */
++
++- (BOOL) TLSReqCert {
++    int err;
++    int arg;
++    arg = LDAP_OPT_X_TLS_NEVER;
++
++    if ((err = ldap_set_option(NULL, LDAP_OPT_X_TLS_REQUIRE_CERT, &arg)) != LDAP_SUCCESS) {
++        [TRLog debug: "Unable to set LDAP_OPT_X_TLS_REQUIRE_CERT to %d: %d: %s", arg, err, ldap_err2string(err)];
++        return (NO);
++    }
++
++    return (YES);
++}
++
+ /**
+  * Start TLS on the LDAP connection.
+  */
+@@ -331,7 +349,7 @@ - (BOOL) bindWithDN: (TRString *) bindDN password: (TRString *) password {
+         dnCString = ldap_get_dn(ldapConn, entry);
+         dn = [[TRString alloc] initWithCString: dnCString];
+         ldap_memfree(dnCString);
+-        
++
+         /* Load all attributes and associated values */
+         for (attr = ldap_first_attribute(ldapConn, entry, &ptr); attr != NULL; attr = ldap_next_attribute(ldapConn, entry, ptr)) {
+             TRString *attrName;
+diff --git a/src/auth-ldap.m b/src/auth-ldap.m
+index ca90dee..65ead04 100644
+--- a/src/auth-ldap.m
++++ b/src/auth-ldap.m
+@@ -17,7 +17,7 @@
+  * 3. Neither the name of Landon Fuller nor the names of any contributors
+  *    may be used to endorse or promote products derived from this
+  *    software without specific prior written permission.
+- * 
++ *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+@@ -281,12 +281,12 @@ static BOOL pf_open(struct ldap_ctx *ctx) {
+     }
+ 
+     /* Certificate file */
+-    if ((value = [config tlsCACertFile])) 
++    if ((value = [config tlsCACertFile]))
+         if (![ldap setTLSCACertFile: value])
+             goto error;
+ 
+     /* Certificate directory */
+-    if ((value = [config tlsCACertDir])) 
++    if ((value = [config tlsCACertDir]))
+         if (![ldap setTLSCACertDir: value])
+             goto error;
+ 
+@@ -300,6 +300,11 @@ static BOOL pf_open(struct ldap_ctx *ctx) {
+         if(![ldap setTLSCipherSuite: value])
+             goto error;
+ 
++    /* Do not require a valid certificate */
++    if (![config tlsReqCertEnabled])
++        if (![ldap TLSReqCert])
++            goto error;
++
+     /* Start TLS */
+     if ([config tlsEnabled])
+         if (![ldap startTLS])
+diff --git a/tests/TRLDAPConnectionTests.m b/tests/TRLDAPConnectionTests.m
+index adee3ba..c7a9ed0 100644
+--- a/tests/TRLDAPConnectionTests.m
++++ b/tests/TRLDAPConnectionTests.m
+@@ -18,7 +18,7 @@
+  * 3. Neither the name of Landon Fuller nor the names of any contributors
+  *    may be used to endorse or promote products derived from this
+  *    software without specific prior written permission.
+- * 
++ *
+  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+diff --git a/tests/data/auth-ldap-mismatched.conf b/tests/data/auth-ldap-mismatched.conf
+index 96cf003..7992c17 100644
+--- a/tests/data/auth-ldap-mismatched.conf
++++ b/tests/data/auth-ldap-mismatched.conf
+@@ -20,6 +20,9 @@
+ 	# Client Key
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++  # Require Valid Cert
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	TLSCipherSuite	ALL:!ADH:@STRENGTH
+ </Fred>
+diff --git a/tests/data/auth-ldap-missing-newline.conf b/tests/data/auth-ldap-missing-newline.conf
+index 65f2851..692078b 100644
+--- a/tests/data/auth-ldap-missing-newline.conf
++++ b/tests/data/auth-ldap-missing-newline.conf
+@@ -28,6 +28,9 @@
+ 	# Client Key
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++  # Require Valid Cert
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	TLSCipherSuite	ALL:!ADH:@STRENGTH
+ </LDAP>
+diff --git a/tests/data/auth-ldap-multikey.conf b/tests/data/auth-ldap-multikey.conf
+index 49d8e2b..db515b1 100644
+--- a/tests/data/auth-ldap-multikey.conf
++++ b/tests/data/auth-ldap-multikey.conf
+@@ -21,6 +21,9 @@
+ 	# Client Key
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++  # Require Valid Cert
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	TLSCipherSuite	ALL:!ADH:@STRENGTH
+ </LDAP>
+diff --git a/tests/data/auth-ldap-named.conf b/tests/data/auth-ldap-named.conf
+index 384db18..a0a6737 100644
+--- a/tests/data/auth-ldap-named.conf
++++ b/tests/data/auth-ldap-named.conf
+@@ -19,4 +19,8 @@
+ 
+ 	# Client Key
+ 	#TLSKeyFile	/usr/local/etc/ssl/client-key.pem
++
++  # Require Valid Cert
++	TLSRequireCert no
++
+ </LDAP>
+diff --git a/tests/data/auth-ldap-pf.conf b/tests/data/auth-ldap-pf.conf
+index 3424c07..6ac1820 100644
+--- a/tests/data/auth-ldap-pf.conf
++++ b/tests/data/auth-ldap-pf.conf
+@@ -26,6 +26,9 @@
+ 	# Client Key
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++  # Require Valid Cert
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	TLSCipherSuite	ALL:!ADH:@STRENGTH
+ </LDAP>
+diff --git a/tests/data/auth-ldap-required.conf b/tests/data/auth-ldap-required.conf
+index 86fd9fe..54c1756 100644
+--- a/tests/data/auth-ldap-required.conf
++++ b/tests/data/auth-ldap-required.conf
+@@ -21,6 +21,9 @@
+ 	# Client Key
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++  # Require Valid Cert
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	TLSCipherSuite	ALL:!ADH:@STRENGTH
+ </LDAP>
+diff --git a/tests/data/auth-ldap.conf b/tests/data/auth-ldap.conf
+index 1aca64c..186de54 100644
+--- a/tests/data/auth-ldap.conf
++++ b/tests/data/auth-ldap.conf
+@@ -26,6 +26,9 @@
+ 	# Client Key
+ 	TLSKeyFile	/usr/local/etc/ssl/client-key.pem
+ 
++  # Require Valid Cert
++	TLSRequireCert yes
++
+ 	# Cipher Suite
+ 	TLSCipherSuite	ALL:!ADH:@STRENGTH
+ </LDAP>
