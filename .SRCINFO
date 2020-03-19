@@ -1,0 +1,16 @@
+pkgbase = lg-downloader-git
+	pkgdesc = Tool to flash LG Smartphones and Tablets from their bootloader's download mode.
+	pkgver = 0.1+r13.78a81fc
+	pkgrel = 1
+	url = https://git.replicant.us/contrib/PaulK/lg-downloader/
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libusb
+	source = git://git.replicant.us/PaulK/lg-downloader#commit=78a81fcd61ffaa638c3fe5eb91ba5911ad593c98
+	sha256sums = SKIP
+
+pkgname = lg-downloader-git
+
