@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Deuchnord <jerome@deuchnord.fr>
 
 pkgname=kosmorro
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A program that computes the ephemerides'
 depends=('python>=3.5.0' 'python<4.0.0'
@@ -18,7 +18,7 @@ license=('AGPL3')
 
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/Deuchnord/kosmorro/archive/v${pkgver}.tar.gz"
         "locales.tar.gz")
-sha256sums=("028266ef08972c216da7cdeec64b121e107b7b3e7626745da66d4edbbe889154"
+sha256sums=("126cf7ee5f9015067bc68038b069a70c2e36f3a46be096f75ef69468752f539e"
             "9c6da9824522480b84868cfb182773311e810cbcfb4d28fe9e794b764038b91e")
 
 build() {
