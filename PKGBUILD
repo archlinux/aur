@@ -1,75 +1,61 @@
-# Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
+# Maintainer: Tyler Thorn <firebirdracer79[at]gmail>
+# Adapted from openmpi package by:
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
+# Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
 pkgname=openmpi-slurm
-pkgver=1.8.4
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='High performance message passing library (MPI)'
-arch=(i686 x86_64)
-url='http://www.open-mpi.org'
-license=(custom)
-depends=(libltdl slurm-llnl)
-makedepends=(inetutils valgrind gcc-fortran)
+url='https://www.open-mpi.org'
+arch=('x86_64' 'aarch64')
+license=('custom:OpenMPI')
+depends=('libltdl' 'hwloc' 'openssh' 'zlib' 'libnl')
+makedepends=('inetutils' 'valgrind' 'gcc-fortran')
 optdepends=('gcc-fortran: fortran support')
-options=(staticlibs)
-source=(http://www.open-mpi.org/software/ompi/v1.8/downloads/openmpi-${pkgver}.tar.bz2
-        system_ltdl.patch)
-sha1sums=('88ae39850fcf0db05ac20e35dd9e4cacc75bde4d'
-          'd5f8a3d463f1a1f29ca4725d6fb3b9f8c40799dc')
-
-prepare() {
-   cd openmpi-$pkgver
-
-   # Make sure we use the system ltdl library rather than the ones in the tarball
-   rm -r opal/libltdl
-   patch -p1 < ../system_ltdl.patch
-   ./autogen.pl
-}
+options=('staticlibs')
+source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03')
+sha512sums=('01f773064c575a0fe6ab081c20c5cf07ba1c9eada5ecfe520d14ce2b9fc6d021d0f56a0159fa354fd6c8e2bb7354a272aa8d0063b351f59251deb56474849acc')
 
 build() {
-   cd openmpi-$pkgver
-
-   ./configure --prefix=/usr \
-               --sysconfdir=/etc/openmpi \
-               --enable-mpi-fortran=all \
-               --libdir=/usr/lib/openmpi \
-               --with-threads=posix \
-               --enable-smp-locks \
-               --with-valgrind \
-               --enable-memchecker \
-               --enable-pretty-print-stacktrace \
-               --with-slurm \
-               --with-hwloc=/usr \
-               --with-libltdl=/usr  \
-               FC=/usr/bin/gfortran \
-               LDFLAGS="$LDFLAGS -Wl,-z,noexecstack"
-
-   make
+  cd ${pkgname}-${pkgver}
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc/${pkgname} \
+    --enable-mpi-fortran=all \
+    --libdir=/usr/lib/${pkgname} \
+    --enable-builtin-atomics \
+    --enable-mpi-cxx \
+    --with-valgrind \
+    --enable-memchecker \
+    --enable-pretty-print-stacktrace \
+    --with-slurm \
+    --with-hwloc=/usr \
+    --with-libltdl=/usr  \
+    FC=/usr/bin/gfortran \
+    LDFLAGS="${LDFLAGS} -Wl,-z,noexecstack"
+  make
 }
 
 check() {
-   cd openmpi-$pkgver
-
-   make check
+  cd ${pkgname}-${pkgver}
+  make check
 }
 
 package() {
-   cd openmpi-$pkgver
-   make DESTDIR="$pkgdir" install
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 
-   # FS#28583
-   install -d -m 755 "$pkgdir"/usr/lib/pkgconfig
-   for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-      ln -sf /usr/lib/openmpi/pkgconfig/$i "$pkgdir"/usr/lib/pkgconfig/
-   done
+  # FS#28583
+  install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
+  for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
+    ln -sf "/usr/lib/openmpi/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/"
+  done
 
-   # Openmpi's otfinfo conflicts with the one from texlive
-   mv "$pkgdir"/usr/bin/otfinfo{,mpi}
-
-   # Remove dangling symlink and useless file
-   rm "$pkgdir"/usr/share/vampirtrace/config.log
-
-   install -d -m 755 "$pkgdir"/etc/ld.so.conf.d
-   echo "/usr/lib/openmpi" > "$pkgdir"/etc/ld.so.conf.d/openmpi.conf
-
-   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -dm 755 "${pkgdir}/etc/ld.so.conf.d"
+  echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:

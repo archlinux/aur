@@ -1,9 +1,8 @@
 pkgbase = openmpi-slurm
 	pkgdesc = High performance message passing library (MPI)
-	pkgver = 1.8.4
+	pkgver = 4.0.3
 	pkgrel = 1
-	url = http://www.open-mpi.org
-	arch = i686
+	url = https://www.open-mpi.org
 	arch = x86_64
 	license = custom
 	makedepends = inetutils
@@ -13,10 +12,8 @@ pkgbase = openmpi-slurm
 	depends = slurm-llnl
 	optdepends = gcc-fortran: fortran support
 	options = staticlibs
-	source = http://www.open-mpi.org/software/ompi/v1.8/downloads/openmpi-1.8.4.tar.bz2
-	source = system_ltdl.patch
-	sha1sums = 88ae39850fcf0db05ac20e35dd9e4cacc75bde4d
-	sha1sums = d5f8a3d463f1a1f29ca4725d6fb3b9f8c40799dc
+	source = https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.3.tar.bz2
+	sha256sums = 1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03
 
 pkgname = openmpi-slurm
 
