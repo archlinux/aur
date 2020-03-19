@@ -33,7 +33,7 @@ package_pypy-chainmap() {
   pkgdesc+=" for Pypy"
 
   cd chainmap-$pkgver
-	pypy setup.py install --root="${pkgdir}/" --optimize=1
+  pypy setup.py install --root="${pkgdir}/" --prefix=/opt/pypy --optimize=1
 }
 
 package_pypy3-chainmap() {
@@ -41,5 +41,5 @@ package_pypy3-chainmap() {
   pkgdesc+=" for Pypy 3"
 
   cd pypy3chainmap-$pkgver
-	pypy3 setup.py install --root="${pkgdir}/" --optimize=1
+  pypy3 setup.py install --root="${pkgdir}/" --prefix=/opt/pypy3 --optimize=1
 }
