@@ -1,6 +1,6 @@
 pkgbase = pypy-yaml
-	pkgdesc = Python bindings for YAML, using fast libYAML library (for pypy)
-	pkgver = 3.11
+	pkgdesc = Python bindings for YAML, using fast libYAML library
+	pkgver = 5.3
 	pkgrel = 1
 	url = http://pyyaml.org
 	install = pypy-yaml.install
@@ -9,15 +9,16 @@ pkgbase = pypy-yaml
 	license = MIT
 	makedepends = pypy3
 	makedepends = pypy
-	makedepends = libyaml
-	source = http://pyyaml.org/download/pyyaml/PyYAML-3.11.tar.gz
-	md5sums = f50e08ef0fe55178479d3a618efe21db
+	source = http://pyyaml.org/download/pyyaml/PyYAML-5.3.tar.gz
+	sha256sums = e9f45bd5b92c7974e59bcd2dcc8631a6b6cc380a904725fce7bc08872e691615
 
 pkgname = pypy-yaml
+	pkgdesc = Python bindings for YAML, using fast libYAML library for Pypy
 	depends = pypy
 	depends = libyaml
 
 pkgname = pypy3-yaml
+	pkgdesc = Python bindings for YAML, using fast libYAML library for Pypy 3
 	depends = pypy3
 	depends = libyaml
 
