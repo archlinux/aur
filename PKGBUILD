@@ -13,7 +13,7 @@ depends=('vapoursynth'
          )
 makedepends=('git')
 provides=("vapoursynth-tools-${_plug}"
-          "vapoursynth-plugins-${_plug}"
+          "vapoursynth-plugin-${_plug}"
           )
 conflicts=("vapoursynth-tools-${_plug}"
            "vapoursynth-plugin-${_plug}"
