@@ -1,8 +1,10 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgbase=avisynthplus-git
-pkgname=('avisynthplus-git' 'avisynthplus-docs-git')
-pkgver=v3.5.0.1.g2fd4156e
+pkgname=('avisynthplus-git'
+         'avisynthplus-docs-git'
+         )
+pkgver=v3.5.0.43.g9d1b1cb6
 pkgrel=1
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
@@ -14,6 +16,7 @@ makedepends=('git'
              )
 source=('avisynthplus::git+https://github.com/AviSynth/AviSynthPlus.git')
 sha256sums=('SKIP')
+backup=('etc/avisynth/avisynth.conf')
 
 pkgver() {
   cd avisynthplus
