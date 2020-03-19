@@ -1,26 +1,47 @@
-# Maintainer: Michael Beasley <youvegotmoxie@gmail.com>
+# Maintainer: Fernando Ortiz <nandub+arch@nandub.info>
+# Contributor: Michael Beasley <youvegotmoxie@gmail.com>
 
 pkgbase=pypy-lxml
-pkgname=('pypy-lxml')
-pkgver=3.4.4
+pkgname=('pypy-lxml' 'pypy3-lxml')
+pkgver=4.5.0
 pkgrel=1
-arch=('i686' 'x86_64')
+pkgdesc="The lxml XML toolkit is a Pythonic binding for the C libraries libxml2 and libxslt"
 license=('BSD')
-url="http://lxml.de/"
+arch=('i686' 'x86_64')
 makedepends=('pypy' 'pypy3' 'libxslt')
-source=(http://pypi.python.org/packages/source/l/lxml/lxml-${pkgver}.tar.gz)
-sha1sums=('b210b84551d3ac1cadbcfae2fe553040fc7a61dd')
-pkgdesc="PyPy binding for the libxml2 and libxslt libraries (EXPERIMENTAL!)"
+url="http://lxml.de/"
+source=(https://pypi.python.org/packages/source/l/lxml/lxml-${pkgver}.tar.gz)
+sha256sums=('8620ce80f50d023d414183bf90cc2576c2837b88e00bea3f33ad2630133bbb60')
+
+prepare() {
+  # copy folder, so we can cleanly build for both python versions
+  cp -rup lxml-$pkgver pypy3lxml-$pkgver
+}
+
+build() {
+  # build for pypy
+  cd lxml-$pkgver
+  pypy setup.py build
+
+  # build for pypy3
+  cd ../pypy3lxml-$pkgver
+  pypy3 setup.py build
+}
 
 package_pypy-lxml() {
+   depends=('pypy' 'libxslt')
+   pkgdesc+=" for Pypy"
 
-  cd lxml-${pkgver}
-  pypy setup.py install --root="${pkgdir}" --optimize=1
+   cd lxml-$pkgver
+   pypy setup.py install --prefix=/opt/pypy --root="$pkgdir" --optimize=1
+   install -Dm644 LICENSES.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+}
 
-  install -Dm644 LICENSES.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm644 doc/licenses/BSD.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/BSD.txt
-  install -Dm644 doc/licenses/elementtree.txt \
-    "${pkgdir}"/usr/share/licenses/${pkgname}/elementtree.txt
+package_pypy3-lxml() {
+  depends=('pypy3' 'libxslt')
+  pkgdesc+=" for Pypy 3"
+
+  cd pypy3lxml-$pkgver
+  pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSES.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
