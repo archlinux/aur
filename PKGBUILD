@@ -1,25 +1,26 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 
-pkgname=otf-league-gothic
-_file=64c3ede
-pkgver=20130215
+_fnt_name=league-gothic
+pkgname=otf-$_fnt_name
+pkgver=20140319
+_sha=e6dce2137410648b2229d5d4717de8c1cd5f9b97
 pkgrel=1
-pkgdesc="A revival of Alternate Gothic, originally designed by M.F. Benton."
+pkgdesc='A revival of an old classic, Alternate Gothic #1'
 arch=('any')
-url="http://www.theleagueofmoveabletype.com/league-gothic"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
-source=($pkgname-$pkgver.zip::http://theleagueof.s3.amazonaws.com/downloads/theleagueof-league-gothic-$_file.zip
-        OFL.txt)
-sha1sums=('06b3c3d133ee74fe1a0a4ce5760aa50e78783d58'
-          '5d2bd43577e6c664887781d7e19a6eec6f07bc8b')
+url="https://theleagueofmoveabletype.com/$_fnt_name"
+license=('OFL')
+groups=('lmt-fonts')
+provides=('league-gothic-font')
+conflicts=("ttf-$_fnt_name")
+source=("$pkgname-$pkgver.zip::https://github.com/theleagueof/$_fnt_name/archive/$_sha.zip")
+sha256sums=('f4cc4f754568c4d2b70c3b52a6663677656ee88277901efcdf079b40e8158ab1')
 
 package() {
-  cd "$srcdir/theleagueof-league-gothic-$_file"
-  install -d "$pkgdir/usr/share/fonts/OTF"
-  install -m644 *.otf "$pkgdir/usr/share/fonts/OTF"
-  install -Dm644 ../OFL.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "$_fnt_name-$_sha"
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" *.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" Open\ Font\ License*.markdown
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" readme.markdown
 }
 
 # vim:set ts=2 sw=2 et:
