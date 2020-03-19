@@ -3,7 +3,7 @@
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
 pkgver=v3.0.0.0.gc14204b
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
@@ -34,6 +34,6 @@ package(){
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/${_plug}.py"
 
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
-  install -Dm644 tests.py "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/tests.py"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
+  install -Dm644 tests.py "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/tests.py"
 }

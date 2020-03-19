@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-tools-acsuite-git
 	pkgdesc = Plugin for Vapoursynth: acsuite (GIT version)
 	pkgver = v3.0.0.0.gc14204b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OrangeChannel/acsuite
 	arch = x86_64
 	license = GPL
