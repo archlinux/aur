@@ -2,7 +2,7 @@
 # Contributor: Max Liebkies <mail@maxliebkies.de>
 
 pkgname=powershell
-binaryname=pwsh
+_binaryname=pwsh
 _pkgver=7.0.0
 _pkgnum=${_pkgver:0:1}
 pkgver=${_pkgver/-/.}
@@ -68,23 +68,14 @@ build() {
   dotnet publish --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
 }
 
-# TODO fix tests
-# check() {
-#   cd $srcdir/powershell-native/src/libpsl-native
-#   make test
-#
-#   cd $srcdir/powershell/test/xUnit
-#   dotnet test
-# }
-
 package() {
   mkdir -pv "$pkgdir/opt/microsoft/$pkgname/$_pkgnum"
-  cd $srcdir/$pkgname/src/powershell-unix/bin/Linux/netcoreapp3.1/linux-x64/
+  cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/netcoreapp3.1/linux-x64/"
 
   cp -ar ./ "$pkgdir/opt/microsoft/$pkgname/$_pkgnum/"
 
   mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
   cp LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/opt/microsoft/$pkgname/$_pkgnum/$binaryname" "$pkgdir/usr/bin/$binaryname"
+  ln -s "/opt/microsoft/$pkgname/$_pkgnum/$_binaryname" "$pkgdir/usr/bin/$_binaryname"
 }
