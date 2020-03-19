@@ -1,5 +1,5 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
-# Contributor: Caleb Maclennan <caleb@alerque.com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 # Contributor: Firmicus <firmicus āt gmx dōt net>
 
 _pkgname=ezra
