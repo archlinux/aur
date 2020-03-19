@@ -1,7 +1,7 @@
 pkgbase = msi-keyboard-git
 	pkgdesc = Utility to control MSI Steelseries keyboards, written in C++
 	pkgver = r19.fb57be9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bparker06/msi-keyboard
 	arch = i686
 	arch = x86_64
