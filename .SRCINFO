@@ -1,15 +1,12 @@
 pkgbase = otf-eb-garamond
-	pkgdesc = Digitization of the Garamond shown on the Egenolff-Berner specimen.
+	pkgdesc = Digitization of the Garamond font shown on the Egenolff-Berner specimen.
 	pkgver = 0.016
 	pkgrel = 2
 	url = http://www.georgduffner.at/ebgaramond/
-	install = otf.install
 	arch = any
-	license = custom:OFL
-	depends = fontconfig
-	depends = xorg-font-utils
+	license = OFL
 	source = https://bitbucket.org/georgd/eb-garamond/downloads/EBGaramond-0.016.zip
-	sha1sums = c88ce0551eca9d03954d1cbce54a83d4a4d2b1e2
+	sha256sums = a0b77b405f55c10cff078787ef9d2389a9638e7604d53aa80207fe62e104c378
 
 pkgname = otf-eb-garamond
 

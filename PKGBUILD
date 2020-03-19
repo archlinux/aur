@@ -1,22 +1,20 @@
-# Maintainer: OmeGa <omega [U+0040] mailoo [.] org>
+# Maintainer: Lennard Hofmann <lennard dot hofmann at web dot de>
+# Contributor: OmeGa <omega [U+0040] mailoo [.] org>
 
 pkgname=otf-eb-garamond
 pkgver=0.016
 pkgrel=2
-pkgdesc="Digitization of the Garamond shown on the Egenolff-Berner specimen."
+pkgdesc="Digitization of the Garamond font shown on the Egenolff-Berner specimen."
 arch=('any')
 url="http://www.georgduffner.at/ebgaramond/"
-license=('custom:OFL')
-depends=('fontconfig' 'xorg-font-utils')
-install=otf.install
+license=(OFL)
 source=(https://bitbucket.org/georgd/eb-garamond/downloads/EBGaramond-$pkgver.zip)
-sha1sums=('c88ce0551eca9d03954d1cbce54a83d4a4d2b1e2')
+sha256sums=('a0b77b405f55c10cff078787ef9d2389a9638e7604d53aa80207fe62e104c378')
 
 package() {
-  cd "$srcdir/EBGaramond-$pkgver"
-  install -d "$pkgdir/usr/share/fonts/OTF"
-  install -m644 otf/*.otf "$pkgdir/usr/share/fonts/OTF/"
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "EBGaramond-$pkgver"
+  install -Dm644 otf/*.otf -t "$pkgdir/usr/share/fonts/OTF/"
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set ts=2 sw=2 et:
