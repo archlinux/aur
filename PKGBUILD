@@ -1,8 +1,8 @@
 # Maintainer: Philip May <eniak.info@gmail.com>
 pkgname=pycharm-community-jre
 _appname=pycharm-community
-pkgver=2019.3.3
-pkgrel=2
+pkgver=2019.3.4
+pkgrel=1
 pkgdesc="PyCharm Community Edition IDE for Python with bundled JRE"
 arch=(x86_64)
 url="https://www.jetbrains.com/pycharm/"
@@ -18,7 +18,7 @@ source=(
 )
 noextract=()
 md5sums=(
-  'c146b22111320c5b09915ba712abb813'
+  '5902e860fe58391bba67a002561c3cc6'
   'fc1d48c63947aaa9cee5d5fdc1fa47ec'
   'ce132aabec45ff9c17eaa7d43c4d399d'
 )
