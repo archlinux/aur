@@ -10,7 +10,7 @@ pkgbase = julie-ssh
 	depends = git
 	depends = python3
 	depends = ffmpeg
-	depends = ssh
+	depends = openssh
 	conflicts = julie
 
 pkgname = julie-ssh

@@ -11,7 +11,7 @@ conflicts=(julie)
 
 arch=('any')
 depends=(
-   gnupg xclip git python3 ffmpeg ssh
+   gnupg xclip git python3 ffmpeg openssh
 )
 
 package() {
