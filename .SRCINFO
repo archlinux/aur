@@ -17,6 +17,7 @@ pkgbase = cura-git
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
+	depends = qt5-svg
 	depends = libarcus-git
 	depends = libsavitar
 	depends = uranium-git
