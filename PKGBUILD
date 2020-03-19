@@ -3,7 +3,7 @@
 pkgname=python-tensorflow-addons-cuda-git
 pkgver=r746.25959474
 pkgrel=1
-pkgdesc="Useful extra functionality for TensorFlow 2.x"
+pkgdesc="Useful extra functionality for TensorFlow 2.x, built with CUDA support"
 url="https://github.com/tensorflow/addons"
 arch=('any')
 license=('APACHE')
