@@ -19,7 +19,6 @@ sha256sums=('dba89d3e4eac40cca31468366b371459021ff1f433359297a8c96b1ede11c20b')
 prepare() {
 	cd "$srcdir"/pymunk-$pkgver
 	sed -r 's/^\s*ext_modules =/\0 [] and/' -i setup.py
-	sed -r 's/^\s*cmdclass =/\0 {} or/' -i setup.py
 	sed -r "s#^    libfn = .*#    libfn = '/usr/lib/libchipmunk.so'#" -i pymunk/_libload.py
 
 	cd ..
