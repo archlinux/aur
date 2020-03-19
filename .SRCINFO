@@ -6,6 +6,7 @@ pkgbase = vapoursynth-plugin-median-git
 	arch = x86_64
 	license = unknown
 	makedepends = mercurial
+	makedepends = meson
 	depends = vapoursynth
 	provides = vapoursynth-plugin-median
 	provides = vapoursynth-plugin-median-hg
