@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=blasfeo-git
-pkgver=0.1.1
+pkgver=r1963.f3a8a00
 pkgdesc="Basic linear algebra subroutines for embedded optimization"
 url='https://github.com/giaf/blasfeo'
 arch=('i686' 'x86_64')
@@ -13,6 +13,11 @@ conflicts=('blasfeo')
 _pkgname=blasfeo
 source=("${_pkgname}::git+https://github.com/giaf/blasfeo")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   mkdir -p ${srcdir}/${_pkgname}/build

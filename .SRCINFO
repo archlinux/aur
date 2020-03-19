@@ -1,6 +1,6 @@
 pkgbase = blasfeo-git
 	pkgdesc = Basic linear algebra subroutines for embedded optimization
-	pkgver = 0.1.1
+	pkgver = r1963.f3a8a00
 	pkgrel = 1
 	url = https://github.com/giaf/blasfeo
 	arch = i686
