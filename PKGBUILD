@@ -2,7 +2,7 @@
 
 pkgname=kotatogram-desktop-bin
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Telegram Desktop fork with option to select custom fonts. - Static binaries"
 arch=(x86_64)
 url="https://github.com/kotatogram/kotatogram-desktop"
@@ -33,7 +33,13 @@ source=(
 
 	https://raw.githubusercontent.com/kotatogram/kotatogram-desktop/k$pkgver/lib/xdg/kotatogramdesktop.desktop
 	
-	$url/raw/k$pkgver/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
+	icon16-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon16.png
+	icon32-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon32.png
+	icon48-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon48.png
+	icon64-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon64.png
+	icon128-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon128.png
+	icon256-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon256.png
+	icon512-$pkgver-$pkgrel.png::$url/raw/k$pkgver/Telegram/Resources/art/icon512.png
 
 )
 # Checksums automatically set in CI, see: /.gitlab-ci.yml
@@ -63,7 +69,7 @@ package() {
 	chrpath --delete "$pkgdir/usr/bin/kotatogram-desktop"
 
 	# Desktop launcher
-	install -Dm644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
+	install -Dm644 "$srcdir/icon256-$pkgver-$pkgrel.png" "$pkgdir/usr/share/pixmaps/kotatogram.png"
 	install -Dm644 "$srcdir/kotatogramdesktop.desktop" "$pkgdir/usr/share/applications/kotatogramdesktop.desktop"
 	
 	# Icons
@@ -71,6 +77,6 @@ package() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		install -d "$icon_dir"
-		install -m644 "$srcdir/icon${icon_size}.png" "$icon_dir/kotatogram.png"
+		install -m644 "$srcdir/icon${icon_size}-$pkgver-$pkgrel.png" "$icon_dir/kotatogram.png"
 	done
 }
