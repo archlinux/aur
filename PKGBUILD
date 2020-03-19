@@ -15,8 +15,6 @@ makedepends=('git'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}"
-           'vapoursynth-plugin-flash3kyuu_deband'
-           'vapoursynth-plugin-f3kdb'
            )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_f3kdb.git"
         'esee.patch'
