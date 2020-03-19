@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r344468.c6a38957a7e
+pkgver=11.0.0_r345726.98223f7931f
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -96,7 +96,6 @@ build() {
         -D LLVM_BUILD_LLVM_DYLIB=ON \
         -D LLVM_LINK_LLVM_DYLIB=ON \
         -D LLVM_INSTALL_UTILS=ON \
-        -D LLVM_BUILD_TESTS=ON \
         -D LLVM_BUILD_DOCS=ON \
         -D LLVM_ENABLE_DOXYGEN=OFF \
         -D LLVM_ENABLE_SPHINX=ON \
@@ -106,7 +105,7 @@ build() {
         -D LLVM_VERSION_SUFFIX="" \
         -D POLLY_ENABLE_GPGPU_CODEGEN=ON \
         -D LLDB_USE_SYSTEM_SIX=1 \
-        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang" \
+        -D LLVM_ENABLE_PROJECTS="polly;lldb;lld;compiler-rt;clang-tools-extra;clang"
 
     ninja $NINJAFLAGS all ocaml_doc
 }
