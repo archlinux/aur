@@ -8,9 +8,7 @@ pkgdesc="Tools for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url="https://github.com/OrangeChannel/${_plug}"
 license=('GPL')
-depends=('vapoursynth-plugin-acsuite-git'
-         'mkvtoolnix'
-         )
+depends=('vapoursynth-plugin-acsuite-git')
 makedepends=('git')
 provides=("vapoursynth-tools-${_plug}")
 conflicts=("vapoursynth-tools-${_plug}")

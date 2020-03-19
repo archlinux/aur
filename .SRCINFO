@@ -7,7 +7,6 @@ pkgbase = vapoursynth-tools-ocsuite-git
 	license = GPL
 	makedepends = git
 	depends = vapoursynth-plugin-acsuite-git
-	depends = mkvtoolnix
 	provides = vapoursynth-tools-ocsuite
 	conflicts = vapoursynth-tools-ocsuite
 	source = ocsuite::git+https://github.com/OrangeChannel/ocsuite.git
