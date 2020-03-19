@@ -1,7 +1,7 @@
 # Maintainer: Zanny <lordzanny@gmail.com>
 pkgname=vkquake2
 _remote=vkQuake2
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="id Software's Quake 2 v3.21 with Vulkan support"
 arch=(i686 x86_64)
@@ -13,7 +13,7 @@ install="$pkgname.install"
 source=("https://github.com/kondrak/$_remote/archive/$pkgver.tar.gz"
         'quake2.png'
         'vkquake2.desktop')
-sha256sums=('f0877b1f70551577a9da861b9232cf03b2a5189951d09ef692b3f07cc9bf6252'
+sha256sums=('47f588cf424e12a1ecaf7dccf1d8001eebc7d6b18a6916aa7f416bab75247999'
             'f7ca0b94414770903248c193a28e4c3e0d25faf31aab53e86001395f5526e4f6'
             '6c7a493f782e8bf4e9b79f0654054207f4d11c36f4cea217dd2295a1297ff27b')
 _build=release #unset for debug
