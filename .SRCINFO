@@ -1,6 +1,6 @@
 pkgbase = jre
 	pkgdesc = Oracle Java Runtime Environment
-	pkgver = 13.0.2
+	pkgver = 14
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	install = jre.install
@@ -13,26 +13,26 @@ pkgbase = jre
 	depends = libxrender
 	depends = libnet
 	optdepends = alsa-lib: for basic sound support
-	provides = java-runtime=13
-	provides = java-runtime-headless=13
-	provides = java-runtime-jre=13
-	provides = java-runtime-headless-jre=13
-	backup = etc/java13-jre/management/jmxremote.access
-	backup = etc/java13-jre/management/jmxremote.password.template
-	backup = etc/java13-jre/management/management.properties
-	backup = etc/java13-jre/security/policy/limited/default_US_export.policy
-	backup = etc/java13-jre/security/policy/limited/default_local.policy
-	backup = etc/java13-jre/security/policy/limited/exempt_local.policy
-	backup = etc/java13-jre/security/policy/unlimited/default_US_export.policy
-	backup = etc/java13-jre/security/policy/unlimited/default_local.policy
-	backup = etc/java13-jre/security/policy/README.txt
-	backup = etc/java13-jre/security/java.policy
-	backup = etc/java13-jre/security/java.security
-	backup = etc/java13-jre/logging.properties
-	backup = etc/java13-jre/net.properties
-	backup = etc/java13-jre/sound.properties
-	source = https://download.oracle.com/otn-pub/java/jdk/13.0.2+8/d4173c853231432d94f001e99d882ca7/jdk-13.0.2_linux-x64_bin.tar.gz
-	sha256sums = e2214a723d611b4a781641061a24ca6024f2c57dbd9f75ca9d857cad87d9475f
+	provides = java-runtime=14
+	provides = java-runtime-headless=14
+	provides = java-runtime-jre=14
+	provides = java-runtime-headless-jre=14
+	backup = etc/java14-jre/management/jmxremote.access
+	backup = etc/java14-jre/management/jmxremote.password.template
+	backup = etc/java14-jre/management/management.properties
+	backup = etc/java14-jre/security/policy/limited/default_US_export.policy
+	backup = etc/java14-jre/security/policy/limited/default_local.policy
+	backup = etc/java14-jre/security/policy/limited/exempt_local.policy
+	backup = etc/java14-jre/security/policy/unlimited/default_US_export.policy
+	backup = etc/java14-jre/security/policy/unlimited/default_local.policy
+	backup = etc/java14-jre/security/policy/README.txt
+	backup = etc/java14-jre/security/java.policy
+	backup = etc/java14-jre/security/java.security
+	backup = etc/java14-jre/logging.properties
+	backup = etc/java14-jre/net.properties
+	backup = etc/java14-jre/sound.properties
+	source = https://download.oracle.com/otn-pub/java/jdk/14+36/076bab302c7b4508975440c56f6cc26a/jdk-14_linux-x64_bin.tar.gz
+	sha256sums = 4639bbaecc9cc606f1a4b99fda1efcaefcbf57a7025b3828b095093a6c866afd
 
 pkgname = jre
 
