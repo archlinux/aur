@@ -1,0 +1,26 @@
+#!/bin/sh
+
+post_install() {
+  echo ":: If this is a clean install you need to initialize the MariaDB data directory"
+  echo "   prior to starting the service. This can be done with mysql_install_db command, e.g.:"
+  echo "   mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql"
+  echo
+  echo "   If instead MariaDB was downgraded (eg. 10.5 -> 10.3) or upgraded (eg. 10.2 -> 10.3)"
+  echo "   to a new feature release run this command instead to update the data:"
+  echo "   systemctl restart mariadb.service && mysql_upgrade -u root -p"
+
+}
+
+post_upgrade() {
+    echo ":: If MariaDB was downgraded (eg. 10.5 -> 10.3) or upgraded (eg. 10.2 -> 10.3)"
+    echo "   to a new feature release run this to update the data:"
+    echo "   systemctl restart mariadb.service && mysql_upgrade -u root -p"
+}
+
+post_remove() {
+    echo ":: If MariaDB is to be upgraded to a new feature release (eg. 10.3 -> 10.5)"
+    echo "   after this uninstall do not run 'mysql_install_db ...' after the upgrade."
+    echo "   Run this command after the upgrade instead to update the data:"
+    echo "   systemctl restart mariadb.service && mysql_upgrade -u root -p"
+
+}

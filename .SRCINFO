@@ -1,0 +1,83 @@
+pkgbase = mariadb103
+	pkgdesc = Fast SQL database server, version 10.3
+	pkgver = 10.3.22
+	pkgrel = 1
+	url = https://mariadb.org/
+	arch = x86_64
+	license = GPL
+	makedepends = boost
+	makedepends = bzip2
+	makedepends = cmake
+	makedepends = jemalloc
+	makedepends = inetutils
+	makedepends = libaio
+	makedepends = libxml2
+	makedepends = lz4
+	makedepends = lzo
+	makedepends = openssl
+	makedepends = systemd
+	makedepends = zlib
+	makedepends = zstd
+	source = https://mirrors.n-ix.net/mariadb/mariadb-10.3.22/source/mariadb-10.3.22.tar.gz
+	source = https://mirrors.n-ix.net/mariadb/mariadb-10.3.22/source/mariadb-10.3.22.tar.gz.asc
+	source = 0001-arch-specific.patch
+	source = 0002-systemd-sysusers-tmpfiles.patch
+	source = 0004-do-not-break-main-configuration-with-instantiated-one.patch
+	source = 0005-fix-galera_recovery-with-fs.protected_regular-enabled.patch
+	validpgpkeys = 199369E5404BD5FC7D2FE43BCBCB082A1BB943DB
+	sha256sums = 3200055dbdc27746981b3bb4bc182e2cb79dcf28ea88014b641a5b81280ccec7
+	sha256sums = SKIP
+	sha256sums = 5b74e328e75369dfb68491a06dd53bd736e34f87281103ae0dd2f50401dc70d3
+	sha256sums = 1cd009b473d5965c7cbe6d48fff272030a2ccdd9c7e67b4f837d03252786a09a
+	sha256sums = e8fecec204a7832948093c8ce5dc81808a8564f54854e57473b448ebc0cc4ff3
+	sha256sums = 66e0acac7436fd8925710ef5cc66ba1a8f63a385ce374f01ae83096cc33d97a0
+
+pkgname = mariadb103-libs
+	pkgdesc = MariaDB libraries, version 10.3
+	depends = bzip2
+	depends = libaio
+	depends = lz4
+	depends = lzo
+	depends = openssl
+	depends = xz
+	depends = zlib
+	provides = libmariadbclient
+	provides = mariadb-connector-c
+	provides = mariadb-libs
+	conflicts = libmysqlclient
+	conflicts = libmariadbclient
+	conflicts = mariadb-connector-c
+	conflicts = mariadb-libs
+	replaces = libmariadbclient
+	replaces = mariadb-libs
+
+pkgname = mariadb103-clients
+	pkgdesc = MariaDB client tools, version 10.3
+	depends = mariadb103-libs=10.3.22
+	depends = jemalloc
+	provides = mysql-clients=10.3.22
+	provides = mariadb-clients=10.3.22
+	conflicts = mysql-clients
+	conflicts = mariadb-clients
+
+pkgname = mariadb103
+	pkgdesc = Fast SQL database server, version 10.3
+	install = mariadb103.install
+	depends = mariadb103-clients=10.3.22
+	depends = inetutils
+	depends = systemd-libs
+	depends = libxml2
+	depends = zstd
+	optdepends = galera: for MariaDB cluster with Galera WSREP
+	optdepends = perl-dbd-mysql: for mysqlhotcopy, mysql_convert_table_format and mysql_setpermission
+	provides = mysql=10.3.22
+	provides = mariadb=10.3.22
+	conflicts = mysql
+	conflicts = mariadb
+	options = emptydirs
+	backup = etc/mysql/my.cnf
+	backup = etc/mysql/my.cnf.d/client.cnf
+	backup = etc/mysql/my.cnf.d/enable_encryption.preset
+	backup = etc/mysql/my.cnf.d/mysql-clients.cnf
+	backup = etc/mysql/my.cnf.d/server.cnf
+
