@@ -26,5 +26,5 @@ pkgver() {
 package() {
     cd "asyncqt"
     python setup.py install --root="$pkgdir/" --optimize=1
-    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+    install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
