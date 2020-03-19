@@ -1,0 +1,14 @@
+pkgbase = notion-nativefier
+	pkgdesc = The all-in-one workspace for your notes, tasks, wikis, and databases
+	pkgver = 2020.03.18
+	pkgrel = 1
+	url = https://notion.so
+	arch = any
+	license = custom
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = nodejs-nativefier
+	depends = electron
+
+pkgname = notion-nativefier
+
