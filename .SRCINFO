@@ -1,33 +1,33 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.5.9.arch1
-	pkgrel = 2
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.9-arch1
+	pkgver = 5.5.10.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.10-arch1
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.5.9.arch1-2-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.5.9.arch1-2-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.5.9.arch1-2-x86_64.pkg.tar.zst
-	sha256sums = d41a208b0a71593a7b15adf33f81c7f14e86f82117914a42b07f34105b439081
-	sha256sums = 7a451d42e9aa86ad27b46e1151d84309ab62b10a2c6b2416c10a24de10726429
-	sha256sums = 0e73ec302e16714778df86d1f3727be03e0321b5ff9d3e0120e30f332a6ee084
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-5.5.10.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-headers-5.5.10.arch1-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-docs-5.5.10.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = c00f98566307707497cd25f51a00987128fd4d451404b011171a086e917aa28a
+	sha256sums = 4830168847c48bb77a4be329c8707d6b7dca5b1bee293c10e3262ef742e39958
+	sha256sums = 773b960a628a5f3bce68dd5ea989644462bd5352b7c23154b133191a1640a249
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.5.9.arch1-2-bin
-	depends = linux5.5.9.arch1-2-bin
+	pkgdesc = Dummy package depending on linux5.5.10.arch1-1-bin
+	depends = linux5.5.10.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.5.9.arch1-2-headers-bin
-	depends = linux5.5.9.arch1-2-headers-bin
+	pkgdesc = Dummy package depending on linux5.5.10.arch1-1-headers-bin
+	depends = linux5.5.10.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.5.9.arch1-2-docs-bin
-	depends = linux5.5.9.arch1-2-docs-bin
+	pkgdesc = Dummy package depending on linux5.5.10.arch1-1-docs-bin
+	depends = linux5.5.10.arch1-1-docs-bin
 
-pkgname = linux5.5.9.arch1-2-bin
-	pkgdesc = The Linux kernel and modules, version 5.5.9-arch1-2
+pkgname = linux5.5.10.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.5.10-arch1-1
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.5.9.arch1-2-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux
 
-pkgname = linux5.5.9.arch1-2-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.5.9-arch1-2
+pkgname = linux5.5.10.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.5.10-arch1-1
 	conflicts = linux-headers
 
-pkgname = linux5.5.9.arch1-2-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.5.9-arch1-2
+pkgname = linux5.5.10.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.5.10-arch1-1
 	conflicts = linux-docs
 
