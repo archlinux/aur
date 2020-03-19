@@ -14,9 +14,9 @@
 # SOME MORE NOTES:
 #
 # This package is huge. The download alone is a ~27GB .tar.gz, which decompresses to ~30GB,
-# thus the final package with compression disabled is another 30GB. Reserve 150GB in total for building.
+# and the final zstd-compressed package is another 16GB. Reserve ~80GB in total for building.
 #
-# It can also take about an hour to build, being mostly limited by I/O and single-thread
+# It can also take up to two hours to build, being mostly limited by I/O and single-thread
 # performance. `namcap` takes another 30 minutes, make sure you're not running that automatically.
 #
 # It *also* requires a reasonably ugly hack to build: since package() is run under fakeroot,
@@ -28,7 +28,7 @@
 pkgname=vivado
 pkgver=2019.2
 _more_ver=1106_2127
-pkgrel=2
+pkgrel=3
 pkgdesc="FPGA/CPLD design suite for Xilinx devices"
 url="https://www.xilinx.com/products/design-tools/vivado.html"
 arch=('x86_64')
@@ -55,10 +55,10 @@ md5sums=('e2b2762964ef5f014591b13d77d823ab'
          '69d14ad64f6ec44e041eaa8ffcb6f87c'
          'b7cad6d39ef5293d4f433b8c9959f486'
          '44bb51e1c8832f001cb7d21b90cb5796'
-         '40d60bc80129f8e7fe7df56ec2605ebf')
+         '4d37975f586923ad02a50056ff569703')
 
+# takes forever for probably minimal gain
 options=('!strip')
-PKGEXT=".pkg.tar"
 
 prepare() {
 	# https://git.archlinux.org/pacman.git/commit/?id=349c22d043290ccd0cce9f30981f5415e295442a
@@ -97,5 +97,8 @@ package() {
 	# clean up artefacts, remove leading $pkgdir from paths
 	rm -rf "$pkgdir/opt/Xilinx/.xinstall/"
 	find "$pkgdir/opt/Xilinx/" -name '*settings64*' -exec sed -i -e "s|$pkgdir||g" '{}' \+
-}
 
+	# Save space for subsequent packaging, checking etc
+	cd ..
+	rm -rf "Xilinx_Vivado_${pkgver}_${_more_ver}"
+}

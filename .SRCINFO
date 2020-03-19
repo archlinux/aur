@@ -1,7 +1,7 @@
 pkgbase = vivado
 	pkgdesc = FPGA/CPLD design suite for Xilinx devices
 	pkgver = 2019.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.xilinx.com/products/design-tools/vivado.html
 	arch = x86_64
 	license = custom
@@ -24,7 +24,7 @@ pkgbase = vivado
 	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
 	md5sums = b7cad6d39ef5293d4f433b8c9959f486
 	md5sums = 44bb51e1c8832f001cb7d21b90cb5796
-	md5sums = 40d60bc80129f8e7fe7df56ec2605ebf
+	md5sums = 4d37975f586923ad02a50056ff569703
 
 pkgname = vivado
 
