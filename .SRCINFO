@@ -11,7 +11,6 @@ pkgbase = vapoursynth-tools-acsuite-git
 	provides = vapoursynth-tools-acsuite
 	provides = vapoursynth-plugin-acsuite-git
 	conflicts = vapoursynth-tools-acsuite
-	conflicts = vapoursynth-plugin-acsuite
 	conflicts = vapoursynth-plugin-acsuite-git
 	source = acsuite::git+https://github.com/OrangeChannel/acsuite.git
 	sha256sums = SKIP
