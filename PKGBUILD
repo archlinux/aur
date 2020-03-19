@@ -3,8 +3,8 @@
 # PRs/Issues: https://github.com/bbrks/aur-portainer-bin
 
 pkgname=portainer-bin
-pkgver=1.23.1
-pkgrel=2
+pkgver=1.23.2
+pkgrel=1
 epoch=
 pkgdesc="A lightweight docker management UI"
 arch=('x86_64')
@@ -17,8 +17,8 @@ source=("portainer.service"
         "portainer-${pkgver}-src.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/portainer-${pkgver}-linux-amd64.tar.gz")
 sha256sums=('38f8e91194fb3c07275b26a7b4a0215bab454baa556b0fece37cdce58317b16e'
-            'a2b2942e3c5a079822a9d88d611f3789d312c2f673f4554fca0be486fe4aff70'
-            'e161fdc6c54a2feb73ced0ef8369aaf216531b807f30269ec1a28e13a8ff9397')
+            'f0dbfece41afd2ca844936033adff58f37a105bfc9e7ef99007c72916b898e1d'
+            '8ef6969c323698c8894c7a87d1c6ac4c52b425414996e1f4eed7035bffff017d')
 
 package() {
   install -Dm644 "${srcdir}/portainer-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -30,4 +30,3 @@ package() {
 
   install -Dm644 "portainer.service" "${pkgdir}/usr/lib/systemd/system/portainer.service"
 }
-
