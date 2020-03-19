@@ -17,7 +17,7 @@ source=(
   https://tukaani.org/$_pkgname/$_pkgname-$pkgver.tar.gz{,.sig}
 )
 sha256sums=(
-  'b512f3b726d3b37b6dc4c8570e137b9311e7552e8ccbab4d39d47ce5f4177145'
+  'f6f4910fd033078738bd82bfba4f49219d03b17eb0794eb91efbae419f4aba10'
   'SKIP'
 )
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620')
