@@ -6,6 +6,8 @@ After=pcscd.service
 [Service]
 Type=simple
 ExecStart=/usr/local/share/NHIICC/mLNHIICC
+PrivateTmp=true
+DynamicUser=true
 
 [Install]
 WantedBy=multi-user.target
