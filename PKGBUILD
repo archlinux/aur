@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
 license=('GPL3')
 depends=('avahi' "bctoolbox=$pkgver")
-makedepends=('git')
+makedepends=('cmake')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/BelledonneCommunications/belle-sip/archive/$pkgver.tar.gz")
 sha256sums=('3ac7051ea6ac758cccbf1483a5dd6cda4293b5cde1370a3f0d298e3a6f0ee032')

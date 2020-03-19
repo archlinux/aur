@@ -5,7 +5,7 @@ pkgbase = belle-sip
 	url = https://github.com/BelledonneCommunications/belle-sip/
 	arch = x86_64
 	license = GPL3
-	makedepends = git
+	makedepends = cmake
 	depends = avahi
 	depends = bctoolbox=4.3.1
 	options = !emptydirs
