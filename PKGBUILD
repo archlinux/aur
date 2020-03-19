@@ -68,6 +68,14 @@ build() {
   dotnet publish --configuration Linux "src/powershell-unix/" --output bin --runtime "linux-x64"
 }
 
+check() {
+  cd "$srcdir/powershell-native/src/libpsl-native"
+  make test
+
+  cd "$srcdir/powershell/test/xUnit"
+  dotnet test
+}
+
 package() {
   mkdir -pv "$pkgdir/opt/microsoft/$pkgname/$_pkgnum"
   cd "$srcdir/$pkgname/src/powershell-unix/bin/Linux/netcoreapp3.1/linux-x64/"
