@@ -1,7 +1,7 @@
 pkgbase = rocm-dev
 	pkgdesc = ROCm Dev - Metapackage for the ROCm Development Stack
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
 	depends = rocm-comgr
@@ -12,6 +12,7 @@ pkgbase = rocm-dev
 	depends = rocm-cmake
 	depends = rocm-device-libs
 	depends = rocm-smi
+	depends = rocprofiler
 	depends = rocr-debug-agent
 	depends = rocm-utils
 
