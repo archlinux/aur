@@ -1,0 +1,14 @@
+pkgbase = gokit-cli-bin
+	pkgdesc = The goal of the gokit cli is to be a tool that you can use while you develop your microservices with gokit
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/kujtimiihoxha/kit
+	arch = x86_64
+	license = MIT
+	provides = gokit
+	provides = gokit-cli
+	source = https://github.com/kujtimiihoxha/kit/releases/download/v0.1.1/kit_0.1.1_Linux_x86_64.tar.gz
+	md5sums = 730548d8733a12317661b9e0b945985e
+
+pkgname = gokit-cli-bin
+
