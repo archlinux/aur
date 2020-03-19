@@ -2,7 +2,7 @@
 # Contributor: Edmund Lodewijks <e.lodewijks@gmail.com>
 
 pkgname=caja-deja-dup-bzr
-pkgver=0.0.8
+pkgver=0.0.6.r22
 pkgrel=1
 pkgdesc="Deja Dup extension for Caja File Browser"
 url="https://launchpad.net/deja-dup-caja"
@@ -14,7 +14,7 @@ makedepends=('bzr' 'python2-distutils-extra')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::bzr+lp:deja-dup-caja")
-md5sums=('6db533bbe1f101bf2fe3c05deca0d2e6')
+md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-*}
