@@ -1,6 +1,6 @@
 pkgbase = mtprotoproxy
 	pkgdesc = Telegram MTProto proxy written in pure python
-	pkgver = 1.0.9
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/alexbers/mtprotoproxy
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = mtprotoproxy
 	depends = python
 	depends = python-pycryptodome
 	backup = etc/mtprotoproxy.conf
-	source = https://github.com/alexbers/mtprotoproxy/archive/v1.0.9.tar.gz
+	source = https://github.com/alexbers/mtprotoproxy/archive/v1.1.0.tar.gz
 	source = mtprotoproxy.service
-	sha256sums = 511ca2cba9af9eb047cb683746b9e3f5260f94994aa67b13ea190c3c895a76b3
+	sha256sums = bfeec6d84d896fc79d40cb73fd3c3af4fc4c5fcf2d3fc67b5710d64a1ed58095
 	sha256sums = cd993b52610d68361a3faf9500b744f5d5e4e8eb3e79effc36098576f24b950c
 
 pkgname = mtprotoproxy
