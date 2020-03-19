@@ -1,7 +1,7 @@
 pkgbase = feathers-cli
 	pkgdesc = The command line interface for scaffolding Feathers applications
 	pkgver = 4.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/feathersjs/feathers
 	arch = any
 	license = MIT
