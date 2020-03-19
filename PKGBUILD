@@ -3,7 +3,7 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=4.2.0
+pkgver=4.3.0
 _attnum=3473464
 pkgrel=2
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
@@ -14,7 +14,7 @@ depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'eccodes' 'python'
 optdepends=('libaec' 'odb_api')
 makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos' 'python-jinja')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz)
-md5sums=('fddb1cc7090472a702926dc8d56bcfae')
+md5sums=('e5b1f222fe8a8766a7cfdd59ce7b3820')
 
 build() {
   cd "$srcdir/${Pkgname}-${pkgver}-Source"
@@ -32,7 +32,7 @@ build() {
     -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
-    -DENABLE_METVIEW=1 -DENABLE_QT5=1 -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
+    -DENABLE_METVIEW=1 -DENABLE_QT5=1 -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
       sed -i magics.pc-pkg-config-build.cmake -e '/REPLACE/s/++/\\\\+\\\\+/'
   make || return 1
 }
