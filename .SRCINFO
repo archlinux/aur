@@ -1,0 +1,19 @@
+pkgbase = brother-mfc-l9570cdw
+	pkgdesc = LPR and CPUS driver for the Brother MFC-L9570CDW
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://support.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom:brother commercial license
+	source = https://download.brother.com/welcome/dlf104309/mfcl9570cdwlpr-1.3.0-0.i386.rpm
+	source = https://download.brother.com/welcome/dlf104310/mfcl9570cdwcupswrapper-1.4.0-0.i386.rpm
+	source = cupswrappermfcl9570cdw.patch
+	md5sums = bff7c86197ed72d4f2f3b9114c439979
+	md5sums = b74e4f7df61ee83c72c8cef5ff358e61
+	md5sums = a5acced898f21a3ebde0b671b09336de
+	depends_x86_64 = lib32-glibc
+
+pkgname = brother-mfc-l9570cdw
+
