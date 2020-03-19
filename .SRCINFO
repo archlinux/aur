@@ -1,0 +1,13 @@
+pkgbase = qahiri-font
+	pkgdesc = A manuscript Kufic typeface
+	pkgver = 1.006
+	pkgrel = 1
+	url = https://alif-type.github.io/qahiri/
+	arch = any
+	license = AGPL3
+	provides = qahiri-font
+	source = https://github.com/alif-type/qahiri/releases/download/v1.006/Qahiri-1.006.zip
+	sha256sums = d520a22bae626e68d492c81076b2c300621a8c2ade8d669164113424774d86d3
+
+pkgname = otf-qahiri
+
