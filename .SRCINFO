@@ -1,0 +1,20 @@
+pkgbase = pypy-chainmap
+	pkgdesc = Backport/clone of ChainMap
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://bitbucket.org/jeunice/chainmap
+	arch = any
+	license = PSF
+	makedepends = pypy-setuptools
+	makedepends = pypy3-setuptools
+	source = https://files.pythonhosted.org/packages/source/c/chainmap/chainmap-1.0.3.tar.gz
+	sha256sums = e42aaa4b3e2f66102a11bfd563069704bfbfd84fdcb517b564effd736bf53cd9
+
+pkgname = pypy-chainmap
+	pkgdesc = Backport/clone of ChainMap for Pypy
+	depends = pypy
+
+pkgname = pypy3-chainmap
+	pkgdesc = Backport/clone of ChainMap for Pypy 3
+	depends = pypy3
+
