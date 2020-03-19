@@ -1,5 +1,5 @@
 pkgbase = brother-mfc-l9570cdw
-	pkgdesc = LPR and CPUS driver for the Brother MFC-L9570CDW
+	pkgdesc = LPR and CUPS driver for the Brother MFC-L9570CDW
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://support.brother.com
