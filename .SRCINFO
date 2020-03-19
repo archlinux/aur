@@ -1,14 +1,14 @@
 pkgbase = eccodes
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
-	pkgver = 2.14.1
+	pkgver = 2.17.0
 	pkgrel = 1
 	url = https://software.ecmwf.int/wiki/display/ECC/ecCodes+Home
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = gcc-fortran
-	makedepends = python2
-	makedepends = python2-numpy
+	makedepends = python
+	makedepends = python-numpy
 	makedepends = cmake
 	depends = openjpeg
 	depends = libpng
@@ -18,8 +18,8 @@ pkgbase = eccodes
 	optdepends = jasper: as an alternative to openjpeg
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
-	source = http://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-2.14.1-Source.tar.gz
-	md5sums = 839abfaebe3512adbc28392a37e2997e
+	source = http://software.ecmwf.int/wiki/download/attachments/45757960/eccodes-2.17.0-Source.tar.gz
+	md5sums = 36a8c822e9a5eb0d70790354ae7fdd12
 
 pkgname = eccodes
 
