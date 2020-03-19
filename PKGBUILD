@@ -6,7 +6,7 @@
 pkgbase=pypy-zope-event
 pkgname=('pypy-zope-event' 'pypy3-zope-event')
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a simple event system"
 arch=(any)
 license=('ZPL')
@@ -46,7 +46,7 @@ package_pypy-zope-event() {
 
 package_pypy3-zope-event() {
   depends=('pypy3')
-  pkg_desc+=" for Pypy 3"
+  pkgdesc+=" for Pypy 3"
 
   cd pypy3zope.event-$pkgver
   pypy3 setup.py install --prefix=/opt/pypy3 --root="$pkgdir/" --optimize=1

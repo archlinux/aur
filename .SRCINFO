@@ -1,7 +1,7 @@
 pkgbase = pypy-zope-event
 	pkgdesc = Provides a simple event system
 	pkgver = 4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zopefoundation/zope.event
 	arch = any
 	license = ZPL
@@ -15,5 +15,6 @@ pkgname = pypy-zope-event
 	depends = pypy
 
 pkgname = pypy3-zope-event
+	pkgdesc = Provides a simple event system for Pypy 3
 	depends = pypy3
 
