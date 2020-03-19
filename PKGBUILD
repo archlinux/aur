@@ -4,8 +4,8 @@
 
 _gemname=method_source
 pkgname=ruby-$_gemname
-pkgver=0.9.2
-pkgrel=4
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='retrieve the sourcecode for a method'
 arch=('any')
 url='https://github.com/banister/method_source'
@@ -15,7 +15,7 @@ makedepends=('ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('2cb7d76fc3b895ad0cd8c69c2ca1db63c9ad78d6')
+sha1sums=('dd5cac56b5867d2bffc7a76a60fe5b54d8c88538')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
