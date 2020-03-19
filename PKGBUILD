@@ -4,7 +4,7 @@ _target=aarch64-linux-gnu
 
 _pkgname=xz
 pkgname=$_target-$_pkgname
-pkgver=5.2.4
+pkgver=5.2.5
 pkgrel=1
 pkgdesc='Library and command line tools for XZ and LZMA compressed files (ARM64)'
 arch=(x86_64)
