@@ -3,7 +3,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=virtualbox-headless
-pkgver=6.1.2
+pkgver=6.1.4
 _tarver=${pkgver}
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use. Headless build (no GUI, no Java).'
@@ -37,9 +37,10 @@ source=("https://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${_tarv
         '008-no-vboxvideo.patch'
         '012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch'
         '013-Makefile.patch'
+        '014-vboxclient.patch'
         )
 sha256sums=(
-    '4326576e8428ea3626194fc82646347576e94c61f11d412a669fc8a10c2a1e67'
+    '59f8f5774473f593e3eb5940e2a337e0674bcd9854164b2578fd43f896260c99'
     '2101ebb58233bbfadf3aa74381f22f7e7e508559d2b46387114bc2d8e308554c'
     '9c5238183019f9ebc7d92a8582cad232f471eab9d3278786225abc1a1c7bf66e'
     '033c597e0f5285d2ddb0490868e5b6f945f45c7b1b1152a02a9e6fea438b2c95'
@@ -53,6 +54,7 @@ sha256sums=(
     '053bfeee8863f3ffdf2f0e3f9f0d77dc61dd32764700a97a7635fd8611e20491'
     '81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024'
     'da7e58ed37dc23c6202aab3017864579a99e78417f3421ddcc98a198198fe2c9'
+    'db617a3e7a3a94b96d5c3fe771d31c927242ef4f2cb265a22e4d5d64560a910a'
 )
 
 prepare() {
@@ -81,12 +83,13 @@ build() {
     ./configure \
         --build-headless \
         --disable-docs \
-        --enable-webservice \
+        --disable-kmods \
+        --disable-vmmraw \
+        --disable-java \
+        --disable-alsa \
         --enable-vde \
         --enable-vnc \
-        --disable-java \
-        --disable-kmods \
-        --disable-alsa \
+        --enable-webservice \
         --with-makeself=/usr/bin/echo
     # fake makeself binary to compile without nofatal
     # makeself is used by linux installer. we don't need it.

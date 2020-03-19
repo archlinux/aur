@@ -1,0 +1,70 @@
+--- a/src/VBox/Additions/x11/VBoxClient/clipboard.cpp
++++ b/src/VBox/Additions/x11/VBoxClient/clipboard.cpp
+@@ -107,7 +107,7 @@
+     else
+ #endif
+     {
+-        uint32_t cbData = _4K; /** @ŧodo Make this dynamic. */
++        uint32_t cbData = _4K; /** @todo Make this dynamic. */
+         void    *pvData = RTMemAlloc(cbData);
+         if (pvData)
+         {
+@@ -215,7 +215,6 @@
+  *
+  * @returns VBox status code.
+  */
+-#if 0
+ static int vboxClipboardConnect(void)
+ {
+     LogFlowFuncEnter();
+@@ -245,7 +244,6 @@
+     LogFlowFuncLeaveRC(rc);
+     return rc;
+ }
+-#endif
+ 
+ /**
+  * The main loop of our clipboard reader.
+@@ -469,7 +467,7 @@
+     RT_NOREF(ppInterface, fDaemonised);
+ 
+     /* Initialise the guest library. */
+-    int rc = 0; //vboxClipboardConnect();
++    int rc = vboxClipboardConnect();
+     if (RT_SUCCESS(rc))
+     {
+ #ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
+@@ -477,10 +475,8 @@
+         if (RT_SUCCESS(rc))
+         {
+ #endif
+-            RTThreadSleep(60 * 1000);
++            rc = vboxClipboardMain();
+ 
+-            //rc = vboxClipboardMain();
+-
+ #ifdef VBOX_WITH_SHARED_CLIPBOARD_FUSE
+             int rc2 = vboxClipboardFUSEStop();
+             if (RT_SUCCESS(rc))
+--- a/src/VBox/Additions/x11/VBoxClient/display-svga-x11.cpp
++++ b/src/VBox/Additions/x11/VBoxClient/display-svga-x11.cpp
+@@ -100,16 +100,19 @@ static void x11Connect(struct X11CONTEXT
+     {
+         XCloseDisplay(pContext->pDisplay);
+         pContext->pDisplay = NULL;
++        return;
+     }
+     if (!XRRQueryExtension(pContext->pDisplay, &pContext->hRandREventBase, &pContext->hRandRErrorBase))
+     {
+         XCloseDisplay(pContext->pDisplay);
+         pContext->pDisplay = NULL;
++        return;
+     }
+     if (!XRRQueryVersion(pContext->pDisplay, &pContext->hRandRMajor, &pContext->hRandRMinor))
+     {
+         XCloseDisplay(pContext->pDisplay);
+         pContext->pDisplay = NULL;
++        return;
+     }
+     pContext->rootWindow = DefaultRootWindow(pContext->pDisplay);
+ }
