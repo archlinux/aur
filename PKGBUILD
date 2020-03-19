@@ -16,9 +16,9 @@ depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
 source=($pkgname::"git+https://github.com/PowerShell/PowerShell.git#tag=v$_pkgver"
         'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
         'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets')
-md5sums=('SKIP'
-         'SKIP'
-         '56f02557575a6022b60be609951eee78')
+sha256sums=('SKIP'
+            'SKIP'
+            '8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696')
 install=powershell.install
 options=(staticlibs !strip)
 

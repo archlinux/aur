@@ -21,9 +21,9 @@ pkgbase = powershell
 	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v7.0.0
 	source = powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = 56f02557575a6022b60be609951eee78
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696
 
 pkgname = powershell
 
