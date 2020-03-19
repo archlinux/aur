@@ -1,0 +1,47 @@
+diff --unified --recursive --text usr.orig/share/cups/model/brdcp110c_cups.ppd usr.new/share/cups/model/brdcp110c_cups.ppd
+--- usr.orig/share/cups/model/brdcp110c_cups.ppd	2019-09-03 23:59:18.612939458 +0200
++++ usr.new/share/cups/model/brdcp110c_cups.ppd	2019-09-04 00:00:21.288458181 +0200
+@@ -39,7 +39,7 @@
+ *%==== Media Selection ======================
+ *OpenUI *PageSize/Media Size: PickOne
+ *OrderDependency: 11 AnySetup *PageSize
+-*DefaultPageSize: BrLetter
++*DefaultPageSize: BrA4
+ *PageSize BrA4/A4:					"<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+ *PageSize BrA4_B/A4 (Borderless):			"<</PageSize[621 868]/ImagingBBox null>>setpagedevice"
+ *PageSize BrLetter/Letter:				"<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+@@ -71,7 +71,7 @@
+ 
+ *OpenUI *PageRegion: PickOne
+ *OrderDependency: 12 AnySetup *PageRegion
+-*DefaultPageRegion: BrLetter
++*DefaultPageRegion: BrA4
+ *PageRegion BrA4/A4:					"<</PageSize[595 842]/ImagingBBox null>>setpagedevice"
+ *PageRegion BrA4_B/A4 (Borderless):			"<</PageSize[621 868]/ImagingBBox null>>setpagedevice"
+ *PageRegion BrLetter/Letter:				"<</PageSize[612 792]/ImagingBBox null>>setpagedevice"
+@@ -100,7 +100,7 @@
+ *PageRegion BrYokei4/JE4 Envelope: 			"<</PageSize[297 664]/ImagingBBox null>>setpagedevice"
+ *CloseUI: *PageRegion
+ 
+-*DefaultImageableArea: BrLetter 
++*DefaultImageableArea: BrA4 
+ *ImageableArea BrA4/A4:					"9 9 586 833"
+ *ImageableArea BrA4_B/A4 (Borderless):			"6 6 615 862"
+ *ImageableArea BrLetter/Letter:				"9 9 603 783"
+@@ -129,7 +129,7 @@
+ *ImageableArea BrYokei4/JE4 Envelope: 			"9 68 288 630"
+ 
+ *%==== Information About Media Sizes ========
+-*DefaultPaperDimension: BrLetter
++*DefaultPaperDimension: BrA4
+ 
+ 
+ *PaperDimension BrA4/A4:				"595 842"
+@@ -226,7 +226,6 @@
+ *DefaultBRDocument: Photo
+ *BRDocument Photo/Photo: ""
+ *BRDocument Graphics/Graphics: ""
+-*BRDocument Custom/Custom: ""
+ *CloseUI: *BRDocument
+ 
+ *%=== Color Matching ================================

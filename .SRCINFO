@@ -1,0 +1,25 @@
+pkgbase = brother-dcp110c
+	pkgdesc = LPR and CUPS driver for the Brother DCP110C
+	pkgver = 1.0.2
+	pkgrel = 2
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-dcp110c.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	makedepends = tcsh
+	depends = cups
+	depends = lib32-glibc
+	source = http://www.brother.com/pub/bsc/linux/dlf/DCP110Clpr-1.0.2-1.i386.rpm
+	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperDCP110C-1.0.0-1.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	source = A4PaperSize.patch
+	md5sums = 5b51032a121f9c2e8cd2271c517e5eb7
+	md5sums = f3b7e05232838ac2eaa008f0a6d74c4f
+	md5sums = 809c64563dbd89f89ca68f9218c59cf5
+	md5sums = bf894a1a51baf6055a6c58ecf43c9782
+	md5sums = abaceb022d48e2a86f80b6eeb84cf109
+
+pkgname = brother-dcp110c
+
