@@ -1,20 +1,23 @@
 # Maintainer: Kevin MacMartin <prurigro at gmail dot com>
+# Thanks: Peter Cai <peter at typeblog dot net>
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
 pkgver=283v0.7.5f
-pkgrel=1
+pkgrel=2
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='http://shatteredpixel.tumblr.com'
 license=('GPL3')
-depends=('java-runtime' 'bash')
-makedepends=('git' 'java-environment')
+depends=('jre8-openjdk' 'bash')
+makedepends=('git' 'gradle' 'jdk8-openjdk')
 arch=('any')
+
 source=(
   "$_pkgname::git+https://github.com/00-Evan/$_pkgname-gdx.git"
   "$_pkgname.sh"
   "$_pkgname.desktop"
 )
+
 sha512sums=(
   'SKIP'
   '88814d1f33eea6bd5656d3ca731ed5a6cfce10ecdae24012252c5b32c4b194ec75fb0e22cac70897802679086c6a32e210d52933ec45ca94ff350ac4ad7c266e'
@@ -26,9 +29,16 @@ pkgver() {
   printf '%s' "$(git rev-list --count HEAD)$(git log | grep -e '^v[0-9]' desktop/VersionInfo.txt | head -n 1)"
 }
 
+prepare() {
+  # Hack to use system gradle (thanks to the shattered-pixel-dungeon package and by proxy @jonathon on AUR)
+  sed -i '164c/usr/bin/gradle "$@"' "$_pkgname/gradlew"
+}
+
 build() {
   cd $_pkgname
   unset _JAVA_OPTIONS
+  # Force the system to build the package using JDK8 (thanks to the shattered-pixel-dungeon package)
+  export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:$PATH
   GRADLE_USER_HOME="$srcdir" ./gradlew desktop:dist
 }
 
