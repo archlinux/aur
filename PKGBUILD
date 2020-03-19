@@ -1,3 +1,4 @@
+# Maintainer: Vincent Shaent <vincentshaent@gmail.com>
 # Maintainer: Genki Sky <alt+archlinux.org@genki.is>
 
 pkgname=xsv-bin
