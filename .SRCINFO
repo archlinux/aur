@@ -1,5 +1,5 @@
 pkgbase = llvm-minimal-git
-	pkgver = 11.0.0_r340508.713562f5485
+	pkgver = 11.0.0_r345722.b89202e842a
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = llvm-minimal-git
 
 pkgname = llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
-	depends = llvm-libs-minimal-git=11.0.0_r340508.713562f5485-1
+	depends = llvm-libs-minimal-git=11.0.0_r345722.b89202e842a-1
 	depends = perl
 	optdepends = python-setuptools: for using lit (LLVM Integrated Tester)
 	conflicts = llvm

@@ -16,7 +16,7 @@
 
 pkgbase=llvm-minimal-git
 pkgname=('llvm-minimal-git' 'llvm-libs-minimal-git')
-pkgver=11.0.0_r340508.713562f5485
+pkgver=11.0.0_r345722.b89202e842a
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -78,7 +78,6 @@ build() {
         -D LLVM_INSTALL_UTILS=ON \
         -D LLVM_ENABLE_RTTI=ON \
         -D LLVM_ENABLE_FFI=ON \
-        -D LLVM_BUILD_TESTS=ON \
         -D LLVM_BUILD_DOCS=ON \
         -D LLVM_ENABLE_SPHINX=ON \
         -D SPHINX_WARNINGS_AS_ERRORS=OFF \
