@@ -15,7 +15,8 @@ license=('MIT')
  
 source=('git+https://gitlab.freedesktop.org/xrdesktop/gxr.git')
 
-optdepends=('monado-git: The open source OpenXR runtime.')
+optdepends=('monado-git: The open source OpenXR runtime.'
+            'steam: For SteamVR.')
 
 md5sums=('SKIP')
 
