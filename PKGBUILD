@@ -3,41 +3,41 @@
 pkgname='powershell-git'
 _pkgname='powershell'
 _binaryname='pwsh'
-pkgver=6.2.0.rc.1.197.gceed73d73
+pkgver=7.0.0.preview.6.293.g5da06978b
+_pkgnum=${pkgver:0:1}
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
 url='https://github.com/PowerShell/PowerShell'
 license=('MIT')
-makedepends=('git' 'cmake' 'dotnet-sdk>=2.0')
-depends=('icu' 'libunwind' 'openssl-1.0')
+makedepends=('git' 'cmake' 'dotnet-sdk')
+depends=('krb5' 'gcc-libs' 'glibc' 'lttng-ust' 'zlib' 'openssl-1.0' 'icu')
 provides=('powershell')
 conflicts=('powershell')
 source=($_pkgname::'git+https://github.com/PowerShell/PowerShell.git'
         'powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git'
         'Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets')
-md5sums=('SKIP'
-         'SKIP'
-         '56f02557575a6022b60be609951eee78')
+sha256sums=('SKIP'
+            'SKIP'
+            '8d10afb45883813f805bdf74ec445ae3f2fdbd4d30ab2ce7ce3a55df80693696')
 install=powershell.install
+options=(staticlibs !strip)
 
 pkgver() {
-  cd $_pkgname
+  cd "$_pkgname"
   git describe --tags --long | sed 's/^v//;s/-/./;s/-/./g'
 }
 
 prepare() {
-  cd $srcdir/powershell-native
+  cd "$srcdir/powershell-native"
   git submodule init
   git submodule update
-
-  cd $srcdir/$_pkgname
-  rm global.json
 }
 
 build() {
-  cd $_pkgname
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+  cd "$_pkgname"
+  export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+  export DOTNET_CLI_TELEMETRY_OPTOUT=true
 
   ## Restore
   dotnet restore src/powershell-unix
@@ -83,21 +83,13 @@ check() {
 }
 
 package() {
-  cd "$_pkgname/src/powershell-unix"
+  mkdir -pv "$pkgdir/opt/microsoft/$_pkgname/$_pkgnum"
+  cd "$srcdir/$_pkgname/src/powershell-unix/bin/Linux/netcoreapp3.1/linux-x64/"
 
-  mkdir -p "$pkgdir/usr/lib/$_pkgname"
-  cp -a "bin/Linux/netcoreapp2.1/linux-x64" "$pkgdir/usr/lib/$_pkgname"
-  chmod 755 "$pkgdir/usr/lib/$_pkgname/linux-x64/$_binaryname"
+  cp -ar ./ "$pkgdir/opt/microsoft/$_pkgname/$_pkgnum/"
 
-  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-  cp "../../LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
+  mkdir -p "$pkgdir/usr/share/licenses/$_pkgname"
+  cp LICENSE.txt "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   mkdir -p "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$_pkgname/linux-x64/$_binaryname" "$pkgdir/usr/bin/$_binaryname"
-
-  chmod 644 \
-    "$pkgdir/usr/lib/powershell/linux-x64/libhostfxr.so" \
-    "$pkgdir/usr/lib/powershell/linux-x64/libhostpolicy.so" \
-    "$pkgdir/usr/lib/powershell/linux-x64/en-US/default.help.txt" \
-    "$pkgdir/usr/lib/powershell/linux-x64/Modules/PSDesiredStateConfiguration/PSDesiredStateConfiguration.psm1"
+  ln -s "/opt/microsoft/$_pkgname/$_pkgnum/$_binaryname" "$pkgdir/usr/bin/$_binaryname"
 }
