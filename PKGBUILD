@@ -10,13 +10,13 @@ url='https://github.com/KSXGitHub/ibus-daemon.pkgbuild.git'
 depends=(systemd ibus)
 makedepends=(pkgconf)
 source=(
-  ibus.service
+  ibus@.service
   LICENSE.md
 )
 sha512sums=(SKIP SKIP)
 
 package() {
   cd "$srcdir"
-  install -Dm644 ibus.service "$pkgdir"/"$(pkg-config systemd --variable=systemduserunitdir)"/ibus.service
+  install -Dm644 ibus@.service "$pkgdir"/"$(pkg-config systemd --variable=systemduserunitdir)"/ibus@.service
   install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/ibus-deamon/LICENSE.md
 }

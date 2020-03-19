@@ -7,7 +7,7 @@ Conflicts=fcitx.service
 ExecStart=/usr/bin/ibus-daemon --replace --xim
 ExecReload=/usr/bin/ibus restart
 ExecStop=/usr/bin/ibus exit
-Environment=GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS="@im=ibus"
+Environment=DISPLAY="%I" GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS="@im=ibus"
 
 [Install]
 Alias=input-method.service
