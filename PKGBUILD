@@ -75,10 +75,10 @@ build() {
 }
 
 check() {
-  cd $srcdir/powershell-native/src/libpsl-native
+  cd "$srcdir/powershell-native/src/libpsl-native"
   make test
 
-  cd $srcdir/powershell/test/xUnit
+  cd "$srcdir/powershell/test/xUnit"
   dotnet test
 }
 
