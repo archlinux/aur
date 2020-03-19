@@ -1,14 +1,14 @@
 pkgbase = python-chainmap
 	pkgdesc = Backport/clone of ChainMap for py26, py32, and pypy3
-	pkgver = 1.0.2
-	pkgrel = 3
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://bitbucket.org/jeunice/chainmap
 	arch = any
 	license = PSF
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://files.pythonhosted.org/packages/source/c/chainmap/chainmap-1.0.2.tar.gz
-	sha256sums = 405da3bce9913bfb33e6e497803b447b60d12ab44031ca357626143e087e0526
+	source = https://files.pythonhosted.org/packages/source/c/chainmap/chainmap-1.0.3.tar.gz
+	sha256sums = e42aaa4b3e2f66102a11bfd563069704bfbfd84fdcb517b564effd736bf53cd9
 
 pkgname = python-chainmap
 	depends = python
