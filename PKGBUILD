@@ -2,11 +2,12 @@
 
 pkgbase=julie
 pkgname=julie
-pkgver=2020031901
-pkgrel=2020031901
+pkgver=2020031902
+pkgrel=2020031902
 pkgdesc="A command line tool made to simplify the usage of gpg"
 url="https://framagit.org/SirCipherz/julie"
 license=('GPL3')
+conflicts=(julie-ssh)
 
 arch=('any')
 depends=(

@@ -1,7 +1,7 @@
 pkgbase = julie
 	pkgdesc = A command line tool made to simplify the usage of gpg
-	pkgver = 2020031901
-	pkgrel = 2020031901
+	pkgver = 2020031902
+	pkgrel = 2020031902
 	url = https://framagit.org/SirCipherz/julie
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = julie
 	depends = git
 	depends = python3
 	depends = ffmpeg
+	conflicts = julie-ssh
 
 pkgname = julie
 
