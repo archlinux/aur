@@ -1,6 +1,6 @@
 pkgbase = yaxt
 	pkgdesc = Yet Another eXchange Tool
-	pkgver = 0.6.2
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.dkrz.de/redmine/projects/yaxt
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = yaxt
 	depends = openmpi
 	options = !libtool
 	options = !makeflags
-	source = https://www.dkrz.de/redmine/attachments/download/492/yaxt-0.6.2.tar.gz
+	source = https://www.dkrz.de/redmine/attachments/download/496/yaxt-0.8.1.tar.gz
 	source = LICENSE
-	md5sums = de247e2389e5cc1a014b00d5baf3b77d
+	md5sums = e3fa2ed45826b58dee711f8dd08613da
 	md5sums = 035e9ac10ea37067d3f7b178abafa029
 
 pkgname = yaxt

@@ -2,9 +2,9 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
 
-_dwnnum=492
+_dwnnum=496
 pkgname=yaxt
-pkgver=0.6.2
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Yet Another eXchange Tool"
 arch=("i686" "x86_64")
@@ -13,7 +13,7 @@ depends=('openmpi')
 options=('!libtool' '!makeflags')
 license=('custom')
 source=(https://www.dkrz.de/redmine/attachments/download/${_dwnnum}/${pkgname}-${pkgver}.tar.gz LICENSE)
-md5sums=('de247e2389e5cc1a014b00d5baf3b77d'
+md5sums=('e3fa2ed45826b58dee711f8dd08613da'
          '035e9ac10ea37067d3f7b178abafa029')
 
 build() {
