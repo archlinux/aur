@@ -1,0 +1,22 @@
+pkgbase = dwm-distrotube
+	pkgdesc = A heavily-patched and customized build of dwm from DistroTube.
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://gitlab.com/dwt1/dwm-distrotube.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = st
+	depends = dmenu
+	provides = dwm
+	conflicts = dwm
+	source = git+https://gitlab.com/dwt1/dwm-distrotube.git
+	md5sums = SKIP
+
+pkgname = dwm-distrotube
+
