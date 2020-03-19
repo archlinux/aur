@@ -1,14 +1,14 @@
 # Maintainer: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=nbdkit
-pkgver=1.18.0
+pkgver=1.18.2
 pkgrel=1
 pkgdesc="NBD server toolkit"
 arch=('i686' 'x86_64')
 url="https://github.com/libguestfs/nbdkit"
 license=('custom: BSD')
 depends=()
-optdepends=('libvirt' 'lua' 'tcl' 'perl' 'rust')
+optdepends=('libvirt' 'lua' 'tcl' 'perl' 'rust' 'libnbd')
 validpgpkeys=('F7774FB1AD074A7E8C8767EA91738F73E1B768A0')
 _dldir="${pkgver%.*}"
 source=(
@@ -44,5 +44,5 @@ check() {
   PATH="$TMPPATH:$PATH" make check
 }
 
-sha256sums=('5f6cba06eaf38d05064618d4a11c98f816f221ace65f46a2d0efe2cfbe0ab8fa'
+sha256sums=('cde090197fa1bc1a911976f6f44931d70efb5b48f5afec239f390716ced034ad'
             'SKIP')
