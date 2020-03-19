@@ -1,0 +1,8 @@
+post_install() {
+  echo 127.0.0.1 iccert.nhi.gov.tw >> /etc/hosts
+  echo /etc/hosts is modified to make NHIICC work. Please review its contents if you wish.
+}
+
+post_remove() {
+  sed -i '/iccert\.nhi\.gov\.tw/d' /etc/hosts
+}
