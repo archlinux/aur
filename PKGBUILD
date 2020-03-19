@@ -4,7 +4,7 @@
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
 pkgver=0.7.2.r852.g031c5ce4
-pkgrel=3
+pkgrel=4
 pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
 url="http://herbstluftwm.org"
@@ -19,7 +19,7 @@ optdepends=(
     )
 makedepends=('git' 'asciidoc' 'cmake')
 provides=($_pkgname)
-conflicts=($_pkgname ${_pkgname}-git)
+conflicts=($_pkgname)
 source=("$_pkgname::git://github.com/herbstluftwm/$_pkgname")
 md5sums=( SKIP )
 
