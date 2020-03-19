@@ -5,7 +5,7 @@ url='https://wiki.ros.org/rosserial_server'
 pkgname='ros-melodic-rosserial-server'
 pkgver='0.8.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
@@ -36,13 +36,13 @@ depends=(
 
 _dir="rosserial-${pkgver}/rosserial_server"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-drivers/rosserial/archive/${pkgver}.tar.gz"
-        "io-service.patch")
+        "fix-boost-1-71.patch"::"https://patch-diff.githubusercontent.com/raw/ros-drivers/rosserial/pull/468.patch")
 sha256sums=('e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576'
-            '3020b8961dd3cbe295fdac0b86a43d4da6b8d76b07337d46ba54d12cee4e1cb0')
+            '750137d86f3d535be30ecdc904e12355c71a7873a780fc686f6e6f133cd2172a')
 
 prepare() {
-    cd "${srcdir}/${_dir}/include/rosserial_server"
-    patch -uN async_read_buffer.h ../../../../../io-service.patch || return 1
+    cd "${srcdir}/${_dir}/.."
+    patch -p1 < ${srcdir}/fix-boost-1-71.patch
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = ros-melodic-rosserial-server
 	pkgdesc = ROS - A more performance- and stability-oriented server alternative implemented in C++ to rosserial_python.
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rosserial_server
 	arch = i686
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = ros-melodic-rosserial-server
 	depends = ros-melodic-roscpp
 	depends = ros-melodic-topic-tools
 	source = ros-melodic-rosserial-server-0.8.0.tar.gz::https://github.com/ros-drivers/rosserial/archive/0.8.0.tar.gz
-	source = io-service.patch
+	source = fix-boost-1-71.patch::https://patch-diff.githubusercontent.com/raw/ros-drivers/rosserial/pull/468.patch
 	sha256sums = e96cdeb81e1c03fb1c5ad85a740cb0a1a0836c52a24c6a5d97c975084b49d576
-	sha256sums = 3020b8961dd3cbe295fdac0b86a43d4da6b8d76b07337d46ba54d12cee4e1cb0
+	sha256sums = 750137d86f3d535be30ecdc904e12355c71a7873a780fc686f6e6f133cd2172a
 
 pkgname = ros-melodic-rosserial-server
 
