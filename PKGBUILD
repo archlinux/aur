@@ -2,7 +2,7 @@
 # Contributor: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=('python-pymisp')
 _pyname=PyMISP
-pkgver=2.4.122
+pkgver=2.4.123
 pkgrel=1
 pkgdesc="Python library to access MISP platforms via their REST API"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python' 'python-setuptools')
 depends=('python' 'python-jsonschema' 'python-requests' 'python-dateutil' 'python-deprecated' 'python-cachetools')
 optdepends=('lief')
 source=("${_pyname}-${pkgver}.tar.gz::https://github.com/MISP/PyMISP/archive/v${pkgver}.tar.gz")
-sha512sums=('666c378b25b61803f601d470686e359fc0957ecea9d2c9c14ec732f62e7bcae34c1d8f1efcc131ea6be3d38f5a91c8910ab438e5be272563d92bb2819cb1526c')
+sha512sums=('e652eacb7af4561a2f628f419450f55dd72b113c6006898cde9cda93a5df2bbe73f8b3beec9de086a237cbad33f4fc81f1f6ade57bd05d282831121733cfd0b0')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
