@@ -1,4 +1,6 @@
-# Maintainer: Jack Kamm <jackkamm@gmail.com>
+# Binary variant maintainer: <   Ron  Varburg  AT  yahoo  com   >
+# Contributor: Original submitter: Jack Kamm <jackkamm@gmail.com>
+
 pkgname=pantum-p2000-driver
 pkgver="1.00_1"
 pkgrel=3
