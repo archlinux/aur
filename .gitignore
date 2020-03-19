@@ -4,3 +4,4 @@
 !.SRCINFO
 !*.service
 !*.md
+!enable-ibus-daemon

@@ -8,8 +8,11 @@ pkgbase = ibus-daemon
 	makedepends = pkgconf
 	depends = systemd
 	depends = ibus
+	depends = sh
 	source = ibus@.service
+	source = enable-ibus-daemon
 	source = LICENSE.md
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
