@@ -1,8 +1,8 @@
 # Maintainer: Archadept
-#   Revision: 2019-01-22
+#   Revision: 2020-03-20
 
 pkgname=keepass-pl
-pkgver=2.41
+pkgver=2.44
 pkgrel=1
 pkgdesc="Polish locale for keepass"
 license=('GPL2')
@@ -11,7 +11,7 @@ makedepends=('unzip')
 url="http://keepass.info/translations.html"
 source=(https://downloads.sourceforge.net/keepass/KeePass-${pkgver}-Polish.zip)
 arch=(any)
-md5sums=('2ceed38a5aea4dc19185c6df7407695d')
+md5sums=('7fc44bfd243ef69099915d2180eec108')
 
 package(){
    mkdir -p "${pkgdir}"/usr/share/keepass/Languages
