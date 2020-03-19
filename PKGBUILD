@@ -1,52 +1,60 @@
-# Maintainer: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
-# Contributor : Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Fernando Ortiz <nandub+arch@nandub.info>
+# Contributor: Markus Kitsinger (SwooshyCueb) <root@swooshalicio.us>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Douglas Soares de Andrade <douglas@archlinux.org>
 
 pkgbase=pypy-zope-interface
 pkgname=('pypy-zope-interface' 'pypy3-zope-interface')
-pkgver=4.1.3
+pkgver=5.0.0
 pkgrel=1
+pkgdesc="Zope Interfaces"
 license=('ZPL')
 arch=('i686' 'x86_64')
-url="http://pypi.python.org/pypi/zope.interface"
+url="https://pypi.python.org/pypi/zope.interface"
 makedepends=('pypy-setuptools' 'pypy3-setuptools')
 checkdepends=('pypy-zope-event' 'pypy3-zope-event')
-source=("http://pypi.python.org/packages/source/z/zope.interface/zope.interface-${pkgver}.tar.gz")
-md5sums=('9ae3d24c0c7415deb249dd1a132f0f79')
+source=("https://pypi.python.org/packages/source/z/zope.interface/zope.interface-${pkgver}.tar.gz")
+sha256sums=('9da542aa8fb13671e3aa03722cf479dc3611a4e767de256629d609bcb2e99285')
 
 prepare() {
-  cp -a zope.interface-${pkgver}{,-py2}
+  # copy folder, so we can cleanly build for both python versions
+  cp -rup zope.interface-$pkgver pypy3zope.interface-$pkgver
 }
 
 build() {
-  cd "${srcdir}/zope.interface-${pkgver}"
-  pypy3 setup.py build
-
-  cd "${srcdir}/zope.interface-${pkgver}-py2"
+  # build for pypy
+  cd zope.interface-$pkgver
   pypy setup.py build
+
+  # build for pypy3
+  cd ../pypy3zope.interface-$pkgver
+  pypy3 setup.py build
 }
 
-check() {
-  cd "${srcdir}/zope.interface-${pkgver}"
-  pypy3 setup.py test
+# check faiks for both versions, disabled for now.
+#check() {
+#  cd zope.interface-${pkgver}
+#  pypy setup.py test
 
-  cd "${srcdir}/zope.interface-${pkgver}-py2"
-  pypy setup.py test
+#  cd pypy3zope.interface-${pkgver}
+#  pypy3 setup.py test
+#}
+
+package_pypy-zope-interface(){
+  depends=('pypy')
+  pkgdesc+=' for Pypy'
+
+  cd zope.interface-${pkgver}
+  pypy setup.py install --prefix=/opt/pypy --root="${pkgdir}" --optimize=1
 }
 
 package_pypy3-zope-interface() {
-  pkgdesc='Zope Interfaces for Python 3.x (build for pypy)'
   depends=('pypy3')
- 
-  cd "${srcdir}/zope.interface-${pkgver}"
+  pkgdesc+=' for Pypy 3'
+
+  cd pypy3zope.interface-${pkgver}
   pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1
 }
 
-package_pypy-zope-interface(){
-  pkgdesc='Zope Interfaces for Python 2.x (build for pypy)'
-  depends=('pypy')
-
-  cd "${srcdir}/zope.interface-${pkgver}-py2"
-  pypy setup.py install --prefix=/opt/pypy --root="${pkgdir}" --optimize=1
-}
+# vim:set ts=2 sw=2 et:
