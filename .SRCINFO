@@ -1,7 +1,7 @@
 pkgbase = palisade-development-git
 	pkgdesc = PALISADE is a general lattice cryptography library that currently includes efficient implementations of the following lattice cryptography capabilities
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://palisade-crypto.org
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = palisade-development-git
 	makedepends = make
 	makedepends = gcc>=5.2.0
 	makedepends = git
+	depends = gperftools
 	provides = palisade-development
 	conflicts = palisade-development
 	source = palisade-development::git+https://gitlab.com/palisade/palisade-development.git
