@@ -3,8 +3,8 @@
 
 pkgname=ttf-sbl-greek
 pkgver=1.00_Build010
-pkgrel=2
-pkgdesc='Socienty of Biblical Literature’s Greek font'
+pkgrel=3
+pkgdesc='Society of Biblical Literature’s Greek font'
 arch=('any')
 url='https://www.sbl-site.org/educational/BiblicalFonts_SBLGreek.aspx'
 license=('custom')

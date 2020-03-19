@@ -1,7 +1,7 @@
 pkgbase = ttf-sbl-greek
-	pkgdesc = Socienty of Biblical Literature’s Greek font
+	pkgdesc = Society of Biblical Literature’s Greek font
 	pkgver = 1.00_Build010
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sbl-site.org/educational/BiblicalFonts_SBLGreek.aspx
 	arch = any
 	license = custom
