@@ -1,7 +1,7 @@
 pkgbase = systemd_mon
 	pkgdesc = Monitor systemd units and trigger alerts for failed states.
 	pkgver = 0.1.0+9+gbec6981
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joonty/systemd_mon
 	arch = any
 	license = MIT

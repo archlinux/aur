@@ -3,7 +3,7 @@
 pkgname=systemd_mon
 pkgver=0.1.0+9+gbec6981
 _pkgver="${pkgver%%+*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Monitor systemd units and trigger alerts for failed states.'
 arch=('any')
 url='https://github.com/joonty/systemd_mon'
