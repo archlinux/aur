@@ -1,0 +1,19 @@
+pkgbase = prometheus-transmission-exporter
+	pkgdesc = Prometheus exporter for transmission daemon
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/metalmatze/transmission-exporter
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = https://github.com/metalmatze/transmission-exporter/archive/0.3.0.tar.gz
+	source = prometheus-transmission-exporter.service
+	source = prometheus-transmission-exporter.default
+	sha256sums = 1c5db560bfa8c181d96e3beafa4347be4384945fcc5eb446bd0149bbe5a8cb13
+	sha256sums = 39a46c0e07065892e0d31e1ad38fb70e26ee2b693da0fc2d88d944f3958d6496
+	sha256sums = f2bfede724cee3fb0893f67bd601c3f59c3522c6b92bddf671dc5b3daad6fa54
+
+pkgname = prometheus-transmission-exporter
+

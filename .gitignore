@@ -1,0 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!prometheus-transmission-exporter.default
+!prometheus-transmission-exporter.service

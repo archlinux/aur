@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus exporter for transmission daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/prometheus-transmission-exporter
+EnvironmentFile=/etc/default/prometheus-transmission-exporter
+User=nobody
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,14 @@
+# Path for metrics, default: /metrics
+# WEB_PATH=
+
+#  Address for this exporter to run, default: :19091
+# WEB_ADDR=
+
+#  Transmission address to connect with, default: http://localhost:9091
+# TRANSMISSION_ADDR=
+
+# Transmission username, no default
+# TRANSMISSION_USERNAME=
+
+# Transmission password, no default
+# TRANSMISSION_PASSWORD =
