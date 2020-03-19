@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=wine-staging-git
-pkgver=5.3.r14.g5213d551+wine.5.3.r139.g4f53be1a6e
+pkgver=5.4.r8.g53b02cd0+wine.5.4.r128.gc43998cb51
 pkgrel=1
 pkgdesc='A compatibility layer for running Windows programs (staging branch, git version)'
 arch=('i686' 'x86_64')
@@ -147,10 +147,10 @@ prepare() {
     # fix path of opencl headers
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
     
-    # apply wine-staging patches (exclude xactengine-initial due to build error)
+    # apply all wine-staging patches
     printf '%s\n' '  -> Applying wine-staging patches...'
     cd "${srcdir}/wine-staging/patches"
-    ./patchinstall.sh DESTDIR="${srcdir}/wine" --all -W xactengine-initial
+    ./patchinstall.sh DESTDIR="${srcdir}/wine" --all
 }
 
 pkgver() {

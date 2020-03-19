@@ -1,6 +1,6 @@
 pkgbase = wine-staging-git
 	pkgdesc = A compatibility layer for running Windows programs (staging branch, git version)
-	pkgver = 5.3.r14.g5213d551+wine.5.3.r139.g4f53be1a6e
+	pkgver = 5.4.r8.g53b02cd0+wine.5.4.r128.gc43998cb51
 	pkgrel = 1
 	url = https://www.wine-staging.com/
 	install = wine-staging-git.install
@@ -154,10 +154,10 @@ pkgbase = wine-staging-git
 	optdepends = cups
 	optdepends = samba
 	optdepends = dosbox
-	provides = wine=5.3.r139.g4f53be1a6e
-	provides = wine-wow64=5.3.r139.g4f53be1a6e
-	provides = wine-git=5.3.r139.g4f53be1a6e
-	provides = wine-staging=5.3.r14.g5213d551
+	provides = wine=5.4.r128.gc43998cb51
+	provides = wine-wow64=5.4.r128.gc43998cb51
+	provides = wine-git=5.4.r128.gc43998cb51
+	provides = wine-staging=5.4.r8.g53b02cd0
 	conflicts = wine
 	conflicts = wine-wow64
 	options = staticlibs
