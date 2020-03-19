@@ -1,0 +1,51 @@
+Patch by vova7890
+> vova7890 commented on 2020-03-19 01:01
+> I'm facing this message in dmesg: Bad or missing usercopy whitelist?
+> Kernel memory exposure attempt detected from SLUB object 'nvidia_stack_t'
+> A little search and I had portback this patch to 340xx.
+> Can you please add this? https://zvova7890.com.ua/s/ed9JJG8KyQKQQBx
+--
+vova7890 commented on 2020-03-19 01:01
+diff -Naur a/nv.c b/nv.c
+--- a/nv.c	2019-12-12 00:04:24.000000000 +0200
++++ b/nv.c	2020-03-19 04:21:13.923750900 +0200
+@@ -752,7 +752,7 @@
+     NV_SPIN_LOCK_INIT(&km_lock);
+ #endif
+
+-    NV_KMEM_CACHE_CREATE(nv_stack_t_cache, NV_STACK_CACHE_STR, nv_stack_t);
++    NV_KMEM_CACHE_CREATE_USERCOPY(nv_stack_t_cache, NV_STACK_CACHE_STR, nv_stack_t);
+     if (nv_stack_t_cache == NULL)
+     {
+         nv_printf(NV_DBG_ERRORS, "NVRM: stack cache allocation failed!\n");
+diff -Naur a/nv-linux.h b/nv-linux.h
+--- a/nv-linux.h	2019-12-12 00:04:24.000000000 +0200
++++ b/nv-linux.h	2020-03-19 04:21:13.927084233 +0200
+@@ -762,9 +762,27 @@
+         kmem_cache = kmem_cache_create(name, sizeof(type),      \
+                         0, 0, NULL);                            \
+     }
++#define NV_KMEM_CACHE_CREATE_FULL(name, size, align, flags, ctor) \
++     kmem_cache_create(name, size, align, flags, ctor)
+ #else
+ #error "NV_KMEM_CACHE_CREATE_ARGUMENT_COUNT value unrecognized!"
+ #endif
++
++#define NV_KMEM_CACHE_CREATE_FULL_USERCOPY(name, size, align, flags, useroffset, usersize, ctor) \
++     kmem_cache_create_usercopy(name, size, align, flags, useroffset, usersize, ctor);
++
++#ifdef SLAB_USERCOPY
++#define NV_KMEM_CACHE_CREATE_USERCOPY(kmem_cache, name, type)    \
++    {                                                            \
++        kmem_cache = NV_KMEM_CACHE_CREATE_FULL(name, sizeof(type), 0, SLAB_USERCOPY, NULL); \
++    }
++#else
++#define NV_KMEM_CACHE_CREATE_USERCOPY(kmem_cache, name, type)    \
++    {                                                            \
++        kmem_cache = NV_KMEM_CACHE_CREATE_FULL_USERCOPY(name, sizeof(type), 0, 0, 0, sizeof(type), NULL); \
++    }
++#endif
++
+ #define NV_KMEM_CACHE_DESTROY(kmem_cache)                       \
+     {                                                           \
+         kmem_cache_destroy(kmem_cache);                         \
