@@ -1,6 +1,6 @@
 pkgbase = dolphin-root-git
 	pkgdesc = KDE File Manager, patched to be able to run as root, based on dolphin-git sources
-	pkgver = af45eb0af5219819f76b624162c75da83d763657
+	pkgver = 299e5f28593bedb8eb84888a2d67d8491afcc8a1
 	pkgrel = 1
 	url = https://kde.org/applications/system/dolphin/
 	arch = armv7h
@@ -27,8 +27,10 @@ pkgbase = dolphin-root-git
 	conflicts = dolphin
 	source = git://anongit.kde.org/dolphin.git
 	source = 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+	source = Dolphin-Root-Git.desktop
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
