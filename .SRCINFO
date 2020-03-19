@@ -1,6 +1,6 @@
 pkgbase = tidal-dl
 	pkgdesc = Tidal Music Download
-	pkgver = 1.1.0.14
+	pkgver = 1.1.0.15
 	pkgrel = 1
 	url = https://github.com/yaronzz/Tidal-Media-Downloader
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = tidal-dl
 	depends = python-libffmpeg
 	depends = python-pycryptodome
 	depends = python-pydub
-	source = https://github.com/yaronzz/Tidal-Media-Downloader/archive/1.1.0.14.tar.gz
-	sha256sums = 8a38102c5a63ca65a518d41337e149b4ae852a6742a922168cccb78ba875a4cf
+	source = https://github.com/yaronzz/Tidal-Media-Downloader/archive/1.1.0.15.tar.gz
+	sha256sums = 458209a372d7da82abd9125c34ac017eca5d69429eb225f328ff94ca63978408
 
 pkgname = tidal-dl
 
