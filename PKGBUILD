@@ -14,9 +14,11 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-tools-${_plug}"
           "vapoursynth-plugin-${_plug}"
+          "vapoursynth-plugin-${_plug}-git"
           )
 conflicts=("vapoursynth-tools-${_plug}"
            "vapoursynth-plugin-${_plug}"
+           "vapoursynth-plugin-${_plug}-git"
            )
 source=("${_plug}::git+https://github.com/OrangeChannel/acsuite.git")
 sha256sums=('SKIP')
