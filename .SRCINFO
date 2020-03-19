@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-znedi3_resample-git
+	pkgdesc = Plugin for Vapoursynth: znedi3_resample (GIT version)
+	pkgver = r4.75877c8
+	pkgrel = 1
+	url = https://github.com/xyx98/my-vapoursynth-script
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = vapoursynth-plugin-mvsfunc-git
+	depends = vapoursynth-plugin-znedi3-git
+	depends = vapoursynth-plugin-fmtconv-git
+	provides = vapoursynth-plugin-znedi3_resample
+	conflicts = vapoursynth-plugin-znedi3_resample
+	source = znedi3_resample::git+https://github.com/xyx98/my-vapoursynth-script.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-znedi3_resample-git
+
