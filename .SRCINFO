@@ -1,0 +1,13 @@
+pkgbase = nba-go-bin
+	pkgdesc = The finest NBA CLI
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/xxhomey19/nba-go
+	arch = x86_64
+	license = MIT
+	provides = nba-go
+	source = https://github.com/xxhomey19/nba-go/releases/download/v0.4.0/nba-go-linux
+	md5sums = faa57d5a1af9690c636aee6a2cfc245f
+
+pkgname = nba-go-bin
+
