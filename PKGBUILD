@@ -29,7 +29,7 @@ build() {
 }
 
 package_python-chainmap() {
-	depends=('python')
+	depends=('python<=3.2')
   pkgdesc+=" for Python 3"
 
   cd chainmap-$pkgver
@@ -37,7 +37,7 @@ package_python-chainmap() {
 }
 
 package_python2-chainmap() {
-	depends=('python2')
+	depends=('python2>=2.6')
   pkgdesc+=" for Python 2"
 
   cd py2chainmap-$pkgver
