@@ -3,12 +3,12 @@
 
 pkgname=trimage
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI based lossless image compressor."
 url="http://trimage.org"
 arch=('any')
 license=('custom:MIT')
-depends=('python-pyqt5' 'python-sip-pyqt5' 'optipng' 'pngcrush' 'advancecomp' 'jpegoptim')
+depends=('python-pyqt5' 'optipng' 'pngcrush' 'advancecomp' 'jpegoptim')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kilian/Trimage/archive/${pkgver}.zip")
 md5sums=('3806d2939a5834df0b6f76dd374ed744')
 

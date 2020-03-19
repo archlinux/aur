@@ -1,12 +1,11 @@
 pkgbase = trimage
 	pkgdesc = A GUI based lossless image compressor.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trimage.org
 	arch = any
 	license = custom:MIT
 	depends = python-pyqt5
-	depends = python-sip-pyqt5
 	depends = optipng
 	depends = pngcrush
 	depends = advancecomp
