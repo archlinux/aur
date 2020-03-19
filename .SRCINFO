@@ -1,0 +1,18 @@
+pkgbase = caja-deja-dup-bzr
+	pkgdesc = Deja Dup extension for Caja File Browser
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://launchpad.net/deja-dup-caja
+	arch = any
+	license = GPL3
+	makedepends = bzr
+	makedepends = python2-distutils-extra
+	depends = deja-dup
+	depends = python2-caja
+	provides = caja-deja-dup
+	conflicts = caja-deja-dup
+	source = caja-deja-dup::bzr+lp:deja-dup-caja
+	md5sums = 6db533bbe1f101bf2fe3c05deca0d2e6
+
+pkgname = caja-deja-dup-bzr
+
