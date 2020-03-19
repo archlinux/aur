@@ -1,14 +1,15 @@
 # Maintainer: thorsten w. <p@thorsten-wissmann.de>
+# Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
-pkgver=0.7.2.r1.gb6925946
-pkgrel=1
-epoch=1
-pkgdesc="Manual tiling window manager for X"
+pkgver=0.7.2.r852.g031c5ce4
+pkgrel=2
+pkgdesc="Manual tiling window manager for X - winterbreeze branch"
 arch=('i686' 'x86_64')
 url="http://herbstluftwm.org"
 license=('BSD')
-depends=( 'glib2>=2.24' 'libx11' 'libxinerama')
+depends=('libx11' 'libxinerama')
 optdepends=(
         'bash: needed by most scripts'
         'xterm: used by the default autostart'
@@ -16,24 +17,32 @@ optdepends=(
         'dzen2: needed by panel.sh'
         'dzen2-xft-xpm-xinerama-git: view icons as tags'
     )
-makedepends=('git' 'asciidoc')
+makedepends=('git' 'asciidoc' 'cmake')
 provides=($_pkgname)
-conflicts=($_pkgname)
-source=("$pkgname::git://github.com/herbstluftwm/$_pkgname")
+conflicts=($_pkgname ${_pkgname}-git)
+source=("$_pkgname::git://github.com/herbstluftwm/$_pkgname")
 md5sums=( SKIP )
 
 pkgver() {
-  cd ${pkgname}
+  cd $_pkgname
   git describe --tags --long | sed -r 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
+prepare() {
+  rm -r build || true
+  mkdir build
+}
+
 build() {
-  cd ${pkgname}
-  make PREFIX=/usr
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ../$_pkgname
+  make
 }
 
 package() {
-  cd ${pkgname}
-  make PREFIX=/usr DESTDIR="$pkgdir" install
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd build
+  make DESTDIR="$pkgdir" install
+
+  cd "$srcdir/$_pkgname"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
