@@ -1,6 +1,6 @@
 pkgbase = rtl8812au-dkms-git
 	pkgdesc = rtl8812AU chipset driver with firmware v5.6.4.2
-	pkgver = 5.6.4.2.r7.g582c046
+	pkgver = 5.6.4.2.r9.g49e98ff
 	pkgrel = 1
 	url = https://github.com/gordboy/rtl8812au-5.6.4.2
 	arch = i686
