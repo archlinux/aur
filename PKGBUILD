@@ -24,7 +24,7 @@ provides=(
   "java-runtime-headless-openjdk=${_jdkver}"
 )
 options=(!strip)
-source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkver}%2B${_buildver}/OpenJDK${_jdkver}U-jdk_x64_linux_openj9_${_jdkver}_${_buildver}.tar.gz")
+source=("https://github.com/AdoptOpenJDK/openjdk${_jdkver}-binaries/releases/download/jdk-${_jdkver}%2B${_buildver}/OpenJDK${_jdkver}-jdk_x64_linux_openj9_${_jdkver}_${_buildver}.tar.gz")
 sha256sums=('e5536df914af2a36f3612658827a3ed9fa041ea747ae9ea48c7c91da218dbc6a')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
