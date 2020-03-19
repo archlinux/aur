@@ -4,8 +4,8 @@
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
 pkgver=0.7.2.r852.g031c5ce4
-pkgrel=2
-pkgdesc="Manual tiling window manager for X - winterbreeze branch"
+pkgrel=3
+pkgdesc="Manual tiling window manager for X"
 arch=('i686' 'x86_64')
 url="http://herbstluftwm.org"
 license=('BSD')
