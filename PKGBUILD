@@ -2,15 +2,15 @@
 
 _plug=acsuite
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r25.14f0725
-pkgrel=5
+pkgver=3.0.0.r1.gc14204b
+pkgrel=1
+epoch=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/OrangeChannel/acsuite'
 license=('GPL')
 depends=('vapoursynth'
          'mkvtoolnix-cli'
-         'mkvtoolnix-gui'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
@@ -22,8 +22,7 @@ _site_packages="$(python -c "from distutils.sysconfig import get_python_lib; pri
 
 pkgver() {
   cd "${_plug}"
-  #echo "$(git describe --long --tags | tr - .)"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package(){
