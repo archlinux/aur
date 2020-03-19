@@ -1,7 +1,7 @@
 pkgbase = python-tensorflow-addons-cuda-git
-	pkgdesc = Useful extra functionality for TensorFlow 2.x
+	pkgdesc = Useful extra functionality for TensorFlow 2.x, built with CUDA support
 	pkgver = r746.25959474
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tensorflow/addons
 	arch = any
 	license = APACHE
@@ -10,6 +10,7 @@ pkgbase = python-tensorflow-addons-cuda-git
 	makedepends = rsync
 	depends = tensorflow-cuda
 	depends = python-tensorflow
+	depends = python-typeguard
 	depends = cuda>=10.2
 	depends = cuda<10.3
 	depends = cudnn>=7

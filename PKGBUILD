@@ -2,12 +2,12 @@
 
 pkgname=python-tensorflow-addons-cuda-git
 pkgver=r746.25959474
-pkgrel=1
+pkgrel=2
 pkgdesc="Useful extra functionality for TensorFlow 2.x, built with CUDA support"
 url="https://github.com/tensorflow/addons"
 arch=('any')
 license=('APACHE')
-depends=('tensorflow-cuda' 'python-tensorflow' 'cuda>=10.2' 'cuda<10.3' 'cudnn>=7' 'cudnn<8')
+depends=('tensorflow-cuda' 'python-tensorflow' 'python-typeguard' 'cuda>=10.2' 'cuda<10.3' 'cudnn>=7' 'cudnn<8')
 makedepends=('python-setuptools' 'bazel' 'rsync')
 source=("git+https://github.com/tensorflow/addons.git")
 sha256sums=('SKIP')
