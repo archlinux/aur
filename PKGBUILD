@@ -2,7 +2,7 @@
 
 pkgname=pulumi
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
@@ -43,6 +43,16 @@ package() {
     bin=${plugin##*/}
     install -Dm755 $bin "$pkgdir"/usr/bin/$bin
   done
+
+  # Generate Bash completion
+  install -d -m 755 "${pkgdir}/etc/bash_completion.d"
+  "${pkgdir}/usr/bin/${pkgname}" gen-completion bash |\
+    install -m644 /dev/stdin "${pkgdir}/etc/bash_completion.d/${pkgname}"
+
+  # Generate ZSH completion
+  install -d -m 755 "${pkgdir}/usr/local/share/zsh/site-functions"
+  "${pkgdir}/usr/bin/${pkgname}" gen-completion zsh |\
+    install -m644 /dev/stdin "${pkgdir}/usr/local/share/zsh/site-functions/_${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = pulumi
 	pkgdesc = Modern Infrastructure as Code
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pulumi/pulumi
 	arch = x86_64
 	license = GPL
