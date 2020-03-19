@@ -1,4 +1,0 @@
-post_install() {
-  echo "You should at least install one of kcm-fcitx (For Qt/KDE users) or fcitx-configtool (For GTK+ users) to enable Fcitx configuration GUI."
-}
-
