@@ -7,8 +7,8 @@
 pkgname=lg-downloader-git
 _pkgname=lg-downloader
 pkgver=0.1+r13.78a81fc
-pkgrel=1
-pkgdesc="Tool to flash LG Smartphones and Tablets from their bootloader's download mode."
+pkgrel=2
+pkgdesc="Tool to flash LG devices like the LG Optimus black (P970) from their bootloader"
 arch=('armv7h' 'i686' 'x86_64')
 url='https://git.replicant.us/contrib/PaulK/lg-downloader/'
 license=('GPL3')
