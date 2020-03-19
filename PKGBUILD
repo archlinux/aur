@@ -7,7 +7,7 @@ _srcname=linux-5.5
 _major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=9
+_minor=10
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -32,34 +32,35 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0004-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-0005-drm-i915-Serialise-i915_active_acquire-with-__active.patch
-0006-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
-0007-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
-0008-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
-0009-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
-0010-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
-0011-drm-i915-Introduce-a-vma.kref.patch
+0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
+0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
+0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
+0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
+0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
+0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
+0010-drm-i915-Introduce-a-vma.kref.patch
+
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('b7cbe2c5ef1d471571f7aa7d382fa4de6aa4df9b5b48210fa897ee3886f657b6'
+sha256sums=('63a2c8796eb796c1c69db041a75af86aa8748964939dab442d9d79be9a81dbc8'
             'SKIP'
-            'a435e16950bbe80362495383c2b5e8b78a4b3879c894e2b3c38ecba6fe7ca878'
+            'e31d8e35d7d9766fa912b8cebcfaaa8fc6dd07413a467641d264fd13cf20fc23'
             'SKIP'
             'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
-            'd4412be5c95843577937534051571d852690b01e1e21ffed36c1aeb91e728bcf'
-            '83af12e6073856d1557c439c8f96fc14af3ff202e5a2bdeb3fcecb01f0db6672'
-            '92404a0534c5934d73420408707f474b151e2e01e4bbf8ad7141c55274e88aef'
-            '83bc4c6d7fdf8b37a3804eef8bb4a6d44302fa2cabea40512859fa956eb78769'
-            '6b1d8ec648f4e37d358d369bc2e20072a6d445234580dcfe2320df0dc24087d1'
-            'ed325f82071216c966008a8cffb3437c6561736418e4cd643abdf49bfed6e44c'
-            'b5e47e45d2fdaec040c6a7c28e9122408a539d5b2202f909bd94b0e5c158640d'
-            'd1fd21ccd8c4aaf35aa22abe26950132fd9dc4b69ee65908a69ca9c7a437fa16'
-            '8c39a418e20934b60801885b76376bfdabd2b1dcf514762eff831d7138ca6b04'
-            'ff775e9b89dd08567f8b8fab65940b1a848b1bb4e67c4b280ed4f977fa5c96b2')
+            '66a5998393dbadc770866164910f7cf5a6ea3581fc186e600eba4a38df6a6e56'
+            'f84da7259bbbd4037dd64eaad65f52c00359c1f788cd74c9967a28256a766fa1'
+            '0805b20d65e7837ae144ce6d480155ed46d94b9258e4ccc52214e339e24dd533'
+            '5f3f711df751e903dfc79941529163adb631bd44012f30c11235e0efac5f69c9'
+            '4e130e45adac5add735dd06790ec9a49a3ab3cc246e7e70415e2c6f3b82a8cd0'
+            '1d3752cacb94b4e6e98842deb52bdb4ce8aaab93996ab63c9a2ee17b931d8780'
+            '0fbf9372a817cb6792c71c304948d79f17f08f9e4eb8393f5d69ba399ef0343e'
+            '8d82f3e5940bc2dc93b1978a3825777a078af46c391a860393ef0d01e1a16f37'
+            'a3e3e9cb97c81067d5b6290e4a61514ec7f09aa7d39070a3b4f2088371459fe6'
+            '82bb562401324ee57807a573ebb9a30b8e14e74f6a82298c69fdedf9e07859e1')
 
 _kernelname=${pkgbase#linux}
 

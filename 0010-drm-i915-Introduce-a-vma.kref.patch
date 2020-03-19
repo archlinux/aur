@@ -1,7 +1,7 @@
-From a3cef69920ccaab9833aeae47f03d2eaad841d96 Mon Sep 17 00:00:00 2001
+From 3b13f04a0be3eafa7b3a3be2ab068f2636c44be2 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 22 Dec 2019 21:02:55 +0000
-Subject: [PATCH 11/12] drm/i915: Introduce a vma.kref
+Subject: [PATCH 10/11] drm/i915: Introduce a vma.kref
 
 Start introducing a kref on i915_vma in order to protect the vma unbind
 (i915_gem_object_unbind) from a parallel destruction (i915_vma_parked).
@@ -50,7 +50,7 @@ index 688c49a24f32..bd1e2c12de63 100644
  }
  
 diff --git a/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c b/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c
-index 29b2077b73d2..d226e55df8b2 100644
+index e81c2726f7fd..3d8f00d40d42 100644
 --- a/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c
 +++ b/drivers/gpu/drm/i915/gem/selftests/i915_gem_mman.c
 @@ -161,7 +161,7 @@ static int check_partial_mapping(struct drm_i915_gem_object *obj,
@@ -248,5 +248,5 @@ index 465932813bc5..ce1db908ad69 100644
  #define assert_vma_held(vma) dma_resv_assert_held((vma)->resv)
  
 -- 
-2.25.1
+2.25.2
 
