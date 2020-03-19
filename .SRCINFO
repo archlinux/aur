@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-tools-acsuite-git
+	pkgdesc = Plugin for Vapoursynth: acsuite (GIT version)
+	pkgver = v3.0.0.0.gc14204b
+	pkgrel = 1
+	url = https://github.com/OrangeChannel/acsuite
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = vapoursynth
+	depends = mkvtoolnix-cli
+	provides = vapoursynth-tools-acsuite
+	conflicts = vapoursynth-tools-acsuite
+	conflicts = vapoursynth-plugin-acsuite
+	source = acsuite::git+https://github.com/OrangeChannel/acsuite.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-tools-acsuite-git
+
