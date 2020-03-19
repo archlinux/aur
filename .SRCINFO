@@ -9,7 +9,6 @@ pkgbase = vapoursynth-tools-acsuite-git
 	depends = vapoursynth
 	depends = mkvtoolnix-cli
 	provides = vapoursynth-tools-acsuite
-	provides = vapoursynth-plugin-acsuite
 	provides = vapoursynth-plugin-acsuite-git
 	conflicts = vapoursynth-tools-acsuite
 	conflicts = vapoursynth-plugin-acsuite
