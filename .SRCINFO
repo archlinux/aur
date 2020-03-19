@@ -4,6 +4,7 @@ pkgbase = rarian
 	pkgrel = 7
 	url = https://rarian.freedesktop.org/
 	arch = x86_64
+	arch = i686
 	license = GPL
 	makedepends = libxslt
 	depends = gcc-libs
