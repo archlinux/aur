@@ -1,6 +1,6 @@
 pkgbase = powershell
 	pkgdesc = A cross-platform automation and configuration tool/framework (latest release)
-	pkgver = 6.2.4
+	pkgver = 7.0.0
 	pkgrel = 1
 	url = https://github.com/PowerShell/PowerShell
 	install = powershell.install
@@ -8,10 +8,17 @@ pkgbase = powershell
 	license = MIT
 	makedepends = git
 	makedepends = cmake
-	makedepends = dotnet-sdk-2.2
-	depends = icu
+	makedepends = dotnet-sdk
+	depends = krb5
+	depends = gcc-libs
+	depends = glibc
+	depends = lttng-ust
+	depends = zlib
 	depends = openssl-1.0
-	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v6.2.4
+	depends = icu
+	options = staticlibs
+	options = !strip
+	source = powershell::git+https://github.com/PowerShell/PowerShell.git#tag=v7.0.0
 	source = powershell-native::git+https://github.com/PowerShell/PowerShell-Native.git
 	source = Microsoft.PowerShell.SDK.csproj.TypeCatalog.targets
 	md5sums = SKIP
