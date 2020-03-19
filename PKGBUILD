@@ -1,4 +1,5 @@
-# Maintainer: Niklas <dev@n1klas.net>
+# Maintainer: Fernando Ortiz <nandub+arch@nandub.info>
+# Contributor: Niklas <dev@n1klas.net>
 
 pkgbase=python-chainmap
 pkgname=("python-chainmap" "python2-chainmap")

@@ -1,5 +1,5 @@
 pkgbase = python-chainmap
-	pkgdesc = Backport/clone of ChainMap for py26, py32, and pypy3
+	pkgdesc = Backport/clone of ChainMap
 	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://bitbucket.org/jeunice/chainmap
@@ -11,8 +11,10 @@ pkgbase = python-chainmap
 	sha256sums = e42aaa4b3e2f66102a11bfd563069704bfbfd84fdcb517b564effd736bf53cd9
 
 pkgname = python-chainmap
-	depends = python
+	pkgdesc = Backport/clone of ChainMap for Python 3
+	depends = python<=3.2
 
 pkgname = python2-chainmap
-	depends = python2
+	pkgdesc = Backport/clone of ChainMap for Python 2
+	depends = python2>=2.6
 
