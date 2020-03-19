@@ -1,7 +1,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=flacon-git
-pkgver=v5.2.0.0.gcec00fe
+pkgver=v5.5.1.84.gc7a5cfa
 pkgrel=1
 pkgdesc="Extracts individual tracks from one big audio file containing the entire album of music and saves them as separate audio files. (Git Version)"
 arch=('x86_64')
@@ -44,8 +44,7 @@ build() {
   cd build
   cmake ../flacon \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DUSE_QT4=OFF
+    -DCMAKE_INSTALL_PREFIX=/usr
 
   make
 }
