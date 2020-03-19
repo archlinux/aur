@@ -1,0 +1,11 @@
+post_install() {
+    echo "In order for the changes to take effect, please restart Nautilus with 'nautilus -q'"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    post_install
+}
