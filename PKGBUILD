@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=5.7.0
+pkgver=5.8.1
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ options=()
 install=
 source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz)
 noextract=()
-md5sums=('713128e21669b5e421712029b652f3d7')
+md5sums=('d48ac4cbd881a13dc240c2c0066eeb38')
 
 build() {
   cd Metview-${pkgver}-Source
@@ -30,8 +30,10 @@ build() {
     -Dmagics_DIR=/usr/share/magics/cmake \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+    -DPYTHON_EXECUTABLE=/usr/bin/python3 \
     -DCMAKE_CXX_STANDARD_LIBRARIES="-ltirpc" ..
+  sed -i mars-client/src/tools/CMakeFiles/filterbufr.dir/link.txt \
+      -e  's/-lm/-lm -lgfortran/'
   make || return 1
 }
 
