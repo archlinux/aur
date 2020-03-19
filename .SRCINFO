@@ -1,6 +1,6 @@
 pkgbase = pypy-urwid
-	pkgdesc = Curses-based user interface library.
-	pkgver = 1.3.1
+	pkgdesc = Console user interface library
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = http://excess.org/urwid/
 	arch = i686
@@ -8,12 +8,14 @@ pkgbase = pypy-urwid
 	license = LGPL
 	makedepends = pypy-setuptools
 	makedepends = pypy3-setuptools
-	source = https://pypi.python.org/packages/source/u/urwid/urwid-1.3.1.tar.gz
-	md5sums = 2e1a005cb31368fe21bfeba2d6ad5a5c
+	source = https://pypi.python.org/packages/source/u/urwid/urwid-2.1.0.tar.gz
+	sha256sums = 0896f36060beb6bf3801cb554303fef336a79661401797551ba106d23ab4cd86
 
 pkgname = pypy-urwid
+	pkgdesc = Console user interface library for Pypy
 	depends = pypy
 
 pkgname = pypy3-urwid
+	pkgdesc = Console user interface library for Pypy 3
 	depends = pypy3
 
