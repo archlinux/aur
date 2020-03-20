@@ -17,15 +17,10 @@ md5sums=('0024556a55eacef3d63ed4478ea1490d')
 
 build() {
   cd $srcdir
-
-  unzip Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1.zip
-  # rename unzipped directory, otherwise bsdtar is sad
-  mv ' Pantum 2000 Series Linux Driver (Ubutun12.04) V1.00' Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1
-
   mkdir -p ${pkgname}-${pkgver}
-  cd ./${pkgname}-${pkgver}
-
-  bsdtar -xf "../Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1/Pantum-0.3-1.${arch}.rpm"
+  bsdtar -xf \
+    " Pantum 2000 Series Linux Driver (Ubutun12.04) V1.00/Pantum-0.3-1.${arch}.rpm" \
+    -C ${pkgname}-${pkgver}
 }
 
 package() {
