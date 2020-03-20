@@ -1,9 +1,9 @@
 pkgbase = skribilo
 	pkgdesc = The Ultimate Document Programming Framework
 	pkgver = 0.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nongnu.org/skribilo/
-	arch = any
+	arch = x86_64
 	license = GPL
 	makedepends = guile
 	makedepends = guile-reader

@@ -2,10 +2,10 @@
 
 pkgname=skribilo
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
-arch=('any')
+arch=('x86_64')
 license=('GPL')
 depends=('bash')
 makedepends=('guile' 'guile-reader' 'ploticus')
@@ -19,7 +19,7 @@ options=('!makeflags')
 
 build() {
   cd $pkgname-$pkgver
-  GUILE_EFFECTIVE_VERSION=2.2  ./configure --prefix=/usr
+  GUILE_EFFECTIVE_VERSION=2.2 ./configure --prefix=/usr
   make 
 }
 
