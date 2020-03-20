@@ -1,7 +1,7 @@
 pkgbase = doi2bib
 	pkgdesc = Generate a bibtex given a doi
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bibcure/doi2bib
 	arch = any
 	license = AGPL3
