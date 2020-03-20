@@ -1,7 +1,8 @@
 # Maintainer: anon at sansorgan.es
 pkgname=madagascar
-pkgver=3.0.1
-pkgrel=6
+pkgver=r14559.36030635e
+pkgrel=1
+epoch=1
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url=http://ahay.org/
 license=('GPL2')
@@ -13,6 +14,12 @@ options=('strip')
 #source=("$pkgname.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-3.0/madagascar-3.0.1.tar.gz/download")
 source=($pkgname::git+https://github.com/ahay/src)
 noextract=("$pkgname.tar.gz")
+
+pkgver(){
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 prepare() {
 	cd "$srcdir"
