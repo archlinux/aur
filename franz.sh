@@ -1,3 +1,3 @@
 #!/bin/sh
 
-electron /usr/lib/franz/resources/app.asar "$@"
+electron6 /usr/lib/franz/resources/app.asar "$@"

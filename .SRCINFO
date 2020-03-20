@@ -1,7 +1,7 @@
 pkgbase = franz
 	pkgdesc = Free messaging app for services like WhatsApp, Slack, Messenger and many more.
 	pkgver = 5.4.1
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://meetfranz.com
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = franz
 	makedepends = git
 	makedepends = npm
 	makedepends = python
-	depends = electron
+	depends = electron6
 	source = git+https://github.com/meetfranz/franz#tag=v5.4.1
 	source = franz.desktop
 	source = franz.sh
 	sha512sums = SKIP
 	sha512sums = 049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e
-	sha512sums = 8584507cfc2736f4736637925536b2c06063c59cd943346717633564ae88b64c5eea294c8897f1250812478ed493f54a470501e98e99d084a2ff012dff9671f8
+	sha512sums = d9045b23fd8f2867f845d1c3b579b0fc6c7cf1a4120b9add3d545ff68736b444a21795526eb191b5e76622bd848c75e599ac145137f63375b4fae67490d99f8a
 
 pkgname = franz
 
