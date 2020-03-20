@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=libhdhomerun
-pkgver=20190621
+pkgver=20200225
 pkgrel=1
 pkgdesc="Library and command line utility for interfacing with HDHomeRun device"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ optdepends=('hdhomerun-firmware-bin: firmware for hdhomerun devices'
             'hdhomerun_config_gui: hdhomerun configuration gui')
 
 source=("http://download.silicondust.com/hdhomerun/${pkgname}_${pkgver}.tgz")
-sha256sums=('9a60f663b00de5f820bdb85806662e25f22da248b14942e33a8b43a0331f855a')
+sha256sums=('f6493e4a643a4ba9c3b2424b7f491186efc2ba5fd93d2285d65b7c5aca676cf9')
 
 build() {
   cd "$srcdir/$pkgname"
