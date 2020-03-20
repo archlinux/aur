@@ -1,0 +1,19 @@
+pkgbase = etaler-git
+	pkgdesc = A flexable HTM (Hierarchical Temporal Memory) framework with full GPU support.
+	pkgver = 0.1.5.23.gfcc88a9
+	pkgrel = 1
+	url = https://github.com/etaler/Etaler
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = catch2
+	depends = xtensor
+	provides = etaler=0.1.5.23.gfcc88a9
+	conflicts = etaler
+	source = git+https://github.com/etaler/etaler.git
+	sha512sums = SKIP
+
+pkgname = etaler-git
+
