@@ -1,7 +1,7 @@
 pkgbase = webp-thumbnailer
 	pkgdesc = Creates thumbnails for .webp files
 	pkgver = 0.0.2
-	pkgrel = 4
+	pkgrel = 6
 	url = https://github.com/gabrielmoura/webp-thumbnailer
 	arch = i686
 	arch = x86_64
