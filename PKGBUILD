@@ -2,7 +2,7 @@
 
 pkgname=panicparse
 pkgver=1.3.0
-pkgrel=2
+pkgrel=4
 pkgdesc="Crash your app in style (Golang)"
 arch=('x86_64')
 url='https://github.com/maruel/panicparse'
@@ -17,7 +17,6 @@ build() {
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-  cd "${srcdir}/${pkgname}-${pkgver}"
   go build -v -o "../panicparse-bin"
 }
 
