@@ -5,7 +5,8 @@ After=network.target
 [Service]
 Type=simple
 User=%I
-ExecStart=/usr/bin/syncplay-server
+EnvironmentFile=/etc/syncplay/server.conf
+ExecStart=/usr/bin/syncplay-server $port $isolate $password $salt $motd $ready $chat $maxChars $usernameLength $statsFile $tls
 
 [Install]
 WantedBy=multi-user.target
