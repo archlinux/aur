@@ -1,6 +1,6 @@
 pkgbase = dwm-distrotube-git
 	pkgdesc = A heavily-patched and customized build of dwm from DistroTube.
-	pkgver = 6.2
+	pkgver = .r10.db0af66
 	pkgrel = 1
 	url = https://gitlab.com/dwt1/dwm-distrotube.git
 	arch = x86_64

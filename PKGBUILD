@@ -1,6 +1,6 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dwm-distrotube-git
-pkgver=6.2
+pkgver=.r10.db0af66
 pkgrel=1
 pkgdesc="A heavily-patched and customized build of dwm from DistroTube."
 arch=(x86_64 i686)
@@ -37,8 +37,8 @@ package() {
   mkdir -p ${pkgdir}/opt/${pkgname}
   cp -rf * ${pkgdir}/opt/${pkgname}
   make PREFIX=/usr DESTDIR="${pkgdir}" install
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${srcdir}/${pkgname}/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dwm-distrotube/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/dwm-distrotube/README.md"
+  install -Dm644 "${srcdir}/dwm-distrotube/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
 
