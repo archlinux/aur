@@ -4,7 +4,7 @@
 
 pkgname=python-orjson
 _pkgname="${pkgname/python-/}"
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc="Fast, correct Python JSON library supporting dataclasses and datetimes"
 arch=(x86_64 i686 aarch64 armv7h)
@@ -15,7 +15,7 @@ depends=('python')
 makedepends=('python-pip' 'rust')
 
 source=("orjson-$pkgver.tar.gz"::"https://github.com/ijl/orjson/archive/$pkgver.tar.gz")
-sha512sums=('2ccba989bfd78a7eb117779a78e953b6134f4022b54abed9f9c3ad1cc6c2879899da9a936ab0bf5254fc5c9805df0a111a07f901f2486ce8e30023fa8e5159ff')
+sha512sums=('2b43d01316c3eba43e6fba32ea91c8caffca1addb97626fd8416e3b56a34adce1f07f4cdb46d30a183b56d7399f19d223c909cd1cbdf88e7e000ce7b018b977d')
 
 package() {
     cd "$_pkgname-$pkgver"
