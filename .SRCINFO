@@ -1,21 +1,20 @@
 pkgbase = wasm-pack-git
 	pkgdesc = pack up the wasm and publish it to npm!
-	pkgver = 0.2.0.155
+	pkgver = 0.9.1.967
 	pkgrel = 1
 	url = https://github.com/ashleygwilliams/wasm-pack
 	arch = i686
 	arch = x86_64
 	license = Apache
 	license = MIT
-	makedepends = rust
-	makedepends = cargo
+	makedepends = git
 	depends = rust
 	depends = cargo
 	depends = wasm-bindgen
 	depends = npm
 	provides = wasm-pack
 	conflicts = wasm-pack
-	source = wasm-pack::git+https://github.com/ashleygwilliams/wasm-pack.git
+	source = wasm-pack::git+https://github.com/rustwasm/wasm-pack
 	sha256sums = SKIP
 
 pkgname = wasm-pack-git
