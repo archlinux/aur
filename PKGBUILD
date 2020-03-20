@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=auctex-git
-pkgver=12.1.r176.g1b6e5136
+pkgver=12.2.r32.g07efee4e
 pkgrel=1
 epoch=1
 pkgdesc="TeX/LaTeX writing environment for Emacs - git checkout"
@@ -24,8 +24,7 @@ pkgver() {
 build() {
   cd ${pkgname%-git}
   ./autogen.sh
-  ./configure --prefix=/usr --localstatedir=/var \
-	      --with-texmf-dir=$(dirname $(kpsewhich texmf.cnf)) 
+  ./configure --prefix=/usr --localstatedir=/var --with-texmf-dir=/usr/share/texmf
   make
 }
 
