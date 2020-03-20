@@ -4,8 +4,8 @@ _target=aarch64-linux-gnu
 
 _pkgname=libffi
 pkgname=$_target-$_pkgname
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc='Portable foreign function interface library (ARM64)'
 arch=(x86_64)
 url='http://sourceware.org/libffi/'
@@ -14,10 +14,10 @@ depends=($_target-glibc)
 makedepends=($_target-configure)
 options=(!buildflags)
 source=(
-  ftp://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz
+  https://github.com/libffi/libffi/releases/download/v$pkgver/libffi-$pkgver.tar.gz
 )
 sha256sums=(
-  'd06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37'
+  '72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056'
 )
 
 _srcdir=$_pkgname-$pkgver

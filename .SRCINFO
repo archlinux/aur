@@ -1,15 +1,15 @@
 pkgbase = aarch64-linux-gnu-libffi
 	pkgdesc = Portable foreign function interface library (ARM64)
-	pkgver = 3.2.1
-	pkgrel = 2
+	pkgver = 3.3
+	pkgrel = 1
 	url = http://sourceware.org/libffi/
 	arch = x86_64
 	license = MIT
 	makedepends = aarch64-linux-gnu-configure
 	depends = aarch64-linux-gnu-glibc
 	options = !buildflags
-	source = ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
-	sha256sums = d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37
+	source = https://github.com/libffi/libffi/releases/download/v3.3/libffi-3.3.tar.gz
+	sha256sums = 72fba7922703ddfa7a028d513ac15a85c8d54c8d67f55fa5a4802885dc652056
 
 pkgname = aarch64-linux-gnu-libffi
 
