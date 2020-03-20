@@ -5,14 +5,14 @@
 
 pkgname=abiword-git
 pkgver=20584.bf3eff98e
-pkgrel=1
+pkgrel=2
 pkgdesc="Fully-featured word processor from official gnome gitlab mirror"
 arch=('i686' 'x86_64')
 url="http://www.abisource.com"
 license=('GPL')
 depends=('wv' 'goffice' 'redland' 'libical' 'loudmouth' 'enchant' 'libwpg'
-	 'libwmf' 'link-grammar' 'gtkmathview' 'aiksaurus' 'libots'
-	 'libchamplain' 'psiconv' 'telepathy-glib' 'libwps')
+	 'libwmf' 'aiksaurus' 'libots' 'libchamplain' 'psiconv' 'libwps'
+	 'telepathy-glib')
 makedepends=('git' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd')
 provides=('abiword' 'abiword-plugins')
 conflicts=('abiword' 'abiword-plugins')
