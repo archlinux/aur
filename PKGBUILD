@@ -1,75 +1,63 @@
-# Maintainer: ccat3z <c0ldcat3z@gmail.com>
-# Contributor: bruceutut <zttt183525594@gmail.com>
+# Maintainer: vscncls <lucaslou4@protonmail.com>
 
 pkgname=insomnia-src
 _name=insomnia
-pkgver=7.0.3
-pkgrel=1
+pkgver=7.1.1
+pkgrel=2
 pkgdesc="Cross-platform HTTP and GraphQL Client (Build from source)"
+url="https://github.com/Kong/insomnia"
 arch=('x86_64' 'i686')
-url="https://github.com/getinsomnia/insomnia"
 license=('MIT')
-depends=('electron3')
+depends=('electron4')
+makedepends=('nodejs-lts-dubnium')
 provides=("$_name")
 conflicts=("$_name")
-source=("$_name-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ef76a43ee734a26ba98f7aba3ca59b5e1417995ba9a80c6c1dcb106248872dd0')
+source=(
+    "git://github.com/Kong/insomnia.git"
+    "${_name}.desktop"
+    "${_name}.sh"
+)
+sha256sums=(
+    'SKIP'
+    '69358bb19108f09b78d97aba7d1813898858be449a13f2d8a6ad03cdce1400a8'
+    'fbf24757aeaca7ceab18965774573bff2be540c948a47dd3f95c7b7857ef411c'
+)
 
 prepare() {
-	cd "$_name-$pkgver/packages/insomnia-app"
+    cd $_name/packages/insomnia-app
+    # Change package.json's electron version
+    electronV=$(electron4 --version)
+    electronVer=${electronV#v}
+    sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
 
-	# Make electron version to match community/electron
-	electronV=$(electron3 --version)
-	electronVer=${electronV#v}
-    electronDist=$(dirname $(realpath $(which electron3)))
-	sed -i "/\"electron\": \"/c\\\"electron\": \"$electronVer\"," package.json
+    # Edit electron builder config so only the linux-unpacked package is built
+    sed -i 's/"AppImage",//' .electronbuilder
+    sed -i 's/"deb",//' .electronbuilder
+    sed -i 's/"tar.gz",//' .electronbuilder
+    sed -i 's/"snap",//' .electronbuilder
+    sed -i 's/"rpm"/"dir"/' .electronbuilder
 
-	# Edit electron builder config
-	sed -i 's/"AppImage",//' .electronbuilder
-	sed -i 's/"deb",//' .electronbuilder
-	sed -i 's/"tar.gz",//' .electronbuilder
-	sed -i 's/"snap",//' .electronbuilder
-	sed -i 's/"rpm"/"dir"/' .electronbuilder
-	sed -i "s#\"appId\": \"com.insomnia.app\",#\"appId\": \"com.insomnia.app\",\"electronDist\": \"${electronDist}\",#" .electronbuilder
+    sed -i "s#\"appId\": \"__APP_ID__\",#\"appId\": \"com.insomnia.app\",#" .electronbuilder
 }
 
 build() {
-	cd "$_name-$pkgver"
-	npm run bootstrap
-	npm run app-package
+    cd $_name
+    npm run bootstrap
+    npm run app-package
 }
 
 package() {
-	cd "$srcdir/$_name-$pkgver/packages/insomnia-app/dist/linux-unpacked"
+    # Install asar file
+    install -Dm644 $_name/packages/insomnia-app/dist/linux-unpacked/resources/app.asar $pkgdir/usr/share/insomnia/app.asar
 
-	# Install asar files
-	install -Dm644 resources/app.asar "$pkgdir/usr/share/insomnia/app.asar"
-	install -Dm644 resources/bin/yarn-standalone.js "$pkgdir/usr/share/insomnia/bin/yarn-standalone.js"
+    # Install start script
+    install -Dm755 $_name.sh $pkgdir/usr/bin/$_name
 
-	cd "$srcdir/$_name-$pkgver/packages/insomnia-app/build"
+    install -Dm644 $_name.desktop $pkgdir/usr/share/applications/$_name.desktop
 
-	# Install start script
-	echo "#!/usr/bin/env sh
-exec electron3 /usr/share/insomnia/app.asar \$@
-" > "$srcdir/insomnia.sh"
-	install -Dm755 "$srcdir/insomnia.sh" "$pkgdir/usr/bin/insomnia"
-
-	# Install desktop file
-	echo "[Desktop Entry]
-Name=Insomnia
-Comment=Debug APIs like a human, not a robot
-Exec=insomnia %U
-Terminal=false
-Type=Application
-Icon=insomnia
-MimeType=x-scheme-handler/insomnia;
-Categories=Development;
-" > "$srcdir/insomnia.desktop"
-	install -Dm644 "$srcdir/insomnia.desktop" "$pkgdir/usr/share/applications/insomnia.desktop"
-
-	# Install icons
-	cd icons
-	for size in 16 32 48 128 256 512; do
-        install -Dm644 ${size}x${size}.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/insomnia.png"
+    for size in 16 32 48 128 256 512; do
+        install -Dm644 $_name/packages/insomnia-app/build/static/icon.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/insomnia.png"
     done
+
+    install -Dm644 $_name/LICENSE $pkgdir/usr/share/licenses/$pkgname
 }
