@@ -2,8 +2,8 @@
 
 pkgbase=julie-ssh
 pkgname=julie-ssh
-pkgver=2020031901
-pkgrel=2020031901
+pkgver=2020032001
+pkgrel=2020032001
 pkgdesc="A command line tool made to simplify the usage of gpg, ssh version"
 url="https://framagit.org/SirCipherz/julie-ssh"
 license=('GPL3')
