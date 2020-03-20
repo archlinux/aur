@@ -4,7 +4,7 @@
 # his PKGBUILD that served as a base for this one
 
 pkgname=virt-backup
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Automatic backups for Libvirt"
 arch=(any)
@@ -27,7 +27,7 @@ optdepends=(
 )
 options=(!emptydirs)
 source=("https://github.com/Anthony25/virt-backup/archive/v${pkgver}.tar.gz")
-sha256sums=('9233d9fff887cb16f683d3155e05713ddd45e18b3dfabd69dd9e44d4f0f73731')
+sha256sums=('10116d2de0726efa1021817d04f972b2d57beeaf61b9ba41f4bee2874a0b8297')
 
 package() {
   cd "${srcdir}/virt-backup-${pkgver}"
