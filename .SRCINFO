@@ -1,12 +1,12 @@
 pkgbase = disk-remover
 	pkgdesc = A little script that helps you to remove disks
-	pkgver = 1
+	pkgver = 1.0
 	pkgrel = 0
 	url = https://github.com/dus2002/Disk-Remover
 	arch = any
 	license = GPL
 	source = disk-remover.desktop
-	source = disk-remover
+	source = https://github.com/dus2002/Disk-Remover/raw/1.0/disk-remover
 	sha512sums = SKIP
 	sha512sums = SKIP
 
