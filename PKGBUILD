@@ -3,7 +3,7 @@
 
 pkgname=freeorion
 pkgver=0.4.9
-pkgrel=1
+pkgrel=3
 pkgdesc='Turn-based space empire and galactic conquest (4X) computer game'
 url='http://www.freeorion.org/'
 arch=('i686' 'x86_64')
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"/build
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
