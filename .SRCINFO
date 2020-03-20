@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-meson
 	pkgdesc = A meson wrapper for the ARM64 target
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = x86_64
 	license = GPL
@@ -13,7 +13,7 @@ pkgbase = aarch64-linux-gnu-meson
 	source = meson.sh
 	source = toolchain.meson
 	sha256sums = 39847155adb2118daec62992a456d2a042dcc00d1a7c27402aff7eb1da97f500
-	sha256sums = e0aaa8a06d1e61a5578e8ff379ea5405f020697ac10c5999f9373c769a42de6d
+	sha256sums = 5ebb68b9069548b4998c88d312376271245387d0844357b4c3aa826a933210e1
 
 pkgname = aarch64-linux-gnu-meson
 
