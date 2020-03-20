@@ -9,7 +9,7 @@ provides=("wasm-pack")
 url="https://github.com/ashleygwilliams/wasm-pack"
 license=('Apache' 'MIT')
 depends=('rust' 'cargo' 'wasm-bindgen' 'npm')
-makedepends=('rust' 'cargo')
+makedepends=('git')
 source=("$_pkgname::git+https://github.com/rustwasm/wasm-pack")
 sha256sums=('SKIP')
 
