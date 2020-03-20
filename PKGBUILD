@@ -2,17 +2,17 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.7
+pkgver=1.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('i686' 'x86_64')
 url="http://specutils.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools' 'python-astropy-helpers>=3.1' 'python-sphinx-astropy' 'python-gwcs' 'graphviz')
+makedepends=('python-setuptools' 'python-astropy-helpers>=3.2.1' 'python-sphinx-astropy' 'python-gwcs>=0.12' 'graphviz')
 checkdepends=('python-pytest-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/astropy/specutils/master/LICENSE.rst")
-md5sums=('fb5f96b71400567cefded1c4f21d83c0'
+md5sums=('a323e9486654c83a317f8c002c2bb953'
          '4d0c18788977e008ba0897bd6aed4bf7')
 
 prepare() {
@@ -36,7 +36,7 @@ check() {
 }
 
 package_python-specutils() {
-    depends=('python>=3.5' 'python-gwcs')
+    depends=('python>=3.5' 'python-gwcs>=0.12' 'python-asdf>=2.5')
     optdepends=('python-specutils-doc: Documentation for Specutils'
                 'python-pytest-astropy: For testing')
     cd ${srcdir}/${_pyname}-${pkgver}
