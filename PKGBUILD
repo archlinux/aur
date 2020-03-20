@@ -2,7 +2,7 @@
 
 pkgname=hero
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A handy, fast and powerful go template engine"
 arch=('x86_64')
 url='https://shiyanhui.github.io/hero'
@@ -17,7 +17,6 @@ build() {
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-  cd "${srcdir}/${pkgname}-${pkgver}/hero"
   go build -v -o "${srcdir}/hero-bin"
 }
 
