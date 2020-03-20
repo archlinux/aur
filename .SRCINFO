@@ -1,0 +1,14 @@
+pkgbase = evtype
+	pkgdesc = Virtual typing using evdev
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/icewind1991/evtype
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = evtype-0.1.0.tar.gz::https://github.com/icewind1991/evtype/archive/v0.1.0.tar.gz
+	sha512sums = d320118d4fd692f622476a27d1b654e9a9a92b9e30b567c64b8634ae6b2880526e156d300848b59cded2b00509c9c3c380cc57022b80b9be09f21d88ba5f07d9
+
+pkgname = evtype
+
