@@ -1,6 +1,6 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor-bin
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel (binary source)"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
@@ -14,7 +14,7 @@ source=(
   "https://github.com/cloud-hypervisor/cloud-hypervisor/releases/download/v${pkgver}/cloud-hypervisor"
 )
 sha512sums=(
-  '31556c7928bb92317ca8492eeb6e38ba78aeb7ca340266943e6100ee39548b3ec1d8483035cb1935ae396d4708e692d967c5a88f227dea724b4049d9b9842456'
+  '221e1ed308694bd160fa909feddc5eb02c276e44491fca8d293a200190fb9f3896c0b13819d71260b57ef05085b9c38dfe769f4217947efcb949574e222f9167'
 )
 
 package() {
