@@ -1,16 +1,16 @@
 # Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
 
 pkgname=spotify-tui
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Spotify client for the terminal written in Rust'
-arch=(x86_64 aarch64)
+arch=(x86_64)
 url=https://github.com/Rigellute/spotify-tui
 license=(MIT)
 depends=(openssl libxcb)
 makedepends=(cargo python)
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('2b70ff47b909a886eb364fdcdbcee5e9550ff7cd4a9110b967899fb6377db632e1e9640cd05eefdc12626d40d3d3e08c2fa3d8fd314c9914f3d390aeb76ab796')
+sha512sums=('6fd24c0409d1307ac84f2f64ffb42096392f3f963510b556afedf2e5489b41cafb69061b9dfe2816a96434028ee5122bf9d9e3d837d66dc61efb7ed9b99b8260')
 
 build() {
   cd $pkgname-$pkgver
