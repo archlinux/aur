@@ -2,7 +2,7 @@
 
 pkgname=gocity
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Code City metaphor for visualizing Go source code in 3D"
 arch=('x86_64')
 url='https://go-city.github.io'
@@ -17,7 +17,6 @@ build() {
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
-  cd "${srcdir}/gocity-${pkgver}"
   go build -v -o "../gocity-bin"
 }
 
