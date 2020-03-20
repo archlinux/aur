@@ -6,6 +6,7 @@ pkgbase = openssh-hpn
 	install = openssh-hpn.install
 	arch = i686
 	arch = x86_64
+	arch = armv6h
 	arch = armv7h
 	license = custom:BSD
 	makedepends = git

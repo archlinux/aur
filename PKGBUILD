@@ -49,7 +49,7 @@ pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
-arch=('i686' 'x86_64' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('krb5' 'ldns>=1.7.1' 'libedit' 'openssl' 'pam')
 makedepends=('git')
 optdepends=('xorg-xauth: X11 forwarding'
