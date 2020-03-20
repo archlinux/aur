@@ -1,7 +1,7 @@
 pkgbase = uefitool
 	pkgdesc = UEFI firmware image viewer and editor and utilities
 	pkgver = 0.27.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LongSoft/UEFITool
 	arch = armv7h
 	arch = i686

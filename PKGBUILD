@@ -6,7 +6,7 @@ pkgname=uefitool
 _pkgname=UEFITool
 _tools=('UEFIPatch' 'UEFIReplace')
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='UEFI firmware image viewer and editor and utilities'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://github.com/LongSoft/UEFITool'
@@ -25,26 +25,26 @@ _build() {
 
 build() {
   # UEFITool
-  cd "$srcdir/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   _build
   # Other tools
   for tool in "${_tools[@]}"; do
-    cd "$srcdir/${_pkgname}-${pkgver}/${tool}"
+    cd "${srcdir}/${_pkgname}-${pkgver}/${tool}"
     _build
   done
 }
 
 package() {
   # UEFITool
-  cd "$srcdir/${_pkgname}-${pkgver}"
-  install -d -m755 "$pkgdir/usr/bin/"
-  install -D -m755 UEFITool "$pkgdir/usr/bin/"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -d -m755 "${pkgdir}/usr/bin/"
+  install -D -m755 UEFITool "${pkgdir}/usr/bin/"
   # Other tools
   for tool in "${_tools[@]}"; do
-    install -D -m755 "$tool/$tool" "$pkgdir/usr/bin/${tool,,}"
+    install -D -m755 "${tool}/${tool}" "${pkgdir}/usr/bin/${tool}"
   done
   # Install patches.txt
-  install -D -m644 UEFIPatch/patches.txt "$pkgdir/usr/share/$pkgname/patches.txt"
+  install -D -m644 UEFIPatch/patches.txt "${pkgdir}/usr/share/${pkgname}/patches.txt"
   # License
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
