@@ -2,7 +2,7 @@
 
 pkgname=electron-cash-bin
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.12
+pkgver=4.0.13
 pkgrel=1
 pkgbin=electron-cash
 url='http://www.electroncash.org/'
@@ -13,14 +13,16 @@ depends=('ttf-bitstream-vera')
 github='https://github.com/Electron-Cash/Electron-Cash'
 appimage="Electron-Cash-${pkgver}-${arch}.AppImage"
 
-validpgpkeys=(D56C110F4555F371AEEFCB254FD06489EFF1DDE1) # Jonald Fyookball <jonf@electroncash.org>
+validpgpkeys=(D56C110F4555F371AEEFCB254FD06489EFF1DDE1 # Jonald Fyookball <jonf@electroncash.org>
+              D465135F97D0047E18E99DC321810A542031C02C # Calin Culianu <calin.culianu@gmail.com>
+              )
 
 source_x86_64=(
 	"${github}/releases/download/${pkgver}/${appimage}"
 	"${appimage}.asc::${github}/releases/download/${pkgver}/${appimage}.asc"
 	)
 
-sha256sums_x86_64=('0f88a37493f6dedabb92ec50fab3a327cab0e4931397e38b63d7032304465a38'
+sha256sums_x86_64=('439a287728707bbab225246869735b0b62ceeceea962940bb81447ed7be0aaec'
                    'SKIP')
 
 package() {
