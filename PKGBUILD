@@ -2,10 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.24
-_rtpatchver=15
+_pkgver=5.4.26
+_rtpatchver=17
 pkgver="${_pkgver}.${_rtpatchver}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -38,11 +38,11 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('7fa0ac784c78129beed43260a7a22a077f1041ac0e8e88647284d2cf7b1d7eb3'
+sha256sums=('669a74f4aeef07645061081d9c05d23216245702b4095afb3d957f79098f0daf'
             'SKIP'
-            'f125bac82c6c4f6119981dbc863d8bbe69b18fa5fe0db68ad1eb0189acd0e2f2'
+            'b0e996543c49278f184b269f90dab9030cf88ca75d13c6f2e4bac1a11ca41584'
             'SKIP'
-            '8445270d29c2382922e9373ff8d6810b3d3ecc164a71a36393f9e1bdb74fb03c'
+            '735ddc5c5d871b528d63ca2785c4d164108ad8d58671c056355ef36c16f4ca44'
             'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
             'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
             '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
