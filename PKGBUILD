@@ -1,6 +1,6 @@
 # Maintainer: anon at sansorgan.es
 pkgname=madagascar
-pkgver=r14559.36030635e
+pkgver=r14561.279e38d29
 pkgrel=1
 epoch=1
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
@@ -21,13 +21,8 @@ pkgver(){
 }
 
 
-prepare() {
-	cd "$srcdir"
-	#bsdtar -xf $pkgname.tar.gz --strip-components=1
-}
-
 build() {
-  cd ${srcdir}
+  cd ${srcdir}/${pkgname}
   # Investigate additional bindings
   export LINKFLAGS="-ltirpc"
   ./configure --prefix=${pkgdir}/usr/
@@ -44,6 +39,7 @@ build() {
 }
 
 package() {
+    cd ${srcdir}/${pkgname}
     make install
     #sed -i "s.${pkgdir}..g" ${pkgdir}/usr/share/madagascar/etc/env.sh
     #sed -i "s.${pkgdir}..g" ${pkgdir}/usr/share/madagascar/etc/env.csh
