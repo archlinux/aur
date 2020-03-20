@@ -1,7 +1,7 @@
 pkgbase = duplicity-dev
-	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm. Development version
-	pkgver = 0.8.11
-	pkgrel = 1
+	pkgdesc = A utility for encrypted, bandwidth-efficient backups using the rsync algorithm
+	pkgver = 0.8.12
+	pkgrel = 0
 	url = http://duplicity.nongnu.org/
 	arch = x86_64
 	license = GPL
@@ -20,10 +20,10 @@ pkgbase = duplicity-dev
 	optdepends = python-requests-oauthlib
 	provides = duplicity
 	conflicts = duplicity
-	source = https://code.launchpad.net/duplicity/0.8-series/0.8.11/+download/duplicity-0.8.11.1596.tar.gz
-	source = https://code.launchpad.net/duplicity/0.8-series/0.8.11/+download/duplicity-0.8.11.1596.tar.gz.sig
+	source = https://code.launchpad.net/duplicity/0.8-series/0.8.12/+download/duplicity-0.8.12.1612.tar.gz
+	source = https://code.launchpad.net/duplicity/0.8-series/0.8.12/+download/duplicity-0.8.12.1612.tar.gz.sig
 	validpgpkeys = 9D95920CED4A8D5F8B086A9F8B6F8FF4E654E600
-	sha512sums = 67940d73d8213559ba88ec21e1326aca0dd065888cbf2e3c68f0f515ba9246100fd6e6d0bd1f12cb678702559f2266b7905931506d2ff6fe6fd35c673593479b
+	sha512sums = eac4d1aecd604ece123bd3b5cecd3b65e1213c243db1a3ce25bae58360d666dd1db07ba0a137e7682f99775ece20453c7dc44cd87940b56c0acd05d01149c951
 	sha512sums = SKIP
 
 pkgname = duplicity-dev
