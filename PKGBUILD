@@ -1,9 +1,9 @@
-# Maintainer: xsmile <sascha_r gmx de>
+# Maintainer: xsmile <>
 
 _pkgname=rtorrent
 pkgname=rtorrent-ps
 _pkgver=0.9.6
-pkgver=1.1.r43.g8be91ab
+pkgver=1.1.r54.ga787dd9
 pkgrel=1
 pkgdesc='Extended rTorrent distribution with UI enhancements, colorization, and some added features'
 url='https://github.com/pyroscope/rtorrent-ps'
@@ -15,6 +15,7 @@ conflicts=('rtorrent')
 source=("https://github.com/rakshasa/$_pkgname/archive/v$_pkgver.tar.gz"
         'backport_0.9.6_algorithm_median.patch'
         'command_pyroscope.cc'
+        'ps-close_lowdisk_normal_all.patch'
         'ps-dl-ui-find_all.patch'
         'ps-event-view_all.patch'
         'ps-fix-double-slash-319_all.patch'
@@ -43,6 +44,7 @@ source=("https://github.com/rakshasa/$_pkgname/archive/v$_pkgver.tar.gz"
 md5sums=('b8b4009f95f8543244ae1d23b1810d7c'
          'b49903d3fa25a66c72db69570dfe8b47'
          '9e1b37fc7e5423245d7d07ece0590fd5'
+         '5680c3d167dd3aaa87cd80437b50b4fe'
          '27e2b4099fa2b943812d80d9306dab79'
          'fbe511a1dfe89fe0510a077e61ae6ec7'
          '22fae392c6e281dc438b39a5019e7e1b'
