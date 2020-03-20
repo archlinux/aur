@@ -1,6 +1,6 @@
 pkgbase = themix-plugin-base16-git
 	pkgdesc = Import and export plugin for Themix GUI designer to get color palettes from Base16 project
-	pkgver = 1.0.r6.g6ec2a41
+	pkgver = 1.0.r11.g4e537f2
 	pkgrel = 1
 	url = https://github.com/themix-project/themix-plugin-base16
 	arch = x86_64
