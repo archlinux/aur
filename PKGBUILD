@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=pROC
-_cranver=1.16.1
+_cranver=1.16.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ depends=('r>=2.14' r-plyr 'r-rcpp>=0.11.1')
 makedepends=(gcc)
 optdepends=(r-microbenchmark r-logcondens r-doparallel r-testthat r-vdiffr r-ggplot2)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('9b70044fb48d866973df0740eacfda81')
+md5sums=('6c9dfc6c91dcbb48c209535a989d5f83')
 
 build() {
   cd "${srcdir}"
