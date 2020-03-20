@@ -10,7 +10,7 @@ url="https://github.com/ashleygwilliams/wasm-pack"
 license=('Apache' 'MIT')
 depends=('rust' 'cargo' 'wasm-bindgen' 'npm')
 makedepends=('rust' 'cargo')
-source=("$_pkgname::git+https://github.com/ashleygwilliams/wasm-pack.git")
+source=("$_pkgname::git+https://github.com/rustwasm/wasm-pack")
 sha256sums=('SKIP')
 
 pkgver() {
