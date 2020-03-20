@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo Disk Remover
+echo
+lsblk
+echo
+echo
+read -p "Type device name (sdd or something like that), and press enter: "
+echo 1 > /sys/block/$REPLY/device/delete
+exit

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Comment=Disk-Remover
+Exec=disk-remover
+GenericName=
+Icon=gnome-disks
+MimeType=
+Name=Disk-Remover
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=none
+X-KDE-SubstituteUID=true
+X-KDE-Username=root
