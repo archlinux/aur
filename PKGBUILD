@@ -5,7 +5,7 @@
 # Contributor: Kevin Kyzer <kev@k3v.in>
 # Contributor: Xabre <xabre @archlinux.info>
 pkgname=mudlet
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="A modern MUD client with a graphical user inteface and built in Lua scripting"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('mudlet-git')
 #source=("http://www.mudlet.org/download/Mudlet-${pkgver}.tar.xz")
 ##using alternate link
 source=("https://www.mudlet.org/wp-content/files/Mudlet-${pkgver}.tar.xz")
-sha256sums=('c41af8db24f0b532d2247a2475991c616e9733a68fadff82868471087fc51da8')
+sha256sums=('7c0e535db1d1ca931b35bc24b961fe6c1d9bba27168c1f444e1a078ac3575917')
 
 
 build() {
@@ -39,8 +39,5 @@ package() {
     mkdir -p ${pkgdir}/usr/share/applications
     mkdir -p ${pkgdir}/usr/share/pixmaps
     install -m 644 ../mudlet.desktop ${pkgdir}/usr/share/applications
-    install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps
-    ##missing file fix
-    install -m 644 mudlet-lua/lua/geyser/GeyserUserWindow.lua ${pkgdir}/usr/share/mudlet/lua/geyser
-    
+    install -m 644 ../mudlet.svg ${pkgdir}/usr/share/pixmaps    
 }
