@@ -22,7 +22,7 @@ prepare() {
 }
 
 build() {
-  meson ${pkgname%-git} build -D docs=true -D man=true
+  meson --prefix /usr ${pkgname%-git} build -D docs=true -D man=true
   ninja -C build
 }
 
@@ -32,5 +32,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  rm -r "$pkgdir"/usr/{lib,share}/installed-tests
 }
 
