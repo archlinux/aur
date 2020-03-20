@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.4
-_minor=24
-_rtver=15
+_minor=26
+_rtver=17
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -67,8 +67,8 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
 # To use linux-rt-bfq smoothly apply bfq-reverts before bfq-dev patch. 
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-sep"
-_bfq_rev_patch="0001-Revert-block-bfq-do-not-plug-I-O-for-bfq_queues-with.patch"
+_bfq_rev_path="bfq-reverts-all"
+_bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
 _bfq_rel="r2K200203"
@@ -345,11 +345,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('1d30040ee4992156cc0436e1782fee1c1b2fbb50462ac29429be141eac5f6c7e0a124db335fcd42c5d73f03b564a5903c3de73afd867e0c923a9f1cb88273200'
+sha512sums=('28ff9c02e99fc4315c6c3bd6e9bb35d913ed3d9a4f0e2830c8af303e12f1efe2315595bdf82f07e07fcb5ed8c6036fb3c1ff5896b2efa5be5a4106745254b5c0'
             'SKIP'
-            'db20d208aaec2b564ea5319fcdb99924c79c50b12d29bbafd9595155b6af7629838597ae657f6ffb6637bd8852bd500ae471d0b05065d14bb6cab25edc8445d4'
+            'a396654e2d983730503432776ea237303cbdd40872d0b2092bd69ab2a6551a4f5580970d2d8055d99d2b9bece9313d688887e6e8ff2edaf09858355c5d47b5c0'
             'SKIP'
-            '3e5a8fed7befb0932256a5b3c8c67c91ed1fd0873bd332b39886be6d1fd0b350fa8ac3c6e71df838f4a8d4014262c800f7731f0c314272ff9ee11e6933a04583'
+            'bd6576b43ec0f4f730110a68fc9541fd6ab763e1247fa977751f89fcf959f3a20c4018fc85d9a1dc80ee35799536859f1980476ea143fb9b124a2d9f79f57fef'
             '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             'e725a711b4ab20d32ba3095b75ded88b6173fa5ceccd8f345de8f94251f22539dfc52e4543c8bd574562072cd5c9ccaf07c9a5321a74ef94a2a911783698fbf6'
