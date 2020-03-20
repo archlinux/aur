@@ -18,6 +18,8 @@ pkgbase = openems-project-git
 	provides = openems-git
 	conflicts = openems
 	conflicts = openems-git
+	source = openems-project-git::git+https://github.com/thliebig/openEMS-Project.git
+	md5sums = SKIP
 
 pkgname = openems-project-git
 

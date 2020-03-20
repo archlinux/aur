@@ -16,41 +16,23 @@ replaces=()
 backup=()
 options=()
 install=
-source=()
+source=("${pkgname%-VCS}::git+https://github.com/thliebig/openEMS-Project.git")
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 
-
-_gitroot="https://github.com/thliebig/openEMS-Project.git"
 _gitname="openEMS-Project"
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+    cd "$srcdir/${pkgname%-VCS}"
+    git submodule init
+    git submodule update
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone --recursive "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone --recursive "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-
-  ./update_openEMS.sh "$srcdir/$_gitname-build/openems_path" --with-MPI
+    ./update_openEMS.sh "$srcdir/${pkgname%-VCS}/openems_path" --with-MPI
 }
 
 package() {
-  cd "$srcdir/$_gitname-build/openems_path"
+  cd "$srcdir/${pkgname%-VCS}/openems_path"
   mkdir -p $pkgdir/usr/
   cp -R * $pkgdir/usr/
-
 }
 
-# vim:set ts=2 sw=2 et:
