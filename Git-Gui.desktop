@@ -1,13 +1,20 @@
 [Desktop Entry]
+Comment[es_ES]=Git GUI
 Comment=Git GUI
 Exec=git gui %u
+GenericName[es_ES]=
+GenericName=
 Icon=qgit
+MimeType=
+Name[es_ES]=Git Gui
 Name=Git Gui
 NoDisplay=false
-Path[$e]=
+Path=
 StartupNotify=true
-Terminal=0
+Terminal=false
 TerminalOptions=
 Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
 X-KDE-SubstituteUID=false
 X-KDE-Username=
