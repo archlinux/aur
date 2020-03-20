@@ -2,7 +2,7 @@
 
 pkgname=dosh
 pkgver=3
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker shell'
 arch=('any')
 url="https://github.com/gportay/$pkgname"
@@ -26,6 +26,6 @@ check() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" PREFIX="/usr" install install-doc
+	make DESTDIR="$pkgdir" PREFIX="/usr" install install-doc install-bash-completion
 	install -D -m 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
