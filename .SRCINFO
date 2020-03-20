@@ -1,0 +1,19 @@
+pkgbase = json-glib-git
+	pkgdesc = JSON library built on GLib
+	pkgver = r1155.b4ede88
+	pkgrel = 1
+	url = https://wiki.gnome.org/Projects/JsonGlib
+	arch = x86_64
+	license = GPL
+	makedepends = gobject-introspection
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = meson
+	depends = glib2
+	provides = json-glib
+	conflicts = json-glib
+	source = git+https://gitlab.gnome.org/GNOME/json-glib.git
+	sha256sums = SKIP
+
+pkgname = json-glib-git
+
