@@ -1,6 +1,6 @@
 pkgbase = xow
 	pkgdesc = Linux driver for the Xbox One wireless dongle
-	pkgver = 0.3
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/medusalix/xow
 	install = xow.install
@@ -8,8 +8,8 @@ pkgbase = xow
 	license = GPL2
 	depends = libusb
 	conflicts = xow-git
-	source = https://github.com/medusalix/xow/archive/v0.3.tar.gz
-	md5sums = 882f4ef191250ba99ddd3540972e0668
+	source = https://github.com/medusalix/xow/archive/v0.4.tar.gz
+	md5sums = 1f9d50b1e4ed2346532cb38678300e91
 
 pkgname = xow
 
