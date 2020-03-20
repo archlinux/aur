@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-qrencode
+	pkgdesc = C library for encoding data in a QR Code symbol. (mingw-w64)
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://fukuchi.org/works/qrencode/
+	arch = any
+	license = LGPL
+	depends = mingw-w64-libpng
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://fukuchi.org/works/qrencode/qrencode-4.0.2.tar.bz2
+	md5sums = 3eb64357f6fbdb68c27cb2e44e97280a
+
+pkgname = mingw-w64-qrencode
+
