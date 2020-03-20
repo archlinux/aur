@@ -1,6 +1,6 @@
-pkgbase = python-pdbpp
+pkgbase = python-pdbpp-git
 	pkgdesc = pdb++, a drop-in replacement for pdb
-	pkgver = 0.10.2
+	pkgver = 0.10.2.r169.gce0c181
 	pkgrel = 1
 	url = https://github.com/pdbpp/pdbpp
 	arch = any
@@ -9,9 +9,11 @@ pkgbase = python-pdbpp
 	depends = python-fancycompleter
 	depends = python-pygments
 	optdepends = python-pyrepl-hg
+	provides = python-pdbpp
+	conflicts = python-pdbpp
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pdbpp/pdbpp-0.10.2.tar.gz
-	sha256sums = 73ff220d5006e0ecdc3e2705d8328d8aa5ac27fef95cc06f6e42cd7d22d55eb8
+	source = git+https://github.com/pdbpp/pdbpp.git
+	sha256sums = SKIP
 
-pkgname = python-pdbpp
+pkgname = python-pdbpp-git
 

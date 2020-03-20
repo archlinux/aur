@@ -1,6 +1,6 @@
-pkgname=python-pdbpp
+pkgname=python-pdbpp-git
 _realname=pdbpp
-pkgver=0.10.2
+pkgver=0.10.2.r169.gce0c181
 pkgrel=1
 pkgdesc="pdb++, a drop-in replacement for pdb"
 arch=(any)
@@ -9,11 +9,18 @@ license=('BSD')
 depends=('python' 'python-fancycompleter' 'python-pygments')
 optdepends=('python-pyrepl-hg')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/p/$_realname/$_realname-$pkgver.tar.gz")
-sha256sums=('73ff220d5006e0ecdc3e2705d8328d8aa5ac27fef95cc06f6e42cd7d22d55eb8')
+conflicts=('python-pdbpp')
+provides=('python-pdbpp')
+source=("git+https://github.com/pdbpp/pdbpp.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$_realname"
+  git describe --long --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+}
 
 package() {
-  cd "$srcdir/$_realname-$pkgver"
+  cd "$srcdir/$_realname"
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
