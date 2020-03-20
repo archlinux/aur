@@ -1,6 +1,6 @@
 # Maintainer: Kye Morton <pryre.dev@outlook.com>
 pkgname=qgroundcontrol-bin
-pkgver=4.0.2
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Ground control for unmanned vehicles."
 arch=('x86_64')
@@ -34,7 +34,7 @@ depends=( 'bzip2'
 
 source=('qgroundcontrol-'${pkgver}'-'${pkgrel}'.tar.bz2::https://github.com/mavlink/qgroundcontrol/releases/download/v'${pkgver}'/qgroundcontrol.tar.bz2')
 
-sha256sums=('e38f55c16a5b295a43c2a650372e54b7a2e80cbd5f84ad9dd029947365670c01')
+sha256sums=('fee228469434a38322705e611407a8fc6fa20ec30976cff238910c25e93094a2')
 
 build() {
 	echo "[Desktop Entry]
