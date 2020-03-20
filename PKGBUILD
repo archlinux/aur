@@ -10,8 +10,8 @@ arch=('any')
 url='https://github.com/romkatv/powerlevel10k'
 license=('MIT')
 depends=('zsh')
-conflicts=zsh-theme-powerlevel9k
-replaces=zsh-theme-powerlevel9k
+conflicts=('zsh-theme-powerlevel9k')
+replaces=('zsh-theme-powerlevel9k')
 optdepends=(
   'powerline-fonts: patched fonts for powerline'
   'oh-my-zsh-git: oh-my-zsh integration'
