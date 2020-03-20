@@ -1,0 +1,16 @@
+pkgbase = shell-color-scripts
+	pkgdesc = A collection of terminal color scripts. A random color script is selected when you open bash or zsh.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://gitlab.com/dwt1/shell-color-scripts.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	optdepends = bash
+	optdepends = zsh
+	provides = shell-color-scripts
+	source = git+https://gitlab.com/dwt1/shell-color-scripts.git
+	md5sums = SKIP
+
+pkgname = shell-color-scripts
+
