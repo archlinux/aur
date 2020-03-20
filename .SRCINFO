@@ -1,6 +1,6 @@
 pkgbase = wildfly-systemd
 	pkgdesc = Wildfly Application Server with upstream systemd integration
-	pkgver = 18.0.0.Final
+	pkgver = 19.0.0.Final
 	pkgrel = 2
 	url = http://www.wildfly.org/
 	install = wildfly.install
@@ -33,9 +33,9 @@ pkgbase = wildfly-systemd
 	backup = etc/wildfly/wildfly.conf
 	backup = usr/lib/systemd/system/wildfly.service
 	backup = opt/wildfly/bin/launch.sh
-	source = https://download.jboss.org/wildfly/18.0.0.Final/wildfly-18.0.0.Final.tar.gz
+	source = https://download.jboss.org/wildfly/19.0.0.Final/wildfly-19.0.0.Final.tar.gz
 	source = wildfly.install
-	sha256sums = d4cbb2e9e1e33faa9df2fb7d444650245f4bc3ed00f5797c2f8b515915a01fe3
+	sha256sums = 00e011f88c36b30dcf61ed1c54eb6f5d64f6bed9039e3774684fa152328e6535
 	sha256sums = 2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2
 
 pkgname = wildfly-systemd

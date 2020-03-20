@@ -6,7 +6,7 @@
 
 _pkg=wildfly
 pkgname="${_pkg}"-systemd
-pkgver=18.0.0.Final
+pkgver=19.0.0.Final
 pkgrel=2
 
 pkgdesc='Wildfly Application Server with upstream systemd integration'
@@ -15,42 +15,42 @@ url='http://www.wildfly.org/'
 license=('LGPL')
 depends=('java-runtime>=8')
 optdepends=('libaio: ActiveMQ Artemis'
-            'lib32-glibc: native OpenSSL support')
+	'lib32-glibc: native OpenSSL support')
 conflicts=('wildfly' 'wildfly-devel')
 
 _pkgloc=opt
 _cfgloc=etc
 _sysdloc=usr/lib/systemd/system
 backup=("${_pkgloc}"/"${_pkg}"/domain/configuration/application-roles.properties
-		"${_pkgloc}"/"${_pkg}"/domain/configuration/application-users.properties
-		"${_pkgloc}"/"${_pkg}"/domain/configuration/logging.properties
-		"${_pkgloc}"/"${_pkg}"/domain/configuration/mgmt-groups.properties
-		"${_pkgloc}"/"${_pkg}"/domain/configuration/mgmt-users.properties
-		"${_pkgloc}"/"${_pkg}"/domain/configuration/domain.xml
-		"${_pkgloc}"/"${_pkg}"/domain/configuration/host.xml
-		"${_pkgloc}"/"${_pkg}"/standalone/configuration/application-roles.properties
-		"${_pkgloc}"/"${_pkg}"/standalone/configuration/application-users.properties
-		"${_pkgloc}"/"${_pkg}"/standalone/configuration/logging.properties
-		"${_pkgloc}"/"${_pkg}"/standalone/configuration/mgmt-groups.properties
-		"${_pkgloc}"/"${_pkg}"/standalone/configuration/mgmt-users.properties
-		"${_pkgloc}"/"${_pkg}"/standalone/configuration/standalone.xml
-		"${_pkgloc}"/"${_pkg}"/bin/add-user.properties
-		"${_pkgloc}"/"${_pkg}"/bin/appclient.conf
-		"${_pkgloc}"/"${_pkg}"/bin/domain.conf
-		"${_pkgloc}"/"${_pkg}"/bin/jboss-cli-logging.properties
-		"${_pkgloc}"/"${_pkg}"/bin/jboss-cli.xml
-		"${_pkgloc}"/"${_pkg}"/bin/standalone.conf
-		"${_cfgloc}"/"${_pkg}"/wildfly.conf
-		"${_sysdloc}"/wildfly.service
-		"${_pkgloc}"/"${_pkg}"/bin/launch.sh)
+	"${_pkgloc}"/"${_pkg}"/domain/configuration/application-users.properties
+	"${_pkgloc}"/"${_pkg}"/domain/configuration/logging.properties
+	"${_pkgloc}"/"${_pkg}"/domain/configuration/mgmt-groups.properties
+	"${_pkgloc}"/"${_pkg}"/domain/configuration/mgmt-users.properties
+	"${_pkgloc}"/"${_pkg}"/domain/configuration/domain.xml
+	"${_pkgloc}"/"${_pkg}"/domain/configuration/host.xml
+	"${_pkgloc}"/"${_pkg}"/standalone/configuration/application-roles.properties
+	"${_pkgloc}"/"${_pkg}"/standalone/configuration/application-users.properties
+	"${_pkgloc}"/"${_pkg}"/standalone/configuration/logging.properties
+	"${_pkgloc}"/"${_pkg}"/standalone/configuration/mgmt-groups.properties
+	"${_pkgloc}"/"${_pkg}"/standalone/configuration/mgmt-users.properties
+	"${_pkgloc}"/"${_pkg}"/standalone/configuration/standalone.xml
+	"${_pkgloc}"/"${_pkg}"/bin/add-user.properties
+	"${_pkgloc}"/"${_pkg}"/bin/appclient.conf
+	"${_pkgloc}"/"${_pkg}"/bin/domain.conf
+	"${_pkgloc}"/"${_pkg}"/bin/jboss-cli-logging.properties
+	"${_pkgloc}"/"${_pkg}"/bin/jboss-cli.xml
+	"${_pkgloc}"/"${_pkg}"/bin/standalone.conf
+	"${_cfgloc}"/"${_pkg}"/wildfly.conf
+	"${_sysdloc}"/wildfly.service
+	"${_pkgloc}"/"${_pkg}"/bin/launch.sh)
 
 install=${_pkg}.install
 
 source=(https://download.jboss.org/wildfly/"${pkgver}"/"${_pkg}"-"${pkgver}".tar.gz
-		"${_pkg}".install)
+	"${_pkg}".install)
 
-sha256sums=('d4cbb2e9e1e33faa9df2fb7d444650245f4bc3ed00f5797c2f8b515915a01fe3'
-			'2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2')
+sha256sums=('00e011f88c36b30dcf61ed1c54eb6f5d64f6bed9039e3774684fa152328e6535'
+	'2844ec981fcf9e6fd93226796e7531b9b8fd30806adba6b31e43d9592a6409c2')
 
 package() {
 	# shellcheck disable=2154
