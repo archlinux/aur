@@ -1,7 +1,7 @@
 # Maintainer: zer0def <zer0def@github>
 pkgname=cloud-hypervisor
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Rust-VMM based cloud hypervisor from Intel"
 url="https://github.com/cloud-hypervisor/cloud-hypervisor"
 arch=('x86_64')
@@ -17,7 +17,9 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}/target/release/cloud-hypervisor" "${pkgdir}/usr/bin/cloud-hypervisor"
+  install -Dm755 -t "${pkgdir}/usr/bin" \
+    "${srcdir}/${pkgname}-${pkgver}/target/release/ch-remote" \
+    "${srcdir}/${pkgname}-${pkgver}/target/release/cloud-hypervisor"
   install -Dm755 -t "${pkgdir}/usr/lib/cloud-hypervisor" \
     "${srcdir}/${pkgname}-${pkgver}/target/release/vhost_user_blk" \
     "${srcdir}/${pkgname}-${pkgver}/target/release/vhost_user_fs" \
