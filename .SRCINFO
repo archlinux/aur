@@ -10,6 +10,7 @@ pkgbase = etaler-git
 	makedepends = cmake
 	depends = catch2
 	depends = xtensor
+	depends = intel-tbb
 	provides = etaler=0.1.5.23.gfcc88a9
 	conflicts = etaler
 	source = git+https://github.com/etaler/etaler.git

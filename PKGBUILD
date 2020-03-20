@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/etaler/Etaler'
 license=('BSD')
 
-depends=('catch2' 'xtensor')
+depends=('catch2' 'xtensor' 'intel-tbb')
 makedepends=('git' 'cmake')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
