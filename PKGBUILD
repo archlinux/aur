@@ -1,3 +1,4 @@
+# Maintaner: Dante Helmore <frostu8@protonmail.com>
 pkgname=wasm-pack-git
 _pkgname=wasm-pack
 pkgdesc="pack up the wasm and publish it to npm!"
