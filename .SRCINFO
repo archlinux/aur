@@ -1,7 +1,7 @@
 pkgbase = srain
 	pkgdesc = Modern IRC client written in GTK.
 	pkgver = 1.0.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://srain.im
 	arch = i686
 	arch = x86_64
