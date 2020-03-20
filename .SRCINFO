@@ -1,0 +1,18 @@
+pkgbase = st-distrotube
+	pkgdesc = A heavily-patched and customized build of st (the Suckless simple terminal) from DistroTube.
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://gitlab.com/dwt1/st-distrotube.git
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = make
+	optdepends = nerd-fonts-complete
+	optdepends = ttf-symbola
+	provides = st
+	conflicts = st
+	source = git+https://gitlab.com/dwt1/st-distrotube.git
+	md5sums = SKIP
+
+pkgname = st-distrotube
+
