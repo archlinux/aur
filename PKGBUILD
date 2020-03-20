@@ -2,7 +2,7 @@
 
 pkgname=c2go
 pkgver=0.25.9
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for transpiling C to Go"
 arch=('x86_64')
 url='https://github.com/elliotchance/c2go'
