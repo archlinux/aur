@@ -1,9 +1,9 @@
-# Maintainer: xsmile <sascha_r gmx de>
+# Maintainer: xsmile <>
 
 _pkgname=libtorrent
 pkgname=libtorrent-ps
 _pkgver=0.13.6
-pkgver=1.1.r42.g37c9d4b
+pkgver=1.1.r54.ga787dd9
 pkgrel=1
 pkgdesc='BitTorrent library written in C++ for use with rtorrent-ps'
 url='https://github.com/rakshasa/libtorrent'

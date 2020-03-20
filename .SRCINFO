@@ -1,6 +1,6 @@
 pkgbase = libtorrent-ps
 	pkgdesc = BitTorrent library written in C++ for use with rtorrent-ps
-	pkgver = 1.1.r42.g37c9d4b
+	pkgver = 1.1.r54.ga787dd9
 	pkgrel = 1
 	url = https://github.com/rakshasa/libtorrent
 	arch = any
