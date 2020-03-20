@@ -12,6 +12,7 @@ sha512sums=('SKIP' 'SKIP')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/applications
-  cp $pkgname.desktop ${pkgdir}/usr/share/applications
-  cp $pkgname $pkgdir/usr/bin
+  cp $pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
+  mkdir -p $pkgdir/usr/bin/
+  cp $pkgname $pkgdir/usr/bin/
 }
