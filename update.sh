@@ -15,12 +15,11 @@ tempdir="$(mktemp -d)"
 tempfile="${tempdir}/filename"
 curl -sL https://github.com/Versent/saml2aws/releases/download/v${pkgver}/saml2aws_${pkgver}_linux_amd64.tar.gz -o "${tempfile}"
 md5new="$(md5sum "${tempfile}" | awk '{print $1}')"
-# rm -rf "${tempdir}"
-
-echo md5old=${md5old}, md5new=${md5new}
+rm -rf "${tempdir}"
 
 #update the buildfile
 sed "s+pkgver=${verold}+pkgver=${pkgver}+g" -i PKGBUILD
+sed "s/${md5old}/${md5new}/g" -i PKGBUILD
 
 set -eu
 
