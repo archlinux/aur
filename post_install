@@ -1,0 +1,6 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+	echo -e "Export the path to your game path as an environment variable e.g. : '\e[32mexport CNC_GENERALS_PATH=~/generals/\e[37m"
+	echo -e "Execute '\e[32mopensage-viewer\e[37m to view assets or '\e[32mopensage-launcher\e[37m to play"
+}
