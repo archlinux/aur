@@ -1,0 +1,21 @@
+pkgbase = brother-hl-l3210cw
+	pkgdesc = LPR and CUPS driver for the Brother HL-L3210CW
+	pkgver = 1.0.2
+	pkgrel = 0
+	url = http://solutions.brother.com/linux/en_us/
+	install = brother-hl-l3210cw.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	depends = ghostscript
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf103942/hll3210cwpdrv-1.0.2-0.i386.rpm
+	source = cupswrapper-license.txt
+	source = lpr-license.txt
+	md5sums = c7e3d57cda18be69914aad496be39223
+	md5sums = fccd5dbcf41e0c0f83cb2379749db498
+	md5sums = ad58e3184bdb0f8763f5ca98f2cf7e39
+
+pkgname = brother-hl-l3210cw
+
