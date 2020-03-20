@@ -1,7 +1,7 @@
 pkgbase = aterm
 	pkgdesc = An xterm replacement with transparency support
 	pkgver = 1.0.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://aterm.sourceforge.net/
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=aterm
 pkgver=1.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="An xterm replacement with transparency support"
 arch=('i686' 'x86_64')
 url="http://aterm.sourceforge.net/"
@@ -19,8 +19,13 @@ sha1sums=('a975753b415306a0734efc3773de8a86129bb54b'
           'afd78f13fdba838e4bc2ce450a02f5152a4aa1f2'
           '52dc5abfebacba14c8702deae67390013f046218')
     
+prepare() {
+  cd ${pkgname}-${pkgver}
+  sed -i 's%<sys/stropts.h>%<sys/ioctl.h>%;s%I_PUSH,%TIOCPKT,%' src/command.c
+
+}
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr --enable-transparency=yes \
     --enable-background-image --enable-fading --enable-menubar \
     --enable-graphics
@@ -28,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -Dm644 "$srcdir/aterm.png" "$pkgdir/usr/share/pixmaps/aterm.png"
   install -Dm644 "$srcdir/aterm.desktop" "$pkgdir/usr/share/applications/aterm.desktop"
