@@ -6,7 +6,6 @@ pkgrel=1
 pkgdesc='Extra ICC profiles'
 url='https://www.freedesktop.org/wiki/OpenIcc/ProfilePackages'
 arch=('any')
-depends=('openicc')
 source=("https://master.dl.sourceforge.net/project/openicc/basICColor-Profiles/basICColor_Offset_${pkgver/./-}.tar.gz")
 license=('GPL')
 sha256sums=('2f32a4694fc34a7845523b175c2b63415265bdf39842abe34fd70941e759c3b4')
