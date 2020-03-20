@@ -1,7 +1,7 @@
 pkgbase = lua-gifine-git
 	pkgdesc = Quickly record and edit gifs and videos of your desktop
 	pkgver = dev
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/leafo/gifine
 	arch = x86_64
 	license = MIT
