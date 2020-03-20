@@ -1,0 +1,18 @@
+pkgbase = icestudio-appimage
+	pkgdesc = A real gamechanger in the world of Open Source FPGAs
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://icestudio.io/
+	arch = x86_64
+	license = GPL2
+	depends = python
+	provides = icestudio
+	conflicts = icestudio
+	options = !strip
+	source = https://github.com/FPGAwars/icestudio/releases/download/v0.5.0/icestudio-0.5.0-linux64.AppImage
+	source = icestudio.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = icestudio-appimage
+
