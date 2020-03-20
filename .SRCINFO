@@ -1,7 +1,7 @@
 pkgbase = psad
 	pkgdesc = A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic
 	pkgver = 2.4.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cipherdyne.org/psad/
 	arch = i686
 	arch = x86_64

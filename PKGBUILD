@@ -4,7 +4,7 @@
 
 pkgname=psad
 pkgver=2.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic'
 arch=('i686' 'x86_64')
 url='http://cipherdyne.org/psad/'
