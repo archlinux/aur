@@ -7,7 +7,7 @@ _download_installer() {
     DOWNLOAD_URL="https://get.enterprisedb.com/postgresql/postgresql-${VERSION}-linux-x64.run"
     INSTALLER_FILE="${CACHE_DIR}/postgresql-${VERSION}-linux-x64.run"
     echo "Downloading postgresql edb installer from ${DOWNLOAD_URL} ..."
-    curl -LC- -o "${INSTALLER_FILE}" --retry 60 --retry-connrefused --retry-delay 10 --retry-max-time 600 --compressed "${DOWNLOAD_URL}"
+    curl -LC- -o "${INSTALLER_FILE}" --connect-timeout 10 --retry 60 --retry-connrefused --retry-delay 10 --compressed "${DOWNLOAD_URL}"
     chmod +x "${INSTALLER_FILE}"
 }
 
