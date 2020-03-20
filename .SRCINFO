@@ -1,0 +1,15 @@
+pkgbase = libcr75-git
+	pkgdesc = A PCSC driver for the Transcend CR-75 card reader (for example Sitecom e-ID reader)
+	pkgver = r22.a133cb0
+	pkgrel = 1
+	url = https://github.com/jordidg/libcr75
+	arch = x86_64
+	license = LGPL
+	makedepends = cmake
+	depends = libusb
+	depends = pcsclite
+	source = git+https://github.com/jordidg/libcr75.git
+	sha256sums = SKIP
+
+pkgname = libcr75-git
+
