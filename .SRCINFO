@@ -1,6 +1,6 @@
 pkgbase = libinputsynth-git
 	pkgdesc = Synthesize desktop input for X11 and Wayland
-	pkgver = 0.13.2.60.4a048ca
+	pkgver = 0.14.0.61.315d554
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/xrdesktop/libinputsynth
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libinputsynth-git
 	makedepends = git
 	makedepends = xdotool
 	depends = glib2
-	provides = libinputsynth=0.13.2.60.4a048ca
+	provides = libinputsynth=0.14.0.61.315d554
 	conflicts = libinputsynth
 	options = debug
 	options = !strip
