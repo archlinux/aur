@@ -1,3 +1,4 @@
+set -e
 CACHE_DIR="$(pacman-conf 'CacheDir')"
 
 _download_installer() {
@@ -15,9 +16,10 @@ _install() {
     MAIN_VER="${VERSION%%.*}"
     INSTALLER_FILE="${CACHE_DIR}/postgresql-${VERSION}-linux-x64.run"
     echo "Installing postgresql edb via installer ${INSTALLER_FILE} ..."
-    "${INSTALLER_FILE}" --mode unattended --debuglevel 1 --disable-components pgAdmin,stackbuilder --enable-components server,commandlinetools
+    "${INSTALLER_FILE}" --mode unattended --disable-components pgAdmin,stackbuilder --enable-components server,commandlinetools
     echo "Finish. You should use 'source /opt/PostgreSQL/${MAIN_VER}/pg_env.sh' to inject the environment variables to current shell."
     echo "Or you can append 'source /opt/PostgreSQL/${MAIN_VER}/pg_env.sh' to your shell profile for permanent. E.g: ~/.bashrc or ~/.zshrc, and so on."
+    echo "The default superaccount is: postgres, and the default superpassword is: postgres"
 }
 
 _uninstall() {
@@ -25,7 +27,7 @@ _uninstall() {
     MAIN_VER="${VERSION%%.*}"
     UNINSTALLER="/opt/PostgreSQL/${MAIN_VER}/uninstall-postgresql"
     echo "Uninstalling postgresql edb via uninstaller ${UNINSTALLER} ..."
-    "${UNINSTALLER}" --debuglevel 1 --mode unattended
+    "${UNINSTALLER}" --mode unattended
 }
 
 pre_install() {
