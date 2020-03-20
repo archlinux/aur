@@ -1,16 +1,16 @@
 pkgbase = bouml
 	pkgdesc = A free UML 2 tool box including a modeler allowing you to specify and generate code in C++, Java, IDL, PHP, Python and MySQL
-	pkgver = 7.9
+	pkgver = 7.9.1
 	pkgrel = 1
 	url = https://bouml.fr/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = qt4
-	source_i686 = v7.9-32.tar.gz::https://www.bouml.fr/files/bouml-7.9-CentOS6.i686.rpm
-	sha256sums_i686 = 1f63a5846e42cc6177dc392237dd477946ec3398ff2cfe1f293e2b03db797a98
-	source_x86_64 = v7.9-64.tar.gz::https://www.bouml.fr/files/bouml-7.9-CentOS7.x86_64.rpm
-	sha256sums_x86_64 = e73cc158034de155e9c040ace2c2923cd1ad57a5e732b8a552e3238b766782db
+	source_i686 = v7.9.1-32.tar.gz::https://www.bouml.fr/files/bouml-7.9.1-CentOS6.i686.rpm
+	sha256sums_i686 = 3504eaac7865e9b4cf660f8266f16298638162306db41725eb152437a45dae36
+	source_x86_64 = v7.9.1-64.tar.gz::https://www.bouml.fr/files/bouml-7.9.1-CentOS7.x86_64.rpm
+	sha256sums_x86_64 = af5e7dcb6a0534259b7cf64c2059b956669dc070cdd7d19b964c1be55b3b0b1f
 
 pkgname = bouml
 
