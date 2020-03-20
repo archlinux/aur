@@ -1,6 +1,6 @@
 # Maintainer: ArchFeh <guyu2876@gmail.com>
 # Contributor: Robosky <fangyuhao0612@gmail.com>
-pkgname=mojave-gtk-theme-git
+pkgname=mojave-gtk-theme-git-new
 _pkgname=Mojave-gtk-theme
 pkgver=320.7b9bf35
 pkgrel=1

@@ -1,4 +1,4 @@
-pkgbase = mojave-gtk-theme-git
+pkgbase = mojave-gtk-theme-git-new
 	pkgdesc = A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.
 	pkgver = 320.7b9bf35
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = mojave-gtk-theme-git
 	source = git+https://github.com/vinceliuice/Mojave-gtk-theme.git
 	md5sums = SKIP
 
-pkgname = mojave-gtk-theme-git
+pkgname = mojave-gtk-theme-git-new
 
