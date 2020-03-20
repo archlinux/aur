@@ -1,18 +1,18 @@
 diff --git a/app_version.h b/app_version.h
-index 4da5503..2cad494 100644
+index d2da9c9..86dc0aa 100644
 --- a/app_version.h
 +++ b/app_version.h
-@@ -31,7 +31,7 @@
+@@ -38,7 +38,7 @@
+ #define APP_SITE        "http://be.root.free.fr/"
  #define APP_MAIL        "be.root@free.fr"
  #define APP_LOCKFILE    "nocomprendo.lock"
- 
 -#define POCKET_PATH     "/usr/share/nocomprendo/pocketsphinx/"
 +#define POCKET_PATH     "/usr/share/pocketsphinx/"
  
  // Don't edit. Defines updated by "make version" from .pro variables.
  #define APP_MAJOR     1
 diff --git a/nocomprendo.pro b/nocomprendo.pro
-index e6c85f7..9760dfb 100644
+index 0b43c3b..2775e45 100644
 --- a/nocomprendo.pro
 +++ b/nocomprendo.pro
 @@ -28,10 +28,10 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # Disables all the APIs depr
@@ -30,15 +30,15 @@ index e6c85f7..9760dfb 100644
  
  use_espeak {
 @@ -39,7 +39,7 @@ use_espeak {
-     LIBS +=  -lespeak -lasound -lpthread
+     LIBS +=  -lespeak -lpthread
  }
  
 -PRE_TARGETDEPS += libpocketsphinx.a libsphinxbase.a
 +#PRE_TARGETDEPS += libpocketsphinx.a libsphinxbase.a
  
  SOURCES   += \
-     editset.cpp \
-@@ -131,7 +131,7 @@ target.path     = /usr/bin                   # Application installation dir
+     aboutdialog.cpp \
+@@ -136,7 +136,7 @@ target.path     = /usr/bin                  # Application installation dir
  APP_PATH        = /usr/share/$${TARGET}
  USER_PATH       = $(HOME)/.config/$${TARGET}
  
@@ -47,7 +47,7 @@ index e6c85f7..9760dfb 100644
  ACOUSTIC_DIR    = pocketsphinx
  
  tools.path      = $${APP_PATH}
-@@ -155,7 +155,7 @@ INSTALLS += tools pocket userdata target icons desktop
+@@ -160,7 +160,7 @@ INSTALLS += tools pocket userdata target icons desktop
  
  # More make targets
  include(more-make-targets.pri)              # Additional targets : version, translation, files, count
