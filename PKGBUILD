@@ -2,7 +2,7 @@
 
 basename=kwin-effect-xrdesktop
 pkgname=$basename-git
-pkgver=r256.897bd29
+pkgver=r271.2271fce
 pkgrel=1
 pkgdesc='xrdesktop effect for KWin.'
 arch=('x86_64')
