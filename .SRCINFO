@@ -1,0 +1,19 @@
+pkgbase = uefitool
+	pkgdesc = UEFI firmware image viewer and editor and utilities
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/LongSoft/UEFITool
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = uefitool-git
+	conflicts = uefitool-git
+	source = https://github.com/LongSoft/UEFITool/archive/0.27.0.tar.gz
+	sha512sums = 97bcb465081b78704ac26f232f66e2c7b3e9b02fa7bfa3ad79dacc2ac1e37b40dbfb10d748ebd14ff00715b2045d77d511a83855972ec9d9fa84f0931e235be5
+
+pkgname = uefitool
+
