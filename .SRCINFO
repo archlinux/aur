@@ -1,7 +1,7 @@
 pkgbase = hero
 	pkgdesc = A handy, fast and powerful go template engine
 	pkgver = 0.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://shiyanhui.github.io/hero
 	arch = x86_64
 	license = Apache2
