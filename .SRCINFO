@@ -1,7 +1,7 @@
 pkgbase = wtwitch
 	pkgdesc = Terminal user interface for Twitch
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.sr.ht/~krathalan/wtwitch
 	changelog = CHANGELOG
 	arch = any

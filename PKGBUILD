@@ -3,7 +3,7 @@
 # General package information
 pkgname=wtwitch
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal user interface for Twitch"
 url="https://git.sr.ht/~krathalan/wtwitch"
 license=("GPL3")

@@ -1,22 +1,28 @@
-See the full changelog at https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
+See the full changelog at 
+https://git.sr.ht/~krathalan/wtwitch/tree/master/FULLCHANGELOG
 
 1.2.0 (February 08, 2020)
-    Dramatically reduced the number of Twitch API calls with the -c,--check option
-    The above change should at least alleviate https://todo.sr.ht/~krathalan/wtwitch/2
+    Dramatically reduced the number of Twitch API calls with the -c,--check 
+        option
+    The above change should at least alleviate 
+        https://todo.sr.ht/~krathalan/wtwitch/2
 
 1.3.0 (February 12, 2020)
-    Option -t,--top-games changed to -t,--top and now lists top games *and* top streams
+    Option -t,--top-games changed to -t,--top and now lists top games *and* 
+        top streams
     Started caching game IDs to again dramatically reduce strain on Twitch API
     Added debugging information to more code
     Reduced code duplication
 
 1.4.0 (March 06, 2020)
-    Added initial localization for German/Deutsch and Spanish/Español (user contributed translations welcome!)
+    Added initial localization for German/Deutsch and Spanish/Español (user
+        contributed translations welcome!)
     Dramatically sped up many features
     Code cleanup
 
 1.4.1 (March 07, 2020)
-    Fixed an issue where sometimes a streamer returned by the Twitch API would be null
+    Fixed an issue where sometimes a streamer returned by the Twitch API would
+        be null
 
 1.4.2 (March 19, 2020)
     Fixed an "unbound variable" issue when a user had no subscriptions
