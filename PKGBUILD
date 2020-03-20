@@ -1,7 +1,7 @@
 # Maintainer: K. Morton <pryre.dev@outlook.com>
 # Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol
-pkgver=4.0.0
+pkgver=4.0.4
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('x86_64')
@@ -60,13 +60,13 @@ source=("qgroundcontrol-${pkgver}.tar.gz::https://github.com/mavlink/qgroundcont
 		'mavlink-warn-qgc.patch'
 )
 
-sha256sums=('2eb84acdf451d5152537516a43dae93ac52f9e48fefb3df16e6709f1a9989e4e'
+sha256sums=('320e1e33a1a8f53564ac9acfba6fd0525cf512a0caf945e788dc633bbe6ba277'
             'f3aa1ae178cfa22c4d0bf8c46edc28902ed626a970f0164bd2eba031c9d76432'
             '51b2d5af91e16d6009e73690c62a289dff9004c170e626dc8c322dd49a745c8b'
             'ad96ca7c11864d26047637dc02a0278bbf33997a6f6be37ef1b7ca44669f1149'
             '1ab58c633edcfff9288bd868bf33e2c9990afa27fa5df8f1731675d98a4ce6e4'
-            'SKIP'
-            'SKIP')
+            'd65862686e39f30245b8684b33db8f32074f683c934f5c964c3ffe8a288b7d61'
+            '49fd4ef4fb1b6c1c337d5d9d16c35225230ad2f4e3ddd89f1fd08d3ec6e2df84')
 
 prepare() {
 	mavlinkdir="c_library_v2-${pkgver_mavlink}"
