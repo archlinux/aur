@@ -1,6 +1,6 @@
 pkgbase = dotenv-linter-bin
 	pkgdesc = Linter for .env files. Written in Rust
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/mgrachev/dotenv-linter
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dotenv-linter-bin
 	makedepends = curl
 	provides = dotenv-linter
 	conflicts = dotenv-linter-git
-	source = https://github.com/mgrachev/dotenv-linter/releases/download/v1.1.1/dotenv-linter-linux-x86_64.tar.gz
+	source = https://github.com/mgrachev/dotenv-linter/releases/download/v1.1.2/dotenv-linter-linux-x86_64.tar.gz
 	md5sums = SKIP
 
 pkgname = dotenv-linter-bin
