@@ -1,7 +1,7 @@
 pkgbase = telegram-desktop-userfonts
 	pkgdesc = Official Telegram Desktop client, with your fonts as set by fontconfig
 	pkgver = 1.9.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.telegram.org/
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = telegram-desktop-userfonts
 	makedepends = range-v3
 	makedepends = tl-expected
 	makedepends = microsoft-gsl
-	depends = enchant
+	depends = hunspell
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	depends = lz4
