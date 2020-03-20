@@ -1,7 +1,7 @@
 # Maintainer: Chad Kunde <Kunde21@gmail.com>
 
 pkgname=gopls
-pkgver=v0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Language server for Go programming language'
 arch=(x86_64 aarch64 armv7h armv7l)
@@ -13,13 +13,20 @@ makedepends=('git'
 conflicts=('go-tools'
            'go-tools-complete-git')
 provides=('gopls')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golang/tools/archive/gopls/${pkgver}.tar.gz")
-sha256sums=('0493ff54a38d24e21f7460eca6db33c6fe590a6280863a6475d72bb6b0c863be')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/golang/tools/archive/gopls/v${pkgver}.tar.gz")
+sha256sums=('6b223742cba371721bfdac644f04c6c2b592b3b0e284da5bb4ec53ab9cd60998')
+
+prepare() {
+  cd "tools-${pkgname}-v${pkgver}/${pkgname}"
+
+  GOPATH="${srcdir}" GO111MODULE=on go mod download
+}
 
 build() {
-  cd "tools-${pkgname}-${pkgver}/${pkgname}"
+  cd "tools-${pkgname}-v${pkgver}/${pkgname}"
 
   GOPATH="${srcdir}" GO111MODULE=on go build -o "../../$pkgname" -trimpath
+  GOPATH="${srcdir}" GO111MODULE=on go clean -modcache
   mv ../LICENSE ../../LICENSE
 }
 
