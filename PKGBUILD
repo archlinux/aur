@@ -1,6 +1,6 @@
 # Maintainer of this PKGBUILD file: Martino Pilia <martino.pilia@gmail.com>
 pkgname=vsce
-pkgver=1.73.0
+pkgver=1.74.0
 pkgrel=1
 pkgdesc="Visual Studio Code extension manager"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=(
 	'typescript'
 )
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('748e3f28097cd9208ee4e91ba46315891de739b6d9fd21e2d68dfb4d8f3e7b41')
+sha256sums=('d9afb1e8fbc785936011873c597a28c3606282df223ad3b46eb27e643f6b5669')
 
 package() {
 	npm install -g \
@@ -23,6 +23,9 @@ package() {
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
 	find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+
+	# Fix ownership
+	chown -R root:root "${pkgdir}"/*
 
 	install -D -m644 \
 		"${srcdir}/package/LICENSE" \
