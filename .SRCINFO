@@ -1,0 +1,14 @@
+pkgbase = git-gui-menuentry
+	pkgdesc = Menu entry for GIT gui
+	pkgver = 1
+	pkgrel = 1
+	url = https://git-scm.com/
+	arch = any
+	license = LGPL
+	depends = git
+	depends = tk
+	source = Git-Gui.desktop
+	sha512sums = SKIP
+
+pkgname = git-gui-menuentry
+

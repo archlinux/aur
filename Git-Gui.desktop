@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=Git GUI
+Exec=git gui %u
+Icon=qgit
+Name=Git Gui
+NoDisplay=false
+Path[$e]=
+StartupNotify=true
+Terminal=0
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
