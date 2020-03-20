@@ -1,6 +1,6 @@
 pkgbase = virt-backup
 	pkgdesc = Automatic backups for Libvirt
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Anthony25/virt-backup
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = virt-backup
 	depends = python-defusedxml
 	depends = python-lxml
 	depends = python-yaml
+	optdepends = python-zstandard: zstd packager support
 	options = !emptydirs
-	source = https://github.com/Anthony25/virt-backup/archive/v0.3.2.tar.gz
-	sha256sums = 8e239f1430893dccee94678bcfd605328690bd5e55aa125b7290c116b1823bd3
+	source = https://github.com/Anthony25/virt-backup/archive/v0.4.0.tar.gz
+	sha256sums = 9233d9fff887cb16f683d3155e05713ddd45e18b3dfabd69dd9e44d4f0f73731
 
 pkgname = virt-backup
 

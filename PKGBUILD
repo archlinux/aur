@@ -4,7 +4,7 @@
 # his PKGBUILD that served as a base for this one
 
 pkgname=virt-backup
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Automatic backups for Libvirt"
 arch=(any)
@@ -22,9 +22,12 @@ depends=(
   python-lxml
   python-yaml
 )
+optdepends=(
+  'python-zstandard: zstd packager support'
+)
 options=(!emptydirs)
 source=("https://github.com/Anthony25/virt-backup/archive/v${pkgver}.tar.gz")
-sha256sums=('8e239f1430893dccee94678bcfd605328690bd5e55aa125b7290c116b1823bd3')
+sha256sums=('9233d9fff887cb16f683d3155e05713ddd45e18b3dfabd69dd9e44d4f0f73731')
 
 package() {
   cd "${srcdir}/virt-backup-${pkgver}"
