@@ -1,0 +1,25 @@
+pkgbase = level-zero-git
+	pkgdesc = API for accessing low level interfaces in oneAPI platform devices (git version)
+	pkgver = 0.91.r1.gbe749e1
+	pkgrel = 1
+	url = https://spec.oneapi.com/versions/latest/elements/l0/source/index.html
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = opencl-headers
+	source = git+https://github.com/oneapi-src/level-zero.git
+	sha256sums = SKIP
+
+pkgname = level-zero-headers-git
+	pkgdesc = oneAPI Level Zero header files (git version)
+	arch = any
+	provides = level-zero-headers
+	conflicts = level-zero-headers
+
+pkgname = level-zero-loader-git
+	pkgdesc = oneAPI Level Zero loader (git version)
+	depends = gcc-libs
+	provides = level-zero-loader
+	conflicts = level-zero-loader
+
