@@ -1,7 +1,7 @@
 pkgbase = title2bib
 	pkgdesc = Generate a bibtex given a title
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bibcure/title2bib
 	arch = any
 	license = AGPL3

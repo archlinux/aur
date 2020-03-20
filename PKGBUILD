@@ -1,8 +1,9 @@
-# Maintainer: Excitable Snowball <excitablesnowball@gmail.com>
+# Contributor: Excitable Snowball <excitablesnowball@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=title2bib
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generate a bibtex given a title"
 url="https://github.com/bibcure/title2bib"
 arch=('any')
@@ -13,6 +14,6 @@ sha256sums=('13ef886aea31aa70d281531637dff4bb9b1ed5ff2bd29ef6b091ac5dedbd71c8')
 
 package() {
   cd $pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  python2 setup.py install --root="$pkgdir"/ --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
