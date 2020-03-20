@@ -1,7 +1,7 @@
 # Maintainer: Coelacanthus <liuhongwu2003@outlook.com>
 
 pkgname=lemon-lime
-pkgver=v0.1.2a
+pkgver=v0.1.3
 pkgrel=1
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
@@ -24,9 +24,8 @@ source=("https://github.com/iotang/Project_LemonLime/archive/${pkgver}.tar.gz"
 		"lemon-lime.desktop"
 		)
 noextract=()
-md5sums=('SKIP'
-		'168d064b2c784975c30b30c27ba18062'
-		)
+md5sums=('e5cc87caad362939ba4930295a42115a'
+         '168d064b2c784975c30b30c27ba18062')
 validpgpkeys=()
 
 prepare() {
