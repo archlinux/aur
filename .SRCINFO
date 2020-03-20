@@ -1,7 +1,7 @@
 pkgbase = perl-test-use-ok
 	pkgdesc = Alternative to Test::More::use_ok
 	pkgver = 0.11
-	pkgrel = 4
+	pkgrel = 5
 	url = http://search.mcpan.org/dist/Test-use-ok
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = perl-test-use-ok
 	depends = perl>=5.8.9
 	options = !emptydirs
 	source = http://search.cpan.org/CPAN/authors/id/A/AU/AUDREYT/Test-use-ok-0.11.tar.gz
-	md5sums = 014364cc2f0df651d8416ebb60451f18
+	sha256sums = 8410438a2acf127bffcf1ab92205b747a615b487e80a48e8c3d0bb9fa0dbb2a8
 
 pkgname = perl-test-use-ok
 
