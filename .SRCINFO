@@ -1,0 +1,17 @@
+pkgbase = tilt
+	pkgdesc = Local Kubernetes development with no stress
+	pkgver = 0.12.9
+	pkgrel = 1
+	url = https://github.com/windmilleng/tilt
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = goreleaser
+	makedepends = yarn
+	optdepends = kubectl
+	conflicts = tilt-bin
+	source = tilt-0.12.9.tar.gz::https://github.com/windmilleng/tilt/archive/v0.12.9.tar.gz
+	sha256sums = fddbe7ed021c5da807fc00fcdcab8dd0dae6f9070c3e5a53ca9a066432b0bd00
+
+pkgname = tilt
+
