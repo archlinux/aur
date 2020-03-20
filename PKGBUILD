@@ -1,6 +1,6 @@
 pkgname=json-glib-git
 pkgver=r1155.b4ede88
-pkgrel=1
+pkgrel=2
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
 arch=(x86_64)
