@@ -7,6 +7,8 @@ pkgbase = vesc_tool-git
 	license = unknown
 	makedepends = git
 	depends = qt5-connectivity
+	depends = qt5-serialport
+	depends = qt5-quickcontrols2
 
 pkgname = vesc_tool-git
 
