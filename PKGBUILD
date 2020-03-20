@@ -17,8 +17,7 @@ source=("http://www.alice.org/wp-content/uploads/2019/04/Alice3_unix_3_5.sh")
 noextract=('Alice3_unix_3_5.sh')
 sha512sums=('8c1d17e95bc08b38a9615607be9c47dc96c0e374118364377a197e12026e6b26a0058e75a4f7d0f9c81ad1153734012a6796eaa44247c00d19c8e4a114f0c836')
 
-package()
-{
+package() {
 	cd "${srcdir}"
 	mkdir -p "${pkgdir}"/opt
 	mkdir -p "${pkgdir}"/usr/share/applications
