@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
 pkgver=0.9.4.r1010
-pkgrel=2
+pkgrel=3
 pkgdesc="The Ultimate Document Programming Framework from git"
-arch=('any')
+arch=('x86_64')
 url="http://www.nongnu.org/skribilo/"
 license=('GPL')
 depends=('bash')
@@ -43,7 +43,7 @@ build() {
 package() {
   cd "${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
-  rm $pkgdir/usr/share/info/*.png
+  rm "$pkgdir"/usr/share/info/*.png
   install -d "$pkgdir"/usr/share/doc/$pkgname
-  find $srcdir/ -name "*.png" -exec install -m644 {} "$pkgdir"/usr/share/doc/$pkgname \;
+  find "$srcdir"/ -name "*.png" -exec install -m644 {} "$pkgdir"/usr/share/doc/$pkgname \;
 }
