@@ -11,22 +11,23 @@
 
 _pkgname=weechat
 pkgname=${_pkgname}-git
-pkgver=2.6.11.gd26893a70
+pkgver=2.7.125.gc29b45a0f
 pkgrel=2
 pkgdesc='Fast, light and extensible IRC client (curses UI). Development version.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
-url='http://www.weechat.org/'
+url='https://www.weechat.org/'
 license=('GPL')
 
-depends=('gnutls' 'curl' 'libgcrypt' 'hicolor-icon-theme')
+depends=('gnutls' 'ncurses' 'curl' 'zlib' 'libgcrypt' 'hicolor-icon-theme')
 makedepends=(
 	'git' 'source-highlight' 'cmake' 'pkg-config' 'asciidoctor'
-	'perl' 'python' 'lua' 'tcl' 'ruby' 'aspell' 'guile2.0'
+	'perl' 'python' 'lua' 'tcl' 'ruby' 'aspell' 'guile'
 	#'php' 'v8'
 )
 optdepends=(
 	'perl' 'python' 'lua' 'tcl' 'ruby'
-	'aspell' 'guile2.0' #'php' 'v8'
+	'aspell' 'guile'
+	#'php' 'v8'
 )
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
