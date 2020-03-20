@@ -1,0 +1,18 @@
+pkgbase = hiritsu
+	pkgdesc = CLI tool for getting aspect ratio of files.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/tryton-vanmeer/Hiritsu
+	arch = x86_64
+	license = GPL3
+	checkdepends = rust
+	checkdepends = git
+	makedepends = rust
+	makedepends = gcc
+	depends = gcc-libs
+	provides = hiritsu
+	source = hiritsu-1.0.0.tar.gz::https://github.com/tryton-vanmeer/Hiritsu/archive/v1.0.0.tar.gz
+	sha256sums = 786308efb66d1dc885aa9e7979fd51b955c16c1ae9956bd69a29095fc53ea6a9
+
+pkgname = hiritsu
+
