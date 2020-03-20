@@ -1,6 +1,6 @@
 # Maintainer: Simon Wilper <sxw@chronowerks.de>
 pkgname=xtl
-pkgver=0.6.11
+pkgver=0.6.13
 pkgrel=1
 pkgdesc="QuantStack tools library - Basic tools (containers, algorithms) used by other quantstack packages"
 arch=('any')
@@ -25,4 +25,4 @@ package() {
 	cd "${pkgname}-${pkgver}/build"
   make install
 }
-sha512sums=('cddbc1bc3cc9b899df596e23d3f49ba5892a169e4fcd14035194623e066778876b3a34ea1413ebada1f452189a4c4c8eb9b07f27c02534a0d671f00f71849793')
+sha512sums=('80c9abf8bb13356757eb8a3d72a81675f88f81fdb45a1ac4f650d0ce64b6c95874ed30a80016b0e6b1e8d3bb6eb42b1ded4bff583de8c4d99c8d2dc3cde953af')
