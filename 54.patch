@@ -1,0 +1,25 @@
+From e828ea3b2d7437bc5adc671e50261c05108b328a Mon Sep 17 00:00:00 2001
+From: Timothy Gu <timothygu99@gmail.com>
+Date: Thu, 6 Feb 2020 10:25:54 -0800
+Subject: [PATCH] main: Add missing locale.h include
+
+The include is present in all other binaries in utils/.
+---
+ src/main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/main.c b/src/main.c
+index a7db66d..1ecf431 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -19,6 +19,7 @@
+ 
+ #include "config.h"
+ 
++#include <locale.h>
+ #include <poll.h>
+ #include <stdlib.h>
+ 
+-- 
+2.24.1
+
