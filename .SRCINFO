@@ -1,7 +1,7 @@
 pkgbase = jspm-cli
-	pkgdesc = Package management CLI
+	pkgdesc = A JavaScript package manager designed to work seamlessly with native modules in universal workflows, while providing full compatibility with the npm ecosystem.
 	pkgver = 2.0.0.beta.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jspm.org
 	arch = any
 	license = Apache2

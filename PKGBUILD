@@ -2,8 +2,10 @@
 
 pkgname=jspm-cli
 pkgver=2.0.0.beta.7
-pkgrel=1
-pkgdesc="Package management CLI"
+pkgrel=2
+pkgdesc="A JavaScript package manager designed to
+work seamlessly with native modules in universal workflows,
+while providing full compatibility with the npm ecosystem."
 arch=('any')
 url='https://jspm.org'
 license=('Apache2')
