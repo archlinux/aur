@@ -1,6 +1,6 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=dwm-distrotube-git
-pkgver=.r10.db0af66
+pkgver=6.2
 pkgrel=1
 pkgdesc="A heavily-patched and customized build of dwm from DistroTube."
 arch=(x86_64 i686)
