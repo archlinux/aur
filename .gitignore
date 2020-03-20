@@ -1,8 +1,0 @@
-# Blacklist:
-*
-
-# Whitelist:
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!nerd-fonts-complete.install
