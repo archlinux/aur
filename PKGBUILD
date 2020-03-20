@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-userfonts
-pkgver=1.9.14
-pkgrel=3
+pkgver=1.9.21
+pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -16,45 +16,29 @@ url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5')
-# We used to have libappindicator-gtk3 as a hard-dep here (see https://bugs.archlinux.org/task/65080)
-# but it seems that it's better to have as an opt-dep (see https://bugs.archlinux.org/task/65336)
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'libappindicator-gtk3')
-optdepends=('ttf-opensans: default Open Sans font family'
-            'libappindicator-gtk3: AppIndicator-based tray icon')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl')
+optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-        telegram-desktop.sh)
-sha512sums=('56efa64048d23b280782b51319c0071c6cef833cb7e2584e52c6e45488577755beb85185ec9187029c425cc8d4c9c1887142687c744697e7731a15abe2846056'
-            '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b')
+        userfonts.patch)
+sha512sums=('ea02fc69e88ed6244ed420516bb7a93827cb85efaa0a7e9af7562aa1bc29184c5a2102caca8693c976b25d374832e0deb2ccbf00144d5340b5ffacbdc9dcebf1'
+            '9c6e8727e61a9e8227e8cee985851e23895978d7d3b8a75808e32168e9c1cb9542380ab10f496d193f59e89980994ec649f9400e53354726e73082037d9b0e3e')
 
 prepare() {
     cd tdesktop-$pkgver-full
-    mono=${TG_MONO:-$(fc-match monospace | sed -E 's/.*: "([^"]+).*"/\1/g')}
-    echo -- Using $mono for monospace font
-    echo -- To override, set TG_MONO and make from fresh sources
-    sed -i "s/\"Consolas\"/\"${mono}\"/g" Telegram/lib_ui/ui/style/style_core.cpp
-    for ttf in Telegram/lib_ui/fonts/*.ttf; do
-        rm $ttf
-        touch $ttf
-    done
+    patch -p1 < ../userfonts.patch
 }
 
 build() {
     cd tdesktop-$pkgver-full
 
-    export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
+    # export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
     cmake -B build -G Ninja . \
-        -Ddisable_autoupdate=1 \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_TEST=ON \
-        -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
-        -DDESKTOP_APP_USE_PACKAGED=ON \
-        -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-        -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
-        -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop"
@@ -63,9 +47,5 @@ build() {
 
 package() {
     cd tdesktop-$pkgver-full
-    ninja -C build install
-
-    mv "$pkgdir/usr/bin/telegram-desktop"{,-bin}
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/telegram-desktop.sh" "$pkgdir/usr/bin/telegram-desktop"
+    DESTDIR=$pkgdir ninja -C build install
 }

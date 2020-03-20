@@ -1,0 +1,282 @@
+Submodule Telegram/lib_ui ccc12ce3d..eaee38e5d:
+diff --git a/Telegram/lib_ui/ui/style/style_core.cpp b/Telegram/lib_ui/ui/style/style_core.cpp
+index 18a5bbb..d42a153 100644
+--- a/Telegram/lib_ui/ui/style/style_core.cpp
++++ b/Telegram/lib_ui/ui/style/style_core.cpp
+@@ -42,25 +42,10 @@ void startModules(int scale) {
+ }
+ 
+ void ResolveMonospaceFont() {
+-	auto family = QString();
+-	const auto tryFont = [&](const QString &attempt) {
+-		if (family.isEmpty()
+-			&& !QFontInfo(QFont(attempt)).family().trimmed().compare(
+-				attempt,
+-				Qt::CaseInsensitive)) {
+-			family = attempt;
+-		}
+-	};
+-	tryFont("Consolas");
+-	tryFont("Liberation Mono");
+-	tryFont("Menlo");
+-	tryFont("Courier");
+-	if (family.isEmpty()) {
+-		const auto type = QFontDatabase::FixedFont;
+-		family = QFontDatabase::systemFont(type).family();
+-	}
++	const auto type = QFontDatabase::FixedFont;
++	const auto family = QFontDatabase::systemFont(type).family();
+ 	const auto size = st::normalFont->f.pixelSize();
+-	ResolvedMonospaceFont = style::font(size, 0, family);
++	ResolvedMonospaceFont = style::font(size, 0, family)->monospace();
+ }
+ 
+ } // namespace
+diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
+index a73e169..2eb6257 100644
+--- a/Telegram/lib_ui/ui/style/style_core_font.cpp
++++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
+@@ -15,9 +15,6 @@
+ #include <QtGui/QFontDatabase>
+ 
+ void style_InitFontsResource() {
+-#ifndef DESKTOP_APP_USE_PACKAGED_FONTS
+-	Q_INIT_RESOURCE(fonts);
+-#endif // !DESKTOP_APP_USE_PACKAGED_FONTS
+ #ifdef Q_OS_WIN
+ 	Q_INIT_RESOURCE(win);
+ #elif defined Q_OS_MAC // Q_OS_WIN
+@@ -36,7 +33,7 @@ QVector<QString> fontFamilies;
+ QMap<uint32, FontData*> fontsMap;
+ 
+ uint32 fontKey(int size, uint32 flags, int family) {
+-	return (((uint32(family) << 10) | uint32(size)) << 4) | flags;
++	return (((uint32(family) << 12) | uint32(size)) << 6) | flags;
+ }
+ 
+ bool ValidateFont(const QString &familyName, int flags = 0) {
+@@ -95,16 +92,6 @@ enum {
+ 
+ 	FontTypesCount,
+ };
+-#ifndef DESKTOP_APP_USE_PACKAGED_FONTS
+-QString FontTypeNames[FontTypesCount] = {
+-	"DAOpenSansRegular",
+-	"DAOpenSansRegularItalic",
+-	"DAOpenSansBold",
+-	"DAOpenSansBoldItalic",
+-	"DAOpenSansSemibold",
+-	"DAOpenSansSemiboldItalic",
+-};
+-#endif // !DESKTOP_APP_USE_PACKAGED_FONTS
+ int32 FontTypeFlags[FontTypesCount] = {
+ 	0,
+ 	FontItalic,
+@@ -113,16 +100,6 @@ int32 FontTypeFlags[FontTypesCount] = {
+ 	0,
+ 	FontItalic,
+ };
+-#ifdef Q_OS_WIN
+-QString FontTypeWindowsFallback[FontTypesCount] = {
+-	"Segoe UI",
+-	"Segoe UI",
+-	"Segoe UI",
+-	"Segoe UI",
+-	"Segoe UI Semibold",
+-	"Segoe UI Semibold",
+-};
+-#endif // Q_OS_WIN
+ 
+ bool Started = false;
+ QString Overrides[FontTypesCount];
+@@ -136,43 +113,6 @@ void StartFonts() {
+ 	Started = true;
+ 
+ 	style_InitFontsResource();
+-
+-#ifndef DESKTOP_APP_USE_PACKAGED_FONTS
+-	bool areGood[FontTypesCount] = { false };
+-	for (auto i = 0; i != FontTypesCount; ++i) {
+-		const auto name = FontTypeNames[i];
+-		const auto flags = FontTypeFlags[i];
+-		areGood[i] = LoadCustomFont(":/gui/fonts/" + name + ".ttf", name, flags);
+-		Overrides[i] = name;
+-#ifdef Q_OS_WIN
+-		// Attempt to workaround a strange font bug with Open Sans Semibold not loading.
+-		// See https://github.com/telegramdesktop/tdesktop/issues/3276 for details.
+-		// Crash happens on "options.maxh / _t->_st->font->height" with "division by zero".
+-		// In that place "_t->_st->font" is "semiboldFont" is "font(13 "Open Sans Semibold").
+-		const auto fallback = FontTypeWindowsFallback[i];
+-		if (!areGood[i]) {
+-			if (ValidateFont(fallback, flags)) {
+-				Overrides[i] = fallback;
+-				UI_LOG(("Fonts Info: Using '%1' instead of '%2'.").arg(fallback).arg(name));
+-			}
+-		}
+-		// Disable default fallbacks to Segoe UI, see:
+-		// https://github.com/telegramdesktop/tdesktop/issues/5368
+-		//
+-		//QFont::insertSubstitution(name, fallback);
+-#endif // Q_OS_WIN
+-	}
+-#endif // !DESKTOP_APP_USE_PACKAGED_FONTS
+-#ifdef Q_OS_MAC
+-	auto list = QStringList();
+-	list.append("STIXGeneral");
+-	list.append(".SF NS Text");
+-	list.append("Helvetica Neue");
+-	list.append("Lucida Grande");
+-	for (const auto &name : FontTypeNames) {
+-		QFont::insertSubstitutions(name, list);
+-	}
+-#endif // Q_OS_MAC
+ }
+ 
+ QString GetPossibleEmptyOverride(const QString &familyName, int32 flags) {
+@@ -220,11 +160,12 @@ int registerFontFamily(const QString &family) {
+ }
+ 
+ FontData::FontData(int size, uint32 flags, int family, Font *other)
+-: f(GetFontOverride(fontFamilies[family], flags))
+-, m(f)
++: m(f)
+ , _size(size)
+ , _flags(flags)
+ , _family(family) {
++	const auto fontOverride = GetFontOverride(fontFamilies[family], flags);
++
+ 	if (other) {
+ 		memcpy(modified, other, sizeof(modified));
+ 	} else {
+@@ -232,13 +173,15 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
+ 	}
+ 	modified[_flags] = Font(this);
+ 
++	if (_flags & FontMonospace) {
++		f.setFamily(fontOverride);
++	}
++
+ 	f.setPixelSize(size);
+ 	if (_flags & FontBold) {
+ 		f.setBold(true);
+-#ifdef DESKTOP_APP_USE_PACKAGED_FONTS
+ 	} else if (fontFamilies[family] == "Open Sans Semibold") {
+ 		f.setWeight(QFont::DemiBold);
+-#endif
+ 	}
+ 	f.setItalic(_flags & FontItalic);
+ 	f.setUnderline(_flags & FontUnderline);
+@@ -269,6 +212,10 @@ Font FontData::strikeout(bool set) const {
+ 	return otherFlagsFont(FontStrikeOut, set);
+ }
+ 
++Font FontData::monospace(bool set) const {
++	return otherFlagsFont(FontMonospace, set);
++}
++
+ int FontData::size() const {
+ 	return _size;
+ }
+diff --git a/Telegram/lib_ui/ui/style/style_core_font.h b/Telegram/lib_ui/ui/style/style_core_font.h
+index 31b5962..c3b2f22 100644
+--- a/Telegram/lib_ui/ui/style/style_core_font.h
++++ b/Telegram/lib_ui/ui/style/style_core_font.h
+@@ -59,8 +59,9 @@ enum FontFlags {
+ 	FontItalic = 0x02,
+ 	FontUnderline = 0x04,
+ 	FontStrikeOut = 0x08,
++	FontMonospace = 0x10,
+ 
+-	FontDifferentFlags = 0x10,
++	FontDifferentFlags = 0x20,
+ };
+ 
+ class FontData {
+@@ -83,6 +84,7 @@ public:
+ 	Font italic(bool set = true) const;
+ 	Font underline(bool set = true) const;
+ 	Font strikeout(bool set = true) const;
++	Font monospace(bool set = true) const;
+ 
+ 	int size() const;
+ 	uint32 flags() const;
+diff --git a/Telegram/lib_ui/ui/text/text.cpp b/Telegram/lib_ui/ui/text/text.cpp
+index 90f9f8e..faa1dc4 100644
+--- a/Telegram/lib_ui/ui/text/text.cpp
++++ b/Telegram/lib_ui/ui/text/text.cpp
+@@ -2015,8 +2015,8 @@ private:
+ 		auto result = f;
+ 		if ((flags & TextBlockFPre) || (flags & TextBlockFCode)) {
+ 			result = style::MonospaceFont();
+-			if (result->size() != f->size() || result->flags() != f->flags()) {
+-				result = style::font(f->size(), f->flags(), result->family());
++			if (result->size() != f->size()) {
++				result = style::font(f->size(), result->flags(), result->family());
+ 			}
+ 		} else {
+ 			if (flags & TextBlockFBold) {
+@@ -2027,9 +2027,13 @@ private:
+ 					result = style::font(f->size(), f->flags(), result->family());
+ 				}
+ 			}
+-			if (flags & TextBlockFItalic) result = result->italic();
+-			if (flags & TextBlockFUnderline) result = result->underline();
+-			if (flags & TextBlockFStrikeOut) result = result->strikeout();
++		}
++
++		if (flags & TextBlockFItalic) result = result->italic();
++		if (flags & TextBlockFUnderline) result = result->underline();
++		if (flags & TextBlockFStrikeOut) result = result->strikeout();
++
++		if (flags & TextBlockFSemibold) {
+ 			if (flags & TextBlockFTilde) { // tilde fix in OpenSans
+ 				result = st::semiboldFont;
+ 			}
+diff --git a/Telegram/lib_ui/ui/text/text_block.cpp b/Telegram/lib_ui/ui/text/text_block.cpp
+index ffa378f..da9a3cb 100644
+--- a/Telegram/lib_ui/ui/text/text_block.cpp
++++ b/Telegram/lib_ui/ui/text/text_block.cpp
+@@ -323,8 +323,8 @@ TextBlock::TextBlock(const style::font &font, const QString &str, QFixed minResi
+ 
+ 		if ((flags & TextBlockFPre) || (flags & TextBlockFCode)) {
+ 			blockFont = style::MonospaceFont();
+-			if (blockFont->size() != font->size() || blockFont->flags() != font->flags()) {
+-				blockFont = style::font(font->size(), font->flags(), blockFont->family());
++			if (blockFont->size() != font->size()) {
++				blockFont = style::font(font->size(), blockFont->flags(), blockFont->family());
+ 			}
+ 		} else {
+ 			if (flags & TextBlockFBold) {
+@@ -335,9 +335,13 @@ TextBlock::TextBlock(const style::font &font, const QString &str, QFixed minResi
+ 					blockFont = style::font(font->size(), font->flags(), blockFont->family());
+ 				}
+ 			}
+-			if (flags & TextBlockFItalic) blockFont = blockFont->italic();
+-			if (flags & TextBlockFUnderline) blockFont = blockFont->underline();
+-			if (flags & TextBlockFStrikeOut) blockFont = blockFont->strikeout();
++		}
++
++		if (flags & TextBlockFItalic) blockFont = blockFont->italic();
++		if (flags & TextBlockFUnderline) blockFont = blockFont->underline();
++		if (flags & TextBlockFStrikeOut) blockFont = blockFont->strikeout();
++
++		if (flags & TextBlockFSemibold) {
+ 			if (flags & TextBlockFTilde) { // tilde fix in OpenSans
+ 				blockFont = st::semiboldFont;
+ 			}
+diff --git a/Telegram/lib_ui/ui/widgets/input_fields.cpp b/Telegram/lib_ui/ui/widgets/input_fields.cpp
+index db17e0c..38b6797 100644
+--- a/Telegram/lib_ui/ui/widgets/input_fields.cpp
++++ b/Telegram/lib_ui/ui/widgets/input_fields.cpp
+@@ -654,9 +654,8 @@ void RemoveDocumentTags(
+ style::font AdjustFont(
+ 		const style::font &font,
+ 		const style::font &original) {
+-	return (font->size() != original->size()
+-		|| font->flags() != original->flags())
+-		? style::font(original->size(), original->flags(), font->family())
++	return (font->size() != original->size())
++		? style::font(original->size(), font->flags(), font->family())
+ 		: font;
+ }
+ 
