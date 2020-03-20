@@ -1,5 +1,5 @@
 pkgbase = wasm-pack-git
-	pkgdesc = pack up the wasm and publish it to npm!
+	pkgdesc = Your favorite rust -> wasm workflow tool!
 	pkgver = 0.9.1.967
 	pkgrel = 1
 	url = https://github.com/ashleygwilliams/wasm-pack

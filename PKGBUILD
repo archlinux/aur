@@ -1,9 +1,9 @@
-# Maintaner: Dante Helmore <frostu8@protonmail.com>
+# Maintainer: Dante Helmore <frostu8@protonmail.com>
 pkgname=wasm-pack-git
 _pkgname=wasm-pack
-pkgdesc="pack up the wasm and publish it to npm!"
+pkgdesc="Your favorite rust -> wasm workflow tool!"
 pkgrel=1
-pkgver=0.2.0.155
+pkgver=0.9.1.967
 arch=('i686' 'x86_64')
 conflicts=("wasm-pack")
 provides=("wasm-pack")
