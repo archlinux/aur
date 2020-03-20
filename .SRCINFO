@@ -1,0 +1,20 @@
+pkgbase = crash-lzo-git
+	pkgdesc = Linux kernel crashdump analysis tool with lzo
+	pkgver = 7.2.8.r7.g007f844
+	pkgrel = 1
+	url = https://github.com/crash-utility/crash
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = wget
+	depends = lzo
+	depends = xz
+	depends = ncurses
+	depends = zlib
+	conflicts = crash
+	source = git+https://github.com/crash-utility/crash
+	md5sums = SKIP
+
+pkgname = crash-lzo-git
+
