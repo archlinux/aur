@@ -1,8 +1,8 @@
 pkgbase = linux-fsync
 	pkgdesc = Linux
-	pkgver = 5.5.6.arch1
+	pkgver = 5.5.10.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.6-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.10-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-fsync
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.6-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.10-arch1
 	source = config
 	source = futex-wait-multiple-5.2.1.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
