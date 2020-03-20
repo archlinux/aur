@@ -5,7 +5,7 @@
 _ctan=erewhon
 pkgname=(otf-$_ctan otf-$_ctan-infinality)
 pkgver=1.102
-pkgrel=4
+pkgrel=5
 pkgdesc="A font family based on Heuristica, which is based in turn on Utopia"
 arch=('any')
 url="http://www.ctan.org/tex-archive/fonts/$_ctan"
@@ -25,6 +25,7 @@ package_otf-erewhon() {
 }
 
 package_otf-erewhon-infinality() {
+    groups=('infinality-bundle-fonts-extra')
     depends=("${pkgname%-infinality}")
     provides=("${pkgname%-infinality}-ibx")
     conflicts=("${provides[@]}")
