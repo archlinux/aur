@@ -102,7 +102,8 @@ prepare() {
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}/build"
-	qmake ../qgroundcontrol.pro
+	qmake ../qgroundcontrol.pro \
+		QMAKE_CXXFLAGS="-Wno-deprecated-declarations"
 	make
 
 	echo "[Desktop Entry]
