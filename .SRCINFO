@@ -1,7 +1,7 @@
 pkgbase = kvirc-nokde
 	pkgdesc = Qt5 based IRC-Client without KDE dependencies
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kvirc/KVIrc
 	arch = i686
 	arch = x86_64
