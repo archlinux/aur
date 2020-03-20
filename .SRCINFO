@@ -1,7 +1,7 @@
 pkgbase = alice-bin
 	pkgdesc = An educational software that teaches students computer programming in a 3D environment
 	pkgver = 3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.alice.org/
 	install = post_install
 	arch = i686

@@ -5,7 +5,7 @@
 
 pkgname=alice-bin
 pkgver=3.5
-pkgrel=2
+pkgrel=3
 pkgdesc='An educational software that teaches students computer programming in a 3D environment'
 arch=('i686' 'x86_64')
 url="http://www.alice.org/"
