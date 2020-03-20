@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel @at gmail .dot com>
 
 pkgname=dxvk-mingw
-pkgver=1.5.5
+pkgver=1.6
 pkgrel=1
 pkgdesc='Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine, MingW version'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('ninja' 'meson>=0.43' 'glslang' 'git' 'mingw-w64-gcc')
 provides=('dxvk' 'd9vk' "dxvk=$pkgver")
 conflicts=('dxvk' 'd9vk')
 source=(
-    "git+https://github.com/doitsujin/dxvk.git#tag=v$pkgver"
+    "git+https://github.com/doitsujin/dxvk.git#commit=3104192af717f309068d2c20fd51b339511f6552"  #tag=v$pkgver"
     "setup_dxvk"
     "dxvk-async.patch"
     "extraopts.patch"
