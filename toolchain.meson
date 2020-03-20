@@ -8,6 +8,7 @@ ranlib = 'aarch64-linux-gnu-gcc-ranlib'
 strip = 'aarch64-linux-gnu-strip'
 windres = 'aarch64-linux-gnu-windres'
 cmake = 'aarch64-linux-gnu-cmake'
+exec_wrapper = 'qemu-aarch64'
 
 [properties]
 

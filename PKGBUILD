@@ -3,13 +3,13 @@
 _target=aarch64-linux-gnu
 
 pkgname=$_target-meson
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A meson wrapper for the ARM64 target'
 arch=(x86_64)
 url='http://fedoraproject.org/wiki/MinGW'
 license=(GPL)
-depends=(meson $_target-gcc $_target-pkg-config $_target-environment)
+depends=(meson $_target-gcc $_target-pkg-config $_target-environment qemu-arch-extra)
 makedepends=()
 options=()
 source=(
