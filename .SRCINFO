@@ -1,0 +1,16 @@
+pkgbase = omap-u-boot-utils-git
+	pkgdesc = Various tools to communicate with OMAP bootroms to execute code
+	pkgver = 0.2.0.r40.g2a9344a
+	pkgrel = 1
+	url = https://nmenon.github.io/omap-u-boot-utils/
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = libusb
+	source = git://github.com/nmenon/omap-u-boot-utils#commit=2a9344ac45f6e4074793182dcaca7b0403dff389
+	sha256sums = SKIP
+
+pkgname = omap-u-boot-utils-git
+
