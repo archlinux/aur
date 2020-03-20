@@ -5,6 +5,7 @@ pkgbase = remarkable-client
 	url = https://remarkable.engineering
 	arch = any
 	license = unknown
+	depends = qt5-svg
 	depends = qt5-websockets
 	depends = karchive
 	depends = qt5-quickcontrols
