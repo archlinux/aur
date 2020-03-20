@@ -10,7 +10,7 @@ groups=()
 depends=(libx11 libxinerama libxft freetype2 st dmenu)
 makedepends=(make)
 checkdepends=()
-optdepends=()
+optdepends=(nerd-fonts-complete ttf-symbola)
 provides=(dwm)
 conflicts=(dwm)
 replaces=()
@@ -22,13 +22,18 @@ md5sums=('SKIP')
 validpgpkeys=()
 
 build() {
-  cd "$pkgname"
+  mkdir -p "${pkgname}" || return 1
+  cd "${pkgname}"
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}"  
+  mkdir -p $pkgdir/opt/dwm-distrotube || return 1
+  cp -rf * $pkgdir/opt/dwm-distrotube || return 1
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "${srcdir}/${pkgname}/dwm.desktop" "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
+
