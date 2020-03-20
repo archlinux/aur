@@ -2,7 +2,7 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-unity-theme' 'yaru-icon-theme' 'yaru-session')
-pkgver=20.04.2
+pkgver=20.04.3
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
-sha256sums=('5bf7d1b03323a8444afb1a5eb7514b5df8dade3ea0f27978e985dddbf8e1b369')
+sha256sums=('b970d3406e2f014d34b23eea6d36603887e1fd6961957e2a74c103c0839820ec')
 
 build() {
   arch-meson $pkgbase-$pkgver build
@@ -28,8 +28,8 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/themes/Yaru{-light,{,-dark}/{gtk-*,index.theme}}
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/gnome-shell
-        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru
+        rm "${pkgdir}"/usr/share/themes/Yaru{,-dark}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-dark}
     fi
     if [[ "$1" != "unity-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/themes/Yaru/unity
