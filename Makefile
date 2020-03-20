@@ -32,7 +32,7 @@ recup: ## Get git files
 release:clear pkgsum srcinfo ## Release preparation
 	git pull
 
-sanity: ## Checkcwqing package sanity
+sanity: ## Checking package sanity
 	namcap shadow-beta-*.pkg.tar
 
 srcinfo: ## Generates .SRCINFO
