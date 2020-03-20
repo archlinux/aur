@@ -1,8 +1,9 @@
-# Maintainer: Simon Paul <simonpaul at mailbox dot org>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Simon Paul <simonpaul at mailbox dot org>
 
 pkgname=victory-icon-theme-git
 pkgver=1.1.a8ce414
-pkgrel=1
+pkgrel=2
 pkgdesc='Victory Icon Theme, A GTK Icon Theme for Linux'
 arch=('any')
 url='https://gitlab.com/newhoa/victory-icon-theme'
