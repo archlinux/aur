@@ -1,9 +1,8 @@
 # Maintainer: revelation60 <benruyl@gmail.com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=r176.2b57f9d
+pkgver=r205.9535f8b
 pkgrel=1
-epoch=1
 pkgdesc='A window tiling extension for Gnome'
 url='https://github.com/gTile/gTile'
 license=('GPL')
