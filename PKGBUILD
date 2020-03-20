@@ -1,6 +1,6 @@
 pkgname=json-glib-git
 pkgver=r1155.b4ede88
-pkgrel=2
+pkgrel=3
 pkgdesc="JSON library built on GLib"
 url="https://wiki.gnome.org/Projects/JsonGlib"
 arch=(x86_64)
@@ -32,6 +32,6 @@ check() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
-  rm -r "$pkgdir"/usr/{lib,share}/installed-tests
+  rm -r "$pkgdir"/usr/share/installed-tests
 }
 
