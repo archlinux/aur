@@ -3,12 +3,11 @@
 
 pkgname=boolector
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Boolector is an efficient SMT solver for the quantifier-free theory of bit-vectors in combination with the quantifier-free extensional theory of arrays."
 arch=('i686' 'x86_64')
 url="http://boolector.github.io/"
 license=('MIT')
-depends=("btor2tools-unstable-git")
 makedepends=("make" "cmake" "git")
 conflicts=("boolector-git")
 
@@ -22,8 +21,11 @@ build() {
   # Setup lingeling
   ./contrib/setup-lingeling.sh
 
+  # Setup btor2tools
+  CFLAGS="" ./contrib/setup-btor2tools.sh
+
   # Build Boolector
-  CFLAGS="" ./configure.sh --shared
+  ./configure.sh --shared
   cd build
   make
 }
