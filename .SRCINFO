@@ -1,0 +1,20 @@
+pkgbase = mojave-gtk-theme-git
+	pkgdesc = A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.
+	pkgver = 320.7b9bf35
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Mojave-gtk-theme
+	arch = any
+	license = GPL3
+	makedepends = sassc
+	makedepends = optipng
+	makedepends = inkscape
+	makedepends = git
+	depends = gtk3
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	options = !strip
+	source = git+https://github.com/vinceliuice/Mojave-gtk-theme.git
+	md5sums = SKIP
+
+pkgname = mojave-gtk-theme-git
+
