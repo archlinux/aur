@@ -1,1 +1,4 @@
 fnm*.zip
+src/
+pkg/
+fnm*.pkg.tar
