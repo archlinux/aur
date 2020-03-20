@@ -1,6 +1,6 @@
 pkgbase = dosh
 	pkgdesc = Docker shell
-	pkgver = 2.1
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/gportay/dosh
 	arch = any
@@ -8,8 +8,9 @@ pkgbase = dosh
 	checkdepends = shellcheck
 	makedepends = asciidoctor
 	depends = docker
-	source = https://github.com/gportay/dosh/archive/2.1.tar.gz
-	md5sums = e73c0949fb577359e70ca0a26b2f62bf
+	source = https://github.com/gportay/dosh/archive/3.tar.gz
+	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
+	sha256sums = 3669ed476311b12b29f87f955e22d2c048f162719b886091d3685d04044733e0
 
 pkgname = dosh
 
