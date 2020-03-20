@@ -17,7 +17,6 @@ build() {
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-  cd "${srcdir}/${pkgname}-${pkgver}"
   go build -v -o "../c2go-bin"
 }
 
