@@ -23,6 +23,7 @@ validpgpkeys=()
 
 package() {
   cd "${pkgname}"  
+  rm -rf "${pkgdir}/opt/shell-color-scripts" || return 1
   mkdir -p $pkgdir/opt/shell-color-scripts || return 1
   cp -rf * $pkgdir/opt/shell-color-scripts || return 1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
