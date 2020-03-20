@@ -3,23 +3,23 @@
 pkgbase=level-zero
 pkgname=('level-zero-headers' 'level-zero-loader')
 pkgver=0.91
-pkgrel=1
+pkgrel=2
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices'
 arch=('x86_64')
 url='https://spec.oneapi.com/versions/latest/elements/l0/source/index.html'
 license=('MIT')
 makedepends=('cmake' 'opencl-headers')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/level-zero/archive/v${pkgver}.tar.gz")
+source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/level-zero/archive/v${pkgver}.tar.gz")
 sha256sums=('48f3dc7356f8937605ab2af99b127d5337ae3a4b685301bb303000dcfdb8555d')
 
 prepare() {
-    printf '%s\n' '0' > "level-zero-${pkgver}/VERSION_PATCH"
+    printf '%s\n' '0' > "${pkgbase}-${pkgver}/VERSION_PATCH"
 }
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
     export CXXFLAGS+=" ${CPPFLAGS}"
-    cmake -B build -S "level-zero-${pkgver}" \
+    cmake -B build -S "${pkgbase}-${pkgver}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
@@ -37,7 +37,7 @@ package_level-zero-headers() {
     mkdir -p loader
     mv "${pkgdir}/usr/lib" loader
     
-    install -D -m644 "level-zero-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_level-zero-loader() {
@@ -48,5 +48,5 @@ package_level-zero-loader() {
     mkdir -p "${pkgdir}/usr"
     mv loader/lib "${pkgdir}/usr"
     
-    install -D -m644 "level-zero-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
