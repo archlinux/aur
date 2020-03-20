@@ -1,0 +1,14 @@
+= AUR clusterctl-bin
+
+The AUR clusterctl package (https://github.com/kubernetes-sigs/cluster-api)
+
+== Installation
+
+Manual building:
+
+  $ makepkg
+  $ sudo pacman -U clusterctl-bin
+
+Pacaur Installation:
+
+  $ pacaur -S clusterctl-bin
