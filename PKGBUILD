@@ -1,59 +1,39 @@
 pkgname=vesc_tool-git
-pkgver=0.95
+pkgver=r157.6f378c1
 pkgrel=1
 pkgdesc="VESC ESC graphical configuration tool"
 arch=('any')
 url="https://vesc-project.com/"
-license=('unknown')
+license=('GPL')
 groups=()
 depends=("qt5-connectivity" "qt5-serialport" "qt5-quickcontrols2")
 makedepends=('git')
-provides=()
-conflicts=()
+provides=("${pkgname%-VCS}")
+conflicts=("${pkgname%-VCS}")
 replaces=()
 backup=()
 options=()
 install=
-source=()
+source=("git+https://github.com/vedderb/vesc_tool.git")
 noextract=()
-md5sums=()
+md5sums=('SKIP')
 
-_gitroot="https://github.com/vedderb/vesc_tool.git"
-_gitname="vesc_tool"
+
+pkgver() {
+    cd "$srcdir/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+    cd "$srcdir/${pkgname%-git}"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-
-  qmake -config release "CONFIG += release_lin build_original"
-  make clean
-  make
-  rm -rf build/lin/obj
+    qmake -config release "CONFIG += release_lin build_original"
+    make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  mkdir -p $pkgdir/usr/bin/
-  cp build/lin/vesc_* $pkgdir/usr/bin/vesc_tool
-
+    cd "$srcdir/${pkgname%-git}"
+    mkdir -p $pkgdir/usr/bin/
+    cp build/lin/vesc_* $pkgdir/usr/bin/vesc_tool
 }
 
-# vim:set ts=2 sw=2 et:
