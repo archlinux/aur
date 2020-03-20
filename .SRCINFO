@@ -1,0 +1,20 @@
+pkgbase = acestream-engine-armv7h
+	pkgdesc = ACE Stream engine armv7h version
+	pkgver = 3.1.48
+	pkgrel = 1
+	url = https://github.com/lysyiklad/service.system.acestreammedia
+	arch = armv7h
+	groups = acestream-engine
+	license = GPL
+	makedepends = git
+	depends = git
+	conflicts = acestream-engine
+	source = acestream-engine-armv7h::git+https://github.com/lysyiklad/service.system.acestreammedia.git
+	source = acestream.conf
+	source = acestream-engine.service
+	sha256sums = SKIP
+	sha256sums = 1a0f151c063657dc1421d6d4a0eb00d35caa11f3039ea4cf1f40835299ece6b0
+	sha256sums = a075f5f7b428d4ed24e91a7a18e3184c0d1422d2659d4e44a2b74b5810ec3c40
+
+pkgname = acestream-engine-armv7h
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Ace Stream Media
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh /opt/acestream.engine/acestream.start
+ExecStop=/bin/kill -TERM $MAINPID
+ExecStopPost=/bin/sh -c 'exec /opt/acestream.engine/acestream.stop'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
