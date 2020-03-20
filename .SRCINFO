@@ -1,6 +1,6 @@
 pkgbase = boolector-java
 	pkgdesc = Java bindings for the Boolector SMT solver
-	pkgver = 3.1.4
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = http://boolector.github.io/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = boolector-java
 	makedepends = git
 	makedepends = gcc
 	depends = boolector
-	source = https://github.com/AbdullinAM/JavaBoolector/releases/download/v3.1.4/boolector-java-3.1.4-sources.tar.gz
+	source = https://github.com/AbdullinAM/JavaBoolector/releases/download/3.2.0/boolector-java-3.2.0-sources.tar.gz
 	sha256sums = SKIP
 	sha512sums = SKIP
 
