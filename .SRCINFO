@@ -1,0 +1,20 @@
+pkgbase = python-nunavut-git
+	pkgdesc = Generate Code from DSDL using pydsdl and jinja2
+	pkgver = r67.9910428
+	pkgrel = 1
+	url = https://uavcan.org
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pydsdl
+	depends = python-jinja
+	depends = python-markupsafe
+	provides = python-nunavut
+	conflicts = python-nunavut
+	source = nunavut::git+https://github.com/UAVCAN/nunavut
+	sha256sums = SKIP
+
+pkgname = python-nunavut-git
+
