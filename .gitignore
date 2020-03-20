@@ -1,4 +1,6 @@
 *
 !./.SRCINFO
 !./.gitignore
+!./45-erewhon.conf
+!./90-non-tt-erewhon.conf
 !./PKGBUILD
