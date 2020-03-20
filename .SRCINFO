@@ -23,8 +23,8 @@ pkgbase = madagascar
 	depends = python
 	noextract = madagascar.tar.gz
 	options = strip
-	source = madagascar.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-3.0/madagascar-3.0.1.tar.gz/download
-	md5sums = a87a6f7f5ba552cd251b1588048844bf
+	source = madagascar::git+https://github.com/ahay/src
+	md5sums = SKIP
 
 pkgname = madagascar
 
