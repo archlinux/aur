@@ -1,12 +1,12 @@
 pkgbase = clever-tools-bin
 	pkgdesc = Command Line Interface for Clever Cloud.
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/CleverCloud/clever-tools
 	arch = x86_64
-	license = MIT
+	license = Apache-2.0
 	options = !strip
-	source = clever-tools-2.0.0_linux.tar.gz::https://clever-tools.clever-cloud.com/releases/2.0.0/clever-tools-2.0.0_linux.tar.gz
-	sha256sums = 76dfe6d697281d2686ed5dfc8fda7683c78a70ffbfc0b0707a1906d0eea889ca
+	source = clever-tools-2.1.0_linux.tar.gz::https://clever-tools.clever-cloud.com/releases/2.1.0/clever-tools-2.1.0_linux.tar.gz
+	sha256sums = 92875bc315fcca55f6d23bce87d5deddf5eba76edbcf9921f2dcabb0c9ec5bda
 
 pkgname = clever-tools-bin
