@@ -1,7 +1,7 @@
 pkgbase = scipoptsuite
 	pkgdesc = Toolbox for generating and solving optimization problems
 	pkgver = 6.0.2
-	pkgrel = 2
+	pkgrel = 4
 	url = https://scip.zib.de
 	arch = x86_64
 	license = LGPL3
