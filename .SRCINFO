@@ -1,7 +1,7 @@
 pkgbase = bibcure
 	pkgdesc = Helps you to have a better bibtex file
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bibcure/bibcure
 	arch = any
 	license = AGPL3
