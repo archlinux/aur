@@ -1,6 +1,6 @@
 pkgbase = meme
 	pkgdesc = The MEME suite provides tools for discovering and using protein and DNA sequence motifs
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = http://meme-suite.org/
 	arch = i686
@@ -13,8 +13,8 @@ pkgbase = meme
 	depends = openmpi
 	depends = imagemagick
 	depends = perl-xml-simple
-	source = http://meme-suite.org/meme-software/5.1.0/meme-5.1.0.tar.gz
-	sha1sums = 5e40178609c4b78c67641f90b08422ebc5eca502
+	source = http://meme-suite.org/meme-software/5.1.1/meme-5.1.1.tar.gz
+	sha1sums = 20505e5a992f5b964e455722050ae87a2aea66c7
 
 pkgname = meme
 
