@@ -18,10 +18,7 @@ build() {
   cd $pkgname
 	mkdir -p build
 	meson --buildtype=release --prefix=/usr build
-  pwd
-  ls -la
 	cd build
-  pwd ls -la
 	ninja
 }
 
