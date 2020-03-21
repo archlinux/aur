@@ -10,7 +10,7 @@ arch=('x86_64')
 license=('Apache-2.0')
 url="https://github.com/pulumi/pulumi"
 source=("https://get.pulumi.com/releases/sdk/${_pkgname}-v${pkgver}-linux-${CARCH/x86_64/x64}.tar.gz")
-sha256sums=('c28e983aaa21be420548f0fcd2f966f7e374a29c74997637487c952b2f06bf67')
+sha256sums=('ad2d497a710ee4a7af5c0ab02b69ddd332a1f56cd43eb60535dc359f07ac0936')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
