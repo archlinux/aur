@@ -1,0 +1,14 @@
+pkgbase = omnifono.lv2
+	pkgdesc = Utility mixer LV2 plugin.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = http://intonarumori.sourceforge.net/omnifono.html
+	arch = x86_64
+	groups = lv2-plugins
+	license = GPL
+	depends = lv2
+	source = omnifono.lv2::https://sourceforge.net/projects/intonarumori/files/Omnifono/Omnifono-0.1-Src+32-64builds.tar.bz2
+	md5sums = SKIP
+
+pkgname = omnifono.lv2
+
