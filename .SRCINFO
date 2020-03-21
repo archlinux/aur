@@ -1,7 +1,7 @@
 pkgbase = ocaml-lwt_log
 	pkgdesc = Lwt-friendly logger
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ocsigen/lwt_log
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ocaml-lwt_log
 	depends = ocaml
 	depends = ocaml-lwt>=4.0.0
 	options = !strip
-	source = ocaml-lwt_log-1.1.1-2.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.1.tar.gz
+	source = ocaml-lwt_log-1.1.1-3.tar.gz::https://github.com/ocsigen/lwt_log/archive/1.1.1.tar.gz
 	sha256sums = 14fb19ec61e555e32c8bb026a591c0ce5b0a153663d17b0876178ab92d625f3f
 
 pkgname = ocaml-lwt_log
