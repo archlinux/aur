@@ -59,8 +59,8 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=24
-_rtpatchver=15
+_minor=26
+_rtpatchver=17
 _clr=${_major}.19-56
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-clear-preempt-rt
@@ -317,9 +317,9 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('7fa0ac784c78129beed43260a7a22a077f1041ac0e8e88647284d2cf7b1d7eb3'
+sha256sums=('669a74f4aeef07645061081d9c05d23216245702b4095afb3d957f79098f0daf'
             'SKIP'
-            'f125bac82c6c4f6119981dbc863d8bbe69b18fa5fe0db68ad1eb0189acd0e2f2'
+            'b0e996543c49278f184b269f90dab9030cf88ca75d13c6f2e4bac1a11ca41584'
             'SKIP'
             '8c11086809864b5cef7d079f930bd40da8d0869c091965fa62e95de9a0fe13b5')
 
