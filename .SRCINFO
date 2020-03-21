@@ -1,6 +1,6 @@
-pkgbase = linux-nitrous-git
+pkgbase = linux-nitrous
 	pkgver = 5.5.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -14,14 +14,14 @@ pkgbase = linux-nitrous-git
 	makedepends = libelf
 	makedepends = coreutils
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v5.4+
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=5.5+
 	source = linux-nitrous.preset
 	sha256sums = SKIP
 	sha256sums = 03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246
 
-pkgname = linux-nitrous-git
+pkgname = linux-nitrous
 	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
-	install = linux-nitrous-git.install
+	install = linux-nitrous.install
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
@@ -31,11 +31,11 @@ pkgname = linux-nitrous-git
 	provides = linux
 	backup = etc/mkinitcpio.d/linux-nitrous.preset
 
-pkgname = linux-nitrous-git-headers
+pkgname = linux-nitrous-headers
 	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
 	provides = linux-headers
 
-pkgname = linux-nitrous-git-docs
+pkgname = linux-nitrous-docs
 	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
 	provides = linux-docs
 
