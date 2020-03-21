@@ -1,7 +1,7 @@
 # Maintainer: h_cheung <mail@h-cheung.cf>
 pkgname=clash-tun
-pkgver=20200201.r366.bbafb89
-pkgrel=1
+pkgver=20200319.r402.2100ef7
+pkgrel=2
 pkgdesc="Clash Tun Scripts for Linux"
 arch=('any')
 url="https://github.com/h0cheung/kr328-clash-setup-scripts"
@@ -11,7 +11,7 @@ provides=("clash")
 conflicts=("clash-bin" "clash" "clash-dev-git")
 makedepends=('go' 'git')
 depends=('glibc')
-backup=()
+backup=(etc/clash/env)
 options=()
 source=("git+https://github.com/comzyh/clash#branch=add-water"
 		"git+https://github.com/h0cheung/kr328-clash-setup-scripts"
@@ -45,5 +45,6 @@ package() {
     install -m 744 -D "setup-clash-cgroup.sh" "${pkgdir}/opt/script/setup-clash-cgroup.sh"
     install -m 744 -D "clean-clash-tun.sh" "${pkgdir}/opt/script/clean-clash-tun.sh"
     install -m 644 -D "clash.service" "${pkgdir}/usr/lib/systemd/system/clash-tun.service"
+    install -m 644 -D "env" "${pkgdir}/etc/clash-tun/env"
     install -m 775 -d -o 65534 -g 1000 "${pkgdir}/srv/clash"
 }
