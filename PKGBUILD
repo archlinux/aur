@@ -1,30 +1,41 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-ppx_here
-pkgver=0.12.0
-pkgrel=1
-epoch=1
-pkgdesc="Expands [%here] into its location"
-arch=('i686' 'x86_64')
-url="https://github.com/janestreet/ppx_here"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='ppx_here'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='Expands [%here] into its location'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml' 'ocaml-base' 'ocaml-ppxlib')
-makedepends=('dune')
-options=('!strip' '!emptydirs')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/ppx_here-v${pkgver}.tar.gz")
-sha512sums=('3df1fac265a599e65b23b7d514757b9a1a3f0003616806eb3ca824c95d3809b7588310672bf9a6e124a858d47294db835a846a51bb319f621f28ec2e6b2f4b00')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-ppxlib>=0.9.0')
+makedepends=('dune>=1.5.1')
+options=('!strip')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('32522bd79cf7bcc960729dc6ccb20a2273a4ffde16b86ae1a13ea2fcb94225df')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/ppx_here-v${pkgver}"
-
-  dune build
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
-package() {
-  cd "${srcdir}/ppx_here-v${pkgver}"
+# fails with "Error: No rule found for test/dummy.ml.pp"
+# check() {
+# 	cd "$srcdir/$_sourcedirectory/"
+# 	dune runtest -p "$_projectname" --verbose
+# }
 
-  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
-  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgdir}/LICENSE.md"
+package() {
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
+
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
