@@ -2,7 +2,7 @@
 
 pkgname=opensage-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenSAGE is a free, open source re-implementation of SAGE, the 3D real time strategy (RTS) engine used in Command & Conquer: Generals and other RTS titles from EA Pacific. Written in C#. Not affiliated with EA"
 arch=('x86_64')
 url='https://opensage.github.io'
@@ -11,8 +11,10 @@ depends=('openal' 'mesa' 'unzip')
 noextract=('linux-x64.zip')
 install=post_install
 provides=('opensage')
-source=("https://github.com/OpenSAGE/OpenSAGE/releases/download/v${pkgver}/linux-x64.zip")
-md5sums=('a46453c1aed2d0ba273ee143c5bef559')
+source=("https://github.com/OpenSAGE/OpenSAGE/releases/download/v${pkgver}/linux-x64.zip"
+        'post_install')
+md5sums=('a46453c1aed2d0ba273ee143c5bef559'
+         '1a7425514e4c215720a0f3a604669bc6')
 
 package() {
   cd ${srcdir}
