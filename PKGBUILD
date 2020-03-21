@@ -2,7 +2,7 @@
 pkgname=python-fusesoc-git
 pkgver=r1200.ed63efa
 pkgrel=1
-pkgdesc="Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python"
+pkgdesc="Package manager and build abstraction tool for FPGA/ASIC development."
 arch=('any')
 url="https://github.com/olofk/fusesoc"
 license=('GPLv3')

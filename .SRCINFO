@@ -1,5 +1,5 @@
 pkgbase = python-fusesoc-git
-	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
+	pkgdesc = Package manager and build abstraction tool for FPGA/ASIC development.
 	pkgver = r1200.ed63efa
 	pkgrel = 1
 	url = https://github.com/olofk/fusesoc
