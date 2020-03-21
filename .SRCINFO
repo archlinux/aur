@@ -1,6 +1,6 @@
 pkgbase = julia-git
 	pkgdesc = High-level, high-performance, dynamic programming language
-	pkgver = 1.5.0.DEV.r45903.gedc1b7d14a
+	pkgver = 1.5.0.DEV.r46344.ga66db76b653
 	pkgrel = 1
 	url = https://julialang.org/
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = julia-git
 	depends = xdg-utils
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
-	source = git://github.com/JuliaLang/julia.git#branch=master
+	source = git+https://github.com/JuliaLang/julia.git#branch=master
 	source = Make.user
 	source = julia-system-cblas.patch
 	source = libunwind-version.patch

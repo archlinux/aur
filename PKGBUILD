@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=(julia-git julia-git-docs)
-pkgver=1.5.0.DEV.r45903.gedc1b7d14a
+pkgver=1.5.0.DEV.r46344.ga66db76b653
 pkgrel=1
 arch=(x86_64)
 pkgdesc='High-level, high-performance, dynamic programming language'
@@ -17,7 +17,7 @@ depends=(cblas hicolor-icon-theme libgit2 libunwind libutf8proc openblas
 makedepends=(cmake gcc-fortran gmp python git)
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
-source=(git://github.com/JuliaLang/julia.git#branch=master
+source=(git+https://github.com/JuliaLang/julia.git#branch=master
         Make.user
         julia-system-cblas.patch
         libunwind-version.patch
