@@ -13,13 +13,13 @@
 
 _name=subtitlecomposer
 pkgname=${_name}-git
-pkgver=0.7.0
+pkgver=0.7.0.133.3130da72
 pkgrel=1
 pkgdesc="A KDE subtitle editor (git version)"
 arch=('i686' 'x86_64')
 url="https://invent.kde.org/kde/${_name}"
 license=('GPL')
-depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg')
+depends=('kcoreaddons' 'sonnet' 'kcodecs' 'kross' 'kxmlgui' 'ki18n' 'ffmpeg' 'qtav')
 makedepends=('extra-cmake-modules' 'git')
 
 # Comment/uncomment the following dependencies to disable/enable
@@ -29,12 +29,7 @@ makedepends+=('mpv')
 makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
-optdepends=('gstreamer: GStreamer videoplayer backend'
-            'mpv: MPV videoplayer backend'
-            'mplayer: MPlayer videoplayer backend'
-            'phonon-qt5: Phonon videoplayer backend'
-            'xine-lib: Xine videoplayer backend'
-            'pocketsphinx: Pocketsphinx speech recognition backend'
+optdepends=('pocketsphinx: Pocketsphinx speech recognition backend'
             'kross-interpreters: Ruby and Python scripting support'
             'ruby: scripting'
             'python: scripting')
