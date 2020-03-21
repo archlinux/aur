@@ -1,0 +1,18 @@
+pkgbase = ktelephone-git
+	pkgdesc = Qt softphone - Highly inspired by Telephone
+	pkgver = r80.f82037b
+	pkgrel = 1
+	url = https://github.com/StefanYohansson/ktelephone
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = pjproject
+	depends = qt5-multimedia
+	provides = ktelephone
+	conflicts = ktelephone
+	source = ktelephone::git+https://github.com/StefanYohansson/ktelephone
+	sha512sums = SKIP
+
+pkgname = ktelephone-git
+
