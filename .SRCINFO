@@ -1,0 +1,15 @@
+pkgbase = discordlogin-git
+	pkgdesc = Login/Token component for use with gtkcord3
+	pkgver = r11.0634b4d
+	pkgrel = 1
+	url = https://github.com/diamondburned/discordlogin
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	depends = gtk3
+	source = git+https://github.com/diamondburned/discordlogin
+	sha1sums = SKIP
+
+pkgname = discordlogin-git
+
