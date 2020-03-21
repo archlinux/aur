@@ -1,7 +1,7 @@
 pkgbase = vpn-slice
 	pkgdesc = vpnc-script replacement for easy and secure split-tunnel VPN setup
-	pkgver = 0.11
-	pkgrel = 2
+	pkgver = 0.13
+	pkgrel = 1
 	url = https://github.com/dlenski/vpn-slice
 	arch = any
 	license = GPL3
@@ -11,8 +11,8 @@ pkgbase = vpn-slice
 	depends = bind-tools
 	depends = iproute2
 	depends = iptables
-	source = https://github.com/dlenski/vpn-slice/archive/v0.11.tar.gz
-	md5sums = 11bb3354eec0e935f2646d775752724d
+	source = https://github.com/dlenski/vpn-slice/archive/v0.13.tar.gz
+	md5sums = b65cd963624611f13ffd290651dd2651
 
 pkgname = vpn-slice
 
