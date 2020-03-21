@@ -10,7 +10,7 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
-pkgbase=linux-nitrous-git
+pkgbase=linux-nitrous
 _srcname=linux-nitrous
 pkgver=5.5.11
 pkgrel=2
@@ -19,7 +19,7 @@ url="https://gitlab.com/xdevs23/linux-nitrous"
 license=('GPL2')
 makedepends=('clang' 'xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'libelf' 'coreutils')
 options=('!strip')
-source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=v5.4+'
+source=('git+https://gitlab.com/xdevs23/linux-nitrous.git#branch='"$(echo $pkgver | cut -d '.' -f1-2)"'+'
         # standard config files for mkinitcpio ramdisk
         "${_srcname}.preset")
 sha256sums=('SKIP'
@@ -38,7 +38,7 @@ prepare() {
   sed -i '2iexit 0' scripts/depmod.sh
 
   rm -f .clang
-  make CC=clang nitrous_defconfig
+  make HOSTCC=clang CC=clang nitrous_defconfig
 
   # get kernel version
   #make prepare
@@ -57,12 +57,12 @@ prepare() {
 build() {
   cd "${_srcname}"
 
-  make CC=clang nitrous_defconfig
+  make HOSTCC=clang CC=clang nitrous_defconfig
   makeflags="${MAKEFLAGS}"
   if [[ "$MAKEFLAGS" != *"-j"* ]]; then
     makeflags="$makeflags -j$(nproc --all)"   
   fi
-  make ${makeflags} CC=clang bzImage modules
+  make ${makeflags} HOSTCC=clang CC=clang bzImage modules
 }
 
 _package() {
