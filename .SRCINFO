@@ -1,36 +1,41 @@
 pkgbase = ocaml-core_kernel
 	pkgdesc = Industrial strength alternative to OCaml's standard library (system-independent part)
-	pkgver = 0.11.1
+	pkgver = 0.13.1
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/core_kernel
-	arch = i686
 	arch = x86_64
-	license = Apache
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
-	depends = ocaml-bin_prot
-	depends = ocaml-configurator
-	depends = ocaml-fieldslib
-	depends = ocaml-jane-street-headers
-	depends = ocaml-ppx_assert
-	depends = ocaml-ppx_base
-	depends = ocaml-ppx_hash
-	depends = ocaml-ppx_inline_test
-	depends = ocaml-ppx_jane
-	depends = ocaml-ppx_sexp_conv
-	depends = ocaml-ppx_sexp_message
-	depends = ocaml-sexplib
-	depends = ocaml-splittable_random
-	depends = ocaml-stdio
-	depends = ocaml-typerep
-	depends = ocaml-variantslib
-	depends = ocaml-migrate-parsetree
-	depends = ocaml-ppxlib
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.08.0
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-base_bigstring>=0.13.0
+	depends = ocaml-base_quickcheck>=0.13.0
+	depends = ocaml-bin_prot>=0.13.0
+	depends = ocaml-fieldslib>=0.13.0
+	depends = ocaml-jane-street-headers>=0.13.0
+	depends = ocaml-jst-config>=0.13.0
+	depends = ocaml-ppx_assert>=0.13.0
+	depends = ocaml-ppx_base>=0.13.0
+	depends = ocaml-ppx_hash>=0.13.0
+	depends = ocaml-ppx_inline_test>=0.13.0
+	depends = ocaml-ppx_jane>=0.13.0
+	depends = ocaml-ppx_sexp_conv>=0.13.0
+	depends = ocaml-ppx_sexp_message>=0.13.0
+	depends = ocaml-sexplib>=0.13.0
+	depends = ocaml-splittable_random>=0.13.0
+	depends = ocaml-stdio>=0.13.0
+	depends = ocaml-time_now>=0.13.0
+	depends = ocaml-typerep>=0.13.0
+	depends = ocaml-variantslib>=0.13.0
+	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = https://github.com/janestreet/core_kernel/archive/v0.11.1.tar.gz
-	sha512sums = 0b40af0f450f281ed6a49adaf8d0c8435ea86b3891bb760336097a4f4c80d1c184c27d20c40eef3b07757691d97afe9ced10f5fe5c9e691fd4dd2afa1ca4bd4e
+	source = ocaml-core_kernel-0.13.1-1.tar.gz::https://github.com/janestreet/core_kernel/archive/v0.13.1.tar.gz
+	sha256sums = 2e9dec37cf1b1a05fa3ad24ae8efd1e389b82928d598db097771405da1d6b214
 
 pkgname = ocaml-core_kernel
-
