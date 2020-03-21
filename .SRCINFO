@@ -1,0 +1,17 @@
+pkgbase = lapin-git
+	pkgdesc = Terminal strategy game about a rabbit
+	pkgver = r75.a31e5c4
+	pkgrel = 1
+	url = https://github.com/Canop/lapin
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	provides = lapin
+	conflicts = lapin
+	source = lapin::git+https://github.com/Canop/lapin.git
+	sha256sums = SKIP
+
+pkgname = lapin-git
+
