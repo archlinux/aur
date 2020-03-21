@@ -6,7 +6,7 @@
 # If you want to help improve or maintain this package please let me know!
 
 pkgname=shadered-git
-pkgver=1.3.0_477.e103c8c
+pkgver=1.3.1_485.d380c1b
 pkgrel=1
 pkgdesc="SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders."
 arch=("x86_64")
@@ -25,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/SHADERed"
-    echo "1.3.0_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+    echo "1.3.1_$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
