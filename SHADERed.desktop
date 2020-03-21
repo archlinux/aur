@@ -1,9 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=SHADERed
-Comment=SHADERed is a lightweight tool for creating and testing HLSL and GLSL shaders
-Exec=/opt/shadered/SHADERed
-Icon=shadered
-Terminal=false
-Type=Application
-Categories=Graphics;
