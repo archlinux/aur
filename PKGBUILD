@@ -2,7 +2,7 @@
 
 pkgname=systemd-removed-services-hook
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Notifies you of uninstalled systemd services'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
