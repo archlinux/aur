@@ -36,7 +36,7 @@ package() {
 	rm -r "$pkgdir/usr/doc/"
 
 	for _copy in 'COPYRIGHT.txt' 'THIRD-PARTY.txt'; do
-		install -Dm644 "$copy" "$pkgdir/usr/share/doc/$pkgname/$copy"
+		install -Dm644 "$_copy" "$pkgdir/usr/share/doc/$pkgname/$_copy"
 	done
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
