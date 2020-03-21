@@ -1,29 +1,35 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-ppx_jane
-pkgver=0.11.0
-pkgrel=1
-epoch=1
-pkgdesc="Standard Jane Street ppx rewriters"
-arch=('i686' 'x86_64')
-url="https://github.com/janestreet/ppx_jane"
-license=('Apache')
-depends=('ocaml' 'ocaml-ppx_assert' 'ocaml-ppx_base' 'ocaml-ppx_bench' 'ocaml-ppx_bin_prot' 'ocaml-ppx_custom_printf' 'ocaml-ppx_expect' 'ocaml-ppx_fail' 'ocaml-ppx_fields_conv' 'ocaml-ppx_here' 'ocaml-ppx_inline_test' 'ocaml-ppx_let' 'ocaml-ppx_optcomp' 'ocaml-ppx_optional' 'ocaml-ppx_pipebang' 'ocaml-ppx_sexp_message' 'ocaml-ppx_sexp_value' 'ocaml-ppx_typerep_conv' 'ocaml-ppx_variants_conv' 'ocaml-migrate-parsetree' 'ocaml-ppxlib')
-makedepends=('dune')
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='ppx_jane'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='Standard Jane Street ppx rewriters'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
+license=('MIT')
+depends=('ocaml>=4.04.2' 'ocaml-base_quickcheck>=0.13.0' 'ocaml-ppx_assert>=0.13.0' 'ocaml-ppx_base>=0.13.0' 'ocaml-ppx_bench>=0.13.0' 'ocaml-ppx_bin_prot>=0.13.0' 'ocaml-ppx_custom_printf>=0.13.0' 'ocaml-ppx_expect>=0.13.0' 'ocaml-ppx_fail>=0.13.0' 'ocaml-ppx_fields_conv>=0.13.0' 'ocaml-ppx_here>=0.13.0' 'ocaml-ppx_inline_test>=0.13.0' 'ocaml-ppx_let>=0.13.0' 'ocaml-ppx_module_timer>=0.13.0' 'ocaml-ppx_optcomp>=0.13.0' 'ocaml-ppx_optional>=0.13.0' 'ocaml-ppx_pipebang>=0.13.0' 'ocaml-ppx_sexp_message>=0.13.0' 'ocaml-ppx_sexp_value>=0.13.0' 'ocaml-ppx_stable>=0.13.0' 'ocaml-ppx_typerep_conv>=0.13.0' 'ocaml-ppx_variants_conv>=0.13.0' 'ocaml-ppxlib>=0.9.0')
+makedepends=('dune>=1.5.1')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/ppx_jane-v${pkgver}.tar.gz")
-md5sums=('11da0871ae3841fb6710ec6471ce6b92')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('b1d49e946babf5f26be5a4b1b4f36bbf3ae3ac5118ca56b1f9adff1dda37d9c3')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/ppx_jane-v${pkgver}"
-
-  jbuilder build
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
 package() {
-  cd "${srcdir}/ppx_jane-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
