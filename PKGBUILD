@@ -2,25 +2,26 @@
 _pkgname=python-jiramenu
 _gitname=jiramenu
 pkgname=$_pkgname-git
-pkgver=r25.5997742
+pkgver=r1.0.3
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for jira"
 
 arch=('any')
-url="https://github.com/ljurk/jiramenu"
+url="https://gitlab.com/ljurk/jiramenu"
 license=('GPLv3')
 depends=('python')
-makedepends=('git')
+makedepends=('git'
+             'python')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git://github.com/ljurk/$_gitname.git")
+source=("git+https://gitlab.com/ljurk/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "r%s" "$(python setup.py --version)"
 }
 build() {
     cd "$_gitname"
