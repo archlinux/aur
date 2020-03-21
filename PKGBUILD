@@ -1,6 +1,6 @@
 # Maintainer: Patrick josé Pereira  <gmail.com@patrickelectric>
 pkgname=mavlink-git
-pkgver=080811f3
+pkgver=1.0.12.r164.g5a18bf91
 pkgrel=1
 pkgdesc="MAVLink - Micro Air Vehicle Message Marshalling Library."
 arch=('any')
