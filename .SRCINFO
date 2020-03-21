@@ -1,7 +1,7 @@
 pkgbase = davmail
 	pkgdesc = a POP/IMAP/SMTP/Caldav/LDAP gateway for the exchange service
 	pkgver = 5.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://davmail.sourceforge.net/
 	install = davmail.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = davmail
 	license = GPL
 	makedepends = unzip
 	depends = java-runtime
+	optdepends = java-openjfx: Office 365 browser based authentication
 	source = http://downloads.sourceforge.net/davmail/davmail-5.4.0-3135.zip
 	source = davmail.desktop
 	source = davmail.sh
