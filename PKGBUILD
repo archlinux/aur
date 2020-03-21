@@ -2,7 +2,7 @@
 pkgname=('drill-search-cli' 'drill-search-gtk')
 pkgbase=drill-search
 pkgver=2.1.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://drill.software"
 license=('GPL2')

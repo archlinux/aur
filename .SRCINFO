@@ -1,6 +1,6 @@
 pkgbase = drill-search
 	pkgver = 2.1.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://drill.software
 	install = drill-search.install
 	arch = x86_64
