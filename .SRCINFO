@@ -12,7 +12,7 @@ pkgbase = python-cocotb
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
 	provides = python-cocotb
-	conflicts = python-cocotb
+	conflicts = python-cocotb-git
 	options = !emptydirs
 	source = git+https://github.com/cocotb/cocotb#tag=v1.3.1
 	md5sums = SKIP
