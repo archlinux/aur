@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/olofk/edalize"
 license=('BSD')
 conflicts=('python-edalize')
-provides=('python-edalize')
+provides=('python-edalize-git')
 depends=('python' 'python-pytest')
 
 makedepends=('git' 'python-setuptools')
