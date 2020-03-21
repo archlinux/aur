@@ -1,19 +1,21 @@
-pkgbase = cocotb
+pkgbase = python-cocotb
 	pkgdesc = Coroutine based cosimulation library for writing VHDL and Verilog testbenches in Python
 	pkgver = 1.3
-	pkgrel = 0
-	epoch = 0
+	pkgrel = 1
 	url = http://github.com/cocotb/cocotb/
-	install = cocotb.install
-	arch = x86_64
+	arch = any
 	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
 	depends = python
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
-	provides = cocotb
-	conflicts = cocotb
-	source = https://github.com/cocotb/cocotb/archive/v1.3.0.tar.gz
-	md5sums = 4db3d270943da293cf4dd7ce22594307
+	provides = python-cocotb
+	conflicts = python-cocotb
+	options = !emptydirs
+	source = git+https://github.com/cocotb/cocotb#tag=v1.3.1
+	md5sums = SKIP
 
-pkgname = cocotb
+pkgname = python-cocotb
+
