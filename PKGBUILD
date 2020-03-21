@@ -2,7 +2,7 @@
 pkgname=trompeloeil-git
 pkgver=1020.8b2d213
 pkgrel=1
-pkgdesc="Advanced launcher for ArmA 3 on Linux"
+pkgdesc="Header only C++14 mocking framework"
 arch=('i686' 'x86_64')
 url="https://github.com/rollbear/trompeloeil.git"
 license=('MIT')
