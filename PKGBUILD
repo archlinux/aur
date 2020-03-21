@@ -1,5 +1,4 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
-# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 _projectname='ppx_cold'
 pkgname="ocaml-$_projectname"
 pkgver='0.13.0'
