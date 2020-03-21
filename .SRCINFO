@@ -1,10 +1,9 @@
 pkgbase = avogadro2-git
 	pkgdesc = Avogadro 2: graphical application
-	pkgver = 1.91.0.r417.b89b96c
-	pkgrel = 2
+	pkgver = 1.93.0.r428.59c4dbd
+	pkgrel = 1
 	url = http://openchemistry.org/projects/avogadro2
 	install = avogadro2.install
-	arch = i686
 	arch = x86_64
 	license = Kitware
 	makedepends = git

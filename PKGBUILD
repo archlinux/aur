@@ -3,11 +3,11 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=1.91.0.r417.b89b96c
-pkgrel=2
+pkgver=1.93.0.r428.59c4dbd
+pkgrel=1
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
-arch=("i686" "x86_64")
+arch=("x86_64")
 license=("Kitware")
 depends=("avogadrolibs-git" "desktop-file-utils")
 makedepends=("git" "cmake" "eigen")
