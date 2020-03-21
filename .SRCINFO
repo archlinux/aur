@@ -1,0 +1,19 @@
+pkgbase = libuavcan
+	pkgdesc = Portable reference implementation of the UAVCAN protocal stack in C++ for embedded systems and Linux.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://uavcan.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = python-pyuavcan=0.1
+	options = !staticlibs
+	options = strip
+	source = libuavcan-1.0.0::https://github.com/UAVCAN/libuavcan/archive/v1.0.0rc-last.tar.gz
+	source = dsdl::https://github.com/UAVCAN/public_regulated_data_types/archive/192295c4f9b67f4a20b0eabf74757b6597415f2b.tar.gz
+	sha256sums = c32094fbe406a51c077c3be756d97ab6869c392030b69c54ac23ef845fee3d0d
+	sha256sums = 75217b3eeb2b2adad534359388842b8c02f469b7be24d7b00f11b2a4e214c78b
+
+pkgname = libuavcan
+
