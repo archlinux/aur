@@ -12,7 +12,7 @@
 
 pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
-pkgver=5.5.10
+pkgver=5.5.11
 pkgrel=1
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
