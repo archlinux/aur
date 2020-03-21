@@ -3,22 +3,23 @@
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=soci
-pkgver=3.2.3
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Database access library for C++"
 arch=('i686' 'x86_64')
 url="http://soci.sf.net"
 license=('custom:boost')
 depends=('gcc-libs')
-makedepends=('cmake' 'libmysqlclient' 'postgresql-libs' 'sqlite3' 'unixodbc')
+makedepends=('cmake' 'postgresql-libs' 'sqlite3' 'unixodbc')
 optdepends=('instantclient-basic: support for oracle databases'
             'libmysqlclient: support for mysql databases'
             'postgresql-libs: support for postgresql databases'
             'sqlite3: support for sqlite databases'
             'unixodbc: support for ODBC databases'
+            'libmysqlclient'
             'boost')
 source=("http://downloads.sourceforge.net/project/soci/soci/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip")
-sha1sums=('805fcfc6f1199b9a7f8832d63bc9b0ac9da22507')
+sha1sums=('6be7cc81fd4bb181fc103ac61c0388ab4b2e09e7')
 
 build() {
     rm -rf "${srcdir}/${pkgname}-${pkgver}-build"
