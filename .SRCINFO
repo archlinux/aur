@@ -8,6 +8,7 @@ pkgbase = gtkcord3-git
 	makedepends = git
 	makedepends = go
 	depends = gtk3
+	depends = discordlogin-git
 	source = git+https://github.com/diamondburned/gtkcord3
 	sha1sums = SKIP
 

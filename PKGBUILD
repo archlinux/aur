@@ -1,12 +1,12 @@
 pkgname=gtkcord3-git
 _pkgname=gtkcord3
-pkgver=r133.d8062fe
-pkgrel=2
+pkgver=r154.d75038a
+pkgrel=1
 pkgdesc='Discord client written in go and gtk3'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
 license=('GPL3')
-depends=('gtk3')
+depends=('gtk3' 'discordlogin-git')
 makedepends=('git' 'go')
 source=('git+https://github.com/diamondburned/gtkcord3')
 sha1sums=('SKIP')
@@ -17,7 +17,10 @@ pkgver() {
 }
 
 build() {
-	GOPATH="${srcdir}/go"
+	# check if user has already set their GoLang path
+	if [[ -z "${GOPATH}" ]]; then
+		GOPATH="${srcdir}/go"
+	fi
 	cd $_pkgname
 	go build -trimpath
 }
