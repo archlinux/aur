@@ -1,0 +1,12 @@
+pkgbase = systemd-removed-services-hook
+	pkgdesc = Notifies you of uninstalled your systemd services
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.com/firstairbender/systemd-removed-services-hook
+	arch = any
+	license = Unlicense
+	depends = pacutils
+	depends = systemd
+
+pkgname = systemd-removed-services-hook
+
