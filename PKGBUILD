@@ -70,7 +70,7 @@ _package() {
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=(
     'crda: to set the correct wireless channels of your country'
-    'linux-nitrous-git-headers: to build DKMS modules against this kernel'
+    'linux-nitrous-headers: to build DKMS modules against this kernel'
   )
   provides=('linux')
   __kernelname=linux-nitrous
