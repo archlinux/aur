@@ -1,6 +1,6 @@
 pkgbase = mpd-light
 	pkgdesc = Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient and zziplib support.
-	pkgver = 0.21.20
+	pkgver = 0.21.21
 	pkgrel = 1
 	url = https://www.musicpd.org/
 	install = mpd.install
@@ -27,14 +27,14 @@ pkgbase = mpd-light
 	depends = libsamplerate
 	depends = libsoxr
 	depends = libgme
-	provides = mpd=0.21.20
+	provides = mpd=0.21.21
 	conflicts = mpd
 	replaces = mpd
 	backup = etc/mpd.conf
-	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.20.tar.xz
+	source = https://www.musicpd.org/download/mpd/0.21/mpd-0.21.21.tar.xz
 	source = mpd.tmpfile
 	source = mpd.conf
-	sha256sums = 422ef0a996d961f3ebc6856395f3a855b45fa0059910e878fb98281007e510e1
+	sha256sums = e1bdb15f0e3b62c18e91257a7b41530dc36eb91cc03eabc6e6bffd947ec168ce
 	sha256sums = c1683ba35774c85e16c70e89f7e2ed1c09619512b1a273daabbd5e34d40439bd
 	sha256sums = e213c108cd0e076b5cc07091707ef75d74d9ac8c779d0c0128cd0aa69617f8a0
 
