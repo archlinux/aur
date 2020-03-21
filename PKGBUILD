@@ -16,13 +16,12 @@ license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
          ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
-         libvpx libpng libjpeg bzip2 zlib icu libevent)
+         libvpx libpng libjpeg bzip2 zlib icu libevent libpipewire02)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
              python nodejs python2-psutil cbindgen nasm libpipewire02)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
-            'libpipewire02: Required for screen sharing'
             'xdg-desktop-portal: Required for screen sharing'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
