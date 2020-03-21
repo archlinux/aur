@@ -8,6 +8,7 @@ add_compile_options(-std=c++17 -Wall -Wextra -pedantic -Werror)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH};/usr/share/SFML/cmake/Modules/)
 find_package(SFML REQUIRED COMPONENTS system graphics window audio)
 
+add_subdirectory(src/main/resources)
 add_subdirectory(src/main)
 
 if(BUILD_TESTING)

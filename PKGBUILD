@@ -1,6 +1,6 @@
 # Maintainer: Tyler Johnson <tejohnso2 at popular google mail domain>
 pkgname=slitherling
-pkgver=90080eb
+pkgver=ab7ba8b
 pkgrel=1
 pkgdesc="A simple snake game. Feed your snake with fruit. Arrow keys, VIM keys, or spacebar (easy mode)."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ source=("https://storage.googleapis.com/slitherling-source/src-$pkgver.tar.gz"
          "https://storage.googleapis.com/slitherling-source/resources-$pkgver.tar.gz")
 md5sums=("SKIP" "SKIP")
 makedepends=('gcc>=9.0.0' 'cmake>=3.11' 'ninja>=1.10')
-epoch=1584662651
+epoch=1584805424
 build() {
         cd $SRCDEST/src
         cp ../CMakeLists.txt .
