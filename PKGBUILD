@@ -1,9 +1,10 @@
-#Maintainer: Mohammad Taha Jahangir (taha_jahangir)
+#Maintainer: Indhi Rousseau <contact at thekinrar dot fr>
+#Maintainer of mongodb-bin-3.6: Mohammad Taha Jahangir (taha_jahangir)
 #Maintainer of mongodb-bin: Ali Molaei <ali dot molaei at protonmail dot com>
 
-pkgname="mongodb-bin-3.6"
-pkgver="3.6.12"
-basever="3.6"
+pkgname="mongodb-bin-3.2"
+pkgver="3.2.22"
+basever="3.2"
 pkgrel="1"
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
@@ -22,9 +23,9 @@ source=(
     "mongodb.tmpfiles"
     "LICENSE")
 
-sha256sums=("4e6e575d850d0f0f238c8fb159c552ce107f895f4049c4fca05efd366545c490"
-            "85da8f5a2a30a336212e3574f1fedd4fe8757b17e710fd53561f8ab1204ad3e3"
-            "ce66b8e216ced21e7e5d2387209c6b14805cc755c87a9733e2a760ee8cd4c52b"
+sha256sums=("630d0bbf8d2cda03022a330260bc5d79714b6d65abbf154d5a1d5ff262cf584e"
+            "589d57d5fc68e22b6a92abba2d0dfec27b69894e2832dcf47db73d48851c48ef"
+            "f9051b388164b35aa4d1873cb7af30eb50f7be2d461ccf0e32b84acc7d2819f6"
             "19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e"
             "8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4"
             "47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b"

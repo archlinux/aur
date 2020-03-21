@@ -1,31 +1,31 @@
-pkgbase = mongodb-bin-3.6
+pkgbase = mongodb-bin-3.2
 	pkgdesc = A high-performance, open source, schema-free document-oriented database
-	pkgver = 3.6.12
+	pkgver = 3.2.22
 	pkgrel = 1
 	url = https://www.mongodb.com/
 	arch = x86_64
 	license = SSPLv1
 	optdepends = mongodb-tools: The MongoDB tools provide import, export, and diagnostic capabilities.
-	provides = mongodb=3.6.12
+	provides = mongodb=3.2.22
 	conflicts = mongodb
 	conflicts = mongodb-bin
 	backup = etc/mongodb.conf
-	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.6/main/binary-amd64/mongodb-org-shell_3.6.12_amd64.deb
-	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.6/main/binary-amd64/mongodb-org-server_3.6.12_amd64.deb
-	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.6/main/binary-amd64/mongodb-org-mongos_3.6.12_amd64.deb
+	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.2/main/binary-amd64/mongodb-org-shell_3.2.22_amd64.deb
+	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.2/main/binary-amd64/mongodb-org-server_3.2.22_amd64.deb
+	source = https://repo.mongodb.org/apt/debian/dists/jessie/mongodb-org/3.2/main/binary-amd64/mongodb-org-mongos_3.2.22_amd64.deb
 	source = mongodb.service
 	source = mongodb.conf
 	source = mongodb.sysusers
 	source = mongodb.tmpfiles
 	source = LICENSE
-	sha256sums = 4e6e575d850d0f0f238c8fb159c552ce107f895f4049c4fca05efd366545c490
-	sha256sums = 85da8f5a2a30a336212e3574f1fedd4fe8757b17e710fd53561f8ab1204ad3e3
-	sha256sums = ce66b8e216ced21e7e5d2387209c6b14805cc755c87a9733e2a760ee8cd4c52b
+	sha256sums = 630d0bbf8d2cda03022a330260bc5d79714b6d65abbf154d5a1d5ff262cf584e
+	sha256sums = 589d57d5fc68e22b6a92abba2d0dfec27b69894e2832dcf47db73d48851c48ef
+	sha256sums = f9051b388164b35aa4d1873cb7af30eb50f7be2d461ccf0e32b84acc7d2819f6
 	sha256sums = 19f55ab28652b3817e98fc3f15cc2f6f3255a5e1dfd7b0d5a27c9ba22fd2703e
 	sha256sums = 8010ce728d657524cd76b5afda7ffbc1cc389642336b12b89cec5df2b09fc0e4
 	sha256sums = 47b884569102f7c79017ee78ef2e98204a25aa834c0ee7d5d62c270ab05d4e2b
 	sha256sums = 51ee1e1f71598aad919db79a195778e6cb6cfce48267565e88a401ebc64497ac
 	sha256sums = 09d99ca61eb07873d5334077acba22c33e7f7d0a9fa08c92734e0ac8430d6e27
 
-pkgname = mongodb-bin-3.6
+pkgname = mongodb-bin-3.2
 
