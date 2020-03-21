@@ -1,0 +1,23 @@
+pkgbase = v2rayxplus
+	pkgdesc = Cross-platform GUI Client for V2Ray written in Qt and Golang
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 0
+	url = https://gitlab.com/xiayesuifeng/v2rayxplus
+	arch = x86_64
+	license = GPL
+	depends = qt5-base
+	depends = iptables
+	depends = v2ray
+	options = !strip
+	source = v2rayxplus.desktop
+	source = v2rayxplus.svg
+	source = v2rayxplus.service
+	source = v2rayxplus-1.0.0.zip::https://gitlab.com/xiayesuifeng/v2rayxplus/-/jobs/artifacts/1.0.0/download?job=run-build
+	md5sums = 9dc2795fd51f2f0e3e1749b100e1ac2d
+	md5sums = e357d8f75b9d2577bacb8a7d2c5d184a
+	md5sums = dcda30000c17f717c6e1b9e4c82416a1
+	md5sums = SKIP
+
+pkgname = v2rayxplus
+

@@ -1,0 +1,15 @@
+[Unit]
+Description=V2RayXPlus Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/v2rayxplus -start
+ExecStop=/usr/bin/v2rayxplus -stop
+ExecStartPre=/usr/bin/systemctl start v2ray.service
+ExecStopPost=/usr/bin/systemctl stop v2ray.service
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

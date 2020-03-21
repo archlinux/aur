@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/usr/bin/v2rayxplus %u
+Icon=v2rayxplus
+StartupNotify=true
+Terminal=false
+Categories=Utility;
+
+Name=v2rayXPlus
+Name[zh_CN]=v2rayXPlus
