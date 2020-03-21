@@ -1,7 +1,7 @@
 pkgbase = ocaml-ocplib-endian
 	pkgdesc = Optimised functions to read and write int16/32/64 from strings, bytes and bigarrays
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OCamlPro/ocplib-endian
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-ocplib-endian
 	makedepends = ocaml-findlib
 	depends = ocaml
 	options = !strip
-	source = ocaml-ocplib-endian-1.0-2.tar.gz::https://github.com/OCamlPro/ocplib-endian/archive/1.0.tar.gz
+	source = ocaml-ocplib-endian-1.0-3.tar.gz::https://github.com/OCamlPro/ocplib-endian/archive/1.0.tar.gz
 	sha256sums = 76f268e1aff8dbac8b6a0ca9473f90255da35f15b0fcaf26a840cb6f73029243
 
 pkgname = ocaml-ocplib-endian
