@@ -7,7 +7,7 @@
 pkgname=lxd
 _pkgname=lxd
 _lxd=github.com/lxc/lxd
-pkgver=3.22
+pkgver=3.23
 pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=("https://github.com/lxc/lxd/releases/download/${pkgname}-${pkgver}/${pkg
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('1692cec36c836b101384830abc7753b1acdd46df0cbea5d5b41633cfa4eac0c8'
+sha256sums=('e4e1e878753dd30d90d222a54cb5f62bf197fb78d9e85232208cbc54cd3875fd'
             'SKIP'
             '3a14638f8d0f9082c7214502421350e3b028db1e7f22e8c3fd35a2b1d9153ef4'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
