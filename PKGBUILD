@@ -3,7 +3,7 @@
 _projectname='ppx_derivers'
 pkgname="ocaml-$_projectname"
 pkgver='1.2.1'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Shared deriving plugin registry'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
