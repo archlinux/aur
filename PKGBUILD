@@ -3,7 +3,7 @@
 # pak128.sweden-extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended-pak128.sweden
-pkgver=20200320
+pkgver=20200321
 pkgrel=1
 pkgdesc="High resolution graphics set for Simutrans Extended, with a swedish theme"
 arch=('any')
