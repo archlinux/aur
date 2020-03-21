@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-pkgver=5.0.4
+pkgver=5.0.5
 _srctag=${pkgver%.*}-${pkgver##*.}
 _geckover=2.47.1
 _monover=4.9.4
@@ -114,6 +114,7 @@ source=(
 #    glib::git+https://gitlab.gnome.org/GNOME/glib.git
     proton-unfuck_makefile.patch
     proton-disable_lock.patch
+    proton-user_compat_data.patch
     dxvk-extraopts.patch
 )
 sha256sums=(
@@ -133,6 +134,7 @@ sha256sums=(
 #    SKIP
     'b9e8443c3f1949cc8b0d311594aa46cbfb79da48c3f00e95c97e87656368dd49'
     'f12df8e1e2dcb6bcced6fdccfdf044b2dc55714712efd577fd5d92abfad0f5c5'
+    '375015b1582e3c606122d4dd6dc9919f6df1ca7223855908600e1e8fae762c51'
     '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
 )
 
@@ -160,6 +162,7 @@ prepare() {
 
     patch -p1 -i "$srcdir"/proton-unfuck_makefile.patch
     patch -p1 -i "$srcdir"/proton-disable_lock.patch
+    patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
     # Uncomment to enable extra optimizations
     # Patch crossfiles with extra optimizations from makepkg.conf
