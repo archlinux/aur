@@ -1,8 +1,8 @@
 # Maintainer: Edoardo Rosa <edoardo dot rosa90 at gmail dot com>
 
-# RegRipper 
+# RegRipper
 pkgname=regripper-git
-pkgver=r163.6aa233a
+pkgver=r181.4cb4ea5
 pkgrel=1
 pkgdesc="RegRipper is an open source forensic software used as a Windows Registry data extraction command line or GUI tool."
 arch=('any')
@@ -41,5 +41,3 @@ package() {
   install -p -dm 755 "$pkgdir/usr/share/regripper/plugins/"
   install -p -m 755 "$pkgname/plugins/"* "$pkgdir/usr/share/regripper/plugins/"
 }
-
-
