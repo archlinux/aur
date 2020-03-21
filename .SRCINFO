@@ -1,6 +1,6 @@
 pkgbase = jabref-latest
 	pkgdesc = GUI frontend for BibTeX, written in Java; latest master version from git
-	pkgver = 20200309
+	pkgver = 20200319
 	pkgrel = 1
 	url = https://www.jabref.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = jabref-latest
 	optdepends = gsettings-desktop-schemas: For web search support
 	provides = jabref
 	conflicts = jabref
-	source = Jabref-20200309.tgz::https://builds.jabref.org/master/JabRef-5.0-portable_linux.tar.gz
+	source = Jabref-20200319.tgz::https://builds.jabref.org/master/JabRef-5.1-portable_linux.tar.gz
 	source = https://raw.githubusercontent.com/JabRef/jabref/master/LICENSE.md
 	source = jabref.sh
 	source = JabRef.desktop
