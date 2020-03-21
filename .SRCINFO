@@ -18,7 +18,6 @@ pkgbase = stumpwm-git
 	optdepends = aumix: for aumix.lisp (control audio volume)
 	optdepends = mpd: for mpd.lisp (control the mpd)
 	optdepends = surfraw: for surfraw.lisp (surf the Internet)
-	optdepends = clx-truetype: for ttf-fonts.lisp (Xft fonts)
 	provides = stumpwm
 	provides = stumpwm-contrib
 	conflicts = stumpwm

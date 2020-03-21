@@ -31,8 +31,7 @@ optdepends=('xorg-xprop: for stumpish (StumpWM Interactive Shell)'
             'alsa-utils: for amixer.lisp (control audio volume)'
             'aumix: for aumix.lisp (control audio volume)'
             'mpd: for mpd.lisp (control the mpd)'
-            'surfraw: for surfraw.lisp (surf the Internet)'
-            'clx-truetype: for ttf-fonts.lisp (Xft fonts)')
+			'surfraw: for surfraw.lisp (surf the Internet)')
 
 # Binary will not run other
 options=('!strip' '!makeflags')  # Thanks to sidereus for pointing this out
