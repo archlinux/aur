@@ -2,8 +2,8 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.92.1.r1776.04c6ff1f
-pkgrel=2
+pkgver=1.93.0.r1846.cdfdf9bd
+pkgrel=1
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("x86_64")
