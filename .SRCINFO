@@ -1,15 +1,19 @@
 pkgbase = ocaml-octavius
 	pkgdesc = Ocamldoc comment syntax parser
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/ocaml-doc/octavius
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = ISC
-	makedepends = dune
-	depends = ocaml
+	makedepends = dune>=1.11.0
+	depends = ocaml>=4.03.0
 	options = !strip
-	source = https://github.com/ocaml-doc/octavius/archive/v1.2.1.tar.gz
-	sha512sums = 4d0c0206312cc5272d459f8b73467074724450a67eb2e8a00129fadeccc5ddec69efcb3cb60f7d510f614c01142bd6b4dbec845f1da452f810f5ab28db93fa94
+	source = ocaml-octavius-1.2.2-1.tar.gz::https://github.com/ocaml-doc/octavius/archive/v1.2.2.tar.gz
+	sha256sums = eac9104ce0316b69da9c44b9c477700fe0b52a888c89ce4bdf1d2b782a73e0ad
 
 pkgname = ocaml-octavius
-
