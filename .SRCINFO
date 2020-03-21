@@ -1,6 +1,6 @@
 pkgbase = gale-git
 	pkgdesc = A distributed, real-time instant messaging system
-	pkgver = 1.1.r17.gaa4e000
+	pkgver = 1.1.r18.ga576a1e
 	pkgrel = 1
 	epoch = 1
 	url = http://gale.org
@@ -13,6 +13,8 @@ pkgbase = gale-git
 	depends = gc
 	depends = openssl
 	depends = adns
+	depends = glib2
+	depends = tcl
 	source = gale::git+https://github.com/grawity/gale.git
 	sha1sums = SKIP
 

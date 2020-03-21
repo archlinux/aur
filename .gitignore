@@ -1,0 +1,6 @@
+*.bak
+*.gz
+*.xz
+src
+pkg
+gale
