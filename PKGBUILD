@@ -1,8 +1,8 @@
 # Maintainer: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=systemd-removed-services-hook
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc='Notifies you of uninstalled systemd services'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
@@ -22,7 +22,7 @@ build() {
 
   	for p in $(systemd-analyze --global unit-paths; systemd-analyze unit-paths); do 
         p=${p#"$(pacconf RootDir)"}
-        echo "Target    = $p"
+        echo "Target    = $p/*.service"
   	done | sort
 
   	cat <<-'EOF'
