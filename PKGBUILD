@@ -1,14 +1,14 @@
 pkgname=python-opentsne
-pkgver=0.3.0
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
 arch=('x86_64')
 license=('BSD')
-depends=('fftw' 'python-scikit-learn' 'python-numba')
+depends=('fftw' 'python-scikit-learn' 'python-numba' 'python-pynndescent')
 makedepends=('python-setuptools')
 source=("https://pypi.io/packages/source/o/openTSNE/openTSNE-${pkgver}.tar.gz")
-sha256sums=('74352d62c3dd51b0c2f9f30ee6014ec20a5ac21b95d6a0776886a6c23335b3fb')
+sha256sums=('35538017e7479c96aa3da7841fea22d7353762fecb1cec98b7431922db7861dc')
 
 
 build() {
