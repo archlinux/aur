@@ -2,7 +2,7 @@
 _pkgbasename=ktlint
 pkgname=$_pkgbasename-git
 pkgrel=1
-pkgver=0.36.0.r12.g9eb31ca
+pkgver=0.36.0.r13.ga86d1c7
 pkgdesc="An anti-bikeshedding Kotlin linter with built-in formatter"
 arch=('any')
 url="https://github.com/pinterest/ktlint"
@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgbasename}"
-    ./gradlew shadowJarExecutable
+    ./gradlew --no-daemon shadowJarExecutable
 }
 
 package() {
