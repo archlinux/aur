@@ -1,14 +1,14 @@
 pkgbase = seihon
 	pkgdesc = A simple tool to publish multi-arch images on the Docker Hub.
-	pkgver = v0.4.0
+	pkgver = v0.5.0
 	pkgrel = 1
 	url = https://github.com/ldez/seihon
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	license = APACHE
-	source_x86_64 = https://github.com/ldez/seihon/releases/download/v0.4.0/seihon_v0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5b59dbb3b9099dec9d4a503e874b4c0f19ed3eb03f960eb8bf938059113050f5
+	source_x86_64 = https://github.com/ldez/seihon/releases/download/v0.5.0/seihon_v0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c9bad374f705cd6fc32c9a83d90a9fae78a768043874ad465d1916b3be9fa683
 
 pkgname = seihon
 
