@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://openaudible.org"
 license=('Apache')
 options=('!strip' '!emptydirs')
-depends=(java-runtime-headless)
+depends=("java-runtime-headless")
 source=("https://github.com/openaudible/openaudible/releases/download/v1.6.5/OpenAudible_"$pkgver"_amd64.deb"
        "openaudible.desktop")
 sha512sums=('866da0448d3b010163d97d827a91360967255dfbad7545eb73ef2819dd1209eecded83cd595db786480673f72b7a69a58f95825da2da113348d5952d8cccfeae'
