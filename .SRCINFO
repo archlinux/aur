@@ -1,0 +1,23 @@
+pkgbase = sweet-kde-git
+	pkgdesc = A very sweet theme
+	pkgver = r109.0d214a6
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/EliverLara/sweet.git#branch=nova
+	sha256sums = SKIP
+
+pkgname = sweet-kde-git
+	optdepends = sweet-theme-git: Matching GTK theme
+	optdepends = kvantum-theme-sweet: Sweet theme for Kvantum Qt style (recommended)
+	optdepends = candy-icons: Matching icon theme
+	provides = sweet-kde
+
+pkgname = kvantum-theme-sweet-git
+	pkgdesc = Sweet theme for KDE Plasma 5
+	depends = kvantum-qt5
+	provides = kvantum-theme-sweet
+
