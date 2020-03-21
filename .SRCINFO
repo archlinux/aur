@@ -1,6 +1,6 @@
 pkgbase = python-qcelemental
 	pkgdesc = Periodic table, physical constants, and molecule parsing for quantum chemistry
-	pkgver = 0.13.1
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://qcelemental-docs.helpmanual.io/
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-qcelemental
 	depends = python-pint
 	depends = python-pydantic
 	optdepends = python-networkx
-	source = https://github.com/MolSSI/qcelemental/archive/v0.13.1.tar.gz
-	sha256sums = 726bd30e3dd53539421f2ff9a6e8d5b4b090e9cc64eaeec04bd2f474a34613c2
+	source = https://github.com/MolSSI/qcelemental/archive/v0.14.0.tar.gz
+	sha256sums = c453e3b1d46b2e5a601143169f0ba1be90304be515534a1629f479bb044b21a8
 
 pkgname = python-qcelemental
 
