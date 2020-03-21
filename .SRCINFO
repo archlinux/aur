@@ -1,6 +1,6 @@
 pkgbase = python-jiramenu-git
 	pkgdesc = Dmenu/Rofi frontend for jira
-	pkgver = r1.0.3
+	pkgver = r1.0.4
 	pkgrel = 1
 	url = https://gitlab.com/ljurk/jiramenu
 	arch = any
