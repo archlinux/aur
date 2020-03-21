@@ -15,6 +15,7 @@ pkgbase = python-cocotb-git
 	conflicts = python-cocotb
 	options = !emptydirs
 	source = git+https://github.com/cocotb/cocotb
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = python-cocotb-git
+
