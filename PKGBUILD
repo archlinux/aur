@@ -29,7 +29,6 @@ package() {
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -r "$pkgdir/usr/doc/"
 
-	# COPYING is not included in /usr/doc/$_projectname/ for some reason
 	install -Dm644 'COPYING' "$pkgdir/usr/share/doc/$pkgname/COPYING"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
