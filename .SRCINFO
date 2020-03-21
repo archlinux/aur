@@ -1,6 +1,6 @@
 pkgbase = gpseq-git
 	pkgdesc = A parallelism library for Vala and GObject
-	pkgver = 0.3.3.r0.9ff7fe1
+	pkgver = 0.4.0.alpha.r0.c996a96
 	pkgrel = 1
 	url = https://gitlab.com/kosmospredanie/gpseq
 	arch = i686
