@@ -11,6 +11,7 @@ pkgbase = python-edalize-git
 	depends = python-pytest
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
+	optdepends = gtkwave: for visualizing waveforms
 	provides = python-edalize
 	conflicts = python-edalize
 	options = !emptydirs
@@ -18,3 +19,4 @@ pkgbase = python-edalize-git
 	sha256sums = SKIP
 
 pkgname = python-edalize-git
+
