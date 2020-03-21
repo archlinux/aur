@@ -6,7 +6,7 @@ pkgdesc="Package manager and build abstraction tool for FPGA/ASIC development."
 arch=('any')
 url="http://github.com/olofk/fusesoc/"
 license=('GPLv3')
-conflicts=('python-fusesoc')
+conflicts=('python-fusesoc-git')
 provides=('python-fusesoc')
 depends=('python' 'python-edalize')
 

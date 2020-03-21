@@ -13,7 +13,7 @@ pkgbase = python-fusesoc
 	optdepends = ghdl: for simulating VHDL designs
 	optdepends = gtkwave: for visualizing waveforms
 	provides = python-fusesoc
-	conflicts = python-fusesoc
+	conflicts = python-fusesoc-git
 	options = !emptydirs
 	source = git+https://github.com/olofk/fusesoc#tag=1.10
 	md5sums = SKIP
