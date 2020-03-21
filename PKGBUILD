@@ -10,16 +10,17 @@ conflicts=('python-edalize')
 provides=('python-edalize')
 depends=('python' 'python-pytest')
 
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=('iverilog: for simulating verilog designs'
-	    'ghdl: for simulating VHDL designs')
+	    'ghdl: for simulating VHDL designs'
+	    'gtkwave: for visualizing waveforms')
 
 options=(!emptydirs)
-source=("https://github.com/olofk/edalize/archive/v$pkgver.$pkgrel.tar.gz")
-md5sums=('e2edd17257d4660c45711bd1b1756701')
+source=("git+https://github.com/olofk/edalize#tag=v${pkgver}.${pkgrel}")
+md5sums=('SKIP')
 
 package() {
-    cd "${srcdir}/edalize-$pkgver.$pkgrel"
+    cd "${srcdir}/edalize"
     python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
     install -m 644 -D ./LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }

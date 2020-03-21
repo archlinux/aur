@@ -5,16 +5,18 @@ pkgbase = python-edalize
 	url = http://github.com/olofk/edalize/
 	arch = any
 	license = BSD
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pytest
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
+	optdepends = gtkwave: for visualizing waveforms
 	provides = python-edalize
 	conflicts = python-edalize
 	options = !emptydirs
-	source = https://github.com/olofk/edalize/archive/v0.2.0.tar.gz
-	md5sums = e2edd17257d4660c45711bd1b1756701
+	source = git+https://github.com/olofk/edalize#tag=v0.2.0
+	md5sums = SKIP
 
 pkgname = python-edalize
 
