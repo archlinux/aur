@@ -19,4 +19,4 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 # Specify the cross emulator
-set(CMAKE_CROSSCOMPILING_EMULATOR qemu-aarch64)
+set(CMAKE_CROSSCOMPILING_EMULATOR qemu-aarch64 -L /usr/aarch64-linux-gnu/)

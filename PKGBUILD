@@ -3,7 +3,7 @@
 _target=aarch64-linux-gnu
 
 pkgname=$_target-cmake
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='A cmake wrapper for the ARM64 target'
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   '1a1ba7c6d678c6d457bc0aa60534648c317fbb84ad1b5499459b22b51ed6d920'
-  '1b3d09317aa77e23cdb00b6cdc45b3ffb68a915b96797f07141b9dfc2e9ba301'
+  'aa2c5c9ecf17c87c82feb5ed66ba6086b8b9ca6fc355ba46a16f3df1136adf45'
 )
 
 package() {
