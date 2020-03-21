@@ -1,6 +1,6 @@
 # Maintainer: Antonio Napolitano <nap at antonionapolitano dot eu>
 pkgname=sincon-git
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Semplice wrapper script che permette di ottenere sinonimi e contrari di una parola da www.sinonimi-contrari.it"
 arch=('any')
