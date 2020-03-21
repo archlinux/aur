@@ -11,6 +11,7 @@ optdepends=(
     "cuda: NVIDIA's GPU programming toolkit"
     'cudnn: NVIDIA CUDA Deep Neural Network library'
 )
+makedepends=('sed')
 options=(!strip)
 source=(
     "https://download.pytorch.org/libtorch/cu101/libtorch-cxx11-abi-shared-with-deps-${pkgver}.zip"
@@ -25,6 +26,6 @@ prepare () {
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr
-    cp -dr ${srcdir}/libtorch/* ${pkgdir}/usr
+    install -Ddm755 ${pkgdir}/usr
+    cp -dr --no-preserve=ownership ${srcdir}/libtorch/* ${pkgdir}/usr/
 }
