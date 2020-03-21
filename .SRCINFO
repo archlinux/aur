@@ -1,0 +1,16 @@
+pkgbase = pokefinder-git
+	pkgdesc = Cross platform Pokémon RNG tool
+	pkgver = 2.5.0.r4.g48ab194
+	pkgrel = 1
+	url = https://github.com/Admiral-Fish/PokeFinder
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	depends = qt5-base
+	provides = pokefinder
+	conflicts = pokefinder
+	source = pokefinder-git::git+https://github.com/Admiral-Fish/PokeFinder.git
+	sha256sums = SKIP
+
+pkgname = pokefinder-git
+
