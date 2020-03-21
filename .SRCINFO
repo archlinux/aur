@@ -1,6 +1,6 @@
 pkgbase = python-kaldi-io
 	pkgdesc = Python functions for reading kaldi data formats. Useful for rapid prototyping with python.
-	pkgver = 0.9.1
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = http://pypi.python.org/project/kaldi_io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-kaldi-io
 	makedepends = python-setuptools
 	depends = python
 	depends = python-numpy
-	source = https://pypi.python.org/packages/source/k/kaldi_io/kaldi_io-0.9.1.tar.gz
-	md5sums = 2ec3668346699cffd2bb59d881adeb59
+	source = https://pypi.python.org/packages/source/k/kaldi_io/kaldi_io-0.9.3.tar.gz
+	md5sums = 1b3b5810289af9936711043819697a24
 
 pkgname = python-kaldi-io
 

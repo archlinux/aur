@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw _at_ gmail.com>
 _pypiname=kaldi_io
 pkgname=python-kaldi-io
-pkgver=0.9.1
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Python functions for reading kaldi data formats. Useful for rapid prototyping with python."
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('python' 'python-numpy')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_pypiname:0:1}/${_pypiname}/${_pypiname}-$pkgver.tar.gz")
-md5sums=('2ec3668346699cffd2bb59d881adeb59')
+md5sums=('1b3b5810289af9936711043819697a24')
 
 build() {
   cd "${srcdir}/${_pypiname}-$pkgver"
