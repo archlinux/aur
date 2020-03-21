@@ -19,7 +19,7 @@ prepare() {
 
     _ver=$(javac -version 2>&1 |awk '{print $2}')
     msg "Detected Java $_ver"
-    [[ "$_ver" =~ ^1[0-4]\. ]] &&
+    [[ "$_ver" =~ ^1[0-6] ]] &&
         patch -Np0 -i "$srcdir/java10.patch"
 
     # Prevent building the testsuite on the x64, this requires the cunit pkg
