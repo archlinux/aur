@@ -5,13 +5,13 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-ui"
 
 pkgname=emacs-lsp-ui-git
-pkgver=6.0.r19.g7c5c8a6
+pkgver=6.2.r40.g134d9b7
 pkgrel=1
 pkgdesc="UI modules for lsp-mode"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
-depends=('emacs' 'emacs-dash' 'flycheck' 'emacs-lsp-mode' 'emacs-markdown-mode')
+depends=('emacs' 'emacs-dash' 'emacs-hydra' 'flycheck' 'emacs-lsp-mode' 'emacs-markdown-mode' 'emacs-spinner')
 makedepends=('git')
 provides=('emacs-lsp-ui')
 conflicts=('emacs-lsp-ui')
