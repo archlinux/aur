@@ -1,6 +1,6 @@
 pkgbase = python-pyperf
 	pkgdesc = Toolkit to run Python benchmarks
-	pkgver = 1.7.1
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/vstinner/pyperf
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-pyperf
 	depends = python
 	depends = python-setuptools
 	depends = python-six
-	source = python-pyperf-1.7.1.tar.gz::https://github.com/vstinner/pyperf/archive/1.7.1.tar.gz
-	sha256sums = 151b6c3950d2fb3f161aa79997f7dec0e967b00e435530373c3e7ece240e0bfd
+	source = python-pyperf-2.0.0.tar.gz::https://github.com/vstinner/pyperf/archive/2.0.0.tar.gz
+	sha256sums = 5212d0685246cd555fb72680601a42a741126684df779e3a93f9abf766c018d2
 
 pkgname = python-pyperf
 
