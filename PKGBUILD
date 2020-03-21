@@ -14,7 +14,7 @@ conflicts=('mavlink')
 
 pkgver() {
   cd "mavlink"
-  git log --pretty=format:'%h' -n 1
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
