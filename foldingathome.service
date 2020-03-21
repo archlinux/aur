@@ -6,6 +6,7 @@ After=network.target
 DynamicUser=yes
 Type=simple
 User=fah
+SupplementaryGroups=video
 StateDirectory=fah
 WorkingDirectory=/var/lib/fah
 ExecStart=/opt/fah/FAHClient

@@ -3,7 +3,7 @@
 
 pkgname=foldingathome-noroot
 pkgver=7.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Folding@Home client that does not run as the root user."
 arch=('x86_64')
 url="http://foldingathome.org"
@@ -21,7 +21,7 @@ _coarse_pkgver="${pkgver:0:3}" # 7.5.1 -> 7.5
 _tarball_name="fahclient_${pkgver}-64bit-release"
 _url="https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${_coarse_pkgver}/${_tarball_name}.tar.bz2"
 source=(foldingathome.service fah-config foldingathome.install "${_url}")
-md5sums=('b508338299defffcbf7d46a02e1e763a'
+md5sums=('a29b9068eda8d081b2679896390df292'
          '0fd798148583d0840c664862116bd366'
          '22b156cdf21ccade658836193703b196'
          '5353688a1c5cb0a226ce8e24b8ecb771')
