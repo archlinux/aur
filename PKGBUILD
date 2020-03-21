@@ -1,35 +1,40 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-# Contributor: Aaron Chen <nextAaron at gmail.com>
-# Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
-# Contributor: Sergei Lebedev <superbobry@gmail.com>
-# Contributor: Nicolas Pouillard <nicolas(dot)pouillard(at)gmail(dot)com>
-# Contributor: Sylvester Johansson <scj(at)archlinux(dot)us>
-
-pkgname=ocaml-sexplib
-pkgver=0.12.0
-pkgrel=1
-epoch=1
-pkgdesc="Library for serializing OCaml values to and from S-expressions"
-arch=('i686' 'x86_64')
-url="https://github.com/janestreet/sexplib"
-license=('MIT' 'BSD')
-depends=('ocaml' 'ocaml-parsexp' 'ocaml-sexplib0' 'ocaml-num')
-makedepends=('dune')
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+_projectname='sexplib'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='Library for serializing OCaml values to and from S-expressions'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
+license=('MIT')
+depends=('ocaml>=4.04.2' 'ocaml-num' 'ocaml-parsexp>=0.13.0' 'ocaml-sexplib0>=0.13.0')
+makedepends=('dune>=1.5.1')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/sexplib-v${pkgver}.tar.gz")
-sha512sums=('bd050e59f5269f15b3362891f98417c78bbe6e18c630488ac3df769dd70180beb4e1bbf55e32327fd2dec9a6041969bcaa4f9d16b9295e33cc82af1515404701')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('1d14cf46a4439f736b5dc6992d00918a01fbbfdd6b3ee26a999f3707e3425c96')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/sexplib-v${pkgver}"
-
-  dune build --profile release
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
-package(){
-  cd "${srcdir}/sexplib-v${pkgver}"
+package() {
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  dune install --destdir "${pkgdir}"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-  install -Dm644 "LICENSE-Tywith.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-Tywith.txt"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	for _copy in 'COPYRIGHT.txt' 'THIRD-PARTY.txt'; do
+		install -Dm644 "$_copy" "$pkgdir/usr/share/doc/$pkgname/$_copy"
+	done
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	for _license in 'COPYRIGHT.txt' 'LICENSE.md' 'LICENSE-Tywith.txt' 'THIRD-PARTY.txt'; do
+		ln -sf "/usr/share/doc/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+	done
 }
