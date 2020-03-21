@@ -1,0 +1,21 @@
+pkgbase = ocaml-ppx_stable
+	pkgdesc = Stable types conversions generator
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/janestreet/ppx_stable
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-ppxlib>=0.9.0
+	options = !strip
+	source = ocaml-ppx_stable-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_stable/archive/v0.13.0.tar.gz
+	sha256sums = 3605fab8fee589d31e8855b0dc35298bf1f6ad96033ae2de3da8311fd6745bdc
+
+pkgname = ocaml-ppx_stable
