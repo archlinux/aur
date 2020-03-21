@@ -1,11 +1,11 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.29.0.r2030.99bc952
+pkgver=0.30.1.r2129.da9b740
 pkgrel=1
 pkgdesc="Open source modding toolkit for Halo Combat Evolved on the PC"
 depends=('libtiff' 'libarchive' 'flac' 'freetype2' 'libsamplerate' 'libvorbis' 'qt5-base' 'qt5-multimedia' 'zlib' 'zstd')
-makedepends=('cmake' 'git' 'python')
+makedepends=('cmake' 'git' 'ninja' 'python')
 arch=('i686' 'x86_64')
 url="https://invader.opencarnage.net"
 license=('GPL')
@@ -24,11 +24,11 @@ prepare() {
 
 build() {
     cd "$srcdir"/build
-    cmake ../invader -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
-    make
+    cmake ../invader -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
+    ninja
 }
 
 package() {
     cd "$srcdir"/build
-    make install
+    ninja install
 }
