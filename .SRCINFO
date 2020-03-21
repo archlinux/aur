@@ -1,0 +1,23 @@
+pkgbase = trompeloeil-git
+	pkgdesc = Advanced launcher for ArmA 3 on Linux
+	pkgver = 1020.8b2d213
+	pkgrel = 1
+	url = https://github.com/rollbear/trompeloeil.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	optdepends = boost
+	optdepends = catch2
+	optdepends = criterion
+	optdepends = cxxtest
+	optdepends = doctest
+	optdepends = gtest
+	provides = trompeloeil
+	conflicts = trompeloeil
+	source = trompeloeil-git::git://github.com/rollbear/trompeloeil
+	md5sums = SKIP
+
+pkgname = trompeloeil-git
+
