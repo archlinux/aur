@@ -1,7 +1,7 @@
 pkgbase = elvish
 	pkgdesc = A friendly and expressive Unix shell.
-	pkgver = 0.13
-	pkgrel = 2
+	pkgver = 0.13.1
+	pkgrel = 1
 	url = https://github.com/elves/elvish
 	install = elvish.install
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = elvish
 	makedepends = go
 	depends = glibc
 	provides = elvish
-	source = git+https://github.com/elves/elvish.git#tag=v0.13
+	source = git+https://github.com/elves/elvish.git#tag=v0.13.1
 	md5sums = SKIP
 
 pkgname = elvish
