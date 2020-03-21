@@ -1,15 +1,16 @@
-# Maintainer: Jean Lucas <jean@4ray.co
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=kpatch
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Live kernel patching'
 arch=(i686 x86_64)
 url=https://github.com/dynup/kpatch
 license=(GPL2)
 depends=(bash libelf)
 source=(kpatch-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha512sums=('c1b149e9532dc16ee4f7578aadf3eda73b53c889a055229490a7afd1fca8e6df755c98c938353f937b81679fe8d08e065c473a6c31e588b1eb67f2de56bfddea')
+sha512sums=('cd6d98137228e9db84d90e0aa04ddadd3b8174fffc95db0b33412b2fae56d2d8c191eac69bf751e70fa1a1133e0c4d0608fee28c5aefc096c6a4f38cfb739452')
 
 prepare() {
   cd kpatch-$pkgver
