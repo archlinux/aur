@@ -8,19 +8,22 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r542876+.4d8cee124c4e+
+pkgver=r582059+.22f4f0f581e9+
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org - Wayland build of mozilla-unified hg"
+pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
 arch=(x86_64)
 license=(MPL GPL LGPL)
 url="https://www.mozilla.org/firefox/"
 depends=(gtk3 mozilla-common libxt startup-notification mime-types dbus-glib
-         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland)
+         ffmpeg nss-hg ttf-font libpulse xorg-server-xwayland
+         libvpx libpng libjpeg bzip2 zlib icu libevent)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust mercurial clang llvm jack gtk2
-             python nodejs python2-psutil cbindgen nasm)
+             python nodejs python2-psutil cbindgen nasm libpipewire02)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
+            'libpipewire02: Required for screen sharing'
+            'xdg-desktop-portal: Required for screen sharing'
             'pulseaudio: Audio support'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English')
@@ -29,10 +32,12 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo"
-        0001-Use-remoting-name-for-GDK-application-names.patch
+        '0001-Use-remoting-name-for-GDK-application-names.patch'
+        '0002-Pipewire.patch'
         $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894'
+            '82a9d6b58fea2ad7e7e9561ce39436b1441ba3a23789fae251a18b58cc22f035' #0002-Pipewire.patch
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
@@ -59,6 +64,10 @@ prepare() {
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1430775
+  # source: https://github.com/xhorak/firefox-devedition-flatpak/tree/master/org.mozilla.FirefoxNightly
+  patch -Np1 -i ../0002-Pipewire.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -103,8 +112,16 @@ ac_add_options --with-mozilla-api-keyfile=${PWD@Q}/mozilla-api-key
 # System libraries
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-libevent
+ac_add_options --with-system-icu
+ac_add_options --with-system-zlib
+ac_add_options --with-system-bz2
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-png
 
 # Features
+ac_add_options --enable-pulseaudio
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-startup-notification
