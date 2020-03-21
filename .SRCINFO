@@ -1,16 +1,20 @@
 pkgbase = ocaml-stdio
-	pkgdesc = Standard IO library for OCaml
+	pkgdesc = Standard IO Library for OCaml
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/stdio
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	makedepends = dune
-	depends = ocaml
+	depends = ocaml>=4.04.2
 	depends = ocaml-base
 	options = !strip
-	source = https://github.com/janestreet/stdio/archive/v0.13.0.tar.gz
-	sha512sums = d778d37b5dfca42f585afaea344649145b0d0b15202646eeba01b43ad14319361f577542382e1209e3720072a19494b2f23b74e91796df3eb0c2d8613b0e0f12
+	source = ocaml-stdio-0.13.0-2.tar.gz::https://github.com/janestreet/stdio/archive/v0.13.0.tar.gz
+	sha256sums = 7c2dd42188b8afe833e840751d0b6107e8d2dea601845c6ad9c928f8a90b81d9
 
 pkgname = ocaml-stdio
-
