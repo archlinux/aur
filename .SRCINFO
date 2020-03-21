@@ -1,18 +1,21 @@
 pkgbase = ocaml-fieldslib
 	pkgdesc = OCaml record fields as first class values
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/fieldslib
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.12/files/fieldslib-v0.12.0.tar.gz
-	sha512sums = c103ea6d35213549e75c0cc4ade2828a5ff5bec56edb6a83ffbdcdeff57a65ea117c33432cd8e8b9cfdfe70d26b8d4e22b4717f401c50a4e8a1eb80c78d6b2b7
+	source = ocaml-fieldslib-0.13.0-1.tar.gz::https://github.com/janestreet/fieldslib/archive/v0.13.0.tar.gz
+	sha256sums = 4bc72b910f666918f691830c9891f850cb04dd7c5c092fd34aa3ac49a7ffee2e
 
 pkgname = ocaml-fieldslib
-
