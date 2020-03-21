@@ -1,7 +1,7 @@
 # Maintainer: Kévin Hautemanière <kh12e@pm.me>
 pkgname=prometheus-transmission-exporter
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter for transmission daemon"
 arch=('x86_64')
 url="https://github.com/metalmatze/transmission-exporter"
@@ -15,23 +15,20 @@ sha256sums=('1c5db560bfa8c181d96e3beafa4347be4384945fcc5eb446bd0149bbe5a8cb13'
             '39a46c0e07065892e0d31e1ad38fb70e26ee2b693da0fc2d88d944f3958d6496'
             'f2bfede724cee3fb0893f67bd601c3f59c3522c6b92bddf671dc5b3daad6fa54')
 
-prepare() {
-    cd "${srcdir}/transmission-exporter-${pkgver}"
-    export GOPATH="${srcdir}/gopath"
-    export GOBIN="${GOPATH}/bin"
-    mkdir -p "${GOPATH}/src/github.com/metalmatze"
-    ln -snf "${srcdir}/transmission-exporter-${pkgver}" "${GOPATH}/src/github.com/metalmatze/transmission-exporter"
-}
-
 build() {
-    export GOPATH="${srcdir}/gopath"
-    cd "${GOPATH}/src/github.com/metalmatze/transmission-exporter"
-    go build ./cmd/transmission-exporter
+    export GO111MODULE=on
+    export CGO_ENABLED=0
+    cd transmission-exporter-${pkgver}
+    go build \
+        -trimpath \
+        -ldflags "-extldflags $LDFLAGS" \
+        -o ${pkgname} \
+        ./cmd/transmission-exporter
 }
 
 package() {
-    install -Dm640 "prometheus-transmission-exporter.default" "${pkgdir}/etc/default/prometheus-transmission-exporter"
-    install -Dm644 "prometheus-transmission-exporter.service" "${pkgdir}/usr/lib/systemd/system/prometheus-transmission-exporter.service"
+    install -Dm640 ${pkgname}.default ${pkgdir}/etc/default/${pkgname}
+    install -Dm644 ${pkgname}.service ${pkgdir}/usr/lib/systemd/system/${pkgname}.service
     cd transmission-exporter-${pkgver}
-    install -Dm755 "transmission-exporter" "${pkgdir}/usr/bin/prometheus-transmission-exporter"
+    install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
