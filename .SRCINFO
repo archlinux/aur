@@ -1,18 +1,21 @@
 pkgbase = ocaml-variantslib
 	pkgdesc = OCaml variants as first class values
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/variantslib
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.12/files/variantslib-v0.12.0.tar.gz
-	sha512sums = a5e69349ec05ccd0d0d34e9c11817d1d4defea95cc51db4eaaa3d280672976f6f9cd70abfc5fe082b5487cab0c272d4776e1801b78b4a5f5765cf1cdda16ccb2
+	source = ocaml-variantslib-0.13.0-1.tar.gz::https://github.com/janestreet/variantslib/archive/v0.13.0.tar.gz
+	sha256sums = f6bab4c6090094891168803e3bcfd8582cfb4c30b4d975c1fd0b3dc0dcf32e1a
 
 pkgname = ocaml-variantslib
-
