@@ -1,6 +1,6 @@
 pkgbase = pacfetch-git
 	pkgdesc = Simple fetch script for pacman based distros. Written in Rust.
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://git.auteiy.me/dmitry/pacFetch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pacfetch-git
 	depends = gcc-libs
 	provides = pacfetch
 	conflicts = pacfetch-bin
-	source = pacfetch-git-0.0.5-1::git+https://git.auteiy.me/dmitry/pacFetch.git
+	source = pacfetch-git-0.0.6-1::git+https://git.auteiy.me/dmitry/pacFetch.git
 	sha512sums = SKIP
 
 pkgname = pacfetch-git
