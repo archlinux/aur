@@ -1,10 +1,11 @@
 pkgname=sflock-git
-pkgver=r19.1bda0e6
-pkgrel=2
+pkgver=r27.ded0d82
+pkgrel=1
 pkgdesc="A simple screen locker for X"
 arch=('i686' 'x86_64')
 url="https://github.com/benruijl/sflock"
 license=('MIT')
+optdepends=('ttf-dejavu: this is the default font')
 depends=('libxext')
 makedepends=('git')
 source=('git+https://github.com/benruijl/sflock.git')
