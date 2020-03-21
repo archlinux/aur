@@ -1,0 +1,6 @@
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+
+post_install() {
+	echo -e "This package assumes you're running your web server under '\e[32mhttp\e[37m' username"
+	echo -e "If not, modify the script accordingly, by replacing '\e[32mhttp\e[37m' with the username you're running your web server under."
+}

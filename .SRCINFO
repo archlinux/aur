@@ -1,0 +1,26 @@
+pkgbase = prestashop
+	pkgdesc = PrestaShop offers a fully scalable open source ecommerce solution
+	pkgver = 1.7.6.4
+	pkgrel = 1
+	url = https://www.prestashop.com/
+	install = post_install
+	arch = any
+	license = OSL-3.0
+	license = AFL-3.0
+	makedepends = unzip
+	depends = php
+	depends = php-gd
+	depends = php-fpm
+	depends = php-intl
+	depends = mariadb
+	optdepends = apache: A high performance Unix-based HTTP server
+	optdepends = nginx: Lightweight HTTP server and IMAP/POP3 proxy server
+	source = https://github.com/PrestaShop/PrestaShop/releases/download/1.7.6.4/prestashop_1.7.6.4.zip
+	source = post_install
+	source = prestashop.conf
+	md5sums = 6dc99fb5a6c3a01a94bb8b2de07411d6
+	md5sums = a49ba9b0df2b199ef6e588727456c57f
+	md5sums = 9fa6528dd4f7a2080bf5f35e6cb1c994
+
+pkgname = prestashop
+
