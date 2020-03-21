@@ -1,0 +1,24 @@
+pkgbase = ocaml-ppx_module_timer
+	pkgdesc = Ppx rewriter that records top-level module startup times
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/janestreet/ppx_module_timer
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-ppx_base>=0.13.0
+	depends = ocaml-ppxlib>=0.9.0
+	depends = ocaml-stdio>=0.13.0
+	depends = ocaml-time_now>=0.13.0
+	options = !strip
+	source = ocaml-ppx_module_timer-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_module_timer/archive/v0.13.0.tar.gz
+	sha256sums = f1a17ce59a4efc0eca1baa226e3067f87bba0d2e3ce5e84e9df9b1d3c7632807
+
+pkgname = ocaml-ppx_module_timer
