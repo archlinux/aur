@@ -2,7 +2,7 @@
 
 pkgname=systemd-removed-services-hook
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Notifies you of uninstalled systemd services'
 arch=('any')
 url='https://gitlab.com/firstairbender/systemd-removed-services-hook'
@@ -32,7 +32,7 @@ build() {
 		When        = PostTransaction
 		Depends     = systemd
 		Depends     = pacutils
-		Exec        = /bin/bash -c 'echo; for serv in $(cat); do if systemctl --quiet is-enabled "${serv##*/}" 2> /dev/null || systemctl --quiet --user is-enabled "${serv##*/}" 2> /dev/null; then echo -e "\t► $(pacconf RootDir)$serv"; fi; done'
+		Exec        = /bin/bash -c 'echo; for serv in $(cat); do if systemctl --quiet is-enabled "${serv##*/}" 2> /dev/null || systemctl --quiet --global is-enabled "${serv##*/}" 2> /dev/null; then echo -e "\t► $(pacconf RootDir)$serv"; fi; done'
 		NeedsTargets
 	EOF
 
