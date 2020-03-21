@@ -1,6 +1,6 @@
 pkgbase = aarch64-linux-gnu-cmake
 	pkgdesc = A cmake wrapper for the ARM64 target
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = http://fedoraproject.org/wiki/MinGW
 	arch = x86_64
@@ -9,10 +9,11 @@ pkgbase = aarch64-linux-gnu-cmake
 	depends = aarch64-linux-gnu-gcc
 	depends = aarch64-linux-gnu-pkg-config
 	depends = aarch64-linux-gnu-environment
+	depends = qemu-arch-extra
 	source = cmake.sh
 	source = toolchain.cmake
 	sha256sums = 1a1ba7c6d678c6d457bc0aa60534648c317fbb84ad1b5499459b22b51ed6d920
-	sha256sums = 00a70a8daeab537588250d913f3ed12dcf0c18cd9a63e4de32d28ecefd27f36e
+	sha256sums = 1b3d09317aa77e23cdb00b6cdc45b3ffb68a915b96797f07141b9dfc2e9ba301
 
 pkgname = aarch64-linux-gnu-cmake
 

@@ -3,13 +3,13 @@
 _target=aarch64-linux-gnu
 
 pkgname=$_target-cmake
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='A cmake wrapper for the ARM64 target'
 arch=(x86_64)
 url='http://fedoraproject.org/wiki/MinGW'
 license=(GPL)
-depends=(cmake $_target-gcc $_target-pkg-config $_target-environment)
+depends=(cmake $_target-gcc $_target-pkg-config $_target-environment qemu-arch-extra)
 makedepends=()
 options=()
 source=(
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   '1a1ba7c6d678c6d457bc0aa60534648c317fbb84ad1b5499459b22b51ed6d920'
-  '00a70a8daeab537588250d913f3ed12dcf0c18cd9a63e4de32d28ecefd27f36e'
+  '1b3d09317aa77e23cdb00b6cdc45b3ffb68a915b96797f07141b9dfc2e9ba301'
 )
 
 package() {
