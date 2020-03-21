@@ -1,6 +1,6 @@
 pkgbase = cordless-git
 	pkgdesc = A Discord TUI client.
-	pkgver = 2019.05.14
+	pkgver = 2019.01.05
 	pkgrel = 1
 	url = https://github.com/Bios-Marcel/cordless
 	arch = x86_64
