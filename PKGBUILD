@@ -34,13 +34,13 @@ check() {
   unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1
 
-  make test
+  #make test
 }
 
 package() {
   cd "$srcdir/$_dist-$pkgver"
 
   unset INSTALLDIRS DESTDIR PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-  
+
   make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
