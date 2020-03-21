@@ -1,0 +1,13 @@
+pkgbase = inkscape-gcodetools-git
+	pkgdesc = CAM extension for Inkscape to export paths to Gcode
+	pkgver = r317.ce38e8f
+	pkgrel = 1
+	url = https://github.com/cnc-club/gcodetools
+	arch = any
+	license = GPL
+	depends = inkscape
+	source = git+https://github.com/cnc-club/gcodetools.git
+	sha512sums = SKIP
+
+pkgname = inkscape-gcodetools-git
+
