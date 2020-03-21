@@ -1,0 +1,36 @@
+---
+From: Borislav Petkov <bp@suse.de>
+Date: Wed, 18 Mar 2020 19:27:48 +0100
+
+In order to use efi_mem_type(), one needs CONFIG_EFI enabled. Otherwise
+that function is undefined. Use IS_ENABLED() to check and avoid the
+ifdeffery as the compiler optimizes away the following unreachable code
+then.
+
+Fixes: 985e537a4082 ("x86/ioremap: Map EFI runtime services data as encrypted for SEV")
+Reported-by: Randy Dunlap <rdunlap@infradead.org>
+Signed-off-by: Borislav Petkov <bp@suse.de>
+Cc: Tom Lendacky <thomas.lendacky@amd.com>
+Link: https://lkml.kernel.org/r/7561e981-0d9b-d62c-0ef2-ce6007aff1ab@infradead.org
+---
+ arch/x86/mm/ioremap.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/arch/x86/mm/ioremap.c b/arch/x86/mm/ioremap.c
+index 935a91e1fd77..18c637c0dc6f 100644
+--- a/arch/x86/mm/ioremap.c
++++ b/arch/x86/mm/ioremap.c
+@@ -115,6 +115,9 @@ static void __ioremap_check_other(resource_size_t addr, struct ioremap_desc *des
+ 	if (!sev_active())
+ 		return;
+ 
++	if (!IS_ENABLED(CONFIG_EFI))
++		return;
++
+ 	if (efi_mem_type(addr) == EFI_RUNTIME_SERVICES_DATA)
+ 		desc->flags |= IORES_MAP_ENCRYPTED;
+ }
+-- 
+2.21.0
+
+  

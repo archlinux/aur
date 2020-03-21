@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.5.v.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -16,10 +16,12 @@ pkgbase = linux-slim
 	source = config.x86_64
 	source = linux-slim.preset
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
+	source = noefi.patch
 	sha256sums = SKIP
-	sha256sums = af5f2fb782ac0223674da0926bb41fa39d007d5681679481045c13c38eb7b246
+	sha256sums = 22c2f984cbebc873576767495c5341091da416f064e29e608d6ed0b9f8d7f0ed
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
+	sha256sums = 99a553d7d1b2926cbbaceee61706e54a3728890a72a1fbb55343091ea105a84f
 
 pkgname = linux-slim
 	pkgdesc = Linux kernel slimmed down to only work on AMD hardware. Zero compatibility.
