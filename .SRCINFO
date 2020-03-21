@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_gen_rec
 	pkgdesc = A ppx rewriter that transforms a recursive module expression into a `struct`
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/flowtype/ocaml-ppx_gen_rec
 	arch = x86_64
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = ocaml-ppx_gen_rec
 	depends = ocaml
 	depends = ocaml-migrate-parsetree>=1.1.0
 	options = !strip
-	source = ocaml-ppx_gen_rec-1.1.0-2.tar.gz::https://github.com/flowtype/ocaml-ppx_gen_rec/archive/v1.1.0.tar.gz
+	source = ocaml-ppx_gen_rec-1.1.0-3.tar.gz::https://github.com/flowtype/ocaml-ppx_gen_rec/archive/v1.1.0.tar.gz
 	sha256sums = 3aa36a8875d02a81406681fa4f38cd51be4c0f8539345bfdf052844ec982fa0e
 
 pkgname = ocaml-ppx_gen_rec
