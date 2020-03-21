@@ -1,0 +1,11 @@
+pkgbase = stallman
+	pkgdesc = Liberates your Arch Linux setup via removing non-free software.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	source = git+https://github.com/devmedoo/stallman.git
+	md5sums = SKIP
+
+pkgname = stallman
+
