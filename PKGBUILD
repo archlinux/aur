@@ -2,14 +2,14 @@
 
 pkgname=cocoa
 pkgver=5.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A computer algebra system for doing computations in commutative algebra."
 arch=('i686' 'x86_64')
 url="http://cocoa.dima.unige.it/"
 license=('GPL')
 depends=()
 source=("http://cocoa.dima.unige.it/download/bin/cocoa-5.3.0-linux.tgz" "cocoa5")
-sha256sums=('ab6c9c5e4716019b1893046b6da8a71e1110761564bd4d02b14a504020b579c6'
+sha256sums=('cf6618838b5c968717f291ba322b7dba726370dee3a21a02b463c47445677b1d'
             'a1752090a5afb150543ada48a046d23d4ba80cb56bc15713a27dd4036e7c964c')
 
 package() {
