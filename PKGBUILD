@@ -10,9 +10,10 @@ conflicts=('python-fusesoc')
 provides=('python-fusesoc')
 depends=('python' 'python-edalize')
 
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 optdepends=('iverilog: for simulating verilog designs'
-            'ghdl: for simulating VHDL designs')
+	    'ghdl: for simulating VHDL designs'
+	    'gtkwave: for visualizing waveforms')
 
 options=(!emptydirs)
 source=("git+https://github.com/olofk/fusesoc#tag=${pkgver}")
