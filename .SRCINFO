@@ -1,13 +1,13 @@
 pkgbase = golang-github-gorilla-websocket
 	pkgdesc = A fast, well-tested and widely used WebSocket implementation for Go
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://github.com/gorilla/websocket
 	arch = any
 	license = BSD
 	depends = go
-	source = golang-github-gorilla-websocket-1.4.1.tar.gz::https://github.com/gorilla/websocket/archive/v1.4.1.tar.gz
-	sha256sums = 9e5bd337d58a978bf4072767252ddb394b53e2b459697633794abd96e8eb3fa6
+	source = golang-github-gorilla-websocket-1.4.2.tar.gz::https://github.com/gorilla/websocket/archive/v1.4.2.tar.gz
+	sha256sums = 91937a36bc9e0da3c895c73d4cb74b2cdb1aff54ab21b0d0724000e7b5b85b84
 
 pkgname = golang-github-gorilla-websocket
 
