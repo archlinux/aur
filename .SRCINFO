@@ -1,14 +1,22 @@
 pkgbase = kata-containers-bin
 	pkgdesc = Lightweight virtual machines for containers (binary version)
-	pkgver = 1.10.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://katacontainers.io
 	arch = x86_64
 	license = Apache
-	source = https://github.com/kata-containers/runtime/releases/download/1.10.1/kata-static-1.10.1-x86_64.tar.xz
-	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-ksm-throttler-1.10.1-5.1.x86_64.rpm
-	sha256sums = ade88ae5a50365c3f677b99ec79c816291bc1bef676070d1125b10d81f92cf49
-	sha256sums = 76c1cf70739fa3ee7a0558bb78f43c7d2b49408ede33ecf2b7fd486738634d83
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-containers-image-1.10.2-6.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-ksm-throttler-1.10.2-6.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-linux-container-4.19.86.60-7.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-proxy-bin-1.10.2-6.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-runtime-1.10.2-6.1.x86_64.rpm
+	source = https://download.opensuse.org/repositories/home:/katacontainers:/releases:/x86_64:/stable-1.10/Fedora_30/x86_64/kata-shim-bin-1.10.2-6.1.x86_64.rpm
+	sha256sums = 71620cd68476d6fae63a2cdf56157110eca1ece30411bb16eb1cca6807bb56d8
+	sha256sums = 32be5a944997907700ff0b4450b31214f4348169f7f7caad8b90562ceebcf5ee
+	sha256sums = cd8977a03ef7b5a1dce5cdd45c317a17d03c6c0a908daa249f636e4c996e5fad
+	sha256sums = e88cb367e81bcf87b8d96be18dd419b09e8597b9e577f2e648a9f3f72eef59ed
+	sha256sums = 1d89ba67580f087538438e66faea43c6658b09345ee61326352c8a0bbe2b7bc3
+	sha256sums = c6dd9ccb1217da8d960b6874f7e48757ddf6a16330ae84539bab145b7b8be976
 
 pkgname = kata-runtime-bin
 	install = kata-runtime.install

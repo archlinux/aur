@@ -5,7 +5,7 @@
 
 pkgbase=kata-containers-bin
 pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image kata-linux-container kata-containers-static)
-pkgver="1.10.1"
+pkgver="1.10.2"
 _pkgver=${pkgver/\~/-}
 pkgrel=1
 pkgdesc="Lightweight virtual machines for containers (binary version)"
@@ -13,27 +13,34 @@ arch=(x86_64)
 url="https://katacontainers.io"
 license=('Apache')
 
-_default_suffix="-5.1"  # f30 package build revision
 _kata_kernel_ver="4.19.86.60"
-_bin_pkg_root="/opt/kata"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_bin_pkg_root="/usr"  # `/usr` for f30 packages, `/opt/kata` for static packages
+_default_suffix="-6.1"  # f30 package build revision
+
+#_image_suffix="-6.1"
+#_ksm_suffix="-6.1"
+_kernel_suffix="-7.1"
+#_proxy_suffix="-6.1"
+#_runtime_suffix="-6.1"
+#_shim_suffix="-6.1"
 
 source=(
-  "https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz"
-  #"https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-containers-image-${pkgver}${_default_suffix}.${CARCH}.rpm"
-  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-ksm-throttler-${pkgver}${_default_suffix}.${CARCH}.rpm"
-  #"https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-linux-container-${_kata_kernel_ver}${_default_suffix}.${CARCH}.rpm"
-  #"https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-proxy-bin-${pkgver}${_default_suffix}.${CARCH}.rpm"
-  #"https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-runtime-${pkgver}${_default_suffix}.${CARCH}.rpm"
-  #"https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-shim-bin-${pkgver}${_default_suffix}.${CARCH}.rpm"
+  #"https://github.com/kata-containers/runtime/releases/download/${_pkgver}/kata-static-${_pkgver}-${CARCH}.tar.xz"
+  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-containers-image-${pkgver}${_image_suffix:-${_default_suffix}}.${CARCH}.rpm"
+  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-ksm-throttler-${pkgver}${_ksm_suffix:-${_default_suffix}}.${CARCH}.rpm"
+  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-linux-container-${_kata_kernel_ver}${_kernel_suffix:-${_default_suffix}}.${CARCH}.rpm"
+  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-proxy-bin-${pkgver}${_proxy_suffix:-${_default_suffix}}.${CARCH}.rpm"
+  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-runtime-${pkgver}${_runtime_suffix:-${_default_suffix}}.${CARCH}.rpm"
+  "https://download.opensuse.org/repositories/home:/katacontainers:/releases:/${CARCH}:/stable-${pkgver%.*}/Fedora_30/${CARCH}/kata-shim-bin-${pkgver}${_shim_suffix:-${_default_suffix}}.${CARCH}.rpm"
 )
 sha256sums=(
-  'ade88ae5a50365c3f677b99ec79c816291bc1bef676070d1125b10d81f92cf49'
-  #'0f49409c3d92ec61a7af737622b1e6cde2e3cb76133bf54fafe8335d8342af45'
-  '76c1cf70739fa3ee7a0558bb78f43c7d2b49408ede33ecf2b7fd486738634d83'
-  #'d9fa74e78c62cc078c31a551feab22861e8c30da5e6b58d3ad81db1e03f73dc4'
-  #'ea0061c4c48d058597345c3c98bc0219204cb8544774885f8f13f2040d0c00dc'
-  #'a17ff2f49436f6a89099d94ac7086a37bceeb46ea80cf440ca5a9bfa1b44aa5e'
-  #'a3b856b313db073bbcb7a3195bfad5c4570c365613638bbcf3ed1fc2e7f8622a'
+  #ade88ae5a50365c3f677b99ec79c816291bc1bef676070d1125b10d81f92cf49
+  71620cd68476d6fae63a2cdf56157110eca1ece30411bb16eb1cca6807bb56d8
+  32be5a944997907700ff0b4450b31214f4348169f7f7caad8b90562ceebcf5ee
+  cd8977a03ef7b5a1dce5cdd45c317a17d03c6c0a908daa249f636e4c996e5fad
+  e88cb367e81bcf87b8d96be18dd419b09e8597b9e577f2e648a9f3f72eef59ed
+  1d89ba67580f087538438e66faea43c6658b09345ee61326352c8a0bbe2b7bc3
+  c6dd9ccb1217da8d960b6874f7e48757ddf6a16330ae84539bab145b7b8be976
 )
 
 
@@ -91,7 +98,8 @@ package_kata-containers-image(){
 package_kata-linux-container(){
   install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinux-* \
-    ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinuz-* \
+    ${srcdir}${_bin_pkg_root}/share/kata-containers/vmlinuz-*
+  [ "${_bin_pkg_root}" = "/opt/kata" ] && install -Dm644 -t "${pkgdir}/usr/share/kata-containers/" \
     ${srcdir}${_bin_pkg_root}/share/kata-containers/config-*
   cd "${pkgdir}/usr/share/kata-containers/"
   ln -sf vmlinux-virtio-fs-* vmlinux-virtiofs.container
@@ -102,5 +110,5 @@ package_kata-linux-container(){
 }
 
 package_kata-containers-static(){
-  cp -dr --no-preserve='ownership' "${srcdir}/opt" "${pkgdir}/opt"
+  [ "${_bin_pkg_root}" = "/opt/kata" ] && cp -dr --no-preserve='ownership' "${srcdir}/opt" "${pkgdir}/opt" || return 0
 }
