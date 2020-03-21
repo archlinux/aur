@@ -1,9 +1,8 @@
 pkgbase = gnome-logs-git
 	pkgdesc = A log viewer for the systemd journal
-	pkgver = 3.31.3+9+g123f09b
+	pkgver = 3.34.0+43+g470c278
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Logs
-	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = intltool

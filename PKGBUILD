@@ -1,16 +1,14 @@
-# $Id: PKGBUILD 278376 2016-10-12 09:08:03Z jgc $
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Updated by Andrew Rembrandt andrew@rembrandt.me.uk to point to master branch
+# Updated by Andrew Rembrandt <andrew@rembrandt.dev> to point to master branch
 
 _pkgname=gnome-logs
 pkgname=$_pkgname-git
-pkgver=3.31.3+9+g123f09b
+pkgver=3.34.0+43+g470c278
 pkgrel=1
 pkgdesc="A log viewer for the systemd journal"
-arch=(i686 x86_64)
 url="https://wiki.gnome.org/Apps/Logs"
+arch=(x86_64)
 license=(GPL)
-#groups=(gnome-extra)
 depends=(systemd gtk3 gsettings-desktop-schemas)
 makedepends=(intltool itstool gnome-common appstream-glib git)
 conflicts=(gnome-logs)
@@ -24,16 +22,17 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $_pkgname
-  ./configure --prefix=/usr
-  make
+  arch-meson $_pkgname build -D man=true
+  ninja -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd $_pkgname
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" meson install -C build
 }
