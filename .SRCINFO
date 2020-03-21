@@ -1,6 +1,6 @@
 pkgbase = pullcord-git
 	pkgdesc = Discord archiver - git version
-	pkgver = r117.6526a7c
+	pkgver = r134.5209be1
 	pkgrel = 2
 	url = https://github.com/tsudoko/pullcord
 	arch = x86_64

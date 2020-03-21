@@ -2,7 +2,7 @@
 
 _pkgname=pullcord
 pkgname=$_pkgname-git
-pkgver=r117.6526a7c
+pkgver=r134.5209be1
 pkgrel=2
 pkgdesc="Discord archiver - git version"
 arch=('x86_64')
