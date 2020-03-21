@@ -1,23 +1,26 @@
 pkgbase = ocaml-bin_prot
 	pkgdesc = A binary protocol generator
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/bin_prot
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
-	depends = ocaml-ppx_compare
-	depends = ocaml-ppx_custom_printf
-	depends = ocaml-ppx_fields_conv
-	depends = ocaml-ppx_sexp_conv
-	depends = ocaml-ppx_variants_conv
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-ppx_compare>=0.13.0
+	depends = ocaml-ppx_custom_printf>=0.13.0
+	depends = ocaml-ppx_fields_conv>=0.13.0
+	depends = ocaml-ppx_sexp_conv>=0.13.0
+	depends = ocaml-ppx_variants_conv>=0.13.0
 	options = !strip
-	source = https://ocaml.janestreet.com/ocaml-core/v0.12/files/bin_prot-v0.12.0.tar.gz
-	sha512sums = e2a35ca27f80c8a79a75017e30e277489a5f64716764da02b2de21500ba6709a440113bc6d33d07db9dcf81f02bd62670b9b310e36c9807e818d8e03e7f79300
+	source = ocaml-bin_prot-0.13.0-1.tar.gz::https://github.com/janestreet/bin_prot/archive/v0.13.0.tar.gz
+	sha256sums = f2f2686b87f603b008e2052086c6539dc0cafb819389e6290fbf06b1587798d4
 
 pkgname = ocaml-bin_prot
-

@@ -1,30 +1,42 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-bin_prot
-pkgver=0.12.0
-pkgrel=1
-epoch=1
-pkgdesc="A binary protocol generator"
-arch=('i686' 'x86_64')
-url="https://github.com/janestreet/bin_prot"
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='bin_prot'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='A binary protocol generator'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml' 'ocaml-base' 'ocaml-ppx_compare' 'ocaml-ppx_custom_printf' 'ocaml-ppx_fields_conv' 'ocaml-ppx_sexp_conv' 'ocaml-ppx_variants_conv')
-makedepends=('dune')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-ppx_compare>=0.13.0' 'ocaml-ppx_custom_printf>=0.13.0' 'ocaml-ppx_fields_conv>=0.13.0' 'ocaml-ppx_sexp_conv>=0.13.0' 'ocaml-ppx_variants_conv>=0.13.0')
+makedepends=('dune>=1.5.1')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/bin_prot-v${pkgver}.tar.gz")
-sha512sums=('e2a35ca27f80c8a79a75017e30e277489a5f64716764da02b2de21500ba6709a440113bc6d33d07db9dcf81f02bd62670b9b310e36c9807e818d8e03e7f79300')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('f2f2686b87f603b008e2052086c6539dc0cafb819389e6290fbf06b1587798d4')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/bin_prot-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
+}
 
-  dune build
+check() {
+	cd "$srcdir/$_sourcedirectory/"
+	dune runtest -p "$_projectname" --verbose
 }
 
 package() {
-  cd "${srcdir}/bin_prot-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
-  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	for _license in 'COPYRIGHT.txt' 'LICENSE.md' 'LICENSE-Tywith.txt' 'THIRD-PARTY.txt'; do
+		ln -sf "/usr/share/doc/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+	done
 }
