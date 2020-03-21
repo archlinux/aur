@@ -43,6 +43,9 @@ depends=(
   libaio
   pcsclite
   hicolor-icon-theme
+  # needed to replace internal libs:
+  fontconfig
+  freetype2
 )
 optdepends=(
   'linux-headers: build modules against Arch kernel'

@@ -16,6 +16,8 @@ pkgbase = vmware-workstation14
 	depends = libaio
 	depends = pcsclite
 	depends = hicolor-icon-theme
+	depends = fontconfig
+	depends = freetype2
 	depends = vmware-keymaps
 	optdepends = linux-headers: build modules against Arch kernel
 	provides = vmware-workstation=14.1.7
