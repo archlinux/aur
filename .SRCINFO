@@ -1,7 +1,7 @@
 pkgbase = insomnia-src
 	pkgdesc = Cross-platform HTTP and GraphQL Client (Build from source)
 	pkgver = 7.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kong/insomnia
 	arch = x86_64
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = insomnia-src
 	depends = electron4
 	provides = insomnia
 	conflicts = insomnia
-	source = git://github.com/Kong/insomnia.git
+	source = https://github.com/Kong/insomnia/archive/v7.1.1.tar.gz
 	source = insomnia.desktop
 	source = insomnia.sh
-	sha256sums = SKIP
+	sha256sums = eca542e1e5119b1632033c6beae28f924625a0fd3ce21cdbcf1730bc44c6187c
 	sha256sums = 69358bb19108f09b78d97aba7d1813898858be449a13f2d8a6ad03cdce1400a8
 	sha256sums = fbf24757aeaca7ceab18965774573bff2be540c948a47dd3f95c7b7857ef411c
 
