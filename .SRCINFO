@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppxlib
 	pkgdesc = Base library and tools for ppx rewriters
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ppxlib
 	arch = x86_64
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = ocaml-ppxlib
 	depends = ocaml-ppx_derivers>=1.0.0
 	depends = ocaml-stdio>=0.11.0
 	options = !strip
-	source = ocaml-ppxlib-0.12.0-1.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.12.0.tar.gz
+	source = ocaml-ppxlib-0.12.0-2.tar.gz::https://github.com/ocaml-ppx/ppxlib/archive/0.12.0.tar.gz
 	sha256sums = 6b562c9b3b9350777318729921f890850b385c469db60769aafd9371998a2c42
 
 pkgname = ocaml-ppxlib
