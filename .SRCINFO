@@ -1,19 +1,23 @@
 pkgbase = ocaml-ppx_hash
 	pkgdesc = A ppx rewriter that generates hash functions from type expressions and definitions
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/janestreet/ppx_hash
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
-	depends = ocaml-ppx_compare
-	depends = ocaml-ppx_sexp_conv
-	depends = ocaml-ppxlib
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-ppx_compare>=0.13.0
+	depends = ocaml-ppx_sexp_conv>=0.13.0
+	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = https://github.com/janestreet/ppx_hash/archive/v0.12.0.tar.gz
-	sha512sums = bc703cb88ec2ecfc3af8890bc231c3e93ae68caadb6917d2bc7b7f30ca210bfda559d94cd562d5ecaf8ac7178d9219499ffbdb1042d1c83d68646106546ef0ec
+	source = ocaml-ppx_hash-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_hash/archive/v0.13.0.tar.gz
+	sha256sums = fc7d8f9c0ec3ae859f38509419a36754456c15067a1e180d0e80a970726b010c
 
 pkgname = ocaml-ppx_hash
-

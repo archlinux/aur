@@ -1,30 +1,34 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-ppx_hash
-pkgver=0.12.0
-pkgrel=1
-pkgdesc="A ppx rewriter that generates hash functions from type expressions and definitions"
-arch=('x86_64')
-url='https://github.com/janestreet/ppx_hash'
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='ppx_hash'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='1'
+pkgdesc='A ppx rewriter that generates hash functions from type expressions and definitions'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
 license=('MIT')
-depends=('ocaml' 'ocaml-base' 'ocaml-ppx_compare' 'ocaml-ppx_sexp_conv' 'ocaml-ppxlib')
-makedepends=('dune')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0' 'ocaml-ppx_compare>=0.13.0' 'ocaml-ppx_sexp_conv>=0.13.0' 'ocaml-ppxlib>=0.9.0')
+makedepends=('dune>=1.5.1')
 options=('!strip')
-source=("https://github.com/janestreet/ppx_hash/archive/v${pkgver}.tar.gz")
-sha512sums=('bc703cb88ec2ecfc3af8890bc231c3e93ae68caadb6917d2bc7b7f30ca210bfda559d94cd562d5ecaf8ac7178d9219499ffbdb1042d1c83d68646106546ef0ec')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('fc7d8f9c0ec3ae859f38509419a36754456c15067a1e180d0e80a970726b010c')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/ppx_hash-${pkgver}"
-
-  dune build
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
-
 package() {
-  cd "${srcdir}/ppx_hash-${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  mkdir -p "${pkgdir}$(ocamlfind printconf destdir)" "${pkgdir}/usr/share"
-  dune install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
