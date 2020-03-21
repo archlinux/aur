@@ -1,7 +1,7 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-gym
 _pkgname=gym
-pkgver=0.15.7
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="A toolkit for developing and comparing reinforcement learning algorithms."
 arch=('any')
@@ -9,7 +9,7 @@ _github='openai/gym'
 _pypiname='gym'
 url="https://gym.openai.com/"
 license=('MIT')
-depends=('python' 'python-scipy' 'python-numpy' 'python-requests' 'python-pyglet')
+depends=('python' 'python-scipy' 'python-numpy' 'python-six' 'python-pyglet' 'python-cloudpickle')
 optdepends=(
   'python-atari-py'
   'python-pillow'
@@ -17,7 +17,7 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_github}/archive/${pkgver}.tar.gz")
-md5sums=('85f458543e25ad2aaa95975221f16752')
+md5sums=('bbd7b8ed85bf5fb951b13856ba6009dd')
 
 build() {
   msg "Building Python 3"
