@@ -1,20 +1,23 @@
 pkgbase = ocaml-ppx_sexp_conv
 	pkgdesc = Generation of S-expression conversion functions from type definitions
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_sexp_conv
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
-	depends = ocaml-sexplib0
-	depends = ocaml-ppxlib
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-ppxlib>=0.9.0
+	depends = ocaml-sexplib0>=0.13.0
 	options = !strip
-	source = https://github.com/janestreet/ppx_sexp_conv/archive/v0.12.0.tar.gz
-	sha512sums = f6adca0cf1aa9edef034425c586749879f8dcdbd2375e5c77bfa57dba37b024d0fdaeea97009c10891d3d6dac7240da554350b47a22af9d2f9fbbf758d8426a0
+	source = ocaml-ppx_sexp_conv-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_sexp_conv/archive/v0.13.0.tar.gz
+	sha256sums = 15386e4f704d37ff8a7155dfbae17e60d771339f433494f66fc19dab308831b0
 
 pkgname = ocaml-ppx_sexp_conv
-
