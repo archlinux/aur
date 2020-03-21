@@ -1,0 +1,15 @@
+pkgbase = coronavirus-tracker-cli
+	pkgdesc = Track The Coronavirus from your CLI
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/sagarkarira/coronavirus-tracker-cli/
+	arch = any
+	license = WTFPL
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	source = http://registry.npmjs.org/coronavirus-tracker-cli/-/coronavirus-tracker-cli-0.7.0.tgz
+	md5sums = b14675f03c5405d8dec816bc11917061
+
+pkgname = coronavirus-tracker-cli
+
