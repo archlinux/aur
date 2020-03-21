@@ -1,6 +1,6 @@
 pkgbase = corsairpsu-dkms-git
 	pkgdesc = Linux kernel driver for reading sensors for Corsair RMi/HXi Series PSUs
-	pkgver = 3.a6ccb44
+	pkgver = 4.c757544
 	pkgrel = 1
 	url = https://github.com/benzhaomin/corsairpsu
 	arch = x86_64
