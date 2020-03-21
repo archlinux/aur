@@ -22,14 +22,16 @@ source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "0000-gcc-4.9.ucontext.patch"
         "0001-gcc-4.9-SIGSEGV.patch"
         "0002-gcc-4.9-__res_state.patch"
-        "0003-gcc-4.9-ustate.patch")
+        "0003-gcc-4.9-ustate.patch"
+        "0004-glibc-2.31-libsanitizer.patch")
 md5sums=('87c24a4090c1577ba817ec6882602491'
          'e039bfcfb6c2ab039b8ee69bf883e824'
          'e34fca0540d840e5d0f6427e98c92252'
          '4a0dc704f1d92ceb4dd8608811241cec'
          'e787a03f0c38434490515a5823eca0b8'
          'c64d1e20274ff4fbfacdd11bef2e1273'
-         'b27134678242f358c9b81cd73a1bcba1')
+         'b27134678242f358c9b81cd73a1bcba1'
+         '931ee06584a47f3bdb5ea57fa2d5f76f')
 
 _basedir=gcc-${pkgver}
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
@@ -69,8 +71,9 @@ prepare() {
   fi
   
   patch -Nbup0 -i "${srcdir}/0003-gcc-4.9-ustate.patch"
+  patch -p1 -i "${srcdir}/0004-glibc-2.31-libsanitizer.patch"
 
-  mkdir ${srcdir}/gcc-build
+  mkdir -p ${srcdir}/gcc-build
 }
 
 build() {

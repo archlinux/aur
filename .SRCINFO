@@ -22,6 +22,7 @@ pkgbase = gcc49
 	source = 0001-gcc-4.9-SIGSEGV.patch
 	source = 0002-gcc-4.9-__res_state.patch
 	source = 0003-gcc-4.9-ustate.patch
+	source = 0004-glibc-2.31-libsanitizer.patch
 	md5sums = 87c24a4090c1577ba817ec6882602491
 	md5sums = e039bfcfb6c2ab039b8ee69bf883e824
 	md5sums = e34fca0540d840e5d0f6427e98c92252
@@ -29,6 +30,7 @@ pkgbase = gcc49
 	md5sums = e787a03f0c38434490515a5823eca0b8
 	md5sums = c64d1e20274ff4fbfacdd11bef2e1273
 	md5sums = b27134678242f358c9b81cd73a1bcba1
+	md5sums = 931ee06584a47f3bdb5ea57fa2d5f76f
 
 pkgname = gcc49
 
