@@ -59,9 +59,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.4
-_minor=26
+_minor=27
 _srcname=linux-${_major}
-_clr=${_major}.24-14
+_clr=${_major}.26-16
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -71,7 +71,7 @@ url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='0.0.20200215'
+_wrg_snap='0.0.20200318'
 _gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
@@ -101,7 +101,7 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-lts2019/linux-lts2019.spec |\
-          grep -Ev '^Patch0123|^Patch1001|^Patch0054' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0123|^Patch1001' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-lts2019/${i}"
         done
@@ -325,9 +325,9 @@ done
 
 sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
-            'a446bb14b477486f99d4098f59ae8512fe15da18f2f44ad562ae702a6116176d'
+            'de58b00ad15ed4f58948e4a583d52829cd34a30cff06cdbbaea5cfc5a69e6030'
             'SKIP'
-            '0def6f3608ec06f6dfc454aa5281a7c38b06ff27096cb341448d20602da4e923'
+            'fa74a8627f731754fbf4ea7d6ae8f571a2cfe8cd4b744a5f165065619cb836a1'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
 validpgpkeys=(
