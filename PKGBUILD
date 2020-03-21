@@ -2,7 +2,7 @@
 _pkgname=python-jiramenu
 _gitname=jiramenu
 pkgname=$_pkgname-git
-pkgver=r21.5ee6f17
+pkgver=r22.15906cf
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for jira"
 
