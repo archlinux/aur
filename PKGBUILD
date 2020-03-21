@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  printf "r%s" "$(python setup.py --version)"
+  printf "%s" "$(python setup.py --version)"
 }
 build() {
     cd "$_gitname"
