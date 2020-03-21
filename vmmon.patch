@@ -37,23 +37,6 @@
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
-@@ -80,6 +80,16 @@
- 
- struct VMXLinuxState linuxState;
- 
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
-+static inline void do_gettimeofday(struct timeval *tv)
-+{
-+   struct timespec64 now;
-+
-+   ktime_get_real_ts64(&now);
-+   tv->tv_sec = now.tv_sec;
-+   tv->tv_usec = now.tv_nsec / 1000;
-+}
-+#endif
- 
- /*
-  *----------------------------------------------------------------------
 @@ -104,7 +114,9 @@ long LinuxDriver_Ioctl(struct file *filp, u_int iocmd,
  
  static int LinuxDriver_Close(struct inode *inode, struct file *filp);
@@ -122,6 +105,37 @@
     LinuxDriverInitTSCkHz();
     Vmx86_InitIDList();
  
+@@ -741,14 +751,12 @@ void
+ LinuxDriverWakeUp(Bool selective)  // IN:
+ {
+    if (selective && linuxState.pollList != NULL) {
+-      struct timeval tv;
+       VmTimeType now;
+       VMLinux *p;
+       VMLinux *next;
+ 
+       HostIF_PollListLock(1);
+-      do_gettimeofday(&tv);
+-      now = tv.tv_sec * 1000000ULL + tv.tv_usec;
++      now = ktime_get_ns() / NSEC_PER_USEC;
+ 
+       for (p = linuxState.pollList; p != NULL; p = next) {
+          next = p->pollForw;
+@@ -815,12 +823,10 @@ LinuxDriverPoll(struct file *filp,  // IN:
+       }
+    } else {
+       if (linuxState.fastClockThread && vmLinux->pollTimeoutPtr != NULL) {
+-         struct timeval tv;
++         u64 now = ktime_get_ns() / NSEC_PER_USEC;
+ 
+-         do_gettimeofday(&tv);
+          poll_wait(filp, &vmLinux->pollQueue, wait);
+-         vmLinux->pollTime = *vmLinux->pollTimeoutPtr +
+-                                       tv.tv_sec * 1000000ULL + tv.tv_usec;
++         vmLinux->pollTime = *vmLinux->pollTimeoutPtr + now;
+          if (vmLinux->pollBack == NULL) {
+             HostIF_PollListLock(2);
+             if (vmLinux->pollBack == NULL) {
 @@ -858,7 +858,7 @@
   */
  
@@ -348,6 +362,15 @@
     r = APICR_TO_ADDR(r, APICR_VERSION);
     ret = HostIF_CopyFromUser(&dummy, (void*)r, sizeof(dummy));
     set_fs(old_fs);
+@@ -2284,7 +2337,7 @@
+    volatile void *hostapic;
+ 
+    ASSERT_ON_COMPILE(APICR_SIZE <= PAGE_SIZE);
+-   hostapic = (volatile void *) ioremap_nocache(ma, PAGE_SIZE);
++   hostapic = (volatile void *) ioremap(ma, PAGE_SIZE);
+    if (hostapic) {
+       if ((APIC_VERSIONREG(hostapic) & 0xF0) == 0x10) {
+ 	 vm->hostAPIC.base = (volatile uint32 (*)[4]) hostapic;
 @@ -2452,7 +2505,7 @@ HostIF_SemaphoreWait(VMDriver *vm,   // IN:
     }
  

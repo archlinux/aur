@@ -37,6 +37,15 @@
  	  MODULEBUILDDIR=$(MODULEBUILDDIR) postbuild
 --- a/vmnet/bridge.c
 +++ b/vmnet/bridge.c
+@@ -65,7 +65,7 @@ static inline void do_gettimeofday(struct timeval *tv)
+ #endif
+ 
+ #if LOGLEVEL >= 4
+-static struct timeval vnetTime;
++static u64 vnetTime;
+ #endif
+ 
+ typedef struct VNetBridge VNetBridge;
 @@ -636,7 +636,7 @@
  	 unsigned long flags;
  	 int i;
@@ -46,8 +55,82 @@
  
  	 clone->dev = dev;
  	 clone->protocol = eth_type_trans(clone, dev);
+@@ -696,7 +696,7 @@ VNetBridgeReceiveFromVNet(VNetJack        *this, // IN: jack
+ 
+ 	 netif_rx_ni(clone);
+ #	 if LOGLEVEL >= 4
+-	 do_gettimeofday(&vnetTime);
++	 vnetTime = ktime_get_ns();
+ #	 endif
+       }
+    }
+@@ -1661,12 +1661,11 @@ VNetBridgeReceiveFromDev(struct sk_buff *skb,         // IN: packet to receive
+ 
+ #  if LOGLEVEL >= 4
+    {
+-      struct timeval now;
+-      do_gettimeofday(&now);
++      u64 now;
++
++      now = ktime_get_ns();
+       LOG(3, (KERN_DEBUG "bridge-%s: time %d\n",
+-	      bridge->name,
+-	      (int)((now.tv_sec * 1000000 + now.tv_usec)
+-                    - (vnetTime.tv_sec * 1000000 + vnetTime.tv_usec))));
++	      bridge->name, (int)((now - vnetTime) / NSEC_PER_USEC)));
+    }
+ #  endif
+ 
+--- a/vmnet/procfs.c
++++ a/vmnet/procfs.c
+@@ -137,6 +137,7 @@
+ }
+ 
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 18, 0)
+ /*
+  *----------------------------------------------------------------------
+  *
+@@ -168,6 +169,7 @@
+    .release = single_release,
+ };
+ #endif
++#endif
+ 
+ 
+ /*
+@@ -203,7 +205,12 @@
+       } else {
+          ent->data   = data;
+          ent->fn     = fn;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 18, 0)
++         ent->pde    = proc_create_single_data(name, mode, parent->pde,
++                                               VNetProcShow, ent);
++#else
+          ent->pde    = proc_create_data(name, mode, parent->pde, &fops, ent);
++#endif
+       }
+       if (ent->pde != NULL) {
+          *ret = ent;
 --- a/vmnet/userif.c
 +++ b/vmnet/userif.c
+@@ -84,11 +84,11 @@
+ extern unsigned int  vnet_max_qlen;
+ 
+ #if COMPAT_LINUX_VERSION_CHECK_LT(3, 2, 0)
+-#   define compat_kmap(page) kmap(page)
+-#   define compat_kunmap(page) kunmap(page)
+-#else
+-#   define compat_kmap(page) kmap((page).p)
+-#   define compat_kunmap(page) kunmap((page).p)
++#   define skb_frag_page(frag) (frag)->page
++#   define skb_frag_size(frag) (frag)->size
++#endif
++#if COMPAT_LINUX_VERSION_CHECK_LT(5, 4, 0)
++#   define skb_frag_off(frag) (frag)->page_offset
+ #endif
+ 
+ /*
 @@ -115,16 +115,7 @@
     struct page *page = NULL;
     int retval;
@@ -119,69 +202,12 @@
                                          &recvClusterPage,
                                          &recvClusterCount)) < 0) {
        goto error_free;
-From f404bc6855ea2c731b617d3b0a2971481eb31cbd Mon Sep 17 00:00:00 2001
-From: Michal Kubecek <mkubecek@suse.cz>
-Date: Thu, 19 Sep 2019 12:20:20 +0200
-Subject: [PATCH] vmnet: handle switch of skb_frag_t to bio_vec
-
-The switch from custom skb_frag_t implementation to bio_vec in v5.4-rc1 is
-mostly transparent for modules which use accessor for skb_frag_t members.
-Unfortunately many users access the members directly and function
-VNetCsumCopyDatagram() in vmnet is one of those.
-
-Use accessors everywhere so that vmnet code is compatible with kernel 5.4
-and newer. Use "compat_" prefix to avoid clashes with backports adding the
-accessors to older codebase.
----
- vmnet-only/userif.c | 39 +++++++++++++++++++++++++++++----------
- 1 file changed, 29 insertions(+), 10 deletions(-)
-
-diff --git a/vmnet-only/userif.c b/vmnet-only/userif.c
-index d385088..aab9478 100644
---- a/vmnet-only/userif.c
-+++ b/vmnet-only/userif.c
-@@ -84,13 +84,31 @@ static int  VNetUserIfSetUplinkState(VNetPort *port, uint8 linkUp);
- extern unsigned int  vnet_max_qlen;
- 
- #if COMPAT_LINUX_VERSION_CHECK_LT(3, 2, 0)
--#   define compat_kmap(page) kmap(page)
--#   define compat_kunmap(page) kunmap(page)
-+#   define compat_kmap_frag(frag) kmap((frag)->page)
-+#   define compat_kunmap_frag(page) kunmap((frag)->page)
- #else
--#   define compat_kmap(page) kmap((page).p)
--#   define compat_kunmap(page) kunmap((page).p)
-+#   define compat_kmap_frag(frag) kmap(skb_frag_page(frag))
-+#   define compat_kunmap_frag(frag) kunmap(skb_frag_page(frag))
- #endif
- 
-+static unsigned int compat_skb_frag_size(const skb_frag_t *frag)
-+{
-+#if COMPAT_LINUX_VERSION_CHECK_LT(3, 2, 0)
-+	return frag->size;
-+#else
-+	return skb_frag_size(frag);
-+#endif
-+}
-+
-+static unsigned int compat_skb_frag_off(const skb_frag_t *frag)
-+{
-+#if COMPAT_LINUX_VERSION_CHECK_LT(5, 4, 0)
-+	return frag->page_offset;
-+#else
-+	return skb_frag_off(frag);
-+#endif
-+}
-+
- /*
-  *-----------------------------------------------------------------------------
-  *
-@@ -590,20 +608,21 @@ VNetCsumCopyDatagram(const struct sk_buff *skb,	// IN: skb to copy
+@@ -594,20 +590,20 @@
     for (frag = skb_shinfo(skb)->frags;
  	frag != skb_shinfo(skb)->frags + skb_shinfo(skb)->nr_frags;
  	frag++) {
 -      if (frag->size > 0) {
-+      if (compat_skb_frag_size(frag) > 0) {
++      if (skb_frag_size(frag) > 0) {
  	 unsigned int tmpCsum;
  	 const void *vaddr;
  
@@ -189,18 +215,17 @@ index d385088..aab9478 100644
 -	 tmpCsum = csum_and_copy_to_user(vaddr + frag->page_offset,
 -					 curr, frag->size, 0, &err);
 -	 compat_kunmap(frag->page);
-+	 vaddr = compat_kmap_frag(frag);
-+	 tmpCsum = csum_and_copy_to_user(vaddr + compat_skb_frag_off(frag),
-+					 curr, compat_skb_frag_size(frag), 0,
-+					 &err);
-+	 compat_kunmap_frag(frag);
++	 vaddr = kmap(skb_frag_page(frag));
++	 tmpCsum = csum_and_copy_to_user(vaddr + skb_frag_off(frag),
++					 curr, skb_frag_size(frag), 0, &err);
++	 kunmap(skb_frag_page(frag));
  
  	 if (err) {
  	    return err;
  	 }
  	 csum = csum_block_add(csum, tmpCsum, curr - buf);
 -	 curr += frag->size;
-+	 curr += compat_skb_frag_size(frag);
++	 curr += skb_frag_size(frag);
        }
     }
  
