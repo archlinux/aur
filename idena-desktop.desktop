@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Idena Desktop
+Comment=Desktop application for the Idena Network
+Exec=idena-desktop %U
+Terminal=false
+Type=Application
+Icon=idena-desktop
+Categories=Financial;
