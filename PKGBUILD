@@ -1,6 +1,6 @@
 # Maintainer: Songtronix <contact@songtronix.com>
 pkgname=airshipper
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ source=(
     'veloren.png'
 )
 noextract=('airshipper.desktop' 'veloren.png')
-sha512sums=('14671985bad2c94fdc067ecc2315f975c33d993a3bf384c19b1534c0d33a8aa4f1164b0ee2214dd280828d501163ed6852e0a4b7972135ddfdbac8ab17a924d7'
+sha512sums=('af0c0844eb9010938cb4b9207509790fab4d52b7640a68ca867716ece4d6a14d8748029f7ae6658902349642f5c57c73ad47d1f52b76e66274d56c73bbdb544d'
             '933512b8d5cb2245bfadd195aa75ace92966e91ef15dbbae97516ec76849e8c2b01236f8979f0164a3725a86c30c4ea2cbf17b06df91789ec1aa26445dedbfcb'
             'b5e5cbf28ab0e335f5a0fc93511fc9936360432a36e35cc876761601abacf257299deb0af6b3d9081143b700f6663c4f603970155dd4dacedb7a9672cde1dc94')
 package() {
