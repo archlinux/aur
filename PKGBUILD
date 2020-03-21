@@ -2,11 +2,11 @@
 
 _pkgname=molequeue
 pkgname="${_pkgname}-git"
-pkgver=0.9.0.r813.efcca96
-pkgrel=2
+pkgver=0.9.0.r817.0511c9a
+pkgrel=1
 pkgdesc="Desktop integration of high performance computing resources"
 url="http://www.openchemistry.org/projects/molequeue"
-arch=("i686" "x86_64")
+arch=("x86_64")
 license=("Kitware")
 depends=("qt5-base")
 makedepends=("git" "cmake")
