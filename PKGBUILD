@@ -1,7 +1,7 @@
 # Maintainer: Marcel Schramm <marcelschr@protonmail.com>
 
 pkgname=cordless-git
-pkgver=2019.05.14
+pkgver=2020.01.05
 pkgrel=1
 pkgdesc='A Discord TUI client.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    git describe --abbrev=0 | sed 's/-/./g'
+    git describe --tags `git rev-list --tags --max-count=1` | sed 's/-/./g'
 }
 
 build() {
