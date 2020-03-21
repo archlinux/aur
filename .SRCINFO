@@ -11,10 +11,12 @@ pkgbase = python-fusesoc-git
 	depends = python-edalize-git
 	optdepends = iverilog: for simulating verilog designs
 	optdepends = ghdl: for simulating VHDL designs
+	optdepends = gtkwave: for visualizing waveforms
 	provides = python-fusesoc
 	conflicts = python-fusesoc
 	options = !emptydirs
 	source = git+https://github.com/olofk/fusesoc
-	sha256sums = SKIP
+	md5sums = SKIP
 
 pkgname = python-fusesoc-git
+
