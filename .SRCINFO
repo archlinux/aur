@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_let
 	pkgdesc = Monadic let-bindings
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/ppx_let
 	arch = x86_64
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ocaml-ppx_let
 	depends = ocaml-base>=0.13.0
 	depends = ocaml-ppxlib>=0.9.0
 	options = !strip
-	source = ocaml-ppx_let-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_let/archive/v0.13.0.tar.gz
+	source = ocaml-ppx_let-0.13.0-2.tar.gz::https://github.com/janestreet/ppx_let/archive/v0.13.0.tar.gz
 	sha256sums = 10a37c551c6c022b94a1d0d802059133cb5b7f9621b718dafecb6224e20c1275
 
 pkgname = ocaml-ppx_let
