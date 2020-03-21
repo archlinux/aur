@@ -21,8 +21,8 @@ build() {
 	EOF
 
   	for p in $(systemd-analyze --global unit-paths; systemd-analyze unit-paths); do 
-        p=${p#"$(pacconf RootDir)"}
-        echo "Target    = $p/*.service"
+  		p=${p#"$(pacconf RootDir)"}
+  		echo "Target    = $p/*.service"
   	done | sort
 
   	cat <<-'EOF'
