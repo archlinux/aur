@@ -1,16 +1,16 @@
-# Maintainer: fabbe (fabbe@fastmail.com)
+# Maintainer: fabbe (fabbe@carajo.no)
 
 pkgname=bubbles-git
 pkgver=gitrev
 pkgrel=1
 pkgdesc="bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X."
 arch=('i686' 'x86_64')
-url="https://git.fabbe.io/bubbles/tree/README.md"
+url="https://git.carajo.no/bubbles/tree/README.md"
 license=('GPL')
 depends=('libx11' 'libxft')
 optdepends=('libxinerama' 'libxfixes')
 provides=("${pkgname%-*}")
-source=('git+https://git.fabbe.io/bubbles')
+source=('git+https://git.carajo.no/bubbles')
 md5sums=('SKIP')
 
 pkgver() {

@@ -2,7 +2,7 @@ pkgbase = bubbles-git
 	pkgdesc = bubbles is opinionated, tiny, bloat-less (=> fast) floating window manager for X.
 	pkgver = gitrev
 	pkgrel = 1
-	url = https://git.fabbe.io/bubbles/tree/README.md
+	url = https://git.carajo.no/bubbles/tree/README.md
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = bubbles-git
 	depends = libxft
 	optdepends = libxinerama libxfixes
 	provides = bubbles
-	source = git+https://git.fabbe.io/bubbles
+	source = git+https://git.carajo.no/bubbles
 	md5sums = SKIP
 
 pkgname = bubbles-git
