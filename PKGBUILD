@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=ytmdl
-pkgver=2019.11.16
+pkgver=2020.03.21
 pkgrel=0
 pkgdesc="Download songs from YouTube with metadata from sources like Itunes and Gaana"
 arch=("any")
@@ -15,6 +15,11 @@ depends=(
 		"python-colorama"
 		"downloader-cli"
 		"python-itunespy"
+		"python-ffmpeg"
+		"python-pysocks"
+		"python-xdg"
+		"python-requests"
+		"python-lxml"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
@@ -25,7 +30,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/deepjyoti30/ytmdl/archive/2019.11.16.tar.gz")
+source=("https://github.com/deepjyoti30/ytmdl/archive/2020.03.21.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
