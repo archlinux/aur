@@ -1,14 +1,14 @@
 pkgbase = firefox-move-unloaded-tabs-for-tree-style-tab
 	pkgdesc = Move tabs in the Tree Style Tab Sidebar without them becoming active
-	pkgver = 2.3
+	pkgver = 2.4
 	pkgrel = 1
 	url = https://github.com/Lej77/move-unloaded-tabs-for-tree-style-tab
 	arch = any
 	groups = firefox-addons
 	license = GPL3
-	noextract = move_unloaded_tabs_for_tree_style_tab-2.3-fx.xpi
-	source = https://addons.cdn.mozilla.net/user-media/addons/966033/move_unloaded_tabs_for_tree_style_tab-2.3-fx.xpi
-	sha256sums = fff03780bdfaf143198507a262963dd6267c7479dcfc2b89bde87a655ac7a6bc
+	noextract = move_unloaded_tabs_for_tree_style_tab-2.4-fx.xpi
+	source = https://addons.cdn.mozilla.net/user-media/addons/966033/move_unloaded_tabs_for_tree_style_tab-2.4-fx.xpi
+	sha256sums = 9c1c5d8a8ae4a27428e7c1f7e8c1671b40bed388dafac35900f3b80c5118fa7b
 
 pkgname = firefox-move-unloaded-tabs-for-tree-style-tab
 
