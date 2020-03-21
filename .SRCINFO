@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppxfind
 	pkgdesc = Tool combining ocamlfind and ppx
 	pkgver = 1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diml/ppxfind
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-ppxfind
 	depends = ocaml-findlib
 	depends = ocaml-migrate-parsetree
 	options = !strip
-	source = ocaml-ppxfind-1.4-1.tar.gz::https://github.com/diml/ppxfind/archive/1.4.tar.gz
+	source = ocaml-ppxfind-1.4-2.tar.gz::https://github.com/diml/ppxfind/archive/1.4.tar.gz
 	source = dune-version.diff
 	sha256sums = 49e2f5cb7fb31e8fc2d482097d1bc96c8915ab50ea37133366da03a9a5ca3604
 	sha256sums = 5c589918a6f98fbb962590276629e4639037c02aaabdb10f5ec18b40ee2767c2

@@ -2,7 +2,7 @@
 _projectname='ppxfind'
 pkgname="ocaml-$_projectname"
 pkgver='1.4'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tool combining ocamlfind and ppx'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/diml/$_projectname"
