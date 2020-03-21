@@ -9,6 +9,8 @@ license=('GPLV3')
 makedepends=('git' 'cmake' 'python2')
 source=('git://github.com/mavlink/mavlink.git')
 md5sums=(SKIP)
+provides=('mavlink')
+conflicts=('mavlink')
 
 pkgver() {
   cd "mavlink"

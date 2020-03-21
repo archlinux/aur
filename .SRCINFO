@@ -8,6 +8,8 @@ pkgbase = mavlink-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = python2
+	provides = mavlink
+	conflicts = mavlink
 	source = git://github.com/mavlink/mavlink.git
 	md5sums = SKIP
 
