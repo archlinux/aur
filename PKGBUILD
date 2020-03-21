@@ -35,8 +35,12 @@ package() {
 	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
 	rm -r "$pkgdir/usr/doc/"
 
+	for _copy in 'COPYRIGHT.txt' 'THIRD-PARTY.txt'; do
+		install -Dm644 "$copy" "$pkgdir/usr/share/doc/$pkgname/$copy"
+	done
+
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	for _license in 'LICENSE.md' 'LICENSE-Tywith.txt'; do
+	for _license in 'COPYRIGHT.txt' 'LICENSE.md' 'LICENSE-Tywith.txt' 'THIRD-PARTY.txt'; do
 		ln -sf "/usr/share/doc/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
 	done
 }
