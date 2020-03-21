@@ -3,7 +3,7 @@
 pkgname=sspl
 pkgver=0.3.0
 pkgrel=1
-pkgdesc="Bypassing SSL Pinning on Android"
+pkgdesc="Bypass SSL Pinning on Android"
 arch=("x86_64")
 url="https://github.com/weslenng/sspl"
 license=("MIT")
