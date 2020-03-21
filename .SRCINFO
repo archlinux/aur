@@ -5,6 +5,7 @@ pkgbase = libtorch
 	url = https://pytorch.org/cppdocs/
 	arch = x86_64
 	license = BSD
+	makedepends = sed
 	optdepends = cuda: NVIDIA's GPU programming toolkit
 	optdepends = cudnn: NVIDIA CUDA Deep Neural Network library
 	options = !strip
