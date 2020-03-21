@@ -3,7 +3,7 @@
 _projectname='ppx_tools_versioned'
 pkgname="ocaml-$_projectname"
 pkgver='5.3.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Tools for authors of ppx rewriters and other syntactic tools (with ocaml-migrate-parsetree support)'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$_projectname"
