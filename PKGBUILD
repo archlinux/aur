@@ -2,8 +2,8 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh-genders
-pkgver=2.33
-pkgrel=2
+pkgver=2.34
+pkgrel=1
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/chaos/pdsh'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('libtool')
 source=("https://github.com/chaos/pdsh/releases/download/pdsh-${pkgver}/pdsh-${pkgver}.tar.gz")
 conflicts=('pdsh')
 provides=('pdsh')
-sha256sums=('7368087429d6269f0a6313c406ef38c6a6a947bc003ca7368fc6481b139d942f')
+sha256sums=('b47b3e4662736ef44b6fe86e3d380f95e591863e69163aa0592e9f9f618521e9')
 
 build() {
   cd "${srcdir}/pdsh-${pkgver}"
