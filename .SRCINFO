@@ -1,31 +1,32 @@
 pkgbase = ocaml-ppx_expect
 	pkgdesc = Cram like framework for OCaml
-	pkgver = 0.11.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/janestreet/ppx_expect
-	arch = i686
 	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
-	makedepends = dune
-	depends = ocaml
-	depends = ocaml-base
-	depends = ocaml-ppx_assert
-	depends = ocaml-ppx_compare
-	depends = ocaml-ppx_custom_printf
-	depends = ocaml-ppx_fields_conv
-	depends = ocaml-ppx_here
-	depends = ocaml-ppx_inline_test
-	depends = ocaml-ppx_sexp_conv
-	depends = ocaml-ppx_variants_conv
-	depends = ocaml-stdio
-	depends = ocaml-migrate-parsetree
-	depends = ocaml-ppxlib
-	depends = ocaml-re
+	makedepends = dune>=1.5.1
+	depends = ocaml>=4.04.2
+	depends = ocaml-base>=0.13.0
+	depends = ocaml-ppx_assert>=0.13.0
+	depends = ocaml-ppx_compare>=0.13.0
+	depends = ocaml-ppx_custom_printf>=0.13.0
+	depends = ocaml-ppx_fields_conv>=0.13.0
+	depends = ocaml-ppx_here>=0.13.0
+	depends = ocaml-ppx_inline_test>=0.13.0
+	depends = ocaml-ppx_sexp_conv>=0.13.0
+	depends = ocaml-ppx_variants_conv>=0.13.0
+	depends = ocaml-ppxlib>=0.9.0
+	depends = ocaml-re>=1.8.0
+	depends = ocaml-stdio>=0.13.0
 	options = !strip
-	options = !emptydirs
-	source = https://github.com/janestreet/ppx_expect/releases/download/v0.11.1/ppx_expect-v0.11.1.tbz
-	sha512sums = f94e88d15ab0480995955471fe24812674fe19e7519094641a354672cd0a8d0c25069210943acecc0bfc5d4da7f6793a0e263ddc7a6dddc85bb98095243f70fb
+	source = ocaml-ppx_expect-0.13.0-1.tar.gz::https://github.com/janestreet/ppx_expect/archive/v0.13.0.tar.gz
+	sha256sums = dcb3ece35149ff745dc95aba4353080916ecae974cdfbd469ef505cd1f04f4bf
 
 pkgname = ocaml-ppx_expect
-
