@@ -37,7 +37,5 @@ package() {
 	rm -r "$pkgdir/usr/doc/"
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-	for _license in 'LICENSE.md' 'LICENSE-Tywith.txt'; do
-		ln -sf "/usr/share/doc/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
-	done
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
