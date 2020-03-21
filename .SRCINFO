@@ -1,6 +1,6 @@
 pkgbase = esy
 	pkgdesc = package manager for OCaml/Reason
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://esy.sh/
 	arch = i686
