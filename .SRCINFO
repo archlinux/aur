@@ -1,7 +1,7 @@
 pkgbase = ocaml-migrate-parsetree
 	pkgdesc = Convert OCaml parsetrees between different major versions
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ocaml-ppx/ocaml-migrate-parsetree
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ocaml-migrate-parsetree
 	depends = ocaml-ppx_derivers
 	depends = ocaml-result
 	options = !strip
-	source = ocaml-migrate-parsetree-1.6.0-1.tar.gz::https://github.com/ocaml-ppx/ocaml-migrate-parsetree/archive/v1.6.0.tar.gz
+	source = ocaml-migrate-parsetree-1.6.0-2.tar.gz::https://github.com/ocaml-ppx/ocaml-migrate-parsetree/archive/v1.6.0.tar.gz
 	sha256sums = 032f6f8033b547ff1636238f78b7e8b8b02481497806d4bb0b379ff56a9ac3ff
 
 pkgname = ocaml-migrate-parsetree

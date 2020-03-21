@@ -3,7 +3,7 @@
 _projectname='migrate-parsetree'
 pkgname="ocaml-$_projectname"
 pkgver='1.6.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Convert OCaml parsetrees between different major versions'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ocaml-ppx/$pkgname"
