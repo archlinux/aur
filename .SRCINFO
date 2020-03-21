@@ -1,6 +1,6 @@
 pkgbase = jiq
 	pkgdesc = jid on jq
-	pkgver = r85.2d1c90f
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/fiatjaf/jiq
 	arch = i686
