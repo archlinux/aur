@@ -1,29 +1,35 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
-
-pkgname=ocaml-typerep
-pkgver=0.11.0
-pkgrel=1
-epoch=1
-pkgdesc="A library for runtime types."
-arch=('i686' 'x86_64')
-url="https://github.com/janestreet/typerep"
-license=('Apache')
-depends=('ocaml' 'ocaml-base')
-makedepends=('dune')
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
+_projectname='typerep'
+pkgname="ocaml-$_projectname"
+pkgver='0.13.0'
+pkgrel='1'
+epoch='1'
+pkgdesc='A library for runtime types'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/janestreet/$_projectname"
+license=('MIT')
+depends=('ocaml>=4.04.2' 'ocaml-base>=0.13.0')
+makedepends=('dune>=1.5.1')
 options=('!strip')
-source=("https://ocaml.janestreet.com/ocaml-core/v$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/typerep-v${pkgver}.tar.gz")
-md5sums=('9d7500376ac660c1427137310fabe9da')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('576b738803e6be21e5e65c428b9c4cd6be6a1f963efe2971a287483bea1caca2')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "${srcdir}/typerep-v${pkgver}"
-
-  jbuilder build
+	cd "$srcdir/$_sourcedirectory/"
+	dune build -p "$_projectname" --verbose
 }
 
 package() {
-  cd "${srcdir}/typerep-v${pkgver}"
+	cd "$srcdir/$_sourcedirectory/"
+	DESTDIR="$pkgdir" dune install --prefix '/usr' --libdir 'lib/ocaml'
 
-  install -dm755 "${pkgdir}$(ocamlfind -printconf destdir)" "${pkgdir}/usr/share"
-  jbuilder install --prefix "${pkgdir}/usr" --libdir "${pkgdir}$(ocamlfind -printconf destdir)"
-  mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
+	install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+	mv "$pkgdir/usr/doc/$_projectname/"* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -r "$pkgdir/usr/doc/"
+
+	install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+	ln -sf "/usr/share/doc/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
