@@ -1,19 +1,41 @@
 pkgbase = linux-nitrous
-	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
-	pkgver = 5.5.10
-	pkgrel = 1
+	pkgver = 5.5.11
+	pkgrel = 5
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
-	makedepends = tar
-	optdepends = linux-nitrous-headers: to build DKMS modules against this kernel
-	provides = linux
-	conflicts = linux-nitrous-git-headers
-	conflicts = linux-nitrous-git
+	makedepends = clang
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = git
+	makedepends = libelf
+	makedepends = coreutils
 	options = !strip
-	source = https://github.com/xdevs23/linux-nitrous/releases/download/v5.5.10-1/linux-nitrous-git-5.5.10-1-x86_64.pkg.tar.xz
-	sha256sums = 16ece871d2e4c8806d7c5442ff2c9219864eb230783e30377ac438044b52e0f6
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#branch=5.5+
+	source = linux-nitrous.preset
+	sha256sums = SKIP
+	sha256sums = 03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246
 
 pkgname = linux-nitrous
+	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
 	install = linux-nitrous.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-nitrous-git-headers: to build DKMS modules against this kernel
+	provides = linux
+	backup = etc/mkinitcpio.d/linux-nitrous.preset
+
+pkgname = linux-nitrous-headers
+	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	provides = linux-headers
+
+pkgname = linux-nitrous-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	provides = linux-docs
 
