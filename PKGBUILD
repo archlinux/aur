@@ -5,12 +5,13 @@ pkgname=libplacebo-git
 pkgver=v1.29.1.7.gcf6d9ab
 pkgrel=1
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives. (GIT version)'
-url='https://github.com/haasn/libplacebo'
+url='https://code.videolan.org/videolan/libplacebo'
 arch=('x86_64')
 license=('LGPL2.1')
 depends=('vulkan-icd-loader'
          'lcms2'
          'libshaderc_shared.so'
+         'glslang'
          )
 makedepends=('git'
              'meson'
@@ -20,7 +21,7 @@ provides=('libplacebo'
           'libplacebo.so'
           )
 conflicts=('libplacebo')
-source=('git+https://github.com/haasn/libplacebo.git')
+source=('git+https://code.videolan.org/videolan/libplacebo.git')
 sha256sums=('SKIP')
 
 pkgver() {
