@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r241.gc05e5d9d78
+pkgver=0.32.0.r288.gee70e8ce50
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -223,7 +223,7 @@ fi
 
 pkgver() {
   cd mpv
-  git describe --tags | sed 's/^v\(.*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's|^v\(.*\)|\1|;s|\([^-]*-g\)|r\1|;s|-|.|g'
 }
 
 prepare() {
@@ -356,8 +356,6 @@ prepare() {
     '--enable-jpeg'
     '--enable-lcms2'
     '--enable-libarchive'
-    '--enable-libass'
-    '--enable-libass-osd'
     '--enable-libavdevice'
     '--enable-libbluray'
     '--enable-libmpv-shared'
