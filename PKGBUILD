@@ -2,12 +2,12 @@
 
 _pkgname=ocaml-lsp
 pkgname=ocaml-lsp-git
-pkgver=r334.3e20872
-pkgrel=2
+pkgver=r484.d57bd91
+pkgrel=1
 pkgdesc="OCaml Language Server Protocol implementation"
 arch=('x86_64')
-depends=('ocaml' 'ocaml-yojson' 'ocaml-ppx_yojson_conv_lib' 'ocaml-stdlib-shims')
-makedepends=('git' 'dune>=1.11')
+depends=('ocaml' 'ocaml-yojson' 'ocaml-ppx_yojson_conv_lib' 'ocaml-stdlib-shims' 'ocaml-menhir')
+makedepends=('git' 'dune>=2.0')
 url="https://github.com/ocaml/ocaml-lsp"
 license=('ISC')
 source=("${_pkgname}"::'git+https://github.com/ocaml/ocaml-lsp.git')

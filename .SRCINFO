@@ -1,16 +1,17 @@
 pkgbase = ocaml-lsp-git
 	pkgdesc = OCaml Language Server Protocol implementation
-	pkgver = r334.3e20872
-	pkgrel = 2
+	pkgver = r484.d57bd91
+	pkgrel = 1
 	url = https://github.com/ocaml/ocaml-lsp
 	arch = x86_64
 	license = ISC
 	makedepends = git
-	makedepends = dune>=1.11
+	makedepends = dune>=2.0
 	depends = ocaml
 	depends = ocaml-yojson
 	depends = ocaml-ppx_yojson_conv_lib
 	depends = ocaml-stdlib-shims
+	depends = ocaml-menhir
 	provides = ocaml-lsp
 	conflicts = ocaml-lsp
 	options = !strip
