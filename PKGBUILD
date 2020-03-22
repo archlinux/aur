@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libaacs-git
-pkgver=0.9.0.22.gf154d7e
+pkgver=0.10.0.0.g2ed84a0
 pkgrel=1
 pkgdesc="Advanced Access Content System. (GIT version)"
 arch=('x86_64')
