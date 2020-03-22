@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=explain
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Transform postgresql explain to a graph'
 url="https://github.com/sanpii/$pkgname"
@@ -8,9 +8,9 @@ arch=('x86_64')
 license=('MIT')
 depends=()
 optdepends=('graphviz' 'postgresql')
-makedepends=('cargo' 'rust')
+makedepends=('cargo')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('e8d820120e39e657f811827b17a3a52e910faa57371406e0f496e287ee3d90ac')
+sha256sums=('6f9cb15d816b2421f2eaf2d0c27f55a9d741f79d58056ce2aed6ada9ad5c5934')
 
 build()
 {
