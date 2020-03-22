@@ -2,13 +2,13 @@
 
 pkgname=wsjtx-superbuild-git
 pkgver=r35.491536f
-pkgrel=3
+pkgrel=4
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - Superbuild/git version, hamlib not required'
 arch=('i686' 'x86_64')
 url='http://physics.princeton.edu/pulsar/k1jt/wsjtx.html'
 license=('GPL-3')
-depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw' 'gcc-fortran')
-makedepends=('cmake' 'git' 'asciidoc' 'asciidoctor' 'qt5-tools')
+depends=('qt5-base' 'qt5-multimedia' 'qt5-serialport' 'libusb' 'libusb-compat' 'fftw')
+makedepends=('cmake' 'git' 'asciidoc' 'asciidoctor' 'qt5-tools' 'gcc-fortran')
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=('git+https://git.code.sf.net/p/wsjt/wsjtx-superbuild/'
