@@ -1,20 +1,20 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=systemd-named-netns
-pkgver=20180124
-pkgrel=2
+pkgver=1.20190822
+pkgrel=1
 pkgdesc="Use named netns with systemd services!"
 license=('GPL3')
 depends=('systemd' 'iproute2')
-optdepends=('dhclient: when using dynamically assigned IP')
+optdepends=('iptables: for default NAT config' 'dhclient: when using dynamically assigned IP')
 arch=('any')
 backup=('etc/default/netns')
 url="https://github.com/Jamesits/systemd-named-netns"
-source=("https://github.com/Jamesits/${pkgname}/archive/upstream/0_${pkgver}.tar.gz")
-sha256sums=('ca0324bbe4501e8e9b706fedaea55165ce3fae7d1ea65797b950538ab847c6d7')
+source=("https://github.com/Jamesits/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('361e611216056868107926436dbebeafc002ce33189b9dc261f8562d2a68fc39')
 
 package() {
-  cd "${pkgname}-upstream-0_${pkgver}"
+  cd "${pkgname}-${pkgver}"
   install -d "${pkgdir}"/usr/lib/systemd/system "${pkgdir}"/etc/default "${pkgdir}"/usr/bin
   install -Dm644 services/netns@.service "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 services/netns-bridge@.service "${pkgdir}"/usr/lib/systemd/system
