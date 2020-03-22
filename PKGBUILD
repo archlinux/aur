@@ -8,9 +8,9 @@ _name=jsonpointer
 pkgname=python2-$_name
 pkgver=2.0
 pkgrel=5
-pkgdesc="Identify specific nodes in a JSON document (RFC 6901)"
+pkgdesc='Identify specific nodes in a JSON document (RFC 6901)'
 arch=('any')
-url="https://github.com/stefankoegl/python-json-pointer"
+url='https://github.com/stefankoegl/python-json-pointer'
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
@@ -23,16 +23,19 @@ prepare(){
 
 build() {
   cd $_name-$pkgver
+
   python2 setup.py build
 }
 
 check() {
   cd $_name-$pkgver
+
   python2 tests.py
 }
 
 package() {
   cd $_name-$pkgver
+
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   mv "$pkgdir"/usr/bin/jsonpointer{,2}
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
