@@ -1,8 +1,8 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=('x16-emulator-bin' 'x16-rom-bin' 'x16-docs-bin')
 pkgbase=x16-emulator-bin
-pkgver=r36
-pkgrel=2
+pkgver=r37
+pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16 (release package)"
 arch=('any')
 url="http://commanderx16.com/"
@@ -21,11 +21,11 @@ install=
 changelog=
 source=("https://github.com/commanderx16/x16-emulator/releases/download/$pkgver/x16emu_linux-$pkgver.zip"
 	"https://raw.githubusercontent.com/commanderx16/x16-emulator/$pkgver/.gh/logo.png")
-md5sums=('74510e5f2f7386a5f66181d001b9594b'
+md5sums=('30ea8a1e71e3b0df46d852859dd933c0'
          '1a858decc66ce2b47a27b24bb836280c')
 
 prepare() {
-	gendesk -n --pkgname "${pkgbase%-bin}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgbase%-bin}" --exec "x16emu" --categories "Game;Emulator"
+	gendesk -f -n --pkgname "${pkgbase%-bin}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgbase%-bin}" --exec "x16emu" --categories "Game;Emulator" || return 1
 }
 
 package_x16-emulator-bin() {
@@ -49,7 +49,7 @@ package_x16-rom-bin() {
 	conflicts=('x16-rom')
 
 	install -Dm644 rom.bin "$pkgdir/usr/share/x16-rom/rom.bin"
-	install -Dm644 rom.sym "$pkgdir/usr/share/x16-rom/rom.sym"
+	install -Dm644 *.sym "$pkgdir/usr/share/x16-rom/"
 	install -Dm644 docs/github-pandoc.css "$pkgdir/usr/share/doc/x16-rom/github-pandoc.css"
 	install -Dm644 docs/KERNAL-BASIC.html "$pkgdir/usr/share/doc/x16-rom/KERNAL-BASIC.html"
 }
