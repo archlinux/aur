@@ -1,5 +1,5 @@
 pkgbase = barrier-bin
-	pkgdesc = Open-source KVM software based on Synergy
+	pkgdesc = Open-source KVM software based on Synergy (GUI)
 	pkgver = 2.3.2
 	pkgrel = 1
 	url = https://github.com/debauchee/barrier
@@ -20,9 +20,8 @@ pkgbase = barrier-bin
 	depends = libsm
 	depends = libice
 	depends = openssl
-	provides = barrier=2.3.2
+	provides = barrier
 	conflicts = barrier
-	conflicts = barrier-headless
 	noextract = barrier-2.3.2-x86_64.tar.xz
 	options = !emptydirs
 	options = !makeflags

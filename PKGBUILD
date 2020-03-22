@@ -2,7 +2,7 @@
 pkgname=barrier-bin
 pkgver=2.3.2
 pkgrel=1
-pkgdesc="Open-source KVM software based on Synergy"
+pkgdesc="Open-source KVM software based on Synergy (GUI)"
 arch=(x86_64)
 url="https://github.com/debauchee/barrier"
 license=("custom:GPL2WithOpenSSLException")
@@ -28,8 +28,8 @@ makedepends=(
     qt5-base
     hicolor-icon-theme
 )
-provides=("barrier=$pkgver")
-conflicts=(barrier barrier-headless)
+provides=("barrier")
+conflicts=("barrier")
 options=(!emptydirs !makeflags !strip)
 source=(
 	https://github.com/dotiful/AUR/raw/master/barrier-bin/barrier-${pkgver}-${CARCH}.tar.xz
