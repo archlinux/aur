@@ -1,0 +1,11 @@
+bartabgroups
+cfacts
+cmdcustomize
+cyclelayouts
+fakefullscreen
+fibonacci
+gridmode
+restartsig
+rotatestack
+systray
+uselessgaps

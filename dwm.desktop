@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dynamic Window Manager (ZarCastic Edition)
+Comment=This session logs you into DWM 
+Exec=dwm
+TryExec=/usr/bin/dwm
+Icon=
+Type=Application
+

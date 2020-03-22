@@ -1,0 +1,24 @@
+pkgbase = dwm-zarcastic-git
+	pkgdesc = A dynamic window manager for X - patched version
+	pkgver = r1690.9e1e366
+	pkgrel = 1
+	url = https://gitlab.com/ZarCastic/dynamic-window-manager.git
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = st
+	depends = dmenu
+	optdepends = nerd-fonts-complete
+	optdepends = ttf-symbola
+	provides = dwm
+	conflicts = dwm
+	source = dwm-zarcastic::git+https://gitlab.com/ZarCastic/dynamic-window-manager.git
+	md5sums = SKIP
+
+pkgname = dwm-zarcastic-git
+
