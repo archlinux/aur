@@ -16,7 +16,7 @@ sha256sums=('44787a6d02f7140f145e2250d56c9f849334e11f9ae379827510ed72f12b75e7')
 
 prepare() {
   cd "$srcdir/llvm-$pkgver.src"
-  mkdir build
+  mkdir -p build
 }
 
 build() {
