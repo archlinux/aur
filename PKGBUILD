@@ -1,61 +1,72 @@
 # Maintainer: b6b <b6bb at pm dot me>
 
 pkgname=x264-tmod-git
-pkgver=159.r3041.ce3db240
+pkgver=159.r3044.gb09a90f3
 pkgrel=1
-arch=('x86_64')
 pkgdesc='Open Source H264/AVC video encoder (tmod git version)'
-url='https://github.com/jpsdr/x264/tree/t_mod_New'
-license=('GPL')
+arch=(x86_64)
+url=https://github.com/jpsdr/x264/tree/t_mod_New
+license=(GPL)
 depends=(
-  'libavcodec.so'
-  'libavformat.so'
-  'libavutil.so'
-  'liblsmash.so'
-  'libswscale.so'
+  liblsmash.so
 )
 makedepends=(
-  'git'
-  'nasm'
-  'ffmpeg'
-  'l-smash-x264-tmod-git'
+  git
+  l-smash-x264-tmod-git
+  nasm
 )
 provides=(
-  'x264'
-  'libx264'
-  'libx264-git'
-  'libx264.so'
-)
-conflicts=(
-  'x264'
-  'x264-git'
-  'libx264'
-  'libx264-10bit'
-  'libx264-all'
+  x264
+  libx264
+  libx264.so
 )
 replaces=(
-  'libx264-git'
-  'libx264-10bit-git'
-  'libx264-all-git'
+  libx264
+  libx264-10bit
+  libx264-all
 )
-source=('git+https://github.com/jpsdr/x264.git#branch=t_mod_New')
-sha256sums=('SKIP')
+conflicts=(
+  libx264
+  libx264-10bit
+  libx264-all
+)
+source=(
+  git+https://github.com/jpsdr/x264.git#branch=t_mod_New
+  https://gist.githubusercontent.com/b6b/27246e5c217561465301dde13965d36a/raw/9147b91d4c5f2ba97c0289cff54349cae5134a48/fix-log-level-declaration.patch
+)
+sha256sums=(
+  SKIP
+  8d6717edfc3124b43b5aa4e8bfbd3e6f0dffbf1e945a280826d54303476d58ae
+)
+
+prepare() {
+  cd x264
+
+  patch -i "${srcdir}"/fix-log-level-declaration.patch
+}
 
 pkgver() {
   cd x264
 
-  printf "%s.r%s.%s" "$(grep "#define X264_BUILD" x264.h | cut -d " " -f3)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local _version
+  local _revision
+  local _shorthash
+
+  _version="$(grep '#define X264_BUILD' x264.h | awk '{ print $3 }')"
+  _revision="$(git rev-list --count HEAD)"
+  _shorthash="$(git rev-parse --short HEAD)"
+
+  printf '%s.r%s.g%s' "$_version" "$_revision" "$_shorthash"
 }
 
 build() {
   cd x264
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --enable-shared \
-    --enable-lto \
     --enable-pic \
-    --disable-gpac \
+    --enable-lto \
     --disable-avs \
     --disable-audio
 
@@ -63,8 +74,5 @@ build() {
 }
 
 package() {
-  cd x264
-
-  make DESTDIR="$pkgdir" install
-  install -Dm755 x264 "$pkgdir/usr/bin/x264"
+  make -C x264 DESTDIR="${pkgdir}" install-cli install-lib-shared
 }
