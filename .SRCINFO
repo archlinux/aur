@@ -1,7 +1,7 @@
 pkgbase = copybara-git
 	pkgdesc = A tool for transforming and moving code between repositories
 	pkgver = 0.0.0.bf7649f9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/google/copybara
 	arch = x86_64
 	license = Apache

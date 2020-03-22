@@ -5,7 +5,7 @@
 
 pkgname=copybara-git
 pkgver=0.0.0.bf7649f9
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for transforming and moving code between repositories"
 arch=('x86_64')
 url="https://github.com/google/${pkgname%-git}"
@@ -44,7 +44,7 @@ build() {
 package() {
   # Install the wrapper script
   install -D -m 755 \
-     "${srcdir}/copybara.sh" \
+    "${srcdir}/copybara.sh" \
     "${pkgdir}/usr/bin/copybara"
 
   # Install the uberjar
