@@ -1,6 +1,6 @@
 pkgbase = uhhyou.lv2-git
 	pkgdesc = Vaious synth and effect LV2 plugins.
-	pkgver = r168.1efb7e5
+	pkgver = r187.f65c308
 	pkgrel = 1
 	url = https://github.com/ryukau/LV2Plugins
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = uhhyou.lv2-git
 	makedepends = jack
 	makedepends = mesa
 	makedepends = liblo
+	makedepends = python-rdflib
 	source = git+https://github.com/ryukau/LV2Plugins
 	md5sums = SKIP
 

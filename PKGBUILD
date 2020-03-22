@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=uhhyou.lv2-git
 pkgdesc="Vaious synth and effect LV2 plugins."
-pkgver=r168.1efb7e5
+pkgver=r187.f65c308
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/ryukau/LV2Plugins"
 license=(GPL)
 groups=()
 depends=()
-makedepends=('jack' 'mesa' 'liblo')
+makedepends=('jack' 'mesa' 'liblo' 'python-rdflib')
 checkdepends=()
 optdepends=()
 provides=()
