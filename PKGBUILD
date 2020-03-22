@@ -1,9 +1,10 @@
 # Maintainer: Iain Earl <iain at itmecho dot com>
+# Maintainer: wallace < str(11) + my_id at gmail dot com>
 
 pkgname='navi-bin'
 pkgdesc='An interactive cheatsheet tool for the command-line'
 pkgver='2.3.0'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://github.com/denisidoro/navi'
 license=('Apache 2.0')
