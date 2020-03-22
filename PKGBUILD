@@ -20,9 +20,6 @@
 # Unofficial plugins
 #_plugin_lua4rs='true'
 
-# Set this to 'true' to use use archlinux' rapidjson instead of shipped version
-#_systems_rapidjson='true'
-
 # INCOMPATIBLE OPTION - Do not swtich between different version with this enabled and disbaled! RetroShare required _manual_ migration!
 # Set this to 'true' to not used an encrypted database. This will likely enhance your performance.
 #_no_sqlcipher='true'
@@ -31,14 +28,14 @@
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git
-pkgver=v0.6.5.r1060.gbe4d812df
+pkgver=v0.6.5.r1153.gdb42c7a97
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://retroshare.cc/'
 license=('GPL' 'LGPL')
 depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libxss' 'libmicrohttpd' 'xapian-core')
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'qt5-tools' 'rapidjson')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
 provides=("${_pkgname}")
@@ -58,7 +55,6 @@ _optSql=''
 [[ "$_jsonapi" == 'true' ]] && depends=(${depends[@]} 'restbed') && makedepends=(${makedepends[@]} 'cmake' 'doxygen')
 [[ "$_clang" == 'true' ]] && makedepends=(${makedepends[@]} 'clang')
 [[ "$_autologin" == 'true' ]] && depends=(${depends[@]} 'libsecret')
-[[ "$_systems_rapidjson" == 'true' ]] && makedepends=(${makedepends[@]} 'rapidjson')
 
 # Set options for qmake
 _optJsonapi=''

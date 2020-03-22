@@ -1,6 +1,6 @@
 pkgbase = retroshare-git
 	pkgdesc = Serverless encrypted instant messenger with filesharing, chatgroups, e-mail.
-	pkgver = v0.6.5.r1060.gbe4d812df
+	pkgver = v0.6.5.r1153.gdb42c7a97
 	pkgrel = 1
 	url = http://retroshare.cc/
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = retroshare-git
 	license = LGPL
 	makedepends = git
 	makedepends = qt5-tools
+	makedepends = rapidjson
 	depends = qt5-multimedia
 	depends = qt5-x11extras
 	depends = libupnp
