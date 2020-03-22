@@ -1,6 +1,6 @@
 _phpbase=70
 pkgname=php70-redis
-pkgver=5.1.1
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="PHP extension for interfacing with Redis"
 url="http://pecl.php.net/package/redis"
@@ -26,4 +26,4 @@ package() {
   echo ';extension=redis.so' > redis.ini
   install -Dm644 redis.ini "$pkgdir/etc/php${_phpbase}/conf.d/redis.ini"
 }
-md5sums=('9221394dbf3d80c43be9e5ad51c1f9fd')
+md5sums=('1cda1dd9a7d1dfcf220725bab84277ef')
