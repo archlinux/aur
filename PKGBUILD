@@ -2,27 +2,30 @@
 
 pkgname=xfce4-dockbarx-plugin
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Embed DockbarX in the xfce4-panel"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/TiZ-EX1/xfce4-dockbarx-plugin"
 license=('X11')
 depends=('dockbarx>=0.91' 'xfce4-panel<4.15.0')
 makedepends=('python2' 'git' 'vala')
-conflicts=("${pkgname}-git" 'dockbarx-gtk3-git') # Unfortunately doesn't work with the GTK3 version of dockbarx yet
+conflicts=("${pkgname}-git" 'dockbarx-gtk3-git') # Use xfce4-dockbarx-plugin-gtk3-git to work with the GTK3 version of dockbarx
 
 #source=( ${pkgname}-${pkgver}.tar.gz::https://github.com/TiZ-EX1/${pkgname}/archive/v${pkgver}.tar.gz )
 #sha256sums=('c55e5231ae8b69ab10c22ab5150e47f5392b2398572e753cbcb1a147362e0ba5')
 # Version 0.5 was never properly tagged, so use the commit directly
 _commit='cf16d6f415d03828e7a702550a0552ed5ea7ce0c' # 1 after version bump with updated README
 source=("${pkgname}::git+https://github.com/TiZ-EX1/xfce4-dockbarx-plugin#commit=${_commit}"
-        'pref_dialog_fix.patch::https://github.com/TiZ-EX1/xfce4-dockbarx-plugin/commit/960ed3806d00b33b6a254fb583b366177ba56b77.patch')
+        'pref_dialog_fix.patch::https://github.com/TiZ-EX1/xfce4-dockbarx-plugin/commit/960ed3806d00b33b6a254fb583b366177ba56b77.patch'
+        'vala0.48fix.patch')
 sha256sums=('SKIP'
-            '04892f2eb8413a79288b234ed61af588a66f70553a9db9272d8f1d7904ad1dfa')
+            '04892f2eb8413a79288b234ed61af588a66f70553a9db9272d8f1d7904ad1dfa'
+            '4b6c29fe052d6e890fbb67c5622728569a630bb6128c5b033039c5d00b22994d')
 
 prepare() {
   cd "${srcdir}/${pkgname}" #-${pkgver}"
   patch -Np1 -i ../pref_dialog_fix.patch
+  patch -Np2 -r- -i ../vala0.48fix.patch
 }
 
 build() {

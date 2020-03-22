@@ -1,0 +1,12 @@
+diff -Naur ./xfce4-dockbarx-plugin.orig/vapi/libxfce4panel-1.0.vapi ./xfce4-dockbarx-plugin/vapi/libxfce4panel-1.0.vapi
+--- ./xfce4-dockbarx-plugin.orig/vapi/libxfce4panel-1.0.vapi	2020-03-22 14:23:20.633731643 -0400
++++ ./xfce4-dockbarx-plugin/vapi/libxfce4panel-1.0.vapi	2020-03-22 14:23:32.289623541 -0400
+@@ -99,7 +99,7 @@
+ 		public virtual signal void mode_changed (Xfce.PanelPluginMode mode);
+ 		public virtual signal void nrows_changed (uint rows);
+ 		public virtual signal void orientation_changed (Gtk.Orientation orientation);
+-		public virtual signal bool remote_event (string name, GLib.Value value);
++		public virtual signal bool remote_event (string name, GLib.Value value, uint handle);
+ 		public virtual signal void removed ();
+ 		public virtual signal void save ();
+ 		public virtual signal void screen_position_changed (Xfce.ScreenPosition position);
