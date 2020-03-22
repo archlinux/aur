@@ -1,7 +1,7 @@
 pkgbase = legend
 	pkgdesc = A package list for web developers
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = base-devel
 	groups = xorg
@@ -166,7 +166,6 @@ pkgbase = legend
 	depends = mssql-server
 	depends = mssql-cli
 	depends = mssql-tools
-	depends = valentina-studio
 	depends = jre10-openjdk
 	depends = jdk10-openjdk
 	depends = elfutils
