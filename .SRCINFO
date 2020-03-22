@@ -1,7 +1,7 @@
 pkgbase = hpp-fcl
 	pkgdesc = An extension of the Flexible Collision Library
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/humanoid-path-planner/hpp-fcl
 	arch = i686
 	arch = x86_64
