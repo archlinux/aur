@@ -1,6 +1,6 @@
 pkgname=legend
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A package list for web developers"
 arch=('any')
 groups=('base-devel' 'xorg')
