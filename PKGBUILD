@@ -18,8 +18,8 @@ depends=('avisynthplus'
 makedepends=('git'
              'meson'
              )
-provides=("vapoursynth-plugin-${_plug}")
-conflicts=("vapoursynth-plugin-${_plug}")
+provides=("avisynth-plugin-${_plug}")
+conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HolyWu/L-SMASH-Works.git"
         'avisynth.patch'
         )
