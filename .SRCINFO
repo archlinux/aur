@@ -206,7 +206,8 @@ pkgbase = legend
 	depends = oracle-instantclient-sqlplus
 	depends = php-oci8
 	depends = symfony-cli
-	depends = symfony-installerneo4j-community
+	depends = symfony-installer
+	depends = neo4j-community
 
 pkgname = legend
 
