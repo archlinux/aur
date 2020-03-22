@@ -1,6 +1,6 @@
 pkgbase = proton-ge-custom-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches
-	pkgver = 5.4_GE_1
+	pkgver = 5.4_GE_2
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = proton-ge-custom-bin
 	optdepends = zenity: splash dialog support
 	optdepends = steam: use proton with steam like intended
 	provides = proton
-	source = proton-ge-custom-5.4-GE-1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.4-GE-1/Proton-5.4-GE-1.tar.gz
+	source = proton-ge-custom-5.4-GE-2.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.4-GE-2/Proton-5.4-GE-2.tar.gz
 	source = supplementary.tar.zst
-	md5sums = dfb83cc33c75065e47a23334c454798c
-	md5sums = de6e765583be1d89345a2b9c796ccbb0
+	md5sums = 9961ecf628d3a8a7f969890511a9ef94
+	md5sums = 502f42d7494a46af9801f283857b67f8
 
 pkgname = proton-ge-custom-bin
 
