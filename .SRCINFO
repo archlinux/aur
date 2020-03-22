@@ -1,6 +1,6 @@
 pkgbase = skk-jisyo-git
 	pkgdesc = SKK Dictionaries (Git version)
-	pkgver = r50.3085e8d
+	pkgver = r83.82abb54
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/skk-dev/dict

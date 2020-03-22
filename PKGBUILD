@@ -1,6 +1,6 @@
 # Maintainer:  <take100yen@gmail.com>
 pkgname=skk-jisyo-git
-pkgver=r50.3085e8d
+pkgver=r83.82abb54
 epoch=1
 pkgrel=1
 pkgdesc='SKK Dictionaries (Git version)'
@@ -21,6 +21,4 @@ package() {
     install -d $pkgdir/usr/share/skk
     install SKK-JISYO.* $pkgdir/usr/share/skk/
     cp zipcode/SKK-JISYO* $pkgdir/usr/share/skk/
-    install -d $pkgdir/usr/share/license/$pkgname/
-    install edict_doc.txt $pkgdir/usr/share/license/$pkgname/
 }
