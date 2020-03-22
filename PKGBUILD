@@ -1,7 +1,7 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-pangomm
-pkgver=2.42.0
+pkgver=2.42.1
 pkgrel=1
 pkgdesc="C++ bindings for Pango (mingw-w64)"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('mingw-w64-configure')
 depends=('mingw-w64-pango' 'mingw-w64-glibmm' 'mingw-w64-cairomm')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://download.gnome.org/sources/pangomm/${pkgver%.*}/pangomm-${pkgver}.tar.xz")
-md5sums=('6cffedf2225c4e72645a7d757fb5b832')
+md5sums=('339c48dd92ebd3a9911b231708f7a819')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
