@@ -1,7 +1,7 @@
 pkgbase = zenith-bin
 	pkgdesc = Terminal system monitor with histograms, written in Rust
 	pkgver = 0.7.5
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/bvaisvil/zenith
 	arch = x86_64
 	license = MIT
