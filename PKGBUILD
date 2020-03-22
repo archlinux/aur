@@ -24,7 +24,7 @@ md5sums=('0efd8047e68bf5ce2291ff934c4e6f3b'
 prepare() {
 	cd "$pkgname-$pkgver"
 	patch -uN main.c ../modify-base-path.patch
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "$pkgname" --exec "x16emu" --categories "Game;Emulator" || return 1
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "$pkgname" --exec "x16emu" --categories "Game;Emulator"
 }
 
 build() {
