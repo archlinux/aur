@@ -26,7 +26,7 @@ source=("$_name::git+https://github.com/cnr-isti-vclab/meshlab.git"
         "meshlab.desktop")
 sha256sums=('SKIP'
             'SKIP'
-            '485cac3630d937c986f8d8c772419bed6221cedd698d9aa0314afc67c926a782'
+            '1690f70118c985da61595b615635472144c4d0b3ddcefb515b9f230c106961b5'
             '030ab1dcafb7d793bed3bc455497208addadf1091a4619576fe7e044aed4231a')
 
 prepare() {
