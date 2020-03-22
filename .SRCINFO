@@ -1,0 +1,17 @@
+pkgbase = inyokaedit
+	pkgdesc = Editor for Inyoka based portals
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/inyokaproject/inyokaedit/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-webkit
+	depends = hicolor-icon-theme
+	optdepends = inyokaedit-plugins: Plugins for InyokaEdit
+	optdepends = inyokaedit-data-ubuntuusersde: ubuntuusers.de community files
+	source = inyokaedit-0.24.0.tar.gz::https://github.com/inyokaproject/inyokaedit/archive/v0.24.0.tar.gz
+	sha256sums = de4354e7e4a97a8054c166219db4920947c3d67160022b5474a6f3832692aafe
+
+pkgname = inyokaedit
+
