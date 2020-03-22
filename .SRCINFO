@@ -1,7 +1,7 @@
 pkgbase = legend
 	pkgdesc = A package list for web developers
-	pkgver = 1.3
-	pkgrel = 3
+	pkgver = 2.0
+	pkgrel = 1
 	arch = any
 	groups = base-devel
 	groups = xorg
@@ -196,6 +196,17 @@ pkgbase = legend
 	depends = mssql-cli
 	depends = mssql-tools
 	depends = mssql-server
+	depends = oracle-instantclient-basic
+	depends = oracle-instantclient-jdbc
+	depends = oracle-instantclient-basic
+	depends = oracle-instantclient-odbc
+	depends = oracle-instantclient-sdk
+	depends = oracle-sqldeveloper
+	depends = oracle-instantclient-tools
+	depends = oracle-instantclient-sqlplus
+	depends = php-oci8
+	depends = symfony-cli
+	depends = symfony-installerneo4j-community
 
 pkgname = legend
 
