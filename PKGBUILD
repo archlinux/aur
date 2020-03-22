@@ -1,13 +1,13 @@
-# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
+# Contributer: Dan McCurry <dan.mc at protonmail dot com>
 # Contributer: Nikola Milinković <nikmil@gmail.com>
-# Submitter: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 # If an unsupported java environment is set using archlinux-java,
 # uncomment/edit the appropriate line in /usr/bin/jabref after
 # installation.
 
 pkgname=jabref-git
-pkgver=5.0.r38.g3d24714deb
+pkgver=5.0.r107.g052eddd4c6
 pkgrel=1
 epoch=1
 pkgdesc="GUI frontend for BibTeX, written in Java -- built from git"
@@ -19,7 +19,7 @@ makedepends=('git')
 optdepends=('gsettings-desktop-schemas: For web search support')
 provides=('jabref')
 conflicts=('jabref')
-source=("${pkgname%-git}::git+https://github.com/JabRef/jabref.git"
+source=("${pkgname%-git}::git+https://github.com/JabRef/jabref.git#commit=052eddd4c6c4ee002cf56ebd91c7d8403a349b0f"
 	"${pkgname%-git}.desktop"
 	"${pkgname%-git}.sh")
 sha256sums=('SKIP'
