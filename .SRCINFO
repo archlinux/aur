@@ -14,7 +14,4 @@ pkgbase = python-opentsne
 	sha256sums = 35538017e7479c96aa3da7841fea22d7353762fecb1cec98b7431922db7861dc
 
 pkgname = python-opentsne
-	depends = fftw
-	depends = python-scikit-learn
-	depends = python-numba
 

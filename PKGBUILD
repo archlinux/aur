@@ -17,8 +17,6 @@ build() {
 }
 
 package() {
-  depends=('fftw' 'python-scikit-learn' 'python-numba')
-
   cd "${srcdir}/openTSNE-$pkgver"
   python setup.py install --root=${pkgdir} --optimize=1
 }
