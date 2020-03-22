@@ -1,12 +1,12 @@
 # Maintainer: ahbnr <anton dot haubner at outlook dot de>
 
 pkgname=yt-bin
-pkgver=r55.a0ddb13
+pkgver=r59.f672dda
 pkgrel=1
 pkgdesc="Youtube Terminal UI for music streaming. WIP."
 arch=('x86_64')
 license=('GPL3')
-depends=('ncurses5-compat-libs>=6.1' 'mpv>=1:0.32.0' 'youtube-dl>=2020.01.24')
+depends=('ncurses5-compat-libs>=6.1' 'mpv>=1:0.32.0' 'youtube-dl>=2020.01.24' 'dbus>=1.12.16')
 makedepends=()
 replaces=()
 conflicts=()
@@ -14,7 +14,7 @@ provides=('yt')
 backup=()
 options=()
 install=
-source=('https://ahbnr.de/jenkins/job/yt/24/artifact/yt')
+source=('https://ahbnr.de/jenkins/job/yt/25/artifact/yt')
 noextract=()
 md5sums=('SKIP')
 
