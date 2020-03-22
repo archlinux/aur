@@ -1,18 +1,13 @@
 pkgbase = legend
 	pkgdesc = A configuration for web developers
-	pkgver = 0.1
+	pkgver = 1.0
 	pkgrel = 1
 	arch = any
 	groups = base-devel
-	groups = i3
 	groups = xorg
-	groups = gnome
-	groups = gnome-extra
-	depends = lightdm
 	depends = chromium
 	depends = keepassxc
 	depends = usbutils
-	depends = lightdm-slick-greeter
 	depends = spotify
 	depends = zoom
 	depends = tty-clock
@@ -49,7 +44,6 @@ pkgbase = legend
 	depends = cups-pdf
 	depends = polkit
 	depends = network-manager-applet
-	depends = lightdm-gtk-greeter
 	depends = bluez
 	depends = dmenu
 	depends = feh
@@ -149,6 +143,9 @@ pkgbase = legend
 	depends = conky-manager
 	depends = ruby
 	depends = gitg
+	depends = gnome
+	depends = gnome-extra
+	depends = i3
 
 pkgname = legend
 
