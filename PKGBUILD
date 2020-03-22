@@ -4,7 +4,7 @@ _pkgbase=('apple-bce')
 pkgname=(${_pkgbase}-git ${_pkgbase}-dkms-git)
 pkgdesc="Apple BCE (Buffer Copy Engine) driver for T2-based devices."
 pkgver=r183.c884d9c
-pkgrel=8
+pkgrel=9
 
 arch=('x86_64')
 url="https://github.com/MCMrARM/mbp2018-bridge-drv"
