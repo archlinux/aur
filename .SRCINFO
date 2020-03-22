@@ -1,6 +1,6 @@
 pkgbase = xapps-git
 	pkgdesc = Common library for X-Apps project
-	pkgver = 1.2.2.r0.gd957699
+	pkgver = 1.6.9.r9.gd6203cb
 	pkgrel = 2
 	url = https://github.com/linuxmint/xapps
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = xapps-git
 	license = GPL
 	makedepends = git
 	makedepends = meson
+	makedepends = samurai
 	makedepends = gobject-introspection
 	makedepends = python-gobject
 	makedepends = python2-gobject
