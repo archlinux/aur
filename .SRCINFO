@@ -1,6 +1,6 @@
 pkgbase = ghdlsynth-beta-git
 	pkgdesc = VHDL synthesis (based on ghdl)
-	pkgver = r105.fe9f2c4
+	pkgver = r117.c975230
 	pkgrel = 1
 	url = https://github.com/tgingold/ghdlsynth-beta
 	arch = x86_64
@@ -8,8 +8,7 @@ pkgbase = ghdlsynth-beta-git
 	makedepends = git
 	makedepends = yosys
 	makedepends = clang
-	depends = ghdl>0.36
-	depends = yosys
+	depends = ghdl-git
 	depends = gcc-libs
 	provides = ghdlsynth-beta
 	provides = ghdlsynth

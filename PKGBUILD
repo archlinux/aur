@@ -1,7 +1,7 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
 pkgname=ghdlsynth-beta-git
-pkgver=r105.fe9f2c4
+pkgver=r117.c975230
 pkgrel=1
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl)'
@@ -11,7 +11,7 @@ license=('GPL3')
 provides=('ghdlsynth-beta' 'ghdlsynth')
 conflicts=('ghdlsynth-beta' 'ghdlsynth')
 makedepends=('git' 'yosys' 'clang')
-depends=('ghdl>0.36' 'yosys' 'gcc-libs')
+depends=('ghdl-git' 'gcc-libs')
 
 source=("ghdlsynth::git://github.com/tgingold/ghdlsynth-beta.git")
 sha256sums=('SKIP')
