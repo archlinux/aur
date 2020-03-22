@@ -7,8 +7,10 @@ pkgbase = hmm-bin
 	license = MIT
 	provides = hmm
 	provides = hmmq
+	provides = hmmp
 	conflicts = hmm
 	conflicts = hmmq
+	conflicts = hmmp
 	source = hmm-bin-v0.4.1.tar.gz::https://github.com/samwho/hmm/releases/download/v0.4.1/hmm-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 88a247940e911b128efa1b7028d23c464ac6b060119b8ace919003a39c75dc39
 
