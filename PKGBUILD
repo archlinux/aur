@@ -11,7 +11,6 @@ license=('GPL3')
 groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'libxext' 'libxinerama')
 makedepends=('alsa-lib' 'freetype2' 'jack' 'libxcursor' 'lv2')
-conflicts=('helm')
 replaces=('helm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mtytel/${_name}/archive/v${pkgver}.tar.gz"
         "${pkgname}-0.9.0-gcc91.patch"
