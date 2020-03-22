@@ -1,6 +1,6 @@
 pkgbase = hmm-bin
 	pkgdesc = A small command-line note taking app written in Rust.
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/samwho/hmm
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = hmm-bin
 	conflicts = hmm
 	conflicts = hmmq
 	conflicts = hmmp
-	source = hmm-bin-v0.4.1.tar.gz::https://github.com/samwho/hmm/releases/download/v0.4.1/hmm-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 88a247940e911b128efa1b7028d23c464ac6b060119b8ace919003a39c75dc39
+	source = hmm-bin-v0.5.0.tar.gz::https://github.com/samwho/hmm/releases/download/v0.5.0/hmm-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = c9ed4106ac523f05be10741e1c09db12da21017813cb5d8888a0075a97a9d12b
 
 pkgname = hmm-bin
 
