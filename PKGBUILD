@@ -1,18 +1,32 @@
 # Maintainer: wallace < str(11) + my_id at gmail dot com>
+# Maintainer: Iain Earl <iain at itmecho dot com>
 
-pkgname=navi
-pkgdesc="An interactive cheatsheet tool for the command-line"
-pkgver=0.18.3
-pkgrel=1
-arch=("any")
-url="https://github.com/denisidoro/navi"
-license=("AGPL-3.0")
+pkgname='navi'
+pkgdesc='An interactive cheatsheet tool for the command-line'
+pkgver='2.3.0'
+pkgrel='1'
+arch=('x86_64')
+url='https://github.com/denisidoro/navi'
+license=('Apache 2.0')
 depends=('fzf')
-source=("https://github.com/denisidoro/navi/archive/v${pkgver}.tar.gz")
-sha512sums=('cf4a48a6e6e328b7008ff47168448921349920c0e5919c8af6ef9c3c11c9fec0f42fd7c5406c3e536f714962f1eba2cb8ded76bcf401ac0c1fc8b03bc1b1348c')
+optdepends=()
+makedepends=('rust' 'gcc')
+checkdepends=('rust' 'git')
+provides=('navi')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/denisidoro/navi/archive/v${pkgver}.tar.gz")
+sha256sums=('e564e2ddd0506dcf5896a32ebb44d2009f8e01db72d995da9bb2db356c4572e1')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    cargo test --locked
+}
 
 package() {
-    install -d "${pkgdir}/opt/${pkgname}"
-    cp -ra ${srcdir}/${pkgname}-${pkgver}/* "${pkgdir}/opt/${pkgname}"
-    install -Dm 755 ../navi "${pkgdir}/usr/bin/navi"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/navi" "$pkgdir/usr/bin/$pkgname"
 }
