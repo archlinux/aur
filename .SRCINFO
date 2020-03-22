@@ -1,0 +1,16 @@
+pkgbase = python2-jsonpatch
+	pkgdesc = An implementation of the JSON Patch format
+	pkgver = 1.25
+	pkgrel = 2
+	url = https://github.com/stefankoegl/python-json-patch
+	arch = any
+	license = BSD
+	checkdepends = python2-coverage
+	makedepends = python2-setuptools
+	makedepends = python2-pypandoc
+	depends = python2-jsonpointer
+	source = python2-jsonpatch-1.25.tar.gz::https://github.com/stefankoegl/python-json-patch/archive/v1.25.tar.gz
+	sha512sums = 5e1d5b6dcb6ee847ddd561400fe2d00e07aa1827a63ab98a38cd5e91fa0e52d8635eba1192edbccf9c7b9ce9c7ce0a414d580665c427c87a820e533d26092ad6
+
+pkgname = python2-jsonpatch
+
