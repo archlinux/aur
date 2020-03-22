@@ -2,7 +2,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=pdftxt
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple wrapper around mupdf library to extract text from pdf files."
 arch=('i686' 'x86_64')
@@ -37,7 +37,8 @@ sha256sums=('01361355c4bfe4a51d2bfec27ac52592ce99a706097666631028f7ba67e432e8'
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's/lopenjpeg/lopenjp2/' Makefile
+  sed -i 's/-lopenjpeg/-lopenjp2/' Makefile
+  sed -i 's/-lmupdfthird/-lmupdf-third/' Makefile
 }
 
 build() {
