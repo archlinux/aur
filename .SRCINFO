@@ -1,0 +1,31 @@
+pkgbase = spf-engine
+	pkgdesc = SPF (Sender Policy Framework) back-end for integration with Postfix and Sendmail
+	pkgver = 2.9.2
+	pkgrel = 1
+	url = https://launchpad.net/spf-engine
+	arch = any
+	license = Apache
+	license = GPL2
+	depends = python>=3.3
+	depends = python-pyspf>=2.0.9
+	depends = python-authres
+	depends = python-pymilter
+	optdepends = postfix: Postfix integration
+	optdepends = sendmail: Sendmail integration
+	conflicts = python2-postfix-policyd-spf
+	conflicts = python-postfix-policyd-spf
+	backup = etc/python-policyd-spf/policyd-spf.conf
+	backup = etc/pyspf-milter/pyspf-milter.conf
+	source = https://launchpad.net/spf-engine/2.9/2.9.2/+download/spf-engine-2.9.2.tar.gz
+	source = pyspf-milter.sysusers
+	source = pyspf-milter.conf
+	source = pyspf-milter.service
+	source = own_socketfile-bug-1856391.patch
+	sha256sums = 188a8bc78f1ddb40f1b87a0b6fe2fa78efa0b4cc5d984ff19a53724bb5c28131
+	sha256sums = 1a66a9d8315d95e910f3177123a81a4320ff0c216b286571dcc0a204e6eac0a4
+	sha256sums = 00f29931c8d4e76d026982cba22a7c2d0823cb82052438ec1b71df373e95a485
+	sha256sums = b9346555aa14e9beff00b522127b08b212bc4535d40591fb3d002a8c9a3f4f68
+	sha256sums = 6108b155534b024b692387c73a17eae5ddf7d261cea126932049a969012f4aca
+
+pkgname = spf-engine
+

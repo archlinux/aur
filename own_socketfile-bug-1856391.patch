@@ -1,0 +1,11 @@
+diff --unified --recursive --text spf-engine-2.9.2.orig/spf_engine/milter_spf.py spf-engine-2.9.2.new/spf_engine/milter_spf.py
+--- spf-engine-2.9.2.orig/spf_engine/milter_spf.py	2019-10-27 14:15:59.000000000 +1300
++++ spf-engine-2.9.2.new/spf_engine/milter_spf.py	2020-03-22 17:14:11.050296397 +1300
+@@ -37,7 +37,6 @@
+ from spf_engine.util import drop_privileges
+ from spf_engine.policydspfsupp import _setExceptHook
+ from spf_engine.util import write_pid
+-from spf_engine.util import own_socketfile
+ from spf_engine.util import fold
+ 
+ __version__ = "2.9.2"

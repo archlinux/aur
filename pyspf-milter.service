@@ -1,0 +1,12 @@
+[Unit]
+Description=pySPF Milter
+Documentation=man:pyspf-milter(8) man:pyspf-milter.conf(5) 
+After=network.target
+
+[Service]
+Type=simple
+PIDFile=/run/pyspf-milter/pyspf-milter.pid
+ExecStart=/usr/bin/pyspf-milter /etc/pyspf-milter/pyspf-milter.conf
+
+[Install]
+WantedBy=multi-user.target
