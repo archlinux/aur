@@ -1,7 +1,7 @@
 pkgbase = elvish
 	pkgdesc = A friendly and expressive Unix shell.
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/elves/elvish
 	install = elvish.install
 	arch = i686
