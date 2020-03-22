@@ -2,7 +2,7 @@
 
 pkgname='hmm-bin'
 pkgdesc='A small command-line note taking app written in Rust.'
-pkgver='0.2'
+pkgver='0.4.1'
 pkgrel='1'
 arch=('x86_64')
 url='https://github.com/samwho/hmm'
@@ -14,9 +14,10 @@ checkdepends=()
 provides=(hmm hmmq)
 conflicts=(hmm hmmq)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/samwho/hmm/releases/download/v${pkgver}/hmm-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('bad645453db646c9316d95ccda9f3f15d1bb9ca9d05c66cb184b40c20457c5c6')
+sha256sums=('88a247940e911b128efa1b7028d23c464ac6b060119b8ace919003a39c75dc39')
 
 package() {
     install -Dm755 "hmm" "$pkgdir/usr/bin/hmm"
     install -Dm755 "hmmq" "$pkgdir/usr/bin/hmmq"
+    install -Dm755 "hmmp" "$pkgdir/usr/bin/hmmp"
 }
