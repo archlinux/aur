@@ -1,7 +1,7 @@
 pkgbase = vim-dracula
 	pkgdesc = A dark theme for Vim
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://draculatheme.com/vim
 	arch = any
 	groups = vim-plugins

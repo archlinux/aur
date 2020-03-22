@@ -2,7 +2,7 @@
 
 pkgname=vim-dracula
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A dark theme for Vim"
 arch=('any')
 url="https://draculatheme.com/vim"
@@ -14,10 +14,11 @@ sha512sums=('cd86681aff1bd5dfc3b6747e7468fa192776c00cd10dbf6ae99703a679f2576d7c9
 
 package() {
   VIMFILES=$pkgdir/usr/share/vim/vimfiles
+  install -d "$VIMFILES"
+
   cd ${srcdir}/vim-${pkgver}
-  mkdir -p $VIMFILES
-  for dir in after autoload colors doc; do
-    cp -r "$dir" $VIMFILES
-    chmod 755 -R $VIMFILES/$dir
-  done
+  cp -drr --no-preserve=ownership after $VIMFILES
+  cp -drr --no-preserve=ownership autoload $VIMFILES
+  cp -drr --no-preserve=ownership colors $VIMFILES
+  cp -drr --no-preserve=ownership doc $VIMFILES
 }
