@@ -5,7 +5,7 @@
 # Contributor: trile7 at gmail dot com
 
 pkgname=inadyn-fork
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="Dynamic DNS client with SSL/TLS support"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('ca-certificates' 'confuse' 'openssl')
 provides=('inadyn')
 backup=('etc/inadyn.conf')
 source=(https://github.com/troglobit/inadyn/releases/download/v$pkgver/${pkgname%-fork}-$pkgver.tar.xz)
-sha256sums=('9f4198764abbd2798472b349d8867e86b4692c76ee304f1f9c607f67c9b582a4')
+sha256sums=('eb03bc9d9c09dfbbc651b43a2eb5a967d0454a8293576df23784710dac50c6a4')
 
 build() {
   cd ${pkgname%-fork}-$pkgver
