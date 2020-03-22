@@ -1,5 +1,5 @@
 pkgname=turtlecoin-bin
-pkgver=v0.22.0
+pkgver=v0.24.0
 pkgrel=0
 pkgdesc="TurtleCoin daemon, CLI wallet, RPC interface, and solo miner"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('LGPLv3')
 install="${pkgname}.install"
 conflicts=('turtlecoin-git')
 source=("https://github.com/turtlecoin/turtlecoin/releases/download/${pkgver}/turtlecoin-linux-${pkgver}.tar.gz")
-sha256sums=('70a61019acbe71605ab93c5d447e8714024dca84f7a31a9c9956892c9960e912')
+sha256sums=('f12b9c937a319f43b598335f0d817838aa49d6c07d00af83f834f6aadaa5a508')
 
 package() {
     # extract the tarball
