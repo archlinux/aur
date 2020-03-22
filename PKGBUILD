@@ -3,7 +3,7 @@ _pkgbase=${pkgbase%72}
 _realpkg=${pkgbase%}
 pkgname=("${pkgbase}"
          "${_realpkg}-"{cgi,apache,fpm,embed,phpdbg,dblib,enchant,gd,imap,intl,odbc,pgsql,pspell,snmp,sqlite,tidy,xsl,sodium}"")
-pkgver=7.2.26
+pkgver=7.2.29
 pkgrel=1
 pkgdesc="php 7.2 compiled as to not conflict with mainline php"
 arch=('i686' 'x86_64')
@@ -349,7 +349,7 @@ package_php72-sodium() {
     depends=("${pkgbase}" 'libsodium')
     install -D -m755 ${srcdir}/build/modules/sodium.so ${pkgdir}/usr/lib/${_realpkg}/modules/sodium.so
 }
-md5sums=('7afdc506028e8f48e34afd06b62ca1aa'
+md5sums=('df40f1052d6678c65b7679182e58b3de'
          '13cda50a6a420d04ddc26935ded3164e'
          'b7d69762f7c045b3950d770e04db504c'
          'f248c783449f310291905b5551c57e48'

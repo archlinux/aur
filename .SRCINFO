@@ -1,6 +1,6 @@
 pkgbase = php72
 	pkgdesc = php 7.2 compiled as to not conflict with mainline php
-	pkgver = 7.2.26
+	pkgver = 7.2.29
 	pkgrel = 1
 	url = http://www.php.net
 	arch = i686
@@ -28,7 +28,7 @@ pkgbase = php72
 	makedepends = freetds
 	makedepends = pcre
 	makedepends = libsodium
-	source = https://php.net/distributions/php-7.2.26.tar.xz
+	source = https://php.net/distributions/php-7.2.29.tar.xz
 	source = apache.patch
 	source = apache.conf
 	source = php-fpm.patch
@@ -36,7 +36,7 @@ pkgbase = php72
 	source = php.ini.patch
 	source = enchant-2.patch
 	source = php-freetype-2.9.1.patch
-	md5sums = 7afdc506028e8f48e34afd06b62ca1aa
+	md5sums = df40f1052d6678c65b7679182e58b3de
 	md5sums = 13cda50a6a420d04ddc26935ded3164e
 	md5sums = b7d69762f7c045b3950d770e04db504c
 	md5sums = f248c783449f310291905b5551c57e48
@@ -51,26 +51,26 @@ pkgname = php72
 	depends = curl
 	depends = libzip
 	depends = pcre
-	provides = php=7.2.26
+	provides = php=7.2.29
 	backup = etc/php72/php.ini
 
 pkgname = php72-cgi
 	pkgdesc = CGI and FCGI SAPI for PHP
 	depends = php72
-	provides = php-cgi=7.2.26
+	provides = php-cgi=7.2.29
 
 pkgname = php72-apache
 	pkgdesc = Apache SAPI for PHP
 	depends = php72
 	depends = apache
-	provides = php-apache=7.2.26
+	provides = php-apache=7.2.29
 	backup = etc/httpd/conf/extra/php72_module.conf
 
 pkgname = php72-fpm
 	pkgdesc = FastCGI Process Manager for PHP
 	depends = php72
 	depends = systemd
-	provides = php-fpm=7.2.26
+	provides = php-fpm=7.2.29
 	options = !emptydirs
 	backup = etc/php72/php-fpm.conf
 	backup = etc/php72/php-fpm.d/www.conf
@@ -79,86 +79,86 @@ pkgname = php72-embed
 	pkgdesc = Embedded PHP SAPI library
 	depends = php72
 	depends = libsystemd
-	provides = php-embed=7.2.26
+	provides = php-embed=7.2.29
 	options = !emptydirs
 
 pkgname = php72-phpdbg
 	pkgdesc = Interactive PHP debugger
 	depends = php72
-	provides = php-phpdbg=7.2.26
+	provides = php-phpdbg=7.2.29
 	options = !emptydirs
 
 pkgname = php72-dblib
 	pkgdesc = dblib module for PHP
 	depends = php72
 	depends = freetds
-	provides = php-dblib=7.2.26
+	provides = php-dblib=7.2.29
 
 pkgname = php72-enchant
 	pkgdesc = enchant module for PHP
 	depends = php72
 	depends = enchant
-	provides = php-enchant=7.2.26
+	provides = php-enchant=7.2.29
 
 pkgname = php72-gd
 	pkgdesc = gd module for PHP
 	depends = php72
 	depends = gd
-	provides = php-gd=7.2.26
+	provides = php-gd=7.2.29
 
 pkgname = php72-imap
 	pkgdesc = imap module for PHP
 	depends = php72
 	depends = c-client
-	provides = php-imap=7.2.26
+	provides = php-imap=7.2.29
 
 pkgname = php72-intl
 	pkgdesc = intl module for PHP
 	depends = php72
 	depends = icu
-	provides = php-intl=7.2.26
+	provides = php-intl=7.2.29
 
 pkgname = php72-odbc
 	pkgdesc = ODBC modules for PHP
 	depends = php72
 	depends = unixodbc
-	provides = php-odbc=7.2.26
+	provides = php-odbc=7.2.29
 
 pkgname = php72-pgsql
 	pkgdesc = PostgreSQL modules for PHP
 	depends = php72
 	depends = postgresql-libs
-	provides = php-pgsql=7.2.26
+	provides = php-pgsql=7.2.29
 
 pkgname = php72-pspell
 	pkgdesc = pspell module for PHP
 	depends = php72
 	depends = aspell
-	provides = php-pspell=7.2.26
+	provides = php-pspell=7.2.29
 
 pkgname = php72-snmp
 	pkgdesc = snmp module for PHP
 	depends = php72
 	depends = net-snmp
-	provides = php-snmp=7.2.26
+	provides = php-snmp=7.2.29
 
 pkgname = php72-sqlite
 	pkgdesc = sqlite module for PHP
 	depends = php72
 	depends = sqlite
-	provides = php-sqlite=7.2.26
+	provides = php-sqlite=7.2.29
 
 pkgname = php72-tidy
 	pkgdesc = tidy module for PHP
 	depends = php72
 	depends = tidy
-	provides = php-tidy=7.2.26
+	provides = php-tidy=7.2.29
 
 pkgname = php72-xsl
 	pkgdesc = xsl module for PHP
 	depends = php72
 	depends = libxslt
-	provides = php-xsl=7.2.26
+	provides = php-xsl=7.2.29
 
 pkgname = php72-sodium
 	pkgdesc = sodium module for PHP
