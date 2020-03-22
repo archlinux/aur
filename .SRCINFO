@@ -1,7 +1,7 @@
 pkgbase = vim-jsonnet-git
 	pkgdesc = Jsonnet filetype plugin for Vim.
 	pkgver = 0.23.b7459b3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/vim-jsonnet
 	arch = any
 	groups = vim-plugins

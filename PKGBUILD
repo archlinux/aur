@@ -3,7 +3,7 @@
 pkgname=vim-jsonnet-git
 _pkgname=vim-jsonnet
 pkgver=0.23.b7459b3
-pkgrel=1
+pkgrel=2
 pkgdesc='Jsonnet filetype plugin for Vim.'
 arch=('any')
 url="https://github.com/google/vim-jsonnet"
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}::git+https://github.com/google/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${_pkgname}
+    cd ${srcdir}/${pkgname}-${pkgver}
     echo "0.$(git rev-list --count HEAD).$(git describe --always)"
 }
 
