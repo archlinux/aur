@@ -1,7 +1,7 @@
 pkgbase = legend
 	pkgdesc = A package list for web developers
-	pkgver = 1.2
-	pkgrel = 4
+	pkgver = 1.3
+	pkgrel = 1
 	arch = any
 	groups = base-devel
 	groups = xorg
@@ -177,7 +177,6 @@ pkgbase = legend
 	depends = unixodbc
 	depends = unzip
 	depends = libaio
-	depends = neo4j-community
 	depends = php-pdo-oci
 	depends = php-event
 	depends = php-sqlsrv
