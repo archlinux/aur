@@ -1,0 +1,18 @@
+pkgbase = avisynth-plugin-neo_fft3dfilter-git
+	pkgdesc = Plugin for Avisynth: neo_fft3dfilter (GIT version)
+	pkgver = r40.8a5b194
+	pkgrel = 1
+	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_FFT3D.git
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = avisynthplus
+	depends = fftw
+	provides = avisynth-plugin-neo_fft3dfilter
+	conflicts = avisynth-plugin-neo_fft3dfilter
+	source = neo_fft3dfilter::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_FFT3D.git
+	sha256sums = SKIP
+
+pkgname = avisynth-plugin-neo_fft3dfilter-git
+
