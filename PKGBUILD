@@ -2,12 +2,13 @@
 
 pkgname=asyncomplete.vim
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="async completion in pure vim script for vim8 and neovim"
 arch=('any')
 url="https://github.com/prabirshrestha/asyncomplete.vim"
 license=('MIT')
 depends=('vim')
+groups=('vim-plugins')
 source=(
   LICENSE
   "${pkgname}-${pkgver}::https://github.com/prabirshrestha/asyncomplete.vim/archive/v${pkgver}.tar.gz"

@@ -4,6 +4,7 @@ pkgbase = asyncomplete.vim
 	pkgrel = 1
 	url = https://github.com/prabirshrestha/asyncomplete.vim
 	arch = any
+	groups = vim-plugins
 	license = MIT
 	depends = vim
 	source = LICENSE
