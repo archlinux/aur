@@ -1,0 +1,11 @@
+pkgbase = ios-fonts
+	pkgdesc = Lazy AUR package that installs ios fonts to linux.
+	pkgver = 1
+	pkgrel = 0
+	arch = any
+	conflicts = noto-fonts-emoji
+	source = git+https://github.com/yurisuki/iosfonts.git
+	sha512sums = SKIP
+
+pkgname = ios-fonts
+
