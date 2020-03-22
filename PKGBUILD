@@ -2,10 +2,11 @@
 # Contributor: Dave Reisner <dreisner@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Aaron Griffin <aaron@archlinux.org>
+# Contributor: Florian Pritz <bluewind@xinu.at>
 
 pkgname=syslog-ng-nosystemd
-pkgver=3.25.1
-pkgrel=3
+pkgver=3.26.1
+pkgrel=1
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -15,7 +16,7 @@ depends=('awk' 'glib2' 'libcap' 'libnsl' 'udev' 'json-c' 'curl' 'libnet')
 # we need latest mongo-c-driver build to make configure version check work correctly
 makedepends=('flex' 'pkg-config' 'libxslt' 'mongo-c-driver>=1.14.0-3' 'librabbitmq-c'
              'python' 'libesmtp' 'hiredis' 'libdbi' 'libmaxminddb' 'net-snmp'
-             'librdkafka' 'libcap=2.28')
+             'librdkafka' 'libcap>=2.31')
 optdepends=('logrotate: for rotating log files'
             'libdbi: for the SQL plugin'
             'librabbitmq-c: for the AMQP plugin'
@@ -39,8 +40,8 @@ source=(https://github.com/balabit/syslog-ng/releases/download/syslog-ng-$pkgver
         syslog-ng.conf.d
         syslog-ng.logrotate
         syslog-ng.rc)
-sha256sums=('34cb9673bcde58d543890e6c1189f466f938e199f227c524a6fa2f47f4db6817'
-            '756534d743eee66efba0b52f62a0227b040148c909eff5e82c63bfeb8c1a54f2'
+sha256sums=('90214223864df252cea80dbb35c88a2464edcbbb2c9fbc6f6f6c13ee60cb62cd'
+            'b30d717bd988289a1432ac8f40cbb00af32f85f881aa31d0ab39643b58d8bf5b'
             'fe6ebe5c281b34bad201d9206e607857db9a5a78f03bb4dc4440584dca610f61'
             '93c935eca56854011ea9e353b7a1da662ad40b2e8452954c5b4b5a1d5b2d5317'
             'db643d69e840dfd5d7849e857291f15fd60913527402fde806ce3911e3523063')
