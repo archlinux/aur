@@ -2,23 +2,20 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Damir Perisa <damir.perisa@bluewin.ch>
 
-pkgname=openbabel-git
-_name=openbabel
-pkgver=2.4.90.r5252.722b2134
+pkgbase=openbabel
+pkgname=(${pkgbase}-git python-${pkgbase}-git)
+pkgver=3.0.90.r5774.686ee22f2
 pkgrel=1
-pkgdesc="A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (git version, builds Python bindings)"
-arch=("x86_64")
-url="https://github.com/openbabel/openbabel"
-license=("GPL")
-depends=("libxml2" "libsm" "python" "wxgtk")
-makedepends=("git" "cmake" "eigen" "boost" "swig")
-provides=("${_name}")
-conflicts=("${_name}" "python-${_name}")
-source=("${_name}::git+https://github.com/openbabel/openbabel.git#branch=master")
+pkgdesc='A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (git version, builds Python bindings)'
+arch=('x86_64')
+url='https://github.com/openbabel/openbabel'
+license=('GPL')
+makedepends=('git' 'cmake' 'eigen' 'wxgtk3' 'boost' 'python' 'swig' 'maeparser' 'rapidjson')
+source=("${pkgbase}::git+https://github.com/openbabel/openbabel.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${_name}"
+  cd "${srcdir}/${pkgbase}"
   _parent_ver=$(git tag --sort=version:refname | tail -n 1 | cut -d "-" -f 2- | tr - .)
   _parent_major_ver=$(echo "${_parent_ver}" | cut -d "." -f 1)
   _parent_minor_ver=$(echo "${_parent_ver}" | cut -d "." -f 2)
@@ -35,32 +32,38 @@ pkgver() {
 }
 
 prepare() {
-  mkdir -p "${srcdir}/build"
-  cd "${srcdir}/build"
+  mkdir -p build
 }
 
 build() {
-  cd "${srcdir}/build"
+  cd build
 
-  cmake "${srcdir}/${_name}" \
-    -DCMAKE_BUILD_TYPE=Release \
+  cmake "${srcdir}/${pkgbase}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DENABLE_OPENMP=ON \
+    -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
     -DRUN_SWIG=ON \
     -DPYTHON_BINDINGS=ON
 
   make
+
+  # To split python bindings
+  sed -i '/scripts.cmake_install.cmake/d' cmake_install.cmake
 }
 
-check() {
-  NCPUS=$(nproc)
-  cd "${srcdir}/build"
-  ctest -j${NCPUS}
-}
+package_openbabel-git() {
+  depends=('wxgtk3' 'maeparser')
+  provides=("${pkgbase}")
+  conflicts=("${pkgbase}")
 
-package() {
-  cd "${srcdir}"/build
+  cd build
   make DESTDIR="${pkgdir}" install
-  cd "${srcdir}"/build/scripts
+}
+
+package_python-openbabel-git() {
+  depends=('python' 'openbabel')
+  provides=("python-${pkgbase}")
+  conflicts=("python-${pkgbase}")
+
+  cd build/scripts
   make DESTDIR="${pkgdir}" install
 }

@@ -1,6 +1,6 @@
 pkgbase = openbabel-git
 	pkgdesc = A library designed to interconvert between many file formats used in molecular modeling and computational chemistry (git version, builds Python bindings)
-	pkgver = 2.4.90.r5252.722b2134
+	pkgver = 3.0.90.r5774.686ee22f2
 	pkgrel = 1
 	url = https://github.com/openbabel/openbabel
 	arch = x86_64
@@ -8,17 +8,20 @@ pkgbase = openbabel-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = eigen
+	makedepends = wxgtk3
 	makedepends = boost
+	makedepends = python
 	makedepends = swig
-	depends = libxml2
-	depends = libsm
-	depends = python
-	depends = wxgtk
+	makedepends = maeparser
+	makedepends = rapidjson
 	provides = openbabel
+	provides = python-openbabel
 	conflicts = openbabel
 	conflicts = python-openbabel
 	source = openbabel::git+https://github.com/openbabel/openbabel.git#branch=master
 	md5sums = SKIP
 
 pkgname = openbabel-git
+	depends = wxgtk3
+	depends = maeparser
 
