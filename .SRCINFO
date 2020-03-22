@@ -1,7 +1,7 @@
 pkgbase = legend
 	pkgdesc = A package list for web developers
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	arch = any
 	groups = base-devel
 	groups = xorg
