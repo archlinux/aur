@@ -1,10 +1,13 @@
 pkgbase = kibi
 	pkgdesc = A tiny text editor, written in Rust
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ilai-deutel/kibi
 	arch = x86_64
 	arch = i686
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	license = APACHE
 	makedepends = cargo

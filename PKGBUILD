@@ -2,12 +2,12 @@
 
 pkgname=kibi
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiny text editor, written in Rust"
 url="https://github.com/ilai-deutel/${pkgname}"
 makedepends=('cargo')
 depends=('gcc-libs')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT' 'APACHE')
 backup=('etc/kibi/config.ini' etc/kibi/syntax.d/{bash,gitignore,ini,python,rust,toml}.ini)
 source=("https://github.com/ilai-deutel/${pkgname}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
