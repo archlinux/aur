@@ -18,6 +18,7 @@ build() {
   msg 'Building...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
   export SUBPRJ_DFLT='runawk modules examples a_getopt doc'
+  mkc_compiler_settings
   mkcmake all
 }
 
