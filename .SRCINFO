@@ -1,0 +1,20 @@
+pkgbase = mybase-desktop-bin
+	pkgdesc = A high-quality free-form database program for personal note-taking and knowledgebase management
+	pkgver = 735
+	pkgrel = 1
+	url = http://www.wjjsoft.com
+	arch = x86_64
+	license = custom: commercial
+	depends = zlib
+	depends = glibc
+	depends = gcc-libs
+	depends = libpng12
+	provides = mybase-desktop
+	conflicts = mybase-desktop
+	source = http://www.wjjsoft.com/downloads/myBase-Desktop-Ver735-Linux-amd64.tar.bz2
+	source = myBase.desktop
+	sha512sums = 722d5fa9c1e4f3af7edbb4855776b2ec6f877df935aac154edeafb79e86d4edd98bb0eea07079f729df0f90db1862ad1904df4a590bd423222a3232e92f66a10
+	sha512sums = 75ee29c84a1648f9c76f94b73034f3d432658709e1b04b15d41111d7f892f371967803e34d60e06f96903ecc9b739972133589e1076c8e18aafc9a802f101765
+
+pkgname = mybase-desktop-bin
+

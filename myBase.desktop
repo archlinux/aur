@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=myBase Desktop
+Comment=A high-quality free-form database program for personal note-taking and knowledgebase management
+GenericName=Database Client
+Exec=/opt/myBase7/myBase.run %f
+Terminal=false
+Type=Application
+Categories=Office;Utility;
+StartupNotify=true
+Icon=myBase
