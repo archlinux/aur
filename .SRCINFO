@@ -1,0 +1,15 @@
+pkgbase = inyokaedit-data-ubuntuusersde
+	pkgdesc = ubuntuusers.de community files for InyokaEdit
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://github.com/inyokaproject/inyokaedit/
+	arch = any
+	license = GPL3
+	depends = bash
+	optdepends = inyokaedit: Editor for Inyoka based portals
+	optdepends = inyokaedit-plugins: Plugins for InyokaEdit
+	source = https://github.com/inyokaproject/inyokaedit/releases/download/v0.24.0/inyokaedit-community-0.24.0.zip
+	sha256sums = 438e4699b0267d54a514efeba9ebe9131ec0bbc1bc379bc34e0d19fe14217539
+
+pkgname = inyokaedit-data-ubuntuusersde
+
