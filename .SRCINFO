@@ -1,7 +1,7 @@
 pkgbase = paexec
 	pkgdesc = Parallel executor, distributes tasks over network or CPUs
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheusov/paexec
 	arch = i686
 	arch = x86_64

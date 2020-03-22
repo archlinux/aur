@@ -3,7 +3,7 @@
 
 pkgname=paexec
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Parallel executor, distributes tasks over network or CPUs"
 arch=('i686' 'x86_64')
 depends=('runawk')
@@ -19,6 +19,7 @@ build() {
   msg2 'Building...'
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man CC=clang
   export SUBPRJ_DFLT='paexec doc examples'
+  mkc_compiler_settings
   mkcmake all
 }
 
