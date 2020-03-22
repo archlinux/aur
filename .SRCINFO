@@ -1,7 +1,7 @@
 pkgbase = otf-openbaskerville
 	pkgdesc = An open source implementation of Fry's Baskerville, a Baskerville derivative by Isaac Moore
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://klepas.org/openbaskerville/
 	install = otf.install
 	arch = any
