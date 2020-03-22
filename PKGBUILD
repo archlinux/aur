@@ -2,7 +2,7 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.464.g6e0f9f59d
+pkgver=1.1.8.467.g24ee9de09
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
@@ -43,7 +43,7 @@ build() {
   _cache_file=../$CARCH-config.cache
 
   _knm="-lts"
-  _kvd="5.4.25-2"
+  _kvd="5.4.26-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -95,7 +95,7 @@ build() {
   cd "$srcdir/openss7-modules-lts-git"
 
   _knm="-lts"
-  _kvd="5.4.25-2"
+  _kvd="5.4.26-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -150,7 +150,7 @@ build() {
   cd "$srcdir/openss7-modules-git"
 
   _knm=""
-  _kvd="5.5.9-arch1-2"
+  _kvd="5.5.10-arch1-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -210,7 +210,7 @@ package_openss7-git() {
           'etc/sock2path.d/openss7')
   provides=("$_pkgbase")
   conflicts=("$_pkgbase" 'strigi' 'lksctp-tools' 'strace')
-  depends=('net-snmp' 'gawk' 'popt')
+  depends=('binutils' 'net-snmp' 'gawk' 'popt' "$_pkgbase-kernel-git")
   depends_x86_64=('lib32-glibc')
   optdepends=('perl-tk: for graphical utilities'
               'gtkdialog: for graphical utilities')
@@ -243,7 +243,7 @@ package_openss7-git() {
 
 package_openss7-modules-git() {
   _knm=""
-  _kvd="5.5.9-arch1-2"
+  _kvd="5.5.10-arch1-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -258,10 +258,12 @@ package_openss7-modules-git() {
 # _kvu="5.$_kvi"
   pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-ARCH} Kernel Modules)"
   provides=("$_pkgbase-kernel=$pkgver"
+            "$_pkgbase-kernel-git=$pkgver"
             "$_pkgbase-modules=$pkgver")
   conflicts=("$_pkgbase-modules")
-  depends=("$pkgbase" "linux=$_kvv")
-# depends=("$pkgbase" "linux>=$_kvl" "linux<$_kvu")
+  depends=("linux${_knm}${_kvv:+=$_kvv}")
+# depends=("$pkgbase" "linux${_knm}=${_kvv:+=$_kvv}")
+# depends=("$pkgbase" "linux${_knm}>=$_kvl" "linux${_knm}<$_kvu")
   options=('!emptydirs' '!strip')
 
   cd "$srcdir"/openss7-modules-git
@@ -293,7 +295,7 @@ package_openss7-modules-git() {
 
 package_openss7-modules-lts-git() {
   _knm="-lts"
-  _kvd="5.4.25-2"
+  _kvd="5.4.26-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -307,9 +309,11 @@ package_openss7-modules-lts-git() {
 # _kvu="4.$_kvi"
   pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS} Kernel Modules)"
   provides=("$_pkgbase-kernel=$pkgver"
+            "$_pkgbase-kernel-git=$pkgver"
             "$_pkgbase-modules-lts=$pkgver")
   conflicts=("$_pkgbase-modules-lts")
-  depends=("$pkgbase" "linux${_knm}=$_kvv")
+  depends=("linux${_knm}${_kvv:+=$_kvv}")
+# depends=("$pkgbase" "linux${_knm}=${_kvv:+=$_kvv}")
 # depends=("$pkgbase" "linux${_knm}>=$_kvl" "linux${_knm}<$_kvu")
   options=('!emptydirs' '!strip')
 

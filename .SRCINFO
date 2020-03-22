@@ -1,6 +1,6 @@
 pkgbase = openss7-git
 	pkgdesc = OpenSS7 Fast-STREAMS and Protocol Suites
-	pkgver = 1.1.8.464.g6e0f9f59d
+	pkgver = 1.1.8.467.g24ee9de09
 	pkgrel = 1
 	url = http://www.openss7.org
 	arch = x86_64
@@ -46,9 +46,11 @@ pkgbase = openss7-git
 pkgname = openss7-git
 	pkgdesc = OpenSS7 Fast-STREAMS and Protocol Suites
 	install = openss7-git.install
+	depends = binutils
 	depends = net-snmp
 	depends = gawk
 	depends = popt
+	depends = openss7-kernel-git
 	optdepends = perl-tk: for graphical utilities
 	optdepends = gtkdialog: for graphical utilities
 	provides = openss7
@@ -65,20 +67,20 @@ pkgname = openss7-git
 
 pkgname = openss7-modules-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (ARCH Kernel Modules)
-	depends = openss7-git
-	depends = linux=
-	provides = openss7-kernel=1.1.8.464.g6e0f9f59d
-	provides = openss7-modules=1.1.8.464.g6e0f9f59d
+	depends = linux
+	provides = openss7-kernel=1.1.8.467.g24ee9de09
+	provides = openss7-kernel-git=1.1.8.467.g24ee9de09
+	provides = openss7-modules=1.1.8.467.g24ee9de09
 	conflicts = openss7-modules
 	options = !emptydirs
 	options = !strip
 
 pkgname = openss7-modules-lts-git
 	pkgdesc = OpenSS7 Fast-STREAMS and protocol Suites (LTS Kernel Modules)
-	depends = openss7-git
-	depends = linux=
-	provides = openss7-kernel=1.1.8.464.g6e0f9f59d
-	provides = openss7-modules-lts=1.1.8.464.g6e0f9f59d
+	depends = linux
+	provides = openss7-kernel=1.1.8.467.g24ee9de09
+	provides = openss7-kernel-git=1.1.8.467.g24ee9de09
+	provides = openss7-modules-lts=1.1.8.467.g24ee9de09
 	conflicts = openss7-modules-lts
 	options = !emptydirs
 	options = !strip
@@ -89,6 +91,6 @@ pkgname = openss7-java-git
 	depends = openss7-git
 	depends = gcc6-gcj
 	depends = classpath
-	provides = openss7-java=1.1.8.464.g6e0f9f59d
+	provides = openss7-java=1.1.8.467.g24ee9de09
 	conflicts = openss7-java
 
