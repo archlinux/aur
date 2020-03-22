@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libev
 	pkgdesc = A full-featured and high-performance event loop (mingw-w64)
-	pkgver = 4.31
+	pkgver = 4.33
 	pkgrel = 1
 	url = http://software.schmorp.de/pkg/libev.html
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = mingw-w64-libev
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://dist.schmorp.de/libev/libev-4.31.tar.gz
+	source = http://dist.schmorp.de/libev/libev-4.33.tar.gz
 	source = libev-4.24-no-undefined.patch
-	sha1sums = 41a70861053eaed07bdb9b1dfcff24fb390803b9
+	sha1sums = 133587b89c34dba0b3a2d2a90ba59f6748f6c368
 	sha1sums = 600ca8fe4c6503f592db7560301923f4ade5c224
 
 pkgname = mingw-w64-libev
