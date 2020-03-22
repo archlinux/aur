@@ -1,0 +1,19 @@
+pkgbase = rapmap
+	pkgdesc = Rapid sensitive and accurate read mapping via quasi-mapping
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/COMBINE-lab/RapMap
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc>=4.9
+	makedepends = clang>=3.4
+	makedepends = cmake
+	makedepends = libdivsufsort
+	makedepends = cereal
+	depends = gcc-libs
+	optdepends = jemalloc
+	source = rapmap-0.6.0.tar.gz::https://github.com/COMBINE-lab/RapMap/archive/v0.6.0.tar.gz
+	sha256sums = 1ebb4f9b9b0b20cb73cb3663a57e3d8781f1e56953aec6d2f86e4a037dde11f6
+
+pkgname = rapmap
+
