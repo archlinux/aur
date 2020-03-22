@@ -5,8 +5,9 @@ pkgdesc="Advanced, Fully-Featured, and Reliable Autopilot Software (Copter,
 SITL)"
 url='https://ardupilot.org'
 arch=('i686' 'x86_64')
-pkgrel=1
+pkgrel=2
 license=('GPLv3')
+provides=('ardupilot-sitl')
 makedepends=('waf' 'python-setuptools')
 
 # Deps taken from:

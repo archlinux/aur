@@ -1,7 +1,7 @@
 pkgbase = ardupilot-copter-sitl
 	pkgdesc = Advanced, Fully-Featured, and Reliable Autopilot Software (Copter, SITL)
 	pkgver = 4.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ardupilot.org
 	arch = i686
 	arch = x86_64
@@ -49,6 +49,7 @@ pkgbase = ardupilot-copter-sitl
 	depends = waf
 	depends = lsb-release
 	depends = python-wxpython
+	provides = ardupilot-sitl
 	source = ardupilot-copter-sitl-4.0.3::https://github.com/ArduPilot/ardupilot/archive/Copter-4.0.3.tar.gz
 	source = libcanard::https://github.com/ArduPilot/libcanard/archive/99163fc2369e5e5f75f8473f0b950b3418830d3f.tar.gz
 	source = mavlink::https://github.com/ArduPilot/mavlink/archive/d2cc7dbff67f8c318a40e1ef57a99488b4737fab.tar.gz
