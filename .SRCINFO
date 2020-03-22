@@ -1,7 +1,7 @@
 pkgbase = adns-git
 	pkgdesc = An asyncronous replacement resolver library
 	pkgver = adns.r1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.chiark.greenend.org.uk/~ian/adns
 	arch = i686

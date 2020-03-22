@@ -1,11 +1,10 @@
 # Maintainer: Fernando Ortiz <nandub+arch [at] nandub.info>
-# Contributor: Mark Laws <mdl [at] 60hz.org>
 
 _pkgname=adns
 pkgname=adns-git
 epoch=1
 pkgver=adns.r1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An asyncronous replacement resolver library"
 arch=('i686' 'x86_64')
 url="https://www.chiark.greenend.org.uk/~ian/adns"
