@@ -1,0 +1,14 @@
+pkgbase = python-syft-proto-git
+	pkgdesc = PySyft protocol constants.
+	pkgver = r104.e6f5361
+	pkgrel = 1
+	url = https://github.com/OpenMined/syft-proto
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	source = syft-proto::git+https://github.com/OpenMined/syft-proto.git
+	sha512sums = SKIP
+
+pkgname = python-syft-proto-git
+
