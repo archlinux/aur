@@ -1,14 +1,16 @@
 pkgbase = cargo-c
 	pkgdesc = A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries
-	pkgver = 0.5.3
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/lu-zero/cargo-c/
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	depends = gcc-libs
-	source = cargo-c-0.5.3.tar.gz::https://github.com/lu-zero/cargo-c/archive/v0.5.3.tar.gz
-	sha256sums = 3a4860898f68e59a1eb9f19c7f12690b6399ddd916c7bc188c1f01cccdade7a9
+	depends = curl
+	depends = openssl
+	depends = zlib
+	source = cargo-c-0.6.2.tar.gz::https://github.com/lu-zero/cargo-c/archive/v0.6.2.tar.gz
+	sha256sums = c0a3e612b41f441081098e3f3e1716fc709421f3d17654a9f0303f420fdbc1ee
 
 pkgname = cargo-c
 
