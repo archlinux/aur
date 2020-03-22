@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbluray-git
-pkgver=1.1.1.14.g38bbd8e8
+pkgver=1.2.0.0.g43059c7e
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libxml2'
 makedepends=('git'
              'apache-ant'
              'classpath'
-             'java-environment<=11'
+             'java-environment<=13'
              )
 optdepends=('libaacs: Enable AACS decryption'
             'java-runtime<=11: BD-J library'
@@ -38,7 +38,7 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  export JDK_HOME="/usr/lib/jvm/java-11-jdk"
+  export JDK_HOME="/usr/lib/jvm/java-13-jdk"
 
   cd libbluray
   git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
