@@ -6,6 +6,7 @@ pkgbase = mojave-ct-icon-theme-git
 	arch = any
 	license = GPL3
 	makedepends = git
+	conflicts = mojave-ct-icon-theme
 	source = git+https://github.com/zayronxio/Mojave-CT
 	sha512sums = SKIP
 

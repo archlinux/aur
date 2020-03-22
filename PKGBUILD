@@ -11,6 +11,7 @@ arch=(any)
 makedepends=('git')
 source=("git+https://github.com/zayronxio/Mojave-CT")
 sha512sums=("SKIP")
+conflicts=('mojave-ct-icon-theme')
 
 pkgver(){
 	cd "${srcdir}/${_pkgname}"
