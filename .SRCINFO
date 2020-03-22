@@ -1,0 +1,20 @@
+pkgbase = muccadoro
+	pkgdesc = Pomodoro timer using figlet, cowsay, and optionally lolcat
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/meribold/muccadoro
+	arch = any
+	license = Apache
+	depends = awk
+	depends = bash
+	depends = cowsay
+	depends = figlet
+	depends = libnotify
+	depends = coreutils
+	depends = ncurses
+	optdepends = lolcat
+	source = muccadoro-1.0.0.tar.gz::https://github.com/meribold/muccadoro/archive/v1.0.0.tar.gz
+	sha256sums = 74fdfb86883dc40d1ebcb4831a94e50dc89a629fd1e4662b4fab3f554855ce6d
+
+pkgname = muccadoro
+
