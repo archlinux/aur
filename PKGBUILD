@@ -8,7 +8,7 @@ pkgdesc="Plugin for Avisynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=167435'
 license=('LGPL')
-depends=('vapoursynth'
+depends=('avisynthplus'
          'libavutil.so'
          'libavformat.so'
          'libavcodec.so'
