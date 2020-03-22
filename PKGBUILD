@@ -3,7 +3,7 @@
 
 pkgname=('armorpaint-git')
 _pkgname='armorpaint'
-pkgver=1209
+pkgver=0.8.r1209.ga7fdc07
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="ArmorPaint is a software for 3D PBR texture painting"
@@ -22,7 +22,8 @@ md5sums=(SKIP
 
 pkgver() {
   cd ${srcdir}/${_pkgname}
-  git rev-list --count HEAD
+  ver=$(grep -Po '(^|\s)+(public static var version =)(\s)+\"\K(([0-9|\.])+)' 'Sources/Main.hx')
+  printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
