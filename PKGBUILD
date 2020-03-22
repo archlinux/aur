@@ -1,6 +1,6 @@
 # Maintainer: Julien Savard <juju@juju2143.ca>
 pkgname=x16-emulator-git
-pkgver=r36.r3.gcf98ca4
+pkgver=r37.r0.g946284d
 pkgrel=1
 pkgdesc="An emulator for The 8-Bit Guy's Commander X16"
 arch=('x86_64')
@@ -29,12 +29,12 @@ pkgver() {
 prepare() {
 	cd "${pkgname%-git}"
 	patch -uN main.c ../modify-base-path.patch
-	gendesk -n --pkgname "${pkgname%-git}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgname%-git}" --exec "x16emu" --categories "Game;Emulator"
+	gendesk -f -n --pkgname "${pkgname%-git}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgname%-git}" --exec "x16emu" --categories "Game;Emulator"
 }
 
 build() {
 	cd "${pkgname%-git}"
-	make WITH_YM2151=1
+	make
 	pandoc --from gfm --to html -c github-pandoc.css --standalone --metadata pagetitle="X16 Emulator" README.md --output README.html
 }
 
