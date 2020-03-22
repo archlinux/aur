@@ -1,7 +1,7 @@
 pkgbase = everdo
 	pkgdesc = The Perfect App for GTD / Getting Things Done
 	pkgver = 1.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://everdo.net
 	arch = x86_64
 	license = unknown
@@ -20,7 +20,6 @@ pkgbase = everdo
 	depends = libnotify
 	depends = libappindicator-gtk2
 	depends = libappindicator-gtk3
-	depends = libappindicator-sharp
 	depends = gconf
 	source = https://d11l8siwmn8w36.cloudfront.net/1.3.4/everdo-1.3.4.pacman
 	md5sums = 815d348031e4619e7ecb45487ae1451e

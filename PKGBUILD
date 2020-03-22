@@ -1,7 +1,7 @@
-# Maintainer: Brennan Thews <brennan.thews@pm.me>
+# Maintainer: YagiOoda <YagiOoda@pm.me>
 pkgname=everdo
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Perfect App for GTD / Getting Things Done"
 arch=('x86_64')
 url='https://everdo.net'
@@ -23,7 +23,6 @@ depends=(
 	'libnotify' 
 	'libappindicator-gtk2' 
 	'libappindicator-gtk3' 
-	'libappindicator-sharp'
 	'gconf'
 	)
 
