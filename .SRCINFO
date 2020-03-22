@@ -1,14 +1,14 @@
 pkgbase = amdgpuinfo-git
 	pkgdesc = Get information from AMD Radeon GPUs
-	pkgver = r118.73511dc
-	pkgrel = 1
+	pkgver = 0.1.130.befb94d
+	pkgrel = 2
 	url = https://github.com/andrealmeid/amdgpuinfo
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = gcc
-	depends = ocl-icd
-	depends = opencl-headers
+	makedepends = meson
+	depends = pciutils
 	source = git://github.com/andrealmeid/amdgpuinfo.git
 	md5sums = SKIP
 

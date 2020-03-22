@@ -2,28 +2,36 @@
 
 pkgname=amdgpuinfo-git
 _pkgname=amdgpuinfo
-pkgrel=1
-pkgver=r118.73511dc
+pkgrel=2
+pkgver=0.1.130.befb94d
 pkgdesc="Get information from AMD Radeon GPUs"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/andrealmeid/amdgpuinfo"
 license=('GPL3')
-depends=('ocl-icd' 'opencl-headers')
-makedepends=('git' 'gcc')
+depends=('pciutils')
+makedepends=('git' 'gcc' 'meson')
 source=('git://github.com/andrealmeid/amdgpuinfo.git')
 md5sums=('SKIP')
 
+ver() {
+	prefix="        version: '"
+	echo $(grep "$prefix" meson.build | sed -e "s/${prefix}//" | sed "s/',//")
+}
+
 pkgver() {
 	cd "$_pkgname"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	hash=$(git log --pretty=format:'%h' -n 1)
+	revision=$(git rev-list --count HEAD)
+	echo $(ver).$revision.$hash
 }
 
 build() {
 	cd "$_pkgname"
-	make
+	arch-meson build --prefix /usr
+	ninja -C build
 }
 
 package() {
 	cd "$_pkgname"
-	install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
+	DESTDIR="$pkgdir" ninja -C build install
 }
