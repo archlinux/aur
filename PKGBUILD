@@ -1,5 +1,5 @@
 # Maintainer: yurisuki <yurisuki@waifu.club>
-pkgname=ios-fonts
+pkgname=ios-emoji
 pkgver=1
 pkgrel=0
 pkgdesc="Lazy AUR package that installs ios fonts to linux."
