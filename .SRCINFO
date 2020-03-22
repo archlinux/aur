@@ -1,6 +1,6 @@
 pkgbase = lammps-beta
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = 20200218
+	pkgver = 20200319
 	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lammps-beta
 	depends = openmpi
 	provides = lammps
 	conflicts = lammps
-	source = git+https://github.com/lammps/lammps#tag=patch_18Feb2020?signed
+	source = git+https://github.com/lammps/lammps#tag=patch_19Mar2020?signed
 	sha512sums = SKIP
 
 pkgname = lammps-beta

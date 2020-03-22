@@ -21,8 +21,8 @@ _ENABLE_KIM=0
 
 _pkgname=lammps
 pkgname=${_pkgname}-beta
-pkgver=20200218
-_pkgver="18Feb2020"
+pkgver=20200319
+_pkgver="19Mar2020"
 #_pkgver=$(date -d ${pkgver} +%-d%b%Y)
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
@@ -45,9 +45,9 @@ if (( $_ENABLE_INTEL_COMPILER )); then
     depends+=('intel-mkl')
     optdepends=('intel-parallel-studio-xe')
     _feature_args+=('-DCMAKE_C_COMPILER=icc')
-    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O2 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
+    _feature_args+=('-DCMAKE_C_FLAGS=-xHost -O3 -fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high')
     _feature_args+=('-DCMAKE_CXX_COMPILER=icpc')
-    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O2 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG -I${MKLROOT}/include')
+    _feature_args+=('-DCMAKE_CXX_FLAGS=-fp-model fast=2 -no-prec-div -qoverride-limits -qopt-zmm-usage=high -qno-offload -fno-alias -ansi-alias -O3 -std=c++11 -DLMP_INTEL_USELRT -DLMP_USE_MKL_RNG -I${MKLROOT}/include -L${MKLROOT}/lib')
     _feature_args+=('-DCMAKE_Fortran_COMPILER=ifort')
     _feature_args+=('-DMPI_C_COMPILER=mpiicc')
     _feature_args+=('-DMPI_CXX_COMPILER=mpiicpc')
