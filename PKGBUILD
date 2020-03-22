@@ -37,7 +37,7 @@ prepare() {
 pkgver() {
   cd ${srcdir}/${_pkgname}
   printf "%s.r%s.%s" \
-    $(grep -ozP "(?s)^project\('babl'.*?version: *'\K[\d.]*" meson.build) \
+    $(grep -ozP "(?s)^project\('babl'.*?version: *'\K[\d.]*" meson.build|tr '\0' '\n') \
     $(git rev-list --count HEAD) \
     $(git rev-parse --short HEAD)
 }
