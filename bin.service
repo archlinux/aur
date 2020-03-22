@@ -1,0 +1,12 @@
+[Unit]
+Description=A paste bin
+After=network.target
+
+[Service]
+User=nobody
+Type=simple
+ExecStart=/usr/bin/bin
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+pkgbase = bin-bin
+	pkgdesc = A paste bin written in Rust. Github Release Binary.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/w4/bin
+	arch = x86_64
+	license = WTFPL
+	conflicts = bin
+	source = https://github.com/w4/bin/releases/download/v1.0.2/bin-v1.0.2-x86_64-unknown-linux-gnu.tar.gz
+	source = bin.service
+	sha256sums = f8166e15d921bc8c67ae1c16777ea73dba4275197a9f1073645529ebe6f36a53
+	sha256sums = 4cb0c08af068637bb9c6330d41f34defc4173a863c2e2dd33f06fbffccfd80dc
+
+pkgname = bin-bin
+
