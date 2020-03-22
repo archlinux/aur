@@ -1,6 +1,6 @@
 pkgbase = php72-redis
 	pkgdesc = PHP extension for interfacing with Redis
-	pkgver = 5.1.1
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = http://pecl.php.net/package/redis
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = php72-redis
 	makedepends = php72
 	depends = php72
 	backup = etc/php72/conf.d/redis.ini
-	source = http://pecl.php.net/get/redis-5.1.1.tgz
-	md5sums = 9221394dbf3d80c43be9e5ad51c1f9fd
+	source = http://pecl.php.net/get/redis-5.2.1.tgz
+	md5sums = 1cda1dd9a7d1dfcf220725bab84277ef
 
 pkgname = php72-redis
 
