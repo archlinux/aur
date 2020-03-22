@@ -1,3 +1,5 @@
-pkg
-src
-vim-dracula-*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!LICENSE
