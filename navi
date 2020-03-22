@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-SCRIPT_DIR=/opt/navi
-${SCRIPT_DIR}/navi "$@"
