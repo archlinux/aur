@@ -2,7 +2,7 @@
 
 _plug=lsmashsource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r935.3edd194
+pkgver=r1036.86f757d
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,16 +16,12 @@ depends=('vapoursynth'
          'liblsmash.so'
          )
 makedepends=('git'
-             'libavresample'
+             'meson'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/VFR-maniac/L-SMASH-Works.git"
-        'patch.patch'
-        )
-sha256sums=('SKIP'
-            'cb9603da5bd264ae5a1917490069d5dd564714bc0bd8aa5c46ad5b7f269170e1'
-            )
+source=("${_plug}::git+https://github.com/HolyWu/L-SMASH-Works.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
@@ -34,25 +30,19 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
+  mkdir -p build
 
-  rm -fr VapourSynth/VapourSynth.h
-
-  patch --binary -p1 -i "${srcdir}/patch.patch"
+  rm -fr "${_plug}/include/"V*
 }
 
 build() {
-  cd "${_plug}/VapourSynth"
-  ./configure \
-    --prefix=/usr \
-    --extra-cflags="${CFLAGS} ${CPPFLAGS} $(pkg-config --cflags vapoursynth)" \
-    --extra-ldflags="${LDFLAGS}"
+  cd build
 
-  LC_ALL=C make
+  arch-meson "../${_plug}/VapourSynth"
 }
 
 package(){
-  cd "${_plug}/VapourSynth"
-  make DESTDIR="${pkgdir}" install
-  install -Dm644 README "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
+  DESTDIR="${pkgdir}" ninja -C build install
+
+  install -Dm644 "${_plug}/AviSynth/README" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }
