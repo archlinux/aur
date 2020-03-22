@@ -12,6 +12,7 @@ pkgbase = mojave-gtk-theme-git-new
 	depends = gtk3
 	depends = gtk-engine-murrine
 	depends = gtk-engines
+	conflicts = mojave-gtk-theme
 	options = !strip
 	source = git+https://github.com/vinceliuice/Mojave-gtk-theme.git
 	md5sums = SKIP

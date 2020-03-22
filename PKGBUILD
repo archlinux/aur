@@ -13,6 +13,7 @@ source=('git+https://github.com/vinceliuice/Mojave-gtk-theme.git')
 md5sums=('SKIP')
 makedepends=('sassc' 'optipng' 'inkscape' 'git')
 options=('!strip')
+conflicts=('mojave-gtk-theme')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
