@@ -1,7 +1,7 @@
 pkgbase = wsjtx-git
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)
-	pkgver = r5460.24fcd17a
-	pkgrel = 2
+	pkgver = r5497.0068f9bc
+	pkgrel = 1
 	url = http://physics.princeton.edu/pulsar/k1jt/wsjtx.html
 	arch = i686
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = wsjtx-git
 	source = git+https://git.code.sf.net/p/wsjt/wsjtx/#tag=master
 	source = wsjtx.patch
 	md5sums = SKIP
-	md5sums = c344fe634d4a9d1b15300970f0fa019b
+	md5sums = 337acf49878ae0f9980c2c9c9a0b7d7b
 
 pkgname = wsjtx-git
 
