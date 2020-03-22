@@ -2,7 +2,7 @@
 
 pkgname='otf-openbaskerville'
 pkgver='0.1.0'
-pkgrel='4'
+pkgrel='5'
 pkgdesc="An open source implementation of Fry's Baskerville, a Baskerville derivative by Isaac Moore"
 arch=('any')
 url="http://klepas.org/openbaskerville/"
@@ -15,6 +15,8 @@ sha256sums=('557dced5e5e0e263d4d9fa311619d86a19bad6275c685053dbf8192e8e90f6ef')
 
 build() {
     cd ${srcdir}/open-baskerville-0.0.0
+
+    sed -i "s/Large Frys/Open Baskerville/" OpenBaskerville.ufo/fontinfo.plist
 
     ufo2otf OpenBaskerville.ufo
 }
