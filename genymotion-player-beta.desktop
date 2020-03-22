@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Genymotion Player Beta
+Comment=Virtual environment for Android. Beta Version
+Exec=/usr/bin/genymotion-player
+Icon=/opt/genymotion/icons/icon.png
+Terminal=false
+Categories=Development;
+StartupWMClass=Genymotion Player

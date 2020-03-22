@@ -1,0 +1,28 @@
+pkgbase = genymotion-beta
+	pkgdesc = Complete set of tools that provides a virtual environment for Android. Beta Release
+	pkgver = 3.1.0beta3
+	pkgrel = 1
+	url = http://www.genymotion.com/
+	install = genymotion-beta.install
+	arch = x86_64
+	license = custom
+	depends = libpng
+	depends = net-tools
+	depends = protobuf
+	depends = qca-qt5
+	depends = qt5-script
+	depends = qt5-webkit
+	depends = virtualbox
+	provides = genymotion
+	conflicts = genymotion
+	source = genymotion-beta.desktop
+	source = genymotion-player-beta.desktop
+	source = genymotion-beta.install
+	source = https://dl.genymotion.com/releases/genymotion-3.1.0-beta3/genymotion-3.1.0-beta3-linux_x64.bin
+	sha512sums = b0d3363bedab53d01d701811b511aa233661c78e454e9d6ee75cc6241b23db13672dbc9723dd19417d1650b87ce44d3869cf39fb3104162074190f10172dbad4
+	sha512sums = a16a04b311f1b2194db4fe032c355b39e57d8473195788c1f18b1806ec051ecf8285e93e50c5dc98375678712e6410360aa959ca09c673043da788a8892c0a42
+	sha512sums = 7d1214bc270c9758e61b9f451699bea03485983ade2f3308e33ce6e4e1689c6d29ba16fdb7f297e03d866e78e0c5f6febfb63447848f07caf7b2f093aebb9c09
+	sha512sums = 6c08a6e9f7aaf40cab5a76e7d45fd31a73773ff2a2c6eda525dc814584016daa6636facb608f64e5e093779ecc66c561bc7ddc1778d9efa365a71b9e56df09e9
+
+pkgname = genymotion-beta
+
