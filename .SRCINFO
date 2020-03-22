@@ -1,7 +1,7 @@
 pkgbase = asyncomplete.vim
 	pkgdesc = async completion in pure vim script for vim8 and neovim
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/prabirshrestha/asyncomplete.vim
 	arch = any
 	groups = vim-plugins

@@ -2,7 +2,7 @@
 
 pkgname=asyncomplete.vim
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="async completion in pure vim script for vim8 and neovim"
 arch=('any')
 url="https://github.com/prabirshrestha/asyncomplete.vim"
@@ -18,11 +18,11 @@ sha512sums=('9229902712c34a246e3c711154d7e04a153c7b7e307d399ee363f5a06d9bf07d40f
 
 package() {
   VIMFILES=$pkgdir/usr/share/vim/vimfiles
+  install -d "$VIMFILES"
+
   cd ${srcdir}/${pkgname}-${pkgver}
-  mkdir -p $VIMFILES
   install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
-  for dir in autoload doc plugin; do
-    cp -r "$dir" $VIMFILES
-    chmod 755 -R $VIMFILES/$dir
-  done
+  cp -drr --no-preserve=ownership autoload $VIMFILES
+  cp -drr --no-preserve=ownership doc $VIMFILES
+  cp -drr --no-preserve=ownership plugin $VIMFILES
 }
