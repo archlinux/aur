@@ -1,0 +1,36 @@
+pkgbase = dosbox-svn-ne2000
+	pkgdesc = An emulator with builtin DOS for running DOS Games - Includes patches for NE2000 network card
+	pkgver = 0.74.2.4335M
+	pkgrel = 1
+	epoch = 1
+	url = http://dosbox.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = subversion
+	makedepends = desktop-file-utils
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libgl
+	depends = libpng
+	depends = libpcap
+	depends = mesa
+	depends = sdl_net
+	depends = sdl_sound
+	provides = dosbox
+	conflicts = dosbox
+	source = dosbox-svn-ne2000::svn+https://svn.code.sf.net/p/dosbox/code-0/dosbox/trunk
+	source = dosbox-svn-ne2000.desktop
+	source = dosbox-16.png
+	source = dosbox-48.png
+	source = dosbox-128.png
+	source = ne2000.patch
+	sha256sums = SKIP
+	sha256sums = 7c8db8a5a475f54283748b539b50fa49b59a87c5ff80e94e82520530b996f871
+	sha256sums = e657254e56dd7d66cb1cefbf37f0f360e13a221bc60b1638c00dcda508f7fd56
+	sha256sums = e71a3984170b3bf7af7d9cfbec0752187d70be76602721a1227b60980d7c380a
+	sha256sums = 228593e97732eaa31e0202b7d46da9d7529672369c17312db3f97784601b5d81
+	sha256sums = 839e20fab07cc29bb80e34fce2199dea91eacd090c6bce89c4d276564ac519cb
+
+pkgname = dosbox-svn-ne2000
+
