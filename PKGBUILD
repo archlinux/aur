@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _knm="-lts44"
-_kvd="4.4.213-1"
+_kvd="4.4.217-1"
 _kvo=""
 _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
 _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -9,8 +9,8 @@ _kvr="${_kvv:+${_kvv}${_knm}}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules${_knm}-git
 _pkgname=openss7-modules${_knm}
-pkgver=1.1.8.456.gce55d4128
-pkgrel=4
+pkgver=1.1.8.467.g24ee9de09
+pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS ${_kvx}} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
@@ -24,7 +24,9 @@ makedepends=('git' 'doxygen' 'gcc6-gcj' 'gcc-libs' 'ghostscript' 'gjdoc' 'glibc'
 	     'texlive-core' 'transfig' 'gawk' 'classpath'
              'popt')
 conflicts=($_pkgname)
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname=$pkgver"
+          "openss7-kernel=$pkgver"
+          "openss7-kernel-git=$pkgver")
 options=('!emptydirs' '!strip' ${_kvo})
 source=("$pkgname::git+https://github.com/openss7/openss7.git")
 md5sums=('SKIP')
