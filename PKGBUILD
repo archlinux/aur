@@ -2,7 +2,7 @@
 
 pkgname='singularity-container'
 pkgver='3.5.3'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Container platform focused on supporting "Mobility of Compute".'
 arch=('i686' 'x86_64')
 url='https://www.sylabs.io/singularity/'
@@ -22,7 +22,7 @@ prepare() {
 build() {
   export GOPATH="${srcdir}/singularity"
   cd "${GOPATH}/src/github.com/sylabs/singularity"
-  ./mconfig --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  ./mconfig --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin -V ${pkgver}
   cd builddir
   make
 }
