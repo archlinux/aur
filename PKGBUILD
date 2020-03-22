@@ -2,13 +2,13 @@
 
 _pkgname=timekpr
 pkgname=$_pkgname-next-git
-pkgver=r119.6dab84d
+pkgver=r179.5971737
 pkgrel=1
 pkgdesc="Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in. Beta branch."
 arch=('any')
 url='https://launchpad.net/timekpr-next'
 license=('GPL')
-depends=('python-gobject' 'gtk3>=3.4' 'polkit' 'python-dbus' 'python-gobject' 'libappindicator3' 'dbus>=1.10.1' 'python-psutil')
+depends=('python-gobject' 'gtk3>=3.4' 'polkit' 'python-dbus' 'python-gobject' 'libappindicator-gtk3' 'dbus>=1.10.1' 'python-psutil')
 optdepends=('lxqt-policykit: to start the Control Panel like in LXQT'
             'mate-polkit: to start the Control Panel like in Mate'
             'polkit-kde-agent: to start the Control Panel like in Plasma'
