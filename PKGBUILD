@@ -4,14 +4,14 @@
 _pkgname=xf86-video-dummy
 pkgname=xf86-video-dummy-with-vt
 pkgver=0.3.8
-pkgrel=5
+pkgrel=6
 pkgdesc="X.org dummy video driver with an allocated vt"
 arch=(aarch64 armv7h i686 x86_64)
 url="https://xorg.freedesktop.org/"
 license=('custom')
 depends=('glibc')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'xf86dgaproto')
-conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25' "$_pkgname")
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=24.0' 'xorgproto')
+conflicts=('xorg-server<1.20' 'X-ABI-VIDEODRV_VERSION<24' 'X-ABI-VIDEODRV_VERSION>=25')
 provides=("$_pkgname")
 groups=('xorg-drivers')
 source=(${url}/releases/individual/driver/${_pkgname}-${pkgver}.tar.bz2{,.sig} dummy_driver.patch)
