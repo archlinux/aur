@@ -44,8 +44,7 @@ prepare() {
 build() {
   cd build
 
-  arch-meson "../${_plug}/AviSynth" \
-    --libdir /usr/lib/AviSynth
+  arch-meson "../${_plug}/AviSynth"
 }
 
 package(){
