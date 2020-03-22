@@ -1,0 +1,15 @@
+pkgbase = ferrite-core
+	pkgdesc = Ferrite Core DX font family by Froyo Tam(Meta-package with TTF and OTF variants)
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/froyotam/ferrite-core/
+	arch = any
+	license = Custom
+	conflicts = ttf-ferrite-core-git
+	source = otf-ferrite-core-2.0.tar.gz::https://github.com/froyotam/ferrite-core/archive/2.0.tar.gz
+	sha256sums = 3ecd9c181e746bd2b92c5fc429cfb0a3a61456637ab5a5d6d4d46dd0ca96c7ba
+
+pkgname = otf-ferrite-core
+
+pkgname = ttf-ferrite-core
+
