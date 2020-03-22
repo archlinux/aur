@@ -1,6 +1,6 @@
 pkgbase = clash-bin
 	pkgdesc = A rule based proxy in Go.
-	pkgver = 0.18.0
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/Dreamacro/clash
 	install = clash.install
@@ -10,13 +10,13 @@ pkgbase = clash-bin
 	provides = clash
 	conflicts = clash
 	conflicts = clash-git
-	noextract = clash-0.18.0.gz
+	noextract = clash-0.19.0.gz
 	source = clash@.service
 	source = clash_user.service
-	source = clash-0.18.0.gz::https://github.com/Dreamacro/clash/releases/download/v0.18.0/clash-linux-amd64-v0.18.0.gz
+	source = clash-0.19.0.gz::https://github.com/Dreamacro/clash/releases/download/v0.19.0/clash-linux-amd64-v0.19.0.gz
 	sha256sums = 5742063861d24f959a6aed1eecbcdfde772e63dcf1e9104690d4255d6967e656
 	sha256sums = 71a8880111f577df201c8c73300616a01411f14a6a7d14a18c768e469dc71541
-	sha256sums = d769ac1e354a56002348681b0693a62bb4bdbad68480c9d41ca4d3dba642e2ee
+	sha256sums = ef212c730e204db02c7e4dc235c7829e55560dc7da8b7602736f188ee5acfe79
 
 pkgname = clash-bin
 
