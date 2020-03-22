@@ -1,15 +1,15 @@
 pkgbase = gdal-grass
-	pkgdesc = GRASS raster and vector format support for GDAL >= 3.0.0.
-	pkgver = 3.0.0
+	pkgdesc = GRASS raster and vector format support for GDAL >= 3.0.4.
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = http://www.gdal.org
 	arch = i686
 	arch = x86_64
 	license = X11/MIT
-	depends = gdal>=3.0.0
-	depends = grass7
-	source = http://download.osgeo.org/gdal/3.0.0/gdal-grass-3.0.0.tar.gz
-	md5sums = 415ad0fee6a63b206530d243242ba2cb
+	depends = gdal>=3.0.4
+	depends = grass
+	source = http://download.osgeo.org/gdal/3.0.4/gdal-grass-3.0.4.tar.gz
+	md5sums = f7a21fff374e0a2b0390f8e0b33a8ca0
 
 pkgname = gdal-grass
 
