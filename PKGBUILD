@@ -1,21 +1,24 @@
-# Maintainer: CountMurphy <spartan1086@gmail.com>
-# Maintainer: Shelvacu <aur@shelvacu.com>
+# Maintainer: motte <motte22 at protonmail dot com>
+# Contributor: CountMurphy <spartan1086@gmail.com>
+# Contributor: Shelvacu <aur@shelvacu.com>
 
 _gitname=libserial
 pkgname="${_gitname}-git"
-pkgver=r516.ff5b6b0
+pkgver=r530.2acb0c4
 pkgrel=1
 pkgdesc="A library for accessing serial ports on POSIX systems (git version)"
 arch=('x86_64')
 url="https://github.com/crayzeewulf/${_gitname}/"
 license=('GPL2')
 makedepends=(
-    'git' 
+    'git'
     'python-sip'
     'python-sphinx'
     'python-sphinx_rtd_theme'
     'gtest'
     'boost'
+    'cmake'
+    'doxygen'
 )
 conflicts=("${_gitname}")
 provides=("${_gitname}")
