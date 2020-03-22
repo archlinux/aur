@@ -1,6 +1,6 @@
 pkgbase = d-tracker
 	pkgdesc = Lightweight, cross-platform and simple to setup timetracker. Similar to hamster but uses about 10MB of RAM and has a small quantity of dependencies.
-	pkgver = 1.1.r2.g415aa33
+	pkgver = 1.2.r0.g14723c9
 	pkgrel = 1
 	url = https://github.com/drmargarido/d-tracker
 	arch = i686
