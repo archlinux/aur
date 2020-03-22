@@ -1,7 +1,7 @@
 _phpbase=72
 pkgname=php72-igbinary
 _pkgname=igbinary
-pkgver=3.0.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="php72 extension igbinary"
 url="http://pecl.php.net/package/igbinary"
@@ -11,7 +11,7 @@ makedepends=("php${_phpbase}")
 depends=("php${_phpbase}")
 backup=("etc/php${_phpbase}/conf.d/igbinary.ini")
 source=("http://pecl.php.net/get/igbinary-${pkgver}.tgz")
-md5sums=('fb3b2f7fa306ca582afd9f382c409a24')
+md5sums=('34280e1609ef8e23f67fe3e690405787')
 
 build() {
   cd "$srcdir/igbinary-$pkgver"
