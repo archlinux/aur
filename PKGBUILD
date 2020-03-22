@@ -14,7 +14,7 @@ provides=('yt')
 backup=()
 options=()
 install=
-source=('https://ahbnr.de/jenkins/job/yt/25/artifact/yt')
+source=('https://ahbnr.de/jenkins/job/yt/26/artifact/yt')
 noextract=()
 md5sums=('SKIP')
 
