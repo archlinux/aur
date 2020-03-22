@@ -1,7 +1,7 @@
 pkgbase = legend
 	pkgdesc = A package list for web developers
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = base-devel
 	groups = xorg
@@ -183,7 +183,7 @@ pkgbase = legend
 	depends = php-event
 	depends = php-sqlsrv
 	depends = php-pdo_sqlsrv
-	depends = php-stan
+	depends = sqlmap
 	depends = php-blackfire
 	depends = phpbrew
 	depends = prestashop
