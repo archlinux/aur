@@ -1,19 +1,19 @@
-pkgbase = zfs-linux-lts
-	pkgver = 0.8.3_5.4.24.1
+pkgbase = zfs-linux-rt
+	pkgver = 0.8.3_5.4.24.15.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-lts-headers=5.4.24-1
+	makedepends = linux-rt-headers=5.4.24.15-1
 	depends = kmod
 	depends = zfs-utils=0.8.3
-	depends = linux-lts=5.4.24-1
+	depends = linux-rt=5.4.24.15-1
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz
 	source = linux-5.5-compat-blkg_tryget.patch
 	sha256sums = 545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd
 	sha256sums = daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da
 
-pkgname = zfs-linux-lts
+pkgname = zfs-linux-rt
 	pkgdesc = Kernel modules for the Zettabyte File System.
 	install = zfs.install
 	groups = archzfs-linux-lts
@@ -29,7 +29,7 @@ pkgname = zfs-linux-lts
 	conflicts = spl-linux-lts
 	replaces = spl-linux-lts
 
-pkgname = zfs-linux-lts-headers
+pkgname = zfs-linux-rt-headers
 	pkgdesc = Kernel headers for the Zettabyte File System.
 	provides = zfs-headers
 	provides = spl-headers
