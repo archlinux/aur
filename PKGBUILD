@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 pkgname=('pinocchio' 'pinocchio-docs')
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -36,6 +36,7 @@ package_pinocchio() {
     cd "$pkgbase-$pkgver/build"
     make DESTDIR="$pkgdir/" install
     rm -rf $pkgdir/usr/share/doc
+    sed -i 's=;/usr/\.\./include/include==' "$pkgdir/usr/lib/cmake/pinocchio/pinocchioTargets.cmake"
     install -Dm644 ../COPYING.LESSER "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

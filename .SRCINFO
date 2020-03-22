@@ -1,7 +1,7 @@
 pkgbase = pinocchio
 	pkgdesc = Dynamic computations using Spatial Algebra
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/stack-of-tasks/pinocchio
 	arch = i686
 	arch = x86_64
