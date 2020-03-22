@@ -1,0 +1,183 @@
+diff -ruN a/Makefile b/Makefile
+--- a/Makefile	2017-07-08 23:40:42.000000000 +0200
++++ b/Makefile	2020-03-22 10:09:05.182126736 +0100
+@@ -30,7 +30,7 @@
+ endif
+ 
+ 
+-PROGRAM = helm
++PROGRAM = helm-synth
+ BIN     = $(DESTDIR)/usr/bin
+ BINFILE = $(BIN)/$(PROGRAM)
+ LV2     = $(DESTDIR)/$(LIBDIR)/lv2/$(PROGRAM).lv2
+@@ -98,22 +98,22 @@
+ install_standalone: standalone install_patches install_icons
+ 	install -d $(BIN) $(IMAGES) $(MAN) $(CHANGES) $(DESKTOP)
+ 	install standalone/builds/linux/build/$(PROGRAM) $(BIN)
+-	install -m644 standalone/helm.desktop $(DESKTOP)/helm.desktop
++	install -m644 standalone/helm.desktop $(DESKTOP)/helm-synth.desktop
+ 	install -m644 images/* $(IMAGES)
+ 	cp changelog changes
+ 	gzip -n -9 changelog
+ 	mv changes changelog
+ 	mv changelog.gz $(CHANGES)/changelog.gz
+-	cp docs/helm.1.gz $(MAN)
++	mv docs/helm.1.gz $(MAN)/helm-synth.1.gz
+ 
+ install_lv2: lv2 install_patches
+ 	install -d $(PATCHES) $(LV2)
+-	install -m644 builds/linux/LV2/helm.lv2/* $(LV2)
++	install -m644 builds/linux/LV2/helm-synth.lv2/* $(LV2)
+ 	cp -rf patches/* $(PATCHES)
+ 
+ install_vst: vst install_patches
+ 	install -d $(PATCHES) $(VSTDIR)
+-	install builds/linux/VST/build/helm.so $(VST)
++	install builds/linux/VST/build/helm-synth.so $(VST)
+ 	cp -rf patches/* $(PATCHES)
+ 
+ thank_you:
+diff -ruN a/builds/linux/LV2/Makefile b/builds/linux/LV2/Makefile
+--- a/builds/linux/LV2/Makefile	2017-07-08 23:40:42.000000000 +0200
++++ b/builds/linux/LV2/Makefile	2020-03-21 23:19:20.419513279 +0100
+@@ -11,13 +11,13 @@
+ 	$(MAKE) -f Makefile.ttl_generator CONFIG=$(CONFIG)
+ 
+ lv2: ttl_generator binary
+-	./lv2_ttl_generator build/helm.so
+-	mkdir -p helm.lv2
+-	cp build/helm.so helm.lv2
+-	mv *.ttl helm.lv2
++	./lv2_ttl_generator build/helm-synth.so
++	mkdir -p helm-synth.lv2
++	cp build/helm-synth.so helm-synth.lv2
++	mv *.ttl helm-synth.lv2
+ 
+ clean:
+ 	$(MAKE) clean CONFIG=$(CONFIG) -f Makefile.binary
+ 	$(MAKE) clean CONFIG=$(CONFIG) -f Makefile.ttl_generator
+ 	rm -rf build
+-	rm -rf helm.lv2
++	rm -rf helm-synth.lv2
+diff -ruN a/builds/linux/LV2/Makefile.binary b/builds/linux/LV2/Makefile.binary
+--- a/builds/linux/LV2/Makefile.binary	2017-07-08 23:40:42.000000000 +0200
++++ b/builds/linux/LV2/Makefile.binary	2020-03-21 23:26:19.495820547 +0100
+@@ -38,10 +38,10 @@
+   JUCE_CPPFLAGS_VST := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
+   JUCE_CFLAGS_VST := -fPIC
+   JUCE_LDFLAGS_VST := -shared -Wl,--no-undefined
+-  JUCE_TARGET_VST := helm.so
++  JUCE_TARGET_VST := helm-synth.so
+ 
+   JUCE_CPPFLAGS_SHARED_CODE := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0 -DJUCE_SHARED_CODE=1
+-  JUCE_TARGET_SHARED_CODE := helm.a
++  JUCE_TARGET_SHARED_CODE := helm-synth.a
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -g -ggdb -O0 $(DEBCXXFLAGS) -ffast-math $(SIMDFLAGS) $(CFLAGS)
+   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11 $(CXXFLAGS)
+@@ -65,10 +65,10 @@
+   JUCE_CPPFLAGS_VST := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
+   JUCE_CFLAGS_VST := -fPIC
+   JUCE_LDFLAGS_VST := -shared -Wl,--no-undefined
+-  JUCE_TARGET_VST := helm.so
++  JUCE_TARGET_VST := helm-synth.so
+ 
+   JUCE_CPPFLAGS_SHARED_CODE := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0 -DJUCE_SHARED_CODE=1
+-  JUCE_TARGET_SHARED_CODE := helm.a
++  JUCE_TARGET_SHARED_CODE := helm-synth.a
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -O3 $(DEBCXXFLAGS) -ffast-math $(SIMDFLAGS) $(CFLAGS)
+   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11 $(CXXFLAGS)
+diff -ruN a/builds/linux/VST/Makefile b/builds/linux/VST/Makefile
+--- a/builds/linux/VST/Makefile	2017-07-08 23:40:42.000000000 +0200
++++ b/builds/linux/VST/Makefile	2020-03-21 23:19:55.625858511 +0100
+@@ -38,10 +38,10 @@
+   JUCE_CPPFLAGS_VST := -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
+   JUCE_CFLAGS_VST := -fPIC
+   JUCE_LDFLAGS_VST := -shared -Wl,--no-undefined
+-  JUCE_TARGET_VST := helm.so
++  JUCE_TARGET_VST := helm-synth.so
+ 
+   JUCE_CPPFLAGS_SHARED_CODE := -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0 -DJUCE_SHARED_CODE=1
+-  JUCE_TARGET_SHARED_CODE := helm.a
++  JUCE_TARGET_SHARED_CODE := helm-synth.a
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -g -ggdb -O0 $(DEBCXXFLAGS) -ffast-math $(SIMDFLAGS) -ftree-vectorize -ftree-slp-vectorize $(CFLAGS)
+   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11 $(CXXFLAGS)
+@@ -65,10 +65,10 @@
+   JUCE_CPPFLAGS_VST := -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
+   JUCE_CFLAGS_VST := -fPIC
+   JUCE_LDFLAGS_VST := -shared -Wl,--no-undefined
+-  JUCE_TARGET_VST := helm.so
++  JUCE_TARGET_VST := helm-synth.so
+ 
+   JUCE_CPPFLAGS_SHARED_CODE := -DJucePlugin_Build_VST=1 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0 -DJUCE_SHARED_CODE=1
+-  JUCE_TARGET_SHARED_CODE := helm.a
++  JUCE_TARGET_SHARED_CODE := helm-synth.a
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -O3 $(DEBCXXFLAGS) -ffast-math $(SIMDFLAGS) -ftree-vectorize -ftree-slp-vectorize $(CFLAGS)
+   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11 $(CXXFLAGS)
+diff -ruN a/src/common/load_save.cpp b/src/common/load_save.cpp
+--- a/src/common/load_save.cpp	2017-07-08 23:40:42.000000000 +0200
++++ b/src/common/load_save.cpp	2020-03-21 23:10:52.487485751 +0100
+@@ -20,9 +20,9 @@
+ #include "midi_manager.h"
+ #include "synth_base.h"
+ 
+-#define LINUX_FACTORY_PATCH_DIRECTORY "/usr/share/helm/patches"
++#define LINUX_FACTORY_PATCH_DIRECTORY "/usr/share/helm-synth/patches"
+ #define USER_BANK_NAME "User Patches"
+-#define LINUX_BANK_DIRECTORY "~/.helm/patches"
++#define LINUX_BANK_DIRECTORY "~/.helm-synth/patches"
+ #define EXPORTED_BANK_EXTENSION "helmbank"
+ #define DID_PAY_FILE "thank_you.txt"
+ #define PAY_WAIT_DAYS 4
+diff -ruN a/src/editor_sections/patch_browser.cpp b/src/editor_sections/patch_browser.cpp
+--- a/src/editor_sections/patch_browser.cpp	2017-07-08 23:40:42.000000000 +0200
++++ b/src/editor_sections/patch_browser.cpp	2020-03-21 23:10:25.127735768 +0100
+@@ -28,8 +28,8 @@
+ #define PATCHES_WIDTH_PERCENT 0.285
+ #define PATCH_INFO_WIDTH_PERCENT 0.285
+ #define TEXT_PADDING 4.0f
+-#define LINUX_SYSTEM_PATCH_DIRECTORY "/usr/share/helm/patches"
+-#define LINUX_USER_PATCH_DIRECTORY "~/.helm/User Patches"
++#define LINUX_SYSTEM_PATCH_DIRECTORY "/usr/share/helm-synth/patches"
++#define LINUX_USER_PATCH_DIRECTORY "~/.helm-synth/User Patches"
+ #define BROWSING_HEIGHT 430.0f
+ #define BROWSE_PADDING 8.0f
+ #define BUTTON_HEIGHT 30.0f
+diff -ruN a/standalone/builds/linux/Makefile b/standalone/builds/linux/Makefile
+--- a/standalone/builds/linux/Makefile	2017-07-08 23:40:42.000000000 +0200
++++ b/standalone/builds/linux/Makefile	2020-03-21 23:57:18.385773158 +0100
+@@ -35,7 +35,7 @@
+ 
+   JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DDEBUG=1 -D_DEBUG=1 -DJUCE_JACK_CLIENT_NAME=\"Helm\" -DJUCE_ALSA_MIDI_INPUT_NAME=\"Helm\" -DJUCE_ALSA_MIDI_OUTPUT_NAME=\"Helm\" -DJUCE_USE_XRANDR=0 -DJUCER_LINUX_MAKE_6B3E762A=1 -DJUCE_APP_VERSION=0.9.0 -DJUCE_APP_VERSION_HEX=0x900 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../../JUCE/modules -I../../../concurrentqueue -I../../../mopo/src -I../../../src -I../../../src/common -I../../../src/editor_components -I../../../src/editor_sections -I../../../src/look_and_feel -I../../../src/standalone -I../../../src/synthesis $(CPPFLAGS)
+   JUCE_CPPFLAGS_APP := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
+-  JUCE_TARGET_APP := helm
++  JUCE_TARGET_APP := helm-synth
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0 $(DEBCXXFLAGS) -ffast-math $(SIMDFLAGS) -ftree-vectorize -ftree-slp-vectorize $(CFLAGS)
+   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11 $(CXXFLAGS)
+@@ -56,7 +56,7 @@
+ 
+   JUCE_CPPFLAGS := $(DEPFLAGS) -DLINUX=1 -DNDEBUG=1 -DJUCE_JACK_CLIENT_NAME=\"Helm\" -DJUCE_ALSA_MIDI_INPUT_NAME=\"Helm\" -DJUCE_ALSA_MIDI_OUTPUT_NAME=\"Helm\" -DJUCE_USE_XRANDR=0 -DJUCER_LINUX_MAKE_6B3E762A=1 -DJUCE_APP_VERSION=0.9.0 -DJUCE_APP_VERSION_HEX=0x900 $(shell pkg-config --cflags alsa freetype2 libcurl x11 xext xinerama) -pthread -I../../JuceLibraryCode -I../../../JUCE/modules -I../../../concurrentqueue -I../../../mopo/src -I../../../src -I../../../src/common -I../../../src/editor_components -I../../../src/editor_sections -I../../../src/look_and_feel -I../../../src/standalone -I../../../src/synthesis $(CPPFLAGS)
+   JUCE_CPPFLAGS_APP := -DJucePlugin_Build_VST=0 -DJucePlugin_Build_VST3=0 -DJucePlugin_Build_AU=0 -DJucePlugin_Build_AUv3=0 -DJucePlugin_Build_RTAS=0 -DJucePlugin_Build_AAX=0 -DJucePlugin_Build_Standalone=0
+-  JUCE_TARGET_APP := helm
++  JUCE_TARGET_APP := helm-synth
+ 
+   JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -O3 $(DEBCXXFLAGS) -ffast-math $(SIMDFLAGS) -ftree-vectorize -ftree-slp-vectorize $(CFLAGS)
+   JUCE_CXXFLAGS += $(CXXFLAGS) $(JUCE_CFLAGS) -std=c++11 $(CXXFLAGS)
+diff -ruN a/standalone/helm.desktop b/standalone/helm.desktop
+--- a/standalone/helm.desktop	2017-07-08 23:40:42.000000000 +0200
++++ b/standalone/helm.desktop	2020-03-22 10:15:54.648179521 +0100
+@@ -4,8 +4,8 @@
+ Comment[fr]=Un synthétiseur polyphonique libre avec un tas de module
+ GenericName=Synth
+ GenericName[fr]=Synthétiseur
+-Exec=helm
+-Icon=helm
++Exec=helm-synth
++Icon=helm-synth
+ Terminal=false
+ Type=Application
+ Categories=Audio;AudioVideo;
