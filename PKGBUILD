@@ -3,7 +3,7 @@
 # Linux Zen Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-haruka-workstation
-pkgver=5.5.10.haruka
+pkgver=5.5.11.haruka
 pkgrel=1
 pkgdesc='Haruka Workstation Kernel'
 _srctag=v${pkgver%.*}-${pkgver##*.}
