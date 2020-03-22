@@ -1,7 +1,7 @@
-From e4c42bd073db08db2f3a01382aa5073dfb871f02 Mon Sep 17 00:00:00 2001
+From 649b995d6f87e0ddd5c36fbf869ea7a258c46380 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Tue, 3 Dec 2019 10:13:46 +0000
-Subject: [PATCH 05/11] drm/i915/gem: Take runtime-pm wakeref prior to
+Subject: [PATCH 05/12] drm/i915/gem: Take runtime-pm wakeref prior to
  unbinding
 
 Some machines require ACPI for runtime resume, and ACPI is quite kmalloc

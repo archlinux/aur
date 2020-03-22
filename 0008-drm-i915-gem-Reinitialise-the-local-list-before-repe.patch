@@ -1,7 +1,7 @@
-From 9109f28c248016fc52b976fb96b2adc7e9cc790d Mon Sep 17 00:00:00 2001
+From 595c07526855cabbbc0bc82a3a28c1ac0eceae0e Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Thu, 5 Dec 2019 13:29:12 +0000
-Subject: [PATCH 08/11] drm/i915/gem: Reinitialise the local list before
+Subject: [PATCH 08/12] drm/i915/gem: Reinitialise the local list before
  repeating
 
 As we may start the loop again, we require our local list of i915_vma

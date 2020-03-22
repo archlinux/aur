@@ -1,7 +1,7 @@
-From 686cb427b261df01cefbd4fadfdde442fd136052 Mon Sep 17 00:00:00 2001
+From a157f668e6ec89b9c34238e09c7b30839b9d9ffe Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 2 Feb 2020 17:16:31 +0000
-Subject: [PATCH 03/11] drm: Remove PageReserved manipulation from
+Subject: [PATCH 03/12] drm: Remove PageReserved manipulation from
  drm_pci_alloc
 
 drm_pci_alloc/drm_pci_free are very thin wrappers around the core dma

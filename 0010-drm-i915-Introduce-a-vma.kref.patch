@@ -1,7 +1,7 @@
-From 3b13f04a0be3eafa7b3a3be2ab068f2636c44be2 Mon Sep 17 00:00:00 2001
+From f9263854415cb857cef239b6d6ae5f05066e4731 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 22 Dec 2019 21:02:55 +0000
-Subject: [PATCH 10/11] drm/i915: Introduce a vma.kref
+Subject: [PATCH 10/12] drm/i915: Introduce a vma.kref
 
 Start introducing a kref on i915_vma in order to protect the vma unbind
 (i915_gem_object_unbind) from a parallel destruction (i915_vma_parked).

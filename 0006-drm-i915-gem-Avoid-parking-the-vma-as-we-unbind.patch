@@ -1,7 +1,7 @@
-From 79e0b89416f08594e4de623bd7abb344c73a4eb7 Mon Sep 17 00:00:00 2001
+From 4e14c86bb1575e16cfa0da8e7b670497b8c95657 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Tue, 3 Dec 2019 15:50:32 +0000
-Subject: [PATCH 06/11] drm/i915/gem: Avoid parking the vma as we unbind
+Subject: [PATCH 06/12] drm/i915/gem: Avoid parking the vma as we unbind
 
 In order to avoid keeping a reference on the i915_vma (which is long
 overdue!) we have to coordinate all the possible lifetimes and only use
