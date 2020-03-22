@@ -1,7 +1,7 @@
 pkgbase = python-syft
 	pkgdesc = A Library for Private, Secure Deep Learning
-	pkgver = 0.1.19a1
-	pkgrel = 9
+	pkgver = 0.2.4
+	pkgrel = 10
 	url = https://github.com/OpenMined/PySyft
 	arch = any
 	license = Apache-2.0
