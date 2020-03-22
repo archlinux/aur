@@ -1,7 +1,7 @@
 pkgname=terminus-cyrillic
 _pkgname=terminus-font
-pkgver=4.47
-pkgrel=2
+pkgver=4.48
+pkgrel=1
 pkgdesc='Terminus monospace bitmap font (for X11 and console) with patches dv1 and ij1 applied'
 arch=('any')
 url='http://sourceforge.net/projects/terminus-font/'
@@ -63,4 +63,4 @@ package() {
   ln -s ../conf.avail/75-yes-terminus.conf .
 }
 
-sha256sums=('0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297')
+sha256sums=('34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af')

@@ -1,7 +1,7 @@
 pkgbase = terminus-cyrillic
 	pkgdesc = Terminus monospace bitmap font (for X11 and console) with patches dv1 and ij1 applied
-	pkgver = 4.47
-	pkgrel = 2
+	pkgver = 4.48
+	pkgrel = 1
 	url = http://sourceforge.net/projects/terminus-font/
 	install = terminus-cyrillic.install
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = terminus-cyrillic
 	optdepends = xorg-fonts-alias
 	provides = terminus-font
 	conflicts = terminus-font
-	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.47/terminus-font-4.47.tar.gz
-	sha256sums = 0f1b205888e4e26a94878f746b8566a65c3e3742b33cf9a4e6517646d5651297
+	source = http://downloads.sourceforge.net/project/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
+	sha256sums = 34799c8dd5cec7db8016b4a615820dfb43b395575afbb24fc17ee19c869c94af
 
 pkgname = terminus-cyrillic
 
