@@ -1,6 +1,6 @@
 pkgbase = gtk-youtube-viewer-git
 	pkgdesc = GTK+ application for searching and streaming videos from YouTube.
-	pkgver = 3.7.4
+	pkgver = 3.7.5
 	pkgrel = 1
 	url = https://github.com/trizen/youtube-viewer
 	arch = any
