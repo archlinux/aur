@@ -1,6 +1,6 @@
 pkgbase = trizen-git
 	pkgdesc = Trizen AUR Package Manager: lightweight pacman wrapper and AUR helper (-git version).
-	pkgver = 1.62
+	pkgver = 1.63
 	pkgrel = 1
 	url = https://github.com/trizen/trizen
 	arch = any
