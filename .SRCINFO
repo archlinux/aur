@@ -1,7 +1,7 @@
 pkgbase = timekpr-next
 	pkgdesc = Control the computer usage of users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in.
 	pkgver = 0.2.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/timekpr-next
 	install = timekpr-next.install
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = timekpr-next
 	depends = polkit
 	depends = python-dbus
 	depends = python-gobject
-	depends = libappindicator3
+	depends = libappindicator-gtk3
 	depends = dbus>=1.10.1
 	depends = python-psutil
 	optdepends = lxqt-policykit: to start the Control Panel like in LXQT
