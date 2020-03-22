@@ -1,0 +1,13 @@
+pkgbase = python-flask-executor
+	pkgdesc = An easy to use Flask wrapper for concurrent.futures
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/dchevell/flask-executor
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/GregoryLand/flask-executor/archive/v0.9.3.tar.gz
+	sha256sums = 6fc1a0edfd68627aa4d47916324ccbd518ad2302afd4c9e1fe81097e8a7221e6
+
+pkgname = python-flask-executor
+
