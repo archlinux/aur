@@ -1,7 +1,7 @@
 # Maintainer: Patrice Peterson <runiq at archlinux dot us>
 
 pkgname=jrnl
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A simple command line journal application that stores your journal in a plain text file"
 arch=('any')
@@ -19,7 +19,7 @@ depends=('python-parsedatetime>=1.2'
          'python-xdg>=0.26')
 optdepends=('python-crypto: AES256-encrypted journal')
 source=("https://pypi.python.org/packages/source/j/$pkgname/$pkgname-${pkgver}.tar.gz")
-sha256sums=('2f9c749ee38fd3e1c6bb3027bde84ade2723623cae2633cb2829694339950189')
+sha256sums=('ede6b3783562b03eaab64679d1913d335079535dbc8cca83bffbd65dacb4bcb6')
 
 package() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = jrnl
 	pkgdesc = A simple command line journal application that stores your journal in a plain text file
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://maebert.github.io/jrnl
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = jrnl
 	depends = python-asteval>=0.9.8
 	depends = python-xdg>=0.26
 	optdepends = python-crypto: AES256-encrypted journal
-	source = https://pypi.python.org/packages/source/j/jrnl/jrnl-2.2.tar.gz
-	sha256sums = 2f9c749ee38fd3e1c6bb3027bde84ade2723623cae2633cb2829694339950189
+	source = https://pypi.python.org/packages/source/j/jrnl/jrnl-2.3.tar.gz
+	sha256sums = ede6b3783562b03eaab64679d1913d335079535dbc8cca83bffbd65dacb4bcb6
 
 pkgname = jrnl
 
