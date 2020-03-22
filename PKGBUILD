@@ -5,7 +5,7 @@
 
 pkgname=copybara-git
 pkgver=0.0.0.bf7649f9
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for transforming and moving code between repositories"
 arch=('x86_64')
 url="https://github.com/google/${pkgname%-git}"
@@ -37,11 +37,8 @@ pkgver() {
 build() {
   cd "${srcdir}/${pkgname%-git}"
 
+  # Build the "uberjar"
   bazel build //java/com/google/copybara:copybara_deploy.jar
-
-  # TODO: this is fairly intensive on my ryzen 3700U; this should be uncommented
-  # prior to committing in master, once builds have been moved to the build farm
-  # bazel test //...
 }
 
 package() {
@@ -50,13 +47,12 @@ package() {
      "${srcdir}/copybara.sh" \
     "${pkgdir}/usr/bin/copybara"
 
-
-  # # Install the uberjar
+  # Install the uberjar
   install -D -m 655 \
     "${srcdir}/${pkgname%-git}/bazel-bin/java/com/google/copybara/copybara_deploy.jar" \
     "${pkgdir}/usr/bin/copybara-real"
 
-  # # Install the license
+  # Install the license
   install -D -m 644 \
     "${srcdir}/${pkgname%-git}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
