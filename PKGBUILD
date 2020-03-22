@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=loksh-git
 pkgver=6.6.r61.db365e4
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Linux port of OpenBSD's ksh."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/dimkr/loksh"
 license=('publicdomain')
 groups=()
 depends=('libbsd')
-makedepends=('git')
+makedepends=('git' 'meson')
 optdepends=()
 checkdepends=()
 provides=('loksh')
