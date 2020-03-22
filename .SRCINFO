@@ -1,6 +1,6 @@
 pkgbase = antconc
 	pkgdesc = A freeware corpus analysis toolkit for arrying out corpus linguistics research and data-driven learning.
-	pkgver = 3.5.7
+	pkgver = 3.5.8
 	pkgrel = 1
 	url = http://www.laurenceanthony.net/software/antconc/
 	arch = x86_64

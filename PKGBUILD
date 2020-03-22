@@ -1,6 +1,7 @@
-# Maintainer: Radostin Stoyanov <rstoyanov1 at gmail dot com>
+# Contributor: Radostin Stoyanov <rstoyanov1 at gmail dot com>
+
 pkgname=antconc
-pkgver=3.5.7
+pkgver=3.5.8
 _appname=AntConc_64bit
 pkgrel=1
 pkgdesc="A freeware corpus analysis toolkit for arrying out corpus linguistics research and data-driven learning."
