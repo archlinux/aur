@@ -1,12 +1,12 @@
 pkgbase = google-cloud-sdk
 	pkgdesc = A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq.
 	pkgver = 285.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
 	license = Apache
 	depends = python
-	depends = python2
+	optdepends = python2: for dev_appserver.py and endpointscfg support
 	optdepends = python-crcmod: [gsutil] verify the integrity of GCS object contents
 	options = !strip
 	options = staticlibs
