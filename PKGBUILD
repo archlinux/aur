@@ -1,7 +1,7 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=chars
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Command line tool to display information about unicode characters.'
 arch=('i686' 'x86_64')
 url="https://github.com/antifuchs/chars"
@@ -14,7 +14,8 @@ sha256sums=('5e2807b32bd75862d8b155fa774db26b649529b62da26a74e817bec5a26e1d7c')
 
 build() {
   cd "$pkgname-$pkgver"
-  /usr/bin/cargo build --release --locked
+  RUSTUP_TOOLCHAIN=stable \
+    /usr/bin/cargo build --release --locked
 }
 
 package() {
