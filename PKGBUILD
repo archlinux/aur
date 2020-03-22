@@ -11,10 +11,8 @@ makedepends=(git scons boost)
 provides=(rlvm)
 conflicts=(rlvm)
 source=('git+https://github.com/eglaysher/rlvm.git'
-        'detect_guichan.patch'
         'freetype.patch')
 md5sums=('SKIP'
-         '2e2602bca4bc2dd576834f406f5c3af5'
          '60d11c6a9b259eda3ee69c6a6ddaffac')
 
 pkgver() {
@@ -25,7 +23,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/rlvm/"
   rm -r "$srcdir/rlvm/vendor/guichan"
-  patch -p1 < "$srcdir/detect_guichan.patch"
   patch -p1 < "$srcdir/freetype.patch"
 }
 
