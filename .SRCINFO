@@ -1,0 +1,16 @@
+pkgbase = adns-git
+	pkgdesc = An asyncronous replacement resolver library
+	pkgver = adns.r1.5.1
+	pkgrel = 1
+	epoch = 1
+	url = https://www.chiark.greenend.org.uk/~ian/adns
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = glibc
+	source = adns::git://git.chiark.greenend.org.uk/~ianmdlvl/adns.git
+	sha1sums = SKIP
+
+pkgname = adns-git
+
