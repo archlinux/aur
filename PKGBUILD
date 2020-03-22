@@ -3,7 +3,7 @@
 _pkgname=ppx_yojson_conv_lib
 pkgname=ocaml-${_pkgname}
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Runtime lib for ppx_yojson_conv"
 arch=('x86_64')
 depends=('ocaml' 'ocaml-yojson>=1.7.0')

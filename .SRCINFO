@@ -1,7 +1,7 @@
 pkgbase = ocaml-ppx_yojson_conv_lib
 	pkgdesc = Runtime lib for ppx_yojson_conv
 	pkgver = 0.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/janestreet/ppx_yojson_conv_lib
 	arch = x86_64
 	license = MIT
