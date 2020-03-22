@@ -6,7 +6,7 @@
 
 pkgname=asymptote-git
 epoch=2
-pkgver=2.62.git.1.g1fca842e
+pkgver=2.65.git.4.g48777621
 pkgrel=1
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
@@ -42,7 +42,9 @@ build() {
   ./autogen.sh
   ./configure --enable-gc=/usr \
     --prefix=/usr \
-    --enable-offscreen
+    --enable-offscreen \
+    --with-latex=/usr/share/texmf/tex/latex \
+    --with-context=/usr/share/texmf/tex/context
   make all
 }
 
