@@ -1,10 +1,10 @@
---- setup.py.orig	2019-09-18 06:01:48.000000000 +0800
-+++ setup.py	2019-10-16 23:50:29.779196868 +0800
-@@ -112,7 +112,6 @@
-   requires = [
-       'attrs',
-       'importlab (>=0.5.1)',
--      'ninja',
-       'pyyaml (>=3.11)',
-       'six',
-   ]
+--- setup.cfg.orig	2020-03-22 22:54:01.675465861 +0800
++++ setup.cfg	2020-03-22 22:54:08.448978222 +0800
+@@ -33,7 +33,6 @@
+ install_requires =
+     attrs
+     importlab>=0.5.1
+-    ninja
+     pyyaml>=3.11
+     six
+     typed_ast; python_version >= "3.3"

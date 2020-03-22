@@ -1,7 +1,7 @@
 pkgbase = pytype
 	pkgdesc = Python type inferencer
-	pkgver = 2019.10.17
-	pkgrel = 2
+	pkgver = 2020.03.19
+	pkgrel = 1
 	url = https://google.github.io/pytype
 	arch = any
 	license = APACHE
@@ -15,7 +15,7 @@ pkgbase = pytype
 	makedepends = flex>=2.5.35
 	makedepends = fakeroot
 	depends = ninja
-	depends = python>=3.3
+	depends = python>=3.5
 	depends = python-attrs
 	depends = python-importlab>=0.5.1
 	depends = python-six
@@ -23,18 +23,19 @@ pkgbase = pytype
 	depends = python-yaml>=3.11
 	optdepends = python2: for target code of Python 2.7 support
 	optdepends = python36: for target code of Python 3.6 support
+	optdepends = python37: for target code of Python 3.7 support
 	provides = pytype
 	options = !emptydirs
-	source = https://github.com/google/pytype/archive/2019.10.17.tar.gz
+	source = https://github.com/google/pytype/archive/2020.03.19.tar.gz
 	source = cpython-9734024.zip::https://github.com/python/cpython/archive/9734024ec65311e33936faa83fb1cb249ef0de9d.zip
 	source = googletest-e82d320.zip::https://github.com/google/googletest/archive/e82d320567a45db1a999f9109f2b9a733bc59bb1.zip
-	source = typeshed-668988f.zip::https://github.com/python/typeshed/archive/668988fa8cfd106a73218b23f953f226db89b3d4.zip
+	source = typeshed-d5851ec.zip::https://github.com/python/typeshed/archive/d5851eca6f448b648e1a7b3f3010cc3dde498535.zip
 	source = without-ninja-python-distributions.patch
-	sha256sums = f43487b2b8729b9e082c25652e1d22c166654ab9bc208a1ce9f8577330e77a82
+	sha256sums = 3aecacb8901034451b7ddc61eb6684f6e9f0454fc3fd7bac13873cac04732766
 	sha256sums = ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a
 	sha256sums = 891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7
-	sha256sums = 63139752f2cb4714af0d79aa4c6356fd2892776fd2d5420efd31ae1343056d8d
-	sha256sums = a6ec264db06e04452a818d5af3ffbed5f6299e4d01acbabd35874bdc01f17197
+	sha256sums = 23280e9f9d037392ac5999dda3cc147c4ca2301998446e2bfcfe01f16942baa3
+	sha256sums = a73a70cd879656d07f3075298ab97412026c0b414031abd9ef84b99c2936e459
 
 pkgname = pytype
 

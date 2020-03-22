@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 _pytype_repo="https://github.com/google/pytype"
-_pytype_tag=2019.10.17
+_pytype_tag=2020.03.19
 
 _cpython_repo="https://github.com/python/cpython"
 _cpython_gitcommit="9734024ec65311e33936faa83fb1cb249ef0de9d"
@@ -10,11 +10,11 @@ _googletest_repo="https://github.com/google/googletest"
 _googletest_gitcommit="e82d320567a45db1a999f9109f2b9a733bc59bb1"
 
 _typeshed_repo="https://github.com/python/typeshed"
-_typeshed_gitcommit="668988fa8cfd106a73218b23f953f226db89b3d4"
+_typeshed_gitcommit="d5851eca6f448b648e1a7b3f3010cc3dde498535"
 
 pkgname=pytype
 pkgver="${_pytype_tag}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Python type inferencer"
 arch=('any')
 url="https://google.github.io/pytype"
@@ -22,7 +22,7 @@ license=('APACHE')
 provides=('pytype')
 depends=(
   'ninja'
-  'python>=3.3'
+  'python>=3.5'
   'python-attrs'
   'python-importlab>=0.5.1'
   'python-six'
@@ -38,6 +38,7 @@ makedepends=(
 optdepends=(
   'python2: for target code of Python 2.7 support'
   'python36: for target code of Python 3.6 support'
+  'python37: for target code of Python 3.7 support'
 )
 options=(!emptydirs)
 source=(
@@ -48,11 +49,11 @@ source=(
   'without-ninja-python-distributions.patch'
 )
 sha256sums=(
-  'f43487b2b8729b9e082c25652e1d22c166654ab9bc208a1ce9f8577330e77a82'
+  '3aecacb8901034451b7ddc61eb6684f6e9f0454fc3fd7bac13873cac04732766'
   'ebc3b63747875586f17b967ad2dae6d2a404adb5814612200217f39074377f9a'
   '891d732c77eec9fb57727cd99990a25455d6d5859b1fde107a332c5e238cc9e7'
-  '63139752f2cb4714af0d79aa4c6356fd2892776fd2d5420efd31ae1343056d8d'
-  'a6ec264db06e04452a818d5af3ffbed5f6299e4d01acbabd35874bdc01f17197'
+  '23280e9f9d037392ac5999dda3cc147c4ca2301998446e2bfcfe01f16942baa3'
+  'a73a70cd879656d07f3075298ab97412026c0b414031abd9ef84b99c2936e459'
 )
 
 prepare() {
