@@ -1,7 +1,7 @@
 pkgbase = legend
-	pkgdesc = A configuration for web developers
+	pkgdesc = A package list for web developers
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	groups = base-devel
 	groups = xorg
@@ -143,9 +143,6 @@ pkgbase = legend
 	depends = conky-manager
 	depends = ruby
 	depends = gitg
-	depends = gnome
-	depends = gnome-extra
-	depends = i3
 
 pkgname = legend
 
