@@ -177,7 +177,6 @@ pkgbase = legend
 	depends = unixodbc
 	depends = unzip
 	depends = libaio
-	depends = oracle-xe-11g
 	depends = neo4j-community
 	depends = php-pdo-oci
 	depends = php-event
