@@ -1,13 +1,13 @@
 pkgbase = mmg3d
 	pkgdesc = Anisotropic tetrahedral remesher and moving mesh generator
 	pkgver = 5.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mmgtools.org/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
-	source = https://github.com/MmgTools/mmg/archive/v5.4.3.tar.gz
+	source = mmg3d-5.4.3.tar.gz::https://github.com/MmgTools/mmg/archive/v5.4.3.tar.gz
 	sha256sums = 73fb63616d87094a1fbd0a721ded7e062c7768844e450df4fa34e50dd9924c41
 
 pkgname = mmg3d
