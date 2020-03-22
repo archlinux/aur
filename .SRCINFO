@@ -1,7 +1,7 @@
 pkgbase = x16-emulator
 	pkgdesc = An emulator for The 8-Bit Guy's Commander X16
-	pkgver = r36
-	pkgrel = 2
+	pkgver = r37
+	pkgrel = 1
 	url = http://commanderx16.com/
 	arch = x86_64
 	groups = commander-x16
@@ -10,9 +10,9 @@ pkgbase = x16-emulator
 	makedepends = gendesk
 	depends = sdl2
 	optdepends = x16-rom: ROMs for the emulator
-	source = x16-emulator-r36.tar.gz::https://github.com/commanderx16/x16-emulator/archive/r36.tar.gz
+	source = x16-emulator-r37.tar.gz::https://github.com/commanderx16/x16-emulator/archive/r37.tar.gz
 	source = modify-base-path.patch
-	md5sums = 8d35e012857f599ee4238a9004d7461e
+	md5sums = 0efd8047e68bf5ce2291ff934c4e6f3b
 	md5sums = 5cd0550d2af1b4267c9b9f30eed9691e
 
 pkgname = x16-emulator
