@@ -25,7 +25,7 @@ md5sums=('30ea8a1e71e3b0df46d852859dd933c0'
          '1a858decc66ce2b47a27b24bb836280c')
 
 prepare() {
-	gendesk -f -n --pkgname "${pkgbase%-bin}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgbase%-bin}" --exec "x16emu" --categories "Game;Emulator" || return 1
+	gendesk -f -n --pkgname "${pkgbase%-bin}" --pkgdesc "$pkgdesc" --name "X16 Emulator" --icon "${pkgbase%-bin}" --exec "x16emu" --categories "Game;Emulator"
 }
 
 package_x16-emulator-bin() {
