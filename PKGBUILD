@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libbdplus-git
-pkgver=0.1.2.33.g1dea325
+pkgver=0.1.2.35.g1472680
 pkgrel=1
 pkgdesc="Open implementation of BD+ protocol. (GIT version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('libbdplus'
           'libbdplus.so'
           )
 conflicts=('libbdplus')
-source=('git://git.videolan.org/libbdplus.git')
+source=('git+https://code.videolan.org/videolan/libbdplus.git')
 sha256sums=('SKIP')
 
 pkgver() {
