@@ -1,7 +1,7 @@
 pkgbase = mystiq
 	pkgdesc = FFmpeg GUI front-end based on Qt5.
-	pkgver = 20.02.18
-	pkgrel = 2
+	pkgver = 20.03.23
+	pkgrel = 1
 	url = https://mystiqapp.com/
 	arch = x86_64
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = mystiq
 	depends = libnotify
 	depends = sox
 	replaces = qwinff
-	source = https://github.com/swl-x/MystiQ/archive/v20.02.18.tar.gz
-	sha256sums = 6ccfe2ff37b6cb29a01afcca5e8110a5808dc041924ec4f36c21a5d859b65cfe
+	source = https://github.com/swl-x/MystiQ/archive/v20.03.23.tar.gz
+	sha256sums = cfb84faebf68876733624e4500d4b6c654bc01cb75fd6eddd9efa8337816d22e
 
 pkgname = mystiq
 
