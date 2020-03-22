@@ -1,0 +1,28 @@
+pkgbase = armorpaint-git
+	pkgdesc = ArmorPaint is a software for 3D PBR texture painting
+	pkgver = 1209
+	pkgrel = 1
+	url = https://armorpaint.org/
+	arch = i686
+	arch = x86_64
+	license = ZLIB
+	makedepends = git
+	makedepends = nodejs
+	makedepends = clang
+	makedepends = make
+	makedepends = gcc
+	depends = mesa
+	depends = alsa-lib
+	depends = libxinerama
+	depends = gcc-libs
+	source = git+https://github.com/armory3d/armorpaint
+	source = armorpaint.sh
+	source = armorpaint.desktop
+	source = armorpaint.png
+	md5sums = SKIP
+	md5sums = 728cc52bfa9e7b16390459e7a80fad16
+	md5sums = dd5d97aadd39966ff7d9dda68b5ae29a
+	md5sums = 67cf4a0cb08c66c4a68c677885e8ac99
+
+pkgname = armorpaint-git
+
