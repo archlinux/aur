@@ -1,6 +1,6 @@
 pkgbase = bcrawl
 	pkgdesc = Continuation of X-Crawl fork of Dungeon Crawl Stone Soup roguelike with new content
-	pkgver = 1.21.2
+	pkgver = 1.21.3
 	pkgrel = 1
 	url = https://github.com/b-crawl/bcrawl
 	arch = i686
@@ -26,8 +26,8 @@ pkgbase = bcrawl
 	conflicts = crawl
 	conflicts = stone-soup-tile
 	conflicts = bcrawl-git
-	source = https://github.com/b-crawl/bcrawl/archive/bcrawl-1.21.2.tar.gz
-	sha256sums = 861e94d9cdebcc25c76e693ea1cb2836342b37ed5cc318669cbe5d8c63d5300b
+	source = https://github.com/b-crawl/bcrawl/archive/bcrawl-1.21.3.tar.gz
+	sha256sums = 1e9669c410a260684b988020596aee1ed86d1c194751844d56b9c0e6b3450e77
 
 pkgname = bcrawl
 
