@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-haguichi-indicator-git
 _gitname=gse-haguichi-indicator
 _uuid='gse-haguichi-indicator@ztefn.github.com'
-pkgver=r26.9f5d6d5
+pkgver=r30.6d0d3db
 pkgrel=1
 pkgdesc="Let's you control Haguichi directly from the system status area in GNOME Shell."
 arch=('any')
