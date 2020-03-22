@@ -2,9 +2,9 @@
 # Contributor: John D Jones III jnbek1972 __AT__ $mailservice_by_google __DOT__ com
 
 _npmname=tldr
-_npmver=3.2.7
-pkgname=nodejs-tldr # All lowercase
-pkgver=3.2.7
+
+pkgname=nodejs-tldr
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Simplified and community-driven man pages"
 arch=(any)
@@ -13,16 +13,36 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=()
-source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha256sums=('262d4f695632b02b77b787a0991af85a8f3cab6e601c5c8295ad3556275fd9fd')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('7ce51ebe2340f7b49bf221d2efdd381e5f74bd7274cb207c795a5a75c61e12b9')
+
+# see: https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 
 package() {
-  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$_npmver.tgz
+  npm install \
+    --global \
+    --user root \
+    --prefix "$pkgdir"/usr \
+    --cache "${srcdir}/npm-cache" \
+    "$srcdir"/$_npmname-$pkgver.tgz
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
   find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+
+  # npm gives ownership of ALL FILES to build user 
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "$pkgdir"
+
+  # Remove local paths from package.json
+  find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i '/_where/d'
+  local tmppackage="$(mktemp)"
+  local pkgjson="$pkgdir/usr/lib/node_modules/$_npmname/package.json"
+  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  mv "$tmppackage" "$pkgjson"
+  chmod 644 "$pkgjson"
 }
 
 # vim:set ts=2 sw=2 et:
+
