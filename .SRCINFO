@@ -5,7 +5,6 @@ pkgbase = paternoster
 	url = https://github.com/uberspace/paternoster
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = ansible
 	depends = python

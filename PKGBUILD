@@ -6,7 +6,6 @@ arch=('any')
 url="https://github.com/uberspace/paternoster"
 license=('MIT')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest')
 depends=('ansible' 'python' 'python-six' 'python-tldextract>=2.0.1')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Uberspace/$pkgname/archive/v$pkgver.tar.gz")
 sha512sums=('fb2c1d59a7584b98a3545b59036dc1f48be4cc4f492ce9cca694f8fc890a52cb36c97f082db7fe7f7407712833ab367bdf54a8e4c1c9d09b20594c2873c7996f')
