@@ -2,7 +2,7 @@
 
 pkgname=syscoin
 pkgver=4.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A peer-to-peer network based market place on the blockchain. This package provides syscoin binaries: syscoind, syscoin-qt, syscoin-tx, and syscoin-cli"
 arch=('x86_64')
 url="https://syscoin.org"
@@ -14,7 +14,7 @@ optdepends=('miniupnpc: Firewall-jumping support'
  'zeromq: Allows generating ZMQ notifications')
 makedepends=('pkg-config' 'git' 'boost' 'gcc' 'make' 'automoc4' 'automake' 'autoconf' 'libtool')
 source=("https://github.com/syscoin/syscoin/releases/download/v${pkgver}/syscoin-${pkgver}-x86_64-linux-gnu.tar.gz")
-md5sums=('3984bf7791551c98cefe1426dd81f9c0')
+md5sums=('5925e2144c62fe92f3d8541bd52b86c7')
 
 prepare() {
   wget -N -q https://raw.githubusercontent.com/syscoin-core/packaging/master/debian/syscoin-qt.desktop
