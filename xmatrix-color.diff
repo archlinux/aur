@@ -1,33 +1,123 @@
---- hacks/xmatrix.c	2018-04-06 16:44:02.000000000 -0500
-+++ hacks/xmatrix.c.mod	2018-06-17 11:54:17.229608887 -0500
-@@ -219,6 +219,8 @@
- static void
- load_images_1 (Display *dpy, m_state *state, int which)
+--- hacks/xmatrix.c	2019-08-21 22:45:53.000000000 -0500
++++ hacks/xmatrix.c.mod	2020-03-22 16:23:50.436339568 -0500
+@@ -221,6 +221,14 @@
  {
-+  /* Get the -color-shift argument. */
-+  const char *shift_text = get_string_resource(dpy, "colorShift", "String");
    const unsigned char *png = 0;
    unsigned long size = 0;
++  unsigned long pixel;
++  unsigned short int dark_val, light_val;
++  int x, y;
++  const char *shift_text = get_string_resource(dpy, "colorShift", "String");
++  XGCValues gcv;
++  GC gc;
++  XImage *ximg;
++
    if (which == 1)
-@@ -236,8 +238,8 @@
-         png = matrix2_png, size = sizeof(matrix2_png);
-     }
+     {
+       if (state->small_p)
+@@ -238,6 +246,46 @@
    state->images[which] =
--    image_data_to_pixmap (state->dpy, state->window, png, size,
--                          &state->image_width, &state->image_height, 0);
-+    image_data_to_pixmap_shift (state->dpy, state->window, png, size,
-+                          &state->image_width, &state->image_height, 0, shift_text);
+     image_data_to_pixmap (state->dpy, state->window, png, size,
+                           &state->image_width, &state->image_height, 0);
++  
++  ximg = XGetImage (state->dpy, state->images[which], 0, 0, state->image_width, state->image_height, AllPlanes, ZPixmap);
++  /*fprintf(stderr, "XImage dimensions: %d : %d\n", ximg->width, ximg->height);
++  fprintf(stderr, "XImage color masks: Red[%lu] : Green[%lu] : Blue[%lu]\n", ximg->red_mask, ximg->green_mask, ximg->blue_mask);
++  fprintf(stderr, "XImage depth: %d, Bits per pixel: %d\n", ximg->depth, ximg->bits_per_pixel);*/
++  
++  if (shift_text != NULL)
++  {
++	  for (y = 0; y < ximg->height; y++)
++	  {
++		  for (x = 0; x < ximg->width; x++)
++		  {
++			  pixel = XGetPixel(ximg, x, y);
++			  /*fprintf(stderr, "Pixel %d, %d: %lX\n", x, y, pixel);*/
++			  dark_val = (pixel & 0xff);
++			  light_val = (pixel & 0xff00) >> 8;
++			  /*fprintf(stderr, "Colors: red[%X], green[%X], blue[%X]\n", red, green, blue);*/
++			  if (!strcasecmp(shift_text, "yellow"))
++				pixel = (light_val << 16) | (light_val << 8) | (dark_val);
++			  else if (!strcasecmp(shift_text, "red"))
++			    pixel = (light_val << 16) | (dark_val << 8) | (dark_val);
++			  else if (!strcasecmp(shift_text, "purple"))
++			    pixel = (light_val << 16) | (dark_val << 8) | (light_val);
++			  else if (!strcasecmp(shift_text, "blue"))
++			    pixel = (dark_val << 16) | (dark_val << 8) | (light_val);
++			  else if (!strcasecmp(shift_text, "aqua"))
++			    pixel = (dark_val << 16) | (light_val << 8) | (light_val);
++			  else if (!strcasecmp(shift_text, "white"))
++			    pixel = (light_val << 16) | (light_val << 8) | (light_val);
++			  else if (!strcasecmp(shift_text, "grey"))
++			    pixel = (dark_val << 16) | (dark_val << 8) | (dark_val);
++			  /*fprintf(stderr, "New Pixel: %lX\n", pixel);*/
++			  XPutPixel(ximg, x, y, pixel);
++		  }
++	  }
++	  gc = XCreateGC (dpy, state->images[which], 0, &gcv);
++	  XPutImage (dpy, state->images[which], gc, ximg, 0, 0, 0, 0, ximg->width, ximg->height);
++	  XFreeGC (dpy, gc);
++	  XDestroyImage(ximg);
++  }
  }
  
  
-@@ -1049,26 +1051,38 @@
-       }
+@@ -565,6 +613,39 @@
+     }
  }
  
--
- static int
- densitizer (m_state *state)
- {
++static int
++densitizer (int x)
++{
++  /* Best fit curve to replace old table.
++   * Now you can twiddle single % values 
++   * and its technically doing something.
++   * y = a * exp(b*x)
++   * See 'densitizer.sce' for comparison. */
++   
++  /* Declare variables */
++  double a, b;
++  int y;
++  
++  /* Clean input */
++  if (x > 100) {
++	  x = 100;
++  }
++  else if (x < 1) {
++	  x = 1;
++  }
++  
++  /* Set exp function params */
++  a=211.538187957;
++  b=-0.0488730165089;
++  
++  /* Calculate result, used in xmatrix_init()
++   * and hack_matrix() */
++  y=a*exp(b*x);
++  
++  /*printf("\nDensitizer. x=%d, y=%d", x, y);*/
++  return(y);
++}
++
+ 
+ static void *
+ xmatrix_init (Display *dpy, Window window)
+@@ -644,7 +725,7 @@
+     calloc (sizeof(m_cell), state->grid_width * state->grid_height);
+   state->feeders = (m_feeder *) calloc (sizeof(m_feeder), state->grid_width);
+ 
+-  state->density = get_integer_resource (dpy, "density", "Integer");
++  state->density = (get_integer_resource (dpy, "density", "Integer"));
+ 
+   insert = get_string_resource(dpy, "insert", "Insert");
+   if (insert && !strcmp(insert, "top"))
+@@ -1054,28 +1135,6 @@
+ }
+ 
+ 
+-static int
+-densitizer (m_state *state)
+-{
 -  /* Horrid kludge that converts percentages (density of screen coverage)
 -     to the parameter that actually controls this.  I got this mapping
 -     empirically, on a 1024x768 screen.  Sue me. */
@@ -44,47 +134,22 @@
 -  else if (state->density < 80) return 3;
 -  else if (state->density < 90) return 2;
 -  else return 1;
-+  /* Best fit curve to replace old table.
-+   * Now you can twiddle single % values
-+   * and its technically doing something.
-+   * y = a * exp(b*x)
-+   * See 'densitizer.sce' for comparison. */
-+
-+  /* Declare variables */
-+  double a, b;
-+  int y;
-+  int x = state->density;
-+
-+  /* Clean input */
-+  if (x > 100) {
-+	  x = 100;
-+  }
-+  else if (x < 1) {
-+	  x = 1;
-+  }
-+
-+  /* Set exp function params */
-+  a=211.538187957;
-+  b=-0.0488730165089;
-+
-+  /* Calculate result, used in xmatrix_init()
-+   * and hack_matrix() */
-+  y=a*exp(b*x);
-+
-+  /*printf("\nDensitizer. x=%d, y=%d", x, y);*/
-+  return(y);
- }
+-}
+-
+-
+ static void
+ hack_text (m_state *state)
+ {
+@@ -1502,7 +1561,7 @@
+       if (f->remaining > 0)	/* never change if pipe isn't empty */
+         continue;
  
+-      if ((random() % densitizer(state)) != 0) /* then change N% of the time */
++      if ((random() % densitizer(state->density)) != 0) /* then change N% of the time */
+         continue;
  
-@@ -1823,6 +1837,7 @@
-   "*usePty:                False",
-   "*program:		   xscreensaver-text --latin1",
-   "*geometry:		   960x720",
-+  ".colorShift:     green",
-   0
- };
- 
-@@ -1850,6 +1865,7 @@
+       f->remaining = 3 + (random() % state->grid_height);
+@@ -1861,6 +1920,7 @@
    { "-pipe",	        ".usePipe",		XrmoptionNoArg, "True" },
    { "-no-pipe",	        ".usePipe",		XrmoptionNoArg, "False" },
    { "-program",	        ".program",		XrmoptionSepArg, 0 },
@@ -93,153 +158,43 @@
  };
  
 --- hacks/config/xmatrix.xml	2016-04-07 21:15:38.000000000 -0500
-+++ hacks/config/xmatrix.xml.mod	2018-06-17 11:54:17.229608887 -0500
-@@ -25,6 +25,16 @@
++++ hacks/config/xmatrix.xml.mod	2020-03-22 16:23:50.436339568 -0500
+@@ -25,6 +25,17 @@
       <option id="top"    _label="Slider algorithm"    arg-set="-insert top"/>
       <option id="bottom" _label="Expansion algorithm" arg-set="-insert bottom"/>
     </select>
-+
++   
 +   <select id="color">
-+	   <option id="color_green" _label="Green"/>
++     <option id="color_green" _label="Green"/>
 +     <option id="color_blue" _label="Blue"  arg-set="-color-shift blue"/>
-+     <option id="color_red" _label="Red"  arg-set="-color-shift red"/>
-+     <option id="color_yellow" _label="Yellow"  arg-set="-color-shift yellow"/>
 +     <option id="color_aqua" _label="Aqua"  arg-set="-color-shift aqua"/>
-+     <option id="color_white" _label="White"  arg-set="-color-shift White"/>
++     <option id="color_red" _label="Red"  arg-set="-color-shift red"/>
++     <option id="color_red" _label="Purple"  arg-set="-color-shift purple"/>
++     <option id="color_yellow" _label="Yellow"  arg-set="-color-shift yellow"/>
++     <option id="color_white" _label="White"  arg-set="-color-shift white"/>
 +     <option id="color_grey" _label="Grey"  arg-set="-color-shift grey"/>
-+   </select>
++  </select>
    </hgroup>
  
    <hgroup>
 --- hacks/xmatrix.man	2018-04-08 12:56:39.000000000 -0500
-+++ hacks/xmatrix.man.mod	2018-06-17 11:54:17.229608887 -0500
++++ hacks/xmatrix.man.mod	2020-03-22 16:23:50.436339568 -0500
 @@ -26,6 +26,7 @@
  [\-mode \fImode\fP]
  [\-phone \fInumber\fP]
  [\-fps]
-+[\-color\-shift "color"]
++[\-color\-shift \fIcolor\fP]
  .SH DESCRIPTION
  The \fIxmatrix\fP program draws the 2D "digital rain" effect, as seen on
  the computer monitors in the Wachowski brothers' film, "The Matrix".
-@@ -120,6 +121,12 @@
+@@ -120,6 +121,10 @@
  xmatrix -ascii -program 'ps -eo comm | rev'
  xmatrix -program 'od -txC -w6 /dev/random'
  xmatrix -program 'cat /dev/random'
-+
 +.TP 8
-+.B \-color-shift
++.B \-color-shift \fIcolor\fP
 +Specify a simple color shift to one of:
-+red, blue, green, purple, yellow, aqua, white, grey
-+
++red, purple, blue, aqua, yellow, white, grey
  .EE
  .SH ENVIRONMENT
  .PP
---- hacks/ximage-loader.c	2018-04-07 22:05:20.000000000 -0500
-+++ hacks/ximage-loader.c.mod	2018-06-17 11:54:17.229608887 -0500
-@@ -503,7 +503,8 @@
- make_pixmap (Display *dpy, Window window,
-              const char *filename,
-              const unsigned char *image_data, unsigned long data_size,
--             int *width_ret, int *height_ret, Pixmap *mask_ret)
-+             int *width_ret, int *height_ret, Pixmap *mask_ret,
-+             const char * shift_text)
- {
-   XWindowAttributes xgwa;
-   XImage *in, *out, *mask = 0;
-@@ -576,6 +577,44 @@
-         unsigned char b = (p >> cbpos) & 0xFF;
-         unsigned char g = (p >> cgpos) & 0xFF;
-         unsigned char r = (p >> crpos) & 0xFF;
-+
-+        if (!strcasecmp(shift_text, "yellow"))
-+    		{
-+    			r = g;
-+    		}
-+    		else if (!strcasecmp(shift_text, "red"))
-+    		{
-+    			unsigned char tmp = r;
-+          r = g;
-+          g = tmp;
-+    		}
-+    		else if (!strcasecmp(shift_text, "blue"))
-+    		{
-+          unsigned char tmp = b;
-+          b = g;
-+          g = tmp;
-+    		}
-+    		else if (!strcasecmp(shift_text, "purple"))
-+    		{
-+          unsigned char tmp = r;
-+          r = g;
-+          b = g;
-+          g = tmp;
-+    		}
-+    		else if (!strcasecmp(shift_text, "aqua"))
-+    		{
-+          b = g;
-+    		}
-+    		else if (!strcasecmp(shift_text, "white"))
-+    		{
-+          r = g;
-+          b = g;
-+    		}
-+    		else if (!strcasecmp(shift_text, "grey"))
-+    		{
-+    			g = r;
-+    		}
-+
-         XPutPixel (out, x, y, ((r << srpos) |
-                                (g << sgpos) |
-                                (b << sbpos) |
-@@ -638,13 +677,23 @@
- 
- 
- Pixmap
--image_data_to_pixmap (Display *dpy, Window window, 
-+image_data_to_pixmap_shift (Display *dpy, Window window,
-+                      const unsigned char *image_data, unsigned long data_size,
-+                      int *width_ret, int *height_ret,
-+                      Pixmap *mask_ret, const char * shift_text)
-+{
-+  return make_pixmap (dpy, window, 0, image_data, data_size,
-+                      width_ret, height_ret, mask_ret, shift_text);
-+}
-+
-+Pixmap
-+image_data_to_pixmap (Display *dpy, Window window,
-                       const unsigned char *image_data, unsigned long data_size,
-                       int *width_ret, int *height_ret,
-                       Pixmap *mask_ret)
- {
-   return make_pixmap (dpy, window, 0, image_data, data_size,
--                      width_ret, height_ret, mask_ret);
-+                      width_ret, height_ret, mask_ret, "");
- }
- 
- Pixmap
-@@ -653,7 +702,7 @@
-                 Pixmap *mask_ret)
- {
-   return make_pixmap (dpy, window, filename, 0, 0,
--                      width_ret, height_ret, mask_ret);
-+                      width_ret, height_ret, mask_ret, "");
- }
- 
- 
---- hacks/ximage-loader.h	2018-03-19 16:54:48.000000000 -0500
-+++ hacks/ximage-loader.h.mod	2018-06-17 11:54:17.229608887 -0500
-@@ -17,7 +17,13 @@
-                               int *width_ret, int *height_ret,
-                               Pixmap *mask_ret);
- 
--extern Pixmap image_data_to_pixmap (Display *, Window, 
-+extern Pixmap image_data_to_pixmap_shift (Display *, Window,
-+                                    const unsigned char *image_data,
-+                                    unsigned long data_size,
-+                                    int *width_ret, int *height_ret,
-+                                    Pixmap *mask_ret, const char * shift_text);
-+
-+extern Pixmap image_data_to_pixmap (Display *, Window,
-                                     const unsigned char *image_data,
-                                     unsigned long data_size,
-                                     int *width_ret, int *height_ret,
