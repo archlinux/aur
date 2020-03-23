@@ -29,7 +29,7 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         'plex.patch')
 noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"
            "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz")
-sha512sums=('660bbf42d2a646a3580b76ab029971dfe840985a5ec2962fdba1d5b989ff39aca85c449508d131c930ba9860c0b6de8c73a26ff5e0ed43409897bb663df61e0c'
+sha512sums=('a7bf1b78d1192e82c5d3b392904d989cb59b0136c76505c9a3973599d973db9eda7f56c3f48d81437669e7e12a05702c04dd0c67a8a136c72f78f24e0b05a1e0'
             'a190dee67a8ecc86b91d0a0411061624e9b3e68f1132cbc5c6abdf8a00268b2785ef3621db908cb019bdd9f1113703ade0b2e4b137028947e93f8897f50a1fa2'
             '346b8d276bbd27a550884e231ad7debd2da6a3f8a328d7e0df6dc96d4a658e89c2b6fea86dea721b9432aa9b36d09304de3f03a7cd00e296b730401cf913b8c5'
             '8598d8823ec8c54fdcf3986b19974d7a8dcbbc4570662e56e53a2bb15370d4883cdbe7e366b511465cd293bd192655322739c0add61104ed6ae5e8941536c1fa'
