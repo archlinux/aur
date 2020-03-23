@@ -1,0 +1,15 @@
+pkgbase = add-gitignore
+	pkgdesc = An interactive CLI tool that adds a .gitignore to your projects
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://www.npmjs.com/package/add-gitignore
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	noextract = v1.1.1.tar.gz
+	source = https://github.com/TejasQ/add-gitignore/archive/v1.1.1.tar.gz
+	md5sums = 0012ee64c22985ee7bfd844f438747fd
+
+pkgname = add-gitignore
+
