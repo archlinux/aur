@@ -5,7 +5,7 @@
 # Contributor: moostik <mooostik_at_gmail.com>
 
 pkgname=veusz
-pkgver=3.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A 2D and 3D scientific plotting package, designed to create publication-ready PDF or SVG output"
 arch=('x86_64')
@@ -22,8 +22,8 @@ optdepends=('python-h5py:  HDF5 support'
        # patch from https://github.com/veusz/veusz/issues/307
 source=("https://github.com/veusz/veusz/releases/download/veusz-${pkgver}/veusz-${pkgver}.tar.gz"
         "veusz-${pkgver}-sip_dir.patch")
-sha256sums=('67d4adcc83b33098f4740ac036e54b3078c596b67363b674ef167ac3a812b018'
-            '526cf71bfa70e4a400e46054cb0e73254b45d1b930c36c5c2afd2cf8e0c59938')
+sha256sums=('9eaf95a2a8cae2d317e7ee47e73f5cf58d191b16c051ae0a1dc399e6f7757503'
+            '334700cb64638fb4710e3049fe26d7b97abafc24581ad949b110e5d07567d31f')
 
 prepare() {
   patch -Np1 -i "veusz-${pkgver}-sip_dir.patch"

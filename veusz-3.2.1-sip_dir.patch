@@ -1,7 +1,7 @@
-diff -Nuar src/veusz-3.2/pyqtdistutils.py src/veusz-3.2.patched/pyqtdistutils.py
---- src/veusz-3.2/pyqtdistutils.py	2020-01-26 18:25:09.000000000 +0700
-+++ src/veusz-3.2.patched/pyqtdistutils.py	2020-03-10 12:14:02.317395029 +0700
-@@ -272,7 +272,7 @@
+diff -Nuar src/veusz-3.2.1/pyqtdistutils.py src/veusz-3.2.1.patched/pyqtdistutils.py
+--- src/veusz-3.2.1/pyqtdistutils.py	2020-01-26 18:25:09.000000000 +0700
++++ src/veusz-3.2.1patched/pyqtdistutils.py	2020-03-10 12:14:02.317395029 +0700
+@@ -310,7 +310,7 @@
                  sip_exe,
                  '-c', self.build_temp
              ] + SIP_FLAGS.split() + [
