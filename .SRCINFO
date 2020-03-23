@@ -1,7 +1,7 @@
 pkgbase = wemux-git
 	pkgdesc = Multi-user Tmux made easy
-	pkgver = 3.2.0.r2.g483f10a
-	pkgrel = 3
+	pkgver = 3.2.0.r14.g01c6541
+	pkgrel = 1
 	url = https://github.com/zolrath/wemux
 	install = wemux-git.install
 	arch = any
@@ -10,9 +10,12 @@ pkgbase = wemux-git
 	depends = tmux
 	depends = lsof
 	depends = openssh
+	provides = wemux=3.2.0
+	conflicts = wemux
 	backup = etc/wemux/wemux.conf
 	source = git://github.com/zolrath/wemux.git
 	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = wemux-git
 
