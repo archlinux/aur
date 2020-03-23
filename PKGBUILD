@@ -3,7 +3,7 @@
 pkgname=needrestart
 url=https://github.com/liske/needrestart
 pkgdesc='Restart daemons after library updates.'
-pkgver=3.4
+pkgver=3.5
 pkgrel=1
 source=("needrestart-${pkgver}.tar.gz::https://github.com/liske/needrestart/archive/v${pkgver}.tar.gz")
 arch=(any)
@@ -35,4 +35,4 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('e19dc223938c1a97277b7efdcab188bfa82618d259a8cb026414f5df5088b90f')
+sha256sums=('e9453efde9a0ebaefa5cb3af241382203d14abcc7091bee1249b60039348597e')
