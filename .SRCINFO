@@ -1,6 +1,6 @@
 pkgbase = blender-2.8-git
 	pkgdesc = Development version of Blender 2.8 branch
-	pkgver = 2.83.r94036.g7b8ac04d86e
+	pkgver = 2.83.r94385.g1e4f6b231ce
 	pkgrel = 1
 	url = https://blender.org/
 	changelog = blender.changelog

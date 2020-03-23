@@ -1,4 +1,12 @@
 # Version 2.83 upcoming.
+- UI: VR scene inspection [wiki](https://wiki.blender.org/wiki/Reference/Release_Notes/2.83/Virtual_Reality)
+- UI: Global undo speedup [task](https://developer.blender.org/T60695)
+- Shading: OpenVDB object support [wiki](https://wiki.blender.org/wiki/Reference/Release_Notes/2.83/Volumes)
+- UI: New theme [task](https://developer.blender.org/T74360)
+- Eevee: New reflection probe [diff](https://developer.blender.org/D7066)
+- Mesh: New ocean modifier spectra [diff](https://developer.blender.org/D6889)
+- Grease Pencil: Refactor [blog](https://code.blender.org/2020/02/grease-pencil-refactor/)
+
 - Cycles: Adaptive sampling [diff](https://developer.blender.org/D4686).
 - Cycles: Optix viewport denoiser [diff](https://developer.blender.org/D6554).
 - Shading: Vector rotate node [diff](https://developer.blender.org/D3789).
