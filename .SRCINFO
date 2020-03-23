@@ -10,3 +10,15 @@ pkgbase = undefined-medium-fonts
 
 pkgname = undefined-medium-fonts
 
+pkgbase = undefined-medium-fonts
+	pkgdesc = Package for undefined-medium-fonts. Includes ttf, otf, and webfonts.
+	pkgver = 1.0
+	pkgrel = 5
+	url = https://undefined-medium.com/
+	arch = any
+	license = custom:SIL
+	source = undefined-medium-1.0.zip::https://github.com/andirueckel/undefined-medium/archive/v1.0.zip
+	sha256sums = 6e2acaae3bbd04347ba2c110fffc45560bc3c5e190e7dd223eb9ac648fcf0e84
+
+pkgname = undefined-medium-fonts
+
