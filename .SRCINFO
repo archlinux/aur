@@ -1,12 +1,12 @@
 pkgbase = pfetch
 	pkgdesc = A pretty system information tool written in POSIX sh.
-	pkgver = 0.4.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/dylanaraps/pfetch
 	arch = any
 	license = MIT
 	provides = pfetch
-	source = pfetch-0.4.0.tar.gz::https://github.com/dylanaraps/pfetch/archive/0.4.0.tar.gz
+	source = pfetch-0.6.0.tar.gz::https://github.com/dylanaraps/pfetch/archive/0.6.0.tar.gz
 	md5sums = SKIP
 
 pkgname = pfetch

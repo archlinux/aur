@@ -1,6 +1,6 @@
 # Maintainer: Caio Novais <caionov08 at gmail dot com>
 pkgname=pfetch
-pkgver=0.4.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A pretty system information tool written in POSIX sh."
 arch=('any')
