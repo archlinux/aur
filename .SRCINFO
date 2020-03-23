@@ -1,6 +1,6 @@
 pkgbase = emacs-elpy
 	pkgdesc = Emacs Python Development Environment
-	pkgver = 1.32.0
+	pkgver = 1.33.0
 	pkgrel = 1
 	url = https://github.com/jorgenschaefer/elpy
 	install = emacs-elpy.install
@@ -14,8 +14,8 @@ pkgbase = emacs-elpy
 	depends = emacs-yasnippet
 	depends = emacs-s
 	depends = python-elpy
-	source = emacs-elpy-1.32.0.tar.gz::https://github.com/jorgenschaefer/elpy/archive/1.32.0.tar.gz
-	sha256sums = 99539c15ed59211c5b0aed4a65f972078c36bf5707252f2d3a795a8424f3316f
+	source = emacs-elpy-1.33.0.tar.gz::https://github.com/jorgenschaefer/elpy/archive/1.33.0.tar.gz
+	sha256sums = 35e4124cc31de0be4d794d727fbc9ee61749599e493226ced21cbea568197089
 
 pkgname = emacs-elpy
 
