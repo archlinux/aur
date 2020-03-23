@@ -2,7 +2,7 @@
 
 pkgname=wasmer-git
 pkgver=0.16.2.r84.g704c34283
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone JIT WebAssembly runtime"
 arch=('i686' 'x86_64')
 url="https://wasmer.io/"
@@ -39,10 +39,9 @@ package() {
   cd "wasmer"
 
   cargo install \
+    --no-track \
     --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/wasmer"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/wasmer"
-
-  rm -f "$pkgdir/usr"/.crates*
 }
