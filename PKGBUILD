@@ -2,19 +2,22 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=qnap-qdk-git
-pkgver=2.3.2.r48.0cff933
+pkgver=2.3.10.r92.4903650
 pkgrel=1
 pkgdesc='QNAP Development Kit '
-arch=('x86_64')
-url='https://github.com/qnap-dev/QDK'
-license=('GPL')
-depends=('rsync')
-makedepends=('git')
-optdepends=('p7zip: Support for 7z compression')
-provides=('qnap-qdk')
-conflicts=('qnap-qdk')
-source=('git+https://github.com/qnap-dev/QDK.git')
-sha256sums=('SKIP')
+arch=(x86_64)
+url=https://github.com/qnap-dev/QDK
+license=(GPL)
+depends=(rsync)
+makedepends=(git)
+optdepends=(
+  'gpg: Support for GPG signing'
+  'p7zip: Support for 7z compression'
+)
+provides=(qnap-qdk)
+conflicts=(qnap-qdk)
+source=(git+https://github.com/qnap-dev/QDK.git)
+sha256sums=(SKIP)
 
 pkgver() {
   cd QDK
