@@ -6,7 +6,7 @@ pkgname=('marble-git'
          'libastro-git'
          'marble-data-git'
 	 'marble-common-git')
-pkgver=18.07.80.34.g65b3ac2b4
+pkgver=20.03.80.1.g4e727daf0
 pkgrel=1
 pkgdesc="Desktop Globe. (GIT version)"
 arch=('i686' 'x86_64')
@@ -67,6 +67,7 @@ package_libastro-git() {
 
 package_marble-git() {
   depends=('libastro-git'
+	   'marble-common-git'
            'marble-data-git'
            'qt5-webkit'
            'kparts'

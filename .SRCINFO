@@ -1,6 +1,6 @@
 pkgbase = marble-git
 	pkgdesc = Desktop Globe. (GIT version)
-	pkgver = 18.07.80.34.g65b3ac2b4
+	pkgver = 20.03.80.1.g4e727daf0
 	pkgrel = 1
 	url = https://www.kde.org/applications/system/marble
 	arch = i686
@@ -29,6 +29,7 @@ pkgname = marble-git
 	groups = kde-applications
 	groups = kdeedu
 	depends = libastro-git
+	depends = marble-common-git
 	depends = marble-data-git
 	depends = qt5-webkit
 	depends = kparts
@@ -69,6 +70,6 @@ pkgname = marble-common-git
 	depends = libastro-git
 	depends = marble-git
 	depends = marble-data-git
-	provides = marble-common=18.07.80.34.g65b3ac2b4
+	provides = marble-common=20.03.80.1.g4e727daf0
 	conflicts = marble-common
 
