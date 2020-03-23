@@ -60,9 +60,9 @@ _localmodcfg=
 
 _major=5.6
 _minor=0
-_rc=6
+_rc=7
 _srcname=linux-${_major}-rc${_rc}
-_clr=${_major}.0.rc4-14
+_clr=${_major}.0.rc6-16
 pkgbase=linux-clear-current
 pkgver=${_major}.${_minor}.rc${_rc}
 pkgrel=1
@@ -93,7 +93,7 @@ prepare() {
         echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-        for i in $(grep '^Patch' ${srcdir}/clearlinux-current/linux-current.spec | grep -Ev '^Patch0123|^Patch0051' | sed -n 's/.*: //p'); do
+        for i in $(grep '^Patch' ${srcdir}/clearlinux-current/linux-current.spec | grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-current/${i}"
         done
@@ -311,7 +311,7 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('d37d25c7de5dc40a7cd6823fff57c7fc5fe098563b195b3708acd577e5e40248'
+sha256sums=('d18c846ef07a699561d3884a34f10941aed4e079c5f2a6fc151e9c54dd8d6373'
             'SKIP'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 

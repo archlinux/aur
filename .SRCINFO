@@ -1,6 +1,6 @@
 pkgbase = linux-clear-current
 	pkgdesc = Clear Linux current
-	pkgver = 5.6.0.rc6
+	pkgver = 5.6.0.rc7
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux-current
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = linux-clear-current
 	makedepends = libelf
 	makedepends = xmlto
 	options = !strip
-	source = https://git.kernel.org/torvalds/t/linux-5.6-rc6.tar.gz
-	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.6.0.rc4-14
+	source = https://git.kernel.org/torvalds/t/linux-5.6-rc7.tar.gz
+	source = clearlinux-current::git+https://github.com/clearlinux-pkgs/linux-current.git#tag=5.6.0.rc6-16
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = d37d25c7de5dc40a7cd6823fff57c7fc5fe098563b195b3708acd577e5e40248
+	sha256sums = d18c846ef07a699561d3884a34f10941aed4e079c5f2a6fc151e9c54dd8d6373
 	sha256sums = SKIP
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
 
