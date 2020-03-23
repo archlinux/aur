@@ -1,7 +1,7 @@
 # Maintainer: nightuser <nightuser.android@gmail.com>
 
 pkgname=plata-theme
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='A Gtk+ theme based on Material Design Refresh'
 arch=('any')
