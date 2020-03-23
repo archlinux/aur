@@ -2,7 +2,7 @@
 
 pkgname='singularity-container'
 pkgver='3.5.3'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Container platform focused on supporting "Mobility of Compute".'
 arch=('i686' 'x86_64')
 url='https://www.sylabs.io/singularity/'

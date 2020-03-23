@@ -1,7 +1,7 @@
 pkgbase = singularity-container
 	pkgdesc = Container platform focused on supporting "Mobility of Compute".
 	pkgver = 3.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.sylabs.io/singularity/
 	arch = i686
 	arch = x86_64
