@@ -1,6 +1,6 @@
 pkgbase = clipmenu-git
 	pkgdesc = Clipboard management using dmenu
-	pkgver = 5.6.0.r9.ga495bcc
+	pkgver = 5.6.0.r15.gbbf495c
 	pkgrel = 1
 	url = http://github.com/cdown/clipmenu
 	arch = any

@@ -2,7 +2,7 @@
 
 pkgname=clipmenu-git
 _gitname=clipmenu
-pkgver=5.6.0.r9.ga495bcc
+pkgver=5.6.0.r15.gbbf495c
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
@@ -14,7 +14,7 @@ conflicts=(clipmenu)
 makedepends=(git)
 
 source=(git://github.com/cdown/clipmenu.git)
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
     cd "$_gitname"
