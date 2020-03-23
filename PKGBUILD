@@ -51,7 +51,7 @@ _major=5.5
 _minor=11
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -71,16 +71,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v13-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0010-drm-i915-Introduce-a-vma.kref.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0010-drm-i915-Introduce-a-vma.kref.patch"
+        "${_lucjanpath}/arch-patches-v14-sep/0011-iwlwifi-don-t-send-GEO_TX_POWER_LIMIT-if-no-wgds-tab.patch"
          # the main kernel config files
         'config')
 
@@ -334,16 +335,17 @@ sha512sums=('86e86120777eecb66ce2a6cb80c5f0c3fd184eaadcb82bc5d6076a0eddd8548e83a
             'SKIP'
             'ec0fe381f313611708cba2ab79a44262776d3536df9e1bf30636c18c1e530e6604c93fad48dadc38ae44766f02bdffefb4c181ef1412d6948533c2f4f84ae7c4'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '362a474ce8e710fe0fc76f72b8e8c69e1232d6279896a24eef758a4ad6b0a4d8a5439f92a17d5533a5aeaa40df7a6f5e61169551179e21bcac7e6c9272a73b55'
-            'a9fcae8a3b9a5f77f5d3d2d88e8a8710eb6edac6830de5258edcaca123ede16ade730916fe9cc67e1e42b0d0217d91dc6e997ef2562115de681cef78cb3675de'
-            'f2cabe8996fd6ec853191274663c9fa93dd6407866c16b9d968e5e60528a9de7e784f835ea9ab4615a5c1bc188e12293df7e00f22076635e24a4de71f343a334'
-            '398658e4f6f4b01ab71692734095bfc4465a27a8efa5d58830384e96742a4e82b34d8a480894483b7673aa173ed2e7e6b70d399e646bbfe51b6c6b591132839f'
-            'b2fc6870789478d018a8504d7c0cf7f88a0bea06875766ab33bea82acdb2bd6be70bf33921be6fbdc1ae7405876426aaa24a9ddfa502f955f7b534369180ac20'
-            'e59c5873d967cde9c65f34b0af8ecf384101cc8af19c692dd8b057fe62e30f53d5d1444749c0aa8b4fe386f3d54932c002f72f9c83977cc8d328f9d386401d00'
-            'f38be140a1fb79ba19ac2a3edc7496c31418447e04a208d077791a78c17793049ffb0794d934c623b61cdf6b564df26d1074f21dbb50b91a5b54f203cfd2d622'
-            'c4f99b852ce8b99075047bfa5935ed6b2572781864ffd3cdbf4e4e378ba3be5092db0d1fd578f7d181c11b3f7673e7b2d92393a2ea66a98631035a35464032ce'
-            '700352c79d7e6f69f555a63b36c446c83e427820f953e4118787759e1e728bc23fa8f32ce21d986eda5cc3a1043d7e27a7bb53c44ee635c667ef82c0a8e57a5b'
-            'cdab33c76c787ccfd01f6e2f1af25c1e0a06d2c8dbe6775c0a2e1e6b9ef8f46355fabbd64d8875a28af675c67421109b1e944cac5bfbdb367ad279c0336cbc52'
+            '4ff65442a2a6e50351d8af4180374b9bff7ca4bb74e20e13ca0e650617cc099fed9ec843c10dcb76c68014814819d26464821c9930f926972213f7f9122e983b'
+            'ac8a375b78f2a1eb128b3154e5c289b2db60b84b751bd9aec201d691f6b7322f6866296841dcc34f7d37ae3c497f86112e8aceaa628ef186b8f8a283d1b8a454'
+            '172e58d728abdf5c5634d13d4409b05c215c7197a875dd95eee54fa2e56d7e360d694c228a0b8663fc3fc4643f7d3401e31ca21c85eb8fdeb4a5d79b75925ee3'
+            '249829e81b3a57c15d7cfef866f72379429efb35c8196b609eb933fb630894f73dca70903dc6b162f1d240d8b6a17e1a6d526bf6fbbd4f204be5efff44219481'
+            '7fb9183c0e862164c230d2729c5d341f321b5f8cd92c4d4b92647ba3197a375efc0e323e7b05fbbd918f40e8f58a1a2f9325dd7d55319e70728f564918ac465d'
+            '87228df94e7d640731c33c811c6355f773b1f2cdecaa36a63f03fdbcbf0b562505fb7f5f097d2651fb5e5e18fb7383bd83542bb5923453eb49774451e924aae9'
+            '9875a38576b042db6db9febcab50de56fee4135d4044030ead2785e0d7b815d084bed6bab32b1f06d1f89bf405e7176edbdd387be619407a96eacc306f0387c1'
+            'ff051426e5a9f29d0ab9f0cb43f59e16affac380f5cb3652d5fcf373ca8cbcfdf8eb58eefb095873b45f95f2a4f6aa6f781a3791ecbd365c8264990750d9a038'
+            'a2bd9ded2b40a874432c3ea3805cda57016b204e70349a58a9a90642794ac17eb4d56bdbbb9cf856ca8ef197692b3fae62ecf2c4d7121f53a48c434a5c375f7c'
+            'dfcc04e1e93f9a5a7ce7b01de8beb04e0f8baa77ab2ea735f2aa167279eb8284f395fe3b11bc6c9bba28568c112927a330df4bbfa7d04abdc9e8283cfa4a78de'
+            'b36ea6efea6911c0ce6ce60a9e615e9cffd1c0e82a06b399cc55f08cf45cee7364a1a134c12a64566649a517d8386be32813ce02226aac095fcf11bda4dd236d'
             'c39fd670b44c09c3e503526df6d751e4b0a894cc0ef1fcdb40ba4aa1fd8aa2adf9f2d74909cec226a5be661bce1f3d2c7ebe6aecae77a498d5e8dca7e4fef89e')
 
 validpgpkeys=(
