@@ -1,7 +1,7 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
-pkgver=1.0.4
-pkgrel=3
+pkgver=a6e54d5
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -20,7 +20,7 @@ sha256sums=('SKIP'
 
 prepare() {
   cd $srcdir/session-desktop
-  git checkout 9dc8160
+  git checkout $pkgver
   source /usr/share/nvm/init-nvm.sh && nvm install 10.13.0
 }
 
