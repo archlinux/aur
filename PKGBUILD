@@ -4,7 +4,7 @@
 
 pkgbase=linux-haruka-workstation
 pkgver=5.5.11.haruka
-pkgrel=1
+pkgrel=2
 pkgdesc='Haruka Workstation Kernel'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/HarukaNetwork/haruka-workstation-kernel/commits/master"

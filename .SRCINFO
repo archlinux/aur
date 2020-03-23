@@ -1,7 +1,7 @@
 pkgbase = linux-haruka-workstation
 	pkgdesc = Haruka Workstation Kernel
 	pkgver = 5.5.11.haruka
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HarukaNetwork/haruka-workstation-kernel/commits/master
 	arch = x86_64
 	license = GPL2
