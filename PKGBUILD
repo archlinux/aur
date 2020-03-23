@@ -13,6 +13,11 @@ arch=('any')
 source=("git://github.com/ranaroussi/yfinance")
 sha256sums=('SKIP')
 
+pkgver() {
+    cd "${srcdir}/${_module}"
+    git log -1 --format="%cd" --date=short | sed "s|-||g"
+}
+
 build() {
     cd "${srcdir}/${_module}"
     python setup.py build
