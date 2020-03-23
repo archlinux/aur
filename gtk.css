@@ -1,7 +1,37 @@
-/*************
- * CSD Fixes *
- ************/
+/* https://www.reddit.com/r/elementaryos/comments/eulr2p/pure_black_overlay_on_elementary_dark_theme/ */
+/* elementary-gtk black */
+@define-color base_color mix (@BLACK_900, @BLACK_500, 0.5);
+@define-color bg_color shade (@base_color, 0.1);
+@define-color titlebar_color shade (@bg_color, 0.1);
+@define-color decoration_border_color alpha (white, 0.15);
 
+/* distinguish dialogs */
+dialog decoration,
+messagedialog decoration {
+  box-shadow: 0 0 0 1px @decoration_border_color;
+}
+/* distinguish buttons & entries */
+button, checkbutton, radiobutton, entry {
+  box-shadow: 0 0 0 1px @decoration_border_color;
+}
+
+/* boldest font on active tab */
+notebook tab:checked label {
+  font-weight: 900;
+}
+
+/* https://www.reddit.com/r/gnome/comments/eojq1r/what_css_property_controls_this_1px_square_border/fedlzxy/ */
+/* Rounded corners */
+decoration {
+ border-radius: 8px;
+}
+
+window, window.background {
+ border-radius: 0 0 4px 4px;
+}
+
+/* https://wiki.archlinux.org/index.php/GTK#Client-side_decorations */
+/* Reduce CSD gaps and shadows */
 .window-frame, .window-frame:backdrop {
  box-shadow: 0 0 0 black;
  border-style: none;
@@ -9,105 +39,65 @@
  border-radius: 0;
 }
 
-.titlebar {
- border-radius: 0;
-}
-
 .window-frame.csd.popup {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.13);
+ box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.13);
 }
 
 .header-bar {
-  background-image: none;
-  box-shadow: none;
+ background-image: none;
+ box-shadow: none;
 }
 
-window.ssd headerbar.titlebar {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    min-height: 0;
+GtkLabel.title {
+ opacity: 0;
 }
 
-window.ssd headerbar.titlebar button.titlebutton {
-    padding: 0px;
-    min-height: 0;
-    min-width: 0;
-}
-
-.ssd .titlebar {
-  border-width: 0;
-  box-shadow: none;
-}
-
-/* CSD / SSD minimization */
-/* shrink headebars */
+/* https://ogbe.net/blog/gnome_titles.html*/
+/* shrink headerbars */
 headerbar {
-    min-height: 0px;
-    padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
-    padding-right: 2px;
+ min-height: 0px;
+ padding-left: 2px; /* same as childrens vertical margins for nicer proportions */
+ padding-right: 2px;
 }
 
-headerbar entry,
-headerbar spinbutton,
-headerbar button,
-headerbar separator {
-    margin-top: 2px; /* same as headerbar side padding for nicer proportions */
-    margin-bottom: 2px;
+headerbar * {
+ margin-top: 0px; /* same as headerbar side padding for nicer proportions */
+ margin-bottom: 0px;
+ padding: 0px;
 }
 
 /* shrink ssd titlebars */
 .default-decoration {
-    min-height: 0; /* let the entry and button drive the titlebar size */
-    padding: 2px
+ min-height: 0; /* let the entry and button drive the titlebar size */
+ padding: 0px;
 }
 
 .default-decoration .titlebutton {
-    min-height: 0px; /* tweak these two props to reduce button size */
-    min-width: 0px;
+ min-height: 0px; /* tweak these two props to reduce button size */
+ min-width: 0px;
 }
 
 window.ssd headerbar.titlebar {
-    padding-top: 1px;
-    padding-bottom: 1px;
-    min-height: 0;
+ padding-top: 0px;
+ padding-bottom: 0px;
+ min-height: 0;
 }
 
 window.ssd headerbar.titlebar button.titlebutton {
-    padding-top: 1px;
-    padding-bottom:1px;
-    min-height: 0;
+ padding-top: 0px;
+ padding-bottom:0px;
+ min-height: 0;
 }
 
-/* You may want to use this if you don't like the double title. */
-GtkLabel.title {
-    opacity: 0;
-}
-
-/* From elementary css */
-
-.titlebar.default-decoration {
-    padding: 0 3px;
-    min-height: 32px;
-}
-
-dialog .titlebar.default-decoration,
-messagedialog .titlebar,
-messagedialog .titlebar.default-decoration {
-    min-height: 0;
-    padding: 3px;
-}
-
-/*********************
- * wingpanel support *
- ********************/
-
+/* https://wiki.archlinux.org/index.php/Pantheon#Wingpanel_transparency */
+/* wingpanel */
 .panel {
-/*    background-color: transparent; */
-/*    background-color: black; */
-    background-color: rgba(0,0,0,0.5);
-    transition: all 1s ease-in-out;
+/* background-color: transparent;*/
+/* background-color: black;*/
+ background-color: rgba(0,0,0,0.5);
+ transition: all 1s ease-in-out;
 }
 
 .panel.maximized {
-    background-color: #000;
+ background-color: #000;
 }

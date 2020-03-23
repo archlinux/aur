@@ -1,7 +1,7 @@
 pkgbase = pantheon-workarounds
 	pkgdesc = Workarounds for Pantheon derivatives
 	pkgver = 3.2.0.r73.gc49189b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quequotion/pantheon-bzr-qq
 	install = gala.install
 	arch = any
@@ -40,11 +40,15 @@ pkgbase = pantheon-workarounds
 	source = numlockx-pantheon.desktop
 	source = gtk.css
 	source = settings.ini
+	source = 26_pantheon-qq-gconf.gschema.override
+	source = .xprofile
 	sha512sums = 30a488431a23ff5521a12e97fa69ed17b2033ba8f016bb922e07ad9bf2d671e14a90a38266de1567c4dcbf178b6919a8108fad3dd13e50573018dc2a8e9b070e
 	sha512sums = 842db1b456c96287865955741ba00c3ceeecf82691700f691d9fc45dc665230f1224ce7cdf5a1301826ab96cfe59e922c3878a5986ab3639da0cb79a2948f727
 	sha512sums = bc5724ef255adad39e35e3fbd7beacbd3ea270c7019362ff6a8bc15cf8f503a4304c18c5e35ae2a6ddb8d1e6e7cc6973642a2ffdc8fe9e219c7f2dbacf5eab72
-	sha512sums = ee75dfaa7d887dbfe0c74b7fb6005d5aafbce22fa00b3b476b3c88628a9f786cfd3410237a2b22ca135ea85759b45b59068e5d00650f65449a19ae222e957784
-	sha512sums = 90b0927892e708b601542f317af52f42174bdcbb4e9df6f3d5667f2a8029deff42cef5459072c295f343d73a99f43b76eaeb5432b8367e69f42d5aac7f1b2f57
+	sha512sums = 5481a5784ee687c346fd22751796c0264ce981710dd722d036397afd8423ecf356e5c24b7d348257a04c99af2250f2076c958c069a604db438b61c342359bf05
+	sha512sums = 983fde059024d4456e8bc748862ce20796b339d31fb792dbc30bb6d49345b269b7e6f8dabe04aea139dc8bdb9f88f288506f15343664fec012eff7a07a3fac98
+	sha512sums = 59ff0ac632091ddf9bcbe51785b0664daef005d272b8fd4295fa1fa4d2aead9318126e5e3e9850b7a59d44428511eb9b46e4b3809583023e86c538755e6145f2
+	sha512sums = 372e89fc0cdf1beca7ec56686e2aefc49b576134a28c1d407b809cc9817e0e3196ff6698d45a4b518a1644d7ba7936b93fcc8e6408e55d9db797b81be8f610a5
 
 pkgname = pantheon-workarounds
 

@@ -1,0 +1,25 @@
+#Configure Input Method
+export {{GTK,QT}_IM_MODULE,XMODIFIERS=@im}=fcitx
+
+#GTK Tweaks
+export G{TK_{OVERLAY_SCROLLING,CSD},DK_CORE_DEVICE_EVENTS}=1
+export GTK_THEME="elementary:dark"
+export GTK2_RC_FILES="~/.gtkrc-2.0"
+export GTK_MODULES="$GTK_MODULES:pantheon-filechooser-module"
+
+#OpenGL tweaks
+export __GL_{THREADED_OPTIMIZATIONS,SYNC_TO_VBLANK}=1
+export __GL_YIELD="USLEEP"
+export __GL_FSAA_MODE=7
+export __GL_LOG_MAX_ANISO=1
+
+#QT Conformity
+export QT_STYLE_OVERRIDE="elementary:dark"
+export QT_QPA_PLATFORMTHEME='gnome'
+
+#Cursor
+export XCURSOR_THEME=elementary
+export XCURSOR_SIZE=48
+
+#UX
+setxkbmap jp
