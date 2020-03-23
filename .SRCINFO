@@ -5,7 +5,7 @@ pkgbase = undefined-medium-fonts
 	url = https://undefined-medium.com/
 	arch = any
 	license = custom:SIL
-	source = undefined-medium-1.0.zip::https://github.com/andirueckel/undefined-medium/archive/v1.0.zip
+	source = undefined-medium-1.0-5.zip::https://github.com/andirueckel/undefined-medium/archive/v1.0.zip
 	sha256sums = 6e2acaae3bbd04347ba2c110fffc45560bc3c5e190e7dd223eb9ac648fcf0e84
 
 pkgname = undefined-medium-fonts
