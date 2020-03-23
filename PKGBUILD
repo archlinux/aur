@@ -4,8 +4,8 @@ _target=aarch64-linux-gnu
 
 _pkgname=icu
 pkgname=$_target-$_pkgname
-pkgver=65.1
-pkgrel=2
+pkgver=66.1
+pkgrel=1
 pkgdesc='International Components for Unicode library (ARM64)'
 arch=(x86_64)
 url='http://site.icu-project.org/home'
@@ -17,7 +17,7 @@ source=(
   https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${_pkgname}4c-${pkgver//./_}-src.tgz{,.asc}
 )
 sha256sums=(
-  '53e37466b3d6d6d01ead029e3567d873a43a5d1c668ed2278e253b683136d948'
+  '52a3f2209ab95559c1cf0a14f24338001f389615bf00e2585ef3dbc43ecf0a2e'
   'SKIP'
 )
 validpgpkeys=(
