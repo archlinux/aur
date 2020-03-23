@@ -3,8 +3,8 @@
 # Remove the --enable-openmp flag below if you do not want parallelization.
 
 pkgname=python2-graph-tool
-pkgver=2.29
-pkgrel=2
+pkgver=2.30
+pkgrel=1
 pkgdesc='A Python module for manipulation and statistical analysis of graphs'
 arch=('i686' 'x86_64')
 url='https://graph-tool.skewed.de'
@@ -15,11 +15,10 @@ optdepends=('graphviz: graph layout'
 'python2-matplotlib: graph drawing')
 options=(!libtool)
 source=("https://downloads.skewed.de/graph-tool/graph-tool-$pkgver.tar.bz2")
-sha256sums=('6c0c4336bed6e2f79c91ace6d6914145ee03d0bd5025473b5918aec2b0657f7a')
+sha256sums=('823cf3374b08fbfe8f580d08ae063913d021ff92f8ef1365d317e8ea38ecc8bf')
 
 prepare() {
   cd "$srcdir/graph-tool-$pkgver"
-  export CPPFLAGS="$CPPFLAGS -DHAVE_BOOST_COROUTINE"  # workaround for bug in boost 1.72
   ./configure --enable-openmp --prefix=/usr --docdir="/usr/share/doc/$pkgname" PYTHON=python2
 }
 
