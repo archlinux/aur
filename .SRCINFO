@@ -1,0 +1,16 @@
+pkgbase = musly-git
+	pkgdesc = Music Similarity Library
+	pkgver = 0.1.110.g7a0c6a9
+	pkgrel = 1
+	url = https://www.musly.org
+	arch = x86_64
+	license = custom:MPL2.0
+	makedepends = cmake
+	depends = ffmpeg
+	depends = eigen
+	provides = musly
+	source = musly::git+https://github.com/dominikschnitzer/musly.git#branch=master
+	md5sums = SKIP
+
+pkgname = musly-git
+
