@@ -9,6 +9,7 @@ srcinfo: .SRCINFO
 update: .SRCINFO
 	git add PKGBUILD .SRCINFO
 	git commit
+	git push
 	git push aur
 
 clean:

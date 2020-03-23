@@ -1,13 +1,13 @@
 pkgbase = activitywatch-bin
 	pkgdesc = Log what you do on your computer. Simple, extensible, no third parties.
-	pkgver = 0.9.0
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/ActivityWatch/activitywatch
 	arch = x86_64
 	license = MPL2
 	provides = activitywatch
 	conflicts = activitywatch
-	source = https://github.com/ActivityWatch/activitywatch/releases/download/v0.9.0/activitywatch-v0.9.0-linux-x86_64.zip
+	source = https://github.com/ActivityWatch/activitywatch/releases/download/v0.9.2/activitywatch-v0.9.2-linux-x86_64.zip
 	md5sums = SKIP
 
 pkgname = activitywatch-bin
