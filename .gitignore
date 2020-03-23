@@ -1,5 +1,5 @@
 good
-*.pkg.tar.xz
+*.pkg.tar.*
 *.tar
 *.pkg
 pkg
