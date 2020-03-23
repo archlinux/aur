@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Session
+Exec=/opt/Session/session-messenger-desktop %U
+Terminal=false
+Type=Application
+Icon=session-messenger-desktop
+StartupWMClass=Session
+Comment=Private messaging from your desktop
+Categories=Network;

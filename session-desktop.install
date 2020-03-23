@@ -1,7 +1,7 @@
 post_install() {
-    sudo ln -sf /opt/Session/session-messenger-desktop /usr/bin/session-messenger-desktop
-    sudo update-mime-database /usr/share/mime
-    sudo update-desktop-database /usr/share/applications
+    ln -sf /opt/Session/session-messenger-desktop /usr/bin/session-messenger-desktop
+    update-desktop-database /usr/share/applications
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 post_upgrade() {
@@ -9,7 +9,7 @@ post_upgrade() {
 }
 
 post_remove() {
-    sudo rm -f '/usr/bin/session-messenger-desktop'
-    sudo update-mime-database /usr/share/mime
-    sudo update-desktop-database /usr/share/applications
+    rm -f '/usr/bin/session-messenger-desktop'
+    update-desktop-database /usr/share/applications
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
