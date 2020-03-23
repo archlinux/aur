@@ -1,10 +1,10 @@
 pkgbase = warpinator-git
 	pkgdesc = Share files across the LAN
-	pkgver = r78.8e3d9f9
+	pkgver = r119.bc21860
 	pkgrel = 1
 	url = https://github.com/linuxmint/warp
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = git
 	makedepends = meson
 	makedepends = python-grpcio-tools
@@ -22,9 +22,7 @@ pkgbase = warpinator-git
 	conflicts = lm-warp
 	replaces = lm-warp
 	source = git+https://github.com/linuxmint/warp.git
-	source = warp.desktop
 	sha256sums = SKIP
-	sha256sums = 0e74a83e7d384609e40dc6355a2e392c9e0bb4d44a6e1a4850a7b750b093daa5
 
 pkgname = warpinator-git
 

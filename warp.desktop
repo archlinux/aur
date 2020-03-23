@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Warp
-Comment=Transfer files from one computer to another on the local network
-Icon=warp
-Exec=warpinator
-Categories=GNOME;GTK;Utility;
