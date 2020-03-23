@@ -1,0 +1,20 @@
+{
+  "DataDir": "datadir",
+  "P2P": {
+    "ListenAddr": ":40404",
+    "BootstrapNodes": [],
+    "NoDiscovery": false
+  },
+  "RPC": {
+    "HTTPHost": "localhost",
+    "HTTPPort": 9009
+  },
+  "IpfsConf": {
+    "DataDir": "datadir",
+    "IpfsPort": 40403,
+    "BootNodes": []
+  },
+  "Sync": {
+    "FastSync": true
+  }
+}

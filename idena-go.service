@@ -1,0 +1,17 @@
+[Unit]
+Description=Idena Network Node implemented in Go
+Documentation=https://github.com/idena-network/idena-go
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5s
+ExecStart=/usr/bin/idena-go --config /etc/idena-go/idena-go.json
+ProtectSystem=true
+ProtectHome=true
+KillMode=process
+LimitNPROC=10
+
+[Install]
+WantedBy=network-online.target
