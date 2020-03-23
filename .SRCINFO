@@ -1,0 +1,14 @@
+pkgbase = yo
+	pkgdesc = CLI tool for running Yeoman generators
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = http://yeoman.io
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = v3.1.0.tar.gz
+	source = https://github.com/yeoman/yo/archive/v3.1.0.tar.gz
+	md5sums = 898281ae7c21d9f214e1866b4d8887a3
+
+pkgname = yo
+
