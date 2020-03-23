@@ -30,6 +30,6 @@ build() {
 package() {
   export GOPATH="${srcdir}/singularity"
   cd "${GOPATH}/src/github.com/sylabs/singularity/builddir"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR="${pkgdir}" install man
 }
 
