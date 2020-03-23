@@ -17,7 +17,7 @@ conflicts=(plantuml)
 source=("http://downloads.sourceforge.net/project/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.gz"
         "$_pkgname.run")
 sha256sums=('5950536487f2c8cd91d296807e92b8a005c8cae59f96a9c7cd150f0b4d125beb'
-'0796606f4302bcc80ecb5d9eea50640876fdee2947d7acafaa5aabb01ab23204')
+'a3fb528f4c719cfd0ff6154c60fd54ce341011d132caf950cc30af4989f6aac8')
 optdepends=('plantuml-ascii-math: allow use AsciiMath or JLaTeXMath notation'
             'ditaa: allow use ditaa notation'
             'graphviz: allow use Graphviz/DOT notation')
