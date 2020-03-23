@@ -11,7 +11,7 @@ depends=('vulkan-icd-loader')
 conflicts=('amdvlk' 'amdvlk-git')
 provides=('amdvlk' 'vulkan-driver')
 source=(https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-${pkgver}/amdvlk_${pkgver}_amd64.deb)
-sha256sums=('1064f4b8745572f8afaa3a27cacb047607e51188018621f36a90cb48f442d942')
+sha256sums=('518093bdddb6f5f91558d31ba07c01051f3ac5158a5a1eaa4bf4a3a478fe0628')
 
 build() {
   ar -x ${srcdir}/amdvlk_${pkgver}_amd64.deb
