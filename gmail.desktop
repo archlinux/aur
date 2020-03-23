@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Gmail
+Comment=Gmail-Email from Google
+Exec=gmail-desktop
+Icon=/usr/share/pixmaps/gmail-desktop.png
+Terminal=false
+Categories=Google;Productivity;Mail;Email; 
