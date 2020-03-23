@@ -22,7 +22,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '775e62bef116136f7b258ecc32ad1071dc2c6b161176d78092e29f180136dac9')
+            'SKIP')
 
 export KBUILD_BUILD_HOST=haruka-workstation
 export KBUILD_BUILD_USER=$pkgbase
