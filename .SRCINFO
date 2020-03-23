@@ -1,0 +1,14 @@
+pkgbase = mobicon-cli
+	pkgdesc = Mobile icon generator
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/SamVerschueren/mobicon-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = v3.0.0.tar.gz
+	source = https://github.com/SamVerschueren/mobicon-cli/archive/v3.0.0.tar.gz
+	md5sums = f1e62e5c65da7214c52160b5bd52296c
+
+pkgname = mobicon-cli
+
