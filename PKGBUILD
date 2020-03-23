@@ -1,16 +1,17 @@
-# Maintainer: Daniel Egeberg <daniel.egeberg@gmail.com>
+# Maintainer: Aaron Schmocker <>, Lukas Grimm <ombre@ombre.ch>
+# Contributor: Daniel Egeberg <daniel.egeberg@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=2.52.1
-_gitrev=1054
-_gitver=86a2dc81
+pkgver=v2.53.0
+_gitrev=1063
+_gitver=4c40422c
 _fullver="$pkgver.$_gitrev-$_gitver"
 _fullname="$pkgname-$_fullver"
-_web_buildid="172-17d1db2564f6ac"
-_web_desktop_ver="4.27.0-564f6ac"
-_web_tv_ver="4.27.1-17d1db2"
+_web_buildid=176-21c9724ca0ff70
+_web_desktop_ver=4.26.1-ca0ff70
+_web_tv_ver=4.29.1-21c9724
 pkgrel=2
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h')
@@ -28,12 +29,12 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         'plex.patch')
 noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"
            "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz")
-sha512sums=('f8b99973d59a0f5db8640faf5b882c3c6d3f18a90de2ab88f85d6cb85078f9161195afafdf79f62af6da6019793fb982d7a2b7f07a4893b4572654430a2535ee'
-            'da01efe5eec9a57b7a8e6d35cf3e045187f21042ccdae1259b191e3cab6db498ef447d2833dda164b4a8d65896797bb4e481ee5d2de51da78c406c90d35f8448'
-            'f9eee9f78bdf251b8ca46bcd5cfc0a97180386d8b56f807ce54563fa1fe123c82cffc8340f5d54d553bb249010a6c1a2c64439ffe8c33a6f2a04adfdb6eb2b5c'
-            'ca2a5bd27618f0b6d353af9f874fa3b768032b1b70e8fe9dd599e7c32b7c85e9b4f98b4fd3939b607478f929305a93da1819113cbf00f1a1c351092b38beb884'
-            '074663aa6efa1065a020e816760218338775def155578e680f69870f361210ab9c7af334fc8bca68f09b9945e225f7ccfbc64e003175310c1dcc42468b9b9731'
-            '1b5a6475d47430c3f5e83f0d909f608d9b7956c8672f5dcab731bc6968b23bf54c479923e0bdc988316050b7468f1a07d11a7ebf9911de8f3f90a67ac0574705'
+sha512sums=('660bbf42d2a646a3580b76ab029971dfe840985a5ec2962fdba1d5b989ff39aca85c449508d131c930ba9860c0b6de8c73a26ff5e0ed43409897bb663df61e0c'
+            'a190dee67a8ecc86b91d0a0411061624e9b3e68f1132cbc5c6abdf8a00268b2785ef3621db908cb019bdd9f1113703ade0b2e4b137028947e93f8897f50a1fa2'
+            '346b8d276bbd27a550884e231ad7debd2da6a3f8a328d7e0df6dc96d4a658e89c2b6fea86dea721b9432aa9b36d09304de3f03a7cd00e296b730401cf913b8c5'
+            '346b8d276bbd27a550884e231ad7debd2da6a3f8a328d7e0df6dc96d4a658e89c2b6fea86dea721b9432aa9b36d09304de3f03a7cd00e296b730401cf913b8c5_SUM'
+            'ad5d153edaa1b2d1e9df7bec54c325b569925766caf4e8a4c0be546fef61bfe20f96f92d8238287e28e920e3848f98ace1011f5994d3fa7d12a7f78aa6c317d8'
+            'ad5d153edaa1b2d1e9df7bec54c325b569925766caf4e8a4c0be546fef61bfe20f96f92d8238287e28e920e3848f98ace1011f5994d3fa7d12a7f78aa6c317d8_SUM'
             'SKIP'
             'SKIP')
 
