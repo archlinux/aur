@@ -1,0 +1,18 @@
+pkgbase = google-gmail-nativefier
+	pkgdesc = Electron wrapper for the Google mail web application
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://mail.google.com
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	makedepends = unzip
+	source = google-gmail-nativefier.png
+	source = google-gmail-nativefier.desktop
+	sha256sums = fbe8559ad3b4307678250a671b8c259adf8ded119c8d133d1b706f0f4879a051
+	sha256sums = 8f02cb350bf14d7a58644106cdb32d963595d20c901b1537a02b9652acd65a42
+
+pkgname = google-gmail-nativefier
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Google Gmail
+Comment=The Google Email is intuitive, efficient, and usefull.
+Exec=google-gmail
+Icon=/usr/share/pixmaps/google-gmail.png
+Terminal=false
+Categories=Office;Productivity;Calendar;Google;Nativefier;
