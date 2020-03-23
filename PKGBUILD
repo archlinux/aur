@@ -1,7 +1,7 @@
 # Maintainer: Chris Sculley <cs.sculley at gmail dot com>
 pkgname=idena-go-git
 pkgver=v0.4.0.r245.g97eefe6
-pkgrel=2
+pkgrel=3
 pkgdesc="The idena-go node for the Idena network"
 arch=("x86_64")
 url="https://github.com/idena-network/idena-go"
@@ -10,7 +10,7 @@ makedepends=("git" "go-pie")
 depends=("glibc")
 provides=("idena-go")
 conflicts=("idena-go")
-backup=(etc/idena-go/{idena-go.json})
+backup=("etc/idena-go/idena-go.json")
 source=("$pkgname::git+https://github.com/idena-network/idena-go.git"
         "idena-go.json"
         "idena-go.service")
