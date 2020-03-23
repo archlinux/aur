@@ -1,8 +1,0 @@
---- plymouth.src/systemd-units/plymouth-quit-wait.service.in
-+++ plymouth.patch/systemd-units/plymouth-quit-wait.service.in
-@@ -6,3 +6,4 @@
- ExecStart=-@PLYMOUTH_CLIENT_DIR@/plymouth --wait
- Type=oneshot
- TimeoutSec=0
-+RemainAfterExit=yes
-

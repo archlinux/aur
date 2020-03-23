@@ -1,8 +1,0 @@
---- plymouth.src/systemd-units/plymouth-kexec.service.in
-+++ /home/gunnar/Downloads/plymouth-kexec.service.in
-@@ -10,3 +10,4 @@
- ExecStart=@PLYMOUTH_DAEMON_DIR@/plymouthd --mode=shutdown --attach-to-session
- ExecStartPost=-@PLYMOUTH_CLIENT_DIR@/plymouth show-splash
- Type=forking
-+RemainAfterExit=yes
-

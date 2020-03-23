@@ -1,8 +1,0 @@
---- plymouth.src/systemd-units/plymouth-read-write.service.in
-+++ plymouth.patch/systemd-units/plymouth-read-write.service.in
-@@ -8,3 +8,4 @@
- [Service]
- ExecStart=-@PLYMOUTH_CLIENT_DIR@/plymouth update-root-fs --read-write
- Type=oneshot
-+RemainAfterExit=yes
-
