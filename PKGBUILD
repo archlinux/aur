@@ -2,7 +2,7 @@
 
 _target=riscv64-unknown-elf
 pkgname=$_target-newlib
-pkgver=3.1.0.20181231
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='A C standard library implementation intended for use on embedded systems (microcontrollers)'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=("$_target-gcc")
 options=(!emptydirs !strip)
 source=("https://sourceware.org/pub/newlib/newlib-${pkgver}.tar.gz")
-sha256sums=('9e12fea7297648b114434033ed4458755afe7b9b6c7d58123389e82bd37681c0')
+sha256sums=('58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66')
 
 build() {
   mkdir build-{newlib,nano}
