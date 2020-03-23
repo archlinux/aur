@@ -1,7 +1,7 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
 	pkgver = 0.10.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipfs-shipyard/ipfs-desktop
 	install = ipfs-desktop.install
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = ipfs-desktop
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
-	depends = libappindicator-sharp
 	source = https://github.com/ipfs-shipyard/ipfs-desktop/archive/v0.10.4.tar.gz
 	sha256sums = d4cc401f4cafaacb5a7f25518732fdc5c95f16d271794b605b24567c3cf07fa1
 
