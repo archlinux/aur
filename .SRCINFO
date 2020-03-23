@@ -1,0 +1,17 @@
+pkgbase = onedrive_tray-git
+	pkgdesc = OneDrive system tray program
+	pkgver = r14.90313c0
+	pkgrel = 1
+	url = https://github.com/DanielBorgesOliveira/onedrive_tray
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	depends = qt5-base
+	provides = onedrive_tray=r14.90313c0
+	conflicts = onedrive_tray
+	source = git+https://github.com/DanielBorgesOliveira/onedrive_tray.git
+	md5sums = SKIP
+
+pkgname = onedrive_tray-git
+
