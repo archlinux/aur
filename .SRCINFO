@@ -11,6 +11,7 @@ pkgbase = buzz-git
 	makedepends = rust
 	depends = libappindicator-gtk3
 	depends = gtk3
+	depends = notification-daemon
 	source = buzz-git::git+https://github.com/jonhoo/buzz
 	md5sums = SKIP
 
