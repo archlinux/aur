@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=hyperfine-git
-pkgver=1.9.0.r19.g3a99fe2
+pkgver=1.9.0.r36.gb702292
 pkgrel=1
 pkgdesc="A command-line benchmarking tool"
 arch=('i686' 'x86_64')
@@ -24,13 +24,18 @@ pkgver() {
 check() {
   cd "hyperfine"
 
-  #cargo test --release
+  #cargo test \
+  #  --locked \
+  #  --release
 }
 
 package() {
   cd "hyperfine"
 
-  cargo install --locked --root "$pkgdir/usr" --path "$srcdir/hyperfine"
+  cargo install \
+    --locked \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/hyperfine"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/hyperfine"
   install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/hyperfine"
