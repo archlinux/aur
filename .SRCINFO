@@ -1,0 +1,12 @@
+pkgbase = firejail-pacman-hook
+	pkgdesc = Updates firejail symbolic links on pacman operations
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = Unlicense
+	source = firejail.hook
+	sha256sums = 42939e3f287d6ae3de20a73dcf29f785a132020111ff302f4fb110388a756baf
+
+pkgname = firejail-pacman-hook
+	depends = firejail
+

@@ -1,0 +1,14 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Path
+Target = usr/bin/*
+Target = usr/local/bin/*
+Target = usr/share/applications/*.desktop
+
+[Action]
+Description = Configuring symlinks in /usr/local/bin based on firecfg.config...
+When = PostTransaction
+Depends = firejail
+Exec = /usr/bin/sh -c 'firecfg &>/dev/null'
