@@ -1,4 +1,5 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Martin Sandsmark <martin.sandsmark@kde.org>
 
 pkgname=kolourpaint-git
 pkgver=r2290.75f54996
