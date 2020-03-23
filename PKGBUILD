@@ -8,7 +8,7 @@ url="https://github.com/orhun/kmon"
 license=('GPL3')
 depends=('libxcb')
 makedepends=('cargo' 'git')
-conflicts=("${pkgname%-git}")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
 source=('git://github.com/orhun/kmon.git')
 sha256sums=('SKIP')
 
