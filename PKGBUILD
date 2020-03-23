@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=bao-git
-pkgver=0.10.0.r15.g8255146
+pkgver=0.10.1.r0.g6e52fe4
 pkgrel=1
 pkgdesc="A verified streaming tool"
 arch=('i686' 'x86_64')
@@ -27,13 +27,16 @@ pkgver() {
 check() {
   cd "bao"
 
-  cargo test --release
+  cargo test \
+    --release
 }
 
 package() {
   cd "bao"
 
-  cargo install --root "$pkgdir/usr" --path "$srcdir/bao/bao_bin"
+  cargo install \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/bao/bao_bin"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/bao"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/bao"
