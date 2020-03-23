@@ -46,8 +46,6 @@ package() {
 
   install -D -m644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # remove useless headers
-  rm "${pkgdir}/usr/include/CL/"{cl_d3d,cl_dx9}*.h
 
   cd "${srcdir}/OpenCL-CLHPP"
 
