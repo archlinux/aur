@@ -1,6 +1,6 @@
 pkgbase = qemu-android-x86
 	pkgdesc = Android-x86 environment via QEMU and VirGL
-	pkgver = 8.1.r2
+	pkgver = 9.0.r1
 	pkgrel = 1
 	url = http://www.android-x86.org/
 	install = qemu-android-x86.install
@@ -13,12 +13,12 @@ pkgbase = qemu-android-x86
 	depends = zenity
 	depends = qemu
 	depends = hicolor-icon-theme
-	source = android-x86-8.1-r2.x86_64.rpm::https://osdn.net/frs/redir.php?m=auto&f=android-x86%2F69704%2Fandroid-x86-8.1-r2.x86_64.rpm
+	source = android-x86-9.0-r1.x86_64.rpm::https://osdn.net/frs/redir.php?m=constant&f=android-x86%2F71931%2Fandroid-x86-9.0-r1.x86_64.rpm
 	source = https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg
 	source = qemu-android
 	source = config
 	source = qemu-android.desktop
-	sha256sums = 7280af001b2ad566aad6b1a2e7b5edeea666ee4e5e291d7c623de0fa8a4411ef
+	sha256sums = 41fea45fbbebdac26c99a6dd80315520e09d002e1a41eb98f324b5d6322868da
 	sha256sums = 8c80b881727efc8831c8ef53806e7c1d0427607e145aae09061c4870b6cd402f
 	sha256sums = e53911e378a6048d88d4fbaeb870c58f57c44142450527ee99b3c12baa15099a
 	sha256sums = e9524cdb27c57e6650af763b2231d67ff3e2beb12f52133e7e95eda4f16b0881
