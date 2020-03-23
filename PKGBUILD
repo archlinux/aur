@@ -20,6 +20,7 @@ depends=(
 		"python-xdg"
 		"python-requests"
 		"python-lxml"
+		"python-wheel"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()

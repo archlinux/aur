@@ -20,6 +20,7 @@ pkgbase = ytmdl
 	depends = python-xdg
 	depends = python-requests
 	depends = python-lxml
+	depends = python-wheel
 	source = https://github.com/deepjyoti30/ytmdl/archive/2020.03.21.tar.gz
 	md5sums = SKIP
 
