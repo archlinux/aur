@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Software that is capable of protect your password by changing it every single minute"
 arch=('i686' 'x86_64')
 url='https://github.com/azratul/ssp.git'
-license=('GPL')
+license=('GPL3')
 depends=(
     'man'
 )
