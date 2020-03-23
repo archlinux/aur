@@ -1,13 +1,14 @@
 # Maintainer: Claudio Lepin <claudio.lepin@uchile.cl>
 pkgname=ssp
 _pkgname=ssp
-pkgver=20200322.18_99c9b4d
+pkgver=20200323.27_00d3cd2
 pkgrel=1
 pkgdesc="Shoulder Surfing Protector"
 arch=('i686' 'x86_64')
 url='https://github.com/azratul/ssp.git'
 license=('GPL')
 depends=(
+    'man'
 )
 makedepends=(
 	'go'
@@ -49,7 +50,7 @@ build() {
 	rm -rf "$srcdir/go/src"
 
 	mkdir -p "$srcdir/go/src"
-
+	
 	export GOPATH="$srcdir/go"
 
 	mv "$srcdir/$_pkgname" "$srcdir/go/src/"
@@ -70,4 +71,6 @@ package() {
 	find "$srcdir/go/bin/" -type f -executable | while read filename; do
 		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
 	done
+
+        install -D -g 0 -o 0 -m 0644 "$srcdir/go/src/ssp/man/$_pkgname.1.gz" "$pkgdir/usr/local/man/man1/$_pkgname.1.gz"
 }
