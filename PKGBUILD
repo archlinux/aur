@@ -3,12 +3,12 @@
 # ---------------------------------------------------------------
 
 pkgname=opencpn-git
-pkgver=5.0.0.r770.g037c31a26
+pkgver=5.0.0.r951.gff60eeedb
 pkgrel=1
 pkgdesc="Open Source Chart Plotting / Marine Navigation - Git version"
 arch=('x86_64' 'aarch64')
 license=("GPL2")
-depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk')
+depends=('wxgtk3' 'gpsd' 'portaudio' 'tinyxml' 'hicolor-icon-theme' 'webkit2gtk' 'lsb-release')
 makedepends=('cmake' 'git')
 conflicts=('opencpn')
 provides=('opencpn')
