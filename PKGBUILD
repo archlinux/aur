@@ -1,7 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=guile-wm-git
-pkgver=1.0.6.gf3c7b3b
+pkgver=1.0.r9.g38916e0
 pkgrel=1
+epoch=1
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
 url="http://www.markwitmer.com/guile-xcb/guile-wm.html"
@@ -13,26 +15,26 @@ conflicts=('guile-wm')
 source=("git+https://github.com/mwitmer/guile-wm.git")
 md5sums=('SKIP')
 options=('!makeflags')
-_gitname="guile-wm"
+_gitname="${pkgname%-git}"
 
 pkgver() {
   cd $_gitname
-  printf %s $(git describe --tags  | tr  - .)
+  printf %s $(git describe --tags  | sed 's+-+.r+' | tr  - .)
 }
 
 prepare() {
-  cd "$_gitname"
+  cd $_gitname
   sed -i 's+2.0 2.2+2.2+' configure.ac
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd "$_gitname"
   autoreconf
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd $_gitname
   make DESTDIR="$pkgdir/" install
 }

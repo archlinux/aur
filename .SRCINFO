@@ -1,7 +1,8 @@
 pkgbase = guile-wm-git
 	pkgdesc = Windowmanagement environment for guile
-	pkgver = 1.0.6.gf3c7b3b
+	pkgver = 1.0.r9.g38916e0
 	pkgrel = 1
+	epoch = 1
 	url = http://www.markwitmer.com/guile-xcb/guile-wm.html
 	arch = any
 	license = GPL
