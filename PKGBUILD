@@ -7,7 +7,7 @@
 
 pkgname=mock
 pkgver=2.0
-_rpmrel=1
+_rpmrel=2
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
 pkgdesc="A simple chroot build environment manager for building RPMs"
@@ -32,7 +32,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
         "$pkgname-2.0-dont-fail-when-etc-pki-certs-are-not-found.patch::$url/pull/506.patch")
-md5sums=('6c45844299ac9b169daa5e95385f914c'
+md5sums=('dda370331b4ef7f7dae3e7666d1e01e4'
          'd277502b9a95484594f86231d073dae0'
          '1052fa4db74b59b0c195f4756bd865e8'
          'ca99e3fcf085a3a6a89b90477a39d88c')

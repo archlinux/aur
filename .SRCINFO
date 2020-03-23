@@ -1,7 +1,7 @@
 pkgbase = mock
 	pkgdesc = A simple chroot build environment manager for building RPMs
 	pkgver = 2.0
-	pkgrel = 1.1
+	pkgrel = 2.1
 	url = https://github.com/rpm-software-management/mock
 	install = mock.install
 	arch = any
@@ -22,11 +22,11 @@ pkgbase = mock
 	optdepends = yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)
 	backup = etc/mock/logging.ini
 	backup = etc/mock/site-defaults.cfg
-	source = https://github.com/rpm-software-management/mock/archive/mock-2.0-1.tar.gz
+	source = https://github.com/rpm-software-management/mock/archive/mock-2.0-2.tar.gz
 	source = mock.sysusers
 	source = mock.tmpfiles
 	source = mock-2.0-dont-fail-when-etc-pki-certs-are-not-found.patch::https://github.com/rpm-software-management/mock/pull/506.patch
-	md5sums = 6c45844299ac9b169daa5e95385f914c
+	md5sums = dda370331b4ef7f7dae3e7666d1e01e4
 	md5sums = d277502b9a95484594f86231d073dae0
 	md5sums = 1052fa4db74b59b0c195f4756bd865e8
 	md5sums = ca99e3fcf085a3a6a89b90477a39d88c
