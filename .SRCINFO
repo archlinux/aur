@@ -1,0 +1,14 @@
+pkgbase = scaffold-static
+	pkgdesc = Scaffolding utility for vanilla-js
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://www.npmjs.com/package/scaffold-static
+	arch = any
+	license = GPL-3.0
+	makedepends = npm
+	noextract = v1.5.0.tar.gz
+	source = https://github.com/jamesgeorge007/scaffold-static/archive/v1.5.0.tar.gz
+	md5sums = 27522b905344fb01a625195376b6d4a4
+
+pkgname = scaffold-static
+
