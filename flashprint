@@ -3,4 +3,4 @@
 ### start flashprint with LANG=C to fix render issues
 ### thanks to Michael Risthaus for reporting this workaround
 ### will be replaced with symlink after fix from uplink
-env LANG=C /usr/share/FlashPrint/FlashPrint
+env LANG=C LD_LIBRARY_PATH=/opt/qt595/lib /usr/share/FlashPrint/FlashPrint
