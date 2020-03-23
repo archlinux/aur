@@ -6,7 +6,7 @@ pkgdesc='A Tool for managing parallel versions of multiple Software Development 
 arch=('x86_64')
 url="https://github.com/palindrom615/$pkgname"
 license=('Apache 2.0')
-# makedepends=('go-pie')
+makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('257f954663ee1ec5ff66942ac640918a4bf9f127c39c24da367f7b3cba652f2b')
 
