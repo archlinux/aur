@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-ozone
-pkgver=80.0.3987.116
+pkgver=80.0.3987.149
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -19,9 +19,9 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'pipewire' 'clang' 'lld' 'gn' 'java-runtime-headless')
+             'libpipewire02' 'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
-            'pipewire: WebRTC desktop sharing under Wayland'
+            'libpipewire02: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
@@ -40,7 +40,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('65c5d9bc510b712170c6013acd3bbb07d770a1ce02d64d01890386e9e5678901'
+sha256sums=('50bedde7932921e375b521ceab8989be134a8d937751847e9d9287f7e0a02c1e'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '716c28bed9f6e9c32e3617e125c1b04806700aef691763923cd4ed14b8d23279'
             '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
