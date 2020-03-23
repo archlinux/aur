@@ -4,7 +4,7 @@
 # Contributor: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=v2.53.0
+pkgver=2.53.0
 _gitrev=1063
 _gitver=4c40422c
 _fullver="$pkgver.$_gitrev-$_gitver"

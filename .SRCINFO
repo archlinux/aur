@@ -1,6 +1,6 @@
 pkgbase = plex-media-player
 	pkgdesc = Next generation Plex Desktop Client
-	pkgver = v2.53.0
+	pkgver = 2.53.0
 	pkgrel = 2
 	url = https://github.com/plexinc/plex-media-player
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = plex-media-player
 	depends = protobuf
 	noextract = web-client-desktop-176-21c9724ca0ff70-4.26.1-ca0ff70.tar.xz
 	noextract = web-client-tv-176-21c9724ca0ff70-4.29.1-21c9724.tar.xz
-	source = plex-media-player-v2.53.0.1063-4c40422c.tar.gz::https://github.com/plexinc/plex-media-player/archive/vv2.53.0.1063-4c40422c.tar.gz
+	source = plex-media-player-2.53.0.1063-4c40422c.tar.gz::https://github.com/plexinc/plex-media-player/archive/v2.53.0.1063-4c40422c.tar.gz
 	source = buildid-176-21c9724ca0ff70.cmake::https://artifacts.plex.tv/web-client-pmp/176-21c9724ca0ff70/buildid.cmake
 	source = web-client-desktop-176-21c9724ca0ff70-4.26.1-ca0ff70.tar.xz::https://artifacts.plex.tv/web-client-pmp/176-21c9724ca0ff70/web-client-desktop-4.26.1-ca0ff70.tar.xz
 	source = web-client-desktop-176-21c9724ca0ff70-4.26.1-ca0ff70.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/176-21c9724ca0ff70/web-client-desktop-4.26.1-ca0ff70.tar.xz.sha1
