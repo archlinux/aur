@@ -1,0 +1,16 @@
+pkgbase = iredis-bin
+	pkgdesc = Interactive Redis: A Terminal Client for Redis with AutoCompletion and Syntax Highlighting
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://iredis.io
+	arch = any
+	license = custom
+	provides = iredis
+	noextract = iredis.tar.gz
+	source = https://github.com/laixintao/iredis/releases/download/v1.4.3/iredis.tar.gz
+	source = LICENSE
+	md5sums = 6d77f6ce1025a63a43f7c7321476953d
+	md5sums = b4a154b21cf1866729383356f640b247
+
+pkgname = iredis-bin
+
