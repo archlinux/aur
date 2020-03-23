@@ -1,0 +1,16 @@
+pkgbase = ardupilot-gazebo-sitl-git
+	pkgdesc = Gazebo plugin for Ardupilot's SITL.
+	pkgver = r31.9bae0ea
+	pkgrel = 1
+	url = https://ardupilot.org/dev/docs/using-gazebo-simulator-with-sitl.html
+	arch = x86_64
+	license = GPLv3
+	makedepends = cmake
+	depends = gazebo
+	optdepends = ardupilot-sitl
+	provides = ardupilot-gazebo-sitl
+	source = ardupilot-gazebo-stil::git+https://github.com/khancyr/ardupilot_gazebo.git
+	sha256sums = SKIP
+
+pkgname = ardupilot-gazebo-sitl-git
+
