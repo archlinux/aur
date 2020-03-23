@@ -2,6 +2,7 @@ pkgbase = ssp
 	pkgdesc = Shoulder Surfing Protector
 	pkgver = 20200322.18_99c9b4d
 	pkgrel = 1
+	url = https://developer.nvidia.com/tensorrt/
 	arch = i686
 	arch = x86_64
 	license = GPL
