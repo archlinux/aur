@@ -18,7 +18,7 @@ pkgbase = linux-haruka-workstation
 	source = haruka-workstation-kernel::git+https://github.com/HarukaNetwork/haruka-workstation-kernel
 	source = config
 	sha256sums = SKIP
-	sha256sums = 775e62bef116136f7b258ecc32ad1071dc2c6b161176d78092e29f180136dac9
+	sha256sums = SKIP
 
 pkgname = linux-haruka-workstation
 	pkgdesc = The Haruka Workstation Kernel kernel and modules
