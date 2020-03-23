@@ -5,7 +5,7 @@
 pkgname=hop-git
 epoch=2
 pkgver=3.2.0.r5367
-pkgrel=2
+pkgrel=3
 pkgdesc="Software Development Kit for the Web"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -30,7 +30,8 @@ build() {
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin \
 	      --bigloolibdir=/usr/lib/bigloo/4.3f
-  make
+  sed -i 's/, -static-all-bigloo//' share/Makefile
+  LD_LIBRARY_PATH="$PWD/lib/hop/3.2.0/" make
   make doc
 }
 
@@ -50,5 +51,5 @@ package() {
 	  "$pkgdir"/usr/lib/systemd/system/hop.socket
 
   install -Dm755 arch/archlinux/bin/hop.sh "$pkgdir"/usr/bin/hop.sh
-  cd "$pkgdir"/usr/bin; rm hop; ln -s hop-3.0.0 hop
+  cd "$pkgdir"/usr/bin; rm hop; ln -s hop-3.2.0 hop
 }
