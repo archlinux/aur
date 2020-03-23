@@ -1,0 +1,14 @@
+pkgbase = cxxmatrix
+	pkgdesc = A C++ based scrolling Matrix digital rain along with other scenes.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/akinomyoga/cxxmatrix
+	arch = x86_64
+	license = MIT
+	depends = gawk
+	provides = cxxmatrix
+	source = git+https://github.com/akinomyoga/cxxmatrix
+	md5sums = SKIP
+
+pkgname = cxxmatrix
+
