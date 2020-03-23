@@ -1,0 +1,15 @@
+pkgbase = python-yfinance-git
+	pkgdesc = Yahoo! Finance market data downloader (+faster Pandas Datareader)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ranaroussi/yfinance
+	arch = any
+	license = apache2
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-multitasking-git
+	source = git://github.com/ranaroussi/yfinance
+	sha256sums = SKIP
+
+pkgname = python-yfinance-git
+
