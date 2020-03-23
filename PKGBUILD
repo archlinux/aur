@@ -8,7 +8,7 @@
 #
 
 pkgname=platformio
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
@@ -25,18 +25,9 @@ depends=('python-setuptools'
          'python-pyelftools'
          'python-marshmallow')
 conflicts=('platformio-git')
-source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz"
-        "click_version.patch")
-sha256sums=('e2ed3523b20520ea7ba2a278c7181ce61c065c02e7d3af692f4c1c7c8aaba3c8'
-            'c1769958f372568a9d5ca7bd553de75af435c190db6ae9b91b9e8c2816fafcba')
+source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
+sha256sums=('82c5c99c859cd287674cbd4d298f4b4f143a7ed4ba76db5c3195c2499c9df6ce')
 
-prepare() {
-    cd "$srcdir/platformio-core-$pkgver"
-    # Revert python-click version limit, because it is just for windows
-    # https://github.com/pallets/click/issues/1501
-    patch -Rp1 < ../click_version.patch
-}
-           
 package() {
     cd "$srcdir/platformio-core-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
