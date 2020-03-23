@@ -2,7 +2,7 @@
 
 pkgname=nodejs-sword-interface
 _npmname=${pkgname/js}
-pkgver=0.119.0
+pkgver=0.122.0
 pkgrel=1
 pkgdesc='Javascript (N-API) interface to SWORD library'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('nodejs' 'nodejs-addon-api')
 makedepends=('jq' 'node-gyp' 'moreutils' 'npm' 'sword')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('164d8d81928b503b7c74edb7193ded821ee500b3d619342fdf66dd1d4895869f')
+sha256sums=('597efdb7af9a5b22464673022508906aec9830dddeeb9cb3b8891fbe8faadb62')
 
 prepare() {
     cd "$_npmname-$pkgver"
