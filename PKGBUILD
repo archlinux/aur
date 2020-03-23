@@ -3,7 +3,7 @@
 
 pkgname=sccache
 pkgver=0.2.13
-pkgrel=3
+pkgrel=4
 pkgdesc="Shared compilation cache"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/sccache"
@@ -27,11 +27,11 @@ package() {
   cd "$pkgname-$pkgver"
 
   cargo install \
+    --no-track \
     --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/$pkgname-$pkgver" \
     --all-features
-  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/sccache"
 
-  rm -f "$pkgdir/usr"/.crates*
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/sccache"
 }

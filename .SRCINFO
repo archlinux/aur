@@ -1,7 +1,7 @@
 pkgbase = sccache
 	pkgdesc = Shared compilation cache
 	pkgver = 0.2.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mozilla/sccache
 	arch = i686
 	arch = x86_64
