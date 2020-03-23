@@ -3,11 +3,10 @@ Description=Folding@Home
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/mkdir -p %h/.local/share/fahclient
-ExecStartPre=/usr/bin/mkdir -p %h/.config/
-ExecStartPre=/bin/bash -c "[ ! -f %h/.config/fahclient.cfg ] && cp /usr/share/doc/fahclient/sample-config.xml %h/.config/fahclient.cfg"
-WorkingDirectory=%h/.local/share/fahclient
-ExecStart=/usr/bin/FAHClient --config %h/.config/fahclient.cfg
+ExecStartPre=/usr/bin/mkdir -pv %h/.local/share/fahclient
+ExecStartPre=/usr/bin/mkdir -pv %h/.config/
+ExecStartPre=/bin/bash -c "[ ! -f %h/.config/fahclient.cfg ] && cp /usr/share/doc/fahclient/sample-config.xml %h/.config/fahclient.cfg || /bin/true"
+ExecStart=/bin/bash -c "cd %h/.local/share/fahclient && /usr/bin/FAHClient --config %h/.config/fahclient.cfg"
 
 [Install]
 WantedBy=default.target
