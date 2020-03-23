@@ -1,8 +1,7 @@
 {
-  "DataDir": "datadir",
+  "DataDir": "/var/idena-go",
   "P2P": {
     "ListenAddr": ":40404",
-    "BootstrapNodes": [],
     "NoDiscovery": false
   },
   "RPC": {
@@ -10,9 +9,9 @@
     "HTTPPort": 9009
   },
   "IpfsConf": {
-    "DataDir": "datadir",
+    "DataDir": "/var/idena-go/ipfs",
     "IpfsPort": 40403,
-    "BootNodes": []
+    "Profile": "server"
   },
   "Sync": {
     "FastSync": true

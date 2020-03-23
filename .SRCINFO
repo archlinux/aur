@@ -1,7 +1,7 @@
 pkgbase = idena-go-git
 	pkgdesc = The idena-go node for the Idena network
 	pkgver = v0.4.0.r245.g97eefe6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/idena-network/idena-go
 	arch = x86_64
 	makedepends = git
@@ -14,7 +14,7 @@ pkgbase = idena-go-git
 	source = idena-go.json
 	source = idena-go.service
 	md5sums = SKIP
-	md5sums = 74cdd53e2c514d4a9f6488623b2e9170
+	md5sums = 873db70aca2a706400967dd391f41da9
 	md5sums = 6001d4aab3b42844f2c087e06c9e4598
 
 pkgname = idena-go-git

@@ -1,7 +1,7 @@
 # Maintainer: Chris Sculley <cs.sculley at gmail dot com>
 pkgname=idena-go-git
 pkgver=v0.4.0.r245.g97eefe6
-pkgrel=3
+pkgrel=4
 pkgdesc="The idena-go node for the Idena network"
 arch=("x86_64")
 url="https://github.com/idena-network/idena-go"
@@ -15,7 +15,7 @@ source=("$pkgname::git+https://github.com/idena-network/idena-go.git"
         "idena-go.json"
         "idena-go.service")
 md5sums=("SKIP"
-        "74cdd53e2c514d4a9f6488623b2e9170"
+        "873db70aca2a706400967dd391f41da9"
         "6001d4aab3b42844f2c087e06c9e4598")
 
 pkgver() {
