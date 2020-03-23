@@ -9,6 +9,7 @@ pkgbase = kmon-bin
 	makedepends = git
 	depends = libxcb
 	conflicts = kmon
+	conflicts = kmon-git
 	source = https://github.com/orhun/kmon/releases/download/v0.3.3/kmon-0.3.3.tar.gz
 	sha256sums = 42d75e595f94f594989019dcfd8c524768df480deeec088f84b3fe94699495c0
 
