@@ -30,25 +30,31 @@ build() {
 
   echo "Fixing paths in files..."
 
-  for f in config.py env.sh env.csh ; do
-    sed -i "s|${pkgdir}||g" "$f"
-    sed -i "s|${srcdir}|/usr/src/|g" "$f"
-  done
+#  for f in config.py env.sh env.csh ; do
+#    sed -i "s|${pkgdir}||g" "$f"
+#    sed -i "s|${srcdir}|/usr/src/|g" "$f"
+#  done
 
   sed -i "s/^LINKFLAGS.*/LINKFLAGS = ['-llapack', '-lblas', '-pthread', '-fopenmp', '-ltirpc']/g" config.py
-  make
+#  sed -i "s/^CXXFLAGS.*/CXXFLAGS = \'-O2 -std=c++11 -U__STRICT_ANSI__ -Wall -pedantic -fopenmp ${CXXFLAGS}\'/g" config.py
+  make "${MAKEFLAGS}"
 }
 
 package() {
     cd ${srcdir}/${pkgname}
     make install
-    #sed -i "s.${pkgdir}..g" ${pkgdir}/usr/share/madagascar/etc/env.sh
-    #sed -i "s.${pkgdir}..g" ${pkgdir}/usr/share/madagascar/etc/env.csh
+    arr=("/usr/share/madagascar/etc/config.py"
+         "/usr/lib/python3.8/site-packages/rsf/prog.py"
+	 "/usr/share/madagascar/etc/env.sh"
+	 "/usr/src/madagascar/config.py"
+	)
+    for f in $arr ; do
+      sed -i "s|${pkgdir}||g" "$f"
+      sed -i "s|${srcdir}|/usr/src/|g" "$f"
+    done
     mkdir -p "${pkgdir}/usr/src/"
     cp -r ${srcdir} ${pkgdir}/usr/src/${pkgname}
     rm ${pkgdir}/usr/src/${pkgname}/madagascar.tar.gz
-    #rm -rf "${pkgdir}/usr/src/${pkgname}/{pkgname}"
-    #rm -rf "${pkgdir}/usr/src/${pkgname}/{pkgdir}"
 }
 #md5sums=('a87a6f7f5ba552cd251b1588048844bf')
 md5sums=('SKIP')
