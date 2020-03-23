@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=firmware-manager-git
-pkgver=r152.df334ae
+pkgver=r153.e48a40b
 pkgrel=1
 pkgdesc="Generic framework and GTK UI for firmware updates from system76-firmware and fwupd"
 arch=('x86_64')
@@ -28,4 +28,6 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	make DESTDIR="$pkgdir/" install prefix=/usr
+
+	ln -s /usr/bin/com.system76.FirmwareManager "$pkgdir/usr/bin/${pkgname%-git}"
 }

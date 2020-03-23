@@ -1,6 +1,6 @@
 pkgbase = firmware-manager-git
 	pkgdesc = Generic framework and GTK UI for firmware updates from system76-firmware and fwupd
-	pkgver = r152.df334ae
+	pkgver = r153.e48a40b
 	pkgrel = 1
 	url = https://github.com/pop-os/firmware-manager
 	install = firmware-manager.install
