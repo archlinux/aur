@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.37dev.r4250.gd11ad228
+pkgver=1.0dev.r4725.g89826463
 pkgrel=1
 arch=('any')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -16,8 +16,8 @@ makedepends=('gcc-ada' 'git')
 install=ghdl.install
 options=(!emptydirs staticlibs)
 
-_gccver=8.3.0
-_islver=0.20
+_gccver=9.2.0
+_islver=0.22.1
 
 source=(
 	"ghdl::git://github.com/ghdl/ghdl.git"
@@ -26,8 +26,8 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'64baadfe6cc0f4947a84cb12d7f0dfaf45bb58b7e92461639596c21e02d97d2c'
-	'b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2'
+	'ea6ef08f121239da5695f76c9b33637a118dcf63e24164422231917fa61fb206'
+	'1a668ef92eb181a7c021e8531a3ca89fd71aa1b3744db56f68365ab0a224c5cd'
 )
 
 pkgver() {
@@ -40,7 +40,7 @@ pkgver() {
 	#local _gitver=`git log -n 1 --date=short | sed -n -e 's/.*Date:\s*\([0-9-]*\).*/\1/p' | tr -d -`
 	# Revision number
 	local _gitrev=`git rev-list --count HEAD`
-	# Short hash oatest commit
+	# Short hash of latest commit
 	local _githash=`git rev-parse --short HEAD`
 
 	#echo $_distver.git$_gitver;
@@ -70,9 +70,10 @@ prepare() {
 	# Do not run fixincludes - FIXME Why?
 	sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
-	# Arch Linux installs libraries in /lib
 	# FIXME How to fix this for all architectures ?
+	# Arch Linux installs libraries in /lib
 	sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
+	# Arch Linux ARM installs aarch64 libraries /lib
 	sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
 
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
