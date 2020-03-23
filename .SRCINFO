@@ -7,6 +7,7 @@ pkgbase = auto-cpufreq-git
 	arch = any
 	license = LGPL-3.0
 	makedepends = git
+	makedepends = python-setuptools
 	depends = python-distro
 	depends = python-psutil
 	depends = python-click
