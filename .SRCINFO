@@ -1,7 +1,7 @@
 pkgbase = rav1e
 	pkgdesc = The fastest and safest AV1 encoder
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xiph/rav1e
 	arch = i686
 	arch = x86_64
@@ -9,10 +9,13 @@ pkgbase = rav1e
 	license = custom
 	makedepends = rust
 	makedepends = nasm
+	makedepends = cargo-c
 	depends = gcc-libs
 	options = staticlibs
 	source = rav1e-0.3.1.tar.gz::https://github.com/xiph/rav1e/archive/v0.3.1.tar.gz
+	source = https://github.com/xiph/rav1e/releases/download/v0.3.1/Cargo.lock
 	sha256sums = 581b50e1e550835b65dd20f3c851cf2dae93eac0ee016caadfaa5faef8eee6f0
+	sha256sums = 5d7d408bdcf69059f07fe060c64d14a1ef2fac42a59350c3dfb3a85a8e94881a
 
 pkgname = rav1e
 
