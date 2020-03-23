@@ -1,6 +1,6 @@
 pkgbase = git-machete
 	pkgdesc = Probably the sharpest git repository organizer & rebase/merge workflow automation tool you've ever seen
-	pkgver = 2.13.5
+	pkgver = 2.13.6
 	pkgrel = 1
 	url = https://github.com/VirtusLab/git-machete
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = git-machete
 	makedepends = python-setuptools
 	depends = git
 	depends = python
-	source = git-machete-2.13.5.tar.gz::https://github.com/VirtusLab/git-machete/archive/v2.13.5.tar.gz
-	sha256sums = 47e559b83cbdda1b2ccd1c228adcb2a6dbeb2b69d9f9b888552983166be0a08f
+	source = git-machete-2.13.6.tar.gz::https://github.com/VirtusLab/git-machete/archive/v2.13.6.tar.gz
+	sha256sums = f1e05b5282d2f9a6902b8914b9a9b6320ab0b17729d4f8539cab699b886f514a
 
 pkgname = git-machete
 
