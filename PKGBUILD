@@ -3,13 +3,13 @@
 _pkgbase=mangohud
 pkgbase=$_pkgbase-git
 pkgname=('mangohud-git' 'lib32-mangohud-git' 'mangohud-common-git')
-pkgver=0.3.0.r25.g71b6027
-pkgrel=1
+pkgver=0.3.0.r28.g32c4515
+pkgrel=2
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-depends=('glslang' 'libglvnd' 'lib32-libglvnd' 'vulkan-headers')
-makedepends=('gcc' 'meson' 'python-mako' 'libx11' 'lib32-libx11' 'git')
+depends=('glslang' 'libglvnd' 'lib32-libglvnd' 'libxnvctrl' 'vulkan-headers')
+makedepends=('gcc' 'meson' 'python-mako' 'libx11' 'lib32-libx11' 'libxnvctrl' 'git')
 replaces=('vulkan-mesa-layer-mango' 'lib32-vulkan-mesa-layer-mango')
 source=("$_pkgbase::git+$url#branch=develop"
         'ImGui::git+https://github.com/flightlessmango/ImGui.git')
