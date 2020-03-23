@@ -2,7 +2,7 @@
 
 pkgname=amdvlk-bin
 pkgver=2020.Q1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)'
 arch=('x86_64')
 url='https://github.com/GPUOpen-Drivers/AMDVLK'
