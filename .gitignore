@@ -2,3 +2,4 @@
 /src/
 /kmon/
 *.tar.xz
+*.tar.gz
