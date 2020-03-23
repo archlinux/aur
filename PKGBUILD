@@ -26,10 +26,10 @@ sha256sums=('52ac917dd96f20a05b4beb7ea4c52edcf8c6170bd49b36178f599d48ecd3a822'
 build() {
   cd ${pkgname}-${pkgver}
 
-  export JAVA_HOME=/usr/lib/jvm/java-13-openjdk/
+  mkdir ${srcdir}/gradle
 
-  # Avoid storing maven packages in the user's home (comment out to cache resources)
-  sed -i '/^\s*mavenLocal()\s*$/d' build.gradle
+  export JAVA_HOME=/usr/lib/jvm/java-13-openjdk/
+  export GRADLE_USER_HOME=${srcdir}/gradle
 
   ./gradlew \
     --no-daemon \
