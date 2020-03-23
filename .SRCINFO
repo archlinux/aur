@@ -1,0 +1,23 @@
+pkgbase = libjcat-git
+	pkgdesc = Library for reading and writing Jcat files
+	pkgver = 0.1.0.r1.gc378ba4
+	pkgrel = 1
+	url = https://github.com/hughsie/libjcat
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = help2man
+	makedepends = vala
+	depends = glibc
+	depends = gpgme
+	depends = json-glib
+	provides = libjcat
+	conflicts = libjcat
+	source = git+https://github.com/hughsie/libjcat.git
+	sha256sums = SKIP
+
+pkgname = libjcat-git
+
