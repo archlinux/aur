@@ -1,0 +1,19 @@
+pkgbase = help2man-git
+	pkgdesc = Tool for generating manual pages from program output
+	pkgver = 1.47.13.r0.gfbec3d0
+	pkgrel = 1
+	url = https://www.gnu.org/software/help2man/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gettext
+	makedepends = po4a
+	depends = perl-locale-gettext
+	provides = help2man
+	conflicts = help2man
+	source = git+https://salsa.debian.org/bod/help2man.git
+	sha256sums = SKIP
+
+pkgname = help2man-git
+
