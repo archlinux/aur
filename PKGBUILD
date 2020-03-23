@@ -15,7 +15,7 @@ build() {
   go build \
     -mod=mod \
     -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
+    -ldflags="-X 'github.com/palindrom615/sdkman/cmd.version=$pkgver' -extldflags $LDFLAGS" \
     -o sdk .
 }
 
