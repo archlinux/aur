@@ -1,0 +1,20 @@
+diff --git a/pom.xml b/pom.xml
+index f24470e..0574aee 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -12,13 +12,13 @@
+ 
+     <properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+-        <java.version>12</java.version>
++        <java.version>11</java.version>
+         <maven.compiler.source>${java.version}</maven.compiler.source>
+         <maven.compiler.target>${java.version}</maven.compiler.target>
+         <mainClass>com.kodedu.boot.AppStarter</mainClass>
+         <install4j.home>/home/travis/build/asciidocfx/AsciidocFX/install4j8.0</install4j.home>
+         <install4j.licenseKey>${env.LICENSE_KEY_8}</install4j.licenseKey>
+-        <openjfx.version>12</openjfx.version>
++        <openjfx.version>13</openjfx.version>
+         <ikonli.version>11.3.4</ikonli.version>
+         <jaxb.version>2.3.2</jaxb.version>
+     </properties>
