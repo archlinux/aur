@@ -1,6 +1,6 @@
 # Maintainer: Remi Gacogne <rgacogne-arch at archlinux dot org>
 pkgname=powerdns-recursor-git
-pkgver=r17040.d26856a32
+pkgver=r18769.6a4590f13
 pkgrel=1
 pkgdesc='Resolving DNS server'
 arch=('x86_64')
@@ -23,15 +23,17 @@ build() {
   cd "${pkgname}/pdns/recursordist"
   autoreconf -i
   ./configure \
-      --prefix=/usr \
-      --sbindir=/usr/bin \
-      --sysconfdir=/etc/powerdns \
-      --disable-silent-rules \
-      --enable-reproducible \
-      --enable-systemd \
-      --with-protobuf \
-      --with-lua=luajit \
-      --with-libsodium
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc/powerdns \
+    --disable-silent-rules \
+    --enable-reproducible \
+    --enable-systemd \
+    --with-protobuf \
+    --with-libsodium \
+    --with-lua=luajit \
+    --with-service-user=pdns-recursor \
+    --with-service-group=pdns-recursor
   make
 }
 
@@ -39,4 +41,9 @@ package() {
   cd "${pkgname}/pdns/recursordist/"
   make DESTDIR="${pkgdir}" install
   mv "${pkgdir}/etc/powerdns/recursor.conf-dist" "${pkgdir}/etc/powerdns/recursor.conf"
+
+  cd "${srcdir}"
+  install -D -m644 ../sysusers.conf "${pkgdir}/usr/lib/sysusers.d/powerdns-recursor.conf"
 }
+
+# vim: ts=2 sw=2 et:
