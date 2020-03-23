@@ -4,18 +4,19 @@
 pkgname=php73-redis
 _name=redis
 _upstream=phpredis
-pkgver=5.1.1
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="An API for communicating with the Redis key-value store"
 arch=('x86_64')
 url="https://github.com/phpredis/phpredis/"
 license=('PHP')
-depends=('glibc' 'liblzf' 'php73-igbinary')
+depends=('glibc' 'php73-igbinary')
+makedepends=('liblzf')
 checkdepends=('lsof' 'redis')
 optdepends=('redis: use a local redis instance')
 backup=("etc/php73/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_upstream}/${_upstream}/archive/${pkgver}.tar.gz")
-sha512sums=('d15bfb675491aaafeb09a398fb540d9ba6d64803d7ad0fd8765bc1a3f50f58ef066384e678f20259742b67135e814f0b379861a46eab3afa0ac9f95ae375e726')
+sha512sums=('40d8b16a491f44c62b56f6b0e7a9a028893af64fc86531e61b0e85d2fa09a517f77e132374526ef6a774a9275921ee3fd56effa709b1e704649858fbdee628d3')
 
 prepare() {
   mv -v "${_upstream}-${pkgver}" "$pkgname-$pkgver"
@@ -51,6 +52,7 @@ check() {
 }
 
 package() {
+  depends+=('liblzf.so')
   cd "$pkgname-$pkgver"
   make INSTALL_ROOT="$pkgdir/" install
   install -vDm 644 "${_name}.ini" -t "${pkgdir}/etc/php73/conf.d/"

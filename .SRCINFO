@@ -1,19 +1,22 @@
 pkgbase = php73-redis
 	pkgdesc = An API for communicating with the Redis key-value store
-	pkgver = 5.1.1
+	pkgver = 5.2.1
 	pkgrel = 1
 	url = https://github.com/phpredis/phpredis/
 	arch = x86_64
 	license = PHP
 	checkdepends = lsof
 	checkdepends = redis
+	makedepends = liblzf
 	depends = glibc
-	depends = liblzf
 	depends = php73-igbinary
 	optdepends = redis: use a local redis instance
 	backup = etc/php73/conf.d/redis.ini
-	source = php73-redis-5.1.1.tar.gz::https://github.com/phpredis/phpredis/archive/5.1.1.tar.gz
-	sha512sums = d15bfb675491aaafeb09a398fb540d9ba6d64803d7ad0fd8765bc1a3f50f58ef066384e678f20259742b67135e814f0b379861a46eab3afa0ac9f95ae375e726
+	source = php73-redis-5.2.1.tar.gz::https://github.com/phpredis/phpredis/archive/5.2.1.tar.gz
+	sha512sums = 40d8b16a491f44c62b56f6b0e7a9a028893af64fc86531e61b0e85d2fa09a517f77e132374526ef6a774a9275921ee3fd56effa709b1e704649858fbdee628d3
 
 pkgname = php73-redis
+	depends = glibc
+	depends = php73-igbinary
+	depends = liblzf.so
 
