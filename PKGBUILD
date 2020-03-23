@@ -4,7 +4,7 @@
 pkgname=qnap-qdk-git
 pkgver=2.3.10.r92.4903650
 pkgrel=1
-pkgdesc='QNAP Development Kit '
+pkgdesc='QNAP Development Kit'
 arch=(x86_64)
 url=https://github.com/qnap-dev/QDK
 license=(GPL)
