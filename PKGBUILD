@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasmtime-git
-pkgver=0.12.0.r20.g35d5c6bd
+pkgver=0.12.0.r3420.gd54611dac
 pkgrel=1
 pkgdesc="Standalone JIT-style runtime for WebAssembly"
 arch=('i686' 'x86_64')
@@ -33,13 +33,18 @@ pkgver() {
 check() {
   cd "wasmtime"
 
-  #cargo test --release
+  #cargo test \
+  #  --locked \
+  #  --release
 }
 
 package() {
   cd "wasmtime"
 
-  cargo install --root "$pkgdir/usr" --path "$srcdir/wasmtime"
+  cargo install \
+    --locked \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/wasmtime"
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/wasmtime"
 
   rm -f "$pkgdir/usr"/.crates*
