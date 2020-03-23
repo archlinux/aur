@@ -20,7 +20,7 @@ pkgbase = linux-nitrous
 	sha256sums = 03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246
 
 pkgname = linux-nitrous
-	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang
+	pkgdesc = Modified Linux kernel optimized for Haswell (and newer) compiled using clang (tagged git version)
 	install = linux-nitrous.install
 	depends = coreutils
 	depends = linux-firmware
@@ -32,10 +32,10 @@ pkgname = linux-nitrous
 	backup = etc/mkinitcpio.d/linux-nitrous.preset
 
 pkgname = linux-nitrous-headers
-	pkgdesc = Header files and scripts for building modules for Linux kernel (git version)
+	pkgdesc = Header files and scripts for building modules for Linux kernel (tagged git version)
 	provides = linux-headers
 
 pkgname = linux-nitrous-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (git version)
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux kernel (tagged git version)
 	provides = linux-docs
 
