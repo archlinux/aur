@@ -1,6 +1,6 @@
 pkgbase = intel-sde
 	pkgdesc = Intel Software Development Emulator
-	pkgver = 8.35.0
+	pkgver = 8.49.0
 	pkgrel = 1
 	url = https://software.intel.com/en-us/articles/intel-software-development-emulator/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = intel-sde
 	depends = python
 	depends = lib32-glibc
 	source = https://raw.githubusercontent.com/marehr/intel-sde-downloader/8f5aa99e0809237b8d006ae8f12b7c87ea5190b3/intel-sde-downloader.py
-	source = intel-http-accept://sde-external-8.35.0-2019-03-11-lin.tar.bz2
+	source = intel-http-accept://sde-external-8.49.0-2020-03-17-lin.tar.bz2
 	sha256sums = df9b785b44046421644839015de794a8f2ea84605062ff687610925d0947efb3
-	sha256sums = 72dc09a0d44965336ebe50e187b65728a7e63f99a29d0514eb0feb343ba41fdf
+	sha256sums = ed426d46f5b74a803c740499b8166da32b58d20259146ee05a9987091f94d8e0
 
 pkgname = intel-sde
 
