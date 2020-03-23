@@ -1,0 +1,18 @@
+pkgbase = python-py-stackexchange-git
+	pkgdesc = A Python binding for the StackExchange API
+	pkgver = 1.247.18243b1
+	pkgrel = 1
+	url = https://github.com/lucjon/Py-StackExchange
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	makedepends = python-six
+	provides = python-py-stackexchange
+	provides = python-stackexchange
+	conflicts = python-py-stackexchange
+	conflicts = python-py-stackexchange-git
+	source = git+https://github.com/lucjon/Py-StackExchange
+	sha256sums = SKIP
+
+pkgname = python-py-stackexchange-git
+
