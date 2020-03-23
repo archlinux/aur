@@ -1,0 +1,14 @@
+pkgbase = python-utm
+	pkgdesc = Bidirectional UTM-WGS84 converter for python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Turbo87/utm
+	arch = any
+	license = MIT
+	depends = python
+	optdepends = python-numpy
+	source = https://github.com/Turbo87/utm/archive/v0.5.0.tar.gz
+	sha256sums = b1f930ce5a66bcfb913c824fe1abfc637dca389670107c03cb811f2dbea50228
+
+pkgname = python-utm
+
