@@ -1,0 +1,14 @@
+pkgbase = python-multitasking-git
+	pkgdesc = Non-blocking Python methods using decorators
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ranaroussi/multitasking
+	arch = any
+	license = apache2
+	makedepends = python-setuptools
+	depends = python-requests
+	source = git://github.com/ranaroussi/multitasking
+	sha256sums = SKIP
+
+pkgname = python-multitasking-git
+
