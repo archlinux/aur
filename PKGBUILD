@@ -3,14 +3,14 @@
 
 pkgname=bitwarden
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 _jslibcommit='0a30c7eb1ecbac500e6c55a7d4024d98efa982bc'
 _nodeversion='10.19.0'
 pkgdesc='Bitwarden Desktop Application'
 arch=('x86_64')
 url='https://github.com/bitwarden/desktop'
 license=('GPL3')
-makedepends=('git' 'npm' 'nvm' 'jq' 'patch')
+makedepends=('expac' 'git' 'npm' 'nvm' 'jq' 'patch')
 depends=('alsa-lib' 'electron' 'gtk2' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss')
 conflicts=('bitwarden-git' 'bitwarden-bin')
 options=('!strip' '!emptydirs')
@@ -33,7 +33,7 @@ prepare() {
   # Patch out postinstall routines
   patch --strip=1 package.json ${srcdir}/package.json.patch
   # Patch build to make it work with system electron
-  SYSTEM_ELECTRON_VERSION=$(electron --version | sed -r 's/v//')
+  SYSTEM_ELECTRON_VERSION=$(expac %v electron | cut -d'-' -f1)
   jq < package.json --arg ver $SYSTEM_ELECTRON_VERSION\
   '.build["electronVersion"]=$ver | .build["electronDist"]="/usr/lib/electron"'\
   > package.json.patched

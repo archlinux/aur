@@ -1,10 +1,11 @@
 pkgbase = bitwarden
 	pkgdesc = Bitwarden Desktop Application
 	pkgver = 1.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitwarden/desktop
 	arch = x86_64
 	license = GPL3
+	makedepends = expac
 	makedepends = git
 	makedepends = npm
 	makedepends = nvm
