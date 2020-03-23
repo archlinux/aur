@@ -1,8 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gush-git
-pkgver=0.1.0.1.g755f5b4
-pkgrel=4
+pkgver=0.1.0.r1.g755f5b4
+pkgrel=1
+epoch=1
 pkgdesc="Genetic programming / stack based language on top of Guile"
 arch=('any')
 url="https://gitlab.com/dustyweb/gush"
@@ -17,7 +18,7 @@ options=('!makeflags')
 
 pkgver() {
   cd "${pkgname%-git}"
-  printf "%s" $(git describe --tags|cut -c2-|tr - .)
+  printf "%s" $(git describe --tags|cut -c2-|sed 's+-+.r+' | tr - .)
 }
 
 prepare() {
