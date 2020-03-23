@@ -1,6 +1,6 @@
 pkgbase = lando
 	pkgdesc = A free, open source, cross-platform, local development environment and DevOps tool built on Docker container technology
-	pkgver = 3.0.0_rc.23
+	pkgver = 3.0.0_rrc.1
 	pkgrel = 1
 	url = https://docs.devwithlando.io
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = lando
 	provides = lando
 	conflicts = lando-git
 	options = !strip
-	source = lando::git+https://github.com/lando/lando.git#tag=v3.0.0-rc.23
+	source = lando::git+https://github.com/lando/lando.git#tag=v3.0.0-rrc.1
 	sha256sums = SKIP
 
 pkgname = lando
