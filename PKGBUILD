@@ -5,7 +5,7 @@ _target=aarch64-linux-gnu
 _pkgname=icu
 pkgname=$_target-$_pkgname
 pkgver=66.1
-pkgrel=1
+pkgrel=2
 pkgdesc='International Components for Unicode library (ARM64)'
 arch=(x86_64)
 url='http://site.icu-project.org/home'
@@ -21,8 +21,9 @@ sha256sums=(
   'SKIP'
 )
 validpgpkeys=(
-  'BA90283A60D67BA0DD910A893932080F4FB419E3' #  "Steven R. Loomis (filfla-signing) <srloomis@us.ibm.com>"
-  '9731166CD8E23A83BEE7C6D3ACA5DBE1FD8FABF1' #  "Steven R. Loomis (ICU Project) <srl@icu-project.org>"
+  'BA90283A60D67BA0DD910A893932080F4FB419E3' # "Steven R. Loomis (filfla-signing) <srloomis@us.ibm.com>"
+  '9731166CD8E23A83BEE7C6D3ACA5DBE1FD8FABF1' # "Steven R. Loomis (ICU Project) <srl@icu-project.org>"
+  '4569BBC09DA846FC91CBD21CE1BBA44593CF2AE0' # "Steven R. Loomis (codesign-qormi) <srloomis@us.ibm.com>"
   'FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7' # "Fredrik Roubert <fredrik@roubert.name>"
   'E4098B78AFC94394F3F49AA903996C7C83F12F11' # "keybase.io/srl295 <srl295@keybase.io>"
 )

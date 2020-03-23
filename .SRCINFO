@@ -1,7 +1,7 @@
 pkgbase = aarch64-linux-gnu-icu
 	pkgdesc = International Components for Unicode library (ARM64)
 	pkgver = 66.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://site.icu-project.org/home
 	arch = x86_64
 	license = custom:icu
@@ -12,6 +12,7 @@ pkgbase = aarch64-linux-gnu-icu
 	source = https://github.com/unicode-org/icu/releases/download/release-66-1/icu4c-66_1-src.tgz.asc
 	validpgpkeys = BA90283A60D67BA0DD910A893932080F4FB419E3
 	validpgpkeys = 9731166CD8E23A83BEE7C6D3ACA5DBE1FD8FABF1
+	validpgpkeys = 4569BBC09DA846FC91CBD21CE1BBA44593CF2AE0
 	validpgpkeys = FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7
 	validpgpkeys = E4098B78AFC94394F3F49AA903996C7C83F12F11
 	sha256sums = 52a3f2209ab95559c1cf0a14f24338001f389615bf00e2585ef3dbc43ecf0a2e
