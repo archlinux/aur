@@ -1,6 +1,6 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 pkgname=megalogviewer
-pkgver=4.1.17
+pkgver=4.4.03
 pkgrel=1
 pkgdesc="Viewer for TunerStudio/MegaSquirt logs"
 arch=(any)
@@ -34,6 +34,6 @@ package()
 	mkdir -p "${pkgdir}/usr/share/applications"
 	install -m644 "${srcdir}/megalogviewer.desktop" "${pkgdir}/usr/share/applications/megalogviewer.desktop"
 }
-sha256sums=('8416bb0a7a97e76cbf5f5ef6f15c80b7cc28fa2c9be8170950f49ecf28a5dff3'
+sha256sums=('35ef6a6247f5738a44c71e11bbfa36f773eb02b45648b859383fb047855b999a'
             '5434db388a8404eff299fd2fb2f018d231cdc816363c27a9c622850cc659233c'
             '6c6238646f60a076ebe0549228b59d7d9f20bc7019a0e7d8b5df2089ba50a396')
