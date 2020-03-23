@@ -1,10 +1,9 @@
 pkgbase = idena-desktop-git
 	pkgdesc = The idena-desktop application for the Idena network
 	pkgver = v0.0.10.r233.g647bc41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/idena-network/idena-desktop
 	arch = x86_64
-	license = GPL3
 	makedepends = git
 	makedepends = npm
 	depends = electron
@@ -15,7 +14,7 @@ pkgbase = idena-desktop-git
 	source = idena-desktop-git::git+https://github.com/idena-network/idena-desktop.git
 	source = idena-desktop.desktop
 	md5sums = SKIP
-	md5sums = SKIP
+	md5sums = cdabc45c6384a61d81b76a6f2d9bdeb2
 
 pkgname = idena-desktop-git
 
