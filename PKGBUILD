@@ -24,7 +24,8 @@ pkgver(){
 build() {
   cd ${srcdir}/${pkgname}
   # Investigate additional bindings
-  export LINKFLAGS="-ltirpc"
+  #export LINKFLAGS="-ltirpc"
+  export LINKFLAGS="-llapack -lblas -ltirpc -pthread -fopenmp"
   ./configure --prefix=${pkgdir}/usr/
 
   echo "Fixing paths in files..."
@@ -34,7 +35,7 @@ build() {
     sed -i "s|${srcdir}|/usr/src/|g" "$f"
   done
 
-  sed -i "s/^LINKFLAGS.*/LINKFLAGS = ['-pthread', '-fopenmp', '-ltirpc']/g" config.py
+  sed -i "s/^LINKFLAGS.*/LINKFLAGS = ['-llapack', '-lblas', '-pthread', '-fopenmp', '-ltirpc']/g" config.py
   make
 }
 
