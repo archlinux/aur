@@ -6,15 +6,14 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-dev
-pkgver=1.9.16
+pkgver=1.9.21
 pkgrel=1
 pkgdesc='Official Telegram Desktop client - development release'
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
-depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'libdbusmenu-qt5'
-         'libappindicator-gtk3' 'lz4' 'minizip' 'openal' 'qt5-imageformats'
-         'xxhash')
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'libdbusmenu-qt5' 'lz4'
+         'minizip' 'openal' 'qt5-imageformats' 'xxhash')
 makedepends=('cmake' 'git' 'microsoft-gsl' 'python' 'range-v3' 'tl-expected')
 optdepends=('ttf-opensans: default Open Sans font family')
 
@@ -35,6 +34,7 @@ source=(
     "cmake::git+https://github.com/desktop-app/cmake_helpers.git"
     "codegen::git+https://github.com/desktop-app/codegen.git"
     "expected::git+https://github.com/TartanLlama/expected"
+    "hunspell::git+https://github.com/hunspell/hunspell"
     "lib_base::git+https://github.com/desktop-app/lib_base.git"
     "lib_crl::git+https://github.com/desktop-app/lib_crl.git"
     "lib_lottie::git+https://github.com/desktop-app/lib_lottie.git"
@@ -78,6 +78,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 prepare() {
@@ -90,6 +91,7 @@ prepare() {
     git config submodule.Telegram/ThirdParty/GSL.url "$srcdir/GSL"
     git config submodule.Telegram/ThirdParty/QR.url "$srcdir/QR"
     git config submodule.Telegram/ThirdParty/expected.url "$srcdir/expected"
+    git config submodule.Telegram/ThirdParty/hunspell.url "$srcdir/hunspell"
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git config submodule.Telegram/ThirdParty/libtgvoip.url "$srcdir/libtgvoip"
     git config submodule.Telegram/ThirdParty/lz4.url "$srcdir/lz4"
@@ -125,24 +127,17 @@ prepare() {
 build() {
     cd "$srcdir/tdesktop"
 
-    export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
-
     # Before were used:
     # -DTDESKTOP_API_ID=17349
     # -DTDESKTOP_API_HASH=344583e45741c457fe1862106095a5eb
-
+    # export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop="
     cmake -B build -G "Unix Makefiles" . \
-        -Ddisable_autoupdate=1 \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_TEST=ON \
-        -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
-        -DDESKTOP_APP_USE_PACKAGED=ON \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-        -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
-        -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegram-desktop"
@@ -151,6 +146,5 @@ build() {
 
 package() {
     cd "$srcdir/tdesktop"
-
-    make -C build install
+    DESTDIR="$pkgdir" make -C build install
 }
