@@ -1,0 +1,14 @@
+pkgbase = ssp
+	pkgdesc = Shoulder Surfing Protector
+	pkgver = 20200322.18_99c9b4d
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = ssp::git://github.com/azratul/ssp.git#branch=master
+	md5sums = SKIP
+
+pkgname = ssp
+
