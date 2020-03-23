@@ -3,13 +3,13 @@
 
 pkgname=alibpulse
 pkgver=0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc='PulseAudio emulation for ALSA'
 arch=('i686' 'x86_64')
 url='https://github.com/i-rinat/apulse'
 license=('custom:MIT')
 depends=('alsa-lib' 'glib2')
-provides=('pulseaudio' 'pulseaudio-alsa' 'libpulse' 'apulse')
+provides=('pulseaudio' 'pulseaudio-alsa' 'libpulse' 'apulse' 'libpulse.so=0-64')
 conflicts=(${provides[@]})
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
