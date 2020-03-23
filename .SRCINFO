@@ -1,7 +1,7 @@
 pkgbase = x264-tmod-git
 	pkgdesc = Open Source H264/AVC video encoder (tmod git version)
 	pkgver = 159.r3044.gb09a90f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jpsdr/x264/tree/t_mod_New
 	arch = x86_64
 	license = GPL
