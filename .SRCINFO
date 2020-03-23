@@ -1,7 +1,7 @@
 pkgbase = alibpulse
 	pkgdesc = PulseAudio emulation for ALSA
 	pkgver = 0.1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/i-rinat/apulse
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,12 @@ pkgbase = alibpulse
 	provides = pulseaudio-alsa
 	provides = libpulse
 	provides = apulse
+	provides = libpulse.so=0-64
 	conflicts = pulseaudio
 	conflicts = pulseaudio-alsa
 	conflicts = libpulse
 	conflicts = apulse
+	conflicts = libpulse.so=0-64
 	source = alibpulse-0.1.12.tar.gz::https://github.com/i-rinat/apulse/archive/v0.1.12.tar.gz
 	source = asoundrc.sample
 	sha256sums = cfcadfe971abd785ed3ca24e576fcbaade185525c1eda76daf32dbf298e52892
