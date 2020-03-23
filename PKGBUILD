@@ -2,7 +2,7 @@
 
 pkgname=xscreensaver-backends
 _srcname=xscreensaver
-pkgver=5.42
+pkgver=5.44
 pkgrel=1
 pkgdesc="Screensavers from XScreenSaver for common frontends"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ source=(http://www.jwz.org/xscreensaver/${_srcname}-${pkgver}.tar.gz
 	LICENSE
 	migrate-xscreensaver-config.sh
 	xscreensaver-config.xsl)
-sha1sums=('b8eb08e258a70924aa0e644e4930164baf505ee6'
+sha1sums=('3e93aa745aa986cf521de31b6e731f990302c920'
           '3eedb8b91b13c29df9b1fe5cbb027e1470b802d2'
-	  '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
-	  '3b5fd07d97cce754071e6f54db681dfea482a87d')
+          '19195ef59f0dbc61c6ed599a968213a8f0a7a5d4'
+          '3b5fd07d97cce754071e6f54db681dfea482a87d')
 
 # HAVE_GTK2 is needed to build with arch gdk-pixbuf2 even if no gtk2 installed
 
