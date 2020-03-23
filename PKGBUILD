@@ -5,6 +5,7 @@ pkgver=20200322.18_99c9b4d
 pkgrel=1
 pkgdesc="Shoulder Surfing Protector"
 arch=('i686' 'x86_64')
+url='https://developer.nvidia.com/tensorrt/'
 license=('GPL')
 depends=(
 )
