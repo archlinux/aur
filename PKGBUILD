@@ -2,8 +2,8 @@
 pkgname='gmail-nativefier'
 pkgbase='google-mail-nativefier'
 pkgver=1.0
-pkgrel=1
-pkgdesc="Google Mail wrapped as a desktop application"
+pkgrel=2
+pkgdesc="Gmail wrapped as a desktop application through Nativefier"
 arch=('x86_64')
 url=https://mail.google.com
 license=('MIT')
