@@ -1,6 +1,7 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
 pkgver=a6e54d5
+_ver=1.0.4
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
@@ -57,7 +58,7 @@ package() {
   cp $srcdir/session-desktop/build/icons/png/512x512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/session-messenger-desktop.png
   cp $srcdir/session-desktop/build/icons/png/1024x1024.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/session-messenger-desktop.png
 
-  tar xf $srcdir/session-desktop/release/session-messenger-desktop-linux-x64-$pkgver.tar.xz -C $pkgdir/opt/
-  mv $pkgdir/opt/session-messenger-desktop-linux-x64-$pkgver $pkgdir/opt/Session
+  tar xf $srcdir/session-desktop/release/session-messenger-desktop-linux-x64-$_ver.tar.xz -C $pkgdir/opt/
+  mv $pkgdir/opt/session-messenger-desktop-linux-x64-$_ver $pkgdir/opt/Session
   cp $srcdir/session-desktop.desktop $pkgdir/usr/share/applications/
 }
