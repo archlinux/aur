@@ -1,0 +1,17 @@
+pkgbase = gmail-nativefier
+	pkgdesc = Google Mail wrapped as a desktop application
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://mail.google.com
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs-nativefier
+	makedepends = nodejs
+	source = gmailicon.png
+	source = gmail.desktop
+	sha256sums = fbe8559ad3b4307678250a671b8c259adf8ded119c8d133d1b706f0f4879a051
+	sha256sums = 00903986203291fe7a6636562ac24ebb62854a7b03fdf7e3039906b753b9f68e
+
+pkgname = google-mail-nativefier
+
