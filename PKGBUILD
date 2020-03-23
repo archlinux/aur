@@ -2,11 +2,11 @@
 
 pkgname=proton-native
 pkgver=5.0.5
-_srctag=${pkgver%.*}-${pkgver##*.}
+_srctag=${pkgver%.*}-${pkgver##*.}b
 _geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -134,7 +134,7 @@ sha256sums=(
 #    SKIP
     'b9e8443c3f1949cc8b0d311594aa46cbfb79da48c3f00e95c97e87656368dd49'
     'f12df8e1e2dcb6bcced6fdccfdf044b2dc55714712efd577fd5d92abfad0f5c5'
-    '375015b1582e3c606122d4dd6dc9919f6df1ca7223855908600e1e8fae762c51'
+    '20f7cd3e70fad6f48d2f1a26a485906a36acf30903bf0eefbf82a7c400e248f3'
     '15fc8d8a4465ffc69897f0264ecb08d95f4b0fb00ec45dc8cb542f14c8808ef3'
 )
 
