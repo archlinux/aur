@@ -54,7 +54,7 @@ package() {
     done
     mkdir -p "${pkgdir}/usr/src/"
     cp -r ${srcdir} ${pkgdir}/usr/src/${pkgname}
-    rm ${pkgdir}/usr/src/${pkgname}/madagascar.tar.gz
+    #rm ${pkgdir}/usr/src/${pkgname}/madagascar.tar.gz
 }
 #md5sums=('a87a6f7f5ba552cd251b1588048844bf')
 md5sums=('SKIP')
