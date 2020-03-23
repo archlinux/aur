@@ -8,7 +8,7 @@
 pkgbase=font-symbola
 pkgname=('ttf-symbola' 'otf-symbola')
 pkgver=13.00
-pkgrel=2
+pkgrel=3
 pkgdesc='Font for symbol blocks of the Unicode Standard'
 arch=('any')
 url='https://dn-works.com/ufas/'
@@ -25,12 +25,14 @@ build() {
 
 package_ttf-symbola() {
   conflicts=('ttf-symbola-ib')
+  provides=('font-symbola')
   pkgdesc+=" (TTF)"
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" Symbola.ttf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
 
 package_otf-symbola() {
+  provides=('font-symbola')
   pkgdesc+=" (OTF)"
   install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" Symbola.otf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE

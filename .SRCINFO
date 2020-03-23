@@ -1,7 +1,7 @@
 pkgbase = font-symbola
 	pkgdesc = Font for symbol blocks of the Unicode Standard
 	pkgver = 13.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dn-works.com/ufas/
 	arch = any
 	license = custom
@@ -13,9 +13,10 @@ pkgbase = font-symbola
 
 pkgname = ttf-symbola
 	pkgdesc = Font for symbol blocks of the Unicode Standard (TTF)
+	provides = font-symbola
 	conflicts = ttf-symbola-ib
 
 pkgname = otf-symbola
 	pkgdesc = Font for symbol blocks of the Unicode Standard (OTF)
-	provides = otf-symbola
+	provides = font-symbola
 
