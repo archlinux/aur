@@ -6,15 +6,15 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.0
-_rpmrel=2
+pkgver=2.1
+_rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="https://github.com/rpm-software-management/$pkgname"
 arch=('any')
 license=('GPL2')
-depends=('mock-core-configs' 'python' 'python-distro' 'python-jinja' 'python-pyroute2')
+depends=('mock-core-configs>=32.4' 'python' 'python-distro' 'python-jinja' 'python-pyroute2')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
@@ -30,12 +30,10 @@ backup=("etc/$pkgname/logging.ini"
         "etc/$pkgname/site-defaults.cfg")
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
-        "$pkgname.tmpfiles"
-        "$pkgname-2.0-dont-fail-when-etc-pki-certs-are-not-found.patch::$url/pull/506.patch")
-md5sums=('dda370331b4ef7f7dae3e7666d1e01e4'
+        "$pkgname.tmpfiles")
+md5sums=('57ae249a57b13f64fefd5e576df6e847'
          'd277502b9a95484594f86231d073dae0'
-         '1052fa4db74b59b0c195f4756bd865e8'
-         'ca99e3fcf085a3a6a89b90477a39d88c')
+         '1052fa4db74b59b0c195f4756bd865e8')
 
 _prefix=/usr
 _bindir=$_prefix/bin
@@ -49,8 +47,6 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	pushd "$pkgname" >/dev/null
-
-	patch -p2 -i "$srcdir/$pkgname-2.0-dont-fail-when-etc-pki-certs-are-not-found.patch"
 
 	# ArchLinux does not provides gtar symlink
 	sed -e "/config_opts\['tar'\]/ s|.*|config_opts['tar'] = \"bsdtar\"|" \
