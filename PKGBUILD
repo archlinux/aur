@@ -3,7 +3,7 @@
 
 pkgname=sccache
 pkgver=0.2.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Shared compilation cache"
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla/sccache"
@@ -19,6 +19,7 @@ check() {
 
   #cargo test \
   #  --release \
+  #  --locked \
   #  --all-features
 }
 
@@ -26,6 +27,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   cargo install \
+    --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/$pkgname-$pkgver" \
     --all-features
