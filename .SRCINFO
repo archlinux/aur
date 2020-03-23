@@ -1,0 +1,14 @@
+pkgbase = python-syft-git
+	pkgdesc = A library for encrypted, privacy preserving machine learning
+	pkgver = r5672.5998f68e
+	pkgrel = 1
+	url = https://github.com/OpenMined/PySyft
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python
+	source = syft::git+https://github.com/OpenMined/PySyft.git
+	sha512sums = SKIP
+
+pkgname = python-syft-git
+
