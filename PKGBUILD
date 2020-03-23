@@ -5,9 +5,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-hardened-hibernate
-pkgver=5.4.25.a
-pkgrel=2
-pkgdesc='Security-Hardened Linux with CONFIG_HIBERNATION enabled.'
+pkgver=5.5.11.a
+pkgrel=1
+pkgdesc='Security-Hardened Linux with CONFIG_HIBERNATION enabled'
 url='https://github.com/anthraxx/linux-hardened'
 arch=(x86_64)
 license=(GPL2)
@@ -28,11 +28,11 @@ validpgpkeys=(
   '65EEFE022108E2B708CBFCF7F9E712E59AF5F22A'  # Daniel Micay
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
-sha256sums=('c0ed974b088d84847aeca0ab99943918c472739db4480b263e75e8c19a025e25'
+sha256sums=('a547afcfd14d9253b27230ed88b4f8a9569bcf85ad6bad8c299deab1e4d2f42e'
             'SKIP'
-            'f44758f60fc882d2c54c3e0e9e6223efff82fbf81c030a00ee50b5287657cc81'
+            '7523165f68312f4e438319408440ed2e43d7e7409f9e58e625856b8e8f24a096'
             'SKIP'
-            '7a0ea9a279de30dab632a15b7be1bfcc13756d2be6392ea5cd540b26f1b6d275')
+            '177b20b424d6de04f0847a964d1092dd401b7d1dd47054d43870a9907168c8bf')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -58,6 +58,8 @@ prepare() {
 
   echo "Setting config..."
   cp ../config .config
+  ## Enable hibernation
+  sed 's/# CONFIG_HIBERNATION is not set/CONFIG_HIBERNATION=y/' .config -i
   make olddefconfig
 
   make -s kernelrelease > version
