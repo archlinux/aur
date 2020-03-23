@@ -1,5 +1,6 @@
 good
 *.pkg.tar.*
+*.sig
 *.tar
 *.pkg
 pkg
