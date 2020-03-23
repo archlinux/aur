@@ -1,14 +1,14 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=surfn-icons-git
 pkgver=20.3
-pkgrel=1
+pkgrel=2
 _destname="/usr/share/icons/"
 pkgdesc="Surfn is a colourful icon theme."
 arch=('any')
 url="https://github.com/erikdubois/Surfn"
 license=('Attribution-NonCommercial-ShareAlike 4.0 International Public License')
 makedepends=('git')
-provides=('surfn-icons-git')
+replaces=('surfn-arc-breeze-icons-git')
 options=(!strip !emptydirs)
 source=('Surfn::git+https://github.com/erikdubois/Surfn.git')
 sha256sums=('SKIP')
