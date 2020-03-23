@@ -2,7 +2,7 @@
 
 pkgname=wasmtime-git
 pkgver=0.12.0.r3420.gd54611dac
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone JIT-style runtime for WebAssembly"
 arch=('i686' 'x86_64')
 url="https://wasmtime.dev/"
@@ -42,10 +42,10 @@ package() {
   cd "wasmtime"
 
   cargo install \
+    --no-track \
     --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/wasmtime"
-  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/wasmtime"
 
-  rm -f "$pkgdir/usr"/.crates*
+  install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/wasmtime"
 }

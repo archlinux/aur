@@ -1,7 +1,7 @@
 pkgbase = wasmtime-git
 	pkgdesc = Standalone JIT-style runtime for WebAssembly
 	pkgver = 0.12.0.r3420.gd54611dac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wasmtime.dev/
 	arch = i686
 	arch = x86_64
