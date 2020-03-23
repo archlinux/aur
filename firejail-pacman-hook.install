@@ -1,0 +1,15 @@
+post_install() {
+    cat << EOF
+    Don't forget to add the users for which you want desktop integration with:
+      "firecfg --add-users user [user]"
+    If you don't want to wait until the next trigger of this hook, run:
+      "firecfg"
+EOF
+}
+
+post_remove() {
+    cat << EOF
+    You may want to remove any existing links with:
+      "firecfg --clean"
+EOF
+}

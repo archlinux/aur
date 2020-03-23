@@ -1,7 +1,8 @@
 pkgbase = firejail-pacman-hook
 	pkgdesc = Updates firejail symbolic links on pacman operations
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
+	install = firejail-pacman-hook.install
 	arch = any
 	license = Unlicense
 	source = firejail.hook

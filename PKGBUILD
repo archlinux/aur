@@ -1,11 +1,12 @@
 # Maintainer: Carlos Marchal <marchal.carlos at pm dot me>
 pkgname='firejail-pacman-hook'
 pkgver=1
-pkgrel=1
-pkgdesc="Updates firejail symbolic links on pacman operations"
+pkgrel=2
+pkgdesc='Updates firejail symbolic links on pacman operations'
 arch=('any')
 license=('Unlicense')
-source=("firejail.hook")
+install='firejail-pacman-hook.install'
+source=('firejail.hook')
 sha256sums=('42939e3f287d6ae3de20a73dcf29f785a132020111ff302f4fb110388a756baf')
 
 package() {
