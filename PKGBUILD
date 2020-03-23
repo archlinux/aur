@@ -5,7 +5,7 @@
 pkgname=hop
 epoch=1
 pkgver=3.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Software Development Kit for the Web"
 arch=('x86_64')
 license=('GPL' 'LGPL')
@@ -23,7 +23,7 @@ build() {
   cd $pkgname
   ./configure --prefix=/usr --etcdir=/etc/hop --mandir=/usr/share/man \
 	      --disable-ssl --bigloobindir=/usr/bin --link=dynamic \
-	      --bigloolibdir=/usr/lib/bigloo/4.3e
+	      --bigloolibdir=/usr/lib/bigloo/4.3f
   sed -i 's/, -static-all-bigloo//' share/Makefile
   LD_LIBRARY_PATH="$PWD/lib/hop/3.1.0/" make
 }
