@@ -22,6 +22,7 @@ depends=(
 )
 makedepends=(
     'cmake'
+    'ninja'
     'boost'
     'cereal'
     'eigen3'
@@ -47,7 +48,7 @@ build() {
     mkdir -p build
 
     cd build
-    cmake .. \
+    cmake .. -G Ninja \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DSLIC3R_FHS=ON \
@@ -56,7 +57,7 @@ build() {
         -DSLIC3R_GTK=3 \
         -DSLIC3R_STATIC=OFF \
 
-    make
+    ninja
 }
 
 check() {
@@ -66,7 +67,7 @@ check() {
 
 package () {
     cd "${srcdir}/PrusaSlicer/build"
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" ninja install
 
     # Desktop file
     install -Dm644 "${srcdir}/prusa-slicer.desktop" -t "${pkgdir}/usr/share/applications"
