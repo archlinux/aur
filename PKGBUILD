@@ -5,7 +5,7 @@
 
 pkgname=fprintd-libfprint2
 _pkgname=fprintd
-pkgver=1.90.1+62+ge828ea3
+pkgver=1.90.1+64+gd7fec03
 pkgrel=1
 pkgdesc="D-Bus service to access fingerprint readers"
 arch=(x86_64)
@@ -19,10 +19,8 @@ makedepends=(intltool git gtk-doc meson pam)
 checkdepends=(pam_wrapper python-cairo python-dbus python-dbusmock python-gobject)
 groups=(fprint)
 source=("git+https://gitlab.freedesktop.org/libfprint/$_pkgname.git"
-        '53.patch'
         'disable-systemd-protection.patch')
 sha256sums=('SKIP'
-            'd64ace799a6c6a3ea4ee56be104b3bdba6fe913329c25672205e2a3ebb897e6a'
             '4854d32d6579de31fd59b4df02f6a29db2e266dedfe9edda13bedcda1b083be1')
 
 pkgver() {
@@ -32,7 +30,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-  git apply "$srcdir/53.patch"
   patch -p1 -i "${srcdir}/disable-systemd-protection.patch"
 }
 

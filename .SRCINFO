@@ -1,6 +1,6 @@
 pkgbase = fprintd-libfprint2
 	pkgdesc = D-Bus service to access fingerprint readers
-	pkgver = 1.90.1+62+ge828ea3
+	pkgver = 1.90.1+64+gd7fec03
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
 	arch = x86_64
@@ -23,10 +23,8 @@ pkgbase = fprintd-libfprint2
 	provides = fprintd
 	conflicts = fprintd
 	source = git+https://gitlab.freedesktop.org/libfprint/fprintd.git
-	source = 53.patch
 	source = disable-systemd-protection.patch
 	sha256sums = SKIP
-	sha256sums = d64ace799a6c6a3ea4ee56be104b3bdba6fe913329c25672205e2a3ebb897e6a
 	sha256sums = 4854d32d6579de31fd59b4df02f6a29db2e266dedfe9edda13bedcda1b083be1
 
 pkgname = fprintd-libfprint2
