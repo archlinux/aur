@@ -2,7 +2,7 @@
 
 pkgname=hyperfine-git
 pkgver=1.9.0.r36.gb702292
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line benchmarking tool"
 arch=('i686' 'x86_64')
 url="https://github.com/sharkdp/hyperfine"
@@ -33,6 +33,7 @@ package() {
   cd "hyperfine"
 
   cargo install \
+    --no-track \
     --locked \
     --root "$pkgdir/usr" \
     --path "$srcdir/hyperfine"
@@ -40,6 +41,4 @@ package() {
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/hyperfine"
   install -Dm644 "LICENSE-APACHE" -t "$pkgdir/usr/share/licenses/hyperfine"
   install -Dm644 "LICENSE-MIT" -t "$pkgdir/usr/share/licenses/hyperfine"
-
-  rm -f "$pkgdir/usr"/.crates*
 }

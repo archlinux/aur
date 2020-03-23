@@ -1,7 +1,7 @@
 pkgbase = hyperfine-git
 	pkgdesc = A command-line benchmarking tool
 	pkgver = 1.9.0.r36.gb702292
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sharkdp/hyperfine
 	arch = i686
 	arch = x86_64
