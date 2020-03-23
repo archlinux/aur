@@ -2,12 +2,12 @@
 
 pkgname=add-gitignore
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive CLI tool that adds a .gitignore to your projects"
 arch=('any')
 url='https://www.npmjs.com/package/add-gitignore'
 license=('MIT')
-makedepends=('git' 'npm')
+makedepends=('npm')
 noextract=("v${pkgver}.tar.gz")
 source=("https://github.com/TejasQ/add-gitignore/archive/v${pkgver}.tar.gz")
 md5sums=('0012ee64c22985ee7bfd844f438747fd')
