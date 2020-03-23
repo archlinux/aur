@@ -2,7 +2,7 @@
 
 pkgname=rav1e-git
 pkgver=0.3.1.r83.g91658bd7
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
@@ -34,13 +34,17 @@ check() {
 package() {
   cd "rav1e"
 
-  cargo install --root "$pkgdir/usr" --path "$srcdir/rav1e"
+  cargo install \
+    --no-track \
+    --root "$pkgdir/usr" \
+    --path "$srcdir/rav1e"
   # for librav1e
-  cargo cinstall --release --destdir "$pkgdir" --prefix "/usr"
+  cargo cinstall \
+    --release \
+    --destdir "$pkgdir" \
+    --prefix "/usr"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/rav1e"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rav1e"
   install -Dm644 "PATENTS" -t "$pkgdir/usr/share/licenses/rav1e"
-
-  rm -f "$pkgdir/usr"/.crates*
 }
