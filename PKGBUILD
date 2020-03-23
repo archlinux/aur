@@ -8,7 +8,7 @@ epoch=
 pkgdesc="CLI tool for Gigalixir hosting service"
 arch=('any')
 url="https://www.gigalixir.com/"
-license=()
+license=('MIT')
 depends=('python'
   'python-click'
   'python-requests'
