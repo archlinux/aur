@@ -1,6 +1,6 @@
 pkgbase = yt-bin
 	pkgdesc = Youtube Terminal UI for music streaming. WIP.
-	pkgver = r59.f672dda
+	pkgver = r60.da2f5bf
 	pkgrel = 1
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = yt-bin
 	depends = youtube-dl>=2020.01.24
 	depends = dbus>=1.12.16
 	provides = yt
-	source = https://ahbnr.de/jenkins/job/yt/26/artifact/yt
+	source = https://ahbnr.de/jenkins/job/yt/27/artifact/yt
 	md5sums = SKIP
 
 pkgname = yt-bin
