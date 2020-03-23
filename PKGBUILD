@@ -12,7 +12,7 @@ url="https://github.com/oconnor663/blake3-py"
 license=('Apache' 'custom:CC0-1.0')
 
 depends=('python')
-makedepends=('python-pip' 'rustup')
+makedepends=('python-pip' 'rust')
 
 source=("blake3-py-${pkgver}.tar.gz"::"https://github.com/oconnor663/blake3-py/archive/${pkgver}.tar.gz")
 sha512sums=('6ca5f9935316122b8468a6ea0039393fa27d33037510774e53ff138d2ca155ca2999b60ed24f24e2af2f7cc09d04aa78a9230145ea353a8f5cd42784b86e8c7b')
