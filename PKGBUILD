@@ -49,8 +49,8 @@ package() {
 	 "/usr/src/madagascar/config.py"
 	)
     for f in $arr ; do
-      sed -i "s|${pkgdir}||g" "$f"
-      sed -i "s|${srcdir}|/usr/src/|g" "$f"
+      sed -i "s|${pkgdir}||g" "${pkgdir}/$f"
+      sed -i "s|${srcdir}|/usr/src/|g" "${pkgdir}/$f"
     done
     mkdir -p "${pkgdir}/usr/src/"
     cp -r ${srcdir} ${pkgdir}/usr/src/${pkgname}
