@@ -8,7 +8,7 @@ Pkgname=obconf
 pkgname="$Pkgname"_eui
 
 pkgver=2.0.4
-pkgrel=6
+pkgrel=2
 pkgdesc="A GTK+ based configuration tool for the Openbox_eui windowmanager"
 arch=('x86_64')
 url="http://openbox.org/wiki/ObConf:About"
@@ -17,10 +17,8 @@ depends=('openbox_eui' 'libglade' 'libobrender.so')
 makedepends=('openbox_eui')
 conflicts=('obconf')
 provides=('obconf')
-source=("http://openbox.org/dist/$Pkgname/$Pkgname-$pkgver.tar.gz"{,.asc})
-md5sums=('9271c5d2dc366d61f73665a5e8bceabc'
-         'SKIP')
-validpgpkeys=(1FEECBB03AB7D3216B5E0AC9274E52855D203EC3)
+source=("http://openbox.org/dist/$Pkgname/$Pkgname-$pkgver.tar.gz")
+md5sums=('9271c5d2dc366d61f73665a5e8bceabc')
 
 prepare() {
   cd "${srcdir}"/${Pkgname}-${pkgver}
