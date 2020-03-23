@@ -2,18 +2,18 @@
 # Contributor: sh0 <mee@sh0.org>
 
 pkgname=pdsh
-pkgver=2.33
+pkgver=2.34
 pkgrel=1
 pkgdesc='Parallel Distributed Shell'
 url='https://github.com/chaos/pdsh'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('glibc' 'openssh' 'readline')
+depends=('openssh')
 makedepends=('autoconf')
 optdepends=('perl: required by the dshbak utility')
 options=('libtool')
-source=("https://github.com/chaos/pdsh/releases/download/pdsh-2.33/pdsh-2.33.tar.gz")
-md5sums=('b49e7c1c74480c8d34efd04bf3d0fca2')
+source=("https://github.com/chaos/pdsh/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('75916c61a469303ff859605b1375d391')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
