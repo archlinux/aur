@@ -1,5 +1,5 @@
 pkgbase = khronos-ocl-icd-git
-	pkgdesc = Khronos Group OpenCL 1.2 installable client driver (ICD) loader
+	pkgdesc = Khronos Group OpenCL 1.2 installable client driver (ICD) loader. (GIT Version)
 	pkgver = v2020.03.13.0.gc7fda8b
 	pkgrel = 2
 	url = http://www.khronos.org/registry/cl
@@ -17,9 +17,9 @@ pkgbase = khronos-ocl-icd-git
 	conflicts = opencl-icd-loader
 	conflicts = ocl-icd
 	source = ocl::git+https://github.com/KhronosGroup/OpenCL-ICD-Loader.git
-	source = 66.diff
+	source = https://patch-diff.githubusercontent.com/raw/KhronosGroup/OpenCL-ICD-Loader/pull/95.diff
 	sha256sums = SKIP
-	sha256sums = 8bb92b19cc37f44c36f17b1a2f498e85c7fc2b7d612b1089ddefcea5104bc3dd
+	sha256sums = 1c7e9a15f88da68b20ffbc1f0ef5c6ffb763409ea8e57246075be1f58988c3d3
 
 pkgname = khronos-ocl-icd-git
 
