@@ -1,0 +1,18 @@
+pkgbase = socli
+	pkgdesc = Stack overflow command line client. Search and browse stack overflow without leaving the terminal
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/socli
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-setuptools
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-colorama
+	depends = python-py-stackexchange
+	depends = python-urwid
+	source = https://github.com/gautamkrishnar/socli/archive/3.8.tar.gz
+	md5sums = d7b9260ce21e0c5815ac1095a058ca23
+
+pkgname = socli
+
