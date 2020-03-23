@@ -1,27 +1,20 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=rav1e-git
-pkgver=0.2.1.r110.g7293535e
+pkgver=0.3.1.r83.g91658bd7
 pkgrel=1
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('i686' 'x86_64')
 url="https://github.com/xiph/rav1e"
 license=('BSD' 'custom')
 depends=('gcc-libs')
-makedepends=('git' 'rust' 'nasm')
+makedepends=('git' 'rust' 'nasm' 'cargo-c')
 provides=('rav1e')
 conflicts=('rav1e')
 options=('staticlibs')
 source=("git+https://github.com/xiph/rav1e.git")
 sha256sums=('SKIP')
 
-
-prepare() {
-  cd "rav1e"
-
-  # for librav1e
-  RUSTFLAGS="-C opt-level=0" cargo install --force --root "$srcdir" cargo-c
-}
 
 pkgver() {
   cd "rav1e"
@@ -43,7 +36,7 @@ package() {
 
   cargo install --root "$pkgdir/usr" --path "$srcdir/rav1e"
   # for librav1e
-  "$srcdir/bin/cargo-cinstall" install --release --destdir "$pkgdir" --prefix "/usr"
+  cargo cinstall --release --destdir "$pkgdir" --prefix "/usr"
 
   install -Dm644 "README.md" -t "$pkgdir/usr/share/doc/rav1e"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/rav1e"
