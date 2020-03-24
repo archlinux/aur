@@ -1,7 +1,7 @@
 # Maintainer: anon at sansorgan.es
 pkgname=madagascar
 pkgver=r14561.279e38d29
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
 url=http://ahay.org/
