@@ -4,7 +4,7 @@
 
 pkgname=premid
 _pkgname=PreMiD
-pkgver=2.2.14
+pkgver=2.2.15
 pkgrel=1
 pkgdesc="Discord Rich Presence for web services"
 arch=('x86_64')
