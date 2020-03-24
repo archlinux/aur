@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 pkgname=coredns
 gopkgname='github.com/coredns/coredns'
-pkgver=1.6.7
+pkgver=1.6.9
 pkgrel=1
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
@@ -14,7 +14,7 @@ source=(coredns-${pkgver}.tar.gz::https://github.com/coredns/${pkgname}/archive/
 coredns.service
 coredns-sysusers.conf)
 
-sha256sums=('36460bac70c04cdf9c89c2b930ec4faa2c0dc4cb6573097883f54670a707c818'
+sha256sums=('e100a946d5d60d936cb313bdb04fd96162d5a7229e08887ad497660acee4b36f'
             '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
             '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
