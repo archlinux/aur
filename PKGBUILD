@@ -1,48 +1,46 @@
 # Maintainer: Aksel Alpay <aksel.alpay at uni-heidelberg dot de>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+
 pkgname=hipsycl-cuda-git
-pkgver=0.7.9
+pkgver=r500.5f30bc1
 pkgrel=1
-pkgdesc="SYCL implementation over CUDA/HIP for NVIDIA devices."
+pkgdesc="Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA"
 arch=("x86_64")
 url="https://github.com/illuhad/hipSYCL"
-makedepends=("cmake")
-provides=("hipSYCL" "SYCL")
 license=("BSD")
-depends=("cuda-9.2" "llvm" "clang" "boost" "openmp")
-
-source=('hipSYCL::git+https://github.com/illuhad/hipSYCL.git')
-
-md5sums=("SKIP")
+provides=(hipsycl-cuda hipsycl sycl)
+makedepends=(cmake)
+depends=(llvm clang python boost hipcpu openmp hip-nvcc cuda-10.0)
+_pkgname=hipsycl
+source=("${_pkgname}::git+https://github.com/illuhad/hipSYCL.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/hipSYCL"
-  git log -1 --format=%cd.%h --date=short|tr -d -
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/hipSYCL/contrib/HIP"
-  git submodule init
-  git submodule update
+    # Delete the install lines for contrib hip and hipcpu
+    sed -i '/contrib/d' ${srcdir}/${_pkgname}/CMakeLists.txt
 }
 
 build() {
-    mkdir -p ${srcdir}/hipSYCL/build
-    cd "${srcdir}/hipSYCL/build"
-    # We compile with nvcc since Arch Linux uses very new versions of CUDA
-    # which may not yet be supported by clang.
-    CXX=clang++ cmake -DCMAKE_BUILD_TYPE=Release \
+    mkdir -p ${srcdir}/${_pkgname}/build
+    cd ${srcdir}/${_pkgname}/build
+
+    cmake .. -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/opt/hipSYCL/CUDA \
-          -DWITH_CPU_BACKEND=ON -DWITH_CUDA_BACKEND=ON -DCMAKE_CXX_FLAGS="--cuda-path=/opt/cuda-9.2 -L/opt/cuda-9.2/lib64" ..
+          -DWITH_CUDA_BACKEND=ON \
+          -DWITH_ROCM_BACKEND=OFF \
+          -DWITH_CPU_BACKEND=ON \
+          -DCUDA_TOOLKIT_ROOT_DIR=/opt/cuda-10.0
+
+    make
+
 }
 
 package() {
-    cd "${srcdir}/hipSYCL/build"
-    CXX=clang++ VERBOSE=1 DESTDIR=${pkgdir} make install
-    
-    echo "
-hipSYCL now uses clang as CUDA compiler by default, compilation with nvcc
-may or may not work. Since clang 8 does not yet support CUDA 10.1 from Arch Linux,
-make sure to point it to an older CUDA version (up to 10.0) when compiling hipSYCL applications.
-E.g.: syclcc --cuda-path=/opt/cuda-9.2 -L/opt/cuda-9.2/lib64 ...
-    "
+    cd "${srcdir}/${_pkgname}/build"
+    make DESTDIR=${pkgdir} install
 }
