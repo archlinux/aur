@@ -15,7 +15,7 @@ pkgbase = font-symbola
 pkgname = ttf-symbola
 	pkgdesc = Font for symbol blocks of the Unicode Standard (TTF)
 	provides = font-symbola
-	conflicts = ttf-symbola-ib
+	conflicts = ttf-symbola-ib<=13.00
 
 pkgname = otf-symbola
 	pkgdesc = Font for symbol blocks of the Unicode Standard (OTF)

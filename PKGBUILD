@@ -25,7 +25,7 @@ build() {
 }
 
 package_ttf-symbola() {
-  conflicts=('ttf-symbola-ib')
+  conflicts=('ttf-symbola-ib<=13.00')
   provides=('font-symbola')
   pkgdesc+=" (TTF)"
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" Symbola.ttf
