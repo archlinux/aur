@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('kvantum-qt5')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "$_gitname")
+conflicts=("${pkgname%-git}" 'vimix-kde')
 _commit='b0641848452c4293a8102d5fae93b34b4ae2e013'
 source=("git+https://github.com/vinceliuice/vimix-kde.git#commit=$_commit")
 sha256sums=('SKIP')
