@@ -1,10 +1,10 @@
 pkgbase = google-gmail-nativefier
-	pkgdesc = Electron wrapper for the Google mail web application
+	pkgdesc = Electron wrapper for the with Google mail web application
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mail.google.com
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = nodejs
 	makedepends = nodejs-nativefier
 	makedepends = npm
