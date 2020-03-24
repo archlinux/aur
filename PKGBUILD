@@ -3,13 +3,13 @@
 _name='vim-svelte'
 pkgname=vim-svelte-git
 pkgver=r17.c2a94c8
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Vim syntax highlighting and indentation for Svelte 3 components."
 arch=('any')
 url='https://github.com/evanleck/vim-svelte'
 license=('unknown')
-depends=('vim')
+depends=('vim' 'vim-javascript')
 optdepends=('vim-javascript')
 makedepends=('git')
 conflicts=('vim-svelte')

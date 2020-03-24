@@ -1,7 +1,7 @@
 pkgbase = vim-svelte-git
 	pkgdesc = Vim syntax highlighting and indentation for Svelte 3 components.
 	pkgver = r17.c2a94c8
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/evanleck/vim-svelte
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = vim-svelte-git
 	license = unknown
 	makedepends = git
 	depends = vim
+	depends = vim-javascript
 	optdepends = vim-javascript
 	provides = vim-svelte
 	conflicts = vim-svelte
