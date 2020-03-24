@@ -1,6 +1,7 @@
-# Maintainer: Thaodan <theodorstormgrade@gmail.com>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
+# Contributor: Thaodan <theodorstormgrade@gmail.com>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
-# Maintainer (bin-version): Marc Mettke <marc@itmettke.de>
+# Contributor: Marc Mettke <marc@itmettke.de>
 
 pkgname=firefox-kde-opensuse-rpm
 _pkgver=74.0-818.6
