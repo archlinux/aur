@@ -6,10 +6,10 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=1
-pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
+pkgrel=2
+pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
-url="https://github.com/ValveSoftware/Proton"
+url="https://github.com/GloriousEggroll/proton-ge-custom"
 license=('custom')
 depends=(
   fontconfig      lib32-fontconfig
