@@ -8,7 +8,7 @@
 pkgbase=font-symbola
 pkgname=('ttf-symbola' 'otf-symbola')
 pkgver=13.00
-pkgrel=4
+pkgrel=5
 pkgdesc='Font for symbol blocks of the Unicode Standard'
 arch=('any')
 url='https://dn-works.com/ufas/'
@@ -16,7 +16,7 @@ license=('custom')
 makedepends=('fontforge' 'poppler')
 source=("${pkgbase}-${pkgver}.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip"
         "LICENSE.pdf::https://dn-works.com/wp-content/uploads/2020/UFAS-Docs/License.pdf")
-sha512sums=('57f1c72d9fe03da68fee476f6c3d202805ba5eacfb4690ca5e3b10d4d335cbefaebd501f77af28abc2a71cd34a926a79d633689ff8cb54e972d09b5292f5c8b1'
+sha512sums=('ba671168ab2dc15293ae404f849f13b9b1f4684ce1856a8c2bbf8b9a2e2d70a27f86ef166a5e3ab6260e651c8276537ee272710a7e1fb49beef26fbed6355a35'
             '6b6f7688a5571375b59135e2a60c61d0ad7fd2d19f0f226a38b8b39696c6f01047758937e9431f8d64f4758fe207eac83ba4df847efccb24b119be4aff69dbf3')
 
 build() {
