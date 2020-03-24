@@ -1,0 +1,24 @@
+post_install() {
+   echo
+   echo -e "\e[1m\e[97m\e[44m====================================================================================>\e[0m "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m \e[1mFinal steps you have to take:\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   Connect & turn on your printer"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   Run command"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m      \e[47m\e[30mcnijlgmon3\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   This should give you the address of your printer."
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   Now you can register it with"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m      \e[47m\e[30msudo lpadmin -p MB5100 -m canonmb5100.ppd -v <printer-address> -E\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m \e[1mHow to scan:\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   A 'Cannon Scangear' icon has been installed in your application menu."
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   Alternatively, run this command from the command line:"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m      \e[47m\e[30mscangearmp2\e[0m"
+   echo -e "\e[1m\e[97m\e[44m==>\e[0m   "
+   echo -e "\e[1m\e[97m\e[44m====================================================================================>\e[0m "
+   echo
+}

@@ -1,0 +1,28 @@
+pkgbase = canon-maxify-mb5100-complete
+pkgdesc = Complete stand alone driver set (printing and scanning) for Canon maxify MB5100 series.
+pkgver = 5.40
+pkgrel = 1
+url = https://www.usa.canon.com/internet/portal/us/home/support/details/printers/small-office-home-office-printers/mb5120
+install = canon-maxify-mb5100-complete.install
+arch = i686
+arch = x86_64
+license = custom
+makedepends = deb2targz
+makedepends = sed
+depends = popt
+depends = libpng12
+depends = libusb-compat
+depends = libtiff
+depends = libxml2
+depends = gtk2
+source = http://gdlp01.c-wss.com/gds/9/0100008399/01/cnijfilter2-5.40-1-deb.tar.gz
+source = http://gdlp01.c-wss.com/gds/2/0100008402/01/scangearmp2-3.40-1-deb.tar.gz
+source = canon-maxify-mb5100-complete-scangear.desktop
+source = canon-maxify-mb5100-complete-scangear-icon.png
+sha256sums = 3b298716ad8b806fad72ed52714838921dea6f84253446a02d0e669afbc13804
+sha256sums = bb8d108b2c3557f3dc258d47b560ce96608a006ec7b052a630e0a5f911da2413
+sha256sums = 3acb5003d7d2b71bf2ecf9d9cd57872f20b182ab0df5e9d5528649f5fbd391c0
+sha256sums = 29dbc682d3f22d79f580bda54801d1f4ef261d857c756eaf4db29e1313406bcc
+
+pkgname = canon-maxify-mb5100-complete
+

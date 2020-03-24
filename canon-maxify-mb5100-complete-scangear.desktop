@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Canon Scangear
+Exec=/usr/bin/scangearmp2
+Icon=/usr/share/pixmaps/canon-maxify-mb5100-complete-scangear-icon.png
+Categories=Graphics;2DGraphics;
+Name[en_US]=canon-maxify-mb5100-complete-scangear.desktop
