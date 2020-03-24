@@ -5,8 +5,8 @@
 
 
 pkgname=pianoteq-stage
-pkgver=6.6.0
-pkgrel=3
+pkgver=6.7.0
+pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
 url="https://www.pianoteq.com/pianoteq"
@@ -18,11 +18,11 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin" "pianoteq-standard-trial-bin")
 # the source package must be downloaded manually
 # this can be done by going to the link here:
-# https://www.pianoteq.com/download?file=pianoteq_stage_linux_v660.7z
+# https://www.pianoteq.com/download?file=pianoteq_stage_linux_v670.7z
 source=("local://pianoteq_stage_linux_v${pkgver//./}.7z"
         'https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
-sha512sums=('cc539eed0b155a05e277dcdb3746106b5cbf8931d3b396833297a46e0485b92299b23ae091f3b4ae796caa924cc4d5b10e549a8c57d4e66a6519f64590c8217b'
-            '71690cc597b16cd363ddf8837c81eece620be275bf7860e2a2a30cc94da73f32a809d24a086c6ceacbe945282c8b73d03d6567e6058b620b4beb07feb4e46dab')
+b2sums=('ba6260aa30918e1a7f88cab5ada31982ab4152b872ba5573a1d85b09b9369a78bec3b1201f638a4f07ef9237e08819387617fe7105089e39c77fef8af9bc7ab9'
+        'bbb48b5b2bd5bbe52a39c84f42ea6c12a3633e4713e00d8132654ddf5adc5d7da1b7951c683cb11446ee847a388a775eb48591089a4e8dc69ed6d97cfc80d56d')
 
 prepare(){
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 6' --exec='"pianoteq 6"' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
