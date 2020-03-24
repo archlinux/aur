@@ -3,7 +3,7 @@
 
 pkgname=runawk
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="AWK wrapper that provides support for modules"
 arch=('i686' 'x86_64')
 dpends=('bash')

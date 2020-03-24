@@ -1,7 +1,7 @@
 pkgbase = runawk
 	pkgdesc = AWK wrapper that provides support for modules
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cheusov/runawk
 	arch = i686
 	arch = x86_64
