@@ -1,0 +1,14 @@
+pkgbase = bitly-client
+	pkgdesc = Create and manage your Bitly shortlinks from the command line
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/specious/bitly-client
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	noextract = bitly-client-1.7.2.tar.gz
+	source = bitly-client-1.7.2.tar.gz::https://github.com/specious/bitly-client/archive/v1.7.2.tar.gz
+	md5sums = 49ce0af9fb2ad2a257c4c086c11e6aa6
+
+pkgname = bitly-client
+
