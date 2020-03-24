@@ -1,7 +1,7 @@
 pkgbase = x264-tmod-git
 	pkgdesc = Open Source H264/AVC video encoder (tmod git version)
-	pkgver = 159.r3044.gb09a90f3
-	pkgrel = 2
+	pkgver = 159.r3046.g8f175b53
+	pkgrel = 1
 	url = https://github.com/jpsdr/x264/tree/t_mod_New
 	arch = x86_64
 	license = GPL
@@ -19,9 +19,7 @@ pkgbase = x264-tmod-git
 	replaces = libx264-10bit
 	replaces = libx264-all
 	source = git+https://github.com/jpsdr/x264.git#branch=t_mod_New
-	source = https://gist.githubusercontent.com/b6b/27246e5c217561465301dde13965d36a/raw/9147b91d4c5f2ba97c0289cff54349cae5134a48/fix-log-level-declaration.patch
 	sha256sums = SKIP
-	sha256sums = 8d6717edfc3124b43b5aa4e8bfbd3e6f0dffbf1e945a280826d54303476d58ae
 
 pkgname = x264-tmod-git
 

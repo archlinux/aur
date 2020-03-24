@@ -2,8 +2,8 @@
 
 pkgname=x264-tmod-git
 _branch=t_mod_New
-pkgver=159.r3044.gb09a90f3
-pkgrel=2
+pkgver=159.r3046.g8f175b53
+pkgrel=1
 pkgdesc='Open Source H264/AVC video encoder (tmod git version)'
 arch=(x86_64)
 url=https://github.com/jpsdr/x264/tree/"${_branch}"
@@ -31,20 +31,13 @@ conflicts=(
   libx264-10bit
   libx264-all
 )
-source=(
-  git+https://github.com/jpsdr/x264.git#branch="${_branch}"
-  https://gist.githubusercontent.com/b6b/27246e5c217561465301dde13965d36a/raw/9147b91d4c5f2ba97c0289cff54349cae5134a48/fix-log-level-declaration.patch
-)
-sha256sums=(
-  SKIP
-  8d6717edfc3124b43b5aa4e8bfbd3e6f0dffbf1e945a280826d54303476d58ae
-)
+source=(git+https://github.com/jpsdr/x264.git#branch="${_branch}")
+sha256sums=(SKIP)
 
 prepare() {
   cd x264
 
   git checkout -b "$_branch" # to build with correct X264_VERSION/X264_POINTER
-  patch -i "${srcdir}"/fix-log-level-declaration.patch
 }
 
 pkgver() {
