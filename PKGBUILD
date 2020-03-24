@@ -3,13 +3,12 @@
 pkgname=ttf-meslo-nerd-font-powerlevel10k
 _commit='28dd1bd968b0c9cd4add7a3b80b264acdc53bcc7'
 pkgver=1.000
-pkgrel=1
+pkgrel=1.1
 pkgdesc='Meslo Nerd Font patched for Powerlevel10k'
 arch=('any')
 url='https://github.com/romkatv/powerlevel10k-media'
 license=('MIT')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
-conflicts=('nerd-fonts-meslo' 'nerd-fonts-complete' 'nerd-fonts-git')
 groups=('nerd-fonts')
 provides=('nerd-fonts-meslo')
 source=("MesloLGS-NF-Bold-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Bold.ttf"
