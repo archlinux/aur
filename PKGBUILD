@@ -8,7 +8,7 @@ url="https://wiki.server-speed.net/projects/filebin"
 license=('AGPL')
 makedepends=('nodejs' 'git')
 depends=('php'
-         'pygmentize'        
+         'pygmentize'
          'python-ansi2html'
          'php-gd'
          'imagemagick'
@@ -40,12 +40,13 @@ package() {
   cp filebin-nginx.conf ${pkgdir}/usr/share/webapps/filebin
   cd ${pkgdir}/usr/share/webapps/filebin
   cp application/config/example/{config-local,database,memcached}.php ${pkgdir}/etc/webapps/filebin
+  rm application/config/memcached.php
   ln -s /etc/webapps/filebin/{config-local,database,memcached}.php application/config
   cp data/local/examples/contact-info.php ${pkgdir}/etc/webapps/filebin
   ln -s /etc/webapps/filebin/contact-info.php data/local
 
   # removing unnecessary data for a production environment
-	rm -rf .git
+  rm -rf .git
   rm -rf application/third_party/{test-more-php,mockery}
   rm -rf application/tests
   find . -name \*.gitignore -type f -delete 
