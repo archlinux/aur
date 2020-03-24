@@ -1,6 +1,6 @@
 pkgbase = ldap-account-manager
 	pkgdesc = A webfrontend for managing entries stored in an LDAP directory
-	pkgver = 7.0
+	pkgver = 7.1
 	pkgrel = 1
 	url = https://www.ldap-account-manager.org/
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = ldap-account-manager
 	optdepends = php-apache: Run LDAP Account Manager on Apache
 	optdepends = php-fpm: Run LDAP Account Manager on other webservers
 	options = !strip
-	source = https://sourceforge.net/projects/lam/files/LAM/7.0/ldap-account-manager-7.0.tar.bz2/download
+	source = https://sourceforge.net/projects/lam/files/LAM/7.1/ldap-account-manager-7.1.tar.bz2/download
 	source = apache.example.conf
 	source = nginx.example.conf
-	sha256sums = 354ab01864cf5d8a4ae23aa75e6ef00b35cee22aaa8ce0506bd9c05c8d29ad8c
+	sha256sums = 74a24029b7ef05c8cba393caf21bce9328599f74d3bdbc816d7184099bc062c8
 	sha256sums = 229b281a85770f82f449e1e77ebd26b7583b5bc1266b234c653f2778067b1f34
 	sha256sums = c1a95b12bf047afa2c6d268b66e54a6572c5c3eef46f4726920e09789b672b3e
 
