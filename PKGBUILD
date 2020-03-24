@@ -10,7 +10,6 @@ arch=('any')
 url='https://github.com/evanleck/vim-svelte'
 license=('unknown')
 depends=('vim' 'vim-javascript')
-optdepends=('vim-javascript')
 makedepends=('git')
 conflicts=('vim-svelte')
 provides=('vim-svelte')

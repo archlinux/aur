@@ -10,7 +10,6 @@ pkgbase = vim-svelte-git
 	makedepends = git
 	depends = vim
 	depends = vim-javascript
-	optdepends = vim-javascript
 	provides = vim-svelte
 	conflicts = vim-svelte
 	source = git+https://github.com/evanleck/vim-svelte.git
