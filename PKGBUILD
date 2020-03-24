@@ -1,28 +1,20 @@
 # Maintainer: Matt Harrison <matt@harrison.us.com>
 
 pkgname=statping
-pkgver=0.80.70
+pkgver=0.90.15
 pkgrel=1
 pkgdesc='An easy to use Status Page for your websites and applications.'
 arch=(x86_64)
 url='https://statping.com/'
 license=("GPL3")
-makedepends=(go sassc go.rice)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/hunterlong/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8ead17b56bcc6b5705f3e8ec894dbe885e0f622a39e58df3179ea26992574478')
-_commit_version=72f1889a9479042ea04a9d9efed247e1460812fb
+makedepends=(go-pie go.rice yarn)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('7e1a08e879dd970473a66e58b6910dbbdb1f6a62dcacd9a2f73e414228c83649')
+_commit_version=11538c38e3cc6677410ec277659b4030a72a3242
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver/source"
-  go generate
-  cd "$srcdir/$pkgname-$pkgver/handlers/graphql"
-  go generate
-  cd "$srcdir/$pkgname-$pkgver/source"
-  sassc scss/base.scss css/base.css
-  cd "$srcdir/$pkgname-$pkgver/source"
-  rice embed-go
   cd "$srcdir/$pkgname-$pkgver"
-  go mod vendor
+  make compile
   go build -a -ldflags "-X main.VERSION=${pkgver} -X main.COMMIT=$_commit_version" -o $pkgname -v ./cmd
 }
 
