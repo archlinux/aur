@@ -1,6 +1,6 @@
 pkgbase = flowee
 	pkgdesc = Flowee Bitcoin products
-	pkgver = 2019.10.1
+	pkgver = 2020.02.1
 	pkgrel = 1
 	url = https://flowee.org/
 	install = flowee.install
@@ -16,11 +16,11 @@ pkgbase = flowee
 	depends = openssl
 	provides = flowee-hub
 	backup = etc/flowee/flowee.conf
-	source = git+https://gitlab.com/FloweeTheHub/thehub.git#branch=2019.10
+	source = https://gitlab.com/FloweeTheHub/thehub/-/archive/2020.02.1/thehub-2020.02.1.tar.gz
 	source = flowee.logrotate
 	source = flowee.conf
 	source = logs.conf
-	sha256sums = SKIP
+	sha256sums = 7038635181f490babd723d33864e8a07287b8569bdefe9db4130703599beae36
 	sha256sums = aff02b3312c88113fe7316152c15f1545233dc8c2062ee8c36d2dbcad4a9f5bf
 	sha256sums = bc14acf0d1b4064553756a1e81c0b943e842296f2a2af6442e480b846392e6bc
 	sha256sums = 784a4cdc77d1767299ab10119288c21b478b205d560ae86bc9782b04ae2f82fc
