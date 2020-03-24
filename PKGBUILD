@@ -1,6 +1,7 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: eric <eric@archlinux.org>
+# Maintainer: Stephan Springer <buzo+arch@Lini.de>
+# Contributor: Aidan Harris <mail@aidanharris.io>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: eric <eric@archlinux.org>
 # Contributor: Manolis Tzanidakis
 
 pkgname=apg
