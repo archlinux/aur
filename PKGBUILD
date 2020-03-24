@@ -1,6 +1,6 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
 pkgname=nimf-git
-pkgver=1.1.r19.dda08f0
+pkgver=1.2.0.r12.060a971
 pkgrel=1
 epoch=1
 pkgdesc='Nimf is a lightweight, fast and extensible input method framework.'
@@ -39,7 +39,7 @@ provides=("nimf")
 conflicts=("nimf")
 options=()
 install=
-source=("${pkgname%-git}::git+https://github.com/palindrom615/nimf.git#branch=meson")
+source=("${pkgname%-git}::git+$url.git#branch=meson-build")
 noextract=()
 md5sums=('SKIP')
 

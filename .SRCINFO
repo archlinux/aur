@@ -1,6 +1,6 @@
 pkgbase = nimf-git
 	pkgdesc = Nimf is a lightweight, fast and extensible input method framework.
-	pkgver = 1.1.r19.dda08f0
+	pkgver = 1.2.0.r12.060a971
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/hamonikr/nimf
@@ -32,7 +32,7 @@ pkgbase = nimf-git
 	optdepends = qt4: qt4 support
 	provides = nimf
 	conflicts = nimf
-	source = nimf::git+https://github.com/palindrom615/nimf.git#branch=meson
+	source = nimf::git+https://github.com/hamonikr/nimf.git#branch=meson-build
 	md5sums = SKIP
 
 pkgname = nimf-git
