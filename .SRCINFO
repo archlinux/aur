@@ -1,0 +1,13 @@
+pkgbase = docker-shell
+	pkgdesc = A simple interactive prompt for docker
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Trendyol/docker-shell
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = docker-shell-1.3.0.tar.gz::https://github.com/Trendyol/docker-shell/archive/v1.3.0.tar.gz
+	md5sums = 98ea429384a9e65e44c526d98f90bdc3
+
+pkgname = docker-shell
+
