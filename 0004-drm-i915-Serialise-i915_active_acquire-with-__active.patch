@@ -1,7 +1,7 @@
-From 2e70052bc15b93a2984d7a3e463e55ca3f18b569 Mon Sep 17 00:00:00 2001
+From 82e980a8fda88e473e2038e729603fb55e8750ea Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Thu, 5 Dec 2019 18:33:32 +0000
-Subject: [PATCH 04/11] drm/i915: Serialise i915_active_acquire() with
+Subject: [PATCH 04/12] drm/i915: Serialise i915_active_acquire() with
  __active_retire()
 
 As __active_retire() does it's final atomic_dec() under the

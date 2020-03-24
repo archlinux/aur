@@ -1,7 +1,7 @@
-From 4ba9f5444ba21a670066cf25fae5ece241094a24 Mon Sep 17 00:00:00 2001
+From 4c617291d0cbe8b6ec15d645a28d915ac03e4b86 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Tue, 24 Dec 2019 06:16:39 +0100
-Subject: [PATCH 02/11] iwlwifi: pcie: restore support for Killer Qu C0 NICs
+Subject: [PATCH 02/12] iwlwifi: pcie: restore support for Killer Qu C0 NICs
 
 Commit 809805a820c6 ("iwlwifi: pcie: move some cfg mangling from
 trans_pcie_alloc to probe") refactored the cfg mangling. Unfortunately,
