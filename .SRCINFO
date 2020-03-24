@@ -1,0 +1,14 @@
+pkgbase = ofxstatement-de-triodos
+	pkgdesc = Plugins for ofxstatement for German Triodos and GLS accounts
+	pkgver = r14.8aef762
+	pkgrel = 1
+	url = https://github.com/pianoslum/ofxstatement-de-triodos
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = ofxstatement
+	source = git+https://github.com/pianoslum/ofxstatement-de-triodos
+	md5sums = SKIP
+
+pkgname = ofxstatement-de-triodos
+
