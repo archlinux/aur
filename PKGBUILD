@@ -1,6 +1,6 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
 pkgname=nimf-git
-pkgver=1.2.0.r12.060a971
+pkgver=1.2.0.r17.44dcd8c
 pkgrel=1
 epoch=1
 pkgdesc='Nimf is a lightweight, fast and extensible input method framework.'
@@ -51,7 +51,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	meson setup build --buildtype=release --prefix="/usr"
+	meson setup build --buildtype=release --prefix="/usr"  -Dwith_nimf_qt4=false
 	ninja -C build
 }
 
