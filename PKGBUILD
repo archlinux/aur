@@ -2,7 +2,7 @@
 
 pkgname=libreoffice-impress-templates
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Freely-licensed LibreOffice Impress templates"
 arch=(any)
 url="https://dohliam.github.io/libreoffice-impress-templates"
@@ -17,4 +17,5 @@ package() {
 	#Fix directory premissions
 	find "$pkgdir" -type d -exec chmod 755 '{}' \;
 	find "$pkgdir" -type f -exec chmod 644 '{}' \;
+	chown root:root -R "$pkgdir"
 }
