@@ -2,7 +2,7 @@
 _pkgbase=lkrg
 pkgname=lkrg-dkms
 pkgver=0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Kernel Runtime Guard (DKMS)'
 arch=('x86_64')
 url='https://www.openwall.com/lkrg/'
@@ -12,7 +12,7 @@ source=("${url}/${_pkgbase}-${pkgver}.tar.gz"
         'dkms.conf')
 sha512sums=('6f856d31aa79705e38a5436a47cb4e3f414a7734794713e6831426f1eda0f36ff1800e94dbfa9b211ab5b85055716c9b4839a8e46d292c9de95fc57b6cc02519'
             'SKIP'
-            '3d4847efbf360cca967915d29d8566be14eab3828a790ccac36c780f0bd7c2a0aedde417c51992ec9ee0aabf61cd1109bd046ba0ec47b0ba31a3cbd4be55f7ad')
+            'ee259ac7e15fb6f6947ce6e64be808d6a1107d481ec0a7b4a35266bd720b639909c92e580fae2cecefe5318ce081a4d7431b5f941d1827f7783bee0a3206c5e8')
 validpgpkeys=('297AD21CF86C948081520C1805C027FD4BDC136E')
 depends=('dkms')
 
