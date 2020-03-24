@@ -1,4 +1,4 @@
-# Maintainer: Simon Hanna<simon DOT Hanna AT serve-me DOT info>
+# Maintainer: hashworks<mail@hashworks.net>
 pkgname=filebin
 pkgver=3.4.3
 pkgrel=1
