@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=kvantum-theme-matcha-git
 _gitname=Matcha-kde
-pkgver=1
+pkgver=r9.283b5b1
 pkgrel=1
 pkgdesc="Matcha theme for Kvantum"
 arch=('any')
