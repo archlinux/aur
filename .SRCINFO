@@ -1,13 +1,13 @@
 pkgbase = obsidian-2-theme
 	pkgdesc = Obsidian 2 Theme GNOME 3.22+
-	pkgver = 2.9
+	pkgver = 2.10
 	pkgrel = 1
 	url = https://github.com/madmaxms/theme-obsidian-2/
 	arch = any
 	license = GPL
 	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options.
-	source = obsidian-2-theme-2.9.tar.xz::https://github.com/madmaxms/theme-obsidian-2/releases/download/v2.9/obsidian-2-theme.tar.xz
-	sha256sums = 3b78a0a16d29f68997d5e1e122789aab3978126c1dab91ef8176043298107459
+	source = obsidian-2-theme-2.10.tar.xz::https://github.com/madmaxms/theme-obsidian-2/releases/download/v2.10/obsidian-2-theme.tar.xz
+	sha256sums = dbb58995c1cb3b94bd7c48805269e70c2a8dbacb6c7bcc3814bc99c00a5627a8
 
 pkgname = obsidian-2-theme
 
