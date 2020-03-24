@@ -2,7 +2,8 @@
 # Contributor: kozec
 
 pkgname=minecraft-technic-launcher
-pkgver=4.505
+# Find the latest version number at https://api.technicpack.net/launcher/version/stable4
+pkgver=4.510
 pkgrel=1
 pkgdesc='Choose from thousands of community-made Minecraft modpacks.'
 arch=('any')
@@ -16,7 +17,7 @@ noextract=('TechnicLauncher.jar')
 source=("$pkgname-$pkgver.jar::http://launcher.technicpack.net/launcher${pkgver:0:1}/${pkgver:2}/TechnicLauncher.jar"
         "technic-launcher"
         "technic-launcher.desktop")
-sha256sums=('629e13d177e2212de69ab05a6428da31127ee43cbd1c61aee4d2db83c91d29d8'
+sha256sums=('9b71e501cd28b5da01fa71951cd17a1a8e8812904c3030cc0242d5c50b251ec4'
             '11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397'
             '221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513')
 
