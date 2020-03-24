@@ -1,9 +1,9 @@
 # Maintainer: freijon <freijon@gmail.com>
-# Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>
+# Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>, Martin Merget <mergetmartin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=3.8.1.54455522b
-pkgrel=2
+pkgver=20.1.0.r20200319.caebad7.0
+pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
@@ -21,12 +21,13 @@ sha256sums=('SKIP'
 'SKIP'
 'SKIP')
 
-version=3.8.1
+version=20.1.0
 
 pkgver () {
 	cd "$srcdir/$pkgname"
-	rev=`git rev-parse --short HEAD`
-	echo ${version}.${rev}
+	tag=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/nightly_/r/g;s/_/./g'`
+    commits_since_tag=`git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1))..HEAD`
+	echo ${version}.${tag}.${commits_since_tag}
 }
 
 build()
@@ -50,10 +51,11 @@ package () {
 	cd "$srcdir/$pkgname/build/bin"
 	binary=`find fs2_open*`
 	cd ../..
-	rev=`git rev-parse --short HEAD`
+	tag=`git describe --tags $(git rev-list --tags --max-count=1) | sed 's/nightly_/r/g'`
+    commits_since_tag=`git rev-list --count $(git describe --tags $(git rev-list --tags --max-count=1))..HEAD`
 	install -D -m644 Copying.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev}"
-	msg "The output binary will be called '${binary}_${rev}'"
+	install -D -m755 build/bin/${binary} "$pkgdir/opt/fs2_open/${binary}_${tag}_${commits_since_tag}"
+	msg "The output binary will be called '${binary}_${tag}_${commits_since_tag}'"
 }
 

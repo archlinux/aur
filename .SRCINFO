@@ -1,7 +1,7 @@
 pkgbase = fs2_open-git
 	pkgdesc = An enhancement of the original Freespace 2 engine - GIT version
-	pkgver = 3.8.1.54455522b
-	pkgrel = 2
+	pkgver = 20.1.0.r20200319.caebad7.0
+	pkgrel = 1
 	url = http://scp.indiegames.us
 	install = fs2_open-git.install
 	arch = i686
