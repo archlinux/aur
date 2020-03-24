@@ -3,7 +3,7 @@
 # Maintainer: Adrià Cereto i Massagué <ssorgatem at gmail.com>
 
 pkgname=amdvlk-git
-pkgver=v.2019.Q4.5.r0.e6d1928
+pkgver=v.2020.Q1.3.r2.bd57537
 pkgrel=1
 pkgdesc="AMD's standalone Vulkan driver"
 arch=(x86_64)
@@ -13,12 +13,8 @@ depends=('vulkan-icd-loader')
 provides=('vulkan-amdvlk' 'vulkan-driver')
 conflicts=('vulkan-amdvlk')
 makedepends=('xorgproto' 'xorg-server-devel' 'libxrandr' 'cmake' 'python' 'libxml2' 'wayland' 'libdrm' 'git' 'ninja' 'repo')
-source=('git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master'
-  0001-build-Remove-forced-Werror-option.patch
-  0001-build-Fix-clang-linking.patch)
-sha512sums=('SKIP'
-            'ff9dcfe2f3b739b74a51dc82e3469f8b4ad1a0b044d868fbb99e0c07dd5f7bdc1e5bb1ae93f44c25d6dd90a5b7ddbb294fa29e8082f40e5794269143a1af2467'
-            '39152c24ca6e6bdbd16d7fb66438117101c106a6e5e4e5bcc1248495e6d2f6a1907a639750b1eb25c3d754f7f21801de2b15b232b1c974748551927b783abceb')
+source=()
+sha512sums=()
             
 pkgver() {
   pushd drivers/AMDVLK > /dev/null
@@ -49,17 +45,12 @@ prepare() {
   # popd
 
   # Don't turn Werror on for people will build with more recent compilers than you have. Just don't.
-  for i in drivers/pal/shared/gpuopen/cmake/AMD.cmake
+  for i in drivers/pal/shared/gpuopen/cmake/AMD.cmake #drivers/llpc/llpc/CMakeLists.txt
   do
+    #sed -i "s/-Werror=unused-variable//g" "$srcdir"/$i
+    #sed -i "s/-Werror=unused-function//g" "$srcdir"/$i
     sed -i "s/-Werror//g" "$srcdir"/$i
   done
-
-  pushd drivers/llpc
-  patch -p1 < $srcdir/0001-build-Remove-forced-Werror-option.patch
-  popd
-  pushd drivers/xgl
-  patch -p1 < $srcdir/0001-build-Fix-clang-linking.patch
-  popd
 
   msg 'No patches to apply...'
 }

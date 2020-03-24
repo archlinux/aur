@@ -1,6 +1,6 @@
 pkgbase = amdvlk-git
 	pkgdesc = AMD's standalone Vulkan driver
-	pkgver = v.2019.Q4.5.r0.e6d1928
+	pkgver = v.2020.Q1.3.r2.bd57537
 	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers
 	arch = x86_64
@@ -20,12 +20,6 @@ pkgbase = amdvlk-git
 	provides = vulkan-amdvlk
 	provides = vulkan-driver
 	conflicts = vulkan-amdvlk
-	source = git+https://github.com/GPUOpen-Drivers/wsa.git#branch=master
-	source = 0001-build-Remove-forced-Werror-option.patch
-	source = 0001-build-Fix-clang-linking.patch
-	sha512sums = SKIP
-	sha512sums = ff9dcfe2f3b739b74a51dc82e3469f8b4ad1a0b044d868fbb99e0c07dd5f7bdc1e5bb1ae93f44c25d6dd90a5b7ddbb294fa29e8082f40e5794269143a1af2467
-	sha512sums = 39152c24ca6e6bdbd16d7fb66438117101c106a6e5e4e5bcc1248495e6d2f6a1907a639750b1eb25c3d754f7f21801de2b15b232b1c974748551927b783abceb
 
 pkgname = amdvlk-git
 
