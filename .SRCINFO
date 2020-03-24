@@ -1,6 +1,6 @@
 pkgbase = ipt_ndpi
 	pkgdesc = nDPI as netfilter extension.
-	pkgver = 1.2_2.8.0.1530.8bd3384
+	pkgver = 1.2_3.2.0.2224.8a19d7e3
 	pkgrel = 1
 	url = https://github.com/vel21ripn/nDPI
 	arch = any
