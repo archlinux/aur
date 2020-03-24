@@ -56,13 +56,10 @@ build() {
 	cd "$srcdir/go/src/$_pkgname/"
 	ln -sf "$srcdir/go/src/$_pkgname/" "$srcdir/$_pkgname"
 
-	echo ":: Updating git submodules"
-	git submodule update --init
-
 	echo ":: Building binary"
 	go get -v \
 		-gcflags "-trimpath $GOPATH/src" \
-		-ldflags="-X main.version=$pkgver-$pkgrel"
+		-ldflags="-X main.version=$pkgver-$pkgrel" ./cmd/...
 }
 
 package() {
