@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=surfn-arc-breeze-icons-git
-pkgver=20.2
+pkgver=20.3
 pkgrel=2
 _destname="/usr/share/icons/"
 pkgdesc="Surfn Arc Breeze icons are created to be used on Plasma with dark toolbar"
