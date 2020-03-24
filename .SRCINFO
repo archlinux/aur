@@ -1,0 +1,15 @@
+pkgbase = haskell-generic-arbitrary
+	pkgdesc = Generic implementation for QuickCheck's Arbitrary
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://hackage.haskell.org/package/
+	arch = x86_64
+	license = MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	source = https://hackage.haskell.org/packages/archive/generic-arbitrary/0.1.0/generic-arbitrary-0.1.0.tar.gz
+	md5sums = 830b9eed0b6c1418babfb991023a06f4
+
+pkgname = haskell-generic-arbitrary
+
