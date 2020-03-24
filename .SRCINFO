@@ -1,13 +1,13 @@
 pkgbase = obsidian-icon-theme
 	pkgdesc = Obsidian Icon Theme
-	pkgver = 4.10
+	pkgver = 4.11
 	pkgrel = 1
 	url = https://github.com/madmaxms/iconpack-obsidian
 	arch = any
 	license = GPL
 	options = !strip
-	source = obsidian-icon-theme-4.10.tar.gz::https://github.com/madmaxms/iconpack-obsidian/archive/v4.10.tar.gz
-	sha256sums = 3f896170a86f749df72ff3ea810416db0b0863dfd3e91cc3deb97afc4eeff2d9
+	source = obsidian-icon-theme-4.11.tar.gz::https://github.com/madmaxms/iconpack-obsidian/archive/v4.11.tar.gz
+	sha256sums = 633ba2ee6cbdac8ec4f3a2ab6fedb026babd872e884b99c1d35bbc3ec129eaf7
 
 pkgname = obsidian-icon-theme
 
