@@ -37,5 +37,5 @@ package() {
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
   export SUBPRJ_DFLT='runawk modules examples a_getopt doc'
   mkcmake DESTDIR="$pkgdir" install
-  install README "$pkgdir"/usr/share/licenses/$pkgname/README
+  install -Dm644 README "$pkgdir"/usr/share/licenses/$pkgname/README
 }
