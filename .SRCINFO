@@ -1,7 +1,7 @@
 pkgbase = jdk-adoptopenjdk
 	pkgdesc = OpenJDK Java 14 development kit (AdoptOpenJDK build)
 	pkgver = 14.u36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
 	arch = x86_64
@@ -48,9 +48,9 @@ pkgbase = jdk-adoptopenjdk
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	sha256sums = 6c06853332585ab58834d9e8a02774b388e6e062ef6c4084b4f058c67f2e81b5
-	sha256sums = 9b11bbaf5834748fc9a30cb887c129b32f34a81535dc512ff47b26ae72c91927
-	sha256sums = 16551b98abbd5cbb9da14157df60afd2a608602c6e3734e979d9574e0780f8da
-	sha256sums = 7d46b5ffcb2528f039b4534dddeab4b87de92106c25ff17e175570edde52f1c9
+	sha256sums = e5853506c880f0c68372a0be0acfd8852dd1a1d414352155c1cd4ad49ce3c248
+	sha256sums = a645b7079c572dabe18f2ea6c2cbdef00866b8b8e22a82530858ea49e2cf8343
+	sha256sums = b8705290f505cb368c204eb02c179fc1b10e70554903fb04b7dbe809dd1bed01
 
 pkgname = jdk-adoptopenjdk
 

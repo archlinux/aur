@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=AdoptOpenJDK Java 12 Runtime
-Comment=AdoptOpenJDK Java 12 Runtime
+Name=AdoptOpenJDK Java 14 Runtime
+Comment=AdoptOpenJDK Java 14 Runtime
 Keywords=java;runtime
-Exec=/usr/lib/jvm/java-12-adoptopenjdk/bin/java -jar
+Exec=/usr/lib/jvm/java-14-adoptopenjdk/bin/java -jar
 Terminal=false
 Type=Application
 MimeType=application/x-java-archive;application/java-archive;application/x-jar;

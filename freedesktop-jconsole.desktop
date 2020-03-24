@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=AdoptOpenJDK Java 12 Console
-Comment=AdoptOpenJDK Java 12 Monitoring & Management Console
+Name=AdoptOpenJDK Java 14 Console
+Comment=AdoptOpenJDK Java 14 Monitoring & Management Console
 Keywords=java;console;monitoring
-Exec=/usr/lib/jvm/java-12-adoptopenjdk/bin/jconsole
+Exec=/usr/lib/jvm/java-14-adoptopenjdk/bin/jconsole
 Terminal=false
 Type=Application
 Categories=Application;System;

@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=AdoptOpenJDK Java 12 Shell
-Comment=AdoptOpenJDK Java 12 Shell
+Name=AdoptOpenJDK Java 14 Shell
+Comment=AdoptOpenJDK Java 14 Shell
 Keywords=java;shell
-Exec=/usr/lib/jvm/java-12-adoptopenjdk/bin/jshell
+Exec=/usr/lib/jvm/java-14-adoptopenjdk/bin/jshell
 Terminal=true
 Type=Application
 Categories=Application;System;

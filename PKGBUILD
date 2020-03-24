@@ -10,7 +10,7 @@
 _majorver=14
 _completever=14
 _updatever=36
-pkgrel=1
+pkgrel=2
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 
@@ -59,9 +59,9 @@ source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/do
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('6c06853332585ab58834d9e8a02774b388e6e062ef6c4084b4f058c67f2e81b5'
-            '9b11bbaf5834748fc9a30cb887c129b32f34a81535dc512ff47b26ae72c91927'
-            '16551b98abbd5cbb9da14157df60afd2a608602c6e3734e979d9574e0780f8da'
-            '7d46b5ffcb2528f039b4534dddeab4b87de92106c25ff17e175570edde52f1c9')
+            'e5853506c880f0c68372a0be0acfd8852dd1a1d414352155c1cd4ad49ce3c248'
+            'a645b7079c572dabe18f2ea6c2cbdef00866b8b8e22a82530858ea49e2cf8343'
+            'b8705290f505cb368c204eb02c179fc1b10e70554903fb04b7dbe809dd1bed01')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk
 _jdkdir=jdk-${_tag_ver}
