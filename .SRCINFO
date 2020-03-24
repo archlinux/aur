@@ -8,6 +8,7 @@ pkgbase = elkhound-git
 	makedepends = bison
 	makedepends = flex
 	makedepends = ocaml
+        makedepends = cmake
 	conflicts = elkhound-bin
 	conflicts = elkhound
 	source = git+https://github.com/WeiDUorg/elkhound
