@@ -2,7 +2,7 @@
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 pkgname=mojave-gtk-theme-git-new
 _pkgname=Mojave-gtk-theme
-pkgver=324
+pkgver=r330.f184d03
 pkgrel=1
 pkgdesc='A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.'
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=('mojave-gtk-theme')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"    
 }
 
 package() {
