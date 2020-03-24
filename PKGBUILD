@@ -1,8 +1,8 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
-pkgver=a6e54d5
+pkgver=5c11707
 _ver=1.0.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -19,7 +19,7 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'patch.diff')
 sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8'
-            '185c3221bb991553afef131a0633812b97e309f53efdcaae715f519a6b6fdaa2')
+            '4d78538aeaf7a898bf96fe9e42c10c690a57c562e2db3092f85dd94895b009d0')
 
 prepare() {
   cd $srcdir/session-desktop

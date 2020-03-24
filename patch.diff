@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index bfeb9b73..b00fcf30 100644
+index bfeb9b73..531be33e 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,7 +2,7 @@
@@ -7,7 +7,7 @@ index bfeb9b73..b00fcf30 100644
    "productName": "Session",
    "description": "Private messaging from your desktop",
 -  "version": "1.0.4",
-+  "version": "1.0.5-a6e54d5",
++  "version": "1.0.5-5c11707",
    "license": "GPL-3.0",
    "author": {
      "name": "Loki Project",
