@@ -2,7 +2,7 @@
 
 pkgname=libbluray-git
 pkgver=1.2.0.0.g43059c7e
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to access Blu-Ray disks for video playback. (GIT version)"
 arch=('x86_64')
 license=('LGPL2.1')
@@ -39,6 +39,7 @@ prepare() {
   mkdir -p build
 
   export JDK_HOME="/usr/lib/jvm/java-13-jdk"
+  export JAVAC="/usr/lib/jvm/java-13-openjdk/bin/javac"
 
   cd libbluray
   git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
@@ -51,8 +52,7 @@ build() {
   cd build
   ../libbluray/configure \
     --prefix=/usr \
-    --disable-static \
-    --with-java9
+    --disable-static
 
   make
 }

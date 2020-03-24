@@ -1,7 +1,7 @@
 pkgbase = libbluray-git
 	pkgdesc = Library to access Blu-Ray disks for video playback. (GIT version)
 	pkgver = 1.2.0.0.g43059c7e
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.videolan.org/developers/libbluray.html
 	arch = x86_64
 	license = LGPL2.1
