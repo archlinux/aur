@@ -1,0 +1,17 @@
+pkgbase = thplayer-git
+	pkgdesc = TouHou BGM player for all platform.
+	pkgver = r29.4ba4371
+	pkgrel = 1
+	url = https://github.com/BearKidsTeam/thplayer
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = qt5-tools
+	depends = qt5-multimedia
+	source = git+https://github.com/BearKidsTeam/thplayer.git
+	source = git+https://github.com/thpatch/thtk.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = thplayer-git
+
