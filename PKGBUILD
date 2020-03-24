@@ -1,40 +1,37 @@
 # Maintainer: Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=fscrypt-git
-pkgver=0.2.6.0.g43b4079
-pkgrel=2
+pkgver=0.2.7.0.g2b160ae
+pkgrel=1
 pkgdesc='A tool for managing Linux filesystem encryption'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://github.com/google/fscrypt'
 license=('Apache')
-makedepends=('git' 'go')
+makedepends=('go-pie' 'git')
 depends=('pam')
 conflicts=('fscrypt')
 provides=('fscrypt')
-source=('git+https://github.com/google/fscrypt.git' 'pam_config')
+source=('git+https://github.com/google/fscrypt.git'
+        'pam_config')
 sha256sums=('SKIP'
             'ae6ceaefc6d936c95a9b7a3f925111ffb946e6fd0152373247f1d40132f05aef')
 
 pkgver() {
-	cd "${srcdir}/fscrypt"
-	git describe --tags --long | sed 's/^v//' | tr - .
-}
-
-prepare() {
-	export GOPATH="${srcdir}/go"
-	mkdir -p "${GOPATH}/src/github.com/google"
-	ln -sf "${srcdir}/fscrypt" "${GOPATH}/src/github.com/google/"
+  cd fscrypt
+  git describe --tags --long | sed 's/^v//' | tr - .
 }
 
 build() {
-	export GOPATH="${srcdir}/go"
-	cd "${GOPATH}/src/github.com/google/fscrypt"
-	make
+  cd fscrypt
+  make
 }
 
 package() {
-	cd "${srcdir}/fscrypt"
-	make PREFIX="${pkgdir}/usr" install
-	install -Dm644 README.md "${pkgdir}/usr/share/fscrypt/README.md"
-	install -Dm644 ../pam_config "${pkgdir}/etc/pam.d/fscrypt"
+  cd fscrypt
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm644 ../pam_config "${pkgdir}/etc/pam.d/fscrypt"
+  install -Dm644 -t "$pkgdir/usr/share/doc/fscrypt/" README.md
+
+  # Remove Ubuntu-specific PAM file
+  rm -rf "$pkgdir"/usr/share/pam-configs/
 }
