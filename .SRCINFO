@@ -1,0 +1,14 @@
+pkgbase = strip-css-comments-cli
+	pkgdesc = Strip comments from CSS
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/sindresorhus/strip-css-comments-cli
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = v2.0.2.tar.gz
+	source = https://github.com/sindresorhus/strip-css-comments-cli/archive/v2.0.2.tar.gz
+	md5sums = a929d908f33b46b53d1d77bb55b82dc9
+
+pkgname = strip-css-comments-cli
+
