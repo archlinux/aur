@@ -1,6 +1,6 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=backly
-pkgver=1.30
+pkgver=1.40
 pkgrel=1
 pkgdesc="A simple directory cloner"
 url="http://git.bradleylaboon.com/backly.git"
@@ -10,11 +10,6 @@ depends=('glibc')
 makedepends=('git')
 source=($pkgname::git+https://git.bradleylaboon.com/lb.laboon/$pkgname.git#tag=v${pkgver})
 sha256sums=('SKIP')
-
-pkgver() {
-	cd $pkgname/
-	git describe | sed 's/^v//g'
-}
 
 build() {
 	cd $pkgname/

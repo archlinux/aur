@@ -1,6 +1,6 @@
 pkgbase = backly
 	pkgdesc = A simple directory cloner
-	pkgver = 1.30
+	pkgver = 1.40
 	pkgrel = 1
 	url = http://git.bradleylaboon.com/backly.git
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = backly
 	license = GPL2
 	makedepends = git
 	depends = glibc
-	source = backly::git+https://git.bradleylaboon.com/lb.laboon/backly.git#tag=v1.30
+	source = backly::git+https://git.bradleylaboon.com/lb.laboon/backly.git#tag=v1.40
 	sha256sums = SKIP
 
 pkgname = backly
