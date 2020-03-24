@@ -58,5 +58,8 @@ build() {
 }
 
 package() {
+  export JDK_HOME="/usr/lib/jvm/java-13-jdk"
+  export JAVAC="/usr/lib/jvm/java-13-openjdk/bin/javac"
+
   make -C build DESTDIR="${pkgdir}" install
 }
