@@ -9,7 +9,7 @@ pkgbase = kvantum-theme-matcha-git
 	depends = kvantum-qt5
 	provides = kvantum-theme-matcha
 	conflicts = kvantum-theme-matcha
-	conflicts = Matcha-kde
+	conflicts = matcha-kde
 	source = git+https://github.com/vinceliuice/Matcha-kde.git#commit=283b5b18f0967ab640cfd2633c03308cd4f2b0cb
 	sha256sums = SKIP
 
