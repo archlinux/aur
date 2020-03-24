@@ -6,8 +6,8 @@
 set -u
 _pkgname='inetutils'
 pkgname="${_pkgname}-git"
-pkgver=1.9.4.r42.ga4a331b7
-pkgrel=3
+pkgver=1.9.4.r101.g393f4c6c
+pkgrel=1
 _srcdir="${_pkgname}"
 pkgdesc='A collection of common network programs'
 arch=('i686' 'x86_64')
@@ -100,8 +100,11 @@ prepare() {
     sed -e 's:if (pty_read () <= 0):if (pty_read () < 0):g' -i 'telnetd/telnetd.c'
 
     # http://lists.gnu.org/archive/html/bug-inetutils/2017-07/msg00005.html
-    patch -Nbup1 < '../0001-telnetd-Fix-buffer-overflows.patch'
+    #patch -Nbup1 -i '../0001-telnetd-Fix-buffer-overflows.patch'
   fi
+
+  # Disable wu-ftpd logging to wtmp. logging is worthless without anti-hammer.
+  sed -e '/logwtmp_keep_open/ s:^:// :g' -i 'ftpd/ftpd.c'
   set +u
 }
 
