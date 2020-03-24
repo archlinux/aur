@@ -2,7 +2,7 @@
 
 pkgname=quich
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Small, fast and useful calculator for your terminal with multiple functions and options."
 url="https://github.com/Usbac/quich"
 arch=('x86_64')
@@ -22,5 +22,5 @@ build() {
 package() {
     install -Dm755 $pkgname-$pkgver/$pkgname $pkgdir/usr/bin/$pkgname
 
-    install -Dm644 $pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname
+    install -Dm644 $pkgname-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

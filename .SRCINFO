@@ -1,7 +1,7 @@
 pkgbase = quich
 	pkgdesc = Small, fast and useful calculator for your terminal with multiple functions and options.
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Usbac/quich
 	arch = x86_64
 	license = MIT
