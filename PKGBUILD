@@ -3,7 +3,7 @@
 pkgname=ttf-meslo-nerd-font-powerlevel10k
 _commit='28dd1bd968b0c9cd4add7a3b80b264acdc53bcc7'
 pkgver=1.000
-pkgrel=1.1
+pkgrel=2
 pkgdesc='Meslo Nerd Font patched for Powerlevel10k'
 arch=('any')
 url='https://github.com/romkatv/powerlevel10k-media'
