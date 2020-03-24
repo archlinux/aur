@@ -1,0 +1,18 @@
+pkgbase = today-todo
+	pkgdesc = A simple todo list with deadlines.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/is3ny/today
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	depends = boost
+	depends = boost-libs
+	depends = git
+	conflicts = today
+	source = today-1.0.0.tar.gz::https://github.com/is3ny/today/archive/v1.0.0.tar.gz
+	sha1sums = 45341368c62091fbe68e5f1fcdd622eb31b6d879
+
+pkgname = today-todo
+
