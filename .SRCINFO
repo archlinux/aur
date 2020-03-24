@@ -13,7 +13,7 @@ pkgbase = libbluray-git
 	depends = fontconfig
 	depends = libfreetype.so
 	optdepends = libaacs: Enable AACS decryption
-	optdepends = java-runtime<=11: BD-J library
+	optdepends = java-runtime<=13: BD-J library
 	provides = libbluray
 	provides = libbluray.so
 	conflicts = libbluray

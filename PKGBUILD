@@ -17,7 +17,7 @@ makedepends=('git'
              'java-environment<=13'
              )
 optdepends=('libaacs: Enable AACS decryption'
-            'java-runtime<=11: BD-J library'
+            'java-runtime<=13: BD-J library'
             )
 provides=('libbluray'
           'libbluray.so'
