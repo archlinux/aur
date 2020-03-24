@@ -1,0 +1,47 @@
+From 0a68500b46668e4b9c027b630d0ba2ccb7bed555 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 10 Mar 2020 21:02:19 +0000
+Subject: [PATCH] screen: Fix non-preserved working dir
+
+If `preserve_cwd` is false, the code would leave `data->cwd` unset. This
+resulted in VTE keeping the current pwd, which in the case of
+`gnome-terminal-server` running as a systemd user service is `/`.
+
+Fixes https://gitlab.gnome.org/GNOME/gnome-terminal/issues/228
+---
+ src/terminal-screen.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/terminal-screen.c b/src/terminal-screen.c
+index dc9f8447..6541c0a5 100644
+--- a/src/terminal-screen.c
++++ b/src/terminal-screen.c
+@@ -963,23 +963,22 @@ terminal_screen_exec (TerminalScreen *screen,
+     return FALSE;
+   }
+ 
+-  if (preserve_cwd) {
+-    data->cwd = g_strdup (cwd);
+-  } else {
++  if (!preserve_cwd) {
+     cwd = g_get_home_dir ();
+     envv = g_environ_unsetenv (envv, "PWD");
+   }
+ 
+   if (fd_list) {
+     const int *fds;
+ 
+     fds = g_unix_fd_list_peek_fds (fd_list, &data->fd_list_len);
+     data->fd_list = g_memdup (fds, (data->fd_list_len + 1) * sizeof (int));
+     data->fd_array = g_variant_get_fixed_array (fd_array, &data->fd_array_len, 2 * sizeof (int));
+   }
+ 
+   data->argv = g_strdupv (argv);
+   data->exec_argv = g_strdupv (exec_argv);
++  data->cwd = g_strdup (cwd);
+   data->envv = g_strdupv (envv);
+   data->as_shell = as_shell;
+   data->pty_flags = VTE_PTY_DEFAULT;
+-- 
+2.25.1
+
