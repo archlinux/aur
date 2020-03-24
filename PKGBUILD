@@ -26,7 +26,7 @@ sha256sums=('a24cdd2ab82da6115d0daeeeabedb933f9e40ab48ffeec712f442dba945ed856'
 
 prepare() {
 
-	# Add /etc/$pkgname/ to config file path
+	# Add /etc/cheat/ to config file path
 	cd "$pkgname-$pkgver"
 	sed -i '43 i\
 			path.Join("/etc/cheat/conf.yml"),' internal/config/paths.go
