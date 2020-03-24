@@ -4,7 +4,7 @@
 _gitname=agenda
 _author=dahenson
 pkgname=("${_gitname}-git")
-pkgver=latest
+pkgver=r410.88586d6
 pkgrel=1
 pkgdesc="A simple, fast, no-nonsense to-do (task) list designed for Pantheon Shell"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/${_author}/${_gitname}"
 license=('GPL3')
 depends=('gtk3' 'vala' 'granite')
 optdepends=()
-makedepends=('cmake' 'vala' 'git')
+makedepends=('git' 'meson')
 provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+${url}.git")
@@ -26,21 +26,15 @@ pkgver() {
     )
 }
 
-prepare() {
-  cd "${_gitname}"
-  install -d build
-}
-
 build() {
-  cd "${_gitname}/build"
-  cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
-  make
+    cd "${_gitname}/"
+    meson . _build --prefix=/usr
+    ninja -C _build
 }
 
 package() {
-  cd "${_gitname}/build"
-  make DESTDIR="${pkgdir}" install
+    cd "${_gitname}/"
+    DESTDIR="${pkgdir}" ninja -C _build install
 }
+
 
