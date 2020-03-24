@@ -1,6 +1,6 @@
 pkgbase = navi
 	pkgdesc = An interactive cheatsheet tool for the command-line
-	pkgver = 2.3.1
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/denisidoro/navi
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = navi
 	makedepends = gcc
 	depends = fzf
 	provides = navi
-	source = navi-2.3.1.tar.gz::https://github.com/denisidoro/navi/archive/v2.3.1.tar.gz
-	sha256sums = fc934f58418a6019112ab7f35844cc5372ab997e043aaac8bb4039ea30ffd3c0
+	source = navi-2.4.1.tar.gz::https://github.com/denisidoro/navi/archive/v2.4.1.tar.gz
+	sha256sums = 3268317a09372f435a08c8eb5f62c44f2a070f195482b5e4584a9761a7edadd4
 
 pkgname = navi
 
