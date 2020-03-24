@@ -1,14 +1,14 @@
 pkgbase = r8125
 	pkgdesc = r8125 kernel driver for linux
-	pkgver = 9.003.02
+	pkgver = 9.003.04
 	pkgrel = 0
 	url = https://www.realtek.com/
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
-	source = https://github.com/ibmibmibm/r8125/archive/9.003.02.tar.gz
+	source = https://github.com/ibmibmibm/r8125/archive/9.003.04.tar.gz
 	source = dkms.conf
-	sha256sums = 1531cc3d9649ea45fa324354adc22bdf75966db033da1385bc6f86fc398b7b9d
+	sha256sums = e7c7a8edbb37aa8b22614b4cebba1af11188933fa9d39c584348e3fa45efd834
 	sha256sums = 7a6b42b6ebbd76ae3c40e10f824c2dae88448fab3ba074916b3be5c2b4bef448
 
 pkgname = r8125
@@ -18,6 +18,6 @@ pkgname = r8125-dkms
 	depends = dkms
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
-	provides = 8125=9.003.02
+	provides = 8125=9.003.04
 	conflicts = r8125
 
