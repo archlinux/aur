@@ -10,7 +10,7 @@ url='https://github.com/romkatv/powerlevel10k-media'
 license=('MIT')
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 groups=('nerd-fonts')
-provides=('nerd-fonts-meslo')
+provides=('nerd-fonts-meslo-p10k')
 source=("MesloLGS-NF-Bold-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Bold.ttf"
     "MesloLGS-NF-Bold-Italic-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Bold%20Italic.ttf"
     "MesloLGS-NF-Italic-${pkgver}.ttf::https://github.com/romkatv/powerlevel10k-media/raw/${_commit}/MesloLGS%20NF%20Italic.ttf"
