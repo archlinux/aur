@@ -37,6 +37,7 @@ build() {
  
   cmake .. \
         -Wno-dev \
+        -DCMAKE_CXX_STANDARD=14 \
         -DCMAKE_CXX_FLAGS=-fpermissive \
         -DOPTION_PDAL_LAS=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
