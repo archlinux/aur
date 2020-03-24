@@ -3,9 +3,10 @@
 
 pkgname=runawk
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AWK wrapper that provides support for modules"
 arch=('i686' 'x86_64')
+dpends=('bash')
 makedepends=('bmake' 'mk-configure')
 url="https://github.com/cheusov/runawk"
 license=('MIT')
@@ -36,4 +37,5 @@ package() {
   export PREFIX=/usr SYSCONFDIR=/etc MANDIR=/usr/share/man
   export SUBPRJ_DFLT='runawk modules examples a_getopt doc'
   mkcmake DESTDIR="$pkgdir" install
+  install README "$pkgdir"/usr/share/licenses/$pkgname/README
 }
