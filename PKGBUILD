@@ -2,6 +2,7 @@
 
 pkgname=python-credstash-git
 pkgver=1.16.1.3.g014d96b
+pkgver=1.16.2.9.g97cc768
 pkgrel=1
 epoch=1
 pkgdesc='A little utility for managing credentials in the cloud '
