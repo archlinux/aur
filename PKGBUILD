@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='Flexible usenet binary posting tool'
 arch=('x86_64')
 url='https://github.com/animetosho/Nyuu'
-license=('')
+license=('Public Domain')
 depends=()
 provides=('nyuu')
 source=("${_pkgname}-${pkgver}.tar.xz::https://github.com/animetosho/Nyuu/releases/download/v${pkgver}/nyuu-v${pkgver}-linux-amd64.tar.xz")
@@ -24,3 +24,4 @@ package() {
     cp ${srcdir}/nyuu               ${pkgdir}/usr/bin/
     cp ${srcdir}/config-sample.json ${pkgdir}/opt/nyuu/
 }
+
