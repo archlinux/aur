@@ -2,7 +2,7 @@
 # Contributor: Peter Strapp <peter at strapp.co.uk>
 
 pkgname=libindi_3rdparty
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=('libindi_3rdparty')
@@ -13,13 +13,15 @@ depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-comp
 makedepends=(cmake boost)
 conflicts=(libqhy-git)
 source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz")
-sha256sums=('325e38419acefc3d8002f30159b1f4835a82f9a1559092a45137427ba16f6bda')
+sha256sums=('18cbfb4bfddfe4238162a33f0d5357e9968f33145e17599eb532f4bea330985e')
 
 
 prepare() {
   mkdir -p build
   cd indi-3rdparty-${pkgver}
   find ./ -name CMakeLists.txt -exec sed -i -e 's|"\/lib|"${CMAKE_INSTALL_PREFIX}/lib|g' {} \;        # Allow installing outside of /lib
+  sed -i 's/stime/ctime/' indi-gpsd/gps_driver.cpp
+  sed -i 's/stime/ctime/' indi-gpsnmea/gpsnmea_driver.cpp
 }
 
 build() {
