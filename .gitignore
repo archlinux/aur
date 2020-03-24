@@ -1,0 +1,4 @@
+grub2-editor/
+src/
+pkg/
+*.pkg.*

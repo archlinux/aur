@@ -1,0 +1,28 @@
+pkgbase = grub2-editor-frameworks-git
+	pkgdesc = A KDE Control Module for configuring the GRUB2 bootloader. Unofficial KF5 port.
+	pkgver = 0.8.1.r0.g2f7de2c
+	pkgrel = 1
+	url = https://github.com/maz-1/grub2-editor
+	arch = x86_64
+	groups = plasma
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = kdoctools
+	depends = grub
+	depends = hwinfo
+	depends = imagemagick
+	depends = qt5-base
+	depends = kio
+	depends = ki18n
+	depends = kauth
+	depends = kconfigwidgets
+	depends = solid
+	optdepends = os-prober: Create entries for other operating systems
+	provides = grub2-editor
+	conflicts = grub2-editor
+	source = git+https://github.com/maz-1/grub2-editor.git
+	sha256sums = SKIP
+
+pkgname = grub2-editor-frameworks-git
+
