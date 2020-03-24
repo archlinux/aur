@@ -43,18 +43,18 @@ build() {
 package() {
     cd ${srcdir}/${pkgname}
     make install
-    arr=("/usr/share/madagascar/etc/config.py"
-         "/usr/lib/python3.8/site-packages/rsf/prog.py"
-	 "/usr/share/madagascar/etc/env.sh"
-	 "/usr/src/madagascar/config.py"
-	)
-    for f in $arr ; do
+    mkdir -p "${pkgdir}/usr/src/"
+    cp -r ${srcdir}/* ${pkgdir}/usr/src/${pkgname}
+    arr[0]="/usr/share/madagascar/etc/config.py"
+    arr[1]="/usr/lib/python3.8/site-packages/rsf/prog.py"
+    arr[2]="/usr/share/madagascar/etc/env.sh"
+    arr[3]="/usr/src/madagascar/config.py"
+    echo ${pkgdir}
+    echo ${srcdir}
+    for f in ${arr[@]} ; do
       sed -i "s|${pkgdir}||g" "${pkgdir}/$f"
       sed -i "s|${srcdir}|/usr/src/|g" "${pkgdir}/$f"
     done
-    mkdir -p "${pkgdir}/usr/src/"
-    cp -r ${srcdir} ${pkgdir}/usr/src/${pkgname}
     #rm ${pkgdir}/usr/src/${pkgname}/madagascar.tar.gz
 }
-#md5sums=('a87a6f7f5ba552cd251b1588048844bf')
 md5sums=('SKIP')
