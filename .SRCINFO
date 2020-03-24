@@ -1,6 +1,6 @@
 pkgbase = angband-git
 	pkgdesc = A roguelike dungeon-exploration game based on Tolkien's books
-	pkgver = 4.2.0.r202.g19db2616f
+	pkgver = 4.2.0.r215.gb03d91bc8
 	pkgrel = 1
 	url = http://rephial.org/
 	arch = i686
