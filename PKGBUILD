@@ -38,9 +38,6 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  export JDK_HOME="/usr/lib/jvm/java-13-jdk"
-  export JAVAC="/usr/lib/jvm/java-13-openjdk/bin/javac"
-
   cd libbluray
   git config submodule.contrib/libudfread.url "${srcdir}/libudfread"
   git submodule update --init
@@ -49,6 +46,9 @@ prepare() {
 }
 
 build() {
+  export JDK_HOME="/usr/lib/jvm/java-13-jdk"
+  export JAVAC="/usr/lib/jvm/java-13-openjdk/bin/javac"
+
   cd build
   ../libbluray/configure \
     --prefix=/usr \
