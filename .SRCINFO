@@ -1,15 +1,19 @@
 pkgbase = matcha-gtk-theme
-	pkgdesc = A flat design themes for GNOME, MATE, Openbox, Unity, XFCE, Budgie
-	pkgver = 2020_02_06
+	pkgdesc = A flat design theme for GTK 3, GTK 2 and GNOME Shell
+	pkgver = 2020.03.24
 	pkgrel = 1
-	url = https://github.com/vinceliuice/matcha
+	url = https://vinceliuice.github.io/theme-matcha.html
 	arch = any
 	license = GPL3
 	depends = gtk-engine-murrine
 	depends = gtk-engines
 	depends = gtk3
-	source = https://github.com/vinceliuice/matcha/archive/2020-02-06.tar.gz
-	sha256sums = 7b22059984c06afe2f4bf93d11e8b5e3c999a4cbb16d655b75e2aa1ce8cad6ed
+	optdepends = matcha-icon-theme: Matching icon theme
+	optdepends = qogir-icon-theme: Recommended icon theme
+	optdepends = kvantum-theme-matcha: Matching Kvantum theme
+	options = !strip
+	source = matcha-gtk-theme-2020.03.24.zip::https://github.com/vinceliuice/Matcha-gtk-theme/archive/2020-03-24.tar.gz
+	sha256sums = 767c8cbb3fb6b37eeb52d278375f027c02f3006bb4d7056f40f9a66f72d3772c
 
 pkgname = matcha-gtk-theme
 
