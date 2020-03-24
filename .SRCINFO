@@ -1,11 +1,11 @@
 pkgbase = stretchy-snek-boi
 	pkgdesc = A snake game clone.
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://www.github.com/KnockKnockP/stretchy-snek-boi/
 	arch = x86_64
 	license = WTFPL 2.0
-	source = https://github.com/KnockKnockP/stretchy-snek-boi/archive/1.0.4.tar.gz
+	source = https://github.com/KnockKnockP/stretchy-snek-boi/archive/1.0.5.tar.gz
 	md5sums = SKIP
 
 pkgname = stretchy-snek-boi
