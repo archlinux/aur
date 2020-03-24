@@ -1,11 +1,11 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=ocaml-sedlex
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode-friendly OCaml lexer generator'
 license=('MIT')
 arch=('i686' 'x86_64')
-url='https://github.com/alainfrisch/sedlex'
+url='https://github.com/ocaml-community/sedlex'
 depends=('ocaml' 'ocaml-gen' 'ocaml-ppx_tools')
 source=("https://github.com/alainfrisch/sedlex/archive/v${pkgver}.tar.gz")
 options=(!strip !makeflags)
