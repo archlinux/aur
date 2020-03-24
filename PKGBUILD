@@ -6,13 +6,10 @@ pkgrel=2
 pkgdesc="A movie player for linux (uses statically linked libav). (GIT version)"
 arch=('x86_64')
 depends=('a52dec'
-         'desktop-file-utils'
          'directfb'
          'enca'
          'faad2'
          'fribidi'
-         'jack'
-         'lcms2'
          'libbluray'
          'libbs2b'
          'libcaca'
@@ -24,23 +21,21 @@ depends=('a52dec'
          'libdvdnav'
          'libdvdcss'
          'libmad'
-         'libpulse'
          'libquvi'
          'libtheora'
          'libvdpau'
          'libxv'
          'libxinerama'
          'libxss'
-         'libxxf86vm'
          'lirc-utils'
          'mpg123'
          'nut-multimedia-git'
-         'portaudio'
          'rsound'
          'smbclient'
          'speex'
          'ttf-font'
          'xvidcore'
+         'hicolor-icon-theme'
          )
 license=('GPL')
 url="http://www.mplayer2.org/"
@@ -173,5 +168,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 mplayer/etc/{codecs,input,example}.conf "${pkgdir}/etc/mplayer/"
   install -Dm644 mplayer/etc/mplayer.desktop "${pkgdir}/usr/share/applications/mplayer.desktop"
-  install -Dm644 "${srcdir}/mplayer.svg" "${pkgdir}/usr/share/pixmaps/mplayer.svg"
+  install -Dm644 "${srcdir}/mplayer.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mplayer.svg"
 }
