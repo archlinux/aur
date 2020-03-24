@@ -1,13 +1,13 @@
 pkgbase = apg
 	pkgdesc = Automated Password Generator.
 	pkgver = 2.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.adel.nursat.kz/apg/index.shtml
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = https://web.archive.org/web/20070609184004if_/http://www.adel.nursat.kz/apg/download/apg-2.2.3.tar.gz
-	md5sums = 3b3fc4f11e90635519fe627c1137c9ac
+	source = apg-2.2.3.tar.gz::https://github.com/buzo-ffm/apg/archive/v2.2.3.tar.gz
+	sha256sums = f2d4285947500afff32a045c0931d2712e814b8f6c0b9d5fa766c71c4a9e58d7
 
 pkgname = apg
 

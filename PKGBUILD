@@ -6,14 +6,14 @@
 
 pkgname=apg
 pkgver=2.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Automated Password Generator."
 arch=(x86_64)
 url="http://www.adel.nursat.kz/apg/index.shtml"
 license=('custom')
 depends=('glibc')
-source=(https://web.archive.org/web/20070609184004if_/http://www.adel.nursat.kz/apg/download/$pkgname-$pkgver.tar.gz)
-md5sums=('3b3fc4f11e90635519fe627c1137c9ac')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/buzo-ffm/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('f2d4285947500afff32a045c0931d2712e814b8f6c0b9d5fa766c71c4a9e58d7')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
