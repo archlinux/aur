@@ -1,7 +1,5 @@
 [Unit]
 Description=台灣健保卡網路註冊憑證元件 (National Health Insurance IC Card)
-Requires=pcscd.service
-After=pcscd.service
 
 [Service]
 Type=simple
