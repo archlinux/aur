@@ -1,0 +1,15 @@
+[Unit]
+Description=Filebin user cronjob
+
+[Service]
+User=http
+Group=http
+
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=read-only
+ProtectSystem=strict
+NoNewPrivileges=yes
+
+Type=oneshot
+ExecStart=/usr/bin/php /usr/share/webapps/filebin/index.php user cron

@@ -1,16 +1,18 @@
 post_install() {
 	echo "-------------------------------------------------------------------------------"
-	echo "run check_deps.php to make sure all dependecies are installed"
-	echo "update 'open_basedir' in php's config to include '/tmp',
-	'/usr/share/webapps/filebin' and '/etc/webapps/filebin'"
-	echo "enable exif, phar and any of mysql, mysqli, pgsql, pdo_mysql or pdo_pgsql for database access"
-	echo "edit the files in '/etc/webapps/filebin'"
-	echo "do not edit config.php! use config-local.php to override it when needed"
-	echo "add '/usr/share/webapps/filebin/crontab' to the user's crontab"
-	echo "run 'php index.php tools update_database' to initialize your database'"
-	echo "run 'php index.php user add_user' to add your first user"
-	echo "additional information can be found in '/usr/share/webapps/filebin/INSTALL'"
-	echo "there is a sample nginx configuration file in '/usr/share/webapps/filebin'"
+	echo "Run check_deps.php to make sure all dependecies are installed."
+	echo ""
+	echo "Update 'open_basedir' in php's config to include '/tmp', '/usr/share/webapps/filebin' and '/etc/webapps/filebin' (sample php-fpm config includes that)."
+	echo "Enable exif, phar and any of mysql, mysqli, pgsql, pdo_mysql or pdo_pgsql for database access."
+	echo "Edit the files in '/etc/webapps/filebin'."
+	echo "Run 'php index.php tools update_database' to initialize your database."
+	echo "Run 'php index.php user add_user' to add your first user."
+
+	echo "Additional information can be found in '/usr/share/webapps/filebin/INSTALL'."
+        echo ""
+	echo "For nginx and php-fpm there are sample configuration files in '/usr/share/webapps/filebin'."
+        echo ""
+	echo "Additionally you should enable 'filebin-user-cron.timer' and 'filebin-user-cron.timer'."
 	echo "-------------------------------------------------------------------------------"
 
 }

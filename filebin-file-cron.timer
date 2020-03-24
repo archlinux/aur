@@ -1,0 +1,9 @@
+[Unit]
+Description=Run filebin file cron every ten minutes
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target

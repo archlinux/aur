@@ -1,0 +1,16 @@
+[Unit]
+Description=Filebin file cronjob
+
+[Service]
+User=http
+Group=http
+
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=read-only
+ProtectSystem=strict
+NoNewPrivileges=yes
+ReadWritePaths=-/usr/share/webapps/filebin/data/uploads
+
+Type=oneshot
+ExecStart=/usr/bin/php /usr/share/webapps/filebin/index.php file cron
