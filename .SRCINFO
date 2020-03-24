@@ -1,6 +1,6 @@
 pkgbase = quantlib
 	pkgdesc = A free/open-source library for quantitative finance.
-	pkgver = 1.17
+	pkgver = 1.18
 	pkgrel = 1
 	url = http://quantlib.org
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = quantlib
 	depends = boost-libs
 	depends = sh
 	options = !libtool
-	source = Quantlib-1.17.tar.gz::https://bintray.com/quantlib/releases/download_file?file_path=QuantLib-1.17.tar.gz
-	sha256sums = 77443c3f9e9da3130ce0b2bce739928c14089f70d1e8abcf7dfad0adb40a84fb
+	source = Quantlib-1.18.tar.gz::https://bintray.com/quantlib/releases/download_file?file_path=QuantLib-1.18.tar.gz
+	sha256sums = d5048e14f2b7ea79f0adee08b2cbcee01b57b9cc282f60225ff4fcfc614c7ebc
 
 pkgname = quantlib
 
