@@ -1,0 +1,23 @@
+pkgbase = bixby-studio
+	pkgdesc = Bixby Developer Studio
+	pkgver = 7.13.0_r20d.15375
+	pkgrel = 1
+	url = https://bixbydevelopers.com/
+	arch = x86_64
+	license = commercial
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://bixby-ide.s3.amazonaws.com/stable-c4f5c975-1d91-4065-b661-633de7275e11/BixbyStudio-7.13.0-r20d.15375-linux.deb
+	md5sums_x86_64 = e5ac608571d13473e6d046e6f1ae4ad0
+
+pkgname = bixby-studio
+
