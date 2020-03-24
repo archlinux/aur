@@ -1,0 +1,14 @@
+pkgbase = legit
+	pkgdesc = Add licenses to projects at the command line
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/captainsafia/legit
+	arch = any
+	license = MIT
+	makedepends = npm
+	noextract = v3.0.1.tar.gz
+	source = https://github.com/captainsafia/legit/archive/v3.0.1.tar.gz
+	md5sums = 3954bd2dd6cd78c070716788a10cb633
+
+pkgname = legit
+
