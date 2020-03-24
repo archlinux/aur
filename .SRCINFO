@@ -1,7 +1,7 @@
 pkgbase = lib32-pcsclite
 	pkgdesc = PC/SC Architecture smartcard middleware library (for proprietary 32-bit drivers)
 	pkgver = 1.8.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pcsclite.apdu.fr/
 	arch = x86_64
 	license = BSD
