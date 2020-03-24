@@ -2,9 +2,9 @@
 
 pkgname=mplayer2-build-git
 pkgver=2.0.728.g2c378c71a
-pkgrel=1
+pkgrel=2
 pkgdesc="A movie player for linux (uses statically linked libav). (GIT version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('a52dec'
          'desktop-file-utils'
          'directfb'
@@ -69,6 +69,7 @@ source=('https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.x
         'libquvi-0.9.patch'
         'samba-4.0.patch'
         'vo_gl_locale_fix.patch'
+        'mplayer.svg::https://upload.wikimedia.org/wikipedia/commons/8/81/MPlayer.svg'
         'patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co'
         'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co'
         'patch-libvo_vo_giflib.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libvo_vo_gif89a.c?view=co'
@@ -85,6 +86,7 @@ sha256sums=('f1d17397bbdfcff2220d8b4bc17e7de5b78488736e21dca2df0d8a3216c85910'
             'b20562a1d485a61dbb6411305841ac113311a7021a70f8e13ad118af0cfe4193'
             'a420455ed4a791ef8514cc88b7f67130a279580447c9178b3066c0826ddc1519'
             '8cf89faaa442dafa3430a604050e29b20435c7402a29a13d0a385c38f1556c7e'
+            '2ad29de9705910a24865c7f36768ff11e0e4d3f1c4e4f96c3c6d6fffda30c340'
             '4117a80e11039d63c93a537901feaa952c275b85a5f5fc84ac56f38d820a25e1'
             '74894f00d3f9ff20d0721b4a1d04dd9313167c884a983d19dba9c2aa1c237254'
             '070b10bad1aa84ed78e15f7500788a7ab536c955c60cbbd330ec19dd86743439'
@@ -106,12 +108,17 @@ prepare() {
 
 
   # Install language sources to "i18n"
-  bsdtar -xf ../mplayer2-2.0.tar.xz mplayer2-2.0/po
-  rm -fr mplayer/po
-  mv mplayer2-2.0/po mplayer/po
-  rm -fr mplayer2-2.0
+  (rm -fr mplayer/po
+  mkdir -p mplayer/po
+  cd mplayer
+  bsdtar --strip-components=1 -xf "${srcdir}/mplayer2-2.0.tar.xz" mplayer2-2.0/po
+  )
 
   cd mplayer
+
+  # Fix .desktop
+  sed -e 's|gmplayer|mplayer|' -e 's|GTK;||' -i etc/mplayer.desktop
+  echo 'NoDisplay=true' >> etc/mplayer.desktop
 
   # Patch to use pkg-config method to get libdvdread/libdvdnav libs/headers info instead dvdnav-config/dvdread-config
   patch -p1 -i "${srcdir}/use-pkg-config-for-dvdnav_dvdread.patch"
@@ -166,7 +173,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 mplayer/etc/{codecs,input,example}.conf "${pkgdir}/etc/mplayer/"
   install -Dm644 mplayer/etc/mplayer.desktop "${pkgdir}/usr/share/applications/mplayer.desktop"
-  install -Dm644 mplayer/etc/mplayer.xpm "${pkgdir}/usr/share/pixmaps/mplayer.xpm"
-  sed -e 's|gmplayer|mplayer|' -e 's|GTK;||' -i "${pkgdir}/usr/share/applications/mplayer.desktop"
-  echo 'NoDisplay=true' >> "${pkgdir}/usr/share/applications/mplayer.desktop"
+  install -Dm644 "${srcdir}/mplayer.svg" "${pkgdir}/usr/share/pixmaps/mplayer.svg"
 }
