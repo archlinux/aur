@@ -2,12 +2,13 @@
 
 pkgname=trivy
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI"
 arch=("x86_64" "i686")
 url="https://github.com/aquasecurity/trivy"
 license=("Apache")
-depends=("device-mapper" "rpm")
+depends=("device-mapper")
+optdepends=("rpm: RHEL/CentOS based image support")
 makedepends=("go-pie" "btrfs-progs")
 provides=('trivy')
 conflicts=('trivy')
