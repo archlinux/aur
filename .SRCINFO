@@ -2,15 +2,15 @@
 # Sun Feb 18 11:05:16 UTC 2018
 pkgbase = winscp
 	pkgdesc = Free SFTP, SCP and FTP client for Wine
-	pkgver = 5.15.5
-	pkgrel = 2
+	pkgver = 5.17.2
+	pkgrel = 1
 	url = http://winscp.net/
 	arch = any
 	license = GPL
 	makedepends = unzip
 	depends = wine
 	depends = hicolor-icon-theme
-	source = http://downloads.sourceforge.net/project/winscp/WinSCP/5.15.5/WinSCP-5.15.5-Portable.zip
+	source = http://downloads.sourceforge.net/project/winscp/WinSCP/5.12.2/WinSCP-5.17.2-Portable.zip
 	source = winscp
 	source = winscp.desktop
 	source = winscp-16.png
@@ -21,7 +21,7 @@ pkgbase = winscp
 	source = winscp-128.png
 	source = winscp-256.png
 	source = winscp_default_configuration.ini
-	sha256sums = aaa8fa28dfa484eae974acbc4d0c327c42e9688c35a2193a17d8ea7aeb3fcf58
+	sha256sums = 6ad75019d9b3094b3d768d02eec7f461fd82ba4faa0af8ca88c104c15951d5c1
 	sha256sums = 322f3f8d4a29a2e5a40c057ffadf6566ff21233b5f8367a749618e5b4d845fc9
 	sha256sums = 67eba469b8f34ccc2342ea54b14601f13a245af5e0d4ea574786efdd33fc285c
 	sha256sums = 0c28369a4b35713ade79a158b4ee0e28576561c7ba0b8766dbbc0f63d0748ea2
