@@ -2,7 +2,7 @@
 pkgbase=openss7-git
 _pkgbase=openss7
 pkgname=('openss7-git' 'openss7-modules-git' 'openss7-modules-lts-git' 'openss7-java-git')
-pkgver=1.1.8.467.g24ee9de09
+pkgver=1.1.8.468.g7c7fc62a9
 pkgrel=1
 pkgdesc="OpenSS7 Fast-STREAMS and Protocol Suites"
 arch=('x86_64' 'i686')
@@ -43,7 +43,7 @@ build() {
   _cache_file=../$CARCH-config.cache
 
   _knm="-lts"
-  _kvd="5.4.26-1"
+  _kvd="5.4.27-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -95,7 +95,7 @@ build() {
   cd "$srcdir/openss7-modules-lts-git"
 
   _knm="-lts"
-  _kvd="5.4.26-1"
+  _kvd="5.4.27-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -150,7 +150,7 @@ build() {
   cd "$srcdir/openss7-modules-git"
 
   _knm=""
-  _kvd="5.5.10-arch1-1"
+  _kvd="5.5.11-arch1-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -243,7 +243,7 @@ package_openss7-git() {
 
 package_openss7-modules-git() {
   _knm=""
-  _kvd="5.5.10-arch1-1"
+  _kvd="5.5.11-arch1-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -295,7 +295,7 @@ package_openss7-modules-git() {
 
 package_openss7-modules-lts-git() {
   _knm="-lts"
-  _kvd="5.4.26-1"
+  _kvd="5.4.27-1"
   _kvo=""
   _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
   _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
