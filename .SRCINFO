@@ -1,0 +1,13 @@
+pkgbase = ezpad
+	pkgdesc = Driver for EZpad smart card readers
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://www.castlestech.com/
+	arch = x86_64
+	license = unknown
+	depends = lib32-pcsclite
+	source = ezpad-1.5.3.zip::https://www.castlestech.com/wp-content/uploads/2016/08/201251014271670555.zip
+	sha256sums = 82465c20d5aa7ea7e91c7fb32df4d7832a76dda506d2735fb2df5bde7360c2b2
+
+pkgname = ezpad
+
