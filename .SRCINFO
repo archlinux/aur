@@ -1,0 +1,27 @@
+pkgbase = ephemeral
+	pkgdesc = A private-by-default, always-incognito browser for elementary OS.
+	pkgver = 6.3.1
+	pkgrel = 1
+	url = https://github.com/cassidyjames/ephemeral
+	install = ephemeral.install
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = dconf
+	depends = desktop-file-utils
+	depends = glib2>=2.49.2
+	depends = granite>=5.2.3
+	depends = gtk3>=3.22.29
+	depends = hicolor-icon-theme
+	depends = libdazzle>=3.25.3
+	depends = libgee>=0.8.3
+	depends = libsoup>=2.32.2
+	depends = webkit2gtk>=2.15.4
+	source = ephemeral_6.3.1.tar.gz::https://github.com/cassidyjames/ephemeral/archive/6.3.1.tar.gz
+	source = disable_paid_and_native_infobars.patch
+	sha512sums = b0663bf63906e08c15f3e9864ed8920af197fff84139d6e829bf3389bae33cadfa486b13484dd9c3581143d543dbef6430b87335350988b774901a48a57d062f
+	sha512sums = f02f2a25b9acffc52df02322813d0536ea823fdc5deec234b4e49e9441054421d8c2621911b64acf78cc2e6f156d6193e8b100b780e76fd4e0e7b554e1c83b16
+
+pkgname = ephemeral
+
