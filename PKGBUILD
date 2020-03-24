@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <marius {cat} varden {dog} info>
 pkgname=hauk-server
-pkgver=1.6
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="PHP backend for Hauk, a self-hosted real-time location sharing app"
 arch=('any')
 url="https://github.com/bilde2910/Hauk"
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("https://github.com/bilde2910/Hauk/archive/v${pkgver}.tar.gz"
         "apache-example.conf"
         "nginx-example.conf")
-sha256sums=('5d8bc17bf2b51d6745fd1234a6a3ce9d1937eae23c575875dbe804741a463c81'
+sha256sums=('53372c074ed41c54f09e72db71959f6b397f7e4145528f3f06d471d4569b12b7'
             'e20c609c08732ca47f198e7a247e2b3c95ffd66d3d71d00fe0351a6ebbf74915'
             '9777798bf9ffd4ec65fcb0dfcc2aab26d9288a6ae9e7cec410c210b5e001b440')
 options=(!strip)
