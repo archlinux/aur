@@ -11,4 +11,5 @@ EOF
 
 post_install() {
   install -dm 750 /var/lib/jackal/
+  sed -i "s/dialback_secret: .*/dialback_secret: $(< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c64)/g" /etc/jackal/jackal.yml
 }
