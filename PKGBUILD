@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=onedrive_tray
 pkgname=$_pkgname-git
-pkgver=r14.90313c0
+pkgver=r18.0058bfb
 pkgrel=1
 pkgdesc="OneDrive system tray program"
 arch=('i686' 'x86_64')
