@@ -3,7 +3,7 @@
 
 pkgname=bbswitch-zen
 pkgver=0.8
-pkgrel=11
+pkgrel=12
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
