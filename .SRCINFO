@@ -14,6 +14,7 @@ pkgbase = flowee
 	depends = boost-libs
 	depends = libevent
 	depends = openssl
+	optdepends = miniupnpc
 	provides = flowee-hub
 	backup = etc/flowee/flowee.conf
 	source = https://gitlab.com/FloweeTheHub/thehub/-/archive/2020.02.1/thehub-2020.02.1.tar.gz
