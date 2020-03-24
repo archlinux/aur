@@ -1,8 +1,8 @@
 post_install() {
 	echo "-------------------------------------------------------------------------------"
-	echo "run install.php to make sure all dependecies are installed"
-	echo "update 'open_base_dir' in php's config to include '/usr/share/webapps/filebin' and
-	'/etc/webapps/filebin'"
+	echo "run check_deps.php to make sure all dependecies are installed"
+	echo "update 'open_basedir' in php's config to include '/tmp',
+	'/usr/share/webapps/filebin' and '/etc/webapps/filebin'"
 	echo "enable exif, phar and any of mysql, mysqli, pgsql, pdo_mysql or pdo_pgsql for database access"
 	echo "edit the files in '/etc/webapps/filebin'"
 	echo "do not edit config.php! use config-local.php to override it when needed"
@@ -16,5 +16,5 @@ post_install() {
 }
 
 post_upgrade() {
-  php /usr/share/webapps/filebin/index.php tools update_database  
+  php /usr/share/webapps/filebin/index.php tools update_database
 }
