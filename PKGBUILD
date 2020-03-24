@@ -9,6 +9,7 @@ url="https://flowee.org/"
 license=('GPL')
 depends=('boost-libs' 'libevent' 'openssl')
 makedepends=('boost' 'cmake' 'autoconf' 'automake' 'pkgconf')
+optdepends=('miniupnpc')
 provides=('flowee-hub')
 backup=("etc/flowee/flowee.conf")
 install=flowee.install
