@@ -1,8 +1,8 @@
 pkgbase = linux-sfh
 	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
-	pkgver = 5.5.10.arch1
+	pkgver = 5.5.11.arch1
 	pkgrel = 1
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.10-arch1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.5.11-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-sfh
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.10-arch1
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.11-arch1
 	source = amd-sfh-v4.2.patch::https://patchwork.kernel.org/patch/11407747/raw/
 	source = amd-sfh-v4.3.patch::https://patchwork.kernel.org/patch/11407749/raw/
 	source = amd-sfh-v4.4.patch::https://patchwork.kernel.org/patch/11407753/raw/
