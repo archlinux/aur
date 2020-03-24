@@ -1,33 +1,33 @@
 pkgbase = linux-lts-versioned-bin
 	pkgdesc = Repackaging of the Arch kernel with a unique package name for each version
-	pkgver = 5.4.26
+	pkgver = 5.4.27
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
 	options = !strip
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-5.4.26-1-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-headers-5.4.26-1-x86_64.pkg.tar.zst
-	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-docs-5.4.26-1-x86_64.pkg.tar.zst
-	sha256sums = 2d677c5675a7b8abbc6181cc50a063940d8f7ea1824669ef5d33d57c01ebc2aa
-	sha256sums = e47e88dcfcd3c371b69d4063f8a9cba87fa26a63c343c979fb44c28f95a7645f
-	sha256sums = 7fdf3e5fcbc19af01ae54c28fa4c0f224edc2650506853e35da9758b96eebae5
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-5.4.27-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-headers-5.4.27-1-x86_64.pkg.tar.zst
+	source = http://arch.mirror.constant.com/core/os/x86_64/linux-lts-docs-5.4.27-1-x86_64.pkg.tar.zst
+	sha256sums = 55b783f5cffb7b867e836ebe8b1137079faa30f37b324e5674c38b766e49208d
+	sha256sums = e2c2095287328b95de7425487fa19a7f5238dda4b83d09aeeff9e15babf0527b
+	sha256sums = bc1d21887b5b254eeecd6d3e5d7d3da7b141026ad200760c4d87f3e81dc7c06d
 
 pkgname = linux-lts-versioned-bin
-	pkgdesc = Dummy package depending on linux5.4.26-1-lts-bin
-	depends = linux5.4.26-1-lts-bin
+	pkgdesc = Dummy package depending on linux5.4.27-1-lts-bin
+	depends = linux5.4.27-1-lts-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-lts-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.4.26-1-lts-headers-bin
-	depends = linux5.4.26-1-lts-headers-bin
+	pkgdesc = Dummy package depending on linux5.4.27-1-lts-headers-bin
+	depends = linux5.4.27-1-lts-headers-bin
 
 pkgname = linux-lts-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.4.26-1-lts-docs-bin
-	depends = linux5.4.26-1-lts-docs-bin
+	pkgdesc = Dummy package depending on linux5.4.27-1-lts-docs-bin
+	depends = linux5.4.27-1-lts-docs-bin
 
-pkgname = linux5.4.26-1-lts-bin
-	pkgdesc = The Linux kernel and modules, version 5.4.26-1-lts
+pkgname = linux5.4.27-1-lts-bin
+	pkgdesc = The Linux kernel and modules, version 5.4.27-1-lts
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -35,11 +35,11 @@ pkgname = linux5.4.26-1-lts-bin
 	optdepends = linux-firmware: firmware images needed for some devices
 	conflicts = linux-lts
 
-pkgname = linux5.4.26-1-lts-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.26-1-lts
+pkgname = linux5.4.27-1-lts-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.4.27-1-lts
 	conflicts = linux-lts-headers
 
-pkgname = linux5.4.26-1-lts-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.4.26-1-lts
+pkgname = linux5.4.27-1-lts-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.4.27-1-lts
 	conflicts = linux-lts-docs
 
