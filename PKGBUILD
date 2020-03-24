@@ -1,5 +1,8 @@
-# Original Author: Johannes Sauer <joh.sauer(at)gmail(dot)com>
-# Maintainer: Danilo Bargen <aur at dbrgn dot ch>
+#!/usr/hint/bash
+# Maintainer  : bartus <arch-user-repo(at)bartus.33mail.com>
+# Contributor : Johannes Sauer <joh.sauer(at)gmail(dot)com>
+# Contributor : Danilo Bargen <aur at dbrgn dot ch>
+# shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
 name=cloudcompare
 pkgname=${name}
@@ -10,8 +13,8 @@ pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('qt5-base' 'qt5-tools' 'qt5-svg' 'glu' 'glew' 'mesa' 'vxl' 'ffmpeg' 'cgal' 'pdal')
-makedepends=('git' 'cmake' 'pcl' 'libharu' 'proj' 'python' 'doxygen' 'laz-perf')
+depends=('cgal' 'ffmpeg' 'glew' 'glu' 'mesa' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'vxl')
+makedepends=('cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
         CloudCompare.desktop
@@ -21,21 +24,16 @@ md5sums=('SKIP'
          'b6dcb0dee15cc67011166a2fc774c5ef')
 
 prepare() {
-  cd ${srcdir}/${name}
-  git submodule update --init --recursive
+  git -C "${srcdir}/${name}" submodule update --init --recursive
 }
 
 pkgver() {
-  cd ${srcdir}/${name}
-  git describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  git -C "${srcdir}/${name}" describe --tags | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${name}
-  
-  mkdir -p build && cd build
- 
-  cmake .. \
+# shellcheck disable=SC2191
+  CMAKE_FLAGS=(
         -Wno-dev \
         -DCMAKE_CXX_STANDARD=14 \
         -DCMAKE_CXX_FLAGS=-fpermissive \
@@ -70,23 +68,24 @@ build() {
         -DINSTALL_QBROOM_PLUGIN=true \
         -DINSTALL_QHOUGH_NORMALS_PLUGIN=true \
         -DEIGEN_ROOT_DIR=/usr/include/eigen3 
-  make
+  )
+  cmake -B build -S "${srcdir}/${name}" -G Ninja "${CMAKE_FLAGS[@]}"
+# shellcheck disable=SC2086 # allow slitting for MAKEFLAGS carrying multiple flags.
+  ninja -C build ${MAKEFLAGS:--j1}
 }
 
 package() {
-  cd ${srcdir}/${name}/build
-  make DESTDIR="$pkgdir/" install
+  DESTDIR="$pkgdir" ninja -C build install
 
   # install *.desktop files
-  install -D -m 644 ${srcdir}/*.desktop -t ${pkgdir}/usr/share/applications/
+  install -D -m 644 "${srcdir}"/*.desktop -t "${pkgdir}"/usr/share/applications/
 
   # copy icons for *.desktop files
-  cd ${srcdir}/${name}
   for size in 16 32 64 256; do
-    install -D -m 644 qCC/images/icon/cc_icon_${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cc_icon.png
-    install -D -m 644 qCC/images/icon/cc_viewer_icon_${size}.png ${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/cc_viewer_icon.png
+    install -D -m 644 ${name}/qCC/images/icon/cc_icon_${size}.png "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/cc_icon.png
+    install -D -m 644 ${name}/qCC/images/icon/cc_viewer_icon_${size}.png "${pkgdir}"/usr/share/icons/hicolor/${size}x${size}/apps/cc_viewer_icon.png
   done 
-  install -D -m 644 qCC/images/icon/cc_icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/cc_icon.svg
-  install -D -m 644 qCC/images/icon/cc_viewer_icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/cc_viewer_icon.svg
+  install -D -m 644 ${name}/qCC/images/icon/cc_icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/cc_icon.svg
+  install -D -m 644 ${name}/qCC/images/icon/cc_viewer_icon.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/cc_viewer_icon.svg
 }
 # vim:set sw=2 ts=2 et:
