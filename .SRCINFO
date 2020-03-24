@@ -1,6 +1,6 @@
 pkgbase = versionist
 	pkgdesc = Flexible CHANGELOG generation toolkit that adapts to your commit conventions
-	pkgver = 5.5.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://github.com/balena-io/versionist
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = versionist
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs>=4.0.0
-	noextract = versionist-5.5.0.tgz
-	source = http://registry.npmjs.org/versionist/-/versionist-5.5.0.tgz
-	sha256sums = cb00b1e6e37fa481dceb3b7ea93e79891fefb3cad5889c2f86cfb6455b56ef4e
+	noextract = versionist-6.1.0.tgz
+	source = http://registry.npmjs.org/versionist/-/versionist-6.1.0.tgz
+	sha256sums = 78890ca9fa4e323d4f226c11a87f0df33ced66284c7b78c0b1fc646eb80d5f1b
 
 pkgname = versionist
 
