@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=zplugins.lv2-git
-pkgdesc="Zrythm plugins for audio, MIDI and CV, including ZLFO, ZSaw, ZVerb and ZChords (debug)"
+pkgdesc="Zrythm plugins for audio, MIDI and CV, including ZLFO, ZSaw, ZVerb and ZChordz"
 pkgver=r36.444ae2d
 pkgrel=1
 epoch=
@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/zrythm/ZPlugins"
 license=(AGPL3+)
 groups=(lv2-plugins)
-depends=("librsvg" "cairo" "librsvg")
+depends=("lv2" "librsvg" "cairo" "librsvg")
 makedepends=(lv2lint)
 checkdepends=()
 optdepends=()

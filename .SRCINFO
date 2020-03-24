@@ -1,5 +1,5 @@
 pkgbase = zplugins.lv2-git
-	pkgdesc = Zrythm plugins for audio, MIDI and CV, including ZLFO, ZSaw, ZVerb and ZChords (debug)
+	pkgdesc = Zrythm plugins for audio, MIDI and CV, including ZLFO, ZSaw, ZVerb and ZChordz
 	pkgver = r36.444ae2d
 	pkgrel = 1
 	url = https://github.com/zrythm/ZPlugins
@@ -7,6 +7,7 @@ pkgbase = zplugins.lv2-git
 	groups = lv2-plugins
 	license = AGPL3+
 	makedepends = lv2lint
+	depends = lv2
 	depends = librsvg
 	depends = cairo
 	depends = librsvg
