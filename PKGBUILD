@@ -1,39 +1,45 @@
 # Maintainer: Aksel Alpay <aksel.alpay at uni-heidelberg dot de>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+
 pkgname=hipsycl-rocm-git
-pkgver=0.7.9
+pkgver=r500.5f30bc1
 pkgrel=1
-pkgdesc="SYCL implementation over CUDA/HIP for AMD devices."
+pkgdesc="Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA"
 arch=("x86_64")
 url="https://github.com/illuhad/hipSYCL"
-makedepends=("cmake")
-provides=("hipSYCL" "SYCL")
 license=("BSD")
-depends=("llvm" "clang" "boost" "openmp")
-
-source=('hipSYCL::git+https://github.com/illuhad/hipSYCL.git')
-
-md5sums=("SKIP")
+provides=(hipsycl-rocm hipsycl sycl)
+makedepends=(cmake)
+depends=(llvm clang python boost hipcpu openmp hip-hcc rocm)
+_pkgname=hipsycl
+source=("${_pkgname}::git+https://github.com/illuhad/hipSYCL.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/hipSYCL"
-  git log -1 --format=%cd.%h --date=short|tr -d -
+    cd "${_pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/hipSYCL/contrib/HIP"
-  git submodule init
-  git submodule update
+    # Delete the install lines for contrib hip and hipcpu
+    sed -i '/contrib/d' ${srcdir}/${_pkgname}/CMakeLists.txt
 }
 
 build() {
-    mkdir -p ${srcdir}/hipSYCL/build
-    cd "${srcdir}/hipSYCL/build"
-    cmake -DCMAKE_BUILD_TYPE=Release \
+    mkdir -p ${srcdir}/${_pkgname}/build
+    cd ${srcdir}/${_pkgname}/build
+
+    cmake .. -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/opt/hipSYCL/ROCm \
-          -DWITH_CPU_BACKEND=ON -DWITH_ROCM_BACKEND=ON ..
+          -DWITH_CUDA_BACKEND=OFF \
+          -DWITH_ROCM_BACKEND=ON \
+          -DWITH_CPU_BACKEND=ON
+
+    make
+
 }
 
 package() {
-    cd "${srcdir}/hipSYCL/build"
-    VERBOSE=1 DESTDIR=${pkgdir} make install
+    cd "${srcdir}/${_pkgname}/build"
+    make DESTDIR=${pkgdir} install
 }

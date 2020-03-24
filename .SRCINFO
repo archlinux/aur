@@ -1,6 +1,6 @@
 pkgbase = hipsycl-rocm-git
-	pkgdesc = SYCL implementation over CUDA/HIP for AMD devices.
-	pkgver = 0.7.9
+	pkgdesc = Implementation of SYCL 1.2.1 over AMD HIP/NVIDIA CUDA
+	pkgver = r500.5f30bc1
 	pkgrel = 1
 	url = https://github.com/illuhad/hipSYCL
 	arch = x86_64
@@ -8,12 +8,17 @@ pkgbase = hipsycl-rocm-git
 	makedepends = cmake
 	depends = llvm
 	depends = clang
+	depends = python
 	depends = boost
+	depends = hipcpu
 	depends = openmp
-	provides = hipSYCL
-	provides = SYCL
-	source = hipSYCL::git+https://github.com/illuhad/hipSYCL.git
-	md5sums = SKIP
+	depends = hip-hcc
+	depends = rocm
+	provides = hipsycl-rocm
+	provides = hipsycl
+	provides = sycl
+	source = hipsycl::git+https://github.com/illuhad/hipSYCL.git
+	sha256sums = SKIP
 
 pkgname = hipsycl-rocm-git
 
