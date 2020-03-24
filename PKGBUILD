@@ -7,7 +7,7 @@
 
 pkgname="google-cloud-sdk"
 pkgver=285.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
 license=("Apache")
@@ -32,10 +32,17 @@ sha256sums=('39d9424c5f90e3d27fedbf3bf1a6040dc0ad3ce773f5d2881ff6e9a676d17730'
             'ff6065ce2e54ac654605bd5fe554313b1d0def2c31ce56ff39429098dd1e39fe')
 
 prepare() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}"
 
-  for f in ./../*.patch; do
-    patch -p1 -i $f > /dev/null 2>&1 || ( echo "failed to apply patch: $(basename $f)" && exit 1 )
+  for f in "${source[@]}"; do
+    [[ "$f" =~ \.patch$ ]] && \
+    ( \
+      patch -p1 -i "${srcdir}/${f}" > /dev/null 2>&1 ||\
+      ( \
+        echo "failed to apply patch: $(basename ${f})" && \
+        exit 1 \
+      ) \
+    )
   done
 }
 
