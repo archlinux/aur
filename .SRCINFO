@@ -1,7 +1,7 @@
 pkgbase = nautilus-copy-path
 	pkgdesc = Extension for Nautilus to copy files/dir path or name
 	pkgver = 1.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chr314/nautilus-copy-path
 	install = nautilus-copy-path.install
 	arch = any

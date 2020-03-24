@@ -2,13 +2,13 @@
 
 pkgname=nautilus-copy-path
 pkgver=1.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Extension for Nautilus to copy files/dir path or name"
 arch=('any')
 url="https://github.com/chr314/nautilus-copy-path"
 license=('MIT')
 depends=('python-nautilus' 'python-gobject')
-install=nautilus-copy-path.install
+install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chr314/nautilus-copy-path/archive/$pkgver.tar.gz")
 md5sums=('e05e630b73b9c7c246e42eee9a852aae')
 
