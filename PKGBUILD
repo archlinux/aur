@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-ufoprocessor
 _name=ufoProcessor
-pkgver=1.8
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Python package based on fontTools.designSpaceLib for processing and generating UFO files."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-fontparts' 'python-mutatormath')
 makedepends=('python-setuptools-scm' 'python-wheel')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.zip")
-sha256sums=('ee0ceaa07446c37fa68c6bc1f31716d37b9408c4cf9f782441054a6a99ac7264')
+sha256sums=('baa8bd9bbbb11ce004647eb1906105f4d5bfdbc1b3388ca4d36fab57950a415b')
 
 build() {
 	cd "$_name-$pkgver"
