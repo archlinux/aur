@@ -1,0 +1,15 @@
+pkgbase = pantum-p1000-p2000-p3000-m5100-m5200-ppd-driver
+	pkgdesc = PPDs, drivers, for Pantum P1000, P2000, P3000, M5100, M5200 printers
+	pkgver = 1.00_1
+	pkgrel = 4
+	url = http://global.pantum.com/global/
+	arch = x86_64
+	license = proprietary
+	makedepends = unzip
+	depends = cups
+	conflicts = pantum-p2000-driver
+	source = http://global.pantum.com/global/wp-content/uploads/2016/01/Pantum-P2000-Series-Linux-DriverUbutun12.04V1.00-1.zip
+	md5sums = 0024556a55eacef3d63ed4478ea1490d
+
+pkgname = pantum-p1000-p2000-p3000-m5100-m5200-ppd-driver
+
