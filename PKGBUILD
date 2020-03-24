@@ -1,4 +1,5 @@
 # Maintainer: Valentin <tarasov@trueconf.ru>
+pkgbase='trueconf-client'
 pkgname='trueconf'
 pkgver='7.5.1.27'
 pkgrel='1'
