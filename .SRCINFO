@@ -1,7 +1,7 @@
 pkgbase = covid19-cli-git
 	pkgdesc = Corona Virus (Covid 19) BASH Tracking CLI
-	pkgver = 0.1.6.r0.g0ea469c
-	pkgrel = 2
+	pkgver = 0.2.0.r0.g6632ea4
+	pkgrel = 1
 	url = https://github.com/garrylachman/covid19-cli
 	arch = any
 	license = MIT

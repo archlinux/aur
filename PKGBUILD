@@ -1,8 +1,8 @@
 # Maintainer: Simon Tas <simon.tas.st@gmail.com>
 pkgname="covid19-cli-git"
 _pkgname="covid19-cli"
-pkgver=0.1.6.r0.g0ea469c
-pkgrel=2
+pkgver=0.2.0.r0.g6632ea4
+pkgrel=1
 pkgdesc="Corona Virus (Covid 19) BASH Tracking CLI"
 arch=('any')
 url="https://github.com/garrylachman/${_pkgname}"
@@ -18,13 +18,18 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+build() {
+    cd "$srcdir/${_pkgname}"
+    make build
+}
+
 package() {
     cd "$srcdir/${_pkgname}"
     
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
     
     install -dm755 "${pkgdir}/usr/bin"
-    install -Dm755 "${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
+    install -Dm755 "dist/${_pkgname}.sh" "$pkgdir/usr/bin/${_pkgname}"
 }
  
  
