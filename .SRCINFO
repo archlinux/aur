@@ -1,6 +1,6 @@
 pkgbase = amdgpu-clocks-git
 	pkgdesc = Simple script to control power states of amdgpu driven GPUs
-	pkgver = r14.4cfd488
+	pkgver = r28.02492e9
 	pkgrel = 1
 	url = https://github.com/sibradzic/amdgpu-clocks
 	arch = any
