@@ -6,7 +6,7 @@
 
 pkgname='electron-cash'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.0.13
+pkgver=4.0.14
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -53,7 +53,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Electron-Cash/Electron-Cash/archive/${pkgver}.tar.gz"
         "tox.ini.patch")
-sha256sums=('c7b5c9445bf27ec0e0b2b8f67da4cf5a90b36e89051651c363e2d88ab8d810f8'
+sha256sums=('f7aee5dace72e7f508d80a813cbaa92bc5d4d4c4be77d9f00b1edb21b77b882a'
             '39c85a1eec8fcdc7fa80d47ff464e023b092cc623dce7fd6f42abe547c017ecb')
 
 prepare() {
