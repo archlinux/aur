@@ -1,5 +1,5 @@
 pkgname=sz
-pkgver=2.1.6.0
+pkgver=2.1.8.3
 pkgrel=1
 pkgdesc="Error-bounded Lossy Data Compressor (for floating-point/integer datasets)"
 license=('custom')
@@ -8,20 +8,20 @@ url="https://collab.cels.anl.gov/display/ESR/SZ"
 depends=('zstd')
 makedepends=('cmake')
 source=("https://github.com/disheng222/SZ/archive/v${pkgver}.tar.gz")
-sha256sums=('6718434f2a5c669ce6b9715e43b5bdfc0e4d498ce04fd848d6798bcccd822dad')
+sha256sums=('be94f3c8ab03d6849c59a98e0ebf80816a6b8d07a1d762a4b285498acb2f3871')
 
 build() {
   cd SZ-$pkgver
+  mkdir -p build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_SKIP_INSTALL_RPATH=ON \
-        .
+        ..
   make
 }
 
 package() {
-  cd SZ-$pkgver
+  cd SZ-$pkgver/build
   make DESTDIR="$pkgdir" install
-  install -d "$pkgdir"/usr/include
 }
 
