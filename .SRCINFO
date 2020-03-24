@@ -1,12 +1,12 @@
 pkgbase = cotire
 	pkgdesc = CMake module to speed up builds. By fully automating techniques like precompiled header usage and single compilation unit builds for C and C++
-	pkgver = 1.8.1_3.16
+	pkgver = 1.8.1_3.17
 	pkgrel = 1
 	url = https://github.com/sakra/cotire
 	install = cotire.install
 	arch = any
 	license = custom
-	conflicts = cmake>=3.17
+	conflicts = cmake>=3.18
 	source = https://github.com/sakra/cotire/archive/cotire-1.8.1.tar.gz
 	md5sums = 1631c36ac920eb95944db9188068fccb
 
