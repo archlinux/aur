@@ -1,6 +1,6 @@
 pkgbase = python-nose-timer
 	pkgdesc = Timer plugin for nosetests
-	pkgver = 0.7.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/mahmoudimus/nose-timer
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-nose-timer
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-nose
-	source = git+https://github.com/mahmoudimus/nose-timer#tag=v0.7.5
+	source = git+https://github.com/mahmoudimus/nose-timer#tag=v1.0.0
 	sha256sums = SKIP
 
 pkgname = python-nose-timer
