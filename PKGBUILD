@@ -3,7 +3,7 @@
 pkgname=insomnia-src
 _name=insomnia
 pkgver=7.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform HTTP and GraphQL Client (Build from source)"
 url="https://github.com/Kong/insomnia"
 arch=('x86_64' 'i686')
@@ -59,5 +59,5 @@ package() {
         install -Dm644 $_name-$pkgver/packages/insomnia-app/build/static/icon.png "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/insomnia.png"
     done
 
-    install -Dm644 $_name-$pkgver/LICENSE $pkgdir/usr/share/licenses/$pkgname
+    install -Dm644 $_name-$pkgver/LICENSE $pkgdir/usr/share/licenses/$_name/LICENSE
 }
