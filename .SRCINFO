@@ -1,6 +1,6 @@
 pkgbase = python-hupper
 	pkgdesc = Integrated process monitor for developing servers
-	pkgver = 1.9.1
+	pkgver = 1.10.2
 	pkgrel = 1
 	url = https://github.com/Pylons/hupper
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = python-hupper
 	checkdepends = python-pytest-runner
 	makedepends = python-setuptools
 	depends = python
-	source = python-hupper-1.9.1.tar.gz::https://github.com/Pylons/hupper/archive/1.9.1.tar.gz
-	sha256sums = 91adcce2dbfeb43b18e1cee9b0a9bb7d92b2f064dd0e513abd0eb6092034adfc
+	source = python-hupper-1.10.2.tar.gz::https://github.com/Pylons/hupper/archive/1.10.2.tar.gz
+	sha256sums = d5f848171baa74d7592c79c8d423526f8ab807817f1f0bcfbda1396166cf6038
 
 pkgname = python-hupper
 
