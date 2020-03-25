@@ -1,12 +1,11 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
-# Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
 
-pkgname=trufont-git
-pkgver=0.6.3.r18.ge8d731e
+pkgname=trufont
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='A streamlined and hackable font editor'
 arch=('any')
-url="https://github.com/${pkgname%-git}/${pkgname%-git}"
+url='https://trufont.github.io'
 license=('GPL3' 'LGPL3')
 _pydeps=('appdirs'
          'booleanoperations'
@@ -29,26 +28,20 @@ _pydeps=('appdirs'
          'zopfli')
 depends=('python' "${_pydeps[@]/#/python-}")
 makedepends=('git' 'python-setuptools')
-source=("git+$url.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${pkgname%-git}"
-    git describe --tags --abbrev=7 --match="[0-9]*" HEAD |
-        sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.zip")
+sha256sums=('ae711220d89721d6535c809518c689279ccb2af01ebeeae0ffddab6ee19ae0be')
 
 build() {
-    cd "${pkgname%-git}"
+    cd "$pkgname-$pkgver"
 	python setup.py build
 }
 
 check() {
-    cd "${pkgname%-git}"
+    cd "$pkgname-$pkgver"
 	# python setup.py test
 }
 
 package() {
-    cd "${pkgname%-git}"
+    cd "$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
