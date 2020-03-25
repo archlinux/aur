@@ -3,20 +3,37 @@
 
 _gemname=pry
 pkgname=ruby-$_gemname
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='An IRB alternative and runtime developer console.'
 arch=(any)
 url='http://pryrepl.org'
 license=(MIT)
 depends=(ruby ruby-coderay ruby-method_source)
+checkdepends=(ruby-rspec ruby-rake ruby-bundler)
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha256sums=('c9bc4f2dffe767043bde6b2aad52aa24916b68727420bd38f34d860c7a383503')
+source=(https://github.com/pry/$_gemname/archive/v$pkgver.tar.gz)
+sha256sums=('aa347b8fb9cbe8b14ce5e9bb9229556a5bbce054e959f90abb939424b26d14c3')
+
+prepare() {
+  cd "${_gemname}-${pkgver}"
+  sed -i 's|~>|>=|g' "${_gemname}.gemspec"
+}
+
+# there's currently a bug in newer rspec-expectations
+# check() {
+#   cd "${_gemname}-${pkgver}"
+#   bundle exec rake
+# }
+
+build() {
+  cd "${_gemname}-${pkgver}"
+  gem build $_gemname.gemspec
+}
 
 package() {
+  cd "${_gemname}-${pkgver}"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
   gem install \
@@ -28,6 +45,6 @@ package() {
 
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 
-  install -Dm0644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" \
+  install -Dm0644 "$srcdir/$_gemname-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
