@@ -1,8 +1,8 @@
 [Trigger]
-Type = File
+Type = Path
 Operation = Install
 Operation = Upgrade
-Target = usr/lib/modules/*/vmlinuz
+Target = usr/lib/modules/*/pkgbase
 Target = usr/lib/dracut/*
 
 [Action]

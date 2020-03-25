@@ -1,19 +1,19 @@
 pkgbase = dracut-hook
-	pkgdesc = dracut hook for archlinux
-	pkgver = 0.3
-	pkgrel = 2
-	url = https://tackitt.net
+	pkgdesc = Install/remove hooks for dracut
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://dracut.wiki.kernel.org/index.php/Main_Page
 	arch = any
 	license = BSD
 	depends = dracut
 	source = dracut-install
 	source = dracut-remove
 	source = 90-dracut-install.hook
-	source = 90-dracut-remove.hook
-	md5sums = ca2782fe7bd5e5ec01ba1043df8db092
-	md5sums = d47474311fe65faf9358727f75526389
-	md5sums = 8fa0ed0a9aa50f2ac6525d3264f04d76
-	md5sums = 679dbd817343d459252225000d71ec52
+	source = 60-dracut-remove.hook
+	sha256sums = 9b0bf68c913b191a3837f664cb566e8eaa486c0b9cdf11cfa6edd5b5001c7af1
+	sha256sums = 25409770cdf9607eb05addcbc0f89f45a91385c25b8a307425d4b3f4b7c2a9ef
+	sha256sums = 439c5caa6e4487faa7238869fe08ceedbd9297208f1fe5286cb816364533a4ea
+	sha256sums = 054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1
 
 pkgname = dracut-hook
 

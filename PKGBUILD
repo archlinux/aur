@@ -1,11 +1,12 @@
 # Maintainer: Franklyn Tackitt <franklyn@tackitt.net>
+# Maintainer: Kevin Del Castillo <quebin31@gmail.com>
 
-pkgname="dracut-hook"
-pkgver=0.3
-pkgrel=2
-pkgdesc="dracut hook for archlinux"
+pkgname=dracut-hook
+pkgver=0.4
+pkgrel=1
+pkgdesc="Install/remove hooks for dracut"
+url=https://dracut.wiki.kernel.org/index.php/Main_Page
 arch=('any')
-url="https://tackitt.net"
 license=('BSD')
 depends=('dracut')
 noextract=()
@@ -13,16 +14,16 @@ source=(
   "dracut-install"
   "dracut-remove"
   "90-dracut-install.hook"
-  "90-dracut-remove.hook"
+  "60-dracut-remove.hook"
 )
-md5sums=('ca2782fe7bd5e5ec01ba1043df8db092'
-         'd47474311fe65faf9358727f75526389'
-         '8fa0ed0a9aa50f2ac6525d3264f04d76'
-         '679dbd817343d459252225000d71ec52')
+sha256sums=('9b0bf68c913b191a3837f664cb566e8eaa486c0b9cdf11cfa6edd5b5001c7af1'
+            '25409770cdf9607eb05addcbc0f89f45a91385c25b8a307425d4b3f4b7c2a9ef'
+            '439c5caa6e4487faa7238869fe08ceedbd9297208f1fe5286cb816364533a4ea'
+            '054dac9f1d55029a922ff05c3064e54d25790c7a18d2b598edc58ef3d295cba1')
 
 package() {
-  install -Dm755 "$srcdir/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
-  install -Dm755 "$srcdir/90-dracut-remove.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-remove.hook"
-  install -Dm755 "$srcdir/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
-  install -Dm755 "$srcdir/dracut-remove"         "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
+  install -Dm644 "${srcdir}/90-dracut-install.hook" "${pkgdir}/usr/share/libalpm/hooks/90-dracut-install.hook"
+  install -Dm644 "${srcdir}/60-dracut-remove.hook"  "${pkgdir}/usr/share/libalpm/hooks/60-dracut-remove.hook"
+  install -Dm755 "${srcdir}/dracut-install"         "${pkgdir}/usr/share/libalpm/scripts/dracut-install"
+  install -Dm755 "${srcdir}/dracut-remove"          "${pkgdir}/usr/share/libalpm/scripts/dracut-remove"
 }
