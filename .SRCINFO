@@ -8,6 +8,8 @@ pkgbase = mingw-w64-chrono-date
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-gcc
 	makedepends = git
+	options = !strip
+	options = staticlibs
 	options = !buildflags
 	source = mingw-w64-chrono-date::git+https://github.com/HowardHinnant/date#commit=9a0ee2542848ab8625984fc8cdbfb9b5414c0082
 	source = 538-output-date-pc-for-pkg-config.patch::https://patch-diff.githubusercontent.com/raw/HowardHinnant/date/pull/538.patch

@@ -3,12 +3,12 @@
 
 pkgname=mingw-w64-chrono-date
 pkgver=2.4.1+134+g9a0ee25
-pkgrel=1
+pkgrel=2
 pkgdesc="A date and time library based on the C++11/14/17 <chrono> header"
 arch=('any')
 url="https://howardhinnant.github.io/date/date.html"
 license=('MIT')
-options=('!buildflags')
+options=('!strip' 'staticlibs' '!buildflags')
 makedepends=(
     'mingw-w64-cmake'
     'mingw-w64-gcc'
@@ -51,6 +51,7 @@ build() {
             -DCMAKE_CROSSCOMPILING_EMULATOR=/usr/bin/${_arch}-wine \
             -DCMAKE_CXX_FLAGS="-static"
         make
+        ${_arch}-strip *.dll*
         popd
     done
 }
