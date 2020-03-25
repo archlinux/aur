@@ -1,0 +1,927 @@
+diff -ruN gbcflsh_1.1_src/gbcf.pro gbcflsh_1.1_src.work/gbcf.pro
+--- gbcflsh_1.1_src/gbcf.pro	2019-09-08 16:33:29.383120424 +0200
++++ gbcflsh_1.1_src.work/gbcf.pro	2019-09-08 16:19:22.417972298 +0200
+@@ -8,6 +8,8 @@
+ INCLUDEPATH += .
+ #DESTDIR = build
+ 
++QT += widgets
++
+ # Input
+ HEADERS += src/About.h \
+            src/AbstractPort.h \
+diff -ruN gbcflsh_1.1_src/src/About.h gbcflsh_1.1_src.work/src/About.h
+--- gbcflsh_1.1_src/src/About.h	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/About.h	2019-09-08 15:59:01.339617853 +0200
+@@ -4,12 +4,12 @@
+ *****************************************************************************/
+ #ifndef _ABOUT_H_
+ #define _ABOUT_H_
+-#include <QDialog>
+-#include <QPushButton>
++#include <QtWidgets/QDialog>
++#include <QtWidgets/QPushButton>
+ #include <QPixmap>
+-#include <QLabel>
+-#include <QBoxLayout>
+-#include <QGroupBox>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QBoxLayout>
++#include <QtWidgets/QGroupBox>
+ class About:public QDialog
+ {
+   Q_OBJECT QPushButton * ok_btn;
+diff -ruN gbcflsh_1.1_src/src/Console.h gbcflsh_1.1_src.work/src/Console.h
+--- gbcflsh_1.1_src/src/Console.h	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/Console.h	2019-09-08 16:49:36.906818611 +0200
+@@ -6,7 +6,7 @@
+ #ifndef _CONSOLE_H_
+ #define _CONSOLE_H_
+ 
+-#include <QTextEdit>
++#include <QtWidgets/QTextEdit>
+ #include <QString>
+ #include <QPalette>
+ #include <QColor>
+@@ -17,7 +17,7 @@
+   Console (QWidget * parent):QTextEdit (parent)
+   {
+     this->setMinimumWidth (400);
+-    this->setReadOnly (TRUE);
++    this->setReadOnly (true);
+     QPalette palette;
+       palette.setColor (QPalette::Base, QColor (0, 255, 0));
+       this->setPalette (palette);
+@@ -33,7 +33,7 @@
+ 
+   void line ()
+   {
+-#ifdef Q_WS_X11
++#ifdef Q_OS_LINUX
+     print ("<br>");
+ #else
+     print ("<hr><br>");
+diff -ruN gbcflsh_1.1_src/src/const.h gbcflsh_1.1_src.work/src/const.h
+--- gbcflsh_1.1_src/src/const.h	2019-09-08 16:33:38.206367212 +0200
++++ gbcflsh_1.1_src.work/src/const.h	2019-09-08 16:48:24.054216491 +0200
+@@ -21,7 +21,7 @@
+ #define SERIAL 1
+ 
+ /* strings for version information */
+-#ifdef Q_WS_X11
++#ifdef Q_OS_LINUX
+ #define SYSTEM "LINUX"
+ #define DEVELOPED "GCC 4.1.1 + QT 4.3.2"
+ #endif
+diff -ruN gbcflsh_1.1_src/src/EraseThread.cpp gbcflsh_1.1_src.work/src/EraseThread.cpp
+--- gbcflsh_1.1_src/src/EraseThread.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/EraseThread.cpp	2019-09-08 16:00:57.433664369 +0200
+@@ -24,7 +24,7 @@
+   crc16 = Logic::generate_crc16 (packet);
+   packet[PACKETSIZE - 2] = crc16 / 256;
+   packet[PACKETSIZE - 1] = crc16 % 256;
+-  end = FALSE;
++  end = false;
+ 
+   /* send erase packet */
+   if (port->send_packet (packet) < PACKETSIZE)
+@@ -48,7 +48,7 @@
+ 	{
+ 	  port->close_port ();
+ 	  emit set_progress (1, 1);
+-	  emit error (TRUE);
++	  emit error (true);
+ 	  return;
+ 	}
+       if (time (NULL) != tp)
+diff -ruN gbcflsh_1.1_src/src/EraseThread.h gbcflsh_1.1_src.work/src/EraseThread.h
+--- gbcflsh_1.1_src/src/EraseThread.h	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/EraseThread.h	2019-09-08 16:00:16.520272332 +0200
+@@ -22,7 +22,7 @@
+ /* main point of thread  */
+   virtual void run ();
+ public slots:
+-  void canceled (void) { end = TRUE; }
++  void canceled (void) { end = true; }
+ signals:
+   void set_progress (int ile, int max);
+   void error (int err);
+diff -ruN gbcflsh_1.1_src/src/gbcflsh.cpp gbcflsh_1.1_src.work/src/gbcflsh.cpp
+--- gbcflsh_1.1_src/src/gbcflsh.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/gbcflsh.cpp	2019-09-08 16:11:33.605809294 +0200
+@@ -3,12 +3,12 @@
+ ** and load translation files
+ ** Author: Kraku
+ *****************************************************************************/
+-#include <QApplication>
++#include <QtWidgets/QApplication>
+ #include <QTranslator>
+ #include <QSettings>
+ #include <QTimer>
+ #include <QTextCodec>
+-#include <QMessageBox>
++#include <QtWidgets/QMessageBox>
+ #include "Gui.h"
+ #include "const.h"
+ #include "Settings.h"
+@@ -22,7 +22,7 @@
+     {
+ /* disable auto com search in windows */
+       if (strcmp (*argv, "-commanual") == 0)
+-	Settings::commanual = TRUE;
++	Settings::commanual = true;
+ /* additional communication params */
+       if (strcmp (*argv, "-12bit") == 0)
+ 	Settings::algorythm = ALG12;
+@@ -33,7 +33,7 @@
+       if (strcmp (*argv, "-datapoll") == 0)
+ 	Settings::dap = DATAPOLL;
+       if (strcmp (*argv, "-showbbl") == 0)
+-	Settings::showbbl = TRUE;
++	Settings::showbbl = true;
+ /*
+  * USB speed LOW 125000bps, HI 375000, ULTRA 1500000
+  */
+@@ -107,7 +107,7 @@
+  * is langname in filename. Lang selected with ComboBox is saved in 
+  * selected_lang record as langname.
+  */
+-  QTextCodec::setCodecForTr (QTextCodec::codecForName ("UTF-8"));
++  QTextCodec::setCodecForLocale (QTextCodec::codecForName ("UTF-8"));
+   QString langName = settings.value("selected_lang").toString ();
+   QString langPath = settings.value("lang_path").toString();
+   if(langPath == "")
+diff -ruN gbcflsh_1.1_src/src/Gui.cpp gbcflsh_1.1_src.work/src/Gui.cpp
+--- gbcflsh_1.1_src/src/Gui.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/Gui.cpp	2019-09-08 16:49:27.403580687 +0200
+@@ -2,9 +2,9 @@
+ ** Gui.cpp - main class of GUI (Main Window)
+ ** Author: Kraku
+ *****************************************************************************/
+-#include <QFileDialog>
++#include <QtWidgets/QFileDialog>
+ #include <QPixmap>
+-#include <QMessageBox>
++#include <QtWidgets/QMessageBox>
+ #include <QThread>
+ #include "Gui.h"
+ #include "Settings.h"
+@@ -13,7 +13,7 @@
+ 
+ 
+ 
+-#ifdef Q_WS_X11
++#ifdef Q_OS_LINUX
+ #include "SerialPort.h"
+ #include "USBPort.h"
+ #endif
+@@ -60,7 +60,7 @@
+   progress = new QProgressBar (this);
+   down->addWidget (progress);
+   cancel_btn = new QPushButton (tr ("Cancel"), this);
+-  cancel_btn->setEnabled (FALSE);
++  cancel_btn->setEnabled (false);
+   down->addWidget (cancel_btn);
+   right->addLayout (down);
+   grid->addLayout (right, 0, 2);
+@@ -132,7 +132,7 @@
+   console->print (tr ("GB Cart Flasher version ") + VER + tr (" started."));
+ #ifdef Q_WS_WIN
+ /* device detection is avilable only on Windows */
+-  if (Settings::commanual == FALSE)
++  if (Settings::commanual == false)
+     {
+       console->print (tr ("Detecting device..."));
+     }
+@@ -148,14 +148,14 @@
+ #ifdef Q_WS_WIN
+       return new USBPortWin;
+ #endif
+-#ifdef Q_WS_X11
++#ifdef Q_OS_LINUX
+       return new USBPort;
+ #endif
+     case SERIAL:
+ #ifdef Q_WS_WIN
+       return new SerialPortWin;
+ #endif
+-#ifdef Q_WS_X11
++#ifdef Q_OS_LINUX
+       return new SerialPort;
+ #endif
+       break;
+@@ -170,12 +170,12 @@
+   int which_port = -1;		//none at beggining
+ 
+ 
+-  if (Settings::commanual == FALSE)
++  if (Settings::commanual == false)
+     {
+       port_type = USB;
+       AbstractPort *port = create_port ();
+       if (Logic::read_status (port, "USB", NREAD_ID, 0x00, 0x00, &status) ==
+-	  TRUE)
++	  true)
+ 	{
+ 	  QString tmp;
+ 	  console->print (tr ("Device connected to: USB"));
+@@ -193,8 +193,8 @@
+       for (int i = 0; i < PORTS_COUNT; i++)
+ 	{
+ 	  if (Logic::
+-	      read_status (port, settings->getCom(i).toAscii(), NREAD_ID, 0x00, 0x00,
+-			   &status) == TRUE)
++	      read_status (port, settings->getCom(i).toLocal8Bit(), NREAD_ID, 0x00, 0x00,
++			   &status) == true)
+ 	    {
+ 	      which_port = i;
+ 	      break;
+@@ -227,11 +227,11 @@
+   status_t status;
+   QString tmp;
+   AbstractPort *port = create_port ();
+-  int return_code = Logic::read_status (port, settings->getCom().toAscii(), READ_ID,
++  int return_code = Logic::read_status (port, settings->getCom().toLocal8Bit(), READ_ID,
+ 					settings->getMbc (),
+ 					Settings::algorythm, &status);
+ 
+-  if (return_code == TRUE)	/* no error */
++  if (return_code == true)	/* no error */
+     {
+ 
+       console->print (tr ("--Device information--"));
+@@ -247,7 +247,7 @@
+       tmp = tmp.sprintf (" 0x%x", status.chip_id);
+       console->print (tr ("FLASH memory chip ID:") + tmp);
+ 
+-      if (Settings::showbbl == TRUE)
++      if (Settings::showbbl == true)
+ 	{
+ 	  if (status.bbl == 1)
+ 	    tmp = tr ("Locked!");
+@@ -306,7 +306,7 @@
+   if (file_name != "")
+     {
+       thread_RFLA->port = create_port ();
+-      if (thread_RFLA->port->open_port (settings->getCom().toAscii()) == FALSE)
++      if (thread_RFLA->port->open_port (settings->getCom().toLocal8Bit()) == false)
+ 	{
+ 	  print_error (PORT_ERROR);
+ 	  return;
+@@ -316,13 +316,13 @@
+ 	  && !file_name.contains (".sgb", Qt::CaseInsensitive))
+ 	file_name = file_name + ".gb";
+ 
+-      thread_RFLA->file = fopen (file_name.toAscii (), "wb");
++      thread_RFLA->file = fopen (file_name.toLocal8Bit (), "wb");
+       thread_RFLA->mbc = settings->getMbc ();
+       thread_RFLA->page_count = settings->getFlash () / 16;
+       thread_RFLA->dap = Settings::dap;
+       thread_RFLA->algorythm = Settings::algorythm;
+ 
+-      setEnabledButtons (FALSE);
++      setEnabledButtons (false);
+       thread_RFLA->start (Settings::priority);
+ 
+       console->print (tr ("Reading data from FLASH to file:") + "\n" +
+@@ -343,17 +343,17 @@
+       long bytes_count;
+       short kilobytes_count;
+       thread_WFLA->port = create_port ();
+-      if (thread_WFLA->port->open_port (settings->getCom().toAscii()) == FALSE)
++      if (thread_WFLA->port->open_port (settings->getCom().toLocal8Bit()) == false)
+ 	{
+ 	  print_error (PORT_ERROR);
+ 	  return;
+ 	}
+-      thread_WFLA->file = fopen (file_name.toAscii (), "rb");
++      thread_WFLA->file = fopen (file_name.toLocal8Bit (), "rb");
+       thread_WFLA->mbc = settings->getMbc ();
+       thread_WFLA->algorythm = Settings::algorythm;
+       thread_WFLA->dap = Settings::dap;
+ 
+-      if (settings->isAuto () == FALSE)
++      if (settings->isAuto () == false)
+ 	{
+ 	  bytes_count = Logic::file_size (thread_WFLA->file);
+ 	  thread_WFLA->page_count =
+@@ -365,7 +365,7 @@
+ 
+ 	}
+       else if ((kilobytes_count = Logic::flash_file_size (thread_WFLA->file))
+-	       != FALSE)
++	       != false)
+ 	thread_WFLA->page_count = kilobytes_count / 16;
+       else
+ 	{
+@@ -373,7 +373,7 @@
+ 	  thread_WFLA->port->close_port ();
+ 	  return;
+ 	}
+-      setEnabledButtons (FALSE);
++      setEnabledButtons (false);
+ 
+       thread_WFLA->start (Settings::priority);
+       console->print (tr ("Writing data to FLASH from file:") + "\n" +
+@@ -396,14 +396,14 @@
+   if (file_name != "")
+     {
+       thread_RRAM->port = create_port ();
+-      if (thread_RRAM->port->open_port (settings->getCom().toAscii()) == FALSE)
++      if (thread_RRAM->port->open_port (settings->getCom().toLocal8Bit()) == false)
+ 	{
+ 	  print_error (PORT_ERROR);
+ 	  return;
+ 	}
+       if (!file_name.contains (".sav", Qt::CaseInsensitive))
+ 	file_name = file_name + ".sav";
+-      thread_RRAM->file = fopen (file_name.toAscii (), "wb");
++      thread_RRAM->file = fopen (file_name.toLocal8Bit (), "wb");
+       thread_RRAM->mbc = settings->getMbc ();
+       thread_RRAM->algorythm = Settings::algorythm;
+       thread_RRAM->dap = Settings::dap;
+@@ -417,7 +417,7 @@
+ 	  thread_RRAM->_2k = 0;
+ 	  thread_RRAM->page_count = settings->getRam () / 8;
+ 	}
+-      setEnabledButtons (FALSE);
++      setEnabledButtons (false);
+       thread_RRAM->start (Settings::priority);
+ 
+       console->print (tr ("Reading data from RAM to file:") + "\n" +
+@@ -438,17 +438,17 @@
+       long bytes_count;
+       short kilobytes_count;
+       thread_WRAM->port = create_port ();;
+-      if (thread_WRAM->port->open_port (settings->getCom().toAscii()) == FALSE)
++      if (thread_WRAM->port->open_port (settings->getCom().toLocal8Bit()) == false)
+ 	{
+ 	  print_error (PORT_ERROR);
+ 	  return;
+ 	}
+-      thread_WRAM->file = fopen (file_name.toAscii (), "rb");
++      thread_WRAM->file = fopen (file_name.toLocal8Bit (), "rb");
+       thread_WRAM->mbc = settings->getMbc ();
+       thread_WRAM->algorythm = Settings::algorythm;
+       thread_WRAM->dap = Settings::dap;
+ 
+-      if (settings->isAuto () == FALSE)
++      if (settings->isAuto () == false)
+ 	{
+ 	  bytes_count = Logic::file_size (thread_WRAM->file);
+ 	  if (bytes_count == 2048)
+@@ -469,7 +469,7 @@
+ 	    }
+ 	}
+       else if ((kilobytes_count = Logic::ram_file_size (thread_WRAM->file)) !=
+-	       FALSE)
++	       false)
+ 	if (kilobytes_count == 2)
+ 	  {
+ 	    thread_WRAM->_2k = 1;
+@@ -486,7 +486,7 @@
+ 	  thread_WRAM->port->close_port ();
+ 	  return;
+ 	}
+-      setEnabledButtons (FALSE);
++      setEnabledButtons (false);
+ 
+       thread_WRAM->start (Settings::priority);
+       console->print (tr ("Writing data to RAM from file:") + "\n" +
+@@ -502,7 +502,7 @@
+ Gui::erase_flash (void)
+ {
+   thread_E->port = create_port ();
+-  if (thread_E->port->open_port (settings->getCom().toAscii()) == FALSE)
++  if (thread_E->port->open_port (settings->getCom().toLocal8Bit()) == false)
+     {
+       print_error (PORT_ERROR);
+       return;
+@@ -511,7 +511,7 @@
+   thread_E->mem = EFLA;		//FLASH
+   thread_E->par = Settings::algorythm;
+   thread_E->dap = Settings::dap;
+-  setEnabledButtons (FALSE);
++  setEnabledButtons (false);
+   console->print (tr ("Erasing FLASH memory..."));
+   thread_E->start (Settings::priority);
+ }
+@@ -520,7 +520,7 @@
+ Gui::erase_ram (void)
+ {
+   thread_E->port = create_port ();
+-  if (thread_E->port->open_port (settings->getCom().toAscii()) == FALSE)
++  if (thread_E->port->open_port (settings->getCom().toLocal8Bit()) == false)
+     {
+       print_error (PORT_ERROR);
+       return;
+@@ -546,7 +546,7 @@
+ 
+   thread_E->par = window_count;
+   thread_E->dap = Settings::dap;
+-  setEnabledButtons (FALSE);
++  setEnabledButtons (false);
+   console->print (tr ("Erasing RAM memory..."));
+   thread_E->start (Settings::priority);
+ }
+@@ -573,7 +573,7 @@
+   //this buttons needs to be dissabled 
+   //if no ram is avilable
+   if (settings->isRamDisabled ())
+-    state = FALSE;
++    state = false;
+   rram_btn->setEnabled (state);
+   wram_btn->setEnabled (state);
+   eram_btn->setEnabled (state);
+@@ -584,7 +584,7 @@
+ Gui::setRamButtons ()
+ {
+   if (status_btn->isEnabled ())
+-    setEnabledButtons (TRUE);
++    setEnabledButtons (true);
+ }
+ 
+ void
+@@ -624,18 +624,18 @@
+       console->print (tr (">Bad file size."));
+       break;
+ 
+-    case FALSE:
++    case false:
+       console->print (tr (">Operation failure."));
+       break;
+ 
+-    case TRUE:
++    case true:
+       console->print (tr (">Success!"));	/* succes is not a error code */
+       break;
+     }
+ 
+   console->line ();
+   setProgress (0, 1);
+-  setEnabledButtons (TRUE);
++  setEnabledButtons (true);
+ }
+ 
+ void
+diff -ruN gbcflsh_1.1_src/src/Gui.h gbcflsh_1.1_src.work/src/Gui.h
+--- gbcflsh_1.1_src/src/Gui.h	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/Gui.h	2019-09-08 16:05:57.521667135 +0200
+@@ -2,11 +2,11 @@
+ ** Gui.h - class of main dialog window
+ ** Author: Kraku
+ *****************************************************************************/
+-#include <QWidget>
+-#include <QLayout>
+-#include <QLabel>
+-#include <QProgressBar>
+-#include <QPushButton>
++#include <QtWidgets/QWidget>
++#include <QtWidgets/QLayout>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QProgressBar>
++#include <QtWidgets/QPushButton>
+ #include <QString>
+ #include "Settings.h"
+ #include "Console.h"
+diff -ruN gbcflsh_1.1_src/src/Logic.cpp gbcflsh_1.1_src.work/src/Logic.cpp
+--- gbcflsh_1.1_src/src/Logic.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/Logic.cpp	2019-09-08 16:14:41.324066910 +0200
+@@ -98,7 +98,7 @@
+ 		    char algorythm, status_t * flasher_stat)
+ {
+   assert (port != NULL);
+-  if (port->open_port (port_name) == FALSE)
++  if (port->open_port (port_name) == false)
+     return PORT_ERROR;
+ 
+   unsigned short crc16;
+@@ -180,12 +180,12 @@
+ 	  flasher_stat->crc16 = 256 * packet[35] + packet[36];
+ 
+ 	  port->close_port ();
+-	  return TRUE;
++	  return true;
+ 	}
+       else
+ 	{
+ 	  port->close_port ();
+-	  return FALSE;
++	  return false;
+ 	}
+     }
+ }
+@@ -264,7 +264,7 @@
+     case 8192 * 1024:
+       return (short) (mem_size / 1024L);
+     default:
+-      return FALSE;
++      return false;
+     }
+ }
+ 
+@@ -280,7 +280,7 @@
+     case 128 * 1024:
+       return (short) (mem_size / 1024L);
+     default:
+-      return FALSE;
++      return false;
+     }
+ }
+ 
+@@ -302,9 +302,9 @@
+   packet[PACKETSIZE - 2] = crc16 / 256;
+   packet[PACKETSIZE - 1] = crc16 % 256;
+   if (port->send_packet (packet) < PACKETSIZE)
+-    return FALSE;
++    return false;
+   else
+-    return TRUE;
++    return true;
+ }
+ 
+ QString
+diff -ruN gbcflsh_1.1_src/src/ReadFlashThread.cpp gbcflsh_1.1_src.work/src/ReadFlashThread.cpp
+--- gbcflsh_1.1_src/src/ReadFlashThread.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/ReadFlashThread.cpp	2019-09-08 16:15:04.230513562 +0200
+@@ -12,7 +12,7 @@
+ void
+ ReadFlashThread::run ()
+ {
+-  end = FALSE;
++  end = false;
+   unsigned char packet[72], data[16384];
+   int character, data_type = 0x00, recived = 0, retries =
+     0, page_number, packet_number, prv_count = 0;
+@@ -32,7 +32,7 @@
+ 
+   do
+     {				/* send start packet and wait for first one of response */
+-      if (Logic::send_start_packet (port, cfg) == FALSE)
++      if (Logic::send_start_packet (port, cfg) == false)
+ 	{
+ 	  port->close_port ();
+ 	  fclose (file);
+@@ -161,7 +161,7 @@
+     {
+       port->close_port ();
+       fclose (file);
+-      emit error (TRUE);
++      emit error (true);
+     }
+   else
+     {
+@@ -174,5 +174,5 @@
+ void
+ ReadFlashThread::canceled (void)
+ {
+-  end = TRUE;
++  end = true;
+ }
+diff -ruN gbcflsh_1.1_src/src/ReadRamThread.cpp gbcflsh_1.1_src.work/src/ReadRamThread.cpp
+--- gbcflsh_1.1_src/src/ReadRamThread.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/ReadRamThread.cpp	2019-09-08 16:15:21.923676140 +0200
+@@ -13,7 +13,7 @@
+ ReadRamThread::run ()
+ {
+ 
+-  end = FALSE;
++  end = false;
+   unsigned char packet[72], data[2048];	/* 2kB cart is avilable */
+   int n, data_type = 0x00, recived = 0, retries =
+     0, page_number, packet_number, prv_count = 0;
+@@ -35,7 +35,7 @@
+ 
+   do
+     {
+-      if (Logic::send_start_packet (port, cfg) == FALSE)
++      if (Logic::send_start_packet (port, cfg) == false)
+ 	{
+ 	  port->close_port ();
+ 	  fclose (file);
+@@ -114,7 +114,7 @@
+ 		  port->send_char (END);
+ 		  port->close_port ();
+ 		  fclose (file);
+-		  emit error (TRUE);
++		  emit error (true);
+ 		  return;
+ 		}
+ 	      else
+@@ -166,7 +166,7 @@
+     {
+       port->close_port ();
+       fclose (file);
+-      emit error (TRUE);
++      emit error (true);
+       return;
+     }
+   else
+@@ -181,5 +181,5 @@
+ void
+ ReadRamThread::canceled (void)
+ {
+-  end = TRUE;
++  end = true;
+ }
+diff -ruN gbcflsh_1.1_src/src/SerialPort.cpp gbcflsh_1.1_src.work/src/SerialPort.cpp
+--- gbcflsh_1.1_src/src/SerialPort.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/SerialPort.cpp	2019-09-08 16:16:45.939523797 +0200
+@@ -29,10 +29,10 @@
+ bool SerialPort::open_port(QString port_name)
+ {
+   /* Open port in RW mode, don't check DCD line */
+-  descriptor = open (port_name.toAscii(), O_RDWR | O_NOCTTY | O_NDELAY);
++  descriptor = open (port_name.toLocal8Bit(), O_RDWR | O_NOCTTY | O_NDELAY);
+   if (descriptor != -1)			/* is port opened */
+   {
+-    opened = TRUE;
++    opened = true;
+     struct termios ts;		/* structure describing port */
+     tcgetattr (descriptor, &ts);	/* get actual state of port */
+ 
+@@ -60,21 +60,21 @@
+      */
+     tcsetattr (descriptor, TCSANOW, &ts);
+     fcntl (descriptor, F_SETFL, FNDELAY); /* don't wait for data while reading */
+-    return TRUE;
++    return true;
+   }
+   else
+-    return FALSE;
++    return false;
+ }
+ 
+ bool SerialPort::close_port ()
+ {
+   if (descriptor == -1)
+-    return FALSE;
++    return false;
+   else
+   {
+     close (descriptor);
+-    opened = FALSE;
+-    return TRUE;
++    opened = false;
++    return true;
+   }
+ }
+ 
+@@ -87,9 +87,9 @@
+ bool SerialPort::send_char (unsigned char character)
+ {
+   if (write (descriptor, &character, 1))
+-    return TRUE;
++    return true;
+   else
+-    return FALSE;
++    return false;
+ }
+ 
+ int SerialPort::receive_char (void)
+diff -ruN gbcflsh_1.1_src/src/Settings.cpp gbcflsh_1.1_src.work/src/Settings.cpp
+--- gbcflsh_1.1_src/src/Settings.cpp	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/Settings.cpp	2019-09-08 16:48:43.720685813 +0200
+@@ -2,23 +2,23 @@
+ ** Settings.cpp
+ ** Author: Kraku
+ *****************************************************************************/
+-#include <QLabel>
+-#include <QLayout>
+-#include <QComboBox>
+-#include <QMessageBox>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QLayout>
++#include <QtWidgets/QComboBox>
++#include <QtWidgets/QMessageBox>
+ #include <QSettings>
+ #include "Settings.h"
+ #include "Gui.h"
+ #include <math.h>
+ 
+ bool
+-  Settings::commanual = FALSE;
++  Settings::commanual = false;
+ alg_t
+   Settings::algorythm = ALG16;
+ dap_t
+   Settings::dap = TOGGLE;
+ bool
+-  Settings::showbbl = FALSE;
++  Settings::showbbl = false;
+ speed_type
+   Settings::speed = STANDARD;
+ QThread::Priority Settings::priority = QThread::NormalPriority;
+@@ -40,7 +40,7 @@
+   com_combo = new QComboBox (this);
+   combo_boxes->addWidget (com_combo);
+ 
+-#ifdef Q_WS_X11
++#ifdef Q_OS_LINUX
+   com_combo->insertItem (0, "/dev/ttyS0");
+   com_combo->insertItem (1, "/dev/ttyS1");
+   com_combo->insertItem (2, "/dev/ttyS2");
+@@ -132,7 +132,7 @@
+   all->addLayout (down);
+   setLayout (all);
+ 
+-  auto_size = TRUE;
++  auto_size = true;
+   mbc = MBCAUTO;
+   ram_size = 8;
+   flash_size = 512;
+@@ -314,7 +314,7 @@
+ Settings::setAuto (int state)
+ {
+   if (state == Qt::Checked)
+-    auto_size = TRUE;
++    auto_size = true;
+   else
+-    auto_size = FALSE;
++    auto_size = false;
+ }
+diff -ruN gbcflsh_1.1_src/src/Settings.h gbcflsh_1.1_src.work/src/Settings.h
+--- gbcflsh_1.1_src/src/Settings.h	2008-03-15 00:43:57.000000000 +0100
++++ gbcflsh_1.1_src.work/src/Settings.h	2019-09-08 15:59:41.220071497 +0200
+@@ -5,12 +5,12 @@
+ #ifndef _SETTINGS_H_
+ #define _SETTINGS_H_
+ 
+-#include <QGroupBox>
+-#include <QComboBox>
+-#include <QLabel>
+-#include <QLayout>
++#include <QtWidgets/QGroupBox>
++#include <QtWidgets/QComboBox>
++#include <QtWidgets/QLabel>
++#include <QtWidgets/QLayout>
+ #include <QString>
+-#include <QCheckBox>
++#include <QtWidgets/QCheckBox>
+ #include <QThread>
+ #include "const.h"
+ 
+diff -ruN gbcflsh_1.1_src/src/USBPort.cpp gbcflsh_1.1_src.work/src/USBPort.cpp
+--- gbcflsh_1.1_src/src/USBPort.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/USBPort.cpp	2019-09-08 16:17:12.339264097 +0200
+@@ -27,39 +27,39 @@
+ USBPort::open_port (QString /*port_name*/)
+ {
+   if (ftdi_usb_open (&ftdic, 0x0403, 0x6001) < 0)
+-    return FALSE;
++    return false;
+ /* choose speed */
+   if (Settings::speed == STANDARD)
+     {
+       if (ftdi_set_baudrate (&ftdic, 185000) < 0)
+-	return FALSE;
++	return false;
+     }
+   else if (Settings::speed == LOW)
+     {
+       if (ftdi_set_baudrate (&ftdic, 125000) < 0)
+-	return FALSE;
++	return false;
+     }
+   else if (Settings::speed == HIGH)
+     {
+       if (ftdi_set_baudrate (&ftdic, 375000) < 0)
+-	return FALSE;
++	return false;
+     }
+   else if (Settings::speed == ULTRA)
+     {
+       if (ftdi_set_baudrate (&ftdic, 1500000) < 0)
+-	return FALSE;
++	return false;
+     }
+ 
+   if (ftdi_set_latency_timer (&ftdic, 2) < 0)
+-    return FALSE;
++    return false;
+   if (ftdi_set_line_property (&ftdic, BITS_8, STOP_BIT_1, NONE) < 0)
+-    return FALSE;
++    return false;
+   //if(FT_SetTimeouts(ftHandle,5000,0) != FT_OK)
+-  //      return FALSE;
++  //      return false;
+   //if(ftdi_enable_bitbang(&ftdic,0xFF) < 0)
+-  //      return FALSE;
++  //      return false;
+ 
+-  return TRUE;			/* all ok */
++  return true;			/* all ok */
+ 
+ 
+ 
+@@ -69,7 +69,7 @@
+ USBPort::close_port ()
+ {
+   ftdi_usb_close (&ftdic);
+-  return TRUE;
++  return true;
+ }
+ 
+ int
+diff -ruN gbcflsh_1.1_src/src/WriteFlashThread.cpp gbcflsh_1.1_src.work/src/WriteFlashThread.cpp
+--- gbcflsh_1.1_src/src/WriteFlashThread.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/WriteFlashThread.cpp	2019-09-08 16:16:05.746583827 +0200
+@@ -12,8 +12,8 @@
+ void
+ WriteFlashThread::run ()
+ {
+-  end = FALSE;
+-  bool zamykanie = FALSE;
++  end = false;
++  bool zamykanie = false;
+ 
+   int character, page_number, packet_number, retries = 0;
+   unsigned char packet[72], data[16384];	/* 16 kB is one page */
+@@ -33,7 +33,7 @@
+ 
+   do
+     {				/* send start and wait for ACK */
+-      if (Logic::send_start_packet (port, cfg) == FALSE)
++      if (Logic::send_start_packet (port, cfg) == false)
+ 	{
+ 	  port->close_port ();
+ 	  fclose (file);
+@@ -80,7 +80,7 @@
+ 	    {
+ 	      Logic::fill_data_packet (packet, &data[packet_number * 64],
+ 				       LAST_DATA, packet_number, page_number);
+-	      zamykanie = TRUE;
++	      zamykanie = true;
+ 
+ 	    }
+ 
+@@ -140,11 +140,11 @@
+ 
+   port->close_port ();
+   fclose (file);
+-  emit error (TRUE);
++  emit error (true);
+ }
+ 
+ void
+ WriteFlashThread::canceled (void)
+ {
+-  end = TRUE;
++  end = true;
+ }
+diff -ruN gbcflsh_1.1_src/src/WriteRamThread.cpp gbcflsh_1.1_src.work/src/WriteRamThread.cpp
+--- gbcflsh_1.1_src/src/WriteRamThread.cpp	2019-09-08 16:33:34.406404489 +0200
++++ gbcflsh_1.1_src.work/src/WriteRamThread.cpp	2019-09-08 16:16:27.019709294 +0200
+@@ -12,8 +12,8 @@
+ void
+ WriteRamThread::run ()
+ {
+-  end = FALSE;
+-  bool closing = FALSE;
++  end = false;
++  bool closing = false;
+   /* function similar to write_flash */
+   int character, page_number, packet_number, retries = 0;
+   unsigned char packet[72], data[8192];
+@@ -36,7 +36,7 @@
+ 
+   do
+     {
+-      if (Logic::send_start_packet (port, cfg) == FALSE)
++      if (Logic::send_start_packet (port, cfg) == false)
+ 	{
+ 	  port->close_port ();
+ 	  fclose (file);
+@@ -81,7 +81,7 @@
+ 	    {
+ 	      Logic::fill_data_packet (packet, &data[packet_number * 64],
+ 				       LAST_DATA, packet_number, page_number);
+-	      closing = TRUE;
++	      closing = true;
+ 
+ 	    }
+ 
+@@ -113,7 +113,7 @@
+ 		{
+ 		  port->close_port ();
+ 		  fclose (file);
+-		  emit error (TRUE);
++		  emit error (true);
+ 		  return;	/* end of 2kB page */
+ 		}
+ 	      if (++packet_number == 128)
+@@ -144,12 +144,12 @@
+ 
+   port->close_port ();
+   fclose (file);
+-  emit error (TRUE);
++  emit error (true);
+   return;
+ }
+ 
+ void
+ WriteRamThread::canceled (void)
+ {
+-  end = TRUE;
++  end = true;
+ }
