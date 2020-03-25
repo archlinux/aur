@@ -1,17 +1,15 @@
 pkgbase = vapoursynth-lib-vsfilterscript-git
 	pkgdesc = Library for Vapoursynth: vsfilterscript (GIT version)
-	pkgver = r36.2dffdcd
+	pkgver = r37.98c5c11
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=181027
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = gcc-git
-	makedepends = gcc-libs-git
 	depends = vapoursynth
 	provides = vapoursynth-lib-vsfilterscript
 	conflicts = vapoursynth-lib-vsfilterscript
-	source = vsfilterscript::git+https://github.com/IFeelBloated/vsFilterScript.git
+	source = vsfilterscript::git+https://github.com/IFeelBloated/vsFilterScript.git#branch=GCC9
 	sha256sums = SKIP
 
 pkgname = vapoursynth-lib-vsfilterscript-git
