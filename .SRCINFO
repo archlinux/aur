@@ -1,7 +1,7 @@
 pkgbase = yup
 	pkgdesc = Arch Linux AUR Helper with ncurses functionality and better searching and sorting
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ericm/yup
 	arch = any
 	license = GPL3
