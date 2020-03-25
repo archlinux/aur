@@ -11,6 +11,7 @@ arch=('x86_64')
 url="https://github.com/mikekap/$_name"
 license=('Apache')
 depends=('python')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/${_name::1}/$_name/$_name-$_pkgver.tar.gz")
 sha256sums=('a83e504fb0e8ed4757194e61c3f7b69fb3c914856057bea968d0950f80f947fa')
 

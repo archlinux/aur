@@ -5,6 +5,7 @@ pkgbase = python-unicodedata2
 	url = https://github.com/mikekap/unicodedata2
 	arch = x86_64
 	license = Apache
+	makedepends = python-setuptools
 	depends = python
 	source = https://pypi.python.org/packages/source/u/unicodedata2/unicodedata2-13.0.0.post2.tar.gz
 	sha256sums = a83e504fb0e8ed4757194e61c3f7b69fb3c914856057bea968d0950f80f947fa
