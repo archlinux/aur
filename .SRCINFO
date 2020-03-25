@@ -1,7 +1,7 @@
 pkgbase = session-desktop
 	pkgdesc = Private messaging from your desktop
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://getsession.org
 	install = session-desktop.install
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = session-desktop
 	optdepends = libappindicator-gtk3: for tray support
 	provides = session-messenger-desktop
 	conflicts = session-desktop-bin
+	conflicts = session-desktop-git
 	conflicts = session-desktop-appimage
 	options = !strip
 	source = git+https://github.com/loki-project/session-desktop.git
