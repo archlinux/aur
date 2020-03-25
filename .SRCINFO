@@ -1,0 +1,13 @@
+pkgbase = calories-bin
+	pkgdesc = Calories Tracker for the Commandline
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/zupzup/calories
+	arch = x86_64
+	license = MIT
+	provides = calories
+	source = https://github.com/zupzup/calories/releases/download/1.0.3/calories_1.0.3_linux_64-bit.tar.gz
+	md5sums = 9f8e931dbcc40930c07e496f8b3b440e
+
+pkgname = calories-bin
+
