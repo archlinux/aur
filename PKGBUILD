@@ -1,8 +1,8 @@
 # Maintainer: Ivan Marquesi Lerner <ivanmlerner@protonmail.com>
 
 pkgname=lc0
-pkgver=0.23.3
-pkgrel=2
+pkgver=0.24.1
+pkgrel=1
 _run="run1"
 _nnid=42850
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://lczero.org/"
 license=('GPL3')
 
-depends=('protobuf' 'ocl-icd' 'opencl-driver')
+depends=('ocl-icd' 'opencl-driver')
 makedepends=('meson' 'zlib' 'opencl-headers')
 checkdepends=('gtest')
 optdepends=("nvidia: Necessary for running on nvidia GPUs"
@@ -39,9 +39,9 @@ source=("$pkgname"
 	"$pkgname-$pkgver.tar.gz::https://github.com/LeelaChessZero/$pkgname/archive/v$pkgver.tar.gz"
 	"lczero-common-master.tar.gz::https://github.com/LeelaChessZero/lczero-common/archive/master.tar.gz"
 	"weights_${_run}_${_nnid}.pb.gz::http://data.lczero.org/files/networks/00af53b081e80147172e6f281c01daf5ca19ada173321438914c730370aa4267")
-md5sums=('SKIP'
-	 'df6323d463206f0e4d28792d91e2452c'
-         '1d48e79e758912c589393f6a87e790ff'
+md5sums=('8ef8809da2c627dd2472859b157bb408'
+         '41748f3ccbb9a903fcebb47747bf5d92'
+         '24f07d68b4a5c0f5846c37401517f02f'
          'e7c9e1abec8d859ffdbc89e18340c254')
 
 noextract=('weights_${_run}_${_nnid}.pb.gz')
@@ -50,6 +50,7 @@ prepare() {
   cp -PRu "$srcdir/lczero-common-master/proto" "$srcdir/$pkgname-$pkgver/libs/lczero-common/"
   rm -dr "$srcdir/lczero-common-master"
   rm -f  "$srcdir/$pkgname-$pkgver/build-cl.cmd"
+  rm -f  "$srcdir/$pkgname-$pkgver/build-cuda-ninja.cmd"
   rm -f  "$srcdir/$pkgname-$pkgver/build-cuda.cmd"
   rm -f  "$srcdir/$pkgname-pkgver/install_openSUSE_lc0.sh"
   rm -f  "$srcdir/$pkgname-pkgver/windows_build.md"
