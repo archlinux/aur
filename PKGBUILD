@@ -1,42 +1,20 @@
-# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
-_name=taskell
-pkgname="${_name}-bin"
-pkgver=1.9.1
+pkgname=taskell-bin
+pkgver=1.9.3
 pkgrel=1
-pkgdesc='A command line kanban board/task manager written in Haskell'
+pkgdesc='Manage and configure Akamai from the Command Line'
 arch=('x86_64')
-url="https://github.com/smallhadroncollider/${_name}"
+url="https://taskell.app"
 license=('Custom')
-options=('!strip' '!emptydirs')
-conflicts=("${_name}")
-replaces=("${_name}")
-_pkgfile="${_name}-${pkgver}_x86-64-linux.deb"
-depends=('ncurses')
-makedepends=('binutils' 'tar')
-source=(
-  "${url}/releases/download/${pkgver}/${_pkgfile}"
-  LICENSE
-)
-sha256sums=('9780c9d04894a3f05c440def3331992ecdc4f873bc93999da2d9059310a2fc1f'
-            '04dc83953b60b17ab28cbc37ad3188e1c632db38dd423885af7507460f461d29')
+provides=('taskell')
+source=("https://github.com/smallhadroncollider/taskell/releases/download/${pkgver}/taskell-${pkgver}_x86-64-linux.tar.gz"
+		"LICENSE::https://raw.githubusercontent.com/smallhadroncollider/taskell/master/LICENSE")
+md5sums=('5dae563f46eb5d62d7663137bff1c788'
+		 'b445947eb0aeab68a86949e549e145c4')
 
 package() {
-  ar x ${_pkgfile}
-  tar xf data.tar.xz --no-same-permissions --no-overwrite-dir -C ${pkgdir}
-
-  # Move from /usr/local/bin to /usr/bin
-  mv "${pkgdir}/usr/local/bin" "${pkgdir}/usr"
-  rmdir "${pkgdir}/usr/local"
-
-  # Copy license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-
-  # Ugly hack until taskell is been built with a more recent ncurses
-  install -d "${pkgdir}"/usr/lib
-  ln -s /usr/lib/libncursesw.so.6.1 "${pkgdir}/usr/lib/libtinfo.so.5"
-
-  # install -Dm0755 taskell "${pkgdir}"/usr/bin/taskell
+  install -Dm755 ${srcdir}/taskell "${pkgdir}/usr/bin/taskell"
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/taskell/LICENSE"
 }
-
 # vim:set ts=2 sw=2 et:

@@ -1,21 +1,15 @@
 pkgbase = taskell-bin
-	pkgdesc = A command line kanban board/task manager written in Haskell
-	pkgver = 1.9.1
+	pkgdesc = Manage and configure Akamai from the Command Line
+	pkgver = 1.9.3
 	pkgrel = 1
-	url = https://github.com/smallhadroncollider/taskell
+	url = https://taskell.app
 	arch = x86_64
 	license = Custom
-	makedepends = binutils
-	makedepends = tar
-	depends = ncurses
-	conflicts = taskell
-	replaces = taskell
-	options = !strip
-	options = !emptydirs
-	source = https://github.com/smallhadroncollider/taskell/releases/download/1.9.1/taskell-1.9.1_x86-64-linux.deb
-	source = LICENSE
-	sha256sums = 9780c9d04894a3f05c440def3331992ecdc4f873bc93999da2d9059310a2fc1f
-	sha256sums = 04dc83953b60b17ab28cbc37ad3188e1c632db38dd423885af7507460f461d29
+	provides = taskell
+	source = https://github.com/smallhadroncollider/taskell/releases/download/1.9.3/taskell-1.9.3_x86-64-linux.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/smallhadroncollider/taskell/master/LICENSE
+	md5sums = 5dae563f46eb5d62d7663137bff1c788
+	md5sums = b445947eb0aeab68a86949e549e145c4
 
 pkgname = taskell-bin
 
