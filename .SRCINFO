@@ -1,0 +1,14 @@
+pkgbase = brother-hl5440d-cups-bin
+	pkgdesc = CUPS wrapper for Brother HL-5440D printer
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hl5440d_all
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006021/hl5440dcupswrapper-3.0.0-1.i386.deb
+	md5sums = 821650a6c917529e5b7aaf013a2be19b
+
+pkgname = brother-hl5440d-cups-bin
+
