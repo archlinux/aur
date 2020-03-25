@@ -8,19 +8,19 @@ url="https://github.com/boyter/scc"
 license=('MIT' 'UNLICENSE')
 conflicts=('scc')
 source_i386=(
-  'https://github.com/boyter/scc/blob/master/LICENSE'
+  'https://raw.githubusercontent.com/boyter/scc/master/LICENSE'
   https://github.com/boyter/scc/releases/download/v$pkgver/scc-$pkgver-i386-unknown-linux.zip
 )
 sha256sums_i386=(
-  'ded174dfea1c04a5d255398002161b943916d42835a207ed9cee3da00f7f20e6'
+  '061aed9783047c2b7a4619c270161d2ea9344635fe340bf3a6ac2b1bc49638ea'
   '34a7115a2d003607afba5895d8e5fbf3508a4b8cfc6f2204b279e10103d3c010'
 )
 source_x86_64=(
-  'https://github.com/boyter/scc/blob/master/LICENSE'
+  'https://raw.githubusercontent.com/boyter/scc/master/LICENSE'
   https://github.com/boyter/scc/releases/download/v$pkgver/scc-$pkgver-x86_64-unknown-linux.zip
 )
 sha256sums_x86_64=(
-  'ded174dfea1c04a5d255398002161b943916d42835a207ed9cee3da00f7f20e6'
+  '061aed9783047c2b7a4619c270161d2ea9344635fe340bf3a6ac2b1bc49638ea'
   '8eca3e98fe8a78d417d3779a51724515ac4459760d3ec256295f80954a0da044'
 )
 
