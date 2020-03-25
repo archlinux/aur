@@ -1,0 +1,13 @@
+pkgbase = gifgen
+	pkgdesc = Simple high quality GIF encoding
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/lukechilds/gifgen
+	arch = x86_64
+	license = MIT
+	depends = ffmpeg
+	source = https://github.com/lukechilds/gifgen/archive/1.1.2.tar.gz
+	md5sums = 2805fd101b71c19d7dca7cfb367ed29b
+
+pkgname = gifgen
+
