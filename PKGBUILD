@@ -1,4 +1,4 @@
-# Maintainer: Roland Auer <xxr01i1xx@tuta.io>
+# Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop
 pkgver=1.0.5
 pkgrel=2
