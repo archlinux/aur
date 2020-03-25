@@ -1,7 +1,7 @@
 pkgbase = lc0
 	pkgdesc = UCI-compliant chess engine designed to play chess via neural network, specifically those of the LeelaChessZero project.
 	pkgver = 0.24.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lczero.org/
 	install = lc0.install
 	arch = x86_64

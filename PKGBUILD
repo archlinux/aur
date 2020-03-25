@@ -2,7 +2,7 @@
 
 pkgname=lc0
 pkgver=0.24.1
-pkgrel=2
+pkgrel=3
 _run="run1"
 _nnid=42850
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
