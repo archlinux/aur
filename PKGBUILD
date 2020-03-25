@@ -2,7 +2,7 @@
 
 pkgname=lc0
 pkgver=0.24.1
-pkgrel=3
+pkgrel=4
 _run="run1"
 _nnid=42850
 pkgdesc="UCI-compliant chess engine designed to play chess via neural network, \
@@ -15,11 +15,7 @@ license=('GPL3')
 depends=('ocl-icd' 'opencl-driver')
 makedepends=('meson' 'zlib' 'opencl-headers')
 checkdepends=('gtest')
-optdepends=("nvidia: Necessary for running on nvidia GPUs"
-	    "cudnn:  Neural network library for use with nvidia GPUs"
-	    "xf86-video-amdgpu: AMDGPU driver stack"
-	    "xf86-video-ati: ATI driver stack"
-	    "amdgpu-pro-libgl: AMDGPU PRO driver stack")
+optdepends=("cudnn: Neural network library for use with nvidia GPUs")
 
 install=lc0.install
 source=("$pkgname"
