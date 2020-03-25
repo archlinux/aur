@@ -5,11 +5,11 @@
 
 pkgname=picom-tryone-git
 _gitname=compton
-pkgver=1340_Next.59.g0cc7437_2020.03.18
+pkgver=1345_Next.64.g75dd105_2020.03.25
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
-url="https://github.com/tryone144/${_gitname}"
+url="https://github.com/tryone144/${_gitname}/tree/feature/dual_kawase"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
          'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme' 'libxdg-basedir')

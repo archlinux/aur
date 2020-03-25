@@ -1,8 +1,8 @@
 pkgbase = picom-tryone-git
 	pkgdesc = tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)
-	pkgver = 1340_Next.59.g0cc7437_2020.03.18
+	pkgver = 1345_Next.64.g75dd105_2020.03.25
 	pkgrel = 1
-	url = https://github.com/tryone144/compton
+	url = https://github.com/tryone144/compton/tree/feature/dual_kawase
 	arch = i686
 	arch = x86_64
 	license = MIT
