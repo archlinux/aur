@@ -1,6 +1,6 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.5.11
+	pkgver = 5.5.13
 	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.5.11.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.5.13.xz
 	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.5.10-921
 	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-0.0.20200318.tar.xz
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
@@ -23,7 +23,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = a6fbd4ee903c128367892c2393ee0d9657b6ed3ea90016d4dc6f1f6da20b2330
 	sha256sums = SKIP
-	sha256sums = 50e8f105cca4b523e2bbf7e2766de31ac8d6f2305e11314444d311853213586c
+	sha256sums = a58dad931dda6eba7656551da73d1c452317617c8282c094fa4f646d9422993a
 	sha256sums = SKIP
 	sha256sums = fa74a8627f731754fbf4ea7d6ae8f571a2cfe8cd4b744a5f165065619cb836a1
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
