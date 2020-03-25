@@ -26,14 +26,10 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  sed 's|fftw3f_threads|fftw3f|g' \
-     -i "${_plug}/meson.build"
 }
 
 build() {
   cd build
-  CXXFLAGS+=" -lfftw3f_threads"
   arch-meson "../${_plug}"
 
   ninja
