@@ -1,0 +1,23 @@
+pkgbase = bspwm-rounded-corners
+	pkgdesc = Tiling window manager based on binary space partitioning
+	pkgver = 0.9.9
+	pkgrel = 1
+	url = https://github.com/dylanaraps/bspwm
+	install = bspwm-rounded-corners.install
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	optdepends = sxhkd: to define keyboard and pointer bindings
+	optdepends = xdo: for the example panel
+	conflicts = bspwm
+	conflicts = bspwm-git
+	source = git+https://github.com/baskerville/bspwm#tag=0.9.9
+	source = rounded-corners.patch
+	sha256sums = SKIP
+	sha256sums = 7c5d39d8f0fed0045e87cee3aaf3fcd4f1d87da08491a7f2e816b85976745ca0
+
+pkgname = bspwm-rounded-corners
+

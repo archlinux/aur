@@ -1,0 +1,3 @@
+post_install() {
+    echo "You can set the border radius with: bspc config border_radius"
+}
