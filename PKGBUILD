@@ -22,7 +22,5 @@ sha512sums=(
 package() {
   install -Dm755 http-v${pkgver} "$pkgdir"/usr/bin/httplz
   install -Dm644 http-man-v${pkgver}/http.1 "$pkgdir"/usr/share/man/man1/httplz.1
-  install -Dm644 http-man-v${pkgver}/http.1.html "$pkgdir"/usr/share/man/man1/httplz.1.html
-  install -Dm644 http-man-v${pkgver}/http.md "$pkgdir"/usr/share/man/man1/httplz.md
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
