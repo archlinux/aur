@@ -1,0 +1,10 @@
+post_install() {
+    echo "TIP: This package ships with tools to help you with Karaoke Mugen installation"
+    echo "- karaokemugen-install interactively creates the initial configuration and helps you with database setup."
+    echo "- karaokemugen launches the app with Electron UI."
+}
+
+post_remove() {
+    # Eventually make the user think of resources directories
+    echo
+}

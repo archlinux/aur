@@ -1,0 +1,16 @@
+{
+	"sql-file": true,
+	"defaultEnv": "prod",
+	"prod": {
+		"driver": "pg",
+		"user": "karaokemugen_app",
+		"password": "musubi",
+		"host": "localhost",
+		"database": "karaokemugen_app",
+		"port": 5432,
+		"schema": "public",
+		"superuser": "postgres",
+		"superuserPassword": null,
+		"bundledPostgresBinary": false
+	}
+}

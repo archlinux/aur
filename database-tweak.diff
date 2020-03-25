@@ -1,0 +1,13 @@
+diff --git a/config.sample.yml b/config.sample.yml
+index 4dcd6cef..570333a1 100644
+--- a/config.sample.yml
++++ b/config.sample.yml
+@@ -214,7 +214,7 @@ System:
+     Postgres:
+       Windows: app/bin/postgres/bin/
+       OSX: app/bin/postgres/bin/
+-      Linux: app/bin/postgres/bin/
++      Linux: /usr/bin/
+   Repositories:
+     - Name: kara.moe
+       Online: true

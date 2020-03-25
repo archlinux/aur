@@ -1,0 +1,35 @@
+pkgbase = karaokemugen-git
+	pkgdesc = Karaoke playlist manager/player app used in parties or events.
+	pkgver = 3.2.0.rc1.r15.g1a01c9c8
+	pkgrel = 1
+	url = https://mugen.karaokes.moe/
+	install = karaokemugen.install
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = typescript
+	makedepends = yarn
+	makedepends = nodejs>=12
+	depends = mpv
+	depends = ffmpeg
+	depends = postgresql
+	depends = electron
+	provides = karaokemugen
+	conflicts = karaokemugen
+	source = karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app.git
+	source = karaokemugen-lib::git+https://lab.shelter.moe/karaokemugen/lib.git
+	source = install.sh
+	source = run.sh
+	source = database-tweak.diff
+	source = database.json
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = 1673054cbeb6b80097dae4601cf35959
+	md5sums = 6efac0086021d7a7abcf637aae17cc99
+	md5sums = c1807f76ea2d800999910fe66e56fe73
+	md5sums = 0f887855e641ec949ce7c6b69d79ad1e
+
+pkgname = karaokemugen-git
+
