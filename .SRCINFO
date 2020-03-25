@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-libsigc++
 	pkgdesc = Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)
-	pkgver = 2.10.2
+	pkgver = 2.10.3
 	pkgrel = 1
 	epoch = 1
 	url = https://libsigcplusplus.github.io/libsigcplusplus/
@@ -12,8 +12,8 @@ pkgbase = mingw-w64-libsigc++
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.2.tar.xz
-	sha256sums = b1ca0253379596f9c19f070c83d362b12dfd39c0a3ea1dd813e8e21c1a097a98
+	source = https://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.3.tar.xz
+	sha256sums = 0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786
 
 pkgname = mingw-w64-libsigc++
 

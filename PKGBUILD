@@ -1,9 +1,9 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
-# Contributor: David Schury <dasc@posteo.de>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
+# Contributor: David Schury <dasc at posteo dot de>
 
 pkgname=mingw-w64-libsigc++
 _pkgname=libsigc++
-pkgver=2.10.2
+pkgver=2.10.3
 pkgrel=1
 epoch=1
 pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (mingw-w64)"
@@ -14,7 +14,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-configure')
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://ftp.gnome.org/pub/GNOME/sources/$_pkgname/${pkgver%.*}/$_pkgname-${pkgver}.tar.xz")
-sha256sums=('b1ca0253379596f9c19f070c83d362b12dfd39c0a3ea1dd813e8e21c1a097a98')
+sha256sums=('0b68dfc6313c6cc90ac989c6d722a1bf0585ad13846e79746aa87cb265904786')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
