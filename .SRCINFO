@@ -1,14 +1,14 @@
 pkgbase = amass
 	pkgdesc = In-depth subdomain enumeration written in Go
-	pkgver = 3.5.1
+	pkgver = 3.5.2
 	pkgrel = 1
 	url = https://github.com/OWASP/Amass
 	arch = any
 	license = Apache
 	makedepends = go
 	makedepends = git
-	source = Amass-3.5.1.tar.gz::https://github.com/OWASP/Amass/archive/v3.5.1.tar.gz
-	sha512sums = 47f99b8b817ea18b3068ff3dc0f2be5f2302041636f075d4f51ca41bf72ca508f694586e6a8feb9ac31e7244fefc7a8d0c75e067207f59a22739c5bccf496ba1
+	source = Amass-3.5.2.tar.gz::https://github.com/OWASP/Amass/archive/v3.5.2.tar.gz
+	sha512sums = e45aa224351126a4410af314733e084a768a6160ce0fd996e9f6bc96cede7cbf90f5a95bf01aa9a7ffd7cdfca8a4159a4f4833cc2847e244a57e0c1ef19ad028
 
 pkgname = amass
 
