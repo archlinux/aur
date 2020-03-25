@@ -9,7 +9,7 @@ url='http://legacy.lwjgl.org/'
 license=('BSD')
 changelog=ChangeLog
 options=(!strip)
-source=("https://downloads.sourceforge.net/project/java-game-lib/Official Releases/LWJGL $pkgver/$_pkgname-${pkgver}.zip")
+source=("https://sourceforge.net/projects/java-game-lib/files/Official Releases/LWJGL $pkgver/$_pkgname-${pkgver}.zip")
 sha1sums=('6cf7522899c48f0295811a6ae88d93b6f8c21cad')
 md5sums=('2318cb02d35c7b7e28b838595aa353ed')
 
