@@ -1,57 +1,30 @@
-# Maintainer : Daniel Bermond < archlinux-org: dbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-pkgbase=python-sureal
-pkgname=('python-sureal' 'python2-sureal')
-_srcname=sureal
-pkgver=0.3.4
+pkgname=python-sureal
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Subjective quality scores recovery from noisy measurements'
 arch=('any')
 url='https://github.com/Netflix/sureal/'
-license=('APACHE')
-makedepends=('git' 'python' 'python-setuptools' 'python-numpy'
-             'python2' 'python2-setuptools' 'python2-numpy')
-checkdepends=('python-pandas' 'python-matplotlib' 'python-scipy' 'python-pytz'
-              'python-dateutil' 'python-kiwisolver' 'python-cycler')
+license=('Apache')
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas')
+makedepends=('python-setuptools')
+checkdepends=('python-mock' 'python-pytest-cov' 'python-pytest')
+BUILDENV=('!check') # test hangs after completion
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Netflix/sureal/archive/v${pkgver}.tar.gz")
-sha256sums=('922b393e128e64f6901e3e6a2c0203f97e93fba81e53a4574ee1f98a1732f028')
-
-prepare() {
-    cp -a "${_srcname}-${pkgver}" "${_srcname}-${pkgver}-py2"
-}
+sha256sums=('3dd7aaf4752f99798f5a842cd6eef5f2984edd8512a748a3f5d3f1a49cbf8055')
 
 build() {
-    printf '%s\n' '  -> Building for Python...'
-    cd "${_srcname}-${pkgver}"
+    cd "sureal-${pkgver}"
     python setup.py build
-    
-    printf '%s\n' '  -> Building for Python2...'
-    cd "${srcdir}/${_srcname}-${pkgver}-py2"
-    python2 setup.py build
 }
 
 check() {
-    cd "${_srcname}-${pkgver}"
-    python setup.py test
-    
-    #cd "${_srcname}-${pkgver}-py2"
-    #python2 setup.py test
+    cd "sureal-${pkgver}"
+    pytest
 }
 
-package_python-sureal() {
-    depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pandas')
-    
-    cd "${_srcname}-${pkgver}"
+package() {
+    cd "sureal-${pkgver}"
     python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-}
-
-package_python2-sureal() {
-    pkgdesc='Subjective quality scores recovery from noisy measurements (python2)'
-    depends=('python2' 'python2-numpy' 'python2-scipy' 'python2-matplotlib' 'python2-pandas')
-    
-    cd "${_srcname}-${pkgver}-py2"
-    python2 setup.py install --root="$pkgdir" --skip-build  --optimize='1'
-    
-    mv "$pkgdir"/usr/bin/sureal{,2}
-    sed -i '1s/$/2/' "${pkgdir}/usr/lib/python2.7/site-packages/sureal/__main__.py"
 }
