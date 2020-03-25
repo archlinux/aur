@@ -1,0 +1,13 @@
+pkgbase = genimage
+	pkgdesc = tool to generate multiple filesystem and flash images from a tree
+	pkgver = 12
+	pkgrel = 1
+	url = https://github.com/pengutronix/genimage
+	arch = x86_64
+	license = GPL2
+	depends = confuse
+	source = genimage-12.tar.gz::https://github.com/pengutronix/genimage/archive/v12.tar.gz
+	sha256sums = 7912d8cd02b4df2213c60346d3679f74fd3a864117bbbffe2ff74e806d1e236d
+
+pkgname = genimage
+
