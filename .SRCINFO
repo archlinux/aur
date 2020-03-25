@@ -1,21 +1,19 @@
 pkgbase = ruby-pry
 	pkgdesc = An IRB alternative and runtime developer console.
-	pkgver = 0.13.0
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = http://pryrepl.org
 	arch = any
 	license = MIT
-	checkdepends = ruby-rspec
-	checkdepends = ruby-rake
-	checkdepends = ruby-bundler
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-coderay
 	depends = ruby-method_source
+	noextract = pry-0.12.2.gem
 	options = !emptydirs
-	source = https://github.com/pry/pry/archive/v0.13.0.tar.gz
-	sha256sums = aa347b8fb9cbe8b14ce5e9bb9229556a5bbce054e959f90abb939424b26d14c3
+	source = https://rubygems.org/downloads/pry-0.12.2.gem
+	sha256sums = c9bc4f2dffe767043bde6b2aad52aa24916b68727420bd38f34d860c7a383503
 
 pkgname = ruby-pry
 
