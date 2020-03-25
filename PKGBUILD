@@ -5,7 +5,7 @@
 
 _npmname=mocha
 pkgname=nodejs-$_npmname
-pkgver=5.2.0
+pkgver=7.1.1
 pkgrel=1
 pkgdesc="Simple, flexible, fun test framework."
 arch=(any)
@@ -15,7 +15,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('1a3f248571484e576887ed920e3f5f7a984afe384de42c543b42ebebf20e63b1')
+sha256sums=('9b13b891e87df4837eb1bad2815a280c973f95360ec557dfd6afdd2334f75d6a')
 
 package() {
   npm install \
