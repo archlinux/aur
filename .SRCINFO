@@ -7,6 +7,7 @@ pkgbase = nodejs-aws-cdk
 	license = Apache
 	makedepends = npm
 	depends = nodejs
+	optdepends = python: python language support
 	noextract = aws-cdk-1.31.0.tgz
 	source = http://registry.npmjs.org/aws-cdk/-/aws-cdk-1.31.0.tgz
 	sha1sums = e65dea885fb1e2a0fbcaee4bc6f85c443f7d58f5
