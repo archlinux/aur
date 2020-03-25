@@ -3,16 +3,26 @@
 
 _pkgname=libertinus
 pkgname="otf-$_pkgname-git"
-pkgver=6.10.r34.g2b2108e
-pkgrel=3
+pkgver=6.11.r19.g61f0348
+pkgrel=1
 pkgdesc='The Libertinus font family, a fork of Linux Libertine and Biolinum with OpenType math'
 arch=('any')
 url="https://github.com/alif-type/$_pkgname"
 license=('OFL')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-makedepends=('fontforge' 'mupdf-tools' 'python-fonttools' 'python-pcpp' 'psautohint' 'texlive-core')
-makedepends+=('python-fs') # Remove after fixed: https://bugs.archlinux.org/task/65645
+_py_deps=('fonttools'
+          'fs'
+          'lxml'
+          'sfdlib'
+          'skia-pathops'
+          'ufo2ft'
+          'ufolib2')
+makedepends=('mupdf-tools'
+             'psautohint'
+             'python'
+             "${_py_deps[@]/#/python-}"
+             'texlive-core')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
