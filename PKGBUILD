@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-chrono-date
 pkgver=2.4.1+134+g9a0ee25
-pkgrel=2
+pkgrel=3
 pkgdesc="A date and time library based on the C++11/14/17 <chrono> header"
 arch=('any')
 url="https://howardhinnant.github.io/date/date.html"
