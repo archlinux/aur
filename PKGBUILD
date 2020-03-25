@@ -9,7 +9,7 @@ url='https://www.ankama.com/en/launcher'
 arch=('i686' 'x86_64')
 license=('custom:Ankama License')
 install='ankama-launcher.install'
-depends=('zlib' 'bash')
+depends=('zlib' 'bash' 'fuse')
 makedepends=('p7zip')
 optdepends=('wine: to play Dofus'
             'java-environment: to play Wakfu')

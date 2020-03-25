@@ -10,6 +10,7 @@ pkgbase = ankama-launcher
 	makedepends = p7zip
 	depends = zlib
 	depends = bash
+	depends = fuse
 	optdepends = wine: to play Dofus
 	optdepends = java-environment: to play Wakfu
 	options = !strip
