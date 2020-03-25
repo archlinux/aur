@@ -1,13 +1,13 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source Sony PlayStation 3 Emulator'
 arch=('x86_64')
 url='https://rpcs3.net/'
 license=('GPL2')
 depends=('ffmpeg' 'glew' 'openal' 'qt5-base' 'vulkan-icd-loader')
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'spirv-tools' 'vulkan-headers')
 options=('!strip')
 source=("https://github.com/RPCS3/$pkgname/archive/v$pkgver.tar.gz"
     'FAudio.tar.gz::https://github.com/FNA-XNA/FAudio/archive/9c7d2d1430c9dbe4e67c871dfe003b331f165412.tar.gz'
