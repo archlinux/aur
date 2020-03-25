@@ -3,7 +3,7 @@
 # Contributor: Rowisi < nomail <at> private <dot> com >
 
 pkgname=vscodium-bin
-pkgver=1.43.1
+pkgver=1.43.2
 pkgrel=1
 pkgdesc="Binary releases of VS Code without MS branding/telemetry/licensing."
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -26,9 +26,9 @@ source_x86_64=("${pkgname}-${pkgver}-${pkgrel}-x86_64.tar.gz::${url}/releases/do
 source_aarch64=("${pkgname}-${pkgver}-${pkgrel}-aarch64.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm64-${pkgver}.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-${pkgrel}-armv7h.tar.gz::${url}/releases/download/${pkgver}/VSCodium-linux-arm-${pkgver}.tar.gz")
 
-sha256sums_x86_64=('5a8c67b3da103baaa843797d4dc487c167c9068ae99181d8f483baf632ef5975')
-sha256sums_aarch64=('4fdba0f809bf9b9533663951514ecd79bb42b3f76502cc8654ec1c32c96e350b')
-sha256sums_armv7h=('9284f85c832441b20462843acaa69da9b1efd8407a5818c78e415e39f13f9cb7')
+sha256sums_x86_64=('957f7f6a6286fbbf9daf1c4d63469c577b06cdee8461b9f021c8c94d87cffbf0')
+sha256sums_aarch64=('213e8788a45a38493bcdf306eb7c21bf153e5e8dfc5ec87adc04e6949289a82f')
+sha256sums_armv7h=('37ea6df7821ff34c786d62cf5d3d72351cd727a3906e32849594feda87c41006')
 
 noextract=("${pkgname}-${pkgver}-${pkgrel}-${CARCH}.tar.gz")
 
