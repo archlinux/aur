@@ -3,8 +3,8 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
-pkgver=4.3.2
-pkgrel=3
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('x86_64')
 url="https://slack.com/downloads"
@@ -14,7 +14,7 @@ optdepends=('org.freedesktop.secrets')
 source=("https://downloads.slack-edge.com/linux_releases/${pkgname}-${pkgver}-amd64.deb"
         "${pkgname}.patch")
 noextract=("${pkgname}-${pkgver}-amd64.deb")
-sha256sums=('38ebbf79365226b83527cd754474ad680b0c83bd420d0fe1e5e4626889535908'
+sha256sums=('22dc90c14a845b9d789952d2c97d76bd54a350062a6d8d9b51097b91fa735940'
             '81505ef6092a0c0c2a660e5c90cdb94bf2dd09e2d8f39c887e4c363d7317e223')
 
 package() {
