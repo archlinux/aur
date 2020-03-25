@@ -1,0 +1,14 @@
+[Unit]
+Description=nfapd collector to port %i
+After=network.target
+
+[Service]
+User=nfdump
+Group=nfdump
+Type=forking
+ExecStart=/usr/bin/nfcapd -w -D -p %i -B 212992 -S 1 -P /run/nfdump/nfcapd.p%i.pid -z -I peer%i -l /var/lib/nfdump/profiles-data/live/peer%i
+PIDFile=/run/nfdump/nfcapd.p%i.pid
+
+[Install]
+WantedBy=multi-user.target
+
