@@ -3,10 +3,10 @@
 
 pkgname=trufont-git
 pkgver=0.6.3.r18.ge8d731e
-pkgrel=1
+pkgrel=2
 pkgdesc='A streamlined and hackable font editor'
 arch=('any')
-url="https://github.com/${pkgname%-git}/${pkgname%-git}"
+url='https://trufont.github.io'
 license=('GPL3' 'LGPL3')
 _pydeps=('appdirs'
          'booleanoperations'
@@ -29,7 +29,9 @@ _pydeps=('appdirs'
          'zopfli')
 depends=('python' "${_pydeps[@]/#/python-}")
 makedepends=('git' 'python-setuptools')
-source=("git+$url.git")
+provides=("${pkgname%-git}")
+conflicts=("${provides[@]}")
+source=("git+https://github.com/${pkgname%-git}/${pkgname/-/.}")
 sha256sums=('SKIP')
 
 pkgver() {

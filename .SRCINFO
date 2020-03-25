@@ -1,8 +1,8 @@
 pkgbase = trufont-git
 	pkgdesc = A streamlined and hackable font editor
 	pkgver = 0.6.3.r18.ge8d731e
-	pkgrel = 1
-	url = https://github.com/trufont/trufont
+	pkgrel = 2
+	url = https://trufont.github.io
 	arch = any
 	license = GPL3
 	license = LGPL3
@@ -28,6 +28,8 @@ pkgbase = trufont-git
 	depends = python-ufo2ft
 	depends = python-unicodedata2
 	depends = python-zopfli
+	provides = trufont
+	conflicts = trufont
 	source = git+https://github.com/trufont/trufont.git
 	sha256sums = SKIP
 
