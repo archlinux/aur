@@ -4,8 +4,8 @@
 
 pkgname=lirc-git
 _pkgname=lirc
-pkgver=r3246.60ed3b05
-pkgrel=2
+pkgver=r3261.fc67ec65
+pkgrel=1
 pkgdesc="Linux Infrared Remote Control utils. Git version."
 arch=('x86_64')
 url="http://www.lirc.org/"
@@ -23,7 +23,7 @@ unfuck_build.patch)
 md5sums=('SKIP'
          '3deb02604b37811d41816e9b4385fcc3'
          'febf25c154a7d36f01159e84f26c2d9a'
-         '14fed9e6f95888e0649cf1caadb6e043')
+         'ed4241a5da975834fd08966d693987f7')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
