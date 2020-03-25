@@ -1,61 +1,49 @@
-#Maintainer: Laramy Black <laramy2020@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Laramy Black <laramy2020@gmail.com>
 pkgname=nuvolaruntime
-pkgver=4.9.0
+pkgver=4.16.0
 pkgrel=1
 pkgdesc="Nuvola Apps Runtime - Tight integration of web apps with your desktop"
-arch=("any")
-url=https://github.com/tiliado/nuvolaruntime/
-license=('custom:BSD')
+arch=('any')
+url="https://nuvola.tiliado.eu"
+license=('BSD 2-Clause "Simplified"')
+depends=("diorite=$pkgver" 'python-gobject' 'json-glib' 'webkit2gtk' 'libnotify'
+         'gst-plugins-ugly' 'libdri2' 'libdrm' 'libsecret')
+makedepends=('git' 'waf' 'valacef')
+optdepends=('libappindicator-gtk3: Tray icon support'
+            'engine.io-client'
+            'unit.js: for JavaScript unit tests')
 provides=('nuvolaplayer')
-conflicts=('nuvolaplayer' 'nuvolaruntime-mse')
-depends=('python' 'vala' 'diorite>=4.7.0' 'glib2' 'ruby-gio2' 'python-gobject2' 'gtk3' 'json-glib' 'webkit2gtk' 'libnotify' 'gstreamer' 'libdri2-git' 'libdrm')
-makedepends=('scour' 'dri2proto')
-source=(https://github.com/tiliado/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('0890df8a4e93cb0caf18469b2f9c52c5')
+conflicts=('nuvolaplayer')
+source=("https://github.com/tiliado/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=()
 
-optdepends=(
-'nuvola-app-8tracks:			8tracks integration for Nuvola Player.'
-'nuvola-app-amazon-cloud-player:	amazon cloud player integration for Nuvola Player.'
-'nuvola-app-bandcamp:			bandcamp integration for Nuvola Player.'
-'nuvola-app-bbc-iplayer:		bbc iplayer integration for Nuvola Player.'
-'nuvola-app-deezer:			deezer integration for Nuvola Player.'
-'nuvola-app-google-calendar:		google calendar integration for Nuvola Player.'
-'nuvola-app-google-play-music:		Google Play integration for Nuvola Player.'
-'nuvola-app-groove:			groove integration for Nuvola Player.'
-'nuvola-app-jango:			jango integration for Nuvola Player.'
-'nuvola-app-jupiter-broadcasting:	Jupiter broadcasting integration for Nuvola Player.'
-'nuvola-app-kexp:			kexp integration for Nuvola Player.'
-'nuvola-app-mixcloud:			mixcloud integration for Nuvola Player.'
-'nuvola-app-owncloud-music:		owncloud music integration for Nuvola Player.'
-'nuvola-app-plex:			plex integration for Nuvola Player.'
-'nuvola-app-pocket-casts:		pocket casts integration for Nuvola Player.'
-'nuvola-app-siriusxm:			siriusxm integration for Nuvola Player.'
-'nuvola-app-soundcloud:			soundcloud integration for Nuvola Player.'
-'nuvola-app-spotify:			spotify integration for Nuvola Player.'
-'nuvola-app-tunein:			tunein integration for Nuvola Player.'
-'nuvola-app-yandex-music:		yandex music integration for Nuvola Player.'
-'nuvola-app-youtube:			youtube integration for Nuvola Player.'
-'nuvola-app-logitech-media-server:	Logitech Media Server integration for Nuvola Player.'
-'libdbusmenu-glib:			Library for passing menus over DBus'
-'libappindicator-gtk2:			Systray icon support'
-'libappindicator-gtk3:                  Systray icon support'
-'libappindicator-sharp:                 Systray icon support'
-'engine.io-client:			Cross-browser/cross-device bi-directional communication layer for Socket.IO.'
-'unit.js:				Unit testing framework for javascript / Node.js.'
-)
 prepare() {
-cd "$srcdir/${pkgname}-${pkgver}"
-sed 's|usr/share/vala-0\.36|usr/share/vala-0.38|g' -i vapi/webkit2gtk-web-extension-4.0.patch vapi/glib-2.0.patch wscript
+	cd "$pkgname-$pkgver"
+	sed -i 's|usr/share/vala-0\.36|usr/share/vala-0.46|g' \
+		vapi/webkit2gtk-web-extension-4.0.patch vapi/glib-2.0.patch wscript
 }
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf configure --prefix=/usr --nounity --libdir=/usr/lib --noappindicator
-    ./waf build
+	cd "$pkgname-$pkgver"
+	waf configure \
+		--prefix=/usr \
+		--libdir=/usr/lib \
+		--no-vala-lint \
+		--no-js-lint \
+		--no-unity \
+		--no-appindicator
+	waf build
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	LD_LIBRARY_PATH=./build ./build/run-dioritetests
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    ./waf install --destdir=${pkgdir}
+	cd "$pkgname-$pkgver"
+	waf install --destdir="$pkgdir"
+
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
