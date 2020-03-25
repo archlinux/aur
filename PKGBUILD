@@ -1,4 +1,4 @@
-# Maintainer: Matthew Carr <mdcarr941 at gmail>
+# Maintainer: Matthew Carr <mdcarr941 at gmail dot com>
 
 # This package is a trivial modification of
 # https://aur.archlinux.org/packages/canon-pixma-# ts5055-complete/
