@@ -1,0 +1,15 @@
+usr/lib/libreoffice/share/template/common/presnt/alizarin.otp
+usr/lib/libreoffice/share/template/common/presnt/beehive.otp
+usr/lib/libreoffice/share/template/common/presnt/blue-curve.otp
+usr/lib/libreoffice/share/template/common/presnt/classy-red.otp
+usr/lib/libreoffice/share/template/common/presnt/clean-inspiration.otp
+usr/lib/libreoffice/share/template/common/presnt/dna.otp
+usr/lib/libreoffice/share/template/common/presnt/focus.otp
+usr/lib/libreoffice/share/template/common/presnt/impress.otp
+usr/lib/libreoffice/share/template/common/presnt/lights.otp
+usr/lib/libreoffice/share/template/common/presnt/nature-illustration.otp
+usr/lib/libreoffice/share/template/common/presnt/metropolis.otp
+usr/lib/libreoffice/share/template/common/presnt/pencil.otp
+usr/lib/libreoffice/share/template/common/presnt/piano.otp
+usr/lib/libreoffice/share/template/common/presnt/portfolio.otp
+usr/lib/libreoffice/share/template/common/presnt/progress.otp
