@@ -1,7 +1,7 @@
 pkgbase = calculix
 	pkgdesc = CalculiX: 3D finite element solver and post-processor (executables)
 	pkgver = 2.16
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.calculix.de/
 	arch = i686
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = calculix
 	depends = mesa
 	depends = glu
 	depends = libxmu
+	depends = libxi
 	optdepends = calculix-doc: documentation and examples
 	options = !makeflags
 	options = !buildflags

@@ -7,13 +7,13 @@
 
 pkgname=calculix
 pkgver=2.16
-pkgrel=2
+pkgrel=3
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
 url="http://www.calculix.de/"
 license=('GPL2')
-depends=('arpack' 'spooles' 'libsnl-svn' 'blas' 'mesa' 'glu' 'libxmu')
+depends=('arpack' 'spooles' 'libsnl-svn' 'blas' 'mesa' 'glu' 'libxmu' 'libxi')
 optdepends=('calculix-doc: documentation and examples')
 makedepends=('gcc-fortran' 'perl')
 checkdepends=('perl')
