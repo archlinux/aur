@@ -51,7 +51,7 @@ package_ttf-symbola-infinality() {
   groups=('infinality-bundle-fonts')
   pkgdesc+=" (Infinality configuration)"
   install -Dm644 -t "$pkgdir/etc/fonts/conf.avail/" [0-9]*.conf
-  install -dm644 "$pkgdir/etc/fonts/conf.d"
+  install -dm755 "$pkgdir/etc/fonts/conf.d"
   cd "$pkgdir/etc/fonts/conf.d"
   ln -s ../conf.avail/*.conf .
 }
