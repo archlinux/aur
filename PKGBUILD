@@ -2,12 +2,11 @@
 
 pkgname=ttf-webhostinghub-glyphs
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='WebHostingHub Glyphs icon font by webhostinghub.com'
 arch=('any')
 url='https://www.webhostinghub.com/glyphs/'
 license=('OFL')
-depends=('fontconfig')
 makedepends=('fontforge')
 source=('https://www.webhostinghub.com/glyphs/resources/whhg-font.zip'
         'rename.pe')
