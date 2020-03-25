@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=81.0.4044.17
+pkgver=81.0.4044.69
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('c1e8493f02406c85315bba91618d151855a49ba4078002c3758862f5069d5e6f'
+sha256sums=('6dfbad39bb874735d9bf183314ab9cffe7e1f240489e09a7898bdd3765d9f09c'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
@@ -49,7 +49,7 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
-  [libjpeg]=libjpeg
+  #[libjpeg]=libjpeg
   #[libpng]=libpng    # https://crbug.com/752403#c10
   [libvpx]=libvpx
   [libwebp]=libwebp
@@ -63,7 +63,7 @@ declare -gA _system_libs=(
 )
 _unwanted_bundled_libs=(
   ${!_system_libs[@]}
-  ${_system_libs[libjpeg]+libjpeg_turbo}
+  ${libjpeg_turbo}
 )
 depends+=(${_system_libs[@]})
 
