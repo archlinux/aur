@@ -3,10 +3,11 @@
 pkgname=proton-ge-custom
 _srctag=5.4-GE-3
 pkgver=${_srctag//-/.}
+_commit=90c0c62237f8569bfbf9419b695b5006ab753da3
 _geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build"
 arch=(x86_64)
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -98,7 +99,7 @@ optdepends=(
 )
 makedepends=(${makedepends[@]} ${depends[@]})
 source=(
-    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#tag=$_srctag
+    proton-ge-custom::git+https://github.com/gloriouseggroll/proton-ge-custom.git#commit=${_commit} #tag=${_srctag}
     wine::git://source.winehq.org/git/wine.git
     wine-staging::git+https://github.com/wine-staging/wine-staging.git
     vkd3d-doitsujin::git+https://github.com/doitsujin/vkd3d.git
@@ -146,7 +147,6 @@ prepare() {
     [ ! -d build ] && mkdir build
 
     cd proton-ge-custom
-
     for submodule in ffmpeg openvr SPIRV-Headers Vulkan-Headers FAudio fonts/liberation-fonts; do
         git submodule init "${submodule}"
         git config submodule."${submodule}".url ../"${submodule#*/}"
@@ -265,6 +265,10 @@ prepare() {
     echo "NFSW launcher fix"
     patch -Np1 < ../game-patches-testing/game-patches/NFSWLauncherfix.patch
 
+    #disabled for now - broken on wine 5.0+
+    echo "applying MHW ntdll patch"
+    patch -Np1 < ../game-patches-testing/game-patches/MHW-new.patch
+
     echo "fix steep and AC Odyssey fullscreen"
     patch -Np1 < ../game-patches-testing/wine-patches/0001-Add-some-semi-stubs-in-user32.patch
 
@@ -285,6 +289,9 @@ prepare() {
     patch -Np1 < ../game-patches-testing/proton-valve-patches/proton-fsync_staging.patch
     patch -Np1 < ../game-patches-testing/proton-valve-patches/proton-fsync-spincounts.patch
     
+    echo "revert necessary for fshack"
+    patch -Np1 < ../game-patches-testing/proton-hotfixes/wine-winex11.drv_Calculate_mask_in_X11DRV_resize_desktop.patch
+
     echo "fullscreen hack"
     patch -Np1 < ../game-patches-testing/proton-valve-patches/valve_proton_fullscreen_hack-staging.patch
 
@@ -366,12 +373,14 @@ build() {
     # Use -mno-avx for wine too
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
-    export CFLAGS+=" -mno-avx"
+    export CFLAGS+=" -mno-avx -fno-stack-protector"
+    export CXXFLAGS+=" -mno-avx -fno-stack-protector"
     #export CFLAGS+=" -fno-tree-vectorize"
     #export CFLAGS="${CFLAGS/-O3/-O2}"
     # From wine-staging PKGBUILD
     # Doesn't compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/ -fno-plt/}"
+    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
 
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \

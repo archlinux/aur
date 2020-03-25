@@ -1,7 +1,7 @@
 pkgbase = proton-ge-custom
 	pkgdesc = Compatibility tool for Steam Play based on Wine and additional components. GloriousEggroll's custom build
 	pkgver = 5.4.GE.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/GloriousEggroll/proton-ge-custom
 	arch = x86_64
 	license = custom
