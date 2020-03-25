@@ -1,6 +1,6 @@
 pkgbase = linux-ck
-	pkgver = 5.5.11
-	pkgrel = 2
+	pkgver = 5.5.12
+	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -8,8 +8,8 @@ pkgbase = linux-ck
 	makedepends = kmod
 	makedepends = libelf
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.11.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.11.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.12.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.5.12.tar.sign
 	source = config
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = http://ck.kolivas.org/patches/5.0/5.5/5.5-ck1/patch-5.5-ck1.xz
@@ -26,7 +26,7 @@ pkgbase = linux-ck
 	source = 0011-iwlwifi-don-t-send-GEO_TX_POWER_LIMIT-if-no-wgds-tab.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = a547afcfd14d9253b27230ed88b4f8a9569bcf85ad6bad8c299deab1e4d2f42e
+	sha256sums = 0e741b8397b8348403c47c550a646f96f34393854287cfb5cb2ccd8a826403ec
 	sha256sums = SKIP
 	sha256sums = a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
@@ -50,11 +50,11 @@ pkgname = linux-ck
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-ck=5.5.11
+	provides = linux-ck=5.5.12
 
 pkgname = linux-ck-headers
 	pkgdesc = Headers and scripts for building modules for Linux-ck kernel
 	depends = linux-ck
-	provides = linux-ck-headers=5.5.11
-	provides = linux-headers=5.5.11
+	provides = linux-ck-headers=5.5.12
+	provides = linux-headers=5.5.12
 
