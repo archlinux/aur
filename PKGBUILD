@@ -1,28 +1,54 @@
-# Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
-pkgbasename='trufont'
-pkgname=($pkgbasename'-git')
-pkgver=r321.2ae3efc
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Anselmo L. S. Melo <anselmo.melo@intel.com>
+
+pkgname=trufont-git
+pkgver=0.6.3.r18.ge8d731e
 pkgrel=1
-pkgdesc=""
+pkgdesc='A streamlined and hackable font editor'
 arch=('any')
-url="https://github.com/trufont/trufont"
-license=('GPL3' 'LGPL2.1')
-makedepends=('git')
-depends=('python-defcon-git' 'python-robofab-git')
-source=("git+https://github.com/trufont/trufont.git")
+url="https://github.com/${pkgname%-git}/${pkgname%-git}"
+license=('GPL3' 'LGPL3')
+_pydeps=('appdirs'
+         'booleanoperations'
+         'brotli'
+         'compreffor'
+         'cu2qu'
+         'defcon'
+         'fonttools'
+         'fs'
+         'hsluv'
+         'lxml'
+         'pyclipper'
+         'pyqt5'
+         'pyqt5-sip'
+         'pytz'
+         'six'
+         'ufo-extractor'
+         'ufo2ft'
+         'unicodedata2'
+         'zopfli')
+depends=('python' "${_pydeps[@]/#/python-}")
+makedepends=('git' 'python-setuptools')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
-package() {
-  depends=('python-setuptools')
-
-  cd "$srcdir/$pkgbasename"
-  python3 setup.py install --root="$pkgdir/" --optimize=1
+pkgver() {
+    cd "${pkgname%-git}"
+    git describe --tags --abbrev=7 --match="[0-9]*" HEAD |
+        sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-pkgver() {
-  cd "$srcdir/$pkgbasename"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+build() {
+    cd "${pkgname%-git}"
+	python setup.py build
+}
+
+check() {
+    cd "${pkgname%-git}"
+	# python setup.py test
+}
+
+package() {
+    cd "${pkgname%-git}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
