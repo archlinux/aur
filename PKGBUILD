@@ -2,7 +2,7 @@
 pkgname=session-desktop-git
 pkgver=a91d925
 _ver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -19,13 +19,13 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'patch.diff.example')
 sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8'
-            '25da3b898fef2944cb891c09768d3246ded2ac5723ef017bd89f53ce38c2d904')
+            '89f0f397de04eeffb2322d95dde072871690531111dd621aca2981dcd7112f2f')
 
 prepare() {
   cd $srcdir/session-desktop
   git checkout $pkgver
   echo "Applying patch"
-  sed "s/ver/$pkgver/g" $srcdir/patch.diff.example > $srcdir/patch.diff
+  sed "s/ver_placeholder/$pkgver/g" $srcdir/patch.diff.example > $srcdir/patch.diff
   git apply $srcdir/patch.diff
   source /usr/share/nvm/init-nvm.sh && nvm install 10.13.0
 }
