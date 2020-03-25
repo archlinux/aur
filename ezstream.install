@@ -1,0 +1,6 @@
+# ezstream
+
+post_upgrade() {
+	echo "\n\n ## note: this is BREAKING release ## \n update your 0.6 configs first\n"
+}
+

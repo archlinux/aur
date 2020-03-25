@@ -1,8 +1,9 @@
 pkgbase = ezstream
 	pkgdesc = A command line source client for Icecast media streaming servers.
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icecast.org/ezstream.php
+	install = ezstream.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -11,6 +12,7 @@ pkgbase = ezstream
 	depends = libxml2
 	depends = libshout
 	depends = taglib
+	depends = check
 	source = http://downloads.xiph.org/releases/ezstream/ezstream-1.0.1.tar.gz
 	sha256sums = fc4bf494897a8b1cf75dceefb1eb22ebd36967e5c3b5ce2af9858dbb94cf1157
 

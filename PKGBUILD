@@ -4,12 +4,13 @@
 
 pkgname=ezstream
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line source client for Icecast media streaming servers."
 arch=('i686' 'x86_64')
 url="http://www.icecast.org/ezstream.php"
 license=('GPL')
-depends=('libogg' 'libvorbis' 'libxml2' 'libshout' 'taglib')
+depends=('libogg' 'libvorbis' 'libxml2' 'libshout' 'taglib' 'check')
+install=ezstream.install
 
 
 

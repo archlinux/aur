@@ -1,6 +1,0 @@
-# ezstream
-
-pre_upgrade() {
-	echo "note: this is BREAKING release. update your configs first"
-}
-
