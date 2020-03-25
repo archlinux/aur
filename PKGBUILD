@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue
-pkgver='0.1.6'
+pkgver='0.2.1'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -11,7 +11,7 @@ url='https://github.com/nukesor/pueue'
 source=(
     "https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('6b11643497cedfa7517d1c041951be907f6e138e8efc339cd36309943995b8f1')
+md5sums=('b30bbaaf9d34347ac0afa0b8f9de1571')
 
 build() {
     tar xf "v${pkgver}.tar.gz"
@@ -19,6 +19,8 @@ build() {
 
     # Build the daemon and client
     cargo build --release --locked
+
+    ./build_completions.sh
 }
 
 
