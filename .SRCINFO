@@ -1,7 +1,7 @@
 pkgbase = pueue-git
 	pkgdesc = A task manager and scheduler for shell commands
-	pkgver = v0.1.4.r0.ge5eb58e
-	pkgrel = 1
+	pkgver = v1.0.6.r3.g095751e
+	pkgrel = 2
 	url = https://github.com/nukesor/pueue
 	arch = any
 	license = MIT

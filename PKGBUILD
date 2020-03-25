@@ -1,8 +1,8 @@
 # Maintainer: Arne Beer <arne@twobeer.de>
 
 pkgname=pueue-git
-pkgver=v1.0.6.r3.g095751e
-pkgrel=2
+pkgver=v0.1.6.r26.g07e59f8
+pkgrel=1
 arch=('any')
 pkgdesc='A task manager and scheduler for shell commands'
 license=('MIT')
@@ -23,6 +23,8 @@ build() {
 
     # Build the daemon and client
     cargo build --release --locked
+
+    ./build_completions.sh
 }
 
 package() {
