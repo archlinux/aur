@@ -1,0 +1,16 @@
+pkgbase = ion-shell
+	pkgdesc = a modern system shell that features a simple, yet powerful, syntax.
+	pkgver = master
+	pkgrel = 1
+	url = https://gitlab.redox-os.org/redox-os/ion/
+	install = ion.install
+	arch = x86_64
+	license = MIT
+	makedepends = rustup
+	depends = gcc-libs
+	provides = loki-network
+	source = git+https://gitlab.redox-os.org/redox-os/ion/
+	sha256sums = SKIP
+
+pkgname = ion-shell
+
