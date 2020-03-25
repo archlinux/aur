@@ -3,7 +3,7 @@
 _plug=vsfilterscript
 pkgname=vapoursynth-lib-${_plug}-git
 pkgver=r37.98c5c11
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=181027'
@@ -21,21 +21,8 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare(){
-  cd "${_plug}"
-
-  echo "all:
-	  g++ -c -std=gnu++2a -fconcepts -fPIC ${CXXFLAGS//O2/O3} ${CPPFLAGS} -I. $(pkg-config --cflags vapoursynth) -o EntryPoint.o EntryPoint.cxx
-	  g++ -shared -fPIC ${LDFLAGS} -lstdc++ -o lib${_plug}.so EntryPoint.o" > Makefile
-}
-
-build() {
-  LC_ALL=C make -C "${_plug}"
-}
-
 package() {
   cd "${_plug}"
-  install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/lib${_plug}.so"
 
   for i in *.h* *.cxx; do install -Dm644 "${i}" "${pkgdir}/usr/include/vsfilterscript/${i}"; done
 

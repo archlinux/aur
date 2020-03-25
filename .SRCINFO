@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-lib-vsfilterscript-git
 	pkgdesc = Library for Vapoursynth: vsfilterscript (GIT version)
 	pkgver = r37.98c5c11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.doom9.org/showthread.php?t=181027
 	arch = x86_64
 	license = GPL
