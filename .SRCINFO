@@ -1,0 +1,15 @@
+pkgbase = rofs-filtered
+	pkgdesc = A filtered read-only filesystem for FUSE
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://github.com/gburca/rofs-filtered/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = fuse2
+	backup = etc/rofs-filtered.rc
+	source = rofs-filtered-1.7.tar.gz::https://codeload.github.com/gburca/rofs-filtered/tar.gz/rel-1.7
+	sha256sums = d66066dfd0274a2fb7b71dd929445377dd23100b9fa43e3888dbe3fc7e8228e8
+
+pkgname = rofs-filtered
+
