@@ -1,0 +1,16 @@
+pkgbase = ansible-pacman_key
+	pkgdesc = Ansible module to manage pacman's list of trusted keys
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/grawlinson/ansible-pacman_key
+	arch = any
+	license = GPL
+	depends = ansible
+	source = ansible-pacman_key-1.0.0.tar.gz::https://github.com/grawlinson/ansible-pacman_key/archive/1.0.0.tar.gz
+	source = ansible-pacman_key-1.0.0.tar.gz.asc::https://github.com/grawlinson/ansible-pacman_key/releases/download/1.0.0/1.0.0.tar.gz.asc
+	validpgpkeys = 034D823DA2055BEE6A6BF0BB25EA6900D9EA5EBC
+	sha512sums = b94f56b6f4389b7b09e5d058fdf67bd63ed16ffe1b3f3c6ee09875cb3dd9a52affff8c16b1656a8d6d0edf3fc8c6fd339e261f9806a5bc0f083d1e5fedd24921
+	sha512sums = SKIP
+
+pkgname = ansible-pacman_key
+
