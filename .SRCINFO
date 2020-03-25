@@ -1,16 +1,17 @@
-pkgbase = miniserve-bin
-	pkgdesc = Tool to serve files via HTTP
-	pkgver = 0.6.0
-	pkgrel = 2
-	url = https://github.com/svenstaro/miniserve
+pkgbase = httplz-bin
+	pkgdesc = Host These Things Please - a basic http server for hosting a folder fast and simply
+	pkgver = 1.9.1
+	pkgrel = 0
+	url = https://github.com/thecoshman/http
 	arch = x86_64
 	license = MIT
-	provides = miniserve
-	conflicts = miniserve
-	source = miniserve-0.6.0::https://github.com/svenstaro/miniserve/releases/download/v0.6.0/miniserve-linux-x86_64
-	source = https://github.com/svenstaro/miniserve/raw/v0.6.0/LICENSE
+	noextract = http-man-v1.9.1.tbz2
+	source = https://github.com/thecoshman/http/releases/download/v1.9.1/http-v1.9.1
+	source = https://github.com/thecoshman/http/releases/download/v1.9.1/http-man-v1.9.1.tbz2
+	source = https://github.com/thecoshman/http/raw/v1.9.1/LICENSE
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = miniserve-bin
+pkgname = httplz-bin
 
