@@ -8,7 +8,7 @@
 # Contributor: bohoomil <@zoho.com>
 
 pkgbase=font-symbola
-pkgname=('otf-symbola' 'ttf-symbola' 'ttf-symbola-infinity')
+pkgname=('otf-symbola' 'ttf-symbola' 'ttf-symbola-infinality')
 pkgver=13.00
 pkgrel=6
 pkgdesc='Font for symbol blocks of the Unicode Standard'
@@ -45,7 +45,7 @@ package_ttf-symbola() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
 
-package_ttf-symbola-infinity() {
+package_ttf-symbola-infinality() {
   provides=('ttf-symbola-ib')
   replaces=('ttf-symbola-ib')
   groups=('infinality-bundle-fonts')

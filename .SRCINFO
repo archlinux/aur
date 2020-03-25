@@ -25,7 +25,7 @@ pkgname = ttf-symbola
 	provides = font-symbola
 	conflicts = ttf-symbola-ib<=13.00
 
-pkgname = ttf-symbola-infinity
+pkgname = ttf-symbola-infinality
 	pkgdesc = Font for symbol blocks of the Unicode Standard (Infinality configuration)
 	groups = infinality-bundle-fonts
 	provides = ttf-symbola-ib
