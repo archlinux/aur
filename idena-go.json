@@ -1,7 +1,7 @@
 {
   "DataDir": "/var/idena-go",
   "P2P": {
-    "ListenAddr": ":40404",
+    "ListenAddr": ":50505",
     "NoDiscovery": false
   },
   "RPC": {
@@ -10,7 +10,7 @@
   },
   "IpfsConf": {
     "DataDir": "/var/idena-go/ipfs",
-    "IpfsPort": 40403,
+    "IpfsPort": 50506,
     "Profile": "server"
   },
   "Sync": {
