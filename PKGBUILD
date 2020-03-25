@@ -1,6 +1,7 @@
 # Maintainer: Matthew Carr <mdcarr941 at gmail>
 
-# Based on PKGBUILD from https://aur.archlinux.org/packages/canon-pixma-ts5055-complete/
+# This package is a trivial modification of
+# https://aur.archlinux.org/packages/canon-pixma-# ts5055-complete/
 # which is maintained by Malte Ohmstede.
 # Scanner icon source: http://openiconlibrary.sourceforge.net/gallery2/open_icon_library-full/icons/png/64x64/devices/scanner-3.png
 # The icon source URL isn't alive anymore
