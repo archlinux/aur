@@ -3,25 +3,25 @@
 # TODO: Fix broken help page
 
 pkgname=bookletimposer
-pkgver=0.2
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="Achieve some basic imposition on PDF documents"
 arch=('any')
 url="http://kjo.herbesfolles.org/bookletimposer/"
 license=('GPLv3+')
-depends=('python2>=2.6' 'python2-pypdf2>=1.23' 'python2-gobject' 'desktop-file-utils')
-makedepends=('python2-distutils-extra' 'pandoc')
+depends=('python>=3.5' 'python-pypdf2>=1.26' 'python-gobject' 'desktop-file-utils')
+makedepends=('python-distutils-extra' 'pandoc')
 install=bookletimposer.install
 source=("http://kjo.herbesfolles.org/bookletimposer/archive/$pkgname-$pkgver.tar.gz")
-md5sums=("c0e5517bae1949dc1d707541f7a8eb51")
+md5sums=('2e8d34829f5873590b41d4fe309e4ee0')
 
-prepare() {
+build() {
         cd "$pkgname-$pkgver"
-        sed -i 's/env python$/&2/' lib/$pkgname/__init__.py lib/$pkgname/backend.py lib/$pkgname/config.py lib/$pkgname/gui.py lib/pdfimposer.py setup.py bin/$pkgname
+        python setup.py build
 }
 
 package() {
         cd "$pkgname-$pkgver"
-        python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
+        python setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
         ln -s /usr/share/pixmaps/bookletimposer.svg $pkgdir/usr/share/bookletimposer/bookletimposer.svg
 }
