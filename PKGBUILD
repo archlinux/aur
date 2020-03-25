@@ -11,7 +11,7 @@ url="https://tiliado.eu/diorite"
 license=('BSD 2-Clause "Simplified"')
 depends=('glib2' 'gtk3' 'libgee' 'sqlite' 'libx11' 'gobject-introspection')
 makedepends=('git' 'waf' 'vala' 'python-pyparsing')
-provides=("${pkgname%-git}" 'libdioritegtk4.so-64' 'libdioriteglib4.so-64' 'libdioritedb4.so-64')
+provides=("${pkgname%-git}=4.16.0" 'libdioritegtk4.so-64' 'libdioriteglib4.so-64' 'libdioritedb4.so-64')
 conflicts=("${pkgname%-git}" 'libdioritegtk4' 'libdioriteglib4' 'libdioritedb4')
 source=('git+https://github.com/tiliado/diorite.git')
 sha256sums=('SKIP')

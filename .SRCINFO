@@ -15,7 +15,7 @@ pkgbase = diorite-git
 	depends = sqlite
 	depends = libx11
 	depends = gobject-introspection
-	provides = diorite
+	provides = diorite=4.16.0
 	provides = libdioritegtk4.so-64
 	provides = libdioriteglib4.so-64
 	provides = libdioritedb4.so-64
