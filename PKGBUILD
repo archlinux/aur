@@ -2,7 +2,7 @@
 
 _pkgbase=zombietrackergps
 pkgname=zombietrackergps-git
-pkgver=0.96.r3.gea87787
+pkgver=0.96.r6.g15c8dd1
 pkgrel=1
 _ldutils_projects_url="https://gitlab.com/ldutils-projects/"
 pkgdesc="GPS track manager for Qt using KDE Marble maps. Currently supports GPX and TCX format import."
@@ -55,5 +55,4 @@ package() {
   #for some reason make install creates some unnecessary folders
   cd ${pkgdir}
   ls | grep -v usr | xargs rm -r
-  mv ${srcdir}/build/*.rcc ${pkgdir}/usr/share/zombietrackergps/
 }
