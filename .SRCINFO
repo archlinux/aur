@@ -1,7 +1,7 @@
 pkgbase = quantum-tetris
 	pkgdesc = Quantum Tetris is your traditional tetris game which has several twists based on the concepts of quantum computing.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://quantumtetris.com/
 	install = quantum-tetris.install
 	arch = x86_64

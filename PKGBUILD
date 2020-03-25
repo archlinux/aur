@@ -1,7 +1,7 @@
-# Maintainer: Roland Auer <xxr01i1xx@tuta.io>
+# Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=quantum-tetris
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quantum Tetris is your traditional tetris game which has several twists based on the concepts of quantum computing."
 arch=("x86_64")
 url="http://quantumtetris.com/"
