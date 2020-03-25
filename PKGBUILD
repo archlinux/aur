@@ -3,7 +3,7 @@
 _pkgname=audacious
 pkgname=${_pkgname}-qt5
 epoch=1
-pkgver=3.10.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player (with qt5 interface)"
 arch=('i686' 'x86_64')
@@ -17,16 +17,14 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('audacious-player')
 source=(https://distfiles.audacious-media-player.org/$_pkgname-${pkgver/+/-}.tar.bz2)
-sha256sums=('8366e840bb3c9448c2cf0cf9a0800155b0bd7cc212a28ba44990c3d2289c6b93')
+sha256sums=('3f46025334cc79332ef87a0c94297632f8eceb8e1497bf5a76a57003453c8bea')
 
 build() {
   cd "$srcdir/$_pkgname-${pkgver/+/-}"
 
   ./configure \
     --prefix=/usr \
-    --with-buildstamp='Arch Linux' \
-    --enable-qt \
-    --disable-gtk
+    --with-buildstamp='Arch Linux'
   make
 }
 
