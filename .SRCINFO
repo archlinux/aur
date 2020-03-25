@@ -1,0 +1,17 @@
+pkgbase = cppinsights-git
+	pkgdesc = C++ Insights - See your source code with the eyes of a compiler
+	pkgver = r548.926ca18
+	pkgrel = 1
+	url = https://cppinsights.io
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	makedepends = ninja
+	provides = cppinsights
+	conflicts = cppinsights
+	source = cppinsights-git::git+https://github.com/andreasfertig/cppinsights.git
+	md5sums = SKIP
+
+pkgname = cppinsights-git
+
