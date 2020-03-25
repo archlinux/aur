@@ -2,7 +2,7 @@
 # Contributor: Robosky <fangyuhao0612@gmail.com>
 pkgname=mojave-gtk-theme-git-new
 _pkgname=Mojave-gtk-theme
-pkgver=r330.f184d03
+pkgver=r332.d5cfed8
 pkgrel=1
 pkgdesc='A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.'
 arch=('any')
