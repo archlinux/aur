@@ -1,0 +1,12 @@
+pkgbase = flutter-sdk
+	pkgdesc = Flutter SDK
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = github.com/flutter/flutter
+	arch = x86_64
+	license = BSD
+	source = https://github.com/flutter/flutter/archive/v1.16.2.tar.gz
+	sha256sums = deb64d9b60eb2507a040962eb1d0fb3a70f9e215e38b20343e5278088ad2e3c5
+
+pkgname = flutter-sdk
+
