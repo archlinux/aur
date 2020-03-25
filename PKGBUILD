@@ -44,7 +44,7 @@ else
   _pkgname='urbackup-server'
 fi
 pkgname="${_pkgname}-git"
-pkgver=2.3.7.r103.gaa4f4b17
+pkgver=2.4.8client.r48.g487a3c77
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows Workgroups and Linux, builds server or client'
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
@@ -65,8 +65,8 @@ _scripts=(
   'lvm_remove_filesystem_snapshot'
 )
 _srcdir='urbackup_backend'
-_branchb='dev'
-_branchf='dev'
+_branchb='2.4.x'
+_branchf='2.4.x'
 source=("git+https://github.com/uroni/urbackup_backend.git#branch=${_branchb}" "git+https://github.com/uroni/urbackup_frontend_wx.git#branch=${_branchf}")
 #source=("git+https://github.com/uroni/urbackup_backend.git#commit=9df2ba394f29ee86ad56fdd93179768aca3691fa" "git+https://github.com/uroni/urbackup_frontend_wx.git#commit=70378bf100c5d88e3342a4448c11a0cce83edc30")
 source+=("${_scripts[@]}" 'defaults_client')
@@ -280,7 +280,7 @@ EOF
           -e 's:^\(\s*\)./configure.*$:  ./configure --prefix="/usr" --sbindir="/usr/bin" --localstatedir="/var" --enable-headless:g' \
         -i 'build_client.Arch.sh'
     fi
-    set +e; msg2 'Build Client'; set -e
+    set +u; msg2 'Build Client'; set -u
     set -x
     sh -u -e 'build_client.Arch.sh'
     set +x
@@ -289,7 +289,7 @@ EOF
     sed -e '# Fix configure line' \
         -e 's:^\(\s*\)./configure.*$:& --prefix="/usr" --sbindir="/usr/bin" --sysconfdir="/etc" --localstatedir="/var" --enable-packaging --with-mountvhd:g' \
       -i 'build_server.Arch.sh'
-    set +e; msg2 'Build Server'; set -e
+    set +u; msg2 'Build Server'; set -u
     set -x
     sh -u -e 'build_server.Arch.sh'
     set +x
