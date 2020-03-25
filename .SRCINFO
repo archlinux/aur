@@ -1,7 +1,7 @@
 pkgbase = taskell-bin
-	pkgdesc = Manage and configure Akamai from the Command Line
+	pkgdesc = Command-line Kanban board/task manager with support for Trello boards and GitHub projects
 	pkgver = 1.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://taskell.app
 	arch = x86_64
 	license = Custom
