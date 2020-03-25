@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan dot steffens at gmail dot com>
 
 pkgbase=linux-covolunablu-gaming
-pkgver=5.5.10.arch1
+pkgver=5.5.11.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
