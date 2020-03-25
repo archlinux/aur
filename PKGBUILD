@@ -1,6 +1,6 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
-pkgver=d6a48b9
+pkgver=c7c72e5
 _ver=1.0.5
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
