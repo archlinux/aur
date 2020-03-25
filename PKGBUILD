@@ -2,7 +2,7 @@
 
 pkgname=ansible-pacman_key
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ansible module to manage pacman's list of trusted keys"
 arch=(any)
 url="https://github.com/grawlinson/ansible-pacman_key"
@@ -16,5 +16,5 @@ validpgpkeys=(034D823DA2055BEE6A6BF0BB25EA6900D9EA5EBC) # George Rawlinson <geor
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm644 pacman_key.py "$pkgdir/usr/share/ansible/plugins/modules"
+  install -Dm644 -t "$pkgdir/usr/share/ansible/plugins/modules" pacman_key.py
 }

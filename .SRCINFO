@@ -1,7 +1,7 @@
 pkgbase = ansible-pacman_key
 	pkgdesc = Ansible module to manage pacman's list of trusted keys
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grawlinson/ansible-pacman_key
 	arch = any
 	license = GPL
