@@ -1,7 +1,7 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -10,7 +10,7 @@ depends=(libxtst nss alsa-lib libxss libnotify xdg-utils)
 makedepends=('git' 'nvm' 'yarn')
 optdepends=('libappindicator-gtk3: for tray support')
 provides=(session-messenger-desktop)
-conflicts=(session-desktop-bin session-desktop-appimage)
+conflicts=(session-desktop-bin session-desktop-git session-desktop-appimage)
 options=(!strip)
 install=$pkgname.install
 source=('git+https://github.com/loki-project/session-desktop.git'
