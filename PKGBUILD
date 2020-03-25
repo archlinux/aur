@@ -36,8 +36,6 @@ sha256sums=('SKIP'
             '0ebe2bd3ef3a61827551fe08914b1a0ecc1416362390c2396843a9861d9077f5'
             '88b95a3d8d4ea1a994bb00ec8e00064d3b3b4924cd2149396793aeba05072ab4'
             '885e81ac84179117aa1d1ade566f91e19424c0475136b770bfc39c98c83bb945'
-            # If you're using an HP ENVY x360 13-ag000x series convertible
-            # uncomment the line below.
             #'5d2ea91df28e7d29b32f570e110dc008f931351d6e09674d3ec2b5ed8a6a106b'
             '17467a88c2f624586ac9038c8ac347420e79af72617268709534613bc6b83232')
 
