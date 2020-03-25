@@ -40,5 +40,7 @@ package() {
   cd "${_plug}"
   install -Dm755 "lib${_plug}.so" "${pkgdir}/usr/lib/vapoursynth/lib${_plug}.so"
 
+  for i in *.h* *.cxx; do install -Dm644 "${pkgdir}/usr/include/vsfilterscript/${i}"; done
+
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
 }
