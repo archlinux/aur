@@ -3,7 +3,7 @@
 pkgname=sfd2ufo-git
 _pkgname=sfdLib
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An SFD to UFO converter providing sdflib'
 arch=('any')
 url="https://github.com/alif-type/$_pkgname"
@@ -12,6 +12,8 @@ depends=('python'
          'python-ufolib2'
          'python-fonttools')
 makedepends=('python-setuptools')
+provides=("${pkgname%-git}" 'python-sfdlib')
+conflicts=("${pkgname%-git}")
 options=(!emptydirs)
 source=("git+$url.git")
 sha256sums=('SKIP')
