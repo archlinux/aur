@@ -1,14 +1,14 @@
 # Maintainer: Gamma <GammaFunction@vivaldi.net>
 pkgname=acolor-git
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 license=('ISC')
 pkgdesc='An extensible command colorizer with community scripts'
 url='https://github.com/xPMo/acolor'
 arch=('any')
 provides=('acolor')
 conflicts=('acolor')
-depends=('awk' 'bash' 'sed')
+depends=('gawk' 'bash' 'sed')
 optdepends=('expect: unbuffer to fake tty')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
