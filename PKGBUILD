@@ -1,7 +1,7 @@
 # Maintainer: Roland Auer <xxr01i1xx@tuta.io>
 pkgname=session-desktop
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/session-desktop"
-  source /usr/share/nvm/init-nvm.sh && nvm use 10.13.0
+  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v10.13.0 --silent
   export SIGNAL_ENV=production
   yarn install --frozen-lockfile
   yarn generate
