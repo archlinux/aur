@@ -1,3 +1,4 @@
+# Maintainer: Nils Czernia <nils[at]czserver.de>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
@@ -5,17 +6,15 @@
 pkgname=zenmap
 _pkgname=nmap
 pkgver=7.80
-pkgrel=1
-pkgdesc='Graphical Nmap frontend and results viewer'
-url='https://nmap.org/'
-arch=('any')
-license=('GPL2')
-depends=('nmap' 'pygtk')
-validpgpkeys=('436D66AB9A798425FDA0E3F801AF9F036B9355D0')
-source=("https://nmap.org/dist/${_pkgname}-${pkgver}.tar.bz2"
-        "https://nmap.org/dist/sigs/${_pkgname}-${pkgver}.tar.bz2.asc")
-sha256sums=('fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa'
-            'SKIP')
+pkgrel=2
+pkgdesc="Graphical Nmap frontend and results viewer"
+url="https://nmap.org/"
+arch=("any")
+license=("GPL2")
+depends=("nmap" "pygtk")
+validpgpkeys=("436D66AB9A798425FDA0E3F801AF9F036B9355D0")
+source=("https://nmap.org/dist/${_pkgname}-${pkgver}.tar.bz2")
+sha256sums=("fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa")
 
 package() {
 	cd "${srcdir}/${_pkgname}-${pkgver}/${pkgname}"

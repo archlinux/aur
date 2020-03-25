@@ -1,17 +1,15 @@
 pkgbase = zenmap
 	pkgdesc = Graphical Nmap frontend and results viewer
 	pkgver = 7.80
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nmap.org/
 	arch = any
 	license = GPL2
 	depends = nmap
 	depends = pygtk
 	source = https://nmap.org/dist/nmap-7.80.tar.bz2
-	source = https://nmap.org/dist/sigs/nmap-7.80.tar.bz2.asc
 	validpgpkeys = 436D66AB9A798425FDA0E3F801AF9F036B9355D0
 	sha256sums = fcfa5a0e42099e12e4bf7a68ebe6fde05553383a682e816a7ec9256ab4773faa
-	sha256sums = SKIP
 
 pkgname = zenmap
 
