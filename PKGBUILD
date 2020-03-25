@@ -5,10 +5,10 @@
 
 pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
-_pkgver=9.4.0rc3
-pkgver=9.4.0rc3
-pkgrel=1
-_commit=
+_pkgver=9.4.0
+pkgver=9.4.0
+pkgrel=3
+_commit=bccd744b7d2cb8b81021993d4f57388d9fa338b9
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -16,16 +16,16 @@ license=('GPL3')
 depends=('glib2>=2.42' 'json-glib' 'libsoup' 'dbus-glib' 'polkit' 'vte3'
          'desktop-file-utils' 'pacman>=5.2' 'pacman<5.3' 'gnutls>=3.4' 'libnotify'
          'appstream-glib' 'archlinux-appstream-data' 'git')
-makedepends=('gettext' 'meson' 'vala>=0.47.0' 'libappindicator-gtk3' 'gobject-introspection'
+makedepends=('gettext' 'meson' 'vala>=0.46.0' 'libappindicator-gtk3' 'gobject-introspection'
              'gtk3>=3.22')
 options=(!emptydirs)
 
-source=(#"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
-        "pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-sha256sums=('ea20dd6c3bfef85c57497736cc432ffee552d89a3ec0287dc17bf24c4bbb6017')
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
+        #"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
+sha256sums=('8a3ffb6cab34614250a28505f7c3c6bd15862c90691287ea2363ece14ba7e2e8')
 
 prepare() {
-  # mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
+  mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
   cd "$srcdir/pamac-v$_pkgver"
   # patches here
 

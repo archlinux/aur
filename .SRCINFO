@@ -1,13 +1,13 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.4.0rc3
-	pkgrel = 1
+	pkgver = 9.4.0
+	pkgrel = 3
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
 	makedepends = gettext
 	makedepends = meson
-	makedepends = vala>=0.47.0
+	makedepends = vala>=0.46.0
 	makedepends = libappindicator-gtk3
 	makedepends = gobject-introspection
 	makedepends = gtk3>=3.22
@@ -26,14 +26,14 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.4.0rc3-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/v9.4.0rc3/pamac-v9.4.0rc3.tar.gz
-	sha256sums = ea20dd6c3bfef85c57497736cc432ffee552d89a3ec0287dc17bf24c4bbb6017
+	source = pamac-9.4.0-3.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/bccd744b7d2cb8b81021993d4f57388d9fa338b9/pamac-common-bccd744b7d2cb8b81021993d4f57388d9fa338b9.tar.gz
+	sha256sums = 8a3ffb6cab34614250a28505f7c3c6bd15862c90691287ea2363ece14ba7e2e8
 
 pkgname = pamac-common
 	install = pamac-common.install
 	optdepends = pamac-snap-plugin
 	optdepends = pamac-flatpak-plugin
-	provides = pamac-common=9.4.0rc3-1
+	provides = pamac-common=9.4.0-3
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-common-dev
@@ -41,7 +41,7 @@ pkgname = pamac-common
 
 pkgname = pamac-cli-src
 	depends = pamac-common
-	provides = pamac-cli=9.4.0rc3-1
+	provides = pamac-cli=9.4.0-3
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-cli-dev
@@ -50,8 +50,8 @@ pkgname = pamac-gtk
 	install = pamac-gtk.install
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
-	provides = pamac=9.4.0rc3-1
-	provides = pamac-gtk=9.4.0rc3-1
+	provides = pamac=9.4.0-3
+	provides = pamac-gtk=9.4.0-3
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
@@ -61,6 +61,6 @@ pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon for better integration of pamac-gtk in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
-	provides = pamac-tray-appindicator-src=9.4.0rc3-1
+	provides = pamac-tray-appindicator-src=9.4.0-3
 	conflicts = pamac-tray-appindicator-dev
 
