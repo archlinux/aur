@@ -1,0 +1,16 @@
+pkgbase = pmy-git
+	pkgdesc = General purpose context-aware zsh completion engine powered by fuzzy finder.
+	pkgver = r326.d6b7ccb
+	pkgrel = 1
+	url = https://github.com/relastle/pmy
+	arch = any
+	license = MIT
+	makedepends = go
+	depends = fzf
+	depends = zsh
+	provides = pmy
+	source = pmy::git+https://github.com/relastle/pmy#branch=master
+	sha256sums = SKIP
+
+pkgname = pmy-git
+
