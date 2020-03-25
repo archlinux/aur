@@ -2,7 +2,7 @@
 _pkgname=python-jiramenu
 _gitname=jiramenu
 pkgname=$_pkgname-git
-pkgver=r1.0.7
+pkgver=r1.0.8
 pkgrel=1
 pkgdesc="Dmenu/Rofi frontend for jira"
 
@@ -16,7 +16,8 @@ depends=('python'
          'python-click'
          'python-pyjwt')
 makedepends=('git'
-             'python')
+             'python'
+             'python-setuptools')
 optdepends=('dmenu: either dmenu or rofi is required'
             'rofi: either dmenu or rofi is required')
 provides=("$_pkgname")
