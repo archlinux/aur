@@ -1,6 +1,6 @@
 pkgbase = linux-nitrous
 	pkgver = 5.5.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/xdevs23/linux-nitrous
 	arch = x86_64
 	license = GPL2
@@ -14,7 +14,7 @@ pkgbase = linux-nitrous
 	makedepends = libelf
 	makedepends = coreutils
 	options = !strip
-	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.5.13-2
+	source = git+https://gitlab.com/xdevs23/linux-nitrous.git#tag=v5.5.13-3
 	source = linux-nitrous.preset
 	sha256sums = SKIP
 	sha256sums = 03a08e1df74541e9848685da38134d701684694c43e3428197c6db41e968f246
