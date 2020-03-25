@@ -1,26 +1,29 @@
 pkgname=sgpp
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgdesc="A numerical library for adaptive Sparse Grids"
 url="http://sgpp.sparsegrids.org"
 license=('BSD')
-depends=('armadillo' 'python' 'gsl')
+depends=('armadillo' 'python' 'gsl' 'gmm' 'suitesparse')
 makedepends=('scons' 'swig' 'eigen')
-source=("https://github.com/SGpp/SGpp/archive/v3.2.0.tar.gz")
-sha256sums=('dab83587fd447f92ed8546eacaac6b8cbe65b8db5e860218c0fa2e42f776962d')
+source=("https://github.com/SGpp/SGpp/archive/v${pkgver}.tar.gz")
+sha256sums=('ca4d5b79f315b425ce69b04940c141451a76848bf1bd7b96067217304c68e2d4')
 
 prepare() {
   cd "$srcdir/SGpp-${pkgver}"
-  # gcc 9.x build failure
-  grep -lr 'default(none)' . |xargs sed -i "s| default(none)||g"
+  # tweak umfpack include dir
+  sed -i "s|suitesparse/umfpack.h|umfpack.h|g" base/SConscript base/src/sgpp/base/tools/sle/solver/UMFPACK.cpp
+
+  # error: ‘n’ not specified in enclosing ‘parallel’
+  sed -i "s|shared(system, A, nnz, rowsDone)|shared(system, A, nnz, rowsDone, n)|g" base/src/sgpp/base/tools/sle/solver/Armadillo.cpp base/src/sgpp/base/tools/sle/solver/Eigen.cpp base/src/sgpp/base/tools/sle/solver/Gmmpp.cpp
+  sed -i "s|shared(system, Ti, Tj, Tx, nnz, rowsDone)|shared(system, Ti, Tj, Tx, nnz, rowsDone, n)|g" base/src/sgpp/base/tools/sle/solver/UMFPACK.cpp
 }
 
 package()
 {
   cd "$srcdir/SGpp-${pkgver}"
-  scons SG_JAVA=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1 PREFIX="$pkgdir"/usr/ -Q install ${MAKEFLAGS}
+  scons SG_JAVA=0 COMPILE_BOOST_TESTS=0 RUN_PYTHON_TESTS=0 USE_ARMADILLO=1 USE_EIGEN=1 USE_GMMPP=1 USE_UMFPACK=1 PREFIX="$pkgdir"/usr/ -Q install ${MAKEFLAGS}
   install -d "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
   cp -Lr lib/pysgpp "$pkgdir"`python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
-  mv "$pkgdir"/usr/lib/sgpp/* "$pkgdir"/usr/lib
 }
