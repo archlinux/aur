@@ -1,0 +1,19 @@
+pkgbase = q5go-git
+	pkgdesc = Go Client based on Qt 5, Support KataGo/LeeLa Zero analysis Pandanet and SGF edition
+	pkgver = 20200314.3968725
+	pkgrel = 1
+	url = https://github.com/pzorin/qgo
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	depends = qt5-multimedia
+	depends = qt5-tools
+	provides = q5go
+	conflicts = q5go
+	source = git://github.com/bernds/q5go.git
+	sha256sums = SKIP
+
+pkgname = q5go-git
+
