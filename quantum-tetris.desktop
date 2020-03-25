@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/opt/quantum-tetris/Quantum\ Tetris.x86_64
+Name=Quantum Tetris
+Comment=Quantum Tetris is your traditional tetris game which has several twists based on the concepts of quantum computing.

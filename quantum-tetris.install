@@ -1,6 +1,5 @@
 post_install() {
-    cp /opt/quantum-tetris/quantum-tetris /usr/bin
-    xdg-desktop-menu install /opt/quantum-tetris/quantum-tetris.desktop
+    update-desktop-database /usr/share/applications
 }
 
 post_upgrade() {
@@ -8,6 +7,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    rm /usr/bin/quantum-tetris
-    xdg-desktop-menu uninstall /usr/share/applications/quantum-tetris.desktop
+    update-desktop-database /usr/share/applications
 }
