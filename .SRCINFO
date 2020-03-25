@@ -1,0 +1,17 @@
+pkgbase = font-v
+	pkgdesc = Font version reporting and modification tool
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/source-foundry/font-v
+	arch = any
+	license = MIT
+	checkdepends = python-tox
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-gitpython
+	depends = python-fonttools
+	source = font-v-0.7.1.tar.gz::https://github.com/source-foundry/font-v/archive/v0.7.1.tar.gz
+	sha256sums = cfd6b11820577cd832299a529417b5e2b84e432db0f15276ac10f336b9649b41
+
+pkgname = font-v
+
