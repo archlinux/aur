@@ -44,7 +44,7 @@ setup_postgres() {
         select dbch in "Keep data" "Reset database"; do
             case $dbch in
                 "Keep data" ) echo -e "${_COL_GREEN_}karaokemugen_app database will be used." ; return 0;; # TODO : maybe do some integrity checks
-                "Reset database" ) sudo -u postgres -g postgres -G -- psql -c "DROP DATABASE karaokemugen_app; DROP ROLE IF EXISTS karaokemugen_app;";;
+                "Reset database" ) sudo -u postgres -g postgres -H -- psql -c "DROP DATABASE karaokemugen_app; DROP ROLE IF EXISTS karaokemugen_app;";;
             esac
         done
     fi

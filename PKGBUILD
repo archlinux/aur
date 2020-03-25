@@ -1,7 +1,7 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
 pkgver=3.2.0.rc1.r15.g1a01c9c8
-pkgrel=1
+pkgrel=2
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=(x86_64 i686)
 url="https://mugen.karaokes.moe/"
@@ -20,42 +20,46 @@ source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app
         'install.sh'
         'run.sh'
         'database-tweak.diff'
-        'database.json')
+        'database.json'
+        'icon256.png'
+        'karaokemugen.desktop')
 noextract=()
 md5sums=('SKIP'
         'SKIP'
-        '1673054cbeb6b80097dae4601cf35959'
+        '9bdad543ad67a669cd21cae2450d7fbc'
         '6efac0086021d7a7abcf637aae17cc99'
         'c1807f76ea2d800999910fe66e56fe73'
-        '0f887855e641ec949ce7c6b69d79ad1e')
+        '0f887855e641ec949ce7c6b69d79ad1e'
+        '5e9a33a42fef7572b7e0fa504c586f32'
+        'dc5bfb40322b4f7ee1d0fb54c64aa71a')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
     # Git, tags available
-	git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	git submodule init
+    cd "$srcdir/${pkgname%-git}"
+    git submodule init
     git config submodule.src/lib.url $srcdir/${pkgname%-git}-lib
     git submodule update
     patch --forward -p1 -i '../database-tweak.diff'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     # Prepare dependencies
-	export HOME="$srcdir/$pkgname-home"
-	export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
-	export npm_config_devdir="$srcdir/$pkgname-npm-dev"
-	export npm_config_cache="$srcdir/$pkgname-npm-cache"
+    export HOME="$srcdir/$pkgname-home"
+    export XDG_CACHE_HOME="$srcdir/$pkgname-cache"
+    export npm_config_devdir="$srcdir/$pkgname-npm-dev"
+    export npm_config_cache="$srcdir/$pkgname-npm-cache"
     yarn global add electron-builder
-	yarn install
+    yarn install
     yarn installFrontend
     yarn installSystemPanel
     # Build and package with electron-builder
@@ -67,12 +71,13 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+    cd "$srcdir/${pkgname%-git}"
 
     # Application itself
-	install -dm775 "$pkgdir/opt/${pkgname%-git}"
+    install -dm775 "$pkgdir/opt/${pkgname%-git}"
     cp -r --no-preserve=ownership,mode packages/linux-unpacked/* "$pkgdir/opt/${pkgname%-git}/"
     install -dm775 "$pkgdir/opt/${pkgname%-git}/app"
+    touch "$pkgdir/opt/${pkgname%-git}/portable"
     chmod -R 775 "$pkgdir/opt/${pkgname%-git}/"
 
     # Symlinks for configuration
@@ -91,4 +96,10 @@ package() {
     cp "$srcdir/run.sh" "$pkgdir/usr/bin/karaokemugen"
     cp "$srcdir/install.sh" "$pkgdir/usr/bin/karaokemugen-install"
     chmod 755 "$pkgdir/usr/bin/karaokemugen" "$pkgdir/usr/bin/karaokemugen-install"
+
+    # .desktop entry
+    install -dm755 "$pkgdir/usr/share/pixmaps/"
+    install -dm755 "$pkgdir/usr/share/applications/"
+    install -m644 "$srcdir/icon256.png" "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
+    install -m644 "$srcdir/${pkgname%-git}.desktop" "$pkgdir/usr/share/applications/${pkgname%-git}.desktop"
 }
