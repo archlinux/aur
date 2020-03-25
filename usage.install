@@ -3,6 +3,8 @@ post_install() {
 	echo "Define your colors in the /etc/vconsole.conf file as COLOR_X=hexcode"
 	echo "where X is a number between 0 and 15"
 	echo ""
-	echo "Don't forget to add the colors hook in your /etc/mkinitcpio.conf!"
-	echo ""
+	echo "Don't forget to add the colors hook in your /etc/mkinitcpio.conf"
+        echo "If you're using systemd based initramfs, you have to use the sd-colors hook and enable the systemd service:"
+	echo "# systemctl enable setcolors.service"
+        echo ""
 }
