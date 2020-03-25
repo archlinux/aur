@@ -17,7 +17,7 @@ _py_deps=('fonttools'
           'sfdlib'
           'skia-pathops'
           'ufo2ft'
-          'ufolib2')
+          'ufolib2>=0.6.2')
 makedepends=('mupdf-tools'
              'psautohint'
              'python'

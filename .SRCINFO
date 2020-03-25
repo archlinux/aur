@@ -14,7 +14,7 @@ pkgbase = otf-libertinus-git
 	makedepends = python-sfdlib
 	makedepends = python-skia-pathops
 	makedepends = python-ufo2ft
-	makedepends = python-ufolib2
+	makedepends = python-ufolib2>=0.6.2
 	makedepends = texlive-core
 	provides = otf-libertinus
 	conflicts = otf-libertinus
