@@ -2,13 +2,13 @@
 # Co-Maintainer: Joost Bremmer <contact at madeofmagicandwires dot online>
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
-pkgver=3.7.1
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
 license=('MIT' 'CC0 1.0 Universal')
-makedepends=('go-pie' 'git')
+makedepends=('go-pie' 'git' 'pandoc')
 optdepends=('bash-completion: for bash completions'
             'fzf: Fuzzy Finder integration for bash-completion'
             'fish: for fish completions')
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$
         'conf.yml'
         "git+https://github.com/$pkgname/cheatsheets.git"
         "https://raw.githubusercontent.com/$pkgname/cheatsheets/master/.github/LICENSE.txt")
-sha256sums=('a24cdd2ab82da6115d0daeeeabedb933f9e40ab48ffeec712f442dba945ed856'
+sha256sums=('daa183b9328704bbd00fc423144ce29652b1750e895dbf9c99b131d98b7f01ec'
             'efffbe20041efc3d49ffe596ab5abe60a10adf70219c2ddecdf1caf350972212'
             'SKIP'
             'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
@@ -47,6 +47,9 @@ build() {
 
 	# Clean mod cache for makepkg -C
 	go clean -modcache
+
+	# Generate man page
+	pandoc -s -t man "doc/$pkgname.1.md" -o "doc/$pkgname.1"
 }
 
 package() {
@@ -56,6 +59,7 @@ package() {
 		"$pkgdir/usr/share/bash-completion/completions/$pkgname"
 	install -Dm755 "scripts/$pkgname.fish" -t "$pkgdir/usr/share/fish/completions"
 	install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/$pkgname-LICENSE"
+	install -Dm644 "doc/$pkgname.1" -t "$pkgdir/usr/share/man/man1"
 
 	install -dm755 "$pkgdir/usr/share/$pkgname/cheatsheets/community"
 	find "$srcdir/cheatsheets" \
