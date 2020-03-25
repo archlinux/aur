@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire
-pkgver=0.6.11
+pkgver=0.6.12
 pkgrel=1
 pkgdesc='An I2P file sharing program'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('gradle')
 source=("https://github.com/zlatinb/muwire/archive/muwire-${pkgver}.tar.gz"
         'muwire.desktop'
         'muwire.sh')
-sha256sums=('6df21aeff7b3cd1a441ed91013d6a15f20f1d7a660539bcb3c19b92527b6bdf7'
+sha256sums=('df121c83938678087e667c28026026d00976f5962309d654c3891be3cee1ee94'
             'e3e425d872f3c8cd68037b4ffe71ec66d07148072db89f6af220e7b24881d633'
             'd48d94fef75622bb2afca202804a32cac1cec0514894e1a7c21bb9c2d3a9438b')
 
