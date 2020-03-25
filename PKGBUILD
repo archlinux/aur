@@ -11,6 +11,7 @@ license=('MIT')
 options=('!buildflags')
 makedepends=(
     'mingw-w64-cmake'
+    'mingw-w64-gcc'
     'git'
 )
 
@@ -67,6 +68,8 @@ package() {
     cd "$pkgname"
     for _arch in ${_architectures}; do
         make -C build-${_arch} DESTDIR="$pkgdir/" install
+        install -d 755 "$pkgdir/usr/${_arch}/lib/cmake"
+        mv "$pkgdir/usr/${_arch}/CMake" "$pkgdir/usr/${_arch}/lib/cmake/date"
     done
     install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
