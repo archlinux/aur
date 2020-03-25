@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.watefox.net/"
+url="https://www.waterfox.net/"
 depends=(gtk3 gtk2 libxt startup-notification mime-types dbus-glib nss ttf-font)
 makedepends=(unzip zip diffutils python2-setuptools yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack
