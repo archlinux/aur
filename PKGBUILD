@@ -20,8 +20,8 @@ prepare() {
 
 package() {
     install -dm755 ${pkgdir}/usr/local/bin/${BINAME}
-    install -dm755 ${pkgdir}/usr/share/zsh/site-functions/_${BINAME}
+    install -dm755 ${pkgdir}/usr/share/zsh/site-functions/_yup
     cd "${_pkgname}"
     cp ${_pkgname} ${pkgdir}/usr/local/bin/${BINAME}
-    cp completions/zsh ${pkgdir}/usr/share/zsh/site-functions/_${BINAME}
+    cp completions/zsh ${pkgdir}/usr/share/zsh/site-functions/_yup
 }
