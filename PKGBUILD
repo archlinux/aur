@@ -60,12 +60,17 @@ if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
 
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod
-pkgver=5.5.10
-xanmod=2
-pkgrel=2
+pkgver=5.5.13
+_major=5.5
+_branch=5.x
+xanmod=1
+pkgrel=1
 pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -78,9 +83,15 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
-       choose-gcc-optimization.sh
-       '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
+source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
+        "https://cdn.kernel.org/pub/linux/kernel/v${_branch}/patch-${pkgver}.xz"
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
+        choose-gcc-optimization.sh
+        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+)
 
 # Archlinux patches
 _commits=""
@@ -89,7 +100,10 @@ for _patch in $_commits; do
 done
     
 
-sha256sums=('70d41a105613d5c661746a053c5af3fbd35c618f15a9bde88d6cd007f269aee4'
+sha256sums=('a6fbd4ee903c128367892c2393ee0d9657b6ed3ea90016d4dc6f1f6da20b2330'
+            'SKIP'
+            'a58dad931dda6eba7656551da73d1c452317617c8282c094fa4f646d9422993a'
+            '7e31c0de544da330ae57b031382c4433c0ee0941080fa724b6f16982b3184f5b'
             '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
@@ -98,7 +112,10 @@ export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  cd $_srcname
+  cd linux-${_major}
+
+  # Apply vanilla and XanMod patches
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -149,9 +166,26 @@ prepare() {
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
+  # If it's a full config, will be replaced
+  # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    msg2 "Using user CUSTOM config..."
-    cp -f "${startdir}"/myconfig .config
+    if [ $(wc -l < "${startdir}/myconfig") -gt 5000 ]; then
+      # myconfig is a full config file. Replace it
+      msg2 "Using user CUSTOM config..."
+      cp -f "${startdir}"/myconfig .config
+    else
+      # myconfig is a partial file. Applying every line
+      msg2 "Applying configs..."
+      cat "${startdir}"/myconfig | while read -r _linec ; do
+        if echo "$_linec" | grep "scripts/config" ; then
+          set -- $_linec
+          "$@"
+        else
+          warning "Line format incorrect, ignoring..."
+        fi
+      done
+    fi
+    echo
   fi
 
   make olddefconfig
@@ -170,10 +204,15 @@ prepare() {
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+
+  [[ -z "$_makenconfig" ]] || make nconfig
+
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd $_srcname
+  cd linux-${_major}
   make all
 }
 
@@ -186,7 +225,7 @@ _package() {
   replaces=('linux-xanmod-git')
   conflicts=('linux-xanmod-git')
 
-  cd $_srcname
+  cd linux-${_major}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
@@ -214,7 +253,7 @@ _package-headers() {
   replaces=('linux-xanmod-git-headers')
   conflicts=('linux-xanmod-git-headers')
 
-  cd $_srcname
+  cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
   msg2 "Installing build files..."
