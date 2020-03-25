@@ -1,0 +1,14 @@
+pkgbase = octetos-core
+	pkgdesc = C/C++ library to mainly provider implmetation Semver.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/azaeldevel/octetos-core.git
+	arch = x86_64
+	license = GPL
+	depends = bison
+	depends = libconfig
+	source = https://github.com/azaeldevel/octetos-core/archive/1.2.0-br.tar.gz
+	md5sums = a1adc9f001db1ae6fcda8e8a723e3b92
+
+pkgname = octetos-core
+
