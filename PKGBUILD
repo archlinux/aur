@@ -7,13 +7,13 @@
 _pkgname=armagetronad
 pkgname=${_pkgname}-git
 pkgver='r4128.7392b902f'
-pkgrel=5
+pkgrel=6
 pkgdesc='A Tron Clone in 3D.'
 arch=('x86_64')
 url='http://armagetronad.net/'
 license=('GPL')
 depends=('sdl2_image' 'libxml2' 'sdl2_mixer' 'ftgl' 'boost-libs' 'protobuf')
-optdepends=('python2: language updater')
+optdepends=('python: language updater')
 makedepends=('boost')
 provides=('armagetronad')
 conflicts=('armagetronad')
@@ -27,8 +27,7 @@ pkgver() {
 
 prepare(){
     cd "${srcdir}/${_pkgname}"
-    # python2 fix
-    sed -i 's_#!/usr/bin/python_#!/usr/bin/python2_' language/update.py
+    2to3 -w language/update.py
 }
 
 build() {
