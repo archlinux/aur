@@ -1,6 +1,6 @@
 pkgbase = jupyterlab-git
 	pkgdesc = JupyterLab computational environment
-	pkgver = 18396.git.621e43b
+	pkgver = 18406.git.4c363bb
 	pkgrel = 1
 	url = https://github.com/jupyterlab/jupyterlab
 	arch = any
