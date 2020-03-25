@@ -9,7 +9,6 @@ url="https://gitlab.redox-os.org/redox-os/ion/"
 license=('MIT')
 makedepends=("rustup")
 depends=("gcc-libs")
-provides=(loki-network)
 source=("git+https://gitlab.redox-os.org/redox-os/ion/")
 install=${_tag}.install
 sha256sums=('SKIP')
