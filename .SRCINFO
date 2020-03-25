@@ -25,6 +25,7 @@ pkgbase = mudlet-git
 	optdepends = discord-rpc-api: discord integration
 	optdepends = ttf-bitstream-vera: default font
 	optdepends = ttf-ubuntu-font-family: default font
+	optdepends = noto-fonts-emoji: emoji font support
 	conflicts = mudlet
 	replaces = mudlet
 	source = git+https://github.com/Mudlet/Mudlet.git#branch=development

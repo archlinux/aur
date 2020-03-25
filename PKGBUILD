@@ -12,7 +12,8 @@ depends=('qt5-multimedia' 'hunspell' 'libzip' 'glu' 'lua51-filesystem' 'luazip5.
 makedepends=('git' 'boost' 'qt5-tools')
 optdepends=('discord-rpc-api: discord integration'
             'ttf-bitstream-vera: default font'
-            'ttf-ubuntu-font-family: default font')
+            'ttf-ubuntu-font-family: default font'
+            'noto-fonts-emoji: emoji font support')
 conflicts=('mudlet')
 replaces=('mudlet')
 source=("git+https://github.com/Mudlet/Mudlet.git#branch=development")
