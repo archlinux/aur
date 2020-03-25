@@ -1,6 +1,6 @@
 pkgbase = flowblade
 	pkgdesc = a multitrack non-linear video editor for Linux
-	pkgver = 2.4
+	pkgver = 2.4.0.1
 	pkgrel = 1
 	url = https://github.com/jliljebl/flowblade
 	arch = any
@@ -21,8 +21,8 @@ pkgbase = flowblade
 	depends = sdl_image
 	depends = sox
 	depends = swh-plugins
-	source = https://github.com/jliljebl/flowblade/archive/v2.4.tar.gz
-	sha256sums = 708ec92081d12f1388191fccce69643bf3a30fe6567a0037fb95c8774014472b
+	source = https://github.com/jliljebl/flowblade/archive/v2.4.0.1-fix_release.tar.gz
+	sha256sums = 856fe9fc7cc2d39dd239057b3411a29c947a6ab79e98b8fa8760c3da1e5838f6
 
 pkgname = flowblade
 
