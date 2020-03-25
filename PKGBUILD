@@ -4,7 +4,7 @@
 
 pkgname=ezstream
 pkgver=1.0.1
-pkgrel=3
+pkgrel=1
 pkgdesc="A command line source client for Icecast media streaming servers."
 arch=('i686' 'x86_64')
 url="http://www.icecast.org/ezstream.php"
