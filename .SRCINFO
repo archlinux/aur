@@ -1,6 +1,6 @@
 pkgbase = fcitx5-chinese-addons-git
 	pkgdesc = Addons related to Chinese, including IME previous bundled inside fcitx4
-	pkgver = r158.346414a
+	pkgver = r159.a52a51d
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-chinese-addons
 	arch = i686
