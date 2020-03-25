@@ -1,7 +1,7 @@
 pkgbase = httplz-bin
 	pkgdesc = Host These Things Please - a basic http server for hosting a folder fast and simply
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/thecoshman/http
 	arch = x86_64
 	license = MIT
