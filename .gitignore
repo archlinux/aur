@@ -1,5 +1,5 @@
-amd-sfh-v*.patch
 archlinux-linux/
 pkg/
 src/
 *.pkg.tar*
+*.patch
