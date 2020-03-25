@@ -1,4 +1,7 @@
 # Maintainer: Whemoon Jang <palindrom615@gmail.com>
+# Contributor: Youngbin Han <sukso96100@gmail.com>
+# Contributor: Changjoo Lee <icj7061@gmail.com>
+# Contributor: ywen407 <ywen407@naver.com>
 pkgname=nimf-git
 pkgver=1.2.0.r17.44dcd8c
 pkgrel=1
