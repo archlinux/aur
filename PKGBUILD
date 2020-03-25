@@ -1,7 +1,7 @@
 # Maintainer: Reto Brunner <brunnre8@gmail.com>
 # Maintainer: Maxime Poulin <maxpoulin64@gmail.com>
 pkgname=thelounge
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
@@ -18,7 +18,7 @@ source=(
     'tmpfiles.d'
 )
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('49a1a5eb7377e53160ad195fae3f4bbc2407bbcb1f279d49d1676faa7cfc3a14'
+sha256sums=('c4058bb9db0ef94480203f88c3d989945c2df0a5636ba3637040ef3e58237846'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
