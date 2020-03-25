@@ -16,8 +16,8 @@ arch=('any')
 url='https://dn-works.com/ufas/'
 license=('custom')
 makedepends=('fontforge' 'poppler')
-source=("$pkgbase-$pkgver.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip"
-        'https://dn-works.com/wp-content/uploads/2020/UFAS-Docs/License.pdf'
+source=("$pkgbase-$pkgver-$pkgrel.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip"
+        "License-$pkgver-$pkgrel.pdf::https://dn-works.com/wp-content/uploads/2020/UFAS-Docs/License.pdf"
         '45-symbola.conf'
         '90-tt-symbola.conf')
 sha512sums=('ba671168ab2dc15293ae404f849f13b9b1f4684ce1856a8c2bbf8b9a2e2d70a27f86ef166a5e3ab6260e651c8276537ee272710a7e1fb49beef26fbed6355a35'
@@ -27,7 +27,7 @@ sha512sums=('ba671168ab2dc15293ae404f849f13b9b1f4684ce1856a8c2bbf8b9a2e2d70a27f8
 
 build() {
   fontforge -c 'open(argv[1]).generate(argv[2])' Symbola.{otf,ttf}
-  pdftotext License.pdf LICENSE
+  pdftotext "${source[1]%::*}" LICENSE
 }
 
 package_otf-symbola() {
