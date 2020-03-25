@@ -1,13 +1,13 @@
 pkgbase = debian-keyring
 	pkgdesc = GnuPG keys for Debian (non-archive)
-	pkgver = 2020.02.02
+	pkgver = 2020.03.24
 	pkgrel = 1
 	url = http://keyring.debian.org/
 	arch = any
 	license = GPL
 	depends = gnupg
-	source = http://httpredir.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2020.02.02_all.deb
-	sha256sums = eba53cc65ebed7d89eb386726a79666c0aa5cb4e4c9a665397f09b7e30318629
+	source = http://httpredir.debian.org/debian/pool/main/d/debian-keyring/debian-keyring_2020.03.24_all.deb
+	sha256sums = 6a9e5ed5f3170ab266341da4720b5a63fe05fb286a3d758c0d581dadabd060d9
 
 pkgname = debian-keyring
 
