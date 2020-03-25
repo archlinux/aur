@@ -1,0 +1,14 @@
+pkgbase = kwin-scripts-parachute
+	pkgdesc = Windows and desktops from above
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://github.com/tcorreabr/Parachute
+	arch = any
+	license = GPLv3
+	makedepends = kpackage
+	depends = kwin
+	source = https://github.com/tcorreabr/Parachute/archive/cfc9d5757bbe16d61e166d0931a9928630d22a37.zip
+	sha256sums = 1cb3204703c145178f14e742c6e955d1a4d394ad3b3b167131c9f90d74b06017
+
+pkgname = kwin-scripts-parachute
+
