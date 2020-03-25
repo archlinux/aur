@@ -3,7 +3,7 @@
 # Contributor: Changjoo Lee <icj7061@gmail.com>
 # Contributor: ywen407 <ywen407@naver.com>
 pkgname=nimf-git
-pkgver=1.2.0.r17.44dcd8c
+pkgver=1.2.0.r22.01ae33c
 pkgrel=1
 epoch=1
 pkgdesc='Nimf is a lightweight, fast and extensible input method framework.'
