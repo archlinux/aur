@@ -17,10 +17,10 @@ makedepends=('meson' 'zlib' 'opencl-headers')
 checkdepends=('gtest')
 optdepends=("nvidia: Necessary for running on nvidia GPUs"
 	    "cudnn:  Neural network library for use with nvidia GPUs"
-	    "openblas:    Library for running on CPUs"
 	    "xf86-video-amdgpu: AMDGPU driver stack"
 	    "xf86-video-ati: ATI driver stack"
 	    "amdgpu-pro-libgl: AMDGPU PRO driver stack")
+
 install=lc0.install
 source=("$pkgname"
 	"$pkgname-$pkgver.tar.gz::https://github.com/LeelaChessZero/$pkgname/archive/v$pkgver.tar.gz"
@@ -30,7 +30,6 @@ md5sums=('8ef8809da2c627dd2472859b157bb408'
          '41748f3ccbb9a903fcebb47747bf5d92'
          '24f07d68b4a5c0f5846c37401517f02f'
          'e7c9e1abec8d859ffdbc89e18340c254')
-
 noextract=('weights_${_run}_${_nnid}.pb.gz')
 
 prepare() {

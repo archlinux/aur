@@ -14,7 +14,6 @@ pkgbase = lc0
 	depends = opencl-driver
 	optdepends = nvidia: Necessary for running on nvidia GPUs
 	optdepends = cudnn: Neural network library for use with nvidia GPUs
-	optdepends = openblas: Library for running on CPUs
 	optdepends = xf86-video-amdgpu: AMDGPU driver stack
 	optdepends = xf86-video-ati: ATI driver stack
 	optdepends = amdgpu-pro-libgl: AMDGPU PRO driver stack
