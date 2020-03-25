@@ -1,7 +1,7 @@
 pkgbase = scc-bin
 	pkgdesc = Sloc, Cloc and Code: scc is a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go
 	pkgver = 2.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boyter/scc
 	arch = x86_64
 	arch = i386
