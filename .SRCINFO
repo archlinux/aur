@@ -1,17 +1,17 @@
 pkgbase = iscan-plugin-gt-f700
 	pkgdesc = EPSON Image Scan! plugin for Epson scanners (Perfection V350 Photo)
-	pkgver = 1.0.0
+	pkgver = 2.30.4
 	pkgrel = 1
 	url = https://epson.com/Support/Scanners/Perfection-Series/Epson-Perfection-V350-Photo/s/SPT_B11B185011
 	install = iscan-plugin-gt-f700.install
 	arch = i686
 	arch = x86_64
-	license = custom:AVASYSPL
+	license = custom:EPSON EULA
 	depends = iscan
-	source_i686 = https://download2.ebz.epson.net/iscan/plugin/gt-f700/deb/x86/iscan-gt-f700-bundle-1.0.0.x86.deb.tar.gz
-	sha256sums_i686 = 6d8caea316a8731898871cfb0c5a063479d94435c0bb1f34ffe3e2dde374f729
-	source_x86_64 = https://download2.ebz.epson.net/iscan/plugin/gt-f700/deb/x64/iscan-gt-f700-bundle-1.0.0.x64.deb.tar.gz
-	sha256sums_x86_64 = effffe4a78d5abe7d4148186f15ad50fe96459e9083968a8c7d3ee1b4688b6f2
+	source_i686 = https://download2.ebz.epson.net/iscan/plugin/gt-f700/deb/x86/iscan-gt-f700-bundle-2.30.4.x86.deb.tar.gz
+	sha256sums_i686 = 726f2be09354654de027beb48c84aa3096af2511d4a3f943f7cca6c8ba91dc11
+	source_x86_64 = https://download2.ebz.epson.net/iscan/plugin/gt-f700/deb/x64/iscan-gt-f700-bundle-2.30.4.x64.deb.tar.gz
+	sha256sums_x86_64 = 2bc95e5972b83e05fef0dbc60731312941c8239509b1e251cc5a55e62c842e00
 
 pkgname = iscan-plugin-gt-f700
 

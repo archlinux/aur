@@ -1,13 +1,9 @@
 post_install() {
   echo "Registering iscan plugins and firmwares"
-  iscan-registry --add interpreter usb 0x04b8 0x012f \
-    /usr/lib/iscan/libesint68 \
-    /usr/share/iscan/esfw68.bin
+  iscan-registry --add interpreter usb 0x04b8 0x012f /usr/lib/iscan/libesint68 /usr/share/iscan/esfw68.bin
 }
 
 pre_remove() {
   echo "Unregistering iscan plugins and firmwares"
-  iscan-registry --remove interpreter usb 0x04b8 0x012f \
-    /usr/lib/iscan/libesint68 \
-    /usr/share/iscan/esfw68.bin
+  iscan-registry --remove interpreter usb 0x04b8 0x012f /usr/lib/iscan/libesint68 /usr/share/iscan/esfw68.bin
 }
