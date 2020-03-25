@@ -1,7 +1,7 @@
 # Maintainer: Alessandro Marchioro <marciozgaming@gmail.com>
 pkgname=ryujinx-git
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Experimental Nintendo Switch Emulator written in C# - master branch"
 arch=(x86_64)
 url="https://github.com/Ryujinx/Ryujinx"
@@ -20,6 +20,7 @@ build() {
 }
 
 package() {
+        rm "$pkgdir/usr/bin/ryujinx" || true
 	rm -rf "$pkgdir/opt/ryujinx/"
 	mkdir -p "$pkgdir/opt/ryujinx/"
 	mkdir -p "$pkgdir/usr/bin/"
