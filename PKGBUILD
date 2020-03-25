@@ -70,5 +70,5 @@ package() {
 		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
 	done
 
-    install -DT "$srcdir/go/src/glod/systemd/glod@.service" "$pkgdir/usr/lib/systemd/system/glod@.service"
+    install -DT "$srcdir/go/src/glod/systemd/glod.service" "$pkgdir/usr/lib/systemd/user/glod.service"
 }
