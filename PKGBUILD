@@ -1,10 +1,10 @@
 pkgname=opencl-headers-git
-pkgver=v2020.03.13.2.g9dde5da
+pkgver=v2020.03.13.3.g35deb75
 pkgrel=1
 pkgdesc='OpenCL (Open Computing Language) header files. (GIT Version)'
 arch=('any')
 url='https://www.khronos.org/registry/cl/'
-license=('custom:Khronos')
+license=('apache')
 makedepends=('git'
              'python'
              )
@@ -45,7 +45,6 @@ package() {
   make -C build DESTDIR="${pkgdir}" install
 
   install -D -m644 OpenCL-Headers/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
 
   cd "${srcdir}/OpenCL-CLHPP"
 

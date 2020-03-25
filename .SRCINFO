@@ -1,10 +1,10 @@
 pkgbase = opencl-headers-git
 	pkgdesc = OpenCL (Open Computing Language) header files. (GIT Version)
-	pkgver = v2020.03.13.2.g9dde5da
+	pkgver = v2020.03.13.3.g35deb75
 	pkgrel = 1
 	url = https://www.khronos.org/registry/cl/
 	arch = any
-	license = custom:Khronos
+	license = apache
 	makedepends = git
 	makedepends = python
 	provides = opencl-headers
