@@ -1,14 +1,14 @@
 # Maintainer: otaj <jasek.ota@gmail.com>
 # If you want to set only one GPU target compute capability, set _GPU_TARGET, otherwise leave it commented out and it will build default targets (35, 52, 60 and 61). You can also set multiple targets separated by space (bash array)
 
-#_GPU_TARGET="61"
+#_GPU_TARGET="75"
 _pkgname=faiss
 pkgbase=faiss-cuda-git
 pkgname=('faiss-cuda-git' 'python-faiss-cuda-git')
 arch=('i686' 'x86_64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=v1.6.0.r5.ge325c50
+pkgver=v1.6.1.r16.gb9914eb
 pkgrel=1
 source=(${_pkgname}::git+https://github.com/facebookresearch/faiss.git)
 sha256sums=('SKIP')
@@ -24,11 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-}
-
-
-build() {
-  cd "${srcdir}/${_pkgname}"
+  rm -f gpu/impl/{PQScanMultiPassNoPrecomputed.cu,gpu/impl/PQCodeDistances.cu}
   _CONF_FLAGS='--prefix=/usr --with-cuda=/opt/cuda'
   if ! [ -z "$_GPU_TARGET" ]
   then
@@ -39,8 +35,14 @@ build() {
     _CONF_FLAGS=$_CONF_FLAGS'"'
   fi
   sh -c "./configure $_CONF_FLAGS --with-python=python"
-  make 			    # build faiss
-  make -C python  	# build python package
+
+}
+
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  make			# build faiss
+  make -C python	# build python package
 }
 
 package_faiss-cuda-git() {
