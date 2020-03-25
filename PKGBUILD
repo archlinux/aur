@@ -3,7 +3,7 @@
 # Contributor: bl4ckb1t <bl4ckb1t@gmail.com>
 
 pkgname=ezstream
-pkgver=0.6.0
+pkgver=1.0.1
 pkgrel=3
 pkgdesc="A command line source client for Icecast media streaming servers."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('libogg' 'libvorbis' 'libxml2' 'libshout' 'taglib')
 
 
 source=(http://downloads.xiph.org/releases/ezstream/"${pkgname}"-"${pkgver}".tar.gz)
-sha256sums=('f86eb8163b470c3acbc182b42406f08313f85187bd9017afb8b79b02f03635c9')
+sha256sums=('fc4bf494897a8b1cf75dceefb1eb22ebd36967e5c3b5ce2af9858dbb94cf1157')
 
 
 build() {
