@@ -1,33 +1,36 @@
-# Maintainer: Matthias Lisin <ml@visu.li>
+# Maintainer: ml <ml@visu.li>
 # Contributor: Hugo Rodrigues <me@hugorodrigues.net>
-
 pkgname=ansible-vim-git
-pkgver=2.0.r5.gf1c9be3
+pkgver=2.1.r0.g8da127b
 pkgrel=1
 pkgdesc="A vim plugin for syntax highlighting Ansible's common filetypes"
 arch=('any')
-url="https://github.com/pearofducks/ansible-vim"
-license=('MIT')
-depends=('vim-runtime')
+url='https://github.com/pearofducks/ansible-vim'
+license=('MIT' 'BSD')
+groups=('vim-plugins')
+depends=('vim')
 makedepends=('git' 'ansible')
+optdepends=('vim-ultisnips: completion support')
+provides=('vim-ansible')
+conflicts=('vim-ansible' 'vim-ansible-git')
 source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    python UltiSnips/generate.py --output ansible.snippets
+  cd "$pkgname"
+  python UltiSnips/generate.py
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    for _dir in ftdetect ftplugin indent syntax; do
-        install -D -m644 -t "${pkgdir}/usr/share/vim/vimfiles/$_dir" $_dir/*.vim
-    done
-    install -D -m644 -t "${pkgdir}"/usr/share/vim/vimfiles/snippets ansible.snippets 
+  cd "$pkgname"
+  for i in ftdetect ftplugin indent syntax; do
+    install -Dm644 -t "${pkgdir}/usr/share/vim/vimfiles/${i}" "$i"/*.vim
+  done
+  install -Dm644 -t "${pkgdir}"/usr/share/vim/vimfiles/snippets ansible.snippets
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE syntax/jinja2.vim_LICENSE
 }
-

@@ -1,7 +1,5 @@
-*.swp
-
-# makeplg
-pkg/
-src
-ansible-vim-git/
-ansible-vim-git-*.pkg.tar.xz
+/ansible-vim-git/
+/pkg/
+/src/
+/*.log
+/*.pkg.tar*
