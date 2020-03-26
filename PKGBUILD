@@ -47,7 +47,7 @@ build() {
 }
 
 package_0ad-git() {
-  pkgdesc="Cross-platform, 3D and historically-based real-time strategy game — built from git source tree. WARNING: the 0ad git repo is approximately 3 GB in size!"
+  pkgdesc="Cross-platform, 3D and historically-based real-time strategy game — built from git source tree. WARNING: the 0ad git repo is approximately 7 GB in size!"
   conflicts=('0ad')
   depends=('0ad-data-git')
   provides=('0ad')
@@ -65,7 +65,7 @@ package_0ad-git() {
 }
 
 package_0ad-data-git() {
-  pkgdesc="Data package for 0ad built from source code. WARNING: the 0ad git repo is approximately 3 GB in size!"
+  pkgdesc="Data package for 0ad built from source code. WARNING: the 0ad git repo is approximately 7 GB in size!"
   conflicts=('0ad-data')
   depends=('0ad-git')
   provides=('0ad-data')
