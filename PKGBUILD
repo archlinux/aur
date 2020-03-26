@@ -12,14 +12,17 @@ makedepends=(gettext zlib libffi shared-mime-info python libelf git util-linux m
 checkdepends=(desktop-file-utils)
 options=('!docs' '!libtool' '!emptydirs' '!strip' 'staticlibs')
 source=("http://ftp.gnome.org/pub/gnome/sources/glib/${pkgver%.*}/glib-$pkgver.tar.xz"
-        'disable_mem_overflow_warnings.patch')
+        'MR1405.patch'
+        'MR1414.patch')
 sha256sums=('17967603bcb44b6dbaac47988d80c29a3d28519210b28157c2bd10997595bbc7'
-            'e2342457c9b59406e8aee14af0e2d267a43c62c12ba851d452d2916cbb94cdf6')
+            '934d87deaf597d7122f89d03c22b122a89eacbe46e887ce8e920a344926da2fb'
+            '19cd43aa20962e2e27c55553b871ab1bb970289219545447887cc5e654245fed')
 
 prepare() {
   cd "glib-$pkgver"
 
-  patch -Np1 -i "$srcdir/disable_mem_overflow_warnings.patch"
+  patch -Np1 -i "$srcdir/MR1405.patch"
+  patch -Np1 -i "$srcdir/MR1414.patch"
 }
 
 build() {
@@ -35,7 +38,7 @@ build() {
 }
 
 check() {
-  LC_ALL=C meson test -C _build --no-suite flaky --timeout-multiplier 2 --print-errorlogs
+  meson test -C _build --no-suite flaky --timeout-multiplier 2 --print-errorlogs
 }
 
 package() {

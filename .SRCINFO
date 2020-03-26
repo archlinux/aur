@@ -22,9 +22,11 @@ pkgbase = glib2-static
 	options = !strip
 	options = staticlibs
 	source = http://ftp.gnome.org/pub/gnome/sources/glib/2.64/glib-2.64.1.tar.xz
-	source = disable_mem_overflow_warnings.patch
+	source = MR1405.patch
+	source = MR1414.patch
 	sha256sums = 17967603bcb44b6dbaac47988d80c29a3d28519210b28157c2bd10997595bbc7
-	sha256sums = e2342457c9b59406e8aee14af0e2d267a43c62c12ba851d452d2916cbb94cdf6
+	sha256sums = 934d87deaf597d7122f89d03c22b122a89eacbe46e887ce8e920a344926da2fb
+	sha256sums = 19cd43aa20962e2e27c55553b871ab1bb970289219545447887cc5e654245fed
 
 pkgname = glib2-static
 
