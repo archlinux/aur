@@ -2,7 +2,7 @@
 # Maintainer: erik dubois <erik.dubois@gmail.com>
 pkgname=sardi-flat-mint-y-icons-git
 _pkgname=sardi-flat-mint-y-icons
-pkgver=380.1597dde1
+pkgver=398.2442a3a26
 pkgrel=1
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Sardi-Flat as main icon set"
 arch=('any')
@@ -33,7 +33,6 @@ package() {
   rm -rf Mint-Y-Dark-Red 
   rm -rf Mint-Y-Dark-Sand 
   rm -rf Mint-Y-Dark-Teal
-
   find .  -name "index.theme" -type f -exec sed -i "s/Name=Mint-Y-/Name=Sardi-Flat-Mint-Y-/g" {} \;
   find .  -name "index.theme" -type f -exec sed -i "s/Inherits=Mint-Y,Adwaita,gnome,hicolor/Inherits=Sardi-Flat,Sardi,Surfn,Adwaita,gnome,hicolor/g" {} \;
   mv Mint-Y-Aqua Sardi-Flat-Mint-Y-Aqua
