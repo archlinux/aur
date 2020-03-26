@@ -1,22 +1,31 @@
-# Maintainer: Roman Saveljev <roman.saveljev@haltian.com>
+# Maintainer: Sean Anderson <seanga2@gmail.com>
+# Contributor: Roman Saveljev <roman.saveljev@haltian.com>
 pkgname=kconfig-frontends
-pkgver=3.12.0.0
-pkgrel=2
+pkgver=4.11.0.1
+pkgrel=1
 pkgdesc='Out of the Linux source tree, packaging of the kconfig infrastructure, ready for use by third party projects'
 arch=('x86_64' 'i686')
-url="http://ymorin.is-a-geek.org/projects/kconfig-frontends"
+url="https://bitbucket.org/nuttx/tools/"
 license=('GPL')
-depends=('ncurses' 'perl')
+depends=('python' 'perl')
 makedepends=('gperf')
-source=("http://ymorin.is-a-geek.org/download/kconfig-frontends/$pkgname-$pkgver.tar.xz"
+source=("https://bitbucket.org/nuttx/tools/downloads/$pkgname-$pkgver.tar.bz2"
+	"size_t.patch::https://bitbucket.org/nuttx/tools/downloads/$pkgname-3.12.0-sizet.patch"
         "kconfig-config2h")
 noextract=()
-md5sums=('b939280dcc83f8feabd87a1d5f9b00c2'
+md5sums=('635538534a016d66ca1223512f5fc424'
+         '3a9507925fd25bd58cef05baae5a0712'
          '6596064684b8d2bca25e8fec3e265adf')
 validpgpkeys=()
 
+prepare() {
+	cd "$pkgname-$pkgver"
+	echo | cat "${srcdir}/size_t.patch" - | patch -N --strip=1 
+}
+
 build() {
 	cd "$pkgname-$pkgver"
+	autoreconf -fi
 	./configure --prefix=/usr --enable-frontends=mconf,conf,nconf
 	make
 }

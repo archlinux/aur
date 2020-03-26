@@ -1,17 +1,19 @@
 pkgbase = kconfig-frontends
 	pkgdesc = Out of the Linux source tree, packaging of the kconfig infrastructure, ready for use by third party projects
-	pkgver = 3.12.0.0
-	pkgrel = 2
-	url = http://ymorin.is-a-geek.org/projects/kconfig-frontends
+	pkgver = 4.11.0.1
+	pkgrel = 1
+	url = https://bitbucket.org/nuttx/tools/
 	arch = x86_64
 	arch = i686
 	license = GPL
 	makedepends = gperf
-	depends = ncurses
+	depends = python
 	depends = perl
-	source = http://ymorin.is-a-geek.org/download/kconfig-frontends/kconfig-frontends-3.12.0.0.tar.xz
+	source = https://bitbucket.org/nuttx/tools/downloads/kconfig-frontends-4.11.0.1.tar.bz2
+	source = size_t.patch::https://bitbucket.org/nuttx/tools/downloads/kconfig-frontends-3.12.0-sizet.patch
 	source = kconfig-config2h
-	md5sums = b939280dcc83f8feabd87a1d5f9b00c2
+	md5sums = 635538534a016d66ca1223512f5fc424
+	md5sums = 3a9507925fd25bd58cef05baae5a0712
 	md5sums = 6596064684b8d2bca25e8fec3e265adf
 
 pkgname = kconfig-frontends
