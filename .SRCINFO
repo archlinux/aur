@@ -1,6 +1,6 @@
 pkgbase = eddie-ui-git
 	pkgdesc = Eddie - VPN tunnel - beta version
-	pkgver = 2.18.7
+	pkgver = 2.18.8
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-ui.install
