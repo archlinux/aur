@@ -1,3 +1,4 @@
+# Submitter: Steffen Weber <boenki-gmx-de>
 # Maintainer: Roland Suchan <snrd at arcor dot de>
 
 pkgname=ffdiaporama
