@@ -1,0 +1,12 @@
+pkgbase = unfog-cli
+	pkgdesc = A simple task & time manager written in Haskell
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/unfog-io/unfog-cli-bin
+	arch = any
+	license = BSD
+	source = unfog-cli-0.4.3.tar.gz::https://github.com/unfog-io/unfog-cli/releases/download/v0.4.3/unfog-linux.tar.gz
+	md5sums = 13b910f2408aad7650e3e460cdec3542
+
+pkgname = unfog-cli-bin
+
