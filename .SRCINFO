@@ -1,0 +1,32 @@
+pkgbase = python-horovod
+	pkgdesc = Distributed training framework for TensorFlow, Keras, PyTorch, and Apache MXNet
+	pkgver = 0.19.1
+	pkgrel = 1
+	url = https://github.com/horovod/horovod
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = mxnet-cuda
+	makedepends = python-keras-applications
+	makedepends = python-pytorch-cuda
+	makedepends = python-setuptools
+	makedepends = python-tensorflow-cuda
+	depends = cuda
+	depends = cudnn
+	depends = nccl
+	depends = openmpi
+	depends = python-h5py
+	depends = python-mock
+	depends = python-mpi4py
+	depends = python-scipy
+	depends = python-tqdm
+	optdepends = mxnet-cuda
+	optdepends = python-keras-applications
+	optdepends = python-pytorch-cuda
+	optdepends = python-tensorflow-cuda
+	source = horovod-0.19.1::git+https://github.com/horovod/horovod.git#tag=v0.19.1
+	sha512sums = SKIP
+
+pkgname = python-horovod
+
