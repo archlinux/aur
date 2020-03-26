@@ -1,6 +1,6 @@
 pkgbase = complex_bessel
 	pkgdesc = A C++ library to evaluate the Bessel functions of real order and complex argument.
-	pkgver = 0.6
+	pkgver = 0.7.0_beta
 	pkgrel = 1
 	url = https://github.com/valandil/complex_bessel
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = complex_bessel
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = gcc-fortran
-	source = https://github.com/valandil/complex_bessel/archive/release-0.6.tar.gz
-	sha256sums = 38abe0b08a26d0b6a447db0e2e352d24b180dcec236f5d0629a1e5b91e8b704f
+	source = https://github.com/valandil/complex_bessel/archive/v0.7.0-beta.tar.gz
+	sha256sums = 9ae999d7c3c9da633c24f5eb8b593376a5e7d777e941b203309c0b0ab48509cd
 
 pkgname = complex_bessel
 
