@@ -2,7 +2,7 @@
 # Maintainer: erik dubois <erik.dubois@gmail.com>
 pkgname=sardi-flexible-mint-y-icons-git
 _pkgname=sardi-flexible-mint-y-icons
-pkgver=380.1597dde1
+pkgver=398.2442a3a26
 pkgrel=1
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set with Sardi-Flexible as main icon set"
 arch=('any')
@@ -33,8 +33,7 @@ package() {
   rm -rf Mint-Y-Dark-Red 
   rm -rf Mint-Y-Dark-Sand 
   rm -rf Mint-Y-Dark-Teal
-  
-  find .  -name "index.theme" -type f -exec sed -i "s/Name=Mint-Y-/Name=Sardi-Flexible-Mint-Y-/g" {} \;
+    find .  -name "index.theme" -type f -exec sed -i "s/Name=Mint-Y-/Name=Sardi-Flexible-Mint-Y-/g" {} \;
   find .  -name "index.theme" -type f -exec sed -i "s/Inherits=Mint-Y,Adwaita,gnome,hicolor/Inherits=Sardi-Flexible,Sardi,Surfn,Adwaita,gnome,hicolor/g" {} \;
   mv Mint-Y-Aqua Sardi-Flexible-Mint-Y-Aqua
   mv Mint-Y-Blue Sardi-Flexible-Mint-Y-Blue
