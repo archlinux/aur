@@ -1,7 +1,7 @@
 pkgbase = godot-git
 	pkgdesc = Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine.
 	pkgver = 3.1.dev
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.godotengine.org
 	arch = i686
 	arch = x86_64
