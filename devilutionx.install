@@ -6,13 +6,8 @@ Copy required files(e.g. diablodat.mpq) to your Diablo directory
 (default is ~/.local/share/diasurgical/devilution) or move the
 devilution executable in the same directory as "diablodat.mpq".
 
-NOTE: There are two versions of build(native and multilib).
-
-Please keep in mind that this is still being worked on and is missing
-parts of UI and SoundEffects are not properly playing now.
-
-see https://github.com/diasurgical/devilutionX/milestone/1 for a full
-list of known issues.
+Demo version:
+http://ftp.blizzard.com/pub/diablo/patches/pc/drtl109.exe
 
 EOF
 }

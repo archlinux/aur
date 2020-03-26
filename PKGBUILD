@@ -1,18 +1,17 @@
 # Maintainer: LIN Rs <LinRs[d]users.noreply.github.com>
 
-pkgbase=devilutionx-git
-pkgname=( 'devilutionx-git' 'devilutionx-multilib-git' )
+pkgname=devilutionx-git
 _pkgname=devilutionx
-pkgver=0.5.0.r37.g3c416b16
+pkgver=1.0.1.r17.g201c6fe8
 pkgrel=1
 pkgdesc="Diablo devolved for linux (git version)"
 arch=('x86_64')
 url="https://github.com/diasurgical/devilutionX"
 license=('custom:unlicense')
-makedepends=('git' 'cmake' 'lib32-gcc-libs' 'lib32-sdl2_mixer'
-	     'sdl2_ttf' 'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium'
-	     'libsodium')
+depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
+makedepends=('git' 'cmake')
 optdepends=('ttf-charis-sil: CharisSILB.ttf')
+provides=("${_pkgname}"="${pkgver}")
 install="${_pkgname}".install
 source=(
     "${_pkgname}::git+https://github.com/diasurgical/devilutionX.git"
@@ -28,36 +27,24 @@ pkgver() {
 
 build() {
     cd "${_pkgname}"
-    rm -rf build32 build64
-    mkdir -p build64 && cd build64
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make
-    cd "${srcdir}/${_pkgname}"
-    mkdir -p build32 && cd build32
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    cmake .. \
-	  -DCMAKE_TOOLCHAIN_FILE="../CMake/32bit.cmake" \
-	  -DCMAKE_BUILD_TYPE=Release
+    mkdir -p build
+    cd build
+    cmake \
+	-DCMAKE_BUILD_TYPE=Release ..
     make
 }
-package_devilutionx-git() {
-    pkgdesc="Diablo devolved for linux (native build)"
-    provides=("${_pkgname}"="${pkgver}")
-    depends=('sdl2_mixer' 'sdl2_ttf' 'libsodium')
-
+package() {
     cd "${_pkgname}"
-    install -vDm755 build64/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_native"
-    install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
-}
-package_devilutionx-multilib-git() {
-    pkgdesc="Diablo devolved for linux (multilib build)"
-    provides=("${_pkgname}"="${pkgver}")
-    depends=('lib32-gcc-libs' 'lib32-dbus' 'lib32-sdl2_mixer'
-	     'sdl2_ttf' 'lib32-sdl2_ttf'  'lib32-libsodium'
-	     'libsodium')
-
-    cd "${_pkgname}"
-    install -vDm755 build32/"${_pkgname}" "${pkgdir}"/usr/bin/"${_pkgname}_multilib"
-    install -vDm644 LICENSE -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -Dm755 build/"${_pkgname}" \
+	    -t "${pkgdir}"/usr/bin/
+    install -Dm644 LICENSE \
+	    -t "${pkgdir}"/usr/share/licenses/"${pkgname}"
+    install -Dm644 Packaging/resources/16.png \
+	    "${pkgdir}"/usr/share/icons/hicolor/16x16/apps/devilutionx.png
+    install -Dm644 Packaging/resources/Diablo_32.png \
+	    "${pkgdir}"/usr/share/icons/hicolor/32x32/apps/devilutionx.png
+    install -Dm644 Packaging/resources/Diablo_48.png \
+	    "${pkgdir}"/usr/share/icons/hicolor/48x48/apps/devilutionx.png
+    install -Dm644 Packaging/fedora/devilutionx.desktop \
+	    -t "${pkgdir}"/usr/share/applications/
 }
