@@ -1,6 +1,6 @@
 pkgbase = julia-compat
 	pkgdesc = Compat Package for Julia.
-	pkgver = 3.0.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/JuliaLang/Compat.jl
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = julia-compat
 	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-loadpath
-	source = julia-compat-3.0.0.tar.gz::https://github.com/JuliaLang/Compat.jl/archive/v3.0.0.tar.gz
-	source = julia-compat-3.0.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/6df73211297504200474099f896d7499eb6ed9e1/C/Compat/Deps.toml
-	source = julia-compat-3.0.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/6df73211297504200474099f896d7499eb6ed9e1/C/Compat/Package.toml
-	source = julia-compat-3.0.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/6df73211297504200474099f896d7499eb6ed9e1/C/Compat/Versions.toml
-	sha256sums = edb0533f14cfa7f520647027f95851ebc63fffc16b78a564dc472d3a5c731f9f
-	sha256sums = 297c2c7a4df299e7f320dc6e7dabb6ae42190af29171d2408ef73ae55f47c666
+	source = julia-compat-3.8.0.tar.gz::https://github.com/JuliaLang/Compat.jl/archive/v3.8.0.tar.gz
+	source = julia-compat-3.8.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0b79d9ea6ae4de9b1ac497a7a012c568e2daf2fe/C/Compat/Deps.toml
+	source = julia-compat-3.8.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0b79d9ea6ae4de9b1ac497a7a012c568e2daf2fe/C/Compat/Package.toml
+	source = julia-compat-3.8.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/0b79d9ea6ae4de9b1ac497a7a012c568e2daf2fe/C/Compat/Versions.toml
+	sha256sums = c4ccb836e8822efcfae9e603a28542df9b258f004860e6ed60ac78a06915dc8b
+	sha256sums = 10bb665dbe0708b90839439352f7513f2f441be90e80b53195e92a165a98fc9d
 	sha256sums = 635b69201accd41cbf62491638b8e880370a473dd6ecf438fcfc1a80211b3b6c
-	sha256sums = 50562c5da422fa6eb116fcfc2fcfdfe098676bf14f0a3b6dba58280adf6f4e63
+	sha256sums = 79d17c015b5a383e5e8fa9450ffb1cca5bc1a19ae5e926de85726855042c8457
 
 pkgname = julia-compat
 
