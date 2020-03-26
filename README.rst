@@ -12,7 +12,7 @@ Usage
 
     .. code-block:: javascript
 
-        snaGetLaunchLink('network_access', '/Common/Desktop-Remote_splitv6')['link']
+        snaGetLaunchLink('network_access', dcl.getBins[0].res.reduce((result, bin) => bin.type === 'network_access' ? bin.id : result, {}))['link']
 
     You should have received a URL starting with ``f5-vpn://``.
 
