@@ -5,13 +5,13 @@ _gituser="emacs-lsp"
 _gitrepo="lsp-mode"
 
 pkgname=emacs-lsp-mode-git
-pkgver=6.1.r140.g951766b
+pkgver=6.2.1.r221.g3b75d8b
 pkgrel=1
 pkgdesc="Emacs client/library for the Language Server Protocol"
 url="https://github.com/${_gituser}/${_gitrepo}"
 arch=('any')
 license=('GPL3')
-depends=('emacs' 'emacs-ht')
+depends=('emacs' 'emacs-ht' 'emacs-f')
 makedepends=('git' 'cask')
 provides=('emacs-lsp-mode')
 conflicts=('emacs-lsp-mode')
