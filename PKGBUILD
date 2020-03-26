@@ -2,7 +2,7 @@
 
 pkgname=julia-ijulia
 _pkgname=IJulia
-pkgver=1.20.2
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='Julia-language backend combined with the Jupyter interactive environment'
 arch=(any)
@@ -23,15 +23,15 @@ makedepends=(
   julia-versionparsing
 )
 
-_commit=3d5f64bcb304c00931addd7c3bd68b6e38590b59
+_commit=fdfd24e75f363264e64d70d9678d597e7f8147e4
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('c58ad61c1e2dc3fa7e79d88d2965b0a5a6a940fbd316a3073ab0ed12ddfd18ec'
+sha256sums=('d9fc50b9e341d45ba2f4b852896753159f9a772c80710c602cfefcd66cf802b2'
             '6a6d750fba39049f4b0a5903b7a7812f2ff89f5ed5132b44f5404451ee7176d6'
             '8f528e7a9177c8b3a30fb17b50b9fbc3bbc4f8a677a3d4cc940446182885e6b0'
-            '2ffb78fbd365fbb9db4a16e24a851bcda52cf39553513fb62300dcc8cf356254')
+            '9899f9e7c18c757e2ec78ac38a1247636f90aecdc4660aa33a13c6b0beb1101b')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
