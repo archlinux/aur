@@ -1,15 +1,15 @@
 # Maintainer : ziggi <xziggix@gmail.com>
 pkgname='zalc'
-pkgver=1.2.4
-pkgrel=3
+pkgver=1.2.5
+pkgrel=2
 pkgdesc='A small, FLTK-based calculator'
 arch=('i686' 'x86_64')
-url='http://ziggi.org/category/developments/zalc/'
+url='https://ziggi.org/category/developments/zalc/'
 license=('GPLv3')
 depends=('fltk')
 provides=('zalc')
 source=("https://github.com/ziggi/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=("eb4bfd74884cc8205324fdbdcbf7cbae")
+sha512sums=('32416f71c1fb24a35730f70d4a875c1ae5ac916305dc43196274dcab75a4f1ab017be09bd3965e5972bc1dbbf145740716d5c83280b24a5b0dc3cc1b85047168')
 
 build () {
 	cd $srcdir/$pkgname-$pkgver/
