@@ -2,30 +2,30 @@
 
 pkgbase=python-pyalsaaudio-git
 pkgname=(python-pyalsaaudio-git python2-pyalsaaudio-git)
-pkgver=0.8.2.r0.g5cbc886
+_pkgname=pyalsaaudio
+pkgver=0.8.4.r25.g12f8076
 pkgrel=1
 pkgdesc="ALSA wrappers for Python (development version)"
 arch=('i686' 'x86_64')
 url="http://larsimmisch.github.io/pyalsaaudio/"
 license=('custom: PSF')
 makedepends=('python-setuptools' 'python2-setuptools' 'alsa-lib')
-source=("git+https://github.com/larsimmisch/pyalsaaudio.git")
+source=("git+https://github.com/larsimmisch/${_pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd pyalsaaudio
-  git describe --long --tags | sed 's/-/.r/;s/-/./'
+  cd ${_pkgname}
+  git describe --long --tags | sed 's/^v//; s/-/.r/; s/-/./g'
 }
 
 prepare() {
   # copy folder, so we can cleanly build for both python versions
-  cp -rup pyalsaaudio python-pyalsaaudio
-  cp -rup pyalsaaudio python2-pyalsaaudio
+  cp -rup ${_pkgname} python2-pyalsaaudio
 }
 
 build() {
   # build for python 3
-  cd python-pyalsaaudio
+  cd ${_pkgname}
   python setup.py build
 
   # build for python 2
@@ -40,7 +40,7 @@ package_python-pyalsaaudio-git() {
   conflicts=('python-pyalsaaudio')
   provides=('python-pyalsaaudio')
 
-  cd python-pyalsaaudio
+  cd ${_pkgname}
 
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
