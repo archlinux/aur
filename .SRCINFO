@@ -1,0 +1,15 @@
+pkgbase = asm-cli
+	pkgdesc = Interactive shell of assembly language(X86/X64) based on unicorn and keystone
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/cch123/asm-cli
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = unicorn
+	makedepends = keystone
+	source = asm-cli-1.0.1.tar.gz::https://github.com/cch123/asm-cli/archive/1.0.1.tar.gz
+	md5sums = 859bfc5e06425148faac9810d41deab2
+
+pkgname = asm-cli
+
