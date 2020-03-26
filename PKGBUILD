@@ -3,10 +3,10 @@
 # Contributor: Robert Štětka <robert dot stetka at gmail dot com>
 
 pkgname=freenet-fms
-pkgver=0.3.81
+pkgver=0.3.82
 pkgrel=1
 pkgdesc="Freenet Messaging System"
-url="http://127.0.0.1:8888/freenet:USK@0npnMrqZNKRCRoGojZV93UNHCMN-6UU3rRSAmP6jNLE,~BG-edFtdCC1cSH4O3BWdeIYa8Sw5DfyrSV-TKdO5ec,AQACAAE/fms/149/"
+url="http://127.0.0.1:8888/freenet:USK@0npnMrqZNKRCRoGojZV93UNHCMN-6UU3rRSAmP6jNLE,~BG-edFtdCC1cSH4O3BWdeIYa8Sw5DfyrSV-TKdO5ec,AQACAAE/fms/150"
 license=('GPL2')
 arch=('i686' 'x86_64')
 install=fms.install
@@ -14,14 +14,14 @@ depends=('poco' 'sqlite3' 'mbedtls')
 makedepends=('cmake')
 
 _FREENET=${FREENET_PROXY:-http://127.0.0.1:8888}
-_URI='CHK@Mz90LzeG9CJPQKkN3kKeYreTBedPEu-ND-QFMCDIsM8,HOOYUT8KqNK5QLkLFIRxi5AwBJiduTTxdBzNbEcRB4I,AAMC--8'
+_URI='CHK@TXV7TmdC9TH6CBWeyl8HrgRqmHbDjUdxDs99dzsVavk,P-FMaSkEaa~Qo4xdZkrqegOfepWwAE7WCzVk~a214UQ'
 
-source=("$_FREENET/?forcedownload&max-size=99999999&key=$_URI/fms-src-${pkgver}.zip"
+source=("$_FREENET/?forcedownload&max-size=99999999&key=${_URI},AAMC--8/fms-src-${pkgver}.zip"
         #"https://dev.gentoo.org/~tommy/distfiles/fms-src-${pkgver}.zip"
         fms.{install,tmpfiles,service}
         'use-system-mbedtls.patch')
 
-b2sums=('a873fe4458a4abf4d19c7849d2045e49f556e001315d9112f50fd5c544481c64e00d0db5672ca20f1974e8d8b46e88b98e6a339536659a8a4c06b1a3c4439d21'
+b2sums=('c18630b8b1b8871290f1d66c4638b99c110e0f49bef11517aa83760274707fd5d0b53c053ea3b38a0c35018de4a4b6f3dd426499228997bac377bb1f04f784fb'
         '496875c2960675684e7ac3b055e033f50828cff30a71ff6d04b1ff23e45681b42cc6a30c04ac1e277704f00ebc716c66944da153f6e34bc9b624afd33561ab9d'
         '8e1618c6d01a3e62bf56d2db87612ec68d1cc825e5eb85e829afc95215bca17bbf1dee79945d1170ccdd9f992525c6a1f396710ecfe50669062910ce01c60bad'
         '2fa023fd0c5c0dbb99e1fe6aba0d66fbc0d939592b4ab6fb9ec862d65d3961b333cebb7ed95897a5bf9d2402ab5771818024255e4eba4be4407311b61f4320a8'
