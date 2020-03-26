@@ -2,6 +2,7 @@
 #                         (What a silly email, I regret making it like this.).
 
 pkgname="stretchy-snek-boi-git"
+_pkgname="stretchy-snek-boi"
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="A snake game clone."
@@ -12,12 +13,12 @@ source=("stretchy-snek-boi::git+https://github.com/KnockKnockP/stretchy-snek-boi
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname"
 	make stretchy-snek-boi-git
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$_pkgname"
 	mkdir $pkgdir/usr/bin/ -p
 	make DESTDIR="$pkgdir/usr/bin" install-git
 }
