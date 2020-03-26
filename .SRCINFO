@@ -1,0 +1,18 @@
+pkgbase = python-stanza
+	pkgdesc = A Python NLP Library for Many Human Languages
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://stanfordnlp.github.io/stanza/
+	arch = x86_64
+	license = Apache
+	makedepends = python-wheel
+	depends = python-numpy
+	depends = python-protobuf
+	depends = python-requests
+	depends = python-pytorch
+	depends = python-tqdm
+	source = https://files.pythonhosted.org/packages/source/s/stanza/stanza-1.0.0.tar.gz
+	md5sums = 7549cd62e92b27000ab6ecf2ef63c2ca
+
+pkgname = python-stanza
+
