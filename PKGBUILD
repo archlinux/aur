@@ -1,7 +1,7 @@
 # Maintainer: Uumas <u@uumas.fi>
 # Contributors: Mornielome <stuff@lukasjacobs.de>, c0ldcat <firez199984@gmail.com>, KbanKiller
 pkgname=marvin
-pkgver=20.7.0
+pkgver=20.9.0
 _pkgver=$(echo $pkgver | sed 's/.[0-9]$//g')
 pkgrel=1
 pkgdesc="Intuitive applications and API for chemical sketching, visualization and data exploration"

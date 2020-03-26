@@ -1,12 +1,12 @@
 pkgbase = marvin
 	pkgdesc = Intuitive applications and API for chemical sketching, visualization and data exploration
-	pkgver = 20.7.0
+	pkgver = 20.9.0
 	pkgrel = 1
 	url = http://www.chemaxon.com
 	arch = any
 	license = proprietary
 	depends = java-runtime<=11
-	source = https://dl.chemaxon.com/marvin/20.7.0/marvin_linux_20.7.rpm
+	source = https://dl.chemaxon.com/marvin/20.9.0/marvin_linux_20.9.rpm
 	source = MarvinSketch.desktop
 	source = MarvinView.desktop
 	source = marvin-sketch-symbolic.svg
