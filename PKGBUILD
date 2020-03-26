@@ -5,35 +5,42 @@ pkgdesc='Free and universal communication platform which preserves the users` pr
 arch=('x86_64')
 url='https://jami.net'
 license=('GPL3')
-depends=('libayatana-appindicator-gtk3' 'alsa-lib' 'dbus-c++' 'expat'
- 'ffmpeg' 'gnutls' 'jack' 'jsoncpp' 'libnatpmp' 'libpulse' 'libsecp256k1'
- 'libupnp' 'libva' 'libvdpau' 'opendht' 'opus' 'restbed' 'util-linux' 
- 'yaml-cpp' 'clutter' 'clutter-gtk' 'dconf' 'desktop-file-utils'
- 'gtk-update-icon-cache' 'gtk3' 'libcanberra' 'libnm' 'libnotify' 'qrencode'
- 'qt5-base' 'webkit2gtk')
-conflicts=('jami-daemon' 'jami-gnome' 'libjamiclient')
+depends=('libayatana-appindicator-gtk3' 'jami-daemon' 'clutter' 'clutter-gtk' 'dconf' 
+ 'desktop-file-utils' 'gtk-update-icon-cache' 'gtk3' 'libcanberra' 'libnm'
+ 'libnotify' 'qrencode' 'qt5-base' 'webkit2gtk')
+conflicts=('jami-gnome' 'libjamiclient')
 makedepends=('binutils' 'tar' 'xz' 'patchelf')
 source=('https://dl.jami.net/ring-manual/ubuntu_19.10/jami-all_amd64.deb')
-provides=('jami-daemon' 'jami-gnome' 'libjamiclient')
+provides=('jami-gnome' 'libjamiclient')
 sha1sums=('SKIP')
+options=(!strip)
 
 build() {
 	ar x jami-all_amd64.deb
 	tar xf data.tar.xz
+
+	# patchelf is really unstable
+	# some libs require hacks like this
+	#patchelf --replace-needed libupnp.so.13 libupnp.so usr/lib/ring/dring
+	#patchelf --replace-needed libixml.so.10 libixml.so usr/lib/ring/dring
+	#patchelf --replace-needed libnettle.so.6 libnettle.so usr/lib/ring/dring
+	#patchelf --replace-needed libhogweed.so.4 libhogweed.so usr/lib/ring/dring
+	#patchelf --replace-needed libjsoncpp.so.1 libjsoncpp.so usr/lib/ring/dring
 }
 
 package() {
+	# the files that are commented out are shared with 'jami-daemon'
 	install -Dm755 usr/bin/jami ${pkgdir}/usr/bin/jami
 	install -Dm755 usr/bin/jami-gnome ${pkgdir}/usr/bin/jami-gnome
 	install -Dm644 usr/lib/libringclient.so.1.0.0 ${pkgdir}/usr/lib/libringclient.so.1.0.0
-	install -Dm755 usr/lib/ring/dring ${pkgdir}/usr/lib/ring/dring
+	#install -Dm755 usr/lib/ring/dring ${pkgdir}/usr/lib/ring/dring
 	install -Dm644 usr/share/applications/jami-gnome.desktop ${pkgdir}/usr/share/applications/jami-gnome.desktop
-	install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.CallManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.CallManager.xml
-	install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.ConfigurationManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.ConfigurationManager.xml
-	install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.Instance.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.Instance.xml
-	install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.PresenceManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.PresenceManager.xml
-	install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.VideoManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.VideoManager.xml
-	install -Dm644 usr/share/dbus-1/services/cx.ring.Ring.service ${pkgdir}/usr/share/dbus-1/services/cx.ring.Ring.service
+	#install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.CallManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.CallManager.xml
+	#install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.ConfigurationManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.ConfigurationManager.xml
+	#install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.Instance.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.Instance.xml
+	#install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.PresenceManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.PresenceManager.xml
+	#install -Dm644 usr/share/dbus-1/interfaces/cx.ring.Ring.VideoManager.xml ${pkgdir}/usr/share/dbus-1/interfaces/cx.ring.Ring.VideoManager.xml
+	#install -Dm644 usr/share/dbus-1/services/cx.ring.Ring.service ${pkgdir}/usr/share/dbus-1/services/cx.ring.Ring.service
 	install -Dm644 usr/share/doc/jami-all/README.Debian ${pkgdir}/usr/share/doc/jami-all/README.Debian
 	install -Dm644 usr/share/doc/jami-all/changelog.Debian.gz ${pkgdir}/usr/share/doc/jami-all/changelog.Debian.gz
 	install -Dm644 usr/share/doc/jami-all/copyright ${pkgdir}/usr/share/doc/jami-all/copyright
@@ -153,7 +160,7 @@ package() {
 	install -Dm644 usr/share/locale/zh/LC_MESSAGES/jami-client-gnome.mo ${pkgdir}/usr/share/locale/zh/LC_MESSAGES/jami-client-gnome.mo
 	install -Dm644 usr/share/locale/zh_CN/LC_MESSAGES/jami-client-gnome.mo ${pkgdir}/usr/share/locale/zh_CN/LC_MESSAGES/jami-client-gnome.mo
 	install -Dm644 usr/share/locale/zh_TW/LC_MESSAGES/jami-client-gnome.mo ${pkgdir}/usr/share/locale/zh_TW/LC_MESSAGES/jami-client-gnome.mo
-	install -Dm644 usr/share/man/man1/dring.1.gz ${pkgdir}/usr/share/man/man1/dring.1.gz
+	#install -Dm644 usr/share/man/man1/dring.1.gz ${pkgdir}/usr/share/man/man1/dring.1.gz
 	install -Dm644 usr/share/man/man8/jami-gnome.8.gz ${pkgdir}/usr/share/man/man8/jami-gnome.8.gz
 	install -Dm644 usr/share/metainfo/jami-gnome.appdata.xml ${pkgdir}/usr/share/metainfo/jami-gnome.appdata.xml
 	install -Dm644 usr/share/ring/ringtones/01_AfroNigeria.opus ${pkgdir}/usr/share/ring/ringtones/01_AfroNigeria.opus
@@ -166,7 +173,7 @@ package() {
 	install -Dm644 usr/share/ring/ringtones/08_RingFirefly.opus ${pkgdir}/usr/share/ring/ringtones/08_RingFirefly.opus
 	install -Dm644 usr/share/ring/ringtones/09_ElectroCloud.opus ${pkgdir}/usr/share/ring/ringtones/09_ElectroCloud.opus
 	install -Dm644 usr/share/ring/ringtones/10_UrbanTrap.opus ${pkgdir}/usr/share/ring/ringtones/10_UrbanTrap.opus
-	install -Dm644 usr/share/ring/ringtones/default.opus ${pkgdir}/usr/share/ring/ringtones/default.opus
+	#install -Dm644 usr/share/ring/ringtones/default.opus ${pkgdir}/usr/share/ring/ringtones/default.opus
 	install -Dm644 usr/share/sounds/jami-gnome/ringtone_notify.wav $${pkgdir}/usr/share/sounds/jami-gnome/ringtone_notify.wav
 }
 
