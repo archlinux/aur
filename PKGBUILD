@@ -3,14 +3,14 @@
 
 pkgname='python-ampy-git'
 pkgver=0
-pkgrel=4
+pkgrel=5
 pkgdesc="ESP8266 FS management tool provided by Adafruit"
 url="https://github.com/adafruit/ampy"
 arch=('any')
 license=('GPL')
 depends=('python' 'python-click' 'python-pyserial')
 makedepends=('python-setuptools')
-provides=('python-ampy','ampy')
+provides=('python-ampy' 'ampy')
 source=("${pkgname}::git+https://github.com/adafruit/ampy")
 sha512sums=('SKIP')
 
