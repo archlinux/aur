@@ -1,0 +1,17 @@
+[Unit]
+Description=CodiMD real-time collaborative markdown editor
+Documentation=file:/opt/codimd/docs/
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/npm start --production
+User=codimd
+Group=codimd
+WorkingDirectory=/opt/codimd
+StandardOutput=journal
+StandardError=inherit
+SyslogIdentifier=codimd
+
+[Install]
+WantedBy=multi-user.target

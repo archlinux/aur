@@ -1,0 +1,25 @@
+pkgbase = codimd
+	pkgdesc = real-time collaborative markdown notes
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://demo.codimd.org/
+	arch = any
+	license = AGPL3
+	makedepends = yarn
+	makedepends = bash
+	depends = nodejs>=8.5
+	depends = npm
+	optdepends = postgresql: database
+	optdepends = mariadb: database
+	optdepends = sqlite: database
+	backup = opt/codimd/config.json
+	backup = opt/codimd/.sequelizerc
+	source = codimd-1.6.0.tar.gz::https://github.com/codimd/server/archive/1.6.0.tar.gz
+	source = sysusers.conf
+	source = codimd.service
+	sha512sums = 50ebf76c365e821c8aec675a975000bf920b44bed939493ea0956ec621aa80ae33a3664654f7d01437f4f5864a73028a635fc11753c229808863c519c5a39998
+	sha512sums = 3de436650b33f272c7229ae2d336cfcbc2f06ae095bc2fad4b72a86f84283511ad79930b6f0d88acf371215f4784b9625f5da8bdd1331b41241d2fb849b7c646
+	sha512sums = a807e7d48cc90cd5bf2a343b25f773ebe972775233c8491fb1389fb03005bf1db80bdf5cb22c93e69924a29e4b1e389ffaac3a0d4ecbfc13d74c0027973fda58
+
+pkgname = codimd
+
