@@ -1,7 +1,7 @@
 # Maintainer: Jeff Henson <jeff@henson.io>
 
 pkgname=plex-media-player-git
-pkgver=r1310.bf8608f
+pkgver=r1338.80d5fa2
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ makedepends=('cmake' 'git')
 source=('git+https://github.com/plexinc/plex-media-player.git'
         'desktop.patch')
 sha256sums=('SKIP'
-            '4e453b856d241af126fad43b77291c7860c252b0c5194e9a3eaad9ade851999f')
+            'b5dda6b155a677de27a9dc24b85ad86149f9dfe3724a4a1435dbd34054c3d87e')
 
 pkgver() {
   cd plex-media-player
