@@ -1,7 +1,7 @@
 pkgbase = spot
-	pkgdesc = A C++11 library for omega automata manipulation and model checking.
+	pkgdesc = A C++14 library for omega automata manipulation and model checking.
 	pkgver = 2.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://spot.lrde.epita.fr/
 	arch = i686
 	arch = x86_64

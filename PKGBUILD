@@ -4,8 +4,8 @@
 
 pkgname=spot
 pkgver=2.8.7
-pkgrel=1
-pkgdesc="A C++11 library for omega automata manipulation and model checking."
+pkgrel=2
+pkgdesc="A C++14 library for omega automata manipulation and model checking."
 arch=('i686' 'x86_64')
 url="https://spot.lrde.epita.fr/"
 license=('GPL3')
