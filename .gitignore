@@ -2,4 +2,4 @@
 /pkg/
 /src/
 /*.log
-/*.pkg.tar.*
+/*.pkg.tar*
