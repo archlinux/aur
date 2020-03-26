@@ -1,7 +1,7 @@
 # Maintainer: "Von Random" <von@vdrandom.org>
 
 pkgname=tamtam
-pkgver=1.1.34
+pkgver=1.1.36
 pkgrel=1
 pkgdesc='TamTam messenger for linux'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://desktop.tamtam.chat/latest/'
 license=('custom')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss')
 source=("${pkgname}-${pkgver}.deb::https://desktop.tamtam.chat/v${pkgver}/TamTam-amd64.deb")
-sha256sums=('044faa2e9612d5c3a34b62b49a18ddb43b1f91a605c76c6d5efe39b2e9511996')
+sha256sums=('3a79ec005604148a5c23360656cbd75a8fc4e6fe89e8034d35aa4ef7ec2f0de4')
 package() {
   cd "${srcdir}"
   tar -xJC "${pkgdir}" -f data.tar.xz
