@@ -1,8 +1,8 @@
 # Maintainer: Axel Gembe <derago@gmail.com>
 pkgname=plexdrive-git
 _pkgname=${pkgname/-git/}
-pkgver=5.0.0.r18.gbf61a47
-pkgrel=4
+pkgver=5.1.0.r0.g65ff5d4
+pkgrel=1
 pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem, with direct delete option on the filesystem.'
 arch=('any')
 url='https://github.com/dweidenfeld/plexdrive'
