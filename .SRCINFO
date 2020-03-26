@@ -1,13 +1,13 @@
 pkgbase = rvgl-dcpack
 	pkgdesc = RVGL dreamcast content pack.
-	pkgver = 19.0819
+	pkgver = 20.0325
 	pkgrel = 1
 	url = https://rvgl.re-volt.io
 	arch = any
 	license = custom
 	depends = rvgl-bin
-	source = rvgl-dcpack-19.0819.zip::https://distribute.re-volt.io/packs/rvgl_dcpack.zip
-	sha256sums = 84a7c8928f88d6295a4d55d144b1b69e32d2accea7801049713b9e16e825da11
+	source = rvgl-dcpack-20.0325.zip::https://distribute.re-volt.io/packs/rvgl_dcpack.zip
+	sha256sums = 57da869de425a3836e9f50067d27a4ccf1401dc23d7f4525b4da333e6cf14b37
 
 pkgname = rvgl-dcpack
 
