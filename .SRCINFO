@@ -1,9 +1,10 @@
 pkgbase = perl-moose
 	pkgdesc = A postmodern object system for Perl 5
 	pkgver = 2.2012
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Moose
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = PerlArtistic
 	license = GPL
 	checkdepends = perl-test-cleannamespaces>=0.13

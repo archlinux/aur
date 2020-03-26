@@ -3,9 +3,9 @@
 
 pkgname='perl-moose'
 pkgver='2.2012'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="A postmodern object system for Perl 5"
-arch=('any')
+arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-cpan-meta-check>=0.011' 'perl-class-load>=0.09' 'perl-class-load-xs>=0.01' 'perl-data-optlist>=0.107' 'perl-devel-globaldestruction>=0' 'perl-devel-overloadinfo>=0.005' 'perl-devel-stacktrace>=2.03' 'perl-dist-checkconflicts>=0.02' 'perl-eval-closure>=0.04' 'perl-mro-compat>=0.05' 'perl-module-runtime>=0.014' 'perl-module-runtime-conflicts>=0.002' 'perl-package-deprecationmanager>=0.11' 'perl-package-stash>=0.32' 'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00' 'perl-sub-exporter>=0.980' 'perl-sub-identify>=0' 'perl-sub-name>=0.20' 'perl-try-tiny>=0.17' 'perl-module-runtime-conflicts')
