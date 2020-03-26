@@ -2,23 +2,23 @@
 
 pkgname=antergos-wallpapers
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 pkgdesc="The default wallpapers for Antergos"
 arch=('any')
 url="http://www.antergos.com"
 license=('CCPL:by-nc-sa')
-source=("http://mirrors.antergos.com/antergos/x86_64/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.xz")
-sha256sums=('15b255ebf16fa4910b08ff59a0421b75d0b5289ffc62227990d619a730105fff')
+source=("https://github.com/Antergos/wallpapers/archive/${pkgver}.tar.gz")
+sha256sums=('b0ff5140583ec6b77843d14989ac36735f8b21b4c3c14bf5304a73d5d2d1aeda')
 
 package() {
-  cd "${srcdir}"
+  cd "${srcdir}/wallpapers-${pkgver}"
   install -d "${pkgdir}/usr/share/antergos/wallpapers"
-  install -m644 usr/share/antergos/wallpapers/*.jpg "${pkgdir}/usr/share/antergos/wallpapers/"
-  install -m644 usr/share/antergos/wallpapers/*.png "${pkgdir}/usr/share/antergos/wallpapers/"
+  install -m644 *.jpg "${pkgdir}/usr/share/antergos/wallpapers/"
+  install -m644 *.png "${pkgdir}/usr/share/antergos/wallpapers/"
 
   install -d "${pkgdir}/usr/share/cinnamon-background-properties"
-  install -m644 usr/share/cinnamon-background-properties/antergos.xml "${pkgdir}/usr/share/cinnamon-background-properties/"
+  install -m644 antergos-backgrounds-4-3.xml "${pkgdir}/usr/share/cinnamon-background-properties/"
 
   install -d "${pkgdir}/usr/share/gnome-background-properties"
-  install -m644 usr/share/gnome-background-properties/antergos-backgrounds-4-3.xml "${pkgdir}/usr/share/gnome-background-properties/"
+  install -m644 antergos-backgrounds-4-3.xml "${pkgdir}/usr/share/gnome-background-properties/"
 }
