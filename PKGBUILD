@@ -1,10 +1,11 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Fernando Ortiz <nandub+arch [at] nandub.info>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgbase=python-pyalsaaudio-git
 pkgname=(python-pyalsaaudio-git python2-pyalsaaudio-git)
 _pkgname=pyalsaaudio
 pkgver=0.8.4.r25.g12f8076
-pkgrel=1
+pkgrel=2
 pkgdesc="ALSA wrappers for Python (development version)"
 arch=('i686' 'x86_64')
 url="http://larsimmisch.github.io/pyalsaaudio/"
