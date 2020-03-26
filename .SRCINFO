@@ -8,6 +8,7 @@ pkgbase = statping
 	makedepends = go-pie
 	makedepends = go.rice
 	makedepends = yarn
+	depends = glibc
 	source = statping-0.90.15.tar.gz::https://github.com/statping/statping/archive/v0.90.15.tar.gz
 	sha256sums = 7e1a08e879dd970473a66e58b6910dbbdb1f6a62dcacd9a2f73e414228c83649
 

@@ -7,6 +7,7 @@ pkgdesc='An easy to use Status Page for your websites and applications.'
 arch=(x86_64)
 url='https://statping.com/'
 license=("GPL3")
+depends=(glibc)
 makedepends=(go-pie go.rice yarn)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('7e1a08e879dd970473a66e58b6910dbbdb1f6a62dcacd9a2f73e414228c83649')
