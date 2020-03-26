@@ -16,4 +16,11 @@ md5sums=('SKIP')
 package() {
     cd "${pkgname}"
     python setup.py install --root "${pkgdir}" --optimize=1
+    install -dm 755 "${pkgdir}/etc"
+    install -dm 750 "${pkgdir}/etc/sudoers.d"
+    install -m 640 tablet-mode.sudoers "${pkgdir}/etc/sudoers.d/tablet-mode"
+    install -Dm 644 tablet-mode.service "${pkgdir}/usr/lib/systemd/system/tablet-mode.service"
+    install -Dm 644 laptop-mode.service "${pkgdir}/usr/lib/systemd/system/laptop-mode.service"
+    install -Dm 644 tablet-mode.group "${pkgdir}/usr/lib/sysusers.d/tablet-mode.conf"
+    install -Dm 644 tablet-mode.desktop "${pkgdir}/usr/share/applications/tablet-mode.desktop"
 }
