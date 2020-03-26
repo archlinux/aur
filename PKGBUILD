@@ -12,12 +12,12 @@ source=("stretchy-snek-boi::git+https://github.com/KnockKnockP/stretchy-snek-boi
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	make stretchy-snek-boi-git
 }
 
 package() {
-	cd "$pkgname"
+	cd "$pkgname-$pkgver"
 	mkdir $pkgdir/usr/bin/ -p
 	make DESTDIR="$pkgdir/usr/bin" install-git
 }
