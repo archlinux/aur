@@ -2,8 +2,8 @@
 
 pkgname=openra-gen-git
 _pkgname=${pkgname/-git}
-pkgver=1160.git.e448241
-pkgrel=2
+pkgver=1167.git.1d0e437
+pkgrel=1
 pkgdesc="A mod of OpenRA based on Command & Conquer: Generals"
 arch=('any')
 url="https://github.com/MustaphaTR/Generals-Alpha"
