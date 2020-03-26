@@ -1,0 +1,15 @@
+pkgbase = mada-font
+	pkgdesc = A geometric, unmodulted Arabic display typeface
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/alif-type/mada
+	arch = any
+	license = OFL
+	provides = mada-font
+	source = https://github.com/alif-type/mada/releases/download/v1.3/Mada-1.3.zip
+	sha256sums = 73a11529781730985ddf4bdbf18f2df58babc73d0ae72a87ae388410c71b0b37
+
+pkgname = otf-mada
+
+pkgname = ttf-mada
+
