@@ -1,6 +1,6 @@
 pkgbase = ubuntu-mate-icon-themes
 	pkgdesc = The official icon themes for Ubuntu MATE
-	pkgver = 19.04.0
+	pkgver = 20.04.2
 	pkgrel = 1
 	url = https://launchpad.net/ubuntu-mate/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = ubuntu-mate-icon-themes
 	license = GPL3
 	optdepends = ubuntu-mate-themes: GTK2, GTK3, Unity and Metacity themes from Ubuntu MATE
 	optdepends = mate-icon-theme: MATE default icon theme
-	source = https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-icon-themes_19.04.0_all.deb
-	sha256sums = 1b7d17ebedadd05de40e68f3312007dda25214e2551c96475b6f3db4807ae5b0
+	source = https://mirrors.edge.kernel.org/ubuntu/pool/universe/u/ubuntu-mate-artwork/ubuntu-mate-icon-themes_20.04.2_all.deb
+	sha256sums = 2b102341004b3b54153ea76f7655869e23419842d72820acf17fdeec566a3940
 
 pkgname = ubuntu-mate-icon-themes
 
