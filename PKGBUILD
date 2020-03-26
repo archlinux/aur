@@ -12,7 +12,8 @@ makedepends=(
   'go'
   'git'
 )
-conflicts=("plexdrive-bin" "plexdrive-git" "plexdrive-dev-git" "plexdrive-mongodb" "plexdrive-mongodb-bin" "plexdrive-sqlite" "plexdrive-sqlite-bin")
+provides=("$pkgname")
+conflicts=("$pkgname")
 source=(https://github.com/dweidenfeld/plexdrive/archive/5.0.0.tar.gz)
 sha256sums=('68763993a3da3d8ccd0dc18b3a5db7ab7ad8d03fde2d9be2ef4829e8356225bd')
 _goroot='/usr/lib/go'
