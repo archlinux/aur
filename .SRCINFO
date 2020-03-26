@@ -1,16 +1,20 @@
 pkgbase = abireport
 	pkgdesc = Tool to create ABI reports from ELF binaries in packaging
-	pkgver = 1.0.7
-	pkgrel = 2
+	pkgver = 1.0.10
+	pkgrel = 1
 	url = https://github.com/clearlinux/abireport
-	arch = any
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	makedepends = go
 	optdepends = rpm-org: extract rpm files
 	optdepends = dpkg: extract deb files
 	optdepends = unzip: extract eopkg files
-	source = https://github.com/clearlinux/abireport/releases/download/v1.0.7/abireport-1.0.7.tar.gz
-	sha512sums = 2067c160c7a626299280c5b14b1197c0d29f42278145d1cd4de7742d5618fbfa07afa1c48f6c1f627d6323c37abbb60a78a74b442a2773d6714f7830900f6310
+	source = https://github.com/clearlinux/abireport/releases/download/v1.0.10/abireport-1.0.10.tar.xz
+	sha512sums = 32e92f53739ed0df533528b6fcf11748f7bbd293b306109f779478533c8287cdb8b4d995a1b58c1da4e423b7dfb1a5c858f9a6e0cc96e10fbe977657cb26d59c
 
 pkgname = abireport
 
