@@ -2,7 +2,7 @@
 
 pkgname=fwupd-git
 _pkgname=fwupd
-pkgver=1.3.6.r62.g79309920
+pkgver=1.3.8.r161.g464eacdc
 pkgrel=1
 pkgdesc="A simple daemon to allow session software to update firmware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,10 +11,10 @@ license=('LGPL')
 depends=('libxmlb' 'efivar' 'python' 'libsmbios' 'libgusb'
          'libsoup' 'json-glib' 'gcab' 'libarchive' 'gpgme'
          'libgudev' 'polkit' 'shared-mime-info' 'modemmanager'
-         'tpm2-tss')
+         'tpm2-tss' 'libjcat')
 makedepends=('meson' 'valgrind' 'gobject-introspection' 'gtk-doc'
              'python-cairo' 'noto-fonts' 'noto-fonts-cjk' 'python-gobject' 'vala'
-             'bash-completion' 'python-pillow' 'help2man' 'gnu-efi-libs' 'tpm2-tss')
+             'bash-completion' 'python-pillow' 'help2man' 'gnu-efi-libs' 'git')
 checkdepends=('umockdev')
 conflicts=('fwupd')
 provides=('fwupd')
