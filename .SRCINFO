@@ -1,24 +1,13 @@
 pkgbase = gopanda
 	pkgdesc = Client for the Pandanet-IGS go Server
-	pkgver = 2.5.2
+	pkgver = 2.6.8
 	pkgrel = 1
 	url = http://pandanet-igs.com/communities/gopanda2
-	arch = i686
 	arch = x86_64
 	license = custom
-	depends = libnotify
-	depends = alsa-lib
-	depends = libxtst
-	depends = gtk2
-	depends = gconf
-	depends = nss
 	options = !strip
-	source = LICENSE
-	md5sums = c5951d02adb28f6b333d913ae2f92df0
-	source_i686 = http://pandanet-igs.com/gopanda2/installer/stable/linux-32/gopanda2-linux-32.tar.gz
-	md5sums_i686 = 170e380003a712267e3e85c0fe38011a
-	source_x86_64 = http://pandanet-igs.com/gopanda2/installer/stable/linux-64/gopanda2-linux-64.tar.gz
-	md5sums_x86_64 = d1fcd13d8de0f2c0331ee0a9cb58a58a
+	source_x86_64 = https://pandanet-igs.com/gopanda2/download/GoPanda2.AppImage
+	md5sums_x86_64 = 21620c0be7bb21402181ce1e4a7d448c
 
 pkgname = gopanda
 
