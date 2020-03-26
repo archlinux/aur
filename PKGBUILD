@@ -2,7 +2,7 @@
 
 pkgname=julia-offsetarrays
 _pkgname=OffsetArrays
-pkgver=0.11.4
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Provides Julia users with arrays that have arbitrary indices'
 arch=(any)
@@ -11,15 +11,15 @@ license=(MIT)
 depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
 
-_commit=8f95b8c4f5d05b6651bd4d17b7a00258b7f83c6c
+_commit=d49874cd7cc292e48c980a1254ece16ce7dfc7be
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('62481bc8a612c0fd106601925b844c0d4aced34c4963d9d0b81fdeee638d42e4'
+sha256sums=('85fc544e4f89f3ee50d358a8e12de5ac25b0e35e140eb196336b0135703c5739'
             'bd53eceea5bf604916eb4adaa7f89157e6e918276997c769d64e4f81aff11eec'
             '1b21bc2bfd68eacbdeaf49ffd8f4f8da091ea82f767a070ff921cdc3d446601f'
-            '6331255b4d8e7a653b922ece16b0d167615dbf8e72ad823c2b58168b47ae9913')
+            'c91e56454bad2d5dedf5d8a700a00708caa834a1434cd41ad6a7bde2fb39e054')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
