@@ -3,9 +3,9 @@
 # Contributor: Danny Su       <contact@dannysu.com>
 
 pkgname=duplicati-latest
-pkgver=2.0.5.103
-pkgrel=2
-_date=2020-02-18
+pkgver=2.0.5.104
+pkgrel=1
+_date=2020-03-25
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
@@ -16,7 +16,7 @@ source=(https://updates.duplicati.com/${_branch}/duplicati-${pkgver}_${_branch}_
 	duplicati.service
 	duplicati.sysusers
 	duplicati-cli)
-sha256sums=('d4741bf33d16e6b08bf952b2c46be44fc71230a67b38c285afd585e119401fb0'
+sha256sums=('b6a528c97c0d058b33da24a719b260be5ecf7ae99753c38a03f15f7b3059ed61'
             '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
             '499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
