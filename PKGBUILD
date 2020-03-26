@@ -1,11 +1,11 @@
 # Maintainer: Axel Gembe <derago@gmail.com>
-pkgname='plexdrive-git'
+pkgname=plexdrive-git
 _pkgname=${pkgname/-git/}
-pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem'
 pkgver=5.0.0.r18.gbf61a47
 pkgrel=4
-url='https://github.com/dweidenfeld/plexdrive'
+pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem, with direct delete option on the filesystem.'
 arch=('any')
+url='https://github.com/dweidenfeld/plexdrive'
 license=('MIT')
 depends=('fuse')
 makedepends=(
@@ -34,7 +34,10 @@ prepare() {
 build() {
   export GOPATH="$srcdir"/gopath
   cd gopath/src/github.com/dweidenfeld/$pkgname
-  go build -o $_pkgname .
+  go build \
+    -trimpath \
+    -o $_pkgname \
+    .
 }
 
 package() {
