@@ -1,0 +1,16 @@
+pkgbase = python-dm-tree
+	pkgdesc = tree is a library for working with nested data structures
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://tree.readthedocs.io
+	arch = any
+	license = Apache-2.0
+	makedepends = python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	source = python-dm-tree-0.1.1::https://github.com/deepmind/tree/archive/0.1.1.tar.gz
+	sha256sums = f326e1c450a7d3cfd42288c2a1a0ef1cfb2bfa576f7f936d50a1fa144942e0a1
+
+pkgname = python-dm-tree
+
