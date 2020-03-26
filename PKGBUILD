@@ -2,6 +2,7 @@
 pkgname=psautohint
 pkgver=2.0.1
 pkgrel=1
+epoch=2
 pkgdesc="A standalone version of AFDKO’s autohinter"
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/psautohint"
