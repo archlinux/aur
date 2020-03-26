@@ -18,7 +18,7 @@ pkgbase = avisynth-plugin-lsmashsource-git
 	source = lsmashsource::git+https://github.com/HolyWu/L-SMASH-Works.git
 	source = avisynth.patch
 	sha256sums = SKIP
-	sha256sums = 4f4535e0743b078b2ac0cf2034aa0f00599cde6504485576afc1c84e5a887f2c
+	sha256sums = 0acae0a04dbb1174eab08c4c41d33fa9df0bd33463f7e09bbb9b2e2581242f6a
 
 pkgname = avisynth-plugin-lsmashsource-git
 

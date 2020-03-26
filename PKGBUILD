@@ -24,7 +24,7 @@ source=("${_plug}::git+https://github.com/HolyWu/L-SMASH-Works.git"
         'avisynth.patch'
         )
 sha256sums=('SKIP'
-            '4f4535e0743b078b2ac0cf2034aa0f00599cde6504485576afc1c84e5a887f2c'
+            '0acae0a04dbb1174eab08c4c41d33fa9df0bd33463f7e09bbb9b2e2581242f6a'
             )
 
 pkgver() {
@@ -36,7 +36,7 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-  rm -fr "${_plug}/include/"avs*
+  rm -fr "${_plug}/include/"{avs*,avi*}
 
   patch -d "${_plug}" -p1 -i "${srcdir}/avisynth.patch"
 }
