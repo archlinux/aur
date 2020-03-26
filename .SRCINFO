@@ -1,4 +1,4 @@
-pkgbase = stretchy-snek-boi
+pkgbase = stretchy-snek-boi-git
 	pkgdesc = A snake game clone.
 	pkgver = 1.0.6
 	pkgrel = 1
@@ -8,5 +8,5 @@ pkgbase = stretchy-snek-boi
 	source = stretchy-snek-boi::git+https://github.com/KnockKnockP/stretchy-snek-boi.git
 	md5sums = SKIP
 
-pkgname = stretchy-snek-boi
+pkgname = stretchy-snek-boi-git
 

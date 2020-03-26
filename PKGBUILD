@@ -1,7 +1,7 @@
 # Maintainer: KnockKnockP <memeboi420666 at gmail dot com>
 #                         (What a silly email, I regret making it like this.).
 
-pkgname="stretchy-snek-boi"
+pkgname="stretchy-snek-boi-git"
 pkgver=1.0.6
 pkgrel=1
 pkgdesc="A snake game clone."
