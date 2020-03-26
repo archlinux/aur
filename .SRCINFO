@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.5.v.13
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -18,7 +18,7 @@ pkgbase = linux-slim
 	source = 5012_enable-cpu-optimizations-for-gcc91.patch
 	source = noefi.patch
 	sha256sums = SKIP
-	sha256sums = 202baf16144fcbfe7a0c21b090e89cc41f6c8c57b896eebe5e9566f15396c4c3
+	sha256sums = 6e481331cedaffa067b98fcfb31575ee9888757f6a0d4d83a133a8fa209604ab
 	sha256sums = 41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367
 	sha256sums = cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370
 	sha256sums = 99a553d7d1b2926cbbaceee61706e54a3728890a72a1fbb55343091ea105a84f
