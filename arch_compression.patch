@@ -1,0 +1,47 @@
+diff --git a/build_pip_pkg.py b/build_pip_pkg.py
+index 432820f..d23e34c 100644
+--- a/build_pip_pkg.py
++++ b/build_pip_pkg.py
+@@ -83,6 +83,7 @@ def main(srcdir):
+           'Programming Language :: Python :: 3.5',
+           'Programming Language :: Python :: 3.6',
+           'Programming Language :: Python :: 3.7',
++          'Programming Language :: Python :: 3.8',
+           'Topic :: Scientific/Engineering :: Mathematics',
+           'Topic :: Software Development :: Libraries :: Python Modules',
+           'Topic :: Software Development :: Libraries',
+@@ -100,7 +101,7 @@ def main(srcdir):
+                 'python deep-learning deep-neural-networks neural-network ml')
+   )
+ 
+-  destdir = '/tmp/tensorflow_compression'
++  destdir = os.path.join(os.environ['BUILD_WORKSPACE_DIRECTORY'], '..', 'whl')
+   print('=== Copying wheel to ' + destdir)
+   if not os.path.exists(destdir): os.mkdir(destdir)
+   for path in glob.glob(os.path.join(tempdir, 'dist', '*.whl')):
+diff --git a/tensorflow_compression/cc/BUILD b/tensorflow_compression/cc/BUILD
+index 7aa907d..543ac8d 100644
+--- a/tensorflow_compression/cc/BUILD
++++ b/tensorflow_compression/cc/BUILD
+@@ -11,8 +11,6 @@ cc_binary(
+     ),
+     copts = [
+         "-pthread",
+-        "-std=c++11",
+-        "-D_GLIBCXX_USE_CXX11_ABI=0",
+     ],
+     linkshared = 1,
+     linkstatic = 0,
+diff --git a/workspace.bzl b/workspace.bzl
+index 08dc71c..e47b0bd 100644
+--- a/workspace.bzl
++++ b/workspace.bzl
+@@ -22,7 +22,7 @@ def _tensorflow_pip_impl(ctx):
+          "tensorflow?: %s" % include_path.stderr)
+ 
+   if "linux" in ctx.os.name:
+-    library_filename = "libtensorflow_framework.so.1"
++    library_filename = "libtensorflow_framework.so.2"
+   elif "mac" in ctx.os.name:
+     library_filename = "libtensorflow_framework.dylib"
+ 
