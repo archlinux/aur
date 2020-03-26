@@ -1,7 +1,7 @@
 # Maintainer: DnsAdBlock <office@dnsadblock.com>
 pkgname=dnsadblock
 pkgver=0.2.36
-pkgrel=1
+pkgrel=2
 pkgdesc='DnsAdBlock DNS to DOH proxy client'
 arch=('x86_64')
 url='https://github.com/dnsadblock/proxy-release'
@@ -11,7 +11,7 @@ sha256sums=('@checksum@')
 install=$pkgname.install
 
 package() {
-	cd $pkgname-$pkgver
+	cd "${pkgname}_${pkgver}_linux_amd64"
 	install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
 
