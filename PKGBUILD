@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgbase=hydrus
 pkgname=(hydrus)
-pkgver=389
+pkgver=390
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -22,13 +22,13 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'miniupnpc: automatic port forwarding'
             'desktop-file-utils: to add Hydrus to your desktop environment menus'
             )
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=5014c369b173b2a7c5f4ab5d9333b3e93a3fd0c8"
+source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=e5318a2c08548af8ca7caa07b6beeb4f8ec6c028"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            '6f580d7a4313484fde4b085debe7e9657f01a2d31c4d5202e08ad33701a9d594'
+            'ea26711bb5d4ea1c769727ae8e4e1f2d2b4cd9cb130fb90d392ee7f0b8a85028'
             '7b0dbc6f38f9aaff409e435ba807199575166976b52715d6b54418f89dbde634'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
@@ -37,14 +37,8 @@ prepare() {
   cd "$pkgbase"
   git apply < ../paths-in-opt.patch
 
-  # Fix permissions
-  chmod a-x include/*.py
-
-  # Remove strange file
-  rm -f "include/pyconfig.h"
-
   # Remove unit tests
-  rm -f "include/Test"*.py
+  rm -f "hydrus/Test"*.py
   rm -rf "static/testing"
 }
 
@@ -60,7 +54,7 @@ package_hydrus() {
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
-  cp -r help include static client.pyw server.py "${pkgdir}/opt/hydrus/"
+  cp -r help hydrus static client.pyw server.py "${pkgdir}/opt/hydrus/"
 
   # Create and populate /opt/hydrus/bin
   install -d -m755 "${pkgdir}/opt/hydrus/bin"

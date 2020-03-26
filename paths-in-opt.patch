@@ -1,8 +1,8 @@
-diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 87a1213..ce62212 100755
---- a/include/ClientGUI.py
-+++ b/include/ClientGUI.py
-@@ -740,7 +740,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
+diff --git a/hydrus/ClientGUI.py b/hydrus/ClientGUI.py
+index 7cec25b..b4e24e5 100644
+--- a/hydrus/ClientGUI.py
++++ b/hydrus/ClientGUI.py
+@@ -739,7 +739,7 @@ class FrameGUI( ClientGUITopLevelWindows.MainFrameThatResizes ):
                              python_executable = python_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -11,10 +11,10 @@ index 87a1213..ce62212 100755
                          
                          cmd = [ python_executable, server_script_path, db_param ]
                          
-diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 5b0aa75..10b528c 100755
---- a/include/HydrusConstants.py
-+++ b/include/HydrusConstants.py
+diff --git a/hydrus/HydrusConstants.py b/hydrus/HydrusConstants.py
+index a8684e2..717b3cc 100644
+--- a/hydrus/HydrusConstants.py
++++ b/hydrus/HydrusConstants.py
 @@ -4,31 +4,8 @@ import sys
  # old method of getting frozen dir, doesn't work for symlinks looks like:
  # BASE_DIR = getattr( sys, '_MEIPASS', None )
