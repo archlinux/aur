@@ -1,9 +1,9 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-skia-pathops')
+pkgname='python-skia-pathops'
 _pkgname='skia-pathops'
-pkgver='0.2.0.post2'
+pkgver='0.3.0'
 pkgrel=1
-pkgdesc="Python bindings for the Skia library's Path Opts."
+pkgdesc="Python bindings for the Skia library's Path Ops."
 url="https://github.com/fonttools/skia-pathops"
 checkdepends=('python-pytest' 'python-pytest-cython')
 depends=('python')
@@ -12,7 +12,7 @@ optdepends=()
 license=('BSD')
 arch=('x86_64')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('87ac9513f17944cc27f67a9db393cf1a385e300cb914ad44b82797c1498b4af5')
+sha256sums=('9d5ad3d0e7be0e6ba542ad769a8149f97bf0d431520167840ad3fc4472d16585')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
