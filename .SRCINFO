@@ -1,16 +1,17 @@
 pkgbase = snownews
-	pkgdesc = Text mode RSS newsreader for Linux and Unix.
+	pkgdesc = RSS feed reader for the command-line
 	pkgver = 1.6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kouya/snownews
 	arch = x86_64
 	license = GPL3
 	depends = libxml2
 	depends = ncurses
+	depends = perl-file-path
+	depends = perl-http-message
+	depends = perl-libwww
 	depends = perl-xml-libxml
-	depends = perl-xml-libxslt
-	optdepends = gettext
-	source = snownews-1.6.10.tar.gz::https://github.com/kouya/snownews/archive/1.6.10.tar.gz
+	source = https://github.com/kouya/snownews/archive/1.6.10.tar.gz
 	sha256sums = 8c78067aef75e283df4b3cca1c966587b6654e9e84a3e6e5eb8bdd5829799242
 
 pkgname = snownews
