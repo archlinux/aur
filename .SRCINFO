@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-gtk-git
 	pkgdesc = A remote interface to the Transmission BitTorrent client
-	pkgver = 1.2.r54.gc784459
+	pkgver = 1.4.1.r3.gb206550
 	pkgrel = 1
 	url = https://github.com/transmission-remote-gtk/transmission-remote-gtk
 	arch = i686
@@ -21,7 +21,9 @@ pkgbase = transmission-remote-gtk-git
 	conflicts = transmission-remote-gtk
 	options = !libtool
 	source = git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git
-	md5sums = SKIP
+	source = gettext_020.patch
+	sha512sums = SKIP
+	sha512sums = 2f56ad149ddf0152c5b6153675a285671b724d101ad065cd311a31d07274197e92903165efbf62dbde8aff573e1478da1ecf219ed3e4e5ebb65cfaef673b708e
 
 pkgname = transmission-remote-gtk-git
 
