@@ -1,6 +1,6 @@
 pkgbase = hqplayer-network-audio-daemon
 	pkgdesc = Signalyst Network Audio Daemon
-	pkgver = 4.0.1
+	pkgver = 4.1.1
 	pkgrel = 1
 	url = http://www.signalyst.com/consumer.html
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = hqplayer-network-audio-daemon
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	source = https://www.signalyst.eu/bins/naa/linux/bionic/networkaudiod_4.0.1-44_amd64.deb
+	source = https://www.signalyst.eu/bins/naa/linux/bionic/networkaudiod_4.1.1-46_amd64.deb
 	source = networkaudio.service
 	sha256sums = SKIP
 	sha256sums = 75d45b226dcbb78dfb61e941ee5ef2a8f0d88efbf414d2618b42520fe3cb129e
