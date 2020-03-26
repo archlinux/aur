@@ -22,7 +22,7 @@ options=()
 source=("git+$url")
 #("$pkgname-$pkgver.tar.gz""$pkgname-$pkgver.patch")
 #noextract=()
-md5sums=('SKIP')
+md5sums=('4f6f9a8e8f8c7909deac4015dc9c2f50')
 #validpgpkeys=()
 
 #prepare() {
