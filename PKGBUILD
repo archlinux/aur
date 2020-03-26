@@ -1,8 +1,9 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
-pkgver=c7c72e5
 _ver=1.0.5
-pkgrel=2
+_commit=c7c72e5
+pkgver=$_ver.$_commit
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -19,13 +20,13 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'patch.diff.example')
 sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8'
-            '89f0f397de04eeffb2322d95dde072871690531111dd621aca2981dcd7112f2f')
+            '32f3875bd96e44fed11089ebc16b2dc6f1436ddcd21ae0abb6f452315f233262')
 
 prepare() {
   cd $srcdir/session-desktop
-  git checkout $pkgver
+  git checkout $_commit
   echo "Applying patch"
-  sed "s/ver_placeholder/$pkgver/g" $srcdir/patch.diff.example > $srcdir/patch.diff
+  sed "s/ver_placeholder/$_ver-$_commit/g" $srcdir/patch.diff.example > $srcdir/patch.diff
   git apply $srcdir/patch.diff
   source /usr/share/nvm/init-nvm.sh && nvm install 10.13.0
 }
@@ -63,7 +64,7 @@ package() {
   cp $srcdir/session-desktop/build/icons/png/512x512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/session-messenger-desktop.png
   cp $srcdir/session-desktop/build/icons/png/1024x1024.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/session-messenger-desktop.png
 
-  tar xf $srcdir/session-desktop/release/session-messenger-desktop-linux-x64-$_ver-$pkgver.tar.xz -C $pkgdir/opt/
-  mv $pkgdir/opt/session-messenger-desktop-linux-x64-$_ver-$pkgver $pkgdir/opt/Session
+  tar xf $srcdir/session-desktop/release/session-messenger-desktop-linux-x64-$_ver-$_commit.tar.xz -C $pkgdir/opt/
+  mv $pkgdir/opt/session-messenger-desktop-linux-x64-$_ver-$_commit $pkgdir/opt/Session
   cp $srcdir/session-desktop.desktop $pkgdir/usr/share/applications/
 }
