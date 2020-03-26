@@ -9,8 +9,10 @@ pkgbase = pueue-bin-2
 	conflicts = pueue-git
 	conflicts = pueue
 	conflicts = pueue-bin
+	source = https://github.com/Nukesor/pueue/archive/v0.2.1.tar.gz
 	source = pueue-linux-amd64-0.2.1::https://github.com/Nukesor/pueue/releases/download/v0.2.1/pueue-linux-amd64
 	source = pueued-linux-amd64-0.2.1::https://github.com/Nukesor/pueue/releases/download/v0.2.1/pueued-linux-amd64
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

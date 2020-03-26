@@ -10,10 +10,12 @@ conflicts=('pueue-git' 'pueue' 'pueue-bin')
 provides=('pueue')
 url='https://github.com/nukesor/pueue'
 source=(
+    "https://github.com/Nukesor/pueue/archive/v${pkgver}.tar.gz"
     "pueue-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueue-linux-amd64"
     "pueued-linux-amd64-${pkgver}::https://github.com/Nukesor/pueue/releases/download/v${pkgver}/pueued-linux-amd64"
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 
