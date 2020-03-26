@@ -9,8 +9,8 @@ arch=("x86_64")
 install=.install
 provides=("QUsb2Snes"
           "QFile2Snes")
-requires=("qt5-websockets"
-          "qt5-serialport")
+depends=("qt5-websockets"
+         "qt5-serialport")
 url="https://github.com/Skarsnik/QUsb2snes"
 source=("git+https://github.com/Skarsnik/QUsb2snes"
         "QUsb2Snes.desktop"
