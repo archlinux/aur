@@ -12,6 +12,7 @@ depends=(
   'rocksdb'
   'python'
 )
+backup=('etc/fulcrum.conf')
 install=fulcrum.install
 provides=("$pkgname")
 source=(

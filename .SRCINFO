@@ -10,6 +10,7 @@ pkgbase = fulcrum
 	depends = rocksdb
 	depends = python
 	provides = fulcrum
+	backup = etc/fulcrum.conf
 	source = https://gitlab.com/FloweeTheHub/fulcrum/-/archive/v1.0.5b/fulcrum-v1.0.5b.tar.gz
 	source = fulcrum.conf
 	sha256sums = de3dee8751672b497032b4468e982a7280456636e78da120a2346e85669c30b0
