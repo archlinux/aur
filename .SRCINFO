@@ -14,6 +14,9 @@ pkgbase = qusb2snes-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	depends = qt5-websockets
+	depends = qt5-serialport
+
 
 pkgname = qusb2snes-git
 
