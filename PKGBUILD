@@ -2,8 +2,8 @@
 
 pkgname=julia-conda
 _pkgname=Conda
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc='Use conda as a cross-platform binary provider for Julia'
 arch=(any)
 url=https://github.com/JuliaPy/Conda.jl
@@ -12,15 +12,15 @@ depends=(julia julia-compat julia-loadpath)
 makedepends=(julia-distrohelper)
 checkdepends=(julia-versionparsing)
 
-_commit=85ed1f9bd9b0fee95f9d0834147088dbc44f4af4
+_commit=1301ac6af9b6b576868a2d4ea0a124171d1ed91e
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml)
-sha256sums=('3b43a581d45fe6d6edd9e6a86119cf73587370202d85fc1e6196b3eb5cab2d4c'
-            '13f55effc5db4c9b01a6676e1147f1d354a336749f8d8321cf4b9b5a94147022'
+sha256sums=('9604125a12127eb2c2f6e8bc5bf2ed96c897108036599405e127b4b7993be9a2'
+            '19cac12a456fe9dd43a9cb96506f59c45278293fc29f6581cf0b0190e1f122d8'
             '16404fdeb5c5df9d923ffbdc6f6d146561242cbf1255dc67ab668625480d4be2'
-            'eea559d5438aa58068e40abb403130531b87d9865b0236ad46350528096d59f3')
+            '078b17ab67725414122a3f224ddad9a73730206aaf2c4d3db4de6b6798571107')
 
 _slug() {
 	dh_julia slug "$srcdir"/"$pkgname"-$pkgver-{Package,Versions}.toml
