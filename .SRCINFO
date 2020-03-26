@@ -1,0 +1,18 @@
+pkgbase = mobills-nativefier
+	pkgdesc = Mobills Web - controle financeiro com c/ nativefier
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.mobills.com.br/
+	arch = x86_64
+	license = GPL3
+	makedepends = nodejs
+	makedepends = nodejs-nativefier
+	makedepends = npm
+	makedepends = unzip
+	source = mobills-nativefier.png
+	source = mobills-nativefier.desktop
+	sha256sums = 033a6e23232ca5f46b376ac8813ca101c8e8942e2b53313dd0767ccfd9c9ebea
+	sha256sums = e4a9cd26c7a6c4aef144c091e3a8be565a1d6214663559bf205b6eaf578a3345
+
+pkgname = mobills-nativefier
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Mobills
+Comment=
+Exec=mobills
+Icon=/usr/share/pixmaps/mobills.png
+Terminal=false
+Categories=Office;Productivity;Financy;Nativefier;
