@@ -1,0 +1,8 @@
+post_install() {
+	/usr/bin/dnsadblock install
+}
+
+pre_remove() {
+	systemctl stop dnsadblock
+	/usr/bin/dnsadblock uninstall
+}
