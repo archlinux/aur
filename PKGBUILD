@@ -6,8 +6,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=denemo-git
-pkgver=r10576
+pkgver=2.3.0.153.g8f98d55d0
 pkgrel=1
+epoch=1
 pkgdesc="A music score editor"
 arch=('x86_64')
 url="http://www.denemo.org"
@@ -22,7 +23,7 @@ provides=("${pkgname%-git}")
 
 pkgver() {
   cd ${pkgname%-git}	
-  printf r%s $(git rev-list --count HEAD)
+  git describe --tags | cut -c2- | sed 's+-+.r+' |tr - .
 }
 
 build() {

@@ -1,7 +1,8 @@
 pkgbase = denemo-git
 	pkgdesc = A music score editor
-	pkgver = r10576
+	pkgver = 2.3.0.153.g8f98d55d0
 	pkgrel = 1
+	epoch = 1
 	url = http://www.denemo.org
 	arch = x86_64
 	license = GPL
