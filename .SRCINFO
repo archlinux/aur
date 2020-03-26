@@ -1,7 +1,7 @@
 pkgbase = bbswitch-zen
 	pkgdesc = Kernel module allowing to switch dedicated graphics card on Optimus laptops
 	pkgver = 0.8
-	pkgrel = 12
+	pkgrel = 13
 	url = http://github.com/Bumblebee-Project/bbswitch
 	arch = x86_64
 	license = GPL
