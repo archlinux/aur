@@ -14,7 +14,6 @@ conflicts=("${pkgname%-git}")
 _py_deps=('fonttools'
           'fs'
           'lxml'
-          'sfdlib'
           'skia-pathops'
           'ufo2ft'
           'ufolib2>=0.6.2')
@@ -22,6 +21,7 @@ makedepends=('mupdf-tools'
              'psautohint'
              'python'
              "${_py_deps[@]/#/python-}"
+             'sfd2ufo'
              'texlive-core')
 source=("$pkgname::git+$url")
 md5sums=('SKIP')
