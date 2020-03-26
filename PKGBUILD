@@ -56,8 +56,8 @@ pkgver() {
 prepare() {
     cd fred
 
-    # Java 13 support
-    git pull -r -v https://github.com/skydrome/fred.git gradle-6.2-aur -q
+    # Java 14 support
+    git pull -r -v https://github.com/skydrome/fred.git gradle-6.3-aur -q
 
     rm -f seednodes.fref
     for node in "$srcdir"/seedrefs/0* ;do
