@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Wiesner <sebastian@swsnr.de>
 pkgname=git-gone
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Prune stale local Git branches'
 arch=('i686' 'x86_64')
 url="https://github.com/lunaryorn/git-gone"
@@ -21,5 +21,5 @@ build() {
 }
 
 package() {
-    install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/$pkgname-$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
