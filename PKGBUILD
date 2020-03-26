@@ -1,6 +1,6 @@
 # Maintainer: Aconscious
 pkgname=qusb2snes-git
-pkgver=r186.c1eccae
+pkgver=r225.4bfbc6a
 pkgrel=1
 pkgdesc="A Qt based webserver for usb2snes"
 arch=("x86_64")
