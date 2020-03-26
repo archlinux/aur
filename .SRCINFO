@@ -1,0 +1,13 @@
+pkgbase = punk-nova-font
+	pkgdesc = An OpenType implementation of Donald Knuth’s Punk font
+	pkgver = 1.003
+	pkgrel = 1
+	url = https://github.com/alif-type/punk-otf
+	arch = any
+	license = OFL
+	provides = punk-nova-font
+	source = otf-punk-nova-pkgver.zip::https://github.com/alif-type/punk-otf/archive/v1.003.zip
+	sha256sums = f1e6cb5adf5a668029340a710f0dc125c3e8942c609dbd1b484559396954b1ca
+
+pkgname = otf-punk-nova
+
