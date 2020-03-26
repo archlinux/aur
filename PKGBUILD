@@ -1,4 +1,4 @@
-# Maintainer: Scott Dickson <scottfoesho AT gmail DOT com>
+# Maintainer: Axel Gembe <derago@gmail.com>
 
 pkgname=plexdrive
 pkgver=5.0.0
