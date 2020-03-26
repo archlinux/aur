@@ -1,8 +1,8 @@
 # Maintainer: gCurse <gcurse at web de>
 
 pkgname=otr-verwaltung3p-dev-git
-pkgver=1.0.0.beta002.r1.g271f1e3
-pkgrel=3
+pkgver=1.0.0.beta002.r5.g1fcc696
+pkgrel=1
 pkgdesc='Manage your onlinetvrecorder.com files: cut, preview cuts, rate cutlists etc.'
 arch=('any')
 url='https://github.com/EinApfelBaum/otr-verwaltung3p'
