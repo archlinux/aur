@@ -1,7 +1,7 @@
 pkgbase = julia-customunitranges
 	pkgdesc = Package-specific AbstractUnitRange types for julia
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/JuliaArrays/CustomUnitRanges.jl
 	arch = any
 	license = MIT
@@ -9,14 +9,14 @@ pkgbase = julia-customunitranges
 	depends = julia
 	depends = julia-compat
 	depends = julia-loadpath
-	source = julia-customunitranges-0.2.0.tar.gz::https://github.com/JuliaArrays/CustomUnitRanges.jl/archive/v0.2.0.tar.gz
-	source = julia-customunitranges-0.2.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/fbfeb69a2884a8188446ede9713b4a6fab54ac9d/C/CustomUnitRanges/Deps.toml
-	source = julia-customunitranges-0.2.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/fbfeb69a2884a8188446ede9713b4a6fab54ac9d/C/CustomUnitRanges/Package.toml
-	source = julia-customunitranges-0.2.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/fbfeb69a2884a8188446ede9713b4a6fab54ac9d/C/CustomUnitRanges/Versions.toml
-	sha256sums = 3757f4c85012d817b567fc28af1ca8208fb1833b72215139602cbe87fbb1361b
-	sha256sums = 96b76859a5ab36fbca8bbace268741f9268741766570777b19774d70569a120c
+	source = julia-customunitranges-1.0.0.tar.gz::https://github.com/JuliaArrays/CustomUnitRanges.jl/archive/v1.0.0.tar.gz
+	source = julia-customunitranges-1.0.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/5aa002981d19e489ac4a7dd6ecbd23aed82f523e/C/CustomUnitRanges/Deps.toml
+	source = julia-customunitranges-1.0.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/5aa002981d19e489ac4a7dd6ecbd23aed82f523e/C/CustomUnitRanges/Package.toml
+	source = julia-customunitranges-1.0.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/5aa002981d19e489ac4a7dd6ecbd23aed82f523e/C/CustomUnitRanges/Versions.toml
+	sha256sums = 63a43a8de19dfa3d2b8a48c4d9a88b83edb7ea70366d5def3e31c5d8acda6df2
+	sha256sums = f5073470974b5c9fe8c99136d214339ab8bf424cabc3ac32ac3a7d2d31ba053d
 	sha256sums = e436d208193283b7915203743069133c5969a9cd4fc3485e2c0cd50e82bbf178
-	sha256sums = 74f0ecfd0f8e8e5dc416b2bea064188f51d66eac43c8dcae2151eb64769301f4
+	sha256sums = cf8537454ee8aa818db030b2c7c7eb6ae7134206a45473fb0cd1f2633ad99252
 
 pkgname = julia-customunitranges
 
