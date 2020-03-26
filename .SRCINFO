@@ -1,0 +1,15 @@
+pkgbase = acme.sh-systemd
+	pkgdesc = Use systemd check for acme.sh (Let’s Encrypt) renewals
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/unknowndev233/acme.sh-systemd
+	arch = any
+	license = LGPL3
+	depends = systemd>=240
+	depends = acme.sh
+	backup = etc/acme.sh
+	source = acme.sh-systemd-0.1.0::https://github.com/unknowndev233/acme.sh-systemd/archive/v0.1.0.tar.gz
+	sha512sums = f63a106a4c9890ba466a19a475ccbe4ab88e122ffae295df3c78135e664eb52d13ebf2a296655f66c92ac981dfd98f899c4954bab793f162e316eb59ab6c903a
+
+pkgname = acme.sh-systemd
+
