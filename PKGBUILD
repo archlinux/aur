@@ -4,7 +4,7 @@
 
 pkgname=pycharm-community-eap
 
-_buildver=201.6487.18
+_buildver=201.6668.28
 _pkgver=2020.1
 _eap=y
 pkgver="$_pkgver.$_buildver"
