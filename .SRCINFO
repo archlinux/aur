@@ -1,0 +1,21 @@
+pkgbase = julia-zeromq-jll
+	pkgdesc = Binary wrapper for ZeroMQ
+	pkgver = 4.3.2+1
+	pkgrel = 1
+	url = https://github.com/JuliaBinaryWrappers/ZeroMQ_jll.jl
+	arch = any
+	license = MIT
+	makedepends = julia-distrohelper
+	depends = julia
+	depends = julia-loadpath
+	source = julia-zeromq-jll-4.3.2+1.tar.gz::https://github.com/JuliaBinaryWrappers/ZeroMQ_jll.jl/archive/ZeroMQ-v4.3.2+1.tar.gz
+	source = julia-zeromq-jll-4.3.2+1-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/28c4f605027b0162910055c9c41d0d96ed6d22e5/Z/ZeroMQ_jll/Deps.toml
+	source = julia-zeromq-jll-4.3.2+1-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/28c4f605027b0162910055c9c41d0d96ed6d22e5/Z/ZeroMQ_jll/Package.toml
+	source = julia-zeromq-jll-4.3.2+1-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/28c4f605027b0162910055c9c41d0d96ed6d22e5/Z/ZeroMQ_jll/Versions.toml
+	sha256sums = 32ed73fd677c95e86f686937046f3ef176b945f73d52187cf8284feaf2ee17a5
+	sha256sums = 99573347cf33ceb81436e6164b79bf96d7e0376825e3e01edd8cc4264967b51c
+	sha256sums = bc2b49fa81297a28daedad213bd4cee7c51c9582f0aaf72a48d9d6469670b8e5
+	sha256sums = 3eef8e6d8297943c659652f36919ce7d569cb2ab81aa42699e35c6dc31c377ce
+
+pkgname = julia-zeromq-jll
+
