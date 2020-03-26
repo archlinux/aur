@@ -1,7 +1,7 @@
 pkgbase = julia-catindices
 	pkgdesc = Julia package for indices-aware array concatenation and growth
-	pkgver = 0.2.0
-	pkgrel = 3
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/JuliaArrays/CatIndices.jl
 	arch = any
 	license = MIT
@@ -11,14 +11,14 @@ pkgbase = julia-catindices
 	depends = julia-customunitranges
 	depends = julia-loadpath
 	depends = julia-offsetarrays
-	source = julia-catindices-0.2.0.tar.gz::https://github.com/JuliaArrays/CatIndices.jl/archive/v0.2.0.tar.gz
-	source = julia-catindices-0.2.0-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Deps.toml
-	source = julia-catindices-0.2.0-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Package.toml
-	source = julia-catindices-0.2.0-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/05378dceec7bb8b2138a96b5b787ea7430c7ad3d/C/CatIndices/Versions.toml
-	sha256sums = e64af9d9d98d4de85814bf09ac3e00bf121770f2889e65b2f3b493de3934c1f8
-	sha256sums = 2710fc229fd01cde0123978f9e1b04f6fb57b91848910fb2077163cee0388cd4
+	source = julia-catindices-0.2.1.tar.gz::https://github.com/JuliaArrays/CatIndices.jl/archive/v0.2.1.tar.gz
+	source = julia-catindices-0.2.1-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/c9188911bcaa80bafb5baa8e9f7f82336f227d44/C/CatIndices/Deps.toml
+	source = julia-catindices-0.2.1-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/c9188911bcaa80bafb5baa8e9f7f82336f227d44/C/CatIndices/Package.toml
+	source = julia-catindices-0.2.1-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/c9188911bcaa80bafb5baa8e9f7f82336f227d44/C/CatIndices/Versions.toml
+	sha256sums = 5821f49198c173280e7f79bdd8ba061f5f58457a47ab2b37cade70ed472bfd3a
+	sha256sums = 6dc637a44b1f69572a318f4832bc0c63ec08820d8d92b41c97591581b3968b00
 	sha256sums = a0a6dbcf01b3727654e2ad7fa33b6dc22cd745e4363e86fb078e1a0d0a566ee7
-	sha256sums = 43f62e78ca46c6c62ba27fc18c2bc7b228b4bad7eb00cdb726c84e24321816ce
+	sha256sums = 9a72ffbb8aabb37447011705706ddc3fd406db2f50c25cf6fd6132369eb5b4e9
 
 pkgname = julia-catindices
 
