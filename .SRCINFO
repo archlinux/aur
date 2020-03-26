@@ -1,6 +1,6 @@
 pkgbase = julia-parsers
 	pkgdesc = fast parsing machinery for basic types in Julia
-	pkgver = 0.3.10
+	pkgver = 0.3.12
 	pkgrel = 1
 	url = https://github.com/JuliaData/Parsers.jl
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = julia-parsers
 	makedepends = julia-distrohelper
 	depends = julia
 	depends = julia-loadpath
-	source = julia-parsers-0.3.10.tar.gz::https://github.com/JuliaData/Parsers.jl/archive/v0.3.10.tar.gz
-	source = julia-parsers-0.3.10-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8406e2b9072be84be39670ad2e002331df92ef59/P/Parsers/Deps.toml
-	source = julia-parsers-0.3.10-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8406e2b9072be84be39670ad2e002331df92ef59/P/Parsers/Package.toml
-	source = julia-parsers-0.3.10-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8406e2b9072be84be39670ad2e002331df92ef59/P/Parsers/Versions.toml
-	sha256sums = 306db1a8fc6b91b49497b754c6197eba93400d7dc7ff7e1baa40aa57fc3a7b5c
+	source = julia-parsers-0.3.12.tar.gz::https://github.com/JuliaData/Parsers.jl/archive/v0.3.12.tar.gz
+	source = julia-parsers-0.3.12-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8dda990a462451f9d191ac8ab2ce719eb2a4c212/P/Parsers/Deps.toml
+	source = julia-parsers-0.3.12-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8dda990a462451f9d191ac8ab2ce719eb2a4c212/P/Parsers/Package.toml
+	source = julia-parsers-0.3.12-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/8dda990a462451f9d191ac8ab2ce719eb2a4c212/P/Parsers/Versions.toml
+	sha256sums = 896d1dc531d1fb56b2ae451556e6fb2c47e71f9447c7954993b189a5fb951004
 	sha256sums = d92a1fcb955e22ed2a2fda52557a7c2c19d3086707c7920d7f1dde470c6601aa
 	sha256sums = f6e93a0b4e0f8d305088c29e85d41c0d38364f6e3634729a66392c42b4d4574c
-	sha256sums = 497dc5ff85eacb8775ff5ba12f4a34c2f693c5e11f1bb13f69f6fadc7c1dc814
+	sha256sums = 963ba0b9df75b5762c2f5a674463767ef20486bfb72c1a75ca702141afbd1743
 
 pkgname = julia-parsers
 
