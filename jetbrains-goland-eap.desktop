@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=GoLand EAP
-Icon=goland
+Icon=goland-eap
 Exec="/opt/goland-eap/bin/goland.sh" %f
 Comment=The Drive to Develop
 Categories=Development;IDE;
