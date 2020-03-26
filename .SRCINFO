@@ -1,5 +1,5 @@
 pkgbase = jami-ubuntu-latest
-	pkgdesc = Free and universal communication platform which preserves the users` privacy and freedoms
+	pkgdesc = Free and universal communication platform which preserves the users` privacy and freedoms (gtk frontend)
 	pkgver = 20200318.1.f44e7d0
 	pkgrel = 1
 	url = https://jami.net
@@ -8,7 +8,6 @@ pkgbase = jami-ubuntu-latest
 	makedepends = binutils
 	makedepends = tar
 	makedepends = xz
-	makedepends = patchelf
 	depends = libayatana-appindicator-gtk3
 	depends = jami-daemon
 	depends = clutter
