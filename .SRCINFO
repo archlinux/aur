@@ -1,7 +1,7 @@
 pkgbase = julia-distrohelper
 	pkgdesc = DistroHelper.jl (dh_julia)
-	pkgver = 0.1.0r32.dabf5af
-	pkgrel = 3
+	pkgver = 0.1.0r1.dabf5af
+	pkgrel = 1
 	url = https://github.com/cdluminate/DistroHelper.jl
 	arch = any
 	license = Custom:Expat
