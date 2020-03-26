@@ -3,14 +3,14 @@
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 
 pkgname=libseccomp-git
-pkgver=2.3.3.r121.g8ad3638
+pkgver=2.4.3.r77.g5abc3b1
 pkgrel=1
 pkgdesc="Interface to the Linux Kernel's syscall filtering mechanism"
 arch=('i686' 'x86_64')
 url="https://github.com/seccomp/libseccomp"
 license=('LGPL')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'gperf')
 provides=('libseccomp')
 conflicts=('libseccomp')
 options=('staticlibs')
@@ -31,7 +31,8 @@ build() {
   cd "libseccomp"
 
   ./autogen.sh
-  ./configure --prefix="/usr"
+  ./configure \
+    --prefix="/usr"
   make
 }
 

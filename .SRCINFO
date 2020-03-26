@@ -1,12 +1,13 @@
 pkgbase = libseccomp-git
 	pkgdesc = Interface to the Linux Kernel's syscall filtering mechanism
-	pkgver = 2.3.3.r121.g8ad3638
+	pkgver = 2.4.3.r77.g5abc3b1
 	pkgrel = 1
 	url = https://github.com/seccomp/libseccomp
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = git
+	makedepends = gperf
 	depends = glibc
 	provides = libseccomp
 	conflicts = libseccomp
