@@ -2,7 +2,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-plugin-pack-svn
-pkgver=1.4.0.svn.r8701
+pkgver=1.4.0.svn.r9311
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack. (SVN Version)"
 arch=('x86_64')
