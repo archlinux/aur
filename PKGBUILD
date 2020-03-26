@@ -1,8 +1,8 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=pyfan
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="Fan control utilising hwmon and pid"
 arch=('any')
 url="https://git.harting.dev/IdleGandalf/PyFan"
