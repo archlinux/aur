@@ -2,25 +2,25 @@
 
 pkgname=julia-mbedtls
 _pkgname=MbedTLS
-pkgver=0.7.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Wrapper around mbedtls for Julia'
 arch=(any)
 url=https://github.com/JuliaWeb/MbedTLS.jl
 license=(MIT)
-depends=(julia julia-binaryprovider julia-compat julia-loadpath mbedtls)
+depends=(julia julia-binaryprovider julia-compat julia-loadpath julia-mbedtls-jll)
 makedepends=(julia-distrohelper)
 
-_commit=0a75c48ef01672cb1cc3405b2b95ba9f93f4a87e
+_commit=d4503712cff569f18cc0151afafbda4dbdd013c4
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
         $pkgname-$pkgver-Deps.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Deps.toml
         $pkgname-$pkgver-Package.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Package.toml
         $pkgname-$pkgver-Versions.toml::https://raw.githubusercontent.com/JuliaRegistries/General/$_commit/${_pkgname:0:1}/$_pkgname/Versions.toml
         'disable-test-logsecrets.patch')
-sha256sums=('485450278f3c722806d171ff0ebc9deff98d0286d707d0c1e08face6e67c75c3'
-            '4cf31ea674eae673e49089fcf3eb91b550d986c06fcb0484039ce3e3684fd8a2'
-            '04d846b75adf0693bf0cda4db3339bb419ac0a338c90dcbd2ac79c1966fb0091'
-            'e91cc1ad5c3be31034e9c13a4dfaaf8c80cd0ef19cb7705bfcb377e7237d41cc'
+sha256sums=('7228cada76793e454da686fcdb597ca64a831aaa7acd34e092d9d0a5f1c834e1'
+            '96130fe5ae51efd7870da7fef175ed263fd328973f10126bf647561c1df60a52'
+            'a41e3f573832218514c02c512d5a24e85a473a8787eaac5c5fcad60bd1a0f1f1'
+            'eb6beed561fef2fa69cf18e74aeef26a8b4076345d064c067c3a1c3f9c66949b'
             'b6a539c928f02bec79734c6edf45d2a83ab169a696b0591344296615d46d8e1b')
 
 _slug() {
@@ -39,45 +39,6 @@ prepare() {
 
 	# Test currently fails
 	patch -Np1 -i ../disable-test-logsecrets.patch
-
-	cat >deps/deps.jl << 'EOF'
-if isdefined((@static VERSION < v"0.7.0-DEV.484" ? current_module() : @__MODULE__), :Compat)
-    import Compat.Libdl
-elseif VERSION >= v"0.7.0-DEV.3382"
-    import Libdl
-end
-const libmbedcrypto = "/usr/lib/libmbedcrypto.so"
-const libmbedtls = "/usr/lib/libmbedtls.so"
-const libmbedx509 = "/usr/lib/libmbedx509.so"
-function check_deps()
-    global libmbedcrypto
-    if !isfile(libmbedcrypto)
-        error("$(libmbedcrypto) does not exist, please report an issue with this PKGBUILD.")
-    end
-
-    if Libdl.dlopen_e(libmbedcrypto) == C_NULL
-        error("$(libmbedcrypto) cannot be opened, please report an issue with this PKGBUILD")
-    end
-
-    global libmbedtls
-    if !isfile(libmbedtls)
-        error("$(libmbedtls) does not exist, please report an issue with this PKGBUILD")
-    end
-
-    if Libdl.dlopen_e(libmbedtls) == C_NULL
-        error("$(libmbedtls) cannot be opened, please report an issue with this PKGBUILD")
-    end
-
-    global libmbedx509
-    if !isfile(libmbedx509)
-        error("$(libmbedx509) does not exist, please report an issue with this PKGBUILD")
-    end
-
-    if Libdl.dlopen_e(libmbedx509) == C_NULL
-        error("$(libmbedx509) cannot be opened, please report an issue with this PKGBUILD")
-    end
-end
-EOF
 }
 
 package() {
