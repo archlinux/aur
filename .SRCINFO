@@ -1,15 +1,15 @@
 pkgbase = ndi-sdk
 	pkgdesc = NewTek NDI SDK
-	pkgver = 4.1.20191112.r109059
+	pkgver = 4.5.20200323.r112958
 	pkgrel = 1
 	url = https://www.newtek.com/ndi/sdk/
 	arch = x86_64
 	license = custom
 	depends = avahi
-	noextract = InstallNDISDK_v4.1.20191112.r109059_Linux.tar.gz
+	noextract = InstallNDISDK_v4.5.20200323.r112958_Linux.tar.gz
 	options = !strip
-	source = InstallNDISDK_v4.1.20191112.r109059_Linux.tar.gz::http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v4_Linux.tar.gz
-	sha256sums = 57a024a4e83256683f82238e4ece41ddcb0fecbc64c81b9376d1a2e7af2d4cc1
+	source = InstallNDISDK_v4.5.20200323.r112958_Linux.tar.gz::http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v4_Linux.tar.gz
+	sha256sums = 6fb14a3259c5c35041d2a5ded1637067d931af29ab4ee46b7c1455c8eda8cd79
 
 pkgname = ndi-sdk
 

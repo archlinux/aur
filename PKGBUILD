@@ -1,7 +1,7 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ndi-sdk
-pkgver=4.1.20191112.r109059
+pkgver=4.5.20200323.r112958
 pkgrel=1
 _majver="${pkgver%%.*}"
 pkgdesc='NewTek NDI SDK'
@@ -13,7 +13,7 @@ options=('!strip')
 _srcfile="InstallNDISDK_v${pkgver}_Linux.tar.gz"
 source=("$_srcfile"::"http://514f211588de67e4fdcf-437b8dd50f60b69cf0974b538e50585b.r63.cf1.rackcdn.com/Utilities/SDK/NDI_SDK_Linux_v2/InstallNDISDK_v${_majver}_Linux.tar.gz")
 noextract=("$_srcfile")
-sha256sums=('57a024a4e83256683f82238e4ece41ddcb0fecbc64c81b9376d1a2e7af2d4cc1')
+sha256sums=('6fb14a3259c5c35041d2a5ded1637067d931af29ab4ee46b7c1455c8eda8cd79')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}"
@@ -29,22 +29,23 @@ prepare() {
 }
 
 package() {
+    local _sdkdir="${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux"
+    
+    # binary executables
+    install -D -m755 "${_sdkdir}/bin/${CARCH}-linux-gnu/"* -t "${pkgdir}/usr/bin"
+    
     # headers
-    cd "${pkgname}-${pkgver}/NDI SDK for Linux/include"
-    install -D -m644 * -t "${pkgdir}/usr/include"
+    install -D -m644 "${_sdkdir}/include/"* -t "${pkgdir}/usr/include"
     
     # library
-    cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/lib/${CARCH}-linux-gnu"
-    install -D -m755 "libndi.so.${_majver}".* -t "${pkgdir}/usr/lib"
+    install -D -m755 "${_sdkdir}/lib/${CARCH}-linux-gnu/libndi.so.${_majver}".*.* -t "${pkgdir}/usr/lib"
     cd "${pkgdir}/usr/lib"
     ln -s "libndi.so.${_majver}".*.* "libndi.so.${_majver}"
     ln -s "libndi.so.${_majver}".*.*  libndi.so
     
     # docs
-    cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux/documentation"
-    install -D -m644 * -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -D -m644 "${_sdkdir}/documentation/"* -t "${pkgdir}/usr/share/doc/${pkgname}"
     
     # license
-    cd "${srcdir}/${pkgname}-${pkgver}/NDI SDK for Linux"
-    install -D -m644 'NDI SDK License Agreement.txt' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "${_sdkdir}/NDI SDK License Agreement.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
