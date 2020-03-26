@@ -1,7 +1,7 @@
 pkgbase = zorin-desktop-themes
 	pkgdesc = The Zorin OS desktop theme provided in a variety of color combinations.
 	pkgver = 2.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ZorinOS/zorin-desktop-themes
 	arch = any
 	license = GPL2
