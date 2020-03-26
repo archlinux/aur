@@ -1,18 +1,21 @@
 pkgbase = tablet-mode
 	pkgdesc = Tools to toggle a convertible laptop between laptop and tablet mode
-	pkgver = 2.0.3
+	pkgver = 2.1.0
 	pkgrel = 3
 	url = https://github.com/coNQP/tablet-mode
 	arch = any
 	license = GPLv3
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-setuptools-git
+	makedepends = python-wheel
 	depends = adwaita-icon-theme
 	depends = evtest
 	depends = libnotify
 	depends = python
 	depends = sudo
 	depends = systemd
-	source = git+https://github.com/coNQP/tablet-mode.git#tag=2.0.3
+	source = git+https://github.com/coNQP/tablet-mode.git#tag=2.1.0
 	md5sums = SKIP
 
 pkgname = tablet-mode
