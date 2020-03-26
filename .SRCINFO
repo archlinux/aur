@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-git
 	pkgdesc = Fcitx5 Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
-	pkgver = 2.18.2612.102.1.r1320.7b5c86dc
+	pkgver = 2.18.2612.102.1.r1321.ba83e6ce
 	pkgrel = 1
 	url = https://github.com/google/mozc
 	arch = x86_64
