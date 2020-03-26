@@ -1,0 +1,11 @@
+--- ./transmission-remote-gtk/configure.ac	2020-03-26 12:21:10.914576479 +0100
++++ ./transmission-remote-gtk/configure.ac	2020-03-26 12:22:05.824294260 +0100
+@@ -45,7 +45,7 @@
+ LT_PREREQ([2.2.0])
+ LT_INIT
+ LT_LIB_M
+-AM_GNU_GETTEXT_VERSION([0.19.6])
++AM_GNU_GETTEXT_VERSION([0.20])
+ AM_GNU_GETTEXT([external])
+ PKG_PROG_PKG_CONFIG([0.28])
+ DESKTOP_FILE
