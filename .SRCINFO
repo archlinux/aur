@@ -1,6 +1,6 @@
 pkgbase = kubernetes-helm2
 	pkgdesc = A tool to manage Kubernetes charts
-	pkgver = 2.16.4
+	pkgver = 2.16.5
 	pkgrel = 1
 	url = https://github.com/helm/helm
 	install = kubernetes-helm2.install
@@ -17,7 +17,7 @@ pkgbase = kubernetes-helm2
 	provides = kubernetes-helm
 	conflicts = helm
 	conflicts = kubernetes-helm
-	source = git+https://github.com/helm/helm#tag=v2.16.4
+	source = git+https://github.com/helm/helm#tag=v2.16.5
 	md5sums = SKIP
 
 pkgname = kubernetes-helm2
