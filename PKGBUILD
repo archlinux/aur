@@ -2,7 +2,7 @@
 
 pkgname=clipmenu-git
 _gitname=clipmenu
-pkgver=5.6.0.r15.gbbf495c
+pkgver=6.0.1.r9.g058515d
 pkgrel=1
 pkgdesc='Clipboard management using dmenu'
 url='http://github.com/cdown/clipmenu'
@@ -31,6 +31,9 @@ package() {
     install -D -m755 \
         "${srcdir?}/$_gitname/clipdel" \
         "${pkgdir?}/usr/bin/clipdel"
+    install -D -m755 \
+        "${srcdir?}/$_gitname/clipctl" \
+        "${pkgdir?}/usr/bin/clipctl"
     install -D -m644 \
         "${srcdir?}/$_gitname/init/clipmenud.service" \
         "${pkgdir?}/usr/lib/systemd/user/clipmenud.service"
