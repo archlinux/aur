@@ -1,7 +1,7 @@
 pkgbase = psautohint
 	pkgdesc = A standalone version of AFDKO’s autohinter
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/adobe-type-tools/psautohint
 	arch = x86_64
 	license = Apache
@@ -12,8 +12,8 @@ pkgbase = psautohint
 	depends = python-lxml
 	depends = python-fonttools
 	depends = python-fs
-	source = https://pypi.org/packages/source/p/psautohint/psautohint-2.0.0.zip
-	sha256sums = a0ce7844f6add8b2afbfb4a305072bf5dcdd85d5f0d2ad32a41f8a563b8a6d52
+	source = https://pypi.org/packages/source/p/psautohint/psautohint-2.0.1.zip
+	sha256sums = 43a12f3d49fc2c1d44fbd8bad64ca3391e3e44f377ce918a583dc99dbda475b5
 
 pkgname = psautohint
 
