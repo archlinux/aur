@@ -15,26 +15,29 @@
 
 pkgname=popcorntime-bin
 _pkgname=popcorntime
-pkgver=0.3.10
-pkgrel=7
-pkgdesc="Stream movies and TV shows from torrents (stable builds)"
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="Stream free movies and TV shows from torrents"
 arch=('x86_64')
-url="https://popcorntime.app"
+url="https://popcorntime.app/"
 license=('GPL3')
 depends=('nss' 'ttf-font' 'libxss' 'gconf' 'gtk2' 'gtk3')
+makedepends=('unzip')
 provides=('popcorntime' 'popcorn-time-ce' 'popcorntime-ci-bin' 'popcorntime-stable-bin')
 conflicts=('popcorntime')
 options=('!strip')
-source=("${_pkgname}.desktop" "https://get.popcorntime.app/build/Popcorn-Time-${pkgver}-Linux-64.tar.xz")
-sha512sums=('7e6538a7b39465439a62cb089510b6d85a65ad4bfa74d21b692363d1176ee94165ab7b5fef5f3470bf821cfc9f3b3a23763b8e3d8530420d7fa97c66083c3adb'
-            '0fe3c1be064231134eacfb0be74266361ba5d521f0cda2848cad5357fe03d6603284e80ed3bdacdf0a012b415949b9603ff3dcf95b03693e2f7704d500ee9516')
+_zipfile="Popcorn-Time-${pkgver}-linux64.zip"
+source=("https://get.popcorntime.app/build/$_zipfile"
+        "${_pkgname}.desktop" )
+sha256sums=('e167c42ffa49d5bf9f530ad998275dbcf38195bd0b10a121922d91dd528d546c'
+            '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
   # Link to program
-  ln -s "/usr/share/${_pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "../share/${_pkgname}/Popcorn-Time" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Desktop file
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
@@ -43,12 +46,13 @@ package() {
   install -Dm644 "${srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
 
   # Remove makepkg-created symlinks before copying content
-  rm *.tar.xz *.desktop
+  rm "$_zipfile" "${_pkgname}.desktop"
 
   # Move library files to /usr/lib/popcorntime
   install -d "${pkgdir}/usr/lib/${_pkgname}/${pkgver}"
   mv "${srcdir}"/lib/* "${pkgdir}/usr/lib/${_pkgname}/${pkgver}"
-  rmdir "${srcdir}"/lib/
+  rmdir "${srcdir}"/lib
+
   install -d "${pkgdir}/etc/ld.so.conf.d"
   echo "/usr/lib/${_pkgname}/${pkgver}" > "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
 

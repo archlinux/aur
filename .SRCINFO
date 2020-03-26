@@ -1,10 +1,11 @@
 pkgbase = popcorntime-bin
-	pkgdesc = Stream movies and TV shows from torrents (stable builds)
-	pkgver = 0.3.10
-	pkgrel = 7
-	url = https://popcorntime.app
+	pkgdesc = Stream free movies and TV shows from torrents
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://popcorntime.app/
 	arch = x86_64
 	license = GPL3
+	makedepends = unzip
 	depends = nss
 	depends = ttf-font
 	depends = libxss
@@ -17,10 +18,10 @@ pkgbase = popcorntime-bin
 	provides = popcorntime-stable-bin
 	conflicts = popcorntime
 	options = !strip
+	source = https://get.popcorntime.app/build/Popcorn-Time-0.4.1-linux64.zip
 	source = popcorntime.desktop
-	source = https://get.popcorntime.app/build/Popcorn-Time-0.3.10-Linux-64.tar.xz
-	sha512sums = 7e6538a7b39465439a62cb089510b6d85a65ad4bfa74d21b692363d1176ee94165ab7b5fef5f3470bf821cfc9f3b3a23763b8e3d8530420d7fa97c66083c3adb
-	sha512sums = 0fe3c1be064231134eacfb0be74266361ba5d521f0cda2848cad5357fe03d6603284e80ed3bdacdf0a012b415949b9603ff3dcf95b03693e2f7704d500ee9516
+	sha256sums = e167c42ffa49d5bf9f530ad998275dbcf38195bd0b10a121922d91dd528d546c
+	sha256sums = 4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334
 
 pkgname = popcorntime-bin
 
