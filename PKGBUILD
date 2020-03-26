@@ -45,7 +45,7 @@ pkgver() {
 build() {
     cd "${srcdir}"/${_pkgname}
     sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
-    scons platform=x11 target=release_debug CXX=clang++ -j$(nproc)
+    scons platform=linuxbsd target=release_debug use_llvm=yes -j$(nproc)
 }
 
 package() {
