@@ -3,7 +3,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=1.4.0.svn.r8701
+pkgver=1.4.0.svn.r9311
 pkgrel=1
 pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('x86_64')
@@ -82,16 +82,22 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             )
 provides=('qmmp')
 conflicts=('qmmp')
-source=('qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp/')
-sha256sums=('SKIP')
+source=('qmmp::svn+http://svn.code.sf.net/p/qmmp-dev/code/trunk/qmmp/'
+        'pkgconfig_fix.diff'
+        )
+sha256sums=('SKIP'
+            'cdc27a35edd99635fdcc912c987479fd2fb4265b8ef55f908307afb5d6ae2978'
+            )
 
 pkgver() {
   cd qmmp
-  echo "$(cat qmmp.pri | grep -m1 QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion)"
+  echo "$(cat qmmp.pri | grep -m1 QMMP_VERSION | cut -d ' ' -f3).svn.r$(svnversion | tr -d M)"
 }
 
 prepare() {
   mkdir -p build
+
+  patch -d qmmp -p0 -i "${srcdir}/pkgconfig_fix.diff"
 }
 
 build() {

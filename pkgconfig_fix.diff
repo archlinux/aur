@@ -1,0 +1,64 @@
+Index: src/qmmp/CMakeLists.txt
+===================================================================
+--- src/qmmp/CMakeLists.txt	(revisión: 9311)
++++ src/qmmp/CMakeLists.txt	(copia de trabajo)
+@@ -146,10 +146,10 @@
+ 
+ IF(APP_NAME_SUFFIX)
+     install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX}/qmmp)
+-    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
++    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
+ ELSE()
+     install(FILES ${libqmmp_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmp)
+-    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
++    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+ ENDIF()
+ 
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmmp.pc.in ${CMAKE_CURRENT_BINARY_DIR}/qmmp${APP_NAME_SUFFIX}.pc @ONLY)
+Index: src/qmmp/qmmp.pc.in
+===================================================================
+--- src/qmmp/qmmp.pc.in	(revisión: 9311)
++++ src/qmmp/qmmp.pc.in	(copia de trabajo)
+@@ -1,8 +1,8 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@QMMP_INCLUDE_DIR@
+-plugindir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/qmmp-@QMMP_VERSION_MAJOR@.@QMMP_VERSION_MINOR@
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${exec_prefix}/@QMMP_INCLUDE_DIR@
++plugindir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@/qmmp-@QMMP_VERSION_MAJOR@.@QMMP_VERSION_MINOR@
+ 
+ Name: qmmp@APP_NAME_SUFFIX@
+ Description: qmmp core library
+Index: src/qmmpui/CMakeLists.txt
+===================================================================
+--- src/qmmpui/CMakeLists.txt	(revisión: 9311)
++++ src/qmmpui/CMakeLists.txt	(copia de trabajo)
+@@ -146,10 +146,10 @@
+ 
+ IF(APP_NAME_SUFFIX)
+     install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX}/qmmpui)
+-    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
++    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR}/qmmp${APP_NAME_SUFFIX})
+ ELSE()
+     install(FILES ${libqmmpui_DEVEL_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/qmmpui)
+-    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_FULL_INCLUDEDIR})
++    SET(QMMP_INCLUDE_DIR ${CMAKE_INSTALL_INCLUDEDIR})
+ ENDIF()
+ 
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmmpui.pc.in ${CMAKE_CURRENT_BINARY_DIR}/qmmpui${APP_NAME_SUFFIX}.pc @ONLY)
+Index: src/qmmpui/qmmpui.pc.in
+===================================================================
+--- src/qmmpui/qmmpui.pc.in	(revisión: 9311)
++++ src/qmmpui/qmmpui.pc.in	(copia de trabajo)
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=@CMAKE_INSTALL_PREFIX@
+-libdir=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@
+-includedir=@QMMP_INCLUDE_DIR@
++libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@
++includedir=${exec_prefix}/@QMMP_INCLUDE_DIR@
+ 
+ Name: qmmpui@APP_NAME_SUFFIX@
+ Description: qmmp user interface library
