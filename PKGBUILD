@@ -17,6 +17,9 @@ b2sums=('279f0476c2ec6f30531d77d5c348bc6c0a823a622f7ec96ae65b1b2861a7c3ab1bf66eb
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+
+    # avoid annoying interactive prompts if an alias is in your gitconfig
+    export GIT_CONFIG=/dev/null
     make DESTDIR="${pkgdir}" PREFIX=/usr SYSCONFDIR=/etc install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
