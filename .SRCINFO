@@ -1,6 +1,6 @@
 pkgbase = citra-bin
 	pkgdesc = An experimental open-source Nintendo 3DS emulator/debugger
-	pkgver = 1372_20191005_35690e3
+	pkgver = 1449_20200326_4008be4
 	pkgrel = 1
 	url = https://citra-emu.org
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = citra-bin
 	conflicts = citra-qt-canary-bin
 	replaces = citra-nightly-bin
 	replaces = citra-qt-nightly-bin
-	source = https://github.com/citra-emu/citra-nightly/releases/download/nightly-1372/citra-linux-20191005-35690e3.tar.xz
+	source = https://github.com/citra-emu/citra-nightly/releases/download/nightly-1449/citra-linux-20200326-4008be4.tar.xz
 	source = https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop
-	sha256sums = f07e8eae5daae8db9095a40acdba5d7ccc7503908b203764774c79b025e2e858
+	sha256sums = 9632d6571afeef19d92f5e4e8d929af16e7f328d47cb5009a9f53d7e46d4bd8f
 	sha256sums = 93bd8f799877eba7dd87ed7a4c29607d78c42b8769626c1d479f7e34fb7b39e2
 
 pkgname = citra-bin

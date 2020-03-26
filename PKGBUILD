@@ -3,7 +3,7 @@
 pkgbase='citra-bin'
 pkgname=('citra-bin' 'citra-qt-bin')
 pkgrel=1
-pkgver=1372_20191005_35690e3
+pkgver=1449_20200326_4008be4
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 conflicts=('citra-git' 'citra-qt-git' 'citra-nightly-bin' 'citra-qt-nightly-bin' 'citra-bin' 'citra-qt' 'citra-canary-bin' 'citra-qt-canary-bin')
 replaces=("citra-nightly-bin" "citra-qt-nightly-bin")
@@ -17,7 +17,7 @@ _ref="$(echo $pkgver | cut -d'_' -f2)-$(echo $pkgver | cut -d'_' -f3)"
 source=("https://github.com/citra-emu/citra-nightly/releases/download/nightly-$_nightly_id/citra-linux-$_ref.tar.xz"
         "https://raw.githubusercontent.com/citra-emu/citra/master/dist/citra.desktop")
 
-sha256sums=('f07e8eae5daae8db9095a40acdba5d7ccc7503908b203764774c79b025e2e858'
+sha256sums=('9632d6571afeef19d92f5e4e8d929af16e7f328d47cb5009a9f53d7e46d4bd8f'
             '93bd8f799877eba7dd87ed7a4c29607d78c42b8769626c1d479f7e34fb7b39e2')
 
 package_citra-bin() {
