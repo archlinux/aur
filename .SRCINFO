@@ -1,6 +1,6 @@
 pkgbase = corestuff-git
 	pkgdesc = An activity viewer from the CoreApps family.
-	pkgver = 2.8.0.r4.fe22446
+	pkgver = 2.8.0.r33.e34954b
 	pkgrel = 1
 	url = https://gitlab.com/cubocore
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = corestuff-git
 	depends = qt5-x11extras
 	depends = libcprime-git
 	depends = libcsys-git
+	depends = libdesq-git
 	provides = corestuff
 	conflicts = corestuff
 	source = git+https://gitlab.com/cubocore/corestuff.git
