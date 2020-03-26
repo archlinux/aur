@@ -10,7 +10,7 @@ pkgbase = stm32pio
 	makedepends = make
 	provides = stm32pio
 	source = git+https://github.com/kynguyen98/stm32pio
-	md5sums = SKIP
+	md5sums = 4f6f9a8e8f8c7909deac4015dc9c2f50
 
 pkgname = stm32pio
 
