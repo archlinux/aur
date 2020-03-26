@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 pkgbase=hydrus
 pkgname=(hydrus)
 pkgver=390.b
-pkgrel=1
+pkgrel=2
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
 license=(WTFPL)
@@ -28,7 +28,7 @@ source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=
         hydrus-server
         hydrus.desktop)
 sha256sums=('SKIP'
-            'ea26711bb5d4ea1c769727ae8e4e1f2d2b4cd9cb130fb90d392ee7f0b8a85028'
+            'c6802327827cf77acefa8cdff1b9b45097e4754349ef187d94695f4095ef34dd'
             '7b0dbc6f38f9aaff409e435ba807199575166976b52715d6b54418f89dbde634'
             '463841cc16059b516cc327cfbc30d3383e2236b085ba2d503e82f5be39444806'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')

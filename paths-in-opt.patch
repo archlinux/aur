@@ -11,6 +11,19 @@ index 7cec25b..b4e24e5 100644
                          
                          cmd = [ python_executable, server_script_path, db_param ]
                          
+diff --git a/hydrus/ClientGUIStyle.py b/hydrus/ClientGUIStyle.py
+index 63510b1..b5fc2f6 100644
+--- a/hydrus/ClientGUIStyle.py
++++ b/hydrus/ClientGUIStyle.py
+@@ -4,7 +4,7 @@ from . import HydrusExceptions
+ import os
+ from qtpy import QtWidgets as QW
+ 
+-STYLESHEET_DIR = os.path.join( HC.BASE_DIR, 'static', 'qss' )
++STYLESHEET_DIR = os.path.join( HC.STATIC_DIR, 'qss' )
+ 
+ DEFAULT_HYDRUS_STYLESHEET = ''
+ ORIGINAL_STYLE_NAME = None
 diff --git a/hydrus/HydrusConstants.py b/hydrus/HydrusConstants.py
 index a8684e2..717b3cc 100644
 --- a/hydrus/HydrusConstants.py
