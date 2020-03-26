@@ -2,13 +2,13 @@
 
 pkgname=python-tensorflow-compression-git
 pkgver=1.3+15+gf09afc8
-pkgrel=1
+pkgrel=2
 pkgdesc="Data compression in TensorFlow"
-url="https://tensorflow.org/"
+url="https://github.com/tensorflow/compression"
 license=('APACHE')
 arch=('any')
 depends=('python-tensorflow' 'python-scipy' 'python-tensorflow-probability')
-source=('git+https://github.com/tensorflow/compression' 'arch_compression.patch')
+source=("git+${url}" 'arch_compression.patch')
 sha256sums=('SKIP' '6cd78cc30df532ced025c70e11946b89f80e1f38d1a14331dab96e04de90ba90')
 _name=compression
 
