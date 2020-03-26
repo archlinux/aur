@@ -24,6 +24,9 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
+
+    # avoid annoying interactive prompts if an alias is in your gitconfig
+    export GIT_CONFIG=/dev/null
     make DESTDIR="${pkgdir}" PREFIX=/usr SYSCONFDIR=/etc install
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
