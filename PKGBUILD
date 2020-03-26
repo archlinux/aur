@@ -3,7 +3,7 @@
 pkgname=pueue-bin-2
 pkgver='0.2.1'
 pkgrel=0
-arch=('any')
+arch=('x86_64')
 pkgdesc='A command scheduler for shells'
 license=('MIT')
 conflicts=('pueue-git' 'pueue' 'pueue-bin')
