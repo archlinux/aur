@@ -29,7 +29,7 @@ build() {
   go get github.com/claudetech/loggo
   go get golang.org/x/net/context
   go get golang.org/x/oauth2
-	go build
+  go build
 }
 
 package() {
