@@ -3,7 +3,7 @@
 _pkgname=adns
 pkgname=adns-git
 epoch=1
-pkgver=adns.r1.5.1
+pkgver=adns.r1.5.1.0.g571b072
 pkgrel=2
 pkgdesc="An asyncronous replacement resolver library"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha1sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  git describe --tags | sed 's/^v//; s/-/.r/; s/-/./g'
+  git describe --long --tags | sed 's/^v//; s/-/.r/; s/-/./g'
 }
 
 prepare() {
