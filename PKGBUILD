@@ -2,7 +2,7 @@
 
 pkgname=iredis-bin
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive Redis: A Terminal Client for Redis with AutoCompletion and Syntax Highlighting"
 arch=('any')
 url='https://iredis.io'
@@ -18,6 +18,8 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/iredis
   mkdir -p ${pkgdir}/usr/bin
   tar xvf iredis.tar.gz -C ${pkgdir}/usr/lib/iredis
+  chown -R root:root ${pkgdir}/usr/lib/iredis
+  chmod 755 ${pkgdir}/usr/lib/iredis/iredis
   ln -s /usr/lib/iredis/iredis ${pkgdir}/usr/bin
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/iredis/LICENSE
 }

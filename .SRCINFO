@@ -1,7 +1,7 @@
 pkgbase = iredis-bin
 	pkgdesc = Interactive Redis: A Terminal Client for Redis with AutoCompletion and Syntax Highlighting
 	pkgver = 1.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://iredis.io
 	arch = any
 	license = custom
