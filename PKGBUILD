@@ -1,6 +1,6 @@
 pkgname=openwsman
-pkgver=2.6.9
-pkgrel=2
+pkgver=2.6.11
+pkgrel=1
 pkgdesc="Opensource Implementation of WS-Management"
 arch=('i686' 'x86_64')
 url="https://$pkgname.github.io/"
@@ -18,7 +18,7 @@ backup=("etc/$pkgname/$pkgname.conf"
         "etc/$pkgname/ssleay.cnf"
         "etc/pam.d/$pkgname")
 source=("https://github.com/Openwsman/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('82f0cdab1ccbad847e994ed6f4c19b01')
+md5sums=('33a58eb6b13ffe0a51b33553f6cd5728')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -58,13 +58,17 @@ package() {
 	mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin"
 	rmdir "$pkgdir/usr/sbin/"
 
-	install -Dp -m644 ../AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
-	install -Dp -m644 ../ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
-	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+	install -Dp -m644 package/"$pkgname.service"      "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+	install -Dp -m644 ../package/"$pkgname.firewalld" "$pkgdir/usr/lib/firewalld/services/$pkgname.xml"
 
+	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
 	cp -Rp "bindings/ruby/html/"   "$pkgdir/usr/share/doc/$pkgname/rdoc"
 
 	install -Dp -m644 ../COPYING   "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dp -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+	install -Dp -m644 ../AUTHORS   "$pkgdir/usr/share/doc/$pkgname/AUTHORS"
+	install -Dp -m644 ../ChangeLog "$pkgdir/usr/share/doc/$pkgname/ChangeLog"
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
