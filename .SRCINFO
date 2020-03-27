@@ -1,7 +1,7 @@
 pkgbase = alfaview
 	pkgdesc = High quality audio video conferencing for professional online meetings and live classes
 	pkgver = 8.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alfaview.com/
 	install = alfaview.install
 	arch = x86_64
