@@ -1,30 +1,27 @@
+# Maintainer: mirh
 # Contributor: DJ_L
 # Contributor: josephgbr
 
 pkgname=lib32-sane
-pkgver=1.0.24
-pkgrel=6
+pkgver=1.0.29
+pkgrel=1
 pkgdesc="Scanner Access Now Easy (32 bit)"
 url="http://www.sane-project.org/"
 arch=('x86_64')
 license=('GPL')
-depends=('lib32-libtiff>=4.0.0' 'lib32-libgphoto2' 'lib32-libjpeg>=8' 'lib32-libusbx' 'lib32-libcups' 'lib32-libieee1284' 'lib32-v4l-utils' 'lib32-avahi' 'bash' 'net-snmp' 'sane')
-makedepends=('gcc-multilib' 'texlive-core')
-source=("https://alioth.debian.org/frs/download.php/latestfile/176/sane-backends-${pkgver}.tar.gz"
-        'network.patch'
-        'segfault-avahi-fix-kodakio.patch')
-md5sums=('1ca68e536cd7c1852322822f5f6ac3a4'
-         '44e77692c52db15b0f530a1d9a8e1296'
-         '039524a38af8721f2e97d45e889295ca')
+depends=('lib32-libtiff>=4.0.0' 'lib32-libgphoto2' 'lib32-libjpeg>=8' 'lib32-libusbx' 'lib32-libieee1284' 'lib32-v4l-utils' 'lib32-avahi' 'bash' 'net-snmp' 'sane')
+makedepends=('gcc-multilib')
+source=("https://gitlab.com/sane-project/backends/uploads/54f858b20a364fc35d820df935a86478/sane-backends-$pkgver.tar.gz"
+        'network.patch')
+sha512sums=('9ee431b0c048119719e15905f8743c7a0fd8bc6fcee81d75df8459a989cab7e39bf045518976713a7e1d94c816dd1a1e0fa190612d815c0ddb6a51d2abf3fd54'
+            '04b65a06d2c76dde6fce501ba823e999eb89ea41573f887f9e7d5347f3aa5e35310fad69313e99f873640e29a9849372d2ff995678593a0781fba73b464bec0d')
 
 prepare() {
    cd "sane-backends-${pkgver}"
    # fix http://vasks.debian.org/tracker/?func=detail&atid=410366&aid=313760&group_id=30186
    patch -Np1 -i "${srcdir}/network.patch"
-   # fix http://anonscm.debian.org/gitweb/?p=sane/sane-backends.git;a=commit;h=37523b867d411c2f82d08128246be7e38bc9812c
-   # #37525
-   # https://alioth.debian.org/tracker/?group_id=30186&atid=410366&func=detail&aid=314301
-   patch -Np1 -i "${srcdir}/segfault-avahi-fix-kodakio.patch"
+   # fix https://gitlab.com/sane-project/backends/-/issues/239
+   sed -i 's@CIES = $(COMMON_LIBS)@CIES = ../lib/liblib.la@g' backend/Makefile*
 }
 
 build() {
@@ -54,4 +51,3 @@ package() {
   rm -rf "${pkgdir}/usr"/{bin,include,share/{doc,locale,man,sane}}
   rm -rf "${pkgdir}/etc"
 }
-
