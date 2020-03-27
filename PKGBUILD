@@ -1,12 +1,12 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocr-debug-agent
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROCr Debug Agent Library"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/rocr_debug_agent"
 license=('custom:NCSAOSL')
-depends=("rocr-runtime>=$pkgver" "roct-thunk-interface>=$pkgver")
+depends=("rocr-runtime>=$pkgver" "hsakmt-roct>=$pkgver")
 makedepends=('cmake')
 options=(!staticlibs strip)
 source=("rocr_debug_agent-roc-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/rocr_debug_agent/archive/roc-$pkgver.tar.gz")
