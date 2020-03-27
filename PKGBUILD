@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=8.7.1.r118.g920306ea
+pkgver=8.7.1.r163.g1dda366b
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -55,7 +55,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/${pkgrealname}"
-    qmake-qt5 Webcamoid.pro CONFIG+=silent
+    qmake-qt5 Webcamoid.pro CONFIG+=silent DAILY_BUILD=1
     make $MAKEFLAGS
 }
 
