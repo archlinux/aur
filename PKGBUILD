@@ -4,7 +4,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.8.4.r0.g1f7d0d7
+pkgver=3.8.5.r0.gf7bc346
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
