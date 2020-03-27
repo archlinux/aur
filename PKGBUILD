@@ -1,45 +1,40 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+
 pkgname=wp2latex  
-pkgver=3.74
+pkgver=3.88
 pkgrel=1
 pkgdesc="Converts WordPerfect document formats to LaTeX"
 url="http://www.penguin.cz/~fojtik/$pkgname/$pkgname.htm"
 arch=('i686' 'x86_64')
 license=('GPL')
-source=(http://www.penguin.cz/~fojtik/$pkgname/$pkgname-${pkgver}.zip)
-sha256sums=('a18cf529e29427bec796565c91a7e2cb1f3dbd12391b847db4ac9eaf57caf6c4')
-depends=('libjpeg' 'gcc-libs')
-makedepends=('unzip')
-noextract=("$pkgname-${pkgver}.zip")
+source=("${pkgname%-hg}::hg+https://bitbucket.org/JaFojtik/wp2latex#revision=347")
+sha256sums=('SKIP')
+depends=('libjpeg' 'gcc-libs' 'libpng')
 options=('!strip')
 
 build() {
-  # hack to avoid the dos line ends in all sourcefiles.
-  unzip -quo -aa $srcdir/$pkgname-${pkgver}.zip
-  find $srcdir/$pkgname-${pkgver} -type d -exec chmod 770 {} \;
-  # normal build
-  cd ${srcdir}/$pkgname-${pkgver}
+  cd $pkgname/trunk
   autoconf
-  CPPFLAGS+="-fpermissive" CXX=g++ ./configure --prefix=/usr --without-png
+  CPPFLAGS+="-fpermissive" ./configure --prefix=/usr
   make x2latex
 }
 
 package() {
-  cd $pkgname-${pkgver}
-  install -Dm755 ${srcdir}/$pkgname-${pkgver}/linux/$pkgname \
+  cd $pkgname/trunk
+  install -Dm755 "${srcdir}"/$pkgname/trunk/bin/linux/$pkgname \
     $pkgdir/usr/bin/$pkgname 
   for _i in cs de
   do
     install -Dm644 \
-    $srcdir/$pkgname-${pkgver}/doc/locale/${_i}/lc_messages/$pkgname.mo \
-      $pkgdir/usr/share/locale/${_i}/LC_MESSAGES/$pkgname.mo
+    "$srcdir"/$pkgname/trunk/doc/locale/${_i}/lc_messages/$pkgname.mo \
+      "$pkgdir"/usr/share/locale/${_i}/LC_MESSAGES/$pkgname.mo
   done 
-  install -Dm644 $srcdir/$pkgname-${pkgver}/doc/$pkgname.1 \
-    $pkgdir/usr/share/man/man1/$pkgname.1 
-  install -d $pkgdir/usr/share/$pkgname/doc
-  cp -R $srcdir/$pkgname-${pkgver}/doc/program.man/* \
-    $pkgdir/usr/share/$pkgname/doc
-  install -d $pkgdir/usr/share/texmf/tex/latex/$pkgname
-  cp $srcdir/$pkgname-${pkgver}/styles.tex/* \
-    $pkgdir/usr/share/texmf/tex/latex/$pkgname
+  install -Dm644 "$srcdir"/$pkgname/trunk/doc/$pkgname.1 \
+    "$pkgdir"/usr/share/man/man1/$pkgname.1 
+  install -d "$pkgdir"/usr/share/$pkgname/doc
+  cp -R "$srcdir"/$pkgname/trunk/doc/program.man/* \
+    "$pkgdir"/usr/share/$pkgname/doc
+  install -d "$pkgdir"/usr/share/texmf/tex/latex/$pkgname
+  cp "$srcdir"/$pkgname/trunk/styles.tex/* \
+    "$pkgdir"/usr/share/texmf/tex/latex/$pkgname
 }
