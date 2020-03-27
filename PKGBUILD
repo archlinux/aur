@@ -1,8 +1,8 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=gir-to-d
-pkgver=0.20.0
-pkgrel=4
+pkgver=0.21.0
+pkgrel=1
 pkgdesc='Create D bindings from GObject introspection files'
 arch=('x86_64')
 url='https://github.com/gtkd-developers/gir-to-d'
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('gcc-libs' 'liblphobos')
 makedepends=('meson' 'ldc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('27a8c7cf0ec1556e7361a2a704e150eae59b360eb5717b203f5604a5636eadeebd7b8af7701d2c96d20f503e27465281ae1734db1ad1f2d34d0514c2fc0ebc4e')
+sha512sums=('378a5c1cb1ec909fc39f1cc00b2479a0d826c3bdfe31b535e68719e4ccc74db548b670700dbf78eced417777477d1bcf5aad1cbe2bc15049f1ec52666c16a9da')
 
 build() {
   mkdir -p $pkgname-$pkgver/build
