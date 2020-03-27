@@ -1,0 +1,15 @@
+pkgbase = drill
+	pkgdesc = Drill is a HTTP load testing application written in Rust inspired by Ansible syntax
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/fcsonline/drill
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = openssl
+	source = https://github.com/fcsonline/drill/archive/0.5.0.tar.gz
+	md5sums = ecafaa5eae61617cae8c08bb8358b338
+
+pkgname = drill
+
