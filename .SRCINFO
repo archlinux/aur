@@ -1,0 +1,20 @@
+pkgbase = bibleanalyzer
+	pkgdesc = Bible Analyzer - Bible Study and Analysis Software
+	pkgver = 5.2
+	pkgrel = 1
+	url = http://www.bibleanalyzer.com
+	arch = any
+	license = Custon:bibleanalyzer
+	depends = python>=2.7
+	depends = python2-wxpython3
+	depends = python2-pillow>=3.1
+	depends = python2-espeak>=0.3
+	depends = python2-configobj>=4.7
+	depends = xsel
+	depends = gst-plugins-ugly
+	source = https://www.bibleanalyzer.com/bibleanalyzer_5.2-1_all.deb
+	md5sums = 9cdc55b5ffade3f31264772699a58405
+	sha512sums = cb9aa86c4f3cd5bdfbdc78a41c021a31e3cd25256e44911b9e5e02c2d62121d7686524678a25c7d8c03dff478bf4c96df37d02748009480ccd9c79e099a4abe0
+
+pkgname = bibleanalyzer
+
