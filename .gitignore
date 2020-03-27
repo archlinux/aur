@@ -1,0 +1,18 @@
+
+
+### Created by https://www.gitignore.io
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+coronavirus-tracker-cli/
