@@ -6,8 +6,8 @@
 
 _pkgname=audacious-plugins
 pkgname="$_pkgname-git"
-_pkgver=4.0
-pkgver=4.0.r8726.b6a3829ff
+_pkgver=4.1
+pkgver=4.1.r8730.06d896040
 pkgrel=1
 pkgdesc="Plugins for Audacious"
 arch=('i686' 'x86_64')
