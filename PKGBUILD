@@ -3,12 +3,12 @@
 pkgname=dingtalk-electron
 _pkgname=${pkgname//-/_}
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="钉钉Linux版本"
 arch=('x86_64')
 url="https://github.com/nashaofu/dingtalk#readme"
 license=('MIT')
-depends=('gconf' 'libnotify' 'libappindicator-sharp' 'libxtst' 'nss' 'libxss')
+depends=('gconf' 'at-spi2-core' 'gtk3' 'libnotify' 'xdg-utils' 'libutil-linux' 'libappindicator-gtk3' 'libxtst' 'nss' 'libxss' 'libsecret')
 source=("https://github.com/nashaofu/dingtalk/releases/download/v${pkgver}/dingtalk-${pkgver}-latest-amd64.deb")
 
 package() {
