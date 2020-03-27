@@ -4,7 +4,7 @@
 # Upstream: https://github.com/handshake-org/hsd
 
 pkgname=hsd-git
-pkgver=1.0.0.beta.15.562.g4b04d9a2
+pkgver=2.1.3.23.ged53f5f8
 pkgrel=1
 pkgdesc='Handshake decentralized naming system Daemon & Full Node'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  npm install -g --prefix "$pkgdir"/usr --user root --unsafe-perm
+  npm install -g --prefix "$pkgdir"/usr --user root --unsafe-perm --production
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   #HACK: npm is being lame and only installing a symlink =/
   rm "$pkgdir/usr/lib/node_modules/hsd"
