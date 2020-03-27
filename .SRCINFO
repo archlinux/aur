@@ -1,0 +1,17 @@
+pkgbase = php73-ast
+	pkgdesc = Extension exposing PHP 7 abstract syntax tree.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/nikic/php-ast
+	arch = any
+	license = BSD
+	makedepends = php73>=7
+	depends = php73>=7
+	backup = etc/php73/conf.d/ast.ini
+	source = https://github.com/nikic/php-ast/archive/v1.0.3.tar.gz
+	source = ast.ini
+	sha512sums = 43a08f3a88c8a55522230d0779cb9339d833754748ce34bb9e59be8282174df0632e204167891540d05860197ef17a9f7a99f8dd98d6ec5f738b5f1bbdab59d5
+	sha512sums = a99dcb98e597dc2634f51ae9af80dce82350c0f0e45ec9c2eda23d53f40c06cfd2573fafe0660304b4ceb51f3d12a3f81445f3063ece1ca1166fb50a4d3967a8
+
+pkgname = php73-ast
+
