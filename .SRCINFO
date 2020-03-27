@@ -1,7 +1,7 @@
 pkgbase = zathura-git
 	pkgdesc = a document viewer
 	pkgver = 0.4.5.28.g3b4540f
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pwmt.org/projects/zathura
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = zathura-git
 	optdepends = zathura-pdf-mupdf-git: PDF support by using mupdf
 	optdepends = zathura-djvu-git: djvu support by using djvulibre
 	optdepends = zathura-ps-git: PostSctipt support by using libspectre
+	optdepends = fish
+	optdepends = bash-completion
 	provides = zathura
 	conflicts = zathura
 	source = zathura::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop

@@ -2,14 +2,13 @@
 
 pkgname=zathura-git
 pkgver=0.4.5.28.g3b4540f
-pkgrel=1
+pkgrel=2
 pkgdesc="a document viewer"
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/zathura"
 license=('custom')
 depends=('girara-git' 'gtk3>=3.10' 'cairo>=1.8.8')
 makedepends=('git' 'python-sphinx' 'intltool' 'meson')
-optdepends=('fish', 'bash-completion')
 checkdepends=('check')
 conflicts=('zathura')
 provides=('zathura')
@@ -22,6 +21,8 @@ optdepends=(
   'zathura-pdf-mupdf-git: PDF support by using mupdf'
   'zathura-djvu-git: djvu support by using djvulibre'
   'zathura-ps-git: PostSctipt support by using libspectre'
+  'fish'
+  'bash-completion'
 )
 
 prepare() {
