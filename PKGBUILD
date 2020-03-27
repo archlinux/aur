@@ -1,6 +1,6 @@
 # Maintainer: Wesley Moore <wes@wezm.net>
 pkgname=git-trim
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Trims your git remote tracking branches'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('libgit2')
 conflicts=('git-trim-git')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c4e7202146b0ea68d2c890ce58a9548c1c356fff1e9408f122cd1cdaba8cc751')
+sha256sums=('39dba060fb113fe3845d9dcb255aeedad0befa2f3933a9b6961c73326ccab16c')
 
 build() {
   cd "$pkgname-$pkgver"
