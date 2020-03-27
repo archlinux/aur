@@ -1,0 +1,17 @@
+pkgbase = kpublictransport-git
+	pkgdesc = Library to assist with accessing public transport timetables and other information
+	pkgver = r729.5c6f655
+	pkgrel = 1
+	url = https://kontact.kde.org
+	arch = x86_64
+	license = LGPL
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = qt5-declarative
+	provides = kpublictransport
+	conflicts = kpublictransport
+	source = git+https://anongit.kde.org/kpublictransport.git
+	sha256sums = SKIP
+
+pkgname = kpublictransport-git
+
