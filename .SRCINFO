@@ -1,0 +1,12 @@
+pkgbase = wikimedia-midi-files
+	pkgdesc = All MIDI files in the Wikimedia Commons collection.
+	pkgver = 0.1.20200327
+	pkgrel = 1
+	url = https://commons.wikimedia.org/wiki/Category:MIDI_files
+	arch = x86_64
+	groups = midi-files
+	license = FDL
+	depends = commons-category-downloader
+
+pkgname = wikimedia-midi-files
+
