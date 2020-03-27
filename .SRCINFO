@@ -1,6 +1,6 @@
 pkgbase = svp
 	pkgdesc = SmoothVideo Project 4 (SVP4)
-	pkgver = 4.3.180
+	pkgver = 4.3.183
 	pkgrel = 1
 	url = https://www.svp-team.com/wiki/SVP:Linux
 	install = svp.install
@@ -18,8 +18,8 @@ pkgbase = svp
 	optdepends = mpv-git: needed for mpv vapoursynth support
 	optdepends = ocl-icd: for GPU acceleration
 	options = !strip
-	source = https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d11afd1/raw/svp4-linux.4.3.180.tar.bz2
-	sha256sums = 35d3bc1aa1f5a9a72917834ab43a71d01ff130e6130c29cf07ec534931df4959
+	source = https://gist.githubusercontent.com/phiresky/1e2cbd30bed4e5978771af232d11afd1/raw/svp4-linux.4.3.183.tar.bz2
+	sha256sums = 9d4388e8592ad20464212e054c98564a96f428605f7ff070316fe4a84ecf7eff
 
 pkgname = svp
 
