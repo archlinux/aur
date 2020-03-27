@@ -1,6 +1,6 @@
 pkgbase = debhelpergit
 	pkgdesc = A collection of programs that can be used in a debian/rules file to automate common tasks
-	pkgver = 12.9
+	pkgver = 12.10
 	pkgrel = 1
 	url = https://salsa.debian.org/debian/debhelper.git/
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = debhelpergit
 	depends = perl>=5.6.0
 	depends = po-debconf
 	optdepends = dh-make
-	source = git+https://salsa.debian.org/debian//debhelper.git#tag=debian/12.9
+	source = git+https://salsa.debian.org/debian//debhelper.git#tag=debian/12.10
 	md5sums = SKIP
 
 pkgname = debhelpergit

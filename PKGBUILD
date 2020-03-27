@@ -1,5 +1,5 @@
 # Maintainer: PSposito <http://bit.do/linuxer> 
-# 			  <https://gitlab.com/psposito>
+# 			      <https://gitlab.com/psposito>
 # Maintainer: Justin Vreeland <vreeland.justin@gmail.com>
 # Contributor: Antoine Lubineau <antoine@lubignon.info>
 # Contributor: Charles Pigott <charlespigott@googlemail.com>
@@ -7,7 +7,7 @@
 
 pkgname=debhelpergit
 aliasname=debhelper
-pkgver=12.9
+pkgver=12.10
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
