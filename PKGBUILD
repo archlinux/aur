@@ -11,9 +11,9 @@ url="https://github.com/mzz2017/V2RayA"
 license=('GPL')
 depends=('glibc' 'v2ray')
 
-sha_service=
-sha_png=
-sha_desktop=
+sha_service=ea22c162c1fddb7ed786ab2a402d501c07280604
+sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
+sha_desktop=6da6dcf0b0dd3cb2567bf8d2876fd8b9be3cc442
 
 source_i686=(
     "v2raya::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
