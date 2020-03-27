@@ -53,7 +53,7 @@ diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/adm
 index 0c404cda531a..0d45f0014f4a 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -3423,6 +3423,14 @@
+@@ -3427,6 +3427,14 @@
  		nomsi		[MSI] If the PCI_MSI kernel config parameter is
  				enabled, this kernel boot option can be used to
  				disable the use of MSI interrupts system-wide.
