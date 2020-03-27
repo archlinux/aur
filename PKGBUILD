@@ -3,7 +3,7 @@
 pkgname=flowgger-git
 pkgver=0.2.9
 pkgrel=1
-pkgdesc="A fast data collector in Rust"
+pkgdesc="Flowgger is a fast, simple and lightweight data collector written in Rust"
 url="https://github.com/awslabs/flowgger"
 provides=('flowgger')
 makedepends=('git' 'cargo' 'pkgconf' 'snappy' 'capnproto')
