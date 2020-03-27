@@ -2,7 +2,7 @@
 
 pkgname=triplea
 pkgver=2.0.18511
-pkgrel=3
+pkgrel=4
 pkgdesc='An online multiplayer turn based strategy game and board game engine.'
 arch=('any')
 appname="triplea-game-headed-${pkgver}"
@@ -20,6 +20,7 @@ package() {
     cp -rfpv ${srcdir}/.triplea-root ${pkgdir}/usr/share/${pkgname}
     cp ${srcdir}/.triplea-root ${pkgdir}/usr/share/${pkgname}
     rm ${pkgdir}/usr/share/${pkgname}/${appname}.zip
+    cd ${pkgdir}/usr/bin
     printf "#! /usr/bin/bash \n cd /usr/share/${pkgname}/bin \n java -jar ${appname}.jar" > triplea 
     chmod +x triplea
 }
