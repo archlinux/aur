@@ -1,0 +1,16 @@
+pkgbase = approxmvbb
+	pkgdesc = Fast algorithms to compute an approximation of the minimal volume oriented bounding box of a point cloud in 3D.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = http://gabyx.github.io/ApproxMVBB/
+	arch = any
+	license = MPL
+	makedepends = cmake
+	depends = eigen
+	provides = approxmvbb
+	conflicts = approxmvbb
+	source = https://github.com/gabyx/ApproxMVBB/archive/v2.1.2.tar.gz
+	sha256sums = 301e13a37d5e1e812ff48e53ccca21ee36be79e501d6e9fdd7106a1d72762d42
+
+pkgname = approxmvbb
+
