@@ -2,7 +2,7 @@
 pkgbase=python-jplephem
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python2-${_pyname}")
-pkgver=2.13
+pkgver=2.14
 pkgrel=1
 pkgdesc="Use a JPL ephemeris to predict planet positions"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/brandon-rhodes/python-jplephem"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f760f7a5426f2980c065aeb896554986')
+md5sums=('0d8110950fcca5ee1f74e889bdedb277')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
