@@ -39,10 +39,12 @@ optdepends=(
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     'https://www.djangoproject.com/m/releases/1.11/Django-1.11.25.tar.gz'
+    'nginx.example.conf'
 )
 sha256sums=(
     '31dbcfa3ff176925f3de69d9b920fa8407150587be97b3fc568d52042dc44e23'
     '5314e8586285d532b7aa5c6d763b0248d9a977a37efec86d30f0212b82e8ef66'
+    '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
 )
 options=('!strip')
 
@@ -78,4 +80,8 @@ package() {
         --root="$pkgdir" --optimize=1 \
         --install-lib "usr/share/seafile-server/$pkgname/thirdpart"
     rm -rf "$pkgdir/usr/bin/"
+
+    install -Dm644 \
+        "$srcdir/nginx.example.conf" \
+        "$pkgdir/etc/webapps/$pkgname/nginx.conf"
 }
