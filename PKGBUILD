@@ -6,7 +6,7 @@
 
 #  printf "'SKIP'%.0s\n" {1..43}
 pkgname=ossia-score-git
-pkgver=r7534.969e3d855
+pkgver=r7780.d05985277
 pkgrel=1
 pkgdesc="ossia score, an interactive sequencer for the intermedia arts (git master)"
 arch=('x86_64')
@@ -19,8 +19,9 @@ provides=('ossia-score-git')
 conflicts=('ossia-score')
 replaces=('i-score')
 source=('git+https://github.com/OSSIA/score.git'
-"git+https://github.com/OSSIA/libossia"
+"git+https://github.com/OSSIA/libossia.git"
 "git+https://github.com/avilleret/CicmWrapper.git"
+"git+https://github.com/OculusVR/Flicks"
 "git+https://github.com/Microsoft/GSL"
 "git+https://github.com/jcelerier/RtMidi17"
 "git+https://github.com/jcelerier/Servus"
@@ -30,24 +31,36 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/edouarda/brigand"
 "git+https://github.com/Chobolabs/chobo-shl"
 "git+https://github.com/cameron314/concurrentqueue"
+"git+https://github.com/mackron/dr_libs"
 "git+https://github.com/ArashPartow/exprtk"
 "git+https://github.com/jcelerier/flat"
 "git+https://github.com/jcelerier/flat_hash_map"
 "git+https://github.com/fmtlib/fmt"
 "git+https://github.com/serge-sans-paille/frozen"
 "git+https://github.com/tessil/hopscotch-map.git"
-"git+https://github.com/jcelerier/jni.hpp"
 "git+https://github.com/jcelerier/libartnet"
+"git+https://github.com/jcelerier/libsamplerate"
 "git+https://github.com/Cycling74/max-sdk.git"
 "git+https://github.com/jcelerier/multi_index"
 "git+https://github.com/jcelerier/nano-signal-slot"
 "git+https://github.com/jcelerier/oscpack"
 "git+https://github.com/pure-data/pure-data.git"
+"git+https://git.purrdata.net/jwilkes/purr-data.git"
+"git+https://git.purrdata.net/jwilkes/Gem.git"
+"git+https://github.com/pd-l2ork/cwiid"
+"git+https://git.purrdata.net/jwilkes/fftease.git"
+"git+https://git.purrdata.net/jwilkes/lyonpotpourri3.0.git"
+"git+https://git.purrdata.net/jwilkes/pd-lua.git"
+"git+https://github.com/jwmatthys/rtcmix-in-pd.git"
+"git+https://git.purrdata.net/jwilkes/wiringPi.git"
 "git+https://github.com/pybind/pybind11"
 "git+https://github.com/wjakob/clang-cindex-python3"
+"git+https://github.com/avaneev/r8brain-free-src"
 "git+https://github.com/miloyip/rapidjson"
 "git+https://github.com/google/googletest.git"
 "git+https://github.com/cameron314/readerwriterqueue"
+"git+https://github.com/jcelerier/rnd"
+"git+https://github.com/jcelerier/rubberband/"
 "git+https://github.com/gabime/spdlog"
 "git+https://github.com/jcelerier/tbb"
 "git+https://github.com/eggs-cpp/variant"
@@ -57,63 +70,74 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/gpakosz/whereami"
 "git+https://github.com/OSSIA/wiiuse.git"
 "git+https://github.com/OSSIA/cmake-modules"
+"git+https://github.com/jcelerier/magicitems"
+"git+https://github.com/jcelerier/phantomstyle"
+"git+https://github.com/jcelerier/zipdownloader.git"
 "git+https://github.com/Velron/doxygen-bootstrapped"
 "git+https://github.com/jcelerier/QProgressIndicator"
 "git+https://github.com/jcelerier/Qt-Color-Widgets.git"
-"git+https://github.com/jcelerier/phantomstyle.git"
-"git+https://anongit.kde.org/scratch/mart/desktopqqc2style.git"
-"git+https://github.com/jcelerier/rubberband.git"
-"git+https://github.com/jcelerier/libsamplerate.git"
-"git+https://github.com/OculusVR/Flicks.git"
+"git+https://github.com/KDE/qqc2-desktop-style"
 )
 sha256sums=(
 'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
-'SKIP'
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
+"SKIP"
 )
 
 _gitname=score
@@ -128,6 +152,8 @@ build() {
   git config submodule.3rdparty/libossia.url $srcdir/libossia
   git config submodule.Documentation/Doxygen/doxygen-bootstrapped.url $srcdir/doxygen-bootstrapped
   git config submodule.src/3rdparty/phantomstyle.url $srcdir/phantomstyle
+  git config submodule.src/3rdparty/magicitems.url $srcdir/magicitems
+  git config submodule.src/3rdparty/zipdownloader.url $srcdir/zipdownloader
   git config submodule.src/lib/3rdparty/QProgressIndicator.url $srcdir/QProgressIndicator
   git config submodule.src/lib/3rdparty/Qt-Color-Widgets.url $srcdir/Qt-Color-Widgets
   git config submodule.src/lib/resources/desktopqqc2style.url $srcdir/desktopqqc2style
@@ -170,10 +196,11 @@ build() {
     git config submodule.3rdparty/libsamplerate.url $srcdir/libsamplerate
     git config submodule.3rdparty/rubberband.url $srcdir/rubberband
     git config submodule.3rdparty/Flicks.url $srcdir/Flicks
+    git config submodule.3rdparty/rnd.url $srcdir/rnd
     git config submodule.CMake/cmake-modules.url $srcdir/cmake-modules
   )
 
-  git checkout musical2
+  git checkout master
   git submodule update --init --recursive
 
   mkdir -p "$srcdir/build"
