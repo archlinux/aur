@@ -1,7 +1,7 @@
 pkgbase = via-bin
 	pkgdesc = Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards.
 	pkgver = 1.2.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://caniusevia.com/
 	arch = any
 	depends = hicolor-icon-theme
@@ -13,7 +13,7 @@ pkgbase = via-bin
 	depends = xdg-utils
 	depends = at-spi2-core
 	depends = libutil-linux
-	depends = libappindicator
+	depends = libappindicator-gtk3
 	depends = libsecret
 	provides = via=1.2.5
 	source = https://github.com/the-via/releases/releases/download/v1.2.5/via-1.2.5-linux.deb

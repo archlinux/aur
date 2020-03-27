@@ -3,7 +3,7 @@
 _pkgname=via
 pkgname=$_pkgname-bin
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards."
 arch=(any)
 url="https://caniuse$_pkgname.com/"
@@ -17,7 +17,7 @@ depends=("hicolor-icon-theme"
         "xdg-utils" 
         "at-spi2-core"
         "libutil-linux"
-        "libappindicator"
+        "libappindicator-gtk3"
         "libsecret")
 _filename=("${_pkgname}-${pkgver}-linux.deb")
 source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename"
