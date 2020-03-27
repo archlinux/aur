@@ -1,7 +1,7 @@
 pkgbase = wmrc
 	pkgdesc = WMRC is a shell utility for extending window manager capabilities using modules with dependency and error checking.
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/filiparag/wmrc
 	arch = any
 	license = MIT
