@@ -31,7 +31,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$p
         '99-mythbackend.rules'
         'sysusers.d'
 )
-sha256sums=('096ace898e4a075293bb720bd9f33ae5818650f0ef62e722db290c68e522612f'
+sha256sums=('907d1747950ec6ef1ec965069c75500b4538b781333f60e16d62d519b221a86d'
             '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
             'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
             '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
