@@ -4,7 +4,7 @@
 
 
 pkgname='telegraf'
-pkgver='1.13.4'
+pkgver='1.14.0'
 pkgrel='1'
 pkgdesc='Plugin-driven server agent for reporting metrics into InfluxDB'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,41 +13,38 @@ license=('MIT')
 makedepends=('go' 'git')
 backup=('etc/telegraf/telegraf.conf')
 install="${pkgname}.install"
-source=("https://github.com/influxdata/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
+source=("https://github.com/influxdata/${pkgname}/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('a3015fb339e050d048c6d3df97827b257700211ce33e9403a5663d27c1f9b0fb'
+sha256sums=('8562f3bc3c9130fabc9c4dd68863b776ebbaaa9100d2d5a06b79959902b30a4f'
             'b8494d35b868a256eace5f7baa7caa9d8561ee506aded3c47bd6b2ee031b0745'
             'ef54a27c036f11c44f32a42c81787dd0253f84e77170c2e8f9e268aca8773c33'
             'acf95397a51077b7684e8e4f4db7266c42cf82f24bc969ef2bc112a0f914f4cd'
             '95284d1e92f812c4c301cd1f35692850ae127397e33b910a5af7f54bbeb8986e')
 
 prepare() {
-  export GOPATH="${srcdir}/gopath"
-  export GOBIN="${GOPATH}/bin"
+  export GOPATH="${srcdir}"
 
   mkdir -p "${GOPATH}/src/github.com/influxdata/"
   ln -fsT "${srcdir}/${pkgname}-${pkgver}" \
     "${GOPATH}/src/github.com/influxdata/${pkgname}"
   cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
-  go get -v -u github.com/golang/dep/cmd/dep
-  "${GOBIN}/dep" ensure -v -vendor-only
+  go mod download -x
 }
 
 build() {
-  export GOPATH="${srcdir}/gopath"
-  export GOBIN="${GOPATH}/bin"
+  export GOPATH="${srcdir}"
 
   cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
   _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -extldflags ${LDFLAGS}"
   go install -v -ldflags="$_LDFLAGS" -gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}" "./..."
+  go clean -modcache
 }
 
 package() {
-  export GOPATH="${srcdir}/gopath"
-  export GOBIN="${GOPATH}/bin"
+  export GOBIN="${srcdir}/bin"
 
   # binary
   install -D -m755 "${GOBIN}/telegraf" "${pkgdir}/usr/bin/telegraf"
