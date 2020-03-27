@@ -1,10 +1,10 @@
 [Unit]
-Description=Throttle Cut
+Description=Reduce power usage system-wide
 
 [Service]
 Type=idle
 RemainAfterExit=yes
-ExecStart=/usr/bin/throttle cut
+ExecStart=/usr/bin/throttlectl cut
 StandardOutput=null
 StandardError=journal
 
