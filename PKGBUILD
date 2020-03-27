@@ -4,7 +4,7 @@
 pkgbase=mediawiki-lts
 _pkgname=mediawiki
 pkgname=('mediawiki-lts' 'mediawiki-math-lts')
-pkgver=1.31.6
+pkgver=1.31.7
 _basever=${pkgver%.*}
 _hash=a1263db
 pkgrel=1
@@ -36,7 +36,7 @@ validpgpkeys=('41B2ABE817ADD3E52BDA946F72BC1C5D23107F8A'
 source=("https://releases.wikimedia.org/mediawiki/${_basever}/mediawiki-$pkgver.tar.gz"{,.sig}
 	"mediawiki-math-${_basever}.tar.gz::https://codeload.github.com/wikimedia/mediawiki-extensions-Math/legacy.tar.gz/REL${_basever/./_}"
 	apache.example.conf)
-sha256sums=('9f3c64f4d86c5aa72a69a4b25eab14b1a14653e522d5bf80a85570070db36783'
+sha256sums=('fd0388b3ca93e9f3ada370fb6cb8ae564fa0cf688f488fc8d0714fc001f93264'
             'SKIP'
             'c5cb0101ab19cdbbba8ffb90ced5c43ff13c01cde5035946c4b723c2273c9099'
             'cfeff68331e930b6a93f166c12666ac59a84aa24334f94520eff3f988f37ce2b')
