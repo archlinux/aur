@@ -6,7 +6,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=4.3.0.8
+pkgver=4.3.1.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive"
 arch=('i686' 'x86_64')
