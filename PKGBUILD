@@ -1,26 +1,23 @@
-# Original build: fermyon <antifermion@protonmail.com>
 # Maintainer: Markus Näther <naetherm@cs.uni-freiburg.de>
+# Contributor: fermyon <antifermion@protonmail.com>
+# Contributor: Ranieri Althoff <ranisalt+aur at gmail.com>
+
 pkgname=rocm-cmake
 pkgver=3.3.0
 pkgrel=1
-pkgdesc="cmake modules for common build tasks needed for the ROCM software stack"
+pkgdesc='CMake modules for common build tasks needed for the ROCm software stack'
 arch=('x86_64')
-url="https://github.com/RadeonOpenCompute/rocm-cmake"
+url='https://github.com/RadeonOpenCompute/rocm-cmake'
 license=('MIT')
 makedepends=('cmake')
-source=("https://github.com/RadeonOpenCompute/rocm-cmake/archive/rocm-$pkgver.tar.gz")
+source=("$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('76ed3ee8e56cf3246011cf7723c2abda539e1136e7e7f6909bfa45d268b8644f')
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-  mkdir -p "$srcdir/build"
-  cd "$srcdir/build"
-
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        "$srcdir/$pkgname-rocm-$pkgver"
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm "$_dirname"
 }
 
 package() {
-  cd "$srcdir/build"
-
   make DESTDIR="$pkgdir" install
 }
