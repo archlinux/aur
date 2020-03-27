@@ -1,5 +1,5 @@
 pkgbase = dotnet-core-bin
-	pkgver = 3.1.2.sdk102
+	pkgver = 3.1.3.sdk201
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = dotnet-core-bin
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = 448e2ad41a1ac5b7adf4a17ef27d01d1f20c6d355fdb1e10b0ceb4bd6edd8b3a24874aa8c42cfcf56267a6a85c5896b5f69764e5e59526f6938ec7c9d1ec7383
-	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/57e63f03-ebdf-4c22-96ff-2b85dc70cf7f/988576869e82a80f4a97ca5a733a5295/dotnet-sdk-3.1.102-linux-x64.tar.gz
-	sha512sums_x86_64 = 9cacdc9700468a915e6fa51a3e5539b3519dd35b13e7f9d6c4dd0077e298baac0e50ad1880181df6781ef1dc64a232e9f78ad8e4494022987d12812c4ca15f29
-	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/349f13f0-400e-476c-ba10-fe284b35b932/44a5863469051c5cf103129f1423ddb8/dotnet-sdk-3.1.102-linux-arm.tar.gz
-	sha512sums_armv7h = b279185fd245c3a254f4bbdd4f743d4309fcf8e2d3a1eb42df2f464e40df9954257209a666287ad3d924f863ca09d0cd8638d394da9f990477a2fc6d71198550
-	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/2ea7ea69-6110-4c39-a07c-bd4df663e49b/5d60f17a167a5696e63904f7a586d072/dotnet-sdk-3.1.102-linux-arm64.tar.gz
-	sha512sums_aarch64 = 7ad682935158599aeff1f04228df65ce99aa7d34fbe096422a55d6b0c6b38a7de4b9d0af1b667f63728b051d355f0c69526ffa90bb4c4d8ded53fb4ba63233c9
+	source_x86_64 = https://download.visualstudio.microsoft.com/download/pr/f65a8eb0-4537-4e69-8ff3-1a80a80d9341/cc0ca9ff8b9634f3d9780ec5915c1c66/dotnet-sdk-3.1.201-linux-x64.tar.gz
+	sha512sums_x86_64 = 934bf29734776331691a4724f2174c4e9d2d1dde160f18397fd01abf0f96f2ec1bdd2874db9f0e25dce6993d527ea9c19031a0e67383fd813dcfcb9552ea0c70
+	source_armv7h = https://download.visualstudio.microsoft.com/download/pr/ccbcbf70-9911-40b1-a8cf-e018a13e720e/03c0621c6510f9c6f4cca6951f2cc1a4/dotnet-sdk-3.1.201-linux-arm.tar.gz
+	sha512sums_armv7h = f37d0e55c9f593c6951bea5a6bb1ea3194486956efe08a2a0f266b419d912cdcbf4ac279358976f0bfa1fe560c333ca5d5437f8e8c718bb5963991e4395e0cd7
+	source_aarch64 = https://download.visualstudio.microsoft.com/download/pr/98a2e556-bedd-46c8-b3fa-96a9f1eb9556/09f60d50e3cbba0aa16d48ceec9dcb0b/dotnet-sdk-3.1.201-linux-arm64.tar.gz
+	sha512sums_aarch64 = 2f4f6b7ae55802b0beaf5d62bcb64f23ce132c9e08d8ce0f0af8d9b0b1b2c2629b1d4e805e83f831575c9968a86d1495dfa5292d2592af0cd1ae4a385daf42e7
 
 pkgname = dotnet-host-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (binary)
@@ -37,7 +37,7 @@ pkgname = aspnet-runtime-bin
 	pkgdesc = The ASP.NET Core runtime (binary)
 	depends = dotnet-runtime-3.1
 	provides = aspnet-runtime-3.1
-	provides = aspnet-runtime=3.1.2.sdk102
+	provides = aspnet-runtime=3.1.3.sdk201
 	conflicts = aspnet-runtime-3.1
 
 pkgname = dotnet-runtime-bin
@@ -51,13 +51,13 @@ pkgname = dotnet-runtime-bin
 	depends = libcurl.so
 	optdepends = lttng-ust: CoreCLR tracing
 	provides = dotnet-runtime-3.1
-	provides = dotnet-runtime=3.1.2.sdk102
+	provides = dotnet-runtime=3.1.3.sdk201
 	conflicts = dotnet-runtime-3.1
 
 pkgname = dotnet-sdk-bin
 	pkgdesc = The .NET Core SDK (binary)
 	depends = dotnet-runtime-3.1
 	provides = dotnet-sdk-3.1
-	provides = dotnet-sdk=3.1.2.sdk102
+	provides = dotnet-sdk=3.1.3.sdk201
 	conflicts = dotnet-sdk-3.1
 
