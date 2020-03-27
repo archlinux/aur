@@ -22,11 +22,15 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
     'fix_seafile-controller_paths.diff'
     'seafile-server@.service'
+    'seafile-sysusers.conf'
+    'seafile-tmpfiles.conf'
 )
 sha256sums=(
     '6f8ea0204c322b3f1675e73f2e639d1167e880bc53596e9fe5fbb6c501de6bee'
     '8069df2e84e5142a030c4598e410eeece1aaed2fdce3b8abe82b4752d257ffb9'
     '19ed8a238b9cff5a8ad363fa6eda884a49da283aa913270dd667d1b9a19d8056'
+    '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
+    '24962ce5cba697d18980b9d418c7654fbfc5118c69236f9fc94aa3cd526ac176'
 )
 
 prepare() {
@@ -70,6 +74,13 @@ package() {
     ln -s /usr/bin/ "$pkgdir/usr/share/$pkgname/seafile/bin"
     cp -r -p "./scripts"/* "$pkgdir/usr/share/$pkgname/"
 
+    # Systemd
+    install -Dm644 \
+        "$srcdir/seafile-sysusers.conf" \
+        "$pkgdir/usr/lib/sysusers.d/seafile.conf"
+    install -Dm644 \
+        "$srcdir/seafile-tmpfiles.conf" \
+        "$pkgdir/usr/lib/tmpfiles.d/seafile.conf"
     install -Dm644 \
         "$srcdir/seafile-server@.service" \
         "$pkgdir/usr/lib/systemd/system/seafile-server@.service"
