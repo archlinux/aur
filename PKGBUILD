@@ -9,13 +9,13 @@ options=('!buildflags' '!strip' 'staticlibs')
 arch=('any')
 url='http://www.threadingbuildingblocks.org/'
 license=('APACHE')
-source=(https://github.com/intel/tbb/archive/v$pkgver.tar.gz)
+source=(https://github.com/oneapi-src/oneTBB/archive/v$pkgver.tar.gz)
 sha256sums=('7c96a150ed22bc3c6628bc3fef9ed475c00887b26d37bca61518d76a56510971')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
-  cd "$srcdir"/tbb-${pkgver}
+  cd "$srcdir"/oneTBB-${pkgver}
   curl -L https://raw.githubusercontent.com/wjakob/tbb/master/CMakeLists.txt -o CMakeLists.txt
   curl -L https://raw.githubusercontent.com/wjakob/tbb/master/build/version_string.ver.in -o build/version_string.ver.in
 
@@ -24,7 +24,7 @@ prepare () {
 }
 
 build() {
-  cd "$srcdir"/tbb-${pkgver}
+  cd "$srcdir"/oneTBB-${pkgver}
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake -DTBB_BUILD_TESTS=OFF ..
@@ -35,7 +35,7 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "$srcdir"/tbb-${pkgver}/build-${_arch}
+    cd "$srcdir"/oneTBB-${pkgver}/build-${_arch}
     make install DESTDIR="${pkgdir}"
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
