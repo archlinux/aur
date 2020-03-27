@@ -1,12 +1,16 @@
 pkgbase = zathura-pdf-poppler-git
 	pkgdesc = PDF support for zathura by using the poppler rendering library
-	pkgver = 0.2.5.1.ge16ad0e
+	pkgver = 0.3.0.1.gbc6e1ca
 	pkgrel = 1
 	url = http://pwmt.org/projects/zathura-pdf-poppler
 	arch = i686
 	arch = x86_64
 	license = custom
+	checkdepends = check
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = intltool
+	makedepends = meson
 	depends = zathura-git
 	depends = poppler-glib
 	provides = zathura-pdf-poppler-git
