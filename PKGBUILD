@@ -47,31 +47,31 @@ source_armv7h=(
 )
 
 sha1sums_i686=(
-    ''
+    '62df3b3d15c46c319462fd23b3bc4b5449a01d20'
     "$sha_service"
     "$sha_png"
     "$sha_desktop"
 )
 sha1sums_x86_64=(
-    ''
+    '20c3c48112d716e4aac9c84b4daeecce2644fb43'
     "$sha_service"
     "$sha_png"
     "$sha_desktop"
 )
 sha1sums_aarch64=(
-    ''
+    'c8bd9b8f695a587900b04cb7481664de2f8c945c'
     "$sha_service"
     "$sha_png"
     "$sha_desktop"
 )
 sha1sums_armv6h=(
-    ''
+    'd497ea634269c9427e17e91e29f745f17c1c135d'
     "$sha_service"
     "$sha_png"
     "$sha_desktop"
 )
 sha1sums_armv7h=(
-    ''
+    'd497ea634269c9427e17e91e29f745f17c1c135d'
     "$sha_service"
     "$sha_png"
     "$sha_desktop"
