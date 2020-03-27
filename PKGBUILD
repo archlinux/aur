@@ -1,12 +1,12 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-hcc
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/HIP"
 license=('MIT')
-makedepends=('libelf' 'cmake' 'hcc' 'rocm-comgr')
+makedepends=('libelf' 'cmake' 'python' 'hcc' 'rocm-comgr')
 provides=('hip')
 conflicts=('hip')
 source=("https://github.com/ROCm-Developer-Tools/HIP/archive/roc-$pkgver.tar.gz")
