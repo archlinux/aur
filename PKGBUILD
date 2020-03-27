@@ -1,6 +1,6 @@
 # Maintainer: Matthew Treinish <mtreinish@kortar.org>
 pkgname=junitxml2subunit
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A tool to covert JUnit XML to Subunit v2"
 arch=('x86_64')
@@ -8,12 +8,12 @@ url="https://github.com/mtreinish/junitxml2subunit"
 license=('GPL3')
 makedepends=('cargo')
 source=("https://github.com/mtreinish/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('71fef69ddbd0f0593bec7c08d2922a496604883d360b049cbe8ddc0fee27d1edf6543a2d90792506c06e6c5ffa75d4ecc29f90c9181a40410bbde8e0115935c2')
+sha512sums=('6c9d2953049df6be91408635e46d6475a3ca3f6b91b45e013cff26f400944dc49c999c14dad73d6a3c5bf782782e10b251eec9807ab1bb723aa62e180cca6f89')
 
 build() {
   cd "$pkgname-$pkgver"
 
-  cargo build --release
+  cargo build --release --locked
 }
 
 package() {
