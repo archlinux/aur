@@ -1,0 +1,54 @@
+diff --git a/config/compiler/BUILD.gn b/config/compiler/BUILD.gn
+index 36b5df665..9f8528284 100644
+--- a/v8/build/config/compiler/BUILD.gn
++++ b/v8/build/config/compiler/BUILD.gn
+@@ -1496,20 +1496,20 @@ config("default_warnings") {
+           # TODO(thakis): Only for no_chromium_code? http://crbug.com/912662
+           "-Wno-ignored-pragma-optimize",
+ 
+-          # TODO(https://crbug.com/989932): Evaluate and possibly enable.
+-          "-Wno-implicit-int-float-conversion",
++          # # TODO(https://crbug.com/989932): Evaluate and possibly enable.
++          # "-Wno-implicit-int-float-conversion",
+ 
+-          # TODO(https://crbug.com/999886): Clean up, enable.
+-          "-Wno-final-dtor-non-final-class",
++          # # TODO(https://crbug.com/999886): Clean up, enable.
++          # "-Wno-final-dtor-non-final-class",
+ 
+-          # TODO(https://crbug.com/1016945) Clean up, enable.
+-          "-Wno-builtin-assume-aligned-alignment",
++          # # TODO(https://crbug.com/1016945) Clean up, enable.
++          # "-Wno-builtin-assume-aligned-alignment",
+ 
+-          # TODO(https://crbug.com/1028110): Evaluate and possible enable.
+-          "-Wno-deprecated-copy",
++          # # TODO(https://crbug.com/1028110): Evaluate and possible enable.
++          # "-Wno-deprecated-copy",
+ 
+-          # TODO(https://crbug.com/1050281): Clean up, enable.
+-          "-Wno-non-c-typedef-for-linkage",
++          # # TODO(https://crbug.com/1050281): Clean up, enable.
++          # "-Wno-non-c-typedef-for-linkage",
+ 
+           # TODO(https://crbug.com/1059231): Clean up, enable.
+           "-Wno-pointer-to-int-cast",
+@@ -1663,12 +1663,12 @@ config("no_chromium_code") {
+       # suppressing them individually, we just blanket suppress them here.
+       "-Wno-unused-variable",
+     ]
+-    if (!is_nacl && (current_toolchain == host_toolchain || !use_xcode_clang)) {
+-      cflags += [
+-        # TODO(https://crbug.com/1031169): Clean up and enable.
+-        "-Wno-misleading-indentation",
+-      ]
+-    }
++    # if (!is_nacl && (current_toolchain == host_toolchain || !use_xcode_clang)) {
++    #   cflags += [
++    #     # TODO(https://crbug.com/1031169): Clean up and enable.
++    #     "-Wno-misleading-indentation",
++    #   ]
++    # }
+   }
+ 
+   configs = [ ":default_warnings" ]

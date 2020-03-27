@@ -1,6 +1,6 @@
 pkgbase = v8-r
 	pkgdesc = Google's open source JavaScript and WebAssembly engine
-	pkgver = 8.3.42
+	pkgver = 8.3.97
 	pkgrel = 1
 	url = https://v8.dev
 	arch = x86_64
@@ -25,11 +25,13 @@ pkgbase = v8-r
 	source = v8_libbase.pc
 	source = v8_libplatform.pc
 	source = d8
+	source = unknown_option.diff
 	sha256sums = SKIP
 	sha256sums = 3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75
 	sha256sums = efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3
 	sha256sums = ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb
 	sha256sums = 6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0
+	sha256sums = 92bbb8acab3a5f9bdc5c3bd4d936a6a4a61f0c5b1195a6d71f7afc72cbd8b32e
 
 pkgname = v8-r
 
