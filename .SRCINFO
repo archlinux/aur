@@ -1,6 +1,6 @@
 pkgbase = libzathura-git
 	pkgdesc = A document library.
-	pkgver = 49ca31e
+	pkgver = 69efc7d
 	pkgrel = 1
 	url = http://pwmt.org/projects/libzathura
 	arch = i686
@@ -9,6 +9,9 @@ pkgbase = libzathura-git
 	checkdepends = check
 	checkdepends = libfiu
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = intltool
+	makedepends = meson
 	depends = glib2>=2.28
 	depends = intltool
 	depends = file

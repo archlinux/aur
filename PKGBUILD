@@ -3,38 +3,43 @@
 _pkgname=libzathura
 
 pkgname=libzathura-git
-pkgver=f0fe052
+pkgver=69efc7d
 pkgrel=1
 pkgdesc="A document library."
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/libzathura"
 license=('custom')
 depends=('glib2>=2.28' 'intltool' 'file')
-makedepends=('git')
+makedepends=('git' 'python-sphinx' 'intltool' 'meson')
 checkdepends=('check' 'libfiu')
 conflicts=('libzathura')
 provides=('libzathura')
 source=("${_pkgname}::git+https://git.pwmt.org/pwmt/libzathura.git#branch=develop")
 md5sums=('SKIP')
+_gitname=libzathura
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-  cd "$srcdir/$_pkgname"
-  make
+  cd build
+  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
+  ninja
 }
 
 check() {
-  cd "$srcdir/$_pkgname"
-  make test || return 0
+  cd build
+  ninja test
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir/" install
-  install -D -m664 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+  cd build
+  DESTDIR="$pkgdir/" ninja install
 }
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$_gitname"
   git describe --long --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
