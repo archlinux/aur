@@ -1,16 +1,17 @@
 pkgbase = singularity-container-git
 	pkgdesc = Container platform focused on supporting "Mobility of Compute".
-	pkgver = 2.2.r500.g6007d3a1
+	pkgver = v3.5.2.r400.g4660f35c8
 	pkgrel = 1
-	url = http://singularity.lbl.gov
+	url = https://sylabs.io/singularity/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = bash
-	depends = python
+	makedepends = go
+	depends = squashfs-tools
+	depends = libseccomp
 	provides = singularity-container
 	conflicts = singularity-container
-	source = git+https://github.com/gmkurtzer/singularity
+	source = git+https://github.com/sylabs/singularity
 	md5sums = SKIP
 
 pkgname = singularity-container-git

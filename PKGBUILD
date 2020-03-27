@@ -1,31 +1,42 @@
-# Maintainer: Fabio Zanini <fabio . zanini at fastmail dot fm>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Fabio Zanini <fabio . zanini at fastmail dot fm>
 
 pkgname='singularity-container-git'
-pkgver=2.2.r500.g6007d3a1
+_pkgname=singularity
+pkgver=v3.5.2.r400.g4660f35c8
 pkgrel=1
 pkgdesc='Container platform focused on supporting "Mobility of Compute".'
 arch=('i686' 'x86_64')
-url='http://singularity.lbl.gov'
+url='https://sylabs.io/singularity/'
 license=('BSD')
-depends=('bash' 'python')
+makedepends=('go')
+depends=('squashfs-tools' 'libseccomp')
 provides=('singularity-container')
 conflicts=('singularity-container')
-source=('git+https://github.com/gmkurtzer/singularity')
+source=("git+https://github.com/sylabs/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "singularity"
+  cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare(){
+  mkdir -p gopath/src/github.com/sylabs
+  mv $_pkgname gopath/src/github.com/sylabs/
+  ln -sf gopath/src/github.com/sylabs/${_pkgname} ./
+}
+
 build() {
-  cd "${srcdir}/singularity"
-  ./autogen.sh
-  ./configure --prefix='/usr'
+  export GOPATH="${srcdir}/gopath"
+  cd "${GOPATH}/src/github.com/sylabs/${_pkgname}"
+  ./mconfig --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var -V ${pkgver}
+  cd builddir
   make
 }
 
 package() {
-  cd "${srcdir}/singularity"
+  export GOPATH="${srcdir}/gopath"
+  cd "${GOPATH}/src/github.com/sylabs/${_pkgname}/builddir"
   make DESTDIR="$pkgdir" install
 }
