@@ -4,8 +4,8 @@
 # Contributor: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
 
 pkgname=marktext
-pkgver=0.15.1
-pkgrel=3
+pkgver=0.16.0
+pkgrel=1
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://github.com/marktext/marktext'
@@ -14,18 +14,21 @@ provides=('marktext')
 conflicts=('marktext-bin' 'marktext-git')
 depends=('libxkbfile')
 makedepends=('nodejs' 'npm' 'python2' 'tar')
-source=("http://github.com/marktext/marktext/archive/v${pkgver}.tar.gz")
-sha512sums=('d78954493c0035f6d7b85b84798bf1bb6093fc276f2b9d50e1cf78d32dbc72a0629f33c6d56985d6ddb8b26b89cfb46077e03a929f63f12a1cde4eb807bc02c0')
+# source=("https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz")
+# They pushed a commit right after the release to fix a build error:
+source=("https://github.com/marktext/marktext/archive/fe641a67f0ab335fbfe37dd7a4bbf7a098eb1249.tar.gz")
+sha512sums=('ceed84e64c95561998712dc978489b636752b76efb68584f5df44fd4badeb630bf7154f649cf024200417c57c4f4aaabe65d1967b044e7ac9437a92151dbccbd')
 install='marktext.install'
 
 prepare() {
+    mv marktext-fe641a67f0ab335fbfe37dd7a4bbf7a098eb1249 marktext-0.16.0
     cd "${pkgname}-${pkgver}"
-    npx yarn install
+    npx yarn --frozen-lockfile
 }
 
 build() {
     cd "${pkgname}-${pkgver}"
-    node .electron-vue/build.js && ./node_modules/.bin/electron-builder build --dir --linux pacman
+    node .electron-vue/build.js && npx electron-builder build --dir --linux pacman
 }
 
 package() {
