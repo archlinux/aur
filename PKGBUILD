@@ -9,7 +9,6 @@ depends=("python>=2.7" "python2-wxpython3" "python2-pillow>=3.1" "python2-espeak
 
 source=("https://www.bibleanalyzer.com/bibleanalyzer_5.2-1_all.deb")
 
-
 package() {
 	tar -xf data.tar.xz -C "${pkgdir}"/
 	install -Dm644 "$pkgdir/usr/share/doc/bibleanalyzer/copyright" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
