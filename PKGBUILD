@@ -29,5 +29,5 @@ prepare(){
 
 package() {
 	install -Dm644 "${srcdir}/$_pkgname/systemd-unit/gpuStatsServer.service" "${pkgdir}/usr/lib/systemd/system/$_pkgname.service"
-	install -Dm655 "${srcdir}/$_pkgname/src/gpuStatsServer.py" "${pkgdir}/usr/bin/$_pkgname"
+	install -Dm755 "${srcdir}/$_pkgname/src/gpuStatsServer.py" "${pkgdir}/usr/bin/$_pkgname"
 }
