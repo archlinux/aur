@@ -1,0 +1,13 @@
+pkgbase = rustbuster-bin
+	pkgdesc = A Comprehensive Web Fuzzer and Content Discovery Tool
+	pkgver = 3.0.3
+	pkgrel = 1
+	url = https://github.com/phra/rustbuster
+	arch = x86_64
+	license = GPL-3.0
+	provides = rustbuster
+	source = https://github.com/phra/rustbuster/releases/download/v3.0.3/rustbuster-v3.0.3-x86_64-unknown-linux-gnu
+	md5sums = f24e04242b63a698a7d9caef94243986
+
+pkgname = rustbuster-bin
+
