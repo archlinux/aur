@@ -1,12 +1,16 @@
 pkgbase = zathura-ps-git
 	pkgdesc = PostScript support for zathura
-	pkgver = 0.2.0.8.gbd8aaf1
+	pkgver = 0.2.6.7.g8796664
 	pkgrel = 1
 	url = http://pwmt.org/projects/zathura-ps
 	arch = i686
 	arch = x86_64
 	license = custom
+	checkdepends = check
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = intltool
+	makedepends = meson
 	depends = zathura-git
 	depends = libspectre
 	provides = zathura-ps
