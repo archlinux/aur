@@ -1,25 +1,29 @@
 pkgbase = codimd
 	pkgdesc = real-time collaborative markdown notes
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://demo.codimd.org/
+	install = codimd.install
 	arch = any
 	license = AGPL3
 	makedepends = yarn
 	makedepends = bash
 	depends = nodejs>=8.5
 	depends = npm
+	depends = node-gyp
 	optdepends = postgresql: database
 	optdepends = mariadb: database
 	optdepends = sqlite: database
-	backup = opt/codimd/config.json
-	backup = opt/codimd/.sequelizerc
+	backup = etc/codimd/config.json
+	backup = etc/codimd/.sequelizerc
 	source = codimd-1.6.0.tar.gz::https://github.com/codimd/server/archive/1.6.0.tar.gz
 	source = sysusers.conf
+	source = tmpfiles.conf
 	source = codimd.service
 	sha512sums = 50ebf76c365e821c8aec675a975000bf920b44bed939493ea0956ec621aa80ae33a3664654f7d01437f4f5864a73028a635fc11753c229808863c519c5a39998
-	sha512sums = 3de436650b33f272c7229ae2d336cfcbc2f06ae095bc2fad4b72a86f84283511ad79930b6f0d88acf371215f4784b9625f5da8bdd1331b41241d2fb849b7c646
-	sha512sums = 85deb726c8b8d0cde43544b809e26273c901f0e006f502e3452f177ddf1dd393686d54510c2d986662dbbe3b68a33c8f03c8edc21d555a4869835fa4b986851f
+	sha512sums = fadc9f85a5ab9109d8ee92b2fc6a07a7c1f172e8fbfa42265305c36e7c07438ffe9a7be9424981678a8466679c4993fe1f67e3f119b4743abc2eebed0749c5eb
+	sha512sums = 100763115d51c0202a57b882761952dfd560d1c3a4bcec2be0c0cc2475fe76e643f90072f7c743f58f8996fd6bc3f9b4d0847a7462de5c64561d17b1f0465105
+	sha512sums = 7ac84a44b1128f17252a0f537f00ed87005b815cdeadc7367bb5797c375762d850fc69f0b6ef633e9e4937a138f00209fa987980ae795da92023ee84fa6ff60a
 
 pkgname = codimd
 

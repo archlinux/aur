@@ -1,0 +1,25 @@
+post_install()
+{
+	cat << EOF
+
+It is recommended to manually start the server once after upgrading (and
+configuration):
+
+  cd /usr/share/webapps/codimd/
+  su -c 'npm start --production' codimd
+
+EOF
+}
+
+post_upgrade()
+{
+	cat << EOF
+
+It is recommended to manually start the server once after upgrading:
+
+  systemctl is-active codimd.service && systemctl stop codimd.service
+  cd /usr/share/webapps/codimd/
+  su -c 'npm start --production' codimd
+
+EOF
+}

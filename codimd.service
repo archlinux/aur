@@ -3,15 +3,20 @@ Description=CodiMD real-time collaborative markdown editor
 Documentation=file:/opt/codimd/docs/
 After=network.target
 
+
 [Service]
 Type=simple
-ExecStart=/usr/bin/npm start --production
+
+Environment=NODE_ENV=production
 User=codimd
 Group=codimd
-WorkingDirectory=/opt/codimd
+WorkingDirectory=/usr/share/webapps/codimd
+ExecStart=/usr/bin/node app.js
+
 StandardOutput=journal
 StandardError=inherit
 SyslogIdentifier=codimd
+
 
 [Install]
 WantedBy=multi-user.target
