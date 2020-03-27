@@ -1,0 +1,6 @@
+post_install() {
+	echo
+	echo To finish installation, source \
+	/usr/share/kak-tagbar/rc/tagbar.kak in your .kakrc
+	echo
+}
