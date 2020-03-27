@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=0.6.8.1
+pkgver=0.6.8.2
 pkgrel=1
 install=.INSTALL
 pkgdesc="A V2Ray Linux client with web GUI, compatible with SS and SSR and supporting transparent proxy"
