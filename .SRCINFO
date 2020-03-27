@@ -1,0 +1,17 @@
+pkgbase = bookstack
+	pkgdesc = A simple, self-hosted, easy-to-use platform for organising and storing information
+	pkgver = 0.28.3
+	pkgrel = 1
+	url = https://github.com/BookStackApp/BookStack
+	arch = any
+	license = custom
+	makedepends = composer
+	depends = php
+	depends = php-gd
+	depends = php-tidy
+	backup = etc/webapps/bookstack/config.env
+	source = bookstack-0.28.3.tar.gz::https://github.com/BookStackApp/BookStack/archive/v0.28.3.tar.gz
+	md5sums = cec72d2a35ae70f4ced275a27b99d404
+
+pkgname = bookstack
+
