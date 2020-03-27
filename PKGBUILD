@@ -3,7 +3,7 @@
 _pkgname=girara
 
 pkgname=girara-git
-pkgver=0.2.8.r44.g17f58c6
+pkgver=0.3.4.r3.g92409d1
 pkgrel=1
 pkgdesc="user interface library"
 arch=('i686' 'x86_64')
