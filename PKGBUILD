@@ -1,62 +1,33 @@
-# Maintainer: Olaf Leidinger <oleid@mescharet.de>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Jakub Okoński <jakub@okonski.org>
+# Contributor: Olaf Leidinger <oleid@mescharet.de>
+# Contributor: Ranieri Althoff <ranisalt+aur at gmail.com>
+
 pkgname=hsakmt-roct
-pkgver=1.8.0.r0.e3dd067
-pkgrel=2
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="Radeon Open Compute Thunk Interface"
-_gitdir=ROCT-Thunk-Interface
 arch=('x86_64')
-url="https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface"
-license=('X11/MIT')
-groups=()
-depends=(pciutils numactl)
-makedepends=(git cmake gcc) 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-source=('git+https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface.git#branch=roc-1.8.x')
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$srcdir/${_gitdir}"
-
-	# Git, tags available
-	printf "%s" "$(git describe --long | sed -e 's:roc-::g'  -e 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+url='https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface'
+license=('MIT')
+depends=('numactl' 'pciutils')
+makedepends=('cmake')
+provides=("roct-thunk-interface=$pkgver")
+replaces=('roct-thunk-interface')
+source=("$pkgname.tar.gz::$url/archive/roc-$pkgver.tar.gz")
+sha256sums=('b08176b5f4af39d0160990f9f1dea5d27974f9282f544140b4a41d19446fe570')
 
 build() {
-	cd "$srcdir/${_gitdir}"
-
-	mkdir -p build && \
-	cd build && \
-	cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm .. && \
-	make
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm "ROCT-Thunk-Interface-roc-$pkgver"
+  make all build-dev
 }
 
 package() {
-	cd "$srcdir/${_gitdir}/build"
-	make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install install-dev
 
-	# additional links
-	mkdir -p "$pkgdir/usr/include"
-	ln -s opt/rocm/libhsakmt/include/libhsakmt "$pkgdir/usr/include"
-
-	# ldconfig
-	mkdir -p "$pkgdir/etc/ld.so.conf.d"
-	echo "/opt/rocm/libhsakmt/lib" > "$pkgdir/etc/ld.so.conf.d/libhsakmt.conf"
-
-	############
-	# dev-parts
-
-	# pkg-build config file(s)
-	find `pwd` -name "*.pc" -exec install -D '{}' $pkgdir/opt/rocm/libhsakmt ';'
-
-	# headers, reconstruct tree
-	cd "$srcdir/${_gitdir}/include"
-	find . -name '*.h' -exec install -D '{}' $pkgdir/opt/rocm/libhsakmt/include/libhsakmt/{} ';'
-
-	# cleanup
-	rm -Rf "$pkgdir/opt/rocm/include"
-	rm -Rf "$pkgdir/opt/rocm/lib"
+  install -Dm644 "ROCT-Thunk-Interface-roc-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir/etc/ld.so.conf.d"
+  cat << EOF > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
+/opt/rocm/lib
+EOF
 }

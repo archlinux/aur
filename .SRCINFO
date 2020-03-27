@@ -1,19 +1,17 @@
 pkgbase = hsakmt-roct
 	pkgdesc = Radeon Open Compute Thunk Interface
-	pkgver = 1.8.0.r0.e3dd067
-	pkgrel = 2
+	pkgver = 3.1.0
+	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface
 	arch = x86_64
-	license = X11/MIT
-	makedepends = git
+	license = MIT
 	makedepends = cmake
-	makedepends = gcc
-	depends = pciutils
 	depends = numactl
-	provides = hsakmt-roct
-	conflicts = hsakmt-roct
-	source = git+https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface.git#branch=roc-1.8.x
-	md5sums = SKIP
+	depends = pciutils
+	provides = roct-thunk-interface=3.1.0
+	replaces = roct-thunk-interface
+	source = hsakmt-roct.tar.gz::https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/roc-3.1.0.tar.gz
+	sha256sums = b08176b5f4af39d0160990f9f1dea5d27974f9282f544140b4a41d19446fe570
 
 pkgname = hsakmt-roct
 
