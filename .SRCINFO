@@ -1,0 +1,19 @@
+pkgbase = ksysguard-gpu-git
+	pkgdesc = gpu visualization for ksysguard
+	pkgver = 0.3.r5.gd4bf830
+	pkgrel = 1
+	url = https://github.com/lestofante/ksysguard-gpu
+	arch = any
+	license = GPL3
+	depends = python
+	optdepends = ksysguard: For connecting to script as intended
+	optdepends = radeontop: AMD card support
+	optdepends = intel-gpu-tools: Intel card support
+	optdepends = nvidia-smi: NVIDIA card support
+	provides = ksysguard-gpu
+	conflicts = ksysguard-gpu
+	source = git+https://github.com/lestofante/ksysguard-gpu
+	md5sums = SKIP
+
+pkgname = ksysguard-gpu-git
+
