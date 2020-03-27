@@ -1,0 +1,13 @@
+pkgbase = imager-bin
+	pkgdesc = Automated image compression for efficiently distributing images on the web
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://imager.io
+	arch = x86_64
+	license = MIT
+	provides = imager
+	source = https://github.com/imager-io/imager/releases/download/auto-release/imager/0.3.4/imager-v0.3.4-linux.tar.gz
+	md5sums = f196e141fa576c74579089514249767b
+
+pkgname = imager-bin
+
