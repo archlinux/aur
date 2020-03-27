@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=zathura-git
-pkgver=0.3.8.135.ga647b92
+pkgver=0.4.5.28.g3b4540f
 pkgrel=1
 pkgdesc="a document viewer"
 arch=('i686' 'x86_64')
@@ -9,6 +9,8 @@ url="http://pwmt.org/projects/zathura"
 license=('custom')
 depends=('girara-git' 'gtk3>=3.10' 'cairo>=1.8.8')
 makedepends=('git' 'python-sphinx' 'intltool' 'meson')
+optdepends=('fish', 'bash-completion')
+checkdepends=('check')
 conflicts=('zathura')
 provides=('zathura')
 source=('zathura::git+https://git.pwmt.org/pwmt/zathura.git#branch=develop')
@@ -30,6 +32,11 @@ build() {
   cd build
   meson --prefix=/usr --buildtype=release $srcdir/$_gitname
   ninja
+}
+
+check() {
+  cd build
+  ninja test
 }
 
 package() {
