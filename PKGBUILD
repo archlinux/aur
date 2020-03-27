@@ -3,7 +3,7 @@
 
 pkgname=fonts-meta-base
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Base font collection meta package, ported from Infinality.'
 arch=('any')
 url='https://web.archive.org/web/20160703182257/http://bohoomil.com:80/doc/05-fonts/'
@@ -14,7 +14,7 @@ depends=(
   'ttf-heuristica'
   'ttf-liberation'
   'noto-fonts'
-  'ttf-symbola'
+  'font-symbola'
 )
 provides=('ibfonts-meta-base')
 conflicts=('ibfonts-meta-base')
