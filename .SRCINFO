@@ -1,0 +1,13 @@
+pkgbase = kondo-bin
+	pkgdesc = Save disk space by cleaning unneeded files from software projects
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/tbillington/kondo
+	arch = x86_64
+	license = MIT
+	provides = kondo
+	source = https://github.com/tbillington/kondo/releases/download/v0.3/kondo-x86_64-unknown-linux-gnu.tar.gz
+	md5sums = f93cfc72a9f29a7dcf22be5949b208fa
+
+pkgname = kondo-bin
+
