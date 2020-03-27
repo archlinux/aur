@@ -2,14 +2,14 @@
 
 pkgname="nats-server"
 pkgdesc="Simple, secure and high performance open source messaging system"
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 provides=("${pkgname}")
 arch=("x86_64")
 url="https://nats.io"
 licence=("Apache")
 source=("https://github.com/nats-io/nats-server/releases/download/v$pkgver/nats-server-v$pkgver-linux-amd64.zip")
-sha256sums=("ca2629091c1c06bf3f92195e54d0bc8f69bb5e0adad662e057f972050923c6b4")
+sha256sums=("d10a739051bb8c4c89e96912d00cf9dd3b7ae8d9495d50a0ceec9e39b428370d")
 
 package() {
 	local actual_srcdir="$srcdir/$pkgname-v$pkgver-linux-amd64"
