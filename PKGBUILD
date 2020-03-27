@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2164
 
 pkgname=losslesscut
-pkgver=3.17.1
+pkgver=3.17.4
 pkgrel=1
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source_x86_64=("$pkgname-$pkgver.tar.bz2::https://github.com/mifi/lossless-cut/r
                "losslesscut.desktop"
                "LICENSE"
                "https://raw.githubusercontent.com/mifi/lossless-cut/master/src/icon.svg")
-sha256sums_x86_64=('499a8d09382a71afbc5a34355a591736416233b971f5fda0b0dd16ed46cf8453'
+sha256sums_x86_64=('b1a16f23e90c50ef69a633ccb085be875554302c0bafdd40715e1e4ddf299abe'
                    'e91017634fe1e3685a6affd8d72c1ec11af4d390c9fc13d503ae67e8c6e4e852'
                    '48affed7162fc2e76f1cd47b50355181b869b4025ff04c2a53b03854e329dca0'
                    'd3d3da3f403ce1b9f846ae2a38a8fe9938fc458024352a9741b59a920eefacf9')
