@@ -6,14 +6,14 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-git
-pkgver=1.9.10.r4.g1f16d7266
+pkgver=1.9.21.r5.g13e8b60d6
 pkgrel=1
 pkgdesc="Official Telegram Desktop client (dev branch)"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=('enchant' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'xxhash' 'libappindicator-gtk3')
+         'qt5-imageformats' 'xxhash' 'libappindicator-gtk3' 'microsoft-gsl' 'tl-expected')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=("${pkgname%-git}")
@@ -42,8 +42,7 @@ source=("tdesktop::git+https://github.com/telegramdesktop/tdesktop.git#tag=dev"
         "QR-Code-generator::git+https://github.com/nayuki/QR-Code-generator"
         "lib_qr::git+https://github.com/desktop-app/lib_qr.git"
         "libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git"
-        "telegram-desktop.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/telegram-desktop.sh?h=packages/telegram-desktop"
-        "packaged-gsl-option.patch")
+        "telegram-desktop.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/telegram-desktop.sh?h=packages/telegram-desktop")
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -68,8 +67,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b'
-            'ca2e7d26867a720f6fcc8b100fa6767f0b95ae9e7b3802c8cfd4fab2a4ed1e3166048d51d3b1c4e607c62524ea77c54196d1649f57d558b8bfb7133e2682c5fc')
+            '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b')
 pkgver() {
     cd "$srcdir/tdesktop"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
@@ -101,12 +99,6 @@ prepare() {
     git config submodule.Telegram/lib_qr.url "$srcdir/lib_qr"
     git config submodule.Telegram/ThirdParty/libdbusmenu-qt.url "$srcdir/libdbusmenu-qt"
     git submodule update
-    
-    cd "$srcdir/tdesktop/cmake"
-    if patch -Np1 --dry-run --silent -i "$srcdir/packaged-gsl-option.patch"
-    then
-        patch -Np1 -i "$srcdir/packaged-gsl-option.patch"
-    fi
 }
 
 build() {
@@ -121,8 +113,6 @@ build() {
         -DDESKTOP_APP_USE_PACKAGED=ON \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
         -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
-        -DDESKTOP_APP_USE_PACKAGED_EXPECTED=OFF \
-        -DDESKTOP_APP_USE_PACKAGED_GSL=OFF \
         -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
         -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \

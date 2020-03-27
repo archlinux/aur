@@ -1,6 +1,6 @@
 pkgbase = telegram-desktop-git
 	pkgdesc = Official Telegram Desktop client (dev branch)
-	pkgver = 1.9.10.r4.g1f16d7266
+	pkgver = 1.9.21.r5.g13e8b60d6
 	pkgrel = 1
 	url = https://desktop.telegram.org/
 	arch = i686
@@ -20,6 +20,8 @@ pkgbase = telegram-desktop-git
 	depends = qt5-imageformats
 	depends = xxhash
 	depends = libappindicator-gtk3
+	depends = microsoft-gsl
+	depends = tl-expected
 	optdepends = ttf-opensans: default Open Sans font family
 	provides = telegram-desktop
 	conflicts = telegram-desktop
@@ -48,7 +50,6 @@ pkgbase = telegram-desktop-git
 	source = lib_qr::git+https://github.com/desktop-app/lib_qr.git
 	source = libdbusmenu-qt::git+https://github.com/desktop-app/libdbusmenu-qt.git
 	source = telegram-desktop.sh::https://git.archlinux.org/svntogit/community.git/plain/trunk/telegram-desktop.sh?h=packages/telegram-desktop
-	source = packaged-gsl-option.patch
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -74,7 +75,6 @@ pkgbase = telegram-desktop-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = 3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b
-	sha512sums = ca2e7d26867a720f6fcc8b100fa6767f0b95ae9e7b3802c8cfd4fab2a4ed1e3166048d51d3b1c4e607c62524ea77c54196d1649f57d558b8bfb7133e2682c5fc
 
 pkgname = telegram-desktop-git
 

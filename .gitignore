@@ -2,4 +2,3 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!packaged-gsl-option.patch
