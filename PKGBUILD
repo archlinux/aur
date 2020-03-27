@@ -1,7 +1,7 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=anbox-launchers-git
 _pkgname=anbox-launchers
-pkgver=r7.de19c77
+pkgver=r8.38f83f8
 pkgrel=1
 pkgdesc="Add Anbox App Launchers to Anbox Category in Desktop Menu."
 arch=('any')
@@ -29,5 +29,5 @@ pkgver()
 }
 package() {
     cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir/" install
+	make DESTDIR="$pkgdir/" SYSCONFDIR=/etc install
 }
