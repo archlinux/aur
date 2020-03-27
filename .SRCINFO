@@ -1,7 +1,7 @@
 pkgbase = linux-sfh
 	pkgdesc = Linux with experimental AMD Sensor Fusion Hub (SFH) drivers
 	pkgver = 5.5.13.arch1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.archlinux.org/linux.git/log/?h=v5.5.13-arch1
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-sfh
 	source = amd-sfh-v4.2.patch::https://patchwork.kernel.org/patch/11407747/raw/
 	source = amd-sfh-v4.3.patch::https://patchwork.kernel.org/patch/11407749/raw/
 	source = amd-sfh-v4.4.patch::https://patchwork.kernel.org/patch/11407753/raw/
-	source = amd-sfh-fix.patch::https://gist.githubusercontent.com/conqp/e8a0793406fbe7c9714f01f3078ea33a/raw/0f11de9caa936428921e887b6ff3cba1e22ca499/amd-sfh.patch
+	source = amd-sfh-fix.patch::https://gist.githubusercontent.com/conqp/e8a0793406fbe7c9714f01f3078ea33a/raw/ac2de743e68d1dd90430e57cb28df8c1dc5d1098/amd-sfh.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -28,7 +28,7 @@ pkgbase = linux-sfh
 	sha256sums = 0ebe2bd3ef3a61827551fe08914b1a0ecc1416362390c2396843a9861d9077f5
 	sha256sums = 88b95a3d8d4ea1a994bb00ec8e00064d3b3b4924cd2149396793aeba05072ab4
 	sha256sums = 885e81ac84179117aa1d1ade566f91e19424c0475136b770bfc39c98c83bb945
-	sha256sums = a54cc18b9614faa299c4918feee80853bfdd8029147129670d66465e0a6a1f61
+	sha256sums = cd677fdb15ee75a9f65f08b428f1e72922750043445835f49aaed79266f46b32
 	sha256sums = fe5f020e59090006e53a9dede4772b3ae82037f58d4f2ef4ec0e3b9937e93e06
 
 pkgname = linux-sfh
