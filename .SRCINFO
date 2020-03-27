@@ -1,19 +1,14 @@
 pkgbase = triplea
 	pkgdesc = An online multiplayer turn based strategy game and board game engine.
-	pkgver = 1.9.0.0.7594 
+	pkgver = 2.0.18511
 	pkgrel = 1
 	url = http://www.triplea-game.org/ 
 	install = triplea.install
 	arch = any
 	license = GPL
-	depends = gtk-update-icon-cache
 	depends = java-runtime
 	source = https://github.com/triplea-game/triplea/releases/download/${pkgver}/triplea-${pkgver}-all_platforms.zip
-   source = https://github.com/chrisfair/tripleapatches/archive/${pkgver}.tar.gz
-	source = triplea
-	sha256sums = 5e419c7bb6a7cfdf375afed292d769694b4be3d910e1734c0533478e244870d2
-	sha256sums = 97b82e8c20a3ba61cfe1376fe32ca5d387d10d60e0eb16213356b3d4f9259670
-	sha256sums = 2774c5d96117330cd5edaf7f4aae0f9a6ffbe757b2d9a8ae4bbc5b0dfde9274f 
+	sha256sums = 030f6b919be16875347fbb724b53c46b7a23bed30d9c18abdb33c6f7f9ad52c5
 
 pkgname = triplea
 
