@@ -1,0 +1,18 @@
+pkgbase = gpk-git
+	pkgdesc = A decentralized and secure package manager for nodejs.
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/braydonf/gpk
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = nodejs
+	depends = python2
+	depends = git
+	provides = gpk
+	conflicts = gpk
+	source = gpk-git::git+https://github.com/braydonf/gpk.git
+	md5sums = SKIP
+
+pkgname = gpk-git
+
