@@ -1,12 +1,13 @@
 pkgbase = dua-cli
 	pkgdesc = A tool to conveniently learn about the disk usage of directories, fast!
-	pkgver = 2.3.8
+	pkgver = 2.3.9
 	pkgrel = 1
 	url = https://github.com/Byron/dua-cli
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Byron/dua-cli/archive/v2.3.8.tar.gz
-	md5sums = ac49a90e54b40b19ee74b182a7e563c7
+	makedepends = cargo
+	source = https://github.com/Byron/dua-cli/archive/v2.3.9.tar.gz
+	md5sums = 3def7b07ae21d880971e713ec32003e9
 
 pkgname = dua-cli
 
