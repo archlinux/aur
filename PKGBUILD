@@ -1,20 +1,17 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=lens
-pkgdesc='A Kubernetes management tool'
+pkgdesc='The Kubernetes IDE (previously Kontena Lens)'
 pkgver=3.1.0_beta.1
 pkgrel=1
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/lensapp/lens'
-makedepends=('nodejs-lts-erbium' 'yarn' 'electron6')
+makedepends=('nodejs-lts-erbium' 'yarn')
 source=("$pkgname-${pkgver/_/-}.tar.gz::https://github.com/lensapp/lens/archive/v${pkgver/_/-}.tar.gz"
-        "lens.sh"
         "lens.desktop")
-#source=("$pkgname-${pkgver/_/-}::git+https://github.com/lensapp/lens.git#branch=master")
 sha256sums=('7e6b854cde1805cc3422b8893ea708ba89facbedb263e4cc31e8a52d326f8812'
-            'ef469cad4eaea7fbafedcd96cbc4ccba3db158b554841536a4d558c93ef98203'
-            '2427ae570b5433cef30bfd9501dacbc06a29327dd12b3fd613185d8ee7fb1309')
+            'e81c76d6ae2703c35a6e5d93830402f7a02a4f7bf19a06c91495b2ab52c56c94')
 
 build() {
   cd $pkgname-${pkgver/_/-}
@@ -23,18 +20,17 @@ build() {
 }
 
 package() {
-  cd $pkgname-${pkgver/_/-}
-
-  # Linked libs
-  install -dm 755 "$pkgdir/usr/lib/$pkgname"
-  cp -r dist/linux-unpacked/resources "$pkgdir"/usr/lib/$pkgname/
+  # Copy the entire distribution to /opt
+  install -d "$pkgdir"/opt/$pkgname
+  cp -a "$srcdir"/$pkgname-${pkgver/_/-}/dist/linux-unpacked/* "$pkgdir"/opt/$pkgname
 
   # Icon
-  install -Dm 644 build/icons/512x512.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
+  install -Dm 644 "$srcdir"/$pkgname-${pkgver/_/-}/build/icons/512x512.png "$pkgdir"/usr/share/icons/hicolor/512x512/apps/$pkgname.png
 
   # Desktop file
   install -Dm 644 "$srcdir"/$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 
-  # Launcher script
-  install -Dm 755 "$srcdir"/$pkgname.sh "$pkgdir"/usr/bin/$pkgname
+  # Symlink binary
+  install -d "$pkgdir"/usr/bin/$pkgname
+  ln -s "$pkgdir"/opt/$pkgname/kontena-lens "$pkgdir"/usr/bin/
 }
