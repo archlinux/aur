@@ -12,7 +12,7 @@ depends=('python')
 optdepends=('ksysguard: For connecting to script as intended'
 			'radeontop: AMD card support'
 			'intel-gpu-tools: Intel card support'
-			'nvidia-smi: NVIDIA card support')
+			'nvidia-utils: NVIDIA card support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
