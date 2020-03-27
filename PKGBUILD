@@ -1,6 +1,6 @@
 # Maintainer: DnsAdBlock <office@dnsadblock.com>
 pkgname=dnsadblock
-pkgver=0.2.37
+pkgver=0.2.40
 pkgrel=1
 pkgdesc='DnsAdBlock DNS to DOH proxy client'
 arch=('x86_64')
@@ -15,4 +15,4 @@ package() {
 }
 
 
-sha256sums=('ed8e696685af23530357c424129f936f26ddd73828c6090118e37bd863c0db4a')
+sha256sums=('4faf6408a931cdcfdaa54ec76437e26ec8b63bf826f3bcfa85226bf370b5b2f6')
