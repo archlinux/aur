@@ -1,14 +1,14 @@
 pkgbase = font-symbola
 	pkgdesc = Font for symbol blocks of the Unicode Standard
 	pkgver = 13.00
-	pkgrel = 6
+	pkgrel = 7
 	url = https://dn-works.com/ufas/
 	arch = any
 	license = custom
 	makedepends = fontforge
 	makedepends = poppler
-	source = font-symbola-13.00-6.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip
-	source = License-13.00-6.pdf::https://dn-works.com/wp-content/uploads/2020/UFAS-Docs/License.pdf
+	source = font-symbola-13.00-7.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Symbola.zip
+	source = License-13.00-7.pdf::https://dn-works.com/wp-content/uploads/2020/UFAS-Docs/License.pdf
 	source = 45-symbola.conf
 	source = 90-tt-symbola.conf
 	sha512sums = ba671168ab2dc15293ae404f849f13b9b1f4684ce1856a8c2bbf8b9a2e2d70a27f86ef166a5e3ab6260e651c8276537ee272710a7e1fb49beef26fbed6355a35
@@ -26,8 +26,9 @@ pkgname = ttf-symbola
 	conflicts = ttf-symbola-ib<=13.00
 
 pkgname = ttf-symbola-infinality
-	pkgdesc = Font for symbol blocks of the Unicode Standard (Infinality configuration)
+	pkgdesc = Font for symbol blocks of the Unicode Standard (infinality configuration files)
 	groups = infinality-bundle-fonts
+	depends = ttf-symbola
 	provides = ttf-symbola-ib
 	replaces = ttf-symbola-ib
 

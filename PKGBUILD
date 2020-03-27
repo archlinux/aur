@@ -10,7 +10,7 @@
 pkgbase=font-symbola
 pkgname=('otf-symbola' 'ttf-symbola' 'ttf-symbola-infinality')
 pkgver=13.00
-pkgrel=6
+pkgrel=7
 pkgdesc='Font for symbol blocks of the Unicode Standard'
 arch=('any')
 url='https://dn-works.com/ufas/'
@@ -32,7 +32,7 @@ build() {
 
 package_otf-symbola() {
   provides=('font-symbola')
-  pkgdesc+=" (OTF)"
+  pkgdesc+=' (OTF)'
   install -Dm644 -t "$pkgdir/usr/share/fonts/OTF/" Symbola.otf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
@@ -40,7 +40,7 @@ package_otf-symbola() {
 package_ttf-symbola() {
   conflicts=('ttf-symbola-ib<=13.00')
   provides=('font-symbola')
-  pkgdesc+=" (TTF)"
+  pkgdesc+=' (TTF)'
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF/" Symbola.ttf
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
@@ -49,7 +49,8 @@ package_ttf-symbola-infinality() {
   provides=('ttf-symbola-ib')
   replaces=('ttf-symbola-ib')
   groups=('infinality-bundle-fonts')
-  pkgdesc+=" (Infinality configuration)"
+  pkgdesc+=' (infinality configuration files)'
+  depends=('ttf-symbola')
   install -Dm644 -t "$pkgdir/etc/fonts/conf.avail/" [0-9]*.conf
   install -dm755 "$pkgdir/etc/fonts/conf.d"
   cd "$pkgdir/etc/fonts/conf.d"
