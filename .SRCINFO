@@ -1,13 +1,13 @@
 pkgbase = roamer
 	pkgdesc = plain-text file manager
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/abaldwin88/roamer/
 	arch = any
 	license = MIT
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/r/roamer/roamer-0.3.1.tar.gz
-	md5sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/r/roamer/roamer-0.3.2.tar.gz
+	md5sums = db1c7576ba6f01402167b5519a60cff7
 
 pkgname = roamer
 	depends = python
