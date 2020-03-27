@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.9.r255.2aac46efc
+pkgver=r10051.d6258fce5
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -76,7 +76,7 @@ sha256sums=(
 pkgver() {
   cd rpcs3
 
-  echo "$(git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./')"
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 prepare() {
