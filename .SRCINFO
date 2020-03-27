@@ -1,0 +1,15 @@
+pkgbase = php73-smbclient
+	pkgdesc = PHP bindings for libsmbclient.
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/eduardok/libsmbclient-php
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = php73
+	depends = smbclient
+	source = https://github.com/eduardok/libsmbclient-php/archive/1.0.0.tar.gz
+	md5sums = c28d1d4cab164fb56626da00d7deb7b7
+
+pkgname = php73-smbclient
+
