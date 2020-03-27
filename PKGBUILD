@@ -3,7 +3,7 @@
 
 pkgbase=linux-sfh
 pkgver=5.5.13.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -22,7 +22,7 @@ source=(
   "amd-sfh-v4.2.patch::https://patchwork.kernel.org/patch/11407747/raw/"
   "amd-sfh-v4.3.patch::https://patchwork.kernel.org/patch/11407749/raw/"
   "amd-sfh-v4.4.patch::https://patchwork.kernel.org/patch/11407753/raw/"
-  "amd-sfh-envy-13-ag000x.patch::https://gist.githubusercontent.com/conqp/e8a0793406fbe7c9714f01f3078ea33a/raw/e5b28eebef639ebe2acd6f3b6ab1ed7762304a1b/amd-sfh.patch"
+  "amd-sfh-fix.patch::https://gist.githubusercontent.com/conqp/e8a0793406fbe7c9714f01f3078ea33a/raw/0f11de9caa936428921e887b6ff3cba1e22ca499/amd-sfh.patch"
   config         # the main kernel config file
 )
 validpgpkeys=(
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
             '0ebe2bd3ef3a61827551fe08914b1a0ecc1416362390c2396843a9861d9077f5'
             '88b95a3d8d4ea1a994bb00ec8e00064d3b3b4924cd2149396793aeba05072ab4'
             '885e81ac84179117aa1d1ade566f91e19424c0475136b770bfc39c98c83bb945'
-            'dc5dc113c9ded41a8d9b83671d5b08c1e15b34c988b5d8c5ac7bf22d8dfdf5d1'
+            'a54cc18b9614faa299c4918feee80853bfdd8029147129670d66465e0a6a1f61'
             'fe5f020e59090006e53a9dede4772b3ae82037f58d4f2ef4ec0e3b9937e93e06')
 
 export KBUILD_BUILD_HOST=archlinux
