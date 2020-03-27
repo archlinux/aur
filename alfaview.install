@@ -1,0 +1,9 @@
+post_upgrade() {
+    printf "$(tput bold)$(tput setaf 3)IMPORTANT: MIME types are NOT registered automatically$(tput sgr0)\n"
+	printf "$(tput bold)$(tput setaf 3)postinst from debian package: $(tput sgr0)\n"
+	printf "$(tput bold)$(tput setaf 3)xdg-mime default /usr/share/applications/alfaview.desktop x-scheme-handler/alfaview\nxdg-mime default /usr/share/applications/alfaview.desktop x-scheme-handler/alfatraining$(tput sgr0)\n"
+}
+
+post_install() {
+    post_upgrade
+}
