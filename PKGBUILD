@@ -1,7 +1,7 @@
 # Maintainer: Sam Mulvey <archlinux -at- sammulvey.com>
 pkgname=qemu-android-x86
-_pkgver="9.0-r1"
-pkgver=9.0.r1
+_pkgver="9.0-r2"
+pkgver=9.0.r2
 pkgrel=1
 pkgdesc="Android-x86 environment via QEMU and VirGL"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=("android-x86-${_pkgver}.${arch}.rpm::https://osdn.net/frs/redir.php?m=co
 		"qemu-android"
 		"config"
 		"qemu-android.desktop")
-sha256sums=('41fea45fbbebdac26c99a6dd80315520e09d002e1a41eb98f324b5d6322868da'
+sha256sums=('6e54e25d945e050cf6a6ad2ac3e0775add04b1d586989e29276499c8d11e629f'
             '8c80b881727efc8831c8ef53806e7c1d0427607e145aae09061c4870b6cd402f'
             'e53911e378a6048d88d4fbaeb870c58f57c44142450527ee99b3c12baa15099a'
             'e9524cdb27c57e6650af763b2231d67ff3e2beb12f52133e7e95eda4f16b0881'
