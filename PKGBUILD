@@ -1,6 +1,6 @@
 # Maintainer: mexus <gilaldpellaeon@gmail.com>
 pkgname=dua-cli
-pkgver=2.1.13
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="A tool to conveniently learn about the disk usage of directories, fast!"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/Byron/dua-cli"
 license=('MIT')
 depends=()
 makedepends=('cargo')
-source=("https://github.com/Byron/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('83c852636cfaaa64f19f5a2ee0ac8c6d')
+source=("https://github.com/Byron/${pkgname}/archive/v${pkgver}.tar.gz")
+md5sums=('ac49a90e54b40b19ee74b182a7e563c7')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
