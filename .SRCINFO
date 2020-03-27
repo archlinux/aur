@@ -1,0 +1,19 @@
+pkgbase = lens
+	pkgdesc = A Kubernetes management tool
+	pkgver = 3.1.0_beta.1
+	pkgrel = 1
+	url = https://github.com/lensapp/lens
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs-lts-erbium
+	makedepends = yarn
+	makedepends = electron6
+	source = lens-3.1.0-beta.1.tar.gz::https://github.com/lensapp/lens/archive/v3.1.0-beta.1.tar.gz
+	source = lens.sh
+	source = lens.desktop
+	sha256sums = 7e6b854cde1805cc3422b8893ea708ba89facbedb263e4cc31e8a52d326f8812
+	sha256sums = ef469cad4eaea7fbafedcd96cbc4ccba3db158b554841536a4d558c93ef98203
+	sha256sums = 2427ae570b5433cef30bfd9501dacbc06a29327dd12b3fd613185d8ee7fb1309
+
+pkgname = lens
+

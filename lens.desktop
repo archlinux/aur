@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Lens
+GenericName=Lens
+Comment=Lens Kubernetes utilty
+Icon=lens
+Exec=lens
+Categories=Network;
+StartupNotify=true
+
