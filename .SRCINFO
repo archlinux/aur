@@ -1,0 +1,13 @@
+pkgbase = commons-category-downloader
+	pkgdesc = Quick and dirty shell script to fetch all images from a category on Wikimedia Commons
+	pkgver = r7.a3864da
+	pkgrel = 1
+	url = https://github.com/aucuparia/commons-category-downloader
+	arch = x86_64
+	license = GPL
+	depends = jq
+	source = git+https://github.com/aucuparia/commons-category-downloader
+	md5sums = SKIP
+
+pkgname = commons-category-downloader
+
