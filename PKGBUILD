@@ -1,8 +1,9 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
 
 pkgname=rage
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Video Player based on EFL"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ license=('BSD')
 depends=('efl')
 makedepends=('meson' 'mesa')
 source=("http://download.enlightenment.org/rel/apps/${pkgname}/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('1e772370c2199f89f4c34f1968432df4eabf0e4fe4f960649d0b9d27496bdf3d')
+sha256sums=('e5c434ef415ec1dd268399c527f582baeef39a25dee52f828876bfb58698cd11')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
