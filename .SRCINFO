@@ -1,7 +1,7 @@
 pkgbase = archey4
 	pkgdesc = A simple system information tool written in Python
 	pkgver = v4.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/HorlogeSkynet/archey4.git
 	install = archey4.install
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = archey4
 	depends = python-distro
 	depends = python-netifaces
 	optdepends = bind-tools: WAN_IP would be detected faster
-	optdepends = lm-sensors: Temperature would be more accurate
+	optdepends = lm_sensors: Temperature would be more accurate
 	optdepends = pciutils: GPU wouldn't be detected without it
 	optdepends = wmctrl: WindowManager would be more accurate
 	optdepends = virt-what: Model would contain details about the hypervisor

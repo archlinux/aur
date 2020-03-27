@@ -24,7 +24,7 @@
 
 pkgname=archey4
 pkgver=v4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
 url="https://github.com/HorlogeSkynet/archey4.git"
@@ -33,7 +33,7 @@ group=('utils')
 depends=('procps' 'python' 'python-distro' 'python-netifaces')
 makedepends=('python-setuptools')
 optdepends=('bind-tools: WAN_IP would be detected faster'
-            'lm-sensors: Temperature would be more accurate'
+            'lm_sensors: Temperature would be more accurate'
             'pciutils: GPU wouldn'"'"'t be detected without it'
             'wmctrl: WindowManager would be more accurate'
             'virt-what: Model would contain details about the hypervisor')
