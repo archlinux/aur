@@ -2,7 +2,7 @@
 
 pkgname=openra-gen-git
 _pkgname=${pkgname/-git}
-pkgver=1168.git.47f59fc
+pkgver=1169.git.6267bbf
 pkgrel=1
 pkgdesc="A mod of OpenRA based on Command & Conquer: Generals"
 arch=('any')
