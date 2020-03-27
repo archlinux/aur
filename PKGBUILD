@@ -9,8 +9,8 @@
 
 _pkgname=audacious
 pkgname="$_pkgname-git"
-_pkgver=4.0
-pkgver=4.0.r8945.d17897dc4
+_pkgver=4.1
+pkgver=4.1.r9041.ef184ee52
 pkgrel=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality"
 arch=('i686' 'x86_64')
@@ -26,12 +26,12 @@ source=("git://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
 
   autoreconf -I m4
   ./configure \
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
