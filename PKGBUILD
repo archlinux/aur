@@ -1,25 +1,25 @@
 # Maintainer: Your Name <nguyenhongky1998@gmail.com>
 pkgname=stm32pio
-pkgver=0.96
+pkgver=1.0
 pkgrel=1
 #epoch=
 pkgdesc="Automate managing STM32CubeMX + PlatformIO projects" 
-arch=(x86_64)
-url="https://github.com/kynguyen98/stm32pio"
+arch=('any')
+url="https://github.com/kynguyen98/stm32pio/"
 license=('MIT')
 #groups=()
-depends=(python-pip python jre-openjdk)
+depends=(python-pip python jre8-openjdk)
 makedepends=(git python-pip)
-checkdepends=()
+#checkdepends=()
 optdepends=('code: for text editing')
-provides=(stm32pio)
-conflicts=()
-replaces=()
-backup=()
-options=()
+#provides=(stm32pio)
+#conflicts=()
+#replaces=()
+#backup=()
+#options=()
 #install=
 #changelog=
-source=("git+$url")
+source=("https://github.com/kynguyen98/stm32pio/archive/v${pkgver}.tar.gz")
 #("$pkgname-$pkgver.tar.gz""$pkgname-$pkgver.patch")
 #noextract=()
 md5sums=('SKIP')
@@ -42,6 +42,7 @@ md5sums=('SKIP')
 #}
 
 package() {
-	cd "$pkgname"
-	make DESTDIR="$pkgdir/" install
+	cd "$srcdir/$pgkver"
+#	make DESTDIR="$pkgdir/" install
+    make install --root="$pkgdir/" --optimize=1
 }
