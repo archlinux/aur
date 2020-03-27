@@ -1,15 +1,15 @@
 pkgbase = bit4id-ipki
 	pkgdesc = Bit4ID Universal Middleware (Smart Card driver)
-	pkgver = 1.4.3.303
-	pkgrel = 2
+	pkgver = 1.4.10.542
+	pkgrel = 1
 	url = http://www.bit4id.com/
 	install = bit4id-ipki.install
 	arch = i686
 	arch = x86_64
 	license = unknown
 	options = !strip
-	source = http://repository.infonotary.com/install/linux/DEBS/pool/non-free/b/bit4id-ipki/bit4id-ipki_1.4.3.303-2_amd64.deb
-	md5sums = 7c789da30a0e0f59ff7f888be2fdbe99
+	source = http://repository.infonotary.com/install/linux/DEBS/pool/non-free/b/bit4id-ipki/bit4id-ipki_1.4.10.542-1_amd64.deb
+	md5sums = 8ba2c1136d1b5cf005abf72e378d635a
 
 pkgname = bit4id-ipki
 

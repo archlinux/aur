@@ -1,8 +1,8 @@
 # Maintainer: Slavi Pantaleev <slavi at devture.com>
 
 pkgname=bit4id-ipki
-pkgver=1.4.3.303
-pkgrel=2
+pkgver=1.4.10.542
+pkgrel=1
 pkgdesc="Bit4ID Universal Middleware (Smart Card driver)"
 arch=('i686' 'x86_64')
 license=('unknown')
@@ -10,15 +10,10 @@ url="http://www.bit4id.com/"
 install=$pkgname.install
 options=('!strip')
 
-if [ "${CARCH}" = 'x86_64' ]; then
-	ARCH='amd64'
-	md5sums=('7c789da30a0e0f59ff7f888be2fdbe99')
-else
-	ARCH='i386'
-	md5sums=('08d5823936d9d232523adb05b4819b0e')
-fi
+ARCH='amd64'
+md5sums=('8ba2c1136d1b5cf005abf72e378d635a')
 
-_file_name=$pkgname'_'$pkgver'-2_'$ARCH'.deb'
+_file_name=$pkgname'_'$pkgver'-1_'$ARCH'.deb'
 source=('http://repository.infonotary.com/install/linux/DEBS/pool/non-free/b/bit4id-ipki/'$_file_name)
 
 package() {
