@@ -2,6 +2,7 @@ pkgbase = hikari
 	pkgdesc = Stacking Wayland compositor with additional tiling capabilities, heavily inspired by the Calm Window manager (cwm)
 	pkgver = 1.0.0
 	pkgrel = 1
+	epoch = 1
 	url = https://hikari.acmelabs.space
 	arch = x86_64
 	license = custom
