@@ -1,11 +1,10 @@
 pkgbase = birdfont
-	pkgdesc = A free font editor that lets you create vector graphics and export TTF, EOT & SVG fonts
+	pkgdesc = A font editor which can generate fonts in TTF, EOT, SVG and BIRDFONT format
 	pkgver = 2.28.0
-	pkgrel = 1
-	url = https://birdfont.org/
-	install = birdfont.install
-	arch = i686
+	pkgrel = 2
+	url = https://birdfont.org
 	arch = x86_64
+	arch = i686
 	license = GPL3
 	makedepends = vala
 	makedepends = gettext
@@ -17,8 +16,8 @@ pkgbase = birdfont
 	source = https://birdfont.org/releases/birdfont-2.28.0.tar.xz
 	source = https://birdfont.org/releases/birdfont-2.28.0.tar.xz.sig
 	validpgpkeys = FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4
-	sha512sums = 2ec9debb79245e02ba7820c75c6eac42b3968ad744db17bae2f9bfe14d7d47cccf3fa834612814be3ce809601b370dc65b68f060781ec6517fa59e358b606193
-	sha512sums = SKIP
+	sha256sums = 3fbb1bf7c735e4d67442ee5740e2e0ed29cb5ce56508c0c96d2599f8ece727a6
+	sha256sums = SKIP
 
 pkgname = birdfont
 
