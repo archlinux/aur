@@ -1,6 +1,6 @@
 # Maintainer: mexus <gilaldpellaeon@gmail.com>
 pkgname=dua-cli-bin
-pkgver=2.1.13
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="A tool to conveniently learn about the disk usage of directories, fast!"
 provides=("dua-cli")
@@ -11,12 +11,12 @@ license=('MIT')
 depends=()
 makedepends=()
 source=(
-    "https://github.com/Byron/dua-cli/releases/download/${pkgver}/dua-${pkgver}-x86_64-unknown-linux-musl.tar.gz"
-    "https://github.com/Byron/dua-cli/archive/${pkgver}.tar.gz"
+    "https://github.com/Byron/dua-cli/releases/download/v${pkgver}/dua-v${pkgver}-x86_64-unknown-linux-musl.tar.gz"
+    "https://github.com/Byron/dua-cli/archive/v${pkgver}.tar.gz"
 )
 md5sums=(
-    '71fd506ea2a8d347d1bfb1ed78b96e03'
-    '83c852636cfaaa64f19f5a2ee0ac8c6d'
+    'c95ac4146d5888ed7ff593ed9612c8f5'
+    'ac49a90e54b40b19ee74b182a7e563c7'
 )
 
 package() {
