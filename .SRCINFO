@@ -1,0 +1,13 @@
+pkgbase = music-theory
+	pkgdesc = Go models of Note, Scale, Chord and Key
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/go-music-theory/music-theory
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	source = music-theory-0.0.4.tar.gz::https://github.com/go-music-theory/music-theory/archive/v0.0.4.tar.gz
+	md5sums = 7905c967dec9387bae39ef3b7784ea65
+
+pkgname = music-theory
+
