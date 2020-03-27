@@ -1,8 +1,9 @@
-# Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
+# Maintainer: Fernando Ortiz <nandub+arch@nandub.info >
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=pod2man
-pkgver=5.28.1
-pkgrel=2
+pkgver=5.30.2
+pkgrel=1
 pkgdesc='Make pod2man easily accessible'
 arch=(x86_64)
 license=(GPL PerlArtistic)
