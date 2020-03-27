@@ -2,9 +2,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=afdko
-pkgver=3.2.0
-pkgrel=3
-pkgdesc='Tools used by Adobe font developers for wrapping up PostScript fonts as OpenType/CFF font files'
+pkgver=3.2.1
+pkgrel=1
+pkgdesc='Adobe Font Development Kit for OpenType'
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/$pkgname"
 license=('custom')
@@ -13,8 +13,8 @@ _py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens'
 depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
-source=("https://github.com/adobe-type-tools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('eab4a8f8826261d35a2752b01ad4f7d101aec18fb407b9ac42aca16a1e27bec4')
+source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('6525fdb2745428f6cf61ef14e82cfbf9252b821ac8a90f9ad32ce96e6211d218')
 
 prepare () {
     cd "$pkgname-$pkgver"
@@ -34,5 +34,5 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     python setup.py -q install --root="$pkgdir" --optimize=1 --skip-build
-    install -Dm644  -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
+    install -Dm644  -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
 }
