@@ -2,33 +2,43 @@
 
 pkgname=zathura-djvu-git
 pkgrel=1
-pkgver=0.2.4.3.g9d09a48
+pkgver=0.2.9.2.g12ef085
 pkgdesc="DjVu support for zathura"
 arch=('i686' 'x86_64')
 url="http://pwmt.org/projects/zathura/plugins/zathura-djvu"
 license=('custom')
 depends=('zathura-git' 'djvulibre')
-makedepends=('git')
+makedepends=('git' 'python-sphinx' 'intltool' 'meson')
+checkdepends=('check')
 conflicts=('zathura-djvu')
 provides=('zathura-djvu')
 source=('zathura-djvu::git+https://git.pwmt.org/pwmt/zathura-djvu.git#branch=develop')
 md5sums=('SKIP')
 _gitname=zathura-djvu
 
+prepare() {
+  mkdir -p build
+}
+
 build() {
-  cd "$srcdir/$_gitname"
-  make
+  cd build
+  meson --prefix=/usr --buildtype=release $srcdir/$_gitname
+  ninja
+}
+
+check() {
+  cd build
+  ninja test
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install
-  install -D -m664 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd build
+  DESTDIR="$pkgdir/" ninja install
 }
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  local ver="$(git describe --long --always)"
+  cd "$_gitname"
+  local ver="$(git describe --long)"
   printf "%s" "${ver//-/.}"
 }
 

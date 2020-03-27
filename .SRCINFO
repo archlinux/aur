@@ -1,12 +1,16 @@
 pkgbase = zathura-djvu-git
 	pkgdesc = DjVu support for zathura
-	pkgver = 0.2.2.3.gf64f3ff
+	pkgver = 0.2.9.2.g12ef085
 	pkgrel = 1
 	url = http://pwmt.org/projects/zathura/plugins/zathura-djvu
 	arch = i686
 	arch = x86_64
 	license = custom
+	checkdepends = check
 	makedepends = git
+	makedepends = python-sphinx
+	makedepends = intltool
+	makedepends = meson
 	depends = zathura-git
 	depends = djvulibre
 	provides = zathura-djvu
