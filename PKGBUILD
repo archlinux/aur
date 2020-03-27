@@ -26,6 +26,7 @@ package() {
   cd "$pkgname"
   npm install -g --prefix "$pkgdir"/usr --user root --unsafe-perm --production
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  chmod -R 755 "$pkgdir"/usr/bin
   #HACK: npm is being lame and only installing a symlink =/
   rm "$pkgdir/usr/lib/node_modules/hsd"
   find * -exec install -D -m644 "{}" "$pkgdir/usr/lib/node_modules/hsd/{}" \;
