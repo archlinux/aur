@@ -11,7 +11,12 @@ pkgdesc="Internal communication framework and user/group management for seafile 
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/haiwen/$pkgname"
 license=('GPL2')
-depends=('libevent' 'libsearpc' 'libldap' 'mariadb-libs' 'postgresql-libs')
+depends=(
+    'libevent'
+    'libsearpc'
+    'libldap'
+    'mariadb-libs'
+)
 makedepends=('vala')
 conflicts=('ccnet')
 provides=('ccnet')
