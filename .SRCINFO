@@ -1,7 +1,7 @@
 pkgbase = surfn-icons-git
 	pkgdesc = Surfn is a colourful icon theme.
 	pkgver = 20.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/erikdubois/Surfn
 	arch = any
 	license = Attribution-NonCommercial-ShareAlike 4.0 International Public License
