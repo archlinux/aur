@@ -1,14 +1,14 @@
 pkgbase = level-zero
 	pkgdesc = API for accessing low level interfaces in oneAPI platform devices
-	pkgver = 0.91
-	pkgrel = 2
+	pkgver = 0.91.10
+	pkgrel = 1
 	url = https://spec.oneapi.com/versions/latest/elements/l0/source/index.html
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = opencl-headers
-	source = level-zero-0.91.tar.gz::https://github.com/oneapi-src/level-zero/archive/v0.91.tar.gz
-	sha256sums = 48f3dc7356f8937605ab2af99b127d5337ae3a4b685301bb303000dcfdb8555d
+	source = level-zero-0.91.10.tar.gz::https://github.com/oneapi-src/level-zero/archive/v0.91.10.tar.gz
+	sha256sums = 9193d8cc57cd63f9b0f44bbc51c9d099c6e899781edb33f9869a850865c64d3d
 
 pkgname = level-zero-headers
 	pkgdesc = oneAPI Level Zero header files

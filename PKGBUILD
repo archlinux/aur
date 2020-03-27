@@ -2,15 +2,15 @@
 
 pkgbase=level-zero
 pkgname=('level-zero-headers' 'level-zero-loader')
-pkgver=0.91
-pkgrel=2
+pkgver=0.91.10
+pkgrel=1
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices'
 arch=('x86_64')
 url='https://spec.oneapi.com/versions/latest/elements/l0/source/index.html'
 license=('MIT')
 makedepends=('cmake' 'opencl-headers')
 source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/level-zero/archive/v${pkgver}.tar.gz")
-sha256sums=('48f3dc7356f8937605ab2af99b127d5337ae3a4b685301bb303000dcfdb8555d')
+sha256sums=('9193d8cc57cd63f9b0f44bbc51c9d099c6e899781edb33f9869a850865c64d3d')
 
 prepare() {
     printf '%s\n' '0' > "${pkgbase}-${pkgver}/VERSION_PATCH"
@@ -31,13 +31,11 @@ package_level-zero-headers() {
     arch=('any')
     
     make -C build DESTDIR="$pkgdir" install
+    install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # remove loader files
-    [ -d 'loader' ] && rm -rf loader
-    mkdir -p loader
+    [ -d 'usr' ] && rm -rf usr
     mv "${pkgdir}/usr/lib" loader
-    
-    install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 package_level-zero-loader() {
@@ -46,7 +44,6 @@ package_level-zero-loader() {
     #optdepends=('level-zero-gpu-driver: for packaged Level Zero GPU driver') # no package provides this yet
     
     mkdir -p "${pkgdir}/usr"
-    mv loader/lib "${pkgdir}/usr"
-    
+    mv loader "${pkgdir}/usr/lib"
     install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
