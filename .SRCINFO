@@ -1,7 +1,7 @@
 pkgbase = amdvlk-bin
 	pkgdesc = Open-source Vulkan driver for AMD Radeon™ graphics adapters (Stable DEB Release)
-	pkgver = 2020.Q1.3
-	pkgrel = 2
+	pkgver = 2020.Q1.4
+	pkgrel = 1
 	url = https://github.com/GPUOpen-Drivers/AMDVLK
 	arch = x86_64
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = amdvlk-bin
 	provides = vulkan-driver
 	conflicts = amdvlk
 	conflicts = amdvlk-git
-	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2020.Q1.3/amdvlk_2020.Q1.3_amd64.deb
-	sha256sums = 518093bdddb6f5f91558d31ba07c01051f3ac5158a5a1eaa4bf4a3a478fe0628
+	source = https://github.com/GPUOpen-Drivers/AMDVLK/releases/download/v-2020.Q1.4/amdvlk_2020.Q1.4_amd64.deb
+	sha256sums = 2a61806c2563222617047d7392be30a320e3a0ab8832cfacb15011fc4dd1031b
 
 pkgname = amdvlk-bin
 
