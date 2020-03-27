@@ -9,6 +9,7 @@ arch=('any')
 depends=('fzf' 'zsh')
 makedepends=('go')
 provides=("${_pkgname}")
+conflicts=("${_pkgname}-bin" "${_pkgname}")
 url="https://github.com/relastle/pmy"
 license=('MIT')
 source=("${_pkgname}::git+https://github.com/relastle/pmy#branch=master")

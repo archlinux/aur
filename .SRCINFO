@@ -9,6 +9,8 @@ pkgbase = pmy-git
 	depends = fzf
 	depends = zsh
 	provides = pmy
+	conflicts = pmy-bin
+	conflicts = pmy
 	source = pmy::git+https://github.com/relastle/pmy#branch=master
 	sha256sums = SKIP
 
