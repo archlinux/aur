@@ -3,7 +3,7 @@
 pkgname=nhiicc
 # XXX: Upstream does not provide a version string :/
 pkgver=20200319
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url='https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm'
 license=(custom)
@@ -17,7 +17,7 @@ source=("https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mLNHIICC_Setup.Ubuntu.
         nhiicc.service)
 # See https://cloudicweb.nhi.gov.tw/cloudic/system/SMC/mEventesting.htm for MD5 sums
 md5sums=('52eacb7ca2b4d0a5a869df01079bf4d6'
-         'f1de9682400ca990b34cfa8ae13d9131')
+         '9adafe804b874aa96e236d4a4cd91645')
 install=nhiicc.install
 
 prepare() {
@@ -26,9 +26,9 @@ prepare() {
 
 package() {
   # XXX: upstream binary appears to hard-code /usr/local/share/NHIICC :/
-  install -Ddm755 "$pkgdir"/usr/local/share/NHIICC
-  install -Dm755 mLNHIICC_Setup/x64/mLNHIICC -t "$pkgdir"/usr/local/share/NHIICC/
-  cp -dr --no-preserve=ownership mLNHIICC_Setup/{cert,html} "$pkgdir"/usr/local/share/NHIICC/
+  install -Ddm755 "$pkgdir"/usr/{bin,share/NHIICC}
+  install -Dm755 mLNHIICC_Setup/x64/mLNHIICC -t "$pkgdir"/usr/bin
+  cp -dr --no-preserve=ownership mLNHIICC_Setup/{cert,html} "$pkgdir"/usr/share/NHIICC/
   find "$pkgdir" \( -name '*~' -or -name '._*' \) -delete
 
   install -Ddm755 "$pkgdir"/usr/lib/systemd/system
