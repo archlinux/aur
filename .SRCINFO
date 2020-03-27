@@ -1,8 +1,8 @@
 pkgbase = guiscrcpy-git
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
-	pkgver = 3.0.r14.g216940e
+	pkgver = 3.3.1.r0.ga907e87
 	pkgrel = 1
-	url = https://srevinsaju.github.io/guiscrcpy
+	url = https://guiscrcpy.github.io
 	arch = any
 	license = GPL3
 	makedepends = git

@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy-git
-pkgver=3.0.r14.g216940e
+pkgver=3.3.1.r0.ga907e87
 pkgrel=1
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
-url="https://srevinsaju.github.io/guiscrcpy"
+url="https://guiscrcpy.github.io"
 license=('GPL3')
 depends=('scrcpy' 'python-gitpython' 'python-pyqt5' 'python-psutil' 'python-pynput')
 makedepends=('git' 'python-setuptools')
