@@ -1,0 +1,18 @@
+pkgbase = flowgger-git
+	pkgdesc = A fast data collector in Rust
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/awslabs/flowgger
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = snappy
+	makedepends = capnproto
+	provides = flowgger
+	source = git+https://github.com/awslabs/flowgger
+	md5sums = SKIP
+
+pkgname = flowgger-git
+
