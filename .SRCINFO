@@ -1,12 +1,11 @@
 pkgbase = chibios
 	pkgdesc = ChibiOS - free embedded RTOS
-	pkgver = 19.1.2
+	pkgver = 20.3.0
 	pkgrel = 1
 	url = http://chibios.org
 	arch = any
 	license = GPL
-	source = https://osdn.net/frs/redir.php?m=cznic&f=chibios%2F70739%2FChibiOS_19.1.2.7z
-	sha256sums = 05213876838ddd999582ae325f337f607a0db684ca277a81d7edada0a0b3adb8
+	source = https://osdn.net/projects/chibios/downloads/72607/ChibiOS_20.3.0.7z
 
 pkgname = chibios
 
