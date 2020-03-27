@@ -22,7 +22,7 @@ sha512sums_aarch64=('ceeea4f5590dab0ccc8f016f61db72515bfe1b0d2308a1065696ec65408
 sha512sums_x86_64=('22acd337c1f837c586b9d0e3581feeba828c7d6dc64e4c6c9b24bdc6159c635eb7019c3fb0534edeb4f84971e9c3584c7e3a4d80854cf5664d2792ee8fde189b')
 
 package_dotnet-runtime-3.0() {
-  pkgdesc='The .NET Core runtime (binary)'
+  pkgdesc='The .NET Core runtime (binary) - End-of-life'
   depends=('dotnet-host' 'icu' 'krb5' 'libunwind' 'openssl' 'zlib'
            'libcurl.so')
   optdepends=('lttng-ust: CoreCLR tracing')
@@ -35,7 +35,7 @@ package_dotnet-runtime-3.0() {
 }
 
 package_aspnet-runtime-3.0() {
-  pkgdesc='The ASP.NET Core runtime (binary)'
+  pkgdesc='The ASP.NET Core runtime (binary) - End-of-life'
   depends=('dotnet-runtime-3.0')
   provides=("aspnet-runtime-3.0" "aspnet-runtime=${pkgver}")
   conflicts=("aspnet-runtime-3.0")
@@ -46,7 +46,7 @@ package_aspnet-runtime-3.0() {
 }
 
 package_dotnet-sdk-3.0() {
-  pkgdesc='The .NET Core SDK (binary)'
+  pkgdesc='The .NET Core SDK (binary) - End-of-life'
   depends=('dotnet-runtime-3.0')
   provides=("dotnet-sdk-3.0" "dotnet-sdk=${pkgver}")
   conflicts=("dotnet-sdk-3.0" "dotnet-sdk>=3")
