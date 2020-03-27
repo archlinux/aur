@@ -57,7 +57,8 @@ package() {
     cd $srcdir/Generals-Alpha
     mkdir -p $pkgdir/usr/{lib/${_pkgname}/mods,bin,share/pixmaps,share/doc/packages/${_pkgname},share/applications,share/appdata}
     install -dm775 $pkgdir/var/games/${_pkgname}
-    cp -r generals-alpha-engine/{glsl,lua,AUTHORS,COPYING,*.dll*,GeoLite2-Country.mmdb.gz,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/${_pkgname}
+    cp $srcdir/GeoLite2-Country.mmdb.gz $pkgdir/usr/lib/${_pkgname}
+    cp -r generals-alpha-engine/{glsl,lua,AUTHORS,COPYING,*.dll*,'global mix database.dat',launch-dedicated.sh,launch-game.sh,*.exe,VERSION} $pkgdir/usr/lib/${_pkgname}
     cp -r mods/gen $pkgdir/usr/lib/${_pkgname}/mods
     cp -r generals-alpha-engine/mods/{common,modcontent} $pkgdir/usr/lib/${_pkgname}/mods
     install -Dm755 $srcdir/${_pkgname} $pkgdir/usr/bin/${_pkgname}
