@@ -1,13 +1,13 @@
 pkgbase = rocr-runtime
 	pkgdesc = ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/ROCR-Runtime
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
 	makedepends = libelf
-	makedepends = roct-thunk-interface
+	makedepends = hsakmt-roct
 	source = https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/roc-3.1.0.tar.gz
 	sha256sums = b162464ef87ce39518e59ef8406d6b897aa7a930795c586829614ed87aa1c2ce
 
