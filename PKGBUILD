@@ -1,7 +1,7 @@
 # Maintainer: levinit <levinit at outlook>
 
 pkgname=mockingbot
-pkgver=0.7.6
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="A prototyping & collaboration tool.墨刀/modao/MockingBot"
 arch=('x86_64')
