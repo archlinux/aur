@@ -1,0 +1,16 @@
+pkgbase = php73-memcached
+	pkgdesc = PHP extension for interfacing with memcached via libmemcached library
+	pkgver = 3.1.5
+	pkgrel = 1
+	url = https://github.com/php-memcached-dev/php-memcached
+	arch = x86_64
+	license = PHP
+	makedepends = git
+	depends = php73
+	depends = libmemcached
+	backup = etc/php73/conf.d/memcached.ini
+	source = git+https://github.com/php-memcached-dev/php-memcached.git#tag=v3.1.5
+	sha256sums = SKIP
+
+pkgname = php73-memcached
+
