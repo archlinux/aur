@@ -18,6 +18,6 @@ package() {
     install -d ${pkgdir}/usr/bin
     cp -rfpv ${srcdir}/* ${pkgdir}/usr/share/${pkgname}
     cd ${pkgdir}/usr/bin
-    printf "#! /usr/bin/bash \n cd ../share/${pkgname}/bin \n java -jar ${appname}.jar" > triplea 
+    printf "#! /usr/bin/bash \n cd /usr/share/${pkgname}/bin \n java -jar ${appname}.jar" > triplea 
     chmod +x triplea
 }
