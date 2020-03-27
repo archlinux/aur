@@ -1,0 +1,12 @@
+pkgbase = python-flask-gzip
+	pkgdesc = Compress responses in your Flask app with gzip.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/closeio/flask-gzip
+	arch = any
+	license = BSD
+	makedepends = python
+	makedepends = python-pip
+
+pkgname = python-flask-gzip
+
