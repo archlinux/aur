@@ -1,7 +1,7 @@
 post_install() {
-    systemctl enable saved-kernel-modules.timer
+  systemctl enable saved-kernel-modules.timer
 }
 
 pre_remove() {
-	systemctl disable saved-kernel-modules.timer
+  systemctl disable saved-kernel-modules.timer
 }

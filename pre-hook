@@ -8,10 +8,15 @@ cd /usr/lib/modules/saved-kernel-modules
 
 running_kernel=$(uname -r)
 
+# remove symlink if it exists as a precaution
+if [ -L /usr/lib/modules/"$running_kernel" ] ; then
+    rm -f /usr/lib/modules/"$running_kernel"
+fi
+
 # is it already saved?
-if [ -e modules/$running_kernel ] ; then
+if [ -e modules/"$running_kernel" ] ; then
     exit 0
 fi
 
 # copy with hardlinks, much faster
-cp --archive --link /usr/lib/modules/$running_kernel modules/
+cp --archive --link /usr/lib/modules/"$running_kernel" modules/
