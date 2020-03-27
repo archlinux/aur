@@ -8,7 +8,7 @@ arch=(x86_64)
 url="https://github.com/kynguyen98/stm32pio"
 license=('MIT')
 #groups=()
-depends=(python-pip platformio python jre-openjdk stm32cubemx)
+depends=(python-pip python jre-openjdk)
 makedepends=(git python-pip)
 checkdepends=()
 optdepends=('code: for text editing')
@@ -22,7 +22,7 @@ options=()
 source=("git+$url")
 #("$pkgname-$pkgver.tar.gz""$pkgname-$pkgver.patch")
 #noextract=()
-md5sums=('4f6f9a8e8f8c7909deac4015dc9c2f50')
+md5sums=('SKIP')
 #validpgpkeys=()
 
 #prepare() {
