@@ -1,6 +1,6 @@
 pkgbase = level-zero-git
 	pkgdesc = API for accessing low level interfaces in oneAPI platform devices (git version)
-	pkgver = 0.91.r1.gbe749e1
+	pkgver = 0.91.10.r0.gebb363e
 	pkgrel = 1
 	url = https://spec.oneapi.com/versions/latest/elements/l0/source/index.html
 	arch = x86_64
