@@ -1,5 +1,5 @@
 pkgname=mingw-w64-agrum
-pkgver=0.17.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="C++ Bayesian networks library (mingw-w64)"
 license=('LGPL')
@@ -9,7 +9,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
 source=("https://gitlab.com/agrumery/aGrUM/-/archive/${pkgver}/aGrUM-${pkgver}.tar.bz2")
-sha256sums=('a6f14e9ad08b6123c316cf8b8e1bedc747c481a7ff15f92037b56c072aa3739b')
+sha256sums=('0eb7f181a1c6535552c310e56f90644acde54dd9de2256f63cb0f7a51e744c4a')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,7 +21,7 @@ build() {
   cd aGrUM-$pkgver
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DBUILD_PYTHON=OFF ..
+    ${_arch}-cmake ..
     make
     popd
   done
