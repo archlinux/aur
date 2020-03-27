@@ -1,7 +1,7 @@
-# Maintainer: Chris Simons < chris at simonsmail dot net >
+# Maintainer: soredake fdsfgs@krutt.org
 
 pkgname=("protonfixes-updated-git")
-pkgver=r235.6ea9df5
+pkgver=r236.6ea9df5
 pkgrel=1
 pkgdesc="A module for applying fixes at runtime to unsupported games with Steam Proton without changing game installation files"
 arch=("any")
@@ -10,7 +10,8 @@ license=("BSD")
 makedepends=("python-setuptools")
 optdepends=('wine: win32 proton prefix support'
             'winetricks: winetricks support'
-            'python-cef: splash dialog support'
+            'python-kivy: kivy dialog support'
+            'kdialog: kdialog dialog support'
             'zenity: splash dialog support')
 source=("${pkgname}::git+https://github.com/simons-public/protonfixes#branch=master")
 md5sums=('SKIP')
