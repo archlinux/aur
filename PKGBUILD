@@ -4,9 +4,9 @@
 _target=riscv32-elf
 pkgname=$_target-newlib
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 _upstream_ver=$pkgver
-pkgdesc='A C standard library implementation intended for use on embedded systems (OpenRISC 1000 bare metal)'
+pkgdesc='A C standard library implementation intended for use on embedded systems (RISCV32 bare metal)'
 arch=(any)
 url='https://www.sourceware.org/newlib/'
 license=(BSD)
