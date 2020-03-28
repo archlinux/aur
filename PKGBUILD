@@ -9,10 +9,9 @@ pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton')
-depends=('python')
-optdepends=('winetricks: protonfixes backend'
-            'wine-staging: 32bit prefixes'
-            'python-cef: splash dialog support'
+depends=('python'
+         'winetricks')
+optdepends=('python-cef: splash dialog support'
             'zenity: splash dialog support'
             'steam: use proton with steam like intended')
 
