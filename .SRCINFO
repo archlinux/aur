@@ -15,14 +15,11 @@ pkgbase = diorite-git
 	depends = sqlite
 	depends = libx11
 	depends = gobject-introspection
-	provides = diorite=4.16.0
+	provides = diorite
 	provides = libdioritegtk4.so-64
 	provides = libdioriteglib4.so-64
 	provides = libdioritedb4.so-64
 	conflicts = diorite
-	conflicts = libdioritegtk4
-	conflicts = libdioriteglib4
-	conflicts = libdioritedb4
 	source = git+https://github.com/tiliado/diorite.git
 	sha256sums = SKIP
 
