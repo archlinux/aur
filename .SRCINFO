@@ -1,0 +1,29 @@
+pkgbase = dwm-jfchevrette
+	pkgdesc = A dynamic window manager for X
+	pkgver = 6.2
+	pkgrel = 1
+	url = http://dwm.suckless.org
+	install = dwm.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	depends = freetype2
+	depends = st
+	depends = dmenu
+	provides = dwm
+	conflicts = dwm
+	options = zipman
+	source = http://dl.suckless.org/dwm/dwm-6.2.tar.gz
+	source = config.h
+	source = dwm.desktop
+	source = dwm-attachaside-6.1.diff
+	sha256sums = 97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e
+	sha256sums = ce156c4ff6be6f664f5c1eb41e8ae8228c15d0282410be3ecdd58598bb8867d2
+	sha256sums = bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81
+	sha256sums = 86bdb4291c0f8f9b0c6fbbac9f05403224872b786fc5e74f3b141c8f2ce6c7a1
+
+pkgname = dwm-jfchevrette
+
