@@ -5,13 +5,14 @@
 
 pkgname=brother-dcp-l2500d
 pkgver=3.2.0_1
-pkgrel=2
+pkgrel=3
 pkgdesc='LPR and CUPS driver for the Brother DCP-L2500D'
 arch=('i686' 'x86_64')
 url='http://solutions.brother.com/linux'
 license=('GPL2' 'custom:Brother EULA')
 depends=('cups')
 depends_x86_64=('lib32-glibc')
+optdepends=('brscan4: scanner support.')
 source=("http://download.brother.com/welcome/dlf101753/dcpl2500dlpr-${pkgver/_/-}.i386.rpm"
 	"http://download.brother.com/welcome/dlf101754/dcpl2500dcupswrapper-${pkgver/_/-}.i386.rpm"
 	'basedir.patch'
