@@ -3,8 +3,8 @@
 # Contributor: xantares
 pkgname=python-pyautogui
 _name=PyAutoGUI
-pkgver=0.9.48
-pkgrel=2
+pkgver=0.9.49
+pkgrel=1
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
 url="https://github.com/asweigart/pyautogui"
@@ -13,7 +13,7 @@ depends=('python-pymsgbox' 'python-pyscreeze' 'python-pytweening' 'python-mousei
           # 'python-pygetwindow' - Not compatible with Linux yet
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('e91a25c1cdf826e7d0581775b5fbe47f7e12af79e0eb9dc3e1488ba99f2e0c60')
+sha256sums=('2c9182e6eb73a764a60e3d7c8d1877f3b470ceffacb84d70f6569e219a2fc5c5')
 
 build() {
 	cd "$_name-$pkgver"
