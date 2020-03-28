@@ -1,6 +1,6 @@
 pkgbase = seahorse-git
 	pkgdesc = GNOME application for managing encryption keys and passwords in the GNOME Keyring.
-	pkgver = 3.32+94+gf4c3086b
+	pkgver = 3.36+3+g91493c26
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Seahorse
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = seahorse-git
 	depends = gpgme
 	depends = gnome-keyring
 	depends = libpwquality
+	depends = libhandy
 	provides = x11-ssh-askpass
 	conflicts = seahorse
 	options = debug

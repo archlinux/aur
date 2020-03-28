@@ -5,7 +5,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Michel Brabants <michel.linux@tiscali.be>
 pkgname=seahorse-git
-pkgver=3.32+94+gf4c3086b
+pkgver=3.36+3+g91493c26
 pkgrel=1
 pkgdesc="GNOME application for managing encryption keys and passwords in the
 GNOME Keyring."
@@ -13,7 +13,7 @@ url="https://wiki.gnome.org/Apps/Seahorse"
 arch=(x86_64)
 license=(GPL)
 options=(debug !strip)
-depends=(gtk3 gcr libsecret libsoup gpgme gnome-keyring libpwquality)
+depends=(gtk3 gcr libsecret libsoup gpgme gnome-keyring libpwquality libhandy)
 conflicts=('seahorse')
 provides=('seahorse')
 makedepends=(libldap yelp-tools gobject-introspection vala git meson)
