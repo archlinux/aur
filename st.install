@@ -1,0 +1,4 @@
+post_install() {
+  echo "-- Edit config.h in st's PKGBUILD directory (generally /var/abs/community/st/)"
+  echo "-- and rebuild package if you want to change settings."
+}
