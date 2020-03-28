@@ -15,9 +15,15 @@ depends=('nodejs')
 sha256sums=('465d85678531ada99de2a2cb75cf1a8a7e08b5e4729e78b1e244982835a783c7')
 
 package() {
-  npm install -g --production --prefix "$pkgdir/usr" "truffle-${pkgver}.tgz"
-  tar -xf "truffle-${pkgver}.tgz" package/LICENSE
-  install -D -m644 package/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  chmod -R 755 "${pkgdir}/usr/lib/node_modules/truffle/node_modules/"
-  chmod 755 "${pkgdir}/usr/bin"
+    npm install -g --production --prefix "$pkgdir/usr" "truffle-${pkgver}.tgz"
+    tar -xf "truffle-${pkgver}.tgz" package/LICENSE
+    install -D -m644 package/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # -> https://wiki.archlinux.org/index.php/Node.js_package_guidelines
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "$pkgdir"
 }
