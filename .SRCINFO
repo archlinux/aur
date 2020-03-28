@@ -1,0 +1,15 @@
+pkgbase = linux-firmware-korbi-para-git
+	pkgdesc = Firmware for korbi's workstation
+	pkgver = 20200328.1
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	license = GPL3
+	license = custom
+	makedepends = git
+	options = !strip
+	source = linux-firmware-korbi-para-git::git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+	md5sums = SKIP
+
+pkgname = linux-firmware-korbi-para-git
+
