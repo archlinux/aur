@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('x86_64')
 url="https://www.cmake.org/"
@@ -17,7 +17,7 @@ sha512sums=('f09440681e0c414f5ca669f3aeba6666d09e0642f30a2e12c3199e7fb3da95a7dd1
 
 build() {
   cd ${pkgname}-${pkgver}
-
+  export CXXFLAGS+=" ${CPPFLAGS}"
   ./bootstrap --prefix=/usr \
     --mandir=/share/man \
     --docdir=/share/doc/cmake \
