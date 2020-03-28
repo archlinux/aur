@@ -1,11 +1,11 @@
 pkgbase = conky-bargile
-	pkgdesc = Yet another conky-lua theme, this one includes some kind of an engine
+	pkgdesc = Yet another conky-lua theme, this one includes some kind of an engine - please use a conky with cairo and lua support
 	pkgver = 0.1a
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/Noeljunior/conky-bargile
 	arch = any
 	license = GPL
-	depends = conky-cairo-no-nvidia
+	depends = conky
 	depends = lm_sensors
 	depends = hddtemp
 	depends = git
