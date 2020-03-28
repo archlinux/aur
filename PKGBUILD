@@ -10,7 +10,7 @@ pkgrel=2
 url="https://github.com/FernetMenta/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
-pkgdesc="VDR plugin to handle XBMC clients"
+pkgdesc="VDR plugin to handle Kodi clients"
 depends=('gcc-libs' "vdr-api=${_vdrapi}")
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
