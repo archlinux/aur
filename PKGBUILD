@@ -1,7 +1,7 @@
 # Maintainer: Jaime Martínez Rincón <jaime(at)jamezrin(dot)name>
 
 pkgname=httptoolkit
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1.2
 epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
