@@ -19,7 +19,8 @@ optdepends=('kdialog: KDE splash dialog support'
             'steam: use proton with steam like intended'
             'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
             'vulkan-driver: actually have a vulkan driver installed'
-            'linux-fsync: a kernel with futex-wait-multiple support')
+            'linux-fsync: a kernel with futex-wait-multiple support'
+            'xboxdrv: gamepad driver service needed for Warframe')
 
 ## makepkg options
 options=('!strip')
@@ -30,19 +31,21 @@ _pkgver=${pkgver//_/-}
 _srcdir=Proton-${_pkgver}
 
 ## paths and files
-_protondir=usr/share/steam/compatibilitytools.d/${_pkgver}
+_protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
 _licensedir=usr/share/licenses/${_pkgname}
-_pfxdir=var/games/pfx_${_pkgver}
+_pfxdir=var/games/pfx_${_pkgname}
 _execfile=usr/local/bin/proton
-#_configfile=usr/local/etc/proton/user_settings.py
-#backup=("${_configfile}")
+_protoncfg=${_protondir}/user_settings.py
+
+## user edited files to backup
+backup=("${_protoncfg}")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
 md5sums=('3cee50f910829928a4ce2567fe9a6d30'
-         '2f16f968d5a81eede5feb1b07b2d481f')
+         '3ae457f1acc34660244975884b2e0f68')
 
 prepare() {
 ## unpack wine
@@ -55,7 +58,6 @@ build() {
 ## remove unused: dist_lock, extract_tarball(), make_default_prefix()
 patch ${_srcdir}/proton patches/distlock-extract-defaultpfx.patch
 ## setup paths
-#sed -i "s|self.path(\"user_settings.py\")|\"/${_configfile}\"|" ${_srcdir}/proton
 sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" ${srcdir}/launchers/proton.sh
 sed -i "s|self.path(\"dist/share/default_pfx/\")|\"/${_pfxdir}/\"|" ${_srcdir}/proton
 }
@@ -67,13 +69,12 @@ install -d ${pkgdir}/${_licensedir}/
 install -d --mode=2775 --group=games ${pkgdir}/${_pfxdir}/
 chmod 0775 ${pkgdir}/${_pfxdir}/..
 install -d ${pkgdir}/$(dirname ${_execfile})/
-#install -d ${pkgdir}/$(dirname ${_configfile})/
 ## licenses
 mv ${_srcdir}/LICENSE ${pkgdir}/${_licensedir}/license
 mv ${_srcdir}/LICENSE.OFL ${pkgdir}/${_licensedir}/license_OFL
 mv ${_srcdir}/protonfixes/LICENSE ${pkgdir}/${_licensedir}/license_protonfixes
 ## config files
-#install --mode=0775 --group=games ${srcdir}/configs/user_settings.py ${pkgdir}/${_configfile}
+install --mode=0775 --group=games ${srcdir}/configs/user_settings.py ${pkgdir}/${_protoncfg}
 ## default pfx
 mv ${_srcdir}/dist/share/default_pfx/* ${pkgdir}/${_pfxdir}
 chown -R :games ${pkgdir}/${_pfxdir}
