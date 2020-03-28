@@ -1,6 +1,6 @@
 pkgbase = exodus
 	pkgdesc = Send, receive & exchange cryptocurrency with ease on the world's leading Desktop, Mobile and Hardware wallets. Bitcoin wallet
-	pkgver = 20.3.13
+	pkgver = 20.3.27
 	pkgrel = 1
 	url = https://exodus.io
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = exodus
 	depends = nss
 	depends = libxss
 	depends = glibc>=2.28-4
-	source = https://downloads.exodus.io/releases/exodus-linux-x64-20.3.13.zip
+	source = https://downloads.exodus.io/releases/exodus-linux-x64-20.3.27.zip
 	source = exodus.svg
 	source = exodus.desktop
 	source = LICENSE
-	sha256sums = c6e308ca76289b8933a94149f26276692451394d21b12aa7bd07dbca963fc0a8
+	sha256sums = 0c6b7e3da8e909547f61244899d51bab7c1da09d77b28efc5fa9502e1aafaec4
 	sha256sums = ffafdcd0869f1c9338ba25e447698c4cfa3c8714123459ae3e63686a5312ef2e
 	sha256sums = 04676d81272a35a91150a7eec4640e69ca50f2e479d29fad8be90160ee74122c
 	sha256sums = 582d6782c9412cd961c55d105f38ed5c911bf8509be040b8d23a836504a25d0b
