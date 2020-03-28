@@ -16,7 +16,7 @@ makedepends=('mesa')
 conflicts=('steamos-compositor')
 _msver=1.10
 source=("https://github.com/gamer-os/steamos-compositor-plus/archive/${pkgver}.tar.gz"
-        "http://repo.steamstatic.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
+        "https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_${_msver}.tar.xz")
 md5sums=('b2b34c47ae82d80d5db2d6d4f484c198'
          'ab8b731fb917aff183aa338bf3298495')
 

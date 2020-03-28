@@ -21,7 +21,7 @@ pkgbase = steamos-compositor-plus
 	depends = steam
 	conflicts = steamos-compositor
 	source = https://github.com/gamer-os/steamos-compositor-plus/archive/1.5.0.tar.gz
-	source = http://repo.steamstatic.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_1.10.tar.xz
+	source = https://repo.steampowered.com/steamos/pool/main/s/steamos-modeswitch-inhibitor/steamos-modeswitch-inhibitor_1.10.tar.xz
 	md5sums = b2b34c47ae82d80d5db2d6d4f484c198
 	md5sums = ab8b731fb917aff183aa338bf3298495
 
