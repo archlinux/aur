@@ -9,7 +9,7 @@ url="https://github.com/M-Reimer/script.service.graphlcd"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('python2' 'kodi' 'graphlcd-base')
-source=("https://github.com/M-Reimer/script.service.graphlcd/archive/${pkgver}.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/M-Reimer/script.service.graphlcd/archive/${pkgver}.tar.gz")
 md5sums=('3cb4882a089065101a7c91de1634d48b')
 
 build() {
