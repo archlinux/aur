@@ -1,6 +1,6 @@
 # Maintainer: Dr-Incognito <v2ray.dev at gmail dot com>
 pkgname=v2ray-desktop
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A Cross-platform GUI Client for V2Ray written in Qt 5 and QML 2 (Stable Release)"
 arch=("x86_64")
