@@ -1,12 +1,12 @@
-diff -rupN lightdm-1.11.9.orig/data/lightdm.conf lightdm-1.11.9/data/lightdm.conf
---- lightdm-1.11.9.orig/data/lightdm.conf	2014-09-14 12:55:09.591944064 +0200
-+++ lightdm-1.11.9/data/lightdm.conf	2014-09-14 12:58:13.396791044 +0200
-@@ -20,13 +20,13 @@
+diff -rupN lightdm-1.16.7.orig/data/lightdm.conf lightdm-1.16.7/data/lightdm.conf
+--- lightdm-1.16.7.orig/data/lightdm.conf	2016-02-07 10:44:47.229197400 +0100
++++ lightdm-1.16.7/data/lightdm.conf	2016-02-07 10:47:36.011855600 +0100
+@@ -21,13 +21,13 @@
  #start-default-seat=true
  #greeter-user=lightdm
  #minimum-display-number=0
 -#minimum-vt=7
-+minimum-vt=1
++#minimum-vt=7 # Setting this to a value < 7 implies security issues, see FS#46799
  #lock-memory=true
  #user-authority-in-system-dir=false
  #guest-account-script=guest-account
@@ -15,9 +15,9 @@ diff -rupN lightdm-1.11.9.orig/data/lightdm.conf lightdm-1.11.9/data/lightdm.con
 -#run-directory=/var/run/lightdm
 +run-directory=/run/lightdm
  #cache-directory=/var/cache/lightdm
- #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions
+ #sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions:/usr/share/wayland-sessions
  #remote-sessions-directory=/usr/share/lightdm/remote-sessions
-@@ -101,7 +101,7 @@
+@@ -110,7 +110,7 @@
  #allow-user-switching=true
  #allow-guest=true
  #guest-session=
@@ -26,9 +26,9 @@ diff -rupN lightdm-1.11.9.orig/data/lightdm.conf lightdm-1.11.9/data/lightdm.con
  #greeter-wrapper=
  #guest-wrapper=
  #display-setup-script=
-diff -rupN lightdm-1.11.9.orig/data/users.conf lightdm-1.11.9/data/users.conf
---- lightdm-1.11.9.orig/data/users.conf	2014-09-14 12:55:09.591944064 +0200
-+++ lightdm-1.11.9/data/users.conf	2014-09-14 12:59:21.426117548 +0200
+diff -rupN lightdm-1.16.7.orig/data/users.conf lightdm-1.16.7/data/users.conf
+--- lightdm-1.16.7.orig/data/users.conf	2016-02-07 10:44:47.224423000 +0100
++++ lightdm-1.16.7/data/users.conf	2016-02-07 10:44:53.660216200 +0100
 @@ -9,6 +9,6 @@
  # hidden-shells = Shells that indicate a user cannot login
  #
@@ -36,5 +36,5 @@ diff -rupN lightdm-1.11.9.orig/data/users.conf lightdm-1.11.9/data/users.conf
 -minimum-uid=500
 +minimum-uid=1000
  hidden-users=nobody nobody4 noaccess
--hidden-shells=/bin/false /usr/sbin/nologin
-+hidden-shells=/bin/false /usr/bin/nologin
+-hidden-shells=/bin/false /usr/sbin/nologin /sbin/nologin
++hidden-shells=/bin/false /usr/bin/nologin /bin/nologin

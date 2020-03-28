@@ -1,81 +1,120 @@
-# Maintainer: David Birks <david@tellus.space>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: David Birks <david@tellus.space>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: padfoot <padfoot@exemail.com.au>
 # Contributor: Morfeo <morfeo89@hotmail.it>
 
 pkgbase=lightdm-devel
-pkgname=('lightdm-devel' 'liblightdm-qt4-devel' 'liblightdm-qt5-devel')
-pkgver=1.24.0
+pkgname=(
+  lightdm-devel
+  liblightdm-qt4-devel
+  liblightdm-qt5-devel
+)
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='A lightweight display manager'
-arch=('i686' 'x86_64')
-url='https://launchpad.net/lightdm'
-license=('GPL3' 'LGPL3')
-makedepends=('gcc-libs' 'glib2' 'glibc' 'gobject-introspection' 'gtk-doc'
-             'intltool' 'itstool' 'libgcrypt' 'libx11' 'libxcb' 'libxdmcp'
-             'libxklavier' 'pam' 'polkit' 'qt4' 'qt5-base' 'vala')
-source=("https://launchpad.net/lightdm/${pkgver%.*}/${pkgver}/+download/lightdm-${pkgver}.tar.xz"
-        'lightdm.service'
-        'lightdm.tmpfiles'
-        'lightdm.pam'
-        'lightdm-autologin.pam'
-        'lightdm.rules'
-        'lightdm-default-config.patch'
-        'Xsession')
-sha256sums=('cd509b74382bcf382c6e3e4b54ac30ba804022fec968d6993d134552ea1a43a2'
-            '0d2adba25cdbe59e97ffd302083db9d5e23920780f41e04f64512cd6b633289a'
-            'b29521fbd7a48a8f60b93ecca3b30c30bcb71560de8033c8d39b25c22c6f696f'
+arch=(i686 x86_64)
+url=https://www.freedesktop.org/wiki/Software/LightDM/
+license=(
+  GPL3
+  LGPL3
+)
+makedepends=(
+  glib2
+  git
+  gobject-introspection
+  gtk-doc
+  intltool
+  itstool
+  libgcrypt
+  libx11
+  libxcb
+  libxdmcp
+  libxklavier
+  pam
+  polkit
+  qt4
+  qt5-base
+  vala
+  yelp-tools
+)
+source=(
+  git+https://github.com/CanonicalLtd/lightdm.git#tag=${pkgver}
+  lightdm.service
+  lightdm.sysusers
+  lightdm.tmpfiles
+  lightdm.pam
+  lightdm-autologin.pam
+  lightdm.rules
+  lightdm-default-config.patch
+  Xsession
+)
+sha256sums=('SKIP'
+            '0db37a14521be729411a767f157fbd07adb738b14006277def53a1efe4dacfb8'
+            'fd93291bfc9985f0a1bb288472866aa0a9bcd259e024c3a29d20ca158bc08403'
+            'cd69f928a1a5b30a30ba916e1b64c9f3657597cb28f3f0e220494d6e5e4bf587'
             'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0'
             '33e3c3d6e16c8d30756754ea3f31f5457c5be0343686aad287692be34958984a'
             'a89566307e1c81c24f037d854cbd472d2f94f8a4b759877a01563a332319f7d6'
-            'ed3dca57ef19d32499b72668bc78eaff0d9e772718b76f3816c5ee5f816b1891'
-            '7fb85a1b54406032a922e8fd6f45d869fcfe5681df630e74e8e50c040b786ee4')
+            '782a52dc39a7d6f2c6ee31e66897e3502fc14864e3e4ede8e3d1a0da74b8dfdf'
+            'd30321a1b490500483b8ed7825fcff2c24a7c760ac627789ff517693888ec3c5')
 
 prepare() {
-  cd lightdm-${pkgver}
+  cd lightdm
 
   patch -Np1 -i ../lightdm-default-config.patch
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd lightdm-${pkgver}
+  cd lightdm
 
-  export MOC4='moc-qt4'
-  export MOC5='moc-qt5'
+  export MOC4=moc-qt4
+  export MOC5=moc-qt5
 
   ./configure \
-    --prefix='/usr' \
-    --libexecdir='/usr/lib/lightdm' \
-    --localstatedir='/var' \
-    --sbindir='/usr/bin' \
-    --sysconfdir='/etc' \
-    --with-greeter-user='lightdm' \
-    --with-greeter-session='lightdm-gtk-greeter' \
+    --prefix=/usr \
+    --libexecdir=/usr/lib/lightdm \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
     --disable-static \
-    --disable-tests
+    --disable-tests \
+    --enable-gtk-doc \
+    --with-greeter-user=lightdm \
+    --with-greeter-session=lightdm-gtk-greeter
   make
 }
 
 package_lightdm-devel() {
-  depends=('glib2' 'glibc' 'libgcrypt' 'libx11' 'libxcb' 'libxdmcp'
-           'libxklavier' 'pam' 'polkit')
-  optdepends=('accountsservice: Enhanced user accounts handling'
-              'lightdm-gtk-greeter: GTK greeter'
-              'lightdm-kde-greeter: Qt greeter'
-              'xorg-server-xephyr: LightDM test mode')
-  provides=('lightdm')
-  conflicts=('lightdm')
-  backup=('etc/apparmor.d/lightdm-guest-session'
-          'etc/lightdm/keys.conf'
-          'etc/lightdm/lightdm.conf'
-          'etc/lightdm/users.conf'
-          'etc/lightdm/Xsession'
-          'etc/pam.d/lightdm'
-          'etc/pam.d/lightdm-autologin'
-          'etc/pam.d/lightdm-greeter')
-  install='lightdm.install'
+  depends=(
+    glib2
+    libgcrypt
+    libx11
+    libxcb
+    libxdmcp
+    libxklavier
+    pam
+    polkit
+  )
+  optdepends=(
+    'accountsservice: Enhanced user accounts handling'
+    'lightdm-gtk-greeter: GTK greeter'
+    'xorg-server-xephyr: LightDM test mode'
+  )
+  backup=(
+    etc/apparmor.d/lightdm-guest-session
+    etc/lightdm/keys.conf
+    etc/lightdm/lightdm.conf
+    etc/lightdm/users.conf
+    etc/lightdm/Xsession
+    etc/pam.d/lightdm
+    etc/pam.d/lightdm-autologin
+    etc/pam.d/lightdm-greeter
+  )
 
-  cd lightdm-${pkgver}
+  cd lightdm
 
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" -C liblightdm-qt uninstall
@@ -83,12 +122,9 @@ package_lightdm-devel() {
   rm -rf "${pkgdir}"/etc/init
   rm -rf "${pkgdir}"/usr/include/lightdm-qt{,5}-*
 
-  install -dm 755 "${pkgdir}"/var/cache/lightdm
-  install -dm 770 "${pkgdir}"/var/lib/lightdm{,-data}
-  install -dm 711 "${pkgdir}"/var/log/lightdm
-  chmod +t "${pkgdir}"/var/{cache/lightdm,lib/lightdm{,-data}}
-  chown 620:620 -R "${pkgdir}"/var/lib/lightdm{,-data}
-  chgrp 620 "${pkgdir}"/var/log/lightdm
+  # Dbus
+  mv "${pkgdir}"/{etc,usr/share}/dbus-1/system.d
+  rmdir "${pkgdir}"/etc/dbus-1
 
   # PAM
   install -m 644 ../lightdm.pam "${pkgdir}"/etc/pam.d/lightdm
@@ -99,19 +135,21 @@ package_lightdm-devel() {
   install -m 644 ../lightdm.rules "${pkgdir}"/usr/share/polkit-1/rules.d/lightdm.rules
 
   # Systemd
-  install -dm 755 "${pkgdir}"/usr/lib/{systemd/system,tmpfiles.d}
+  install -dm 755 "${pkgdir}"/usr/lib/{systemd/system,sysusers.d,tmpfiles.d}
   install -m 644 ../lightdm.service "${pkgdir}"/usr/lib/systemd/system/lightdm.service
+  install -m 644 ../lightdm.sysusers "${pkgdir}"/usr/lib/sysusers.d/lightdm.conf
   install -m 644 ../lightdm.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/lightdm.conf
 }
 
 package_liblightdm-qt4-devel() {
   pkgdesc='LightDM Qt client library'
-  depends=('gcc-libs' 'glibc' 'lightdm' 'qt4')
-  provides=('liblightdm-qt4')
-  conflicts=('liblightdm-qt4')
-  options=('!emptydirs')
+  depends=(
+    lightdm
+    qt4
+  )
+  options=(!emptydirs)
 
-  cd lightdm-${pkgver}
+  cd lightdm
 
   make DESTDIR="${pkgdir}" -C liblightdm-gobject install
   make DESTDIR="${pkgdir}" -C liblightdm-qt install
@@ -123,12 +161,13 @@ package_liblightdm-qt4-devel() {
 
 package_liblightdm-qt5-devel() {
   pkgdesc='LightDM Qt client library'
-  depends=('gcc-libs' 'glibc' 'lightdm' 'qt5-base')
-  provides=('liblightdm-qt5')
-  conflicts=('liblightdm-qt5')
-  options=('!emptydirs')
+  depends=(
+    lightdm
+    qt5-base
+  )
+  options=(!emptydirs)
 
-  cd lightdm-${pkgver}
+  cd lightdm
 
   make DESTDIR="${pkgdir}" -C liblightdm-gobject install
   make DESTDIR="${pkgdir}" -C liblightdm-qt install
