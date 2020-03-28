@@ -1,7 +1,7 @@
-pkgbase = plymouth-themes-adi1090x-pack2
+pkgbase = plymouth-themes-adi1090x-pack2-git
 	pkgdesc = The plymouth theme collection by adi1090x
-	pkgver = 1
-	pkgrel = 2
+	pkgver = r24.bb390bd
+	pkgrel = 1
 	url = https://github.com/adi1090x/plymouth-themes
 	arch = any
 	license = GPL
@@ -9,43 +9,43 @@ pkgbase = plymouth-themes-adi1090x-pack2
 	source = git+https://github.com/adi1090x/plymouth-themes.git
 	md5sums = SKIP
 
-pkgname = plymouth-theme-cyanide
+pkgname = plymouth-theme-cyanide-git
 
-pkgname = plymouth-theme-cybernetic
+pkgname = plymouth-theme-cybernetic-git
 
-pkgname = plymouth-theme-dark-planet
+pkgname = plymouth-theme-dark-planet-git
 
-pkgname = plymouth-theme-darth-vader
+pkgname = plymouth-theme-darth-vader-git
 
-pkgname = plymouth-theme-deus-ex
+pkgname = plymouth-theme-deus-ex-git
 
-pkgname = plymouth-theme-dna
+pkgname = plymouth-theme-dna-git
 
-pkgname = plymouth-theme-double
+pkgname = plymouth-theme-double-git
 
-pkgname = plymouth-theme-dragon
+pkgname = plymouth-theme-dragon-git
 
-pkgname = plymouth-theme-flame
+pkgname = plymouth-theme-flame-git
 
-pkgname = plymouth-theme-glitch
+pkgname = plymouth-theme-glitch-git
 
-pkgname = plymouth-theme-glow
+pkgname = plymouth-theme-glow-git
 
-pkgname = plymouth-theme-green-blocks
+pkgname = plymouth-theme-green-blocks-git
 
-pkgname = plymouth-theme-green-loader
+pkgname = plymouth-theme-green-loader-git
 
-pkgname = plymouth-theme-hexagon
+pkgname = plymouth-theme-hexagon-git
 
-pkgname = plymouth-theme-hexagon-2
+pkgname = plymouth-theme-hexagon-2-git
 
-pkgname = plymouth-theme-hexagon-alt
+pkgname = plymouth-theme-hexagon-alt-git
 
-pkgname = plymouth-theme-hexagon-dots
+pkgname = plymouth-theme-hexagon-dots-git
 
-pkgname = plymouth-theme-hexagon-dots-alt
+pkgname = plymouth-theme-hexagon-dots-alt-git
 
-pkgname = plymouth-theme-hexagon-hud
+pkgname = plymouth-theme-hexagon-hud-git
 
-pkgname = plymouth-theme-hexagon-red
+pkgname = plymouth-theme-hexagon-red-git
 
