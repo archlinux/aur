@@ -3,14 +3,14 @@
 pkgbase=layan-kde-git
 pkgname=(layan-kde-git kvantum-theme-layan-git)
 _pkgname=layan-kde
-pkgver=r18.4dcc7e5
+pkgver=r28.f7f205f
 pkgrel=1
 pkgdesc="A flat Design theme for KDE Plasma desktop"
 arch=(any)
-url="https://github.com/vinceliuice/${_pkgname}"
-license=(GPL3)
-options=(!strip)
-source=("git+${url}.git")
+url="https://github.com/vinceliuice/$_pkgname"
+license=('GPL3')
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 makedepends=('git')
 
@@ -26,13 +26,16 @@ package_layan-kde-git() {
                 'kvantum-theme-layan: Layan theme for Kvantum Qt style (recommended)'
                 'tela-icon-theme: Matching icon theme')
 
-    cd ${_pkgname}
-    install -d "${pkgdir}"/usr/share
+    cd $_pkgname
 
-    cp -r plasma "${pkgdir}"/usr/share
-    cp -r aurorae "${pkgdir}"/usr/share
-    cp -r color-schemes "${pkgdir}"/usr/share
-    cp -r sddm "${pkgdir}"/usr/share
+    install -d "$pkgdir"/usr/share
+    
+    rm sddm/{README.md,install.sh}
+
+    cp -r aurorae "$pkgdir"/usr/share
+    cp -r color-schemes "$pkgdir"/usr/share
+    cp -r plasma "$pkgdir"/usr/share
+    cp -r sddm "$pkgdir"/usr/share
 }
 
 package_kvantum-theme-layan-git() {
@@ -40,8 +43,9 @@ package_kvantum-theme-layan-git() {
     pkgdesc="Layan theme for KDE Plasma 5"
     depends=(kvantum-qt5)
 
-    cd ${_pkgname}
-    install -d "${pkgdir}"/usr/share
+    cd $_pkgname
 
-    cp -r Kvantum "${pkgdir}"/usr/share
+    install -d "$pkgdir"/usr/share
+
+    cp -r Kvantum "$pkgdir"/usr/share
 }

@@ -1,6 +1,6 @@
 pkgbase = layan-kde-git
 	pkgdesc = A flat Design theme for KDE Plasma desktop
-	pkgver = r18.4dcc7e5
+	pkgver = r28.f7f205f
 	pkgrel = 1
 	url = https://github.com/vinceliuice/layan-kde
 	arch = any
