@@ -7,7 +7,7 @@
 pkgname=conky-cairo-no-nvidia
 _pkgname=conky
 pkgver=1.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight system monitor for X - with cairo and without nvidia'
 url='https://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL')
@@ -15,8 +15,9 @@ arch=('x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git')
 depends=('cairo' 'glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft'
          'imlib2' 'libxml2' 'libpulse')
-provides=("conky=$pkgver")
+provides=("conky")
 conflicts=('conky')
+replaces=('conky')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz")
 sha256sums=('4cefdd92219a90934c28297e4ac7448a3f69d6aeec5d48c5763b23f6b214ef13')
 options=('!strip' 'debug')
