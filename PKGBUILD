@@ -8,8 +8,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=gstm
-pkgver=1.3.3
-pkgrel=5
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="Gnome SSH Tunnel Manager - Gtk3 Edition"
 arch=('i686' 'x86_64')
 url="https://github.com/dallenwilson/gstm"
@@ -19,7 +19,7 @@ makedepends=('intltool')
 conflicts=('gstm-git' 'gstm-gtk2')
 provides=('gstm')
 source=(https://github.com/dallenwilson/gstm/releases/download/${pkgver}/gstm-${pkgver}.tar.gz)
-sha256sums=('84d982763589b22be4dff593de2cb2e2e907093b9bcca70dbb1fe6859043852a')
+sha256sums=('9d0428f5573a44de8355bafa283360bc233bff0dcc2f3a72a8dd3efc5c986b0b')
 
 build() {
    cd ${srcdir}/gstm-${pkgver}
