@@ -1,0 +1,21 @@
+pkgbase = sandsmark-integration-git
+	pkgdesc = Qt platform integration (QPA) for myself, just how I like it
+	pkgver = r266.6a4be93
+	pkgrel = 1
+	url = https://github.com/sandsmark/sandsmark-integration
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = kinit
+	depends = kio
+	depends = kdbusaddons
+	depends = ki18n
+	provides = sandsmark-integration
+	conflicts = sandsmark-integration
+	source = git+https://github.com/sandsmark/sandsmark-integration.git
+	md5sums = SKIP
+
+pkgname = sandsmark-integration-git
+
