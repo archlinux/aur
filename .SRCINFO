@@ -1,17 +1,17 @@
 pkgbase = google-keep-nativefier
-	pkgdesc = Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed.
-	pkgver = 0.3
+	pkgdesc = Electron wrapper for the Google Keep web application
+	pkgver = 0.4
 	pkgrel = 1
-	url = https://keep.google.com/
+	url = https://keep.google.com
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
-	makedepends = npm
 	makedepends = nodejs-nativefier
+	makedepends = npm
 	source = google-keep-nativefier.png
 	source = google-keep-nativefier.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f
+	sha256sums = 2ef4f9ffb7aa8405083f50413bd4f16bd3856a6146887f68c66589331d4f8193
 
 pkgname = google-keep-nativefier
 

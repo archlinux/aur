@@ -1,38 +1,36 @@
-pkgname="google-keep-nativefier"
-pkgver="0.3"
-pkgrel="1"
-pkgdesc="Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed."
-arch=("x86_64")
-license=("MIT")
-url="https://keep.google.com/"
-source=("${pkgname}.png" "${pkgname}.desktop")
-makedepends=("nodejs" "npm" "nodejs-nativefier")
-sha256sums=("SKIP" "SKIP")
+pkgname=google-keep-nativefier
+pkgver=0.4
+pkgrel=1
+pkgdesc="Electron wrapper for the Google Keep web application"
+arch=(x86_64)
+license=(MIT)
+url=https://keep.google.com
+source=($pkgname.png
+        $pkgname.desktop)
+makedepends=(nodejs nodejs-nativefier npm)
+sha256sums=('30bf408abb4d6639864c05a6c829fba7624bbec254eeab52a72ce0d8b91fbb1f'
+            '2ef4f9ffb7aa8405083f50413bd4f16bd3856a6146887f68c66589331d4f8193')
 
-instname="google-keep"
-
+_instname=google-keep
 build() {
-    cd "${srcdir}"
-
     nativefier "https://keep.google.com/" \
-      --icon "${pkgname}.png" \
+      --icon $pkgname.png \
       --maximize \
-      --internal-urls "(accounts|calendar)\.google" \
-      --name "Google Keep"
+      --name $_instname \
+      --user-agent "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0" \
+      --internal-urls "(.*?keep\.google\.com.*?|.*?accounts\.google\.com.*?)" \
+      --single-instance \
+      --electron-version 7.1.11
 }
 
 package() {
-  install -dm644 "$pkgdir/opt/"
-  install -dm644 "$pkgdir/usr/bin"
-  install -dm644 "$pkgdir/usr/share/pixmaps"
-  install -dm644 "$pkgdir/usr/share/applications"
+    install -d "$pkgdir"/opt "$pkgdir"/usr/{bin,share/pixmaps}
+    install -Dm644 $pkgname.desktop "$pkgdir"/usr/share/applications/$_instname.desktop
 
-  install -m644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$instname.desktop"
-  cp -rL "$srcdir/$instname-linux-"* "$pkgdir/opt/$pkgname"
+    cp -rL $_instname-linux-* "$pkgdir"/opt/$pkgname
+    ln -sf /opt/$pkgname/$_instname "$pkgdir"/usr/bin/$_instname
+    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$_instname.png
 
-  ln -sf "/opt/$pkgname/$instname" "$pkgdir/usr/bin/$instname"
-  ln -sf "/opt/$pkgname/resources/app/icon.png" "$pkgdir/usr/share/pixmaps/$instname.png"
-
-  chmod 777 "$pkgdir/opt/$pkgname/resources/app/nativefier.json"
+    chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
 }
 
