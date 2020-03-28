@@ -1,8 +1,13 @@
 post_install()
 {
-	systemctl --user --global enable anbox-launchers.service anbox-launchers.timer
+	systemctl --global enable anbox-launchers.service anbox-launchers.timer &> /dev/null
 }
 pre_remove()
 {
-	systemctl --user --global disable anbox-launchers.service anbox-launchers.timer
+	systemctl --global disable anbox-launchers.service anbox-launchers.timer &> /dev/null
+}
+post_upgrade()
+{
+	systemctl --global disable anbox-launchers.service anbox-launchers.timer &> /dev/null
+	systemctl --global enable anbox-launchers.service anbox-launchers.timer &> /dev/null
 }

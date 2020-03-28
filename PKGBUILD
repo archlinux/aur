@@ -1,7 +1,6 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 pkgname=anbox-launchers-git
-_pkgname=anbox-launchers
-pkgver=r8.38f83f8
+pkgver=r13.ecc0bba
 pkgrel=1
 pkgdesc="Add Anbox App Launchers to Anbox Category in Desktop Menu."
 arch=('any')
@@ -20,7 +19,7 @@ validpgpkeys=()
 md5sums=('SKIP')
 pkgver()
 {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/${pkgname%-git}"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -28,6 +27,6 @@ pkgver()
   pkgrel=$(git diff --shortstat|cut -d' ' -f2)
 }
 package() {
-    cd "$srcdir/$_pkgname"
-	make DESTDIR="$pkgdir/" SYSCONFDIR=/etc install
+   cd "$srcdir/${pkgname%-git}"
+   make DESTDIR="$pkgdir" SYSCONFDIR=/etc install
 }
