@@ -1,11 +1,12 @@
-# Maintainer : Daniel Bermond < gmail-com: danielbermond >
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Daniel Bermond < gmail-com: danielbermond >
 # Contributor: Det <nimetonmaili g-mail>
 
 pkgbase=xorg-server-dev
 _srcname=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev'
          'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.20.5
+pkgver=1.20.7
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -17,8 +18,10 @@ makedepends=('xorgproto' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'libxmu' 'libxrender' 'libxi' 'libxaw' 'libdmx' 'libxtst' 'libxres'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
-             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson') # 'git')
-source=("https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2"{,.sig}
+             'libxshmfence' 'libunwind' 'systemd' 'wayland-protocols' 'egl-wayland' 'meson'
+             'git' 'libgl' 'nettle' 'xf86-input-libinput' 'xkeyboard-config'
+             'xorg-setxkbmap' 'xorg-xauth' 'libdrm' 'libxext' 'libxfixes')
+source=("https://xorg.freedesktop.org/releases/individual/xserver/${_srcname}-${pkgver}.tar.bz2"{,.sig}
         'xwayland-config.h.meson.in::https://cgit.freedesktop.org/xorg/xserver/plain/include/xwayland-config.h.meson.in?id=xorg-server-1.20.0'
         'xserver-autobind-hotplug.patch'
         '0001-v2-FS-58644.patch'
@@ -28,14 +31,15 @@ source=("https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3'
-              '995ED5C8A6138EB0961F18474C09DD83CAAA50B2')
-sha512sums=('625f0626b122cf95600abe382c3217348999357a0e2d2443092f1b67cff1c98d7ef09303884ceaeac181e0555dc56b0d4d44bda45cc464dac2d9a50c5b32d631'
+              '995ED5C8A6138EB0961F18474C09DD83CAAA50B2'
+              '3BB639E56F861FA2E86505690FDD682D974CA72A')
+sha512sums=('c67612e379111c28c68941c0a660abf72be7669591b41ccaa3b3474c4540a03822a28d892831b12ce08bac6e5e7e33504c2d19ef2a0c2298f83bd083459f96f5'
             'SKIP'
             'd707e0870367de2665c3b82f09564d17ed3f62c9e8b4bd471c11af1fb1e9249e306e92c7961a04e355756eec9f5271bc8e66999e56c73c31bc9da4127ff30a8e'
             'd84f4d63a502b7af76ea49944d1b21e2030dfd250ac1e82878935cf631973310ac9ba1f0dfedf10980ec6c7431d61b7daa4b7bbaae9ee477b2c19812c1661a22'
             '74e1aa0c101e42f0f25349d305641873b3a79ab3b9bb2d4ed68ba8e392b4db2701fcbc35826531ee2667d3ee55673e4b4fecc2a9f088141af29ceb400f72f363'
-            '0c7f7e43a2ba2372509f4a35e33a8a87a2e631c7e630c9c7c67ecaad00453b52c31d9dc26d1852ecd2fe1cb8c02cb716c1f39a4723473c38a0ef6e559bead271'
-            '55bbf520333f6e818b0125b37179a7039b69a0d3d2242b80a08da003d94cbf6c1fb912d880abcce318a85d7947e3eff8fbc4cdf57d7118572e8ebc56c4569af6'
+            '3d3be34ad9fa976daec53573d3a30a9f1953341ba5ee27099af0141f0ef7994fa5cf84dc08aae848380e6abfc10879f9a67f07601c7a437abf8aef13a3ec9fe1'
+            '73c8ead9fba6815dabfec0a55b3a53f01169f6f2d14ac4a431e53b2d96028672dbd6b50a3314568847b37b1e54ea4fc02bdf677feabb3b2697af55e2e5331810'
             'de5e2cb3c6825e6cf1f07ca0d52423e17f34d70ec7935e9dd24be5fb9883bf1e03b50ff584931bd3b41095c510ab2aa44d2573fd5feaebdcb59363b65607ff22')
 
 prepare() {
