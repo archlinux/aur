@@ -1,9 +1,9 @@
-# Maintainer: thegala <thegala@disroot.org>
+# Maintainer: thegala <thegala at disroot dot org>
 
 pkgbase=ibus-python3
 pkgname=(ibus-python3 libibus-python3)
-pkgver=1.5.21
-pkgrel=3
+pkgver=1.5.22
+pkgrel=1
 pkgdesc="Next Generation Input Bus for Linux. Without python2."
 arch=('x86_64')
 url="https://github.com/ibus/ibus/wiki"
@@ -14,7 +14,7 @@ makedepends=('gobject-introspection' 'vala' 'intltool' 'gnome-common' 'gtk-doc' 
              'cldr-emoji-annotation' 'unicode-character-database' 'unicode-emoji')
 options=('!emptydirs')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/ibus/ibus/archive/$pkgver.tar.gz")
-sha512sums=('39f5ffe0727af3254e060b82cc99a60126489271863272775e5b1d0e26f31d42d2f9a0cbfe1cb797854f2ae66d5b6c8cdf83bab800af8576b82250ec1e6fb33f')
+sha512sums=('972da51eb5702692f13b4f4cff51b3765890e5a91f936b9fa6b6cafaf00f4d078dc39f14bd00f3883203d295d826647c509024dd197d726d4def8d13d45d71b4')
 
 prepare() {
   cd ibus-$pkgver
