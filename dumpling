@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec java -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xmx256M -Xms256M -jar /var/lib/dumpling/dumpling.jar "$@"

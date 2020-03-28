@@ -1,0 +1,15 @@
+pkgbase = dumpling
+	pkgdesc = Automation friendly java threaddump analyzer
+	pkgver = 2.4
+	pkgrel = 1
+	epoch = 0
+	url = https://olivergondza.github.io/dumpling/
+	arch = any
+	license = MIT
+	depends = java-runtime
+	noextract = dumpling-cli-2.4-shaded.jar
+	source = https://repo.maven.apache.org/maven2/com/github/olivergondza/dumpling/dumpling-cli/2.4/dumpling-cli-2.4-shaded.jar
+	md5sums = 941a061edd71b1be9ac7ee708df0df53
+
+pkgname = dumpling
+
