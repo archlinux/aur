@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 
 url="https://github.com/jmesmon/$_bpn"
 source=("git+$url"
-	"git+https://github.com/jmesmon/ccan")
+	"git+https://github.com/rustyrussell/ccan.git")
 
 md5sums=('SKIP' 'SKIP')
 
@@ -21,7 +21,7 @@ makedepends=('git' 'ninja' 'sh' 'pkg-config')
 depends=('libevdev' 'libev')
 
 # from https://wiki.archlinux.org/index.php/VCS_package_guidelines
-pkgver=0.4.r8.gd9aed05
+pkgver=0.4.r70.gf2b9364
 pkgver() {
 	cd "$srcdir/$_bpn"
 	( set -o pipefail
