@@ -2,7 +2,7 @@
 
 pkgname=slimmy-xfwm-theme-git
 pkgver=r3.a35e1d3
-pkgrel=1
+pkgrel=2
 pkgdesc="A very slim xfwm theme for who doesn't like wm titles bars."
 arch=('any')
 url="https://github.com/Noeljunior/slimmy"

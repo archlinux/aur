@@ -1,7 +1,7 @@
 pkgbase = slimmy-xfwm-theme-git
 	pkgdesc = A very slim xfwm theme for who doesn't like wm titles bars.
 	pkgver = r3.a35e1d3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Noeljunior/slimmy
 	arch = any
 	license = GPL
