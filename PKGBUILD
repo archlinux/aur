@@ -2,20 +2,20 @@
 
 pkgname=spflashtool-bin
 _pkgname=spflashtool
-pkgver="5.1944"
+pkgver="5.1952"
 pkgrel=1
 pkgdesc="SP Flash Tool is an application to flash your MediaTek (MTK) SmartPhone."
 arch=('x86_64')
 url="http://spflashtools.com/category/linux"
 license=('unknown')
-depends=('qtwebkit')
+depends=('qtwebkit' 'libpng12')
 makedepends=('gendesk')
 provides=('spflashtool')
 conflicts=('spflashtool')
 source=("http://spflashtools.com/wp-content/uploads/SP_Flash_Tool_v${pkgver}_Linux.zip"
         'spflashtool.png'
         '60-spflashtool.rules')
-sha256sums=('1a2315a3421d30f273fe822306b459604fc932fa02910bbd09af7b9dda3a01a1'
+sha256sums=('72bf6e0d0c04805baabed03ef0c2f53f8e64f93c486d4b1939c3918732a6b1e1'
             'fe0b9c1de77c687623bfc07733041d1387f755493cdf904e6afcb47f784d34c7'
             'a46a4fc667cf5d6114f3757dc8dbc6cfbc27229319d48f6d78c1e026b34210da')
 
@@ -50,6 +50,7 @@ package() {
 	rm -r "${srcdir}/${folderName}/bin"
 	rm -r "${srcdir}/${folderName}/lib"
 	rm -r "${srcdir}/${folderName}/plugins"
+	rm -r "${srcdir}/${folderName}/Driver"
 
 	# Install remaining files
 	install -Dm644 -t "${pkgdir}/opt/${_pkgname}/" "${srcdir}/${folderName}/"*
