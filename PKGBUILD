@@ -82,7 +82,7 @@ build() {
 }
 
 package_zabbix-nightly-server() {
-  pkgdesc='Monitoring software for networks and applications'
+  pkgdesc='Monitoring software for networks and applications, nightly version'
   depends=(net-snmp curl libxml2 unixodbc libldap libevent pcre)
   optdepends=('postgresql-libs: for PostgreSQL support'
               'mariadb-libs: for MariaDB support')
@@ -118,7 +118,7 @@ package_zabbix-nightly-server() {
 }
 
 package_zabbix-nightly-agent() {
-  pkgdesc='Monitoring agent for Zabbix'
+  pkgdesc='Monitoring agent for Zabbix, nightly version'
   depends=(curl pcre)
   backup=(etc/zabbix/zabbix_agentd.conf)
 
@@ -148,7 +148,7 @@ package_zabbix-nightly-agent() {
 }
 
 package_zabbix-nightly-agent2() {
-  pkgdesc='Experimental monitoring agent for Zabbix (Agent 2)'
+  pkgdesc='Experimental monitoring agent for Zabbix (Agent 2), nightly version'
   depends=(zabbix-nightly-agent)
   backup=(etc/zabbix/zabbix_agent2.conf)
 
@@ -165,7 +165,7 @@ package_zabbix-nightly-agent2() {
 }
 
 package_zabbix-nightly-proxy() {
-  pkgdesc='Data collecting proxy for Zabbix'
+  pkgdesc='Data collecting proxy for Zabbix, nightly version'
   depends=(net-snmp curl libxml2 sqlite unixodbc libldap pcre)
   optdepends=('mariadb-libs: for MariaDB support'
               'postgresql-libs: for PostgreSQL support')
@@ -196,7 +196,7 @@ package_zabbix-nightly-proxy() {
 }
 
 package_zabbix-nightly-frontend-php() {
-  pkgdesc='PHP frontend for Zabbix'
+  pkgdesc='PHP frontend for Zabbix, nightly version'
   depends=(zabbix-nightly-server php php-gd)
 
   cd $_base-$pkgver
