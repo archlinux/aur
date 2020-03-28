@@ -12,7 +12,7 @@ license=('GPL3')
 depends=("vdr-api=${_vdrapi}" gcc-libs)
 makedepends=('git')
 _plugname=${pkgname//vdr-/}
-source=("https://github.com/M-Reimer/vdr-plugin-epgborder/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/M-Reimer/vdr-plugin-epgborder/archive/$pkgver.tar.gz")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
 md5sums=('253900586f5e8e65423718e5af40f118')
 
