@@ -1,5 +1,6 @@
 # Maintainer: Radioactiveman <thomas-lange2@gmx.de>
-# Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 # Contributor: Sebastian.Salich@gmx.de
 # Contributor: Doc Angelo
@@ -7,18 +8,18 @@
 _pkgname=mumble
 pkgname="$_pkgname-git"
 _pkgver=1.4.0
-pkgver=1.4.0.r7810.856eefa9b
+pkgver=1.4.0.r7961.310497a40
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A voice chat application similar to TeamSpeak'
 url='https://www.mumble.info/'
 license=('BSD')
-depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf' 'libpulse' 'opus'
-         'xdg-utils' 'libspeechd' 'libpng' 'freetype2' 'fontconfig' 'libxrender')
-makedepends=('boost' 'jack' 'mesa' 'python' 'qt5-tools' 'git')
-optdepends=('jack: JACK audio output'
-            'espeak-ng: Text to Speech support'
-            'speech-dispatcher: Text to Speech support')
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libspeechd' 'libx11' 'libxi'
+         'lsb-release' 'openssl' 'opus' 'qt5-base' 'qt5-svg' 'speex' 'xdg-utils')
+makedepends=('alsa-lib' 'avahi' 'boost' 'jack' 'libpulse' 'libsndfile' 'mesa'
+             'protobuf' 'python' 'qt5-tools' 'git')
+optdepends=('speech-dispatcher: Text-to-speech support'
+            'espeak-ng: Text-to-speech support')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=('git://github.com/mumble-voip/mumble.git' 'https://git.xiph.org/celt.git'
@@ -27,12 +28,12 @@ source=('git://github.com/mumble-voip/mumble.git' 'https://git.xiph.org/celt.git
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   printf "$_pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
 
   git submodule init
   git config submodule.3rdparty/fx11-src.url "$srcdir/fx11"
@@ -44,38 +45,40 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
-
-  # Building mumble
+  cd "$_pkgname"
   qmake-qt5 main.pro \
     CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie \
              no-server no-embed-qt-translations no-update packaged" \
-    DEFINES+="PLUGIN_PATH=/usr/lib/mumble" \
-    INCLUDEPATH+="/usr/include/speech-dispatcher" \
-    LIBS+="-lpng16 -lfreetype -lXrender -lfontconfig"
-
+    DEFINES+="PLUGIN_PATH=/usr/lib/$_pkgname" \
+    INCLUDEPATH+="/usr/include/speech-dispatcher"
   make release
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
-
-  # bin stuff
-  install -m755 -D ./release/mumble "$pkgdir"/usr/bin/mumble
-  install -m755 -D ./scripts/mumble-overlay "$pkgdir"/usr/bin/mumble-overlay
-
-  # lib stuff
-  install -m755 -D ./release/libmumble.so.$_pkgver "$pkgdir"/usr/lib/mumble/libmumble.so.$_pkgver
-  ln -s libmumble.so.$_pkgver "$pkgdir"/usr/lib/mumble/libmumble.so
-  ln -s libmumble.so.$_pkgver "$pkgdir"/usr/lib/mumble/libmumble.so.1
-  ln -s libmumble.so.$_pkgver "$pkgdir"/usr/lib/mumble/libmumble.so.${_pkgver:0:3}
-  install -m755 -D ./release/plugins/liblink.so "$pkgdir"/usr/lib/mumble/liblink.so
-  install -m755 -D ./release/libcelt* "$pkgdir"/usr/lib/mumble/
-
-  # other stuff
-  install -m644 -D ./scripts/mumble.desktop "$pkgdir"/usr/share/applications/mumble.desktop
-  install -m755 -d "$pkgdir"/usr/share/man/man1
-  install -m644 -D ./man/mum* "$pkgdir"/usr/share/man/man1/
-  install -m644 -D ./icons/mumble.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/mumble.svg
-  install -m644 -D ./LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/LICENSE
+  depends+=('libasound.so' 'libdns_sd.so' 'libjack.so' 'libprotobuf.so'
+            'libpulse.so' 'libsndfile.so')
+  cd "$_pkgname"
+  # mumble has no install target: https://github.com/mumble-voip/mumble/issues/1029
+  # binaries and scripts
+  install -vDm 755 release/mumble -t "$pkgdir/usr/bin"
+  install -vDm 755 scripts/mumble-overlay -t "$pkgdir/usr/bin/"
+  # (vendored) libs
+  install -vdm 755 "$pkgdir/usr/lib/$_pkgname/"
+  local _lib
+  for _lib in release/*.so*; do
+    if [ -L "$_lib" ]; then
+      cp -vP "$_lib" "$pkgdir/usr/lib/$_pkgname/"
+    else
+      install -vDm 755 "$_lib" -t "$pkgdir/usr/lib/$_pkgname/"
+    fi
+  done
+  install -vDm 755 release/plugins/*.so -t "$pkgdir/usr/lib/$_pkgname/"
+  # XDG desktop integration
+  install -vDm 644 scripts/mumble.desktop -t "$pkgdir/usr/share/applications"
+  # man page
+  install -vDm 644 "man/${_pkgname}"*.1 -t "$pkgdir/usr/share/man/man1/"
+  # XDG desktop icons
+  install -vDm 644 icons/mumble.svg -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  # license
+  install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
