@@ -41,8 +41,8 @@ pkgbase = zabbix-nightly
 	sha512sums = 7c1072a8cd5837095f857b50124cb45d1bdbddbce108f6f067a35c3c9ebb1ad0502ef617dfa10f9c843631220177a6286a97b1c2a46539200be72fa83cb23b99
 	sha512sums = 64042ddf511b56b2a5a311e34643f4e049c09d909ea65b7343a8a9637f33dc59f2b1342201290ca0774cbcbf616096b3696982047fb622b7d51afb5eceb298dd
 
-pkgname = zabbix-server
-	pkgdesc = Monitoring software for networks and applications
+pkgname = zabbix-nightly-server
+	pkgdesc = Monitoring software for networks and applications, nightly version
 	install = zabbix-server.install
 	depends = net-snmp
 	depends = curl
@@ -55,19 +55,19 @@ pkgname = zabbix-server
 	optdepends = mariadb-libs: for MariaDB support
 	backup = etc/zabbix/zabbix_server.conf
 
-pkgname = zabbix-agent
-	pkgdesc = Monitoring agent for Zabbix
+pkgname = zabbix-nightly-agent
+	pkgdesc = Monitoring agent for Zabbix, nightly version
 	depends = curl
 	depends = pcre
 	backup = etc/zabbix/zabbix_agentd.conf
 
-pkgname = zabbix-agent2
-	pkgdesc = Experimental monitoring agent for Zabbix (Agent 2)
-	depends = zabbix-agent
+pkgname = zabbix-nightly-agent2
+	pkgdesc = Experimental monitoring agent for Zabbix (Agent 2), nightly version
+	depends = zabbix-nightly-agent
 	backup = etc/zabbix/zabbix_agent2.conf
 
-pkgname = zabbix-proxy
-	pkgdesc = Data collecting proxy for Zabbix
+pkgname = zabbix-nightly-proxy
+	pkgdesc = Data collecting proxy for Zabbix, nightly version
 	depends = net-snmp
 	depends = curl
 	depends = libxml2
@@ -79,9 +79,9 @@ pkgname = zabbix-proxy
 	optdepends = postgresql-libs: for PostgreSQL support
 	backup = etc/zabbix/zabbix_proxy.conf
 
-pkgname = zabbix-frontend-php
-	pkgdesc = PHP frontend for Zabbix
-	depends = zabbix-server
+pkgname = zabbix-nightly-frontend-php
+	pkgdesc = PHP frontend for Zabbix, nightly version
+	depends = zabbix-nightly-server
 	depends = php
 	depends = php-gd
 
