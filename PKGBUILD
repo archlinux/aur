@@ -11,8 +11,9 @@ license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton')
 depends=('python'
          'winetricks')
-optdepends=('python-cef: splash dialog support'
-            'zenity: splash dialog support'
+optdepends=('kdialog: KDE splash dialog support'
+            'zenity: GNOME splash dialog support'
+            'python-kivy: splash dialog support (big picture mode)'
             'steam: use proton with steam like intended')
 
 ## fix naming conventions, matching upstream
