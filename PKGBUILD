@@ -41,7 +41,7 @@ url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
 md5sums=('3cee50f910829928a4ce2567fe9a6d30'
-         '1d52b4876be829e314fdf0c0ef8f7ed6')
+         '2f16f968d5a81eede5feb1b07b2d481f')
 
 prepare() {
 ## unpack wine

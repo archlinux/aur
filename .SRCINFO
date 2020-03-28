@@ -25,7 +25,7 @@ pkgbase = proton-ge-custom-bin
 	source = proton-ge-custom-5.4-GE-3.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.4-GE-3/Proton-5.4-GE-3.tar.gz
 	source = supplementary.tar.zst
 	md5sums = 3cee50f910829928a4ce2567fe9a6d30
-	md5sums = 1d52b4876be829e314fdf0c0ef8f7ed6
+	md5sums = 2f16f968d5a81eede5feb1b07b2d481f
 
 pkgname = proton-ge-custom-bin
 
