@@ -2,7 +2,7 @@
 
 _name=etesync
 pkgname=python-etesync
-pkgver=0.10.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Python API to interact with an EteSync server"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('python-appdirs' 'python-asn1crypto' 'python-cffi'
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-coverage')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('bb16e57d0081cd3627e9e7e2465176deae29c45b1b9033cbd3fc463bab4d2537d89aa0f15d202db860ef0d6b057fe96543a6361523b828da86bf811f407b3c43')
+sha512sums=('f3850b98451dcc8844ec5aadfac45542d9269041e66eb549e3b33531869da35315013c95128478f5dde07b8a86d0f2d5939489f70e81bf700f46805e5405e390')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
