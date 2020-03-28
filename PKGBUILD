@@ -18,7 +18,8 @@ optdepends=('kdialog: KDE splash dialog support'
             'python-kivy: splash dialog support (big picture mode)'
             'steam: use proton with steam like intended'
             'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
-            'vulkan-driver: actually have a vulkan driver installed')
+            'vulkan-driver: actually have a vulkan driver installed'
+            'linux-fsync: a kernel with futex-wait-multiple support')
 
 ## makepkg options
 options=('!strip')
