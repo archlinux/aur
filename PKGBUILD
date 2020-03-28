@@ -5,7 +5,7 @@
 pkgname=gnuplot-git
 pkgver=5.5r20200323.11123
 _majorver=5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
 arch=('i686' 'x86_64')
 url="https://github.com/gnuplot/gnuplot"
