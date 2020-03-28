@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=r150.b519d8a265
+pkgver=r157.a4d20d4d03
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
@@ -71,7 +71,7 @@ package() {
   install -d "$pkgdir"/usr/lib/systemd/system
   install -m644 greetd/greetd.service "$pkgdir"/usr/lib/systemd/system/
 
-  echo 'u greeter - "greetd greeter user"' |
+  echo 'u greeter - "greetd greeter user" - /bin/bash' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/greetd.conf"
 
   install -d "$pkgdir"/etc/greetd
