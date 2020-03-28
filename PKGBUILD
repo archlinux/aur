@@ -35,7 +35,6 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/vdr-plugin-${_plugname}"
-  git tag v2.3.1 -f d5f1c62fc4e9dae271b916f9a143e40e6621d339
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
@@ -48,7 +47,6 @@ build() {
   cd "${srcdir}/vdr-plugin-$_plugname"
   make REGEXLIB='' #Empty REGEXLIB to force regex.h from glibc
 }
-
 
 package() {
   cd "${srcdir}/vdr-plugin-$_plugname"
