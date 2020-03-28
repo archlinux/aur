@@ -6,7 +6,7 @@
 pkgname="python2-gimp"
 _pkgname="gimp"
 pkgver="2.10.18"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Python 2 plugins support for GIMP'
 url='https://www.gimp.org/'
 arch=('x86_64')
