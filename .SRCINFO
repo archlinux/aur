@@ -11,15 +11,18 @@ pkgbase = proton-ge-custom-legacy-bin
 	license = MPL
 	license = custom
 	depends = python
-	optdepends = winetricks: protonfixes backend
-	optdepends = wine-staging: 32bit prefixes
+	depends = winetricks
+	depends = vulkan-icd-loader
 	optdepends = python-cef: splash dialog support
 	optdepends = zenity: splash dialog support
 	optdepends = steam: use proton with steam like intended
+	optdepends = lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes
+	optdepends = vulkan-driver: actually have a vulkan driver installed
+	options = !strip
 	source = proton-ge-custom-legacy-4.21-GE-2.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/4.21-GE-2/Proton-4.21-GE-2.tar.gz
 	source = supplementary.tar.zst
 	md5sums = 19c4163bad6d868ce7990f258369a4c6
-	md5sums = 07c5abd3c7d734661ac9d889918a5cf3
+	md5sums = 163a246988a7f40d920ecbf0ef4c4cc8
 
 pkgname = proton-ge-custom-legacy-bin
 

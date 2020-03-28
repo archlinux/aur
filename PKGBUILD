@@ -8,12 +8,17 @@ pkgver=4.21_GE_2
 pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
-depends=('python')
-optdepends=('winetricks: protonfixes backend'
-            'wine-staging: 32bit prefixes'
-            'python-cef: splash dialog support'
+depends=('python'
+         'winetricks'
+         'vulkan-icd-loader')
+optdepends=('python-cef: splash dialog support'
             'zenity: splash dialog support'
-            'steam: use proton with steam like intended')
+            'steam: use proton with steam like intended'
+            'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
+            'vulkan-driver: actually have a vulkan driver installed')
+
+## makepkg options
+options=('!strip')
 
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
@@ -32,7 +37,7 @@ url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
 md5sums=('19c4163bad6d868ce7990f258369a4c6'
-         '07c5abd3c7d734661ac9d889918a5cf3')
+         '163a246988a7f40d920ecbf0ef4c4cc8')
 
 prepare() {
 ## unpack wine
