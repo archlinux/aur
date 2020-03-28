@@ -1,7 +1,7 @@
 pkgbase = flipper
 	pkgdesc = A desktop debugging platform for mobile developers
-	pkgver = 0.34.0
-	pkgrel = 2
+	pkgver = 0.35.0
+	pkgrel = 1
 	url = https://fbflipper.com/
 	arch = any
 	license = MIT
@@ -13,9 +13,9 @@ pkgbase = flipper
 	depends = nss
 	optdepends = watchman: An inotify-based file watching and job triggering command line utility
 	optdepends = android-sdk: Android debugging support
-	source = https://github.com/facebook/flipper/archive/v0.34.0.tar.gz
+	source = https://github.com/facebook/flipper/archive/v0.35.0.tar.gz
 	source = flipper.desktop
-	md5sums = 289dd67c175c660ba9704dd05eefb292
+	md5sums = 664a436410b002c86acb8ff9f3bfbc85
 	md5sums = 3835f5d90a60f80dc644259c9aa713e5
 
 pkgname = flipper
