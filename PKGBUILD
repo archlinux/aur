@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Snapmaker 3-in-1 Software"
 url="http://www.snapmaker.com"
 license=('custom')
-makedepends=('gconf')
+depends=('gconf')
 arch=('x86_64')
 md5sums=('b6f700e09157553f161b21d12cd748fb')
 
