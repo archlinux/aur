@@ -2,19 +2,18 @@
 # Previous Maintainer: Luke R. <g4jc@bulletmail.org> GPG:  c25519/D85D2F527B0
 
 pkgname=uftp
-pkgver=4.10
+pkgver=4.10.1
 pkgrel=1
-pkgdesc="UFTP is an encrypted multicast file transfer program, designed 
-to securely, reliably, and efficiently transfer files to multiple 
-receivers simultaneously."
+pkgdesc="UFTP is an encrypted multicast file transfer program, designed to securely, reliably, and efficiently transfer files to multiple receivers simultaneously."
 arch=(x86_64)
 url="https://uftp-multicast.sourceforge.net/"
 license=('GPL3')
 makedepends=('gcc' 'openssl')
 source=("https://downloads.sourceforge.net/project/$pkgname-multicast/source-tar/$pkgname-$pkgver.tar.gz")
-sha512sums=('204d1fa6134ca7481d2594cd0353cb53e84c5f25c28541a3b1f079ad86caea5cba056bf2a95a146c79df340bdc9c953c9333f8660991ae452c7fca4d7388bf7a')
+sha512sums=('9ef4594e0cde2f64970523661fcee07f34600bd4f2ab235c34bde9d20ef1b0312d5e430e1f52ab605c188c42aee4a0384ed02ae9f5e93b3edc062f848a8130bf')
 
--prepare() {
+
+prepare() {
   cd "$srcdir/${pkgname}-${pkgver}/"
 }
 
