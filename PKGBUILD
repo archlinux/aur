@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-git
-pkgver=5.5r20200313.11107
+pkgver=5.5r20200323.11123
 _majorver=5.5
 pkgrel=1
 pkgdesc="A command-line driven interactive function and data plotting utility - git version"
@@ -42,6 +42,8 @@ build() {
 	  --without-libcerf \
 	  --with-qt=qt5 
   make pkglibexecdir=/usr/bin
+  cd docs
+  make info
 }
 
 package() {
