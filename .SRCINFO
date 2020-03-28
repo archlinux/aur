@@ -1,17 +1,17 @@
 pkgbase = chromeos-gtk-theme-git
 	pkgdesc = A Material Design theme for GNOME/GTK based desktop environments.
-	pkgver = 1.218bb0a
+	pkgver = r50.5226421
 	pkgrel = 1
-	url = https://github.com/vinceliuice/ChromeOS-theme
+	url = https://github.com/vinceliuice/chromeos-theme
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gtk3
-	depends = gtk-engine-murrine
-	depends = gtk-engines
+	optdepends = gtk-engine-murrine
+	optdepends = gtk-engines
+	provides = chromeos-gtk-theme
 	options = !strip
-	source = git+https://github.com/vinceliuice/ChromeOS-theme
-	md5sums = SKIP
+	source = git+https://github.com/vinceliuice/chromeos-theme
+	sha256sums = SKIP
 
 pkgname = chromeos-gtk-theme-git
 
