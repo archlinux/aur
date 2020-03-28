@@ -1,6 +1,6 @@
 pkgbase = mangband
 	pkgdesc = A free online multiplayer real-time roguelike game, derived from the single player game Angband (ncurses-only)
-	pkgver = 1.5.2
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = http://www.mangband.org/
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = mangband
 	license = GPL
 	license = custom
 	depends = ncurses5-compat-libs
-	source = http://mangband.org/download/mangband-1.5.2.tar.gz
-	md5sums = 4cb550a19535de739d014d1a6e57353c
+	source = https://mangband.org/download/mangband-1.5.3.tar.gz
+	md5sums = d0e62faf191e6acd23c70a1f70a40685
 
 pkgname = mangband
 
