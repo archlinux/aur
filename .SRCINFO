@@ -1,7 +1,7 @@
 pkgbase = conky-bargile
 	pkgdesc = Yet another conky-lua theme, this one includes some kind of an engine
 	pkgver = 0.1a
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Noeljunior/conky-bargile
 	arch = any
 	license = GPL
@@ -9,7 +9,7 @@ pkgbase = conky-bargile
 	depends = lm_sensors
 	depends = hddtemp
 	depends = git
-	depends = openbsd-netcat
+	depends = netcat
 	source = conky-bargile::git+https://github.com/Noeljunior/conky-bargile
 	md5sums = SKIP
 
