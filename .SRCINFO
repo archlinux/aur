@@ -1,14 +1,14 @@
 pkgbase = stylelint-config-standard
 	pkgdesc = The standard shareable config for stylelint
-	pkgver = 19.0.0
+	pkgver = 20.0.0
 	pkgrel = 1
 	url = https://github.com/stylelint/stylelint-config-standard
 	arch = any
 	license = MIT
 	makedepends = npm
-	noextract = stylelint-config-standard-19.0.0.tgz
-	source = https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-19.0.0.tgz
-	sha256sums = 640c3e96238dbf7fe1196a499d951eb6022c44bbb149b6cfdb35cb8d3d377e1b
+	noextract = stylelint-config-standard-20.0.0.tgz
+	source = https://registry.npmjs.org/stylelint-config-standard/-/stylelint-config-standard-20.0.0.tgz
+	sha256sums = 319be7098308a54e59148bd874eb97a25febf0b33c677d88b4adb87884720d79
 
 pkgname = stylelint-config-standard
 

@@ -1,7 +1,7 @@
 # Maintainer: Stijn Seghers <stijnseghers at gmail dot com>
 
 pkgname=stylelint-config-standard
-pkgver=19.0.0
+pkgver=20.0.0
 pkgrel=1
 pkgdesc='The standard shareable config for stylelint'
 arch=('any')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('640c3e96238dbf7fe1196a499d951eb6022c44bbb149b6cfdb35cb8d3d377e1b')
+sha256sums=('319be7098308a54e59148bd874eb97a25febf0b33c677d88b4adb87884720d79')
 
 package() {
   npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
