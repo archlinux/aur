@@ -1,0 +1,34 @@
+pkgbase = calibre-web
+	pkgdesc = Web app for browsing, reading and downloading eBooks stored in a Calibre database
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/janeczku/calibre-web
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-babel
+	depends = python-flask-babel
+	depends = python-flask-login
+	depends = python-flask-principal
+	depends = python-flask
+	depends = python-pypdf2
+	depends = python-pytz
+	depends = python-requests
+	depends = python-sqlalchemy
+	depends = python-tornado
+	depends = python-wand
+	depends = python-unidecode
+	depends = python-blinker
+	depends = python-iso639
+	provides = calibre-web
+	source = calibre-web-0.6.6.tar.gz::https://github.com/janeczku/calibre-web/archive/0.6.6.tar.gz
+	source = calibre-web.service
+	source = calibre-web.sysusers
+	source = calibre-web.tmpfiles
+	md5sums = 18843e0056336f6b76efa1a9974efe34
+	md5sums = e8bd98c32daa92e0dc32fddde579d30f
+	md5sums = a0a99595f01f35e5b3f78fa5379d10ae
+	md5sums = 40101a01e29b944c7eb889b34849d8c5
+
+pkgname = calibre-web
+
