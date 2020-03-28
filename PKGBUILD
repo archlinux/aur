@@ -9,7 +9,7 @@ arch=("x86_64")
 license=("GPL")
 
 pkgver=v12.r33.g1483c4e
-pkgrel=1
+pkgrel=2
 
 provides=("gnome-shell-extension-cast-to-tv")
 conflicts=("gnome-shell-extension-cast-to-tv")
@@ -70,4 +70,12 @@ package() {
         -Dm644 \
         nautilus/nautilus-cast-to-tv.py \
         "$pkgdir/usr/share/nautilus-python/extensions/nautilus-cast-to-tv.py"
+
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+
+    # npm gives ownership of ALL FILES to build user
+    # https://bugs.archlinux.org/task/63396
+    chown -R root:root "${pkgdir}"
 }
