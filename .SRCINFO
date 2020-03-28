@@ -1,10 +1,11 @@
 pkgbase = mingw-w64-chrono-date
 	pkgdesc = A date and time library based on the C++11/14/17 <chrono> header
 	pkgver = 2.4.1+134+g9a0ee25
-	pkgrel = 4
+	pkgrel = 5
 	url = https://howardhinnant.github.io/date/date.html
 	arch = any
 	license = MIT
+	makedepends = mingw-w64-binutils
 	makedepends = mingw-w64-cmake
 	makedepends = mingw-w64-gcc
 	makedepends = git
