@@ -1,9 +1,11 @@
-# Maintainer: Det <nimetonmaili g-mail>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Det <nimetonmaili g-mail>
 # Contributor: Pimper (M0Rf30)
 
 _pkgname=npapi-vlc
 pkgname=$_pkgname-git
-pkgver=2.2.1.95.r1444.gd5accd8
+_commit=784b0643c89878f589472b849bbc709d8846a926
+pkgver=3.0.3.r1570.3.0.3
 pkgrel=1
 pkgdesc="The modern VLC Mozilla (NPAPI) plugin - Git version"
 arch=('x86_64')
@@ -14,7 +16,7 @@ makedepends=('git' 'gtk2' 'npapi-sdk')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!libtool')
-source=("git+$url.git")
+source=("git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,26 +25,22 @@ pkgver() {
   echo $(git describe | cut -d "-" -f1-2 | tr - .).r$(git rev-list HEAD --count).$(git describe | cut -d "-" -f3)
 }
 
+prepare() {
+  cd $_pkgname
+  git submodule update --init
+}
+
 build() {
   cd $_pkgname
 
-  msg2 "Updating sources..."
-  git submodule update --init
-
-  msg2 "Starting autogen.sh..."
-  sh ./autogen.sh
-
-  msg2 "Starting configure..."
+  ./autogen.sh
   ./configure --prefix=/usr
-
-  msg2 "Starting make..."
   make
 }
 
 package() {
   cd $_pkgname
 
-  msg2 "Starting make install..."
   make DESTDIR="$pkgdir" install
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/COPYING"
