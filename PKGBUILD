@@ -11,7 +11,7 @@ depends=('mesa' 'glu')
 makedepends=(
     'vi'
     'gcc-fortran'
-    'xproto'
+    'xorgproto'
     'libx11'
     'mesa'
     'glu'
