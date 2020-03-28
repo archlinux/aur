@@ -29,6 +29,8 @@ package_chromeos-kde-git() {
     cd $_pkgname
 
     install -d "$pkgdir"/usr/share
+    
+    rm sddm/{README.md,install.sh}
 
     cp -r aurorae "$pkgdir"/usr/share
     cp -r color-schemes "$pkgdir"/usr/share
