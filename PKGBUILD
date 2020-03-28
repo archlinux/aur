@@ -12,7 +12,7 @@ url="https://github.com/durchflieger/${pkgbase}"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('libusbx' 'python2' "vdr-api=${_vdrapi}" 'zip')
-source=("https://github.com/durchflieger/${pkgbase}/archive/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/durchflieger/${pkgbase}/archive/v${pkgver}.tar.gz"
         '45-df10ch.rules'
         "50-dfatmo.conf")
 md5sums=('6de5945600b0f2bea6af52ccf8f1cc32'
