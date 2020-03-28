@@ -1,12 +1,13 @@
 pkgbase = stockfish
 	pkgdesc = A strong chess engine written by Tord Romstad, Marco Costalba, Joona Kiiski
 	pkgver = 11
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://stockfishchess.org/
 	arch = i686
 	arch = x86_64
 	arch = armv7
+	arch = armv7h
 	license = GPL3
 	depends = glibc
 	source = https://stockfishchess.org/files/stockfish-11-linux.zip
