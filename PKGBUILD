@@ -10,11 +10,14 @@ arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton')
 depends=('python'
-         'winetricks')
+         'winetricks'
+         'vulkan-icd-loader')
 optdepends=('kdialog: KDE splash dialog support'
             'zenity: GNOME splash dialog support'
             'python-kivy: splash dialog support (big picture mode)'
-            'steam: use proton with steam like intended')
+            'steam: use proton with steam like intended'
+            'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
+            'vulkan-driver: actually have a vulkan driver installed')
 
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
