@@ -1,0 +1,24 @@
+pkgbase = chasquid
+	pkgdesc = SMTP (email) server with a focus on simplicity, security, and ease of operation
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://blitiri.com.ar/p/chasquid
+	arch = x86_64
+	license = Apache
+	checkdepends = msmtp
+	makedepends = git
+	makedepends = go
+	optdepends = dkim-git: DKIM signing (post-data hook)
+	optdepends = clamav: Virus scanning (post-data hook)
+	optdepends = rspamd: Spam filtering (post-data hook)
+	optdepends = spamassassin: Spam filtering (post-data hook)
+	optdepends = greylistd: Greylisting (post-data hook)
+	conflicts = chasquid-git
+	backup = etc/chasquid/chasquid.conf
+	source = chasquid-git::git+https://github.com/albertito/chasquid.git#tag=v1.2
+	source = chasquid.tmpfiles
+	b2sums = SKIP
+	b2sums = 863f656782c152cb345a949b33c33d5cfb3778ff2b2be9a8c07f4c2d12330beacba7725b37d7e31ad1d8092f3c432f9339c25100082699e51e8a99f00fc451b5
+
+pkgname = chasquid
+
