@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=qt-scrcpy
 _name=QtScrcpy
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/barry-ran/$_name/archive/v$pkgver.tar.gz"
 	binaries.patch
 )
-sha256sums=('aba3b61c40cf72615e46bb73178175d6d92775816ed5cda125e31eb7883a5fa6'
+sha256sums=('1ed0475205a0af5c292d7eb763de6cd828ab5baa0898ba819b9711e114dc3111'
             '1fa61a24bf59a62db1b29a3d3ec49186ef6f539ff8d09dd04534d939cb30aedd')
 
 prepare() {
