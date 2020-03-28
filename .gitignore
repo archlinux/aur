@@ -3,5 +3,5 @@
 !.gitignore
 !PKGBUILD
 !brave-beta-bin.sh
-!brave-beta-bin.desktop
-!braveAbout.png
+!brave-browser.desktop
+!logo.png
