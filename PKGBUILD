@@ -9,7 +9,7 @@ _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="software and GPU emulated HD output device plugin for VDR"
 url="https://github.com/ua0lnj/vdr-plugin-softhddevice"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686')
 license=('AGPL3')
 depends=('ffmpeg' 'freeglut' 'glew' 'mesa' "vdr-api=${_vdrapi}" 'xcb-util-wm' 'xorg-server')
 optdepends=('nvidia: Required for VDPAU decoding',
