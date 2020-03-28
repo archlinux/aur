@@ -1,13 +1,14 @@
 pkgbase = lsix
 	pkgdesc = Like "ls", but for images. Shows thumbnails in terminal using sixel graphics.
-	pkgver = 1.6.2
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/hackerb9/lsix
 	arch = any
 	license = GPL3
+	depends = bash
 	depends = imagemagick
-	source = https://raw.githubusercontent.com/hackerb9/lsix/1.6.2/lsix
-	md5sums = 0978dcee2a2e2ff51eddb66ee69e42dc
+	source = https://raw.githubusercontent.com/hackerb9/lsix/1.7.0/lsix
+	md5sums = 91b0f331acaa855cfbcc0675f507c372
 
 pkgname = lsix
 
