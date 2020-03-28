@@ -1,7 +1,7 @@
 pkgbase = sway9
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager (personal build)
 	pkgver = 1.4
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 1
 	url = https://github.com/Streetwalrus/sway9
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = sway9
 	depends = gdk-pixbuf2
 	depends = json-c
 	depends = pango
+	depends = polkit
 	depends = pcre
 	depends = swaybg
 	depends = ttf-font

@@ -6,13 +6,23 @@
 pkgname=sway9
 pkgver=1.4
 epoch=1
-pkgrel=5
+pkgrel=6
 _commit=8cbcdc245c8a215279711cc18fc9f2d0a2577933
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager (personal build)'
 arch=(x86_64)
 url='https://github.com/Streetwalrus/sway9'
 license=(MIT)
-depends=(cairo gdk-pixbuf2 json-c pango pcre swaybg ttf-font wlroots)
+depends=(
+  'cairo'
+  'gdk-pixbuf2'
+  'json-c'
+  'pango'
+  'polkit'
+  'pcre'
+  'swaybg'
+  'ttf-font'
+  'wlroots'
+)
 makedepends=(git meson ninja scdoc setconf wayland-protocols)
 provides=(sway)
 conflicts=(sway)
