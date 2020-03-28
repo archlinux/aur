@@ -2,7 +2,7 @@
 # Contributor: Oliver Gondža <ogondza@gmail.com>
 pkgname=dumpling
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Automation friendly java threaddump analyzer"
 arch=('any')
@@ -29,5 +29,5 @@ validpgpkeys=()
 
 package() {
   install -D -m 644 "dumpling-cli-$pkgver-shaded.jar" "$pkgdir/var/lib/dumpling/dumpling.jar"
-  install -D -m 755 "dumpling" "$pkgdir/usr/bin/dumpling"
+  install -D -m 755 "../dumpling" "$pkgdir/usr/bin/dumpling"
 }

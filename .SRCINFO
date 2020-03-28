@@ -1,7 +1,7 @@
 pkgbase = dumpling
 	pkgdesc = Automation friendly java threaddump analyzer
 	pkgver = 2.4
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://olivergondza.github.io/dumpling/
 	arch = any
