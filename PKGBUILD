@@ -4,12 +4,12 @@ pkgname=gnome-shell-extension-cast-to-tv-git
 pkgdesc="Cast files to your Chromecast or other devices over local network"
 _gnomeextensionname="cast-to-tv@rafostar.github.com"
 
-url="https://github.com/Rafostar/$pkgname"
+url="https://github.com/Rafostar/gnome-shell-extension-cast-to-tv"
 arch=("x86_64")
 license=("GPL")
 
 pkgver=v12.r33.g1483c4e
-pkgrel=2
+pkgrel=3
 
 provides=("gnome-shell-extension-cast-to-tv")
 conflicts=("gnome-shell-extension-cast-to-tv")
