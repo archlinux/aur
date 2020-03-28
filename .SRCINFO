@@ -1,8 +1,8 @@
 pkgbase = linux-zen-vfio
 	pkgdesc = Linux ZEN
-	pkgver = 5.5.9.zen1
+	pkgver = 5.5.13.zen1
 	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.5.9-zen1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.5.13-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-zen-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.5.9-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.5.13-zen1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch

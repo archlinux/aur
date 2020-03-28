@@ -1,7 +1,7 @@
 # Maintainer: Shayne Hartford<shayneehartford@gmail.com>
 
 pkgbase=linux-zen-vfio
-pkgver=5.5.9.zen1
+pkgver=5.5.13.zen1
 pkgrel=1
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
