@@ -1,0 +1,15 @@
+pkgbase = libretro-pcsx2
+	pkgdesc = Launch Sony PlayStation 2 games through PCSX2, directly from RetroArch.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/coldscientist/libretro-pcsx2-launcher
+	arch = x86_64
+	groups = libretro
+	license = MIT
+	depends = pcsx2
+	depends = libretro-core-info
+	source = libretro-pcsx2::https://github.com/coldscientist/libretro-pcsx2-launcher/archive/1.1.1.tar.gz
+	sha256sums = 223894a0342be428f21914e8398cbc95f5dc394fcef66c848ebbe414a1259bdd
+
+pkgname = libretro-pcsx2
+
