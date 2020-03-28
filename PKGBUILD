@@ -4,14 +4,15 @@ _pkgexec=usc-game
 pkgname=unnamed-sdvx-clone
 _pkgnum='0.4'
 pkgver="v$_pkgnum"
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A game based on K-Shoot MANIA and Sound Voltex"
 arch=('x86_64')
 license=('MIT')
+url="https://github.com/Drewol/unnamed-sdvx-clone"
 
 depends=(freetype2 libogg libvorbis sdl2 zlib libpng libjpeg libarchive mesa openssl)
-makedepends=(cmake)
+makedepends=(cmake git)
 
 conflicts=(unnamed-sdvx-clone-git)
 
