@@ -11,7 +11,7 @@ arch=(x86_64)
 url='https://www.zabbix.com/'
 license=(GPL)
 makedepends=(postgresql-libs libxml2 unixodbc net-snmp mariadb-libs libldap libevent go)
-conflicts=('zabbix-server zabbix-agent zabbix-agent2 zabbix-proxy zabbix-frontend-php')
+conflicts=("zabbix-server" "zabbix-agent" "zabbix-agent2" "zabbix-proxy" "zabbix-frontend-php")
 source=(https://www.zabbix.com/downloads/nightly/${_pre}-${_base}-${pkgver}-${_git}.tar.gz
         zabbix-agent.{service,sysusers,tmpfiles}
         zabbix-agent2.service
