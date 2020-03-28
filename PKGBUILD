@@ -4,7 +4,7 @@
 _pkgname=imgmin
 pkgname=$_pkgname-git
 pkgver=1.1.r17.g3451031
-pkgrel=6
+pkgrel=7
 pkgdesc="Automated lossy JPEG optimization"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/rflynn/imgmin"
@@ -28,7 +28,7 @@ prepare() {
   #
   # Previously it was possible to use the MagickWand-config script from ImageMagick 7, but it
   #     now hardcodes MagickWand-7 in its pkg-config call.
-  sed -i 's~AC_CHECK_PROGS(MAGICK_CONFIG.*~AC_CHECK_PROG(MAGICK_CONFIG, MagickWand-config, PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config MagickWand)~g' configure.ac
+  sed -i 's~AC_CHECK_PROGS(MAGICK_CONFIG.*~AC_CHECK_PROG(MAGICK_CONFIG, pkg-config, PKG_CONFIG_PATH=/usr/lib/imagemagick6/pkgconfig pkg-config MagickWand)~g' configure.ac
   sed -i 's~ --cppflags~ --cflags~g' src/Makefile.am src/apache2/Makefile.am
   sed -i 's~ --ldflags~ --libs~g' src/Makefile.am src/apache2/Makefile.am
   
