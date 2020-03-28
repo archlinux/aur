@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-gtkgreet-git
-pkgver=r48.075343f256
+pkgver=r49.43d9d4694e
 pkgrel=1
 pkgdesc="GTK based greeter for greetd"
 arch=(x86_64)
@@ -12,7 +12,8 @@ source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-gtkgreet)
 provides=(greetd-gtkgreet)
-makedepends=(meson ninja gtk-layer-shell scdoc)
+makedepends=(meson ninja scdoc)
+depends=(gtk3 gtk-layer-shell)
 
 pkgver() {
   cd gtkgreet
