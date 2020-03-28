@@ -1,4 +1,4 @@
-#Maintainer Robosky <fangyuhao0612@gmail.com>
+# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
 
 pkgname=chromeos-gtk-theme-git
 _pkgname=chromeos-theme
