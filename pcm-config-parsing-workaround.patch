@@ -1,0 +1,14 @@
+diff --git a/src/pcm/pcm_rate.c b/src/pcm/pcm_rate.c
+index fdcaa8de..2ca18714 100644
+--- a/src/pcm/pcm_rate.c
++++ b/src/pcm/pcm_rate.c
+@@ -1557,6 +1557,9 @@ int _snd_pcm_rate_open(snd_pcm_t **pcmp, const char *name,
+ 			continue;
+ 		if (snd_pcm_conf_generic_id(id))
+ 			continue;
++		if (strcmp(id, "bitrate") == 0 || strcmp(id, "rate") == 0 || strcmp(id, "card") == 0 || strcmp(id, "channels") == 0 || strcmp(id, "format") == 0) {
++			continue;
++		}
+ 		if (strcmp(id, "slave") == 0) {
+ 			slave = n;
+ 			continue;
