@@ -4,7 +4,7 @@ pkgver=1.0
 pkgrel=1
 #epoch=
 pkgdesc="Automate managing STM32CubeMX + PlatformIO projects" 
-arch=('any')
+arch=('x86_64')
 url="https://github.com/kynguyen98/stm32pio/"
 license=('MIT')
 #groups=()
@@ -42,7 +42,9 @@ md5sums=('SKIP')
 #}
 
 package() {
-	cd "$srcdir/$pgkver"
-#	make DESTDIR="$pkgdir/" install
-    make install --root="$pkgdir/" --optimize=1
+	cd "$srcdir/$pkgname-$pkgver"
+#    cd src/stm32pio-1.0
+#	make DESTDIR="$srcdir/$pkgname-$pkgver" install
+	make install
+#    make install --root="$pkgdir/" --optimize=1
 }
