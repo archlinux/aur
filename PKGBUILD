@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('graphicsmagick' 'libmariadbclient' "vdr-api=${_vdrapi}")
 makedepends=('imlib2')
 _plugname=${pkgname//vdr-/}
-source=("https://github.com/horchi/$_plugname/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/horchi/$_plugname/archive/$pkgver.tar.gz"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf"
         "var/lib/vdr/plugins/$_plugname/epg.dat")
