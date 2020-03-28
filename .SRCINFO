@@ -1,6 +1,6 @@
 pkgbase = ums
 	pkgdesc = Universal Media Server: a DLNA-compliant UPnP Media Server.
-	pkgver = 9.3.0
+	pkgver = 9.3.1
 	pkgrel = 1
 	url = http://www.universalmediaserver.com/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = ums
 	optdepends = vlc: For Internet video/audio
 	backup = opt/ums/UMS.conf
 	backup = opt/ums/WEB.conf
-	source = https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/9.3.0/UMS-9.3.0.tgz
+	source = https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/9.3.1/UMS-9.3.1.tgz
 	source = ums.desktop
 	source = ums.service
 	source = ums.timer
