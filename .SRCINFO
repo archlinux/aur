@@ -1,7 +1,7 @@
 pkgbase = urn-git
 	pkgdesc = Split timer for speedrunning
-	pkgver = r94.8494e08
-	pkgrel = 2
+	pkgver = r96.246a7a6
+	pkgrel = 1
 	url = https://github.com/3snowp7im/urn
 	install = urn-git.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = urn-git
 	license = GPL3
 	makedepends = imagemagick
 	makedepends = xxd
+	makedepends = git
 	depends = gtk3
 	depends = jansson
 	depends = hicolor-icon-theme
