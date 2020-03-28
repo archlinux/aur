@@ -20,10 +20,14 @@ pkgbase = dwm-jfchevrette
 	source = config.h
 	source = dwm.desktop
 	source = dwm-attachaside-6.1.diff
+	source = dwm-rotatestack-20161021-ab9571b.diff
+	source = dwm-uselessgap-6.2.diff
 	sha256sums = 97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e
-	sha256sums = ce156c4ff6be6f664f5c1eb41e8ae8228c15d0282410be3ecdd58598bb8867d2
+	sha256sums = 1aa35c0d21fc32263b3eb484df76b5cc883255201c817dfc3c89f3e4266e8295
 	sha256sums = bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81
 	sha256sums = 86bdb4291c0f8f9b0c6fbbac9f05403224872b786fc5e74f3b141c8f2ce6c7a1
+	sha256sums = 27c889d424e1b539cd8b113d0c4f9693be521a0a2ef5adf246ecf3efb4208f3c
+	sha256sums = 5667251372a5f3e8f297a2b458637ead9627f608b8e86e7a517baf791106a237
 
 pkgname = dwm-jfchevrette
 
