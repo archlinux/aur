@@ -3,7 +3,7 @@
 
 
 pkgname=smtube-qt4
-pkgver=19.6.0
+pkgver=20.1.0
 pkgrel=1
 pkgdesc="Search, download and play videos from YouTube."
 arch=('i686' 'x86_64')
