@@ -3,7 +3,7 @@
 pkgname=guile-git
 epoch=1
 _majorver=3.0
-pkgver=3.0.1.r1.g7c17655cd
+pkgver=3.0.2.r1.ge37b1fb34
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64' 'aarch64')
@@ -40,5 +40,5 @@ package() {
   done
   mv r5rs.info r5rs-${_majorver}.info
   mv "$pkgdir"/usr/share/aclocal/guile.m4 "$pkgdir"/usr/share/aclocal/guile-${_majorver}.m4
-  rm "$pkgdir"/usr/lib/libguile-3.0.so.1.1.0-gdb.scm
+  rm "$pkgdir"/usr/lib/libguile-3.0.so.*-gdb.scm
 }
