@@ -1,18 +1,16 @@
 pkgbase = avogadroapp
-	pkgdesc = An advanced molecular editor designed for cross-platform use in computational chemistry, molecular modeling, bioinformatics, materials science, and related areas.
-	pkgver = 1.90.0
+	pkgdesc = An advanced molecular editor
+	pkgver = 1.93.0
 	pkgrel = 1
 	url = http://www.openchemistry.org/projects/avogadro2/
-	arch = i686
 	arch = x86_64
-	license = GPL2
+	license = BSD
 	makedepends = cmake
 	makedepends = eigen
 	depends = avogadrolibs
-	depends = hdf5
 	optdepends = openbabel: Open Babel plugin actions
-	source = https://github.com/OpenChemistry/avogadroapp/archive/1.90.0.tar.gz
-	sha512sums = 7842cedb642f2a153f80b1b10985f80067068b6fc3aca9d872002b3826b3b074390a7186e0857cd65df4747b34e9b359cdae19aad494ddd6bd31490a1dc3f667
+	source = https://github.com/OpenChemistry/avogadroapp/archive/1.93.0.tar.gz
+	sha256sums = 8cf913058aff58fe588531618a680d82401fbfe3f21e4783a44979f4a2dd5586
 
 pkgname = avogadroapp
 
