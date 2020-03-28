@@ -7,12 +7,10 @@
 # Contributor: tobias <tobias@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
-
-
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched-with-scrolling
 pkgver=9.22
-pkgrel=10
+pkgrel=11
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing and scrolling in pages'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -27,11 +25,12 @@ source=(http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
         'urxvt-tabbed.desktop'
         'font-width-fix.patch'
         'line-spacing-fix.patch'
-        'https://gist.githubusercontent.com/alexoj/df5bae7a4825cb596581/raw/75a1e75c2ae1ec5c0db68a29f8a6821e9e3d87a5/sgr-mouse-mode.patch'
+        'sgr-mouse-mode.patch'
         'fix-smart-resize-with-x11-frame-borders.patch'  # will be in 9.22+
         'clear.patch'
         'secondaryWheel.patch'
-        'enable-wide-glyphs.patch')
+        'enable-wide-glyphs.patch'
+        '24-bit-color.patch')
 sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           'b5a4507f85ebb7bac589db2e07d9bc40106720d9'
           '62c4ffecfce6967def394dd4d418b68652372ea2'
@@ -42,7 +41,8 @@ sha1sums=('e575b869782fbfed955f84f48b204ec888d91ba1'
           '6dfa49a211c48193c8d87fb9993ed459b2b4387b'
           'fc77f75bd2d51baa4abef81983dab044d7f498ce'
           'e50503f786deb6d6c2b6b8bcf486bf509c14af71'
-          'd9f3b52b273d13fbd4089a7869ab2e70bf190bc9')
+          'd9f3b52b273d13fbd4089a7869ab2e70bf190bc9'
+          '9f5db305863b17175e72f9e2d4a78d0d7f25fd34')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -50,6 +50,7 @@ prepare() {
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
   patch -p0 -i ../sgr-mouse-mode.patch
+  patch -p0 < ../24-bit-color.patch
   patch -p1 -i ../fix-smart-resize-with-x11-frame-borders.patch
   patch -p1 -i ../clear.patch
   patch -p1 -i ../secondaryWheel.patch
@@ -82,11 +83,12 @@ build() {
     --enable-unicode3 \
     --enable-frills \
     --enable-utmp \
-    --enable-wide-glyphs \
     --enable-wtmp \
     --enable-xft \
     --enable-xim \
+    --enable-24-bit-color \
     --enable-xterm-scroll
+    #--enable-wide-glyphs \
   make
 }
 
