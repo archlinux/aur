@@ -1,0 +1,15 @@
+pkgbase = prettymath-git
+	pkgdesc = Write prettified mathematical formulas to stdout using the magic of python and sympy
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Quoteme/prettymath/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-sympy
+	source = git+https://github.com/Quoteme/prettymath.git
+	sha256sums = SKIP
+
+pkgname = prettymath-git
+
