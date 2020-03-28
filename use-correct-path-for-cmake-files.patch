@@ -1,0 +1,15 @@
+--- a/CMakeLists.txt	2020-03-28 14:38:50.126178670 +0100
++++ b/CMakeLists.txt	2020-03-28 14:39:30.323094276 +0100
+@@ -167,11 +167,7 @@
+     export( TARGETS tz NAMESPACE date:: APPEND FILE dateTargets.cmake )
+ endif( )
+ 
+-if( WIN32 AND NOT CYGWIN)
+-    set( CONFIG_LOC CMake )
+-else( )
+-    set( CONFIG_LOC "${CMAKE_INSTALL_LIBDIR}/cmake/date" )
+-endif( )
++set( CONFIG_LOC "${CMAKE_INSTALL_LIBDIR}/cmake/date" )
+ install( EXPORT dateConfig
+   FILE dateTargets.cmake
+   NAMESPACE date::
