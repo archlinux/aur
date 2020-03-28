@@ -1,18 +1,17 @@
 pkgbase = maddy-git
-	pkgdesc = Simple, fast, secure all-in-one mail server
-	pkgver = r607.1bc7036
-	pkgrel = 2
+	pkgdesc = Composable all-in-one mail server (Development version)
+	pkgver = v0.1.1.r0.g8f1d572
+	pkgrel = 1
 	url = https://github.com/foxcpp/maddy
 	arch = x86_64
 	license = MIT
-	makedepends = go-pie
+	makedepends = go
 	makedepends = git
 	makedepends = scdoc
 	depends = glibc
-	provides = maddy
-	conflicts = maddy
+	optdepends = bash: For rspamd-hook script
 	backup = etc/maddy/maddy.conf
-	source = maddy-git::git+https://github.com/foxcpp/maddy.git
+	source = maddy-git::git+https://github.com/foxcpp/maddy.git#branch=dev
 	source = maddy.sysusers
 	source = maddy.tmpfiles
 	sha512sums = SKIP
