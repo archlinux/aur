@@ -1,0 +1,16 @@
+pkgbase = mcachefs-git
+	pkgdesc = Simple filesystem-based file cache based on FUSE
+	pkgver = 94.4307651
+	pkgrel = 1
+	url = https://github.com/Doloops/mcachefs
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = fuse
+	provides = mcachefs
+	conflicts = mcachefs
+	source = mcachefs::git+https://github.com/Doloops/mcachefs.git
+	md5sums = SKIP
+
+pkgname = mcachefs-git
+
