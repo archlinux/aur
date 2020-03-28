@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-tvguide
-pkgver=1.2.17
+pkgver=1.3.1
 epoch=1
 _vdrapi=2.4.1
 pkgrel=1
@@ -16,7 +16,7 @@ _plugname=${pkgname//vdr-/}
 source=("https://projects.vdr-developer.org/git/vdr-plugin-tvguide.git/snapshot/vdr-plugin-tvguide-$pkgver.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('873ab7cc5abd0d48b3882608a5d2a2b197d13af553526740515f1fa78478aab8'
+sha256sums=('1998854af0d0f20c2cdf8e09a0d7b9c5b2d8f6286290b9107b06a0417dcac56f'
             '6e556c9cce43a02eeb881950e4e7c8ea0c270af00f609bf9bf950294203a3391')
 
 build() {
