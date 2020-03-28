@@ -1,6 +1,6 @@
 pkgbase = xtensa-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the Xtensa target
-	pkgver = 2.32
+	pkgver = 2.34
 	pkgrel = 1
 	url = https://www.gnu.org/software/binutils/
 	arch = x86_64
@@ -8,14 +8,12 @@ pkgbase = xtensa-elf-binutils
 	arch = armv7h
 	license = GPL
 	depends = zlib
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.bz2
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.32.tar.bz2.sig
-	source = https://github.com/qca/open-ath9k-htc-firmware/raw/master/local/patches/binutils.patch
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.34.tar.bz2.sig
 	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
 	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
-	sha512sums = 99ec7ed2b5ebfd3ac16cecb1567ec4a72f81ac30717002d601708f7547b2f8122ffcce076c986f22894aede33c54c73012210a4e973ba9b6e2d87a242a2bee12
+	sha512sums = f47e7304e102c7bbc97958a08093e27796b9051d1567ce4fbb723d39ef3e29efa325ee14a1bdcc462a925a7f9bbbc9aee28294c6dc23850f371030f3835a8067
 	sha512sums = SKIP
-	sha512sums = e10ed358794d7aa32ac25087afd804dc4c3028c4664d7608eb86147f041561d16209afa6501bc8a19e02386674011d567640175f6b8bf89275c243dc3b3a9980
 
 pkgname = xtensa-elf-binutils
 
