@@ -13,14 +13,13 @@ arch=('x86_64')
 url="https://ossia.io"
 license=('GPLv3')
 depends=('boost' 'qt5-base' 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'qt5-quickcontrols2' 'qt5-serialport' 'qt5-multimedia' 'qt5-declarative' 'ffmpeg' 'portaudio' 'jack')
-makedepends=('git' 'cmake' 'qt5-tools' 'clang' 'lld')
+makedepends=('git' 'cmake' 'qt5-tools')
 optdepends=('faust' 'lilv' 'suil' 'sdl2')
 provides=('ossia-score-git')
 conflicts=('ossia-score')
 replaces=('i-score')
 source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/OSSIA/libossia.git"
-"git+https://github.com/avilleret/CicmWrapper.git"
 "git+https://github.com/OculusVR/Flicks"
 "git+https://github.com/Microsoft/GSL"
 "git+https://github.com/jcelerier/RtMidi17"
@@ -44,15 +43,6 @@ source=('git+https://github.com/OSSIA/score.git'
 "git+https://github.com/jcelerier/multi_index"
 "git+https://github.com/jcelerier/nano-signal-slot"
 "git+https://github.com/jcelerier/oscpack"
-"git+https://github.com/pure-data/pure-data.git"
-"git+https://git.purrdata.net/jwilkes/purr-data.git"
-"git+https://git.purrdata.net/jwilkes/Gem.git"
-"git+https://github.com/pd-l2ork/cwiid"
-"git+https://git.purrdata.net/jwilkes/fftease.git"
-"git+https://git.purrdata.net/jwilkes/lyonpotpourri3.0.git"
-"git+https://git.purrdata.net/jwilkes/pd-lua.git"
-"git+https://github.com/jwmatthys/rtcmix-in-pd.git"
-"git+https://git.purrdata.net/jwilkes/wiringPi.git"
 "git+https://github.com/pybind/pybind11"
 "git+https://github.com/wjakob/clang-cindex-python3"
 "git+https://github.com/avaneev/r8brain-free-src"
@@ -80,16 +70,6 @@ source=('git+https://github.com/OSSIA/score.git'
 )
 sha256sums=(
 'SKIP'
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
-"SKIP"
 "SKIP"
 "SKIP"
 "SKIP"
@@ -181,7 +161,6 @@ build() {
     git config submodule.3rdparty/multi_index.url $srcdir/multi_index
     git config submodule.3rdparty/nano-signal-slot.url $srcdir/nano-signal-slot
     git config submodule.3rdparty/oscpack.url $srcdir/oscpack
-    git config submodule.3rdparty/pure-data.url $srcdir/pure-data
     git config submodule.3rdparty/pybind11.url $srcdir/pybind11
     git config submodule.3rdparty/rapidjson.url $srcdir/rapidjson
     git config submodule.3rdparty/readerwriterqueue.url $srcdir/readerwriterqueue
@@ -206,12 +185,10 @@ build() {
   mkdir -p "$srcdir/build"
   cd "$srcdir/build"
   cmake -Wno-dev \
-	-DCMAKE_CXX_COMPILER=clang++ \
 	-DSCORE_CONFIGURATION=static-release \
 	-DDEPLOYMENT_BUILD=1 \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
-	-DOSSIA_USE_FAST_LINKER=1 \
 	"$srcdir/$_gitname"
   cmake --build . --target all_unity
 }
