@@ -1,0 +1,1 @@
+d /var/lib/zabbix-agent 0750 zabbix-agent zabbix-agent -

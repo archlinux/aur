@@ -1,0 +1,11 @@
+[Unit]
+Description=Zabbix Agent 2
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zabbix_agent2
+User=zabbix-agent
+
+[Install]
+WantedBy=multi-user.target

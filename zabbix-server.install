@@ -1,0 +1,12 @@
+post_upgrade() {
+	if [[ $(vercmp $2 3.2.4-8) -lt 0 ]]; then
+		post_install
+		echo "Please note that the sqlite service file has been renamed to zabbix-server-sqlite.service in 3.2.4-8"
+	fi
+}
+
+post_install() {
+	# remove this notice after a month or two
+	echo "If you are upgrading from an AUR package, note that you will have to merge the config file (remove PIDFile),"
+	echo "adjust permissions (dedicated users per package) and enable one of zabbix-server-{sqlite,pgsql,mysql}.service"
+}

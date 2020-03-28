@@ -1,0 +1,1 @@
+d /var/lib/zabbix-server 0750 zabbix-server zabbix-server -

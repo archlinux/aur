@@ -1,0 +1,18 @@
+[Unit]
+Description=Zabbix proxy with PostgreSQL
+After=network.target postgresql.service
+Conflicts=zabbix-proxy.service zabbix-proxy-mysql.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zabbix_proxy_pgsql -f
+User=zabbix-proxy
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+CapabilityBoundingSet=cap_net_raw
+AmbientCapabilities=cap_net_raw
+
+[Install]
+WantedBy=multi-user.target

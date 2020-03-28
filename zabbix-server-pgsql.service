@@ -1,0 +1,18 @@
+[Unit]
+Description=Zabbix Server with PostgreSQL
+After=network.target postgresql.service
+Conflicts=zabbix-server.service zabbix-server-mysql.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/zabbix_server_postgresql -f
+User=zabbix-server
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
+CapabilityBoundingSet=cap_net_raw
+AmbientCapabilities=cap_net_raw
+
+[Install]
+WantedBy=multi-user.target
