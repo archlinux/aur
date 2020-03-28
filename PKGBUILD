@@ -3,12 +3,13 @@
 
 pkgname=mingw-w64-chrono-date
 pkgver=2.4.1+134+g9a0ee25
-pkgrel=6
-pkgdesc="A date and time library based on the C++11/14/17 <chrono> header"
+pkgrel=7
+pkgdesc="A date and time library based on the C++11/14/17 <chrono> header (mingw-w64)"
 arch=('any')
 url="https://howardhinnant.github.io/date/date.html"
 license=('MIT')
 options=('!strip' 'staticlibs' '!buildflags')
+depends=('mingw-w64-crt')
 makedepends=(
     'mingw-w64-binutils'
     'mingw-w64-cmake'
@@ -76,6 +77,4 @@ package() {
     for _arch in ${_architectures}; do
         make -C build-${_arch} DESTDIR="$pkgdir/" install
     done
-    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
