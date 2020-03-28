@@ -5,6 +5,7 @@ pkgbase = slimmy-xfwm-theme-git
 	url = https://github.com/Noeljunior/slimmy
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = xfwm4
 	source = slimmy-xfwm-theme-git::git+https://github.com/Noeljunior/slimmy
 	md5sums = SKIP

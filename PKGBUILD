@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/Noeljunior/slimmy"
 license=('GPL')
 depends=("xfwm4")
+makedepends=('git')
 source=("$pkgname::git+https://github.com/Noeljunior/slimmy")
 md5sums=('SKIP')
 
