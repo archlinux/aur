@@ -3,7 +3,7 @@
 # Maintainer: Wainer Vandelli <wainer dot vandelli at gmail dot com>
 # Contributor: Konstantin Gizdov < arch at kge dot pw >
 pkgname=cvmfs
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="A client-server file system implemented in FUSE and developed to deliver software distributions onto virtual machines in a fast, scalable, and reliable way."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://ecsft.cern.ch/dist/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.t
         'settings.cmake'
 	'externals.patch'
         )
-md5sums=('f87bb80f7337418e8ff5f1d76f4db235'
+md5sums=('632101444695dfd947b8cfafff2fc34f'
          '20dc60c61077f4a3711463e8686d260d'
          '22b41fe0f5983d35e3622c52f70b25d6')
 
