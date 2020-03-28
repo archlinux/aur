@@ -1,0 +1,23 @@
+pkgbase = chromeos-kde-git
+	pkgdesc = ChromeOS theme for kde plasma
+	pkgver = r13.715710d
+	pkgrel = 1
+	url = https://github.com/vinceliuice/chromeos-kde
+	arch = any
+	license = GPL3
+	makedepends = git
+	options = !strip
+	source = git+https://github.com/vinceliuice/chromeos-kde.git
+	sha256sums = SKIP
+
+pkgname = chromeos-kde-git
+	optdepends = chromeos-gtk-theme: Matching GTK theme
+	optdepends = kvantum-theme-chromeos: Layan theme for Kvantum Qt style (recommended)
+	optdepends = tela-icon-theme: Matching icon theme
+	provides = chromeos-kde
+
+pkgname = kvantum-theme-chromeos-git
+	pkgdesc = Layan theme for KDE Plasma 5
+	depends = kvantum-qt5
+	provides = kvantum-theme-chromeos
+
