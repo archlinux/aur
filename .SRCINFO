@@ -1,0 +1,15 @@
+pkgbase = imgui-sfml
+	pkgdesc = Library which allows you to use ImGui with SFML
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/eliasdaler/imgui-sfml/
+	arch = any
+	license = MIT
+	makedepends = cmake
+	depends = sfml
+	depends = imgui-src
+	source = https://github.com/eliasdaler/imgui-sfml/archive/v2.1.tar.gz
+	md5sums = 6e7fc0bd05372e668c786f7e25591302
+
+pkgname = imgui-sfml
+
