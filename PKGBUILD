@@ -19,6 +19,9 @@ optdepends=('kdialog: KDE splash dialog support'
             'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
             'vulkan-driver: actually have a vulkan driver installed')
 
+## makepkg options
+options=('!strip')
+
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
 _pkgver=${pkgver//_/-}

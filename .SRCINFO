@@ -20,6 +20,7 @@ pkgbase = proton-ge-custom-bin
 	optdepends = lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes
 	optdepends = vulkan-driver: actually have a vulkan driver installed
 	provides = proton
+	options = !strip
 	source = proton-ge-custom-5.4-GE-3.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/5.4-GE-3/Proton-5.4-GE-3.tar.gz
 	source = supplementary.tar.zst
 	md5sums = 3cee50f910829928a4ce2567fe9a6d30
