@@ -3,7 +3,7 @@
 # Contributor: Eric Vidal <eric@obarun.org>
 
 pkgname=kickshaw
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='A menu editor for freedesktop standard menus'
 url='http://download.savannah.gnu.org/releases/obladi'
