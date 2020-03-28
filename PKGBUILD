@@ -1,7 +1,7 @@
 # Maintainer: José San Juan <josesj@gmail.com>
 pkgname=snapmakerjs
 pkgver=2.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Snapmaker 3-in-1 Software"
 url="http://www.snapmaker.com"
 license=('custom')
