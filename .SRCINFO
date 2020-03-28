@@ -1,0 +1,15 @@
+pkgbase = devdocs-desktop-appimage
+	pkgdesc = A full-featured desktop app for DevDocs.io.
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/egoist/devdocs-desktop
+	arch = x86_64
+	license = MIT
+	provides = devdocs-desktop
+	noextract = DevDocs-0.7.1.AppImage
+	options = !strip
+	source = https://github.com/egoist/devdocs-desktop/releases/download/v0.7.1/DevDocs-0.7.1.AppImage
+	sha256sums = 5bba99a34c90a65eff67aface0b7446cbf43d620a1c195f27e7bb33ab6d3d0c2
+
+pkgname = devdocs-desktop-appimage
+
