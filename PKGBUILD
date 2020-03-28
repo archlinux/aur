@@ -1,21 +1,32 @@
-#Maintainer: D. Can Celasun <can[at]dcc[dot]im>
-#Contributor: Dmitry Batenkov <dima dot batenkov at gmail dot com>
+# Maintainer gilcu3 <gilcu3 at gmail dot com>
+# Contributor: D. Can Celasun <can[at]dcc[dot]im>
+# Contributor: Dmitry Batenkov <dima dot batenkov at gmail dot com>
 
 pkgname=rabbitvcs-thunar
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
-pkgdesc="Thunar front-end for RabbitVCS"
-arch=('i686' 'x86_64')
-url="http://rabbitvcs.org/"
-depends=('thunar>=0.4.0' 'thunarx-python>=0.2.0' 'dbus-python>=0.80' "rabbitvcs>=${pkgver}")
+pkgdesc="Thunar front-end for RabbitVCS SVN GIT HG Extension."
+_gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
+arch=('any')
+url="https://github.com/rabbitvcs/rabbitvcs"
+install=$pkgname.install
+depends=('thunarx-python' 'python-dbus' "rabbitvcs>=$pkgver")
 license=('GPL')
-source=(https://github.com/rabbitvcs/rabbitvcs/archive/v${pkgver}.tar.gz)
-md5sums=('95b7c30945f10333588a39b5f6766136')
+if [ "${_gitcommit}" != "" ]; then
+  source=("rabbitvcs-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
+else
+  source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+fi
+sha256sums=('a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143')
+#sha256sums=('SKIP')
+
+
+build() {
+  if [ "$_gitcommit" != "" ]; then
+    mv "$srcdir/rabbitvcs-$_gitcommit" "$srcdir/rabbitvcs-$pkgver"
+  fi
+}
+
 package(){
-  cd ${srcdir}/rabbitvcs-${pkgver}
-  mkdir -p $pkgdir/usr/lib/thunarx-2/python
-  mkdir -p $pkgdir/usr/lib/thunarx-1/python
-  sed -i '1i #!/usr/bin/env python2' clients/thunar/RabbitVCS.py
-  cp clients/thunar/RabbitVCS.py $pkgdir/usr/lib/thunarx-2/python
-  cp clients/thunar/RabbitVCS.py $pkgdir/usr/lib/thunarx-1/python
+	install -Dm755 "$srcdir/rabbitvcs-$pkgver/clients/thunar/RabbitVCS.py" "$pkgdir/usr/lib/thunarx-3/python/RabbitVCS.py"
 }
