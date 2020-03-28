@@ -2,12 +2,12 @@
 
 pkgname=conky-bargile
 pkgver=0.1a
-pkgrel=3
+pkgrel=4
 pkgdesc="Yet another conky-lua theme, this one includes some kind of an engine"
 arch=('any')
 url="https://github.com/Noeljunior/conky-bargile"
 license=('GPL')
-depends=('conky-lua' 'lm_sensors' 'hddtemp' 'git')
+depends=('conky-cairo-no-nvidia' 'lm_sensors' 'hddtemp' 'git' 'openbsd-netcat')
 source=("$pkgname::git+https://github.com/Noeljunior/conky-bargile")
 md5sums=('SKIP')
 
