@@ -28,7 +28,7 @@ b2sums=(
 )
 
 build() {
-	cd "${srcdir}/${pkgname}-git"
+    cd "${srcdir}/${pkgname}-git"
 
     go build -trimpath -ldflags="\
         -X main.version=${pkgver} \
@@ -41,7 +41,7 @@ build() {
 }
 
 check() {
-	cd "${srcdir}/${pkgname}-git"
+    cd "${srcdir}/${pkgname}-git"
 
     go test ${GOFLAGS} ./...
     setsid -w ./test/run.sh
@@ -53,7 +53,7 @@ check() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-git"
+    cd "${srcdir}/${pkgname}-git"
 
     install -Dm 0644 ../chasquid.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/chasquid.conf"
 
