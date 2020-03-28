@@ -1,0 +1,111 @@
+# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
+
+_target=riscv32-elf
+pkgname=$_target-gcc-bootstrap
+pkgver=9.3.0
+_islver=0.22
+pkgrel=1
+pkgdesc='The GNU Compiler Collection - cross compiler for RISCV32 target - bootstrap version. only used to build initial libc and compiler'
+arch=(x86_64)
+url='http://gcc.gnu.org/'
+license=(GPL LGPL FDL)
+depends=($_target-binutils libmpc zlib)
+makedepends=(gmp mpfr)
+options=(!emptydirs !strip)
+provides=(${pkgname%-bootstrap})
+conflicts=(${pkgname%-bootstrap})
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig}
+        #ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz
+        http://isl.gforge.inria.fr/isl-$_islver.tar.bz2)
+sha512sums=('4b9e3639eef6e623747a22c37a904b4750c93b6da77cf3958d5047e9b5ebddb7eebe091cc16ca0a227c0ecbd2bf3b984b221130f269a97ee4cc18f9cf6c444de'
+            'SKIP'
+            'fc2c9796979610dd51143dcefe4f5c989c4354571cc5a1fcc6b932fd41f42a54f6b43adfd289af61be7bd06f3a523fa6a7d7ee56680e32d8036beb4c188fa668')
+validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.org
+              13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
+              33C235A34C46AA3FFB293709A328C3A2C3C45C06) # Jakub Jelinek <jakub@redhat.com>
+
+
+if [ -n "$_snapshot" ]; then
+  _basedir=gcc-$_snapshot
+else
+  _basedir=gcc-$pkgver
+fi
+
+prepare() {
+  cd $_basedir
+
+  # link isl for in-tree builds
+  ln -sf ../isl-$_islver isl
+
+  echo $pkgver > gcc/BASE-VER
+
+  # Do not run fixincludes
+  sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
+
+  # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" "$srcdir"/$_basedir/{libiberty,gcc}/configure
+
+  rm -rf "$srcdir"/gcc-build
+  mkdir -p "$srcdir"/gcc-build
+}
+
+build() {
+  cd gcc-build
+
+  # using -pipe causes spurious test-suite failures
+  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=48565
+  CFLAGS=${CFLAGS/-pipe/}
+  CXXFLAGS=${CXXFLAGS/-pipe/}
+
+  "$srcdir"/$_basedir/configure \
+      --target=$_target \
+      --prefix=/usr \
+      --libdir=/usr/lib \
+      --libexecdir=/usr/lib \
+      --program-prefix=$_target- \
+      --with-local-prefix=/usr/$_target \
+      --with-build-sysroot=/usr/$_target \
+      --with-sysroot=/usr/$_target \
+      --with-newlib \
+      --without-headers \
+      --disable-shared \
+      --disable-threads \
+      --with-system-zlib \
+      --enable-tls \
+      --enable-languages=c \
+      --disable-libatomic \
+      --disable-libmudflap \
+      --disable-libssp \
+      --disable-libquadmath \
+      --disable-libgomp \
+      --disable-nls \
+      --enable-multilib \
+      --disable-bootstrap \
+      --enable-checking=release
+
+  make inhibit-libc=true all-gcc
+  make inhibit-libc=true all-target-libgcc
+}
+
+package() {
+  cd gcc-build
+
+  make DESTDIR="$pkgdir" inhibit-libc=true install-gcc
+  make DESTDIR="$pkgdir" inhibit-libc=true install-target-libgcc
+
+  # strip target binaries
+  find "$pkgdir"/usr/lib/gcc/$_target/ \
+       -type f -and \( -name \*.a -or -name \*.o \) \
+       -exec $_target-objcopy -R .comment -R .note -R .debug_info -R .debug_aranges \
+       -R .debug_pubnames -R .debug_pubtypes -R .debug_abbrev -R .debug_line \
+       -R .debug_str -R .debug_ranges -R .debug_loc '{}' \;
+
+  # strip host binaries
+  find "$pkgdir"/usr/bin/ "$pkgdir"/usr/lib/gcc/$_target/ -type f -and \( -executable \) -exec strip '{}' \;
+
+  # Remove files that conflict with host gcc package
+  rm -r "$pkgdir"/usr/share/man/man7
+  rm -r "$pkgdir"/usr/share/info
+}
+
