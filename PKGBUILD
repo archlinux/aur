@@ -2,7 +2,7 @@
 
 _target=sh-elf
 pkgname=$_target-binutils
-pkgver=2.32
+pkgver=2.34
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the SuperH target'
 arch=('x86_64' 'i686' 'armv7h')
@@ -10,7 +10,7 @@ url='http://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('99ec7ed2b5ebfd3ac16cecb1567ec4a72f81ac30717002d601708f7547b2f8122ffcce076c986f22894aede33c54c73012210a4e973ba9b6e2d87a242a2bee12'
+sha512sums=('f47e7304e102c7bbc97958a08093e27796b9051d1567ce4fbb723d39ef3e29efa325ee14a1bdcc462a925a7f9bbbc9aee28294c6dc23850f371030f3835a8067'
             'SKIP')
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
