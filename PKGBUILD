@@ -1,8 +1,8 @@
 # Maintainer: Charlie Waters <cawiii at me dot com>
 
 pkgname=openosrs-launcher-appimage
-pkgver=2.1.9.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='Open-source client for Old School RuneScape with more functionality and less restrictions. (AppImage Launcher)'
 arch=('x86_64')
 license=('BSD')
@@ -10,7 +10,7 @@ url='https://github.com/open-osrs/launcher'
 _appimage='OpenOSRS.AppImage'
 source=("https://github.com/open-osrs/launcher/releases/download/${pkgver}/${_appimage}"
         openosrs-launcher.desktop)
-sha256sums=('b16f5d2323194a746cff10f91a40da3b3c9f5c1ca7b039b5659c3e260afe8781'
+sha256sums=('45e7f065b21fceb3b77dc81f3e8742354a2936aead5be9ed4bc0af42d04a182e'
             'SKIP')
 options=(!strip)
 optdepends=('gvfs: enable links')
