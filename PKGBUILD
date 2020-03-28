@@ -11,7 +11,7 @@
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
 _product=thunderbird
-pkgver=75.0b1
+pkgver=75.0b2
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
@@ -64,9 +64,8 @@ _language="$(_localemoz)"
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353')
 
 # Syntax: _dist_checksum 'linux-i686'/'linux-x86_64'
-#linux-i686/ar/thunderbird-75.0b1.tar.bz2
 _dist_checksum() {
-  curl --silent --fail "${_urlbase}/SHA256SUMS" | grep "${1}\/${_language}\/${_product}-${pkgver}.tar.xz" | cut -d ' ' -f1
+  curl --silent --fail "${_urlbase}/SHA256SUMS" | grep "${1}\/${_language}\/${_product}-${pkgver}.tar.bz2" | cut -d ' ' -f1
 }
 
 source_i686=("${_urlbase}/${_arch32}/${_language}/${_product}-${pkgver}.tar.bz2"{,.asc})
@@ -78,11 +77,11 @@ source=("${pkgname}.desktop")
 # with each release, everything is done automatically! Leave them like this!  #
 ###############################################################################
 sha256sums=('e44c55501f650a4e80b9c353b81f33e07ca65808db831eff6ca616aded233827')
-sha256sums_i686=('aa512fc24aa309bf77ecfe5c66435dfcd432ed900478871e13f3e0f978eb84bd'
+sha256sums_i686=($(_dist_checksum "${_arch32}")
                  'SKIP')
-sha256sums_x86_64=('aa512fc24aa309bf77ecfe5c66435dfcd432ed900478871e13f3e0f978eb84bd'
+sha256sums_x86_64=($(_dist_checksum "${_arch64}")
                    'SKIP')
-          
+
 prepare() {
 
   # use colors only if we have them
