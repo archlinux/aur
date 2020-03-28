@@ -1,0 +1,51 @@
+pkgbase = plymouth-themes-adi1090x-pack2
+	pkgdesc = The plymouth theme collection by adi1090x
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/adi1090x/plymouth-themes
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = git+https://github.com/adi1090x/plymouth-themes.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-cyanide
+
+pkgname = plymouth-theme-cybernetic
+
+pkgname = plymouth-theme-dark-planet
+
+pkgname = plymouth-theme-darth-vader
+
+pkgname = plymouth-theme-deus-ex
+
+pkgname = plymouth-theme-dna
+
+pkgname = plymouth-theme-double
+
+pkgname = plymouth-theme-dragon
+
+pkgname = plymouth-theme-flame
+
+pkgname = plymouth-theme-glitch
+
+pkgname = plymouth-theme-glow
+
+pkgname = plymouth-theme-green-blocks
+
+pkgname = plymouth-theme-green-loader
+
+pkgname = plymouth-theme-hexagon
+
+pkgname = plymouth-theme-hexagon-2
+
+pkgname = plymouth-theme-hexagon-alt
+
+pkgname = plymouth-theme-hexagon-dots
+
+pkgname = plymouth-theme-hexagon-dots-alt
+
+pkgname = plymouth-theme-hexagon-hud
+
+pkgname = plymouth-theme-hexagon-red
+
