@@ -1,7 +1,7 @@
-From 291a8a531808a32b25a7649495e835f7b0257fd3 Mon Sep 17 00:00:00 2001
+From bb1cfe5bf25e128d6f8df0bd9ecc999cb58164a7 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 22 Dec 2019 21:02:54 +0000
-Subject: [PATCH 10/11] drm/i915: Add a simple is-bound check before unbinding
+Subject: [PATCH 09/11] drm/i915: Add a simple is-bound check before unbinding
 
 Only acquire the various atomic references required to unbind the vma if
 we do need to unbind the vma.
@@ -37,5 +37,5 @@ index c2c025c4f4ad..83eed642cbcd 100644
  
  		ret = -EBUSY;
 -- 
-2.25.1
+2.25.2
 

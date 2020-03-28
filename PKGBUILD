@@ -15,11 +15,11 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.5.7
+pkgver=5.5.13
 pkgrel=1
 pkgdesc='Linux-libre'
-rcnver=5.5.7
-rcnrel=armv7-x11
+rcnver=5.5.11
+rcnrel=armv7-x14
 url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
@@ -48,15 +48,15 @@ source=(
   # extracted patches from Arch Linux kernel sources
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
-  0004-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-  0005-drm-i915-Serialise-i915_active_acquire-with-__active.patch
-  0006-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
-  0007-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
-  0008-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
-  0009-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
-  0010-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
-  0011-drm-i915-Introduce-a-vma.kref.patch
+  0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+  0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
+  0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
+  0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
+  0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
+  0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
+  0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
+  0010-drm-i915-Introduce-a-vma.kref.patch
+  0011-iwlwifi-don-t-send-GEO_TX_POWER_LIMIT-if-no-wgds-tab.patch
 )
 source_armv7h=(
   # RCN patch (CM3 firmware deblobbed and bloatware removed)
@@ -81,7 +81,7 @@ validpgpkeys=(
 )
 sha512sums=('187368a8fb4e04acfd7d18a024d6cdbc2841bcc06dcfbc3a053706e8512c3e3f573755228347c11bd791b296ec60eb2d67d5075ece2aef234a847e72f2b3e746'
             'SKIP'
-            '9e80c81ba21ce46422f6c9ee94772d5ea0152bb1176444a824c54c740fb58430ffaa1adadce8ecf1647d58fcadaabf6c67938999bf359b9ead4ed9141bc49ba7'
+            '2c882f6256bb9409b59fde28183e71701e969aab8a0e36821550a639a5c5de3e3b129a708f0f9c83135653cfccc837601850b631fb6d63449e2083319aba1d30'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -98,18 +98,18 @@ sha512sums=('187368a8fb4e04acfd7d18a024d6cdbc2841bcc06dcfbc3a053706e8512c3e3f573
             '143dea30c6da00e504c99984a98a0eb2411f558fcdd9dfa7f607d6c14e9e7dffff9cb00121d9317044b07e3e210808286598c785ee854084b993ec9cb14d8232'
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
-            'c817bab02fa530560b9d3d968242e5491e315286a4a1dc9490299dc78806c516831da79422d6ab56df0652b216565a80f10d6dacdcbcbbbe258d31455cc98add'
-            'a9a7c0510d9b1c724f17d47e33925b7dadb529ed57cbdc80120af8884f43190b6bfc7698416d23651eae64c4fed393481715b3d87b528b71d8c03b4141fcca46'
-            'a26d886d6e3e394e7d6a247154120d4c2ba06e9e75385959bbf284c9577da07aee05b718ed06a56d56bec5a726c8013709c560cd280e78525d50dc95fb84bdad'
-            '7395fc2202c76ffff815bb6f6f54a1dc57ffb46b0b25ecf89effe6787dd66bd273dee29dd8636b3160c31fd0bfef0a99bd55f4080e6e075e862640b422c15e2e'
-            'bd68f5d64a6bb502db8b5b96d2823493cda1a5b3c8bd0639b25ae3e47e999fc02dfd3bffa32e8fd710355d9ca0ec5bfe19421158cdc488c2b47b5177caf0f5c8'
-            '3b71120a93c53eb6308bb55b76ec0c1ccd8b3b385d4ce4062cb4f657b84e6bfe28765eb8042f6f8f35860899ee66633a4f59999513bfdc2968b5317215e36347'
-            'd3fbbd202efd72ebac265b89fb8c9c3772fd49dcd6d43910555d55ec96ea5df8c0b03bfe00e2677787643cfc0f547eb49d638774742471ec650067751cecc5e2'
-            '80928026ceeb29bf29a2b2909768ddced2f13c522f6496fa4717a490f087bdd45ae0131cbce37ec227d16071ce562477ca322305a68e8606fc28e3d35759af26'
-            '855de25a3df963506d3cce588e422a4cf24b2cc04c950647b0002f796a921d17ebc49d95cb94c38713e70b6385a91278943df3c707091607a1fd118f519dae87'
-            'f31a943f9942427e79d646186611325e6dd9aa6b100eb869b531e04c2fe934503ff6cc7496ffa8644eeb3bb13ec82e1898def5311f29bb4d286f758dfd848b9a'
-            '9dcde0dd16222ecb09c83025ecc13bb529c78289878c5abb38283a4b10ffe181abc9447423641a271c3f8db79d9bb540eea369cd0108e4948067cf4356bd329e')
-sha512sums_armv7h=('ee01188c9318aa92bd1a683faec89310decd4d6419b5a99fb929a1422fddd16d916024ee008321e8a80ccf905001374d48eb16ab730b5ec16172424ca8d38074'
+            '70858920f0ac56651347f979d5add5323b4ea5ff38e802ee43146b40d4b26ca61903d44b8763a0e9ba080017839ba3fb2f67ec15694c2fba0fd726411e8a96e9'
+            '420a201f16c6e293135dae81e645817e0e4d94fe885035226437c43cdce3db192e3ffebeb423a0304f7c909b2061e85af1299c7451d15d36106e319d9ddb4acf'
+            '33d558d4fdad651de93208d0e9a1c6d62f9c6b85791a24443d1b2ceb6c08da425507f3f025161d399c823b852880ef61761e71f39d22f30f03a66a8c23c36ad5'
+            '3fa77a47394d5e52e0b3c6c96a8c15e755f617aaa2b68758f211103489551b6fe1dfa7082ca32fc0fbc29a9d6c70cb2c419b9484d9e67839bed7182f862bd039'
+            'e75f9062f9bf4c686ced979c4789ea82788aec14f56976ee4c6213ed2af4fd6a1ce1c01c26a71f7afff9a7bc2a2051e366be6c458e413e6fff154b580202e5a0'
+            '19b28696117425e13a94730c0f2edabe2d9ff741095af34c1aeee95f59f9efe9e7cb6124b61b1b31d0d0730f9431281c8d0040db0fc15a80d8028ebe29562cf4'
+            '5d802cc0843ee0d66aca4b57987db2cbeaa27939322244171313ca2d01cc3591ddbbf774edbb69a61830c28560f1af3b740e86495cec600118ee565bc5784536'
+            '5f7af141438bced1d0f3d858fd66d68356a979c5a3eefb1f0a21a00aabdf54d84b2b558c3e1002b6287529ccb760eebbdc9922df50e46154c807ee9e6da9e73a'
+            '8e61e45373fc72877a21caf2b980cdffe36c0086a55656352043ddb11c2394ab634dea0b111454758b67b515ab6070596e227f4ae02fd7c4475d412cfce5d30b'
+            '28abc78b9f63b4fe3c32779d5306a59c37ff4b8868060cb71ba4521aebcb6266509f51fb5dda17eeac4ab89d0f72e63cba1e9e5938d0fc9db00f202b9a1b845f'
+            '42efbf9f7502c9470042f31c9abed0f5590c837f31a4664554fa1829e51093390c1a97bdfb50d1f88ca6bba47e15df9fbb206817a9708ebc30ef469e16a851b4')
+sha512sums_armv7h=('53b5ab4baaf9e58f31e72d5395a7bbb187bc90c75c3ef00a927e282a336e2f5dfe9e54c0d4ad5ab901037ddd7d5c472ae2539f5a6d44a02105bce95b2c23269c'
                    'SKIP'
                    '4ad93d447d8671402dd7a2886b5c1329ffd5dd7b7f87e895f792ae937258c5016c7c0512ad03c4065da7520e656d0764d565171be463a378320fb210b54e3dee'
                    '780e4ce45b35b271dd3459b543681603c1f112f68d5f3500b7c01fdcac205a9d06e9ec13700e8841d4beb831e3e2dda1664a0ac38ef23bb5a47e2df0534767d7'

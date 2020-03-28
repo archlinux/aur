@@ -1,7 +1,7 @@
-From dff3c906fd230a07369d85d501bb11f8b840f4e6 Mon Sep 17 00:00:00 2001
+From 82e980a8fda88e473e2038e729603fb55e8750ea Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Thu, 5 Dec 2019 18:33:32 +0000
-Subject: [PATCH 05/11] drm/i915: Serialise i915_active_acquire() with
+Subject: [PATCH 04/11] drm/i915: Serialise i915_active_acquire() with
  __active_retire()
 
 As __active_retire() does it's final atomic_dec() under the
@@ -75,5 +75,5 @@ index a19e7d89bc8a..378b52d1ab74 100644
  
  	mutex_unlock(&ref->mutex);
 -- 
-2.25.1
+2.25.2
 
