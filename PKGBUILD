@@ -7,8 +7,8 @@
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-icu
-pkgver=65.1
-pkgrel=2
+pkgver=66.1
+pkgrel=1
 pkgdesc="International Components for Unicode library (mingw-w64)"
 arch=('any')
 url="http://site.icu-project.org"
@@ -28,7 +28,7 @@ source=("https://github.com/unicode-org/icu/releases/download/release-${pkgver//
         "0016-icu-pkgconfig.patch"
         "0017-icu-config-versioning.patch"
         "0021-mingw-static-libraries-without-s.patch")
-sha256sums=('53e37466b3d6d6d01ead029e3567d873a43a5d1c668ed2278e253b683136d948'
+sha256sums=('52a3f2209ab95559c1cf0a14f24338001f389615bf00e2585ef3dbc43ecf0a2e'
             'SKIP'
             '0b6f5ea91bb579f03cdfa2737719411e3207169f5921ffeea8564cf24fa46715'
             'a32b3fae6a59599c942e5f8bc2d29416aaedca0ce2832c857ecf99eb7529cee1'
@@ -41,7 +41,7 @@ sha256sums=('53e37466b3d6d6d01ead029e3567d873a43a5d1c668ed2278e253b683136d948'
             '87ebe8962f8c387714f2a697a664a0c49aed2331b988548069d0c211abc36e05'
             '5247102df5604671c33a6e7226e5135a6b48049550861b892f0686dcefec4329'
             'd8612f40b1731d9a94290afcf80c896184a2f15b8ae8f23b3643c64f6cabfa2f')
-validpgpkeys=("FFA9129A180D765B7A5BEA1C9B432B27D1BA20D7")
+validpgpkeys=("4569BBC09DA846FC91CBD21CE1BBA44593CF2AE0")
 
 prepare() {
   cd icu
