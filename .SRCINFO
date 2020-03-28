@@ -1,4 +1,4 @@
-pkgbase = conky
+pkgbase = conky-cairo-no-nvidia
 	pkgdesc = Lightweight system monitor for X - with cairo and without nvidia
 	pkgver = 1.11.5
 	pkgrel = 1
@@ -21,11 +21,12 @@ pkgbase = conky
 	depends = imlib2
 	depends = libxml2
 	depends = libpulse
-	depends = libxnvctrl
+	provides = conky=1.11.5
+	conflicts = conky
 	options = !strip
 	options = debug
-	source = https://github.com/brndnmtthws/conky/archive/v1.11.5.tar.gz
+	source = https://github.com/brndnmtthws/conky/archive/vconky.tar.gz
 	sha256sums = 4cefdd92219a90934c28297e4ac7448a3f69d6aeec5d48c5763b23f6b214ef13
 
-pkgname = conky
+pkgname = conky-cairo-no-nvidia
 

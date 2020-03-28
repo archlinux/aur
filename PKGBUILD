@@ -4,7 +4,8 @@
 # Contributor: James Rayner <james@archlinux.org>
 # Contributor: Partha Chowdhury <kira.laucas@gmail.com>
 
-pkgname=conky
+pkgname=conky-cairo-no-nvidia
+_pkgname=conky
 pkgver=1.11.5
 pkgrel=1
 pkgdesc='Lightweight system monitor for X - with cairo and without nvidia'
@@ -13,13 +14,15 @@ license=('BSD' 'GPL')
 arch=('x86_64')
 makedepends=('cmake' 'docbook2x' 'docbook-xsl' 'man-db' 'git')
 depends=('cairo' 'glib2' 'lua' 'wireless_tools' 'libxdamage' 'libxinerama' 'libxft'
-         'imlib2' 'libxml2' 'libpulse' 'libxnvctrl')
+         'imlib2' 'libxml2' 'libpulse')
+provides=("conky=$pkgver")
+conflicts=('conky')
 source=("https://github.com/brndnmtthws/conky/archive/v${pkgver}.tar.gz")
 sha256sums=('4cefdd92219a90934c28297e4ac7448a3f69d6aeec5d48c5763b23f6b214ef13')
 options=('!strip' 'debug')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 
 	cmake \
 		-D CMAKE_BUILD_TYPE=Release \
@@ -43,9 +46,9 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
-	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm644 extras/vim/syntax/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/syntax/conkyrc.vim
 	install -Dm644 extras/vim/ftdetect/conkyrc.vim "${pkgdir}"/usr/share/vim/vimfiles/ftdetect/conkyrc.vim
 }
