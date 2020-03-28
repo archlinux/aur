@@ -1,6 +1,6 @@
 # Maintainer: Vianney le Clément de Saint-Marcq <vleclement AT gmail·com>
 pkgname=python-pyftdi
-pkgver=0.28.8
+pkgver=0.49.0
 pkgrel=1
 pkgdesc="FTDI device driver written in pure Python"
 arch=('any')
@@ -9,7 +9,7 @@ license=('LGPL')
 depends=('python-pyusb' 'python-pyserial')
 makedepends=('python-setuptools')
 source=("https://github.com/eblot/pyftdi/archive/v${pkgver}.tar.gz")
-sha256sums=('6c22d1f8f85137f42e0dd854ec99b8228da43fe5ab70d14a45ac1cda17d5aa1c')
+sha256sums=('c3553cefc0c73ac6874f489a7294e1f8c08d2d2e4ec2749338dddbed02a55223')
 
 package() {
     cd "pyftdi-${pkgver}"
