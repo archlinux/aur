@@ -5,7 +5,7 @@ pkgrel=1
 #epoch=
 pkgdesc="Automate managing STM32CubeMX + PlatformIO projects" 
 arch=('x86_64')
-url="https://github.com/kynguyen98/stm32pio/"
+url="https://github.com/kynguyen98/stm32pio"
 license=('MIT')
 #groups=()
 depends=(python-pip python jre8-openjdk)
@@ -19,7 +19,7 @@ optdepends=('code: for text editing')
 #options=()
 #install=
 #changelog=
-source=("https://github.com/kynguyen98/stm32pio/archive/v${pkgver}.tar.gz")
+source=($url"/archive/v${pkgver}.tar.gz")
 #("$pkgname-$pkgver.tar.gz""$pkgname-$pkgver.patch")
 #noextract=()
 md5sums=('SKIP')
