@@ -1,0 +1,23 @@
+pkgbase = unnamed-sdvx-clone
+	pkgdesc = A game based on K-Shoot MANIA and Sound Voltex
+	pkgver = v0.4
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = freetype2
+	depends = libogg
+	depends = libvorbis
+	depends = sdl2
+	depends = zlib
+	depends = libpng
+	depends = libjpeg
+	depends = libarchive
+	depends = mesa
+	depends = openssl
+	conflicts = unnamed-sdvx-clone-git
+	source = unnamed-sdvx-clone::git+https://github.com/Drewol/unnamed-sdvx-clone.git#tag=v0.4
+	sha256sums = SKIP
+
+pkgname = unnamed-sdvx-clone
+
