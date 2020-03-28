@@ -1,6 +1,6 @@
 pkgbase = xtables-addons
 	pkgdesc = Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel
-	pkgver = 3.7
+	pkgver = 3.9
 	pkgrel = 1
 	url = https://xtables-addons.sourceforge.net/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = xtables-addons
 	depends = linux
 	conflicts = xtables-addons-dkms
 	replaces = xtables-addons-dkms
-	source = https://sourceforge.net/projects/xtables-addons/files/Xtables-addons//xtables-addons-3.7.tar.xz
-	sha256sums = 045ee3fcfe5d6edb95483cf49e2446ff8cab4bb79411018b18354138b70c5eb5
+	source = https://sourceforge.net/projects/xtables-addons/files/Xtables-addons//xtables-addons-3.9.tar.xz
+	sha256sums = 064dd68937d98e6cfcbdf51ef459310d9810c17ab31b21285bc7a76cdcef7c49
 
 pkgname = xtables-addons
 
