@@ -1,7 +1,7 @@
 pkgbase = st-jfchevrette
 	pkgdesc = A simple terminal implementation for X
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://st.suckless.org
 	install = st.install
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = st-jfchevrette
 	source = http://dl.suckless.org/st/st-0.8.2.tar.gz
 	source = config.h
 	sha256sums = aeb74e10aa11ed364e1bcc635a81a523119093e63befd2f231f8b0705b15bf35
-	sha256sums = 52904e50c591ae3cf46420189d64a323f45cf3ea82b0179cd392744732df3c7a
+	sha256sums = d1b74290829e2f0713f3055b82b3c0e456d87e2ab966566370505b726e890ca8
 
 pkgname = st-jfchevrette
 
