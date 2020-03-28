@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lariza
-pkgver=19.05
-pkgrel=2
+pkgver=20.01
+pkgrel=1
 pkgdesc="Simple WebKit2GTK+ Browser"
 arch=('i686' 'x86_64')
 url="https://www.uninformativ.de/projects/lariza/"
@@ -22,7 +22,5 @@ build() {
 package() {
   cd $pkgname
   make DESTDIR="$pkgdir" prefix="/usr" install
-  install -Dm644 we_adblock.so \
-    "$pkgdir"/usr/lib/$pkgname/web_extensions/we_adblock.so
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
