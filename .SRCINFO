@@ -1,15 +1,15 @@
 pkgbase = sh-elf-newlib
 	pkgdesc = A C standard library implementation intended for use on embedded systems (SuperH)
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = http://www.sourceware.org/newlib/
 	arch = any
 	license = BSD
 	makedepends = sh-elf-gcc
 	options = !emptydirs
 	options = !strip
-	source = https://sourceware.org/pub/newlib/newlib-3.1.0.tar.gz
-	sha256sums = fb4fa1cc21e9060719208300a61420e4089d6de6ef59cf533b57fe74801d102a
+	source = https://sourceware.org/pub/newlib/newlib-3.3.0.tar.gz
+	sha256sums = 58dd9e3eaedf519360d92d84205c3deef0b3fc286685d1c562e245914ef72c66
 
 pkgname = sh-elf-newlib
 
