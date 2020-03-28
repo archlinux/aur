@@ -9,7 +9,7 @@ _vdrapi=2.4.1
 pkgrel=1
 pkgdesc="A bridge between VDR and OScam."
 url="https://github.com/manio/vdr-plugin-dvbapi"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('gcc-libs' 'libdvbcsa' 'openssl' "vdr-api=${_vdrapi}")
 makedepends=('git')
