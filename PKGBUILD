@@ -2,7 +2,7 @@
 # Maintainer: Florian Pritz <bluewind@xinu.at>
 pkgbase=zabbix-nightly
 _base=zabbix
-pkgname=(zabbix-server zabbix-agent{,2} zabbix-proxy zabbix-frontend-php)
+pkgname=(zabbix-nightly-server zabbix-nightly-agent{,2} zabbix-nightly-proxy zabbix-nightly-frontend-php)
 pkgver=5.0.0beta1
 pkgrel=1
 _pre=pre
@@ -82,7 +82,7 @@ build() {
   done
 }
 
-package_zabbix-server() {
+package_zabbix-nightly-server() {
   pkgdesc='Monitoring software for networks and applications, nightly version'
   depends=(net-snmp curl libxml2 unixodbc libldap libevent pcre)
   optdepends=('postgresql-libs: for PostgreSQL support'
@@ -118,7 +118,7 @@ package_zabbix-server() {
 	"$pkgdir/usr/lib/tmpfiles.d/zabbix-server.conf"
 }
 
-package_zabbix-agent() {
+package_zabbix-nightly-agent() {
   pkgdesc='Monitoring agent for Zabbix, nightly version'
   depends=(curl pcre)
   backup=(etc/zabbix/zabbix_agentd.conf)
@@ -148,7 +148,7 @@ package_zabbix-agent() {
 	"$pkgdir/usr/lib/tmpfiles.d/zabbix-agent.conf"
 }
 
-package_zabbix-agent2() {
+package_zabbix-nightly-agent2() {
   pkgdesc='Experimental monitoring agent for Zabbix (Agent 2), nightly version'
   depends=(zabbix-nightly-agent)
   backup=(etc/zabbix/zabbix_agent2.conf)
@@ -165,7 +165,7 @@ package_zabbix-agent2() {
 	"$pkgdir/usr/lib/systemd/system/zabbix-agent2.service"
 }
 
-package_zabbix-proxy() {
+package_zabbix-nightly-proxy() {
   pkgdesc='Data collecting proxy for Zabbix, nightly version'
   depends=(net-snmp curl libxml2 sqlite unixodbc libldap pcre)
   optdepends=('mariadb-libs: for MariaDB support'
@@ -196,7 +196,7 @@ package_zabbix-proxy() {
 	"$pkgdir/usr/lib/tmpfiles.d/zabbix-proxy.conf"
 }
 
-package_zabbix-frontend-php() {
+package_zabbix-nightly-frontend-php() {
   pkgdesc='PHP frontend for Zabbix, nightly version'
   depends=(zabbix-nightly-server php php-gd)
 
