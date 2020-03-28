@@ -2,7 +2,7 @@
 
 pkgbase=linux-firmware-korbi-para-git
 pkgname=(linux-firmware-korbi-para-git)
-pkgver=20200328.1
+pkgver=20200320.edf390c
 pkgrel=1
 pkgdesc="Firmware for korbi's workstation"
 makedepends=('git')

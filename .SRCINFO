@@ -1,6 +1,6 @@
 pkgbase = linux-firmware-korbi-para-git
 	pkgdesc = Firmware for korbi's workstation
-	pkgver = 20200328.1
+	pkgver = 20200320.edf390c
 	pkgrel = 1
 	arch = any
 	license = GPL2
