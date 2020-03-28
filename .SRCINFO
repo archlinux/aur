@@ -4,8 +4,9 @@ pkgbase = pscripts-git
 	pkgrel = 1
 	url = https://github.com/Noeljunior/pscripts
 	arch = any
-	license = GPL
-	depends = git
+	license = GPL3
+	makedepends = git
+	makedepends = python
 	source = pscripts-git::git+https://github.com/Noeljunior/pscripts
 	md5sums = SKIP
 

@@ -6,8 +6,8 @@ pkgrel=1
 pkgdesc="Noeljunior's pscripts: some handy scripts for users and sysadmins"
 arch=('any')
 url="https://github.com/Noeljunior/pscripts"
-license=('GPL')
-depends=(git)
+license=('GPL3')
+makedepends=('git' 'python')
 source=("$pkgname::git+https://github.com/Noeljunior/pscripts")
 md5sums=('SKIP')
 
