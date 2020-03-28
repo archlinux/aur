@@ -3,6 +3,7 @@ pkgbase = proton-ge-custom-bin
 	pkgver = 5.4_GE_3
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
+	changelog = changelog
 	arch = x86_64
 	license = BSD
 	license = LGPL

@@ -1,0 +1,161 @@
+Proton-5.4-GE-3
+
+GloriousEggroll released this Mar 25, 2020
+
+-wine 5.4 updated to latest git which includes some fixes/updates winevulkan to 1.2.134. DOOM Eternal seems to work fine with it when not blocked by Denuvo.
+-Added ValveSoftware/wine#86 for more winevulkan compatibility
+-Added https://source.winehq.org/patches/data/181826 for more winevulkan compatibility
+-FAudio reverted to 20.03 stable release as some audio issues were reported
+-Warframe controller patch updated to strictly only take effect when warframe is running, since the issue doesn't seem to affect other games.
+-proton controller patches have been disabled (again) in favor of standard wine+wine-staging's, after reports of 'ghost' input and/or periodic input loss. SDL patches are still in applied.
+
+
+Proton-5.4-GE-2
+
+GloriousEggroll released this Mar 22, 2020
+
+This is more of a clean-up release although some new stuff/fixes have been added, mainly for DOOM Eternal
+
+-Updated wine + staging to 5.4-git/upstream for DOOM Eternal
+-Added ValveSoftware/wine#85 VK_KHR_get_surface_capabilities2 and fake support for VK_EXT_full_screen_exclusive for DOOM Eternal
+-Added ValveSoftware/wine#83 which fixes some crashes in DARK SOULS III (374320), Nier: Automata (524220), Sekiro: Shadows Die Twice (814380)
+-Added some missing registry entries that prevented Batman: Arkham Knight from starting on a clean prefix
+-Cleaned up/removed unused mf_install verb in protonfixes in preparation for newer mfplat alpha patches (coming soon)
+-Removed '-wolcen lords of mayhem 'blob head' fix' as the game devs fixed it internally per update 1.0.10.0
+-Removed 'plasma systray fix' as it didn't really benefit anything, and actually interfered with some games.
+-Removed Detroit:Become Human patch as it's already been upstreamed
+-Cleaned up some duplicate patches and updated our current patches to work with latest wine-git+staging/git
+-Updated vkd3d
+-Updated dxvk
+-Updated FAudio
+
+Notes on DOOM Eternal:
+
+    DOOM Eternal currently requires vulkan-loader/vulkan-icd-loader 1.2.135
+    For AMD also requires mesa-git .
+    ACO did not work for me with DOOM Eternal when I tried it, but llvm worked fine.
+    To get rid of pre-launch GPU notices such as (HDR not supported), open DOOMEternal/launcherData/launcher.cfg and change all of these to 0:
+
+rgl_showAMDStartupWarning 0
+rgl_showIntelStartupWarning 0
+rgl_showNvidiaStartupWarning 0
+
+
+Proton-5.4-GE-1
+
+GloriousEggroll released this Mar 16, 2020
+
+-controller fix for warframe - allows controller profiles to be loaded only if a controller is plugged in. fixes crash if no controller plugged in after 5 min.
+-vkd3d updated, allows WoW to be played using proton via lutris (disable dxvk in lutris)
+-more metro exodus vkd3d fixes
+-wolcen lords of mayhem 'blob head' fix
+-detroit: become human patch added
+-need for speed world launcher patch added
+-wine+ wine-staging updated to 5.4
+-dxvk updated to latest git
+-faudio updated to latest git
+-fixes from Proton 5.0.4 imported
+
+Known issues:
+
+-MHW broken since last patch.
+-MK11 broken since wine 5.0
+-Injustice 2 broken since wine 5.0 (did not work here, but have had it reported working in 4.21)
+-Borderlands 3 does not work with vkd3d yet
+
+
+Proton-5.2-GE-2
+
+GloriousEggroll released this Feb 23, 2020
+
+This is a pre-release to fix Fallout New Vegas from crashing on main menu.
+-fixes a missing portion of the fullscreen hack
+-dxvk updated
+-more metro exodus vkd3d fixes
+-wine 5.2 updated to latest git
+
+
+Proton-5.2-GE-1
+
+GloriousEggroll released this Feb 19, 2020
+
+This is a pre-release to fix the Warframe Launcher bug introduced in 2/18's update.
+
+
+Proton-5.1-GE-2
+
+GloriousEggroll released this Feb 17, 2020
+
+This is mainly a hotfix + feature release build.
+
+Hotfix:
+-Fixed warframe requiring a controller to be plugged in. That's right, you no longer need xboxdrv! I spent the weekend debugging it and was finally able to come up with a bit of a hacky workaround, but it works for now until valve addresses the issue (it has to do with the way lsteamclient handles controllers)
+
+Feature:
+-vkd3d branch is latest from codeweavers + DXIL changes by Hans Kristian (who has been doing a lot of vkd3d submissions) + metro exodus commits that both Hans and Doitsujin (creator of dxvk) have been working on together. The previous release had Hans's DXIL changes, this just adds the Metro changes on top of it. With that being said, expect some minor graphical glitches in vkd3d with Metro Exodus
+
+Additions:
+-This commit: ValveSoftware#3518 has been merged. This was a previous open PR from Guy1542, but it had a bug that would cause clustertruck and a few others not to launch. The new PR is by joshie (d9vk dev) and works now
+
+-dxvk update to latest git
+-faudio updated to latest git
+
+Known issues:
+-Just Cause 3 not able to save
+-Batman Arkham Knight grappling hook not working
+-MK11 hanging at launch (again)
+
+
+Proton-5.1-GE-1
+
+GloriousEggroll released this Feb 10, 2020
+
+-added fullscreen hack rebase from proton 5
+-added updated steamclient rebase from proton 5 so that jc3 and batman AK denuvo problems work
+-added updated monster hunter world patch that limits the changes to monster hunter world
+-added proton patch that sets prefixes to win10 by default
+-added dsound surround sound patches from proton 5
+-proton dxvk wine integration patches added so that vkd3d works ootb without PROTON_USE_WINED3D
+-reenabled proton's gamepad changes in favor over staging's (for now. let me know in discord if issues occur)
+-updated to include proton's gstreamer and glib integration work
+-added plasma systray patch
+-fixed proton compatibility for staging patchset winex11.drv-mouse-coorrds
+-disabled winex11-_NET_ACTIVE_WINDOW temporarily (not working correctly)
+-disabled winex11-WM_WINDOWPOSCHANGING temporarily (depends on winex11-_NET_ACTIVE_WINDOW)
+-updated dxvk to 1.5.4 official
+-updated FAudio
+-updated vkd3d
+
+Known issues:
+-Just Cause 3 not able to save
+-Please note, vkd3d is very new and still does not work for DirectX 12 on all games.
+
+
+Proton-5.0-GE-1
+
+GloriousEggroll released this Jan 30, 2020
+
+-fixed issue with uplay games not recognizing they were being launched from steam
+-fixed issue with farcry 5 hanging at launch
+-fixed issue with stuttering in various games introduced by staging's ntdll-ForceBottomUpAlloc patches (darksiders 3, farcry 5)
+-raw input patches finally fixed and enabled
+-fixed issue with the MK11/skyrim skyui patch trying to allocate 119t virtual memory
+-added patches that allow For Honor and steep to launch and work in single-player mode
+-added patch that fixes battlenet beta crashing with win10 set in winecfg
+-added patch that fixes fullscreen mode in steep
+-added patch that fixes performance regression in Monster Hunter World caused by Iceborn DLC release.
+-fixed proton compatibility for staging patchset winex11-MWM_Decorations (fixes https://bugs.winehq.org/show_bug.cgi?id=42117 which affects battlenet)
+-fixed proton compatibility for staging patchset winex11-_NET_ACTIVE_WINDOW (fixes https://bugs.winehq.org/show_bug.cgi?id=2155 which affects some older games and apps)
+-added proton's internal wined3d dxvk integration changes
+-updated dxvk
+-updated faudio
+-changed vkd3d repository to one regularly worked on.
+
+Edit:
+-added fix for loading hang for endless legend
+-added black ops 2 launch crash fix
+-added winex11-WM_WINDOWPOSCHANGING patch from staging
+-fixed an issue with proton not using d3d9 override (whoopsie)
+
+Disabled the following for now, has an issue that causes windows to open and immediately close:
+-proton compatibility for staging patchset winex11.drv-mouse-coorrds (fixes https://bugs.winehq.org/show_bug.cgi?id=46309 which affects origin)

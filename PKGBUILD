@@ -8,6 +8,7 @@ pkgver=5.4_GE_3
 pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
+changelog=changelog
 provides=('proton')
 depends=('python'
          'winetricks'
