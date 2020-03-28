@@ -6,6 +6,7 @@ pkgbase = cups-pdf-to-pdf-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = cups
 	depends = ghostscript
 	provides = cups-pdf=3.0.1_r7.63ab5e7

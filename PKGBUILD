@@ -10,6 +10,7 @@ pkgrel=1
 pkgdesc="CUPS-PDF v3 with text print support"
 arch=(i686 x86_64)
 depends=('cups' 'ghostscript')
+makedepends=('git')
 provides=("cups-pdf=${pkgver}")
 conflicts=('cups-pdf')
 url="https://github.com/alexivkin/CUPS-PDF-to-PDF"
