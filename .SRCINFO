@@ -85,10 +85,12 @@ pkgname = xorg-server-dev
 	depends = libpciaccess
 	depends = libdrm
 	depends = libxshmfence
+	provides = xorg-server
 	provides = X-ABI-VIDEODRV_VERSION=24.0
 	provides = X-ABI-XINPUT_VERSION=24.1
 	provides = X-ABI-EXTENSION_VERSION=10.0
 	provides = x-server
+	conflicts = xorg-server
 	conflicts = nvidia-utils<=331.20
 	conflicts = glamor-egl
 	conflicts = xf86-video-modesetting
@@ -111,6 +113,8 @@ pkgname = xorg-server-xephyr-dev
 	depends = xcb-util-keysyms
 	depends = nettle
 	depends = libtirpc
+	provides = xorg-server-xephyr
+	conflicts = xorg-server-xephyr
 
 pkgname = xorg-server-xdmx-dev
 	pkgdesc = Distributed Multihead X Server and utilities
@@ -123,6 +127,8 @@ pkgname = xorg-server-xdmx-dev
 	depends = pixman
 	depends = xorg-server-common
 	depends = nettle
+	provides = xorg-server-xdmx
+	conflicts = xorg-server-xdmx
 
 pkgname = xorg-server-xvfb-dev
 	pkgdesc = Virtual framebuffer X server
@@ -133,6 +139,8 @@ pkgname = xorg-server-xvfb-dev
 	depends = xorg-xauth
 	depends = libgl
 	depends = nettle
+	provides = xorg-server-xvfb
+	conflicts = xorg-server-xvfb
 
 pkgname = xorg-server-xnest-dev
 	pkgdesc = A nested X server that runs as an X application
@@ -142,6 +150,8 @@ pkgname = xorg-server-xnest-dev
 	depends = xorg-server-common
 	depends = nettle
 	depends = libtirpc
+	provides = xorg-server-xnest
+	conflicts = xorg-server-xnest
 
 pkgname = xorg-server-xwayland-dev
 	pkgdesc = run X clients under wayland
@@ -154,12 +164,16 @@ pkgname = xorg-server-xwayland-dev
 	depends = xorg-server-common
 	depends = nettle
 	depends = libtirpc
+	provides = xorg-server-xwayland
+	conflicts = xorg-server-xwayland
 
 pkgname = xorg-server-common-dev
 	pkgdesc = Xorg server common files
 	depends = xkeyboard-config
 	depends = xorg-xkbcomp
 	depends = xorg-setxkbmap
+	provides = xorg-server-common
+	conflicts = xorg-server-common
 
 pkgname = xorg-server-devel-dev
 	pkgdesc = Development files for the X.Org X server
@@ -167,4 +181,6 @@ pkgname = xorg-server-devel-dev
 	depends = mesa
 	depends = libpciaccess
 	depends = xorg-util-macros
+	provides = xorg-server-devel
+	conflicts = xorg-server-devel
 

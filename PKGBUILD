@@ -107,6 +107,8 @@ _install() {
 package_xorg-server-common-dev() {
   pkgdesc="Xorg server common files"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
+  provides=(xorg-server-common)
+  conflicts=(xorg-server-common)
 
   _install fakeinstall/usr/lib/xorg/protocol.txt
   _install fakeinstall/usr/share/man/man1/Xserver.1
@@ -124,8 +126,8 @@ package_xorg-server-dev() {
 
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
-  provides=('X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
-  conflicts=('nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
+  provides=('xorg-server' 'X-ABI-VIDEODRV_VERSION=24.0' 'X-ABI-XINPUT_VERSION=24.1' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server')
+  conflicts=('xorg-server' 'nvidia-utils<=331.20' 'glamor-egl' 'xf86-video-modesetting')
   replaces=('glamor-egl' 'xf86-video-modesetting')
   install=xorg-server-dev.install
 
@@ -150,6 +152,8 @@ package_xorg-server-xephyr-dev() {
   depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
+  provides=(xorg-server-xephyr)
+  conflicts=(xorg-server-xephyr)
 
   _install fakeinstall/usr/bin/Xephyr
   _install fakeinstall/usr/share/man/man1/Xephyr.1
@@ -161,6 +165,8 @@ package_xorg-server-xephyr-dev() {
 package_xorg-server-xvfb-dev() {
   pkgdesc="Virtual framebuffer X server"
   depends=(libxfont2 libunwind pixman xorg-server-common xorg-xauth libgl nettle)
+  provides=(xorg-server-xvfb)
+  conflicts=(xorg-server-xvfb)
 
   _install fakeinstall/usr/bin/Xvfb
   _install fakeinstall/usr/share/man/man1/Xvfb.1
@@ -175,6 +181,8 @@ package_xorg-server-xvfb-dev() {
 package_xorg-server-xnest-dev() {
   pkgdesc="A nested X server that runs as an X application"
   depends=(libxfont2 libxext pixman xorg-server-common nettle libtirpc)
+  provides=(xorg-server-xnest)
+  conflicts=(xorg-server-xnest)
 
   _install fakeinstall/usr/bin/Xnest
   _install fakeinstall/usr/share/man/man1/Xnest.1
@@ -187,6 +195,8 @@ package_xorg-server-xdmx-dev() {
   pkgdesc="Distributed Multihead X Server and utilities"
   depends=(libxfont2 libxi libxaw libxrender libdmx libxfixes
            pixman xorg-server-common nettle)
+  provides=(xorg-server-xdmx)
+  conflicts=(xorg-server-xdmx)
 
   _install fakeinstall/usr/bin/{Xdmx,dmx*,vdltodmx,xdmxconfig}
   _install fakeinstall/usr/share/man/man1/{Xdmx,dmxtodmx,vdltodmx,xdmxconfig}.1
@@ -199,6 +209,8 @@ package_xorg-server-xwayland-dev() {
   pkgdesc="run X clients under wayland"
   depends=(libxfont2 libepoxy libunwind systemd-libs libgl pixman xorg-server-common
            nettle libtirpc)
+  provides=(xorg-server-xwayland)
+  conflicts=(xorg-server-xwayland)
 
   _install fakeinstall/usr/bin/Xwayland
 
@@ -211,6 +223,8 @@ package_xorg-server-devel-dev() {
   depends=('xorgproto' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build
            'xorg-util-macros')
+  provides=(xorg-server-devel)
+  conflicts=(xorg-server-devel)
 
   _install fakeinstall/usr/include/xorg/*
   _install fakeinstall/usr/lib/pkgconfig/xorg-server.pc
