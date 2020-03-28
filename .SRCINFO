@@ -6,7 +6,7 @@ pkgbase = xdman
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = java-runtime
+	depends = java-runtime>=11
 	source = xdman.bin
 	source = https://github.com/subhra74/xdm/releases/download/7.2.10/xdm-setup-7.2.10.tar.xz
 	sha256sums = befc67049b2c2771c51e7c78b9518550c9a0be00f5f687440402927a22660b35
