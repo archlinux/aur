@@ -11,7 +11,7 @@ arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
 license=('GPL2')
 makedepends=('fontconfig' 'libcap' 'libjpeg-turbo' 'libsystemd' 'perl' 'ttf-font' 'systemd' 'ncurses')
 source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
-        "$pkgbase-$pkgver-glibc-2.31.patch::https://patch-diff.githubusercontent.com/raw/VDR4Arch/vdr/pull/1.patch"
+        "$pkgbase-$pkgver-glibc-2.31-2.patch::https://github.com/M-Reimer/vdr/commit/1d206d7c.patch"
         'vdr-MainMenuHooks.patch'
         '00-vdr.conf' '50-hello.conf' '50-pictures.conf'
         '60-create-dvb-device-units.rules'
@@ -20,18 +20,18 @@ source=("http://www.tvdr.de/ftp/${pkgbase}-${pkgver}.tar.bz2"
         'shutdown-wrapper.c'
         'vdr.service'
         'vdr.sysuser')
-md5sums=('b2897fe6b6e6711d512a69642b1b8ec1'
-         '1dedc6c9eeeeb28a4d44cf4f726c4419'
-         '292e065582d97ed1ae4977a2a7b6091d'
-         'de3dcdea1a4282211c6dac370019548b'
-         'fc450f75037b8712673db4969a1dd758'
-         'f00583e3f5507b0ff935b4d5919e7df2'
-         '23d6e1ca0a36cfdbd35d3b1a61f0a105'
-         '3565ca5ad9be5c75f66478f0796b120d'
-         'dd20f932b846b5f50ac455b65e9432ad'
-         '7cad811b4ac5ee6c0b5496d006f1e0ee'
-         '6c021358f299dca9ef7bbeb163312690'
-         '59ce04d1d01bf92bf6cfc0b74223191c')
+sha256sums=('25c3f835c4f3ff92cd2db10c004439ef22c2e895193c77fbe8cc7eac4858a1dc'
+            'f3cd58cfcb3a9f4a4e52e2569b7b48277c8df38d4f050f73403010225dd7c6b7'
+            '4c553065d24ee4dc001c06ff588494db44982b7debe9a1e6cd1a8903beb7c87b'
+            '86f2469f459e2aabfc0ab703fc8435e458e89c4879376e900160d083924097b3'
+            '423656cb6ba39af52d379dee697c52e6f435c098daa8c2ba429c1247b757af50'
+            '39f4c2886328dc947dbef70dbc37d42504dc5c9d6a2ad81bf0c41d26fa3a5d6a'
+            '1d914d6308a2b79ede34b7670788e5dfd3a8fab24156353555a66c9ef0bb41d7'
+            '54a901d735d200ba3e2df4d9f45e1e537832a868c6ae5ae42ed3ff1a4c2c3f05'
+            '7313a8db29693fa84d19be7b715b3ab04fd77eddcb52682588cc0a094764b6ba'
+            '17b82fd995e9a39ad8d73d46b586d6c1934a6747c2859bd6d6df22ed254b5c4b'
+            'f33f42a77bd93f00e7aa18f22667f0097468de76a0269c6e35fdc0fd2e30f6e6'
+            'c6a6ed882190d487b1df3023d6b950685714ac75503ba40b4f6567ac1a983bad')
 
 prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
@@ -48,7 +48,7 @@ prepare() {
   patch -p1 -i "$srcdir/vdr-MainMenuHooks.patch"
 
   # glibc 2.31 fix
-  patch -p1 -i "$srcdir/$pkgbase-$pkgver-glibc-2.31.patch"
+  patch -p1 -i "$srcdir/$pkgbase-$pkgver-glibc-2.31-2.patch"
 
   # Don't install plugins with VDR
   sed -i '/^install: /s/install-plugins //' Makefile
