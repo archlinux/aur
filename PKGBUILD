@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=dingtalk
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc='钉钉桌面版，基于electron和钉钉网页版开发，支持Windows、Linux和macOS'
 arch=('x86_64' 'i686')
 url='https://github.com/nashaofu/dingtalk'
@@ -11,7 +11,7 @@ conflicts=('dingtalk-electron' 'dingtalk-git')
 depends=('electron4')
 makedepends=('jq' 'moreutils' 'npm')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/nashaofu/dingtalk/archive/v$pkgver.tar.gz")
-sha256sums=('3dbfcd82867a983b3585e370209bc790652372046a32eb8c140644fc1b336ada')
+sha256sums=('4368dce313ca5788e4ff78da81dab951bd1bf69a2c88b9363c7626dd654f0259')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
