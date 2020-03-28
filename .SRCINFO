@@ -1,7 +1,7 @@
-pkgbase = plymouth-themes-adi1090x-pack1
+pkgbase = plymouth-themes-adi1090x-pack1-git
 	pkgdesc = The plymouth theme collection by adi1090x
-	pkgver = 1
-	pkgrel = 2
+	pkgver = r24.bb390bd
+	pkgrel = 1
 	url = https://github.com/adi1090x/plymouth-themes
 	arch = any
 	license = GPL
@@ -9,43 +9,43 @@ pkgbase = plymouth-themes-adi1090x-pack1
 	source = git+https://github.com/adi1090x/plymouth-themes.git
 	md5sums = SKIP
 
-pkgname = plymouth-theme-abstract-ring
+pkgname = plymouth-theme-abstract-ring-git
 
-pkgname = plymouth-theme-abstract-ring-alt
+pkgname = plymouth-theme-abstract-ring-alt-git
 
-pkgname = plymouth-theme-alienware
+pkgname = plymouth-theme-alienware-git
 
-pkgname = plymouth-theme-angular
+pkgname = plymouth-theme-angular-git
 
-pkgname = plymouth-theme-angular-alt
+pkgname = plymouth-theme-angular-alt-git
 
-pkgname = plymouth-theme-black-hud
+pkgname = plymouth-theme-black-hud-git
 
-pkgname = plymouth-theme-blockchain
+pkgname = plymouth-theme-blockchain-git
 
-pkgname = plymouth-theme-circle
+pkgname = plymouth-theme-circle-git
 
-pkgname = plymouth-theme-circle-alt
+pkgname = plymouth-theme-circle-alt-git
 
-pkgname = plymouth-theme-circle-flow
+pkgname = plymouth-theme-circle-flow-git
 
-pkgname = plymouth-theme-circle-hud
+pkgname = plymouth-theme-circle-hud-git
 
-pkgname = plymouth-theme-circuit
+pkgname = plymouth-theme-circuit-git
 
-pkgname = plymouth-theme-colorful
+pkgname = plymouth-theme-colorful-git
 
-pkgname = plymouth-theme-colorful-loop
+pkgname = plymouth-theme-colorful-loop-git
 
-pkgname = plymouth-theme-colorful-sliced
+pkgname = plymouth-theme-colorful-sliced-git
 
-pkgname = plymouth-theme-connect
+pkgname = plymouth-theme-connect-git
 
-pkgname = plymouth-theme-cross-hud
+pkgname = plymouth-theme-cross-hud-git
 
-pkgname = plymouth-theme-cubes
+pkgname = plymouth-theme-cubes-git
 
-pkgname = plymouth-theme-cuts
+pkgname = plymouth-theme-cuts-git
 
-pkgname = plymouth-theme-cuts-alt
+pkgname = plymouth-theme-cuts-alt-git
 
