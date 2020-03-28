@@ -1,6 +1,6 @@
 pkgbase = v2ray-desktop
 	pkgdesc = A Cross-platform GUI Client for V2Ray written in Qt 5 and QML 2 (Stable Release)
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/Dr-Incognito/V2Ray-Desktop
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = v2ray-desktop
 	depends = qt5-quickcontrols>=5.14.0
 	depends = qt5-quickcontrols2>=5.14.0
 	provides = v2ray-desktop
-	source = V2Ray-Desktop::git+https://github.com/Dr-Incognito/V2Ray-Desktop#tag=1.5.1
+	source = V2Ray-Desktop::git+https://github.com/Dr-Incognito/V2Ray-Desktop#tag=1.5.2
 	sha512sums = SKIP
 
 pkgname = v2ray-desktop
