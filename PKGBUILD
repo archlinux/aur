@@ -1,7 +1,7 @@
 # Maintainer: Bruce Zhang
 pkgname=ppet
 _name=PPet
-pkgver=1.1.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='给你的桌面添加一点趣味~'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('electron')
 makedepends=('yarn' 'jq' 'moreutils')
 conflicts=("$pkgname-bin")
 source=("$pkgname-$pkgver.src.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e147f26c690a4c2aa335e109f77f386caf2328dcc542cbd0360eeb63c6c1d072')
+sha256sums=('943a47c6c71a639a97e77a6251b67909794fe44e744ac8011e09e1d96e7a8dde')
 
 prepare() {
 	cd "$srcdir/$_name-$pkgver"
