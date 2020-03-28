@@ -48,7 +48,6 @@ build() {
 
 package() {
   cd ${pkgname%-git}
-  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install
-
+  make pkglibexecdir=/usr/bin DESTDIR="$pkgdir" install install-info
   install -Dm644 Copyright "$pkgdir"/usr/share/licenses/$pkgname/Copyright
 }
