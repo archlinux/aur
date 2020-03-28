@@ -1,6 +1,6 @@
 pkgbase = steam-acolyte
 	pkgdesc = Lightweight user account switcher/login keeper for steam
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/coldfix/steam-acolyte
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = steam-acolyte
 	depends = python-pyqt5
 	depends = python-vdf
 	depends = python-docopt
-	source = https://pypi.python.org/packages/source/s/steam-acolyte/steam-acolyte-0.4.3.tar.gz
-	md5sums = d747cc8f7bcbb675dbfc37ff16d0f07c
+	source = https://pypi.python.org/packages/source/s/steam-acolyte/steam-acolyte-0.5.0.tar.gz
+	md5sums = e5aaff51acd2c2b501d95c0afe41f875
 
 pkgname = steam-acolyte
 
