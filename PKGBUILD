@@ -8,7 +8,7 @@ _vdrapi=2.4.1
 pkgrel=4
 pkgdesc="mpv player plugin for VDR"
 url="http://projects.vdr-developer.org/projects/plg-mpv"
-arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686')
 license=('AGPL3')
 depends=('mpv' "vdr-api=${_vdrapi}")
 makedepends=('git')
