@@ -8,7 +8,7 @@
 pkgname=opennebula
 _unstable_pkg=opennebula-unstable
 pkgver=5.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual management infrastructure as a service (IaaS) toolkit for cloud computing (NOTE: Read the PKGBUILD!)"
 arch=('i686' 'x86_64')
 url='https://opennebula.org/'
@@ -133,13 +133,6 @@ prepare() {
   sed -i 's/1.2.1/2.1.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
   # node-sass
   sed -i 's/3.10.1/4.13.0/' "${srcdir}/one-release-${pkgver}/src/sunstone/public/package.json"
-
-  # As we install from the github release sources we need to build sunstone as well.
-  # To do that we need the npm environment set up
-  # https://docs.opennebula.org/5.4/integration/references/sunstone_dev.html#sunstone-dev
-  cd "${srcdir}/one-release-${pkgver}/src/sunstone/public/"
-  npm install
-  bower install
 }
 
 build() {
