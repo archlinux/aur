@@ -1,0 +1,60 @@
+Only in old: .git
+Only in old: .gitignore
+diff -aur old/makefile new/makefile
+--- old/makefile	2020-03-29 23:18:12.952101599 +0200
++++ new/makefile	2020-03-29 23:22:29.520194912 +0200
+@@ -3,8 +3,9 @@
+ DBGFLAG := -g
+ CCOBJFLAG := $(CCFLAG) -c
+
+-PREFIX	= /usr/local
++PREFIX	= /usr/
+ DESTDIR	=
++DATADIR = /usr/share
+ TARGET	= shortcut
+
+ REPO	= https://github.com/mt-empty/shortcut-pages
+@@ -33,22 +34,22 @@
+
+ 	@echo "Installing"
+
+-	@mkdir -p $(DESTDIR)/opt/$(TARGET)
+-	@mv pages/ $(DESTDIR)/opt/$(TARGET)
+-	@mv $< $(DESTDIR)/opt/$(TARGET)
+-	@cp Readme.md $(DESTDIR)/opt/$(TARGET)
++	@mkdir -p $(DESTDIR)/$(DATADIR)/$(TARGET)
++	@mv pages/ $(DESTDIR)/$(DATADIR)/$(TARGET)
++	@mv $< $(DESTDIR)/$(DATADIR)/$(TARGET)
++	@cp Readme.md $(DESTDIR)/$(DATADIR)/$(TARGET)
+
+ 	@mkdir -p $(DESTDIR)$(PREFIX)/bin
+-	@ln -s $(DESTDIR)/opt/$(TARGET)/$(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
++	@ln -s $(DESTDIR)/$(DATADIR)/$(TARGET)/$(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
+ 	@echo "All done"
+
+ .PHONY: install-extra
+ install-extra: install
+-	@cp -r shortcut-pages/nonGUI/* $(DESTDIR)/opt/$(TARGET)/pages/
++	@cp -r shortcut-pages/nonGUI/* $(DESTDIR)/$(DATADIR)/$(TARGET)/pages/
+
+
+ .PHONY: uninstall
+ uninstall:
+ 	@rm -rf $(DESTDIR)$(PREFIX)/bin/$(TARGET)
+-	@rm -rf $(DESTDIR)/opt/$(TARGET)
+-#	@echo "All done"
+\ No newline at end of file
++	@rm -rf $(DESTDIR)/$(DATADIR)/$(TARGET)
++#	@echo "All done"
+diff -aur old/shortcut.c new/shortcut.c
+--- old/shortcut.c	2020-03-29 23:18:12.952101599 +0200
++++ new/shortcut.c	2020-03-29 23:23:52.270653011 +0200
+@@ -136,7 +136,7 @@
+ // prints shortcut page of a given program
+ int getShortcutPage(char *filename)
+ {
+-    char path[50] = "/opt/shortcut/pages/";
++    char path[56] = "/usr/share/shortcut/pages/";
+     strcat(path, filename);
+     strcat(path, ".md");
+     // fprintf(stdout, "%s \n", path);

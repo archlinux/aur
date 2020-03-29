@@ -1,23 +1,31 @@
 # Maintainer Joost Bremmer <contact@madeofmagicandowires.online>
 pkgbase=shortcut-git
 pkgname=('shortcut-pages-git' 'shortcut-pages-extra-git' 'shortcut-c-client-git')
-pkgver=0.1.0.r9.15af3dc
-pkgrel=1
+pkgver=0.1.0
+pkgrel=2
 pkgdesc="A commandline client to list shortcuts"
 url="https://github.com/mt-empty/shortcut-c-client"
 arch=('x86_64')
 license=('unknown')
 makedepends=('git')
-source=("shortcut-c-client::git+https://github.com/mt-empty/shortcut-c-client.git"
-    "shortcut-pages::git+https://github.com/mt-empty/shortcut-pages.git")
-sha256sums=("SKIP"
-    "SKIP")
+source=("shortcut-pages::git+https://github.com/mt-empty/shortcut-pages.git"
+        "shortcut-c-client::git+https://github.com/mt-empty/shortcut-c-client.git"
+        "shortcut-c-client.patch")
+sha256sums=('SKIP'
+            'SKIP'
+            '40764c2baf725a7964f5d516fa4217a70aa384ceff74d74506341ce555cdb4b5')
 
 pkgver() {
   cd "${srcdir}/shortcut-pages"
   git describe --long --tags 2>/dev/null | sed 's/[^[:digit:]]*\(.\+\)-\([[:digit:]]\+\)-g\([[:xdigit:]]\{7\}\)/\1.r\2.g\3/;t;q1'
     [ ${PIPESTATUS[0]} -eq 0 ] || \
     printf "0.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/shortcut-c-client"
+  patch -Np1 --input "${srcdir}/shortcut-c-client.patch"
+
 }
 
 build() {
@@ -36,9 +44,9 @@ package_shortcut-pages-git() {
 
   cd "$srcdir/shortcut-pages/GUI"
 
-  install -dvm755 "${pkgdir}/opt/shortcut/pages"
+  install -dvm755 "${pkgdir}/usr/share/shortcut/pages"
   find . -type f -iname "*.md" -exec  \
-    install -Dvm644 "{}" "${pkgdir}/opt/shortcut/pages/{}" \;
+    install -Dvm644 "{}" "${pkgdir}/usr/share/shortcut/pages/{}" \;
 }
 
 package_shortcut-pages-extra-git() {
@@ -51,9 +59,9 @@ package_shortcut-pages-extra-git() {
 
   cd "$srcdir/shortcut-pages/nonGUI"
 
-    install -dvm755 "${pkgdir}/opt/shortcut/pages"
+    install -dvm755 "${pkgdir}/usr/share/shortcut/pages"
     find . -type f -iname "*.md" -not -regex "\.\/\(c\|git\|r\|unity\|\)\.md$" -exec \
-      install -Dvm644 "{}" "${pkgdir}/opt/shortcut/pages/{}" \;
+      install -Dvm644 "{}" "${pkgdir}/usr/share/shortcut/pages/{}" \;
 }
 
 package_shortcut-c-client-git() {
