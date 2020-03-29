@@ -1,9 +1,11 @@
-# Maintainer: Lenovsky <lenovsky@pm.me>
+# Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
+# Contributor: Lenovsky <lenovsky at pm dot me>
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=protonmail-bridge
-pkgver=1.2.3
+pkgver=1.2.5
 pkgrel=1
+_pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://www.protonmail.com/bridge"
@@ -13,9 +15,10 @@ optdepends=(
     'gnome-keyring: supported password manager (password manager is required)'
     'pass: supported password manager (password manager is required)'
 )
+conflicts=('protonmail-bridge-bin')
 options=('!emptydirs' '!strip')
-source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=('815b1b8b56d174fd4f6ce1d898e77de8f90b01e49fff89f57229b4edd27c4f0c')
+source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${_pkgrel}_amd64.deb")
+sha256sums=('681358f77d8ff6d173089a70d7323fa021586020c47bc14221298b2f94dff2ed')
 
 prepare() {
     tar xf data.tar.xz
