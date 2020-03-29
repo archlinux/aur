@@ -24,7 +24,7 @@
 
 pkgname=archey4
 pkgver=v4.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple system information tool written in Python"
 arch=('any')
 url="https://github.com/HorlogeSkynet/archey4.git"

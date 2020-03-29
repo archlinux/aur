@@ -1,7 +1,7 @@
 pkgbase = archey4
 	pkgdesc = A simple system information tool written in Python
 	pkgver = v4.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HorlogeSkynet/archey4.git
 	install = archey4.install
 	arch = any
