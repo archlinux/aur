@@ -1,3 +1,9 @@
+2020-03-29
+	upstream update: 3.36.0.1 -> 3.36.1.1
+	requires vte3 >= 0.60.1
+	dropped patch "fix non-preserved working dir"
+	dropped changes for "uk.po", will readd it later again
+
 2020-03-24
 	upstream upgrade: 3.34.2 -> 3.36.0.1
 	requires vte3 >= 0.60.0

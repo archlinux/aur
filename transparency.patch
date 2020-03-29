@@ -523,7 +523,6 @@ Subject: [PATCH 11/16] Restore translations for setting a title and
  po/th.po          | 20 ++++++++++----------
  po/tr.po          | 12 ++++++++++++
  po/ug.po          |  4 ++--
- po/uk.po          | 19 +++++++++++--------
  po/vi.po          | 15 +++++++++------
  po/wa.po          | 12 ++++++------
  po/xh.po          | 12 ++++++------
@@ -2925,55 +2924,6 @@ index 313f76b98eae..be6089762082 100644
  
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
-diff --git a/po/uk.po b/po/uk.po
-index eac987c92a7a..10ad3394f4ec 100644
---- a/po/uk.po
-+++ b/po/uk.po
-@@ -2647,11 +2647,11 @@ msgstr "Закр_ити вікно"
- #~ msgid "Default size:"
- #~ msgstr "Типовий розмір:"
- 
--#~ msgid "Title"
--#~ msgstr "Заголовок"
-+msgid "Title"
-+msgstr "Заголовок"
- 
--#~ msgid "_Title:"
--#~ msgstr "За_головок:"
-+msgid "_Title:"
-+msgstr "За_головок:"
- 
- #~ msgid "Title and Command"
- #~ msgstr "Заголовок та команда"
-@@ -2659,12 +2659,15 @@ msgstr "Закр_ити вікно"
- #~ msgid "_Unlimited"
- #~ msgstr "_Нескінченно"
- 
--#~ msgid "Set Title"
--#~ msgstr "Встановлення заголовка"
-+msgid "Set Title"
-+msgstr "Встановлення заголовка"
- 
- #~ msgid "Current Locale"
- #~ msgstr "Теперішня локаль"
- 
-+msgid "_Set Title…"
-+msgstr "_Встановити заголовок…"
-+
- #~ msgid "What to do with dynamic title"
- #~ msgstr "Що робити з динамічним заголовком"
- 
-@@ -3398,8 +3401,8 @@ msgstr "Закр_ити вікно"
- #~ msgid "_Solid color"
- #~ msgstr "_Суцільний колір"
- 
--#~ msgid "_Transparent background"
--#~ msgstr "П_розоре тло"
-+msgid "Transparent background"
-+msgstr "Прозоре тло"
- 
- #~ msgid "Switch to Tab 3"
- #~ msgstr "До вкладки 3"
 diff --git a/po/vi.po b/po/vi.po
 index d5f27612f4be..8bb576b6d875 100644
 --- a/po/vi.po

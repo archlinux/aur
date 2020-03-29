@@ -9,13 +9,13 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.36.0.1
-pkgrel=2
+pkgver=3.36.1.1
+pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
 license=(GPL)
-depends=('vte3>=0.60.0' gsettings-desktop-schemas)
+depends=('vte3>=0.60.1' gsettings-desktop-schemas)
 makedepends=(itstool docbook-xsl libnautilus-extension appstream-glib
              gnome-shell vala yelp-tools)
 provides=("$_pkgname=$pkgver")
@@ -23,16 +23,12 @@ conflicts=("$_pkgname")
 groups=(gnome)
 changelog=package.changelog
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
-        0001-screen-Fix-non-preserved-working-dir.patch
         transparency.patch)
-sha256sums=('8b31c1ce622031b860aef6dd9295e1cac89edcc58c27b925543c9a17dffb40e2'
-            '32f26314ba3b33c95acb41510fa9e4f46d00bb575d3a32cc765b65303c30734a'
-            'af3348189059ba9df0e2a59aa9ab38c14571ced3602b017c2f9aacd13a6572ea')
+sha256sums=('f3d708a1e76d77c1c85b126f6e003220a15d4a46a50fd8070e1a3aabe678a376'
+            '1e17f16d269e045ddaf3c88624d4ba0472403be2681012e4c1bafc25a1b0167c')
 
 prepare() {
   cd $_pkgname-$pkgver
-  # https://bugs.archlinux.org/task/65774
-  patch -Np1 -i ../0001-screen-Fix-non-preserved-working-dir.patch
   patch -Np1 -i ../transparency.patch
   # autogen.sh not in tarball
   autoreconf -fiv
