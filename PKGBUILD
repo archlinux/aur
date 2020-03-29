@@ -8,7 +8,7 @@ pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=('any')
 url='https://github.com/karlstav/cava'
 license=('MIT')
-depends=('fftw' 'alsa-lib' 'ncurses' 'iniparser' 'pulseaudio')
+depends=('fftw' 'alsa-lib' 'ncurses' 'iniparser')
 source=("https://github.com/karlstav/cava/archive/$pkgver.tar.gz")
 sha512sums=('fb8a685f5c758ca1d95d3bbafadd4dbbf109592b6c3052b0821c2f69f3423e0af7657de4c3c1cdbd1523748bf56a09cbf706afa404051a6fba8139ca128ebecb')
 
