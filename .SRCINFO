@@ -1,0 +1,37 @@
+pkgbase = shortcut-git
+	pkgdesc = A commandline client to list shortcuts
+	pkgver = 0.1.0.r9.15af3dc
+	pkgrel = 1
+	url = https://github.com/mt-empty/shortcut-c-client
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	source = shortcut-c-client::git+https://github.com/mt-empty/shortcut-c-client.git
+	source = shortcut-pages::git+https://github.com/mt-empty/shortcut-pages.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = shortcut-pages-git
+	pkgdesc = A collections of keyboard shortcuts for Desktop application and websites
+	url = https://github.com/mt-empty/shortcut-pages
+	arch = any
+	license = unknown
+	provides = shortcut-pages
+
+pkgname = shortcut-pages-extra-git
+	pkgdesc = An extra collection of cheatsheets for nonGUI applications and games
+	url = https://github.com/mt-empty/shortcut-pages
+	arch = any
+	license = unknown
+	provides = shortcut-pages-extra
+	provides = shortcut-pages
+
+pkgname = shortcut-c-client-git
+	pkgdesc = A command line client for shortcut-pages
+	url = https://github.com/mt-empty/shortcut-c-client
+	arch = x86_64
+	license = unknown
+	depends = shortcut-pages
+	optdepends = shortcut-pages-extra
+	provides = shorcut
+
