@@ -2,7 +2,7 @@
 pkgname=rofi-keepassxc
 pkgver=1.1
 pkgrel=1
-pkgdesc="Simple keepassxc-cli frontent in rofi"
+pkgdesc="Simple keepassxc-cli frontend in rofi"
 arch=('any')
 url="https://github.com/samedamci/${pkgname}"
 license=('MIT')
