@@ -1,0 +1,13 @@
+post_install() {
+  # enable pamac extension
+  printf '==> Enable Pamac Updates Indicator via\n'
+  printf '    Gnome Tweak\n'
+}
+
+post_upgrade() {
+  if [[ ! "gsettings get org.gnome.shell enabled-extensions | grep 'pamac-updates'" ]]; then
+  # enable pamac extension
+  printf '==> Enable Pamac Updates Indicator via\n'
+  printf '    Gnome Tweak\n'
+  fi
+}
