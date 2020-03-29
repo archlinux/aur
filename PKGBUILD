@@ -1,6 +1,6 @@
 # Maintainer: ArchFeh <guyu2876@gmail.com>
 # Contributor: Robosky <fangyuhao0612@gmail.com>
-pkgname=mojave-gtk-theme-git-new
+pkgname=mojave-gtk-theme-git
 _pkgname=Mojave-gtk-theme
 pkgver=r332.d5cfed8
 pkgrel=1
@@ -13,7 +13,7 @@ source=('git+https://github.com/vinceliuice/Mojave-gtk-theme.git')
 md5sums=('SKIP')
 makedepends=('sassc' 'optipng' 'inkscape' 'git')
 options=('!strip')
-conflicts=('mojave-gtk-theme')
+conflicts=('mojave-gtk-theme' 'mojave-gtk-theme-git-new')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
