@@ -1,0 +1,9 @@
+/src
+/pkg
+/intellij-community
+/idea-android
+/idea-adt-tools-base
+*.xz
+*.tar.*
+*.pkg.*
+*.log
