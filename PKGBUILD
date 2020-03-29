@@ -1,7 +1,7 @@
 #Maintainer: Ali Molaei <ali dot molaei at protonmail dot com>
 
 pkgname="mongodb-tools-bin"
-pkgver="4.2.3"
+pkgver="4.2.5"
 basever="4.2"
 pkgrel="1"
 pkgdesc="The MongoDB tools provide import, export, and diagnostic capabilities."
@@ -15,8 +15,8 @@ optdepends=("mongodb-compass: The MongoDB GUI")
 source_x86_64=(mongodb-org-tools_${pkgver}_x86_64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-amd64/mongodb-org-tools_${pkgver}_amd64.deb")
 source_aarch64=(mongodb-org-tools_${pkgver}_aarch64.deb::"https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/${basever}/multiverse/binary-arm64/mongodb-org-tools_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=("b2c1d5a34615bf76961f49204afbfb9f029e10e35cb65035a9689e73651d06c7")
-sha256sums_aarch64=("ea99c322916cd5e41edf31144952f31a366cc4b22d0f7fe3cb7aec468442027e")
+sha256sums_x86_64=("bd7832cbeeafc34c90f9d6402c730a4d60bc772bbc2c6d7be267e97e307986cd")
+sha256sums_aarch64=("e7e288910a81f03ae877111132eb13fa2bf3ca326f8f53b34660f3b7af319440")
 
 prepare() {
   cd "${srcdir}"
