@@ -1,11 +1,11 @@
 # Maintainer: Christophe LAVIE <christophe.lavie@laposte.net>
-# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 07/12/2019
+# Contributor: Christophe LAVIE <christophe.lavie@laposte.net> 29/03/2020
 
 
 pkgname=devolo-dlan-cockpit
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
-name=software-devolo-cockpit-linux-v${pkgver//./-}.run
+name=devolo-cockpit-v${pkgver//./-}-linux.run
 install=${pkgname}.install
 pkgdesc="Display and configure settings of your devolo device"
 arch=('i686' 'x86_64')
@@ -41,6 +41,5 @@ package() {
   	install -Dm644 "${srcdir}/devolonetsvc.service" "${pkgdir}/usr/lib/systemd/system/devolonetsvc.service"
  }
  
-
-sha256sums=('edd7862136f7bb40d9d45fb6f2b4513e8f973a1aae0ab0031ac54f7e498f8136'
-         '6f187ca5c7a599b5394ea09cd68885168dbd19b5bd72df5ce083e721e2f0a12c')
+sha256sums=('9e03d2f1d16e38cf6f948586a87dc61cd53387e7ac923b9dc85f183206cdaa3e'
+            '6f187ca5c7a599b5394ea09cd68885168dbd19b5bd72df5ce083e721e2f0a12c')
