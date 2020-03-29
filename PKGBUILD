@@ -1,7 +1,7 @@
 # Maintainer: Slash <youremail@domain.com>
 
-pkgname=weechat-poljar-matrix-git
-pkgver=r701.6d58ff0
+pkgname=weechat-poljar-matrix
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Python plugin for Weechat to communicate over the Matrix protocol"
 arch=('any')
@@ -10,20 +10,14 @@ license=('custom')
 groups=()
 depends=('python-aiohttp' 'python-atomicwrites' 'python-attrs' 'python-future' 'python-logbook'
          'python-nio' 'python-pygments' 'python-pyopenssl' 'python-webcolors')
-makedepends=('git')
 provides=('weechat-poljar-matrix')
 conflicts=('weechat-poljar-matrix')
-install='weechat-poljar-matrix-git.install'
-source=('weechat-matrix::git+https://github.com/poljar/weechat-matrix.git')
-md5sums=('SKIP')
-
-pkgver() {
-    cd "${srcdir}/weechat-matrix"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+install='weechat-poljar-matrix.install'
+source=("weechat-matrix-${pkgver}.tar.gz::https://github.com/poljar/weechat-matrix/archive/${pkgver}.tar.gz")
+sha256sums=('f12ba287f8ac9d7870f40cf5be1651b6bf39c6d0b01efc3e34c5b761d72f9af2')
 
 package() {
-    cd "${srcdir}/weechat-matrix"
+    cd "${srcdir}/weechat-matrix-${pkgver}"
 
     # Install plugin scripts
     make WEECHAT_HOME="${pkgdir}/usr/lib/weechat" install

@@ -1,12 +1,11 @@
-pkgbase = weechat-poljar-matrix-git
+pkgbase = weechat-poljar-matrix
 	pkgdesc = Python plugin for Weechat to communicate over the Matrix protocol
-	pkgver = r701.6d58ff0
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/poljar/weechat-matrix
-	install = weechat-poljar-matrix-git.install
+	install = weechat-poljar-matrix.install
 	arch = any
 	license = custom
-	makedepends = git
 	depends = python-aiohttp
 	depends = python-atomicwrites
 	depends = python-attrs
@@ -18,8 +17,8 @@ pkgbase = weechat-poljar-matrix-git
 	depends = python-webcolors
 	provides = weechat-poljar-matrix
 	conflicts = weechat-poljar-matrix
-	source = weechat-matrix::git+https://github.com/poljar/weechat-matrix.git
-	md5sums = SKIP
+	source = weechat-matrix-0.1.0.tar.gz::https://github.com/poljar/weechat-matrix/archive/0.1.0.tar.gz
+	sha256sums = f12ba287f8ac9d7870f40cf5be1651b6bf39c6d0b01efc3e34c5b761d72f9af2
 
-pkgname = weechat-poljar-matrix-git
+pkgname = weechat-poljar-matrix
 
