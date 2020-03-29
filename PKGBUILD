@@ -4,10 +4,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bigloo-devel
-_pkgver=4.3h-alpha10Mar20
-pkgver=${_pkgver/-/_}
-majorver=4.3h
-pkgrel=1
+#_pkgver=4.3h-alpha10Mar20
+pkgver=4.3h
+pkgrel=2
 epoch=1
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
@@ -19,14 +18,14 @@ optdepends=('java-environment' 'emacs' 'zip' 'sqlite' 'alsa-lib' 'flac' 'avahi')
 options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=('bigloo')
-source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}${_pkgver}.tar.gz bigloo-emacs.patch)
-sha256sums=('5a2d27cbeccc47c0babd81624b88c60c8ba80c7dd49cc03a74c0aa6ebe5bbc9f'
+source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-unstable.tar.gz bigloo-emacs.patch)
+sha256sums=('8c0b86eaad61b7916930695e3d03ad914ebafbac84992dfff4aa10046a3d9ada'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 elisp_dir=/usr/share/emacs/site-lisp/bigloo
 
 build() {
-  cd ${pkgname%-devel}${majorver} 
+  cd ${pkgname%-devel}-${pkgver} 
   ./configure --prefix=/usr \
     --docdir=/usr/share/doc/bigloo \
     --mandir=/usr/share/man \
@@ -37,7 +36,7 @@ build() {
     --customgc=no \
     --customgmp=no \
     --customlibuv=no \
-    --jvm=yes \
+    --jvm=no \
     --native-default-backend \
     --enable-avahi \
     --enable-flac \
@@ -49,16 +48,16 @@ build() {
 }
 
 prepare() {
-  patch -p0 -d "${srcdir}/${pkgname%-devel}${majorver}" -i "${srcdir}/bigloo-emacs.patch"
+  patch -p0 -d "${srcdir}/${pkgname%-devel}-${pkgver}" -i "${srcdir}/bigloo-emacs.patch"
 }
 
 check() {
-  cd ${pkgname-devel}${majorver}
+  cd ${pkgname%-devel}-${pkgver} 
   make test
 }
 
 package() {
-  cd ${pkgname%-devel}${majorver}
+  cd ${pkgname%-devel}-${pkgver}
 
   make DESTDIR="${pkgdir}" install install-bee
   make -C manuals DESTDIR="${pkgdir}" install-bee
@@ -73,6 +72,6 @@ package() {
       -e "s|^BGLBUILDLIBDIR=.*|BGLBUILDLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
       -e "s|^\(BIGLOO=.*\)\.sh|\1|" \
       -e "s|^\(BGL.*=.*\)\.sh|\1|" \
-      -i  ${pkgdir}/usr/lib/bigloo/${majorver}/Makefile.config
+      -i  ${pkgdir}/usr/lib/bigloo/$pkgver/Makefile.config
 
 }
