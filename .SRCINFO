@@ -1,6 +1,6 @@
 pkgbase = darknet-alexeyab-git
 	pkgdesc = YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)
-	pkgver = r1746.2614a231
+	pkgver = r1748.9a234475
 	pkgrel = 1
 	url = https://github.com/AlexeyAB/darknet
 	arch = i686

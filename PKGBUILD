@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=darknet-alexeyab-git
-pkgver=r1746.2614a231
+pkgver=r1748.9a234475
 pkgrel=1
 pkgdesc='YOLO: Real Time Object Detection Neural Network Library (AlexeyAB fork)'
 arch=('i686' 'x86_64')
@@ -26,14 +26,10 @@ build() {
   mkdir -p "${srcdir}/${_pkgname}/build-release"
   cd "${srcdir}/${_pkgname}/build-release"
 
-  msg "Starting CMake"
-
   cmake .. \
-    -DCMAKE_BUILD_TYPE="Release" \
-    -DCMAKE_PREFIX_PATH='/usr' \
-    -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -D_GLIBCXX_USE_CXX11_ABI=0"
+    -DCMAKE_BUILD_TYPE="Release"
 
-  msg "Building the project"
+  make
 }
 
 package() {
@@ -50,7 +46,7 @@ package() {
 
   # Check if opencv is installed
   if (pacman -Qqs opencv >/dev/null) ; then
-    cp $srcdir/${_pkgname}/build-release/{darknet,uselib,uselib_track} $pkgdir/usr/bin/
+    cp $srcdir/${_pkgname}/build-release/{darknet,uselib} $pkgdir/usr/bin/
   else
     cp $srcdir/${_pkgname}/build-release/darknet $pkgdir/usr/bin/
   fi
