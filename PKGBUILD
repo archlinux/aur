@@ -19,7 +19,7 @@ sha256sums=('ba909f15ab40645f48d1776de54a67b0b0ea0e7b48ed323f3464de36737f80ea'
 
 package() {
   cd "$pkgname-$pkgver"
-  install -m 644 -Dt "$pkgdir/usr/share/doc/$pkgname/" USAGE README.md CHANGELOG CONTRIBUTORS
+  install -m 644 -Dt "$pkgdir/usr/share/doc/$pkgname/" USAGE
   install -m 644 -Dt "$pkgdir/usr/share/licenses/$pkgname/" ../LICENSE
   install -Dt "$pkgdir/usr/bin/" shelldap
 }
