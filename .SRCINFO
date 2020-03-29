@@ -1,12 +1,14 @@
 pkgbase = phoc-git
 	pkgdesc = Wayland compositor for phones
-	pkgver = r161.d81666f
+	pkgver = r280.3d68b09
 	pkgrel = 1
 	url = https://source.puri.sm/Librem5/phoc
 	arch = i686
 	arch = x86_64
+	arch = arm
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL3
 	makedepends = meson
 	makedepends = ninja
