@@ -1,4 +1,5 @@
 pkgbase = glow-sans-sc-normal
+	pkgdesc = SHSans-derived CJK font family with a more concise & modern look.
 	pkgver = v0.9
 	pkgrel = 1
 	url = https://welai.github.io/glow-sans
