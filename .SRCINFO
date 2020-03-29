@@ -1,0 +1,13 @@
+pkgbase = python-filesplitter
+	pkgdesc = File splitter is a tool that split large file into multiple small file
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/asrmarco13/the-file-splitter
+	arch = any
+	license = GPLv3
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/F/FileSplitter/FileSplitter-2.0.tar.gz
+	md5sums = 1ab81f811823c8f85a3cecdd94ebd22f
+
+pkgname = python-filesplitter
+
