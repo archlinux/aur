@@ -1,15 +1,14 @@
 pkgbase = turbodiary
 	pkgdesc = Turbo Diary - A Personal Diary
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/emvigo/turbodiary
 	arch = x86_64
 	license = APACHE
-	makedepends = pkgconf
 	depends = openssl
 	depends = pcre2
-	source = https://github.com/emvigo/turbodiary/archive/0.7.0.tar.gz
-	sha256sums = a0ee6f08da1eb879171764f07d51c784c81b68fee4f9c65d48cb9d1329e8a3f1
+	source = https://github.com/emvigo/turbodiary/archive/0.7.1.tar.gz
+	sha256sums = 0a80811d49069925bf74c21ce2e409a292004d4a4c6ae1460a6cce4b637f75ae
 
 pkgname = turbodiary
 
