@@ -1,0 +1,25 @@
+pkgbase = terminator-git
+	pkgdesc = python3 port for terminal emulator that supports tabs and grids python3
+	pkgver = 2.11.2.gb32662a
+	pkgrel = 1
+	url = https://github.com/JAugusto42/terminator.git
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = desktop-file-utils
+	makedepends = gettext
+	makedepends = intltool
+	depends = vte3
+	depends = gconf
+	depends = xdg-utils
+	depends = libkeybinder3
+	depends = python-configobj
+	depends = python-psutil
+	depends = python-gobject
+	conflicts = terminator
+	conflicts = terminator-gtk3-bzr
+	source = git+https://github.com/JAugusto42/terminator.git
+	sha256sums = SKIP
+
+pkgname = terminator-git
+
