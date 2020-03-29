@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.32.0.r288.gee70e8ce50
+pkgver=0.32.0.r320.gbca917f6d2
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -135,7 +135,6 @@ optdepends=(
             'nvidia-utils: for hardware accelerated video decoding with CUDA'
             'openh264: Additional libopenh264 support for ffmpeg'
             'rockchip-mpp: Additional rkmpp support for ffmpeg'
-            'rsound: Additional rsound support for mpv'
             'shine: Additional libshine support for ffmpeg'
             'spirv-cross: Additional spirv support for mpv'
             'tensorflow: mpv ffmpeg DNN module backend'
@@ -192,9 +191,6 @@ if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   fi
   if [ -f /usr/lib/librockchip_mpp.so ]; then
     depends+=('rockchip-mpp')
-  fi
-  if [ -f /usr/lib/librsound.so ]; then
-    depends+=('rsound')
   fi
   if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
     depends+=('spirv-cross')
@@ -368,7 +364,6 @@ prepare() {
     '--enable-rubberband'
     '--enable-sdl2'
     '--enable-shaderc'
-    '--enable-sndio'
     '--enable-uchardet'
     '--enable-vaapi'
     '--enable-vaapi-drm'
@@ -416,9 +411,6 @@ prepare() {
     fi
     if [ -f /usr/lib/librockchip_mpp.so ]; then
       _ffmpeg_options+=('--enable-rkmpp')
-    fi
-    if [ -f /usr/lib/librsound.so ]; then
-      _mpv_options+=('--enable-rsound')
     fi
     if [ -f /usr/lib/libspirv-cross-c-shared.so ]; then
       _mpv_options+=('--enable-spirv-cross')
