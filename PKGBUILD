@@ -46,7 +46,8 @@ source=(git://git.sagemath.org/sage.git#branch=develop
         sagemath-pexpect-4.8.patch
         sagemath-gap-4.11.patch
         sagemath-matplotlib-3.2.patch
-        sagemath-pari-2.11.3.patch)
+        sagemath-pari-2.11.3.patch
+        sagemath-jedi-0.16.patch)
 sha256sums=('SKIP'
             '9cbb72a1422416152cedd6849944d3c02a1639642758b470931f9fc5ddf42d22'
             '6a5470d7044a50a35a6478f57c19adf72fe54aefebeea8a095915b63f9e219ac'
@@ -59,7 +60,8 @@ sha256sums=('SKIP'
             '5e6d1aa34959bd4369bd08a80648a5c7bc2d38e72c97e9a5f986e91f8a7aca07'
             'd75f551fd942963b0158f5b25cefbecb213c37549375dd2e0f88e1856555fa1e'
             '979777363001cca87f73128dd4db5f372fc9e4f1079805a20af01df47797468f'
-            'e9c450a30c3f76b05808ece2f40b86f5222cd39563fe7d901712937df28eb4ee')
+            'e9c450a30c3f76b05808ece2f40b86f5222cd39563fe7d901712937df28eb4ee'
+            'efb5e8b314b0c29eca79f29d70cd302ef9565813fd331a9f1ecb4ac70f416f94')
 
 pkgver() {
   cd sage
@@ -90,6 +92,8 @@ prepare(){
   patch -p1 -i ../sagemath-matplotlib-3.2.patch
 # Fix doctests with pari 2.11.3
   patch -p1 -i ../sagemath-pari-2.11.3.patch
+# Fix deprecation warnings on autocompletion with jedi 0.16
+  patch -p1 -i ../sagemath-jedi-0.16.patch
 
 # Upstream patches  
 # use Features to detect Cremona databases https://trac.sagemath.org/ticket/25825

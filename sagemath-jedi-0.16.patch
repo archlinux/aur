@@ -1,0 +1,13 @@
+--- a/src/sage/all.py
++++ b/src/sage/all.py
+@@ -324,6 +324,9 @@ warnings.filterwarnings('ignore', category=DeprecationWarning,
+ # However, be sure to keep OUR deprecation warnings
+ warnings.filterwarnings('default', category=DeprecationWarning,
+     message=r'[\s\S]*See https\?://trac\.sagemath\.org/[0-9]* for details.')
++# jedi 0.16 deprecation warnings
++warnings.filterwarnings('ignore', category=DeprecationWarning,
++    message='.*Use get_signatures().*')
+ # Python 3.8 deprecation warnings
+ warnings.filterwarnings('ignore', category=DeprecationWarning,
+     message='.*PY_SSIZE_T_CLEAN.*')
+
