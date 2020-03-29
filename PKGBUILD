@@ -30,6 +30,7 @@ depends=(
   sdl2
   vulkan-icd-loader
   zlib
+  curl
 )
 makedepends=(
   cmake
@@ -44,11 +45,9 @@ options=(!emptydirs)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
   rpcs3-cereal::git+https://github.com/RPCS3/cereal.git
-  rpcs3-curl::git+https://github.com/RipleyTom/curl.git
   rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
   rpcs3-libusb::git+https://github.com/RPCS3/libusb.git
   rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
-  rpcs3-wolfssl::git+https://github.com/RipleyTom/wolfssl.git
   rpcs3-yaml-cpp::git+https://github.com/RPCS3/yaml-cpp.git
   git+https://github.com/kobalicek/asmjit.git
   git+https://github.com/FNA-XNA/FAudio.git
@@ -58,8 +57,6 @@ source=(
   git+https://github.com/Cyan4973/xxHash.git
 )
 sha256sums=(
-  SKIP
-  SKIP
   SKIP
   SKIP
   SKIP
@@ -83,10 +80,9 @@ pkgver() {
 prepare() {
   cd rpcs3
 
-  git submodule init 3rdparty/{cereal,curl,FAudio,hidapi,libusb,pugixml,span,wolfssl,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule init 3rdparty/{cereal,FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
   git config submodule.asmjit.url ../asmjit
   git config submodule.cereal.url ../rpcs3-cereal
-  git config submodule.cereal.url ../rpcs3-curl
   git config submodule.glslang.url ../glslang
   git config submodule.FAudio.url ../FAudio
   git config submodule.hidapi.url ../rpcs3-hidapi
@@ -94,10 +90,9 @@ prepare() {
   git config submodule.llvm.url ../rpcs3-llvm
   git config submodule.pugixml.url ../pugixml
   git config submodule.span.url ../span
-  git config submodule.yaml-cpp ../rpcs3-wolfssl
   git config submodule.xxHash ../xxHash
   git config submodule.yaml-cpp ../rpcs3-yaml-cpp
-  git submodule update 3rdparty/{cereal,curl,FAudio,hidapi,libusb,pugixml,span,wolfssl,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  git submodule update 3rdparty/{cereal,FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
 }
 
 build() {
@@ -108,7 +103,8 @@ build() {
     -DUSE_NATIVE_INSTRUCTIONS=OFF \
     -DUSE_SYSTEM_FFMPEG=ON \
     -DUSE_SYSTEM_LIBPNG=ON \
-    -DUSE_SYSTEM_ZLIB=ON
+    -DUSE_SYSTEM_ZLIB=ON \
+    -DUSE_SYSTEM_CURL=ON
   make -C build
 }
 
