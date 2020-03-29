@@ -1,6 +1,6 @@
 pkgbase = libbfio-git
 	pkgdesc = Library to provide basic file input/output abstraction
-	pkgver = 20161216.66eccc8
+	pkgver = 20191230.07a22b0
 	pkgrel = 1
 	url = https://github.com/libyal/libbfio
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = libbfio-git
 	makedepends = pkg-config
 	makedepends = bison
 	makedepends = flex
-	provides = libbfio-git
+	provides = libbfio
 	conflicts = libbfio
 	source = git+https://github.com/libyal/libbfio.git
 	sha1sums = SKIP

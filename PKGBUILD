@@ -1,12 +1,14 @@
-# Maintainer: Jaryl Chng <mrciku@gmail.com>
+# Maintainer: Davide Depau <davide@depau.eu>
+# Contributor: Jaryl Chng <mrciku@gmail.com>
+
 pkgname=libbfio-git
-pkgver=20161216.66eccc8
+pkgver=20191230.07a22b0
 pkgrel=1
 pkgdesc='Library to provide basic file input/output abstraction'
 arch=('any')
 url='https://github.com/libyal/libbfio'
 license=('LGPL')
-provides=('libbfio-git')
+provides=('libbfio')
 conflicts=('libbfio')
 groups=()
 depends=()
