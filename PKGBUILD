@@ -7,20 +7,45 @@
 
 pkgname=cegui
 pkgver=0.8.7
-pkgrel=11
+pkgrel=12
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
 license=("MIT")
-depends=('pcre' 'glew' 'expat' 'freetype2' 'libxml2' 'devil' 'freeglut' 'lua51'
-         'silly')
-makedepends=('cmake' 'python2' 'doxygen' 'ogre=1.9' 'gtk2' 'boost' 'graphviz'
-             'irrlicht' 'glm' 'mesa' 'tolua++' 'mercurial' 'ois')
-optdepends=('ogre: ogre module'
-            'python2: python bindings'
-            'ois: running samples'
-            'gtk2: gtk2 module'
-            'irrlicht: irrlicht module')
+depends=(glm)
+makedepends=('git' 'cmake')
+optdepends=('pcre'
+            'freetype2'
+            'minizip'
+            'fribidi'
+            'libraqm'
+            'freeglut'
+            'mesa'
+            'glew'
+            'glfw'
+            'sdl2'
+            'sdl2_image'
+            'sfml'
+            'irrlicht'
+            'ogre'
+            'boost'
+            'ois'
+            'directfb'
+            'libepoxy'
+            'expat'
+            'libxml2'
+            'tinyxml'
+            'tinyxml2'
+            'rapidxml'
+            'devil'
+            'freeimage'
+            'silly'
+            'lua51'
+            'tolua++'
+            'python'
+            'doxygen'
+            'gtk2'
+            'ccache')
 _pkgver=0-8-7
 source=("${pkgname}-${pkgver}::https://github.com/cegui/cegui/archive/v${_pkgver}.tar.gz")
 sha256sums=('7be289d2d8562e7d20bd155d087d6ccb0ba62f7e99cc25d20684b8edf2ba15cd')
