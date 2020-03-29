@@ -1,0 +1,13 @@
+pkgbase = hetzner-kube-bin
+	pkgdesc = A CLI tool for provisioning kubernetes clusters on Hetzner Cloud
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/xetys/hetzner-kube
+	arch = x86_64
+	license = Apache2.0
+	provides = hetzner-kube
+	source = hetzner-kube-bin-0.5.1::https://github.com/xetys/hetzner-kube/releases/download/0.5.1/hetzner-kube-0.5.1-linux-amd64
+	sha256sums = 94542b167e4f1fbba3228ac7d7d9f88e0b6a277fe1a01f16968898d07e947850
+
+pkgname = hetzner-kube-bin
+
