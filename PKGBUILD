@@ -1,20 +1,21 @@
+# Maintainer: int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-dumper-concise'
-pkgver='2.022'
+pkgver='2.023'
+_distdir="Data-Dumper-Concise-${pkgver}"
 pkgrel='1'
-pkgdesc="Less indentation and newlines plus sub deparsing"
+pkgdesc="Perl/CPAN Module Data::Dumper::Concise: Less indentation and newlines plus sub deparsing"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
-url='http://search.mcpan.org/dist/Data-Dumper-Concise'
-source=('http://search.mcpan.org/CPAN/authors/id/F/FR/FREW/Data-Dumper-Concise-2.022.tar.gz')
-md5sums=('416882cd86114e7cea9a429ae97fb5a6')
-sha512sums=('a3b17d740571db3d1968438830af5aee912f671dbc3692b2708ecb9301bc7770025d48202c3414a8e50cc2b48050f8b27b2a2c9b62d01681f0ce06888c37bd40')
-_distdir="Data-Dumper-Concise-2.022"
+url='https://metacpan.org/release/Data-Dumper-Concise'
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/${_distdir}.tar.gz")
+md5sums=('12aee80af6ffb8ad9db6f008620300ba')
+sha512sums=('cc193bc60228dd3bb1c50d4545ee6a507d80ada27548303bb04fd720504746a2d5a4f32d7c33f52dfaf135a2456e019d794a7d693e2c56df9ea9d0ff385e8cd0')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
