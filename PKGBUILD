@@ -1,7 +1,7 @@
 # Maintainer: A.I. <merrick@luois.me>
 
-_script=PH_SCRIPT
-_width=PH_WIDTH
+_script=tc
+_width=normal
 pkgname=glow-sans-${_script}-${_width}
 pkgver=v0.9
 pkgrel=1
