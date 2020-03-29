@@ -22,6 +22,7 @@ pkgbase = conky-lua
 	depends = curl
 	depends = glib2
 	depends = imlib2
+	depends = libpulse
 	depends = libxdamage
 	depends = libxft
 	depends = libxml2

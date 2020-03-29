@@ -25,6 +25,7 @@ depends=('alsa-lib'
     'curl'
     'glib2'
     'imlib2'
+    'libpulse'
     'libxdamage'
     'libxft'
     'libxml2'
@@ -55,6 +56,7 @@ build() {
         -D BUILD_WEATHER_XOAP=ON \
         -D BUILD_XDBE=ON \
         -D BUILD_WLAN=ON \
+        -D BUILD_PULSEAUDIO=ON \
         .
 
     make
