@@ -3,7 +3,7 @@
 
 pkgname='dhall-bin'
 pkgver=1.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dhall typechecker and formatter"
 arch=('x86_64')
 _repo='dhall-lang/dhall-haskell'

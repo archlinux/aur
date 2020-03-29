@@ -1,7 +1,7 @@
 pkgbase = dhall-bin
 	pkgdesc = Dhall typechecker and formatter
 	pkgver = 1.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = BSD
