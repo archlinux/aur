@@ -1,6 +1,6 @@
 pkgbase = seafile-server
 	pkgdesc = Seafile server core
-	pkgver = 7.1.1
+	pkgver = 7.1.3
 	pkgrel = 1
 	url = https://github.com/haiwen/seafile-server
 	arch = i686
@@ -10,17 +10,21 @@ pkgbase = seafile-server
 	arch = aarch64
 	license = AGPL3
 	makedepends = vala
-	depends = ccnet-server>=7.1.1
+	depends = ccnet-server>=7.1.3
 	depends = fuse2
 	depends = libevhtp-seafile
 	depends = libarchive
 	conflicts = seafile
-	source = seafile-server-7.1.1.tar.gz::https://github.com/haiwen/seafile-server/archive/v7.1.1-server.tar.gz
+	source = seafile-server-7.1.3.tar.gz::https://github.com/haiwen/seafile-server/archive/v7.1.3-server.tar.gz
 	source = fix_seafile-controller_paths.diff
 	source = seafile-server@.service
-	sha256sums = 6f8ea0204c322b3f1675e73f2e639d1167e880bc53596e9fe5fbb6c501de6bee
-	sha256sums = 8069df2e84e5142a030c4598e410eeece1aaed2fdce3b8abe82b4752d257ffb9
+	source = seafile-sysusers.conf
+	source = seafile-tmpfiles.conf
+	sha256sums = 79f7722a34c304adb78462194e64d6a610bd5ee40def37f4e4cdf5befed44fcd
+	sha256sums = c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930
 	sha256sums = 19ed8a238b9cff5a8ad363fa6eda884a49da283aa913270dd667d1b9a19d8056
+	sha256sums = 2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a
+	sha256sums = 24962ce5cba697d18980b9d418c7654fbfc5118c69236f9fc94aa3cd526ac176
 
 pkgname = seafile-server
 

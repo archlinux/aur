@@ -4,7 +4,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=seafile-server
-pkgver=7.1.1
+pkgver=7.1.3
 pkgrel=1
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -26,8 +26,8 @@ source=(
     'seafile-tmpfiles.conf'
 )
 sha256sums=(
-    '6f8ea0204c322b3f1675e73f2e639d1167e880bc53596e9fe5fbb6c501de6bee'
-    '8069df2e84e5142a030c4598e410eeece1aaed2fdce3b8abe82b4752d257ffb9'
+    '79f7722a34c304adb78462194e64d6a610bd5ee40def37f4e4cdf5befed44fcd'
+    'c4bd2b24fa2e5919b1ada61fff0dda7486460a8814764dc37db79178378d4930'
     '19ed8a238b9cff5a8ad363fa6eda884a49da283aa913270dd667d1b9a19d8056'
     '2faf52556d901ae18cfaa33b1cc55ee14abab4f78869eb6a2889ceeac4e3076a'
     '24962ce5cba697d18980b9d418c7654fbfc5118c69236f9fc94aa3cd526ac176'
@@ -43,8 +43,7 @@ prepare() {
     sed -i "s|(DESTDIR)@prefix@|@prefix@|" "./lib/libseafile.pc.in"
 
     # Fix paths to Gunicorn
-    sed \
-        -e 's|gunicorn_exe=.*|gunicorn_exe=/usr/bin/gunicorn|g' \
+    sed -e 's|gunicorn_exe=.*|gunicorn_exe=/usr/bin/gunicorn|g' \
         -e 's|thirdpart/bin/gunicorn|$gunicorn_exe|g' \
         -i ./scripts/seahub.sh
 }
@@ -55,8 +54,8 @@ build() {
     ./configure \
         --enable-fuse \
         --enable-python \
-        --prefix=/usr \
-        --with-mysql=/usr/bin/mysql_config
+        --prefix='/usr' \
+        --with-mysql='/usr/bin/mysql_config'
         PYTHON='/usr/bin/python'
     make
 }
