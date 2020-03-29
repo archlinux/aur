@@ -1,20 +1,25 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 # Contributor: Francois Boulogne <fboulogne@april.org>
 
-pkgname=python-isbnlib
-_pyname="${pkgname#python-}"
-pkgver=3.9.10
+_pipname=isbnlib
+pkgname=python-$_pipname
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Extract, clean, transform, hyphenate and metadata for ISBNs'
 arch=('any')
-url="https://pypi.python.org/pypi/$_pyname"
+url="https://pypi.python.org/pypi/$_pipname"
 license=('LGPL3')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/xlcnd/$_pyname/archive/v$pkgver.tar.gz")
-sha256sums=('5e5325959ea5532db119563d7a6bc086cd55615dc9c48a21c4440dcebeafb2ad')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/xlcnd/$_pipname/archive/v$pkgver.tar.gz")
+sha256sums=('e9ed6aee7dafafd457d07d5ddc1adde631f5cef9aeb33db324da7c61c75c182d')
 
-package(){
-    cd "$_pyname-$pkgver"
-    python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+	cd "$_pipname-$pkgver"
+	python setup.py build
+}
+
+package() {
+	cd "$_pipname-$pkgver"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
