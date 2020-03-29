@@ -1,0 +1,4 @@
+post_install() {
+	echo "To add this script to your WeeChat installation, please execute the following command:"
+	echo "ln -s /usr/share/weechat/python/{matrix,matrix.py} -t ~/.weechat/python"
+}
