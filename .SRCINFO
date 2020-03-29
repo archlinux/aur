@@ -1,0 +1,22 @@
+pkgbase = craftos-pc-git
+	pkgdesc = Advanced ComputerCraft emulator written in C++
+	pkgver = 2.3.0~443+7256da8
+	pkgrel = 1
+	url = https://github.com/MCJack123/craftos2
+	arch = x86_64
+	arch = i386
+	arch = armv7l
+	arch = aarch64
+	license = MIT
+	depends = craftos-pc-data>=2.2.6
+	depends = sdl2>=2.0.8
+	depends = sdl2_mixer
+	depends = poco
+	optdepends = libharu: PDF output support
+	optdepends = png++: PNG screenshot support
+	optdepends = ncurses: CLI mode support
+	source = craftos2::git+https://github.com/MCJack123/craftos2.git
+	sha256sums = SKIP
+
+pkgname = craftos-pc-git
+
