@@ -5,15 +5,14 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to mobo's package, https://aur.archlinux.org/packages/zandronum2/
 pkgname=zandronum
 pkgver=3.0.1
-pkgrel=1
-_fmod_ver_true="4.24.16"
-_fmod_ver="$(echo ${_fmod_ver_true} | sed -e 's/\.//g')"
+pkgrel=2
+_fmodex_ver=4.24.16
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
 #arch=('i686' 'x86_64')
 arch=('x86_64')
 url="https://zandronum.com/"
 license=('custom')
-depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl-1.0' 'fluidsynth')
+depends=('sdl' 'libjpeg6-turbo' 'glu' 'openssl-1.0' 'fluidsynth' 'fmodex')
 optdepends=('timidity++: midi support' 'freedoom: free IWAD' 'gtk2: for a GUI selection screen' 'doomseeker: a GUI server browser')
 makedepends=( 'zlib' 'sdl' 'libjpeg-turbo' 'nasm' 'gtk2' 'cmake' 'mercurial' 'fluidsynth' 'mesa' 'glu' )
 _pkgname=zandronum
@@ -58,7 +57,8 @@ package() {
   install -Dm755 "zandronum-server" "${pkgdir}/usr/share/${pkgname}/zandronum-server"
   install -Dm755 "zandronum.launcher" "${pkgdir}/usr/bin/zandronum"
   install -Dm755 "zandronum-server.launcher" "${pkgdir}/usr/bin/zandronum-server"
-  install -Dm755 "libfmodex${_fmod_suffix}-${_fmod_ver_true}.so" "${pkgdir}/usr/share/${pkgname}/lib/libfmodex${_fmod_suffix}-${_fmod_ver_true}.so"
+  install -Dm755 "libfmodex${_fmod_suffix}-${_fmodex_ver}.so" "${pkgdir}/usr/share/${pkgname}/lib/libfmodex${_fmod_suffix}-${_fmodex_ver}.so"
+  install -dm755 ${pkgdir}/usr/share/${pkgname}/lib
 
 #  ln -s "/usr/lib/libcrypto.so" "$pkgdir/usr/share/zandronum/lib/libcrypto.so.0.9.8"
 #  ln -s "/usr/lib/libssl.so" "$pkgdir/usr/share/zandronum/lib/libssl.so.0.9.8"
