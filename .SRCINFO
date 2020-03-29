@@ -1,0 +1,14 @@
+pkgbase = neovim-undotree-opt-git
+	pkgdesc = The undo history visualizer for (neo)vim.
+	pkgver = 215.e52ff67
+	pkgrel = 1
+	url = https://github.com/mbbill/undotree
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = neovim
+	source = git+https://github.com/mbbill/undotree.git
+	sha256sums = SKIP
+
+pkgname = neovim-undotree-opt-git
+
