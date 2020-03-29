@@ -1,8 +1,8 @@
 # Maintainer: Nissar Chababy <funilrys at outlook dot com>
 _pkgname=backupninja
 pkgname=$_pkgname-git
-pkgver=1.0.2.14.ge0b4375
-pkgrel=2
+pkgver=872.f9529d1
+pkgrel=1
 pkgdesc="A centralized way to configure and schedule many different backup utilities"
 arch=('any')
 url="https://labs.riseup.net/code/projects/backupninja"
@@ -21,7 +21,7 @@ backup=('etc/backupninja.conf')
 
 pkgver() {
   cd "$SRCDEST/$_pkgname"
-  git describe --always | sed 's|-|.|g' | cut -d "v" -f2
+  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

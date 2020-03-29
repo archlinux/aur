@@ -1,7 +1,7 @@
 pkgbase = backupninja-git
 	pkgdesc = A centralized way to configure and schedule many different backup utilities
-	pkgver = 1.0.2.14.ge0b4375
-	pkgrel = 2
+	pkgver = 872.f9529d1
+	pkgrel = 1
 	url = https://labs.riseup.net/code/projects/backupninja
 	arch = any
 	license = GPL
