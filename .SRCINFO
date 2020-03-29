@@ -1,6 +1,6 @@
 pkgbase = sxemacs-git
 	pkgdesc = A derivation of xemacs - git checkout
-	pkgver = 22.1.16.42.g65bafef
+	pkgver = 22.1.16.43.g843517d
 	pkgrel = 1
 	url = http://www.sxemacs.org/
 	arch = i686
@@ -22,11 +22,10 @@ pkgbase = sxemacs-git
 	depends = openssl
 	depends = ffmpeg
 	depends = xaw3d
+	depends = postgresql-libs
 	provides = sxemacs
 	conflicts = sxemacs
 	conflicts = xemacs
-	options = !libtool
-	options = !makeflags
 	source = git+http://git.sxemacs.org/sxemacs
 	md5sums = SKIP
 

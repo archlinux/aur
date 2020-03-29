@@ -1,40 +1,41 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sxemacs-git
-pkgver=22.1.16.42.g65bafef
+pkgver=22.1.16.43.g843517d
 pkgrel=1
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
 license=('GPL')
-depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils'
-	 'compface' 'libpulse' 'libxaw' 'sox' 'openssl' 'ffmpeg' 'xaw3d')
+depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 
+	 'compface' 'libpulse' 'libxaw' 'sox' 'openssl' 'ffmpeg' 'xaw3d'
+	 'postgresql-libs')
+# dependancy postgresql-libs can be avoides usin --with-postgres=no in configure statement
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
 source=('git+http://git.sxemacs.org/sxemacs')
 md5sums=('SKIP')
 _gitname="sxemacs"
-options=('!libtool' '!makeflags')
 
 pkgver() {
-  cd "$srcdir/${_gitname}"
+  cd ${_gitname}
   git describe --tags | sed -e 's|-|.|g' -e 's|v||'
 }
 
 prepare() {
-  cd "$srcdir/${_gitname}/etc"
+  cd ${_gitname}/etc
   sed -i 's+StartupWMClass=Emacs+StartupWMClass=SXEmacs+' sxemacs.desktop.in
+  cd ../..
+  [ -d ${_gitname}/libltdl/m4 ] || mkdir -p ${_gitname}/libltdl/m4
+  [ -d build ] || mkdir -p build
 }
 
 build() {
-  cd "$srcdir"
-  [ -d ${_gitname}/libltdl/m4 ] || mkdir -p ${_gitname}/libltdl/m4
-  [ -d build ] || mkdir -p build
   cd build
   ../${_gitname}/autogen.sh 
   LIBS="$LIBS -ldl -fPIC" CFLAGS="$CFLAGS -I/usr/include/freetype2" \
-      ../${_gitname}/configure --prefix=/usr --with-openssl
+      ../${_gitname}/configure --prefix=/usr --with-openssl --with-athena=3d
   make
 }
 
