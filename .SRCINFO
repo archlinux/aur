@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 12.6.5
+	pkgver = 12.9.3
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = drawio-desktop
 	makedepends = ant
 	depends = electron
 	depends = libnotify
-	source = drawio-12.6.5.tar.gz::https://github.com/jgraph/drawio/archive/v12.6.5.tar.gz
-	source = drawio-desktop-12.6.5.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v12.6.5.tar.gz
-	sha256sums = e7eaaed5a6e8264fb8614a94cd3802896ceb2bab23eee1d3c3c44398c36af5be
-	sha256sums = 04232b38430ad19c3473093dcf08bb9ae1c4b00752d8ea04b69439d45369bfce
+	source = drawio-12.9.3.tar.gz::https://github.com/jgraph/drawio/archive/v12.9.3.tar.gz
+	source = drawio-desktop-12.9.3.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v12.9.3.tar.gz
+	sha256sums = 28ffb1600c72fc89fdd21618e59b55d4736dcb15e1e00c5e0523e4e75e6b3b39
+	sha256sums = c09ab901e13b46180b2946b91c089ddfff282ef0d10056626098e13f98e8f60e
 
 pkgname = drawio-desktop
 
