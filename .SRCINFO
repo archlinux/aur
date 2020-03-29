@@ -8,7 +8,7 @@ pkgbase = craftos-pc-git
 	arch = armv7l
 	arch = aarch64
 	license = MIT
-	depends = craftos-pc-data>=2.2.6
+	depends = craftos-pc-data-git
 	depends = sdl2>=2.0.8
 	depends = sdl2_mixer
 	depends = poco
