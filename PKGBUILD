@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.9.r275.cc100f400
+pkgver=0.0.9.r278.6d32ebecc
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -44,8 +44,12 @@ conflicts=(rpcs3)
 options=(!emptydirs)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
+  rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
+  git+https://github.com/KhronosGroup/glslang.git
 )
 sha256sums=(
+  SKIP
+  SKIP
   SKIP
 )
 
@@ -58,9 +62,15 @@ pkgver() {
 prepare() {
   cd rpcs3
   
-  SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/wolfssl/ { print $2 }')
+  git submodule init Vulkan/glslang llvm
+  git config submodule.glslang.url ../glslang
+  git config submodule.llvm.url ../rpcs3-llvm
   
-  git submodule update --init $SUBMODULES
+  SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/wolfssl/ && !/llvm/ && !/glslang/ { print $2 }')
+  
+  git submodule update --init --depth=1 $SUBMODULES
+  
+  git submodule update Vulkan/glslang llvm
 }
 
 build() {
