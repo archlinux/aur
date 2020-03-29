@@ -1,6 +1,6 @@
 pkgbase = vlc-nightly
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player - nightly snapshot
-	pkgver = 4.0.0v20200307
+	pkgver = 4.0.0v20200328
 	pkgrel = 1
 	url = https://nightlies.videolan.org/
 	arch = x86_64
@@ -27,6 +27,8 @@ pkgbase = vlc-nightly
 	makedepends = libmicrodns
 	makedepends = libdvdcss
 	makedepends = smbclient
+	makedepends = flex
+	makedepends = bison
 	makedepends = vcdimager
 	makedepends = libssh2
 	makedepends = mesa
@@ -175,16 +177,12 @@ pkgbase = vlc-nightly
 	conflicts = vlc
 	replaces = vlc-plugin
 	options = !emptydirs
-	source = http://nightlies.videolan.org/build/source/vlc-4.0.0-20200307-0230-dev.tar.xz
+	source = http://nightlies.videolan.org/build/source/vlc-4.0.0-20200328-0231-dev.tar.xz
 	source = update-vlc-plugin-cache.hook
 	source = 0001-lua-Fix-build-using-lua-5.3.patch
-	source = 0001-I444-is-the-answer.patch
-	source = find-deps.py
-	sha256sums = 1acc72f15a5f236f530ac00058eec237118748e8af23fdcac60661b9e494f08a
+	sha256sums = 984d90b4985028f6d87e18a007ea43eb938c339541d9c6d2ac9e1c1f39d6f446
 	sha256sums = c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a
 	sha256sums = 3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf
-	sha256sums = d6b3c0ce4853e952ef33a08b29dae65335fc5b9d8d66e37304ffa0257b50693a
-	sha256sums = 90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7
 
 pkgname = vlc-nightly
 

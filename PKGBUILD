@@ -6,10 +6,10 @@
 
 _appname_=vlc
 pkgname=${_appname_}-nightly
-pkgver=4.0.0v20200307
+pkgver=4.0.0v20200328
 _pkgver=4.0.0
-_snapshot_=20200307
-_snapver_=0230
+_snapshot_=20200328
+_snapver_=0231
 _suffix_=dev
 _nightly_=${_snapshot_}-${_snapver_}
 pkgrel=1
@@ -27,7 +27,7 @@ depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'a52dec' 'libdvbpsi'
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3' 'lua' 
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
-             'libmtp' 'libmicrodns'  'libdvdcss' 'smbclient'
+             'libmtp' 'libmicrodns'  'libdvdcss' 'smbclient' 'flex' 'bison'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
@@ -111,9 +111,7 @@ replaces=("${_appname_}-plugin")
 options=('!emptydirs')
 source=("http://nightlies.videolan.org/build/source/vlc-${_pkgver}-${_nightly_}-${_suffix_}.tar.xz"
         'update-vlc-plugin-cache.hook'
-        '0001-lua-Fix-build-using-lua-5.3.patch'
-        '0001-I444-is-the-answer.patch'
-        'find-deps.py')
+        '0001-lua-Fix-build-using-lua-5.3.patch')
 
 pkgver() {
  printf ${_pkgver}v$_snapshot_
@@ -125,9 +123,9 @@ prepare() {
   ./bootstrap
 
   patch -Np1 -i "${srcdir}/0001-lua-Fix-build-using-lua-5.3.patch"
-  patch -Np1 -i "${srcdir}/0001-I444-is-the-answer.patch"
   sed -i -e 's:truetype/ttf-dejavu:TTF:g' modules/visualization/projectm.cpp
   sed -i -e 's:truetype/freefont:TTF:g' modules/text_renderer/freetype/freetype.c
+  sed -e 's|-Werror-implicit-function-declaration||g' -i configure
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
 
@@ -140,7 +138,7 @@ build() {
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
   export LUAC=/usr/bin/luac
-  export LUA_LIBS="`pkg-config --libs lua`"
+  export LUA_LIBS="$(pkg-config --libs lua)"
   export RCC=/usr/bin/rcc-qt5
  # export CC=clang
  # export CXX=clang++
@@ -253,23 +251,15 @@ package() {
 
   make -i DESTDIR="${pkgdir}" install
 
-  for res in 16 32 48 128; do
+  for res in 16 32 48 128 256; do
     install -D -m644 "${srcdir}/${_appname_}-${_pkgver}-${_suffix_}/share/icons/${res}x${res}/${_appname_}.png" \
       "${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_appname_}.png"
   done
 
   install -Dm644 "$srcdir"/update-vlc-plugin-cache.hook "$pkgdir"/usr/share/libalpm/hooks/update-vlc-plugin-cache.hook
 
-  # Update dependencies automatically based on dynamic libraries
-  # _detected_depends=($(find "$pkgdir"/usr -name "*.so" | xargs python "$srcdir"/find-deps.py))
-
-  #  msg 'Auto-detected dependencies:'
-  #  echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
-  #  depends=("${_detected_depends[@]}" "${_undetected_depends[@]}")
 }
 
-sha256sums=('1acc72f15a5f236f530ac00058eec237118748e8af23fdcac60661b9e494f08a'
+sha256sums=('984d90b4985028f6d87e18a007ea43eb938c339541d9c6d2ac9e1c1f39d6f446'
             'c6f60c50375ae688755557dbfc5bd4a90a8998f8cf4d356c10d872a1a0b44f3a'
-            '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf'
-            'd6b3c0ce4853e952ef33a08b29dae65335fc5b9d8d66e37304ffa0257b50693a'
-            '90b0e34d5772d2307ba07a1c2aa715db7488389003cfe6d3570b2a9c63061db7')
+            '3e6bddbaed443e40036c494a0754aedd2f94fe41bfa3754855e16f7452a03cdf')
