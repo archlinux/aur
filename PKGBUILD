@@ -1,13 +1,16 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.32.0.218.gc032db6185
+pkgver=v0.32.0.320.gbca917f6d2
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
 depends=(
          'fribidi'
+         'gnutls'
+         'jack'
          'lcms2'
+         'libarchive'
          'libbluray.so'
          'libbs2b'
          'libcaca'
@@ -17,6 +20,7 @@ depends=(
          'libgme'
          'libmysofa'
          'libplacebo.so'
+         'libpulse'
          'libshaderc_shared.so'
          'libsoxr'
          'libssh'
@@ -29,13 +33,11 @@ depends=(
          'libxv'
          'luajit'
          'mujs'
-         'rsound'
+         'openal'
          'rubberband'
          'sdl2'
          'sndio'
          'uchardet'
-         'gnutls'
-         'libarchive'
          'v4l-utils'
          'vulkan-icd-loader'
          )
@@ -112,7 +114,6 @@ prepare() {
     '--prefix=/usr'
     '--confdir=/etc/mpv'
     '--htmldir=/usr/share/doc/mpv/html'
-    '--disable-test'
     '--disable-build-date'
     '--lua=luajit'
     '--enable-cdda'
@@ -123,6 +124,8 @@ prepare() {
     '--enable-libmpv-shared'
     '--enable-openal'
     '--enable-sdl2'
+    '--enable-shaderc'
+    '--enable-vulkan'
     )
 
   echo ${_ffmpeg_options[@]} > ffmpeg_options
