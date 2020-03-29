@@ -2,13 +2,15 @@
 
 pkgname=cpuid2cpuflags-git
 pkgver=8.r2.g9fde693
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool to generate CPU_FLAGS_* for your CPU (git version)'
 arch=('x86_64')
 url='https://github.com/mgorny/cpuid2cpuflags/'
 license=('BSD')
 depends=('glibc')
 makedepends=('git')
+provides=('cpuid2cpuflags')
+conflicts=('cpuid2cpuflags')
 source=('git+https://github.com/mgorny/cpuid2cpuflags.git')
 sha256sums=('SKIP')
 
