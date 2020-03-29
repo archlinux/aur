@@ -1,4 +1,5 @@
 *.pkg.tar.xz
 *.tar.gz
+.bowerrc
 pkg/
 src/

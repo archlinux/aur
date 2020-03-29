@@ -147,7 +147,7 @@ build() {
   ###########################################################################
 
   # This builds the vanilla OpenNebula package. Tweak this line as desired.
-  scons new_xmlrpc=yes mysql=yes sqlite=yes sunstone=yes parsers=yes
+  scons -j2 new_xmlrpc=yes mysql=yes sqlite=yes sunstone=yes parsers=yes
 }
 
 package() {
