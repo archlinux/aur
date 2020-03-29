@@ -1,12 +1,12 @@
 pkgbase = mkinitcpio-nfs4-hooks
 	pkgdesc = Hooks for NFS v4 root support in mkinitcpio
 	pkgver = 0.3
-	pkgrel = 5
+	pkgrel = 7
 	url = http://www.archlinux.org/
-	arch = i686
 	arch = x86_64
 	license = GPL2
-	depends = mkinitcpio-nfs-utils=0.3-5
+	depends = nfs-utils
+	depends = mkinitcpio-nfs-utils=0.3-7
 
 pkgname = mkinitcpio-nfs4-hooks
 
