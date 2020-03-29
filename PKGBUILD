@@ -2,7 +2,7 @@
 # Contributor: Andrej Gelenberg <andrej.gelenberg@udo.edu>
 pkgname="lcdtest"
 pkgver=1.18
-pkgrel=2
+pkgrel=3
 pkgdesc="A utility to display LCD monitor test patterns."
 arch=('i686' 'x86_64')
 url="http://www.brouhaha.com/~eric/software/lcdtest/"
@@ -21,7 +21,7 @@ build() {
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}/
 	install -d -m0755 ${pkgdir}/usr/bin
-	install -m0755 ${srcdir}/${pkgname}-${pkgver}/build/${pkgname} ${pkgdir}/usr/bin
+	install -m0755 ${srcdir}/${pkgname}-${pkgver}/src/${pkgname} ${pkgdir}/usr/bin
 	install -d -m0755 ${pkgdir}/usr/share/man/man1
 	install -m0644 ${srcdir}/${pkgname}-${pkgver}/man/${pkgname}.1 ${pkgdir}/usr/share/man/man1
 }
