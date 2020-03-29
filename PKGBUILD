@@ -35,6 +35,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_gitname}"
+  export GIT_CONFIG_NOGLOBAL=1
   export GIT_CONFIG_NOSYSTEM=1
   git config --local user.name makepkg
   git config --local user.email picom@makepkg.aur
