@@ -1,0 +1,14 @@
+pkgbase = freeman-korbi-bin
+	pkgdesc = freeman
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = tar
+	options = !strip
+	source = http://git.int.schildmann.net/kschildmann/freeman/uploads/063facf4e5614f488554d3cc5ed898ad/freeman.tar.gz
+	sha256sums = 9e604a788fd408a920ac799667bd9fa703adf15c08fd63fdc57e9c7440a11288
+
+pkgname = freeman-korbi-bin
+
