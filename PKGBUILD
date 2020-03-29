@@ -2,7 +2,7 @@
 
 pkgname=gnome-news-git
 _gitname=gnome-news
-pkgver=r240.775c743
+pkgver=r308.4ad310a84996
 pkgrel=1
 pkgdesc='A GNOME 3 Feed Reader'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('gtk3' 'python' 'tracker>=1.5.1')
 makedepends=('appstream-glib' 'autoconf' 'automake' 'git' 'intltool')
 options=('!emptydirs')
 install=gnome-news.install
-source=("git://git.gnome.org/${_gitname}")
-md5sums=('SKIP')
+source=("git+https://gitlab.gnome.org/GNOME/${_gitname}.git")
+sha256sums=('SKIP')
 conflicts=('gnome-news')
 provides=("gnome-news=$pkgver")
 
@@ -23,12 +23,12 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${_gitname}"
+	cd "${_gitname}"
 	./autogen.sh --prefix=/usr --disable-schemas-compile
 	make
 }
 
 package() {
-	cd "$srcdir/${_gitname}"
+	cd "${_gitname}"
 	make DESTDIR="${pkgdir}" install
 }
