@@ -1,6 +1,6 @@
 pkgbase = mythtv-git
 	pkgdesc = A Homebrew PVR project
-	pkgver = 30+fixes.20200204.3e9e8353
+	pkgver = 31+fixes.20200328.c8c59f55
 	pkgrel = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mythtv-git
 	makedepends = perl-io-socket-inet6
 	makedepends = perl-libwww
 	makedepends = perl-dbd-mysql
-	makedepends = python2-lxml
+	makedepends = python-lxml
 	makedepends = perl-xml-simple
 	makedepends = perl-xml-xpath
 	depends = libass
@@ -49,16 +49,16 @@ pkgbase = mythtv-git
 	optdepends = libxml2: to read blu-ray metadata
 	optdepends = mariadb: Database-Backend for server deployment
 	optdepends = mariadb-clients: Database-Frontend for client deployment
-	optdepends = python2-future: for metadata-lookup / cover art
-	optdepends = python2-requests: for metadata-lookup / cover art
-	optdepends = python2-requests-cache: for metadata-lookup / cover art
+	optdepends = python-future: for metadata-lookup / cover art
+	optdepends = python-requests: for metadata-lookup / cover art
+	optdepends = python-requests-cache: for metadata-lookup / cover art
 	conflicts = myththemes
 	conflicts = mythplugins-mythvideo
 	conflicts = mythtv
 	replaces = myththemes
 	replaces = mythplugins-mythvideo
 	replaces = mythtv
-	source = git+https://github.com/MythTV/mythtv#branch=fixes/30
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/31
 	source = mythbackend.service
 	source = 99-mythbackend.rules
 	source = sysusers.d

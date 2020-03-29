@@ -7,7 +7,7 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=30+fixes.20200204.3e9e8353
+pkgver=31+fixes.20200328.c8c59f55
 pkgrel=1
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
@@ -19,18 +19,18 @@ depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva'
          'mysql-python' 'libxnvctrl' 'libhdhomerun' 'libbluray')
 makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec'
              'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'perl-dbd-mysql'
-             'python2-lxml' 'perl-xml-simple' 'perl-xml-xpath')
+             'python-lxml' 'perl-xml-simple' 'perl-xml-xpath')
 optdepends=('glew: for GPU commercial flagging'
             'libcec: for consumer electronics control capabilities'
             'libxml2: to read blu-ray metadata'
             'mariadb: Database-Backend for server deployment'
             'mariadb-clients: Database-Frontend for client deployment'
-            'python2-future: for metadata-lookup / cover art'
-            'python2-requests: for metadata-lookup / cover art'
-            'python2-requests-cache: for metadata-lookup / cover art')
+            'python-future: for metadata-lookup / cover art'
+            'python-requests: for metadata-lookup / cover art'
+            'python-requests-cache: for metadata-lookup / cover art')
 conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
-source=("git+https://github.com/MythTV/mythtv#branch=fixes/30"
+source=("git+https://github.com/MythTV/mythtv#branch=fixes/31"
         'mythbackend.service'
         '99-mythbackend.rules'
         'sysusers.d')
@@ -41,13 +41,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/mythtv/mythtv"
-  echo -n "30+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/mythtv/mythtv"
-
-  find 'bindings/python' 'contrib' 'programs/scripts' -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+  echo -n "31+fixes.$(git show -s --format=%cd --date=short | tr -d -).$(git rev-parse --short=8 HEAD)"
 }
 
 build() {
@@ -65,7 +59,6 @@ build() {
               --enable-libx264 \
               --enable-libx265 \
               --enable-vaapi \
-              --python=python2 \
               --perl-config-opts=INSTALLDIRS=vendor
   make
 }
