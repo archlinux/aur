@@ -7,7 +7,7 @@ pkgbase = runiq
 	license = MIT
 	makedepends = cargo
 	source = https://github.com/whitfin/runiq/archive/v1.1.4/runiq-1.1.4.tar.gz
-	md5sums = SKIP
+	md5sums = a4b5319b77f5d00ba9b42ffe3d19f8b7
 
 pkgname = runiq
 

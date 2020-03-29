@@ -9,7 +9,7 @@ makedepends=('cargo')
 arch=('x86_64')
 license=('MIT')
 source=("${url}/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('SKIP')
+md5sums=('a4b5319b77f5d00ba9b42ffe3d19f8b7')
 
 build() {
   cd "$pkgname-$pkgver"
