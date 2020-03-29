@@ -4,7 +4,7 @@ _pkgname=tinyprog
 pkgname=python-${_pkgname}-git
 
 pkgver=1.0.24.dev114+g97f6353
-pkgrel=1
+pkgrel=2
 
 _reponame=TinyFPGA-Bootloader
 _repo=tinyfpga/$_reponame

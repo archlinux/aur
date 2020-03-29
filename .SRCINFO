@@ -1,9 +1,9 @@
 pkgbase = python-tinyprog-git
 	pkgdesc = TinyFPGA programmer
 	pkgver = 1.0.24.dev114+g97f6353
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tinyfpga.com/
-	arch = x86_64
+	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = python-setuptools-scm
