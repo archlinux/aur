@@ -1,0 +1,13 @@
+pkgbase = cpuid2cpuflags
+	pkgdesc = Tool to generate CPU_FLAGS_* for your CPU
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/mgorny/cpuid2cpuflags/
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	source = https://github.com/mgorny/cpuid2cpuflags/releases/download/v8/cpuid2cpuflags-8.tar.bz2
+	sha256sums = db8d361e9c2ec7568ec2728b84f92412d482dc78a357e226e2bd747eb97af7a1
+
+pkgname = cpuid2cpuflags
+
