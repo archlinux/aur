@@ -3,7 +3,7 @@
 pkgname=glow-sans-sc-normal
 pkgver=v0.9
 pkgrel=1
-pkgdesc=""
+pkgdesc="SHSans-derived CJK font family with a more concise & modern look."
 url="https://welai.github.io/glow-sans"
 arch=(any)
 license=(MIT)
