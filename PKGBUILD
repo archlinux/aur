@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=0.6.8.3
+pkgver=0.6.8.4
 pkgrel=1
 install=.INSTALL
 pkgdesc="V2Ray Linux client with web GUI, compatible with SS and SSR, supporting transparent proxy"
@@ -24,19 +24,19 @@ source=(
 )
 
 source_i686=(
-    "v2raya::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_386_v${pkgver}"
 )
 source_x86_64=(
-    "v2raya::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_amd64_v${pkgver}"
 )
 source_aarch64=(
-    "v2raya::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm64_v${pkgver}"
 )
 source_armv6h=(
-    "v2raya::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
 )
 source_armv7h=(
-    "v2raya::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
+    "v2raya_v${pkgver}::https://apt.v2raya.mzz.pub/pool/main/v/v2raya/v2raya_linux_arm_v${pkgver}"
 )
 
 sha1sums=(
@@ -46,26 +46,26 @@ sha1sums=(
 )
 
 sha1sums_i686=(
-    '4b8cd734711a33bec8634d5a1523981306e3577c'
+    '4fa7efbab9fdb5bccda36ac49d4b32fc79e88304'
 )
 sha1sums_x86_64=(
-    '6743003619d37092f95e8bcd84766ebe575665a2'
+    'a79d6e83093c5db885384b8ed45a3936d7953606'
 )
 sha1sums_aarch64=(
-    'd39df948f939669c5500f9714067f1c3a5177492'
+    '56b1bd0285a68f7d9af7aec404ac89af45c048d0'
 )
 sha1sums_armv6h=(
-    'b1143e9b32f782bfc2457f1b283535143c6d125f'
+    'e31f3308770353fe1abd5ab04f1046f5189d1a14'
 )
 sha1sums_armv7h=(
-    'b1143e9b32f782bfc2457f1b283535143c6d125f'
+    'e31f3308770353fe1abd5ab04f1046f5189d1a14'
 )
 
 package() {
     cd "$srcdir"
     
     install -Dm644 "v2raya.service" "$pkgdir/usr/lib/systemd/system/v2raya.service"
-    install -Dm755 "v2raya" -t "$pkgdir/usr/bin/"
+    install -Dm755 "v2raya_v${pkgver}" "$pkgdir/usr/bin/v2raya"
 
     install -Dm644 "v2raya.png" "$pkgdir/usr/share/icons/v2raya.png"
     install -Dm755 "v2raya.desktop" -t "$pkgdir/usr/share/applications/"
