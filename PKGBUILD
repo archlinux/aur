@@ -24,7 +24,7 @@ _themenames=('cyanide'
 
 pkgname=() #initialized by loop at the bottom
 pkgver=r24.bb390bd
-pkgrel=1
+pkgrel=2
 pkgdesc="The plymouth theme collection by adi1090x"
 arch=('any')
 url="https://github.com/adi1090x/plymouth-themes"
@@ -46,7 +46,7 @@ do
 package_plymouth-theme-${themename//_/-}-git() {
     cd \$srcdir/plymouth-themes/pack_2/$themename
     mkdir -p \$pkgdir/usr/share/plymouth/themes/$themename
-    find . -type f -exec install -Dm644 \"{}\" \"\${pkgdir}\"/usr/share/plymouth/themes/$themename\"{}\" \\;
+    find . -type f -exec install -Dm644 \"{}\" \"\${pkgdir}\"/usr/share/plymouth/themes/$themename/\"{}\" \\;
 }
 "
 done

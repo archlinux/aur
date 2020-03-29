@@ -1,7 +1,7 @@
 pkgbase = plymouth-themes-adi1090x-pack2-git
 	pkgdesc = The plymouth theme collection by adi1090x
 	pkgver = r24.bb390bd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/adi1090x/plymouth-themes
 	arch = any
 	license = GPL
