@@ -1,18 +1,18 @@
 # Maintainer: Gimo <self@gimo.me>
 
 pkgname=otf-openmoji
-pkgver=12.0.0
+pkgver=12.2.0
 pkgrel=1
-pkgdesc="Open-source emojis for designers, developers and everyone else!"
+pkgdesc="Open source emojis for designers, developers and everyone else!"
 arch=(any)
-url="http://openmoji.org/"
+url="https://openmoji.org/"
 license=(CCPL:by-sa)
 depends=(fontconfig)
 source=($pkgname-$pkgver.zip::"https://github.com/hfg-gmuend/openmoji/releases/download/$pkgver/openmoji-font.zip")
-sha256sums=('e994fbd4a04f816b59fc6b4a69f1e06e32ad075013e06d6c870c945eab25e019')
+sha256sums=('f068ad956b636e5234d606968564ee93e3360499fa4ce38cfea0ed12629dee07')
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/fonts/openmoji
-  install -m644 OpenMoji-Black.ttf "$pkgdir"/usr/share/fonts/openmoji
-  install -m644 OpenMoji-Color.ttf "$pkgdir"/usr/share/fonts/openmoji
+  mkdir -p "$pkgdir/usr/share/fonts/openmoji"
+  install -m644 OpenMoji-Black.ttf "$pkgdir/usr/share/fonts/openmoji"
+  install -m644 OpenMoji-Color.ttf "$pkgdir/usr/share/fonts/openmoji"
 }
