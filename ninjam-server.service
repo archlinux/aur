@@ -1,0 +1,11 @@
+[Unit]
+Description=Ninjam online music jamming server
+After=network.target
+
+[Service]
+User=ninjam
+Group=ninjam
+ExecStart=/usr/bin/ninjamsrv /etc/ninjam.cfg
+
+[Install]
+WantedBy=multi-user.target

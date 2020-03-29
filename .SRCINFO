@@ -1,0 +1,20 @@
+pkgbase = ninjam-server-git
+	pkgdesc = Make real music together via the Internet.
+	pkgver = 0.080.r5.44c21b9
+	pkgrel = 1
+	url = http://nsis.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPL
+	backup = etc/ninjam.cfg
+	source = git+https://github.com/justinfrankel/ninjam.git
+	source = ninjam-server.service
+	source = ninjam-server.sysusers
+	source = ninjam-server.tmpfiles
+	sha256sums = SKIP
+	sha256sums = 848d991ab17df459e960246d12f29a6e6599444bf671ca1e63c69a1cb0b75e3f
+	sha256sums = b80b2c57471a2de0ce980cbd3195f929904abc8f248c7c3c6299f2415566a708
+	sha256sums = f354185c5b615cd8a1493506d762e0f0efc7e29b5d4497ae89db194e52343321
+
+pkgname = ninjam-server-git
+
