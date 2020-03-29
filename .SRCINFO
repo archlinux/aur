@@ -12,7 +12,7 @@ pkgbase = packagekit-git
 	makedepends = networkmanager
 	makedepends = bash-completion
 	makedepends = vala
-	makedepends = autoconf-archive
+	makedepends = meson
 	depends = dbus-glib
 	depends = pacman>=5.0.0
 	depends = polkit
