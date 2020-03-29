@@ -1,4 +1,4 @@
-# Maintainer: Ian Brunelli (brunelli) <ianbrunelli@gmail.com>
+# Contributor: Ian Brunelli (brunelli) <ianbrunelli@gmail.com>
 
 pkgname=gnome-news-git
 _gitname=gnome-news
