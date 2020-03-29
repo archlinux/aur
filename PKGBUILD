@@ -1,6 +1,6 @@
 # Author: butaford <butaford@gmail.com>
 pkgname=rcon-git
-pkgver=0.4.r16.g3718e63
+pkgver=0.5
 pkgrel=1
 pkgdesc="Rcon is a command line application that can be used as a Source RCON client. It will send commands to the given server, and print the reply to stdout."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ sha1sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
+	git describe --tags `git rev-list --tags --max-count=1`
 }
 
 build() {
