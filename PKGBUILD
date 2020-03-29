@@ -1,7 +1,8 @@
-#Maintainer Robosky <fangyuhao0612@gmail.com>
-pkgname=mojave-gtk-theme-git
+# Maintainer: ArchFeh <guyu2876@gmail.com>
+# Contributor: Robosky <fangyuhao0612@gmail.com>
+pkgname=mojave-gtk-theme-git-new
 _pkgname=Mojave-gtk-theme
-pkgver=238.c5e590b
+pkgver=r332.d5cfed8
 pkgrel=1
 pkgdesc='A Mac OSX like theme for GTK 3, GTK 2 and Gnome-Shell which supports GTK 3 and GTK 2 based desktop environments like Gnome, Pantheon, XFCE, Mate, etc.'
 arch=('any')
@@ -10,12 +11,13 @@ license=('GPL3')
 url='https://github.com/vinceliuice/Mojave-gtk-theme'
 source=('git+https://github.com/vinceliuice/Mojave-gtk-theme.git')
 md5sums=('SKIP')
-makedepends=('git')
+makedepends=('sassc' 'optipng' 'inkscape' 'git')
 options=('!strip')
+conflicts=('mojave-gtk-theme')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"    
 }
 
 package() {
