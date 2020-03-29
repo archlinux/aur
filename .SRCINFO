@@ -8,7 +8,7 @@ pkgbase = cbatticon-gtk2
 	license = GPL2
 	depends = libnotify
 	depends = gtk2
-	provides = cbatticon=1.6.9-1
+	provides = cbatticon=1.6.10-1
 	conflicts = cbatticon
 	source = cbatticon-1.6.10.tar.gz::https://github.com/valr/cbatticon/archive/1.6.10.tar.gz
 	sha256sums = c9782e86dab64bea17583640f23e9fda34682967984f2105aa21e0d1c355cd57
