@@ -1,7 +1,7 @@
 pkgbase = waybox-git
 	pkgdesc = Openbox clone on Wayland (git version)
 	pkgver = r87.114e265
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wizbright/waybox
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,6 @@ pkgbase = waybox-git
 	makedepends = meson
 	depends = wlroots
 	depends = wayland
-	depends = pixman
 	provides = waybox
 	conflicts = waybox
 	source = git+https://github.com/wizbright/waybox.git

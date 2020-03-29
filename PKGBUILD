@@ -3,12 +3,12 @@
 _pkgname=waybox
 pkgname=waybox-git
 pkgver=r87.114e265
-pkgrel=1
+pkgrel=2
 pkgdesc='Openbox clone on Wayland (git version)'
 url="https://github.com/wizbright/waybox"
 arch=('x86_64')
 license=('MIT')
-depends=('wlroots' 'wayland' 'pixman')
+depends=('wlroots' 'wayland')
 makedepends=('git' 'meson')
 conflicts=(waybox)
 provides=(waybox)
