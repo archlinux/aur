@@ -2,19 +2,19 @@
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
 pkgname='dhall-lsp-server-bin'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Language Server Protocol implementation for Dhall"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
 license=('BSD')
 
-_dhall_ver=1.30.0
+_dhall_ver=1.31.0
 
 source=("https://github.com/dhall-lang/dhall-haskell/releases/download/$_dhall_ver/dhall-lsp-server-$pkgver-x86_64-linux.tar.bz2"
         "https://raw.githubusercontent.com/dhall-lang/dhall-haskell/$_dhall_ver/dhall-lsp-server/LICENSE")
-sha256sums=('278d5cc1874c99a66ee382d39273b015b16c861e81fae5b417d61a8d926ff12d'
-            'adeacdbe96b7b9f8f9fbb1db9b31f77792e603180484dfe4a5c52bc5496e2046')
+sha256sums=('b1fca05fe0b53c891cd4d39d2cbfe700b30f59a05f93945e20841da5ac2eadba'
+            '9e2f0e499b5406faffffd32d0a1d69d519dc8c681fb0648ee5e9970e0299d4a7')
 
 package() {
   install -Dm755 "$srcdir/bin/dhall-lsp-server" -t "$pkgdir/usr/bin/"
