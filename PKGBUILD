@@ -15,7 +15,6 @@ sha256sums=('e7eaaed5a6e8264fb8614a94cd3802896ceb2bab23eee1d3c3c44398c36af5be'
             '04232b38430ad19c3473093dcf08bb9ae1c4b00752d8ea04b69439d45369bfce')
 
 build() {
-  cp "$srcdir/drawio-desktop-$pkgver"/{package.json,yarn.lock} "$srcdir/drawio-$pkgver"/src/main/webapp/ 
   cd "$srcdir/drawio-$pkgver"/etc/build
   ant app
   cd "$srcdir/drawio-$pkgver"/src/main/webapp
@@ -82,11 +81,20 @@ package() {
   'Categories=Graphics;' \
   > "$pkgdir/usr/share/applications/draw.io.desktop"
 
+  MIMETYPE="$(grep mimeType "$srcdir/drawio-desktop-$pkgver/electron-builder-linux-mac.json" | sed 's/.*"mimeType":.*"\(.*\)".*/\1/g' | tr '\n' ';')"
+  if [[ -n "${MIMETYPE}" ]]; then
+      echo "MimeType=${MIMETYPE}" >> "$pkgdir/usr/share/applications/draw.io.desktop"
+  fi
+
   # create icons
-  find 'images' -regex '.*/drawlogo[0-9]+\.png' |
-  grep -o '[0-9]\+' |
+  cd "$srcdir/drawio-desktop-$pkgver"
+  find 'build' -regex '.*/[0-9]+x[0-9]+\.png' |
+  grep -o '[0-9]\+' | 
+  sort -u |
   while read size; do
-    install -Dm644 "images/drawlogo$size.png" \
-    "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/draw.io.png"
+    if [[ -f "build/${size}x${size}.png" ]]; then
+      install -Dm644 "build/${size}x${size}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/draw.io.png"
+    fi
   done
 }
