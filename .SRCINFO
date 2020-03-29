@@ -1,7 +1,7 @@
 pkgbase = 4kvideodownloader
 	pkgdesc = Quickly download videos from YouTube in high-quality.
 	pkgver = 4.11.3.3420
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.4kdownload.com/products/product-videodownloader
 	arch = x86_64
 	license = custom:eula

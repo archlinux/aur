@@ -2,7 +2,7 @@
 
 pkgname=4kvideodownloader
 pkgver=4.11.3.3420
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('x86_64')
 url="http://www.4kdownload.com/products/product-videodownloader"
@@ -48,8 +48,12 @@ package() {
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5DBus.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Gui.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Network.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Positioning.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Qml.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Quick.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebChannel.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineCore.so.5"
+  install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5WebEngineWidgets.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Widgets.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5XcbQpa.so.5"
   install -m 755 -t "${pkgdir}/usr/lib/${pkgname}" "libQt5Xml.so.5"
