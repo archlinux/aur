@@ -8,36 +8,88 @@
 
 pkgname=mythtv-git
 pkgver=31+fixes.20200328.c8c59f55
-pkgrel=1
+pkgrel=2
 pkgdesc="A Homebrew PVR project"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
-depends=('libass' 'qt5-script' 'libavc1394' 'fftw' 'exiv2' 'taglib' 'libva'
-         'libiec61883' 'perl-net-upnp' 'urlgrabber' 'libsamplerate' 'qt5-webkit' 'x265'
-         'x264' 'jack' 'libvpx' 'libvdpau' 'lame' 'libxinerama' 'libpulse' 'libxrandr'
-         'mysql-python' 'libxnvctrl' 'libhdhomerun' 'libbluray')
-makedepends=('git' 'help2man' 'yasm' 'libmariadbclient' 'libxml2' 'libcec'
-             'libcdio' 'lirc' 'perl-io-socket-inet6' 'perl-libwww' 'perl-dbd-mysql'
-             'python-lxml' 'perl-xml-simple' 'perl-xml-xpath')
-optdepends=('glew: for GPU commercial flagging'
-            'libcec: for consumer electronics control capabilities'
-            'libxml2: to read blu-ray metadata'
-            'mariadb: Database-Backend for server deployment'
-            'mariadb-clients: Database-Frontend for client deployment'
-            'python-future: for metadata-lookup / cover art'
-            'python-requests: for metadata-lookup / cover art'
-            'python-requests-cache: for metadata-lookup / cover art')
+depends=(
+    'exiv2'
+    'fftw'
+    'jack'
+    'lame'
+    'libass'
+    'libavc1394'
+    'libbluray'
+    'libhdhomerun'
+    'libiec61883'
+    'libpulse'
+    'libsamplerate'
+    'libva'
+    'libvdpau'
+    'libvpx'
+    'libxinerama'
+    'libxml2'
+    'libxrandr'
+    'qt5-script'
+    'qt5-webkit'
+    'taglib'
+    'x264'
+    'x265'
+)
+makedepends=(
+    'git'
+    'help2man'
+    'libcdio'
+    'libcec'
+    'libmariadbclient'
+    'libxml2'
+    'lirc'
+    'perl-dbd-mysql'
+    'perl-io-socket-inet6'
+    'perl-libwww'
+    'perl-net-upnp'
+    'perl-xml-simple'
+    'perl-xml-xpath'
+    'python-future'
+    'python-lxml'
+    'python-mysqlclient'
+    'python-requests'
+    'python-simplejson'
+    'yasm'
+)
+optdepends=(
+    'glew: for GPU commercial flagging'
+    'libcec: for consumer electronics control capabilities'
+    'mariadb: Database-Backend for server deployment'
+    'mariadb-clients: Database-Frontend for client deployment'
+    'perl-dbd-mysql: Perl bindings'
+    'perl-io-socket-inet6: Perl bindings'
+    'perl-libwww: Perl bindings'
+    'perl-net-upnp: Perl bindings'
+    'perl-xml-simple: Perl bindings'
+    'perl-xml-xpath: Perl bindings'
+    'python-future: Python bindings'
+    'python-lxml: Python bindings'
+    'python-mysqlclient: Python bindings'
+    'python-requests: Python bindings'
+    'python-requests-cache: Python bindings'
+    'python-simplejson: Python bindings'
+)
 conflicts=('myththemes' 'mythplugins-mythvideo' 'mythtv')
 replaces=('myththemes' 'mythplugins-mythvideo' 'mythtv')
-source=("git+https://github.com/MythTV/mythtv#branch=fixes/31"
-        'mythbackend.service'
-        '99-mythbackend.rules'
-        'sysusers.d')
-sha256sums=('SKIP'
-            '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
-            'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
-            '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae')
+source=(
+    "git+https://github.com/MythTV/mythtv#branch=fixes/31"
+    'mythbackend.service'
+    '99-mythbackend.rules'
+    'sysusers.d'
+)
+sha256sums=(
+    'SKIP'
+    '086f573884e4df1ff6e6e8de5a423a9ff900166acfe085abe65b62f32730e4a3'
+    'ecfd02bbbef5de9773f4de2c52e9b2b382ce8137735f249d7900270d304fd333'
+    '470de0a4050c16c7af11a0e5cfe2810b7daae42df4acf5456c7eae274dc7c5ae'
+)
 
 pkgver() {
   cd "${srcdir}/mythtv/mythtv"
@@ -59,6 +111,8 @@ build() {
               --enable-libx264 \
               --enable-libx265 \
               --enable-vaapi \
+              --with-bindings=python \
+              --with-bindings=perl \
               --perl-config-opts=INSTALLDIRS=vendor
   make
 }
