@@ -3,7 +3,7 @@
 
 pkgname='dhall-lsp-server-bin'
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server Protocol implementation for Dhall"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
