@@ -1,0 +1,9 @@
+# Package directories
+pkg/
+src/
+
+# Built packages
+*.pkg.tar.*
+
+# Source Files
+*.tar.gz

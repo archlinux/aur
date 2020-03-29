@@ -1,0 +1,17 @@
+pkgbase = undither
+	pkgdesc = Remove dither effects from scanned images
+	pkgver = 20021015
+	pkgrel = 1
+	url = http://www.madingley.org/james/resources/undither/
+	arch = x86_64
+	arch = i686
+	license = Custom
+	makedepends = wget
+	depends = fftw2
+	source = http://www.madingley.org/james/resources/undither/files/undither-20021015.tar.gz
+	source = LICENSE
+	sha256sums = 76241e87e64df3c7723c966ca71019e930e1473bb570de4c45e24a3340231b7f
+	sha256sums = SKIP
+
+pkgname = undither
+
