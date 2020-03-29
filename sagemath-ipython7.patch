@@ -4698,3 +4698,300 @@ index 291ae46fe6..b62834d226 100644
                   'is_backend_exposed': True})]})
  
              sage: RingExtension.create_key_and_extra_args(GF(5^4), GF(5^2), names=('a',))
+diff --git a/src/sage/plot/plot3d/index_face_set.pyx b/src/sage/plot/plot3d/index_face_set.pyx
+index 1f6b542224..a1014f8367 100644
+--- a/src/sage/plot/plot3d/index_face_set.pyx
++++ b/src/sage/plot/plot3d/index_face_set.pyx
+@@ -1295,12 +1295,12 @@ cdef class IndexFaceSet(PrimitiveObject):
+             sage: G = polygon([(0,0,1), (1,1,1), (2,0,1)])
+             sage: G.threejs_repr(G.default_render_params())
+             [('surface',
+-              {'color': '#0000ff',
+-               'faces': [[0, 1, 2]],
+-               'opacity': 1.0,
+-               'vertices': [{'x': 0.0, 'y': 0.0, 'z': 1.0},
++              {'vertices': [{'x': 0.0, 'y': 0.0, 'z': 1.0},
+                 {'x': 1.0, 'y': 1.0, 'z': 1.0},
+-                {'x': 2.0, 'y': 0.0, 'z': 1.0}]})]
++                {'x': 2.0, 'y': 0.0, 'z': 1.0}],
++               'faces': [[0, 1, 2]],
++               'color': '#0000ff',
++               'opacity': 1.0})]
+ 
+         The same but with more options applied::
+ 
+@@ -1309,16 +1309,16 @@ cdef class IndexFaceSet(PrimitiveObject):
+             ....:             single_side=True, mesh=True)
+             sage: G.threejs_repr(G.default_render_params())
+             [('surface',
+-              {'color': '#ff0000',
++              {'vertices': [{'x': 0.0, 'y': 0.0, 'z': 1.0},
++                {'x': 1.0, 'y': 1.0, 'z': 1.0},
++                {'x': 2.0, 'y': 0.0, 'z': 1.0}],
+                'faces': [[0, 1, 2]],
++               'color': '#ff0000',
+                'opacity': 0.5,
+                'renderOrder': 2.0,
+-               'showMeshGrid': True,
+                'singleSide': True,
+                'useFlatShading': True,
+-               'vertices': [{'x': 0.0, 'y': 0.0, 'z': 1.0},
+-                {'x': 1.0, 'y': 1.0, 'z': 1.0},
+-                {'x': 2.0, 'y': 0.0, 'z': 1.0}]})]
++               'showMeshGrid': True})]
+ 
+         TESTS:
+ 
+@@ -1327,12 +1327,12 @@ cdef class IndexFaceSet(PrimitiveObject):
+             sage: G = polygon([(0,0,1), (1,1,1), (2,0,1)]).scale(2,1,-1)
+             sage: G.threejs_repr(G.default_render_params())
+             [('surface',
+-              {'color': '#0000ff',
+-               'faces': [[0, 1, 2]],
+-               'opacity': 1.0,
+-               'vertices': [{'x': 0.0, 'y': 0.0, 'z': -1.0},
++              {'vertices': [{'x': 0.0, 'y': 0.0, 'z': -1.0},
+                 {'x': 2.0, 'y': 1.0, 'z': -1.0},
+-                {'x': 4.0, 'y': 0.0, 'z': -1.0}]})]
++                {'x': 4.0, 'y': 0.0, 'z': -1.0}],
++               'faces': [[0, 1, 2]],
++               'color': '#0000ff',
++               'opacity': 1.0})]
+ 
+         Per-face colors::
+ 
+@@ -1345,15 +1345,15 @@ cdef class IndexFaceSet(PrimitiveObject):
+             sage: S = IndexFaceSet(face_list, point_list, texture_list=t_list)
+             sage: S.threejs_repr(S.default_render_params())
+             [('surface',
+-              {'faceColors': ['#ff0000', '#ff9900', '#cbff00', '#33ff00'],
+-               'faces': [[0, 4, 5], [3, 4, 5], [2, 3, 4], [1, 3, 5]],
+-               'opacity': 1.0,
+-               'vertices': [{'x': 2.0, 'y': 0.0, 'z': 0.0},
++              {'vertices': [{'x': 2.0, 'y': 0.0, 'z': 0.0},
+                 {'x': 0.0, 'y': 2.0, 'z': 0.0},
+                 {'x': 0.0, 'y': 0.0, 'z': 2.0},
+                 {'x': 0.0, 'y': 1.0, 'z': 1.0},
+                 {'x': 1.0, 'y': 0.0, 'z': 1.0},
+-                {'x': 1.0, 'y': 1.0, 'z': 0.0}]})]
++                {'x': 1.0, 'y': 1.0, 'z': 0.0}],
++               'faces': [[0, 4, 5], [3, 4, 5], [2, 3, 4], [1, 3, 5]],
++               'faceColors': ['#ff0000', '#ff9900', '#cbff00', '#33ff00'],
++               'opacity': 1.0})]
+ 
+         """
+         surface = {}
+diff --git a/src/sage/plot/plot3d/implicit_surface.pyx b/src/sage/plot/plot3d/implicit_surface.pyx
+index c9828cbd19..b4372f36ec 100644
+--- a/src/sage/plot/plot3d/implicit_surface.pyx
++++ b/src/sage/plot/plot3d/implicit_surface.pyx
+@@ -1155,15 +1155,15 @@ cdef class ImplicitSurface(IndexFaceSet):
+             sage: G = ImplicitSurface(x + y + z, (x,-1, 1), (y,-1, 1), (z,-1, 1))
+             sage: G.threejs_repr(G.default_render_params())
+             [('surface',
+-              {'color': '#6666ff',
+-               'faces': [[0, 1, 2],
+-                ...
+-               'opacity': 1.0,
+-               'vertices': [{'x': ...,
++              {'vertices': [{'x': ...,
+                  'y': -0.9743589743589...,
+                  'z': -0.02564102564102...},
+                 ...
+-                {'x': -1.0, 'y': 0.9487179487179..., 'z': 0.05128205128205...}]})]
++                {'x': -1.0, 'y': 0.9487179487179..., 'z': 0.05128205128205...}],
++                'faces': [[0, 1, 2],
++                 ...
++                'color': '#6666ff',
++                'opacity': 1.0})]
+         """
+         self.triangulate()
+         return IndexFaceSet.threejs_repr(self, render_params)
+diff --git a/src/sage/plot/plot3d/shapes2.py b/src/sage/plot/plot3d/shapes2.py
+index 7a8c4cebd7..a0c481c856 100644
+--- a/src/sage/plot/plot3d/shapes2.py
++++ b/src/sage/plot/plot3d/shapes2.py
+@@ -826,7 +826,10 @@ class Point(PrimitiveObject):
+             sage: P = point3d((1,2,3), color=(0,1,0), opacity=0.5, size=10)
+             sage: P.threejs_repr(P.default_render_params())
+             [('point',
+-              {'color': '#00ff00', 'opacity': 0.5, 'point': (1.0, 2.0, 3.0), 'size': 10.0})]
++              {'point': (1.0, 2.0, 3.0),
++               'size': 10.0,
++               'color': '#00ff00',
++               'opacity': 0.5})]
+ 
+         TESTS:
+ 
+@@ -835,7 +838,7 @@ class Point(PrimitiveObject):
+             sage: P = point3d((1,2,3)).translate(-1, -2, -3)
+             sage: P.threejs_repr(P.default_render_params())
+             [('point',
+-              {'color': '#6666ff', 'opacity': 1.0, 'point': (0.0, 0.0, 0.0), 'size': 5.0})]
++              {'point': (0.0, 0.0, 0.0), 'size': 5.0, 'color': '#6666ff', 'opacity': 1.0})]
+ 
+         """
+         transform = render_params.transform
+@@ -1134,10 +1137,10 @@ class Line(PrimitiveObject):
+             sage: L = line3d([(1,2,3), (4,5,6)], thickness=10, color=(1,0,0), opacity=0.5)
+             sage: L.threejs_repr(L.default_render_params())
+             [('line',
+-              {'color': '#ff0000',
+-               'linewidth': 10.0,
++              {'points': [(1.0, 2.0, 3.0), (4.0, 5.0, 6.0)],
++               'color': '#ff0000',
+                'opacity': 0.5,
+-               'points': [(1.0, 2.0, 3.0), (4.0, 5.0, 6.0)]})]
++               'linewidth': 10.0})]
+ 
+         TESTS:
+ 
+@@ -1146,10 +1149,10 @@ class Line(PrimitiveObject):
+             sage: L = line3d([(1,2,3), (4,5,6)]).translate(-1, -2, -3)
+             sage: L.threejs_repr(L.default_render_params())
+             [('line',
+-              {'color': '#6666ff',
+-               'linewidth': 1.0,
++              {'points': [(0.0, 0.0, 0.0), (3.0, 3.0, 3.0)],
++               'color': '#6666ff',
+                'opacity': 1.0,
+-               'points': [(0.0, 0.0, 0.0), (3.0, 3.0, 3.0)]})]
++               'linewidth': 1.0})]
+ 
+         When setting ``arrow_head=True``, the last line segment is replaced by
+         an arrow with a width half the thickness of the line::
+@@ -1158,10 +1161,10 @@ class Line(PrimitiveObject):
+             sage: L_repr = L.threejs_repr(L.default_render_params())
+             sage: L_repr[-1]
+             ('line',
+-              {'color': '#6666ff',
+-               'linewidth': 4.0,
+-               'opacity': 1.0,
+-               'points': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)]})
++             {'points': [(0.0, 0.0, 0.0), (1.0, 1.0, 1.0)],
++              'color': '#6666ff',
++              'opacity': 1.0,
++              'linewidth': 4.0})
+             sage: A = arrow3d((1,1,1), (2,2,2), width=2)
+             sage: A_repr = A.threejs_repr(A.default_render_params())
+             sage: A_repr == L_repr[:-1]
+@@ -1175,10 +1178,10 @@ class Line(PrimitiveObject):
+             sage: L_repr = L.threejs_repr(L.default_render_params())
+             sage: L_repr[-1]
+             ('line',
+-              {'color': '#ff0000',
+-               'linewidth': 4.0,
+-               'opacity': 0.5,
+-               'points': [(-1.0, -1.0, -1.0), (0.0, 0.0, 0.0)]})
++             {'points': [(-1.0, -1.0, -1.0), (0.0, 0.0, 0.0)],
++              'color': '#ff0000',
++              'opacity': 0.5,
++              'linewidth': 4.0})
+             sage: A = arrow3d((1,1,1), (2,2,2), width=2, color=(1,0,0), opacity=0.5)
+             sage: A = A.translate(-1, -1, -1)
+             sage: A_repr = A.threejs_repr(A.default_render_params())
+diff --git a/src/sage/plot/plot3d/shapes.pyx b/src/sage/plot/plot3d/shapes.pyx
+index 6b6150ed5a..5aa418b634 100644
+--- a/src/sage/plot/plot3d/shapes.pyx
++++ b/src/sage/plot/plot3d/shapes.pyx
+@@ -1170,7 +1170,7 @@ class Text(PrimitiveObject):
+ 
+             sage: T = text3d("Hi", (1, 2, 3), color='red')
+             sage: T.threejs_repr(T.default_render_params())
+-            [('text', {'color': '#ff0000', 'text': 'Hi', 'x': 1.0, 'y': 2.0, 'z': 3.0})]
++            [('text', {'text': 'Hi', 'x': 1.0, 'y': 2.0, 'z': 3.0, 'color': '#ff0000'})]
+ 
+         TESTS:
+ 
+@@ -1180,7 +1180,7 @@ class Text(PrimitiveObject):
+             sage: from sage.plot.plot3d.shapes import Text
+             sage: T = Text("Hi")
+             sage: T.threejs_repr(T.default_render_params())
+-            [('text', {'color': '#6666ff', 'text': 'Hi', 'x': 0.0, 'y': 0.0, 'z': 0.0})]
++            [('text', {'text': 'Hi', 'x': 0.0, 'y': 0.0, 'z': 0.0, 'color': '#6666ff'})]
+ 
+         """
+         center = (float(0), float(0), float(0))
+diff --git a/src/sage/plot/plot3d/base.pyx b/src/sage/plot/plot3d/base.pyx
+index 81e7018681..3abb757af0 100644
+--- a/src/sage/plot/plot3d/base.pyx
++++ b/src/sage/plot/plot3d/base.pyx
+@@ -2141,14 +2141,14 @@ class Graphics3dGroup(Graphics3d):
+             sage: G = point3d((1,2,3)) + point3d((4,5,6)) + line3d([(1,2,3), (4,5,6)])
+             sage: G.threejs_repr(G.default_render_params())
+             [('point',
+-              {'color': '#6666ff', 'opacity': 1.0, 'point': (1.0, 2.0, 3.0), 'size': 5.0}),
++              {'point': (1.0, 2.0, 3.0), 'size': 5.0, 'color': '#6666ff', 'opacity': 1.0}),
+              ('point',
+-              {'color': '#6666ff', 'opacity': 1.0, 'point': (4.0, 5.0, 6.0), 'size': 5.0}),
++              {'point': (4.0, 5.0, 6.0), 'size': 5.0, 'color': '#6666ff', 'opacity': 1.0}),
+              ('line',
+-              {'color': '#6666ff',
+-               'linewidth': 1.0,
++              {'points': [(1.0, 2.0, 3.0), (4.0, 5.0, 6.0)],
++               'color': '#6666ff',
+                'opacity': 1.0,
+-               'points': [(1.0, 2.0, 3.0), (4.0, 5.0, 6.0)]})]
++               'linewidth': 1.0})]
+ 
+         """
+         reprs = []
+@@ -2422,12 +2422,12 @@ class TransformGroup(Graphics3dGroup):
+             sage: G = G.translate(-1, -2, -3).scale(10)
+             sage: G.threejs_repr(G.default_render_params())
+             [('point',
+-              {'color': '#6666ff', 'opacity': 1.0, 'point': (0.0, 0.0, 0.0), 'size': 5.0}),
++              {'point': (0.0, 0.0, 0.0), 'size': 5.0, 'color': '#6666ff', 'opacity': 1.0}),
+              ('point',
+-              {'color': '#6666ff',
+-               'opacity': 1.0,
+-               'point': (30.0, 30.0, 30.0),
+-               'size': 5.0})]
++              {'point': (30.0, 30.0, 30.0),
++               'size': 5.0,
++               'color': '#6666ff',
++               'opacity': 1.0})]
+ 
+         """
+         render_params.push_transform(self.get_transformation())
+@@ -2643,12 +2643,12 @@ cdef class PrimitiveObject(Graphics3d):
+             sage: G = SimpleTriangle()
+             sage: G.threejs_repr(G.default_render_params())
+             [('surface',
+-              {'color': '#0000ff',
+-               'faces': [[0, 1, 2]],
+-               'opacity': 1.0,
+-               'vertices': [{'x': 0.0, 'y': 0.0, 'z': 0.0},
++              {'vertices': [{'x': 0.0, 'y': 0.0, 'z': 0.0},
+                 {'x': 1.0, 'y': 0.0, 'z': 0.0},
+-                {'x': 0.0, 'y': 1.0, 'z': 0.0}]})]
++                {'x': 0.0, 'y': 1.0, 'z': 0.0}],
++               'faces': [[0, 1, 2]],
++               'color': '#0000ff',
++               'opacity': 1.0})]
+ 
+         """
+         return self.triangulation().threejs_repr(render_params)
+diff --git a/src/sage/plot/plot3d/parametric_surface.pyx b/src/sage/plot/plot3d/parametric_surface.pyx
+index 42d3cb3743..8439fdd52c 100644
+--- a/src/sage/plot/plot3d/parametric_surface.pyx
++++ b/src/sage/plot/plot3d/parametric_surface.pyx
+@@ -319,13 +319,13 @@ cdef class ParametricSurface(IndexFaceSet):
+             sage: P = plot3d(x^2-y^2, (x, -2, 2), (y, -2, 2))
+             sage: P.threejs_repr(P.default_render_params())
+             [('surface',
+-              {'color': '#6666ff',
+-               'faces': [[0, 1, 2, 3],
++              {'vertices': [{'x': -2.0, 'y': -2.0, 'z': 0.0},
+                 ...
+-               'opacity': 1.0,
+-               'vertices': [{'x': -2.0, 'y': -2.0, 'z': 0.0},
++                {'x': 2.0, 'y': 2.0, 'z': 0.0}],
++                'faces': [[0, 1, 2, 3],
+                 ...
+-                {'x': 2.0, 'y': 2.0, 'z': 0.0}]})]
++                'color': '#6666ff',
++                'opacity': 1.0})]
+ 
+         """
+         self.triangulate(render_params)

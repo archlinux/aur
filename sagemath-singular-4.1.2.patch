@@ -681,3 +681,16 @@ index 592bb68..962821c 100644
  
          .. NOTE::
  
+diff --git a/src/sage/libs/singular/function.pyx b/src/sage/libs/singular/function.pyx
+index b649ab1e64..72f34fd67d 100644
+--- a/src/sage/libs/singular/function.pyx
++++ b/src/sage/libs/singular/function.pyx
+@@ -1308,7 +1308,7 @@ cdef class SingularFunction(SageObject):
+             ...
+             RuntimeError: error in Singular function call 'triangL':
+             The input is no groebner basis.
+-            leaving triang.lib::triangL
++            leaving triang.lib::triangL (0)
+ 
+         Flush any stray output -- see :trac:`28622`::
+ 
