@@ -36,6 +36,7 @@ pkgbase = vlc-nightly
 	makedepends = protobuf
 	makedepends = libnfs
 	makedepends = mpg123
+	makedepends = srt
 	makedepends = libdvdread
 	makedepends = libdvdnav
 	makedepends = libogg
