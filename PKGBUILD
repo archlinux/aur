@@ -1,7 +1,8 @@
-# Maintainer: LinRs <LinRs AT users.noreply.github.com>
+# Maintainer:  Rility <rility3 AT GMAIL>
+# Contributor: LinRs <LinRs AT users.noreply.github.com>
 # Contributor: Lucas Saliés Brum <lucas@archlinux.com.br>
 pkgname=mtn
-pkgver=3.3.1
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Movie Thumbnailer using FFmpeg forked from mtn2008"
 arch=('x86_64')
@@ -11,7 +12,7 @@ depends=('ffmpeg' 'gd')
 provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git")
 source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('137c53ef4ba3fc905e6dd5a1bdbbb029a3012c726c3e30bae329fc81f8e7fe57')
+sha256sums=('6fa12db08a636d2d3c34c1a73b029cbce397ef632fad2b4f75fe36137ac45391')
 
 build() {
     cd "${pkgname}-${pkgver}/src"
@@ -19,5 +20,5 @@ build() {
 }
 package() {
     cd "${pkgname}-${pkgver}/src"
-    make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" PREFIX="/usr"  install
 }
