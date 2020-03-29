@@ -7,6 +7,7 @@ arch=('any')
 url='https://github.com/diamondburned/gtkcord3'
 license=('GPL3')
 depends=('gtk3' 'discordlogin-git')
+provides=('gtkcord3')
 makedepends=('git' 'go')
 source=('git+https://github.com/diamondburned/gtkcord3'
 	'gtkcord3.desktop')
