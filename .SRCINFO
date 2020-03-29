@@ -1,14 +1,13 @@
 pkgbase = minitimer
 	pkgdesc = Mini Timer - A timer in your terminal
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/emvigo/minitimer
 	arch = x86_64
 	license = APACHE
-	makedepends = pkgconf
 	depends = ncurses
-	source = https://github.com/emvigo/minitimer/archive/1.0.tar.gz
-	sha256sums = 8f09ff5b8477b97d17525efdde65aac65ef0f9b87660003065b54fc907824c7b
+	source = https://github.com/emvigo/minitimer/archive/1.0.1.tar.gz
+	sha256sums = ac91803f465a2f64e3a79c859e8d62fbd2ffac7ab2f63365fcb26ee291abca58
 
 pkgname = minitimer
 
