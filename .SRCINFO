@@ -16,6 +16,7 @@ pkgbase = vlc-nightly
 	makedepends = libcaca
 	makedepends = gtk3
 	makedepends = lua
+	makedepends = libmicrodns
 	makedepends = librsvg
 	makedepends = libgme
 	makedepends = xosd

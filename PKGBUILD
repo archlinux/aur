@@ -25,7 +25,7 @@ depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'a52dec' 'libdvbpsi'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols' 'aribb24' 'libfdk-aac')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3' 'lua' 
+             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3' 'lua' 'libmicrodns' 
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
              'libmtp' 'libmicrodns'  'libdvdcss' 'smbclient' 'flex' 'bison'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
