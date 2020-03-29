@@ -1,5 +1,5 @@
 pkgbase = rofi-keepassxc
-	pkgdesc = Simple keepassxc-cli frontent in rofi
+	pkgdesc = Simple keepassxc-cli frontend in rofi
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/samedamci/rofi-keepassxc
