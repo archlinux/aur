@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=gtkcord
+Comment=A lightweight Discord client which uses GTK3 for the user interface.
+Exec=gtkcord3
+Icon=gtkcord
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;P2P;
+
