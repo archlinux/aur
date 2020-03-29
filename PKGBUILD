@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://github.com/mgorny/cpuid2cpuflags/'
 license=('BSD')
 depends=('glibc')
-source=("https://github.com/mgorny/cpuid2cpuflags/releases/download/v8/${pkgname}-${pkgver}.tar.bz2")
+source=("https://github.com/mgorny/cpuid2cpuflags/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('db8d361e9c2ec7568ec2728b84f92412d482dc78a357e226e2bd747eb97af7a1')
 
 build() {
