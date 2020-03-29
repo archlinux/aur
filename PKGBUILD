@@ -7,7 +7,7 @@ pkgdesc="A handy shell-like interface for browsing LDAP servers and editing thei
 arch=('any')
 url="http://code.martini.nu/shelldap"
 license=('BSD')
-depends=('perl' 'perl-yaml-syck' 'perl-digest-perl-md5' 'perl-ldap' 'perl-algorithm-diff' 'perl-term-readkey' 'perl-term-readline-gnu' 'perl-term-shell')
+depends=('perl' 'perl-yaml-syck' 'perl-digest-perl-md5' 'perl-ldap' 'perl-algorithm-diff' 'perl-term-readkey' 'perl-term-readline-gnu' 'perl-term-shell' 'perl-tie-ixhash')
 makedepends=()
 optdepends=('perl-io-socket-ssl: for use with ldaps:// servers'
             'perl-authen-sasl: SASL authentication')
