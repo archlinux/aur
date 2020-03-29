@@ -1,10 +1,10 @@
 pkgbase = mirage-matrix
 	pkgdesc = A fancy, customizable, keyboard-operable Matrix chat client for encrypted and decentralized communication.
 	pkgver = 0.4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mirukana/mirage
 	arch = any
-	license = Apache
+	license = LGPL3
 	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-declarative
