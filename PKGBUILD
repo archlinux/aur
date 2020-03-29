@@ -7,13 +7,13 @@
 pkgname=libpulse-nosystemd
 pkgdesc="Client library for PulseAudio"
 pkgver=13.0
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
 license=(LGPL)
 depends=(dbus libasyncns libcap libxtst libsm libsndfile)
 makedepends=(attr rtkit speexdsp tdb orc gtk3 libsoxr meson xmltoman)
-provides=("libpulse=${pkgver}")
+provides=("libpulse=${pkgver}" libpulse{,-simple,-mainloop-glib}.so)
 conflicts=('libpulse')
 replaces=('libpulse')
 backup=(etc/pulse/client.conf)
@@ -26,7 +26,8 @@ build() {
     -D gcov=false \
     -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
     -D udevrulesdir=/usr/lib/udev/rules.d \
-    -D systemd=disabled
+    -D systemd=disabled \
+    -D tests=false
   ninja -C build
 }
 
