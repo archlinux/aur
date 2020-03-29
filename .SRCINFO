@@ -1,6 +1,6 @@
 pkgbase = shelldap
 	pkgdesc = A handy shell-like interface for browsing LDAP servers and editing their content.
-	pkgver = 1.4.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = http://code.martini.nu/shelldap
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = shelldap
 	optdepends = perl-io-socket-ssl: for use with ldaps:// servers
 	optdepends = perl-authen-sasl: SASL authentication
 	provides = shelldap
-	source = https://bitbucket.org/mahlon/shelldap/downloads/shelldap-1.4.0.tar.gz
+	source = https://github.com/mahlonsmith/shelldap/releases/download/v1.5.1/shelldap-1.5.1.tar.gz
 	source = LICENSE
 	sha256sums = 91889c277e9c7dd470abf017ac73c02ab2a95aac355de4dd7c77f0c7fadef31d
 	sha256sums = b180006176b4caf900df38b3365b09413f8783478fae8bcb8f73b6cb794a4116
