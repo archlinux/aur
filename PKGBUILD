@@ -1,13 +1,14 @@
-# Maintainer: buckket <buckket@cock.li>
+# Maintainer: buckket <felix@buckket.org>
 
 pkgname=("python-spotify" "python2-spotify")
 _pkgname=pyspotify
 pkgver=2.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python wrapper for libspotify."
 arch=("i686" "x86_64")
 license=("APACHE")
 url="http://pyspotify.mopidy.com/"
+depends=("libspotify")
 makedepends=("python-setuptools" "python2-setuptools")
 conflicts=("python2-pyspotify" "pyspotify")
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
@@ -29,13 +30,13 @@ build_python2-spotify() {
 }
 
 package_python-spotify() {
-  depends=("libspotify" "python-cffi")
+  depends=("python-cffi")
   cd ${pkgname}-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-spotify() {
-  depends=("libspotify" "python2-cffi")
+  depends=("python2-cffi")
   cd ${pkgname}-${pkgver}
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
