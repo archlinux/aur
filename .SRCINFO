@@ -1,14 +1,16 @@
 pkgbase = dhall-bin
 	pkgdesc = Dhall typechecker and formatter
-	pkgver = 1.30.0
+	pkgver = 1.31.0
 	pkgrel = 1
 	url = https://github.com/dhall-lang/dhall-haskell
 	arch = x86_64
 	license = BSD
-	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.30.0/dhall-1.30.0-x86_64-linux.tar.bz2
-	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.30.0/dhall/LICENSE
-	sha256sums = 6845421de9c3cc40f4140a1278c408df8ef49bf8086ee7f37730d2eda8ce9402
-	sha256sums = 681f75c2ab1536a01a914b1be992d1694023abe2b81c0217a6cfbd2e08a7c506
+	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.31.0/dhall-1.31.0-x86_64-linux.tar.bz2
+	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.31.0/dhall/LICENSE
+	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.31.0/dhall/man/dhall.1
+	sha256sums = cda7a2cf1e8b992b40a3986f62e0754204e031d831e5e7d2a1f8ca035fb71041
+	sha256sums = 91f68ca8606e7ae993148187e397e20431aa6d870ac9fcc70330a0479468eef9
+	sha256sums = a41e5df44d67d9ea3dd4a64c85457f156d5266875046ea5de40adf1b3fc2a29f
 
 pkgname = dhall-bin
 

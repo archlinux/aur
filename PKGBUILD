@@ -2,7 +2,7 @@
 # Contributor: Rodrigo Gryzinski <rogryza@gmail.com>
 
 pkgname='dhall-bin'
-pkgver=1.30.0
+pkgver=1.31.0
 pkgrel=1
 pkgdesc="Dhall typechecker and formatter"
 arch=('x86_64')
@@ -10,11 +10,14 @@ _repo='dhall-lang/dhall-haskell'
 url="https://github.com/$_repo"
 license=('BSD')
 source=("$url/releases/download/$pkgver/dhall-$pkgver-x86_64-linux.tar.bz2"
-        "https://raw.githubusercontent.com/$_repo/$pkgver/dhall/LICENSE")
-sha256sums=('6845421de9c3cc40f4140a1278c408df8ef49bf8086ee7f37730d2eda8ce9402'
-            '681f75c2ab1536a01a914b1be992d1694023abe2b81c0217a6cfbd2e08a7c506')
+        "https://raw.githubusercontent.com/$_repo/$pkgver/dhall/LICENSE"
+        "https://raw.githubusercontent.com/$_repo/$pkgver/dhall/man/dhall.1")
+sha256sums=('cda7a2cf1e8b992b40a3986f62e0754204e031d831e5e7d2a1f8ca035fb71041'
+            '91f68ca8606e7ae993148187e397e20431aa6d870ac9fcc70330a0479468eef9'
+            'a41e5df44d67d9ea3dd4a64c85457f156d5266875046ea5de40adf1b3fc2a29f')
 
 package() {
   install -Dm755 "$srcdir/bin/dhall" -t "$pkgdir/usr/bin/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 dhall.1 "$pkgdir/usr/share/man/man1/dhall.1"
 }
