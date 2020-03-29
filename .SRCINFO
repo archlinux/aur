@@ -1,17 +1,17 @@
 pkgbase = perl-devel-stacktrace-ashtml
-	pkgdesc = Displays stack trace in HTML
-	pkgver = 0.14
+	pkgdesc = Perl/CPAN Module Devel::StackTrace::AsHTML: Displays stack trace in HTML
+	pkgver = 0.15
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Devel-StackTrace-AsHTML
+	url = https://metacpan.org/release/Devel-StackTrace-AsHTML
 	arch = any
 	license = PerlArtistic
 	license = GPL
-	depends = perl-devel-stacktrace>=0
+	depends = perl-devel-stacktrace
 	depends = perl>=5.8.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Devel-StackTrace-AsHTML-0.14.tar.gz
-	md5sums = 232c8b4d639adfbcf98e3fe92337756c
-	sha512sums = 341dc8718434ea714c50b0a76830775341f4ab03746543bf3197f5ea58685deca2325c16fbd8eb78b04dc5125a8b07e3df570da2f755c11c2346534078a48e89
+	source = http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Devel-StackTrace-AsHTML-0.15.tar.gz
+	md5sums = 4ec8bd92e4a765a7cabf402db9640412
+	sha512sums = aa81f3b88e27c83e1f8a51981b201edd9cecaa0430a16f72f0a05d323d77e9ede21c4629a40779ea5e2aa5759ecc0d9cecf67a81e752b4a82d360f23561933ce
 
 pkgname = perl-devel-stacktrace-ashtml
 

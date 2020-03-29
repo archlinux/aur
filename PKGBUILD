@@ -1,20 +1,21 @@
+# Maintainer: int <int [ate] arcor [dot] de>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-stacktrace-ashtml'
-pkgver='0.14'
+pkgver='0.15'
+_distdir="Devel-StackTrace-AsHTML-${pkgver}"
 pkgrel='1'
-pkgdesc="Displays stack trace in HTML"
+pkgdesc="Perl/CPAN Module Devel::StackTrace::AsHTML: Displays stack trace in HTML"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-devel-stacktrace>=0' 'perl>=5.8.1')
+depends=('perl-devel-stacktrace' 'perl>=5.8.1')
 makedepends=()
-url='http://search.cpan.org/dist/Devel-StackTrace-AsHTML'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Devel-StackTrace-AsHTML-0.14.tar.gz')
-md5sums=('232c8b4d639adfbcf98e3fe92337756c')
-sha512sums=('341dc8718434ea714c50b0a76830775341f4ab03746543bf3197f5ea58685deca2325c16fbd8eb78b04dc5125a8b07e3df570da2f755c11c2346534078a48e89')
-_distdir="Devel-StackTrace-AsHTML-0.14"
+url='https://metacpan.org/release/Devel-StackTrace-AsHTML'
+source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/${_distdir}.tar.gz")
+md5sums=('4ec8bd92e4a765a7cabf402db9640412')
+sha512sums=('aa81f3b88e27c83e1f8a51981b201edd9cecaa0430a16f72f0a05d323d77e9ede21c4629a40779ea5e2aa5759ecc0d9cecf67a81e752b4a82d360f23561933ce')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,7 +41,7 @@ package() {
   cd "$srcdir/$_distdir"
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "$pkgdir" "(" -name .packlist -o -name perllocal.pod ")" -delete
 }
 
 # Local Variables:
