@@ -10,9 +10,9 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='68fef5d635424a60224cce610d30a9041124c204' # git rev-parse v${pkgver}
-pkgver=245
-pkgrel=3
+_tag='f4d7fa4807ada3c1b7d6f67117eadbb014b67d2f' # git rev-parse v${pkgver}
+pkgver=245.3
+pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -76,11 +76,11 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _backports=(
-  # core: Fix resolution of nested DM devices for cgroups
-  'b7cf4b4ef5d0336443f21809b1506bc4a8aa75a9'
+  # systemd-resolved: use hostname for certificate validation in DoT
+  'eec394f10bbfcc3d2fc8504ad8ff5be44231abd5'
 
-  # analyze: fix table time output
-  '084df9c616fdfbcbf3d7fbe7dc6b975f1fa359d2'
+  # user-util: Allow names starting with a digit
+  '93c23c9297e48e594785e0bb9c51504aae5fbe3e'
 )
 
 _reverts=(
