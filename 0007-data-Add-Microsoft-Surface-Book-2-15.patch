@@ -1,4 +1,4 @@
-From 03c38d658e7a7c5ff891260520c957157b02b312 Mon Sep 17 00:00:00 2001
+From 66f02a33892d866bc50e0840b03145bf590c1322 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Sun, 2 Jun 2019 01:01:15 +0200
 Subject: [PATCH 7/8] data: Add Microsoft Surface Book 2 (15")
@@ -30,10 +30,10 @@ index 0000000..6ec6551
 +Touch=true
 +Buttons=0
 diff --git a/meson.build b/meson.build
-index d5f3f89..e89dab8 100644
+index 84f4316..55f40af 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -320,6 +320,7 @@ data_files = [
+@@ -350,6 +350,7 @@ data_files = [
  	'data/serial-wacf004.tablet',
  	'data/surface-book.tablet',
  	'data/surface-book2-13.tablet',
@@ -42,5 +42,5 @@ index d5f3f89..e89dab8 100644
  	'data/surface-pro5.tablet',
  	'data/surface-pro6.tablet',
 -- 
-2.24.1
+2.26.0
 

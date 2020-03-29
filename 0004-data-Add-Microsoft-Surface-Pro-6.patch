@@ -1,4 +1,4 @@
-From 233e53ef4460d597a9bcc782e640bd61b7e1868e Mon Sep 17 00:00:00 2001
+From 4614cfcf4f437ef1e042100e7750e36c032e2146 Mon Sep 17 00:00:00 2001
 From: Maximilian Luz <luzmaximilian@gmail.com>
 Date: Mon, 3 Jun 2019 00:40:34 +0200
 Subject: [PATCH 4/8] data: Add Microsoft Surface Pro 6
@@ -30,17 +30,17 @@ index 0000000..da31e8f
 +Touch=true
 +Buttons=0
 diff --git a/meson.build b/meson.build
-index ba17ef0..735e332 100644
+index 41f29c3..49bb185 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -320,6 +320,7 @@ data_files = [
+@@ -350,6 +350,7 @@ data_files = [
  	'data/serial-wacf004.tablet',
  	'data/surface-pro4.tablet',
  	'data/surface-pro5.tablet',
 +	'data/surface-pro6.tablet',
+ 	'data/wacom-one.tablet',
  	'data/xp-pen-star03.tablet',
  ]
- 
 -- 
-2.24.1
+2.26.0
 

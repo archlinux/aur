@@ -1,4 +1,4 @@
-From 562706f992bb88535a3728a58f4773f0b0e5a4f4 Mon Sep 17 00:00:00 2001
+From a2086130d8ee8655c8dc5ad77e14b4ab2dbc5ddb Mon Sep 17 00:00:00 2001
 From: Ivo Damjanovic <ivo@damjanovic.it>
 Date: Fri, 10 Jan 2020 00:36:33 +0100
 Subject: [PATCH 8/8] data: Add Microsoft Surface Go
@@ -30,10 +30,10 @@ index 0000000..0db7a78
 +Touch=true
 +Buttons=0
 diff --git a/meson.build b/meson.build
-index e89dab8..05b71c9 100644
+index 55f40af..3a1c548 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -321,6 +321,7 @@ data_files = [
+@@ -351,6 +351,7 @@ data_files = [
  	'data/surface-book.tablet',
  	'data/surface-book2-13.tablet',
  	'data/surface-book2-15.tablet',
@@ -42,5 +42,5 @@ index e89dab8..05b71c9 100644
  	'data/surface-pro5.tablet',
  	'data/surface-pro6.tablet',
 -- 
-2.24.1
+2.26.0
 
