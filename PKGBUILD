@@ -15,7 +15,7 @@ url="http://ninja-ide.org"
 license=('GPL3')
 depends=('python' 'python-pyqt5' 'qt5-declarative')
 makedepends=('python-setuptools')
-source=(https://github.com/ninja-ide/ninja-ide/releases/download/v$pkgver/$pkgname-$pkgver.zip
+source=(https://github.com/ninja-ide/ninja-ide/archive/v$pkgver.zip
         ninja-ide.desktop
         remove-qtwebkit.patch)
 sha256sums=('aca3bc5991d97f4bff04f2ba4775d053e9127fed56927dcc949ea3d309bb7cf3'
