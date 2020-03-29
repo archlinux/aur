@@ -1,0 +1,14 @@
+pkgbase = powerstat
+	pkgdesc = A tool for measuring a laptops power usage via the battery.
+	pkgver = 0.02.22
+	pkgrel = 1
+	url = http://kernel.ubuntu.com/~cking/powerstat/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = glibc
+	source = https://kernel.ubuntu.com/~cking/tarballs/powerstat/powerstat-0.02.22.tar.gz
+	sha256sums = ef74e023353a24a0a52068a0e474041b9556bcef5b4fe41db44261afd32a6564
+
+pkgname = powerstat
+
