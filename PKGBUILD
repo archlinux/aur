@@ -4,10 +4,10 @@
 # Contributor: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=python-pipenv-git
-pkgver=2018.11.26.r683.gd10b2a21
+pkgver=2018.11.26.r690.ga883ef51
 pkgrel=1
 pkgdesc="Python Development Workflow for Humans."
-url="https://pipenv.readthedocs.io"
+url="https://pipenv.pypa.io"
 arch=('any')
 license=('MIT')
 depends=('python' 'python-pip' 'python-virtualenv' 'python-setuptools'
