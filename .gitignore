@@ -1,0 +1,10 @@
+# build and package directories
+src/
+pkg/
+
+# source and package archives
+unnamed-sdvx-clone/
+unnamed-sdvx-clone-git-*.pkg.tar.xz
+
+# lazy script to update package sums and .SRCINFO
+update.sh
