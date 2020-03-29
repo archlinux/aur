@@ -1,11 +1,11 @@
 pkgbase = seahub
 	pkgdesc = The web frontend for seafile server
-	pkgver = 7.1.1
+	pkgver = 7.1.3
 	pkgrel = 1
 	url = https://github.com/haiwen/seahub
 	arch = any
 	license = Apache
-	depends = seafile-server>=7.1.1
+	depends = seafile-server>=7.1.3
 	depends = python-future
 	depends = python-django-statici18n
 	depends = python-django-post-office
@@ -28,10 +28,14 @@ pkgbase = seahub
 	optdepends = python-django-pylibmc: Memcached support
 	optdepends = ffmpeg: For video thumbnails
 	options = !strip
-	source = seahub-7.1.1-server.tar.gz::https://github.com/haiwen/seahub/archive/v7.1.1-server.tar.gz
-	source = https://www.djangoproject.com/m/releases/1.11/Django-1.11.25.tar.gz
-	sha256sums = 31dbcfa3ff176925f3de69d9b920fa8407150587be97b3fc568d52042dc44e23
+	source = seahub-7.1.3-server.tar.gz::https://github.com/haiwen/seahub/archive/v7.1.3-server.tar.gz
+	source = django-1.11.25.tar.gz::https://www.djangoproject.com/m/releases/1.11/Django-1.11.25.tar.gz
+	source = nginx.example.conf
+	source = fix_shared_link.diff
+	sha256sums = a2cf1ad1ff357b06c112f3f80e2e4a2ef109813496c96afc309449f6915e8797
 	sha256sums = 5314e8586285d532b7aa5c6d763b0248d9a977a37efec86d30f0212b82e8ef66
+	sha256sums = 461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171
+	sha256sums = dc204f762244828933c07905397018d4f4c00918c78f885ede65aae4e93366f1
 
 pkgname = seahub
 
