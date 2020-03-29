@@ -7,12 +7,12 @@
 
 pkgname=cegui
 pkgver=0.8.7
-pkgrel=12
+pkgrel=13
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
 license=("MIT")
-depends=(glm)
+depends=('glm' 'ogre=1.9')
 makedepends=('git' 'cmake')
 optdepends=('pcre'
             'freetype2'
@@ -27,7 +27,6 @@ optdepends=('pcre'
             'sdl2_image'
             'sfml'
             'irrlicht'
-            'ogre'
             'boost'
             'ois'
             'directfb'
