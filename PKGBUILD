@@ -12,10 +12,10 @@ depends=("lib32-gtk2" "lib32-libpng" "lib32-libsm")
 optdepends=()
 conflicts=(hterm)
 
-source=("hterm.png" "hterm.desktop" "http://www.der-hammer.info/terminal/hterm084-linux-32.tgz")
+source=("hterm.png" "hterm.desktop" "http://www.der-hammer.info/terminal/hterm085-linux-32.tgz")
 sha256sums=('358862a79e6a88ca07dc86faa5e29d862bbf2aa2ca16e7f43e2f00a8c444e683'  
 	    'fba0a7159c9187bfe8d2c7f63611bf4c2193a69566566bca79f2ce3ff46073f7'  
-	    'a2a629502a014c517514f81f605520def930e3be6e8bd8290efd4201b80438ae')
+	    'aaf5f1afc9b3c0aad3bd7835fea6cc3e805a680a9c4a655d1bc39acf37f2ca92')
 
 package() {
 	install -d "$pkgdir"/usr/bin
