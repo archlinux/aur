@@ -4,8 +4,8 @@
 
 pkgname=doublecmd-gtk2-alpha-bin
 _pkgname=doublecmd
-pkgver=1.0.0.svn.r9361
-_pkgver=1.0.0~0+svn9361
+pkgver=1.0.0.svn.r9362
+_pkgver=1.0.0~0+svn9362
 pkgrel=1
 pkgdesc="A file manager with two panels side by side"
 arch=('x86_64')
@@ -29,9 +29,9 @@ source=(${_url}/all/${_pkgname}-common_${_pkgver}_all.deb)
 #        ${_url}/i386/${_pkgname}-plugins_${_pkgver}_i386.deb)
 source_x86_64+=(${_url}/amd64/${_pkgname}-gtk_${_pkgver}_amd64.deb
         ${_url}/amd64/${_pkgname}-plugins_${_pkgver}_amd64.deb)
-sha256sums=('f4d7445deda2285cde8a119ba468bc7f131aea01c7e8e919722b406c8c0e94dd')
-sha256sums_x86_64=('25e7ad1ccd8d8e79d2708bebe97cde0d30019ce8dd6f8f0ba042ae8c6d605186'
-                   'a8e5880560ae9b1171d1722b649fca9578d982a4bc7ab0756b6eb0a4faf171cb')
+sha256sums=('086bf0edfb91eb7ab3991f79aa669c7a0f48e127eed305e390d8db40d5119ad6')
+sha256sums_x86_64=('ec9abc1b69ad1508de8e91c7b90b3e05d8e82b73ffd4033aff36a589c0653aad'
+                   'aaa7bcae248e2db9fbfc95d4d952e2e2676550db3aebdbad501a38b9e66f0da3')
 #sha256sums_i686=('8c37694b5c0623511104d8dc584fb9a904b4368919cd6a2ac5b5cdbef4266f0e'
 #                 'd7379824666e9152cd99b02bc626cf6815af096aad2e6e5bf1d99e7c523ccb9c')
 
