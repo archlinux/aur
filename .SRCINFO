@@ -1,0 +1,16 @@
+pkgbase = wcal-git
+	pkgdesc = ISO weekly calendar
+	pkgver = r3.5597886
+	pkgrel = 1
+	url = https://github.com/leahneukirchen/wcal
+	arch = x86_64
+	license = custom:CC0
+	makedepends = git
+	depends = glibc
+	provides = wcal
+	conflicts = wcal
+	source = git+https://github.com/leahneukirchen/wcal.git
+	md5sums = SKIP
+
+pkgname = wcal-git
+
