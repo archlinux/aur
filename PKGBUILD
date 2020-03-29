@@ -4,7 +4,7 @@
 # Simutrans Extended is in active development - this package is updated nightly
 
 pkgname=simutrans-extended
-pkgver=20200328
+pkgver=20200329
 pkgrel=1
 pkgdesc="Transportation simulation game - Extended Version"
 arch=('x86_64')
@@ -64,5 +64,5 @@ package() {
   install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   #license
-  install -Dm644 $pkgname/simutrans/license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  install -Dm644 $pkgname/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 }
