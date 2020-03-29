@@ -6,7 +6,7 @@ pkgdesc='This experimental software allows you to flash firmwares acquired throu
 arch=('x86_64')
 license=('GPL')
 url="https://forum.xda-developers.com/crossdevice-dev/sony/progress-newflasher-xperia-command-line-t3619426"
-makedepends=('zlib' 'expat')
+depends=('zlib' 'expat')
 source=(git://github.com/newflasher/newflasher)
 md5sums=('SKIP')
 

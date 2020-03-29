@@ -5,8 +5,8 @@ pkgbase = newflasher-git
 	url = https://forum.xda-developers.com/crossdevice-dev/sony/progress-newflasher-xperia-command-line-t3619426
 	arch = x86_64
 	license = GPL
-	makedepends = zlib
-	makedepends = expat
+	depends = zlib
+	depends = expat
 	source = git://github.com/newflasher/newflasher
 	md5sums = SKIP
 
