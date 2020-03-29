@@ -25,9 +25,9 @@ depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'a52dec' 'libdvbpsi'
          'fribidi' 'harfbuzz' 'fontconfig' 'libxml2' 'gnutls' 'libplacebo'
          'wayland-protocols' 'aribb24' 'libfdk-aac')
 makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
-             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3' 'lua' 'libmicrodns' 
+             'flac' 'libdc1394' 'libavc1394' 'libcaca' 'gtk3' 'lua'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'libsystemd'
-             'libmtp' 'libmicrodns'  'libdvdcss' 'smbclient' 'flex' 'bison'
+             'libmtp' 'libdvdcss' 'smbclient' 'flex' 'bison'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123' 'srt'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
@@ -59,7 +59,7 @@ optdepends=('avahi: service discovery using bonjour protocol'
             'libnfs: NFS access'
             'mpg123: mpg123 codec'
             'protobuf: chromecast streaming'
-            'libmicrodns: mDNS services discovery (chromecast etc)'
+          #  'libmicrodns: mDNS services discovery (chromecast etc)'
             'lua-socket: http interface'
             'live-media: RTSP input'
             'libdvdread: DVD input module'
@@ -219,7 +219,7 @@ build() {
               --enable-avahi \
               --enable-mtp \
               --enable-upnp \
-              --enable-microdns \
+              --disable-microdns \
               --enable-libxml2 \
               --enable-libgcrypt \
               --enable-gnutls \
