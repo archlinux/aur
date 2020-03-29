@@ -1,8 +1,8 @@
 # Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=algernon
-pkgver=1.12.6
-pkgrel=2
+pkgver=1.12.7
+pkgrel=1
 pkgdesc='Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://algernon.roboticoverlords.org/'
@@ -12,7 +12,7 @@ optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend'
             'redis: For using the Redis database backend')
 source=("algernon-${pkgver}.tar.gz::https://github.com/xyproto/algernon/archive/${pkgver}.tar.gz")
-sha512sums=('4158d31a907093af608f1fd9a598be4eeb4a9f8d68c6e51eaea6368e142edae95eb6170307451fec8b3c199d154c8d6ce35c6f46461c15e42b8f93a10e7dafe1')
+sha512sums=('b696c06815d89d19d0c46159914350c8dd130ef51e60e2c86060c3d15e73e44cbdc68ad4aef4ad508d05e0a0a096ffda7bd83464a08ec7e07fd54f509f880d68')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

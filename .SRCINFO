@@ -1,7 +1,7 @@
 pkgbase = algernon
 	pkgdesc = Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support
-	pkgver = 1.12.6
-	pkgrel = 2
+	pkgver = 1.12.7
+	pkgrel = 1
 	url = https://algernon.roboticoverlords.org/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = algernon
 	optdepends = mariadb: For using the MariaDB/MySQL database backend
 	optdepends = postgresql: For using the PostgreSQL database backend
 	optdepends = redis: For using the Redis database backend
-	source = algernon-1.12.6.tar.gz::https://github.com/xyproto/algernon/archive/1.12.6.tar.gz
-	sha512sums = 4158d31a907093af608f1fd9a598be4eeb4a9f8d68c6e51eaea6368e142edae95eb6170307451fec8b3c199d154c8d6ce35c6f46461c15e42b8f93a10e7dafe1
+	source = algernon-1.12.7.tar.gz::https://github.com/xyproto/algernon/archive/1.12.7.tar.gz
+	sha512sums = b696c06815d89d19d0c46159914350c8dd130ef51e60e2c86060c3d15e73e44cbdc68ad4aef4ad508d05e0a0a096ffda7bd83464a08ec7e07fd54f509f880d68
 
 pkgname = algernon
 
