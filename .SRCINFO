@@ -1,8 +1,8 @@
 pkgbase = perl-package-variant
-	pkgdesc = Parameterizable packages
-	pkgver = 1.002002
+	pkgdesc = Perl/CPAN Module Package::Variant: Parameterizable packages
+	pkgver = 1.003002
 	pkgrel = 1
-	url = http://search.mcpan.org/dist/Package-Variant
+	url = https://metacpan.org/release/Package-Variant
 	arch = any
 	license = PerlArtistic
 	license = GPL
@@ -12,9 +12,9 @@ pkgbase = perl-package-variant
 	depends = perl
 	depends = perl-strictures
 	options = !emptydirs
-	source = http://search.mcpan.org/CPAN/authors/id/H/HA/HAARG/Package-Variant-1.002002.tar.gz
-	md5sums = dd86d48c51beca32d36799f1bf540faf
-	sha512sums = 526c7917a4bac8d33577c07f9315a91142f38bd0965d789011a148f644b8c62806ccac5488da2af13f3dddd3af46e7c3ab3ff635f0d16abd9b3a546202a8d62f
+	source = http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/Package-Variant-1.003002.tar.gz
+	md5sums = f898ec7426e051ca4431fd8afed24937
+	sha512sums = 0f311e73049df9a7a43a3e9eb3e4ba48120d119ab92161a4c0da532625d5705c6ee5b50f57d6b40ded30df82ce13b9dcced28894ddc7ee0068787b782fd33a4a
 
 pkgname = perl-package-variant
 
