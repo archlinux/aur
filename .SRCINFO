@@ -1,6 +1,6 @@
 pkgbase = python-graph-tool
 	pkgdesc = A Python module for manipulation and statistical analysis of graphs
-	pkgver = 2.30
+	pkgver = 2.31
 	pkgrel = 1
 	url = https://graph-tool.skewed.de
 	arch = i686
@@ -25,8 +25,8 @@ pkgbase = python-graph-tool
 	conflicts = python3-graph-tool
 	replaces = python3-graph-tool
 	options = !libtool
-	source = https://downloads.skewed.de/graph-tool/graph-tool-2.30.tar.bz2
-	sha256sums = 823cf3374b08fbfe8f580d08ae063913d021ff92f8ef1365d317e8ea38ecc8bf
+	source = https://downloads.skewed.de/graph-tool/graph-tool-2.31.tar.bz2
+	sha256sums = fbb4a7aee8baa9a9f7ded082e4976ebb3035f04bdf504eb3f9e7fbb2664fd67c
 
 pkgname = python-graph-tool
 
