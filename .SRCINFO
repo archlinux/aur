@@ -1,0 +1,16 @@
+pkgbase = rofi-keepassxc
+	pkgdesc = Simple keepassxc-cli frontent in rofi
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/samedamci/rofi-keepassxc
+	arch = any
+	license = MIT
+	depends = rofi
+	depends = xclip
+	depends = keepassxc
+	depends = zsh
+	source = https://github.com/samedamci/rofi-keepassxc/archive/v1.1.tar.gz
+	sha512sums = 23c1e61d3582411567b9bca2e866ecc01b0ae17d70be7e5f6d4c2b8926f924f7bc2fc86e2a42c7131e3208bb8b5335abe72c31dee83afb55c3cc7f4f113f1b70
+
+pkgname = rofi-keepassxc
+
