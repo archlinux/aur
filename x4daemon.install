@@ -1,10 +1,6 @@
 ## arg 1:  the new package version
 post_install() {
-        echo "For initscripts users:"
-	echo "Don't forget to add x4daemon to DAEMONS array in /etc/rc.conf."
-	echo "If you want to start x4daemon now, use 'sudo rc.d start x4daemon'."
-        echo "For systemd users:"
-        echo "Don't forget to enable x4daemon: 'sudo systemctl enable x4daemon.service'."
+    echo "Don't forget to enable x4daemon: 'sudo systemctl enable x4daemon.service'."
 	echo "If you want to start x4daemon now use 'sudo systemctl start x4daemon.service'."
 }
 

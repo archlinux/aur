@@ -1,17 +1,17 @@
-# Maintainer: Evilandi666 <evilandi.aur(at)googlemail.com>
+# Maintainer: baderas <development+aur(at)geekparadise.de>
 pkgname=x4daemon
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="A daemon that makes it possible to use all special keys on your Sidewinder X4 keyboard."
 arch=('i686' 'x86_64')
-url="http://www.geekparadise.de/x4daemon/"
+url="https://github.com/baderas/x4daemon"
 license=('GPL')
 depends=('libusb>=1.0.8' 'bash' 'grep' 'coreutils' 'procps')
 makedepends=('autoconf')
-source=("http://geekparadise.de/x4daemon_download/${pkgname}-${pkgver}.tar.bz2" "${pkgname}.install")
+source=("https://github.com/baderas/${pkgname}/archive/${pkgver}.tar.gz" "${pkgname}.install")
 install="${pkgname}.install"
-sha256sums=('016f7ebfea90383b0a8e5218b9ca829b1fd715cd34a633c3a043fb0fe6fdf834'
-            '38205247e8097bce66d4a25c8dbdd7b82d7bef6894979cffb26a231685ec5623')
+sha256sums=('c3aa2adebd2f4fa28e262d305b86f1637a54f28f29c2c0773029bb4956e484ab'
+            '9a0c434fdd245057383276415b10c38be7452c00a42a190f606861ce2b063c18')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,8 +29,6 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
-
-  install -D -m 755 "${srcdir}/${pkgname}-${pkgver}/src/x4daemon.init" "${pkgdir}/etc/rc.d/x4daemon"
   
   install -D -m 644 "${srcdir}/${pkgname}-${pkgver}/src/x4daemon.service" "${pkgdir}/usr/lib/systemd/system/x4daemon.service"
 }
