@@ -1,21 +1,46 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=cegui-git
-pkgver=r6342.d313d6fbc
+pkgver=r6347.e444e854e
 pkgrel=1
 pkgdesc="A free library providing windowing and widgets for graphics APIs/engines"
 arch=('i686' 'x86_64')
 url="http://cegui.org.uk"
 license=("MIT")
-depends=('pcre' 'glew' 'expat' 'freetype2' 'libxml2' 'devil' 'freeglut' 'lua51'
-         'silly')
-makedepends=('cmake' 'python2' 'doxygen' 'ogre' 'gtk2' 'boost' 'graphviz'
-             'irrlicht' 'glm' 'mesa' 'tolua++' 'mercurial' 'ois')
-optdepends=('ogre: ogre module'
-            'python2: python bindings'
-            'ois: running samples'
-            'gtk2: gtk2 module'
-            'irrlicht: irrlicht module')
+depends=(glm)
+makedepends=('git' 'cmake')
+optdepends=('pcre'
+            'freetype2'
+            'minizip'
+            'fribidi'
+            'libraqm'
+            'freeglut'
+            'mesa'
+            'glew'
+            'glfw'
+            'sdl2'
+            'sdl2_image'
+            'sfml'
+            'irrlicht'
+            'ogre'
+            'boost'
+            'ois'
+            'directfb'
+            'libepoxy'
+            'expat'
+            'libxml2'
+            'tinyxml'
+            'tinyxml2'
+            'rapidxml'
+            'devil'
+            'freeimage'
+            'silly'
+            'lua51'
+            'tolua++'
+            'python'
+            'doxygen'
+            'gtk2'
+            'ccache')
 provides=('cegui')
 conflicts=('cegui')
 _pkgname=cegui
