@@ -2,7 +2,7 @@
 pkgname=marvinc-git
 _gitname=MarvInc
 _lpkg="${_gitname,,}"
-pkgver=1.3.3.r0.gc3055f9
+pkgver=1.4.0.r0.gdbd418e
 pkgrel=1
 pkgdesc="MarvInc is a zachlike puzzle game with a story told through emails."
 arch=('x86_64')
