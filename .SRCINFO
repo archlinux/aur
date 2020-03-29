@@ -6,7 +6,7 @@ pkgbase = dhall-lsp-server-bin
 	arch = x86_64
 	license = BSD
 	source = https://github.com/dhall-lang/dhall-haskell/releases/download/1.31.0/dhall-lsp-server-1.0.6-x86_64-linux.tar.bz2
-	source = https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.31.0/dhall-lsp-server/LICENSE
+	source = LICENSE-1.0.6::https://raw.githubusercontent.com/dhall-lang/dhall-haskell/1.31.0/dhall-lsp-server/LICENSE
 	sha256sums = b1fca05fe0b53c891cd4d39d2cbfe700b30f59a05f93945e20841da5ac2eadba
 	sha256sums = 9e2f0e499b5406faffffd32d0a1d69d519dc8c681fb0648ee5e9970e0299d4a7
 
