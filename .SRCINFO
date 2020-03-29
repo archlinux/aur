@@ -1,7 +1,7 @@
 pkgbase = linux-steam-integration
 	pkgdesc = Helper for enabling better Steam integration on Linux
 	pkgver = 0.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux/linux-steam-integration
 	arch = x86_64
 	license = LGPL2.1
@@ -13,9 +13,11 @@ pkgbase = linux-steam-integration
 	optdepends = steam-native-runtime: A package for installing all required deps for the native runtime.
 	source = https://github.com/clearlinux/linux-steam-integration/releases/download/v0.7.3/linux-steam-integration-0.7.3.tar.xz
 	source = https://github.com/clearlinux/linux-steam-integration/releases/download/v0.7.3/linux-steam-integration-0.7.3.tar.xz.asc
+	source = libbz2.patch
 	validpgpkeys = 22512D02C191D39D5EC4FDCDBFF2F5A2CA201B84
 	sha512sums = b68ae89c5e93d6424fe1b91666cac32c241f7f3cff24cf7f4f6b1ad57c1d537fbce60a6d64999c7e568f1f29152a44a7366d100c7ad1a70cdb1e0a8fb7cf8b6a
 	sha512sums = SKIP
+	sha512sums = fad69edf897503d0d03ac2841dc197061251abd41c8ff7f5b899e1df86d2b12767790303f60ba55db5b25ef848078e5ba64ffe02efd1f2cd1581613e7c559dc8
 
 pkgname = linux-steam-integration
 
