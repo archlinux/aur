@@ -8,7 +8,8 @@ pkgdesc='A fancy, customizable, keyboard-operable Matrix chat client for encrypt
 arch=('any')
 url='https://github.com/mirukana/mirage'
 license=('Apache')
-depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphicaleffects' 'qt5-imageformats' 'python' 'python-pyotherside' 'libolm' 'cmake' 'libjpeg-turbo' 'zlib' 'libtiff' 'libwebp' 'openjpeg2' 'libmediainfo' 'python-pillow' 'python-pymediainfo' 'python-cairosvg' 'python-aiofiles' 'python-appdirs' 'python-filetype' 'python-html-sanitizer' 'python-lxml' 'python-mistune' 'python-blist' 'python-dataclasses' 'python-async_generator' 'python-pyfastcopy' 'python-uvloop')
+depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'qt5-graphicaleffects' 'qt5-imageformats' 'python' 'python-pyotherside' 'libolm' 'libjpeg-turbo' 'zlib' 'libtiff' 'libwebp' 'openjpeg2' 'libmediainfo' 'python-pillow' 'python-pymediainfo' 'python-cairosvg' 'python-aiofiles' 'python-appdirs' 'python-filetype' 'python-html-sanitizer' 'python-lxml' 'python-mistune' 'python-blist' 'python-dataclasses' 'python-async_generator' 'python-pyfastcopy' 'python-uvloop' 'python-nio')
+makedepends=('cmake')
 source=("git://github.com/mirukana/${_name}.git")
 sha256sums=('SKIP')
 
