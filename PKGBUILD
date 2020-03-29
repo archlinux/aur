@@ -17,7 +17,7 @@ conflicts=(
     'anbox-image'
 )
 source=(
-    "http://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
+    "https://build.anbox.io/android-images/${pkgver//./\/}/android_amd64.img"
     "houdini_y.sfs::http://dl.android-x86.org/houdini/7_y/houdini.sfs"
     "houdini_z.sfs::http://dl.android-x86.org/houdini/7_z/houdini.sfs"
     "media_codecs.xml"
