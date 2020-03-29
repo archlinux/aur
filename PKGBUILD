@@ -1,7 +1,7 @@
 # Maintainer: Ronny Lorenz <ronny at tbi dot univie dot ac dot at>
 
 pkgname=infernal
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Search DNA sequence databases for RNA structure and sequence similarities using covariance models (CMs)"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ optdepends=()
 makedepends=()
 provides=()
 source=("http://eddylab.org/infernal/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a73e6bbab0c4b79af2cc4c0aabb8accc')
+md5sums=('50fcb75d85c295571adcf54b1cabeb6e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
