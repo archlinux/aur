@@ -1,6 +1,6 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-git
-pkgver=2.3.0~443+7256da8
+pkgver=2.3.0~0+0000000
 pkgrel=1
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++"
@@ -26,8 +26,6 @@ validpgpkeys=()
 
 prepare() {
     cd "craftos2"
-    mkdir icons
-    unzip linux-icons.zip -d icons
     git submodule update --init --recursive
 }
 
@@ -52,11 +50,4 @@ package() {
 	cd "craftos2"
 	mkdir -p "$pkgdir/usr/local/bin"
 	DESTDIR="$pkgdir/usr/local/bin" make install
-	install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC.desktop"
-	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos.png"
-	install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos.png"
-	install -D -m 0644 icons/32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/craftos.png"
-	install -D -m 0644 icons/48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/craftos.png"
-	install -D -m 0644 icons/64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/craftos.png"
-	install -D -m 0644 icons/96.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/craftos.png"
 }
