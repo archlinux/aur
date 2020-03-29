@@ -1,24 +1,51 @@
 diff --git a/controller/seafile-controller.c b/controller/seafile-controller.c
-index 487d1aa..120a936 100644
+index 3dde027..7c30aee 100644
 --- a/controller/seafile-controller.c
 +++ b/controller/seafile-controller.c
-@@ -645,7 +645,7 @@ stop_ccnet_server ()
+@@ -244,25 +244,19 @@ get_python_executable() {
+ }
+ 
  static void
- init_pidfile_path (SeafileController *ctl)
+-init_seafile_path ()
++init_seafile_path (char *central_config_dir)
  {
--    char *pid_dir = g_build_filename (topdir, "pids", NULL);
-+    char *pid_dir = g_build_filename (ctl->seafile_dir, "pids", NULL);
-     if (!g_file_test(pid_dir, G_FILE_TEST_EXISTS)) {
-         if (g_mkdir(pid_dir, 0777) < 0) {
-             seaf_warning("failed to create pid dir %s: %s", pid_dir, strerror(errno));
-@@ -710,8 +710,8 @@ seaf_controller_init (SeafileController *ctl,
+-    GError *error = NULL;
+-    char *binary = g_file_read_link (PROC_SELF_PATH, &error);
+-    char *tmp = NULL;
+-    if (error != NULL) {
+-        seaf_warning ("failed to readlink: %s\n", error->message);
+-        return;
+-    }
+-
+-    bin_dir = g_path_get_dirname (binary);
+-
+-    tmp = g_path_get_dirname (bin_dir);
+-    installpath = g_path_get_dirname (tmp);
+-
+-    topdir = g_path_get_dirname (installpath);
+-
+-    g_free (binary);
+-    g_free (tmp);
++    /*
++     * In seafile-server ArchLinux package, the "bin_dir" is a
++     * symlink to "/usr/bin".
++     * We can't use the relative path to these executables for determinate
++     * the paths of the instances.
++     *
++     * Thanks @yuyichao.
++     */
++    topdir = g_path_get_dirname (central_config_dir);
++    installpath = g_build_filename (topdir, "seafile-server", NULL);
++    bin_dir = g_build_filename (installpath, "seafile", "bin", NULL);
+ }
+ 
+ static void
+@@ -501,7 +495,7 @@ seaf_controller_init (SeafileController *ctl,
+                       char *seafile_dir,
+                       char *logdir)
+ {
+-    init_seafile_path ();
++    init_seafile_path (central_config_dir);
+     if (!g_file_test (config_dir, G_FILE_TEST_IS_DIR)) {
+         seaf_warning ("invalid config_dir: %s\n", config_dir);
          return -1;
-     }
- 
--    char *seafevents_config_file = g_build_filename (topdir,
--                                                     "conf/seafevents.conf",
-+    char *seafevents_config_file = g_build_filename (ctl->central_config_dir,
-+                                                     "seafevents.conf",
-                                                      NULL);
- 
-     if (!g_file_test (seafevents_config_file, G_FILE_TEST_EXISTS)) {
