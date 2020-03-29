@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}
-pkgver=3.1.10
+pkgver=3.1.11
 pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ depends=('bzip2'
 makedepends=('cmake'
              'p7zip')
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
-sha256sums=('6445627c10586011196e4305ffa030d16b5b97aa6a17e25c501e8df40369ec1f')
+sha256sums=('83cea24520d57f6bd23f146925eab55e2413f7c91e24c84bcda550b94ecedc08')
 
 build() {
     cd SLADE-${pkgver}
