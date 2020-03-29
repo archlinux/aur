@@ -1,8 +1,8 @@
 # Maintainer: sudhip nashi (sudhip@nashi.us)
 pkgname='gmail-nativefier'
 pkgbase='google-mail-nativefier'
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="Gmail wrapped as a desktop application through Nativefier"
 arch=('x86_64')
 url=https://mail.google.com
@@ -30,7 +30,7 @@ package() {
     
     cp -rL $appname-linux-* "$pkgdir"/opt/$pkgname
     ln -sf /opt/$pkgname/$appname "$pkgdir"/usr/bin/$appname
-    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$appname.png
-    
+    ln -sf /opt/$pkgname/resources/app/icon.png "$pkgdir"/usr/share/pixmaps/$appname.png    
     chmod 666 "$pkgdir"/opt/$pkgname/resources/app/nativefier.json
+    sed -i 's/!options.saveAs/options.saveAs/g' "$pkgdir"/opt/$pkgname/resources/app/lib/main.js
 }
