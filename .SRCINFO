@@ -1,0 +1,17 @@
+pkgbase = earnom
+	pkgdesc = A KISS search-and-play from youtube gui script using playx
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/EllisCake/EarNom/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = yad
+	depends = playx
+	provides = earnom
+	conflicts = earnom
+	source = earnom::git+https://github.com/EllisCake/EarNom/
+	sha512sums = SKIP
+
+pkgname = earnom
+
