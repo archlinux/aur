@@ -1,7 +1,7 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 pkgname=openhab2
-pkgver=2.5.2
-pkgrel=2
+pkgver=2.5.3
+pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
 url="http://www.openhab.org/"
@@ -27,11 +27,11 @@ source=("openhab-${pkgver}.tar.gz::https://bintray.com/openhab/mvn/download_file
 
 noextract=("openhab-${pkgver}.tar.gz")
 
-sha256sums=('b5a3241708eacd59d76226dd105561108fb3ec57eb23620e6d6bd2595471a1a4'
-  	'f01ea4cd08608fa0230e13dda23ec9f0b363a1ba417a78908866083a03ab9e0c'
-	'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
-	'a5ef3d048ab20e73bbb2684fcb3a8b64f9fd1d437bde54b7e51b379d1dacd79e'
-	'500118875b0a9f3a4a511bebea3aebaebaa1e8fb5fc1e5c9222e3a287530a5ab')
+sha256sums=('3016286ec6df5a00fdc0e84affaacb16b02afd3d898d6b580ae1a23e1feb361a'
+            'f01ea4cd08608fa0230e13dda23ec9f0b363a1ba417a78908866083a03ab9e0c'
+            'b149d976dc13dc18c62d2014457557e266e733ead70b0730d06dcd0372da78a7'
+            'a5ef3d048ab20e73bbb2684fcb3a8b64f9fd1d437bde54b7e51b379d1dacd79e'
+            '500118875b0a9f3a4a511bebea3aebaebaa1e8fb5fc1e5c9222e3a287530a5ab')
 
 prepare() {
 	if [[ ! -d ${srcdir}/openhab2 ]]; then
