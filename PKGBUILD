@@ -5,7 +5,7 @@
 
 pkgname=otf-textfonts
 pkgver=13.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Text faces based on early Greek editions"
 arch=('any')
 url="https://dn-works.com/ufas/"
@@ -16,7 +16,7 @@ replaces=('ttf-textfonts')
 source=("${pkgname}-${pkgver}.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Textfonts.zip"
 	 "LICENSE")
 md5sums=('bac05e4ebd52928c5fde6f3d523c4680'
-         '10ed660cf88e58fe902e655d966260b3')
+         '19b57052fc482d4ce70c8ab77a0b7ad4')
 
 package()
 {

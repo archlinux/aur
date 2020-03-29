@@ -1,7 +1,7 @@
 pkgbase = otf-textfonts
 	pkgdesc = Text faces based on early Greek editions
 	pkgver = 13.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dn-works.com/ufas/
 	arch = any
 	license = custom
@@ -19,7 +19,7 @@ pkgbase = otf-textfonts
 	source = otf-textfonts-13.00.zip::https://dn-works.com/wp-content/uploads/2020/UFAS-Fonts/Textfonts.zip
 	source = LICENSE
 	md5sums = bac05e4ebd52928c5fde6f3d523c4680
-	md5sums = 10ed660cf88e58fe902e655d966260b3
+	md5sums = 19b57052fc482d4ce70c8ab77a0b7ad4
 
 pkgname = otf-textfonts
 
