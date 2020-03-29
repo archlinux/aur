@@ -2,7 +2,7 @@
 # Submitter: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=rpcs3-git
-pkgver=0.0.9.r274.cba9ed352
+pkgver=0.0.9.r275.cc100f400
 pkgrel=1
 pkgdesc='A Sony PlayStation 3 emulator'
 arch=(x86_64)
@@ -44,30 +44,8 @@ conflicts=(rpcs3)
 options=(!emptydirs)
 source=(
   git+https://github.com/RPCS3/rpcs3.git
-  rpcs3-cereal::git+https://github.com/RPCS3/cereal.git
-  rpcs3-hidapi::git+https://github.com/RPCS3/hidapi.git
-  rpcs3-libusb::git+https://github.com/RPCS3/libusb.git
-  rpcs3-llvm::git+https://github.com/RPCS3/llvm-mirror.git
-  rpcs3-yaml-cpp::git+https://github.com/RPCS3/yaml-cpp.git
-  git+https://github.com/kobalicek/asmjit.git
-  git+https://github.com/FNA-XNA/FAudio.git
-  git+https://github.com/KhronosGroup/glslang.git
-  git+https://github.com/zeux/pugixml.git
-  git+https://github.com/tcbrindle/span.git
-  git+https://github.com/Cyan4973/xxHash.git
 )
 sha256sums=(
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
-  SKIP
   SKIP
 )
 
@@ -79,20 +57,10 @@ pkgver() {
 
 prepare() {
   cd rpcs3
-
-  git submodule init 3rdparty/{cereal,FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
-  git config submodule.asmjit.url ../asmjit
-  git config submodule.cereal.url ../rpcs3-cereal
-  git config submodule.glslang.url ../glslang
-  git config submodule.FAudio.url ../FAudio
-  git config submodule.hidapi.url ../rpcs3-hidapi
-  git config submodule.libusb.url ../rpcs3-libusb
-  git config submodule.llvm.url ../rpcs3-llvm
-  git config submodule.pugixml.url ../pugixml
-  git config submodule.span.url ../span
-  git config submodule.xxHash ../xxHash
-  git config submodule.yaml-cpp ../rpcs3-yaml-cpp
-  git submodule update 3rdparty/{cereal,FAudio,hidapi,libusb,pugixml,span,xxHash,yaml-cpp} asmjit llvm Vulkan/glslang
+  
+  SUBMODULES=$(git config --file .gitmodules --get-regexp path | awk '!/ffmpeg/ && !/libpng/ && !/zlib/ && !/curl/ && !/wolfssl/ { print $2 }')
+  
+  git submodule update --init $SUBMODULES
 }
 
 build() {
