@@ -1,12 +1,12 @@
 pkgbase = fotoxx
 	pkgdesc = A program for improving image files made with a digital camera, stable version
 	pkgver = 20.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kornelix.net/fotoxx/fotoxx.html
 	arch = i686
 	arch = x86_64
 	license = GPL3
-	depends = libraw
+	depends = dcraw
 	depends = gtk3
 	depends = libchamplain
 	depends = perl-image-exiftool>=0.8.6
