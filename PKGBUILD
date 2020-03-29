@@ -2,7 +2,7 @@
 
 pkgname=clockthrottle
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility program to adjust the max. CPU clock speed"
 url="https://kornelix.net/$pkgname/$pkgname.html"
 arch=('i686' 'x86_64')
@@ -15,12 +15,11 @@ options=('!emptydirs')
 build() {
   cd $pkgname
   sed -i 's+xdg-deskto+#xdg-deskto+' Makefile
-  PREFIX=/usr LDFLAGS+="-lpthread" make
+  PREFIX=/usr make
 }
 
 package() {
   cd $pkgname
   install -d "$pkgdir"/usr/share/applications
-  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install 
-  sed -i 's+/usr/share/dkopp/icons/++' "$pkgdir"/usr/share/applications/$pkgname.desktop
+  make DESTDIR="$pkgdir" ICONDIR=/usr/share/pixmaps install
 }
