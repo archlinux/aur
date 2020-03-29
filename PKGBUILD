@@ -7,7 +7,7 @@ url='http://www.packagekit.org/'
 license=('GPL')
 depends=('dbus-glib' 'pacman>=5.0.0' 'polkit' 'shared-mime-info' 'sqlite')
 makedepends=('gobject-introspection' 'gtk-doc' 'intltool'
-	'networkmanager' 'bash-completion' 'vala' 'autoconf-archive')
+	'networkmanager' 'bash-completion' 'vala' 'meson')
 optdepends=('networkmanager: detect connection status'
 	'bash-completion: command completion in bash')
 backup=('var/lib/PackageKit/transactions.db'
@@ -18,32 +18,29 @@ replaces=(packagekit)
 md5sums=('SKIP')
 
 build() {
-	cd "${srcdir}/PackageKit"
+	cd "${srcdir}"
 
-	./autogen.sh --prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--libexecdir=/usr/lib/PackageKit \
-		--with-dbus-sys=/usr/share/dbus-1/system.d \
-		--disable-static \
-		--disable-gtk-doc \
-		--disable-local \
-		--disable-browser-plugin \
-		--disable-gstreamer-plugin \
-		--disable-gtk-module \
-		--disable-command-not-found \
-		--disable-cron \
-		--disable-dummy \
-		--enable-alpm
-	make
+	arch-meson PackageKit --prefix=/usr \
+		-Ddbus-sys=/usr/share/dbus-1/system.d \
+		-Dgtk-doc=false \
+		-Dlocal_checkout=false \
+		-Dbrowser-plugin=false \
+		-Dgstreamer-plugin=false \
+		-Dgtk-module=false \
+		-Dbash_command_not_found=false \
+		-Dcron=false \
+		-Ddaemon_tests=false \
+		-Dpackaging_backend=alpm
+	ninja
 }
 
 package() {
-	cd "${srcdir}/PackageKit"
+	cd "${srcdir}"
 
 	# install directory with root owner, polkit group and
 	# correct permission
 	install -d -o root -g 102 -m 750 "${pkgdir}/usr/share/polkit-1/rules.d"
 
-	make DESTDIR="${pkgdir}" install
+
+	DESTDIR="$pkgdir" meson install
 }
