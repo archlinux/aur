@@ -1,0 +1,24 @@
+pkgbase = zbar
+	pkgdesc = Application and library for reading bar codes from various sources
+	pkgver = 0.23
+	pkgrel = 3
+	url = https://github.com/mchehab/zbar
+	arch = x86_64
+	license = LGPL
+	makedepends = gtk3
+	makedepends = imagemagick
+	makedepends = libxv
+	makedepends = v4l-utils
+	makedepends = qt5-x11extras
+	makedepends = python2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	depends = gdk-pixbuf2
+	depends = python2
+	depends = zbar
+	source = python2-zbar-0.23.tar.gz::https://github.com/mchehab/zbar/archive/0.23.tar.gz
+	sha512sums = bc2667a2a5a5f2e9fd3f39e57bf1d7f860b20a0b5faffc38791d222a6ff0414aff880295ce5ccb92acce7250503f2a7f48ac12651cf82cfb1933b302da26e393
+
+pkgname = python2-zbar
+
