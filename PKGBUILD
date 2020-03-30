@@ -4,7 +4,7 @@ pkgbase=linux-slim
 _srcname=linux
 gitver=v5.6
 pkgver=5.6.v.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -21,8 +21,6 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
         "${pkgbase}.preset"
 	# patch from our gentoo overlords
 	'5012_enable-cpu-optimizations-for-gcc91.patch'
-	# noefi patch
-	#'noefi.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
@@ -31,8 +29,6 @@ sha256sums=('SKIP'
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
-            # noefi patch file
-            #'99a553d7d1b2926cbbaceee61706e54a3728890a72a1fbb55343091ea105a84f'
            )
 
 _kernelname=${pkgbase#linux}
@@ -60,9 +56,6 @@ prepare() {
 
   # Implement cpu optimisation (MZEN2) patch from our gentoo lords
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
-
-  # Implement noefi patch
-  #git apply ../noefi.patch
 
   # get kernel version
   yes "" | make prepare
@@ -256,10 +249,6 @@ _package-headers() {
   # remove unneeded architectures
   rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 
-  #Fix build modules for dkms -- Seems to be fixed in this version!
-  #cp "arch/x86/kernel/macros.s" "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/x86/kernel/."
-  #mkdir -p ${pkgdir}/usr/src/
-  #ln -s "../lib/modules/${_kernver}/build/" "${pkgdir}/usr/src/${_kernver}"
 }
 
 _package-docs() {
