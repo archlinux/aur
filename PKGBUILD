@@ -10,7 +10,8 @@ makedepends=('cargo'
 			 'cmake')
 depends=('libnotify'
 		 'qt5-base'
-     	 'polkit')
+     	 'polkit'
+		 'wireless_tools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/${pkgver}.tar.gz")
 md5sums=('68d4a3ddd0e6879b6a42988685e42e8f')
 

@@ -10,6 +10,7 @@ pkgbase = netctl-tray
 	depends = libnotify
 	depends = qt5-base
 	depends = polkit
+	depends = wireless_tools
 	source = netctl-tray-1.0.1.tar.gz::https://github.com/PonasKovas/netctl-tray/archive/1.0.1.tar.gz
 	md5sums = 68d4a3ddd0e6879b6a42988685e42e8f
 
