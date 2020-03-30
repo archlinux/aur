@@ -1,7 +1,7 @@
 pkgbase = boolector-java
 	pkgdesc = Java bindings for the Boolector SMT solver
 	pkgver = 3.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://boolector.github.io/
 	arch = i686
 	arch = x86_64
