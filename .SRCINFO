@@ -1,0 +1,25 @@
+pkgbase = gapc-git
+	pkgdesc = The Bellman's GAP Compiler (GAP-C) is the novel ADP compiler which translates GAP-L programs into efficient C++ code.
+	pkgver = r1.0.56.a30d19a
+	pkgrel = 1
+	url = https://bibiserv.cebitec.uni-bielefeld.de/gapc
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = mercurial
+	makedepends = flex
+	makedepends = bison
+	depends = boost
+	depends = gsl
+	provides = gapc
+	conflicts = gapc
+	source = git+https://github.com/RaumZeit/gapc.git
+	sha256sums = SKIP
+
+pkgname = gapc-git
+
