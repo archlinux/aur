@@ -1,7 +1,7 @@
 # Contributor: Thor K. Høgås <thor at roht.no>
 # Maintainer: Alex J. Malozemoff <amaloz@galois.com>
 pkgname=matterhorn
-pkgver=50200.7.0
+pkgver=50200.8.0
 pkgrel=1
 pkgdesc="A terminal-based chat client for MatterMost"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('matterhorn-git' 'matterhorn-bin')
 depends=('gmp' 'zlib')
 makedepends=('cabal-install' 'ghc')
 source=("https://github.com/matterhorn-chat/matterhorn/archive/${pkgver}.tar.gz")
-sha1sums=('e7abdea2cdbcbf1a115409f27d1686a0084eeafc')
+sha1sums=('9c8790ad5ec28fd843b8fb3ead001d6036d987ee')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
