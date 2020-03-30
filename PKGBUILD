@@ -4,7 +4,7 @@ pkgbase=linux-amd
 _srcname=linux
 gitver=v5.6
 pkgver=5.6.v.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -23,7 +23,8 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	5012_enable-cpu-optimizations-for-gcc91.patch
 	# asus WMI patch
 	asusbat.patch
-	
+	# intel WIFI patch
+	intelwifi.patch
 )
 sha256sums=('SKIP'
 	#config.x86_64
@@ -34,6 +35,8 @@ sha256sums=('SKIP'
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
 	#Asusbat gitfile
             'c0a1604da4e0ae360f0c93a9adf244f9a8cffb5d219c94c0a58e23fb2c007a68'
+	#IntelWifi gitfile
+            'da0be7c26de891847c0394e670d09ebd8f02c159342d21d8b0f0ec306e4e5599'
            )
 
 _kernelname=${pkgbase#linux}
@@ -62,6 +65,8 @@ prepare() {
   yes "" | make prepare
   # Implement suggested asus_wmi change
   git apply ../asusbat.patch
+  # Implement supposed intelwifi patch
+  git apply ../intelwifi.patch
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
