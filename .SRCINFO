@@ -1,14 +1,14 @@
 pkgbase = pdfresurrect
 	pkgdesc = tool aimed at analyzing PDF documents
-	pkgver = 0.19
+	pkgver = 0.20
 	pkgrel = 1
 	url = https://github.com/enferex/pdfresurrect
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	depends = glibc
-	source = pdfresurrect-0.19.tar.gz::https://github.com/enferex/pdfresurrect/archive/v0.19.tar.gz
-	md5sums = 83eae8818b7dfaf845951e2c56eb6e4b
+	source = pdfresurrect-0.20.tar.gz::https://github.com/enferex/pdfresurrect/archive/v0.20.tar.gz
+	md5sums = 74f1bb4267b28180f522e7cdf252d850
 
 pkgname = pdfresurrect
 
