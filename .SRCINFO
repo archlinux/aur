@@ -1,7 +1,7 @@
 pkgbase = gapc-fold-grammars-git
 	pkgdesc = Bielefeld RNA secondary structure prediction programs.
 	pkgver = r1.0.3.be95625
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bibiserv.cebitec.uni-bielefeld.de/fold-grammars/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = gapc-fold-grammars-git
 	depends = gapc
 	provides = pKiss
 	provides = pAliKiss
-	provides = RNAShapes
-	provides = RNAAliShapes
+	provides = RNAshapes
+	provides = RNAalishapes
 	source = git+https://github.com/RaumZeit/fold_grammars.git
 	sha256sums = SKIP
 
