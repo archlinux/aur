@@ -2,9 +2,9 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.5.13
-pkgver=5.5.v.13
-pkgrel=3
+gitver=v5.6
+pkgver=5.6.v.0
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,17 +22,17 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	# patch from our gentoo overlords
 	'5012_enable-cpu-optimizations-for-gcc91.patch'
 	# noefi patch
-	'noefi.patch'
+	#'noefi.patch'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '6e481331cedaffa067b98fcfb31575ee9888757f6a0d4d83a133a8fa209604ab'
+            'b1cc87b9ff3587afc1371470b5ffbc63f0417c5a9874076727c67e488a5cabcf'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
             # noefi patch file
-            '99a553d7d1b2926cbbaceee61706e54a3728890a72a1fbb55343091ea105a84f'
+            #'99a553d7d1b2926cbbaceee61706e54a3728890a72a1fbb55343091ea105a84f'
            )
 
 _kernelname=${pkgbase#linux}
@@ -62,7 +62,7 @@ prepare() {
   git apply ../5012_enable-cpu-optimizations-for-gcc91.patch
 
   # Implement noefi patch
-  git apply ../noefi.patch
+  #git apply ../noefi.patch
 
   # get kernel version
   yes "" | make prepare
