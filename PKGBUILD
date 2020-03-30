@@ -1,23 +1,23 @@
-# Maintainer: Matthias Lisin <ml@visu.li>
+# Maintainer: ml <ml@visu.li>
 pkgname=ubports-installer-git
-pkgver=0.4.14_beta.r4.g9f0fde4
+pkgver=0.4.16_beta.r0.g45e17f7
 pkgrel=1
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
-arch=(any)
+arch=('any')
 url='https://github.com/ubports/ubports-installer'
 license=('GPL3')
 depends=('android-tools' 'android-udev' 'electron6')
-makedepends=('git' 'jq' 'moreutils' 'npm')
+makedepends=('git' 'jq' 'npm')
 provides=('ubports-installer')
 conflicts=('ubports-installer')
-source=("$pkgname::git+${url}.git"
+source=("${pkgname}::git+${url}.git"
         ubports-installer
         ubports-installer.desktop
         use-system-tools.patch)
-sha512sums=('SKIP'
-            '50b114735cbe7cdde45dff5ae18c3e081f45d61045177a97b50b9525355b02e1a6c435996ccfe5503451ceffa027882abb5133585acc01dc5445bb1501b04f0a'
-            'efb0da575db03326f56a8bb589f3f5f543a4ae23b471658555bb030bcc1c1625ba2aafd15f26fac41425b3b0bde4cf176740d92aafd5853d5ce1da2b946686e8'
-            '4655eadabf03185b811e6a9df4569a23b459ee3ea4b64801aa445c3cfb7443e88a1c2de99050d4ec145c2936c58afdb4dd7767cb3ab00be4e8f969578bc86183')
+sha256sums=('SKIP'
+            'bacb11b37b4ecc5ecac78aad8b2950cf17ced03ca11dfb512c34fad18e894261'
+            '7f59cb66ab7e59caeff93f697e47f26f43a9a221258f4d89dee580e41dd7a39a'
+            '5b31be9612632f1a3beee3d38e97a23ee346ec814b580bfa41dad6e4f7ac4fb9')
 
 pkgver() {
     cd "$pkgname"
@@ -25,48 +25,35 @@ pkgver() {
 }
 
 prepare() {
-    local dist=/usr/lib/electron6
-    local version="$(sed 's/^v//' $dist/version)"
-
     cd "$pkgname"
-    for i in ${source[@]}; do
-        case ${i%::*} in
-            *.patch)
-                patch -N -p1 -i "$srcdir/${i}"
-                ;;
-        esac
-    done
-
-    # Set electronDist and current electronVersion
-    jq '.electronDist = $dist | .electronVersion = $version' \
-        --arg dist "$dist" \
-        --arg version "$version" \
-        buildconfig-generic.json | sponge buildconfig-generic.json
-
-    npm uninstall --no-audit --cache "$srcdir/npm-cache" electron-packager
+    patch -Np1 <../use-system-tools.patch
+    npm install --no-audit --no-progress --no-fund --ignore-scripts electron@"$(</usr/lib/electron6/version)"
 
     # Removing local references
     for module in he sshpk; do
         local target="node_modules/${module}/package.json"
-        echo "Removing local references from ${target}"
-        jq 'del(.man)' "$target" | sponge "$target"
+        jq 'del(.man)' "$target" >tmp.json
+        mv tmp.json "$target"
     done
 }
 
 build() {
     cd "$pkgname"
-    node build.js --no-platform-tools --os linux --package dir
+    npx electron-builder --linux --dir \
+      -c buildconfig-generic.json \
+      -c.electronDist=/usr/lib/electron6 \
+      -c.electronVersion="$(</usr/lib/electron6/version)"
 }
 
 package() {
-    install -Dm644 ubports-installer.desktop "$pkgdir/usr/share/applications/ubports-installer.desktop"
-    install -Dm755 ubports-installer "$pkgdir/usr/bin/ubports-installer"
+    install -Dm644 -t "${pkgdir}/usr/share/applications" ubports-installer.desktop
+    install -Dm755 -t "${pkgdir}/usr/bin" ubports-installer 
 
-    cd "$pkgname/build/icons"
+    cd "${pkgname}"
+    install -Dm644 -t "${pkgdir}/usr/share/ubports-installer" dist/linux-unpacked/resources/app.asar 
+
+    cd build/icons
     for i in *x*.png; do
-        install -Dm644 "$i" "$pkgdir/usr/share/icons/hicolor/${i%.png}/apps/ubports-installer.png"
+        install -Dm644 "$i" "${pkgdir}/usr/share/icons/hicolor/${i%.png}/apps/ubports-installer.png"
     done
-
-    cd "$srcdir/$pkgname/dist/linux-unpacked/resources"
-    install -Dm644 app.asar "$pkgdir/usr/share/ubports-installer/app.asar"
 }
