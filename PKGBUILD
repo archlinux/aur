@@ -32,7 +32,7 @@ makedepends=('gst-plugins-base-libs' 'live-media' 'libnotify' 'libbluray'
              'libx265.so' 'libx264.so' 'zvbi' 'libass' 'libkate' 'libtiger'
              'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
              'lirc' 'libgoom2' 'projectm' 'chromaprint' 'git' 'aom' 'srt'
-             'vulkan-headers' 'dav1d')
+             'vulkan-headers' 'dav1d' 'flex' 'bison')
 optdepends=('avahi: service discovery using bonjour protocol'
             'gst-plugins-base-libs: for libgst plugins'
             'libdvdcss: decoding encrypted DVDs'
