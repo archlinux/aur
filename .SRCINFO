@@ -1,0 +1,16 @@
+pkgbase = rofi-buku-git
+	pkgdesc = rofi frontend for buku bookmarks manager
+	pkgver = 71.73ad31d
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gawk
+	depends = buku
+	depends = rofi
+	provides = rofi-buku
+	source = git+https://github.com/knatsakis/rofi-buku.git
+	sha256sums = SKIP
+
+pkgname = rofi-buku-git
+
