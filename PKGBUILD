@@ -5,7 +5,7 @@
 #   Stefan J. Betz <info@stefan-betz.net>
 
 pkgname=libowfat
-pkgver=0.31
+pkgver=0.32
 pkgrel=1
 pkgdesc='GPL reimplementation of libdjb'
 arch=(i686 x86_64)
@@ -34,5 +34,5 @@ package() {
   mv buffer.3 buffer-libowfat.3
 }
 
-sha256sums=('d1e4ac1cfccbb7dc51d77d96398e6302d229ba7538158826c84cb4254c7e8a12'
+sha256sums=('f4b9b3d9922dc25bc93adedf9e9ff8ddbebaf623f14c8e7a5f2301bfef7998c1'
             'SKIP')
