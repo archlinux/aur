@@ -9,7 +9,6 @@ pkgdesc='A media player and the successor to BMP'
 url='http://www.beep-media-player.org'
 license=('GPL' 'LGPL' 'MIT' 'custom')
 arch=('i686' 'x86_64')
-makedepends=()
 depends=( 
 'taglib>=1.4'
 'gtk2>=2.10.0'
@@ -37,7 +36,6 @@ depends=(
 'startup-notification'
 'libofa>=0.9.3')
 optdepends=( 'hal' 'networkmanager' )
-conflicts=('')
 provides=('bmpx')
 source=("http://slackware.uk/slacky/slackware-12.1/multimedia/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2" 'update.patch')
 sha1sums=('3284843c45cab302f414663a5cb31eb4373d07c7'
