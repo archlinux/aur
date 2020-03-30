@@ -1,8 +1,8 @@
-# Maintainer: pyz3n
+# Maintainer: dalz <dalz @t disroot d0t org>
 
-pkgname=weechat-matrix-git
+pkgname=weechat-matrix-protocol-script-git
 pkgver=r348.ace3fef
-pkgrel=2
+pkgrel=1
 pkgdesc="weechat script for matrix"
 arch=('any')
 url='https://github.com/torhve/weechat-matrix-protocol-script'
