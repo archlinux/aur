@@ -1,9 +1,0 @@
---- setup.py.old	2019-12-31 12:31:06.786639193 +0100
-+++ setup.py	2019-12-31 12:31:25.383386476 +0100
-@@ -1,5 +1,5 @@
- # -*- coding: utf-8 -*-
--from distutils.core import setup
-+from setuptools import setup
- 
- packages = \
- ['organize', 'organize.actions', 'organize.filters']
