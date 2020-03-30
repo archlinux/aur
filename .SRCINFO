@@ -1,8 +1,8 @@
 pkgbase = filament
 	pkgdesc = A real-time physically based engine
-	pkgver = 1.4.1
+	pkgver = 1.4.5
 	pkgrel = 1
-	url = https://github.com/google/filament/tree/v1.4.1
+	url = https://github.com/google/filament/tree/v1.4.5
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
@@ -15,10 +15,10 @@ pkgbase = filament
 	depends = embree
 	depends = libpng
 	depends = zlib
-	depends = oidn
+	depends = openimagedenoise
 	conflicts = mono
-	source = https://github.com/google/filament/archive/v1.4.1.tar.gz
-	sha256sums = 471863b385227d23d0850efc4ba53b7bc9ecc83be50b51481d767b5bb7fdea86
+	source = https://github.com/google/filament/archive/v1.4.5.tar.gz
+	sha256sums = 2c504085b66a7e7e2f5e05b7c3b51ed2c10160750fe6104503372ed3d5cc78bb
 
 pkgname = filament
 
