@@ -1,9 +1,10 @@
 pkgbase = idena-go-git
 	pkgdesc = The idena-go node for the Idena network
-	pkgver = v0.4.0.r256.g505434d
+	pkgver = v0.4.0.r258.gab3ae34
 	pkgrel = 1
 	url = https://github.com/idena-network/idena-go
 	arch = x86_64
+	license = GPL3
 	makedepends = git
 	makedepends = go-pie
 	depends = glibc

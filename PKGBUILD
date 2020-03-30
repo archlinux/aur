@@ -1,11 +1,11 @@
 # Maintainer: Chris Sculley <cs.sculley at gmail dot com>
 pkgname=idena-go-git
-pkgver=v0.4.0.r256.g505434d
+pkgver=v0.4.0.r258.gab3ae34
 pkgrel=1
 pkgdesc="The idena-go node for the Idena network"
 arch=("x86_64")
 url="https://github.com/idena-network/idena-go"
-# license=("")
+license=("GPL3")
 makedepends=("git" "go-pie")
 depends=("glibc")
 provides=("idena-go")
@@ -28,9 +28,11 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
+    _version=`git describe --abbrev=0 --tags | sed -e "s/v//g"`
+    echo Building Version: $_version
     go build \
         -trimpath \
-        -ldflags "-extldflags $LDFLAGS" \
+        -ldflags "-extldflags $LDFLAGS -X main.version=$_version" \
         -o idena-go .
 }
 
