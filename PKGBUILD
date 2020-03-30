@@ -2,7 +2,7 @@
 # Corrected by Nim65s <guilhem@saurel.me>
 !
 pkgname=nrf5x-command-line-tools
-pkgver=10.6.0
+pkgver=10.7.0
 pkgrel=0
 pkgdesc="Tools for programming Nordic nRF51, nRF52 and nRF91 MCU using J-Link"
 arch=('i686' 'x86_64')
@@ -12,12 +12,13 @@ depends=('jlink-software-and-documentation')
 provides=('nrfjprog')
 conflicts=('nrfjprog')
 options=()
-_source="https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/nRFCommandLineTools${pkgver//./}Linux"
+_source="https://www.nordicsemi.com/-/media/Software-and-other-downloads/Desktop-software/nRF-command-line-tools/sw/Versions-10-x-x/${pkgver//./-}/nRFCommandLineTools${pkgver//./}Linux"
+
 source_i686=("${_source}i386tar.gz")
 source_x86_64=("${_source}amd64tar.gz")
 
-md5sums_i686=('d2b1f0ad3c63b5c6f48f4732e61c7929')
-md5sums_x86_64=('cb3367525aa4a3352a5551a23882bb92')
+md5sums_i686=('028b8e4270cb4104f9c93c148411b8cc')
+md5sums_x86_64=('1c99e17fd1d1546628b82672b414c428')
 
 package() {
     cd ${srcdir}
