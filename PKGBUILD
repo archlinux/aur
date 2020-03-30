@@ -1,13 +1,13 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=diodon-git
-pkgver=1.8.0.r12.g3b13ba0
+pkgver=1.9.0.r0.g396cd4d
 pkgrel=1
 pkgdesc="GTK+ clipboard manager"
 arch=('x86_64')
 url="https://launchpad.net/diodon"
 license=('GPL2')
-depends=('gobject-introspection' 'libappindicator3' 'libpeas' 'xorg-server-xvfb' 'zeitgeist')
+depends=('gobject-introspection' 'libappindicator-gtk3' 'libpeas' 'xorg-server-xvfb' 'zeitgeist')
 makedepends=('cmake' 'git' 'meson' 'vala')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
