@@ -1,9 +1,9 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=font-v
-pkgver=0.7.1
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='Font version reporting and modification tool'
+pkgdesc='Font version string reporting and modification library + executable tool'
 arch=(any)
 url="https://github.com/source-foundry/$pkgname"
 license=('MIT')
@@ -11,7 +11,7 @@ depends=('python' 'python-gitpython' 'python-fonttools')
 makedepends=('python-setuptools-scm')
 checkdepends=('python-tox')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cfd6b11820577cd832299a529417b5e2b84e432db0f15276ac10f336b9649b41')
+sha256sums=('1fc22ff0af93f24fe169da5ca42fc774e9c0a07bf10082e3fb59c4292d30135d')
 
 build() {
 	cd "$pkgname-$pkgver"
