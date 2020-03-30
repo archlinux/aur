@@ -1,6 +1,6 @@
 pkgbase = fcitx5-gtk-git
 	pkgdesc = Gtk im module for fcitx5 and glib based dbus client library
-	pkgver = r38.22d30ef
+	pkgver = r39.bfb242b
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-gtk
 	arch = i686
