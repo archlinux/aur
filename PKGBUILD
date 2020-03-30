@@ -1,7 +1,7 @@
 # Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 _pkgname=terminal-typeracer
 pkgname=typeracer
-pkgver=1.4.3
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="terminal typing speed tester"
 url=https://gitlab.com/ttyperacer/terminal-typeracer
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('openssl' 'zlib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/terminal-typeracer-v$pkgver.tar.gz")
-sha512sums=('f4e7b1b0151239f584eddd48bbcbd5038aa82d1e162e2751a5a8f4bd87df997e8ed8c1a10a18d927867ed3dc0d2f3ff9b1315514d1d5dc013e3889dc1443fc07')
+sha256sums=('f0973b716fe5b4e2b3f6e8f0d5c204aa69f8158961fe2a9926c9041296d209b6')
 
 build() {
   cd "$_pkgname-v$pkgver"
