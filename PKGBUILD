@@ -10,30 +10,24 @@ pkgdesc='Server and user space API to deal with multimedia pipelines. (GIT versi
 arch=('x86_64')
 url='https://pipewire.org'
 license=('LGPL')
-depends=('rtkit'
-         'sbc'
-         'bluez-libs'
-         'vulkan-icd-loader'
-         'ffmpeg'
-         'libpulse.so'
-         'libdbus-1.so'
-         'libsndfile.so'
-         )
-makedepends=('graphviz'
-             'doxygen'
-             'xmltoman'
-             'git'
+makedepends=('git'
              'meson'
+             'doxygen'
+             'graphviz'
+             'xmltoman'
              'valgrind'
-             'vulkan-headers'
              'jack2'
+             'libpulse'
+             'alsa-lib'
+             'ffmpeg'
              'sbc'
+             'rtkit'
+             'vulkan-icd-loader'
+             'dbus'
+             'libsndfile'
+             'bluez-libs'
+             'vulkan-headers'
              )
-conflicts=('pipewire'
-           'pipewire-pulse'
-           'pipewire-jack'
-           'pipewire-docs'
-          )
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
 backup=('etc/pipewire/pipewire.conf')
@@ -124,8 +118,8 @@ package_pipewire-jack-git() {
   depends=("libpipewire-${pkgver:0:3}.so"
            'libjack.so'
            )
-  provides=('libjack-pw.so'
-            'pipewire-jack'
+  provides=('pipewire-jack'
+            'libjack-pw.so'
             )
   conflicts=('pipewire-jack')
 
@@ -143,7 +137,7 @@ package_pipewire-pulse-git() {
             'libpulse-simple-pw.so'
             'libpulse-mainloop-glib-pw.so'
             )
- conflicts=('pipewire-pulse')
+  conflicts=('pipewire-pulse')
 
   mv pulse/* "${pkgdir}"
 }
