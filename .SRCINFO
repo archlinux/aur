@@ -1,0 +1,13 @@
+pkgbase = chyle-bin
+	pkgdesc = Changelog generator: use a git repository and various data sources and publish the result on external services
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/antham/chyle
+	arch = x86_64
+	license = MIT
+	provides = chyle
+	source = https://github.com/antham/chyle/releases/download/v1.9.0/chyle_linux_amd64
+	md5sums = 3b07bd456a017f4e23d829594826c920
+
+pkgname = chyle-bin
+
