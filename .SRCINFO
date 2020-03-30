@@ -1,13 +1,14 @@
 pkgbase = python-gaphor-git
 	pkgdesc = Simple and easy to use modeling tool for UML using GTK3
 	pkgver = 1.2.0.r50.g2521a448
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaphor/gaphor
 	arch = x86_64
 	arch = i686
 	license = Apache
 	makedepends = git
 	makedepends = python-pip
+	makedepends = gendesk
 	depends = python-gaphas
 	depends = python-typing_extensions
 	depends = python-generic

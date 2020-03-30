@@ -1,12 +1,13 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
 
-_pkgname=python-gaphor
+_name=gaphor
+_pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
 pkgver=1.2.0.r50.g2521a448
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
-url="https://github.com/gaphor/gaphor"
+url="https://github.com/gaphor/${_name}"
 license=('Apache')
 source=(
 	"${_pkgname}::git+${url}.git#branch=master"
@@ -20,6 +21,7 @@ depends=(
 makedepends=(
 	'git'
 	'python-pip'
+	'gendesk'
 )
 optdepends=(
 )
@@ -35,9 +37,15 @@ pkgver() {
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	gendesk -f --pkgname="$_name" --pkgdesc="$pkgdesc" --categories=Development PKGBUILD
+}
+
 package() {
 	cd "${srcdir}/${_pkgname}"
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
+	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
+	install -Dm644 "./logos/${_name}.svg" "$pkgdir"/usr/share/pixmaps/${_name}.svg
 }
 
 # vim: ft=PKGBUILD
