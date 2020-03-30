@@ -1,15 +1,16 @@
 pkgbase = ect
-	pkgdesc = Efficient Compression Tool (or ECT) is a ++ file optimizer. It supports PNG, JPEG, GZIP and ZIP files.
-	pkgver = 0.8.2
-	pkgrel = 2
+	pkgdesc = file compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files.
+	pkgver = 0.8.3
+	pkgrel = 1
 	url = https://github.com/fhanau/Efficient-Compression-Tool
 	arch = i686
 	arch = x86_64
-	license = Apache2
+	license = Apache
 	makedepends = nasm
 	makedepends = git
-	source = ect::git+https://github.com/fhanau/Efficient-Compression-Tool.git#tag=v0.8.2
-	sha256sums = SKIP
+	depends = gcc-libs
+	source = git+https://github.com/fhanau/Efficient-Compression-Tool.git#commit=f0b38f7f8b750099f14d4976beff6a107d6119ac
+	md5sums = SKIP
 
 pkgname = ect
 
