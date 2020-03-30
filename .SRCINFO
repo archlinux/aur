@@ -1,7 +1,8 @@
 pkgbase = python-codereef
+	pkgdesc = CodeReef client to deal with portable workflows
 	pkgver = 0.7.25
-	pkgrel = 1
-	url = https://github.com/ctuning/ck
+	pkgrel = 2
+	url = https://codereef.ai/portal
 	arch = any
 	license = BSD 3-clause
 	makedepends = python-setuptools
@@ -10,14 +11,14 @@ pkgbase = python-codereef
 	sha256sums = 36a5db3b383f962d4f0357e06ab3296844e30c194a1c77ce0a612b6a196c1708
 
 pkgname = python-codereef
-	pkgdesc = for Python 3
+	pkgdesc = CodeReef client to deal with portable workflows for Python 3
 	depends = python-click>=7.0
 	depends = python-ck
 	depends = python-virtualenv
 	depends = python-requests
 
 pkgname = python2-codereef
-	pkgdesc = for Python 2
+	pkgdesc = CodeReef client to deal with portable workflows for Python 2
 	depends = python2-click>=7.0
 	depends = python2-ck
 	depends = python2-virtualenv
