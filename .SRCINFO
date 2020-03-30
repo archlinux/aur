@@ -12,10 +12,10 @@ pkgbase = gapc-fold-grammars-git
 	license = GPL3
 	makedepends = git
 	depends = gapc
-	provides = pKiss
-	provides = pAliKiss
-	provides = RNAshapes
-	provides = RNAalishapes
+	provides = pKiss=2.2.12
+	provides = pAliKiss=1.0.7
+	provides = RNAshapes=3.3.0
+	provides = RNAalishapes=2.4.7
 	source = git+https://github.com/RaumZeit/fold_grammars.git
 	sha256sums = SKIP
 

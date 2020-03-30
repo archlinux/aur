@@ -9,10 +9,10 @@ license=("GPL3")
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
 depends=('gapc')
 makedepends=('git')
-provides=(pKiss
-          pAliKiss
-          RNAshapes
-          RNAalishapes)
+provides=(pKiss=2.2.12
+          pAliKiss=1.0.7
+          RNAshapes=3.3.0
+          RNAalishapes=2.4.7)
 source=("git+https://github.com/RaumZeit/fold_grammars.git")
 sha256sums=("SKIP")
 
