@@ -1,5 +1,7 @@
-src/
-pkg/
-*.tar.gz
-*.pkg.tar.xz
-freac-????????
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
