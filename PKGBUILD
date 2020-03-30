@@ -2,7 +2,7 @@
 pkgname=rofi-todo
 pkgver=1.1
 pkgrel=1
-pkgdesc="Script to manage JSON-style notes in rofi."
+pkgdesc="Script to manage JSON-style notes in rofi"
 arch=('any')
 url="https://github.com/samedamci/${pkgname}"
 license=('MIT')
