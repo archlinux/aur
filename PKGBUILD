@@ -1,5 +1,5 @@
 # Maintainer: Your Name <lemon.xah@gmail.com>
-pkgname=csloc-git
+pkgname=csloc
 _pkgname=csloc
 pkgver=0.1.1.r2.ga410dee
 pkgrel=1
@@ -23,7 +23,7 @@ build() {
 	env CARGO_INCREMENTAL=0 cargo build --release --locked
 }
 
-package_csloc-git() {
+package_csloc() {
 	cd "$_pkgname"
 
 	install -D -m 755 "target/release/csloc" "$pkdir/usr/bin/csloc"

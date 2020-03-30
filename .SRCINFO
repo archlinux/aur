@@ -1,4 +1,4 @@
-pkgbase = csloc-git
+pkgbase = csloc
 	pkgdesc = Counts lines of code based on file extension. Can specify substantial line of code by char count.
 	pkgver = 0.1.1.r2.ga410dee
 	pkgrel = 1
@@ -15,5 +15,5 @@ pkgbase = csloc-git
 	source = csloc::git+https://github.com/lemonxah/csloc.git
 	sha256sums = SKIP
 
-pkgname = csloc-git
+pkgname = csloc
 
