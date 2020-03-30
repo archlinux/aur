@@ -9,6 +9,7 @@ pkgbase = gtkcord3-git
 	makedepends = go
 	depends = gtk3
 	depends = discordlogin-git
+	depends = libhandy
 	provides = gtkcord3
 	source = git+https://github.com/diamondburned/gtkcord3
 	source = gtkcord3.desktop
