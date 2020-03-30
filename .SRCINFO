@@ -1,6 +1,6 @@
 pkgbase = qmmp-plugin-pack
 	pkgdesc = Qmmp Plugin Pack
-	pkgver = 1.3.1
+	pkgver = 1.3.2
 	pkgrel = 1
 	url = http://qmmp.ylsoftware.com
 	arch = i686
@@ -9,12 +9,12 @@ pkgbase = qmmp-plugin-pack
 	makedepends = cmake>=2.8.6
 	makedepends = yasm
 	makedepends = qt5-tools
-	depends = qmmp>=1.3.1
+	depends = qmmp>=1.3.2
 	depends = taglib>=1.7.0
 	depends = mpg123>=1.13.0
 	depends = libxmp>=4.2.0
-	source = http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-1.3.1.tar.bz2
-	sha1sums = fb2977f3ce31ef6580cca712eeaa83b71daa7bfd
+	source = http://qmmp.ylsoftware.com/files/plugins/qmmp-plugin-pack-1.3.2.tar.bz2
+	sha1sums = ba45c4d19d5cb860733f75911e429a300180a41f
 
 pkgname = qmmp-plugin-pack
 
