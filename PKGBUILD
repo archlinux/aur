@@ -1,7 +1,7 @@
 # Maintainer: Your Name <lemon.xah@gmail.com>
 pkgname=csloc
 _pkgname=csloc
-pkgver=0.1.1.r2.ga410dee
+pkgver=0.1.2.r0.g90232f1
 pkgrel=1
 pkgdesc="Counts lines of code based on file extension. Can specify substantial line of code by char count."
 arch=('x86_64' 'i686')
