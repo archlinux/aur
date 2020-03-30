@@ -1,6 +1,6 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = BCacheFS filesystem utilities
-	pkgver = 553
+	pkgver = 569
 	pkgrel = 1
 	url = https://github.com/koverstreet/bcachefs-tools
 	install = bcachefs-tools-git.install
@@ -18,6 +18,7 @@ pkgbase = bcachefs-tools-git
 	makedepends = pkgconf
 	makedepends = valgrind
 	makedepends = zlib
+	depends = libaio
 	depends = libscrypt
 	depends = libsodium
 	depends = liburcu
