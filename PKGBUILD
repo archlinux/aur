@@ -2,8 +2,8 @@
 # Original PKGBUILD by: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-sfh
-pkgver=5.5.13.arch1
-pkgrel=3
+pkgver=5.6.arch1
+pkgrel=1
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
