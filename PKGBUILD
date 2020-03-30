@@ -164,7 +164,8 @@ package_xorg-server-xephyr-dev() {
 
 package_xorg-server-xvfb-dev() {
   pkgdesc="Virtual framebuffer X server"
-  depends=(libxfont2 libunwind pixman xorg-server-common xorg-xauth libgl nettle)
+  depends=(libxfont2 libunwind pixman xorg-server-common xorg-xauth
+           libgl nettle libtirpc)
   provides=(xorg-server-xvfb)
   conflicts=(xorg-server-xvfb)
 

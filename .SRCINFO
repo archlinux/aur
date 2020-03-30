@@ -139,6 +139,7 @@ pkgname = xorg-server-xvfb-dev
 	depends = xorg-xauth
 	depends = libgl
 	depends = nettle
+	depends = libtirpc
 	provides = xorg-server-xvfb
 	conflicts = xorg-server-xvfb
 
