@@ -1,0 +1,25 @@
+pkgbase = yeganesh
+	pkgdesc = dmenu with a sense of history (cabal sandbox build)
+	pkgver = 2.5
+	pkgrel = 1
+	url = http://dmwit.com/yeganesh/
+	arch = i686
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = dmenu
+	depends = haskell-base
+	depends = haskell-containers
+	depends = haskell-directory
+	depends = haskell-filepath
+	depends = haskell-process
+	depends = haskell-strict
+	depends = haskell-time
+	depends = haskell-unix
+	depends = haskell-xdg-basedir
+	source = https://hackage.haskell.org/packages/archive/yeganesh/2.5/yeganesh-2.5.tar.gz
+	sha512sums = 3db8ec028b611992a4df251c6d14e6937179f41bff61560bc0095036e38952c125b5ce8663b8fd2f1e5a89da321d9195c850f83101f0910d86a666c335dc3403
+
+pkgname = yeganesh
+
