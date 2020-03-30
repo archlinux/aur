@@ -1,3 +1,5 @@
+# Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+
 _name=generic
 pkgname=python-${_name}
 pkgver=1.0.0
