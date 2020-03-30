@@ -1,7 +1,7 @@
 pkgbase = google-docs-nativefier
 	pkgdesc = Electron wrapper for the Google Docs web application
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://docs.google.com
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = google-docs-nativefier
 	source = google-docs-nativefier.png
 	source = google-docs-nativefier.desktop
 	sha256sums = 5231652761dce688ddd2f4b2a5b958fd5486acaa181ec239fd9d330d835b5bbb
-	sha256sums = e7a2eacb79e13849f616ad148adbd2fe570db775a2dd211ba0912292885492d6
+	sha256sums = e3e8753820e785649f7e642a27ee14b84f92bdd8b9493ab2d4ce5ef7029d6f1f
 
 pkgname = google-docs-nativefier
 

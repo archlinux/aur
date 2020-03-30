@@ -2,7 +2,7 @@
 Type=Application
 Name=Google Docs
 Comment=With Google Docs, you can write, edit, and collaborate wherever you are. For Free. 
-Exec=google-docs
-Icon=/usr/share/pixmaps/google-docs.png
+Exec=GoogleDocs
+Icon=/usr/share/pixmaps/GoogleDocs.png
 Terminal=false
 Categories=Productivity;Docs;Google;Nativefier;
