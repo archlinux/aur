@@ -3,6 +3,7 @@ pkgbase = terminator-git
 	pkgver = 2.11.2.gb32662a
 	pkgrel = 1
 	url = https://github.com/JAugusto42/terminator.git
+	install = terminator-git.install
 	arch = any
 	license = GPL2
 	makedepends = git
