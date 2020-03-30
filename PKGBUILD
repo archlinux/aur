@@ -24,8 +24,6 @@ makedepends=('extra-cmake-modules' 'git')
 
 # Comment/uncomment the following dependencies to disable/enable
 # building the plugins for MPV and Xine player backends and pocketsphinx
-makedepends+=('xine-lib')
-makedepends+=('mpv')
 makedepends+=('pocketsphinx')
 
 # For consistency, also enable/disable the corresponding optdepends
