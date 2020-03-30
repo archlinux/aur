@@ -1,0 +1,26 @@
+pkgbase = prplmesh-git
+	pkgdesc = WFA Multi-AP implementation
+	pkgver = r2608.gae59de8d
+	pkgrel = 1
+	url = https://prplfoundation.org/prplmesh/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom
+	makedepends = git
+	makedepends = cmake
+	makedepends = libnl
+	makedepends = python-yaml
+	depends = glibc
+	depends = json-c
+	depends = ncurses
+	depends = openssl
+	depends = readline
+	depends = zeromq
+	provides = prplmesh
+	conflicts = prplmesh
+	source = git+https://github.com/prplfoundation/prplMesh.git
+	sha256sums = SKIP
+
+pkgname = prplmesh-git
+
