@@ -1,6 +1,6 @@
 pkgbase = r-callr
 	pkgdesc = Call R from R
-	pkgver = 3.4.2
+	pkgver = 3.4.3
 	pkgrel = 1
 	url = https://cran.r-project.org/package=callr
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = r-callr
 	optdepends = r-testthat
 	optdepends = r-tibble
 	optdepends = r-withr
-	source = http://cran.r-project.org/src/contrib/callr_3.4.2.tar.gz
-	md5sums = f200013d469c0e8309306da6c46f87cc
+	source = http://cran.r-project.org/src/contrib/callr_3.4.3.tar.gz
+	md5sums = 9b0e11e01a4ec19f066ac6ab7905cfef
 
 pkgname = r-callr
 
