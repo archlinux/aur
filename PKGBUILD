@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Mangano-Tarumi <fmang+aur mg0.fr>
 
 pkgname='oshu'
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Fast port of the osu! rhythm game'
 url='https://github.com/fmang/oshu/'
@@ -9,14 +9,14 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('sdl2' 'sdl2_image' 'ffmpeg' 'cairo' 'pango')
 makedepends=('cmake')
-source=("https://www.mg0.fr/oshu/releases/$pkgname-$pkgver.tar.gz")
-sha256sums=('43d25bee21a4932c6e17a9a667fcd8b8459960f1da6eca63e426fb85be963ad1')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/fmang/oshu/archive/$pkgver.tar.gz")
+sha256sums=('ae538aa02aa6058d0dc9db2b60feb07edda5f62c4cc6a3d8efae7d918a7c1003')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	mkdir build
+	mkdir -p build
 	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DOSHU_DEFAULT_SKIN=osu
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DOSHU_DEFAULT_SKIN=osu
 	make
 }
 
