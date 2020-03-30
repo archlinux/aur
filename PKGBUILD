@@ -1,9 +1,9 @@
 # Maintainer: Flaviu Tamas <me@flaviutamas.com>
 pkgname=nushell-git
-pkgver=r946.4a00887
-pkgrel=5
-makedepends=('rust-nightly' 'cargo')
-depends=('openssl' 'zlib')
+pkgver=r2093.906d0b92
+pkgrel=1
+makedepends=('rust' 'cargo' 'python')
+depends=('openssl' 'zlib' 'e2fsprogs')
 optdepends=('libxcb' 'libx11')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="A shell for the GitHub era"
@@ -28,7 +28,7 @@ package() {
     case "$CFLAGS" in  *"-g"*) export RUSTFLAGS="-g";; esac
     cd "$srcdir/$pkgname"
     # user may not be using rustup, so always succeed
-    rustup override set nightly || true
-    cargo install --root="$pkgdir/usr" --path=. --locked --features raw-key,clipboard
+    rustup override set stable || true
+    cargo install --root="$pkgdir/usr" --path=. --locked --features stable
     rm "$pkgdir/usr/.crates.toml"
 }
