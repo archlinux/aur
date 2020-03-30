@@ -1,0 +1,16 @@
+pkgbase = wev
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/wev
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = scdoc
+	depends = wayland
+	depends = wayland-protocols
+	depends = libxkbcommon
+	conflicts = wev-git
+	source = https://git.sr.ht/~sircmpwn/wev/archive/1.0.0.tar.gz
+	md5sums = 202208092a6560b1a78c568996a4cf27
+
+pkgname = wev
