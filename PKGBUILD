@@ -1,14 +1,15 @@
-# Maintainer: Stephen Gregoratto <dev at sgregoratto dot me>
+# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=gmenu
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="desktop application launcher"
-url="https://git.sr.ht/~tslocum/gmenu"
+_url="https://gitlab.com/tslocum/gmenu"
+url="${_url}.git"
 license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 makedepends=('go-pie' 'gtk3')
-source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('9a770da4076e20e58347358baa09487405ca62fc50e586a93a58e362b53170c3')
+source=("$_url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('901f3b6f60f1aa1ccf7af4ea06fa899f152d7805f6799f73d1280993072988db')
 
 build() {
   cd "$pkgname-v$pkgver"
