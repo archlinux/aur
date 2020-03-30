@@ -1,4 +1,4 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+# Maintainer: Marcin Mielniczuk <marmistrz dot dev at zoho dot eu>
 
 pkgname=wasi-sdk-bin
 _pkgname=wasi-sdk
