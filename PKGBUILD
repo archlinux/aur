@@ -4,10 +4,18 @@
 # Contributor: Stefan Zwanenburg <stefan cat zwanenburg dog info>
 
 pkgbase=kata-containers-bin
-pkgname=(kata-runtime-bin kata-proxy-bin kata-shim-bin kata-ksm-throttler-bin kata-containers-image kata-linux-container kata-containers-static)
+pkgname=(
+  kata-runtime-bin
+  kata-proxy-bin
+  kata-shim-bin
+  kata-ksm-throttler-bin
+  kata-containers-image
+  kata-linux-container
+#  kata-containers-static
+)
 pkgver="1.10.2"
 _pkgver=${pkgver/\~/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight virtual machines for containers (binary version)"
 arch=(x86_64)
 url="https://katacontainers.io"
@@ -109,6 +117,6 @@ package_kata-linux-container(){
   ln -s vmlinuz-[0-9].[0-9]* vmlinuz.container
 }
 
-package_kata-containers-static(){
-  [ "${_bin_pkg_root}" = "/opt/kata" ] && cp -dr --no-preserve='ownership' "${srcdir}/opt" "${pkgdir}/opt" || return 0
-}
+#package_kata-containers-static(){
+#  [ "${_bin_pkg_root}" = "/opt/kata" ] && cp -dr --no-preserve='ownership' "${srcdir}/opt" "${pkgdir}/opt" || return 0
+#}
