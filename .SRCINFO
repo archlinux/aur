@@ -1,6 +1,6 @@
 pkgbase = pipewire-gstfree
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://pipewire.org
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = pipewire-gstfree
 	makedepends = libsndfile
 	makedepends = bluez-libs
 	makedepends = vulkan-headers
-	source = git+https://github.com/PipeWire/pipewire#commit=74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac
+	source = git+https://github.com/PipeWire/pipewire#commit=f0f3a0a66032cf693a979dae6187cac07fa353ee
 	sha256sums = SKIP
 
 pkgname = pipewire-gstfree
@@ -47,14 +47,18 @@ pkgname = pipewire-gstfree-jack
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (JACK support)
 	depends = libpipewire-0.3.so
 	depends = libjack.so
+	provides = pipewire-jack
 	provides = libjack-pw.so
+	conflicts = pipewire-jack
 
 pkgname = pipewire-gstfree-pulse
 	pkgdesc = Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies (PulseAudio support)
 	depends = libpipewire-0.3.so
 	depends = libpulse.so
 	depends = libglib-2.0.so
+	provides = pipewire-pulse
 	provides = libpulse-pw.so
 	provides = libpulse-simple-pw.so
 	provides = libpulse-mainloop-glib-pw.so
+	conflicts = pipewire-pulse
 

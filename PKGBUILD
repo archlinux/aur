@@ -7,7 +7,7 @@
 pkgbase=pipewire-gstfree
 _pkgbase=pipewire
 pkgname=(pipewire-gstfree pipewire-gstfree-docs pipewire-gstfree-jack pipewire-gstfree-pulse)
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Server and user space API to deal with multimedia pipelines. packaged without gstreamer dependencies"
 url="https://pipewire.org"
@@ -16,7 +16,7 @@ arch=(x86_64)
 makedepends=(git meson doxygen graphviz xmltoman valgrind jack2 libpulse
              alsa-lib sbc rtkit vulkan-icd-loader
              dbus libsndfile bluez-libs vulkan-headers)
-_commit=74a1632f0720886d5b3b6c23ee8fcd6c03ca7aac  # tags/0.3.1
+_commit=f0f3a0a66032cf693a979dae6187cac07fa353ee  # tags/0.3.2
 source=("git+https://github.com/PipeWire/pipewire#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -86,13 +86,15 @@ package_pipewire-gstfree-docs() {
 package_pipewire-gstfree-jack() {
   pkgdesc+=" (JACK support)"
   depends=(libpipewire-${pkgver:0:3}.so libjack.so)
-  provides=(libjack-pw.so)
+  conflicts=(pipewire-jack)
+  provides=(pipewire-jack libjack-pw.so)
   mv jack/* "$pkgdir"
 }
 
 package_pipewire-gstfree-pulse() {
   pkgdesc+=" (PulseAudio support)"
   depends=(libpipewire-${pkgver:0:3}.so libpulse.so libglib-2.0.so)
-  provides=(libpulse{,-simple,-mainloop-glib}-pw.so)
+  conflicts=(pipewire-pulse)
+  provides=(pipewire-pulse libpulse{,-simple,-mainloop-glib}-pw.so)
   mv pulse/* "$pkgdir"
 }
