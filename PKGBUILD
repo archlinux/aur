@@ -5,7 +5,6 @@
 # Contributor: Radu Andries <admiral0@tuxfamily.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 #
-pkgbase="zbar"
 pkgname="python2-zbar"
 pkgver="0.23"
 pkgrel="3"
