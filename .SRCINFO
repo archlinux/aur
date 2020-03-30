@@ -1,46 +1,15 @@
-pkgbase = epiphany-pantheon
-	pkgdesc = A GNOME web browser based on the WebKit rendering engine (with elementary OS patches)
-	pkgver = 3.35.2+1+g16a4219dc
+pkgbase = epiphany-sync
+	pkgdesc = Load whole profile in memory (synced to tmpfs)
+	pkgver = 1
 	pkgrel = 1
-	url = https://wiki.gnome.org/Apps/Web
-	arch = x86_64
-	groups = pantheon
+	arch = any
 	license = GPL
-	checkdepends = xorg-server-xvfb
-	makedepends = docbook-xml
-	makedepends = startup-notification
-	makedepends = lsb-release
-	makedepends = gobject-introspection
-	makedepends = yelp-tools
-	makedepends = appstream-glib
-	makedepends = git
-	makedepends = meson
-	depends = webkit2gtk
-	depends = gcr
-	depends = libdazzle
-	depends = libhandy
-	provides = epiphany=3.35.2+1+g16a4219dc
-	provides = epiphany-sync
-	source = epiphany-pantheon::git+https://gitlab.gnome.org/GNOME/epiphany.git#commit=16a4219dcb44b23d23c9ebe69ad466cb2ea7e597
+	depends = bash
+	depends = systemd
 	source = epiphany-sync
 	source = epiphany-sync.service
-	source = 05-rename-to-epiphany.patch
-	source = 06-double-click-for-new-tab.patch
-	source = 07-overlay-bar-style.patch
-	source = 08-rename-incongito-class-to-dodge-GNOME-style.patch
-	source = 09-middle-click-closes-tab.patch
-	source = 16-hide-the-fonts-and-styles-tab.patch
-	source = 17-give-notebook-a-margin.patch
-	sha1sums = SKIP
 	sha1sums = 2a8fda153bf3fb2d9a14b632082329ed6e2d8fab
 	sha1sums = 2c1c89aee5e1ea2ca47d518690b93238213e73fd
-	sha1sums = 7dbfdea116239bb3ee947e9175a43a6bdd768f1e
-	sha1sums = 71fc912aee1e01bc6d17907d7bfa33852ef15fb2
-	sha1sums = cb88f86c9e44936993ab2e3a02f71874de422ae7
-	sha1sums = 0f1085fb06e06298c7fb8feb12be0699d166dd2b
-	sha1sums = 5c0d41eda4b449ceba4699e1a1e8b6359d12deb4
-	sha1sums = 0f3e50ecb72b9cf671dc75d5ac987f5e05b2ed66
-	sha1sums = cd1090f20a153d77060aa1d6304c4d5e621c125f
 
-pkgname = epiphany-pantheon
+pkgname = epiphany-sync
 
