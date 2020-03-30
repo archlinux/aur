@@ -1,10 +1,11 @@
-# Maintainer: Robosky <fangyuhao0612@gmail.com>
+# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Robosky <fangyuhao0612@gmail.com>
 
 pkgname=mcmojave-circle-icon-theme-git
 _gitname=McMojave-circle
-pkgver=53.f819d0b
+pkgver=80.6696191
 pkgrel=1
-pkgdesc="MacOSX Mojave like circle icon theme for linux desktops."
+pkgdesc="MacOSX Mojave like circle icon theme for linux desktops"
 arch=('any')
 depends=('gtk-update-icon-cache')
 makedepends=('git')
