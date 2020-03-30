@@ -1,5 +1,5 @@
 # Maintainer: tleydxdy <shironeko@waifu.club>
-pkgname=poke-git
+pkgname=gnu-poke-git
 pkgver=r3085.bb2998d4
 pkgrel=1
 pkgdesc="Interactive, extensible editor for binary data."
@@ -23,16 +23,16 @@ build() {
     cd "$pkgname"
     ./bootstrap --skip-po
     mkdir build && cd build
-	../configure --prefix=/usr
-	make
+    ../configure --prefix=/usr
+    make
 }
 
 check() {
     cd "$pkgname/build"
-	make -k check
+    make -k check
 }
 
 package() {
     cd "$pkgname/build"
-	make DESTDIR="$pkgdir/" install
+    make DESTDIR="$pkgdir/" install
 }
