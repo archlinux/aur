@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/share/gam/gam.py "$@"
+exec /usr/share/gam/gam.py "$@"

@@ -2,7 +2,7 @@
 # Contributor: Ethan Schoonover
 
 pkgname=gam
-pkgver=4.99
+pkgver=5.02
 pkgrel=1
 pkgdesc="Command-line tool for Google GSuite admins to manage settings quickly and easily"
 arch=('any')
@@ -11,6 +11,7 @@ license=('Apache')
 depends=(
     'python-dateutil'
     'python-dnspython'
+    'python-google-api-core'
     'python-google-api-python-client'
     'python-google-auth'
     'python-google-auth-httplib2'
@@ -25,9 +26,9 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('83b0877a6b9f54bed1483e03207e0af4f4b1b90533a7efd3d1a8201fc2bf2f81'
+sha256sums=('e642603bfc36df0a9a6a02068b25a8d0ad6914667fa29ac018bc487e5d0a2171'
             '202e3566d837c37526174fb6311232c06d90e3786578668aa58ef3eb0648054a'
-            'd93809852ef9eefeb99f3fc1b955305264f93f2552db14b4d9d6fe7c2b08345b')
+            'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
 prepare() {
     mv "GAM-$pkgver" "$pkgname-$pkgver"
@@ -36,19 +37,21 @@ prepare() {
 }
 
 package() {
+    # No setup-utils here yet. See https://github.com/jay0lee/GAM/issues/1140
     install -m755 -d "$pkgdir/etc/$pkgname/"
     touch "$pkgdir/etc/$pkgname/noupdatecheck.txt"
     touch "$pkgdir/etc/$pkgname/nobrowser.txt"
-
-    install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
 
     for file in controlflow display fileutils transport utils var; do
         install -Dm644 "$pkgname-$pkgver/src/$file.py" \
             -t "$pkgdir/usr/share/$pkgname/"
     done
 
-    install -Dm644 "$pkgname-$pkgver"/src/gapi/{__init__,errors}.py \
-        -t "$pkgdir/usr/share/$pkgname/gapi"
+    cp -r "$pkgname-$pkgver"/src/{auth,gapi} "$pkgdir/usr/share/$pkgname"
+    find "$pkgdir/usr/share/$pkgname" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/share/$pkgname" -type d -exec chmod 755 {} +
+    find "$pkgdir/usr/share/$pkgname" -name '*_test.py' -exec rm {} +
 
+    install -Dm755 "$pkgname-$pkgver/src/gam.py" -t "$pkgdir/usr/share/$pkgname/"
     install -Dm755 gam.sh "$pkgdir/usr/bin/gam"
 }
