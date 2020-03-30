@@ -1,0 +1,5 @@
+pkg/
+src/
+
+gaphor-*-py3-none-any.whl
+python-gaphor-*.pkg.*
