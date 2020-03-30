@@ -2,3 +2,4 @@ pkg
 src
 *.deb
 *.pkg.tar.xz
+*.htm

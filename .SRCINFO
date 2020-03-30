@@ -1,7 +1,7 @@
 pkgbase = mytime
 	pkgdesc = 日程提醒、万年历、黄历和天气
 	pkgver = 1.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mytime.ruanmei.com/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,9 @@ pkgbase = mytime
 	depends = libappindicator-gtk3
 	depends = libsecret
 	source = https://d.ruanmei.com/mytime/linux/mytime_linux_1.02_amd64.deb
+	source = https://www.ruanmei.com/agreement/tweakcube.htm
 	sha256sums = 4ff77e51b922094a6006249d1f41cf1ce5077ba3a1bd415091d05fb50a3acc43
+	sha256sums = SKIP
 
 pkgname = mytime
 
