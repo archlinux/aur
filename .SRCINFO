@@ -1,9 +1,14 @@
 pkgbase = python-zulip-api
 	pkgdesc = Pyhton bindings for Zulip API.
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/zulip/python-zulip-api
+	arch = i686
 	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
 	license = GPL
 	makedepends = cython
 	makedepends = python-setuptools
@@ -12,8 +17,8 @@ pkgbase = python-zulip-api
 	depends = python-pyopenssl
 	depends = python-six
 	depends = python-matrix-client-git
-	source = https://github.com/zulip/python-zulip-api/archive/0.6.3.tar.gz
-	sha256sums = 230033e01ad3bae0adec1393659e058df075c316836f426abf54c3f54682f20f
+	source = https://github.com/zulip/python-zulip-api/archive/0.6.4.tar.gz
+	sha256sums = c8cfe838af6da1516be7ddf73bcbb09402df47aa506173b8706a995114326508
 
 pkgname = python-zulip-api
 
