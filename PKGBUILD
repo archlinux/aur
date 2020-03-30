@@ -3,7 +3,7 @@
 pkgname=yeganesh
 pkgdesc='dmenu with a sense of history (cabal sandbox build)'
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 
 url='http://dmwit.com/yeganesh/'
 license=('custom:BSD3')
@@ -36,8 +36,7 @@ build() {
     --datasubdir="${pkgname}" \
     --libsubdir=\$compiler/site-local/\$pkgid \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
-    --ghc-option='-pie' \
-    --constraint='xdg-basedir==0.2.2'
+    --ghc-option='-pie'
   runhaskell Setup build
 }
 
