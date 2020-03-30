@@ -1,12 +1,11 @@
 pkgbase = scrcpy-git
 	pkgdesc = Display and control your Android device (development version)
-	pkgver = 1.4.r4.gb882322
+	pkgver = 1.12.1.r10.g7bb9163
 	pkgrel = 1
 	url = https://github.com/Genymobile/scrcpy
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = gcc
 	makedepends = meson
 	makedepends = git
 	depends = ffmpeg
@@ -14,10 +13,11 @@ pkgbase = scrcpy-git
 	optdepends = android-tools: required if adb is not already installed
 	provides = scrcpy
 	conflicts = scrcpy
+	noextract = scrcpy-server-v1.12.1
 	source = git+https://github.com/Genymobile/scrcpy.git
-	source = https://github.com/Genymobile/scrcpy/releases/download/v1.4/scrcpy-server-v1.4.jar
+	source = https://github.com/Genymobile/scrcpy/releases/download/v1.12.1/scrcpy-server-v1.12.1
 	sha256sums = SKIP
-	sha256sums = 1ff7a72fcfe81dadccfab9d6f86c971cd7c7f38f17196748fe05480e301b443d
+	sha256sums = SKIP
 
 pkgname = scrcpy-git
 
