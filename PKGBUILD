@@ -4,7 +4,7 @@ pkgbase=python-ck
 pkgname=('python-ck' 'python2-ck')
 _name=ck
 pkgver=1.12.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Collective Knowledge - lightweight knowledge manager to organize, cross-link, share and reuse artifacts and workflows'
 arch=('any')
 url='https://github.com/ctuning/ck'
@@ -33,7 +33,7 @@ package_python-ck() {
   pkgdesc+=' for Python 3'
 
   cd ck-$pkgver
-	python setup.py install --root='${pkgdir}/' --optimize=1
+	python setup.py install --root=${pkgdir}/ --optimize=1
 }
 
 package_python2-ck() {
@@ -41,5 +41,5 @@ package_python2-ck() {
   pkgdesc+=' for Python 2'
 
   cd py2ck-$pkgver
-	python2 setup.py install --root='${pkgdir}/' --optimize=1
+	python2 setup.py install --root=${pkgdir}/ --optimize=1
 }
