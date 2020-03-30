@@ -1,0 +1,17 @@
+pkgbase = pbss-git
+	pkgdesc = Practically Better Style Sheets
+	pkgver = v1.0.r17.8e38c53r40.8e38c53
+	pkgrel = 1
+	url = https://github.com/arijit79/Pbss/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	provides = pbss
+	conflicts = pbss
+	source = pbss-git::git+https://github.com/arijit79/Pbss.git#branch=dev
+	md5sums = SKIP
+
+pkgname = pbss-git
+
