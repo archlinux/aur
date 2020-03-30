@@ -1,6 +1,6 @@
 pkgbase = code-headmelted-bin
 	pkgdesc = Community builds of Visual Studio Code, including for ARM devices
-	pkgver = 1.43.0_2020_02_17
+	pkgver = 1.44.0_20200330
 	pkgrel = 1
 	url = https://code.headmelted.com
 	arch = armv7h
@@ -19,10 +19,10 @@ pkgbase = code-headmelted-bin
 	conflicts = code
 	conflicts = vscode-headmelted-bin
 	replaces = vscode-headmelted-bin
-	source_armv7h = https://github.com/headmelted/codebuilds/releases/download/17-Feb-20/code-oss_1.43.0-1581902153_armhf.deb
-	md5sums_armv7h = 0ec2caf17318c9a89f2c58ce20707e4a
-	source_aarch64 = https://github.com/headmelted/codebuilds/releases/download/17-Feb-20/code-oss_1.43.0-1581902160_arm64.deb
-	md5sums_aarch64 = b4d37bd2a4651fdd8d65e6f1f7bb3836
+	source_armv7h = https://github.com/headmelted/codebuilds/releases/download/30-Mar-20/code-oss_1.44.0-1585531024_armhf.deb
+	md5sums_armv7h = 8f62b15408974d0c78b7e35b087a4bec
+	source_aarch64 = https://github.com/headmelted/codebuilds/releases/download/30-Mar-20/code-oss_1.44.0-1585531075_arm64.deb
+	md5sums_aarch64 = c346e8a9f870138bcb3e0a82ec13f0ce
 
 pkgname = code-headmelted-bin
 
