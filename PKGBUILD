@@ -3,8 +3,8 @@
 
 pkgname=plugn
 pkgver=0.3.2
-pkgrel=2
-pkgdesc='Turn SSH into a thin client specifically for your app'
+pkgrel=3
+pkgdesc='Hook system that lets users extend your application with plugins'
 arch=('x86_64')
 url='https://github.com/dokku/plugn'
 license=('MIT')

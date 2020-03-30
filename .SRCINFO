@@ -1,7 +1,7 @@
 pkgbase = plugn
-	pkgdesc = Turn SSH into a thin client specifically for your app
+	pkgdesc = Hook system that lets users extend your application with plugins
 	pkgver = 0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dokku/plugn
 	arch = x86_64
 	license = MIT
