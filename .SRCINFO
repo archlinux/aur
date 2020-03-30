@@ -1,0 +1,17 @@
+pkgbase = python-bnunicodenormalizer
+	pkgdesc = Bangla Unicode Normalization Toolkit
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://pypi.org/project/bnunicodenormalizer
+	arch = any
+	license = BSD
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-bnunicodenormalizer-0.1.7.tar.gz::https://files.pythonhosted.org/packages/35/b4/b93d9cd7dc3906eaceafc340cb9e834f9f54fac84d51e00045bd6cb9d3e6/bnunicodenormalizer-0.1.7.tar.gz
+	sha256sums = 86a3489cc81c73d2afb4e265bd2d0d8bc52fc8a2374e210c899e0260940bc091
+
+pkgname = python-bnunicodenormalizer
