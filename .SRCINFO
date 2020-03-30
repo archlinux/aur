@@ -1,0 +1,17 @@
+pkgbase = font-line
+	pkgdesc = OpenType vertical metrics reporting and font line spacing adjustment tool
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/source-foundry/font-line
+	arch = any
+	license = MIT
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-commandlines
+	depends = python-fonttools
+	depends = python-standardstreams
+	source = font-line-3.1.1.tar.gz::https://github.com/source-foundry/font-line/archive/v3.1.1.tar.gz
+	sha256sums = 79f8dbcf1250c66ea1dde83d44c6fc74e90a0746dd92b41fdee594db6fb36957
+
+pkgname = font-line
+
