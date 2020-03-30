@@ -1,6 +1,6 @@
 pkgbase = firefox-extension-xdm-browser-monitor
 	pkgdesc = xdm browser monitor addon for firefox.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://addons.mozilla.org/en-US/firefox/addon/xdm-browser-monitor/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = firefox-extension-xdm-browser-monitor
 	depends = firefox
 	depends = xdman
 	noextract = extension.xpi
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/1089149/xdm_browser_monitor-2.0-fx.xpi
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/1089149/xdm_browser_monitor-2.1-fx.xpi
 	sha512sums = 50b74f6cf819717d96378778bebee763c7c2837f64e3b4877f276168884bf25330b6649c03585bd4386134fdb6f4b4015b4693e6334e4fe3c1f25896a5808065
 
 pkgname = firefox-extension-xdm-browser-monitor

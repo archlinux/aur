@@ -1,5 +1,5 @@
 pkgname=firefox-extension-xdm-browser-monitor
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='xdm browser monitor addon for firefox.'
 arch=('any')
