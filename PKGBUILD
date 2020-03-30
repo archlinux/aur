@@ -1,24 +1,54 @@
-# Maintainer: pyz3n
+# Maintainer: Slash <youremail@domain.com>
 
 pkgname=weechat-matrix-git
-pkgver=r348.ace3fef
-pkgrel=2
-pkgdesc="weechat script for matrix"
+_pkgname=${pkgname%-git}
+pkgver=r717.2a24096
+pkgrel=1
+pkgdesc='Weechat Matrix protocol script written in Python'
 arch=('any')
-url='https://github.com/torhve/weechat-matrix-protocol-script'
-license=('MIT')
-depends=('weechat' 'lua' 'lua-cjson')
+url="https://github.com/poljar/weechat-matrix"
+license=('ISC')
+depends=('python-atomicwrites' 'python-attrs' 'python-future' 'python-logbook'
+         'python-matrix-nio' 'python-pygments' 'python-pyopenssl' 'python-webcolors')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/torhve/weechat-matrix-protocol-script")
-md5sums=('SKIP')
-install=weechat-matrix-git.install
+checkdepends=('python-hypothesis' 'python-pytest')
+optdepends=('python-aiohttp: matrix_sso_helper support'
+            'python-magic: matrix_upload support'
+            'python-requests: matrix_decrypt and matrix_upload support'
+            'ranger: default plumber for matrix_decrypt')
+replaces=('weechat-poljar-matrix-git')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+install="${pkgname}.install"
+source=("git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
+    cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${_pkgname}"
+    sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
+}
+
+check() {
+    cd "${_pkgname}"
+    python -m pytest
+}
+
 package() {
-    cd "$srcdir/$pkgname"
-    install -D "matrix.lua" -t "$pkgdir/opt"
+    cd "${_pkgname}"
+
+    make DESTDIR="${pkgdir}" PREFIX=/usr/share/weechat install
+
+    for _script in matrix_decrypt matrix_sso_helper matrix_upload
+    do
+        install -Dm755 "contrib/${_script}.py" \
+            "${pkgdir}/usr/bin/${_script}"
+    done
+
+    install -Dm644 'LICENSE' \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

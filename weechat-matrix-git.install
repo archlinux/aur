@@ -1,6 +1,18 @@
-post_install () {
-    echo "[weechat-matrix-git] Please run the following to complete installation:"
-    echo "[weechat-matrix-git] mkdir -p ~/.weechat/lua/autoload"
-    echo "[weechat-matrix-git] ln -s /opt/matrix.lua ~/.weechat/lua"
-    echo "[weechat-matrix-git] ln -s ~/.weechat/lua/matrix.lua ~/.weechat/lua/autoload"
+_install_update_msg() {
+    echo "In order to use this plugin after installation, you'll need to run the following command as the user running weechat:"
+    echo ""
+    echo "    $ ln -s /usr/share/weechat/python/{matrix,matrix.py} -t ~/.weechat/python"
+    echo ""
+    echo "If you want the script to be loaded on start-up, you'll also need to symlink it into the autoload folder:"
+    echo ""
+    echo "    $ ln -s /usr/share/weechat/python/matrix.py ~/.weechat/python/autoload/"
+    echo ""
+}
+
+post_install() {
+    _install_update_msg
+}
+
+post_upgrade() {
+    _install_update_msg
 }
