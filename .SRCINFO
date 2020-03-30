@@ -1,0 +1,15 @@
+pkgbase = assh-git
+	pkgdesc = make your ssh client smarter https://manfred.life/assh
+	pkgver = 2.9.1
+	pkgrel = 1
+	url = https://github.com/moul/assh.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = assh
+	source = git+https://github.com/moul/assh.git
+	sha256sums = SKIP
+
+pkgname = assh-git
+
