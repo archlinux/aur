@@ -2,26 +2,25 @@
 
 pkgname=diodon
 arch=('i686' 'x86_64')
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="GTK+ clipboard manager"
 license=('GPL')
 url="https://launchpad.net/diodon"
-depends=('gconf' 'libgee06' 'libpeas' 'libunique3' 'libxtst' 'dconf' 'libappindicator3' 'desktop-file-utils' 'libgee' 'zeitgeist')
-makedepends=('vala' 'intltool')
-source=("http://launchpad.net/diodon/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
+depends=('gobject-introspection' 'libappindicator-gtk3' 'libpeas' 'xorg-server-xvfb' 'zeitgeist')
+makedepends=('cmake' 'meson' 'vala')
+source=("http://launchpad.net/diodon/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.xz")
 install=$pkgname.install
-md5sums=('ff7c63eb57b226dd4569574f91f5fa1a')
+conflicts=('diodon-git')
+md5sums=('59d378c81708d00e92197194e8d8b5a9')
 
 build() {
-cd $srcdir/${pkgname}-${pkgver}
-python2 ./waf configure --prefix=/usr
-python2 ./waf build $MAKEFLAGS
+  cd $srcdir/${pkgname}-${pkgver}
+  meson --prefix /usr --buildtype=plain . builddir    # -Ddisable-indicator-plugin=true
+  ninja -C builddir
 }
 
 package() {
-cd $srcdir/${pkgname}-${pkgver}
-python2 ./waf install --destdir="$pkgdir/"
-cd $pkgdir
-mv usr/etc .
+  cd $srcdir/${pkgname}-${pkgver}
+  DESTDIR="$pkgdir" ninja -C builddir install
 }
