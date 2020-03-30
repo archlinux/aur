@@ -2,7 +2,7 @@
 
 _pkgname=via
 pkgname=$_pkgname-bin
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=0
 pkgdesc="Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards."
 arch=(any)
@@ -23,7 +23,7 @@ _filename=("${_pkgname}-${pkgver}-linux.deb")
 source=("https://github.com/the-$_pkgname/releases/releases/download/v${pkgver}/$_filename"
         via)
 
-md5sums=("c0938d4feac46ead655646bc9e2d74d4"
+md5sums=("7e731f53fac0b0dbeb9fc11dbfcd1a07"
         "dc41d6a454c010ff44c2f22678dbd79e")
 
 build() {

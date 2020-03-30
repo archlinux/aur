@@ -1,6 +1,6 @@
 pkgbase = via-bin
 	pkgdesc = Yet another keyboard configurator, compatible with over over 40 keyboards and easily added to other QMK keyboards.
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 0
 	url = https://caniusevia.com/
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = via-bin
 	depends = libutil-linux
 	depends = libappindicator-gtk3
 	depends = libsecret
-	provides = via=1.2.6
-	source = https://github.com/the-via/releases/releases/download/v1.2.6/via-1.2.6-linux.deb
+	provides = via=1.2.7
+	source = https://github.com/the-via/releases/releases/download/v1.2.7/via-1.2.7-linux.deb
 	source = via
-	md5sums = c0938d4feac46ead655646bc9e2d74d4
+	md5sums = 7e731f53fac0b0dbeb9fc11dbfcd1a07
 	md5sums = dc41d6a454c010ff44c2f22678dbd79e
 
 pkgname = via-bin
