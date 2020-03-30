@@ -5,13 +5,14 @@ pkgver=${_pkgver//[+-]/_}
 pkgrel=1
 pkgdesc="MonoDevelop is a GNOME IDE primarily designed for C# and other CLI (.NET) languages"
 arch=('x86_64')
+depends=('gtk-sharp-2' 'gtk-sharp-3')
 optdepends=('fsharp: for building fsharp programs')
 provides=('monodevelop')
 conflicts=('monodevelop')
 url="https://github.com/mono/monodevelop"
 license=('MIT')
-source=("monodevelop-amd64-v${_pkgver}.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/monodevelop/monodevelop_7.8.4.1-0xamarin6+ubuntu1804b1_arm64.deb")
-sha256sums=('1ac6d08253ea0f3e2e9e12937302f6872aa825ce9bf974935e7e5db968c978bd')
+source=("monodevelop-amd64-v${_pkgver}.deb::http://download.mono-project.com/repo/ubuntu/pool/main/m/monodevelop/monodevelop_7.8.4.1-0xamarin6+ubuntu1804b1_amd64.deb")
+sha256sums=('e98cf23872aa0cb09fa000dd8f0ef9ad7f03a41a2d28ab1e2f215493bbd073bc')
 
 package() {
     cd "${srcdir}"
