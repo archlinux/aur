@@ -16,7 +16,8 @@ build() {
     -gcflags "all=-trimpath=${PWD}" \
     -asmflags "all=-trimpath=${PWD}" \
     -ldflags "-extldflags ${LDFLAGS}" \
-    -buildmode=pie 
+    -buildmode=pie
+  strip -s goaur 
 }
 
 package() {
