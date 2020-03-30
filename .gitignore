@@ -1,0 +1,6 @@
+src
+pkg
+*.gz
+*.xz
+*.bak
+httplib2_sources
