@@ -1,0 +1,14 @@
+pkgbase = python-standardstreams
+	pkgdesc = Standard output, standard error, and standard input stream library
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/chrissimpkins/standardstreams
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-standardstreams-0.2.0.tar.gz::https://github.com/chrissimpkins/standardstreams/archive/v0.2.0.tar.gz
+	sha256sums = 93d418bf48c3cad0bd158f5be0814fd17af60f74780e43f2e53976d2fb03425c
+
+pkgname = python-standardstreams
+
