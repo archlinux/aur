@@ -54,7 +54,7 @@ run_hook ()
     ip link set $device up || return 1
 
     # assocciate with wifi network
-    wpa_supplicant -B -D nl80211,wext -i $device -c /etc/wpa_supplicant/initcpio.conf -f $logfile
+    wpa_supplicant -B -i $device -c /etc/wpa_supplicant/initcpio.conf -f $logfile
 
     # wait for wpa_supplicant
     poll_wpa_completion $logfile 15

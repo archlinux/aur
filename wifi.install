@@ -49,6 +49,9 @@ build ()
         add_module $mod
     done
 
+    # make sure to add module ccm (needed in some cases)
+    add_module ccm
+
     add_binary "killall"
     add_binary "wpa_supplicant"
     add_binary "ip"
