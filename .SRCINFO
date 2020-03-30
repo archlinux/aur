@@ -1,7 +1,7 @@
 pkgbase = libnma-indicator
 	pkgdesc = NetworkManager GUI client library with AppIndicator/StatusNotifierItem
 	pkgver = 1.8.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/NetworkManager/
 	arch = x86_64
 	license = GPL
@@ -18,6 +18,7 @@ pkgbase = libnma-indicator
 	depends = mobile-broadband-provider-info
 	depends = libappindicator-gtk3
 	provides = libnma.so
+	provides = libnma
 	conflicts = libnma.so
 	conflicts = libnma
 	source = git+https://gitlab.gnome.org/GNOME/libnma.git#commit=0c40a6aeaabbf2673e48360dc00419793da084b8
