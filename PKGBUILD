@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=wingpanel-standalone-git
-pkgver=r546.d8aeb88
+pkgver=r563.88305e0
 pkgrel=1
 pkgdesc='Stylish top panel that holds indicators and spawns an application launcher (without Gala dependencies)'
 arch=('i686' 'x86_64')
@@ -24,12 +24,14 @@ source=('git+https://github.com/elementary/wingpanel.git'
         'minus-backgroundmanager.patch'
         'minus-galaplugin.patch'
         'autohide.patch'
-        'reverse-105c1d0.patch')
+        'reverse-105c1d0.patch'
+        'no-mutter-typelib.patch')
 sha256sums=('SKIP'
-            'd7104f0e32cd095e4b9564c90ca8d0f0f313e57f8a77a383c9bf5a30a6361a02'
+            '69d564a34766b2bc16f9756b5915223da33cfd66c46b206aa6c4342f94404ba9'
             'aa0a27e41df60a7b15e2fd7e0d06551663b98917b7632e4067e6b9a39407de1c'
             'cbea39c2f11ecaf8f6d86f79253746575da479bdd25a166a36ee82f09f9135a0'
-            '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394')
+            '53bfa2220d14065ca848c36217abe812685c7d6e0d42251423d0faa2a0ac5394'
+            '5b29e24b4dc9076d54621334b839d2dbfa6a6adce1e8b444e38c2412f314f8c7')
 
 pkgver() {
   cd wingpanel
@@ -45,9 +47,9 @@ prepare() {
   patch -Np1 < ../autohide.patch
   #patch -Np2 < ../autohide-testing.patch
 
-  #Reverse 105c1d0
-  msg2 "Reverse commit 105c1d0"
-  patch -Np1 < ../reverse-105c1d0.patch
+  #Reverse 105c1d0 (restores Ayatana indicator submenus)
+  #msg2 "Reverse commit 105c1d0"
+  #patch -Np1 < ../reverse-105c1d0.patch
 
   #Standalone patches
   msg2 "Remove Gala dependecies"
@@ -55,6 +57,8 @@ prepare() {
   rm src/Services/BackgroundManager.vala
   patch -Np2 < ../minus-backgroundmanager.patch
   patch -Np2 < ../minus-galaplugin.patch
+  patch -Np2 < ../no-mutter-typelib.patch
+  #rm vapi/meson.build
 
   [ ! -d build ] || rm -rf build
 }

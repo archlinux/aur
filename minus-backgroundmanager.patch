@@ -144,12 +144,12 @@
 -    }
  }
 --- src/wingpanel/src/meson.build	2018-12-02 05:25:42.153643446 +0900
-+++ src/wingpanel/src/meson.build.new	2018-12-02 05:27:27.293643581 +0900
++++ src/wingpanel/src/meson.build	2018-12-02 05:27:27.293643581 +0900
 @@ -1,7 +1,6 @@
- wingpanel_files = files(
-     'Wingpanel.vala',
      'PanelWindow.vala',
+     'SessionManager.vala',
+     'Wingpanel.vala',
 -    'Services/BackgroundManager.vala',
      'Services/IndicatorSorter.vala',
      'Services/PopoverManager.vala',
-     'Services/Settings.vala',
+     'Widgets/IndicatorEntry.vala',

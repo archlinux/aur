@@ -1,0 +1,11 @@
+--- src/wingpanel/meson.build	2020-03-14 00:07:59.858551777 +0900
++++ src/wingpanel/meson.build	2020-03-14 00:09:42.086551692 +0900
+@@ -44,8 +44,5 @@
+ endif
+ subdir('po')
+ vapigen = find_program('vapigen', required: false)
+-if vapigen.found()
+-	subdir('vapi')
+-endif
+ 
+ meson.add_install_script('meson/post_install.py')
