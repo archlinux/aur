@@ -1,15 +1,16 @@
 pkgbase = openaudible-bin
 	pkgdesc = OpenAudible
-	pkgver = 1.6.5
-	pkgrel = 3 
+	pkgver = 1.6.6
+	pkgrel = 1
 	url = https://openaudible.org
 	arch = x86_64
 	license = Apache
+	depends = java-runtime-headless
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/openaudible/openaudible/releases/download/v1.6.5/OpenAudible_1.6.5_amd64.deb
+	source = https://github.com/openaudible/openaudible/releases/download/v1.6.6/OpenAudible_1.6.6_amd64.deb
 	source = openaudible.desktop
-	sha512sums = 866da0448d3b010163d97d827a91360967255dfbad7545eb73ef2819dd1209eecded83cd595db786480673f72b7a69a58f95825da2da113348d5952d8cccfeae
+	sha512sums = 35eafee661fdb0623b591877d219b6236405b51e1972f9695e9661628ebb53eea679b1e5a7c588793f34943819d4d21f7b039edaaff8524cc347e0e61cd7d844
 	sha512sums = fe26bdc5a28f492c60e13f481bd61ae53b299b0b0728311521bb03a73f9592d8de5dda9e8e1ef5e770c74b6335e5b32c22d4b65a38325f8f5f6c1283cdc0c937
 
 pkgname = openaudible-bin
