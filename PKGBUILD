@@ -11,8 +11,8 @@
 
 pkgbase=lvm2-noudev
 pkgname=('lvm2-noudev' 'device-mapper-noudev')
-pkgver=2.02.186
-pkgrel=4
+pkgver=2.02.187
+pkgrel=1
 arch=('x86_64')
 url='https://sourceware.org/lvm2/'
 license=('GPL2' 'LGPL2.1')
@@ -29,8 +29,8 @@ sha256sums=('SKIP'
             'e10f24b57582d6e2da71f7c80732a62e0ee2e3b867fe84591ccdb53e80fa92e0')
 
 _backports=(
-  # pvscan: fix activation of incomplete VGs
-  '6b12930860a993624d6325aec2e9c561f4412aa9'
+  # udev: remove unsupported OPTIONS+="event_timeout" rule
+  '125f27ac37bc9b93cc96f64052b9681b3d479ee1'
 )
 
 prepare() {
@@ -45,6 +45,7 @@ prepare() {
 
 build() {
   local _CONFIGUREOPTS=(
+    CONFIG_SHELL=/bin/bash
     --prefix=/usr
     --sbindir=/usr/bin
     --sysconfdir=/etc
@@ -67,16 +68,25 @@ build() {
     --with-udev-prefix=/usr
   )
 
+  # build system requires bash:
+  # https://www.redhat.com/archives/linux-lvm/2020-January/msg00004.html
+  # https://www.gnu.org/software/autoconf/manual/autoconf-2.69/html_node/Defining-Variables.html
+  export CONFIG_SHELL=/bin/bash
+
   cp -a lvm2/ lvm2-initramfs/
 
   cd lvm2/
 
-  ./configure "${_CONFIGUREOPTS[@]}" --enable-udev-systemd-background-jobs=no
+  ./configure \
+    "${_CONFIGUREOPTS[@]}" \
+    --enable-udev-systemd-background-jobs=no
   make
 
   # Build legacy udev rule for initramfs
   cd ../lvm2-initramfs
-  ./configure "${_CONFIGUREOPTS[@]}" --enable-udev-systemd-background-jobs=no
+  ./configure \
+    "${_CONFIGUREOPTS[@]}" \
+    --enable-udev-systemd-background-jobs=no
   cd udev
   make 69-dm-lvm-metad.rules
 }
