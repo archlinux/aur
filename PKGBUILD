@@ -3,13 +3,24 @@
 
 pkgname=afdko
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Adobe Font Development Kit for OpenType'
 arch=('x86_64')
 url="https://github.com/adobe-type-tools/$pkgname"
 license=('custom')
-# Note many of these are actually python-fonttools deps, but [community] package has them marked as optional
-_py_deps=('booleanoperations' 'brotli' 'cu2qu' 'fontmath' 'fontparts' 'fontpens' 'fs' 'lxml' 'mutatormath' 'ufonormalizer' 'ufoprocessor' 'zopfli')
+_py_deps=('booleanoperations'
+          'brotli'
+          'cu2qu'
+          'fontmath'
+          'fontparts'
+          'fontpens'
+          'fonttools'
+          'fs' # for fonttools
+          'lxml'
+          'mutatormath'
+          'ufonormalizer'
+          'ufoprocessor'
+          'zopfli') # for fonttools
 depends=('python' 'psautohint' "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
