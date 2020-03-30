@@ -1,0 +1,4 @@
+*.tar*
+/zulip-terminal/
+/zulip-terminal-tracebacks.log
+/debug.log
