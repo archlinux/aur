@@ -93,9 +93,11 @@ package_pipewire-git() {
               'pipewire-jack: JACK support'
               'pipewire-pulse: PulseAudio support'
               )
-  provides=("libpipewire-${pkgver:0:3}.so")
+  provides=('pipewire'
+            "libpipewire-${pkgver:0:3}.so"
+            )
   backup=('etc/pipewire/pipewire.conf')
-  install=pipewire.install
+  install=pipewire-git.install
 
   DESTDIR="${pkgdir}" meson install -C build
 

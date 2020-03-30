@@ -42,6 +42,7 @@ pkgname = pipewire-git
 	optdepends = pipewire-docs: Documentation
 	optdepends = pipewire-jack: JACK support
 	optdepends = pipewire-pulse: PulseAudio support
+	provides = pipewire
 	provides = libpipewire-0.3.so
 	backup = etc/pipewire/pipewire.conf
 
