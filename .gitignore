@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# Whitelist of files
+!.gitignore
+!PKGBUILD
+!.SRCBUILD
+!Main.cfg
+!*.install

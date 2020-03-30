@@ -1,0 +1,15 @@
+post_install() {
+	echo "---------------------------------------------------------------"
+	echo "Installed unnamed-sdvx-clone to /opt/unnamed-sdvx-clone/"
+	echo "---------------------------------------------------------------"
+}
+
+post_remove() {
+	echo "---------------------------------------------------------------"
+	echo "Uninstalled unnamed-sdvx-clone."
+	echo "Please be aware that any untracked files are still present"
+	echo "in /opt/unnamed-sdvx-clone/"
+	echo "You will need to delete them manually if you want"
+	echo "them permanently removed."
+	echo "---------------------------------------------------------------"
+}
