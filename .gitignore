@@ -1,0 +1,6 @@
+*.tar.zst
+*.tar.xz
+*.tar.gz
+/poke-git/
+/pkg
+/src

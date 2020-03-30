@@ -1,0 +1,16 @@
+pkgbase = poke-git
+	pkgdesc = Interactive, extensible editor for binary data.
+	pkgver = r3085.bb2998d4
+	pkgrel = 1
+	url = http://www.jemarch.net/poke.html
+	arch = any
+	license = GPL3
+	makedepends = help2man
+	depends = gc
+	depends = readline
+	provides = poke
+	source = poke-git::git+https://git.savannah.gnu.org/git/poke.git
+	sha256sums = SKIP
+
+pkgname = poke-git
+
