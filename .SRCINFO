@@ -1,0 +1,14 @@
+pkgbase = python-commandlines
+	pkgdesc = A command line argument to object parsing library for CLI application development
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/chrissimpkins/commandlines
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-commandlines-0.4.1.tar.gz::https://github.com/chrissimpkins/commandlines/archive/v0.4.1.tar.gz
+	sha256sums = 716725f8cff484defc297498e23c575b6b2876e4919a9c03c23cbbab7542942a
+
+pkgname = python-commandlines
+
