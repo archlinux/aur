@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=iptables-git
-pkgver=1.8.2.r20.gccf154d7
+pkgver=1.8.4.r38.g200bc399
 pkgrel=1
 pkgdesc="Userspace command line program used to configure the packet filtering ruleset"
 arch=('i686' 'x86_64')
@@ -24,9 +24,11 @@ source=("git://git.netfilter.org/iptables"
         "empty.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty.rules?h=packages/iptables"
         "ip6tables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip6tables.service?h=packages/iptables"
         "iptables-legacy-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-legacy-flush?h=packages/iptables"
+        "iptables-nft-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-nft-flush?h=packages/iptables"
         "iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables"
         "simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -71,7 +73,7 @@ package() {
   cd "$srcdir"
   install -Dm644 "empty.rules" "$pkgdir/etc/iptables/iptables.rules"
   install -Dm644 "empty.rules" "$pkgdir/etc/iptables/ip6tables.rules"
-  install -Dm644 "simple_firewall.rules" "$pkgdir/etc/iptables/simple_firewall.rules"
+  install -Dm644 "simple_firewall.rules" -t "$pkgdir/etc/iptables"
 
   install -d "$pkgdir/var/lib"/{iptables,ip6tables}
   install -m644 empty-{filter,mangle,nat,raw,security}.rules "$pkgdir/var/lib/iptables"
@@ -79,5 +81,5 @@ package() {
 
   install -d "$pkgdir/usr/lib/systemd/system"
   install -m644 {arp,eb,ip,ip6}tables.service "$pkgdir/usr/lib/systemd/system"
-  install -Dm755 "iptables-legacy-flush" "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
+  install -Dm755 iptables-{legacy,nft}-flush "$pkgdir/usr/lib/systemd/scripts/iptables-flush"
 }

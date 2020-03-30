@@ -1,6 +1,6 @@
 pkgbase = iptables-git
 	pkgdesc = Userspace command line program used to configure the packet filtering ruleset
-	pkgver = 1.8.2.r20.gccf154d7
+	pkgver = 1.8.4.r38.g200bc399
 	pkgrel = 1
 	url = https://www.netfilter.org/projects/iptables/index.html
 	arch = i686
@@ -34,8 +34,10 @@ pkgbase = iptables-git
 	source = empty.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/empty.rules?h=packages/iptables
 	source = ip6tables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/ip6tables.service?h=packages/iptables
 	source = iptables-legacy-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-legacy-flush?h=packages/iptables
+	source = iptables-nft-flush::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables-nft-flush?h=packages/iptables
 	source = iptables.service::https://git.archlinux.org/svntogit/packages.git/plain/trunk/iptables.service?h=packages/iptables
 	source = simple_firewall.rules::https://git.archlinux.org/svntogit/packages.git/plain/trunk/simple_firewall.rules?h=packages/iptables
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
