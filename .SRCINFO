@@ -1,0 +1,17 @@
+pkgbase = ufodiff
+	pkgdesc = UFO source file diff application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/source-foundry/ufodiff
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-commandlines
+	depends = python-gitpython
+	depends = python-standardstreams
+	source = ufodiff-1.0.0.tar.gz::https://github.com/source-foundry/ufodiff/archive/v1.0.0.tar.gz
+	sha256sums = 84b1e4f060e72619ccdc8e5c050125dd61463b5d5f704378b1c90bbdc3acfee6
+
+pkgname = ufodiff
+
