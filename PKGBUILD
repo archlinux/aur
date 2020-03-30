@@ -4,7 +4,7 @@
 
 pkgname=python-vunit_hdl
 _name=vunit_hdl
-pkgver=4.3.0
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Unit Testing Framework for VHDL/SystemVerilog"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-colorama')
 makedepends=(python-setuptools)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('146efc0e5db6c215d985d1fbb3e891d9')
+md5sums=('baca415b52c17bb53309b26784b7b055')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
