@@ -1,18 +1,17 @@
 pkgbase = x-tile-git
-	pkgdesc = X-tile is an application that allows you to select a number of windows and tile them in different ways. It works on any X desktop (gnome, kde, xfce, lxde…).
-	pkgver = 2.6.r3.gbc2ffd3
+	pkgdesc = Allows you to select a number of windows and tile them in different ways
+	pkgver = 3.0.r0.g435eef2
 	pkgrel = 1
-	url = http://www.giuspen.com/x-tile
+	url = https://www.giuspen.com/x-tile
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = python2-distutils-extra
-	depends = gconf
-	depends = libappindicator-gtk3
-	depends = python2-gobject
+	depends = gtk3
+	depends = python-gobject
+	optdepends = libappindicator-gtk3: Tray icon support
 	provides = x-tile
 	conflicts = x-tile
-	source = x-tile::git+https://github.com/giuspen/x-tile.git
+	source = git+https://github.com/giuspen/x-tile.git
 	sha256sums = SKIP
 
 pkgname = x-tile-git
