@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
-license=('BSD')
+license=('Apache')
 depends=(
 	'python-gobject'
 	'python-cairo'
