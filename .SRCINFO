@@ -1,0 +1,15 @@
+pkgbase = python-pyglmnet
+	pkgdesc = Elastic-net regularized generalized linear models.
+	pkgver = 1.1
+	pkgrel = 1
+	url = http://glm-tools.github.io/pyglmnet/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyglmnet/pyglmnet-1.1.tar.gz
+	sha256sums = 6949eb9ea14ca43b6fbfbdb25b89fc3493f8b8f78705523b3a603dcd85d707a6
+
+pkgname = python-pyglmnet
+	depends = python
+
