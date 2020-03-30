@@ -1,7 +1,7 @@
 pkgbase = lib3mf
 	pkgdesc = Implementation of the 3D Manufacturing Format file standard
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://3mf.io/
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,7 @@ pkgbase = lib3mf
 	makedepends = cmake
 	depends = libzip
 	depends = zlib
+	provides = lib3mf.so
 	source = lib3mf-2.0.0.tar.gz::https://github.com/3MFConsortium/lib3mf/archive/v2.0.0.tar.gz
 	source = lib3mf_use-system-gtest.patch::https://github.com/3MFConsortium/lib3mf/commit/140d3351e1efa7f9989e333834f0e47874ed857d.patch
 	source = lib3mf_link-libzip-and-zlib.patch::https://github.com/3MFConsortium/lib3mf/commit/2a31c21ff71231b46eb70a33add4239881a90116.patch
