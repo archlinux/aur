@@ -1,14 +1,14 @@
 pkgbase = kpscript
 	pkgdesc = KeePass scripting utility
-	pkgver = 2.43
+	pkgver = 2.44
 	pkgrel = 1
 	url = http://keepass.info/plugins.html#kpscript
 	arch = any
 	license = GPL
 	depends = keepass
-	source = http://keepass.info/extensions/v2/kpscript/KPScript-2.43.zip
+	source = http://keepass.info/extensions/v2/kpscript/KPScript-2.44.zip
 	source = kpscript
-	md5sums = 31a4de8f937d8237c4fcd22f862bec8e
+	md5sums = 180dbeaed09c0c960a80a2d2ecc732e3
 	md5sums = 49aaf670eb8642bc274b73a6756ba04d
 
 pkgname = kpscript
