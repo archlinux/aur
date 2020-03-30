@@ -1,8 +1,9 @@
-# Maintainer: Jean Lucas <jean@4ray.co>
+# Maintainer: ny-a <nyaarch64@gmail..com>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=beaker-git
-pkgver=0.8.8+r30+g111b6370
-pkgrel=2
+pkgver=0.8.10
+pkgrel=1
 pkgdesc='Experimental peer-to-peer web browser (git)'
 arch=(i686 x86_64)
 url=https://beakerbrowser.com
@@ -24,6 +25,7 @@ pkgver() {
 build() {
   cd beaker
   npm i
+  npm run build
   npm run rebuild
   npx electron-builder --dir
 }
