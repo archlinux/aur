@@ -20,7 +20,6 @@ pkgbase = freac
 	depends = libpulse
 	depends = libgudev
 	depends = boca
-	depends = smooth
 	depends = hicolor-icon-theme
 	source = freac-1.1.tar.gz::https://github.com/enzo1982/freac/archive/v1.1.tar.gz
 	sha256sums = 21b6a1473de5058983ccde41e5ae218bc11a2d249edb0e1773e6be30764ab87c
