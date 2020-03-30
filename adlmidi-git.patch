@@ -1,0 +1,47 @@
+diff -ura adlmidi.old/make.rules adlmidi.new/make.rules
+--- adlmidi.old/make.rules	2020-03-30 13:13:14.541696493 +1100
++++ adlmidi.new/make.rules	2020-03-30 13:25:26.653224604 +1100
+@@ -101,38 +101,9 @@
+ 	\
+ 	obj/.keep
+ 
+-INSTALLPROGS=adlmidi
++adlmidi: src/midiplay.o src/dbopl.o src/adldata.o
++	$(CXX) $(LDLIBS) $(SDL) $(LDFLAGS) -o $@ $^
+ 
+-all: adlmidi gen_adldata dumpmiles dumpbank
+-
+-adlmidi: obj/midiplay.o obj/dbopl.o obj/adldata.o
+-	$(CXXLINK)  $^  $(DEBUG) $(SDL) -o $@ $(LDLIBS)
+-
+-obj/midiplay.o: src/midiplay.cc src/dbopl.h src/adldata.hh
+-	$(CXX) $(CPPFLAGS) $<  $(DEBUG) $(SDL) -c -o $@
+-
+-obj/dbopl.o: src/dbopl.cpp src/dbopl.h
+-	$(CXX) $(CPPFLAGS) $<  $(DEBUG)  -c -o $@
+-
+-obj/adldata.o: src/adldata.cc src/adldata.hh
+-	$(CXX) $(CPPFLAGS) $<  $(DEBUG)  -c -o $@
+-
+-gen_adldata: obj/gen_adldata.o obj/dbopl.o
+-	$(CXXLINK)  $^  $(DEBUG)  -o $@  $(LDLIBS)
+-
+-obj/gen_adldata.o: utils/gen_adldata.cc src/dbopl.h
+-	$(CXX) $(CPPFLAGS) -I./src $<  $(DEBUG)  -c -o $@
+-
+-dumpmiles: obj/dumpmiles.o
+-	$(CXXLINK)  $^  $(DEBUG)  -o $@  $(LDLIBS)
+-
+-obj/dumpmiles.o: utils/dumpmiles.cc
+-	$(CXX) $(CPPFLAGS) $<  $(DEBUG)  -c -o $@
+-
+-dumpbank: obj/dumpbank.o
+-	$(CXXLINK)  $^  $(DEBUG)  -o $@  $(LDLIBS)
+-
+-obj/dumpbank.o: utils/dumpbank.cc
+-	$(CXX) $(CPPFLAGS) $<  $(DEBUG)  -c -o $@
+-
+-include depfun.mak
++src/midiplay.o: src/dbopl.h src/adldata.hh
++src/dbopl.o: src/dbopl.h
++src/adldata.o: src/adldata.hh

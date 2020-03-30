@@ -1,18 +1,22 @@
 pkgbase = adlmidi-git
 	pkgdesc = CLI MIDI player using OPL3 emulation
-	pkgver = 1.2.6.1.r0.8aa85de
-	pkgrel = 2
+	pkgver = 1.2.6.1.r6.d0a4276
+	pkgrel = 1
 	url = https://bisqwit.iki.fi/source/adlmidi.html
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = GPL3
-	license = GPL2+
+	license = GPL2
 	makedepends = git
 	depends = sdl2
 	optdepends = ffmpeg: recording output to video file
 	conflicts = adlmidi
 	source = git://bisqwit.iki.fi/adlmidi.git
+	source = adlmidi-git.patch
 	sha256sums = SKIP
+	sha256sums = 606c4d3643ddf2accf445ede3a8f5b7371a6fdc5f9885a8a77aca998a5a0d7c8
 
 pkgname = adlmidi-git
 
