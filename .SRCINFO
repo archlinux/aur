@@ -1,6 +1,6 @@
 pkgbase = lilypond-git
 	pkgdesc = An automated music engraving system (Git snapshot)
-	pkgver = 2.21.r28776
+	pkgver = 2.21.r29070.28b894cb8d
 	pkgrel = 1
 	url = http://lilypond.org/
 	arch = i686
@@ -15,19 +15,18 @@ pkgbase = lilypond-git
 	makedepends = texlive-langcyrillic
 	makedepends = texi2html
 	makedepends = netpbm
-	depends = guile1.8
+	depends = guile
 	depends = pango
-	depends = python2
-	depends = ttf-dejavu
 	depends = fontconfig
 	depends = freetype2
-	depends = ghostscript
+	depends = python-lxml
 	optdepends = extractpdfmark: for reducing the size of pdf output significantly
+	optdepends = tidy: same for HTML files
 	optdepends = tk: for the gui
 	provides = lilypond
 	conflicts = lilypond
 	options = !makeflags
-	source = git://git.savannah.gnu.org/lilypond.git
+	source = git://git.savannah.gnu.org/lilypond.git#commit=28b894cb8d121eb7f531e193d1736b99fe593edf
 	md5sums = SKIP
 
 pkgname = lilypond-git

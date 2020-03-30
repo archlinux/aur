@@ -4,19 +4,17 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.21.r28776
+pkgver=2.21.r29070.28b894cb8d
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
 license=('GPL')
-depends=('guile1.8'
+depends=('guile'
 	 'pango'
-	 'python2'
-	 'ttf-dejavu'
 	 'fontconfig'
 	 'freetype2'
-	 'ghostscript')
+	 'python-lxml')
 makedepends=('fontforge'
 	     'git'
 	     'gsfonts'
@@ -27,42 +25,29 @@ makedepends=('fontforge'
 	     'texi2html'
 	     'netpbm')
 optdepends=('extractpdfmark: for reducing the size of pdf output significantly'
+	    'tidy: same for HTML files'
 	    'tk: for the gui')
 provides=('lilypond')
 conflicts=('lilypond')
-source=(git://git.savannah.gnu.org/lilypond.git)
+source=(git://git.savannah.gnu.org/lilypond.git#commit=28b894cb8d121eb7f531e193d1736b99fe593edf)
 md5sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
   cd lilypond/
-  printf %s.%s.r%s $(grep MAJOR VERSION | cut -d= -f2) \
-	 $(grep MINOR VERSION | cut -d= -f2) $(git rev-list --count HEAD)
+  printf %s.%s.r%s.%s $(grep MAJOR VERSION | cut -d= -f2) \
+	 $(grep MINOR VERSION | cut -d= -f2) $(git rev-list --count HEAD) \
+	 "$(git rev-parse --short HEAD)"
 }
-
-prepare() {
-  cd lilypond/
-
-  # python2 fix
-  for file in $(find . -name '*.py' -print); do
-    sed -i 's_^#!.*/usr/bin/python_#!/usr/bin/python2_' $file
-    sed -i 's_^#!.*/usr/bin/env.*python_#!/usr/bin/env python2_' $file
-  done
-  sed -i 's+guile-config-1.8+guile-config1.8+' aclocal.m4
-}
-
 
 build() {
   cd lilypond/
-  export PYTHON="python2"
-  export PYTHON_CONFIG="python2-config"
   [[ -f config.hh ]] && rm config.hh
   ./autogen.sh --noconfigure
   [[ -d build ]] || mkdir build
   cd build
   ../configure --prefix=/usr \
-      --disable-documentation \
-      --enable-guile2=no
+      --disable-documentation
   make -j1 
 }
 
