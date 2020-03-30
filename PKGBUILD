@@ -1,9 +1,9 @@
 # Maintainer: GrayJack <gr41.j4ck@gmail.com>
 
 _pkgname=janet
-_pkgver=1.7.0
+_pkgver=1.8.0
 pkgname=janet-lang-git
-pkgver=1.7.0.r1858.4a05b45
+pkgver=1.8.0.r1894.279b536
 pkgrel=1
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
