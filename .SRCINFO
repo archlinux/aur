@@ -3,7 +3,7 @@ pkgbase = ttf-font-awesome-pro
 	pkgver = 5.13.0
 	pkgrel = 1
 	url = https://fontawesome.com
-	arch = x86_64
+	arch = any
 	license = custom:Font Awesome Pro License
 	makedepends = npm
 
