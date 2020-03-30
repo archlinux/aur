@@ -1,0 +1,14 @@
+pkgbase = rofi-todo
+	pkgdesc = Script to manage JSON-style notes in rofi.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/samedamci/rofi-todo
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python3
+	source = https://github.com/samedamci/rofi-todo/archive/v1.1.tar.gz
+	sha512sums = b00fac72f4fb5dc7460442963f5533f331d3270f4c48a3c2cd6ae56bbbc03267545377f6a78d295f22e6eebb6f72fe959505ce51d45b5f99f8468150992358bd
+
+pkgname = rofi-todo
+
