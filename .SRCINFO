@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-insiders
 	pkgdesc = Editor for building and debugging modern web and cloud applications (insiders version)
-	pkgver = 1580933641
+	pkgver = 1585556379
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = x86_64
@@ -20,18 +20,18 @@ pkgbase = visual-studio-code-insiders
 	optdepends = libdbusmenu-glib: Needed for KDE global menu
 	provides = code
 	conflicts = code
-	source_x86_64 = code_x64_1580933641.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
+	source_x86_64 = code_x64_1585556379.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-x64/insider
 	source_x86_64 = visual-studio-code-insiders.desktop
 	source_x86_64 = visual-studio-code-insiders-url-handler.desktop
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = 84a4e1713baee49727c3bde36cccb69e79eeb8e66849f161ed0edb7e65a089f9
-	sha256sums_x86_64 = d87b1f9f6187fe2d401424f109a7254d6f185f9ff433a4e6d60feed6e5ace6f8
-	source_i686 = code_ia32_1580933641.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/insider
+	sha256sums_x86_64 = 4b2de89c44f2519a7dc836e9e1732ef041cbe47a31243344a0ae40e16f93d7c9
+	sha256sums_x86_64 = edfeb13aa50d35fbae748ff545b5bd126be916dbfeda682157e3d5ce81574db2
+	sha256sums_x86_64 = d06d9d057b507d1747a8ed8ae304beb5e20c7bf887c362c941d85b02c893069e
+	source_i686 = code_ia32_1585556379.tar.gz::https://vscode-update.azurewebsites.net/latest/linux-ia32/insider
 	source_i686 = visual-studio-code-insiders.desktop
 	source_i686 = visual-studio-code-insiders-url-handler.desktop
-	sha256sums_i686 = SKIP
-	sha256sums_i686 = 84a4e1713baee49727c3bde36cccb69e79eeb8e66849f161ed0edb7e65a089f9
-	sha256sums_i686 = d87b1f9f6187fe2d401424f109a7254d6f185f9ff433a4e6d60feed6e5ace6f8
+	sha256sums_i686 = 6bb6ae48e41cea0c0ae2584aaab58ccf3cd8a2e20e648f025326d71fc93c8357
+	sha256sums_i686 = edfeb13aa50d35fbae748ff545b5bd126be916dbfeda682157e3d5ce81574db2
+	sha256sums_i686 = d06d9d057b507d1747a8ed8ae304beb5e20c7bf887c362c941d85b02c893069e
 
 pkgname = visual-studio-code-insiders
 
