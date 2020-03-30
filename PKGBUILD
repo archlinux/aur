@@ -37,7 +37,6 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	#/usr/bin/python3 setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
 
