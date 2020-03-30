@@ -7,7 +7,7 @@ url='https://weechat.org'
 license=('GPL3')
 arch=('any')
 makedepends=('git')
-depends=('python2>=2.6' 'python2-setuptools' 'pyside2' 'hicolor-icon-theme')
+depends=('python2>=2.6' 'python2-setuptools' 'python2-sip' 'python2-pyside' 'hicolor-icon-theme')
 source=('qweechat::git://github.com/weechat/qweechat.git'
         'qweechat.desktop')
 sha256sums=('SKIP'

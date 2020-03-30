@@ -8,7 +8,8 @@ pkgbase = qweechat-git
 	makedepends = git
 	depends = python2>=2.6
 	depends = python2-setuptools
-	depends = pyside2
+	depends = python2-sip
+	depends = python2-pyside
 	depends = hicolor-icon-theme
 	source = qweechat::git://github.com/weechat/qweechat.git
 	source = qweechat.desktop
