@@ -1,0 +1,25 @@
+pkgbase = zigbee2mqtt
+	pkgdesc = A Zigbee to MQTT bridge
+	pkgver = 1.12.0
+	pkgrel = 1
+	url = https://www.zigbee2mqtt.io
+	arch = x86_64
+	license = GPL3
+	depends = nodejs>=10.0,
+	depends = npm
+	optdepends = cc-tool: To flash Texas Instruments CC2531 debugger
+	optdepends = mosquitto: MQTT broker
+	provides = zigbee2mqtt
+	conflicts = zigbee2mqtt
+	backup = opt/zigbee2mqtt/data/configuration.yaml
+	source = https://github.com/Koenkk/zigbee2mqtt/archive/1.12.0.tar.gz
+	source = zigbee2mqtt.service
+	source = zigbee2mqtt.sysusers
+	source = zigbee2mqtt.tmpfiles
+	sha256sums = fb00981ba26d8559588f77f1f921fc50ee62317edf8c681cf8624d7980d90f73
+	sha256sums = 831ce970669d29ba2db208bec8245c97e80540981dd23276bba10a9b7b699e1b
+	sha256sums = bf3e49cfb86df460b4db16b280839dc7f0c73fbfd29ea6d86040f711606abf65
+	sha256sums = 5861e6e25350b32fc81cf1a43802470e8ff033a019cba4d28b3bd48c6cb5ddf6
+
+pkgname = zigbee2mqtt
+
