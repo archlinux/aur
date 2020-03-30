@@ -3,8 +3,10 @@
 
 pkgname=xsv-bin
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CSV command line toolkit written in Rust'
+provides=(xsv)
+conflicts=(xsv)
 arch=('x86_64')
 url='https://github.com/BurntSushi/xsv'
 license=('MIT')
