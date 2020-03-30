@@ -4,10 +4,10 @@
 
 pkgname=perl-par-packer
 pkgver=1.050
-pkgrel=1
+pkgrel=2
 pkgdesc="PAR Packager"
 _dist=PAR-Packer
-arch=('any')
+arch=(i686 x86_64)
 url="https://metacpan.org/release/${_dist}"
 license=('GPL' 'PerlArtistic')
 # This package bundles libperl.so into parl and when executing
