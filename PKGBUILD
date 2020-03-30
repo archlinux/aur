@@ -3,7 +3,7 @@
 # Poached from Arch Strike <team@archstrike.org>
 
 pkgname=onionscan-git
-pkgver=OnionScan.0.2.r8.da42865
+pkgver=0.2.r8.da42865
 pkgrel=1
 pkgdesc="Tool to scan onion services(git version)"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -16,8 +16,8 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
+  VER=$(printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')")
+  cut -d "." -f 2- <<< $VER
 }
 
 build() {
