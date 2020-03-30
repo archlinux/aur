@@ -1,0 +1,37 @@
+pkgbase = petsc-complex
+	pkgdesc = Portable, extensible toolkit for scientific computation (complex scalars)
+	pkgver = 3.12.4
+	pkgrel = 1
+	url = https://www.mcs.anl.gov/petsc/
+	install = petsc.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = gcc
+	makedepends = gcc-fortran
+	makedepends = cmake
+	depends = python
+	depends = openmpi
+	depends = boost
+	depends = lapack
+	optdepends = trilinos: support for trilinos
+	optdepends = ptscotch: support for ptscotch parallel graph partitioning library
+	optdepends = parmetis: support for parmetis parallel graph partitioning library
+	optdepends = metis: support for metis graph partitioning library
+	optdepends = pastix: support for the pastix solver
+	optdepends = superlu: support for the superlu sparse solver
+	optdepends = hypre: support for the hypre sparse system solver
+	optdepends = hdf5: support for the parallel version of hdf5
+	optdepends = mumps: support for the mumps sparse solver
+	optdepends = fftw: support for the fftw fast Fourier transform
+	optdepends = suitesparse: support for the suitesparse sparse matrix libraries
+	provides = petsc=3.12.4
+	conflicts = petsc
+	options = staticlibs
+	source = http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-lite-3.12.4.tar.gz
+	source = test_optdepends.sh
+	sha256sums = 800a965dd01adac099a186588cda68e4fcb224af326d8aaf55978361c019258f
+	sha256sums = f127806175b681f4e9cb64aeba4f3fabd9eb92ef945f5542677b255cb3d85913
+
+pkgname = petsc-complex
+
