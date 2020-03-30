@@ -1,13 +1,13 @@
 pkgbase = cernbox-nemo
 	pkgdesc = Nemo integration for CERN's CERNBox cloud service (based on ownCloud). Note: CERN IT does not provide official support for Arch Linux. Use at your own risk.
-	pkgver = 2.5.4.201906281229_2625.1
+	pkgver = 2.5.4_2719.1
 	pkgrel = 1
 	url = http://cernbox.web.cern.ch/
 	arch = x86_64
 	license = GPL
 	depends = cernbox
 	depends = cernbox-overlay-icons
-	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_28/x86_64/cernbox-client-nemo-2.5.4.201906281229-2625.1.x86_64.rpm
+	source = https://cernbox.cern.ch/cernbox/doc/Linux/repo/Fedora_28/x86_64/cernbox-client-nemo-2.5.4-2719.1.x86_64.rpm
 	md5sums = 99439387b1a86b41fda6f8528e92dc0d
 
 pkgname = cernbox-nemo
