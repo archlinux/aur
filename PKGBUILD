@@ -7,13 +7,13 @@ _dver="${pkgver}.20191028_COEX20190531-0e0e"
 pkgrel=4
 pkgdesc="Realtek RTL88x2CE Driver (DKMS)"
 arch=('x86_64' 'i686')
-url="https://github.com/alanfox2000/realtek-linux/blob/master/RTL8822CE"
+url="https://github.com/XAIOThaifeng/realtek-linux/blob/master/RTL8822CE"
 license=('GPL')
 depends=('dkms' 'bc')
 optdepends=('linux-headers' 'linux-zen-headers')
 provides=('rtl88x2ce')
 source=(
-	"$pkgname-$pkgver.src.7z::https://github.com/alanfox2000/realtek-linux/blob/master/RTL8822CE/RTL8822CE_WiFi_linux_v$_allver.7z?raw=true"
+	"$pkgname-$pkgver.src.7z::https://github.com/XAIOThaifeng/realtek-linux/blob/master/RTL8822CE/RTL8822CE_WiFi_linux_v$_allver.7z?raw=true"
 	dkms.conf
 	rtw88_blacklist.conf
 )
