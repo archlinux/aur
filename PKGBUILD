@@ -1,7 +1,7 @@
-# Maintainer: KingofToasters <dev at sgregoratto dot me>
+# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=tscrape-git
-pkgver=0.2.r4.gdb47c97
-pkgrel=2
+pkgver=0.4.r9.g8e11f80
+pkgrel=1
 pkgdesc='Twitter feed scraper'
 url='https://git.codemadness.org/tscrape.html'
 license=('ISC')
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("${pkgname%-git}::git+git://git.codemadness.org/tscrape"
         "tscrape-git.patch" )
 sha256sums=('SKIP'
-            'cfd43838d2172abf6ef708598a3dc4bf2807b30bac637ac2f4a878728586aed2')
+            '1912e1fcc8ac0d3edc7dad5a96ffa7091c0057611c2dc538780e4a5e5d809d18')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -31,6 +31,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

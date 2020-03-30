@@ -1,7 +1,7 @@
 pkgbase = tscrape-git
 	pkgdesc = Twitter feed scraper
-	pkgver = 0.2.r4.gdb47c97
-	pkgrel = 2
+	pkgver = 0.4.r9.g8e11f80
+	pkgrel = 1
 	url = https://git.codemadness.org/tscrape.html
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = tscrape-git
 	source = tscrape::git+git://git.codemadness.org/tscrape
 	source = tscrape-git.patch
 	sha256sums = SKIP
-	sha256sums = cfd43838d2172abf6ef708598a3dc4bf2807b30bac637ac2f4a878728586aed2
+	sha256sums = 1912e1fcc8ac0d3edc7dad5a96ffa7091c0057611c2dc538780e4a5e5d809d18
 
 pkgname = tscrape-git
 
