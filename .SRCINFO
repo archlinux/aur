@@ -1,0 +1,19 @@
+pkgbase = qweechat-git
+	pkgdesc = Qt remote GUI for WeeChat
+	pkgver = r100.235ad36
+	pkgrel = 1
+	url = https://weechat.org
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python2>=2.6
+	depends = python2-setuptools
+	depends = pyside2
+	depends = hicolor-icon-theme
+	source = qweechat::git://github.com/weechat/qweechat.git
+	source = qweechat.desktop
+	sha256sums = SKIP
+	sha256sums = 90571f856968904f8839f906199e57fb30e51b8ad67c87da79eda47fe98ceb1e
+
+pkgname = qweechat-git
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QWeeChat
+Comment=Qt remote GUI for WeeChat.
+Type=Application
+Categories=Network
+Encoding=UTF-8
+Exec=/usr/bin/qweechat
+Icon=qweechat
+StartupNotify=true
+Terminal=false
