@@ -7,8 +7,8 @@ pkgbase=pamac
 pkgname=('pamac-common' 'pamac-cli-src' 'pamac-gtk' 'pamac-tray-appindicator-src')
 _pkgver=9.4.0
 pkgver=9.4.0
-pkgrel=3
-_commit=bccd744b7d2cb8b81021993d4f57388d9fa338b9
+pkgrel=4
+_commit=8b40324c261471ed3b32eb8f3787fc6e312a002c
 pkgdesc="A Package Manager based on libalpm with AUR and Appstream support"
 arch=('x86_64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -22,7 +22,7 @@ options=(!emptydirs)
 
 source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/$pkgname-$_commit.tar.gz")
         #"pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/pamac-v$pkgver.tar.gz")
-sha256sums=('8a3ffb6cab34614250a28505f7c3c6bd15862c90691287ea2363ece14ba7e2e8')
+sha256sums=('e5baca4affbe50f048ab76fe61b9be20c69be1514b1184e2a0f72392364430bc')
 
 prepare() {
   mv "$srcdir/pamac-$_commit" "$srcdir/pamac-v$_pkgver"
