@@ -1,6 +1,6 @@
 pkgbase = ruby-travis
 	pkgdesc = CLI and Ruby client library for Travis CI
-	pkgver = 1.8.11
+	pkgver = 1.8.12
 	pkgrel = 1
 	url = https://github.com/travis-ci/travis.rb
 	arch = any
@@ -15,10 +15,10 @@ pkgbase = ruby-travis
 	depends = ruby-launchy
 	depends = ruby-pusher-client
 	depends = ruby-typhoeus-0.6
-	noextract = travis-1.8.11.gem
+	noextract = travis-1.8.12.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/travis-1.8.11.gem
-	sha512sums = d47ddbb052472667c2e62cfbdc929c17f2372eb08d0b588b5f037a68eeb2b62bb3302c8219c8e6274f97d96274dcd594a0c4477e45d82ca1e88817bcaf345dc4
+	source = https://rubygems.org/downloads/travis-1.8.12.gem
+	sha512sums = 146ad1301beb2f2348d2ddf8f53c235f67968e784ab7349bbb2d11044fca88d02b03dd893ca5576eed90de2607ad6851ece464900661ae9c27c1fc8467f68faf
 
 pkgname = ruby-travis
 
