@@ -1,7 +1,7 @@
 pkgbase = openvpn-nordvpn
 	pkgdesc = OpenVPN helper script for nordvpn.com
-	pkgver = 0.1.39
-	pkgrel = 0
+	pkgver = 0.1.41
+	pkgrel = 1
 	url = https://github.com/nstinus/nordvpn
 	install = openvpn-nordvpn.install
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = openvpn-nordvpn
 	optdepends = bash-completion: auto-complete commands
 	optdepends = jq: pick recommended server for "start" command
 	provides = nordvpn
-	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-39-gf4fa318
+	source = git+https://github.com/nstinus/nordvpn.git#commit=v0.1-41-gfbdfbfd
 	sha1sums = SKIP
 
 pkgname = openvpn-nordvpn
