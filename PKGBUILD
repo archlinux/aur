@@ -2,7 +2,7 @@
 
 _pkgname=pyxelate
 pkgname=python-$_pkgname
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="A Python class that downsamples images into 8-bit pixel arts"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/sedthh/pyxelate"
 license=('MIT')
 depends=('python-scikit-image' 'python-scikit-learn')
 makedepends=('git' 'python-setuptools')
-source=("git+$url#commit=813328ee986410c299890fa21e09b010325689dc")
+source=("git+$url#commit=d9b7a2a556c65807261d54445eb7dca02d30d97d")
 sha256sums=('SKIP')
 
 build() {
