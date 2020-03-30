@@ -3,7 +3,7 @@
 # Contributor: boosterdev@linuxmail.org
 
 pkgname=xdman
-pkgver=7.2.10
+pkgver=2020.7.2.10
 pkgrel=1
 pkgdesc="Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser."
 arch=('i686' 'x86_64')
