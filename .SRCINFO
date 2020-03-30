@@ -1,0 +1,18 @@
+pkgbase = fdiff
+	pkgdesc = An OpenType table diff tool for fonts based on the fontTools TTX format
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/source-foundry/fdiff
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-aiodns
+	depends = python-aiofiles
+	depends = python-aiohttp
+	depends = python-fonttools
+	source = fdiff-1.0.2.tar.gz::https://github.com/source-foundry/fdiff/archive/v1.0.2.tar.gz
+	sha256sums = abae9c875961d7e6641d78076bae34880b02a6c302ebea00f5c1288237d85902
+
+pkgname = fdiff
+
