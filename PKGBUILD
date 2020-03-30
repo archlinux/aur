@@ -13,6 +13,8 @@ conflicts=('terminator' 'terminator-gtk3-bzr')
 source=("git+https://github.com/JAugusto42/terminator.git")
 sha256sums=('SKIP')
 
+install=terminator-git.install
+
 pkgver() {
   cd "${srcdir}/terminator"
   printf "%s" "$(git describe --tags|sed 's/-/./g')"
@@ -30,4 +32,3 @@ package() {
 
     rm -f "${pkgdir}/usr/share/icons/hicolor/icon-theme.cache"
 }
-
