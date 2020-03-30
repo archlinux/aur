@@ -1,6 +1,6 @@
 pkgbase = pamac-classic
 	pkgdesc = A Gtk3 frontend for libalpm - classic version
-	pkgver = 7.1.3
+	pkgver = 7.2.0
 	pkgrel = 1
 	url = https://git.cromer.cl/cromer/pamac-classic
 	install = pamac-classic.install
@@ -23,8 +23,8 @@ pkgbase = pamac-classic
 	provides = pamac-aur
 	conflicts = pamac
 	conflicts = pamac-aur
-	source = pamac-classic-7.1.3.tar.gz::https://git.cromer.cl/cromer/pamac-classic/archive/v7.1.3.tar.gz
-	sha256sums = 07453ccaddc251963461f6f6847e30e092b9a9fdd9292b7aa4dd8d65ade073c6
+	source = pamac-classic-7.2.0.tar.gz::https://git.cromer.cl/cromer/pamac-classic/archive/v7.2.0.tar.gz
+	sha256sums = 2e27b15679539973896910d16d64bc6ebe375452fcefe484dca99b8c890d4a96
 
 pkgname = pamac-classic
 

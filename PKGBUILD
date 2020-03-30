@@ -1,7 +1,7 @@
 # Maintainer: Thomas Bork <sudobash418@gmail.com>
 
 pkgname=pamac-classic
-pkgver=7.1.3
+pkgver=7.2.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - classic version"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('pamac' 'pamac-aur')
 install=pamac-classic.install
 
 source=("pamac-classic-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('07453ccaddc251963461f6f6847e30e092b9a9fdd9292b7aa4dd8d65ade073c6')
+sha256sums=('2e27b15679539973896910d16d64bc6ebe375452fcefe484dca99b8c890d4a96')
 
 build() {
 	cd "${srcdir}/${pkgname}"
