@@ -1,11 +1,10 @@
 # Maintainer: Fernando Ortiz <nandub+arch@nandub.info>
-# Contributor: Niklas <dev@n1klas.net>
 
 pkgbase=python-ck
 pkgname=("python-ck" "python2-ck")
 _name=ck
 pkgver=1.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Collective Knowledge - lightweight knowledge manager to organize, cross-link, share and reuse artifacts and workflows"
 arch=("any")
 url="https://github.com/ctuning/ck"
