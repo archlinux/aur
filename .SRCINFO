@@ -69,7 +69,7 @@ pkgname = llvm-libs-git
 pkgname = llvm-ocaml-git
 	pkgdesc = OCaml bindings for LLVM
 	depends = llvm-git=11.0.0_r345726.98223f7931f-1
-	depends = ocaml=4.09.1
+	depends = ocaml
 	depends = ocaml-ctypes
 	provides = llvm-ocaml=11.0.0_r345726.98223f7931f-1
 	conflicts = llvm-ocaml

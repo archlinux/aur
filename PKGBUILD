@@ -43,11 +43,6 @@ _python_optimize() {
   python -OO -m compileall "$@"
 }
 
- _ocamlver() {
-    { pacman -Q ocaml 2>/dev/null || pacman -Sp --print-format '%n %v' ocaml ;} \
-     | awk '{ print $2 }' | cut -d - -f 1 | cut -d . -f 1,2,3
-}
-    
 pkgver() {
     cd llvm-project/llvm
 
@@ -210,7 +205,7 @@ package_llvm-libs-git() {
 
 package_llvm-ocaml-git() {
     pkgdesc="OCaml bindings for LLVM"
-    depends=("llvm-git=$pkgver-$pkgrel" "ocaml=$(_ocamlver)" 'ocaml-ctypes')
+    depends=("llvm-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
     conflicts=('llvm-ocaml')
     provides=("llvm-ocaml=$pkgver-$pkgrel")
     
