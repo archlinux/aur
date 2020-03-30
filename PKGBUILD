@@ -1,9 +1,9 @@
 # Maintainer: Martin Kröning <mkroening@hotmail.de>
 pkgname=moodledesktop
-_pkgname=moodlemobile2
+_pkgname=moodleapp
 _electron=electron4
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.8.1
+pkgrel=1
 pkgdesc="The official app for Moodle."
 arch=(any)
 url='https://download.moodle.org/desktop/'
@@ -14,7 +14,7 @@ _pathstem=$_pkgname-$pkgver
 source=("$_pathstem.tar.gz::https://github.com/moodlehq/$_pkgname/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('6bbee2aab975f75010c06b3c1dcd68eef88f55fc0f326cdd6cec09c8df7f301c'
+sha256sums=('961224339df27b598c6b9306c2bf8c4504033f14bca7abb06de191eb43bbcb35'
             'ae04368f6573a0aec419bf1d013a60cfaf7375ed9db2a73e04d0a65904746fdd'
             'ca4bcbbfb0b6f40e4fa8eaed0b02e5c1d1ba609a43f8aaed8cefd16c8af4ba86')
 
