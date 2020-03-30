@@ -1,6 +1,6 @@
 pkgbase = vlc-git
 	pkgdesc = A multi-platform MPEG, VCD/DVD, and DivX player (GIT Version)
-	pkgver = 4.0.0.r8388.gb425adb06c
+	pkgver = 4.0.0.r11553.gfd7857126a
 	pkgrel = 1
 	url = https://www.videolan.org/vlc/
 	arch = i686
@@ -94,12 +94,13 @@ pkgbase = vlc-git
 	depends = fontconfig
 	depends = libxml2
 	depends = gnutls
-	depends = libplacebo
 	depends = wayland-protocols
 	depends = libidn
 	depends = aribb24
 	depends = qt5-quickcontrols2
 	depends = qt5-graphicaleffects
+	depends = libmicrodns>=0.1.2
+	depends = libplacebo
 	optdepends = avahi: service discovery using bonjour protocol
 	optdepends = gst-plugins-base-libs: for libgst plugins
 	optdepends = libdvdcss: decoding encrypted DVDs
@@ -123,7 +124,6 @@ pkgbase = vlc-git
 	optdepends = libnfs: NFS access
 	optdepends = mpg123: mpg123 codec
 	optdepends = protobuf: chromecast streaming
-	optdepends = libmicrodns: mDNS services discovery (chromecast etc)
 	optdepends = lua-socket: http interface
 	optdepends = live-media: RTSP input
 	optdepends = libdvdread: DVD input module
@@ -163,7 +163,7 @@ pkgbase = vlc-git
 	optdepends = aom: AOM AV1 codec
 	optdepends = srt: SRT input/output plugin
 	optdepends = dav1d: dav1d AV1 decoder
-	provides = vlc=4.0.0.r8388.gb425adb06c
+	provides = vlc=4.0.0.r11553.gfd7857126a
 	conflicts = vlc
 	conflicts = vlc-dev
 	conflicts = vlc-plugin
