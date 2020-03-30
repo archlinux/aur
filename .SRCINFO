@@ -1,0 +1,17 @@
+pkgbase = goaur
+	pkgdesc = Very-very simple AUR helper
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://github.com/x0r3d/goaur
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	makedepends = go
+	depends = glibc
+	source = goaur-1.0.tar.gz::https://codeload.github.com/x0r3d/goaur/tar.gz/1.0
+	md5sums = f54b065ad42afb39dfbe76d6872197fa
+
+pkgname = goaur
