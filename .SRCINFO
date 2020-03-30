@@ -1,0 +1,36 @@
+pkgbase = aegisub-japan7-git
+	pkgdesc = A fork of aegisub including tap-to-time feature and custom user scripts
+	pkgver = 3.3.3.r69.0d03097a4
+	pkgrel = 1
+	url = https://github.com/odrling/Aegisub
+	arch = x86_64
+	license = custom
+	makedepends = autoconf-archive
+	makedepends = boost
+	makedepends = git
+	makedepends = intltool
+	makedepends = lua
+	makedepends = mesa
+	makedepends = meson
+	depends = alsa-lib
+	depends = amaranth-font
+	depends = boost-libs
+	depends = fftw
+	depends = fontconfig
+	depends = hunspell
+	depends = icu
+	depends = libass.so
+	depends = libffms2.so
+	depends = libgl
+	depends = libpulse
+	depends = openssl
+	depends = uchardet
+	depends = wxgtk3
+	depends = zlib
+	provides = aegisub
+	conflicts = aegisub
+	source = aegisub::git+https://github.com/odrling/Aegisub.git#branch=meson
+	sha256sums = SKIP
+
+pkgname = aegisub-japan7-git
+
