@@ -1,6 +1,6 @@
 # Maintainer: Deepjyoti <deep.barman30@gmail.com>
 pkgname=quickwall
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=0
 pkgdesc="Quickly set wallpapers from CLI directly from Unsplash."
 arch=("any")
@@ -12,6 +12,7 @@ depends=(
 		"python-pywal"
 		"downloader-cli"
 		"python-requests"
+		"python-beautifulsoup4"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
@@ -22,7 +23,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/deepjyoti30/QuickWall/archive/0.0.2.tar.gz")
+source=("https://github.com/deepjyoti30/QuickWall/archive/0.0.3.tar.gz")
 noextract=()
 md5sums=("SKIP")
 validpgpkeys=()
