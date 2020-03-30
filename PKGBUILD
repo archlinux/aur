@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=astropy
 pkgname=python-${_pyname}-doc
-pkgver=4.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Documentation for AstroPy"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.astropy.org"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-yaml' 'python-pillow' 'python-astropy-helpers>=4.0.1' 'graphviz' 'python-scikit-image' 'python-pytest' 'python-sphinx-astropy')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('4ae0345d28ac5b60e04079967ced4ea7')
+md5sums=('d67007ac8b83f7642e53d41b6bc0db89')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
