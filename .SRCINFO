@@ -1,9 +1,9 @@
 pkgbase = zigbee2mqtt-git
 	pkgdesc = A Zigbee to MQTT bridge
 	pkgver = 1.12.0.r0.g840b9d9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zigbee2mqtt.io
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = git
 	depends = nodejs>=10.0,

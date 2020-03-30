@@ -3,10 +3,10 @@
 _pkgname=zigbee2mqtt
 pkgname=zigbee2mqtt-git
 pkgver=1.12.0.r0.g840b9d9
-pkgrel=1
-pkgdesc="A Zigbee to MQTT bridge"
-arch=('any')
-url="https://www.zigbee2mqtt.io"
+pkgrel=2
+pkgdesc='A Zigbee to MQTT bridge'
+arch=('x86_64')
+url='https://www.zigbee2mqtt.io'
 license=('GPL3')
 depends=('nodejs>=10.0', 'npm')
 conflicts=('zigbee2mqtt')
