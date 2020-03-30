@@ -13,6 +13,7 @@ pkgbase = quickwall
 	depends = downloader-cli
 	depends = python-requests
 	depends = python-beautifulsoup4
+	depends = python-dbus
 	source = https://github.com/deepjyoti30/QuickWall/archive/0.0.3.tar.gz
 	md5sums = SKIP
 

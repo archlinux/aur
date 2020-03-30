@@ -13,6 +13,7 @@ depends=(
 		"downloader-cli"
 		"python-requests"
 		"python-beautifulsoup4"
+		"python-dbus"
 		)
 makedepends=("git" "python-setuptools")
 optdepends=()
