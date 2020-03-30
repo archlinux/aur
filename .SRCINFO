@@ -1,7 +1,7 @@
 pkgbase = bleachbit-py3-git
 	pkgdesc = Deletes unneeded files to free disk space and maintain privacy. Python 3 version.
-	pkgver = r4914.13ee23b7
-	pkgrel = 2
+	pkgver = r5046.93159c5b
+	pkgrel = 1
 	url = https://www.bleachbit.org/
 	arch = any
 	license = GPL3
