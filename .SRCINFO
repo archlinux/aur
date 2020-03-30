@@ -1,0 +1,17 @@
+pkgbase = python-keopscore
+	pkgdesc = keopscore is the KeOps meta programming engine. This python module should be used through a binder (e.g. pykeops or rkeops)
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://pypi.org/project/keopscore
+	arch = any
+	license = BSD
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	source = python-keopscore-2.2.3.tar.gz::https://files.pythonhosted.org/packages/66/31/1da3877139d75e392f5fd0cbdc3b718ae726f5308ed792d385250c43167c/keopscore-2.2.3.tar.gz
+	sha256sums = 64d5dad1e8c806d7070cdc60e48fd5bbf006f2bf1afd39ad3fa5e9fb213517d2
+
+pkgname = python-keopscore

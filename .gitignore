@@ -1,0 +1,5 @@
+pkg/
+src/
+
+python-keopscore-*.pkg.*
+python-keopscore-*.tar.gz
