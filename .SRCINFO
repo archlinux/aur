@@ -1,0 +1,22 @@
+pkgbase = lib2geom-git
+	pkgdesc = a library developed to provide a robust computational geometry framework
+	pkgver = 1.0.r69.g226eb8c6
+	pkgrel = 1
+	url = http://lib2geom.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gtest
+	makedepends = boost
+	depends = glib2
+	depends = cairo
+	depends = gsl
+	depends = gtest
+	depends = double-conversion
+	source = git+https://gitlab.com/inkscape/lib2geom.git
+	md5sums = SKIP
+
+pkgname = lib2geom-git
+
