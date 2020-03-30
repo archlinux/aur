@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=git-annex-standalone
-pkgver=7.20191107
+pkgver=8.20200309
 pkgrel=1
 pkgdesc="Manage files with git, without checking their contents into git. Standalone version, with no Haskell dependency."
 arch=(x86_64)
@@ -24,8 +24,19 @@ pkgver() {
 package() {
   cd "$srcdir/git-annex.linux"
 
+  for lib in libffi.so.7; do
+    install -Dm644 usr/lib/x86_64-linux-gnu/$lib "$pkgdir/usr/share/$pkgname/lib/$lib"
+  done
+
   for exe in git-annex git-annex-shell; do
-    install -Dm755 shimmed/$exe/$exe "$pkgdir/usr/bin/$exe"
+    install -Dm755 shimmed/$exe/$exe "$pkgdir/usr/share/$pkgname/bin/$exe"
+    install -d "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/$exe" <<EOF
+#!/bin/bash
+export LD_LIBRARY_PATH="/usr/share/$pkgname/lib":\$LD_LIBRARY_PATH
+exec "/usr/share/$pkgname/bin/$exe" "\$@"
+EOF
+    chmod +x "$pkgdir/usr/bin/$exe"
   done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
