@@ -1,3 +1,2 @@
 #!/bin/sh
-
-exec electron /usr/lib/rocketchat-desktop.asar "$@"
+exec electron7 /usr/lib/rocketchat-desktop.asar "$@"
