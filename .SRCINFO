@@ -1,0 +1,21 @@
+pkgbase = libretro-opera-git
+	pkgdesc = libretro implementation of 4DO/libfreedo (3DO)
+	pkgver = 409.27bc265
+	pkgrel = 1
+	url = https://github.com/libretro/opera-libretro
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	groups = libretro
+	license = GPL3
+	makedepends = git
+	depends = zlib
+	depends = glibc
+	depends = libretro-core-info
+	source = git+https://github.com/libretro/opera-libretro.git
+	md5sums = SKIP
+
+pkgname = libretro-opera-git
+
