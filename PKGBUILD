@@ -1,9 +1,9 @@
-# Maintainer: Ivan Fonseca <ivanfon@riseup.net>
+# Maintainer: Chang Feng<chang_196700@hotmail.com>
+# Contributor: Ivan Fonseca <ivanfon@riseup.net>
 # Contributor: boosterdev@linuxmail.org
-# Contributor: Chang Feng<chang_196700@hotmail.com>
 
 pkgname=xdman
-pkgver=2020.7.2.10
+pkgver=7.2.10
 pkgrel=1
 pkgdesc="Xtreme Download Manager is a powerful tool to increase download speed up-to 500%, save videos from video sharing sites and integration with ANY browser."
 arch=('i686' 'x86_64')
