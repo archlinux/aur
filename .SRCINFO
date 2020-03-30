@@ -1,5 +1,5 @@
 pkgbase = lua-curl
-	pkgver = 0.3.9
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/Lua-cURL/Lua-cURLv3
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lua-curl
 	makedepends = lua51
 	makedepends = lua52
 	depends = curl
-	source = Lua-cURL-0.3.9.tar.gz::https://github.com/Lua-cURL/Lua-cURLv3/archive/v0.3.9.tar.gz
-	sha256sums = c0e3f074b68b6e06d7f3c46ecfc742e810482128cb4b435c0caf1beb9ef4c066
+	source = Lua-cURL-0.3.11.tar.gz::https://github.com/Lua-cURL/Lua-cURLv3/archive/v0.3.11.tar.gz
+	sha256sums = 5453d333d09cd731c15270e9dfa2010a595112382a9f48ae5d34c2cd25ff2fae
 
 pkgname = lua-curl
 	pkgdesc = Lua 5.3 binding to libcurl

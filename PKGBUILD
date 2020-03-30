@@ -2,7 +2,7 @@
 
 pkgname=('lua-curl' 'lua51-curl' 'lua52-curl')
 _pkgname=Lua-cURL
-pkgver=0.3.9
+pkgver=0.3.11
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Lua-cURL/Lua-cURLv3'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('curl')
 makedepends=('lua' 'lua51' 'lua52')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${_pkgname}v3/archive/v${pkgver}.tar.gz")
-sha256sums=('c0e3f074b68b6e06d7f3c46ecfc742e810482128cb4b435c0caf1beb9ef4c066')
+sha256sums=('5453d333d09cd731c15270e9dfa2010a595112382a9f48ae5d34c2cd25ff2fae')
 
 package_lua-curl() {
     pkgdesc="Lua 5.3 binding to libcurl"
