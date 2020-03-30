@@ -1,6 +1,6 @@
 pkgbase = dma
 	pkgdesc = DragonFly BSD mail transport agent
-	pkgver = 0.12
+	pkgver = 0.13
 	pkgrel = 1
 	url = https://github.com/corecode/dma
 	arch = i686
@@ -8,10 +8,12 @@ pkgbase = dma
 	license = BSD
 	makedepends = ed
 	depends = openssl
+	provides = smtp-forwarder
+	conflicts = smtp-forwarder
 	backup = etc/dma/auth.conf
 	backup = etc/dma/dma.conf
-	source = https://github.com/corecode/dma/archive/v0.12.tar.gz
-	sha256sums = 054a40203d43bc1182dcadf2375ccf01944329dce472444acb42d56cf01de367
+	source = https://github.com/corecode/dma/archive/v0.13.tar.gz
+	sha256sums = 9d4b903f2b750d888f51d668d08d2ea18404dedb0a52cffeb3c81376023c1946
 
 pkgname = dma
 
