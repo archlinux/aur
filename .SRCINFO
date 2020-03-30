@@ -1,0 +1,21 @@
+pkgbase = python-xxh
+	pkgdesc = Bring your favorite shell wherever you go through the ssh
+	pkgver = 0.7.5
+	pkgrel = 00
+	url = https://github.com/xxh/xxh
+	arch = any
+	license = BSD
+	makedepends = python-pip
+	depends = python
+	depends = python-yaml
+	depends = python-pexpect
+	noextract = xxh_xxh-0.7.5-py3-none-any.whl
+	source = PKGBUILD_EXTRAS
+	source = https://files.pythonhosted.org/packages/e3/cd/e9bee833ebb079ea50d897a04affce6b8cd86fc9422f0df4710a572ad2ce/xxh_xxh-0.7.5-py3-none-any.whl
+	source = LICENSE
+	md5sums = SKIP
+	md5sums = e72c365321c84567362f5af674395f31
+	md5sums = b281a66f71965a87c0e9c40ed38d099c
+
+pkgname = python-xxh
+
