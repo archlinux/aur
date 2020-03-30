@@ -26,5 +26,5 @@ build() {
 package_csloc() {
 	cd "$_pkgname"
 
-	install -D -m 755 "target/release/csloc" "$pkdir/usr/bin/csloc"
+	install -D -m 755 "target/release/csloc" "$pkgdir/usr/bin/csloc"
 }
