@@ -1,8 +1,8 @@
 # Maintainer Pol Marcet Sardà <polmarcetsarda@gmail.com>
 
 pkgname=k8vavoom-git
-_pkgver_base=build541129
-pkgver=build541129.r11039.bccd05170
+_pkgver_base=build550317
+pkgver=build550317.r12201.78e1b1ae9
 pkgrel=1
 epoch=1
 pkgdesc="Source port of Doom"
@@ -33,8 +33,8 @@ build() {
     cmake -DCMAKE_BUILD_TYPE=Release    \
           -DCMAKE_INSTALL_PREFIX=/usr   \
           -DENABLE_MASTER=ON            \
-          -DENABLE_SERVER=OFF           \
-          -DENABLE_VCCRUN=OFF           \
+          -DENABLE_SERVER=ON            \
+          -DENABLE_VCCRUN=ON            \
           -DWITH_SYS_LIBPNG=ON          \
           -DARCH_LINUX_SPECIAL=ON       \
           .
