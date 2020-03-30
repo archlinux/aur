@@ -8,7 +8,6 @@ license=('custom:SIL Open Font License')
 pkgver=4.105
 pkgrel=1
 changelog=ChangeLog.${pkgname}
-depends=('fontconfig' 'xorg-font-utils')
 arch=('any')
 
 source=(http://vollkorn-typeface.com/download/vollkorn-${pkgver//./-}.zip)
