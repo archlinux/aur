@@ -28,7 +28,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    make GOFLAGS=-tags=notmuch PREFIX=/usr
+    make GOFLAGS=-tags=notmuch PREFIX=/usr VERSION="$(pkgver)"
 }
 
 package() {
