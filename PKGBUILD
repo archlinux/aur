@@ -1,7 +1,7 @@
-# Maintainer: KingofToasters <dev@sgregoratto.me>
+# Maintainer: Stephen Gregoratto <dev@sgregoratto.me>
 pkgname=wev-git
-pkgver=r3.47d1739
-pkgrel=2
+pkgver=1.0.0.r0.gcee3dfb
+pkgrel=1
 pkgdesc='Print wayland events, like xev(1)'
 url='https://git.sr.ht/~sircmpwn/wev'
 license=('MIT')
@@ -9,8 +9,10 @@ provides=('wev')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('wayland' 'wayland-protocols' 'libxkbcommon')
 makedepends=('git' 'scdoc')
-source=("${pkgname%-git}::git+$url")
-sha256sums=('SKIP')
+source=("${pkgname%-git}::git+$url"
+	"wev-git.patch")
+sha256sums=('SKIP'
+            'd93b7cfbee98559178b1e650ae1bbdd7bb2fe07376c76a0312cb17c7529472f9')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -20,6 +22,11 @@ pkgver() {
   )
 }
 
+prepare() {
+  cd "${pkgname%-git}"
+  patch -Np1 -i "$srcdir/wev-git.patch"
+}
+
 build() {
   cd "${pkgname%-git}"
   make
@@ -27,6 +34,6 @@ build() {
 
 package() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir/" PREFIX="/usr" MANDIR="/usr/share/man" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENCE"
+  make DESTDIR="$pkgdir" PREFIX="/usr" MANDIR="/usr/share/man" install
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

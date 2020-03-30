@@ -1,7 +1,7 @@
 pkgbase = wev-git
 	pkgdesc = Print wayland events, like xev(1)
-	pkgver = r3.47d1739
-	pkgrel = 2
+	pkgver = 1.0.0.r0.gcee3dfb
+	pkgrel = 1
 	url = https://git.sr.ht/~sircmpwn/wev
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,9 @@ pkgbase = wev-git
 	depends = libxkbcommon
 	provides = wev
 	source = wev::git+https://git.sr.ht/~sircmpwn/wev
+	source = wev-git.patch
 	sha256sums = SKIP
+	sha256sums = d93b7cfbee98559178b1e650ae1bbdd7bb2fe07376c76a0312cb17c7529472f9
 
 pkgname = wev-git
 
