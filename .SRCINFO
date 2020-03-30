@@ -1,10 +1,10 @@
 pkgbase = python-codereef
 	pkgdesc = CodeReef client to deal with portable workflows
 	pkgver = 0.7.25
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codereef.ai/portal
 	arch = any
-	license = BSD 3-clause
+	license = Apache-2.0
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	source = https://files.pythonhosted.org/packages/0b/71/ae0d7116c65f141b9b2dda69bc74e59129348410197909334e9b467c75b8/codereef-0.7.25.tar.gz
