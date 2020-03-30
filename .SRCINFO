@@ -1,6 +1,6 @@
 pkgbase = onionscan-git
 	pkgdesc = Tool to scan onion services(git version)
-	pkgver = 20170225.r130
+	pkgver = OnionScan.0.2.r8.da42865
 	pkgrel = 1
 	url = https://github.com/s-rah/onionscan
 	arch = armv6h
