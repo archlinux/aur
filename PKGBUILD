@@ -1,7 +1,7 @@
 # Maintainer: Bastian Pukallus <bplinux at posteo de>
 pkgname='fspy'
 pkgver='1.0.3'
-pkgrel=1
+pkgrel=2
 pkgdesc="cross platform app for still image camera matching"
 arch=('x86_64')
 url="https://github.com/stuffmatic/fSpy"
