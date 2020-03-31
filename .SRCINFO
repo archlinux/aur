@@ -1,0 +1,14 @@
+pkgbase = haskell-numinstances
+	pkgdesc = Vector & affine spaces, linear maps, and derivatives
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/conal/NumInstances
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/NumInstances/1.4/NumInstances-1.4.tar.gz
+	sha256sums = cbdb2a49346f59ceb5ab38592d7bc52e5205580d431d0ac6d852fd9880e59679
+
+pkgname = haskell-numinstances
+
