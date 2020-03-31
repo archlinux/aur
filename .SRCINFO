@@ -1,6 +1,6 @@
 pkgbase = gsequencer
 	pkgdesc = Advanced Gtk+ Sequencer
-	pkgver = 3.2.0
+	pkgver = 3.2.4
 	pkgrel = 1
 	url = https://nongnu.org/gsequencer
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = gsequencer
 	provides = gsequencer
 	provides = midi2xml
 	conflicts = midi2xml
-	source = https://download.savannah.gnu.org/releases/gsequencer/3.2.x/gsequencer-3.2.0.tar.gz
-	md5sums = fabcb8b6964f0fa8f7669d077f8bd1b4
+	source = https://download.savannah.gnu.org/releases/gsequencer/3.2.x/gsequencer-3.2.4.tar.gz
+	md5sums = 620e7af870c02d68ab7a2d6430c147e0
 
 pkgname = gsequencer
 
