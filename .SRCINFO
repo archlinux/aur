@@ -1,12 +1,12 @@
 pkgbase = rocr-debug-agent
 	pkgdesc = ROCr Debug Agent Library
 	pkgver = 3.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ROCm-Developer-Tools/rocr_debug_agent
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
-	depends = rocr-runtime>=3.1.0
+	depends = hsa-rocr>=3.1.0
 	depends = hsakmt-roct>=3.1.0
 	options = !staticlibs
 	options = strip
