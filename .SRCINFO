@@ -1,6 +1,6 @@
 pkgbase = mediastreamer-git
 	pkgdesc = A modular sound and video processing and streaming library
-	pkgver = 4.4.0.alpha.r2.g1119a608
+	pkgver = 4.4.0.alpha.r40.g6bfb9896
 	pkgrel = 1
 	url = https://github.com/BelledonneCommunications/mediastreamer2
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = mediastreamer-git
 	depends = libsrtp
 	depends = libxv
 	depends = mbedtls
-	depends = ortp>=4.3
+	depends = ortp>=4.4.0
 	depends = zxing-cpp
-	provides = mediastreamer=4.4.0.alpha.r2.g1119a608
+	provides = mediastreamer=4.4.0.alpha.r40.g6bfb9896
 	conflicts = mediastreamer
 	source = git+https://github.com/BelledonneCommunications/mediastreamer2.git
 	sha256sums = SKIP

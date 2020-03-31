@@ -6,7 +6,7 @@
 
 pkgname=mediastreamer-git
 _pkgname=mediastreamer2
-pkgver=4.4.0.alpha.r2.g1119a608
+pkgver=4.4.0.alpha.r40.g6bfb9896
 pkgrel=1
 pkgdesc="A modular sound and video processing and streaming library"
 arch=('x86_64')
@@ -14,7 +14,7 @@ url="https://github.com/BelledonneCommunications/mediastreamer2"
 license=('GPL')
 conflicts=('mediastreamer')
 provides=("mediastreamer=$pkgver")
-depends=('bctoolbox>=4.3' 'bcg729-git' 'bcmatroska2-git' 'bzrtp>=4.3' 'ffmpeg' 'glew' 'libjpeg-turbo' 'libsrtp' 'libxv' 'mbedtls' 'ortp>=4.3' 'zxing-cpp')
+depends=('bctoolbox>=4.3' 'bcg729-git' 'bcmatroska2-git' 'bzrtp>=4.3' 'ffmpeg' 'glew' 'libjpeg-turbo' 'libsrtp' 'libxv' 'mbedtls' 'ortp>=4.4.0' 'zxing-cpp')
 makedepends=('cmake' 'doxygen' 'git')
 source=("git+https://github.com/BelledonneCommunications/mediastreamer2.git")
 sha256sums=('SKIP')
