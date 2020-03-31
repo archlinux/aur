@@ -1,13 +1,13 @@
 # Maintainer: Noah (coolreader18)
 pkgname=ndless-sdk-git pkgver=r451.edaa723
 pkgrel=1
-pkgdesc=""
+pkgdesc="SDK for programs targeting Ndless on the TI-Nspire"
 arch=(x86_64)
 url="https://github.com/ndless-nspire/Ndless"
 license=('MPL-1.1')
 groups=()
-depends=(git gcc binutils gmp mpfr libmpc zlib boost wget)
-makedepends=('git')
+depends=(gmp mpfr libmpc zlib boost-libs)
+makedepends=(git gcc binutils boost wget)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
