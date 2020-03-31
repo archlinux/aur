@@ -1,4 +1,4 @@
-# Maintainer: Andrew Sun <adsun701@gmail.com>
+# Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-gtkmm
 _pkgname=gtkmm
@@ -21,7 +21,7 @@ build() {
   cd "${srcdir}/gtkmm-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    LIBS+=" -lssp" ${_arch}-configure \
       --disable-documentation \
       ..
     make
