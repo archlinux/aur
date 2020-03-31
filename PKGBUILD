@@ -3,7 +3,7 @@
 
 pkgname=emacs-jabber-git
 pkgver=0.8.92.119.gfff3382
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jabber client written in emacs lisp"
 arch=('any')
 url="http://emacs-jabber.sourceforge.net/"
@@ -31,4 +31,5 @@ build() {
 package() {
   cd ${pkgname%-git}
   make DESTDIR="$pkgdir/" install
+  rm "$pkgdir"/usr/share/emacs/site-lisp/hexrgb.el{,c}
 } 

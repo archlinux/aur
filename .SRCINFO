@@ -1,7 +1,7 @@
 pkgbase = emacs-jabber-git
 	pkgdesc = A Jabber client written in emacs lisp
 	pkgver = 0.8.92.119.gfff3382
-	pkgrel = 1
+	pkgrel = 2
 	url = http://emacs-jabber.sourceforge.net/
 	arch = any
 	license = GPL
