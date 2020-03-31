@@ -2,8 +2,8 @@
 # Maintainer: Henry Pham <huy at tableplus dot com>
 
 pkgname=tableplus
-pkgver=0.1.40
-pkgrel=2
+pkgver=0.1.42
+pkgrel=1
 pkgdesc="Modern, native, and friendly GUI tool for relational databases (Alpha)"
 arch=('x86_64')
 url="https://tableplus.com/"
@@ -15,7 +15,7 @@ source=('LICENSE'
 )
 sha256sums=('76f924b1ebad5309ccf0dd7f3fe3d1b57ff3088b208a603900b0e240fdb5debb'
             'ffe6b081bf6e868c3b9b9c3b9088af37a74cb7a517c5de927c0ad216ee66eed1'
-            '8839ba141873f00979f55c2491d8475f3a3bd7514274d21cc0f892169d6bb7da'
+            '3c1ab14ae01644bbbe5c373894f0e6a841409d8cd3adf17198b38e469159e777'
 )
 
 prepare() {
