@@ -1,6 +1,6 @@
 pkgbase = rstudio-server-git
 	pkgdesc = A new integrated development environment (IDE) for R programming language
-	pkgver = v1.2.5019.r1893.gc0a1f4396e
+	pkgver = v1.2.5033.r3964.g41494408a3
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-server-git.install
@@ -18,21 +18,27 @@ pkgbase = rstudio-server-git
 	makedepends = pam
 	makedepends = zlib
 	makedepends = wget
+	makedepends = yarn
 	depends = r>=3.0.1
 	depends = boost-libs>=1.69
 	depends = openssl
 	depends = mathjax2
 	depends = pandoc
 	depends = clang
+	depends = soci
 	conflicts = rstudio-server
 	source = git://github.com/rstudio/rstudio.git
 	source = rstudio-server.service
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.2.zip
+	source = https://nodejs.org/dist/v10.19.0/node-v10.19.0-linux-x64.tar.gz
+	source = soci.patch
 	md5sums = SKIP
 	md5sums = eea28f7865720f6c8d5de12f3f631880
 	md5sums = e2617189fe5c138945b8cc95f26bd476
 	md5sums = c295406d68c5ef364e445068599aa6d4
+	md5sums = 441a8e19ab9cd9884cbd24f85840c7a6
+	md5sums = 3b7bc114a244282fcc50b12d155dddd0
 
 pkgname = rstudio-server-git
 

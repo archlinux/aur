@@ -8,28 +8,32 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.2.5019.r1893.gc0a1f4396e
+pkgver=v1.2.5033.r3964.g41494408a3
 _gwtver=2.8.2
 _ginver=2.1.2
-_clangver=3.8.0
+_nodever=10.19.0
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
-depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang')
-makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget')
+depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'soci')
+makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget' 'yarn')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
 source=('git://github.com/rstudio/rstudio.git'
 	'rstudio-server.service'
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
+	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
+	"soci.patch"
 )
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
-         'c295406d68c5ef364e445068599aa6d4')
+         'c295406d68c5ef364e445068599aa6d4'
+         '441a8e19ab9cd9884cbd24f85840c7a6'
+         '3b7bc114a244282fcc50b12d155dddd0')
          
 
 pkgver() {
@@ -39,6 +43,8 @@ pkgver() {
 
 prepare () {
 	cd ${srcdir}/$_gitname
+	# Patching SOCI
+	patch -p1 < ${srcdir}/soci.patch
 
 	msg "Extracting dependencies..."
 	    cd "${srcdir}/${_gitname}/src/gwt"
@@ -49,14 +55,21 @@ prepare () {
 	    cp -r "${srcdir}/gwt-${_gwtver}/"* lib/gwt/${_gwtver}
 
 	    cd "${srcdir}/${_gitname}/dependencies/common"
-	    install -d pandoc libclang/{3.5,builtin-headers}
+	    install -d pandoc 
 
 	    ln -sfT "/usr/share/mathjax2" mathjax-27
 	    ln -sfT "/usr/bin/pandoc" pandoc/pandoc
 	    ln -sfT "/usr/bin/pandoc-citeproc" pandoc/pandoc-citeproc
-	    ln -sfT "/usr/lib/libclang.so" libclang/3.5/libclang.so
-	    ln -sfT "/usr/lib/clang/$_clangver/include" libclang/builtin-headers/3.5
 
+	    # Nodejs
+	    install -d node/${_nodever}
+	    cp -r ${srcdir}/node-v${_nodever}-linux-x64/* node/${_nodever}
+	    cd ${srcdir}/${_gitname}/src/gwt/panmirror/src/editor
+	    yarn config set ignore-engines true
+	    yarn install
+
+
+	    cd ${srcdir}/${_gitname}/dependencies/common
 	    ./install-dictionaries
 	    msg "Downloading and installing R packages..."
 	    ./install-packages
@@ -77,7 +90,7 @@ build() {
   cd "${srcdir}/$_gitname/build"
   # Configure cmake 
   #cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DCMAKE_DL_LIBRARIES=/usr/lib64/libdl.so -DCMAKE_LIBR_DOC_DIR=/usr/share/doc/R -DCMAKE_LIBR_EXECUTABLE=/usr/bin/R -DCMAKE_LIBR_HOME=/usr/lib64/R -DCMAKE_LIBR_INCLUDE_DIRS=/usr/include/R -DCMAKE_LIBR_CORE_LIBRARY=usr/lib64/R/lib/libR.so  -DRSTUDIO_USE_SYSTEM_BOOST=Yes ..
-  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DRSTUDIO_USE_SYSTEM_BOOST=yes -DBoost_NO_BOOST_CMAKE=ON ..
+  cmake -DRSTUDIO_TARGET=Server -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/lib/rstudio-server -DRSTUDIO_USE_SYSTEM_BOOST=yes -DBoost_NO_BOOST_CMAKE=ON -DRSTUDIO_USE_SYSTEM_SOCI=yes ..
 
 }
 
