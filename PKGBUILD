@@ -1,53 +1,38 @@
-# Maintainer: Olaf Leidinger <oleid@mescharet.de>
-# Maintainer: Bruno Filipe <bmilreu@gmail.com>
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Contributor: Olaf Leidinger <oleid@mescharet.de>
+# Contributor: Bruno Filipe <bmilreu@gmail.com>
+# Contributor: Jakub Okoński <jakub@okonski.org>
+# Contributor: Ranieri Althoff <ranisalt+aur at gmail.com>
+
 pkgname=hsa-rocr
-pkgver=1.1.0.r31.bc92d3a
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime"
-_gitdir=ROCR-Runtime
+pkgdesc='ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime'
 arch=('x86_64')
-url="https://github.com/RadeonOpenCompute/ROCR-Runtime"
-license=('X11/MIT')
-groups=()
-depends=(hsakmt-roct)
-makedepends=(git cmake gcc hsakmt-roct) 
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-source=('git+https://github.com/RadeonOpenCompute/ROCR-Runtime.git#branch=roc-1.9.x')
-md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/${_gitdir}"
-
-# Git, tags available
-	printf "%s" "$(git describe --long | sed -e 's:roc-::g'  -e 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
+url='https://github.com/RadeonOpenCompute/ROCR-Runtime'
+license=('custom:NCSAOSL')
+makedepends=('cmake' 'libelf' "hsakmt-roct>=$pkgver")
+provides=("rocr-runtime=$pkgver")
+replaces=('rocr-runtime')
+conflicts=('rocr-runtime')
+source=("$url/archive/roc-$pkgver.tar.gz")
+sha256sums=('b162464ef87ce39518e59ef8406d6b897aa7a930795c586829614ed87aa1c2ce')
+_dirname="$(basename $url)-roc-$pkgver"
 
 build() {
-	cd "$srcdir/${_gitdir}"
-
-	mkdir -p build && \
-	cd build && \
-	cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm -DCMAKE_PREFIX_PATH=/opt/rocm/libhsakmt ../src && \
-	make
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
+        -DHSAKMT_INC_PATH=/opt/rocm/include \
+        -DHSAKMT_LIB_PATH=/opt/rocm/lib \
+        "$_dirname/src"
+  make
 }
 
 package() {
-	cd "$srcdir/${_gitdir}/build"
-	make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir" install
 
-	# additional links
-	mkdir -p "$pkgdir/usr/include"
-	ln -s opt/rocm/hsa/include/hsa "$pkgdir/usr/include"
-
-	# ldconfig
-	mkdir -p "$pkgdir/etc/ld.so.conf.d"
-	echo "/opt/rocm/hsa/lib" > "$pkgdir/etc/ld.so.conf.d/hsa.conf"
-
-	# cleanup
-	rm -Rf "$pkgdir/opt/rocm/include"
-	rm -Rf "$pkgdir/opt/rocm/lib"
+  install -Dm644 "$_dirname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/rocm-runtime.conf" <<-EOF
+    /opt/rocm/lib
+    /opt/rocm/hsa/lib
+EOF
 }

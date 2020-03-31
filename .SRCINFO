@@ -1,19 +1,18 @@
 pkgbase = hsa-rocr
 	pkgdesc = ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime
-	pkgver = 1.1.0.r31.bc92d3a
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCR-Runtime
 	arch = x86_64
-	license = X11/MIT
-	makedepends = git
+	license = custom:NCSAOSL
 	makedepends = cmake
-	makedepends = gcc
-	makedepends = hsakmt-roct
-	depends = hsakmt-roct
-	provides = hsa-rocr
-	conflicts = hsa-rocr
-	source = git+https://github.com/RadeonOpenCompute/ROCR-Runtime.git#branch=roc-1.9.x
-	md5sums = SKIP
+	makedepends = libelf
+	makedepends = hsakmt-roct>=3.1.0
+	provides = rocr-runtime=3.1.0
+	conflicts = rocr-runtime
+	replaces = rocr-runtime
+	source = https://github.com/RadeonOpenCompute/ROCR-Runtime/archive/roc-3.1.0.tar.gz
+	sha256sums = b162464ef87ce39518e59ef8406d6b897aa7a930795c586829614ed87aa1c2ce
 
 pkgname = hsa-rocr
 
