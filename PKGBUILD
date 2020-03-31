@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=sonic-pi
-pkgver=3.2.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
@@ -19,13 +19,11 @@ optdepends=('sox: for further effects')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samaaron/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}-3.2.0-gui_paths.patch"
         "${pkgname}-3.2.0-devendor_qscintilla-qt5.patch"
-        "${pkgname}-3.2.0-ruby_paths.patch"
-        "${pkgname}-3.2.0-sys-proctable.patch")
-sha512sums=('55c5ee2d42cf5988a2cbcad3429a595e0376bde0a96b71dccd6753fe27a51d439057b0de3e0d1cfce10318803d4c3869da00254db1312fbaaafc9c6b502af148'
+        "${pkgname}-3.2.0-ruby_paths.patch")
+sha512sums=('e023fd4722fa3da5bfd82927a05c31a30d31a288e24f5167b3b2d5350139a0510f08dd8cb901d82e99a04d6d1328f8950bd9a6450f583abb79a8c917cfa1ca2b'
             'e530cc13cb6674dca2ace2a8da566ce28263a15197cf7fccd5d3e58b676c08ce860bc6264a95d26569ff1f923020a40ece1e05841c955c5db16e61c30938f1c0'
             'fbe196bc332a7a04e8d5097204a13626e7aba3a70715d2a1676c0b1f37f56da427d0d5b417f92c27e64f91a03dd9d4335f65f26f9e9d14e4076d496c94c949af'
-            '987504a8b98eea4a3fac2557fcbf002b8d0e9c991922c74e7649546ff963c30d0fef891cecb546f840801c88ec9b82f1afb4cebef9838a53af20d0f3f63a9c39'
-            '1bc24668171752cdf59d69c890d7ac5d22bd10d9e16a5e6283fd35746844be43a12ab397a89f52fb2ed92ce208e8d9b21c8a75a27953d1c7fc6502aa8d9aff19')
+            '987504a8b98eea4a3fac2557fcbf002b8d0e9c991922c74e7649546ff963c30d0fef891cecb546f840801c88ec9b82f1afb4cebef9838a53af20d0f3f63a9c39')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,12 +38,8 @@ prepare() {
   patch -Np1 -i "../${pkgname}-3.2.0-gui_paths.patch"
   # devendor qscintilla-qt5: https://github.com/samaaron/sonic-pi/issues/2278
   patch -Np1 -i "../${pkgname}-3.2.0-devendor_qscintilla-qt5.patch"
-  # fix issue with changed signature in one of ruby-sys-proctable's functions:
-  # https://github.com/samaaron/sonic-pi/issues/2280
-  patch -Np1 -i "../${pkgname}-3.2.0-sys-proctable.patch"
   # TODO: devendor boost from GUI components (only headers required during
   # build time)
-
 
   #TODO: devendor ruby-ast
   #TODO: devendor ruby-atomic (bin)
@@ -69,6 +63,9 @@ prepare() {
   #TODO: devendor ruby-wavefile
   #TODO: devendor ruby-websocket
 
+  # remove broken code from vendoring script:
+  # https://github.com/samaaron/sonic-pi/issues/2310
+  sed -e '19,25d' -i app/server/ruby/bin/compile-extensions.rb
   # devendor gems requiring compilation:
   # ffi, ruby-prof, rugged
   sed -e '/rugged/d' \
@@ -77,7 +74,7 @@ prepare() {
       -i app/server/ruby/bin/compile-extensions.rb
   # remove unrequired gems, so we don't create any doc for them
   rm -rvf app/server/ruby/vendor/{activesupport,ffi,i18n,kramdown,minitest,mocha,multi_json,rouge,rugged,sys-proctable}*
-  rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof}*
+  rm -rvf app/server/ruby/vendor/{narray,ruby-coreaudio,ruby-prof,rake-compiler}*
 }
 
 build() {
@@ -213,10 +210,10 @@ package() {
   # ruby
   install -vdm 755 "${pkgdir}/usr/share/${pkgname}"
   cp -av app/server/ruby "${pkgdir}/usr/lib/${pkgname}/server"
-  rm -v "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/ext/*.{o,c}
-  rm -v "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/ext/*/*.{o,c}
-  rm -v "${pkgdir}/usr/lib/${pkgname}/server/Rakefile"
-  rm -v "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/Rakefile
+  rm -fv "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/ext/*.{o,c}
+  rm -fv "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/ext/*/*.{o,c}
+  rm -fv "${pkgdir}/usr/lib/${pkgname}/server/Rakefile"
+  rm -fv "${pkgdir}/usr/lib/${pkgname}/server/vendor/"*/Rakefile
   # xdg
   install -vDm 644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
   # license
