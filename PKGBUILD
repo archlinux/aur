@@ -2,7 +2,7 @@
 # Contributor: Azrael <charles.gueunet+aur@gmail.com>
 
 pkgname=filament
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A real-time physically based engine'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('assimp' 'libc++' 'libc++abi' 'mesa' 'libxi' 'embree' 'libpng' 'zlib' '
 makedepends=('cmake' 'clang')
 conflicts=('mono') # because of /usr/bin/cmgen
 source=("https://github.com/google/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2c504085b66a7e7e2f5e05b7c3b51ed2c10160750fe6104503372ed3d5cc78bb')
+sha256sums=('4f8f8d4c4bc68c4cd97da05379188ffe127acc94e875892836705d57f88ed0a8')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
