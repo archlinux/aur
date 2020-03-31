@@ -1,0 +1,848 @@
+diff --git a/Makefile.in b/Makefile.in
+index 88ce384..019e394 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -57,7 +57,12 @@ src/mash/memcpyWrap.o : src/mash/memcpyWrap.c
+ src/mash/capnp/MinHash.capnp.c++ src/mash/capnp/MinHash.capnp.h : src/mash/capnp/MinHash.capnp
+ 	cd src/mash/capnp;export PATH=@capnp@/bin/:${PATH};capnp compile -I @capnp@/include -oc++ MinHash.capnp
+ 
+-install : mash
++.PHONY: install-man install
++install-man:
++	mkdir -p @prefix@/share/man/man1
++	cp `pwd`/doc/man/*.1 @prefix@/share/man/man1
++
++install : mash install-man
+ 	mkdir -p @prefix@/bin/
+ 	mkdir -p @prefix@/lib/
+ 	mkdir -p @prefix@/include/
+@@ -68,12 +73,15 @@ install : mash
+ 	cp `pwd`/src/mash/*.h @prefix@/include/mash/
+ 	cp `pwd`/src/mash/capnp/MinHash.capnp.h @prefix@/include/mash/capnp/
+ 
+-.PHONY: uninstall
+-uninstall:
++.PHONY: uninstall uninstall-man
++uninstall: uninstall-man
+ 	rm -f @prefix@/bin/mash
+ 	rm -f @prefix@/lib/libmash.a
+ 	rm -rf @prefix@/include/mash
+ 
++uninstall-man:
++	rm -f @prefix@/share/man/man1/mash*.1
++
+ clean :
+ 	-rm mash
+ 	-rm libmash.a
+diff --git a/doc/man/mash-dist.1 b/doc/man/mash-dist.1
+new file mode 100644
+index 0000000..9f1ae60
+--- /dev/null
++++ b/doc/man/mash-dist.1
+@@ -0,0 +1,162 @@
++'\" t
++.\"     Title: mash-dist
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH\-DIST" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash\-dist \- estimate the distance of query sequences to references
++.SH "SYNOPSIS"
++.sp
++\fBmash dist\fP [options] <reference> <query> [<query>] ...
++.SH "DESCRIPTION"
++.sp
++Estimate the distance of each query sequence to the reference. Both the
++reference and queries can be fasta or fastq, gzipped or not, or Mash sketch
++files (.msh) with matching k\-mer sizes. Query files can also be files of file
++names (see \fB\-l\fP). Whole files are compared by default (see \fB\-i\fP). The output
++fields are [reference\-ID, query\-ID, distance, p\-value, shared\-hashes].
++.SH "OPTIONS"
++.sp
++\fB\-h\fP
++.RS 4
++Help
++.RE
++.sp
++\fB\-p\fP <int>
++.RS 4
++Parallelism. This many threads will be spawned for processing. [1]
++.RE
++.SS "Input"
++.sp
++\fB\-l\fP
++.RS 4
++List input. Each query file contains a list of sequence files, one
++per line. The reference file is not affected.
++.RE
++.SS "Output"
++.sp
++\fB\-t\fP
++.RS 4
++Table output (will not report p\-values, but fields will be blank if
++they do not meet the p\-value threshold).
++.RE
++.sp
++\fB\-v\fP <num>
++.RS 4
++Maximum p\-value to report. (0\-1) [1.0]
++.RE
++.sp
++\fB\-d\fP <num>
++.RS 4
++Maximum distance to report. (0\-1) [1.0]
++.RE
++.SS "Sketching"
++.sp
++\fB\-k\fP <int>
++.RS 4
++K\-mer size. Hashes will be based on strings of this many
++nucleotides. Canonical nucleotides are used by default (see
++Alphabet options below). (1\-32) [21]
++.RE
++.sp
++\fB\-s\fP <int>
++.RS 4
++Sketch size. Each sketch will have at most this many non\-redundant
++min\-hashes. [1000]
++.RE
++.sp
++\fB\-i\fP
++.RS 4
++Sketch individual sequences, rather than whole files.
++.RE
++.sp
++\fB\-w\fP <num>
++.RS 4
++Probability threshold for warning about low k\-mer size. (0\-1) [0.01]
++.RE
++.sp
++\fB\-r\fP
++.RS 4
++Input is a read set. See Reads options below. Incompatible with \fB\-i\fP.
++.RE
++.SS "Sketching (reads)"
++.sp
++\fB\-b\fP <size>
++.RS 4
++Use a Bloom filter of this size (raw bytes or with K/M/G/T) to
++filter out unique k\-mers. This is useful if exact filtering with \fB\-m\fP
++uses too much memory. However, some unique k\-mers may pass
++erroneously, and copies cannot be counted beyond 2. Implies \fB\-r\fP.
++.RE
++.sp
++\fB\-m\fP <int>
++.RS 4
++Minimum copies of each k\-mer required to pass noise filter for
++reads. Implies \fB\-r\fP. [1]
++.RE
++.sp
++\fB\-c\fP <num>
++.RS 4
++Target coverage. Sketching will conclude if this coverage is
++reached before the end of the input file (estimated by average
++k\-mer multiplicity). Implies \fB\-r\fP.
++.RE
++.sp
++\fB\-g\fP <size>
++.RS 4
++Genome size. If specified, will be used for p\-value calculation
++instead of an estimated size from k\-mer content. Implies \fB\-r\fP.
++.RE
++.SS "Sketching (alphabet)"
++.sp
++\fB\-n\fP
++.RS 4
++Preserve strand (by default, strand is ignored by using canonical
++DNA k\-mers, which are alphabetical minima of forward\-reverse
++pairs). Implied if an alphabet is specified with \fB\-a\fP or \fB\-z\fP.
++.RE
++.sp
++\fB\-a\fP
++.RS 4
++Use amino acid alphabet (A\-Z, except BJOUXZ). Implies \fB\-n\fP, \fB\-k\fP 9.
++.RE
++.sp
++\fB\-z\fP <text>
++.RS 4
++Alphabet to base hashes on (case ignored by default; see \fB\-Z\fP).
++K\-mers with other characters will be ignored. Implies \fB\-n\fP.
++.RE
++.sp
++\fB\-Z\fP
++.RS 4
++Preserve case in k\-mers and alphabet (case is ignored by default).
++Sequence letters whose case is not in the current alphabet will be
++skipped when sketching.
++.RE
++.SH "SEE ALSO"
++.sp
++mash(1)
+\ No newline at end of file
+diff --git a/doc/man/mash-info.1 b/doc/man/mash-info.1
+new file mode 100644
+index 0000000..25eb2c1
+--- /dev/null
++++ b/doc/man/mash-info.1
+@@ -0,0 +1,69 @@
++'\" t
++.\"     Title: mash-info
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH\-INFO" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash\-info \- display information about sketch files
++.SH "SYNOPSIS"
++.sp
++\fBmash info\fP [options] <sketch>
++.SH "DESCRIPTION"
++.sp
++Displays information about sketch files.
++.SH "OPTIONS"
++.sp
++\fB\-h\fP
++.RS 4
++Help
++.RE
++.sp
++\fB\-H\fP
++.RS 4
++Only show header info. Do not list each sketch. Incompatible with \fB\-t\fP
++and \fB\-c\fP.
++.RE
++.sp
++\fB\-t\fP
++.RS 4
++Tabular output (rather than padded), with no header. Incompatible with
++\fB\-H\fP and \fB\-c\fP.
++.RE
++.sp
++\fB\-c\fP
++.RS 4
++Show hash count histograms for each sketch. Incompatible with \fB\-H\fP and
++\fB\-t\fP.
++.RE
++.sp
++\fB\-d\fP
++.RS 4
++Dump sketches in JSON format. Incompatible with \fB\-H\fP, \fB\-t\fP, and \fB\-c\fP.
++.RE
++.SH "SEE ALSO"
++.sp
++mash(1)
+\ No newline at end of file
+diff --git a/doc/man/mash-paste.1 b/doc/man/mash-paste.1
+new file mode 100644
+index 0000000..740e5ed
+--- /dev/null
++++ b/doc/man/mash-paste.1
+@@ -0,0 +1,51 @@
++'\" t
++.\"     Title: mash-paste
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH\-PASTE" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash\-paste \- create a single sketch file from multiple sketch files
++.SH "SYNOPSIS"
++.sp
++\fBmash paste\fP [options] <out_prefix> <sketch> [<sketch>] ...
++.SH "DESCRIPTION"
++.sp
++Create a single sketch file from multiple sketch files.
++.SH "OPTIONS"
++.sp
++\fB\-h\fP
++.RS 4
++Help
++.RE
++.sp
++\fB\-l\fP
++.RS 4
++Input files are lists of file names.
++.RE
++.SH "SEE ALSO"
++.sp
++mash(1)
+\ No newline at end of file
+diff --git a/doc/man/mash-screen.1 b/doc/man/mash-screen.1
+new file mode 100644
+index 0000000..afd7874
+--- /dev/null
++++ b/doc/man/mash-screen.1
+@@ -0,0 +1,81 @@
++'\" t
++.\"     Title: mash-screen
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH\-SCREEN" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash\-screen \- determine whether query sequences are within a larger pool of sequences
++.SH "SYNOPSIS"
++.sp
++\fBmash screen\fP [options] <queries>.msh <pool> [<pool>] ...
++.SH "DESCRIPTION"
++.sp
++Determine how well query sequences are contained within a pool of sequences.
++The queries must be formatted as a single Mash sketch file (.msh), created
++with the \f(CRmash sketch\fP command. The <pool> files can be contigs or reads, in
++fasta or fastq, gzipped or not, and "\-" can be given for <pool> to read from
++standard input. The <pool> sequences are assumed to be nucleotides, and will
++be 6\-frame translated if the <queries> are amino acids. The output fields are
++[identity, shared\-hashes, median\-multiplicity, p\-value, query\-ID, query\-comment],
++where median\-multiplicity is computed for shared hashes, based on the number of
++observations of those hashes within the pool.
++.SH "OPTIONS"
++.sp
++\fB\-h\fP
++.RS 4
++Help
++.RE
++.sp
++\fB\-p\fP <int>
++.RS 4
++Parallelism. This many threads will be spawned for processing.
++.RE
++.sp
++\fB\-w\fP
++.RS 4
++Winner\-takes\-all strategy for identity estimates. After counting
++hashes for each query, hashes that appear in multiple queries will
++be removed from all except the one with the best identity (ties
++broken by larger query), and other identities will be reduced. This
++removes output redundancy, providing a rough compositional outline.
++.RE
++.SS "Output"
++.sp
++\fB\-i\fP <num>
++.RS 4
++Minimum identity to report. Inclusive unless set to zero, in which
++case only identities greater than zero (i.e. with at least one
++shared hash) will be reported. Set to \-1 to output everything.
++.RE
++.sp
++\fB\-v\fP <num>
++.RS 4
++Maximum p\-value to report.
++.RE
++.SH "SEE ALSO"
++.sp
++mash(1)
+\ No newline at end of file
+diff --git a/doc/man/mash-sketch.1 b/doc/man/mash-sketch.1
+new file mode 100644
+index 0000000..96c329a
+--- /dev/null
++++ b/doc/man/mash-sketch.1
+@@ -0,0 +1,154 @@
++'\" t
++.\"     Title: mash-sketch
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH\-SKETCH" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash\-sketch \- create sketches (reduced representations for fast operations)
++.SH "SYNOPSIS"
++.sp
++\fBmash sketch\fP [options] fast(a|q)[.gz] ...
++.SH "DESCRIPTION"
++.sp
++Create a sketch file, which is a reduced representation of a sequence or set
++of sequences (based on min\-hashes) that can be used for fast distance
++estimations. Input can be fasta or fastq files (gzipped or not), and "\-" can
++be given to read from standard input. Input files can also be files of file
++names (see \fB\-l\fP). For output, one sketch file will be generated, but it can have
++multiple sketches within it, divided by sequences or files (see \fB\-i\fP). By
++default, the output file name will be the first input file with a \(aq.msh\(aq
++extension, or \(aqstdin.msh\(aq if standard input is used (see \fB\-o\fP).
++.SH "OPTIONS"
++.sp
++\fB\-h\fP
++.RS 4
++Help
++.RE
++.sp
++\fB\-p\fP <int>
++.RS 4
++Parallelism. This many threads will be spawned for processing. [1]
++.RE
++.SS "Input"
++.sp
++\fB\-l\fP
++.RS 4
++List input. Each file contains a list of sequence files, one per line.
++.RE
++.SS "Output"
++.sp
++\fB\-o\fP <path>
++.RS 4
++Output prefix (first input file used if unspecified). The suffix
++\(aq.msh\(aq will be appended.
++.RE
++.SS "Sketching"
++.sp
++\fB\-k\fP <int>
++.RS 4
++K\-mer size. Hashes will be based on strings of this many
++nucleotides. Canonical nucleotides are used by default (see
++Alphabet options below). (1\-32) [21]
++.RE
++.sp
++\fB\-s\fP <int>
++.RS 4
++Sketch size. Each sketch will have at most this many non\-redundant
++min\-hashes. [1000]
++.RE
++.sp
++\fB\-i\fP
++.RS 4
++Sketch individual sequences, rather than whole files.
++.RE
++.sp
++\fB\-w\fP <num>
++.RS 4
++Probability threshold for warning about low k\-mer size. (0\-1) [0.01]
++.RE
++.sp
++\fB\-r\fP
++.RS 4
++Input is a read set. See Reads options below. Incompatible with \fB\-i\fP.
++.RE
++.SS "Sketching (reads)"
++.sp
++\fB\-b\fP <size>
++.RS 4
++Use a Bloom filter of this size (raw bytes or with K/M/G/T) to
++filter out unique k\-mers. This is useful if exact filtering with \fB\-m\fP
++uses too much memory. However, some unique k\-mers may pass
++erroneously, and copies cannot be counted beyond 2. Implies \fB\-r\fP.
++.RE
++.sp
++\fB\-m\fP <int>
++.RS 4
++Minimum copies of each k\-mer required to pass noise filter for
++reads. Implies \fB\-r\fP. [1]
++.RE
++.sp
++\fB\-c\fP <num>
++.RS 4
++Target coverage. Sketching will conclude if this coverage is
++reached before the end of the input file (estimated by average
++k\-mer multiplicity). Implies \fB\-r\fP.
++.RE
++.sp
++\fB\-g\fP <size>
++.RS 4
++Genome size. If specified, will be used for p\-value calculation
++instead of an estimated size from k\-mer content. Implies \fB\-r\fP.
++.RE
++.SS "Sketching (alphabet)"
++.sp
++\fB\-n\fP
++.RS 4
++Preserve strand (by default, strand is ignored by using canonical
++DNA k\-mers, which are alphabetical minima of forward\-reverse
++pairs). Implied if an alphabet is specified with \fB\-a\fP or \fB\-z\fP.
++.RE
++.sp
++\fB\-a\fP
++.RS 4
++Use amino acid alphabet (A\-Z, except BJOUXZ). Implies \fB\-n\fP, \fB\-k\fP 9.
++.RE
++.sp
++\fB\-z\fP <text>
++.RS 4
++Alphabet to base hashes on (case ignored by default; see \fB\-Z\fP).
++K\-mers with other characters will be ignored. Implies \fB\-n\fP.
++.RE
++.sp
++\fB\-Z\fP
++.RS 4
++Preserve case in k\-mers and alphabet (case is ignored by default).
++Sequence letters whose case is not in the current alphabet will be
++skipped when sketching.
++.RE
++.SH "SEE ALSO"
++.sp
++mash(1)
+\ No newline at end of file
+diff --git a/doc/man/mash-triangle.1 b/doc/man/mash-triangle.1
+new file mode 100644
+index 0000000..a20e027
+--- /dev/null
++++ b/doc/man/mash-triangle.1
+@@ -0,0 +1,169 @@
++'\" t
++.\"     Title: mash-triangle
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH\-TRIANGLE" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash\-triangle \- estimate a lower\-triangular distance matrix
++.SH "SYNOPSIS"
++.sp
++\fBmash triangle\fP [options] <seq1> [<seq2>] ...
++.SH "DESCRIPTION"
++.sp
++Estimate the distance of each input sequence to every other input
++sequence.  Outputs a lower\-triangular distance matrix in relaxed Phylip
++format. The input sequences can be fasta or fastq, gzipped or not, or
++Mash sketch files (.msh) with matching k\-mer sizes. Input files can also
++be files of file names (see \-l). If more than one input file is provided,
++whole files are compared by default (see \-i).
++.SH "OPTIONS"
++.sp
++\fB\-h\fP
++.RS 4
++Help
++.RE
++.sp
++\fB\-p\fP <int>
++.RS 4
++Parallelism. This many threads will be spawned for processing. [1]
++.RE
++.SS "Input"
++.sp
++\fB\-l\fP
++.RS 4
++List input. Each query file contains a list of sequence files, one
++per line. The reference file is not affected.
++.RE
++.SS "Output"
++.sp
++\fB\-C\fP
++.RS 4
++Use comment fields for sequence names instead of IDs.
++.RE
++.sp
++\fB\-E\fP
++.RS 4
++Output edge list instead of Phylip matrix, with fields [seq1, seq2,
++dist, p\-val, shared\-hashes].
++.RE
++.sp
++\fB\-v\fP <num>
++.RS 4
++Maximum p\-value to report in edge list. Implies \-E. (0\-1) [1.0]
++.RE
++.sp
++\fB\-d\fP <num>
++.RS 4
++Maximum distance to report in edge list. Implies \-E. (0\-1) [1.0]
++.RE
++.SS "Sketching"
++.sp
++\fB\-k\fP <int>
++.RS 4
++K\-mer size. Hashes will be based on strings of this many
++nucleotides. Canonical nucleotides are used by default (see
++Alphabet options below). (1\-32) [21]
++.RE
++.sp
++\fB\-s\fP <int>
++.RS 4
++Sketch size. Each sketch will have at most this many non\-redundant
++min\-hashes. [1000]
++.RE
++.sp
++\fB\-i\fP
++.RS 4
++Sketch individual sequences, rather than whole files, e.g. for
++multi\-fastas of single\-chromosome genomes or pair\-wise gene comparisons.
++.RE
++.sp
++\fB\-w\fP <num>
++.RS 4
++Probability threshold for warning about low k\-mer size. (0\-1) [0.01]
++.RE
++.sp
++\fB\-r\fP
++.RS 4
++Input is a read set. See Reads options below. Incompatible with \fB\-i\fP.
++.RE
++.SS "Sketching (reads)"
++.sp
++\fB\-b\fP <size>
++.RS 4
++Use a Bloom filter of this size (raw bytes or with K/M/G/T) to
++filter out unique k\-mers. This is useful if exact filtering with \fB\-m\fP
++uses too much memory. However, some unique k\-mers may pass
++erroneously, and copies cannot be counted beyond 2. Implies \fB\-r\fP.
++.RE
++.sp
++\fB\-m\fP <int>
++.RS 4
++Minimum copies of each k\-mer required to pass noise filter for
++reads. Implies \fB\-r\fP. [1]
++.RE
++.sp
++\fB\-c\fP <num>
++.RS 4
++Target coverage. Sketching will conclude if this coverage is
++reached before the end of the input file (estimated by average
++k\-mer multiplicity). Implies \fB\-r\fP.
++.RE
++.sp
++\fB\-g\fP <size>
++.RS 4
++Genome size. If specified, will be used for p\-value calculation
++instead of an estimated size from k\-mer content. Implies \fB\-r\fP.
++.RE
++.SS "Sketching (alphabet)"
++.sp
++\fB\-n\fP
++.RS 4
++Preserve strand (by default, strand is ignored by using canonical
++DNA k\-mers, which are alphabetical minima of forward\-reverse
++pairs). Implied if an alphabet is specified with \fB\-a\fP or \fB\-z\fP.
++.RE
++.sp
++\fB\-a\fP
++.RS 4
++Use amino acid alphabet (A\-Z, except BJOUXZ). Implies \fB\-n\fP, \fB\-k\fP 9.
++.RE
++.sp
++\fB\-z\fP <text>
++.RS 4
++Alphabet to base hashes on (case ignored by default; see \fB\-Z\fP).
++K\-mers with other characters will be ignored. Implies \fB\-n\fP.
++.RE
++.sp
++\fB\-Z\fP
++.RS 4
++Preserve case in k\-mers and alphabet (case is ignored by default).
++Sequence letters whose case is not in the current alphabet will be
++skipped when sketching.
++.RE
++.SH "SEE ALSO"
++.sp
++mash(1)
+\ No newline at end of file
+diff --git a/doc/man/mash.1 b/doc/man/mash.1
+new file mode 100644
+index 0000000..b5e6d75
+--- /dev/null
++++ b/doc/man/mash.1
+@@ -0,0 +1,77 @@
++'\" t
++.\"     Title: mash
++.\"    Author: [see the "AUTHOR(S)" section]
++.\" Generator: Asciidoctor 2.0.10
++.\"      Date: 2019-12-13
++.\"    Manual: \ \&
++.\"    Source: \ \&
++.\"  Language: English
++.\"
++.TH "MASH" "1" "2019-12-13" "\ \&" "\ \&"
++.ie \n(.g .ds Aq \(aq
++.el       .ds Aq '
++.ss \n[.ss] 0
++.nh
++.ad l
++.de URL
++\fI\\$2\fP <\\$1>\\$3
++..
++.als MTO URL
++.if \n[.g] \{\
++.  mso www.tmac
++.  am URL
++.    ad l
++.  .
++.  am MTO
++.    ad l
++.  .
++.  LINKSTYLE blue R < >
++.\}
++.SH "NAME"
++mash \- fast genome and metagenome distance estimation using MinHash
++.SH "SYNOPSIS"
++.sp
++\fBmash\fP <command> [options] [arguments ...]
++.SH "DESCRIPTION"
++.sp
++\fBmash\fP is the main executable for the \fBMash\fP software. The actual
++functionality is provided by the subtools (\(aqcommands\(aq):
++.SS "Commands"
++.sp
++\fBbounds\fP
++.RS 4
++Print a table of Mash error bounds.
++.RE
++.sp
++\fBdist\fP
++.RS 4
++Estimate the distance of query sequences to references.
++.RE
++.sp
++\fBinfo\fP
++.RS 4
++Display information about sketch files.
++.RE
++.sp
++\fBpaste\fP
++.RS 4
++Create a single sketch file from multiple sketch files.
++.RE
++.sp
++\fBscreen\fP
++.RS 4
++Determine whether query sequences are within a larger pool of sequences.
++.RE
++.sp
++\fBsketch\fP
++.RS 4
++Create sketches (reduced representations for fast operations).
++.RE
++.sp
++\fBtriangle\fP
++.RS 4
++Estimate a lower\-triangular distance matrix.
++.RE
++.SH "SEE ALSO"
++.sp
++mash\-dist(1), mash\-info(1), mash\-paste(1), mash\-screen(1), mash\-sketch(1), mash\-triangle(1)
+\ No newline at end of file
