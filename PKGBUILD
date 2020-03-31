@@ -1,5 +1,5 @@
 # Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
-# Contributer: Jean Lucas <jean@4ray.co>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=spotify-tui
 pkgver=0.17.1
