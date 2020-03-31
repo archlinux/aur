@@ -2,8 +2,8 @@
 
 _pkgname='sde'
 pkgname='intel-sde'
-_pkgver="8.49.0-2020-03-17-lin"
-pkgver='8.49.0'
+_pkgver="8.50.0-2020-03-26-lin"
+pkgver='8.50.0'
 pkgrel='1'
 pkgdesc='Intel Software Development Emulator'
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
   "intel-http-accept://${_source}")
 sha256sums=(
   "df9b785b44046421644839015de794a8f2ea84605062ff687610925d0947efb3"
-  "ed426d46f5b74a803c740499b8166da32b58d20259146ee05a9987091f94d8e0")
+  "ecabeb26c3b35cfe72b6ba017b1ba1849516b4b077c2b59e730a0fdf00324be4")
 
 package() {
   cd "${srcdir}/${_pkgname}-external-${_pkgver}"
