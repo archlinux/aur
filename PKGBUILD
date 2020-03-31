@@ -9,7 +9,7 @@ url='https://github.com/guumaster/hostctl'
 license=('MIT')
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('eb1bfd9c8aac1c1b3c0572d714ef0ec44f2dfdca5249254602155ea4047435dd')
+sha256sums=('10a933acdd781db827857752062ee3f7ae2e6619ad05f3655cac3053bf5b7e5a')
 
 build() {
   cd $pkgname-$pkgver
