@@ -2,12 +2,12 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocm-profiler
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ROC profiler library. Profiling with perf-counters and derived metrics for GFX8/GFX9."
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/rocprofiler"
 license=('MIT')
-depends=("rocr-runtime>=$pkgver")
+depends=("hsa-rocr>=$pkgver")
 makedepends=('cmake')
 source=("https://github.com/ROCm-Developer-Tools/rocprofiler/archive/roc-$pkgver.tar.gz")
 sha256sums=('5157d975563e04a207615811c611ee67253a1e02f2be2ecc369dc7dcfff60750')
