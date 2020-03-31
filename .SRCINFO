@@ -1,0 +1,17 @@
+pkgbase = python-ansiwrap
+	pkgdesc = textwrap, but savvy to ANSI colors and styles
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/jonathaneunice/ansiwrap
+	arch = any
+	license = Python
+	makedepends = python-setuptools
+	depends = python
+	depends = python-textwrap3
+	source = https://files.pythonhosted.org/packages/source/a/ansiwrap/ansiwrap-0.8.4.zip
+	md5sums = 0e24741bda593b7bd2162c3e3bd3b8ba
+
+pkgname = python-ansiwrap
+	depends = python
+	depends = python-textwrap3
+
