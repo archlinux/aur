@@ -1,7 +1,7 @@
 pkgbase = octopi-notifier-qt5
 	pkgdesc = Notifier for Octopi using Qt5 libs
 	pkgver = 0.9.0
-	pkgrel = 23
+	pkgrel = 24
 	url = http://octopiproject.wordpress.com
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = octopi-notifier-qt5
 	optdepends = xfce4-notifyd: for notifications in XFCE
 	provides = octopi-notifier
 	conflicts = octopi-notifier-frameworks
-	source = octopi-0.9.0-23.tar.gz::https://github.com/aarnt/octopi/archive/3dc3fa73ec5d44994bd0e0798e539df9910ff08b.tar.gz
-	sha256sums = a5817b8f040fde0964e998999a3464d2c1d92e2af2077388ce57272e20cdd66b
+	source = octopi-0.9.0-24.tar.gz::https://github.com/aarnt/octopi/archive/3db8927f28dc2b5996da61e39292a3bb9743438f.tar.gz
+	sha256sums = a5b7c895a52e6cdae62cd0f1687b188f50c20cfd0381b1eb919b98b9aca56e05
 
 pkgname = octopi-notifier-qt5
 
