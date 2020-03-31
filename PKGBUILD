@@ -6,7 +6,7 @@ pkgdesc="cross platform app for still image camera matching"
 arch=('x86_64')
 url="https://github.com/stuffmatic/fSpy"
 license=('GPL')
-depends=(lib32-gconf fuse2 xdialog)
+depends=(fuse2 xdialog)
 makedepends=(yarn)
 provides=()
 options=()
@@ -26,7 +26,7 @@ prepare() {
 }
 
 build() {
-	cd $_fspydir
+	cd "$_fspydir"
 	yarn dist
 }
 
