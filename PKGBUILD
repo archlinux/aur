@@ -1,0 +1,40 @@
+# Contributor: twa022 <twa022 at gmail dot com>
+
+_pkgname=vala
+pkgname=${_pkgname}0.46
+pkgver=0.46.7
+pkgrel=1
+pkgdesc='Compiler for the GObject type system (version 0.46.x)'
+url='https://wiki.gnome.org/Projects/Vala'
+arch=('x86_64' 'i686')
+license=('LGPL')
+depends=('glib2' 'gtk-doc' 'graphviz' 'ttf-font' 'pkg-config' 'gcc')
+makedepends=('libxslt' 'vala' 'help2man' 'autoconf-archive')
+checkdepends=('dbus' 'libx11' 'gobject-introspection')
+provides=(libvala-${pkgver%.*}.so libvaladoc-${pkgver%.*}.so)
+source=("http://download.gnome.org/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
+sha256sums=('f302f9a396e5fdc7302d38ba166b9ffe7387fc62f9dce15d68e732ad693f3a95')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  make check
+}
+
+package() {
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="$pkgdir" install
+
+  # Remove conflicting files with the vala package
+  rm -rf "${pkgdir}/usr/share/aclocal"
+  rm "${pkgdir}"/usr/lib/pkgconfig/vapigen.pc
+  rm "${pkgdir}"/usr/share/vala/Makefile.vapigen
+  rm "${pkgdir}"/usr/bin/{vala,valac,vala-gen-introspect,valadoc,vapigen}
+  rm "${pkgdir}"/usr/share/man/man1/{valac,valadoc,vala-gen-introspect,vapigen}.1
+}
