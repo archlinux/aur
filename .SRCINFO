@@ -1,6 +1,6 @@
 pkgbase = python-rchitect
 	pkgdesc = Minimal R API for Python
-	pkgver = 0.3.18
+	pkgver = 0.3.19
 	pkgrel = 1
 	url = https://github.com/randy3k/rchitect
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-rchitect
 	makedepends = python2-setuptools
 	makedepends = python-six>=1.9.0
 	makedepends = python2-six>=1.9.0
-	source = rchitect-0.3.18.tar.gz::https://github.com/randy3k/rchitect/archive/v0.3.18.tar.gz
-	sha256sums = e5cc2a7ed1358dbeb6150447b54661d4be5619b88f4ab861e5fa2200b794782d
+	source = rchitect-0.3.19.tar.gz::https://github.com/randy3k/rchitect/archive/v0.3.19.tar.gz
+	sha256sums = fbea6df9bb071bac184ae78d897650794689c441f65d1b5313b14484c1f2d34c
 
 pkgname = python-rchitect
 	depends = r>3.4.0
