@@ -9,7 +9,7 @@ pkgdesc="Scanner Access Now Easy (32 bit)"
 url="http://www.sane-project.org/"
 arch=('x86_64')
 license=('GPL')
-depends=('lib32-libtiff>=4.0.0' 'lib32-libgphoto2' 'lib32-libjpeg>=8' 'lib32-libusbx' 'lib32-libieee1284' 'lib32-v4l-utils' 'lib32-avahi' 'bash' 'net-snmp' 'sane')
+depends=('lib32-libtiff>=4.0.0' 'lib32-libgphoto2' 'lib32-libjpeg>=8' 'lib32-libusbx' 'lib32-libieee1284' 'lib32-v4l-utils' 'lib32-avahi' 'bash' 'lib32-net-snmp' 'sane')
 makedepends=('gcc-multilib')
 source=("https://gitlab.com/sane-project/backends/uploads/54f858b20a364fc35d820df935a86478/sane-backends-$pkgver.tar.gz"
         'network.patch')
