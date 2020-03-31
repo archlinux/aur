@@ -1,16 +1,16 @@
 pkgbase = brother-mfc-j805dw
 	pkgdesc = CUPS driver for Brother mfc-JX05DW(XL) printer
 	pkgver = 1.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://support.brother.com/g/b/faqtop.aspx?c=us&lang=en&prod=mfcj805dw_us
 	arch = i686
 	arch = x86_64
 	license = EULA
-	depends = lib32-gcc-libs
 	depends = perl
 	depends = bash
 	source = https://download.brother.com/welcome/dlf104569/mfcj805dwpdrv-1.0.5-0.i386.deb
 	sha256sums = f299b9674d5edb9c16b5fdbfd39d9ed6b6618f2a30ad942181180e59d3e7a68d
+	depends_x86_64 = lib32-gcc-libs
 
 pkgname = brother-mfc-j805dw
 
