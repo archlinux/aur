@@ -3,7 +3,7 @@
 pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
 pkgver=4.93.0
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
@@ -16,7 +16,7 @@ backup=(
 )
 
 source=(
-	"https://en.ids-imaging.com/download-ueye-lin64.html?file=tl_files/downloads/uEye_SDK/driver/ids-software-suite-linux-$pkgver-64.tgz"
+	"https://en.ids-imaging.com/files/downloads/ids-software-suite/software/linux-desktop/ids-software-suite-linux-$pkgver-64.tgz"
 	"ueyeethd.service"
 	"ueyeusbd.service"
 	"ueyeusb.rules"
