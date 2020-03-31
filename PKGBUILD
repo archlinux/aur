@@ -19,7 +19,6 @@ prepare() {
   # a fix for https://github.com/gollum/gollum/issues/1532
   sed -i "s/  s.add_dependency 'gollum-lib', '~> 5.0'/  s.add_dependency 'gollum-lib', '~> 5.0'\n  s.add_dependency 'rdoc', '~> 6.2'/g"  gollum.gemspec
   
-  bundle config build.rdoc --use-system-libraries
   bundle config set --local path vendor/bundle
   bundle config set --local without development test
 }
