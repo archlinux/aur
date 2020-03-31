@@ -16,7 +16,7 @@ md5sums=(SKIP)
 build() {
 	cd popt
 	./autogen.sh
-	./configure --prefix=/usr
+	./configure --prefix=/usr --enable-static
 	make
 }
 
