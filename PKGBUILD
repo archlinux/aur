@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-quick3d
-_qtver=5.14.1
+_qtver=5.14.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('assimp: Import from assimp')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('073a88e440c355c408500306c3a6aa166be60c67e5ce26a9cb6ff7aac0bd43dc')
+sha256sums=('0640696d501f2b0bf57f64e98f30bfa3e1cc19c11c0e05e43d4fdb0d20488b2e')
 
 prepare() {
   mkdir -p build
