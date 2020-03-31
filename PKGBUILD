@@ -2,7 +2,7 @@
 pkgname=assh-git
 _pkgname=assh
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='make your ssh client smarter https://manfred.life/assh'
 arch=('any')
 url='https://github.com/moul/assh.git'
@@ -21,11 +21,13 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    GOPATH=${srcdir} GO111MODULE=on go build -o assh
+    GOPATH=${srcdir} \
+        GO111MODULE=on \
+        go build -modcacherw -o assh
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    install -Dm755 assh "${pkgdir}/usr/bin/assh"
+    cd ${srcdir}/${_pkgname}
+    install -Dm755 assh ${pkgdir}/usr/bin/assh
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE
 }
