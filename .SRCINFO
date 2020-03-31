@@ -1,0 +1,20 @@
+pkgbase = icu-git-static
+	pkgdesc = International Components for Unicode library
+	pkgver = 66.1.r137.gea9ce7e34f
+	pkgrel = 1
+	url = http://site.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:icu
+	makedepends = git
+	depends = glibc
+	depends = sh
+	provides = icu
+	provides = icu-git
+	conflicts = icu
+	conflicts = icu-git
+	source = git+https://github.com/unicode-org/icu.git
+	sha256sums = SKIP
+
+pkgname = icu-git-static
+
