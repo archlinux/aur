@@ -1,7 +1,7 @@
 # Maintainer: Marco Scarpetta <marcoscarpetta02@gmail.com>
 
 pkgname=qtwaw
-pkgver=1.6.5
+pkgver=1.6.6
 pkgrel=1
 pkgdesc='An application for WhatsApp Web with tray icon and notifications'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('qt5-base' 'qt5-webengine' 'kdbusaddons' 'knotifications')
 makedepends=('cmake' 'qt5-tools')
 source=("https://gitlab.com/scarpetta/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('25dfd66cece9485fe425b83a349bf5bdd1eeabed6ec91c5046b570e1c07f150e')
+sha256sums=('27d7f025de154e42803f51a4330637a5ec80ede6bc9bd7c5e750570ec31847df')
 
 prepare() {
   cd "${srcdir}/${pkgname}-v${pkgver}"
