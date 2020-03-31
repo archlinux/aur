@@ -1,0 +1,16 @@
+pkgbase = python-pyeapi
+	pkgdesc = Python client for Arista eAPI
+	pkgver = 0.8.3
+	pkgrel = 1
+	url = https://pyeapi.readthedocs.io/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-netaddr
+	source = git+https://github.com/arista-eosplus/pyeapi.git#tag=v0.8.3
+	md5sums = SKIP
+
+pkgname = python-pyeapi
+
