@@ -10,12 +10,13 @@ groups=(wpe)
 provides=('wpewebkit' 'wpewebkit-git')
 conflicts=('wpewebkit' 'wpewebkit-git')
 depends=(cairo libxslt gst-plugins-base-libs libepoxy libsoup libwebp
-         harfbuzz-icu woff2 'libwpe>=1.0.0')
+         harfbuzz-icu woff2 openjpeg2 libseccomp bubblewrap xdg-dbus-proxy
+		 geoclue at-spi2-atk libwpe)
 source=('https://webreflection.github.io/aur/wpewebkit-gl-armv7l-2.28.0.tar.gz')
-md5sums=('d92d0859a55bf4dc7033b0268865ecb3')
-sha1sums=('b6ffe4002e240912b7ab1b67a92b0e1ed7a1f21e')
-sha256sums=('fcd54a1ae61dca8f63954c4563353ee2da1118a0dac03ae6805a994167098899')
-sha512sums=('6e12940158547e4253a95285ccba97d14e76098661f861a12bc6506a9676625bb0f5ed4d724c737897795a3568302673efa2ac4b44ae6630231d4ac97c1375aa')
+md5sums=('573d1fbc5562a45c155654534869a96e')
+sha1sums=('b4c449306466fe0d57aadd56dd03ff8d50271045')
+sha256sums=('165d610a6285e425535593d298463c8a557bf3eff586abdfcd4b9a9f2ff0ab12')
+sha512sums=('d1f8d8f4f15e712541a0af2bc528e11b12dc71a9079f77fb7b942624e037c972740ca99c85af01630497babd3692503146084b083e708d0c1714d5fbddb03ece')
 
 package () {
     cp -R "${srcdir}/usr" "${pkgdir}"
