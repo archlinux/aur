@@ -17,7 +17,7 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
-	install -m755 -d "${srcdir}/go/src/github.com/MscBaiMeow/"
+	install -m644 -d "${srcdir}/go/src/github.com/MscBaiMeow/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
 	cd "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
 	export GOPATH="${srcdir}/go"
