@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=paexec
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Parallel executor, distributes tasks over network or CPUs"
 arch=('i686' 'x86_64')
 depends=('runawk')
@@ -11,7 +11,7 @@ makedepends=('bmake' 'libmaa' 'mk-configure' 'clang')
 url="https://github.com/cheusov/paexec"
 license=('MIT')
 source=("https://github.com/cheusov/$pkgname/archive/$pkgname-$pkgver.tar.gz")
-sha256sums=('bac3846e993e2be22c1b5fe122949f8326b54cdc09e1e1baa7d75c9cfd9d7a4c')
+sha256sums=('b2b624538f006a4488dc8b9f72f8d7c030e5893256eed0a2980dca5840de972d')
 
 build() {
   cd $pkgname-$pkgname-$pkgver
