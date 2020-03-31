@@ -1,10 +1,10 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.24.13
+pkgver=3.24.16
 pkgrel=1
 conflicts=(gtk3)
-provides=("gtk3=$pkgver" gtk3-print-backends)
+provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil-3.so)
 replaces=("gtk3-print-backends<=3.22.26-1")
 pkgdesc="GTK+ 3 with typeahead feature enabled for the file chooser widget"
 arch=(x86_64)
@@ -16,14 +16,14 @@ depends=(atk cairo libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2 d
          cantarell-fonts colord rest libcups libcanberra fribidi iso-codes)
 makedepends=(gobject-introspection gtk-doc git glib2-docs sassc meson)
 license=(LGPL)
-_commit=f737908d2f7dc121e0d85507c16fd7a399d4b36a  # tags/3.24.13^0
+_commit=7624f07764b6127e30788ca651c6fde5f1c0cf7b  # tags/3.24.16^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         settings.ini
         gtk-query-immodules-3.0.hook
         typeahead.patch)
 sha256sums=('SKIP'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
-            'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845'
+            'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '3b94b53ee720e24e999e6fe40de269ec5b6ddfcbab64fb1a14e7d89256651607')
 
 prepare() {
