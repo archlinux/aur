@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = A web browser that stops ads and trackers by default
 	pkgver = 1.5.115
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/download
 	arch = x86_64
 	license = custom
@@ -38,7 +38,10 @@ pkgbase = brave
 	source = fix-building-with-unbundled-libxml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/fix-building-with-unbundled-libxml.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 	source = rename-Relayout-in-DesktopWindowTreeHostPlatform.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rename-Relayout-in-DesktopWindowTreeHostPlatform.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 	source = rebuild-Linux-frame-button-cache-when-activation.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/rebuild-Linux-frame-button-cache-when-activation.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
+	source = chromium-widevine.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-widevine.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
 	source = chromium-skia-harmony.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/chromium-skia-harmony.patch?h=packages/chromium&id=9102943de95dd7e51f973ad9f7554c8e01d6ab22
+	source = vaapi-fix.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-fix.patch?h=chromium-vaapi&id=5710b0a929bf34c34ddbbfb937219f00fbf88174
+	source = vaapi-fix-wayland-init.patch::https://aur.archlinux.org/cgit/aur.git/plain/vaapi-fix-wayland-init.patch?h=chromium-vaapi&id=5710b0a929bf34c34ddbbfb937219f00fbf88174
 	sha256sums = SKIP
 	sha256sums = 2b07eabd8b3d42456d2de44f6dca6cf2e98fa06fc9b91ac27966fca8295c5814
 	sha256sums = 43f442d9ffacd69a1ca770b029083aaa544d48c052939a66e58a868d91ebde70
@@ -52,7 +55,10 @@ pkgbase = brave
 	sha256sums = e530d1b39504c2ab247e16f1602359c484e9e8be4ef6d4824d68b14d29a7f60b
 	sha256sums = ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db
 	sha256sums = 46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014
+	sha256sums = 709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070
 	sha256sums = 771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1
+	sha256sums = 0ec6ee49113cc8cc5036fa008519b94137df6987bf1f9fbffb2d42d298af868a
+	sha256sums = a4c022263b474ae14abd899b8e453f7d9ed9c0715b0b248b8a423aa2777095c4
 
 pkgname = brave
 
