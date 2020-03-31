@@ -1,0 +1,16 @@
+pkgbase = haskell-blaze-svg
+	pkgdesc = A blazingly fast SVG combinator library for Haskell
+	pkgver = 0.3.6.1
+	pkgrel = 1
+	url = https://github.com/deepakjois/blaze-svg
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-blaze-markup
+	depends = haskell-mtl
+	source = https://hackage.haskell.org/packages/archive/blaze-svg/0.3.6.1/blaze-svg-0.3.6.1.tar.gz
+	sha256sums = f6a4f1bba1e973b336e94de73369f4562778fde43b6ac7c0b32d6a501527aa60
+
+pkgname = haskell-blaze-svg
+
