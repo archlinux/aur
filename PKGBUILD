@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r2404.d9eb7a79
+pkgver=r2617.1f15836b
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
