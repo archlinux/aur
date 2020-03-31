@@ -1,43 +1,35 @@
-# Maintainer: Marcin Tydelski <marcin.tydelski@gmail.com> 
-# Contributor: Siddhartha Das <https://github.com/babluboy, bablu.boy@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Marcin Tydelski <marcin.tydelski@gmail.com>
+# Contributor: Siddhartha Das bablu.boy@gmail.com>
 pkgname=nutty-git
-pkgver=120.8af2d4a
+pkgver=1.1.1.r29.g56f5996
 pkgrel=1
-_gitname=nutty
-pkgdesc='A network utility for linux. Monitor the devices on your network and check bandwidth and speed details.'
+pkgdesc='A network utility that monitors the devices on your network,
+         checks bandwidth and speed details.'
 arch=('i686' 'x86_64')
 url='https://github.com/babluboy/nutty'
 license=('GPL3')
-depends=('gtk3' 'granite' 'sqlite' 'libxml2' 'libnotify' 'libgee')
-optdepends=()
-makedepends=('vala' 'git' 'meson')
-provides=("${pkgname%}")
-conflicts=("${pkgname%}")
-install="${pkgname%-*}.install"
+depends=('granite' 'libnotify' 'libxml2' 'libgee' 'sqlite' 'net-tools' 'nethogs'
+         'nmap' 'traceroute' 'vnstat' 'wireless_tools' 'iproute2' 'pciutils')
+makedepends=('git' 'meson' 'vala' 'appstream')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+install="${pkgname%-git}.install"
 source=('git+https://github.com/babluboy/nutty.git')
-sha256sums=('SKIP')
+md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
-
-prepare() {
-  cd $srcdir/$_gitname
-  git submodule init; git submodule update
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p $srcdir/$_gitname/build
-  cd $srcdir/$_gitname/build
-  arch-meson
-  ninja
+	arch-meson "${pkgname%-git}" build
+	ninja -C build
 }
 
 package() {
-  cd $srcdir/$_gitname/build
-  DESTDIR=${pkgdir} ninja install
-}
+	DESTDIR="$pkgdir" ninja -C build install
 
-# vim: ts=2 sw=2 et:
+	ln -s /usr/bin/com.github.babluboy.nutty "$pkgdir/usr/bin/${pkgname%-git}"
+}

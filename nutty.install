@@ -1,16 +1,24 @@
 post_install() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
-}
-
-post_upgrade() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+	echo -e "*****************************************************"
+	echo -e "*                                                   *"
+	echo -e "* Sometimes vnstat is not started upon install,     *"
+	echo -e "* use the appropriate init system command           *"
+	echo -e "* to start vnstat daemon; i.e.,                     *"
+	echo -e "*                                                   *"
+	echo -e "* systemctl enable vnstat --now                     *"
+	echo -e "*                                                   *"
+	echo -e "*****************************************************"
+	echo -e -n ""
 }
 
 post_remove() {
-  glib-compile-schemas usr/share/glib-2.0/schemas
-  gtk-update-icon-cache -ftq usr/share/icons/hicolor
+	echo -e "*****************************************************"
+	echo -e "*                                                   *"
+	echo -e "* If vnstat is no longer neeeded,                   *"
+	echo -e "* you may remove it or disable the service          *"
+	echo -e "*                                                   *"
+	echo -e "* systemctl stop vnstat && systemctl disable vnstat *"
+	echo -e "*                                                   *"
+	echo -e "*****************************************************"
+	echo -e -n ""
 }
-
-# vim: ts=2 sw=2 et:
