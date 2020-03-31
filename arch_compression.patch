@@ -19,6 +19,21 @@ index 432820f..d23e34c 100644
    print('=== Copying wheel to ' + destdir)
    if not os.path.exists(destdir): os.mkdir(destdir)
    for path in glob.glob(os.path.join(tempdir, 'dist', '*.whl')):
+diff --git a/tensorflow_compression/__init__.py b/tensorflow_compression/__init__.py
+index 2afa237..d40b527 100644
+--- a/tensorflow_compression/__init__.py
++++ b/tensorflow_compression/__init__.py
+@@ -16,8 +16,8 @@
+ 
+ try:
+   import tensorflow as _tensorflow
+-  _tf_version = [int(v) for v in _tensorflow.version.VERSION.split(".")]
+-  assert _tf_version[0] == 2 and _tf_version[1] == 1
++  _tf_version = _tensorflow.version.VERSION.split(".")
++  assert _tf_version[0] == '2' and _tf_version[1] >= '1'
+ except (ImportError, AssertionError):
+   raise RuntimeError(
+       "For tensorflow_compression, please install TensorFlow 2.1.")
 diff --git a/tensorflow_compression/cc/BUILD b/tensorflow_compression/cc/BUILD
 index 7aa907d..543ac8d 100644
 --- a/tensorflow_compression/cc/BUILD
