@@ -7,8 +7,8 @@ pkgbase = freeman-korbi-bin
 	makedepends = git
 	makedepends = tar
 	options = !strip
-	source = http://git.int.schildmann.net/kschildmann/freeman/uploads/063facf4e5614f488554d3cc5ed898ad/freeman.tar.gz
-	sha256sums = SKIP
+	source = http://git.int.schildmann.net/kschildmann/freeman/uploads/5a417695fce95a597bc85e13af0efaba/freeman.tar.gz
+	sha256sums = 5c14eae07f63f29b5834aef397e515d6f9db898789de37992301fb9fd24ef231
 
 pkgname = freeman-korbi-bin
 

@@ -9,12 +9,19 @@ makedepends=('git' 'tar')
 arch=('any')
 license=('GPL3')
 options=(!strip)
-source=("http://git.int.schildmann.net/kschildmann/freeman/uploads/6d32dca04128e717785d9bda8ed227cf/freeman.tar.gz")
-sha256sums=('c480ab55dd8ede515d11bdd96f77a03b91884c95dd8c6614046e7d4ad70671da')
+source=("http://git.int.schildmann.net/kschildmann/freeman/uploads/5a417695fce95a597bc85e13af0efaba/freeman.tar.gz")
+sha256sums=('5c14eae07f63f29b5834aef397e515d6f9db898789de37992301fb9fd24ef231')
 
 package() {
 	tar -xvf freeman.tar.gz -C "$pkgdir"
 
 	mkdir -p $pkgdir/usr/bin/
 	install -m 755 $pkgdir/freeman $pkgdir/usr/bin/freeman
+
+	mkdir -p $pkgdir/etc/
+	install -m 644 $pkgdir/freeman.json $pkgdir/etc/freeman.json
+
+	mkdir -p $pkgdir/etc/freeman.d/
+	install -m 644 $pkgdir/freedom $pkgdir/etc/freeman.d/freedom
+
 }
