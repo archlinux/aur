@@ -5,7 +5,7 @@
 
 pkgname=picom-tryone-git
 _gitname=compton
-pkgver=1350_Next.69.gfc864c0_2020.03.29
+pkgver=1361_0.1_beta2.1012.gc67d7d7_2020.03.31
 pkgrel=1
 pkgdesc="tryone144's picom fork with dual_kawase blur, an X compositor (fork of compton)"
 arch=(i686 x86_64)
@@ -39,9 +39,8 @@ prepare() {
   export GIT_CONFIG_NOSYSTEM=1
   git config --local user.name makepkg
   git config --local user.email picom@makepkg.aur
-  git remote add yshui https://github.com/yshui/picom.git
-  git fetch yshui
-  git rebase yshui/next
+  git fetch https://github.com/yshui/picom.git next
+  git rebase FETCH_HEAD
 }
 
 build() {
