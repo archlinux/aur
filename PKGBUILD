@@ -1,7 +1,7 @@
 # Maintainer: flovo <flovo-git-commit at f-voegele dot de>
 
 pkgname=katago-opencl
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Baduk engine with no human-provided knowledge."
 arch=('x86_64')
