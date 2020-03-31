@@ -5,13 +5,19 @@
 
 pkgname=anyremote
 pkgver=6.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control (console-oriented) through bluetooth or IR connection"
 arch=('i686' 'x86_64')
 url="http://anyremote.sourceforge.net"
 license=('GPL3')
 depends=('bluez-libs' 'bluez' 'dbus-glib' 'libxtst')
-optdepends=("irda-utils: IRDA support")
+optdepends=('ganyremote: GTK frontend'
+            'kanyremote: Qt frontend'
+            'irda-utils: IRDA support'
+            'avahi: advertise service through Avahi'
+            'pngout: upload icons to JSR-82 compatible phone'
+            'wmctrl'
+            'imagemagick')
 install=anyremote.install
 source=(http://downloads.sourceforge.net/sourceforge/anyremote/$pkgname-$pkgver.tar.gz)
 md5sums=('fd87404e8f820e9b4756c38c930c8367')

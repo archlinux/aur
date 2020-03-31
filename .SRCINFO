@@ -1,7 +1,7 @@
 pkgbase = anyremote
 	pkgdesc = Remote control (console-oriented) through bluetooth or IR connection
 	pkgver = 6.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://anyremote.sourceforge.net
 	install = anyremote.install
 	arch = i686
@@ -11,7 +11,13 @@ pkgbase = anyremote
 	depends = bluez
 	depends = dbus-glib
 	depends = libxtst
+	optdepends = ganyremote: GTK frontend
+	optdepends = kanyremote: Qt frontend
 	optdepends = irda-utils: IRDA support
+	optdepends = avahi: advertise service through Avahi
+	optdepends = pngout: upload icons to JSR-82 compatible phone
+	optdepends = wmctrl
+	optdepends = imagemagick
 	source = http://downloads.sourceforge.net/sourceforge/anyremote/anyremote-6.7.3.tar.gz
 	md5sums = fd87404e8f820e9b4756c38c930c8367
 
