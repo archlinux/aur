@@ -9,19 +9,17 @@ license=("custom:OFL")
 depends=("fontconfig" "xorg-font-utils")
 makedepends=("git")
 install=otf.install
-source=("$pkgname::git+https://github.com/Avi-D-coder/fira-mono-italic.git" 'otf.install')
+source=("$pkgname::git+https://github.com/Avi-D-coder/fira-mono-italic" 'otf.install')
 md5sums=("SKIP"
          "ae560f6f3cc2687fbfaec8073567ee2f")
 
-_gitname=fira-mono-italic
-
 pkgver() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${pkgname}"
     git describe --long --tags --always | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 package() {
-    cd "$srcdir/$_gitname"
+    cd "$srcdir/${pkgname}"
 
     local weights=(
         'Regular Italic'
