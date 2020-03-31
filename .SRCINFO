@@ -1,0 +1,15 @@
+pkgbase = haskell-storable-endian
+	pkgdesc = Storable instances with endianness
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/jkff/storable-endian
+	arch = x86_64
+	license = BSD
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-byteorder
+	source = https://hackage.haskell.org/packages/archive/storable-endian/0.2.6/storable-endian-0.2.6.tar.gz
+	sha256sums = 3743ac8f084ed3187b83f17b4fac280e77c5df01f7910f42b6a1bf09d5a65489
+
+pkgname = haskell-storable-endian
+
