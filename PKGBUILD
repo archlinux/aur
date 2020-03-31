@@ -1,7 +1,7 @@
 # Maintainer: Pierre Schmitz <pierre@archlinux.de>
 
 pkgname=openssl
-_ver=1.1.1e
+_ver=1.1.1f
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
 pkgrel=1
@@ -14,7 +14,7 @@ optdepends=('ca-certificates')
 backup=('etc/ssl/openssl.cnf')
 source=("https://www.openssl.org/source/${pkgname}-${_ver}.tar.gz"{,.asc}
         'ca-dir.patch')
-sha256sums=('694f61ac11cb51c9bf73f54e771ff6022b0327a43bbdfa1b2f19de1662a6dcbe'
+sha256sums=('186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35'
             'SKIP'
             '0938c8d68110768db4f350a7ec641070686904f2fe7ba630ac94399d7dc8cc5e')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
