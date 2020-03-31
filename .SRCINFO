@@ -1,0 +1,20 @@
+pkgbase = gimp2.10-plugin-lqr
+	pkgdesc = Plugin for The GIMP providing Liquid Rescale. Temporary fix for GIMP 2.10
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://liquidrescale.wikidot.com/
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	makedepends = patch
+	depends = gimp
+	depends = liblqr
+	provides = gimp-plugin-lqr
+	conflicts = gimp-plugin-lqr
+	source = https://liquidrescale.wikidot.com/local--files/en:download-page-sources/gimp-lqr-plugin-0.7.2.tar.bz2
+	source = patch.diff
+	md5sums = af7eb1a0d480bacfa6e5eff9b06bd877
+	md5sums = c9350c285674d3aebac286d1a13fdda9
+
+pkgname = gimp2.10-plugin-lqr
+
