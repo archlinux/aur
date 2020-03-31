@@ -16,8 +16,8 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine-oslogin'
-pkgver=20191018
-_commit='5a710bbee227f4413c51eefa180e1fbeebd1d11b'
+pkgver=20200325
+_commit='1eca1d61245dbb1b24be23a4fb75e98b56aaeb6a'
 pkgrel=1
 pkgdesc='Google Compute Engine OS login support'
 arch=('x86_64')
@@ -25,7 +25,7 @@ url='https://github.com/GoogleCloudPlatform/guest-oslogin'
 license=('Apache')
 depends=('curl' 'json-c' 'pam')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-oslogin/archive/$_commit.tar.gz")
-sha256sums=('31b1409193b49f9cbaf72c00be5f9624cf9e0aa70ac0dc7cf6b5177c7e1b1ebf')
+sha256sums=('c7c19993b86d9820c0e4d981ab84c3fde201ae6b5f54e20b37c059735f15fd1c')
 
 build() {
 	cd "guest-oslogin-$_commit"
