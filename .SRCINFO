@@ -1,0 +1,19 @@
+pkgbase = nerd-fonts-monoid
+	pkgdesc = Patched font Monoid from the nerd-fonts library
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/ryanoasis/nerd-fonts
+	arch = any
+	groups = nerd-fonts
+	license = MIT
+	depends = fontconfig
+	provides = nerd-fonts-monoid
+	conflicts = nerd-fonts-git
+	conflicts = nerd-fonts-complete
+	source = https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Monoid.zip
+	source = https://github.com/ryanoasis/nerd-fonts/raw/v2.1.0/LICENSE
+	md5sums = ebcefb7d20e746d58dd6448e6f984326
+	md5sums = 1b95f7668f3a4440b0d404e8dc3ccd9c
+
+pkgname = nerd-fonts-monoid
+
