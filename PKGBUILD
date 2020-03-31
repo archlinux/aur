@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=python-dpath
 pkgver=2.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A python library for accessing and searching dictionaries via /slashed/paths ala xpath"
 arch=('any')
 url="https://pypi.org/project/dpath/"
@@ -20,7 +20,7 @@ source=("https://files.pythonhosted.org/packages/source/d/${_pkgname}/${_pkgname
 sha512sums=('4f4c2ccb91fe818127505e909c2021fec4ebf730d791ff12de720eddbb5c3f08f158e07f80332f7ab9450961a8eca92c51d9eba17fb3a3df2c34aee2dc655613'
             'SKIP')
 
-package_python-pyrad() {
+package_python-dpath() {
   depends=('python')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -29,8 +29,8 @@ package_python-pyrad() {
   install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/README.rst ${pkgdir}/usr/share/doc/${pkgname}/README.rst
 }
 
-package_python2-pyrad() {
-  depends=('python2' 'mdadm')
+package_python2-dpath() {
+  depends=('python2')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
