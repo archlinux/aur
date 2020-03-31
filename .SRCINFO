@@ -1,0 +1,15 @@
+pkgbase = ksd
+	pkgdesc = kubernetes secret decoder
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/mfuentesg/ksd
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = ksd-1.0.5.tar.gz::https://github.com/mfuentesg/ksd/archive/v1.0.5.tar.gz
+	sha256sums = f6ad0468ce2ab6b79e709aa584fa7905ea0beba985484ed154c49036a869f81e
+
+pkgname = ksd
+
