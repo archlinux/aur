@@ -9,8 +9,8 @@ makedepends=('git' 'tar')
 arch=('any')
 license=('GPL3')
 options=(!strip)
-source=("http://git.int.schildmann.net/kschildmann/freeman/uploads/063facf4e5614f488554d3cc5ed898ad/freeman.tar.gz")
-sha256sums=('9e604a788fd408a920ac799667bd9fa703adf15c08fd63fdc57e9c7440a11288')
+source=("http://git.int.schildmann.net/kschildmann/freeman/uploads/6d32dca04128e717785d9bda8ed227cf/freeman.tar.gz")
+sha256sums=('c480ab55dd8ede515d11bdd96f77a03b91884c95dd8c6614046e7d4ad70671da')
 
 package() {
 	tar -xvf freeman.tar.gz -C "$pkgdir"
