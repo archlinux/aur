@@ -3,8 +3,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
 pkgname=('python-pyrad' 'python2-pyrad')
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="Python RADIUS Implementation"
 arch=('any')
 url="https://pypi.org/project/pyrad/"
@@ -17,19 +17,23 @@ changelog=
 noextract=()
 source=("https://files.pythonhosted.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('916895681bc8152bb1698ec2699139ea20566fe294e0c983fd4a27bd0cf927c086e3aff43ca7aa27a0d38fbf6ad09cf21aaaea0f2ad000efd4456d3fec11a95f'
+sha512sums=('a3703a6c1cb79735e8c55656e6472461504b4e8cf493caa69cb088e17f8f442184c51123a81ac42a8d94f439bcb164a230da91a377175eb1d35b979055e37359'
             'SKIP')
 
 package_python-pyrad() {
-  depends=('python' 'mdadm')
+  depends=('python')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" --optimize=1
+  install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/README.rst ${pkgdir}/usr/share/doc/${pkgname}/README.rst
 }
 
 package_python2-pyrad() {
-  depends=('python2' 'mdadm')
+  depends=('python2')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+  install -D -m644 ${srcdir}/${_pkgname}-${pkgver}/README.rst ${pkgdir}/usr/share/doc/${pkgname}/README.rst
 }
