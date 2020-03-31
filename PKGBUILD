@@ -13,8 +13,7 @@ optdepends=()
 license=('MIT')
 arch=('any')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('834cb190dfb3b0ef156ca040f3aca24b7ceba0fa73b581bb39b31891ebadfdae'
-            '76458f692a5287139a4da870adb55c168e30c9a60a366628e7cf90af9436474a')
+sha256sums=('834cb190dfb3b0ef156ca040f3aca24b7ceba0fa73b581bb39b31891ebadfdae')
 
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
