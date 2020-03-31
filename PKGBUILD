@@ -1,4 +1,5 @@
 # Maintainer: fantasyzhjk <fantasyzhjk@outlook.com>
+
 pkgname=autofishbot-git
 pkgver=latest
 pkgrel=1
@@ -12,21 +13,27 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
+
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
+
 	install -m755 -d "${srcdir}/go/src/github.com/MscBaiMeow/"
 	ln -sf "${srcdir}/${pkgname}" "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
+
 	cd "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
+
 	export GOPATH="${srcdir}/go"
 	go get -v ./...
 }
 
 build() {
 	cd "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
+
 	mkdir -p build
+
 	export GOPATH="${srcdir}/go"
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
@@ -36,6 +43,6 @@ build() {
 
 package() {
 	cd "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
+
 	install -Dm755 "./build/AutoFishingBot" "${pkgdir}/usr/bin/autofishbot"
-	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
