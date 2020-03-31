@@ -1,8 +1,9 @@
-﻿#Maintainer: termuellinator
+﻿# Maintainer: termuellinator
+
 pkgname=ryzencontroller-bin
 _pkgver=2.2.0
 pkgver=${_pkgver//[+-]/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal Electron application to use ryzenAdj through a friendly interface"
 arch=('x86_64')
 depends=('gtk3' 'ryzenadj-git')
