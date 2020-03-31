@@ -1,7 +1,7 @@
 # Maintainer: David Birks <david@birks.dev>
 
 pkgname=cloudflare-wrangler
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc='Command-line tool for working with Cloudflare Workers'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/cloudflare/wrangler"
 license=('Apache' 'MIT')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cloudflare/wrangler/archive/v$pkgver.tar.gz")
-sha512sums=('c542fdcd89771f77f3877be3657db24cd52321fe1840245ecc5029fe658287aabaa66e155acb98d26a7be5de85eba5114eaa751d39f8982727873fa7d3196719')
+sha512sums=('92703213dad78ca90797bad0d2508bd7a5d82629987967130189ce805de203eef46fa24015a1258f6cdecd9869b32c6b64f1a7f9de49d19f75fca41d99d015ed')
 
 build() {
   cd wrangler-$pkgver
