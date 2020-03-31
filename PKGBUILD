@@ -14,6 +14,7 @@ makedepends=('git')
 provides=('icu' 'icu-git')
 conflicts=('icu' 'icu-git')
 source=("git+https://github.com/unicode-org/icu.git")
+options=('staticlibs')
 sha256sums=('SKIP')
 
 

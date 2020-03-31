@@ -13,6 +13,7 @@ pkgbase = icu-git-static
 	provides = icu-git
 	conflicts = icu
 	conflicts = icu-git
+	options = staticlibs
 	source = git+https://github.com/unicode-org/icu.git
 	sha256sums = SKIP
 
