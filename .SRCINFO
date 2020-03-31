@@ -1,5 +1,5 @@
 pkgbase = ida-pro
-	pkgdesc = Hex-Rays IDA Pro {pkgver}
+	pkgdesc = Hex-Rays IDA Pro
 	pkgver = 7.4
 	pkgrel = 2
 	url = https://www.hex-rays.com/products/ida/7.4/index.shtml

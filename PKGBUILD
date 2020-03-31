@@ -6,7 +6,7 @@
 pkgver=7.4
 pkgname="ida-pro"
 pkgrel=2
-pkgdesc="Hex-Rays IDA Pro {pkgver}"
+pkgdesc="Hex-Rays IDA Pro"
 url="https://www.hex-rays.com/products/ida/${pkgver}/index.shtml"
 license=('custom')
 makedepends=('fakechroot')
