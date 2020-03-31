@@ -1,6 +1,6 @@
 # Maintainer: anon at sansorgan.es
 pkgname=madagascar
-pkgver=r14561.279e38d29
+pkgver=r14562.4883d27e8
 pkgrel=2
 epoch=1
 pkgdesc="Multidimensional data analysis and reproducible computational experiments."
@@ -8,8 +8,8 @@ url=http://ahay.org/
 license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd'
-'openmpi' 'glu' 'freeglut' 'suitesparse' 'python') 
-makedepends=('scons' 'libtirpc' 'libtirpc-compat')
+'openmpi' 'glu' 'freeglut' 'suitesparse' 'python2') 
+makedepends=('python2-scons' 'libtirpc' 'libtirpc-compat')
 options=('strip')
 #source=("$pkgname.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-3.0/madagascar-3.0.1.tar.gz/download")
 source=($pkgname::git+https://github.com/ahay/src)
@@ -25,7 +25,15 @@ build() {
   cd ${srcdir}/${pkgname}
   # Investigate additional bindings
   #export LINKFLAGS="-ltirpc"
+  # Fake python2 env
+  mkdir -p ${srcdir}/bin/
+  ln -f -s /usr/bin/python2 ${srcdir}/bin/python
+  ln -f -s /usr/bin/python2-config ${srcdir}/bin/python-config
+  export PATH=${srcdir}/bin:$PATH
+
+
   export LINKFLAGS="-llapack -lblas -ltirpc -pthread -fopenmp"
+  #sed -i '1s/python/python2/' framework/setenv.py
   ./configure --prefix=${pkgdir}/usr/
 
   echo "Fixing paths in files..."
@@ -43,12 +51,12 @@ build() {
 package() {
     cd ${srcdir}/${pkgname}
     make install
-    mkdir -p "${pkgdir}/usr/src/"
-    cp -r ${srcdir}/* ${pkgdir}/usr/src/${pkgname}
-    arr[0]="/usr/share/madagascar/etc/config.py"
-    arr[1]="/usr/lib/python3.8/site-packages/rsf/prog.py"
-    arr[2]="/usr/share/madagascar/etc/env.sh"
-    arr[3]="/usr/src/madagascar/config.py"
+    mkdir -p "${pkgdir}/usr/src/${pkgname}"
+    cp -r ${srcdir}/${pkgname}/* ${pkgdir}/usr/src/${pkgname}
+    arr[0]="usr/share/madagascar/etc/config.py"
+    arr[1]="usr/lib/python2.7/site-packages/rsf/prog.py"
+    arr[2]="usr/share/madagascar/etc/env.sh"
+    arr[3]="usr/src/madagascar/config.py"
     echo ${pkgdir}
     echo ${srcdir}
     for f in ${arr[@]} ; do
