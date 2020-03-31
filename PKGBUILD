@@ -20,7 +20,7 @@ build() {
   cd "${srcdir}/gtkmm-${pkgver}"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-configure \
+    LIBS+=" -lssp" ${_arch}-configure \
       --disable-documentation \
       ..
     make
