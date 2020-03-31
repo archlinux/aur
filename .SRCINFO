@@ -1,6 +1,6 @@
 pkgbase = autofishbot-git
 	pkgdesc = An auto fishing robot for Minecraft server.
-	pkgver = r2.bcaaf0a
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/MscBaiMeow/AutoFishingBot
 	arch = x86_64

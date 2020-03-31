@@ -1,6 +1,6 @@
 # Maintainer: fantasyzhjk <fantasyzhjk@outlook.com>
 pkgname=autofishbot-git
-pkgver=r2.bcaaf0a
+pkgver=latest
 pkgrel=1
 pkgdesc="An auto fishing robot for Minecraft server."
 url="https://github.com/MscBaiMeow/AutoFishingBot"
@@ -36,6 +36,6 @@ build() {
 
 package() {
 	cd "${srcdir}/go/src/github.com/MscBaiMeow/AutoFishingBot"
-	install -Dm755 "./build/AutoFishingBot" "${pkgdir}/usr/bin/autofishbot-git"
+	install -Dm755 "./build/AutoFishingBot" "${pkgdir}/usr/bin/autofishbot"
 	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
