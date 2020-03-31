@@ -3,7 +3,7 @@
 # Headless by: K900 <me@0upti.me>
 
 pkgname=qt5-base-headless
-_qtver=5.14.1
+_qtver=5.14.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('x86_64')
@@ -21,18 +21,15 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 conflicts=('qtchooser' 'qt5-base')
 provides=('qt5-base')
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d9d423a6e7bcf1055c0372fc029f14a6fe67dd62c67b83095cde68b60b762cf7')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
+	qt5-base-cflags.patch)
+sha256sums=('48b9e79220941665a9dd827548c6428f7aa3052ccba8f4f7e039a94aa1d2b28a'
+	    'cf707cd970650f8b60f8897692b36708ded9ba116723ec8fcd885576783fe85c')
 
 prepare() {
   cd ${_pkgfqn}
 
-  # Build qmake using Arch {C,LD}FLAGS
-  # This also sets default {C,CXX,LD}FLAGS for projects built using qmake
-  sed -i -e "s|^\(QMAKE_CFLAGS_RELEASE.*\)|\1 ${CFLAGS}|" \
-    mkspecs/common/gcc-base.conf
-  sed -i -e "s|^\(QMAKE_LFLAGS_RELEASE.*\)|\1 ${LDFLAGS}|" \
-    mkspecs/common/g++-unix.conf
+  patch -p1 -i ../qt5-base-cflags.patch # Use system CFLAGS
 }
 
 build() {
@@ -50,7 +47,6 @@ build() {
     -openssl-linked \
     -nomake examples \
     -no-rpath \
-    -optimized-qmake \
     -dbus-linked \
     -system-harfbuzz \
     -journald \
