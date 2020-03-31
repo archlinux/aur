@@ -5,7 +5,7 @@
 pkgname='hid-apple-patched-git-dkms'
 _pkgname=hid-apple-patched
 
-pkgver=20170406.61dce7d
+pkgver=20200331.f7f6560
 pkgrel=1
 
 url="https://github.com/free5lot/hid-apple-patched"
@@ -13,7 +13,6 @@ arch=('any')
 license=('GPL2')
 pkgdesc="Allows to swap the Fn key and left Control key on Macbook Pro and Apple keyboards in GNU/Linux (DKMS)"
 
-conflicts=('hid-apple-patched-git-dkms')
 depends=('dkms')
 makedepends=('git')
 
