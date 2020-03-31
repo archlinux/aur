@@ -1,6 +1,6 @@
 # Maintainer: Szilveszter Székely <szekelyszilv at gmail dot com>
 pkgname=jutoh
-pkgver=2.86
+pkgver=2.95
 pkgrel=1
 pkgdesc="An ebook creation tool"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=('jutoh.sh')
 source_x86_64=(http://www.jutoh.com/Jutoh-${pkgver}-ubuntu-x86_64.tar.gz)
 
 sha512sums=('620b4f443129c87dab2a49669d466a2e78979a52a4068e61f2b8f2c318100d2c453261b80250fe78be144c11aa2a41f91a178fb70281ac138727c096e67727fd')
-sha512sums_x86_64=('e200c93ce10dc060f1e91a5b7fae33dca01fcf2af7f9da6b343948780943d59a0052da1b02aa912b6b5565d74f3b558d48f8de36f3f40d22c143c73fdd10eb71')
+sha512sums_x86_64=('73780eb828e0f0c60cf1ebf11290de3ea102b6c2ab53a8da608312eea7a49245c8bc64012d7ab5671dd61d7bf560ee1d122aee5247cf3b05771284090bbb9a1b')
 
 prepare() {
   mkdir ${srcdir}/jutoh-data
@@ -67,5 +67,5 @@ package() {
   cp -R ${srcdir}/jutoh-data/. $pkgdir/usr/share/jutoh
 
   msg2 "Cleaning up files"
-  rm -r ${pkgdir}/usr/share/jutoh/{jutoh2.{applications,desktop,keys,mime,xml},jutoh_eeepc.xml,license.txt,x-jutoh2.desktop,appicons}
+  rm -r ${pkgdir}/usr/share/jutoh/{jutoh2.{applications,desktop,keys,mime,xml},license.txt,x-jutoh2.desktop,appicons}
 }
