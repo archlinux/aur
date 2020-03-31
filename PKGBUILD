@@ -9,7 +9,7 @@ arch=("aarch64" "armv7h" "i686" "x86_64")
 url="https://github.com/IsmaelMartinez/${pkgname}"
 license=("GPL3")
 depends=("gtk3" "libxss" "nss")
-makedepends=("node-gyp" "python2" "yarn")
+makedepends=("nodejs<=12" "node-gyp" "python2" "yarn")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/IsmaelMartinez/${pkgname}/archive/v${pkgver}.tar.gz"
   "${pkgname}.desktop"

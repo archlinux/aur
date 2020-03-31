@@ -8,6 +8,7 @@ pkgbase = teams-for-linux
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = nodejs<=12
 	makedepends = node-gyp
 	makedepends = python2
 	makedepends = yarn
