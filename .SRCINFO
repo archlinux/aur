@@ -1,7 +1,7 @@
 pkgbase = squawk
-	pkgdesc = An XMPP desktop messenger, written on qt
-	pkgver = 0.1.2
-	pkgrel = 2
+	pkgdesc = An XMPP desktop messenger, written on pure c++ (qt)
+	pkgver = 0.1.3
+	pkgrel = 1
 	url = https://git.macaw.me/blue/squawk
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = squawk
 	depends = desktop-file-utils
 	depends = lmdb
 	depends = qxmpp>=1.1.0
-	source = squawk-0.1.2.tar.gz
-	sha256sums = 9f309c94d002f9ee77280b46b19d684e3710007ff04d15577a22fa45305e38b2
+	source = squawk-0.1.3.tar.gz
+	sha256sums = adb172bb7d5b81bd9b83b192481a79ac985877e81604f401b3f2a08613b359bc
 
 pkgname = squawk
 
