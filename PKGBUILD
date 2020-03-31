@@ -9,11 +9,9 @@ pkgdesc='HTTP client/server library for GNOME'
 url='https://wiki.gnome.org/LibSoup'
 license=('GPL')
 arch=('i686' 'x86_64')
-makedepends=()
-depends=()
-
+makedepends=('gnutls')
+depends=('libgcrypt' 'libxml2' 'glib2>=2.12.0')
 optdepends=(  )
-conflicts=('')
 provides=('libsoup-2.2')
 source=("http://ftp.gnome.org/pub/gnome/sources/${_basepkgname}/${_basepkgver}/${_basepkgname}-${pkgver}.tar.bz2"
         "update.patch" )
@@ -26,7 +24,7 @@ prepare() {
 }
 build() {
   cd ${srcdir}/${_basepkgname}-${pkgver}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-ssl
   make
 }
 package() {
