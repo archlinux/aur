@@ -10,25 +10,23 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-udf-patched
-pkgver=1.9.9
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Telegram Desktop client with several personal patches'
 arch=('x86_64')
 url="https://desktop.telegram.org/"
 license=('GPL3')
 depends=(
-    'enchant' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-    'qt5-imageformats' 'xxhash' 'libappindicator-gtk3'
+    'hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
+    'qt5-imageformats' 'xxhash' 'libdbusmenu-qt5'
 )
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl')
 optdepends=('ttf-opensans: default Open Sans font family')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 
 source=(
     "https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
-    # Files from the official package
-    telegram-desktop.sh
     # Custom patches
     "always_delete_for_everyone.patch"
     "always_clear_history_for_everyone.patch"
@@ -36,9 +34,7 @@ source=(
     "always_send_as_photo_or_album.patch"
 )
 sha512sums=(
-    'ba6400e6f5eec5bda6e8a54b43846e695b2cce731cb6b39f17407cc39e3e9b8078d977253d29962671f30e33dbe012f8e40f340f781fd8ca73487e5f2d42e3de'
-    # Official package files
-    '3c21c871e28bac365400f7bc439a16ad1a9a8d87590ad764ce262f1db968c10387caed372d4e064cb50f43da726cebaa9b24bcbcc7c6d5489515620f44dbf56b'
+    '53ea3bb0e1d7cb1fc9d8c8725801295e89f8765b6560f046065dde89aef501d7ddb8aa268aa82f33e3674164a825506c4276cd07c0b59c242dd78ab59d659508'
     # Custom patches
     'e88fa96024efc6176c818d0a46684e0ee1fb3a7bdadb323ad3b29f736209c80b6c31b135cf84389e7e2bbd614e57b241e4437c94b6fd114e73cfc418bf130015'
     '4a7e9de924bbf32fb4cd24ffa2764bcf49e0540bba649829b180da20a62810d4a21ebf11529d4eca22c9ceaa93b434ca3fbfd0b636795f8109ea4e1eddbff8f3'
@@ -59,18 +55,13 @@ prepare() {
 build() {
     cd tdesktop-$pkgver-full
 
-    export CXXFLAGS="$CXXFLAGS -ffile-prefix-map=$srcdir/tdesktop-$pkgver-full="
     cmake -B build -G Ninja . \
-        -Ddisable_autoupdate=1 \
-        -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
         -DTDESKTOP_API_TEST=ON \
-        -DDESKTOP_APP_USE_GLIBC_WRAPS=OFF \
-        -DDESKTOP_APP_USE_PACKAGED=ON \
         -DDESKTOP_APP_USE_PACKAGED_RLOTTIE=OFF \
-        -DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON \
+        -DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF \
         -DTDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME=ON \
-        -DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON \
         -DTDESKTOP_USE_PACKAGED_TGVOIP=OFF \
         -DDESKTOP_APP_SPECIAL_TARGET="" \
         -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
@@ -80,9 +71,5 @@ build() {
 
 package() {
     cd tdesktop-$pkgver-full
-    ninja -C build install
-
-    mv "$pkgdir/usr/bin/telegram-desktop"{,-bin}
-    install -dm755 "$pkgdir/usr/bin"
-    install -m755 "$srcdir/telegram-desktop.sh" "$pkgdir/usr/bin/telegram-desktop"
+    DESTDIR=$pkgdir ninja -C build install
 }
