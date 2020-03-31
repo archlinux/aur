@@ -1,4 +1,5 @@
 # Maintainer: Simon Hauser <Simon-Hauser@outlook.de>
+# Contributor: Jean Lucas <jean@4ray.co>
 
 pkgname=spotify-tui-git
 _pkgname=spotify-tui
