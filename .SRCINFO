@@ -1,7 +1,7 @@
 pkgbase = linux-vfio-lts
 	pkgdesc = LTS Linux VFIO
 	pkgver = 5.4.28
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -18,6 +18,7 @@ pkgbase = linux-vfio-lts
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.4.28.tar.sign
 	source = config
 	source = 0001-add-sysctl-and-CONFIG-for-unprivileged_userns_clone.patch
+	source = 0001-CVE-2020-8835-Revert-bpf-Provide-better-register-bou.patch
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -26,6 +27,7 @@ pkgbase = linux-vfio-lts
 	sha256sums = SKIP
 	sha256sums = 7a58467b4cf628306a0048993f43508e5da39d8495801602b25b035372651697
 	sha256sums = a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2
+	sha256sums = c6d203cb728fbe70f8bd60c9448f0cbcb36d8b535fc1cdd59bda4a26ead303bf
 	sha256sums = 4073312646af8ba01c000f258041b2dc8634a8d9a4a4be8dc0bf12a9b4041cb1
 	sha256sums = 50880279bab5793c89a6823d751d3c84ead5efd5c4c0d38b921a14061fc0d336
 
