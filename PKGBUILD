@@ -10,6 +10,8 @@ url="http://lib2geom.sourceforge.net/"
 license=('GPL')
 depends=('glib2' 'cairo' 'gsl' 'gtest' 'double-conversion')
 makedepends=('git' 'cmake' 'ninja' 'gtest' 'boost')
+conflicts=('lib2geom')
+provides=('lib2geom=1.0')
 source=('git+https://gitlab.com/inkscape/lib2geom.git')
 md5sums=('SKIP')
 
