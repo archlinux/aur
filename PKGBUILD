@@ -6,7 +6,7 @@
 # Maintainer: Valentijn "noirscape" V. <neko at catgirlsin dot space>
 pkgname=fusee-interfacee-tk-bin
 _pkgname=fusee-interfacee-tk
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A mod of falquinhos Fusée Launcher for use with Nintendo Homebrew Switch Guide. It also adds the ability to mount SD while in RCM."
 arch=("x86_64")
@@ -16,7 +16,7 @@ depends=("glibc")
 provides=("fusee-interface-tk")
 source=("https://github.com/nh-server/$_pkgname/releases/download/V$pkgver/$_pkgname-linux.zip")
 noextract=()
-md5sums=('f6ab7a79739a0c57809d51d5ee21e699')
+md5sums=('65d1569eb3796fa723b30acbe9694adb')
 validpgpkeys=()
 
 package() {
