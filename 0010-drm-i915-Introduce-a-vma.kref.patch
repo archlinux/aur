@@ -1,7 +1,7 @@
-From f9263854415cb857cef239b6d6ae5f05066e4731 Mon Sep 17 00:00:00 2001
+From 6bd575b4b4a9d1cb898608d25df5e6aefe5a0240 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Sun, 22 Dec 2019 21:02:55 +0000
-Subject: [PATCH 10/12] drm/i915: Introduce a vma.kref
+Subject: [PATCH 10/13] drm/i915: Introduce a vma.kref
 
 Start introducing a kref on i915_vma in order to protect the vma unbind
 (i915_gem_object_unbind) from a parallel destruction (i915_vma_parked).
@@ -248,5 +248,5 @@ index 465932813bc5..ce1db908ad69 100644
  #define assert_vma_held(vma) dma_resv_assert_held((vma)->resv)
  
 -- 
-2.25.2
+2.26.0
 

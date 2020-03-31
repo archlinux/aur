@@ -1,7 +1,7 @@
-From ec701fa986108fae10bee7cfe269e12210521c5f Mon Sep 17 00:00:00 2001
+From c596b143fad6e865f3f9de19c10c4b02998371f0 Mon Sep 17 00:00:00 2001
 From: Golan Ben Ami <golan.ben.ami@intel.com>
 Date: Wed, 18 Mar 2020 08:12:54 +0200
-Subject: [PATCH 11/12] iwlwifi: don't send GEO_TX_POWER_LIMIT if no wgds table
+Subject: [PATCH 11/13] iwlwifi: don't send GEO_TX_POWER_LIMIT if no wgds table
 
 The GEO_TX_POWER_LIMIT command was sent although
 there is no wgds table, so the fw got wrong SAR values
@@ -148,5 +148,5 @@ index c09624d8d7ee..81b7da5815eb 100644
  	cmd.geo_cmd.table_revision = cpu_to_le32(mvm->fwrt.geo_rev);
  
 -- 
-2.25.2
+2.26.0
 

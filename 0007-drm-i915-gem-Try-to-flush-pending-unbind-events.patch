@@ -1,7 +1,7 @@
-From 846865567a7570b072f881618335035aef030098 Mon Sep 17 00:00:00 2001
+From 589899b9b2b46961ccb096262b8e85b1656a4d15 Mon Sep 17 00:00:00 2001
 From: Chris Wilson <chris@chris-wilson.co.uk>
 Date: Wed, 4 Dec 2019 12:35:56 +0000
-Subject: [PATCH 07/12] drm/i915/gem: Try to flush pending unbind events
+Subject: [PATCH 07/13] drm/i915/gem: Try to flush pending unbind events
 
 If we cannot handle a vma within the unbind loop, try to flush the
 pending events (i915_vma_parked, i915_vm_release) and try again. This
@@ -60,5 +60,5 @@ index 739543812422..85b12228c2cf 100644
  
  	return ret;
 -- 
-2.25.2
+2.26.0
 
