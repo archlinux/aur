@@ -1,7 +1,7 @@
 pkgbase = qmk
 	pkgdesc = CLI tool for customizing supported mechanical keyboards.
 	pkgver = 0.0.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qmk/qmk_cli
 	arch = any
 	license = MIT
