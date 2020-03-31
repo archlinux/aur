@@ -3,7 +3,7 @@
 
 pkgbase=linux-sfh
 pkgver=5.6.arch1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux with experimental AMD Sensor Fusion Hub (SFH) drivers'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -15,7 +15,7 @@ makedepends=(
   git
 )
 provides=(WIREGUARD-MODULE)
-conflicts=(WIREGUARD-MODULE)
+replaces=(WIREGUARD-MODULE)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
