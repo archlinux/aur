@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 makedepends=('fontforge' 'ttf-inconsolata' 'ttf-migu')
 install=ttf.install
-source=('http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator-4.1.1.sh')
+source=('https://rictyfonts.github.io/files/ricty_generator-4.1.1.sh')
 sha256sums=('86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d')
 
 build() {
