@@ -2,7 +2,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=pyside2
-_qtver=5.14.1
+_qtver=5.14.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -32,7 +32,7 @@ provides=(python-pyside2)
 replaces=(python-pyside2)
 _pkgfqn=pyside-setup-opensource-src-${_qtver}
 source=("https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz")
-sha256sums=('41ce931695567639c92acb68a9d66ed5609f067011af9a94b53fc0d697ad1d1c')
+sha256sums=('7c7af33792de57255dbdc165c808e1f03a2520295c5922d9897aca8ad1be92b3')
 
 prepare() {
   mkdir -p build
