@@ -23,18 +23,14 @@ depends=(
 'libxml2>=2.6.1'
 'gettext'
 'dbus>=0.62'
-'boost>=1.33.1'
+'boost-libs>=1.33.1'
 'alsa-lib>=1.0.9'
 'libcdio>=0.70'
 'libcdio-paranoia>=0.70'
 'libsoup-2.2>=2.2.100'
-'gstreamer0.10>=0.10.14'
-'gstreamer0.10-bad-plugins>=0.10.14'
-'gstreamer0.10-base-plugins>=0.10.14'
-'gstreamer0.10-good-plugins>=0.10.14'
-'gstreamer0.10-ugly-plugins>=0.10.14'
 'startup-notification'
 'libofa>=0.9.3')
+makedepends=('boost')
 optdepends=( 'hal' 'networkmanager' )
 provides=('bmpx')
 source=("http://slackware.uk/slacky/slackware-12.1/multimedia/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2" 'update.patch')
