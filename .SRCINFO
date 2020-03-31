@@ -1,7 +1,7 @@
 pkgbase = mooltipass-udev
 	pkgdesc = Udev rules to connect Mooltipass devices
 	pkgver = 2019120501
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mooltipass/mooltipass-udev
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = mooltipass-udev
 	source = mooltipass-udev-2019120501.tar.gz.asc::https://github.com/mooltipass/mooltipass-udev/releases/download/2019120501/mooltipass-udev-2019120501.tar.gz.asc
 	validpgpkeys = 3486CBAC7F116CA71351B0D7F7181B2010660E6F
 	sha256sums = da18bba623890cfab6903c4f7872899693aee9eb1d13a3cd316174505d26b572
-	sha256sums = f10ea477cb14d9ef985de2707be3f60006205d19114572614b6c71feb237c03d
+	sha256sums = SKIP
 
 pkgname = mooltipass-udev
 
