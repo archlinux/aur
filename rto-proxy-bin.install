@@ -1,10 +1,7 @@
 post_install() {
 echo '>>> НЕ гарантируется работа на i686!'
-echo '>>> В случае проблем просьба откатится на предыдущую версию для этого делаем:'
-echo '>>> git clone https://aur.archlinux.org/rto-proxy-bin.git'
-echo '>>> cd rto-proxy-bin'
-echo '>>> git checkout a0ec866bb09448e97ec8f9d45f6c1b272748b905'
-echo '>>> #makepkg -si'
+echo '>>> После установки\обновления выполните на всякий случай команду от рута ldconfig .'
+echo '>>> О багах пишем в AUR я время от времени поглядываю туда.'
 }
 
 post_upgrade() {

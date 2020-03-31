@@ -1,12 +1,12 @@
 #Maintainer: naruto522ru <itachi522ru@gmail.com>
 pkgname=rto-proxy-bin
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc='RuTracker proxy app based at electron + angularjs'
 arch=('x86_64' 'i686')
 url='https://rutracker.org/forum/viewtopic.php?t=5403116'
 license=('MIT')
-depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss' 'nss')
+depends=('gconf' 'libnotify' 'libappindicator-gtk2' 'libxtst' 'libxss' 'nss' 'pango-legacy')
 options=(!strip)
 install=rto-proxy-bin.install
 
@@ -24,5 +24,6 @@ package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
 # FIX ERROR SEE ---> https://github.com/RutrackerOrg/rutracker-proxy/issues/9
   install -Dm 755 "$srcdir/app.asar" "$pkgdir/opt/rto-proxy/resources/"
+  install -dm 755 "$pkgdir/etc/ld.so.conf.d/"
+  install -Dm 755 "$startdir/rto-proxy.conf" "$pkgdir/etc/ld.so.conf.d/"
 }
- msg2 "Moving stuff in place..."
