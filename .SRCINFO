@@ -1,0 +1,15 @@
+pkgbase = python-textwrap3
+	pkgdesc = textwrap from Python 3.6 backport (plus a few tweaks)
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/jonathaneunice/textwrap3
+	arch = any
+	license = Python
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/textwrap3/textwrap3-0.9.2.zip
+	md5sums = fb3ce1d1b93adecd367a0f6c39f98306
+
+pkgname = python-textwrap3
+	depends = python
+
