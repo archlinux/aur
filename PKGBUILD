@@ -1,6 +1,6 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 pkgname=('nwg-launchers')
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="GTK+ launchers for sway, i3 and some floating WMs"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'gtkmm' 'nlohmann-json')
 
 source=("$url/archive/v$pkgver.tar.gz")
 
-md5sums=('15c86b6eed3cf5c418cffdb3e6f10141')
+md5sums=('b76be386cc855829d1f6929414f9611c')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/grid"
