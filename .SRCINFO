@@ -1,6 +1,6 @@
 pkgbase = pacwall-git
 	pkgdesc = Dependency graph of installed packages on your wallpaper.
-	pkgver = r79.6c0be4d
+	pkgver = r95.eb1d686
 	pkgrel = 1
 	url = http://github.com/Kharacternyk/pacwall
 	arch = any
