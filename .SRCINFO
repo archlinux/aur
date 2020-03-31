@@ -1,7 +1,7 @@
 pkgbase = assh-git
 	pkgdesc = make your ssh client smarter https://manfred.life/assh
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moul/assh.git
 	arch = any
 	license = MIT
