@@ -2,8 +2,8 @@
 
 pkgname=znapzend
 pkgver=0.20.0
-pkgrel=1
-pkgdesc="ZnapZend is a ZFS centric backup tool. It relies on snapshot, send and receive todo its work. It has the built-in ability to manage both local snapshots as well as remote copies by thining them out as time progresses."
+pkgrel=2
+pkgdesc="A ZFS centric backup tool to create snapshots and send them to backup locations."
 arch=('any')
 url="http://www.znapzend.org/"
 license=('GPL')
