@@ -4,14 +4,15 @@
 #
 pkgname="wp-desktop"
 pkgver="5.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="WordPress.com Desktop client"
 url="https://desktop.wordpress.com/"
+_url="https://github.com/Automattic/wp-desktop"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk2' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss' 'pango-legacy')
+depends=('alsa-lib' 'gcc-libs' 'gconf' 'gtk2' 'libgpg-error' 'libxss' 'libxkbfile' 'libxtst' 'nss')
 
-source=("wp-desktop-linux-x64-$pkgver.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps")
+source=("wp-desktop-linux-x64-${pkgver}.tar.gz::${_url}/releases/download/v${pkgver}/WordPressDesktop-${pkgver}.tar.gz")
 
 sha256sums=('e30c1511e96b4980c6b3c421040c27c979db5557c2cb41796e460770b0bee1ae')
 
@@ -26,8 +27,7 @@ Categories=Development;"
 
 _wpcom_bin="#!/bin/sh
 
-ROOT=/opt/pango-legacy
-LD_LIBRARY_PATH=\${ROOT}/usr/lib /usr/share/wpcom/wpcom"
+/usr/share/wpcom/wpcom"
 
 build() {
     cd "${srcdir}"
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}"/WordPress*
+    cd "${srcdir}"/WordPress*/
     install -d ${pkgdir}/usr/share/wpcom
     mv * ${pkgdir}/usr/share/wpcom
     install -d ${pkgdir}/usr/share/applications
@@ -48,7 +48,7 @@ package() {
     install -m 644 *.desktop ${pkgdir}/usr/share/applications
     install -m 755 wpcom ${pkgdir}/usr/bin
     
-    cd "${pkgdir}/usr/share/wpcom"
+    cd "${pkgdir}/usr/share/wpcom/"
     install -m 644 ./resources/app/public_desktop/app-logo.png ${pkgdir}/usr/share/pixmaps/wpcom.png
     install -m 644 LICENSE.electron.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }

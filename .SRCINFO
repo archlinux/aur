@@ -1,7 +1,7 @@
 pkgbase = wp-desktop
 	pkgdesc = WordPress.com Desktop client
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://desktop.wordpress.com/
 	arch = i686
 	arch = x86_64
@@ -15,8 +15,7 @@ pkgbase = wp-desktop
 	depends = libxkbfile
 	depends = libxtst
 	depends = nss
-	depends = pango-legacy
-	source = wp-desktop-linux-x64-5.0.0.tar.gz::https://public-api.wordpress.com/rest/v1.1/desktop/linux/download?ref=getapps
+	source = wp-desktop-linux-x64-5.0.0.tar.gz::https://github.com/Automattic/wp-desktop/releases/download/v5.0.0/WordPressDesktop-5.0.0.tar.gz
 	sha256sums = e30c1511e96b4980c6b3c421040c27c979db5557c2cb41796e460770b0bee1ae
 
 pkgname = wp-desktop
