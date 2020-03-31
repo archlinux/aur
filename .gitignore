@@ -1,7 +1,0 @@
-# Ignore everything
-*
-
-# But keep the important files
-!.gitignore
-!PKGBUILD
-!.SRCINFO
