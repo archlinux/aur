@@ -1,16 +1,16 @@
 # Maintainer: Derek Taylor (DistroTube) <derek@distrotube.com>
 pkgname=st-distrotube-git
-pkgver=0.8.2
+pkgver=.r9.ed0183b
 pkgrel=1
 pkgdesc="A heavily-patched and customized build of st (the Suckless simple terminal) from DistroTube."
 arch=(x86_64 i686)
 url="https://gitlab.com/dwt1/st-distrotube.git"
 license=('MIT')
 groups=()
-depends=()
+depends=(ttf-hack ttf-joypixels)
 makedepends=(git)
 checkdepends=()
-optdepends=(nerd-fonts-complete ttf-symbola)
+optdepends=()
 provides=(st)
 conflicts=(st)
 replaces=()
