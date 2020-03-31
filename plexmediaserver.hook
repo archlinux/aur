@@ -8,4 +8,4 @@ Target = plex-media-server
 
 [Action]
 When = PostTransaction
-Exec = /usr/bin/systemctl --quiet is-active plexmediaserver.service && /usr/bin/systemctl restart plexmediaserver.service
+Exec = /usr/bin/systemctl try-restart plexmediaserver.service
