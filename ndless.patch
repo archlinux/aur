@@ -1,0 +1,121 @@
+diff --git a/ndless-sdk/bin/arm-none-eabi-ld.gold b/ndless-sdk/bin/arm-none-eabi-ld.gold
+index 54cec85..5a56985 100755
+--- a/ndless-sdk/bin/arm-none-eabi-ld.gold
++++ b/ndless-sdk/bin/arm-none-eabi-ld.gold
+@@ -7,8 +7,8 @@ DIRNAME="$(dirname "$0")"
+ 
+ # DIRNAME may not be in the toolchain directory if this script was symlinked.
+ # try to find the symlink target
+-which readlink >/dev/null 2>&1 && readlink "$0" >/dev/null 2>&1 && {
+-	DIRNAME="$(dirname "$(readlink "$0")")"
++which readlink >/dev/null 2>&1 && readlink -- "$0" >/dev/null 2>&1 && {
++	DIRNAME="$(dirname "$(readlink -f -- "$0")")"
+ }
+ 
+ # Cygwin owns a dedicated command to find the symlink target
+diff --git a/ndless-sdk/bin/make-prg b/ndless-sdk/bin/make-prg
+index 7fa29c6..44beacd 100755
+--- a/ndless-sdk/bin/make-prg
++++ b/ndless-sdk/bin/make-prg
+@@ -6,8 +6,8 @@ DIRNAME="$(dirname "$0")"
+ 
+ # DIRNAME may not be in the toolchain directory if this script was symlinked.
+ # try to find the symlink target
+-which readlink >/dev/null 2>&1 && readlink "$0" >/dev/null 2>&1 && {
+-	DIRNAME="$(dirname "$(readlink "$0")")"
++which readlink >/dev/null 2>&1 && readlink -- "$0" >/dev/null 2>&1 && {
++	DIRNAME="$(dirname "$(readlink -f -- "$0")")"
+ }
+ 
+ # Cygwin owns a dedicated command to find the symlink target
+@@ -15,8 +15,6 @@ if [ "$UNAME" = "cygwin" ]; then
+ 	DIRNAME="$(cygpath --path --windows "$DIRNAME")"
+ fi
+ 
+-MAKEFLAGS= make -C "${DIRNAME}/../tools/zehn_loader" -s all
+-
+ # Validate the Zehn file
+ genzehn --info --input "$1" >/dev/null || exit 1 # genzehn prints an error for us
+ 
+@@ -24,4 +22,4 @@ genzehn --info --input "$1" >/dev/null || exit 1 # genzehn prints an error for u
+ COMPRESSED=
+ genzehn --info --input "$1" | grep compressed >/dev/null && COMPRESSED="_compressed"
+ 
+-cat "${DIRNAME}/../tools/zehn_loader/zehn_loader${COMPRESSED}.tns" "$1" > "$2"
++cat "${DIRNAME}/../lib/zehn_loader${COMPRESSED}.tns" "$1" > "$2"
+diff --git a/ndless-sdk/bin/nspire-as b/ndless-sdk/bin/nspire-as
+index cb37341..4516b3b 100755
+--- a/ndless-sdk/bin/nspire-as
++++ b/ndless-sdk/bin/nspire-as
+@@ -5,8 +5,8 @@ UNAME="$(uname -s | tr A-Z a-z)"
+ DIRNAME="$(dirname "$0")"
+ # DIRNAME may not be in the toolchain directory if this script was symlinked.
+ # try to find the symlink target
+-which readlink >/dev/null 2>&1 && readlink "$0" >/dev/null 2>&1 && {
+-    SYMLINK="$(readlink "$0")"
++which readlink >/dev/null 2>&1 && readlink -- "$0" >/dev/null 2>&1 && {
++    SYMLINK="$(readlink -f -- "$0")"
+     
+     # On MacOS X, the readlink command hasn't the same behavior than the others operating systems based on Unix.
+     if [ "$UNAME" = "darwin" ]; then
+diff --git a/ndless-sdk/bin/nspire-g++ b/ndless-sdk/bin/nspire-g++
+index 2beabf7..c4650c9 100755
+--- a/ndless-sdk/bin/nspire-g++
++++ b/ndless-sdk/bin/nspire-g++
+@@ -6,8 +6,8 @@ DIRNAME="$(dirname "$0")"
+ 
+ # DIRNAME may not be in the toolchain directory if this script was symlinked.
+ # try to find the symlink target
+-which readlink >/dev/null 2>&1 && readlink "$0" >/dev/null 2>&1 && {
+-        DIRNAME="$(dirname "$(readlink "$0")")"
++which readlink >/dev/null 2>&1 && readlink -- "$0" >/dev/null 2>&1 && {
++        DIRNAME="$(dirname "$(readlink -f -- "$0")")"
+ }
+ 
+ if [ "$UNAME" = "cygwin" ]; then
+diff --git a/ndless-sdk/bin/nspire-gcc b/ndless-sdk/bin/nspire-gcc
+index 381beac..d6dd72c 100755
+--- a/ndless-sdk/bin/nspire-gcc
++++ b/ndless-sdk/bin/nspire-gcc
+@@ -6,8 +6,8 @@ DIRNAME="$(dirname "$0")"
+ 
+ # DIRNAME may not be in the toolchain directory if this script was symlinked.
+ # try to find the symlink target
+-which readlink >/dev/null 2>&1 && readlink "$0" >/dev/null 2>&1 && {
+-        DIRNAME="$(dirname "$(readlink "$0")")"
++which readlink >/dev/null 2>&1 && readlink -- "$0" >/dev/null 2>&1 && {
++        DIRNAME="$(dirname "$(readlink -f -- "$0")")"
+ }
+ 
+ if [ "$UNAME" = "cygwin" ]; then
+diff --git a/ndless-sdk/bin/nspire-tools b/ndless-sdk/bin/nspire-tools
+index d023a0d..03d826c 100755
+--- a/ndless-sdk/bin/nspire-tools
++++ b/ndless-sdk/bin/nspire-tools
+@@ -12,8 +12,8 @@ DIRNAME="$(dirname "$0")"
+ 
+ # DIRNAME may not be in the toolchain directory if this script was symlinked.
+ # try to find the symlink target	
+-which readlink >/dev/null 2>&1 && readlink "$0" >/dev/null 2>&1 && {
+-    SYMLINK="$(readlink "$0")"
++which readlink >/dev/null 2>&1 && readlink -- "$0" >/dev/null 2>&1 && {
++    SYMLINK="$(readlink -f -- "$0")"
+     
+     # On MacOS X, the readlink command hasn't the same behavior than the others operating systems based on Unix.
+     if [ "$UNAME" == "darwin" ]; then
+diff --git a/ndless-sdk/lib/zehn_loader.tns b/ndless-sdk/lib/zehn_loader.tns
+new file mode 120000
+index 0000000..64c36ae
+--- /dev/null
++++ b/ndless-sdk/lib/zehn_loader.tns
+@@ -0,0 +1 @@
++../tools/zehn_loader/zehn_loader.tns
+\ No newline at end of file
+diff --git a/ndless-sdk/lib/zehn_loader_compressed.tns b/ndless-sdk/lib/zehn_loader_compressed.tns
+new file mode 120000
+index 0000000..55c4a8c
+--- /dev/null
++++ b/ndless-sdk/lib/zehn_loader_compressed.tns
+@@ -0,0 +1 @@
++../tools/zehn_loader/zehn_loader_compressed.tns
+\ No newline at end of file

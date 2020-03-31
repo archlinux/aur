@@ -1,0 +1,9 @@
+src/
+pkg/
+*.tar.gz
+
+ndless/
+nspire-io/
+zlib/
+freetype2/
+luna/
