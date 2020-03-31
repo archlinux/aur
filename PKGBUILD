@@ -3,8 +3,8 @@
 # Contributor: aimileus <me at aimileus dot nl>
 
 pkgname=protonmail-bridge-bin
-pkgver=1.2.5
-pkgrel=3
+pkgver=1.2.6
+pkgrel=1
 _pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
@@ -18,19 +18,20 @@ optdepends=(
 conflicts=('protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("https://protonmail.com/download/protonmail-bridge_${pkgver}-${_pkgrel}_amd64.deb")
-sha256sums=('681358f77d8ff6d173089a70d7323fa021586020c47bc14221298b2f94dff2ed')
+sha256sums=('34fdc917fb2c6f06ec6c6a71041f31ad3599b4ee5556e09ad919c36d71eac247')
 
 prepare() {
     tar xf data.tar.xz
 
-    mkdir -p usr/share/icons/hicolor/scalable/apps
-    mv usr/share/icons/protonmail/ProtonMail_Bridge.svg \
-        usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
+#    mkdir -p usr/share/icons/hicolor/scalable/apps
+#    mv usr/share/icons/protonmail/ProtonMail_Bridge.svg \
+#        usr/share/icons/hicolor/scalable/apps/"${pkgname}".svg
+#
+#    mv usr/share/applications/ProtonMail_Bridge.desktop \
+#        usr/share/applications/"${pkgname}".desktop
+#    sed -i "s|Icon=.*|Icon=protonmail-bridge-bin|" \
+#        usr/share/applications/"${pkgname}".desktop
 
-    mv usr/share/applications/ProtonMail_Bridge.desktop \
-        usr/share/applications/"${pkgname}".desktop
-    sed -i "s|Icon=.*|Icon=protonmail-bridge-bin|" \
-        usr/share/applications/"${pkgname}".desktop
 }
 
 package() {
