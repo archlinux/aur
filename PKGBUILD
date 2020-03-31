@@ -2,11 +2,11 @@
 # Contributor: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: eagletmt <eagletmt@gmail.com>
 pkgname=ttf-ricty
-pkgver=4.1.1
-pkgrel=1
+pkgver=4.1.2
+pkgrel=2
 pkgdesc='Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.'
 arch=('any')
-url='http://www.rs.tus.ac.jp/yyusa/ricty.html'
+url='https://rictyfonts.github.io/'
 license=('custom')
 depends=()
 makedepends=('fontforge' 'ttf-inconsolata' 'ttf-migu')
