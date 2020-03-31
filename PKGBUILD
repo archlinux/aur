@@ -3,7 +3,7 @@
 pkgname=mole
 pkgver=0.5.0
 pkgrel=1
-pkgdesc="CLI app to create ssh tunnels"
+pkgdesc="CLI app to create SSH tunnels"
 arch=('x86_64')
 url='https://davrodpin.github.io/mole'
 license=('MIT')
