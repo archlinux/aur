@@ -14,7 +14,7 @@ _merge_requests_to_use=('724' '983' '1124' '256') # safe pick
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.0+38+gc131a9b7f
+pkgver=3.36.1
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=c131a9b7fa79e53b5ed008d0fe53cf2062d3663d  # master
+_commit=52e5d6fc948ecd7d78c3bddf2cff13eb3c386f4c  # tags/3.36.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -138,13 +138,6 @@ prepare() {
   # Type: 1
   # Status: 2
   pick_mr '724'
-
-  # Title: Use correct shaped texture filtering
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1124
-  # Type: 1
-  # Status: 2
-  # Comment: Impacts Wayland only, fixes https://gitlab.gnome.org/GNOME/mutter/issues/804
-  pick_mr '1124'
 
 }
 
