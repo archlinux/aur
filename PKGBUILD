@@ -1,18 +1,12 @@
 # Maintainer:  Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgdesc="Caleb's SILE publishing toolkit"
 pkgver=0.1.0.r59.g7ea80e7
-_branch='master'
-pkgrel=1
-arch=(any)
-url='https://github.com/sile-typesetter/casile/'
+pkgrel=2
+pkgdesc='Caleb’s SILE publishing toolkit'
+arch=('any')
+url="https://github.com/sile-typesetter/${pkgname%-git}"
 license=('LGPL3')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("git://github.com/sile-typesetter/${pkgname%-git}.git#branch=$_branch")
-sha512sums=('SKIP')
-makedepends=('git')
 depends=('bc'
          'bcprov' # pdftk optdepend is required
          'cpdf'
@@ -57,15 +51,20 @@ depends=('bc'
          'yq'
          'zint'
          'zsh')
+provides=("${pkgname%-git}")
+conflicts=("${provides[@]}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname%-git}"
+    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package () {
-    cd "$srcdir/${pkgname%-git}"
-    mkdir -p "$pkgdir/usr/share"
-    cp -a ./ "$pkgdir/usr/share/casile"
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${pkgname%-git}"
+    install -dm755 "$pkgdir/usr/share"
+    cp -a ./ "$pkgdir/usr/share/${pkgname%-git}"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }

@@ -1,11 +1,10 @@
 pkgbase = casile-git
-	pkgdesc = Caleb's SILE publishing toolkit
+	pkgdesc = Caleb’s SILE publishing toolkit
 	pkgver = 0.1.0.r59.g7ea80e7
-	pkgrel = 1
-	url = https://github.com/sile-typesetter/casile/
+	pkgrel = 2
+	url = https://github.com/sile-typesetter/casile
 	arch = any
 	license = LGPL3
-	makedepends = git
 	depends = bc
 	depends = bcprov
 	depends = cpdf
@@ -52,8 +51,8 @@ pkgbase = casile-git
 	depends = zsh
 	provides = casile
 	conflicts = casile
-	source = git://github.com/sile-typesetter/casile.git#branch=master
-	sha512sums = SKIP
+	source = casile-git::git+https://github.com/sile-typesetter/casile.git
+	sha256sums = SKIP
 
 pkgname = casile-git
 
