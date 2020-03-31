@@ -4,9 +4,9 @@
 pkgname=otf-vollkorn
 pkgdesc="Vollkorn typeface by Friedrich Althausen (OpenType)"
 url='http://vollkorn-typeface.com/'
-license=('custom:SIL Open Font License')
+license=('OFL')
 pkgver=4.105
-pkgrel=1
+pkgrel=2
 changelog=ChangeLog.${pkgname}
 arch=('any')
 

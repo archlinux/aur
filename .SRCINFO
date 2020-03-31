@@ -1,11 +1,11 @@
 pkgbase = otf-vollkorn
 	pkgdesc = Vollkorn typeface by Friedrich Althausen (OpenType)
 	pkgver = 4.105
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vollkorn-typeface.com/
 	changelog = ChangeLog.otf-vollkorn
 	arch = any
-	license = custom:SIL Open Font License
+	license = OFL
 	source = http://vollkorn-typeface.com/download/vollkorn-4-105.zip
 	sha256sums = e650ea9d967c2af1e9b8d34e1118721728bcd73ccfd3220da4264661301e8af5
 
