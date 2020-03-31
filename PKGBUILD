@@ -9,7 +9,7 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('libtirpc' 'ffmpeg' 'libxaw' 'cairo' 'fftw' 'netpbm' 'gd'
 'openmpi' 'glu' 'freeglut' 'suitesparse' 'python2') 
-makedepends=('python2-scons' 'libtirpc' 'libtirpc-compat')
+makedepends=('python2-scons' 'libtirpc' 'libtirpc-compat' 'scons')
 options=('strip')
 #source=("$pkgname.tar.gz::https://sourceforge.net/projects/rsf/files/madagascar/madagascar-3.0/madagascar-3.0.1.tar.gz/download")
 source=($pkgname::git+https://github.com/ahay/src)

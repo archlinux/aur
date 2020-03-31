@@ -10,6 +10,7 @@ pkgbase = madagascar
 	makedepends = python2-scons
 	makedepends = libtirpc
 	makedepends = libtirpc-compat
+	makedepends = scons
 	depends = libtirpc
 	depends = ffmpeg
 	depends = libxaw
