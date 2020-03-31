@@ -1,4 +1,6 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Based on: icu-git
+# Maintainer: Azat Khuzhin <a3at.mail AT gmail.com>
 
 pkgname=icu-git-static
 pkgver=66.1.r137.gea9ce7e34f
