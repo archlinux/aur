@@ -1,6 +1,6 @@
 # Maintainer: Adrian Cochrane <alcinnz@lavabit.com>
 pkgname=odysseus
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="Web browser for the open and decentralized web."
 url="https://odysseus.adrian.geek.nz"
@@ -26,7 +26,7 @@ optdepends=(
     'html-xml-utils: webfeed autodiscovery'
 )
 source=(https://github.com/alcinnz/Odysseus/archive/$pkgver.tar.gz)
-md5sums=(fcda51981ac286352d769666a7832fd7) #autofill using updpkgsums
+md5sums=(4e7331f93c97e5890f31bb8427803a4f) #autofill using updpkgsums
 
 build() {
   cd "Odysseus-$pkgver"
