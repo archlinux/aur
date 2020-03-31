@@ -2,7 +2,7 @@
 
 pkgname=ttf-selawik
 pkgver=1
-pkgrel=3
+pkgrel=4
 _commit="11fb35582ac3b9f750738da93c44293ffaaa0294"
 pkgdesc="Selawik font as a fallback to Segoe UI"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('03eea616523d7a315dd87e6d625a6f7f')
 
 package() {
     cd $srcdir/winstrap-${_commit}/src/fonts
-    install -D LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/COPYING
+    install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/${pkgname}/COPYING
     mkdir -p $pkgdir/usr/share/fonts/TTF/
     for FILE in *.ttf glyphs/*.ttf; do
         install -Dm 644 "${FILE}" $pkgdir/usr/share/fonts/TTF/
