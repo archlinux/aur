@@ -2,7 +2,7 @@
 
 pkgname=katago-opencl
 pkgver=1.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Baduk engine with no human-provided knowledge."
 arch=('x86_64')
 provides=("katago")
@@ -11,9 +11,9 @@ license=('MIT')
 depends=('libzip' 'ocl-icd' 'boost-libs')
 makedepends=('git' 'opencl-headers' 'cmake')
 source=("${pkgname}::git+https://github.com/lightvector/KataGo#tag=v${pkgver}"
-        "g170e-b20c256x2-s3354994176-d716845198.bin.gz::https://github.com/lightvector/KataGo/releases/download/v${pkgver}/g170e-b20c256x2-s3354994176-d716845198.bin.gz"
-        "g170-b30c320x2-s2271129088-d716970897.bin.gz::https://github.com/lightvector/KataGo/releases/download/v${pkgver}/g170-b30c320x2-s2271129088-d716970897.bin.gz"
-        "g170-b40c256x2-s2383550464-d716628997.bin.gz::https://github.com/lightvector/KataGo/releases/download/v${pkgver}/g170-b40c256x2-s2383550464-d716628997.bin.gz")
+        "g170e-b20c256x2-s3354994176-d716845198.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.4/g170e-b20c256x2-s3354994176-d716845198.bin.gz"
+        "g170-b30c320x2-s2271129088-d716970897.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.4/g170-b30c320x2-s2271129088-d716970897.bin.gz"
+        "g170-b40c256x2-s2383550464-d716628997.bin.gz::https://github.com/lightvector/KataGo/releases/download/v1.3.4/g170-b40c256x2-s2383550464-d716628997.bin.gz")
 sha256sums=('SKIP'
             'fa73912ad2fc84940e5b9edc78a3ef2d775ed18f3c9a735f4051c378b7526d6e'
             '16a907dca44709d69c64f738c9cce727c91406d10aea212631db30da66bef98a'
