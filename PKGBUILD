@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zencjk
-pkgver=5.5.13.zen1
+pkgver=5.5.13.zen2
 pkgrel=1
 pkgdesc='Linux ZEN with CJK Patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '775e62bef116136f7b258ecc32ad1071dc2c6b161176d78092e29f180136dac9'
+            '7eeac274438a62795cd2653607d6c92d7031e80f63ddac79673155639f7e8181'
             '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2')
 
 export KBUILD_BUILD_HOST=archlinux
