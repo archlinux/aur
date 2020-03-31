@@ -1,6 +1,6 @@
 pkgbase = dmenufm
 	pkgdesc = A simple file manager using dmenu
-	pkgver = 1.2
+	pkgver = 1.3
 	pkgrel = 1
 	url = https://github.com/huijunchen9260/dmenufm
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = dmenufm
 	depends = dmenu
 	depends = unzip
 	depends = p7zip
-	source = dmenufm-1.2-1.tar.gz::https://github.com/huijunchen9260/dmenufm/archive/v1.2.tar.gz
-	sha256sums = 448c94d0238a82abe303dad15fab4a64e9871071e0870010d7c0f1a3f462d352
+	source = dmenufm-1.3-1.tar.gz::https://github.com/huijunchen9260/dmenufm/archive/v1.3.tar.gz
+	sha256sums = f782cd8cc80b79556fada048b33ad702aa837b8f8497bcc37d22af5f5ceab754
 
 pkgname = dmenufm
