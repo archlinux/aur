@@ -17,6 +17,7 @@ pkgbase = qmk
 	depends = python-appdirs
 	depends = python-argcomplete
 	depends = python-colorama
+	depends = python-nose2
 	depends = flake8
 	depends = avr-gcc
 	depends = clang

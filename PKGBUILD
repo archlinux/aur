@@ -1,7 +1,7 @@
 # Maintainer: Akaash Suresh <https://github.com/Curry>
 pkgname=qmk
 pkgver=0.0.31
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for customizing supported mechanical keyboards."
 arch=('any')
 url="https://github.com/qmk/qmk_cli"
@@ -16,6 +16,7 @@ depends=(
     'python-appdirs'
 	'python-argcomplete'
 	'python-colorama'
+    'python-nose2'
     'flake8'
     'avr-gcc'
     'clang'
