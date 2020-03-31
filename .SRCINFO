@@ -1,0 +1,27 @@
+pkgbase = python-nornir
+	pkgdesc = Pluggable multi-threaded framework to help operate collections of devices
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://nornir.readthedocs.io/
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-poetry
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.6
+	depends = python-colorama>=0.4.1
+	depends = python-jinja>=2
+	depends = python-napalm
+	depends = python-netmiko>=2.4
+	depends = python-paramiko>=2.7
+	depends = python-requests>=2
+	depends = python-ruamel-yaml>0.16
+	depends = python-mypy_extensions>=0.4.1
+	depends = python-typing_extensions
+	depends = python-pyeapi
+	source = git+https://github.com/nornir-automation/nornir.git#tag=v2.4.0
+	md5sums = SKIP
+
+pkgname = python-nornir
+
