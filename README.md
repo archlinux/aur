@@ -15,12 +15,14 @@ First, clone the repository:
 The build and install it:
 
 	cd github-actions
-	makepkg -fi
+	makepkg -sCcfi
 
 Configure the daemon:
 
-	cd /opt/github-actions
-	./config.sh --token ...
+	sudo -u github-actions -s bash
+	cd /var/lib/github-actions
+	bin/Runner.Listener configure --token YOUR_RUNNER_TOKEN
+	exit
 
 Then start it up:
 
@@ -30,7 +32,7 @@ Then start it up:
 
 You might want to combine this with a container. To create a container (including some suggested packages):
 
-	pacstrap -c github-actions base ruby clang pkg-build vim sudo
+	pacstrap -c github-actions base ruby clang pkg-build vim
 
 Then, import it:
 
@@ -57,8 +59,8 @@ Attach to the container and install the github-actions package:
 	cd /tmp
 	sudo -u nobody git clone https://aur.archlinux.org/github-actions.git
 	cd github-actions
-	sudo -u nobody makepkg -f
-	pacman -U github-actions*.xz
+	sudo -u nobody makepkg -fc
+	pacman -U github-actions*.pkg.tar*
 
 ### Limits
 
@@ -101,9 +103,20 @@ You also may need the container to be running the same Linux kernel and drivers.
 
 You can test this setup using `nvidia-smi` which should show the same output in both the host and container.
 
+## Removing runner
+
+	sudo systemctl stop github-actions
+	sudo systemctl disable github-actions
+	sudo -u github-actions -s bash
+	cd /var/lib/github-actions
+	bin/Runner.Listener remove --token YOUR_RUNNER_TOKEN
+	# prune configuration
+	# rm -rf .config/GitHub* _diag _work .env .path svc.sh
+	exit
+
 ## Contributing
 
-1. Fork it
+1. Fork from https://github.com/ioquatix/github-actions
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
