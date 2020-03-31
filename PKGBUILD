@@ -3,7 +3,7 @@
 
 _pkgname="carla"
 pkgname="${_pkgname}-git"
-pkgver=2.1.alpha2.r156.ga1f759bc
+pkgver=2.1.rc2.r0.g9249bebbf
 pkgrel=1
 epoch=1
 pkgdesc="Audio Plugin Host"
