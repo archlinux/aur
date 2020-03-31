@@ -2,7 +2,7 @@
 
 pkgbase=freeman-korbi-bin
 pkgname=(freeman-korbi-bin)
-pkgver=0.2.178
+pkgver=0.2.181
 pkgrel=1
 pkgdesc="freeman"
 makedepends=('git' 'tar')

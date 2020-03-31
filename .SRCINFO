@@ -1,6 +1,6 @@
 pkgbase = freeman-korbi-bin
 	pkgdesc = freeman
-	pkgver = 0.2.178
+	pkgver = 0.2.181
 	pkgrel = 1
 	arch = any
 	license = GPL3
