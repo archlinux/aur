@@ -6,7 +6,7 @@
 #   french pkgbuild here: https://git.deparis.io/pkgbuilds/tree/cliqz_work/PKGBUILD?id=17ec1716c90dd08
 pkgname=cliqz
 _gitname=browser-f
-pkgver=1.33.0
+pkgver=1.34.0
 pkgrel=1
 _cqzchannel=release
 _cqzbuildid=$(curl -s "http://repository.cliqz.com.s3.amazonaws.com/dist/${_cqzchannel}/${pkgver}/lastbuildid")
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_US: Spell checking, American English')
 conflicts=(cliqz-bin)
 source=("https://github.com/cliqz-oss/browser-f/archive/$pkgver.tar.gz"
         '0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=573f01ecdb53dc1add3b4b68a8e5a4113896e304')
-sha256sums=('25305a1f331f9f96a9bb5a2d3ea811926d3fa1428bbc718091a40b81a1e456fe'
+sha256sums=('58f8e18c4d72f8726afa10c8a91fdf00de8d410c7894443a0180cd2ea5898f3d'
             '5f7ac724a5c5afd9322b1e59006f4170ea5354ca1e0e60dab08b7784c2d8463c')
 options=(!emptydirs !makeflags !strip)
 
