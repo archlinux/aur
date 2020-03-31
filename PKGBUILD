@@ -15,9 +15,11 @@ license=('GPL3')
 source=("$_pkgname.tar.gz::https://github.com/TheGoddessInari/hamsket/releases/download/nightly/$_pkgname-$pkgver.tar.gz"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
-sha256sums=('418b0d3ffd0ca2e07101bdc411df7f05c1c74979ef21ed6390253b6db185f905'
+
+sha256sums=('cad4462851226e523c568cf1d63fd8160cb3c3aa9c5183919b6cbb57a7263fd0'
             '18ecd40929511a7083a690ed77690571b2160200298bf589e8818aad97317f27'
             '0bf4d0c849ad6151f77b346fea0424fab910f434378f9890b16fd15a32a10064')
+
 package() {
     install -d ${pkgdir}/{opt/hamsket,usr/{bin,share/pixmaps}}
 
