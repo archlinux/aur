@@ -4,7 +4,7 @@
 
 _pkgname=vokoscreenNG
 pkgname=vokoscreen-git
-pkgver=2.9.6.beta.39.g30f4f22
+pkgver=3.0.3.r0.gb690fda3
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Development version.'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags 2>/dev/null | sed -r 's/-/./g'
+  git describe --long --tags 2>/dev/null | sed -r 's/-/.r/' | tr - .
 }
 
 prepare() {
