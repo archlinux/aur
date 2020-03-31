@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.2.5033.r3964.g41494408a3
+pkgver=v1.2.5033.r3965.ga7aa56fcba
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
@@ -27,13 +27,15 @@ source=('git://github.com/rstudio/rstudio.git'
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
 	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
 	"soci.patch"
+	"rstudio_boost.patch"
 )
 md5sums=('SKIP'
          'eea28f7865720f6c8d5de12f3f631880'
          'e2617189fe5c138945b8cc95f26bd476'
          'c295406d68c5ef364e445068599aa6d4'
          '441a8e19ab9cd9884cbd24f85840c7a6'
-         '3b7bc114a244282fcc50b12d155dddd0')
+         '3b7bc114a244282fcc50b12d155dddd0'
+         '8181298647590fc8d0f788683d4415d9')
          
 
 pkgver() {
@@ -45,6 +47,7 @@ prepare () {
 	cd ${srcdir}/$_gitname
 	# Patching SOCI
 	patch -p1 < ${srcdir}/soci.patch
+	patch -p1 < ${srcdir}/rstudio_boost.patch
 
 	msg "Extracting dependencies..."
 	    cd "${srcdir}/${_gitname}/src/gwt"
