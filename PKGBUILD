@@ -31,7 +31,7 @@ build() {
 	go build -ldflags "-s -w" \
 		-gcflags="all=-trimpath=${GOPATH}/src" \
 		-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o build/AutoFishingBot .
+		-o build/mcping .
 }
 
 package() {
