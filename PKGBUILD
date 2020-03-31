@@ -4,12 +4,12 @@
 # Maintainer: Markus Näther <naetherm@cs.uni-freiburg.de>
 pkgname=hcc
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="HCC is an Open Source, Optimizing C++ Compiler for Heterogeneous Compute"
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/hcc"
 license=('custom:NCSAOSL')
-depends=("rocr-runtime>=$pkgver" 'z3')
+depends=("hsa-rocr>=$pkgver" 'z3')
 makedepends=('cmake' 'python')
 options=(!staticlibs strip)
 source=("hcc-roc-hcc-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-$pkgver.tar.gz"
