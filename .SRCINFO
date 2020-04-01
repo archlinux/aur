@@ -1,6 +1,6 @@
 pkgbase = skim-git
 	pkgdesc = Fuzzy Finder in rust!
-	pkgver = r763.43edc25
+	pkgver = r765.d6d71f4
 	pkgrel = 1
 	url = https://github.com/lotabout/skim
 	arch = x86_64
