@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=r174.a2dd171343
+pkgver=r177.ca39e915af
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
@@ -38,11 +38,6 @@ build() {
   do
     scdoc < "$i" > "${i::-4}".roff
   done
-}
-
-check() {
-  cd greetd
-  cargo test --release
 }
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = greetd-git
 	pkgdesc = Generic greeter daemon
-	pkgver = r174.a2dd171343
+	pkgver = r177.ca39e915af
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/greetd
 	arch = x86_64
