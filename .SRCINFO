@@ -1,7 +1,7 @@
 pkgbase = xinput_calibrator-kreijack-git
 	pkgdesc = Generic touchscreen calibration program for X.Org - fork from kreijack
 	pkgver = 0.7.5.r98.gb82b479
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.freedesktop.org/wiki/Software/xinput_calibrator/
 	arch = i686
 	arch = x86_64
