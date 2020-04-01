@@ -1,87 +1,63 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Maintainer: William Gathoye <william + aur at gathoye dot be>
 
 pkgname=mattermost-git
 _pkgname="${pkgname%-git}"
-pkgver=5.15.0.rc4.r11506
+pkgver=5.21.0.r217.gc0fc6c13d5
 pkgrel=1
-pkgdesc="Open source Slack-alternative in Golang and React"
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc='Open source Slack-alternative in Golang and React'
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
-
-makedepends=('git' 'go-pie' 'npm')
+makedepends=('git'
+             'go-pie'
+             'jq'
+             'nodejs'
+             'npm')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
-if [ "${CARCH}" != 'x86_64' ]; then
+if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
 fi
-provides=('mattermost')
-conflicts=('mattermost')
-backup=("etc/webapps/${_pkgname}/config.json")
-optdepends=(
-    'mariadb: SQL server storage'
-    'percona-server: SQL server storage'
-    'postgresql: SQL server storage')
+optdepends=('mariadb: SQL server storage'
+            'percona-server: SQL server storage'
+            'postgresql: SQL server storage')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+backup=("etc/webapps/$_pkgname/config.json")
+source=("git+https://github.com/$_pkgname/$_pkgname-server"
+        "git+https://github.com/$_pkgname/$_pkgname-webapp"
+        "$_pkgname-ldflags.patch"
+        "$_pkgname.service"
+        "$_pkgname.sysusers"
+        "$_pkgname.tmpfiles")
+sha256sums=('SKIP'
+            'SKIP'
+            '7ec8231894fdac8cba7fdd1cede7b47dbce68dae6868bab35fd16f2ceda433ee'
+            '522f44f3a68f73e43d854421f40e18055f3256453bc00a2162956902d1e577f8'
+            'f7bd36f6d7874f1345d205c6dcb79af1804362fc977a658db88951a172d1dfa0'
+            '15220909751b960b811fc3eb3d1b8e2c0c5855d726d834461f667b5458d3bdad')
 
-source=(
-    # The mattermost repo is quite huge. Consider manually cloning the
-    # repository first, either a full clone or with the --dept argument. You
-    # can also specify the --depth git argument in your in makepkg.conf file.
-    # For local tests, simply replace this git URL by
-    #'mattermost-server::git+file:///home/user/whatever/mattermost-server#branch=release-4.2'
-    # For the URL syntax, please check this link:
-    # https://wiki.archlinux.org/index.php/VCS_package_guidelines#VCS_sources
-    "git+https://github.com/${_pkgname}/${_pkgname}-server"
-    "git+https://github.com/${_pkgname}/${_pkgname}-webapp"
-    "mattermost-ldflags.patch"
-    "${_pkgname}.service"
-    "${_pkgname}.sysusers"
-    "${_pkgname}.tmpfiles"
-)
-sha512sums=(
-    'SKIP'
-    'SKIP'
-    '5b761c5715387e6abf3afbe653de218b9a45708d7ffbc699856f53cc3e62760fbd0ce175615f36a4b9090182705c3343d07fca72d12275411080ab516cee3eeb'
-    '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
-    'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-    'e3ffcf4b86e2ecc7166c1abf92cd4de23d81bad405db0121e513a8d81fea05eec9dd508141b14b208c4c13fbc347c56f01ed91326faa01e872ecdedcc18718f9')
-
-# Using the most recent un-annotated tag reachable from the last commit
-# src.: https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
-# Remove the v prefix:
-# src.: http://stackoverflow.com/a/7979255/3514658
 pkgver() {
-    cd "${srcdir}"/src/github.com/${_pkgname}/${_pkgname}-server
-    # Git command 1: Get latest tag from all branches. e.g.: 5.15.0.rc4
-    # Git command 2: Get latest commit number of the branch. e.g.: 11506
-    printf "%s.r%s" \
-        $(git describe --tags $(git rev-list --tags --max-count=1) | \
-            sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g') \
-        "$(git rev-list --count HEAD)"
+    cd "$_pkgname-server"
+    local _last_tag=$(git rev-list --tags --max-count=1)
+    printf "%s.r%s.g%s" \
+        "$(git describe --tags "$_last_tag" | sed 's/^v//')" \
+        "$(git rev-list --count "$_last_tag"..HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-
-    # If you want to test languages and pull requests, simply clone this
-    # repositiory and init the submodule with the following command:
-    # git submodule update --init --recursive
-    # then, use the command mattermost_prepare_pkgbuild.sh. See its help
-    # available here: https://github.com/wget/mattermost-prepare-pkgbuild
-
-    mkdir -p src/github.com/${_pkgname}
-    cd src/github.com/${_pkgname}
-
-    # Remove previous platform folder if any previous clone was effective
-    rm -f ${_pkgname}-server
-    rm -f ${_pkgname}-webapp
-
     # Create the directory structure to match Go namespaces
-    ln -s "${srcdir}"/${_pkgname}-server ${_pkgname}-server
-    ln -s "${srcdir}"/${_pkgname}-webapp ${_pkgname}-webapp
-    cd ${_pkgname}-server
+    mkdir -p "src/github.com/$_pkgname"
+    cd "src/github.com/$_pkgname"
+
+    ln -sf "$srcdir/$_pkgname-server" "$_pkgname-server"
+    ln -sf "$srcdir/$_pkgname-webapp" "$_pkgname-webapp"
+    cd "$_pkgname-server"
 
     # Pass Arch Linux's Go compilation flags to Mattermost in order to take
     # into account advanced features like PIE.
-    patch < "${srcdir}"/mattermost-ldflags.patch
+    patch < "$srcdir"/mattermost-ldflags.patch
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
@@ -95,7 +71,7 @@ prepare() {
     # The Go programming language only supports 8 instruction sets, therefore
     # we cannot rely on ${CARCH} and need to cast manually.
     # src.: https://golang.org/doc/install/source#introduction
-    case "${CARCH}" in
+    case "$CARCH" in
         i686)
             sed -r -i build/release.mk \
                 -e "5,7s/amd64/386/"
@@ -124,71 +100,95 @@ prepare() {
     # inspired compilation date format without any letter format (only use
     # numbers).
     sed -r -i Makefile \
-        -e "s/^(\s*)BUILD_HASH =.*/\1BUILD_HASH = ${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)/" \
+        -e "s/^(\s*)BUILD_HASH =.*/\1BUILD_HASH = $pkgver-$pkgrel Arch Linux \($CARCH\)/" \
         -e 's/BUILD_DATE = \$\(shell date -u\)/BUILD_DATE = \$(shell date -u +'"'"'%Y-%m-%d %H:%M:%S'"'"')/'
 
     # Enforce build hash to Arch Linux as well for the field corresponding to
     # the webapp.
-    cd "${srcdir}"/${_pkgname}-webapp
+    cd "$srcdir/$_pkgname-webapp"
     sed -r -i webpack.config.js \
-        -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"${pkgver}-${pkgrel} Arch Linux \(${CARCH}\)\"\),/"
+        -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"$pkgver-$pkgrel Arch Linux \($CARCH\)\"\),/"
 
     # Link against system gifsicle
-    if [ "${CARCH}" != 'x86_64' ]; then
-        gifsicleNpm="${srcdir}"/${_pkgname}-webapp/node_modules/gifsicle/vendor/gifsicle
+    if [ "$CARCH" != 'x86_64' ]; then
+        gifsicleNpm="$srcdir/$_pkgname-webapp/node_modules/gifsicle/vendor/gifsicle"
         gifsicleNpm="${gifsicleNpm//\//\\/}"
         gifsicleSystem="$(which gifsicle)"
         gifsicleSystem="${gifsicleSystem//\//\\/}"
         sed -r -i Makefile \
-            -e "s/(\t*)npm install(.*)/\0\n\trm \"${gifsicleNpm}\"\n\tln -s \"${gifsicleSystem}\" \"${gifsicleNpm}\"/"
+            -e "s/(\t*)npm install(.*)/\0\n\trm \"$gifsicleNpm\"\n\tln -s \"$gifsicleSystem\" \"$gifsicleNpm\"/"
     fi
 }
 
 build() {
-    # No need to build mattermost-webapp as the server is taking care of this
-    # step via its build-client make instruction.
-
-    cd "${srcdir}"/src/github.com/${_pkgname}/${_pkgname}-server
-    # Prevent the build to crash when some dependencies are not met or
-    # outdated. This cleans the webapp as well (cf. mattermost-server/Makefile,
-    # clean target).
-    make clean
-    GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make build-linux
-    GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make build-client
-    GOPATH="${srcdir}" BUILD_NUMBER=${pkgver}-${pkgrel} make package
+    cd "src/github.com/$_pkgname/$_pkgname-server"
+    export GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel
+    make build-linux
+    make build-client
+    make package
 }
 
 package() {
-    cd "${srcdir}"/src/github.com/${_pkgname}/${_pkgname}-server
+    cd "src/github.com/$_pkgname/$_pkgname-server"
 
-    install -dm755 \
-        "${pkgdir}"/usr/bin \
-        "${pkgdir}"/usr/share/webapps \
-        "${pkgdir}"/etc/webapps \
-        "${pkgdir}"/usr/share/doc/${_pkgname}
+    install -dm755 "$pkgdir/usr/share/webapps"
+    cp -a "dist/$_pkgname" "$pkgdir/usr/share/webapps/"
 
-    cp -a dist/${_pkgname} "${pkgdir}"/usr/share/webapps/
+    install -Dm755 -t "$pkgdir/usr/share/webapps/$_pkgname/bin/" "bin/$_pkgname"
+    install -dm755 "$pkgdir/usr/bin"
+    ln -sf "/usr/share/webapps/$_pkgname/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
-    cd "${pkgdir}"/usr/share/webapps/${_pkgname}
-    install -dm755 client/plugins
+    pushd "$srcdir"
+    install -Dm644  -t "$pkgdir/usr/lib/systemd/system/" "$_pkgname.service"
+    install -Dm644 "$_pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+    install -Dm644 "$_pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 
+    pushd "$pkgdir/usr/share/webapps/$_pkgname"
+
+    # Move logs to right location
     rm -rf logs
-    ln -s /var/log/${_pkgname} logs
+    ln -s "/var/log/$_pkgname" logs
 
+    # Readme and docs
+    install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
+    mv NOTICE.txt README.md "$pkgdir/usr/share/doc/$_pkgname"
+
+    # Config file management
     cp config/default.json config/config.json
-    mv config "${pkgdir}"/etc/webapps/${_pkgname}
-    ln -s /etc/webapps/${_pkgname} config
 
-    sed -e 's@"Directory": ".*"@"Directory": "/var/lib/mattermost/"@g' \
-        -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
-        -i "${pkgdir}"/etc/webapps/${_pkgname}/config.json
+    # Hashtags are needed to escape the Bash escape sequence. jq will consider
+    # it as a comment and won't interpret it.
+    jq '.FileSettings.Directory |= $mmVarLib + "/files/" | # \
+        .ComplianceSettings.Directory |= $mmVarLib + "/compliance/" | # \
+        .PluginSettings.Directory |= $mmVarLib + "/plugins/" | # \
+        .PluginSettings.ClientDirectory |= $mmVarLib + "/client/plugins/"' \
+       --arg mmVarLib '/var/lib/mattermost' \
+       config/config.json > config/config-new.json
+    mv config/config-new.json config/config.json
+    install -dm755 "$pkgdir/etc/webapps"
+    mv config "$pkgdir/etc/webapps/$_pkgname"
+    ln -sf "/etc/webapps/$_pkgname" config
 
-    mv NOTICE.txt README.md "${pkgdir}"/usr/share/doc/${_pkgname}
+    # Avoid access denied when Mattermost tries to rewrite its asset data
+    # (root.html, manifest.json and *.css) during runtime. Reuse var tmpfile
+    # directory SELinux security context.
+    # cf. https://github.com/mattermost/mattermost-server/blob/f8d31def8eb463fcd866ebd08f3e6ef7a24e2109/utils/subpath.go#L48
+    # cf. https://wiki.archlinux.org/index.php/Web_application_package_guidelines
+    install -dm700 "$pkgdir"/var/lib/mattermost/client
 
-    cd "${srcdir}"
-    install -Dm755 bin/${_pkgname} "${pkgdir}"/usr/share/webapps/${_pkgname}/bin/${_pkgname}
-    ln -s /usr/share/webapps/${_pkgname}/bin/${_pkgname} "${pkgdir}"/usr/bin/${_pkgname}
-    install -Dm644 ${_pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
-    install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+    # We want recursivity as Mattermost wants to modify files in
+    # client/files/code_themes/ as well.
+    # Not recursive: for file in root.html manifest.json *.css; do
+    find client -type f -iname 'root.html' -o -iname 'manifest.json' -o -iname '*.css' |
+        while IFS= read -r fileAndPath; do
+            install -dm700 "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
+            install -m700 "$fileAndPath" "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
+            rm "$fileAndPath"
+            ln -s /var/lib/mattermost/"$fileAndPath" "$fileAndPath"
+        done
+
+    # As we are using install, only the leaves have their permissions
+    # redefined. Some folders in the hierarchy might not have the right
+    # permissions. Fix this.
+    chmod -R 700 "$pkgdir"/var/lib/mattermost/
 }

@@ -1,3 +1,3 @@
 d /var/log/mattermost 0755 mattermost mattermost -
-d /var/lib/mattermost 0700 mattermost mattermost -
+Z /var/lib/mattermost ~0700 mattermost mattermost -
 z /etc/webapps/mattermost/config.json - mattermost mattermost
