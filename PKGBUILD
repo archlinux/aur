@@ -2,7 +2,7 @@
 # Contributor: Dan Vratil <vratil@progdansoft.com>
 
 pkgname=k3b-git
-pkgver=19.07.70.r6386.70cb5a5e8
+pkgver=20.07.70.r6494.4ff7cdb2a
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. (Git version)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd k3b
-  _ver="$(cat CMakeLists.txt | grep -m3 -e MAJOR -e MINOR -e MICRO | sed 's|K3B|KEB|' | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e RELEASE_SERVICE_VERSION_MAJOR -e RELEASE_SERVICE_VERSION_MINOR -e RELEASE_SERVICE_VERSION_MICRO | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
