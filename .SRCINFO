@@ -1,0 +1,34 @@
+pkgbase = x11docker-git
+	pkgdesc = Run GUI applications and desktops in Docker. Focus on security.
+	pkgver = r1488.d450275
+	pkgrel = 1
+	url = https://github.com/mviereck/x11docker
+	install = x11docker.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = docker
+	depends = xpra
+	depends = xorg-server-xephyr
+	depends = xorg-xinit
+	depends = xorg-xauth
+	depends = xclip
+	depends = xorg-xhost
+	depends = xorg-xrandr
+	depends = xorg-xdpyinfo
+	optdepends = cups: --printer support
+	optdepends = kwin: --kwin, --kwin-xwayland support
+	optdepends = nxagent: --nxagent support
+	optdepends = pulseaudio: --pulseaudio support
+	optdepends = weston: --weston, --xpra-xwayland, --weston-xwayland, --xdummy-xwayland support
+	optdepends = xdotool: --xpra-xwayland, --xdummy-xwayland support
+	optdepends = xorg-server-xvfb: --xvfb support
+	optdepends = xorg-server-xwayland: --xpra-xwayland, --weston-xwayland, --kwin-xwayland, --xwayland, --xdummy-xwayland support
+	optdepends = xorg-server: --xorg, --xdummy support
+	provides = x11docker
+	conflicts = x11docker
+	source = git+https://github.com/mviereck/x11docker
+	sha256sums = SKIP
+
+pkgname = x11docker-git
+
