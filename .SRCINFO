@@ -29,6 +29,7 @@ pkgbase = rstudio-desktop-git
 	depends = qt5-svg
 	depends = qt5-webengine
 	depends = qt5-xmlpatterns
+	depends = soci
 	optdepends = git: for git support
 	optdepends = subversion: for subversion support
 	optdepends = openssh-askpass: for a git ssh access
