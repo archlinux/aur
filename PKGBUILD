@@ -6,8 +6,8 @@
 # https://github.com/mymedia2/tdesktop
 
 pkgname=telegram-desktop-userfonts
-pkgver=1.9.21
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 pkgdesc='Official Telegram Desktop client, with your fonts as set by fontconfig'
@@ -20,8 +20,8 @@ makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-
 optdepends=('ttf-opensans: default Open Sans font family')
 source=("https://github.com/telegramdesktop/tdesktop/releases/download/v${pkgver}/tdesktop-${pkgver}-full.tar.gz"
         userfonts.patch)
-sha512sums=('ea02fc69e88ed6244ed420516bb7a93827cb85efaa0a7e9af7562aa1bc29184c5a2102caca8693c976b25d374832e0deb2ccbf00144d5340b5ffacbdc9dcebf1'
-            '9c6e8727e61a9e8227e8cee985851e23895978d7d3b8a75808e32168e9c1cb9542380ab10f496d193f59e89980994ec649f9400e53354726e73082037d9b0e3e')
+sha512sums=('99cd7c5ca1e9dd75ecd98d272522b0e4aab2d46525e3d0c306503b7a00c9d25c1646e9d7462182682a58947c7435864af805a3b6f85906d8b21e5675cc8383cb'
+            '182e7cbeba2b2249175cb5865506bba80ee350b1d3ab1a38bfcd6bd04e33ce6b964a080985b802d97c65e184a5d95e36b7a5de1a13b067296ca445cb8abdfe72')
 
 prepare() {
     cd tdesktop-$pkgver-full

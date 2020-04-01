@@ -1,4 +1,4 @@
-Submodule Telegram/lib_ui ccc12ce3d..eaee38e5d:
+Submodule Telegram/lib_ui contains modified content
 diff --git a/Telegram/lib_ui/ui/style/style_core.cpp b/Telegram/lib_ui/ui/style/style_core.cpp
 index 18a5bbb..d42a153 100644
 --- a/Telegram/lib_ui/ui/style/style_core.cpp
@@ -33,10 +33,10 @@ index 18a5bbb..d42a153 100644
  
  } // namespace
 diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
-index a73e169..2eb6257 100644
+index 318783b..3a8cc46 100644
 --- a/Telegram/lib_ui/ui/style/style_core_font.cpp
 +++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
-@@ -15,9 +15,6 @@
+@@ -16,9 +16,6 @@
  #include <QtGui/QFontDatabase>
  
  void style_InitFontsResource() {
@@ -46,7 +46,7 @@ index a73e169..2eb6257 100644
  #ifdef Q_OS_WIN
  	Q_INIT_RESOURCE(win);
  #elif defined Q_OS_MAC // Q_OS_WIN
-@@ -36,7 +33,7 @@ QVector<QString> fontFamilies;
+@@ -37,7 +34,7 @@ QVector<QString> fontFamilies;
  QMap<uint32, FontData*> fontsMap;
  
  uint32 fontKey(int size, uint32 flags, int family) {
@@ -55,7 +55,7 @@ index a73e169..2eb6257 100644
  }
  
  bool ValidateFont(const QString &familyName, int flags = 0) {
-@@ -95,16 +92,6 @@ enum {
+@@ -96,16 +93,6 @@ enum {
  
  	FontTypesCount,
  };
@@ -72,7 +72,7 @@ index a73e169..2eb6257 100644
  int32 FontTypeFlags[FontTypesCount] = {
  	0,
  	FontItalic,
-@@ -113,16 +100,6 @@ int32 FontTypeFlags[FontTypesCount] = {
+@@ -114,16 +101,6 @@ int32 FontTypeFlags[FontTypesCount] = {
  	0,
  	FontItalic,
  };
@@ -89,11 +89,10 @@ index a73e169..2eb6257 100644
  
  bool Started = false;
  QString Overrides[FontTypesCount];
-@@ -136,43 +113,6 @@ void StartFonts() {
- 	Started = true;
+@@ -143,43 +120,6 @@ void StartFonts() {
+ 		Ui::Integration::Instance().startFontsBegin();
+ 	}
  
- 	style_InitFontsResource();
--
 -#ifndef DESKTOP_APP_USE_PACKAGED_FONTS
 -	bool areGood[FontTypesCount] = { false };
 -	for (auto i = 0; i != FontTypesCount; ++i) {
@@ -130,10 +129,11 @@ index a73e169..2eb6257 100644
 -		QFont::insertSubstitutions(name, list);
 -	}
 -#endif // Q_OS_MAC
- }
- 
- QString GetPossibleEmptyOverride(const QString &familyName, int32 flags) {
-@@ -220,11 +160,12 @@ int registerFontFamily(const QString &family) {
+-
+ 	if (integrationExists) {
+ 		Ui::Integration::Instance().startFontsEnd();
+ 	}
+@@ -230,11 +170,12 @@ int registerFontFamily(const QString &family) {
  }
  
  FontData::FontData(int size, uint32 flags, int family, Font *other)
@@ -148,7 +148,7 @@ index a73e169..2eb6257 100644
  	if (other) {
  		memcpy(modified, other, sizeof(modified));
  	} else {
-@@ -232,13 +173,15 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
+@@ -242,13 +183,15 @@ FontData::FontData(int size, uint32 flags, int family, Font *other)
  	}
  	modified[_flags] = Font(this);
  
@@ -166,7 +166,7 @@ index a73e169..2eb6257 100644
  	}
  	f.setItalic(_flags & FontItalic);
  	f.setUnderline(_flags & FontUnderline);
-@@ -269,6 +212,10 @@ Font FontData::strikeout(bool set) const {
+@@ -279,6 +222,10 @@ Font FontData::strikeout(bool set) const {
  	return otherFlagsFont(FontStrikeOut, set);
  }
  
@@ -201,7 +201,7 @@ index 31b5962..c3b2f22 100644
  	int size() const;
  	uint32 flags() const;
 diff --git a/Telegram/lib_ui/ui/text/text.cpp b/Telegram/lib_ui/ui/text/text.cpp
-index 90f9f8e..faa1dc4 100644
+index a48abae..b2c90fe 100644
 --- a/Telegram/lib_ui/ui/text/text.cpp
 +++ b/Telegram/lib_ui/ui/text/text.cpp
 @@ -2015,8 +2015,8 @@ private:
