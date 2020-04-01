@@ -22,32 +22,12 @@ pkgver() {
     $(git rev-parse HEAD | head -c10)
 }
 
-prepare() {
-  [ -d build ] ||
-  meson gtkgreet build \
-    -D layershell=true
-}
-
 build() {
+  mkdir -p build
+  arch-meson gtkgreet build -D layershell=true
   ninja -C build
-  cd gtkgreet/man
-  for i in *.scd
-  do
-    scdoc < "$i" > "${i::-4}".roff
-  done
-}
-
-check() {
-  ninja -C build test
 }
 
 package() {
-  install -d "$pkgdir"/usr/bin
-  install -m755 build/gtkgreet/gtkgreet "$pkgdir"/usr/bin/
-
-  install -d "$pkgdir"/usr/share/man/man1
-  for i in gtkgreet/man/*-1.roff
-  do
-    install -m755 "$i" "$pkgdir"/usr/share/man/man1/"${i:13:-7}.1"
-  done
+  DESTDIR="$pkgdir" ninja -C build install
 }
