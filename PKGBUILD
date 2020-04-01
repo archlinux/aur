@@ -5,11 +5,10 @@ pkgdesc='Software for plasmid mapping, primer design, and restriction site analy
 arch=('x86_64')
 url='http://www.snapgene.com/products/snapgene_viewer/'
 license=('custom')
-_dlurl=("https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest")
-_filename=$(curl --silent --head --location "$_dlurl" | grep -Po 'filename=".*"' | cut -d'"' -f2)
-pkgver="$(grep -Po '[0-9]([0-9]|\.)+[0-9]' <<< "$_filename")"
-source=("$_filename::$_dlurl")
-sha512sums=('91b348cdaf2a7e399664252ceac96daf039f808c6bf297a7ccd8118cd2980c9b9f526442f0f9fa704e00f63ffafd35b74d8c313c8b9913ec1cf1f8ecbca8e635')
+_dlurl="https://www.snapgene.com/local/targets/viewer_download.php?os=linux_rpm&majorRelease=latest&minorRelease=latest"
+source=("$(curl --silent --head --location "$_dlurl" | grep -Po 'Location: \K.*rpm' | tail -n1 )")
+pkgver="$(grep -Po '\d(\d|\.)+\d' <<< "$source" | tail -n1)"
+sha512sums=('bf1f3e2c144e42e40484bc9d7c14440421634a34b39dbcd7f6a4cbdc084decae8f9bdb6ec807f6cffa46842088065bbcb224d13a8baaad3fbd963d2b6e9cbecd')
 
 package() {
     cd "$pkgdir"
