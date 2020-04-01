@@ -2,7 +2,7 @@
 
 pkgname=system76-firmware-daemon
 _pkgname=system76-firmware
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='System76 Firmware Daemon provides a daemon for installing firmware updates.'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=(
 makedepends=('rust')
 conflicts=('system76-driver<=17.10.32')
 source=("https://github.com/pop-os/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a60e582890abdc5e63a8bed413cfab1850ba045f0dfc0152454739d248f379ac')
+sha256sums=('e661a75588d5fdb0ccaff826dfa24e7394563f72b062494c5b50b6fda6e76988')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
