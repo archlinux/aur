@@ -1,6 +1,6 @@
 pkgbase = linux-gc
 	pkgdesc = Linux
-	pkgver = 5.6
+	pkgver = 5.6.1
 	pkgrel = 1
 	url = https://cchalpha.blogspot.co.uk/
 	arch = x86_64
@@ -15,21 +15,23 @@ pkgbase = linux-gc
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.1.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.6.1.tar.sign
 	source = config
 	source = bmq_v5.6-r0.patch::https://gitlab.com/alfredchen/bmq/raw/master/5.6/bmq_v5.6-r0.patch
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b672dfc2978badb11782adc9b187c63ee8a35151.patch
+	source = 0002-mac80211-fix-authentication-with-iwlwifi-mvm.patch::https://github.com/archlinux/linux/commit/61397cbfb977f37e4423813d1ad43340a627563a.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
-	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
+	sha256sums = 46d8fd446d0f6aa4b039d92d9a4992dfa1bf67e4274ec1b77616daf5174f1530
 	sha256sums = SKIP
 	sha256sums = a87c8db8d4a594373855eb5b0113b345629c2d295276b27f64cf651a20d8df56
 	sha256sums = a214cfe4188ff24284de8ee5b0fa5ff4b0b604148a3e663e02e97cc56fec172c
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
-	sha256sums = c7ab1b7361f96cea3b6caf8a92859f7ca56c9bbf8dcab4ea0db723f31150ee3e
+	sha256sums = 00b19ad6d756bd2f0124cc41e810f29ce167c4153e4b317c1ec513a259d57be3
+	sha256sums = eee466d310191aa65e174f510737bcdbb49c142e45884fe2680e53312d5436e0
 
 pkgname = linux-gc
 	pkgdesc = The Linux kernel and modules with the BMQ CPU scheduler
@@ -38,11 +40,11 @@ pkgname = linux-gc
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
-	provides = linux-gc=5.6
+	provides = linux-gc=5.6.1
 
 pkgname = linux-gc-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
 	depends = linux-gc
-	provides = linux-gc-headers=5.6
-	provides = linux-headers=5.6
+	provides = linux-gc-headers=5.6.1
+	provides = linux-headers=5.6.1
 

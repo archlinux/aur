@@ -20,7 +20,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6
+pkgver=5.6.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -42,18 +42,20 @@ source=(
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
   "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b672dfc2978badb11782adc9b187c63ee8a35151.patch"
+  "0002-mac80211-fix-authentication-with-iwlwifi-mvm.patch::https://github.com/archlinux/linux/commit/61397cbfb977f37e4423813d1ad43340a627563a.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+sha256sums=('46d8fd446d0f6aa4b039d92d9a4992dfa1bf67e4274ec1b77616daf5174f1530'
             'SKIP'
             'a87c8db8d4a594373855eb5b0113b345629c2d295276b27f64cf651a20d8df56'
             'a214cfe4188ff24284de8ee5b0fa5ff4b0b604148a3e663e02e97cc56fec172c'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            'c7ab1b7361f96cea3b6caf8a92859f7ca56c9bbf8dcab4ea0db723f31150ee3e')
+            '00b19ad6d756bd2f0124cc41e810f29ce167c4153e4b317c1ec513a259d57be3'
+            'eee466d310191aa65e174f510737bcdbb49c142e45884fe2680e53312d5436e0')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -113,6 +115,7 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
+  exit
 }
 
 build() {
