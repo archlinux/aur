@@ -6,8 +6,8 @@
 
 pkgname=mattermost-desktop
 pkgver=4.4.0
-_electronMajorVersion=5
-pkgrel=1
+_electronMajorVersion=6
+pkgrel=2
 pkgdesc='Mattermost Desktop application for Linux'
 arch=('x86_64' 'i686')
 url="https://github.com/${pkgname/-//}"
