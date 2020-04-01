@@ -1,6 +1,6 @@
 pkgbase = dia-git
 	pkgdesc = A GTK+ based diagram creation program (GIT VERSION)
-	pkgver = 6311.80b4c096
+	pkgver = 6506.12507577
 	pkgrel = 1
 	url = http://live.gnome.org/Dia
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = dia-git
 	conflicts = dia
 	options = docs
 	options = !emptydirs
-	source = git+https://gitlab.gnome.org/GNOME/dia.git
+	source = git+https://gitlab.gnome.org/GNOME/dia.git#commit=12507577c9b3acdf150777610dd87a341c5c1eb9
 	md5sums = SKIP
 
 pkgname = dia-git
