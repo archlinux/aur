@@ -6,6 +6,7 @@ pkgdesc="Various unicode fonts for Sanskrit (Scripts: Devanagari, Kannada, Tamil
 url="http://github.com/sanskrit-coders/sanskrit-fonts"
 # license=('custom:OFL')
 arch=(any)
+makedepends=('git')
 
 build() {
   rm -rf "$srcdir/sanskrit-fonts/"
