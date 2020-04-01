@@ -1,7 +1,7 @@
 # Maintainer: Hexawolf <hexawolf@protonmail.com>
 pkgname=swaylay-git
 _pkgname=swaylay
-pkgver=r8.df1fff2
+pkgver=r10.7c24690
 pkgrel=1
 license=("MIT")
 pkgdesc="Keyboard layouts monitoring utility for Sway WM"
