@@ -1,12 +1,13 @@
 pkgbase = pygtk
 	pkgdesc = Python bindings for the GTK widget set
 	pkgver = 2.24.0
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.pygtk.org/
 	arch = x86_64
 	license = LGPL
 	makedepends = python2-numpy
 	makedepends = pygobject2-devel
+	makedepends = pkgconf
 	depends = libglade
 	depends = python2-cairo
 	depends = python2-gobject2
