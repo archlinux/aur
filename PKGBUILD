@@ -1,5 +1,5 @@
 # Maintainer: Caio Novais <caionov08 at gmail dot com>
-pkgname=ungoogled-chromium-bin
+pkgname=ungoogled-chromium-bin-pkg
 _pkgname=chromium
 _pkgname2=ungoogled-chromium
 pkgver=80.0.3987.149
