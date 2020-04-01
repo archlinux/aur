@@ -1,7 +1,7 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
 pkgname=arrayfire
-pkgver=3.7.0
-pkgrel=6
+pkgver=3.7.1
+pkgrel=1
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 arch=('x86_64')
 url='https://arrayfire.com'
@@ -13,8 +13,9 @@ optdepends=('cuda: Required for using CUDA backend'
             'cudnn: Required for using CUDA backend'
             'opencl-driver: Required for using OpenCL backend')
 options=('!buildflags')
-source=("http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2")
-sha512sums=('64f34f742eced91356a96706d5f4846ead90b2618eeb5da90e6b797d62ab70b71dee9f2b2c0d09c09d5868e9c81ebbe4762947e195a37834481d9730e189d1d7')
+# source=("http://arrayfire.com/arrayfire_source/arrayfire-full-${pkgver}.tar.bz2")
+source=("http://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}-full-${pkgver}.tar.bz2")
+sha512sums=('d6f57d2084c29c43d55608f4eea3b8a0e0dab708ae2f035f5d5ae54effc28211787b08f1ed6e8aee3799a1f35a550d28168b90545e4b59f8d880e8d580764fe6')
 
 prepare() {
   mkdir "${srcdir}/arrayfire-full-${pkgver}"/build
