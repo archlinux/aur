@@ -1,0 +1,22 @@
+diff --unified --recursive --text bbswitch-0.8.orig/bbswitch.c bbswitch-0.8.new/bbswitch.c
+--- bbswitch-0.8.orig/bbswitch.c	2013-12-04 21:22:06.000000000 -0200
++++ bbswitch-0.8.new/bbswitch.c	2020-04-01 11:28:02.910890888 -0300
+@@ -375,12 +375,12 @@
+     return 0;
+ }
+ 
+-static struct file_operations bbswitch_fops = {
+-    .open   = bbswitch_proc_open,
+-    .read   = seq_read,
+-    .write  = bbswitch_proc_write,
+-    .llseek = seq_lseek,
+-    .release= single_release
++static struct proc_ops bbswitch_fops = {
++    .proc_open   = bbswitch_proc_open,
++    .proc_read   = seq_read,
++    .proc_write  = bbswitch_proc_write,
++    .proc_lseek = seq_lseek,
++    .proc_release= single_release
+ };
+ 
+ static struct notifier_block nb = {
