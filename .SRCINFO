@@ -1,6 +1,6 @@
 pkgbase = tmfs
 	pkgdesc = Apple's Time Machine fuse read only file system
-	pkgver = r5
+	pkgver = r6
 	pkgrel = 1
 	url = https://github.com/abique/tmfs
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = tmfs
 	depends = boost
 	depends = boost-libs
 	depends = fuse
-	source = https://github.com/abique/tmfs/archive/r5.tar.gz
-	md5sums = 9b16328e8aefedb4e7075a9e71e9288c
+	source = tmfs::git://github.com/abique/tmfs#tag=r6
+	md5sums = SKIP
 
 pkgname = tmfs
 
