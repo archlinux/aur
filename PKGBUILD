@@ -2,7 +2,7 @@
 pkgname=v2ray-desktop
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="A Cross-platform GUI Client for V2Ray written in Qt 5 and QML 2 (Stable Release)"
+pkgdesc="A cross-platform GUI proxy client that supports Shadowsocks, V2Ray, and Trojan protocols (Stable Release)"
 arch=("x86_64")
 url="https://github.com/Dr-Incognito/V2Ray-Desktop"
 license=("GPL3")
