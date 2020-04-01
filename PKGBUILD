@@ -1,6 +1,6 @@
 # Maintainer: Steef Hegeman <mail@steefhegeman.com>
 pkgname=snixembed-git
-pkgver=0.1.1.r4.g996c95c
+pkgver=0.2.0.r0.g5806582
 pkgrel=1
 pkgdesc="proxy StatusNotifierItems as XEmbedded systemtray-spec icons"
 arch=("x86_64")
@@ -9,7 +9,9 @@ depends=("glib2"
          "gtk3"
          "libdbusmenu-gtk3"
 )
-makedepends=("vala")
+makedepends=("git"
+             "vala"
+)
 source=("git+https://git.sr.ht/~steef/snixembed")
 md5sums=("SKIP")
 

@@ -1,9 +1,10 @@
 pkgbase = snixembed-git
 	pkgdesc = proxy StatusNotifierItems as XEmbedded systemtray-spec icons
-	pkgver = 0.1.0.r0.gbd0e06f
+	pkgver = 0.2.0.r0.g5806582
 	pkgrel = 1
 	arch = x86_64
 	license = ISC
+	makedepends = git
 	makedepends = vala
 	depends = glib2
 	depends = gtk3
