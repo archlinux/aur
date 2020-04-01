@@ -1,17 +1,29 @@
-# Maintainer: Bram Swenson <bram@amplified.work>
+# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Bram Swenson <bram@amplified.work>
 
-pkgname='concourse'
-pkgver=v3.5.0
+pkgname=concourse
+pkgver=6.0.0
 pkgrel=1
-pkgdesc="Concourse is a pipeline-based CI system written in Go."
-arch=(x86_64)
-url="https://concourse.ci/introduction.html"
-license=('Apache')
-source=(concourse-${pkgver}::https://github.com/concourse/concourse/releases/download/${pkgver}/concourse_linux_amd64)
-sha512sums=('2fa82213e009dea8f0369aea4a330c33a955c1c27421926211c9d43c8f69dab024014174b534b9d494f5eaad48dce3621dee99ce1f887c7a12de36fb905d5b3e')
-provides=('concourse')
-depends=('linux-userns')
+pkgdesc="Concourse is a container-based continuous thing-doer written in Go and Elm"
+arch=('x86_64')
+url='https://concourse-ci.org'
+license=('Apache-2.0')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/archive/v${pkgver}.tar.gz")
+makedepends=('go')
+md5sums=('98d3458860dfed6bd83278e5fc343508')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  mkdir -p $srcdir/go
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
+  go get -d -v ./...
+  cd cmd/concourse
+  go build -v -o "${srcdir}/${pkgname}-bin"
+}
 
 package() {
-  install -Dm755 "concourse-${pkgver}" "$pkgdir/usr/bin/concourse"
+  install -Dm755 "${pkgname}-bin" "${pkgdir}/usr/bin/concourse"
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}"/LICENSE* "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  go clean -modcache #Remove go libraries
 }
