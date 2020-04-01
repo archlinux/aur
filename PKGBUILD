@@ -15,13 +15,23 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/gsauthof/dracut-sshd.git')
+source=('git+https://github.com/gsauthof/dracut-sshd.git'
+        'sshd.service.patch'
+        'module-setup.sh.patch')
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP'
+         'ab118699b8d2f24d7ffffd7c0366ba02'
+         'd0267f5a2b8cb592a0bf80cd2cfd682a')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  patch --forward --strip=1 --input="$srcdir/sshd.service.patch"
+  patch --forward --strip=1 --input="$srcdir/module-setup.sh.patch"
 }
 
 package() {

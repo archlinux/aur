@@ -11,7 +11,11 @@ pkgbase = dracut-sshd-git
 	provides = dracut-sshd
 	conflicts = dracut-sshd
 	source = git+https://github.com/gsauthof/dracut-sshd.git
+	source = sshd.service.patch
+	source = module-setup.sh.patch
 	md5sums = SKIP
+	md5sums = ab118699b8d2f24d7ffffd7c0366ba02
+	md5sums = d0267f5a2b8cb592a0bf80cd2cfd682a
 
 pkgname = dracut-sshd-git
 
