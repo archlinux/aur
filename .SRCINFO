@@ -1,0 +1,14 @@
+pkgbase = docker-machine-add-ssh
+	pkgdesc = Adds docker-machine ssh configuration to your personal ssh configuration
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/bulletmark/docker-machine-add-ssh
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python>=3.6
+	source = docker-machine-add-ssh-1.0.tar.gz::https://github.com/bulletmark/docker-machine-add-ssh/archive/1.0.tar.gz
+	sha1sums = 96005a711c0bfb7bab1f3add15e718296f3959c6
+
+pkgname = docker-machine-add-ssh
+
