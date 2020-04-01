@@ -13,15 +13,15 @@ source=("http://git.int.schildmann.net/kschildmann/freeman/uploads/1990a245b6066
 sha256sums=('SKIP')
 
 package() {
-	tar -xvf freeman.tar.gz -C "$pkgdir"
+	tar -xvf freeman.tar.gz -C "$srcdir"
 
 	mkdir -p $pkgdir/usr/bin/
-	install -m 755 $pkgdir/freeman $pkgdir/usr/bin/freeman
+	install -m 755 $srcdir/freeman $pkgdir/usr/bin/freeman
 
 	mkdir -p $pkgdir/etc/
-	install -m 644 $pkgdir/freeman.json $pkgdir/etc/freeman.json
+	install -m 644 $srcdir/freeman.json $pkgdir/etc/freeman.json
 
 	mkdir -p $pkgdir/etc/freeman.d/
-	install -m 644 $pkgdir/freeman.d/* $pkgdir/etc/freeman.d/
+	install -m 644 $srcdir/freeman.d/* $pkgdir/etc/freeman.d/
 
 }
