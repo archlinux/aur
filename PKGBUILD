@@ -9,6 +9,7 @@ license=('GPL')
 provides=("${pkgname_basic}")
 conflicts=("${pkgname_basic}")
 depends=('glibc') # not because of compiling, but because of /usr/share/i18n/charmaps/ files that glibc provides
+makedepends=('git')
 source=("https://download.savannah.gnu.org/releases/m17n/${pkgname_basic}-${pkgver}.tar.gz")
 sha256sums=('657f23835b6655e7a63a362bac66260454ee356da4855eadb9366911d33fdc6d')
 url="http://github.com/sanskrit-coders/m17n-db-indic-aur"
