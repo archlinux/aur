@@ -17,7 +17,7 @@ pkgdesc="A new integrated development environment (IDE) for R programming langua
 arch=('i686' 'x86_64')
 url="http://www.rstudio.org/"
 license=('AGPL3')
-depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'soci')
+depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'postgresql-libs' 'sqlite3' 'soci')
 makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget' 'yarn')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
