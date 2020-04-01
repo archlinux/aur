@@ -1,0 +1,16 @@
+pkgbase = python-turkish-morphology
+	pkgdesc = A two-level morphological analyzer for Turkish
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/google-research/turkish-morphology
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = absl-py
+	depends = python
+	depends = python-protobuf
+	source = python-turkish-morphology-1.2.0.tar.gz::https://github.com/google-research/turkish-morphology/archive/v1.2.0.tar.gz
+	sha256sums = 2f1b119826aaa4751d8e6de26c29506c8c2e1c59a4a40c5211556d6c70ee4e29
+
+pkgname = python-turkish-morphology
+
