@@ -6,7 +6,7 @@ pkgdesc="Stardict dictionaries (see url for details): Sanskrit, Pali, Malayalam,
 url="http://github.com/indic-dict/stardict-indic-update-aur"
 # license=('custom:OFL')
 arch=(any)
-makedepends=('git')
+makedepends=('wget')
 
 # source=("")
 # sha256sums=('')
