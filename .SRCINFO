@@ -1,0 +1,22 @@
+pkgbase = python-tensorflow-model-optimization-git
+	pkgdesc = A toolkit to optimize ML models for deployment for Keras and TensorFlow, including quantization and pruning.
+	pkgver = r327.c791831
+	pkgrel = 1
+	url = https://github.com/tensorflow/model-optimization
+	arch = x86_64
+	license = APACHE
+	makedepends = python-setuptools
+	makedepends = bazel
+	depends = python-tensorflow
+	depends = python-numpy
+	depends = python-six
+	depends = python-scipy
+	depends = python-mock
+	depends = python-dm-tree
+	provides = python-tensorflow-model-optimization
+	conflicts = python-tensorflow-model-optimization
+	source = git+https://github.com/tensorflow/model-optimization.git
+	sha256sums = SKIP
+
+pkgname = python-tensorflow-model-optimization-git
+
