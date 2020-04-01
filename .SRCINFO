@@ -1,0 +1,17 @@
+pkgbase = cgrep-clang
+	pkgdesc = grep for C/C++ source files
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/bloodstalker/cgrep
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = llvm
+	depends = clang
+	source = cgrep-clang-1.1.tar.gz::https://github.com/bloodstalker/cgrep/archive/1.1.tar.gz
+	source = git+https://github.com/bloodstalker/cfe-extra#commit=0d705a3
+	sha256sums = 68e7e66029f643a3a7e745a88bf95516c517aec1739c81ba1f1d3978833c7d80
+	sha256sums = SKIP
+
+pkgname = cgrep-clang
+
