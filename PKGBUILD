@@ -34,7 +34,7 @@ package_level-zero-headers() {
     install -D -m644 "${pkgbase}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
     
     # remove loader files
-    [ -d 'usr' ] && rm -rf usr
+    [ -d 'loader' ] && rm -rf loader
     mv "${pkgdir}/usr/lib" loader
 }
 
