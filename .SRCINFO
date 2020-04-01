@@ -1,7 +1,7 @@
 pkgbase = x11docker
 	pkgdesc = Run GUI applications and desktops in Docker. Focus on security.
 	pkgver = 6.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mviereck/x11docker
 	install = x11docker.install
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = x11docker
 	optdepends = xorg-server-xvfb: --xvfb support
 	optdepends = xorg-server-xwayland: --xpra-xwayland, --weston-xwayland, --kwin-xwayland, --xwayland, --xdummy-xwayland support
 	optdepends = xorg-server: --xorg, --xdummy support
-	source = https://github.com/mviereck/x11docker/archive/v6.6.1.tar.gz
+	source = x11docker-6.6.1.tar.gz::https://github.com/mviereck/x11docker/archive/v6.6.1.tar.gz
 	sha256sums = 2cc511abb2ae14c8cc7cc634a4c5bdfd8883a2998949f4ba4cc43ea9250bfdfa
 
 pkgname = x11docker

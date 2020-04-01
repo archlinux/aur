@@ -2,13 +2,15 @@
 
 # All my PKGBUILDs are managed at https://github.com/schra/pkgbuilds
 
-pkgname=x11docker
+_name=x11docker
+pkgname=$_name
 pkgver=6.6.1
-pkgrel=1
+_mainfolder=$pkgname-$pkgver
+pkgrel=2
 pkgdesc='Run GUI applications and desktops in Docker. Focus on security.'
-arch=('any')
-url='https://github.com/mviereck/x11docker'
-license=('MIT')
+arch=(any)
+url=https://github.com/mviereck/x11docker
+license=(MIT)
 install=x11docker.install
 
 # these are the core and recommended dependencies from
@@ -26,11 +28,11 @@ optdepends=('cups: --printer support'
             'xorg-server-xwayland: --xpra-xwayland, --weston-xwayland, --kwin-xwayland, --xwayland, --xdummy-xwayland support'
             'xorg-server: --xorg, --xdummy support')
 
-source=($url/archive/v$pkgver.tar.gz)
-sha256sums=(2cc511abb2ae14c8cc7cc634a4c5bdfd8883a2998949f4ba4cc43ea9250bfdfa)
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha256sums=('2cc511abb2ae14c8cc7cc634a4c5bdfd8883a2998949f4ba4cc43ea9250bfdfa')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$_mainfolder"
 
   # I don't use `x11docker --install` on purpose here since it wasn't designed
   # for packaging but rather for directly installing the program.
@@ -39,6 +41,6 @@ package() {
   # another program that I had to package first.
 
   install -Dm755 x11docker              -t "$pkgdir/usr/bin"
-  install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE.txt            -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$_name"
+  install -Dm644 LICENSE.txt            -t "$pkgdir/usr/share/licenses/$_name"
 }
