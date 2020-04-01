@@ -1,0 +1,17 @@
+pkgbase = mod-utilities-lv2-git
+	pkgdesc = some moddevices LV2 plugins - latest git
+	pkgver = r141.4a92aa8
+	pkgrel = 1
+	url = https://github.com/moddevices/mod-utilities
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL2
+	makedepends = lv2
+	provides = mod-utilities-lv2
+	conflicts = mod-utilities-lv2
+	source = git+https://github.com/moddevices/mod-utilities
+	sha256sums = SKIP
+
+pkgname = mod-utilities-lv2-git
+
