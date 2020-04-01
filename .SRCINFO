@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.2.5019.r1893
+	pkgver = 1.2.5033.r3966
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = rstudio-desktop-git
 	makedepends = pam
 	makedepends = patchelf
 	makedepends = wget
+	makedepends = yarn
 	depends = boost-libs
 	depends = r>=3.0.1
 	depends = hunspell-en_US
@@ -41,9 +42,15 @@ pkgbase = rstudio-desktop-git
 	source = git+https://github.com/rstudio/rstudio.git
 	source = https://s3.amazonaws.com/rstudio-buildtools/gin-2.1.2.zip
 	source = https://s3.amazonaws.com/rstudio-buildtools/gwt-2.8.2.zip
+	source = https://nodejs.org/dist/v10.19.0/node-v10.19.0-linux-x64.tar.gz
+	source = soci.patch
+	source = rstudio_boost.patch
 	sha256sums = SKIP
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
 	sha256sums = 970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b
+	sha256sums = 36d90bc58f0418f31dceda5b18eb260019fcc91e59b0820ffa66700772a8804b
+	sha256sums = b12cb64ec72b0e2c45f832908b9e1fb3550c70edc7da7733f8d5e07d4ab6bf77
+	sha256sums = e0500613ca427af1dae9418559589cf4fdd646aa30cb02563476184cb32b58cb
 
 pkgname = rstudio-desktop-git
 
