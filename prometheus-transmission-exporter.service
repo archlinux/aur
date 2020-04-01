@@ -6,6 +6,7 @@ After=network.target
 ExecStart=/usr/bin/prometheus-transmission-exporter
 EnvironmentFile=/etc/default/prometheus-transmission-exporter
 User=nobody
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
