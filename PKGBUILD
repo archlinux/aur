@@ -1,6 +1,6 @@
 # Maintainer: PolyMeilex <bartek.marynczak@op.pl>
 pkgname="yetanotherbar-git"
-pkgver=0.0.1.r0.g80feb5e
+pkgver=0.0.1.r4.g4202156
 pkgrel=1
 pkgdesc="YetAnotherBar is simple gtk based statusbar for i3 with support for CSS"
 arch=('i686' 'x86_64')
