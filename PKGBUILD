@@ -30,6 +30,7 @@ build() {
   mkdir -p _build
   npm install electron@^2.0.0
   npm install
+  npm audit fix
   node_modules/.bin/webpack
   cp src/tc-renderer/index.html _build/index.html
   cp src/package.json _build/package.json
