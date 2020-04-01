@@ -1,12 +1,12 @@
-pkgbase = breeze-noir-dark-swstemwide
+pkgbase = breeze-noir-dark-systemwide
 	pkgdesc = Breeze based global theme for KDE and GTK installed system-wide
-	pkgver = 1.0
+	pkgver = 01042020
 	pkgrel = 0
 	url = https://store.kde.org/p/1361473
 	arch = any
 	license = GPL
-	source = git://github.com/dus2002/Breeze-Noir-Dark-SystemWide.git
+	source = https://github.com/dus2002/Breeze-Noir-Dark-SystemWide.git
 	sha256sums = SKIP
 
-pkgname = breeze-noir-dark-swstemwide
+pkgname = breeze-noir-dark-systemwide
 
