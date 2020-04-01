@@ -1,10 +1,8 @@
-# Haruka Workstation Kernel Maintainer: Akito Mizukito (RealAkito) <akito@evolution-x.org>
-# Haruka Workstation Co-Kernel Maintainer: Jago Gardiner (nysascape) <jago@nysascape.digital>
-# Linux Zen Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-haruka-workstation
-pkgver=5.5.11.haruka
-pkgrel=2
+pkgver=5.6.haruka1
+pkgrel=1
 pkgdesc='Haruka Workstation Kernel'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/HarukaNetwork/haruka-workstation-kernel/commits/master"
@@ -21,6 +19,7 @@ source=(
   "$_srcname::git+https://github.com/HarukaNetwork/haruka-workstation-kernel"
   config         # the main kernel config file
 )
+
 sha256sums=('SKIP'
             'SKIP')
 
@@ -64,6 +63,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -82,9 +83,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -160,9 +158,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -182,9 +177,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
