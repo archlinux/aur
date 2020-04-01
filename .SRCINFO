@@ -1,10 +1,10 @@
 pkgbase = greetd-gtkgreet-git
 	pkgdesc = GTK based greeter for greetd
-	pkgver = r49.43d9d4694e
+	pkgver = r63.8509cf1338
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/gtkgreet
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	makedepends = meson
 	makedepends = ninja
 	makedepends = scdoc

@@ -2,12 +2,12 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-gtkgreet-git
-pkgver=r49.43d9d4694e
+pkgver=r63.8509cf1338
 pkgrel=1
 pkgdesc="GTK based greeter for greetd"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/gtkgreet"
-license=(MIT)
+license=(GPL3)
 source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd-gtkgreet)
