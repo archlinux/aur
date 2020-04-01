@@ -20,10 +20,9 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.5.13
+pkgver=5.6
 pkgrel=1
 pkgdesc='Linux'
-_srctag=v${pkgver}-arch1
 url="https://cchalpha.blogspot.co.uk/"
 arch=(x86_64)
 license=(GPL2)
@@ -33,25 +32,28 @@ makedepends=(
   git
 )
 options=('!strip')
-_srcname=linux-$_srctag
-_bmqversion=5.5-r3
+_srcname=linux-${pkgver}
+_bmqversion=5.6-r0
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20191217'
 source=(
-  "$_srcname.tar.gz::https://git.archlinux.org/linux.git/snapshot/linux-$_srctag.tar.gz"
+  "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
-  "0001_${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
-  "0002_enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
+  "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
+  "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b672dfc2978badb11782adc9b187c63ee8a35151.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('03fba815a3d9a50aedc0a922c02abed3f7027fe52fe2dcafa2d462806a97b9c1'
-            '9cd23b970ae575c9abaf2c51fb6df4240ad8a94fac239810ef9e826b02d137cd'
-            '1a647aa24074af0cc3a0ecbf8c720ab496be9fe1a62fab41c524eb6cc5dcccda'
-            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
+sha256sums=('e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622'
+            'SKIP'
+            'a87c8db8d4a594373855eb5b0113b345629c2d295276b27f64cf651a20d8df56'
+            'a214cfe4188ff24284de8ee5b0fa5ff4b0b604148a3e663e02e97cc56fec172c'
+            '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
+            'c7ab1b7361f96cea3b6caf8a92859f7ca56c9bbf8dcab4ea0db723f31150ee3e')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
@@ -71,16 +73,20 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
-    [[ $src = *.patch ]] || continue
+    [[ $src = 0*.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  echo "Applying patch ${_bmq_patch}..."
+  patch -Np1 -i "$srcdir/${_bmq_patch}"
+
 
   echo "Setting config..."
   cp ../config .config
 
   # https://github.com/graysky2/kernel_gcc_patch
-  echo "Applying enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch ..."
+  echo "Applying enable_additional_cpu_optimizations-${_gcc_more_v}..."
   patch -Np1 -i "$srcdir/kernel_gcc_patch-$_gcc_more_v/enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
   make prepare
@@ -111,7 +117,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make bzImage modules
+  make all
 }
 
 _package() {
