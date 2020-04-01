@@ -1,0 +1,16 @@
+pkgbase = jp2-pixbuf-loader
+	pkgdesc = JPEG2000 GDK Pixbuf Loader library
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://notabug.org/necklace/jp2-pixbuf-loader
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = meson
+	depends = gdk-pixbuf2
+	depends = openjpeg2
+	source = git+https://notabug.org/necklace/jp2-pixbuf-loader.git#tag=0.0.1
+	sha256sums = SKIP
+
+pkgname = jp2-pixbuf-loader
+
