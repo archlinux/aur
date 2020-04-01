@@ -1,7 +1,7 @@
 pkgbase = python-gpflow
 	pkgdesc = Gaussian process methods in tensorflow
-	pkgver = 2.0.0rc1
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/GPflow/GPflow
 	arch = any
 	license = MIT
@@ -13,8 +13,8 @@ pkgbase = python-gpflow
 	depends = python-tensorflow
 	depends = python-tensorflow-probability
 	depends = python-tabulate
-	source = https://github.com/GPflow/GPflow/archive/2.0.0-rc1.tar.gz
-	sha256sums = e0ee90e6b999649a5f9a9bb4f27e000ce6b7ee45e6e8aa97d291d463db697a7d
+	source = https://github.com/GPflow/GPflow/archive/v2.0.0.tar.gz
+	sha256sums = 90f1225049b57e1803e61c48442d5ae2cb13c195a8928972da020c645592fcb7
 
 pkgname = python-gpflow
 
