@@ -25,7 +25,7 @@ sha512sums_aarch64=(
 )
 
 package() {
-    mkdir -p "$pkgdir/opt/"
+    mkdir -p "$pkgdir/opt"
     cp -r "$srcdir/usr/local/share/tencent-qq" "$pkgdir/opt/"
 
     cp "$srcdir/usr/local/bin/qq" "$pkgdir/opt/tencent-qq/"
