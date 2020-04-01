@@ -1,13 +1,13 @@
 pkgname=fast-p
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Quickly find and open a pdf among a collection of thousands of unsorted pdfs through fzf (fuzzy finder)'
 arch=('x86_64')
 repo="github.com/bellecp/$pkgname"
 url="https://$repo"
 license=('MIT')
 depends=('fzf')
-makedepends=('go-pie' 'git')
+makedepends=('go' 'git')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('ccd0a4630433a0ed000278f93c15300fd8bf47e612967568d824ad4ab23fb3ac')
 
@@ -26,7 +26,7 @@ build() {
   cd "$gopkg"
   go install \
     -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
+    -ldflags "-extldflags ${LDFLAGS}" \
     -v ./...
 }
 
