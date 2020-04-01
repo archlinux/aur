@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Tremesaygues <killruana@slaanesh.org>
 pkgname=netgen-lvs-git
-pkgver=1.5.r359.03b241a
-pkgrel=2
+pkgver=1.5.r368.27f2ab8
+pkgrel=1
 pkgdesc="A netlist comparison (LVS) and format manipulation"
 url="http://opencircuitdesign.com/netgen/"
 arch=('i686' 'x86_64')
