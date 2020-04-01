@@ -2,7 +2,7 @@
 # Maintainer: Corey Hinshaw <corey(at)electrickite(dot)org>
 
 pkgname=system76-driver
-pkgver=19.10.2
+pkgver=20.04.3
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
@@ -12,10 +12,10 @@ install="${pkgname}.install"
 depends=(
   'at'
   'dmidecode'
-  'firmware-manager'
 	'python>=3.6'
 	'python-cffi'
 	'python-dbus'
+  'python-distro'
 	'python-evdev'
 	'python-gobject'
 	'python-pynacl'
@@ -27,6 +27,7 @@ depends=(
 makepdepends=(
 	'python-pyflakes')
 optdepends=(
+  'firmware-manager: Manage System76 firmware updates'
 	'gtk3: To launch System76 driver and firmware GUI'
 	'pm-utils: For power management features'
 	'polkit: Run System76 Driver GUI from application menu'
@@ -39,17 +40,13 @@ optdepends=(
 source=(
 	"https://github.com/pop-os/${pkgname}/archive/${pkgver}.tar.gz"
 	'galu1.patch'
-	'gtk.patch'
   'cli.patch'
-  'wayland.patch'
-  'os.patch')
+  'wayland.patch')
 sha1sums=(
-  'bc1aed472cc05542b8aa4c940ef4db92f8bd146e'
+  'fdcc2d8d68cdca22609537e035d82450db1c3c65'
   'ddc85f9b062eb89c2c6fef0c6d7c68a28f419760'
-  '45b4601ed3d9d80a01d5179628b1502caa9d7e6f'
   '916e0eeda26e00bd0372c1ffc7c5368cda9d46a1'
-  '4825b80d13555742c30d197e4de56638eef162e6'
-  '0134ec37bfc874bd544a89c48124a03241af2aa4')
+  '4825b80d13555742c30d197e4de56638eef162e6')
 
 
 build() {
@@ -61,14 +58,8 @@ build() {
 	# galu1 model-specific patch
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/galu1.patch
 
-	# enabling "Restore System" button if all changes applied
-	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/gtk.patch
-
 	# Use xhost for GUI apps on Wayland
 	patch --no-backup-if-mismatch -Np1 -i ${srcdir}/wayland.patch
-
-  # platform.dist() removed in Python 3.8. Hardcode OS instead.
-  patch --no-backup-if-mismatch -Np1 -i ${srcdir}/os.patch
 }
 
 package() {
@@ -89,10 +80,11 @@ package() {
 
 	# Install scripts and configuration
 	install -m755 -D system76-nm-restart ${pkgdir}/usr/lib/${pkgname}/system76-nm-restart
+	install -m755 -D system76-thunderbolt-reload ${pkgdir}/usr/lib/${pkgname}/system76-thunderbolt-reload
 	install -m644 -D com.system76.pkexec.system76-driver.policy ${pkgdir}/usr/share/polkit-1/actions/com.system76.pkexec.system76-driver.policy
 
 	# Install application launchers
-	install -m644 -D system76-driver-backlight.desktop ${pkgdir}/usr/share/applications/system76-backlight.desktop
+	install -m644 -D system76-driver-backlight.desktop ${pkgdir}/etc/xdg/autostart/system76-backlight.desktop
 
 	# Create /var/lib/system76-driver directory for brightness settings saving
 	install -m755 -d ${pkgdir}/var/lib/${pkgname}
