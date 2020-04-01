@@ -48,8 +48,8 @@ _use_current=
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _major=5.4
-_minor=26
-_rtver=17
+_minor=28
+_rtver=19
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
@@ -67,7 +67,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
 # To use linux-rt-bfq smoothly apply bfq-reverts before bfq-dev patch. 
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-all"
+_bfq_rev_path="bfq-reverts-all-v2"
 _bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
@@ -345,11 +345,11 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('28ff9c02e99fc4315c6c3bd6e9bb35d913ed3d9a4f0e2830c8af303e12f1efe2315595bdf82f07e07fcb5ed8c6036fb3c1ff5896b2efa5be5a4106745254b5c0'
+sha512sums=('47c2cb4b1e8baf1c2da296b01b04af927042cc24fe0f35f5924fd452cc023eb7c5a55becdeab35b507adc3e4b624a5f05d1b3d824407af7962e3f1460eac2ae5'
             'SKIP'
-            'a396654e2d983730503432776ea237303cbdd40872d0b2092bd69ab2a6551a4f5580970d2d8055d99d2b9bece9313d688887e6e8ff2edaf09858355c5d47b5c0'
+            'e6135a9637052b209ea7e60144930f0049659f062a1d7d068b6976505e0fe93a469ba4dee0015eb25b8be53777f619e17d7c2035223bf024f911455086882f58'
             'SKIP'
-            'bd6576b43ec0f4f730110a68fc9541fd6ab763e1247fa977751f89fcf959f3a20c4018fc85d9a1dc80ee35799536859f1980476ea143fb9b124a2d9f79f57fef'
+            '13e6e0221526899b1c7efbcc269f92bce47fd332ec222c59e767e05f72b9a496d6d884998d351532c1d7013054b34558ef54aaff6f43f22caf887ea19c70103a'
             '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
             '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
             'e725a711b4ab20d32ba3095b75ded88b6173fa5ceccd8f345de8f94251f22539dfc52e4543c8bd574562072cd5c9ccaf07c9a5321a74ef94a2a911783698fbf6'
