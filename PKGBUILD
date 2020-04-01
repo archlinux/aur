@@ -7,12 +7,12 @@
 pkgname=kmscube-git
 _pkgname=${pkgname%-*}
 pkgver=a
-pkgrel=1
+pkgrel=2
 pkgdesc="example gl app using kms/gbm"
 arch=('i686' 'x86_64')
 url="https://cgit.freedesktop.org/mesa/kmscube/"
 license=('custom')
-depends=('mesa')
+depends=('mesa' 'libpng' 'gst-plugins-base-libs')
 makedepends=('git')
 source=("git://anongit.freedesktop.org/mesa/kmscube")
 md5sums=('SKIP')
@@ -24,11 +24,11 @@ pkgver() {
 
 build() {
   cd "$srcdir/${_pkgname}/"
-  ./autogen.sh --prefix=/usr
-  make
+  meson build --prefix=/usr
+  ninja -C build
 }
 
 package() {
   cd "$srcdir/${_pkgname}/"
-  make DESTDIR="${pkgdir}" install
+  DESTDIR="${pkgdir}" ninja -C build install
 }
