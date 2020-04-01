@@ -1,6 +1,6 @@
 # Maintainer: Miika Hänninen <miika.hanninen@gmail.com>
 pkgname=vimv-git
-pkgver=r21.f011fe5
+pkgver=r28.4152496
 pkgrel=1
 pkgdesc="Batch-rename files using Vim"
 arch=('any')
