@@ -2,9 +2,9 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.6
-pkgver=5.6.v.0
-pkgrel=2
+gitver=v5.6.1
+pkgver=5.6.v.1
+pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,7 +24,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
             #config.x86_64
-            'b1cc87b9ff3587afc1371470b5ffbc63f0417c5a9874076727c67e488a5cabcf'
+            'f4705fb033df51671f418c2bc62bcded2a61c9803d3c8058d2d36205336fd7b0'
             #.preset file
             '41a0bb63095f32a501a54c2835b3fd883f51f00ad52739e5f1b9bd2f69b1f367'
             #patch file
