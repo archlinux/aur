@@ -46,7 +46,7 @@ source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
         0001-platform-add-Arch-Linux-platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook)
-sha256sums=('58612882840a08341579d0602501e0dbb1b83ebadd93bed78b5f3b55e3d821e7'
+sha256sums=('89df0d170e960d859512d2cdb601e99049bcb84423441d9b92a1cf47dd0a9d84'
             'f30985cdc09070da6c935bc8e3b1f0d870f91766bf6ecdef41815386beccb369'
             '9fbac49fa4bc23afe0c4d575ea2795f1da435399289dbd04c5a3ac47580e2a0d'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d')
