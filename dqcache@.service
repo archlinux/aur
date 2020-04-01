@@ -9,8 +9,10 @@ Restart=always
 PrivateTmp=true
 PrivateDevices=true
 ProtectSystem=true
-WorkingDirectory=/etc/dqcache
-EnvironmentFile=/etc/dqcache/%i.conf
+WorkingDirectory=/etc/dqcache/%i
+EnvironmentFile=-/etc/dqcache/%i.conf
+EnvironmentFile=/etc/dqcache/%i/config
+Environment=ROOT=/etc/dqcache/%i
 ExecStart=/usr/bin/dqcache
 
 [Install]
