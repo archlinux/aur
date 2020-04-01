@@ -1,0 +1,6 @@
+post_remove() {
+
+    #Delete files the game creates after removing
+    rm -rf /opt/stationhub
+    update-desktop-database -q
+} 

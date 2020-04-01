@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;
+Comment=The station hub for unitystation
+Exec=/opt/stationhub/StationHub
+GenericName=Station Hub
+Name=Station Hub
+Path=/opt/stationhub/
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/stationhub.png
