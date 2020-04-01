@@ -2,7 +2,7 @@
 # Contributor: William Di Luigi <williamdiluigi@gmail.com>
 
 pkgname=flyway
-pkgver=6.3.1
+pkgver=6.3.2
 pkgrel=1
 pkgdesc="Database migration utility written Java, supporting a wide range of databases"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://flywaydb.org/"
 license=('Apache')
 depends=('java-environment>=8')
 source=(https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/$pkgver/flyway-commandline-$pkgver.tar.gz)
-sha256sums=('ff91611330f6f993a3c02f4102ea8e136b39248aed47b4da91936680b975c984')
+sha256sums=('d81c8d428109e5327d110ba0f4f34d5dcb019f037035f26388fac26bffc161ab')
 
 package() {
   cd $srcdir
@@ -21,7 +21,7 @@ package() {
 
   cat << 'EOF' > $pkgdir/usr/bin/flyway
 #!/bin/sh
-"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-6.3.1/lib/*:/opt/flyway/flyway-6.3.1/lib/community/*:/opt/flyway/flyway-6.3.1/drivers/* org.flywaydb.commandline.Main "$@"
+"$JAVA_HOME/bin/java" -cp /opt/flyway/flyway-6.3.2/lib/*:/opt/flyway/flyway-6.3.2/lib/community/*:/opt/flyway/flyway-6.3.2/drivers/* org.flywaydb.commandline.Main "$@"
 EOF
   chmod 755 $pkgdir/usr/bin/flyway
 }
