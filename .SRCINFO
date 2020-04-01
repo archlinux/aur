@@ -1,0 +1,17 @@
+pkgbase = blastem-pre
+	pkgdesc = BlastEm is an open source, higly accurate emulator for the Genesis/Megadrive that runs on modest hardware.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://www.retrodev.com/blastem/
+	arch = x86_64
+	license = GPL3
+	depends = sdl2
+	depends = glew
+	provides = blastem-pre
+	conflicts = blastem
+	conflicts = blastem-hg
+	source = https://www.retrodev.com/repos/blastem/archive/00fb99805445.tar.gz
+	md5sums = 8ff221d7f1bd68fa75fd3a59f89d1b4e
+
+pkgname = blastem-pre
+
