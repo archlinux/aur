@@ -1,6 +1,6 @@
 pkgbase = dike
 	pkgdesc = Tool di firma e rinnovo online per i certificati digitali emessi da InfoCert S.p.A.
-	pkgver = 7.1.0
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://www.infocert.it
 	install = dike.install
@@ -15,9 +15,9 @@ pkgbase = dike
 	depends = libxinerama
 	depends = libappindicator-gtk2
 	source = https://www.firma.infocert.it/pdf/licenza-dike6.pdf
+	source = https://rinnovofirma.infocert.it/download/x86_64/latest
 	sha256sums = c3b034216532919c0782349a50912dec280b8aa352a7272e740ff73cf5f3ab1f
-	source_x86_64 = https://rinnovofirma.infocert.it/download/x86_64/latest
-	sha256sums_x86_64 = 2478e1184d2001219be6711ef68a8288ee96f7e8a01cb3ecba0c752ffc56f8e3
+	sha256sums = c851eb4a3f6943877caaad44a2c8a0201ff28dc32904325c3ada851319b423ce
 
 pkgname = dike
 
