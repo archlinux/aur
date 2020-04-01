@@ -1,0 +1,19 @@
+pkgbase = gifify
+	pkgdesc = Convert videos to GIFs
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aureooms/gifify
+	arch = any
+	license = AGPL-3.0
+	makedepends = git
+	depends = coreutils
+	depends = findutils
+	depends = grep
+	depends = ffmpeg
+	depends = convert
+	depends = gifsicle
+	source = https://github.com/aureooms/gifify/archive/v1.0.0.tar.gz
+	md5sums = SKIP
+
+pkgname = gifify
+
