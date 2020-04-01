@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-psharpen-git
 	pkgdesc = Plugin for Vapoursynth: psharpen (GIT version)
-	pkgver = r4
-	pkgrel = 3
+	pkgver = r5
+	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
 	license = GPL
