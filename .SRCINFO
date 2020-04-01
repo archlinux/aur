@@ -1,5 +1,5 @@
 pkgbase = llvm-git
-	pkgver = 11.0.0_r345726.98223f7931f
+	pkgver = 11.0.0_r346859.84aa6cf1a9f
 	pkgrel = 1
 	url = https://llvm.org/
 	arch = x86_64
@@ -31,22 +31,22 @@ pkgbase = llvm-git
 
 pkgname = llvm-git
 	pkgdesc = LLVM development version. includes clang and many other tools
-	depends = llvm-libs-git=11.0.0_r345726.98223f7931f-1
+	depends = llvm-libs-git=11.0.0_r346859.84aa6cf1a9f-1
 	depends = perl
 	depends = python-six
 	optdepends = python: for scripts
 	optdepends = python-setuptools: for using lit = LLVM Integrated Tester
 	provides = aur-llvm-git
-	provides = compiler-rt-git=11.0.0_r345726.98223f7931f-1
-	provides = clang-git=11.0.0_r345726.98223f7931f-1
-	provides = lld-git=11.0.0_r345726.98223f7931f-1
-	provides = lldb-git=11.0.0_r345726.98223f7931f-1
-	provides = polly-git=11.0.0_r345726.98223f7931f-1
-	provides = compiler-rt=11.0.0_r345726.98223f7931f-1
-	provides = clang=11.0.0_r345726.98223f7931f-1
-	provides = lld=11.0.0_r345726.98223f7931f-1
-	provides = lldb=11.0.0_r345726.98223f7931f-1
-	provides = polly=11.0.0_r345726.98223f7931f-1
+	provides = compiler-rt-git
+	provides = clang-git
+	provides = lld-git
+	provides = lldb-git
+	provides = polly-git
+	provides = compiler-rt
+	provides = clang
+	provides = lld
+	provides = lldb
+	provides = polly
 	conflicts = llvm
 	conflicts = compiler-rt
 	conflicts = clang
@@ -63,14 +63,14 @@ pkgname = llvm-libs-git
 	depends = ncurses
 	depends = libxml2
 	provides = aur-llvm-libs-git
-	provides = llvm-libs=11.0.0_r345726.98223f7931f-1
+	provides = llvm-libs
 	conflicts = llvm-libs
 
 pkgname = llvm-ocaml-git
 	pkgdesc = OCaml bindings for LLVM
-	depends = llvm-git=11.0.0_r345726.98223f7931f-1
+	depends = llvm-git=11.0.0_r346859.84aa6cf1a9f-1
 	depends = ocaml
 	depends = ocaml-ctypes
-	provides = llvm-ocaml=11.0.0_r345726.98223f7931f-1
+	provides = llvm-ocaml
 	conflicts = llvm-ocaml
 

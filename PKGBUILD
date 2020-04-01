@@ -15,7 +15,7 @@
 
 
 pkgname=('llvm-git' 'llvm-libs-git' 'llvm-ocaml-git')
-pkgver=11.0.0_r345726.98223f7931f
+pkgver=11.0.0_r346859.84aa6cf1a9f
 pkgrel=1
 arch=('x86_64')
 url="https://llvm.org/"
@@ -120,8 +120,8 @@ package_llvm-git() {
     )
     # yes, I know polly is not in official repos. It just feels cleaner to list it
     provides=(aur-llvm-git
-                        compiler-rt-git=$pkgver-$pkgrel clang-git=$pkgver-$pkgrel lld-git=$pkgver-$pkgrel lldb-git=$pkgver-$pkgrel polly-git=$pkgver-$pkgrel
-                        compiler-rt=$pkgver-$pkgrel clang=$pkgver-$pkgrel lld=$pkgver-$pkgrel lldb=$pkgver-$pkgrel polly=$pkgver-$pkgrel
+                        compiler-rt-git clang-git lld-git lldb-git polly-git
+                        compiler-rt clang lld lldb polly
     )
     # A package always provides itself, so there's no need to provide llvm-git
     conflicts=('llvm' 'compiler-rt' 'clang' 'lld' 'lldb' 'polly')
@@ -179,7 +179,7 @@ package_llvm-git() {
 package_llvm-libs-git() {
     pkgdesc="runtime libraries for llvm-git"
     depends=('gcc-libs' 'zlib' 'libffi' 'libedit' 'ncurses' 'libxml2')
-    provides=(aur-llvm-libs-git llvm-libs=$pkgver-$pkgrel)
+    provides=(aur-llvm-libs-git llvm-libs)
     conflicts=('llvm-libs')
 
     install -d "$pkgdir"/usr/lib
@@ -207,7 +207,7 @@ package_llvm-ocaml-git() {
     pkgdesc="OCaml bindings for LLVM"
     depends=("llvm-git=$pkgver-$pkgrel" "ocaml" 'ocaml-ctypes')
     conflicts=('llvm-ocaml')
-    provides=("llvm-ocaml=$pkgver-$pkgrel")
+    provides=("llvm-ocaml")
     
     install -d "$pkgdir"/{usr/lib,usr/share/doc/$pkgname}
     cp -a "$srcdir"/ocaml.lib "$pkgdir"/usr/lib/ocaml
