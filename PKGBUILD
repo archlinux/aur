@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=ibmcloud-cli
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line client for IBM Cloud"
 arch=('x86_64' 'i686')
 url="https://console.bluemix.net/docs/cli/reference/ibmcloud/all_versions.html"
@@ -23,7 +23,6 @@ package() {
   install -D "LICENSE" "${pkgdir}/opt/ibmcloud/bin/LICENSE"
   install -D "ibmcloud" "${pkgdir}/opt/ibmcloud/bin/ibmcloud"
   install -D "ibmcloud-analytics" "${pkgdir}/opt/ibmcloud/bin/ibmcloud-analytics"
-  install -D "cfcli/cf" "${pkgdir}/opt/ibmcloud/bin/cfcli/cf"
   install -D "autocomplete/bash_autocomplete" "${pkgdir}/opt/ibmcloud/autocomplete/bash_autocomplete"
   install -D "autocomplete/zsh_autocomplete" "${pkgdir}/opt/ibmcloud/autocomplete/zsh_autocomplete"
 
