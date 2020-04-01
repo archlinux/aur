@@ -1,7 +1,8 @@
 # Maintainer: Jesús Castro <x51v4n@gmail.com>
+
 pkgname=otf-san-francisco
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc='The system font for macOS, iOS, watchOS, and tvOS'
 arch=('any')
@@ -10,7 +11,8 @@ url='https://developer.apple.com/fonts/'
 depends=('fontconfig' 
 		 'xorg-font-utils')
 source=(SFPro-1.0.zip::https://developer.apple.com/fonts/downloads/SFPro.zip)
-sha256sums=('1235856837d0123a4ea3f434933381c90f808e0e05e04af965c873a5d7ce3bd6')
+#sha256sums=('1235856837d0123a4ea3f434933381c90f808e0e05e04af965c873a5d7ce3bd6')
+sha512sums=('7001638787c7580a7cd1c40d92af8c680187ebfad832fe0ec4e97ccc15d925a9928e97b1e5bfd39db1789eb955bf0fcbb954a990b2ef2b56b41da7a13a6bd6cd')
 
 package() {
   cd "$srcdir/SFPro"
