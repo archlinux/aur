@@ -1,0 +1,12 @@
+pkgbase = hyphen-uk
+	pkgdesc = Ukrainian hyphenation rules
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://wiki.services.openoffice.org/wiki/Dictionaries
+	arch = any
+	license = LGPL
+	optdepends = hyphen: offers hyphenation library functions
+	source = https://master.dl.sourceforge.net/project/openofficeorg.mirror/contrib/dictionaries/hyph_uk_UA.zip
+	sha256sums = 539ccdae201b9437176ffa1d08dbcfe4ba9a1ac9762e32917edffc788abaf053
+
+pkgname = hyphen-uk
