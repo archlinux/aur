@@ -1,12 +1,12 @@
 pkgname=uni
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Query the Unicode database from the commandline, with good support for emojis'
 arch=('x86_64')
 repo="github.com/arp242/$pkgname"
 url="https://$repo"
 license=('MIT')
-makedepends=('go-pie')
+makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('04edf69aca7b086328fa1a7bd8e06617ba074eaec041eda6bdad7a1ba0a00dee')
 
