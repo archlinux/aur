@@ -1,7 +1,7 @@
 pkgbase = pantheon-default-settings
 	pkgdesc = Default settings for Pantheon
-	pkgver = 5.1.1
-	pkgrel = 4
+	pkgver = 5.1.2
+	pkgrel = 1
 	url = https://github.com/elementary/default-settings
 	arch = any
 	groups = pantheon-stable
@@ -14,9 +14,9 @@ pkgbase = pantheon-default-settings
 	depends = ttf-roboto
 	provides = default-settings
 	conflicts = default-settings-git
-	source = pantheon-default-settings.tar.gz::https://github.com/elementary/default-settings/archive/5.1.1.tar.gz
+	source = pantheon-default-settings.tar.gz::https://github.com/elementary/default-settings/archive/5.1.2.tar.gz
 	source = arch-tweaks.patch
-	sha256sums = 7f17ef8d1dcdaca0017cf8bcf2160543b8b00ad64456e3ff4c826f627b313790
+	sha256sums = 7e488ed4c3599af574e4337b0ed0da68246ac5e65b0b022d72ed569415feebfa
 	sha256sums = 99528c7ed672a5231f4d42d90421cef18d416f2b7aea6e0381db7cea6f9391d3
 
 pkgname = pantheon-default-settings

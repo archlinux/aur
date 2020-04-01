@@ -4,8 +4,8 @@
 _gitname=default-settings
 _author=elementary
 pkgname=pantheon-default-settings
-pkgver=5.1.1
-pkgrel=4
+pkgver=5.1.2
+pkgrel=1
 pkgdesc="Default settings for Pantheon"
 arch=('any')
 url="https://github.com/${_author}/${_gitname}"
@@ -19,7 +19,7 @@ provides=("${_gitname}")
 conflicts=("${_gitname}-git")
 source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz"
 	'arch-tweaks.patch')
-sha256sums=('7f17ef8d1dcdaca0017cf8bcf2160543b8b00ad64456e3ff4c826f627b313790'
+sha256sums=('7e488ed4c3599af574e4337b0ed0da68246ac5e65b0b022d72ed569415feebfa'
 	    '99528c7ed672a5231f4d42d90421cef18d416f2b7aea6e0381db7cea6f9391d3')
 
 prepare() {
