@@ -1,7 +1,7 @@
 # Maintainer: Alvin Rhaman <ararouge at protonmail dot ch>
 
 pkgname="bootique-git"
-pkgver="r14.0896"
+pkgver="r21.d57f"
 pkgrel=1
 pkgdesc="A templated theming system built in POSIX sh"
 arch=("any")
