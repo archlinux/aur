@@ -1,8 +1,12 @@
 # Maintainer: cmuench
 
+# Default language is english
+# Languages to choose from: en, de
+_LANG='en'
+
 pkgname=ecodms-client
 pkgver=18.09.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Document Management Software"
 arch=('x86_64')
 url="http://www.ecodms.de/index.php/de/"
@@ -19,5 +23,13 @@ package() {
   tar -xf data.tar.gz
 
   ln -sf /usr/lib/libpcre.so opt/ecodms/ecodmsclient/libpcre.so.3
+
+  sed -i '1 i #!/bin/sh' opt/ecodms/ecodmsclient/ecodmsclient.sh
+  sed -i '1 i #!/bin/sh' opt/ecodms/ecodmsclient/ecodmsconmgr.sh
+
+  # Set client language
+  cp -f opt/ecodms/ecodmsclient/language_${_LANG}.qm opt/ecodms/ecodmsclient/language.qm
+
   cp -dr --no-preserve=ownership etc opt usr "${pkgdir}"/
 }
+
