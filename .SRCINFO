@@ -1,6 +1,6 @@
 pkgbase = breeze-noir-dark-systemwide
 	pkgdesc = Breeze based global theme for KDE and GTK installed system-wide
-	pkgver = 01042020
+	pkgver = 1.0
 	pkgrel = 0
 	url = https://store.kde.org/p/1361473
 	arch = any
