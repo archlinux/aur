@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 pkgname=ibmcloud-cli
-pkgver=0.22.1
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Command line client for IBM Cloud"
 arch=('x86_64' 'i686')
 url="https://console.bluemix.net/docs/cli/reference/ibmcloud/all_versions.html"
@@ -12,8 +12,8 @@ conflicts=('bluemix-cli')
 replaces=('bluemix-cli')
 source_x86_64=("IBM_Cloud_CLI_${pkgver}_linux_amd64.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux64/archive")
 source_i686=("IBM_Cloud_CLI_${pkgver}_linux_386.tgz::https://clis.ng.bluemix.net/download/bluemix-cli/${pkgver}/linux32/archive")
-sha256sums_x86_64=('55ccc5cab6b750db39c9692a3b40ba79892f06e314597e747bd35b7f21a1f2ed')
-sha256sums_i686=('cad230b5503dcb03585bb1ed6eebedd72ff9414a71af11831e9434661fbb50bd')
+sha256sums_x86_64=('e7df1d45c16448207a3a69ebc27ca6718698a2f95a351d0308e62e0a01e54573')
+sha256sums_i686=('02c5b0ebb586765b26c2b57b16c6966c7268e6e262b237d39413b42ba965320a')
 
 package() {
   cd "${srcdir}/IBM_Cloud_CLI/"
