@@ -6,8 +6,8 @@ pkgdesc="A program to allow people to make real music together via the Internet;
 arch=('aarch64' 'armv7h' 'x86_64')
 url="http://www.ninjam.com/"
 license=('GPL')
-depends=('gcc' 'ncurses' 'alsa-lib' 'libvorbis')
-makedepends=('git' 'jack')
+depends=('ncurses' 'alsa-lib' 'libvorbis')
+makedepends=('gcc' 'git' 'jack')
 source=("git+https://www-dev.cockos.com/ninjam/ninjam.git")
 sha512sums=('SKIP')
 
