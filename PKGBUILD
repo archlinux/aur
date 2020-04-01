@@ -1,7 +1,7 @@
 # Maintainer: Camas Millar <camas at hotmail dot co dot uk>
 # Contributor: smt <smt923 at protonmail dot com>
 pkgname=ffuf-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Fast web fuzzer written in Go"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 provides=('ffuf')
 
 source=("https://github.com/ffuf/ffuf/releases/download/v${pkgver}/ffuf_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('ad5050dbd4fe8ec612843f6d0479f8d5485c40f90ef98d024f0b81aa97b368a5')
+sha256sums=('6b25182bff8fac00341b78b71a82c86e76d477bf730c6d4cf0af9923ee113fa3')
 
 package() {
     cd $srcdir
