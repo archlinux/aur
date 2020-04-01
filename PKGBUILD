@@ -5,7 +5,7 @@ _pname=ReemKufi
 pkgbase=$_fname-font
 pkgname=(otf-$_fname ttf-$_fname)
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A Kufic typeface based on early Kific modeles retrofitted to the Fatimid Kufic grid'
 arch=('any')
 url="https://github.com/alif-type/$_fname"
@@ -20,12 +20,12 @@ package_otf-reem-kufi() {
   cd "$_pname-$pkgver"
   install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" *.otf
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt
-  install -Dm644 -t "$pkgdir/usr/share/license/$pkgname/" OFL.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }
 
 package_ttf-reem-kufi() {
   cd "$_pname-$pkgver"
   install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" ttf/*.ttf
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.txt
-  install -Dm644 -t "$pkgdir/usr/share/license/$pkgname/" OFL.txt
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" OFL.txt
 }

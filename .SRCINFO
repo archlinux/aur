@@ -1,7 +1,7 @@
 pkgbase = reem-kufi-font
 	pkgdesc = A Kufic typeface based on early Kific modeles retrofitted to the Fatimid Kufic grid
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alif-type/reem-kufi
 	arch = any
 	license = AGPL3
