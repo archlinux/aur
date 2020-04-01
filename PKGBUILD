@@ -25,13 +25,15 @@ source=("git+https://github.com/rstudio/rstudio.git"
 	"https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
 	"soci.patch"
 	"rstudio_boost.patch"
+	"qt.conf"
        )
 sha256sums=('SKIP'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             '36d90bc58f0418f31dceda5b18eb260019fcc91e59b0820ffa66700772a8804b'
             'b12cb64ec72b0e2c45f832908b9e1fb3550c70edc7da7733f8d5e07d4ab6bf77'
-            'e0500613ca427af1dae9418559589cf4fdd646aa30cb02563476184cb32b58cb')
+            'e0500613ca427af1dae9418559589cf4fdd646aa30cb02563476184cb32b58cb'
+            '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921')
 noextract=("gin-${_ginver}.zip")
 
 pkgver() {
@@ -97,4 +99,7 @@ package() {
     # Symlink main binary
     install -d "${pkgdir}/usr/bin"
     ln -s "/usr/lib/${_gitname}/bin/${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
+
+    # BUGFIX: qt5-webengine isn't init'ing properly. Likely an Rstudio bug.
+    install -D "${srcdir}/qt.conf" "${pkgdir}/usr/lib/qt/libexec/qt.conf"
 }
