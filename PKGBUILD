@@ -1,7 +1,7 @@
 # Maintainer: CrocoDuck <crocoduck dot oducks at gmail dot com>
 
 pkgname=gmsh-bin
-pkgver=4.4.1
+pkgver=4.5.6
 pkgrel=1
 pkgdesc="A free 3D finite element grid generator with a build-in CAD engine and post-processor."
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ conflicts=("${pkgname%-*}")
 # Define Download data:
 if [ $CARCH == 'x86_64' ]; then
     _archvar=64
-    _downsha256sum=af489b386de23611857820dae194bfce87bc5b6decc4372659dfc9f39b0ff427
+    _downsha256sum=1c92e8f556c672880ccddc9ce089e08dcb4f9f2cefcc5f89d8fe863bdcc16892
 else
     _archvar=32
-    _downsha256sum=83d1d0429ccfaa7c7e343cf9f41dbe93815ec1ad3ddc16928f1951d7bee6dc32
+    _downsha256sum=ce13cff9e168530d288aacb3f9653488c0bd2bf63b187429b437268867cefcb3
 fi
 
 prepare() {
@@ -30,7 +30,7 @@ prepare() {
     # Extract:
     tar zxvf $_downfname
     # Set Icon and Launcher:
-    cp "${srcdir}/${pkgname%-*}-${pkgver}-Linux${_archvar}/share/doc/${pkgname%-*}/tutorial/image.png" "${srcdir}/gmsh_icon.png"
+    cp "${srcdir}/${pkgname%-*}-${pkgver}-Linux${_archvar}/share/doc/${pkgname%-*}/tutorial/t4_image.png" "${srcdir}/gmsh_icon.png"
     gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --name=${pkgname%-*} --exec=${pkgname%-*} --categories 'Education;Science;Math;'
     # Strip RPATH from binary:
     chrpath -d "${srcdir}/${pkgname%-*}-${pkgver}-Linux${_archvar}/bin/gmsh"
