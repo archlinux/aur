@@ -2,7 +2,7 @@
 # Contributor: Nils Czernia <nils[at]czserver[dot]de>
 
 pkgname=librenms
-pkgver=1.61
+pkgver=1.62
 pkgrel=1
 pkgdesc='Autodiscovering PHP/MySQL/SNMP based network monitoring'
 arch=('any')
@@ -31,7 +31,8 @@ sha512sums=('19fa542b7597adeccdb94add97102a86ba4a238ba44e999c6e8d186cb7d5ed05238
             'cde868416a13353290e4063c937e13b029e616abe3416e4e7c906bbd8000f871429546335470bbc2b219c1bcc95d6ee0f79481ee765c7351bbed6487ad42fee4')
 
 build(){
-  php -d 'extension=gd' /usr/bin/composer create-project --no-dev -n ${pkgname}/${pkgname} ${pkgname}-${pkgver} ${pkgver}
+  php -d 'extension=gd' -d 'extension=sockets' \
+    /usr/bin/composer create-project --no-dev -n ${pkgname}/${pkgname} ${pkgname}-${pkgver} ${pkgver}
   cd "${pkgname}-${pkgver}"
   # make cron jobs compatible with package locations
   # disable daily.sh (update job)
