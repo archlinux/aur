@@ -3,7 +3,7 @@
 pkgname=python-nornir
 _pkgname=nornir
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pluggable multi-threaded framework to help operate collections of devices"
 arch=('any')
 url="https://nornir.readthedocs.io/"
@@ -19,10 +19,8 @@ depends=('python>=3.6'
         'python-mypy_extensions>=0.4.1'
         'python-typing_extensions'
         'python-pyeapi')
-makedepends=('git' 'python-poetry' 'python-setuptools' 'python-wheel')
-optdepends=()
+makedepends=('git' 'python-poetry' 'python-setuptools')
 source=("git+https://github.com/nornir-automation/nornir.git#tag=v$pkgver")
-noextract=()
 md5sums=('SKIP')
 
 build() {

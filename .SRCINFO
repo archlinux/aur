@@ -1,14 +1,13 @@
 pkgbase = python-nornir
 	pkgdesc = Pluggable multi-threaded framework to help operate collections of devices
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://nornir.readthedocs.io/
 	arch = any
 	license = Apache
 	makedepends = git
 	makedepends = python-poetry
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = python>=3.6
 	depends = python-colorama>=0.4.1
 	depends = python-jinja>=2
