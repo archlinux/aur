@@ -1,8 +1,8 @@
 pkgbase = ungoogled-chromium-bin
-	pkgdesc = A lightweight approach to removing Google web service dependency (binary version)
-	pkgver = 79.0.3945.88
+	pkgdesc = A lightweight approach to removing Google web service dependency
+	pkgver = 80.0.3987.149
 	pkgrel = 1
-	url = https://ungoogled-software.github.io/
+	url = https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/archlinux/
 	arch = x86_64
 	license = BSD
 	depends = gtk3
@@ -23,12 +23,7 @@ pkgbase = ungoogled-chromium-bin
 	depends = hicolor-icon-theme
 	depends = jsoncpp
 	depends = openjpeg2
-	depends = re2
-	depends = snappy
-	depends = minizip
-	depends = libxslt
 	optdepends = pepper-flash: support for Flash content
-	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: needed for file dialogs in KDE
 	optdepends = gnome-keyring: for storing passwords in GNOME keyring
 	optdepends = kwallet: for storing passwords in KWallet
@@ -37,10 +32,9 @@ pkgbase = ungoogled-chromium-bin
 	optdepends = libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs
 	provides = chromium
 	conflicts = chromium
-	conflicts = iridium
 	conflicts = ungoogled-chromium
-	source = https://download.opensuse.org/repositories/home:/justkidding:/arch/standard/x86_64/ungoogled-chromium-79.0.3945.88-1-x86_64.pkg.tar.xz
-	sha256sums = dced840ee95d399ddcf805d14a7dadef0a191071e9089644206236fe51ea993f
+	source = ungoogled-chromium-80.0.3987.149.pkg.tar.xz::https://github.com/Chexier/ungoogled-chromium-binaries/releases/download/80.0.3987.149-1/ungoogled-chromium-80.0.3987.149-1-x86_64.pkg.tar.xz
+	md5sums = b27f0d3163f8b8db1549f7c87673cfa3
 
 pkgname = ungoogled-chromium-bin
 
