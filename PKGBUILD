@@ -1,6 +1,6 @@
 # Maintainer: orhun <orhunparmaksiz@gmail.com>
 pkgname=kmon
-pkgver=0.3.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Linux kernel manager and activity monitor"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libxcb')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/orhun/kmon/archive/v${pkgver}.tar.gz")
-sha512sums=('202f135bae5db292f8e3c8d423caed9b3b83bc612fdc6563d82e75f93953461211164aa8f8cfda227ff1a9f11ff6e454d262040d74083300bc0c495dfdc6eb38')
+sha512sums=('07c0c007786dd78fa0e604a17c2e04103461493148e7bae2e6e9dca86b33ce4c1e990924045060c301683545b8157e33ab3ef5bf552a33f6d160b9a5b5b51fa8')
 
 build() {
   cd "$pkgname-${pkgver#v}"
