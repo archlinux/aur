@@ -1,7 +1,7 @@
 # Maintainer: Sergey Slipchenko <faergeek@gmail.com>
 
 pkgname=retroarch-rbp
-pkgver=1.7.9.2
+pkgver=1.8.5
 pkgrel=1
 pkgdesc='Reference frontend for the libretro API (Raspberry Pi)'
 arch=(armv7h)
@@ -12,6 +12,7 @@ provides=(retroarch)
 conflicts=(retroarch)
 depends=(
   alsa-lib
+  flac
   libass.so
   libavcodec.so
   libavformat.so
@@ -23,6 +24,8 @@ depends=(
   libswscale.so
   libudev.so
   libusb-1.0.so
+  mbedtls
+  miniupnpc
   raspberrypi-firmware
   v4l-utils
   zlib
@@ -44,7 +47,7 @@ source=(
   sysusers.conf
   tmpfiles.conf
 )
-sha256sums=('1cb88c3e2e8a04a21e2e6a14b7b7a7eb2748d18e629e5e2063ca7a1a9a7dabb5'
+sha256sums=('f29b6dd9b18f874571803afac760b7fc99dc177dd079b38216b7576bd7d86dd4'
             '7857cff30c45721b66666828ca9edbb2923817c6c64591be3f58fe019277103e'
             '2e0fd9b160f66ed69630d562ecc0c7db06802d6373305e951f5ffecbdfc93cfb'
             'd4e4a5ac6c961eafb3edfc28186f75e471dc81e308791d57cfccae4f43de4dae'
@@ -62,11 +65,15 @@ build() {
   export PKG_CONFIG_PATH="/opt/vc/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
   ./configure \
-    --prefix='/usr' \
+    --prefix=/usr \
     --disable-al \
+    --disable-builtinflac \
+    --disable-builtinmbedtls \
+    --disable-builtinminiupnpc \
+    --disable-builtinzlib \
     --disable-cg \
-    --disable-jack \
     --disable-opengl1 \
+    --disable-jack \
     --disable-oss \
     --disable-pulse \
     --disable-qt \
@@ -77,17 +84,17 @@ build() {
     --disable-x11 \
     --enable-dispmanx \
     --enable-floathard \
-    --enable-opengles \
     --enable-opengl_core \
-    --enable-videocore
-
+    --enable-videocore \
+    --enable-opengles
   make
 }
 
 package() {
   cd RetroArch-${pkgver}
 
-  make DESTDIR=${pkgdir} install
+  make DESTDIR="${pkgdir}" install
+
   install -Dm 644 ${srcdir}/service ${pkgdir}/usr/lib/systemd/system/retroarch.service
   install -Dm 644 ${srcdir}/sysusers.conf ${pkgdir}/usr/lib/sysusers.d/retroarch.conf
   install -Dm 644 ${srcdir}/tmpfiles.conf ${pkgdir}/usr/lib/tmpfiles.d/retroarch.conf
