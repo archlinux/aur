@@ -2,7 +2,7 @@
 
 pkgname=ghdl-yosys-plugin-git
 pkgver=r123.ef286d8
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc='VHDL synthesis (based on ghdl and yosys)'
 url='https://github.com/ghdl/ghdl-yosys-plugin'
@@ -14,13 +14,11 @@ replaces=('ghdlsynth-beta-git')
 # By default, this AUR package is linked against community/yosys and won't work
 # with yosys-git. If you want to use the plugin with yosys-git, it might be
 # easiest to just build it locally.
-makedepends=('git' 'clang')
+makedepends=('git')
 depends=('ghdl-git' 'yosys')
 
 source=("git://github.com/ghdl/ghdl-yosys-plugin.git")
 sha256sums=('SKIP')
-# clang-9: error: unknown argument: '-fvar-tracking-assignments'
-options=(!debug)
 
 pkgver() {
 	cd "${srcdir}/ghdl-yosys-plugin"

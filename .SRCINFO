@@ -1,19 +1,17 @@
 pkgbase = ghdl-yosys-plugin-git
 	pkgdesc = VHDL synthesis (based on ghdl and yosys)
 	pkgver = r123.ef286d8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ghdl/ghdl-yosys-plugin
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = clang
 	depends = ghdl-git
 	depends = yosys
 	provides = ghdl-yosys-plugin
 	conflicts = ghdl-yosys-plugin
 	conflicts = ghdlsynth-beta
 	replaces = ghdlsynth-beta-git
-	options = !debug
 	source = git://github.com/ghdl/ghdl-yosys-plugin.git
 	sha256sums = SKIP
 
