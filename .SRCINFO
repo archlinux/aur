@@ -1,0 +1,29 @@
+pkgbase = jre8-adoptopenjdk-hotspot
+	pkgdesc = AdoptOpenJDK Java 8 full runtime environment
+	pkgver = 8.0.242.08
+	pkgrel = 1
+	url = https://adoptopenjdk.net/
+	install = install_jdk-adoptopenjdk.sh
+	arch = x86_64
+	license = custom
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = desktop-file-utils
+	depends = libxrender
+	depends = libxtst
+	depends = alsa-lib
+	optdepends = gtk2: for the Gtk+ 2 look and feel
+	optdepends = gtk3: for the Gtk+ 3 look and feel
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	source = https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u242-b08/OpenJDK8U-jre_x64_linux_hotspot_8u242b08.tar.gz
+	source = freedesktop-java.desktop
+	source = freedesktop-jconsole.desktop
+	source = freedesktop-jshell.desktop
+	sha256sums = 5edfaefdbb0469d8b24d61c8aef80c076611053b1738029c0232b9a632fe2708
+	sha256sums = 47a879c24f1cfe41c239c4d39458c08522e36cad8b1dd4f334b493f84a7a23a6
+	sha256sums = 5be900de884c6acd287ddb980721f1ed5bf7f584ebe90feacab3de3ceec3495a
+	sha256sums = 6731d03365296fa8609e483fcbcf6d93bf727aa67ce60bf4969da33c861337aa
+
+pkgname = jre8-adoptopenjdk-hotspot
+

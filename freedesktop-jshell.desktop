@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=AdoptOpenJDK Java 8 Shell
+Comment=AdoptOpenJDK Java 8 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-8-adoptopenjdk-hotspot/bin/jshell
+Terminal=true
+Type=Application
+Categories=Application;System;
