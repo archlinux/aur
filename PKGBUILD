@@ -13,7 +13,7 @@
 pkgbase=lib32-llvm-git
 pkgname=(lib32-llvm-git lib32-llvm-libs-git)
 pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit, git)"
-pkgver=11.0.0_r345732.678da7b109f
+pkgver=11.0.0_r346866.2effe8f5e72
 pkgrel=1
 arch=('x86_64')
 url='https://llvm.org/'
@@ -45,7 +45,7 @@ prepare() {
     
    cd llvm-project
     # remove code parts not needed to build this package
-    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc
+    rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc mlir
 
 }
 
@@ -89,10 +89,8 @@ check() {
 
 package_lib32-llvm-git() {
 depends=('lib32-llvm-libs-git' 'llvm-git')
-provides=(aur-lib32-llvm-git lib32-llvm=$pkgver-$pkgrel lib32-clang=$pkgver-$pkgrel 'lib32-clang-git'
-                'lib32-clang-svn'  'lib32-llvm-svn')
-conflicts=('lib32-llvm' 'lib32-clang' 
-                    'lib32-llvm-svn' 'lib32-clang-svn')
+provides=('aur-lib32-llvm-git' 'lib32-llvm' 'lib32-clang' 'lib32-clang-git')
+conflicts=('lib32-llvm' 'lib32-clang')
 
     cd _build
 
@@ -126,7 +124,7 @@ conflicts=('lib32-llvm' 'lib32-clang'
 
 package_lib32-llvm-libs-git() {
     depends=('lib32-gcc-libs' 'lib32-libffi' 'lib32-libxml2' 'lib32-ncurses' 'lib32-zlib')
-provides=(aur-lib32-llvm-libs-git lib32-llvm-libs=$pkgver-$pkgrel 'lib32-llvm-libs-svn')
+provides=('aur-lib32-llvm-libs-git' 'lib32-llvm-libs')
 conflicts=('lib32-llvm-libs')
     
     install -d "$pkgdir/usr/lib32"
