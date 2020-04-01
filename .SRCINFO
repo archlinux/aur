@@ -1,6 +1,6 @@
 pkgbase = vimv-git
 	pkgdesc = Batch-rename files using Vim
-	pkgver = r21.f011fe5
+	pkgver = r28.4152496
 	pkgrel = 1
 	url = https://github.com/thameera/vimv
 	arch = any
