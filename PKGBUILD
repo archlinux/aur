@@ -16,12 +16,12 @@ package() {
 	cd "${srcdir}/${pkgname}"
 
 	mkdir -p $pkgdir/usr/bin/
-	install -m 755 $pkgdir/freeman $pkgdir/usr/bin/freeman
+	install -m 755 freeman $pkgdir/usr/bin/freeman
 
 	mkdir -p $pkgdir/etc/
-	install -m 644 $pkgdir/freeman.json $pkgdir/etc/freeman.json
+	install -m 644 freeman.json $pkgdir/etc/freeman.json
 
 	mkdir -p $pkgdir/etc/freeman.d/
-	install -m 644 $pkgdir/freeman.d/* $pkgdir/etc/freeman.d/
+	install -m 644 freeman.d/* $pkgdir/etc/freeman.d/
 
 }
