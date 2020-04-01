@@ -115,7 +115,6 @@ prepare() {
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
-  exit
 }
 
 build() {
