@@ -5,68 +5,48 @@
 
 pkgname=mattermost
 pkgver=5.20.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Open source Slack-alternative in Golang and React'
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://mattermost.com'
 license=('AGPL' 'Apache')
-
-makedepends=('git' 'go-pie' 'jq' 'npm' 'nodejs')
+makedepends=('go-pie'
+             'jq'
+             'nodejs'
+             'npm')
 # Experiencing issues with gifsicle and mozjpeg on non x64 architectures.
 if [ "$CARCH" != 'x86_64' ]; then
     makedepends+=('gifsicle' 'mozjpeg')
 fi
-optdepends=(
-    'mariadb: SQL server storage'
-    'percona-server: SQL server storage'
-    'postgresql: SQL server storage'
-)
+optdepends=('mariadb: SQL server storage'
+            'percona-server: SQL server storage'
+            'postgresql: SQL server storage')
 backup=("etc/webapps/$pkgname/config.json")
-source=(
-    "$pkgname-server-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-server/archive/v$pkgver.tar.gz"
-    "$pkgname-webapp-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-webapp/archive/v$pkgver.tar.gz"
-    "mattermost-ldflags.patch"
-    "$pkgname.service"
-    "$pkgname.sysusers"
-    "$pkgname.tmpfiles"
-)
-sha512sums=('78f0461439fbfb29ea73275017b0a4390fd75fe190274c95cef5eb3cb089d01aaaa8f77c551488a04a6eb57384af8bf833dae58725d3862363981129ea5afa0c'
-            'a80b37b2c8d9e881ffdddf242e84fbf4b4bb25b5df511d15d79d5a06d989725c6bcf03e59e4ca3cae45440fa86adeecc9abcce61c95f836db12a0347db5d4078'
-            '48181d4c06d5e2486c5445ae56f56bb766283954f0a480e59440a98138487d291df59bd366c16ea58ecc5cdf758bad09c1db5b4523709f3aa4f356c7bc9e5e00'
-            '6fc1b41f1ddcc44dab3e1f6bc15b7566e7c33132346b7eb0bc91d9709b4cec89ae969a57a57b6097c75868af21f438c2affda5ba1507f485c8689ab8004efd70'
-            'f08d88fd91e91c8b9996cf33699f4a70d69c8c01783cf7add4781ee3c9c6596839e44c5c39f0ff39a836c6d87544eef179f51de0b037ec7f91f86bac8e24d7cc'
-            'fcde946cddf973b75a906edf8301ccbc2ecbca4adf1df73d13c5343491db5f511b9eb0e1f237087cb508398f2bcdbd46fa03e5b2ac88729cdaed4610512dd3e2')
+source=("$pkgname-server-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-server/archive/v$pkgver.tar.gz"
+        "$pkgname-webapp-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname-webapp/archive/v$pkgver.tar.gz"
+        "$pkgname-ldflags.patch"
+        "$pkgname.service"
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles")
+sha256sums=('f59ff61c9ba426c76c3196288085967061c14df072c33ad2f799524671988da5'
+            '082a7a5652e008ab52f66fe13b075a0d8a31cc73f6db099dfa2d4d646ebf7da5'
+            '7ec8231894fdac8cba7fdd1cede7b47dbce68dae6868bab35fd16f2ceda433ee'
+            '522f44f3a68f73e43d854421f40e18055f3256453bc00a2162956902d1e577f8'
+            'f7bd36f6d7874f1345d205c6dcb79af1804362fc977a658db88951a172d1dfa0'
+            '15220909751b960b811fc3eb3d1b8e2c0c5855d726d834461f667b5458d3bdad')
 
 prepare() {
-    # cp cannot copy from a symbolic link to the destination link itself
-    # a symbolic link located outside the first symbolic link folder location.
-    # e.g.
-    # mattermost-server is a symlink
-    # mattermost-webapp is a symlink
-    # we are in the folder mattermost-server and we want to execute
-    # cp -RL ../mattermost-webapp/dist/* dist/mattermost/client/
-    # this command will fail with
-    # cp: cannot stat '../mattermost-webapp/dist/*': No such file or directory
-    cd "$srcdir"
-    rm -rf "$pkgname"-server "$pkgname"-webapp
-    mv "$pkgname-server-$pkgver" "$pkgname"-server
-    mv "$pkgname-webapp-$pkgver" "$pkgname"-webapp
-
-    mkdir -p src/github.com/"$pkgname"
-    cd src/github.com/"$pkgname"
-
-    # Remove previous platform folders if any previous clone was effective
-    rm -f "$pkgname"-server
-    rm -f "$pkgname"-webapp
-
     # Create the directory structure to match Go namespaces
-    ln -s "$srcdir"/"$pkgname"-server "$pkgname"-server
-    ln -s "$srcdir"/"$pkgname"-webapp "$pkgname"-webapp
-    cd "$pkgname"-server
+    mkdir -p "src/github.com/$pkgname"
+    cd "src/github.com/$pkgname"
+
+    ln -sf "$srcdir/$pkgname-server-$pkgver" "$pkgname-server"
+    ln -sf "$srcdir/$pkgname-webapp-$pkgver" "$pkgname-webapp"
+    cd "$pkgname-server"
 
     # Pass Arch Linux's Go compilation flags to Mattermost in order to take
     # into account advanced features like PIE.
-    patch < "$srcdir"/mattermost-ldflags.patch
+    patch < "$srcdir/$pkgname-ldflags.patch"
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
@@ -114,13 +94,13 @@ prepare() {
 
     # Enforce build hash to Arch Linux as well for the field corresponding to
     # the webapp.
-    cd "$srcdir"/"$pkgname"-webapp
+    cd "$srcdir/$pkgname-webapp"
     sed -r -i webpack.config.js \
         -e "s/^(\s*)COMMIT_HASH:(.*),$/\1COMMIT_HASH: JSON.stringify\(\"$pkgver-$pkgrel Arch Linux \($CARCH\)\"\),/"
 
     # Link against system gifsicle
     if [ "$CARCH" != 'x86_64' ]; then
-        gifsicleNpm="$srcdir"/$pkgname-webapp/node_modules/gifsicle/vendor/gifsicle
+        gifsicleNpm="$srcdir/$pkgname-webapp/node_modules/gifsicle/vendor/gifsicle"
         gifsicleNpm="${gifsicleNpm//\//\\/}"
         gifsicleSystem="$(which gifsicle)"
         gifsicleSystem="${gifsicleSystem//\//\\/}"
@@ -130,42 +110,41 @@ prepare() {
 }
 
 build() {
-    # No need to build mattermost-webapp as the server is taking care of this
-    # step via its build-client make instruction.
-
-    cd "$srcdir"/src/github.com/"$pkgname/$pkgname"-server
-    # Prevent the build to crash when some dependencies are not met or
-    # outdated. This cleans the webapp as well (cf. mattermost-server/Makefile,
-    # clean target).
-    make clean
-    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make build-linux
-    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make build-client
-    GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel make package
+    cd "$srcdir/src/github.com/$pkgname/$pkgname-server"
+    export GOPATH="$srcdir" BUILD_NUMBER=$pkgver-$pkgrel
+    make build-linux
+    make build-client
+    make package
 }
 
 package() {
-    # Init directory hierarchy
-    install -dm755 \
-        "$pkgdir"/usr/bin \
-        "$pkgdir"/usr/share/webapps \
-        "$pkgdir"/etc/webapps \
-        "$pkgdir"/usr/share/doc/"$pkgname"
+    cd "src/github.com/$pkgname/$pkgname-server"
 
-    # Copy mattermost build to destination
-    cd "$srcdir"/src/github.com/"$pkgname/$pkgname"-server
-    cp -a dist/"$pkgname" "$pkgdir"/usr/share/webapps/
+    install -dm755 "$pkgdir/usr/share/webapps"
+    cp -a "dist/$pkgname" "$pkgdir/usr/share/webapps/"
 
-    cd "$pkgdir"/usr/share/webapps/"$pkgname"
+    install -Dm755 -t "$pkgdir/usr/share/webapps/$pkgname/bin/" "bin/$pkgname"
+    install -dm755 "$pkgdir/usr/bin"
+    ln -sf "/usr/share/webapps/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+
+    pushd "$srcdir"
+    install -Dm644  -t "$pkgdir/usr/lib/systemd/system/" "$pkgname.service"
+    install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+    install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+
+    pushd "$pkgdir/usr/share/webapps/$pkgname"
 
     # Move logs to right location
     rm -rf logs
-    ln -s /var/log/"$pkgname" logs
+    ln -s "/var/log/$pkgname" logs
 
     # Readme and docs
-    mv NOTICE.txt README.md "$pkgdir"/usr/share/doc/"$pkgname"
+    install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+    mv NOTICE.txt README.md "$pkgdir/usr/share/doc/$pkgname"
 
     # Config file management
     cp config/default.json config/config.json
+
     # Hashtags are needed to escape the Bash escape sequence. jq will consider
     # it as a comment and won't interpret it.
     jq '.FileSettings.Directory |= $mmVarLib + "/files/" | # \
@@ -175,8 +154,9 @@ package() {
        --arg mmVarLib '/var/lib/mattermost' \
        config/config.json > config/config-new.json
     mv config/config-new.json config/config.json
-    mv config "$pkgdir"/etc/webapps/"$pkgname"
-    ln -s /etc/webapps/"$pkgname" config
+    install -dm755 "$pkgdir/etc/webapps"
+    mv config "$pkgdir/etc/webapps/$pkgname"
+    ln -sf "/etc/webapps/$pkgname" config
 
     # Avoid access denied when Mattermost tries to rewrite its asset data
     # (root.html, manifest.json and *.css) during runtime. Reuse var tmpfile
@@ -184,25 +164,20 @@ package() {
     # cf. https://github.com/mattermost/mattermost-server/blob/f8d31def8eb463fcd866ebd08f3e6ef7a24e2109/utils/subpath.go#L48
     # cf. https://wiki.archlinux.org/index.php/Web_application_package_guidelines
     install -dm700 "$pkgdir"/var/lib/mattermost/client
+
     # We want recursivity as Mattermost wants to modify files in
     # client/files/code_themes/ as well.
     # Not recursive: for file in root.html manifest.json *.css; do
-    find client -type f -iname 'root.html' -o -iname 'manifest.json' -o -iname '*.css' | while IFS= read -r fileAndPath; do
-        install -dm700 "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
-        install -m700 "$fileAndPath" "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
-        rm "$fileAndPath"
-        ln -s /var/lib/mattermost/"$fileAndPath" "$fileAndPath"
-    done
+    find client -type f -iname 'root.html' -o -iname 'manifest.json' -o -iname '*.css' |
+        while IFS= read -r fileAndPath; do
+            install -dm700 "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
+            install -m700 "$fileAndPath" "$pkgdir"/var/lib/mattermost/"${fileAndPath%/*}"
+            rm "$fileAndPath"
+            ln -s /var/lib/mattermost/"$fileAndPath" "$fileAndPath"
+        done
+
     # As we are using install, only the leaves have their permissions
     # redefined. Some folders in the hierarchy might not have the right
     # permissions. Fix this.
     chmod -R 700 "$pkgdir"/var/lib/mattermost/
-
-    # Install package config
-    cd "$srcdir"
-    install -Dm755 bin/"$pkgname" "$pkgdir"/usr/share/webapps/"$pkgname/bin/$pkgname"
-    ln -s /usr/share/webapps/"$pkgname/bin/$pkgname" "$pkgdir"/usr/bin/"$pkgname"
-    install -Dm644 "$pkgname".service -t "$pkgdir"/usr/lib/systemd/system/
-    install -Dm644 "$pkgname".sysusers "$pkgdir"/usr/lib/sysusers.d/"$pkgname".conf
-    install -Dm644 "$pkgname".tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/"$pkgname".conf
 }
