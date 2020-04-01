@@ -33,7 +33,7 @@ pkgbase = ungoogled-chromium-bin
 	provides = chromium
 	conflicts = chromium
 	conflicts = ungoogled-chromium
-	source = ungoogled-chromium-80.0.3987.149.pkg.tar.xz::https://github.com/Chexier/ungoogled-chromium-binaries/releases/download/80.0.3987.149-1/ungoogled-chromium-80.0.3987.149-1-x86_64.pkg.tar.xz
+	source = https://github.com/Chexier/ungoogled-chromium-binaries/releases/download/80.0.3987.149-1/ungoogled-chromium-80.0.3987.149-1-x86_64.pkg.tar.xz
 	md5sums = b27f0d3163f8b8db1549f7c87673cfa3
 
 pkgname = ungoogled-chromium-bin
