@@ -1,0 +1,13 @@
+diff --git a/open_cobol_ide/system.py b/open_cobol_ide/system.py
+index 5d1e50b..9e072c2 100644
+--- a/open_cobol_ide/system.py
++++ b/open_cobol_ide/system.py
+@@ -16,7 +16,7 @@ windows = platform.system() == 'Windows'
+ darwin = platform.system() == 'Darwin'
+ linux = platform.system() == 'Linux'
+ if linux:
+-    ubuntu = platform.linux_distribution()[0].lower() == 'ubuntu'
++    ubuntu = True
+ else:
+     ubuntu = False
+ 
