@@ -1,29 +1,26 @@
-# Maintainer: William Gathoye <william + aur at gathoye dot be>
-# Maintainer: Aleksandar Trifunović <akstrfn at gmail dot com>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: William Gathoye <william + aur at gathoye dot be>
+# Contributor: Aleksandar Trifunović <akstrfn at gmail dot com>
 # Contributor: Jan Was <janek dot jan at gmail dot com>
 # Contributor: Bruno Pagani <archange at archlinux dot org>
 
 pkgname=mattermost-desktop
-pkgver=4.3.2
+pkgver=4.4.0
 _electronMajorVersion=5
 pkgrel=1
-pkgdesc="Mattermost Desktop application for Linux"
-arch=('i686' 'x86_64')
-url="https://github.com/mattermost/desktop"
+pkgdesc='Mattermost Desktop application for Linux'
+arch=('x86_64' 'i686')
+url="https://github.com/${pkgname/-//}"
 license=('Apache')
 depends=("electron${_electronMajorVersion}")
-makedepends=('npm' 'git' 'jq')
+makedepends=('git' 'jq' 'npm')
 #optdepends=('hunspell: spell checking')
-source=(
-    "${pkgname}-${pkgver}.tar.gz"::"${url}/archive/${pkgver}.tar.gz"
-    "${pkgname}.sh"
-    "${pkgname/-/.}"
-)
-sha512sums=(
-    '40e871e0699b1e0ba7670024a368498d7477b5716ff3523ab04bb9c1567bb577cfc220071f6d0228ec2b1fdfe4caeaeba859fe47faf47c76e8f0dd135ef3cf78'
-    '717a463d47cee1e70f210a78c6d72f64e62de36921b5805888ec48ade0cd037a250567c677b1a39243af82144d556cb708d8d79eb0b13499e75d3dc4bf533d98'
-    'b8f24df883b71df4177155246fd5858ad785f75be4f7dfc674380674b48a45342b1f5ee217a20708f74ed8d2119d837bae4a3fd48d1b62d60d55644e36411266'
-)
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+        "${pkgname}.sh"
+        "${pkgname/-/.}")
+sha256sums=('d1c3f2540f0c2ffe59ef612d5b3d8fb04de3fce8174891ed6a7ab0d0750b1aff'
+            '124157011bf7a9ddedebe4c28440f9514d6adfa0da711e12048a3ce6c4697e6a'
+            'e628268d3393aac0d5b7237c6b8818d2e362c373f99874a19171bf96a25e4ffa')
 
 prepare() {
     cd "desktop-${pkgver}"
