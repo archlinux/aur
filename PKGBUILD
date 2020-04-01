@@ -2,12 +2,12 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=r157.a4d20d4d03
+pkgver=r174.a2dd171343
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
-license=(MIT)
+license=(GPL3)
 source=("git+$url")
 sha256sums=('SKIP')
 conflicts=(greetd)
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
   cd greetd
-  cargo build --release
+  RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
   cd man
   for i in *.scd
   do
