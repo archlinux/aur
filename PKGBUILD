@@ -20,7 +20,7 @@ optdepends=('pepper-flash: support for Flash content'
             'libva-vdpau-driver: for hardware video acceleration with NVIDIA GPUs')
 conflicts=("$_pkgname" "$_pkgname2")
 provides=("$_pkgname")
-source=("$_pkgname2-$pkgver.pkg.tar.xz::https://github.com/Chexier/ungoogled-chromium-binaries/releases/download/80.0.3987.149-1/ungoogled-chromium-80.0.3987.149-1-x86_64.pkg.tar.xz")
+source=("https://github.com/Chexier/ungoogled-chromium-binaries/releases/download/80.0.3987.149-1/ungoogled-chromium-80.0.3987.149-1-x86_64.pkg.tar.xz")
 md5sums=('b27f0d3163f8b8db1549f7c87673cfa3')
 
 # Copy files
