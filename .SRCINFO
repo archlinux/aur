@@ -1,6 +1,6 @@
 pkgbase = ddisasm-git
 	pkgdesc = A fast and accurate disassembler
-	pkgver = v0.1.1.r220.gd9ffe7f
+	pkgver = v0.1.1.r628.gcd19fb5
 	pkgrel = 1
 	url = https://github.com/grammatech/ddisasm
 	arch = x86_64
