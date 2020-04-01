@@ -6,7 +6,7 @@
 # Contributor: Rose Ames <rose at happyspork dot com>
 
 pkgname=zulip-desktop
-pkgver=4.0.3
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ depends=(libxkbfile gtk3 libxss nss)
 makedepends=(npm python2)
 source=($pkgname-$pkgver.tar.gz::https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.desktop)
-sha512sums=('edce6f4ed470e29cc22f493c67e4898ecd1f660f664403b8be33de3036b89323ec4a6528c2e4a34175ec6866a6d37f79d962ba09054c6e47aaf6ad3de2efa475'
+sha512sums=('c2860f698099643cbde53402a64c36593557d951556a35d01a810b78f4f015477de84f1c96b5345a82562f7554fc5306f20492c6ad444c44571ec218147aa85c'
             '7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5')
 
 build() {
