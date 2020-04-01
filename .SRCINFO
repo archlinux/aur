@@ -1,11 +1,11 @@
 pkgbase = python-napalm-git
 	pkgdesc = Network Automation and Programmability Abstraction Layer with Multivendor support
 	pkgver = r4257.08e41b8f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/napalm-automation/napalm
 	arch = any
 	license = Apache
-	checkdepends = python-tox
+	makedepends = git
 	makedepends = python-setuptools
 	depends = python
 	depends = python-cffi
