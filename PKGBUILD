@@ -9,6 +9,8 @@ arch=('i686' 'x86_64' 'pentium4')
 url="http://www.freedesktop.org/wiki/Software/xinput_calibrator/"
 license=('MIT')
 source=("${_pkgname}::git+https://github.com/kreijack/${_pkgname}.git#branch=devel")
+provides=('xinput_calibrator')
+conflicts=('xinput_calibrator' 'xinput_calibrator-git')
 md5sums=('SKIP')
 
 pkgver() {
