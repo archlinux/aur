@@ -14,9 +14,7 @@ pkgbase = lib32-llvm-git
 	makedepends = ninja
 	makedepends = python
 	source = llvm-project::git+https://github.com/llvm/llvm-project.git
-	source = enable-SSP-and-PIE-by-default.patch
 	sha512sums = SKIP
-	sha512sums = de5dfed73b824c6de8820a90157c8709a5c4ea36a4044b097e0067841f696b9bd507ef29bab1dd321efcf3d103fc3cd968f385c90ad37c9ddfcfb5ffe1a8881a
 
 pkgname = lib32-llvm-git
 	depends = lib32-llvm-libs-git

@@ -19,10 +19,8 @@ arch=('x86_64')
 url='https://llvm.org/'
 license=('custom:Apache 2.0 with LLVM Exception')
 makedepends=('cmake' 'lib32-gcc-libs' 'git' 'lib32-libffi' 'lib32-libxml2' 'lib32-zlib' 'ninja' 'python')
-source=("llvm-project::git+https://github.com/llvm/llvm-project.git"
-                'enable-SSP-and-PIE-by-default.patch')
-sha512sums=('SKIP'
-            'de5dfed73b824c6de8820a90157c8709a5c4ea36a4044b097e0067841f696b9bd507ef29bab1dd321efcf3d103fc3cd968f385c90ad37c9ddfcfb5ffe1a8881a')
+source=("llvm-project::git+https://github.com/llvm/llvm-project.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd llvm-project/llvm
@@ -48,9 +46,7 @@ prepare() {
    cd llvm-project
     # remove code parts not needed to build this package
     rm -rf debuginfo-tests libclc libcxx libcxxabi libunwind lld lldb llgo openmp parallel-libs polly pstl libc
-    
-    cd clang
-#    patch --forward --strip=1 --input="$srcdir"/enable-SSP-and-PIE-by-default.patch
+
 }
 
 build() {
