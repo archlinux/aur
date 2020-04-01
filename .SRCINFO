@@ -8,6 +8,7 @@ pkgbase = ninjam-client
 	arch = x86_64
 	license = GPL
 	makedepends = git
+	makedepends = jack
 	depends = gcc
 	depends = ncurses
 	depends = alsa-lib
