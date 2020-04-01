@@ -2,28 +2,29 @@
 
 # All my PKGBUILDs are managed at https://github.com/schra/pkgbuilds
 
-_name=sphinx-math-dollar
-pkgname="python-$_name"
+_name=python-sphinx-math-dollar
+pkgname=$_name
 pkgver=1.1.1
-pkgrel=1
+_mainfolder=sphinx-math-dollar-$pkgver
+pkgrel=2
 pkgdesc='Sphinx extension to let you write LaTeX math using $$'
-arch=('any')
-url="https://github.com/sympy/$_name"
-license=('MIT')
-depends=('python')
-makedepends=('python-setuptools')
-source=("git+$url.git#tag=$pkgver")
-sha256sums=('SKIP')
+arch=(any)
+url=https://github.com/sympy/sphinx-math-dollar
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
+sha256sums=('646bb3b7deb1b50815314c7ab5ee03f1745557eb5a4a5510b4285ae775457a39')
 
 build() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_mainfolder"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/$_name"
+  cd "$srcdir/$_mainfolder"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
   # the setup.py also installs tests, thus remove them
-  rm -R "$pkgdir/usr/lib/python3.8/site-packages/sphinx_math_dollar/tests/"
+  rm -R "$pkgdir"/usr/lib/python3.*/site-packages/sphinx_math_dollar/tests/
 }

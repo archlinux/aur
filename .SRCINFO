@@ -1,14 +1,14 @@
 pkgbase = python-sphinx-math-dollar
 	pkgdesc = Sphinx extension to let you write LaTeX math using $$
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sympy/sphinx-math-dollar
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = git+https://github.com/sympy/sphinx-math-dollar.git#tag=1.1.1
-	sha256sums = SKIP
+	source = python-sphinx-math-dollar-1.1.1.tar.gz::https://github.com/sympy/sphinx-math-dollar/archive/1.1.1.tar.gz
+	sha256sums = 646bb3b7deb1b50815314c7ab5ee03f1745557eb5a4a5510b4285ae775457a39
 
 pkgname = python-sphinx-math-dollar
 
