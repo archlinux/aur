@@ -12,18 +12,18 @@ pkgdesc='Mattermost Desktop application for Linux'
 arch=('x86_64' 'i686')
 url="https://github.com/${pkgname/-//}"
 license=('Apache')
-depends=("electron${_electronMajorVersion}")
+depends=("electron$_electronMajorVersion")
 makedepends=('git' 'jq' 'npm')
 #optdepends=('hunspell: spell checking')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
-        "${pkgname}.sh"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "$pkgname.sh"
         "${pkgname/-/.}")
 sha256sums=('d1c3f2540f0c2ffe59ef612d5b3d8fb04de3fce8174891ed6a7ab0d0750b1aff'
             '124157011bf7a9ddedebe4c28440f9514d6adfa0da711e12048a3ce6c4697e6a'
             'e628268d3393aac0d5b7237c6b8818d2e362c373f99874a19171bf96a25e4ffa')
 
 prepare() {
-    cd "desktop-${pkgver}"
+    cd "desktop-$pkgver"
 
     # Depending on the architecture, in order to accelerate the build process,
     # removes the compilation of ia32 or x64 build.
@@ -40,8 +40,8 @@ prepare() {
     mv electron-builder-new.json electron-builder.json
 
     # Prepend to system electron in order to avoid an unneeded download.
-    local electronDist="/usr/lib/electron${_electronMajorVersion}"
-    local electronVersion="$(<${electronDist}/version)"
+    local electronDist="/usr/lib/electron$_electronMajorVersion"
+    local electronVersion="$(<"$electronDist"/version)"
     jq '{"electronDist": $electronDist, "electronVersion": $electronVersion} + .' \
         --arg electronDist "$electronDist" \
         --arg electronVersion "$electronVersion" \
@@ -66,22 +66,22 @@ prepare() {
     # internet connection during build().
     # We don't need to run "npm run build" because that target is run by "npm
     # run package:linux" any way.
-    npm install --cache "${srcdir}/npm-cache"
+    npm install --cache "$srcdir/npm-cache"
 }
 
 package() {
-    cd "desktop-${pkgver}"
-    npm run package:linux --cache "${srcdir}/npm-cache"
+    cd "desktop-$pkgver"
+    npm run package:linux --cache "$srcdir/npm-cache"
 
-    install -d "${pkgdir}/usr/lib"
+    install -d "$pkgdir/usr/lib"
     # The wildcard in the unpackaged is needed for i686 or ARM platforms.
-    install -Dm644 release/linux*unpacked/resources/app.asar "${pkgdir}/usr/lib/${pkgname}/app.asar"
+    install -Dm644 release/linux*unpacked/resources/app.asar "$pkgdir/usr/lib/$pkgname/app.asar"
 
-    install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 resources/linux/icon.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 resources/linux/icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
 
-    cd "${srcdir}"
-    install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 ${pkgname/-/.} -t "${pkgdir}/usr/share/applications/"
+    cd "$srcdir"
+    install -Dm755 "$pkgname".sh "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "${pkgname/-/.}" -t "$pkgdir/usr/share/applications/"
 }
 
