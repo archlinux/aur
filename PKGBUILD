@@ -12,7 +12,7 @@ pkgdesc="A powerful and productive integrated development environment (IDE) for 
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs' 'r>=3.0.1' hunspell-en_US mathjax2 pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns soci)
+depends=('boost-libs' 'r>=3.0.1' hunspell-en_US mathjax2 pandoc clang qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci)
 makedepends=(git 'cmake>=3.1.0' 'boost' desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
