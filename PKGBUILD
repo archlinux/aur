@@ -3,7 +3,7 @@
 pkgname=slic3r-dev
 _pkgver=1.3.1_dev
 pkgver=$_pkgver
-pkgrel=2
+pkgrel=3
 pkgdesc="Development build of Slic3r, a 3D Printer Toolpath Generator"
 arch=('x86_64')
 url="https://slic3r.org"
