@@ -1561,3 +1561,16 @@ Tue Mar 17 21:03:04 2020 +0100
      2020-03-16 e85ab41e actionless fix(theme_file: save_colorscheme): don't save errors
      2020-03-16 1af8308f actionless feat(preview): load preview parts for still available plugins if other plugins are not installed
      2020-03-16 f1fe6c9d actionless feat(colors_list, main: open_theme): show error when there are no enough of needed plugins installed
+
+
+Thu Apr 2 00:36:57 2020 +0200
+-------------------------------------------------
+1.13.2          Release 1.13.2
+    
+    Notable changes:
+     2020-04-02 1da68ee2 actionless chore(plugins: theme: materia): update submodule (v20200320 + 36 commits)
+    linked-buttons-2 2020-03-21 a8502449 actionless chore(main: headerbar; shortcuts): rebind Ctrl+D to Shfit+Ctrl+S
+     2020-03-21 8cb265c9 actionless chore(main: headerbar; shortcuts): s/Export Terminal/Export Xresources/, also rebind Ctrl+T to Ctrl+X (re: #289)
+     2020-03-21 102566c9 actionless Merge branch 'linked-buttons' of github.com:themix-project/oomox into linked-buttons-2
+     2020-03-20 ec9d2b9f actionless chore(plugins: base16): update submodule (sync mirror with base16 project)
+     2020-03-17 aad2b8e4 actionless chore(packaging: arch, desktop): s/Oomox/Themix/
