@@ -7,6 +7,9 @@ pkgbase = xinput_calibrator-kreijack-git
 	arch = x86_64
 	arch = pentium4
 	license = MIT
+	provides = xinput_calibrator
+	conflicts = xinput_calibrator
+	conflicts = xinput_calibrator-git
 	source = xinput_calibrator::git+https://github.com/kreijack/xinput_calibrator.git#branch=devel
 	md5sums = SKIP
 
