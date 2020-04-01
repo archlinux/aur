@@ -1,0 +1,18 @@
+pkgbase = python-tensorflow-graphics-git
+	pkgdesc = Differentiable Graphics Layers for TensorFlow
+	pkgver = r265.e397941
+	pkgrel = 1
+	url = https://github.com/tensorflow/graphics
+	arch = any
+	license = APACHE
+	makedepends = python-setuptools
+	depends = python-tensorflow
+	depends = python-numpy
+	depends = python-tensorflow-addons-cuda-git
+	depends = python-matplotlib
+	optdepends = openexr: EXR loader
+	source = git+https://github.com/tensorflow/graphics.git
+	sha256sums = SKIP
+
+pkgname = python-tensorflow-graphics-git
+
