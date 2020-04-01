@@ -1,7 +1,7 @@
 pkgbase = ecodms-client
 	pkgdesc = Document Management Software
 	pkgver = 18.09.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.ecodms.de/index.php/de/
 	install = ecodms-client.install
 	arch = x86_64
