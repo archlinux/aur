@@ -1,6 +1,6 @@
 pkgbase = python-tekore
 	pkgdesc = Client for the Spotify Web API
-	pkgver = 1.3.0
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/felix-hilden/tekore
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-tekore
 	depends = python>=3.7
 	depends = python-requests>=2.19
 	depends = python-httpx
-	source = https://github.com/felix-hilden/tekore/archive/v1.3.0.tar.gz
-	md5sums = 25b6b49edd634e882f9344590682ae30
+	source = https://github.com/felix-hilden/tekore/archive/v1.5.0.tar.gz
+	md5sums = d4ad4959e01707f01dc58fa6bb06d005
 
 pkgname = python-tekore
 
