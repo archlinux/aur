@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	port := flag.String("p", "8080", "port to serve on")
+	port := flag.String("p", "8079", "port to serve on")
 	directory := flag.String("d", "/var/cache/pacman/pkg/", "the directory of static file to host")
 	flag.Parse()
 

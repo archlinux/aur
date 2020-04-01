@@ -2,10 +2,9 @@
 pkgname=readonly-cache
 pkgname1=readonly-cache
 pkgdesc="https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Read-only_cache + golang http server & more"
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 arch=('any')
-conflicts=(skyminer)
 license=()
 makedepends=(go)
 source=(
@@ -14,14 +13,16 @@ source=(
 "readonly-cache.sh"
 "readonly-cache.service"
 "readonlycache.go"
-)
-sha256sums=('d476b95a400c9fc252f5402d9e911c36ff26675c9ee68e42f4b4696c65c9dd44'
-            '3c7a25664ecaaef35a1b48081f350cd50d571d81e514861aa54c8b84d432efd4'
-            '64153502b466979a987ba074bb3881095846d1af35de9b71eed029389ac085f8'
+"PKGBUILD.sig")
+sha256sums=('cd1c599b936777fee54a2c36e80e176b886e68dd5e88173a564813431824756f'
+            'ffd37e7bf091d51b45ea8ae546c94ee9353088ba36c722e4a09e55ecc7edec88'
+            '78818a89c5ea6fa96d59f7daddbdf05eda92f1ca211c29957331609b0017a308'
             'ccfe41daa38a45b0498cc6dd9f6636db4a7e835ee5c48c3e952cac038006b5f4'
-            '8aff1be292e5102b3ff4418af4a3d758b3c68d5fca89c7ca6ba18631bb7b180b')
+            '49d2b91d3eebc90ff5b9a7f5beec69e6c15791aec43dc318ac1855226fa7fa7a'
+            'SKIP')
 
 build() {
+  gpg --verify ../PKGBUILD.sig ../PKGBUILD
   go build readonlycache.go
 }
 

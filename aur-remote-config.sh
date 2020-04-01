@@ -17,7 +17,7 @@ if [ ! -f /etc/pacman.d/mirrorlist-bak ]; then
 fi
 
 #set the AURLOCAL IP as a mirror for pacman to retrieve updates from
-echo  "$(echo "Server = http://$AURLOCAL:8080" | cat - /etc/pacman.d/mirrorlist-bak)" > /root/mirrorlist
+echo  "$(echo "Server = http://$AURLOCAL:8079" | cat - /etc/pacman.d/mirrorlist-bak)" > /root/mirrorlist
 mv /root/mirrorlist /etc/pacman.d/mirrorlist
 
 #backup pacman.conf
@@ -30,6 +30,6 @@ cat /etc/pacman.conf-bak > /root/pacman.conf
 echo -e "
 [aur-local]
 SigLevel = PackageOptional
-Server = http://$AURLOCAL:8080
+Server = http://$AURLOCAL:8079
 " >> /root/pacman.conf
 mv /root/pacman.conf /etc/pacman.conf

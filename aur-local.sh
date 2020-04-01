@@ -7,6 +7,9 @@ fi
 repo-add -n /var/lib/pacman/sync/aur-local.db.tar.gz /home/*/.cache/yay/*/*.pkg.tar.xz
 ln -f /var/lib/pacman/sync/* /var/cache/pacman/pkg/
 ln -f /home/*/.cache/yay/*/*.pkg.tar.xz /var/cache/pacman/pkg/
+#new extension / archive format
+ln -f /home/*/.cache/yay/*/*.pkg.tar.zst /var/cache/pacman/pkg/
+
 
 #add this to pacan.conf
 ##[aur-local]
@@ -15,4 +18,4 @@ ln -f /home/*/.cache/yay/*/*.pkg.tar.xz /var/cache/pacman/pkg/
 
 
 #Add this to /etc/pacman.d/mirrorlist
-#Server = http://<ip-of-other-machine-on-lan>:8080
+#Server = http://<ip-of-other-machine-on-lan>:8079
