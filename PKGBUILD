@@ -8,7 +8,7 @@ url="https://unitystation.org/"
 license=('AGPL v3')
 install=stationhub.install
 options=(staticlibs)
-source=("https://unitystationfile.b-cdn.net/StationHubLinux.zip"
+source=("http://unitystationfile.b-cdn.net/StationHubLinux.zip"
         "stationhub.desktop"
         "stationhub.png")
 sha512sums=('SKIP'
