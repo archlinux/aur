@@ -47,7 +47,7 @@ prepare () {
 	cd ${srcdir}/$_gitname
 	# Patching SOCI
 	patch -p1 < ${srcdir}/soci.patch
-	patch -p1 < ${srcdir}/rstudio_boost.patch
+	# patch -p1 < ${srcdir}/rstudio_boost.patch
 
 	msg "Extracting dependencies..."
 	    cd "${srcdir}/${_gitname}/src/gwt"
