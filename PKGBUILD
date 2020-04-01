@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-no-extras
-pkgver=80.0.3987.149
+pkgver=80.0.3987.162
 pkgrel=1
 _pkgname=chromium
 _launcher_ver=6
@@ -37,7 +37,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-skia-harmony.patch)
-sha256sums=('50bedde7932921e375b521ceab8989be134a8d937751847e9d9287f7e0a02c1e'
+sha256sums=('ac5577162cf10badd2a9c44f97f15c31ebb98bf64b3ff2e98876e55bbbc20e20'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             '0a8d1af2a3734b5f99ea8462940e332db4acee7130fe436ad3e4b7ad133e5ae5'
             '21f631851cdcb347f40793485b168cb5d0da65ae26ae39ba58d624c66197d0a5'
