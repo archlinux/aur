@@ -2,7 +2,7 @@
 Description=Fast, cost-effective and scalable time series database
 Documentation=https://victoriametrics.github.io/
 After=network.target
-Require=network.target
+Requires=network.target
 
 [Service]
 User=victoriametrics
