@@ -1,37 +1,50 @@
+# Maintainer: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
 # Contributor: David Birks <david@tellus.space>
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 # Contributor: dpeukert
-# Contributor: Gabriel Saillard (GitSquared) <gabriel@saillard.dev>
 
 pkgname=marktext
 pkgver=0.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
-url='https://github.com/marktext/marktext'
+url='https://marktext.app'
 license=('MIT')
-provides=('marktext')
-conflicts=('marktext-bin' 'marktext-git')
-depends=('libxkbfile')
-makedepends=('nodejs' 'npm' 'python2' 'tar')
-source=("https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz")
-sha512sums=('b2ef1fa46cef87bac056e2655565122fba323d0af38166654e078c538de2297949ed8fe1d222791734341f30e86be1b3644e2dd4839d1de216f40af25a10165a')
-install='marktext.install'
+depends=('electron'
+         'libxkbfile'
+         'libsecret')
+makedepends=('jq'
+             'moreutils'
+             'nodejs'
+             'node-gyp'
+             'yarn')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
+        "$pkgname.sh")
+sha256sums=('a00aa0caf26ab6e24e6cd5fef2a2a03e2ef46d0bf185c6971d9f00207223633e'
+            '5716d0879a683d390caf8c90a9b373cc536256821d80498d0f983a1ac0f364ab')
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
-    npx yarn --frozen-lockfile
+    cd "$pkgname-$pkgver"
+    yarn --cache-folder "$srcdir" install --frozen-lockfile --ignore-scripts
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    node .electron-vue/build.js && npx electron-builder build --dir --linux pacman
+    cd "$pkgname-$pkgver"
+    yarn --cache-folder "$srcdir" run build:bin
 }
 
 package() {
-    tar xf ${pkgname}-${pkgver}/build/marktext-*.pacman -C "${pkgdir}"
-
-    rm -f "${pkgdir}/.INSTALL" "${pkgdir}/.MTREE" "${pkgdir}/.PKGINFO"
-
-    chmod 755 "${pkgdir}/opt/Mark Text/marktext"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "../$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 -t "$pkgdir/usr/lib/$pkgname/resources/" build/linux-unpacked/resources/app.asar
+    cp -a build/linux-unpacked/resources/{app.asar.unpacked,hunspell_dictionaries} "$pkgdir/usr/lib/$pkgname/resources/"
+    install -Dm755 -t "${pkgdir}/usr/share/applications/" resources/linux/marktext.desktop
+    install -Dm755 -t "${pkgdir}/usr/share/metainfo/" resources/linux/marktext.appdata.xml
+    install -Dm644 resources/icons/icon.png "${pkgdir}/usr/share/pixmaps/marktext.png"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+    cp -a docs "$pkgdir/usr/share/doc/$pkgname/"
+    pushd "resources/icons"
+    find -name maktext.png -exec install -Dm644 {} "$pkgdir/usr/share/icons/hicolor/{}" \;
 }
