@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.meshmixer.com"
 license=('proprietary')
 provides=($pkgname)
-depends=('wine')
+depends=(wine winetricks)
 makedepends=(p7zip imagemagick icoutils)
 source=(meshmixer
 	meshmixer.desktop

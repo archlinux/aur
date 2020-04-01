@@ -9,6 +9,7 @@ pkgbase = meshmixer-wine
 	makedepends = imagemagick
 	makedepends = icoutils
 	depends = wine
+	depends = winetricks
 	provides = meshmixer-wine
 	noextract = Autodesk_Meshmixer_v${_pkgver}_Win64.exe
 	options = !strip
