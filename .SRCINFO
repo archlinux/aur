@@ -1,6 +1,6 @@
 pkgbase = magic-git
 	pkgdesc = A VLSI layout system
-	pkgver = 8.2.r713.bab2aa1
+	pkgver = 8.2.r750.aecda68
 	pkgrel = 1
 	url = http://opencircuitdesign.com/magic/
 	arch = i686
