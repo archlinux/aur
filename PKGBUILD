@@ -3,6 +3,7 @@
 #
 
 pkgname=blastem-pre
+_name="blastem"
 pkgver=0.6.3
 pkgrel=1
 pkgdesc="BlastEm is an open source, higly accurate emulator for the Genesis/Megadrive that runs on modest hardware."
@@ -28,20 +29,20 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
-    mkdir -p "$pkgdir/usr/games/$pkgname"
+    mkdir -p "$pkgdir/usr/games/blastem"
     mkdir -p "$pkgdir/usr/bin"
-    install -Dm755 "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/games/$pkgname/$pkgname"
-    install -Dm666 "$srcdir/$pkgname/default.cfg" "$pkgdir/usr/games/$pkgname/default.cfg"
-    install -Dm644 "$srcdir/$pkgname/rom.db" "$pkgdir/usr/games/$pkgname/romb.db"
-    install -Dm644 "$srcdir/$pkgname/gamecontrollerdb.txt" "$pkgdir/usr/games/$pkgname/gamecontrollerdb.txt"
-    install -Dm644 "$srcdir/$pkgname/images/360.png" "$pkgdir/usr/games/$pkgname/images/360.png"
-    install -Dm644 "$srcdir/$pkgname/images/ps4.png" "$pkgdir/usr/games/$pkgname/images/ps4.png"
-    install -Dm644 "$srcdir/$pkgname/images/ps4_6b.png" "$pkgdir/usr/games/$pkgname/images/ps4_6b.png"
-    install -Dm644 "$srcdir/$pkgname/shaders/crt.f.glsl" "$pkgdir/usr/games/$pkgname/shaders/crt.f.glsl"
-    install -Dm644 "$srcdir/$pkgname/shaders/crt.v.glsl" "$pkgdir/usr/games/$pkgname/shaders/crt.v.glsl"
-    install -Dm644 "$srcdir/$pkgname/shaders/default.f.glsl" "$pkgdir/usr/games/$pkgname/shaders/default.f.glsl"
-    install -Dm644 "$srcdir/$pkgname/shaders/default.v.glsl" "$pkgdir/usr/games/$pkgname/shaders/default.v.glsl"
-    install -Dm644 "$srcdir/$pkgname/shaders/sharp.f.glsl" "$pkgdir/usr/games/$pkgname/shaders/sharp.f.glsl"
-    ln -s "/usr/games/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "$srcdir/$pkgname/$_name" "$pkgdir/usr/games/$_name/$_name"
+    install -Dm666 "$srcdir/$pkgname/default.cfg" "$pkgdir/usr/games/$_name/default.cfg"
+    install -Dm644 "$srcdir/$pkgname/rom.db" "$pkgdir/usr/games/$_name/romb.db"
+    install -Dm644 "$srcdir/$pkgname/gamecontrollerdb.txt" "$pkgdir/usr/games/$_name/gamecontrollerdb.txt"
+    install -Dm644 "$srcdir/$pkgname/images/360.png" "$pkgdir/usr/games/$_name/images/360.png"
+    install -Dm644 "$srcdir/$pkgname/images/ps4.png" "$pkgdir/usr/games/$_name/images/ps4.png"
+    install -Dm644 "$srcdir/$pkgname/images/ps4_6b.png" "$pkgdir/usr/games/$_name/images/ps4_6b.png"
+    install -Dm644 "$srcdir/$pkgname/shaders/crt.f.glsl" "$pkgdir/usr/games/$_name/shaders/crt.f.glsl"
+    install -Dm644 "$srcdir/$pkgname/shaders/crt.v.glsl" "$pkgdir/usr/games/$_name/shaders/crt.v.glsl"
+    install -Dm644 "$srcdir/$pkgname/shaders/default.f.glsl" "$pkgdir/usr/games/$_name/shaders/default.f.glsl"
+    install -Dm644 "$srcdir/$pkgname/shaders/default.v.glsl" "$pkgdir/usr/games/$_name/shaders/default.v.glsl"
+    install -Dm644 "$srcdir/$pkgname/shaders/sharp.f.glsl" "$pkgdir/usr/games/$_name/shaders/sharp.f.glsl"
+    ln -s "/usr/games/$_name/$_name" "$pkgdir/usr/bin/$_name"
 
 }
