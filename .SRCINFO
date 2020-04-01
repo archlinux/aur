@@ -1,0 +1,14 @@
+pkgbase = freeman-korbi-gitlab-bin
+	pkgdesc = freeman
+	pkgver = 0.2.269
+	pkgrel = 1
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = tar
+	options = !strip
+	source = freeman-korbi-gitlab-bin::git+https://gitlab.com/kschildmann/freeman-bin.git
+	sha256sums = SKIP
+
+pkgname = freeman-korbi-gitlab-bin
+
