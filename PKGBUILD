@@ -8,7 +8,7 @@ pkgdesc="Python bindings for eSpeak."
 arch=('any')
 url="https://launchpad.net/python-espeak"
 license=('GPL3')
-depends=('espeak' 'python')
+depends=('espeak' 'python2')
 source=("http://launchpad.net/python-espeak/trunk/$pkgver/+download/python-espeak-${pkgver}.tar.gz")
 md5sums=('28dd6d2eff6aca10e259e02a81834245')
 
