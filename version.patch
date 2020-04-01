@@ -1,0 +1,13 @@
+diff --git a/pkg/version/version.go b/pkg/version/version.go
+index ee757d3c..f115a051 100644
+--- a/pkg/version/version.go
++++ b/pkg/version/version.go
+@@ -2,7 +2,7 @@ package version
+ 
+ var (
+ 	// VERSION should be updated by hand at each release
+-	VERSION = "2.8.0+dev"
++	VERSION = "2.9.1"
+ 	// GITCOMMIT will be overwritten automatically by the build system
+ 	GITCOMMIT = "HEAD"
+ )

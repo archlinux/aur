@@ -4,43 +4,44 @@
 
 pkgname=advanced-ssh-config
 _name=assh
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.9.1
+pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64')
 url='https://github.com/moul/assh'
 license=('MIT')
-makedepends=('go-pie')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz")
-sha256sums=('17656a6ac562707d6e85df44c1ccd04276fb1c08f1ff6a002291f4cb88880069')
-_gourl=github.com/moul/advanced-ssh-config
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz"
+        'version.patch')
+sha256sums=('fed8876c574061c239a1d159d9c7197e8bda94f6610f6e29e682d8b6dde60852'
+            'cf4ceca28b7d7dbeae51b214e23d9f05e2149a17438b97c9407e7b57107d2f7b')
+
+export CGO_LDFLAGS="${LDFLAGS}"
+export GOFLAGS="-trimpath"
 
 prepare() {
-  mkdir -p "gopath/src/github.com/moul/"
-  ln -rTsf "${_name}-${pkgver}" "gopath/src/${_gourl}"
+  cd "$_name-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/version.patch"
 }
 
-build() {
-  export GOPATH="${srcdir}/gopath"
-  cd "gopath/src/${_gourl}"
-
-  go install \
-    -gcflags "all=-trimpath=$GOPATH" \
-    -asmflags "all=-trimpath=$GOPATH" \
-    -ldflags "-extldflags $LDFLAGS" \
-    ./...
+build(){
+  cd "$_name-$pkgver"
+  go build \
+     -trimpath \
+     -ldflags "-extldflags ${LDFLAGS}" \
+     -o assh \
+     .
 }
 
-# Tests in vendor/* dependencies are broken with GO 1.12
-# check() {
-#  export GOPATH="$srcdir"/gopath
-#  cd "gopath/src/${_gourl}"
-#  go test ./...
-# }
+check() {
+  cd "$_name-$pkgver"
+  go test ./...
+}
 
 package() {
-  install -Dm755 gopath/bin/assh "${pkgdir}/usr/bin/assh"
-  install -Dm644 "${_name}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_name-$pkgver"
+  install -Dm755 assh "${pkgdir}/usr/bin/assh"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
