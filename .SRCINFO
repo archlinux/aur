@@ -1,0 +1,17 @@
+pkgbase = viter-git
+	pkgdesc = A Vim-ish terminal emulator written and expandable in Python.
+	pkgver = r126.9691201
+	pkgrel = 1
+	url = http://github.com/Kharacternyk/viter
+	arch = any
+	license = GPL-3
+	makedepends = git
+	depends = python-gobject
+	depends = gtk3
+	depends = vte3
+	conflicts = viter
+	source = viter::git+https://github.com/Kharacternyk/viter.git#branch=master
+	sha256sums = SKIP
+
+pkgname = viter-git
+
