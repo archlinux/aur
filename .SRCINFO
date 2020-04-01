@@ -1,13 +1,13 @@
 pkgbase = salt-py3
 	pkgdesc = Central system and configuration manager
 	pkgver = 3000.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://saltstack.org/
 	install = salt.install
 	arch = any
 	license = Apache
 	depends = python-jinja
-	depends = python-msgpack
+	depends = python-msgpack<1.0.0
 	depends = python-yaml
 	depends = python-markupsafe
 	depends = python-requests

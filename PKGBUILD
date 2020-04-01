@@ -7,7 +7,7 @@
 
 pkgname=salt-py3
 pkgver=3000.1
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Central system and configuration manager'
 arch=('any')
@@ -19,7 +19,7 @@ replaces=('salt' 'salt-zmq' 'salt-raet')
 conflicts=('salt' 'salt-zmq' 'salt-raet')
 
 depends=('python-jinja'
-         'python-msgpack'
+         'python-msgpack<1.0.0'
          'python-yaml'
          'python-markupsafe'
          'python-requests'
