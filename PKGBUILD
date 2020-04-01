@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=ddisasm
 pkgname=ddisasm-git
-pkgver=v0.1.1.r220.gd9ffe7f
+pkgver=v0.1.1.r628.gcd19fb5
 pkgrel=1
 pkgdesc="A fast and accurate disassembler"
 arch=('x86_64')
@@ -22,16 +22,7 @@ pkgver() {
 
 build() {
     cd "$_srcname/"
-    if [ -f /usr/include/boost/program_options.hpp ];then
-      FLAGS="-DCMAKE_INSTALL_PREFIX=/usr -DDDISASM_USE_SYSTEM_BOOST=ON"
-    else
-      FLAGS="-DCMAKE_INSTALL_PREFIX=/usr"
-    fi
-    # CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-    # CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt"
-    # LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
-    # CFLAGS="" CXXFLAGS="" LDFLAGS="" cmake . -Bbuild $FLAGS
-    cmake . -Bbuild $FLAGS
+    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DLIEF_ROOT=/usr
     make -C build
 }
 
