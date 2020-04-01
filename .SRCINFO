@@ -9,9 +9,9 @@ pkgbase = bats-core
 	depends = bash
 	provides = bash-bats
 	conflicts = bash-bats
-	source = git+https://github.com/bats-core/bats-core.git#tag=v1.1.0
+	source = https://github.com/bats-core/bats-core/archive/v1.1.0.tar.gz
 	source = fix-libexec-path.patch
-	sha256sums = SKIP
+	sha256sums = 855d8b8bed466bc505e61123d12885500ef6fcdb317ace1b668087364717ea82
 	sha256sums = 1c1aa78cead376910f71807d4615e3041c91e4525c9a439defc90e1d5f776c2a
 
 pkgname = bats-core

@@ -11,10 +11,11 @@ url='https://github.com/bats-core/bats-core'
 license=('MIT')
 depends=('bash')
 makedepends=('git')
-source=("git+https://github.com/bats-core/bats-core.git#tag=v$pkgver" fix-libexec-path.patch)
-sha256sums=('SKIP' '1c1aa78cead376910f71807d4615e3041c91e4525c9a439defc90e1d5f776c2a')
-conflicts=('bash-bats')
-provides=('bash-bats')
+source=("$url/archive/v$pkgver.tar.gz" fix-libexec-path.patch)
+sha256sums=('855d8b8bed466bc505e61123d12885500ef6fcdb317ace1b668087364717ea82'
+            '1c1aa78cead376910f71807d4615e3041c91e4525c9a439defc90e1d5f776c2a')
+conflicts=(bash-bats)
+provides=(bash-bats)
 
 check() {
   cd "${srcdir}/bats-core"
