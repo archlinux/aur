@@ -1,8 +1,8 @@
 # Maintainer: Jack Chen <redchenjs@live.com>
 
 pkgname=linuxqq
-pkgver=2.0.0_b2_1076
-pkgrel=1
+pkgver=2.0.0.1076
+pkgrel=2
 pkgdesc="Tencent QQ for Linux"
 arch=('x86_64' 'aarch64')
 url="https://im.qq.com/linuxqq/"
@@ -25,6 +25,18 @@ sha512sums_aarch64=(
 )
 
 package() {
-    mv "$srcdir/usr" "$pkgdir/"
-    rm -r "$pkgdir/usr/local/lib"
+    mkdir -p "$pkgdir/opt/"
+    cp -r "$srcdir/usr/local/share/tencent-qq" "$pkgdir/opt/"
+
+    cp "$srcdir/usr/local/bin/qq" "$pkgdir/opt/tencent-qq/"
+    cp "$srcdir/usr/local/bin/crashpad_handler" "$pkgdir/opt/tencent-qq/"
+
+    install -Dm 644 "$srcdir/usr/share/applications/qq.desktop" \
+                    "$pkgdir/usr/share/applications/qq.desktop"
+
+    sed -i 's#/usr/local/share#/opt#' "$pkgdir/usr/share/applications/qq.desktop"
+    sed -i 's#/usr/local/bin#/opt/tencent-qq#' "$pkgdir/usr/share/applications/qq.desktop"
+
+    mkdir -p "$pkgdir/usr/bin"
+    ln -s "/opt/tencent-qq/qq" "$pkgdir/usr/bin/qq"
 }
