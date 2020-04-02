@@ -1,7 +1,7 @@
 pkgbase = opentabletdriver-git
 	pkgdesc = A cross-platform open source tablet driver
-	pkgver = r349.8f72f61
-	pkgrel = 2
+	pkgver = v0.2.0.rc1.r19.ga9997c6
+	pkgrel = 1
 	url = https://github.com/InfinityGhost/OpenTabletDriver
 	install = opentabletdriver.install
 	arch = x86_64
@@ -17,15 +17,15 @@ pkgbase = opentabletdriver-git
 	provides = opentabletdriver
 	conflicts = opentabletdriver
 	source = git+https://github.com/InfinityGhost/OpenTabletDriver
-	source = 30-opentabletdriver.rules
+	source = git+https://github.com/InfinityGhost/OpenTabletDriver-udev
 	source = opentabletdriver
 	source = opentabletdriver.install
 	source = OpenTabletDriver.desktop
 	sha256sums = SKIP
-	sha256sums = c79e055efb915aff51e3785012999df6eaf4d65f4110be3a2e3c289a62168122
+	sha256sums = SKIP
 	sha256sums = 7e95c880ca6328d3bb6f3675ee063b18330d3ea753bef9b5376cafc31eff47f2
 	sha256sums = 304ec78284e99395b3091923da540af3a1826205663aa8fd2d52deb64f852166
-	sha256sums = f837c3c8903cdd88252cb4faeed5cae8f73451dfaa667bbc4a39ebe713acf0d4
+	sha256sums = 912dd96de59ffdad8f61e9cba48494a9d2bb43849951e7d4536918a7fbcc8aff
 
 pkgname = opentabletdriver-git
 
