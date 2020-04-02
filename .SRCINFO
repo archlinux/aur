@@ -1,0 +1,18 @@
+pkgbase = cpeditor-git
+	pkgdesc = IDE desgined for Competitive Programming
+	pkgver = 20200402
+	pkgrel = 1
+	url = https://github.com/cpeditor/cpeditor
+	arch = x86_64
+	license = GLP3
+	makedepends = cmake
+	makedepends = git
+	depends = clang
+	depends = qt5-base
+	conflicts = cpeditor
+	conflicts = cpeditor-beta
+	source = git+https://github.com/cpeditor/cpeditor.git
+	md5sums = SKIP
+
+pkgname = cpeditor-git
+
