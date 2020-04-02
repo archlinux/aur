@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=ezra-project-git
-pkgver=0.12.0.r1.g59f3168
+pkgver=0.12.0.r52.gd9b8e2c
 pkgrel=1
 pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
@@ -28,20 +28,20 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "${pkgname%-git}"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${pkgname%-git}"
     jq 'del(.dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "electron-osx-sign", "node-abi", "node-gyp", "pug-cli", "sequelize-cli"])' package.json |
         sponge package.json
+    npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
 }
 
 build() {
     cd "${pkgname%-git}"
     rm -f node_modules/{node-addon-api,node-sword-interface}
     local _electron="$(electron --version | sed 's/^v//')"
-    npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
     npx electron-rebuild --version="$_electron"
     node-prune node_modules
     npx electron-packager ./ "${pkgname%-git}" --electron-version="$_electron"
