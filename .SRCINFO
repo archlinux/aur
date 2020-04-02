@@ -1,18 +1,18 @@
-pkgbase = python-geventhttpclient-wheels-git
-	pkgdesc = A high performance, concurrent http client library for python with gevent
-	pkgver = 1.3.1dev2.r0.g4d83606
-	pkgrel = 2
-	url = https://github.com/locustio/geventhttpclient
-	arch = x86_64
+pkgbase = python-geventhttpclient-wheels
+	pkgdesc = Pre-built wheels for geventhttpclient
+	pkgver = 1.3.1.dev2
+	pkgrel = 1
+	url = https://locust.io/
+	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = python-setuptools
+	depends = python-gevent
 	depends = python-certifi
-	depends = python-gevent-git
+	depends = python-six
 	provides = python-geventhttpclient-wheels
 	conflicts = python-geventhttpclient-wheels
-	source = python-geventhttpclient-wheels-git::git+https://github.com/locustio/geventhttpclient
-	md5sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/g/geventhttpclient-wheels/geventhttpclient-wheels-1.3.1.dev2.tar.gz
+	sha256sums = bd1f984ab5a52e3d6f5d54fd407a41e889dd4499f5991d234ebdc1f8907e2fb3
 
-pkgname = python-geventhttpclient-wheels-git
+pkgname = python-geventhttpclient-wheels
 

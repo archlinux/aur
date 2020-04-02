@@ -1,35 +1,31 @@
 # Maintainer: Stick <stick@stma.is>
+# Contributer: Sherlock Holo <Sherlockya@gmail.com>
 
-_pkg=python-geventhttpclient-wheels
-pkgname="$_pkg-git"
-pkgver=1.3.1dev2.r0.g4d83606
-pkgrel=2
-pkgdesc="A high performance, concurrent http client library for python with gevent"
-arch=('x86_64')
-url='https://github.com/locustio/geventhttpclient'
+pkgname=python-geventhttpclient-wheels
+_name=${pkgname#python-}
+pkgver=1.3.1.dev2
+pkgrel=1
+pkgdesc="Pre-built wheels for geventhttpclient"
+arch=('any')
+url='https://locust.io/'
 license=('MIT')
-depends=('python-certifi'
-	'python-gevent-git')
-makedepends=('git'
-	'python-setuptools')
-provides=("$_pkg")
-conflicts=("$_pkg")
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$pkgname" || exit
-	local _ver
-	_ver="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
-	printf '%s\n' "${_ver#v}"
-}
+depends=(
+	'python-gevent'
+	'python-certifi'
+	'python-six'
+)
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('bd1f984ab5a52e3d6f5d54fd407a41e889dd4499f5991d234ebdc1f8907e2fb3')
+provides=("$pkgname")
+conflicts=("$pkgname")
 
 build() {
-	cd "$pkgname" || exit
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname" || exit
-	python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
+	cd "$srcdir/$_name-$pkgver"
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
