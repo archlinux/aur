@@ -36,11 +36,11 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  install -Dm755 "build/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -Dm644 "src/platforms/gtk/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  install -Dm755 build/release/rlvm "$pkgdir/usr/bin/rlvm"
+  install -Dm644 src/platforms/gtk/rlvm.desktop "$pkgdir/usr/share/applications/rlvm.desktop"
 
   local _i
   for _i in 16 24 32 48 128 256; do
-    install -Dm644 "resources/$_i/$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/$_pkgname.png"
+    install -Dm644 "resources/$_i/rlvm.png" "$pkgdir/usr/share/icons/hicolor/${_i}x${_i}/apps/rlvm.png"
   done
 }
