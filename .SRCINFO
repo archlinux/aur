@@ -1,0 +1,14 @@
+pkgbase = python-shortuuid
+	pkgdesc = shortuuid is a simple python library that generates concise, unambiguous, URL-safe UUIDs.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/skorokithakis/shortuuid
+	arch = any
+	license = BSD
+	depends = python
+	options = !emptydirs
+	source = python-shortuuid-1.0.1.tar.gz::https://github.com/skorokithakis/shortuuid/archive/v1.0.1.tar.gz
+	md5sums = SKIP
+
+pkgname = python-shortuuid
+
