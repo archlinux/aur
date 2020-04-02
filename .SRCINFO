@@ -1,24 +1,22 @@
 pkgbase = hcc
 	pkgdesc = HCC is an Open Source, Optimizing C++ Compiler for Heterogeneous Compute
-	pkgver = 3.1.0
-	pkgrel = 2
+	pkgver = 3.3.0
+	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/hcc
 	arch = x86_64
 	license = custom:NCSAOSL
 	makedepends = cmake
 	makedepends = python
-	depends = hsa-rocr>=3.1.0
+	depends = hsa-rocr>=3.3.0
 	depends = z3
 	options = !staticlibs
 	options = strip
-	source = hcc-roc-hcc-3.1.0.tar.gz::https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-3.1.0.tar.gz
-	source = llvm-project-roc-hcc-3.1.0.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-3.1.0.tar.gz
-	source = ROCm-Device-Libs-roc-hcc-3.1.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-3.1.0.tar.gz
-	source = Fix-sanitizer-common-build-with-glibc-2.31.patch::https://github.com/llvm/llvm-project/commit/947f9692440836dcb8d88b74b69dd379d85974ce.patch
-	sha256sums = c9274230aa282e6ae90be5885e3f5b71b02153ca60980fc2122d61a5870bf2a2
-	sha256sums = f76648116a2771a520545b9b5b3c931a8eb391f6f711f232924d92e8d1b43fc1
-	sha256sums = 42bd4f910dd44d6f0dd7bab7ebdadcf2e7cd4449ed7160dacc4471039584402c
-	sha256sums = e08bc5ef423cb0df19df907dcfee84bf12a8a4211c7ea49afee33b70212fd40b
+	source = hcc-roc-hcc-3.3.0.tar.gz::https://github.com/RadeonOpenCompute/hcc/archive/roc-hcc-3.3.0.tar.gz
+	source = llvm-project-roc-hcc-3.3.0.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/roc-hcc-3.3.0.tar.gz
+	source = ROCm-Device-Libs-roc-hcc-3.3.0.tar.gz::https://github.com/RadeonOpenCompute/ROCm-Device-Libs/archive/roc-hcc-3.3.0.tar.gz
+	sha256sums = b134cbc9ccfdda0255edad95d06c11fac63bcdbffc1e4d14eb946833cedc9600
+	sha256sums = 37baed7d0130b38840ec00973d68d089f21798c27be91d0b9177b2e943945c0f
+	sha256sums = 7a82aac4390c468a8ba7060b7ba0ecef0c89856df4e2133ad74418264ae62aaf
 
 pkgname = hcc
 
