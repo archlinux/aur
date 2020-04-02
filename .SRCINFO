@@ -4,6 +4,7 @@ pkgbase = cairo-glesv3-armv7l
 	pkgrel = 1
 	url = http://cairographics.org/
 	arch = armv7l
+	arch = armv7h
 	license = LGPL
 	license = MPL
 	depends = libpng
