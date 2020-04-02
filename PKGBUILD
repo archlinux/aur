@@ -2,7 +2,7 @@
 
 _pkgname=unlock-netease-music
 pkgname=${_pkgname}-git
-pkgver=0.20.0.r0.g3de1af9
+pkgver=0.24.1.r7.g595ba6d
 pkgrel=1
 pkgdesc="Revive unavailable songs for Netease Cloud Music"
 arch=('i686' 'x86_64')
@@ -28,7 +28,4 @@ package() {
         install -d 755 ${pkgdir}/opt/UnblockNeteaseMusic
     	cp -r "${srcdir}/${pkgname}/"/*  "${pkgdir}/opt/UnblockNeteaseMusic/"
         install -D -m644 "${srcdir}/UnblockNeteaseMusic.service" "${pkgdir}/usr/lib/systemd/system/UnblockNeteaseMusic.service" 
-        echo "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
-        echo -e "\033[32m some times you should check your UnblockNeteaseMusic.service files and Merge new service files. \033[0m"
-        echo "''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"
 }
