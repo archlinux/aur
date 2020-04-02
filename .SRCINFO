@@ -1,0 +1,14 @@
+pkgbase = python-nanotime
+	pkgdesc = Provides a Python time object that keeps time as the number of nanoseconds since the UNIX epoch.
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/jbenet/nanotime
+	arch = any
+	license = custom:MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/jbenet/nanotime#commit=a60cbd2272b2dd36517445312e55ef44814d69e4
+	sha256sums = SKIP
+
+pkgname = python-nanotime
+
