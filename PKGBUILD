@@ -7,7 +7,7 @@ pkgrel=1
 url=https://github.com/Igalia/cog
 arch=(i686 x86_64 aarch64 armv7l armv7h)
 groups=(wpe)
-conflicts=(cog-git)
+conflicts=(cog cog-git)
 depends=('wpewebkit' 'wpebackend-fdo>=1.6.0' libinput)
 makedepends=(cmake wayland-protocols)
 license=(custom:MIT)
