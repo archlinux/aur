@@ -3,7 +3,7 @@
 pkgname=ezra-project
 pkgver=0.12.0
 pkgrel=3
-pkgdesc='Bible study software focussing on topical study based on keywords/tags'
+pkgdesc='Bible study tool focussing on topical study based on keywords/tags'
 arch=('x86_64')
 url="https://github.com/tobias-klein/$pkgname"
 license=('GPL3')
@@ -27,12 +27,12 @@ prepare() {
     cd "$pkgname-$pkgver"
     jq 'del(.dependencies["node-addon-api", "node-sword-interface"], .devDependencies["electron", "electron-osx-sign", "node-abi", "node-gyp", "pug-cli", "sequelize-cli"])' package.json |
         sponge package.json
+    rm -f node_modules/{node-addon-api,node-sword-interface}
     npm install --cache "$srcdir/npm-cache" --no-audit --no-fund
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    rm -f node_modules/{node-addon-api,node-sword-interface}
     local _electron="$(electron --version | sed 's/^v//')"
     npx electron-rebuild --version="$_electron"
     node-prune node_modules
