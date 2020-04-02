@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd
 _srcname=linux
-gitver=v5.6.1
-pkgver=5.6.v.1
+gitver=v5.6.2
+pkgver=5.6.v.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,20 +23,16 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 	5012_enable-cpu-optimizations-for-gcc91.patch
 	# asus WMI patch
 	asusbat.patch
-	# intel WIFI patch
-	intelwifi.patch
 )
 sha256sums=('SKIP'
 	#config.x86_64
-            'c3ccd0fa4269b533eb23eaada31b509e55bb21c14d4e1869621e3d3c21301f4d'
+            '52234d25537985775a526263e8efe7031d2bff1a3a6a36c636c8d4738a5a928b'
 	#.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
 	#patch gentoo
             'cc739c9c9f7ce08e6bbc161b8232208bbc00820342a32fb1f69bff6326ae1370'
 	#Asusbat gitfile
             'c0a1604da4e0ae360f0c93a9adf244f9a8cffb5d219c94c0a58e23fb2c007a68'
-	#IntelWifi gitfile
-            'da0be7c26de891847c0394e670d09ebd8f02c159342d21d8b0f0ec306e4e5599'
            )
 
 _kernelname=${pkgbase#linux}
@@ -65,8 +61,6 @@ prepare() {
   yes "" | make prepare
   # Implement suggested asus_wmi change
   git apply ../asusbat.patch
-  # Implement supposed intelwifi patch
-  git apply ../intelwifi.patch
 
   # load configuration
   # Configure the kernel. Replace the line below with one of your choice.
