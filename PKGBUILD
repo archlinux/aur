@@ -1,9 +1,10 @@
 # Maintainer: Kristóf Marussy <kris7topher at gmail dot com>
+# Contributor: Afnan Enayet <afnan@afnan.io>
 
 pkgname=logiops-git
 _pkgname="logiops"
 _gitpkgname="logiops"
-pkgver=r33.38dcc65
+pkgver=r37.00298c0
 pkgrel=1
 pkgdesc="An unofficial driver for Logitech HID++>2.0 mice and keyboard"
 arch=('x86_64')
@@ -19,6 +20,12 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$_gitpkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$_gitpkgname"
+    git submodule init
+    git submodule update --recursive
 }
 
 build() {
