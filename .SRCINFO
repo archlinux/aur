@@ -1,7 +1,7 @@
 pkgbase = meshlab-git
 	pkgdesc = System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)
-	pkgver = 2020.03.r36.gd0fa7a31f
-	pkgrel = 2
+	pkgver = 2020.04.r7.g3e89ebb8d
+	pkgrel = 1
 	url = https://www.meshlab.net
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = meshlab-git
 	makedepends = lib3ds
 	makedepends = mpir
 	depends = bzip2
-	depends = desktop-file-utils
 	depends = glew
 	depends = glu
 	depends = openssl-1.0
@@ -32,12 +31,8 @@ pkgbase = meshlab-git
 	conflicts = meshlab
 	source = meshlab::git+https://github.com/cnr-isti-vclab/meshlab.git
 	source = vcglib::git+https://github.com/cnr-isti-vclab/vcglib.git
-	source = desktop.patch
-	source = meshlab.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 1690f70118c985da61595b615635472144c4d0b3ddcefb515b9f230c106961b5
-	sha256sums = 030ab1dcafb7d793bed3bc455497208addadf1091a4619576fe7e044aed4231a
 
 pkgname = meshlab-git
 
