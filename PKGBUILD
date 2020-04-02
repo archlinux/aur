@@ -2,7 +2,7 @@
 
 pkgname=lib32-libnftnl
 _pkgbasename=libnftnl
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='Netfilter library providing interface to the nf_tables subsystem (32-bit)'
 arch=('x86_64')
@@ -11,11 +11,9 @@ license=('GPL2')
 depends=('lib32-libmnl' 'libnftnl')
 makedepends=('gcc-multilib')
 validpgpkeys=('C09DB2063F1D7034BA6152ADAB4655A126D292E4') # Netfilter Core Team
-source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.bz2"{,.sig}
-        '01-flowtable.patch::https://git.netfilter.org/libnftnl/patch/?id=b2388765e0c4405442faa13845419f6a35d0134c')
-sha1sums=('a923bae5b028a30c5c8aa4c0f71445885867274b'
-          'SKIP'
-          'b121893675fcf8568e9566899e71fb35b47bdd4e')
+source=("https://netfilter.org/projects/libnftnl/files/libnftnl-$pkgver.tar.bz2"{,.sig})
+sha1sums=('9ce6d5990bc3b59176b68f5c4eff434a2e02fde6'
+          'SKIP')
 
 prepare() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
