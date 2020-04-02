@@ -13,17 +13,17 @@ makedepends=('meson' 'ncurses')
 depends=('pcre2' 'libunistring' 'libtar' 'zlib' 'gnutls' 'curl' 'libgit2' )
 
 prepare() {
-    cd "${pkgname}-${pkgver}"
+    cd "EasyFramework-${pkgver}"
     meson build -Dprefix=/usr -Dterminfo=share/terminfo
 }
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "EasyFramework-${pkgver}"
     ninja
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "EasyFramework-${pkgver}"
     DESTDIR="$pkgdir" ninja install
 }
 
