@@ -145,7 +145,7 @@ _package-headers() {
   for f in Makefile kernel/Makefile; do
     sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-Wno-format-invalid-specifier)$/d' $f
   done
-  echo -e "\nKBUILD_CFLAGS += -Wno-error" >> Makefile
+  echo -e "\nKBUILD_CFLAGS += -Wno-error -Wno-unused-variable -Wno-incompatible-pointer-types" >> Makefile
 
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
