@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
-	pkgver = 5.5.14
-	pkgrel = 2
+	pkgver = 5.5.15
+	pkgrel = 1
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -14,8 +14,8 @@ pkgbase = linux-clear
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.sign
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.5.14.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.5.13-924
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.5.15.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.5.13-925
 	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200401.tar.xz
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
@@ -23,7 +23,7 @@ pkgbase = linux-clear
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = a6fbd4ee903c128367892c2393ee0d9657b6ed3ea90016d4dc6f1f6da20b2330
 	sha256sums = SKIP
-	sha256sums = c7543f9484e3ed755ca9068967facb01f77971efe80829f6d9c6fd35939c7b0a
+	sha256sums = 938b47e8e6c8e7ee091d0da149eab7cc63f3858bc7cc043ed4963771dc621b90
 	sha256sums = SKIP
 	sha256sums = 7dfb4a8315e1d6ae406ff32d01c496175df558dd65968a19e5222d02c7cfb77a
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
