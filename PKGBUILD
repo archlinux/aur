@@ -1,4 +1,4 @@
-pkgname=tag_game
+pkgname=tag_puzzle
 pkgver=1.0
 pkgrel=1
 pkgdesc="A simple Tag game, written on C++ & SFML"
