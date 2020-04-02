@@ -4,5 +4,5 @@ exec dotnet /usr/lib/emby-server/EmbyServer.dll \
   -programdata $PROGRAM_DATA \
   -ffdetect $FFDETECT \
   -ffmpeg $FFMPEG \
-  -ffprobe $FFPROBE
+  -ffprobe $FFPROBE \
   -restartexitcode 3
