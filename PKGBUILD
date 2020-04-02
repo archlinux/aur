@@ -9,7 +9,7 @@ arch=('any')
 url='https://txtorcon.readthedocs.org/'
 license=('MIT')
 depends=('python-geoip' 'python-twisted')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/meejah/$_pkgname/archive/v$pkgver.tar.gz")
 sha512sums=('8a685140f69d993a2a7808c862059bcaceee74d413ab380c13cfdade7d5749d0a8db5a3c10267050102d75a7bd66c62e327b9300d5b34e2cdc4649a2c60cc9af')
 
@@ -18,7 +18,7 @@ build() {
   python setup.py build
 }
  
-package_python-txtorcon() {
+package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -6,7 +6,6 @@ pkgbase = python-txtorcon
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	depends = python-geoip
 	depends = python-twisted
 	source = txtorcon-20.0.0.tar.gz::https://github.com/meejah/txtorcon/archive/v20.0.0.tar.gz
