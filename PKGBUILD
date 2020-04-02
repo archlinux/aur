@@ -1,6 +1,6 @@
 # Maintainer: Michael M. Tung <mtung at mat dot upv dot es>
 
-pkgname=sidenote
+pkgname=sidenote-bin
 pkgver=0.1.1
 pkgrel=1
 
