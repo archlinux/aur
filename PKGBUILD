@@ -10,5 +10,5 @@ source=('Porcelain.ttf::https://github.com/ptcar2009/ttf-porcelain/raw/master/Po
 sha256sums=('118fed9862e016c292b8843d0572988179548b8c3f7bcc79fc25e9c097b123a0')
 package() {
   install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
-  install -Dm644 -t "${pkgdir}/usr/shar/fonts/TTF" "Porcelain.ttf" 
+  install -m 644 -t "${pkgdir}/usr/shar/fonts/TTF" "Porcelain.ttf" 
 }
