@@ -2,7 +2,7 @@
 # Contributor: Vbextreme <@>
 pkgname=('easyframework')
 pkgdesc='another C framework'
-pkgver=0.5.0
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/EasyFramework'
