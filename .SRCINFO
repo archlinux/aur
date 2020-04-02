@@ -1,0 +1,14 @@
+pkgbase = raylib-cpp-git
+	pkgver = 0.1.0.r38.g6649ff7
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/RobLoach/raylib-cpp
+	arch = x86_64
+	license = MIT
+	depends = raylib
+	provides = raylib-cpp
+	source = raylib-cpp::git+https://github.com/RobLoach/raylib-cpp.git
+	sha256sums = SKIP
+
+pkgname = raylib-cpp-git
+
