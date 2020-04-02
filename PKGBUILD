@@ -4,8 +4,8 @@
 
 pkgname=sdrangel-git
 _pkgname=${pkgname%-git}
-pkgver=4.13.0.r0.583a144c6
-pkgrel=2
+pkgver=4.14.3.r0.81da7b35b
+pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
@@ -25,10 +25,8 @@ optdepends=('ffmpeg: DATV demodulator'
             'airspy: AirSPY support')
 provides=("sdrangel")
 conflicts=("sdrangel")
-source=("git+$url"
-        'sdrangel-opencv4.patch')
-sha512sums=('SKIP'
-            'e27b43c8565cc03b8ec66e17e5429c29add8b9e1f1bdaebbbd75442fe08721fc6c89dbb478f8642146f2293962c639a36efdb6aa0276e54930f0745106ae8dda')
+source=("git+$url")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -38,7 +36,6 @@ pkgver() {
 prepare() {
   cd $_pkgname
 
-  patch -p1 < ../sdrangel-opencv4.patch # Fix build with openCV 4
 }
 
 build() {
