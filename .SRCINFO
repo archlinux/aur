@@ -1,0 +1,32 @@
+pkgbase = rofi-applets-menus
+	pkgdesc = A collection of custom applets and menus made using rofi and its dmenu emulation, inspired by rofi-menus.
+	pkgver = 6e84e05
+	pkgrel = 1
+	url = https://github.com/adi1090x/rofi
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	optdepends = xbacklight: adjust brightness
+	optdepends = dunst: nofify
+	optdepends = acpi: get battery info
+	optdepends = xfce4-power-manager-settings: launch power manager
+	optdepends = mpd
+	optdepends = mpc
+	optdepends = dnsutils
+	optdepends = nmcli
+	optdepends = nmtui
+	optdepends = bmon
+	optdepends = nm-connection-editor
+	optdepends = termite
+	optdepends = systemctl
+	optdepends = i3lock
+	optdepends = firefox
+	optdepends = scrot
+	optdepends = maim
+	optdepends = viewnior
+	optdepends = amixer
+	source = git+https://github.com/adi1090x/rofi
+	md5sums = SKIP
+
+pkgname = rofi-applets-menus
+
