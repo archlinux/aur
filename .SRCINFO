@@ -4,6 +4,7 @@ pkgbase = wpewebkit-gl-armv7l
 	pkgrel = 1
 	url = https://wpewebkit.org
 	arch = armv7l
+	arch = armv7h
 	groups = wpe
 	license = custom
 	depends = cairo

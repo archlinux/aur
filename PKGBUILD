@@ -1,7 +1,7 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 pkgname=wpewebkit-gl-armv7l
 pkgver=2.28.0
-arch=(armv7l)
+arch=(armv7l armv7h)
 pkgrel=1
 pkgdesc='Web content engine library optimized for embedded devices (gl version)'
 url='https://wpewebkit.org'
