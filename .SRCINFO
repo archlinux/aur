@@ -1,15 +1,13 @@
 pkgbase = scipoptsuite
 	pkgdesc = Toolbox for generating and solving optimization problems
 	pkgver = 6.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://scip.zib.de
 	arch = x86_64
-	license = LGPL3
+	license = LGPL-3.0
 	license = custom:ZIB Academic License
 	makedepends = ninja
-	makedepends = bison
 	makedepends = cmake
-	makedepends = flex
 	makedepends = gmp
 	makedepends = readline
 	makedepends = zlib
@@ -25,7 +23,7 @@ pkgbase = scipoptsuite
 	provides = zimpl=3.3.8
 	replaces = ziboptsuite
 	source = https://scip.zib.de/download/release/scipoptsuite-6.0.2.tgz
-	sha256sums = e25329a2ed4fbdde8a32279a4c955ee7a8b8795429b6e7105ae17998c2ecbe66
+	md5sums = 6b2b6cacc43ba6776cc5018edabb0cc4
 
 pkgname = scipoptsuite
 
