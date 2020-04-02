@@ -1,6 +1,6 @@
 pkgbase = python-knack
 	pkgdesc = A Python command line interface framework
-	pkgver = 0.6.3
+	pkgver = 0.7.0rc
 	pkgrel = 1
 	url = https://github.com/Microsoft/knack
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = python-knack
 	depends = python-six
 	depends = python-tabulate
 	depends = python-yaml
-	source = https://github.com/Microsoft/knack/archive/v0.6.3.tar.gz
-	sha256sums = 29c39ca8f885f0cff52412bf414aef9e0f88e8c66ce7fa689bf12e054197138d
+	source = https://github.com/Microsoft/knack/archive/v0.7.0rc.tar.gz
+	sha256sums = 1f5295d3fdfa8e2ca96987d8d2f86b82744e23c69957668d8c6ed2521037492d
 
 pkgname = python-knack
 
