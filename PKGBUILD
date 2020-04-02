@@ -6,12 +6,13 @@
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
 pkgver=3.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64' 'i686')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
-depends=('docbook-xsl' 'webkit2gtk' 'libsoup' 'fftw' 'ladspa' 'dssi' 'lv2' 'libsndfile' 'libsamplerate' 'libinstpatch' 'libpulse' 'gtk3')
+makedepends=('gtk3' 'gtk-doc' 'webkit2gtk' 'libsoup' 'fftw'  'libinstpatch' 'libpulse')
+depends=('ladspa' 'dssi' 'lv2')
 checkdepends=('cunit' 'xorg-server-xvfb')
 provides=('gsequencer' 'midi2xml')
 conflicts=('midi2xml')
@@ -26,7 +27,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure HTMLHELP_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/htmlhelp/htmlhelp.xsl --prefix=/usr --docdir=/usr/share/doc/gsequencer-doc
+	./configure HTMLHELP_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/htmlhelp/htmlhelp.xsl --prefix=/usr --docdir=/usr/share/doc/gsequencer-doc --enable-gtk-doc --enable-gtk-doc-html --enable-single-docdir
 	make
 	make html
 }
