@@ -1,0 +1,13 @@
+--- juju-2.7.5/Makefile
++++ juju-2.7.5-patches/Makefile
+@@ -48,8 +48,8 @@ ifeq ($(DEBUG_JUJU), 1)
+     COMPILE_FLAGS = -gcflags "all=-N -l"
+     LINK_FLAGS = -ldflags "-X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
+ else
+-    COMPILE_FLAGS =
+-    LINK_FLAGS = -ldflags "-s -w -X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
++    COMPILE_FLAGS = -trimpath
++    LINK_FLAGS = -ldflags "-s -w -extldflags '$(LDFLAGS)' -X $(PROJECT)/version.GitCommit=$(GIT_COMMIT) -X $(PROJECT)/version.GitTreeState=$(GIT_TREE_STATE) -X $(PROJECT)/version.build=$(JUJU_BUILD_NUMBER)"
+ endif
+ 
+ define DEPENDENCIES
