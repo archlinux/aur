@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-xirwena
 _pkgname=xirwena
@@ -15,7 +15,6 @@ source=("http://img.dafont.com/dl/?f=xirwena")
 md5sums=('4ad89b6cd7593a050a411a94a9f99cda')
 
 package() {
-    unzip "?f=xirwena"
     mkdir "$srcdir/$_pkgname"
     mv $srcdir/${_pkgname}1.ttf $srcdir/$_pkgname
     cd "$srcdir/$_pkgname"
