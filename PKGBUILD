@@ -1,38 +1,36 @@
-# Maintainer: William Grieshaber <me@zee.li>
+# Maintainer: Michal Wojdyla <micwoj9292 at gmail dot com>
+# Contributor: William Grieshaber <me@zee.li>
 # Contributor: Joao Cordeiro <jlcordeiro at gmail dot com>
 # Contributor: Joekey joekey1@gmail.com
 pkgname=trigger
-pkgver=0.6.2 
+pkgver=0.6.6.1 
 pkgrel=1
 pkgdesc="Free OpenGL rally car racing game"
-arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/trigger-rally/"
+arch=('x86_64')
+url="https://sourceforge.net/projects/trigger-rally/"
 license=('GPL2')
 conflicts=()
-depends=('sdl_image' 'physfs' 'freeglut' 'freealut' 'trigger-data' 'glu' xdg-utils)
-makedepends=('ftjam' 'glew' 'sdl_mixer')
+depends=('physfs' 'freealut' 'glu' xdg-utils 'sdl2_image')
+makedepends=('glew' 'tinyxml2' 'openal')
 install=trigger.install
-source=(http://sourceforge.net/projects/trigger-rally/files/$pkgname-$pkgver/$pkgname-rally-$pkgver-src.tar.bz2 
+source=(https://sourceforge.net/projects/trigger-rally/files/$pkgname-$pkgver/$pkgname-rally-$pkgver.tar.gz
         $pkgname.png
         $pkgname.desktop)
-sha512sums=('93507131682828735d0de20c8956f83df9a461b30fd5b21c25f4cf81a877c79b7d429d13aa4d2d4d3b3c6a3bdcb1bff51d44188434e04dd36240fd29fe0b13b6'
-            '09867405b809e1856d222949dcc81f897eecb87e270cceaca8fd33745ce38bfb52b0a0cb6b12fe90cd844ade92f77b79f803ed8d7c65b59af6f58a89d176f191'
-            'c60d02949131eb1e8b42acdf55ebf3b8290d24bebe89bb12e54001be0f78146e1ad0ae8955d480f484134174dd16975deaa37e2f3880b2972e9bdd71763bdacb')
+sha512sums=('feed805858ef63907bb10088761f1219b22fe55ead268511ef73b18aa0f18d79e87d4e2cbfb76361b1dec3949b59464af33efe31e81f06ae7e163430f3336669'
+            'a7ebc8cb714755701b4e9b83cb4773679d1bbdae66ed1bd9dc747474b027fbda31c6e723cf4f910d833b16ae5e354660030dc9c7d86022006ed7f2f0e03c1d14'
+            '7127a8279cabbbd3e208c67a0c5e008fdf3721822b74d8eb9ce30bad29acf8875aade79dde3df32e118b00d5ee8e3927cbf287207a028f7a35cd1ae2a4d1dbe2')
 
 build() {
 
-    cd "$srcdir"/$pkgname-rally-$pkgver-src/ 
-
-    ./autogen.sh
-    ./configure --prefix=$pkgdir/usr --datadir=/opt/games/trigger/trigger-$pkgver-data  
-    jam -qa || return 1
+    cd $pkgname-rally-$pkgver/src
+    make
 
 }
 
 package() {
 
-    install -Dm755 $srcdir/trigger-rally-$pkgver-src/trigger $pkgdir/usr/bin/trigger
-
+    cd $pkgname-rally-$pkgver/src/
+    prefix="/usr" exec_prefix="/usr" make DESTDIR=$pkgdir install
     install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     install -Dm644 $srcdir/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }

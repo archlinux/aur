@@ -1,28 +1,25 @@
 pkgbase = trigger
 	pkgdesc = Free OpenGL rally car racing game
-	pkgver = 0.6.2
+	pkgver = 0.6.6.1
 	pkgrel = 1
-	url = http://sourceforge.net/projects/trigger-rally/
+	url = https://sourceforge.net/projects/trigger-rally/
 	install = trigger.install
-	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = ftjam
 	makedepends = glew
-	makedepends = sdl_mixer
-	depends = sdl_image
+	makedepends = tinyxml2
+	makedepends = openal
 	depends = physfs
-	depends = freeglut
 	depends = freealut
-	depends = trigger-data
 	depends = glu
 	depends = xdg-utils
-	source = http://sourceforge.net/projects/trigger-rally/files/trigger-0.6.2/trigger-rally-0.6.2-src.tar.bz2
+	depends = sdl2_image
+	source = https://sourceforge.net/projects/trigger-rally/files/trigger-0.6.6.1/trigger-rally-0.6.6.1.tar.gz
 	source = trigger.png
 	source = trigger.desktop
-	sha512sums = 93507131682828735d0de20c8956f83df9a461b30fd5b21c25f4cf81a877c79b7d429d13aa4d2d4d3b3c6a3bdcb1bff51d44188434e04dd36240fd29fe0b13b6
-	sha512sums = 09867405b809e1856d222949dcc81f897eecb87e270cceaca8fd33745ce38bfb52b0a0cb6b12fe90cd844ade92f77b79f803ed8d7c65b59af6f58a89d176f191
-	sha512sums = c60d02949131eb1e8b42acdf55ebf3b8290d24bebe89bb12e54001be0f78146e1ad0ae8955d480f484134174dd16975deaa37e2f3880b2972e9bdd71763bdacb
+	sha512sums = feed805858ef63907bb10088761f1219b22fe55ead268511ef73b18aa0f18d79e87d4e2cbfb76361b1dec3949b59464af33efe31e81f06ae7e163430f3336669
+	sha512sums = a7ebc8cb714755701b4e9b83cb4773679d1bbdae66ed1bd9dc747474b027fbda31c6e723cf4f910d833b16ae5e354660030dc9c7d86022006ed7f2f0e03c1d14
+	sha512sums = 7127a8279cabbbd3e208c67a0c5e008fdf3721822b74d8eb9ce30bad29acf8875aade79dde3df32e118b00d5ee8e3927cbf287207a028f7a35cd1ae2a4d1dbe2
 
 pkgname = trigger
 
