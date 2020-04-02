@@ -2,8 +2,8 @@
 
 pkgbase=linux-slim
 _srcname=linux
-gitver=v5.6.1
-pkgver=5.6.v.1
+gitver=v5.6.2
+pkgver=5.6.v.2
 pkgrel=1
 arch=('x86_64')
 url="http://www.kernel.org/"

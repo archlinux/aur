@@ -1,5 +1,5 @@
 pkgbase = linux-slim
-	pkgver = 5.6.v.1
+	pkgver = 5.6.v.2
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = x86_64
