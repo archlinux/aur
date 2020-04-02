@@ -1,7 +1,7 @@
 pkgbase = birdfont
 	pkgdesc = A font editor which can generate fonts in TTF, EOT, SVG and BIRDFONT format
 	pkgver = 2.28.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://birdfont.org
 	arch = x86_64
 	arch = i686

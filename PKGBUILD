@@ -1,4 +1,5 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: Mohamed Sobh <mohamed.alhusieny@gmail.com>
 # Contributor: Drew Noel <drewmnoel@gmail.com>
 # Contributor: Manuel Hüsers <manuel.huesers@uni-ol.de>
 # Contributor: fstirlitz <felix.von.s@posteo.de>
@@ -7,7 +8,7 @@
 
 pkgname=birdfont
 pkgver=2.28.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A font editor which can generate fonts in TTF, EOT, SVG and BIRDFONT format'
 arch=('x86_64' 'i686')
 url='https://birdfont.org'
@@ -26,7 +27,7 @@ validpgpkeys=('FB3BEFA59A6FF7F0E0682B68BCD31D4CCCEB9DD4') # Johan Mattsson <gmai
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure -p /usr
+	./configure -p /usr --ldflags="$(pkg-config --libs cairo-gobject)"
 	./build.py
 }
 
