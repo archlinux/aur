@@ -4,7 +4,7 @@
 
 pkgname=lbry-app-bin
 pkgver=0.44.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The LBRY app built using electron'
 arch=('x86_64')
 url='https://lbry.com/'
@@ -12,7 +12,7 @@ license=('MIT')
 # dpkg -I $pkg.deb | grep Depends
 # gconf deprecated: https://github.com/electron/electron/issues/2727
 # gnome-keyring still required: https://github.com/lbryio/lbry-desktop/issues/386
-depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret' 'gnome-keyring')
+depends=('libnotify' 'libappindicator-gtk2' 'libxtst' 'nss' 'libsecret')
 source=('https://github.com/lbryio/lbry-desktop/releases/download/v0.44.0/LBRY_0.44.0.deb')
 sha256sums=('b799d9de6c9721e8d022ec1d0786e554f6299fd6b7219bbef254793a22367c6c')
 
