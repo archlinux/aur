@@ -8,6 +8,7 @@ pkgdesc="This module implements the HMAC Key Derivation function, defined at htt
 arch=('any')
 url="https://pypi.python.org/packages/c3/be/hkdf-${pkgver}"
 license=('BSD')
+depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/c3/be/327e072850db181ce56afd51e26ec7aa5659b18466c709fa5ea2548c935f/hkdf-${pkgver}.tar.gz")
 
