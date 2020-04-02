@@ -1,7 +1,7 @@
 pkgbase = jre8-adoptopenjdk-hotspot
 	pkgdesc = AdoptOpenJDK Java 8 full runtime environment
 	pkgver = 8.0.242.08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://adoptopenjdk.net/
 	install = install_jdk-adoptopenjdk.sh
 	arch = x86_64

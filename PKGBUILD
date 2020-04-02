@@ -2,7 +2,7 @@
 
 _majorver=8
 _variant=hotspot
-pkgrel=2
+pkgrel=3
 pkgver=8.0.242.08
 _tag_ver=8u242-b08
 
