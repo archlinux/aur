@@ -1,7 +1,7 @@
 pkgbase = deadbeef-plugin-hdcd-git
 	pkgdesc = An HDCD decoder DSP plugin for deadbeef audio player, using libhdcd
 	pkgver = r9.246c842
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bp0/deadbeef-hdcd
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 pkgname=deadbeef-plugin-hdcd-git
 _pkgname=deadbeef-hdcd
 pkgver=r9.246c842
-pkgrel=1
+pkgrel=2
 pkgdesc="An HDCD decoder DSP plugin for deadbeef audio player, using libhdcd"
 arch=('i686' 'x86_64')
 url="https://github.com/bp0/deadbeef-hdcd"
@@ -24,7 +24,6 @@ build() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/lib/deadbeef"
   cd "$srcdir/$_pkgname/"
-  mv ddb_hdcd.so "$pkgdir/usr/lib/deadbeef/"
+  install -Dm644 -t "$pkgdir/usr/lib/deadbeef/" ddb_hdcd.so
 }
