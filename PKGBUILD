@@ -1,6 +1,6 @@
 # Maintainer: Paul Etherton <paul at pjetherton dot co dot uk>
 pkgname=crush-git
-pkgver=r336.e767d71
+pkgver=0.1.0.r336.e767d71
 pkgrel=1
 pkgdesc="An attempt to make a command line shell that is also a powerful modern programming language"
 arch=('x86_64')
@@ -19,7 +19,7 @@ build() {
 
 pkgver() {
 	cd crush
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	echo "$(grep '^version =' Cargo.toml|head -n1|cut -d\" -f2|cut -d\- -f1).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {

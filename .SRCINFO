@@ -1,6 +1,6 @@
 pkgbase = crush-git
 	pkgdesc = An attempt to make a command line shell that is also a powerful modern programming language
-	pkgver = r336.e767d71
+	pkgver = 0.1.0.r336.e767d71
 	pkgrel = 1
 	url = https://github.com/liljencrantz/crush
 	arch = x86_64
