@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-goodcity
 _pkgname=goodcity
@@ -15,7 +15,6 @@ source=("http://img.dafont.com/dl/?f=good_city_modern")
 md5sums=('0aaf829370590d41791b5d6ce0c784cd')
 
 package() {
-    unzip "?f=good_city_modern"
     mkdir "$srcdir/$_pkgname"
     mv $srcdir/gocmp___.ttf $srcdir/$_pkgname
     cd "$srcdir/$_pkgname"
