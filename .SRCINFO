@@ -1,9 +1,8 @@
 pkgbase = rlvm-git
 	pkgdesc = RealLive clone for Linux and OSX. Git version.
-	pkgver = 20150819
+	pkgver = latest
 	pkgrel = 1
-	url = http://www.elliotglaysher.org/rlvm/
-	arch = i686
+	url = http://www.rlvm.net/
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -12,6 +11,9 @@ pkgbase = rlvm-git
 	depends = boost-libs>=1.46
 	depends = glew
 	depends = libmad
+	depends = libogg
+	depends = libvorbis
+	depends = libpng
 	depends = sdl_mixer
 	depends = sdl_image
 	depends = sdl_ttf
@@ -21,8 +23,8 @@ pkgbase = rlvm-git
 	conflicts = rlvm
 	source = git+https://github.com/eglaysher/rlvm.git
 	source = freetype.patch
-	md5sums = SKIP
-	md5sums = 60d11c6a9b259eda3ee69c6a6ddaffac
+	sha256sums = SKIP
+	sha256sums = 102c0e50a42abfe635ff3a454bedf5d76ce47b8ebb7ac802605979199c7e471b
 
 pkgname = rlvm-git
 
