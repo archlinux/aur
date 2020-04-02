@@ -3,7 +3,7 @@
 pkgname=pdfcropmargins
 PkgName=pdfCropMargins
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Automatically crops the margins of PDF files"
 arch=('any')
 depends=('python-setuptools' 'python-wheel' 'python-pysimplegui' 'python-pymupdf' 'ghostscript' 'poppler')

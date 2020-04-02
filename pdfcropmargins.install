@@ -1,0 +1,11 @@
+post_install() {
+  echo "To run pdfcropmargins in GUI mode :"
+  echo "pdf-crop-margins -gui <file.pdf>"
+  echo " "
+  echo "To run pdfcropmargins in CLI mode :"
+  echo "pdf-crop-margins <file.pdf>"
+  echo " "
+  echo "Read the doc :"
+  echo "pdf-crop-margins --help"
+  echo " "
+}
