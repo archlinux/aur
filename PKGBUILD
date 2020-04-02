@@ -8,7 +8,7 @@
 #
 pkgname=rstudio-server-git
 _gitname="rstudio"
-pkgver=v1.2.5033.r3965.ga7aa56fcba
+pkgver=v1.2.5033.r3971.g73fb0f3884
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
@@ -21,7 +21,7 @@ depends=('r>=3.0.1' 'boost-libs>=1.69' 'openssl' 'mathjax2' 'pandoc' 'clang' 'po
 makedepends=('git' 'cmake>=3.4.3' 'boost>=1.69' 'jdk8-openjdk' 'apache-ant' 'unzip' 'bzip2' 'pango' 'pam' 'zlib' 'wget' 'yarn')
 install="${pkgname}.install"
 conflicts=('rstudio-server')
-source=('git://github.com/rstudio/rstudio.git'
+source=('git+https://github.com/rstudio/rstudio.git'
 	'rstudio-server.service'
 	"https://s3.amazonaws.com/rstudio-buildtools/gin-${_ginver}.zip"
 	"https://s3.amazonaws.com/rstudio-buildtools/gwt-${_gwtver}.zip"
@@ -46,7 +46,7 @@ pkgver() {
 prepare () {
 	cd ${srcdir}/$_gitname
 	# Patching SOCI
-	patch -p1 < ${srcdir}/soci.patch
+	# patch -p1 < ${srcdir}/soci.patch
 	# patch -p1 < ${srcdir}/rstudio_boost.patch
 
 	msg "Extracting dependencies..."
