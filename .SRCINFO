@@ -1,0 +1,14 @@
+pkgbase = python-buildbot-gitea
+	pkgdesc = Buildbot plugin for integration with Gitea.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/lab132/buildbot-gitea
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = buildbot
+	source = python-buildbot-gitea-1.2.0.tar.gz::https://github.com/lab132/buildbot-gitea/archive/v1.2.0.tar.gz
+	md5sums = 6cdae14b97bd2c65297af41aa42b8b74
+
+pkgname = python-buildbot-gitea
+
