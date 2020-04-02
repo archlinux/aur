@@ -2,7 +2,7 @@
 # Maintainer: Markus Näther <naetherm@cs.uni-freiburg.de>
 pkgname=rocminfo
 pkgver=3.3.0
-pkgrel=3
+pkgrel=1
 pkgdesc="ROCm info tools - rocm_agent_enumerator"
 arch=('x86_64')
 url="https://github.com/RadeonOpenCompute/rocminfo"
