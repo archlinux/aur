@@ -33,7 +33,7 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     install -Dm755 "$srcdir/$pkgname/$_name" "$pkgdir/usr/games/$_name/$_name"
     install -Dm666 "$srcdir/$pkgname/default.cfg" "$pkgdir/usr/games/$_name/default.cfg"
-    install -Dm644 "$srcdir/$pkgname/rom.db" "$pkgdir/usr/games/$_name/romb.db"
+    install -Dm666 "$srcdir/$pkgname/rom.db" "$pkgdir/usr/games/$_name/rom.db"
     install -Dm644 "$srcdir/$pkgname/gamecontrollerdb.txt" "$pkgdir/usr/games/$_name/gamecontrollerdb.txt"
     install -Dm644 "$srcdir/$pkgname/images/360.png" "$pkgdir/usr/games/$_name/images/360.png"
     install -Dm644 "$srcdir/$pkgname/images/ps4.png" "$pkgdir/usr/games/$_name/images/ps4.png"
