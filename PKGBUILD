@@ -1,8 +1,8 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.0.0.r1.g67e87431
-pkgrel=2
+pkgver=3.1.1.r19.g6865786e
+pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
@@ -11,13 +11,13 @@ makedepends=('git')
 depends=(
   'hyphen'
   'poppler'
-  'python>=3.2'
+  'python>=3.3'
   'python-ly>=0.9.5'
   'python-poppler-qt5'
-  'python-pyqt5>=5.4'
-  'qt5-base>=5.4'
-  'qt5-svg>=5.4'
-  'qt5-webkit>=5.4'
+  'python-pyqt5>=5.9'
+  'qt5-base>=5.9'
+  'qt5-svg>=5.9'
+  'qt5-webkit>=5.9'
   'hicolor-icon-theme'
   'tango-icon-theme'
 )
@@ -35,10 +35,11 @@ optdepends=(
   'hyphen-it: Italian hyphenation rules'
   'hyphen-nl: Dutch hyphenation rules'
   'hyphen-ro: Romanian hyphenation rules'
+  'python-pycups: Printing to a local CUPS server'
 )
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}"::'git://github.com/wbsoft/frescobaldi.git')
+source=("${pkgname}"::'git://github.com/frescobaldi/frescobaldi.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -53,6 +54,12 @@ prepare() {
   # Provided by hyphen-*
   rm -f frescobaldi_app/hyphdicts/hyph_*.dic
   rm -f frescobaldi_app/hyphdicts/README*
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  make -C i18n
+  make -C linux
 }
 
 package() {
