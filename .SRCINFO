@@ -1,6 +1,6 @@
 pkgbase = ttf-porcelain
 	pkgdesc = A handwritten font
-	pkgver = 1
+	pkgver = 1.0.1
 	pkgrel = 1
 	arch = any
 	license = custom:SIL Open Font License v1.1
