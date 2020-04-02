@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LOIQ
+GenericName=Low Orbit Ion Cannon in Qt
+Categories=Network
+TryExec=loiq
+Icon=loiq
+Exec=loiq %F
+StartupNotify=true
+Terminal=false
+Type=Application
