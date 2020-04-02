@@ -1,7 +1,7 @@
 # Mantainer: Daniel Urdiales <daniurdi46@gmail.com>
 
 pkgname=breeze-noir-dark-systemwide
-pkgver=1.0
+pkgver=2.0
 pkgrel=0
 pkgdesc="Breeze based global theme for KDE and GTK installed system-wide"
 arch=(any)
