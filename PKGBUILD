@@ -1,33 +1,35 @@
 # $Id: PKGBUILD 129113 2015-03-12 10:45:30Z foutrelis $
-# Maintainer:
+# Maintainer: Angelo Geulin <angelogeulin123@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
 pkgname=mplayer-vaapi
 pkgver=36265
-pkgrel=18
+pkgrel=19
 pkgdesc="A movie player, compiled with vaapi support"
 arch=('i686' 'x86_64')
 url="http://gitorious.org/vaapi/mplayer"
 license=('GPL')
-depends=('libxxf86dga' 'libxxf86vm' 'libmad' 'libcdio-paranoia' 'libxinerama'
+depends=('libxxf86vm' 'libmad' 'libcdio-paranoia' 'libxinerama'
          'lame' 'fontconfig' 'libtheora' 'xvidcore' 'libmng' 'libxss' 'glu'
          'sdl' 'smbclient' 'aalib' 'jack' 'libcaca' 'libx264' 'faac' 'faad2'
          'lirc' 'ttf-dejavu' 'libxvmc' 'enca' 'opencore-amr' 'libdca'
          'a52dec' 'schroedinger' 'mpg123' 'libvpx' 'libpulse' 'fribidi' 'opus'
-         'libbluray' 'libva' 'libass' 'rtmpdump' 'gsm' 'desktop-file-utils')
+         'libbluray' 'libva' 'libass' 'rtmpdump' 'gsm' 'desktop-file-utils'
+         'libxv')
 depends+=('libx264.so')
 makedepends=('unzip' 'live-media' 'yasm' 'ladspa' 'git' 'mesa' 'x264')
 provides=("mplayer=$pkgver")
 conflicts=('mplayer')
 backup=('etc/mplayer/codecs.conf' 'etc/mplayer/input.conf')
-source=(http://pkgbuild.com/~foutrelis/sources/$pkgname/$pkgname-$pkgver.tar.xz{,.sig}
+source=(https://github.com/ryshglene/mplayer-vaapi/releases/download/$pkgver/$pkgname-$pkgver.tar.xz{,.sig}
         cdio-includes.patch
         tweak-desktop-file.patch
         subreader-fix-srt-parsing.patch
         include-samba-4.0.patch
-        ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch)
+        ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch
+        ffmpeg-?-libx264-fix-compilation-with-x264-builds-ge-153.patch)
 options=('!buildflags' '!emptydirs')
 install=mplayer-vaapi.install
 sha256sums=('5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a'
@@ -35,8 +37,9 @@ sha256sums=('5747c28c30c15d1000fb655a8abaa4b22483746d0e82775b27466948ae0c549a'
             '72e6c654f9733953ad2466d0ea1a52f23e753791d8232d90f13293eb1b358720'
             '5a09fb462729a4e573568f9e8c1f57dbe7f69c0b68cfa4f6d70b3e52c450d93b'
             '8b6cd325d89ff8bce3662c6aaa9b61b8e6163c6574e09b575426a1eed02b8ad3'
-            '169eb47b3b838ea95e50c871bdbbfb6fe0b9349b054da830f55f3b4d5055e4f3'
-            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a')
+            '7a91109a107ac45c585653bc76459ca3ddc56329fb16260d14e7571d6c94eb08'
+            '277994aca5a6e40c1a90750859828817e0646bfb28142fdb34d5f9d3196c3f7a'
+            'ab52cbbf93ec33beeed345d69540e24d5aa4db129d97cbe1926dc77bea786d1e')
 validpgpkeys=('86CFFCA918CF3AF47147588051E8B148A9999C34')
 
 
@@ -54,6 +57,9 @@ prepare() {
 
   # https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=6540fe04a3f9a11ba7084a49b3ee5fa2fc5b32ab
   patch -d ffmpeg -Np1 -i "$srcdir/ffmpeg-2.8.1-libvpxenc-remove-some-unused-ctrl-id-mappings.patch"
+
+  # https://git.videolan.org/?p=ffmpeg.git;a=commitdiff_plain;h=2a111c99a60fdf4fe5eea2b073901630190c6c93
+  patch -d ffmpeg -Np0 -i "$srcdir/ffmpeg-?-libx264-fix-compilation-with-x264-builds-ge-153.patch"
 }
 
 build() {
