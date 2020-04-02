@@ -2,20 +2,22 @@
 
 pkgname=("openxr-loader-git" "openxr-headers-git" "openxr-layers-git" "openxr-utils-git")
 _dirname="openxr-loader"
-pkgver=1.0.5.r7.ge4b4611
+pkgver=1.0.8.r1.gc5e5667
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
 depends=()
 makedepends=('cmake' 'git' 'vulkan-headers')
 license=('apache')
-source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master")
-md5sums=('SKIP')
+source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master"
+        "0001-hello_xr-vulkan-Fix-build-with-Vulkan-headers-1.2.13.patch")
+md5sums=('SKIP' '0ec4cb88a02b2e2e8c78dde8dc4f5a8a')
 
 #options=('debug' '!strip')
 
 prepare() {
   cd "$_dirname"
+  git am ../0001-hello_xr-vulkan-Fix-build-with-Vulkan-headers-1.2.13.patch
 }
 
 pkgver() {

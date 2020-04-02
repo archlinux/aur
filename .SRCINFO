@@ -1,5 +1,5 @@
 pkgbase = openxr-loader-git
-	pkgver = 1.0.5.r7.ge4b4611
+	pkgver = 1.0.8.r1.gc5e5667
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK-Source
 	arch = i686
@@ -9,7 +9,9 @@ pkgbase = openxr-loader-git
 	makedepends = git
 	makedepends = vulkan-headers
 	source = openxr-loader::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master
+	source = 0001-hello_xr-vulkan-Fix-build-with-Vulkan-headers-1.2.13.patch
 	md5sums = SKIP
+	md5sums = 0ec4cb88a02b2e2e8c78dde8dc4f5a8a
 
 pkgname = openxr-loader-git
 	pkgdesc = OpenXR loader
