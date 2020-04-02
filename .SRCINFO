@@ -1,20 +1,20 @@
 pkgbase = ocaml-curl
-	pkgdesc = OCaml bindings to libcurl networking library
+	pkgdesc = OCaml bindings to libcurl
 	pkgver = 0.9.1
-	pkgrel = 3
-	url = https://github.com/ygrek/ocurl
+	pkgrel = 4
+	url = https://ygrek.org.ua/p/ocurl
 	arch = i686
 	arch = x86_64
 	arch = armv7h
-	license = BSD
+	license = MIT
 	makedepends = ocaml-findlib
 	depends = ocaml
 	depends = curl>=7.28.0
 	options = !strip
 	options = !makeflags
 	options = staticlibs
-	source = https://github.com/ygrek/ocurl/releases/download/0.9.1/ocurl-0.9.1.tar.gz
-	sha256sums = c65f01913270b674a0ca0f278f91bc1e368d7110e8308084bc2280b43a0bc258
+	source = https://github.com/ygrek/ocurl/archive/0.9.1.tar.gz
+	md5sums = 98dd56308f4ab0859e549232b602a733
 
 pkgname = ocaml-curl
 
