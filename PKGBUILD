@@ -8,7 +8,6 @@ pkgdesc='Classic cursor with a flying style.'
 arch=('any')
 url='https://github.com/varlesh/volantes-cursors'
 license=('GPL2')
-depends=('plasma-desktop')
 makedepends=('git' 'inkscape' 'xorg-xcursorgen')
 provides=($_pkgname)
 conflicts=($_pkgname)
@@ -16,16 +15,16 @@ source=("git+https://github.com/varlesh/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    make build
+  cd "${srcdir}/${_pkgname}"
+  make build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }

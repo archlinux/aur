@@ -8,7 +8,6 @@ pkgbase = volantes-cursors-git
 	makedepends = git
 	makedepends = inkscape
 	makedepends = xorg-xcursorgen
-	depends = plasma-desktop
 	provides = volantes-cursors
 	conflicts = volantes-cursors
 	source = git+https://github.com/varlesh/volantes-cursors.git
