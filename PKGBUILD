@@ -21,7 +21,6 @@ pkgver () {
 
 prepare() {
   cd "${srcdir}/vtk"
-  sed -i "s|Psapi|psapi|g" Utilities/KWSys/vtksys/CMakeLists.txt
 }
 
 build() {
