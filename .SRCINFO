@@ -4,10 +4,7 @@ pkgbase = ttf-porcelain
 	pkgrel = 1
 	arch = any
 	license = custom:SIL Open Font License v1.1
-	depends = fontconfig
-	depends = xorg-fonts-encodings
-	depends = xorg-font-utils
-	source = Porcelain.ttf:https://github.com/ptcar2009/ttf-porcelain/raw/master/Porcelain.ttf
+	source = Porcelain.ttf::https://github.com/ptcar2009/ttf-porcelain/raw/master/Porcelain.ttf
 	sha256sums = 118fed9862e016c292b8843d0572988179548b8c3f7bcc79fc25e9c097b123a0
 
 pkgname = ttf-porcelain
