@@ -1,6 +1,6 @@
 pkgbase = gifify
 	pkgdesc = Convert videos to GIFs
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/aureooms/gifify
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = gifify
 	depends = ffmpeg
 	depends = imagemagick
 	depends = gifsicle
-	source = https://github.com/aureooms/gifify/archive/v1.0.0.tar.gz
+	depends = gifski
+	source = https://github.com/aureooms/gifify/archive/v2.0.0.tar.gz
 	md5sums = SKIP
 
 pkgname = gifify
