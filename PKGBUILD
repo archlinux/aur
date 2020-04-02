@@ -51,6 +51,7 @@ package_openxr-loader-git() {
   rm -rf "$pkgdir"/usr/bin/
   rm -rf "$pkgdir"/usr/share/openxr
   rm -rf "$pkgdir"/usr/lib/*ApiLayer*
+  rm -rf "$pkgdir"/usr/share/man/
 }
 
 package_openxr-headers-git() {
