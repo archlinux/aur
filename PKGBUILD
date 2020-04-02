@@ -3,14 +3,14 @@
 
 _pkg=locust
 pkgname="python-$_pkg-git"
-pkgver=0.13.2.r6.g989fa24
+pkgver=0.14.5.r83.g34cb6d1
 pkgrel=1
 pkgdesc="Scalable user load testing tool written in Python"
 arch=('any')
 url="https://github.com/locustio/$_pkg"
 license=('MIT')
 depends=('python-flask'
-         'python-gevent'
+         'python-gevent-git'
 		 'python-geventhttpclient-wheels'
          'python-msgpack'
          'python-pyzmq'
