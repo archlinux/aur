@@ -6,13 +6,8 @@ pkgbase = python-hkdf
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://pypi.python.org/packages/c3/be/327e072850db181ce56afd51e26ec7aa5659b18466c709fa5ea2548c935f/hkdf-0.0.3.tar.gz
 	sha256sums = 622a31c634bc185581530a4b44ffb731ed208acf4614f9c795bdd70e77991dca
 
 pkgname = python-hkdf
-	depends = python
-
-pkgname = python2-hkdf
-	depends = python2
 
