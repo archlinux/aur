@@ -4,7 +4,7 @@
 
 pkgname=losslesscut
 pkgver=3.17.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Crossplatform GUI tool for lossless trimming/cutting of video/audio files"
 arch=('x86_64')
 url="https://github.com/mifi/lossless-cut"
@@ -24,7 +24,7 @@ package() {
   mkdir -p "${pkgdir:?}"/usr/{share/losslesscut,bin}
   cd LosslessCut-linux
   tar -cf - . | tar -C "$pkgdir/usr/share/losslesscut" -xvf -
-  ln -s /usr/share/losslesscut/lossless-cut "$pkgdir"/usr/bin/losslesscut
+  ln -s /usr/share/losslesscut/losslesscut "$pkgdir"/usr/bin/losslesscut
   install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
   install -Dm644 ../icon.svg "$pkgdir"/usr/share/pixmaps/$pkgname.svg
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
