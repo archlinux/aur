@@ -1,11 +1,10 @@
 pkgbase = easyframework
 	pkgdesc = another C framework
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/vbextreme/EasyFramework
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = meson
 	makedepends = ncurses
 	depends = pcre2
@@ -15,7 +14,7 @@ pkgbase = easyframework
 	depends = gnutls
 	depends = curl
 	depends = libgit2
-	source = git+https://github.com/vbextreme/EasyFramework.git
+	source = easyframework-1.1.1.tar.gz::git+https://github.com/vbextreme/EasyFramework/archive/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = easyframework

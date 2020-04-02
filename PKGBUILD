@@ -2,33 +2,28 @@
 # Contributor: Vbextreme <@>
 pkgname=('easyframework')
 pkgdesc='another C framework'
-pkgver=1.1.0
+pkgver='1.1.1'
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/vbextreme/EasyFramework'
-source=('git+https://github.com/vbextreme/EasyFramework.git')
+source=("${pkgname}-${pkgver}.tar.gz"::"git+https://github.com/vbextreme/EasyFramework/archive/v${pkgver}.tar.gz")
 license=('GPL3')
 sha256sums=('SKIP')
-makedepends=('git' 'meson' 'ncurses')
+makedepends=('meson' 'ncurses')
 depends=('pcre2' 'libunistring' 'libtar' 'zlib' 'gnutls' 'curl' 'libgit2' )
 
-pkgver() {
-  cd "EasyFramework"
-  grep -Po 'version:[ \t]*'\''[^'\'']+'\' meson.build | sed -r -e 's/version:[ \t]*'\''([^'\'']+)'\''/\1/'
-}
-
 prepare() {
-    cd EasyFramework
+    cd "${pkgname}-${pkgver}"
     meson build -Dprefix=/usr -Dterminfo=share/terminfo
 }
 
 build() {
-    cd "$srcdir"/EasyFramework/build
+    cd "${pkgname}-${pkgver}"
     ninja
 }
 
 package() {
-    cd "$srcdir"/EasyFramework/build
+    cd "${pkgname}-${pkgver}"
     DESTDIR="$pkgdir" ninja install
 }
 
