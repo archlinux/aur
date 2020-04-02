@@ -1,11 +1,12 @@
 pkgbase = fspy
 	pkgdesc = cross platform app for still image camera matching
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stuffmatic/fSpy
 	arch = x86_64
 	license = GPL
 	makedepends = yarn
+	depends = gconf
 	depends = fuse2
 	depends = xdialog
 	source = https://github.com/stuffmatic/fSpy/archive/v1.0.3.tar.gz
