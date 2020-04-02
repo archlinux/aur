@@ -6,12 +6,13 @@ pkgbase = pqiv
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	depends = ffmpeg
 	depends = gtk3
 	depends = imagemagick
 	depends = libarchive
 	depends = libspectre
 	depends = libwebp
-	depends = poppler
+	depends = poppler-glib
 	source = pqiv-2.11.tar.gz::https://github.com/phillipberndt/pqiv/archive/2.11.tar.gz
 	sha256sums = ea1f8b6bcb58dee19e2d8168ef4efd01e222c653eabbd3109aad57a870cc8c9b
 
