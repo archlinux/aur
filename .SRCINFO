@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-nauty
+	pkgdesc = A program for computing automorphism groups of graphs and digraphs (mingw-w64)
+	pkgver = 26r12
+	pkgrel = 1
+	url = http://pallini.di.uniroma1.it/
+	arch = any
+	license = Apache
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://pallini.di.uniroma1.it/nauty26r12.tar.gz
+	sha256sums = 862ae0dc3656db34ede6fafdb0999f7b875b14c7ab4fedbb3da4f28291eb95dc
+
+pkgname = mingw-w64-nauty
+
