@@ -9,3 +9,13 @@ post_install() {
   echo "pdf-crop-margins --help"
   echo " "
 }
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
