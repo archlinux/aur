@@ -1,7 +1,5 @@
-.vscode
-make.sh
-*.pkg.tar
-*.tar.gz
-android-studio
-pkg
-src
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!license.html
