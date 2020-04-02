@@ -1,4 +1,4 @@
 #!/bin/sh
 
 export env _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=gasp'
-exec java -jar /usr/lib/sql-power-architect/architect.jar
+exec java -jar /usr/lib/sql-power-architect/architect.jar "$@"
