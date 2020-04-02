@@ -24,15 +24,15 @@ pkgver() {
 build() {
   cd "$srcdir/$_pkgname"
   mvn clean compile assembly:single
-  cat << EOF > "$_pkgname.sh"
+  cat << EOF > ripme.sh
 #!/bin/sh
-exec java -jar /usr/share/java/$_pkgname.jar "\$@"
+exec java -jar /usr/share/java/ripme.jar "\$@"
 EOF
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 "target/$_pkgname-$(git describe --tags --abbrev=0)-jar-with-dependencies.jar" \
-    "$pkgdir/usr/share/java/$_pkgname.jar"
-  install -Dm755 "$_pkgname.sh" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 "target/ripme-$(git describe --tags --abbrev=0)-jar-with-dependencies.jar" \
+    "$pkgdir/usr/share/java/ripme.jar"
+  install -Dm755 ripme.sh "$pkgdir/usr/bin/ripme"
 }
