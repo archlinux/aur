@@ -1,24 +1,24 @@
 # Maintainer: Konstantin Gizdov <arch at kge dot pw>
 
-pkgname=python-uproot
+pkgbase=python-uproot
+pkgname=(python-uproot python-uproot-docs)
 _pkgname=uproot
-pkgname=python-uproot
 pkgver=3.11.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
-makedepends=('python-cachetools' 'python-setuptools')
+makedepends=('python-setuptools')
 checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests' 'python-xxhash')
 depends=('python-awkward' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-uproot-methods' 'python-zstandard')
 optdepends=('xrootd: access remote files over XRootD'
             'python-pandas: fill Pandas DataFrames instead of Numpy arrays'
             'python-requests: access remote files through HTTP'
             'python-xxhash: handle lz4-compressed ROOT files')
-url="https://github.com/scikit-hep/uproot"
+url="https://github.com/scikit-hep/${_pkgname}"
 license=('BSD')
 
-source=("${url}/archive/${pkgver}.zip")
-sha256sums=('5b71e96b2c0a7f7f74da339600c97dbf2ce652ba0768d2160bddd68131336527')
+source=("${_pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('374e94acc464913fc1be71e82cc3d66b4af0912cdc9fd1cc4db334141fc3aa1e')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -30,15 +30,22 @@ check() {
     python setup.py pytest
 }
 
-package() {
+package_python-uproot() {
+    optdepends+=('python-uproot-docs: docs')
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
     python setup.py install --root="${pkgdir}/" --optimize=1
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
 
+package_python-uproot-docs() {
+    depends=('python-sphinx')
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+
+    install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D README.rst "${pkgdir}/usr/share/${pkgname}/README.rst"
 
-    install -d "${pkgdir}/usr/share/doc/${pkgname}"
-    cp -r docs "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -d "${pkgdir}/usr/share/doc/${pkgbase}"
+    cp -r docs/* "${pkgdir}/usr/share/doc/${pkgbase}/"
 }
