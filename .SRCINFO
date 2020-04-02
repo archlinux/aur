@@ -1,0 +1,17 @@
+pkgbase = maszyna-git
+	pkgdesc = Polish train simulator
+	pkgver = r1277.c45081b2
+	pkgrel = 1
+	url = https://eu07.pl/
+	arch = x86_64
+	license = MPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = glfw
+	makedepends = glm
+	makedepends = libserialport
+	source = maszyna-git::git://github.com/eu07/maszyna.git
+	md5sums = SKIP
+
+pkgname = maszyna-git
+
