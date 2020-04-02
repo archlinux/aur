@@ -4,7 +4,7 @@
 pkgname=ttf-14minute
 _pkgname=14minute
 pkgver=1
-pkgrel=2
+pkgrel=1
 pkgdesc="A basic decorative ttf font"
 arch=('any')
 url="http://www.coolfonts.info/font-23-14_minutes.php"
