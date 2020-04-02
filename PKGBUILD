@@ -59,7 +59,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.5.13.arch2
+pkgver=5.6.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -92,7 +92,7 @@ source=(
     "git+$_repo_url?signed#tag=$_srcver_tag"
     "git+$_repo_url_gcc_patch"
     config         # the main kernel config file
-    0005-v5.5_undead-pds099o.patch
+    0005-v5.6_undead-pds099o.patch
     0005-glitched-pds.patch
 )
 validpgpkeys=(
@@ -102,8 +102,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            'f2dcfa47de2504957d4e65dd9edb656d8a9dda0cd7372b26ac2aa322ebc014b712853dd9d7708648fa2c7ea546514d226e81fc97685d8e118fca2bb4cb99c985'
-            'ae4bfb0ffa5ffaac000800eaaf67433700f826e3b63773ed980841f7377e6853687091b5ba0036a1d0badeb604ea0816280e22a2a67dbe2a370814091069562f'
+            'c9cf9c2b855e282a2a37553547724bb2ece180405fc4609197cd8b5e52e7771b4df3455cdb825e35c59756ae2eeedae22f3657af78f3ce5c9a162cf606650d7a'
+            '8f3fce45a43c25800d1efb11010a769eafc0a678ea128d695ef5fe189efe1fe60f0bf16d4d7ff13111bdb2385fdcfb27d554c2d3a93debf2341e5e83224f6153'
             'dca2b705810db5e3c3782ac4c11f499e010752055629213ccada09c8e748d20cd1e8c49a93d2e28c5b0c7bf23a2247f0d9858a26d4a56b7cef35108c731cff1c')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -123,9 +123,9 @@ prepare() {
     patch -Np1 -i "$srcdir/$_reponame_gcc_patch/$_gcc_patch_name"
 
     # From https://github.com/Tk-Glitch/PKGBUILDS/tree/master/linux53-tkg/linux53-tkg-patches
-    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.5 by TkG"
+    msg2 "Patching with Undead PDS 0.99o patches, rebased to 5.6 by TkG"
     for MyPatch in \
-        0005-v5.5_undead-pds099o.patch \
+        0005-v5.6_undead-pds099o.patch \
         0005-glitched-pds.patch
     do
         msg2 "Patching with $MyPatch..."
@@ -186,7 +186,9 @@ _package() {
         "crda: to set the correct wireless channels of your country"
         "linux-firmware: firmware images needed for some devices"
     )
-    provides=("$pkgbase=$pkgver")
+    provides=("$pkgbase=$pkgver"
+              VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+    replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
     cd $_reponame 
     local kernver="$(<version)"
@@ -205,9 +207,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -288,9 +287,6 @@ _package-headers() {
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -310,9 +306,6 @@ _package-docs() {
     msg2 "Adding symlink..."
     mkdir -p "$pkgdir/usr/share/doc"
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-    msg2 "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=(
