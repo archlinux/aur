@@ -143,8 +143,9 @@ _package-headers() {
 
   # Fix for DKMS because clang doesn't like this
   for f in Makefile kernel/Makefile; do
-    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern)$/d' $f
+    sed -i -re '/^.*[+]= *(-Qunused-arguments|-mno-global-merge|-ftrivial-auto-var-init=pattern|-Wno-initializer-overrides|-Wno-gnu|-Wno-format-invalid-specifier)$/d' $f
   done
+  echo -e "\nKBUILD_CFLAGS += -Wno-error" >> Makefile
 
   install -D -m644 Makefile \
     "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
