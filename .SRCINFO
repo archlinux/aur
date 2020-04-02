@@ -1,0 +1,13 @@
+pkgbase = python-grandalf
+	pkgdesc = Python package made for experimentations with graphs drawing algorithms..
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/bdcht/grandalf
+	arch = any
+	license = custom:MIT
+	depends = python-ply
+	source = python-grandalf-0.7.tar.gz::https://github.com/bdcht/grandalf/archive/v0.7.tar.gz
+	sha256sums = b3112299fe0a9123c088a16bf2f1b541d0d91199b77170a9739b569bd16a828e
+
+pkgname = python-grandalf
+
