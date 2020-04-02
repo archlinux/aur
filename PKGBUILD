@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-oldeenglish
 _pkgname=oldeenglish
@@ -15,7 +15,6 @@ source=("http://img.dafont.com/dl/?f=olde_english")
 md5sums=('d62ce8bba549293855c4bee64dba3f9f')
 
 package() {
-    unzip "?f=olde_english"
     mkdir "$srcdir/$_pkgname"
     mv $srcdir/OldeEnglish.ttf $srcdir/$_pkgname
     cd "$srcdir/$_pkgname"
