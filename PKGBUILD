@@ -1,4 +1,5 @@
-# Maintainer: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
+# Maintainer: xiretza <xiretza+aur@gmail.com>
+# Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
 # Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=sdrangel-git
