@@ -21,9 +21,9 @@ pkgbase = jre8-adoptopenjdk-hotspot
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	sha256sums = 5edfaefdbb0469d8b24d61c8aef80c076611053b1738029c0232b9a632fe2708
-	sha256sums = 47a879c24f1cfe41c239c4d39458c08522e36cad8b1dd4f334b493f84a7a23a6
-	sha256sums = 5be900de884c6acd287ddb980721f1ed5bf7f584ebe90feacab3de3ceec3495a
-	sha256sums = 6731d03365296fa8609e483fcbcf6d93bf727aa67ce60bf4969da33c861337aa
+	sha256sums = a6f608e06b0827d4ed0c70729ce4b2f1cb8bb587037da7642b4032ba8568b982
+	sha256sums = 3b7752a1eb6c2e5e40233db02f7c5ac1128acedef9de01447f3e295c31bb7d75
+	sha256sums = 3985b19d9bc0bd0f3fac7388112c9436aaea9e1f2fad874b5f9a3c6ab62a3481
 
 pkgname = jre8-adoptopenjdk-hotspot
 
