@@ -5,5 +5,6 @@ post_install() {
 	echo "=== INSTALLATION NOTES for $_pkgname ==="
 	echo -ne "\e[39;1m"
 	echo "Users should add \"source /usr/share/cdhist/$_pkgname.bashrc\" to their \$HOME/.bashrc."
+	echo "See complete instructions at https://github.com/bulletmark/cdhist."
 	echo -ne "\e[0m"
 }
