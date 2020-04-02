@@ -2,8 +2,8 @@
 # contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=freefem
-pkgver=4.5
-_pkgver=4.5
+pkgver=4.6
+_pkgver=4.6
 pkgrel=1
 pkgdesc='A PDE oriented language using the finite element method'
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('texlive-core' 'gcc-fortran' 'unzip' 'autoconf' 'python')
 conflicts=('freefem++')
 provides=('freefem++')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/FreeFem/FreeFem-sources/archive/v${_pkgver}.tar.gz")
-sha256sums=('5b2d4125c312da8fbedd49a72e742f18f35e0ae100c82fb493067dfad5d51432')
+sha256sums=('6c09af8e189fc02214b0e664b679b49832c134e29cf1ede3cab29cf754f6078f')
 
 prepare() {
   cd FreeFem-sources-${_pkgver}
@@ -35,7 +35,7 @@ prepare() {
 
 build() {
   cd FreeFem-sources-${_pkgver}
-  make 
+  make
 }
 
 check() {
