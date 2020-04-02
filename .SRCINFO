@@ -1,7 +1,7 @@
 pkgbase = ponyprog
 	pkgdesc = PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC
-	pkgver = 3.0.2.r296.f936d4b
-	pkgrel = 7
+	pkgver = 3.1.1.r431.1ea8c14
+	pkgrel = 1
 	url = http://www.LancOS.com
 	arch = any
 	license = GPLv2
@@ -10,6 +10,7 @@ pkgbase = ponyprog
 	makedepends = cmake
 	depends = qt5-base
 	depends = qt5-multimedia
+	optdepends = boost: strange build depend
 	source = git://github.com/lancos/ponyprog.git
 	md5sums = SKIP
 

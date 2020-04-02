@@ -1,13 +1,14 @@
 # Maintainer: Egor Panasenko <gaura.panasenko@gmail.com>
 
 pkgname=ponyprog
-pkgver=3.0.2.r296.f936d4b
-pkgrel=7
+pkgver=3.1.1.r431.1ea8c14
+pkgrel=1
 pkgdesc="PonyProg is a serial device programmer based on some simple and cheap interfaces for the PC"
 arch=('any')
 url="http://www.LancOS.com"
 license=('GPLv2')
 depends=("qt5-base" "qt5-multimedia")
+optdepends=("boost: strange build depend")
 makedepends=("coreutils" "git" "cmake")
 source=("git://github.com/lancos/${pkgname}.git")
 md5sums=("SKIP")
@@ -38,4 +39,5 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}/build"
 	make DESTDIR="$pkgdir/" install
+	mv "$pkgdir/lib" "$pkgdir/usr/lib"
 }
