@@ -1,13 +1,9 @@
-post_install() {
-    echo
-    echo "  See /etc/fonts/conf.avail/75-joypixels.conf for how to enforce rendering emojis via JoyPixels"
-    echo "  It contains various techniques, some of which can cause issues like rendering numbers as emojis"
-    echo "  Copy the file to /etc/fonts/conf.d/ and modify as needed to make it work for your own setup."
-    echo
-}
-
-post_remove() {
-    echo
-    echo "  Make sure to remove /etc/fonts/conf.d/75-joypixels.conf if you created it earlier"
-    echo
+post_upgrade() {
+    conf="/etc/fonts/conf.d/75-joypixels.conf"
+    if [ -L "$conf" -a ! -e "$conf" ]; then
+        echo
+        echo "  75-joypixels.conf is no longer provided by this package, see FS#66080"
+        echo "  Remember to update your $conf"
+        echo
+    fi
 }
