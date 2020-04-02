@@ -18,7 +18,7 @@ build() {
 package() {
 	cd "${pkgname}-${pkgver}"
 	
-	install -D -m 0755 "magnus" "${pkgdir}/opt/${$pkgname}/magnus"
+	install -D -m 0755 "magnus" "${pkgdir}/opt/${pkgname}/magnus"
 	install -D -m 0744 -Dt "${pkgdir}/usr/share/man/man1" "data/${pkgname}.1"
 	install -D -m 0644 "data/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m 0744 "data/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
