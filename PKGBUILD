@@ -11,7 +11,7 @@ license=('GPL3')
 install=openra-sp.install
 depends=('mono' 'ttf-dejavu' 'openal' 'libgl' 'freetype2' 'sdl2' 'lua51' 'hicolor-icon-theme' 'gtk-update-icon-cache'
          'desktop-file-utils' 'xdg-utils' 'zenity')
-makedepends=('dos2unix' 'git' 'unzip')
+makedepends=('dos2unix' 'git' 'unzip' 'msbuild')
 provides=('openra-sp')
 options=(!strip)
 source=("git+https://github.com/ABrandau/Shattered-Paradise-SDK.git"

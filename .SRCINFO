@@ -9,6 +9,7 @@ pkgbase = openra-sp-git
 	makedepends = dos2unix
 	makedepends = git
 	makedepends = unzip
+	makedepends = msbuild
 	depends = mono
 	depends = ttf-dejavu
 	depends = openal
