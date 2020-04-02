@@ -3,14 +3,15 @@
 _pkg=python-geventhttpclient-wheels
 pkgname="$_pkg-git"
 pkgver=1.3.1dev2.r0.g4d83606
-pkgrel=4
+pkgrel=2
 pkgdesc="A high performance, concurrent http client library for python with gevent"
 arch=('x86_64')
 url='https://github.com/locustio/geventhttpclient'
 license=('MIT')
-depends=('python-certifi')
+depends=('python-certifi'
+	'python-gevent-git')
 makedepends=('git'
-             'python-setuptools')
+	'python-setuptools')
 provides=("$_pkg")
 conflicts=("$_pkg")
 source=("$pkgname::git+$url")
@@ -25,10 +26,10 @@ pkgver() {
 
 build() {
 	cd "$pkgname" || exit
-    python setup.py build
+	python setup.py build
 }
 
 package() {
 	cd "$pkgname" || exit
-    python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
+	python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
 }
