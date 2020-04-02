@@ -2,8 +2,8 @@
 
 pkgname=prometheus-nginxlog-exporter-bin
 _name=prometheus-nginxlog-exporter
-pkgver=1.3.0
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Export metrics from Nginx access log files to Prometheus"
 
 arch=('x86_64')
