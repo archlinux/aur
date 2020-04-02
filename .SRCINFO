@@ -15,6 +15,7 @@ pkgbase = cog-wpe-gl
 	depends = wpewebkit
 	depends = wpebackend-fdo>=1.6.0
 	depends = libinput
+	conflicts = cog
 	conflicts = cog-git
 	source = https://wpewebkit.org/releases/cog-0.6.0.tar.xz
 	source = https://wpewebkit.org/releases/cog-0.6.0.tar.xz.asc
