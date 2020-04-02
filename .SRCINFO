@@ -4,6 +4,7 @@ pkgbase = webkit2gtk-glesv2-armv7l
 	pkgrel = 1
 	url = https://webkitgtk.org
 	arch = armv7l
+	arch = armv7h
 	license = custom
 	makedepends = gperf
 	makedepends = gobject-introspection

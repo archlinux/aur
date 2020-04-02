@@ -1,7 +1,7 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 pkgname=webkit2gtk-glesv2-armv7l
 pkgver=2.28.0
-arch=(armv7l)
+arch=(armv7l armv7h)
 pkgrel=1
 pkgdesc='GTK+ Web content engine library (glesv2 version)'
 url='https://webkitgtk.org'
