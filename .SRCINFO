@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.5.5.r0.g163f033345ba
+	pkgver = 5.6.1.r47.geedece8f2280e
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/pf-kernel/wikis/README
 	arch = x86_64
@@ -14,14 +14,11 @@ pkgbase = linux-pf-git
 	makedepends = graphviz
 	makedepends = imagemagick
 	makedepends = git
-	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.5
+	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.6
 	source = config
 	source = pf_defconfig
-	md5sums = SKIP
-	md5sums = 8b43b84a35febae81317fed00fdd17b5
-	md5sums = 86fb6ffdacf9f882b2e0439a01273569
 	sha256sums = SKIP
-	sha256sums = a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868
+	sha256sums = 625410a00ba052dd15fc5174ccb595dc08f8cb2107eb6033d624b7590e20d53d
 	sha256sums = 41bafedbcd2788508f998782cb0ef870948dbdd9827c75e93cbae7613f743c55
 
 pkgname = linux-pf-git
@@ -32,9 +29,9 @@ pkgname = linux-pf-git
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 
-pkgname = linux-pf-git-headers
+pkgname = linux-pf-headers-git
 	pkgdesc = Headers and scripts for building modules for the Linux pf-kernel (git version) kernel
 
-pkgname = linux-pf-git-docs
+pkgname = linux-pf-docs-git
 	pkgdesc = Documentation for the Linux pf-kernel (git version) kernel
 

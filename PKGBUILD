@@ -4,8 +4,9 @@
 
 pkgbase=linux-pf-git
 pkgdesc="Linux pf-kernel (git version)"
-pkgver=5.5.5.r0.g163f033345ba
-_basekernel=5.5
+pkgver=5.6.1.r47.geedece8f2280e
+_basekernel=5.6
+_product=linux-pf
 pkgrel=1
 arch=(x86_64)
 url="https://gitlab.com/post-factum/pf-kernel/wikis/README"
@@ -18,13 +19,9 @@ makedepends=(
 _srcname="${pkgbase}"
 source=("${_srcname}::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-${_basekernel}"
 	      'config'
-        'pf_defconfig'
-       )
-md5sums=('SKIP'
-         '8b43b84a35febae81317fed00fdd17b5'
-         '86fb6ffdacf9f882b2e0439a01273569')
+        'pf_defconfig')
 sha256sums=('SKIP'
-            'a841aa011edf6bae0ffbe8ead8177e5056de5a6d7333bb96e16917903de4d868'
+            '625410a00ba052dd15fc5174ccb595dc08f8cb2107eb6033d624b7590e20d53d'
             '41bafedbcd2788508f998782cb0ef870948dbdd9827c75e93cbae7613f743c55')
 
 pkgver() {
@@ -68,7 +65,7 @@ build() {
   make bzImage modules htmldocs
 }
 
-_package() {
+_package-git() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -96,7 +93,7 @@ _package() {
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-headers() {
+_package-headers-git() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
@@ -174,7 +171,7 @@ _package-headers() {
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-_package-docs() {
+_package-docs-git() {
   pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
@@ -196,10 +193,10 @@ _package-docs() {
   chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$pkgbase" "$_product-headers-git" "$_product-docs-git")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
+    $(declare -f "_package${_p#$_product}")
+    _package${_p#$_product}
   }"
 done
