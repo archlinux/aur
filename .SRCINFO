@@ -1,0 +1,38 @@
+pkgbase = libretro-ppsspp
+	pkgdesc = Sony PlayStation Portable core
+	pkgver = 26779
+	pkgrel = 1
+	url = https://github.com/libretro/ppsspp
+	arch = x86_64
+	groups = libretro
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = libglvnd
+	makedepends = mesa
+	makedepends = python
+	depends = glew
+	depends = libgl
+	depends = libretro-core-info
+	depends = zlib
+	source = libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=8e9926394933d8561a84564b8b26e30d07e19fdc
+	source = git+https://github.com/Kingcom/armips.git
+	source = git+https://github.com/discordapp/discord-rpc.git
+	source = git+https://github.com/hrydgard/ppsspp-ffmpeg.git
+	source = ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
+	source = git+https://github.com/hrydgard/ppsspp-lang.git
+	source = git+https://github.com/Tencent/rapidjson.git
+	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
+	source = armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libretro-ppsspp
+
