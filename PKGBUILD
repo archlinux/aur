@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-xenippa
 _pkgname=xenippa
@@ -15,7 +15,6 @@ source=("http://img.dafont.com/dl/?f=xenippa")
 md5sums=('76b2780d4d167e42cd7d00f361ef6320')
 
 package() {
-    unzip "?f=xenippa"
     mkdir "$srcdir/$_pkgname"
     mv $srcdir/${_pkgname}1.ttf $srcdir/$_pkgname
     cd "$srcdir/$_pkgname"
