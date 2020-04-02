@@ -6,7 +6,7 @@ pkgname=(zabbix-nightly-server zabbix-nightly-agent{,2} zabbix-nightly-proxy zab
 pkgver=5.0.0alpha5
 pkgrel=1
 _pre=pre
-_revison=c3ee2d2983
+_revison=2111656db4
 arch=(x86_64)
 url='https://www.zabbix.com/'
 license=(GPL)
@@ -18,7 +18,7 @@ source=(https://www.zabbix.com/downloads/nightly/${_pre}-${_base}-${pkgver}-${_r
         zabbix-server{-mysql,-pgsql}.service zabbix-server.{sysusers,tmpfiles}
         zabbix-proxy{-sqlite,-mysql,-pgsql}.service zabbix-proxy.{sysusers,tmpfiles})
 
-sha512sums=('54c11a33e11562b05a1301ef2b5a2298e1bb2b493f9b54519d278e9b13696eaba584e7e8efbe31f20ccf22462b243bd66abcfc4260f1c953d2fd7826e4163d61'
+sha512sums=('5690c2a572e1cdbfee1554d2e04c38acd280c19272c0534fd2a4699e4e9509e5026e7fc914413ac0c34bb5c7a525172390e990cea7be0ed55ff68762efda49f2'
             '8c1fa2676bc0ef91bc39ec5f97b4d3ba5c365d063420455a3785121a54e120bc5afeacde42a48f4509c115f940dcc3b6c2f43044a7fbfb421182fc93b22a2444'
             '3ab3ac1acc7e35c8896157aef601ebc30815237ac5252cbd0c1ecb26eeaf9eccf5c49938ae8c85bb79a6f95f607f082f6b80ed660829599ec03aa626cca6d3dc'
             'ca6b4779de23829dfdd80ee21e924fbe4e2754f4e693bed4b1a2aa846cd87d150e399b1169d7fe58d30c50ed837c1b8254e580de420267d0a1834d6dc409c43d'
