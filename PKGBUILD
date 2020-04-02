@@ -1,4 +1,5 @@
 # Maintainer: Vanush Misha Paturyan <ektich+cfengine-aur@gmail.com>
+# Maintainer: Alexey Shpakovsky <alexey at shpakovsky dot ru>
 # https://aur.archlinux.org/cfengine.git 
 #
 # Contributor: Kuba Serafinowski <zizzfizzix AT gmail DOT com>
@@ -6,14 +7,14 @@
 # Contributor: Christian Berendt <christian@thorlin.de>
 
 pkgname=cfengine
-pkgver=3.10.4
+pkgver=3.15.1
 pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
 arch=('i686' 'x86_64')
-depends=('lmdb' 'pcre' 'libxml2' 'pam' 'libyaml' 'curl' 'openssl-1.0')
-makedepends=('which')
+depends=('lmdb' 'pcre' 'libxml2' 'pam' 'libyaml' 'curl' 'openssl')
+makedepends=('which' 'inetutils')
 optdepends=('libvirt' 'postgresql-libs' 'libmariadbclient' 'acl')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/${pkgname}-${pkgver}.tar.gz"
@@ -23,18 +24,21 @@ source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaw
         'cf-serverd.service'
 	'cfengine3.service')
 
-md5sums=('198f1a1c0dfb28b67afc1b95bd9cf82a'
-         '7aa0ad539584201a7ef462be44d24898'
+md5sums=('f45e3eefa6449ef44c60b5b7c8dbe257'
+         'd2876ef406e4f16d2eb93c74a2df7265'
          '6edac71eaac0a19fc5b8129f17d82bb2'
          '199a7867b60a3e4013da4ac42343e22e'
          'f8783637895f6f3dd19a6ba689181d41'
          '4b89518da032b45073e46a993fd7fe26')
 
+prepare() {
+  cd ${srcdir}/${pkgname}-masterfiles-${pkgver}
+  patch -p1 <../../CFE-3302.patch
+}
+
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
 
-  export CFLAGS=-I/usr/include/openssl-1.0
-  export LDFLAGS=-L/usr/lib/openssl-1.0
   ./configure \
     --prefix=/usr \
     --with-workdir=/var/${pkgname} \
@@ -53,6 +57,14 @@ build() {
   ./configure \
       --prefix=/usr/share/doc/cfengine/CoreBase \
       --with-core=../cfengine-${pkgver}
+}
+
+check() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make check
+
+  cd ${srcdir}/${pkgname}-masterfiles-${pkgver}
+  make check
 }
 
 package() {

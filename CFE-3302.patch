@@ -1,0 +1,21 @@
+commit 660e8d6c713c3a9c71d29568d2c14a49fafc12b2
+Author: Aleksei Shpakovskii <aleksei.shpakovskii@cfengine.com>
+Date:   Fri Mar 27 08:55:53 2020 +0100
+
+    CFE-3302 Also pass cf-execd path to core/../testall script
+    
+    Without testall in core was updated recently and requires this
+    executable now, too.
+
+diff --git a/tests/acceptance/testall b/tests/acceptance/testall
+index 848a3df2..b5172378 100755
+--- a/tests/acceptance/testall
++++ b/tests/acceptance/testall
+@@ -90,6 +90,7 @@ else
+         --cfserverd="$CORE/cf-serverd/cf-serverd" \
+         --cfrunagent="$CORE/cf-runagent/cf-runagent" \
+         --cfkey="$CORE/cf-key/cf-key" \
++        --cfexecd="$CORE/cf-execd/cf-execd" \
+         --cfnet="$CORE/cf-net/cf-net" \
+         --cfcheck="$CORE/cf-check/cf-check" \
+         --rpmvercmp="$CORE/ext/rpmvercmp" \
