@@ -1,45 +1,36 @@
 # Maintainer: Stick <stick@stma.is>
 # Contributer: Sherlock Holo <Sherlockya@gmail.com>
 
-_pkg=locust
-pkgname="python-$_pkg-git"
-pkgver=0.14.5.r83.g34cb6d1
-pkgrel=2
+pkgname=python-locustio
+_name=${pkgname#python-}
+pkgver=0.14.5
+pkgrel=1
 pkgdesc="Scalable user load testing tool written in Python"
 arch=('any')
-url="https://github.com/locustio/$_pkg"
+url='https://locust.io/'
 license=('MIT')
-depends=('python-configargparse'
-	'python-flask'
+depends=(
 	'python-gevent'
-	'python-geventhttpclient-wheels'
-	'python-msgpack'
-	'python-psutil'
-	'python-pyzmq'
+	'python-flask'
 	'python-requests'
-	'python-six')
-makedepends=('git'
-	'python-setuptools')
-provides=("python-$_pkg")
-conflicts=("python-$_pkg")
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
-
-pkgver() {
-	cd "$pkgname" || exit
-	local _ver
-	_ver="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
-	printf '%s\n' "${_ver#v}"
-}
+	'python-msgpack'
+	'python-pyzmq'
+	'python-geventhttpclient-wheels'
+	'python-configargparse'
+	'python-psutil'
+)
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('8ec934226e41ccfdf8d5609050cafcb6449ead09e8697104bfa86739a38dd036')
+provides=("$pkgname")
+conflicts=("$pkgname")
 
 build() {
-	cd "$pkgname" || exit
-	sed -i 's/msgpack-python/msgpack/' setup.py
-	sed -i 's/        "\([[:alpha:]-]*\).=.*"/        "\1"/' setup.py
+	cd "$srcdir"/locustio-$pkgver
 	python setup.py build
 }
 
 package() {
-	cd "$pkgname" || exit
-	python setup.py install --skip-build --root="$pkgdir"/ --optimize=1
+	cd "$srcdir"/locustio-$pkgver
+	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
