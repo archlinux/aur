@@ -1,6 +1,6 @@
 pkgbase = zenith
 	pkgdesc = Terminal system monitor with histograms, written in Rust
-	pkgver = 0.7.7
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/bvaisvil/zenith
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = zenith
 	makedepends = cargo
 	provides = zenith
 	conflicts = zenith-bin
-	source = zenith-0.7.7.tar.gz::https://github.com/bvaisvil/zenith/archive/0.7.7.tar.gz
-	md5sums = 170ff41cd4bf089983af6a250d9d1eb8
+	source = zenith-0.8.0.tar.gz::https://github.com/bvaisvil/zenith/archive/0.8.0.tar.gz
+	md5sums = 70f4607be92cdbd025fca0be5be872c2
 
 pkgname = zenith
 
