@@ -1,10 +1,10 @@
 pkgbase = jpegrescan-git
 	pkgdesc = Losslessly shrink any JPEG file
 	pkgver = 1.1.0.r14.g4a2fc99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kud/jpegrescan
 	arch = any
-	license = GPL
+	license = custom
 	makedepends = git
 	depends = perl-file-slurp
 	depends = libjpeg-turbo
