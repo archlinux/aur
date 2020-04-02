@@ -4,7 +4,7 @@
 _pkgname=exaile
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=4.0.2+205+gcf9b3e59
+pkgver=4.1.0alpha1+14+gcea417cb
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('any')
@@ -16,7 +16,6 @@ makedepends=('git' 'help2man')
 optdepends=('python-feedparser: podcasts plugin'
             'webkit2gtk: wikipedia plugin'
             'python-lxml: LyricsMania plugin'
-#           'cddb-py: look up CD tags' #from DEPS: (TODO: This is currently broken on python3, see #608 and #652)
             'libkeybinder3: Multimedia keys plugin'
             'python-beautifulsoup4: Lyrics Wiki plugin'
             'libnotify: Notify plugin'
@@ -24,6 +23,7 @@ optdepends=('python-feedparser: podcasts plugin'
             'gnome-screensaver: Pause on screensaver plugin'
             'mate-screensaver: Pause on screensaver plugin'
             'cinnamon-screensaver: Pause on screensaver plugin'
+            'xfce4-screensaver: Pause on screensaver plugin'
             'moodbar: Moodbar plugin'
             'python-musicbrainzngs: Musicbrainz cover search plugin'
             'ipython: Ipython console plugin'
@@ -40,7 +40,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --long --tags | sed 's/-beta/.beta/;s/-rc/rc/;s/-/+/g'
+  git describe --long --tags | sed 's/-beta/beta/;s/-alpha/alpha/;s/-rc/rc/;s/-/+/g'
 }
 
 build() {
