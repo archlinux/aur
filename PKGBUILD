@@ -18,7 +18,7 @@ sha256sums=('c9c369dae38a4909deeebb8250e8768f93383e34b54b15854176caaa5743af22'
             'fe1400a1be9b60c4c8b6759b588638536188a73307cd061789877cd5fd491557')
 
 pkgver() {
-    curl -Is https://github.com/LycheeOrg/Lychee/releases/latest | awk -F'/' '/^Location/ {print $NF}' | sed 's/v//' | sed 's/[^[:print:]]//'
+    curl -Is https://github.com/LycheeOrg/Lychee/releases/latest | awk -F'/' '/^location/ {print $NF}' | sed 's/v//' | sed 's/[^[:print:]]//'
 
 }
 
