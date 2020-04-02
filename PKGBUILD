@@ -15,7 +15,7 @@ _use_wayland=0           # Build Wayland NOTE: extremely experimental and don't 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=82.0.4085.12
+pkgver=83.0.4100.3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
 arch=('x86_64')
@@ -52,13 +52,14 @@ makedepends=(
              'gperf'
              'ninja'
              'python2-protobuf'
+             'python2-setuptools'
              'python'
              'yasm'
              'nasm'
              'git'
              'hwids'
              'nodejs'
-             'gn-git'
+             'gn-git<=r1734.82d673ac'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'
@@ -66,6 +67,7 @@ optdepends=(
             #
             'kdialog: Needed for file dialogs in KF5'
             'kwalletmanager: Needed for storing passwords in KWallet5'
+            'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             #
             'ttf-font: For some typography'
             )
@@ -260,6 +262,7 @@ _keeplibs=(
            'third_party/re2'
            'third_party/rnnoise'
            'third_party/s2cellid'
+           'third_party/schema_org'
            'third_party/simplejson'
            'third_party/shaderc'
            'third_party/skia'
@@ -447,8 +450,6 @@ prepare() {
   # Py3toniced.
   sed 's|iteritems|items|g' \
     -i build/linux/unbundle/remove_bundled_libraries.py
-#   sed 's|iterkeys|keys|g' \
-#     -i mojo/public/tools/bindings/validate_typemap_config.py
 
   # Remove most bundled libraries. Some are still needed.
   msg2 "Removing unnecessary components to save disk space."
