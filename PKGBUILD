@@ -4,7 +4,7 @@
 pkgname=python-locustio
 _name=${pkgname#python-}
 pkgver=0.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Scalable user load testing tool written in Python"
 arch=('any')
 url='https://locust.io/'
@@ -26,11 +26,11 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 
 build() {
-	cd "$srcdir"/locustio-$pkgver
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir"/locustio-$pkgver
+	cd "$srcdir/$_name-$pkgver"
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

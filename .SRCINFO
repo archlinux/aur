@@ -1,7 +1,7 @@
 pkgbase = python-locustio
 	pkgdesc = Scalable user load testing tool written in Python
 	pkgver = 0.14.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://locust.io/
 	arch = any
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = python-locustio
 	provides = python-locustio
 	conflicts = python-locustio
 	source = https://files.pythonhosted.org/packages/source/l/locustio/locustio-0.14.5.tar.gz
-	sha256sums = e4dae8d57de5d3d6ce7edcca71c8493cb9e62a104435788c8f92a00849bd0bc6
+	sha256sums = 8ec934226e41ccfdf8d5609050cafcb6449ead09e8697104bfa86739a38dd036
 
 pkgname = python-locustio
 
