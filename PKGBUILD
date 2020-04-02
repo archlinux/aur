@@ -10,9 +10,9 @@
 # Contributor: Brad McCormack <bradmccormack100 at gmail.com>
 # Contributor: Doug Johnson <dougvj at dougvj.net>
 
-pkgbase=linux-nitrous
+pkgbase=linux-nitrous-git
 _srcname=linux-nitrous
-pkgver=5.5+
+pkgver=5.6+
 pkgrel=1
 arch=('x86_64')
 url="https://gitlab.com/xdevs23/linux-nitrous"
