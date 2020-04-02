@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Levy <blevy@protonmail.com>
 pkgname=unf
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -8,7 +8,7 @@ pkgdesc="UNixize Filename -- replace annoying anti-unix characters in filenames"
 license=('MIT')
 url="https://github.com/io12/unf"
 source=("https://github.com/io12/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e15354083773780ca719bccfbf0fb193')
+sha256sums=('382ca60a3b6647bb4255e071030da04c0618a3d87787b5264a30a8ee1494e0f7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
