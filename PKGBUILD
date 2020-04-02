@@ -1,10 +1,10 @@
 # Maintainer: Alexandr Boiko <4le34n at gmail dot com>
 pkgname=accel-ppp-git
-pkgver=r1727.389a77c
+pkgver=1.12.0_57_gc983d6f
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/apps/trac/accel-ppp/"
+url="https://github.com/accel-ppp/accel-ppp"
 license=('GPL')
 depends=('openssl>=1.0.0' 'pcre>=8.30' 'libnl>=2.0' 'lua')
 makedepends=('git' 'cmake>=2.6' 'libnl1' 'net-snmp>=5.x')
@@ -13,7 +13,7 @@ conflicts=('accel-ppp')
 install='accel-ppp.install'
 options=('docs')
 backup=('etc/accel-ppp.conf' 'etc/accel-ppp.lua' 'etc/snmp/accel-ppp.conf' 'usr/share/accel-ppp/radius/dictionary')
-source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
+source=("accel-ppp::git+$url"
 	'accel-ppp.logrotate'
 	'accel-ppp.lua'
 	'accel-ppp.tmpfiles'
@@ -26,7 +26,7 @@ _pkgname=accel-ppp
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --tags | sed 'y/-/_/')"
 }
 
 prepare() {
