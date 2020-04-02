@@ -4,13 +4,14 @@ pkgname=python-napalm-git
 _pkgname=napalm
 provides=('python-napalm')
 conflicts=('python-napalm')
-pkgver=r4257.08e41b8f
-pkgrel=3
+pkgver=r4264.2be389a6
+pkgrel=2
 pkgdesc="Network Automation and Programmability Abstraction Layer with Multivendor support"
 arch=('any')
 url="https://github.com/napalm-automation/napalm"
 license=('Apache')
 depends=('python'
+        'python-requests'
         'python-cffi'
         'python-paramiko'
         'python-future'
@@ -24,8 +25,14 @@ depends=('python'
         'python-lxml'
         'python-ciscoconfparse')
 makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest' 'python-ddt' 'python-mock')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+
+check() {
+  cd "$_pkgname"
+  pytest
+}
 
 pkgver() {
   cd "$_pkgname"
