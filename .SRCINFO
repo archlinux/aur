@@ -1,0 +1,16 @@
+pkgbase = libmicrodns-git
+	pkgdesc = Minimal mDNS resolver library
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/videolabs/libmicrodns
+	arch = x86_64
+	license = LGPL2.1
+	depends = glibc
+	provides = libmicrodns.so
+	provides = libmicrodns
+	conflicts = libmicrodns
+	source = git+https://github.com/videolabs/libmicrodns.git
+	sha512sums = SKIP
+
+pkgname = libmicrodns-git
+
