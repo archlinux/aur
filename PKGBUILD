@@ -5,7 +5,7 @@
 # Contributor: Ranieri Althoff <ranisalt+aur at gmail.com>
 
 pkgname=hsa-rocr
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='ROCm Platform Runtime: ROCr a HPC market enhanced HSA based runtime'
 arch=('x86_64')
@@ -15,9 +15,9 @@ makedepends=('cmake' 'libelf' "hsakmt-roct>=$pkgver")
 provides=("rocr-runtime=$pkgver")
 replaces=('rocr-runtime')
 conflicts=('rocr-runtime')
-source=("$url/archive/roc-$pkgver.tar.gz")
-sha256sums=('b162464ef87ce39518e59ef8406d6b897aa7a930795c586829614ed87aa1c2ce')
-_dirname="$(basename $url)-roc-$pkgver"
+source=("$url/archive/rocm-$pkgver.tar.gz")
+sha256sums=('fa2d2d1f8a61d8a6952d377cf288d78c61776c3c2a666f163cafc3aa19ab0b61')
+_dirname="$(basename $url)-rocm-$pkgver"
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
