@@ -1,7 +1,7 @@
 ## Initial Maintainer: Augusto F. Hack <hack.augusto@gmail.com>
 Maintainer='Gilles Hamel <hamelg@laposte.net>'
 pkgname=python-carbon
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc='Backend data caching and persistence daemon for Graphite'
 arch=('any')
@@ -24,7 +24,7 @@ source=(
 	carbon.tmpfiles)
 	
 md5sums=(
-  4aea03e5e62e292535ceeae8bcf2d969
+  28b83a0fd446a730678be335326446bd
 	c6201ce8a290d919b7f486916fb2f9b9
 	33c2251f7dfbe484e1a627e0408fdf36
 	f7914dbb75fc3d65623a159333ea0528
@@ -56,7 +56,7 @@ package() {
   install -Dm644 carbon.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/carbon.conf
 
   cd "$srcdir/carbon-$pkgver"
-   GRAPHITE_NO_PREFIX=1 python setup.py install --root="$pkgdir/" --install-data=/var/lib/graphite --install-scripts=/usr/bin --optimize=1
+  GRAPHITE_NO_PREFIX=1 python setup.py install --root="$pkgdir/" --install-data=/var/lib/graphite --install-scripts=/usr/bin --optimize=1
   
   # change the directory of the config files
   ls conf | while read conf; do
