@@ -3,7 +3,7 @@
 pkgname=python-pyeapi
 _pkgname=pyeapi
 pkgver=0.8.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Python client for Arista eAPI "
 arch=('any')
 url="https://pyeapi.readthedocs.io/"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 check() {
     cd "$srcdir/$_pkgname/"
-    make unittest
+    coverage run -m unittest discover test/unit -v
 }
 
 build() {
