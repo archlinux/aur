@@ -1,6 +1,6 @@
 pkgbase = luxcorerender-git
 	pkgdesc = Physically correct, unbiased rendering engine.
-	pkgver = 2.3.r534.g71a3bb055
+	pkgver = 2.3.r612.gddce015f7
 	pkgrel = 1
 	epoch = 2
 	url = https://www.luxcorerender.org/
@@ -32,7 +32,7 @@ pkgbase = luxcorerender-git
 	source = python.patch
 	source = glfw.patch
 	sha256sums = SKIP
-	sha256sums = 38a12c99020cc293e8198f1b2eaafe95ce0e9e96ffd4abb8dc7396a57140e5b8
+	sha256sums = 4a86c54c1590bc9afecdfd0c61231de24f453e11a6906150a47cbc64888fa86b
 	sha256sums = 4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1
 
 pkgname = luxcorerender-git

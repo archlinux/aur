@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a4a073f2e..4025bc894 100644
+index 7dda21b7d..fe41ec5d8 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -28,6 +28,10 @@ MESSAGE(STATUS "CMake version " ${CMAKE_VERSION} " detected")
@@ -14,48 +14,49 @@ index a4a073f2e..4025bc894 100644
  SET(CMAKE_LEGACY_CYGWIN_WIN32 0)
  
 diff --git a/samples/luxcoreconsole/CMakeLists.txt b/samples/luxcoreconsole/CMakeLists.txt
-index dc3f5d8cf..a8b429814 100644
+index be614b8e8..94918929e 100644
 --- a/samples/luxcoreconsole/CMakeLists.txt
 +++ b/samples/luxcoreconsole/CMakeLists.txt
 @@ -28,4 +28,4 @@ set(LUXCORECONSOLE_SRCS
  
  add_executable(luxcoreconsole ${LUXCORECONSOLE_SRCS})
  
--TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES})
+-TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
 \ No newline at end of file
-+TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
 diff --git a/samples/luxcoredemo/CMakeLists.txt b/samples/luxcoredemo/CMakeLists.txt
-index c140dc23b..c8cba9880 100644
+index 194104caf..241dbd5f2 100644
 --- a/samples/luxcoredemo/CMakeLists.txt
 +++ b/samples/luxcoredemo/CMakeLists.txt
 @@ -29,4 +29,4 @@ set(LUXCORELIBDEMO_SRCS
  add_executable(luxcoredemo ${LUXCORELIBDEMO_SRCS})
  add_definitions(${VISIBILITY_FLAGS})
  
--TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES})
-+TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES})
+-TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
 diff --git a/samples/luxcorescenedemo/CMakeLists.txt b/samples/luxcorescenedemo/CMakeLists.txt
-index 90c1967cd..aa024f650 100644
+index 3acb27bfa..b52d3ec81 100644
 --- a/samples/luxcorescenedemo/CMakeLists.txt
 +++ b/samples/luxcorescenedemo/CMakeLists.txt
 @@ -29,4 +29,4 @@ set(LUXCORESCENEDEMO_SRCS
  add_executable(luxcorescenedemo ${LUXCORESCENEDEMO_SRCS})
  add_definitions(${VISIBILITY_FLAGS})
  
--TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES})
-+TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES})
+-TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
 diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
-index 33b50b3d0..ba1982a42 100644
+index c8b23001b..607f92b6a 100644
 --- a/samples/luxcoreui/CMakeLists.txt
 +++ b/samples/luxcoreui/CMakeLists.txt
-@@ -88,4 +91,5 @@ TARGET_LINK_LIBRARIES(luxcoreui
+@@ -90,5 +90,6 @@ TARGET_LINK_LIBRARIES(luxcoreui
  	${OPENGL_LIBRARIES}
  	${GTK3_LIBRARIES}
  	${Boost_LIBRARIES}
 +	${PYTHON_LIBRARIES}
- 	${OPENCL_LIBRARIES})
+ 	${OPENCL_LIBRARIES}
+ 	${CUDA_ALL_LIBRARIES})
 diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
-index de4e11ec5..2c7debda4 100644
+index edd6e6762..1875ee5cf 100644
 --- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
 +++ b/tests/luxcoreimplserializationdemo/CMakeLists.txt
 @@ -30,4 +30,4 @@ include_directories(${LuxRays_SOURCE_DIR}/deps/bcd-1.1/include)
