@@ -1,7 +1,7 @@
 pkgbase = actiona
 	pkgdesc = A task automation tool that allows you to create and execute action lists
 	pkgver = 3.10.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://wiki.actiona.tools
 	arch = x86_64
 	license = GPL3

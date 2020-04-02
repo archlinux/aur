@@ -2,7 +2,7 @@
 
 pkgname=actiona
 pkgver=3.10.1
-pkgrel=3
+pkgrel=1
 pkgdesc='A task automation tool that allows you to create and execute action lists'
 arch=('x86_64')
 url='https://wiki.actiona.tools'
