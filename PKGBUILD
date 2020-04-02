@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-germanica
 _pkgname=germanica
@@ -15,7 +15,6 @@ source=("http://img.dafont.com/dl/?f=germanica_family")
 md5sums=('2f67c636510e535c41f550b03cdf068a')
 
 package() {
-    unzip "?f=germanica_family"
     mkdir "$srcdir/$_pkgname"
     mv "$srcdir/Plain Germanica.ttf" "$srcdir/$_pkgname"
     mv "$srcdir/Fluted Germanica.ttf" "$srcdir/$_pkgname"
