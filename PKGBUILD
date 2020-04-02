@@ -32,5 +32,5 @@ package() {
   cd "$_srcname/"
   make -Cbuild DESTDIR="$pkgdir" install
   mkdir -p "$pkgdir"/usr/share/doc/$_srcname
-  cp -R build-doc/html/ "$pkgdir"/usr/share/doc/$_srcname
+  cp -R build/doc/html/ "$pkgdir"/usr/share/doc/$_srcname
 }
