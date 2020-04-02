@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2019
 	pkgdesc = Clear Linux lts2019
 	pkgver = 5.4.29
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/clearlinux-pkgs/linux-lts2019
 	arch = x86_64
 	license = GPL2
@@ -15,7 +15,7 @@ pkgbase = linux-clear-lts2019
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.4.29.xz
-	source = clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=5.4.28-18
+	source = clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=5.4.28-22
 	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200401.tar.xz
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -36,6 +36,7 @@ pkgname = linux-clear-lts2019
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-clear-lts2019-headers

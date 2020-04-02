@@ -61,10 +61,10 @@ _localmodcfg=
 _major=5.4
 _minor=29
 _srcname=linux-${_major}
-_clr=${_major}.28-18
+_clr=${_major}.28-22
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Clear Linux lts2019'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2019"
@@ -211,7 +211,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
-    provides=('WIREGUARD-MODULE')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
     install=linux.install
 
     cd $_srcname
@@ -232,9 +232,6 @@ _package() {
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -310,9 +307,6 @@ _package-headers() {
     echo "Adding symlink..."
     mkdir -p "$pkgdir/usr/src"
     ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-    echo "Fixing permissions..."
-    chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
