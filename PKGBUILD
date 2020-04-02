@@ -2,19 +2,19 @@
 
 pkgname=accel-ppp-ipoe-dkms-git
 _pkgname=accel-ppp
-pkgver=r1574.8ab2f62
+pkgver=1.12.0_57_gc983d6f
 pkgrel=1
 pkgdesc='Accel-ppp ipoe kernel module sources'
 arch=('i686' 'x86_64')
-url='http://sourceforge.net/apps/trac/accel-ppp/'
+url='https://github.com/accel-ppp/accel-ppp/'
 license=('GPL')
 depends=('dkms' 'lua51')
-source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
+source=("accel-ppp::git+$url"
         'dkms.conf')
 
 pkgver() {
     cd "$srcdir/${_pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "%s" "$(git describe --tags | sed 'y/-/_/')"
 }
 package() {
     cd "$srcdir/${_pkgname%-git}"
