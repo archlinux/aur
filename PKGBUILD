@@ -18,12 +18,12 @@ prepare() {
 }
 
 build() {
-    cd "EasyFramework-${pkgver}"
+    cd "EasyFramework-${pkgver}/build"
     ninja
 }
 
 package() {
-    cd "EasyFramework-${pkgver}"
+    cd "EasyFramework-${pkgver}/build"
     DESTDIR="$pkgdir" ninja install
 }
 
