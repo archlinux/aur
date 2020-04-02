@@ -4,12 +4,12 @@
 
 pkgname=jumpnbump
 pkgver=1.61
-pkgrel=1
+pkgrel=2
 pkgdesc="You, as a bunny, have to jump on your opponents to make them explode. It's a true multiplayer game which can't be played alone. It has network support. This program is a Unix port of the old DOS game by brainchilddesign. SDL2 port."
 arch=('i686' 'x86_64')
 url="https://libregames.gitlab.io/jumpnbump/"
 license=('GPL')
-depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'pygtk')
+depends=('sdl2' 'sdl2_mixer' 'sdl2_net' 'gtk3' 'python' 'python-gobject')
 optdepends=('jumpnbump-levels: more levels for jumpnbump')
 conflicts=('jumpnbump-menu')
 source=(https://gitlab.com/LibreGames/jumpnbump/uploads/95acdae2a232513f068e260977371dcf/jumpnbump-${pkgver}.tar.xz menu.patch desktop.patch)
