@@ -9,7 +9,7 @@ url='https://github.com/vbextreme/EasyFramework'
 source=('git+https://github.com/vbextreme/EasyFramework.git')
 license=('GPL3')
 sha256sums=('SKIP')
-makedepends=('git' 'meson')
+makedepends=('git' 'meson' 'ncurses')
 depends=('pcre2' 'libunistring' 'libtar' 'zlib' 'gnutls' 'curl' 'libgit2' )
 
 pkgver() {
