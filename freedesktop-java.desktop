@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=AdoptOpenJDK Java 8 Runtime
-Comment=AdoptOpenJDK Java 8 Runtime
+Name=AdoptOpenJDK (Hotspot) Java 8 Runtime
+Comment=AdoptOpenJDK (Hotspot)  Java 8 Runtime
 Keywords=java;runtime
 Exec=/usr/lib/jvm/java-8-adoptopenjdk-hotspot/bin/java -jar
 Terminal=false
