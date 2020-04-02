@@ -5,6 +5,7 @@ pkgbase = sidenote
 	url = https://github.com/ryot4/sidenote
 	arch = x86_64
 	license = MIT
+	makedepends = go
 	source = sidenote-0.1.1.tgz::https://github.com/ryot4/sidenote/archive/v0.1.1.tar.gz
 	md5sums = f177c13f2845e6af2462c665c2593855
 

@@ -10,6 +10,8 @@ url='https://github.com/ryot4/sidenote'
 license=('MIT')
 source=("$pkgname-$pkgver.tgz::https://github.com/ryot4/sidenote/archive/v${pkgver}.tar.gz")
 
+makedepends=('go')
+
 build() {
   cd "$srcdir/sidenote-${pkgver}"
   go build ./
