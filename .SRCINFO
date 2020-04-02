@@ -1,10 +1,13 @@
 pkgbase = python-pyeapi
 	pkgdesc = Python client for Arista eAPI
 	pkgver = 0.8.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pyeapi.readthedocs.io/
 	arch = any
 	license = BSD
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	checkdepends = python-coverage
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-netaddr
