@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-labrit
 _pkgname=labrit
@@ -15,7 +15,6 @@ source=("http://img.dafont.com/dl/?f=labrit")
 md5sums=('25d12059e240c989456bf11653ca66a2')
 
 package() {
-    unzip "?f=labrit"
     mkdir "$srcdir/$_pkgname"
     mv $srcdir/LABRIT__.ttf $srcdir/$_pkgname
     cd "$srcdir/$_pkgname"
