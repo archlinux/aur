@@ -1,0 +1,20 @@
+pkgbase = libhidpp-pixlone-git
+	pkgdesc = Collection of HID++ tools, PixlOne fork for logiops
+	pkgver = r152.8fa6d2b
+	pkgrel = 1
+	url = https://github.com/PixlOne/hidpp
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = libudev.so
+	depends = tinyxml2
+	provides = libhidpp
+	provides = libhidpp-git
+	conflicts = libhidpp
+	conflicts = libhidpp-git
+	source = git+https://github.com/PixlOne/hidpp
+	sha256sums = SKIP
+
+pkgname = libhidpp-pixlone-git
+
