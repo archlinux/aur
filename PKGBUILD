@@ -19,7 +19,7 @@ pkgver() {
 
 prepare() {
     cd EasyFramework
-    meson build -Dprefix=/usr
+    meson build -Dprefix=/usr -Dterminfo=share/terminfo
 }
 
 build() {
