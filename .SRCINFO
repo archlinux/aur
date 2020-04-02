@@ -1,14 +1,16 @@
 pkgbase = python-ray
 	pkgdesc = A fast and simple framework for building and running distributed applications.
-	pkgver = 0.8.3
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://ray.io
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = cython
 	makedepends = bazel
+	depends = psmisc
 	depends = python
 	depends = python-numpy
 	depends = python-filelock
@@ -42,8 +44,8 @@ pkgbase = python-ray
 	optdepends = python-pyaml: for ray[rllib] module
 	optdepends = python-scipy: for ray[rllib] module
 	optdepends = python-msgpack: for ray[streaming] module
-	source = ray-0.8.3::https://github.com/ray-project/ray/archive/ray-0.8.3.tar.gz
-	sha256sums = 29ade72535157981e0299245d1f9601d942c05fd31210ce14140f212d196bbfb
+	source = ray-0.8.4::https://github.com/ray-project/ray/archive/ray-0.8.4.tar.gz
+	sha256sums = a47d636200022f0e59defa9e9d57174a649d973a73252c354af404d7256ca203
 
 pkgname = python-ray
 

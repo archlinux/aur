@@ -1,15 +1,15 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ray
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
 url='https://ray.io'
 license=('Apache-2.0')
-depends=(python python-numpy python-filelock python-jsonschema python-click
-         python-colorama python-packaging python-pytest python-pyaml
+depends=(psmisc python python-numpy python-filelock python-jsonschema
+         python-click python-colorama python-packaging python-pytest python-pyaml
          python-redis python-six python-protobuf python-cloudpickle py-spy
          python-aiohttp python-google python-grpcio)
 optdepends=(
@@ -30,10 +30,10 @@ optdepends=(
             'python-scipy: for ray[rllib] module'
             'python-msgpack: for ray[streaming] module'
            )
-makedepends=(python python-setuptools cython bazel)
+makedepends=(python python-setuptools python-wheel cython bazel)
 _pkgname=ray
 source=("${_pkgname}-${pkgver}::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
-sha256sums=('29ade72535157981e0299245d1f9601d942c05fd31210ce14140f212d196bbfb')
+sha256sums=('a47d636200022f0e59defa9e9d57174a649d973a73252c354af404d7256ca203')
 
 build() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}/python"
