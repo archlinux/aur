@@ -1,7 +1,7 @@
 # Maintainer: Jon Noble <jonnobleuk@gmail.com>
 pkgname=mediahandling
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A library solely intended for the use in the project Chestnut by handling all media-file operations"
 arch=(x86_64)
 url="https://github.com/jonno85uk/mediahandling"
@@ -17,12 +17,11 @@ prepare() {
     rm -rf ${pkgdir}
     tar xaf "${pkgver}.tar.gz"
     mv mediahandling-${pkgver} mediahandling
-    cd "$srcdir/mediahandling"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr/
 }
 
 build() {
     cd "$srcdir/mediahandling"
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}/usr/
     make
 }
 
