@@ -4,8 +4,8 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi
-pkgver=3.0.0
-pkgrel=3
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
@@ -13,14 +13,16 @@ license=('GPL')
 depends=(
   'hyphen'
   'poppler'
-  'python>=3.2'
+  'python>=3.3'
   'python-ly>=0.9.5'
   'python-poppler-qt5'
-  'python-pyqt5>=5.4'
+  'python-pyqt5>=5.9'
+  'python-pyqtwebengine>=5.9'
   'python-sip'
-  'qt5-base>=5.4'
-  'qt5-svg>=5.4'
-  'qt5-webkit>=5.4'
+  'qt5-base>=5.9'
+  'qt5-svg>=5.9'
+  'qt5-webchannel>=5.9'
+  'qt5-webengine>=5.9'
   'hicolor-icon-theme'
   'tango-icon-theme'
 )
@@ -38,9 +40,10 @@ optdepends=(
   'hyphen-it: Italian hyphenation rules'
   'hyphen-nl: Dutch hyphenation rules'
   'hyphen-ro: Romanian hyphenation rules'
+  'python-pycups: Printing to a local CUPS server'
 )
-source=(https://github.com/wbsoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('dacc4cc23e4de5acef163001d18dfa8c')
+source=(https://github.com/frescobaldi/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('454eb7df95f143754c4b13b2bc44aef44995ddf47f9f877800ba89fefcdbdc4d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
