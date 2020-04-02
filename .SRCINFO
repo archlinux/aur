@@ -1,0 +1,16 @@
+pkgbase = crush-git
+	pkgdesc = An attempt to make a command line shell that is also a powerful modern programming language
+	pkgver = r336.e767d71
+	pkgrel = 1
+	url = https://github.com/liljencrantz/crush
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = crush
+	conflicts = crush
+	source = crush::git+https://github.com/liljencrantz/crush
+	md5sums = SKIP
+
+pkgname = crush-git
+
