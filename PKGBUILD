@@ -3,7 +3,7 @@
 pkgbase=level-zero
 pkgname=('level-zero-headers' 'level-zero-loader')
 pkgver=0.91.10
-pkgrel=1
+pkgrel=2
 pkgdesc='API for accessing low level interfaces in oneAPI platform devices'
 arch=('x86_64')
 url='https://spec.oneapi.com/versions/latest/elements/l0/source/index.html'
@@ -13,7 +13,7 @@ source=("${pkgbase}-${pkgver}.tar.gz"::"https://github.com/oneapi-src/level-zero
 sha256sums=('9193d8cc57cd63f9b0f44bbc51c9d099c6e899781edb33f9869a850865c64d3d')
 
 prepare() {
-    printf '%s\n' '0' > "${pkgbase}-${pkgver}/VERSION_PATCH"
+    printf '%s\n' "${pkgver##*.}" > "${pkgbase}-${pkgver}/VERSION_PATCH"
 }
 
 build() {
