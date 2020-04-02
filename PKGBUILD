@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP'
             '7e95c880ca6328d3bb6f3675ee063b18330d3ea753bef9b5376cafc31eff47f2'
             '304ec78284e99395b3091923da540af3a1826205663aa8fd2d52deb64f852166'
-            '912dd96de59ffdad8f61e9cba48494a9d2bb43849951e7d4536918a7fbcc8aff')
+            '3da12b890cedaac3a3c5685ddad0cba69f7c320d4d52d679b14bcda2347ce8bf')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
