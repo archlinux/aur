@@ -23,12 +23,11 @@ options=('!buildflags')
 source=("${_name}::git+https://github.com/LuxCoreRender/LuxCore.git${_fragment}"
         "python.patch"
         "glfw.patch"
-        "boost016900_serialization.patch"
         )
 sha256sums=('SKIP'
             '38a12c99020cc293e8198f1b2eaafe95ce0e9e96ffd4abb8dc7396a57140e5b8'
             '4e04c3eb653f00d2389aff8e7fda2d244e258cbca3a22e32c13388a3984e4bb1'
-            '495d183aef045e53ec8c53aa08cdcc082fb4e69ccb0857693cb0cf2684db0760')
+)
 
 pkgver() {
 # shellcheck disable=SC2164
