@@ -7,7 +7,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=1.13.3
+pkgver=1.13.5
 pkgrel=1
 pkgdesc='Small but very powerful text-based mail client - slang version'
 url='http://www.mutt.org/'
@@ -16,11 +16,12 @@ conflicts=('mutt')
 license=('GPL')
 backup=('etc/Muttrc')
 arch=('x86_64')
-optdepends=('smtp-forwarder: to send mail')
+optdepends=('perl: for smime_keys'
+            'smtp-forwarder: to send mail')
 depends=('gpgme' 'slang' 'openssl' 'libsasl' 'gdbm' 'libidn2' 'mime-types' 'krb5')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 source=("http://ftp.mutt.org/pub/mutt/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('78423016b5f2fcb31bfd156999ff6638177be4459230d2ee61a81e5641d07378'
+sha256sums=('6cd71b5b3e6b255afef6bed3b5e1e8ee9819b3d7c9839fd95e798045882aa653'
             'SKIP')
 
 build() {
@@ -28,6 +29,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--enable-debug \
 		--enable-gpgme \
 		--enable-pop \
 		--enable-imap \

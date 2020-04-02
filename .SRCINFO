@@ -1,6 +1,6 @@
 pkgbase = mutt-slang
 	pkgdesc = Small but very powerful text-based mail client - slang version
-	pkgver = 1.13.3
+	pkgver = 1.13.5
 	pkgrel = 1
 	url = http://www.mutt.org/
 	arch = x86_64
@@ -13,14 +13,15 @@ pkgbase = mutt-slang
 	depends = libidn2
 	depends = mime-types
 	depends = krb5
+	optdepends = perl: for smime_keys
 	optdepends = smtp-forwarder: to send mail
 	provides = mutt
 	conflicts = mutt
 	backup = etc/Muttrc
-	source = http://ftp.mutt.org/pub/mutt/mutt-1.13.3.tar.gz
-	source = http://ftp.mutt.org/pub/mutt/mutt-1.13.3.tar.gz.asc
+	source = http://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz
+	source = http://ftp.mutt.org/pub/mutt/mutt-1.13.5.tar.gz.asc
 	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
-	sha256sums = 78423016b5f2fcb31bfd156999ff6638177be4459230d2ee61a81e5641d07378
+	sha256sums = 6cd71b5b3e6b255afef6bed3b5e1e8ee9819b3d7c9839fd95e798045882aa653
 	sha256sums = SKIP
 
 pkgname = mutt-slang
