@@ -1,0 +1,25 @@
+pkgbase = windows95-electron-bin
+	pkgdesc = This is Windows 95, running in an Electron app. Yes, it's the full thing. I'm sorry.
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/felixrieseberg/windows95
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libutil-linux
+	depends = kde-cli-tools
+	depends = glib2
+	depends = gvfs
+	depends = pulseaudio
+	depends = alsa-lib
+	source = https://github.com/felixrieseberg/windows95/releases/download/v2.2.1/windows95-linux-2.2.1_amd64.deb
+	md5sums = a748876a2dd5f590d687f16c637f7731
+
+pkgname = windows95-electron-bin
+
