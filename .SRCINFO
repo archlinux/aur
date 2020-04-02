@@ -8,7 +8,7 @@ pkgbase = django-docs
 	makedepends = unzip
 	noextract = django-docs-3.0-en.zip
 	source = https://media.djangoproject.com/docs/django-docs-3.0-en.zip
-	sha256sums = af0eb41a4756f3108fb39cbf15812044bda535e87c1395806312864f3c4d113e
+	sha256sums = SKIP
 
 pkgname = django-docs
 
