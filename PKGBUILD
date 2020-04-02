@@ -6,13 +6,12 @@
 # Maintainer: Your Name <jkraehemann@gmail.com>
 pkgname=gsequencer
 pkgver=3.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced Gtk+ Sequencer"
 arch=('x86_64' 'i686')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
-makedepends=('gtk3' 'gtk-doc' 'webkit2gtk' 'libsoup' 'fftw'  'libinstpatch' 'libpulse')
-depends=('ladspa' 'dssi' 'lv2')
+depends=('gtk3' 'gtk-doc' 'webkit2gtk' 'libsoup' 'fftw'  'libinstpatch' 'libpulse' 'ladspa' 'dssi' 'lv2')
 checkdepends=('cunit' 'xorg-server-xvfb')
 provides=('gsequencer' 'midi2xml')
 conflicts=('midi2xml')
