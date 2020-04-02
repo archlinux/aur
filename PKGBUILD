@@ -2,14 +2,14 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=r177.ca39e915af
+pkgver=r178.625a92b271
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url" 'greetd.pam')
+sha256sums=('SKIP' 'SKIP')
 conflicts=(greetd)
 provides=(greetd)
 depends=(systemd pam)
@@ -21,6 +21,7 @@ optdepends=(
 )
 backup=(
   'etc/greetd/config.toml'
+  'etc/pam.d/greetd'
 )
 
 pkgver() {
@@ -33,42 +34,45 @@ pkgver() {
 build() {
   cd greetd
   RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
-  cd man
-  for i in *.scd
+  for i in man/*.scd
   do
     scdoc < "$i" > "${i::-4}".roff
   done
 }
 
 package() {
-  install -d "$pkgdir"/usr/bin
-  install -m755 greetd/target/release/greetd "$pkgdir"/usr/bin/
-  install -m755 greetd/target/release/agreety "$pkgdir"/usr/bin/
+  install -Dm755 "$srcdir/greetd/target/release/greetd" \
+    "$pkgdir/usr/bin/greetd"
+  install -Dm755 "$srcdir/greetd/target/release/agreety" \
+    "$pkgdir/usr/bin/agreety"
 
-  install -d "$pkgdir"/usr/share/man/man1
-  for i in greetd/man/*-1.roff
+  for i in "$srcdir/greetd/man"/*-1.roff
   do
-    install -m755 "$i" "$pkgdir"/usr/share/man/man1/"${i:11:-7}.1"
+    base="$(basename "$i")"
+    install -Dm644 "$i" "$pkgdir/usr/share/man/man1/${base::-7}.1"
   done
 
-  install -d "$pkgdir"/usr/share/man/man5
-  for i in greetd/man/*-5.roff
+  for i in "$srcdir/greetd/man"/*-5.roff
   do
-    install -m755 "$i" "$pkgdir"/usr/share/man/man5/"${i:11:-7}.5"
+    base="$(basename "$i")"
+    install -Dm644 "$i" "$pkgdir/usr/share/man/man5/${base::-7}.5"
   done
 
-  install -d "$pkgdir"/usr/share/man/man7
-  for i in greetd/man/*-7.roff
+  for i in "$srcdir/greetd/man"/*-7.roff
   do
-    install -m755 "$i" "$pkgdir"/usr/share/man/man7/"${i:11:-7}.7"
+    base="$(basename "$i")"
+    install -Dm644 "$i" "$pkgdir/usr/share/man/man7/${base::-7}.7"
   done
 
-  install -d "$pkgdir"/usr/lib/systemd/system
-  install -m644 greetd/greetd.service "$pkgdir"/usr/lib/systemd/system/
+  install -Dm644 "$srcdir/greetd/greetd.service" \
+    "$pkgdir/usr/lib/systemd/system/greetd.service"
 
   echo 'u greeter - "greetd greeter user" - /bin/bash' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/greetd.conf"
 
-  install -d "$pkgdir"/etc/greetd
-  install -m644 greetd/config.toml "$pkgdir"/etc/greetd/
+  install -Dm644 "$srcdir/greetd.pam" \
+    "$pkgdir/etc/pam.d/greetd"
+
+  install -Dm644 "$srcdir/greetd/config.toml" \
+    "$pkgdir/etc/greetd/config.toml"
 }

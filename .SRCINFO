@@ -1,6 +1,6 @@
 pkgbase = greetd-git
 	pkgdesc = Generic greeter daemon
-	pkgver = r177.ca39e915af
+	pkgver = r178.625a92b271
 	pkgrel = 1
 	url = https://git.sr.ht/~kennylevinsen/greetd
 	arch = x86_64
@@ -15,7 +15,10 @@ pkgbase = greetd-git
 	provides = greetd
 	conflicts = greetd
 	backup = etc/greetd/config.toml
+	backup = etc/pam.d/greetd
 	source = git+https://git.sr.ht/~kennylevinsen/greetd
+	source = greetd.pam
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = greetd-git
