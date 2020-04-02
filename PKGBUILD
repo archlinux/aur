@@ -25,8 +25,8 @@ source=(https://github.com/AdoptOpenJDK/openjdk${_majorver}-binaries/releases/do
         freedesktop-jshell.desktop)
 sha256sums=('5edfaefdbb0469d8b24d61c8aef80c076611053b1738029c0232b9a632fe2708'
             'a6f608e06b0827d4ed0c70729ce4b2f1cb8bb587037da7642b4032ba8568b982'
-            '3b7752a1eb6c2e5e40233db02f7c5ac1128acedef9de01447f3e295c31bb7d75'
-            '3985b19d9bc0bd0f3fac7388112c9436aaea9e1f2fad874b5f9a3c6ab62a3481')
+            '6830d360d764caa635f937b3aff59f9601d54dd8f364d225d5ef8d46f5738488'
+            'ccc278598839b496bac027c1d0cba28880a7f880fd98b5db3c7f6cdd8d1c3cc6')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-adoptopenjdk-hotspot/jre
 _jdkdir=jdk${_tag_ver}-jre
