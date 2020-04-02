@@ -4,7 +4,7 @@
 # Contributor: Ranieri Althoff <ranisalt+aur at gmail.com>
 
 pkgname=hsakmt-roct
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Radeon Open Compute Thunk Interface"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('cmake')
 provides=("roct-thunk-interface=$pkgver")
 replaces=('roct-thunk-interface')
 source=("$pkgname.tar.gz::$url/archive/roc-$pkgver.tar.gz")
-sha256sums=('b08176b5f4af39d0160990f9f1dea5d27974f9282f544140b4a41d19446fe570')
+sha256sums=('2cabe9d2cfa72031c05d11290837c476182e72d8dec2049298f691143fdd212b')
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm "ROCT-Thunk-Interface-roc-$pkgver"
