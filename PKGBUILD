@@ -3,7 +3,7 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=1.2.5033.r3974
+pkgver=1.2.5033.r3971
 _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=10.19.0
@@ -44,7 +44,7 @@ pkgver() {
 prepare() {
     cd ${srcdir}/${_gitname}
     # Patching SOCI
-    patch -p1 < ${srcdir}/soci.patch
+    # patch -p1 < ${srcdir}/soci.patch
     # patch -p1 < ${srcdir}/rstudio_boost.patch
 
     msg "Extracting dependencies..."

@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-git
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
-	pkgver = 1.2.5033.r3974
+	pkgver = 1.2.5033.r3971
 	pkgrel = 1
 	url = https://www.rstudio.com/products/rstudio/
 	arch = i686
