@@ -2,14 +2,13 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=0.81.0
+pkgver=0.92.0
 pkgrel=1
 pkgdesc="Open-source version control system for data science projects"
 arch=('any')
 license=('Apache')
 url="https://github.com/iterative/${pkgname}"
-depends=('python' 'python-appdirs' 'python-dateutil'
-         'python-colorama' 'python-configobj'
+depends=('python' 'python-appdirs' 'python-colorama' 'python-configobj'
          'python-distro' 'python-flufl-lock' 'python-funcy'
          'python-gitdb' 'python-gitpython' 'python-humanize'
          'python-inflect' 'python-jsonpath-ng' 'python-packaging'
@@ -28,17 +27,8 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
             'python-pyarrow: support for HDFS remote'
 	    )
 # OptDeps to upload on AUR: python-oss2, 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "remove-configparser.patch")
-md5sums=('d9d1d2de3d588b20ec73d42f7025731f'
-         'c8346cd8e3952ac2f17469bce04efe25')
-
-
-prepare() {
-  # Remove configparser from setup.py
-  # Is a backport of python 3.7 configparser for python 2.x
-  patch -Np0 -i remove-configparser.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('660087d41fa6d02bc72a585f3f505a4a559a217fed8be762d220912f3014b3e4')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
