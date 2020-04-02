@@ -4,7 +4,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=fortran-language-server
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Fortran Language Server for the Language Server Protocol"
 arch=(any)
@@ -12,7 +12,7 @@ url="https://github.com/hansec/fortran-language-server"
 license=('MIT')
 depends=(python-argparse python-future python-setuptools)
 source=("https://github.com/hansec/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('2ca29e432264d5cdc18e1cf983c177e70091e8e52b7ba80a26f9dd45f30f8fae')
+sha256sums=('8f03782dd992d6652a3f2d349115fdad3aa3464fee3fafbbc4f8ecf780166e3c')
 
 build() {
 	cd "$pkgname-$pkgver"
