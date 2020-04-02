@@ -1,7 +1,7 @@
 pkgbase = cog-wpe-gl
 	pkgdesc = WPE launcher and webapp container
-	pkgver = r134.f421c0a
-	pkgrel = 4
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/Igalia/cog
 	arch = i686
 	arch = x86_64
@@ -9,15 +9,22 @@ pkgbase = cog-wpe-gl
 	arch = armv7l
 	arch = armv7h
 	groups = wpe
-	license = MIT
+	license = custom:MIT
 	makedepends = cmake
-	depends = libxkbcommon
-	provides = cog
-	provides = cog-git
-	conflicts = cog
+	makedepends = wayland-protocols
+	depends = wpewebkit
+	depends = wpebackend-fdo>=1.6.0
+	depends = libinput
 	conflicts = cog-git
-	source = cog-wpe-gl::git+https://github.com/Igalia/cog
-	sha512sums = SKIP
+	source = https://wpewebkit.org/releases/cog-0.6.0.tar.xz
+	source = https://wpewebkit.org/releases/cog-0.6.0.tar.xz.asc
+	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
+	md5sums = a97df4f0e2d25f4da7cd9bb55294d30e
+	md5sums = SKIP
+	sha1sums = 9392d9251bab8a9f61d00297707e16a983127eae
+	sha1sums = SKIP
+	sha256sums = 208f58e0533b269400875237a95e994c93da7234a29fd1c904e756b88963e35d
+	sha256sums = SKIP
 
 pkgname = cog-wpe-gl
 
