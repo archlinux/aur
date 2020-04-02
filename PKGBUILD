@@ -1,9 +1,10 @@
 # Maintainer: Mark Weiman (markzz) <mark.weiman@markzz.com>
 # Maintainer: Katelyn Schiesser (slowbro) <katelyn.schiesser@gmail.com>
+# Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.5.13.arch1
+pkgver=5.5.13.arch2
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -31,8 +32,7 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '237a8d76fb2ea8ba61123a537cac2586c11847e32e4461a920f75371c70fee50'
             '9863dfc3c3213cd6d3501363cc57de897eda5cdd2c68c1b6fc247c66559c0532'
-            'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0'
-)
+            'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0')
 
 
 export KBUILD_BUILD_HOST=archlinux
