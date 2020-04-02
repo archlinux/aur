@@ -1,17 +1,17 @@
 # Mantainer: Daniel Urdiales <daniurdi46@gmail.com>
 
-pkgname=git-gui-menuentry
+pkgname=file-roller-kde-menuentry
 pkgver=1
 pkgrel=1
-pkgdesc="Menu entry for GIT gui"
+pkgdesc="Menu entry for File Roller patched for working in KDE"
 arch=(any)
-url="https://git-scm.com/"
+url="http://fileroller.sourceforge.net/"
 license=(LGPL)
-depends=('git' 'tk')
-source=('Git-Gui.desktop')
+depends=('file-roller')
+source=('KDE-FileRoller.desktop')
 sha512sums=('SKIP')
 
 package() {
   mkdir -p ${pkgdir}/usr/share/applications
-  cp Git-Gui.desktop ${pkgdir}/usr/share/applications
+  cp KDE-FileRoller.desktop ${pkgdir}/usr/share/applications
 }

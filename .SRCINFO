@@ -1,14 +1,13 @@
-pkgbase = git-gui-menuentry
-	pkgdesc = Menu entry for GIT gui
+pkgbase = file-roller-kde-menuentry
+	pkgdesc = Menu entry for File Roller patched for working in KDE
 	pkgver = 1
 	pkgrel = 1
-	url = https://git-scm.com/
+	url = http://fileroller.sourceforge.net/
 	arch = any
 	license = LGPL
-	depends = git
-	depends = tk
-	source = Git-Gui.desktop
+	depends = file-roller
+	source = KDE-FileRoller.desktop
 	sha512sums = SKIP
 
-pkgname = git-gui-menuentry
+pkgname = file-roller-kde-menuentry
 
