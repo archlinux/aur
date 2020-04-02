@@ -32,7 +32,7 @@ source=("git+https://github.com/$_pkgname/$_pkgname-server"
         "$_pkgname.tmpfiles")
 sha256sums=('SKIP'
             'SKIP'
-            '7ec8231894fdac8cba7fdd1cede7b47dbce68dae6868bab35fd16f2ceda433ee'
+            '08685fa8aad0097cb97bba3484c0a0f8908a4e5123928351b7e7732aecc914f2'
             '522f44f3a68f73e43d854421f40e18055f3256453bc00a2162956902d1e577f8'
             'f7bd36f6d7874f1345d205c6dcb79af1804362fc977a658db88951a172d1dfa0'
             '15220909751b960b811fc3eb3d1b8e2c0c5855d726d834461f667b5458d3bdad')
@@ -57,7 +57,7 @@ prepare() {
 
     # Pass Arch Linux's Go compilation flags to Mattermost in order to take
     # into account advanced features like PIE.
-    patch < "$srcdir"/mattermost-ldflags.patch
+    patch -p1 < "$srcdir/$_pkgname-ldflags.patch"
 
     # We are not using docker, no need to stop it.
     sed -r -i Makefile \
