@@ -1,5 +1,5 @@
 # Maintainer: Archadept
-#   Revision: 2012-01-31
+#   Revision: 2020-04-02
 
 pkgname=ttf-14minute
 _pkgname=14minute
@@ -15,8 +15,6 @@ source=("http://www.coolfonts.info/download-23-14_minutes.zip")
 md5sums=('1839eec4972435ad028254082cc16b82')
 
 package() {
-
-    unzip "download-23-14_minutes.zip"
     mkdir "$srcdir/$_pkgname"
     mv $srcdir/$_pkgname.ttf $srcdir/$_pkgname
     cd "$srcdir/$_pkgname"
