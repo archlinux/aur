@@ -1,12 +1,10 @@
 pkgbase = marktext
 	pkgdesc = A simple and elegant open-source markdown editor that focused on speed and usability
 	pkgver = 0.16.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://marktext.app
 	arch = x86_64
 	license = MIT
-	makedepends = jq
-	makedepends = moreutils
 	makedepends = nodejs
 	makedepends = node-gyp
 	makedepends = yarn

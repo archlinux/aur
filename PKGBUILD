@@ -6,7 +6,7 @@
 
 pkgname=marktext
 pkgver=0.16.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and elegant open-source markdown editor that focused on speed and usability'
 arch=('x86_64')
 url='https://marktext.app'
@@ -14,9 +14,7 @@ license=('MIT')
 depends=('electron'
          'libxkbfile'
          'libsecret')
-makedepends=('jq'
-             'moreutils'
-             'nodejs'
+makedepends=('nodejs'
              'node-gyp'
              'yarn')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/marktext/marktext/archive/v${pkgver}.tar.gz"
