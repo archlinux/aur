@@ -2,7 +2,7 @@
 # Maintainer: Eric Schulte <eschulte@grammatech.com>
 _srcname=gtirb
 pkgname=gtirb-git
-pkgver=v0.2.0.r734.gf57e6cb9
+pkgver=v1.2.0.r91.g2aa2dcec
 pkgrel=1
 pkgdesc="GrammaTech Intermediate Representation for Binaries"
 arch=('x86_64')
@@ -12,7 +12,6 @@ optdepends=('boost: build against system boost'
             # Installed protobuf package also dramatically reduces build time.
             'protobuf: multi-language access to serialized GTIRB')
 depends=()
-# graphviz -- to build the docs
 makedepends=('git' 'cmake' 'python' 'doxygen' 'graphviz')
 provides=('gtirb')
 source=('git://github.com/grammatech/gtirb.git')
@@ -25,7 +24,7 @@ pkgver() {
 
 build() {
     cd "$_srcname/"
-    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++
+    cmake . -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++ -DGTIRB_PY_API=OFF -DGTIRB_CL_API=OFF
     cmake --build build --target all doc
 }
 
