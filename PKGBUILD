@@ -2,8 +2,8 @@
 pkgname=opentabletdriver-git
 _pkgname=OpenTabletDriver
 _lpkgname=opentabletdriver
-pkgver=r349.8f72f61
-pkgrel=2
+pkgver=v0.2.0.rc1.r19.ga9997c6
+pkgrel=1
 pkgdesc="A cross-platform open source tablet driver"
 arch=('x86_64')
 url="https://github.com/InfinityGhost/OpenTabletDriver"
@@ -23,11 +23,11 @@ sha256sums=('SKIP'
             'SKIP'
             '7e95c880ca6328d3bb6f3675ee063b18330d3ea753bef9b5376cafc31eff47f2'
             '304ec78284e99395b3091923da540af3a1826205663aa8fd2d52deb64f852166'
-            'f837c3c8903cdd88252cb4faeed5cae8f73451dfaa667bbc4a39ebe713acf0d4')
+            '912dd96de59ffdad8f61e9cba48494a9d2bb43849951e7d4536918a7fbcc8aff')
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -63,6 +63,8 @@ package() {
         install -Dm 755 -o root "$binary" -t "$pkgdir/usr/share/$_pkgname"
     done
     cd "$srcdir"
+
+    sed -i "s/OTD_VERSION/$pkgver/" "$_pkgname.desktop"
 
     install -Dm 644 -o root "$srcdir/$_pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm 644 -o root "$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
