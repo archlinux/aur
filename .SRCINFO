@@ -1,0 +1,16 @@
+pkgbase = bootsplash-theme-manjaro-green-git
+	pkgdesc = Bootsplash Theme 'Manjaro green'
+	pkgver = r3.1ae68da
+	pkgrel = 1
+	url = https://github.com/ahmubashshir/bootsplash-manjaro-green
+	arch = any
+	license = GPL
+	makedepends = coreutils
+	options = !libtool
+	options = !emptydirs
+	source = git+https://github.com/ahmubashshir/bootsplash-manjaro-green.git
+	validpgpkeys = B5AC9A5E093F60A29AA1692F4CC9A8013A65E7D4
+	md5sums = SKIP
+
+pkgname = bootsplash-theme-manjaro-green-git
+
