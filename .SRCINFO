@@ -1,15 +1,25 @@
 pkgbase = mbrola-voices-in2
 	pkgdesc = A Hindi female voice for the MBROLA synthesizer
-	pkgver = 010202
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-in
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/in2/in2-010202.zip
-	md5sums = fdba924b95353c0bdfa3aa4abec30a6b
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/in2/in2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/in2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/in2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/in2/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/in2/TEST/test.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/in2/TEST/test2.pho
+	sha256sums = 7ea599a540c6ae64483f9ef86405e8031d7bcd9d85884d00e17815a17ed0368f
+	sha256sums = b0e741d3a89f951711e79564200108bfe8b578847528edf9c7a1bb30d58a10e4
+	sha256sums = bee71159498043fb0f5744e6a82ddc462d20be9476dbcf44dc532fc54d715358
+	sha256sums = 2fa18e10c821dba3c4d0836699293fcd32ce1bee367d78e1399c5860a589951e
+	sha256sums = a22192b865a12ed547eb53ebeebff072ad94a3e64884670265c274c54a594196
+	sha256sums = 1c890059209e4c48ed05473762c3c2d61e9de8766d4f34683acb80e371f3656f
 
 pkgname = mbrola-voices-in2
 
