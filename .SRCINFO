@@ -1,16 +1,21 @@
 pkgbase = mbrola-voices-gr2
 	pkgdesc = A Greek male voice for the MBROLA synthesizer
-	pkgver = 010521
-	pkgrel = 3
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-gr
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/gr2/gr2-010521.zip
-	md5sums = 30f550cc01c1c1567ce4b12b4244649a
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr2/gr2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr2/TEST/DEMOST~1.PHO
+	sha256sums = d010de77c61d548582349a17f353a1c9f05015b60a028479601c46d9dbfc02a9
+	sha256sums = a5cb48b405dd2b8131ebb1033a343af993cd4bed14ffd5cbe0086be62e791b13
+	sha256sums = b82dbe228b591cf35fdc9cfadb5db6be803c8360829c1c36f4269b1b9b7129c7
+	sha256sums = d97158478f3d8e6c6288964e21e1b3e203857468052805ae9cfa5d1967bc39b2
 
 pkgname = mbrola-voices-gr2
 
