@@ -4,12 +4,12 @@
 # TODO cleanup asar, drop as much as possible, remove local references
 pkgname=whalebird-desktop
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Electron-based Mastodon/Pleroma client'
 arch=('any')
 url='https://whalebird.org'
 license=('MIT')
-depends=('electron7')
+depends=('electron')
 makedepends=('git' 'npm')
 provides=('whalebird')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h3poteto/${pkgname}/archive/${pkgver}.tar.gz"
@@ -17,14 +17,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h3poteto/${pkgname}/arc
   whalebird.sh)
 sha256sums=('7b84b2aadb8dab59bc61b25ca86b171bf74cfa29383d21e754e6964e00570bb4'
             '8feed931453da872291c4588c981007ed36566155cfcf55ab3ff5d7431d60aef'
-            '954180114cb48945084ffb91472d8bf4cdd37fe8d30a31a13363e1a7060062a4')
+            'a0a050952353c78389bdafd8885cae4a402d0819acad07010566657e387c5ce9')
 
 _npmopt=(--no-audit --no-progress --no-fund)
 prepare() {
   cd "${pkgname}-${pkgver}"
   #npm "${_npmopt[@]}" --ignore-scripts uninstall electron{,-debug,-devtools-installer} listr cross-env \
   #  cfonts chalk webpack-dev-server stylelint{,-config-standard} ttfinfo prettier-stylelint
-  npm "${_npmopt[@]}" --ignore-scripts install electron@"$(</usr/lib/electron7/version)"
+  npm "${_npmopt[@]}" --ignore-scripts install electron@"$(</usr/lib/electron/version)"
 
   # run install script for node-sass only
   node node_modules/node-sass/scripts/install.js
@@ -43,8 +43,8 @@ build() {
   chmod -R u+w node_modules/.cache
 
   npx electron-builder --linux --dir \
-    -c.electronDist=/usr/lib/electron7 \
-    -c.electronVersion="$(</usr/lib/electron7/version)"
+    -c.electronDist=/usr/lib/electron \
+    -c.electronVersion="$(</usr/lib/electron/version)"
 }
 
 package() {
