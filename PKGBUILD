@@ -20,8 +20,8 @@ source=("${pkgname}.tar.gz::https://static.tibia.com/download/tibia.x64.tar.gz"
 
 sha256sums=('SKIP'
             'SKIP'
-            'e9e6cdd4e2954ae0838dc427a92871bb9cacdacb0523598c60287a05f8568d1f'
-            '3cdf107369e4366aa5fc6d1b90ba0b41bd3d19abeb418fb85a693d74c3ece736')
+            'f3a7c01c0664155a82f00a3d84d6d4a01f7786e872f3a12ae89886542bc43482'
+            '55d87bd8f32728cd47757a195102e2af2d10a1501d9370af86606b2c75211515')
 
 prepare() {
   gendesk -f -n

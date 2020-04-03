@@ -1,10 +1,9 @@
 --- start-tibia-launcher.sh
 +++ start-tibia-launcher.sh
-@@ -6,5 +6,6 @@
+@@ -4,5 +4,6 @@
  
  SCRIPT=$(readlink -f "$0")
  PATH=$(dirname "$SCRIPT")
 +export FREETYPE_PROPERTIES="truetype:interpreter-version=38"
  
- LD_LIBRARY_PATH="$PATH" exec "$PATH/client"
-
+ LD_LIBRARY_PATH="$PATH:/usr/lib/openssl-1.0/" exec "$PATH/Tibia"
