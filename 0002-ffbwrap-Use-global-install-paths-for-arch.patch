@@ -1,0 +1,34 @@
+From 64049bc5529c52161f9e4cee8404ef0b0e6f4e87 Mon Sep 17 00:00:00 2001
+From: Matt Coffin <mcoffin13@gmail.com>
+Date: Fri, 3 Apr 2020 11:44:55 -0600
+Subject: [PATCH 2/2] ffbwrap: Use global install paths for arch
+
+---
+ bin/ffbwrap | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
+
+diff --git a/bin/ffbwrap b/bin/ffbwrap
+index 2aa67cc..e0a3c0e 100755
+--- a/bin/ffbwrap
++++ b/bin/ffbwrap
+@@ -29,16 +29,7 @@ eval set -- "$OPTIONS"
+ 
+ unset OPTIONS
+ 
+-CURRENT_DIR=$(CDPATH= cd -- "$(dirname -- $(readlink -f "$0"))" && pwd)
+-
+-if [ -f "${CURRENT_DIR}/../build/libffbwrapper-i386.so" ]
+-then
+-    LIBDIR="${CURRENT_DIR}/../build"
+-else
+-    LIBDIR="/usr/local/lib"
+-fi
+-
+-LD_PRELOAD="${LIBDIR}/libffbwrapper-x86_64.so ${LIBDIR}/libffbwrapper-i386.so ${LD_PRELOAD}"
++LD_PRELOAD="/usr/lib/libffbwrapper.so /usr/lib32/libffbwrapper.so ${LD_PRELOAD}"
+ 
+ while true; do
+     case "$1" in
+-- 
+2.26.0
+

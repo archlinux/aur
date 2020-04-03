@@ -1,0 +1,52 @@
+From 67edddf12ad1106b8a499b2b9673bbff83d319d6 Mon Sep 17 00:00:00 2001
+From: Matt Coffin <mcoffin13@gmail.com>
+Date: Fri, 3 Apr 2020 11:27:35 -0600
+Subject: [PATCH 1/2] makefile: clean up anti-patterns
+
+---
+ Makefile | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index e698048..ae0a157 100644
+--- a/Makefile
++++ b/Makefile
+@@ -27,8 +27,9 @@ DEPS := $(OBJS:.o=.d)
+ INC_DIRS := $(shell find $(SRC_DIR) -type d)
+ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
+ 
+-CPPFLAGS ?= $(INC_FLAGS) -MMD -MP -Wall
++CFLAGS += $(INC_FLAGS) -MMD -MP -Wall
+ LDLIBS ?= -lm
++LDFLAGS += -fPIC
+ 
+ all: $(BUILD_DIR) \
+ 	$(BUILD_DIR)/libffbwrapper-i386.so \
+@@ -39,20 +40,20 @@ $(BUILD_DIR):
+ 	mkdir -p $(BUILD_DIR)
+ 
+ $(BUILD_DIR)/libffbwrapper-i386.so: $(SRC_DIR)/ffbwrapper.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -m32 -fPIC -shared $< -o $@ -ldl
++	$(CC) $(CFLAGS) $(CFLAGS) $(LDFLAGS) -m32 -shared $< -o $@ -ldl
+ 
+ $(BUILD_DIR)/libffbwrapper-x86_64.so: $(SRC_DIR)/ffbwrapper.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -fPIC -shared $< -o $@ -ldl
++	$(CC) $(CFLAGS) $(CFLAGS) $(LDFLAGS) -shared $< -o $@ -ldl
+ 
+ $(BUILD_DIR)/ffbplay: $(BUILD_DIR)/ffbplay.o
+ 	$(CC) $(LDFLAGS) -o $@ $< $(LDLIBS)
+ 
+ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
++	$(CC) $(CFLAGS) $(CFLAGS) -c $< -o $@
+ 
+ .PHONY: directories clean
+ 
+ clean:
+-	$(RM) -r $(BUILD_DIR)
++	[ ! -d $(BUILD_DIR) ] || $(RM) -r $(BUILD_DIR)
+ 
+ -include $(DEPS)
+-- 
+2.26.0
+
