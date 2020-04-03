@@ -3,7 +3,7 @@
 pkgname=minetest-mod-moreblocks-git
 _gitname=${pkgname%-git*}
 pkgver=157.27051c7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mob Framework Mod (former animals mod) provides a framework for creating mobs in Minetest"
 arch=('any')
 url="https://forum.minetest.net/viewtopic.php?f=11&t=509"

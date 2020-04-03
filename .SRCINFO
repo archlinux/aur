@@ -1,7 +1,7 @@
 pkgbase = minetest-mod-moreblocks-git
 	pkgdesc = Mob Framework Mod (former animals mod) provides a framework for creating mobs in Minetest
 	pkgver = 157.27051c7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.minetest.net/viewtopic.php?f=11&t=509
 	arch = any
 	license = zlib
