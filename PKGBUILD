@@ -2,7 +2,7 @@
 
 _gemname=fusuma-plugin-sendkey
 pkgname=ruby-$_gemname
-pkgver=0.2.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Fusuma plugin that sending virtual keyboard events."
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-fusuma ruby-evdev libevdev evemu)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('b96aa0093f850b4b986f68c1f1e5d156cc576c36')
+sha1sums=('2fb51c7f62ba1c5b8c03f0a57d945da9dc25371b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
