@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=hostctl
-pkgver=0.5.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Command-line tool to manage your hosts file'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/guumaster/hostctl'
 license=('MIT')
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('d6570f446b133663075e554228a630db3748d18863a0304efbbb19f02c1ab72a')
+sha256sums=('47065ed36939d24c6c604dce4110b8bceb29405db85282c70b826d11dddd6eb2')
 
 build() {
   cd $pkgname-$pkgver
