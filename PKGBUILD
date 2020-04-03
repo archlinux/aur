@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cargo-c-git
 pkgver=0.6.2.r0.g59ee00a
@@ -31,7 +31,6 @@ check() {
 }
 
 package() {
-    install -D -m755 cargo-c/target/release/cargo-cbuild   -t "${pkgdir}/usr/bin"
-    install -D -m755 cargo-c/target/release/cargo-cinstall -t "${pkgdir}/usr/bin"
+    install -D -m755 cargo-c/target/release/cargo-c{build,install} -t "${pkgdir}/usr/bin"
     install -D -m644 cargo-c/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
