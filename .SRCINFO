@@ -23,6 +23,6 @@ pkgbase = mongodb-compass-readonly-beta-bin
 	provides = mongodb-compass-readonly-beta
 	conflicts = mongodb-compass-readonly-beta
 	source = mongodb-compass-readonly-beta-bin-1.21.0.beta.3-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.21.0-beta.3/mongodb-compass-readonly-beta-1.21.0-beta.3.x86_64.rpm
-	sha256sums = 0000000000000000000000000000000000000000000000000000000000000000
+	sha256sums = e0b099bf8fde14b505b0fc47538c71ce69b6f2a8576b82b78d2211df68911286
 
 pkgname = mongodb-compass-readonly-beta-bin
