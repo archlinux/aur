@@ -1,15 +1,25 @@
 pkgbase = mbrola-voices-gr1
 	pkgdesc = A Greek male voice for the MBROLA synthesizer
-	pkgver = 990610
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-gr
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/gr1/gr1-990610.zip
-	md5sums = 2a066550b3caa8038230bf1a335f073d
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr1/gr1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr1/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr1/TEST/Euler.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/gr1/TEST/kalimera.pho
+	sha256sums = b9f2d8b16b12629f981aed3d2f6ba885ab6752da6521ad40522d2c0086f5fee9
+	sha256sums = 9be1e884e4f29e1973350402d24c8753f13976c0eef806e11a4b1b30ca0dae6b
+	sha256sums = 3a04f9d40794ae990f311939c1d566c029ad96643c482480a8da3323d065cb2c
+	sha256sums = 7ce00a2fe7eec01394dafebbfc9e2036689fa3783a19d075be34b2c75a5ee6ca
+	sha256sums = eca6a1244e8b1bd55865179382ca293410aa3b2b74d687622431ac3ee2feb8dc
+	sha256sums = f8a39db7cb02646d1f1672a2786e223c0c5e6eb79b614554e4daa52c841f5343
 
 pkgname = mbrola-voices-gr1
 
