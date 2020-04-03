@@ -1,7 +1,7 @@
 pkgbase = imaginary-teleprompter-bin
 	pkgdesc = A complete and professional free software teleprompter.
 	pkgver = 2.4.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://imaginary.tech/teleprompter
 	install = INSTALL
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = imaginary-teleprompter-bin
 	depends = libnotify
 	depends = libappindicator-gtk2
 	depends = libappindicator-gtk3
+	depends = gconf
 	provides = imaginary-teleprompter
 	conflicts = imaginary-teleprompter
 	conflicts = imaginary-teleprompter-git
