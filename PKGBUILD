@@ -9,15 +9,20 @@ pkgdesc='Font analysis tool for determining character/glyph support'
 arch=('any')
 url="https://github.com/googlefonts/$_pyname"
 license=('GPL3')
-_py_deps=('fonttools' 'lxml' 'pyicu' 'requests' 'tabulate')
-depends=('python' "${_py_deps[@]/#/python-}")
+_py_deps=('fonttools'
+          'lxml'
+          'pyicu'
+          'requests'
+          'tabulate')
+depends=('python'
+         "${_py_deps[@]/#/python-}")
 makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/googlefonts/$_pyname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('92215da45fed003032e5849e3d0917aaae9024e255affe9d28c67aed0223f11e')
 
 prepare() {
     cd "$_pyname-$pkgver"
-    echo "version = '$pkgver'" > $_pipname/_version.py
+    echo "version = '$pkgver'" > "$_pipname/_version.py"
     sed -i -e '/use_scm_version/d' setup.py
 }
 
