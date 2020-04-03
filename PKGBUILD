@@ -1,17 +1,14 @@
 # Maintainer: Nazar Vinnichuk <nazar.vinnichuk at tutanota dot com>
-pkgname=pacwall-git
+pkgname=paclabel-git
 _pkgname=${pkgname%-git}
-pkgver=r79.6c0be4d
+pkgver=r37.09badd7
 pkgrel=1
-pkgdesc="Dependency graph of installed packages on your wallpaper."
+pkgdesc="A tiny pacman wrapper that makes possible to attach labels to packages."
 url="http://github.com/Kharacternyk/${_pkgname}"
 arch=('any')
 license=('GPL-3')
-depends=('graphviz' 'pacman-contrib')
-optdepends=('feh: wallpaper setting using feh'
-            'hsetroot: wallpaper setting using hsetroot'
-            'imagemagick: DE integration'
-            'xorg-xdpyinfo: DE integration')
+depends=('ncurses')
+optdepends=('ripgrep')
 makedepends=('git')
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/Kharacternyk/${_pkgname}.git#branch=master")
@@ -24,6 +21,8 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    install -Dm755 "${srcdir}/${_pkgname}/pacwall.sh" "${pkgdir}/usr/bin/pacwall"
+    install -Dm755 "${srcdir}/${_pkgname}/paclabel.sh" "${pkgdir}/usr/bin/paclabel"
     install -Dm644 "${srcdir}/${_pkgname}/README.rst" "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+    install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/labels"
+    install -Dm644 /dev/null "${pkgdir}/etc/${_pkgname}/labels~"
 }
