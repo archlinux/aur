@@ -1,16 +1,25 @@
 pkgbase = mbrola-voices-id1
 	pkgdesc = An Indonesian male voice for the MBROLA synthesizer
-	pkgver = 001010
+	pkgver = 15.6fa9693
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-id
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/id1/id1-001010.zip
-	md5sums = 33cd63ec6d231ac91b8156485a381207
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/id1/id1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/id1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/id1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/id1/Test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/id1/Test/i_am_working.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/id1/Test/welcome_to_indonesia.pho
+	sha256sums = ef0254a32f632468b799c95ff9256bd6f81aa8900f619262618959ad68fa75d0
+	sha256sums = 89a85157d9b5112788e501456970bed6cabd980e8016fc1cd33d02a3de9fef29
+	sha256sums = d63a88b3afa1372ac9138ed5082687a0c00f2cd2987ee0cbf0eb59f65f828803
+	sha256sums = e8ce5047b79c902d32a138f4ede71c7dc683aa0df614b524fd74bfb0158a285a
+	sha256sums = d4f0dd82fdeae6162485727a0d24410e32f80100e64a7fd77ac7168f70741ede
+	sha256sums = dffe2902bdbbf68ce0173fec22c8ae9354cd7caf6c5f286ffb5314cec17e34b3
 
 pkgname = mbrola-voices-id1
 
