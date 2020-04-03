@@ -1,0 +1,7 @@
+prefix=/usr
+includedir=${prefix}/include
+
+Name: raylib-cpp
+Description: A C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming.
+Version: ${version}
+Cflags: -I${includedir}/raylib
