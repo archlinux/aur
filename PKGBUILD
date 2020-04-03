@@ -9,7 +9,7 @@ arch=('any')
 url="https://forum.minetest.net/viewtopic.php?f=11&t=509"
 license=('zlib')
 depends=('minetest-common')
-makedepends=()
+makedepends=('git')
 provides=("$_gitname")
 conflicts=()
 source=("$_gitname::git+https://github.com/minetest-mods/moreblocks")

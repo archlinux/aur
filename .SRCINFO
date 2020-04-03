@@ -5,6 +5,7 @@ pkgbase = minetest-mod-moreblocks-git
 	url = https://forum.minetest.net/viewtopic.php?f=11&t=509
 	arch = any
 	license = zlib
+	makedepends = git
 	depends = minetest-common
 	provides = minetest-mod-moreblocks
 	source = minetest-mod-moreblocks::git+https://github.com/minetest-mods/moreblocks
