@@ -1,0 +1,10 @@
+# General makepkg directories
+/src
+/log
+/pkg
+
+# Package git repository
+/adwaita-extended-git
+
+# Package products
+/adwaita-extended-git-*.pkg*
