@@ -1,6 +1,6 @@
 pkgbase = sfdx-cli
 	pkgdesc = a tool for creating and managing Salesforce DX projects from the command line
-	pkgver = 7.52.0_c5ad5c3eff
+	pkgver = 7.53.0_839fc82926
 	pkgrel = 1
 	url = https://developer.salesforce.com/tools/sfdxcli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sfdx-cli
 	optdepends = gnome-keyring: saving default credentials
 	provides = sfdx-cli
 	options = !strip
-	source_x86_64 = https://developer.salesforce.com/media/salesforce-cli/sfdx-cli/channels/stable/sfdx-cli-v7.52.0-c5ad5c3eff-linux-x64.tar.xz
-	sha256sums_x86_64 = caedf954812cb0bb56ff7969249753cf2b3c0db4e978d159bae7614fabee7e74
+	source_x86_64 = https://developer.salesforce.com/media/salesforce-cli/sfdx-cli/channels/stable/sfdx-cli-v7.53.0-839fc82926-linux-x64.tar.xz
+	sha256sums_x86_64 = d4851b18e2f42d8ede973157a5927391453fff18508935d870e606d25da34b92
 
 pkgname = sfdx-cli
