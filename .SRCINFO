@@ -1,15 +1,23 @@
 pkgbase = mbrola-voices-fr5
 	pkgdesc = A French Belgian voice for the MBROLA synthesizer
-	pkgver = 991020
+	pkgver = 15.6fa9693
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-fr
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr5/fr5-991020.zip
-	md5sums = 2ebf4105702ab2aa037491338ed05ebb
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr5/fr5
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr5/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr5/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr5/TEST/bonjour.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr5/TEST/carte.pho
+	sha256sums = f840031f8267c5eb21f40a94099f170ad6a0871949568bbabbe3287415de79dd
+	sha256sums = 7098e6d2442f532816a3f4f9e685c28a24deaebad85fa21dee7dc8f14ec82331
+	sha256sums = dbae84598dba221117f6bc86925dd0c4f9e28adddde06880f65032efb8c576e3
+	sha256sums = 631ac0560fdc53d49d146fa4b97e3d7e4b3e3dc4c9dc25740fc6c1ca0d9cd490
+	sha256sums = f3e5989d4c90e98901f0404d0623197558dce13e9bf70dde65dfbf664f74563e
 
 pkgname = mbrola-voices-fr5
 
