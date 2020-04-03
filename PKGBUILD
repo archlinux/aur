@@ -2,7 +2,7 @@
 
 pkgname=bootsplash-theme-manjaro-green-git
 _pkgname=bootsplash-manjaro-green
-pkgver=r4.3cf17cd
+pkgver=r5.a72c392
 pkgrel=1
 pkgdesc="Bootsplash Theme 'Manjaro green'"
 arch=('any')
