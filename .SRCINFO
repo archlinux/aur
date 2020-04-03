@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
 	pkgver = 74.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://librewolf-community.gitlab.io/
 	arch = x86_64
 	arch = aarch64

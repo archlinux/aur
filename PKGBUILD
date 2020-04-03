@@ -6,7 +6,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 pkgver=74.0
-pkgrel=2
+pkgrel=5
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -33,9 +33,13 @@ sha256sums=('74589c2836d7c30134636823c3caefbcaed0ea7c3abb2def9e3ddd9f86d9440a'
 
 if [[ $CARCH == 'aarch64' ]]; then
   source+=(arm.patch
-           https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
+           https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+           https://gitlab.com/librewolf-community/browser/linux/-/raw/master/deb_patches/fix-armhf-webrtc-build.patch
+           https://gitlab.com/librewolf-community/browser/linux/-/raw/master/deb_patches/webrtc-fix-compiler-flags-for-armhf.patch)
   sha256sums+=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-               '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
+               '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
+               '035c209c1a03d1ddd99016d2b5b6df035e3cd7ddfe78851f7376628aa1d8188a'
+               '3d8f6aa6d6602c765c640d9934c42bf627f9a77835908429c37cdcef4171d300')
 fi
 
 prepare() {
@@ -66,6 +70,7 @@ ac_add_options --with-app-basename=${_pkgname}
 ac_add_options --with-branding=browser/branding/${pkgname}
 ac_add_options --with-distribution-id=io.gitlab.${pkgname}
 ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --allow-addon-sideload
 export MOZ_REQUIRE_SIGNING=0
 
 # System libraries
@@ -93,32 +98,41 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 END
 
 if [[ $CARCH == 'aarch64' ]]; then
-cat >>../mozconfig <<END
+  cat >>../mozconfig <<END
 # taken from manjaro build:
-ac_add_options --enable-lto
 ac_add_options --enable-optimize="-g0 -O2"
-export MOZ_DEBUG_FLAGS=" "
-export CFLAGS+=" -g0"
-export CXXFLAGS+=" -g0"
-export RUSTFLAGS="-Cdebuginfo=0"
-
 # from ALARM
-ac_add_options --disable-webrtc
+# ac_add_options --disable-webrtc
 
 END
 
-  # ac_add_options --enable-optimize  <- ?
+  export MOZ_DEBUG_FLAGS=" "
+  export CFLAGS+=" -g0"
+  export CXXFLAGS+=" -g0"
+  export RUSTFLAGS="-Cdebuginfo=0"
 
-  LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
+  export LDFLAGS+=" -Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
   patch -p1 -i ../arm.patch
   patch -p1 -i ../build-arm-libopus.patch
+  # do we need those for aarch64 as well?
+  patch -p1 -i ../fix-armhf-webrtc-build.patch
+  patch -p1 -i ../webrtc-fix-compiler-flags-for-armhf.patch
 
+else
+
+  cat >>../mozconfig <<END
+# probably not needed, enabled by default?
+ac_add_options --enable-optimize
+END
 fi
 
   # Disabling Pocket
   sed -i "s/'pocket'/#'pocket'/g" browser/components/moz.build
   # this one only to remove an annoying error message:
   sed -i 's#SaveToPocket.init();#// SaveToPocket.init();#g' browser/components/BrowserGlue.jsm
+
+  # allow SearchEngines option in non-ESR builds
+  sed -i 's#"enterprise_only": true,#"enterprise_only": false,#g' browser/components/enterprisepolicies/schemas/policies-schema.json
 
   rm -f ${srcdir}/common/source_files/mozconfig
   cp -r ${srcdir}/common/source_files/* ./
@@ -128,14 +142,12 @@ fi
 build() {
   cd firefox-$pkgver
 
-  export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
 
   # LTO needs more open files
   ulimit -n 4096
 
-if [[ $CARCH != 'aarch64' ]]; then
   # -fno-plt with cross-LTO causes obscure LLVM errors
   # LLVM ERROR: Function Import: link error
   CFLAGS="${CFLAGS/-fno-plt/}"
@@ -143,9 +155,21 @@ if [[ $CARCH != 'aarch64' ]]; then
 
   # Do 3-tier PGO
   echo "Building instrumented browser..."
+
+if [[ $CARCH == 'aarch64' ]]; then
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-profile-generate
+END
+
+else
+
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
 END
+
+fi
+
   ./mach build
 
   echo "Profiling instrumented browser..."
@@ -169,16 +193,26 @@ END
   ./mach clobber
 
   echo "Building optimized browser..."
+
+if [[ $CARCH == 'aarch64' ]]; then
+
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto
+ac_add_options --enable-profile-use
+ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
+ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
+END
+
+else
+
   cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
-# seems to break on arm
 ac_add_options --enable-linker=gold
 END
-else
-  cat >.mozconfig ../mozconfig
+
 fi
 
   ./mach build
@@ -191,22 +225,15 @@ package() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
-  # also create regular tarball for non-distro-specific packaging
-  # ./mach package
-
   local vendorjs="$pkgdir/usr/lib/$pkgname/browser/defaults/preferences/vendor.js"
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
-// Use LANG environment variable to choose locale
-pref("intl.locale.requested", "");
 
+  install -Dvm644 /dev/stdin "$vendorjs" <<END
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
-// Disable default browser checking.
-pref("browser.shell.checkDefaultBrowser", false);
-
 // Don't disable extensions in the application directory
-pref("extensions.autoDisableScopes", 11);
+// done in librewolf.cf
+// pref("extensions.autoDisableScopes", 11);
 END
 
   cp -r ${srcdir}/settings/* ${pkgdir}/usr/lib/${pkgname}/
@@ -214,14 +241,14 @@ END
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
 [Global]
-id=io.gitlab.${pkgname}
+id=io.gitlab.${_pkgname}
 version=1.0
-about=LibreWolf Arch Linux
+about=LibreWolf
 
 [Preferences]
-app.distributor=archlinux
+app.distributor="LibreWolf Community"
 app.distributor.channel=$pkgname
-app.partner.archlinux=archlinux
+app.partner.librewolf=$pkgname
 END
 
   for i in 16 32 48 64 128; do
