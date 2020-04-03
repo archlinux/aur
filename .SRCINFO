@@ -1,0 +1,18 @@
+pkgbase = choose-rust-git
+	pkgdesc = A fast, human-friendly alternative to awk(1) and cut(1)
+	pkgver = r71.9bf0214
+	pkgrel = 1
+	url = https://github.com/theryangeary/choose
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	source = git+https://github.com/theryangeary/choose.git
+	sha256sums = SKIP
+
+pkgname = choose-rust-git
+
