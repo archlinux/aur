@@ -1,4 +1,4 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cargo-c
 pkgver=0.6.2
@@ -9,7 +9,7 @@ url='https://github.com/lu-zero/cargo-c/'
 license=('MIT')
 depends=('curl' 'openssl' 'zlib')
 makedepends=('rust')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lu-zero/cargo-c/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/lu-zero/cargo-c/archive/v${pkgver}.tar.gz")
 sha256sums=('c0a3e612b41f441081098e3f3e1716fc709421f3d17654a9f0303f420fdbc1ee')
 
 prepare() {
@@ -27,7 +27,6 @@ check() {
 }
 
 package() {
-    install -D -m755 "${pkgname}-${pkgver}/target/release/cargo-cbuild"   -t "${pkgdir}/usr/bin"
-    install -D -m755 "${pkgname}-${pkgver}/target/release/cargo-cinstall" -t "${pkgdir}/usr/bin"
+    install -D -m755 "${pkgname}-${pkgver}/target/release/"cargo-c{build,install} -t "${pkgdir}/usr/bin"
     install -D -m644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
