@@ -3,7 +3,7 @@
 
 pkgname=libva-intel-driver-g45-h264
 epoch=1
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="VA-API implementation for Intel G45 chipsets with H264 support."
 arch=('i686' 'x86_64')
@@ -39,4 +39,4 @@ package() {
     install -m644 -D COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
 
-sha256sums=('59754576de8bc69412ca0554b3a28406b0562cbf2616eca0d3c261528e81c641')
+sha256sums=('1766bb10fe342f4083d87e977c1bd3b4218ca8be44dfa5fd27ff57e1bf9deb21')
