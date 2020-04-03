@@ -4,7 +4,7 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname='openjk-git'
-pkgver=r3610.94866c437
+pkgver=r3646.d34ad99cc
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=('i686' 'x86_64')
@@ -38,6 +38,11 @@ pkgver() {
   printf "r%s.%s"                  \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    git revert 5203023 --no-edit 
 }
 
 build() {
