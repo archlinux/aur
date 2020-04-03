@@ -61,7 +61,7 @@ _localmodcfg=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-ck
-pkgver=5.5.14
+pkgver=5.5.15
 pkgrel=1
 _ckpatchversion=1
 arch=(x86_64)
@@ -88,13 +88,12 @@ source=(
 0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
 0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
 0010-drm-i915-Introduce-a-vma.kref.patch
-0011-iwlwifi-don-t-send-GEO_TX_POWER_LIMIT-if-no-wgds-tab.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('4c529e4e100df11887e0a789d0e46d7ffd053e68a0380b6173a3a2799192ef6a'
+sha256sums=('c41fd8052e3e53de5bf0a0d666f92b7a9ea2d5f09b24423ee8c090f1e77ce214'
             'SKIP'
             '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
@@ -108,8 +107,7 @@ sha256sums=('4c529e4e100df11887e0a789d0e46d7ffd053e68a0380b6173a3a2799192ef6a'
             '8da1046091242178219de63805bf08f2d8bfe72874ab5f2b616249d7b87227ea'
             '70f0e78e7335cb713c06a1e0b886d4c8edebf2048c588f00d12e95c930483cd9'
             '6d305596dc9be86a65b9200bf69c001a8e4ddd41cad471289c3c769b5530c359'
-            'a4a10bcb55fc1991200c3835b359b81f5e3e858f5be77c6b9eaef033885c8bfc'
-            'a578a12239e39728c63038db6539abcee422bed4d04ee5bf99f6ba5be8884a9a')
+            'a4a10bcb55fc1991200c3835b359b81f5e3e858f5be77c6b9eaef033885c8bfc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
