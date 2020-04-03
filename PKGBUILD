@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio-edit"
-pkgver="20.3.26-0"
+pkgver="20.3.26.2"
 pkgrel="1"
 pkgdesc="A lightweight audio wave editor"
 arch=("i686" "x86_64")
