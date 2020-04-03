@@ -1,8 +1,8 @@
 # Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
 
 pkgname=python-scramp
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Python implementation of the SCRAM protocol"
 arch=(any)
 url='https://github.com/tlocke/scramp'
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(https://github.com/tlocke/scramp/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('ca426e7fd186531a933207db3e973e1cf3a8b425c2f14875e061a80ebf62660e')
+sha256sums=('b7da0089e1f02f32ab509220e76c9e330ac9d736f9d77ad5632b9f4692721362')
 
 build() {
   cd scramp-$pkgver
