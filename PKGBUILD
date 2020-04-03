@@ -2,10 +2,10 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 _pkgver=4.19.106
-_rtpatchver=45
+_rtpatchver=46
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
@@ -31,9 +31,9 @@ validpgpkeys=(
 )
 sha256sums=('63c8bd76a9b282e18112f8ff9e3fd41e3d1df9f9b7248ea1a370b05a827e9cda'
             'SKIP'
-            'fd91ed56a99009a45541a81e8d2d93780ac84b3ffa80a2d1615006d5e33be184'
+            '4b16c051cbf28c76a1b34d1b24ea4dcb9be28bdb640eab0c01f24b090e828a07'
             'SKIP'
-            'd04025863fbdc54918e7df9061a4832e9b3a8533967c2e2c50b11e2736ae91b9'
+            '285708f83ef8aa4bc25643b2abd1a1aa7313f368d7221fa1c4bb6512b7a63236'
             'a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2')
 
 export KBUILD_BUILD_HOST=archlinux
