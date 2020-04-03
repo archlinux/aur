@@ -1,6 +1,6 @@
 pkgbase = unity-mail
 	pkgdesc = Mail notifications and count for Unity/MATE/Xfce/LXDE/etc.
-	pkgver = 19.3.20.151
+	pkgver = 19.3.20.152
 	pkgrel = 1
 	url = https://tari.in/www/software/unitymail
 	install = unity-mail.install
