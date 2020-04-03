@@ -1,15 +1,23 @@
 pkgbase = mbrola-voices-hb1
 	pkgdesc = A Hebrew male voice for the MBROLA synthesizer
-	pkgver = 000308
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-hb
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/hb1/hb1-000308.zip
-	md5sums = c702dd7210fdd8225bf79456839c2d6f
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/hb1/hb1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/hb1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/hb1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/hb1/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/hb1/TEST/tst123.pho
+	sha256sums = 1093d4da40399b8999032bd44c37ef6cfb99ef2b5317771a2c497d8bd5b84749
+	sha256sums = 2f374bdc931c18f763a9d1ca5133fd516136ef862f10aca1158c70deb0962f78
+	sha256sums = b768b10268af33adefb02cb3f471e7f14e7ffb706787940183f6742999ec5241
+	sha256sums = bc6fc3f111e0ac5a4fa6c15566d9a3b5c7680605c457cf6cb7e9060bc76e5738
+	sha256sums = 631e85638beb4568d297a2af67ac66b9b373e70c855ef1384311914e12ba9e1f
 
 pkgname = mbrola-voices-hb1
 
