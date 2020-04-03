@@ -1,7 +1,7 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
-_ver=1.0.5
-_commit=c7c72e5
+_ver=1.0.6
+_commit=6438698
 pkgver=$_ver.$_commit
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
@@ -20,7 +20,7 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'patch.diff.example')
 sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8'
-            '32f3875bd96e44fed11089ebc16b2dc6f1436ddcd21ae0abb6f452315f233262')
+            'de588a37b5b0be17bb7a42b4b36ba4d5d5aa58f723ec91dabb9d29e1713cd0f9')
 
 prepare() {
   cd $srcdir/session-desktop
