@@ -1,0 +1,19 @@
+pkgbase = cpachecker-svn
+	pkgdesc = Tool for configurable software verification.
+	pkgver = r33105
+	pkgrel = 1
+	url = https://svn.sosy-lab.org/software/cpachecker/trunk
+	arch = x86_64
+	license = Apache Version 2.0
+	checkdepends = ant
+	makedepends = ant
+	makedepends = subversion
+	depends = java-environment=11
+	depends = python
+	depends = bash
+	conflicts = cpachecker
+	source = cpachecker::svn+https://svn.sosy-lab.org/software/cpachecker/trunk
+	md5sums = SKIP
+
+pkgname = cpachecker-svn
+
