@@ -1,14 +1,14 @@
 pkgbase = aws-ecs-cli
 	pkgdesc = The Amazon EC2 Container Service (Amazon ECS) command line interface (CLI) provides high-level commands to simplify creating, updating, and monitoring clusters and tasks from a local development environment.
-	pkgver = 1.14.1
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://github.com/aws/amazon-ecs-cli
 	arch = x86_64
 	license = Apache
 	makedepends = curl
 	options = !strip
-	source = ecs-cli-048f3c113a46237d7b867a4c7cd9867f::https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
-	md5sums = 048f3c113a46237d7b867a4c7cd9867f
+	source = ecs-cli-6aa699a77d26cd30207db28caa3d61a8::https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
+	md5sums = 6aa699a77d26cd30207db28caa3d61a8
 
 pkgname = aws-ecs-cli
 
