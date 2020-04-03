@@ -4,7 +4,7 @@
 # Contributor: Joan Rieu <toto_pirate@hotmail.fr>
 
 pkgname=roxterm-git
-pkgver=3.8.5.r0.gf7bc346
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Tabbed, VTE-based terminal emulator"
 epoch=1
@@ -12,7 +12,8 @@ arch=('i686' 'x86_64')
 url="http://roxterm.sourceforge.net"
 license=('GPL3')
 depends=('dbus-glib' 'vte3' 'libsm')
-makedepends=('git' 'docbook-xsl' 'xmlto' 'po4a' 'python2' 'python2-lockfile' 'imagemagick' 'librsvg' 'itstool')
+makedepends=('cmake' 'git' 'docbook-xsl' 'xmlto' 'po4a' 'imagemagick' \
+  'librsvg' 'itstool' 'sed')
 provides=('roxterm')
 conflicts=('roxterm')
 source=("$pkgname::git+https://github.com/realh/roxterm.git")
@@ -20,7 +21,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --long --tags | sed -r 's,([^-]*-g),r\1,;s,-,.,g'
+  vs=`git describe --match '[0-9]*'`
+  vl=`git describe --long --match '[0-9]*'`
+  [ "$vs" = "$vl" ] && vs=`echo "$vs" | sed -r 's,([^-]*-g),r\1,;s,-,.,g'`
+  echo $vs
 }
 
 build() {
