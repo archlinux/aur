@@ -1,0 +1,43 @@
+pkgbase = linux-xanmod-lts49
+	pkgver = 4.19.102
+	pkgrel = 1
+	url = http://www.xanmod.org/
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	makedepends = libelf
+	makedepends = cpio
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	options = !strip
+	source = https://github.com/xanmod/linux/archive/4.19.102-xanmod49.tar.gz
+	source = 60-linux.hook
+	source = 90-linux.hook
+	source = linux-xanmod-lts49.preset
+	source = choose-gcc-optimization.sh
+	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
+	sha256sums = fb64eca226d3ba2a402e89824ab3c7bab70fc791a80facde483d19a50e0b2e1e
+	sha256sums = ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21
+	sha256sums = 75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919
+	sha256sums = ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65
+	sha256sums = bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5
+	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
+
+pkgname = linux-xanmod-lts49
+	pkgdesc = The Linux kernel and modules with Xanmod patches
+	install = linux.install
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	backup = etc/mkinitcpio.d/linux-xanmod-lts49.preset
+
+pkgname = linux-xanmod-lts49-headers
+	pkgdesc = Header files and scripts for building modules for Xanmod Linux kernel
+
