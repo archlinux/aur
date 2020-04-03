@@ -26,7 +26,7 @@ source=('git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 )
 sha256sums=('SKIP'
 	#config.x86_64
-            '52234d25537985775a526263e8efe7031d2bff1a3a6a36c636c8d4738a5a928b'
+            'c3ccd0fa4269b533eb23eaada31b509e55bb21c14d4e1869621e3d3c21301f4d'
 	#.preset file
             '71caf34adf69e9e2567a38cfc951d1c60b13dbe87f58a9acfeb3fe48ffdc9d08'
 	#patch gentoo
