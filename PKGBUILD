@@ -44,7 +44,7 @@ package() {
 
     install -Dm644 -t "${pkgdir}"/usr/share/man janet.1 jpm.1
 
-    install -dm644 "${pkgdir}"/usr/share/janet
+    install -dm755 "${pkgdir}"/usr/share/janet
     cp -a examples "${pkgdir}"/usr/share/janet
 
     install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
