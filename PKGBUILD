@@ -3,7 +3,7 @@
 _pkgname=janet
 pkgname=janet-lang
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic Lisp dialect and bytecode vm"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://janet-lang.org/"
@@ -35,7 +35,7 @@ package() {
 
     install -Dm644 -t "${pkgdir}"/usr/share/man janet.1 jpm.1
 
-    install -dm644 "${pkgdir}"/usr/share/janet
+    install -dm755 "${pkgdir}"/usr/share/janet
     cp -a examples "${pkgdir}"/usr/share/janet
 
     install -Dm644 build/doc.html "${pkgdir}"/usr/share/doc/janet/doc.html
