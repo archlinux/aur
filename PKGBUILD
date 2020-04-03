@@ -3,12 +3,13 @@
 # Contributor: Josip Ponjavic <josipponjavic at gmail dot com>
 # Contributor: Xu Fasheng <fasheng.xu[AT]gmail.com>
 
-pkgname=deepin-screenshot
+pkgname=deepin-screenshot-copy-patch
 pkgver=5.0.0
 pkgrel=2
-pkgdesc="Easy-to-use screenshot tool for linuxdeepin desktop environment"
+pkgdesc="Easy-to-use screenshot tool for linuxdeepin desktop environment with xclip copy patch"
 arch=('x86_64')
 url="https://github.com/linuxdeepin/deepin-screenshot"
+provides=('copy')
 license=('GPL3')
 depends=('deepin-qt5integration' 'dtkwm' 'deepin-turbo')
 makedepends=('cmake' 'qt5-tools')

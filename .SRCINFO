@@ -1,5 +1,5 @@
-pkgbase = deepin-screenshot
-	pkgdesc = Easy-to-use screenshot tool for linuxdeepin desktop environment
+pkgbase = deepin-screenshot-copy-patch
+	pkgdesc = Easy-to-use screenshot tool for linuxdeepin desktop environment with xclip copy patch
 	pkgver = 5.0.0
 	pkgrel = 2
 	url = https://github.com/linuxdeepin/deepin-screenshot
@@ -11,12 +11,13 @@ pkgbase = deepin-screenshot
 	depends = deepin-qt5integration
 	depends = dtkwm
 	depends = deepin-turbo
-	source = deepin-screenshot-5.0.0.tar.gz::https://github.com/linuxdeepin/deepin-screenshot/archive/5.0.0.tar.gz
+	provides = copy
+	source = deepin-screenshot-copy-patch-5.0.0.tar.gz::https://github.com/linuxdeepin/deepin-screenshot/archive/5.0.0.tar.gz
 	source = deepin-screenshot-no-notification.patch
 	source = deepin-screenshot-copy.patch
 	sha512sums = ad073961deaa78a47739af6cf8b0d0fa77a92ee6668c57f9a5bbf51ad2be1d2028681cffabdc26548be1bdbe24c7ccc7e7ff3d49b86907f794495bfbea62aa30
 	sha512sums = f3f64b88c6ad1b3ad1f810c76439dea932f9a0810cd9c26a4df095d4a38773a2fc97bde13048244e5585ace0a3c6538e79805b74bc69688d20d8ffa11e758a61
 	sha512sums = ed7012c3e69966ccdbaef2ed60ddd25c8a480a1d3730823bed2e9a5f7a65751ec78ef4d0886c257a64a7bb22059744603f40dfd8746199ca7461230e53d5ee74
 
-pkgname = deepin-screenshot
+pkgname = deepin-screenshot-copy-patch
 
