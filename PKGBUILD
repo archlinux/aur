@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20200327.r0.g975f7a88c64d
+pkgver=20200403.r0.g606b5dac8e15
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -57,12 +57,12 @@ license=('GPL2')
 options=('!strip')
 makedepends=('kmod' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick')
-_lucjanver=5.6-rc
+_lucjanver=5.6
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
 
 source=("git://git.kernel.org/pub/scm/linux/kernel/git/next/${_srcname}.git"
-        "${_lucjanpath}/arch-patches/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -183,6 +183,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -201,9 +202,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -280,9 +278,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -303,9 +298,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
@@ -317,5 +309,5 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha512sums=('SKIP'
-            '2ff3827235189dd2217b1b7dee31925e9a75e053f85b08ea1c544d608d632bc4e5b5fbd90d3e154998662bf89137bc854afa257e10ba2726ee3eea8e8e6a0b4b'
-            'c7e20f7c9c56929e77e4d829b0c653ed0e35276742e5c206eb236a13c4243f8b0024f5ca3b80d59b5b7caf0646a3c8a35b8fa4f85f869ff23dba79d66a718a3f')
+            '080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779'
+            '807ba7ae61e75682088738c94d0c84af282a5ea63757f30ca9513c348a3ea5bd0ff66cca43d0bc16023df2bd6cda9d9a41bc732a3913e39ddc2994075252e88e')
