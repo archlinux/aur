@@ -5,8 +5,7 @@ After=network.target
 
 [Service]
 UMask=0007
-Environment=SOCKET=/var/lib/milter-greylist/greylist.sock
-ExecStart=/usr/bin/milter-greylist -D -d /var/lib/milter-greylist/greylist.db -f /etc/mail/greylist.conf -u milt-gl:milt-gl -p $SOCKET
+ExecStart=/usr/bin/milter-greylist -D
 
 [Install]
 WantedBy=multi-user.target
