@@ -5,7 +5,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to mobo's package, https://aur.archlinux.org/packages/zandronum2/
 pkgname=zandronum
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 _fmodex_ver=4.24.16
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer"
 #arch=('i686' 'x86_64')
@@ -21,12 +21,20 @@ install=zandronum.install
 source=("LICENSE.txt"
 	"${pkgname}.launcher"
 	"${pkgname}-server.launcher"
+	"${pkgname}.png"
+	"${pkgname}.desktop"
 	"LICENSE.txt.sig"
 	"${pkgname}.launcher.sig"
-	"${pkgname}-server.launcher.sig")
+	"${pkgname}-server.launcher.sig"
+	"${pkgname}.png.sig"
+	"${pkgname}.desktop.sig")
 sha512sums=('b928f3211ff31f17fc2d754728e299b5783e1b946b4019713718b7613e13ff0a7c4f02087c0ab4f137f7a0de57a2bfeaa6ed63285d0e6063d2b4734b097ce9e1'
 	    '488a274e40727ea58e1a6a67d9d37e77476f4fbcee9071e5f278fcfd88ddce42d25d3337d5d15455aa5cba32a176ec731e398cddfc6b86e151ba92c8bc1e1f22'
 	    '5c4ab297579c3b623ea549548b9e0674195f3d86f17589a2a756c8362e46dec0f1eb488ec0347be14968969f9ba802998bd67d910d3d6500a90f50074fcabfb5'
+	    'baad2256990455c275b23c56984a1db3b1ced921b69f2688c84d99eda996f7b61466543c7bd649e295c12b48dc288dce79ad911e2b5b5e0640a899f5281712a4'
+	    '1dacf401b7a3e25a4a14275c25ad5a63db1ead45fb1140ddbe6a3ff8e0175960d5b9b85b9b061abf81f00d48671366c8624eaaba2625fb3b4d18a2785ee367a6'
+	    'SKIP'
+	    'SKIP'
 	    'SKIP'
 	    'SKIP'
 	    'SKIP')
@@ -58,6 +66,8 @@ package() {
   install -Dm755 "zandronum.launcher" "${pkgdir}/usr/bin/zandronum"
   install -Dm755 "zandronum-server.launcher" "${pkgdir}/usr/bin/zandronum-server"
   install -Dm755 "libfmodex${_fmod_suffix}-${_fmodex_ver}.so" "${pkgdir}/usr/share/${pkgname}/lib/libfmodex${_fmod_suffix}-${_fmodex_ver}.so"
+  install -Dm644 "zandronum.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "zandronum.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -dm755 ${pkgdir}/usr/share/${pkgname}/lib
 
 #  ln -s "/usr/lib/libcrypto.so" "$pkgdir/usr/share/zandronum/lib/libcrypto.so.0.9.8"
