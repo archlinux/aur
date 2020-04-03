@@ -1,5 +1,5 @@
 pkgname=ifcplusplus-git
-pkgver=0.r248.g011fd531
+pkgver=0.r278.g938d8523
 pkgrel=1
 pkgdesc="IFC++ is an open source C++ class model, as well as a reader and writer for IFC files in STEP format."
 url="http://www.ifcquery.com/"
@@ -7,7 +7,7 @@ arch=('x86_64')
 license=('MIT')
 depends=('openscenegraph' 'boost-libs' 'qt5-base')
 optdepends=()
-makedepends=('cmake' 'boost')
+makedepends=('cmake' 'boost' 'chrpath')
 provides=('IFC++')
 conflicts=()
 replaces=()
