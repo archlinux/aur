@@ -1,4 +1,5 @@
 post_install() {
+	setterm -cursor on >> /etc/issue
 	printf "\e[37;1m\e[44;1m%s\e[0m\n" "\
 - Please reinstall GRUB first:
   # grub-install --target=i386-pc --boot-directory=/your/boot/partition --bootloader-id=GRUB /dev/sdx

@@ -4,14 +4,14 @@ GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="quiet vt.global_cursor_default=0 loglevel=3 vga=current rd.systemd.show_status=false rd.udev.log-priority=3"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash vt.global_cursor_default=0 loglevel=2 rd.systemd.show_status=false rd.udev.log-priority=3 sysrq_always_enabled=1"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
 # Uncomment to enable booting from LUKS encrypted devices
-#GRUB_ENABLE_CRYPTODISK=y
+#GRUB_ENABLE_CRYPTODISK=true
 
 # Uncomment to enable Hidden Menu, and optionally hide the timeout count
 #GRUB_HIDDEN_TIMEOUT=0

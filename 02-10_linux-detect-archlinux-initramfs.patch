@@ -1,8 +1,8 @@
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index f5d3e78..ef59c8c 100644
+index 66662a0..abbfc9e 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -83,6 +83,8 @@ linux_entry ()
+@@ -93,6 +93,8 @@ linux_entry ()
        case $type in
  	  recovery)
  	      title="$(gettext_printf "%s, with Linux %s (recovery mode)" "${os}" "${version}")" ;;
@@ -11,7 +11,7 @@ index f5d3e78..ef59c8c 100644
  	  *)
  	      title="$(gettext_printf "%s, with Linux %s" "${os}" "${version}")" ;;
        esac
-@@ -186,7 +188,7 @@ while [ "x$list" != "x" ] ; do
+@@ -195,7 +197,7 @@ while [ "x$list" != "x" ] ; do
    basename=`basename $linux`
    dirname=`dirname $linux`
    rel_dirname=`make_system_path_relative_to_its_root $dirname`
@@ -20,7 +20,7 @@ index f5d3e78..ef59c8c 100644
    alt_version=`echo $version | sed -e "s,\.old$,,g"`
    linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
  
-@@ -248,6 +250,18 @@ while [ "x$list" != "x" ] ; do
+@@ -283,6 +285,18 @@ while [ "x$list" != "x" ] ; do
  
    linux_entry "${OS}" "${version}" advanced \
                "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
@@ -39,6 +39,3 @@ index f5d3e78..ef59c8c 100644
    if [ "x${GRUB_DISABLE_RECOVERY}" != "xtrue" ]; then
      linux_entry "${OS}" "${version}" recovery \
                  "single ${GRUB_CMDLINE_LINUX}"
--- 
-2.9.2
-
