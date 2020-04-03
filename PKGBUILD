@@ -59,7 +59,7 @@ makedepends=(
              'git'
              'hwids'
              'nodejs'
-             'gn-git<=r1734.82d673ac'
+             'gn-git>=r1734.82d673ac'
              )
 optdepends=(
             'pepper-flash: PPAPI Flash Player'

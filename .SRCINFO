@@ -16,7 +16,7 @@ pkgbase = chromium-dev
 	makedepends = git
 	makedepends = hwids
 	makedepends = nodejs
-	makedepends = gn-git<=r1734.82d673ac
+	makedepends = gn-git>=r1734.82d673ac
 	depends = libxslt
 	depends = libxss
 	depends = nss
