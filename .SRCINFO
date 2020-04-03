@@ -1,6 +1,6 @@
 pkgbase = lxqt-organizer-git
 	pkgdesc = LxQt personal information manager
-	pkgver = r76.6cae20f
+	pkgver = r89.a278404
 	pkgrel = 1
 	url = https://lxqt.org
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = lxqt-organizer-git
 	makedepends = qt5-tools
 	makedepends = lxqt-build-tools-git
 	depends = liblxqt-git
+	depends = qt5-multimedia
 	provides = lxqt-organizer
 	conflicts = lxqt-organizer
 	source = git+https://github.com/lxqt/organizer.git
