@@ -1,6 +1,6 @@
 pkgbase = tag_puzzle
 	pkgdesc = A simple Tag game, written on C++ & SFML
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/KonstantinProgger/Tag-Puzzle
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = tag_puzzle
 	depends = gcc
 	depends = cmake
 	depends = sfml
-	source = https://raw.githubusercontent.com/KonstantinProgger/my_archive/master/tag_puzzle.1.0.tar.gz
-	md5sums = 141ea114226173625879a3dc9b3ebd1c
+	source = https://raw.githubusercontent.com/KonstantinProgger/my_archive/master/tag_puzzle.1.1.tar.gz
+	md5sums = cc277bad7f662d70ac8222920e22723c
 
 pkgname = tag_puzzle
 
