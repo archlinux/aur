@@ -1,0 +1,30 @@
+pkgbase = slic3r++
+	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
+	pkgver = 2.2.47.1
+	pkgrel = 1
+	url = https://github.com/supermerill/Slic3r
+	arch = x86_64
+	license = AGPL3
+	makedepends = boost
+	makedepends = cereal
+	makedepends = cmake
+	makedepends = eigen
+	makedepends = libigl
+	makedepends = openvdb
+	makedepends = wxgtk2
+	depends = boost-libs
+	depends = glew
+	depends = nlopt
+	depends = qhull
+	depends = wxgtk3
+	source = https://github.com/supermerill/Slic3r/archive/2.2.47.1.tar.gz
+	source = slic3r++.desktop
+	source = 0001-PrintObject-no-return.patch
+	source = 0002-wxgtk3-is-broken-on-wayland.patch
+	sha512sums = 47a36014f3b34b68ef190bf1e904b5dcc69d2a7e695d732bd2a0583fd30ea02693a6298db96f2a4eead6f2c51b076b03faf56963e8fa3b6d9c3c647342adb237
+	sha512sums = 2f9e364724e28e26c328b83cbf76c6d05544469c3ae14324ae11a1c97fc11878d1f892674ddc6440d14d8bfbca80ba8fc0dcbaa7cf3b7420e91962ee9582b8a2
+	sha512sums = cbeae074b5c395e34615aa19a35cf7a83ea479a35ea1e8dadc435650eeb8dc8933c01ab94e1b9f6cbebde49017f9d3ef21c2b16b0d31057e4965fdb5fd6dd44d
+	sha512sums = acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5
+
+pkgname = slic3r++
+

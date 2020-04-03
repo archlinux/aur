@@ -1,0 +1,12 @@
+diff --git a/src/libslic3r/PrintObject.cpp b/src/libslic3r/PrintObject.cpp
+index d7d4f0799..94cf4dbed 100644
+--- a/src/libslic3r/PrintObject.cpp
++++ b/src/libslic3r/PrintObject.cpp
+@@ -2491,6 +2491,7 @@ ExPolygons PrintObject::_smooth_curves(const ExPolygons & input, const PrintRegi
+         }
+         return new_polys;
+     }
++    return ExPolygons();
+ }
+ 
+ // To be used only if there are no layer span specific configurations applied, which would lead to z ranges being generated for this region.
