@@ -2,7 +2,7 @@
 
 _pkgname=espanso
 pkgname=${_pkgname}-bin
-pkgver=0.5.2
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -14,7 +14,7 @@ conflicts=($_pkgname)
 install="${pkgname}.install"
 source=("espanso-linux-${pkgver}.tar.gz::https://github.com/federico-terzi/espanso/releases/download/v${pkgver}/espanso-linux.tar.gz"
         "https://raw.githubusercontent.com/federico-terzi/espanso/v${pkgver}/src/res/linux/systemd.service")
-sha512sums=('c81a3c36e6289995746486360559bf285a2890a022ced28af638b085add62dcebeea971bd157813378ddaf1259df6739d384aa93b9c7f41bb6d04699cc872241'
+sha512sums=('2469afe0d7009133fbe2b5e063efc97e33432e69b5f459c7b72bd8bad14e9e7b5389b9df89bea8620a8ea7e8f0c77bfbb85be69f54ec968f777fa55488ab7bb8'
             '8f30ebc5dbb633f9cdd464765df38e6ef3fa008ba6d2fa83d66eed992a9e2c8be41fadbeb1d3048738078357bb72c78663900b5970f5061a0175c72cd5053dad')
 
 
