@@ -3,6 +3,6 @@ Type=Application
 Name=MiniZinc IDE
 Comment=Simple IDE for writing and running MiniZinc models
 Icon=/opt/minizinc-ide/resources/icon.png
-Exec=/opt/minizinc-ide/MiniZincIDE.sh
+Exec=MiniZincIDE
 Terminal=false
 Categories=Development;IDE;

@@ -1,7 +1,9 @@
---- bin/fzn-gecode-gist
-+++ bin/fzn-gecode-gist
+--- bin/run-fzn-gecode-gist
++++ bin/run-fzn-gecode-gist
 @@ -1,3 +1,4 @@
  #!/bin/bash
- DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-+export LD_LIBRARY_PATH="$DIR"/../lib:$LD_LIBRARY_PATH
- exec "$DIR"/fzn-gecode -mode gist "$@"
+-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
++DIR=$( cd "$( dirname "$( readlink -f "${BASH_SOURCE[0]}" )" )" && pwd )
++export LD_LIBRARY_PATH="$DIR/../lib":$LD_LIBRARY_PATH
+ exec "$DIR"/fzn-gecode-gist -mode gist "$@"
+ 

@@ -1,21 +1,24 @@
-pkgname=minizinc-ide
+bins="findMUS fzn-chuffed fzn-gecode minizinc minizinc-globalizer  MiniZincIDE"
+binsPath="/opt/minizinc-ide/bin"
 
 post_install() {
-    # Create links to MiniZinc executables
-    for e in $(find /opt/$pkgname/bin -type f -executable -printf "%P\n")
+    # Create links to bins
+    for b in $bins
     do
-        ln -s /opt/$pkgname/bin/$e /usr/bin/$e
+        ln -s $binsPath/$b /usr/bin/$b
     done
     
-    ln -s /opt/$pkgname/MiniZincIDE.sh /usr/bin/minizinc-ide
+    # Create links to scripts
+    ln -s $binsPath/run-fzn-gecode-gist /usr/bin/fzn-gecode-gist
 }
 
 pre_remove() {
-    # Remove links to MiniZinc executables
-    for e in $(find /opt/$pkgname/bin -type f -executable -printf "%P\n")
+    # Remove links to bins
+    for b in $bins
     do
-        rm /usr/bin/$e
+        rm /usr/bin/$b
     done
     
-    rm /usr/bin/minizinc-ide
+    # Remove links to scripts
+    rm /usr/bin/fzn-gecode-gist
 } 

@@ -2,7 +2,7 @@
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
 url=http://www.minizinc.org/ide/
@@ -18,12 +18,11 @@ source=(
     https://github.com/MiniZinc/MiniZincIDE/releases/download/$pkgver/MiniZincIDE-$pkgver-bundle-linux-$arch.tgz
 )
 sha256sums=(
-    bf26b9e3cae148fb05ce131ef62076bda467ebd2ce9913525a5540f09435c2b6
-    657090bd7d93d16648e12c8df14f65e858ee49c2384b137ff7e1abb61b291a6a
+    e0bca68c0897cbcd63bf603ad1f352c16c5fc62ee8f151daa7e793361007d242
+    80ab03ebe936ce85b107523ae242d97905763ed30596639e1778cdea796b9e1e
     eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023
     b169c93f8a665d85615f008d850ecd2a4097ccfe20322c54f2548bde7646555d
 )
-
 
 prepare() {
     # Workaround for https://github.com/MiniZinc/MiniZincIDE/issues/90
