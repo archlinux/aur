@@ -1,14 +1,17 @@
 pkgbase = buici-clock
 	pkgdesc = A minimalistic clock for X
 	pkgver = 0.4.9.4
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	arch = i686
 	license = GPL v2
 	makedepends = m4
 	depends = xorg-server-devel
+	depends = xorg-xprop
 	source = http://http.debian.net/debian/pool/main/b/buici-clock/buici-clock_0.4.9.4.tar.xz
+	source = fix-second-hand.diff
 	sha256sums = f5138d220568e3ba5afd272c61a63e5a1a0009a6023387d2a0cbf15af9b3649f
+	sha256sums = 78a6a5ec40e30af30ededb6ac11bc08f934596f86cfd0fbe70f50407bafdb3a0
 
 pkgname = buici-clock
 

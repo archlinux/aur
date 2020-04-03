@@ -1,0 +1,62 @@
+diff -Nurd /home/mc/buici-clock/src/buici/clock.cxx buici/clock.cxx
+--- /home/mc/buici-clock/src/buici/clock.cxx	2012-12-29 10:51:29.000000000 -0800
++++ buici/clock.cxx	2020-04-02 18:53:14.016079223 -0700
+@@ -106,7 +106,7 @@
+ void draw_dial (Display* display, Visual* visual,
+ 		Pixmap pixmap, int dx, int dy);
+ void draw_hands (Display* display, Visual* visual,
+-		Pixmap pixmap, int dx, int dy, int seconds);
++		Pixmap pixmap, int dx, int dy, int seconds, bool draw_second_hand);
+ void draw_dial_shape (Display* display, Pixmap pixmap, int dx, int dy);
+ 
+ class WTopLevel : public LWindow {
+@@ -538,7 +538,7 @@
+ 	     _gc, 0, 0, width (), height (), 0, 0);
+ 
+ 
+-  draw_hands (xdisplay (), xvisual (), pixmap, width (), height (), seconds);
++  draw_hands (xdisplay (), xvisual (), pixmap, width (), height (), seconds, m_fSecondHand);
+ 
+ #if 0
+ 				// -- Draw hands
+diff -Nurd /home/mc/buici-clock/src/buici/draw.cc buici/draw.cc
+--- /home/mc/buici-clock/src/buici/draw.cc	2012-12-29 10:51:29.000000000 -0800
++++ buici/draw.cc	2020-04-02 18:53:16.162757167 -0700
+@@ -145,7 +145,7 @@
+ 
+ 
+ void draw_hands (Display* display, Visual* visual,
+-		 Pixmap pixmap, int dx, int dy, int seconds)
++		 Pixmap pixmap, int dx, int dy, int seconds, bool draw_second_hand)
+ {
+   cairo_surface_t* s = cairo_xlib_surface_create (display, pixmap, visual,
+ 						  dx, dy);
+@@ -198,16 +198,18 @@
+     cairo_path_destroy (path);
+ 
+ 	// Second hand
+-    cairo_save (cr);
+-    cairo_rotate (cr, ((2.0*M_PI)*seconds)/60.0);
+-    cairo_set_line_width (cr, WIDTH_THIN);
+-    cairo_move_to (cr, 0,  (DY/2.0)*0.20);
+-    cairo_line_to (cr, 0, -(DY/2.0)*0.64);
+-    cairo_set_source_rgb (cr, 1.0, 0, 0);
+-    cairo_stroke (cr);
+-    cairo_arc (cr, 0, -(DY/2.0)*0.64, DX*0.03, 0, 2*M_PI);
+-    cairo_fill (cr);
+-    cairo_restore (cr);
++    if (draw_second_hand) {
++        cairo_save (cr);
++        cairo_rotate (cr, ((2.0*M_PI)*seconds)/60.0);
++        cairo_set_line_width (cr, WIDTH_THIN);
++        cairo_move_to (cr, 0,  (DY/2.0)*0.20);
++        cairo_line_to (cr, 0, -(DY/2.0)*0.64);
++        cairo_set_source_rgb (cr, 1.0, 0, 0);
++        cairo_stroke (cr);
++        cairo_arc (cr, 0, -(DY/2.0)*0.64, DX*0.03, 0, 2*M_PI);
++        cairo_fill (cr);
++        cairo_restore (cr);
++    }
+   }
+ 
+   cairo_destroy (cr);
