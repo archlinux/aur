@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Zandronum
+GenericName=Zandronum
+Comment=OpenGL ZDoom port with Client/Server multiplayer
+Exec=/usr/bin/zandronum-hg
+Icon=/usr/share/pixmaps/zandronum-hg.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;Game

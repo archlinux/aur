@@ -30,9 +30,13 @@ source=("zandronum::hg+https://bitbucket.org/Torr_Samaho/zandronum"
 	"LICENSE"
         "${pkgname}.launcher"
         "${pkgname}-server.launcher"
+	"${pkgname}.png"
+	"${pkgname}.desktop"
         "${pkgname}.launcher.sig"
         "${pkgname}-server.launcher.sig"
-        "LICENSE.sig")
+        "LICENSE.sig"
+	"${pkgname}.png.sig"
+	"${pkgname}.desktop.sig")
 source_x86_64=("http://zandronum.com/essentials/fmod/fmodapi${_fmod_ver}linux64.tar.gz"
 	       "fmodapi${_fmod_ver}linux64.tar.gz.sig")
 source_i686=("http://zandronum.com/essentials/fmod/fmodapi${_fmod_ver}linux.tar.gz"
@@ -42,9 +46,13 @@ sha512sums=('SKIP'
 	    'b928f3211ff31f17fc2d754728e299b5783e1b946b4019713718b7613e13ff0a7c4f02087c0ab4f137f7a0de57a2bfeaa6ed63285d0e6063d2b4734b097ce9e1'
             '994d8aeba3a7eb13a0bdf9eaf1497b262b51c146bfc0f4769de41d64a640e411236f388d266cd80fcd19d93a04c67d27666fb2132407a1841d11dace886ec8b9'
             'bef074f7d9b68fd61c1ed978525e7ef3385a986565be64478e41eaccccdb57e157cab1910f02ad467b07bef82f6d6200faf7a1dc1ce2322197101fab259f1325'
+	    'baad2256990455c275b23c56984a1db3b1ced921b69f2688c84d99eda996f7b61466543c7bd649e295c12b48dc288dce79ad911e2b5b5e0640a899f5281712a4'
+	    '90b0ba290018bf446e926d3591105fd7608de3eab7ea790a0291bc0146e682e5e6ae1af056554cad7b7eda38a18106c8dfbafaeb4d443cc4816c99e3164258aa'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+	    'SKIP'
+	    'SKIP')
 sha512sums_x86_64=('edc851730c81da4423bd0f10a433c46b4a8bdad901b32f628087b40cec088760a441228ee47a75e17844c195e7abf79e02439c39b5fdeeb9689572dcd9104ade'
 		   'SKIP')
 sha512sums_i686=('5d4350de3683a8f990447cd8d870ef5b10787ae06e0533f4376ee3c8113fffa8723fcc7a8703bb556c8e9600915087ea078a77049aee34e7f79adf9ae32ebdc4'
@@ -106,6 +114,8 @@ package() {
         install -D -m 755 "${srcdir}/${_pkgname}/server/${_pkgname}-server" "${pkgdir}/usr/share/${pkgname}/"
         install -D -m 755 "${srcdir}/${pkgname}.launcher" "${pkgdir}/usr/share/${pkgname}/"
         install -D -m 755 "${srcdir}/${pkgname}-server.launcher" "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 "zandronum-hg.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+	install -Dm644 "zandronum-hg.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 	install -D -m 755 "${srcdir}/fmodapi${_fmod_ver}linux${fmod_dir_suffix}/api/lib/libfmodex${fmod_dir_suffix}-${_fmod_ver_true}.so" "${pkgdir}/usr/share/${pkgname}/lib/"
 
         install -d -m 755 "${pkgdir}/usr/bin"
