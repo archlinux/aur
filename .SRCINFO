@@ -1,0 +1,12 @@
+pkgbase = iburg-git
+	pkgdesc = A Tree Parser Generator
+	pkgver = 2151dd7
+	pkgrel = 1
+	url = https://github.com/drh/iburg
+	arch = any
+	license = MIT
+	source = iburg-git::git+https://github.com/drh/iburg.git
+	sha256sums = SKIP
+
+pkgname = iburg-git
+
