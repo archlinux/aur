@@ -1,0 +1,20 @@
+pkgbase = pymacs-git
+	pkgdesc = Interface between Emacs Lisp and Python.
+	pkgver = 0.26.r24.g56acc1a
+	pkgrel = 2
+	url = https://github.com/dgentry/Pymacs
+	install = pymacs.install
+	arch = any
+	license = GPL2
+	makedepends = python
+	makedepends = python-docutils
+	depends = emacs
+	depends = python
+	provides = pymacs
+	conflicts = emacs-python-mode
+	conflicts = pymacs
+	source = git+https://github.com/dgentry/Pymacs.git
+	sha256sums = SKIP
+
+pkgname = pymacs-git
+
