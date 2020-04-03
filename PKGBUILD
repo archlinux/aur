@@ -4,7 +4,7 @@ pkgbase=avisynthplus-git
 pkgname=('avisynthplus-git'
          'avisynthplus-docs-git'
          )
-pkgver=v3.5.0.43.g9d1b1cb6
+pkgver=v3.5.1.0.g1368effe
 pkgrel=1
 pkgdesc='Avisynth+. (GIT Version)'
 arch=('x86_64')
@@ -30,8 +30,6 @@ prepare() {
 }
 
 build() {
-  CXXFLAGS+=' -fpermissive'
-
   cd build
   cmake ../avisynthplus \
     -DCMAKE_BUILD_TYPE=None \
