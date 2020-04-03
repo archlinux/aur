@@ -61,24 +61,22 @@ _localmodcfg=
 _major=5.4
 _minor=30
 _srcname=linux-${_major}
-_clr=${_major}.28-22
+_clr=${_major}.29-24
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2019'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2019"
 license=('GPL2')
 makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'xmlto')
 options=('!strip')
-_wrg_snap='1.0.20200401'
 _gcc_more_v='20191217'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "clearlinux-lts2019::git+https://github.com/clearlinux-pkgs/linux-lts2019.git#tag=${_clr}"
-  "https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-${_wrg_snap}.tar.xz"
   "enable_additional_cpu_optimizations-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/$_gcc_more_v.tar.gz"
 )
 
@@ -101,14 +99,10 @@ prepare() {
 
     ### Add Clearlinux patches
         for i in $(grep '^Patch' ${srcdir}/clearlinux-lts2019/linux-lts2019.spec |\
-          grep -Ev '^Patch0123|^Patch1001' | sed -n 's/.*: //p'); do
+          grep -Ev '^Patch0123' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/clearlinux-lts2019/${i}"
         done
-
-    ### Link the WireGuard source directory into the kernel tree
-        echo "Adding the WireGuard source directory..."
-        "${srcdir}/wireguard-linux-compat-${_wrg_snap}/kernel-tree-scripts/jury-rig.sh" ./
 
     ### Setting config
         echo "Setting config..."
@@ -321,7 +315,6 @@ sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
             'SKIP'
             '89dfaaba8052f609c02e04dfdf1362c6d916fb8a1057f9127f45be34af3d1241'
             'SKIP'
-            '7dfb4a8315e1d6ae406ff32d01c496175df558dd65968a19e5222d02c7cfb77a'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5')
 
 validpgpkeys=(
