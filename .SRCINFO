@@ -1,7 +1,7 @@
 pkgbase = linux-clear
 	pkgdesc = Clear Linux
 	pkgver = 5.5.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux
 	arch = x86_64
 	license = GPL2
@@ -15,8 +15,7 @@ pkgbase = linux-clear
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.tar.sign
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.5.15.xz
-	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.5.13-925
-	source = https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-1.0.20200401.tar.xz
+	source = clearlinux::git+https://github.com/clearlinux-pkgs/linux.git#tag=5.5.14-928
 	source = enable_additional_cpu_optimizations-20191217.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/20191217.tar.gz
 	source = pci-enable-overrides-for-missing-acs-capabilities.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -25,7 +24,6 @@ pkgbase = linux-clear
 	sha256sums = SKIP
 	sha256sums = 938b47e8e6c8e7ee091d0da149eab7cc63f3858bc7cc043ed4963771dc621b90
 	sha256sums = SKIP
-	sha256sums = 7dfb4a8315e1d6ae406ff32d01c496175df558dd65968a19e5222d02c7cfb77a
 	sha256sums = 7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5
 	sha256sums = 4127910703ed934224941114c2a4e0bcc5b4841f46d04063ed7b20870a51baa0
 
@@ -38,6 +36,7 @@ pkgname = linux-clear
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 
 pkgname = linux-clear-headers
