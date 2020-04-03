@@ -1,7 +1,7 @@
 pkgbase = git-brunch
 	pkgdesc = A git checkout and rebase command-line tool
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 0
 	url = https://github.com/andys8/git-brunch
 	arch = x86_64
 	license = custom:BSD3

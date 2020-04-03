@@ -1,7 +1,7 @@
 # Maintainer: andys8 <andys8@users.noreply.github.com>
 pkgname=git-brunch
 pkgver=1.2.0
-pkgrel=2
+pkgrel=0
 pkgdesc="A git checkout and rebase command-line tool"
 arch=('x86_64')
 url="https://github.com/andys8/git-brunch"
