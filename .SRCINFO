@@ -1,19 +1,17 @@
 pkgbase = ruby-fusuma-plugin-sendkey
 	pkgdesc = Fusuma plugin that sending virtual keyboard events.
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/iberianpig/fusuma-plugin-sendkey
 	arch = any
 	license = MIT
 	depends = ruby
 	depends = ruby-fusuma
-	depends = ruby-evdev
-	depends = libevdev
-	depends = evemu
+	depends = ruby-revdev
 	noextract = fusuma-plugin-sendkey-0.4.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/fusuma-plugin-sendkey-0.4.0.gem
-	sha1sums = b96aa0093f850b4b986f68c1f1e5d156cc576c36
+	sha1sums = 2fb51c7f62ba1c5b8c03f0a57d945da9dc25371b
 
 pkgname = ruby-fusuma-plugin-sendkey
 
