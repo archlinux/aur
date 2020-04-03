@@ -1,54 +1,41 @@
-# Maintainer: Antoine Pierlot-Garcin <antoine@bokbox.com>
+# Maintainer: nightuser <nightuser.android@gmail.com>
+# Contributor: Antoine Pierlot-Garcin <antoine@bokbox.com>
+
 pkgname=debsig-verify-git
-pkgver=0.13.r8.6104eef
-pkgrel=3
+pkgver=0.22.r0.8872a14
+pkgrel=1
 pkgdesc="Debian package signature verification tool"
-arch=('x86_64' 'i686' 'arm')
-url="https://anonscm.debian.org/cgit/dpkg/debsig-verify.git"
-license=('GPL')
-groups=()
-depends=('dpkg' 'libxmltok')
-makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
-source=('debsig-verify::git+http://anonscm.debian.org/cgit/dpkg/debsig-verify.git')
-noextract=()
-md5sums=('SKIP')
+arch=('x86_64')
+url="https://git.dpkg.org/git/dpkg/debsig-verify.git"
+license=('GPL2')
+depends=('dpkg' 'expat')
+makedepends=('git')
+source=("${pkgname%-git}::git+https://git.dpkg.org/git/dpkg/${pkgname%-git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
-# Git, tags available
 	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-
-## Git, no tags available
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
 }
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	./autogen
 	./configure --prefix=/usr \
-	            --sysconfdir=/etc \
-	            --disable-silent-rules
+	            --sysconfdir=/etc
 	make
+}
+
+check() {
+	cd "$srcdir/${pkgname%-git}/test"
+	make check-local
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir/" install
-
-	# install doc and policy examples
-	install -m 0755 -d "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	install -m 0644 doc/policy-syntax.txt doc/policy.dtd "$pkgdir/usr/share/doc/${pkgname%-git}/"
-	install -m 0755 -d "$pkgdir/usr/share/doc/${pkgname%-git}/examples"
-	cp -r test/policies/* "$pkgdir/usr/share/doc/${pkgname%-git}/examples/"
+	make DESTDIR="$pkgdir" install
+	install -m 0755 -d "$pkgdir/usr/share/doc/$pkgname"
+	install -m 0644 doc/policy-syntax.txt doc/policy.dtd "$pkgdir/usr/share/doc/$pkgname"
 }
+
+# vim: set noet sw=8 ts=8 tw=79:
