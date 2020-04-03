@@ -106,12 +106,12 @@ Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
 StartupNotify=true
-TryExec=dissenter-browser
-Exec=dissenter-browser %U
-Terminal=false
-Icon=dissenter
 StartupWMName=dissenter-browser
 StartupWMClass=dissenter-browser
+#TryExec=dissenter-browser
+Exec=dissenter-browser %U --class=dissenter-browser
+Terminal=false
+Icon=dissenter.png
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
@@ -169,7 +169,7 @@ Name[uk]=Нове вікно
 Name[vi]=Cửa sổ Mới
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
-Exec=dissenter-browser
+Exec=dissenter-browser --class=dissenter-browser
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
@@ -221,5 +221,5 @@ Name[uk]=Нове вікно в режимі анонімного перегля
 Name[vi]=Cửa sổ ẩn danh mới
 Name[zh_CN]=新建隐身窗口
 Name[zh_TW]=新增無痕式視窗
-Exec=dissenter-browser --incognito
+Exec=dissenter-browser --incognito --class=dissenter-browser
 MimeType=x-scheme-handler/unknown;x-scheme-handler/about;text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
