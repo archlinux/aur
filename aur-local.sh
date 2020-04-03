@@ -5,9 +5,9 @@ if [[ $EUID -ne 0 ]]; then
 fi
 #add all packages in yay's cache to custom local repo and symlink them to pacman's cache
 repo-add -n /var/lib/pacman/sync/aur-local.db.tar.gz /home/*/.cache/yay/*/*.pkg.tar.xz
+repo-add -n /var/lib/pacman/sync/aur-local.db.tar.gz /home/*/.cache/yay/*/*.pkg.tar.zst
 ln -f /var/lib/pacman/sync/* /var/cache/pacman/pkg/
 ln -f /home/*/.cache/yay/*/*.pkg.tar.xz /var/cache/pacman/pkg/
-#new extension / archive format
 ln -f /home/*/.cache/yay/*/*.pkg.tar.zst /var/cache/pacman/pkg/
 
 
