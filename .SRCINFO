@@ -1,0 +1,25 @@
+pkgbase = libinput-accel-profile-git
+	pkgdesc = libinput library with acceleration profiles for touchpad
+	pkgver = 1.15.3.r30.g6e66324d
+	pkgrel = 1
+	url = https://gitlab.freedesktop.org/libinput/libinput/-/merge_requests/264
+	arch = x86_64
+	license = custom:X11
+	makedepends = gtk3
+	makedepends = meson
+	makedepends = git
+	depends = mtdev
+	depends = systemd
+	depends = libevdev
+	depends = libwacom
+	optdepends = gtk3: libinput debug-gui
+	optdepends = python-pyudev: libinput measure
+	optdepends = python-evdev: libinput measure
+	provides = libinput=1.15.3.r30.g6e66324d
+	conflicts = libinput
+	source = git+https://gitlab.freedesktop.org/libinput/libinput.git#commit=6e66324d
+	validpgpkeys = SKIP
+	sha512sums = SKIP
+
+pkgname = libinput-accel-profile-git
+
