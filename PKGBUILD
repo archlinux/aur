@@ -15,7 +15,7 @@ provides=('anbox-launchers')
 conflicts=('anbox-launchers')
 install=anbox-launchers.install
 source=("git+https://github.com/ahmubashshir/anbox-launchers.git")
-validpgpkeys=()
+validpgpkeys=('B5AC9A5E093F60A29AA1692F4CC9A8013A65E7D4')
 md5sums=('SKIP')
 pkgver()
 {
