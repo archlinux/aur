@@ -11,13 +11,13 @@
 ##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 25
+## Valid numbers between: 0 to 42
 ## Default is: 0 => generic
-## Good option if your package is for one machine: 25 => native
+## Good option if your package is for one machine: 42 => native
 if [ -z ${_microarchitecture+x} ]; then
   _microarchitecture=0
 fi
-##
+
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
@@ -25,7 +25,7 @@ fi
 if [ -z ${use_numa+x} ]; then
   use_numa=y
 fi
-##
+
 ## For performance you can disable FUNCTION_TRACER/GRAPH_TRACER. Limits debugging and analyzing of the kernel.
 ## Stock Archlinux and Xanmod have this enabled. 
 ## Set variable "use_tracers" to: n to disable (possibly increase performance)
@@ -33,21 +33,20 @@ fi
 if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
-##
+
 ## Enable PDS CPU scheduler by default https://gitlab.com/alfredchen/linux-pds
 ## Set variable "use_pds" to: n to disable (stock Xanmod)
 ##                            y to enable
 if [ -z ${use_pds+x} ]; then
   use_pds=n
 fi
-##
+
 ## Enable CONFIG_USER_NS_UNPRIVILEGED flag https://aur.archlinux.org/cgit/aur.git/tree/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck
 ## Set variable "use_ns" to: n to disable (stock Xanmod)
 ##                           y to enable (stock Archlinux)
 if [ -z ${use_ns+x} ]; then
   use_ns=n
 fi
-##
 
 # Compile ONLY used modules to VASTLYreduce the number of modules built
 # and the build time.
@@ -61,15 +60,21 @@ if [ -z ${_localmodcfg} ]; then
   _localmodcfg=n
 fi
 
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-lts
-_srcname=linux
-pkgver=4.19.102
-xanmod=49
+pkgver=5.4.28
+_major=5.4
+_branch=5.x
+xanmod=1
 pkgrel=1
-arch=(x86_64)
+pkgdesc='Linux Xanmod LTS'
 url="http://www.xanmod.org/"
+arch=(x86_64)
+
 license=(GPL2)
 makedepends=(
   xmlto kmod inetutils bc libelf cpio
@@ -78,30 +83,42 @@ makedepends=(
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
-source=(https://github.com/xanmod/linux/archive/${pkgver}-xanmod${xanmod}.tar.gz
-       60-linux.hook  # pacman hook for depmod
-       90-linux.hook  # pacman hook for initramfs regeneration
-       ${pkgbase}.preset   # standard config files for mkinitcpio ramdisk
-       choose-gcc-optimization.sh
-       0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch  # Grabbed from linux-ck package
+source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar."{xz,sign}
+        "https://github.com/xanmod/linux/releases/download/${pkgver}-xanmod${xanmod}/patch-${pkgver}-xanmod${xanmod}.xz"
+        choose-gcc-optimization.sh
+        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b')
+validpgpkeys=(
+    'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
+    '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('fb64eca226d3ba2a402e89824ab3c7bab70fc791a80facde483d19a50e0b2e1e'
-            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
-            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
-            'bae7b9253512ef5724629738bfd4460494a08566f8225b9d8ec544ea8cc2f3a5'
+# Archlinux patches
+_commits=""
+for _patch in $_commits; do
+    source+=("${_patch}.patch::https://git.archlinux.org/linux.git/patch/?id=${_patch}")
+done
+    
+
+sha256sums=('bf338980b1670bca287f9994b7441c2361907635879169c64ae78364efc5f491'
+            'SKIP'
+            'eb1f48c2b59a7b03b75e35086c6e7ef11f69e2350ed90fd1ef7f3cd3e0fb71db'
+            '2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511'
             '9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee')
 
-_kernelname=${pkgbase#linux}
+export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
+export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
+export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-  cd $_srcname
+  cd linux-${_major}
+
+  # Apply Xanmod patch
+  patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "$_kernelname" > localversion.20-pkgname
+  echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
@@ -147,9 +164,26 @@ prepare() {
 
   # This is intended for the people that want to build this package with their own config
   # Put the file "myconfig" at the package folder to use this feature
+  # If it's a full config, will be replaced
+  # If not, you should use scripts/config commands, one by line
   if [ -f "${startdir}/myconfig" ]; then
-    msg2 "Using user CUSTOM config..."
-    cp -f "${startdir}"/myconfig .config
+    if [ $(wc -l < "${startdir}/myconfig") -gt 5000 ]; then
+      # myconfig is a full config file. Replace it
+      msg2 "Using user CUSTOM config..."
+      cp -f "${startdir}"/myconfig .config
+    else
+      # myconfig is a partial file. Applying every line
+      msg2 "Applying configs..."
+      cat "${startdir}"/myconfig | while read -r _linec ; do
+        if echo "$_linec" | grep "scripts/config" ; then
+          set -- $_linec
+          "$@"
+        else
+          warning "Line format incorrect, ignoring..."
+        fi
+      done
+    fi
+    echo
   fi
 
   make olddefconfig
@@ -166,13 +200,18 @@ prepare() {
     fi
   fi
 
-  make -s kernelrelease > ../version
-  msg2 "Prepared %s version %s" "$pkgbase" "$(<../version)"
+  make -s kernelrelease > version
+  msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
+
+  [[ -z "$_makenconfig" ]] || make nconfig
+
+  # save configuration for later reuse
+  cat .config > "${startdir}/config.last"
 }
 
 build() {
-  cd $_srcname
-  make bzImage modules
+  cd linux-${_major}
+  make all
 }
 
 _package() {
@@ -180,52 +219,25 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  backup=("etc/mkinitcpio.d/$pkgbase.preset")
-  install=linux.install
+  provides=('linux')
 
+  cd linux-${_major}
   local kernver="$(<version)"
   local modulesdir="$pkgdir/usr/lib/modules/$kernver"
-
-  cd $_srcname
 
   msg2 "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
   # https://github.com/systemd/systemd/commit/edda44605f06a41fb86b7ab8128dcf99161d2344
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
-  install -Dm644 "$modulesdir/vmlinuz" "$pkgdir/boot/vmlinuz-$pkgbase"
+
+  # Used by mkinitcpio to name the kernel
+  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
 
-  # a place for external modules,
-  # with version file for building modules and running depmod from hook
-  local extramodules="extramodules$_kernelname"
-  local extradir="$pkgdir/usr/lib/modules/$extramodules"
-  install -Dt "$extradir" -m644 ../version
-  ln -sr "$extradir" "$modulesdir/extramodules"
-
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  msg2 "Installing hooks..."
-  # sed expression for following substitutions
-  local subst="
-    s|%PKGBASE%|$pkgbase|g
-    s|%KERNVER%|$kernver|g
-    s|%EXTRAMODULES%|$extramodules|g
-  "
-
-  # hack to allow specifying an initially nonexisting install file
-  sed "$subst" "$startdir/$install" > "$startdir/$install.pkg"
-  true && install=$install.pkg
-
-  # fill in mkinitcpio preset and pacman hooks
-  sed "$subst" ../$pkgbase.preset | install -Dm644 /dev/stdin \
-    "$pkgdir/etc/mkinitcpio.d/$pkgbase.preset"
-  sed "$subst" ../60-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/60-$pkgbase.hook"
-  sed "$subst" ../90-linux.hook | install -Dm644 /dev/stdin \
-    "$pkgdir/usr/share/libalpm/hooks/90-$pkgbase.hook"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
@@ -233,13 +245,14 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
+  provides=('linux-headers')
 
+  cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
-  cd $_srcname
-
   msg2 "Installing build files..."
-  install -Dt "$builddir" -m644 Makefile .config Module.symvers System.map vmlinux
+  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
+    localversion.* version vmlinux
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
@@ -249,9 +262,6 @@ _package-headers() {
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
-
-  # ???
-  mkdir "$builddir/.tmp_versions"
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -306,7 +316,7 @@ _package-headers() {
 
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase-$pkgver"
+  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
   msg2 "Fixing permissions..."
   chmod -Rc u=rwX,go=rX "$pkgdir"
