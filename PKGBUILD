@@ -2,8 +2,8 @@
 
 pkgname=ncnn-git
 _pkgname=ncnn
-pkgver=20200106.r52.g0185301
-pkgrel=2
+pkgver=20200226.r86.gee118e7d
+pkgrel=1
 pkgdesc="High-performance neural network inference framework optimized for the mobile platform"
 url="https://github.com/Tencent/ncnn"
 license=('BSD')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'glslang')
 conflicts=('ncnn')
 provides=('ncnn')
 arch=('i686' 'x86_64')
-source=("git://github.com/Tencent/ncnn.git")
+source=("git://github.com/Tencent/ncnn.git#commit=ee118e7d702536f3be11ecc6c29daca41024b7c1")
 sha256sums=('SKIP')
 
 pkgver() {
