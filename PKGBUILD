@@ -2,17 +2,17 @@
 pkgname=imaginary-teleprompter-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
 license=('GPL3')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3')
 provides=('imaginary-teleprompter')
 conflicts=('imaginary-teleprompter' 'imaginary-teleprompter-git')
 install=INSTALL
 changelog=
-source=("${_pkgname}-${pkgver}.tar::https://github.com/ImaginarySense/Imaginary-Teleprompter-Electron/releases/download/2.4/${_pkgname}-${pkgver}.pacman")
+source=("${_pkgname}-${pkgver}.tar::https://github.com/ImaginarySense/Imaginary-Teleprompter-Electron/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
 sha256sums=('6d65527657bfc6f951d83d37676897aa80eff2902ffb061264cebc499d3b82ab')
 
 package() {
