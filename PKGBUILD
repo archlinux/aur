@@ -1,7 +1,7 @@
 # Maintainer: Martin Rys <rys.pw/#contact_me>
 pkgname=jitsi-meet-git
-pkgver=r1.9a162c2
-pkgrel=2
+pkgver=r2.06ae186
+pkgrel=1
 epoch=
 pkgdesc="WebRTC JavaScript video conferences"
 arch=("x86_64")
@@ -18,7 +18,9 @@ optdepends=("jicofo"
 provides=("jitsi-meet")
 conflicts=("jitsi-meet")
 replaces=()
-backup=("opt/jitsi-meet/config.js")
+backup=("opt/jitsi-meet/config.js"
+        "opt/jitsi-meet/interface_config.js"
+        "opt/jitsi-meet/logging_config.js")
 options=()
 install=
 changelog=

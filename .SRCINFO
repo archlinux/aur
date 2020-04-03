@@ -1,7 +1,7 @@
 pkgbase = jitsi-meet-git
 	pkgdesc = WebRTC JavaScript video conferences
-	pkgver = r1.9a162c2
-	pkgrel = 2
+	pkgver = r2.06ae186
+	pkgrel = 1
 	url = https://github.com/jitsi/jitsi-meet
 	arch = x86_64
 	license = Apache
@@ -14,6 +14,8 @@ pkgbase = jitsi-meet-git
 	provides = jitsi-meet
 	conflicts = jitsi-meet
 	backup = opt/jitsi-meet/config.js
+	backup = opt/jitsi-meet/interface_config.js
+	backup = opt/jitsi-meet/logging_config.js
 	source = jitsi-meet-git::git+https://github.com/jitsi/jitsi-meet
 	sha256sums = SKIP
 
