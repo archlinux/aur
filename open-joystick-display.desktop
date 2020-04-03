@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Open Joystick Display
+Comment=A powerful and easy to use streamer-ready overlay for your joystick or gamepad. Completely free and open source.
+Exec=open-joystick-display %u
+Icon=open-joystick-display
+Terminal=false
+Type=Application
+Categories=Games;

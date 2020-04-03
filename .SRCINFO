@@ -1,0 +1,12 @@
+pkgbase = open-joystick-display
+	pkgdesc = A powerful and easy to use streamer-ready overlay for your joystick or gamepad. Completely free and open source.
+	pkgver = 2.8.0
+	pkgrel = 1
+	url = https://ojdproject.com/
+	arch = any
+	license = custom:Open Joystick Display License
+	source = open-joystick-display-2.8.0.tar.gz::https://github.com/KernelZechs/open-joystick-display/archive/2.8.0.tar.gz
+	sha256sums = 20c6af63306b719983b34c487b65c734ee0f6805fd8c2942630ce1c3ec8a0214
+
+pkgname = open-joystick-display
+
