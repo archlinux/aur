@@ -1,15 +1,31 @@
 pkgbase = mbrola-voices-fr2
 	pkgdesc = A French female voice for the MBROLA synthesizer
-	pkgver = 980806
+	pkgver = 15.6fa9693
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-fr
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/fr2/fr2-980806.zip
-	md5sums = 1488ea8ef76e97f1cf8af67963accf42
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/fr2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/TEST/bonjour.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/TEST/hier.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/TEST/jaiete.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/TEST/kundera.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/fr2/TEST/mbrola.pho
+	sha256sums = e6269d53b264f5743091397a37a75587e1f16c6c890fa55b2b5f88c67c100339
+	sha256sums = c99b0e6ee05d315edf986bf48d6267e6ab134182f98346c416f977d1ed0da0a6
+	sha256sums = 1e2567965338a310a9f773106444a0ba3c0a32005fa52c3635c001053407800c
+	sha256sums = 0daeb0556e911c68b17645ff87d55dca00d776a69710bd07d2854bdb498d514f
+	sha256sums = e65489cf17ac86c509832ded23878250ce5005839800fa794947e2ddfb727a84
+	sha256sums = a7b2314f328ac53915f12afe32deb9e9bd058a7baa4de82fd4d08f62c13e24cd
+	sha256sums = 1d0aa6c41c0d0a4d669c829292a5975b97b559d00aa7c13cf604526bbe8467e0
+	sha256sums = 5ecfdb9645eda13fa1dde01332ce008090faf78bda2c543c152d015d1d57b953
+	sha256sums = 29639acd19b5fc3574e369c1c9449f78675a4d015b76e5a002cc4fb838dd8dd1
 
 pkgname = mbrola-voices-fr2
 
