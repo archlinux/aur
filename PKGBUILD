@@ -7,7 +7,7 @@ _srcname=linux-5.5
 _major=5.5
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=13
+_minor=14
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -40,16 +40,14 @@ source=(
 0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
 0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
 0010-drm-i915-Introduce-a-vma.kref.patch
-0011-iwlwifi-don-t-send-GEO_TX_POWER_LIMIT-if-no-wgds-tab.patch
-0012-Revert-bpf-Provide-better-register-bounds-after-jmp3.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('3957619b036c50667d86775c039073d6005df188e34a0af2471b24751b2faed1'
+sha256sums=('1edd03a9ba8e98ce3ba7463d6979f20bdba0ee5d75456208453eeb0ac738eef4'
             'SKIP'
-            '1f3b3614a06bffc9c621c82f98d8ca88c60538a8c6dd77f96f2e7fee310a4ee2'
+            '4c529e4e100df11887e0a789d0e46d7ffd053e68a0380b6173a3a2799192ef6a'
             'SKIP'
             'cefc4c5853c1df6595380fb7259289f5850662cd7aa9600dce114e4e525114e1'
             '62b087dd679e096a18611648308c05c896c587b488631fef4df51524dc4d2b6c'
@@ -61,9 +59,7 @@ sha256sums=('3957619b036c50667d86775c039073d6005df188e34a0af2471b24751b2faed1'
             '8da1046091242178219de63805bf08f2d8bfe72874ab5f2b616249d7b87227ea'
             '70f0e78e7335cb713c06a1e0b886d4c8edebf2048c588f00d12e95c930483cd9'
             '6d305596dc9be86a65b9200bf69c001a8e4ddd41cad471289c3c769b5530c359'
-            'a4a10bcb55fc1991200c3835b359b81f5e3e858f5be77c6b9eaef033885c8bfc'
-            'a578a12239e39728c63038db6539abcee422bed4d04ee5bf99f6ba5be8884a9a'
-            '4e59212ab1951d1064132cf54c6531d9245a987648de2cad3ca448ae183a53c7')
+            'a4a10bcb55fc1991200c3835b359b81f5e3e858f5be77c6b9eaef033885c8bfc')
 
 _kernelname=${pkgbase#linux}
 
