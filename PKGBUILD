@@ -1,13 +1,13 @@
 pkgname=python-numpoly
-pkgver=0.1.11
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Numpy compatible polynomial representation"
 arch=('any')
 url="https://github.com/jonathf/numpoly"
 license=('BSD')
-depends=('python-numpy')
+depends=('python-numpy' 'python-six')
 source=("https://github.com/jonathf/numpoly/archive/v${pkgver}.tar.gz")
-sha256sums=('86935940bd9059823dafbb7599bc0f37f3239e6ebbe744d6307323072956cb7a')
+sha256sums=('32d7227b511dbc028be70f3c5766331a8dd5a6b55a3a6aaa94a307e24ef18aad')
 
 package() {
   cd "${srcdir}/numpoly-$pkgver"
