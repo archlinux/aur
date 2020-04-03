@@ -20,7 +20,7 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'patch.diff.example')
 sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8'
-            'de588a37b5b0be17bb7a42b4b36ba4d5d5aa58f723ec91dabb9d29e1713cd0f9')
+            '327e29f1c2e52dfa285545d1459ea92651cb6c23c4f4a7b897e9f4382802021a')
 
 prepare() {
   cd $srcdir/session-desktop

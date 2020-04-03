@@ -6,7 +6,7 @@ index d05625c7..128028f8 100644
    "name": "session-messenger-desktop",
    "productName": "Session",
    "description": "Private messaging from your desktop",
--  "version": "1.0.6",
+-  "version": "1.0.5",
 +  "version": "ver_placeholder",
    "license": "GPL-3.0",
    "author": {
