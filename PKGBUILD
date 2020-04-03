@@ -1,12 +1,12 @@
 # Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
 pkgname=cpachecker
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for configurable software verification."
 arch=("x86_64")
 url="https://svn.sosy-lab.org/software/cpachecker/trunk"
 license=('Apache Version 2.0')
-depends=("java-environment" "python" "bash")
+depends=("java-environment=11" "python" "bash" "jre-openjdk")
 makedepends=()
 checkdepends=()
 conflicts=("cpachecker-svn")
@@ -17,7 +17,7 @@ _dir=CPAchecker-1.9-unix
 
 prepare() {
         cd "$srcdir/$_dir"
-        sed '2 i PATH_TO_CPACHECKER=/opt/cpachecker' scripts/cpa.sh > tmpfile
+        sed '2 i PATH_TO_CPACHECKER=/opt/cpachecker\nJAVA_HOME=/usr/lib/jvm/java-11-openjdk/jre\nPATH=${JAVA_HOME}/bin:$PATH' scripts/cpa.sh > tmpfile
         mv tmpfile scripts/cpa.sh
         chmod +x scripts/cpa.sh
 }
