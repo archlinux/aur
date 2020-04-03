@@ -1,0 +1,14 @@
+pkgbase = python-bls
+	pkgdesc = BLS12-381 and Signatures in Python
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/zebra-lucky/python-bls
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = python
+	source = python-bls-0.1.8.tar.gz::https://github.com/zebra-lucky/python-bls/archive/0.1.8.tar.gz
+	sha256sums = bb61c66f4fb543698a7abd93a2991e9d4430c35698f163fc43004a198465c834
+
+pkgname = python-bls
+
