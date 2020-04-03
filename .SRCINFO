@@ -1,6 +1,6 @@
 pkgbase = bootsplash-theme-manjaro-green-git
 	pkgdesc = Bootsplash Theme 'Manjaro green'
-	pkgver = r3.1ae68da
+	pkgver = r4.3cf17cd
 	pkgrel = 1
 	url = https://github.com/ahmubashshir/bootsplash-manjaro-green
 	arch = any
