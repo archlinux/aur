@@ -3,7 +3,7 @@
 _gemname=fusuma-plugin-sendkey
 pkgname=ruby-$_gemname
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fusuma plugin that sending virtual keyboard events."
 arch=(any)
 url="https://github.com/iberianpig/fusuma-plugin-sendkey"
