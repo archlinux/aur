@@ -5,10 +5,10 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # A HUGE THANKS to @yan12125 on GitHub (https://github.com/archiecobbs/mtree-port/issues/11#issuecomment-343127667)
 #  This is basically the PKGBUILD he wrote, all credit goes to him. Buy him a beer.
 pkgname=nmtree
-pkgver=20171109
-pkgrel=4
+pkgver=20200403
+pkgrel=1
 pkgdesc="NetBSD's mtree (supports legacy mtree spec, newer specs, etc.)"
-arch=( 'i686' 'x86_64' )
+arch=('x86_64')
 url="https://www.netbsd.org/"
 license=( 'custom' )
 makedepends=( 'bmake' 'cvs' 'libnbcompat' )
@@ -59,6 +59,9 @@ prepare() {
 }
 
 build() {
+  # https://bugs.square-r00t.net/index.php?do=details&task_id=47
+  MAKEFLAGS=$(echo ${MAKEFLAGS} | sed -re 's/(^|\s+)(-l[0-9]+)/\1/g')
+
   cd "${srcdir}/${_cvsmod}-build"
 
   ./configure --prefix=/usr --sbindir=/usr/bin LIBS="-lnbcompat"
