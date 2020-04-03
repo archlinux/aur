@@ -1,6 +1,6 @@
 pkgbase = python-altair
 	pkgdesc = Declarative statistical visualization library for Python
-	pkgver = 4.0.1
+	pkgver = 4.1.0
 	pkgrel = 1
 	url = https://altair-viz.github.io/
 	arch = any
@@ -14,8 +14,8 @@ pkgbase = python-altair
 	depends = python-pandas
 	depends = python-toolz
 	optdepends = python-selenium: png and svg export support
-	source = altair-4.0.1.tar.gz::https://files.pythonhosted.org/packages/source/a/altair/altair-4.0.1.tar.gz
-	sha256sums = d31270c82ce5e37b25fc3bc4e990dc6ac593620a2be0c8c075f297409a92af90
+	source = altair-4.1.0.tar.gz::https://files.pythonhosted.org/packages/source/a/altair/altair-4.1.0.tar.gz
+	sha256sums = 3edd30d4f4bb0a37278b72578e7e60bc72045a8e6704179e2f4738e35bc12931
 
 pkgname = python-altair
 
