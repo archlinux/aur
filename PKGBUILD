@@ -26,7 +26,7 @@ source=(meteor.sh)
 source_x86_64=(meteor-$pkgver-x86_64.tar.gz::https://static-meteor.netdna-ssl.com/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz)
 sha512sums=('b81f2da94d2732eacd4499be2b68e8410c334aa874907ce985fe59508a030371a37addc74f583dfdbef30c394385d2c941e565991dbbc4074908b9e4a8cb7036')
 # sha512sums_i686=('e7b7f814e94b247afcb7cabdaec6a3f830fc3a421e056a0ce2118871e027f3fc2325000bf303a20c79ead47160a96b111a7708d508f9e9a72ac8d8930092c42a')
-sha512sums_x86_64=('f251a373194be5933cd7213ca69e5a65908739c3f79d4a490c54c084a6746f707a60f40390048d0a4b9bb75a965dac0c18de2bd869b0ba202609a9c07628dae6')
+sha512sums_x86_64=('f3f069892f3a151594fbfacfdb578d27a8a97164f99c5b48c0704b75083f99aa41dcbf03a61e385a01b0a412dde7f62174189a2c5ec14c9f41909c854c4061a9')
 
 package() {
   # Copy base Meteor tree to universally-accessible location
