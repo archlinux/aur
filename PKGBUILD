@@ -2,8 +2,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-jabber-git
-pkgver=0.8.92.119.gfff3382
-pkgrel=2
+pkgver=0.8.92.r119.gfff3382
+pkgrel=1
+epoch=1
 pkgdesc="A Jabber client written in emacs lisp"
 arch=('any')
 url="http://emacs-jabber.sourceforge.net/"
@@ -17,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --tags | sed 's|-|.|g'
+  git describe --tags | sed 's|-|.r|' | tr - .
 }
   
 build() {
