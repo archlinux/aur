@@ -1,5 +1,5 @@
 pkgname=coin-or-coinasl
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="COIN-OR autotools harness to build AMPL Solver Library"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ groups=('coin-or')
 depends=('glibc')
 makedepends=('wget')
 source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgver.tar.gz")
-sha256sums=('1816800470e84ed188df3f9cbd59dfb26cc5a9951dbf1f4cc7ec1b0a6010ffaa')
+sha256sums=('0a4cfa7c6c5df72d8e1c4c3ce74633421f807115a679e85cb5569c41df9a9aaf')
 
 prepare () {
   cd "ThirdParty-ASL-releases-$pkgver"
