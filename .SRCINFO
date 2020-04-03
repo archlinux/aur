@@ -1,15 +1,18 @@
 pkgbase = fprime
 	pkgdesc = A Flight-Proven, Multi-Platform, Open-Source Flight Software Framework
-	pkgver = 1.2
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/nasa/fprime
 	arch = i686
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake
+	makedepends = python
+	makedepends = python-setuptools
 	depends = gcc
-	source = https://github.com/nasa/fprime/archive/NASA-v1.2.tar.gz
-	sha256sums = 180ae41d5708de4f3d81cb4201b7ad3fae47f0d36bef5dde2078f5d3a7e53d53
+	depends = python
+	source = fprime-1.3.1::https://github.com/nasa/fprime/archive/NASA-v1.3.1.tar.gz
+	sha256sums = 345eed5b124799992f425e3eb5c831c3fa8a4af1336b3ae03ea929d23eb9c690
 
 pkgname = fprime
 

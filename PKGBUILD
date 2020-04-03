@@ -1,37 +1,33 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=fprime
-pkgver=1.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Flight-Proven, Multi-Platform, Open-Source Flight Software Framework"
 arch=('i686' 'x86_64')
 url="https://github.com/nasa/fprime"
 license=('Apache-2.0')
-depends=('gcc')
+depends=('gcc' 'python')
 optdepends=()
-makedepends=('cmake')
+makedepends=('cmake' 'python' 'python-setuptools')
+source=("$pkgname-$pkgver::https://github.com/nasa/${pkgname}/archive/NASA-v${pkgver}.tar.gz")
+sha256sums=('345eed5b124799992f425e3eb5c831c3fa8a4af1336b3ae03ea929d23eb9c690')
+
 _pkgname="fprime-NASA"
-source=(https://github.com/nasa/${pkgname}/archive/NASA-v${pkgver}.tar.gz)
-sha256sums=('180ae41d5708de4f3d81cb4201b7ad3fae47f0d36bef5dde2078f5d3a7e53d53')
+_pkgver="v${pkgver}"
 
 build() {
+    cd "${srcdir}/${_pkgname}-${_pkgver}/Fw/Python"
+    python setup.py build
 
-    msg "Starting CMake"
-
-    # Create a build directory
-    mkdir -p "${srcdir}/${_pkgname}-v${pkgver}/build"
-    cd "${srcdir}/${_pkgname}-v${pkgver}/build"
-
-    cmake .. \
-        -DCMAKE_INSTALL_PREFIX="/usr"
-
-    msg "Building the project"
-    make
+    cd "${srcdir}/${_pkgname}-${_pkgver}/Gds"
+    python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-v${pkgver}/build"
+    cd "${srcdir}/${_pkgname}-${_pkgver}/Fw/Python"
+    python setup.py install --root="$pkgdir"/ --optimize=1
 
-    msg "Installing files"
-    make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/${_pkgname}-${_pkgver}/Gds"
+    python setup.py install --root="$pkgdir"/ --optimize=1
 }
