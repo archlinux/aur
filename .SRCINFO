@@ -1,16 +1,25 @@
 pkgbase = mbrola-voices-it3
 	pkgdesc = An Italian male voice for the MBROLA synthesizer
-	pkgver = 010304
-	pkgrel = 3
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-it
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/it3/it3-010304.zip
-	md5sums = fed63cdf4da274966646bdac1bd6e630
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/it3/it3
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/it3/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/it3/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/it3/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/it3/TEST/sent1.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/it3/TEST/sent2.pho
+	sha256sums = 0ce45edcfe858eeea5294f8a00a29b5f934100e5bea92f2fb3d11dccb72e00c9
+	sha256sums = 12abbec004ae73af4610140286ee880e689d6815a1a41b99b4542bb2cce3aaf8
+	sha256sums = bfd5c01a58c8ea0b5e069f4b09c9465b9770bbeb4360b24ff70665671b8e700a
+	sha256sums = 61528ad1e573b5c8391e98af74c2f6d338472ee430d0ca9a57fceb64086000fb
+	sha256sums = 7c9e1cf5139b0b191ddac90ccf72239ccc1633f2de48b552c1b93b8b1e0b0a55
+	sha256sums = 90da1f286273fb7cf37acc214e7f457a782e7ad2e9d373af4e3cea1086ff9b34
 
 pkgname = mbrola-voices-it3
 
