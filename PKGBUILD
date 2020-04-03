@@ -1,31 +1,23 @@
-# Maintainer: Ricardo (XenGi) Band <email@ricardo.band>
+# Maintainer: Ricardo Band <email@ricardo.band>
 pkgname=virtualfish
-pkgver=1.0.6
-pkgrel=10
-pkgdesc="A virtualenv wrapper for the Fish shell"
-arch=(any)
-url="https://github.com/adambrenecki/virtualfish"
-license=('MIT')
-install=virtualfish.install
-provides=('python-virtualfish')
-makedepends=('python-setuptools' 'python-setuptools-scm>=1.11.1')
-#checkdepends=('python-pytest>=3.1.3' 'python-pytest-xdist>=1.22.2')
-depends=('python-virtualenv' 'python-pkgconfig>=1.2.2' 'python-psutil>=5.2.2' 'python-xdg' 'python-distlib')  # >=1.0.5')
-source=("${pkgname}::git+https://github.com/adambrenecki/${pkgname}.git#tag=${pkgver}")
-sha256sums=('SKIP')
-
-#check() {
-#    cd "${srcdir}/${pkgname}"
-#    pytest .
-#}
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="Fish shell tool for managing Python virtual environments"
+arch=("any")
+url=https://github.com/justinmayer/virtualfish
+license=("MIT")
+depends=("python" "python-pkgconfig" "python-psutil" "python-virtualenv" "python-xdg")
+makedepends=("python-setuptools")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('18be951a4997cd58ed6861f1d833390b63bb631a2c31933dc3e713e63ea80b6b')
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "$srcdir/$pkgname-$pkgver"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
