@@ -11,7 +11,7 @@
 # Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor
-pkgver=1.9.3
+pkgver=1.10.1
 pkgrel=1
 pkgdesc='Full-stack JavaScript platform for developing modern web and mobile applications'
 # arch=(i686 x86_64)
