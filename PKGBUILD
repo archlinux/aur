@@ -1,6 +1,6 @@
 # Maintainer: Axel Navarro <navarroaxel at gmail>
 pkgname=rubymine-eap
-pkgver=201.6668.21
+pkgver=201.6668.69
 _pkgname=RubyMine
 _pkgver=2020.1
 pkgrel=1
@@ -15,12 +15,12 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine-eap.desktop
         rubymine.install)
-sha256sums=('552d1a74020fffc07612c4687bcbbd6b2ab6dbdb9761da8d5b421c3d08b36418'
+sha256sums=('9ece148ca6349799c0e03ec28b8463ed96d7149f7562bf84492ad45a6870c180'
             '3daf0808e001e780bf610e4c9726a0ed190ab6293a30d0ed13aa63d88209c954'
             'fe42e281cdcaca5008d3f254a16974504c9271407800d0234ce06476ea9e3bdd')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${_pkgver}"
 
     #Remove non-linux libs
     rm -rf "lib/libpty/macosx"
@@ -49,7 +49,7 @@ package() {
 
     #Pre-packaged program files
     install -d -m 755 "${pkgdir}/usr/share"
-    cp -a "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
+    cp -a "${srcdir}/${_pkgname}-${_pkgver}" "${pkgdir}/usr/share/${pkgname}"
 
     #Desktop application
     install -Dm644 "${pkgdir}/usr/share/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
@@ -59,7 +59,7 @@ package() {
 
     #License
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    find "$srcdir/$_pkgname-$pkgver/license/" -type f -exec \
+    find "$srcdir/$_pkgname-$_pkgver/license/" -type f -exec \
         install -Dm644 '{}' "$pkgdir/usr/share/licenses/$pkgname/" \;
 
     #Java config
