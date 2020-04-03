@@ -1,0 +1,17 @@
+pkgbase = pbss-snap
+	pkgdesc = Practically Better Style Sheets
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/arijit79/Pbss/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python>=3.7
+	conflicts = pbss-git
+	conflicts = pbss
+	source = https://github.com/arijit79/Pbss/archive/v1.1.tar.gz
+	md5sums = SKIP
+
+pkgname = pbss-snap
+
