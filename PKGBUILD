@@ -1,13 +1,13 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="odio"
-pkgver="19.4.15.236"
-pkgrel="2"
+pkgver=20.4.3.237
+pkgrel=1
 pkgdesc="Audio compression tool for FLAC and Nero AAC"
 arch=("any")
 url="https://tari.in/www/software/${pkgname}"
 license=("GPL3")
-depends=("gst-python" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gst-libav" "python-html5lib" "python-beautifulsoup4" "python-lxml" "python-psutil" "flac" "cuetools" "shntool" "atomicparsley" "mac" "lsdvd" "mplayer" "mhwaveedit" "aacgain-cvs" "neroaacenc-bin" "sacd-decoder-bzr")
+depends=("gst-python" "gst-plugins-base" "gst-libav" "python-html5lib" "python-beautifulsoup4" "python-lxml" "python-psutil" "flac" "cuetools" "shntool" "atomicparsley" "mac" "lsdvd" "mplayer" "odio-edit" "aacgain-cvs" "neroaacenc-bin" "sacd-decoder-bzr")
 makedepends=("bzr" "python-setuptools" "python-polib")
 source=("bzr+lp:/${pkgname}/trunk")
 md5sums=("SKIP")
