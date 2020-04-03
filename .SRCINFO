@@ -1,0 +1,22 @@
+pkgbase = python-extension-helpers
+	pkgdesc = Helpers to assist with building Python packages with compiled C/Cython extensions
+	pkgver = 0.1
+	pkgrel = 1
+	url = http://extension-helpers.readthedocs.io
+	arch = i686
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	makedepends = python-sphinx-automodapi
+	source = https://files.pythonhosted.org/packages/source/e/extension-helpers/extension-helpers-0.1.tar.gz
+	md5sums = 3d37bf28543e7ed2e226db28be2cfbe5
+
+pkgname = python-extension-helpers
+	depends = python>=3.6
+	depends = python-setuptools
+	optdepends = python-extension-helpers-doc: Documentation for Python Extension helpers
+
+pkgname = python-extension-helpers-doc
+	pkgdesc = Documentation for Python Extension helpers
+
