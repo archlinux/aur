@@ -28,7 +28,8 @@ package_goland-eap() {
   install -dm755 "${pkgdir}"/usr/share/applications/
   install -dm755 "${pkgdir}"/usr/share/pixmaps/
 
-  cp -a "${srcdir}"/GoLand-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  # cp -a "${srcdir}"/GoLand-${pkgver}/ "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/GoLand-2020.1/ "${pkgdir}"/opt/${pkgbase}
   rm -rf "${pkgdir}"/opt/${pkgbase}/jbr
 
   ln -s "/opt/${pkgbase}/bin/${pkgbase%-eap}.sh" "${pkgdir}/usr/bin/${pkgbase}"
@@ -44,5 +45,6 @@ package_goland-eap-jre() {
   replaces=('gogland-eap-jre')
 
   install -dm755 "${pkgdir}"/opt/${pkgbase}
-  cp -a "${srcdir}"/GoLand-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  # cp -a "${srcdir}"/GoLand-${pkgver}/jbr "${pkgdir}"/opt/${pkgbase}
+  cp -a "${srcdir}"/GoLand-2020.1/jbr "${pkgdir}"/opt/${pkgbase}
 }
