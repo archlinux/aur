@@ -1,8 +1,8 @@
 # Maintainer: Javier O. Cordero Pérez <javier@imaginary.tech>
 pkgname=imaginary-teleprompter-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.3.4
-pkgrel=13
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
@@ -12,8 +12,8 @@ provides=('imaginary-teleprompter')
 conflicts=('imaginary-teleprompter' 'imaginary-teleprompter-git')
 install=INSTALL
 changelog=
-source=("${_pkgname}-${pkgver}.tar::https://github.com/ImaginarySense/Teleprompter-Electron/releases/download/${pkgver}/${_pkgname}-${pkgver}-64bit.pacman")
-sha256sums=('32eaa1482376269df3cdc7a275ce750bfc95483fc4ee34323e8004fd3e60e667')
+source=("${_pkgname}-${pkgver}.tar::https://github.com/ImaginarySense/Imaginary-Teleprompter-Electron/releases/download/${pkgver}/${_pkgname}-${pkgver}.pacman")
+sha256sums=('6d65527657bfc6f951d83d37676897aa80eff2902ffb061264cebc499d3b82ab')
 
 package() {
     cd "$srcdir"
