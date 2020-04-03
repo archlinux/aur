@@ -1,6 +1,6 @@
 pkgbase = whalebird-desktop
 	pkgdesc = Electron-based Mastodon/Pleroma client
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://whalebird.org
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = whalebird-desktop
 	makedepends = npm
 	depends = electron7
 	provides = whalebird
-	source = whalebird-desktop-4.0.0.tar.gz::https://github.com/h3poteto/whalebird-desktop/archive/4.0.0.tar.gz
+	source = whalebird-desktop-4.0.1.tar.gz::https://github.com/h3poteto/whalebird-desktop/archive/4.0.1.tar.gz
 	source = whalebird.desktop
 	source = whalebird.sh
-	sha256sums = 6d83d110c60b9157f462f237c1fb5bf97faa2b3873e1fee789d592403be402c8
+	sha256sums = 7b84b2aadb8dab59bc61b25ca86b171bf74cfa29383d21e754e6964e00570bb4
 	sha256sums = 8feed931453da872291c4588c981007ed36566155cfcf55ab3ff5d7431d60aef
 	sha256sums = 954180114cb48945084ffb91472d8bf4cdd37fe8d30a31a13363e1a7060062a4
 
