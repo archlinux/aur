@@ -1,13 +1,13 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire-git
-pkgver=0.6.12.r39.g293ff76a
+pkgver=0.6.12.r40.g85ad3109
 pkgrel=1
 pkgdesc='An I2P file sharing program (git version)'
 arch=('any')
 url='https://muwire.com/'
 license=('GPL3')
-depends=('bash' 'java-runtime' 'hicolor-icon-theme')
+depends=('sh' 'java-runtime' 'hicolor-icon-theme')
 makedepends=('git' 'gradle')
 provides=('muwire')
 conflicts=('muwire')
@@ -28,7 +28,7 @@ build() {
 
 package() {
     bsdtar -xf "muwire/gui/build/distributions/gui-shadow-${pkgver%%.r*}.tar" \
-        -C muwire --strip-components 2 "*/lib/gui-${pkgver%%.r*}-all.jar"
+        -C muwire --strip-components='2' "*/lib/gui-${pkgver%%.r*}-all.jar"
     install -D -m755 muwire.sh "${pkgdir}/usr/bin/muwire"
     install -D -m644 muwire.desktop -t "${pkgdir}/usr/share/applications"
     install -D -m644 "muwire/gui-${pkgver%%.r*}-all.jar" "${pkgdir}/usr/share/java/muwire.jar"
