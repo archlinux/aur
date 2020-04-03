@@ -1,6 +1,6 @@
 pkgbase = firefox-beta-bin
 	pkgdesc = Standalone web browser from mozilla.org - Beta
-	pkgver = 75.0rc2
+	pkgver = 75.0rc3
 	pkgrel = 1
 	url = https://www.mozilla.org/en-US/firefox/channel/#beta
 	install = firefox-beta-bin.install
@@ -19,12 +19,12 @@ pkgbase = firefox-beta-bin
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = pulseaudio: Sound
 	optdepends = upower: Battery API
-	provides = firefox=75.0rc2
+	provides = firefox=75.0rc3
 	conflicts = firefox-beta
-	source = firefox-75.0rc2.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/75.0-candidates/build2/linux-x86_64/en-US/firefox-75.0.tar.bz2
+	source = firefox-75.0rc3.tar.bz2::https://ftp.mozilla.org/pub/firefox/candidates/75.0-candidates/build3/linux-x86_64/en-US/firefox-75.0.tar.bz2
 	source = firefox-beta.sh
 	source = firefox-beta-bin.desktop
-	sha256sums = b2a864cec0c4444dcd59dd4028704e12a38b1f55edcea51ac25ce63b66eb1023
+	sha256sums = c5d9700381c4ad1bde4282735593d5726d9869e3db69ac2e0c24e40597ca4aa6
 	sha256sums = 4bec62032e49c28ff27750abddbdbdbb1a4b5cba719c39498968fe53adee790b
 	sha256sums = 210f13ea47c4b96387f26ee7fc4dfc5c192cfb169aef2a13303fbd1ee58b3761
 
