@@ -1,7 +1,7 @@
 # Maintainer: Erick Cafferata <erick@cafferata.me>
 pkgname=pomod-git
 _pkgname=pomod
-pkgver=r12.5587fb0
+pkgver=r15.1d7998e
 pkgrel=1
 license=('MIT')
 pkgdesc='The pomodoro daemon'
@@ -31,4 +31,5 @@ package() {
 	cd "$_pkgname"
 	DESTDIR="$pkgdir/" ninja -C build install
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"${pkgname%-*}"/LICENSE
+	install -Dm755 pomod-info "$pkgdir"/usr/bin/pomod-info
 }
