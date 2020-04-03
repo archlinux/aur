@@ -1,16 +1,30 @@
 pkgbase = mbrola-voices-ic1
 	pkgdesc = An Icelandic male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 3
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-ic
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ic1/ic1.zip
-	md5sums = 541607bbfb265a562fba8b9c1adfee31
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/ic1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/test/euler.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/test/goddag.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/test/krummi.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/test/ruta.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ic1/test/tungut.pho
+	sha256sums = 1764451ebe76f5d4f5efa67937bffe63b8b3da142ccda24cc7b7718999da9c13
+	sha256sums = 97aa2370b7084254d2d2768489462aad508245022ccbd0f308ff19a2d575a269
+	sha256sums = 5018bdcc2398196a11a9024b07cc76d37218b4ed92d342e1daf5524a10a9680a
+	sha256sums = db5a7c93c6ce2af0afb95164f7147c4ff661d143a6997c42401432dd7039a7a0
+	sha256sums = 13b2f6decc235ad0ea9920106f3e727336e0c6e7e70ad275beedda7d30a4aa4c
+	sha256sums = d1b2df3e895aa65943a2cfa0e3bea55443a44cfcba00c5990ee3591dfa01e26e
+	sha256sums = fadc6ded590a78939185c5e072074d7aee0c7ade81dff6e7a67b804909b99574
+	sha256sums = 353c89bd8b18bf993aaf6ab340e99d166161a221a30824f9aac3e73511850786
+	sha256sums = f1b038aa82470eae0f54eb3924597e7285a81f9041e08762d9aebe41da7973be
 
 pkgname = mbrola-voices-ic1
 
