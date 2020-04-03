@@ -1,7 +1,7 @@
 # Maintainer: aereaux <aidan@jmad.org>
 _pkgname=meli
 pkgname=${_pkgname}-git
-pkgver=alpha.0.4.2.r43.g17a0f31
+pkgver=alpha.0.4.2.r232.g6ccb9d3
 pkgrel=1
 pkgdesc="Experimental terminal mail client aiming for configurability and extensibility with sane defaults."
 arch=("x86_64")
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$_pkgname"
 
-  make
+  make meli
 }
 
 # TODO: Right now the makefile does not have a check target
