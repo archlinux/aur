@@ -3,7 +3,7 @@ breaks build with -Werror -Wall
 
 --- configure.ac
 +++ configure.ac
-@@ -1240,9 +1240,12 @@
+@@ -1217,9 +1217,12 @@
  		CFLAGS=$CFLAGS$efl
  		AC_MSG_CHECKING([if DNS resolver is re-entrant])
  		AC_COMPILE_IFELSE([AC_LANG_PROGRAM([
@@ -18,7 +18,7 @@ breaks build with -Werror -Wall
  				#include <arpa/nameser.h>
 --- configure
 +++ configure
-@@ -8390,9 +8390,12 @@
+@@ -8282,9 +8282,12 @@
  		cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  
