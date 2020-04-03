@@ -1,14 +1,13 @@
 pkgbase = pymacs
 	pkgdesc = Interface between Emacs Lisp and Python.
 	pkgver = 0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dgentry/Pymacs
 	install = pymacs.install
 	arch = any
 	license = GPL2
-	makedepends = python2
-	makedepends = python2-docutils
-	makedepends = texlive-core
+	makedepends = python
+	makedepends = python-docutils
 	depends = emacs
 	conflicts = emacs-python-mode
 	source = pymacs-0.26.tar.gz::https://github.com/dgentry/Pymacs/archive/v0.26.tar.gz
