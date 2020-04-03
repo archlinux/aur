@@ -1,7 +1,7 @@
 pkgbase = minitimer
 	pkgdesc = Mini Timer - A timer in your terminal
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emvigo/minitimer
 	arch = x86_64
 	license = APACHE
