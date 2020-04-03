@@ -1,7 +1,7 @@
 # Maintainer: Arne Beer <privat@arne.beer>
 
 pkgname=pueue-bin
-pkgver='0.2.1'
+pkgver='0.3.0'
 pkgrel=1
 arch=('any')
 pkgdesc='A command scheduler for shells'
@@ -16,12 +16,13 @@ source=(
     "https://github.com/Nukesor/pueue/blob/master/LICENSE"
 )
 md5sums=('c4c2767651d310f0db7f078846e1b8a4'
-         '068d020c01e49f7296def87daa3058dd'
-         '850217b6bba7a1fcca98c7bc31334c7a'
-         'e577b173d4f1f9596d91305ba5b38f2d')
+         'bad7a31ba0f137104247baa50094f56e'
+         '605826c6a023207239c6b8e985a3a206'
+         'cfb9b65ddd163f9ac40ba8856d0e641d')
 
 build() {
     # Build shell completion files for pueue client
+    chmod +x pueue-linux-amd64
     #pueue-linux-amd64 completions zsh ./
     ./pueue-linux-amd64 completions bash ./
     ./pueue-linux-amd64 completions fish ./

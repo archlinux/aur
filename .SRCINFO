@@ -1,6 +1,6 @@
 pkgbase = pueue-bin
 	pkgdesc = A command scheduler for shells
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/nukesor/pueue
 	arch = any
@@ -8,14 +8,14 @@ pkgbase = pueue-bin
 	provides = pueue
 	conflicts = pueue-git
 	conflicts = pueue
-	source = https://github.com/Nukesor/pueue/releases/download/v0.2.1/systemd.pueued.service
-	source = https://github.com/Nukesor/pueue/releases/download/v0.2.1/pueue-linux-amd64
-	source = https://github.com/Nukesor/pueue/releases/download/v0.2.1/pueued-linux-amd64
+	source = https://github.com/Nukesor/pueue/releases/download/v0.3.0/systemd.pueued.service
+	source = https://github.com/Nukesor/pueue/releases/download/v0.3.0/pueue-linux-amd64
+	source = https://github.com/Nukesor/pueue/releases/download/v0.3.0/pueued-linux-amd64
 	source = https://github.com/Nukesor/pueue/blob/master/LICENSE
 	md5sums = c4c2767651d310f0db7f078846e1b8a4
-	md5sums = 068d020c01e49f7296def87daa3058dd
-	md5sums = 850217b6bba7a1fcca98c7bc31334c7a
-	md5sums = e577b173d4f1f9596d91305ba5b38f2d
+	md5sums = bad7a31ba0f137104247baa50094f56e
+	md5sums = 605826c6a023207239c6b8e985a3a206
+	md5sums = cfb9b65ddd163f9ac40ba8856d0e641d
 
 pkgname = pueue-bin
 
