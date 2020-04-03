@@ -3,7 +3,7 @@
 
 pkgbase=plasma-angelfish
 pkgname=plasma-angelfish
-pkgver=1.3.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Plasma Demo Webbrowser for Mobile Devices"
 url="https://github.com/KDE/plasma-angelfish"
@@ -12,7 +12,7 @@ source=(
     https://codeload.github.com/KDE/$pkgname/tar.gz/v$pkgver
 )
 md5sums=(
-    '777e55a620b1c53cf584c636fd89e93b'
+    'c59f96e6b118cfe2073c2fef3fda6951'
 )
 arch=('x86_64')
 
