@@ -1,0 +1,4 @@
+post_install() {
+  echo "Run 'kpt --install-completion' to install bash completions"
+  echo 'WARNING: This will modify your ~/.bashrc'
+}
