@@ -1,0 +1,14 @@
+pkgbase = pexip-infinity-connect
+	pkgdesc = Pexip Infinity Connect App
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://www.pexip.com/apps
+	arch = x86_64
+	license = custom
+	source = https://dl.pexip.com/connect/nextgen/1.6/pexip-infinity-connect_1.6.0-52920.61.0_linux-x64.deb
+	md5sums = 94e6d372bbcfa72cfe7d677c5f1b79fe
+	sha1sums = b6cecdb29dc5e3e28e3c2b9051e89b6f1d5d8f22
+	sha512sums = fc91c919fce22faf864ec693a268b18ddf455f40ca3d4b48c99dcaa583e44c5c63fdaf9369217478f05a382f6a217b4e79e93d1ea10dc05ed22290b90e4399ea
+
+pkgname = pexip-infinity-connect
+
