@@ -8,7 +8,7 @@ url="https://github.com/zebra-lucky/python-bls"
 arch=('any')
 license=('Apache2')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'cython')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zebra-lucky/${pkgname}/archive/${pkgver}.tar.gz")
 
 sha256sums=('bb61c66f4fb543698a7abd93a2991e9d4430c35698f163fc43004a198465c834')
