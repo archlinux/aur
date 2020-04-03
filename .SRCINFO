@@ -1,7 +1,7 @@
 pkgbase = single-file-git
 	pkgdesc = Command line tool to download a web page into a single HTML file
 	pkgver = r4448.6de221b2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gildas-lormeau/SingleFile
 	arch = any
 	license = GNU Affero GPL

@@ -3,7 +3,7 @@
 _pkgname=single-file
 pkgname=single-file-git
 pkgver=r4448.6de221b2
-pkgrel=1
+pkgrel=2
 pkgdesc="Command line tool to download a web page into a single HTML file"
 arch=('any')
 url="https://github.com/gildas-lormeau/SingleFile"
@@ -22,11 +22,11 @@ package() {
     cd "${srcdir}/${_pkgname}/cli"
 
     npm install --user root --cache "${srcdir}/npm-cache"
-    chmod u+x single-file
+    chmod 755 single-file
 
     mkdir -p "${pkgdir}/opt"
     cp -r "${srcdir}/${_pkgname}" "${pkgdir}/opt/${_pkgname}"
 
     mkdir -p ${pkgdir}/usr/bin
-    ln -s "${pkgdir}/opt/${_pkgname}/cli/single-file" "${pkgdir}/usr/bin/single-file"
+    ln -s "/opt/${_pkgname}/cli/single-file" "${pkgdir}/usr/bin/single-file"
 }
