@@ -1,0 +1,16 @@
+pkgbase = libvarnam
+	pkgdesc = Transliteration and reverse transliteration for Indian languages
+	pkgver = 3.2.6
+	pkgrel = 1
+	url = https://www.varnamproject.com/
+	arch = x86_64
+	license = MPL
+	makedepends = cmake
+	depends = ruby
+	depends = ruby-ffi
+	provides = varnamc
+	source = https://github.com/varnamproject/libvarnam/releases/download/v3.2.6/libvarnam-3.2.6.tar.gz
+	sha256sums = 17d856c6b2e1a3d009d9907e9d0b0a49d82f403e71a0307a9c11ba5681a35481
+
+pkgname = libvarnam
+
