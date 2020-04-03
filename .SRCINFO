@@ -6,6 +6,7 @@ pkgbase = v2ray-desktop
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = jq
 	makedepends = qt5-tools>=5.14.0
 	makedepends = qt5-declarative>=5.14.0
 	depends = clash
