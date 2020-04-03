@@ -2,12 +2,12 @@
 pkgname=imaginary-teleprompter-bin
 _pkgname=${pkgname%-bin}
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete and professional free software teleprompter."
 arch=('x86_64')
 url="https://imaginary.tech/teleprompter"
 license=('GPL3')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy')
 provides=('imaginary-teleprompter')
 conflicts=('imaginary-teleprompter' 'imaginary-teleprompter-git')
 install=INSTALL

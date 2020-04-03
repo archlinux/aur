@@ -1,7 +1,7 @@
 pkgbase = imaginary-teleprompter-bin
 	pkgdesc = A complete and professional free software teleprompter.
-	pkgver = 2.3.4
-	pkgrel = 13
+	pkgver = 2.4.0
+	pkgrel = 2
 	url = https://imaginary.tech/teleprompter
 	install = INSTALL
 	arch = x86_64
@@ -18,15 +18,11 @@ pkgbase = imaginary-teleprompter-bin
 	depends = nss
 	depends = re2
 	depends = snappy
-	depends = libnotify
-	depends = libappindicator-gtk2
-	depends = libappindicator-gtk3
-	depends = libappindicator-sharp
 	provides = imaginary-teleprompter
 	conflicts = imaginary-teleprompter
 	conflicts = imaginary-teleprompter-git
-	source = imaginary-teleprompter-2.3.4.pacman::https://github.com/ImaginarySense/Teleprompter-Electron/releases/download/2.3.4/imaginary-teleprompter-2.3.4-64bit.pacman
-	sha256sums = 32eaa1482376269df3cdc7a275ce750bfc95483fc4ee34323e8004fd3e60e667
+	source = imaginary-teleprompter-2.4.0.pacman::https://github.com/ImaginarySense/Imaginary-Teleprompter-Electron/releases/download/2.4/imaginary-teleprompter-2.4.0.pacman
+	sha256sums = 6d65527657bfc6f951d83d37676897aa80eff2902ffb061264cebc499d3b82ab
 
 pkgname = imaginary-teleprompter-bin
 
