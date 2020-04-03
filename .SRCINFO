@@ -1,6 +1,6 @@
 pkgbase = mongodb-compass-community-beta-bin
 	pkgdesc = The official GUI for MongoDB - Community Edition - beta version - binary version
-	pkgver = 1.21.0.beta.2
+	pkgver = 1.21.0.beta.3
 	pkgrel = 1
 	url = https://www.mongodb.com/products/compass
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = mongodb-compass-community-beta-bin
 	depends = lsb-release
 	provides = mongodb-compass-community-beta
 	conflicts = mongodb-compass-community-beta
-	source = mongodb-compass-community-beta-bin-1.21.0.beta.2-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.21.0-beta.2/mongodb-compass-community-beta-1.21.0-beta.2.x86_64.rpm
-	sha256sums = 57e71fbbc3cece6249438db7c983181fec51b9b2d21cc61590aa16b84ac93e03
+	source = mongodb-compass-community-beta-bin-1.21.0.beta.3-1.rpm::https://github.com/mongodb-js/compass/releases/download/v1.21.0-beta.3/mongodb-compass-community-beta-1.21.0-beta.3.x86_64.rpm
+	sha256sums = b40d72d19c5cdd417d4405a72c16aad685cafddfc5e5460a6ba35f0122c0ec70
 
 pkgname = mongodb-compass-community-beta-bin
