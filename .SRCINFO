@@ -1,0 +1,16 @@
+pkgbase = ruby-revdev
+	pkgdesc = revdev is a ruby binding to handling event devices.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/kui/revdev
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-bundler
+	noextract = revdev-0.2.1.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/revdev-0.2.1.gem
+	sha1sums = f64abe8459abcf904d80b848fb753f435b7a95ad
+
+pkgname = ruby-revdev
+
