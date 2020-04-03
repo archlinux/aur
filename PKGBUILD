@@ -19,7 +19,7 @@ conflicts=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/$pkgver/$_pkgname")
-sha256sums=(4a4b0d42ef741cfdb831ebc05ef6f483217515f6d186abc96af6fea3d1312353)
+sha256sums=(bb36104122c52157cc005c7ae5f45478d2a318481e5ac60bddbd11984c5d24d4)
 
 package() {
 	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
