@@ -10,6 +10,7 @@ pkgbase = surge-synthesizer
 	makedepends = steinberg-vst36
 	makedepends = premake-git
 	makedepends = git
+	makedepends = rsync
 	depends = cairo
 	depends = fontconfig
 	depends = freetype2
