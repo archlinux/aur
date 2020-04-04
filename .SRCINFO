@@ -1,0 +1,12 @@
+pkgbase = nanoinvaders.lv2-git
+	pkgdesc = Play space invaders in an audio plugin
+	pkgver = r3.eb2fbab
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = lv2
+	source = nanoinvaders.lv2-git::git+https://github.com/clearly-broken-software/nanoinvaders
+	md5sums = SKIP
+
+pkgname = nanoinvaders.lv2-git
+
