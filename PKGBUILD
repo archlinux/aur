@@ -5,12 +5,12 @@
 
 pkgname=vlang-git
 pkgver=r3390.876b73f9
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies'
 arch=('x86_64')
 url='https://vlang.io'
 license=('MIT')
-makedepends=('git' 'gcc')
+makedepends=('git')
 optdepends=('glfw-x11: Needed for graphics support'
 			'freetype2: Needed for graphics support'
 			'openssl: Needed for http support')

@@ -1,12 +1,11 @@
 pkgbase = vlang-git
 	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software. Compiles itself in <1s with zero dependencies
 	pkgver = r3390.876b73f9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vlang.io
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	makedepends = gcc
 	optdepends = glfw-x11: Needed for graphics support
 	optdepends = freetype2: Needed for graphics support
 	optdepends = openssl: Needed for http support
