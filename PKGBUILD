@@ -2,7 +2,7 @@
 
 pkgname=layan-gtk-theme-git
 _reponame='Layan-gtk-theme'
-pkgver=0.0.0.2e8f999
+pkgver=0.0.0.a61c2ff
 pkgrel=1
 pkgdesc='An Flat Gtk+ theme based on Material Design'
 arch=("any")

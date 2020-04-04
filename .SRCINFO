@@ -1,6 +1,6 @@
 pkgbase = layan-gtk-theme-git
 	pkgdesc = An Flat Gtk+ theme based on Material Design
-	pkgver = 0.0.0.2e8f999
+	pkgver = 0.0.0.a61c2ff
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Layan-gtk-theme
 	arch = any
