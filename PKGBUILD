@@ -8,7 +8,7 @@ pkgdesc="Hauppauge WinTV-quadHD DVB firmware"
 arch=('any')
 url="https://www.linuxtv.org/wiki/index.php/Hauppauge_WinTV-quadHD_(DVB-T/T2/C)"
 license=('custom')
-source=("https://github.com/OpenELEC/dvb-firmware/raw/master/firmware/$_firmware")
+source=("http://www.hauppauge.com/linux/$_firmware")
 sha256sums=('8507536630d75a316d0719d6b95c04b90c36baa5b457ad457c9bacadafcef134')
 
 package() {
