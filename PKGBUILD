@@ -21,15 +21,19 @@ conflicts=('freeorion-git')
 source=("https://github.com/freeorion/freeorion/archive/v${pkgver}.tar.gz")
 md5sums=('66e11dfeb836ea04474a8539713737ee')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p build
-  cd "${srcdir}/${pkgname}-${pkgver}"/build
+  cd build
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
     ..
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"/build
   make
 }
 
