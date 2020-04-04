@@ -1,14 +1,14 @@
 pkgbase = acme.sh-git
 	pkgdesc = A pure Unix shell script implementing ACME client protocol
-	pkgver = 2.8.3.r123.gef15e55
+	pkgver = 2.8.5.r186.g5398bac
 	pkgrel = 1
-	url = https://github.com/Neilpang/acme.sh
+	url = https://github.com/acmesh-official/acme.sh
 	arch = any
 	license = GPL3
 	makedepends = git
 	provides = acme.sh
 	conflicts = acme.sh
-	source = acme.sh::git+https://github.com/Neilpang/acme.sh.git#branch=master
+	source = acme.sh::git+https://github.com/acmesh-official/acme.sh.git#branch=master
 	sha512sums = SKIP
 
 pkgname = acme.sh-git

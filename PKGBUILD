@@ -4,16 +4,16 @@
 _branch=master
 _pkgname=acme.sh
 pkgname=${_pkgname}-git
-pkgver=2.8.3.r123.gef15e55
+pkgver=2.8.5.r186.g5398bac
 pkgrel=1
 pkgdesc='A pure Unix shell script implementing ACME client protocol'
 arch=(any)
-url='https://github.com/Neilpang/acme.sh'
+url='https://github.com/acmesh-official/acme.sh'
 license=('GPL3')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${_pkgname}::git+https://github.com/Neilpang/acme.sh.git#branch=${_branch}")
+source=("${_pkgname}::git+https://github.com/acmesh-official/acme.sh.git#branch=${_branch}")
 sha512sums=('SKIP')
 
 
