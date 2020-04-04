@@ -1,6 +1,6 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=nanoinvaders.lv2-git
-pkgdesc="Play space invaders in an audio plugin"
+pkgdesc="Play space invaders in an audio plugin (alpha)"
 pkgver=r3.eb2fbab
 pkgrel=1
 epoch=
