@@ -1,10 +1,10 @@
 pkgbase = akamai-bin
 	pkgdesc = Manage and configure Akamai from the Command Line
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developer.akamai.com/cli
 	arch = x86_64
-	license = Apache2
+	license = Apache-2.0
 	provides = akamai
 	provides = akamai-cli
 	source = https://github.com/akamai/cli/releases/download/1.1.5/akamai-1.1.5-linuxamd64
