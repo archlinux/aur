@@ -1,0 +1,25 @@
+pkgbase = r-multcomp
+	pkgdesc = Simultaneous Inference in General Parametric Models
+	pkgver = 1.4.12
+	pkgrel = 1
+	url = https://cran.r-project.org/package=multcomp
+	arch = any
+	license = GPL2
+	depends = r
+	depends = r-mvtnorm>=1.0.10
+	depends = r-th.data>=1.0.2
+	depends = r-sandwich>=2.3.0
+	optdepends = r-lme4
+	optdepends = r-robustbase
+	optdepends = r-coin
+	optdepends = r-xtable
+	optdepends = r-lmtest
+	optdepends = r-coxme
+	optdepends = r-simcomp
+	optdepends = r-iswr
+	optdepends = r-tram
+	source = https://cran.r-project.org/src/contrib/multcomp_1.4-12.tar.gz
+	md5sums = 1c6f66cbcae685f8f97355eea30ad203
+
+pkgname = r-multcomp
+
