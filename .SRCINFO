@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt5-connectivity
 	pkgdesc = Provides access to Bluetooth hardware (mingw-w64)
-	pkgver = 5.14.1
+	pkgver = 5.14.2
 	pkgrel = 1
 	url = https://www.qt.io/
 	arch = any
@@ -18,10 +18,8 @@ pkgbase = mingw-w64-qt5-connectivity
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.qt.io/official_releases/qt/5.14/5.14.1/submodules/qtconnectivity-everywhere-src-5.14.1.tar.xz
-	source = 0001-Fix-case-of-setupapi.h-for-mingw-w64.patch
-	sha256sums = ef0cb1883c0e765cacf6c8b9422997b93fd861cf2289e56791615401eefa2d72
-	sha256sums = f78533cd673d15d81b8ab136c892d7e1b61569bb84b48b27345dfa8d6dc3123b
+	source = https://download.qt.io/official_releases/qt/5.14/5.14.2/submodules/qtconnectivity-everywhere-src-5.14.2.tar.xz
+	sha256sums = abe67b3e3a775e2a2e27c62a5391f37007ffbe72bce58b96116995616cfcbc28
 
 pkgname = mingw-w64-qt5-connectivity
 

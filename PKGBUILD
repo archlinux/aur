@@ -7,14 +7,12 @@
 # Do not edit it manually! See README.md in the repository's root directory
 # for more information.
 
-# All patches are managed at https://github.com/Martchus/qtconnectivity
-
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
 _qt_module=qtconnectivity
 pkgname=mingw-w64-qt5-connectivity
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Provides access to Bluetooth hardware (mingw-w64)"
@@ -25,10 +23,8 @@ options=('!strip' '!buildflags' 'staticlibs')
 groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
-source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Fix-case-of-setupapi.h-for-mingw-w64.patch')
-sha256sums=('ef0cb1883c0e765cacf6c8b9422997b93fd861cf2289e56791615401eefa2d72'
-            'f78533cd673d15d81b8ab136c892d7e1b61569bb84b48b27345dfa8d6dc3123b')
+source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+sha256sums=('abe67b3e3a775e2a2e27c62a5391f37007ffbe72bce58b96116995616cfcbc28')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -38,15 +34,6 @@ _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
   _configurations+=('CONFIG+=no_smart_library_merge CONFIG+=static')
 [[ $NO_SHARED_LIBS ]] || \
   _configurations+=('CONFIG+=actually_a_shared_build CONFIG+=shared')
-
-prepare() {
-  cd "${srcdir}/${_pkgfqn}"
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    patch -p1 -i "$patch"
-  done
-}
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
