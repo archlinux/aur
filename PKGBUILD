@@ -1,10 +1,7 @@
-# Maintainer: Fabrizio del Tin <fdt@euniversity.pub>
-# Contributor: Yan Burdinsky
-# Contributor: Ainola
-# Contributor: speps
-# Contributor: Bernardo Barros
-# Contributor: donarturo <arturwrona91@gmail.com>
-pkgname=muse
+# Maintainer: donarturo <arturwrona91@gmail.com>
+
+pkgname=muse-fresh
+_pkgname=muse
 pkgver=3.1
 pkgrel=1
 pkgdesc="A MIDI/Audio sequencer with recording and editing capabilities"
@@ -24,9 +21,9 @@ optdepends=(
     'dssi-vst: dssi-vst plugins support'
     'ladish: LASH session support'
 )
-install="${pkgname}.install"
+install="${_pkgname}.install"
 provides=('muse')
-conflicts=('muse')
+conflicts=('muse''muse-git')
 source=("https://github.com/muse-sequencer/muse/releases/download/muse_3_1_0/muse-${pkgver}.tar.gz")
 sha256sums=('b2d5c57ea30607cd9f7bea8b5d6488c54de732a1565db8e88f5536c1e478e875')
 #md5sums=('45557bf2f0932daedd057678b3faf913')
@@ -66,11 +63,11 @@ package() {
 
   # .. and oomidi grepmidi bin
   cd "$pkgdir/usr/bin"
-  mv grepmidi "$pkgname-grepmidi"
+  mv grepmidi "$_pkgname-grepmidi"
 
   # grepmidi man
   cd "$pkgdir/usr/share/man/man1"
-  mv grepmidi.1 "$pkgname-grepmidi.1"
+  mv grepmidi.1 "$_pkgname-grepmidi.1"
 
   # python2 Fixes
 #  sed -i "s/\#\!.*python/&2/" \
