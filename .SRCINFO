@@ -1,0 +1,11 @@
+pkgbase = home-assistant-midnight-theme-git
+	pkgdesc = Midnight theme for Home Assistant
+	pkgver = r15.6681367
+	pkgrel = 1
+	url = https://github.com/home-assistant-community-themes/midnight
+	arch = any
+	source = git+https://github.com/home-assistant-community-themes/midnight.git
+	sha256sums = SKIP
+
+pkgname = home-assistant-midnight-theme-git
+
