@@ -3,17 +3,14 @@
 # Contributor: Nathan Owe <ndowens04 at gmail>
 # Contributor: Chris Allison <daemon@cca.me.uk>
 
-# Current source for PKGBUILD can be found at
-# https://github.com/cacack/pkgbuilds/tree/master/ccextractor
-
 pkgname=ccextractor
 pkgver=0.88
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast closed captions extractor for MPEG files."
 arch=('i686' 'x86_64')
-url="http://www.ccextractor.org"
+url="https://www.ccextractor.org"
 license=('GPL')
-depends=('gcc-libs' 'tesseract')
+depends=('gcc-libs' 'tesseract' 'leptonica' 'ffmpeg')
 source=(
    https://github.com/CCExtractor/ccextractor/archive/v$pkgver.tar.gz
 )
@@ -21,7 +18,7 @@ sha512sums=('bb9442905f3c5d095b9b34eb318dc445a0ba484c22c4f061071cc2a1159ec9304b8
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/linux"
-  ./build
+  ./build_hardsubx
 }
 
 package() {
