@@ -1,15 +1,23 @@
 pkgbase = mbrola-voices-jp2
 	pkgdesc = A Japanese female voice for the MBROLA synthesizer
-	pkgver = 270202
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-jp
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/jp2/jp2-270202.zip
-	md5sums = acc00ddde43ece3286c413a08c9b390c
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/jp2/jp2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/jp2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/jp2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/jp2/test/kon1.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/jp2/test/oha1.pho
+	sha256sums = c6ee2980507c2e7b6bf6c9b5f401e4bde5b4e30a611f82360934279089278df1
+	sha256sums = 9cbe97381a349870193a9d7115678b15d473c2dd23c0d5c602b46e868c4932e1
+	sha256sums = aa03f0889c18cf247f1dbeb38136979692a98dcc4312d9dfdf62b6cd2dcdca7c
+	sha256sums = d70d975780edd9c47679daf24c24925d32aee4e8e9d6d6391a66f03b9547dd29
+	sha256sums = 83e78a159fa7377f884cb4d92b0db7e5aae2d0d64879b7794ce98e82c983034d
 
 pkgname = mbrola-voices-jp2
 
