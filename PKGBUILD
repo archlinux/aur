@@ -1,16 +1,19 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 
 pkgname=pulumi
-pkgver=1.13.0
-pkgrel=3
+pkgver=1.14.0
+pkgrel=1
 pkgdesc='Modern Infrastructure as Code'
 arch=('x86_64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL')
 depends=('glibc')
-makedepends=('go-pie')
+makedepends=(
+  'git'
+  'go-pie'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('46c767d7ae155fe3c67024d0a5defec800bdf9b98d5e9ba2cc5ff6859b40deac')
+sha256sums=('37ef213c8b273864a4331a3f5f6bcfa5062d34894614e27869a8e79496f38f9e')
 
 _plugins=(
   "sdk/nodejs/cmd/pulumi-language-nodejs"
@@ -20,37 +23,46 @@ _plugins=(
 )
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  go build \
+  # Build the `pulumi` executable
+  pushd "pkg" > /dev/null && go build \
     -trimpath \
-    -ldflags "-X github.com/pulumi/pulumi/pkg/version.Version=$pkgver -extldflags $LDFLAGS" \
-    -o $pkgname .
+    -ldflags "-X github.com/pulumi/pulumi/pkg/version.Version=${pkgver} -extldflags ${LDFLAGS}" \
+    -o "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" \
+    "./cmd/${pkgname}" \
+  && popd > /dev/null
 
-  for plugin in ${_plugins[*]}; do
-    bin=${plugin##*/}
-    go build \
+  # Build the plugins
+  for plugin in ${_plugins[@]}; do
+    plugin_name="${plugin##*/}"
+
+    pushd "sdk" > /dev/null && go build \
       -trimpath \
       -ldflags "-X github.com/pulumi/pulumi/pkg/version.Version=$pkgver -extldflags $LDFLAGS" \
-      -o $bin ./$plugin
+      -o "${srcdir}/${pkgname}-${pkgver}/bin/${plugin_name}" \
+      "./${plugin##sdk/}" \
+    && popd > /dev/null
   done
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
-  for plugin in ${_plugins[*]}; do
-    bin=${plugin##*/}
-    install -Dm755 $bin "$pkgdir"/usr/bin/$bin
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Install all executables
+  for f in ./bin/*; do
+    install -D -m 755 "$f" "${pkgdir}/usr/bin/$(basename $f)"
   done
 
   # Generate Bash completion
-  install -d -m 755 "$pkgdir/etc/bash_completion.d"
-  install -m644 <("$pkgdir/usr/bin/$pkgname" gen-completion bash) "$pkgdir/etc/bash_completion.d/$pkgname"
+  install -D -m 644 \
+    <("${pkgdir}/usr/bin/${pkgname}" gen-completion bash) \
+    "${pkgdir}/etc/bash_completion.d/${pkgname}"
 
   # Generate ZSH completion
-  install -d -m 755 "$pkgdir/usr/share/zsh/site-functions"
-  install -m644 <("$pkgdir/usr/bin/$pkgname" gen-completion zsh) "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
+  install -D -m 644 \
+    <("${pkgdir}/usr/bin/${pkgname}" gen-completion zsh) \
+    "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
