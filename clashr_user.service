@@ -1,0 +1,11 @@
+[Unit]
+Description=A rule based proxy in Go with SSR protocol support.
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-abort
+ExecStart=/usr/bin/clashr
+
+[Install]
+WantedBy=default.target

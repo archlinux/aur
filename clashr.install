@@ -1,0 +1,44 @@
+# Thanks aur#cow-proxy
+post_install() {
+    post_upgrade
+}
+
+post_upgrade() {
+
+    cat << EOF
+  Configuration document can be found at : 
+  
+  https://github.com/Dreamacro/clash
+  https://github.com/frainzy1477/clashrdev
+
+  Running clashr system instance for user account:
+
+        To reload system systemd modules, execute
+
+                systemctl daemon-reload
+
+        To start clashr, execute:
+
+                systemctl start clashr@user
+
+        To autostart clashr on system start, execute
+
+                systemctl enable clashr@user
+
+  Running clashr user instance (will used current user account):
+
+        To reload user systemd modules, execute
+
+                systemctl --user daemon-reload
+
+        To start clashr manually, execute:
+
+                systemctl --user start clashr
+
+        To autostart clashr on user login, execute
+
+                systemctl --user enable clashr
+
+EOF
+
+}
