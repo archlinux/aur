@@ -3,8 +3,9 @@
  
 pkgname=openttd-btpro
 _pkgname=openttd
+btpro_release=C_19303
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An engine for running Transport Tycoon Deluxe. BTPro patches applied.'
 arch=('x86_64')
 url='http://openttd.btpro.nl/index.php/forum/30-btpro-openttd-client-talk/'
@@ -14,17 +15,17 @@ optdepends=('openttd-opengfx: free graphics'
             'openttd-openmsx: free musicset'
             'openttd-opensfx: free soundset')
 source=("https://proxy.binaries.openttd.org/openttd-releases/${pkgver}/${_pkgname}-${pkgver}-source.tar.xz"
-        "http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_${pkgver}_A_19301.diff"
+        "http://openttd.btpro.nl/OpenTTD_versions/BTPro_Client_${pkgver}_${btpro_release}.diff"
         "http://openttd.btpro.nl/OpenTTD_versions/innerhighlight.grf")
 sha256sums=(
             '1988e17f5b6f4b8f423c849ef1c579c21f678722ae4440f87b27a5fea6385846'
-            'cdf0348c10ecbaf5bc22fe85cf996b2f73804cec1319b5042a1986edfdfe2e71'
+            'e370ee6b73167d33d2266e946eeb9102c5efea6599ee4782efd9308c529e4b82'
             '1b181a27fbb468c7301291fc61384087ce7b1592cb0023be00f04736eec6e79b')
 conflicts=('openttd')
  
 prepare() {
   cd ${_pkgname}-${pkgver} 
-  patch -p1 < "../BTPro_Client_${pkgver}_A_19301.diff" || true
+  patch -p1 < "../BTPro_Client_${pkgver}_${btpro_release}.diff" || true
 }
  
 build() {
@@ -42,7 +43,7 @@ build() {
     --doc-dir=share/doc/${_pkgname} \
     --menu-name="OpenTTD"
  
-  make -j5
+  make
 }
  
 package() {
