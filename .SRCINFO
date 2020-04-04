@@ -1,0 +1,22 @@
+pkgbase = gonic
+	pkgdesc = A lightweight music streaming server which implements the Subsonic API
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/sentriz/gonic
+	arch = x86_64
+	license = GPL3
+	makedepends = go
+	depends = gcc-libs
+	depends = sqlite
+	depends = taglib
+	optdepends = ffmpeg: on-the-fly audio transcoding and caching
+	backup = usr/lib/systemd/system/gonic.service
+	source = gonic-0.8.4.tar.gz::https://github.com/sentriz/gonic/archive/v0.8.4.tar.gz
+	source = gonic.service
+	source = gonic.sysusers
+	md5sums = 101f627184c59a01162ccd02a7628e90
+	md5sums = 4b9fae63f961fe8dc230a1e415e50d67
+	md5sums = 6ca6715be2cdd424846f7b37b98905f6
+
+pkgname = gonic
+

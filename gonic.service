@@ -1,0 +1,22 @@
+[Unit]
+Description=Gonic: Subsonic server API implementation
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=gonic
+Group=gonic
+
+Type=simple
+ExecStart=/usr/bin/gonic
+
+Environment=GONIC_MUSIC_PATH=/home/
+Environment=GONIC_DB_PATH=/var/lib/gonic/gonic.db       #optional
+#Environment=GONIC_CACHE_PATH=/tmp/gonic_cache          #optional
+#Environment=GONIC_LISTEN_ADDR=0.0.0.0:4747             #optional
+#Environment=GONIC_PROXY_PREFIX=                        #optional
+#Environment=GONIC_SCAN_INTERVAL=                       #optional
+
+[Install]
+WantedBy=multi-user.target
+
