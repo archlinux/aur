@@ -1,7 +1,7 @@
 pkgbase = git-identity-git
 	pkgdesc = Manage your identity in Git
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madx/git-identity
 	arch = any
 	license = custom:WTFPL

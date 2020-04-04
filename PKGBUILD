@@ -2,7 +2,7 @@
 _pkgname=git-identity
 pkgname=$_pkgname-git
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your identity in Git"
 arch=('any')
 url="https://github.com/madx/git-identity"
@@ -28,6 +28,6 @@ package() {
 	# License
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	# Completions
-	install -Dm644 git-identity.bash-completion "$pkgdir/usr/share/bash-completion/git-identity"
+	install -Dm644 git-identity.bash-completion "$pkgdir$(pkg-config --variable=completionsdir bash-completion)/git-identity"
 	install -Dm644 git-identity.zsh-completion "$pkgdir/usr/share/zsh/site-functions/_git-identity"
 }
