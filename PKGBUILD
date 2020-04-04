@@ -2,7 +2,7 @@
 # Contributor: Sergio Schneider <spsf1964@gmail.com>
 
 pkgname=session-desktop-appimage
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${_bin}::https://github.com/loki-project/session-desktop/releases/downl
         'session-desktop.desktop'
         'session-desktop.png')
 
-sha256sums=('55c7dcccafda186e5cae681d3256ead38aba58885896a94a4c26e96a334061c6'
+sha256sums=('43abf0d0aedf200c14a853070965142d3fdbe39b26e4186e1814418612f9f8b5'
             '07f82f17054a1c5c58e6b776bbd90ac72ff98edb700fa994482e4e976882d9a0'
             '8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c')
 
