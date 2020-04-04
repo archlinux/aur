@@ -2,7 +2,7 @@
 # Contributor: <nontlikeuname at tuta dot io>
 
 pkgname=mingw-w64-atk
-pkgver=2.34.1
+pkgver=2.36.0
 pkgrel=1
 pkgdesc="Interface definitions of accessibility infrastructure (mingw-w64)"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'python')
 depends=('mingw-w64-crt' 'mingw-w64-glib2')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("http://ftp.gnome.org/pub/gnome/sources/atk/${pkgver%.*}/atk-${pkgver}.tar.xz")
-sha256sums=('d4f0e3b3d21265fcf2bc371e117da51c42ede1a71f6db1c834e6976bb20997cb')
+sha256sums=('fb76247e369402be23f1f5c65d38a9639c1164d934e40f6a9cf3c9e96b652788')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
