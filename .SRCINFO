@@ -1,10 +1,12 @@
 pkgbase = firefox-kde-opensuse-rpm
 	pkgdesc = Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS
 	pkgver = 74.0.1_824.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://build.opensuse.org/package/show/mozilla:Factory/MozillaFirefox
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MPL
 	license = GPL
 	license = LGPL
@@ -29,8 +31,12 @@ pkgbase = firefox-kde-opensuse-rpm
 	provides = firefox=74.0.1_824.1
 	conflicts = firefox
 	conflicts = firefox-kde-opensuse
-	source = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-74.0.1-824.1.x86_64.rpm
-	sha512sums = c9e5b0bed8645622173e0fe4933c0a1d69246a98e7350c401dfbf2683dcbcf098f9dae6eb0d5f70fd8a33c4dd6b17e5202ea91290f3bef8112f77a36de862845
+	source_x86_64 = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-74.0.1-824.1.x86_64.rpm
+	sha512sums_x86_64 = c9e5b0bed8645622173e0fe4933c0a1d69246a98e7350c401dfbf2683dcbcf098f9dae6eb0d5f70fd8a33c4dd6b17e5202ea91290f3bef8112f77a36de862845
+	source_i686 = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/i686/MozillaFirefox-74.0.1-824.1.i686.rpm
+	sha512sums_i686 = 37f844b9bf1ba3ea63c659bbffc247559cfce1024a549343d5a98482017d1a087d7f1fa839694dde6e37af306364b6ff60f06d510e79eac774fdba9e58cae53d
+	source_aarch64 = https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory_ARM/aarch64/MozillaFirefox-74.0.1-824.1.aarch64.rpm
+	sha512sums_aarch64 = 01d2f1e2e0d2dcd0ed9d7f17513e9ef300fa72ae2dda962950f212ea120e055678625968014722d150b8cf89fe5339a28a24b3cd4b5509b74988954251202c1f
 
 pkgname = firefox-kde-opensuse-rpm
 
