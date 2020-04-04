@@ -5,7 +5,7 @@ pkgbase = r-cellranger
 	url = https://cran.r-project.org/package=cellranger
 	arch = any
 	license = MIT
-	depends = r
+	depends = r>=3.0.0
 	depends = r-rematch
 	depends = r-tibble
 	optdepends = r-covr
