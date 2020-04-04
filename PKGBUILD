@@ -27,7 +27,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '7eeac274438a62795cd2653607d6c92d7031e80f63ddac79673155639f7e8181'
+            '16c7272d0062118dcfe89f4ce2f9b9e68a2a3a6fb13f326588fc1225582cc9e4'
             '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2'
             'a948ee238ee89c609df9a0700eac9ac4f64bd9523c0f9ebb13263b3c979d2da1')
 
