@@ -2,7 +2,7 @@
 
 pkgname=hero
 pkgver=0.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A handy, fast and powerful go template engine"
 arch=('x86_64')
 url='https://shiyanhui.github.io/hero'
@@ -11,12 +11,18 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/shiyanhui/hero/archive/v${pkgver}.tar.gz")
 md5sums=('de40e3da62f50e0948194823e4910fb1')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   go build -v -o "${srcdir}/hero-bin"
 }
 
