@@ -1,7 +1,7 @@
 pkgbase = pamac
 	pkgdesc = A Package Manager based on libalpm with AUR and Appstream support
-	pkgver = 9.4.0
-	pkgrel = 4
+	pkgver = 9.4.1
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = x86_64
 	license = GPL3
@@ -26,14 +26,14 @@ pkgbase = pamac
 	depends = archlinux-appstream-data
 	depends = git
 	options = !emptydirs
-	source = pamac-9.4.0-4.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/8b40324c261471ed3b32eb8f3787fc6e312a002c/pamac-common-8b40324c261471ed3b32eb8f3787fc6e312a002c.tar.gz
-	sha256sums = e5baca4affbe50f048ab76fe61b9be20c69be1514b1184e2a0f72392364430bc
+	source = pamac-9.4.1-1.tar.gz::https://gitlab.manjaro.org/applications/pamac/-/archive/641dd802e2b483f6d42d0aa194944cad0c3bd20f/pamac-common-641dd802e2b483f6d42d0aa194944cad0c3bd20f.tar.gz
+	sha256sums = 098f6134414bbfd9afcdc9d3b31d40e1c38dca653cf4641f481605346ce269ee
 
 pkgname = pamac-common
 	install = pamac-common.install
 	optdepends = pamac-snap-plugin
 	optdepends = pamac-flatpak-plugin
-	provides = pamac-common=9.4.0-4
+	provides = pamac-common=9.4.1-1
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-common-dev
@@ -41,7 +41,7 @@ pkgname = pamac-common
 
 pkgname = pamac-cli-src
 	depends = pamac-common
-	provides = pamac-cli=9.4.0-4
+	provides = pamac-cli=9.4.1-1
 	conflicts = pamac<=7.3.4-2
 	conflicts = pamac-aur
 	conflicts = pamac-cli-dev
@@ -50,8 +50,8 @@ pkgname = pamac-gtk
 	install = pamac-gtk.install
 	depends = pamac-cli-src
 	depends = gtk3>=3.22
-	provides = pamac=9.4.0-4
-	provides = pamac-gtk=9.4.0-4
+	provides = pamac=9.4.1-1
+	provides = pamac-gtk=9.4.1-1
 	conflicts = pamac
 	conflicts = pamac-aur
 	conflicts = pamac-gtk-dev
@@ -61,6 +61,6 @@ pkgname = pamac-tray-appindicator-src
 	pkgdesc = Tray icon for better integration of pamac-gtk in KDE
 	depends = pamac-gtk
 	depends = libappindicator-gtk3
-	provides = pamac-tray-appindicator-src=9.4.0-4
+	provides = pamac-tray-appindicator-src=9.4.1-1
 	conflicts = pamac-tray-appindicator-dev
 
