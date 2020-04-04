@@ -20,7 +20,7 @@ pkgbase = lld7
 	sha256sums = SKIP
 	sha256sums = 1bcc9b285074ded87b88faaedddb88e6b5d6c331dfcfb57d7f3393dd622b3764
 	sha256sums = SKIP
-	sha256sums = 5c5efddd872ee5615eb7d28b8f7ae0ea12ce904352f11c40362dcb6ed3f65410
+	sha256sums = 7f7cca66a16c5a4aca132bfa1d86a7a2ff33612ec47d3422dc91ad4cc1810646
 
 pkgname = lld7
 	pkgdesc = Linker from the LLVM project.
