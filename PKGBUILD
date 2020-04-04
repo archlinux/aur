@@ -1,31 +1,25 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=airvpn-bin
-pkgver=2.16.3
+pkgver=2.18.9
 pkgrel=1
-pkgdesc='AirVPN client "Eddie" based on OpenVPN, stable version.'
-arch=('i686' 'x86_64')
-url=https://airvpn.org/linux/
+pkgdesc='AirVPN client "Eddie" based on OpenVPN, beta version.'
+arch=('x86_64')
+url=https://eddie.website
 license=(GPL3)
-depends=(sudo mono openvpn curl libnotify)
+depends=(mono openvpn sudo desktop-file-utils libnotify libappindicator-gtk2)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH' 'libappindicator-gtk2: Tray icon w/GTK 2' 'libappindicator-gtk3: Tray icon w/GTK 3')
-provides=('airvpn')
-conflicts=('airvpn' 'airvpn-beta-bin')
+makedepends=('cmake')
+provides=('airvpn' 'eddie-ui')
+conflicts=('airvpn' 'airvpn-bin' 'airvpn-git' 'eddie-ui-git')
 install=airvpn.install
-source_i686=("eddie-ui_${pkgver}_linux_x86_debian.deb::https://eddie.website/download/?platform=linux&arch=x86&ui=ui&format=debian.deb&version=${pkgver}")
-source_x86_64=("eddie-ui_${pkgver}_linux_x64_debian.deb::https://eddie.website/download/?platform=linux&arch=x64&ui=ui&format=debian.deb&version=${pkgver}")
-md5sums_i686=('e7034ab80cd7e8d33c2976e042d037ff')
-md5sums_x86_64=('60e251845341843641d5682824ab23b9')
-sha256sums_i686=('693cc9493bf44426b9bae8acb85f8f76728d0199ccdcce45d678221c90cb3de7')
-sha256sums_x86_64=('23107d171ae00ab2aaa022c1c3a8f4a0ec8b140271cfc7036865c60e25e94ab8')
+source_x86_64=("eddie-ui_${pkgver}_linux_x64_arch.tar.xz"::"https://airvpn.org/mirrors/eddie.website/download/?platform=linux&arch=x64&ui=ui&format=arch.tar.xz&version=${pkgver}")
+sha256sums_x86_64=('738026285e94dcdbd24cd0ddb240937b03ec195d1fe5e0b15635b18a1da3e5e1')
+sha512sums_x86_64=('17b7803873299986479b6546042a419ebf7596cd574d86a43dfa45d146f6a3357ae2248abee9917993785a3b3873c188ce82fd5eded9d257cbd7afd96658728e')
+
 
 package() {
-  cd "$srcdir"
-  msg2 "Extracting the data.tar.gz..."
-  bsdtar -xf "$srcdir/data.tar.gz"
-
-  msg2 "Moving stuff in place..."
-  for _file in usr/{bin/*,lib/eddie-ui/*,share/{applications/*,doc/eddie-ui/*,eddie-ui/*,man/man8/*,pixmaps/*,polkit-1/actions/*}}; do
+  for _file in usr/{bin/*,lib/eddie-ui/*,share/{applications/*,doc/eddie-ui/*,eddie-ui/{*.pem,*.png,*.json,lang/*},pixmaps/*,polkit-1/actions/*}}; do
     _octal=$(stat -c "%a" "$_file")
     install -Dm"${_octal}" "$_file" "${pkgdir}/$_file"
   done
