@@ -3,7 +3,7 @@
 pkgname=apicompat-git
 _pkgname=apicompat
 pkgver=r125.5f916b1
-pkgrel=1
+pkgrel=2
 pkgdesc="Checks recent changes to a Go project for backwards incompatible changes"
 arch=('x86_64')
 url='https://abicheck.bradleyf.id.au'
@@ -22,13 +22,18 @@ pkgver() {
   
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-  cd cmd/apicompat
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}/cmd/apicompat"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   go build -v -o "${srcdir}/${_pkgname}-bin"
 }
 
