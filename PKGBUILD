@@ -2,7 +2,7 @@
 # Maintainer: Robert Tari <robert at tari dot in>
 
 pkgname="caja-rename"
-pkgver=20.1.25.41
+pkgver="20.1.25.42"
 pkgrel=1
 pkgdesc="Batch renaming extension for Caja"
 arch=("any")
