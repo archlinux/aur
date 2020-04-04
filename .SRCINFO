@@ -1,5 +1,5 @@
 pkgbase = chromium-ozone
-	pkgdesc = Chromium built with patches for wayland support via Ozone (beta channel)
+	pkgdesc = Chromium built with patches for wayland support via Ozone
 	pkgver = 80.0.3987.149
 	pkgrel = 1
 	url = https://www.chromium.org/Home
