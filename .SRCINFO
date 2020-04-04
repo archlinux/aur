@@ -1,7 +1,7 @@
 pkgbase = enginesound-bin
 	pkgdesc = Procedural engine sound generator controlled via GUI or CLI
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/DasEtwas/enginesound/
 	arch = x86_64
 	license = MIT
