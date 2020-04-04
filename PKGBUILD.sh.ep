@@ -5,7 +5,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 % end
 \
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)"
