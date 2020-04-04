@@ -14,7 +14,7 @@
 
 _qt_module=qtscript
 pkgname=mingw-w64-qt5-script
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for making Qt applications scriptable. Provided for Qt 4.x compatibility (mingw-w64)"
@@ -28,7 +28,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d8071e665935f7f6733f5ef700054a0cbbf8b569e7900439b89d3301f70adadd')
+sha256sums=('e9fd487ccb3cbf00e86b0b803aa79e9f6bbe7a337b8e97d069e040c3e0789bfe')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
