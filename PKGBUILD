@@ -14,7 +14,7 @@ _qt_module=qtvirtualkeyboard
 pkgname=mingw-w64-qt5-virtualkeyboard
 #_fix_deps_of_static_3rdparty_libs='s:\(-L\/.*\/lib.*\.a\) \(\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\2\3\4 \1 \5:g'        # -L is used (pre Qt 5.13)
 _fix_deps_of_static_3rdparty_libs='s:\(LIBS *= *\)\(.*\)\(\/build\/.*\/libqt\)\(openwnn\|pinyin\|tcime\)\(d*\.a\)\(.*\):\1 \3\4\5 \2 \6:g' # absolute paths are used (Qt 5.13 and above)
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Virtual keyboard framework (translations, mingw-w64)"
@@ -26,7 +26,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('277baaf6043328d06585c7a9046461308aa7602b21f531bcda12e6df5bce5295')
+sha256sums=('364f3338563e617e7c964a37170b415b546c5f82965e781271f9dada3e3868d7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
