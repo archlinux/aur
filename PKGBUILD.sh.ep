@@ -4,7 +4,7 @@
 # Contributor: ant32 <antreimer@gmail.com>
 % end
 \
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
