@@ -2,7 +2,7 @@
 
 pkgname=music-theory
 pkgver=0.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Go models of Note, Scale, Chord and Key"
 arch=('x86_64')
 url='https://github.com/go-music-theory/music-theory'
@@ -11,12 +11,18 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('7905c967dec9387bae39ef3b7784ea65')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   go build -v -o "../music-theory-bin"
 }
 

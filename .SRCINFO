@@ -1,7 +1,7 @@
 pkgbase = music-theory
 	pkgdesc = Go models of Note, Scale, Chord and Key
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/go-music-theory/music-theory
 	arch = x86_64
 	license = GPL-3.0
