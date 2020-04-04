@@ -1,0 +1,17 @@
+pkgbase = cpeditor
+	pkgdesc = IDE desgined for Competitive Programming
+	pkgver = 6.2.2
+	pkgrel = 1
+	url = https://github.com/cpeditor/cpeditor
+	arch = x86_64
+	license = GLP3
+	makedepends = cmake
+	makedepends = git
+	makedepends = gcc
+	depends = qt5-base
+	conflicts = cpeditor-git
+	source = https://github.com/cpeditor/cpeditor/releases/download/6.2.2/cpeditor-full-source-6.2.2.tar.gz
+	md5sums = SKIP
+
+pkgname = cpeditor
+
