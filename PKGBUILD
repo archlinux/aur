@@ -12,7 +12,7 @@ pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://slepc.upv.es"
 license=('BSD')
-depends=('petsc>=${pkgver}')
+depends=("petsc>=${pkgver}")
 makedepends=('python')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
