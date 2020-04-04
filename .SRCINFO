@@ -1,7 +1,7 @@
 pkgbase = qubes-gui-agent-linux
 	pkgdesc = The Qubes GUI Agent for AppVMs
 	pkgver = 4.0.27
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/QubesOS/qubes-gui-agent-linux
 	arch = x86_64
 	license = GPL
@@ -39,7 +39,7 @@ pkgname = qubes-vm-gui
 	depends = qubes-libvchan-xen
 	depends = python-xcffib
 	depends = xorg-server>=1.20.4
-	depends = xorg-server<1.20.8
+	depends = xorg-server<=1.20.8
 	depends = qubes-vm-core>=3.0.14
 
 pkgname = qubes-vm-pulseaudio
