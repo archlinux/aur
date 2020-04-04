@@ -25,7 +25,7 @@ source=("https://ftp.sendmail.org/${pkgname}.${pkgver}.tar.gz"
         'sendmail-8.15.2-openssl-1.1.0-fix.patch'
         'sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch'
         'sendmail-8.15.2-gethostbyname2.patch'
-        'sendmail-8.16.0.29-fix-covscan-issues.patch'
+        'sendmail-8.15.2-fix-covscan-issues.patch'
         'sendmail.conf'
         'sasl2.conf'
         'sendmail.sysusers'
@@ -40,7 +40,7 @@ sha256sums=('24f94b5fd76705f15897a78932a5f2439a32b1a2fdc35769bb1a5f5d9b4db439'
             '9991dd85428778cec0c2030bf49e6ddf6d3db6026c651f858d72891973537b0e'
             '746d8ae8dea54cb2599c02181c2ea28ab15b26ba5e1e3b0f9cfe907a0e7a1d22'
             '656c76d42281afbb43fa628e03c4d725e94e6f34a16802427d3314e504086033'
-            'e3b81aa029249ebaeec96120849a38e98fe952c005ecc02761d478f1aa167131'
+            '11e9dfe0881f9b9077cd538faf8eeb84fdbfe8d0b190582e753936f6548558dd'
             '39730f2be66bb1f1e6bc7fff61911db632ecf4b891d348df525abe2020274580'
             '9b4d2d141191f6c9a18538f7acf65243cceb26359f88b64c92c1c4e8407398f0'
             '95531a87d42e30742ca71f7d7197403eb9d703a407a50c9fda1f909ed21e1010'
@@ -56,7 +56,7 @@ prepare() {
     patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-fix.patch
     patch -p1 < "${srcdir}"/sendmail-8.15.2-openssl-1.1.0-ecdhe-fix.patch
     patch -p1 < "${srcdir}"/sendmail-8.15.2-gethostbyname2.patch
-    patch -p1 < "${srcdir}"/sendmail-8.16.0.29-fix-covscan-issues.patch
+    patch -p1 < "${srcdir}"/sendmail-8.15.2-fix-covscan-issues.patch
     sed -i -e 's/CFGRP=bin/CFGRP=root/g' cf/cf/Makefile
     install -m644 -t devtools/Site "${srcdir}"/site.config.m4
 }

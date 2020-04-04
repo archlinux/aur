@@ -27,7 +27,7 @@ index 87c353c..c99d4e5 100644
  		sm_free(argtable);
  	return sm_error(fp) ? SM_IO_EOF : ret;
 diff --git a/sendmail/milter.c b/sendmail/milter.c
-index 462efd2..af6dc66 100644
+index 9b3667d..190bf9f 100644
 --- a/sendmail/milter.c
 +++ b/sendmail/milter.c
 @@ -2441,8 +2441,7 @@ milter_negotiate(m, e, milters)
@@ -117,7 +117,7 @@ index 462efd2..af6dc66 100644
  }
  
 diff --git a/sendmail/queue.c b/sendmail/queue.c
-index 503f296..c9153c8 100644
+index a323301..d61f626 100644
 --- a/sendmail/queue.c
 +++ b/sendmail/queue.c
 @@ -8433,6 +8433,7 @@ split_by_recipient(e)
