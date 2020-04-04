@@ -7,7 +7,7 @@
 
 pkgname=('scipoptsuite')
 pkgver=6.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='Toolbox for generating and solving optimization problems'
 arch=('x86_64')
 url='https://scip.zib.de'
@@ -24,10 +24,14 @@ provides=('scip=6.0.2' 'soplex=4.0.2' 'zimpl=3.3.8')
 source=("${url}/download/release/${pkgname}-${pkgver}.tgz")
 md5sums=('6b2b6cacc43ba6776cc5018edabb0cc4')
 
-build() {
+prepare() {
   mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
   cd "${srcdir}/${pkgname}-${pkgver}/build"
   cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr ..
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   ninja
 }
 
