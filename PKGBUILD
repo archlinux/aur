@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='A distributed, highly available, datacenter-aware scheduler'
 arch=('x86_64')
 url="https://nomadproject.io/"
-license=('MPL2')
+license=('MPL-2.0')
 optdepends=('docker: enables docker driver'
             'java-runtime: enables java driver'
             'qemu-headless: enables qemu driver'
