@@ -7,7 +7,7 @@ pkgbase=qubes-gui-agent-linux
 pkgname=(qubes-vm-gui qubes-vm-pulseaudio)
 _gitname=${pkgname%-git*}
 pkgver=4.0.27
-pkgrel=3
+pkgrel=4
 pkgdesc="The Qubes GUI Agent for AppVMs"
 arch=("x86_64")
 url="https://github.com/QubesOS/qubes-gui-agent-linux"
@@ -52,8 +52,8 @@ package_qubes-vm-gui() {
            'zenity'
            'qubes-libvchan-xen'
            'python-xcffib'
-           'xorg-server>=1.20.4'
-           'xorg-server<=1.20.8'
+           'xorg-server>=1.20'
+           'xorg-server<=1.21'
            'qubes-vm-core>=3.0.14'
   )
   install=PKGBUILD.install
