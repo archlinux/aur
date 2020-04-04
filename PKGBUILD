@@ -2,7 +2,7 @@
 
 pkgname=python-ray
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and simple framework for building and running distributed
 applications.'
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
             'python-scipy: for ray[rllib] module'
             'python-msgpack: for ray[streaming] module'
            )
-makedepends=(python python-setuptools python-wheel cython bazel)
+makedepends=(python python-setuptools python-wheel python-pip cython bazel)
 _pkgname=ray
 source=("${_pkgname}-${pkgver}::https://github.com/ray-project/ray/archive/${_pkgname}-$pkgver.tar.gz")
 sha256sums=('a47d636200022f0e59defa9e9d57174a649d973a73252c354af404d7256ca203')
