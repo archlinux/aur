@@ -12,10 +12,12 @@ license=('GPL3')
 backup=("usr/lib/systemd/system/$pkgname.service")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkgver.tar.gz"
         "$pkgname.service"
-        "$pkgname.sysusers")
+        "$pkgname.sysusers"
+        "$pkgname.tmpfiles")
 md5sums=('101f627184c59a01162ccd02a7628e90'
-         '4b9fae63f961fe8dc230a1e415e50d67'
-         '6ca6715be2cdd424846f7b37b98905f6')
+         '058884ab488b0c0f071fc25b2ae9f049'
+         '6ca6715be2cdd424846f7b37b98905f6'
+         '487fe9a172e33d86514cf3dbb3b629b8')
 
 
 build() {
@@ -29,6 +31,7 @@ build() {
 package() {
 	install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm755 ${pkgname} "$pkgdir/usr/bin/${pkgname}"
