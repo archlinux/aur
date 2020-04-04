@@ -6,19 +6,17 @@
 # Contributor: Hawdaa
 
 pkgname=slepc
-pkgver=3.12.2
-pkgrel=3
+pkgver=3.13.0
+pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
 url="http://slepc.upv.es"
 license=('BSD')
-depends=('petsc>=3.12' 'petsc<3.13')
+depends=('petsc>=${pkgver}')
 makedepends=('python')
 install=slepc.install
 source=(http://slepc.upv.es/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-sha256sums=('a586ce572a928ed87f04961850992a9b8e741677397cbaa3fb028323eddf4598')
-
-export MAKEFLAGS="-j1"
+sha256sums=('f1f3c2d13a1a6914e7bf4746d38761e107ea866f50927b639e4ad5918dd1e53b')
 
 
 build() {
@@ -33,7 +31,7 @@ build() {
 	unset PETSC_ARCH
 	export SLEPC_DIR=${_build_dir}
 
-	python ./configure --prefix=${pkgdir}${_install_dir}
+	python ./configure --prefix=${pkgdir}${_install_dir} --with-clean
 	make
 }
 
