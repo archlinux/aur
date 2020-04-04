@@ -2,7 +2,7 @@
 # Contributor: portaloffreedom
 
 _cranname=gdtools
-_cranver=0.2.1
+_cranver=0.2.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=(r 'r-rcpp>=0.12.12' 'r-systemfonts>=0.1.1' cairo freetype2)
 makedepends=(gcc)
 optdepends=(r-htmltools r-testthat r-fontquiver r-curl)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-md5sums=('19c6a571012cb970a45dac33aa60568f')
+md5sums=('4abf0fdb7cf0a5818f55469ae6f56d6c')
 
 build() {
   cd "${srcdir}"

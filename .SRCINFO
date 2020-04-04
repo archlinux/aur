@@ -1,6 +1,6 @@
 pkgbase = r-gdtools
 	pkgdesc = Utilities for Graphical Rendering
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=gdtools
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = r-gdtools
 	optdepends = r-testthat
 	optdepends = r-fontquiver
 	optdepends = r-curl
-	source = https://cran.r-project.org/src/contrib/gdtools_0.2.1.tar.gz
-	md5sums = 19c6a571012cb970a45dac33aa60568f
+	source = https://cran.r-project.org/src/contrib/gdtools_0.2.2.tar.gz
+	md5sums = 4abf0fdb7cf0a5818f55469ae6f56d6c
 
 pkgname = r-gdtools
 
