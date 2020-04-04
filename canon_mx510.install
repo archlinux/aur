@@ -1,0 +1,10 @@
+post_install(){
+    cfg_msg
+}
+post_upgrade(){
+    cfg_msg
+}
+cfg_msg(){
+        echo -e "\n\tDriver files for Canon MX510 have been installed/updated."
+        echo -e "\n\\tNow you can use the provided PPD file to configure your printer in CUPS and/or use 'scangearmp' to scan.\n\n" >&2
+}

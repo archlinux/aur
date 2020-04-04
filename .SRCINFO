@@ -1,0 +1,23 @@
+pkgbase = canon-pixma-mx510-complete
+	pkgdesc = Complete stand alone driver set (printing and scanning) for Canon Pixma MX510 series.
+	pkgver = 3.70
+	pkgrel = 1
+	url = https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_mx_series/pixma_mx514.html?type=drivers&language=en&os=linux%20(64-bit)
+	install = canon_mx510.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = popt
+	depends = libpng12
+	depends = libusb-compat
+	depends = libtiff4
+	depends = gtk2
+	conflicts = scangearmp-mx510series-x86_64
+	conflicts = scangearmp
+	source = http://gdlp01.c-wss.com/gds/0/0100004120/01/cnijfilter-mx510series-3.70-1-deb.tar.gz
+	source = http://gdlp01.c-wss.com/gds/2/0100004132/01/scangearmp-mx510series-1.90-1-deb.tar.gz
+	md5sums = fea3347d975f0d7db287aa9a0de5a4d0
+	md5sums = a41e42fca48c11a3ac4d1cf91c017ccb
+
+pkgname = canon-pixma-mx510-complete
+
