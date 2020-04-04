@@ -2,11 +2,11 @@
 
 pkgname=ssh-vault
 pkgver=0.12.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Encrypt/Decrypt using ssh keys"
 arch=('x86_64')
 url='https://ssh-vault.com'
-license=('BSD-3-Clause')
+license=('BSD 3-Clause')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ssh-vault/ssh-vault/archive/${pkgver}.tar.gz")
 md5sums=('8648ea5ba29409a2ffb97c3a242e4870')
