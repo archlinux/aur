@@ -1,0 +1,22 @@
+pkgbase = ldc-xtensa-git
+	pkgdesc = LDC built for ESP32 xtensa.
+	pkgver = 1.20.1
+	pkgrel = 2
+	url = https://github.com/espressif/llvm-xtensa
+	arch = x86_64
+	license = GPL
+	makedepends = ldc
+	makedepends = llvm-xtensa
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	depends = llvm-xtensa
+	depends = python2
+	depends = libxml2
+	depends = python
+	provides = llvm-xtensa
+	source = https://github.com/ldc-developers/ldc/releases/download/v1.20.1/ldc-1.20.1-src.tar.gz
+	sha256sums = SKIP
+
+pkgname = ldc-xtensa-git
+
