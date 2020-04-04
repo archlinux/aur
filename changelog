@@ -1,3 +1,15 @@
+2020-04-04 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 4.2.0.1-1:
+    [!] ASF V4.2 comes with rewritten implementation responsible for handling HTML documents, which is expected to reduce memory footprint and increase performance when dealing with HTML parsing. While this change is expected to be fully compatible for end users, old ASF plugins utilizing HtmlDocument functions will require appropriate changes (#1703).
+    Our docker latest image has been slightly rebuilt to include OS-specific variant of ASF. We recommend you to rebuild your containers if you're using the latest tag in order to avoid potential issues that we've managed to solve, other docker tags (such as released) are not affected (#1720).
+    ASF will now prefer to use HTTP/2 for whole web communication, whenever possible.
+    Slightly optimized unlocking Steam parental accounts, resulting in less time waiting for it.
+    Implemented more robust workaround for POST size limit, entirely avoiding the issue from now on.
+    Plugin creators can now make use of entire range of item properties, including tags (#1653).
+    Latest ASF-ui with new features, improvements and bugfixes.
+    Updated localization provided by our community.
+    Usual amount of other core improvements, optimizations and bugfixes.
+    [Deprecation for plugin creators] Implemented IAsyncEnumerable method for GetInventory function, naming it GetInventoryAsync. Old GetInventory method has been deprecated and will be removed in the future release, please migrate to more robust approach, see the PR for code examples (#1652).
 2020-02-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 4.1.2.0-1:
     Added MiniProfileBackground item type, which can be used for lootable, transferable and matchable types in the config (#1624).
