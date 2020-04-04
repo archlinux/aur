@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=81.0.4044.17
+pkgver=81.0.4044.91
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -14,13 +14,14 @@ url="https://www.chromium.org/Home"
 options=(debug !strip)
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-font' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib' 'libva'
+         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'json-glib'
          'desktop-file-utils' 'hicolor-icon-theme')
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'clang' 'lld' 'gn' 'java-runtime-headless')
+             'pipewire' 'clang' 'lld' 'gn' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
+            'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: for storing passwords in KWallet on KDE desktops')
@@ -31,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('c1e8493f02406c85315bba91618d151855a49ba4078002c3758862f5069d5e6f'
+sha256sums=('cec9da1fe5c5a99e97e9ca29d0836b12239439ede40794e52a9a2fdef065d4ca'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
@@ -48,11 +49,11 @@ declare -gA _system_libs=(
   [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
-  [libjpeg]=libjpeg
-  #[libpng]=libpng            # https://crbug.com/752403#c10
-  #[libvpx]=libvpx    # https://github.com/webmproject/libvpx/commit/5a0242ba5c
+  #[libjpeg]=libjpeg
+  #[libpng]=libpng    # https://crbug.com/752403#c10
+  [libvpx]=libvpx
   [libwebp]=libwebp
-  # [libxml]=libxml2
+  [libxml]=libxml2
   [libxslt]=libxslt
   [opus]=opus
   [re2]=re2
@@ -62,7 +63,7 @@ declare -gA _system_libs=(
 )
 _unwanted_bundled_libs=(
   ${!_system_libs[@]}
-  ${_system_libs[libjpeg]+libjpeg_turbo}
+  ${libjpeg_turbo}
 )
 depends+=(${_system_libs[@]})
 
@@ -92,7 +93,7 @@ prepare() {
   sed -i -e 's/\<xmlMalloc\>/malloc/' -e 's/\<xmlFree\>/free/' \
     third_party/blink/renderer/core/xml/*.cc \
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
-    third_party/libxml/chromium/libxml_utils.cc
+    third_party/libxml/chromium/*.cc
 
   # https://crbug.com/1049258
   patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
@@ -147,6 +148,7 @@ build() {
     'fieldtrial_testing_like_official_build=true'
     'ffmpeg_branding="Chrome"'
     'proprietary_codecs=true'
+    'rtc_use_pipewire=true'
     'link_pulseaudio=true'
     'use_gnome_keyring=false'
     'use_sysroot=false'
