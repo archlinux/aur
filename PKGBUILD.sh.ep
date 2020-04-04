@@ -18,7 +18,7 @@
 
 % end
 \
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
