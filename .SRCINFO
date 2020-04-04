@@ -1,11 +1,12 @@
 pkgbase = lua-gifine-git
 	pkgdesc = Quickly record and edit gifs and videos of your desktop
-	pkgver = dev
-	pkgrel = 4
+	pkgver = r46.9cb3277
+	pkgrel = 2
 	url = https://github.com/leafo/gifine
 	arch = x86_64
 	license = MIT
 	makedepends = luarocks
+	makedepends = gendesk
 	depends = ffmpeg
 	depends = graphicsmagick
 	depends = gifsicle

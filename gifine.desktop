@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Gifine
-Comment="Quickly record and edit gifs and videos of your desktop"
-Icon=gifine
-Exec=gifine
-Categories=Graphics;
-Terminal=false
-StartupNotify=false
