@@ -1,14 +1,14 @@
 pkgbase = icecat-ublock-origin
 	pkgdesc = Efficient blocker add-on for various browsers. Fast, potent, and lean
-	pkgver = 1.25.2
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://github.com/gorhill/uBlock
 	arch = any
 	groups = icecat-addons
 	license = GPL3
-	noextract = uBlock0_1.25.2.firefox.xpi
-	source = https://github.com/gorhill/uBlock/releases/download/1.25.2/uBlock0_1.25.2.firefox.xpi
-	sha256sums = ded90038b507c6201547be2ccebd5e69ee641eaa727bb61270d252b353f08191
+	noextract = uBlock0_1.26.0.firefox.xpi
+	source = https://github.com/gorhill/uBlock/releases/download/1.26.0/uBlock0_1.26.0.firefox.xpi
+	sha256sums = 53cb688318a76549c84e6a3b813610c1e5ddc31a6475e41808ddbf4c20f33183
 
 pkgname = icecat-ublock-origin
 
