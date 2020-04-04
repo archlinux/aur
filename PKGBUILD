@@ -1,7 +1,7 @@
-# Maintainer: Zanny <lordzanny at gmail dot com>
+# Maintainer: Zanny <lordzanny@gmail.com>
 
 pkgname=rbdoom3-bfg-git
-pkgver=r556.5e7e59c
+pkgver=r888.b17445c5
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support"
 arch=('i686' 'x86_64')
@@ -23,6 +23,11 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    git revert 988420 --no-edit
 }
 
 build() {
