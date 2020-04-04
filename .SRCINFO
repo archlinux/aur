@@ -1,13 +1,13 @@
 pkgbase = kitti3
 	pkgdesc = Kitty drop-down service for i3wm
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LandingEllipse/kitti3
 	arch = any
-	license = BSD3
+	license = BSD 3-Clause
 	depends = i3-wm
 	depends = kitty
-	depends = python>=3.6
+	depends = python
 	depends = python-i3ipc
 	source = kitti3-0.2.4.tar.gz::https://github.com/LandingEllipse/kitti3/archive/v0.2.4.tar.gz
 	md5sums = f7c6b3032987d3a35a9776091fd9afa9
