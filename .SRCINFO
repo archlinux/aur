@@ -1,6 +1,6 @@
 pkgbase = telephant-git
 	pkgdesc = A lightweight but modern Mastodon client, written in Go & QML
-	pkgver = 20190525
+	pkgver = 20200303
 	pkgrel = 1
 	url = https://github.com/muesli/telephant
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = telephant-git
 	depends = qt5-graphicaleffects
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
+	depends = qt5-multimedia
 	provides = telephant
 	conflicts = telephant
 
