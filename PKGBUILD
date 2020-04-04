@@ -13,7 +13,7 @@
 
 _qt_module=qtxmlpatterns
 pkgname=mingw-w64-qt5-xmlpatterns
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
@@ -25,7 +25,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('fb993a112e591c84ea159a752a4026031a212a7af6f31a1b288552c924c18224')
+sha256sums=('219a876665345e3801baff71f31f30f5495c1cb9ab23fbbd27602632c80fcfb7')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
