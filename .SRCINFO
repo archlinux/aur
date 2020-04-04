@@ -5,12 +5,11 @@ pkgbase = cpeditor-git
 	url = https://github.com/cpeditor/cpeditor
 	arch = x86_64
 	license = GPL3
-	makedepends = clang
+	makedepends = gcc
 	makedepends = cmake
 	makedepends = git
 	depends = qt5-base
 	conflicts = cpeditor
-	conflicts = cpeditor-beta
 	source = git+https://github.com/cpeditor/cpeditor.git
 	md5sums = SKIP
 

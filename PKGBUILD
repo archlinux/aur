@@ -9,8 +9,8 @@ arch=('x86_64')
 url='https://github.com/cpeditor/cpeditor'
 license=('GPL3')
 depends=('qt5-base')
-makedepends=("clang" "cmake" "git")
-conflicts=("cpeditor" "cpeditor-beta")
+makedepends=("gcc" "cmake" "git")
+conflicts=("cpeditor")
 source=('git+https://github.com/cpeditor/cpeditor.git')
 md5sums=('SKIP')
 
@@ -26,7 +26,7 @@ prepare() {
 
 build() {
 	cd $_pkgname
-	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=clang++
+	cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_CXX_COMPILER=g++
 	cmake --build build
 }
 
