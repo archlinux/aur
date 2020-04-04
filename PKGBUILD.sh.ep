@@ -5,14 +5,14 @@
 % end
 \
 % content_for comment_header => begin
-# Skip building mapboxgl as it increases compile time significantly and
-# likely not a lot of people actually using it; if you need it, just remove the
-# following line:
-_additional_qmake_args+='QT.global.disabled_features+=geoservices_mapboxgl'
+# Skip building mapbox and mapboxgl; that decreases the compile time significantly and
+# likely not a lot of people actually using it; if you need it, just remove the corresponding
+# qmake flags:
+_additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservices_mapboxgl'
 
 % end
 \
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'

@@ -13,14 +13,14 @@
 # Includes dynamic and static versions; if only one version is requried, just
 # set $NO_STATIC_LIBS or $NO_SHARED_LIBS.
 
-# Skip building mapboxgl as it increases compile time significantly and
-# likely not a lot of people actually using it; if you need it, just remove the
-# following line:
-_additional_qmake_args+='QT.global.disabled_features+=geoservices_mapboxgl'
+# Skip building mapbox and mapboxgl; that decreases the compile time significantly and
+# likely not a lot of people actually using it; if you need it, just remove the corresponding
+# qmake flags:
+_additional_qmake_args+='-- -no-feature-geoservices_mapbox -no-feature-geoservices_mapboxgl'
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to position, satellite and area monitoring classes (mingw-w64)'
@@ -33,8 +33,8 @@ url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Ensure-static-3rdparty-libs-are-linked-correctly.patch')
-sha256sums=('a0dd1712a5b7a0425b57d17318294b6f7e968c4b81d52048696d029b04d2f12f'
-            '5180fad65717eca47134e8019ada8f8f5e755df59c854568af35d0d5395d11b0')
+sha256sums=('c37708bc396f6dac397b49a6a268d5edb39e1c8296ca2337ce9e80bde04775cc'
+            '3bd42653817aa67bc4202848628e9b01cd03356d588745734da6c54dad61ccd2')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
