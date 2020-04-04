@@ -3,7 +3,7 @@
 
 pkgname=tagspaces
 pkgver=3.4.2
-pkgrel=7
+pkgrel=8
 pkgdesc='TagSpaces is an offline, open source, document manager with tagging support'
 arch=('i686' 'x86_64')
 url='http://tagspaces.org'
@@ -13,14 +13,15 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/a
 sha256sums=('2be6087cebcd351564c58327784d2e200da370a2b48b9d8d801fd2f493176559')
 
 prepare() {
+  cd ${srcdir}/${pkgname}-${pkgver}
+  mkdir -p ${srcdir}/yarn_cache
+  yarn --cache-folder=${srcdir}/yarn_cache install 
+  yarn --cache-folder=${srcdir}/yarn_cache install-ext
   gendesk -f -n --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" --exec="${pkgname}" --categories=Utility\;Graphics
 }
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  mkdir -p ${srcdir}/yarn_cache
-  yarn --cache-folder=${srcdir}/yarn_cache install 
-  yarn --cache-folder=${srcdir}/yarn_cache install-ext
   yarn --cache-folder=${srcdir}/yarn_cache build
   yarn --cache-folder=${srcdir}/yarn_cache package-linux
 }
