@@ -27,5 +27,7 @@ package() {
     dst="${pkgdir}/usr/share/icons"
     mkdir -p "${dst}"
     cd "${srcdir}/${_reponame}"
-    UID=0 ./install.sh
+    cp -r dist/ "${dst}/Layan-cursors"
+    cp -r dist-border/ "${dst}/Layan-border-cursors"
+    cp -r dist-white/ "${dst}/Layan-white-cursors"
 }
