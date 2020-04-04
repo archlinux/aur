@@ -1,14 +1,26 @@
 pkgbase = mbrola-voices-cn1
-	pkgdesc = Mandarin Chinese female voice for mbrola.
-	pkgver = 1
+	pkgdesc = Mandarin Chinese female voice for the MBROLA synthesizer
+	pkgver = 15.6fa9693
 	pkgrel = 1
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-cn
+	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/cn1/cn1.zip
-	md5sums = a57e9c64a49956ac0bdffdd96b0dbd8d
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/cn1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/License.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/test/Jasmine.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/test/Message.pho
+	source = Moon_Represents_My_Heart.pho::https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/test/Moon%20Represents%20My%20Heart.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/cn1/test/Poem.pho
+	sha256sums = f1b726d0739e9e3ab95831e5750fae5be5cfb143f2867faabe79dc873118fa33
+	sha256sums = c92b5a67af00190ce5e6b911e9234c892045538316190758966cd5c42d70822c
+	sha256sums = 8c81b4d1a3dae34a736a18035703122629f87f5f47caf65fffbddcaab35cdd34
+	sha256sums = e43b83e7c909ae3885af1ce271ed5985b4308ef4524a9ca88138a6b2ad28c054
+	sha256sums = dde3a3a1ada0c9cb71b25d58793c47e605d6b0745abf3c7f1536511f96c2dabd
+	sha256sums = 003ab7a574ddfd01a36282dc2383995f0fb952d136682870b5cabe4e3472c842
+	sha256sums = 4702713d9d35b88f18d35cedb18ccbef7c2dd83f862de835d84d09de931bc873
 
 pkgname = mbrola-voices-cn1
 
