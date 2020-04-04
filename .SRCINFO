@@ -1,7 +1,7 @@
 pkgbase = octosql-bin
 	pkgdesc = OctoSQL is a query tool that allows you to join, analyse and transform data from multiple databases and file formats using SQL
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cube2222/octosql
 	arch = x86_64
 	license = MIT
