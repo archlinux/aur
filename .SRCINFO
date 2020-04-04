@@ -1,0 +1,51 @@
+pkgbase = plymouth-themes-adi1090x-pack3-git
+	pkgdesc = The plymouth theme collection by adi1090x
+	pkgver = r28.32a0d92
+	pkgrel = 1
+	url = https://github.com/adi1090x/plymouth-themes
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = git+https://github.com/adi1090x/plymouth-themes.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-hexa-retro-git
+
+pkgname = plymouth-theme-hud-git
+
+pkgname = plymouth-theme-hud-2-git
+
+pkgname = plymouth-theme-hud-3-git
+
+pkgname = plymouth-theme-hud-space-git
+
+pkgname = plymouth-theme-ibm-git
+
+pkgname = plymouth-theme-infinite-seal-git
+
+pkgname = plymouth-theme-ironman-git
+
+pkgname = plymouth-theme-liquid-git
+
+pkgname = plymouth-theme-loader-git
+
+pkgname = plymouth-theme-loader-2-git
+
+pkgname = plymouth-theme-loader-alt-git
+
+pkgname = plymouth-theme-lone-git
+
+pkgname = plymouth-theme-metal-ball-git
+
+pkgname = plymouth-theme-motion-git
+
+pkgname = plymouth-theme-optimus-git
+
+pkgname = plymouth-theme-owl-git
+
+pkgname = plymouth-theme-pie-git
+
+pkgname = plymouth-theme-pixels-git
+
+pkgname = plymouth-theme-polaroid-git
+
