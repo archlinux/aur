@@ -3,7 +3,7 @@
 
 pkgname=freeorion
 pkgver=0.4.9
-pkgrel=4
+pkgrel=5
 pkgdesc='FreeOrion is a free, Open Source, turn-based space empire and galactic conquest computer game'
 url='https://www.freeorion.org'
 arch=('i686' 'x86_64')

@@ -1,7 +1,7 @@
 pkgbase = freeorion
 	pkgdesc = FreeOrion is a free, Open Source, turn-based space empire and galactic conquest computer game
 	pkgver = 0.4.9
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.freeorion.org
 	arch = i686
 	arch = x86_64
