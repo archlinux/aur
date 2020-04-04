@@ -42,5 +42,5 @@ index 7f7227c..45f8f66 100644
  qtHaveModule(quick) {
      QT += quick
 -- 
-2.25.0
+2.26.0
 
