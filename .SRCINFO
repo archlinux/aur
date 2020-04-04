@@ -1,7 +1,7 @@
 pkgbase = s3find-bin
 	pkgdesc = A command line utility to walk an Amazon S3 hierarchy, an analog of find for Amazon S3
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AnderEnder/s3find-rs
 	arch = x86_64
 	license = BSD-2-Clause

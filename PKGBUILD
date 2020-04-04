@@ -2,7 +2,7 @@
 
 pkgname=s3find-bin
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line utility to walk an Amazon S3 hierarchy, an analog of find for Amazon S3'
 arch=('x86_64')
 url="https://github.com/AnderEnder/s3find-rs"
