@@ -1,26 +1,30 @@
-# Maintainer: Alex Branham <branham@utexas.edu>
+# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Alex Branham <branham@utexas.edu>
+
 _cranname=zip
-_cranver=1.0.0
-_pkgtar=${_cranname}_${_cranver}.tar.gz
-pkgname=r-zip
+_cranver=2.0.4
+pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
-pkgdesc="Cross-Platform zip Compression"
-arch=('x86_64')
+pkgdesc="Cross-Platform 'zip' Compression"
+arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
-license=('CC0')
-depends=('r' )
+license=(CC0)
+depends=(r)
+makedepends=(gcc)
+optdepends=(r-covr r-processx r-r6 r-testthat r-withr)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('665c263694712d63163c072b23506a27')
 
-optdepends=('r-covr' 'r-testthat' 'r-withr')
+build() {
+  cd "${srcdir}"
 
-source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
-md5sums=('0e019bf0f5d9a7c182f9aebf51a7e883')
-
-build(){
-    R CMD INSTALL ${_pkgtar} -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
+
 package() {
-    install -d "$pkgdir/usr/lib/R/library"
-    cp -r "$srcdir/$_cranname" "$pkgdir/usr/lib/R/library"
-}
+  cd "${srcdir}"
 
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+}
