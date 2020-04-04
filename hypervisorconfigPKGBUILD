@@ -21,5 +21,5 @@ pkgver() {
 }
 
 package() {
-install -Dm644 ${srcdir}/hypervisorinfo.txt  ${pkgdir}/usr/lib/skycoin/skywire-mainnet/${pkgname}/hypevisorinfo.txt
+install -Dm644 ${srcdir}/hypervisorinfo.txt  ${pkgdir}/usr/lib/skycoin/skywire-mainnet/${pkgname}/hypervisorinfo.txt
 }
