@@ -1,15 +1,31 @@
 pkgbase = mbrola-voices-nl3
 	pkgdesc = A Dutch female voice for the MBROLA synthesizer
-	pkgver = 001013
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-nl
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/nl3/nl3-001013.zip
-	md5sums = 07d682951901e438c8ffc6de25f4569f
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/nl3
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/TEST/hagel.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/TEST/hoort.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/TEST/kat.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/TEST/spengi.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/nl3/TEST/weltrusten.pho
+	sha256sums = 7cb2769500efc33563d82c7ee8162bc7cf174d3b75c750e2f4f3740bc9e26ba2
+	sha256sums = f97ae0a389c15c5acc3e353371185b5be77f5cdf5194ac383a34f51a78b2f0d3
+	sha256sums = e3c3bb069fe70a95136da6472b3cbd4bda93b9594f9deed270af46ad658d743a
+	sha256sums = 725733a11705a2d2ffed1b54d3bada74ee72a2e2a67a64d7062305953ba93256
+	sha256sums = fc193d726f48836b7a02edbaa34d1b274a11fa75519b285ec667f9fb442f5b5b
+	sha256sums = a23b04df0c69a89fd4ef0dd06e920445883110537e48de31b7cf87b970e76219
+	sha256sums = 23922007f181be1e1ed3c4b1e31e160b429f2e32358178b25f096c3c5378b7ed
+	sha256sums = e79d6d47d8afcdf4c08643d1184bdcea2f6cff710f633bb264648d3a96b28114
+	sha256sums = 63fa4e3ea1a4afc7d0503ed6ec4031559a6b8966ecc8c5006c8b9f287a572287
 
 pkgname = mbrola-voices-nl3
 
