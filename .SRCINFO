@@ -1,12 +1,13 @@
 pkgbase = mkinitcpio-modconf-hook-git
 	pkgdesc = Pacman hook to run mkinitcpio after updates to packaged modprobe.d config files
-	pkgver = 20200401.5ebf708
+	pkgver = 20200403.6ce266e
 	pkgrel = 1
 	url = https://github.com/Aetf/mkinitcpio-modconf-hook
 	arch = any
 	license = Apache
 	makedepends = git
 	depends = mkinitcpio
+	provides = mkinitcpio-modconf-hook
 	source = git+https://github.com/Aetf/mkinitcpio-modconf-hook
 	sha256sums = SKIP
 

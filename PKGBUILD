@@ -3,7 +3,7 @@
 pkgname=mkinitcpio-modconf-hook-git
 _pkgname=mkinitcpio-modconf-hook
 
-pkgver=20200403.9c3fafe
+pkgver=20200403.6ce266e
 pkgrel=1
 
 url="https://github.com/Aetf/mkinitcpio-modconf-hook"
@@ -13,6 +13,8 @@ pkgdesc="Pacman hook to run mkinitcpio after updates to packaged modprobe.d conf
 
 depends=('mkinitcpio')
 makedepends=('git')
+
+provides=("$_pkgname")
 
 source=("git+https://github.com/Aetf/$_pkgname")
 
