@@ -2,8 +2,8 @@
 
 _pkgname=ydotool
 pkgname=$_pkgname-git
-pkgver=v0.1.8.r29.g7764122
-pkgrel=4
+pkgver=v0.1.8.r35.g563ccbf
+pkgrel=1
 pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64')
 depends=('libevdevplus' 'libuinputplus' 'boost-libs')
@@ -36,7 +36,7 @@ build() {
 package() {
   cd "$srcdir/${_pkgname}"
   make DESTDIR="$pkgdir" install -C build/
-  install -Dm644 Daemon/ydotool.service "$pkgdir/usr/lib/systemd/system/ydotool.service"
+  install -Dm644 Daemon/ydotool.service "$pkgdir/usr/lib/systemd/user/ydotool.service"
 
   # Workaround upstream bug
   if [ -f "$pkgdir/usr/bin/libydotool.so" ]; then
