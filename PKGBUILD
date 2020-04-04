@@ -32,7 +32,7 @@ isNoOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
 # The static variant doesn't contain any executables which need to be executed on the build machine
@@ -86,38 +86,38 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0029-Hardcode-linker-flags-for-platform-plugins.patch'
         '0030-Fix-linking-against-static-plugins-with-qmake.patch'
         '0031-Prevent-Cannot-find-feature-windows_vulkan_sdk.patch')
-sha256sums=('d9d423a6e7bcf1055c0372fc029f14a6fe67dd62c67b83095cde68b60b762cf7'
-            '4a57615e58ba06eb42d3723fd18e834cb8e5bd75e43bc855d17b553844490f4b'
-            '41bb9278778ea4b8115ce4aa0472435d5499c537fd9dc7d1faf99fed3c25ac07'
-            '91bc8d8e8eac2dddec9cac471f058f451d44bb0b8d45b6228b86d6e9de97f0a6'
-            '350321acfb5bc2c5e6cc78672728be35f223cbc7b632b389d799bdba9160eab7'
-            '5b8287a017d9397ffd1f60865bd8ba758ef340945f62c87ad2aafc9fbeb3b4b2'
-            'cf2a2b1e9c685592d059009aa8ffa3c834019213575ce7afed57037ea45dda3c'
-            'd9a11c90f9b0bbf82d1b9f7733b9fab1b33f3ddb4ffd7edf721c692538aa2649'
-            'd0965fa68ef531dea7e92328912e210cbe678a84b0447ecc86f2c259bd819615'
-            '9a23154796e229b0f25994a191cf0eca916d2b2cafd9a1e77915a1157ef02ad2'
-            '146648c3dcff2537661b2cef9d092e0c9105deb185cf3d7f367c45c0e46df566'
-            'ba29f00bec8bfb3467168b824efd729bd942d34c8da6ac3e428bd11f889da646'
-            '934998c9cb40896d41ce4e15b50d5705183da6aaca3ad65750b43984ccf12c10'
-            'ad3f2deb37b057a85a3897a283515c8e2a9336cd3a1d9dbca463b9a74806c4f9'
-            'e1662059f05f4caa744224fb8cbc02671983dd333227c9499307720e24be9ba1'
-            '4fd714fea42b27b763c7af8e1135b6e54b2b46b7d2cc8c71d2798c9c4fafd407'
-            'dce71cf64d40481a16b08395a5e01aa80938a08e358da18d010add9606da29a8'
-            'e787db710bd5e3ab77f173d5160fe879b971d3586bc88ed9f94d36d537e805db'
-            'c75152ebecdeb94e59c9471944fe800805086f98ae6c54392542686aae9ed7c4'
-            '1910adf8ddba8b81a6dab9231752bbf0d391419241611ad903441f9d1f968340'
-            '6c9d9164b24222ea63e2bb98254dd66a9eb1ad377589a91437f8bccbb149e757'
-            '1e587e871fc6b8fbc5e47e73eaa4b8b484823c771d5d2ebc67396730d7deffe7'
-            '4f45f035d0c12e30cabcf57058d206458999f09582486f79c485d00f3b57f53b'
-            'bd659e9867b1ec6c96c9602d9bb022b78a29e87f9690e9190c44a25967ede298'
-            '3204a14c839c2e37a46688e93ba0e3f00f32995a6b8fbf53dbff6d7e48040775'
-            '6745e3e157d6fb9db2f7147b5ab6cd40eb7ef4654cf0f9e0b59d2f90fc0abbbc'
-            '214fa36eccef5a3a1b448ac9c8a2ddc230e3ef21638e424cfeff25d705e45cb9'
-            '4d1ab6a03b65dddc2028177699e0cb5278d4a481a10a28690ec2347b3e7fa46e'
-            '85c32d151741f2fa42ab5ed16c2c85dd9e2f373dad2c8d09f7a22fbd1e1e3d72'
-            '6c163ddc1912544930d9984adcb54b6d50deb7c4a6d5bd26f6dad252748e5b92'
-            '73fa679c14c9976923cd9605ab3b838a5bce4f23d3d61f47266915296346a771'
-            'd006ec483d8d7ab0e42e086f3827e4074b78dad8a098aa98aa90dcfe0e6d300c')
+sha256sums=('48b9e79220941665a9dd827548c6428f7aa3052ccba8f4f7e039a94aa1d2b28a'
+            'c758e9ec290052a3ea029f40e5d5cfaadd2135ad7841366393449a4c71d84a88'
+            'a0280ed9dd31b2cdffa1c7ae25f9a6cb3a4164c76b7fa07c4e2eaa8cc01e6762'
+            '9a3c591e2645997a94d30687adfc08f1ea7f64597fef78c777ed7137071de02f'
+            '1d7fe2ef6be292e9ec84f313e4ba543f1b368a1ee0915f858d54615be93cf794'
+            '3099b7210a873ee12374d452fb98204d046a2d5c6b1a330d32d45ae59c95cd86'
+            'c2a8f4a7536ad0293bdab882d01e0055bc7d4a3e97794f7c304d01d1daa24bf7'
+            '3b7e90637b3a0671fac0f8607d613bf0f3f9a73cc62e43848049125c7a925a52'
+            '2e08efe5160c91899ac549303f888c5872e1d198068c5a00c3a34d7040f5410f'
+            '82764b7047b65a262f7c49305dee6579171a5e179fa85f8801d121e03937576e'
+            '27dd7df0721e8d4d3f4f4c30c8e9ca8793f50a04f983b3489ff1227aae996f43'
+            '4f0754277a14bdd8682b5d3701871f8901d2dd9f00ef8318bf6d62e9d4a26171'
+            'd4b3fb742c973119d1c98a34063fcc29861fa6325481a8baf5dfac13c32db597'
+            'd70ce95ddaa3dac7bdf273c3a8926df6b41771d75f17c68e205a1b9bb80a77e1'
+            '0366353ce1e4da4e800be55b457d649b0c3e6ba83a2d53dc8c6e3e08dd82637f'
+            '4632228567fd25ffb75de6750120c0ceea1d2c4ce2e91ef214a39b54ee7b56fc'
+            'ab79617e34dbc8bcefb63f0ff59a3efc5da2d313284aa3e690f8c6025a9cb090'
+            'b4f68710feda5c11dc2c3b4fdc755bb2186599046a8443c6f61ff9d369357193'
+            'a4656c1d3ec12ad50b2c92382775619d435e49a392bb08be5cbc8a654248f3dd'
+            '36e3520481ef8d58e7595195c0eb230df80034590c27622836a38199abf7721c'
+            '640ac515c0453def45cdaf2d5813d1ae95ce953014aeacb78cb1747fa2c0da3e'
+            '612b95a477b9956e61ac1557c0e885a7dd2ae0aa56ef69e29116cafcbc7b0d50'
+            '2bfb7e8400b0e14b5e8c14413d67b9fa437fe920fa9ffc458f769ea22b2bed29'
+            '26473b4a55ce4b764354ff54b40a6dcc6d93aea41b7175afeb1a030cb118f3a8'
+            '98058d1696ff05af14d10017062d697839736cf8cfef94ac77d6cefb6c46f311'
+            '30d2cf6c309c4922ebc4a5822aab76161950f7036666dc18489da22315ef214d'
+            '692c3e1679aa82c6aa395d75a06f02f0d1a0b05230197ef19fe4ef7c7b3b888e'
+            'c285e9900a63d67a01accd6d7a798c5f2476e90f3d8ea8ffb0f272d90d942141'
+            'fbd28eeed43e451240c52582f675e5f5ba069450ee20488bf993b33e76e8275c'
+            '1709f452c4986f6b7366412bc906b52e4a01d412e20d3fda561b7fa090ed8890'
+            '245af9755b5637200ea1d678e0ac1a493ed0fbcb9c25dc2a79c0a5e3c007a19a'
+            '810255e443f940b57e90f4934e4317c050d3edf3593cd0a30c1e2b5a35cf7f68')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
@@ -327,6 +327,7 @@ package() {
         "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5FontDatabaseSupport" \
         "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5PlatformCompositorSupport" \
         "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5ThemeSupport" \
+        "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5OpenGLExtensions*" \
         "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5WindowsUIAutomationSupport" \
         "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5VulkanSupport" \
         "${pkgdir}/usr/${_arch}/lib/cmake/StaticQt5Bootstrap" \

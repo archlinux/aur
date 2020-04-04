@@ -1,20 +1,18 @@
-From 27a910a4727d8d33ea9f2f70d572512365dde3e9 Mon Sep 17 00:00:00 2001
+From d61af2077d70356fc0f69aeb27e82bed66f8d52e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:25:40 +0200
 Subject: [PATCH 15/31] Rename qtmain to qt5main
 
 Prevents conflict with mingw-w64-qt4 package
-
-Change-Id: I1a1533bb37d5c87b3f8e9534f67aa76026c44aed
 ---
  mkspecs/common/g++-win32.conf      | 2 +-
- mkspecs/features/create_cmake.prf  | 4 ++--
+ mkspecs/features/create_cmake.prf  | 8 ++++----
  mkspecs/features/win32/windows.prf | 4 ++--
  src/winmain/winmain.pro            | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ 4 files changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 17d2a5efec..2975d371e3 100644
+index 5208d22bd6..1a058b787f 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -84,7 +84,7 @@ QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
@@ -27,20 +25,28 @@ index 17d2a5efec..2975d371e3 100644
  QMAKE_IDL               = $${CROSS_COMPILE}widl
  QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
 diff --git a/mkspecs/features/create_cmake.prf b/mkspecs/features/create_cmake.prf
-index 4aa5dad467..fa8c142ec5 100644
+index 0e71fd0015..0e8d41c685 100644
 --- a/mkspecs/features/create_cmake.prf
 +++ b/mkspecs/features/create_cmake.prf
-@@ -321,8 +321,8 @@ mac {
-         CMAKE_LIB_FILE_LOCATION_DEBUG = $${CMAKE_QT_STEM}$${debug_suffix}.dll
-         CMAKE_LIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.dll
+@@ -325,14 +325,14 @@ mac {
+     }
  
+     mingw {
 -        CMAKE_WINMAIN_FILE_LOCATION_DEBUG = libqtmain$${QT_LIBINFIX}$${debug_suffix}.a
 -        CMAKE_WINMAIN_FILE_LOCATION_RELEASE = libqtmain$${QT_LIBINFIX}.a
 +        CMAKE_WINMAIN_FILE_LOCATION_DEBUG = libqt5main$${QT_LIBINFIX}$${debug_suffix}.a
 +        CMAKE_WINMAIN_FILE_LOCATION_RELEASE = libqt5main$${QT_LIBINFIX}.a
  
-         !isEmpty(CMAKE_STATIC_TYPE) {
-             CMAKE_STATIC_WINDOWS_BUILD = "true"
+         CMAKE_IMPLIB_FILE_LOCATION_DEBUG = lib$${CMAKE_QT_STEM}$${debug_suffix}.a
+         CMAKE_IMPLIB_FILE_LOCATION_RELEASE = lib$${CMAKE_QT_STEM}.a
+     } else {
+-        CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qtmain$${QT_LIBINFIX}$${debug_suffix}.lib
+-        CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qtmain$${QT_LIBINFIX}.lib
++        CMAKE_WINMAIN_FILE_LOCATION_DEBUG = qt5main$${QT_LIBINFIX}$${debug_suffix}.lib
++        CMAKE_WINMAIN_FILE_LOCATION_RELEASE = qt5main$${QT_LIBINFIX}.lib
+ 
+         CMAKE_IMPLIB_FILE_LOCATION_DEBUG = $${CMAKE_QT_STEM}$${debug_suffix}.lib
+         CMAKE_IMPLIB_FILE_LOCATION_RELEASE = $${CMAKE_QT_STEM}.lib
 diff --git a/mkspecs/features/win32/windows.prf b/mkspecs/features/win32/windows.prf
 index 272170d428..17f3ef9c2d 100644
 --- a/mkspecs/features/win32/windows.prf
@@ -70,5 +76,5 @@ index 1f54c846ec..162e7a4b1b 100644
  
  CONFIG += static
 -- 
-2.25.0
+2.26.0
 

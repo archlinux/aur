@@ -1,4 +1,4 @@
-From 818b881fa3b76f914565d61c77845bdf4607aa18 Mon Sep 17 00:00:00 2001
+From 90787e1baa580ced40a79a20c8624ecdeee3aad4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Tue, 7 Feb 2017 18:25:28 +0100
 Subject: [PATCH 28/31] Prevent qmake from messing static lib dependencies
@@ -27,7 +27,7 @@ index f7bd6dc663..b76c444012 100644
      int libidx = 0, fwidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 3b4372ad05..cd10225e99 100644
+index 3a75986257..34e7776e44 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
 @@ -106,6 +106,9 @@ Win32MakefileGenerator::findLibraries(bool linkPrl, bool mergeLflags)
@@ -41,5 +41,5 @@ index 3b4372ad05..cd10225e99 100644
      int libidx = 0;
      for (const ProString &dlib : project->values("QMAKE_DEFAULT_LIBDIRS"))
 -- 
-2.25.0
+2.26.0
 
