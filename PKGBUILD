@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.alice.org/"
 license=('custom')
 depends=('java-environment=8' 'mesa')
-provides=('alice3')
+provides=('alice3' 'alice')
 install=post_install
 source=("http://www.alice.org/wp-content/uploads/2019/04/Alice3_unix_3_5.sh")
 noextract=('Alice3_unix_3_5.sh')
