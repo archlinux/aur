@@ -1,0 +1,15 @@
+pkgbase = nullpomino-git
+	pkgdesc = An action puzzle game
+	pkgver = v7.5.0.r126.gfd8d758
+	pkgrel = 1
+	url = https://github.com/nullpomino/nullpomino
+	arch = any
+	license = BSD
+	makedepends = maven
+	makedepends = jdk8-openjdk
+	depends = jre8-openjdk
+	source = ::git+https://github.com/nullpomino/nullpomino.git
+	md5sums = SKIP
+
+pkgname = nullpomino-git
+
