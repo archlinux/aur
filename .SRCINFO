@@ -1,7 +1,7 @@
 pkgbase = parmetis
 	pkgdesc = A parallel graph partitioning library
 	pkgver = 4.0.3.p6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview
 	arch = i686
 	arch = x86_64
