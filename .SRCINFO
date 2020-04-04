@@ -1,5 +1,5 @@
 pkgbase = cpeditor
-	pkgdesc = IDE desgined for Competitive Programming
+	pkgdesc = The editor for competitive programming
 	pkgver = 6.2.2
 	pkgrel = 1
 	url = https://github.com/cpeditor/cpeditor
