@@ -5,7 +5,6 @@ pkgbase = declick
 	url = http://home.snafu.de/wahlm/dl8hbs/declick.html
 	arch = x86_64
 	license = GPL
-	makedepends = gcc
 	source = declick-0.6.5.tar.gz::http://home.snafu.de/wahlm/dl8hbs/declick-0.6.5.tar.gz
 	md5sums = 415f4da925f6573868ae10dbb79b8f5b
 
