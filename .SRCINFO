@@ -1,12 +1,11 @@
 pkgbase = taptempo
 	pkgdesc = A command line tap tempo. Hit enter key with style and you'll get the corresponding number of beats per minute (BPM). This tool is very useful to quickly find the tempo of a song without launching a big digital workstation like Ardour or LMMS
 	pkgver = 1.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://taptempo.tuxfamily.org
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0
 	makedepends = catch2
-	makedepends = gettext
 	makedepends = cmake
 	source = https://download.tuxfamily.org/taptempo/1.4.4/taptempo-1.4.4.tar.gz
 	md5sums = 6b7d859049f41de3bf17c38a0f6aedf4
