@@ -22,7 +22,7 @@ _themenames=('abstract_ring'
     'cuts'
     'cuts_alt')
 pkgname=() #initialized by loop at the bottom
-pkgver=r24.bb390bd
+pkgver=r28.32a0d92
 pkgrel=1
 pkgdesc="The plymouth theme collection by adi1090x"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = plymouth-themes-adi1090x-pack1-git
 	pkgdesc = The plymouth theme collection by adi1090x
-	pkgver = r24.bb390bd
+	pkgver = r28.32a0d92
 	pkgrel = 1
 	url = https://github.com/adi1090x/plymouth-themes
 	arch = any
