@@ -4,7 +4,7 @@ pkgbase = uefitool-bin
 	pkgrel = 1
 	url = https://github.com/LongSoft/UEFITool
 	arch = x86_64
-	license = BSD2
+	license = BSD-2-Clause
 	provides = uefitool=0.27.0
 	provides = uefipatch=0.27.0
 	provides = uefireplace=0.27.0
