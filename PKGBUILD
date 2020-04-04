@@ -19,7 +19,7 @@ sha256sums=("a10f274a0a09408eaf9c088dec6fb2254f7d641221437763c94546cbfe595867"
             "SKIP"
             "1bcc9b285074ded87b88faaedddb88e6b5d6c331dfcfb57d7f3393dd622b3764"
             "SKIP"
-            "5c5efddd872ee5615eb7d28b8f7ae0ea12ce904352f11c40362dcb6ed3f65410")
+            "7f7cca66a16c5a4aca132bfa1d86a7a2ff33612ec47d3422dc91ad4cc1810646")
 validpgpkeys+=("474E22316ABF4785A88C6E8EA2C794A986419D8A") # Tom Stellard <tstellar@redhat.com>
 
 prepare() {
