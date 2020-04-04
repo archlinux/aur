@@ -2,7 +2,7 @@
 
 pkgname=fabio-bin
 pkgver=1.5.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Consul Load-Balancing made simple'
 arch=('x86_64')
 url="https://fabiolb.net"
@@ -12,7 +12,6 @@ source=("https://github.com/fabiolb/fabio/releases/download/v${pkgver}/fabio-${p
 md5sums=('0ebff3ca17d1d5a43fc39b72b6502b64')
 
 package() {
-	cd "${srcdir}"
-	install -Dm755 fabio* "${pkgdir}/usr/bin/fabio"
+	install -Dm755 "${srcdir}"/fabio* "${pkgdir}/usr/bin/fabio"
 }
 # vim:set ts=2 sw=2 et:

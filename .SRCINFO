@@ -1,7 +1,7 @@
 pkgbase = fabio-bin
 	pkgdesc = Consul Load-Balancing made simple
 	pkgver = 1.5.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fabiolb.net
 	arch = x86_64
 	license = MIT
