@@ -1,7 +1,7 @@
 pkgbase = gitql-bin
 	pkgdesc = A git query language
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cloudson/gitql
 	arch = x86_64
 	license = MIT

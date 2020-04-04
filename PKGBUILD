@@ -2,7 +2,7 @@
 
 pkgname=gitql-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A git query language'
 arch=('x86_64')
 url="https://github.com/cloudson/gitql"
@@ -12,7 +12,6 @@ source=("https://github.com/cloudson/gitql/releases/download/${pkgver}/gitql-lin
 md5sums=('39edfd614f50b56724b00b7d94e3d9a5')
 
 package() {
-	cd "${srcdir}/gitql-linux64"
-	install -Dm755 gitql "${pkgdir}/usr/bin/gitql"
+	install -Dm755 "${srcdir}/gitql-linux64"/gitql "${pkgdir}/usr/bin/gitql"
 }
 # vim:set ts=2 sw=2 et:
