@@ -3,13 +3,12 @@
 
 pkgname=eviacam
 pkgver=2.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Enable Viacam (eViacam) is a mouse replacement software that moves the pointer as you move your head'
 arch=('any')
 url='https://eviacam.crea-si.com/'
 license=('GPL-3.0')
 depends=('opencv' 'wxgtk' 'gtk3' 'libxext' 'libxtst')
-makedepends=('libtool' 'automake' 'autoconf')
 provides=('eviacam')
 source=("https://github.com/cmauri/${pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('1da6f425254306f48a77abae560d5b66')
