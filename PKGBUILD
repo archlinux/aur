@@ -11,12 +11,18 @@ makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/davrodpin/mole/archive/v0.5.0.tar.gz")
 md5sums=('4950e6dd0a30e8df5f0bcb26e103ded5')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   cd cmd/mole
   go build -v -o "${srcdir}/${pkgname}-bin"
 }
