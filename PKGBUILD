@@ -2,12 +2,12 @@
 
 pkgname=slic3r++
 pkgver=2.2.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=('x86_64')
 url="https://github.com/supermerill/Slic3r"
 license=('AGPL3')
-depends=('boost-libs' 'glew' 'nlopt' 'qhull' 'wxgtk3')
+depends=('boost-libs' 'glew' 'intel-tbb' 'nlopt' 'qhull' 'wxgtk3')
 makedepends=('boost' 'cereal' 'cmake' 'eigen' 'libigl' 'openvdb' 'wxgtk2') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 source=("https://github.com/supermerill/Slic3r/archive/$pkgver.tar.gz"
         "slic3r++.desktop"
@@ -53,7 +53,7 @@ package()
 	cd "$srcdir/Slic3r-$pkgver/build"
 	
 	make DESTDIR="$pkgdir" install
-	rm "$pkgdir/usr/share/slic3r++/resources"
+	test ! -h "$pkgdir/usr/share/slic3r++/resources" || rm "$pkgdir/usr/share/slic3r++/resources"
 	
 	install -d "$pkgdir/usr/share/applications"
 	install -m 644 "$srcdir/slic3r++.desktop" "$pkgdir/usr/share/applications/"
