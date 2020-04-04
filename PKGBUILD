@@ -2,8 +2,8 @@
 # Maintainer: Matheus <wlion@protonmail.com>
 
 pkgname=fedora-firefox-wayland-bin
-pkgver=74.0
-pkgrel=3
+pkgver=74.0.1
+pkgrel=1
 # fedora version
 fc="fc31"
 pkgdesc="Fedora's firefox build with wayland enabled by default"
@@ -22,7 +22,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 
 source=("https://kojipkgs.fedoraproject.org//packages/firefox/$pkgver/$pkgrel.$fc/x86_64/firefox-$pkgver-$pkgrel.$fc.x86_64.rpm")
 
-sha256sums=('bc1e89ed6311c57857e93b2699e8b11cd74132404391724803499cb7dfc17893')
+sha256sums=('a5ba08a47ff6aa0d8ab43a01ec15b9d5bb3ed60f374e8004ecc4e96f0af1ddc1')
 
 prepare() {
   # remove a bit of fedora's custom sutff 
