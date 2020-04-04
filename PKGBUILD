@@ -23,7 +23,7 @@ depends=(ffmpeg
          protobuf
          yarn
          zlib)
-makedepends=(npm)
+makedepends=(git)
 backup=(etc/mastodon.conf)
 install=mastodon.install
 source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
