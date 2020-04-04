@@ -1,7 +1,7 @@
 pkgbase = mego
 	pkgdesc = A simple megadl wrapper with auto-retry and download list
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/scotow/mego
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = mego
 	makedepends = git
 	depends = megatools
 	source = mego-1.3.0.tar.gz::https://github.com/scotow/mego/archive/1.3.0.tar.gz
-	sha256sums = 0d82228b6d338279fb534ffa167b8962ef4635439e6ddac3e1c5a11f822151a9
+	sha256sums = e06df26dd1a0cfc78793f35c925da69225b8fcb3b061d4c65816616e2e861595
 
 pkgname = mego
 

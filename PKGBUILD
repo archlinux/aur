@@ -2,7 +2,7 @@
 
 pkgname=mego
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple megadl wrapper with auto-retry and download list"
 arch=('x86_64')
 url="https://github.com/scotow/${pkgname}"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('megatools')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/scotow/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0d82228b6d338279fb534ffa167b8962ef4635439e6ddac3e1c5a11f822151a9')
+sha256sums=('e06df26dd1a0cfc78793f35c925da69225b8fcb3b061d4c65816616e2e861595')
 
 prepare(){
   mkdir -p src/github.com/scotow
