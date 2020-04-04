@@ -3,7 +3,7 @@
 _pkgname=ydotool
 pkgname=$_pkgname-git
 pkgver=v0.1.8.r35.g563ccbf
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic command-line automation tool (no X!), works on Wayland"
 arch=('i686' 'x86_64')
 depends=('libevdevplus' 'libuinputplus' 'boost-libs')
@@ -37,6 +37,13 @@ package() {
   cd "$srcdir/${_pkgname}"
   make DESTDIR="$pkgdir" install -C build/
   install -Dm644 Daemon/ydotool.service "$pkgdir/usr/lib/systemd/user/ydotool.service"
+
+  echo
+  echo
+  msg2 "The ydotool.service systemd unit used to be shipped as a system unit in previous versions of the package."
+  msg2 "Make sure you disable the old one and enable the new systemd user unit."
+  echo
+  echo
 
   # Workaround upstream bug
   if [ -f "$pkgdir/usr/bin/libydotool.so" ]; then
