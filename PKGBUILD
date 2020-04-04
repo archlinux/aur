@@ -3,12 +3,12 @@
 
 pkgname='ngs-lang'
 pkgver='0.2.7'
-pkgrel=1
+pkgrel=2
 pkgdesc='Next Generation Shell (NGS)'
 arch=('x86_64')
 url='https://github.com/ngs-lang/ngs'
 provides=('ngs')
-license=('GPLv3')
+license=('GPL-3.0')
 makedepends=('cmake' 'git' 'pandoc' 'peg' 'uthash')
 source=("${pkgname}-${pkgver}.tar.xz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('edc842fcf8ced6ff9ef8ddfe6470ac4f94b7ba79415c41d5ed7a4fc93339f2f2')
