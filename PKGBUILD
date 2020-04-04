@@ -1,8 +1,8 @@
 _pkgname="raylib-cpp"
 pkgname=${_pkgname}-git
 pkgver=0.1.0.r39.gd6f0f22
-pkgrel=1
-pkgdesc=""
+pkgrel=2
+pkgdesc="raylib-cpp is a C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming"
 arch=('x86_64')
 url="https://github.com/RobLoach/raylib-cpp"
 license=('MIT')
@@ -14,7 +14,7 @@ source=("${_pkgname}::git+https://github.com/RobLoach/raylib-cpp.git"
 	"raylib-cpp.pc")
 
 sha256sums=('SKIP'
-	'997739e84bea5facc6b502a88af0ffb79eb0eabefb122e900d47c1cd88928203')
+	'e2c56b686069bc0303e950818dfb7a09ca9c829d28a695ce4e80bb44cb67d508')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"

@@ -1,6 +1,7 @@
 pkgbase = raylib-cpp-git
+	pkgdesc = raylib-cpp is a C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming
 	pkgver = 0.1.0.r39.gd6f0f22
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/RobLoach/raylib-cpp
 	arch = x86_64
@@ -10,7 +11,7 @@ pkgbase = raylib-cpp-git
 	source = raylib-cpp::git+https://github.com/RobLoach/raylib-cpp.git
 	source = raylib-cpp.pc
 	sha256sums = SKIP
-	sha256sums = 997739e84bea5facc6b502a88af0ffb79eb0eabefb122e900d47c1cd88928203
+	sha256sums = e2c56b686069bc0303e950818dfb7a09ca9c829d28a695ce4e80bb44cb67d508
 
 pkgname = raylib-cpp-git
 
