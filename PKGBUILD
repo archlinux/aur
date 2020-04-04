@@ -1,7 +1,8 @@
 # Maintainer: Chiu-Hsiang Hsu <wdv4758h at gmail.com>
+# Contributor: HIME team
 _pkgname=hime
 pkgname=hime-git
-pkgver=1040.130aa0b
+pkgver=1103.2cd1b9b
 pkgrel=1
 pkgdesc="A GTK2+/GTK3+ based universal input method platform"
 arch=('i686' 'x86_64')
