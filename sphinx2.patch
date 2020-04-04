@@ -1,0 +1,13 @@
+diff --git a/docs/conf.py b/docs/conf.py
+index 62404b275..b5a3cdc68 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -134,7 +134,7 @@ html_last_updated_fmt = '%Y-%m-%d'
+ #html_use_smartypants = True
+ 
+ # Custom sidebar templates, maps document names to template names.
+-html_sidebars = {'index': 'indexsidebar.html'}
++html_sidebars = {'index': ['localtoc.html', 'relations.html', 'sourcelink.html', 'indexsidebar.html', 'searchbox.html']}
+ 
+ # Additional templates that should be rendered to pages, maps page names to
+ # template names.
