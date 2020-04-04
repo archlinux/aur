@@ -1,7 +1,7 @@
 pkgbase = crane-bin
 	pkgdesc = Lift containers with ease
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.crane-orchestration.com
 	arch = x86_64
 	license = MIT
