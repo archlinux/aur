@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-native
-pkgver=5.0.5
-_srctag=${pkgver%.*}-${pkgver##*.}b
+_srctag=5.0-6-rc1
+pkgver=${_srctag//-/.}
 _geckover=2.47.1
 _monover=4.9.4
 #_dxvkver=1.5
-pkgrel=2
+pkgrel=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components. Monolithic distribution"
 arch=(x86_64)
 url="https://github.com/ValveSoftware/Proton"
@@ -98,7 +98,7 @@ optdepends=(
 )
 makedepends=(${makedepends[@]} ${depends[@]})
 source=(
-    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-$_srctag
+    proton::git+https://github.com/ValveSoftware/Proton.git#tag=proton-${_srctag}
     wine-valve::git+https://github.com/ValveSoftware/wine.git
     vkd3d-valve::git+https://github.com/ValveSoftware/vkd3d.git
     dxvk-valve::git+https://github.com/ValveSoftware/dxvk.git
@@ -175,18 +175,15 @@ prepare() {
     # combination of AVX instructions and tree vectorization (implied by O3),
     # all tested archictures from sandybridge to haswell are affected.
     # Disabling either AVX (and AVX2 as a side-effect) or tree
-    # vectorization fixes the issue. I am not sure which one is better
-    # to disable so below you can choose. Append either of these flags.
+    # vectorization fixes the issue.
     # Relevant Wine issues
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     dxvk_cflags+=" -mno-avx"
-    #dxvk_cflags+=" -fno-tree-vectorize"
-    # Filter fstack-protector flag for MingW.
+    # Filter fstack-protector{ ,-all,-strong} flag for MingW.
     # https://github.com/Joshua-Ashton/d9vk/issues/476
-    dxvk_cflags+=" -fno-stack-protector"
-    #dxvk_cflags="${dxvk_cflags// -fstack-protector+(-all|-strong)/}"
-    #dxvk_cflags="${dxvk_cflags// -fstack-protector+(?=[ ])/}"
+    #dxvk_cflags+=" -fno-stack-protector"
+    dxvk_cflags="${dxvk_cflags// -fstack-protector*([\-all|\-strong])/}"
     # Adjust optimization level in meson arguments. This is ignored
     # anyway because meson sets its own optimization level.
     dxvk_cflags="${dxvk_cflags// -O+([0-3s]|fast)/}"
@@ -194,7 +191,8 @@ prepare() {
     # They are also filtered in Wine PKGBUILDs so remove them
     # for winelib versions too.
     dxvk_cflags="${dxvk_cflags/ -fno-plt/}"
-    dxvk_ldflags="${dxvk_ldflags/,-z,relro,-z,now/}"
+    dxvk_ldflags="${dxvk_ldflags/,-z,now/}"
+    dxvk_ldflags="${dxvk_ldflags/,-z,relro/}"
     sed -i dxvk/build-win64.txt \
         -e "s|@CARGS@|\'${dxvk_cflags// /\',\'}\'|g" \
         -e "s|@LDARGS@|\'${dxvk_ldflags// /\',\'}\'|g"
@@ -214,11 +212,11 @@ build() {
     # https://bugs.winehq.org/show_bug.cgi?id=45289
     # https://bugs.winehq.org/show_bug.cgi?id=43516
     export CFLAGS+=" -mno-avx"
-    #export CFLAGS+=" -fno-tree-vectorize"
-    #export CFLAGS="${CFLAGS/-O3/-O2}"
+    export CXXFLAGS+=" -mno-avx"
     # From wine-staging PKGBUILD
     # Doesn't compile without remove these flags as of 4.10
     export CFLAGS="${CFLAGS/ -fno-plt/}"
+    export CXXFLAGS="${CXXFLAGS/ -fno-plt/}"
     export LDFLAGS="${LDFLAGS/,-z,now/}"
 
     SUBMAKE_JOBS="${MAKEFLAGS/-j/}" \
