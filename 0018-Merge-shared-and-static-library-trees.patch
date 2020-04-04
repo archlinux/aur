@@ -1,4 +1,4 @@
-From 6b5826e9aa80d2daa13cf1e20c01186145a73841 Mon Sep 17 00:00:00 2001
+From 5756d20ee409d114a355bd07051311757af46fa4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:45:08 +0200
 Subject: [PATCH 18/31] Merge shared and static library trees
@@ -48,7 +48,7 @@ index 81c84b28ef..910e59188f 100644
 +    CONFIG += no_smart_library_merge
 +}
 diff --git a/mkspecs/features/default_post.prf b/mkspecs/features/default_post.prf
-index 0e41b825ec..4c4b6dd12a 100644
+index 1d79f5c958..48f6e710b6 100644
 --- a/mkspecs/features/default_post.prf
 +++ b/mkspecs/features/default_post.prf
 @@ -1,5 +1,16 @@
@@ -204,5 +204,5 @@ index c0ce0972ef..5a2deaf31d 100644
  mkspecs.files -= $$PWD/mkspecs/modules $$PWD/mkspecs/modules-inst
  INSTALLS += mkspecs
 -- 
-2.25.1
+2.26.0
 

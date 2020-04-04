@@ -1,4 +1,4 @@
-From 5a6b36b853699f49504173ca35a1c47c9a54d56f Mon Sep 17 00:00:00 2001
+From c416378bd70ab26f9ce9e34fe72a364dd19bae73 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 18:30:51 +0100
 Subject: [PATCH 01/31] Adjust win32-g++ profile for cross compilation with
@@ -21,7 +21,7 @@ Change-Id: I4c9b3c170ed13943abe0d8b397a8cb9e360538b6
  3 files changed, 39 insertions(+), 21 deletions(-)
 
 diff --git a/mkspecs/common/g++-win32.conf b/mkspecs/common/g++-win32.conf
-index 6369436863..17d2a5efec 100644
+index c3a1f3a373..5208d22bd6 100644
 --- a/mkspecs/common/g++-win32.conf
 +++ b/mkspecs/common/g++-win32.conf
 @@ -8,18 +8,24 @@
@@ -43,10 +43,10 @@ index 6369436863..17d2a5efec 100644
  
  MAKEFILE_GENERATOR      = MINGW
  QMAKE_PLATFORM          = win32 mingw
--CONFIG                 += precompile_header
+-CONFIG                 += debug_and_release debug_and_release_target precompile_header
 -DEFINES                += UNICODE _UNICODE WIN32 MINGW_HAS_SECURE_API=1
 -QMAKE_COMPILER_DEFINES += __GNUC__ _WIN32
-+CONFIG                 += precompile_header $${CROSS_COMPILE_CUSTOM_CONFIG}
++CONFIG                 += debug_and_release debug_and_release_target precompile_header $${CROSS_COMPILE_CUSTOM_CONFIG}
 +DEFINES                += UNICODE _UNICODE MINGW_HAS_SECURE_API=1
 +QMAKE_COMPILER_DEFINES += __GNUC__ _WIN32 WIN32
  # can't add 'DEFINES += WIN64' and 'QMAKE_COMPILER_DEFINES += _WIN64' defines for
@@ -163,5 +163,5 @@ index 5de482f23b..3c3d22c699 100644
  
  QMAKE_LINK              = $${CROSS_COMPILE}g++
 -- 
-2.25.1
+2.26.0
 

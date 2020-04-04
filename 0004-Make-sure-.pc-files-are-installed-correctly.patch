@@ -1,4 +1,4 @@
-From d758e71cb38b4fec2f012121605185bf395206cf Mon Sep 17 00:00:00 2001
+From f1122d1929e271162eb062aad43097ad69c7159e Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 13:54:12 +0200
 Subject: [PATCH 04/31] Make sure *.pc files are installed correctly
@@ -49,10 +49,10 @@ index ab970c966f..01f97c61d4 100644
      void writePkgConfigFile();   // for pkg-config
  
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
-index 86d10c213c..c1b28a52e9 100644
+index 3ec2704625..f33edb5bd9 100644
 --- a/qmake/generators/win32/winmakefile.cpp
 +++ b/qmake/generators/win32/winmakefile.cpp
-@@ -761,7 +761,7 @@ QString Win32MakefileGenerator::defaultInstall(const QString &t)
+@@ -775,7 +775,7 @@ QString Win32MakefileGenerator::defaultInstall(const QString &t)
                  }
                  if(!ret.isEmpty())
                      ret += "\n\t";
@@ -62,5 +62,5 @@ index 86d10c213c..c1b28a52e9 100644
                      uninst.append("\n\t");
                  uninst.append("-$(DEL_FILE) " + escapeFilePath(dst_pc));
 -- 
-2.25.1
+2.26.0
 

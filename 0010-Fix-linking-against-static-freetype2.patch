@@ -1,4 +1,4 @@
-From 3c9bf1e7fcd5f965d9f3a91d05d762d6f4061a5e Mon Sep 17 00:00:00 2001
+From ca204fd0ed444fdf4e478540f8b5d88cb345be75 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 3 Feb 2017 20:51:19 +0100
 Subject: [PATCH 10/31] Fix linking against static freetype2
@@ -26,5 +26,5 @@ index 099c11da95..872deb3ad3 100644
                  { "libs": "-lfreetype" }
              ],
 -- 
-2.25.1
+2.26.0
 

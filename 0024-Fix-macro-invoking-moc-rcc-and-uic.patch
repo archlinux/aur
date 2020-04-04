@@ -1,4 +1,4 @@
-From 879dc7704da01c3dd0df17f7575c5d1a395c92b9 Mon Sep 17 00:00:00 2001
+From b14162daa442d61ba3747a68aff6b0a33677e606 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
 Subject: [PATCH 24/31] Fix macro invoking moc, rcc and uic
@@ -18,10 +18,10 @@ Change-Id: I6fde86d0a3ade37b4376604a1eb6d5723eda8b4c
  2 files changed, 8 insertions(+), 4 deletions(-)
 
 diff --git a/src/corelib/Qt5CoreMacros.cmake b/src/corelib/Qt5CoreMacros.cmake
-index 84c75401b1..3a35e30777 100644
+index 02f49a4b1e..581dbeac50 100644
 --- a/src/corelib/Qt5CoreMacros.cmake
 +++ b/src/corelib/Qt5CoreMacros.cmake
-@@ -132,8 +132,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
+@@ -139,8 +139,9 @@ function(QT5_CREATE_MOC_COMMAND infile outfile moc_flags moc_options moc_target
      endif()
  
      set(_moc_extra_parameters_file @${_moc_parameters_file})
@@ -32,7 +32,7 @@ index 84c75401b1..3a35e30777 100644
                         DEPENDS ${infile} ${moc_depends}
                         ${_moc_working_dir}
                         VERBATIM)
-@@ -248,8 +249,9 @@ function(QT5_ADD_BINARY_RESOURCES target )
+@@ -255,8 +256,9 @@ function(QT5_ADD_BINARY_RESOURCES target )
          set(rc_depends ${rc_depends} ${_rc_depends})
      endforeach()
  
@@ -43,7 +43,7 @@ index 84c75401b1..3a35e30777 100644
                         ARGS ${rcc_options} --binary --name ${target} --output ${rcc_destination} ${infiles}
                         DEPENDS ${rc_depends} ${out_depends} ${infiles} VERBATIM)
      add_custom_target(${target} ALL DEPENDS ${rcc_destination})
-@@ -281,8 +283,9 @@ function(QT5_ADD_RESOURCES outfiles )
+@@ -288,8 +290,9 @@ function(QT5_ADD_RESOURCES outfiles )
          _QT5_PARSE_QRC_FILE(${infile} _out_depends _rc_depends)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTORCC ON)
  
@@ -70,5 +70,5 @@ index 737371a5ad..d103278cdf 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.25.1
+2.26.0
 
