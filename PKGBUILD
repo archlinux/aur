@@ -2,11 +2,11 @@
 
 pkgname=('arc-icon-theme-full-git')
 pkgver=1.0.r109.g44aa818
-pkgrel=1
+pkgrel=3
 pkgdesc='The complete Arc icon theme'
 arch=('any')
 url='https://github.com/rtlewis88/rtl88-Themes/tree/Arc-ICONS'
-license=('GPL3')
+license=('GPL-3.0')
 makedepends=('git')
 optdepends=('arc-gtk-theme' 'arc-solid-gtk-theme')
 provides=("${pkgname%-*}" "${pkgname}" "arc-icon-theme")
@@ -15,7 +15,7 @@ options=('!strip')
 
 pkgver() {
   cd "${srcdir}/rtl88-Themes/Arc-ICONS"
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
