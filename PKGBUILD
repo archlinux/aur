@@ -8,7 +8,7 @@ pkgdesc="ChromiumOS mosys - last version to not require rust"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://chromium.googlesource.com/chromiumos/platform/mosys"
 license=('custom')
-depends=('flashmap-git')
+depends=('flashmap-git' 'libutil-linux')
 makedepends=('git' 'ninja')
 source=("git+https://chromium.googlesource.com/chromiumos/platform/mosys#branch=release-R70-11021.B ")
 md5sums=('SKIP')
