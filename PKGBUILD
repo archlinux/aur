@@ -3,7 +3,7 @@
 pkgname=layan-cursor-theme-git
 _reponame='Layan-cursors'
 pkgver=0.0.0.7a37de2
-pkgrel=1
+pkgrel=2
 pkgdesc='A x-cursor theme inspired by layan gtk theme and based on capitaine-cursors.'
 arch=("any")
 provides=("layan-cursor-theme")
