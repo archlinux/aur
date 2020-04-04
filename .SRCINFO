@@ -1,0 +1,16 @@
+pkgbase = r-foreign
+	pkgdesc = Read Data Stored by 'Minitab', 'S', 'SAS', 'SPSS', 'Stata', 'Systat', 'Weka', 'dBase', ...
+	pkgver = 0.8.76
+	pkgrel = 1
+	url = https://cran.r-project.org/package=foreign
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = gcc
+	depends = r>=3.0.0
+	source = https://cran.r-project.org/src/contrib/foreign_0.8-76.tar.gz
+	md5sums = b5195553f33eb4368a17f283a4108f24
+
+pkgname = r-foreign
+
