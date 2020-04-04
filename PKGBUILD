@@ -3,7 +3,7 @@
 # Contributor: Steven Allen <steven@stebalien.com>
 
 pkgname=nftables-git
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Netfilter tables userspace tools'
 arch=(i686 x86_64)
