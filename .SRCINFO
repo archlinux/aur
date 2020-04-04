@@ -1,0 +1,20 @@
+pkgbase = r-progress
+	pkgdesc = Terminal Progress Bars
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://cran.r-project.org/package=progress
+	arch = any
+	license = MIT
+	depends = r
+	depends = r-hms
+	depends = r-prettyunits
+	depends = r-r6
+	depends = r-crayon
+	optdepends = r-rcpp
+	optdepends = r-testthat
+	optdepends = r-withr
+	source = https://cran.r-project.org/src/contrib/progress_1.2.2.tar.gz
+	md5sums = d1d31b3a7bde43cd6b141bdd7297d523
+
+pkgname = r-progress
+
