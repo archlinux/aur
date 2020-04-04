@@ -1,7 +1,7 @@
 pkgbase = raylib-cpp-git
 	pkgdesc = raylib-cpp is a C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming
 	pkgver = 0.1.0.r39.gd6f0f22
-	pkgrel = 2
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/RobLoach/raylib-cpp
 	arch = x86_64

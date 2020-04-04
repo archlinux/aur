@@ -1,7 +1,7 @@
 _pkgname="raylib-cpp"
 pkgname=${_pkgname}-git
 pkgver=0.1.0.r39.gd6f0f22
-pkgrel=2
+pkgrel=4
 pkgdesc="raylib-cpp is a C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming"
 arch=('x86_64')
 url="https://github.com/RobLoach/raylib-cpp"
@@ -36,8 +36,8 @@ check() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	install -m644 -d "${pkgdir}/usr/include/raylib"
-	cp -r "${srcdir}/${_pkgname}/include/raylib" "${pkgdir}/usr/include/"
+	install -m755 -d "${pkgdir}/usr/include/raylib"
+	rsync -rK --chmod 644 "${srcdir}/${_pkgname}/include/raylib" "${pkgdir}/usr/include/"
 	install -m644 -D "${srcdir}/raylib-cpp.pc" "${pkgdir}/usr/lib/pkgconfig/raylib-cpp.pc"
 	install -m644 -D "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -m644 -D "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
