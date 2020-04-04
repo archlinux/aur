@@ -1,15 +1,22 @@
 pkgbase = mbrola-voices-ma1
 	pkgdesc = A Malay female voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-ma
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/ma1/ma1.zip
-	md5sums = 3985335d4157d1fb38524c145de5a80d
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ma1/ma1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ma1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ma1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ma1/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/ma1/test/test.pho
+	sha256sums = bdd754fcc98ebd236d7aae16a5d59f2a7fe0c4219896fdf613c8375bb5d74865
+	sha256sums = 1f74cf058de2c89e0059725edf8dc2e91e662be2f6c642dcad3d6b24fb8f5aab
+	sha256sums = 2a6820d17abd2ce42d6d1b33ad21b1f3d30b759949c3ba952669987c660931bb
+	sha256sums = 9545b70cf743e5f8869e77ec9f002bd7fe22ba3c85f7b7bfc6eed547d9d1466e
+	sha256sums = c60f2cd0dd095c44019cbd8bd4e79a9c8979270c425600cb4acdc510a4dd8016
 
 pkgname = mbrola-voices-ma1
 
