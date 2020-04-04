@@ -14,7 +14,7 @@ _merge_requests_to_use=() # safe pick
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=3.36.1+1+g1dea3341e
+pkgver=3.36.1+19+gdfcc5ffb1
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -32,7 +32,7 @@ groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver)
 conflicts=(gnome-shell)
 install=$pkgname.install
-_commit=1dea3341ecdb261005a209eb9b99b1c2a6b9e52e  # tags/3.36.1^1
+_commit=dfcc5ffb1e2b7a8e5ad59b1f83133c06a5b8ff7c  # tags/3.36.1^19
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
@@ -53,9 +53,9 @@ pick_mr() {
       elif [ "$3" = "revert" ]; then
         echo "Reverting $1..."
         git revert "$2" --no-commit
-      elif [ "$2" = "patch" ]; then
+      elif [ "$3" = "patch" ]; then
         echo "Patching $1..."
-        patch -Np1 -i "$2"
+        patch -Np1 -i ../"$2"
       else
         echo "ERROR: wrong argument given: $2"
       fi
