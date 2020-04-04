@@ -2,11 +2,11 @@
 
 pkgname=drill
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Drill is a HTTP load testing application written in Rust inspired by Ansible syntax"
 url="https://github.com/fcsonline/drill"
 depends=('openssl')
-makedepends=('cargo' 'pkgconf')
+makedepends=('cargo')
 arch=('x86_64')
 license=('GPL-3.0')
 source=("${url}/archive/${pkgver}.tar.gz")
