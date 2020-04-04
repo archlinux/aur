@@ -1,0 +1,14 @@
+pkgbase = r-emt
+	pkgdesc = Exact Multinomial Test: Goodness-of-Fit Test for Discrete Multivariate data
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/package=EMT
+	arch = any
+	license = GPL2
+	license = GPL3
+	depends = r
+	source = https://cran.r-project.org/src/contrib/EMT_1.1.tar.gz
+	md5sums = 216ef3cd1b573544f9e25dcba59f543b
+
+pkgname = r-emt
+
