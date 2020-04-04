@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=docker-machine-add-ssh
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Adds docker-machine ssh configuration to your personal ssh
 configuration"
@@ -10,7 +10,7 @@ arch=("any")
 depends=("python>=3.6")
 makedepends=("python-setuptools")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('daac0355919116e522ea79333384bc7590657fed')
+sha1sums=('b2f423eef48b8bfbfb82ca75cf7830637e073169')
 
 package() {
   cd "$pkgname-$pkgver"
