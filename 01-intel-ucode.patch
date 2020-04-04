@@ -1,5 +1,5 @@
 diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 4532266..66662a0 100644
+index 4532266..892d34d 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
 @@ -143,17 +143,14 @@ linux_entry ()
@@ -26,8 +26,16 @@ index 4532266..66662a0 100644
    fi
    sed "s/^/$submenu_indentation/" << EOF
  }
-@@ -236,6 +233,13 @@ while [ "x$list" != "x" ] ; do
-     gettext_printf "Found initrd image: %s\n" "$(echo $initrd_display)" >&2
+@@ -228,14 +225,15 @@ while [ "x$list" != "x" ] ; do
+   initrd=
+   if test -n "${initrd_early}" || test -n "${initrd_real}"; then
+     initrd="${initrd_early} ${initrd_real}"
+-
+-    initrd_display=
+-    for i in ${initrd}; do
+-      initrd_display="${initrd_display} ${dirname}/${i}"
+-    done
+-    gettext_printf "Found initrd image: %s\n" "$(echo $initrd_display)" >&2
    fi
  
 +  initrd_extra=
@@ -40,7 +48,7 @@ index 4532266..66662a0 100644
    config=
    for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
      if test -e "${i}" ; then
-@@ -249,7 +253,9 @@ while [ "x$list" != "x" ] ; do
+@@ -249,7 +247,9 @@ while [ "x$list" != "x" ] ; do
        initramfs=`grep CONFIG_INITRAMFS_SOURCE= "${config}" | cut -f2 -d= | tr -d \"`
    fi
  
