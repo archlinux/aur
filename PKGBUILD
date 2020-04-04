@@ -1,4 +1,4 @@
-# Maintainer: Benjamin Feakins <feakster@posteo.eu>
+# Maintainer: Benjamin Feakins <feakster at posteo dot eu>
 # Contributor: Térence Clastres <t dot clastres at gmail dot com>
 # Modified PKGBUILD from https://aur.archlinux.org/packages/vivaldi-codecs-ffmpeg-extra-bin/
 
