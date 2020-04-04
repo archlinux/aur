@@ -23,12 +23,18 @@ pkgver() {
   
 }
 
-build() {
+prepare() {
   cd "${srcdir}/${_pkgname}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   go build -v -o "../${_pkgname}-bin"
 }
 
