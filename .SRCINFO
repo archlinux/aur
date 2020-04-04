@@ -1,6 +1,6 @@
 pkgbase = hid-apple-patched-git-dkms
-	pkgdesc = Allows to swap the Fn key and left Control key on Macbook Pro and Apple keyboards in GNU/Linux (DKMS)
-	pkgver = 20200331.f7f6560
+	pkgdesc = Swaping the Fn and left Control keys and some other mapping tweaks on Macbook Pro and Apple keyboards (DKMS)
+	pkgver = 20200401.5ebf708
 	pkgrel = 1
 	url = https://github.com/free5lot/hid-apple-patched
 	install = hid-apple-patched-dkms.install
@@ -8,13 +8,14 @@ pkgbase = hid-apple-patched-git-dkms
 	license = GPL2
 	makedepends = git
 	depends = dkms
+	depends = mkinitcpio-modconf-hook
 	source = git+https://github.com/free5lot/hid-apple-patched#branch=master
-	source = hid-apple-patched.conf
-	source = hid_apple_pclayout.conf
+	source = hid_apple.depmod
+	source = hid_apple.modprobe
 	source = dkms.conf
 	sha256sums = SKIP
 	sha256sums = 4b94f1f55febddad5ff60a8918487b883ceadd4e6c3fb280e98e4e235cd09663
-	sha256sums = 2a493d3973b80b815779643b2c1039f52c05e2e9a65cebd00b2a1da105630cbb
+	sha256sums = bf214ca80aa4abb6fe85c1108ea7c941684a5bc57891982b0aefafd5a6339a26
 	sha256sums = 5d2457728a93e73a96f2ca88f66455859363f083097ad20e661bdc12dc44a9ba
 
 pkgname = hid-apple-patched-git-dkms

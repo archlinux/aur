@@ -1,0 +1,11 @@
+# Enable PC-like layout by default.
+# To override, copy this file to /etc/modprobe.d/hid_apple.conf and make
+# desired changes. Note that /etc/modprobe.d/hid_apple.conf will completely
+# replace this file, and the content is NOT merged.
+#
+# Option reference: https://github.com/free5lot/hid-apple-patched#configuration
+options hid_apple fnmode=2
+options hid_apple swap_fn_leftctrl=1
+options hid_apple swap_opt_cmd=1
+options hid_apple rightalt_as_rightctrl=1
+options hid_apple ejectcd_as_delete=1

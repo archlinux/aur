@@ -13,13 +13,9 @@ do_install() {
 
 ==> hid-apple-patched install/upgrade note:
 ------------------------------------------------------------------------------
-Configuration file is installed to /etc/modprobe.d/hid_apple_pclayout.conf.
-By default PC-like layout is enabled. You can tweak it to suit your needs
-according to https://github.com/free5lot/hid-apple-patched#configuration.
+Default configuration file is installed to /usr/lib/modprobe.d/hid_apple.conf.
 
-To make changes work automatically after boot, please rebuild the initramfs.
-See https://wiki.archlinux.org/index.php/Apple_Keyboard#Use_a_patch_to_hid-apple
-for details.
+Wiki: https://wiki.archlinux.org/index.php/Apple_Keyboard#Use_a_patch_to_hid-apple
 
 EOF
 }
