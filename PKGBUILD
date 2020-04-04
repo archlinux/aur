@@ -1,10 +1,10 @@
 # Maintainer: Shatur95 <genaloner@gmail.com>
 
-_qtcreatorver=4.11.1
+_qtcreatorver=4.11.2
 _qnvimver=0.2.15
 
 pkgname=qnvim-git
-pkgver=v1.2.0.r3.ge33c854
+pkgver=v1.2.0.r5.g9163c46
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Neovim backend for Qt Creator'

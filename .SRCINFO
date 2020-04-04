@@ -1,6 +1,6 @@
 pkgbase = qnvim-git
 	pkgdesc = Neovim backend for Qt Creator
-	pkgver = v1.2.0.r3.ge33c854
+	pkgver = v1.2.0.r5.g9163c46
 	pkgrel = 1
 	url = https://github.com/sassanh/qnvim
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = qnvim-git
 	makedepends = llvm
 	makedepends = python
 	makedepends = patchelf
-	depends = qtcreator=4.11.1
+	depends = qtcreator=4.11.2
 	source = git+https://github.com/sassanh/qnvim
-	source = qtcreator-4.11.1.tar.gz::https://github.com/qt-creator/qt-creator/archive/v4.11.1.tar.gz
+	source = qtcreator-4.11.2.tar.gz::https://github.com/qt-creator/qt-creator/archive/v4.11.2.tar.gz
 	source = neovim-qt-0.2.15.tar.gz::https://github.com/equalsraf/neovim-qt/archive/v0.2.15.tar.gz
 	sha256sums = SKIP
 	sha256sums = SKIP
