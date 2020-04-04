@@ -1,15 +1,15 @@
 # Maintainer: 'Sergey Malkin <adresatt@gmail.com>'
 pkgname=python-pyabf
 _pkgname=pyabf
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="A Python interface to files in the Axon Binary Format (ABF)"
 url="https://github.com/swharden/pyABF"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('python' 'python-numpy' 'python-matplotlib')
-source=("https://files.pythonhosted.org/packages/cf/3e/7e7b6442352f452090c0ca693d9949700aeeb8df0dcea8a72f7bfc7f28e1/$_pkgname-$pkgver.tar.gz")
-sha256sums=('be38933fd8f07dec39637e194444bafcffa1a332b472f37be4b15b7bf88a3be9')
+source=("https://files.pythonhosted.org/packages/c3/cc/eac3af9788590f22a47f4a98bf3d4780e2de10d88db820038da3f24ae65f/$_pkgname-$pkgver.tar.gz")
+sha256sums=('c28aa311c174b955a183493f1f5a73301a7d2c12281b429dc87358c7447b3a55')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
