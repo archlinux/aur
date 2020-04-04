@@ -5,7 +5,7 @@
 
 pkgname=qubes-usb-proxy
 _gitname=${pkgname%-git*}
-pkgver=1.0.24
+pkgver=1.0.28
 pkgrel=1
 pkgdesc="The Qubes service for proxying USB devices"
 arch=("x86_64")
