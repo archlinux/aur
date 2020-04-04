@@ -13,7 +13,7 @@
 
 _qt_module=qtnetworkauth
 pkgname=mingw-w64-qt5-networkauth
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Network authentication module (mingw-w64)"
@@ -26,7 +26,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('e7f9705d014056a0d8a9751e7ad4b472f1184b8ef822124f0363753730536ae0')
+sha256sums=('4f00513dd18598487d02187b80b54c669662cf8a8f2573858c7f9282d7b9265e')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
