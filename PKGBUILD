@@ -2,21 +2,27 @@
 
 pkgname=panicparse
 pkgver=1.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Crash your app in style (Golang)"
 arch=('x86_64')
 url='https://github.com/maruel/panicparse'
-license=('Apache2')
+license=('Apache-2.0')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 md5sums=('a4ab1f74f6693eb97d0a4878fc280ce0')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   go build -v -o "../panicparse-bin"
 }
 
