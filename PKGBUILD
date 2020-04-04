@@ -13,7 +13,7 @@
 
 _qt_module=qtwinextras
 pkgname=mingw-w64-qt5-winextras
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc="Classes and functions that enable you to use Windows-specific functions (mingw-w64)"
@@ -25,7 +25,7 @@ groups=('mingw-w64-qt5')
 url='https://www.qt.io/'
 _pkgfqn="${_qt_module}-everywhere-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('222b888b89a8fb02948faf985e8614ac543603a000c1cf2e7489f8bf15ccc3cc')
+sha256sums=('980f1bc31b37c8597c0bac55f69ecf00d1677218ce82f7bc3933236cb6d907f2')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 
