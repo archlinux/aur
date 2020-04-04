@@ -5,7 +5,6 @@ pkgbase = xiringuito
 	url = https://github.com/ivanilves/xiringuito
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = make
 	source = https://github.com/ivanilves/xiringuito/archive/v0.2.1.tar.gz
 	md5sums = 0304ee106d8d1588b05a671846e7836e
 
