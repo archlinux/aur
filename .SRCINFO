@@ -1,0 +1,21 @@
+pkgbase = r-rcompanion
+	pkgdesc = Functions to Support Extension Education Program Evaluation
+	pkgver = 2.3.25
+	pkgrel = 1
+	url = https://cran.r-project.org/package=rcompanion
+	arch = any
+	license = GPL3
+	depends = r>=3.3.0
+	depends = r-desctools>=0.99.17
+	depends = r-multcompview>=0.1.7
+	depends = r-plyr>=1.8.4
+	depends = r-emt>=1.1
+	depends = r-coin>=1.1.2
+	depends = r-lmtest>=0.9.34
+	depends = r-nortest>=1.0.4
+	optdepends = r-fsa
+	source = https://cran.r-project.org/src/contrib/rcompanion_2.3.25.tar.gz
+	md5sums = 4dd3ea323ce109dfb87a453ead9fba50
+
+pkgname = r-rcompanion
+
