@@ -1,7 +1,7 @@
 pkgbase = libqtolm
 	pkgdesc = A Qt wrapper for libolm
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/b0/libQtOlm
 	arch = any
 	license = GPL-3.0-or-later
