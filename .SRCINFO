@@ -1,16 +1,24 @@
 pkgbase = mbrola-voices-la1
 	pkgdesc = A Classical Latin male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 3
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-la
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/la1/la1.zip
-	md5sums = f7663f3391479b606466e0cc2277b871
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/la1/la1
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/la1/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/la1/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/la1/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/la1/test/test_1.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/la1/test/test_2.pho
+	sha256sums = 14f0760405123f5ce40c7cf240960f6822fc12c092d9cb6d2b7179f23e3ed3b6
+	sha256sums = e1ccbd77eb5977af0c4140704d950d7e175d7969e24e395d0f001aea8a3d3043
+	sha256sums = 6458f18e16acc509e32b9c61179aba2c0198ad4502f14cb5dc7f1fd29ee36e58
+	sha256sums = c5f9db0c1b745fe45957236aa9100f6615a4ea8d00f9f55de16d3f688e073254
+	sha256sums = 070fb06267ce717836f18edeed88acb8db54c85630d8d8f87faec86547e47050
+	sha256sums = 23265e07eafc427aa1209208e41afc873b4bcb90a15d5a22e484a1dfa1ab71bb
 
 pkgname = mbrola-voices-la1
 
