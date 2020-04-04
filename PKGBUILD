@@ -8,13 +8,13 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('429' '493' '579' '724' '983' '256')
-_merge_requests_to_use=('724' '983' '1124' '256') # safe pick
+# available MR: ('429' '493' '579' '983' '256')
+_merge_requests_to_use=('983' '1124' '256') # safe pick
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=3.36.1
+pkgver=3.36.1+9+g7e94311e2
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -30,7 +30,7 @@ conflicts=(mutter)
 replaces=(mutter-781835-workaround)
 groups=(gnome)
 install=mutter.install
-_commit=52e5d6fc948ecd7d78c3bddf2cff13eb3c386f4c  # tags/3.36.1^0
+_commit=7e94311e2eb78c5fbaf8df047bebc92bd501aeb8  # tags/3.36.1^9
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit")
 sha256sums=('SKIP')
 
@@ -132,12 +132,6 @@ prepare() {
   # Status: 2
   # Comment:
   pick_mr '983'
-
-  # Title: Sync timelines to hardware vsync
-  # URL: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/724
-  # Type: 1
-  # Status: 2
-  pick_mr '724'
 
 }
 
