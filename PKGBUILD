@@ -15,7 +15,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('any')
 pkgdesc='Classes for audio, video, radio and camera functionality (mingw-w64)'
@@ -31,11 +31,11 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/subm
         '0002-Fix-build-with-ANGLE.patch'
         '0003-Link-directshow-plugin-against-libamstrmid.patch'
         '0004-Fix-case-of-header-file-includes-for-building-with-m.patch')
-sha256sums=('c458121c8db7ff77eefe643a7c9847ff324647f2603bb5664bcafa6435edeae7'
-            '868eee99997f42ea69f1fd58938b447be77a20b3e210f6b4a2e547666f5e8456'
-            'c47b93ba7de47f0a67c7a200b1d9d36b7aefa507c5a8f2fb510cc69545fd3a7b'
-            'e35c8f9877b2ade5c650ca79e56b527db30dcfc39048f2694e4da25281f530a0'
-            'a008984f200628a3a58bcde1c95247b578af77d0abcab242f2a16f46db23e911')
+sha256sums=('7acd8ede6835314206e407b35b668f0add67544577fb51fe67afb03137fb9fe9'
+            '99ef1ba681ad5db2e5f3ae3f83de7e25a63e6885befd236b0381f1940a464dab'
+            '72da977e5489d04fc5396cb25f3d56b0dd8bfd5b6ea543d06ba18bc1bb5bfdcb'
+            '9222eec2ae3f4d3e007c99ed6dfe5852cc98e797e1c7c78583ed1b2f9eab3919'
+            'ab81776ff0f05f45c8c265af92ef167aebd3e1ae3ee41a715163838e0f18523b')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

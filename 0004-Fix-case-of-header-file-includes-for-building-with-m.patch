@@ -93,5 +93,5 @@ index c6f4e856..15ef6f0a 100644
  #include <QtCore/qfile.h>
  #include <QtCore/qdebug.h>
 -- 
-2.25.0
+2.26.0
 
