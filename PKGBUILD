@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-beta-ozone
-pkgver=81.0.4044.69
+pkgver=81.0.4044.91
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (beta channel)"
@@ -32,7 +32,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
         chromium-skia-harmony.patch)
-sha256sums=('6dfbad39bb874735d9bf183314ab9cffe7e1f240489e09a7898bdd3765d9f09c'
+sha256sums=('cec9da1fe5c5a99e97e9ca29d0836b12239439ede40794e52a9a2fdef065d4ca'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
             'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
             '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
