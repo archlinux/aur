@@ -1,20 +1,28 @@
 pkgbase = minecraft
-	pkgdesc = An open-world game whose gameplay revolves around breaking and placing blocks
-	pkgver = latest
-	pkgrel = 30
+	pkgdesc = Minecraft Launcher
+	pkgver = 2.1.13509
+	pkgrel = 1
 	url = https://www.minecraft.net/
-	install = minecraft.install
 	arch = any
 	license = custom
-	depends = java-runtime>=8
+	depends = java-runtime
 	depends = xorg-xrandr
-	depends = ttf-font
+	depends = libxss
+	depends = libx11
+	depends = libxcb
+	depends = alsa-lib
+	depends = gtk2
+	depends = gtk3
+	depends = gconf
 	depends = libxtst
-	noextract = minecraft.jar
+	depends = nss
+	optdepends = flite: narrator support
+	provides = minecraft-launcher
+	provides = minecraft-launcher-beta
+	conflicts = minecraft-launcher
+	conflicts = minecraft-launcher-beta
 	source = https://launcher.mojang.com/download/Minecraft.deb
-	source = minecraft.install
 	sha256sums = cd0ae1dc28f029e6bf2c61cb4a36bb244d4129519917d7a17a7f4c8ad98adb37
-	sha256sums = 5174152203f11821b88993c77e30f2a56bbfe655f7514114a0f1d0f1a40b0d10
 
 pkgname = minecraft
 
