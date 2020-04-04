@@ -1,14 +1,14 @@
 pkgbase = vpn-unlimited
 	pkgdesc = VPN Unlimited client application
 	pkgver = 4.23
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.vpnunlimitedapp.com
 	arch = x86_64
 	license = custom:"Copyright (c) 2017 KeepSolid Inc."
 	depends = glibc>=2.9
 	depends = qt5-base>=5.2.1
 	depends = qt5-script>=5.2.1
-	depends = qt5-webkit>=5.1.1
+	depends = qt5-webkit>=5.2.1
 	depends = gcc-libs>=4.4.15
 	depends = zlib>=1.2.0
 	depends = openvpn
@@ -20,6 +20,7 @@ pkgbase = vpn-unlimited
 	depends = c-ares>=1.10.0
 	depends = lsb-release
 	depends = strongswan>=5.8.1
+	depends = qt5-webengine>=5.2.1
 	source_x86_64 = vpn-unlimited
 	source_x86_64 = vpn-unlimited-daemon.service
 	source_x86_64 = http://c7be0123d7efff32860a-a5a4fb8b39b86d00a1eb7d52603ae1d2.r6.cf1.rackcdn.com/vpn-unlimited_4.23_bionic_amd64.deb

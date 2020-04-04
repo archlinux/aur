@@ -2,7 +2,7 @@
 
 pkgname=vpn-unlimited
 pkgver=4.23
-pkgrel=4
+pkgrel=5
 pkgdesc="VPN Unlimited client application"
 arch=("x86_64")
 url="https://www.vpnunlimitedapp.com"
@@ -21,10 +21,10 @@ sha256sums_x86_64=(
 )
 
 depends=(
-  "glibc>=2.9" "qt5-base>=5.2.1" "qt5-script>=5.2.1" "qt5-webkit>=5.1.1"
+  "glibc>=2.9" "qt5-base>=5.2.1" "qt5-script>=5.2.1" "qt5-webkit>=5.2.1"
   "gcc-libs>=4.4.15" "zlib>=1.2.0" "openvpn" "openresolv" "lzo>=2.0"
   "libcurl-compat" "iproute" "net-tools" "c-ares>=1.10.0" "lsb-release"
-  "strongswan>=5.8.1"
+  "strongswan>=5.8.1" "qt5-webengine>=5.2.1"
 )
 
 package() {
