@@ -12,13 +12,18 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/concourse/concourse/arc
 makedepends=('go')
 md5sums=('98d3458860dfed6bd83278e5fc343508')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   mkdir -p $srcdir/go
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
   go get -d -v ./...
-  cd cmd/concourse
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}/cmd/concourse"
+  export GOPATH="${srcdir}"/go
+  export PATH=$PATH:$GOPATH/bin
   go build -v -o "${srcdir}/${pkgname}-bin"
 }
 
