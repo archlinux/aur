@@ -3,7 +3,7 @@
 
 pkgname=python-distributed
 _pkgname=distributed
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="Python library for distributed computing"
 arch=('any')
@@ -13,6 +13,8 @@ depends=(
   'python-tornado' 'python-zict' 'python-yaml'
 )
 optdepends=(
+  'python-cytoolz: Cython version of python-toolz for improved performance'
+
   # Packages suggested in dev-requirements.txt
   'python-joblib: Joblib integration'
   'python-pandas: Pandas integration'
@@ -39,7 +41,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/d/distributed/distributed-$pkgver.tar.gz"
 )
 sha256sums=(
-  '249156c458fa1c0d7c9fb0781bb68d710cc6169e1aebbf87667b708c5cfc609f'
+  'd9d49536fefc4238417de89bc6ddcc1cfa64da90d52b74128a16d9d28a823089'
 )
 
 build() {
