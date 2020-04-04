@@ -1,6 +1,6 @@
 pkgbase = ksysguard-gpu-git
 	pkgdesc = gpu visualization for ksysguard
-	pkgver = 0.3.r5.gd4bf830
+	pkgver = 0.3.r7.g2099048
 	pkgrel = 1
 	url = https://github.com/lestofante/ksysguard-gpu
 	arch = any

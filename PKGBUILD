@@ -2,7 +2,7 @@
 
 _pkgname=ksysguard-gpu
 pkgname=$_pkgname-git
-pkgver=0.3.r5.gd4bf830
+pkgver=0.3.r7.g2099048
 pkgrel=1
 pkgdesc="gpu visualization for ksysguard"
 arch=(any)
@@ -23,11 +23,7 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare(){
-	sed -i "s/gpuStatsServer.py/$_pkgname/" "${srcdir}/$_pkgname/systemd-unit/gpuStatsServer.service"
-}
-
 package() {
-	install -Dm644 "${srcdir}/$_pkgname/systemd-unit/gpuStatsServer.service" "${pkgdir}/usr/lib/systemd/system/$_pkgname.service"
-	install -Dm755 "${srcdir}/$_pkgname/src/gpuStatsServer.py" "${pkgdir}/usr/bin/$_pkgname"
+	install -Dm644 "${srcdir}/$_pkgname/systemd-unit/ksysguard-gpu.service" "${pkgdir}/usr/lib/systemd/system/ksysguard-gpu.service"
+	install -Dm755 "${srcdir}/$_pkgname/src/ksysguard-gpu.py" "${pkgdir}/usr/bin/ksysguard-gpu.py"
 }
