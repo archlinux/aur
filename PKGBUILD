@@ -4,9 +4,9 @@
 pkgname=parmetis-mpich
 pkgver=4.0.3.p6
 _pkgver=4.0.3-p6
-_pkgdirname=petsc-pkg-parmetis-73dab469aa36
+_pkgdirname=petsc-pkg-parmetis-475d8facbb32
 _prefix=/opt/mpich
-pkgrel=1
+pkgrel=2
 pkgdesc="A parallel graph partitioning library, built against MPICH"
 url="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview"
 arch=('i686' 'x86_64')
