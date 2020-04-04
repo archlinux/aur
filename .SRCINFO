@@ -9,6 +9,7 @@ pkgbase = konnect
 	makedepends = git
 	makedepends = yarn
 	makedepends = scour
+	makedepends = imagemagick
 	depends = glibc
 	backup = etc/konnect/identifier-registration.yaml
 	backup = etc/konnect/scopes.yaml

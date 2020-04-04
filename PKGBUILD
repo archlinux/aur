@@ -9,22 +9,28 @@ arch=('x86_64')
 url="https://stash.kopano.io/projects/KC/repos/konnect"
 license=('Apache')
 depends=(glibc)
-makedepends=('go-pie' 'git' 'yarn' 'scour')
+makedepends=('go-pie' 'git' 'yarn' 'scour' 'imagemagick')
 backup=("etc/konnect/identifier-registration.yaml" "etc/konnect/scopes.yaml")
 source=("git+https://github.com/Kopano-dev/konnect.git#tag=v${pkgver}?signed" konnect.sysusers)
 validpgpkeys=('9DDB6CAD455D63112CAD26D8CA499C410B3C3354')
 sha256sums=('SKIP'
             '29f9c23d317f769940537d186a30ca355e107d440047e516ff149d70b70b589f')
 
-build() {
+prepare() {
   cd $pkgname
   make vendor
+}
+
+build() {
+  cd $pkgname
 
   go build \
     -mod=vendor \
     -trimpath \
     -ldflags "-extldflags $LDFLAGS" \
     -o $pkgname ./cmd/konnectd/
+
+  make -C identifier
 }
 
 check() {
@@ -43,4 +49,8 @@ package() {
   install -d "$pkgdir"/etc/konnect
   install -Dm644 identifier-registration.yaml.in "$pkgdir"/etc/konnect/identifier-registration.yaml
   install -Dm644 scopes.yaml.in "$pkgdir"/etc/konnect/scopes.yaml
+
+  # web application
+  install -d ${pkgdir}/usr/share/webapps/${pkgname}/identifier-webapp
+  cp -av identifier/build/* ${pkgdir}/usr/share/webapps/${pkgname}/identifier-webapp/
 }
