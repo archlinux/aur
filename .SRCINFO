@@ -1,7 +1,7 @@
 pkgbase = gomplate-bin
 	pkgdesc = A flexible commandline tool for template rendering. Supports lots of local and remote datasources
 	pkgver = 3.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gomplate.ca
 	arch = x86_64
 	license = MIT
