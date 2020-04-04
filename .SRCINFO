@@ -1,11 +1,11 @@
 pkgbase = ponzu
 	pkgdesc = Headless CMS with automatic JSON API. Featuring auto-HTTPS from Let's Encrypt, HTTP/2 Server Push, and flexible server framework written in Go
 	pkgver = 0.11.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://docs.ponzu-cms.org
 	arch = i686
 	arch = x86_64
-	license = BSD3
+	license = BSD 3-Clause
 	makedepends = go
 	makedepends = git
 	source = ponzu-0.11.0.tar.gz::https://github.com/ponzu-cms/ponzu/archive/v0.11.0.tar.gz
