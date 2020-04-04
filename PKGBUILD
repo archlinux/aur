@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=vim-tabnine
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="TabNine is the all-language autocompleter. It uses machine learning to provide responsive, reliable, and relevant suggestions."
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=()
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('a7fb111e4dbc7ea728977652880b4f79a63cfca14e68082101f76e3e58e601f5')
+sha256sums=('be392eb621493268125c403d9afcc8e871d442337abfff99bf07690558943209')
 
 package() {
   cd "$srcdir/tabnine-vim-${pkgver}"
