@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <yochanan dot marqos at gmail dot com>
 # Co-Maintainer: Corax <cor dot ax26 at gmail dot com>
 pkgname=python-mediainfodll
-pkgver=19.09
-pkgrel=2
+pkgver=20.03
+pkgrel=1
 pkgdesc="Python shared library for reading metadata from media files"
 arch=('any')
 url="https://github.com/MediaArea/MediaInfoLib"
 license=('BSD 2-Clause')
 depends=('libmediainfo' 'python')
 source=("MediaInfoLib-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4cc409f6e5a0bfa95f8c48d95d31054a4f7b7ef0d03b1ab38abcd534d8688038')
+sha256sums=('2a1da41b94aa5380c537f198f3c797fd9ef23891709e935143e4535099437311')
 
 package() {
 
