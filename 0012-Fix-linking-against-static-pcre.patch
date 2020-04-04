@@ -1,4 +1,4 @@
-From d3f6ecda90e28aabf58cbb4a92f22e803551ac05 Mon Sep 17 00:00:00 2001
+From 0c26bfba6773298fd314fc38ec1be7cb58a5d752 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 14:24:01 +0200
 Subject: [PATCH 12/31] Fix linking against static pcre
@@ -9,7 +9,7 @@ Change-Id: I3225c6e82dc4d17aef37d4289c16eb7a5ea3c5a1
  1 file changed, 4 insertions(+)
 
 diff --git a/src/corelib/text/qregularexpression.cpp b/src/corelib/text/qregularexpression.cpp
-index 67be67c243..0bc4c5157c 100644
+index 59d21e0a23..518f91d753 100644
 --- a/src/corelib/text/qregularexpression.cpp
 +++ b/src/corelib/text/qregularexpression.cpp
 @@ -53,6 +53,10 @@
@@ -24,5 +24,5 @@ index 67be67c243..0bc4c5157c 100644
  #include <pcre2.h>
  
 -- 
-2.25.0
+2.26.0
 

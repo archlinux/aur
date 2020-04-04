@@ -1,4 +1,4 @@
-From 987965be28fab78041880dfbede4be209e142b26 Mon Sep 17 00:00:00 2001
+From 181461364ddf790c194108c4d6130cdd117c3a0a Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:32:00 +0200
 Subject: [PATCH 20/31] Pull dependencies of static libraries in CMake modules
@@ -34,7 +34,7 @@ Change-Id: I6566d42d7e27d4cd23d261a0eacca9efad9ce6df
  2 files changed, 135 insertions(+), 190 deletions(-)
 
 diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
-index 50364765fb..357c8b9cba 100644
+index 1099a761ce..a82e6a886f 100644
 --- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 +++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
 @@ -53,6 +53,10 @@ function(_qt5_$${CMAKE_MODULE_NAME}_process_prl_file prl_file_location Configura
@@ -484,5 +484,5 @@ index 7b70cfed09..25f2162fe6 100644
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_TYPE \"$$CMAKE_PLUGIN_TYPE\")
 -set_property(TARGET Qt5::$${CMAKE_PLUGIN_NAME} PROPERTY QT_PLUGIN_EXTENDS \"$$CMAKE_PLUGIN_EXTENDS\")
 -- 
-2.25.0
+2.26.0
 

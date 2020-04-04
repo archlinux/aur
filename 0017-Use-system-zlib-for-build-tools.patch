@@ -1,4 +1,4 @@
-From e7c872f9a7e09ac30e4ea4b236630df96af1b601 Mon Sep 17 00:00:00 2001
+From 3b9033c42d77fba36734f8268f042e2c0154c2b5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 18 Sep 2016 18:04:42 +0200
 Subject: [PATCH 17/31] Use system zlib for build tools
@@ -23,5 +23,5 @@ index 9863ff5e69..02329611bc 100644
  } else {
      CONFIG += no_core_dep
 -- 
-2.25.0
+2.26.0
 
