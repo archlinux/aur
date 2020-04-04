@@ -1,6 +1,6 @@
 pkgbase = tunefish4-git
 	pkgdesc = An additive wavetable-based synthesizer VST plugin (git version)
-	pkgver = 4.1.0.r80.13bd685
+	pkgver = 4.2.0.r90.a199cb0
 	pkgrel = 1
 	url = http://www.tunefish-synth.com/
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = tunefish4-git
 	conflicts = tunefish4
 	conflicts = tunefish4-vst-bin
 	source = tunefish4::git://github.com/paynebc/tunefish.git
+	source = juce-pixel.patch
 	sha256sums = SKIP
+	sha256sums = c0b274515dadd14b530c35517d6fb3749b861344cec90c12eef965c9bca3e479
 
 pkgname = tunefish4-git
 
