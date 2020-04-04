@@ -1,15 +1,26 @@
 pkgbase = mbrola-voices-lt2
 	pkgdesc = A Lithuanian male voice for the MBROLA synthesizer
-	pkgver = 1
-	pkgrel = 2
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-lt
 	groups = mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/lt2/lt2.zip
-	md5sums = f7f78b06a0d3df4a05f8ba9a8f173327
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/lt2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/test/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/test/debesud.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/test/kiekvd.pho
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/lt2/test/polangd.pho
+	sha256sums = 855b49a11f962e3e61223f96187f7cbb60844c52748d3ebab17cb0a0ea2b0062
+	sha256sums = c906047a0bbf8c1c51fae8347f472833a73c6ab88f4b62dcecb1a73a1d2802d3
+	sha256sums = ba85289431ab0090b94c9ceedf62f513494656190e5f8f3ffc46953a4c8257f5
+	sha256sums = 1b015848f8d7335f24a8825a18822055b1105a12953279c7656099161bec2c00
+	sha256sums = 270d5ba1241ac93f3198d537670aaa1ce6edc996f754c10479bc30cb059be781
+	sha256sums = 496d2826b3c14f3cd89ed29223786bc17e47f105d6e60f0dd23682bf5cd18c3f
+	sha256sums = 2e3f7d10a10dd69e7c369c88ae05ab81ab02d5368225038ea9c980843e7c06f6
 
 pkgname = mbrola-voices-lt2
 
