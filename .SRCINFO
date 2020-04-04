@@ -1,6 +1,6 @@
 pkgbase = rm-improved
 	pkgdesc = Rm ImProved (rip) is a command-line deletion tool focused on safety, ergonomics, and performance. Use it as a safer alternative to rm.
-	pkgver = 0.12.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/nivekuil/rip
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = rm-improved
 	makedepends = rust
 	depends = gcc-libs
 	conflicts = rip
-	source = rm-improved-0.12.0.tar.gz::https://github.com/nivekuil/rip/archive/0.12.0.tar.gz
-	sha256sums = 895a658c6362026c46f54059e129fba362cf0a1385e8a7b974ac8adabcfcdd64
+	source = rm-improved-0.13.1.tar.gz::https://github.com/nivekuil/rip/archive/0.13.1.tar.gz
+	sha256sums = 73acdc72386242dced117afae43429b6870aa176e8cc81e11350e0aaa95e6421
 
 pkgname = rm-improved
 
