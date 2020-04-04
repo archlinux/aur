@@ -2,24 +2,43 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=lha
-pkgver=1.17
-pkgrel=6
+pkgver=1.14i
+pkgrel=1
+epoch=1
 pkgdesc="A compression and archive utility for LH-7 format archives"
-arch=('i686' 'x86_64')
-url="http://www.infor.kanazawa-it.ac.jp/~ishii/lhaunix/"
-license=('custom')
-depends_i686=('glibc')
-depends_x86_64=('lib32-glibc')
-source=("ftp://ftp.uhulinux.hu/mirror/http%3A/www.infor.kanazawa-it.ac.jp/~ishii/lhaunix/linux/${pkgname}${pkgver/./}.tar.gz"
+arch=('x86_64')
+url='http://lha.osdn.jp'
+license=('custom:lha')
+depends=('glibc')
+source=("git+https://github.com/jca02266/lha.git#commit=7c3cd95fdf0d2f9198bb779561724cd314bc39a6"
         'LICENSE'
-        'lha.man.en')
-sha1sums=('da97195db297d2d1f8f288b1b99eea426edb8170'
-          'e62662e4b8ab2b11bf60d9803312f9743ad731e2'
-          '1c100e5178d324103fb6382edd3e96789a86a86a')
+        )
+sha256sums=('SKIP'
+            'c88f52b7b6b223d1347c6721c24b63ba947baa1756e3713e1fff220e974b9120'
+            )
+
+prepare() {
+  mkdir -p build
+}
+
+build() {
+  cd lha
+  autoreconf -vfi
+
+  cd ../build
+  ../lha/configure \
+    --prefix=/usr
+
+    make
+
+}
+
+check() {
+  make -C build check
+}
 
 package() {
-  install -Dm755 lha "${pkgdir}/usr/bin/lha"
-  install -Dm644 lha.man "${pkgdir}/usr/share/man/ja/man1/lha.1"
-  install -Dm644 lha.man.en "${pkgdir}/usr/share/man/man1/lha.1"
+  make -C build DESTDIR="${pkgdir}" install
+
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
