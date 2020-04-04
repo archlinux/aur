@@ -16,7 +16,7 @@ provides=('powerline-console-fonts')
 conflicts=('powerline-console-fonts')
 
 pkgver() {
-    git describe --long --tags | \
+    git -C "${srcdir}/${_reponame}" describe --long --tags | \
         sed 's|\([0-9]\+.[0-9]\+.[0-9]\+.\)\([^-]*-g\)|r\2|;s|-|.|g;s|^v||g'
 }
 
