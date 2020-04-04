@@ -20,10 +20,14 @@ source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz"
 md5sums=('664a436410b002c86acb8ff9f3bfbc85'
 		 '3835f5d90a60f80dc644259c9aa713e5')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
   mkdir -p ${srcdir}/yarn_cache
   yarn --cache-folder=${srcdir}/yarn_cache
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}/desktop"
   yarn build --cache-folder=${srcdir}/yarn_cache --linux --version $pkgver 
 }
 
