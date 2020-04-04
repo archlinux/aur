@@ -1,6 +1,6 @@
 pkgbase = odio-edit
 	pkgdesc = A lightweight audio wave editor
-	pkgver = 20.04.3.4
+	pkgver = 20.04.3.5
 	pkgrel = 1
 	url = https://tari.in/www/software/odio-edit
 	arch = i686
