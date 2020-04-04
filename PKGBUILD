@@ -4,14 +4,13 @@
 
 pkgname=zsh-theme-powerlevel10k
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerlevel10k is a theme for Zsh. It emphasizes speed, flexibility and out-of-the-box experience."
 arch=('any')
 url='https://github.com/romkatv/powerlevel10k'
 license=('MIT')
 depends=('zsh')
 conflicts=('zsh-theme-powerlevel9k')
-replaces=('zsh-theme-powerlevel9k')
 optdepends=(
   'powerline-fonts: patched fonts for powerline'
   'oh-my-zsh-git: oh-my-zsh integration'
