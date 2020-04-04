@@ -1,6 +1,6 @@
 % layout 'mingw-w64-qt5-module';
 \
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Static and runtime integration of SCXML models into Qt code (mingw-w64)"
