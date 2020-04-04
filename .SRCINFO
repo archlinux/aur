@@ -1,7 +1,7 @@
 pkgbase = foy
 	pkgdesc = A simple, light-weight and modern task runner for general purpose
 	pkgver = 0.1.29
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zaaack.github.io/foy
 	arch = any
 	license = MIT

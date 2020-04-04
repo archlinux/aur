@@ -2,7 +2,7 @@
 
 pkgname=foy
 pkgver=0.1.29
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, light-weight and modern task runner for general purpose"
 arch=('any')
 url='http://zaaack.github.io/foy'
@@ -11,12 +11,16 @@ makedepends=('yarn' 'npm')
 source=("https://github.com/zaaack/foy/archive/v${pkgver}.tar.gz")
 md5sums=('566c10753cf2ddbfea2530deafdd4836')
 
-build() {
+prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}
   mkdir -p ${srcdir}/yarn_cache
   rm package-lock.json
   rm -rf .vscode
   yarn --cache-folder=${srcdir}/yarn_cache install 
+}
+
+build() {
+  cd ${srcdir}/${pkgname}-${pkgver}
   yarn --cache-folder=${srcdir}/yarn_cache build
 }
 
