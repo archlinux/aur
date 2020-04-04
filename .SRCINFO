@@ -1,6 +1,6 @@
 pkgbase = csol
 	pkgdesc = A small collection of ncurses-based solitaire/patience games.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/nielssp/csol
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = csol
 	license = MIT
 	makedepends = cmake
 	depends = ncurses
-	source = https://github.com/nielssp/csol/archive/v1.3.0.tar.gz
-	md5sums = 5ce30c3e839b3b61ec4199feb44d11b2
+	source = https://github.com/nielssp/csol/archive/v1.4.0.tar.gz
+	md5sums = 61746cc53c106bf4345d6a7ad553636e
 
 pkgname = csol
 
