@@ -2,7 +2,7 @@
 
 pkgname=mole-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI app to create SSH tunnels"
 arch=('x86_64')
 url='https://davrodpin.github.io/mole/'
@@ -12,6 +12,5 @@ source=("https://github.com/davrodpin/mole/releases/download/v${pkgver}/mole${pk
 md5sums=('36b2bf3dfbd50354644e2156172f9015')
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 mole "${pkgdir}/usr/bin/mole"
+  install -Dm755 "${srcdir}"/mole "${pkgdir}/usr/bin/mole"
 }
