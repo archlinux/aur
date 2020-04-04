@@ -2,13 +2,12 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 # https://gitlab.manjaro.org/packages/extra/pamac
 pkgname=pamac-cli
-pkgver=9.4.0
-pkgrel=4
+pkgver=9.4.1
+pkgrel=1
 _pkgfixver=$pkgver
 
-_pkgvercommit=v$pkgver
-_pkgvercommit='712e0e22958f41c311afe1fc21ef478729fcbe59'
-sha256sums=('cca8e5665256870b122ae1398d92b0278d72eb9f4ac31a014cd8176035e0c733'
+_commit='641dd802e2b483f6d42d0aa194944cad0c3bd20f'
+sha256sums=('098f6134414bbfd9afcdc9d3b31d40e1c38dca653cf4641f481605346ce269ee'
             'aeeb4b139a301473a6601b03c2a6c7f2c5532b8a1f9a2da419ae3ad4de018800')
 
 pkgdesc="Pamac cli frontend for libalpm"
@@ -24,18 +23,18 @@ replaces=('pamac')
 options=(!emptydirs)
 install=
 
-source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_pkgvercommit/pamac-$_pkgvercommit.tar.gz" "meson.build")
+source=("pamac-$pkgver-$pkgrel.tar.gz::$url/-/archive/$_commit/pamac-$_commit.tar.gz" "meson.build")
 
 prepare() {
-  cd "$srcdir/pamac-$_pkgvercommit"
+  cd "$srcdir/pamac-$_commit"
 
   # adjust version string
   sed -i -e "s|\"$_pkgfixver\"|\"$pkgver-$pkgrel\"|g" src/version.vala
 }
 
 build() {
-  cp -f "$srcdir/meson.build" "$srcdir/pamac-$_pkgvercommit/src/meson.build"
-  cd "$srcdir/pamac-$_pkgvercommit"
+  cp -f "$srcdir/meson.build" "$srcdir/pamac-$_commit/src/meson.build"
+  cd "$srcdir/pamac-$_commit"
   mkdir -p builddir
   cd builddir
   meson --buildtype=release --prefix=/usr --sysconfdir=/etc
@@ -45,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/pamac-$_pkgvercommit/builddir"
+  cd "$srcdir/pamac-$_commit/builddir"
   DESTDIR="$pkgdir" ninja install
   # clean graphic files
   rm -rf "$pkgdir/etc/xdg"
