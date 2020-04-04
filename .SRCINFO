@@ -1,0 +1,12 @@
+pkgbase = maxflat-mod
+	pkgver = 1
+	pkgrel = 3
+	url = https://www.opencode.net/donarturo/maxflat-mod/tree/master/MaxFlat-mod
+	arch = any
+	license = GPL3
+	depends = gtk-engines
+	source = https://www.opencode.net/donarturo/maxflat-mod/-/archive/master/maxflat-mod-master.tar.gz
+	sha256sums = 61ded7d27b900ac7c68d449bed41012879b7ff7ffe5cc8cb124fbaeef22a84f7
+
+pkgname = maxflat-mod
+
