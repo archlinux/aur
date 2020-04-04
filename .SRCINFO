@@ -1,4 +1,4 @@
-pkgbase = muse
+pkgbase = muse-fresh
 	pkgdesc = A MIDI/Audio sequencer with recording and editing capabilities
 	pkgver = 3.1
 	pkgrel = 1
@@ -32,9 +32,9 @@ pkgbase = muse
 	optdepends = dssi-vst: dssi-vst plugins support
 	optdepends = ladish: LASH session support
 	provides = muse
-	conflicts = muse
+	conflicts = musemuse-git
 	source = https://github.com/muse-sequencer/muse/releases/download/muse_3_1_0/muse-3.1.tar.gz
 	sha256sums = b2d5c57ea30607cd9f7bea8b5d6488c54de732a1565db8e88f5536c1e478e875
 
-pkgname = muse
+pkgname = muse-fresh
 
