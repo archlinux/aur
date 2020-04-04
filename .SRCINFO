@@ -1,7 +1,7 @@
 pkgbase = gomason
 	pkgdesc = A tool for testing, building, signing, and publishing binaries
 	pkgver = 2.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nikogura/gomason
 	arch = x86_64
 	license = MIT
