@@ -1,7 +1,7 @@
 pkgbase = asm-cli
 	pkgdesc = Interactive shell of assembly language(X86/X64) based on unicorn and keystone
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cch123/asm-cli
 	arch = x86_64
 	license = MIT
