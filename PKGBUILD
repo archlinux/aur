@@ -2,12 +2,12 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=2
-_srcname=linux-5.5
-_major=5.5
+pkgrel=1
+_srcname=linux-5.6
+_major=5.6
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc.
-_minor=14
+_minor=1
 ### on initial release comment this out and set to =1
 _minorc=$((_minor+1))
 #_minorc=1
@@ -31,35 +31,17 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
-0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch
-0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch
-0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch
-0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch
-0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch
-0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch
-0010-drm-i915-Introduce-a-vma.kref.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('1edd03a9ba8e98ce3ba7463d6979f20bdba0ee5d75456208453eeb0ac738eef4'
+sha256sums=('34b077bee2947b75a514bf6dd4872b2c6d6324412905d0f56ba68cffc6e60d2e'
             'SKIP'
-            '4c529e4e100df11887e0a789d0e46d7ffd053e68a0380b6173a3a2799192ef6a'
+            '46d8fd446d0f6aa4b039d92d9a4992dfa1bf67e4274ec1b77616daf5174f1530'
             'SKIP'
-            'cefc4c5853c1df6595380fb7259289f5850662cd7aa9600dce114e4e525114e1'
-            '62b087dd679e096a18611648308c05c896c587b488631fef4df51524dc4d2b6c'
-            'ab9b3259ca838688a02beb37df3ba0d058b3b3847b703e99352b193a1be961e6'
-            '32c0ca29f46c7335ed8f7c2052ee1eccc88287d88680e7d4d1a6104134abf5a2'
-            '2dfd1fc8c6115a7633dca86df1098cc55e6401ec7cbee1c2d0f1cbcfa1d7bf78'
-            'ef83a35e3516b456923be416606ccabfd05abe8ca587007a2fc00001c609ecca'
-            'd8cb6bf029d5a3729149bdd6fb88b4d57691d37baf4e6d280283197693c82f24'
-            '8da1046091242178219de63805bf08f2d8bfe72874ab5f2b616249d7b87227ea'
-            '70f0e78e7335cb713c06a1e0b886d4c8edebf2048c588f00d12e95c930483cd9'
-            '6d305596dc9be86a65b9200bf69c001a8e4ddd41cad471289c3c769b5530c359'
-            'a4a10bcb55fc1991200c3835b359b81f5e3e858f5be77c6b9eaef033885c8bfc')
+            'cdcab2af044fc7a30065782066eb1e85b2e5a1842841e03ab9923394043d90ec'
+            '69117e252eb3c3bdfda08008c3e6e383675a4df5db03cdb76095089ee6a221f3')
 
 _kernelname=${pkgbase#linux}
 
@@ -106,6 +88,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd linux-${_fullver}
   local kernver="$(<version)"
@@ -124,9 +108,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -203,8 +184,6 @@ _package-headers() {
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
