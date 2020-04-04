@@ -12,8 +12,7 @@ source=("${url}/releases/download/v${pkgver}/reviewdog_${pkgver}_Linux_x86_64.ta
 md5sums=('0a0fc436093d4ac321360294bf280500')
 
 package() {
-	cd "${srcdir}"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/reviewdog/LICENSE"
-	install -Dm755 reviewdog "${pkgdir}/usr/bin/reviewdog"
+	install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/reviewdog/LICENSE"
+	install -Dm755 "${srcdir}"/reviewdog "${pkgdir}/usr/bin/reviewdog"
 }
 # vim:set ts=2 sw=2 et:
