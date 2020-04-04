@@ -1,0 +1,19 @@
+pkgbase = ret-sync-ghidra-git
+	pkgdesc = Set of plugins that help to synchronize a debugging session with a disassembler - Ghidra plugin
+	pkgver = r54.ba51775
+	pkgrel = 1
+	url = https://github.com/bootleg/ret-sync
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gradle
+	depends = ghidra
+	depends = java-environment>=11
+	optdepends = ret-sync-gdb: GDB integration
+	provides = ret-sync-ghidra
+	conflicts = ret-sync-ghidra
+	source = git+https://github.com/bootleg/ret-sync
+	md5sums = SKIP
+
+pkgname = ret-sync-ghidra-git
+
