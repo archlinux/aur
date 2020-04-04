@@ -1,16 +1,23 @@
 pkgbase = mbrola-voices-sw2
 	pkgdesc = A Swedish female voice for the MBROLA synthesizer
-	pkgver = 140102
-	pkgrel = 3
-	url = http://tcts.fpms.ac.be/synthesis/mbrola.html
+	pkgver = 15.6fa9693
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/numediart/MBROLA-voices/
 	arch = any
-	groups = mbrola-voices-sw
 	groups = mbrola-voices
-	groups = gespeaker-mbrola-voices
 	license = custom
 	depends = mbrola
-	source = http://tcts.fpms.ac.be/synthesis/mbrola/dba/sw2/sw2-140102.zip
-	md5sums = 889d1be2915850aab74f0de1cbccbf0d
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/sw2/sw2
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/sw2/license.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/sw2/README.txt
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/sw2/TEST/mbroli.ini
+	source = https://github.com/numediart/MBROLA-voices/raw/6fa9693c09bc98f21a519dd9460340db964bacab/data/sw2/TEST/ofelia.pho
+	sha256sums = bf2f0de5d075c3bb8930128670d7a367a29dbae541fe053a8dbdc5dedba8105d
+	sha256sums = 85a33063126aa25689fb6c142f4d5a3397c3a9107ceffbeb6977b0622bcd00bc
+	sha256sums = a64642aa0162dda228f86cf73e03dcebb6d8f26c5cfbcfa8feab41600933f964
+	sha256sums = 24d52b710c6a0094222b0827f59b24c4159275a6e450de6bf488de5d5d6f5d70
+	sha256sums = 54d3c2835784555697b0156d1137c45b504e5b77b3d348ac855806c7af9118b6
 
 pkgname = mbrola-voices-sw2
 
