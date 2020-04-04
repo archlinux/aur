@@ -4,7 +4,7 @@
 
 pkgname=libvirt
 pkgver=5.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -138,7 +138,8 @@ build() {
     --with-storage-gluster \
     --with-storage-iscsi \
     --with-storage-lvm \
-    --with-storage-zfs
+    --with-storage-zfs \
+    --with-runstatedir=/run
     # --with-audit
   make
 }
