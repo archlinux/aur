@@ -1,7 +1,7 @@
 pkgbase = ssh-vault-bin
 	pkgdesc = Encrypt/Decrypt using ssh keys
 	pkgver = 0.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ssh-vault.com
 	arch = x86_64
 	license = BSD-3-Clause
