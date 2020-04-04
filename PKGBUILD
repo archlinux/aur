@@ -3,7 +3,7 @@
 
 pkgname=concourse
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Concourse is a container-based continuous thing-doer written in Go and Elm"
 arch=('x86_64')
 url='https://concourse-ci.org'
