@@ -23,8 +23,8 @@ _themenames=('cyanide'
 'hexagon_red')
 
 pkgname=() #initialized by loop at the bottom
-pkgver=r24.bb390bd
-pkgrel=2
+pkgver=r28.32a0d92
+pkgrel=1
 pkgdesc="The plymouth theme collection by adi1090x"
 arch=('any')
 url="https://github.com/adi1090x/plymouth-themes"
