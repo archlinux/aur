@@ -1,7 +1,7 @@
 pkgbase = tunefish4
 	pkgdesc = An additive wavetable-based synthesizer VST plugin
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.tunefish-synth.com/
 	arch = x86_64
 	groups = vst-plugins
@@ -10,7 +10,9 @@ pkgbase = tunefish4
 	depends = freetype2
 	depends = libglvnd
 	source = https://github.com/paynebc/tunefish/archive/RELEASE_4_1_0.tar.gz
+	source = juce-pixel.patch
 	sha256sums = 89e549acbdc4dc1f5bf094b6ee3968d8adb651b5078da4057f814617ca307b42
+	sha256sums = 5569a557492a6a41bf5f0e6fa2d3ecabd02cf2e9859c96401d0a53eaefa2c7d4
 
 pkgname = tunefish4
 
