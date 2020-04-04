@@ -1,6 +1,6 @@
 pkgbase = organize
 	pkgdesc = A command line utility to automate file organization tasks
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/tfeldmann/organize
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = organize
 	depends = python-pyaml
 	depends = python-send2trash
 	depends = python-textract
-	source = https://files.pythonhosted.org/packages/source/o/organize-tool/organize-tool-1.8.1.tar.gz
-	sha1sums = 0c5655d03cce1031c6e20a897690454b4213869a
-	sha256sums = 52a0d77ec581eac943a340691570c4d3f1993653a609955c2aa062045d6ebd71
+	source = https://files.pythonhosted.org/packages/source/o/organize-tool/organize-tool-1.8.2.tar.gz
+	sha1sums = 5e4b234a3521c86d7c4b13853aa9978e90323cc0
+	sha256sums = ef519ae634f96d0703ce551fbad145936e08b3ef0880b650095499a487197daf
 
 pkgname = organize
 
