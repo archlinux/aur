@@ -3,7 +3,7 @@
 pkgname=c4go-git
 _pkgname=c4go
 pkgver=r1591.8460ec2f
-pkgrel=1
+pkgrel=2
 pkgdesc="Transpiling C code to Go code"
 arch=('x86_64')
 url='https://github.com/Konstantin8105/c4go'
