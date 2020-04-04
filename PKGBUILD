@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=pantheon-stable
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Meta package for the complete Pantheon desktop & apps that uses stable versions"
 arch=(any)
@@ -15,7 +15,7 @@ depends=(
 	'elementary-icon-theme'
 	'elementary-wallpapers'
 	'file-roller'
-	'gala-stable'
+	'gala'
 	'geary'
 	'gnome-settings-daemon-elementary'
 	'granite'
@@ -89,6 +89,7 @@ conflicts=(
 	'granite-git'
 	'pantheon-unstable'
 	'pantheon-qq-default-settings-git'
+	'gala-git'
 	'switchboard-git'
 	'wingpanel-indicator-a11y-git'
 	'wingpanel-indicator-nightlight-git'
