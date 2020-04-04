@@ -2,7 +2,7 @@
 
 pkgname=mole
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI app to create SSH tunnels"
 arch=('x86_64')
 url='https://davrodpin.github.io/mole'
@@ -20,10 +20,9 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/cmd/mole"
   export GOPATH="${srcdir}"/go
   export PATH=$PATH:$GOPATH/bin
-  cd cmd/mole
   go build -v -o "${srcdir}/${pkgname}-bin"
 }
 

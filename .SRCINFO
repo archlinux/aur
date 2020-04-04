@@ -1,7 +1,7 @@
 pkgbase = mole
 	pkgdesc = CLI app to create SSH tunnels
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://davrodpin.github.io/mole
 	arch = x86_64
 	license = MIT
