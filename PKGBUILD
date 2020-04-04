@@ -8,10 +8,10 @@ pkgrel=1
 pkgdesc='System76 Pop GTK+ Theme'
 arch=('any')
 url='https://github.com/pop-os/gtk-theme'
-license=('GPL2' 'CCPL:by-sa')
+license=('GPL-2.0' 'CCPL:BY-SA')
 makedepends=('inkscape' 'sassc' 'optipng' 'parallel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}-b2.tar.gz")
-sha256sums=('SKIP')
+md5sums=('e6616cda11777256db762e979675e80f')
 
 build() {
   cd "${pkgname/pop-}-${pkgver}-b2"
