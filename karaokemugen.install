@@ -4,7 +4,11 @@ post_install() {
     echo "- karaokemugen launches the app with Electron UI."
 }
 
+post_upgrade() {
+    echo "You may need to run karaokemugen-install again. Keep that in mind."
+}
+
 post_remove() {
-    # Eventually make the user think of resources directories
-    echo
+    echo "The media files downloaded are still in the directory you set (/opt/karaokemugen/app by default)."
+    echo "Delete them to free space if you want."
 }

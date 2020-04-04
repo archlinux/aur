@@ -5,6 +5,6 @@ Name=Karaoke Mugen
 Comment=Karaoke playlist manager/player app used in parties or events.
 Exec=karaokemugen
 Icon=karaokemugen
-Terminal=true
+Terminal=false
 Type=Application
 Categories=AudioVideo;Video

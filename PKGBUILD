@@ -1,14 +1,15 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen-git
-pkgver=3.2.0.rc1.r15.g1a01c9c8
-pkgrel=2
+pkgver=3.2.0.r0.g9ecde13e
+pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
-arch=(x86_64 i686)
+arch=('any')
 url="https://mugen.karaokes.moe/"
 license=('MIT')
 groups=()
 depends=('mpv' 'ffmpeg' 'postgresql' 'electron')
 makedepends=('git' 'npm' 'typescript' 'yarn' 'nodejs>=12')
+optdepends=('sudo: for using karaokemugen-install script')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
@@ -22,16 +23,20 @@ source=('karaokemugen::git+https://lab.shelter.moe/karaokemugen/karaokemugen-app
         'database-tweak.diff'
         'database.json'
         'icon256.png'
-        'karaokemugen.desktop')
+        'karaokemugen.desktop'
+        '10-mugensudo'
+        'payload.sh')
 noextract=()
 md5sums=('SKIP'
-        'SKIP'
-        '9bdad543ad67a669cd21cae2450d7fbc'
-        '6efac0086021d7a7abcf637aae17cc99'
-        'c1807f76ea2d800999910fe66e56fe73'
-        '0f887855e641ec949ce7c6b69d79ad1e'
-        '5e9a33a42fef7572b7e0fa504c586f32'
-        'dc5bfb40322b4f7ee1d0fb54c64aa71a')
+         'SKIP'
+         '7640e20425422b5cd146acbb51110ea6'
+         '7f27a04c232e38ad6e070e742b0a2dda'
+         'c1807f76ea2d800999910fe66e56fe73'
+         '0f887855e641ec949ce7c6b69d79ad1e'
+         '5e9a33a42fef7572b7e0fa504c586f32'
+         '10561eed906a5efeed427f90501b4f49'
+         '7304bcf403613a276dba896ba2d2a918'
+         '6a0c5042def68d0eaffc2cc87cd11462')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
@@ -64,10 +69,12 @@ build() {
     yarn installSystemPanel
     # Build and package with electron-builder
     export NODE_ENV='production'
+    electronDist=$(dirname $(realpath $(which electron)))
+    electronVer=$(electron --version | tail -c +2)
     yarn build
     yarn buildFrontend
     yarn buildSystemPanel
-    "$(yarn global dir)/node_modules/.bin/electron-builder" --dir
+    "$(yarn global dir)/node_modules/.bin/electron-builder" --linux --x64 -c.electronDist=$electronDist -c.electronVersion=$electronVer --dir
 }
 
 package() {
@@ -89,13 +96,17 @@ package() {
 
     # License
     install -dm755 "$pkgdir/usr/share/licenses/${pkgname%-git}"
-    cp --no-preserve=ownership,mode LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+    install -m644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+
+    # sudo rule
+    install -dm750 "$pkgdir/etc/sudoers.d"
+    install -m440 "$srcdir/10-mugensudo" "$pkgdir/etc/sudoers.d/10-mugensudo"
 
     # Runtimes
     install -dm755 "$pkgdir/usr/bin/"
-    cp "$srcdir/run.sh" "$pkgdir/usr/bin/karaokemugen"
-    cp "$srcdir/install.sh" "$pkgdir/usr/bin/karaokemugen-install"
-    chmod 755 "$pkgdir/usr/bin/karaokemugen" "$pkgdir/usr/bin/karaokemugen-install"
+    install -m755 "$srcdir/run.sh" "$pkgdir/usr/bin/karaokemugen"
+    install -m755 "$srcdir/install.sh" "$pkgdir/usr/bin/karaokemugen-install"
+    install -m755 "$srcdir/payload.sh" "$pkgdir/opt/karaokemugen/exec.sh"
 
     # .desktop entry
     install -dm755 "$pkgdir/usr/share/pixmaps/"

@@ -44,7 +44,7 @@ setup_postgres() {
         select dbch in "Keep data" "Reset database"; do
             case $dbch in
                 "Keep data" ) echo -e "${_COL_GREEN_}karaokemugen_app database will be used." ; return 0;; # TODO : maybe do some integrity checks
-                "Reset database" ) sudo -u postgres -g postgres -H -- psql -c "DROP DATABASE karaokemugen_app; DROP ROLE IF EXISTS karaokemugen_app;";;
+                "Reset database" ) sudo -u postgres -g postgres -H -- psql -c "DROP DATABASE karaokemugen_app;"; sudo -u postgres -g postgres -H -- psql -c "DROP ROLE IF EXISTS karaokemugen_app;";;
             esac
         done
     fi
@@ -67,12 +67,16 @@ System:
 EOT
 }
 
-create_system_group() {
-    if grep -q "^karaokemugen:" /etc/group; then
-        echo -e "${_BEGIN_}Using the existing ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} system group..."
+create_system_user() {
+    if grep -q "^karaokemugen:" /etc/passwd; then
+        echo -e "${_BEGIN_}Using the existing ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} system user..."
     else
-        echo -e "${_BEGIN_}Creating ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} system group..."
-        sudo groupadd karaokemugen
+        echo -e "${_BEGIN_}Creating ${_COL_YELLOW_}karaokemugen${_COL_BBLUE_} system user..."
+        if grep -q "^karaokemugen:" /etc/groups; then
+            sudo useradd -g karaokemugen -M -d /opt/karaokemugen karaokemugen
+        else
+            sudo useradd -G audio -U -M -d /opt/karaokemugen karaokemugen
+        fi
     fi
 }
 
@@ -84,6 +88,21 @@ add_user_to_group() {
     else
         echo -e "${_BEGIN_}You need first to install Karaoke Mugen by executing ${_COL_YELLOW_}\`karaokemugen-install\`${_COL_BBLUE_}."
         exit 1
+    fi
+}
+
+setup_pulsesocket() {
+    echo -e "${_BEGIN_}Creating a PulseAudio socket for sound..."
+    if grep -q "load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulseaudio" /etc/pulse/default.pa; then
+        # Already insalled
+        echo -e "${_COL_YELLOW_}PulseAudio socket is already exsiting. Skipping"
+    else
+        sudo tee -a /etc/pulse/default.pa > /dev/null <<EOF
+
+# Karaoke Mugen AUR Package workaround
+load-module module-native-protocol-unix auth-anonymous=1 socket=/tmp/pulseaudio
+EOF
+        echo -e "${_COL_GREEN_}PulseAudio socket created."
     fi
 }
 
@@ -129,9 +148,9 @@ check_mugen
 
 setup_postgres
 
-create_system_group
+create_system_user
 add_user_to_group
-sudo chown -R root:karaokemugen /opt/karaokemugen
+sudo chown -R karaokemugen:karaokemugen /opt/karaokemugen
 
 apply_config
 

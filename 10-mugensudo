@@ -1,0 +1,3 @@
+# The users added to the karaokemugen group can launch karaokemugen using electron runtime in system
+Defaults!/usr/bin/electron,/opt/karaokemugen/exec.sh env_keep+="XAUTHORIZATION XAUTHORITY XAUTHPAYLOAD TZ PS2 PS1 PATH LS_COLORS KRB5CCNAME HOSTNAME DISPLAY COLORS"
+%karaokemugen ALL=(karaokemugen) NOPASSWD: /usr/bin/electron,/opt/karaokemugen/exec.sh
