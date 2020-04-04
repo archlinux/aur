@@ -12,7 +12,6 @@ source=("${url}/releases/download/v${pkgver}/s3find-x86_64-linux.tar.gz")
 md5sums=('de0dcb11bba9eadfce9e8af8ec81008f')
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 s3find "${pkgdir}/usr/bin/s3find"
+  install -Dm755 "${srcdir}"/s3find "${pkgdir}/usr/bin/s3find"
 }
 # vim:set ts=2 sw=2 et:
