@@ -2,7 +2,7 @@
 pkgbase=shortcut-git
 pkgname=('shortcut-pages-git' 'shortcut-pages-extra-git' 'shortcut-c-client-git')
 pkgver=0.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A commandline client to list shortcuts"
 url="https://github.com/mt-empty/shortcut-c-client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("shortcut-pages::git+https://github.com/mt-empty/shortcut-pages.git"
         "shortcut-c-client.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '40764c2baf725a7964f5d516fa4217a70aa384ceff74d74506341ce555cdb4b5')
+            '61511fb1b61e7d07e3819d6bae477537ab14d4acd27490ddab5fa1a121822464')
 
 pkgver() {
   cd "${srcdir}/shortcut-pages"
