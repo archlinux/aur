@@ -1,0 +1,15 @@
+pkgbase = powerline-console-fonts-git
+	pkgdesc = Various powerline patched fonts for the text console
+	pkgver = r104.ge80e3eb
+	pkgrel = 1
+	url = https://github.com/powerline/fonts
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = powerline-console-fonts
+	conflicts = powerline-console-fonts
+	source = git+https://github.com/powerline/fonts
+	sha512sums = SKIP
+
+pkgname = powerline-console-fonts-git
+
