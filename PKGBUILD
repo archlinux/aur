@@ -2,7 +2,7 @@
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd-git
-pkgver=r178.625a92b271
+pkgver=r191.30135abc35
 pkgrel=1
 pkgdesc="Generic greeter daemon"
 arch=(x86_64)
@@ -13,7 +13,7 @@ sha256sums=('SKIP' 'SKIP')
 conflicts=(greetd)
 provides=(greetd)
 depends=(systemd pam)
-makedepends=(rust scdoc)
+makedepends=(git rust scdoc)
 optdepends=(
   'greetd-gtkgreet: Simple GTK based greeter'
   'greetd-dlm: Dumb Login Manager'
