@@ -1,0 +1,51 @@
+pkgbase = plymouth-themes-adi1090x-pack4-git
+	pkgdesc = The plymouth theme collection by adi1090x
+	pkgver = r28.32a0d92
+	pkgrel = 1
+	url = https://github.com/adi1090x/plymouth-themes
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = git+https://github.com/adi1090x/plymouth-themes.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-red-loader-git
+
+pkgname = plymouth-theme-rings-git
+
+pkgname = plymouth-theme-rings-2-git
+
+pkgname = plymouth-theme-rog-git
+
+pkgname = plymouth-theme-rog-2-git
+
+pkgname = plymouth-theme-seal-git
+
+pkgname = plymouth-theme-seal-2-git
+
+pkgname = plymouth-theme-seal-3-git
+
+pkgname = plymouth-theme-sliced-git
+
+pkgname = plymouth-theme-sphere-git
+
+pkgname = plymouth-theme-spin-git
+
+pkgname = plymouth-theme-spinner-alt-git
+
+pkgname = plymouth-theme-splash-git
+
+pkgname = plymouth-theme-square-git
+
+pkgname = plymouth-theme-square-hud-git
+
+pkgname = plymouth-theme-target-git
+
+pkgname = plymouth-theme-target-2-git
+
+pkgname = plymouth-theme-tech-a-git
+
+pkgname = plymouth-theme-tech-b-git
+
+pkgname = plymouth-theme-unrap-git
+
