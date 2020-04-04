@@ -5,8 +5,8 @@
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=74.0
-pkgrel=5
+pkgver=74.0.1
+pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
@@ -26,20 +26,16 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://gitlab.com/${pkgname}-community/browser/common.git"
         "git+https://gitlab.com/${pkgname}-community/settings.git")
-sha256sums=('74589c2836d7c30134636823c3caefbcaed0ea7c3abb2def9e3ddd9f86d9440a'
+sha256sums=('62e4297b682fad1ea50d8e32fc51c811169f8edec8d12d2aab0ea60b3197f011'
             '0471d32366c6f415f7608b438ddeb10e2f998498c389217cdd6cc52e8249996b'
             'SKIP'
             'SKIP')
 
 if [[ $CARCH == 'aarch64' ]]; then
   source+=(arm.patch
-           https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
-           https://gitlab.com/librewolf-community/browser/linux/-/raw/master/deb_patches/fix-armhf-webrtc-build.patch
-           https://gitlab.com/librewolf-community/browser/linux/-/raw/master/deb_patches/webrtc-fix-compiler-flags-for-armhf.patch)
+           https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch)
   sha256sums+=('6ca87d2ac7dc48e6f595ca49ac8151936afced30d268a831c6a064b52037f6b7'
-               '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9'
-               '035c209c1a03d1ddd99016d2b5b6df035e3cd7ddfe78851f7376628aa1d8188a'
-               '3d8f6aa6d6602c765c640d9934c42bf627f9a77835908429c37cdcef4171d300')
+               '2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9')
 fi
 
 prepare() {
@@ -115,8 +111,9 @@ END
   patch -p1 -i ../arm.patch
   patch -p1 -i ../build-arm-libopus.patch
   # do we need those for aarch64 as well?
-  patch -p1 -i ../fix-armhf-webrtc-build.patch
-  patch -p1 -i ../webrtc-fix-compiler-flags-for-armhf.patch
+  # well, let's try it without them ^^
+  # patch -p1 -i ../fix-armhf-webrtc-build.patch
+  # patch -p1 -i ../webrtc-fix-compiler-flags-for-armhf.patch
 
 else
 
