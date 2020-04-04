@@ -1,6 +1,6 @@
 pkgbase = python2-pyhockeystats
 	pkgdesc = Just a test script dealing with hockey games and stats.
-	pkgver = 0.1.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/GameMaker2k/Neo-Hockey-Test/
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = python2-pyhockeystats
 	replaces = python2-pyhockeystats
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/GameMaker2k/Neo-Hockey-Test/archive/20200127.tar.gz
-	md5sums = d5629b73d09bca11bdcd48188bebba11
-	sha224sums = 802c12af6df3016d4dcb5b8809308304ad53cdb779f6c5a9816d9c22
-	sha256sums = 63369fdb05cce3bbb1f36a04221e542bbcba50d4f105730fcab3b23694cb8d95
-	sha384sums = 5422c658d8d67bfa54f9336f43cbd9533e69d0a3584c4008b98c3b724e52d0b96e1aade12d750118a37c06fdb116e6b3
-	sha512sums = f9047aca8fa68a8d1d508ad3243c5c7f4ec03203be5a397a6d253a2bf48a4d6a237082ba05c58ecc82e0ca58f3a6bcb56938c49f62229bcbcffe41072f52894f
-	b2sums = 45e340196eac0e4a0efffac1374577b1b66ee26e6760a5957ab1825146f74250a034016e772e0ae6a238a5404b75707eabd9ade0acc653eaa7a6483fd89325b6
+	source = https://github.com/GameMaker2k/Neo-Hockey-Test/archive/20200404.tar.gz
+	md5sums = da70c610f56bcfe932eb5960e8a78d7c
+	sha224sums = 95a3b319cd1db67cb79870e2ae373a363b9da48a1f25d996d83ec0b6
+	sha256sums = 1da1863d49b79b2710fa5c128a2c2de81a74b51c0ca55c98fe3cbb85b09b3dc4
+	sha384sums = decc94a8510f1a7cc387ab60907f58367155d5db9b2c15376515fd45f6e725b8982078cf8ee89735ae39f55e77087c65
+	sha512sums = 91125cddd19e77935779149c0460893eaea69b6c874c369874b47216afbc655e1e560b201cc7a0b24e221d59f922073ef4678675b9669aaa24d12a4d1985fd60
+	b2sums = 557fd1002fba13e198a18a23e49efff39c27d08586dfc7054391038c8be0840f8a390c5c92b06dee9167eb15b74ce0b5e65b4d0c9b2675ccc2169957edc37fce
 
 pkgname = python2-pyhockeystats
 
