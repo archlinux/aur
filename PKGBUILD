@@ -2,12 +2,22 @@
 
 pkgname=kvirc-nokde
 pkgver=5.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt5 based IRC-Client without KDE dependencies'
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='https://github.com/kvirc/KVIrc'
-license=('GPL2')
-depends=('qt5-base' 'glibc' 'openssl' 'zlib' 'perl' 'qt5-multimedia' 'qt5-svg' 'qt5-x11extras' 'qt5-webkit' 'phonon-qt5' 'enchant')
+license=('GPL-2.0')
+depends=('qt5-base'
+         'glibc'
+         'openssl'
+         'zlib'
+         'perl'
+         'qt5-multimedia'
+         'qt5-svg'
+         'qt5-x11extras'
+         'qt5-webkit'
+         'phonon-qt5'
+         'enchant')
 makedepends=('cmake')
 conflicts=('kvirc')
 provides=('kvirc')
