@@ -10,7 +10,7 @@ depends=("python>=3.7")
 makedepends=('git' 'python-setuptools')
 conflicts=("pbss-git" "pbss")
 changelog=
-source=('https://github.com/arijit79/Pbss/archive/v1.1.tar.gz')
+source=('pbss-snap::https://github.com/arijit79/Pbss/archive/v1.1.tar.gz')
 noextract=()
 md5sums=('SKIP')
 
