@@ -1,6 +1,6 @@
 pkgbase = singularityviewer
 	pkgdesc = A Second Life (secondlife) protocol compatible client application, used to access its service as well as a number of other such as those based upon OpenSim platform
-	pkgver = 1.8.7.6994
+	pkgver = 1.8.9.8338
 	pkgrel = 1
 	url = http://www.singularityviewer.org/
 	arch = x86_64
@@ -28,10 +28,12 @@ pkgbase = singularityviewer
 	optdepends = flashplugin: for inworld Flash support
 	optdepends = gstreamer0.10: for video support, may need good, bad and ugly plugins
 	optdepends = libxtst
-	source = https://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha-x86_64-1.8.7.6994.tar.bz2
+	optdepends = pangox-compat: for media_plugin_webkit to work
+	optdepends = lib32-alsa-plugins: for voice
+	source = https://github.com/singularity-viewer/SingularityViewer/releases/download/sv-1.8.9.8338-release/Singularity_1_8_9_8338_x86_64.tar.xz
 	source = singularityviewer.desktop
 	source = singularityviewer.launcher
-	md5sums = 2420b7825a812ff6bfec48914b90a13e
+	md5sums = eca5a9bd54c43662297f10f7f8ad9476
 	md5sums = 3b6c5641f35a099af35ff4065733049f
 	md5sums = eb596f5cf7b6f2d0c55c0082fb99a905
 

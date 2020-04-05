@@ -1,8 +1,8 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=singularityviewer
-pkgver=1.8.7.6994
-_pkgver=1_8_7_6994
+pkgver=1.8.9.8338
+_pkgver=1_8_9_8338
 pkgrel=1
 pkgdesc="A Second Life (secondlife) protocol compatible client application, used to access its service as well as a number of other such as those based upon OpenSim platform"
 url="http://www.singularityviewer.org/"
@@ -14,12 +14,14 @@ optdepends=('libpulse: for PulseAudio support'
 	'nvidia-utils: for NVIDIA support'
 	'flashplugin: for inworld Flash support'
 	'gstreamer0.10: for video support, may need good, bad and ugly plugins'
-	'libxtst')
+	'libxtst'
+	'pangox-compat: for media_plugin_webkit to work'
+	'lib32-alsa-plugins: for voice')
 
-source=("https://downloads.sourceforge.net/project/singularityview/alphas/SingularityAlpha-x86_64-${pkgver}.tar.bz2"
+source=("https://github.com/singularity-viewer/SingularityViewer/releases/download/sv-${pkgver}-release/Singularity_${_pkgver}_x86_64.tar.xz"
 	"singularityviewer.desktop"
 	"singularityviewer.launcher")
-md5sums=('2420b7825a812ff6bfec48914b90a13e'
+md5sums=('eca5a9bd54c43662297f10f7f8ad9476'
          '3b6c5641f35a099af35ff4065733049f'
          'eb596f5cf7b6f2d0c55c0082fb99a905')
 
@@ -27,18 +29,18 @@ package() {
 cd $srcdir
 
 # Rename Data Directory
-mv SingularityAlpha-$CARCH-${pkgver} singularityviewer
+mv Singularity_${_pkgver}_$CARCH singularityviewer
 
 # Remove old libraries
 #cd $srcdir
-cd singularityviewer/
-cd lib64/
-rm *SDL*
-rm *openal*
-rm *expat*
-rm *apr*
-rm *alut*
-rm *freetype*
+#cd singularityviewer/
+#cd lib64/
+#rm *SDL*
+#rm *openal*
+#rm *expat*
+#rm *apr*
+#rm *alut*
+#rm *freetype*
 
 # Install Desktop File
 install -D -m644 $srcdir/singularityviewer.desktop \
