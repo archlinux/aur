@@ -1,5 +1,5 @@
-# Maintainer: Hal Gentz <zegentzy@protonmail.com>
-# Contributer: Vesa Kaihlavirta <vegai@iki.fi>
+# Maintainer: HeyCitizen <4637290+InTheMorning@users.noreply.github.com>
+# Contributers: Vesa Kaihlavirta <vegai@iki.fi>, Hal Gentz <zegentzy@protonmail.com>
  
 pkgname=openttd-btpro
 _pkgname=openttd
