@@ -250,3 +250,5 @@ macx {
 #DEFINES += GC_VIDEO_QT5              # use QT5 qvideowidget if QT > 5.2.1
 #DEFINES += GC_VIDEO_VLC               # use VideoLan library needs VLC_INSTALL defined above
 
+DEFINES += GC_STRAVA_CLIENT_ID=\\\"45487\\\"
+DEFINES += GC_STRAVA_CLIENT_SECRET=\\\"6c3a38d6d1a532d752503c0ce69166f159e73dd2\\\"
