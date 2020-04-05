@@ -1,15 +1,14 @@
 pkgbase = xf86-input-joystick
 	pkgdesc = X.Org Joystick input driver
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.x.org/wiki/
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = xorg-server-devel
 	makedepends = X-ABI-XINPUT_VERSION=24.1
-	makedepends = resourceproto
-	makedepends = scrnsaverproto
+	makedepends = xorgproto
 	depends = glibc
 	conflicts = X-ABI-XINPUT_VERSION<24.1
 	conflicts = X-ABI-XINPUT_VERSION>=25
