@@ -6,14 +6,14 @@
 
 _locale='sv-SE'
 pkgname=palemoon-i18n-sv-se
-pkgver=28.7.0
+pkgver=28.9.0
 pkgrel=1
 pkgdesc="Swedish (Sweden) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('3dfb9f2c23b8a49ac117e67c774c5a0162c8b45f6ff08cebfc6d9823a9652bfe')
+sha256sums=('ab661c1642812b0844540654eb06c79942f6f265f8478669ddbe0a136821868a')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
