@@ -1,6 +1,6 @@
 pkgbase = dvc
 	pkgdesc = Open-source version control system for data science projects
-	pkgver = 0.92.0
+	pkgver = 0.92.1
 	pkgrel = 1
 	url = https://github.com/iterative/dvc
 	arch = any
@@ -41,8 +41,8 @@ pkgbase = dvc
 	optdepends = python-azure-storage: support for Azure remote
 	optdepends = python-oss2: support for Aliyun Object Storage Service (OSS)
 	optdepends = python-pyarrow: support for HDFS remote
-	source = dvc-0.92.0.tar.gz::https://github.com/iterative/dvc/archive/0.92.0.tar.gz
-	sha256sums = 660087d41fa6d02bc72a585f3f505a4a559a217fed8be762d220912f3014b3e4
+	source = dvc-0.92.1.tar.gz::https://github.com/iterative/dvc/archive/0.92.1.tar.gz
+	sha256sums = 10862619f16e07d2285e91dfd64e91d199fc3a61d604b5ba28a0a58262f353c8
 
 pkgname = dvc
 
