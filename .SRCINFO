@@ -1,0 +1,15 @@
+pkgbase = linky
+	pkgdesc = Extract and check links from Markdown files
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/mattias-p/linky
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	conflicts = linky-git
+	source = linky-0.1.8.tar.gz::https://github.com/mattias-p/linky/archive/0.1.8.tar.gz
+	sha256sums = e8cc01d93abf3a8a5365660ef4e246494a1cc44f6ec3955a2c4f60c7810bfdeb
+
+pkgname = linky
+
