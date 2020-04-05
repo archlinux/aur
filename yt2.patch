@@ -1,7 +1,6 @@
-diff -aur yt-3.3.2/setup.py yt-3.3.2/setup.py
---- yt-3.3.2/setup.py	2016-10-26 17:23:52.000000000 -0700
-+++ yt-3.3.2/setup.py	2016-10-29 13:11:17.899932983 -0700
-@@ -344,7 +344,7 @@
+--- yt-3.5.1/setup.py	2019-02-25 14:14:40.000000000 -0500
++++ yt-3.5.1/setup.py	2020-04-05 19:30:42.300796457 -0400
+@@ -373,7 +373,7 @@
      keywords='astronomy astrophysics visualization ' +
      'amr adaptivemeshrefinement',
      entry_points={'console_scripts': [

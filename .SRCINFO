@@ -1,6 +1,6 @@
 pkgbase = python2-yt
 	pkgdesc = A community-developed analysis and visualization toolkit for volumetric data
-	pkgver = 3.4.1
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://yt-project.org
 	arch = any
@@ -14,10 +14,10 @@ pkgbase = python2-yt
 	optdepends = ipython2
 	optdepends = ipython2-notebook
 	options = !emptydirs
-	source = https://pypi.io/packages/source/y/yt/yt-3.4.1.tar.gz
-	source = yt33.patch
-	sha256sums = a4cfc47fe21683e7a3b680c05fe2a25fb774ffda6e3939a35755e5bf64065895
-	sha256sums = SKIP
+	source = https://pypi.io/packages/source/y/yt/yt-3.5.1.tar.gz
+	source = yt2.patch
+	sha256sums = c8ef8eceb934dc189d63dc336109fad3002140a9a32b19f38d1812d5d5a30d71
+	sha256sums = 91ef328fa1be9ced31a2af0edc7a95d364747f7812c9a29911acc44a777c3202
 
 pkgname = python2-yt
 
