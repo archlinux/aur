@@ -17,6 +17,11 @@ pkgbase = easyframework
 	depends = libpng
 	depends = freetype2
 	depends = fontconfig
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-image
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
 	source = easyframework-1.2.0.tar.gz::https://github.com/vbextreme/EasyFramework/archive/v1.2.0.tar.gz
 	sha256sums = SKIP
 
