@@ -1,10 +1,10 @@
 # Maintainer: Artur Wrona <arturwrona91 at gmail.com>
 # 
 
-pkgname=maxflat-mod
+pkgname=gtk-theme-maxflat-mod
 pkgver=1
 pkgrel=3
-pkgdesc=""
+pkgdesc="Modified version of MaxFlat (https://www.pling.com/p/1013119/). GTK3 and GTK2 themes"
 arch=('any')
 url="https://www.opencode.net/donarturo/maxflat-mod/tree/master/MaxFlat-mod"
 license=('GPL3')

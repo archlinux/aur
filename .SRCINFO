@@ -1,4 +1,5 @@
-pkgbase = maxflat-mod
+pkgbase = gtk-theme-maxflat-mod
+	pkgdesc = Modified version of MaxFlat (https://www.pling.com/p/1013119/). GTK3 and GTK2 themes
 	pkgver = 1
 	pkgrel = 3
 	url = https://www.opencode.net/donarturo/maxflat-mod/tree/master/MaxFlat-mod
@@ -8,5 +9,5 @@ pkgbase = maxflat-mod
 	source = https://www.opencode.net/donarturo/maxflat-mod/-/archive/master/maxflat-mod-master.tar.gz
 	sha256sums = 61ded7d27b900ac7c68d449bed41012879b7ff7ffe5cc8cb124fbaeef22a84f7
 
-pkgname = maxflat-mod
+pkgname = gtk-theme-maxflat-mod
 
