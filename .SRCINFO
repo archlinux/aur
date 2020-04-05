@@ -1,6 +1,6 @@
 pkgbase = python-twython
 	pkgdesc = Pure Python wrapper for the Twitter API
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://github.com/ryanmcgrath/twython
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-twython
 	depends = python-requests
 	depends = python-requests-oauthlib
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/22/f9/892e6df43eeb53698b0a876470a072e6eba2a3310e1a1189cd7ec0d68a1d/twython-3.8.1.tar.gz
-	sha256sums = a7ea8c9955143ff9997c0b455b78d5cd607053393298186547649911f4e0c4f2
+	source = https://files.pythonhosted.org/packages/b7/2c/fb17cb309fccd4e63638715325768bd959b0ad78b23b0cbc0738f5fc8c58/twython-3.8.2.tar.gz
+	sha256sums = c6ca64309260e0ab47267f76217c80812f591991437f376fc61498816384f9e7
 
 pkgname = python-twython
 
