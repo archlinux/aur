@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen
 pkgver=5.6.2.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -25,7 +25,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '16c7272d0062118dcfe89f4ce2f9b9e68a2a3a6fb13f326588fc1225582cc9e4')
+            'e09c8bba54dbf62792a1842ee8ef5caf7d6b23949b89d9ee0d49d20f6117b34d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
