@@ -1,0 +1,14 @@
+pkgbase = todoist-nativefier
+	pkgdesc = The to do list to organize work & life
+	pkgver = 2020.04.05
+	pkgrel = 1
+	url = https://todoist.com
+	arch = any
+	license = MIT
+	makedepends = curl
+	makedepends = gendesk
+	makedepends = nodejs-nativefier
+	depends = electron
+
+pkgname = todoist-nativefier
+
