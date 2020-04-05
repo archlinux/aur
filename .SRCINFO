@@ -1,7 +1,7 @@
 pkgbase = virtualbox-bin
 	pkgdesc = Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)
 	pkgver = 6.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.virtualbox.org/
 	install = virtualbox-bin.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = virtualbox-bin
 	depends = python
 	depends = sdl
 	optdepends = virtualbox-ext-oracle: for Oracle extensions
-	optdepends = java-runtime: for webservice java bindings
+	optdepends = java-runtime: for webservice sdk java bindings
 	optdepends = linux-headers: build the module for Arch kernel
 	optdepends = linux-lts-headers: build the module for LTS Arch kernel
 	provides = virtualbox=6.1.4
@@ -51,6 +51,7 @@ pkgbase = virtualbox-bin
 	source = do_dkms
 	source = dkms.conf
 	source = 013-Makefile.patch
+	source = 015-linux-5.6.patch
 	sha256sums = 02e609e7404afa448c4a789136326e4dbacd28bbd1b3f7a4d59f644aea0fb98c
 	sha256sums = 755d07a510574940ad6b664fa63fb7fa4b752d121f7decb76cc8e7fa77ba9718
 	sha256sums = 584f02a2a1e83b9cabd7b7e3b00a0515b118e040160eb46c014ea6fd3a16586e
@@ -63,6 +64,7 @@ pkgbase = virtualbox-bin
 	sha256sums = cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a
 	sha256sums = 63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388
 	sha256sums = 268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424
+	sha256sums = 09ae0e211f1f35e231a00f55704b5339a79080def896d650cd54fb5a5af60700
 
 pkgname = virtualbox-bin
 

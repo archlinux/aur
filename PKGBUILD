@@ -8,7 +8,7 @@ pkgname=virtualbox-bin
 pkgver=6.1.4
 _build=136177
 _rev=79806
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('x86_64')
 url='https://www.virtualbox.org/'
@@ -17,7 +17,7 @@ depends=('device-mapper' 'dkms' 'fontconfig' 'gcc' 'hicolor-icon-theme' 'libgl'
          'libidl2' 'libxcursor' 'libxinerama' 'libxmu' 'python' 'sdl')
 makedepends=('linux-headers')
 optdepends=('virtualbox-ext-oracle: for Oracle extensions'
-            'java-runtime: for webservice java bindings'
+            'java-runtime: for webservice sdk java bindings'
             'linux-headers: build the module for Arch kernel'
             'linux-lts-headers: build the module for LTS Arch kernel')
 provides=("virtualbox=${pkgver}" 'virtualbox-sdk' 'VIRTUALBOX-HOST-MODULES'
@@ -38,7 +38,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'vboxweb.conf'
         'do_dkms'
         'dkms.conf'
-        '013-Makefile.patch')
+        '013-Makefile.patch'
+        '015-linux-5.6.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
 sha256sums=('02e609e7404afa448c4a789136326e4dbacd28bbd1b3f7a4d59f644aea0fb98c'
             '755d07a510574940ad6b664fa63fb7fa4b752d121f7decb76cc8e7fa77ba9718'
@@ -51,7 +52,8 @@ sha256sums=('02e609e7404afa448c4a789136326e4dbacd28bbd1b3f7a4d59f644aea0fb98c'
             '12dbba3b59991f2b68cddeeeda20236aeff63e11b7e2d1b08d9d6a82225f6651'
             'cc1c0500ab07bc13563d99037f776bf64bdc90bb521e31e2e0b04e42ea5bb36a'
             '63f1e9eabedec2170bd0589aaa2bf5025ff8f8ec1764cc4823cbe446e9ce1388'
-            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424')
+            '268e794de9d66a2751006b2ca3810fc6a05da4af2ffa8b58c56c94b292f1f424'
+            '09ae0e211f1f35e231a00f55704b5339a79080def896d650cd54fb5a5af60700')
 
 prepare() {
     mkdir -p "${pkgname}-${pkgver}/VirtualBox-extracted"
@@ -66,6 +68,16 @@ prepare() {
     
     # fix dkms build
     patch -d "${pkgname}-${pkgver}/VirtualBox-extracted" -Np1 -i "${srcdir}/013-Makefile.patch"
+    
+    # linux 5.6 fix
+    patch -d "${pkgname}-${pkgver}/VirtualBox-extracted" -Np1 -i "${srcdir}/015-linux-5.6.patch"
+}
+
+build() {
+    local _installdir='opt/VirtualBox'
+    
+    cd "${pkgname}-${pkgver}/sdk/installer"
+    VBOX_INSTALL_PATH="/${_installdir}" python vboxapisetup.py build
 }
 
 package() {
@@ -87,7 +99,7 @@ package() {
     printf '%s\n' '  -> Installing SDK...'
     cd "${srcdir}/${pkgname}-${pkgver}"
     pushd 'sdk/installer' >/dev/null
-    VBOX_INSTALL_PATH="/${_installdir}" python vboxapisetup.py install --root "$pkgdir"
+    VBOX_INSTALL_PATH="/${_installdir}" python vboxapisetup.py install --root "$pkgdir" --skip-build --optimize='1'
     popd >/dev/null
     rm -r "${pkgdir}/${_installdir}/sdk"
     mkdir -p "${pkgdir}/${_installdir}/sdk"
