@@ -5,19 +5,19 @@
 # Contributor: yosh64 <yosh64.at.gmail.dot.com>
 
 pkgname=mtpaint-wjaguar
-pkgver=3.49.25
-pkgrel=2
-_commit="03b1b0938067b88d86d9f1b1088730f1934d411e"
+pkgver=3.49.26
+pkgrel=1
+_commit="66a1716c124ae888f7997ca229ef2b0b507dcc71"
 pkgdesc='Simple paint program for creating icons and pixel based artwork (Dmitry Groshev''s fork)'
 arch=('x86_64')
 url='https://github.com/wjaguar/mtPaint'
 license=('GPL3')
-depends=('gtk2' 'giflib' 'openjpeg' 'lcms2' 'libwebp' 'libtiff')
+depends=('gtk3' 'giflib' 'openjpeg' 'lcms2' 'libwebp' 'libtiff')
 optdepends=('gifsicle: for exporting GIF files from mtPaint')
 provides=('mtpaint')
 conflicts=('mtpaint')
 source=("mtpaint-$pkgver.zip::https://github.com/wjaguar/mtPaint/archive/$_commit.zip")
-sha256sums=('dad1d01eec55852905c195af22b0f5ec1d276adfd55d04c0b2eb95cba42171a9')
+sha256sums=('c05ac2963736b12b900c3d26e4d1bf71b4561741d1687641e72b8dbe65b86488')
 
 prepare() {
   cd "mtPaint-$_commit"
@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "mtPaint-$_commit"
 
-  ./configure --prefix=/usr --mandir=/usr/share/man man intl GIF jpeg tiff cflags lcms2 jp2 webp
+  ./configure --prefix=/usr --mandir=/usr/share/man man intl GIF jpeg tiff cflags lcms2 jp2 webp gtk3
   make
 }
 
