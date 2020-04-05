@@ -1,14 +1,14 @@
 # Maintainer: Wang Ruochen <wangkevin920@163.com>
 pkgname=interception-caps2esc-nocaps-git
 _pkgname=interception-caps2esc
-pkgver=0.1.3.r3.g4560a82
+pkgver=0.1.3.r4.g339f645
 pkgrel=1
 pkgdesc='A fork of interception-caps2esc which does not emit Caps Lock when ESC is pressed'
 arch=('x86_64')
 license=('MIT')
 url="https://github.com/weirane/caps2esc"
 depends=(interception-tools)
-conflicts=(caps2esc interception-caps2esc)
+conflicts=(caps2esc interception-caps2esc interception-caps2esc-delay-git)
 replaces=(interception-caps2esc)
 source=("$pkgname::git+$url"
         "udevmon.yaml")
