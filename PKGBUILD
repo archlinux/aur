@@ -7,7 +7,7 @@ pkgdesc="A Vim-ish terminal emulator written and expandable in Python."
 url="http://github.com/Kharacternyk/${_pkgname}"
 arch=('any')
 license=('GPL-3')
-depends=('python-gobject' 'gtk3' 'vte3')
+depends=('python-gobject' 'vte3')
 makedepends=('git')
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/Kharacternyk/${_pkgname}.git#branch=master")
