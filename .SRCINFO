@@ -1,0 +1,15 @@
+pkgbase = jazz-midi-plugin-bin
+	pkgdesc = Jazz-Midi Plugin (support for midi in web browsers)
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://jazz-soft.net/
+	arch = x86_64
+	license = unknown
+	optdepends = firefox
+	optdepends = chromium
+	optdepends = opera
+	source = https://jazz-soft.net/download/Jazz-Plugin/1.5.1/Jazz-Plugin-1-5-2.sh
+	md5sums = d6ccc8e27ac5121c8412f024ab61a407
+
+pkgname = jazz-midi-plugin-bin
+
