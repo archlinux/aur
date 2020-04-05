@@ -27,6 +27,7 @@ sha256sums=('8562f3bc3c9130fabc9c4dd68863b776ebbaaa9100d2d5a06b79959902b30a4f'
 prepare() {
   export GOPATH="${srcdir}"
 
+  mkdir -p "${GOPATH}/bin/"
   mkdir -p "${GOPATH}/src/github.com/influxdata/"
   ln -fsT "${srcdir}/${pkgname}-${pkgver}" \
     "${GOPATH}/src/github.com/influxdata/${pkgname}"
@@ -39,19 +40,19 @@ build() {
 
   cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
   _LDFLAGS="-X main.version=${pkgver} -X main.branch=master -extldflags ${LDFLAGS}"
-  go install -v -ldflags="$_LDFLAGS" -gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}" "./..."
+  go build -v -o "${GOPATH}/bin/" -ldflags="${_LDFLAGS}" -gcflags "all=-trimpath=${GOPATH}" -asmflags "all=-trimpath=${GOPATH}" "./..."
   go clean -modcache
 }
 
 package() {
-  export GOBIN="${srcdir}/bin"
+  _BIN="${srcdir}/bin"
 
   # binary
-  install -D -m755 "${GOBIN}/telegraf" "${pkgdir}/usr/bin/telegraf"
+  install -D -m755 "${_BIN}/telegraf" "${pkgdir}/usr/bin/telegraf"
 
   # configuration files
   install -dD -m755 "${pkgdir}/etc/telegraf/telegraf.d"
-  "${GOBIN}/telegraf" -sample-config > "${pkgdir}/etc/telegraf/telegraf.conf"
+  "${_BIN}/telegraf" -sample-config > "${pkgdir}/etc/telegraf/telegraf.conf"
 
   # license
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
