@@ -4,7 +4,7 @@
 
 pkgname=mastodon
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Self-hosted social media and network server based on ActivityPub and OStatus'
 arch=(x86_64)
 url=https://github.com/tootsuite/mastodon

@@ -1,7 +1,7 @@
 pkgbase = mastodon
     pkgdesc = Self-hosted social media and network server based on ActivityPub and OStatus
     pkgver = 3.1.2
-    pkgrel = 1
+    pkgrel = 2
     url = https://github.com/tootsuite/mastodon
     install = mastodon.install
     arch = x86_64
