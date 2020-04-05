@@ -1,0 +1,30 @@
+pkgbase = tce
+	pkgdesc = TTA-Based Co-Design Environment (TCE) - Open ASIP tools http://openasip.org
+	pkgver = 1.21
+	pkgrel = 1
+	url = https://github.com/cpc/tce
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = latex2html
+	makedepends = autoconf
+	makedepends = automake
+	depends = llvm-tce
+	depends = llvm-tce-libs
+	depends = wxgtk2
+	depends = boost
+	depends = boost-libs
+	depends = tcl
+	depends = libedit
+	depends = sqlite
+	depends = xerces-c
+	depends = gcc
+	depends = libffi
+	depends = libtool
+	source = tce-1.21::git+https://github.com/cpc/tce.git#branch=release-1.21
+	sha256sums = SKIP
+
+pkgname = tce
+
