@@ -1,6 +1,6 @@
 pkgbase = casm
 	pkgdesc = Corinthian Abstract State Machine (CASM)
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://casm-lang.org
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = casm
 	license = GPL3
 	provides = casm
 	conflicts = casm
-	source = casm-0.4.0.tar.gz::https://github.com/casm-lang/casm/releases/download/0.4.0/casm-linux-x86_64.tar.gz
-	sha256sums = dfddd7e4e4b5eb267e19f50387e9a1b9889b86358094b8d2cfffd1498ef1d2c2
+	source = casm-0.5.0.tar.gz::https://github.com/casm-lang/casm/releases/download/0.5.0/casm-linux-x86_64.tar.gz
+	sha256sums = 0996d0dcca7ecaef5dae83e7e9f60ac06f1f2dc349765e01bf5671433160d644
 
 pkgname = casm
 
