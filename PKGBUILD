@@ -33,12 +33,10 @@ backup=('etc/conf.d/tvheadend')
 source=(
     "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
     'dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master'
-    'ignore-missing-libavresample.patch'
 )
 md5sums=(
     'SKIP'
     'SKIP'
-    'ab3e00343f57b70b5e02a981e0a16055'
 )
 
 pkgver() {
@@ -53,9 +51,6 @@ prepare() {
     cp -a "dvb-scan-tables" "${_dvbscan}"
     rm -rf "${_dvbscan}/.git"
     touch "${_dvbscan}/.stamp"
-
-    cd "${_gitname}"
-    patch -p1 -i ../ignore-missing-libavresample.patch
 }
 
 build() {

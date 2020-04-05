@@ -31,10 +31,8 @@ pkgbase = tvheadend-satip-server-git
 	backup = etc/conf.d/tvheadend
 	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git#branch=master
 	source = dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master
-	source = ignore-missing-libavresample.patch
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = ab3e00343f57b70b5e02a981e0a16055
 
 pkgname = tvheadend-satip-server-git
 
