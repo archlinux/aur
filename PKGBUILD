@@ -16,8 +16,8 @@ depends=(ffmpeg
          libxml2
          libxslt
          libyaml
-         nodejs<=12.16.1
-         nodejs>=10.19.0
+         'nodejs<=12.16.1'
+         'nodejs>=10.19.0'
          postgresql
          redis
          ruby-bundler

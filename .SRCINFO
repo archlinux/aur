@@ -14,8 +14,8 @@ pkgbase = mastodon
     depends = libxml2
     depends = libxslt
     depends = libyaml
-    depends = nodejs<=12.16.1
-    depends = nodejs>=10.19.0
+    depends = 'nodejs<=12.16.1'
+    depends = 'nodejs>=10.19.0'
     depends = postgresql
     depends = redis
     depends = ruby-bundler
