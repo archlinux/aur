@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lua-git
 	pkgdesc = Lua support for fcitx5, with an imeapi addon implementing googlepinyin api
-	pkgver = r13.5fb96b6
+	pkgver = r14.626a3f4
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5-lua
 	arch = i686
