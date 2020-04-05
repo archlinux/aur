@@ -8,7 +8,7 @@ work seamlessly with native modules in universal workflows,
 while providing full compatibility with the npm ecosystem."
 arch=('any')
 url='https://jspm.org'
-license=('Apache2')
+license=('Apache-2.0')
 provides=('jspm')
 makedepends=('npm')
 noextract=("2.0.0-beta.7.tar.gz")
