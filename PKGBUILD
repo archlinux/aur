@@ -3,7 +3,7 @@
 _name=helm
 pkgname=helm-synth
 pkgver=0.9.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A cross-platform, polyphonic synthesizer, available standalone and as an LV2 plugin"
 arch=('x86_64')
 url="https://tytel.org/helm/"
@@ -11,7 +11,7 @@ license=('GPL3')
 groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'libxext' 'libxinerama')
 makedepends=('alsa-lib' 'freetype2' 'jack' 'libxcursor' 'lv2')
-replaces=('helm')
+replaces=('helm<=0.9.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mtytel/${_name}/archive/v${pkgver}.tar.gz"
         "${pkgname}-0.9.0-gcc91.patch"
         "${pkgname}-0.9.0-rename_helm-synth.patch")
