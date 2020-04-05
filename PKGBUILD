@@ -2,7 +2,7 @@
 
 pkgname=rx_tools
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Implementation of librtlsdr rtl_* tools using SoapySDR as the driver backend'
 url="https://github.com/rxseger/rx_tools"
 arch=('x86_64')
