@@ -1,7 +1,7 @@
 # Maintainer : pianoslum <pianoslum@mailbox.org>
 
 pkgname=elster
-pkgver=21.1.0
+pkgver=21.2.0
 pkgrel=1
 pkgdesc='Elektronische Steuererklärung - Ein Projekt der deutschen Steuerverwaltungen aller Länder und des Bundes zur Abwicklung der Steuererklärungen und Steueranmeldungen über das Internet (The official German software for electronic tax declaration)'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
     )
 
 md5sums=(
-    "0cc9d75bcfabb5d6a3ec3140ed52423d"
+    "482d925e8878a3ead4207663fafa1076"
     "1cad66434bf3a305e6d5700c61359ca1"
     )
 
