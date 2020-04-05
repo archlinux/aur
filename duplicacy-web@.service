@@ -1,0 +1,19 @@
+[Unit]
+Description=Duplicacy Web - Cloud Backup with a Web GUI for %I
+Documentation=https://duplicacy.com/guide.html
+After=network.target
+
+[Service]
+User=%i
+ExecStart=/usr/bin/duplicacy-web
+Restart=on-failure
+
+# Hardening
+ProtectSystem=full
+PrivateDevices=true
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

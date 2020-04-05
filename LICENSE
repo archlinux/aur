@@ -1,0 +1,18 @@
+Copyright 2019 Acrosync LLC
+
+Duplicacy Web Edition
+
+This is the full-featured web-based GUI frontend supporting all major operations
+(backup, restore, check, copy, and prune) as well as other features such as
+scheduling and email notifications. It also integrates a dashboard to provide
+a graphical view of the status of storages and backups.
+
+This version can be used without a license if you only need the restore, check,
+copy, and prune operations. If you do need to run backups, a fully functional
+30-day trial license will be automatically downloaded to enable the backup
+operation. After 30 days, a personal or commercial license can be purchased from
+the licenses [0] page.
+
+[0]: https://duplicacy.com/licenses
+
+License text retrieved from https://duplicacy.com/download.html on 2020-04-04.
