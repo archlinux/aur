@@ -1,17 +1,14 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _pkgname=vmango
-
 pkgname=${_pkgname}
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Your own personal IaaS cloud"
 arch=("any")
 url="https://github.com/subuk/vmango"
 license=("GPL3")
-
 backup=("etc/vmango.conf")
-
 depends=("libvirt" "qemu" "cdrtools")
 makedepends=("go-pie" "go-bindata")
 
