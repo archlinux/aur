@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The free and Open Source CMS that helps you build websites for businesses and non-profits."
 arch=("any")
 url="https://backdropcms.org/"
-license=('GPL2')
+license=('GPL-2.0')
 depends=('php>=5.3.2' 'mariadb>=5.0.15' 'php-gd')
 optdepends=('apache: A high performance Unix-based HTTP server (recommended)' 
 			'nginx: Lightweight HTTP server and IMAP/POP3 proxy server')
