@@ -6,14 +6,14 @@
 
 _locale='es-MX'
 pkgname=palemoon-i18n-es-mx
-pkgver=28.7.0
+pkgver=28.9.0
 pkgrel=1
 pkgdesc="Spanish (Mexico) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('3f95ef7bc5b1c1fc44e9680af7d0ade3092a498f90e14dc6d39a73ca2c8a90f4')
+sha256sums=('8679d104381c52fa6968101d6d9f44ee9411cc7f4b474ffeabec1a687983a0a1')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
