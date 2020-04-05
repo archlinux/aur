@@ -3,13 +3,13 @@
 _pkgbase=mangohud
 pkgbase=$_pkgbase-git
 pkgname=('mangohud-git' 'lib32-mangohud-git' 'mangohud-common-git')
-pkgver=0.3.0.r28.g32c4515
-pkgrel=2
+pkgver=0.3.1.r80.ga6bfa71
+pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
 arch=('x86_64')
-depends=('glslang' 'libglvnd' 'lib32-libglvnd' 'libxnvctrl' 'vulkan-headers')
-makedepends=('gcc' 'meson' 'python-mako' 'libx11' 'lib32-libx11' 'libxnvctrl' 'git')
+depends=('glslang' 'libglvnd' 'lib32-libglvnd' 'libxnvctrl' 'lib32-vulkan-icd-loader' 'vulkan-icd-loader')
+makedepends=('gcc' 'meson' 'python-mako' 'libx11' 'lib32-libx11' 'libxnvctrl' 'git' 'vulkan-headers')
 replaces=('vulkan-mesa-layer-mango' 'lib32-vulkan-mesa-layer-mango')
 source=("$_pkgbase::git+$url#branch=develop"
         'ImGui::git+https://github.com/flightlessmango/ImGui.git')
@@ -33,7 +33,8 @@ build() {
     --libdir lib/mangohud/lib64 \
     --prefix /usr \
     -Dappend_libdir_mangohud=false \
-    -Dinclude_doc=false
+    -Dinclude_doc=false \
+    -Duse_system_vulkan=enabled
 
     ninja -C build64
 
@@ -46,7 +47,8 @@ build() {
     --libdir lib/mangohud/lib32 \
     --prefix /usr \
     -Dappend_libdir_mangohud=false \
-    -Dinclude_doc=false
+    -Dinclude_doc=false \
+    -Duse_system_vulkan=enabled
 
     ninja -C build32
 }
