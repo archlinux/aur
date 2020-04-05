@@ -1,6 +1,6 @@
 pkgbase = cmake-git
 	pkgdesc = A cross-platform open-source make system
-	pkgver = 3.13.3.1212.geb2c23868f
+	pkgver = 3.17.0.659.gff4388e90b
 	pkgrel = 1
 	url = http://www.cmake.org/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = cmake-git
 	optdepends = libxkbcommon-x11: cmake-gui
 	provides = cmake
 	conflicts = cmake
-	source = git+https://cmake.org/cmake.git
+	source = git+https://gitlab.kitware.com/cmake/cmake.git
 	md5sums = SKIP
 
 pkgname = cmake-git
