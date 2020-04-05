@@ -1,0 +1,17 @@
+pkgbase = ruby-asciidoctor-html5s
+	pkgdesc = Semantic HTML5 converter (backend) for Asciidoctor
+	pkgver = 0.3.0
+	pkgrel = 9
+	url = https://github.com/jirutka/asciidoctor-html5s
+	arch = x86_64
+	license = MIT
+	depends = asciidoctor
+	depends = ruby
+	depends = ruby-thread_safe
+	noextract = asciidoctor-html5s-0.3.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/asciidoctor-html5s-0.3.0.gem
+	sha256sums = dc917b72397f1fa34c27b217977b33368418530f2a130b0691ab32e768d54a77
+
+pkgname = ruby-asciidoctor-html5s
+
