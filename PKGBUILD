@@ -4,7 +4,7 @@
 ## pkginfo
 pkgdesc="A fancy custom distribution of Valves Proton with various patches"
 pkgname=proton-ge-custom-bin
-pkgver=5.4_GE_3
+pkgver=5.5_GE_1
 pkgrel=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
@@ -20,7 +20,7 @@ optdepends=('kdialog: KDE splash dialog support'
             'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
             'vulkan-driver: actually have a vulkan driver installed'
             'linux-fsync: a kernel with futex-wait-multiple support'
-            'xboxdrv: gamepad driver service needed for Warframe')
+            'xboxdrv: gamepad driver service')
 
 ## makepkg options
 options=('!strip')
@@ -44,7 +44,7 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(${_pkgname}-${_pkgver}.tar.gz::"${url}/releases/download/${_pkgver}/${_srcdir}.tar.gz"
         "supplementary.tar.zst")
-md5sums=('3cee50f910829928a4ce2567fe9a6d30'
+md5sums=('b57d0fae11e9cebde66e120198ca216d'
          '3ae457f1acc34660244975884b2e0f68')
 
 prepare() {

@@ -1,3 +1,36 @@
+
+Proton-5.5-GE-1
+
+GloriousEggroll released this Apr 5, 2020
+
+So I'd like to preface that this is a pre-release that has a massive amount of media foundation/mfplat wine patches. A huge thank you goes to Derek Lesho (Guy1524: https://github.com/Guy1524/wine) as well as Nikolay Sivov and Sergio Gómez Del Real all from CodeWeavers for getting this stuff working and taking the time to help me get it working with the correct dependencies in proton.
+
+What this does is allows mp4 playback in MANY titles, including UE4 -and- Unity engine games. This fixes a lot (not all, but a lot) of issues surrounding media foundation/mfplat without the need for the 'mf-install' workaround that has legal issues and limitations, and is much safer for us to ship.
+
+Tested fixes:
+-Fixed borderlands 3 lilith in-head videos and 'watch the monitor' video bug
+-Fixes Remnant: From the Ashes intro videos, intro menu, character menu
+-Fixes intro video on Bloodstained: Ritual of the Night
+-Fixes mp4 playback issues related to Crazy Machines 3
+
+Still broken:
+-Borderlands 3 intro narrative with Marcus's voice on new game does not play
+-Spyro is still broken
+-Probably some other mp4 related titles
+
+Additional updates:
+-A small patch has been added that should fix sunset overdrive from crashing on launch: https://source.winehq.org/patches/data/182631
+-Two warframe launcher regressions have been fixed
+-Mouse input fix patches which were added to wine-staging for Mount & Blade II: Bannerlord: https://bugs.winehq.org/show_bug.cgi?id=36873
+-Lots of gstreamer plugin related work has been done/added in order to get media foundation stuff working. This was also cleared with aeikum and kisak from Valve personally, and deemed -ok- to include in my repository. This means it is safe to continue to link in Valve's issue trackers, unlike the 'mf-install' workaround. HURRAY!
+
+Additional notes:
+-Not -all- mp4s are fixed. There are still some that have problematic formats that are being worked on.
+-Also coming down the pipe soon will be WMV playback fixes. This is to be handled after the mp4 issues are sorted.
+
+Enjoy!
+
+
 Proton-5.4-GE-3
 
 GloriousEggroll released this Mar 25, 2020
