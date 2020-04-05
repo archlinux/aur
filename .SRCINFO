@@ -1,7 +1,7 @@
 pkgbase = maptool-beta
 	pkgdesc = An open source virtual tabletop program, 1.6 beta release
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rptools.net/tools/maptool
 	arch = x86_64
 	license = AGPL3
@@ -11,7 +11,7 @@ pkgbase = maptool-beta
 	optdepends = gvfs: access virtual filesystem
 	provides = maptool
 	conflicts = maptool
-	source = git+https://github.com/RPTools/maptool.git#tag=1.6.0-beta-1
+	source = git+https://github.com/RPTools/maptool.git#tag=1.6.0-beta-2
 	sha256sums = SKIP
 
 pkgname = maptool-beta
