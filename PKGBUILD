@@ -4,8 +4,8 @@
 # https://github.com/sudoforge/pkgbuilds
 
 pkgname=copybara-git
-pkgver=0.0.0.bf7649f9
-pkgrel=3
+pkgver=0.0.0.r1941.gba3540c1
+pkgrel=1
 pkgdesc="A tool for transforming and moving code between repositories"
 arch=('x86_64')
 url="https://github.com/google/${pkgname%-git}"
@@ -30,8 +30,11 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
 
-  # Use the latest hash for versioning, formatting as 0.0.0.<hash>
-  git log -1 --format='%h' | sed -e 's/\(.*\)/0.0.0.\1/'
+  # Get a count of all commits in HEAD
+  _count=$(git rev-list --count HEAD)
+
+  # Use the latest hash for versioning, formatting as 0.0.0.r<count>.g<hash>
+  git log -1 --format='%h' | sed -e 's/\(.*\)/0.0.0.r'$_count'.g\1/'
 }
 
 build() {
