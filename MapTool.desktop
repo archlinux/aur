@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=MapTool
+Comment=MapTool
+Exec=/opt/MapTool/MapTool
+Icon=/opt/MapTool/MapTool.png
+Terminal=false
+Type=Application
+Categories=Unknown
+
