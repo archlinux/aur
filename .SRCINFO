@@ -1,15 +1,15 @@
 pkgbase = palemoon-i18n-de
 	pkgdesc = German language pack for Pale Moon browser
-	pkgver = 28.7.0
+	pkgver = 28.9.0
 	pkgrel = 1
 	url = https://addons.palemoon.org/language-packs/
 	arch = any
 	license = MPL
 	license = GPL
 	depends = palemoon-i18n-common
-	noextract = palemoon-i18n-de-28.7.0.xpi
-	source = palemoon-i18n-de-28.7.0.xpi::https://addons.palemoon.org/?component=download&version=28.7.0&id=langpack-de@palemoon.org
-	sha256sums = 7e5d3d9093341374e36a95a4f6250549c62428ef169e0c422128999dc374d606
+	noextract = palemoon-i18n-de-28.9.0.xpi
+	source = palemoon-i18n-de-28.9.0.xpi::https://addons.palemoon.org/?component=download&version=28.9.0&id=langpack-de@palemoon.org
+	sha256sums = 4a7ef4913ada84bd63a7132621421aafaa9996b684d24dc0153e1fb2f6066d58
 
 pkgname = palemoon-i18n-de
 
