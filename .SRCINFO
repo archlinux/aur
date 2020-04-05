@@ -1,15 +1,14 @@
 pkgbase = zsdx
-	pkgdesc = A free 2D Zelda fangame.
-	pkgver = 1.12.0
-	pkgrel = 2
-	url = http://www.zelda-solarus.com/
+	pkgdesc = The Legend of Zelda: Mystery of Solarus DX - A free 2D Zelda fangame
+	pkgver = 1.12.2
+	pkgrel = 1
+	url = https://www.solarus-games.org/fr/games/the-legend-of-zelda-mystery-of-solarus-dx
 	arch = any
 	license = custom
-	makedepends = zip
 	makedepends = cmake
 	depends = solarus>=1.6.0
-	source = http://www.zelda-solarus.com/downloads/zsdx/zsdx-1.12.0.tar.gz
-	md5sums = b3175bca727accdeec8d158171d58441
+	source = https://gitlab.com/solarus-games/zsdx/-/archive/v1.12.2/zsdx-v1.12.2.tar.gz
+	md5sums = b9acb79919bc0ecc2f7f1339c1cca721
 
 pkgname = zsdx
 
