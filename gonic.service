@@ -10,12 +10,15 @@ Group=gonic
 Type=simple
 ExecStart=/usr/bin/gonic
 
+# Required variable:
 Environment=GONIC_MUSIC_PATH=/home/
-Environment=GONIC_DB_PATH=/var/lib/gonic/gonic.db           #optional
-#Environment=GONIC_CACHE_PATH=/var/lib/gonic/gonic_cache    #optional
-#Environment=GONIC_LISTEN_ADDR=0.0.0.0:4747                 #optional
-#Environment=GONIC_PROXY_PREFIX=                            #optional
-#Environment=GONIC_SCAN_INTERVAL=                           #optional
+
+# Optional variables:
+Environment=GONIC_DB_PATH=/var/lib/gonic/gonic.db
+#Environment=GONIC_CACHE_PATH=/var/lib/gonic/gonic_cache
+#Environment=GONIC_LISTEN_ADDR=0.0.0.0:4747
+#Environment=GONIC_PROXY_PREFIX=
+#Environment=GONIC_SCAN_INTERVAL=
 
 [Install]
 WantedBy=multi-user.target

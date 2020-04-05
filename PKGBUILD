@@ -15,7 +15,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/sentriz/gonic/archive/v$pkg
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
 md5sums=('101f627184c59a01162ccd02a7628e90'
-         '058884ab488b0c0f071fc25b2ae9f049'
+         'ba8a59387a281b19cc4c09916e5fe731'
          '6ca6715be2cdd424846f7b37b98905f6'
          '487fe9a172e33d86514cf3dbb3b629b8')
 
