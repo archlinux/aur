@@ -1,0 +1,30 @@
+From 2f48c641b66424a4614c10cad486aef13f1b30d3 Mon Sep 17 00:00:00 2001
+From: Waffle <waffle.lapkin@gmail.com>
+Date: Sun, 5 Apr 2020 23:34:32 +0300
+Subject: [PATCH] Change instalation path to be Arch linux friendly
+
+---
+ src/AniLibria.pro | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/AniLibria.pro b/src/AniLibria.pro
+index 546abff..a856440 100644
+--- a/src/AniLibria.pro
++++ b/src/AniLibria.pro
+@@ -42,10 +42,9 @@ QML_IMPORT_PATH =
+ # Additional import path used to resolve QML modules just for Qt Quick Designer
+ QML_DESIGNER_IMPORT_PATH =
+ 
+-# Default rules for deployment.
+-qnx: target.path = /tmp/$${TARGET}/bin
+-else: unix:!android: target.path = /opt/$${TARGET}/bin
+-!isEmpty(target.path): INSTALLS += target
++# Arch linux common instalation path
++target.path = /usr/bin
++INSTALLS += target
+ 
+ HEADERS += \
+     Classes/Models/changesmodel.h \
+-- 
+2.26.0
+

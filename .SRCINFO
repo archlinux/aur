@@ -1,0 +1,19 @@
+pkgbase = anilibria-winmaclinux-git
+	pkgdesc = AniLibria client for major desktop platforms
+	pkgver = r34.566e0f3
+	pkgrel = 1
+	url = https://github.com/anilibria/anilibria-winmaclinux
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-base
+	makedepends = git
+	depends = qt5-webview
+	provides = anilibria-winmaclinux
+	conflicts = anilibria-winmaclinux
+	source = git+https://github.com/anilibria/anilibria-winmaclinux.git#commit=566e0f388f8f098aea9651972d786074a5c6e703
+	source = 0001-Change-instalation-path-to-be-Arch-linux-friendly.patch
+	md5sums = SKIP
+	md5sums = 90c273d473ea81ecba60f5c31a2db94f
+
+pkgname = anilibria-winmaclinux-git
+
