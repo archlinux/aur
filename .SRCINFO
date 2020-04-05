@@ -5,6 +5,7 @@ pkgbase = zbom
 	url = https://sites.google.com/site/zeldabom/
 	arch = any
 	license = custom
+	makedepends = gendesk
 	makedepends = cmake
 	depends = solarus>=1.6.0
 	source = https://github.com/wrightmat/zbom/archive/v1.4.tar.gz

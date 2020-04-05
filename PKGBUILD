@@ -11,7 +11,7 @@ url="https://sites.google.com/site/zeldabom/"
 license=('custom')
 groups=()
 depends=('solarus>=1.6.0')
-makedepends=('cmake')
+makedepends=('gendesk' 'cmake')
 checkdepends=()
 optdepends=()
 provides=()
