@@ -10,10 +10,10 @@ depends=("python>=3.7")
 makedepends=('git' 'python-setuptools')
 conflicts=("pbss-git" "pbss")
 changelog=
-source=('pbss-snap::https://github.com/arijit79/Pbss/archive/v1.1.tar.gz')
+source=('https://github.com/arijit79/Pbss/releases/download/v1.1/pbss-snap-1.1.tar.gz')
 noextract=()
 md5sums=('SKIP')
 
 package() {
-    sudo pip install $srcdir/${pkgname}
+    sudo pip install $srcdir/pbss-${pkgver}
 }
