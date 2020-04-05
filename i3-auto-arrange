@@ -1,4 +1,4 @@
-#usr/bin/env zsh
+# /bin/sh
 
 workspaces=$(i3-msg -t get_workspaces)
 num=$(echo $workspaces | jq length)
