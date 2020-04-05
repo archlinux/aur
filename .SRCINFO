@@ -1,0 +1,19 @@
+pkgbase = sway-accel-rotate-git
+	pkgver = r4.db52ad3
+	pkgrel = 1
+	url = https://github.com/Depau/sway-accel-rotate
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	arch = pentium4
+	license = MIT
+	makedepends = go
+	depends = iio-sensor-proxy
+	source = sway-accel-rotate::git+https://github.com/Depau/sway-accel-rotate.git
+	sha1sums = SKIP
+
+pkgname = sway-accel-rotate-git
+
