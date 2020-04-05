@@ -1,10 +1,10 @@
 # Maintainer: rawkode <rawkode@pm.me>
 # Maintainer: Benjamin Denhartog <ben@sudoforge.com>
 
-pkgname=pulumi-bin
 _pkgname=pulumi
+pkgname=pulumi-bin
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern Infrastructure as Code"
 arch=('x86_64')
 license=('Apache-2.0')
@@ -13,14 +13,22 @@ source=("https://get.pulumi.com/releases/sdk/${_pkgname}-v${pkgver}-linux-${CARC
 sha256sums=('d058726032116fb1623f828a6f7de234bbb7ab866cc27215a4a9732ae48a7014')
 
 package() {
-  mkdir -p "${pkgdir}/usr/bin"
+  cd "${srcdir}/${_pkgname}"
 
-  install -m755 "${srcdir}/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -m755 "${srcdir}/${_pkgname}/${_pkgname}-language-go" "${pkgdir}/usr/bin/${_pkgname}-language-go"
-  install -m755 "${srcdir}/${_pkgname}/${_pkgname}-language-nodejs" "${pkgdir}/usr/bin/${_pkgname}-language-nodejs"
-  install -m755 "${srcdir}/${_pkgname}/${_pkgname}-language-python" "${pkgdir}/usr/bin/${_pkgname}-language-python"
-  install -m755 "${srcdir}/${_pkgname}/${_pkgname}-language-python-exec" "${pkgdir}/usr/bin/${_pkgname}-language-python-exec"
-  install -m755 "${srcdir}/${_pkgname}/${_pkgname}-resource-pulumi-nodejs" "${pkgdir}/usr/bin/${_pkgname}-resource-pulumi-nodejs"
+  for f in \
+    "$_pkgname" \
+    "${_pkgname}-analyzer-policy" \
+    "${_pkgname}-analyzer-policy-python" \
+    "${_pkgname}-language-dotnet" \
+    "${_pkgname}-language-go" \
+    "${_pkgname}-language-nodejs" \
+    "${_pkgname}-language-python" \
+    "${_pkgname}-language-python-exec" \
+    "${_pkgname}-resource-pulumi-nodejs" \
+    "${_pkgname}-resource-pulumi-python" \
+  ; do
+    install -D -m 755 "$f" "${pkgdir}/usr/bin/${f}"
+  done
 
   # Generate Bash completion
   mkdir -p "${pkgdir}/etc/bash_completion.d"
