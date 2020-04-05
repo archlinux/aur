@@ -1,0 +1,17 @@
+diff --git a/pagermaid/__init__.py b/pagermaid/__init__.py
+index a10a619..16d921b 100644
+--- a/pagermaid/__init__.py
++++ b/pagermaid/__init__.py
+@@ -24,10 +24,10 @@ logs.addHandler(logging_handler)
+ logs.setLevel(INFO)
+ 
+ try:
+-    config = load(open(r"config.yml"), Loader=FullLoader)
++    config = load(open(r"/etc/pagermaid.yml"), Loader=FullLoader)
+ except FileNotFoundError:
+     logs.fatal("出错了呜呜呜 ~ 配置文件不存在，正在生成新的配置文件。")
+-    copyfile(f"{module_dir}/assets/config.gen.yml", "config.yml")
++    copyfile(f"{module_dir}/assets/config.gen.yml", "/etc/pagermaid.yml")
+     exit(1)
+ 
+ if strtobool(config['debug']):
