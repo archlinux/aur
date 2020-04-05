@@ -1,13 +1,17 @@
 pkgbase = tela-icon-theme-git
-	pkgdesc = A flat colorful Design icon theme.
-	pkgver = 143.fc478cfa
+	pkgdesc = A flat colorful design icon theme.
+	pkgver = 2020.02.21.r18.gdc435c8b
 	pkgrel = 1
-	url = https://github.com/vinceliuice/Tela-icon-theme
+	url = https://www.pling.com/p/1279924
 	arch = any
 	license = GPL3
 	makedepends = git
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	provides = tela-icon-theme
+	conflicts = tela-icon-theme
 	options = !strip
-	source = git+https://github.com/vinceliuice/Tela-icon-theme.git
+	source = tela-icon-theme::git+https://github.com/vinceliuice/Tela-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = tela-icon-theme-git

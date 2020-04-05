@@ -1,29 +1,28 @@
-# Maintainer: Robosky <fangyuhao0612@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Contributor: Robosky <fangyuhao0612@gmail.com>
 pkgname=tela-icon-theme-git
-_gitname=Tela-icon-theme
-pkgdesc="A flat colorful Design icon theme."
-pkgver=143.fc478cfa
+pkgver=2020.02.21.r18.gdc435c8b
 pkgrel=1
+pkgdesc="A flat colorful design icon theme."
 arch=('any')
-url="https://github.com/vinceliuice/${_gitname}"
+url="https://www.pling.com/p/1279924"
 license=('GPL3')
-source=("git+${url}.git")
-sha256sums=('SKIP')
-options=('!strip')
+depends=('hicolor-icon-theme' 'gtk-update-icon-cache')
 makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!strip')
+source=("${pkgname%-git}::git+https://github.com/vinceliuice/Tela-icon-theme.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_gitname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	cd "$srcdir/${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	install -dm755 "${pkgdir}/"usr/share/icons
-	sed -i '/gtk-update-icon-cache/d' install.sh
-	./install.sh \
-		-a \
-		-d "${pkgdir}"/usr/share/icons
+	cd "$srcdir/${pkgname%-git}"
+	install -d "$pkgdir/usr/share/icons"
+	./install.sh -a -d "$pkgdir/usr/share/icons"
 }
-	
+
