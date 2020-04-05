@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="An open source, survivable, strongly consistent, scale-out SQL database"
 arch=('x86_64')
 url="https://www.cockroachlabs.com/"
-license=('Apache 2.0' 'custom:BSL' 'custom:CCL')
+license=('Apache-2.0' 'custom:BSL' 'custom:CCL')
 depends=('glibc')
 source=("https://binaries.cockroachdb.com/cockroach-v${pkgver}.linux-amd64.tgz"
         "https://raw.githubusercontent.com/cockroachdb/cockroach/v${pkgver}/LICENSE"
