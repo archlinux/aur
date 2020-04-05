@@ -1,0 +1,15 @@
+#usr/bin/env zsh
+
+workspaces=$(i3-msg -t get_workspaces)
+num=$(echo $workspaces | jq length)
+
+for ((i=0;i<$num;i++))
+do
+	current=$(echo $workspaces | jq ".[$i].num")
+	normal=$(($i + 1))
+	
+	if (($current != $normal))
+	then
+		i3-msg -q rename workspace "$current" to "$normal"
+	fi
+done

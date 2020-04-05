@@ -1,0 +1,12 @@
+pkgbase = i3-auto-arrange
+	pkgdesc = This is a simple Shell script that will automatically rearrange i3 workspaces
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/denis-ismailaj/i3-auto-arrange
+	arch = any
+	license = GPL3
+	depends = i3-wm
+	depends = jq
+
+pkgname = i3-auto-arrange
+
