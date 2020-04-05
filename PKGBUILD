@@ -9,11 +9,6 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://tvheadend.org/"
 license=('GPL3')
 depends=(
-    'avahi'
-    'ffmpeg'
-    'libdvbcsa'
-    'libfdk-aac'
-    'libhdhomerun'
     'openssl'
     'pcre2'
     'uriparser'
