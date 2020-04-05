@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="ShowQ is a cue-player for theater productions"
 arch=('x86_64')
 url="https://github.com/evandelisle/showq"
-license=('GPL2')
+license=('GPL-2.0')
 depends=('gtkmm'
 		 'alsa-lib'
 		 'libsndfile'
