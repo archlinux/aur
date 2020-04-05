@@ -2,7 +2,7 @@
 
 _name=hsluv
 pkgname=python-$_name
-pkgver=0.0.2
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Human-friendly HSL"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('7ba7b058e6c8773ee0962d7467921d76e9302f2941d06e1a9475c78c24d2fd08ea389877cd7c4732b5b278ead033791c76bf1edbc270aaa071088532b937c24e')
+sha512sums=('d27abf7fa01a801b3da04abcf8d02ab799c5ff987a0603a3c765ba5a1a8639112f14597e26bda2c060cf2edae6fff2fa8740eb9a7a7a58a28bcb180c4d5bbd7a')
 
 package() {
   cd "$srcdir/$_name-$pkgver"
