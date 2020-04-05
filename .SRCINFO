@@ -1,0 +1,14 @@
+pkgbase = zbom
+	pkgdesc = The Legend of Zelda: Book of Mudora - A free 2D Zelda fangame
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://sites.google.com/site/zeldabom/
+	arch = any
+	license = custom
+	makedepends = cmake
+	depends = solarus>=1.6.0
+	source = https://github.com/wrightmat/zbom/archive/v1.4.tar.gz
+	md5sums = 4092f25e35d0b78ad2d0bb2afc5eef45
+
+pkgname = zbom
+
