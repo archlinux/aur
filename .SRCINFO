@@ -1,8 +1,8 @@
 pkgbase = linux-froidzen
 	pkgdesc = Linux ZEN with Patches
-	pkgver = 5.5.13.zen1
-	pkgrel = 1
-	url = https://github.com/zen-kernel/zen-kernel/commits/v5.5.13-zen1
+	pkgver = 5.6.2.zen1
+	pkgrel = 2
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.6.2-zen1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,17 +15,17 @@ pkgbase = linux-froidzen
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.5.13-zen1
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.6.2-zen1
 	source = config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen
 	source = aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch
-	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.5.patch
+	source = https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.6.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 16c7272d0062118dcfe89f4ce2f9b9e68a2a3a6fb13f326588fc1225582cc9e4
+	sha256sums = e09c8bba54dbf62792a1842ee8ef5caf7d6b23949b89d9ee0d49d20f6117b34d
 	sha256sums = 2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2
-	sha256sums = a948ee238ee89c609df9a0700eac9ac4f64bd9523c0f9ebb13263b3c979d2da1
+	sha256sums = 38044055a721c9c5a7bb67e5d1ba95d0585f63c83cc41af429efa60d6e0c718a
 
 pkgname = linux-froidzen
 	pkgdesc = The Linux ZEN with Patches kernel and modules
@@ -34,6 +34,8 @@ pkgname = linux-froidzen
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
 
 pkgname = linux-froidzen-headers
 	pkgdesc = Headers and scripts for building modules for the Linux ZEN with Patches kernel
