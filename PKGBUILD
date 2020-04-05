@@ -1,6 +1,6 @@
 pkgname=kisslicer2
 pkgver=1.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="KISSlicer is a fast, easy-to-use, cross-platform program that takes 3D files (STL) and generates path information (G-code) for a 3D Printer.  The FREE version has all the features needed for the hobbyist who uses a single-head machine. Alpha version of V2"
 arch=('i686' 'x86_64')
 url="http://www.kisslicer.com/index.html"
@@ -22,7 +22,7 @@ source=(
 source_i686=('https://www.dropbox.com/sh/78y5ec24yx1ycbk/AAD0c1pyxFRMtSe8CLZxqEqYa/KISSlicer_Linux32_v2_alpha_1.6.2.zip')
 source_x86_64=('https://www.dropbox.com/sh/78y5ec24yx1ycbk/AACN90y_A2vWZFCj8VZwRl1Oa/KISSlicer_Linux64_v2_alpha_1.6.2.zip')
 # Checksums
-sha256sums=('7791e651c5ca4850644a98e522741e925d822369d2defe46090f1939c6047216'
+sha256sums=('dcc2f0c110fc71e35a6a0e8aad8e375bfd4eb09db309fafa517b2857d600b6c6'
             '9f6bbb2357f2f81cfeb86f8f114b4e529c9f9f52a551fc5bca16a679ce60245b'
 	    '17ec56ab667fc601b5282c8093e795cc65c6c73df25fdafd8ddd96436ea24589'
 	   )
