@@ -1,6 +1,6 @@
 pkgbase = terminator-python3-bzr
 	pkgdesc = python3 port for terminal emulator that supports tabs and grids python3
-	pkgver = r1851
+	pkgver = r1852
 	pkgrel = 1
 	url = https://code.launchpad.net/~hellodeargrandma/terminator/python3
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = terminator-python3-bzr
 	depends = python-configobj
 	depends = python-psutil
 	depends = python-gobject
+	depends = python-cairo
 	conflicts = terminator
 	source = terminator-python3-bzr::bzr+lp:~hellodeargrandma/terminator/python3
 	sha256sums = SKIP

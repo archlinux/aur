@@ -7,7 +7,7 @@ arch=('any')
 url='https://code.launchpad.net/~hellodeargrandma/terminator/python3'
 license=('GPL2')
 depends=('vte3' 'gconf' 'xdg-utils' 'libkeybinder3' 'python-configobj'
-        'python-psutil' 'python-gobject')
+        'python-psutil' 'python-gobject' 'python-cairo')
 makedepends=('bzr' 'desktop-file-utils' 'gettext' 'intltool')
 conflicts=('terminator')
 #install='terminator.install'
