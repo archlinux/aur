@@ -1,6 +1,6 @@
 # Maintainer: Denis Ismailaj <denis.ismailaj1@gmail.com>
 pkgname=i3-auto-arrange
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="This is a simple Shell script that will automatically rearrange i3 workspaces"
 arch=('any')
