@@ -32,7 +32,7 @@ backup=('etc/conf.d/tvheadend')
 
 source=(
     "${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
-    'dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend'
+    'dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master'
     'ignore-missing-libavresample.patch'
 )
 md5sums=(

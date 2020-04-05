@@ -30,7 +30,7 @@ pkgbase = tvheadend-satip-server-git
 	conflicts = tvheadend-git
 	backup = etc/conf.d/tvheadend
 	source = tvheadend-git::git+https://github.com/tvheadend/tvheadend.git#branch=master
-	source = dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend
+	source = dvb-scan-tables::git+https://git.linuxtv.org/dtv-scan-tables.git#branch=master
 	source = ignore-missing-libavresample.patch
 	md5sums = SKIP
 	md5sums = SKIP
