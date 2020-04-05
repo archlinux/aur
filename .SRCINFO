@@ -6,6 +6,7 @@ pkgbase = lha
 	url = http://lha.osdn.jp
 	arch = x86_64
 	license = custom:lha
+	makedepends = git
 	depends = glibc
 	source = git+https://github.com/jca02266/lha.git#commit=7c3cd95fdf0d2f9198bb779561724cd314bc39a6
 	source = LICENSE
