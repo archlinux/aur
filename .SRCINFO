@@ -1,0 +1,20 @@
+pkgbase = soundux-git
+	pkgdesc = A universal soundboard in Qt for linux using pulseaudio modules
+	pkgver = r61.6003b8d
+	pkgrel = 1
+	url = https://github.com/D3S0X/Soundux
+	arch = any
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = git
+	makedepends = qpm-bin
+	depends = qt5-base
+	depends = qt5-x11extras
+	optdepends = mpg123: mp3 support
+	source = git+https://github.com/D3S0X/Soundux.git
+	source = soundux.desktop
+	sha256sums = SKIP
+	sha256sums = 489482294980db2352f754d1f26450daa545b39acd863a5b0069cea922944c60
+
+pkgname = soundux-git
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Soundux
+GenericName=Soundboard
+Exec=/usr/bin/Soundux
+Icon=/usr/share/pixmaps/soundux-icon.jpg
+Terminal=false
+Categories=Audio;Music;Player;AudioVideo;
+Comment=A universal soundboard using pulseaudio modules
