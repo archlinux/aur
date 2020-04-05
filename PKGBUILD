@@ -6,14 +6,14 @@
 
 _locale='pt-PT'
 pkgname=palemoon-i18n-pt-pt
-pkgver=28.7.0
+pkgver=28.9.0
 pkgrel=1
 pkgdesc="Portoguese (Portugal) language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('267b494f42f61850693d62ea6d9697a919205398fc092a87c1c250a1b1ea7ab2')
+sha256sums=('9b0b9732bde4514b46bf6a6f559c40fd4f435e9243babc2d0efcf6bf86a3ff78')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
