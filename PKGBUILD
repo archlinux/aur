@@ -20,9 +20,11 @@ source=("https://gitlab.com/akkuscm/akku/uploads/7d34b733d5a6518d7842016e878ab8f
         "https://gitlab.com/akkuscm/akku/uploads/d8db897d2f28a112cc941f00711ff7a3/$pkgname-$pkgver.tar.gz.sig")
 noextract=('$pkgname-$pkgver.tar.gz.sig')
 
-# using key_id=E33E61A2E9B8C3A2, as found in https://gitlab.com/akkuscm/akku/-/blob/master/README.md
-# gpg key used is in the output of gpg --list-keys --fingerprint $key_id
-validpgpkeys=('08272FBB54EEB5072D5BA930E33E61A2E9B8C3A2')
+# full fingerprint from the output of gpg --list-keys --fingerprint E33E61A2E9B8C3A2
+# which is the key found in https://gitlab.com/akkuscm/akku/-/blob/master/README.md
+# in the case of ... (unknown public key KEY_ID) ==> ERROR: One or more PGP signatures could not be verified!
+# one must add the key to the user keyring with gpg --recv-key KEY_ID
+validpgpkeys=('08272FBB54EEB5072D5BA930E33E61A2E9B8C3A2') # Göran Weinholt
 
 build() {
 	cd "$pkgname-$pkgver"
