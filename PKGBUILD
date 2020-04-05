@@ -6,14 +6,14 @@
 
 _locale='ru'
 pkgname=palemoon-i18n-ru
-pkgver=28.7.0
+pkgver=28.9.0
 pkgrel=1
 pkgdesc="Russian language pack for Pale Moon browser"
 arch=('any')
 url="https://addons.palemoon.org/language-packs/"
 license=('MPL' 'GPL')
 source=("${pkgname}-${pkgver}.xpi"::"https://addons.palemoon.org/?component=download&version=${pkgver}&id=langpack-${_locale}@palemoon.org")
-sha256sums=('84664af4889a829639ba464abbadc8a43dc406994817ec0fe723de9cbc695cdf')
+sha256sums=('fa622a1c7f8711276859c861ffc93e6090716ebbb11a0fc75725ee2e80f83935')
 depends=('palemoon-i18n-common')
 noextract=("${pkgname}-${pkgver}.xpi")
 DLAGENTS=("http::/usr/bin/curl --user-agent 'PaleMoon' --output %o %u"
