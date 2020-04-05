@@ -5,7 +5,7 @@
 
 pkgbase=linux-vfio
 pkgver=5.5.13.arch2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -30,7 +30,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '237a8d76fb2ea8ba61123a537cac2586c11847e32e4461a920f75371c70fee50'
+            '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
             '9863dfc3c3213cd6d3501363cc57de897eda5cdd2c68c1b6fc247c66559c0532'
             'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0')
 
