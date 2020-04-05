@@ -2,7 +2,7 @@
 # Maintainer: Joseph Donofry <joe at joedonofry dot com>
 
 pkgname=nheko-git
-pkgver=0.7.0.r1483.0f9c9df
+pkgver=0.7.0.r1532.384ef13
 pkgrel=1
 pkgdesc="Desktop client for the Matrix protocol"
 arch=("i686" "x86_64")
@@ -10,7 +10,7 @@ arch=("i686" "x86_64")
 url="https://github.com/Nheko-Reborn/nheko"
 license=("GPL3")
 
-depends=("qt5-base" "lmdb" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2"  "boost" "libsodium" "openssl" "cmark" )
+depends=("qt5-base" "lmdb" "qt5-graphicaleffects" "qt5-multimedia" "qt5-svg" "qt5-quickcontrols2"  "boost" "libsodium" "openssl" "cmark" )
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 
 provides=("nheko")
