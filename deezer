@@ -1,0 +1,3 @@
+#!/bin/sh
+export DZ_DISABLE_UPDATE="yes"
+exec electron6 /usr/share/deezer/app.asar "$@"

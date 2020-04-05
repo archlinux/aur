@@ -1,7 +1,7 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
 	pkgver = 4.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.deezer.com/
 	arch = any
 	license = custom:"Copyright (c) 2006-2018 Deezer S.A."
@@ -14,14 +14,16 @@ pkgbase = deezer
 	provides = deezer
 	source = deezer-4.19.0-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/4.19.0
 	source = deezer.desktop
+	source = deezer
 	source = menu-bar.patch
 	source = quit.patch
 	source = 0001-MPRIS-interface.patch
 	sha256sums = 676c85bb77f7c28962a4ac59baf4ed4e564475c559fc1df44ce678826075e756
 	sha256sums = f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99
+	sha256sums = 441ab8532eac991eb5315a8ab39242aae1aa6fd633e8af4b0ab2a247fe1239cc
 	sha256sums = 8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0
 	sha256sums = 75c7edd8714393579e29842a8e15aabccfd0a9b5130ff7501890e7c1c1931b46
-	sha256sums = e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414
+	sha256sums = 217d899797908004453e9c0d86057b5682b3612c6412b4f6c107ac4ad201320b
 
 pkgname = deezer
 

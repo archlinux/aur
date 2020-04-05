@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=4.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -12,14 +12,16 @@ provides=('deezer')
 makedepends=('p7zip' 'asar' 'prettier' 'imagemagick' 'npm')
 source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/artifact/win32/x86/$pkgver"
         "$pkgname.desktop"
+        deezer
         menu-bar.patch
         quit.patch
         0001-MPRIS-interface.patch)
 sha256sums=('676c85bb77f7c28962a4ac59baf4ed4e564475c559fc1df44ce678826075e756'
             'f8a5279239b56082a5c85487b0c261fb332623f27dac3ec8093458b8c55d8d99'
+            '441ab8532eac991eb5315a8ab39242aae1aa6fd633e8af4b0ab2a247fe1239cc'
             '8a22f666e308663cb6addabe7695b1e5e3bfa07f68cc7b479e51426dee1c36b0'
             '75c7edd8714393579e29842a8e15aabccfd0a9b5130ff7501890e7c1c1931b46'
-            'e82cd8d8da62bed9cd154b5b58477f205ea90ad91353b466679414adc2736414')
+            '217d899797908004453e9c0d86057b5682b3612c6412b4f6c107ac4ad201320b')
 
 prepare() {
     # Extract app from installer
@@ -74,9 +76,6 @@ package() {
     for size in 16 32 48 64 128 256 512; do
         mkdir -p "$pkgdir"/usr/share/icons/hicolor/${size}x${size}/apps/
     done
-
-    echo "#!/bin/sh" > deezer
-    echo "exec electron6 /usr/share/deezer/app.asar \"\$@\"" >> deezer
 
     install -Dm644 resources/app.asar "$pkgdir"/usr/share/deezer/
     install -Dm644 resources/win/deezer-0.png "$pkgdir"/usr/share/icons/hicolor/16x16/apps/deezer.png
