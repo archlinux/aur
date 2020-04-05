@@ -63,26 +63,54 @@ build() {
 
     ./configure --prefix=/usr --mandir=/usr/share/man/man1 --release \
         --python=python3 \
-        --enable-avahi \
+        --enable-pie \
+        --disable-ccdebug \
+        --disable-cardclient \
+        --disable-cwc \
+        --disable-cccam \
+        --disable-capmt \
+        --disable-constcw \
+        --enable-linuxdvb \
+        --enable-satip_server \
+        --disable-satip_client \
+        --disable-hdhomerun_static --disable-hdhomerun_client \
+        --disable-iptv \
+        --enable-tsfile \
+        --enable-dvbscan \
+        --disable-timeshift \
+        --enable-trace \
+        --disable-avahi \
         --enable-zlib \
-        --disable-ffmpeg_static --enable-libav \
-        --disable-libx264_static --enable-libx264 \
-        --disable-libx265_static --enable-libx265 \
-        --disable-libvpx_static --enable-libvpx \
-        --disable-libtheora_static --enable-libtheora \
-        --disable-libvorbis_static --enable-libvorbis \
-        --disable-libfdkaac_static --enable-libfdkaac \
-        --disable-libopus_static --enable-libopus \
+        --disable-ffmpeg_static --disable-libav \
+        --disable-libx264_static --disable-libx264 \
+        --disable-libx265_static --disable-libx265 \
+        --disable-libvpx_static --disable-libvpx \
+        --disable-libtheora_static --disable-libtheora \
+        --disable-libvorbis_static --disable-libvorbis \
+        --disable-libfdkaac_static --disable-libfdkaac \
+        --disable-libopus_static --disable-libopus \
         --disable-nvenc \
-        --enable-vaapi \
+        --disable-vaapi \
+        --disable-mmal \
+        --disable-omx \
         --enable-inotify \
         --enable-epoll \
         --disable-pcre --enable-pcre2 \
         --enable-uriparser \
-        --enable-dvben50221 \
-        --enable-dbus_1 \
-        --disable-hdhomerun_static --enable-hdhomerun_client \
-        --enable-tvhcsa
+        --disable-ccache \
+        --disable-tvhcsa \
+        --disable-bundle \
+        --disable-pngquant \
+        --disable-kqueue \
+        --disable-dbus_1 \
+        --disable-android \
+        --disable-gtimer_check \
+        --disalbe-slow_memoryinfo \
+        --enable-libsystemd_daemon \
+        --disable-pcloud_cache \
+        --disable-ddci \
+        --disable-cclang_threadsan \
+        --disable-gperftools
     make
 }
 
