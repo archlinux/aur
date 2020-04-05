@@ -11,6 +11,7 @@ pkgbase = swami
 	depends = audiofile
 	depends = fluidsynth
 	depends = libinstpatch
+	depends = libgnomecanvas
 	optdepends = libpng
 	source = https://github.com/swami/swami/archive/v2.2.0.tar.gz
 	source = cwd.patch
