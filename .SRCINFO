@@ -1,16 +1,20 @@
 pkgbase = ttf-ricty
 	pkgdesc = Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.
 	pkgver = 4.1.1
-	pkgrel = 1
-	url = http://www.rs.tus.ac.jp/yyusa/ricty.html
+	pkgrel = 3
+	url = https://rictyfonts.github.io/
 	install = ttf.install
 	arch = any
 	license = custom
 	makedepends = fontforge
 	makedepends = ttf-inconsolata
 	makedepends = ttf-migu
-	source = http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator-4.1.1.sh
+	source = https://rictyfonts.github.io/files/ricty_generator-4.1.1.sh
+	source = OFL.txt
+	source = ipa_font_license_agreement_v1.txt
 	sha256sums = 86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d
+	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
+	sha256sums = 87fce322b6a982ed1fb713fea8ae5531aed77792c4d10b1efb17050e5edb41ab
 
 pkgname = ttf-ricty
 
