@@ -18,6 +18,7 @@ pkgbase = gnome-calendar-linuxmint
 	depends = gsettings-desktop-schemas
 	depends = libdazzle
 	depends = libgweather
+	depends = libhandy
 	depends = libical
 	optdepends = evolution: ICS file import
 	provides = gnome-calendar

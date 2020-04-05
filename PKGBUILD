@@ -17,6 +17,7 @@ depends=(
     gsettings-desktop-schemas
     libdazzle
     libgweather
+    libhandy
     libical
 )
 optdepends=(
