@@ -1,0 +1,17 @@
+pkgbase = perl-scalar-string
+	pkgdesc = string aspects of scalars
+	pkgver = 0.003
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Scalar-String
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-module-build
+	makedepends = perl-test-simple
+	depends = perl
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Scalar/Scalar-String-0.003.tar.gz
+	sha256sums = f54a17c9b78713b02cc43adfadf60b49467e7634d31317e8b9e9e97c26d68b52
+
+pkgname = perl-scalar-string
+
