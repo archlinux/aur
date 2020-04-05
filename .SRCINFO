@@ -1,8 +1,8 @@
 pkgbase = magic-wormhole
 	pkgdesc = Securely transfer data between computers
-	pkgver = 0.11.2
-	pkgrel = 2
-	url = https://pypi.python.org/pypi/magic-wormhole/0.11.2
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/magic-wormhole/0.12.0
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
@@ -26,8 +26,8 @@ pkgbase = magic-wormhole
 	replaces = wormhole
 	replaces = wormhole-server
 	replaces = python-wormhole
-	source = https://files.pythonhosted.org/packages/source/m/magic-wormhole/magic-wormhole-0.11.2.tar.gz
-	sha512sums = 890c0f1f946dfd9a9bde2ec0079c55dc23b328e04780e6baf8c580dfd068bf37a5b2e00e12119be6529a6e0893d4f711145e04c349ccfdf7ef91e87cef785d36
+	source = https://files.pythonhosted.org/packages/source/m/magic-wormhole/magic-wormhole-0.12.0.tar.gz
+	sha512sums = 0ef4241a5692227206c1a07a2aed8a2c1575281d52db8bcdb8ffd070c158b4969126486b5e68e899f2100d7daedbbe0b91a7d667915bd5b86be26d6553b34dd6
 
 pkgname = magic-wormhole
 
