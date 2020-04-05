@@ -4,7 +4,7 @@
 pkgname=clashr-bin
 _pkgname=clashr
 pkgver=0.19.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A rule based proxy in Go with SSR protocol support."
 url="https://github.com/frainzy1477/clashrdev"
 license=("MIT")
@@ -19,7 +19,7 @@ noextract=("$_pkgname-$pkgver.gz")
 sha256sums=(
         "7aa265e329a54c9a1c86464a0a4567d332f04de3a618a85b71934d04e0210343"
         "ea8c4bfb4291e0fa6442644a233e168302c186ef36a39ef56fc75989b56213d9"
-        "66265b365faf1455e11071a5f326cf91ec8dbf1adecbd5f4e444f9f4d512281e"
+        "d46897c9993eb6fde845d2e018a1290c3c879d73a433a419969bf826be47588f"
 )
 
 install=$_pkgname.install

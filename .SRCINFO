@@ -1,7 +1,7 @@
 pkgbase = clashr-bin
 	pkgdesc = A rule based proxy in Go with SSR protocol support.
 	pkgver = 0.19.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frainzy1477/clashrdev
 	install = clashr.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = clashr-bin
 	source = clashr-0.19.0.2.gz::https://github.com/frainzy1477/clashrdev/releases/download/v0.19.0.2/clashr-linux-amd64-v0.19.0.2.gz
 	sha256sums = 7aa265e329a54c9a1c86464a0a4567d332f04de3a618a85b71934d04e0210343
 	sha256sums = ea8c4bfb4291e0fa6442644a233e168302c186ef36a39ef56fc75989b56213d9
-	sha256sums = 66265b365faf1455e11071a5f326cf91ec8dbf1adecbd5f4e444f9f4d512281e
+	sha256sums = d46897c9993eb6fde845d2e018a1290c3c879d73a433a419969bf826be47588f
 
 pkgname = clashr-bin
 
