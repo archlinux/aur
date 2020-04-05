@@ -7,7 +7,6 @@ pkgbase = viter-git
 	license = GPL-3
 	makedepends = git
 	depends = python-gobject
-	depends = gtk3
 	depends = vte3
 	conflicts = viter
 	source = viter::git+https://github.com/Kharacternyk/viter.git#branch=master
