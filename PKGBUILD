@@ -1,6 +1,6 @@
 # Maintainer: Firas Zaidan
 pkgname=elm-test
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Run elm-test suites."
 arch=(any)
@@ -10,7 +10,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-sha1sums=(583b3c22e6572f3cd659e88b5d02d88ae0096932)
+sha1sums=(1507b7aa8f6605f04b474bf9d765f187d24ec5da)
 
 package() {
   cd $srcdir

@@ -1,15 +1,15 @@
 pkgbase = elm-test
 	pkgdesc = Run elm-test suites.
-	pkgver = 0.19.0
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/rtfeldman/node-test-runner#readme
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = elm-test-0.19.0.tgz
-	source = http://registry.npmjs.org/elm-test/-/elm-test-0.19.0.tgz
-	sha1sums = 583b3c22e6572f3cd659e88b5d02d88ae0096932
+	noextract = elm-test-0.19.1.tgz
+	source = http://registry.npmjs.org/elm-test/-/elm-test-0.19.1.tgz
+	sha1sums = 1507b7aa8f6605f04b474bf9d765f187d24ec5da
 
 pkgname = elm-test
 
