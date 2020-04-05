@@ -19,13 +19,16 @@ post_install() {
 
 post_upgrade() {
 
+	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
+	ln -sf /opt/google/cros-containers/bin/sommelier /usr/bin/sommelier
+
 cat << EOF
 
-	(!) This package is permanently work-in-progress while Crostini
+	This package is permanently work-in-progress while Crostini
 	is in beta. Missing features, issues and bugs are possible!
 
-	Developed and tested on Google Pixelbook, but should work fine 
-    on other Chromebooks/Chromeboxes with Crostini enabled. 
+	Developed and tested on Google Pixelbook, but should work 
+	fine on other Chromebooks/Chromeboxes with Crostini enabled. 
 
 	Please report any issues to the AUR page!
 
@@ -47,5 +50,6 @@ post_remove() {
 	systemctl unmask systemd-udev-trigger.service
 
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
-	rm /usr/share/themes/CrosAdapta
+	rm -f /usr/share/themes/CrosAdapta
+	rm -f /usr/bin/sommelier
 }

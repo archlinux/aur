@@ -1,7 +1,7 @@
 _pkgname=cros-container-guest-tools
 pkgname=${_pkgname}-git
-pkgver=r238.5591412
-pkgrel=2
+pkgver=r258.61d9c12
+pkgrel=1
 pkgdesc="Linux guest tools for the Crostini containers on ChromeOS"
 arch=('any')
 license=('custom')
@@ -59,7 +59,6 @@ package() {
 	mkdir -p ${pkgdir}/usr/share/themes
 
 #	Uncomment after https://bugs.archlinux.org/task/58701 is fixed
-#
 #	ln -sf /opt/google/cros-containers/cros-adapta ${pkgdir}/usr/share/themes/CrosAdapta
 
 	### cros-apt-config -> not applicable
@@ -82,6 +81,12 @@ package() {
 	### cros-gpu-stretch -> not applicable
 	### cros-guest-tools -> not applicable
 
+	### cros-host-fonts
+
+	install -m644 -D ${srcdir}/${_pkgname}/cros-host-fonts/05-cros-fonts.conf ${pkgdir}/etc/fonts/conf.avail/05-cros-fonts.conf
+	mkdir -p ${pkgdir}/etc/fonts/conf.d/
+	ln -sf ../conf.avail/05-cros-fonts.conf ${pkgdir}/etc/fonts/conf.d/05-cros-fonts.conf
+
 	### cros-notificationd
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-notificationd/org.freedesktop.Notifications.service \
@@ -102,6 +107,7 @@ package() {
 	### cros-sommelier
 
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelierrc ${pkgdir}/etc/sommelierrc
+	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/skel.sommelierrc ${pkgdir}/etc/skel/.sommelierrc
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier.sh ${pkgdir}/etc/profile.d/sommelier.sh
 	install -m644 -D ${srcdir}/${_pkgname}/cros-sommelier/sommelier@.service ${pkgdir}/usr/lib/systemd/user/sommelier@.service
 	sed -i 's|=/usr|=/opt/google/cros-containers|g' ${pkgdir}/usr/lib/systemd/user/sommelier@.service
@@ -111,6 +117,8 @@ package() {
 	ln -sf ../sommelier@.service ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier@1.service
 	ln -sf ../sommelier-x@.service ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier-x@0.service
 	ln -sf ../sommelier-x@.service ${pkgdir}/usr/lib/systemd/user/default.target.wants/sommelier-x@1.service
+#	Uncomment after https://bugs.archlinux.org/task/58701 is fixed
+#	ln -sf /opt/google/cros-containers/bin/sommelier ${pkgdir}/usr/bib/sommelier
 
 	### cros-sommelier-config
 
