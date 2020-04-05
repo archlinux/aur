@@ -1,7 +1,7 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
-pkgname=tvheadend-git
+pkgname=tvheadend-satip-server-git
 _gitname='tvheadend-git'
 pkgver=4.3.r1428.gbef96c5d2
 pkgrel=1

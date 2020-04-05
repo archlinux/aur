@@ -1,4 +1,4 @@
-pkgbase = tvheadend-git
+pkgbase = tvheadend-satip-server-git
 	pkgdesc = TV streaming server for Linux
 	pkgver = 4.3.r1428.gbef96c5d2
 	pkgrel = 1
@@ -35,5 +35,5 @@ pkgbase = tvheadend-git
 	md5sums = SKIP
 	md5sums = ab3e00343f57b70b5e02a981e0a16055
 
-pkgname = tvheadend-git
+pkgname = tvheadend-satip-server-git
 
