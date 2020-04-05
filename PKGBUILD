@@ -1,6 +1,6 @@
 # Maintainer: Aurélien Ooms <aurelien.ooms@gmail.com>
 pkgname=gifify
-pkgver=2.1.0
+pkgver=3.0.1
 pkgrel=1
 epoch=
 pkgdesc="Convert videos to GIFs"
@@ -8,7 +8,7 @@ arch=(any)
 url="https://github.com/aureooms/gifify"
 license=('AGPL-3.0')
 groups=()
-depends=('coreutils' 'findutils' 'grep' 'ffmpeg' 'imagemagick' 'gifsicle' 'gifski')
+depends=('coreutils' 'findutils' 'grep' 'ffmpeg' 'imagemagick' 'gifsicle' 'gifski' 'bc' 'sed')
 makedepends=('git')
 checkdepends=()
 optdepends=()
