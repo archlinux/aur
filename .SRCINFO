@@ -1,6 +1,6 @@
 pkgbase = interception-caps2esc-nocaps-git
 	pkgdesc = A fork of interception-caps2esc which does not emit Caps Lock when ESC is pressed
-	pkgver = 0.1.3.r3.g4560a82
+	pkgver = 0.1.3.r4.g339f645
 	pkgrel = 1
 	url = https://github.com/weirane/caps2esc
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = interception-caps2esc-nocaps-git
 	depends = interception-tools
 	conflicts = caps2esc
 	conflicts = interception-caps2esc
+	conflicts = interception-caps2esc-delay-git
 	replaces = interception-caps2esc
 	source = interception-caps2esc-nocaps-git::git+https://github.com/weirane/caps2esc
 	source = udevmon.yaml
