@@ -15,6 +15,7 @@ pkgbase = telephant-git
 	depends = qt5-base
 	depends = qt5-declarative
 	depends = qt5-graphicaleffects
+	depends = qt5-quickcontrols
 	depends = qt5-quickcontrols2
 	depends = qt5-svg
 	depends = qt5-multimedia
