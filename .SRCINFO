@@ -1,0 +1,17 @@
+pkgbase = locker
+	pkgdesc = linux container
+	pkgver = 0.5.4
+	pkgrel = 0
+	url = https://gitlab.com/$gitrepo/locker
+	arch = x86_64
+	license = GPL
+	makedepends = go-pie
+	optdepends = apparmor: For use of apparmor features
+	optdepends = iproute2: For network setup
+	backup = etc/locker/seccomp_default.json
+	backup = var/lib/locker/images.json
+	source = https://gitlab.com/amit-yuval/locker/-/archive/V0.5.4/locker-V0.5.4.tar.gz
+	sha512sums = 5287ee6257ba959a9c38d178ea28af53139895d3d54f9b96054ffd397524b30b18eafa7296dae26e26834c4bb73a6bf3836600d00b56d9570d782361007c9efb
+
+pkgname = locker
+
