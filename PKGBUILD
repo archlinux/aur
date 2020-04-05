@@ -4,7 +4,7 @@
 
 _pkgname=libretro-ppsspp
 pkgname=libretro-ppsspp-rbp
-pkgver=26779
+pkgver=26808
 pkgrel=1
 pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
 arch=(armv7h)
@@ -25,7 +25,7 @@ makedepends=(
   python
 )
 source=(
-  libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=8e9926394933d8561a84564b8b26e30d07e19fdc
+  libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=350589dd65ff4ae6cfd0fe738c5798e4c7387619
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
