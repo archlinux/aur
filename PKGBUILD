@@ -2,7 +2,7 @@
 
 pkgbase=linux
 pkgver=5.6.2.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -25,7 +25,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'cdcab2af044fc7a30065782066eb1e85b2e5a1842841e03ab9923394043d90ec')
+            '5c809f7ca4f21ebd95368533b20c0ed78fe2e006762dff742e5fd0751521ad11')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
