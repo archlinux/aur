@@ -10,5 +10,5 @@ Type=simple
 User=pagermaid
 Group=pagermaid
 WorkingDirectory=/var/lib/pagermaid
-ExecStart=/usr/bin/pagermaid
+ExecStart=/usr/bin/python -m pagermaid
 Restart=always

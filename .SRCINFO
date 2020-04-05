@@ -1,7 +1,7 @@
 pkgbase = pagermaid-modify-git
 	pkgdesc = A utility daemon for telegram.
 	pkgver = r51.f6b17bb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xtaodada/PagerMaid-Modify
 	arch = any
 	license = GPL3
