@@ -33,6 +33,7 @@ build() {
   ./autogen.sh
   ./configure
   make
+  export NDPI_HOME=$srcdir/nDPI-$_ndpiver
   cd $srcdir/$pkgname-$pkgver
   ./autogen.sh
   ./configure --prefix=$pkgdir/usr --datadir=/usr/share
