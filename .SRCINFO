@@ -1,7 +1,7 @@
 pkgbase = pam_exec-ssh
     pkgdesc = Unlock SSH keys on login using PAM
     pkgver = r11.50fe297
-    pkgrel = 2
+    pkgrel = 3
     url = https://github.com/x70b1/pam_exec-ssh
     arch = any
     license = The Unlicense
