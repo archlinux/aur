@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium-dev-ozone
-pkgver=81.0.4044.91
+pkgver=83.0.4100.3
 pkgrel=1
 _launcher_ver=6
 pkgdesc="Chromium built with patches for wayland support via Ozone (dev channel)"
@@ -19,7 +19,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
 provides=('chromium')
 conflicts=('chromium')
 makedepends=('python' 'python2' 'gperf' 'yasm' 'mesa' 'ninja' 'nodejs' 'git'
-             'pipewire' 'clang' 'lld' 'gn' 'java-runtime-headless')
+             'pipewire' 'clang' 'lld' 'gn-git' 'java-runtime-headless')
 optdepends=('pepper-flash: support for Flash content'
             'pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: needed for file dialogs in KDE'
@@ -28,16 +28,18 @@ optdepends=('pepper-flash: support for Flash content'
 install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
-        rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
-        rebuild-Linux-frame-button-cache-when-activation.patch
         chromium-widevine.patch
-        chromium-skia-harmony.patch)
-sha256sums=('cec9da1fe5c5a99e97e9ca29d0836b12239439ede40794e52a9a2fdef065d4ca'
+        chromium-skia-harmony.patch
+        0001-add-missing-algorithm-header.patch
+        0002-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+        0003-Revert-FragmentItem-Two-fixes-for-outline.patch)
+sha256sums=('de935646f509f31110c0c80353fb82178a8f6ff4fa39e07449f20bb3abdccde7'
             '04917e3cd4307d8e31bfb0027a5dce6d086edb10ff8a716024fbb8bb0c7dccf1'
-            'ae3bf107834bd8eda9a3ec7899fe35fde62e6111062e5def7d24bf49b53db3db'
-            '46f7fc9768730c460b27681ccf3dc2685c7e1fd22d70d3a82d9e57e3389bb014'
             '709e2fddba3c1f2ed4deb3a239fc0479bfa50c46e054e7f32db4fb1365fed070'
-            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1')
+            '771292942c0901092a402cc60ee883877a99fb804cb54d568c8c6c94565a48e1'
+            '09f847e4abaa91f9bf92e084ec45f331dbb79936e742fb3ec9ed7a916503ef12'
+            'ad336230b964644ed8db148c497091a001d8601a220b5dd7307b91d13b5473d4'
+            'b65b6cf6e0239ddb6c44b8b2fdc87f711b9e936e8fa6cdd2bdd0f4988b3d759f')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
 # Keys are the names in the above script; values are the dependencies in Arch
@@ -46,7 +48,7 @@ declare -gA _system_libs=(
   [flac]=flac
   [fontconfig]=fontconfig
   [freetype]=freetype2
-  [harfbuzz-ng]=harfbuzz
+  # [harfbuzz-ng]=harfbuzz
   [icu]=icu
   [libdrm]=
   #[libjpeg]=libjpeg
@@ -95,16 +97,16 @@ prepare() {
     third_party/blink/renderer/core/xml/parser/xml_document_parser.cc \
     third_party/libxml/chromium/*.cc
 
-  # https://crbug.com/1049258
-  patch -Np1 -i ../rename-Relayout-in-DesktopWindowTreeHostPlatform.patch
-  patch -Np1 -i ../rebuild-Linux-frame-button-cache-when-activation.patch
-
   # Load bundled Widevine CDM if available (see chromium-widevine in the AUR)
   # M79 is supposed to download it as a component but it doesn't seem to work
   patch -Np1 -i ../chromium-widevine.patch
 
   # https://crbug.com/skia/6663#c10
   patch -Np0 -i ../chromium-skia-harmony.patch
+
+  patch -Np1 -i ../0001-add-missing-algorithm-header.patch
+  patch -Np1 -i ../0002-libstdc-fix-incomplete-type-in-AXTree-for-NodeSetSiz.patch
+  patch -Np1 -i ../0003-Revert-FragmentItem-Two-fixes-for-outline.patch
 
   for PATCH in ${_bugfix_patches[@]}
   do
