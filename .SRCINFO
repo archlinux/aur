@@ -6,16 +6,11 @@ pkgbase = python-django-tables2
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
+	depends = python-django>=1.11
+	optdepends = python-tablib: to export table data as CSV, XLS, etc.
 	options = !emptydirs
 	source = https://github.com/bradleyayers/django-tables2/archive/v2.2.1.tar.gz
 	sha256sums = ec0112ebebda943fee141ab836a336ec74120214a576bbf4e9ffb584888674f9
 
 pkgname = python-django-tables2
-	depends = python-django>=1.11
-	optdepends = python-tablib: to export table data as CSV, XLS, etc.
-
-pkgname = python2-django-tables2
-	depends = python2-django>=1.11
-	optdepends = python2-tablib: to export table data as CSV, XLS, etc.
 
