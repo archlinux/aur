@@ -9,6 +9,8 @@ pkgbase = nwipe
 	depends = device-mapper
 	depends = ncurses
 	depends = parted
+	optdepends = dmidecode
+	optdepends = smartmontools
 	source = https://github.com/martijnvanbrummelen/nwipe/archive/v0.28.tar.gz
 	md5sums = 144b4db8e59ecc39409ff67b36f51784
 
