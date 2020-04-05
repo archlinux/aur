@@ -1,13 +1,13 @@
 # Maintainer: Krystian Chachula <krystiancha@gmail.com>
 pkgname=raspicam-git
-pkgver=r55.59d92e6
+pkgver=r58.651c564
 pkgrel=1
 pkgdesc="C++ API for using Raspberry camera (with OpenCV)"
 arch=('any')
 url="http://www.uco.es/investiga/grupos/ava/node/40"
 license=('BSD')
 groups=()
-depends=()
+depends=('cmake')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
