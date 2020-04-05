@@ -1,7 +1,7 @@
 # Maintainer: Marius Lindvall <(firstname) {cat} varden {dog} info>
 
 pkgname=jellyfin-mpv-shim
-pkgver='1.5.4'
+pkgver='1.5.5'
 pkgrel=1
 pkgdesc="Cast media from Jellyfin Mobile and Web apps to MPV. (Unofficial)"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('python-pystray: systray support'
 source=("https://pypi.python.org/packages/source/j/jellyfin-mpv-shim/jellyfin-mpv-shim-$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/iwalton3/jellyfin-mpv-shim/master/LICENSE.md")
 sha256sums=('b9a64f81beba57d22a81fa79138b2eab46ebef33213410be2bcfa58fbb4180a8'
-	'e36bf8f5853f1dff59a4973e0911d5c90d5d94be33b8096158321fae4445d98a')
+	'2ba9ee82f02e8914c8f99e3aa1aac6616f631b92f4baedb2c67026e19944608e')
 
 build() {
 	cd "${srcdir}/jellyfin-mpv-shim-${pkgver}"
