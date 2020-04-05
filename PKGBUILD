@@ -10,7 +10,7 @@ pkgdesc="Lightweight virtual machines for containers"
 arch=('x86_64')
 url="https://katacontainers.io/"
 license=('Apache')
-makedepends=('go-pie')
+makedepends=('go')
 _gh_org="github.com/kata-containers"
 source=(
   "agent-${_pkgver}.tar.gz::https://${_gh_org}/agent/archive/${_pkgver}.tar.gz"
