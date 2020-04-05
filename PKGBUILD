@@ -1,43 +1,44 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Your Name <jkraehemann@gmail.com>
+# Maintainer: Joël Krähemann <jkraehemann@gmail.com>
 pkgname=gsequencer
 pkgver=3.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Advanced Gtk+ Sequencer"
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url="https://nongnu.org/gsequencer"
 license=('GPL3')
-depends=('gtk3' 'gtk-doc' 'webkit2gtk' 'libsoup' 'fftw'  'libinstpatch' 'libpulse' 'ladspa' 'dssi' 'lv2')
+depends=('cairo' 'gdk-pixbuf2' 'glibc' 'harfbuzz' 'libx11' 'libxml2' 'zlib')
+makedepends=('alsa-lib' 'atk' 'dssi' 'fftw' 'glib2' 'gobject-introspection' 'gtk3' 'gtk-doc' 'jack' 'ladspa' 'libinstpatch' 'libpulse' 'libsndfile' 'libsoup' 'libutil-linux' 'lv2' 'pango' 'webkit2gtk')
 checkdepends=('cunit' 'xorg-server-xvfb')
-provides=('gsequencer' 'midi2xml')
-conflicts=('midi2xml')
+provides=('libgsequencer.so' 'libags_thread.so' 'libags_server.so' 'libags_gui.so' 'libags_audio.so' 'libags.so')
 source=("https://download.savannah.gnu.org/releases/gsequencer/3.2.x/$pkgname-$pkgver.tar.gz")
-noextract=()
-md5sums=('620e7af870c02d68ab7a2d6430c147e0')
-validpgpkeys=()
+sha512sums=('64ce01098abaa99f9f8797229adc9f5740bad92272ba4fca8816ad94bb9b3fe3d1e438b4c94ac615db2d15f8ea13e42839c950f01e619ab65395b95c3d83f6a2')
+# validpgpkeys=('ECD34CA97E55AE2AF14FBE9F25B4B3AE3388A17A') # key not available on key servers
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	  cd "$pkgname-$pkgver"
+	  autoreconf -vfi
 }
 
 build() {
 	cd "$pkgname-$pkgver"
-	./configure HTMLHELP_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/htmlhelp/htmlhelp.xsl --prefix=/usr --docdir=/usr/share/doc/gsequencer-doc --enable-gtk-doc --enable-gtk-doc-html --enable-single-docdir
+	export HTMLHELP_XSL=/usr/share/xml/docbook/xsl-stylesheets-1.79.2/htmlhelp/htmlhelp.xsl
+	./configure --prefix='/usr' \
+	--docdir='/usr/share/doc/gsequencer-doc' \
+	--enable-gtk-doc \
+	--enable-gtk-doc-html \
+	--enable-single-docdir
 	make
 	make html
 }
 
 check() {
 	cd "$pkgname-$pkgver"
-	xvfb-run --server-args "-screen 0 1920x1080x24" -a make -k check
+	xvfb-run make -k check
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make -j1 DESTDIR="$pkgdir/" install
-	make -j1 DESTDIR="$pkgdir/" install-html
+	  depends+=('libasound.so' 'libatk-1.0.so' 'libfftw3.so' 'libgio-2.0.so' 'libglib-2.0.so' 'libgmodule-2.0.so' 'libgobject-2.0.so' 'libgthread-2.0.so' 'libgtk-3.so' 'libgdk-3.so' 'libinstpatch-1.0.so' 'libjack.so' 'libjavascriptcoregtk-4.0.so' 'libpango-1.0.so' 'libpangocairo-1.0.so' 'libpulse.so' 'libpulse-mainloop-glib.so' 'libsndfile.so' 'libsoup-2.4.so' 'libuuid.so' 'libwebkit2gtk-4.0.so')
+	  cd "$pkgname-$pkgver"
+	  make -j1 DESTDIR="$pkgdir/" install
+	  make -j1 DESTDIR="$pkgdir/" install-html
 }
