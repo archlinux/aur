@@ -6,13 +6,13 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.4.23.r800.g729e0533f
-pkgrel=2
+pkgver=0.4.23.r847.g729e0533f
+pkgrel=1
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=(go-pie git)
+makedepends=("go-pie=2:1.13.8-1" git)
 optdepends=('fuse2: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
@@ -50,3 +50,4 @@ package() {
   install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/APACHE" LICENSE-APACHE
   install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
+
