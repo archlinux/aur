@@ -1,0 +1,22 @@
+pkgbase = atomdns
+	pkgdesc = A DNS server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xuanwo/atomdns
+	arch = x86_64
+	license = Apache
+	provides = atomdns
+	backup = etc/atomdns/atomdns.hcl
+	source = atomdns-0.1.0.tar.gz::https://github.com/Xuanwo/atomdns/archive/v0.1.0.tar.gz
+	source = atomdns.service
+	source = atomdns-sysusers.conf
+	source = atomdns-tmpfiles.conf
+	source = atomdns.hcl
+	sha256sums = 36460bac70c04cdf9c89c2b930ec4faa2c0dc4cb6573097883f54670a707c818
+	sha256sums = 947b4838af48212ecd8e565155c97ca61ff7d408d0b8622499925b6e232656c4
+	sha256sums = f4fd89dcb36f52466ebb1a2ae435dc960cdc828a071f3aaae1d83a39696bff30
+	sha256sums = 20052dded9a02e05013a602e597002ee2a003ecfab3309d30969c28207fc5b72
+	sha256sums = 1f05c9af9d9dae221388f2f89b8343d11515674914d2b7d9c2270b6c613d3dc2
+
+pkgname = atomdns
+
