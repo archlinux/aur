@@ -3,8 +3,8 @@
 _pkgname=sway-accel-rotate
 pkgname="${_pkgname}-git"
 pkgver=r4.db52ad3
-pkgrel=1
-pkgdesk="Rotate Sway outputs based on current accelerometer orientation using iio-sensor-proxy"
+pkgrel=2
+pkgdesc="Rotate Sway outputs based on current accelerometer orientation using iio-sensor-proxy"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'pentium4')
 url="https://github.com/Depau/sway-accel-rotate"
 license=('MIT')
