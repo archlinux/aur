@@ -1,7 +1,7 @@
 pkgbase = soci
 	pkgdesc = Database access library for C++
 	pkgver = 4.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://soci.sf.net
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = soci
 	makedepends = postgresql-libs
 	makedepends = sqlite3
 	makedepends = unixodbc
+	makedepends = boost
 	depends = gcc-libs
 	optdepends = instantclient-basic: support for oracle databases
 	optdepends = libmysqlclient: support for mysql databases
@@ -17,7 +18,7 @@ pkgbase = soci
 	optdepends = sqlite3: support for sqlite databases
 	optdepends = unixodbc: support for ODBC databases
 	optdepends = libmysqlclient
-	optdepends = boost
+	optdepends = boost-libs
 	source = http://downloads.sourceforge.net/project/soci/soci/soci-4.0.0/soci-4.0.0.zip
 	sha1sums = 6be7cc81fd4bb181fc103ac61c0388ab4b2e09e7
 
