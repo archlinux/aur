@@ -2,7 +2,7 @@
 
 pkgname=python-nvidia-dali
 _pkgname=dali
-pkgver=0.19.0
+pkgver=0.20.0
 pkgrel=3
 pkgdesc='A library containing both highly optimized building blocks and an execution engine for data pre-processing in deep learning applications'
 arch=('x86_64')
@@ -30,6 +30,9 @@ get_pyver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   git submodule update --init --recursive
+
+  export CC=gcc
+  export CXX=g++
 }
 
 build() {
@@ -38,6 +41,7 @@ build() {
   cmake \
     -DBUILD_LMDB:BOOL=ON \
     -DCMAKE_BUILD_TYPE:String=Release \
+    -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++ \
     -DCMAKE_INSTALL_PREFIX:PATH=/usr \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DProtobuf_USE_STATIC_LIBS:BOOL=OFF \
