@@ -1,4 +1,4 @@
-From d722d75b5418708aa994a12785e7351606de04f0 Mon Sep 17 00:00:00 2001
+From 307aacb24bfaa333e4fd0703c4dfe2c396ca8c4c Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
@@ -12,7 +12,7 @@ Subject: [PATCH 1/4] Cairo backend added to Qt5 wrapper
  5 files changed, 95 insertions(+), 1 deletion(-)
 
 diff --git a/qt5/src/CMakeLists.txt b/qt5/src/CMakeLists.txt
-index f7c99248..301adcb3 100644
+index 69715d53..ba880846 100644
 --- a/qt5/src/CMakeLists.txt
 +++ b/qt5/src/CMakeLists.txt
 @@ -8,6 +8,11 @@ include_directories(
@@ -39,7 +39,7 @@ index f7c99248..301adcb3 100644
 +  )
 +endif(HAVE_CAIRO)
  add_library(poppler-qt5 ${poppler_qt5_SRCS})
- set_target_properties(poppler-qt5 PROPERTIES VERSION 1.22.0 SOVERSION 1)
+ set_target_properties(poppler-qt5 PROPERTIES VERSION 1.23.0 SOVERSION 1)
  if(MINGW AND BUILD_SHARED_LIBS)
 @@ -46,6 +58,9 @@ if(MINGW AND BUILD_SHARED_LIBS)
      set_target_properties(poppler-qt5 PROPERTIES SUFFIX "-${POPPLER_QT5_SOVERSION}${CMAKE_SHARED_LIBRARY_SUFFIX}")
@@ -198,5 +198,5 @@ index 5abcbc45..99c12b9f 100644
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Gui_EXECUTABLE_COMPILE_FLAGS}")
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Xml_EXECUTABLE_COMPILE_FLAGS}")
 -- 
-2.25.1
+2.26.0
 

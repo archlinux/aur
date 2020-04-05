@@ -1,4 +1,4 @@
-From 586c5c40f592f5fe650494a3946e42195881fd40 Mon Sep 17 00:00:00 2001
+From 408b1ebfee8614f999ecf85301bb6e67ec54226a Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Tue, 9 Aug 2016 15:02:53 +0100
 Subject: [PATCH 3/4] Apply subpixel rendering in Cairo Backend
@@ -295,5 +295,5 @@ index 3e4b341a..51f21928 100644
    Object getAnnotsObject(XRef *xrefA = nullptr) { return annotsObj.fetch(xrefA ? xrefA : xref); }
    // Add a new annotation to the page
 -- 
-2.25.1
+2.26.0
 
