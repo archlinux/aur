@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-zencjk
-pkgver=5.5.13.zen2
+pkgver=5.6.2.zen1
 pkgrel=2
 pkgdesc='Linux ZEN with CJK Patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -26,7 +26,7 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '16c7272d0062118dcfe89f4ce2f9b9e68a2a3a6fb13f326588fc1225582cc9e4'
+            'e09c8bba54dbf62792a1842ee8ef5caf7d6b23949b89d9ee0d49d20f6117b34d'
             '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -69,6 +69,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -87,9 +88,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -165,9 +163,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -187,9 +182,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
