@@ -1,0 +1,9 @@
+# makepkg files
+pkg/
+src/
+*.xz
+*.zst
+
+# source files
+*.gz
+install.info

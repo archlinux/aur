@@ -3,24 +3,29 @@
 
 pkgname=gamess
 pkgver=2019R2
-pkgrel=3
+pkgrel=4
 pkgdesc="The General Atomic and Molecular Electronic Structure System"
 arch=('x86_64')
 url="https://www.msg.chem.iastate.edu/gamess/gamess.html"
 license=('custom')
 depends=('tcsh' 'openblas' 'python')
-makedepends=('python-jinja')
+makedepends=('python-jinja' 'gcc-fortran')
+checkdepends=('inetutils')
 install=${pkgname}.install
 
 # You have to get the package from the official website
 # and put into the current directory.
 source=("local://gamess-current.tar.gz"
-        "opt.patch")
+        "opt.patch"
+        "tests.patch")
 sha256sums=('2e12f71210249d379f196ba6a3b479f9fb962de82ae2f1130af9022aba44ddea'
-            'dedf0158e25defd4903d0fd8d39ed26161388e2c70ccdfde1f3592ac62546494')
+            'dedf0158e25defd4903d0fd8d39ed26161388e2c70ccdfde1f3592ac62546494'
+            '38a14c4d428b54838b55ed19cc9aa6741992c2e7b66a0180994d264de71c6bf2')
 
 prepare() {
   cd "$srcdir/$pkgname"
+
+  patch -p1 < "$srcdir/tests.patch"
   
   # You may comment out two lines below to let GAMESS choose compiler options.
   patch -p1 < "$srcdir/opt.patch"
@@ -37,6 +42,7 @@ build() {
                                     --math=openblas \
                                     --mathlib_path=/usr/lib \
                                     --openmp
+  make modules -j1
   make
 }
 
@@ -74,5 +80,5 @@ package() {
   
   cp -r auxdata machines qmnuc tests tools vb2000 "$pkgdir/opt/gamess"
   
-  ln -sf "$pkgdir/opt/gamess/rungms" "$pkgdir/usr/bin"
+  ln -sf /opt/gamess/rungms "$pkgdir/usr/bin"
 }
