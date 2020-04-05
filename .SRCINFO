@@ -1,5 +1,5 @@
 pkgbase = lib32-llvm-minimal-git
-	pkgver = 11.0.0_r340508.713562f5485
+	pkgver = 11.0.0_r347306.34392b518f9
 	pkgrel = 1
 	url = http://llvm.org/
 	arch = x86_64
@@ -19,8 +19,9 @@ pkgbase = lib32-llvm-minimal-git
 
 pkgname = lib32-llvm-minimal-git
 	pkgdesc = Collection of modular and reusable compiler and toolchain technologies (32-bit)
-	depends = lib32-llvm-libs-minimal-git=11.0.0_r340508.713562f5485-1
+	depends = lib32-llvm-libs-minimal-git=11.0.0_r347306.34392b518f9-1
 	depends = llvm-minimal-git
+	provides = lib32-llvm
 	conflicts = lib32-llvm
 
 pkgname = lib32-llvm-libs-minimal-git
@@ -31,4 +32,5 @@ pkgname = lib32-llvm-libs-minimal-git
 	depends = lib32-libxml2
 	depends = lib32-gcc-libs
 	optdepends = lib32-llvm-libs: for LLVMgold linker
+	provides = lib32-llvm-libs
 

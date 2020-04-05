@@ -19,7 +19,7 @@
 
 pkgbase=lib32-llvm-minimal-git
 pkgname=('lib32-llvm-minimal-git' 'lib32-llvm-libs-minimal-git')
-pkgver=11.0.0_r340508.713562f5485
+pkgver=11.0.0_r347306.34392b518f9
 pkgrel=1
 arch=('x86_64')
 url="http://llvm.org/"
@@ -99,6 +99,7 @@ check() {
 package_lib32-llvm-minimal-git() {
     pkgdesc="Collection of modular and reusable compiler and toolchain technologies (32-bit)"
     depends=(lib32-llvm-libs-minimal-git=$pkgver-$pkgrel llvm-minimal-git)
+    provides=('lib32-llvm')
     conflicts=('lib32-llvm')
     
     
@@ -132,6 +133,7 @@ package_lib32-llvm-minimal-git() {
 package_lib32-llvm-libs-minimal-git() {
     pkgdesc="Low Level Virtual Machine (runtime library)(32-bit)"
     depends=('lib32-libffi' 'lib32-zlib' 'lib32-ncurses' 'lib32-libxml2' 'lib32-gcc-libs')
+    provides=('lib32-llvm-libs')
     optdepends=('lib32-llvm-libs: for LLVMgold linker')
     
     install -d "$pkgdir"/usr/lib32
