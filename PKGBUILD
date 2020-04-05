@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rclone-browser-git
-pkgver=1.4.1.r117
+pkgver=1.8.0.r378
 pkgrel=1
 pkgdesc='Simple cross-platform GUI for rclone'
 url='https://github.com/kapitainsky/RcloneBrowser/'
