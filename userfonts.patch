@@ -33,7 +33,7 @@ index 18a5bbb..d42a153 100644
  
  } // namespace
 diff --git a/Telegram/lib_ui/ui/style/style_core_font.cpp b/Telegram/lib_ui/ui/style/style_core_font.cpp
-index 318783b..3a8cc46 100644
+index 318783b..9e5a924 100644
 --- a/Telegram/lib_ui/ui/style/style_core_font.cpp
 +++ b/Telegram/lib_ui/ui/style/style_core_font.cpp
 @@ -16,9 +16,6 @@
@@ -161,8 +161,9 @@ index 318783b..3a8cc46 100644
  		f.setBold(true);
 -#ifdef DESKTOP_APP_USE_PACKAGED_FONTS
  	} else if (fontFamilies[family] == "Open Sans Semibold") {
- 		f.setWeight(QFont::DemiBold);
+-		f.setWeight(QFont::DemiBold);
 -#endif
++		f.setWeight(QFont::Bold);
  	}
  	f.setItalic(_flags & FontItalic);
  	f.setUnderline(_flags & FontUnderline);
