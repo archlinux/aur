@@ -10,6 +10,7 @@ arch=('x86_64')
 url='http://lha.osdn.jp'
 license=('custom:lha')
 depends=('glibc')
+makedepend=('git')
 source=("git+https://github.com/jca02266/lha.git#commit=7c3cd95fdf0d2f9198bb779561724cd314bc39a6"
         'LICENSE'
         )
