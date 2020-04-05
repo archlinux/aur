@@ -1,6 +1,6 @@
 pkgbase = tvheadend-satip-server-git
 	pkgdesc = TV streaming server for Linux
-	pkgver = 4.3.r1428.gbef96c5d2
+	pkgver = 4.3.r1857.g221c29b40
 	pkgrel = 1
 	url = https://tvheadend.org/
 	install = tvheadend.install
