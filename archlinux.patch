@@ -1,9 +1,9 @@
 diff --git a/YUViewApp/YUViewApp.pro b/YUViewApp/YUViewApp.pro
-index 2f1d5742..853e68d3 100644
+index bcc97c2b..a8829201 100644
 --- a/YUViewApp/YUViewApp.pro
 +++ b/YUViewApp/YUViewApp.pro
-@@ -13,7 +13,7 @@ LIBS += -L$$top_builddir/YUViewLib -lYUViewLib
-
+@@ -19,7 +19,7 @@ win32 {
+ 
  unix:!mac {
      isEmpty(PREFIX) {
 -        PREFIX = /usr/local
@@ -11,15 +11,20 @@ index 2f1d5742..853e68d3 100644
      }
      isEmpty(BINDIR) {
          BINDIR = bin
-diff --git a/YUViewLib/src/filesource/fileSource.h b/YUViewLib/src/filesource/fileSource.h
-index 4177c3d7..3cb7af70 100644
---- a/YUViewLib/src/filesource/fileSource.h
-+++ b/YUViewLib/src/filesource/fileSource.h
-@@ -38,6 +38,7 @@
- #include <QFileSystemWatcher>
- #include <QMutex>
- #include <QMutexLocker>
-+#include <QSize>
- #include <QString>
-
- #include "common/fileInfo.h"
+diff --git a/YUViewLib/src/common/typedef.h b/YUViewLib/src/common/typedef.h
+index 13ade597..fd77de62 100644
+--- a/YUViewLib/src/common/typedef.h
++++ b/YUViewLib/src/common/typedef.h
+@@ -213,12 +213,7 @@ private:
+ #define YUVIEW_VERSION "Unknown"
+ #endif
+ 
+-#ifndef YUVIEW_HASH
+ #define VERSION_CHECK 0
+-#define YUVIEW_HASH 0
+-#else
+-#define VERSION_CHECK 1
+-#endif
+ 
+ #define MAX_RECENT_FILES 10
+ 
