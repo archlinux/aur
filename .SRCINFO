@@ -1,6 +1,6 @@
 pkgbase = soundfont-fatboy
 	pkgdesc = A free GM/GS SoundFont for classic video game MIDI, emulation, and general usage.
-	pkgver = 0.786
+	pkgver = 0.789
 	pkgrel = 1
 	url = https://fatboy.site/
 	arch = any

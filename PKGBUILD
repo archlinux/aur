@@ -1,6 +1,6 @@
 # Maintainer: Krystian Chachuła <krystiancha@gmail.com>
 pkgname=soundfont-fatboy
-pkgver=0.786
+pkgver=0.789
 pkgrel=1
 pkgdesc="A free GM/GS SoundFont for classic video game MIDI, emulation, and general usage."
 arch=('any')
