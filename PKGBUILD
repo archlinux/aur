@@ -1,13 +1,13 @@
 # Maintainer: Ivan Zenin <i.zenin@gmx.com>
 
 pkgname=linkchecker-git
-pkgver=v9.4.0.r314.g7d55855f
-pkgrel=1
+pkgver=latest
+pkgrel=3
 pkgdesc="Check websites for broken links"
 arch=('i686' 'x86_64')
 url="https://linkcheck.github.io/linkchecker"
 license=("GPL")
-depends=("python" "python-beautifulsoup4" "python-requests>=2.4" "python-xdg" "python-dnspython" "python-future")
+depends=("python>=3.5" "python-beautifulsoup4" "python-requests>=2.4" "python-xdg" "python-dnspython" "python-future")
 optdepends=("python-argcomplete")
 provides=('linkchecker')
 conflicts=('linkchecker')
