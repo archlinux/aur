@@ -1,0 +1,22 @@
+pkgbase = perl-hash-sharedmem
+	pkgdesc = efficient shared mutable hash
+	pkgver = 0.005
+	pkgrel = 1
+	url = http://search.cpan.org/dist/Hash-SharedMem
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	makedepends = perl-data-dumper
+	makedepends = perl-devel-callchecker
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-extutils-parsexs
+	makedepends = perl-module-build
+	makedepends = perl-scalar-string
+	makedepends = perl-test-simple
+	depends = perl
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-module/Hash/Hash-SharedMem-0.005.tar.gz
+	sha256sums = 324776808602f7bdc44adaa937895365454029a926fa611f321c9bf6b940bb5e
+
+pkgname = perl-hash-sharedmem
+
