@@ -1,0 +1,6 @@
+*.pkg.tar.xz
+src
+pkg
+.DS_Store
+pciscsi.exe
+.github

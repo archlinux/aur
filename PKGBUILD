@@ -3,9 +3,9 @@
 
 pkgname=wd719x-firmware
 pkgver=1
-pkgrel=5
+pkgrel=6
 pkgdesc="Driver for Western Digital WD7193, WD7197 and WD7296 SCSI cards"
-url="https://github.com/FadeMind/archpkgbuilds/tree/master/AUR/customized/wd719x-firmware"
+url="https://github.com/mijailr/wd719x-firmware"
 license=('unknown')
 makedepends=('lha')
 arch=('any')
