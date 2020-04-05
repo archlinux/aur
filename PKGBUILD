@@ -1,12 +1,12 @@
-# Maintainer: Olegs Jeremejevs <olegs@jeremejevs.com>
+# Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2020.03.18
+pkgver=2020.04.05
 pkgrel=1
 pkgdesc='The all-in-one workspace for your notes, tasks, wikis, and databases'
 arch=('any')
-url='https://www.notion.so/'
-license=('custom')
+url='https://www.notion.so'
+license=('MIT')
 depends=('electron')
 makedepends=(
   'curl'
@@ -38,13 +38,15 @@ build() {
     --maximize \
     --single-instance \
     --verbose \
-    www.notion.so
+    https://www.notion.so
 }
 
 package() {
   mkdir -p "${pkgdir}/usr/share"
-  cp -r "${_name}-linux-"*"/resources/app" "${pkgdir}/usr/share/${pkgname}"
-  install -D -m 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
-  install -D -m 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
-  install -D -m 644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
+  local _x=`echo "${_name}-linux-"*`
+  cp -r "${_x}/resources/app" "${pkgdir}/usr/share/${pkgname}"
+  install -Dm 755 -t "${pkgdir}/usr/bin/" "${pkgname}"
+  install -Dm 644 -t "${pkgdir}/usr/share/applications/" "${pkgname}.desktop"
+  install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "${_x}/LICENSE"
+  install -Dm 644 -t "${pkgdir}/usr/share/pixmaps/" "${pkgname}.png"
 }
