@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Photon File Validator
+Comment=A file viewer application for AnyCubic Photon sliced files (*.photon and *.cbddlp)
+Exec=photonfilevalidator
+Icon=phtotonfilevlidator
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;

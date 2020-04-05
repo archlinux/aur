@@ -1,0 +1,21 @@
+pkgbase = photonfilevalidator
+	pkgdesc = A file viewer application for AnyCubic Photon sliced files (*.photon and *.cbddlp)
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/Photonsters/PhotonFileValidator
+	arch = any
+	license = MIT
+	depends = java-runtime
+	depends = bash
+	provides = photonfilevalidator
+	source = jar-photonfilevalidator-2.1.zip::https://github.com/Photonsters/PhotonFileValidator/releases/download/2.1/jar-photonfilevalidator-2.1.zip
+	source = PhotonFileValidator.desktop
+	source = photonfilevalidator.sh
+	source = LICENSE::https://raw.githubusercontent.com/Photonsters/PhotonFileValidator/master/LICENSE
+	sha256sums = 0062c57146229f4f8d859fa25b0e77b74a20e4d5bdefde373b01e6ce9d2a2d69
+	sha256sums = 20a6e3159aa5793f5c3ae3dcd366eefa95d39bfc7fedd519c10daf25b0963109
+	sha256sums = 1b2fbebd2e53c85f3c1dd156cf34d4c6b01a762bc195851559d659bb2b164c86
+	sha256sums = f309e209cdaa89de5557f3d02747eeef91a3504566e7ba172564ef0dd3c0df52
+
+pkgname = photonfilevalidator
+
