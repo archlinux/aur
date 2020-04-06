@@ -42,7 +42,7 @@ package() {
   make DESTDIR="$pkgdir" install.libs
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   rm -rf "$pkgdir/usr/include/" "$pkgdir/usr/lib/pkgconfig" \
-    "$pkgdir"/usr/lib/*.so
+    "$pkgdir"/usr/lib/*.so "$pkgdir"/usr/lib/*.a
 
   for lib in ncurses ncurses++ form panel menu; do
     ln -s /usr/lib/lib${lib}w.so.5 "$pkgdir/usr/lib/lib${lib}.so.5"
