@@ -3,7 +3,7 @@
 # my old fork is at https://sourceforge.net/u/ilikenwf/mcomix/ci/gtk3/tree/
 
 pkgname=mcomix-gtk3-git
-pkgver=r1912.b80f348
+pkgver=r1919.fea55a7
 pkgrel=1
 pkgdesc="A comic book reader. Forked from MComix and ported to GTK3."
 arch=('any')
