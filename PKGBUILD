@@ -1,11 +1,11 @@
-# Maintainer : Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 _svt_hevc_ver='1.4.3'
 _svt_av1_ver='0.8.0'
 _svt_vp9_ver='0.1.0'
 
 pkgname=ffmpeg-full-git
-pkgver=4.3.r96956.g675bb1f4f9
+pkgver=4.3.r97188.g741565a1e6
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -26,9 +26,9 @@ depends=(
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda' 'libomxil-bellagio'
         'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
-        'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
-        'rockchip-mpp'
+        'avisynthplus' 'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git'
+        'openh264' 'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2'
+        'pocketsphinx' 'rockchip-mpp'
 )
 makedepends=(
     # official repositories:
