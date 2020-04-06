@@ -1,6 +1,6 @@
 # Maintainer: Duong Do Minh Chau <duongdominhchau@gmail.com>
 pkgname=sweet-kvantum-git
-pkgver=r110.0669841
+pkgver=r111.d7a23ac
 pkgrel=1
 pkgdesc="Sweet theme for Kvantum"
 arch=(any)
