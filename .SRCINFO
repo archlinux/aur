@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 20.1.0_devel.120873.70349a2252a
+	pkgver = 20.1.0_devel.121982.dbdd0149ed5
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -39,12 +39,12 @@ pkgbase = mesa-git
 	depends = zstd
 	depends = llvm-libs=9.0.1
 	optdepends = opengl-man-pages: for the OpenGL API man pages
-	provides = mesa=20.1.0_devel.120873.70349a2252a-1
-	provides = vulkan-intel=20.1.0_devel.120873.70349a2252a-1
-	provides = vulkan-radeon=20.1.0_devel.120873.70349a2252a-1
-	provides = vulkan-mesa-layer=20.1.0_devel.120873.70349a2252a-1
-	provides = libva-mesa-driver=20.1.0_devel.120873.70349a2252a-1
-	provides = mesa-vdpau=20.1.0_devel.120873.70349a2252a-1
+	provides = mesa
+	provides = vulkan-intel
+	provides = vulkan-radeon
+	provides = vulkan-mesa-layer
+	provides = libva-mesa-driver
+	provides = mesa-vdpau
 	provides = vulkan-driver
 	provides = opengl-driver
 	provides = opencl-driver
