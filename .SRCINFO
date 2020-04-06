@@ -1,6 +1,6 @@
 pkgbase = weidu-git
 	pkgdesc = WeiDU is a program used to develop, distribute and install modifications for games based on the Infinity Engine.
-	pkgver = git
+	pkgver = v246.00.88.g387e9a8
 	pkgrel = 1
 	url = https://github.com/WeiDUorg/weidu
 	arch = x86_64

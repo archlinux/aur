@@ -1,6 +1,6 @@
 _pkgname=weidu
 pkgname=$_pkgname-git
-pkgver=git
+pkgver=v246.00.88.g387e9a8
 pkgrel=1
 
 makedepends=("ocaml" "elkhound-git")
@@ -28,14 +28,15 @@ prepare() {
 }
 
 build() {
-
     cd "$srcdir/weidu" 
-    make -j1
+    make weidu weinstall tolower -j1
 }
 
 package() {
     cd "$srcdir/weidu"
-    install -D -m=0755 weidu.asm.exe "$pkgdir/usr/bin/weidu"
+    install -D -m=0755 weidu.asm.exe     "$pkgdir/usr/bin/weidu"
+    install -D -m=0755 weinstall.asm.exe "$pkgdir/usr/bin/weinstall"
+    install -D -m=0755 tolower.asm.exe   "$pkgdir/usr/bin/tolower"
 }
 
 
