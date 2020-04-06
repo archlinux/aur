@@ -1,14 +1,11 @@
 pkgbase = terminator-git
 	pkgdesc = python3 port for terminal emulator that supports tabs and grids python3
-	pkgver = 2.11.2.gb32662a
+	pkgver = 1.91.103.g5151db48
 	pkgrel = 1
-	url = https://github.com/JAugusto42/terminator.git
-	install = terminator-git.install
+	url = https://github.com/gnome-terminator/terminator.git
 	arch = any
 	license = GPL2
 	makedepends = git
-	makedepends = desktop-file-utils
-	makedepends = gettext
 	makedepends = intltool
 	depends = vte3
 	depends = gconf
@@ -19,7 +16,7 @@ pkgbase = terminator-git
 	depends = python-gobject
 	conflicts = terminator
 	conflicts = terminator-gtk3-bzr
-	source = git+https://github.com/JAugusto42/terminator.git
+	source = git+https://github.com/gnome-terminator/terminator.git
 	sha256sums = SKIP
 
 pkgname = terminator-git
