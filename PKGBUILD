@@ -1,24 +1,26 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Dobroslaw Kijowski <dobo90_at_gmail.com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Duck Hunt <vaporeon@tfwno.gf>
 
-pkgname=libretro-ppsspp
+_pkgname=libretro-ppsspp
+pkgname=libretro-ppsspp-rbp
 pkgver=26779
 pkgrel=1
-pkgdesc='Sony PlayStation Portable core'
-arch=(x86_64)
+pkgdesc='Sony PlayStation Portable core (build for Raspberry Pi)'
+arch=(armv7h)
 url=https://github.com/libretro/ppsspp
 license=(GPL2)
 groups=(libretro)
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 depends=(
-  glew
-  libgl
+  ffmpeg
+  libegl
   libretro-core-info
-  zlib
 )
 makedepends=(
   cmake
   git
-  libglvnd
   mesa
   python
 )
@@ -26,7 +28,6 @@ source=(
   libretro-ppsspp::git+https://github.com/hrydgard/ppsspp.git#commit=8e9926394933d8561a84564b8b26e30d07e19fdc
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/discordapp/discord-rpc.git
-  git+https://github.com/hrydgard/ppsspp-ffmpeg.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
   git+https://github.com/Tencent/rapidjson.git
@@ -34,7 +35,6 @@ source=(
   armips-tinyformat::git+https://github.com/Kingcom/tinyformat.git
 )
 sha256sums=(
-  SKIP
   SKIP
   SKIP
   SKIP
@@ -54,7 +54,7 @@ pkgver() {
 prepare() {
   cd libretro-ppsspp
 
-  for submodule in ffmpeg assets/lang ext/glslang; do
+  for submodule in assets/lang ext/glslang; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git submodule update ${submodule}
@@ -78,13 +78,15 @@ build() {
   cmake -S libretro-ppsspp -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_SKIP_RPATH=ON \
-    -DOpenGL_GL_PREFERENCE=GLVND \
+    -DUSING_GLES2=yes \
     -DHEADLESS=OFF \
     -DLIBRETRO=ON \
     -DMOBILE_DEVICE=OFF \
     -DSIMULATOR=OFF \
     -DUNITTEST=OFF \
-    -DUSING_QT_UI=OFF
+    -DUSING_QT_UI=OFF \
+    -DUSE_FFMPEG=yes \
+    -DUSE_SYSTEM_FFMPEG=yes
   make -C build
 }
 
