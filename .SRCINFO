@@ -1,6 +1,6 @@
 pkgbase = perl-rex
 	pkgdesc = (R)?ex Deployment & Configuration Management
-	pkgver = 1.8.2
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = http://www.rexify.org/
 	arch = any
@@ -28,9 +28,9 @@ pkgbase = perl-rex
 	depends = perl-json-maybexs
 	depends = perl-data-validate-ip
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.8.2.tar.gz
-	md5sums = 1005cf6d044dc2f317dca67711107f73
-	sha256sums = 6baa0603da9589cd6b78abe4c80cf3b9fec57133198b4c66e8d28e8e63888738
+	source = https://cpan.metacpan.org/authors/id/F/FE/FERKI/Rex-1.9.0.tar.gz
+	md5sums = d9b85435fa9877b1d21916cab2d60ace
+	sha256sums = 8890d3ab6eabe15cd81640738b59fe696be8abd2a1bc71b43ce1ef88bdfafd30
 
 pkgname = perl-rex
 
