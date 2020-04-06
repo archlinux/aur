@@ -3,7 +3,8 @@
 @@ -4,7 +4,7 @@
  Comment=Slack Desktop
  GenericName=Slack Client for Linux
- Exec=/usr/bin/slack %U
+-Exec=/usr/bin/slack %U
++Exec=/usr/bin/slack -s %U
 -Icon=/usr/share/pixmaps/slack.png
 +Icon=slack
  Type=Application
