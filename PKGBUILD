@@ -2,7 +2,7 @@
 
 pkgname=p4
 _version=2019.2
-pkgver=2019.2.1897966
+pkgver=2019.2.1942501
 pkgrel=1
 
 pkgdesc="Perforce command line client"
