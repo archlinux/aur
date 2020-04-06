@@ -1,10 +1,10 @@
 pkgbase = go-sendxmpp-git
 	pkgdesc = A little tool to send messages to an XMPP contact or MUC
-	pkgver = r42.2266cec
+	pkgver = r65.e674de5
 	pkgrel = 1
 	url = https://salsa.debian.org/mdosch-guest/go-sendxmpp
 	arch = x86_64
-	license = MIT
+	license = BSD-2-clause
 	makedepends = git
 	makedepends = go
 	source = git+https://salsa.debian.org/mdosch-guest/go-sendxmpp.git

@@ -1,13 +1,13 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@protonmail.com>
 
 pkgname=go-sendxmpp-git
-pkgver=r42.2266cec
+pkgver=r65.e674de5
 pkgrel=1
 pkgdesc='A little tool to send messages to an XMPP contact or MUC'
 url='https://salsa.debian.org/mdosch-guest/go-sendxmpp'
 makedepends=('git' 'go')
 arch=('x86_64')
-license=('MIT')
+license=('BSD-2-clause')
 source=('git+https://salsa.debian.org/mdosch-guest/go-sendxmpp.git')
 sha256sums=('SKIP')
 
