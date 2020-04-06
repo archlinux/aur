@@ -1,4 +1,5 @@
-# Maintainer: Eirik Albrigtsen <analsandblaster at gmail dot com>
+# Maintainer: Mateusz Gozdek <mgozdekof@gmail.com>
+# Contributor: Eirik Albrigtsen <analsandblaster at gmail dot com>
 
 pkgname=blackbox-vcs
 pkgver=1.20181219
