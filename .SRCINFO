@@ -1,0 +1,18 @@
+pkgbase = median-xl-launcher-appimage
+	pkgdesc = Launcher for Median XL mod, a Diablo II overhaul modification
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.median-xl.com/
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	provides = median-xl-launcher
+	noextract = medianxl-x86_64.AppImage
+	options = !strip
+	source = https://get.median-xl.com/launcher/linux/medianxl-x86_64.AppImage
+	source = median-xl-launcher.sh
+	sha256sums = 2380ce0fef3eae9798b70b9e2d5d02b366b3d08184563284c5e12f4107ee526c
+	sha256sums = 084166d2d19d609e77d37de81adf03889f05f352255a130e042640c4d283aeb4
+
+pkgname = median-xl-launcher-appimage
+
