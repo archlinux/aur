@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=marker
-pkgver=2019.11.06
+pkgver=2020.04.04.2
 pkgrel=1
 pkgdesc='Markdown editor for linux made with Gtk+-3.0'
 arch=('x86_64')
