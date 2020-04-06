@@ -1,7 +1,7 @@
 # Maintainer: Crestwave <crest.wave@yahoo.com>
 
 pkgname=peaclock
-pkgver=0.4.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="A colourful binary clock for the terminal"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://github.com/octobanana/peaclock"
 license=('MIT')
 makedepends=('cmake')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('3b14608b2e507e268b1804c2383cbde241886eeba8d313d646524a44e3ab8615')
+sha256sums=('cfd9d55775af7aea5baa40ca8799ca5d771f187a57c942793a3cc99d868e0492')
 
 build() {
   cd "$pkgname-$pkgver"
-  ./build.sh --release
+  ./RUNME.sh build
 }
 
 package() {
