@@ -2,6 +2,7 @@
 # Contributor: Nikolay Rysev <mad.f3ka@gmail.com>
 # Modified for vfs_proprietary by Daniel Kamil Kozar <dkk089@gmail.com>
 # Modified for libfprint2 by Stephen Bird <sebirdman@gmail.com>
+# Contributor: Timothy Gu <timothygu99@gmail.com>
 
 pkgname=fprintd-libfprint2
 _pkgname=fprintd
