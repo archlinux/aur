@@ -111,6 +111,7 @@ pkgbase = ffmpeg-intel-full-git
 	depends = xavs
 	depends = xavs2
 	depends = pocketsphinx
+	depends = avisynthplus
 	provides = libavcodec.so
 	provides = libavdevice.so
 	provides = libavfilter.so

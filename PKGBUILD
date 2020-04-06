@@ -30,6 +30,7 @@ depends=(
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
+        'avisynthplus'
 )
 makedepends=(
     # official repositories:
