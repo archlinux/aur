@@ -1,0 +1,15 @@
+pkgbase = freepats-ydp-grand-piano
+	pkgdesc = Yamaha Disklavier Pro grand piano sf2 soundfont
+	pkgver = 20160804
+	pkgrel = 1
+	url = http://freepats.zenvoid.org/Piano/acoustic-grand-piano.html
+	arch = any
+	groups = soundfonts
+	license = cca-by-3.0
+	optdepends = fluidsynth
+	optdepends = qsynth
+	source = http://freepats.zenvoid.org/Piano/YDP-GrandPiano/YDP-GrandPiano-SF2-20160804.tar.bz2
+	md5sums = cd216d04641c8a7c75147444494cd602
+
+pkgname = freepats-ydp-grand-piano
+
