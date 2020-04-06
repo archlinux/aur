@@ -44,7 +44,7 @@ makedepends=(
     "maven" "jdk8-openjdk"
 )
 
-source=("$pkgbase::git+https://github.com/nullpomino/nullpomino.git")
+source=("git+https://github.com/nullpomino/nullpomino.git")
 md5sums=("SKIP")
 
 build() {
