@@ -1,6 +1,7 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Tomislav Ivek <tomislav.ivek@gmail.com>
+# Contributor: Erhan SAHIN <erhan@ssahin.net>
 _projectname='fasteners'
 pkgname="python2-$_projectname"
 pkgver='0.15'
