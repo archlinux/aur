@@ -1,8 +1,8 @@
-# Maintainer: Hao Long <aur@esd.cc>
+# Maintainer: Hao Long <imlonghao@archlinuxcn.org>
 # Contributor: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=gitleaks
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 url=https://github.com/zricethezav/gitleaks
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go-pie')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('477d02a367f36396b4df97f463b8f81db37160570233d231def52ecabd4a9dd4')
+sha256sums=('dd50e5e68813990dcaba23564a0481f09550e3e80402ac0e4689685b7b8c46a4')
 
 build() {
   cd "$pkgname-$pkgver"
