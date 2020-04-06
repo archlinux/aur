@@ -2,13 +2,13 @@
 # Contributor: Daniel Strobl <danielstrobl:gmail>
 
 pkgname=welle.io-git
-pkgver=2.0.beta1.r0.f00230c
+pkgver=2.1.r0.8fc5739
 pkgrel=1
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy"
 arch=("x86_64")
 url="https://www.${pkgname%-git}"
 license=("GPL2")
-depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "qt5-charts" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-multimedia" "rtl-sdr")
+depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "qt5-charts" "qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-multimedia" "rtl-sdr")
 optdepends=("airspy")
 makedepends=("cmake" "gcc" "git")
 provides=("${pkgname%-git}")
