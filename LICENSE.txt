@@ -6,7 +6,7 @@ SAC - Single Assignment C
 
 SAC COPYRIGHT NOTICE, LICENSE, AND DISCLAIMER
 
-(c) Copyright 1994 - 2019 by
+(c) Copyright 1994 - 2020 by
 
   SAC Development Team
 
