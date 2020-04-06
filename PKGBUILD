@@ -32,6 +32,7 @@ build() {
     --disable-pc-files \
     --with-cxx-binding \
     --with-cxx-shared \
+    --with-versioned-syms \
     --with-abi-version=5
   make
 }
