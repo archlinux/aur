@@ -4,7 +4,7 @@
 # Contributor: Laszlo Papp <djszapi2 at gmail com>
 pkgname=libftd2xx
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that allows a direct access to a USB FTDI2XX chip based device"
 arch=('i686' 'x86_64')
 url="http://www.ftdichip.com/"
