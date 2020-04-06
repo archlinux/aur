@@ -1,8 +1,8 @@
 # Maintainer: David Runge <dvzrv@archlinux.org>
 
 pkgname=sonic-pi
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="The Live Coding Music Synth for Everyone"
 arch=('x86_64')
 url="https://sonic-pi.net/"
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/samaaron/${pkgname}/archive
         "${pkgname}-3.2.0-gui_paths.patch"
         "${pkgname}-3.2.0-devendor_qscintilla-qt5.patch"
         "${pkgname}-3.2.0-ruby_paths.patch")
-sha512sums=('e38f26cdf9c1f0e3656334bdb2f53000a0ca2292d69ff8f8f7d4742da91dcfe2149efbc32a259d838f725a049292aae6bb04cd392da650540b9cc64c60cbdf39'
+sha512sums=('07e2d07c51a8312db0145a7be5c6c99b2baa6f913bcb27449e3ab0382945f49c5f6451c899cb58407a11d3e05abf6a0d02f0efd07b2e90ad84fdc7c602332a76'
             'e530cc13cb6674dca2ace2a8da566ce28263a15197cf7fccd5d3e58b676c08ce860bc6264a95d26569ff1f923020a40ece1e05841c955c5db16e61c30938f1c0'
             'fbe196bc332a7a04e8d5097204a13626e7aba3a70715d2a1676c0b1f37f56da427d0d5b417f92c27e64f91a03dd9d4335f65f26f9e9d14e4076d496c94c949af'
             '987504a8b98eea4a3fac2557fcbf002b8d0e9c991922c74e7649546ff963c30d0fef891cecb546f840801c88ec9b82f1afb4cebef9838a53af20d0f3f63a9c39')
