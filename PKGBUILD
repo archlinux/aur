@@ -3,29 +3,30 @@
 # Contributor: wagnerflo <florian@wagner-flo.net>
 
 _cranname=lubridate
-_cranver=1.7.4
-pkgname=r-$_cranname
-pkgver=${_cranver}
-pkgrel=6
+_cranver=1.7.8
+pkgname=r-${_cranname,,}
+pkgver=${_cranver//[:-]/.}
+pkgrel=1
 pkgdesc="Make Dealing with Dates a Little Easier"
-url="http://cran.r-project.org/web/packages/${_cranname}/index.html"
-arch=('i686' 'x86_64')
-license=('GPL2')
-depends=('r' 'r-stringr' 'r-rcpp')
-makedepends=('gcc')
-optdepends=('r-testthat' 'r-knitr' 'r-covr')
-source=(http://cran.r-project.org/src/contrib/"${_cranname}"_"${_cranver}".tar.gz)
-sha256sums=('510ca87bd91631c395655ee5029b291e948b33df09e56f6be5839f43e3104891')
+arch=(i686 x86_64)
+url="https://cran.r-project.org/package=${_cranname}"
+license=(GPL2 GPL3)
+depends=('r>=3.2' r-generics 'r-rcpp>=0.12.13')
+makedepends=('gcc>=4.8')
+optdepends=(r-covr r-knitr r-testthat)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
+md5sums=('3502e7945185d4159eca9957a1bccbf1')
 
-build(){
+build() {
   cd "${srcdir}"
 
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l $srcdir
+  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l ${srcdir}
 }
 
 package() {
   cd "${srcdir}"
 
-  install -dm0755 "$pkgdir/usr/lib/R/library"
-  cp -a --no-preserve=ownership "$_cranname" "$pkgdir/usr/lib/R/library"
+  install -dm0755 "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
 }
+
