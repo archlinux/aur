@@ -1,0 +1,12 @@
+pkgbase = ttf-misaki
+	pkgdesc = Truetype Japanese 8x8 font supporting Gothic and Mincho.
+	pkgver = 2019_10_19
+	pkgrel = 1
+	url = https://littlelimit.net/misaki.htm
+	arch = any
+	license = custom
+	source = https://littlelimit.net/arc/misaki/misaki_ttf_2019-10-19.zip
+	sha256sums = a3bb61d161f1fd1bd09ea57e3a923ca54397a469d2ccba7be3119688c5024e88
+
+pkgname = ttf-misaki
+
