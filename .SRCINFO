@@ -9,6 +9,9 @@ pkgbase = libnotify-id
 	makedepends = gtk3
 	makedepends = gobject-introspection
 	makedepends = meson
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = gtk-doc
 	depends = gdk-pixbuf2
 	provides = libnotify=0.7.9
 	conflicts = libnotify

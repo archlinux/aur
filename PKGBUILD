@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://developer.gnome.org/notification-spec/"
 license=(LGPL)
 depends=(gdk-pixbuf2)
-makedepends=(gtk3 gobject-introspection meson)
+makedepends=(gtk3 gobject-introspection meson xmlto docbook-xsl gtk-doc)
 conflicts=('libnotify' 'libnotify-git' 'libnotify-id-git')
 provides=("libnotify=$pkgver")
 source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgname}/0.7/${_pkgname}-${pkgver}.tar.xz"
