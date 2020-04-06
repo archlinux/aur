@@ -1,14 +1,14 @@
 pkgbase = spiped
 	pkgdesc = Secure pipe daemon
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = http://www.tarsnap.com/spiped.html
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = openssl
-	source = http://www.tarsnap.com/spiped/spiped-1.6.0.tgz
-	sha256sums = e6f7f8f912172c3ad55638af8346ae7c4ecaa92aed6d3fb60f2bda4359cba1e4
+	source = http://www.tarsnap.com/spiped/spiped-1.6.1.tgz
+	sha256sums = 8d7089979db79a531a0ecc507b113ac6f2cf5f19305571eff1d3413e0ab33713
 
 pkgname = spiped
 
