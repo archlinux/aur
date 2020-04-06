@@ -1,6 +1,6 @@
 pkgbase = crash-lzo-git
 	pkgdesc = Linux kernel crashdump analysis tool with lzo
-	pkgver = 7.2.8.r7.g007f844
+	pkgver = 7.2.8.r7.gd379b47
 	pkgrel = 1
 	url = https://github.com/crash-utility/crash
 	arch = i686
