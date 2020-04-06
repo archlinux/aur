@@ -3,7 +3,7 @@
 _pkgname=pagermaid-modify
 pkgname=${_pkgname}-git
 pkgver=r61.aea0d6d
-pkgrel=1
+pkgrel=2
 pkgdesc='A utility daemon for telegram.'
 arch=('any')
 url='https://github.com/xtaodada/PagerMaid-Modify'
@@ -14,7 +14,8 @@ depends=('python-psutil' 'python-pyqrcode' 'python-pypng' 'pyzbar' 'python-emoji
          'python-pillow' 'python-magic' 'python-pygments' 'python-distlib'
          'speedtest-cli' 'python-gitpython' 'python-werkzeug' 'python-wtforms'
          'python-cheroot' 'python-flask' 'python-flask-sqlalchemy' 'python-flask-login'
-         'python-flask-bcrypt' 'python-flask-wtf' 'python-cowpy')
+         'python-flask-bcrypt' 'python-flask-wtf' 'python-cowpy' 'zbar' 'neofetch'
+         'tesseract' 'imagemagick')
 backup=('etc/pagermaid.yml')
 makedepends=('python-setuptools')
 license=('GPL3')
