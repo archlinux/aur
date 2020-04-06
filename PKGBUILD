@@ -59,6 +59,8 @@ optdepends=(
 # Syncing
 'freefilesync-bin'
 'google-musicmanager'
+'dropbox'
+'nemo-dropbox'
 )
 
 package() {
