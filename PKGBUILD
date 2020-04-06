@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=purple-gowhatsapp-git
 _pkgname=purple-gowhatsapp
-pkgver=r107.6ce9bf3
+pkgver=r122.6930e00
 pkgrel=1
 pkgdesc="A libpurple/Pidgin plugin for WhatsApp Web, Powered by go-whatsapp"
 arch=('x86_64' 'i686')
@@ -38,5 +38,5 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  make DESTDIR="$pkgdir/" install
+  GOPATH="$srcdir/gopath" make DESTDIR="$pkgdir/" install
 }
