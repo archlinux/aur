@@ -1,0 +1,5 @@
+/pkg/
+/src/
+/*.log
+/helmsman-*.tar.gz
+/helmsman-*.pkg.tar*
