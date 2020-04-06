@@ -1,22 +1,25 @@
 pkgbase = nerd-fonts-ricty
 	pkgdesc = Japanese TrueType font for developers by mixing InconsolataGo patched nerd-fonts and Migu 1M.
 	pkgver = 2.0.0
-	pkgrel = 5
-	url = http://www.rs.tus.ac.jp/yyusa/ricty.html
-	install = nerd-fonts-ricty.install
+	pkgrel = 6
+	url = https://rictyfonts.github.io/
 	arch = any
 	license = custom
 	makedepends = fontforge
 	makedepends = python-fonttools
-	makedepends = nerd-fonts-inconsolata-go
+	makedepends = nerd-fonts-inconsolata
 	makedepends = ttf-migu
 	makedepends = perl-rename
-	source = http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator-4.1.1.sh
+	source = https://rictyfonts.github.io/files/ricty_generator-4.1.1.sh
 	source = https://gist.githubusercontent.com/LaFr4nc3/70bb0526986953d32d7609d5486d822e/raw/feb7d6e47a849469b0ec455bef6ccfa231bce3d6/ricty_generator.patch
 	source = https://raw.githubusercontent.com/chrissimpkins/fontname.py/afa00311d86c818e46485fcfbd93976ec409ce93/fontname.py
+	source = OFL.txt
+	source = IPA_Font_License_Agreement_v1.0.txt
 	sha256sums = 86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d
 	sha256sums = 96f7acb2a875f5d33cf7aca1a40438a461a5f705865928250a17ed1cc4945cfd
 	sha256sums = 381d03a8a4e9cddf54b2ba35fa447ae62ee91e8a4cd7106294bd55794794acec
+	sha256sums = ca122f3bda0154f692817450168cb650a7fc59ef96c93582acd2e7a744d464d3
+	sha256sums = 4c84dd528ec3044638ec346fc1ee27cd1eb95dfc04cbc6a881b3ca7a7f517e54
 
 pkgname = nerd-fonts-ricty
 
