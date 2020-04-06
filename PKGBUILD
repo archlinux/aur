@@ -21,9 +21,18 @@ validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB')  # Thomas Dickey
 build() {
   cd ${_pkgname}-${pkgver}
 
-  ./configure --prefix=/usr --mandir=/usr/share/man \
-    --with-shared --with-normal --without-debug --without-ada --enable-widec \
-    --disable-pc-files --with-cxx-binding --with-cxx-shared --with-abi-version=5
+  ./configure \
+    --prefix=/usr \
+    --mandir=/usr/share/man \
+    --with-shared \
+    --with-normal \
+    --without-debug \
+    --without-ada \
+    --enable-widec \
+    --disable-pc-files \
+    --with-cxx-binding \
+    --with-cxx-shared \
+    --with-abi-version=5
   make
 }
 
