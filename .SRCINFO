@@ -1,6 +1,6 @@
 pkgbase = stretchy-snek-boi-git
 	pkgdesc = A snake game clone.
-	pkgver = 1.0.6.r3.g00731b8
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://www.github.com/KnockKnockP/stretchy-snek-boi/
 	arch = x86_64
