@@ -1,12 +1,12 @@
 pkgbase = bashtop-git
 	pkgdesc = Resource monitor that shows usage and stats for processor, memory, disks, network and processes.
-	pkgver = master
+	pkgver = 0.6.5_ca8023960b2f9aa483a6d1c9419191162b3f7a97
 	pkgrel = 1
 	url = https://github.com/aristocratos/bashtop
 	arch = any
 	license = APACHE
 	depends = bash
-	source = https://github.com/aristocratos/bashtop/raw/master/bashtop
+	source = https://github.com/aristocratos/bashtop/raw/ca8023960b2f9aa483a6d1c9419191162b3f7a97/bashtop
 	md5sums = 811c863be968c4c81579261f1a4868a9
 
 pkgname = bashtop-git
