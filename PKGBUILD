@@ -9,7 +9,7 @@ _building=true
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.12
 _pkgver=${_pkgvermajmin}.0
-_verpostfix="beta1"
+_verpostfix="rc1"
 pkgver="${_pkgver}${_verpostfix}"
 pkgrel=1
 _urlbase="https://download.qt.io/official_releases"
@@ -39,7 +39,7 @@ optdepends=('qbs'
             'valgrind: analyze support')
 makedepends=('qbs' 'clang' 'qt5-base')
 source=("${_urlbase}/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.xz")
-sha256sums=('596132e49270b421b1c9695cdfecbff85c30fa64f86d38477a6f63c6373b0d79')
+sha256sums=('c7c8233354aece3b3e04a6ec6bc3f3a0f471a66162b74e07163eb67385134e4c')
 
 _qmake_cmd=qmake
 _tmp_dir=$(mktemp -d)
