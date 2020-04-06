@@ -9,7 +9,7 @@ pkgname=('nvidia-full-beta-all'
          'lib32-nvidia-utils-full-beta-all'
          'lib32-opencl-nvidia-full-beta-all')
 pkgver=440.64
-pkgrel=1
+pkgrel=2
 pkgdesc='Full NVIDIA driver package for all kernels on the system (drivers, utilities and libraries) (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -20,11 +20,13 @@ _pkg="NVIDIA-Linux-${CARCH}-${pkgver}"
 source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         'nvidia-drm-outputclass.conf'
         'nvidia-utils-full-beta-all.sysusers'
-        '110-nvidia-settings-full-beta-all-change-desktop-paths.patch')
+        '110-nvidia-settings-full-beta-all-change-desktop-paths.patch'
+        '130-nvidia-440.64-linux-5.6.patch')
 sha256sums=('e13c9f1ba13262bb7a9c4bb8180f7beb09be2b17145f611a81e8cf92600b7575'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
             'd8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167'
-            '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a')
+            '633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a'
+            '4665651c2ee77f5d7d0e73f3e5032138093e7295f73852e5846a4304a41a8c6c')
 
 # create soname links
 _create_links() {
@@ -55,7 +57,9 @@ prepare() {
     mapfile -t _kernels < <(find /usr/lib/modules/*/build/version -exec cat {} +)
     for _kernel in "${_kernels[@]}"
     do
+        printf '%s\n' "  -> Preparing for kernel ${_kernel}"
         cp -a kernel-orig "kernel-${_kernel}"
+        patch -d "kernel-${_kernel}" -Np2 -i "${srcdir}/130-nvidia-440.64-linux-5.6.patch"
     done
     
     patch -Np1 -i "${srcdir}/110-nvidia-settings-full-beta-all-change-desktop-paths.patch"
@@ -69,7 +73,7 @@ build() {
     for _kernel in "${_kernels[@]}"
     do
         cd "${srcdir}/${_pkg}/kernel-${_kernel}"
-        printf '%s\n' "  -> Building Nvidia module for ${_kernel}..."
+        printf '%s\n' "  -> Building Nvidia module for kernel ${_kernel}..."
         make SYSSRC="/usr/lib/modules/${_kernel}/build" module
     done
 }
