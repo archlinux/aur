@@ -1,6 +1,6 @@
 pkgbase = roxterm
 	pkgdesc = Tabbed, VTE-based terminal emulator
-	pkgver = 3.8.4
+	pkgver = 3.9.1
 	pkgrel = 1
 	url = https://github.com/realh/roxterm
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = roxterm
 	depends = dbus-glib
 	depends = vte3
 	depends = hicolor-icon-theme
-	source = https://github.com/realh/roxterm/archive/3.8.4.tar.gz
-	sha512sums = 854c99ff1130c95c4f72931f9a44bcaac9dd06af91ded52a77076c86157d648e26d50fe9bbfac549cc149cfe1e0ec1cfdd409217796146b725b11114949cfe4d
+	source = https://github.com/realh/roxterm/archive/3.9.1.tar.gz
+	sha512sums = 5776467c5694b342b005e82e4e1c56463e3c30c58603205042e3969ae9fa25b19970041300f46a2f98a877e8b985b27208f4dbdb64ee7f8a865b9b65bc2786e9
 
 pkgname = roxterm
 
