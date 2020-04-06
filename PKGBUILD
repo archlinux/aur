@@ -2,13 +2,13 @@
 # Contributor: Faustino Aguilar <faustinoaq.github.io>
 
 pkgname=mint
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
 source=("https://github.com/mint-lang/mint/releases/download/${pkgver}/mint-${pkgver}-linux")
-sha256sums=('a9c022c97cc468067258022068101ee24196f92002ce24aa405ab5408080f9c6')
+sha256sums=('a6a7ab69e2c4a9ef9f60a81f807eac24aed4a62408a6a6a47a6a66f2c6728187')
 noextract=("mint-${pkgver}-linux")
 license=('BSD')
 
