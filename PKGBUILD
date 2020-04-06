@@ -17,7 +17,7 @@ replaces=('rocr-runtime')
 conflicts=('rocr-runtime')
 source=("$url/archive/rocm-$pkgver.tar.gz")
 sha256sums=('fa2d2d1f8a61d8a6952d377cf288d78c61776c3c2a666f163cafc3aa19ab0b61')
-_dirname="$(basename $url)-rocm-$pkgver"
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
   cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm \
