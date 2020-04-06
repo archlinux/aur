@@ -1,21 +1,22 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=tau-editor
-pkgver=0.10.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="GTK frontend for the Xi text editor, written in Rust"
 arch=(i686 x86_64 armv6h armv7h)
 url="https://gitlab.gnome.org/World/tau"
 license=('MIT')
 depends=('xi-core'
-         'libhandy')
+         'libhandy'
+         'vte3')
 makedepends=('git'
              'meson'
              'rust')
 provides=("tau-editor")
 conflicts=("tau-editor")
-source=("https://gitlab.gnome.org/World/Tau/uploads/d7d7fc22a851466768edeace0f3d6b1b/tau-0.10.2.tar.xz")
-sha256sums=('14551674458d1011cfb06152313b1be647aa4e47a8278f8fde57a754a05206b3')
+source=("https://gitlab.gnome.org/World/Tau/uploads/b5f24cd692ec0c2a2c2be460fffaf505/tau-0.11.3.tar.xz")
+sha256sums=('36e915de4ca906599b4ad176d4e2d625b454801a09ca0d4b0a1fbaf14915e60e')
 
 
 build() {
