@@ -1,6 +1,6 @@
 pkgbase = usb2sniffer-qt-git
 	pkgdesc = LambdaConcept lcsniff software for USB2Sniffer hardware
-	pkgver = r156.e5eb82c
+	pkgver = r158.4587d55
 	pkgrel = 1
 	url = https://github.com/lambdaconcept/usb2sniffer-qt
 	arch = x86_64
@@ -15,13 +15,9 @@ pkgbase = usb2sniffer-qt-git
 	source = git+https://github.com/lambdaconcept/usb2sniffer-qt
 	source = git+https://github.com/Simsys/qhexedit2
 	source = lcsniff.desktop
-	source = 0001-Fix-build-failure-due-to-missing-QKeyEvent-header.patch
-	source = 0002-Honour-PREFIX-variable-for-installation.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = e5c124eb54c99e67cea9b8ffce278b40019f9b61de2e6a1081145680c1e7960e
-	sha256sums = 0bac7306cfaf7a5022de89c1c1f9ddaf6bbc5aa1c98402590dd1827fd318a7e0
-	sha256sums = 593ae39285a8b556a1372e3eaa036fae0a2a99fc8ed83f141f0d7464ed34cc90
 
 pkgname = usb2sniffer-qt-git
 
