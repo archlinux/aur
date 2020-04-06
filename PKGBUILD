@@ -1,6 +1,8 @@
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 pkgname=zfs-dkms-git
 pkgver=0.8.0.r709.g5a42ef04f
 pkgrel=1
