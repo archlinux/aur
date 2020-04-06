@@ -1,4 +1,5 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# The place where the .tar.gz is located is https://discord.gg/ygopro-percy
 pkgname=edopro-bin
 pkgver=38.0.0
 pkgrel=1
