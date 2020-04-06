@@ -27,8 +27,7 @@ sha256sums=('8562f3bc3c9130fabc9c4dd68863b776ebbaaa9100d2d5a06b79959902b30a4f'
 prepare() {
   export GOPATH="${srcdir}"
 
-  mkdir -p "${GOPATH}/bin/"
-  mkdir -p "${GOPATH}/src/github.com/influxdata/"
+  mkdir -p "${GOPATH}/"{bin,src/github.com/influxdata}
   ln -fsT "${srcdir}/${pkgname}-${pkgver}" \
     "${GOPATH}/src/github.com/influxdata/${pkgname}"
   cd "${GOPATH}/src/github.com/influxdata/${pkgname}"
