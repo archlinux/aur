@@ -1,0 +1,162 @@
+From 17d38e31e6f2e237a7fb4dfb46841060296310b6 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 3 Mar 2020 15:39:49 -0700
+Subject: [PATCH 2/5] LINUX 5.6: define time_t and use timespec/timespec64
+
+The time_t type and the structure timeval were removed for use in kernel
+space code in Linux commits:
+    412c53a680a97cb1ae2c0ab60230e193bee86387
+        y2038: remove unused time32 interfaces
+    c766d1472c70d25ad475cf56042af1652e792b23
+        y2038: hide timeval/timespec/itimerval/itimerspec types
+
+Add an autoconf test for the time_t type.
+
+If time_t is missing, define the time_t type when building the kernel
+module.
+
+Change the vattr structure in LINUX/osi_vfs.h to use timespec/timespec64
+instead of the timeval structure.
+
+Conditionalize the definition of gettimeofday (needed by rand-fortuna.c) in
+crypto/hcrypto/kernel/config.h.  It is unused by the Linux kernel module
+and the function uses struct timeval that is no longer available.
+
+Reviewed-on: https://gerrit.openafs.org/14083
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit 78049987aa3e84865e2e7e0f3dd3b54d66258e74)
+
+Change-Id: Iff80c161441356d19b5962956dd524792b7bf629
+Reviewed-on: https://gerrit.openafs.org/14095
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+ src/afs/LINUX/osi_machdep.h        |  4 ++++
+ src/afs/LINUX/osi_vfs.h            | 12 +++++++++---
+ src/afs/LINUX/osi_vnodeops.c       |  6 +++---
+ src/afs/VNOPS/afs_vnop_attrs.c     |  4 ++--
+ src/cf/linux-kernel-type.m4        |  1 +
+ src/crypto/hcrypto/kernel/config.h |  7 +++++++
+ 6 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_machdep.h b/src/afs/LINUX/osi_machdep.h
+index 6832c3ee0..1864cec6e 100644
+--- a/src/afs/LINUX/osi_machdep.h
++++ b/src/afs/LINUX/osi_machdep.h
+@@ -76,6 +76,10 @@
+ #include "h/cred.h"
+ #endif
+ 
++#if !defined(HAVE_LINUX_TIME_T)
++typedef time64_t time_t;
++#endif
++
+ #if defined(HAVE_LINUX_KTIME_GET_COARSE_REAL_TS64)
+ static inline time_t osi_Time(void) {
+     struct timespec64 xtime;
+diff --git a/src/afs/LINUX/osi_vfs.h b/src/afs/LINUX/osi_vfs.h
+index f771dad38..b3006796e 100644
+--- a/src/afs/LINUX/osi_vfs.h
++++ b/src/afs/LINUX/osi_vfs.h
+@@ -70,9 +70,15 @@ typedef struct vattr {
+     dev_t	va_rdev;
+     ino_t	va_nodeid;	/* Inode number */
+     nlink_t	va_nlink;	/* link count for file. */
+-    struct timeval va_atime;
+-    struct timeval va_mtime;
+-    struct timeval va_ctime;
++#if defined(IATTR_TAKES_64BIT_TIME)
++    struct timespec64 va_atime;
++    struct timespec64 va_mtime;
++    struct timespec64 va_ctime;
++#else
++    struct timespec va_atime;
++    struct timespec va_mtime;
++    struct timespec va_ctime;
++#endif
+ } vattr_t;
+ 
+ #define VATTR_NULL(A) memset(A, 0, sizeof(struct vattr))
+diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
+index d8487afb3..03635212c 100644
+--- a/src/afs/LINUX/osi_vnodeops.c
++++ b/src/afs/LINUX/osi_vnodeops.c
+@@ -1008,15 +1008,15 @@ iattr2vattr(struct vattr *vattrp, struct iattr *iattrp)
+ 	vattrp->va_size = iattrp->ia_size;
+     if (iattrp->ia_valid & ATTR_ATIME) {
+ 	vattrp->va_atime.tv_sec = iattrp->ia_atime.tv_sec;
+-	vattrp->va_atime.tv_usec = 0;
++	vattrp->va_atime.tv_nsec = 0;
+     }
+     if (iattrp->ia_valid & ATTR_MTIME) {
+ 	vattrp->va_mtime.tv_sec = iattrp->ia_mtime.tv_sec;
+-	vattrp->va_mtime.tv_usec = 0;
++	vattrp->va_mtime.tv_nsec = 0;
+     }
+     if (iattrp->ia_valid & ATTR_CTIME) {
+ 	vattrp->va_ctime.tv_sec = iattrp->ia_ctime.tv_sec;
+-	vattrp->va_ctime.tv_usec = 0;
++	vattrp->va_ctime.tv_nsec = 0;
+     }
+ }
+ 
+diff --git a/src/afs/VNOPS/afs_vnop_attrs.c b/src/afs/VNOPS/afs_vnop_attrs.c
+index 05a38ce96..a22331a5b 100644
+--- a/src/afs/VNOPS/afs_vnop_attrs.c
++++ b/src/afs/VNOPS/afs_vnop_attrs.c
+@@ -141,7 +141,7 @@ afs_CopyOutAttrs(struct vcache *avc, struct vattr *attrs)
+     attrs->va_atime.tv_nsec = attrs->va_mtime.tv_nsec =
+ 	attrs->va_ctime.tv_nsec = 0;
+     attrs->va_gen = hgetlo(avc->f.m.DataVersion);
+-#elif defined(AFS_SGI_ENV) || defined(AFS_SUN5_ENV) || defined(AFS_AIX41_ENV) || defined(AFS_OBSD_ENV) || defined(AFS_NBSD_ENV)
++#elif defined(AFS_SGI_ENV) || defined(AFS_SUN5_ENV) || defined(AFS_AIX41_ENV) || defined(AFS_OBSD_ENV) || defined(AFS_NBSD_ENV) || defined(AFS_LINUX26_ENV)
+     attrs->va_atime.tv_nsec = attrs->va_mtime.tv_nsec =
+ 	attrs->va_ctime.tv_nsec =
+ 	(hgetlo(avc->f.m.DataVersion) & 0x7ffff) * 1000;
+@@ -433,7 +433,7 @@ afs_VAttrToAS(struct vcache *avc, struct vattr *av,
+ #endif
+ 	mask |= AFS_SETMODTIME;
+ #ifndef	AFS_SGI_ENV
+-#if	defined(AFS_SUN5_ENV) || defined(AFS_AIX41_ENV) || defined(AFS_DARWIN_ENV) || defined(AFS_XBSD_ENV)
++#if	defined(AFS_SUN5_ENV) || defined(AFS_AIX41_ENV) || defined(AFS_DARWIN_ENV) || defined(AFS_XBSD_ENV) || defined(AFS_LINUX26_ENV)
+ 	if (av->va_mtime.tv_nsec == -1)
+ #else
+ 	if (av->va_mtime.tv_usec == -1)
+diff --git a/src/cf/linux-kernel-type.m4 b/src/cf/linux-kernel-type.m4
+index ae59fccfb..444317da5 100644
+--- a/src/cf/linux-kernel-type.m4
++++ b/src/cf/linux-kernel-type.m4
+@@ -3,4 +3,5 @@ dnl Type existence checks
+ AC_CHECK_LINUX_TYPE([struct vfs_path], [dcache.h])
+ AC_CHECK_LINUX_TYPE([kuid_t], [uidgid.h])
+ AC_CHECK_LINUX_TYPE([struct proc_ops], [proc_fs.h])
++AC_CHECK_LINUX_TYPE([time_t], [types.h])
+ ])
+diff --git a/src/crypto/hcrypto/kernel/config.h b/src/crypto/hcrypto/kernel/config.h
+index 6fec83da0..dd7608dae 100644
+--- a/src/crypto/hcrypto/kernel/config.h
++++ b/src/crypto/hcrypto/kernel/config.h
+@@ -98,8 +98,15 @@ static_inline int close(int d) {return -1;}
+ #ifdef HAVE_ARC4RANDOM
+ # undef HAVE_ARC4RANDOM
+ #endif
++
++#if !defined(AFS_LINUX26_ENV)
++/*
++ * gettimeofday is only used in rand-fortuna.c, not built for Linux.
++ * Linux 5.6 removes the native struct timeval, so this stub would not build.
++ */
+ static_inline int gettimeofday(struct timeval *tp, void *tzp)
+     {if (tp == NULL) return -1; tp->tv_sec = osi_Time(); tp->tv_usec = 0; return 0;}
++#endif
+ 
+ #if defined(KERNEL) && (defined(AFS_SUN5_ENV) || defined(AFS_ARM64_LINUX26_ENV))
+ /*
+-- 
+2.26.0
+

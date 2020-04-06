@@ -1,0 +1,86 @@
+From efebfb1576872777c77a64005e12c92218a0b3b3 Mon Sep 17 00:00:00 2001
+From: Stephan Wiesand <stephan.wiesand@desy.de>
+Date: Fri, 13 Mar 2020 18:23:14 +0100
+Subject: [PATCH 4/5] Make OpenAFS 1.8.6pre2
+
+Update version strings for the second 1.8.6 prerelease.
+
+Change-Id: Ic5e452a379dac906520040a451f84ca19fd158e1
+---
+ configure-libafs.ac             | 2 +-
+ configure.ac                    | 4 ++--
+ src/config/NTMakefile.amd64_w2k | 2 +-
+ src/config/NTMakefile.i386_nt40 | 2 +-
+ src/config/NTMakefile.i386_w2k  | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/configure-libafs.ac b/configure-libafs.ac
+index 218c5d515..0839d3711 100644
+--- a/configure-libafs.ac
++++ b/configure-libafs.ac
+@@ -4,7 +4,7 @@ AC_CONFIG_AUX_DIR([build-tools])
+ AC_CONFIG_SRCDIR([src/libafs/Makefile.common.in])
+ 
+ AC_CONFIG_HEADER([src/config/afsconfig.h])
+-MACOS_VERSION=1.8.6fc1
++MACOS_VERSION=1.8.6fc2
+ 
+ AC_SUBST([MACOS_VERSION])
+ 
+diff --git a/configure.ac b/configure.ac
+index 3c9fa9dbe..ebeaf031c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -5,8 +5,8 @@ AC_CONFIG_MACRO_DIR([src/cf])
+ AC_CONFIG_SRCDIR([src/config/stds.h])
+ 
+ AC_CONFIG_HEADER([src/config/afsconfig.h])
+-MACOS_VERSION=1.8.6fc1
+-LINUX_PKGREL=1.8.6pre1
++MACOS_VERSION=1.8.6fc2
++LINUX_PKGREL=1.8.6pre2
+ 
+ AC_SUBST([MACOS_VERSION])
+ 
+diff --git a/src/config/NTMakefile.amd64_w2k b/src/config/NTMakefile.amd64_w2k
+index e09a0a3bb..1eb1f8c32 100644
+--- a/src/config/NTMakefile.amd64_w2k
++++ b/src/config/NTMakefile.amd64_w2k
+@@ -88,7 +88,7 @@ AFSPRODUCT_VER_MAJOR=1
+ AFSPRODUCT_VER_MINOR=8
+ !ENDIF
+ !IF !DEFINED(AFSPRODUCT_VER_PATCH)
+-AFSPRODUCT_VER_PATCH=0600
++AFSPRODUCT_VER_PATCH=0601
+ !ENDIF
+ !IF !DEFINED(AFSPRODUCT_VER_BUILD)
+ AFSPRODUCT_VER_BUILD=0
+diff --git a/src/config/NTMakefile.i386_nt40 b/src/config/NTMakefile.i386_nt40
+index 58ea05c11..88b1afcbf 100644
+--- a/src/config/NTMakefile.i386_nt40
++++ b/src/config/NTMakefile.i386_nt40
+@@ -88,7 +88,7 @@ AFSPRODUCT_VER_MAJOR=1
+ AFSPRODUCT_VER_MINOR=8
+ !ENDIF
+ !IF !DEFINED(AFSPRODUCT_VER_PATCH)
+-AFSPRODUCT_VER_PATCH=0600
++AFSPRODUCT_VER_PATCH=0601
+ !ENDIF
+ !IF !DEFINED(AFSPRODUCT_VER_BUILD)
+ AFSPRODUCT_VER_BUILD=0
+diff --git a/src/config/NTMakefile.i386_w2k b/src/config/NTMakefile.i386_w2k
+index b16d0f227..596163d93 100644
+--- a/src/config/NTMakefile.i386_w2k
++++ b/src/config/NTMakefile.i386_w2k
+@@ -92,7 +92,7 @@ AFSPRODUCT_VER_MAJOR=1
+ AFSPRODUCT_VER_MINOR=8
+ !ENDIF
+ !IF !DEFINED(AFSPRODUCT_VER_PATCH)
+-AFSPRODUCT_VER_PATCH=0600
++AFSPRODUCT_VER_PATCH=0601
+ !ENDIF
+ !IF !DEFINED(AFSPRODUCT_VER_BUILD)
+ AFSPRODUCT_VER_BUILD=0
+-- 
+2.26.0
+
