@@ -4,8 +4,8 @@
 # 
 # Use with care, I accept no responsibility what so ever.
 pkgname=('opentx-companion')
-pkgver=2.3.5
-pkgrel=2
+pkgver=2.3.7
+pkgrel=1
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
@@ -15,14 +15,14 @@ optdepends=('dfu-util: tool for flashing stm32 based radios')
 makedepends=('cmake' 'xsd' 'bc' 'python' 'avr-gcc' 'avr-libc' 'sed' 'qt5-tools' 'python-pyqt5' 'arm-none-eabi-gcc' 'arm-none-eabi-binutils' 'arm-none-eabi-newlib' 'fox' 'python-pillow')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
-source=("https://github.com/opentx/opentx/archive/$pkgver.tar.gz"
+source=("https://github.com/opentx/opentx/archive/release/$pkgver.tar.gz"
 "installprefix.patch"
 )
 sha256sums=(
-    '7ce8b294c724b45e1d1867202959e9ec8645697cb350ce91efd4bb92374ab806'
+    '92c48f8eec926d5058fb08a3f1ed412576d8f58ed38e903f30d2d5035cd817fc'
     '74e7e1280d1238078f62579034490d5f5ab65f22f528a86a8a15b529a7235aeb'
 )
-_srcmap=opentx-$pkgver
+_srcmap=opentx-release-$pkgver
 
 
 build() {
