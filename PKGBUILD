@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/baines/MiniGBS"
 depends=('alsa-lib' 'ncurses')
-makedepends=('git' 'make')
+makedepends=('git' 'make' 'libx11')
 optdepends=('libx11: Oscilloscope')
 provides=("minigbs="$pkgver)
 replaces=("minigbs")

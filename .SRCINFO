@@ -8,6 +8,7 @@ pkgbase = minigbs-git
 	license = MIT
 	makedepends = git
 	makedepends = make
+	makedepends = libx11
 	depends = alsa-lib
 	depends = ncurses
 	optdepends = libx11: Oscilloscope
