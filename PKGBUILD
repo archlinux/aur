@@ -27,11 +27,17 @@ pkgver() {
 }
 
 build() {
-  arch-meson $_pkgname build -D pam_modules_dir=/usr/lib/security -D gtk_doc=true
+  arch-meson $_pkgname build \
+    -D pam_modules_dir=/usr/lib/security \
+    -D gtk_doc=true
   ninja -C build
 }
 
 check() {
+  # Unfortunately, the PAM tests often end up cluttering /tmp with pam.*
+  # directories, causing random failures the next time tests get run.
+  msg2 'Removing stale /tmp/pam.[0-9A-Za-z] directories before testing'
+  rm -rf /tmp/pam.[0-9A-Za-z]
   meson test -C build
 }
 
