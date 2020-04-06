@@ -1,7 +1,7 @@
 # Maintainer: Roman Kovtyuk HelloDearGrandma@gmail.com
 pkgname=terminator-python3-bzr
-pkgver=r1853
-pkgrel=2
+pkgver=r1852
+pkgrel=3
 pkgdesc='python3 port for terminal emulator that supports tabs and grids python3'
 arch=('any')
 url='https://code.launchpad.net/~hellodeargrandma/terminator/python3'
