@@ -1,7 +1,7 @@
 _pkgname="raylib-cpp"
 pkgname=${_pkgname}-git
-pkgver=0.1.0.r39.gd6f0f22
-pkgrel=4
+pkgver=r62.b72379e
+pkgrel=1
 pkgdesc="raylib-cpp is a C++ wrapper library for raylib, a simple and easy-to-use library to enjoy videogames programming"
 arch=('x86_64')
 url="https://github.com/RobLoach/raylib-cpp"
@@ -18,7 +18,13 @@ sha256sums=('SKIP'
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	tagVer="$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
+
+	if [ tagVer="" ]; then
+  	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	else
+		printf "%s\n" "${tagVer}"
+	fi
 }
 
 prepare() {
