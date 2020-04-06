@@ -14,20 +14,20 @@ depends=('numactl' 'pciutils')
 makedepends=('cmake')
 provides=("roct-thunk-interface=$pkgver")
 replaces=('roct-thunk-interface')
-source=("$pkgname.tar.gz::$url/archive/roc-$pkgver.tar.gz")
+source=("$url/archive/roc-$pkgver.tar.gz")
 sha256sums=('2cabe9d2cfa72031c05d11290837c476182e72d8dec2049298f691143fdd212b')
+_dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 build() {
-  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm "ROCT-Thunk-Interface-roc-$pkgver"
+  cmake -DCMAKE_INSTALL_PREFIX=/opt/rocm "$_dirname"
   make all build-dev
 }
 
 package() {
   make DESTDIR="$pkgdir" install install-dev
 
-  install -Dm644 "ROCT-Thunk-Interface-roc-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -d "$pkgdir/etc/ld.so.conf.d"
-  cat << EOF > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
-/opt/rocm/lib
+  install -Dm644 "$_dirname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 /dev/stdin "$pkgdir/etc/ld.so.conf.d/$pkgname.conf" <<-EOF
+    /opt/rocm/lib
 EOF
 }

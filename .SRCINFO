@@ -10,7 +10,7 @@ pkgbase = hsakmt-roct
 	depends = pciutils
 	provides = roct-thunk-interface=3.3.0
 	replaces = roct-thunk-interface
-	source = hsakmt-roct.tar.gz::https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/roc-3.3.0.tar.gz
+	source = https://github.com/RadeonOpenCompute/ROCT-Thunk-Interface/archive/roc-3.3.0.tar.gz
 	sha256sums = 2cabe9d2cfa72031c05d11290837c476182e72d8dec2049298f691143fdd212b
 
 pkgname = hsakmt-roct
