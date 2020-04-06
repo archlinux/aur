@@ -1,7 +1,7 @@
 pkgbase = fprintd-libfprint2
 	pkgdesc = D-Bus service to access fingerprint readers
 	pkgver = 1.90.1+81+g6dd010f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/fprint/fprintd
 	arch = x86_64
 	groups = fprint
@@ -11,13 +11,13 @@ pkgbase = fprintd-libfprint2
 	checkdepends = python-dbus
 	checkdepends = python-dbusmock
 	checkdepends = python-gobject
-	makedepends = intltool
 	makedepends = git
 	makedepends = gtk-doc
 	makedepends = meson
 	makedepends = pam
 	depends = dbus-glib
 	depends = libfprint-git>=1.90.0
+	depends = libsystemd
 	depends = polkit>=0.91
 	optdepends = pam: to use the fprintd pam plugin
 	provides = fprintd
@@ -26,4 +26,9 @@ pkgbase = fprintd-libfprint2
 	sha256sums = SKIP
 
 pkgname = fprintd-libfprint2
+	depends = dbus-glib
+	depends = libfprint-git>=1.90.0
+	depends = libsystemd
+	depends = polkit>=0.91
+	depends = libfprint-2.so
 
