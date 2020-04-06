@@ -1,7 +1,7 @@
 # Maintainer: Tom Wizetek <tom@wizetek.com>
 
 pkgname=redshifter
-pkgver=1.0
+pkgver=20200404
 pkgrel=1
 pkgdesc="Fine control redshift color temperature and brightness"
 arch=('any')
