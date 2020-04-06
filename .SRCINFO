@@ -1,7 +1,7 @@
 pkgbase = mate-fastcomposwitch-git
 	pkgdesc = Compositor or not with a simple systray icon
 	pkgver = 20200406
-	pkgrel = 6
+	pkgrel = 9
 	url = https://github.com/Elrondo46/mate-fastcomposwitch/
 	arch = x86_64
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = mate-fastcomposwitch-git
 	depends = mate-desktop
 	depends = libappindicator-gtk3
 	depends = python-notify2
+	depends = gettext
 	source = git://github.com/Elrondo46/mate-fastcomposwitch.git
 	md5sums = SKIP
 
