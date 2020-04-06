@@ -26,13 +26,14 @@ depends=(
         'lilv' 'xz' 'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
         'libxv' 'libx11'  'libxext' 'zlib' 'libomxil-bellagio' 'libdrm' 'vmaf'
         'intel-media-sdk' 'libva' 'libvdpau' 'svt-hevc' 'svt-av1' 'svt-vp9'
+        'glslang' 'librabbitmq-c' 'vulkan-icd-loader'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'rav1e' 'shine' 'vo-amrwbenc' 'xavs' 'xavs2' 'pocketsphinx'
 )
 makedepends=(
     # official repositories:
-        'git' 'nasm' 'opencl-headers' 'clang'
+        'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang'
     # AUR:
         'decklink-sdk'
 )
@@ -123,6 +124,7 @@ build() {
         --enable-fontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
+        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libiec61883 \
@@ -141,6 +143,7 @@ build() {
         --enable-libopenmpt \
         --enable-libopus \
         --enable-libpulse \
+        --enable-librabbitmq \
         --enable-librav1e \
         --enable-librsvg \
         --enable-librubberband \
@@ -194,6 +197,7 @@ build() {
         --enable-sndio \
         --enable-sdl2 \
         --enable-vapoursynth \
+        --enable-vulkan \
         --enable-xlib \
         --enable-zlib \
         \
