@@ -47,14 +47,14 @@ _use_current=
 
 pkgbase=linux-rt-bfq
 # pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
-_major=5.4
-_minor=28
-_rtver=19
+_major=5.6
+_minor=2
+_rtver=1
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -65,34 +65,25 @@ makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
-# To use linux-rt-bfq smoothly apply bfq-reverts before bfq-dev patch. 
+# To use linux-bfq-git smoothly apply bfq-reverts before bfq-dev patch. 
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-all-v2"
-_bfq_rev_patch="0001-bfq-reverts.patch"
+#_bfq_rev_path="bfq-reverts-all-v2"
+#_bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
-_bfq_rel="r2K200203"
+_bfq_rel="r2K200330"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
-_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v4.13+.patch"
+_gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v25-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0005-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0006-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0007-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0008-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0009-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch"
-        "${_lucjanpath}/arch-patches-v25-sep/0010-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch"
+        "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -212,6 +203,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -230,9 +222,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -309,9 +298,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -332,9 +318,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
@@ -345,24 +328,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('47c2cb4b1e8baf1c2da296b01b04af927042cc24fe0f35f5924fd452cc023eb7c5a55becdeab35b507adc3e4b624a5f05d1b3d824407af7962e3f1460eac2ae5'
+sha512sums=('174e085eb14c64dedb15ea2186d0103baafce0653fe287b057b650e51cc3e5faa375a9224c046f2b2d3da995e1d79469c04d9ad666c91548790253b2078e2be7'
             'SKIP'
-            'e6135a9637052b209ea7e60144930f0049659f062a1d7d068b6976505e0fe93a469ba4dee0015eb25b8be53777f619e17d7c2035223bf024f911455086882f58'
+            '38862951f396ae05998dea3ad4e07812a1591636b65850e63ab5a00a6e950a1215659faf0aae658d8cddb938e2660aca467041b57b9838eb86e6ccf2aa359206'
             'SKIP'
-            '13e6e0221526899b1c7efbcc269f92bce47fd332ec222c59e767e05f72b9a496d6d884998d351532c1d7013054b34558ef54aaff6f43f22caf887ea19c70103a'
-            '43fd3c3c5870f9fc83208580839c2726dbec2b0e8341e336bd5ac981a87f8b934f0b060eb1c675fa279abe078776380b27de690d72081ed547779e765b098ad1'
-            '2eb574fbfac6e334d3b06e52e466dbf8e88034515729b6571990b10f75a0fe2a52f188615405c5a695b5820669e595deead44d7961a97c5872359be3435fdf63'
-            'e725a711b4ab20d32ba3095b75ded88b6173fa5ceccd8f345de8f94251f22539dfc52e4543c8bd574562072cd5c9ccaf07c9a5321a74ef94a2a911783698fbf6'
-            '24407b738ee901b1ea9697b185a09721c22754f236ac015915f31760a2b8797bb71b7ba1aad1397b6072b780b994060e391bbab4972911cfef828ef7382b935c'
-            '642b4b93a5a992787f4037154d499978f4ca6d93d82f55e7e297c4ea88f581904fd349d8382055f0de3c419476ede2bd460165facc3ef9f842c0ddaabd714518'
-            '305f10c402babf875ccffb3536a0295c80af973f86d501b12a49f1434c9f7f272564dcd4962c5ca2851831c61207e7f2c8e68aee97e00178a41f4b69afe2c458'
-            'ac9683e30f25658890033fb4a967a7443ffa6efa984c1df47346a2901342b91f826a3c3d407775e274912726602674ce2add56520f60f39a9cb1476bc894918f'
-            '76168b77375b788951b82b510c1e3dc6a17451c6a5bbb73c7205eebb95aafd904f851f6773b64bbb88b53e83b9412e5adeb504e2a4eddbfc5fbd60c402e15fbc'
-            '36252bde229ee6e39cbceb39f514888c5affcfe6206176454d205cee00d278597f4288dd5524b808fd62a7c79a756f6a6b56a2ea8dac170bc9d4da75413375b6'
-            '5eb88834b6f08d1ae8a29d97bc1bc27b77d72004762d2e8d298c1a9d1072206cf987d7e39b852821fa68133ec10223b23f57f6f132117d4e7600bfc610c73f86'
-            '77169709dd7fedb35ca5125705615b8fbdfe873d6cfbb2bc95d068d0a4e1adcda848a62af2d76f71fc73f859c97ebff0c7a4c27c354d43034d857f6f07d74b8d'
-            '08777c88687a78c1e515147beaac3c3ab88a850f26038c5ed5be35308f0a06a1232d4c8bd46f5ac4b003277820d37e40289125cd3f624a1aa99aa2c4b716714c'
-            '0c0988d868c6c037d6b95adf5db3b60413530b10cd25df899f5794f6d66bbadba60a13477e53802564c634c0bc2109afd3dc01114473c28dbd3f54e216aa62e3')
+            'bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c'
+            '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
+            '080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779'
+            '8a0f79b5c22951fd6e52062a7ba490d12b1715d952ee91f8a54d641fd6df2e698578ad21d1e91f5df624482d358cd93539aeeb6bd3f4b71bdef8af471982baf8')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
