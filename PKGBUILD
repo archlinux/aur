@@ -10,7 +10,7 @@ license=("GPL3")
 depends=("python>=3.5" "python-requests"  "openvpn" "python-gobject" "gtk3" "libappindicator-gtk3")
 makedepends=("python-setuptools")
 source=("https://github.com/calexandru2018/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('8cc03bc7585d424a226cefe260a56ebf')
+md5sums=('c150f66da343b1ad770b7400500dcf55')
 
 package() {
 	cd "$pkgname-$pkgver"
