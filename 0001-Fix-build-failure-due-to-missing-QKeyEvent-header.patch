@@ -1,0 +1,28 @@
+From 6ed2361e492d69f368ea5afaed5cbc1119219d6e Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Mon, 6 Apr 2020 14:43:58 +0200
+Subject: [PATCH] Fix build failure due to missing QKeyEvent header
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Build failed with "invalid static_cast from type ‘QEvent*’ to type ‘QKeyEvent*’"
+in src/mainwindow.cpp:429, including the header fixes that.
+---
+ src/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index e96bb0d..e558601 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -1,5 +1,6 @@
+ #include <QFileDialog>
+ #include <QMessageBox>
++#include <QKeyEvent>
+ 
+ #include "pcapexport.h"
+ #include "mainwindow.h"
+-- 
+2.26.0
+

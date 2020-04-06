@@ -1,0 +1,41 @@
+From 185326ad7a13ac1bd89e872f68546ae33e32a70b Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Mon, 6 Apr 2020 15:31:25 +0200
+Subject: [PATCH] Honour PREFIX variable for installation
+
+---
+ lcsniff.pro | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/lcsniff.pro b/lcsniff.pro
+index 87f9ea4..307abbf 100644
+--- a/lcsniff.pro
++++ b/lcsniff.pro
+@@ -90,9 +90,21 @@ FORMS += \
+     ui/aboutwindow.ui
+ 
+ # Default rules for deployment.
+-qnx: target.path = /tmp/$${TARGET}/bin
+-else: unix:!android: target.path = /opt/$${TARGET}/bin
+-!isEmpty(target.path): INSTALLS += target
++# Attempt to set the PREFIX variable from one of these sources:
++# 1. PREFIX qmake variable (i.e. leave it as-is)
++# 2. PREFIX environment variable
++# 3. Platform-specific defaults
++isEmpty(PREFIX) {
++	ENV_PREFIX = $$(PREFIX)
++	!isEmpty(ENV_PREFIX): PREFIX = $$ENV_PREFIX
++	else:qnx: PREFIX = /tmp/$${TARGET}
++	else:unix:!android: PREFIX = /opt/$${TARGET}
++}
++
++!isEmpty(PREFIX) {
++	target.path = $$PREFIX/bin
++	INSTALLS += target
++}
+ 
+ RESOURCES += \
+     resources.qrc
+-- 
+2.26.0
+

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LCSniff
+Comment=LambdaConcept lcsniff software for USB2Sniffer hardware
+Exec=lcsniff
+Icon=lcsniff
+Terminal=false
+StartupNotify=false
+Categories=Application;
