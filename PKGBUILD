@@ -1,12 +1,13 @@
 # Maintainer: ichundes <derago@gmail.com>
 pkgname='pyrescene-hg'
 pkgver=816
-pkgrel=3
+pkgrel=4
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://bitbucket.org/Gfy/pyrescene'
 arch=('any')
 license=('MIT' 'GPL' 'Custom')
-depends=('python' 'chromaprint' 'python-numpy' 'unrar' 'lib32-libstdc++5')
+depends=('python' 'unrar' 'lib32-libstdc++5')
+optdepends=('chromaprint')
 makedepends=('mercurial' 'git')
 provides=("pyrescene")
 conflicts=("pyrescene")
