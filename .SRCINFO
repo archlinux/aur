@@ -1,14 +1,17 @@
 pkgbase = ruby-powerpack
 	pkgdesc = A few useful extensions to core Ruby classes.
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://rubygems.org/gems/powerpack
 	arch = any
 	license = MIT
+	makedepends = ruby-rdoc
+	makedepends = rubygems
 	depends = ruby
-	noextract = powerpack-0.1.1.gem
-	source = https://rubygems.org/downloads/powerpack-0.1.1.gem
-	sha256sums = 83a81d0406f1628adc61b579689dc4509b30409a00fa4ca8f47ff212a91bd6ba
+	noextract = powerpack-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/powerpack-0.1.2.gem
+	sha256sums = dbc3c2ecb85ae830554135d1447171a8f24d901fa41beadacdc790c68f69a1e4
 
 pkgname = ruby-powerpack
 
