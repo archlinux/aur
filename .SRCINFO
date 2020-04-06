@@ -1,13 +1,13 @@
 pkgbase = transmission-remote-gui
 	pkgdesc = Cross platform remote GUI for the Transmission daemon
 	pkgver = 5.18.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leonsoft-kras/transmisson-remote-gui
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = lazarus
-	depends = qt4pas
+	depends = qt5pas
 	conflicts = transmission-remote-gui-bin
 	source = https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v5.18.0.zip
 	source = transgui.desktop
