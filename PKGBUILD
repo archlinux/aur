@@ -1,8 +1,8 @@
 # Maintainer: Alexandru Cheltutior <acrandom@pm.me>
 
 pkgname=protonvpn-linux-gui
-pkgver=1.8.0
-pkgrel=1
+pkgver=1.8.1
+pkgrel=2
 pkgdesc="Unofficial GUI client for ProtonVPN"
 arch=("x86_64")
 url="https://github.com/calexandru2018/protonvpn-linux-gui"
