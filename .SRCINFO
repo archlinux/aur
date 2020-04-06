@@ -1,0 +1,25 @@
+pkgbase = getdp
+	pkgdesc = A General Environment for the Treatment of Discrete Problems
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = http://getdp.info/
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc
+	makedepends = gcc-libs
+	makedepends = cmake
+	makedepends = git
+	makedepends = arpack
+	makedepends = openblas
+	makedepends = lapack
+	makedepends = swig
+	makedepends = flex
+	makedepends = bison
+	makedepends = texinfo
+	depends = python
+	depends = gmsh
+	source = http://getdp.info/src/getdp-3.3.0-source.tgz
+	sha256sums = SKIP
+
+pkgname = getdp
+
