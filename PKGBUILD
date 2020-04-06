@@ -7,8 +7,9 @@ pkgdesc="Small .gbs chiptune player for Linux."
 arch=('i686' 'x86_64')
 license=('MIT')
 url="https://github.com/baines/MiniGBS"
-depends=()
+depends=('alsa-lib' 'ncurses')
 makedepends=('git' 'make')
+optdepends=('libx11: Oscilloscope')
 provides=("minigbs="$pkgver)
 replaces=("minigbs")
 conflicts=("minigbs")
@@ -35,4 +36,6 @@ build() {
 package() {
   cd MiniGBS
   make DESTDIR="$pkgdir" install
+
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
