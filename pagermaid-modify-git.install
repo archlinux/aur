@@ -1,0 +1,17 @@
+my_msg(){
+cat <<EOF
+
+    在运行 pagermaid.service 前请先在终端执行
+        (cd /var/lib/pagermaid; sudo -u pagermaid pagermaid)
+    以生成 pagermaid.session
+
+EOF
+}
+
+post_install(){
+  my_msg
+}
+
+post_upgrade(){
+  my_msg
+}

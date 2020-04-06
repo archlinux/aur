@@ -2,7 +2,7 @@
 
 _pkgname=pagermaid-modify
 pkgname=${_pkgname}-git
-pkgver=r58.55d2ed1
+pkgver=r61.aea0d6d
 pkgrel=1
 pkgdesc='A utility daemon for telegram.'
 arch=('any')
@@ -22,12 +22,15 @@ source=("${_pkgname}::git+https://github.com/xtaodada/PagerMaid-Modify.git"
         "pagermaid.service"
         "0000-change-default-config-path.patch"
         "tmpfiles.d"
-        "sysusers.d")
+        "sysusers.d"
+        "pagermaid-modify-git.install")
+install=pagermaid-modify-git.install
 sha512sums=('SKIP'
             '3c0cada01391d9321230e9d2a08b4abd429336e93a13972dfe47cb478b4ce536664b5fc27eb49d35ce4473def4ab8e120822df502123146c66043d43b4965691'
             '92a02af88966dbbddc02ed86c8220fb371b2432b44550ee616b18ba792163798b5496db3397c550ff2a810d53844f69c29a5bdb16b84f568e626dfefcb6ab3dc'
             '4da217a17f26738e4704886fd9a188132768945f222ba97184c02e32dfae10dbe3082ca40f1907e8ee53e8824169d175a5188b3b5c58b0bb7bbe2e626e76c847'
-            '49f26a80155505aee7299778d850fdb9437dd2f064f720e46a92b53d4bfbb56cd13d3ddb0a6fb2890113c6a1c83e70a5369d0e35dffc1f71854e2a161faa2301')
+            '49f26a80155505aee7299778d850fdb9437dd2f064f720e46a92b53d4bfbb56cd13d3ddb0a6fb2890113c6a1c83e70a5369d0e35dffc1f71854e2a161faa2301'
+            '035bc65fb709ee85e9ff7b33aea993e2f14aefd9adad6079342d821f5f6da6fae3c27b2fcde3a082de57e1f669a95064ebd9d8d790e994f303be2dd2d7b87e9e')
 
 pkgver() {
   cd "$_pkgname"
