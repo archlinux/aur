@@ -18,7 +18,6 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver/source/"
-	mkdir $pkgdir/usr/
-	mkdir $pkgdir/usr/bin/
+	mkdir $pkgdir/usr/bin/ -p
 	make DESTDIR="$pkgdir/usr/bin" install
 }
