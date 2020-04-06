@@ -2,8 +2,8 @@
 
 _pkgname=pagermaid-modify
 pkgname=${_pkgname}-git
-pkgver=r51.f6b17bb
-pkgrel=2
+pkgver=r58.55d2ed1
+pkgrel=1
 pkgdesc='A utility daemon for telegram.'
 arch=('any')
 url='https://github.com/xtaodada/PagerMaid-Modify'
@@ -43,6 +43,7 @@ prepare() {
 
 build() {
 	cd "$_pkgname"
+  cp some-plugins/* pagermaid/modules/
 	python setup.py build
 
   cd ..
@@ -56,7 +57,6 @@ package() {
 	cd "$_pkgname"
 
   echo > requirements.txt
-  cp some-plugins/* pagermaid/modules/
   install -Dm644 config.gen.yml "$pkgdir/etc/pagermaid.yml"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 
