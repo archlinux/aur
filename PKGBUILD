@@ -4,7 +4,7 @@
 
 pkgname=ncurses5-compat-libs
 _pkgname=ncurses
-pkgver=6.1
+pkgver=6.2
 pkgrel=1
 pkgdesc='System V Release 4.0 curses emulation library, ABI 5'
 arch=(i686 x86_64)
@@ -14,7 +14,7 @@ depends=(glibc gcc-libs sh)
 provides=(libtinfo5)
 conflicts=(libtinfo5)
 source=(https://ftp.gnu.org/pub/gnu/ncurses/ncurses-$pkgver.tar.gz{,.sig})
-md5sums=('98c889aaf8d23910d2b92d65be2e737a'
+md5sums=('e812da327b1c2214ac1aed440ea3ae8d'
          'SKIP')
 validpgpkeys=('C52048C0C0748FEE227D47A2702353E0F7E48EDB')  # Thomas Dickey
 
