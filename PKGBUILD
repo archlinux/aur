@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Jakub Rup <tomasz.rup@gmail.com>
 pkgname=openapi-generator-cli
-pkgver=4.2.3
-_tag=4.2.3
+pkgver=4.3.0
+_tag=4.3.0
 pkgrel=1
 pkgdesc="OpenAPI Generator CLI + bash completion"
 arch=('any')
@@ -11,7 +11,7 @@ source=("https://repo1.maven.org/maven2/org/openapitools/$pkgname/$_tag/$pkgname
         "https://raw.githubusercontent.com/OpenAPITools/openapi-generator/v$_tag/scripts/openapi-generator-cli-completion.bash"
         "openapi-generator-cli")
 noextract=("$pkgname-$_tag.jar")
-md5sums=('cda48eb414c8b4585e280c3fb2656e24'
+md5sums=('1b7e049810e97bec4d214f1eac0424db'
          'fada86f59eb92ad50983d250bf0319a3'
          '9c6bf97fc32c0b8e289068d81cf96b33')
 
