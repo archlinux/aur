@@ -3,12 +3,12 @@
 _gemname=fusuma-plugin-wmctrl
 pkgname=ruby-$_gemname
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Window Manager plugin for Fusuma"
 arch=(any)
 url="https://github.com/iberianpig/fusuma-plugin-wmctrl"
 license=(MIT)
-depends=(ruby ruby-fusuma)
+depends=(ruby ruby-fusuma wmctrl)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
