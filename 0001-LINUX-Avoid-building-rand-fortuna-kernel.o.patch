@@ -1,0 +1,261 @@
+From 355ea43f0d1b7feae1b3af58bc33af12838db7c3 Mon Sep 17 00:00:00 2001
+From: Andrew Deason <adeason@sinenomine.net>
+Date: Mon, 2 Mar 2020 16:17:55 -0600
+Subject: [PATCH 1/5] LINUX: Avoid building rand-fortuna-kernel.o
+
+Currently, we build rand-fortuna-kernel.o for libafs on all platforms,
+even though we only use the fortuna RNG on AIX, DragonFlyBSD, HP-UX,
+and Irix. Everywhere else, our RAND_bytes() in
+src/crypto/hcrypto/kernel/rand.c uses osi_readRandom() instead of
+going through heimdal.
+
+Building rand-fortuna.c causes occasional build headaches for the
+kernel on Linux (see cc7f942, "LINUX: Disable kernel fortuna large
+frame errors"). The most recent instance of this is that Linux 5.6
+removes the definition for struct timeval, which is referenced in
+rand-fortuna.c.
+
+The Linux kernel is constantly changing, and so trying to keep
+rand-fortuna.c building on Linux seems like a waste of ongoing effort.
+So, just stop building rand-fortuna-kernel.o on Linux. The original
+intent of building this file on all platforms was to avoid bitrot, so
+still keep building rand-fortuna-kernel.o on all other platforms even
+when it's not used; just avoid it on Linux specifically, the platform
+that requires the most effort.
+
+To accomplish this, move rand-fortuna-kernel.o from AFSAOBJS to
+AFS_OS_OBJS, and remove it from the Linux-only AFSPAGOBJS.
+
+[1.8.x: The 1.8 branch does not contain the commits that introduced
+-Wno-error=frame-larger-than= (cc7f942a and 54150f38), so we can skip
+removing the references to -Wno-error=frame-larger-than=.]
+
+Reviewed-on: https://gerrit.openafs.org/14084
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+(cherry picked from commit b8088b49dec23da19406fcb014e7100695dc8322)
+
+Change-Id: Iad0d1af5ffd79c576ddbc253b0037b9772187350
+Reviewed-on: https://gerrit.openafs.org/14094
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Stephan Wiesand <stephan.wiesand@desy.de>
+---
+ src/crypto/hcrypto/kernel/rand.c    | 13 ++++++++++++-
+ src/libafs/Makefile.common.in       |  2 --
+ src/libafs/MakefileProto.AIX.in     |  3 ++-
+ src/libafs/MakefileProto.DARWIN.in  |  4 ++--
+ src/libafs/MakefileProto.DFBSD.in   |  3 ++-
+ src/libafs/MakefileProto.FBSD.in    |  3 +++
+ src/libafs/MakefileProto.HPUX.in    |  3 ++-
+ src/libafs/MakefileProto.IRIX.in    |  3 ++-
+ src/libafs/MakefileProto.LINUX.in   |  1 -
+ src/libafs/MakefileProto.NBSD.in    |  3 ++-
+ src/libafs/MakefileProto.OBSD.in    |  3 ++-
+ src/libafs/MakefileProto.SOLARIS.in |  3 ++-
+ 12 files changed, 31 insertions(+), 13 deletions(-)
+
+diff --git a/src/crypto/hcrypto/kernel/rand.c b/src/crypto/hcrypto/kernel/rand.c
+index 81064863b..72cc41877 100644
+--- a/src/crypto/hcrypto/kernel/rand.c
++++ b/src/crypto/hcrypto/kernel/rand.c
+@@ -15,6 +15,15 @@
+  */
+ afs_kmutex_t hckernel_mutex;
+ 
++/*
++ * For these platforms, we use the fortuna RNG from heimdal (seeded from afsd
++ * userspace on startup). Otherwise, we rely on osi_readRandom() as the source
++ * of random data.
++ */
++#if defined(AFS_AIX_ENV) || defined(AFS_DFBSD_ENV) || defined(AFS_HPUX_ENV) || defined(AFS_SGI_ENV)
++# define USE_FORTUNA
++#endif
++
+ /* Called from osi_Init(); will only run once. */
+ void
+ init_hckernel_mutex(void)
+@@ -25,8 +34,10 @@ init_hckernel_mutex(void)
+ void
+ RAND_seed(const void *indata, size_t size)
+ {
++#ifdef USE_FORTUNA
+     const RAND_METHOD *m = RAND_fortuna_method();
+     m->seed(indata, size);
++#endif
+ }
+ 
+ int
+@@ -34,7 +45,7 @@ RAND_bytes(void *outdata, size_t size)
+ {
+     if (size == 0)
+ 	return 0;
+-#if defined(AFS_AIX_ENV) || defined(AFS_DFBSD_ENV) || defined(AFS_HPUX_ENV) || defined(AFS_SGI_ENV)
++#ifdef USE_FORTUNA
+     const RAND_METHOD *m = RAND_fortuna_method();
+     return m->bytes(outdata, size);
+ #else
+diff --git a/src/libafs/Makefile.common.in b/src/libafs/Makefile.common.in
+index 0b8505a0f..b4e00166a 100644
+--- a/src/libafs/Makefile.common.in
++++ b/src/libafs/Makefile.common.in
+@@ -72,7 +72,6 @@ depsrcs:
+ 
+ AFSAOBJS = \
+ 	sha256-kernel.o \
+-	rand-fortuna-kernel.o \
+ 	rand-timer-kernel.o \
+ 	afs_atomlist.o \
+ 	afs_lhash.o \
+@@ -217,7 +216,6 @@ AFSNONFSOBJS = \
+ # init daemons call pioctl
+ AFSPAGOBJS = \
+ 	sha256-kernel.o \
+-	rand-fortuna-kernel.o \
+ 	rand-timer-kernel.o \
+ 	md5.o		\
+ 	evp.o		\
+diff --git a/src/libafs/MakefileProto.AIX.in b/src/libafs/MakefileProto.AIX.in
+index 5c2b7467c..697ba7aa9 100644
+--- a/src/libafs/MakefileProto.AIX.in
++++ b/src/libafs/MakefileProto.AIX.in
+@@ -24,7 +24,8 @@ AFS_OS_OBJS = \
+ 	osi_sleep.o \
+ 	osi_timeout.o \
+ 	osi_vcache.o \
+-	osi_vm.o
++	osi_vm.o \
++	rand-fortuna-kernel.o
+ 
+ AFSNOIAUTHOBJS = \
+ 	afs_call.o \
+diff --git a/src/libafs/MakefileProto.DARWIN.in b/src/libafs/MakefileProto.DARWIN.in
+index 0592913c1..fc0945480 100644
+--- a/src/libafs/MakefileProto.DARWIN.in
++++ b/src/libafs/MakefileProto.DARWIN.in
+@@ -28,8 +28,8 @@ AFS_OS_OBJS = \
+ 	osi_vcache.o \
+ 	osi_vm.o \
+ 	osi_vnodeops.o \
+-	osi_module.o
+-
++	osi_module.o \
++	rand-fortuna-kernel.o
+ 
+ #AFS_OS_NFSOBJS = osi_vfsops_nfs.o
+ 
+diff --git a/src/libafs/MakefileProto.DFBSD.in b/src/libafs/MakefileProto.DFBSD.in
+index 41e1b5140..9c06a50a7 100644
+--- a/src/libafs/MakefileProto.DFBSD.in
++++ b/src/libafs/MakefileProto.DFBSD.in
+@@ -20,7 +20,8 @@ AFS_OS_OBJS = \
+ 	osi_vcache.o \
+ 	osi_vm.o \
+ 	osi_vnodeops.o \
+-	osi_module.o 
++	osi_module.o \
++	rand-fortuna-kernel.o
+ 
+ #AFS_OS_NFSOBJS = \
+ #	osi_vfsops_nfs.o
+diff --git a/src/libafs/MakefileProto.FBSD.in b/src/libafs/MakefileProto.FBSD.in
+index 4c3c0cd8e..e0616afad 100644
+--- a/src/libafs/MakefileProto.FBSD.in
++++ b/src/libafs/MakefileProto.FBSD.in
+@@ -31,6 +31,9 @@ SRCS+= \
+ 	osi_vnodeops.c \
+ 	osi_module.c
+ 
++AFS_OS_OBJS = \
++	rand-fortuna-kernel.o
++
+ #AFS_OS_NFSOBJS = \
+ #	osi_vfsops_nfs.o
+ 
+diff --git a/src/libafs/MakefileProto.HPUX.in b/src/libafs/MakefileProto.HPUX.in
+index 929884e23..0925a3f96 100644
+--- a/src/libafs/MakefileProto.HPUX.in
++++ b/src/libafs/MakefileProto.HPUX.in
+@@ -24,7 +24,8 @@ AFS_OS_OBJS = \
+ 	osi_sleep.o \
+ 	osi_vcache.o \
+ 	osi_vnodeops.o \
+-	osi_vm.o
++	osi_vm.o \
++	rand-fortuna-kernel.o
+ 
+ AFS_OS_NFSOBJS = \
+ <ia64_hpux1123 hp_ux1123>
+diff --git a/src/libafs/MakefileProto.IRIX.in b/src/libafs/MakefileProto.IRIX.in
+index 310db13fb..4142b413f 100644
+--- a/src/libafs/MakefileProto.IRIX.in
++++ b/src/libafs/MakefileProto.IRIX.in
+@@ -26,7 +26,8 @@ AFS_OS_OBJS = \
+ 	osi_sleep.o \
+ 	osi_vcache.o \
+ 	osi_vm.o \
+-	osi_vnodeops.o
++	osi_vnodeops.o \
++	rand-fortuna-kernel.o
+ 
+ AFS_OS_NFSOBJS = \
+ 	osi_vfsops_nfs.o
+diff --git a/src/libafs/MakefileProto.LINUX.in b/src/libafs/MakefileProto.LINUX.in
+index ed687f1ec..d98fa05ad 100644
+--- a/src/libafs/MakefileProto.LINUX.in
++++ b/src/libafs/MakefileProto.LINUX.in
+@@ -82,7 +82,6 @@ CFLAGS_evp.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto \
+ 	       -DHAVE_CONFIG_H
+ CFLAGS_evp-algs.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
+ CFLAGS_evp-kernel.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
+-CFLAGS_rand-fortuna-kernel.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
+ CFLAGS_rand-timer-kernel.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
+ CFLAGS_rand-kernel.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
+ CFLAGS_aes.o = -I$(TOP_SRCDIR)/external/heimdal/hcrypto
+diff --git a/src/libafs/MakefileProto.NBSD.in b/src/libafs/MakefileProto.NBSD.in
+index 892dea2e9..f1669339e 100644
+--- a/src/libafs/MakefileProto.NBSD.in
++++ b/src/libafs/MakefileProto.NBSD.in
+@@ -24,7 +24,8 @@ AFS_OS_OBJS = \
+ 	osi_sleep.o \
+ 	osi_vcache.o \
+ 	osi_vm.o \
+-	osi_vnodeops.o
++	osi_vnodeops.o \
++	rand-fortuna-kernel.o
+ 
+ AFS_OS_NFSOBJS = \
+ 	osi_vfsops_nfs.o
+diff --git a/src/libafs/MakefileProto.OBSD.in b/src/libafs/MakefileProto.OBSD.in
+index 3e3beaae7..69871cc37 100644
+--- a/src/libafs/MakefileProto.OBSD.in
++++ b/src/libafs/MakefileProto.OBSD.in
+@@ -44,7 +44,8 @@ AFS_OS_OBJS = \
+ 	osi_sleep.o \
+ 	osi_vcache.o \
+ 	osi_vm.o \
+-	osi_vnodeops.o
++	osi_vnodeops.o \
++	rand-fortuna-kernel.o
+ 
+ #AFS_OS_NFSOBJS = osi_vfsops_nfs.o
+ 
+diff --git a/src/libafs/MakefileProto.SOLARIS.in b/src/libafs/MakefileProto.SOLARIS.in
+index 602fed543..5d7e07037 100644
+--- a/src/libafs/MakefileProto.SOLARIS.in
++++ b/src/libafs/MakefileProto.SOLARIS.in
+@@ -26,7 +26,8 @@ AFS_OS_OBJS = \
+ 	osi_sleep.o \
+ 	osi_vcache.o \
+ 	osi_vm.o \
+-	osi_vnodeops.o
++	osi_vnodeops.o \
++	rand-fortuna-kernel.o
+ 
+ AFS_OS_NFSOBJS = \
+ 	osi_vfsops_nfs.o
+-- 
+2.26.0
+
