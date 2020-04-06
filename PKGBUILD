@@ -1,7 +1,7 @@
 # Maintainer: Eirik Albrigtsen <analsandblaster at gmail dot com>
 
 pkgname=blackbox-vcs
-pkgver=1.20180618
+pkgver=1.20181219
 pkgrel=1
 pkgdesc="Safely store secrets in Git/Mercurial/Subversion"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/StackExchange/blackbox"
 license=('MIT')
 depends=('gnupg' 'bash')
 source=("https://github.com/StackExchange/blackbox/archive/v${pkgver}.tar.gz")
-sha256sums=('dae06417d2aeaba41cf0f0f7bd8c07c7f65914c926b61f6047b389847e53794e')
+sha256sums=('afd40d1676645ce9aaf4cdbf71352bf1a8f6d426998436cea3ae536881ef5f81')
 
 package() {
   cd "${srcdir}/blackbox-${pkgver}"

@@ -1,14 +1,14 @@
 pkgbase = blackbox-vcs
 	pkgdesc = Safely store secrets in Git/Mercurial/Subversion
-	pkgver = 1.20180618
+	pkgver = 1.20181219
 	pkgrel = 1
 	url = https://github.com/StackExchange/blackbox
 	arch = any
 	license = MIT
 	depends = gnupg
 	depends = bash
-	source = https://github.com/StackExchange/blackbox/archive/v1.20180618.tar.gz
-	sha256sums = dae06417d2aeaba41cf0f0f7bd8c07c7f65914c926b61f6047b389847e53794e
+	source = https://github.com/StackExchange/blackbox/archive/v1.20181219.tar.gz
+	sha256sums = afd40d1676645ce9aaf4cdbf71352bf1a8f6d426998436cea3ae536881ef5f81
 
 pkgname = blackbox-vcs
 
