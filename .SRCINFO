@@ -1,0 +1,15 @@
+pkgbase = python2-repoze.lru
+	pkgdesc = A tiny LRU cache implementation and decorator
+	pkgver = 0.7
+	pkgrel = 4
+	url = https://pypi.python.org/pypi/repoze.lru
+	arch = any
+	license = custom:BSD
+	checkdepends = python2-nose
+	makedepends = python2-setuptools
+	depends = python
+	source = https://pypi.io/packages/source/r/repoze.lru/repoze.lru-0.7.tar.gz
+	sha512sums = c4d8b015931c4265fa8559f99c9d5016835574b368ebe0d49fe503afe908020b2bf29836606134e00c6c0aa436d52a00bb73d6ab80e98d0802f54bd2e4686476
+
+pkgname = python2-repoze.lru
+
