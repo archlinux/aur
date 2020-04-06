@@ -1,14 +1,15 @@
 pkgbase = python2-fasteners
-	pkgdesc = A python package that provides useful locks.
-	pkgver = 0.12.0
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/fasteners
+	pkgdesc = A python package that provides useful locks - python2 version
+	pkgver = 0.15
+	pkgrel = 3
+	url = https://github.com/harlowja/fasteners
 	arch = any
 	license = Apache
 	makedepends = python2-setuptools
-	source = http://pypi.python.org/packages/source/f/fasteners/fasteners-0.12.0.tar.gz
-	sha256sums = 300d9d605900d643f7778a177e022b4356877237bae9a8f8ebdaef8585d518bb
+	depends = python2
+	depends = python2-monotonic>=0.1
+	depends = python2-six
+	source = python2-fasteners-0.15-3.tar.gz::https://github.com/harlowja/fasteners/archive/0.15.tar.gz
+	sha256sums = f77e2f9a2e3fb3d1570c8542ebbe437239a66f6edf141a8677c6002075abc01c
 
 pkgname = python2-fasteners
-	depends = python2-six
-

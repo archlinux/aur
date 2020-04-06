@@ -1,24 +1,25 @@
-# Maintainer: Erhan SAHIN <erhan@ssahin.net>
-
-pkgname=('python2-fasteners')
-pkgver=0.12.0
-pkgrel=1
-pkgdesc="A python package that provides useful locks."
+# Maintainer: Daniel Peukert <dan.peukert@gmail.com>
+_projectname='fasteners'
+pkgname="python2-$_projectname"
+pkgver='0.15'
+pkgrel='3'
+pkgdesc='A python package that provides useful locks - python2 version'
 arch=('any')
-url="https://pypi.python.org/pypi/fasteners"
+url="https://github.com/harlowja/$_projectname"
 license=('Apache')
+depends=('python2' 'python2-monotonic>=0.1' 'python2-six')
 makedepends=('python2-setuptools')
-source=(http://pypi.python.org/packages/source/f/fasteners/fasteners-$pkgver.tar.gz)
-sha256sums=('300d9d605900d643f7778a177e022b4356877237bae9a8f8ebdaef8585d518bb')
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('f77e2f9a2e3fb3d1570c8542ebbe437239a66f6edf141a8677c6002075abc01c')
+
+_sourcedirectory="$_projectname-$pkgver"
 
 build() {
-  cd "$srcdir/fasteners-$pkgver"
-  python2 setup.py build
+	cd "$srcdir/$_sourcedirectory/"
+	python2 setup.py build
 }
 
-package_python2-fasteners() {
-  depends=('python2-six')
-
-  cd "$srcdir/fasteners-$pkgver"
-  python2 setup.py install --root=${pkgdir}
+package() {
+	cd "$srcdir/$_sourcedirectory/"
+	python2 setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
