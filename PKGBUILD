@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-bfq
 # pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
-_major=5.5
-_minor=15
+_major=5.6
+_minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -64,30 +64,21 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 # Some patches for BFQ conflict with patches for BFQ-dev.
 # To use linux-bfq smoothly apply bfq-reverts before bfq-dev patch. 
 # Otherwise the kernel will not compile.
-_bfq_rev_path="bfq-reverts-all-v2"
-_bfq_rev_patch="0001-bfq-reverts.patch"
+#_bfq_rev_path="bfq-reverts-all-v2"
+#_bfq_rev_patch="0001-bfq-reverts.patch"
 _bfq_path="bfq-dev-lucjan"
 _bfq_ver="v11"
-_bfq_rel="r2K200327"
+_bfq_rel="r2K200330"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _gcc_path="https://raw.githubusercontent.com/graysky2/kernel_gcc_patch/master"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v9.1+_kernel_v5.5+.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        "${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
+        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0003-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0004-drm-i915-Serialise-i915_active_acquire-with-__active.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0005-drm-i915-gem-Take-runtime-pm-wakeref-prior-to-unbind.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0006-drm-i915-gem-Avoid-parking-the-vma-as-we-unbind.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0007-drm-i915-gem-Try-to-flush-pending-unbind-events.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0008-drm-i915-gem-Reinitialise-the-local-list-before-repe.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0009-drm-i915-Add-a-simple-is-bound-check-before-unbindin.patch"
-        "${_lucjanpath}/arch-patches-v16-sep/0010-drm-i915-Introduce-a-vma.kref.patch"
+        "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
          # the main kernel config files
         'config')
 
@@ -204,6 +195,7 @@ _package() {
     optdepends=('crda: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+    provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -222,9 +214,6 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -301,9 +290,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -324,9 +310,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
@@ -337,22 +320,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('fc774cee6c2eb87cf3efdb6a71f4b22e82536e7d62d32b8ee28f8001f31e1a2c3029ddd95884a69284685f02f928d3d3eb37b506568fa32d6192b12c9d45adde'
+sha512sums=('174e085eb14c64dedb15ea2186d0103baafce0653fe287b057b650e51cc3e5faa375a9224c046f2b2d3da995e1d79469c04d9ad666c91548790253b2078e2be7'
             'SKIP'
-            '4077d26b18f59ec29a92eed4e52a5747f8034bea5280a965bd2acc34f7e1b1bcbb9d7ffafd90f9d60c382d448cae8090a91e02f1a4b23887513f61b288a61bf8'
-            '63a6f461d5a5ceb8aaed1944ed537ccde0b2808ccf7d8f5660193187947deef8266a81c3d139dd19908c8e9ada66f9c33dbb31b2105ea1c6c0b9d089d2e5248c'
+            'bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '7a803c5d453a6541118cb760607456633b6e8706df290e66b25d526b948cb7099f2847f90b365a7ae3679321425f16e50e6108cea267df8613d3a801974c552f'
-            'cc81493dd4e676887bb29d2ca117469b476a403ecd1e964aa11d4108abec1264cc8247c781a78ad88e1e236b2602464f55deed0bcf266a6d951449e9e2ed8a56'
-            '34c31e9eb5a3a96537db4ae51118abfc30a4e2a96ac591b0fc1b7802efc03ed282601b054846c607df9dadfbb9e42e3acb415a3300795354635fa5b1a8e12f25'
-            '928decefa1022702282d3c49eaf0dd4860cb318a69007c1511a6af1579712fa671983291607063d909fa5fdc5deb0e848cb7474ec612d8db6b5401800892bcdd'
-            '6793a2bb10500ebc81f4ac81a4012488fde9075ffa0ad51f0a6b1bac74a22b88160eccd58957715138ace11da79bc90777351f7e3112799798325b30731bc266'
-            '76d1cc4d2a87e0b893cb831377024f2238d65ee1269c79bd92c1c62c77e687dac9aa7e9991a37af4f3703af3da4cd35b0d59f304066fb040284581ba7e3aa87f'
-            '9cf08c12bd19e41878ca6b467907ea5fa2512185581492fcc9f14079c19e42bd2373f34bba680dac5b3f00debd6432dda385e976c3b77a293480b4ada096a5b0'
-            '1983a7a48fa70553e1648fa0cc91a3f7e5d65b12b40afc630d6d6f7c527c75d408a0c2db8d57e449edeaac4f3adef455c6089850552d569b84972cb491cfc0d8'
-            '22c4186a962c4b2e6d28770c2691a3e613056a65abd9853a731e729e78838f3d8399741689755203203f84f914c6e65e83420fd479ce8ed3ac2aaaf8ed1d2807'
-            'e3a33a6b54c0118eec090e0f330096e3698b77fcd0f7ff468fac19a8368f063c10b56aa8a4b5b068251ec9761c105d5577cfe26aefed7098b7c4916ab5d8116a'
-            '1bbaad5c725ffdf18cfdcdd2584477c55a95928da7ef5ee5d96e6d76480cd53d86362dff0fe7e818b307b572b3701b65f4a15114ec3ecf919e47d6513bffe216')
+            '080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779'
+            '58639c6e46d35a61bff26c3361912936bae3ea17817dd7ee93f1a6428450f95407abeecbbe9c0107520602c01b2ee6ee138ea85ef728e0c9c8e6e4257ec8ae40')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
