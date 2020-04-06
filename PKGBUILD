@@ -1,5 +1,5 @@
 # Maintainer:XXXXXXXXXXXXXXXXXXXXXXXXXXX
-pkgname=mate-fastcomposwitch
+pkgname=mate-fastcomposwitch-git
 pkgver=20200406
 pkgrel=1
 pkgdesc="Compositor or not with a simple systray icon"

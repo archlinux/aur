@@ -1,4 +1,4 @@
-pkgbase = mate-fastcomposwitch
+pkgbase = mate-fastcomposwitch-git
 	pkgdesc = Compositor or not with a simple systray icon
 	pkgver = 20200406
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = mate-fastcomposwitch
 	source = git://github.com/Elrondo46/mate-fastcomposwitch.git
 	md5sums = SKIP
 
-pkgname = mate-fastcomposwitch
+pkgname = mate-fastcomposwitch-git
 
