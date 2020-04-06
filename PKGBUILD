@@ -3,10 +3,10 @@
 # Based on PMS PKGBUILD
 
 pkgname=ums
-pkgver=9.3.1
-pkgrel=2
+pkgver=9.4.0
+pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://www.universalmediaserver.com/"
 license=('GPL2')
 depends=('mplayer' 'mencoder' 'libmediainfo')
@@ -21,11 +21,11 @@ optdepends_x86_64=("dcraw: thumbnails creation support"
 backup=(opt/ums/UMS.conf \
         opt/ums/WEB.conf)
 #source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver.tgz"
-source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/$pkgver/UMS-$pkgver.tgz"
+source=("https://github.com/UniversalMediaServer/UniversalMediaServer/releases/download/$pkgver/UMS-$pkgver-x86_64.tgz"
         'ums.desktop'
         'ums.service'
         'ums.timer')
-sha256sums=('a0b80215c6b9e22acd708e3369ff557c29f9cb84cbf957467697321d0111734f'
+sha256sums=('467c22cdfcb50626be87d24c6e62960dd8be461b6b7b76d18566727827527dea'
             '0cdadbabef215b6539e56755147a8f626d9f1fadfb85e2e5b7f7f1b66f1cdef9'
             '1f6efefa58dde9148396bd9236a6985db0fa27f1c767067b52bfae1832f32284'
             '7fd36db71f39fde3d515c697101190f979b308d910b3c4210b90422669683ab0')
