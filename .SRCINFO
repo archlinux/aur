@@ -1,0 +1,16 @@
+pkgbase = python-pyportfolioopt-git
+	pkgdesc = Financial portfolio optimisation in python
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/robertmartin8/PyPortfolioOpt
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python-pandas
+	depends = python-cvxpy
+	source = git+https://github.com/robertmartin8/PyPortfolioOpt.git
+	sha256sums = SKIP
+
+pkgname = python-pyportfolioopt-git
+
