@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Project Ignis: EDOPro
+Comment=The bleeding-edge automatic duel simulator
+Path=/opt/edopro
+Exec=/usr/bin/EDOPro
+Icon=/opt/edopro/textures/AppIcon.png
+Terminal=false
+Categories=Game;CardGame;
