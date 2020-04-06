@@ -3,7 +3,7 @@
 _gitname=chwp
 _cmdname=chwp
 pkgname=${_gitname}-git
-pkgver=0.0.26
+pkgver=0.0.27
 pkgrel=1
 pkgdesc="Changes the background wallpaper and lockscreen from the command line."
 arch=('x86_64')
