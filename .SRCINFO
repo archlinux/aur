@@ -18,14 +18,14 @@ pkgbase = linux-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.6.tar.sign
-	source = https://github.com/xanmod/linux/releases/download/5.6.2-xanmod1/patch-5.6.2-xanmod1.xz
+	source = https://github.com/xanmod/linux/releases/download/5.6.2-xanmod2/patch-5.6.2-xanmod2.xz
 	source = choose-gcc-optimization.sh
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch::https://aur.archlinux.org/cgit/aur.git/plain/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch?h=linux-ck&id=616ec1bb1f2c0fc42b6fb5c20995996897b4f43b
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = e342b04a2aa63808ea0ef1baab28fc520bd031ef8cf93d9ee4a31d4058fcb622
 	sha256sums = SKIP
-	sha256sums = 8a4c12b81ecf5949f0d44ccc78dbec0b22511a83fc71d1019662ac59e67c075a
+	sha256sums = 706bc8d3f8692521ff1fa78820d004b40bd03c51ad7d7df3d0c107eaa9def9ec
 	sha256sums = 2c7369218e81dee86f8ac15bda741b9bb34fa9cefcb087760242277a8207d511
 	sha256sums = 9c507bdb0062b5b54c6969f7da9ec18b259e06cd26dbe900cfe79a7ffb2713ee
 
