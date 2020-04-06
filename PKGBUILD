@@ -2,7 +2,7 @@
 #                         (What a silly email, I regret making it like this.).
 
 pkgname="stretchy-snek-boi"
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A snake game clone."
 arch=("x86_64")
@@ -12,13 +12,13 @@ source=("https://github.com/KnockKnockP/stretchy-snek-boi/archive/$pkgver.tar.gz
 md5sums=(SKIP)
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname-$pkgver/source/"
 	make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	mkdir $pkgdir/usr
-	mkdir $pkgdir/usr/bin
+	cd "$pkgname-$pkgver/source/"
+	mkdir $pkgdir/usr/
+	mkdir $pkgdir/usr/bin/
 	make DESTDIR="$pkgdir/usr/bin" install
 }
