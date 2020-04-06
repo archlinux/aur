@@ -6,7 +6,7 @@
 pkgbase=virtualbox-modules-bfq
 pkgname=('virtualbox-host-modules-bfq')
 pkgver=6.1.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -26,7 +26,7 @@ build() {
 package_virtualbox-host-modules-bfq() {
 	pkgdesc='Host kernel modules for VirtualBox running under linux-bfq.'
 	provides=("VIRTUALBOX-HOST-MODULES")
-	depends=('linux-bfq>=5.5' 'linux-bfq<5.6')
+	depends=('linux-bfq>=5.6' 'linux-bfq<5.7')
 	
 	cd "/var/lib/dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
         install -Dt "$pkgdir/usr/lib/modules/$_kernver/extramodules" -m0644 *
