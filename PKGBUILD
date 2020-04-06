@@ -1,7 +1,9 @@
-# Maintainer: BenObiWan <benobiwan @t gmail dot com>
+# Maintainer: MCMic <come@chilliet.eu>
+# Contributor: MCMic <come@chilliet.eu>
+# Contributor: BenObiWan <benobiwan @t gmail dot com>
 
 pkgname=zelda-roth-se
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 epoch=
 pkgdesc="Zelda : Return of the Hylian solarus edition."
@@ -10,7 +12,7 @@ url="http://www.zelda-solarus.com/"
 license=('custom')
 groups=()
 depends=('solarus>=1.6.0')
-makedepends=('zip' 'cmake')
+makedepends=('cmake')
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,18 +22,18 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://www.zelda-solarus.com/downloads/$pkgname/$pkgname-$pkgver.tar.gz)
+source=("https://gitlab.com/solarus-games/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
 noextract=()
-md5sums=('844eb4a95cf40af73d3464d3752ba921')
+md5sums=('f697f89e5d52ccfc25a9e70d50edda4c')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   cmake -D CMAKE_INSTALL_PREFIX="/usr" -D CMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-v${pkgver}"
   make DESTDIR="${pkgdir}/" PREFIX="/usr" install
 }
 
