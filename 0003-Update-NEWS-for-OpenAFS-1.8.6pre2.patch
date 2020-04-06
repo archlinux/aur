@@ -1,0 +1,41 @@
+From 828bd461d9be40b53ded91977b9ea1238575f77f Mon Sep 17 00:00:00 2001
+From: Stephan Wiesand <stephan.wiesand@desy.de>
+Date: Fri, 13 Mar 2020 18:19:45 +0100
+Subject: [PATCH 3/5] Update NEWS for OpenAFS 1.8.6pre2
+
+Release notes for the second 1.8.6 prerelease
+
+Change-Id: I3abfbfacb68a134afafa73a9ac292f9ee776d9a2
+---
+ NEWS | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index df1743454..cd77d193a 100644
+--- a/NEWS
++++ b/NEWS
+@@ -24,7 +24,11 @@ OpenAFS 1.8.6 (in progress)
+   All server platforms
+ 
+     * Do not leave empty directories behind in the file server vice partition
+-      when running the "vos zap -force" command (13896 13897)
++      when running the "vos zap -force" command (13897)
++
++    * Fix "vos zap -force" failures when the volume being zapped does not have
++      an entry in the fileserver's volume group cache (e.g., during fileserver
++      startup) (13896)
+ 
+     * Relax the length limits on some membership lists used in ptserver RPCs,
+       introduced in release 1.8.0 to prevent denial of service attacks, to
+@@ -66,7 +70,7 @@ OpenAFS 1.8.6 (in progress)
+ 
+   Linux clients
+ 
+-    * Support mainline kernels up to and including 5.6-rc2 (14069)
++    * Support mainline kernels up to and including 5.6-rc5 (14069 14094 14095)
+ 
+     * Make builds succeed with --enable-checking for mainline kernels
+       5.3-rc2 and later (13910)
+-- 
+2.26.0
+
