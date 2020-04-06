@@ -15,12 +15,12 @@ _makenconfig=
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-_localmodcfg=
+_localmodcfg=y
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-gc
-pkgver=5.6.1
+pkgver=5.6.2
 pkgrel=1
 pkgdesc='Linux'
 url="https://cchalpha.blogspot.co.uk/"
@@ -33,7 +33,7 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-${pkgver}
-_bmqversion=5.6-r0
+_bmqversion=5.6-r1
 _bmq_patch="bmq_v${_bmqversion}.patch"
 _gcc_more_v='20191217'
 source=(
@@ -41,21 +41,19 @@ source=(
   config         # the main kernel config file
   "${_bmq_patch}::https://gitlab.com/alfredchen/bmq/raw/master/${_bmqversion%-*}/${_bmq_patch}"
   "enable_additional_cpu_optimizations-${_gcc_more_v}.tar.gz::https://github.com/graysky2/kernel_gcc_patch/archive/${_gcc_more_v}.tar.gz"
-  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/b672dfc2978badb11782adc9b187c63ee8a35151.patch"
-  "0002-mac80211-fix-authentication-with-iwlwifi-mvm.patch::https://github.com/archlinux/linux/commit/61397cbfb977f37e4423813d1ad43340a627563a.patch"
+  "0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/1bb6eecc6f8b5eb7cadfe895ba426d01f171cfa1.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('46d8fd446d0f6aa4b039d92d9a4992dfa1bf67e4274ec1b77616daf5174f1530'
+sha256sums=('2d4d91d8329c1ed3826c61463650dd4bfbb6ad39dcee6dba4f98a7e94a67b5b9'
             'SKIP'
-            'a87c8db8d4a594373855eb5b0113b345629c2d295276b27f64cf651a20d8df56'
-            'a214cfe4188ff24284de8ee5b0fa5ff4b0b604148a3e663e02e97cc56fec172c'
+            '9165f1d17d3610af29ec9b68f6f3d394327f3ea4d35dcf703e74133261527b5d'
+            'd42ab10e8ff39acd3a9211fc83313c6fb7a69ae0c2d39deb7946c7516c0d5cd5'
             '7a4a209de815f4bae49c7c577c0584c77257e3953ac4324d2aa425859ba657f5'
-            '00b19ad6d756bd2f0124cc41e810f29ce167c4153e4b317c1ec513a259d57be3'
-            'eee466d310191aa65e174f510737bcdbb49c142e45884fe2680e53312d5436e0')
+            '6efbc986d0bdad0cfe1f85584bad42b45145c766dcdb6d41b6bd8ac07a5aef5a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-gc}
