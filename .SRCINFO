@@ -1,0 +1,14 @@
+pkgbase = python-aws-requests-auth-git
+	pkgdesc = AWS signature version 4 signing process for the python requests module
+	pkgver = r107.969bc64
+	pkgrel = 1
+	url = https://github.com/davidmuller/aws-requests-auth
+	arch = any
+	license = MIT
+	provides = python-aws-requests-auth
+	conflicts = python-aws-requests-auth
+	source = git+https://github.com/davidmuller/aws-requests-auth
+	sha256sums = SKIP
+
+pkgname = python-aws-requests-auth-git
+
