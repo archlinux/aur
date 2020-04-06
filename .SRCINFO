@@ -1,5 +1,5 @@
 pkgbase = python2-repoze.lru
-	pkgdesc = A tiny LRU cache implementation and decorator
+	pkgdesc = A tiny LRU cache implementation and decorator (python-2.x)
 	pkgver = 0.7
 	pkgrel = 4
 	url = https://pypi.python.org/pypi/repoze.lru
