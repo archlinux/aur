@@ -1,6 +1,6 @@
 # Maintainer: Yuri Nudelman <yuranu@gmail.com>
 pkgname=crash-lzo-git
-pkgver=7.2.8.r7.g007f844
+pkgver=7.2.8.r7.gd379b47
 pkgrel=1
 pkgdesc="Linux kernel crashdump analysis tool with lzo"
 arch=('i686' 'x86_64')
