@@ -1,0 +1,41 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	echo "Para habilitar o guardião Itau 30h, use o seguinte comando:"
+	echo "$ sudo systemctl enable warsaw"
+	echo "Para usar o Guardião Itau 30h ao iniciar o sistema, use o seguinte comando:"
+	echo "$ sudo systemctl start warsaw"
+
+	update-desktop-database -q
+}
+
+pre_remove() {
+
+	    if command -v systemctl > /dev/null 2>&1; then
+	      systemctl stop warsaw.service
+	    fi
+
+	    if command -v warsaw > /dev/null 2>&1; then
+	      warsaw stop
+	    fi
+
+	    if command -v systemctl > /dev/null 2>&1; then
+	      systemctl disable warsaw.service
+	      systemctl daemon-reload
+	    fi
+
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	    if command -v rm > /dev/null 2>&1; then
+	      rm -rf /usr/local/etc/warsaw
+	    fi
+
+	    if command -v pkill > /dev/null 2>&1; then
+	      pkill wsatspi
+	    fi
+
+	update-desktop-database -q
+}

@@ -1,0 +1,21 @@
+diff --git a/lib/systemd/system/warsaw.service b/lib/systemd/system/warsaw.service
+index e84e7fb..8def1e4 100644
+--- a/lib/systemd/system/warsaw.service
++++ b/lib/systemd/system/warsaw.service
+@@ -1,11 +1,13 @@
+ [Unit]
+ Description=Warsaw Desktop
+-After=network.target auditd.service
++After=network.target
++After=auditd.service
+ 
+ [Service]
+-ExecStart=/usr/bin/warsaw start
+-RemainAfterExit=yes
+ Type=oneshot
++RemainAfterExit=yes
++ExecStart=/usr/bin/warsaw start
++ExecStop=/usr/bin/warsaw stop
+ 
+ [Install]
+ WantedBy=multi-user.target
