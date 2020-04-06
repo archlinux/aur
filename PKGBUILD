@@ -1,10 +1,10 @@
 # Maintainer: Kevin Williams <kw@outlook.com>
 
 pkgname=wavebox
-_pkgver=10.0.104_2
-pkgver=10.0.104_2
+_pkgver=10.0.121_2
+pkgver=10.0.121_2
 pkgrel=1
-pkgdesc="The next generation of web-desktop communication"
+pkgdesc="The next generation of web-desktop communication."
 arch=(x86_64)
 url="https://wavebox.io"
 license=('custom:Wavebox-EULA')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::http://download.wavebox.app/latest/stable/linu
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('dd2d0fe960b2ec2765b20a32d6a51a59'
+md5sums=('5838b3e82e4759b984a4a7a3a4ecea41'
          'cf3416572bcd3e3528958f36306e6e7c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
