@@ -16,6 +16,7 @@ depends=(
 'atom'
 'hugo'
 'git'
+'regexxer'
 # IME
 'fcitx'
 'fcitx-m17n'
@@ -45,14 +46,19 @@ depends=(
 )
 
 optdepends=(
+# Video editing
 'obs-studio'
-'obs-qtwebkit-git'
-'obs-gphoto'
+# Development
 'intellij-idea-ce'
 'intellij-idea-ultimate-edition'
+# Sky viewing
 'stellarium'
 'skychart-bin'
+# Math
 'geogebra'
+# Syncing
+'freefilesync-bin'
+'google-musicmanager'
 )
 
 package() {
