@@ -1,8 +1,6 @@
-# Contributor: jellysheep <max.mail@dameweb.de>
-
 pkgname=mingw-w64-eigen
 pkgver=3.3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight C++ template library for vector and matrix math, a.k.a. linear algebra. (mingw-w64)"
 arch=('any')
 url='http://eigen.tuxfamily.org'
@@ -26,7 +24,7 @@ build() {
   cd "$srcdir"/eigen-eigen-*
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DINCLUDE_INSTALL_DIR=/usr/${_arch}/include/eigen3 ..
+    ${_arch}-cmake -DINCLUDE_INSTALL_DIR:PATH="include/eigen3" ..
     make
     popd
   done
