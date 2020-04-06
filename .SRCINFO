@@ -1,7 +1,7 @@
 pkgbase = mate-fastcomposwitch-git
 	pkgdesc = Compositor or not with a simple systray icon
 	pkgver = 20200406
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	license = GPL
 	depends = python-gobject

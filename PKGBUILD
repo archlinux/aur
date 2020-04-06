@@ -2,7 +2,7 @@
 
 pkgname=mate-fastcomposwitch-git
 pkgver=20200406
-pkgrel=1
+pkgrel=2
 pkgdesc="Compositor or not with a simple systray icon"
 arch=(x86_64)
 license=('GPL')
