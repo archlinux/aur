@@ -5,7 +5,7 @@ pkgbase = otf-joscelyn
 	url = https://github.com/psb1558/Joscelyn-font
 	arch = any
 	license = OFL
-	source = https://github.com/psb1558/Joscelyn-font/releases/download/v1.001/Joscelyn.zip
+	source = Joscelyn-1.001.zip::https://github.com/psb1558/Joscelyn-font/releases/download/v1.001/Joscelyn.zip
 	sha256sums = b1d290dff9ed27fa5d4b896e8791fab267bba3f555666c87d5b20b3b08b2928e
 
 pkgname = otf-joscelyn
