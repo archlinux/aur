@@ -1,6 +1,6 @@
 pkgbase = buttercup-desktop
 	pkgdesc = Javascript Password Vault - Multi-Platform Desktop Application
-	pkgver = 1.18.2
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/buttercup/buttercup-desktop
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = buttercup-desktop
 	depends = gtk3
 	depends = libxss
 	depends = nss
-	source = buttercup-desktop-1.18.2.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v1.18.2.tar.gz
-	sha512sums = d1354f4a98d50f461563916c484767f109a175d75b1b9b547ea5cf395caaca36482c7f454e17fe6f0564dd91a91663742b4f48d59f42ac4f7dcedb2e3d8a6034
+	source = buttercup-desktop-1.19.0.tar.gz::https://github.com/buttercup/buttercup-desktop/archive/v1.19.0.tar.gz
+	sha512sums = 1aa4026e035aa4160890d56c9c8a38d00184570b6401970a72a2ce423dbf15b00a40f4b0fe975fbba73a3c98f9ceb97392329db645f2eb9f90203126f0e111e7
 
 pkgname = buttercup-desktop
 
