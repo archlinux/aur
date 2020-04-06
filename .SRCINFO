@@ -1,6 +1,6 @@
 pkgbase = git-flow-completion-git
 	pkgdesc = git-flow shell completions
-	pkgver = 1.1.0.44e4872
+	pkgver = 1.1.0.2.gcba3ad7
 	pkgrel = 1
 	url = http://github.com/bobthecow/git-flow-completion
 	arch = any
