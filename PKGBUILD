@@ -1,5 +1,4 @@
-# Maintainer: Dan Ziemba <zman0900@gmail.com>
-# Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
+# Maintainer: Cédric Schieli <cschieli@gmail.com>
 
 pkgname=tvheadend-satip-server-git
 _gitname='tvheadend-git'
