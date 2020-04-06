@@ -1,0 +1,26 @@
+pkgbase = erd
+	pkgdesc = A utility for generating entity-relationship diagrams from plain-text descriptions
+	pkgver = 0.2.1.0
+	pkgrel = 1
+	url = https://github.com/BurntSushi/erd
+	arch = i686
+	arch = x86_64
+	license = Unlicense
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-base
+	depends = haskell-bytestring
+	depends = haskell-containers
+	depends = haskell-directory
+	depends = haskell-filepath
+	depends = haskell-gitrev
+	depends = haskell-graphviz
+	depends = haskell-parsec
+	depends = haskell-raw-strings-qq
+	depends = haskell-text
+	depends = haskell-yaml
+	source = https://hackage.haskell.org/packages/archive/erd/0.2.1.0/erd-0.2.1.0.tar.gz
+	sha512sums = bb21d17401c4b4d9e3c7c6293f4550141b29502c8244a4487ff99ec19b18b3db3c4e322fdf246230304ee8509e4cb2aa250caecf119421fbfa085f97723ca638
+
+pkgname = erd
+
