@@ -2,14 +2,15 @@
 # Contributor: David Runge <dvzrv@archlinux.org>
 
 pkgbase=linux-rt
-_pkgver=5.4.28
-_rtpatchver=19
+_pkgver=5.6.2
+_rtpatchver=1
 pkgver="${_pkgver}.${_rtpatchver}"
 pkgrel=1
+pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'inetutils' 'kmod' 'libelf'
+makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf'
 'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
 _srcname=linux-${_pkgver}
@@ -19,17 +20,7 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   config
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-lib-devres-add-a-helper-function-for-ioremap_uc.patch
-  0003-mfd-intel-lpss-Use-devm_ioremap_uc-for-MMIO.patch
-  0004-PCI-pciehp-Prevent-deadlock-on-disconnect.patch
-  0006-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
-  0007-drm-i915-save-AUD_FREQ_CNTRL-state-at-audio-domain-s.patch
-  0008-drm-i915-Fix-audio-power-up-sequence-for-gen10-displ.patch
-  0009-drm-i915-extend-audio-CDCLK-2-BCLK-constraint-to-mor.patch
-  0010-drm-i915-Limit-audio-CDCLK-2-BCLK-constraint-back-to.patch
-  0014-drm-amdgpu-Add-DC-feature-mask-to-disable-fractional.patch
-)
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -38,21 +29,12 @@ validpgpkeys=(
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt
   'E644E2F1D45FA0B2EAA02F33109F098506FF0B14'  # Thomas Gleixner
 )
-sha256sums=('c863cc1346348f9a40083b4bc0d34375117b1c401af920994d42e855653ef7a4'
+sha256sums=('2d4d91d8329c1ed3826c61463650dd4bfbb6ad39dcee6dba4f98a7e94a67b5b9'
             'SKIP'
-            'a804ec4fb5294c8cd83573ee2f6387c6b641443d055ca336367bfd47c39a09fd'
+            'b2e9420f36ffce5edd87eb90b7deb857191dc7f18d275d5bd6f694b475a56e26'
             'SKIP'
-            'b8dca85200ed057e0b574333e4914748a778ee0b2f14944ed2adff61f36f8e34'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
-            'cce19157ce22b33b33cd6ba917d1994ad7b2456cb0bbae004ed9276d6af2f2fa'
-            '4b8dc61f03a6b72eec64de86c2ccf8e98dab44f72f7daad0cec2723b3d06331c'
-            '6055025e53d87087774f7497088bf1a2ba43404c6629fd8601302496c226896d'
-            '194b893c18118be08c5d42762f5f1926953fc7a5903f06f1d39f893542d377a9'
-            '2234444ae52bf3810e13bdb4c0ab6d808eb9fe6cb003c2b78be04a987ef12388'
-            '5a1584d26c7d046fa0398b56980f628b4194dff95d0916e9527dbea7299e7765'
-            'de34a0a82ce40de4394ad9d02421a53ac04c5e0b36a79b5f937fdebc93ac7bfb'
-            '1a3073cbbc5d4e3a7970fc92706a5ec5729ea4a5cffb94af8343e046881cabf1'
-            '7e6b2c7f919dc28d1144fe8d5cc08f9455ba65a32577944cf86d9c278fff6d20')
+            '4e9454546ee21cd973fa9ab9e711e9f32138ea21e6ba9f08afcd58f967c6b200'
+            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -60,10 +42,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 prepare() {
   cd $_srcname
-
-  # apply realtime patch
-  echo "Applying patch-${_pkgver}-rt${_rtpatchver}.patch"
-  patch -Np1 -i "../patch-${_pkgver}-rt${_rtpatchver}.patch"
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -74,10 +52,16 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    # picking up the RT patch
+    src="${src//patch.xz/patch}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # removing cdomain configuration (incompatible with python-sphinx >= 3.0.0):
+  # https://github.com/sphinx-doc/sphinx/issues/7421
+  sed -e "s/'cdomain',//" -i Documentation/conf.py
 
   echo "Setting config..."
   cp ../config .config
@@ -85,17 +69,18 @@ prepare() {
 #  make menuconfig # CLI menu for configuration
 
   make -s kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
-  depends=(coreutils kmod initramfs)
+  pkgdesc="The $pkgdesc kernel and modules"
+  depends=(coreutils initramfs kmod)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
 
@@ -116,13 +101,10 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -194,13 +176,10 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -216,9 +195,6 @@ _package-docs() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
-
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
