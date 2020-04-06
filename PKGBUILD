@@ -10,8 +10,8 @@ arch=("x86_64")
 license=("WTFPL 2.0")
 url="https://www.github.com/KnockKnockP/stretchy-snek-boi/"
 source=("stretchy-snek-boi::git+https://www.github.com/KnockKnockP/stretchy-snek-boi.git")
-depends=(git)
-md5sums=(SKIP)
+depends=("git")
+md5sums=("SKIP")
 
 pkgver() {
     cd "$_pkgname"
