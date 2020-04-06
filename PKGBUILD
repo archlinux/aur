@@ -1,15 +1,15 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=clockthrottle
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Utility program to adjust the max. CPU clock speed"
 url="https://kornelix.net/$pkgname/$pkgname.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3' 'powerstat' 'cpupower')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('bed5eb3ed352d852940466d0c0fb21b1ae672ade19854a6f4134bbb01c15d29e')
+sha256sums=('87625220de4d529f445b5545ca30fd512ce45d7d9f8f50012c62c7bbd40dc844')
 options=('!emptydirs')
 
 build() {
