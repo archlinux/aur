@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Daggerfall
+Exec=daggerfall-unity
+Icon=/opt/daggerfall-unity/engine/DaggerfallUnity_Data/Resources/UnityPlayer.png
+Categories=Game 
