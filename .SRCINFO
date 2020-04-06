@@ -8,6 +8,11 @@ pkgbase = openxr-loader-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = vulkan-headers
+	makedepends = libx11
+	makedepends = libxxf86vm
+	makedepends = libxrandr
+	makedepends = python
+	makedepends = vulkan-icd-loader
 	source = openxr-loader::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master
 	source = 0001-hello_xr-vulkan-Fix-build-with-Vulkan-headers-1.2.13.patch
 	md5sums = SKIP
@@ -15,6 +20,8 @@ pkgbase = openxr-loader-git
 
 pkgname = openxr-loader-git
 	pkgdesc = OpenXR loader
+	depends = jsoncpp
+	depends = libx11
 	provides = openxr-loader
 
 pkgname = openxr-headers-git
@@ -29,5 +36,9 @@ pkgname = openxr-layers-git
 pkgname = openxr-utils-git
 	pkgdesc = OpenXR Utils: hello_xr, runtime_list
 	depends = openxr-loader
+	depends = libglvnd
+	depends = libxxf86vm
+	depends = vulkan-icd-loader
+	depends = libx11
 	provides = openxr-utils
 
