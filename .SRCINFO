@@ -1,6 +1,6 @@
 pkgbase = gede
 	pkgdesc = Graphical frontend (GUI) to GDB written in Qt.
-	pkgver = 2.16.1
+	pkgver = 2.16.2
 	pkgrel = 1
 	url = http://acidron.com/gede
 	arch = i686
@@ -10,9 +10,9 @@ pkgbase = gede
 	depends = qt5-base
 	depends = gdb
 	depends = ctags
-	source = http://gede.acidron.com/uploads/source/gede-2.16.1.tar.xz
+	source = http://gede.acidron.com/uploads/source/gede-2.16.2.tar.xz
 	source = do_not_build_on_install.patch
-	sha256sums = 96ce371d39e7b5ed58b3a35e6bf8f72d17e2f8281e3e21ca8d71246cb8ee1b65
+	sha256sums = 32c390099d9755ec54836a04ef82ffcd315bd6912525714f626b3eb87db248a1
 	sha256sums = 65f0075eee147364cfcba6776de1389ceb4dbe066f6274da65470bf8bdd467b4
 
 pkgname = gede
