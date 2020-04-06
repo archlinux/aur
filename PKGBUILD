@@ -11,7 +11,7 @@ makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
         "xdg.py::https://github.com/srstevenson/xdg/raw/4.0.1/src/xdg/__init__.py")
 sha256sums=('704b9e4ec0594f84ef6a29d3caca4c74ee9778ec57ab97c5bd79073e477982c2'
-            '993c0f93619481ba0d673d7c22c5e14ea6c8a15da27147d07dbc35ae14680c15')
+            '8be0fdce34525e68d18dc3df8297a1672551bdae4b8dfab6d0eb6ee7be1e0f0e')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
