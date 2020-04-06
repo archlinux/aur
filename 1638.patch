@@ -1,0 +1,39 @@
+From f7811616819040acc66dddd1762101d8ad87a2fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jonas=20=C3=85dahl?= <jadahl@gmail.com>
+Date: Mon, 6 Apr 2020 14:20:43 +0200
+Subject: [PATCH] wayland: Always store unconfigured size
+
+This means it'll always be as up to date GdkWindow::width/height. We
+still skip the resize for non-configured windows though, to avoid
+mapping with the wrong size.
+---
+ gdk/wayland/gdkwindow-wayland.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/gdk/wayland/gdkwindow-wayland.c b/gdk/wayland/gdkwindow-wayland.c
+index 6c555443bd..05a673eb61 100644
+--- a/gdk/wayland/gdkwindow-wayland.c
++++ b/gdk/wayland/gdkwindow-wayland.c
+@@ -1145,16 +1145,12 @@ gdk_wayland_window_maybe_configure (GdkWindow *window,
+   gboolean is_xdg_popup;
+   gboolean is_visible;
+ 
++  impl->unconfigured_width = calculate_width_without_margin (window, width);
++  impl->unconfigured_height = calculate_height_without_margin (window, height);
+ 
+   if (needs_initial_configure (window) &&
+       !impl->initial_configure_received)
+-    {
+-      impl->unconfigured_width = calculate_width_without_margin (window,
+-                                                                 width);
+-      impl->unconfigured_height = calculate_height_without_margin (window,
+-                                                                   height);
+-      return;
+-    }
++    return;
+ 
+   if (window->width == width &&
+       window->height == height &&
+-- 
+2.24.1
+
