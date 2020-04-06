@@ -2,8 +2,8 @@
 # Contributor: renyuneyun (Rui ZHAO) <renyuneyun@gmail.com>
 
 pkgname=flipper
-pkgver=0.35.0
-pkgrel=2
+pkgver=0.36.0
+pkgrel=1
 pkgdesc="A desktop debugging platform for mobile developers"
 arch=('any')
 url='https://fbflipper.com/'
@@ -17,7 +17,7 @@ optdepends=('watchman: An inotify-based file watching and job triggering command
 makedepends=('git' 'yarn')
 source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz"
 		'flipper.desktop')
-md5sums=('664a436410b002c86acb8ff9f3bfbc85'
+md5sums=('d287caae09c1d99a5a07d26d9f6b1831'
 		 '3835f5d90a60f80dc644259c9aa713e5')
 
 prepare() {
