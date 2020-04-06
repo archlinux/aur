@@ -1,4 +1,5 @@
-# Maintainer:XXXXXXXXXXXXXXXXXXXXXXXXXXX
+# Maintainer: Elrondo46 TuxnVape <elrond94@hotmail.com>
+
 pkgname=mate-fastcomposwitch-git
 pkgver=20200406
 pkgrel=1
