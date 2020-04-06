@@ -1,0 +1,14 @@
+pkgbase = mate-fastcomposwitch
+	pkgdesc = Compositor or not with a simple systray icon
+	pkgver = 20200406
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	depends = python-gobject
+	depends = caja
+	depends = libappindicator-gtk3
+	source = git://github.com/Elrondo46/mate-fastcomposwitch.git
+	md5sums = SKIP
+
+pkgname = mate-fastcomposwitch
+
