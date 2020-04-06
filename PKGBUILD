@@ -1,6 +1,6 @@
 # Maintainer: Matt/ilikenwf <parwok@gmail.com>
 pkgname=waterfox-current-git
-pkgver=68.0+12064898fe73
+pkgver=68.0+a73cb95f1c1d
 pkgrel=1
 pkgdesc="More private and optimized Firefox fork. Alpha (gecko68) branch. CREATES SEPARATE PROFILE"
 arch=('i686' 'x86_64')
@@ -24,15 +24,12 @@ source=(git://github.com/MrAlex94/Waterfox#branch=current
         mozconfig
         waterfox-current.desktop
         ignore_bad_validator.patch
-        vendor.js
-        fix-stupid-unsortederror.patch)
+        vendor.js)
 sha512sums=('SKIP'
             'eeabd0915e38b61d56be69dcf8656759d2e3c49e7f8c90fc41f91410c950b14d6697b061fdb0c12cdd6ab1ecb4bae8510672a8a054019be67520ee3ae8d8fb62'
             'acd1a8ea32747dcd3df976c64408bb01d06f30af399f8625f43930d6a8b64a76a00af08aca9cd525c74ee3f2e58f6a49b57bab9a8b6ec0e1497f27122a41b82a'
             'ab2aced2e371afad317ab3ffb3e8161c457f022327e182d426aa2ba4142112060225ced4610eb2525e1c739a4e56ad4e7cf78cc102232cf01cf06d0224a9c09d'
-            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
-            'e855f7f61f0dc3a8b093beb3a34161c320e7108a81adb9c22ed10b5897971d31dee505077be02eda3b04ba5274df63f2edd14a81c85c0bcd927d1ba718713eeb')
-
+            'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7')
 
 # don't compress the package - we're just going to uncompress during install in a moment
 PKGEXT='.pkg.tar'   
@@ -52,9 +49,6 @@ prepare() {
 
   # the below is a really horrible thing to do but it allows commas in our optimizations to work
   patch -Np1 -i "${srcdir}/ignore_bad_validator.patch"
-  
-  # wtf waterfox team? you're funded now and so you start making errors?
-  patch -Np1 -i "${srcdir}/fix-stupid-unsortederror.patch"
   
   mkdir -p "$srcdir/path"
 }
