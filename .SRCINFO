@@ -1,7 +1,7 @@
 pkgbase = nvidia-full-beta
 	pkgdesc = Full NVIDIA driver package for Arch's official 'linux' package (drivers, utilities, and libraries) (beta version)
 	pkgver = 440.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
@@ -12,10 +12,12 @@ pkgbase = nvidia-full-beta
 	source = nvidia-drm-outputclass.conf
 	source = nvidia-utils-full-beta.sysusers
 	source = 110-nvidia-settings-full-beta-change-desktop-paths.patch
+	source = 130-nvidia-440.64-linux-5.6.patch
 	sha256sums = e13c9f1ba13262bb7a9c4bb8180f7beb09be2b17145f611a81e8cf92600b7575
 	sha256sums = be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d
 	sha256sums = d8d1caa5d72c71c6430c2a0d9ce1a674787e9272ccce28b9d5898ca24e60a167
 	sha256sums = 633bf69c39b8f35d0e64062eb0365c9427c2191583f2daa20b14e51772e8423a
+	sha256sums = 4665651c2ee77f5d7d0e73f3e5032138093e7295f73852e5846a4304a41a8c6c
 
 pkgname = nvidia-full-beta
 	depends = nvidia-utils-full-beta>=440.64
