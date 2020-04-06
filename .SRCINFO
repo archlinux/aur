@@ -1,0 +1,18 @@
+pkgbase = avisynthplus
+	pkgdesc = An improved version of the AviSynth frameserver
+	pkgver = 3.5.1
+	pkgrel = 1
+	url = https://github.com/AviSynth/AviSynthPlus/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = python-sphinx
+	depends = gcc-libs
+	source = avisynthplus-3.5.1.tar.gz::https://github.com/AviSynth/AviSynthPlus/archive/v3.5.1.tar.gz
+	source = avisynthplus-3.5.1-fix-build.patch::https://github.com/AviSynth/AviSynthPlus/commit/9c3b4ff5d7bad3a3ff8248cc069984a625e9fd3c.patch
+	sha256sums = cf1dde6d2e4a60cb86142defc41fe4b522284cb38e89bda41faaadd5c7dfdf98
+	sha256sums = e2d6a3e60d52b47770b4bb1b70bb997d7945624d58b141d55bf624a4ccea91e1
+
+pkgname = avisynthplus
+
