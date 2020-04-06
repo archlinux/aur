@@ -1,21 +1,22 @@
 pkgbase = libnotify-id
 	pkgdesc = Desktop notification library
-	pkgver = 0.7.8
+	pkgver = 0.7.9
 	pkgrel = 1
-	url = http://library.gnome.org/devel/notification-spec/
+	url = https://developer.gnome.org/notification-spec/
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	makedepends = gtk3
 	makedepends = gobject-introspection
+	makedepends = meson
 	depends = gdk-pixbuf2
-	provides = libnotify=0.7.8
+	provides = libnotify=0.7.9
 	conflicts = libnotify
 	conflicts = libnotify-git
 	conflicts = libnotify-id-git
-	source = http://ftp.gnome.org/pub/GNOME/sources/libnotify/0.7/libnotify-0.7.8.tar.xz
+	source = http://ftp.gnome.org/pub/GNOME/sources/libnotify/0.7/libnotify-0.7.9.tar.xz
 	source = https://launchpadlibrarian.net/105791133/print-and-replace-id-v3.patch
-	sha256sums = 69209e0b663776a00c7b6c0e560302a8dbf66b2551d55616304f240bba66e18c
+	sha256sums = 66c0517ed16df7af258e83208faaf5069727dfd66995c4bbc51c16954d674761
 	sha256sums = 88655522acb5a4c1634de368e91ae79b4a8f205288bf4451e82e007266ba4fcb
 
 pkgname = libnotify-id
