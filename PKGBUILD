@@ -1,8 +1,8 @@
 pkgname=yup
 _pkgname=yup
-pkgver="1.1.1"
-_pkgver="1.1.1"
-pkgrel=3
+pkgver="1.1.2"
+_pkgver="1.1.2"
+pkgrel=1
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('any')
 url="https://github.com/ericm/yup"
