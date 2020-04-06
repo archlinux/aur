@@ -1,4 +1,5 @@
 skaffold-*.pkg.tar.zst
+skaffold-*.pkg.tar.xz
 skaffold-*.tar.gz
 skaffold-*.log
 PKGBUILD-namcap.log
