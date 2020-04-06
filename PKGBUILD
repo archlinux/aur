@@ -1,0 +1,38 @@
+# Maintainer: Lubosz Sarnecki <lubosz ! gmail ! com>
+
+pkgname=minigbs-git
+pkgver=1.4.2+0+gd880bfc
+pkgrel=1
+pkgdesc="Small .gbs chiptune player for Linux."
+arch=('i686' 'x86_64')
+license=('MIT')
+url="https://github.com/baines/MiniGBS"
+depends=()
+makedepends=('git' 'make')
+provides=("minigbs="$pkgver)
+replaces=("minigbs")
+conflicts=("minigbs")
+source=('git+https://github.com/baines/MiniGBS.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd MiniGBS
+  git describe --tags --long | sed 's/-/+/g'
+}
+
+prepare() {
+  cd MiniGBS
+
+  # Install to /usr
+  sed -i 's|/usr/local|/usr|' Makefile
+}
+
+build() {
+  cd MiniGBS
+  make
+}
+
+package() {
+  cd MiniGBS
+  make DESTDIR="$pkgdir" install
+}
