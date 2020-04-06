@@ -1,7 +1,7 @@
 pkgbase = epr-git
 	pkgdesc = CLI Epub Reader
 	pkgver = 2.3.0b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wustho/epr
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=epr-git
 pkgver=2.3.0b
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI Epub Reader"
 arch=(any)
 url="https://github.com/wustho/epr"
