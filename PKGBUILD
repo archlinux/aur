@@ -2,7 +2,7 @@
 # Contributor: David Vogt <d@408.ch>
 
 pkgname=git-bug
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Distributed bug tracker embedded in Git'
 arch=('x86_64')

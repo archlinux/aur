@@ -1,6 +1,6 @@
 pkgbase = git-bug
 	pkgdesc = Distributed bug tracker embedded in Git
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/MichaelMure/git-bug
 	arch = x86_64
