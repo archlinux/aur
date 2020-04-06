@@ -20,7 +20,9 @@ build() {
 
 check() {
     cd "bencoder.pyx-${pkgver}"
-    python setup.py test
+    local _pyver
+    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+    PYTHONPATH="$(pwd)/build/lib.linux-${CARCH}-${_pyver}" pytest
 }
 
 package() {
