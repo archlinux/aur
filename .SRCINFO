@@ -1,17 +1,25 @@
 pkgbase = zfs-linux
-	pkgver = 0.8.3_5.5.13.arch2.1
+	pkgver = 0.8.3_5.6.2.arch1.2
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-headers=5.5.13.arch2-1
+	makedepends = linux-headers=5.6.2.arch1-2
 	depends = kmod
 	depends = zfs-utils=0.8.3
-	depends = linux=5.5.13.arch2-1
+	depends = linux=5.6.2.arch1-2
 	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-0.8.3/zfs-0.8.3.tar.gz
 	source = linux-5.5-compat-blkg_tryget.patch
+	source = linux-5.6-compat-struct-proc_ops.patch
+	source = linux-5.6-compat-timestamp_truncate.patch
+	source = linux-5.6-compat-ktime_get_raw_ts64.patch
+	source = linux-5.6-compat-time_t.patch
 	sha256sums = 545a4897ce30c2d2dd9010a0fdb600a0d3d45805e2387093c473efc03aa9d7fd
 	sha256sums = daae58460243c45c2c7505b1d88dcb299ea7d92bcf3f41d2d30bc213000bb1da
+	sha256sums = 05ca889a89b1e57d55c1b7d4d3013398a3e5a69d0fad27278aad701f0bb6e802
+	sha256sums = 5ad4393b334a8f685212f47b44e98dc468c70214ee5dbbab24cc95c4f310ae39
+	sha256sums = 7c6ebee72d864160b376fc18017c81f499f177b7d9265f565de859139805a277
+	sha256sums = 06f7ade5adcbfe77cb234361f8b2aca6d6e78fcd136da6d3a70048b5e92c62bb
 
 pkgname = zfs-linux
 	pkgdesc = Kernel modules for the Zettabyte File System.
