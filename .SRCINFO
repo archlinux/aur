@@ -1,6 +1,6 @@
 pkgbase = swiftlint
 	pkgdesc = A tool to enforce Swift style and conventions.
-	pkgver = 0.39.1
+	pkgver = 0.39.2
 	pkgrel = 1
 	url = https://github.com/realm/SwiftLint
 	arch = i686
@@ -8,8 +8,8 @@ pkgbase = swiftlint
 	license = MIT
 	depends = swift-language
 	conflicts = swiftlint
-	source = swiftlint-0.39.1.tar.gz::https://github.com/realm/SwiftLint/archive/0.39.1.tar.gz
-	sha256sums = ffa02bced0007544d889b42e1355ec33a0f226ed2f711fb8a10ff72077352936
+	source = swiftlint-0.39.2.tar.gz::https://github.com/realm/SwiftLint/archive/0.39.2.tar.gz
+	sha256sums = d3df1fc312302e332e949faaad68db02667dfe4f4eea2d8a8fdbeab66adede6a
 
 pkgname = swiftlint
 
