@@ -2,13 +2,13 @@
 
 pkgname=welle.io-soapysdr
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source DAB and DAB+ software defined radio (SDR) with support for rtl-sdr (RTL2832U) and airspy (including SoapySDR)"
 arch=("x86_64")
 url="https://www.${pkgname%-soapysdr}"
 license=("GPL2")
-depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "qt5-charts" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-multimedia" "rtl-sdr" "soapysdr-git")
-optdepends=("airspy" "soapyairspy-git" "soapybladerf-git" "soapyhackrf-git" "soapylms7-git" "soapyosmo-git" "soapyplutosdr-git" "soapyrtlsdr-git" "soapysdrplay-git")
+depends=("faad2" "fftw" "hicolor-icon-theme" "lame" "mpg123" "qt5-charts" "qt5-graphicaleffects" "qt5-quickcontrols" "qt5-quickcontrols2" "qt5-multimedia" "rtl-sdr" "soapysdr")
+optdepends=("airspy" "soapyairspy" "soapybladerf" "soapyhackrf" "soapyosmo" "soapyplutosdr" "soapyrtlsdr" "soapysdrplay")
 makedepends=("cmake" "gcc")
 provides=("${pkgname%-soapysdr}")
 conflicts=("${pkgname%-soapysdr}")
