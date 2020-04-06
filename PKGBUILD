@@ -4,7 +4,7 @@
 # Contributor: Lucas H. Gabrielli <heitzmann at gmail dot com>
 pkgname=petsc
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
 #"linux-c-debug" for some things, so the _config should be changed too
@@ -61,7 +61,7 @@ check() {
   _build_dir="${srcdir}/${pkgname}-${pkgver/_/-}"
   cd ${_build_dir}
 
-  make test
+  make check
 }
 
 package() {
