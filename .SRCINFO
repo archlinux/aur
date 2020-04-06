@@ -1,10 +1,11 @@
 pkgbase = diamond
 	pkgdesc = Daemon that collects system metrics and publishes them to graphite and others
 	pkgver = 4.0.515
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/python-diamond/Diamond
 	arch = any
 	license = mit
+	makedepends = python2
 	depends = python2
 	depends = python
 	optdepends = python2-psycopg2: Postgresql collector

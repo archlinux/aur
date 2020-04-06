@@ -1,17 +1,18 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Maintainer: Uzerus < szymonscholz at gmail.com >
 # Contributor: Justin Dray <justin@dray.be>
 # Contributor: Augusto F. Hack <hack.augusto@gmail.com>
 
 pkgname=diamond
 pkgver=4.0.515
-pkgrel=3
+pkgrel=4
 pkgdesc="Daemon that collects system metrics and publishes 
 them to graphite and others"
 arch=('any')
 url="https://github.com/python-diamond/Diamond"
 license=('mit')
 depends=('python2' 'python')
-makedepends=('')
+makedepends=('python2')
 optdepends=('python2-psycopg2: Postgresql collector'
             'python2-pysensors: LMSensors collector'
 	    'libvirt-python: LibvirtKVM collector'
@@ -36,4 +37,3 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
-
