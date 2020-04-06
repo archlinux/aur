@@ -1,0 +1,14 @@
+pkgbase = httpie-aws-authv4-git
+	pkgdesc = AWSv4 auth plugin for HTTPie
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/aidan-/httpie-aws-authv4
+	arch = any
+	license = MIT
+	depends = httpie
+	depends = python-aws-requests-auth
+	source = git+https://github.com/aidan-/httpie-aws-authv4
+	sha256sums = SKIP
+
+pkgname = httpie-aws-authv4-git
+
