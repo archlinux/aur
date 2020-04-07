@@ -1,0 +1,15 @@
+pkgbase = brother-mfcl8900cdw-cups
+	pkgdesc = CUPS wrapper:Brother MFC-L8900CDW:laser print copy scan fax
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us&lang=en&prod=mfcl8900cdw_all
+	install = brother-mfcl8900cdw-cups.install
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf103251/mfcl8900cdwcupswrapper-1.4.0-0.i386.deb
+	md5sums = e170a674c30d25e0e18bbe86b2c04855
+
+pkgname = brother-mfcl8900cdw-cups
+
