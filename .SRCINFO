@@ -1,23 +1,25 @@
 pkgbase = session-desktop-bin
 	pkgdesc = Private messaging from your desktop
-	pkgver = 1.0.1
+	pkgver = 1.0.6
 	pkgrel = 1
-	url = https://github.com/loki-project/session-desktop
+	url = https://getsession.org
 	install = session-desktop-bin.install
 	arch = x86_64
-	license = GPL3
-	depends = gconf
-	depends = gtk2
-	depends = libnotify
+	license = GPL-3.0
 	depends = libxtst
 	depends = nss
-	depends = xdg-utils
+	depends = alsa-lib
 	depends = libxss
-	provides = session-desktop-bin
+	depends = libnotify
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: for tray support
+	provides = session-messenger-desktop
+	conflicts = session-desktop
+	conflicts = session-desktop-git
+	conflicts = session-desktop-appimage
 	options = !strip
-	options = !emptydirs
-	source = https://github.com/loki-project/session-desktop/releases/download/v1.0.1/session-messenger-desktop-linux-1.0.1.deb
-	sha256sums = 513FB9C0E5DC25DF1743BD03D31BA5E3B385FAA639309FD14B7BFCDB11FA20B3
+	source = https://github.com/loki-project/session-desktop/releases/download/v1.0.6/session-messenger-desktop-linux-amd64-1.0.6.deb
+	sha256sums = 4a2f8832887cd901bf091d6122aa20d9f6317db62b922407b5e9ebbf72cb439c
 
 pkgname = session-desktop-bin
 
