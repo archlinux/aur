@@ -1,7 +1,7 @@
 pkgbase = refind-efi-bin
 	pkgdesc = Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary - Built with GNU-EFI libs
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rodsbooks.com/refind/index.html
 	install = refind-efi-bin.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = refind-efi-bin
 	optdepends = mactel-boot: For bless command in Apple Mac systems
 	optdepends = imagemagick: For refind-mkfont script
 	optdepends = python: For refind-mkdefault script
+	provides = refind-efi
 	conflicts = refind-efi
 	source = refind_linux.conf
 	source = https://downloads.sourceforge.net/project/refind/0.12.0/refind-bin-gnuefi-0.12.0.zip

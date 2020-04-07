@@ -9,7 +9,7 @@ _USE_GNU_EFI="1"
 
 pkgname="refind-efi-bin"
 pkgver="0.12.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Rod Smith's fork of rEFIt UEFI Boot Manager - Precompiled binary"
 url="http://www.rodsbooks.com/refind/index.html"
 arch=('x86_64' 'i686')
@@ -20,6 +20,7 @@ optdepends=('mactel-boot: For bless command in Apple Mac systems'
             'imagemagick: For refind-mkfont script'
             'python: For refind-mkdefault script')
 makedepends=()
+provides=('refind-efi')
 conflicts=('refind-efi')
 options=()
 
