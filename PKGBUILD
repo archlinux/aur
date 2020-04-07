@@ -2,7 +2,7 @@
 
 pkgname=sane-airscan
 pkgrel=1
-pkgver=0.9.16
+pkgver=0.9.17
 pkgdesc='SANE - Apple AirScan (eSCL) driver'
 url='https://github.com/alexpevzner/sane-airscan'
 arch=('aarch64' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('sane' 'libsoup')
 makedepends=('ctags' 'git')
 source=("https://github.com/alexpevzner/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('526cb3b3029195cbd5e6d362950b45c045415585e2fb3f18631fa470df6ad531')
+sha256sums=('5d3504b6eee2747a340b8755274f08ed33888c55345ca0064546dee7913eeaf1')
 
 build() {
     cd ${pkgname}-${pkgver}
