@@ -21,6 +21,7 @@ pkgbase = easyframework
 	depends = libxcb
 	depends = xcb-util
 	depends = xcb-util-image
+	depends = xcb-util-errors
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
 	source = easyframework-1.2.0.tar.gz::https://github.com/vbextreme/EasyFramework/archive/v1.2.0.tar.gz
