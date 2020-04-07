@@ -1,6 +1,6 @@
 pkgbase = slim-simulator
 	pkgdesc = A forwards-time population genetic simulator.
-	pkgver = 3.3.2.r166.ga7d4bb6d
+	pkgver = 3.3.2.r177.g148cdba4
 	pkgrel = 1
 	url = https://messerlab.org/slim/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = slim-simulator
 	makedepends = cmake
 	depends = qt5-base
 	conflicts = slim
-	source = git+https://github.com/grahamgower/SLiM.git#branch=includes
+	source = git+https://github.com/MesserLab/SLiM.git#branch=qtslim
 	md5sums = SKIP
 
 pkgname = slim-simulator

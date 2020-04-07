@@ -2,7 +2,7 @@
 _gitname=SLiM
 #_gittag=v3.3.2	# tag, branch, or commit; comment out to use latest
 pkgname=slim-simulator
-pkgver=3.3.2.r166.ga7d4bb6d
+pkgver=3.3.2.r177.g148cdba4
 pkgrel=1
 pkgdesc="A forwards-time population genetic simulator."
 arch=("x86_64")
@@ -11,14 +11,14 @@ license=('GPL3')
 depends=("qt5-base")
 makedepends=("git" "cmake")
 conflicts=("slim") # a display manager, also called SLiM
-#source=("git+https://github.com/MesserLab/${_gitname}.git#branch=qtslim")
-source=("git+https://github.com/grahamgower/${_gitname}.git#branch=includes")
+source=("git+https://github.com/MesserLab/${_gitname}.git#branch=qtslim")
 md5sums=('SKIP')
 
 prepare() {
 	if [ ! -z "$_gittag" ] ; then
 		cd "${srcdir}/${_gitname}"
-		git checkout $_gittag || (echo "Couldn't checkout '${_gittag}'"; exit 1)
+		git checkout $_gittag \
+			|| (echo "Couldn't checkout '${_gittag}'"; exit 1)
 		cd ../..
 	fi
 	mkdir -p build
@@ -34,8 +34,9 @@ build() {
 	cmake \
 		-D CMAKE_INSTALL_PREFIX=/usr \
 		-D BUILD_QTSLIM=ON \
-		../${_gitname}
-	make
+		../${_gitname} \
+		|| (echo "cmake failed"; exit 1)
+	make || (echo "make failed"; exit 1)
 }
 
 check() {
@@ -48,5 +49,5 @@ check() {
 
 package() {
 	cd build
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install || (echo "make install failed"; exit 1)
 }
