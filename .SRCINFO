@@ -1,14 +1,14 @@
 pkgbase = dexed-ide
 	pkgdesc = IDE for the D programming language, its compilers, tools and libraries
-	pkgver = 3.7.10
+	pkgver = 3.8.2
 	pkgrel = 1
-	url = https://github.com/Basile-z/dexed
+	url = https://gitlab.com/basile.b/dexed
 	arch = x86_64
 	license = Boost
 	depends = dcd
 	depends = dscanner
-	source = https://github.com/Basile-z/dexed/releases/download/v3.7.10/dexed.3.7.10.linux64.zip
-	md5sums = b2e6318715350ee39c7a81f729794d9b
+	source = https://gitlab.com/basile.b/dexed/-/jobs/499174438/artifacts/raw/setup/output/dexed.3.8.2.linux64.zip
+	md5sums = f4b494587f31d1296a96431fc5eaf5ca
 
 pkgname = dexed-ide
 
