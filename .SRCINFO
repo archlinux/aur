@@ -8,7 +8,6 @@ pkgbase = orchis-theme-git
 	makedepends = git
 	makedepends = bc
 	depends = gtk-engine-murrine
-	depends = gtk-engines
 	depends = gtk3
 	depends = gnome-themes-extra
 	optdepends = tela-icon-theme: Recommended icon theme
