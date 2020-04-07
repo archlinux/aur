@@ -1,7 +1,7 @@
 # Maintainer: Dct Mei <dctxmei@gmail.com>
 
 pkgname=geph-client
-pkgver=0.20.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc='A command-line Geph client'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go-pie')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/geph-official/geph2/archive/v$pkgver.tar.gz"
         "geph-client.service")
-sha512sums=('271fa1a16695b70130538a658c9318dc4afbcf6d3d6e219004704c84c632fdaec7273ba33ca9a942f464bf98787547b460bd23c78ac767e11d867f61a027cf03'
+sha512sums=('7170f31d5a9549d47b9e9582825925b6c04f45af2a8fb78a63f6f1885ab36bc2f97385b9155bfa5aa96445143a533b929f89eef9c0a2d5b986078ee2726b062d'
             '925109cf7392f2bce01d59bc0bd6e2d7102670b5438fee5962c11b29646722c3bb905db439ba244310e8333465791e5eac979c3c2ead1536fe40d3dbb920333d')
 
 build() {
