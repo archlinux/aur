@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.6.0-arch2 Kernel Configuration
+# Linux/x86 5.6.2-arch1 Kernel Configuration
 #
 
 #
@@ -712,7 +712,7 @@ CONFIG_EFI_CAPSULE_LOADER=m
 CONFIG_APPLE_PROPERTIES=y
 # CONFIG_RESET_ATTACK_MITIGATION is not set
 CONFIG_EFI_RCI2_TABLE=y
-CONFIG_EFI_DISABLE_PCI_DMA=y
+# CONFIG_EFI_DISABLE_PCI_DMA is not set
 # end of EFI (Extensible Firmware Interface) Support
 
 CONFIG_UEFI_CPER=y
@@ -10021,7 +10021,7 @@ CONFIG_LOCK_DOWN_KERNEL_FORCE_NONE=y
 # CONFIG_DEFAULT_SECURITY_TOMOYO is not set
 # CONFIG_DEFAULT_SECURITY_APPARMOR is not set
 CONFIG_DEFAULT_SECURITY_DAC=y
-CONFIG_LSM="yama"
+CONFIG_LSM="lockdown,yama"
 
 #
 # Kernel hardening options
