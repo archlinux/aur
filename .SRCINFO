@@ -1,7 +1,7 @@
 pkgbase = osgqt
 	pkgdesc = Qt project for making use of OpenSceneGraph
 	pkgver = 3.5.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/openscenegraph/osgQt
 	arch = i686
 	arch = x86_64
