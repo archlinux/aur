@@ -1,0 +1,17 @@
+pkgbase = openfec
+	pkgdesc = Open Forward Erasure Codes
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://openfec.org
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7l
+	arch = armv6l
+	license = CeCill
+	makedepends = cmake
+	source = openfec-1.4.2.tar.gz::http://openfec.org/files/openfec_v1_4_2.tgz
+	sha256sums = ccf1252b548505d198de768609c08c722a35e580c53b843e4372b7c52674ce12
+
+pkgname = openfec
+
