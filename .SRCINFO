@@ -1,7 +1,7 @@
 pkgbase = linux-rt-bfq
 	pkgdesc = Linux RT-BFQ-dev
 	pkgver = 5.6.2.rt1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -33,7 +33,7 @@ pkgbase = linux-rt-bfq
 	sha512sums = bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c
 	sha512sums = 52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1
 	sha512sums = 080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779
-	sha512sums = 8a0f79b5c22951fd6e52062a7ba490d12b1715d952ee91f8a54d641fd6df2e698578ad21d1e91f5df624482d358cd93539aeeb6bd3f4b71bdef8af471982baf8
+	sha512sums = 9c2e705e2b0f150b2fea3921dcccfd29f2dcd0b898d929e9b4a0a43427084c4c3d0e6b9b7a154541245539203e52aca0a372f1ad6e228fd44a303bd25e434adc
 
 pkgname = linux-rt-bfq
 	pkgdesc = The Linux RT-BFQ-dev kernel and modules
