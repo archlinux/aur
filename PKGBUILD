@@ -5,9 +5,9 @@
 # Contributor: Muhammad 'MJ' Jassim <UnbreakableMJ@gmail.com> 
 
 pkgname=icecat
-pkgver=68.6.0
+pkgver=68.7.0
 pkgrel=1
-_commit=-9dcb24d885eae5973eb2245b532b158c685d707a
+_commit=d185c5a67506311e19440fd4b824a822ce840369
 pkgdesc="GNU version of the Firefox browser."
 arch=(x86_64)
 url="http://www.gnu.org/software/gnuzilla/"
@@ -24,17 +24,17 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'hunspell-en_US: Spell checking, American English')
 options=(!emptydirs !makeflags !strip)
 
-source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla${_commit}.tar.gz
+source=(https://git.savannah.gnu.org/cgit/gnuzilla.git/snapshot/gnuzilla-${_commit}.tar.gz
         icecat.desktop icecat-safe.desktop
         "0001-Use-remoting-name-for-GDK-application-names.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/0001-Use-remoting-name-for-GDK-application-names.patch?h=packages/firefox&id=3dac00b6aefd97b66f13af0ad8761a3765094368")
 
-sha256sums=('a849546a93a3acd9b3dc2403c1a82acf1fdb0367fc670140b15e07947be6fe68'
+sha256sums=('06fb29d44f3da647577ffec4f8a741b7019d7782d30bba7e1e800e5ddf6238ff'
             'e00dbf01803cdd36fd9e1c0c018c19bb6f97e43016ea87062e6134bdc172bc7d'
             '33dd309eeb99ec730c97ba844bf6ce6c7840f7d27da19c82389cdefee8c20208'
             'ab07ab26617ff76fce68e07c66b8aa9b96c2d3e5b5517e51a3c3eac2edd88894')
 
 prepare() {
-  cd gnuzilla${_commit}
+  cd gnuzilla-${_commit}
 
   # Uncomment if you have issues with gpg download... WITH PROXY gpg doesn't work!!!!!!
   #sed -e 's/^gpg2 --keyserver.*//g' -i makeicecat
@@ -141,7 +141,7 @@ END
 }
 
 build() {
-  cd gnuzilla${_commit}/output/icecat-${pkgver}
+  cd gnuzilla-${_commit}/output/icecat-${pkgver}
 
   # LTO needs more open files
   ulimit -n 4096
@@ -157,7 +157,7 @@ build() {
 }
 
 package () {
-  cd gnuzilla${_commit}/output/icecat-${pkgver}
+  cd gnuzilla-${_commit}/output/icecat-${pkgver}
 
   # Remove cose.manifest and cose.sig cause march install fails
   find obj-x86_64-pc-linux-gnu/dist/bin/browser/extensions -name cose.manifest -delete
