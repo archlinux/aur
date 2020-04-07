@@ -1,6 +1,6 @@
 pkgbase = bok
 	pkgdesc = A simple shellscript to manage personal journals
-	pkgver = v1.0.1.g9cc54d9
+	pkgver = v1.0
 	pkgrel = 1
 	url = https://github.com/astroengisci/bok
 	arch = any
