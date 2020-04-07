@@ -7,6 +7,7 @@ pkgbase = aria2-fast
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
+	arch = aarch64
 	license = GPL
 	checkdepends = cppunit
 	depends = gnutls
