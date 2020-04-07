@@ -3,8 +3,10 @@
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
 # Contributor: Daniel Reuter <daniel.robin.reuter@googlemail.com>
 
+pkgnameorg=ocrmypdf
 pkgname=ocrmypdf-py3
-pkgver=9.7.0~fix
+pkgverorg=9.7.0
+pkgver=$pkgverorg~fix2
 pkgrel=1
 pkgdesc="A tool to add an OCR text layer to scanned PDF files, allowing them to be searched"
 url="https://github.com/jbarlow83/OCRmyPDF"
@@ -19,7 +21,7 @@ source=("https://files.pythonhosted.org/packages/48/78/da99a62b459eac0069b116980
 sha256sums=('78adc233a4de86c852777c64fd2126b2f8f188dc98551d6ccb6b02eb61bf6b69')
 
 package () {
-  cd "${srcdir}/ocrmypdf-${pkgver}"
+  cd "${srcdir}/${pkgnameorg}-${pkgverorg}"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE.rst
 }
