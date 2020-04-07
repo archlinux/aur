@@ -2,10 +2,10 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 # Maintainer: Matti Viljanen <matti.viljanen@kapsi.fi>
 pkgname=vivaldi-codecs-ffmpeg-extra-bin
-pkgver=80.0.3987.87
+pkgver=80.0.3987.163
 _ubuver=0ubuntu0
 _ubudist=18.04.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Prebuilt ffmpeg codecs package for Vivaldi"
 arch=("x86_64")
 url="https://packages.ubuntu.com/bionic/amd64/chromium-codecs-ffmpeg-extra/download"
@@ -22,7 +22,7 @@ conflicts=(
 source=(
   "http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_${pkgver}-${_ubuver}.${_ubudist}_amd64.deb"
 )
-md5sums=('8ce0cc80a5509d00ec5717811df79e77')
+md5sums=('362a5d38e25324985922b3decf48b419')
 
 prepare() {
   tar -xJf data.tar.xz
