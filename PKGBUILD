@@ -12,7 +12,7 @@ optdepends=()
 conflicts=()
 options=()
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/quebin31/${pkgname}/releases/download/${pkgver}/release.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('95e0331dbb3f24721efce05496db5dbbe449abcd8453e558d8e3e83c94f95bab')
 
 package() {
     mkdir -p "$pkgdir/usr/bin/"
