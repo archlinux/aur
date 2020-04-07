@@ -1,10 +1,12 @@
 pkgbase = doom-infinity
-	pkgdesc = DOOM generated levels with oblige plus project brutality mod. (meta-pacakge)
+	pkgdesc = DOOM meta-package. Includes mods and Oblige so you can generate levels!
 	pkgver = 1
 	pkgrel = 1
 	arch = any
+	depends = oblige
 	depends = obaddon
 	depends = project-brutality
+	depends = ultimate-doom-visor
 	depends = gzdoom
 	depends = qzdl-git
 

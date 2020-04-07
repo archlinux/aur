@@ -3,6 +3,6 @@
 pkgname=('doom-infinity')
 pkgver=1
 pkgrel=1
-pkgdesc="DOOM generated levels with oblige plus project brutality mod. (meta-pacakge)"
+pkgdesc="DOOM meta-package. Includes mods and Oblige so you can generate levels!"
 arch=('any')
-depends=('obaddon' 'project-brutality' 'gzdoom' 'qzdl-git')
+depends=('oblige' 'obaddon' 'project-brutality' 'ultimate-doom-visor' 'gzdoom' 'qzdl-git')
