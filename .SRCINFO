@@ -1,6 +1,6 @@
 pkgbase = rocm-comgr
 	pkgdesc = Radeon Open Compute - compiler support
-	pkgver = 3.1.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/ROCm-CompilerSupport
 	arch = x86_64
@@ -8,12 +8,8 @@ pkgbase = rocm-comgr
 	makedepends = cmake
 	makedepends = git
 	makedepends = llvm-roc
-	source = rocm-comgr::git+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport#tag=roc-3.1.0
-	source = rocm-comgr-2.6.0-find-clang.patch
-	source = rocm-comgr-2.6.0-find-lld-includes.patch
+	source = rocm-comgr::git+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport#tag=rocm-3.3.0
 	sha256sums = SKIP
-	sha256sums = f04ff936e87a888264e9c0920c9356a85b18e9ec9d729fcf53f83755c171828c
-	sha256sums = 4571b16961f15249e8cc8b9a9ae7f0863600345aa5e95959192149eacdb01d2e
 
 pkgname = rocm-comgr
 
