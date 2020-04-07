@@ -4,7 +4,7 @@
 
 _pkgname=deadbeef-lyricbar
 pkgname=deadbeef-plugin-lyricbar-git
-pkgver=r66.g003b85a
+pkgver=r74.g015379a
 pkgrel=1
 pkgdesc="DeaDBeeF lyric bar plugin"
 arch=('i686' 'x86_64')
