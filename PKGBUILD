@@ -1,7 +1,7 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 
 pkgname=perl-rose-db
-pkgver="0.781"
+pkgver="0.783"
 pkgrel='1'
 pkgdesc="A DBI wrapper and abstraction layer"
 arch=(any)
@@ -22,7 +22,7 @@ depends=(
 )
 options=('!emptydirs')
 source=(http://search.cpan.org/CPAN/authors/id/J/JS/JSIRACUSA/Rose-DB-${pkgver}.tar.gz)
-sha512sums=('c54c53b4e4e7af43cd55c2fcfd0e5a080e326b40fbba92f5235fa8b69cf8baec826edeb7183db34e51505f3ec30b4054567ba0b809910934edd9a84274f1faf7')
+sha512sums=('5134303f6d320f262a4f8052781a5aa8304a83f3e73693e930a62660bc11f73f7a59f7939dc601472c440c3ade6ec2b429450ecc6f8ed77ab819e67f28e5c78e')
 
 prepare_environment() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
