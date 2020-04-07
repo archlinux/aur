@@ -8,9 +8,9 @@ arch=('x86_64')
 url="http://www.fetchmail.info"
 license=('GPL')
 depends=('openssl')
-makedepends=('python2')
+makedepends=('python')
 optdepends=('tk: for using fetchmailconf'
-            'python2: for using fetchmailconf')
+            'python-future: for using fetchmailconf')
 options=('!makeflags')
 source=("https://sourceforge.net/projects/fetchmail/files/branch_${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
         'fetchmail.tmpfiles' 'fetchmail.sysusers' 'fetchmail.service')
@@ -21,8 +21,7 @@ sha1sums=('14dbbad6714d3498920ed4058479a3ddf34fe96c'
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  sed -i 's|/usr/bin/env python|/usr/bin/env python2|' fetchmailconf.py
-  PYTHON=python2 ./configure --prefix=/usr --with-ssl=/usr
+  ./configure --prefix=/usr --with-ssl=/usr
   make
 }
 
