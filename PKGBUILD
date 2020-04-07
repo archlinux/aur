@@ -1,19 +1,25 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
+# Maintainer: sh0rez <me@shorez.de>
 
 pkgname=tanka
-pkgver=0.8.0
-pkgrel=1
-pkgdesc="Flexible, reusable and concise configuration for Kubernetes"
+pkgver=0.9.0
+pkgrel=0
+pkgdesc="Flexible, reusable and concise configuration for Kubernetes using Jsonnet"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
+
 url="https://tanka.dev"
+license=('Apache')
+source=("git+https://github.com/grafana/tanka#tag=v${pkgver}")
+
 makedepends=('git' 'go')
-depends=('diffutils')
+depends=('diffutils' 'kubectl')
 optdepends=(
   'jsonnet-bundler-bin: jsonnet package manager'
 )
+
 provides=(tanka)
-license=('Apache')
-source=("git+https://github.com/grafana/tanka#tag=v${pkgver}")
+conflicts=(tanka-bin)
+
 md5sums=('SKIP')
 
 build() {
@@ -23,7 +29,4 @@ build() {
 
 package() {
   install -Dm755 "$srcdir/tanka/tk" -t "$pkgdir/usr/bin"
-
-  echo "complete -C /usr/bin/tk tk" | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/tk"
-  echo "complete -o nospace -C /usr/bin/tk tk" | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_tk"
 }

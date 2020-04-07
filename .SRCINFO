@@ -1,7 +1,7 @@
 pkgbase = tanka
-	pkgdesc = Flexible, reusable and concise configuration for Kubernetes
-	pkgver = 0.8.0
-	pkgrel = 1
+	pkgdesc = Flexible, reusable and concise configuration for Kubernetes using Jsonnet
+	pkgver = 0.9.0
+	pkgrel = 0
 	url = https://tanka.dev
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = tanka
 	makedepends = git
 	makedepends = go
 	depends = diffutils
+	depends = kubectl
 	optdepends = jsonnet-bundler-bin: jsonnet package manager
 	provides = tanka
-	source = git+https://github.com/grafana/tanka#tag=v0.8.0
+	conflicts = tanka-bin
+	source = git+https://github.com/grafana/tanka#tag=v0.9.0
 	md5sums = SKIP
 
 pkgname = tanka
