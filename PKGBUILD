@@ -3,7 +3,7 @@ pkgname=session-desktop-git
 _ver=1.0.6
 _commit=a5961de
 pkgver=$_ver.$_commit
-pkgrel=1
+pkgrel=2
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
@@ -20,7 +20,7 @@ source=('git+https://github.com/loki-project/session-desktop.git'
         'patch.diff.example')
 sha256sums=('SKIP'
             '931e317b69e5c5ed3ef1f2ff0c82bf72b8706ab5ac50ad0564f3f164d7d5f7b8'
-            '327e29f1c2e52dfa285545d1459ea92651cb6c23c4f4a7b897e9f4382802021a')
+            '0916d4657e0bb4c21280300dc9a4632e7353a701ae6d355995b91ee417d16a87')
 
 prepare() {
   cd $srcdir/session-desktop
