@@ -3,7 +3,7 @@
 _pkgname=vala
 pkgname=${_pkgname}0.46
 pkgver=0.46.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Compiler for the GObject type system (version 0.46.x)'
 url='https://wiki.gnome.org/Projects/Vala'
 arch=('x86_64' 'i686')
@@ -34,6 +34,11 @@ package() {
   # Remove conflicting files with the vala package
   rm -rf "${pkgdir}/usr/share/aclocal"
   rm "${pkgdir}"/usr/lib/pkgconfig/vapigen.pc
+  mkdir -p "${pkgdir}"/usr/lib/pkgconfig/vala-${pkgver%.*}
+  for _f in libvala valadoc vapigen ; do
+    ln -s ../${_f}-${pkgver%.*}.pc "${pkgdir}"/usr/lib/pkgconfig/vala-${pkgver%.*}/
+  done
+  ln -s ./vapigen-${pkgver%.*}.pc "${pkgdir}"/usr/lib/pkgconfig/vala-${pkgver%.*}/vapigen.pc
   rm "${pkgdir}"/usr/share/vala/Makefile.vapigen
   rm "${pkgdir}"/usr/bin/{vala,valac,vala-gen-introspect,valadoc,vapigen}
   rm "${pkgdir}"/usr/share/man/man1/{valac,valadoc,vala-gen-introspect,vapigen}.1
