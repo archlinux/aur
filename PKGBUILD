@@ -1,5 +1,5 @@
 pkgname=seaweedfs
-pkgver=1.70
+pkgver=1.71
 pkgrel=1
 pkgdesc="SeaweedFS is a simple and highly scalable distributed file system"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h' 'arm')
@@ -7,7 +7,7 @@ url="https://github.com/chrislusf/seaweedfs"
 license=('APACHE')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('2ea33dca5eabcc236f590b98b76b52caddf44aa2ce64658d49720896ddab3267')
+sha256sums=('ad30c0ae6db4d36a664008eb74a6422909151e4ed64aa652e0d897660e624642')
 
 export CGO_LDFLAGS="$LDFLAGS"
 export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
