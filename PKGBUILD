@@ -16,7 +16,7 @@ sha512sums=('6275c9c0071de04d70e7dd21afa1c2b8569a955feddb1318ca44a11755804e8d02f
 package() {
     install -Dm 755 "$srcdir/doctl" "$pkgdir/usr/bin/doctl"
 
-    # Populate bash and zsh completions
+    # Populate bash, zsh, and fish completions
     install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
     install -dm 755 "$pkgdir/usr/share/fish/completions"
