@@ -16,7 +16,7 @@ sha512sums=('7170f31d5a9549d47b9e9582825925b6c04f45af2a8fb78a63f6f1885ab36bc2f97
             '925109cf7392f2bce01d59bc0bd6e2d7102670b5438fee5962c11b29646722c3bb905db439ba244310e8333465791e5eac979c3c2ead1536fe40d3dbb920333d')
 
 build() {
-    cd "geph2-$pkgver/cmd/$pkgname"
+    cd "geph2-$pkgver/cmd/$pkgname/"
     go build
 }
 
