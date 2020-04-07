@@ -40,7 +40,7 @@ depends=(
 # python-u-msgpack: Will probably be dropped in the future
 optdepends=('maestral-qt: QT frontend for maestral')
 md5sums=('SKIP'
-         '170d961161ceecbfce039d4aaca59a2f')
+         '841d7d34ae18d512e3d2fbe453702744')
 
 pkgver() {
     cd "${srcdir}/${_name}"

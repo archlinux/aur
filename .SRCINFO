@@ -33,7 +33,7 @@ pkgbase = maestral-git
 	source = git+https://github.com/SamSchott/maestral-dropbox
 	source = maestral@.service
 	md5sums = SKIP
-	md5sums = 170d961161ceecbfce039d4aaca59a2f
+	md5sums = 841d7d34ae18d512e3d2fbe453702744
 
 pkgname = maestral-git
 
