@@ -6,7 +6,7 @@ pkgbase = genuki
 	arch = any
 	license = GPL3
 	source = genuki-v0.1.0.tar.gz::https://github.com/quebin31/genuki/releases/download/0.1.0/release.tar.gz
-	sha256sums = 95e0331dbb3f24721efce05496db5dbbe449abcd8453e558d8e3e83c94f95bab
+	sha256sums = deaf30a28cd9f4690a707f1280f2cf04d3f2bf59632004f2c70b4e605dc05fc7
 
 pkgname = genuki
 
