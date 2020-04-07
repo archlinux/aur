@@ -1,8 +1,8 @@
 # Maintainer: Morten Jakobsen <morten@jakeobsen.com>
 # Previous Maintainer: Thomas Gubler <thomasgubler@gmail.com>
 pkgname=blabel
-pkgver=1.01
-pkgbuild=24
+pkgver=1.02
+pkgbuild=25
 pkgrel=1
 pkgdesc="A Linux labeling program for Brother P-touch series"
 arch=('any')
@@ -22,7 +22,7 @@ changelog=
 source=($url/src/$pkgname-v$pkgver-build-$pkgbuild.tar.bz2)
 
 noextract=()
-md5sums=('c8c551781a2bb5abdfde0b8c680f256b')
+md5sums=('bf34702ea69a0bdcd6bfc9a53f3f7803')
 
 build() {
 	echo "Nothing to build"
