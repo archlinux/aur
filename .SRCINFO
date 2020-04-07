@@ -1,6 +1,6 @@
 pkgbase = fetchmail
 	pkgdesc = A remote-mail retrieval utility
-	pkgver = 6.4.1
+	pkgver = 6.4.3
 	pkgrel = 1
 	url = http://www.fetchmail.info
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = fetchmail
 	optdepends = tk: for using fetchmailconf
 	optdepends = python2: for using fetchmailconf
 	options = !makeflags
-	source = https://sourceforge.net/projects/fetchmail/files/branch_6.4/fetchmail-6.4.1.tar.xz
+	source = https://sourceforge.net/projects/fetchmail/files/branch_6.4/fetchmail-6.4.3.tar.xz
 	source = fetchmail.tmpfiles
 	source = fetchmail.sysusers
 	source = fetchmail.service
-	sha1sums = 1aadf078ed8fb1b6c93e9126cc0375b1f740301a
-	sha1sums = 199ba749c829f22286c34aabcf8b7dd5bbd7c0e6
-	sha1sums = b113cb61a866eff53cd8f113d084a99f01bf5d77
-	sha1sums = 0fc1870a33d1e0efb70169ddf1b6adc9d253e076
+	sha1sums = 14dbbad6714d3498920ed4058479a3ddf34fe96c
+	sha1sums = 227f1c6a4ea15d73d22d5db9330566e174c45cf9
+	sha1sums = 4d1f04cfa50b708736784cd6d3f4e8c1c624c680
+	sha1sums = 0d06feaaef5e837758da3100332f8fb15f02b5b1
 
 pkgname = fetchmail
 

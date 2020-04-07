@@ -1,7 +1,7 @@
-# Maintainer: Victor3D <webmaster@victor3d.com.br>
+# Maintainer: Amish <contact at via dot aur>
+# Contributor: Victor3D <webmaster@victor3d.com.br>
 pkgname=fetchmail
-pkgver=6.4.1
-_majver=6.4
+pkgver=6.4.3
 pkgrel=1
 pkgdesc="A remote-mail retrieval utility"
 arch=('x86_64')
@@ -12,12 +12,12 @@ makedepends=('python2')
 optdepends=('tk: for using fetchmailconf'
             'python2: for using fetchmailconf')
 options=('!makeflags')
-source=("https://sourceforge.net/projects/fetchmail/files/branch_${_majver}/${pkgname}-${pkgver}.tar.xz"
-         'fetchmail.tmpfiles' 'fetchmail.sysusers' 'fetchmail.service')
-sha1sums=('1aadf078ed8fb1b6c93e9126cc0375b1f740301a'
-          '199ba749c829f22286c34aabcf8b7dd5bbd7c0e6'
-          'b113cb61a866eff53cd8f113d084a99f01bf5d77'
-          '0fc1870a33d1e0efb70169ddf1b6adc9d253e076')
+source=("https://sourceforge.net/projects/fetchmail/files/branch_${pkgver%.*}/${pkgname}-${pkgver}.tar.xz"
+        'fetchmail.tmpfiles' 'fetchmail.sysusers' 'fetchmail.service')
+sha1sums=('14dbbad6714d3498920ed4058479a3ddf34fe96c'
+          '227f1c6a4ea15d73d22d5db9330566e174c45cf9'
+          '4d1f04cfa50b708736784cd6d3f4e8c1c624c680'
+          '0d06feaaef5e837758da3100332f8fb15f02b5b1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -29,9 +29,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  install -d -o 90 -g nobody "${pkgdir}/var/lib/fetchmail"
-  cd -
-  install -D -m644 fetchmail.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/fetchmail.conf
-  install -D -m644 fetchmail.sysusers "$pkgdir"/usr/lib/sysusers.d/fetchmail.conf
-  install -D -m644 fetchmail.service "$pkgdir"/usr/lib/systemd/system/fetchmail.service
+  cd "${srcdir}"
+  install -D -m644 fetchmail.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/fetchmail.conf
+  install -D -m644 fetchmail.sysusers "${pkgdir}"/usr/lib/sysusers.d/fetchmail.conf
+  install -D -m644 fetchmail.service "${pkgdir}"/usr/lib/systemd/system/fetchmail.service
 }

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 User=fetchmail
-ExecStart=/usr/bin/fetchmail -d 900 -f /etc/fetchmailrc
+ExecStart=/usr/bin/fetchmail -f /etc/fetchmailrc
 RestartSec=1
 
 [Install]
