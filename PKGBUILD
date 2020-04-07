@@ -30,7 +30,7 @@ source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk3-filechooser-icon-view.patch)        
 
 sha256sums=('SKIP'
-            '45be674b2596b16d5778a85a51a31b59b3e3a198daaea34eec4400e4cdb9bd4e'
+            '10ebcb8ec56c12e8f413c6af0c585877bca6b6530791c0c23698967a932c8e58'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'a0319b6795410f06d38de1e8695a9bf9636ff2169f40701671580e60a108e229'
             '4323c38740e2ed8f97d53538f2ba2b0ea96afae95109a69e8f165ab4d3258909')
