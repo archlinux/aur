@@ -2,10 +2,10 @@
 
 pkgname=spotifyd-pulseaudio-git
 pkgver=0.2.24.26.g99f058a
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'armv7h' 'aarch64')
 depends=('pulseaudio' 'libpulse' 'flac' 'libogg' 'libsndfile' 'libvorbis')
-makedepends=('git' 'cargo' 'pulseaudio-alsa' 'alsa-lib')
+makedepends=('git' 'cargo' 'alsa-lib')
 conflicts=('spotifyd')
 provides=('spotifyd')
 pkgdesc="A spotify playing daemon"

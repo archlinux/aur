@@ -1,14 +1,13 @@
 pkgbase = spotifyd-pulseaudio-git
 	pkgdesc = A spotify playing daemon
 	pkgver = 0.2.24.26.g99f058a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Spotifyd/spotifyd
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	makedepends = git
 	makedepends = cargo
-	makedepends = pulseaudio-alsa
 	makedepends = alsa-lib
 	depends = pulseaudio
 	depends = libpulse
