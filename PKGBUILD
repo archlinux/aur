@@ -2,9 +2,9 @@
 
 pkgname=openfec
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Forward Erasure Codes"
-arch=('x86_64' 'i686' 'aarch64' 'armv7l' 'armv6l')
+arch=('x86_64' 'i686' 'aarch64' 'armv7l' 'armv6l' 'armv7h' 'armv6h')
 url="https://openfec.org"
 license=('CeCill')
 depends=()
