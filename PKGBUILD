@@ -1,8 +1,11 @@
-# Maintainer: Marko Korhonen <reekymarko at reekynet.com>
+# Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
+# Original: Daniel Bermond < gmail-com: danielbermond > https://aur.archlinux.org/packages/ffmpeg-full-git
+# Contributor: Marko Korhonen <reekymarko at reekynet.com>
+# Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
-pkgver=4.3.r95223.ga27c0781dd
+pkgver=4.3.r97205.g3935c891e9
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
@@ -22,7 +25,7 @@ depends=(
         'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth' 'libxv' 'libx11'
         'libxext' 'zlib' 'libomxil-bellagio' 'libva' 'libdrm' 'libvdpau' 'dav1d'
     # AUR:
-        'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
+        'avisynthplus' 'chromaprint-fftw' 'codec2' 'davs2' 'flite1-patched' 'libilbc'
         'libklvanc-git' 'kvazaar' 'openh264' 'libopenmpt-svn' 'shine' 'vo-amrwbenc'
         'xavs' 'xavs2' 'libmysofa-git'
 )

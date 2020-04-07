@@ -86,6 +86,7 @@ pkgbase = ffmpeg-amd-full-git
 	depends = libdrm
 	depends = libvdpau
 	depends = dav1d
+	depends = avisynthplus
 	depends = chromaprint-fftw
 	depends = codec2
 	depends = davs2
