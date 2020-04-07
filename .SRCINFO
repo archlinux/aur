@@ -1,0 +1,16 @@
+pkgbase = application-inspector-bin
+	pkgdesc = Microsoft ApplicationInspector is a source code analyzer built for surfacing features of interest and other characteristics to answer the question 'what's in it' using static analysis with a json based rules engine (official CLI binary version)
+	pkgver = 1.1.30
+	pkgrel = 1
+	url = https://github.com/microsoft/ApplicationInspector
+	install = application-inspector-bin.install
+	arch = x86_64
+	license = MIT
+	depends = dotnet-runtime
+	provides = application-inspector
+	options = staticlibs
+	source = https://github.com/microsoft/ApplicationInspector/releases/download/v1.1.30/ApplicationInspector_linux_1.1.30.zip
+	sha256sums = 92D119044A91388F412112D03C41B9EA35C9BE01D08BB744387EDFAB1BD1F7A8
+
+pkgname = application-inspector-bin
+

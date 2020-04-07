@@ -1,0 +1,25 @@
+post_install() {
+	groupadd applicationinspector
+	touch /opt/application-inspector/output.{html,json}
+	touch /opt/application-inspector/log.txt
+	chown -R root:applicationinspector /opt/application-inspector/output.{html,json}
+	chown -R root:applicationinspector /opt/application-inspector/log.txt
+	chmod -R g+w /opt/application-inspector/output.{html,json}
+	chmod -R g+w /opt/application-inspector/log.txt
+	echo "    Users should be added to the 'applicationinspector' group to be able to generate HTML reports."
+	echo "    $ sudo gpasswd -a <username> applicationinspector"
+	echo "    Also set the BROWSER environment variable to your desired browser."
+}
+
+post_upgrade() {
+	touch /opt/application-inspector/output.{html,json}
+	touch /opt/application-inspector/log.txt
+	chown -R root:applicationinspector /opt/application-inspector/output.{html,json}
+	chown -R root:applicationinspector /opt/application-inspector/log.txt
+	chmod -R g+w /opt/application-inspector/output.{html,json}
+	chmod -R g+w /opt/application-inspector/log.txt
+}
+
+post_remove() {
+	groupdel applicationinspector
+}
