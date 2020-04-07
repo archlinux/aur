@@ -1,6 +1,6 @@
 pkgbase = bitlbee-discord-git
 	pkgdesc = Bitlbee plugin for Discord
-	pkgver = 204.549b05a
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/sm00th/bitlbee-discord
 	arch = i686
