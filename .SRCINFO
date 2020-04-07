@@ -1,0 +1,15 @@
+pkgbase = f4go-git
+	pkgdesc = Transpiling fortran code to golang code
+	pkgver = r587.b8b6202
+	pkgrel = 1
+	url = https://github.com/Konstantin8105/f4go
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = f4go
+	source = git+https://github.com/Konstantin8105/f4go
+	md5sums = SKIP
+
+pkgname = f4go-git
+
