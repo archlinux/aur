@@ -1,6 +1,6 @@
 pkgbase = kalliope
 	pkgdesc = Modular always-on voice controlled personal assistant designed for home automation
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/kalliope-project/kalliope
 	arch = x86_64
@@ -48,8 +48,10 @@ pkgbase = kalliope
 	depends = python-openpyxl
 	depends = python-flask-cors
 	depends = python-gtts
-	source = https://github.com/kalliope-project/kalliope/archive/v0.6.0.tar.gz
-	sha256sums = 22272954c49401993c9b9b1df6bc2e4d29a954b33197fd9f0ab2376e71e05459
+	depends = python-pyasn1
+	depends = python-werkzeug
+	source = https://github.com/kalliope-project/kalliope/archive/v0.6.1.tar.gz
+	sha256sums = fbcbb3d909418acc2841f17eb5af83de3591466616403d37ebf1007a4c0dbbf1
 
 pkgname = kalliope
 
