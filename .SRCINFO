@@ -1,0 +1,13 @@
+pkgbase = duci-bin
+	pkgdesc = The simple ci server
+	pkgver = 0.8.15
+	pkgrel = 1
+	url = https://github.com/duck8823/duci
+	arch = x86_64
+	license = MIT
+	provides = duci
+	source = https://github.com/duck8823/duci/releases/download/v0.8.15/duci_0.8.15_linux_amd64.tar.gz
+	md5sums = 53823f353ab009c4657490a234b6c7db
+
+pkgname = duci-bin
+
