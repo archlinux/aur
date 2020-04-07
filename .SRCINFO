@@ -1,6 +1,6 @@
 pkgbase = coreutils-selinux
 	pkgdesc = The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support
-	pkgver = 8.31
+	pkgver = 8.32
 	pkgrel = 1
 	url = https://www.gnu.org/software/coreutils/
 	arch = x86_64
@@ -13,15 +13,15 @@ pkgbase = coreutils-selinux
 	depends = libcap
 	depends = openssl
 	depends = libselinux
-	provides = coreutils=8.31-1
-	provides = selinux-coreutils=8.31-1
+	provides = coreutils=8.32-1
+	provides = selinux-coreutils=8.32-1
 	conflicts = coreutils
 	conflicts = selinux-coreutils
-	source = https://ftp.gnu.org/gnu/coreutils/coreutils-8.31.tar.xz
-	source = https://ftp.gnu.org/gnu/coreutils/coreutils-8.31.tar.xz.sig
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-8.32.tar.xz
+	source = https://ftp.gnu.org/gnu/coreutils/coreutils-8.32.tar.xz.sig
 	validpgpkeys = 6C37DC12121A5006BC1DB804DF6FD971306037D9
-	md5sums = 0009a224d8e288e8ec406ef0161f9293
-	md5sums = SKIP
+	sha256sums = 4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa
+	sha256sums = SKIP
 
 pkgname = coreutils-selinux
 

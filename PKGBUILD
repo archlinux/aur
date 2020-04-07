@@ -10,7 +10,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=coreutils-selinux
-pkgver=8.31
+pkgver=8.32
 pkgrel=1
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('x86_64')
@@ -23,8 +23,8 @@ provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 source=("https://ftp.gnu.org/gnu/${pkgname/-selinux}/${pkgname/-selinux}-$pkgver.tar.xz"{,.sig})
 validpgpkeys=('6C37DC12121A5006BC1DB804DF6FD971306037D9') # Pádraig Brady
-md5sums=('0009a224d8e288e8ec406ef0161f9293'
-         'SKIP')
+sha256sums=('4458d8de7849df44ccab15e16b1548b285224dbba5f08fac070c1c0e0bcc4cfa'
+            'SKIP')
 
 prepare() {
   cd ${pkgname/-selinux}-$pkgver
