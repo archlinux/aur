@@ -1,21 +1,22 @@
 pkgbase = r8168-dkms
 	pkgdesc = A kernel module for Realtek 8168 network cards (DKMS version)
 	pkgver = 8.048.02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simonbcn/r8168-dkms
 	install = r8168-dkms.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = git
 	depends = glibc
 	depends = dkms
 	optdepends = linux-headers: Needed for build the module for Arch kernel
 	optdepends = linux-lts-headers: Needed for build the module for LTS Arch kernel
 	optdepends = linux-zen-headers: Needed for build the module for ZEN Arch kernel
 	conflicts = r8168-dkms
-	source = https://github.com/simonbcn/r8168-dkms/archive/8.048.02/r8168-dkms-8.048.02.tar.gz
+	source = r8168-dkms::git+https://github.com/simonbcn/r8168-dkms.git
 	source = dkms.conf
-	sha256sums = e1457d11651a25eefd8042afdfdd0380d29b37add5ca680a1ce067447295c76e
+	sha256sums = SKIP
 	sha256sums = e33abcbc8fbe3129459ebc60be3b2f8ed55ddc53755f4956d6feb16c61c43250
 
 pkgname = r8168-dkms
