@@ -9,9 +9,9 @@ license=('GPL3')
 depends=('gtk2')
 makedepends=('git' 'lazarus')
 optdepends=('mangohud: Configure MangoHUD'
+            'vkbasalt: Configure vkBasalt'
             'mesa-demos: OpenGL preview'
-            'vulkan-tools: Vulkan preview'
-            'vkbasalt: vkBasalt support')
+            'vulkan-tools: Vulkan preview')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/benjamimgois/goverlay.git')
