@@ -1,6 +1,7 @@
 # Maintainer: Andrew Hill <andrew@andrewkhill.com>
 pkgname=bok
 pkgver() {
+	cd "$srcdir"
 	printf $(git describe | sed "s/-/./g")
 }
 pkgver=v1.0.3.g93c8821
