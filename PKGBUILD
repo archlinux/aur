@@ -3,7 +3,7 @@
 _pkgname=roc
 pkgname=${_pkgname}-git
 pkgver=r930.778c329
-pkgrel=2
+pkgrel=3
 pkgdesc="Real-time audio streaming over network"
 arch=('x86_64' 'i686' 'armv6l' 'armv7l' 'aarch64' 'armv7h' 'armv6h')
 conflicts=(roc)
@@ -26,8 +26,7 @@ prepare() {
   # some libraries bundled as 3rd party components ship an outdated config.guess
   # file, which fails to detect some ARM systems
 
-  cp -vf config.guess "${_pkgname}/3rdparty/aarch64-pc-linux-gnu/clang-9.0.1-release/build/json-0.11-20130402/src/json-c-json-c-0.11-20130402/config.guess"
-  cp -vf config.guess "${_pkgname}/3rdparty/aarch64-pc-linux-gnu/clang-9.0.1-release/build/sndfile-1.0.20/src/libsndfile-1.0.20/Cfg/config.guess"
+  find "${_pkgname}/3rdparty" -name config.guess -exec cp -vf config.guess '{}' \;
 }
 
 _run_scons() {
