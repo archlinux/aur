@@ -23,7 +23,6 @@ pre_remove() {
 	      systemctl disable warsaw.service
 	      systemctl daemon-reload
 	    fi
-
 }
 
 post_remove() {
