@@ -43,24 +43,24 @@ md5sums=('SKIP'
          '841d7d34ae18d512e3d2fbe453702744')
 
 pkgver() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_srcname}"
     git describe --long --tags | sed 's|\([^-]*-g\)|r\1|;s|-|.|g;s|^v||g'
 }
 
 build() {
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_srcname}"
     python setup.py build
 }
 
 package() {
     # Change into the source git directory
-    cd "${srcdir}/${_name}"
+    cd "${srcdir}/${_srcname}"
 
     # Run python setup function
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
 
     # Install the licence
-    install -Dm644 "${srcdir}/${_name}/LICENSE.txt" \
+    install -Dm644 "${srcdir}/${_srcname}/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 
     # Install the systemd unit provided
