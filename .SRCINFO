@@ -7,12 +7,13 @@ pkgbase = cloudforest-git
 	license = custom
 	makedepends = git
 	makedepends = go
-	provides = cloudforest
 	provides = leafcount
 	provides = growforest
 	provides = applyforest
 	provides = nfold
 	provides = toafm
+	conflicts = cloudforest
+	conflicts = cloudforest-bin
 	source = git+https://github.com/ryanbressler/CloudForest
 	md5sums = SKIP
 

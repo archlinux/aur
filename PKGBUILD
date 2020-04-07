@@ -7,8 +7,8 @@ pkgdesc="Fast, flexible, multi-threaded ensembles of decision trees for machine 
 arch=('x86_64')
 url='https://github.com/ryanbressler/CloudForest'
 license=('custom')
-provides=('cloudforest'
-          'leafcount'
+conflicts=('cloudforest' 'cloudforest-bin')
+provides=('leafcount'
           'growforest'
           'applyforest'
           'nfold'
