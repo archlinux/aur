@@ -16,8 +16,8 @@ license=('GPL')
 depends=('python')
 makedepends=('git' 'python-distribute')
 optdepends=(
-'python-mpd-git: python libary for mpd interaction',
-'python-logbook-git: for logging'
+'python-mpd: python libary for mpd interaction',
+'python-logbook: for logging'
 'imagemagick: for default screenshot command'
 )
 conflicts=('archey' 'archey3')
