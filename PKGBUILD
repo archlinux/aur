@@ -6,7 +6,7 @@
 pkgbase=nvidia-340xx
 pkgname=(nvidia-340xx nvidia-340xx-dkms)
 pkgver=340.108
-pkgrel=6
+pkgrel=7
 pkgdesc="NVIDIA drivers for linux, 340xx legacy branch"
 arch=('x86_64')
 url="https://www.nvidia.com/"
@@ -21,12 +21,14 @@ source=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Li
   02-unfuck-for-340.108-build-fix.patch
   03-unfuck-for-5.5.x.patch
   04-fix_message_in_dmesg.patch
+  05-unfuck-for-kernel-5.6.x.patch
 )
 sha256sums=('995d44fef587ff5284497a47a95d71adbee0c13020d615e940ac928f180f5b77'
             '82d14e9e6ec47c345d225d9f398238b7254cd5ae581c70e8521b9157ec747890'
             '2b7e3ef24846a40f4492e749be946e4f7f70ebed054bc2c9079f6cbdcbfabe57'
             'c28d65854dd03e6a9e00d79fa0ca3521c11b2c198882bbd50870c8e71d18d765'
-            '7f90e80be6338f6fc902d257d8ceb09e89b40d008f7a3ad9fe82833cd5b89316')
+            '7f90e80be6338f6fc902d257d8ceb09e89b40d008f7a3ad9fe82833cd5b89316'
+            'ac7e234b4304c621d8187823aa2c84db219fb1bec23099423b11efd6c30b39a2')
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 # default is 'linux' substitute custom name here
