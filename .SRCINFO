@@ -1,7 +1,7 @@
 pkgbase = smatrix
 	pkgdesc = 'The Matrix' command-line wallpaper, but it's stock prices
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/Shizcow/smatrix
 	arch = any
 	license = GPL2
