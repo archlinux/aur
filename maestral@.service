@@ -6,8 +6,7 @@ Documentation = "https://github.com/SamSchott/maestral-dropbox/wiki"
 Type = notify
 NotifyAccess = exec
 ExecStart = /usr/bin/maestral start --foreground --config-name %i
-# Currently reloading terminates the proces; wait for next release
-# ExecReload = /usr/bin/maestral restart --config-name %i
+ExecReload = /usr/bin/maestral restart --config-name %i
 ExecStop = /usr/bin/maestral stop --config-name %i
 RestartSec = 1
 Restart = on-failure

@@ -6,68 +6,63 @@ _srcname="${_name}-dropbox"
 pkgname="${_name}-git"
 provides=("${_name}")
 conflicts=("${_name}")
-pkgver=0.5.2.r0.gc65e12b
-pkgrel=3
+pkgver=0.6.4.r16.g9ed32e8
+pkgrel=1
 pkgdesc='A light-weight and open-source Dropbox client.'
 arch=('any')
 url="https://github.com/SamSchott/${_srcname}"
 license=('MIT')
-source=(
-    "git+${url}"
-    "maestral@.service")
-makedepends=('git' 'python-setuptools' 'gendesk')
+source=("git+${url}" "maestral@.service")
+makedepends=('git' 'python' 'python-setuptools')
 depends=(
-    'python-blinker'
+    'python'
+    'python-atomicwrites'
     'python-bugsnag'
     'python-click>=7.0'
     'python-dropbox>=9.4.0'
+    'python-dropbox<=9.5.0'
     'python-keyring>=19.0.0'
     'python-keyrings-alt>=3.0.0'
     'python-lockfile'
-    'python-pyro5'
+    'python-packaging'
+    'python-pathspec'
+    'python-pyro5>=5.7'
     'python-requests'
-    'python-rubicon-objc'
+    'python-sdnotify'
+    'python-setuptools'
+    'python-six>=1.12.0'
     'python-u-msgpack'
-    'python-watchdog'
+    'python-watchdog>=0.9.0'
     'python-systemd')
-optdepends=(
-    'python-pyqt5: GUI'
-    'gnome-shell-extension-appindicator: Gnome integration')
+# python-bugsnag:   AUR dependency (git-version maintained by me)
+# python-pyro5:     AUR dependency (git-version maintained by me)
+# python-sdnotify:  AUR dependency
+# python-u-msgpack: Will probably be dropped in the future
+optdepends=('maestral-qt: QT frontend for maestral')
 md5sums=('SKIP'
          '170d961161ceecbfce039d4aaca59a2f')
 
-prepare() {
-    gendesk -q -n \
-        --pkgname="${_name}" \
-        --exec="${_name} gui" \
-        --comment="${pkgdesc}" \
-        --categories=Network
-}
-
 pkgver() {
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/${_name}"
     git describe --long --tags | sed 's|\([^-]*-g\)|r\1|;s|-|.|g;s|^v||g'
 }
 
 build() {
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/${_name}"
     python setup.py build
 }
 
 package() {
     # Change into the source git directory
-    cd "${srcdir}/${_srcname}"
+    cd "${srcdir}/${_name}"
+
     # Run python setup function
     python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+
     # Install the licence
-    install -Dm644 "${srcdir}/${_srcname}/LICENSE.txt" \
+    install -Dm644 "${srcdir}/${_name}/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-    # Install the icon
-    install -Dm644 "${srcdir}/${_srcname}/${_name}/gui/resources/${_name}.png" \
-        "${pkgdir}/usr/share/pixmaps/${_name}.png"
-    # Install the generated desktop file
-    install -Dm644 "${srcdir}/${_name}.desktop" -t \
-        "${pkgdir}/usr/share/applications"
+
     # Install the systemd unit provided
     install -Dm644 "${srcdir}/maestral@.service" \
         "${pkgdir}/usr/lib/systemd/user/maestral@.service"
