@@ -12,7 +12,7 @@ _PXE='0'
 
 _pkgname='refind'
 pkgname="${_pkgname}-efi-git"
-pkgver=0.11.5.1.r673.g07d08b5
+pkgver=0.12.0.r692.g4a84fce
 pkgrel=1
 pkgdesc='rEFInd Boot Manager - git version'
 url='https://www.rodsbooks.com/refind/'
@@ -20,7 +20,7 @@ arch=('x86_64')
 license=('GPL3' 'custom')
 
 makedepends=('git')
-depends=('bash' 'dosfstools' 'efibootmgr')
+depends=('bash' 'dosfstools' 'efibootmgr' 'which')
 optdepends=('sudo: privilege elevation'
             'gptfdisk: For finding ESP'
             'imagemagick: For refind-mkfont script'
