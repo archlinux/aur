@@ -3,7 +3,7 @@
 pkgname=freepats-ydp-grand-piano
 pkgver=20160804
 pkgrel=1
-pkgdesc="Yamaha Disklavier Pro grand piano sf2 soundfont"
+pkgdesc="Yamaha Disklavier Pro grand piano sf2 SoundFont"
 arch=('any')
 url="http://freepats.zenvoid.org/Piano/acoustic-grand-piano.html"
 license=('cca-by-3.0')

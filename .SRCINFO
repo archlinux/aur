@@ -1,5 +1,5 @@
 pkgbase = freepats-ydp-grand-piano
-	pkgdesc = Yamaha Disklavier Pro grand piano sf2 soundfont
+	pkgdesc = Yamaha Disklavier Pro grand piano sf2 SoundFont
 	pkgver = 20160804
 	pkgrel = 1
 	url = http://freepats.zenvoid.org/Piano/acoustic-grand-piano.html
