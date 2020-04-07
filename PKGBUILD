@@ -1,7 +1,7 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=ros-melodic-plotjuggler
 pkgdesc="juggle with data"
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 _gitorg=facontidavide
 _gitname=PlotJuggler
@@ -13,8 +13,7 @@ license=("LGPLv3")
 ros_makedepends=()
 makedepends=('cmake' 'ros-build-tools' 'clang'  ${ros_makedepends[@]})
 
-ros_depends=("ros-melodic-ros-type-introspection" 
-    "ros-melodic-rosbag"
+ros_depends=("ros-melodic-rosbag"
     "ros-melodic-rosbag-storage" 
     "ros-melodic-roscpp"
     "ros-melodic-roscpp-serialization"
