@@ -6,7 +6,7 @@ pkgname=('project-brutality-git')
 pkgver=3.0.0.alpha.562.g83a1878d
 pkgrel=1
 pkgdesc="DOOM overhaul mod, successor to brutal-doom."
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://github.com/pa1nki113r/Project_Brutality'
 license=('MIT') # not really
 # depends=()
@@ -27,5 +27,5 @@ package() {
   cd "$srcdir"
   rm brutal.zip || echo;
   zip -r "brutal.zip" "$pkgname" -x "*.git*"
-  install -Dm 755 "brutal.zip" "$pkgdir/usr/share/games/project-brutality/Project_Brutality-master.pk3";
+  install -Dm 744 "brutal.zip" "$pkgdir/usr/share/games/project-brutality/Project_Brutality-master.pk3";
 }
