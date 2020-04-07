@@ -1,6 +1,6 @@
 pkgbase = fuse-overlayfs-git
 	pkgdesc = FUSE implementation for overlayfs
-	pkgver = 446
+	pkgver = 467
 	pkgrel = 1
 	url = https://github.com/containers/fuse-overlayfs
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = fuse-overlayfs-git
 	makedepends = git
 	depends = fuse3
 	provides = fuse-overlayfs
+	conflicts = fuse-overlayfs
 	source = fuse-overlayfs::git+https://github.com/containers/fuse-overlayfs.git
 	sha256sums = SKIP
 
