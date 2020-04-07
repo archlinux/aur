@@ -1,6 +1,6 @@
 pkgbase = opendune-git
 	pkgdesc = Open source re-creation of the popular game Dune II
-	pkgver = 0.7.88d5666
+	pkgver = 0.9.r33.g4ee71cf7
 	pkgrel = 1
 	url = http://opendune.org
 	install = opendune.install
@@ -8,19 +8,17 @@ pkgbase = opendune-git
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	depends = sdl
+	depends = sdl2_image
 	depends = alsa-lib
+	depends = libpulse
+	depends = hicolor-icon-theme
 	optdepends = timidity++: midi music support
 	provides = opendune
 	conflicts = opendune
 	source = opendune::git+https://github.com/OpenDUNE/OpenDUNE.git
-	source = opendune.sh
 	source = opendune.desktop
-	source = opendune.png
 	sha256sums = SKIP
-	sha256sums = 56a2802f74b2bce644a34a7c2519307ec5925dbc111a1f132f6a19ef4b5e00f0
 	sha256sums = b80429ce421d6f781b1ef0c7c50293cf5970225e8de0fd6e379290d1fd91d4d7
-	sha256sums = 89c9cbf76b3f7ac62bf39235a64b191ee4b3bd437f88161b6757b6ec44e8888b
 
 pkgname = opendune-git
 

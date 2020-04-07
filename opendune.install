@@ -1,6 +1,9 @@
 
 post_install() {
-  echo "Remember you need to be in the audio group and start timidity, eg 'timidity -iA' for music support."
+  echo "Copy the sample configuration file, if needed and change path to data files:"
+  echo "install -D /usr/share/doc/opendune/opendune.ini.sample ~/.config/opendune/opendune.ini"
+
+  echo "Remember you need to start timidity, eg 'timidity -iA' for music support."
 }
 
 post_upgrade() {
