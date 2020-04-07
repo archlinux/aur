@@ -1,0 +1,26 @@
+pkgbase = python-alembic-1.4.1
+	pkgdesc = Lightweight database migration tool for usage with SQLAlchemy
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://bitbucket.org/zzzeek/alembic
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	makedepends = python-mako
+	makedepends = python-sqlalchemy
+	makedepends = python-editor
+	makedepends = python-dateutil
+	provides = python-alembic=1.4.1
+	conflicts = python-alembic
+	source = https://pypi.org/packages/source/a/alembic/alembic-1.4.1.tar.gz
+	sha512sums = a3333c83533e8bba5fb41a1bf438806728db9597071da2afa8e8e4f246d7d5b13d081d1df7d4e8cd17a67ba2a62900808c324e2f27de7d556f9afebea5cb6ecb
+
+pkgname = python-alembic-1.4.1
+	depends = python
+	depends = python-mako
+	depends = python-sqlalchemy
+	depends = python-editor
+	depends = python-dateutil
+
