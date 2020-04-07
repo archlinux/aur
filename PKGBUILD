@@ -16,7 +16,7 @@ license=('GPL')
 depends=('python')
 makedepends=('git' 'python-distribute')
 optdepends=(
-'python-mpd: python libary for mpd interaction',
+'python-mpd2: python libary for mpd interaction',
 'python-logbook: for logging'
 'imagemagick: for default screenshot command'
 )
