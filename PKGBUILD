@@ -1,28 +1,29 @@
-# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
-# Co-Maintainer: peeweep
+# Maintainer: Philip May <eniak.info@gmail.com>
+
 pkgname=python-configparser
-_name=${pkgname#python-}
-pkgver=4.0.2
+_pkgname=configparser
+pkgver=5.0.0
 pkgrel=1
-pkgdesc="This library brings the updated configparser from Python 3.5 to Python 2.6-3.5."
+pkgdesc='backport of configparser from Python 3'
 arch=('any')
-url="https://github.com/jaraco/configparser"
+url='https://github.com/jaraco/configparser/'
 license=('MIT')
-depends=('python')
-makedepends=('python-setuptools-scm')
-conflicts=('python-libconfigparser')
-replaces=('python-libconfigparser')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('c7d282687a5308319bf3d2e7706e575c635b0a470342641c93bea0ea3b5331df')
+depends=()
+optdepends=()
+makedepends=(
+    'python-setuptools'
+    'python-pip'
+    'python-wheel'
+    )
+source=("git+https://github.com/jaraco/${_pkgname}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+    cd "${srcdir}/${_pkgname}"
+    python setup.py build
 }
 
 package() {
-	cd "$_name-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    cd "${srcdir}/${_pkgname}"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }

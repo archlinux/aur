@@ -1,16 +1,15 @@
 pkgbase = python-configparser
-	pkgdesc = This library brings the updated configparser from Python 3.5 to Python 2.6-3.5.
-	pkgver = 4.0.2
+	pkgdesc = backport of configparser from Python 3
+	pkgver = 5.0.0
 	pkgrel = 1
-	url = https://github.com/jaraco/configparser
+	url = https://github.com/jaraco/configparser/
 	arch = any
 	license = MIT
-	makedepends = python-setuptools-scm
-	depends = python
-	conflicts = python-libconfigparser
-	replaces = python-libconfigparser
-	source = https://pypi.org/packages/source/c/configparser/configparser-4.0.2.tar.gz
-	sha256sums = c7d282687a5308319bf3d2e7706e575c635b0a470342641c93bea0ea3b5331df
+	makedepends = python-setuptools
+	makedepends = python-pip
+	makedepends = python-wheel
+	source = git+https://github.com/jaraco/configparser.git#tag=v5.0.0
+	sha256sums = SKIP
 
 pkgname = python-configparser
 
