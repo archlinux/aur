@@ -1,12 +1,7 @@
 post_install() {
   echo ""
   echo "You can start the WebThings Gateway as follows:"
-  echo "  systemctl start webthings-gateway-intent-parser"
   echo "  systemctl start webthings-gateway"
-
-  echo ""
-  echo "The former is required for the commands (e.g. speech) interface,"
-  echo "while the latter is the gateway itself."
 
   echo ""
   echo "By default, the gateway listens on port 8080, so you should navigate"

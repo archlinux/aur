@@ -1,17 +1,16 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname=webthings-gateway
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc='WebThings Gateway by Mozilla'
 url='https://iot.mozilla.org/gateway/'
 arch=('x86_64')
 license=('MPL2')
 depends=(
   'lsb-release'
-  'nodejs>=8.0.0'        # carbon (8.x) is what our other distros use
+  'nodejs>=10.0.0'       # dubnium (10.x) is what our other distros use
   'nodejs<13.0.0'        # we only test up to 12.x
   'pagekite'
-  'python-adapt-parser'
   'python-gateway-addon'
 )
 makedepends=(
@@ -21,6 +20,7 @@ makedepends=(
   'python2'
 )
 optdepends=(
+  'alsa-utils: required for internet radio add-on'
   'avahi: mDNS hostname broadcast and resolution'
   'ffmpeg: required for video transcoding in ONVIF and virtual things add-on'
   'iputils: required for network presence add-on'
@@ -29,21 +29,19 @@ optdepends=(
 backup=()
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/mozilla-iot/gateway/archive/${pkgver}.tar.gz"
-  "intent-parser.zip::https://github.com/mozilla-iot/intent-parser/archive/52b1d7f1f9d53d83adb813bc7bfbbbed203c0627.zip"
   "${pkgname}.conf"
   "${pkgname}.install"
+  "${pkgname}.profile"
   "${pkgname}.service"
-  "${pkgname}-intent-parser.service"
   "${pkgname}.sh"
   "${pkgname}.sysusers"
 )
 sha256sums=(
-  '2b1b79b92af7e580b9d520c5e439197893f9fa2e77a6e04e57a1a395dd896c6a'
-  'b59382026981c14bd5a08c82cb88d9ebb159ed98b0fb7bcaf954bc2f41f7b2d5'
-  '8c2f4a28c9bdd4571d27e98e1f4beecd9fc7d8bfa57c412f2d749d4c0a774cde'
-  '60a275bf3a4b93defcc2a47a0833e9baf2e019443f401a4399e81277f8c9bf5c'
+  '70297de904cc480396fd71dd2991dd4c45daa9dd67916a92ff1575f6003fc476'
+  '36d1e319305f7da9f678f614387f6a23cd9d660b704932d566a3308819be2260'
+  '6bda15a6d276d5b7f060121bc72f43edb46b40c6670419a1ce3113042fb47381'
+  '1a5e41278b02a8c509edaf86d510b4739efb90bbfed4b85df9f2da9ff4eef9a7'
   'e8f4faa6fb1778157d9927d730038ef0f5520c6c3c5cc33222f155d9979238a5'
-  '68685a10449c51fd8fa48fc8a4c399b36e22148a58d939e8f4b99a91c37c34e8'
   'e516c724bce5fa9ab9f0652f903c778609dd5b8a7682b169b881a8c0fcb41bbf'
   '38ac347a82f61525e762ba3dd129faf2eb5af03371599626bef7fc66e8bf8a32'
 )
@@ -52,8 +50,7 @@ install="${pkgname}.install"
 build() {
   # Build the gateway
   cd "${srcdir}/gateway-${pkgver}"
-  rm -rf ./node_modules package-lock.json
-  npm --user root --cache "${srcdir}/npm-cache" install
+  npm --user root --cache "${srcdir}/npm-cache" ci
   ./node_modules/.bin/webpack
   npm --cache "${srcdir}/npm-cache" prune --production
 
@@ -66,7 +63,6 @@ build() {
     chmod 644 "$f"
     ' \;
   rm -rf node_modules/sqlite3/build
-  rm node_modules/nanomsg/build/Makefile node_modules/nanomsg/build/config.gypi
 }
 
 package() {
@@ -83,13 +79,10 @@ package() {
   install -Dm644 "${srcdir}/gateway-${pkgver}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
   # System config files
+  install -Dm644 "${srcdir}/${pkgname}.profile" "${pkgdir}/etc/profile.d/${pkgname}.sh"
   install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-  install -Dm644 "${srcdir}/${pkgname}-intent-parser.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}-intent-parser.service"
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
-
-  # Intent parser
-  install -Dm755 "${srcdir}/intent-parser-52b1d7f1f9d53d83adb813bc7bfbbbed203c0627/intent-parser-server.py" "${pkgdir}/opt/${pkgname}/intent-parser/intent-parser-server.py"
 }
 
 # vim:set ts=2 sw=2 et ft=sh:
