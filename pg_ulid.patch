@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ UNAME_S := $(shell uname -s)
+ ifeq ($(UNAME_S),Darwin)
+     LDFLAGS = -Wl,-undefined,dynamic_lookup
+ else
+-    LDFLAGS = -Wl, --unresolved-symbols=ignore-all
++    LDFLAGS = -Wl,--unresolved-symbols=ignore-all
+ endif
+ 
+ export CGO_CFLAGS = -I$(shell $(PG_CONFIG) --includedir-server)

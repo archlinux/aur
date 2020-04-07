@@ -1,0 +1,17 @@
+pkgbase = pg_ulid
+	pkgdesc = Experimental PostgreSQL extension for generating ULIDs
+	pkgver = r4.63c3a88
+	pkgrel = 1
+	url = https://github.com/iCyberon/pg_ulid
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = postgresql
+	source = pg_ulid::git+https://github.com/iCyberon/pg_ulid.git
+	source = pg_ulid.patch
+	sha512sums = SKIP
+	sha512sums = 0c2c109705de12b9d802f141b2a41cb33c631210f6724f284e1c8601769406534bd4934503e6992a0b860f6ab118a49b2a2ee48300770f9f39b0bf3a16698493
+
+pkgname = pg_ulid
+
