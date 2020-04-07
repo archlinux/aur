@@ -1,13 +1,13 @@
 pkgbase = webtty
 	pkgdesc = Share a terminal session over WebRTC
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/maxmcd/webtty
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/maxmcd/webtty/archive/v0.2.0.tar.gz
-	sha256sums = 895a5097ce649fa226de4cfe8abc8013b074c180704158c7731ff7dcd63231e8
+	source = https://github.com/maxmcd/webtty/archive/v0.3.0.tar.gz
+	sha256sums = 0946c59c62cb12b663036098911c33df03679aca84d580c479d73eb6f45a220f
 
 pkgname = webtty
 

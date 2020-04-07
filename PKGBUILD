@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=webtty
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Share a terminal session over WebRTC'
 arch=('x86_64')
@@ -23,4 +23,4 @@ package() {
   install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
 }
 
-sha256sums=('895a5097ce649fa226de4cfe8abc8013b074c180704158c7731ff7dcd63231e8')
+sha256sums=('0946c59c62cb12b663036098911c33df03679aca84d580c479d73eb6f45a220f')
