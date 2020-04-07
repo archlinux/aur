@@ -3,7 +3,7 @@
 _pkgname=roc
 pkgname=${_pkgname}-git
 pkgver=r930.778c329
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time audio streaming over network"
 arch=('x86_64' 'i686' 'armv6l' 'armv7l' 'aarch64')
 conflicts=(roc)
@@ -12,12 +12,22 @@ url="https://roc-project.github.io/"
 license=('Mozilla')
 depends=('openfec' 'ragel' 'libuv' 'libunwind' 'sox')
 makedepends=('scons' 'clang' 'llvm' 'gengetopt')
-source=('git+https://github.com/roc-project/roc.git')
-sha256sums=(SKIP)
+source=('git+https://github.com/roc-project/roc.git'
+	'config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=5256817ace8493502ec88501a19e4051c2e220b0')
+sha256sums=('SKIP'
+            'c081ced2d645e3b107fbf864529cc0e5954399a09b87a4f1d300470854b6dea4')
 
 pkgver() {
   cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  # some libraries bundled as 3rd party components ship an outdated config.guess
+  # file, which fails to detect some ARM systems
+
+  cp -vf config.guess "${_pkgname}/3rdparty/aarch64-pc-linux-gnu/clang-9.0.1-release/build/json-0.11-20130402/src/json-c-json-c-0.11-20130402/config.guess"
+  cp -vf config.guess "${_pkgname}/3rdparty/aarch64-pc-linux-gnu/clang-9.0.1-release/build/sndfile-1.0.20/src/libsndfile-1.0.20/Cfg/config.guess"
 }
 
 _run_scons() {

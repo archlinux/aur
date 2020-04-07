@@ -1,7 +1,7 @@
 pkgbase = roc-git
 	pkgdesc = Real-time audio streaming over network
 	pkgver = r930.778c329
-	pkgrel = 1
+	pkgrel = 2
 	url = https://roc-project.github.io/
 	arch = x86_64
 	arch = i686
@@ -21,7 +21,9 @@ pkgbase = roc-git
 	provides = roc
 	conflicts = roc
 	source = git+https://github.com/roc-project/roc.git
+	source = config.guess::http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=5256817ace8493502ec88501a19e4051c2e220b0
 	sha256sums = SKIP
+	sha256sums = c081ced2d645e3b107fbf864529cc0e5954399a09b87a4f1d300470854b6dea4
 
 pkgname = roc-git
 
