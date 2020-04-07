@@ -1,6 +1,6 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=hipcub
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Reusable software components for the rocm developers."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/ROCmSoftwarePlatform/hipCUB"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
 makedepends=('cmake' 'python2' 'rocminfo' 'rocm-comgr')
-source=("https://github.com/ROCmSoftwarePlatform/hipCUB/archive/$pkgver.tar.gz")
-sha256sums=('9fa41d9b25d5347ea6446ef32777dbe447257ccb494d82cb134529f4b45064a0')
+source=("https://github.com/ROCmSoftwarePlatform/hipCUB/archive/rocm-$pkgver.tar.gz")
+sha256sums=('0d97cada3b856e8c62affbb3664ac4fc2415a36ad3d9b9d7155b5f954e492392')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -31,7 +31,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/hipcub \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
-        "$srcdir/hipCUB-$pkgver"
+        "$srcdir/hipCUB-rocm-$pkgver"
   make
 }
 
