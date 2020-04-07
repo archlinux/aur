@@ -2,7 +2,7 @@
 
 pkgname=geph-client
 pkgver=0.20.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A command-line Geph client'
 arch=('x86_64')
 url="https://github.com/geph-official/geph2"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-    install -Dm 644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm 644 "geph2-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     cd "geph2-$pkgver/cmd/$pkgname/"
     install -Dm 755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
