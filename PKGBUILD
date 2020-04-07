@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coin-or-ipopt
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-lapack' 'mingw-w64-coin-or-coinasl' 'mingw-w64-coin-or-coinm
 makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'wget')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Ipopt/Ipopt-$pkgver.tgz")
-sha256sums=('dc392396be28c4a0d49bfab399320cb3f70db5b8f090028a883d826a47744ecf')
+sha256sums=('64fc63a3fe27cf5efaf17ebee861f7db5bf70aacf9c316c0d37e4beb4eb72e11')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -35,6 +35,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "$srcdir"/Ipopt-releases-$pkgver/build-${_arch}
     make DESTDIR="$pkgdir"/ install
+    rm "$pkgdir"/usr/${_arch}/bin/*.exe
     rm -r "$pkgdir"/usr/${_arch}/share
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
