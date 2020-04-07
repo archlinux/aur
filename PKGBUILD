@@ -1,6 +1,6 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rccl
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="ROCm Communication Collectives Library"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/ROCmSoftwarePlatform/rccl"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
 makedepends=('cmake' 'hcc' 'python2' 'rocminfo')
-source=("https://github.com/ROCmSoftwarePlatform/rccl/archive/$pkgver.tar.gz")
-sha256sums=('507bf2902c0fe3f111fbab4a786e42cb63226c9d5ec93435f992425e665910ca')
+source=("https://github.com/ROCmSoftwarePlatform/rccl/archive/rocm-$pkgver.tar.gz")
+sha256sums=('fcebb7983d7299bb4d002ae21e31c1d372e0e4b2406ee2b2321d856388a1193e')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -27,7 +27,7 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/rccl \
         -DBUILD_TESTS=OFF \
-        "$srcdir/rccl-$pkgver"
+        "$srcdir/rccl-rocm-$pkgver"
   make
 }
 
