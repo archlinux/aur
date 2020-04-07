@@ -2,7 +2,7 @@
 
 pkgbase=linux-zencjk
 pkgver=5.6.2.zen1
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux ZEN with CJK Patch'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -17,7 +17,7 @@ options=('!strip')
 _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
-  "config::https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-zen"         # the main kernel config file
+  config         # the main kernel config file
   "aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch" # CJK Patch
 )
 validpgpkeys=(
