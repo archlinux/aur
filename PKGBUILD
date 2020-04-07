@@ -7,19 +7,19 @@
 pkgname=fusee-interfacee-tk-bin
 _pkgname=fusee-interfacee-tk
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A mod of falquinhos Fusée Launcher for use with Nintendo Homebrew Switch Guide. It also adds the ability to mount SD while in RCM."
 arch=("x86_64")
 url="https://github.com/nh-server/fusee-interfacee-tk"
 license=('GPL2')
 depends=("glibc")
 provides=("fusee-interface-tk")
-source=("https://github.com/nh-server/$_pkgname/releases/download/V$pkgver/$_pkgname-linux.zip")
+source=("$_pkgname-linux-$pkgver::https://github.com/nh-server/$_pkgname/releases/download/V$pkgver/$_pkgname-linux.zip")
 noextract=()
 md5sums=('65d1569eb3796fa723b30acbe9694adb')
 validpgpkeys=()
 
 package() {
 	install -dm 755 "$pkgdir/usr/bin/"
-	install -Dm 755 "$srcdir/App For Linux/PayloadInjector" "$pkgdir/usr/bin/$_pkgname"
+	install -Dm 755 "$srcdir/fusee-interfacee-tk-linux/App For Linux/PayloadInjector" "$pkgdir/usr/bin/$_pkgname"
 }
