@@ -6,7 +6,7 @@
 # Contributor: Justin Dray <justin@dray.be>
 
 pkgname="google-cloud-sdk"
-pkgver=287.0.0
+pkgver=288.0.0
 pkgrel=1
 pkgdesc="A set of command-line tools for the Google Cloud Platform. Includes gcloud (with beta and alpha commands), gsutil, and bq."
 url="https://cloud.google.com/sdk/"
@@ -25,7 +25,7 @@ source=(
   "0002-set-python2-for-dev-appserver-py.patch"
   "0003-set-python2-for-endpointscfg-py.patch"
 )
-sha256sums=('23c2671dd0465e14800f0de29c7b31e8d6ccea8de0df198d9b6617f5d0ed5e01'
+sha256sums=('2d5ba2acc122b86a1260b958cbf19fa18daf487a2a719eb4d881f9561abb4f00'
             'a54f88947a2593fae4aa8f65e42de4ad735583ae743735305c0f36710a794295'
             'b3faeb3af2922510048d12063fa215610f12879f5cc9f8b78786c7d9f2957c70'
             '62ec7f56e09168d375823e9e99fcdcfbf40b0fffdd75f35cf91122c5902c82e9'
