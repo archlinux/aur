@@ -5,12 +5,12 @@ _pkg_arch=aarch64
 _android_arch=arm64-v8a
 _android_platform_arch=arch-arm64
 _pkgname=openssl
-_ver=1.1.1d
+_ver=1.1.1f
 
 pkgname=android-$_pkg_arch-$_pkgname
 # use a pacman compatible version scheme
 pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
-pkgrel=3
+pkgrel=1
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (Android, $_pkg_arch)"
 arch=('any')
 url='https://www.openssl.org'
@@ -21,7 +21,7 @@ makedepends=('android-environment' 'android-sdk-build-tools')
 conflicts=("android-$_pkgname-$_android_arch")
 replaces=("android-$_pkgname-$_android_arch")
 source=("https://www.openssl.org/source/${_pkgname}-${_ver}.tar.gz"{,.asc})
-sha256sums=('1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2'
+sha256sums=('186c6bfe6ecfba7a5b48c47f8a1673d0f3b0e5ba2e25602dd23b629975da3f35'
             'SKIP')
 validpgpkeys=('8657ABB260F056B1E5190839D9C4D26D0E604491'
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C')
