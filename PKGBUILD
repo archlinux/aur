@@ -18,7 +18,6 @@ source=("git+$url")
 md5sums=('SKIP') #autofill using updpkgsums
 
 package() {
-  cd "$pkgname"
-
+  cd "$srcdir/$pkgname"
   make PREFIX="/usr" DESTDIR="$pkgdir" -s install
 }
