@@ -6,7 +6,7 @@ pkgbase = apg
 	arch = x86_64
 	license = custom
 	depends = glibc
-	source = apg-2.2.3.tar.gz::https://github.com/buzo-ffm/apg/archive/v2.2.3.tar.gz
+	source = apg-2.2.3-5.tar.gz::https://github.com/buzo-ffm/apg/archive/v2.2.3.tar.gz
 	sha256sums = f2d4285947500afff32a045c0931d2712e814b8f6c0b9d5fa766c71c4a9e58d7
 
 pkgname = apg

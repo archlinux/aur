@@ -12,7 +12,7 @@ arch=(x86_64)
 url="https://github.com/buzo-ffm/$pkgname/"
 license=('custom')
 depends=('glibc')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/buzo-ffm/$pkgname/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/buzo-ffm/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('f2d4285947500afff32a045c0931d2712e814b8f6c0b9d5fa766c71c4a9e58d7')
 
 build() {
