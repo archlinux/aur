@@ -19,7 +19,7 @@ source=("https://files.pythonhosted.org/packages/48/78/da99a62b459eac0069b116980
 sha256sums=('78adc233a4de86c852777c64fd2126b2f8f188dc98551d6ccb6b02eb61bf6b69')
 
 package () {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/ocrmypdf-${pkgver}"
   python setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE.rst
 }
