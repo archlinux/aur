@@ -1,0 +1,18 @@
+pkgbase = obaddon-git
+	pkgdesc = Community-built prefabs and other enhancements for Oblige 7.70
+	pkgver = 2020.04.04.10.g25917894
+	pkgrel = 1
+	url = https://github.com/caligari87/ObAddon
+	arch = any
+	license = GPLv3
+	makedepends = zip
+	makedepends = make
+	depends = oblige
+	optdepends = gzdoom
+	optdepends = qzdl
+	provides = obaddon
+	source = obaddon-git::git+https://github.com/caligari87/ObAddon.git
+	md5sums = SKIP
+
+pkgname = obaddon-git
+
