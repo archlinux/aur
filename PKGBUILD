@@ -1,6 +1,6 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocprim
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="ROCm Parallel Primitives"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/ROCmSoftwarePlatform/rocPRIM"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
 makedepends=('cmake' 'hcc' 'python2' 'rocminfo' 'rocm-comgr')
-source=("https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/$pkgver.tar.gz")
-sha256sums=('ef93668ce6b740e9e01688937846b406407a893c2effc0719e876acce5998b3a')
+source=("https://github.com/ROCmSoftwarePlatform/rocPRIM/archive/rocm-$pkgver.tar.gz")
+sha256sums=('506c014bd573ba1473230087ca30394ca6ef34f58e7248a858342b2173009000')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -28,7 +28,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocprim \
         -DBUILD_TEST=OFF \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
-        "$srcdir/rocPRIM-$pkgver"
+        "$srcdir/rocPRIM-rocm-$pkgver"
   make
 }
 
