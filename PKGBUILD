@@ -1,6 +1,6 @@
 # Maintainer: Michael Stegeman <mstegeman@mozilla.com>
 pkgname='python-gateway-addon'
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Mozilla WebThings Gateway add-on bindings for Python'
 arch=('any')
