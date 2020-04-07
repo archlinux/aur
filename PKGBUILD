@@ -1,6 +1,6 @@
 # Maintainer: Hendrik 'T4cC0re' Meyer <aur@t4cc0.re>
 pkgname=gitlab-cli
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Perform GitLab actions on the CLI"
 arch=('x86_64')
@@ -14,5 +14,5 @@ package() {
   install -Dm644 ${pkgname}.1	"${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
 
-sha512sums=(7435f8ccc11f6304d6a0975b60f40317911ab28f4a591dc89e930151989734194c667943decd204111ce43477af7fd8f848115f895db62915336ed84c55d5a43             8eaffe4f6f66c96c7a0363faa32be42cc271fbe61969e4e04db0ce44dd930414523d07c36c65e75d9999a7ff1b906212e977d3b928d27695a126e4fb17b79e9f)
+sha512sums=(4e1b9aae00c08a2f4d93c4d1e3d5aadb3da19469db50bf5a075bd49ef0b1877c80c5babcf61f08388a9d18ca1b114d20d7b63efd016dfb5617b2997d429f99e3             a207ce3d032ccff2080f66ffac0c911991726efb761e97cba9ec62fe80c006d335c4aeec00406c98ab86869a566e660a38c25bf0d587ae4ae82cf8e479fbf9c4)
 
