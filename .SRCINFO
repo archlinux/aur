@@ -1,15 +1,15 @@
 pkgbase = python-gateway-addon
 	pkgdesc = Mozilla WebThings Gateway add-on bindings for Python
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mozilla-iot/gateway-addon-python
 	arch = any
 	license = MPL2
 	makedepends = git
 	makedepends = python-setuptools
 	depends = python-jsonschema
-	depends = python-nnpy
 	depends = python-singleton-decorator
+	depends = python-websocket-client
 	source = git+https://github.com/mozilla-iot/gateway-addon-python.git
 	sha256sums = SKIP
 
