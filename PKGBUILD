@@ -25,10 +25,15 @@ _opt_keepdesktop=0
 # 0 = normal
 # 1 = install desktop file even in debug modes. This is dangerous as launching sudo in a .desktop crashes the DE
 
+_opt_fdpp=1
+# 0 = use freedos
+# 1 = use fdpp and comcom32 (boot only, freedos is still used for utilities)
+
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre8.r1157.g6a7f5d234
+pkgver=2.0pre8.r1732.g8b5e2010f
 pkgrel=1
+_pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
 arch=('i686' 'x86_64')
 url='https://stsp.github.io/dosemu2/'
@@ -36,6 +41,9 @@ license=('GPL' 'custom')
 depends=('glibc' 'alsa-lib')
 if [ "${_opt_Debug}" -ne 0 ]; then
   depends+=('gdb' 'binutils' 'sudo')
+fi
+if [ "${_opt_fdpp}" -ne 0 ]; then
+  depends+=('fdpp')
 fi
 optdepends=(
   'libao: audio output'
@@ -51,7 +59,7 @@ makedepends=('git' 'flex' 'bison' 'binutils' 'sed' 'perl' 'bash')
 if [ "${_opt_clang}" -ne 0 ]; then
   makedepends+=('clang')
 fi
-provides=('dosemu=2.0' "${_pkgname}=2.0")
+provides=("dosemu=${_pkgver}" "${_pkgname}=${_pkgver}")
 conflicts=('dosemu' "${_pkgname}")
 backup=(
   'etc/dosemu/dosemu.conf'
@@ -65,19 +73,18 @@ _freedos='none'
 _freedos='dosemu-freedos-1.1-bin.tgz'
 #_freedos='dosemu-freedos-bin.tgz'
 #_freedos='msdos70-bin.tgz' # install.c will need to be fixed before this is automatic
-_patches=(
-  
-)
 source=(
   "git+https://github.com/${_github}.git"
   'http://downloads.sourceforge.net/sourceforge/dosemu/dosemu-freedos-1.0-bin.tgz' # for the GNU utils
-  "${_patches[@]}"
 )
 if [ "${_freedos}" != 'none' ]; then
   #source+=("https://dl.dropboxusercontent.com/u/13513277/dosemu/${_freedos}")
   source+=("https://chungy.keybase.pub/dosemu/${_freedos}")
 fi
 noextract=("${_freedos}")
+md5sums=('SKIP'
+         '2e09774fe91cff4372cb4a393eb467f5'
+         '93b55f4b156446be798be3634ef46e2d')
 sha256sums=('SKIP'
             '080c306a1b611e1861fd64466062f268eb44d2bf38082b8a57efadb5a9c0ebc7'
             '0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613')
@@ -93,20 +100,14 @@ prepare() {
   set -u
   cd 'dosemu2'
 
-  # diff -pNau5 src/plugin/sdl/sdl.c{.orig,} > ../SDL_Mouse_cursor.patch
-  # patch -Nbup0 -i "${startdir}/SDL_Mouse_cursor.patch"
-
-  #vi src/plugin/X/X.c
-
-  if [ "${#_patches[@]}" ]; then
-    set +u; msg 'Applying patches'; set -u
-    local _patch
-    for _patch in "${_patches[@]}"; do
-      set +u; msg2 "${_patch}"; set -u
-      patch -Nbup1 -i "${srcdir}/${_patch}"
-    done
-    unset _patch
-  fi
+  local _pt
+  for _pt in "${source[@]%%::*}"; do
+    _pt="${_pt##*/}"
+    if [[ "${_pt}" = *.patch ]]; then
+      set +u; msg2 "Patch ${_pt}"; set -u
+      patch -Nup1 -i "${srcdir}/${_pt}"
+    fi
+  done
 
   # Some makepkg options including -i erroneously run prepare() for vcs packages
   if [ -f 'debian/rules' ]; then
@@ -114,13 +115,15 @@ prepare() {
       ln -sf "../${_freedos}"
     fi
     #ln -s '../.git' 'src/.git'
-    sed -i -e '# Enable VDE' \
-           -e 's:^\(\s*plugin_vde\)\s.*$:\1 on:g' \
-           -e '# Update freedos' \
-           -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
-           -e '# Prefix' \
-           -e 's:^}$:  prefix /usr\n&:g' \
-      'compiletime-settings'{,.devel}
+    sed -e '# Enable VDE' \
+        -e 's:^\(\s*plugin_vde\)\s.*$:\1 on:g' \
+        -e '# Update freedos' \
+        -e 's:^\(\s*fdtarball\)\s.*$:'"\1 ${_freedos}:g" \
+        -e '# This breaks PREFIX and we still need freedos' \
+        -e '#s:^\(\s*fdtarball\)\s.*$:'"\1:g" \
+        -e '# Prefix' \
+        -e 's:^}$:  prefix /usr\n&:g' \
+      -i 'compiletime-settings'{,.devel}
     rm -f 'debian/rules' # We don't use this file so I'm using it as a flag.
   fi
   set +u
@@ -132,6 +135,9 @@ _configure() { # makepkg -e compatible
   if [ ! -s 'configure' ]; then
     ./autogen.sh
     local _opts=()
+    if [ "${_opt_fdpp}" -eq 0 ]; then
+      _opts+=(--disable-fdpp)
+    fi
     if [ "${_opt_Debug}" -ne 0 ]; then
       _opts+=('-d' '--enable-debug')
       #_opts+=('-d' '--disable-xbacktrace')
