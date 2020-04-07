@@ -1,9 +1,9 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop-git
 _ver=1.0.6
-_commit=6438698
+_commit=a5961de
 pkgver=$_ver.$_commit
-pkgrel=2
+pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
