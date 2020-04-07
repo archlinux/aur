@@ -19,6 +19,7 @@ pkgbase = chromium-dev-ozone
 	makedepends = lld
 	makedepends = gn-git
 	makedepends = java-runtime-headless
+	makedepends = python2-setuptools
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
