@@ -2,7 +2,7 @@
 
 pkgname=itk-snap-nightly-bin
 _pkgname=itk-snap
-pkgver=3.8.0.r4.8ad549e8
+pkgver=3.8.0.r5.f4a3d448
 _pkgver=3.8.0
 pkgrel=1
 pkgdesc='A software application used to segment structures in 3D medical images (nightly build)'
@@ -12,6 +12,7 @@ license=('GPL')
 depends=(
   'curl'
   'glib2'
+  'libpng12'
 )
 makedepends=(
   'gendesk'
