@@ -4,18 +4,18 @@
 
 _pkgname=ddb_discord_presence
 pkgname=deadbeef-plugin-discord-git
-pkgver=r24.g07beb73
+pkgver=r26.g70c06e1
 pkgrel=1
 pkgdesc="DeaDBeeF Discord rich presence plugin"
 arch=('i686' 'x86_64')
 url="https://github.com/kuba160/ddb_discord_presence"
 license=('BSD')
-depends=('deadbeef-git')
+depends=('deadbeef')
 makedepends=('git')
 source=("${_pkgname}::git+https://github.com/kuba160/${_pkgname}"
         "${_pkgname}-makefile.patch")
 sha256sums=('SKIP'
-            '967ae7feb4416b196db7a1e4b32cff779c6d96e4a6009a85e41d160486681d34')
+            '2c234522f8854be7ca7222b4929b88259dda8638a62efe377985889bce5d4e84')
 
 pkgver() {
   cd "${_pkgname}"
@@ -31,10 +31,12 @@ prepare() {
   patch -p1 -i ../${_pkgname}-makefile.patch
 
   make submodules_load
+  make discord-rpc-patch
 }
 
 build() {
   cd "${_pkgname}"
+  ( cd discord-rpc ; make thirdparty/rapidjson-1.1.0 )
   make COPT="${CFLAGS}" CXXOPT="${CXXFLAGS}"
 }
 
