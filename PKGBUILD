@@ -176,7 +176,7 @@ package_starlabstheme-session-git() {
 	cd "$srcdir/${pkgbase%-git}"
 	DESTDIR="$pkgdir" ninja -C build install 2>&1 >> install.log
 
-	# Replace Ubuntu-specific dconf entry to GNOME version
+	# Replace Ubuntu-specific dconf entry with GNOME version
 	sed -i 's/com.ubuntu.sound/org.gnome.desktop.sound/g' "$pkgdir"/usr/share/glib-2.0/schemas/99_StarLabs.gschema.override
 	sed -i 's/allow-amplified-volume/allow-volume-above-100-percent/g' "$pkgdir"/usr/share/glib-2.0/schemas/99_StarLabs.gschema.override
 
