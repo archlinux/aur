@@ -6,7 +6,7 @@ githuborg=SkycoinProject
 pkgdesc="Skywire: Building a New Internet. Skycoin.com"
 pkgver=0.2.0
 pkggopath="github.com/${githuborg}/${pkgname}-mainnet"
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64' 'armv7' 'armv8')
 url="https://${pkggopath}"
 license=()
@@ -25,7 +25,7 @@ sha256sums_x86_64=('988a9925b1650424a97836951b284e633fc78e857b908d65e40cbf6d18eb
 source_aarch64=("https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.0/skywire-v0.2.0-linux-arm64.tar.gz")
 sha256sums_aarch64=('5ee60c5b7ce63999520167ab44b7f3b7a2328ea9ebbbabe043cc5245b50d5a81')
 source_armv7=("https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.0/skywire-v0.2.0-linux-armv7.tar.gz")
-sha256sums_aarch64=('6ebadb2b6dbba87a060993560fe957d617f40ca7e467129889d51baebe57fa47')
+sha256sums_armv7=('6ebadb2b6dbba87a060993560fe957d617f40ca7e467129889d51baebe57fa47')
 source_armv8=("https://github.com/SkycoinProject/skywire-mainnet/releases/download/v0.2.0/skywire-v0.2.0-linux-arm64.tar.gz")
 sha256sums_armv8=('5ee60c5b7ce63999520167ab44b7f3b7a2328ea9ebbbabe043cc5245b50d5a81')
 
