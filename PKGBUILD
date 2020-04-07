@@ -26,18 +26,21 @@ sha256sums=('ca8344614b60e0d9d57b0eba4b44e0febc4addf83a54685539c45e08364b2d23'
 #bsdtar -czvf skycoin-scripts.tar.gz skycoin-scripts
 #bsdtar -czvf skycoin-systemd.tar.gz skycoin-systemd
 #https://downloads.skycoin.com/wallet/skycoin-0.27.0-gui-standalone-linux-x64.tar.gz
-sourcefolder_x86_64=()
 source_x86_64=("${url1}/${pkgname1}-${pkgver}-gui-standalone-linux-x64.tar.gz"
 "${url1}/${pkgname1}-${pkgver}-gui-standalone-linux-x64.tar.gz.asc")
+sha256sums_x86_64=('75c14e7379536694f1a1a5a8ebf7abea087b5d3898657e86281073f339c43fcf'
+'a975230a14b45352ffd0d53645af460c990fcee3c67ec5db4f291c36547dffd6')
 #https://downloads.skycoin.com/wallet/skycoin-0.27.0-gui-standalone-linux-arm.tar.gz
 source_aarch64=("${url1}/${pkgname1}-${pkgver}-gui-standalone-linux-arm.tar.gz"
 "${url1}/${pkgname1}-${pkgver}-gui-standalone-linux-arm.tar.gz.asc")
+sha256sums_aarch64=('899564f1359b4f7235015dbd3ae59502572515658716a925f59245b815012887'
+'a975230a14b45352ffd0d53645af460c990fcee3c67ec5db4f291c36547dffd6')
 validpgpkeys=('DE08F924EEE93832DABC642CA8DC761B1C0C0CFC'  # Moses Narrow <moe_narrow@use.startmail.com>
                            '98F934F04F9334B81DFA3398913BBD5206B19620') #iketheadore skycoin <luxairlake@protonmail.com>
 prepare() {
 	#verify PKGBUILD signature
   gpg --verify ${srcdir}/PKGBUILD.sig ../PKGBUILD
-	# https://wiki.archlinux.org/index.php/Go_package_guidelines
+  # https://wiki.archlinux.org/index.php/Go_package_guidelines
 }
 
 package() {
