@@ -1,7 +1,7 @@
 pkgbase = r-mkl
 	pkgdesc = Language and environment for statistical computing and graphics, linked to the Intel(R) MKL.
 	pkgver = 3.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.r-project.org/
 	install = r-mkl.install
 	arch = x86_64
@@ -44,10 +44,12 @@ pkgbase = r-mkl
 	source = r.desktop
 	source = r.png
 	source = R.conf
+	source = mklvars.sh
 	sha1sums = d2383dabc0d6c70f8a0171a0fb1bfdc31ddb5b52
 	sha1sums = dd214eee232b7aced7366722ad416b6b39be8e1b
 	sha1sums = af80774f5a8d0e669e8ff90662638a0f4e1105d7
 	sha1sums = 43668da6cfd1b4455a99f23e79e2059294dddac9
+	sha1sums = 2cc0e30ca5de872ea7f5af417b8cac988f3e9f8e
 
 pkgname = r-mkl
 
