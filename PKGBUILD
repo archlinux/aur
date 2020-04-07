@@ -26,7 +26,7 @@ depends=(
     'python-lockfile'
     'python-packaging'
     'python-pathspec'
-    'python-pyro5>=5.7'
+    'python-pyro5'
     'python-requests'
     'python-sdnotify'
     'python-setuptools'

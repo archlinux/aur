@@ -19,7 +19,7 @@ pkgbase = maestral-git
 	depends = python-lockfile
 	depends = python-packaging
 	depends = python-pathspec
-	depends = python-pyro5>=5.7
+	depends = python-pyro5
 	depends = python-requests
 	depends = python-sdnotify
 	depends = python-setuptools
