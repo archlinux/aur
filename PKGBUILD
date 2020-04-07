@@ -9,16 +9,14 @@ arch=('any')
 url='https://fbflipper.com/'
 license=('MIT')
 depends=('gtk3'
-		 'libsecret'
-		 'libxss'
-		 'nss')
+    		 'libsecret'
+    		 'libxss'
+    		 'nss')
 optdepends=('watchman: An inotify-based file watching and job triggering command line utility'
-			'android-sdk: Android debugging support')
-makedepends=('git' 'yarn')
-source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz"
-		'flipper.desktop')
-md5sums=('d287caae09c1d99a5a07d26d9f6b1831'
-		 '3835f5d90a60f80dc644259c9aa713e5')
+			      'android-sdk: Android debugging support')
+makedepends=('git' 'yarn' 'gendesk')
+source=("https://github.com/facebook/flipper/archive/v${pkgver}.tar.gz")
+md5sums=('d287caae09c1d99a5a07d26d9f6b1831')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}/desktop"
@@ -36,6 +34,7 @@ package() {
   cp -aR "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/." "${pkgdir}/opt/flipper"
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/flipper/flipper-project" "$pkgdir/usr/bin/flipper"
+  gendesk -f -n --pkgname "flipper" --pkgdesc "${pkgdesc}" --exec="flipper" --categories=Application\;Development --icon flipper
   install -Dm644 "${srcdir}/flipper.desktop" "${pkgdir}/usr/share/applications/flipper.desktop"
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-unpacked/resources/app/icon.png" "${pkgdir}/usr/share/pixmaps/flipper.png"
 }

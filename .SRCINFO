@@ -7,6 +7,7 @@ pkgbase = flipper
 	license = MIT
 	makedepends = git
 	makedepends = yarn
+	makedepends = gendesk
 	depends = gtk3
 	depends = libsecret
 	depends = libxss
@@ -14,9 +15,7 @@ pkgbase = flipper
 	optdepends = watchman: An inotify-based file watching and job triggering command line utility
 	optdepends = android-sdk: Android debugging support
 	source = https://github.com/facebook/flipper/archive/v0.36.0.tar.gz
-	source = flipper.desktop
 	md5sums = d287caae09c1d99a5a07d26d9f6b1831
-	md5sums = 3835f5d90a60f80dc644259c9aa713e5
 
 pkgname = flipper
 
