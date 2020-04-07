@@ -12,5 +12,5 @@ source=("https://raw.githubusercontent.com/wizetek/bash/master/redshifter")
 md5sums=('0fe6eba2d4644d88b8e3c17c7f1f7385')
 
 package() {
-  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
