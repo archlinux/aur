@@ -1,0 +1,16 @@
+pkgbase = ultimate-doom-visor-git
+	pkgdesc = DOOM hud mod that supports brutal-doom and project brutality.
+	pkgver = 0.0.5.ge3d9116
+	pkgrel = 1
+	url = https://github.com/saegiru/UltimateDoomVisor
+	arch = any
+	makedepends = zip
+	optdepends = gzdoom
+	optdepends = qzdl
+	optdepends = project-brutality
+	provides = ultimate-doom-visor
+	source = ultimate-doom-visor-git::git+https://github.com/saegiru/UltimateDoomVisor.git
+	md5sums = SKIP
+
+pkgname = ultimate-doom-visor-git
+
