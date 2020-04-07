@@ -19,6 +19,8 @@ package() {
     # Populate bash and zsh completions
     install -dm 755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm 755 "$pkgdir/usr/share/zsh/site-functions"
+    install -dm 755 "$pkgdir/usr/share/fish/completions"
     "$pkgdir/usr/bin/doctl" completion bash > "$pkgdir/usr/share/bash-completion/completions/doctl"
     "$pkgdir/usr/bin/doctl" completion zsh >  "$pkgdir/usr/share/zsh/site-functions/_doctl"
+    "$pkgdir/usr/bin/doctl" completion fish > "$pkgdir/usr/share/fish/completions/doctl.fish"
 }
