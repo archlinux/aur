@@ -3,7 +3,7 @@ pkgname=mujoco-bin
 pkgver=2.00
 _pkgname="${pkgname%-bin}"
 _pkgnamever="${_pkgname}${pkgver/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and accurate physics engine for research and development."
 arch=('x86_64')
 url="https://www.roboti.us"
@@ -26,7 +26,7 @@ source=("$url/download/${_pkgnamever}_linux.zip"
         "mjkey://mjkey.txt")
 sha256sums=("ba8560040f6ca47dbd89e4731bc9e06080a99eba4583cda95cdedca802389153"
             "4baa3f457085060d512b24997e448e93a47745ac0de3165b4020f09fbc9befc2"
-            "5c9caff61d629b8c170350041a2135c87c25e3395a31a6729c7d77e7cb062661"
+            "1a4ba8d66acbde166071d4dadaf0c27a5474243d577683aa4f520d7a52c0dc58"
             "SKIP")
 DLAGENTS+=("mjkey::/usr/bin/echo %u - ${BOLD}${RED} Obtain a license from $url/license.html and place mjkey.txt in \"$PWD\" ${ALL_OFF}")
 

@@ -3,7 +3,7 @@ diff --unified --recursive --text --color mujoco200_linux/sample/makefile mujoco
 +++ mujoco200_linux.new/sample/makefile	2020-04-07 15:31:03.552608317 -0400
 @@ -1,12 +1,12 @@
 -COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread -Wl,-rpath,'$$ORIGIN'
-+COMMON=-O2 -I../include -std=c++11 -mavx -pthread $(LDFLAGS)
++COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread $(LDFLAGS)
  
  all:
  	g++ $(COMMON) testxml.cpp    -lmujoco200nogl                             -o ../bin/testxml
