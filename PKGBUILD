@@ -10,8 +10,8 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='f4d7fa4807ada3c1b7d6f67117eadbb014b67d2f' # git rev-parse v${pkgver}
-pkgver=245.3
+_tag='5d6baa2d17edd3e355dc6f165876988ed52c0940' # git rev-parse v${pkgver}
+pkgver=245.4
 pkgrel=2
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -37,6 +37,7 @@ validpgpkeys=('63CDA1E5D3FC22B998D20DD6327F26951A015CC4'  # Lennart Poettering <
 source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
         "git+https://github.com/systemd/systemd#tag=v${pkgver%.*}?signed"
         '0001-Use-Arch-Linux-device-access-groups.patch'
+        '0002-make-homed-userdbd-repart-services-installable.patch'
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
@@ -57,6 +58,7 @@ source=("git+https://github.com/systemd/systemd-stable#tag=${_tag}?signed"
 sha512sums=('SKIP'
             'SKIP'
             'e38c7c422c82953f9c2476a5ab8009d614cbec839e4088bff5db7698ddc84e3d8ed64f32ed323f57b1913c5c9703546f794996cb415ed7cdda930b627962a3c4'
+            '85d11bbbb5c10016e4a67eec051315e2e292939844f260bf698018c5bd1c516c28444f635eb15832a23e26891c4beda14bacfa57fdeda45c00f1b653abe3b123'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
             '01de24951a05d38eca6b615a7645beb3677ca0e0f87638d133649f6dc14dcd2ea82594a60b793c31b14493a286d1d11a0d25617f54dbfa02be237652c8faa691'
             'a25b28af2e8c516c3a2eec4e64b8c7f70c21f974af4a955a4a9d45fd3e3ff0d2a98b4419fe425d47152d5acae77d64e69d8d014a7209524b75a81b0edb10bf3a'
@@ -78,9 +80,6 @@ sha512sums=('SKIP'
 _backports=(
   # systemd-resolved: use hostname for certificate validation in DoT
   'eec394f10bbfcc3d2fc8504ad8ff5be44231abd5'
-
-  # user-util: Allow names starting with a digit
-  '93c23c9297e48e594785e0bb9c51504aae5fbe3e'
 )
 
 _reverts=(
@@ -104,6 +103,9 @@ prepare() {
 
   # Replace cdrom/dialout/tape groups with optical/uucp/storage
   patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+
+  # Make homed/userdbd/repart services installable (to allow uninstalling)
+  patch -Np1 -i ../0002-make-homed-userdbd-repart-services-installable.patch
 }
 
 build() {
