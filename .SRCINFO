@@ -1,0 +1,18 @@
+pkgbase = r-statmod
+	pkgdesc = Statistical Modeling
+	pkgver = 1.4.34
+	pkgrel = 1
+	url = https://cran.r-project.org/package=statmod
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	makedepends = gcc
+	makedepends = gcc-fortran
+	depends = r>=3.0.0
+	optdepends = r-tweedie
+	source = https://cran.r-project.org/src/contrib/statmod_1.4.34.tar.gz
+	md5sums = e063ca54183e1467dddab7f9c919ccfa
+
+pkgname = r-statmod
+
