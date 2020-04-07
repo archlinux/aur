@@ -2,7 +2,7 @@
 
 pkgname=python-databricks-cli
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='open source tool which provides an easy to use interface to the
 Databricks platform'
 arch=('x86_64')
@@ -15,6 +15,10 @@ source=("$pkgname-$pkgver::https://github.com/databricks/databricks-cli/archive/
 sha256sums=('81dd789eb098f69b5e4d3662e524d85fd313e684641871a12a684ada280cd5ca')
 
 _pkgname=databricks-cli
+
+prepare() {
+  sed -i 's/configparser >= 0.3.5/configparser>=0.3.5;python_version < "3.6"/g' ${srcdir}/${_pkgname}-${pkgver}/setup.py
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
