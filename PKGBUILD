@@ -4,8 +4,8 @@
 # Upstream: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-vfio
-pkgver=5.5.13.arch2
-pkgrel=2
+pkgver=5.6.2.arch1
+pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://git.archlinux.org/linux.git/log/?h=$_srctag"
@@ -30,9 +30,9 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            '0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06'
-            '9863dfc3c3213cd6d3501363cc57de897eda5cdd2c68c1b6fc247c66559c0532'
-            'fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0')
+            '5c809f7ca4f21ebd95368533b20c0ed78fe2e006762dff742e5fd0751521ad11'
+            '4938b7121862e54c614668d1f662fcdd37e0c4f11cf386a425f9d4c3849d00ef'
+            '094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -75,6 +75,8 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -94,8 +96,6 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-headers() {
@@ -172,8 +172,6 @@ _package-headers() {
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 _package-docs() {
@@ -195,8 +193,6 @@ _package-docs() {
   mkdir -p "$pkgdir/usr/share/doc"
   ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 
-  echo "Fixing permissions..."
-  chmod -Rc u=rwX,go=rX "$pkgdir"
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")

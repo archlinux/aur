@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 5.5.13.arch2
-	pkgrel = 2
-	url = https://git.archlinux.org/linux.git/log/?h=v5.5.13-arch2
+	pkgver = 5.6.2.arch1
+	pkgrel = 1
+	url = https://git.archlinux.org/linux.git/log/?h=v5.6.2-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -15,7 +15,7 @@ pkgbase = linux-vfio
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.5.13-arch2
+	source = archlinux-linux::git+https://git.archlinux.org/linux.git?signed#tag=v5.6.2-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -23,9 +23,9 @@ pkgbase = linux-vfio
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
 	sha256sums = SKIP
-	sha256sums = 0b414b6974b732cfb71b6f45b6210d127528aa6452132e9b9338719ac021bf06
-	sha256sums = 9863dfc3c3213cd6d3501363cc57de897eda5cdd2c68c1b6fc247c66559c0532
-	sha256sums = fb0d88c416328639db0a870d31c0e2c6cb7b5428f3f3fe89be37d09d13f685c0
+	sha256sums = 5c809f7ca4f21ebd95368533b20c0ed78fe2e006762dff742e5fd0751521ad11
+	sha256sums = 4938b7121862e54c614668d1f662fcdd37e0c4f11cf386a425f9d4c3849d00ef
+	sha256sums = 094a29902b52cec2f0840219225a1458ca925f875524ecb7827da62a33c74ccf
 
 pkgname = linux-vfio
 	pkgdesc = The Linux kernel and modules
@@ -34,6 +34,10 @@ pkgname = linux-vfio
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	replaces = virtualbox-guest-modules-arch
+	replaces = wireguard-arch
 
 pkgname = linux-vfio-headers
 	pkgdesc = Headers and scripts for building modules for the Linux kernel
