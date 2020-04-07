@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/SamSchott/${_name}"
 license=('MIT')
 source=("git+${url}")
-makedepends=('git' 'python' 'python-setuptools' 'gendesk')
+makedepends=('git' 'python' 'python-setuptools')
 depends=(
     'maestral'
     'python'
@@ -26,14 +26,6 @@ depends=(
 # python-markdown2: AUR dependency
 optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 md5sums=('SKIP')
-
-prepare() {
-    gendesk -q -n \
-        --pkgname="${_name}" \
-        --exec="${_name} gui" \
-        --comment="${pkgdesc}" \
-        --categories=Network
-}
 
 pkgver() {
     cd "${srcdir}/${_name}"
@@ -55,8 +47,4 @@ package() {
     # Install the licence
     install -Dm644 "${srcdir}/${_name}/LICENSE.txt" \
         "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
-
-    # Install the generated desktop file
-    install -Dm644 "${srcdir}/${_name}.desktop" -t \
-        "${pkgdir}/usr/share/applications"
 }

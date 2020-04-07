@@ -8,7 +8,6 @@ pkgbase = maestral-qt-git
 	makedepends = git
 	makedepends = python
 	makedepends = python-setuptools
-	makedepends = gendesk
 	depends = maestral
 	depends = python
 	depends = python-bugsnag
