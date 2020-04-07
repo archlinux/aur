@@ -1,6 +1,6 @@
 pkgbase = github-desktop-git
 	pkgdesc = GUI for managing Git and GitHub.
-	pkgver = 2.3.1
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://desktop.github.com
 	arch = x86_64
