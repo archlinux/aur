@@ -3,7 +3,7 @@
 
 pkgname=sdlblocks
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc="A Tetris remake written in C using libSDL"
 arch=('i686' 'x86_64')
 url="https://github.com/llopisdon/sdlblocks"
