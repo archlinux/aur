@@ -3,8 +3,6 @@
 OS = $(shell uname -s)
 ifndef PREFIX
 	PREFIX = /usr
-	PREFIX = /usr/local
-	PREFIX = /usr
 endif
 MANPREFIX = $(PREFIX)/share/man
 
