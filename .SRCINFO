@@ -1,7 +1,7 @@
 pkgbase = roc-git
 	pkgdesc = Real-time audio streaming over network
 	pkgver = r930.778c329
-	pkgrel = 3
+	pkgrel = 4
 	url = https://roc-project.github.io/
 	arch = x86_64
 	arch = i686

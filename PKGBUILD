@@ -3,7 +3,7 @@
 _pkgname=roc
 pkgname=${_pkgname}-git
 pkgver=r930.778c329
-pkgrel=3
+pkgrel=4
 pkgdesc="Real-time audio streaming over network"
 arch=('x86_64' 'i686' 'armv6l' 'armv7l' 'aarch64' 'armv7h' 'armv6h')
 conflicts=(roc)
@@ -22,26 +22,37 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  # some libraries bundled as 3rd party components ship an outdated config.guess
-  # file, which fails to detect some ARM systems
-
-  find "${_pkgname}/3rdparty" -name config.guess -exec cp -vf config.guess '{}' \;
-}
-
 _run_scons() {
-  scons \
-    --prefix="${pkgdir}"/usr \
-    --disable-tests --disable-examples \
-    --with-openfec-includes=/usr/include/openfec \
-    --build-3rdparty=pulseaudio \
-    --enable-pulseaudio-modules \
-    "${@}"
+  local opts=(
+    --prefix="${pkgdir}"/usr
+    --disable-tests --disable-examples
+    --with-openfec-includes=/usr/include/openfec
+  )
+
+  if [[ $(uname -m) == x86_64 ]]; then
+    # pulseaudio support only seems to work on x86_64
+    opts+=(
+      --build-3rdparty=pulseaudio
+      --enable-pulseaudio-modules
+    )
+  fi
+
+  scons ${opts[@]} "${@}"
 }
 
 build() {
   cd "${_pkgname}"
-  _run_scons
+  if [ -d 3rdparty ]; then
+    _run_scons
+  else
+    if ! _run_scons; then
+      # some libraries bundled as 3rd party components ship an outdated config.guess
+      # file, which fails to detect some ARM systems
+
+      find 3rdparty -name config.guess -exec cp -vf config.guess '{}' \;
+    fi
+    _run_scons
+  fi
 }
 
 package() {
