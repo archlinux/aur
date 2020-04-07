@@ -1,0 +1,17 @@
+pkgbase = project-brutality-git
+	pkgdesc = DOOM overhaul mod, successor to brutal-doom.
+	pkgver = 3.0.0.alpha.562.g83a1878d
+	pkgrel = 1
+	url = https://github.com/pa1nki113r/Project_Brutality
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = zip
+	optdepends = gzdoom
+	optdepends = qzdl
+	provides = project-brutality
+	source = project-brutality-git::git+https://github.com/pa1nki113r/Project_Brutality.git
+	md5sums = SKIP
+
+pkgname = project-brutality-git
+
