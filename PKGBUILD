@@ -1,7 +1,7 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocsparse
-_pkgver=3.1
-pkgver="$_pkgver.0"
+_pkgver=3.3.0
+pkgver="$_pkgver"
 pkgrel=1
 pkgdesc="Next generation SPARSE implementation for ROCm platform."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
 makedepends=('cmake' 'hcc' 'python2' 'rocminfo')
 source=("https://github.com/ROCmSoftwarePlatform/rocSPARSE/archive/rocm-$_pkgver.tar.gz")
-sha256sums=('a180765be1e381570d6720b1ea452c71aa21a77bbcb907504d38c9ba2bbf5210')
+sha256sums=('04122317b21df69709a11b164b42e0f21f7fc745c2e28daeecb99ab01e7a8de3')
 
 build() {
   mkdir -p "$srcdir/build"
