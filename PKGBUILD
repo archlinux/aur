@@ -20,5 +20,5 @@ build() {
 
 package() {
     install -Dm 644 "geph2-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm 755 "geph2-$pkgver/cmd/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm 755 "geph2-$pkgver/cmd/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
