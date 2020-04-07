@@ -13,7 +13,8 @@ arch=('x86_64')
 url="https://www.google.com/chrome"
 license=('custom:chrome')
 depends=('alsa-lib' 'gtk3' 'libcups' 'libxss' 'libxtst' 'nss')
-optdepends=('kdialog: for file dialogs in KDE'
+optdepends=('libpipewire02: WebRTC desktop sharing under Wayland'
+            'kdialog: for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet'
             'gtk3-print-backends: for printing'
