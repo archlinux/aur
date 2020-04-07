@@ -10,7 +10,7 @@ license=('GPL')
 url='https://git.archlinux.org/devtools.git/'
 depends=('bash' 'openssh' 'subversion' 'rsync' 'arch-install-scripts'
          'git' 'bzr' 'mercurial' 'diffutils' 'util-linux' 'awk')
-makedepends=('asciidoc')
+makedepends=('asciidoc' 'git')
 optdepends=('btrfs-progs: btrfs support')
 provides=('devtools')
 conflicts=('devtools')
