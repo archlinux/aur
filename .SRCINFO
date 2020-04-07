@@ -1,6 +1,6 @@
 pkgbase = nestopia
 	pkgdesc = An NES emulator featuring cycle exact emulation, a ridiculous number of mappers, and lots of custom sound chips.
-	pkgver = 1.49
+	pkgver = 1.50
 	pkgrel = 1
 	url = http://0ldsk00l.ca/nestopia/
 	arch = x86_64
@@ -8,14 +8,12 @@ pkgbase = nestopia
 	makedepends = unzip
 	makedepends = mesa
 	makedepends = xdg-utils
-	makedepends = git
 	makedepends = autoconf-archive
 	depends = sdl2
 	depends = gtk3
 	depends = libarchive
-	depends = libao
-	source = git+https://github.com/rdanbrook/nestopia.git#tag=1.49
-	sha256sums = SKIP
+	source = nestopia-1.50.tar.gz::https://github.com/0ldsk00l/nestopia/archive/1.50.tar.gz
+	sha256sums = f0274f8b033852007c67237897c69725b811c0df8a6d0120f39c23e990662aae
 
 pkgname = nestopia
 
