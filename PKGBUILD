@@ -1,6 +1,6 @@
 # Maintainer: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocthrust
-pkgver=3.1.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Port of the Thrust parallel algorithm library atop HIP/ROCm."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/ROCmSoftwarePlatform/rocThrust"
 license=('custom:NCSAOSL')
 depends=('hcc' 'hip')
 makedepends=('cmake' 'hcc' 'python2' 'rocminfo' 'rocm-comgr')
-source=("https://github.com/ROCmSoftwarePlatform/rocThrust/archive/$pkgver.tar.gz")
-sha256sums=('87f6809b74422aed09f21a63eff09d4328791d6f622aa8040f104b55dbe5ae00')
+source=("https://github.com/ROCmSoftwarePlatform/rocThrust/archive/rocm-$pkgver.tar.gz")
+sha256sums=('5782c9b96233b2050168381b3c2259baeb410b859f68c25b2d14110fb1bb726f')
 
 build() {
   mkdir -p "$srcdir/build"
@@ -32,7 +32,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/rocm/rocthrust \
         -DBUILD_TEST=OFF \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
-        "$srcdir/rocThrust-$pkgver"
+        "$srcdir/rocThrust-rocm-$pkgver"
   make
 }
 
