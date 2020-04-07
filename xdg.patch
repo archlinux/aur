@@ -1,0 +1,51 @@
+diff --unified --recursive --text virtualfish-2.1.0/PKG-INFO virtualfish-2.1.0.patched/PKG-INFO
+--- virtualfish-2.1.0/PKG-INFO	2020-04-04 10:49:48.721342800 +0200
++++ virtualfish-2.1.0.patched/PKG-INFO	2020-04-07 15:28:38.982243164 +0200
+@@ -22,7 +22,6 @@
+ Requires-Dist: pkgconfig (>=1.5,<2.0)
+ Requires-Dist: psutil (>=5.7,<6.0)
+ Requires-Dist: virtualenv (>=20,<21)
+-Requires-Dist: xdg (>=4.0,<5.0)
+ Project-URL: Documentation, https://virtualfish.readthedocs.org/
+ Project-URL: Repository, https://github.com/justinmayer/virtualfish
+ Project-URL: Tracker, https://github.com/justinmayer/virtualfish/issues
+diff --unified --recursive --text virtualfish-2.1.0/pyproject.toml virtualfish-2.1.0.patched/pyproject.toml
+--- virtualfish-2.1.0/pyproject.toml	2020-04-04 10:49:48.220612800 +0200
++++ virtualfish-2.1.0.patched/pyproject.toml	2020-04-07 15:28:47.880288901 +0200
+@@ -31,7 +31,6 @@
+ pkgconfig = "^1.5"
+ psutil = "^5.7"
+ virtualenv = "^20"
+-xdg = "^4.0"
+ 
+ [tool.poetry.dev-dependencies]
+ black = "^19.10b0"
+diff --unified --recursive --text virtualfish-2.1.0/setup.py virtualfish-2.1.0.patched/setup.py
+--- virtualfish-2.1.0/setup.py	2020-04-04 10:49:48.720887200 +0200
++++ virtualfish-2.1.0.patched/setup.py	2020-04-07 15:28:57.138384051 +0200
+@@ -10,8 +10,7 @@
+ install_requires = \
+ ['pkgconfig>=1.5,<2.0',
+  'psutil>=5.7,<6.0',
+- 'virtualenv>=20,<21',
+- 'xdg>=4.0,<5.0']
++ 'virtualenv>=20,<21']
+ 
+ entry_points = \
+ {'console_scripts': ['vf = virtualfish.loader.cli:main']}
+diff --unified --recursive --text virtualfish-2.1.0/virtualfish/loader/installer.py virtualfish-2.1.0.patched/virtualfish/loader/installer.py
+--- virtualfish-2.1.0/virtualfish/loader/installer.py	2020-04-04 10:47:54.392377100 +0200
++++ virtualfish-2.1.0.patched/virtualfish/loader/installer.py	2020-04-07 15:29:28.782744132 +0200
+@@ -1,11 +1,10 @@
+ import os
+ import sys
+ 
+-from xdg import XDG_CONFIG_HOME
+ 
+ from virtualfish.loader import load
+ 
+-INSTALL_DIR = os.path.join(XDG_CONFIG_HOME, "fish", "conf.d")
++INSTALL_DIR = os.path.expanduser("~/.config/fish/conf.d")
+ INSTALL_FILE = os.path.join(INSTALL_DIR, "virtualfish-loader.fish")
+ 
+ 
