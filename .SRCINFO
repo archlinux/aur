@@ -1,6 +1,6 @@
 pkgbase = steam-buddy
 	pkgdesc = A web interface for managing Steam remotely
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/gamer-os/steam-buddy
 	arch = any
@@ -31,8 +31,8 @@ pkgbase = steam-buddy
 	depends = flatpak
 	depends = xdotool
 	depends = ponymix
-	source = https://github.com/gamer-os/steam-buddy/archive/0.4.5.tar.gz
-	md5sums = ceec3c5fd09b61c4c7e2d53b89774109
+	source = https://github.com/gamer-os/steam-buddy/archive/0.4.6.tar.gz
+	md5sums = 258ce4b3854b27a81774c64b1ffaf3f8
 
 pkgname = steam-buddy
 
