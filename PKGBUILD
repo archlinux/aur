@@ -1,9 +1,9 @@
-# Maintainer:
+# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=neverball
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="3D game similar to Super Monkey Ball or Marble Madness"
 arch=('x86_64')
 url="http://neverball.org/"
@@ -13,12 +13,12 @@ depends=('sdl2_ttf' 'libgl' 'libpng' 'libjpeg' 'libvorbis' 'physfs' \
 makedepends=('mesa')
 source=(http://neverball.org/${pkgname}-${pkgver}.tar.gz
         neverball-filesystem.patch::"https://github.com/Neverball/neverball/commit/27279856.patch")
-sha1sums=('3faebf15fea9361358a416176b9689f966c456ea'
-          '715d3ce441bd5835175fd1703addb61f71603d8c')
+sha256sums=('73fe63cca4f96e2d355480d03bc0b2904e83a0abdf65fe8c52db5cc3cca88fa0'
+            'b93f17315766a8f1a70f46716cd99260981f4797ec1589b26f03bfca201a8e0d')
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -p1 -i ../neverball-filesystem.patch # Fix creating settings dir
+  patch -Np1 <../neverball-filesystem.patch # Fix creating settings dir
 }
 
 build() {
