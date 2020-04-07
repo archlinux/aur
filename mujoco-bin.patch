@@ -1,0 +1,51 @@
+diff --unified --recursive --text --color mujoco200_linux/sample/makefile mujoco200_linux.new/sample/makefile
+--- mujoco200_linux/sample/makefile	2018-10-02 02:30:53.000000000 -0400
++++ mujoco200_linux.new/sample/makefile	2020-04-07 15:31:03.552608317 -0400
+@@ -1,12 +1,12 @@
+-COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread -Wl,-rpath,'$$ORIGIN'
++COMMON=-O2 -I../include -std=c++11 -mavx -pthread $(LDFLAGS)
+ 
+ all:
+ 	g++ $(COMMON) testxml.cpp    -lmujoco200nogl                             -o ../bin/testxml
+ 	g++ $(COMMON) testspeed.cpp  -lmujoco200nogl                             -o ../bin/testspeed
+ 	g++ $(COMMON) compile.cpp    -lmujoco200nogl                             -o ../bin/compile
+ 	g++ $(COMMON) derivative.cpp -lmujoco200nogl -fopenmp                    -o ../bin/derivative
+-	g++ $(COMMON) basic.cpp      -lmujoco200 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/basic
+-	g++ $(COMMON) record.cpp     -lmujoco200 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/record
++	g++ $(COMMON) basic.cpp      -lmujoco200 -lGL -lGLEW -lglfw -o ../bin/basic
++	g++ $(COMMON) record.cpp     -lmujoco200 -lGL -lGLEW -lglfw -o ../bin/record
+ 	gcc -c -O2 -mavx -I../include ../include/uitools.c
+-	g++ $(COMMON) uitools.o simulate.cpp -lmujoco200 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/simulate
++	g++ $(COMMON) uitools.o simulate.cpp -lmujoco200 -lGL -lGLEW -lglfw -o ../bin/simulate
+ 	rm *.o
+diff --unified --recursive --text --color mujoco200_linux/sample/testxml.cpp mujoco200_linux.new/sample/testxml.cpp
+--- mujoco200_linux/sample/testxml.cpp	2018-10-02 02:30:53.000000000 -0400
++++ mujoco200_linux.new/sample/testxml.cpp	2020-04-07 15:24:45.969266528 -0400
+@@ -139,13 +139,12 @@
+     if( !d )
+         return finish("Could not allocate mjData", m);
+ 
+-    // prepare temp filename in the same directory as original (for asset loading)
+-    std::string tempfile;
+-    size_t lastpath = filename.find_last_of("/\\");
+-    if( lastpath==std::string::npos )
+-        tempfile = "_tempfile_.xml";
+-    else
+-        tempfile = filename.substr(0, lastpath+1) + "_tempfile_.xml";
++    // prepare a temporary file for asset loading
++    char tempdir_template[] = "/tmp/testxml_XXXXXX";
++    char* tempdir = mkdtemp(tempdir_template);
++    if ( !tempdir )
++        return finish("Could not create temporary directory", m, d);
++    std::string tempfile = std::string(tempdir) + "/model.xml";
+ 
+     // save
+     if( !mj_saveLastXML(tempfile.c_str(), m, error, 1000) )
+@@ -166,6 +165,7 @@
+     // delete temp model and file
+     mj_deleteModel(mtemp);
+     remove(tempfile.c_str());
++    remove(tempdir);
+ 
+     // finalize
+     return finish();
