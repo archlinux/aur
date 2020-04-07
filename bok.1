@@ -1,0 +1,150 @@
+.\" Manpage for bok.
+.\" Contact andrew@andrewkhill.com to correct errors or typos
+.\" Or just fix it yourself and submit a PR!
+.TH man 1 "06 April 2020" "1.0" "bok man page"
+.SH NAME
+bok \- manage personal journals
+.SH SYNOPSIS
+.SY bok
+.RI < command >
+.RI [ arg ]
+.YS
+.SH DESCRIPTION
+.B bok
+is a simple shellscript for the management of personal journals.
+
+.B bok
+stores your journal as a directory tree rooted in
+.IR $BOK_DIR ,
+which is
+.I ~/journal
+by default.
+The entry for any particular date is a text file at
+.IR $BOK_DIR/YEAR/MONTH/DAY .
+For example, the entry for April 20, 2020 would be found in
+.IR $BOK_DIR/2020/04/20 .
+
+Each journal file will begin with the date as its first line.
+The second line of the file is reserved for whitespace-separated
+.IR tags ,
+which are useful for categorizing your journal entries.
+
+The journal opens up for viewing in
+.BR less ,
+with custom keybindings applied via
+.BR lesskey .
+The config for these is found at
+.IR $BOK ,
+which is
+.I ~/.bokrc
+by default.
+
+.SH COMMANDS
+.SY bok
+.I new
+
+Opens today's journal file in
+.IR $EDITOR ,
+creating it if it does not yet exist.
+.YS
+
+.SY bok
+.I edit
+.RI [ date ]
+
+Opens
+.IR date 's
+journal file in
+.IR $EDITOR ,
+creating it if it does not yet exist.
+.I date
+can be any format accepted by the standard
+.B date
+terminal program.
+If no value is supplied for
+.IR date ,
+it will simply open today's entry.
+.YS
+
+.SY bok
+.I view
+.RI [ date ]
+
+Open the journal in the view dialog,
+navigating to the entry for
+.IR date .
+
+.SY bok
+.I search
+.RI [ regex ]
+
+Search the whole journal for matches to
+.IR regex .
+.YS
+
+.SY bok
+.I searcht
+.RI [ regex ]
+
+Search the journal by tag.
+Basically the same behavior as
+.B bok
+.BR search ,
+but limited to only the second line of each file
+(which is reserved for tags).
+.YS
+
+.SY bok
+.I searchv
+.RI [ regex ]
+
+Search the journal for matches to
+.IR regex ,
+and open them in the view dialog.
+.YS
+
+.SY bok
+.I searchtv
+.RI [ tag ]
+.SY bok
+.I searchvt
+.RI [ tag ]
+
+Search the journal for entries with
+.IR tag ,
+and open them in the view dialog.
+
+.SH KEYBINDINGS
+
+The default keybindings for the view dialog are:
+
+.SY h
+previous entry
+.SY l
+next entry
+.SY j
+scroll down
+.SY k
+scroll up
+.SY q
+quit
+.YS
+
+.SH SEE ALSO
+date(1), grep(1)
+
+.SH BUGS
+
+Opening an entry with
+.B bok view
+results in the first entry having some text like ":2" shown at the beginning of the file.
+Flipping to another entry and back, this text will no longer appear.
+
+If you already use a custom
+.B lesskey
+configuration, opening the view dialog in
+.B bok
+will restore the default keybindings.
+
+.SH AUTHOR
+Andrew Hill (andrew@andrewkhill.com)

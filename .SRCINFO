@@ -1,0 +1,16 @@
+pkgbase = bok
+	pkgdesc = A simple shellscript to manage personal journals
+	pkgver = v1.0.1.g9cc54d9
+	pkgrel = 1
+	url = https://github.com/astroengisci/bok
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = sh
+	provides = bok
+	conflicts = bok
+	source = git+https://github.com/astroengisci/bok
+	md5sums = SKIP
+
+pkgname = bok
+
