@@ -1,7 +1,7 @@
 pkgbase = rocm-cmake
 	pkgdesc = CMake modules for common build tasks needed for the ROCm software stack
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/rocm-cmake
 	arch = x86_64
 	license = MIT
