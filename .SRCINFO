@@ -1,7 +1,7 @@
 pkgbase = gtd-free
 	pkgdesc = Personal TODO/action manager inspired by GTD (Getting Things Done) method by David Allen.
 	pkgver = 0.6beta
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gtd-free.sourceforge.net/
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = gtd-free
 	source = GTD-Free.desktop
 	md5sums = cab7f444102878e3571f8418b96bd42d
 	md5sums = b03000546f90b83cb1da29dd44e78191
-	md5sums = 373d4682614bdaf9e5c97a6c7bb1b8eb
+	md5sums = 73ee2f5da892a4bc3abbad56b314f53e
 
 pkgname = gtd-free
 
