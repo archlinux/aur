@@ -1,7 +1,7 @@
 # Maintainer: Dmitry Valter <`echo ZHZhbHRlciA8YXQ+IHByb3Rvbm1haWwgPGRvdD4gY29tCg== | base64 -d`>
 
 pkgname=drawio-desktop
-pkgver=12.9.3
+pkgver=12.9.9
 pkgrel=1
 pkgdesc='Diagram drawing application built on web technology'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=(electron libnotify)
 makedepends=(yarn ant)
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
         "drawio-desktop-$pkgver.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v$pkgver.tar.gz")
-sha256sums=('28ffb1600c72fc89fdd21618e59b55d4736dcb15e1e00c5e0523e4e75e6b3b39'
-            'c09ab901e13b46180b2946b91c089ddfff282ef0d10056626098e13f98e8f60e')
+sha256sums=('f6ce240ab383a4a0269c8e4b1ebd4f69120137bcb07f44d791c3e2fceb2af120'
+            'a381aea4a5c58bff71d9efa0fd71cca2eb84673e7908cfefff598827f21e7c80')
 
 build() {
   cd "$srcdir/drawio-$pkgver"/etc/build
@@ -88,6 +88,8 @@ package() {
 
   # create icons
   cd "$srcdir/drawio-desktop-$pkgver"
+  # fix 512px icon path
+  mv build/{515x512,512x512}.png
   find 'build' -regex '.*/[0-9]+x[0-9]+\.png' |
   grep -o '[0-9]\+' | 
   sort -u |
