@@ -1,0 +1,25 @@
+pkgbase = python-pinyin
+	pkgdesc = Chinese to Pinyin python library
+	pkgver = 0.37.0
+	pkgrel = 1
+	url = https://pypinyin.readthedocs.io
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-argparse
+	depends = python-bumpversion
+	depends = mypy
+	depends = python-pre-commit
+	depends = python-pytest
+	depends = python-pytest-cov
+	depends = python-path-and-address
+	depends = python-pytest-randomly
+	depends = python-sphinx
+	depends = python-tox
+	depends = twine
+	depends = python-wheel
+	source = https://github.com/mozillazg/python-pinyin/archive/v0.37.0.tar.gz
+	md5sums = 77bafcf3aa45f1e9255f042b57e29242
+
+pkgname = python-pinyin
+
