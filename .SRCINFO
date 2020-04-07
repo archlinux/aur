@@ -1,0 +1,20 @@
+pkgbase = python-sqlalchemy-1.3.13
+	pkgver = 1.3.13
+	pkgrel = 1
+	url = https://www.sqlalchemy.org/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest-runner
+	checkdepends = python-pytest-xdist
+	checkdepends = python-mock
+	makedepends = python-setuptools
+	provides = python-sqlalchemy=1.3.13
+	conflicts = python-sqlalchemy
+	source = https://pypi.io/packages/source/S/SQLAlchemy/SQLAlchemy-1.3.13.tar.gz
+	sha512sums = 43ed4fe3505dab775996dc4b01ea729069dee3969f72188f130a942212252d97acb721e51e1a974a2756fdd62b8bf2c626a33f6913d585f669154212da3b783a
+
+pkgname = python-sqlalchemy-1.3.13
+	pkgdesc = Python SQL toolkit and Object Relational Mapper
+	depends = python
+	optdepends = python-psycopg2: connect to PostgreSQL database
+
