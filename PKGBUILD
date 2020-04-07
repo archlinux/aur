@@ -1,5 +1,5 @@
 # Maintainer: Nathaniel Chin <thegamingorangutans+aur at gmail.com>
-# Original: Daniel Bermond < gmail-com: danielbermond > https://aur.archlinux.org/packages/ffmpeg-full-git
+# Original: Daniel Bermond <dbermond@archlinux.org> > https://aur.archlinux.org/packages/ffmpeg-full-git
 # Contributor: Marko Korhonen <reekymarko at reekynet.com>
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
