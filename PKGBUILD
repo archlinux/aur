@@ -7,7 +7,7 @@
 
 pkgname=mythtv
 pkgver=31.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A Homebrew PVR project"
 arch=('any')
@@ -23,7 +23,8 @@ optdepends=('glew: for GPU commercial flagging'
             'mariadb: Database-Backend for server deployment'
             'mariadb-clients: Database-Frontend for client deployment'
             'python-requests: for metadata-lookup / cover art'
-            'python-requests-cache: for metadata-lookup / cover art')
+            'python-requests-cache: for metadata-lookup / cover art'
+            'xmltv>0.6.1: for Schedule Direct TV listings')
 conflicts=('myththemes' 'mythplugins-mythvideo')
 replaces=('myththemes' 'mythplugins-mythvideo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MythTV/$pkgname/archive/v$pkgver.tar.gz"

@@ -1,7 +1,7 @@
 pkgbase = mythtv
 	pkgdesc = A Homebrew PVR project
 	pkgver = 31.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mythtv.org/
 	arch = any
@@ -41,6 +41,7 @@ pkgbase = mythtv
 	optdepends = mariadb-clients: Database-Frontend for client deployment
 	optdepends = python-requests: for metadata-lookup / cover art
 	optdepends = python-requests-cache: for metadata-lookup / cover art
+	optdepends = xmltv>0.6.1: for Schedule Direct TV listings
 	conflicts = myththemes
 	conflicts = mythplugins-mythvideo
 	replaces = myththemes
