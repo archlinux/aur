@@ -5,7 +5,7 @@
 _i3ipcpp_ver=0.5
 
 pkgname=xkb-switch-i3
-pkgver=1.6.1
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Program that allows to query and change the XKB layout state (with i3wm auto-switch mode)'
 conflicts=('xkb-switch')
@@ -19,7 +19,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/zebradil/${pkgname}/archive/${pkgver}.tar.gz"
     "i3ipcpp-${_i3ipcpp_ver}.tar.gz::https://github.com/drmgc/i3ipcpp/archive/v${_i3ipcpp_ver}.tar.gz"
 )
-sha1sums=('eb33343dcb52757240539bd72ef053611c5e5b3c'
+sha1sums=('5e8be40b9f0d9dfaa595798588bf11276eed46fc'
           '4022aa1c0c14519c3c5f9b7e82d82fa503b4959c')
 
 build() {
