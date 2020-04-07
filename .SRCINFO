@@ -1,0 +1,16 @@
+pkgbase = zsh-z-git
+	pkgdesc = Jump quickly to directories that you have visited "frecently." A native ZSH port of z.sh.
+	pkgver = 220.e138de5
+	pkgrel = 1
+	url = https://github.com/agkozak/zsh-z
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	provides = zsh-z
+	conflicts = zsh-z
+	source = git+https://github.com/agkozak/zsh-z
+	sha512sums = SKIP
+
+pkgname = zsh-z-git
+
