@@ -3,7 +3,7 @@
 # Contributor: mareex <marcus dot behrendt dot 86 at gmail dot com>
 
 pkgname=gnome-shell-extension-lockkeys-git
-pkgver=r91.0bf0917
+pkgver=r130.328c44f
 pkgrel=1
 pkgdesc="Lock key state indicator for GNOME Shell."
 arch=('any')
@@ -15,12 +15,6 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}::git+${url}")
 sha512sums=('SKIP')
-_branch=master
-
-prepare() {
-  cd "${pkgname%-*}"
-  git checkout ${_branch}
-}
 
 pkgver() {
   cd "${pkgname%-*}"

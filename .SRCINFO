@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-lockkeys-git
 	pkgdesc = Lock key state indicator for GNOME Shell.
-	pkgver = r91.0bf0917
+	pkgver = r130.328c44f
 	pkgrel = 1
 	url = https://github.com/kazysmaster/gnome-shell-extension-lockkeys
 	arch = any
