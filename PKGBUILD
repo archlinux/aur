@@ -12,7 +12,7 @@ makedepends=('go-pie' 'git' 'pandoc')
 optdepends=('bash-completion: for bash completions'
             'fzf: Fuzzy Finder integration for bash-completion'
             'fish: for fish completions')
-conflicts=("python-$pkgname" "$pkgname-bash-git" "$pkgname-git")
+conflicts=("python-$pkgname" "$pkgname-bash-git")
 replaces=("python-$pkgname")
 backup=("etc/$pkgname/conf.yml")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
