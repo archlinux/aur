@@ -3,7 +3,7 @@
 # Contributor: Yonathan Dossow <ydossow@archlinux.cl>
 
 pkgname=jss
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 pkgdesc='Java interface to NSS'
 arch=('x86_64')
@@ -14,9 +14,9 @@ makedepends=('java-environment' 'cmake')
 source=("https://github.com/dogtagpki/jss/archive/v${pkgver}.tar.gz"
         'lang3.patch'
         'paths.patch')
-sha512sums=('53c12822b980f6dcaf5616366834fe4eaee07d84feae53096aa0ea142146e90d375910456d8192068cde5e63c3b60ded87862af50ea89c6b64224e8c105e00dd'
-            '8542994a2fc908e8aef73556753cfd0b7afe92200987654a8290c7aa5aa7dd1dbca618859891f5c5f02147d950ef5f00a3cd2fe40ed2d1b37c0da982e9720ee6'
-            '93a5ad83c590d82283fe83d08e9c9b2bb489b0b89361aed9eb86163d59cc74dd07b63905d36c11e3181f01377b270839ce68600fcec7f31d2ce59c780a181499')
+sha512sums=('6c45b67c40737ee7bbc9ad1db8a5ed233b050697f9c048e1a49cc541de889416afd36b2c9bcdc44a52d10b0c75f036e22155a5ee95869fdf31772683637a27b1'
+            '686e88c96be5bb18b88a0ac922aec2779a41e771830d904a130d983962b642bcae0cbcaba74491d7948ea02ec447be8529fc8fa23c24d540e8454b53c10bab15'
+            'b2921cf6a18e1b9adf4d246bc773aaa85d9d7f2fe19a6605deb8d2e63309dcd9661720b1b102fae0c1a9f6a618822a4e92d659568fc49f2d3685826cbfb1fc05')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,19 +1,19 @@
-diff -Naur jss-4.6.2-orig jss-4.6.2
-diff -Naur jss-4.6.2-orig/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java jss-4.6.2/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java
---- jss-4.6.2-orig/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java	2020-02-11 09:12:00.240403878 -0500
-+++ jss-4.6.2/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java	2020-02-11 09:12:44.051524409 -0500
-@@ -35,7 +35,7 @@
+diff -Naur jss-4.6.3 jss-4.6.3-fixed
+diff -Naur jss-4.6.3/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java jss-4.6.3-fixed/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java
+--- jss-4.6.3/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java	2020-02-12 16:05:04.000000000 -0500
++++ jss-4.6.3-fixed/org/mozilla/jss/netscape/security/pkcs/PKCS12Util.java	2020-04-07 11:52:05.971642170 -0400
+@@ -34,7 +34,7 @@
+ import java.util.List;
  import java.util.ArrayList;
  
- import org.apache.commons.codec.binary.Hex;
 -import org.apache.commons.lang.StringUtils;
 +import org.apache.commons.lang3.StringUtils;
  import org.mozilla.jss.CryptoManager;
  import org.mozilla.jss.asn1.ANY;
  import org.mozilla.jss.asn1.ASN1Value;
-diff -Naur jss-4.6.2-orig/org/mozilla/jss/netscape/security/util/Cert.java jss-4.6.2/org/mozilla/jss/netscape/security/util/Cert.java
---- jss-4.6.2-orig/org/mozilla/jss/netscape/security/util/Cert.java	2020-02-11 09:12:00.240403878 -0500
-+++ jss-4.6.2/org/mozilla/jss/netscape/security/util/Cert.java	2020-02-11 09:12:44.051524409 -0500
+diff -Naur jss-4.6.3/org/mozilla/jss/netscape/security/util/Cert.java jss-4.6.3-fixed/org/mozilla/jss/netscape/security/util/Cert.java
+--- jss-4.6.3/org/mozilla/jss/netscape/security/util/Cert.java	2020-02-12 16:05:04.000000000 -0500
++++ jss-4.6.3-fixed/org/mozilla/jss/netscape/security/util/Cert.java	2020-04-07 11:51:15.390240174 -0400
 @@ -28,7 +28,7 @@
  import java.util.List;
  import java.util.Map;
@@ -23,9 +23,9 @@ diff -Naur jss-4.6.2-orig/org/mozilla/jss/netscape/security/util/Cert.java jss-4
  import org.mozilla.jss.crypto.SignatureAlgorithm;
  import org.mozilla.jss.netscape.security.pkcs.PKCS7;
  import org.mozilla.jss.netscape.security.x509.X509CRLImpl;
-diff -Naur jss-4.6.2-orig/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java jss-4.6.2/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java
---- jss-4.6.2-orig/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java	2020-02-11 09:12:00.250404134 -0500
-+++ jss-4.6.2/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java	2020-02-11 09:12:44.051524409 -0500
+diff -Naur jss-4.6.3/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java jss-4.6.3-fixed/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java
+--- jss-4.6.3/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java	2020-02-12 16:05:04.000000000 -0500
++++ jss-4.6.3-fixed/org/mozilla/jss/netscape/security/x509/RevocationReasonAdapter.java	2020-04-07 11:51:15.390240174 -0400
 @@ -19,7 +19,7 @@
  
  import javax.xml.bind.annotation.adapters.XmlAdapter;
@@ -35,9 +35,9 @@ diff -Naur jss-4.6.2-orig/org/mozilla/jss/netscape/security/x509/RevocationReaso
  
  /**
   * The RevocationReasonAdapter class provides custom marshaling for RevocationReason.
-diff -Naur jss-4.6.2-orig/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java jss-4.6.2/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java
---- jss-4.6.2-orig/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java	2020-02-11 09:12:00.260404387 -0500
-+++ jss-4.6.2/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java	2020-02-11 09:12:44.051524409 -0500
+diff -Naur jss-4.6.3/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java jss-4.6.3-fixed/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java
+--- jss-4.6.3/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java	2020-02-12 16:05:04.000000000 -0500
++++ jss-4.6.3-fixed/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.java	2020-04-07 11:51:15.400240452 -0400
 @@ -24,7 +24,7 @@
  import java.util.List;
  import java.util.Set;
@@ -47,9 +47,9 @@ diff -Naur jss-4.6.2-orig/org/mozilla/jss/provider/java/security/JSSKeyStoreSpi.
  import org.mozilla.jss.CryptoManager;
  import org.mozilla.jss.NoSuchTokenException;
  import org.mozilla.jss.NotInitializedException;
-diff -Naur jss-4.6.2-orig/org/mozilla/jss/tests/UTF8ConverterTest.java jss-4.6.2/org/mozilla/jss/tests/UTF8ConverterTest.java
---- jss-4.6.2-orig/org/mozilla/jss/tests/UTF8ConverterTest.java	2020-02-11 09:12:00.270404646 -0500
-+++ jss-4.6.2/org/mozilla/jss/tests/UTF8ConverterTest.java	2020-02-11 09:12:44.051524409 -0500
+diff -Naur jss-4.6.3/org/mozilla/jss/tests/UTF8ConverterTest.java jss-4.6.3-fixed/org/mozilla/jss/tests/UTF8ConverterTest.java
+--- jss-4.6.3/org/mozilla/jss/tests/UTF8ConverterTest.java	2020-02-12 16:05:04.000000000 -0500
++++ jss-4.6.3-fixed/org/mozilla/jss/tests/UTF8ConverterTest.java	2020-04-07 11:51:15.410240729 -0400
 @@ -6,7 +6,7 @@
  import java.io.ByteArrayOutputStream;
  import java.io.OutputStreamWriter;
