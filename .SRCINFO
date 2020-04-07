@@ -1,7 +1,7 @@
 pkgbase = xfce4-panel-devel
 	pkgdesc = Panel for the Xfce desktop environment
 	pkgver = 4.15.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.xfce.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = xfce4-panel-devel
 	makedepends = intltool
 	makedepends = gtk-doc
 	makedepends = gobject-introspection
-	makedepends = vala0.46
+	makedepends = vala0.46>=0.46.7-2
 	makedepends = python
 	depends = exo
 	depends = garcon

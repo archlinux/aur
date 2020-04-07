@@ -3,7 +3,7 @@
 _pkgname=xfce4-panel
 pkgname=${_pkgname}-devel
 pkgver=4.15.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Panel for the Xfce desktop environment"
 arch=('i686' 'x86_64')
 url="https://www.xfce.org/"
@@ -11,7 +11,7 @@ license=('GPL2')
 groups=('xfce4-devel')
 depends=('exo' 'garcon' 'libxfce4ui>=4.15.1' 'xfconf' 'libwnck3' 'hicolor-icon-theme'
          'desktop-file-utils')
-makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala0.46' 'python') #for gdbus-codegen
+makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'vala0.46>=0.46.7-2' 'python') #for gdbus-codegen
 # won't build with vala 0.48: see https://bugzilla.xfce.org/show_bug.cgi?id=16426#c9. Will backport once they commit a working fix.
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
@@ -31,8 +31,6 @@ build() {
     --enable-gio-unix \
     --enable-gtk-doc \
     --disable-debug
-  # Yuck, but it doesn't seem to want to pick this up if I export VAPIGEN
-  find . -type f -name Makefile -exec sed -i 's:VAPIGEN = /usr/bin/vapigen-0.48:VAPIGEN = /usr/bin/vapigen-0.46:g' '{}' \;
   make
 }
 
