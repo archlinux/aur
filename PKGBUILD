@@ -5,11 +5,12 @@ _pkgver=4.19.106
 _rtpatchver=46
 pkgbase=linux-rt-lts
 pkgver=${_pkgver}.${_rtpatchver}
-pkgrel=1
+pkgrel=2
+pkgdesc='Linux RT LTS'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
 license=('GPL2')
-makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'inetutils' 'kmod' 'libelf'
+makedepends=('bc' 'git' 'graphviz' 'imagemagick' 'kmod' 'libelf'
 'python-sphinx' 'python-sphinx_rtd_theme' 'xmlto')
 options=('!strip')
 _srcname=linux-${_pkgver}
@@ -43,10 +44,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd $_srcname
 
-  # apply realtime patch
-  msg "applying patch-${_pkgver}-rt${_rtpatchver}.patch"
-  patch -Np1 -i "../patch-${_pkgver}-rt${_rtpatchver}.patch"
-
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
@@ -56,10 +53,16 @@ prepare() {
   for src in "${source[@]}"; do
     src="${src%%::*}"
     src="${src##*/}"
+    # picking up the RT patch
+    src="${src//patch.xz/patch}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  # removing cdomain configuration (incompatible with python-sphinx >= 3.0.0):
+  # https://github.com/sphinx-doc/sphinx/issues/7421
+  sed -e "s/'cdomain',//" -i Documentation/conf.py
 
   echo "Setting config..."
   cp ../config .config
@@ -67,16 +70,17 @@ prepare() {
 #  make menuconfig # CLI menu for configuration
 
   make -s kernelrelease > version
-  echo "Prepared %s version %s" "$pkgbase" "$(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make bzImage modules htmldocs
+  make all
+  make htmldocs
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -104,7 +108,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -122,7 +126,7 @@ _package-headers() {
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
 
-  # this is gone in v5.3
+  # TODO: remove with linux > 5.3
   mkdir "$builddir/.tmp_versions"
 
   echo "Installing headers..."
@@ -185,7 +189,7 @@ _package-headers() {
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Documentation for the $pkgdesc kernel"
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

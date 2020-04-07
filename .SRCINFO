@@ -1,6 +1,7 @@
 pkgbase = linux-rt-lts
+	pkgdesc = Linux RT LTS
 	pkgver = 4.19.106.46
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
@@ -8,7 +9,6 @@ pkgbase = linux-rt-lts
 	makedepends = git
 	makedepends = graphviz
 	makedepends = imagemagick
-	makedepends = inetutils
 	makedepends = kmod
 	makedepends = libelf
 	makedepends = python-sphinx
@@ -35,7 +35,7 @@ pkgbase = linux-rt-lts
 	sha256sums = a13581d3c6dc595206e4fe7fcf6b542e7a1bdbe96101f0f010fc5be49f99baf2
 
 pkgname = linux-rt-lts
-	pkgdesc = The Linux-rt-lts kernel and modules
+	pkgdesc = The Linux RT LTS kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -43,8 +43,8 @@ pkgname = linux-rt-lts
 	optdepends = linux-firmware: firmware images needed for some devices
 
 pkgname = linux-rt-lts-headers
-	pkgdesc = Header files and scripts for building modules for Linux-rt-lts kernel
+	pkgdesc = Headers and scripts for building modules for the Linux RT LTS kernel
 
 pkgname = linux-rt-lts-docs
-	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-rt-lts kernel
+	pkgdesc = Documentation for the Linux RT LTS kernel
 
