@@ -17,8 +17,9 @@ sha256sums=('d310338eaaeae6db3673021c0ec2ec23b9cfb9f9b9d1eb8854d2d60b3a6490f9')
 noextract=('pciscsi.exe')
 
 build() {
-        lha xi pciscsi.exe pci-scsi.exe
-        lha xi pci-scsi.exe nt/wd7296a.sys
+        lha l --convert-filename-case pciscsi.exe 2> /dev/null && local lha_opts="--convert-filename-case"
+        lha xi $lha_opts pciscsi.exe pci-scsi.exe
+        lha xi $lha_opts pci-scsi.exe nt/wd7296a.sys
         dd if=wd7296a.sys of=wd719x-risc.bin bs=1 skip=5760 count=14336
         dd if=wd7296a.sys of=wd719x-wcs.bin bs=1 skip=20096 count=514
 }
