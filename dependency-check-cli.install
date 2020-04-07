@@ -1,0 +1,16 @@
+post_install() {
+	groupadd dependencycheck
+	chown -R root:dependencycheck /opt/dependency-check/data
+	chmod -R g+w /opt/dependency-check/data
+	echo "    Users should be added to the 'dependencycheck' group to be able to perform vulnerability database updates."
+	echo "    $ sudo gpasswd -a <username> dependencycheck"
+}
+
+post_upgrade() {
+	chown -R root:dependencycheck /opt/dependency-check/data
+	chmod -R g+w /opt/dependency-check/data
+}
+
+post_remove() {
+	groupdel dependencycheck
+}
