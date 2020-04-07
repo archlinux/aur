@@ -1,4 +1,4 @@
-From 8179539a9e51b455bb1bafdeece1dfdcc18fd85e Mon Sep 17 00:00:00 2001
+From 81806dda39f0c8c42f009534f0f7c8ea2adbe263 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 01/16] Restore transparency
@@ -152,10 +152,10 @@ index 05e9f8198549..c9e7c895d700 100644
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
  #define TERMINAL_SETTING_ENABLE_MENU_BAR_ACCEL_KEY      "menu-accelerator-enabled"
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index dc9f84471867..29d72df8883c 100644
+index 33fbb5dfbdb9..1a6ec56f8f5f 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
-@@ -1059,7 +1059,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1058,7 +1058,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_COLORS_SET_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_BACKGROUND_COLOR_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_FOREGROUND_COLOR_KEY) ||
@@ -166,7 +166,7 @@ index dc9f84471867..29d72df8883c 100644
      update_color_scheme (screen);
  
    if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
-@@ -1140,6 +1142,8 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1139,6 +1141,8 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = NULL, *cursor_fgp = NULL;
    GdkRGBA *highlight_bgp = NULL, *highlight_fgp = NULL;
    GtkStyleContext *context;
@@ -175,7 +175,7 @@ index dc9f84471867..29d72df8883c 100644
    gboolean use_theme_colors;
  
    context = gtk_widget_get_style_context (widget);
-@@ -1183,6 +1187,18 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1182,6 +1186,18 @@ update_color_scheme (TerminalScreen *screen)
      }
  
    colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
@@ -194,7 +194,7 @@ index dc9f84471867..29d72df8883c 100644
    vte_terminal_set_colors (VTE_TERMINAL (screen), &fg, &bg,
                             colors, n_colors);
    vte_terminal_set_color_bold (VTE_TERMINAL (screen), boldp);
-@@ -1190,6 +1206,10 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1189,6 +1205,10 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen), cursor_fgp);
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
@@ -234,7 +234,7 @@ index 7a8953c50388..a3d77bf6719d 100644
 2.24.1
 
 
-From 04bfcefd7f23d45e4cbdc74391bcdca44ee7f49a Mon Sep 17 00:00:00 2001
+From d28e50c368947701929b7572a2227e03683fa4d5 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 02/16] window: Make the drawing robust across all themes
@@ -296,7 +296,7 @@ index a3d77bf6719d..36d155a9e420 100644
 2.24.1
 
 
-From 676d1b2e13c497d0380eb7fd7c0c5a426ef96f1b Mon Sep 17 00:00:00 2001
+From edcd4a939930d43593266632962ca7ec80a57cc1 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 03/16] screen, window: Extra padding around transparent
@@ -309,7 +309,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 29d72df8883c..92b0053de763 100644
+index 1a6ec56f8f5f..5b5556cd8b2f 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
 @@ -154,6 +154,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
@@ -329,7 +329,7 @@ index 29d72df8883c..92b0053de763 100644
  
    terminal_class->child_exited = terminal_screen_child_exited;
  
-@@ -1127,6 +1130,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1126,6 +1129,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
    g_object_thaw_notify (object);
  }
  
@@ -362,7 +362,7 @@ index 29d72df8883c..92b0053de763 100644
  static void
  update_color_scheme (TerminalScreen *screen)
  {
-@@ -1142,7 +1171,6 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1141,7 +1170,6 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = NULL, *cursor_fgp = NULL;
    GdkRGBA *highlight_bgp = NULL, *highlight_fgp = NULL;
    GtkStyleContext *context;
@@ -370,7 +370,7 @@ index 29d72df8883c..92b0053de763 100644
    gboolean transparent;
    gboolean use_theme_colors;
  
-@@ -1207,9 +1235,7 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1206,9 +1234,7 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
  
@@ -431,7 +431,7 @@ index 36d155a9e420..c0219d872725 100644
 2.24.1
 
 
-From 9b9d2dca0b998a1e5076225a764621e7aea14714 Mon Sep 17 00:00:00 2001
+From 441a3383dab6b081eddd5a46f41d938d0f5aa8d3 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 11/16] Restore translations for setting a title and
@@ -523,13 +523,14 @@ Subject: [PATCH 11/16] Restore translations for setting a title and
  po/th.po          | 20 ++++++++++----------
  po/tr.po          | 12 ++++++++++++
  po/ug.po          |  4 ++--
+ po/uk.po          | 15 +++++++++++++++
  po/vi.po          | 15 +++++++++------
  po/wa.po          | 12 ++++++------
  po/xh.po          | 12 ++++++------
  po/zh_CN.po       | 15 +++++++++------
  po/zh_HK.po       | 15 +++++++++------
  po/zh_TW.po       | 15 +++++++++------
- 92 files changed, 715 insertions(+), 351 deletions(-)
+ 92 files changed, 719 insertions(+), 343 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 3445d96da657..ee992f0712a5 100644
@@ -926,7 +927,7 @@ index a6e8fb4250dc..c9ed8508228d 100644
 +msgid "Set Title"
 +msgstr "Estableix el títol"
 diff --git a/po/cs.po b/po/cs.po
-index bbb3fd679c8a..98125e7209aa 100644
+index d592ea40910c..7e394112d4a6 100644
 --- a/po/cs.po
 +++ b/po/cs.po
 @@ -2297,3 +2297,15 @@ msgstr ""
@@ -992,10 +993,10 @@ index 31d145f37174..ebfaaae38ecf 100644
 +msgid "Transparent background"
 +msgstr "Gennemsigtig baggrund"
 diff --git a/po/de.po b/po/de.po
-index 4d5852c2f0b1..868326bba955 100644
+index a5f4846745e9..8d9a3bb05d49 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -2384,3 +2384,15 @@ msgstr "Fenster _schließen"
+@@ -2507,3 +2507,15 @@ msgstr "Fenster _schließen"
  
  #~ msgid "_Quit"
  #~ msgstr "_Beenden"
@@ -1555,7 +1556,7 @@ index 2d7dc5b14008..8d3d0529df61 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "एस/कुंजी चैलेंज प्रतिक्रिया"
 diff --git a/po/hr.po b/po/hr.po
-index 4bbb3629a82a..a440505c5203 100644
+index 881b7cc7f3f3..3d2cba35a617 100644
 --- a/po/hr.po
 +++ b/po/hr.po
 @@ -2710,3 +2710,13 @@ msgstr "_Zatvori prozor"
@@ -1679,11 +1680,11 @@ index 69608253837f..87d927431d7a 100644
 +msgid "Set Title"
 +msgstr "タイトルを設定する"
 diff --git a/po/ka.po b/po/ka.po
-index 2a0bc91fad40..c289e30eb4fa 100644
+index e0dd79f280a2..887d395ce150 100644
 --- a/po/ka.po
 +++ b/po/ka.po
 @@ -219,8 +219,8 @@ msgid "<b>Background</b>"
- msgstr "b>ფონი</b>"
+ msgstr "<b>ფონი</b>"
  
  #: ../src/gnome-terminal.glade2.h:3
 -msgid "<b>Command</b>"
@@ -2383,10 +2384,10 @@ index d5f10e4f2cbd..cd2f908fb579 100644
 +msgid "Transparent background"
 +msgstr "Fundo transparente"
 diff --git a/po/ro.po b/po/ro.po
-index 6fcd5af03629..cdf6100c8dd3 100644
+index e76d6df41aae..49fd8401e70d 100644
 --- a/po/ro.po
 +++ b/po/ro.po
-@@ -3376,8 +3376,8 @@ msgstr "Î_nchide fereastra"
+@@ -3484,8 +3484,8 @@ msgstr "Î_nchide fereastra"
  #~ msgid "_Solid color"
  #~ msgstr "Culoare _solidă"
  
@@ -2469,10 +2470,10 @@ index adca7d5acba9..6379cee7f0a3 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/sk.po b/po/sk.po
-index baf4db0fe376..7b4ce4bfd9bc 100644
+index 06ffff4ee055..ab62c01f8f85 100644
 --- a/po/sk.po
 +++ b/po/sk.po
-@@ -2959,3 +2959,15 @@ msgstr "_Zavrieť okno"
+@@ -3048,3 +3048,15 @@ msgstr "_Zavrieť okno"
  #~ "\n"
  #~ "Viac informácii o jednotlivých príkazoch získate pomocou „%s PRÍKAZ --"
  #~ "help“.\n"
@@ -2924,6 +2925,29 @@ index 313f76b98eae..be6089762082 100644
  
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
+diff --git a/po/uk.po b/po/uk.po
+index a7eb5ab5b9c1..9c6667ba0399 100644
+--- a/po/uk.po
++++ b/po/uk.po
+@@ -2399,3 +2399,18 @@ msgstr ""
+ #: src/terminal-window.c:3224
+ msgid "C_lose Window"
+ msgstr "Закр_ити вікно"
++
++msgid "Title"
++msgstr "Заголовок"
++
++msgid "_Title:"
++msgstr "За_головок:"
++
++msgid "Set Title"
++msgstr "Встановлення заголовка"
++
++msgid "_Set Title…"
++msgstr "_Встановити заголовок…"
++
++msgid "Transparent background"
++msgstr "Прозоре тло"
 diff --git a/po/vi.po b/po/vi.po
 index d5f27612f4be..8bb576b6d875 100644
 --- a/po/vi.po
@@ -2969,7 +2993,7 @@ index d5f27612f4be..8bb576b6d875 100644
 +msgid "Transparent background"
 +msgstr "Nền trong suốt"
 diff --git a/po/wa.po b/po/wa.po
-index 0e0a6a752b6d..5ddeb2393654 100644
+index 2a29945bbc74..4f1c57c71e94 100644
 --- a/po/wa.po
 +++ b/po/wa.po
 @@ -224,8 +224,8 @@ msgid "<b>Background</b>"
@@ -3006,7 +3030,7 @@ index 0e0a6a752b6d..5ddeb2393654 100644
  #: ../src/terminal-window.c:1020
  msgid "Set _Character Encoding"
 diff --git a/po/xh.po b/po/xh.po
-index 44a8e21c7842..12aa6d190d99 100644
+index cb78ec67db2d..a4f3b4ddcfb6 100644
 --- a/po/xh.po
 +++ b/po/xh.po
 @@ -217,8 +217,8 @@ msgid "<b>Background</b>"
