@@ -23,6 +23,6 @@ package() {
     install -d "$pkgdir"/usr/share/icons/Breeze-Adapta-Cursor/
     rm -r 'cursors/New Folder/'
     cp -r cursors/ "$pkgdir"/usr/share/icons/Breeze-Adapta-Cursor/
-    install -m 644 cursor.theme "$pkgdir"/usr/share/icons/Breeze-Adapta-Cursor/
-    install -m 644 index.theme "$pkgdir"/usr/share/icons/Breeze-Adapta-Cursor/
+    install -m 644 cursor.theme "$pkgdir"/usr/share/icons/Breeze-Adapta-Cursor/cursor.theme
+    install -m 644 index.theme "$pkgdir"/usr/share/icons/Breeze-Adapta-Cursor/index.theme
 }
