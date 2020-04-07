@@ -1,16 +1,22 @@
 pkgbase = starlabstheme-git
 	pkgdesc = Star Labs GNOME Shell and GTK Theme
-	pkgver = r1.4f2bcc7
+	pkgver = 1.1.3.r1345.d00eca8b0d
 	pkgrel = 1
-	url = https://github.com/StarLabsLtd/StarLabsTheme
+	url = https://starlabs.systems
 	arch = any
-	license = GPL
+	license = LGPL
+	license = CC-BY-SA-4.0
 	makedepends = git
 	makedepends = meson
 	makedepends = sassc
 	provides = starlabstheme
 	conflicts = starlabstheme
+	options = !strip
 	source = starlabstheme::git+https://github.com/StarLabsLtd/StarLabsTheme.git
+	source = git+https://github.com/kazysmaster/gnome-shell-extension-lockkeys.git
+	source = git+https://github.com/ubuntu/yaru.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = starlabstheme-backgrounds-git
@@ -23,6 +29,7 @@ pkgname = starlabstheme-extensions-git
 	depends = dconf
 	provides = starlabstheme-extensions
 	conflicts = starlabstheme-extensions
+	conflicts = gnome-shell-extension-lockkeys
 
 pkgname = starlabstheme-font-git
 	pkgdesc = Star Labs Font
@@ -74,10 +81,10 @@ pkgname = starlabstheme-session-git
 	depends = starlabstheme-icons
 	depends = starlabstheme-sounds
 	optdepends = starlabstheme-extensions
+	optdepends = starlabstheme-font
 	optdepends = gnome-shell-extension-appindicator
 	optdepends = gnome-shell-extension-desktop-icons
 	optdepends = gnome-shell-extension-dash-to-dock
-	optdepends = starlabstheme-font
 	provides = starlabstheme-session
 	conflicts = starlabstheme-session
 
