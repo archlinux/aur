@@ -1,7 +1,7 @@
 # Maintainer: Jozef Riha <jose1711 at gmail dot com>
 
 pkgname=hedgewars-hg
-pkgver=r14415+.06672690d71b+
+pkgver=r15550+.0b16baefefd1+
 pkgrel=1
 pkgdesc="Free Worms-like turn based strategy game (development version - mercurial)"
 arch=('i686' 'x86_64')
@@ -9,8 +9,8 @@ url="http://hedgewars.org"
 license=('GPL' 'custom')
 depends=('qt5-base' 'sdl2' 'sdl2_mixer' 'sdl2_image' 'sdl2_net' 'sdl2_ttf' 'lua51' 'ffmpeg' 'glut'
          'physfs' 'ghc-libs' 'haskell-entropy' 'haskell-sha' 'haskell-random' 'haskell-regex-tdfa'
-         'haskell-sandi' 'haskell-hslogger' 'haskell-utf8-string' 'haskell-vector')
-makedepends=('fpc' 'cmake' 'qt5-tools' 'ghc' 'haskell-network' 'haskell-bytestring-show'
+         'haskell-sandi' 'haskell-hslogger' 'haskell-network2.8' 'haskell-utf8-string' 'haskell-vector')
+makedepends=('fpc' 'cmake' 'qt5-tools' 'ghc' 'haskell-bytestring-show'
              'haskell-zlib' 'haskell-base-prelude' 'imagemagick' 'mesa')
 source=("${pkgname}"::'hg+https://hg.hedgewars.org/hedgewars' \
 	hedgewars.desktop \
@@ -21,13 +21,13 @@ md5sums=('SKIP'
 conflicts=('hedgewars')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
   cd ${srcdir}/${pkgname}
-  sed -i 's|set(ghc_flags|set(ghc_flags -dynamic|' gameServer/CMakeLists.txt
+  sed -i 's|set(ghc_flags|set(ghc_flags -dynamic -package network-2.8.0.1 -hide-package network-bsd|' gameServer/CMakeLists.txt
 }
 
 build() {
