@@ -1,9 +1,9 @@
-# Maintainer: M. Mastroeni The_Maxtro@hotmail.it>
+# Maintainer: M. Mastroeni <The_Maxtro AT hotmail DOT it>
 # Contributor: Xwang <xwaang1976@gmail.com>
 
 pkgname=openmodelica-git
-pkgver=1.16.0.dev.r66.gd7cc1e91f
-pkgrel=3
+pkgver=1.16.0.dev.r267.g0c0d97d31
+pkgrel=2
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -38,25 +38,18 @@ cd "$srcdir/$pkgname"
     export CPPFLAGS="$CPPFLAGS -DH5_USE_18_API"
 	./configure --prefix=/usr/ CC=clang CXX=clang++ --with-UMFPACK 
     make
-    # from there compiles OMOptim
-	# uncomment to compile OMOptim
-    #cd OMOptim
-    #autoconf
-    #./configure --prefix=/usr/ CXX=g++
-    #make
 }
  
 package() {  
-    cd "$srcdir/$pkgname"  
+    cd "$srcdir/$pkgname" 
     make install DESTDIR=${pkgdir}
    
     install -D -m644 "OMEdit/OMEditLIB/Resources/icons/omedit.ico" "${pkgdir}/usr/share/openmodelica/icons/omedit.ico"
     install -D -m644 "OMNotebook/OMNotebook/OMNotebookGUI/Resources/OMNotebook_icon.ico" "${pkgdir}/usr/share/openmodelica/icons/omnotebook.ico"
-    install -D -m644 "OMOptim/OMOptim/GUI/Resources/omoptim.ico" "${pkgdir}/usr/share/openmodelica/icons/omoptim.ico"
+#   install -D -m644 "OMOptim/OMOptim/GUI/Resources/omoptim.ico" "${pkgdir}/usr/share/openmodelica/icons/omoptim.ico"
     install -D -m644 "OMShell/OMShell/OMShellGUI/Resources/omshell.ico" "${pkgdir}/usr/share/openmodelica/icons/omshell.ico"
     install -D -m644 "OMPlot/OMPlot/OMPlotGUI/Resources/icons/omplot.ico" "${pkgdir}/usr/share/openmodelica/icons/omplot.ico"
     install -D -m644 "OMCompiler/COPYING" "${pkgdir}/usr/share/licenses/openmodelica/LICENSE"
-	# uncomment to install OMOptim
-	#cd OMOptim
-	#make install DESTDIR=${pkgdir}
+    mkdir ${pkgdir}/usr/OMSens/
+    cp -r "OMSens" "${pkgdir}/usr/" #Copy OMSens' modules in the working directory
 }

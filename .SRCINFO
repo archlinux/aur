@@ -1,7 +1,7 @@
 pkgbase = openmodelica-git
 	pkgdesc = The Open Source Modelica Suite
-	pkgver = 1.16.0.dev.r66.gd7cc1e91f
-	pkgrel = 3
+	pkgver = 1.16.0.dev.r267.g0c0d97d31
+	pkgrel = 2
 	url = https://openmodelica.org
 	arch = i686
 	arch = x86_64
