@@ -1,9 +1,10 @@
-# Maintainer: Daniel Moch <daniel AT danielmoch DOT com>
+# Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
+# Contributor: Daniel Moch <daniel AT danielmoch DOT com>
 # Contributor: gue5t <gue5t@aur.archlinux.org>
 _name=Mastodon.py
 pkgname=python-mastodon
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="python bindings for the Mastodon RPC API"
 arch=('any')
 url="https://github.com/halcy/Mastodon.py"
@@ -27,7 +28,7 @@ checkdepends=(python-pytest
               python-requests-mock
               python-pytest-vcr)
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('80701e37ca27586266fce4a1e23e1b910b883fe2c28ce9c43a16de30cb77d757')
+sha256sums=('2afddbad8b5d7326fcc8a8f8c62bfe956e34627f516b06c6694fc8c8fedc33ee')
 
 build() {
   cd ${_name}-${pkgver}
