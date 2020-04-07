@@ -1,5 +1,5 @@
 pkgbase = python-pypcd
-	pkgdesc = Pure Python module to read and write point clouds stored in the PCD file format, used by the Point Cloud Library
+	pkgdesc = Pure Python module to read and write point clouds stored in the PCD file format
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/dimatura/pypcd
