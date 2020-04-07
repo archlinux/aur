@@ -1,7 +1,7 @@
 pkgbase = geph-client
 	pkgdesc = A command-line Geph client
 	pkgver = 0.20.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/geph-official/geph2
 	arch = x86_64
 	groups = geph2
