@@ -1,11 +1,11 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
 pkgname=code-headmelted-bin
-_pkgver=1.44.0
-_date=2020-03-30
+_pkgver=1.45.0
+_date=2020-04-06
 _fdate=`date --date=$_date '+%d-%b-%y'`
 _url=https://github.com/headmelted/codebuilds/releases/download/$_fdate
-_armhf_build=1585531024
-_arm64_build=1585531075
+_armhf_build=1586135927
+_arm64_build=1586135971
 pkgver="${_pkgver}_${_date//-/}"
 pkgrel=1
 pkgdesc="Community builds of Visual Studio Code, including for ARM devices"
@@ -19,8 +19,8 @@ replaces=(vscode-headmelted-bin)
 conflicts=(code vscode-headmelted-bin)
 source_armv7h=("$_url/code-oss_$_pkgver-${_armhf_build}_armhf.deb")
 source_aarch64=("$_url/code-oss_$_pkgver-${_arm64_build}_arm64.deb")
-md5sums_armv7h=('8f62b15408974d0c78b7e35b087a4bec')
-md5sums_aarch64=('c346e8a9f870138bcb3e0a82ec13f0ce')
+md5sums_armv7h=('c0e0d75e91fe7e363bfafec253b21767')
+md5sums_aarch64=('fa74541733ba7dbcb78cd8c1fd6ebbb9')
 
 package() {
   msg2 "Extracting the data.tar.xz..."
