@@ -1,6 +1,6 @@
 pkgbase = brlcad
 	pkgdesc = An extensive 3D solid modeling system.
-	pkgver = 7.30.4
+	pkgver = 7.30.6
 	pkgrel = 0
 	url = https://brlcad.org
 	install = brlcad.install
@@ -10,12 +10,13 @@ pkgbase = brlcad
 	license = BSD
 	license = custom:BDL
 	makedepends = cmake
+	makedepends = ninja
 	makedepends = subversion
 	depends = libgl
 	depends = libxft
 	depends = libxi
 	source = build.patch
-	source = brlcad-7.30.4::svn+svn://svn.code.sf.net/p/brlcad/code/brlcad/tags/rel-7-30-4#revision=r74438
+	source = brlcad-7.30.6::svn+svn://svn.code.sf.net/p/brlcad/code/brlcad/tags/rel-7-30-6#revision=r75052
 	sha256sums = SKIP
 	sha256sums = SKIP
 
