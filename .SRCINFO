@@ -1,0 +1,16 @@
+pkgbase = tuxedo-cc-wmi
+	pkgdesc = WMI method control for TUXEDO laptops
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = http://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-cc-wmi/tuxedo-cc-wmi_0.1.2_all.deb
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	conflicts = tuxedo-wmi
+	conflicts = tuxedo-wmi-dkms
+	source = http://deb.tuxedocomputers.com/ubuntu/pool/main/t/tuxedo-cc-wmi/tuxedo-cc-wmi_0.1.2_all.deb
+	sha256sums = ee9060fd91467824cb9883d453c95e5ee84decf3cc26479231a38cb30d9b5e0a
+	sha512sums = b605d64388177aba54135db57c10204d0d2db99b9997e7cd8c85359c6dbc1b97d54c78c1ca78a1b166e0016e83ed6353e2755dd90fe4bc048d43b160a1135778
+
+pkgname = tuxedo-cc-wmi
+
