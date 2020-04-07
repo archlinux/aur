@@ -1,0 +1,16 @@
+pkgbase = ddate-git
+	pkgdesc = Perpetual date converter from Gregorian to POEE calendar
+	pkgver = 0.3.0.r0.ga52c0f7
+	pkgrel = 1
+	url = https://github.com/escondida/ddate
+	arch = x86_64
+	license = custom:PublicDomain
+	makedepends = git
+	depends = gcc-libs
+	provides = ddate
+	conflicts = ddate
+	source = git+https://github.com/escondida/ddate.git?signed
+	sha256sums = SKIP
+
+pkgname = ddate-git
+
