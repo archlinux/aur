@@ -10,7 +10,7 @@ _svt_vp9_ver='0.1.0'
 pkgname=ffmpeg-amd-full-git
 _srcname=ffmpeg
 pkgver=4.3.r97205.g3935c891e9
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD; git version)'
 arch=('i686' 'x86_64')
 url='https://www.ffmpeg.org/'
@@ -39,15 +39,14 @@ makedepends=(
         'git' 'nasm' 'opencl-headers' 'vulkan-headers' 'clang'
     # AUR:
         'decklink-sdk' 'amf-headers-git'
-)
-makedepends_x86_64=(
-    # AUR:
-        'vmaf'
+
+    # Sphinxbase
+        'texlive-latexextra'
 )
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libavresample.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full' 'ffmpeg-git')
-conflicts=('ffmpeg')
+conflicts=('ffmpeg' 'doxygen')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         "ffmpeg-full-git-add-svt-hevc-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
         "ffmpeg-full-git-add-svt-hevc-docs-${_svt_hevc_ver}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/v${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
