@@ -15,7 +15,7 @@ makedepends=('git' 'go' 'inetutils')
 conflicts=('syncthing')
 provides=('syncthing')
 arch=('i686' 'x86_64')
-source=("$pkgname-$pkgver::git+https://github.com/syncthing/syncthing.git")
+source=("$pkgname::git+https://github.com/syncthing/syncthing.git")
 sha256sums=('SKIP')
 install=${pkgname}.install
 _name=syncthing
@@ -25,7 +25,7 @@ prepare() {
 }
 
 pkgver() {
-	cd "${pkgname}-${pkgver}"
+	cd "${pkgname}"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -33,7 +33,7 @@ build() {
 	export GOPATH="${srcdir}/${pkgname}-${pkgver}"
 	cd "${srcdir}"
 	mkdir -p "src/github.com/syncthing"
-	mv "${pkgname}-${pkgver}" "src/github.com/syncthing/${_name}"
+	mv "${pkgname}" "src/github.com/syncthing/${_name}"
 	cd "src/github.com/syncthing/${_name}"
 	if [ ${CARCH}" == "i686" ] ; then
 			go run build.go -no-upgrade -goarch 386 build
