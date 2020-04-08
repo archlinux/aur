@@ -1,8 +1,8 @@
 # Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-froidzen
-pkgver=5.6.2.zen1
-pkgrel=3
+pkgver=5.6.3.zen1
+pkgrel=1
 pkgdesc='Linux ZEN with Patches'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -18,6 +18,7 @@ _srcname=zen-kernel
 source=(
   "$_srcname::git+https://github.com/zen-kernel/zen-kernel?signed#tag=$_srctag"
   config         # the main kernel config file
+  sphinx-workaround.patch
   "aosc-univt.patch::https://raw.githubusercontent.com/AOSC-Dev/aosc-os-abbs/testing/extra-kernel/linux-kernel/autobuild/patches/8000-aosc-feature-univt.patch" # CJK Patch
   "https://raw.githubusercontent.com/dolohow/uksm/master/v5.x/uksm-5.6.patch" # UKSM Patch
 )
@@ -27,7 +28,8 @@ validpgpkeys=(
   '8218F88849AAC522E94CF470A5E9288C4FA415FA'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'e09c8bba54dbf62792a1842ee8ef5caf7d6b23949b89d9ee0d49d20f6117b34d'
+            '0dd347ae6e569be9a6e110a018565020e11b8003ffd33b2f16b06d73ada41d84'
+            '8cb21e0b3411327b627a9dd15b8eb773295a0d2782b1a41b2a8839d1b2f5778c'
             '2b499db6a7ba4926619dfc854dbd947f3e9720b39b7c2f6902b7a7b70eb856f2'
             '38044055a721c9c5a7bb67e5d1ba95d0585f63c83cc41af429efa60d6e0c718a')
 
