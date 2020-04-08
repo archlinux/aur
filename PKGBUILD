@@ -1,7 +1,7 @@
 # Maintainer: Tomislav Ivek <tomislav.ivek@gmail.com>
 
 pkgname=('conan')
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="A distributed, open source, C/C++ package manager."
 arch=('any')
@@ -46,5 +46,5 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/doc/conan"
   install -m644 contributors.txt "${pkgdir}/usr/share/doc/conan/"
 }
-md5sums=('8d917167e311bee434008934c3a0e2fb'
-         '9ed61a4a87e1ace586c04860218ff341')
+md5sums=('6e3f2407d04005d2f1773bb9cbff8e7c'
+         'c042fe2c4e7c1f8a060ecbd22c893dd9')
