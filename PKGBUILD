@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=v0.32.0.320.gbca917f6d2
+pkgver=v0.32.0.328.gc5f8ec76b1
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('x86_64')
@@ -69,7 +69,7 @@ conflicts=('mpv'
 options=('!emptydirs')
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
-        'git+https://github.com/qyot27/ffmpeg.git#branch=avsplus_linux'
+        'git+https://github.com/ffmpeg/ffmpeg.git'
         'git+https://github.com/libass/libass.git'
         )
 sha256sums=('SKIP'

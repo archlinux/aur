@@ -1,6 +1,6 @@
 pkgbase = mpv-build-git
 	pkgdesc = Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)
-	pkgver = v0.32.0.320.gbca917f6d2
+	pkgver = v0.32.0.328.gc5f8ec76b1
 	pkgrel = 1
 	url = http://mpv.io
 	arch = x86_64
@@ -65,7 +65,7 @@ pkgbase = mpv-build-git
 	backup = etc/mpv/encoding-profiles.conf
 	source = git+https://github.com/mpv-player/mpv-build.git
 	source = git+https://github.com/mpv-player/mpv.git
-	source = git+https://github.com/qyot27/ffmpeg.git#branch=avsplus_linux
+	source = git+https://github.com/ffmpeg/ffmpeg.git
 	source = git+https://github.com/libass/libass.git
 	sha256sums = SKIP
 	sha256sums = SKIP
