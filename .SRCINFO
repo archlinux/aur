@@ -1,7 +1,7 @@
 pkgbase = waterfox-current-bin
 	pkgdesc = 64-bit Firefox fork; no telemetry; supports XUL & XPCOM (incl. unsigned) add-ons.
-	pkgver = 2020.03
-	pkgrel = 2
+	pkgver = 2020.04
+	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
 	license = MPL
@@ -21,13 +21,13 @@ pkgbase = waterfox-current-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-current=2020.03
+	provides = waterfox-current=2020.04
 	conflicts = waterfox-current
 	replaces = waterfox-alpha-bin
 	source = waterfox-current.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-2020.03.en-US.linux-x86_64.tar.bz2
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-current-2020.04.en-US.linux-x86_64.tar.bz2
 	sha256sums = b8db6f9ee6abd9349b41333bf01ba04ef78a36335f94f35d9ea6762bc4fea548
-	sha256sums = 0aa372a14790cf79840d31864a49e01ae07396b7b28b103844780865e5b2feb5
+	sha256sums = 30d7d91cbf6040b79d162ceb097d6fe00f92edb48d9cc3aee3e68e027e97e45a
 
 pkgname = waterfox-current-bin
 
