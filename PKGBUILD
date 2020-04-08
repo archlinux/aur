@@ -1,8 +1,8 @@
 # Maintainer: gee
 
 pkgname=vkbasalt
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.3.1+12+g5b4ce45
+pkgrel=1
 pkgdesc='A Vulkan post-processing layer. Currently the effects are CAS, FXAA, SMAA, deband.'
 arch=('x86_64')
 url='https://github.com/DadSchoorse/vkBasalt'
@@ -11,10 +11,15 @@ makedepends=('git')
 depends=('glslang' 'vulkan-tools' 'libx11' 'lib32-glibc' 'lib32-gcc-libs' 'lib32-libx11')
 optdepends=('reshade-shaders-git')
 source=("git+https://github.com/DadSchoorse/vkBasalt.git#commit=5b4ce45"  #tag=v${pkgver}"
-        "git+https://github.com/DadSchoorse/reshade.git#commit=bdbf138")
+        "git+https://github.com/DadSchoorse/reshade.git")
 sha256sums=(SKIP
             SKIP)
 install=vkbasalt.install
+
+pkgver() {
+  cd ${srcdir}/vkBasalt
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 prepare() {
   cd ${srcdir}/vkBasalt
