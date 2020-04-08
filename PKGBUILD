@@ -1,6 +1,6 @@
 # Maintainer: Giuseppe Sellaroli <g.sellaroli  at  yahoo  dot  it>
 pkgname=scala-music
-pkgver=2.44m
+pkgver=2.44p
 pkgrel=1
 pkgdesc='Music software for experimentation with tunings and different kind of scales'
 url='http://www.huygens-fokker.org/scala/'
@@ -12,7 +12,7 @@ source=("http://www.huygens-fokker.org/software/scala-22-pc64-linux.tar.bz2"
         "scala-music.png")
 optdepends=('gnuplot: to make graphic plots'
             'scala-music-scales: a collection of over 4800 scale files for Scala')
-md5sums=('ca6b87159c5b8a5cb37096cffda6f5f0'
+md5sums=('a24339748ccd04131af44e43c0a82f9c'
          '4a5be88fa48c52382b1da8e101d16d7d'
          'f9f67a3ae3037523db5e9bcd4b22fb99'
          'aed4e375f4acdd9d947a681c1deef49a'
