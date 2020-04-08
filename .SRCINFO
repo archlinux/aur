@@ -33,8 +33,10 @@ pkgbase = pebble-tool-git
 	conflicts = pebble-sdk
 	source = git+https://github.com/armorking5/pebble-tool.git
 	source = phonesim_path.patch
+	source = sdk_headers.patch
 	md5sums = SKIP
 	md5sums = 6ec67257ae436ec2f2d2561a67064ca9
+	md5sums = 7d329e416ec7fa5d72fa48f71769505c
 
 pkgname = pebble-tool-git
 

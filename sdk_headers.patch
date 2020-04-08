@@ -1,0 +1,26 @@
+diff --git a/pebble_tool/sdk/manager.py b/pebble_tool/sdk/manager.py
+index 1fbf1f8..ec7e435 100644
+--- a/pebble_tool/sdk/manager.py
++++ b/pebble_tool/sdk/manager.py
+@@ -112,6 +112,21 @@ class SDKManager(object):
+                 Requirements(sdk_info['requirements']).ensure_satisfied()
+                 os.mkdir(os.path.join(self.sdk_dir, sdk_info['version']))
+                 t.extractall(path)
++
++            print("Hackily patching headers...")
++            def hacky_patch(file_path):
++                if os.path.exists(file_path):
++                    with open(file_path, 'r') as f:
++                        data = f.read()
++                    data = data.replace('\nint strftime', '\nunsigned int strftime')
++                    with open(file_path, 'w') as f:
++                        f.write(data)
++            for entry in os.listdir(os.path.join(path, "sdk-core", "pebble")):
++                platform = os.path.join(path, "sdk-core", "pebble", entry)
++                if entry != 'common' and os.path.isdir(platform):
++                    hacky_patch(os.path.join(platform, "include", "pebble.h"))
++                    hacky_patch(os.path.join(platform, "include", "pebble_worker.h"))
++
+             virtualenv_path = os.path.join(path, ".env")
+             print("Preparing virtualenv... (this may take a while)")
+             subprocess.check_call([sys.executable, "-m", "virtualenv", virtualenv_path])

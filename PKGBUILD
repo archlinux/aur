@@ -33,9 +33,11 @@ optdepends=('python2-virtualenv: Required for installing SDK'
 makedepends=('python2-setuptools')
 conflicts=('pebble-sdk')
 source=("git+https://github.com/armorking5/pebble-tool.git"
-        'phonesim_path.patch')
+        'phonesim_path.patch'
+        'sdk_headers.patch')
 md5sums=('SKIP'
-         '6ec67257ae436ec2f2d2561a67064ca9')
+         '6ec67257ae436ec2f2d2561a67064ca9'
+         '7d329e416ec7fa5d72fa48f71769505c')
 
 pkgver() {
   cd "$srcdir/pebble-tool"
@@ -47,6 +49,9 @@ prepare() {
 
   # Patch location of phonesim.py
   patch -p1 -i "$srcdir/phonesim_path.patch"
+
+  # Patch headers of SDKs on install
+  patch -p1 -i "$srcdir/sdk_headers.patch"
 
   # Disable strict dependency version checks
   sed -i 's/==.*$//' requirements.txt
