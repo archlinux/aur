@@ -1,7 +1,7 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgname=krayan-gtk-theme-git
-_reponame='Krayan'
+_reponame='KrayanGTK'
 pkgver=0.0.0.cf5e1e6
 pkgrel=2
 pkgdesc='A darker and more modern twist on the Layan GTK Theme.'
