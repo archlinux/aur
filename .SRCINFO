@@ -1,12 +1,13 @@
 pkgbase = python-mlflow
 	pkgdesc = An open source platform for the machine learning lifecycle
 	pkgver = 1.7.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mlflow.org
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = python
 	makedepends = python-setuptools
+	makedepends = npm
 	depends = python
 	depends = python-alembic<=1.4.1
 	depends = python-click

@@ -2,7 +2,7 @@
 
 pkgname=python-mlflow
 pkgver=1.7.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An open source platform for the machine learning lifecycle'
 arch=('x86_64')
 url='https://mlflow.org'
@@ -17,13 +17,18 @@ depends=('python' 'python-alembic<=1.4.1' 'python-click' 'python-cloudpickle'
     'python-prometheus-flask-exporter')
 optdepends=('python-scikit-learn' 'python-boto3' 'python-mleap'
     'python-azure-storage' 'python-google-cloud-storage' 'python-mlflow-dbstore')
-makedepends=('python' 'python-setuptools')
+makedepends=('python' 'python-setuptools' 'npm')
 source=("$pkgname-$pkgver::https://github.com/mlflow/mlflow/archive/v$pkgver.tar.gz")
 sha256sums=('fe2db1fdb36637fb6dbdb787aa144f9a2e6cfa1eb365b8f9cc195a1d30c6cb43')
 
 _pkgname=mlflow
 
 build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd mlflow/server/js
+  npm install
+  npm run build
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 }
