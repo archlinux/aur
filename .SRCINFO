@@ -1,6 +1,6 @@
 pkgbase = ddnet-git
 	pkgdesc = A Teeworlds modification with a unique cooperative gameplay.
-	pkgver = 12.6.1.r22.gf1b54d32b
+	pkgver = 13.0.1.r12.g0da0dddf1
 	pkgrel = 1
 	url = https://ddnet.tw
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = ddnet-git
 	depends = glew
 	depends = wavpack
 	depends = pnglite
+	depends = ffmpeg
 	optdepends = ddnet-skins: A collection with more than 700 custom tee skins.
 	optdepends = ddnet-maps-git: All the maps used on the official DDNet Servers
 	provides = ddnet
