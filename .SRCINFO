@@ -1,0 +1,15 @@
+pkgbase = matrixise
+	pkgdesc = Turn anything into 'The Matrix' wallpaper
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Shizcow/matrixise
+	arch = any
+	license = GPL2
+	makedepends = rust
+	makedepends = git
+	depends = ncurses
+	source = matrixise::git+https://github.com/Shizcow/matrixise.git
+	md5sums = SKIP
+
+pkgname = matrixise
+
