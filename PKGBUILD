@@ -3,7 +3,7 @@
 
 pkgname='pop-gtk-theme-bin'
 pkgver='5.2.0'
-pkgrel=1
+pkgrel=2
 _timestamp=1586289568
 _commit=f35b83b
 pkgdesc='System76 Pop GTK+ Theme'
@@ -37,6 +37,9 @@ package() {
   cd "${srcdir}"
   
   tar -xJC "${pkgdir}" -f data.tar.xz
+
+  cd ${pkgdir}/usr/share/themes/Pop
+  ln -s gtk-3.20 gtk-3.0
 }
 
 # vim: ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 pkgbase = pop-gtk-theme-bin
 	pkgdesc = System76 Pop GTK+ Theme
 	pkgver = 5.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pop-os/gtk-theme
 	arch = any
 	license = GPL2
