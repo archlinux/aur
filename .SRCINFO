@@ -1,0 +1,14 @@
+pkgbase = python2-oauth2client
+	pkgdesc = OAuth 2.0 client library
+	pkgver = 4.1.3
+	pkgrel = 1
+	url = https://github.com/googleapis/oauth2client
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/o/oauth2client/oauth2client-4.1.3.tar.gz
+	md5sums = 3a9eb781f685949c04946f6c09e4c11d
+
+pkgname = python2-oauth2client
+
