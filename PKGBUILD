@@ -2,14 +2,14 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2020.03.1
+pkgver=2020.04
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
 url="https://www.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'nss>=3.34' 'hunspell' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc' 'libevent')
+         'nss>=3.34' 'sqlite' 'ttf-font' 'icu' 'kwaterfoxhelper' 'nspr>=4.15' 'hicolor-icon-theme' 'jemalloc' 'libevent')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'git')
 optdepends=('networkmanager: Location detection via available WiFi networks'
@@ -17,14 +17,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support'
             'alsa-lib: Audio support'
             'jack: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
 _patchrev=7339b115a221
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
-_commit=3d16cde6ab44fdb52b0355974c0f6b4496387640
+_commit=5c5f42717434038ef4ab01def2f4546e83d0531a
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/waterfox-classic.desktop"
         "kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/kde.js"
@@ -35,8 +36,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch"
         pgo_fix_missing_kdejs.patch
         "classic-kde-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-2020.03.patch"
-        "classic-kde-xul-2020.03.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-xul-2020.03.patch"
-        "dark-mode.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/dark-mode.patch")
+        "classic-kde-xul-2020.04.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-classic-kpe/patches/classic-kde-xul-2020.04.patch")
 sha256sums=('SKIP'
             '03b734e8127678ebb260f69702f3be3cba1431c70b67a6e9f0dae62df091f516'
             '0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc'
@@ -47,8 +47,7 @@ sha256sums=('SKIP'
             '877bc1f0e768d96118bb739725e590467773dd897c31263099e52b8d7aaaa4c8'
             'bf6743660623b7c9a43b94edc8acbcade07aa222ff2102a2808809df333ebe8e'
             '6ff820e43a48ce9450e59e02877ff574a1921d0b286737d55949ad40865add08'
-            'ac853e8cbc376b2f40622b88bce52631fc373d31421243a4f28506488dfe3323'
-            '8adb921550c88ff5bae7b9661f4003f4e1e431c34febc949c3e8439f8cfe3ca0')
+            '7b408abf1048c7da504ba1e8fe1da51199f6c011bbe80af1595d9fd810445612')
 
 prepare() {
   # Fix openSUSE's patches for Waterfox
@@ -68,8 +67,6 @@ prepare() {
   patch -Np1 -i ../classic-kde-2020.03.patch
   patch -Np1 -i ../classic-kde-xul-2020.03.patch
   patch -Np1 -i ../pgo_fix_missing_kdejs.patch
-
-  patch -Np1 -i ../dark-mode.patch
 
   cat >.mozconfig <<END
 export CC=clang
@@ -105,7 +102,6 @@ ac_add_options --with-system-zlib
 ac_add_options --with-system-bz2
 ac_add_options --with-system-png
 ac_add_options --with-system-libevent
-ac_add_options --enable-system-hunspell
 ac_add_options --enable-system-sqlite
 ac_add_options --enable-system-ffi
 ac_add_options --enable-system-pixman
@@ -201,6 +197,9 @@ pref("distribution.searchplugins.defaultLocale", "en-US");
 
 // Use OS regional settings for date and time
 pref("intl.regional_prefs.use_os_locales", true);
+
+// Use system's dictionaries
+pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 END
 
   install -Dm644 "$srcdir/kde.js" "$pkgdir/usr/lib/waterfox-classic/browser/defaults/preferences/kde.js"
@@ -227,9 +226,6 @@ END
   if [ -d $pkgdir/usr/lib/waterfox-classic/dictionaries ]; then
     rm -r "$pkgdir"/usr/lib/waterfox-classic/dictionaries
   fi
-
-  ln -Ts /usr/share/hunspell "$pkgdir/usr/lib/waterfox-classic/dictionaries"
-  ln -Ts /usr/share/hyphen "$pkgdir/usr/lib/waterfox-classic/hyphenation"
 
   # Install a wrapper to avoid confusion about binary path
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/waterfox-classic" <<END
