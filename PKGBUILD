@@ -29,7 +29,6 @@ build() {
     -DLLVM_BUILD_DOCS=OFF \
     -DLLVM_ENABLE_SPHINX=OFF \
     -DLLVM_ENABLE_DOXYGEN=OFF \
-    -DSPHINX_WARNINGS_AS_ERRORS=OFF \
     -DFFI_INCLUDE_DIR=$(pkg-config --variable=includedir libffi) \
     -DLLVM_BINUTILS_INCDIR=/usr/include
   ninja
