@@ -1,6 +1,6 @@
 pkgbase = waterfox-current-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
-	pkgver = 2020.03
+	pkgver = 2020.04
 	pkgrel = 0
 	url = https://www.waterfox.net/
 	arch = x86_64
@@ -46,13 +46,13 @@ pkgbase = waterfox-current-kpe
 	optdepends = pulseaudio: Audio support
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
-	provides = waterfox-current=2020.03
+	provides = waterfox-current=2020.04
 	conflicts = waterfox-current
 	replaces = waterfox-beta-kde
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/MrAlex94/Waterfox.git#commit=f4430b861ce4a06834ba4a676bb2214c0d4eba36
+	source = git+https://github.com/MrAlex94/Waterfox.git#commit=9996cf65e65d7656a458964e2b52e8766463b89d
 	source = waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.desktop
 	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/distribution.ini
 	source = vendor.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/vendor.js

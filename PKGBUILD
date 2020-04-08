@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-current-kpe
-pkgver=2020.03
+pkgver=2020.04
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
@@ -13,15 +13,15 @@ makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python2-setuptools'
              'nodejs' 'python2-psutil' 'nss' 'nspr' 'binutils' 'git')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-             'libnotify: Notification integration'
-             'pulseaudio: Audio support'
-             'alsa-lib: Audio support'
-             'speech-dispatcher: Text-to-Speech')
+            'libnotify: Notification integration'
+            'pulseaudio: Audio support'
+            'alsa-lib: Audio support'
+            'speech-dispatcher: Text-to-Speech')
 provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
 replaces=("waterfox-beta-kde")
-_commit=f4430b861ce4a06834ba4a676bb2214c0d4eba36
+_commit=9996cf65e65d7656a458964e2b52e8766463b89d
 source=("git+https://github.com/MrAlex94/Waterfox.git#commit=$_commit"
         "waterfox-current.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/waterfox-current.desktop"
         "distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb/master/waterfox-current-kpe/distribution.ini"
@@ -118,7 +118,7 @@ build() {
   # LTO needs more open files
   ulimit -n 4096
 
-  xvfb-run -a -n 97 -s "-screen 0 1600x1200x24" ./mach build
+  xvfb-run -a -n 97 -s "-screen 0 1920x1080x24" ./mach build
 }
 
 package() {
