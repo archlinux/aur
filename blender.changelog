@@ -1,4 +1,12 @@
 # Version 2.83 upcoming.
+
+- Sculpting: Laplacian Smooth brush [diff](https://developer.blender.org/D7057)
+- Sculpting: Pose brush: Face Sets IK alignment [diff](https://developer.blender.org/D7235)
+- Sculpting: Face Sets initialization [diff](https://developer.blender.org/D7209)
+- Sculpting: Voxel Remesher operator [diff](https://developer.blender.org/D6449)
+- Sculpting: Auto masking for all brushes.
+- Eevee: Hair alpha hash shadow [diff](https://developer.blender.org/D5221)
+
 - UI: VR scene inspection [wiki](https://wiki.blender.org/wiki/Reference/Release_Notes/2.83/Virtual_Reality)
 - UI: Global undo speedup [task](https://developer.blender.org/T60695)
 - Shading: OpenVDB object support [wiki](https://wiki.blender.org/wiki/Reference/Release_Notes/2.83/Volumes)
