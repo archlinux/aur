@@ -1,7 +1,7 @@
 # Maintainer: Roman Kupriyanov <mr.eshua@gmail.com>
 _pkgname=jitsi-meet-desktop
 pkgname=${_pkgname}-bin
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Jitsi Meet desktop application powered by Electron"
 arch=('x86_64')
@@ -16,18 +16,16 @@ makedepends=('coreutils')
 backup=()
 
 options=(!strip)
-source=("https://github.com/jitsi/jitsi-meet-electron/releases/download/v${pkgver//_/-}/jitsi-meet-${arch[0]}.AppImage"
-        "${_pkgname}.desktop"
-        "LICENSE")
-md5sums=('decaf85bd761fba1b0e2382a94ec6580'
-         '29958e7cd823712ff8f25b5e62db9b2b'
-         '7d8b7b31deb068490b271e7aea6c08ce')
+source=("jitsi-meet-${arch[0]}-${pkgver}.AppImage::https://github.com/jitsi/jitsi-meet-electron/releases/download/v${pkgver//_/-}/jitsi-meet-${arch[0]}.AppImage"
+        "${_pkgname}.desktop")
+sha256sums=('23f985201bc6b81e7cb045201a25c4500111d5665b4ecf1d5913220f714b9185'
+            '16de58926874dd4bbb0f2a232eb7df7b57058d04637f0109cda4dbdeb0c23b9c')
 
 
 prepare() {
-    chmod u+x      ${srcdir}/jitsi-meet-${arch[0]}.AppImage
+    chmod u+x      ${srcdir}/jitsi-meet-${arch[0]}-${pkgver}.AppImage
 
-    ${srcdir}/jitsi-meet-${arch[0]}.AppImage --appimage-extract
+    ${srcdir}/jitsi-meet-${arch[0]}-${pkgver}.AppImage --appimage-extract
 }
 
 package() {
@@ -52,5 +50,4 @@ package() {
     ln -s          ../../opt/${_pkgname}/jitsi-meet                ${pkgdir}/usr/bin/${_pkgname}
 
     install -Dm644 ${srcdir}/${_pkgname}.desktop                   ${pkgdir}/usr/share/applications/${_pkgname}.desktop
-    install -Dm444 ${srcdir}/LICENSE                               ${pkgdir}/usr/share/LICENSES/${_pkgname}/LICENSE
 }
