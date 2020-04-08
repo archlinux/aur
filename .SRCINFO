@@ -1,6 +1,6 @@
 pkgbase = waterfox-classic-bin
 	pkgdesc = Customizable privacy-conscious web browser with primary support for legacy extensions
-	pkgver = 2020.03.1
+	pkgver = 2020.04
 	pkgrel = 1
 	url = https://www.waterfox.net
 	arch = x86_64
@@ -20,14 +20,14 @@ pkgbase = waterfox-classic-bin
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2020.03.1
+	provides = waterfox-classic=2020.04
 	conflicts = waterfox-classic
 	conflicts = waterfox-classic-git
 	replaces = waterfox-bin
 	source = waterfox-classic.desktop
-	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.03.1.en-US.linux-x86_64.tar.bz2
+	source = https://storage-waterfox.netdna-ssl.com/releases/linux64/installer/waterfox-classic-2020.04.en-US.linux-x86_64.tar.bz2
 	sha256sums = a364e830e980417095a5a45fb2c9c635fa8d248884816c26e3f31ce993130537
-	sha256sums = d67a12dd331e67f089143e831047cdf27706c53b4f58fb0658f708183458a41e
+	sha256sums = 33dc19ddbc213c6788c8a38bc1dbdb43b3775ff791c509dec229cd73d96dd255
 
 pkgname = waterfox-classic-bin
 
