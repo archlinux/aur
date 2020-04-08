@@ -1,25 +1,21 @@
 pkgbase = droidcam
 	pkgdesc = A tool for using your android device as a wireless/usb webcam
 	pkgver = 6.7.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.dev47apps.com/droidcam/linuxx
 	install = droidcam.install
-	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = linux-headers
 	optdepends = v4l-utils: Userspace tools and conversion library for Video 4 Linux
 	optdepends = gtk2: use GUI version in addition to CLI interface
-	noextract = droidcam.tar.bz2
 	options = !strip
 	source = droidcam.desktop
 	source = https://github.com/aramg/droidcam/raw/master/linux/icon2.png
+	source = droidcam.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_latest.zip
 	md5sums = 199d8f3dbc6697f06350b00de99f2274
 	md5sums = 0f0e1d04146dd5be70d5028f144bd0a2
-	source_i686 = droidcam.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_081219_32bit.tar.bz2
-	md5sums_i686 = 661effc75e2772f20466e738027a16d4
-	source_x86_64 = droidcam.tar.bz2::https://www.dev47apps.com/files/linux/droidcam_081219_64bit.tar.bz2
-	md5sums_x86_64 = eb676cd06c92a722ab8b3c4c771baf94
+	md5sums = 7775e36b5325dc1f32d485eb3cc72fd1
 
 pkgname = droidcam
 
