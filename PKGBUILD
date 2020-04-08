@@ -11,7 +11,7 @@ pkgdesc='Qt5-based IM client for the Matrix protocol'
 url='https://matrix.org/docs/projects/client/quaternion.html'
 arch=('i686' 'x86_64')
 license=('GPL3')
-depends=('qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libQuotient>=0.5.3.2')
+depends=('qt5-tools' 'qt5-multimedia' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'libquotient>=0.5.3.2')
 makedepends=('cmake')
 provides=('quaternion')
 conflicts=('quaternion-git')
