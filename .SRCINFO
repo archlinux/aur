@@ -1,6 +1,6 @@
 pkgbase = krayan-kde-git
 	pkgdesc = A darker and more modern twist on the Layan GTK Theme
-	pkgver = r1.e60091e
+	pkgver = r1.7dfaa56
 	pkgrel = 1
 	url = https://github.com/lazerl0rd/KrayanKDE
 	arch = any
