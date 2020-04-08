@@ -1,7 +1,7 @@
 # Maintainer: Solomon Choina <shlomochoina@gmail.com>
 # The place where the .tar.gz is located is https://discord.gg/ygopro-percy
 pkgname=edopro-bin
-pkgver=38.0.0
+pkgver=38.0.1
 pkgrel=1
 pkgdesc="Link compatable ygopro client with AI"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('mono' 'libevent' 'libglvnd' 'freetype2')
 makedepends=('patchelf')
 source=("local://ProjectIgnis-EDOPro-$pkgver-linux.tar.gz"
         "io.github.edo9300.EDOPro.desktop")
-sha256sums=('f31a12c1f7bd5a9c20d5bdfd657697e8fa16137c93e62f550b409af6e53cbb59'
+sha256sums=('fc479c00625450091ecf3ff0a1b33eb75cc4625bbd2d8068f0844c2a4c19894c'
             '0a9d949f027004c3ef86ba0eaf30e131d4f8c34994ca5fae72cbe08e740d99c7')
 options=('emptydirs')
 
