@@ -1,5 +1,5 @@
 pkgbase = llvm90
-	pkgdesc = LLVM compiler toolchain, version 9.0.0 (installed under /opt/llvm90)
+	pkgdesc = LLVM compiler toolchain, version 9.0.0
 	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://llvm.org/
@@ -14,6 +14,8 @@ pkgbase = llvm90
 	depends = libedit
 	depends = libxml2
 	depends = python2
+	conflicts = llvm
+	replaces = llvm
 	options = staticlibs
 	source = https://releases.llvm.org/9.0.0/llvm-9.0.0.src.tar.xz
 	sha256sums = SKIP
