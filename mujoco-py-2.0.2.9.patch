@@ -1,0 +1,119 @@
+diff --unified --recursive --text mujoco-py-2.0.2.9.orig/mujoco_py/builder.py mujoco-py-2.0.2.9.new/mujoco_py/builder.py
+--- mujoco-py-2.0.2.9.orig/mujoco_py/builder.py	2020-04-07 21:40:53.528385933 -0400
++++ mujoco-py-2.0.2.9.new/mujoco_py/builder.py	2020-04-07 21:39:20.261717094 -0400
+@@ -31,7 +31,7 @@
+     docker_path = '/usr/local/nvidia/lib64'
+     if exists(docker_path):
+         return docker_path
+-    paths = glob.glob('/usr/lib/nvidia-[0-9][0-9][0-9]')
++    paths = glob.glob('/usr/lib/nvidia')
+     paths = sorted(paths)
+     if len(paths) == 0:
+         return None
+@@ -66,9 +66,7 @@
+     if sys.platform == 'darwin':
+         Builder = MacExtensionBuilder
+     elif sys.platform == 'linux':
+-        _ensure_set_env_var("LD_LIBRARY_PATH", lib_path)
+         if os.getenv('MUJOCO_PY_FORCE_CPU') is None and get_nvidia_lib_dir() is not None:
+-            _ensure_set_env_var("LD_LIBRARY_PATH", get_nvidia_lib_dir())
+             Builder = LinuxGPUExtensionBuilder
+         else:
+             Builder = LinuxCPUExtensionBuilder
+@@ -84,6 +82,13 @@
+     builder = Builder(mujoco_path)
+     cext_so_path = builder.get_so_file_path()
+ 
++    # Check if we have write access to the cext_so_path.
++    # If not, it's probably because mujoco-py has been installed and everything is
++    # read-only. Returning here is necessary because the lock creation will fail.
++    # It might be better to try-catch the lock but this minimizes the diff complexity.
++    if not os.access(os.path.dirname(cext_so_path), os.W_OK):
++        return load_dynamic_ext('cymj', cext_so_path)
++
+     lockpath = os.path.join(os.path.dirname(cext_so_path), 'mujocopy-buildlock')
+ 
+     with fasteners.InterProcessLock(lockpath):
+@@ -205,11 +210,10 @@
+             sources=[join(self.CYMJ_DIR_PATH, "cymj.pyx")],
+             include_dirs=[
+                 self.CYMJ_DIR_PATH,
+-                join(mujoco_path, 'include'),
++                "/usr/include/mujoco",
+                 np.get_include(),
+             ],
+             libraries=['mujoco200'],
+-            library_dirs=[join(mujoco_path, 'bin')],
+             extra_compile_args=[
+                 '-fopenmp',  # needed for OpenMP
+                 '-w',  # suppress numpy compilation warnings
+@@ -266,14 +270,13 @@
+ 
+         self.extension.sources.append(
+             join(self.CYMJ_DIR_PATH, "gl", "osmesashim.c"))
+-        self.extension.libraries.extend(['glewosmesa', 'OSMesa', 'GL'])
+-        self.extension.runtime_library_dirs = [join(mujoco_path, 'bin')]
++        self.extension.libraries.extend(['GLEW', 'OSMesa', 'GL'])
+ 
+     def _build_impl(self):
+         so_file_path = super()._build_impl()
+         # Removes absolute paths to libraries. Allows for dynamic loading.
+         fix_shared_library(so_file_path, 'libmujoco200.so', 'libmujoco200.so')
+-        fix_shared_library(so_file_path, 'libglewosmesa.so', 'libglewosmesa.so')
++        fix_shared_library(so_file_path, 'libGLEW.so', 'libGLEW.so')
+         return so_file_path
+ 
+ 
+@@ -284,15 +287,14 @@
+ 
+         self.extension.sources.append(self.CYMJ_DIR_PATH + "/gl/eglshim.c")
+         self.extension.include_dirs.append(self.CYMJ_DIR_PATH + '/vendor/egl')
+-        self.extension.libraries.extend(['glewegl'])
+-        self.extension.runtime_library_dirs = [join(mujoco_path, 'bin')]
++        self.extension.libraries.extend(['GLEW'])
+ 
+     def _build_impl(self):
+         so_file_path = super()._build_impl()
+         fix_shared_library(so_file_path, 'libOpenGL.so', 'libOpenGL.so.0')
+         fix_shared_library(so_file_path, 'libEGL.so', 'libEGL.so.1')
+         fix_shared_library(so_file_path, 'libmujoco200.so', 'libmujoco200.so')
+-        fix_shared_library(so_file_path, 'libglewegl.so', 'libglewegl.so')
++        fix_shared_library(so_file_path, 'libGLEW.so', 'libGLEW.so')
+         return so_file_path
+ 
+ 
+@@ -476,8 +478,7 @@
+     source_string += '\nuintptr_t __fun = (uintptr_t) fun;'
+     # Link against mujoco so we can call mujoco functions from within callback
+     ffibuilder.set_source(name, source_string,
+-                          include_dirs=[join(mujoco_path, 'include')],
+-                          library_dirs=[join(mujoco_path, 'bin')],
++                          include_dirs=["/usr/include/mujoco"],
+                           libraries=['mujoco200'])
+     # Catch compilation exceptions so we can cleanup partial files in that case
+     try:
+diff --unified --recursive --text mujoco-py-2.0.2.9.orig/mujoco_py/utils.py mujoco-py-2.0.2.9.new/mujoco_py/utils.py
+--- mujoco-py-2.0.2.9.orig/mujoco_py/utils.py	2020-04-07 21:40:53.548385935 -0400
++++ mujoco-py-2.0.2.9.new/mujoco_py/utils.py	2020-04-06 22:17:43.277818305 -0400
+@@ -72,7 +72,6 @@
+ def discover_mujoco():
+     """
+     Discovers where MuJoCo is located in the file system.
+-    Currently assumes path is in ~/.mujoco
+ 
+     Returns:
+     - mujoco_path (str): Path to MuJoCo 2.0 directory.
+@@ -81,9 +80,13 @@
+     key_path = os.getenv('MUJOCO_PY_MJKEY_PATH')
+     if not key_path:
+         key_path = join(expanduser('~'), '.mujoco', 'mjkey.txt')
++        if not exists(key_path):
++            key_path = "/usr/share/licenses/mujoco/mjkey.txt"
+     mujoco_path = os.getenv('MUJOCO_PY_MUJOCO_PATH')
+     if not mujoco_path:
+         mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco200')
++        if not exists(mujoco_path):
++            mujoco_path = "/opt/mujoco/mujoco200"
+ 
+     # We get lots of github issues that seem to be missing these
+     # so check that mujoco is really there and raise errors if not.

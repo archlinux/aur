@@ -1,0 +1,30 @@
+pkgbase = python-mujoco-py
+	pkgdesc = Python interface to the MuJoCo physics engine
+	pkgver = 2.0.2.9
+	pkgrel = 1
+	url = https://github.com/openai/mujoco-py
+	arch = x86_64
+	license = MIT
+	license = custom
+	makedepends = python-setuptools
+	depends = cython
+	depends = glew
+	depends = libglvnd
+	depends = mesa-libgl
+	depends = mujoco
+	depends = python
+	depends = python-cffi
+	depends = python-fasteners
+	depends = python-glfw
+	depends = python-imageio
+	depends = python-numpy
+	options = !strip
+	source = https://files.pythonhosted.org/packages/source/m/mujoco-py/mujoco-py-2.0.2.9.tar.gz
+	source = mujoco-py-2.0.2.9-LICENSE.md::https://raw.githubusercontent.com/openai/mujoco-py/d73ce6e91d096b74da2a2fcb0a4164e10db5f641/LICENSE.md
+	source = mujoco-py-2.0.2.9.patch
+	sha256sums = 6ae20ca9509203758f5e30a7a4019cb2d581b6d40dc2c2669dbe3229cfdf05e8
+	sha256sums = fb896a8cbad505b0fe1f324e7d4f02032e56885c6544b7644180258d6077a71a
+	sha256sums = 5ac81282141cf7c5700b9967f85c4e9a3339a35a1bbdd3c383b877774525d660
+
+pkgname = python-mujoco-py
+
