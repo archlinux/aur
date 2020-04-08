@@ -1,0 +1,14 @@
+pkgbase = latex-digsig
+	pkgdesc = LaTeX module to create a PDF file that can be digitally signed
+	pkgver = 1.16
+	pkgrel = 1
+	url = http://home.htp-tel.de/lottermose2/tex/
+	install = latex-digsig.install
+	arch = any
+	license = LGPLv2.1
+	depends = texlive-core
+	source = http://home.htp-tel.de/lottermose2/tex/dist/digsig.sty
+	sha256sums = 9a03519e08cc176ecac729c36bc022507f0be3bfc2383d5122a6e8a38a336833
+
+pkgname = latex-digsig
+
