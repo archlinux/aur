@@ -4,7 +4,7 @@
 
 pkgname=anbox-image-gapps
 pkgver=2018.07.19
-pkgrel=14
+pkgrel=15
 pkgdesc="Android image for running in Anbox, with OpenGApps and Houdini"
 arch=('x86_64')
 url="https://anbox.io"
@@ -13,7 +13,7 @@ makedepends=('curl' 'lzip' 'squashfs-tools' 'unzip')
 provides=('anbox-image')
 conflicts=('anbox-image')
 
-_gapps_rel="$(curl -s -L https://api.github.com/repos/opengapps/x86_64/releases/latest | head -n 10 | grep tag_name | sed -r 's/.*\"([0-9]+)\".*/\1/')"
+_gapps_rel="$(curl -s -L https://api.opengapps.org/list | sed -r 's/.*-x86_64-7.1-pico-([0-9]+).zip".*/\1/')"
 _gapps_src="https://downloads.sourceforge.net/project/opengapps/x86_64/$_gapps_rel/open_gapps-x86_64-7.1-pico-$_gapps_rel.zip"
 _gapps_md5="$(curl -s -L $_gapps_src.md5 | sed -r 's/^([0-9a-z]+).*/\1/')"
 _gapps_list=(
