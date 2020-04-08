@@ -1,7 +1,7 @@
 # Maintainer: Devin Pohl <pohl.devin@gmail.com>
 
 pkgname=matrixise
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Turn anything into 'The Matrix' wallpaper"
 arch=('any')
