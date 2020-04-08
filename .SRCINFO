@@ -34,7 +34,9 @@ pkgbase = gnome-chemistry-utils
 	options = !libtool
 	source = http://download.savannah.gnu.org/releases/gchemutils/0.14/gnome-chemistry-utils-0.14.17.tar.bz2
 	source = gnumeric-ftbfs.patch
+	source = openbabel3.patch
 	md5sums = 961c9f1a5760abeb62204a8f5a1a9802
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = gnome-chemistry-utils

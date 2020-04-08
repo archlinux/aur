@@ -21,19 +21,22 @@ makedepends=('pkgconfig' 'intltool' 'gettext' 'gnome-doc-utils' 'boost' 'desktop
 optdepends=('yelp: Viewing help manuals' \
 	    'gnumeric>1.12.0: gnumeric plugin'\
 	    'gnome-doc-utils')
-source=(http://download.savannah.gnu.org/releases/gchemutils/${_majorver}/${pkgname}-${pkgver}.tar.bz2 gnumeric-ftbfs.patch)
+source=(http://download.savannah.gnu.org/releases/gchemutils/${_majorver}/${pkgname}-${pkgver}.tar.bz2 gnumeric-ftbfs.patch openbabel3.patch)
 options=(!libtool)
 install=gnome-chemistry-utils.install
-md5sums=('961c9f1a5760abeb62204a8f5a1a9802' 'SKIP')
+md5sums=('961c9f1a5760abeb62204a8f5a1a9802' 'SKIP' 'SKIP')
 
 prepare() {
         cd $pkgname-$pkgver
         patch --forward --strip=1 --input="${srcdir}/gnumeric-ftbfs.patch"
+        patch --forward --strip=1 --input="${srcdir}/openbabel3.patch"
     }
 
 build() {
 
 	cd ${srcdir}/${pkgname}-${pkgver}
+	autoreconf -f -i
+	export CPATH=/usr/include/openbabel3
 	./configure	--prefix=/usr \
 				--sysconfdir=/etc \
 				--libexecdir=/usr/lib/${pkgname} \
