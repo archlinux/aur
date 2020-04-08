@@ -2,12 +2,12 @@
 
 pkgname=genuki
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="genuki: generate unified kernel images"
 arch=('any')
 url=https://github.com/quebin31/genuki
 license=('GPL3')
-depends=()
+depends=('initramfs')
 optdepends=()
 conflicts=()
 options=()
