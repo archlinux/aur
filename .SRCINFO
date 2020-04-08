@@ -1,0 +1,19 @@
+pkgbase = rdock
+	pkgdesc = A Fast, Versatile and Open Source Program for Docking Ligands to Proteins and Nucleic Acids
+	pkgver = 2013.1
+	pkgrel = 1
+	url = http://rdock.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc
+	makedepends = make
+	depends = popt
+	depends = cppunit
+	source = rdock-2013.1.patch
+	source = https://sourceforge.net/projects/rdock/files/latest/download
+	md5sums = 71808cfd856d1b87b1b12c38562e3c93
+	md5sums = 26bf3bd445ddaf6059236fcc44262be0
+
+pkgname = rdock
+

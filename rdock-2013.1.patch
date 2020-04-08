@@ -1,0 +1,29 @@
+--- include/RbtContainers.h.orig	2020-04-08 14:22:00.605918479 +0200
++++ include/RbtContainers.h	2020-04-08 14:03:12.688862094 +0200
+@@ -34,6 +34,7 @@
+ 
+ #include <algorithm>
+ //DM 9 Dec 1998 - add copy_if template to std namespace (not included in STL)
++#if __cplusplus < 201103L
+ namespace std
+ {
+   template <class InputIterator, class OutputIterator, class Predicate>
+@@ -47,6 +48,7 @@
+     return result;
+   }
+ }
++#endif
+ 
+ // Container Typedefs
+ 	
+--- import/simplex/src/NMSearch.cxx.orig	2020-04-08 14:22:22.486053829 +0200
++++ import/simplex/src/NMSearch.cxx	2020-04-08 14:04:54.396177205 +0200
+@@ -388,7 +388,7 @@
+ 
+ void NMSearch::ReadSimplexFile(istream& fp)
+ {
+-   if(fp == NULL) {
++   if(!fp) {
+       cerr<<"No Input Stream in ReadSimplexFile()!\n";
+       return; // There's no file handle!!
+    }
