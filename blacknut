@@ -74,9 +74,9 @@ main() {
 	fi
 
 	if [ "$use_firejail" -eq 0 ]; then
-		"$APPIMAGE_PATH" "$@"
+		exec "$APPIMAGE_PATH" "$@"
 	else
-		firejail --profile="$FIREJAIL_PROFILE" --appimage "$APPIMAGE_PATH" --no-sandbox "$@"
+		exec firejail --profile="$FIREJAIL_PROFILE" --appimage "$APPIMAGE_PATH" --no-sandbox "$@"
 	fi
 }
 
