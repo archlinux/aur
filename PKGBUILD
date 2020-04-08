@@ -2,9 +2,9 @@
 _hkgname=arbtt
 pkgname=arbtt
 pkgver=0.10.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Automatic Rule-Based Time Tracker"
-url="http://hackage.haskell.org/package/arbtt"
+url="https://hackage.haskell.org/package/arbtt"
 license=('GPL2')
 arch=('i686' 'x86_64')
 provides=('haskell-arbtt')
@@ -23,6 +23,7 @@ depends=('ghc'
 'haskell-x11'
 ) 
 makedepends=('ghc'
+		'cabal-install'
 		'haskell-aeson>=0.1'
 		'haskell-aeson<1.5'
 		'haskell-base<5'

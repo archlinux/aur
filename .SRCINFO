@@ -1,12 +1,13 @@
 pkgbase = arbtt
 	pkgdesc = Automatic Rule-Based Time Tracker
 	pkgver = 0.10.2
-	pkgrel = 5
-	url = http://hackage.haskell.org/package/arbtt
+	pkgrel = 6
+	url = https://hackage.haskell.org/package/arbtt
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = ghc
+	makedepends = cabal-install
 	makedepends = haskell-aeson>=0.1
 	makedepends = haskell-aeson<1.5
 	makedepends = haskell-base<5
