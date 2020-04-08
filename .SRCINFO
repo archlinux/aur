@@ -1,6 +1,6 @@
 pkgbase = simplescreenrecorder-git
 	pkgdesc = A feature-rich screen recorder that supports X11 and OpenGL. (Git version)
-	pkgver = 0.3.10.r21.g00decd5
+	pkgver = 0.4.0.r0.ge7b36d5
 	pkgrel = 1
 	url = http://www.maartenbaert.be/simplescreenrecorder/
 	install = simplescreenrecorder-git.install
@@ -21,6 +21,7 @@ pkgbase = simplescreenrecorder-git
 	depends = libxext
 	depends = libxfixes
 	depends = libxi
+	depends = libxinerama
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = lib32-simplescreenrecorder-git: OpenGL recording of 32-bit applications

@@ -1,7 +1,7 @@
 # Maintainer: Maarten Baert <maarten-baert@hotmail.com>
 
 pkgname=simplescreenrecorder-git
-pkgver=0.3.10.r21.g00decd5
+pkgver=0.4.0.r0.ge7b36d5
 pkgrel=1
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL. (Git version)"
 arch=("x86_64")
@@ -9,7 +9,7 @@ url="http://www.maartenbaert.be/simplescreenrecorder/"
 license=("GPL3")
 depends=("qt5-base" "qt5-x11extras"
     "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu"
-    "libx11" "libxext" "libxfixes" "libxi"
+    "libx11" "libxext" "libxfixes" "libxi" "libxinerama"
     "desktop-file-utils" "gtk-update-icon-cache")
 optdepends=("lib32-simplescreenrecorder-git: OpenGL recording of 32-bit applications")
 makedepends=("git" "cmake" "qt5-tools")
