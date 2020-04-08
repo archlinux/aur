@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -83,7 +83,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_gcc_path}/${_gcc_patch}"
-        "${_lucjanpath}/arch-patches-v4/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v5-sep/0002-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch"
+        'sphinx-workaround.patch'
          # the main kernel config files
         'config')
 
@@ -334,8 +336,10 @@ sha512sums=('174e085eb14c64dedb15ea2186d0103baafce0653fe287b057b650e51cc3e5faa37
             'SKIP'
             'bb6892612524d0cd667048d4a3d8352b04fca0e65398dc96964cc29241c7167f5f3e7d8a1a10c8afa7167a374611f2f3dd57dab04ed351cbedc4fcac4103669c'
             '52b14ef834769d2b4567e756a4485995acd2e3f5b989cbb53f9b113b42ff67b736bbcb284b95fe15c9efb846fd12320a26a131e4ce9af50b521114d274b472f1'
-            '080850eb686f4b8162e348eacc54d6407c810e4430f574a0da009ff851f89e7bc442cfd107a4a4edf009de6dbd83f1cd9ce1c75a2140554b34f35ff0a81c8779'
-            '9c2e705e2b0f150b2fea3921dcccfd29f2dcd0b898d929e9b4a0a43427084c4c3d0e6b9b7a154541245539203e52aca0a372f1ad6e228fd44a303bd25e434adc')
+            '8064aa16172a42a3f23cff6278056a5c2ff7fa6560f3b975e4a7dfd7ce5d00f15af851fd4ef1f40a78707aeaad5a1eef3012ef5f7fb9242ca584b3a230d343cd'
+            'e0b39955fd3a7d558aea0ad72ebcd59eb649c47d9270deea3130f7a3703aa4e319727ab97a95cd365e1e7fad0a9ab31fd0787b36a22858012af5f337153ab48f'
+            '98e97155f86bbe837d43f27ec1018b5b6fdc6c372d6f7f2a0fe29da117d53979d9f9c262f886850d92002898682781029b80d4ee923633fc068f979e6c8254be'
+            '184cb335f27b97ee5cc9d20beaeff20436d5598b98b425cab8ec1872ea39105a31a41a2ecd1b5dd9e4239dbec4e8e141d85c09cd1bb943d744cade201c8d2052')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
