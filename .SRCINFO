@@ -1,0 +1,13 @@
+pkgbase = ergo
+	pkgdesc = List of utilities for the daily developer workflow
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/beatlabs/ergo
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	source = https://github.com/beatlabs/ergo/archive/0.4.0.tar.gz
+	md5sums = 7036100329bd11226729f7d80a66e246
+
+pkgname = ergo
+
