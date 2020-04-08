@@ -7,7 +7,8 @@
 
 pkgname=nim-legacy
 _pkgname=Nim
-pkgver=0.18.0
+_csourcesver=0.20.0
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Imperative, multi-paradigm, compiled programming language'
 url='https://nim-lang.org/'
@@ -18,15 +19,15 @@ options=('!emptydirs')
 conflicts=('nim')
 provides=('nim')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/nim-lang/Nim/archive/v${pkgver}.tar.gz
-        csources-${pkgver}.tar.gz::https://github.com/nim-lang/csources/archive/v${pkgver}.tar.gz)
-sha256sums=('9b9982f349fb96db44020a6da14fa683179b637a3d94782e2c99156ac613e187'
-            'e9aff9d58661ea852ae424ba34fc3750b45fb31982645a3038de2300bea2d17c')
-sha512sums=('b4c4ca78bfb310eba7cd105cc43bdb64b013ef90e06613e8d9af460b3f57ccdb4d4fc49f100bb4a5c0f06d45664197b68e69d5bf8ac724c0c849863082aa3a66'
-            'e89324e3d091e1a29b5d0110bf9de7fba2438ce1f37bddcfd5cb4dde3bf31ab906c4576b623a5d70504c3430dad737898474e17d6c0eef41c1effd438d0cc571')
+        csources-${_csourcesver}.tar.gz::https://github.com/nim-lang/csources/archive/v${_csourcesver}.tar.gz)
+sha256sums=('f5826ee7a00059243f00898a47e910fd89484f7aa8ad8c91e2b914a013b83ed0'
+            '5e6fd15d90df1a8cb7614c4ffc70aa8c4198cd854d7742016202b96dd0228d3c')
+sha512sums=('ce5f97f2c6b84781647889646dc3d58c640f73d1b734ce32198526fa8fbe4a118a40c1c86610c990b30921ecc800087ac98ca3c22d479727b6a0096ca241fbd0'
+            '4da00678cb92cfd3b2425e4698cbbef8111c711f9457ba969367638437b5fad7928ca0a91fd24f53dcd9d341cfc420e87ec85d245767531bc57ccafd6feba258')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
-  mv ../csources-${pkgver} csources
+  [[ -d csources ]] || mv ../csources-${_csourcesver} csources
   rm bin/empty.txt
 }
 
@@ -77,10 +78,8 @@ package() {
   cp -a "${pkgdir}/usr/lib/nim/"*.h "${pkgdir}/usr/include"
 
   install -d "${pkgdir}/usr/share/nim/doc"
-  cp -a examples web doc/* "${pkgdir}/usr/share/nim/doc"
+  cp -a examples doc/* "${pkgdir}/usr/share/nim/doc"
 
   install -Dm 644 copying.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  rm -r "${pkgdir}/nim" "${pkgdir}/usr/lib/nim/lib/nimcache"
+  rm -r "${pkgdir}/nim"
 }
-
-# vim: ts=2 sw=2 et:
