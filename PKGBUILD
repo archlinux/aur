@@ -1,7 +1,7 @@
 # Maintainer: Devin Pohl <pohl.devin@gmail.com>
 
 pkgname=smatrix
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="'The Matrix' command-line wallpaper, but it's stock prices"
 arch=('any')
