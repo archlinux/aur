@@ -3,7 +3,7 @@
 pkgbase=yaru
 pkgname=('yaru-sound-theme' 'yaru-gtk-theme' 'yaru-gnome-shell-theme' 'yaru-unity-theme' 'yaru-icon-theme' 'yaru-session')
 pkgver=20.04.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
 url="https://github.com/ubuntu/yaru"
@@ -12,8 +12,18 @@ license=('GPL3')
 makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
-source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
-sha256sums=('e34718c44f773d06c88fca1da852b6c0d8d72d9d6bcff3539869055059af6813')
+source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz"
+  "https://github.com/ubuntu/yaru/commit/16db0a3d2e256fa132c208658b1e8ffd068f49d2.patch"
+  "https://github.com/ubuntu/yaru/commit/e4f9d0e312814ea3f364d80b7ab35a3b7c832cbf.patch")
+sha256sums=('e34718c44f773d06c88fca1da852b6c0d8d72d9d6bcff3539869055059af6813'
+  '0ec64f98dd22ddfa287ece97ff38a60b151c40443c5defdd3c4b664442076c67'
+  '81c99f7250dba1e4c6f24d586c8d736e45adf4a52e7791ac9cb641f0ba7e7727')
+
+prepare() {
+  cd $pkgbase-$pkgver
+  patch -Np1 -i "$srcdir/e4f9d0e312814ea3f364d80b7ab35a3b7c832cbf.patch"
+  patch -Np1 -i "$srcdir/16db0a3d2e256fa132c208658b1e8ffd068f49d2.patch"
+}
 
 build() {
   arch-meson $pkgbase-$pkgver build
