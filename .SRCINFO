@@ -1,0 +1,16 @@
+pkgbase = lossless-cut
+	pkgdesc = The swiss army knife of lossless video/audio editing
+	pkgver = 3.17.33
+	pkgrel = 1
+	url = https://github.com/mifi/lossless-cut
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	options = !strip
+	source = https://github.com/mifi/lossless-cut/releases/download/v3.17.33/LosslessCut-linux.AppImage
+	source = https://raw.githubusercontent.com/mifi/lossless-cut/master/LICENSE
+	md5sums = c66a117ab1f39664ae9c8f18159d4d57
+	md5sums = e7f1e3e60965afe836ca1455f8ba5a8b
+
+pkgname = lossless-cut
+
