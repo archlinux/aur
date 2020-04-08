@@ -1,6 +1,6 @@
 pkgbase = retdec
 	pkgdesc = A retargetable machine-code decompiler based on LLVM.
-	pkgver = 3.3
+	pkgver = 4.0
 	pkgrel = 1
 	url = https://retdec.com/
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = retdec
 	depends = python
 	provides = retdec
 	conflicts = retdec
-	source = retdec-3.3.tar.gz::https://github.com/avast-tl/retdec/archive/v3.3.tar.gz
-	sha256sums = f8f3c25794b022727c51f9c4c6ad75f7d2fa60c540ca55b71aa68bbe5a2d102f
+	source = retdec-4.0.tar.gz::https://github.com/avast-tl/retdec/archive/v4.0.tar.gz
+	sha256sums = b26c2f71556dc4919714899eccdf82d2fefa5e0b3bc0125af664ec60ddc87023
 
 pkgname = retdec
 
