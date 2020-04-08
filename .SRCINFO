@@ -1,7 +1,7 @@
 pkgbase = krayan-gtk-theme-git
 	pkgdesc = A darker and more modern twist on the Layan GTK Theme.
-	pkgver = 0.0.0.7b297f1
-	pkgrel = 7
+	pkgver = 1.0.0.0919018
+	pkgrel = 8
 	url = https://github.com/lazerl0rd/KrayanGTK
 	arch = any
 	license = GPL2

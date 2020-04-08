@@ -2,8 +2,8 @@
 
 pkgname=krayan-gtk-theme-git
 _reponame='KrayanGTK'
-pkgver=0.0.0.7b297f1
-pkgrel=7
+pkgver=1.0.0.0919018
+pkgrel=8
 pkgdesc='A darker and more modern twist on the Layan GTK Theme.'
 arch=("any")
 provides=("krayan-gtk-theme")
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 pkgver(){
     cd "${srcdir}/${_reponame}"
     if [ $(git tag|wc -l) == 0 ]; then
-        echo "0.0.0.$(git log -1 --format='%h')"
+        echo "1.0.0.$(git log -1 --format='%h')"
     else
         git describe --tags | sed 's/-/.r/; s/-g/./'
     fi
