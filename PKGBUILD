@@ -1,6 +1,6 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 _knm="-lts419"
-_kvd="4.19.112-1"
+_kvd="4.19.114-1"
 _kvo=""
 _kvv="$(pacman -Qi linux${_knm}|awk '/^Version/{print$3;exit}')" || \
 _kvv="$(pacman -Si linux${_knm}|awk '/^Version/{print$3;exit}')"
@@ -9,8 +9,8 @@ _kvr="${_kvv:+${_kvv}${_knm}}"
 _kvx="$(echo $_kvr|sed -e 's,\.[0-9][0-9]*-.*,,')"
 pkgname=openss7-modules${_knm}-git
 _pkgname=openss7-modules${_knm}
-pkgver=1.1.8.467.g24ee9de09
-pkgrel=1
+pkgver=1.1.8.468.g7c7fc62a9
+pkgrel=2
 pkgdesc="OpenSS7 Fast-STREAMS and protocol Suites (${_kvx:-LTS ${_kvx}} Kernel Modules)"
 arch=('x86_64' 'i686')
 url="http://www.openss7.org"
