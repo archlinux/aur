@@ -1,12 +1,12 @@
 pkgname=mingw-w64-coin-or-cbc
 pkgver=2.10.5
-pkgrel=2
+pkgrel=3
 pkgdesc="COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Cbc"
 license=('EPL')
 groups=('mingw-w64-coin-or')
-depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-coinasl')
+depends=('mingw-w64-coin-or-cgl' 'mingw-w64-coin-or-asl')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Cbc/Cbc-${pkgver}.tgz")

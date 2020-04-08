@@ -1,14 +1,14 @@
 pkgbase = mingw-w64-coin-or-cbc
 	pkgdesc = COIN-OR branch-and-cut mixed integer programming solver (mingw-w64)
 	pkgver = 2.10.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://projects.coin-or.org/Cbc
 	arch = any
 	groups = mingw-w64-coin-or
 	license = EPL
 	makedepends = mingw-w64-configure
 	depends = mingw-w64-coin-or-cgl
-	depends = mingw-w64-coin-or-coinasl
+	depends = mingw-w64-coin-or-asl
 	options = staticlibs
 	options = !buildflags
 	options = !strip
