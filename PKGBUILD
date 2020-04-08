@@ -2,8 +2,8 @@
 
 pkgname=kayan-gtk-theme-git
 _reponame='Krayan'
-pkgver=0.0.0.69e7f60
-pkgrel=1
+pkgver=0.0.0.cf5e1e6
+pkgrel=2
 pkgdesc='A darker and more modern twist on the Layan GTK Theme.'
 arch=("any")
 provides=("kayan-gtk-theme")
