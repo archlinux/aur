@@ -1,0 +1,15 @@
+pkgbase = ruby-jsonpath
+	pkgdesc = Ruby implementation of http://goessner.net/articles/JsonPath
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/joshbuddy/jsonpath
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = $_gemname-$pkgver.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/jsonpath-1.0.5.gem
+	md5sums = 935d7c185d5f4d4983437b5862e7d74c
+
+pkgname = ruby-jsonpath
+
