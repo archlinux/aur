@@ -1,0 +1,12 @@
+diff --unified --recursive --text qemu-4.2.0/include/ui/console.h qemu-4.2.0.new/include/ui/console.h
+--- qemu-4.2.0/include/ui/console.h	2019-12-12 13:20:48.000000000 -0500
++++ qemu-4.2.0.new/include/ui/console.h	2020-04-07 14:50:19.995242274 -0400
+@@ -26,7 +26,7 @@
+ #define QEMU_CAPS_LOCK_LED   (1 << 2)
+ 
+ /* in ms */
+-#define GUI_REFRESH_INTERVAL_DEFAULT    30
++#define GUI_REFRESH_INTERVAL_DEFAULT    16
+ #define GUI_REFRESH_INTERVAL_IDLE     3000
+ 
+ /* Color number is match to standard vga palette */
