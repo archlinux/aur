@@ -3,7 +3,7 @@
 pkgname=gnome-chemistry-utils
 pkgver=0.14.17
 _majorver=$(echo ${pkgver}|cut -c1-4)
-pkgrel=2
+pkgrel=3
 pkgdesc="Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules."
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/gchemutils/"

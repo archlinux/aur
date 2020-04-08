@@ -1,6 +1,9 @@
-diff -ruN gnome-chemistry-utils-0.14.17/configure gnome-chemistry-utils-0.14.17_patched/configure
---- gnome-chemistry-utils-0.14.17/configure	2017-02-12 11:11:04.000000000 +0200
-+++ gnome-chemistry-utils-0.14.17_patched/configure	2020-04-08 11:49:03.521504889 +0300
+Description: Build against openbabel v3.0.0.
+Author: Shimi Chen <shimi.chen@gmail.com>
+
+diff -ruN a/configure b/configure
+--- a/configure	2017-02-12 11:11:04.000000000 +0200
++++ b/configure	2020-04-08 11:49:03.521504889 +0300
 @@ -19695,12 +19695,12 @@
      pkg_cv_openbabel_CFLAGS="$openbabel_CFLAGS"
   elif test -n "$PKG_CONFIG"; then
@@ -51,9 +54,9 @@ diff -ruN gnome-chemistry-utils-0.14.17/configure gnome-chemistry-utils-0.14.17_
  
  $openbabel_PKG_ERRORS
  
-diff -ruN gnome-chemistry-utils-0.14.17/configure.ac gnome-chemistry-utils-0.14.17_patched/configure.ac
---- gnome-chemistry-utils-0.14.17/configure.ac	2017-02-12 11:10:15.000000000 +0200
-+++ gnome-chemistry-utils-0.14.17_patched/configure.ac	2020-04-08 11:49:42.597997094 +0300
+diff -ruN a/configure.ac b/configure.ac
+--- a/configure.ac	2017-02-12 11:10:15.000000000 +0200
++++ b/configure.ac	2020-04-08 11:49:42.597997094 +0300
 @@ -193,7 +193,7 @@
  PKG_CHECK_MODULES(goffice, [$libgoffice >= 0.10.12])
  PKG_CHECK_MODULES(chemical_mime_data, [chemical-mime-data >= 0.1.94])
@@ -63,9 +66,9 @@ diff -ruN gnome-chemistry-utils-0.14.17/configure.ac gnome-chemistry-utils-0.14.
  PKG_CHECK_MODULES(x11, [x11 >= 1.0.0])
  
  dnl Not sure we need to test for glu.h and glx.h
-diff -ruN gnome-chemistry-utils-0.14.17/libs/gcu/spacegroup.h gnome-chemistry-utils-0.14.17_patched/libs/gcu/spacegroup.h
---- gnome-chemistry-utils-0.14.17/libs/gcu/spacegroup.h	2017-02-12 11:10:09.000000000 +0200
-+++ gnome-chemistry-utils-0.14.17_patched/libs/gcu/spacegroup.h	2020-04-08 11:52:00.227382277 +0300
+diff -ruN a/libs/gcu/spacegroup.h b/libs/gcu/spacegroup.h
+--- a/libs/gcu/spacegroup.h	2017-02-12 11:10:09.000000000 +0200
++++ b/libs/gcu/spacegroup.h	2020-04-08 11:52:00.227382277 +0300
 @@ -33,7 +33,7 @@
  class Transform3d;
  class Vector;
@@ -75,9 +78,9 @@ diff -ruN gnome-chemistry-utils-0.14.17/libs/gcu/spacegroup.h gnome-chemistry-ut
  @brief Handle crystallographic space group symmetry
  @since version 0.12
  @sa transform3d
-diff -ruN gnome-chemistry-utils-0.14.17/openbabel/socket.h gnome-chemistry-utils-0.14.17_patched/openbabel/socket.h
---- gnome-chemistry-utils-0.14.17/openbabel/socket.h	2017-02-12 11:10:11.000000000 +0200
-+++ gnome-chemistry-utils-0.14.17_patched/openbabel/socket.h	2020-04-08 11:51:17.037575267 +0300
+diff -ruN a/openbabel/socket.h b/openbabel/socket.h
+--- a/openbabel/socket.h	2017-02-12 11:10:11.000000000 +0200
++++ b/openbabel/socket.h	2020-04-08 11:51:17.037575267 +0300
 @@ -26,7 +26,7 @@
  #define GCU_BABEL_SOCKET_H
  
@@ -87,9 +90,9 @@ diff -ruN gnome-chemistry-utils-0.14.17/openbabel/socket.h gnome-chemistry-utils
  #include <string>
  
  class BabelSocket
-diff -ruN gnome-chemistry-utils-0.14.17/plugins/loaders/cdx/cdx.cc gnome-chemistry-utils-0.14.17_patched/plugins/loaders/cdx/cdx.cc
---- gnome-chemistry-utils-0.14.17/plugins/loaders/cdx/cdx.cc	2017-02-12 11:10:10.000000000 +0200
-+++ gnome-chemistry-utils-0.14.17_patched/plugins/loaders/cdx/cdx.cc	2020-04-08 11:50:31.441112292 +0300
+diff -ruN a/plugins/loaders/cdx/cdx.cc b/plugins/loaders/cdx/cdx.cc
+--- a/plugins/loaders/cdx/cdx.cc	2017-02-12 11:10:10.000000000 +0200
++++ b/plugins/loaders/cdx/cdx.cc	2020-04-08 11:50:31.441112292 +0300
 @@ -45,7 +45,7 @@
  #include <goffice/app/module-plugin-defs.h>
  #include <gsf/gsf-output-memory.h>
