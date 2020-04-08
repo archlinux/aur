@@ -1,14 +1,14 @@
 # Maintainer: Jan Rydzewski <flegmer@gmail.com>
 
 pkgname='dhall-json-bin'
-pkgver=1.6.2
-pkgrel=2
+pkgver=1.6.3
+pkgrel=1
 pkgdesc="Dhall to JSON compiler and a Dhall to YAML compiler"
 arch=('x86_64')
 url='https://github.com/dhall-lang/dhall-haskell'
 license=('BSD')
 
-_dhall_ver=1.30.0
+_dhall_ver=1.31.1
 
 source=("https://github.com/dhall-lang/dhall-haskell/releases/download/$_dhall_ver/dhall-json-$pkgver-x86_64-linux.tar.bz2"
         "https://raw.githubusercontent.com/dhall-lang/dhall-haskell/$_dhall_ver/dhall-json/LICENSE")
