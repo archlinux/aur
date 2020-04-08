@@ -37,7 +37,6 @@ pkgbase = waterfox-current-kpe
 	depends = mime-types
 	depends = dbus-glib
 	depends = ffmpeg
-	depends = hunspell
 	depends = ttf-font
 	depends = hicolor-icon-theme
 	depends = kwaterfoxhelper
@@ -46,6 +45,7 @@ pkgbase = waterfox-current-kpe
 	optdepends = pulseaudio: Audio support
 	optdepends = alsa-lib: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
+	optdepends = hunspell-en_US: Spell checking, American English
 	provides = waterfox-current=2020.04
 	conflicts = waterfox-current
 	replaces = waterfox-beta-kde

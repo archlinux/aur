@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MPL')
 url="https://www.waterfox.net/"
 depends=('gtk3' 'gtk2' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'ffmpeg'
-         'hunspell' 'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
+         'ttf-font' 'hicolor-icon-theme' 'kwaterfoxhelper')
 makedepends=('unzip' 'zip' 'diffutils' 'python' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-server-xvfb'
              'autoconf2.13' 'rust' 'clang' 'llvm' 'libpulse' 'alsa-lib' 'jack' 'cbindgen' 'nasm' 'python2-setuptools'
              'nodejs' 'python2-psutil' 'nss' 'nspr' 'binutils' 'git')
@@ -16,7 +16,8 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
             'alsa-lib: Audio support'
-            'speech-dispatcher: Text-to-Speech')
+            'speech-dispatcher: Text-to-Speech'
+            'hunspell-en_US: Spell checking, American English')
 provides=("waterfox-current=${pkgver}")
 conflicts=('waterfox-current')
 options=('!emptydirs' '!makeflags' 'zipman')
