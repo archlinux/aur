@@ -1,0 +1,13 @@
+pkgbase = s3-utils
+	pkgdesc = Utilities and tools based around Amazon S3 to provide convenience APIs in a CLI
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/whitfin/s3-utils
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/whitfin/s3-utils/archive/v1.1.0.tar.gz
+	md5sums = 5926df3683894a9655e4ba5c5a83991e
+
+pkgname = s3-utils
+
