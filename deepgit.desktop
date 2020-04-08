@@ -2,13 +2,13 @@
 Version=1.0
 Encoding=UTF-8
 Name=DeepGit
-Keywords=git;hg;svn;mercurial;subversion
-GenericName=Git&Hg-Client + SVN-support
+Keywords=git
+Comment=Git-Client
 Type=Application
 Categories=Development;RevisionControl
 Terminal=false
 StartupNotify=true
 StartupWMClass=DeepGit
-Exec=/usr/bin/deepgit %u
+Exec="/usr/bin/deepgit" %u
 MimeType=x-scheme-handler/deepgit;x-scheme-handler/sourcetree;
 Icon=deepgit

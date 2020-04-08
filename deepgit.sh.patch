@@ -1,0 +1,11 @@
+--- src/deepgit/bin/deepgit.sh	2020-03-06 12:14:15.000000000 +0100
++++ deepgit	2020-04-08 14:56:26.014368401 +0200
+@@ -81,7 +81,7 @@
+ 
+ APP_CONFIG_DIR=${XDG_CONFIG_HOME:$HOME/.config}/$APP_LOWER
+ 
+-APP_HOME=`dirname "$APP_BIN"`
++APP_HOME=/usr/share/java/deepgit/
+ APP_JAVA_HOME=$DEEPGIT_JAVA_HOME
+ parseVmOptions $APP_BIN/$APP_LOWER.vmoptions
+ parseVmOptions $HOME/.$APP_LOWER/$APP_LOWER.vmoptions
