@@ -1,0 +1,19 @@
+diff -aur src.orig/cropgui-0.4/install.sh src/cropgui-0.4/install.sh
+--- src.orig/cropgui-0.4/install.sh	2020-04-08 09:49:34.394817453 +0200
++++ src/cropgui-0.4/install.sh	2020-04-08 09:49:52.994691249 +0200
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-PYTHON=python2
++PYTHON=python3
+ BINDIR=$HOME/bin; LIBDIR=$HOME/lib/python SHAREDIR=$HOME/share
+ 
+ default_flavor () {
+@@ -12,7 +12,7 @@
+ }
+ 
+ site_packages () {
+-    $PYTHON -c 'import distutils.sysconfig; print distutils.sysconfig.get_python_lib()'
++    $PYTHON -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())'
+ }
+ 
+ usage () {

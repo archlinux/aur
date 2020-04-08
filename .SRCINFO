@@ -11,7 +11,9 @@ pkgbase = cropgui
 	depends = pygtk
 	depends = perl-image-exiftool
 	source = https://github.com/jepler/cropgui/archive/v0.4.tar.gz
+	source = python3_fix.patch
 	md5sums = a761991bf98793da29390f960dffe9a2
+	md5sums = 648252816c414e010193e21069cc163a
 
 pkgname = cropgui
 
