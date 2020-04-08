@@ -1,6 +1,6 @@
 pkgbase = lib32-simplescreenrecorder-git
 	pkgdesc = Record 32-bit OpenGL applications with SimpleScreenRecorder. (Git version)
-	pkgver = 0.3.10.r21.g00decd5
+	pkgver = 0.4.0.r0.ge7b36d5
 	pkgrel = 1
 	url = http://www.maartenbaert.be/simplescreenrecorder/
 	install = lib32-simplescreenrecorder-git.install
