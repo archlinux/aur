@@ -5,7 +5,7 @@ pkgbase=linux-rt
 _pkgver=5.6.2
 _rtpatchver=1
 pkgver="${_pkgver}.${_rtpatchver}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT'
 arch=('x86_64')
 url="https://wiki.linuxfoundation.org/realtime/start"
@@ -20,7 +20,9 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.xz"
   "https://www.kernel.org/pub/linux/kernel/projects/rt/${_pkgver%.*}/older/patch-${_pkgver}-rt${_rtpatchver}.patch.sign"
   config
-  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch)
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0001-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch
+  0001-ALSA-ice1724-Fix-invalid-access-for-enumerated-ctl-i.patch)
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
@@ -34,7 +36,9 @@ sha256sums=('2d4d91d8329c1ed3826c61463650dd4bfbb6ad39dcee6dba4f98a7e94a67b5b9'
             'b2e9420f36ffce5edd87eb90b7deb857191dc7f18d275d5bd6f694b475a56e26'
             'SKIP'
             '4e9454546ee21cd973fa9ab9e711e9f32138ea21e6ba9f08afcd58f967c6b200'
-            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85')
+            'ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85'
+            'd9032bb428c42e093f2686ae2830133c3600496f93574b3b41dc0ec69af6d5ad'
+            'bc53f7ec92126955e221698e634d2185909e83bc526f7ff9c7ad86da3fd8c8f4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

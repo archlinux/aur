@@ -1,0 +1,42 @@
+From 8cd18c2bdaf1ddb117654fd1ba4befbf770bf2b5 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 7 Apr 2020 10:31:44 +0200
+Subject: [PATCH] ALSA: ice1724: Fix invalid access for enumerated ctl items
+
+The access to Analog Capture Source control value implemented in
+prodigy_hifi.c is wrong, as caught by the recently introduced sanity
+check; it should be accessing value.enumerated.item[] instead of
+value.integer.value[].  This patch corrects the wrong access pattern.
+
+BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=207139
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/pci/ice1712/prodigy_hifi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/sound/pci/ice1712/prodigy_hifi.c b/sound/pci/ice1712/prodigy_hifi.c
+index 91f83cef0e56..9aa12a67d370 100644
+--- a/sound/pci/ice1712/prodigy_hifi.c
++++ b/sound/pci/ice1712/prodigy_hifi.c
+@@ -536,7 +536,7 @@ static int wm_adc_mux_enum_get(struct snd_kcontrol *kcontrol,
+ 	struct snd_ice1712 *ice = snd_kcontrol_chip(kcontrol);
+ 
+ 	mutex_lock(&ice->gpio_mutex);
+-	ucontrol->value.integer.value[0] = wm_get(ice, WM_ADC_MUX) & 0x1f;
++	ucontrol->value.enumerated.item[0] = wm_get(ice, WM_ADC_MUX) & 0x1f;
+ 	mutex_unlock(&ice->gpio_mutex);
+ 	return 0;
+ }
+@@ -550,7 +550,7 @@ static int wm_adc_mux_enum_put(struct snd_kcontrol *kcontrol,
+ 
+ 	mutex_lock(&ice->gpio_mutex);
+ 	oval = wm_get(ice, WM_ADC_MUX);
+-	nval = (oval & 0xe0) | ucontrol->value.integer.value[0];
++	nval = (oval & 0xe0) | ucontrol->value.enumerated.item[0];
+ 	if (nval != oval) {
+ 		wm_put(ice, WM_ADC_MUX, nval);
+ 		change = 1;
+-- 
+2.25.0
+

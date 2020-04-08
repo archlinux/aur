@@ -1,7 +1,7 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
 	pkgver = 5.6.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.linuxfoundation.org/realtime/start
 	arch = x86_64
 	license = GPL2
@@ -21,6 +21,8 @@ pkgbase = linux-rt
 	source = https://www.kernel.org/pub/linux/kernel/projects/rt/5.6/older/patch-5.6.2-rt1.patch.sign
 	source = config
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+	source = 0001-ALSA-hda-Fix-potential-access-overflow-in-beep-helpe.patch
+	source = 0001-ALSA-ice1724-Fix-invalid-access-for-enumerated-ctl-i.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 8218F88849AAC522E94CF470A5E9288C4FA415FA
@@ -33,6 +35,8 @@ pkgbase = linux-rt
 	sha256sums = SKIP
 	sha256sums = 4e9454546ee21cd973fa9ab9e711e9f32138ea21e6ba9f08afcd58f967c6b200
 	sha256sums = ad3275a696348703c57f05b9626e7fbab7243299da32e52044ff51666f810e85
+	sha256sums = d9032bb428c42e093f2686ae2830133c3600496f93574b3b41dc0ec69af6d5ad
+	sha256sums = bc53f7ec92126955e221698e634d2185909e83bc526f7ff9c7ad86da3fd8c8f4
 
 pkgname = linux-rt
 	pkgdesc = The Linux RT kernel and modules

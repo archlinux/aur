@@ -1,0 +1,42 @@
+From 59b4a3ed754311917646a1032da4a42cdc2cfde6 Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Tue, 7 Apr 2020 10:36:22 +0200
+Subject: [PATCH] ALSA: hda: Fix potential access overflow in beep helper
+
+The beep control helper function blindly stores the values in two
+stereo channels no matter whether the actual control is mono or
+stereo.  This is practically harmless, but it annoys the recently
+introduced sanity check, resulting in an error when the checker is
+enabled.
+
+This patch corrects the behavior to store only on the defined array
+member.
+
+BugLink: https://bugzilla.kernel.org/show_bug.cgi?id=207139
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ sound/pci/hda/hda_beep.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/sound/pci/hda/hda_beep.c b/sound/pci/hda/hda_beep.c
+index f5fd62ed4df5..841523f6b88d 100644
+--- a/sound/pci/hda/hda_beep.c
++++ b/sound/pci/hda/hda_beep.c
+@@ -290,8 +290,12 @@ int snd_hda_mixer_amp_switch_get_beep(struct snd_kcontrol *kcontrol,
+ {
+ 	struct hda_codec *codec = snd_kcontrol_chip(kcontrol);
+ 	struct hda_beep *beep = codec->beep;
++	int chs = get_amp_channels(kcontrol);
++
+ 	if (beep && (!beep->enabled || !ctl_has_mute(kcontrol))) {
+-		ucontrol->value.integer.value[0] =
++		if (chs & 1)
++			ucontrol->value.integer.value[0] = beep->enabled;
++		if (chs & 2)
+ 			ucontrol->value.integer.value[1] = beep->enabled;
+ 		return 0;
+ 	}
+-- 
+2.25.0
+
