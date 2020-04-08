@@ -3,7 +3,7 @@
 
 pkgname=indicator-powersave
 pkgver=r98.10
-pkgrel=1
+pkgrel=2
 pkgdesc="User discretion power managment utility forked from CPU frequency indicator (bzr version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
