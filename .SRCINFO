@@ -1,0 +1,23 @@
+pkgbase = python2-pytables
+	pkgdesc = A package for managing hierarchical datasets and designed to efficiently and easily cope with extremely large amounts of data
+	pkgver = 3.5.2
+	pkgrel = 1
+	url = http://www.pytables.org
+	arch = x86_64
+	license = BSD
+	makedepends = lzo
+	makedepends = hdf5
+	makedepends = python2-numexpr
+	makedepends = python2-setuptools
+	makedepends = cython2
+	makedepends = blosc
+	makedepends = bzip2
+	source = python2-pytables-3.5.2::https://github.com/PyTables/PyTables/archive/v3.5.2.tar.gz
+	sha512sums = 72598482c5824b79a5bd60e5ca544f874936be9ce38de6d8f4297d895635cb2522fe0af07788a3370813a8bf04142edf1503cdef87cf570581da9915ced5ad93
+
+pkgname = python2-pytables
+	depends = lzo
+	depends = hdf5
+	depends = python2-numexpr
+	depends = blosc
+
