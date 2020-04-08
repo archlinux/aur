@@ -12,7 +12,7 @@ pkgbase = verona
 	depends = python
 	provides = veronac
 	provides = verona-interpreter
-	source = git+https://github.com/microsoft/verona#commit=39d60e935403682ee66879d19fa93347b1df6210
+	source = git+https://github.com/microsoft/verona#commit=f193b1ce246333d6826e4538bebb29e117996ce6
 	md5sums = SKIP
 
 pkgname = verona
