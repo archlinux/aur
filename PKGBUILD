@@ -1,4 +1,5 @@
 # Maintainer: Bruno Silva <brunofernandes at ua dot pt>
+# Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=autenticacao-gov-pt
 pkgver=2.0.46
