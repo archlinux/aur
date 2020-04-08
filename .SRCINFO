@@ -6,6 +6,7 @@ pkgbase = ruby-koala
 	arch = any
 	license = MIT
 	depends = ruby
+	depends = ruby-faraday
 	noextract = $_gemname-$pkgver.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/koala-3.0.0.gem
