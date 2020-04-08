@@ -1,0 +1,15 @@
+pkgbase = slingr-git
+	pkgdesc = A simple CLI for UPnP media file streaming
+	pkgver = r44.bf1de3d
+	pkgrel = 1
+	url = https://github.com/yuvadm/slingr
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = cargo
+	provides = slingr
+	source = git+https://github.com/yuvadm/slingr
+	md5sums = SKIP
+
+pkgname = slingr-git
+
