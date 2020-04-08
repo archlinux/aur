@@ -3,8 +3,8 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 # Contributor: Quan Guo < guotsuan@gmail.com>
 pkgname=cheat-git
-pkgver=3.8.0.r0.g3e67eaa
-pkgrel=2
+pkgver=3.9.0.r0.gc4dd3b5
+pkgrel=1
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('arm' 'armv6h' 'armv7h' 'x86_64')
 url="https://github.com/cheat/cheat"
@@ -13,7 +13,8 @@ makedepends=('git' 'go-pie' 'pandoc')
 optdepends=('fzf: for Fuzzy Finder integration'
             'bash-completion: for bash completions')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}" "${pkgname%-git}-bash-git" "python-${pkgname%-git}")
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bash-git" "python-${pkgname%-git}"
+           'zsh-completions')
 backup=("etc/$pkgname/conf.yml")
 source=('git+https://github.com/cheat/cheat.git'
         'conf.yml'
