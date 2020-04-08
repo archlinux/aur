@@ -1,13 +1,13 @@
 pkgbase = genuki
 	pkgdesc = genuki: generate unified kernel images
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/quebin31/genuki
 	arch = any
 	license = GPL3
 	depends = initramfs
-	source = genuki-v0.1.0.tar.gz::https://github.com/quebin31/genuki/releases/download/0.1.0/release.tar.gz
-	sha256sums = deaf30a28cd9f4690a707f1280f2cf04d3f2bf59632004f2c70b4e605dc05fc7
+	source = genuki-v0.1.1.tar.gz::https://github.com/quebin31/genuki/releases/download/0.1.1/release.tar.gz
+	sha256sums = b4e1c61a50f689acba1aa162ce2e93541b53afee24f7e1c71e76da8c000779ee
 
 pkgname = genuki
 
