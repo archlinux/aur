@@ -1,14 +1,14 @@
 # Maintainer: Diab Neiroukh <officiallazerl0rd@gmail.com>
 
 pkgname=kayan-gtk-theme-git
-_reponame='Kayan'
+_reponame='Krayan'
 pkgver=0.0.0.69e7f60
 pkgrel=1
 pkgdesc='A darker and more modern twist on the Layan GTK Theme.'
 arch=("any")
 provides=("kayan-gtk-theme")
 conflicts=("kayan-gtk-theme")
-url="https://github.com/lazerl0rd/${_reponame}"
+url="https://github.com/lazerl0rd/${_reponame}.git"
 license=("GPL2")
 optdepends=(
         "gtk-engine-murrine"
