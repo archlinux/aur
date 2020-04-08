@@ -28,7 +28,7 @@ depends=('python2'
 optdepends=('python2-virtualenv: Required for installing SDK'
             'arm-none-eabi-gcc: Required for installing SDK'
             'arm-none-eabi-newlib: Required for installing SDK'
-            'qemu: Emulation support')
+            'qemu-pebble: Emulation support')
 makedepends=('python2-setuptools')
 conflicts=('pebble-sdk')
 source=("git+https://github.com/pebble-dev/pebble-tool.git"
