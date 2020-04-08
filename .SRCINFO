@@ -1,4 +1,4 @@
-pkgbase = binmerge-git
+pkgbase = binmerge
 	pkgdesc = Tool to merge multiple bin/cue tracks into one.
 	pkgver = r17.5d32365
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = binmerge-git
 	source = git+https://github.com/putnam/binmerge
 	sha256sums = SKIP
 
-pkgname = binmerge-git
+pkgname = binmerge
 

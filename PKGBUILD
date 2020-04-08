@@ -1,5 +1,5 @@
 # Maintainer: baraclese at gmail dot com
-pkgname=binmerge-git
+pkgname=binmerge
 pkgver=r17.5d32365
 pkgrel=1
 pkgdesc="Tool to merge multiple bin/cue tracks into one."
