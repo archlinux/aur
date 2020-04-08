@@ -1,5 +1,5 @@
 pkgname=fprettify
-pkgver=0.3.3
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="An auto-formatter for modern Fortran code that imposes strict whitespace formatting, written in Python."
 arch=('x86_64' 'i686')
