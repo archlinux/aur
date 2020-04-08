@@ -1,6 +1,6 @@
 # Maintainer:anon at sansorgan.es 
 pkgname=awx
-pkgver=9.1.0
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="AWX provides a web-based user interface, REST API, and task engine built on top of Ansible."
 arch=('any')
@@ -22,4 +22,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('3b6d9140948341aa62cf2858aab41215')
+md5sums=('9a34b44d78f239524dd521f8f8e4197b')
