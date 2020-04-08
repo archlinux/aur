@@ -3,12 +3,12 @@
 
 pkgname=openmodelica-git
 pkgver=1.16.0.dev.r267.g0c0d97d31
-pkgrel=2
+pkgrel=3
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
 license=('OSMC-PL')
-depends=('java-environment' 'lpsolve' 'openscenegraph' 'python' 'ruby' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-xmlpatterns' 'qt5-svg' 'fmilib')
+depends=('java-environment' 'lpsolve' 'openscenegraph' 'python' 'ruby' 'suitesparse' 'boost-libs' 'qt5-webkit' 'qt5-xmlpatterns' 'qt5-svg' 'qt5-tools' 'fmilib')
 makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost' 'clang' 'cmake' 'jre7-openjdk' 'antlr2' 'subversion' 'lib32-expat' 'lib32-ncurses' 'lib32-readline')
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn' 'openmodelica-dev')
