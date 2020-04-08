@@ -1,4 +1,4 @@
-pkgbase = xilinx-ise
+pkgbase = xilinx-ise-w4-edition
 	pkgdesc = Xilinx ISE Design Suite
 	pkgver = 14.7
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = xilinx-ise
 	source_x86_64 = xilinx-ise-64.desktop
 	sha256sums_x86_64 = 74b1bf6d07520314dec833a777ebc47a166992c3aeb771b20dca9562288da47a
 
-pkgname = xilinx-ise
+pkgname = xilinx-ise-w4-edition
 
