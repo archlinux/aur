@@ -2,8 +2,8 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
@@ -11,11 +11,9 @@ license=(LGPL2.1)
 depends=(glib2 pipewire fuse2 geoclue2)
 makedepends=(python xmlto docbook-xsl git flatpak libportal)
 checkdepends=(epiphany gedit gvfs)
-_commit=28b93e213a83c78bb6d65d5a1a65c57d62957827  # tags/1.6.0^0
-source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit"
-        hack.diff)
-sha256sums=('SKIP'
-            '949ce781ed3393e05f3bffdd0048aca976e0a35d9babeea9ec9d86ab8a00e871')
+_commit=309a1fc0cf2fb32cceb91dbc666d20cf0a3202c2  # tags/1.7.2^0
+source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
+sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -24,13 +22,6 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-
-  # pipewire 0.3
-  git cherry-pick -n a38901e5e7f835efe7b7a06c55790c8c20bc91a2
-
-  # Make tests pass
-  # https://github.com/flatpak/xdg-desktop-portal/issues/394
-  git apply -3 ../hack.diff
 
   NOCONFIGURE=1 ./autogen.sh
 }
