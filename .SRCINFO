@@ -1,0 +1,14 @@
+pkgbase = python2-rsa
+	pkgdesc = Pure-Python RSA implementation
+	pkgver = 4.0
+	pkgrel = 1
+	url = https://stuvel.eu/rsa
+	arch = any
+	license = Apache
+	makedepends = python2-setuptools
+	depends = python2
+	source = https://files.pythonhosted.org/packages/source/r/rsa/rsa-4.0.tar.gz
+	md5sums = 9f9af433a16868b616fc609215e91ddb
+
+pkgname = python2-rsa
+
