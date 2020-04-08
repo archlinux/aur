@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+set -o errexit -o errtrace -o pipefail -o nounset
+declare -r SCRIPT_PATH="$0"
+declare -r SCRIPT_NAME="blacknut"
+declare -r BLACKNUT_VERSION="x.y.z"
+declare -r INSTALL_PATH="/opt/appimages"
+declare -r FIREJAIL_PROFILE="${INSTALL_PATH}/blacknut-firejail.profile"
+declare -r APPIMAGE_PATH="${INSTALL_PATH}/Blacknut-${BLACKNUT_VERSION}.AppImage"
+
+usage() {
+	echo -n "\
+usage: ${SCRIPT_PATH} [<options>] [AppImage arguments ...]
+
+  Options:
+    --disable-firejail      run ${SCRIPT_NAME} without firejail
+    --force-firejail        force the use of firejail
+    -h, --help              display this message
+
+"
+}
+
+die() {
+	local -r msg="$1"
+
+	echo "${SCRIPT_PATH}: [ERROR] $msg" >& 2
+	exit 1
+}
+
+main() {
+	local -i opt_disable=0
+	local -i opt_force=0
+	local TEMP
+
+	TEMP=$(getopt --options "h" \
+                      --longoptions "disable-firejail,force-firejail,help" -- "$@")
+	readonly TEMP
+	eval set -- "$TEMP"
+
+	while true; do
+		case "$1" in
+			--disable-firejail)
+				opt_disable=1
+				;;
+			--force-firejail)
+				opt_force=1
+				;;
+			-h|--help)
+				usage
+				exit 0
+				;;
+			--)
+				shift
+				break
+				;;
+			*)
+				die "Should not happen"
+				;;
+		esac
+		shift
+	done
+
+	if [ "$opt_disable" -eq 1 ] && [ "$opt_force" -eq 1 ]; then
+		die "--disable-firejail and --force-firejail options cannot be used together"
+	fi
+
+	if [ $opt_disable -eq 0 ] && command -v firejail >& /dev/null; then
+		local -ri use_firejail=1
+	else
+		local -ri use_firejail=0
+	fi
+	if [ "$opt_force" -eq 1 ] && [ "$use_firejail" -eq 0 ]; then
+		die "firejail is not installed"
+	fi
+
+	if [ "$use_firejail" -eq 0 ]; then
+		"$APPIMAGE_PATH" "$@"
+	else
+		firejail --profile="$FIREJAIL_PROFILE" --appimage "$APPIMAGE_PATH" --no-sandbox "$@"
+	fi
+}
+
+main "$@"
