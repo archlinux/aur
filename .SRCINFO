@@ -1,0 +1,17 @@
+pkgbase = kayan-gtk-theme-git
+	pkgdesc = A darker and more modern twist on the Layan GTK Theme.
+	pkgver = 0.0.0.69e7f60
+	pkgrel = 1
+	url = https://github.com/lazerl0rd/Kayan
+	arch = any
+	license = GPL2
+	makedepends = git
+	optdepends = gtk-engine-murrine
+	optdepends = gtk-engines
+	provides = kayan-gtk-theme
+	conflicts = kayan-gtk-theme
+	source = git+https://github.com/lazerl0rd/Kayan.git
+	sha256sums = SKIP
+
+pkgname = kayan-gtk-theme-git
+
