@@ -6,11 +6,11 @@ pkgdesc='A Telegram console client based on tdlib.'
 arch=('x86_64')
 url="https://gitlab.com/lhausmann/tgcli"
 license=('MIT')
-makedepends=('dotnet-sdk-bin')
+makedepends=('dotnet-sdk')
 install=
 changelog=
 options=('!strip')
-source=("$pkgname"::'git+https://gitlab.com/lhausmann/tgcli.git#branch=master')
+source=("$pkgname"::'git+https://git.prod.zotan.network/zotan/tgcli.git#branch=master')
 md5sums=('SKIP')
 
 prepare() {
