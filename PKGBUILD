@@ -1,17 +1,17 @@
 # Maintainer: Paolo Viotti <skypixel@gmail.com>
 
 pkgname=sayit
-pkgver=0.3
-pkgrel=3
-pkgdesc="A text-to-speech command line tool that uses Azure Cognitive Services."
+pkgver=1.0
+pkgrel=1
+pkgdesc="A text-to-speech command line tool backed by Azure Cognitive Services."
 arch=('any')
 url="https://github.com/pviotti/sayit"
 license=('MIT')
 depends=('dotnet-runtime>=3.1.0')
 source=(https://github.com/pviotti/$pkgname/releases/download/v$pkgver/$pkgname-v$pkgver-linux.zip
         $pkgname)
-sha256sums=('b04e5008cf9faad4c0fcefd0ba5b6c3569f6d4776422a01adfa212944f7bf427'
-            '13eb0778438f2468ae76f3ea4daf806cbe777ea907513f2c22470cd89a88e7fb')
+sha256sums=('bd8f6c22a57d4640a806c40f8ae8fb45511054794e1be09f5c8e30a961ec2312'
+            'fb6b81e833a40374da84e396e8a4b97d40cea9289e1c952d94eac53cbe31e068')
 
 package() {
     install -dm 755 "${pkgdir}/usr/share/$pkgname"

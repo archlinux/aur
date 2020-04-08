@@ -1,2 +1,6 @@
 #!/bin/sh
+# The Speech SDK of Azure Cognitive Services is statically linked to OpenSSL
+# so it requires setting $SSL_CERT_DIR
+# https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-configure-openssl-linux
+export SSL_CERT_DIR=/etc/ssl/certs
 exec /usr/share/sayit/SayIt "$@"
