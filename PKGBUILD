@@ -1,10 +1,10 @@
 # Maintainer : Bjoern Bidar - theodorstormgrade@gmail.com
      
 pkgname=nvidia-pf
-pkgver=440.64
+pkgver=440.82
 pkgrel=1
-_goodkver=5.5
-_badkver=5.6
+_goodkver=5.6
+_badkver=5.7
 _modver=${_goodkver}-pf
 _extramodules=extramodules-$_modver
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
@@ -19,10 +19,11 @@ depends=("linux-pf>=${_goodkver}" "linux-pf<${_badkver}" "nvidia-utils=${pkgver}
 conflicts=( 'nvidia-96xx' 'nvidia-173xx' 'nvidia-pf-core2' 'nvidia-pf-k8'
   'nvidia-pf-atom' 'nvidia-pf-psc' 'nvidia-pf-p4' 'nvidia-pf-p3'
  'nvidia-pf-pm' 'nvidia-pf-k7')
+provides=('NVIDIA-MODULE')
 license=('custom')
 options=(!strip)
 source=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-md5sums=('2b497b58ac0e6c444f0e45ed53239338')
+md5sums=('abc45d506515bde8f9efad90bf54f796')
 
 
 
